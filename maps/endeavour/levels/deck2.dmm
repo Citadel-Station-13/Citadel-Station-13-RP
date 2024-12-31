@@ -1463,6 +1463,9 @@
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 1
 	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2portamidhall)
 "aVO" = (
@@ -2632,9 +2635,17 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "bHu" = (
-/obj/effect/shuttle_landmark/endeavour/deck3/port,
-/turf/space,
-/area/space)
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/medbay3)
 "bHz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -3418,6 +3429,24 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
+"caA" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navgold/border{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d1starboardamidhall)
 "cbh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -4730,6 +4759,18 @@
 "cNW" = (
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
+"cOc" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navgold/border{
+	dir = 1
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "cOu" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -6699,6 +6740,9 @@
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 1
 	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2portforhall)
 "eam" = (
@@ -6899,6 +6943,18 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2portamidhall)
+"een" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 1
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2portamidhall)
@@ -8209,6 +8265,9 @@
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 9
 	},
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "eUx" = (
@@ -8691,6 +8750,21 @@
 /obj/structure/flora/pottedplant/orientaltree,
 /turf/simulated/floor/tiled/dark,
 /area/endeavour/hallway/d1starboardamidhall)
+"fiR" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/sleeper)
 "fiT" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/navgold/border,
@@ -14380,6 +14454,12 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
+"iBr" = (
+/obj/effect/shuttle_landmark/automatic{
+	name = "Deck 2, Port Side"
+	},
+/turf/space,
+/area/space)
 "iBv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -19324,6 +19404,12 @@
 /obj/machinery/artifact_scanpad,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/anomaly_lab/containment_two)
+"lIj" = (
+/obj/effect/shuttle_landmark/automatic{
+	name = "Deck 2, Port Side"
+	},
+/turf/space/basic,
+/area/space)
 "lIp" = (
 /obj/machinery/camera/network/outside,
 /turf/space/basic,
@@ -19531,6 +19617,27 @@
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_c)
+"lRS" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 1
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/medbay4)
 "lRT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
 /turf/simulated/floor/tiled,
@@ -19696,6 +19803,24 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled,
 /area/rnd/storage)
+"lWH" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navgold/border{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d1starboardforhall)
 "lWJ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -21141,6 +21266,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1starboardafthall)
 "mTN" = (
@@ -22366,6 +22494,27 @@
 /obj/machinery/floodlight,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d2fwdmaint)
+"nHZ" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/green/border{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/virology_aft_access)
 "nIk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/floor_decal/borderfloorblack/corner{
@@ -22882,7 +23031,9 @@
 /turf/simulated/floor/wood/sif/indoors,
 /area/medical/reception)
 "nWQ" = (
-/obj/effect/shuttle_landmark/endeavour/deck3/starboard,
+/obj/effect/shuttle_landmark/automatic{
+	name = "Deck 2, Starboard Side"
+	},
 /turf/space,
 /area/space)
 "nXe" = (
@@ -22943,6 +23094,21 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/dark,
 /area/station/stairs_two)
+"nZt" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 1
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2portamidhall)
 "nZC" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -27831,13 +27997,17 @@
 /turf/simulated/floor/wood,
 /area/medical/medbay4)
 "qFD" = (
-/obj/structure/window/reinforced/tinted,
-/obj/machinery/shower{
-	dir = 8
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
 	},
-/obj/structure/curtain/open/shower/medical,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/medical/medbay_primary_storage)
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/surgeryprep)
 "qFO" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -29003,8 +29173,23 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/virology_aft_access)
 "rpi" = (
-/turf/simulated/floor/tiled/white,
-/area/medical/medbay_primary_storage)
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2portforhall)
 "rpj" = (
 /turf/simulated/wall/prepainted,
 /area/maintenance/substation/research)
@@ -30496,6 +30681,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
+/obj/machinery/vending/blood,
 /turf/simulated/floor/tiled,
 /area/medical/medbay_primary_storage)
 "snQ" = (
@@ -30540,6 +30726,15 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
+"soP" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
+	},
+/turf/simulated/floor/wood,
+/area/tether/station/public_meeting_room)
 "soU" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -32854,6 +33049,7 @@
 /obj/machinery/door/airlock/glass/research{
 	name = "R&D Distribution Area"
 	},
+/obj/map_helper/access_helper/airlock/station/public,
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
 "tLU" = (
@@ -35976,6 +36172,7 @@
 /obj/machinery/door/airlock/glass/research{
 	name = "R&D Distribution Area"
 	},
+/obj/map_helper/access_helper/airlock/station/public,
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
 "vQl" = (
@@ -36054,9 +36251,8 @@
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
 "vTa" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint/babyblue,
-/obj/machinery/vending/blood,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/medical/medbay_primary_storage)
 "vTK" = (
@@ -36816,13 +37012,11 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2portforhall)
 "wlZ" = (
-/obj/machinery/shower{
-	dir = 4
+/obj/effect/shuttle_landmark/automatic{
+	name = "Deck 2, Starboard Side"
 	},
-/obj/structure/window/reinforced/tinted,
-/obj/structure/curtain/open/shower/medical,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/medical/medbay_primary_storage)
+/turf/space/basic,
+/area/space)
 "wme" = (
 /obj/landmark/spawnpoint/job/pilot,
 /turf/space/basic,
@@ -37233,6 +37427,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
@@ -40072,6 +40269,9 @@
 	},
 /obj/effect/floor_decal/corner/navgold/border{
 	dir = 1
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1starboardamidhall)
@@ -46338,7 +46538,7 @@ pNX
 pNX
 pNX
 pNX
-gOV
+lRS
 kBS
 vcY
 hgb
@@ -48080,7 +48280,7 @@ jbC
 xDZ
 dlw
 oaU
-buM
+cOc
 pdM
 kxI
 tQp
@@ -48926,7 +49126,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+wlZ
 pRW
 mDp
 mDp
@@ -49869,7 +50069,7 @@ mDp
 mDp
 mDp
 mDp
-nWQ
+mDp
 mDp
 pRW
 pRW
@@ -51394,7 +51594,7 @@ oaZ
 mZc
 qpq
 mmI
-oDK
+qFD
 wHh
 xKC
 dqJ
@@ -51887,7 +52087,7 @@ mDp
 mDp
 pRW
 pRW
-pRW
+lIj
 pRW
 pRW
 pRW
@@ -52757,7 +52957,7 @@ bdJ
 qSo
 cyt
 fwu
-vXJ
+bHu
 tCz
 aOx
 ufT
@@ -54299,7 +54499,7 @@ iAl
 jdx
 hgX
 juF
-wOk
+fiR
 sCe
 ggO
 kgh
@@ -57378,7 +57578,7 @@ qog
 qog
 xec
 dbo
-mYS
+nZt
 bfx
 oOa
 jne
@@ -58389,7 +58589,7 @@ rFw
 bNp
 bNp
 ujt
-szk
+ujt
 xFH
 xFH
 xFH
@@ -58567,7 +58767,7 @@ kYY
 kYY
 kYY
 uCH
-qan
+nHZ
 lLU
 nic
 fNZ
@@ -58581,9 +58781,9 @@ bNp
 wlg
 kTz
 bNp
-wlZ
 ujt
-ryO
+ujt
+szk
 xFH
 lmG
 qBd
@@ -58775,9 +58975,9 @@ bNp
 mnx
 kTz
 bNp
-rpi
 ujt
-szk
+ujt
+ryO
 xFH
 qBd
 jRE
@@ -58969,8 +59169,8 @@ xFH
 bxy
 peZ
 bNp
-qFD
-hQy
+ujt
+ujt
 szk
 vTa
 pRW
@@ -59163,9 +59363,9 @@ xFH
 kTz
 kTz
 xFH
-xFH
-xFH
-xFH
+ujt
+hQy
+szk
 xFH
 lIp
 pRW
@@ -59357,10 +59557,10 @@ iro
 svB
 iro
 aUR
-dYQ
-lmG
-qBd
-pRW
+xFH
+xFH
+xFH
+xFH
 pRW
 pRW
 pRW
@@ -59551,9 +59751,9 @@ pkD
 nMP
 hGE
 aUR
-jRE
+dYQ
+lmG
 qBd
-jRE
 pRW
 pRW
 pRW
@@ -59745,9 +59945,9 @@ nMP
 nMP
 sVo
 aUR
-pRW
-pRW
-pRW
+jRE
+qBd
+jRE
 pRW
 pRW
 pRW
@@ -62421,7 +62621,7 @@ wNs
 otK
 jUa
 uLo
-uza
+een
 bCK
 arL
 rBK
@@ -62629,7 +62829,7 @@ uCq
 uCq
 xgg
 jRu
-bFI
+caA
 uOw
 kdT
 vCs
@@ -63666,7 +63866,7 @@ mDp
 mDp
 mDp
 mDp
-mDp
+nWQ
 mDp
 mDp
 mDp
@@ -66424,7 +66624,7 @@ mDp
 mDp
 mDp
 mDp
-bHu
+mDp
 mDp
 mDp
 mDp
@@ -66510,7 +66710,7 @@ pIb
 pUI
 pUI
 ifg
-aua
+lWH
 vWh
 oYE
 mbs
@@ -66692,7 +66892,7 @@ jRK
 jRK
 wsu
 wMp
-ppu
+rpi
 mFT
 kXE
 iDS
@@ -67021,7 +67221,7 @@ pRW
 pRW
 pRW
 pRW
-mDp
+iBr
 mDp
 mDp
 pRW
@@ -67674,7 +67874,7 @@ ruN
 vJE
 cCs
 ifg
-aua
+lWH
 sqA
 oYE
 mbs
@@ -72510,7 +72710,7 @@ pRW
 qBd
 lmG
 agO
-xAr
+soP
 hGi
 xWm
 aiO

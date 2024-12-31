@@ -1551,14 +1551,14 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/spawner/window/reinforced/full,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)
 "aZU" = (
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/spawner/window/reinforced/full,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
 "bax" = (
@@ -2482,8 +2482,10 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3portforhall)
 "bBF" = (
-/obj/effect/shuttle_landmark/endeavour/deck2/port,
-/turf/space,
+/obj/effect/shuttle_landmark/automatic{
+	name = "Deck 3, Starboard Side"
+	},
+/turf/space/basic,
 /area/space)
 "bBM" = (
 /obj/machinery/fire_alarm/north_mount,
@@ -3311,7 +3313,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/spawner/window/reinforced/full,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3aftmaint)
 "ciU" = (
@@ -6588,6 +6590,12 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3portforhall)
 "ejd" = (
@@ -8549,6 +8557,9 @@
 	},
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 9
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3afthall)
@@ -10660,12 +10671,6 @@
 	},
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 1
-	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/navblue/bordercorner2{
-	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -15266,6 +15271,18 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_3)
+"jXm" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navgold/border{
+	dir = 1
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
+	},
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d3starboardamidhall)
 "jXM" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -17403,6 +17420,24 @@
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/fitness)
+"lzC" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navgold/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navgold/bordercorner2{
+	dir = 1
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d3starboardamidhall)
 "lAm" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/brown/border,
@@ -18224,6 +18259,21 @@
 "mfy" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/crew_quarters/sleep/Dorm_12)
+"mfz" = (
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navgold/border{
+	dir = 1
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d3starboardforhall)
 "mgD" = (
 /obj/effect/floor_decal/corner/black{
 	dir = 9
@@ -21103,6 +21153,21 @@
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
+"obX" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d3portamidhall)
 "och" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -22889,6 +22954,9 @@
 	},
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 1
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3afthall)
@@ -27762,7 +27830,7 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/spawner/window/reinforced/full,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/security)
 "suh" = (
@@ -28688,6 +28756,21 @@
 "sWJ" = (
 /turf/simulated/floor/tiled/monodark,
 /area/prison/cell_block)
+"sWT" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d3portforhall)
 "sXC" = (
 /obj/structure/cable/green,
 /obj/machinery/power/apc/south_mount,
@@ -29577,12 +29660,6 @@
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/navblue/bordercorner2{
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -30397,6 +30474,21 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3fwdhall)
+"ufF" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
+	},
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d3portforhall)
 "ufL" = (
 /obj/structure/bed/chair/shuttle,
 /turf/simulated/floor/tiled/steel,
@@ -30728,6 +30820,18 @@
 /obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/dark,
 /area/endeavour/station/stairs_three)
+"unb" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navgold/border{
+	dir = 1
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d3starboardforhall)
 "uny" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -31595,7 +31699,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/spawner/window/reinforced/full,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
 "uPC" = (
@@ -32190,6 +32294,12 @@
 "vkn" = (
 /turf/simulated/wall/r_wall/prepainted/cargo,
 /area/quartermaster/cargo_shelter_dock)
+"vkt" = (
+/obj/effect/shuttle_landmark/automatic{
+	name = "Deck 3, Port Side"
+	},
+/turf/space/basic,
+/area/space)
 "vkR" = (
 /obj/structure/catwalk,
 /obj/machinery/light/small{
@@ -32957,6 +33067,12 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/warehouse)
+"vDG" = (
+/obj/effect/shuttle_landmark/automatic{
+	name = "Deck 3, Port Side"
+	},
+/turf/space,
+/area/space)
 "vDN" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/cable/green{
@@ -44347,7 +44463,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+vkt
 pRW
 pRW
 pRW
@@ -44886,7 +45002,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+bBF
 pRW
 pRW
 pRW
@@ -51199,7 +51315,7 @@ kSn
 rvL
 rvL
 xhN
-txu
+ufF
 ndp
 sid
 syH
@@ -56196,7 +56312,7 @@ mDp
 mDp
 mDp
 mDp
-bBF
+mDp
 mDp
 mDp
 mDp
@@ -57407,7 +57523,7 @@ qbT
 jUs
 pPi
 jiy
-tMK
+obX
 nTO
 pNH
 mMr
@@ -57615,7 +57731,7 @@ bCC
 stW
 mhY
 mhY
-osL
+lzC
 gVA
 fWt
 qRW
@@ -57928,7 +58044,7 @@ mDp
 mDp
 mDp
 mDp
-mDp
+vDG
 mDp
 mDp
 mDp
@@ -60331,7 +60447,7 @@ efB
 nif
 oTx
 daO
-eTx
+jXm
 okL
 pIT
 vnQ
@@ -60593,7 +60709,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+bBF
 pRW
 pRW
 pRW
@@ -61287,7 +61403,7 @@ vRl
 rBG
 qdW
 rBG
-tMK
+obX
 nTO
 goK
 xID
@@ -62659,7 +62775,7 @@ qxb
 xIo
 uhW
 qEf
-sih
+mfz
 adZ
 vWW
 gSN
@@ -65181,7 +65297,7 @@ rpK
 esO
 tOV
 orP
-gFU
+unb
 adZ
 poW
 eVN
@@ -65555,7 +65671,7 @@ alQ
 fSP
 lTw
 mMr
-qxm
+sWT
 tAU
 uIa
 qcn
