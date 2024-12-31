@@ -11200,6 +11200,12 @@
 /obj/machinery/atmospherics/pipe/simple/visible/black,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
+"mxW" = (
+/obj/machinery/drone_fabricator/matriarch{
+	fabricator_tag = "Engineering Matriarch"
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/engineering/drone_fabrication)
 "myq" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/cedouble,
@@ -36634,7 +36640,7 @@ ylp
 vLC
 tDD
 hmF
-tDD
+mxW
 vLC
 xwk
 iAM
