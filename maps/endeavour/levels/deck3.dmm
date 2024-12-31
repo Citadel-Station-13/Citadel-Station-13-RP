@@ -20933,9 +20933,7 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3starboardforhall)
 "nUf" = (
-/obj/structure/toilet{
-	dir = 1
-	},
+/obj/structure/toilet,
 /obj/landmark{
 	name = "xeno_spawn";
 	pixel_x = -1
@@ -56550,7 +56548,7 @@ lUu
 ewu
 tQn
 syZ
-lGM
+syZ
 eGx
 eTv
 cLn
@@ -56742,7 +56740,7 @@ fju
 fju
 lUu
 ewu
-syZ
+lGM
 qMP
 hmk
 jLP

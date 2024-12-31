@@ -9310,7 +9310,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "fBT" = (
-/obj/machinery/door/airlock/glass,
+/obj/machinery/door/airlock/research,
 /obj/machinery/door/firedoor,
 /obj/map_helper/access_helper/airlock/station/science/department,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -25875,10 +25875,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/glass/research{
-	name = "Research Lounge";
-	req_one_access = null
-	},
+/obj/machinery/door/airlock/research,
 /obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled,
 /area/rnd/breakroom)
