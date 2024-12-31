@@ -83,7 +83,7 @@
 	// todo: clickcd rework
 	clickchain.performer.setClickCooldownLegacy(clickchain.performer.get_attack_speed_legacy())
 	// todo: animation might need to depend on if it hits
-	animate_swing_at_target(target)
+	// animate_swing_at_target(target)
 
 	. = melee_attack_hit(target, clickchain, style, clickchain_flags, target_zone, mult)
 
@@ -112,7 +112,7 @@
 		range = MESSAGE_RANGE_COMBAT_LOUD,
 		visible = SPAN_DANGER("[target] has been [islist(style.verb_past_participle)? pick(style.verb_past_participle) : style.verb_past_participle] by [clickchain.performer]!")
 	)
-	target.animate_hit_by_attack(style.animation_type)
+	// target.animate_hit_by_attack(style.animation_type)
 
 /mob/proc/melee_attack_miss(atom/target, datum/event_args/actor/clickchain/clickchain, datum/melee_attack/unarmed/style, clickchain_flags, target_zone, mult)
 	playsound(src, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
@@ -128,6 +128,8 @@
 
 /**
  * construct default event args for what we're doing to a target
+ *
+ * todo: this is semi-legacy
  */
 /mob/proc/default_clickchain_event_args(atom/target, unarmed = FALSE)
 	var/datum/event_args/actor/clickchain/constructed = new

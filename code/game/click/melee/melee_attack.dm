@@ -6,4 +6,18 @@
  */
 /datum/melee_attack
 
-/datum/melee_attack/proc/perform_attack_animation()
+/**
+ * Casted to movable for future support.
+ */
+/datum/melee_attack/proc/perform_attack_animation(atom/movable/attacker, atom/target, missed)
+	attacker.animate_swing_at_target(target)
+
+/**
+ * Casted to movable for future support.
+ */
+/datum/melee_attack/proc/perform_attack_sound(atom/movable/attacker, atom/target, missed)
+
+/**
+ * Casted to movable for future support.
+ */
+/datum/melee_attack/proc/perform_attack_message(atom/movable/attacker, atom/target, missed)

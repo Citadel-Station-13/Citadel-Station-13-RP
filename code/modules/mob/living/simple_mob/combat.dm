@@ -83,8 +83,6 @@
 		var/datum/event_args/actor/clickchain/e_args = default_clickchain_event_args(A, TRUE)
 		e_args.melee_damage_multiplier = mult
 		melee_attack_chain(e_args)
-		#warn style injection?
-		melee_attack_chain(A, null, style = melee_style, mult = mult)
 		return TRUE
 	return A.attack_generic(src, damage_to_do, pick(attacktext))
 

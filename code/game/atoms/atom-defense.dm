@@ -46,7 +46,7 @@
  * * user - person attacking
  * * weapon - weapon used
  * * target_zone - zone targeted
- * * mult - damage multiplier
+ * * clickchain - (optional) clickchain provider
  *
  * @return clickchain flags to append
  */
@@ -60,7 +60,7 @@
  * * user - person attacking
  * * style - unarmed attack datum
  * * target_zone - zone targeted
- * * mult - damage multiplier
+ * * clickchain - (optional) clickchain provider
  *
  * @return clickchain flags to append
  */
