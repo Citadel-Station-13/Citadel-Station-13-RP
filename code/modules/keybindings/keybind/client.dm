@@ -9,7 +9,7 @@
 	description = "Ask an admin for help."
 
 /datum/keybinding/client/admin_help/down(client/user)
-	user.get_adminhelp()
+	GLOB.admin_help_ui_handler.ui_interact(user.mob)
 	return TRUE
 
 /datum/keybinding/client/screenshot
