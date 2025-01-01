@@ -27218,6 +27218,9 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1aftmaint)
 "tNd" = (

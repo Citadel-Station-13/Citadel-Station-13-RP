@@ -2684,7 +2684,7 @@
 	},
 /obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
 /obj/machinery/door/airlock/glass/mining{
-	name = "Magmatic Rift Leap Pad";
+	name = "Mailing Office";
 	req_one_access = null
 	},
 /turf/simulated/floor/tiled/monodark,
@@ -2921,7 +2921,7 @@
 /area/crew_quarters/sleep/Dorm_6)
 "bTd" = (
 /obj/machinery/door/airlock/glass/mining{
-	name = "Magmatic Rift Leap Pad";
+	name = "Cargo Airlock";
 	req_one_access = null
 	},
 /obj/machinery/door/firedoor,
@@ -4999,7 +4999,7 @@
 "dkO" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass/mining{
-	name = "Magmatic Rift Leap Pad";
+	name = "Cargo Airlock";
 	req_one_access = null
 	},
 /turf/simulated/floor/tiled/dark,
@@ -11487,7 +11487,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/obj/machinery/recharge_station,
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "hmF" = (
@@ -14991,7 +14991,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "jMc" = (
@@ -30022,10 +30022,6 @@
 /obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/warden)
-"tQn" = (
-/obj/machinery/recharge_station,
-/turf/simulated/floor/wood,
-/area/crew_quarters/recreation_area)
 "tRb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -56546,7 +56542,7 @@ yab
 jbC
 lUu
 ewu
-tQn
+syZ
 syZ
 syZ
 eGx
