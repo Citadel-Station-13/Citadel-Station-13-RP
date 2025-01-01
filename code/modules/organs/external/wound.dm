@@ -7,15 +7,13 @@
 	if(damage == 0)
 		return
 
-	if(behaviour_flags & BODYPART_NO_WOUND)
-		return
-
 	//moved this before the open_wound check so that having many small wounds for example doesn't somehow protect you from taking internal damage (because of the return)
 	//Possibly trigger an internal wound, too.
 	var/local_damage = brute_dam + burn_dam + damage
 	if((damage > 15) && (type != WOUND_TYPE_BURN) && (local_damage > 30) && prob(damage) && (robotic < ORGAN_ROBOT) && !(species.species_flags & NO_BLOOD))
 		create_specific_wound(/datum/wound/internal_bleeding, min(damage - 15, 15))
-		owner.custom_pain("You feel something rip in your [name]!", 50)
+		if(!(behaviour_flags & BODYPART_SILENT_WOUNDS))
+			owner.custom_pain("You feel something rip in your [name]!", 50)
 
 //Burn damage can cause fluid loss due to blistering and cook-off
 
@@ -35,7 +33,7 @@
 			if(compatible_wounds.len)
 				var/datum/wound/W = pick(compatible_wounds)
 				W.open_wound(damage)
-				if(prob(25))
+				if(!(behaviour_flags & BODYPART_SILENT_WOUNDS) && prob(25))
 					if(robotic >= ORGAN_ROBOT)
 						owner.visible_message("<span class='danger'>The damage to [owner.name]'s [name] worsens.</span>",\
 						"<span class='danger'>The damage to your [name] worsens.</span>",\
