@@ -1230,7 +1230,7 @@
 	M.ceiling_chemical_effect(CE_PAINKILLER, 20) // 5 less than paracetamol.
 
 /datum/reagent/spacomycaze/on_touch_obj(obj/target, remaining, allocated, data, spread_between)
-	if(istype(target, /obj/item/stack/medical/crude_pack) && round(volume) >= 1)
+	if(istype(target, /obj/item/stack/medical/crude_pack) && round(allocated) >= 1)
 		var/obj/item/stack/medical/crude_pack/C = target
 		var/packname = C.name
 		var/to_produce = min(C.amount, floor(allocated))

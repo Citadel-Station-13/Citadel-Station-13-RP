@@ -90,7 +90,9 @@
 	nutriment_factor = 1
 	color = "#FFFFFF"
 
-/datum/reagent/nutriment/flour/touch_turf(turf/simulated/T)
+/datum/reagent/nutriment/flour/on_touch_turf(turf/target, remaining, allocated, data)
+	. = ..()
+	var/turf/T = target
 	if(!istype(T, /turf/space))
 		new /obj/effect/debris/cleanable/flour(T)
 
@@ -1090,7 +1092,7 @@
 	if(alien == IS_ALRAUNE) //cit change: milk good for plant.
 		M.nutrition += removed * 3
 	M.heal_organ_damage(0.5 * removed, 0)
-	holder.remove_reagent("capsaicin", 10 * removed)
+	metabolism.legacy_current_holder.remove_reagent(/datum/reagent/capsaicin, 10 * removed)
 
 /datum/reagent/drink/tea/icetea/milktea/honeybubbletea
 	name = "Honey Bubble Tea"
