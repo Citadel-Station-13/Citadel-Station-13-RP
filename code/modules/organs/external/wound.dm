@@ -48,7 +48,7 @@
 	var/wound_type = get_wound_type(type, damage)
 
 	if(wound_type)
-		var/datum/wound/W = new wound_type(damage)
+		var/datum/wound/W = new wound_type(damage, behaviour_flags & BODYPART_NO_INFECTION)
 
 		//Check whether we can add the wound to an existing wound
 		for(var/datum/wound/other as anything in wounds)
@@ -79,7 +79,7 @@
 /obj/item/organ/external/proc/create_specific_wound(path, damage, updating = TRUE)
 	ASSERT(ispath(path, /datum/wound))
 
-	var/datum/wound/creating = new path(damage)
+	var/datum/wound/creating = new path(damage, behaviour_flags & BODYPART_NO_INFECTION)
 	var/datum/wound/merged
 
 	for(var/datum/wound/other as anything in wounds)
@@ -203,7 +203,9 @@
 	var/tmp/list/desc_list = list()
 	var/tmp/list/damage_list = list()
 
-/datum/wound/New(damage)
+	var/can_infect = TRUE
+
+/datum/wound/New(damage, _can_infect = TRUE)
 
 	created = world.time
 
@@ -219,6 +221,8 @@
 	src.init_stage(damage)
 
 	bleed_timer += damage
+
+	can_infect = _can_infect
 
 // returns 1 if there's a next stage, 0 otherwise
 /datum/wound/proc/init_stage(initial_damage)
@@ -287,7 +291,7 @@
 // checks if wound is considered open for external infections
 // untreated cuts (and bleeding bruises) and burns are possibly infectable, chance higher if wound is bigger
 /datum/wound/proc/infection_check()
-	if(behaviour_flags & BODYPART_NO_INFECTION)
+	if(!can_infect)
 		return FALSE
 	if (disinfected)
 		if(germ_level > INFECTION_LEVEL_ONE)
