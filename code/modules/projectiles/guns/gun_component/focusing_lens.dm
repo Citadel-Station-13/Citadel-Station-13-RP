@@ -32,6 +32,6 @@
 /obj/item/gun_component/focusing_lens/divide_by/three
 	name = "weapon focusing lens (3-linear multiplexer)"
 	divide_by = 3
-	cheat_factor = 1.1
+	cheat_factor = 1.3
 
 #warn impl
