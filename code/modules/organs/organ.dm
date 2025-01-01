@@ -475,10 +475,9 @@
 
 	//Process infections
 	if(reagents)
-		var/datum/reagent/blood/B = locate(/datum/reagent/blood) in reagents.reagent_list
-		if(B && prob(40))
-			reagents.remove_reagent("blood",0.1)
-			blood_splatter(src,B,1)
+		if(reagents.reagent_volumes(/datum/reagent/blood::id) && prob(40) && get_turf(src))
+			blood_splatter_legacy(get_turf(src), reagents.reagent_datas[/datum/reagent/blood::id], FALSE)
+			reagents.remove_reagent(/datum/reagent/blood, 0.1)
 		adjust_germ_level(rand(2,6))
 		if(germ_level >= INFECTION_LEVEL_TWO)
 			adjust_germ_level(rand(2,6))
@@ -652,9 +651,13 @@
 	if(robotic >= ORGAN_ROBOT)
 		return
 
-	to_chat(user, SPAN_NOTICE("You take an experimental bite out of \the [src]."))
-	var/datum/reagent/blood/B = locate(/datum/reagent/blood) in reagents.reagent_list
-	blood_splatter(src,B,1)
+	user.visible_message(
+		SPAN_BOLDWARNING("[user] takes an experimental bite out of \the [src]!"),
+		SPAN_BOLDWARNING("You take an experimental bite out of \the [src]!"),
+		SPAN_WARNING("You hear a sickening chewing sound."),
+		MESSAGE_RANGE_INVENTORY_HARD,
+	)
+	blood_splatter_legacy(get_turf(src), reagents.reagent_datas?[/datum/reagent/blood::id], TRUE)
 
 	user.temporarily_remove_from_inventory(src, INV_OP_FORCE)
 
