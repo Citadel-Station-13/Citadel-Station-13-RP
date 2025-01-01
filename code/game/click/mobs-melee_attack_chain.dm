@@ -23,13 +23,19 @@
 	if(!clickchain.target.is_melee_targetable(clickchain, clickchain_flags))
 		return clickchain_flags
 
+	var/datum/melee_attack/unarmed/using_style = default_unarmed_attack_style()
+	if(!using_style)
+		return clickchain_flags
+	. = clickchain_flags | melee_attack(clickchain, clickchain_flags, using_style)
+
+	#warn this should be modulated by clickchain
 	clickchain.performer.setClickCooldownLegacy(clickchain.performer.get_attack_speed_legacy())
+
 #warn deal with this trainwreck
 
 /**
  * @return CLICKCHAIN_* flags
  */
-#warn audit calls
 /mob/proc/melee_attack(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/unarmed/style)
 	SHOULD_CALL_PARENT(TRUE)
 
@@ -57,7 +63,7 @@
 	sort_of_legacy_imprint_upon_melee_clickchain(clickchain)
 
 	// -- call on them --
-	. = clickchain.target.unarmed_melee_act(src, style, target_zone, clickchain)
+	. = clickchain.target.unarmed_melee_act(src, style, clickchain.target_zone, clickchain)
 	var/missed = . & CLICKCHAIN_ATTACK_MISSED
 
 	// -- react to return --
