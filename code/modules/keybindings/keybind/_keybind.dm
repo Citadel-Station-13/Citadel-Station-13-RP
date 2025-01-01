@@ -1,6 +1,8 @@
+// todo: rename file to keybinding.dm
 /datum/keybinding
 	var/list/hotkey_keys
 	var/list/classic_keys
+	/// Our unique ID.
 	var/name
 	var/full_name
 	var/description = "No description provided."

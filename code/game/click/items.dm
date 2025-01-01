@@ -5,7 +5,8 @@
 
 //? Click-Chain system - using an item in hand to "attack", whether in melee or ranged.
 
-// todo: refactor attack object/mob to just melee attack or something
+// todo: refactor attack object/mob to just melee_attack_chain and a single melee attack system or something
+// todo: yeah most of this file needs re-evaluated again, especially for event_args/actor/clickchain support & right clicks
 
 /**
  * Called when trying to click something that the user can Reachability() to.
@@ -28,6 +29,7 @@
 	// todo: inject something here for 'used as item' much like /tg/, to get rid of attackby pattern
 
 	var/datum/event_args/actor/clickchain/e_args = new(user)
+	e_args.click_params = params
 
 	if((. |= item_attack_chain(target, e_args, ., params)) & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
@@ -346,13 +348,13 @@
 			// no targeting
 			return NONE
 	// check intent
-	if((item_flags & ITEM_CAREFUL_BLUDGEON) && clickchain.intent == INTENT_HELP)
+	if((item_flags & ITEM_CAREFUL_BLUDGEON) && clickchain.using_intent == INTENT_HELP)
 		clickchain.initiator.action_feedback(SPAN_WARNING("You refrain from hitting [target] because your intent is set to help."), src)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	//? legacy: decloak
 	clickchain.performer.break_cloak()
 	// set mult
-	clickchain.damage_multiplier *= mult
+	clickchain.melee_damage_multiplier *= mult
 	// click cooldown
 	// todo: clickcd rework
 	clickchain.performer.setClickCooldown(clickchain.performer.get_attack_speed(src))

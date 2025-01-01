@@ -146,7 +146,7 @@ GLOBAL_VAR_INIT(astar_visualization_persist, 3 SECONDS)
 	if(src.start == src.goal)
 		return list()
 	// too far away
-	if(get_manhattan_dist(src.start, src.goal) > max_path_length)
+	if(get_turf_manhattan_dist(src.start, src.goal) > max_path_length)
 		return null
 	#ifdef ASTAR_DEBUGGING
 	var/list/turf/turfs_got_colored = list()

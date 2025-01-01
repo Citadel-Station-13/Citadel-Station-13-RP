@@ -1,3 +1,18 @@
+/datum/firemode/energy/laser_rifle
+	abstract_type = /datum/firemode/energy/laser_rifle
+
+/datum/firemode/energy/laser_rifle/normal
+	name = "normal"
+	cycle_cooldown = 0.8 SECONDS
+	projectile_type = /obj/projectile/beam/midlaser
+	charge_cost = 2400 / 10
+
+/datum/firemode/energy/laser_rifle/suppression
+	name = "suppressive"
+	cycle_cooldown = 0.4 SECONDS
+	projectile_type = /obj/projectile/beam/weaklaser
+	charge_cost = 2400 / 40
+
 /obj/item/gun/energy/laser
 	name = "laser rifle"
 	desc = "A Hephaestus Industries G40E rifle, designed to kill with concentrated energy blasts.  This variant has the ability to \
@@ -5,22 +20,14 @@
 	icon_state = "laser"
 	item_state = "laser"
 	wielded_item_state = "laser-wielded"
-	fire_delay = 8
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2)
 	materials_base = list(MAT_STEEL = 2000)
-	projectile_type = /obj/projectile/beam/midlaser
 	heavy = TRUE
 	one_handed_penalty = 30
-
 	worth_intrinsic = 350
-
-	firemodes = list(
-		list(mode_name="normal", fire_delay=8, projectile_type=/obj/projectile/beam/midlaser, charge_cost = 240),
-		list(mode_name="suppressive", fire_delay=5, projectile_type=/obj/projectile/beam/weaklaser, charge_cost = 60),
-		)
 
 /obj/item/gun/energy/laser/mounted
 	self_recharge = 1
@@ -34,15 +41,13 @@
 /obj/item/gun/energy/laser/practice
 	name = "practice laser carbine"
 	desc = "A modified version of the HI G40E, this one fires less concentrated energy bolts designed for target practice."
-	projectile_type = /obj/projectile/beam/practice
-	charge_cost = 48
 
-	cell_type = /obj/item/cell/device
-
-	firemodes = list(
-		list(mode_name="normal", projectile_type=/obj/projectile/beam/practice, charge_cost = 48),
-		list(mode_name="suppressive", projectile_type=/obj/projectile/beam/practice, charge_cost = 12),
-		)
+	firemodes = /datum/firemode/energy{
+		name = "normal";
+		projectile_type = /obj/projectile/beam/practice;
+		charge_cost = 2400 / 80;
+		cycle_cooldown = 0.4 SECONDS;
+	}
 
 /obj/item/gun/energy/retro
 	name = "retro laser"
@@ -51,8 +56,13 @@
 	desc = "An older model of the basic lasergun. Nevertheless, it is still quite deadly and easy to maintain, making it a favorite amongst pirates and other outlaws."
 	slot_flags = SLOT_BELT
 	w_class = WEIGHT_CLASS_NORMAL
-	projectile_type = /obj/projectile/beam
-	fire_delay = 10 //old technology
+
+	firemodes = /datum/firemode/energy{
+		name = "normal";
+		charge_cost = 2400 / 10;
+		projectile_type = /obj/projectile/beam;
+		cycle_cooldown = 1 SECONDS;
+	}
 
 /obj/item/gun/energy/retro/mounted
 	self_recharge = 1
@@ -101,14 +111,16 @@
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_pistol)
 	icon_state = "alienpistol"
 	item_state = "alienpistol"
-	fire_delay = 10 // Handguns should be inferior to two-handed weapons. Even alien ones I suppose.
-	charge_cost = 240 // Ten shots.
 
-	projectile_type = /obj/projectile/beam/cyan
+	firemodes = /datum/firemode/energy {
+		projectile_type = /obj/projectile/beam/cyan;
+		charge_cost = 2400 / 10;
+		cycle_cooldown = 1 SECONDS;
+	}
+
 	cell_type = /obj/item/cell/device/weapon/recharge/alien // Self charges.
 	origin_tech = list(TECH_COMBAT = 8, TECH_MAGNET = 7)
 	modifystate = "alienpistol"
-
 
 /obj/item/gun/energy/captain
 	name = "antique laser gun"
@@ -120,10 +132,9 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	projectile_type = /obj/projectile/beam
 	origin_tech = null
-	fire_delay = 10		//Old pistol
 	charge_cost = 480	//to compensate a bit for self-recharging
 	cell_type = /obj/item/cell/device/weapon/recharge/captain
-	battery_lock = 1
+	legacy_battery_lock = 1
 
 /obj/item/gun/energy/lasercannon
 	name = "laser cannon"
@@ -133,8 +144,10 @@
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3, TECH_POWER = 3)
 	slot_flags = SLOT_BELT|SLOT_BACK
 	projectile_type = /obj/projectile/beam/heavylaser/cannon
-	battery_lock = 1
-	fire_delay = 20
+	firemodes = /datum/firemode/energy{
+		cycle_cooldown = 2 SECONDS;
+	}
+	legacy_battery_lock = 1
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	one_handed_penalty = 90 // The thing's heavy and huge.
@@ -150,7 +163,6 @@
 	one_handed_penalty = 0 // Not sure if two-handing gets checked for mounted weapons, but better safe than sorry.
 	projectile_type = /obj/projectile/beam/heavylaser
 	charge_cost = 400
-	fire_delay = 20
 
 /obj/item/gun/energy/xray
 	name = "xray laser gun"
@@ -178,9 +190,11 @@
 	worth_intrinsic = 750
 
 	projectile_type = /obj/projectile/beam/sniper
+	firemodes = /datum/firemode/energy{
+		cycle_cooldown = 3.5 SECONDS;
+	}
 	slot_flags = SLOT_BACK
 	charge_cost = 600
-	fire_delay = 35
 	damage_force = 10
 	heavy = TRUE
 	w_class = WEIGHT_CLASS_HUGE // So it can't fit in a backpack.
@@ -203,7 +217,7 @@
 	pin = /obj/item/firing_pin/explorer
 	cell_type = /obj/item/cell/device/weapon/recharge/sniper
 	accuracy = 45 //Modifications include slightly better hip-firing furniture.
-	battery_lock = 1 //With the change that the normal DMR can now change the weapon cell, we need to add this here so people can't take out the self-recharging special cell.
+	legacy_battery_lock = 1 //With the change that the normal DMR can now change the weapon cell, we need to add this here so people can't take out the self-recharging special cell.
 	scoped_accuracy = 100
 	charge_cost = 600
 
@@ -217,7 +231,6 @@
 	projectile_type = /obj/projectile/beam/sniper
 	slot_flags = SLOT_BACK
 	charge_cost = 1300
-	fire_delay = 20
 	damage_force = 8
 	heavy = TRUE
 	w_class = WEIGHT_CLASS_BULKY
@@ -254,7 +267,7 @@
 	materials_base = list(MAT_STEEL = 2000)
 	projectile_type = /obj/projectile/beam/lasertag/blue
 	cell_type = /obj/item/cell/device/weapon/recharge
-	battery_lock = 1
+	legacy_battery_lock = 1
 
 /obj/item/gun/energy/lasertag/blue
 	icon_state = "bluetag"
@@ -315,19 +328,20 @@
 	cell_type = /obj/item/cell/device/weapon
 	unstable = 1
 
-/obj/item/gun/energy/zip/consume_next_projectile(mob/user as mob)
+// todo: this is dumb
+/obj/item/gun/energy/zip/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	. = ..()
 	if(.)
 		if(unstable)
 			if(prob(10))
-				to_chat(user, "<span class='danger'>The cell overcooks and ruptures!</span>")
+				// todo: actor support if we keep this shit
+				visible_message("<span class='danger'>The cell overcooks and ruptures!</span>")
 				spawn(rand(2 SECONDS,5 SECONDS))
-					if(src)
+					if(!QDELETED(src))
 						visible_message("<span class='critical'>\The [src] detonates!</span>")
 						explosion(get_turf(src), -1, 0, 2, 3)
 						qdel(chambered)
 						qdel(src)
-				return ..()
 
 //NT SpecOps Laser Rifle
 /obj/item/gun/energy/combat
@@ -335,7 +349,9 @@
 	desc = "A sturdy laser rifle fine tuned for Nanotrasen special operations. More reliable than mass production models, this weapon was designed to kill, and nothing else."
 	icon_state = "clrifle"
 	item_state = "clrifle"
-	fire_delay = 6
+	firemodes = /datum/firemode/energy{
+		cycle_cooldown = 0.6 SECONDS;
+	}
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10

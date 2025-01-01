@@ -26,46 +26,46 @@ Key procs
 */
 
 /datum/movespeed_modifier
-	/// Whether or not this is a variable modifier. Variable modifiers can NOT be ever auto-cached. ONLY CHECKED VIA INITIAL(), EFFECTIVELY READ ONLY (and for very good reason)
-	var/variable = FALSE
-
 	/// Unique ID. You can never have different modifications with the same ID. By default, this SHOULD NOT be set. Only set it for cases where you're dynamically making modifiers/need to have two types overwrite each other. If unset, uses path (converted to text) as ID.
 	var/id
+	/// Whether or not this is a variable modifier. Variable modifiers can NOT be ever auto-cached. ONLY CHECKED VIA INITIAL(), EFFECTIVELY READ ONLY (and for very good reason)
+	var/variable = FALSE
 
 	/// Determines order. Lower priorities are applied first.
 	var/priority = MOVESPEED_PRIORITY_DEFAULT
 	/// flags
 	var/movespeed_modifier_flags = NONE
 
+	//* Filtering - Movetypes *//
+	/// Movetypes this applies to
+	var/required_movetypes = ALL
+	/// Movetypes this never applies to
+	var/blacklisted_movetypes = NONE
+
+	//* Caclulations *//
 	/// calculation type
 	var/calculation_type = MOVESPEED_CALCULATION_HYPERBOLIC
 
-	//* HYPERBOLIC, HYPERBOLIC_BOOST calculations
-	/// Multiplicative slowdown
-	var/multiplicative_slowdown = 0
+	//* Calculations - HYPERBOLIC, HYPERBOLIC_BOOST *//
+	/// For: HYPERBOLIC, HYPERBOLIC_BOOST
+	/// * This is just a raw modifier to current movement delay
+	/// * This has a hyperbolic effect; reducing movement delay at already low values speeds someone up a lot more
+	///   than at high values.
+	var/hyperbolic_slowdown = 0
 
-	//* MULTIPLY calculations
+	//* Calculations - MULTIPLY *//
 	/// multiply resulting speed by
 	var/multiply_speed = 1
 
-	//* HYPERBOLIC_BOOST, MULTIPLY calculations
+	//* Calculations - HYPERBOLIC_BOOST, MULTIPLY *//
 	/// Absolute max tiles we can boost to
 	var/absolute_max_tiles_per_second = INFINITY
 	/// Max tiles per second we can boost
 	var/max_tiles_per_second_boost = INFINITY
 
-	/// Movetypes this applies to
-	var/movement_type = ALL
-
-	/// Movetypes this never applies to
-	var/blacklisted_movetypes = NONE
-
-	/// Other modification datums this conflicts with. Enum string.
-	/// If there is, it prioritizes the highest slow *or* the highest speedup, with abs().
-	var/conflicts_with
 
 /datum/movespeed_modifier/New()
-	. = ..()
+	..()
 	if(!id)
 		id = "[type]" //We turn the path into a string.
 
@@ -81,10 +81,10 @@ Key procs
 	switch(calculation_type)
 	/*
 		if(MOVESPEED_CALCULATION_HYPERBOLIC)
-			return max(world.tick_lag, existing + multiplicative_slowdown)
+			return max(world.tick_lag, existing + hyperbolic_slowdown)
 		if(MOVESPEED_CALCULATION_HYPERBOLIC_BOOST)
 			var/current_tiles = 10 / max(existing, world.tick_lag)
-			var/max_buff_to = max(existing + multiplicative_slowdown, 10 / absolute_max_tiles_per_second, 10 / (current_tiles + max_tiles_per_second_boost))
+			var/max_buff_to = max(existing + hyperbolic_slowdown, 10 / absolute_max_tiles_per_second, 10 / (current_tiles + max_tiles_per_second_boost))
 			return clamp(max_buff_to, world.tick_lag, existing)
 		if(MOVESPEED_CALCULATION_MULTIPLY)
 			var/current_tiles = 10 / max(world.tick_lag, existing)
@@ -92,12 +92,12 @@ Key procs
 	*/
 		if(MOVESPEED_CALCULATION_HYPERBOLIC)
 			// going below 0 would fuck multipliers up pretty badly
-			// return max(0, existing + multiplicative_slowdown)
+			// return max(0, existing + hyperbolic_slowdown)
 			//! WE DO IT ANYWAYS - LEGACY
-			return existing + multiplicative_slowdown
+			return existing + hyperbolic_slowdown
 		if(MOVESPEED_CALCULATION_HYPERBOLIC_BOOST)
 			var/current_tiles = 10 / max(existing, world.tick_lag)
-			var/max_buff_to = max(existing + multiplicative_slowdown, 10 / absolute_max_tiles_per_second, 10 / (current_tiles + max_tiles_per_second_boost))
+			var/max_buff_to = max(existing + hyperbolic_slowdown, 10 / absolute_max_tiles_per_second, 10 / (current_tiles + max_tiles_per_second_boost))
 			return min(existing, max_buff_to)
 		if(MOVESPEED_CALCULATION_MULTIPLY)
 			if(existing > 0)
@@ -117,9 +117,9 @@ Key procs
  */
 /datum/movespeed_modifier/proc/parse(list/params)
 	. = FALSE
-	if(!isnull(params[MOVESPEED_PARAM_DELAY_MOD]))
+	if(!isnull(params[MOVESPEED_PARAM_HYPERBOLIC_SLOWDOWN]))
 		. = TRUE
-		multiplicative_slowdown = params[MOVESPEED_PARAM_DELAY_MOD]
+		hyperbolic_slowdown = params[MOVESPEED_PARAM_HYPERBOLIC_SLOWDOWN]
 	if(!isnull(params[MOVESPEED_PARAM_MULTIPLY_SPEED]))
 		. = TRUE
 		multiply_speed = params[MOVESPEED_PARAM_MULTIPLY_SPEED]
@@ -221,14 +221,14 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 
 /// Handles the special case of editing the movement var
 /mob/vv_edit_var(var_name, var_value)
-	var/slowdown_edit = (var_name == NAMEOF(src, cached_multiplicative_slowdown))
+	var/slowdown_edit = (var_name == NAMEOF(src, cached_hyperbolic_slowdown))
 	var/diff
-	if(slowdown_edit && isnum(cached_multiplicative_slowdown) && isnum(var_value))
+	if(slowdown_edit && isnum(cached_hyperbolic_slowdown) && isnum(var_value))
 		remove_movespeed_modifier(/datum/movespeed_modifier/admin_varedit)
-		diff = var_value - cached_multiplicative_slowdown
+		diff = var_value - cached_hyperbolic_slowdown
 	. = ..()
 	if(. && slowdown_edit && isnum(diff))
-		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/admin_varedit, params = list(MOVESPEED_PARAM_DELAY_MOD = diff))
+		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/admin_varedit, params = list(MOVESPEED_PARAM_HYPERBOLIC_SLOWDOWN = diff))
 
 ///Is there a movespeed modifier for this mob
 /mob/proc/has_movespeed_modifier(datum/movespeed_modifier/datum_type_id)
@@ -245,8 +245,8 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 /mob/proc/update_config_movespeed()
 // todo: this
 /*
-	add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/mob_config_speedmod, multiplicative_slowdown = get_config_multiplicative_speed())
-	add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/mob_config_speedmod_floating, multiplicative_slowdown = get_config_multiplicative_speed(TRUE))
+	add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/mob_config_speedmod, hyperbolic_slowdown = get_config_multiplicative_speed())
+	add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/mob_config_speedmod_floating, hyperbolic_slowdown = get_config_multiplicative_speed(TRUE))
 */
 
 /// Get the global config movespeed of a mob by type
@@ -264,12 +264,11 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 /// Go through the list of movespeed modifiers and calculate a final movespeed. ANY ADD/REMOVE DONE IN UPDATE_MOVESPEED MUST HAVE THE UPDATE ARGUMENT SET AS FALSE!
 /mob/proc/update_movespeed()
 	. = 0
-	var/list/conflict_tracker = list()
 	//! TODO: LEGACY
 	cached_movespeed_multiply = 1
 	//! END
 	for(var/datum/movespeed_modifier/M in get_movespeed_modifiers())
-		if(!(M.movement_type & movement_type)) // We don't affect any of these move types, skip
+		if(!(M.required_movetypes & movement_type)) // We don't affect any of these move types, skip
 			continue
 		if(M.blacklisted_movetypes & movement_type) // There's a movetype here that disables this modifier, skip
 			continue
@@ -277,20 +276,12 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 		if((M.movespeed_modifier_flags & MOVESPEED_MODIFIER_REQUIRES_GRAVITY) && !in_gravity)
 			continue
 		//! END
-		var/conflict = M.conflicts_with
-		var/amt = M.multiplicative_slowdown
-		if(conflict)
-			// Conflicting modifiers prioritize the larger slowdown or the larger speedup
-			// We purposefuly don't handle mixing speedups and slowdowns on the same id
-			if(abs(conflict_tracker[conflict]) < abs(amt))
-				conflict_tracker[conflict] = amt
-			else
-				continue
+		var/amt = M.hyperbolic_slowdown
 		. = M.apply_multiplicative(., src)
-	cached_multiplicative_slowdown = min(., 10 / MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND)
+	cached_hyperbolic_slowdown = min(., 10 / MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND)
 	if(!client)
 		return
-	var/diff = (last_self_move - move_delay) - cached_multiplicative_slowdown
+	var/diff = (last_self_move - move_delay) - cached_hyperbolic_slowdown
 	if(diff > 0)
 		// your delay decreases, "give" the delay back to the client
 		if(move_delay > world.time + 1.5)
@@ -325,11 +316,11 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 		. -= id
 
 /// Calculate the total slowdown of all movespeed modifiers
-/mob/proc/total_multiplicative_slowdown()
+/mob/proc/total_hyperbolic_slowdown()
 	. = 0
 	for(var/id in get_movespeed_modifiers())
 		var/datum/movespeed_modifier/M = movespeed_modification[id]
-		. += M.multiplicative_slowdown
+		. += M.hyperbolic_slowdown
 
 /**
   * Gets the movespeed modifier datum of a modifier on a mob. Returns null if not found.
@@ -341,5 +332,5 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 /// Checks if a move speed modifier is valid and not missing any data
 /proc/movespeed_data_null_check(datum/movespeed_modifier/M)		//Determines if a data list is not meaningful and should be discarded.
 	. = TRUE
-	if(M.multiplicative_slowdown)
+	if(M.hyperbolic_slowdown)
 		. = FALSE
