@@ -354,7 +354,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * * target - turf
  * * remaining - how much is being applied / is remaining / is in the container right now
  * * allocated - how much is supposed to be hitting the obj (useful for sprays)
- *               this will never be over remaining.
+ *               this might be over remaining, due to how call order works. always check remaining.
  * * data - our reagent data, if any
  * * spread_between - (optional) unlike turfs, there's potentially a lot of objects.
  *                    this hints at how many objs are being hit. this is optional.
@@ -371,7 +371,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * * target - turf
  * * remaining - how much is being applied / is remaining / is in the container right now
  * * allocated - how much is supposed to be hitting the turf (useful for sprays)
- *               this will never be over remaining.
+ *               this might be over remaining, due to how call order works. always check remaining.
  * * data - our reagent data, if any
  *
  * @return amount used, if any
@@ -388,7 +388,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * * target - the mob
  * * remaining - how much is left in the thing being splashed.
  * * allocated - how much is supposed to be hitting the target limb (useful for sprays).
- *               this will never be over remaining.
+ *               this might be over remaining, due to how call order works. always check remaining.
  *               it might be useful to subtract from this in overrides before invoking ..() sometimes.
  * * data - our reagent data, if any
  * * zone - (optional) the body zone targeted
@@ -405,7 +405,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		. += on_touch_simple(target, remaining, allocated, data, zone)
 	else if(istype(src, /mob/living/silicon))
 		. += on_touch_silicon(target, remaining, allocated, data, zone)
-	return 0
 
 /**
  * Called by on_touch_mob().
@@ -416,7 +415,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * * target - the mob
  * * remaining - how much is left in the thing being splashed.
  * * allocated - how much is supposed to be hitting the target limb (useful for sprays).
- *               this will never be over remaining.
+ *               this might be over remaining, due to how call order works. always check remaining.
  * * data - our reagent data, if any
  * * zone - (optional) target body zone
  * * limb - (optional) the external organ splashed onto.
@@ -435,7 +434,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * * target - the mob
  * * remaining - how much is left in the thing being splashed.
  * * allocated - how much is supposed to be hitting the target limb (useful for sprays).
- *               this will never be over remaining.
+ *               this might be over remaining, due to how call order works. always check remaining.
  * * data - our reagent data, if any
  * * zone - (optional) target body zone
  *
@@ -453,7 +452,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * * target - the mob
  * * remaining - how much is left in the thing being splashed.
  * * allocated - how much is supposed to be hitting the target limb (useful for sprays).
- *               this will never be over remaining.
+ *               this might be over remaining, due to how call order works. always check remaining.
  * * data - our reagent data, if any
  * * zone - (optional) target body zone
  *

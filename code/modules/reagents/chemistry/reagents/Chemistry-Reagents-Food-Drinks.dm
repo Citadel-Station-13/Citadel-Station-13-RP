@@ -215,8 +215,10 @@
 
 // todo: reagent effects
 /datum/reagent/nutriment/peanutoil/apply_to_turf(turf/target, remaining, allocated, data)
-	if(allocate >= 5)
-		target.wet_floor()
+	if(allocated >= 5)
+		if(istype(target, /turf/simulated))
+			var/turf/simulated/sim_target = target
+			sim_target.wet_floor()
 		return 5
 	return 0
 
@@ -3484,7 +3486,7 @@
 		M.apply_effect(4, AGONY, 0)
 		if(prob(5))
 			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
-	holder.remove_reagent("frostoil", 5)
+	metabolism.legacy_current_holder.remove_reagent(/datum/reagent/frostoil, 5)
 
 /datum/reagent/ethanol/sakebomb
 	name = "Sake Bomb"
@@ -4519,7 +4521,6 @@
 	var/dfactor = heatdamage(M, metabolism.legacy_current_holder)
 	if (dfactor)
 		M.take_random_targeted_damage(brute = 0, brute = removed * 1.5 * dfactor)
-		temperature -= (6 * removed) / (1 + volume*0.1)//Cools off as it burns you
 		if (lastburnmessage+100 < world.time	)
 			to_chat(M, SPAN_DANGER("Searing hot oil burns you, wash it off quick!"))
 			lastburnmessage = world.time

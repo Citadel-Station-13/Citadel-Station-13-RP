@@ -1266,26 +1266,31 @@
 		M.adjustFireLoss(removed)
 		M.adjustToxLoss(2 * removed)
 
-/datum/reagent/sterilizine/touch_obj(obj/O)
-	O.germ_level -= min(volume*20, O.germ_level)
-	O.was_bloodied = null
+/datum/reagent/sterilizine/on_touch_obj(obj/target, remaining, allocated, data, spread_between)
+	. = ..()
+	target.germ_level -= min(allocated*20, O.germ_level)
+	target.was_bloodied = null
 
-/datum/reagent/sterilizine/touch_turf(turf/T)
-	T.germ_level -= min(volume*20, T.germ_level)
+/datum/reagent/sterilizine/on_touch_turf(turf/target, remaining, allocated, data)
+	. = ..()
+	if(!istype(target, /turf/simulated))
+		return
+	var/turf/simulated/T = target
+	T.germ_level -= min(allocated*20, T.germ_level)
 	for(var/obj/item/I in T.contents)
 		I.was_bloodied = null
 	for(var/obj/effect/debris/cleanable/blood/B in T)
 		qdel(B)
 
-/datum/reagent/sterilizine/touch_mob(mob/living/L, amount)
-	if(istype(L))
-		if(istype(L, /mob/living/simple_mob/slime))
-			var/mob/living/simple_mob/slime/S = L
-			var/amt = rand(15, 25) * amount * (1-S.water_resist)
-			if(amt>0)
-				S.adjustToxLoss(rand(15, 25) * amount)	// Does more damage than water.
-				S.visible_message("<span class='warning'>[S]'s flesh sizzles where the fluid touches it!</span>", "<span class='danger'>Your flesh burns in the fluid!</span>")
-		remove_self(amount)
+/datum/reagent/sterilizine/on_touch_simple(mob/living/simple_mob/target, remaining, allocated, data, zone)
+	. = ..()
+	if(istype(target, /mob/living/simple_mob/slime))
+		var/mob/living/simple_mob/slime/S = target
+		var/amt = rand(15, 25) * amount * (1-S.water_resist)
+		if(amt>0)
+			S.adjustToxLoss(rand(15, 25) * amount)	// Does more damage than water.
+			S.visible_message("<span class='warning'>[S]'s flesh sizzles where the fluid touches it!</span>", "<span class='danger'>Your flesh burns in the fluid!</span>")
+		. = max(., allocated)
 
 /datum/reagent/leporazine
 	name = "Leporazine"

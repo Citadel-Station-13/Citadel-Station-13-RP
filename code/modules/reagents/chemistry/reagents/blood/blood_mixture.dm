@@ -22,6 +22,9 @@
 	/// * This is not copied during a clone, as it's purely return-value context.
 	var/tmp/ctx_return_amount = 0
 
+/datum/blood_mixture/New(list/fragments)
+	#warn impl; autonormalize ratios / amounts
+
 /datum/blood_mixture/clone(include_contents)
 	var/datum/blood_mixture/copy = new /datum/blood_mixture
 	if(!isnull(legacy_trace_chem))
@@ -67,3 +70,22 @@
 	return list(
 		(highest_to_use.legacy_blood_dna) = (highest_to_use.legacy_blood_type),
 	)
+
+//* Subtypes *//
+
+/datum/blood_mixture/preset/single
+	var/tmp/prefill_volume
+
+/datum/blood_mixture/preset/single/New(list/fragments, volume = src.prefill_volume)
+	..()
+	#warn do stuff; if no fragments exist, we are whole ratio, otherwise we are prefill volume of ratio
+
+/datum/blood_mixture/preset/single/proc/create_preset_fragment()
+
+/datum/blood_mixture/preset/single/synthblood
+
+/datum/blood_mixture/preset/single/synthblood/create_preset_fragment()
+	var/datum/blood_fragment/creating = new
+	creating.color = "#999966"
+	creating.legacy_blood_type = "O-"
+	return creating

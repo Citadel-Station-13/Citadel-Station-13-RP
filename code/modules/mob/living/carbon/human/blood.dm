@@ -225,20 +225,22 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 	// too bad!
 
 	mixture = mixture.clone()
-	var/total_ratio_removed = 0
+	var/total_ratio_incompatible = 0
 	for(var/datum/blood_fragment/fragment as anything in mixture.fragments)
 		if(blood_holder.host_blood.compatible_with_self(fragment))
 			continue
 		// rejected
 		var/fragment_ratio = mixture.fragments[fragment]
 		bloodstr.add_reagent(/datum/reagent/toxin, amount * 0.5 * fragment_ratio)
-		total_ratio_removed += fragment_ratio
+		total_ratio_incompatible += fragment_ratio
 		mixture.fragments -= fragment
-	if(total_ratio_removed)
-		amount *= (1 - total_ratio_removed)
-		var/expand_ratio = 1 / total_ratio_removed
+	if(total_ratio_incompatible)
+		var/total_amount_incompatible = amount * total_ratio_incompatible
+		amount *= (1 - total_ratio_incompatible)
+		var/expand_ratio = 1 / total_ratio_incompatible
 		for(var/datum/blood_fragment/expanding_to_fill as anything in mixture.fragments)
 			mixture.fragments[expanding_to_fill] *= expand_ratio
+		bloodstr.add_reagent(/datum/reagent/toxin, total_amount_incompatible)
 
 	return ..()
 

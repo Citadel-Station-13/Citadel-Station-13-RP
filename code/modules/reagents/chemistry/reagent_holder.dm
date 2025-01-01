@@ -29,6 +29,8 @@
 	/// * Lazy list.
 	var/list/reagent_datas
 	/// Our temperature
+	//  todo: this is currently half-implemented, we should finish it
+	//  todo: when we do, make sure carbon-types will temperature-stabilize their reagents holders.
 	var/temperature = T20C
 	/// Our current volume
 	///

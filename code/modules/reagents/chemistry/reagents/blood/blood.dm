@@ -29,28 +29,67 @@
 	return data
 
 /datum/reagent/blood/mix_data(datum/blood_mixture/old_data, old_volume, datum/blood_mixture/new_data, new_volume, datum/reagent_holder/holder)
-	. = ..()
+	if(!old_data)
+		old_data = new
 
-	#warn impl ; hard limit of 10 blood instances. also, dedupe.
+	var/list/new_fragments = list()
+	// put everything in sorted in descending volumes
+	// O(n^2) my behated...
+	for(var/datum/blood_fragment/fragment as anything in old_data.fragments)
+		mixture_mixing_injection(new_fragments, fragment, old_data.fragments[fragment] * old_volume)
+	for(var/datum/blood_fragment/fragment as anything in new_data.fragments)
+		mixture_mixing_injection(new_fragments, fragment, new_data.fragments[fragment] * new_volume)
+	// prune
+	if(length(new_fragments) > 10)
+		new_fragments.len = 10
+	// perform ratio fixup
+	var/total_volume = 0
+	for(var/datum/blood_fragment/fragment as anything in new_fragments)
+		var/their_ratio = new_fragments[fragment]
+		total_volume += their_ratio
+	if(total_volume)
+		var/ratio_multiplier = 1 / total_volume
+		for(var/datum/blood_fragment/fragment as anything in new_fragments)
+			new_fragments[fragment] *= ratio_multiplier
+
+	old_data.fragments = new_fragments
+
+	old_data.legacy_antibodies |= new_data.legacy_antibodies
+	old_data.legacy_is_synthetic ||= new_data.legacy_is_synthetic
+	old_data.legacy_virus2 |= new_data.legacy_virus2
+	old_data.legacy_trace_chem ||= new_data.legacy_trace_chem
+
+	return old_data
+
+/datum/reagent/blood/proc/mixture_mixing_injection(list/new_fragments, datum/blood_fragment/fragment, volume)
+	var/first_index_lesser
+	for(var/i in 1 to length(new_fragments))
+		var/datum/blood_fragment/checking = new_fragments[i]
+		if(checking.equivalent(fragment))
+			new_fragments[checking] += volume
+			// perform ordering fixup
+			var/fixup_index = i
+			while(fixup_index > 1 && new_fragments[fixup_index - 1] < new_fragments[fixup_index])
+				new_fragments.Swap(fixup_index - 1, fixup_index)
+			return
+		if(!first_index_lesser && new_fragments[checking] < volume)
+			first_index_lesser = i
+	if(!first_index_lesser)
+		first_index_lesser = length(new_fragments) + 1
+	new_fragments.Insert(first_index_lesser, fragment)
+	new_fragments[fragment] = volume
 
 /datum/reagent/blood/on_touch_turf(turf/target, remaining, allocated, data)
 	. = ..()
-
-/datum/reagent/blood/
-
-/datum/reagent/blood/touch_turf(turf/simulated/T)
-	if(!istype(T) || volume < 3)
+	if(allocated < 3)
 		return
-	if(!data["donor"] || istype(data["donor"], /mob/living/carbon/human))
-		blood_splatter(T, src, 1)
-	else if(istype(data["donor"], /mob/living/carbon/alien))
-		var/obj/effect/debris/cleanable/blood/B = blood_splatter(T, src, 1)
-		if(B)
-			B.blood_DNA["UNKNOWN DNA STRUCTURE"] = "X*"
+	. = max(., min(allocated, 3))
+	blood_splatter_legacy(target, data, TRUE)
 
 /datum/reagent/blood/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
+	var/datum/blood_mixture/data = metabolism.legacy_data
 
-	var/effective_dose = dose
+	var/effective_dose = metabolism.total_processed_dose
 	if(issmall(M))
 		effective_dose *= 2
 
@@ -67,8 +106,8 @@
 		if(IS_SLIME)
 			nutritionvalue = 20
 			if(data["species"] == M.species.name) //just 'inject' the blood if it happens to be promethean "blood".
-				M.inject_blood(src, volume * volume_mod)
-				remove_self(volume)
+				M.regen_blood(metabolism.legacy_volume_remaining * volume_mod)
+				metabolism.legacy_current_holder.remove_reagent(id, metabolism.legacy_current_holder)
 				return
 		if(IS_TESHARI) //birb.
 			nutritionvalue = 30
@@ -100,6 +139,7 @@
 					infect_virus2(M, V.getcopy())
 
 /datum/reagent/blood/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
+	var/datum/blood_mixture/data = metabolism.legacy_data
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.isSynthetic())
@@ -118,6 +158,7 @@
 		M.antibodies |= data["antibodies"]
 
 /datum/reagent/blood/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
+	var/datum/blood_mixture/data = metabolism.legacy_data
 	if(alien == IS_SLIME) //They don't have blood, so it seems weird that they would instantly 'process' the chemical like another species does.
 		legacy_affect_ingest(M, alien, removed, metabolism)
 		return
@@ -125,43 +166,5 @@
 	if(M.isSynthetic())
 		return
 
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-
-		var/datum/reagent/blood/recipient = H.get_blood(H.vessel)
-
-		if(recipient && blood_incompatible(data["blood_type"], recipient.data["blood_type"], data["species"], recipient.data["species"]))
-			H.inject_blood(src, removed * volume_mod)
-
-			if(!H.isSynthetic() && data["species"] == "synthetic") // Remember not to inject oil into your veins, it's bad for you.
-				H.reagents.add_reagent("toxin", removed * 1.5)
-
-			return
-
-	M.inject_blood(src, volume * volume_mod)
-	remove_self(volume)
-
-// todo: this should be the same as /datum/reagent/blood!
-/datum/reagent/blood/synthblood
-	name = "Synthetic blood"
-	id = "synthblood"
-	color = "#999966"
-	volume_mod = 2
-
-/datum/reagent/blood/synthblood/initialize_data(newdata)
-	..()
-	if(data && !data["blood_type"])
-		data["blood_type"] = "O-"
-
-// todo: this should be the same as /datum/reagent/blood!
-/datum/reagent/blood/bludbloodlight
-	name = "Synthetic blood"
-	id = "bludbloodlight"
-	color = "#999966"
-	volume_mod = 2
-
-// todo: this should be the same as /datum/reagent/blood!
-/datum/reagent/blood/bludbloodlight/initialize_data(newdata)
-	..()
-	if(data && !data["blood_type"])
-		data["blood_type"] = "AB+"
+	M.inject_blood_legacy(metabolism.legacy_data, volume_mod * metabolism.legacy_volume_remaining)
+	metabolism.legacy_current_holder.remove_reagent(id, metabolism.legacy_volume_remaining)
