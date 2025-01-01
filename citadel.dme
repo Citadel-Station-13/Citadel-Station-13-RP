@@ -5391,6 +5391,7 @@
 #include "interface\menus\main.dm"
 #include "maps\endeavour\endeavour-areas.dm"
 #include "maps\endeavour\endeavour-overmap.dm"
+#include "maps\endeavour\endeavour-papers.dm"
 #include "maps\endeavour\endeavour-sectors.dm"
 #include "maps\endeavour\endeavour-shuttle-landmarks.dm"
 #include "maps\endeavour\endeavour-turbolifts.dm"
