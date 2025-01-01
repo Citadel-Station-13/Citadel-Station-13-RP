@@ -3337,6 +3337,7 @@
 #include "code\modules\lore_hardcoded\origin\hegemony\naramadi.dm"
 #include "code\modules\lore_hardcoded\origin\hegemony\unathi.dm"
 #include "code\modules\lore_hardcoded\origin\oricon\_oricon.dm"
+#include "code\modules\lore_hardcoded\origin\oricon\oricon_states.dm"
 #include "code\modules\lore_hardcoded\origin\oricon\sol.dm"
 #include "code\modules\lore_hardcoded\religion\hegemony\_hegemony.dm"
 #include "code\modules\lore_hardcoded\religion\hegemony\unathi.dm"
