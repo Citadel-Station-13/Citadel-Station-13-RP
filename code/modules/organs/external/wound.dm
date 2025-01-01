@@ -287,6 +287,8 @@
 // checks if wound is considered open for external infections
 // untreated cuts (and bleeding bruises) and burns are possibly infectable, chance higher if wound is bigger
 /datum/wound/proc/infection_check()
+	if(behaviour_flags & BODYPART_NO_INFECTION)
+		return FALSE
 	if (disinfected)
 		if(germ_level > INFECTION_LEVEL_ONE)
 			germ_level = 0	//reset this, just in case
