@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import { Button, ColorBox, LabeledList, ProgressBar, Section, Collapsible, Box, Icon, Stack, Table, Dimmer, NumberInput, Flex, AnimatedNumber, Dropdown } from '../components';
+import { AnimatedNumber, Box, Button, Collapsible, ColorBox, Dimmer, Dropdown, Flex, Icon, LabeledList, NumberInput, ProgressBar, Section, Stack, Table } from '../components';
 import { Window } from '../layouts';
 
 const ConfigureNumberEntry = (props, context) => {

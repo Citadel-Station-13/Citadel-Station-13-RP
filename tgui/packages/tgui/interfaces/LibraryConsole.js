@@ -1,8 +1,9 @@
 import { map, sortBy } from 'common/collections';
 import { flow } from 'common/fp';
 import { classes } from 'common/react';
+
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Dropdown, Input, Modal, NoticeBox, NumberInput, LabeledList, Section, Stack, Flex, Table } from '../components';
+import { Box, Button, Dropdown, Flex, Input, LabeledList, Modal, NoticeBox, NumberInput, Section, Stack, Table } from '../components';
 import { Window } from '../layouts';
 import { sanitizeText } from "../sanitize";
 

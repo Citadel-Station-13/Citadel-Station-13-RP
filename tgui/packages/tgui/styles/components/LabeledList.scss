@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-@use '../base.scss';
+@use "../base";
 
 .LabeledList {
   display: table;
@@ -34,22 +34,16 @@
   text-align: left;
 }
 
-.LabeledList__label {
+.LabeledList__label--nowrap {
+  width: 1%;
   white-space: nowrap;
   min-width: 5em;
 }
 
 .LabeledList__buttons {
+  width: 0.1%;
   white-space: nowrap;
   text-align: right;
   padding-top: base.em(1px);
   padding-bottom: 0;
-}
-
-.LabeledList__label:first-child {
-  width: 1%;
-}
-
-.LabeledList__buttons:first-child {
-  width: 0.1%;
 }

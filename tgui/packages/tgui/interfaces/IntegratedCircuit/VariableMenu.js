@@ -1,14 +1,15 @@
+import { shallowDiffers } from 'common/react';
+import { Component } from 'inferno';
+
 import {
   Box,
-  Stack,
-  Section,
   Button,
-  Input,
   Dropdown,
   Icon,
+  Input,
+  Section,
+  Stack,
 } from '../../components';
-import { Component } from 'inferno';
-import { shallowDiffers } from 'common/react';
 
 export class VariableMenu extends Component {
   constructor() {

@@ -21,6 +21,7 @@
  */
 
 import { Component } from "inferno";
+
 import { ModuleProps, useBackend } from "../backend";
 import { directlyRouteComponent } from "../routes";
 

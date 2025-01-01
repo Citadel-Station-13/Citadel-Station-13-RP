@@ -1,6 +1,7 @@
 import { round } from 'common/math';
 import { BooleanLike } from 'common/react';
 import { Fragment } from 'inferno';
+
 import { useBackend, useLocalState } from '../../backend';
 import { Box, Button, LabeledList, NumberInput, Section, Stack } from '../../components';
 import { Window } from '../../layouts';
@@ -492,7 +493,7 @@ const AirAlarmTLVEntry = (props: AirAlarmTLVEntryProps) => {
             width="60px"
             minValue={0}
             maxValue={1000000}
-            onChange={(e, v) => props.setEntry(v, i)} />
+            onChange={(v) => props.setEntry(v, i)} step={1} />
         </td>
       ))}
     </tr>

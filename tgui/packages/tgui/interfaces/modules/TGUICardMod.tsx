@@ -5,7 +5,7 @@
 
 import { BooleanLike } from "../../../common/react";
 import { capitalize } from "../../../common/string";
-import { ModuleProps, ModuleData, useModule, useLocalState } from "../../backend";
+import { ModuleData, ModuleProps, useLocalState, useModule } from "../../backend";
 import { Button, Flex, Input, LabeledList, Section, Tabs } from "../../components";
 import { SectionProps } from "../../components/Section";
 import { AccessRegions, AccessTypes } from "../../constants/access";

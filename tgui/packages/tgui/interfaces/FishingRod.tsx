@@ -1,6 +1,6 @@
 import { useBackend } from '../backend';
+import { Box, Button, Flex, Section, Stack } from '../components';
 import { Window } from '../layouts';
-import { Box, Stack, Button, Section, Flex } from '../components';
 
 type Quality = {
   name: string;

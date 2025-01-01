@@ -1,4 +1,5 @@
 import { Fragment } from 'inferno';
+
 import { useBackend } from '../backend';
 import { Box, Button, Collapsible, Flex, LabeledList, NumberInput, Section, TextArea } from '../components';
 import { formatMoney } from '../format';

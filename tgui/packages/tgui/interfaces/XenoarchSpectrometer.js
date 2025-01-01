@@ -1,8 +1,9 @@
-import { Fragment } from 'inferno';
-import { useBackend } from "../backend";
-import { Box, Button, LabeledList, ProgressBar, Section, NoticeBox, Slider } from "../components";
-import { Window } from "../layouts";
 import { decodeHtmlEntities } from "common/string";
+import { Fragment } from 'inferno';
+
+import { useBackend } from "../backend";
+import { Box, Button, LabeledList, NoticeBox, ProgressBar, Section, Slider } from "../components";
+import { Window } from "../layouts";
 
 export const XenoarchSpectrometer = (props, context) => {
   const { act, data } = useBackend(context);

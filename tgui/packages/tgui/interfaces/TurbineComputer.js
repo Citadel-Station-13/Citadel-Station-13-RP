@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, LabeledList, Section, Box, Modal, ProgressBar, NumberInput } from '../components';
+import { Box, Button, LabeledList, Modal, NumberInput, ProgressBar, Section } from '../components';
 import { Window } from '../layouts';
 
 export const TurbineComputer = (props, context) => {

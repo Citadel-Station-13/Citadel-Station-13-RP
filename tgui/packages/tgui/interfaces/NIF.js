@@ -1,6 +1,7 @@
 import { Fragment } from 'inferno';
+
 import { useBackend, useLocalState } from "../backend";
-import { Box, Button, LabeledList, ProgressBar, Modal, Section, Dropdown, AnimatedNumber, NoticeBox, Table } from "../components";
+import { AnimatedNumber, Box, Button, Dropdown, LabeledList, Modal, NoticeBox, ProgressBar, Section, Table } from "../components";
 import { Window } from "../layouts";
 
 const NIF_WORKING = 0;

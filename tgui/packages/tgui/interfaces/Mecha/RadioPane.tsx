@@ -1,7 +1,8 @@
-import { useBackend } from '../../backend';
-import { Button, NumberInput, LabeledList } from '../../components';
-import { OperatorData } from './data';
 import { toFixed } from 'common/math';
+
+import { useBackend } from '../../backend';
+import { Button, LabeledList, NumberInput } from '../../components';
+import { OperatorData } from './data';
 
 export const RadioPane = (props, context) => {
   const { act, data } = useBackend<OperatorData>(context);
@@ -28,7 +29,7 @@ export const RadioPane = (props, context) => {
       </LabeledList.Item>
       <LabeledList.Item label="Frequency">
         <NumberInput
-          animate
+          animated
           unit="kHz"
           step={0.2}
           stepPixelSize={6}
@@ -37,7 +38,7 @@ export const RadioPane = (props, context) => {
           value={frequency/10}
           format={value => toFixed(value, 1)}
           width="80px"
-          onDrag={(e, value) => act('set_frequency', {
+          onDrag={(value) => act('set_frequency', {
             new_frequency: value,
           })} />
       </LabeledList.Item>

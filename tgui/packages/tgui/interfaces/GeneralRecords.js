@@ -1,4 +1,7 @@
+import { filter } from 'common/collections';
+import { createSearch } from 'common/string';
 import { Fragment } from 'inferno';
+
 import { useBackend, useLocalState } from '../backend';
 import { Box, Button, Icon, Input, LabeledList, Section, Tabs } from "../components";
 import { ComplexModal, modalOpen } from "../interfaces/common/ComplexModal";
@@ -6,9 +9,6 @@ import { Window } from "../layouts";
 import { LoginInfo } from './common/LoginInfo';
 import { LoginScreen } from './common/LoginScreen';
 import { TemporaryNotice } from './common/TemporaryNotice';
-import { createSearch } from 'common/string';
-import { filter } from 'common/collections';
-import { flow } from 'common/fp';
 
 const doEdit = (context, field) => {
   modalOpen(context, 'edit', {
@@ -69,16 +69,19 @@ export const GeneralRecords = (_properties, context) => {
  * Filters records, applies search terms and sorts the alphabetically.
  */
 const selectRecords = (records, searchText = '') => {
-  const nameSearch = createSearch(searchText, record => record.name);
+  if (!records.length) {
+    return records;
+  }
+
+  { const nameSearch = createSearch(searchText, record => record.name); }
   const idSearch = createSearch(searchText, record => record.id);
   const dnaSearch = createSearch(searchText, record => record.b_dna);
-  let fl = flow([
-    // Optional search term
-    searchText && filter(record => {
-      return (nameSearch(record) || idSearch(record) || dnaSearch(record));
-    }),
-  ])(records);
-  return fl;
+
+  let rec = records;
+  if (searchText) {
+    rec = filter(rec, nameSearch) || filter(rec, idSearch) || filter(rec, dnaSearch);
+  }
+  return rec;
 };
 
 const GeneralRecordsList = (_properties, context) => {
@@ -89,7 +92,7 @@ const GeneralRecordsList = (_properties, context) => {
     setSearchText,
   ] = useLocalState(context, 'searchText', '');
 
-  const records = selectRecords(data.records, searchText);
+  const records = selectRecords(data.records || [], searchText);
   return (
     <Fragment>
       <Box mb="0.2rem">

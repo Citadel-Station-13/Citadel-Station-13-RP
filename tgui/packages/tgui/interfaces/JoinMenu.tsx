@@ -1,7 +1,8 @@
 /* eslint-disable react/jsx-max-depth */
 import { Fragment } from 'inferno';
+
 import { useBackend } from '../backend';
-import { Box, Button, Section, Icon, NoticeBox, Collapsible, Stack } from '../components';
+import { Box, Button, Collapsible, Icon, NoticeBox, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
 interface JoinableRoles {

@@ -11,8 +11,6 @@
  *
  * If collection is 'null' or 'undefined', it will be returned "as is"
  * without emitting any errors (which can be useful in some cases).
- *
- * @returns {any[]}
  */
 export const filter = <T>(iterateeFn: (
   input: T,
@@ -157,8 +155,6 @@ export const sortBy = <T>(
 
 export const sort = sortBy();
 
-export const sortStrings = sortBy<string>();
-
 /**
  * Returns a range of numbers from start to end, exclusively.
  * For example, range(0, 5) will return [0, 1, 2, 3, 4].
@@ -166,18 +162,39 @@ export const sortStrings = sortBy<string>();
 export const range = (start: number, end: number): number[] =>
   new Array(end - start).fill(null).map((_, index) => index + start);
 
+type ReduceFunction = {
+  <T, U>(
+    array: T[],
+    reducerFn: (
+      accumulator: U,
+      currentValue: T,
+      currentIndex: number,
+      array: T[],
+    ) => U,
+    initialValue: U,
+  ): U;
+  <T>(
+    array: T[],
+    reducerFn: (
+      accumulator: T,
+      currentValue: T,
+      currentIndex: number,
+      array: T[],
+    ) => T,
+  ): T;
+};
+
 /**
  * A fast implementation of reduce.
  */
-export const reduce = (reducerFn, initialValue) => array => {
+export const reduce: ReduceFunction = (array, reducerFn, initialValue?) => {
   const length = array.length;
-  let i;
+  let i: number;
   let result;
   if (initialValue === undefined) {
     i = 1;
     result = array[0];
-  }
-  else {
+  } else {
     i = 0;
     result = initialValue;
   }
@@ -199,13 +216,15 @@ export const reduce = (reducerFn, initialValue) => array => {
  * invoked with one argument: value.
  */
 export const uniqBy = <T extends unknown>(
-  iterateeFn?: (value: T) => unknown
-) => (array: T[]): T[] => {
-    const { length } = array;
-    const result: T[] = [];
-    const seen: unknown[] = iterateeFn ? [] : result;
-    let index = -1;
-    outer:
+  array: T[],
+  iterateeFn?: (value: T) => unknown,
+): T[] => {
+  const { length } = array;
+  const result: T[] = [];
+  const seen: unknown[] = iterateeFn ? [] : result;
+  let index = -1;
+  // prettier-ignore
+  outer:
     while (++index < length) {
       let value: T | 0 = array[index];
       const computed = iterateeFn ? iterateeFn(value) : value;
@@ -220,19 +239,17 @@ export const uniqBy = <T extends unknown>(
           seen.push(computed);
         }
         result.push(value);
-      }
-      else if (!seen.includes(computed)) {
+      } else if (!seen.includes(computed)) {
         if (seen !== result) {
           seen.push(computed);
         }
         result.push(value);
       }
     }
-    return result;
-  };
-/* eslint-enable indent */
+  return result;
+};
 
-export const uniq = uniqBy();
+export const uniq = <T>(array: T[]): T[] => uniqBy(array);
 
 type Zip<T extends unknown[][]> = {
   [I in keyof T]: T[I] extends (infer U)[] ? U : never;
@@ -261,16 +278,6 @@ export const zip = <T extends unknown[][]>(...arrays: T): Zip<T> => {
   }
   return result;
 };
-
-/**
- * This method is like "zip" except that it accepts iteratee to
- * specify how grouped values should be combined. The iteratee is
- * invoked with the elements of each group.
- */
-export const zipWith = <T, U>(iterateeFn: (...values: T[]) => U) =>
-  (...arrays: T[][]): U[] => {
-    return map((values: T[]) => iterateeFn(...values))(zip(...arrays));
-  };
 
 const binarySearch = <T, U = unknown>(
   getKey: (value: T) => U,
@@ -307,61 +314,58 @@ const binarySearch = <T, U = unknown>(
   return compare > insertingKey ? middle : middle + 1;
 };
 
-export const binaryInsertWith = <T, U = unknown>(getKey: (value: T) => U):
-  ((collection: readonly T[], value: T) => T[]) =>
-{
-  return (collection, value) => {
-    const copy = [...collection];
-    copy.splice(binarySearch(getKey, collection, value), 0, value);
-    return copy;
-  };
+export const binaryInsertWith = <T, U = unknown>(
+  collection: readonly T[],
+  value: T,
+  getKey: (value: T) => U,
+): T[] => {
+  const copy = [...collection];
+  copy.splice(binarySearch(getKey, collection, value), 0, value);
+  return copy;
 };
 
 /**
- * splits an array into x arrays of max size divisor
- * does not balance between the buckets
+ * This method takes a collection of items and a number, returning a collection
+ * of collections, where the maximum amount of items in each is that second arg
  */
-export const arrayBucketFill = <T>(arrIn: Array<T>, amt: number):
-  Array<Array<T>> => {
-  let output = new Array<Array<T>>();
-  if (amt <= 0) {
-    return output;
+export const paginate = <T>(collection: T[], maxPerPage: number): T[][] => {
+  const pages: T[][] = [];
+  let page: T[] = [];
+  let itemsToAdd = maxPerPage;
+
+  for (const item of collection) {
+    page.push(item);
+    itemsToAdd--;
+    if (!itemsToAdd) {
+      itemsToAdd = maxPerPage;
+      pages.push(page);
+      page = [];
+    }
   }
-  let left = arrIn.length;
-  let curr = 0;
-  while (left >= amt) {
-    output.push(arrIn.slice(curr, curr + amt));
-    curr += amt;
-    left -= amt;
+  if (page.length) {
+    pages.push(page);
   }
-  if (left > 0) {
-    output.push(arrIn.slice(curr));
-  }
-  return output;
+  return pages;
 };
 
-/**
- * splits an array between x buckets evenly
- */
-export const arrayBucketSplit = <T>(arrIn: Array<T>, amt: number):
-Array<Array<T>> => {
-  let output = new Array<Array<T>>();
-  if (amt <= 0) {
-    return output;
+const isObject = (obj: unknown): obj is object =>
+  typeof obj === 'object' && obj !== null;
+
+// Does a deep merge of two objects. DO NOT FEED CIRCULAR OBJECTS!!
+export const deepMerge = (...objects: any[]): any => {
+  const target = {};
+  for (const object of objects) {
+    for (const key of Object.keys(object)) {
+      const targetValue = target[key];
+      const objectValue = object[key];
+      if (Array.isArray(targetValue) && Array.isArray(objectValue)) {
+        target[key] = [...targetValue, ...objectValue];
+      } else if (isObject(targetValue) && isObject(objectValue)) {
+        target[key] = deepMerge(targetValue, objectValue);
+      } else {
+        target[key] = objectValue;
+      }
+    }
   }
-  let want = Math.ceil(arrIn.length / amt);
-  if (want <= 0) {
-    return output;
-  }
-  let left = arrIn.length;
-  let curr = 0;
-  while (left >= want) {
-    output.push(arrIn.slice(curr, curr + want));
-    curr += want;
-    left -= want;
-  }
-  if (left > 0) {
-    output.push(arrIn.slice(curr));
-  }
-  return output;
+  return target;
 };

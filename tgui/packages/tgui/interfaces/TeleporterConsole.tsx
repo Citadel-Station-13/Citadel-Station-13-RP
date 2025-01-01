@@ -1,7 +1,8 @@
-import { Section, Flex, Box, Dropdown, ProgressBar, NumberInput } from "../components";
-import { Window } from "../layouts";
-import { useBackend } from "../backend";
 import { toFixed } from 'common/math';
+
+import { useBackend } from "../backend";
+import { Box, Dropdown, Flex, NumberInput, ProgressBar, Section } from "../components";
+import { Window } from "../layouts";
 
 interface TeleporterConsoleContext {
   "disabled",
@@ -66,10 +67,9 @@ export const TeleporterConsoleOperational = (props, context) => {
             width="100px"
             minValue={0}
             maxValue={100000}
-            suppressFlicker={250}
-            onChange={(e, value) => act('set_recharge', {
+            onChange={(value) => act('set_recharge', {
               target: value,
-            })} />
+            })} step={10} />
         </Section>
       </Flex>
     </Section>);

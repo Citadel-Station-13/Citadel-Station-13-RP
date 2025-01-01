@@ -1,7 +1,7 @@
 import { useBackend } from '../backend';
-import { BlockQuote, Box, Button, Icon, Modal, Section, LabeledList, NoticeBox, Stack } from '../components';
-import { Window } from '../layouts';
+import { BlockQuote, Box, Button, Icon, LabeledList, Modal, NoticeBox, Section, Stack } from '../components';
 import { formatTime } from '../format';
+import { Window } from '../layouts';
 
 
 type SiteData = {
