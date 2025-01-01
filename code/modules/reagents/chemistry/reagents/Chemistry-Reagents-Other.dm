@@ -1,51 +1,5 @@
 /* Things that didn't fit anywhere else */
 
-/datum/reagent/gold
-	name = "Gold"
-	id = "gold"
-	description = "Gold is a dense, soft, shiny metal and the most malleable and ductile metal known."
-	taste_description = "metal"
-	reagent_state = REAGENT_SOLID
-	color = "#F7C430"
-
-/datum/reagent/silver
-	name = "Silver"
-	id = "silver"
-	description = "A soft, white, lustrous transition metal, it has the highest electrical conductivity of any element and the highest thermal conductivity of any metal."
-	taste_description = "metal"
-	reagent_state = REAGENT_SOLID
-	color = "#D0D0D0"
-
-/datum/reagent/uranium
-	name ="Uranium"
-	id = "uranium"
-	description = "A silvery-white metallic chemical element in the actinide series, weakly radioactive."
-	taste_description = "metal"
-	reagent_state = REAGENT_SOLID
-	color = "#B8B8C0"
-
-/datum/reagent/platinum
-	name = "Platinum"
-	id = "platinum"
-	description = "Platinum is a dense, malleable, ductile, highly unreactive, precious, gray-white transition metal.  It is very resistant to corrosion."
-	taste_description = "metal"
-	reagent_state = REAGENT_SOLID
-	color = "#777777"
-
-/datum/reagent/uranium/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
-	legacy_affect_ingest(M, alien, removed, metabolism)
-
-/datum/reagent/uranium/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
-	M.apply_effect(5 * removed, IRRADIATE, 0)
-
-/datum/reagent/uranium/on_touch_turf(turf/target, remaining, allocated, data)
-	. = ..()
-	if(allocated >= 3)
-		if(!istype(target, /turf/space))
-			var/obj/effect/debris/cleanable/greenglow/glow = locate(/obj/effect/debris/cleanable/greenglow, target)
-			if(!glow)
-				new /obj/effect/debris/cleanable/greenglow(target)
-
 /datum/reagent/adrenaline
 	name = "Adrenaline"
 	id = "adrenaline"

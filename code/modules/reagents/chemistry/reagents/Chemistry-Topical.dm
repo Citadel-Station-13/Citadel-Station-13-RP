@@ -113,7 +113,7 @@
 		M.add_chemical_effect(CE_SPEEDBOOST, 1)
 		if(prob(5))// Speed boost and emotes
 			M.emote(pick("twitch", "blink_r", "shiver"))
-		if(world.time > (data + (60*10)))
+		if(world.time > (metabolism.blackboard["last-message"] + (60*10)))
 			metabolism.blackboard["last-message"] = world.time
 			to_chat(M, "<span class='warning'>You feel like all your nerves are itching.</span>")
 
@@ -125,7 +125,7 @@
 /datum/reagent/topical/neurolaze/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien != IS_DIONA)
 		M.vomit()
-		holder.remove_reagent("neurolaze", 10 * removed)//purges itself...
+		metabolism.legacy_current_holder.remove_reagent(/datum/reagent/topical/neurolaze, 10 * removed)//purges itself...
 
 /datum/reagent/topical/neurolaze/legacy_affect_overdose(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien != IS_DIONA)

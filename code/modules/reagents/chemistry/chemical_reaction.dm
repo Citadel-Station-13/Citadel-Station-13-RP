@@ -3,8 +3,8 @@
 
 /datum/chemical_reaction
 	abstract_type = /datum/chemical_reaction
-	//* core *//
 
+	//* core *//
 	/// id - must be unique and in CamelCase.
 	var/id
 	/// reagent reaction flags - see [code/__DEFINES/reagents/flags.dm]
@@ -16,7 +16,6 @@
 	var/___legacy_allow_collision_do_not_use = FALSE
 
 	//* identity *//
-
 	/// name; defaults to reagent produced's name.
 	/// if this is defaulted, it also defaults display name to that reagent if unset.
 	var/name
@@ -29,12 +28,10 @@
 	var/display_description
 
 	//* logging *//
-
 	/// we should care enough about this to log it specifically
 	var/important_for_logging = FALSE
 
 	//* reaction *//
-
 	/// required reagents as ratios. path or id is supported, prefer paths for compile time checking.
 	/// all of these will then make 1 unit of the reagent.
 	var/list/required_reagents = list()
@@ -121,7 +118,6 @@
 	var/equilibrium = INFINITY
 
 	//* Reaction - Feedback *//
-
 	/// if set, everyone around sees this on react
 	var/reaction_message_instant = "The solution begins to bubble."
 	/// if set, everyone around hears this on react
@@ -129,7 +125,6 @@
 	// todo: soundloop support? maybe ambience subsystem for deduping..
 
 	//* guidebook *//
-
 	/// guidebook flags
 	var/reaction_guidebook_flags = NONE
 	/// guidebook category

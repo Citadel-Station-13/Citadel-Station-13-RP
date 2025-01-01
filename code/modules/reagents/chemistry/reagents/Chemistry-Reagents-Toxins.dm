@@ -105,7 +105,10 @@
 	touch_met = 5
 	skin_danger = 1
 
-/datum/reagent/toxin/phoron/touch_mob(mob/living/L, amount)
+/datum/reagent/toxin/phoron/on_touch_mob(mob/target, remaining, allocated, data, zone)
+	. = ..()
+
+	var/mob/living/L = target
 	if(istype(L))
 		L.adjust_fire_stacks(amount / 5)
 
@@ -128,11 +131,14 @@
 		M.adjust_fire_stacks(removed * 3) //Not quite 'converting' it. It's like mixing fuel into a jelly. You get explosive, or at least combustible, jelly.
 	..()
 
-/datum/reagent/toxin/phoron/touch_turf(turf/simulated/T, amount)
+/datum/reagent/toxin/phoron/on_touch_turf(turf/target, remaining, allocated, data)
+	. = ..()
+
+	var/turf/simulated/T = target
 	if(!istype(T))
 		return
-	T.assume_gas(GAS_ID_PHORON, amount, T20C)
-	remove_self(amount)
+	T.assume_gas(GAS_ID_PHORON, allocated, T20C)
+	. = max(., allocated)
 
 /datum/reagent/toxin/cyanide //Fast and Lethal
 	name = "Cyanide"
@@ -1258,7 +1264,7 @@
 	. = ..()
 	var/turf/T = target
 	if(allocated >= 20)
-		var/location = get_turf(holder.my_atom)
+		var/location = T
 		var/datum/effect_system/smoke_spread/chem/S = new /datum/effect_system/smoke_spread/chem
 		S.attach(location)
 		var/datum/reagent_holder/copy_holder = new
@@ -1285,13 +1291,13 @@
 /datum/reagent/polonium/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_POL210(removed))
 
-/datum/reagent/polonium/touch_turf(turf/T)
-	if(volume >= 3)
-		if(!istype(T, /turf/space))
-			var/obj/effect/debris/cleanable/greenglow/glow = locate(/obj/effect/debris/cleanable/greenglow, T)
+/datum/reagent/polonium/on_touch_turf(turf/target, remaining, allocated, data)
+	. = ..()
+	if(allocated >= 3)
+		if(!istype(target, /turf/space))
+			var/obj/effect/debris/cleanable/greenglow/glow = locate(/obj/effect/debris/cleanable/greenglow, target)
 			if(!glow)
-				new /obj/effect/debris/cleanable/greenglow(T)
-			return
+				new /obj/effect/debris/cleanable/greenglow(target)
 
 /datum/reagent/superhol
 	name = "Superhol"

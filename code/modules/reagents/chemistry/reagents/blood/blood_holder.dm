@@ -15,7 +15,7 @@
 	var/datum/blood_fragment/host_blood
 	/// Amount of host blood we have
 	var/host_blood_volume = 0
-	/// Our fragments that aren't ourselves, associated to ratio.
+	/// Our fragments that aren't ourselves, associated to the ratio they are of guest_blood_volume.
 	var/list/datum/blood_fragment/guest_bloods
 	/// Total amount of guest blood volume
 	var/guest_blood_volume = 0
@@ -113,6 +113,8 @@
 	var/multiplier = 1 - (amount / total)
 	host_blood_volume *= multiplier
 	guest_blood_volume *= multiplier
+	if(!guest_blood_volume)
+		guest_bloods.len = 0
 	return amount
 
 /**
@@ -126,6 +128,8 @@
 	. = min(amount, total)
 	host_blood_volume *= multiplier
 	guest_blood_volume *= multiplier
+	if(!guest_blood_volume)
+		guest_bloods.len = 0
 
 /**
  * Takes a blood mixture from us.
@@ -162,6 +166,8 @@
 	var/datum/blood_mixture/creating = new
 	creating.fragments = list()
 	#warn impl fragments self/others, amounts
+	if(!guest_blood_volume)
+		guest_bloods.len = 0
 	return creating
 
 #warn how to handle color? compute_color_from_data, don't forget!

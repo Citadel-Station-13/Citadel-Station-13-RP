@@ -62,22 +62,20 @@
 	var/list/pathogen_pool = list()
 	if(sample)
 		var/datum/blood_mixture/mixture = sample.reagents.get_reagent_data(/datum/reagent/blood)
-		for(var/datum/blood_fragment/blood_data as anything in mixture.fragments)
-			var/list/virus = blood_data.legacy_virus2
-			for (var/ID in virus)
-				var/datum/disease2/disease/V = virus[ID]
-				var/datum/data/record/R = null
-				if (ID in virusDB)
-					R = virusDB[ID]
+		var/list/virus = mixture.legacy_virus2
+		for (var/ID in virus)
+			var/datum/disease2/disease/V = virus[ID]
+			var/datum/data/record/R = null
+			if (ID in virusDB)
+				R = virusDB[ID]
 
-				var/mob/living/carbon/human/D = blood_data.legacy_donor
-				pathogen_pool.Add(list(list(\
-					"name" = "[D.get_true_species_name()] [B]", \
-					"dna" = blood_data.legacy_blood_dna, \
-					"unique_id" = V.uniqueID, \
-					"reference" = "\ref[V]", \
-					"is_in_database" = !!R, \
-					"record" = "\ref[R]")))
+			pathogen_pool.Add(list(list(\
+				"name" = "[B]", \
+				"dna" = blood_data.legacy_blood_dna, \
+				"unique_id" = V.uniqueID, \
+				"reference" = "\ref[V]", \
+				"is_in_database" = !!R, \
+				"record" = "\ref[R]")))
 	data["pathogen_pool"] = pathogen_pool
 
 	var/list/db = list()
@@ -127,7 +125,7 @@
 
 		if("isolate")
 			var/datum/disease2/disease/V = locate(params["isolate"])
-			if (V)
+			if (istype(V))
 				virus2 = V
 				isolating = 20
 				update_icon()
