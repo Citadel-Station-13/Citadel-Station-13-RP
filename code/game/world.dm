@@ -1,7 +1,7 @@
 #define RESTART_COUNTER_PATH "data/round_counter.txt"
 
 GLOBAL_VAR(restart_counter)
-
+GLOBAL_VAR_INIT(hub_visibility, TRUE)
 GLOBAL_VAR(topic_status_lastcache)
 GLOBAL_LIST(topic_status_cache)
 
@@ -10,11 +10,17 @@ GLOBAL_LIST(topic_status_cache)
 	turf = /turf/space/basic
 	area = /area/space
 	view = "15x15"
-	hub = "Exadv1.spacestation13"
-	hub_password = "kMZy3U5jJHSiBQjr"
 	name = "Citadel Station 13 - Roleplay"
 	status = "ERROR: Default status"
+	/// world visibility. this should never, ever be touched.
+	/// a weird byond bug yet to be resolved is probably making this
+	/// permanently delist the server if this is disabled at any point.
 	visibility = TRUE
+	/// static value, do not change
+	hub = "Exadv1.spacestation13"
+	/// static value, do not change, except to toggle visibility
+	/// * use this instead of `visibility` to toggle, via `update_hub_visibility`
+	hub_password = "kMZy3U5jJHSiBQjr"
 	movement_mode = PIXEL_MOVEMENT_MODE
 	fps = 20
 #ifdef FIND_REF_NO_CHECK_TICK
@@ -410,12 +416,17 @@ GLOBAL_LIST(topic_status_cache)
 
 	status = .
 
+/**
+ * Sets whether or not we're visible on the hub.
+ * * This is the only place where `hub_password` should be touched!
+ * * Never, ever modify `hub` or `visibility`.
+ */
 /world/proc/update_hub_visibility(new_visibility)
-	if(new_visibility == visibility)
+	new_visibility = !!new_visibility
+	if(new_visibility == GLOB.hub_visibility)
 		return
-
-	visibility = new_visibility
-	if(visibility)
+	GLOB.hub_visibility = new_visibility
+	if(GLOB.hub_visibility)
 		hub_password = "kMZy3U5jJHSiBQjr"
 	else
 		hub_password = "SORRYNOPASSWORD"
