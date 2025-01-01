@@ -1,5 +1,3 @@
-
-
 /**
  * Transforming service weapon for the Nanotrasen PMD. Sprites & work by Captain277.
  */
