@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
+
 /**
  * Called when trying to click on someone we can Reachability() to without an item in hand.
  *
@@ -38,67 +41,9 @@
  *
  * todo: kinda shitycodey but w/e
  */
-/mob/proc/unarmed_attack_style()
+/mob/proc/default_unarmed_attack_style()
 	// none by default
 	return null
-
-// todo: melee_special for overrides (?)
-
-/mob/proc/melee_attack(atom/target, datum/event_args/actor/clickchain/clickchain, datum/melee_attack/unarmed/style, clickchain_flags, target_zone, mult)
-	SHOULD_CALL_PARENT(TRUE)
-	// todo: move this somewhere else
-	if(!target.integrity_enabled)
-		// no targeting
-		return NONE
-	if(isobj(target))
-		var/obj/casted = target
-		if(!(casted.obj_flags & OBJ_MELEE_TARGETABLE))
-			// no targeting
-			return NONE
-
-	// todo: clickcd rework
-	clickchain.performer.setClickCooldownLegacy(clickchain.performer.get_attack_speed_legacy())
-
-	. = melee_attack_hit(target, clickchain, style, clickchain_flags, target_zone, mult)
-
-	// todo: better logging
-	// todo: entity ids?
-	var/newhp
-	if(isliving(target))
-		var/mob/living/casted = target
-		newhp = casted.health
-	else
-		newhp = target.integrity
-
-	. |= melee_attack_finalize(target, clickchain, style, clickchain_flags, target_zone, mult)
-
-	log_attack(key_name(src), ismob(target)? key_name(target) : "[target] ([ref(target)])", "attacked with [style.attack_name] newhp ~[newhp || "unknown"]")
-
-/mob/proc/melee_attack_hit(atom/target, datum/event_args/actor/clickchain/clickchain, datum/melee_attack/unarmed/style, clickchain_flags, target_zone, mult)
-	. = target.unarmed_melee_act(src, style, target_zone, clickchain)
-	if(. & CLICKCHAIN_ATTACK_MISSED)
-		return . | melee_attack_miss(target, clickchain, style, clickchain_flags, target_zone, mult)
-	// todo: the rest of this proc not qdel-safe
-	playsound(src, target.hitsound_unarmed(src, style), 50, TRUE, -1)
-	// todo: better feedback
-	clickchain.visible_feedback(
-		target = target,
-		range = MESSAGE_RANGE_COMBAT_LOUD,
-		visible = SPAN_DANGER("[target] has been [islist(style.verb_past_participle)? pick(style.verb_past_participle) : style.verb_past_participle] by [clickchain.performer]!")
-	)
-	// target.animate_hit_by_attack(style.animation_type)
-
-/mob/proc/melee_attack_miss(atom/target, datum/event_args/actor/clickchain/clickchain, datum/melee_attack/unarmed/style, clickchain_flags, target_zone, mult)
-	playsound(src, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-	clickchain.visible_feedback(
-		target = target,
-		range = MESSAGE_RANGE_COMBAT_LOUD,
-		visible = SPAN_WARNING("[src] swings for [target], but misses!"),
-	)
-	return NONE
-
-/mob/proc/melee_attack_finalize(atom/target, datum/event_args/actor/clickchain/clickchain, datum/melee_attack/unarmed/style, clickchain_flags, target_zone, mult)
-	return NONE
 
 /**
  * construct default event args for what we're doing to a target

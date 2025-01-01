@@ -10,7 +10,7 @@
 /**
  * Checks if we should be targetable in melee.
  */
-/atom/proc/melee_targetable(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+/atom/proc/is_melee_targetable(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	return FALSE
 
 //* External API / Damage Receiving *//

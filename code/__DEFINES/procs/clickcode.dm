@@ -1,6 +1,9 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
+
 //! Clickchain Flags
 /**
- * flags passed around click procs including:
+ * flags passed around click procs including but not limited to:
  * ClickOn
  * melee_interaction_chain
  * ranged_interaction_chain
@@ -14,8 +17,8 @@
  * OnMouseDrop
  * MouseDroppedOn
  *
- * These are *not* used for attack_hand, attack_robot, attack_xeno, and similar clicked-by-specific-mob attack procs.
- * These are also not used for attack_self, as that isn't even a true clickcode proc.
+ * * These are default-additive. This means that most of the time, these all combine as we go down the chain without being
+ *   reset.
  */
 
 /// stop the click chain from proceeding past this point; usually used if we're deleting or being inserted
@@ -51,6 +54,8 @@
 #define CLICKCHAIN_FLAGS_UNCONDITIONAL_ABORT (CLICKCHAIN_DO_NOT_PROPAGATE)
 /// check these for 'abort attack'
 #define CLICKCHAIN_FLAGS_ATTACK_ABORT (CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_FULL_BLOCKED)
+/// check these for 'did something, the user probably wants to stop now'
+#define CLICKCHAIN_FLAGS_USAGE_ABORT (CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_FULL_BLOCKED | CLICKCHAIN_DID_SOMETHING)
 
 //! Reachability Depths - checked from level of DirectAccess and turf adjacency.
 /// default reachability depth

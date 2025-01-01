@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
-/obj/melee_targetable(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+/obj/is_melee_targetable(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	return obj_flags & OBJ_MELEE_TARGETABLE
 
 /obj/ex_act(power, dir, datum/automata/wave/explosion/E)

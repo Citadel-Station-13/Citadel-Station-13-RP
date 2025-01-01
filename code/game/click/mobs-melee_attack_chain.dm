@@ -20,6 +20,10 @@
 /mob/proc/melee_attack_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	if(clickchain_flags & CLICKCHAIN_DO_NOT_ATTACK)
 		return clickchain_flags
+	if(!clickchain.target.is_melee_targetable(clickchain, clickchain_flags))
+		return clickchain_flags
+
+	clickchain.performer.setClickCooldownLegacy(clickchain.performer.get_attack_speed_legacy())
 #warn deal with this trainwreck
 
 /**
@@ -37,7 +41,7 @@
 	//! Legacy
 	break_cloak()
 	if(isnull(style))
-		style = unarmed_attack_style()
+		style = default_unarmed_attack_style()
 	//! End
 
 	/**
@@ -62,6 +66,17 @@
 	style.perform_attack_message(src, clickchain.target, missed)
 
 	// -- call animation on them --
-	target.animate_hit_by_attack(style.animation_type)
+	clickchain.target.animate_hit_by_attack(style.animation_type)
 
-	#warn logging
+	// -- log --
+	log_unarmed_melee(clickchain, style)
+
+	return on_melee_attack(clickchain, clickchain_flags, style) | .
+
+/**
+ * For future use.
+ *
+ * @return CLICKCHAIN_* flags
+ */
+/mob/proc/on_melee_attack(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/unarmed/style)
+	return

@@ -3311,6 +3311,7 @@
 #include "code\modules\loadout\accessories\insignia.dm"
 #include "code\modules\loadout\accessories\utility.dm"
 #include "code\modules\logging\logging.dm"
+#include "code\modules\logging\api\attack.dm"
 #include "code\modules\logging\api\construction.dm"
 #include "code\modules\logging\api\reagents.dm"
 #include "code\modules\loot\pack.dm"

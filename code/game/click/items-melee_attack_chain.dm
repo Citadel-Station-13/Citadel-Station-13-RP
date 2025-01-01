@@ -26,7 +26,7 @@
 		return CLICKCHAIN_DO_NOT_ATTACK
 	if(item_flags & ITEM_NO_BLUDGEON)
 		return CLICKCHAIN_DO_NOT_ATTACK
-	if(!clickchain.target?.melee_targetable(clickchain))
+	if(!clickchain.target?.is_melee_targetable(clickchain))
 		return CLICKCHAIN_DO_NOT_ATTACK
 
 	clickchain.performer.legacy_alter_melee_clickchain(clickchain)

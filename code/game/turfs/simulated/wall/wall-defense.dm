@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
-/turf/simulated/wall/melee_targetable(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+/turf/simulated/wall/is_melee_targetable(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	return TRUE
 
 /turf/simulated/wall/throw_impacted(atom/movable/AM, datum/thrownthing/TT)

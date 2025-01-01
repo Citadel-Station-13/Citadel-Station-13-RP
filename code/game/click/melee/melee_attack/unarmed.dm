@@ -52,6 +52,25 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	var/eye_attack_text
 	var/eye_attack_text_victim
 
+/datum/melee_attack/unarmed/perform_attack_animation(atom/movable/attacker, atom/target, missed)
+	return ..()
+
+/datum/melee_attack/unarmed/perform_attack_message(atom/movable/attacker, atom/target, missed)
+	if(missed)
+		return ..()
+	attacker.visible_feedback(
+		target = target,
+		range = MESSAGE_RANGE_COMBAT_LOUD,
+		visible = SPAN_DANGER("[target] has been [islist(style.verb_past_participle)? pick(style.verb_past_participle) : style.verb_past_participle] by [clickchain.performer]!")
+	)
+	return TRUE
+
+/datum/melee_attack/unarmed/perform_attack_sound(atom/movable/attacker, atom/target, missed)
+	if(missed)
+		return ..()
+	playsound(src, target.hitsound_unarmed(src, style), 50, TRUE, -1)
+	return TRUE
+
 /datum/melee_attack/unarmed/proc/operator""()
 	return pick(attack_verb_legacy)
 

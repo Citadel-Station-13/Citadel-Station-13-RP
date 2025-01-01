@@ -69,6 +69,13 @@
 	/// * This is in degrees clockwise of north.
 	var/tmp/resolved_angle_from_performer
 
+	//* Out Data *//
+	/// total damage inflicted; set by target
+	var/tmp/out_damage_inflicted = 0
+	/// log data list, if any; use this to add stuff like "x bone was broken"
+	/// * this is a lazy list
+	var/tmp/list/out_arbitrary_log_data
+
 /datum/event_args/actor/clickchain/New(mob/performer, mob/initiator, atom/target, list/params, intent)
 	..()
 	// using //
