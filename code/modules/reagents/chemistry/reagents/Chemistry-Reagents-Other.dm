@@ -38,13 +38,13 @@
 /datum/reagent/uranium/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.apply_effect(5 * removed, IRRADIATE, 0)
 
-/datum/reagent/uranium/touch_turf(turf/T)
-	if(volume >= 3)
-		if(!istype(T, /turf/space))
-			var/obj/effect/debris/cleanable/greenglow/glow = locate(/obj/effect/debris/cleanable/greenglow, T)
+/datum/reagent/uranium/on_touch_turf(turf/target, remaining, allocated, data)
+	. = ..()
+	if(allocated >= 3)
+		if(!istype(target, /turf/space))
+			var/obj/effect/debris/cleanable/greenglow/glow = locate(/obj/effect/debris/cleanable/greenglow, target)
 			if(!glow)
-				new /obj/effect/debris/cleanable/greenglow(T)
-			return
+				new /obj/effect/debris/cleanable/greenglow(target)
 
 /datum/reagent/adrenaline
 	name = "Adrenaline"
@@ -114,9 +114,11 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#009CA8"
 
-/datum/reagent/lube/touch_turf(turf/simulated/T)
-	if(!istype(T))
+/datum/reagent/lube/on_touch_turf(turf/target, remaining, allocated, data)
+	. = ..()
+	if(!istype(target, /turf/simulated))
 		return
+	var/turf/simulated/T = target
 	if(volume >= 1)
 		T.wet_floor(2)
 
@@ -128,12 +130,12 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#C7FFFF"
 
-/datum/reagent/silicate/touch_obj(obj/O)
-	if(istype(O, /obj/structure/window))
-		var/obj/structure/window/W = O
-		W.apply_silicate(volume)
-		remove_self(volume)
-	return
+/datum/reagent/silicate/on_touch_obj(obj/target, remaining, allocated, data, spread_between)
+	. = ..()
+	if(istype(target, /obj/structure/window))
+		var/obj/structure/window/W = target
+		W.apply_silicate(allocated)
+		. = max(., allocated)
 
 /datum/reagent/glycerol
 	name = "Glycerol"

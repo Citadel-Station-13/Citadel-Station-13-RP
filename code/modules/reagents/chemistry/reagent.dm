@@ -108,14 +108,17 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	/// forced sort ordering in its category - falls back to name otherwise.
 	var/wiki_sort = 0
 
+#warn annihilate
 /// This doesn't apply to skin contact - this is for, e.g. extinguishers and sprays. The difference is that reagent is not directly on the mob's skin - it might just be on their clothing.
 /datum/reagent/proc/touch_mob(mob/M, amount)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
+#warn annihilate
 /// Acid melting, cleaner cleaning, etc
 /datum/reagent/proc/touch_obj(obj/O, amount)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
+#warn annihilate
 /// Cleaner cleaning, lube lubbing, etc, all go here
 /datum/reagent/proc/touch_turf(turf/T, amount)
 	SHOULD_NOT_OVERRIDE(TRUE)

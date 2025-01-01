@@ -4726,6 +4726,7 @@
 #include "code\modules\reagents\chemistry\reagents\other\chalk_dust.dm"
 #include "code\modules\reagents\chemistry\reagents\other\cleaner.dm"
 #include "code\modules\reagents\chemistry\reagents\other\crayon_dust.dm"
+#include "code\modules\reagents\chemistry\reagents\other\firefighting_foam.dm"
 #include "code\modules\reagents\chemistry\reagents\other\holywater.dm"
 #include "code\modules\reagents\chemistry\reagents\other\luminol.dm"
 #include "code\modules\reagents\chemistry\reagents\other\marker_ink.dm"

@@ -11,7 +11,8 @@
 	var/meltdose = 10 // How much is needed to melt
 
 /datum/reagent/acid/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
-	if(issmall(M)) removed *= 2
+	if(issmall(M))
+		removed *= 2
 	M.take_random_targeted_damage(brute = 0, brute = removed * power * 2)
 
 /datum/reagent/acid/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism) // This is the most interesting
@@ -74,11 +75,13 @@
 		else
 			M.take_random_targeted_damage(brute = 0, brute = removed * power * 0.1) // Balance. The damage is instant, so it's weaker. 10 units -> 5 damage, double for pacid. 120 units beaker could deal 60, but a) it's burn, which is not as dangerous, b) it's a one-use weapon, c) missing with it will splash it over the ground and d) clothes give some protection, so not everything will hit
 
-/datum/reagent/acid/touch_obj(obj/O)
-	if(O.integrity_flags & INTEGRITY_INDESTRUCTIBLE)
+/datum/reagent/acid/on_touch_obj(obj/target, remaining, allocated, data, spread_between)
+	. = ..()
+	var/obj/O = target
+	if(O.integrity_flags & (INTEGRITY_INDESTRUCTIBLE | INTEGRITY_ACIDPROOF))
 		return
 	// todo: newacid
-	if((istype(O, /obj/item) || istype(O, /obj/effect/plant)) && (volume > meltdose))
+	if((istype(O, /obj/item) || istype(O, /obj/effect/plant)) && (allocated > meltdose))
 		var/obj/effect/debris/cleanable/molten_item/I = new/obj/effect/debris/cleanable/molten_item(O.loc)
 		I.desc = "Looks like this was \an [O] some time ago."
 		for(var/mob/M in viewers(5, O))

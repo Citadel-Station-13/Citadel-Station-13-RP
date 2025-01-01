@@ -1268,7 +1268,7 @@
 
 /datum/reagent/sterilizine/on_touch_obj(obj/target, remaining, allocated, data, spread_between)
 	. = ..()
-	target.germ_level -= min(allocated*20, O.germ_level)
+	target.germ_level -= min(allocated * 20, target.germ_level)
 	target.was_bloodied = null
 
 /datum/reagent/sterilizine/on_touch_turf(turf/target, remaining, allocated, data)
@@ -1286,11 +1286,11 @@
 	. = ..()
 	if(istype(target, /mob/living/simple_mob/slime))
 		var/mob/living/simple_mob/slime/S = target
-		var/amt = rand(15, 25) * amount * (1-S.water_resist)
-		if(amt>0)
-			S.adjustToxLoss(rand(15, 25) * amount)	// Does more damage than water.
+		var/amt = rand(15, 25) * allocated * (1-S.water_resist)
+		if(amt > 0)
+			S.adjustToxLoss(rand(15, 25) * amt)	// Does more damage than water.
 			S.visible_message("<span class='warning'>[S]'s flesh sizzles where the fluid touches it!</span>", "<span class='danger'>Your flesh burns in the fluid!</span>")
-		. = max(., allocated)
+			. = max(amt, allocated)
 
 /datum/reagent/leporazine
 	name = "Leporazine"
@@ -1350,7 +1350,7 @@
 	M.adjustOxyLoss(-2 * removed)
 	M.heal_organ_damage(20 * removed, 20 * removed)
 	M.adjustToxLoss(-20 * removed)
-	if(dose > 10)
+	if(metabolism.total_processed_dose > 10)
 		M.make_dizzy(5)
 		M.make_jittery(5)
 
@@ -1565,53 +1565,6 @@
 				nif.stat = NIF_INSTALLING
 			nif.durability = min(nif.durability + removed, initial(nif.durability))
 
-/datum/reagent/firefighting_foam
-	name = "Firefighting Foam"
-	id = "firefoam"
-	description = "A historical fire suppressant. Originally believed to simply displace oxygen to starve fires, it actually interferes with the combustion reaction itself. Vastly superior to the cheap water-based extinguishers found on most NT vessels."
-	reagent_state = REAGENT_LIQUID
-	color = "#A6FAFF"
-	taste_description = "the inside of a fire extinguisher"
-
-/datum/reagent/firefighting_foam/touch_turf(turf/T, reac_volume)
-	if(reac_volume >= 1)
-		var/obj/effect/foam/firefighting/F = (locate(/obj/effect/foam/firefighting) in T)
-		if(!F)
-			F = new(T)
-		else if(istype(F))
-			F.lifetime = initial(F.lifetime) //reduce object churn a little bit when using smoke by keeping existing foam alive a bit longer
-
-	var/datum/gas_mixture/environment = T.return_air()
-	var/min_temperature = T0C + 100 // 100C, the boiling point of water
-
-	var/hotspot = (locate(/atom/movable/fire) in T)
-	if(hotspot && !isspaceturf(T))
-		var/datum/gas_mixture/lowertemp = T.remove_cell_volume()
-		lowertemp.temperature = max(min(lowertemp.temperature-2000, lowertemp.temperature / 2), 0)
-		lowertemp.react()
-		T.assume_air(lowertemp)
-		qdel(hotspot)
-
-	if (environment && environment.temperature > min_temperature) // Abstracted as steam or something
-		var/removed_heat = between(0, volume * 19000, -environment.get_thermal_energy_change(min_temperature))
-		environment.adjust_thermal_energy(-removed_heat)
-		if(prob(5))
-			T.visible_message("<span class='warning'>The foam sizzles as it lands on \the [T]!</span>")
-
-/datum/reagent/firefighting_foam/touch_obj(obj/O, reac_volume)
-	O.water_act(reac_volume / 5)
-
-/datum/reagent/firefighting_foam/touch_mob(mob/living/M, reac_volume)
-	if(istype(M, /mob/living/simple_mob/slime)) //I'm sure foam is water-based!
-		var/mob/living/simple_mob/slime/S = M
-		var/amt = 15 * reac_volume * (1-S.water_resist)
-		if(amt>0)
-			S.adjustToxLoss(amt)
-			S.visible_message("<span class='warning'>[S]'s flesh sizzles where the foam touches it!</span>", "<span class='danger'>Your flesh burns in the foam!</span>")
-
-	M.adjust_fire_stacks(-reac_volume)
-	M.ExtinguishMob()
-
 //CRS (Cyberpsychosis) Medication
 /datum/reagent/neuratrextate
 	name = "Neuratrextate"
@@ -1629,10 +1582,10 @@
 /datum/reagent/neuratrextate/legacy_affect_ingest(mob/living/carbon/M, datum/reagent_metabolism/metabolism)
 	remove_self(30)
 	to_chat(M, "<span class='warning'>It feels like there's a pile of knives in your stomach!</span>")
-	M.druggy += 10
+	M.druggy = max(M.druggy, 10)
 	M.vomit()
 
 /datum/reagent/neuratrextate/legacy_affect_overdose(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
-	M.druggy += 30
+	M.druggy = max(M.druggy, 30)
 	M.adjustHallucination(20)

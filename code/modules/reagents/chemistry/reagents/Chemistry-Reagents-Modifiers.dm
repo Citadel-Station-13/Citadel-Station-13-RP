@@ -45,7 +45,6 @@
 		var/mob/living/L = M
 		for(var/I = 1 to rand(1, round(amount + 1)))
 			L.add_modifier(modifier_to_add, amount * rand(modifier_duration / 2, modifier_duration * 2))
-	return
 
 /datum/reagent/modapplying/cryofluid/touch_turf(turf/T, amount)
 	if(istype(T, /turf/simulated/floor/water) && prob(amount))
@@ -55,4 +54,3 @@
 		if(istype(T, /turf/simulated))
 			var/turf/simulated/S = T
 			S.freeze_floor()
-	return

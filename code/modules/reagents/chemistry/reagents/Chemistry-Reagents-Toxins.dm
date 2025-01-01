@@ -56,7 +56,9 @@
 	strength = 80
 	var/fire_mult = 30
 
-/datum/reagent/toxin/hydrophoron/touch_mob(mob/living/L, amount)
+/datum/reagent/toxin/hydrophoron/on_touch_mob(mob/target, remaining, allocated, data, zone)
+	. = ..()
+	var/mob/living/L = target
 	if(istype(L))
 		L.adjust_fire_stacks(amount / fire_mult)
 
@@ -65,14 +67,16 @@
 	if(prob(10 * fire_mult))
 		M.pl_effects()
 
-/datum/reagent/toxin/hydrophoron/touch_turf(turf/simulated/T)
-	if(!istype(T))
+/datum/reagent/toxin/hydrophoron/on_touch_turf(turf/target, remaining, allocated, data)
+	. = ..()
+	if(!istype(target, /turf/simulated))
 		return
-	T.assume_gas(GAS_ID_PHORON, CEILING(volume/2, 1), T20C)
+	var/turf/simulated/T = target
+	T.assume_gas(GAS_ID_PHORON, CEILING(allocated / 2, 1), T20C)
 	for(var/turf/simulated/floor/target_tile in range(0,T))
-		target_tile.assume_gas(GAS_ID_PHORON, volume/2, 400+T0C)
+		target_tile.assume_gas(GAS_ID_PHORON, allocated / 2, 400+T0C)
 		spawn (0) target_tile.hotspot_expose(700, 400)
-	remove_self(volume)
+	. = max(., allocated)
 
 /datum/reagent/toxin/hydrophoron/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
@@ -273,7 +277,7 @@
 	if(alien == IS_DIONA)
 		return
 	M.status_flags |= STATUS_FAKEDEATH
-	addtimer(CALLBACK(M, __really_shitty_zombie_powder_shim), 0.5 SECONDS)
+	addtimer(CALLBACK(M, TYPE_PROC_REF(/mob/living/carbon, __really_shitty_zombie_powder_shim)), 0.5 SECONDS)
 	M.adjustOxyLoss(3 * removed)
 	M.afflict_paralyze(20 SECONDS)
 	M.silent = max(M.silent, 10)
@@ -300,7 +304,7 @@
 	if(alien == IS_DIONA)
 		return
 	M.status_flags |= STATUS_FAKEDEATH
-	addtimer(CALLBACK(M, __really_shitty_lich_powder_shim), 0.5 SECONDS)
+	addtimer(CALLBACK(M, TYPE_PROC_REF(/mob/living/carbon, __really_shitty_lich_powder_shim)), 0.5 SECONDS)
 	M.adjustOxyLoss(1 * removed)
 	M.silent = max(M.silent, 10)
 	M.tod = stationtime2text()
@@ -351,18 +355,21 @@
 	color = "#49002E"
 	strength = 4
 
-/datum/reagent/toxin/plantbgone/touch_turf(turf/T)
-	if(istype(T, /turf/simulated/wall))
-		var/turf/simulated/wall/W = T
+/datum/reagent/toxin/plantbgone/on_touch_turf(turf/target, remaining, allocated, data)
+	. = ..()
+	if(istype(target, /turf/simulated/wall))
+		var/turf/simulated/wall/W = target
 		if(locate(/obj/effect/overlay/wallrot) in W)
 			for(var/obj/effect/overlay/wallrot/E in W)
 				qdel(E)
 			W.visible_message("<span class='notice'>The fungi are completely dissolved by the solution!</span>")
 
-/datum/reagent/toxin/plantbgone/touch_obj(obj/O, volume)
+/datum/reagent/toxin/plantbgone/on_touch_obj(obj/target, remaining, allocated, data, spread_between)
+	. = ..()
+	var/obj/O = target
 	if(istype(O, /obj/effect/plant))
 		qdel(O)
-	else if(istype(O, /obj/structure/alien/weeds/))
+	else if(istype(O, /obj/structure/alien/weeds))
 		var/obj/structure/alien/weeds/alien_weeds = O
 		alien_weeds.damage_integrity(15, 35)
 
@@ -1247,13 +1254,16 @@
 		if(prob(1))
 			H.asbestos_lung()
 
-
-/datum/reagent/asbestos/touch_turf(turf/T) //Great now the dust is airborne!
-	if(volume >= 20)
+/datum/reagent/asbestos/on_touch_turf(turf/target, remaining, allocated, data)
+	. = ..()
+	var/turf/T = target
+	if(allocated >= 20)
 		var/location = get_turf(holder.my_atom)
 		var/datum/effect_system/smoke_spread/chem/S = new /datum/effect_system/smoke_spread/chem
 		S.attach(location)
-		S.set_up(holder, volume * 0.05, 0, location) //This ghetto smoke solution is 1/8th as effecient as chemsmoke
+		var/datum/reagent_holder/copy_holder = new
+		copy_holder.add_reagent(id, allocated)
+		S.set_up(copy_holder, allocated * 0.05, 0, location) //This ghetto smoke solution is 1/8th as effecient as chemsmoke
 		playsound(location, 'sound/effects/smoke.ogg', 50, 1, -3)
 		spawn(0)
 			S.start()
