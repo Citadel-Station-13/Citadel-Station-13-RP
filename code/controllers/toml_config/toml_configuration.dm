@@ -27,6 +27,8 @@ GLOBAL_REAL(Configuration, /datum/controller/toml_configuration)
 	switch(var_name)
 		if(NAMEOF(src, keyed_entries))
 			return FALSE
+		if(NAMEOF(src, typed_entries))
+			return FALSE
 	return ..()
 
 /datum/controller/toml_configuration/New()
@@ -64,7 +66,7 @@ GLOBAL_REAL(Configuration, /datum/controller/toml_configuration)
  * * The value you get will be immediately consumed in a non-VV-able manner.
  */
 /datum/controller/toml_configuration/proc/get_sensitive_entry(datum/toml_config_entry/entry_type)
-	// todo: cache / optimize
+	// todo: cache / optimize maybe? would help to store everything in a vv-hidden list.
 	var/datum/toml_config_entry/entry = typed_entries[entry_type]
 	if(!entry)
 		return
@@ -79,7 +81,7 @@ GLOBAL_REAL(Configuration, /datum/controller/toml_configuration)
  * * The value you are passing in is trusted and validated and not a variable that can be tampered with.
  */
 /datum/controller/toml_configuration/proc/set_sensitive_entry(datum/toml_config_entry/entry_type, value)
-	// todo: cache / optimize
+	// todo: cache / optimize maybe? would help to store everything in a vv-hidden list.
 	var/datum/toml_config_entry/entry = typed_entries[entry_type]
 	if(!entry)
 		return
@@ -88,7 +90,7 @@ GLOBAL_REAL(Configuration, /datum/controller/toml_configuration)
 	entry.value = value
 
 /datum/controller/toml_configuration/proc/get_entry(datum/toml_config_entry/entry_type)
-	// todo: cache / optimize
+	// todo: cache / optimize maybe? would help to store everything in a vv-hidden list.
 	var/datum/toml_config_entry/entry = typed_entries[entry_type]
 	if(!entry)
 		return
@@ -97,7 +99,7 @@ GLOBAL_REAL(Configuration, /datum/controller/toml_configuration)
 	return entry.value
 
 /datum/controller/toml_configuration/proc/set_entry(datum/toml_config_entry/entry_type, value)
-	// todo: cache / optimize
+	// todo: cache / optimize maybe? would help to store everything in a vv-hidden list.
 	var/datum/toml_config_entry/entry = typed_entries[entry_type]
 	if(!entry)
 		return

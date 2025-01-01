@@ -109,7 +109,7 @@
 	lastKnownIP	= client.address
 	computer_id	= client.computer_id
 	log_access_in(client)
-	if(config_legacy.log_access)
+	if(Configuration.get_entry(/datum/toml_config_entry/backend/logging/toggles/access))
 		for(var/mob/M in GLOB.player_list)
 			if(M == src)	continue
 			if( M.key && (M.key != key) )
