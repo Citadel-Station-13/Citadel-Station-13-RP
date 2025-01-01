@@ -1268,7 +1268,7 @@
 			damage_force += parent.damage_force * effective_multiplier
 			damage_tier = max(damage_tier, parent.damage_tier)
 			// todo: proper collation for effects, not just an add and multiplier, maybe?
-			projectile_effect_multiplier = max(projectile_effect_multiplier, parent.projectile_effect_multiplier * effective_divisor)
+			projectile_effect_multiplier = max(projectile_effect_multiplier, parent.projectile_effect_multiplier * effective_multiplier)
 			if(parent.base_projectile_effects)
 				LAZYINITLIST(base_projectile_effects)
 				base_projectile_effects += parent.base_projectile_effects

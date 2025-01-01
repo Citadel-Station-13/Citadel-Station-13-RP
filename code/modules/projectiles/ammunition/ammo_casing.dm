@@ -26,6 +26,7 @@
 	/// Effective mass multiplier.
 	///
 	/// * This is used to calculate energy draw for magnetic weapons.
+	/// * Set this as a multiple of a parent type's multiplier.
 	var/effective_mass_multiplier = 1
 
 	//* Projectile *//

@@ -559,7 +559,7 @@
 			)
 
 	if(one_handed_penalty)
-		if(!src.is_held_twohanded(user))
+		if(!(item_flags & ITEM_MULTIHAND_WIELDED))
 			switch(one_handed_penalty)
 				if(1 to 15)
 					if(prob(50)) //don't need to tell them every single time
