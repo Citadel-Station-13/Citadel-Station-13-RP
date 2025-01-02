@@ -2923,7 +2923,7 @@
 /area/sector/delerictcasino/medical/public)
 "pq" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/paper/casino_atc,
+/obj/item/paper/casinoatc,
 /turf/simulated/floor/tiled/steel_dirty/dark{
 	outdoors = 1
 	},
@@ -4207,8 +4207,8 @@
 	},
 /area/sector/delerictcasino/maintenance)
 "wC" = (
-/obj/item/paper/casino_sec,
 /obj/structure/table/steel_reinforced,
+/obj/item/paper/casinosec,
 /turf/simulated/floor,
 /area/sector/delerictcasino/maintenance)
 "wH" = (
@@ -7355,7 +7355,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/item/paper/casino_lawsuit,
+/obj/item/paper/casinolawsuit,
 /turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
 /area/sector/delerictcasino/room/room1)
 "Ow" = (
@@ -8688,7 +8688,7 @@
 /area/sector/delerictcasino/commons)
 "Vu" = (
 /obj/structure/table/hardwoodtable,
-/obj/item/paper/casino_chip,
+/obj/item/paper/casinochips,
 /turf/simulated/floor/wood/indoors,
 /area/sector/delerictcasino/recpection)
 "Vz" = (
