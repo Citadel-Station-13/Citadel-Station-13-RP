@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { AnimatedNumber, LabeledList, NoticeBox, ProgressBar, Section } from '../components';
+import { AnimatedNumber, LabeledList, NoticeBox, ProgressBar, Section, Divider } from '../components';
 import { Window } from '../layouts';
 
 const damageTypes = [
@@ -112,6 +112,7 @@ const PatientStateView = (props, context) => {
           key={procedure.name}
           title={procedure.name}>
           <i>{procedure.currentStage}</i>
+          <Divider />
           <LabeledList>
             {Object.entries(procedure.nextSteps).map(([k, v]) => (
               <LabeledList.Item key={k} label={k}>

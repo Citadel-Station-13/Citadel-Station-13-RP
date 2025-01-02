@@ -289,11 +289,7 @@
 			/datum/surgery_step/cavity,
 			/datum/surgery_step/limb,
 			/datum/surgery_step/brainstem,
-			/datum/surgery_step/internal/detatch_organ,
-			/datum/surgery_step/internal/remove_organ,
-			/datum/surgery_step/internal/attach_organ,
-			/datum/surgery_step/internal/rip_organ,
-		) // exclude organ manipulation so people don't get spammed with organ removal prompts
+		)
 	good_surgeries = GLOB.surgery_steps
 	for(var/datum/surgery_step/S in good_surgeries)
 		if(S.type in banned_surgery_steps)
@@ -309,7 +305,17 @@
  */
 /obj/machinery/computer/operating/proc/find_next_steps(mob/user, zone)
 	. = list()
-	for(var/datum/surgery_step/S in get_surgery_steps_without_basetypes())
+	var/list/possible_next_steps = get_surgery_steps_without_basetypes()
+	// these steps prompt the player in can_use, don't call them every ui update
+	var/list/prompting_surgery_steps = list(
+			/datum/surgery_step/internal/detatch_organ,
+			/datum/surgery_step/internal/remove_organ,
+			/datum/surgery_step/internal/attach_organ,
+			/datum/surgery_step/internal/rip_organ,
+		)
+	for(var/datum/surgery_step/S in possible_next_steps)
+		if (S.type in prompting_surgery_steps)
+			continue
 		if(S.can_use(user, victim, zone, null) && S.is_valid_target(victim))
 			var/allowed_tools_by_name = list()
 			for(var/tool in S.allowed_tools)
@@ -320,5 +326,5 @@
 				allowed_tools_by_name += capitalize(initial(tool_path.name))
 			// Please for the love of all that is holy, someone make surgery steps
 			// have names so I don't have to do this stupid pretty_type shit.
-			. += list(english_list(allowed_tools_by_name) = pretty_type(S))
+			. += list(pretty_type(S) = english_list(allowed_tools_by_name))
 			// . += "[pretty_type(S)]: [english_list(allowed_tools_by_name)]"
