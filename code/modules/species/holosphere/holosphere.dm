@@ -99,10 +99,17 @@
 	var/mob/living/simple_mob/holosphere_shell/holosphere_shell
 	var/hologram_death_duration = 10 SECONDS
 
+	// what gear slots we initialised when spawning in for our chameleon gear, so we dont try override job gear with loadout gear
+	var/list/slots_used = list()
+
 /datum/species/holosphere/on_apply(mob/living/carbon/human/H)
 	. = ..()
 	RegisterSignal(H, COMSIG_CARBON_UPDATING_OVERLAY, PROC_REF(handle_hologram_overlays))
 	RegisterSignal(H, COMSIG_HUMAN_EQUIPPING_LOADOUT, PROC_REF(handle_hologram_loadout))
+
+	if(istype(H, /mob/living/carbon/human/dummy))
+		return
+
 	holosphere_shell = new(H)
 	transform_component = H.AddComponent(/datum/component/custom_transform, holosphere_shell, null, null, FALSE)
 	holosphere_shell.transform_component = transform_component

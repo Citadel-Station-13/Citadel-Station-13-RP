@@ -53,7 +53,6 @@
 	equip_loadout(source, loadout)
 
 /datum/species/holosphere/proc/equip_loadout(mob/living/carbon/human/H, list/datum/loadout_entry/loadout)
-	var/slots_used = list()
 	for(var/datum/loadout_entry/entry as anything in loadout)
 		var/use_slot = entry.slot
 		if(isnull(use_slot))
@@ -75,6 +74,27 @@
 			if(istype(chameleon_uniform))
 				chameleon_uniform.snowflake_worn_state = CLOTHING_BLANK_ICON_STATE
 			chameleon_item.update_worn_icon()
+
+/datum/species/holosphere/handle_species_job_outfit(mob/living/carbon/human/H, datum/outfit/outfit)
+	handle_specific_job_clothing(H, outfit.uniform, SLOT_ID_UNIFORM)
+	handle_specific_job_clothing(H, outfit.suit, SLOT_ID_SUIT)
+	handle_specific_job_clothing(H, outfit.back, SLOT_ID_BACK)
+	handle_specific_job_clothing(H, outfit.belt, SLOT_ID_BELT)
+	handle_specific_job_clothing(H, outfit.gloves, SLOT_ID_GLOVES)
+	handle_specific_job_clothing(H, outfit.shoes, SLOT_ID_SHOES)
+	handle_specific_job_clothing(H, outfit.mask, SLOT_ID_MASK)
+	handle_specific_job_clothing(H, outfit.head, SLOT_ID_HEAD)
+	handle_specific_job_clothing(H, outfit.glasses, SLOT_ID_GLASSES)
+
+	return TRUE
+
+/datum/species/holosphere/proc/handle_specific_job_clothing(mob/living/carbon/human/H, path, slot_id)
+	if(isnull(path)) return
+	var/obj/item/equipped = equipped_chameleon_gear[slot_id]
+	if(equipped)
+		equipped.disguise(path, H)
+		equipped.update_worn_icon()
+		slots_used += slot_id
 
 /mob/living/carbon/human/proc/switch_loadout_holosphere()
 	set name = "Switch Loadout (Holosphere)"
