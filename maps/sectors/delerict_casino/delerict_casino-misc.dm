@@ -15,7 +15,7 @@ Warning: While there is no regulation regarding visiting and scavenging operatio
 	in_space = 1
 	icon_state = "fueldepot"
 
-/obj/item/paper/casino_atc
+/obj/item/paper/casinoatc
 	name = "Faxed Letter - Final ATC note"
 	info = {"2568-08-25 - Destination - Hadii's Folley : Miaphus'irra : Outpost 7 'Grey Sand' village : House 12.\
 	 Hey, ill be heading back. Yes, even after that sector explosion I am still alive.\
@@ -24,7 +24,7 @@ Warning: While there is no regulation regarding visiting and scavenging operatio
 	 Was tasked to get the security system of the vault up and running, there might still be some valuable bits in there.\
 	 Ill see you soon, Lil sis. - Neruk Mri'Jan"}
 
-/obj/item/paper/casino_lawsuit
+/obj/item/paper/casinolawsuit
 	name = "Lawsuit Draft"
 	info = {"2568-08-22 - Destination - Orion Confederatie : Earth : London - 5 Vulcan Street.\
 	 (The documents itself seems to have been drench in water. However, a notes on the less damaged parts of the document are still readable).\
@@ -35,7 +35,7 @@ Warning: While there is no regulation regarding visiting and scavenging operatio
 	 I am affraid that I will have to sue the company. They are incopetent... We won't have our little space forrest in space, my dearest.\
 	 I will return in November, my love - Daren.L"}
 
-obj/item/paper/casino_chip
+obj/item/paper/casinochips
 	name = "Faxed Letter - URGENT - The 3 chips"
 	color = "#ffc42f"
 	info = {"- We have a issue. While the staff is being all dissmissed safely, and returned to their home with compensation like planned,\
@@ -49,8 +49,8 @@ obj/item/paper/casino_chip
 	Before I leave myself, may I command to our dear CEO : Why did we greenlit the use of encrypted poker chips instead of keycards ?\
 	Acting Director Swank"}
 
-obj/item/paper/casino_sec
-	name = "Not - Security System"
+obj/item/paper/casinosec
+	name = "Note - Security System"
 	info = {"Please use the 3 Security Casino Chip to open the shutter, they must be equipped to open the shutters. - Security Team"}
 
 // -- Mobs -- //
