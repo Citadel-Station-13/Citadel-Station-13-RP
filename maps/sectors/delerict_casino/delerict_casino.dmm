@@ -672,7 +672,9 @@
 /area/sector/delerictcasino/ringforrest)
 "dm" = (
 /obj/effect/shuttle_landmark{
-	name = "Pad 1a"
+	name = "Pad 1a";
+	base_area = /area/sector/delerictcasino/dock;
+	base_turf = /turf/simulated/floor/reinforced
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -709,7 +711,9 @@
 /area/sector/delerictcasino/ringforrest)
 "du" = (
 /obj/effect/shuttle_landmark{
-	name = "Pad 3d"
+	name = "Pad 3d";
+	base_area = /area/sector/delerictcasino/dock;
+	base_turf = /turf/simulated/floor/reinforced
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -1716,7 +1720,9 @@
 /area/sector/delerictcasino/ringforrest)
 "im" = (
 /obj/effect/shuttle_landmark{
-	name = "Pad 3b"
+	name = "Pad 3b";
+	base_area = /area/sector/delerictcasino/dock;
+	base_turf = /turf/simulated/floor/reinforced
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -1855,7 +1861,9 @@
 /area/sector/delerictcasino/crew)
 "iV" = (
 /obj/effect/shuttle_landmark{
-	name = "Pad 3a"
+	name = "Pad 3a";
+	base_area = /area/sector/delerictcasino/dock;
+	base_turf = /turf/simulated/floor/reinforced
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -1972,7 +1980,9 @@
 /area/sector/delerictcasino/crew)
 "jw" = (
 /obj/effect/shuttle_landmark{
-	name = "Pad 3k"
+	name = "Pad 3k";
+	base_area = /area/sector/delerictcasino/dock;
+	base_turf = /turf/simulated/floor/reinforced
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -2078,7 +2088,9 @@
 /area/sector/delerictcasino/ringforrest)
 "ka" = (
 /obj/effect/shuttle_landmark{
-	name = "Pad 3h"
+	name = "Pad 3h";
+	base_area = /area/sector/delerictcasino/dock;
+	base_turf = /turf/simulated/floor/reinforced
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -2797,7 +2809,9 @@
 /area/sector/delerictcasino/ringforrest)
 "oj" = (
 /obj/effect/shuttle_landmark{
-	name = "Pad 3e"
+	name = "Pad 3e";
+	base_area = /area/sector/delerictcasino/dock;
+	base_turf = /turf/simulated/floor/reinforced
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -3682,7 +3696,9 @@
 /area/sector/delerictcasino/ringforrest)
 "sR" = (
 /obj/effect/shuttle_landmark{
-	name = "Pad 3c"
+	name = "Pad 3c";
+	base_area = /area/sector/delerictcasino/dock;
+	base_turf = /turf/simulated/floor/reinforced
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -4154,7 +4170,9 @@
 /area/sector/delerictcasino/vault)
 "vs" = (
 /obj/effect/shuttle_landmark{
-	name = "Pad 2b"
+	name = "Pad 2b";
+	base_area = /area/sector/delerictcasino/dock;
+	base_turf = /turf/simulated/floor/reinforced
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -5211,7 +5229,9 @@
 /area/sector/delerictcasino/ringforrest)
 "AX" = (
 /obj/effect/shuttle_landmark{
-	name = "Pad 2d"
+	name = "Pad 2d";
+	base_area = /area/sector/delerictcasino/dock;
+	base_turf = /turf/simulated/floor/reinforced
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -5506,7 +5526,9 @@
 /area/sector/delerictcasino/room/room2)
 "CK" = (
 /obj/effect/shuttle_landmark{
-	name = "Pad 3f"
+	name = "Pad 3f";
+	base_area = /area/sector/delerictcasino/dock;
+	base_turf = /turf/simulated/floor/reinforced
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -6822,7 +6844,9 @@
 /area/sector/delerictcasino/ringforrest)
 "Kk" = (
 /obj/effect/shuttle_landmark{
-	name = "Pad 3g"
+	name = "Pad 3g";
+	base_area = /area/sector/delerictcasino/dock;
+	base_turf = /turf/simulated/floor/reinforced
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -7214,7 +7238,9 @@
 /area/sector/delerictcasino/dance)
 "Mx" = (
 /obj/effect/shuttle_landmark{
-	name = "Pad 2c"
+	name = "Pad 2c";
+	base_area = /area/sector/delerictcasino/dock;
+	base_turf = /turf/simulated/floor/reinforced
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -7235,7 +7261,9 @@
 /area/sector/delerictcasino/room/room5)
 "MD" = (
 /obj/effect/shuttle_landmark{
-	name = "Pad 2a"
+	name = "Pad 2a";
+	base_area = /area/sector/delerictcasino/dock;
+	base_turf = /turf/simulated/floor/reinforced
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -7743,7 +7771,9 @@
 /area/sector/delerictcasino/ringforrest)
 "Po" = (
 /obj/effect/shuttle_landmark{
-	name = "Pad 1c"
+	name = "Pad 1c";
+	base_area = /area/sector/delerictcasino/dock;
+	base_turf = /turf/simulated/floor/reinforced
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -8419,7 +8449,9 @@
 /area/sector/delerictcasino/ringforrest)
 "Th" = (
 /obj/effect/shuttle_landmark{
-	name = "Pad 1d"
+	name = "Pad 1d";
+	base_area = /area/sector/delerictcasino/dock;
+	base_turf = /turf/simulated/floor/reinforced
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -8907,6 +8939,14 @@
 /obj/item/paper/casinochips,
 /turf/simulated/floor/wood/indoors,
 /area/sector/delerictcasino/recpection)
+"Vv" = (
+/obj/effect/shuttle_landmark{
+	name = "Pad 1b";
+	base_area = /area/sector/delerictcasino/dock;
+	base_turf = /turf/simulated/floor/reinforced
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "Vz" = (
 /obj/structure/table/rack/shelf,
 /obj/item/electronic_assembly/drone/arms,
@@ -9307,12 +9347,6 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/dance)
-"XH" = (
-/obj/effect/shuttle_landmark{
-	name = "Pad 1b"
-	},
-/turf/simulated/floor/reinforced,
-/area/sector/delerictcasino/dock)
 "XI" = (
 /obj/structure/railing/grey,
 /obj/effect/floor_decal/industrial/halfstair{
@@ -25363,7 +25397,7 @@ ct
 ct
 ct
 ct
-ct
+Vv
 ct
 ct
 ct
@@ -25945,7 +25979,7 @@ ct
 ct
 ct
 ct
-XH
+ct
 ct
 ct
 ct
