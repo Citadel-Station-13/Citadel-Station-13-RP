@@ -2356,6 +2356,9 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
+/obj/machinery/newscaster{
+	pixel_y = 35
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/comroom)
 "agt" = (
@@ -2923,8 +2926,8 @@
 /obj/structure/bed/chair/comfy/brown{
 	dir = 8
 	},
-/obj/structure/closet/walllocker/emerglocker{
-	pixel_y = -32
+/obj/machinery/newscaster{
+	pixel_y = -28
 	},
 /turf/simulated/floor/carpet/patterened/blue,
 /area/shuttle/caravan)
@@ -6514,6 +6517,9 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/machinery/newscaster{
+	pixel_y = 35
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/adventurer)
 "ars" = (
@@ -6705,6 +6711,9 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
+/obj/machinery/newscaster{
+	pixel_y = 35
+	},
 /turf/simulated/floor/tiled/monodark,
 /area/tradeport/commhall)
 "arU" = (
@@ -6801,6 +6810,9 @@
 "asi" = (
 /obj/effect/floor_decal/corner_oldtile/blue{
 	dir = 5
+	},
+/obj/machinery/newscaster{
+	pixel_y = 35
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/engineering)
@@ -12883,6 +12895,9 @@
 /obj/structure/bed/chair/sofa/beige/left{
 	dir = 1
 	},
+/obj/structure/closet/walllocker/emerglocker{
+	pixel_y = -32
+	},
 /turf/simulated/floor/carpet/patterened/blue,
 /area/shuttle/caravan)
 "aHP" = (
@@ -16325,9 +16340,6 @@
 /turf/simulated/floor,
 /area/tradeport/pads)
 "aRn" = (
-/obj/structure/closet/walllocker/emerglocker{
-	pixel_y = -32
-	},
 /obj/machinery/light_switch{
 	dir = 1;
 	pixel_y = -24
@@ -21143,6 +21155,10 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
+/obj/machinery/newscaster{
+	pixel_x = -35;
+	pixel_y = 3
+	},
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/vip)
 "eKY" = (
@@ -22359,6 +22375,9 @@
 "ieG" = (
 /obj/structure/bed/chair/sofa/brown/right{
 	dir = 4
+	},
+/obj/machinery/newscaster{
+	pixel_y = -28
 	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/sector/nebula_tradeport/motel)
