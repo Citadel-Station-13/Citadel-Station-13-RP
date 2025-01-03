@@ -8,22 +8,22 @@
 	return new_alien
 
 /mob/living/carbon/human/xdrone
-	species = /datum/species/xenos/drone
+	species = /datum/species/xenomorph/drone
 	h_style = "Bald"
 	iff_factions = MOB_IFF_FACTION_XENOMORPH
 
 /mob/living/carbon/human/xsentinel
-	species = /datum/species/xenos/sentinel
+	species = /datum/species/xenomorph/sentinel
 	h_style = "Bald"
 	iff_factions = MOB_IFF_FACTION_XENOMORPH
 
 /mob/living/carbon/human/xhunter
-	species = /datum/species/xenos/hunter
+	species = /datum/species/xenomorph/hunter
 	h_style = "Bald"
 	iff_factions = MOB_IFF_FACTION_XENOMORPH
 
 /mob/living/carbon/human/xqueen
-	species = /datum/species/xenos/queen
+	species = /datum/species/xenomorph/queen
 	h_style = "Bald"
 	iff_factions = MOB_IFF_FACTION_XENOMORPH
 

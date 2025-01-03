@@ -62,7 +62,7 @@ GLOBAL_LIST_EMPTY(bioscan_antenna_list)
 	// todo: better xenomorphs
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		if(istype(H.species, /datum/species/xenos))
+		if(istype(H.species, /datum/species/xenomorph))
 			if(!network_key)
 				to_chat(H, SPAN_WARNING("[src] is already de-programmed."))
 			else
