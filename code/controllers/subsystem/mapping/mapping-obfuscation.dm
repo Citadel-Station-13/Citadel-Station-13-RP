@@ -1,5 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
+
+// todo: should all this be in SSmapping..?
 
 /**
  * Obfuscation module
