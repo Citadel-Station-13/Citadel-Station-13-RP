@@ -103,7 +103,6 @@
 	var/alien_to_human_ratio = 0.5
 	var/allow_extra_antags = 0
 	var/guests_allowed = 1
-	var/debugparanoid = 0
 	var/paranoia_logging = 0
 
 	var/serverurl
@@ -295,9 +294,6 @@
 
 				if ("log_say")
 					config_legacy.log_say = 1
-
-				if ("debug_paranoid")
-					config_legacy.debugparanoid = 1
 
 				if ("log_admin")
 					config_legacy.log_admin = 1
@@ -659,21 +655,6 @@
 				if("max_maint_drones")
 					config_legacy.max_maint_drones = text2num(value)
 
-				if("use_overmap")
-					config_legacy.use_overmap = 1
-/*
-				if("station_levels")
-					(LEGACY_MAP_DATUM).station_levels = text2numlist(value, ";")
-
-				if("admin_levels")
-					(LEGACY_MAP_DATUM).admin_levels = text2numlist(value, ";")
-
-				if("contact_levels")
-					(LEGACY_MAP_DATUM).contact_levels = text2numlist(value, ";")
-
-				if("player_levels")
-					(LEGACY_MAP_DATUM).player_levels = text2numlist(value, ";")
-*/
 				if("expected_round_length")
 					config_legacy.expected_round_length = MinutesToTicks(text2num(value))
 

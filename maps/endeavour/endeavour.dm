@@ -27,6 +27,11 @@
 		/datum/map/sector/roguemining_192/one,
 	)
 
+	create_struct = TRUE
+	overmap_initializer = /datum/overmap_initializer/struct{
+		legacy_entity_type = /obj/overmap/entity/visitable/ship/endeavour;
+	}
+
 	// todo: remove after dev is done
 	allow_random_draw = FALSE
 
@@ -146,6 +151,7 @@
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 	)
+	struct_create_pos = "0,0,0"
 	base_turf = /turf/space
 	link_below = /datum/map_level/endeavour/ship/deck_two
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
@@ -160,6 +166,7 @@
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 	)
+	struct_create_pos = "0,0,1"
 	base_turf = /turf/simulated/open
 	link_below = /datum/map_level/endeavour/ship/deck_three
 	link_above = /datum/map_level/endeavour/ship/deck_one
@@ -176,6 +183,7 @@
 		ZTRAIT_FACILITY_SAFETY,
 		ZTRAIT_LEGACY_BELTER_DOCK,
 	)
+	struct_create_pos = "0,0,2"
 	base_turf = /turf/simulated/open
 	link_below = /datum/map_level/endeavour/ship/deck_four
 	link_above = /datum/map_level/endeavour/ship/deck_two
@@ -191,6 +199,7 @@
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 	)
+	struct_create_pos = "0,0,3"
 	base_turf = /turf/simulated/open
 	link_above = /datum/map_level/endeavour/ship/deck_three
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES

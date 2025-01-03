@@ -100,7 +100,7 @@
 		return
 
 	generate_data(check_whitelist, whitelist, blacklist)
-	var/list/data = host.initial_data()
+	var/list/data = host.initial_nano_data()
 
 	data["specimen"] = owner.species.name
 	data["gender"] = owner.gender

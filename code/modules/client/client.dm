@@ -139,6 +139,11 @@
 	/// Our actor HUD holder
 	var/datum/actor_hud_holder/actor_huds
 
+	//* Upload *//
+	/// currently prompting for upload
+	VAR_PRIVATE/upload_mutex = FALSE
+	/// current upload prompt's max file size
+	VAR_PRIVATE/upload_current_sizelimit
 
 		////////////////
 		//ADMIN THINGS//
