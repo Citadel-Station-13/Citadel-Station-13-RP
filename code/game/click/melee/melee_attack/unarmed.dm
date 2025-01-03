@@ -58,10 +58,9 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 /datum/melee_attack/unarmed/perform_attack_message(atom/movable/attacker, atom/target, missed)
 	if(missed)
 		return ..()
-	attacker.visible_feedback(
-		target = target,
+	attacker.visible_message(
+		SPAN_DANGER("[target] has been [islist(style.verb_past_participle)? pick(style.verb_past_participle) : style.verb_past_participle] by [clickchain.performer]!")
 		range = MESSAGE_RANGE_COMBAT_LOUD,
-		visible = SPAN_DANGER("[target] has been [islist(style.verb_past_participle)? pick(style.verb_past_participle) : style.verb_past_participle] by [clickchain.performer]!")
 	)
 	return TRUE
 

@@ -60,11 +60,14 @@
 
 	// -- resolve our side --
 
+	var/missed = FALSE
 	sort_of_legacy_imprint_upon_melee_clickchain(clickchain)
 
-	// -- call on them --
-	. = clickchain.target.unarmed_melee_act(src, style, clickchain.target_zone, clickchain)
-	var/missed = . & CLICKCHAIN_ATTACK_MISSED
+	// -- call on them (if we didn't miss / get called off already) --
+
+	if(!missed)
+		. = clickchain.target.unarmed_melee_act(src, style, clickchain.target_zone, clickchain)
+		missed = . & CLICKCHAIN_ATTACK_MISSED
 
 	// -- react to return --
 	style.perform_attack_animation(src, clickchain.target, missed)

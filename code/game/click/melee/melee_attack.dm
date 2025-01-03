@@ -33,10 +33,9 @@
  */
 /datum/melee_attack/proc/perform_attack_message(atom/movable/attacker, atom/target, missed)
 	if(missed)
-		clickchain.visible_feedback(
-			target = target,
+		attacker.visible_message(
+			SPAN_WARNING("[src] swings for [target], but misses!"),
 			range = MESSAGE_RANGE_COMBAT_LOUD,
-			visible = SPAN_WARNING("[src] swings for [target], but misses!"),
 		)
 		return TRUE
 	return FALSE
