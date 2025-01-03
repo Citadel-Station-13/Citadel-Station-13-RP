@@ -370,7 +370,7 @@
 				qdel(E)
 			W.visible_message("<span class='notice'>The fungi are completely dissolved by the solution!</span>")
 
-/datum/reagent/toxin/plantbgone/on_touch_obj(obj/target, remaining, allocated, data, spread_between)
+/datum/reagent/toxin/plantbgone/on_touch_obj(obj/target, remaining, allocated, data)
 	. = ..()
 	var/obj/O = target
 	if(istype(O, /obj/effect/plant))
@@ -396,11 +396,12 @@
 	color = "#8FB97C"
 	strength = 4
 
-/datum/reagent/toxin/pestbgone/touch_obj(mob/living/simple_mob/animal/A, removed)
-	if(istype(A, /mob/living/simple_mob/animal/roach))
-		A.adjustToxLoss(10 * removed)
-	else if(istype(A, /mob/living/simple_mob/animal/giant_spider))
-		A.adjustToxLoss(5 * removed)
+/datum/reagent/toxin/pestbgone/on_touch_mob(mob/target, remaining, allocated, data, zone)
+	. = ..()
+	if(istype(target, /mob/living/simple_mob/animal/roach))
+		target.adjustToxLoss(10 * removed)
+	else if(istype(target, /mob/living/simple_mob/animal/giant_spider))
+		target.adjustToxLoss(5 * removed)
 
 /datum/reagent/toxin/pestbgone/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_APIDAEN)

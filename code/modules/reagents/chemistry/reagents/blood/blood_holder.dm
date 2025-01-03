@@ -106,7 +106,7 @@
  *
  * @return amount erased
  */
-/datum/blood_holder/proc/erase_checked_amount(amount)
+/datum/blood_holder/proc/checked_erase(amount)
 	var/total = host_blood_volume + guest_blood_volume
 	if(amount < total)
 		return 0
@@ -122,7 +122,7 @@
  *
  * @return amount erased
  */
-/datum/blood_holder/proc/erase_amount(amount)
+/datum/blood_holder/proc/erase(amount)
 	var/total = host_blood_volume + guest_blood_volume
 	var/multiplier = max(0, 1 - (amount / total))
 	. = min(amount, total)
@@ -169,5 +169,13 @@
 	if(!guest_blood_volume)
 		guest_bloods.len = 0
 	return creating
+
+/**
+ * assimilate all guest bloods immediately
+ */
+/datum/blood_holder/proc/do_immediate_assimilate_all()
+	host_blood_volume += max(0, guest_blood_volume)
+	guest_blood_volume = 0
+	guest_bloods = list()
 
 #warn how to handle color? compute_color_from_data, don't forget!

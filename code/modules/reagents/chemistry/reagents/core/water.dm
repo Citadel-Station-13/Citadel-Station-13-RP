@@ -39,7 +39,7 @@
 			var/turf/simulated/simulated_target = target
 			simulated_target.wet_floor(1)
 
-/datum/reagent/water/on_touch_obj(obj/target, remaining, allocated, data, spread_between)
+/datum/reagent/water/on_touch_obj(obj/target, remaining, allocated, data)
 	if(istype(target, /obj/item/reagent_containers/food/snacks/monkeycube))
 		var/obj/item/reagent_containers/food/snacks/monkeycube/cube = target
 		if(!cube.wrapped)

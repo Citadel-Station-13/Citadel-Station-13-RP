@@ -25,9 +25,12 @@
 	glass_name = "ethanol"
 	glass_desc = "A well-known alcohol with a variety of applications."
 
-/datum/reagent/ethanol/touch_mob(mob/living/L, amount)
+/datum/reagent/ethanol/on_touch_carbon(mob/living/carbon/target, remaining, allocated, data, zone, obj/item/organ/external/limb)
+	. = ..()
+
+	var/mob/living/L = target
 	if(istype(L))
-		L.adjust_fire_stacks(amount / 15)
+		L.adjust_fire_stacks(allocated / 15)
 
 #define ABV (proof/200)
 
@@ -135,14 +138,17 @@
 		M.setHallucination(max(M.hallucination, halluci))
 	return
 
-/datum/reagent/ethanol/touch_obj(obj/O)
+/datum/reagent/ethanol/on_touch_obj(obj/target, remaining, allocated, data)
+	. = ..()
+
+	var/obj/O = target
 	if(istype(O, /obj/item/paper))
 		var/obj/item/paper/paperaffected = O
 		paperaffected.clearpaper()
 		to_chat(usr, "The solution dissolves the ink on the paper.")
 		return
 	if(istype(O, /obj/item/book))
-		if(volume < 5)
+		if(allocated < 5)
 			return
 		if(istype(O, /obj/item/book/tome))
 			to_chat(usr, "<span class='notice'>The solution does nothing. Whatever this is, it isn't normal ink.</span>")

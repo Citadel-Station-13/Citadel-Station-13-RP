@@ -6,7 +6,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#F2F3F4"
 
-/datum/reagent/luminol/on_touch_obj(obj/target, remaining, allocated, data, spread_between)
+/datum/reagent/luminol/on_touch_obj(obj/target, remaining, allocated, data)
 	target.reveal_blood()
 	return ..()
 

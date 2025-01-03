@@ -19,12 +19,11 @@
 	if(!blood_holder)
 		return
 
+	blood_holder.set_host_fragment_to(create_natural_blood_fragment())
+	blood_holder.do_immediate_assimilate_all()
 	if(!do_not_regenerate)
 		blood_holder.set_host_volume(species.blood_volume)
-		#warn erase all others, combine volumes
 
-	blood_holder.set_host_fragment_to(create_natural_blood_fragment())
-	#warn erase all others, combine volumes
 
 /**
  * Imprint ourselves on an outgoing blood mixture.
@@ -71,7 +70,7 @@
  * @return amount erased
  */
 /mob/living/carbon/proc/erase_checked_blood(amount) as num
-	return blood_holder.erase_checked_amount(amount)
+	return blood_holder.checked_erase(amount)
 
 /**
  * [take_mixture] but fast,
@@ -81,7 +80,7 @@
  * @return amount erased
  */
 /mob/living/carbon/proc/erase_blood(amount) as num
-	return blood_holder.erase_amount(amount)
+	return blood_holder.erase(amount)
 
 
 /**

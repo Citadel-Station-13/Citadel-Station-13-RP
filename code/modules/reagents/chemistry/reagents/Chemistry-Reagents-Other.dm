@@ -84,7 +84,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#C7FFFF"
 
-/datum/reagent/silicate/on_touch_obj(obj/target, remaining, allocated, data, spread_between)
+/datum/reagent/silicate/on_touch_obj(obj/target, remaining, allocated, data)
 	. = ..()
 	if(istype(target, /obj/structure/window))
 		var/obj/structure/window/W = target

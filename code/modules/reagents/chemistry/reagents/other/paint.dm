@@ -20,7 +20,7 @@
 	. += ..()
 
 // todo: rework
-/datum/reagent/paint/on_touch_obj(obj/target, remaining, allocated, data, spread_between)
+/datum/reagent/paint/on_touch_obj(obj/target, remaining, allocated, data)
 	target.color = compute_color_with_data(data)
 	. = allocated
 	allocated -= allocated

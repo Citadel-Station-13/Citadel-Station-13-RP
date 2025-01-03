@@ -40,14 +40,20 @@
 /datum/reagent/modapplying/cryofluid/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	legacy_affect_blood(M, alien, removed * 0.6, metabolism)
 
-/datum/reagent/modapplying/cryofluid/touch_mob(mob/M, amount)
+/datum/reagent/modapplying/cryofluid/on_touch_mob(mob/target, remaining, allocated, data, zone)
+	. = ..()
+
+	var/mob/M = target
 	if(isliving(M))
 		var/mob/living/L = M
-		for(var/I = 1 to rand(1, round(amount + 1)))
-			L.add_modifier(modifier_to_add, amount * rand(modifier_duration / 2, modifier_duration * 2))
+		for(var/I = 1 to rand(1, round(allocated + 1)))
+			L.add_modifier(modifier_to_add, allocated * rand(modifier_duration / 2, modifier_duration * 2))
 
-/datum/reagent/modapplying/cryofluid/touch_turf(turf/T, amount)
-	if(istype(T, /turf/simulated/floor/water) && prob(amount))
+/datum/reagent/modapplying/cryofluid/on_touch_turf(turf/target, remaining, allocated, data)
+	. = ..()
+
+	var/turf/T = target
+	if(istype(T, /turf/simulated/floor/water) && prob(allocated))
 		T.visible_message("<span class='danger'>\The [T] crackles loudly as the cryogenic fluid causes it to boil away, leaving behind a hard layer of ice.</span>")
 		T.ChangeTurf(/turf/simulated/floor/outdoors/ice, 1, 1, TRUE)
 	else

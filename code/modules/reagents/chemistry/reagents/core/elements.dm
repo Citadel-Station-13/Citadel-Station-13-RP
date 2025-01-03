@@ -36,14 +36,17 @@
 				continue
 			M.ingested.remove_reagent(R.id, removed * effect)
 
-/datum/reagent/carbon/touch_turf(turf/T)
+/datum/reagent/carbon/on_touch_turf(turf/target, remaining, allocated, data)
+	. = ..()
+
+	var/turf/T = target
 	if(!istype(T, /turf/space))
 		var/obj/effect/debris/cleanable/dirt/dirtoverlay = locate(/obj/effect/debris/cleanable/dirt, T)
 		if (!dirtoverlay)
 			dirtoverlay = new/obj/effect/debris/cleanable/dirt(T)
-			dirtoverlay.alpha = volume * 30
+			dirtoverlay.alpha = allocated * 30
 		else
-			dirtoverlay.alpha = min(dirtoverlay.alpha + volume * 30, 255)
+			dirtoverlay.alpha = min(dirtoverlay.alpha + allocated * 30, 255)
 
 /datum/reagent/chlorine
 	name = "Chlorine"
@@ -205,13 +208,15 @@
 			if(prob(5))
 				M.antibodies |= V.antigen
 
-/datum/reagent/radium/touch_turf(turf/T)
-	if(volume >= 3)
+/datum/reagent/radium/on_touch_turf(turf/target, remaining, allocated, data)
+	. = ..()
+
+	var/turf/T = target
+	if(allocated >= 3)
 		if(!istype(T, /turf/space))
 			var/obj/effect/debris/cleanable/greenglow/glow = locate(/obj/effect/debris/cleanable/greenglow, T)
 			if(!glow)
 				new /obj/effect/debris/cleanable/greenglow(T)
-			return
 
 /datum/reagent/silicon
 	name = "Silicon"

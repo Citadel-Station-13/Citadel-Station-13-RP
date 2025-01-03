@@ -108,21 +108,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	/// forced sort ordering in its category - falls back to name otherwise.
 	var/wiki_sort = 0
 
-#warn annihilate
-/// This doesn't apply to skin contact - this is for, e.g. extinguishers and sprays. The difference is that reagent is not directly on the mob's skin - it might just be on their clothing.
-/datum/reagent/proc/touch_mob(mob/M, amount)
-	SHOULD_NOT_OVERRIDE(TRUE)
-
-#warn annihilate
-/// Acid melting, cleaner cleaning, etc
-/datum/reagent/proc/touch_obj(obj/O, amount)
-	SHOULD_NOT_OVERRIDE(TRUE)
-
-#warn annihilate
-/// Cleaner cleaning, lube lubbing, etc, all go here
-/datum/reagent/proc/touch_turf(turf/T, amount)
-	SHOULD_NOT_OVERRIDE(TRUE)
-
 /// Currently, on_mob_life is called on carbons. Any interaction with non-carbon mobs (lube) will need to be done in touch_mob.
 /datum/reagent/proc/on_mob_life(var/mob/living/carbon/M, var/alien, var/datum/reagent_holder/metabolism/location, speed_mult = 1, force_allow_dead)
 	if(!istype(M))
@@ -350,6 +335,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 //* Holder - Application *//
 
+#warn hook all
+
 /**
  * Called when we're sprayed / splashed onto an obj
  *
@@ -364,7 +351,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  *
  * @return amount used, if any
  */
-/datum/reagent/proc/on_touch_obj(obj/target, remaining, allocated, data, spread_between)
+/datum/reagent/proc/on_touch_obj(obj/target, remaining, allocated, data)
 	return 0
 
 /**
@@ -395,7 +382,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  *               it might be useful to subtract from this in overrides before invoking ..() sometimes.
  * * data - our reagent data, if any
  * * zone - (optional) the body zone targeted
- * * limb - (optional) the external organ splashed onto.
  *
  * @return amount used, if any
  */

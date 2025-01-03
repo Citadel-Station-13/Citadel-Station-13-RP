@@ -1229,7 +1229,7 @@
 	M.add_chemical_effect(CE_ANTIBIOTIC, metabolism.total_processed_dose >= overdose ? ANTIBIO_OD : ANTIBIO_NORM)
 	M.ceiling_chemical_effect(CE_PAINKILLER, 20) // 5 less than paracetamol.
 
-/datum/reagent/spacomycaze/on_touch_obj(obj/target, remaining, allocated, data, spread_between)
+/datum/reagent/spacomycaze/on_touch_obj(obj/target, remaining, allocated, data)
 	if(istype(target, /obj/item/stack/medical/crude_pack) && round(allocated) >= 1)
 		var/obj/item/stack/medical/crude_pack/C = target
 		var/packname = C.name
@@ -1266,7 +1266,7 @@
 		M.adjustFireLoss(removed)
 		M.adjustToxLoss(2 * removed)
 
-/datum/reagent/sterilizine/on_touch_obj(obj/target, remaining, allocated, data, spread_between)
+/datum/reagent/sterilizine/on_touch_obj(obj/target, remaining, allocated, data)
 	. = ..()
 	target.germ_level -= min(allocated * 20, target.germ_level)
 	target.was_bloodied = null
