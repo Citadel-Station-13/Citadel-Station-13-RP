@@ -69,8 +69,8 @@
 		if(!metal)
 			F.create_reagents(10)
 			if(reagents)
-				for(var/datum/reagent/R in reagents.reagent_list)
-					F.reagents.add_reagent(R.id, 1, null, TRUE)
+				for(var/id in reagents.reagent_volumes)
+					F.reagents.add_reagent(id, 1, null, TRUE)
 
 /obj/effect/foam/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume) // foam disolves when heated, except metal foams
 	if(!metal && prob(max(0, exposed_temperature - 475)))

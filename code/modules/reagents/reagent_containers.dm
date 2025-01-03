@@ -8,10 +8,17 @@
 
 	/// start reagent list. overrides reagent/volume. list(id = volume); volume must be specified.
 	var/list/start_with
+	/// start reagent datas. only checked if [start_with] is set. list(id = data). this is optional.
+	#warn hook
+	var/list/start_with_data_initializers
 	/// start reagent id or path
 	var/start_reagent
 	/// start reagent amount. null for max.
 	var/start_volume
+	/// start reagent data initializer
+	#warn hook
+	var/start_data_initializer
+
 	/// volume of our default reagents holder
 	var/volume = 30
 	/// automatically rename to [[start_reagent]]

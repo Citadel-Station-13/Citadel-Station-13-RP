@@ -321,13 +321,13 @@
 			set_pin_data(IC_OUTPUT, 7, H.getToxLoss())
 			set_pin_data(IC_OUTPUT, 8, H.getOxyLoss())
 			set_pin_data(IC_OUTPUT, 9, H.getCloneLoss())
-			set_pin_data(IC_OUTPUT, 10, round((H.vessel.get_reagent_amount("blood") / H.species.blood_volume)*100))
+			set_pin_data(IC_OUTPUT, 10, round((H.blood_holder.get_total_volume() / H.species.blood_volume)*100))
 			set_pin_data(IC_OUTPUT, 11, H.traumatic_shock)
 			set_pin_data(IC_OUTPUT, 12, H.radiation)
 			set_pin_data(IC_OUTPUT, 13, H.nutrition)
 			var/cont[0]
 			var/amt[0]
-			for(var/datum/reagent/RE in H.reagents.reagent_list)
+			for(var/datum/reagent/RE in H.reagents.get_reagent_datums())
 				if(RE.scannable || advscan >= 3)
 					cont += RE.id
 					amt	+= round(H.reagents.get_reagent_amount(RE.id), 1)

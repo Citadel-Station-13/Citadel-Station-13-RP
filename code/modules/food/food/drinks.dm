@@ -17,8 +17,8 @@
 	var/custom_open_sound
 
 /obj/item/reagent_containers/food/drinks/on_reagent_change()
-	if (reagents.reagent_list.len > 0)
-		var/datum/reagent/R = reagents.get_master_reagent()
+	if (reagents.total_volume)
+		var/datum/reagent/R = reagents.get_majority_reagent_datum()
 		if(R.price_tag)
 			price_tag = R.price_tag
 		else
@@ -94,7 +94,7 @@
 	else
 		. += "<span class='notice'>\The [src] is full!</span>"
 	if(reagents)
-		var/datum/reagent/ethanol/R = locate() in reagents.reagent_list
+		var/datum/reagent/ethanol/R = locate() in reagents.get_reagent_datums()
 		if(istype(R))
 			. += "<span class='notice'>It contains alcohol.</span>"
 

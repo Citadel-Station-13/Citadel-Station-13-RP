@@ -80,7 +80,7 @@
 		/obj/item/seeds/shandseed = 2,
 	)
 	premium = list(
-		/obj/item/toy/waterflower = 1,
+		/obj/item/reagent_containers/spray/waterflower = 1,
 		/obj/item/toy/gnome = 1,
 	)
 
