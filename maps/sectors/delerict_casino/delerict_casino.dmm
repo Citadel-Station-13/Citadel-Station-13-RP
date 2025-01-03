@@ -674,7 +674,8 @@
 /obj/effect/shuttle_landmark{
 	name = "Pad 1a";
 	base_area = /area/sector/delerictcasino/dock;
-	base_turf = /turf/simulated/floor/reinforced
+	base_turf = /turf/simulated/floor/reinforced;
+	landmark_tag = "casinopad1a"
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -713,7 +714,8 @@
 /obj/effect/shuttle_landmark{
 	name = "Pad 3d";
 	base_area = /area/sector/delerictcasino/dock;
-	base_turf = /turf/simulated/floor/reinforced
+	base_turf = /turf/simulated/floor/reinforced;
+	landmark_tag = "casinopad3d"
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -1722,7 +1724,8 @@
 /obj/effect/shuttle_landmark{
 	name = "Pad 3b";
 	base_area = /area/sector/delerictcasino/dock;
-	base_turf = /turf/simulated/floor/reinforced
+	base_turf = /turf/simulated/floor/reinforced;
+	landmark_tag = "casinopad3b"
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -1863,7 +1866,8 @@
 /obj/effect/shuttle_landmark{
 	name = "Pad 3a";
 	base_area = /area/sector/delerictcasino/dock;
-	base_turf = /turf/simulated/floor/reinforced
+	base_turf = /turf/simulated/floor/reinforced;
+	landmark_tag = "casinopad3a"
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -1982,7 +1986,8 @@
 /obj/effect/shuttle_landmark{
 	name = "Pad 3k";
 	base_area = /area/sector/delerictcasino/dock;
-	base_turf = /turf/simulated/floor/reinforced
+	base_turf = /turf/simulated/floor/reinforced;
+	landmark_tag = "casinopad3k"
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -2090,7 +2095,8 @@
 /obj/effect/shuttle_landmark{
 	name = "Pad 3h";
 	base_area = /area/sector/delerictcasino/dock;
-	base_turf = /turf/simulated/floor/reinforced
+	base_turf = /turf/simulated/floor/reinforced;
+	landmark_tag = "casinopad3h"
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -2811,7 +2817,8 @@
 /obj/effect/shuttle_landmark{
 	name = "Pad 3e";
 	base_area = /area/sector/delerictcasino/dock;
-	base_turf = /turf/simulated/floor/reinforced
+	base_turf = /turf/simulated/floor/reinforced;
+	landmark_tag = "casinopad3e"
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -3698,7 +3705,8 @@
 /obj/effect/shuttle_landmark{
 	name = "Pad 3c";
 	base_area = /area/sector/delerictcasino/dock;
-	base_turf = /turf/simulated/floor/reinforced
+	base_turf = /turf/simulated/floor/reinforced;
+	landmark_tag = "casinopad3c"
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -4172,7 +4180,8 @@
 /obj/effect/shuttle_landmark{
 	name = "Pad 2b";
 	base_area = /area/sector/delerictcasino/dock;
-	base_turf = /turf/simulated/floor/reinforced
+	base_turf = /turf/simulated/floor/reinforced;
+	landmark_tag = "casinopad2b"
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -5231,7 +5240,8 @@
 /obj/effect/shuttle_landmark{
 	name = "Pad 2d";
 	base_area = /area/sector/delerictcasino/dock;
-	base_turf = /turf/simulated/floor/reinforced
+	base_turf = /turf/simulated/floor/reinforced;
+	landmark_tag = "casinopad2d"
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -5528,7 +5538,8 @@
 /obj/effect/shuttle_landmark{
 	name = "Pad 3f";
 	base_area = /area/sector/delerictcasino/dock;
-	base_turf = /turf/simulated/floor/reinforced
+	base_turf = /turf/simulated/floor/reinforced;
+	landmark_tag = "casinopad3f"
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -6846,7 +6857,8 @@
 /obj/effect/shuttle_landmark{
 	name = "Pad 3g";
 	base_area = /area/sector/delerictcasino/dock;
-	base_turf = /turf/simulated/floor/reinforced
+	base_turf = /turf/simulated/floor/reinforced;
+	landmark_tag = "casinopad3g"
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -7240,7 +7252,8 @@
 /obj/effect/shuttle_landmark{
 	name = "Pad 2c";
 	base_area = /area/sector/delerictcasino/dock;
-	base_turf = /turf/simulated/floor/reinforced
+	base_turf = /turf/simulated/floor/reinforced;
+	landmark_tag = "casinopad2c"
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -7263,7 +7276,8 @@
 /obj/effect/shuttle_landmark{
 	name = "Pad 2a";
 	base_area = /area/sector/delerictcasino/dock;
-	base_turf = /turf/simulated/floor/reinforced
+	base_turf = /turf/simulated/floor/reinforced;
+	landmark_tag = "casinopad2a"
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -7773,7 +7787,8 @@
 /obj/effect/shuttle_landmark{
 	name = "Pad 1c";
 	base_area = /area/sector/delerictcasino/dock;
-	base_turf = /turf/simulated/floor/reinforced
+	base_turf = /turf/simulated/floor/reinforced;
+	landmark_tag = "casinopad1c"
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -8451,7 +8466,8 @@
 /obj/effect/shuttle_landmark{
 	name = "Pad 1d";
 	base_area = /area/sector/delerictcasino/dock;
-	base_turf = /turf/simulated/floor/reinforced
+	base_turf = /turf/simulated/floor/reinforced;
+	landmark_tag = "casinopad1d"
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -8943,7 +8959,8 @@
 /obj/effect/shuttle_landmark{
 	name = "Pad 1b";
 	base_area = /area/sector/delerictcasino/dock;
-	base_turf = /turf/simulated/floor/reinforced
+	base_turf = /turf/simulated/floor/reinforced;
+	landmark_tag = "casinopad1b"
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
