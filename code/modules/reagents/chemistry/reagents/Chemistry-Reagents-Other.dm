@@ -73,7 +73,7 @@
 	if(!istype(target, /turf/simulated))
 		return
 	var/turf/simulated/T = target
-	if(volume >= 1)
+	if(allocated >= 1)
 		T.wet_floor(2)
 
 /datum/reagent/silicate

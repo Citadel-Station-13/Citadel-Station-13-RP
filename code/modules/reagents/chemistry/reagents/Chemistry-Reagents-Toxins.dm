@@ -60,7 +60,7 @@
 	. = ..()
 	var/mob/living/L = target
 	if(istype(L))
-		L.adjust_fire_stacks(amount / fire_mult)
+		L.adjust_fire_stacks(allocated / fire_mult)
 
 /datum/reagent/toxin/hydrophoron/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.take_random_targeted_damage(brute = 0, brute = removed * 0.1) //being splashed directly with hydrophoron causes minor chemical burns

@@ -1580,7 +1580,7 @@
 	overdose = 16
 
 /datum/reagent/neuratrextate/legacy_affect_ingest(mob/living/carbon/M, datum/reagent_metabolism/metabolism)
-	remove_self(30)
+	metabolism.legacy_current_holder.remove_reagent(id, 30)
 	to_chat(M, "<span class='warning'>It feels like there's a pile of knives in your stomach!</span>")
 	M.druggy = max(M.druggy, 10)
 	M.vomit()

@@ -51,7 +51,7 @@
 			to_chat(M, "<span class='danger'>You feel your leaves start to wilt.</span>")
 		strength_mod *=5 //cit change - alcohol ain't good for plants
 
-	var/effective_dose = volume * strength_mod * ABV * min(1,dose*(ETHANOL_MET_DIVISOR/10)) // give it 50 ticks to ramp up
+	var/effective_dose = metabolism.legacy_volume_remaining * strength_mod * ABV * min(1,metabolism.total_processed_dose*(ETHANOL_MET_DIVISOR/10)) // give it 50 ticks to ramp up
 	M.add_chemical_effect(CE_ALCOHOL, 1)
 	if(HAS_TRAIT(M, TRAIT_ALCOHOL_INTOLERANT))
 		if(proof > 0)
@@ -103,23 +103,25 @@
 				if(7)
 					to_chat(M,SPAN_USERDANGER("You are getting dangerously drunk![hydration_str]"))
 	var/hydration_removal=(clamp((M.hydration-150)/300,0,1)*effect_level) + max(0,(M.hydration-450)/300)
+	var/removed = 0
 	if(hydration_removal>0)
 		M.adjust_hydration(-hydration_removal)
-		volume-=removed*hydration_removal*3
+		removed += removed*hydration_removal*3
 	if(effect_level>=4 && prob(effect_level-2))
 		M.Confuse(60)
 	if(effect_level>=5 && prob(effect_level-4) && !M.lastpuke)
 		M.vomit(1,0)
 		if(M.nutrition>=100)
-			volume-=DOSE_LEVEL/4
+			removed += DOSE_LEVEL/4
 	if(effect_level>=6 && prob(effect_level-5))
 		M.drowsyness=max(M.drowsyness,60)
 	if(effect_level>=7)
 		M.add_chemical_effect(CE_ALCOHOL_TOXIC, toxicity*strength_mod)
-		if(volume>DOSE_LEVEL*7)
-			volume-=REM // liver working overtime, or whatever (mostly to prevent people from always just dying from this)
+		if(metabolism.legacy_volume_remaining>DOSE_LEVEL*7)
+			removed += REM // liver working overtime, or whatever (mostly to prevent people from always just dying from this)
+	if(removed)
+		metabolism.legacy_current_holder.remove_reagent(id, removed)
 	#undef DOSE_LEVEL
-	return
 
 /datum/reagent/ethanol/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(issmall(M)) removed *= 2

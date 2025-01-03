@@ -51,5 +51,7 @@
 			S.adjustToxLoss(amt)
 			S.visible_message("<span class='warning'>[S]'s flesh sizzles where the foam touches it!</span>", "<span class='danger'>Your flesh burns in the foam!</span>")
 
-	M.adjust_fire_stacks(-allocated)
-	M.ExtinguishMob()
+	if(isliving(target))
+		var/mob/living/L = target
+		L.adjust_fire_stacks(-allocated)
+		L.ExtinguishMob()
