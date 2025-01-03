@@ -2202,6 +2202,7 @@
 	id_tag = "trade_space_lock";
 	pixel_x = -25
 	},
+/obj/effect/shuttle_landmark/trade/hangar,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "agc" = (
@@ -21743,7 +21744,6 @@
 	pixel_x = -25
 	},
 /obj/overmap/entity/visitable/ship/landable/trade,
-/obj/effect/shuttle_landmark/trade/hangar,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "gLI" = (
