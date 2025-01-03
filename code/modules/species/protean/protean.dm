@@ -70,8 +70,9 @@
 	has_organ = list(
 		O_BRAIN = /obj/item/organ/internal/mmi_holder/posibrain/nano,
 		O_ORCH = /obj/item/organ/internal/nano/orchestrator,
-		O_FACT = /obj/item/organ/internal/nano/refactory
+		O_FACT = /obj/item/organ/internal/nano/refactory/loaded,
 		)
+
 	vision_organ = O_BRAIN
 	has_limbs = list(
 		BP_TORSO =  list("path" = /obj/item/organ/external/chest/unbreakable/nano),
@@ -173,18 +174,11 @@
 	var/obj/item/hardsuit/protean/prig = new /obj/item/hardsuit/protean(H)
 	prig.myprotean = H
 
-/datum/species/protean/equip_survival_gear(var/mob/living/carbon/human/H)
-	var/obj/item/storage/box/box = new /obj/item/storage/box/survival/synth(H)
-	var/obj/item/stack/material/steel/metal_stack = new(box)
-	metal_stack.amount = 3 // Less starting steel due to regen changes
-	new /obj/item/fbp_backup_cell(box)
-	var/obj/item/clothing/accessory/permit/nanotech/permit = new(box)
-	permit.set_name(H.real_name)
-
-	if(H.backbag == 1) //Somewhat misleading, 1 == no bag (not boolean)
-		H.equip_to_slot_or_del(box, /datum/inventory_slot/abstract/hand/left)
-	else
-		H.equip_to_slot_or_del(box, /datum/inventory_slot/abstract/put_in_backpack)
+/datum/species/protean/apply_racial_gear(mob/living/carbon/for_target, list/into_box, list/into_inv)
+	var/obj/item/clothing/accessory/permit/nanotech/permit = new
+	permit.set_name(for_target.real_name)
+	into_box?.Add(permit)
+	return ..()
 
 /datum/species/protean/get_blood_colour(var/mob/living/carbon/human/H)
 	return rgb(80,80,80,230)

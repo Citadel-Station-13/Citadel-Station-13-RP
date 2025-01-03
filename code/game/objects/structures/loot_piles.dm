@@ -313,7 +313,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/storage/box/ids,
 		/obj/item/storage/box/mousetraps,
 		/obj/item/storage/box/syringes,
-		/obj/item/storage/box/survival,
+		/obj/item/storage/box/legacy_survival,
 		/obj/item/storage/box/gloves,
 		/obj/item/storage/box/PDAs
 	)

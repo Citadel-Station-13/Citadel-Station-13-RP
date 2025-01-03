@@ -135,9 +135,34 @@ SUBSYSTEM_DEF(atoms)
  * * ... - rest of args are passed to new() / Initialize().
  */
 /datum/controller/subsystem/atoms/proc/instance_atom_immediate(path, mapload, atom/where, ...)
+	SHOULD_NOT_SLEEP(TRUE)
 	var/old_init_status = atom_init_status
 	atom_init_status = mapload? ATOM_INIT_IN_NEW_MAPLOAD : ATOM_INIT_IN_NEW_REGULAR
-	var/atom/created = new path(arglist(args.Copy()))
+	var/atom/created = new path(arglist(args.Copy(3)))
+	atom_init_status = old_init_status
+	return created
+
+/**
+ * immediately creates and inits an atom with a preloader callback.
+ *
+ * @params
+ * * path - typepath
+ * * mapload - treat as mapload?
+ * * preload_call - callback to invoke with (created) for the created atom. This is not allowed to sleep.
+ * * where - location to init at
+ * * ... - rest of args are passed to new() / Initialize().
+ */
+/datum/controller/subsystem/atoms/proc/instance_atom_immediate_with_preloader(path, mapload, datum/callback/preload_call, atom/where, ...)
+	SHOULD_NOT_SLEEP(TRUE)
+	var/old_init_status = atom_init_status
+	atom_init_status = ATOM_INIT_IN_SUBSYSTEM
+	var/atom/created = new path(arglist(args.Copy(4)))
+	preload_call.invoke_no_sleep(created)
+	atom_init_status = mapload? ATOM_INIT_IN_NEW_MAPLOAD : ATOM_INIT_IN_NEW_REGULAR
+	// this sets 'where' to if we should be mapload.
+	// this is acceptable because args[4] ('where') is not used again.
+	args[4] = mapload
+	InitAtom(created, FALSE, args.Copy(4))
 	atom_init_status = old_init_status
 	return created
 

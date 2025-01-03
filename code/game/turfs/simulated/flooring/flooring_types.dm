@@ -161,7 +161,6 @@
 	icon_base = "orange"
 	build_type = /obj/item/stack/tile/carpet/patterned/orange
 
-
 /datum/prototype/flooring/tiling
 	name = "floor"
 	desc = "Scuffed from the passage of countless greyshirts."

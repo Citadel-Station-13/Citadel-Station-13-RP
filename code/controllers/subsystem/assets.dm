@@ -191,7 +191,7 @@ SUBSYSTEM_DEF(assets)
 /datum/controller/subsystem/assets/proc/get_dynamic_item_url_by_name(name)
 	return dynamic_asset_items_by_name[name]?.get_url()
 
-/datum/controller/subsystem/assets/OnConfigLoad()
+/datum/controller/subsystem/assets/on_config_loaded()
 	var/newtransporttype = /datum/asset_transport/browse_rsc
 	switch (CONFIG_GET(string/asset_transport))
 		if ("webroot")

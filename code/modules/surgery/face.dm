@@ -24,6 +24,7 @@
 	allowed_tools = list(
 	/obj/item/surgical/scalpel = 100,		\
 	/obj/item/surgical/scalpel_primitive = 80,	\
+	/obj/item/surgical/scalpel_bronze = 90,	\
 	/obj/item/material/knife = 75,	\
 	/obj/item/material/shard = 50, 		\
 	)

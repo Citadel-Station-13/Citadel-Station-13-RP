@@ -448,7 +448,7 @@
 					if(seal_delay && !instant && !do_self(M, seal_delay, DO_AFTER_IGNORE_ACTIVE_ITEM | DO_AFTER_IGNORE_MOVEMENT, NONE))
 						failed_to_seal = 1
 
-					piece.copy_atom_colour(src)
+					piece.copy_atom_color(src)
 					piece.icon_state = "[suit_state][is_sealing ? "_sealed" : ""]"
 					piece.update_worn_icon()
 					switch(msg_type)
@@ -484,7 +484,7 @@
 			if(!piece)
 				continue
 			piece.icon_state = "[suit_state][is_activated() ? "_sealed" : ""]"
-			piece.copy_atom_colour(src)
+			piece.copy_atom_color(src)
 			piece.update_worn_icon()
 
 		if(is_activated())
@@ -956,7 +956,7 @@
 		else if (deploy_mode != ONLY_RETRACT)
 			if(check_slot && check_slot == use_obj)
 				return
-			use_obj.copy_atom_colour(src)
+			use_obj.copy_atom_color(src)
 			if(!H.equip_to_slot_if_possible(use_obj, equip_to, INV_OP_FORCE))
 				if(check_slot && warn == 1)
 					to_chat(H, "<span class='danger'>You are unable to deploy \the [piece] as \the [check_slot] [check_slot.gender == PLURAL ? "are" : "is"] in the way.</span>")

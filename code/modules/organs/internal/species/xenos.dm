@@ -22,7 +22,7 @@
 	if(ishuman(owner))
 		var/mob/living/carbon/human/H = owner
 		if(H.species.blood_color)
-			add_atom_colour(H.species.blood_color, FIXED_COLOUR_PRIORITY)
+			add_atom_color(H.species.blood_color)
 
 /obj/item/organ/internal/xenomorph/plasmavessel
 	name = "plasma vessel"
@@ -66,7 +66,7 @@
 	if(ishuman(owner))
 		var/mob/living/carbon/human/H = owner
 		if(H.species.blood_color)
-			add_atom_colour(H.species.blood_color, FIXED_COLOUR_PRIORITY)
+			add_atom_color(H.species.blood_color)
 
 /obj/item/organ/internal/xenomorph/plasmavessel/queen
 	name = "bloated plasma vessel"
@@ -105,7 +105,7 @@
 	if(ishuman(owner))
 		var/mob/living/carbon/human/H = owner
 		if(H.species.blood_color)
-			add_atom_colour(H.species.blood_color, FIXED_COLOUR_PRIORITY)
+			add_atom_color(H.species.blood_color)
 
 /obj/item/organ/internal/xenomorph/hivenode
 	name = "hive node"
@@ -124,7 +124,7 @@
 	if(ishuman(owner))
 		var/mob/living/carbon/human/H = owner
 		if(H.species.blood_color)
-			add_atom_colour(H.species.blood_color, FIXED_COLOUR_PRIORITY)
+			add_atom_color(H.species.blood_color)
 
 /obj/item/organ/internal/xenomorph/resinspinner
 	name = "resin spinner"
@@ -155,7 +155,7 @@
 	if(ishuman(owner))
 		var/mob/living/carbon/human/H = owner
 		if(H.species.blood_color)
-			add_atom_colour(H.species.blood_color, FIXED_COLOUR_PRIORITY)
+			add_atom_color(H.species.blood_color)
 
 /obj/item/organ/internal/heart/xenomorph
 	name = "xenomorph heart"

@@ -29,6 +29,7 @@
 /datum/surgery_step/generic/cut_open
 	allowed_tools = list(
 		/obj/item/surgical/scalpel = 100,
+		/obj/item/surgical/scalpel_bronze = 90,
 		/obj/item/surgical/scalpel_primitive = 80,
 		/obj/item/material/knife = 75,
 		/obj/item/material/shard = 50,
@@ -310,6 +311,7 @@
 	allowed_tools = list(
 		/obj/item/surgical/circular_saw = 100,
 		/obj/item/material/knife/machete/hatchet = 75,
+		/obj/item/surgical/saw_bronze = 75,
 		/obj/item/surgical/saw_primitive = 60,
 	)
 	req_open = 0

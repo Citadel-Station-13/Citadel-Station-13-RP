@@ -20,7 +20,7 @@
 		switch(entity.obj_persist_static_mode)
 			if(OBJ_PERSIST_STATIC_MODE_LEVEL)
 				query = SSdbcore.NewQuery(
-					"INSERT INTO [format_table_name("persistence_static_level_objects")] (generation, object_id, level_id, data) \
+					"INSERT INTO [DB_PREFIX_TABLE_NAME("persistence_static_level_objects")] (generation, object_id, level_id, data) \
 						VALUES (:generation, :object_id, :level_id, :data) ON DUPLICATE KEY UPDATE \
 						data = VALUES(data)",
 					list(
@@ -32,7 +32,7 @@
 				)
 			if(OBJ_PERSIST_STATIC_MODE_MAP)
 				query = SSdbcore.NewQuery(
-					"INSERT INTO [format_table_name("persistence_static_map_objects")] (generation, object_id, map_id, data) \
+					"INSERT INTO [DB_PREFIX_TABLE_NAME("persistence_static_map_objects")] (generation, object_id, map_id, data) \
 						VALUES (:generation, :object_id, :map_id, :data) ON DUPLICATE KEY UPDATE \
 						data = VALUES(data)",
 					list(
@@ -44,7 +44,7 @@
 				)
 			if(OBJ_PERSIST_STATIC_MODE_GLOBAL)
 				query = SSdbcore.NewQuery(
-					"INSERT INTO [format_table_name("persistence_static_global_objects")] (generation, object_id, data) \
+					"INSERT INTO [DB_PREFIX_TABLE_NAME("persistence_static_global_objects")] (generation, object_id, data) \
 						VALUES (:generation, :object_id, :data) ON DUPLICATE KEY UPDATE \
 						data = VALUES(data)",
 					list(
@@ -79,7 +79,7 @@
 		var/datum/db_query/query
 		if(entity.obj_persist_dynamic_id != PERSISTENCE_DYNAMIC_ID_AUTOSET)
 			query = SSdbcore.NewQuery(
-				"INSERT INTO [format_table_name("persistence_dynamic_objects")] (id, generation, status, data, prototype_id, level_id, x, y) \
+				"INSERT INTO [DB_PREFIX_TABLE_NAME("persistence_dynamic_objects")] (id, generation, status, data, prototype_id, level_id, x, y) \
 					VALUES (:status, :data, :prototype, :level, :x, :y) ON DUPLICATE KEY UPDATE \
 					x = VALUES(x), y = VALUES(y), data = VALUES(data), prototype = VALUES(prototype), level = VALUES(level), \
 					status = VALUES(status)",
@@ -97,7 +97,7 @@
 			query.warn_execute()
 		else
 			query = SSdbcore.NewQuery(
-				"INSERT INTO [format_table_name("persistence_dynamic_objects")] (status, data, prototype_id, level_id, x, y) \
+				"INSERT INTO [DB_PREFIX_TABLE_NAME("persistence_dynamic_objects")] (status, data, prototype_id, level_id, x, y) \
 					VALUES (:status, :data, :prototype, :level, :x, :y)",
 				list(
 					"status" = entity.obj_persist_dynamic_status,
@@ -139,7 +139,7 @@
 
 	var/datum/db_query/query = SSdbcore.NewQuery(
 		"SELECT object_id, prototype_id, status, data, x, y \
-			FROM [format_table_name("persistence_dynamic_objects")] \
+			FROM [DB_PREFIX_TABLE_NAME("persistence_dynamic_objects")] \
 			WHERE level_id = :level AND generation = :generation",
 		list(
 			"generation" = generation,
@@ -200,7 +200,7 @@
 		switch(entity.obj_persist_static_mode)
 			if(OBJ_PERSIST_STATIC_MODE_GLOBAL)
 				query = SSdbcore.NewQuery(
-					"SELECT data FROM [format_table_name("persistence_static_global_objects")] \
+					"SELECT data FROM [DB_PREFIX_TABLE_NAME("persistence_static_global_objects")] \
 						WHERE object_id = :object AND generation = :generation",
 					list(
 						"object" = entity.obj_persist_static_id,
@@ -209,7 +209,7 @@
 				)
 			if(OBJ_PERSIST_STATIC_MODE_LEVEL)
 				query = SSdbcore.NewQuery(
-					"SELECT data FROM [format_table_name("persistence_static_level_objects")] \
+					"SELECT data FROM [DB_PREFIX_TABLE_NAME("persistence_static_level_objects")] \
 						WHERE object_id = :object AND level_id = :level AND generation = :generation",
 					list(
 						"object" = entity.obj_persist_static_id,
@@ -220,7 +220,7 @@
 				bind_id = level_id
 			if(OBJ_PERSIST_STATIC_MODE_MAP)
 				query = SSdbcore.NewQuery(
-					"SELECT data FROM [format_table_name("persistence_static_map_objects")] \
+					"SELECT data FROM [DB_PREFIX_TABLE_NAME("persistence_static_map_objects")] \
 						WHERE object_id = :object AND map_id = :map AND generation = :generation",
 					list(
 						"object" = entity.obj_persist_static_id,
@@ -258,9 +258,9 @@
 
 	SSdbcore.dangerously_block_on_multiple_unsanitized_queries(
 		list(
-			"TRUNCATE TABLE [format_table_name("persistence_static_map_objects")]",
-			"TRUNCATE TABLE [format_table_name("persistence_static_level_objects")]",
-			"TRUNCATE TABLE [format_table_name("persistence_static_global_objects")]",
+			"TRUNCATE TABLE [DB_PREFIX_TABLE_NAME("persistence_static_map_objects")]",
+			"TRUNCATE TABLE [DB_PREFIX_TABLE_NAME("persistence_static_level_objects")]",
+			"TRUNCATE TABLE [DB_PREFIX_TABLE_NAME("persistence_static_global_objects")]",
 		),
 	)
 
@@ -276,7 +276,7 @@
 	usr = null
 
 	SSdbcore.RunQuery(
-		"DELETE FROM [format_table_name("persistence_static_level_objects")] WHERE level_id = :level",
+		"DELETE FROM [DB_PREFIX_TABLE_NAME("persistence_static_level_objects")] WHERE level_id = :level",
 		list(
 			"level" = level_id,
 		),
@@ -294,7 +294,7 @@
 	usr = null
 
 	SSdbcore.RunQuery(
-		"DELETE FROM [format_table_name("persistence_static_map_objects")] WHERE map_id = :map",
+		"DELETE FROM [DB_PREFIX_TABLE_NAME("persistence_static_map_objects")] WHERE map_id = :map",
 		list(
 			"map" = map_id,
 		),
@@ -312,7 +312,7 @@
 	usr = null
 
 	SSdbcore.RunQuery(
-		"DELETE FROM [format_table_name("persistence_static_global_objects")]",
+		"DELETE FROM [DB_PREFIX_TABLE_NAME("persistence_static_global_objects")]",
 	)
 
 	usr = intentionally_allow_admin_proccall
@@ -327,7 +327,7 @@
 	usr = null
 
 	SSdbcore.RunQuery(
-		"TRUNCATE TABLE [format_table_name("persistence_dynamic_objects")]",
+		"TRUNCATE TABLE [DB_PREFIX_TABLE_NAME("persistence_dynamic_objects")]",
 	)
 
 	usr = intentionally_allow_admin_proccall
@@ -342,7 +342,7 @@
 	usr = null
 
 	SSdbcore.RunQuery(
-		"DELETE FROM [format_table_name("persistence_dynamic_objects")] WHERE level_id = :level",
+		"DELETE FROM [DB_PREFIX_TABLE_NAME("persistence_dynamic_objects")] WHERE level_id = :level",
 		list(
 			"level" = level_id,
 		),
