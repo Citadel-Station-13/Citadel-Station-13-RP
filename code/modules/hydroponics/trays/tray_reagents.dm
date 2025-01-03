@@ -1,7 +1,7 @@
 /obj/item/plantspray
 	icon = 'icons/obj/hydroponics_machines.dmi'
 	item_state = "spraycan"
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	slot_flags = SLOT_BELT
 	throw_force = 4
 	w_class = WEIGHT_CLASS_SMALL

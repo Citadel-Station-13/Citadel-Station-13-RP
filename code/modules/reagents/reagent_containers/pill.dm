@@ -72,7 +72,7 @@
 
 		user.visible_message("<span class='warning'>[user] attempts to force [target] to swallow \the [src].</span>")
 
-		user.setClickCooldown(user.get_attack_speed(src))
+		user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 		if(!do_mob(user, target))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(!user.attempt_void_item_for_installation(src))

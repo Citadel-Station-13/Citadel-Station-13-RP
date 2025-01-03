@@ -37,9 +37,9 @@
 		)
 
 	unarmed_types = list(
-		/datum/unarmed_attack/stomp,
-		/datum/unarmed_attack/kick,
-		/datum/unarmed_attack/punch,
+		/datum/melee_attack/unarmed/stomp,
+		/datum/melee_attack/unarmed/kick,
+		/datum/melee_attack/unarmed/punch,
 	)
 
 /datum/species/golem/handle_post_spawn(mob/living/carbon/human/H)

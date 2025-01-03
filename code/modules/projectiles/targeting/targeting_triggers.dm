@@ -19,7 +19,7 @@
 		return
 	if(!owner.canClick())
 		return
-	owner.setClickCooldown(5) // Spam prevention, essentially.
+	owner.setClickCooldownLegacy(5) // Spam prevention, essentially.
 	owner.visible_message("<span class='danger'>\The [owner] pulls the trigger reflexively!</span>")
 	var/obj/item/gun/G = aiming_with
 	if(istype(G))

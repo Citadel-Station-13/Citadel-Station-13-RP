@@ -169,7 +169,6 @@
 	material_parts = /datum/prototype/material/glass
 	material_color = 0
 	reach = 2 // Spears are long.
-	attackspeed = 20
 	weight = ITEM_WEIGHT_MELEE_SPEAR
 	var/obj/item/grenade/explosive = null
 	var/war_cry = "AAAAARGH!!!"

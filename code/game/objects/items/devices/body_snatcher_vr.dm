@@ -5,7 +5,7 @@
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "sleevemate" //Give this a fancier sprite later.
 	item_state = "healthanalyzer"
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	slot_flags = SLOT_BELT
 	w_class = WEIGHT_CLASS_SMALL
 	materials_base = list(MAT_STEEL = 200)
@@ -18,7 +18,7 @@
 /obj/item/bodysnatcher/proc/attempt_swap(mob/living/M, mob/living/user)
 	if(!isliving(M) || !isliving(user))
 		return
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	user.setClickCooldownLegacy(DEFAULT_ATTACK_COOLDOWN)
 	if(ishuman(M) || issilicon(M)) //Allows body swapping with humans, synths, and pAI's/borgs since they all have a mind.
 		if(user == M)
 			to_chat(user,"<span class='warning'> A message pops up on the LED display, informing you that you that the mind transfer to yourself was successful... Wait, did that even do anything?</span>")

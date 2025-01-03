@@ -184,7 +184,7 @@
 				else
 					to_chat(user, SPAN_NOTICE("\The [L]'s pupils narrow."))
 
-			user.setClickCooldown(user.get_attack_speed(src)) //can be used offensively
+			user.setClickCooldownLegacy(user.get_attack_speed_legacy(src)) //can be used offensively
 			L.flash_eyes()
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
@@ -277,7 +277,7 @@
 		test_attachment = new
 	return test_attachment
 
-/obj/item/flashlight/maglight/using_as_item(atom/target, datum/event_args/actor/clickchain/e_args, clickchain_flags, datum/callback/reachability_check)
+/obj/item/flashlight/maglight/using_as_item(atom/target, datum/event_args/actor/clickchain/e_args, clickchain_flags)
 	. = ..()
 	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return

@@ -381,7 +381,7 @@
 		state = GRAB_KILL
 		assailant.visible_message("<span class='danger'>[assailant] has tightened [TU.his] grip on [affecting]'s neck!</span>")
 		add_attack_logs(assailant,affecting,"Strangled")
-		affecting.setClickCooldown(10)
+		affecting.setClickCooldownLegacy(10)
 		affecting.AdjustLosebreath(1)
 		affecting.setDir(WEST)
 	adjust_position()
@@ -577,7 +577,7 @@
 	if(!istype(attacker))
 		return
 
-	var/datum/unarmed_attack/attack = attacker.get_unarmed_attack(target, O_EYES)
+	var/datum/melee_attack/unarmed/attack = attacker.get_unarmed_attack(target, O_EYES)
 
 	if(!attack)
 		return

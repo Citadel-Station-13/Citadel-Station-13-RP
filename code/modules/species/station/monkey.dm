@@ -30,7 +30,7 @@
 
 	fire_icon_state = "monkey"
 
-	unarmed_types = list(/datum/unarmed_attack/bite, /datum/unarmed_attack/claws)
+	unarmed_types = list(/datum/melee_attack/unarmed/bite, /datum/melee_attack/unarmed/claws)
 	inherent_verbs = list(/mob/living/proc/ventcrawl)
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/monkey
 

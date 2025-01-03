@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /// A mob has just equipped an item. Called on [/mob] from base of [/obj/item/equipped()]: (/obj/item/equipped_item, slot, inv_op_flags)
 #define COMSIG_MOB_ITEM_EQUIPPED "mob_equipped_item"

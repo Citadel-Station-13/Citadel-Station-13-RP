@@ -5,6 +5,14 @@
 
 // todo: everything needs comsigs comsigs comsigs
 
+//* Targeting *//
+
+/**
+ * Checks if we should be targetable in melee.
+ */
+/atom/proc/is_melee_targetable(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	return FALSE
+
 //* External API / Damage Receiving *//
 
 /**
@@ -31,8 +39,6 @@
 /**
  * called on melee hit
  *
- * todo: add clickchain datum, instead of multiplier
- *
  * * check CLICKCHAIN_FLAGS_* as needed, especially UNCONDITIONAL_ABORT and ATTACK_ABORT
  * * clickchain flags are sent down through parent calls.
  *
@@ -40,27 +46,25 @@
  * * user - person attacking
  * * weapon - weapon used
  * * target_zone - zone targeted
- * * mult - damage multiplier
+ * * clickchain - (optional) clickchain provider
  *
  * @return clickchain flags to append
  */
-/atom/proc/melee_act(mob/user, obj/item/weapon, target_zone, datum/event_args/actor/clickchain/clickchain)
+/atom/proc/item_melee_act(mob/user, obj/item/weapon, target_zone, datum/event_args/actor/clickchain/clickchain)
 	return CLICKCHAIN_DO_NOT_ATTACK
 
 /**
  * called on unarmed melee hit
  *
- * todo: add clickchain datum, instead of multiplier
- *
  * @params
  * * user - person attacking
  * * style - unarmed attack datum
  * * target_zone - zone targeted
- * * mult - damage multiplier
+ * * clickchain - (optional) clickchain provider
  *
  * @return clickchain flags to append
  */
-/atom/proc/unarmed_act(mob/attacker, datum/unarmed_attack/style, target_zone, datum/event_args/actor/clickchain/clickchain)
+/atom/proc/unarmed_melee_act(mob/attacker, datum/melee_attack/unarmed/style, target_zone, datum/event_args/actor/clickchain/clickchain)
 	return CLICKCHAIN_DO_NOT_ATTACK
 
 /**
@@ -196,7 +200,7 @@
 		else
 			return "swing_hit"
 
-/atom/proc/hitsound_unarmed(mob/M, datum/unarmed_attack/style)
+/atom/proc/hitsound_unarmed(mob/M, datum/melee_attack/unarmed/style)
 	//? todo: style gets final say
 	. = hitsound_override(M, style.damage_mode, ATTACK_TYPE_UNARMED, style)
 	if(.)
@@ -296,6 +300,19 @@
 	run_armorcalls(args, FALSE)
 	return args.Copy()
 
+/**
+ * Runs a damage instance against armor
+ *
+ * * This is a low level proc. Make sure you undersatnd how shieldcalls work [__DEFINES/combat/shieldcall.dm].
+ */
+/atom/proc/run_armorcalls(list/shieldcall_args, fake_attack)
+	SHOULD_NOT_SLEEP(TRUE)
+	SEND_SIGNAL(src, COMSIG_ATOM_ARMORCALL, shieldcall_args, fake_attack)
+	if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAG_TERMINATE)
+		return
+	var/datum/armor/our_armor = fetch_armor()
+	our_armor.handle_shieldcall(shieldcall_args, fake_attack)
+
 //* Shieldcalls *//
 
 /**
@@ -385,19 +402,6 @@
 		if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAG_TERMINATE)
 			break
 
-/**
- * Runs a damage instance against armor
- *
- * * This is a low level proc. Make sure you undersatnd how shieldcalls work [__DEFINES/combat/shieldcall.dm].
- */
-/atom/proc/run_armorcalls(list/shieldcall_args, fake_attack)
-	SHOULD_NOT_SLEEP(TRUE)
-	SEND_SIGNAL(src, COMSIG_ATOM_ARMORCALL, shieldcall_args, fake_attack)
-	if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAG_TERMINATE)
-		return
-	var/datum/armor/our_armor = fetch_armor()
-	our_armor.handle_shieldcall(shieldcall_args, fake_attack)
-
 /atom/proc/register_shieldcall(datum/shieldcall/delegate)
 	SHOULD_NOT_SLEEP(TRUE)
 	LAZYINITLIST(shieldcalls)
@@ -449,7 +453,7 @@
  *
  * @return SHIELDCALL_FLAG_* flags
  */
-/atom/proc/atom_shieldcall_handle_unarmed_melee(datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args, fake_attack, shieldcall_flags, clickchain_flags)
+/atom/proc/atom_shieldcall_handle_unarmed_melee(datum/melee_attack/unarmed/style, datum/event_args/actor/clickchain/e_args, fake_attack, shieldcall_flags, clickchain_flags)
 	SHOULD_NOT_SLEEP(TRUE)
 	// cannot parry yourself
 	if(e_args.performer == src)

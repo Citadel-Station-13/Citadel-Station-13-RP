@@ -495,7 +495,7 @@
 			on_ranged_cast(target, user)
 	if(cooldown)
 		var/effective_cooldown = round(cooldown, 5)
-		user.setClickCooldown(effective_cooldown)
+		user.setClickCooldownLegacy(effective_cooldown)
 		flick("cooldown_[effective_cooldown]",src)
 
 /obj/item/spell/construct/projectile //This makes me angry, but we need the template, and we can't use it because special check overrides on the base.

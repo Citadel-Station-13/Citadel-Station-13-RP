@@ -19,7 +19,7 @@
 	remains_type = /obj/effect/debris/cleanable/ash
 	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/protean
 
-	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite) // Regular human attack verbs are enough.
+	unarmed_types = list(/datum/melee_attack/unarmed/stomp, /datum/melee_attack/unarmed/kick, /datum/melee_attack/unarmed/punch, /datum/melee_attack/unarmed/bite) // Regular human attack verbs are enough.
 
 	blood_color = "#505050" //This is the same as the 80,80,80 below, but in hex
 	flesh_color = "#505050"

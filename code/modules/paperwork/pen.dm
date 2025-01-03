@@ -44,7 +44,7 @@
 		return
 	if(user.next_move > world.time)
 		return
-	user.setClickCooldown(1 SECOND)
+	user.setClickCooldownLegacy(1 SECOND)
 	to_chat(user, "<span class='notice'>Click.</span>")
 	playsound(src, 'sound/items/penclick.ogg', 50, 1)
 

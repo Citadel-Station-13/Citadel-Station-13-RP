@@ -19,7 +19,7 @@
 	species_language = LANGUAGE_SHADEKIN
 	secondary_langs = list(LANGUAGE_SHADEKIN)
 	max_additional_languages = 3
-	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
+	unarmed_types = list(/datum/melee_attack/unarmed/stomp, /datum/melee_attack/unarmed/kick, /datum/melee_attack/unarmed/claws, /datum/melee_attack/unarmed/bite/sharp)
 	rarity_value = 5	//INTERDIMENSIONAL FLUFFERS
 
 	siemens_coefficient = 0	//completely shockproof (this is no longer the case on virgo, feel free to change if it needs rebalancing)

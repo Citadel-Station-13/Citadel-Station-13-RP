@@ -497,7 +497,7 @@
 		open()
 		return
 
-	escapee.setClickCooldown(100)
+	escapee.setClickCooldownLegacy(100)
 
 	//okay, so the closet is either sealed or locked... resist!!!
 	to_chat(escapee, "<span class='warning'>You lean on the back of \the [src] and start pushing the door open. (this will take about [breakout_time] minutes)</span>")

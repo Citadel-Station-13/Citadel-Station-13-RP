@@ -130,7 +130,7 @@
 				log_and_message_admins("has commanded their army of [controlled_mobs.len] to attack [L].")
 				to_chat(user, "<span class='notice'>You command your [controlled_mobs.len > 1 ? "entities" : "[controlled_mobs[1]]"] to attack \the [L].</span>")
 				//This is to stop someone from controlling beepsky and getting him to stun someone 5 times a second.
-				user.setClickCooldown(8)
+				user.setClickCooldownLegacy(8)
 				adjust_instability(controlled_mobs.len)
 
 	else if(isturf(hit_atom))

@@ -47,7 +47,7 @@
 /obj/item/clothing/accessory/badge/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	user.visible_message("<span class='danger'>[user] invades [target]'s personal space, thrusting [src] into their face insistently.</span>","<span class='danger'>You invade [target]'s personal space, thrusting [src] into their face insistently.</span>")
 	user.do_attack_animation(target)
-	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam
+	user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN) //to prevent spam
 
 // Sheriff Badge (toy)
 /obj/item/clothing/accessory/badge/sheriff
@@ -66,7 +66,7 @@
 /obj/item/clothing/accessory/badge/sheriff/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	user.visible_message("<span class='danger'>[user] invades [target]'s personal space, shoving the sheriff badge into their face!.</span>","<span class='danger'>You invade [target]'s personal space, thrusting the sheriff badge into their face insistently.</span>")
 	user.do_attack_animation(target)
-	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam
+	user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN) //to prevent spam
 
 //.Holobadges.
 /obj/item/clothing/accessory/badge/holo

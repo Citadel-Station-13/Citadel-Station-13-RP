@@ -797,7 +797,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 		var/mob/living/carbon/human/H = user
 
 		if(H.species.can_shred(H))
-			user.setClickCooldown(user.get_attack_speed())
+			user.setClickCooldownLegacy(user.get_attack_speed_legacy())
 			user.visible_message("<span call='warning'>[user.name] slashes at the [src.name]!</span>", "<span class='notice'>You slash at the [src.name]!</span>")
 			playsound(src.loc, 'sound/weapons/slash.ogg', 100, 1)
 

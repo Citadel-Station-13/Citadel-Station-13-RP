@@ -21,7 +21,7 @@
 		return
 	var/mob/living/L = user
 	var/mob/living/victim = target
-	L.setClickCooldown(L.get_attack_speed(src))
+	L.setClickCooldownLegacy(L.get_attack_speed_legacy(src))
 	// Drop all the things. All of them.
 	cut_overlays()
 	for(var/obj/item/I in carrying)

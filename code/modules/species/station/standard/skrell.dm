@@ -91,7 +91,7 @@
 	)
 
 	unarmed_types = list(
-		/datum/unarmed_attack/punch,
+		/datum/melee_attack/unarmed/punch,
 	)
 
 	abilities = list(

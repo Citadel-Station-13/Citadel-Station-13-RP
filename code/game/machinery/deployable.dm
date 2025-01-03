@@ -29,7 +29,7 @@
 /obj/machinery/deployable/barrier/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	user.setClickCooldownLegacy(DEFAULT_ATTACK_COOLDOWN)
 	if(istype(I, /obj/item/card/id/))
 		if(allowed(user))
 			if	(emagged < 2)

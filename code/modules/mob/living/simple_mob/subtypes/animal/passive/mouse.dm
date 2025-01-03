@@ -160,5 +160,5 @@
 		return
 	for(var/mob/living/simple_mob/M in src.contents)
 		if((INTENT_HELP) && user.canClick()) //a little snowflakey, but makes it use the same cooldown as interacting with non-inventory objects
-			user.setClickCooldown(user.get_attack_speed()) //if there's a cleaner way in baycode, I'll change this
+			user.setClickCooldownLegacy(user.get_attack_speed_legacy()) //if there's a cleaner way in baycode, I'll change this
 			user.visible_message("<span class='notice'>[user] [M.response_help] \the [M].</span>")
