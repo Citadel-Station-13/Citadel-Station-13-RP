@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
 /**
  * equivalent to SSzclear
@@ -22,11 +22,13 @@
 /**
  * gets an reusable level, or increments world.maxz
  * WARNING: AFTER THIS, YOU NEED TO USE THE LEVEL, OR READD TO REUSABLE, OR THIS IS A MEMORY LEAK!
+ *
+ * * This will always return the lowest z-index first.
  */
 /datum/controller/subsystem/mapping/proc/allocate_z_index()
-	if(islist(reusable_levels) && length(reusable_levels))
-		. = reusable_levels[1]
-		reusable_levels.Cut(1, 2)
+	if(islist(ordered_reusable_levels) && length(ordered_reusable_levels))
+		. = ordered_reusable_levels[1]
+		ordered_reusable_levels.Cut(1, 2)
 	else
 		ASSERT(ordered_levels.len == world.maxz)
 		ordered_levels.len++

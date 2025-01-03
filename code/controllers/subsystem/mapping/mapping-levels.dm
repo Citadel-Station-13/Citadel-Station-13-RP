@@ -311,7 +311,7 @@
 /datum/controller/subsystem/mapping/proc/deallocate_level(datum/map_level/instance)
 	CRASH("unimplemented")
 
-//* Traits, Attributes, and IDs
+//* Traits, Attributes, and IDs *//
 
 /**
  * called when a trait is added to a loaded level

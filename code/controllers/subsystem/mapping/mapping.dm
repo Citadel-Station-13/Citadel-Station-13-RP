@@ -9,8 +9,9 @@ SUBSYSTEM_DEF(mapping)
 	subsystem_flags = SS_NO_FIRE
 
 	//* Allocation *//
-	// list of levels ready for reuse
-	var/static/list/reusable_levels = list()
+	/// list of levels ready for reuse
+	/// * This must be sorted from low z-index to high.
+	var/static/list/ordered_reusable_levels = list()
 
 	//* Levels *//
 	/// indexed level datums

@@ -33,8 +33,6 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Upload Map Sector", "Upload a custom m
 
 	/// in bytes
 	var/current_upload_size = 0
-	/// in levels
-	var/current_upload_levels = 0
 
 	/// map buffer
 	var/datum/map/buffer
@@ -50,12 +48,6 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Upload Map Sector", "Upload a custom m
 
 	var/tmp/world_maxz_at_prime
 
-	var/tmp/computed_width
-	var/tmp/computed_height
-	var/tmp/computed_turf_count
-	var/tmp/computed_utilization
-	var/tmp/computed_start_z
-	var/tmp/computed_end_z
 	var/tmp/list/computed_errors
 
 /datum/admin_modal/load_map_sector/Initialize()
@@ -96,12 +88,6 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Upload Map Sector", "Upload a custom m
 	.["const_airVacuum"] = GAS_STRING_VACUUM
 	.["const_airHabitable"] = GAS_STRING_STP
 	.["staged"] = primed ? list(
-		"computedWidth" = computed_width,
-		"computedHeight" = computed_height,
-		"computedTurfs" = computed_turf_count,
-		"computedLoad" = computed_utilization,
-		"computedZStart" = computed_start_z,
-		"computedZEnd" = computed_end_z,
 		"errors" = computed_errors,
 	) : null
 
@@ -175,6 +161,8 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Upload Map Sector", "Upload a custom m
 			. = TRUE
 		// levels //
 		if("newLevel")
+			if(length(buffer.levels) > max_upload_levels)
+				return TRUE
 			create_level()
 			. = TRUE
 		if("delLevel")
@@ -281,6 +269,23 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Upload Map Sector", "Upload a custom m
 	)
 
 /datum/admin_modal/load_map_sector/proc/level_index_data(index)
+	var/datum/map_level/level = SAFEACCESS(buffer.levels, index)
+	return list(
+		"id" = level.id,
+		"displayId" = level.display_id,
+		"name" = level.name,
+		"displayName" = level.display_name,
+		"traits" = level.traits,
+		"attributes" = level.attributes,
+		"baseTurf" = level.base_turf,
+		"baseArea" = level.base_area,
+		"structPos" = level.struct_create_pos,
+		"airIndoors",
+		"airOutdoors",
+		"ceilingHeight",
+		"fileName",
+	)
+	#warn impl checks in prime for: ceiling height, air indoors, air outdoors, base turf, base area
 
 /datum/admin_modal/load_map_sector/proc/update_level_index_data(index)
 	push_ui_data(
@@ -291,8 +296,10 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Upload Map Sector", "Upload a custom m
 
 /datum/admin_modal/load_map_sector/proc/prime()
 	computed_errors = list()
-	#warn check bounds
-	#warn remove this warn
+	world_maxz_at_prime = world.maxz
+
+	primed = TRUE
+	ready = TRUE
 
 	update_static_data()
 
@@ -302,13 +309,7 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Upload Map Sector", "Upload a custom m
 
 	world_maxz_at_prime = null
 
-	computed_width = \
-	computed_height = \
-	computed_start_z = \
-	computed_end_z = \
-	computed_turf_count = \
-	computed_errors = \
-	computed_utilization = null
+	computed_errors = null
 
 	update_static_data()
 

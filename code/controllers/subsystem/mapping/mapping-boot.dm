@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
 /**
  * we must always have atleast one level on the server
@@ -30,7 +30,7 @@
 	world.maxy = height
 	ASSERT(length(reserve_levels) == 0)
 	// basically makes allocate_level() grab the first one
-	reusable_levels += 1
+	ordered_reusable_levels += 1
 	ordered_levels += null
 	world.max_z_changed(0, 1)
 	synchronize_datastructures()
