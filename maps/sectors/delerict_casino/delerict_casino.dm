@@ -11,6 +11,6 @@
 	id = "DelerictCasino"
 	name = "Sector - delerict casino"
 	display_name = "Monarch of Autumn Casino Station"
-	path = "maps/sectors/delerict_casino/delerict_casino.dmm"
+	path = "maps/sectors/delerict_casino/levels/delerict_casino.dmm"
 	base_turf = /turf/space
 	base_area = /area/space
