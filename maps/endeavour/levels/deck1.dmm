@@ -2610,6 +2610,12 @@
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
+"cag" = (
+/obj/effect/shuttle_landmark/automatic{
+	name = "Deck 1, Port Side"
+	},
+/turf/space/basic,
+/area/space)
 "caS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/flora/pottedplant/orientaltree,
@@ -5070,6 +5076,21 @@
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "dSe" = (
+/obj/machinery/camera/network/command{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/beige/bordercorner2{
+	dir = 10
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/hallway)
 "dSn" = (
@@ -5518,12 +5539,6 @@
 	},
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 8
-	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
-	dir = 10
-	},
-/obj/effect/floor_decal/corner/beige/bordercorner2{
-	dir = 10
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/hallway)
@@ -7723,17 +7738,17 @@
 /turf/simulated/floor/wood,
 /area/library)
 "fDY" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
 	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 4
+/obj/effect/floor_decal/corner/navgold/border{
+	dir = 1
 	},
-/obj/structure/railing{
-	dir = 8
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
 	},
-/turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_fore)
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d1starboardafthall)
 "fEx" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
@@ -7881,12 +7896,6 @@
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "fKd" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/beige/border{
-	dir = 8
-	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -8154,6 +8163,9 @@
 	},
 /obj/machinery/door/firedoor/glass{
 	dir = 8
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway2)
@@ -9125,6 +9137,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/item/paper/pamphlet/substation,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/exploration)
 "gDf" = (
@@ -12033,7 +12046,10 @@
 /obj/machinery/camera/network/exploration{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/obj/machinery/door/firedoor{
+	dir = 1
+	},
+/turf/simulated/open,
 /area/endeavour/exploration/hallway_fore)
 "iKk" = (
 /obj/structure/cable{
@@ -13426,9 +13442,6 @@
 /area/hallway/secondary/docking_hallway)
 "jGM" = (
 /obj/machinery/light_switch{
-	pixel_y = -23
-	},
-/obj/machinery/light_switch{
 	pixel_x = 27
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -14248,6 +14261,11 @@
 /obj/spawner/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
+"khe" = (
+/obj/machinery/door/airlock/maintenance/common,
+/obj/map_helper/access_helper/airlock/station/exploration/department,
+/turf/simulated/floor/tiled,
+/area/endeavour/exploration/hallway_fore)
 "khl" = (
 /obj/landmark/spawnpoint/job/lawyer,
 /obj/structure/bed/chair/office/dark{
@@ -15474,6 +15492,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/item/paper/pamphlet/substation,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/command)
 "kYZ" = (
@@ -15513,6 +15532,21 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/plating,
 /area/maintenance/station/exploration)
+"lbB" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/exploration/hallway_fore)
 "lbH" = (
 /obj/machinery/computer/ship/navigation{
 	dir = 1
@@ -16087,11 +16121,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portamidhall)
 "lBc" = (
-/obj/machinery/power/breakerbox{
-	RCon_tag = "MAIN - DECK 1 AFT"
+/obj/machinery/power/breakerbox/activated{
+	RCon_tag = "MAIN - DECK 1 FORE"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/substation/civilian)
+/area/maintenance/substation/command)
 "lBV" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
@@ -17496,10 +17530,7 @@
 /obj/effect/floor_decal/corner/mauve/bordercorner{
 	dir = 8
 	},
-/obj/structure/disposalpipe/junction{
-	dir = 1;
-	icon_state = "pipe-j2"
-	},
+/obj/structure/disposalpipe/junction,
 /turf/simulated/floor/tiled,
 /area/exploration)
 "mDd" = (
@@ -18498,6 +18529,12 @@
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 8
 	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/beige/bordercorner2{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/hallway)
 "nnq" = (
@@ -19013,7 +19050,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "nFc" = (
-/obj/structure/loot_pile/maint,
+/obj/structure/loot_pile/maint/technical,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1fwdmaint)
 "nFp" = (
@@ -20077,10 +20114,14 @@
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "ovE" = (
-/obj/machinery/door/airlock/maintenance/common,
-/obj/map_helper/access_helper/airlock/station/exploration/department,
-/turf/simulated/floor/plating,
-/area/endeavour/exploration/hallway_fore)
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters/pool)
 "owg" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
@@ -22279,6 +22320,18 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/docking_hallway2)
+"qgb" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 1
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
+	},
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d1portforhall)
 "qgv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -23644,6 +23697,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
+	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardforhall)
 "rfr" = (
@@ -24311,7 +24367,6 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/structure/loot_pile/maint,
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "rFT" = (
@@ -25790,12 +25845,6 @@
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/beige/bordercorner2{
-	dir = 8
-	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/hallway)
 "sSr" = (
@@ -26296,6 +26345,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardafthall)
+"tlw" = (
+/obj/effect/shuttle_landmark/automatic{
+	name = "Deck 1, Port Side"
+	},
+/turf/space,
+/area/space)
 "tlI" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -27162,6 +27217,9 @@
 /obj/structure/catwalk,
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1aftmaint)
@@ -28380,7 +28438,8 @@
 	dir = 1
 	},
 /obj/structure/disposalpipe/junction{
-	dir = 8
+	dir = 4;
+	icon_state = "pipe-j2"
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/exploration/hallway_aft)
@@ -30737,11 +30796,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardafthall)
 "wmU" = (
-/obj/machinery/power/breakerbox{
-	RCon_tag = "MAIN - DECK 1 FORE"
+/obj/machinery/power/breakerbox/activated{
+	RCon_tag = "MAIN - DECK 1 AFT"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/substation/command)
+/area/maintenance/substation/civilian)
 "wne" = (
 /obj/item/pen/crayon/mime,
 /obj/item/pen/crayon/marker/mime,
@@ -31198,6 +31257,7 @@
 /obj/machinery/power/port_gen/pacman/mrs{
 	anchored = 1
 	},
+/obj/item/paper/pamphlet/substation,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
 "wAB" = (
@@ -32741,7 +32801,9 @@
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
 "xJO" = (
-/obj/effect/shuttle_landmark/endeavour/deck4/excursion_space,
+/obj/effect/shuttle_landmark/automatic{
+	name = "Deck 1, Starboard Side"
+	},
 /turf/space/basic,
 /area/space)
 "xKz" = (
@@ -33149,7 +33211,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardamidhall)
 "ybg" = (
-/obj/machinery/power/breakerbox{
+/obj/machinery/power/breakerbox/activated{
 	RCon_tag = "MAIN - DECK 1 AMIDSHIPS"
 	},
 /turf/simulated/floor/plating,
@@ -41856,7 +41918,7 @@ xRj
 xRj
 xRj
 xRj
-xRj
+cag
 xRj
 xRj
 xRj
@@ -46191,7 +46253,7 @@ qTj
 gPV
 tHZ
 aNK
-ojQ
+qgb
 fnJ
 oxV
 piy
@@ -46203,7 +46265,7 @@ hkm
 gkp
 uru
 piy
-axR
+fDY
 oHo
 riG
 dZr
@@ -46552,8 +46614,8 @@ opm
 opm
 opm
 opm
+opm
 gtI
-bxh
 bxh
 iJn
 khD
@@ -46609,7 +46671,7 @@ eYV
 ojm
 ilO
 dJe
-sFF
+ovE
 oyz
 qTM
 qTM
@@ -46746,10 +46808,10 @@ opm
 opm
 opm
 opm
-ovE
+opm
+khe
 iyz
-fDY
-oBL
+lbB
 mZn
 nPK
 tfh
@@ -49498,7 +49560,7 @@ vDR
 hWC
 vRj
 hVP
-aVW
+wmU
 kPV
 lxO
 hnl
@@ -49689,7 +49751,7 @@ vHL
 bdJ
 eOe
 djQ
-lBc
+aVW
 pEr
 mWe
 cGJ
@@ -56794,7 +56856,7 @@ xRj
 xRj
 xRj
 jNg
-jNg
+tlw
 jNg
 jNg
 jNg
@@ -57237,7 +57299,7 @@ keD
 oYa
 maa
 byt
-maa
+bFR
 kfn
 maa
 dIE
@@ -58206,7 +58268,7 @@ oYa
 unB
 unB
 maa
-maa
+bFR
 byt
 maa
 maa
@@ -58484,7 +58546,7 @@ xRj
 xRj
 xRj
 xRj
-xRj
+xJO
 xRj
 xRj
 xRj
@@ -58793,7 +58855,7 @@ byt
 uTr
 maa
 maa
-nFc
+maa
 maa
 maa
 maa
@@ -58992,7 +59054,7 @@ maa
 nFc
 byt
 byt
-nFc
+jkE
 kfn
 uTr
 hYO
@@ -59179,7 +59241,7 @@ sIg
 byt
 maa
 uTr
-maa
+hPx
 byt
 byt
 byt
@@ -59781,7 +59843,7 @@ lmB
 oVe
 lCd
 ghn
-meH
+lBc
 aLV
 uhY
 jux
@@ -59972,7 +60034,7 @@ uwI
 aLV
 oZB
 cdx
-wmU
+meH
 aLV
 pIq
 uWI
@@ -65201,11 +65263,11 @@ gDf
 tIO
 fIr
 gDf
-wDH
+dSe
 fKd
 nnp
 eiM
-dSe
+mBp
 sRV
 jJL
 hcK
