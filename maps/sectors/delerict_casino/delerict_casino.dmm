@@ -670,6 +670,12 @@
 	color = "#b88a3b"
 	},
 /area/sector/delerictcasino/ringforrest)
+"dm" = (
+/obj/effect/shuttle_landmark{
+	name = "Pad 1a"
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "dn" = (
 /obj/structure/railing/grey{
 	dir = 8
@@ -701,6 +707,12 @@
 	color = "#ed983d"
 	},
 /area/sector/delerictcasino/ringforrest)
+"du" = (
+/obj/effect/shuttle_landmark{
+	name = "Pad 3d"
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "dv" = (
 /obj/machinery/light/fairy{
 	coloration = "#ed983d";
@@ -1702,6 +1714,12 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"im" = (
+/obj/effect/shuttle_landmark{
+	name = "Pad 3b"
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "in" = (
 /obj/structure/bed/chair/wood{
 	dir = 4
@@ -1721,13 +1739,6 @@
 	color = "#ed983d"
 	},
 /area/sector/delerictcasino/ringforrest)
-"is" = (
-/obj/machinery/light,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/reinforced,
-/area/sector/delerictcasino/dock)
 "it" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/flashlight/lamp,
@@ -1842,6 +1853,12 @@
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/delerictcasino/crew)
+"iV" = (
+/obj/effect/shuttle_landmark{
+	name = "Pad 3a"
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "iW" = (
 /turf/simulated/floor/tiled/steel_dirty/dark{
 	outdoors = 1
@@ -1954,7 +1971,9 @@
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/delerictcasino/crew)
 "jw" = (
-/obj/effect/shuttle_landmark,
+/obj/effect/shuttle_landmark{
+	name = "Pad 3k"
+	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
 "jx" = (
@@ -2057,6 +2076,12 @@
 	color = "#b88a3b"
 	},
 /area/sector/delerictcasino/ringforrest)
+"ka" = (
+/obj/effect/shuttle_landmark{
+	name = "Pad 3h"
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "kb" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
@@ -2770,6 +2795,12 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"oj" = (
+/obj/effect/shuttle_landmark{
+	name = "Pad 3e"
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "om" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 8
@@ -3649,6 +3680,12 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"sR" = (
+/obj/effect/shuttle_landmark{
+	name = "Pad 3c"
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "sV" = (
 /obj/effect/floor_decal/carpet{
 	dir = 10
@@ -4115,6 +4152,12 @@
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/delerictcasino/vault)
+"vs" = (
+/obj/effect/shuttle_landmark{
+	name = "Pad 2b"
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "vu" = (
 /obj/structure/flora/grass/event/heavy_grass4,
 /obj/effect/floor_decal/rust,
@@ -5102,12 +5145,6 @@
 	color = "#677246"
 	},
 /area/sector/delerictcasino/ringforrest)
-"AB" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/reinforced,
-/area/sector/delerictcasino/dock)
 "AD" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
@@ -5172,6 +5209,12 @@
 	color = "#ed983d"
 	},
 /area/sector/delerictcasino/ringforrest)
+"AX" = (
+/obj/effect/shuttle_landmark{
+	name = "Pad 2d"
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "AZ" = (
 /turf/simulated/floor/tiled/steel_dirty/silver{
 	outdoors = 1
@@ -5453,18 +5496,6 @@
 	color = "#ed983d"
 	},
 /area/sector/delerictcasino/ringforrest)
-"CA" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/reinforced,
-/area/sector/delerictcasino/dock)
-"CB" = (
-/obj/structure/flora/tree/fey/large_tree/tree2{
-	color = "#ed983d"
-	},
-/turf/simulated/floor/carpet/patterened/blue,
-/area/sector/delerictcasino/ringforrest)
 "CE" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor/carpet/patterened/green,
@@ -5473,6 +5504,12 @@
 /obj/machinery/light/flamp/flicker,
 /turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
 /area/sector/delerictcasino/room/room2)
+"CK" = (
+/obj/effect/shuttle_landmark{
+	name = "Pad 3f"
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "CL" = (
 /obj/structure/flora/fey/grass/grass7,
 /turf/simulated/floor/water/river{
@@ -6010,6 +6047,12 @@
 /obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor,
 /area/sector/delerictcasino/engineering)
+"Gc" = (
+/obj/structure/table/marble,
+/turf/simulated/floor/fey/forest_grass{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/ringforrest)
 "Gh" = (
 /obj/structure/railing/grey,
 /obj/structure/flora/tree/fey/small_tree/tree4{
@@ -6777,6 +6820,12 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"Kk" = (
+/obj/effect/shuttle_landmark{
+	name = "Pad 3g"
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "Km" = (
 /obj/structure/metal_edge,
 /obj/structure/railing/grey{
@@ -7163,6 +7212,12 @@
 /obj/structure/bed/chair/sofa/blue,
 /turf/simulated/floor/tiled/steel_dirty/cyan,
 /area/sector/delerictcasino/dance)
+"Mx" = (
+/obj/effect/shuttle_landmark{
+	name = "Pad 2c"
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "Mz" = (
 /obj/structure/table/hardwoodtable,
 /obj/random/alcohol,
@@ -7178,6 +7233,12 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/room/room5)
+"MD" = (
+/obj/effect/shuttle_landmark{
+	name = "Pad 2a"
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "MI" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
@@ -7680,6 +7741,12 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"Po" = (
+/obj/effect/shuttle_landmark{
+	name = "Pad 1c"
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "Pt" = (
 /obj/structure/flora/grass/event/heavy_grass3,
 /turf/simulated/floor/tiled/steel_dirty/silver{
@@ -8350,6 +8417,12 @@
 	color = "#ed983d"
 	},
 /area/sector/delerictcasino/ringforrest)
+"Th" = (
+/obj/effect/shuttle_landmark{
+	name = "Pad 1d"
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "Ti" = (
 /obj/effect/floor_decal/river_beach_corner_edge{
 	dir = 8
@@ -9234,6 +9307,12 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/dance)
+"XH" = (
+/obj/effect/shuttle_landmark{
+	name = "Pad 1b"
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "XI" = (
 /obj/structure/railing/grey,
 /obj/effect/floor_decal/industrial/halfstair{
@@ -22385,7 +22464,7 @@ ct
 ct
 ct
 ct
-jw
+Po
 ct
 ct
 ct
@@ -23179,7 +23258,7 @@ ct
 ct
 ct
 ct
-jw
+iV
 ct
 ct
 ct
@@ -24506,7 +24585,7 @@ ub
 AD
 ct
 ct
-jw
+dm
 ct
 ct
 ct
@@ -24525,10 +24604,10 @@ ct
 ct
 ct
 ct
-jw
+Th
 ct
 ct
-CA
+ct
 bM
 ct
 ct
@@ -24722,7 +24801,7 @@ ct
 ct
 ct
 ct
-AB
+ct
 bM
 ct
 ct
@@ -24916,7 +24995,7 @@ ct
 ct
 ct
 ct
-AB
+ct
 bM
 ct
 ct
@@ -25110,7 +25189,7 @@ ct
 ct
 ct
 ct
-AB
+ct
 bM
 ct
 ct
@@ -25304,7 +25383,7 @@ ct
 ct
 ct
 ct
-AB
+ct
 bM
 ct
 ct
@@ -25498,7 +25577,7 @@ ct
 ct
 ct
 ct
-AB
+ct
 bM
 ct
 ct
@@ -25692,7 +25771,7 @@ ct
 ct
 ct
 ct
-AB
+ct
 bM
 ct
 ct
@@ -25701,7 +25780,7 @@ ct
 ct
 ct
 ct
-jw
+im
 ct
 ct
 ct
@@ -25866,7 +25945,7 @@ ct
 ct
 ct
 ct
-jw
+XH
 ct
 ct
 ct
@@ -25886,7 +25965,7 @@ ct
 ct
 ct
 ct
-AB
+ct
 bM
 ct
 ct
@@ -25903,7 +25982,7 @@ ct
 ct
 ct
 ct
-jw
+ka
 ct
 ct
 GM
@@ -26080,7 +26159,7 @@ ct
 ct
 ct
 ct
-is
+dR
 bM
 ct
 ct
@@ -26274,7 +26353,7 @@ ct
 ct
 ct
 ct
-AB
+ct
 bM
 ct
 ct
@@ -26468,7 +26547,7 @@ ct
 ct
 ct
 ct
-AB
+ct
 bM
 ct
 ct
@@ -26662,7 +26741,7 @@ DX
 ct
 ct
 ct
-AB
+ct
 bM
 Oa
 Oa
@@ -28152,7 +28231,7 @@ Ca
 bJ
 qM
 vp
-gZ
+nk
 Jx
 gZ
 vp
@@ -28345,8 +28424,8 @@ Ca
 Ca
 uc
 qM
-vp
-CB
+Gc
+kf
 oH
 Jx
 vp
@@ -28416,7 +28495,7 @@ Qh
 dq
 ct
 ct
-jw
+sR
 ct
 ct
 ct
@@ -28425,7 +28504,7 @@ ct
 ct
 ct
 ct
-jw
+Kk
 ct
 ct
 GM
@@ -28540,7 +28619,7 @@ FT
 uc
 sQ
 vp
-Jx
+ld
 eY
 Jx
 vp
@@ -30744,7 +30823,7 @@ ct
 ct
 ct
 ct
-jw
+du
 ct
 ct
 ct
@@ -30753,7 +30832,7 @@ ct
 ct
 ct
 ct
-jw
+CK
 ct
 ct
 GM
@@ -30922,7 +31001,7 @@ ct
 ct
 ct
 ct
-jw
+Mx
 ct
 ct
 ct
@@ -31912,7 +31991,7 @@ ct
 ct
 ct
 ct
-jw
+oj
 ct
 ct
 ct
@@ -32285,7 +32364,7 @@ ct
 ct
 ct
 ct
-jw
+AX
 ct
 ct
 ct
@@ -33430,7 +33509,7 @@ ub
 bM
 ct
 ct
-jw
+MD
 ct
 ct
 ct
@@ -34208,7 +34287,7 @@ ct
 ct
 ct
 ct
-jw
+vs
 ct
 ct
 ct
