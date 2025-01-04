@@ -15,43 +15,23 @@ Warning: While there is no regulation regarding visiting and scavenging operatio
 	in_space = 1
 	icon_state = "fueldepot"
 
-/obj/item/paper/casinoatc
-	name = "Faxed Letter - Final ATC note"
-	info = {"2568-08-25 - Destination - Hadii's Folley : Miaphus'irra : Outpost 7 'Grey Sand' village : House 12.\
-	 Hey, ill be heading back. Yes, even after that sector explosion I am still alive.\
-	 But the company lost interess. Actually, they lost everything and are going bankrupt.\
-	 Its me that is closing up shop. The blast got one of the room, wich was enough to get us a lawsuit with a bigger investisor.\
-	 Was tasked to get the security system of the vault up and running, there might still be some valuable bits in there.\
-	 Ill see you soon, Lil sis. - Neruk Mri'Jan"}
-
-/obj/item/paper/casinolawsuit
-	name = "Lawsuit Draft"
-	info = {"2568-08-22 - Destination - Orion Confederatie : Earth : London - 5 Vulcan Street.\
-	 (The documents itself seems to have been drench in water. However, a notes on the less damaged parts of the document are still readable).\
-	 30 years that my father and myself invested in that project. And the stay I had here was dreadfull.\
-	 Yes, the explosion hitting east side of the station, and destroying my room wasn't their fault, but you must understand me, my precious darling :\
-	 The workers are not organised, there is no plans, the station was build in a awfull order... Looks at the plants. Sure, it was always to be a forrest,\
-	 but the plants were planted 30 years ago, and are now growing out of control, at a point where recruited botanist wants a insane salary.\
-	 I am affraid that I will have to sue the company. They are incopetent... We won't have our little space forrest in space, my dearest.\
-	 I will return in November, my love - Daren.L"}
-
-obj/item/paper/casinochips
-	name = "Faxed Letter - URGENT - The 3 chips"
-	color = "#ffc42f"
-	info = {"- We have a issue. While the staff is being all dissmissed safely, and returned to their home with compensation like planned,\
-	We noticed that the 3 security poker chips are missing.\
-	We have emptied the vault of the majority of its content, but we still had a few things in there.\
-	Those 3 poker chips are the only thing that could open the vault. We expect them to still be lost on board.\
-	The remain staff is unsure where they are :\
-	One think that one was passed to the visiting investor, Daren Lachance. But his room was spaced.\
-	I think Torini saw one fall in the river... Good thing they float. It was Westside.\
-	No clue on the final one. A other team will have to search.\
-	Before I leave myself, may I command to our dear CEO : Why did we greenlit the use of encrypted poker chips instead of keycards ?\
-	Acting Director Swank"}
-
-obj/item/paper/casinosec
-	name = "Note - Security System"
-	info = {"Please use the 3 Security Casino Chip to open the shutter, they must be equipped to open the shutters. - Security Team"}
+	initial_generic_waypoints = list(
+		"casino_pad_1a",
+		"casino_pad_1b",
+		"casino_pad_1c",
+		"casino_pad_1d",
+		"casino_pad_2a",
+		"casino_pad_2b",
+		"casino_pad_2c",
+		"casino_pad_2d",
+		"casino_pad_3a",
+		"casino_pad_3b",
+		"casino_pad_3c",
+		"casino_pad_3d",
+		"casino_pad_3f",
+		"casino_pad_3g",
+		"casino_pad_3h"
+		)
 
 // -- Mobs -- //
 
@@ -133,3 +113,43 @@ obj/item/paper/casinosec
 	job_access_type = null
 	color ="#1500fff8"
 	access = list(412)
+
+//notes
+
+/obj/item/paper/casinoatc
+	name = "Faxed Letter - Final ATC note"
+	info = {"2568-08-25 - Destination - Hadii's Folley : Miaphus'irra : Outpost 7 'Grey Sand' village : House 12.\
+	 Hey, ill be heading back. Yes, even after that sector explosion I am still alive.\
+	 But the company lost interess. Actually, they lost everything and are going bankrupt.\
+	 Its me that is closing up shop. The blast got one of the room, wich was enough to get us a lawsuit with a bigger investisor.\
+	 Was tasked to get the security system of the vault up and running, there might still be some valuable bits in there.\
+	 Ill see you soon, Lil sis. - Neruk Mri'Jan"}
+
+/obj/item/paper/casinolawsuit
+	name = "Lawsuit Draft"
+	info = {"2568-08-22 - Destination - Orion Confederatie : Earth : London - 5 Vulcan Street.\
+	 (The documents itself seems to have been drench in water. However, a notes on the less damaged parts of the document are still readable).\
+	 30 years that my father and myself invested in that project. And the stay I had here was dreadfull.\
+	 Yes, the explosion hitting east side of the station, and destroying my room wasn't their fault, but you must understand me, my precious darling :\
+	 The workers are not organised, there is no plans, the station was build in a awfull order... Looks at the plants. Sure, it was always to be a forrest,\
+	 but the plants were planted 30 years ago, and are now growing out of control, at a point where recruited botanist wants a insane salary.\
+	 I am affraid that I will have to sue the company. They are incopetent... We won't have our little space forrest in space, my dearest.\
+	 I will return in November, my love - Daren.L"}
+
+/obj/item/paper/casinochips
+	name = "Faxed Letter - URGENT - The 3 chips"
+	color = "#ffc42f"
+	info = {"- We have a issue. While the staff is being all dissmissed safely, and returned to their home with compensation like planned,\
+	We noticed that the 3 security poker chips are missing.\
+	We have emptied the vault of the majority of its content, but we still had a few things in there.\
+	Those 3 poker chips are the only thing that could open the vault. We expect them to still be lost on board.\
+	The remain staff is unsure where they are :\
+	One think that one was passed to the visiting investor, Daren Lachance. But his room was spaced.\
+	I think Torini saw one fall in the river... Good thing they float. It was Westside.\
+	No clue on the final one. A other team will have to search.\
+	Before I leave myself, may I command to our dear CEO : Why did we greenlit the use of encrypted poker chips instead of keycards ?\
+	Acting Director Swank"}
+
+/obj/item/paper/casinosec
+	name = "Note - Security System"
+	info = {"Please use the 3 Security Casino Chip to open the shutter, they must be equipped to open the shutters. - Security Team"}
