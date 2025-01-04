@@ -681,6 +681,15 @@
 	color = "#ed983d"
 	},
 /area/sector/delerictcasino/ringforrest)
+"du" = (
+/obj/effect/shuttle_landmark{
+	landmark_tag = "casino_pad_1a";
+	name = "Casino pad 1a";
+	base_turf = /turf/simulated/floor/reinforced;
+	base_area = /area/sector/delerictcasino/dock
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "dv" = (
 /obj/machinery/light/fairy{
 	coloration = "#ed983d";
@@ -705,7 +714,6 @@
 /area/sector/delerictcasino/dance)
 "dy" = (
 /obj/structure/flora/fey/grass/grass5,
-/obj/structure/lattice,
 /turf/simulated/floor/water/river{
 	name = "still water";
 	color = "#677246";
@@ -1584,6 +1592,15 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/cyan,
 /area/sector/delerictcasino/dance)
+"hW" = (
+/obj/effect/shuttle_landmark{
+	landmark_tag = "casino_pad_1c";
+	name = "Casino pad 1c";
+	base_turf = /turf/simulated/floor/reinforced;
+	base_area = /area/sector/delerictcasino/dock
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "hX" = (
 /obj/structure/metal_edge,
 /obj/structure/railing/grey{
@@ -1695,13 +1712,6 @@
 	color = "#ed983d"
 	},
 /area/sector/delerictcasino/ringforrest)
-"is" = (
-/obj/machinery/light,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/reinforced,
-/area/sector/delerictcasino/dock)
 "it" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/flashlight/lamp,
@@ -1776,6 +1786,15 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/dance)
+"iL" = (
+/obj/effect/shuttle_landmark{
+	landmark_tag = "casino_pad_3f";
+	name = "Casino pad 3f";
+	base_turf = /turf/simulated/floor/reinforced;
+	base_area = /area/sector/delerictcasino/dock
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "iM" = (
 /obj/structure/table/standard,
 /obj/item/bodybag/cryobag{
@@ -1927,10 +1946,6 @@
 /obj/structure/table/reinforced,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/delerictcasino/crew)
-"jw" = (
-/obj/effect/shuttle_landmark,
-/turf/simulated/floor/reinforced,
-/area/sector/delerictcasino/dock)
 "jx" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -2096,7 +2111,6 @@
 /obj/machinery/atmospherics/component/binary/pump/on{
 	name = "Waste"
 	},
-/obj/structure/lattice,
 /turf/simulated/floor/water/river{
 	name = "still water";
 	color = "#677246";
@@ -2170,7 +2184,6 @@
 /area/sector/delerictcasino/ringforrest)
 "kK" = (
 /obj/structure/flora/fey/grass/grass7,
-/obj/structure/lattice,
 /turf/simulated/floor/water/river{
 	name = "still water";
 	color = "#677246";
@@ -2605,11 +2618,13 @@
 /obj/structure/table/steel_reinforced,
 /obj/machinery/button/remote/airlock,
 /obj/machinery/button/remote/airlock{
-	id = "casinovault1"
+	id = "casinovault1";
+	color = "#ff0000f8"
 	},
 /obj/machinery/button/remote/airlock{
 	pixel_x = 16;
-	id = "casinovault2"
+	id = "casinovault2";
+	color = "#fff200f8"
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/delerictcasino/vault)
@@ -2643,6 +2658,15 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"nD" = (
+/obj/effect/shuttle_landmark{
+	landmark_tag = "casino_pad_2a";
+	name = "Casino pad 2a";
+	base_turf = /turf/simulated/floor/reinforced;
+	base_area = /area/sector/delerictcasino/dock
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "nF" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 6
@@ -2690,6 +2714,15 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/restaurant)
+"nU" = (
+/obj/effect/shuttle_landmark{
+	landmark_tag = "casino_pad_3b";
+	name = "Casino pad 3b";
+	base_turf = /turf/simulated/floor/reinforced;
+	base_area = /area/sector/delerictcasino/dock
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "nX" = (
 /obj/machinery/light/fairy{
 	coloration = "#ed983d";
@@ -2804,7 +2837,6 @@
 /area/sector/delerictcasino/ringforrest)
 "oA" = (
 /obj/machinery/light/small,
-/obj/structure/lattice,
 /turf/simulated/floor/water/river{
 	name = "still water";
 	color = "#677246";
@@ -3100,6 +3132,15 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"pP" = (
+/obj/effect/shuttle_landmark{
+	landmark_tag = "casino_pad_3a";
+	name = "Casino pad 3a";
+	base_turf = /turf/simulated/floor/reinforced;
+	base_area = /area/sector/delerictcasino/dock
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "pT" = (
 /mob/living/simple_mob/animal/passive/bird/european_robin,
 /turf/simulated/floor/tiled/steel_dirty/dark{
@@ -3279,6 +3320,15 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"ra" = (
+/obj/effect/shuttle_landmark{
+	landmark_tag = "casino_pad_3d";
+	name = "Casino pad 3d";
+	base_turf = /turf/simulated/floor/reinforced;
+	base_area = /area/sector/delerictcasino/dock
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "rd" = (
 /obj/structure/metal_edge,
 /obj/structure/railing/grey{
@@ -3788,11 +3838,6 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
-"tv" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor,
-/area/sector/delerictcasino/ringforrest)
 "tw" = (
 /obj/structure/railing/grey{
 	dir = 8
@@ -4050,13 +4095,6 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/spine)
-"vc" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
-/area/sector/delerictcasino/exterior)
 "vh" = (
 /obj/structure/bookcase/manuals/medical,
 /turf/simulated/floor/tiled/steel_dirty/dark{
@@ -4108,6 +4146,15 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"vw" = (
+/obj/effect/shuttle_landmark{
+	landmark_tag = "casino_pad_1d";
+	name = "Casino pad 1d";
+	base_turf = /turf/simulated/floor/reinforced;
+	base_area = /area/sector/delerictcasino/dock
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "vz" = (
 /turf/simulated/floor/wood/indoors,
 /area/sector/delerictcasino/ringforrest)
@@ -4354,7 +4401,6 @@
 /area/sector/delerictcasino/room/room2)
 "xh" = (
 /obj/structure/flora/fey/grass/grass7,
-/obj/structure/lattice,
 /obj/machinery/door/airlock/multi_tile{
 	name = "Casino engineering section Airlock";
 	dir = 8
@@ -4411,7 +4457,6 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/structure/lattice,
 /turf/simulated/floor/water/river{
 	name = "still water";
 	color = "#677246";
@@ -4478,6 +4523,15 @@
 	color = "#677246"
 	},
 /area/sector/delerictcasino/ringforrest)
+"xI" = (
+/obj/effect/shuttle_landmark{
+	landmark_tag = "casino_pad_3e";
+	name = "Casino pad 3e";
+	base_turf = /turf/simulated/floor/reinforced;
+	base_area = /area/sector/delerictcasino/dock
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "xJ" = (
 /obj/effect/floor_decal/industrial/halfstair,
 /turf/simulated/floor/tiled/steel_dirty/dark{
@@ -5089,6 +5143,15 @@
 	},
 /turf/simulated/floor/carpet,
 /area/sector/delerictcasino/restaurant)
+"Au" = (
+/obj/effect/shuttle_landmark{
+	landmark_tag = "casino_pad_3h";
+	name = "Casino pad 3h";
+	base_turf = /turf/simulated/floor/reinforced;
+	base_area = /area/sector/delerictcasino/dock
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "Av" = (
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/delerictcasino/crew)
@@ -5116,12 +5179,6 @@
 	color = "#677246"
 	},
 /area/sector/delerictcasino/ringforrest)
-"AB" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/reinforced,
-/area/sector/delerictcasino/dock)
 "AD" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
@@ -5449,18 +5506,6 @@
 	color = "#ed983d"
 	},
 /area/sector/delerictcasino/ringforrest)
-"CA" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/reinforced,
-/area/sector/delerictcasino/dock)
-"CB" = (
-/obj/structure/flora/tree/fey/large_tree/tree2{
-	color = "#ed983d"
-	},
-/turf/simulated/floor/carpet/patterened/blue,
-/area/sector/delerictcasino/ringforrest)
 "CE" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor/carpet/patterened/green,
@@ -5774,13 +5819,6 @@
 	},
 /turf/simulated/floor,
 /area/sector/delerictcasino/engineering)
-"EE" = (
-/obj/machinery/air_alarm/alarms_hidden{
-	pixel_y = 22;
-	req_one_access = list(160)
-	},
-/turf/simulated/floor/reinforced,
-/area/sector/delerictcasino/dock)
 "EF" = (
 /obj/structure/railing/grey,
 /obj/structure/railing/grey{
@@ -6328,11 +6366,6 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
-"HU" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/space/basic,
-/area/space)
 "HX" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/flora/grass/event/full_grass3,
@@ -6652,6 +6685,12 @@
 	color = "#b88a3b"
 	},
 /area/sector/delerictcasino/ringforrest)
+"JC" = (
+/obj/structure/table/marble,
+/turf/simulated/floor/fey/forest_grass{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/ringforrest)
 "JG" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/floor_decal/rust,
@@ -6961,7 +7000,6 @@
 	name = "Air Supply";
 	target_pressure = 1000
 	},
-/obj/structure/lattice,
 /turf/simulated/floor/water/river{
 	name = "still water";
 	color = "#677246";
@@ -7066,12 +7104,16 @@
 /obj/machinery/button/remote/airlock,
 /obj/machinery/button/remote/airlock{
 	id = "casinovault1";
-	req_access = list(410)
+	req_access = list(410);
+	name = "Red Button";
+	color = "#ff0000f8"
 	},
 /obj/machinery/button/remote/airlock{
 	pixel_x = 16;
 	id = "casinovault2";
-	req_access = list(411)
+	req_access = list(411);
+	name = "Yellow Button";
+	color = "#fff200f8"
 	},
 /turf/simulated/floor,
 /area/sector/delerictcasino/maintenance)
@@ -7525,7 +7567,6 @@
 /turf/simulated/floor,
 /area/sector/delerictcasino/engineering)
 "OB" = (
-/obj/structure/lattice,
 /turf/simulated/floor/water/river{
 	name = "still water";
 	color = "#677246";
@@ -7864,7 +7905,6 @@
 /turf/simulated/floor/carpet,
 /area/sector/delerictcasino/maintenance)
 "Qq" = (
-/obj/structure/lattice,
 /obj/item/weldingtool,
 /turf/space/basic,
 /area/space)
@@ -7948,6 +7988,15 @@
 	color = "#677246"
 	},
 /area/sector/delerictcasino/ringforrest)
+"QO" = (
+/obj/effect/shuttle_landmark{
+	landmark_tag = "casino_pad_2c";
+	name = "Casino pad 2c";
+	base_turf = /turf/simulated/floor/reinforced;
+	base_area = /area/sector/delerictcasino/dock
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "QS" = (
 /turf/simulated/floor/tiled/eris/steel/bar_light,
 /area/sector/delerictcasino/dance)
@@ -7973,6 +8022,24 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"Rg" = (
+/obj/effect/shuttle_landmark{
+	landmark_tag = "casino_pad_3g";
+	name = "Casino pad 3g";
+	base_turf = /turf/simulated/floor/reinforced;
+	base_area = /area/sector/delerictcasino/dock
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
+"Rh" = (
+/obj/effect/shuttle_landmark{
+	landmark_tag = "casino_pad_2d";
+	name = "Casino pad 2d";
+	base_turf = /turf/simulated/floor/reinforced;
+	base_area = /area/sector/delerictcasino/dock
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "Rm" = (
 /obj/structure/flora/grass/fey/bush/bush3,
 /turf/simulated/floor/water/river{
@@ -8461,6 +8528,15 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/sector/delerictcasino/crew)
+"TC" = (
+/obj/effect/shuttle_landmark{
+	landmark_tag = "casino_pad_1b";
+	name = "Casino pad 1b";
+	base_turf = /turf/simulated/floor/reinforced;
+	base_area = /area/sector/delerictcasino/dock
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "TD" = (
 /obj/structure/railing/grey{
 	dir = 1
@@ -8720,6 +8796,15 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/sector/delerictcasino/ringforrest)
+"US" = (
+/obj/effect/shuttle_landmark{
+	landmark_tag = "casino_pad_3c";
+	name = "Casino pad 3c";
+	base_turf = /turf/simulated/floor/reinforced;
+	base_area = /area/sector/delerictcasino/dock
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "UT" = (
 /obj/machinery/recharge_station,
 /turf/simulated/floor,
@@ -8896,7 +8981,8 @@
 	},
 /obj/structure/table/steel_reinforced,
 /obj/machinery/button/remote/airlock{
-	id = "casinovault3"
+	id = "casinovault3";
+	color = "#1500fff8"
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/delerictcasino/vault)
@@ -9348,7 +9434,9 @@
 /obj/structure/table/steel_reinforced,
 /obj/machinery/button/remote/airlock{
 	id = "casinovault3";
-	req_access = list(412)
+	req_access = list(412);
+	name = "Blue Button";
+	color = "#1500fff8"
 	},
 /turf/simulated/floor,
 /area/sector/delerictcasino/maintenance)
@@ -9422,6 +9510,15 @@
 /obj/structure/flora/pottedplant/thinbush,
 /turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
 /area/sector/delerictcasino/room/room1)
+"Za" = (
+/obj/effect/shuttle_landmark{
+	landmark_tag = "casino_pad_2b";
+	name = "Casino pad 2b";
+	base_turf = /turf/simulated/floor/reinforced;
+	base_area = /area/sector/delerictcasino/dock
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "Zd" = (
 /turf/simulated/floor/preset/linoleum/indoors{
 	outdoors = 1
@@ -20451,9 +20548,9 @@ HC
 HC
 HC
 HC
-HC
-HC
-HC
+ub
+ub
+ub
 HC
 HC
 HC
@@ -20641,24 +20738,24 @@ HC
 HC
 HC
 HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
 HC
 HC
 HC
@@ -20835,24 +20932,24 @@ HC
 HC
 HC
 HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
 HC
 HC
 HC
@@ -21025,17 +21122,6 @@ HC
 HC
 HC
 HC
-ub
-ub
-ub
-ub
-HC
-HC
-HC
-HC
-HC
-HC
-HC
 HC
 HC
 ub
@@ -21056,7 +21142,12 @@ ub
 ub
 ub
 ub
-HU
+ub
+ub
+ub
+ub
+ub
+ub
 HC
 HC
 HC
@@ -21064,6 +21155,12 @@ HC
 HC
 HC
 HC
+HC
+ub
+ub
+ub
+ub
+ub
 HC
 HC
 HC
@@ -21190,8 +21287,6 @@ Fd
 lS
 kN
 kN
-ub
-ub
 HC
 HC
 HC
@@ -21217,48 +21312,50 @@ HC
 HC
 HC
 HC
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-HC
-HC
-ub
-ub
-ub
-HC
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
 HC
 HC
 HC
+HC
+HC
+HC
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
 HC
 HC
 HC
@@ -21385,8 +21482,6 @@ Yi
 Tg
 kN
 kN
-ub
-ub
 HC
 HC
 HC
@@ -21410,9 +21505,11 @@ HC
 HC
 HC
 HC
-ub
-HU
-ub
+HC
+HC
+HC
+HC
+HC
 bM
 bM
 if
@@ -21579,34 +21676,34 @@ Tg
 Tg
 kN
 kN
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
 bM
 Wh
 ct
@@ -21775,8 +21872,6 @@ lS
 kN
 kN
 kN
-ub
-ub
 HC
 HC
 HC
@@ -21796,11 +21891,13 @@ HC
 HC
 HC
 HC
-ub
-ub
-ub
-ub
-ub
+HC
+HC
+HC
+HC
+HC
+HC
+HC
 bM
 ct
 ct
@@ -21992,9 +22089,9 @@ HC
 HC
 HC
 HC
-ub
-ub
-ub
+HC
+HC
+HC
 bM
 ct
 ct
@@ -22188,7 +22285,7 @@ HC
 HC
 HC
 HC
-ub
+HC
 bM
 ct
 ct
@@ -22218,7 +22315,7 @@ ct
 bM
 ct
 ct
-ct
+pP
 ct
 ct
 ct
@@ -22399,9 +22496,9 @@ ct
 ct
 ct
 ct
-jw
 ct
 ct
+vw
 ct
 ct
 ct
@@ -22623,7 +22720,7 @@ ct
 ct
 ct
 bM
-HC
+ub
 HC
 HC
 HC
@@ -22817,7 +22914,7 @@ ct
 ct
 ct
 GM
-HC
+ub
 HC
 HC
 HC
@@ -23004,7 +23101,7 @@ ct
 ct
 ct
 ct
-ct
+Au
 ct
 ct
 ct
@@ -23193,7 +23290,7 @@ ct
 ct
 ct
 ct
-jw
+ct
 ct
 ct
 ct
@@ -23395,12 +23492,12 @@ ct
 ct
 ct
 ct
-jw
+ct
 ct
 ct
 GM
 ub
-ub
+HC
 HC
 HC
 HC
@@ -23546,9 +23643,9 @@ HC
 HC
 HC
 HC
-HC
+ub
 bM
-EE
+ct
 ct
 ct
 ct
@@ -23594,8 +23691,8 @@ ct
 ct
 GM
 ub
-ub
-ub
+HC
+HC
 HC
 HC
 HC
@@ -23739,8 +23836,8 @@ HC
 HC
 HC
 HC
-HC
-HC
+ub
+ub
 bM
 ct
 ct
@@ -23931,10 +24028,10 @@ HC
 HC
 HC
 HC
-HC
-HC
-HC
-HC
+ub
+ub
+ub
+ub
 bM
 ct
 ct
@@ -24103,32 +24200,32 @@ lS
 XA
 XA
 rV
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
 bM
 ct
 ct
@@ -24178,7 +24275,7 @@ GM
 ub
 ub
 ub
-ub
+HC
 HC
 HC
 HC
@@ -24297,6 +24394,9 @@ ap
 lS
 XA
 rV
+ub
+ub
+ub
 HC
 HC
 HC
@@ -24318,15 +24418,12 @@ HC
 HC
 HC
 HC
-HC
-HC
-HC
-HC
-HC
+ub
+ub
 bM
 sI
 ct
-ct
+du
 ct
 ct
 ct
@@ -24372,7 +24469,7 @@ GM
 ub
 ub
 ub
-ub
+HC
 HC
 HC
 HC
@@ -24516,11 +24613,10 @@ HC
 HC
 HC
 HC
-HC
+ub
 AD
 ct
 ct
-jw
 ct
 ct
 ct
@@ -24539,10 +24635,11 @@ ct
 ct
 ct
 ct
-jw
 ct
 ct
-CA
+hW
+ct
+ct
 bM
 ct
 ct
@@ -24566,8 +24663,8 @@ GM
 ub
 ub
 ub
-ub
-ub
+HC
+HC
 HC
 HC
 HC
@@ -24736,7 +24833,7 @@ ct
 ct
 ct
 ct
-AB
+ct
 bM
 ct
 ct
@@ -24760,9 +24857,9 @@ GM
 ub
 ub
 ub
-ub
-ub
-ub
+HC
+HC
+HC
 HC
 HC
 "}
@@ -24930,7 +25027,7 @@ ct
 ct
 ct
 ct
-AB
+ct
 bM
 ct
 ct
@@ -24954,8 +25051,8 @@ GM
 ub
 ub
 ub
-ub
-ub
+HC
+HC
 HC
 HC
 HC
@@ -25124,7 +25221,7 @@ ct
 ct
 ct
 ct
-AB
+ct
 bM
 ct
 ct
@@ -25141,14 +25238,14 @@ ct
 ct
 ct
 ct
-ct
+Rg
 ct
 ct
 GM
 ub
 ub
 ub
-ub
+HC
 HC
 HC
 HC
@@ -25318,11 +25415,11 @@ ct
 ct
 ct
 ct
-AB
+ct
 bM
 ct
 ct
-ct
+nU
 ct
 ct
 ct
@@ -25340,9 +25437,9 @@ ct
 ct
 GM
 ub
-ub
-ub
-HU
+HC
+HC
+HC
 HC
 HC
 HC
@@ -25512,7 +25609,7 @@ ct
 ct
 ct
 ct
-AB
+ct
 bM
 ct
 ct
@@ -25534,8 +25631,8 @@ ct
 ct
 GM
 ub
-ub
-ub
+HC
+HC
 HC
 HC
 HC
@@ -25687,6 +25784,7 @@ ct
 ct
 ct
 ct
+TC
 ct
 ct
 ct
@@ -25706,7 +25804,6 @@ ct
 ct
 ct
 ct
-AB
 bM
 ct
 ct
@@ -25715,7 +25812,7 @@ ct
 ct
 ct
 ct
-jw
+ct
 ct
 ct
 ct
@@ -25728,8 +25825,8 @@ ct
 ct
 GM
 ub
-ub
-ub
+HC
+HC
 HC
 HC
 HC
@@ -25880,7 +25977,6 @@ ct
 ct
 ct
 ct
-jw
 ct
 ct
 ct
@@ -25900,7 +25996,8 @@ ct
 ct
 ct
 ct
-AB
+ct
+ct
 bM
 ct
 ct
@@ -25917,13 +26014,13 @@ ct
 ct
 ct
 ct
-jw
+ct
 ct
 ct
 GM
 ub
-ub
-ub
+HC
+HC
 HC
 HC
 HC
@@ -26094,7 +26191,7 @@ ct
 ct
 ct
 ct
-is
+dR
 bM
 ct
 ct
@@ -26116,8 +26213,8 @@ ct
 ct
 GM
 ub
-ub
-ub
+HC
+HC
 HC
 HC
 HC
@@ -26288,7 +26385,7 @@ ct
 ct
 ct
 ct
-AB
+ct
 bM
 ct
 ct
@@ -26310,8 +26407,8 @@ ct
 ct
 GM
 ub
-ub
-ub
+HC
+HC
 HC
 HC
 HC
@@ -26482,7 +26579,7 @@ ct
 ct
 ct
 ct
-AB
+ct
 bM
 ct
 ct
@@ -26504,8 +26601,8 @@ ct
 ct
 GM
 ub
-ub
-ub
+HC
+HC
 HC
 HC
 HC
@@ -26676,7 +26773,7 @@ DX
 ct
 ct
 ct
-AB
+ct
 bM
 Oa
 Oa
@@ -26699,7 +26796,7 @@ ct
 GM
 ub
 ub
-ub
+HC
 HC
 HC
 HC
@@ -26893,7 +26990,7 @@ ct
 bM
 ub
 ub
-ub
+HC
 HC
 HC
 HC
@@ -27087,7 +27184,7 @@ ct
 GM
 ub
 ub
-ub
+HC
 HC
 HC
 HC
@@ -27459,6 +27556,7 @@ AZ
 MO
 dq
 ct
+US
 ct
 ct
 ct
@@ -27468,8 +27566,7 @@ ct
 ct
 ct
 ct
-ct
-ct
+iL
 ct
 ct
 GM
@@ -27863,7 +27960,7 @@ ct
 GM
 ub
 ub
-ub
+HC
 HC
 HC
 HC
@@ -28057,7 +28154,7 @@ ct
 GM
 ub
 ub
-ub
+HC
 HC
 HC
 HC
@@ -28166,7 +28263,7 @@ Ca
 bJ
 qM
 vp
-gZ
+nk
 Jx
 gZ
 vp
@@ -28251,7 +28348,7 @@ ct
 GM
 ub
 ub
-ub
+HC
 HC
 HC
 HC
@@ -28359,8 +28456,8 @@ Ca
 Ca
 uc
 qM
-vp
-CB
+JC
+kf
 oH
 Jx
 vp
@@ -28430,7 +28527,6 @@ Qh
 dq
 ct
 ct
-jw
 ct
 ct
 ct
@@ -28439,14 +28535,15 @@ ct
 ct
 ct
 ct
-jw
+ct
+ct
 ct
 ct
 GM
 ub
 ub
-ub
-ub
+HC
+HC
 HC
 HC
 HC
@@ -28554,7 +28651,7 @@ FT
 uc
 sQ
 vp
-Jx
+ld
 eY
 Jx
 vp
@@ -28638,9 +28735,9 @@ ct
 ct
 GM
 ub
-ub
-ub
-ub
+HC
+HC
+HC
 HC
 HC
 HC
@@ -28832,10 +28929,10 @@ ct
 ct
 GM
 ub
-ub
-ub
-ub
-ub
+HC
+HC
+HC
+HC
 HC
 HC
 HC
@@ -29026,10 +29123,10 @@ ct
 ct
 GM
 ub
-ub
-ub
-ub
-ub
+HC
+HC
+HC
+HC
 HC
 HC
 HC
@@ -29220,10 +29317,10 @@ ct
 ct
 GM
 ub
-ub
-ub
-ub
-ub
+HC
+HC
+HC
+HC
 HC
 HC
 HC
@@ -29414,10 +29511,10 @@ ct
 ct
 GM
 ub
-ub
-ub
-ub
-ub
+HC
+HC
+HC
+HC
 HC
 HC
 HC
@@ -29537,7 +29634,7 @@ lS
 lS
 lS
 rV
-tv
+ri
 ri
 ri
 ri
@@ -29608,9 +29705,9 @@ ct
 ct
 GM
 ub
-ub
-ub
-ub
+HC
+HC
+HC
 HC
 HC
 HC
@@ -29802,8 +29899,8 @@ ct
 ct
 GM
 ub
-ub
-ub
+HC
+HC
 HC
 HC
 HC
@@ -29996,8 +30093,8 @@ ct
 ct
 GM
 ub
-ub
-ub
+HC
+HC
 HC
 HC
 HC
@@ -30191,7 +30288,7 @@ ct
 bM
 ub
 ub
-ub
+HC
 HC
 HC
 HC
@@ -30385,7 +30482,7 @@ ct
 GM
 ub
 ub
-ub
+HC
 HC
 HC
 HC
@@ -30563,6 +30660,7 @@ ct
 ct
 ct
 ct
+ra
 ct
 ct
 ct
@@ -30572,8 +30670,7 @@ ct
 ct
 ct
 ct
-ct
-ct
+xI
 ct
 ct
 GM
@@ -30758,7 +30855,6 @@ ct
 ct
 ct
 ct
-jw
 ct
 ct
 ct
@@ -30767,14 +30863,15 @@ ct
 ct
 ct
 ct
-jw
+ct
+ct
 ct
 ct
 GM
 ub
 ub
 ub
-HC
+ub
 HC
 HC
 HC
@@ -30936,7 +31033,7 @@ ct
 ct
 ct
 ct
-jw
+ct
 ct
 ct
 ct
@@ -31161,7 +31258,7 @@ ct
 GM
 ub
 ub
-ub
+HC
 HC
 HC
 HC
@@ -31325,7 +31422,7 @@ ct
 ct
 ct
 ct
-ct
+Rh
 ct
 ct
 ct
@@ -31926,7 +32023,7 @@ ct
 ct
 ct
 ct
-jw
+ct
 ct
 ct
 ct
@@ -31935,7 +32032,7 @@ ct
 ct
 ct
 bM
-ub
+HC
 HC
 HC
 HC
@@ -32299,7 +32396,7 @@ ct
 ct
 ct
 ct
-jw
+ct
 ct
 ct
 ct
@@ -32470,7 +32567,7 @@ HC
 HC
 HC
 HC
-HC
+ub
 AD
 ct
 ct
@@ -32585,7 +32682,7 @@ rB
 rB
 rB
 rB
-WX
+jf
 rB
 rB
 rB
@@ -32639,6 +32736,8 @@ Tg
 Tg
 rV
 rV
+ub
+ub
 HC
 HC
 HC
@@ -32661,10 +32760,8 @@ HC
 HC
 HC
 HC
-HC
-HC
-HC
-HC
+ub
+ub
 AD
 ct
 ct
@@ -32758,10 +32855,10 @@ XA
 Tm
 Tm
 Tm
-WX
-WX
-WX
-WX
+jf
+jf
+jf
+jf
 lX
 lX
 rB
@@ -32777,10 +32874,10 @@ jf
 jf
 kX
 lX
-WX
-WX
-WX
-WX
+jf
+jf
+jf
+jf
 JK
 lX
 jf
@@ -32833,32 +32930,32 @@ Nk
 Tg
 rV
 rV
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
 bM
 sI
 ct
@@ -32901,7 +32998,7 @@ ct
 ct
 bM
 bM
-ub
+HC
 HC
 HC
 HC
@@ -32962,7 +33059,7 @@ DJ
 Ma
 Ma
 Ma
-WX
+jf
 Zp
 jf
 Up
@@ -33048,11 +33145,11 @@ HC
 HC
 HC
 HC
-HC
-HC
-HC
-HC
-HC
+ub
+ub
+ub
+ub
+ub
 bM
 ct
 ct
@@ -33094,8 +33191,8 @@ bM
 bM
 bM
 bM
-ub
-ub
+HC
+HC
 HC
 HC
 HC
@@ -33244,13 +33341,13 @@ HC
 HC
 HC
 HC
-HC
-HC
-HC
+ub
+ub
+ub
 bM
 ct
 ct
-ct
+nD
 ct
 ct
 ct
@@ -33286,10 +33383,10 @@ AM
 JW
 JW
 kG
-ub
-ub
-ub
-ub
+HC
+HC
+HC
+HC
 HC
 HC
 HC
@@ -33440,11 +33537,10 @@ HC
 HC
 HC
 HC
-HC
+ub
 bM
 ct
 ct
-jw
 ct
 ct
 ct
@@ -33465,6 +33561,7 @@ ct
 ct
 ct
 ct
+QO
 ct
 ct
 bM
@@ -33480,10 +33577,10 @@ ke
 JW
 JW
 kG
-ub
-ub
-ub
-ub
+HC
+HC
+HC
+HC
 HC
 HC
 HC
@@ -33636,7 +33733,7 @@ HC
 HC
 HC
 bM
-EE
+ct
 ct
 ct
 ct
@@ -33674,9 +33771,9 @@ al
 JW
 JW
 kG
-ub
-ub
-ub
+HC
+HC
+HC
 HC
 HC
 HC
@@ -33868,9 +33965,9 @@ al
 JW
 JW
 kG
-ub
-ub
-ub
+HC
+HC
+HC
 HC
 HC
 HC
@@ -33941,7 +34038,7 @@ ql
 ql
 iy
 IX
-wA
+ql
 tz
 tz
 PD
@@ -34062,8 +34159,8 @@ AM
 JW
 JW
 kG
-ub
-ub
+HC
+HC
 HC
 HC
 HC
@@ -34135,7 +34232,7 @@ wA
 wA
 ql
 ql
-wA
+ql
 tz
 tz
 PD
@@ -34222,7 +34319,7 @@ ct
 ct
 ct
 ct
-jw
+ct
 ct
 ct
 ct
@@ -34256,8 +34353,8 @@ pq
 JW
 JW
 kG
-ub
-ub
+HC
+HC
 HC
 HC
 HC
@@ -34450,7 +34547,7 @@ iz
 JW
 JW
 kG
-ub
+HC
 HC
 HC
 HC
@@ -34611,7 +34708,7 @@ ct
 ct
 ct
 ct
-ct
+Za
 ct
 ct
 ct
@@ -34644,7 +34741,7 @@ JW
 JW
 JW
 kG
-ub
+HC
 HC
 HC
 HC
@@ -34720,7 +34817,7 @@ rp
 XA
 XA
 XA
-rp
+XA
 rp
 Ca
 tj
@@ -34798,7 +34895,7 @@ HC
 HC
 HC
 HC
-ub
+HC
 bM
 ct
 ct
@@ -34991,8 +35088,8 @@ HC
 HC
 HC
 HC
-ub
-ub
+HC
+HC
 bM
 ct
 ct
@@ -35162,9 +35259,6 @@ Tg
 ri
 ri
 ri
-ub
-ub
-ub
 HC
 HC
 HC
@@ -35183,10 +35277,13 @@ HC
 HC
 HC
 HC
-ub
-ub
-ub
-ub
+HC
+HC
+HC
+HC
+HC
+HC
+HC
 bM
 ct
 ct
@@ -35214,16 +35311,16 @@ ct
 ct
 ct
 bM
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
 HC
 HC
 HC
@@ -35354,33 +35451,33 @@ lS
 wW
 ri
 ri
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
 bM
 DX
 ct
@@ -35408,15 +35505,15 @@ ct
 ct
 rQ
 bM
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
 HC
 HC
 HC
@@ -35548,10 +35645,6 @@ Tg
 Tg
 ri
 ri
-ub
-ub
-ub
-ub
 HC
 HC
 HC
@@ -35569,12 +35662,16 @@ HC
 HC
 HC
 HC
-ub
-ub
-ub
-ub
-ub
-ub
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
 bM
 bM
 if
@@ -35602,12 +35699,12 @@ if
 if
 bM
 bM
-ub
-ub
-ub
-ub
-ub
-ub
+HC
+HC
+HC
+HC
+HC
+HC
 HC
 HC
 HC
@@ -35741,9 +35838,6 @@ lS
 Nk
 ri
 ri
-ub
-ub
-ub
 HC
 HC
 HC
@@ -35765,24 +35859,9 @@ HC
 HC
 HC
 HC
-ub
-ub
-ub
-ub
-ub
-ub
 HC
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
+HC
+HC
 HC
 HC
 HC
@@ -35793,11 +35872,29 @@ ub
 ub
 ub
 ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
 HC
-ub
-ub
-ub
-ub
+HC
 HC
 HC
 HC
@@ -35960,24 +36057,6 @@ HC
 HC
 HC
 HC
-ub
-HC
-ub
-HC
-HC
-HC
-HC
-HC
-ub
-ub
-ub
-ub
-HC
-HC
-HC
-HC
-HC
-HC
 HC
 HC
 HC
@@ -35986,8 +36065,26 @@ ub
 ub
 ub
 ub
-HC
-HC
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
 HC
 HC
 HC
@@ -36159,25 +36256,25 @@ HC
 HC
 HC
 HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
 HC
 HC
 HC
@@ -36354,9 +36451,9 @@ HC
 HC
 HC
 HC
-HC
-HC
-HC
+ub
+ub
+ub
 HC
 HC
 HC
@@ -36549,7 +36646,7 @@ HC
 HC
 HC
 HC
-HC
+ub
 HC
 HC
 HC
@@ -36743,7 +36840,7 @@ HC
 HC
 HC
 HC
-HC
+ub
 HC
 HC
 HC
@@ -37012,18 +37109,18 @@ HC
 HC
 HC
 Qq
-ub
 HC
-ub
-ub
-ub
-ub
-ub
 HC
-ub
-ub
-ub
-ub
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
 FM
 FM
 UC
@@ -37207,18 +37304,18 @@ HC
 HC
 HC
 HC
-ub
-ub
-ub
-ub
-ub
-ub
-HC
-ub
 HC
 HC
-ub
-ub
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
 Pl
 Pl
 FM
@@ -37231,7 +37328,7 @@ FM
 FM
 FM
 HC
-vc
+YL
 Ci
 FM
 MM
@@ -37412,8 +37509,8 @@ HC
 HC
 HC
 HC
-ub
-ub
+HC
+HC
 UC
 FM
 UC
@@ -37607,8 +37704,8 @@ HC
 HC
 HC
 HC
-ub
-ub
+HC
+HC
 UC
 Pl
 Pl
@@ -37802,8 +37899,8 @@ HC
 HC
 HC
 HC
-ub
-ub
+HC
+HC
 UC
 Pl
 Pl
@@ -37997,59 +38094,59 @@ HC
 HC
 HC
 HC
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
 HC
 HC
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
 HC
 HC
 HC
@@ -38191,59 +38288,59 @@ HC
 HC
 HC
 HC
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-HC
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
 HC
 HC
 HC
 HC
 HC
-ub
-ub
-ub
-ub
-ub
-ub
-ub
 HC
 HC
 HC
 HC
 HC
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
-ub
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
 HC
 HC
 HC
