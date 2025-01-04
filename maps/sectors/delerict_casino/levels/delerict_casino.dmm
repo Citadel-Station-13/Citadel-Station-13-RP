@@ -102,23 +102,17 @@
 /obj/structure/flora/grass/event/full_grass2{
 	color = "#ed983d"
 	},
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "aE" = (
 /obj/structure/flora/fey/grass/grass9,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "aF" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/dock)
 "aG" = (
 /obj/structure/sink{
@@ -253,9 +247,7 @@
 "aY" = (
 /obj/structure/flora/grass/event/sparse_grass2,
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "aZ" = (
 /obj/effect/floor_decal/rust,
@@ -319,9 +311,7 @@
 /turf/simulated/floor/tiled/white,
 /area/sector/delerictcasino/medical/public)
 "bx" = (
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/room/room1)
 "bz" = (
 /obj/structure/flora/grass/event/heavy_grass4,
@@ -371,9 +361,7 @@
 /obj/structure/flora/grass/event/full_grass2{
 	color = "#ed983d"
 	},
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "bK" = (
 /obj/effect/floor_decal/rust,
@@ -416,9 +404,7 @@
 "bR" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/flora/grass/event/heavy_grass2,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "bV" = (
 /obj/structure/metal_edge,
@@ -430,9 +416,7 @@
 /area/sector/delerictcasino/dance)
 "bW" = (
 /obj/structure/flora/fey/grass/grass9,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "bX" = (
 /obj/effect/floor_decal/river_beach_corner_edge{
@@ -445,9 +429,7 @@
 /area/sector/delerictcasino/ringforrest)
 "bZ" = (
 /mob/living/simple_mob/animal/passive/bird/ringneck_dove,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "cc" = (
 /obj/structure/railing/grey{
@@ -468,9 +450,7 @@
 "cd" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/railing/grey,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "ce" = (
 /obj/structure/bed/double/padded,
@@ -577,9 +557,7 @@
 /obj/item/stool{
 	color = "#CB9E04"
 	},
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "cH" = (
 /obj/structure/table/rack/shelf/steel,
@@ -634,18 +612,14 @@
 	light_color = "#ed983d";
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "de" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
 /obj/structure/flora/fey/grass/grass2,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "df" = (
 /obj/effect/floor_decal/rust,
@@ -771,9 +745,7 @@
 /obj/structure/flora/grass/event/full_grass2{
 	color = "#ed983d"
 	},
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "dA" = (
 /obj/structure/table/bench/standard,
@@ -788,9 +760,7 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "dL" = (
 /obj/structure/railing/grey,
@@ -806,9 +776,7 @@
 "dM" = (
 /obj/structure/flora/grass/event/heavy_grass3,
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "dP" = (
 /obj/structure/flora/tree/fey/small_tree/tree5,
@@ -927,9 +895,7 @@
 /area/sector/delerictcasino/vault)
 "eB" = (
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "eC" = (
 /obj/effect/floor_decal/rust,
@@ -957,9 +923,7 @@
 "eI" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/room/room4)
 "eQ" = (
 /obj/machinery/door/airlock/multi_tile{
@@ -1045,9 +1009,7 @@
 /area/sector/delerictcasino/reception)
 "fk" = (
 /obj/structure/flora/grass/event/full_grass3,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "fl" = (
 /obj/structure/railing/grey,
@@ -1139,9 +1101,7 @@
 /obj/machinery/door/airlock/multi_tile{
 	name = "Casino entry Airlock"
 	},
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/spine)
 "fx" = (
 /obj/structure/bed/chair/wood{
@@ -1196,9 +1156,7 @@
 /area/sector/delerictcasino/restaurant)
 "fJ" = (
 /obj/effect/floor_decal/industrial/halfstair,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "fL" = (
 /obj/structure/sink{
@@ -1254,9 +1212,7 @@
 	name = "Casino suites";
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/room/room1)
 "fX" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
@@ -1272,9 +1228,7 @@
 /area/sector/delerictcasino/reception)
 "ga" = (
 /obj/structure/flora/grass/event/sparse_grass1,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "gb" = (
 /obj/machinery/light/fairy{
@@ -1441,9 +1395,7 @@
 /obj/machinery/door/airlock/multi_tile{
 	name = "Casino entry Airlock"
 	},
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/spine)
 "gD" = (
 /obj/machinery/light/small,
@@ -1546,9 +1498,7 @@
 /area/sector/delerictcasino/ringforrest)
 "hs" = (
 /mob/living/simple_mob/animal/passive/mouse,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "ht" = (
 /obj/structure/railing/grey{
@@ -1736,9 +1686,7 @@
 /area/sector/delerictcasino/dock)
 "id" = (
 /obj/structure/flora/grass/event/heavy_grass2,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "if" = (
 /obj/machinery/door/blast/regular,
@@ -1986,9 +1934,7 @@
 /area/sector/delerictcasino/maintenance)
 "jd" = (
 /obj/structure/flora/grass/event/heavy_grass3,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/dock)
 "je" = (
 /obj/structure/flora/tree/fey/small_tree/tree2,
@@ -2026,9 +1972,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
 	},
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/spine)
 "jp" = (
 /obj/effect/floor_decal/corner/grey/border{
@@ -2101,9 +2045,7 @@
 "jz" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/flora/grass/event/heavy_grass2,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "jA" = (
 /obj/structure/table/hardwoodtable,
@@ -2136,9 +2078,7 @@
 /area/sector/delerictcasino/ringforrest)
 "jE" = (
 /obj/structure/barricade,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/room/room6)
 "jG" = (
 /obj/structure/flora/grass/event/heavy_grass1,
@@ -2152,9 +2092,7 @@
 /area/sector/delerictcasino/vault)
 "jK" = (
 /obj/structure/flora/tree/fey/small_tree/tree6,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "jQ" = (
 /obj/structure/cable{
@@ -2173,9 +2111,7 @@
 /area/sector/delerictcasino/vault)
 "jX" = (
 /obj/structure/flora/grass/event/heavy_grass4,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "jZ" = (
 /obj/structure/railing/grey{
@@ -2242,9 +2178,7 @@
 /area/sector/delerictcasino/ringforrest)
 "kk" = (
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/dock)
 "kl" = (
 /turf/simulated/floor/tiled/white,
@@ -2275,9 +2209,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/spine)
 "ky" = (
 /obj/structure/flora/grass/fey/bush/bush1{
@@ -2340,9 +2272,7 @@
 /area/sector/delerictcasino/room/room3)
 "kN" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "kQ" = (
 /obj/structure/cable{
@@ -2352,18 +2282,14 @@
 /area/sector/delerictcasino/engineering)
 "kR" = (
 /obj/structure/railing/grey,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "kW" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
 /obj/structure/flora/grass/event/heavy_grass3,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/spine)
 "kX" = (
 /obj/machinery/light/small{
@@ -2404,9 +2330,7 @@
 /area/sector/delerictcasino/ringforrest)
 "lc" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "ld" = (
 /turf/simulated/floor/fey/forest_grass{
@@ -2433,9 +2357,7 @@
 /obj/structure/flora/grass/event/full_grass2{
 	color = "#ed983d"
 	},
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/spine)
 "lm" = (
 /obj/structure/railing/grey{
@@ -2516,9 +2438,7 @@
 "lE" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/railing/grey,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "lG" = (
 /obj/machinery/light/fairy{
@@ -2592,9 +2512,7 @@
 	light_color = "#ed983d";
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "lU" = (
 /obj/structure/table/steel_reinforced,
@@ -2701,9 +2619,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/dock)
 "mN" = (
 /obj/structure/railing/grey{
@@ -2746,9 +2662,7 @@
 	color = "#ed983d"
 	},
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "mU" = (
 /obj/structure/flora/fey/large/bush2{
@@ -2774,9 +2688,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/dock)
 "nb" = (
 /obj/item/spacecash/c1,
@@ -2800,9 +2712,7 @@
 	light_color = "#ed983d";
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "nh" = (
 /obj/structure/flora/grass/event/heavy_grass3,
@@ -2862,9 +2772,7 @@
 /area/sector/delerictcasino/ringforrest)
 "nt" = (
 /obj/structure/flora/fey/grass/grass1,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "nx" = (
 /obj/machinery/light/fairy{
@@ -2873,9 +2781,7 @@
 	light_color = "#ed983d";
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "nD" = (
 /obj/effect/shuttle_landmark{
@@ -2890,9 +2796,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 6
 	},
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "nH" = (
 /obj/machinery/power/terminal{
@@ -3000,9 +2904,7 @@
 /area/sector/delerictcasino/maintenance)
 "oe" = (
 /obj/structure/barricade,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/exterior)
 "oh" = (
 /mob/living/simple_mob/animal/passive/bird/ringneck_dove,
@@ -3033,9 +2935,7 @@
 /area/sector/delerictcasino/maintenance)
 "on" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/room/room3)
 "oo" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -3153,9 +3053,7 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "oW" = (
 /obj/structure/flora/fey/large/rock2,
@@ -3287,15 +3185,11 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/restaurant)
 "pw" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/room/room6)
 "pz" = (
 /turf/simulated/floor/tiled/steel_dirty/dark{
@@ -3393,9 +3287,7 @@
 /obj/structure/flora/grass/event/full_grass2{
 	color = "#ed983d"
 	},
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/spine)
 "pN" = (
 /obj/structure/salvageable/computer_os{
@@ -3578,20 +3470,14 @@
 /obj/structure/flora/grass/event/full_grass2{
 	color = "#ed983d"
 	},
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "qN" = (
 /obj/structure/flora/grass/event/heavy_grass2,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "qS" = (
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/room/room6)
 "qT" = (
 /mob/living/simple_mob/vore/aggressive/frog,
@@ -3604,9 +3490,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/spine)
 "qX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -3622,9 +3506,7 @@
 /obj/structure/flora/grass/event/full_grass2{
 	color = "#ed983d"
 	},
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "ra" = (
 /obj/effect/shuttle_landmark{
@@ -3736,9 +3618,7 @@
 	dir = 4
 	},
 /obj/structure/flora/grass/event/leafy_bush1,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "rv" = (
 /obj/item/paper/casinowork5,
@@ -3759,9 +3639,7 @@
 "rA" = (
 /obj/structure/barricade,
 /obj/structure/barricade,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/room/room6)
 "rB" = (
 /obj/effect/floor_decal/rust,
@@ -3789,9 +3667,7 @@
 	dir = 8
 	},
 /obj/machinery/door/firedoor,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/exterior)
 "rK" = (
 /obj/machinery/door/airlock/vault{
@@ -3836,9 +3712,7 @@
 /obj/structure/flora/grass/event/full_grass2{
 	color = "#ed983d"
 	},
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/spine)
 "rV" = (
 /turf/simulated/wall/r_wall/prepainted/cargo,
@@ -3946,9 +3820,7 @@
 	dir = 4
 	},
 /obj/structure/flora/grass/event/heavy_grass3,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/dock)
 "sA" = (
 /obj/structure/railing/grey,
@@ -3999,9 +3871,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
 	},
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "sO" = (
 /obj/structure/bed/chair/sofa/blue,
@@ -4015,9 +3885,7 @@
 /obj/item/stool{
 	color = "#CB9E04"
 	},
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "sV" = (
 /obj/effect/floor_decal/carpet{
@@ -4027,18 +3895,14 @@
 /area/sector/delerictcasino/restaurant)
 "sW" = (
 /obj/structure/flora/grass/event/sparse_grass2,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "sX" = (
 /obj/structure/flora/grass/event/sparse_grass2,
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "sY" = (
 /obj/machinery/portable_atmospherics/canister/air,
@@ -4048,9 +3912,7 @@
 /obj/structure/flora/tree/fey/small_tree/tree5{
 	color = "#ed983d"
 	},
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "tb" = (
 /obj/machinery/light/small{
@@ -4100,9 +3962,7 @@
 "th" = (
 /obj/effect/floor_decal/rust,
 /mob/living/simple_mob/vore/aggressive/frog,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "ti" = (
 /obj/structure/bed/chair/sofa/beige/corner{
@@ -4262,9 +4122,7 @@
 	name = "Casino suites";
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/room/room6)
 "tN" = (
 /obj/structure/table/rack/shelf,
@@ -4291,9 +4149,7 @@
 /obj/machinery/atm{
 	pixel_y = 27
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/dock)
 "ub" = (
 /obj/structure/lattice,
@@ -4303,9 +4159,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "ue" = (
 /obj/structure/railing/grey{
@@ -4426,9 +4280,7 @@
 /area/sector/delerictcasino/reception)
 "uQ" = (
 /obj/structure/railing/grey,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "uT" = (
 /obj/machinery/light/fairy{
@@ -4481,9 +4333,7 @@
 	light_color = "#ed983d";
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/spine)
 "ve" = (
 /obj/structure/railing/grey{
@@ -4524,9 +4374,7 @@
 	light_color = "#ed983d";
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/spine)
 "vk" = (
 /obj/structure/railing/grey,
@@ -4570,9 +4418,7 @@
 "vu" = (
 /obj/structure/flora/grass/event/heavy_grass4,
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "vw" = (
 /obj/effect/shuttle_landmark{
@@ -4744,9 +4590,7 @@
 /obj/structure/flora/fey/grass/grass1{
 	color = "#ed983d"
 	},
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/spine)
 "wy" = (
 /obj/structure/simple_door/hardwood,
@@ -4824,9 +4668,7 @@
 /area/sector/delerictcasino/ringforrest)
 "wX" = (
 /obj/structure/flora/grass/event/sparse_grass2,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "wY" = (
 /obj/structure/flora/grass/event/leafy_bush1,
@@ -4858,9 +4700,7 @@
 "xl" = (
 /obj/structure/table/carbon/reinforced,
 /obj/item/event/prop/laptop2,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/restaurant)
 "xm" = (
 /obj/structure/flora/tree/fey/large_tree/tree7,
@@ -5008,16 +4848,12 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/door/firedoor,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/exterior)
 "xV" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/dock)
 "xW" = (
 /obj/structure/table/rack/shelf,
@@ -5037,9 +4873,7 @@
 "yd" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "ye" = (
 /obj/machinery/atm{
@@ -5048,24 +4882,18 @@
 /obj/machinery/atm{
 	pixel_x = -32
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "yf" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/room/room2)
 "yj" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "yk" = (
 /obj/effect/floor_decal/rust,
@@ -5073,9 +4901,7 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "ym" = (
 /obj/structure/railing/grey{
@@ -5183,9 +5009,7 @@
 "yE" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/flora/grass/event/full_grass3,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "yF" = (
 /obj/structure/cable{
@@ -5199,9 +5023,7 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "yI" = (
 /obj/structure/flora/grass/fey/bush/bush3,
@@ -5212,9 +5034,7 @@
 /area/sector/delerictcasino/ringforrest)
 "yK" = (
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "yL" = (
 /obj/structure/flora/grass/event/heavy_grass2,
@@ -5285,9 +5105,7 @@
 "yX" = (
 /obj/structure/barricade,
 /obj/machinery/door/airlock/external/glass/bolted,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/room/room5)
 "yY" = (
 /obj/machinery/atm{
@@ -5599,9 +5417,7 @@
 "Ao" = (
 /obj/structure/railing/grey,
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "Ap" = (
 /obj/overmap/entity/visitable/sector/delerictcasino,
@@ -5637,17 +5453,13 @@
 /area/sector/delerictcasino/crew)
 "Ax" = (
 /obj/machinery/door/airlock/multi_tile,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/restaurant)
 "Ay" = (
 /obj/machinery/light/small/emergency/flicker{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/room/room5)
 "AA" = (
 /obj/structure/railing/grey{
@@ -5725,9 +5537,7 @@
 	},
 /area/sector/delerictcasino/ringforrest)
 "AZ" = (
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/dock)
 "Ba" = (
 /obj/structure/sink{
@@ -5773,9 +5583,7 @@
 /area/sector/delerictcasino/ringforrest)
 "Bk" = (
 /obj/structure/barricade,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "Bo" = (
 /obj/structure/railing/grey,
@@ -5793,9 +5601,7 @@
 /area/sector/delerictcasino/engineering)
 "Bq" = (
 /obj/structure/flora/grass/event/heavy_grass4,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "Br" = (
 /obj/effect/floor_decal/corner/navgold/border{
@@ -5827,9 +5633,7 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "BB" = (
 /obj/structure/table/fancyblack,
@@ -5852,9 +5656,7 @@
 /area/sector/delerictcasino/ringforrest)
 "BI" = (
 /obj/effect/floor_decal/spline/fancy/wood,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "BL" = (
 /obj/structure/railing/grey{
@@ -5908,9 +5710,7 @@
 /obj/structure/flora/grass/event/full_grass2{
 	color = "#ed983d"
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "BW" = (
 /obj/effect/floor_decal/rust,
@@ -5932,9 +5732,7 @@
 	light_color = "#ed983d";
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/spine)
 "Cc" = (
 /obj/structure/railing/grey{
@@ -5947,9 +5745,7 @@
 /area/sector/delerictcasino/ringforrest)
 "Ci" = (
 /obj/random/multiple/large_corp_crate,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/exterior)
 "Cl" = (
 /obj/machinery/door/airlock/vault{
@@ -5990,9 +5786,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
 	},
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/spine)
 "Cv" = (
 /obj/structure/bed/chair/office/dark,
@@ -6036,9 +5830,7 @@
 /area/sector/delerictcasino/maintenance)
 "CM" = (
 /obj/machinery/light/flamp,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/dock)
 "CQ" = (
 /obj/machinery/atmospherics/component/binary/pump/on{
@@ -6062,9 +5854,7 @@
 /obj/machinery/atm{
 	pixel_x = 32
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "CU" = (
 /obj/effect/floor_decal/rust,
@@ -6212,9 +6002,7 @@
 /area/sector/delerictcasino/commons)
 "DN" = (
 /obj/structure/flora/grass/event/sparse_grass1,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "DT" = (
 /obj/structure/flora/rock/fey/rock1,
@@ -6262,9 +6050,7 @@
 	color = "#ed983d"
 	},
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "Ej" = (
 /obj/structure/barricade,
@@ -6306,9 +6092,7 @@
 /area/sector/delerictcasino/engineering)
 "Eu" = (
 /obj/structure/flora/grass/event/heavy_grass3,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "Ev" = (
 /obj/machinery/door/window/brigdoor/eastleft,
@@ -6375,9 +6159,7 @@
 /area/sector/delerictcasino/ringforrest)
 "EH" = (
 /obj/structure/flora/grass/event/sparse_grass1,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/restaurant)
 "EK" = (
 /obj/structure/flora/tree/fey/large_tree/tree7{
@@ -6449,9 +6231,7 @@
 /area/sector/delerictcasino/ringforrest)
 "Fk" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/room/room4)
 "Fl" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -6562,9 +6342,7 @@
 /area/sector/delerictcasino/maintenance)
 "FK" = (
 /obj/structure/flora/grass/event/heavy_grass3,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "FM" = (
 /turf/simulated/wall/r_wall/prepainted/cargo,
@@ -6598,9 +6376,7 @@
 	name = "Movie projector";
 	desc = "This machine is capable of projecting The best movies on a screen !"
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/restaurant)
 "FT" = (
 /obj/structure/flora/grass/event/heavy_grass2,
@@ -6639,9 +6415,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/spine)
 "Go" = (
 /obj/structure/curtain/open/shower,
@@ -6674,9 +6448,7 @@
 /area/sector/delerictcasino/maintenance)
 "Gy" = (
 /obj/machinery/door/firedoor,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/exterior)
 "Gz" = (
 /obj/structure/railing/grey,
@@ -6940,9 +6712,7 @@
 /turf/simulated/floor,
 /area/sector/delerictcasino/engineering)
 "HF" = (
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/dock)
 "HI" = (
 /obj/structure/table/steel_reinforced,
@@ -7029,9 +6799,7 @@
 /area/sector/delerictcasino/room/room3)
 "Ii" = (
 /mob/living/simple_mob/animal/passive/bird/european_robin,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "Ij" = (
 /obj/structure/railing/grey{
@@ -7083,9 +6851,7 @@
 /area/sector/delerictcasino/dance)
 "Ix" = (
 /obj/structure/flora/rock/rock3,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "IB" = (
 /obj/structure/flora/grass/event/bright_flowers1,
@@ -7190,9 +6956,7 @@
 	},
 /area/sector/delerictcasino/ringforrest)
 "IU" = (
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/spine)
 "IV" = (
 /obj/structure/railing/grey{
@@ -7272,41 +7036,31 @@
 /obj/structure/toilet{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/exterior)
 "Jl" = (
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc/west_mount,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/restaurant)
 "Jm" = (
 /obj/structure/flora/grass/event/full_grass2{
 	color = "#ed983d"
 	},
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/dock)
 "Jo" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/restaurant)
 "Jp" = (
 /obj/structure/flora/fey/grass/grass9,
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "Jr" = (
 /mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison/casino,
@@ -7373,9 +7127,7 @@
 "JG" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "JH" = (
 /obj/machinery/door/airlock/vault/bolted{
@@ -7488,26 +7240,20 @@
 /area/sector/delerictcasino/restaurant)
 "Ke" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/restaurant)
 "Kf" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
 /obj/structure/flora/fey/grass/grass5,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "Kg" = (
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "Kj" = (
 /obj/item/stool/padded,
@@ -7552,15 +7298,11 @@
 	light_color = "#ed983d";
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "Kt" = (
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "Kw" = (
 /obj/structure/bed/chair/wood{
@@ -7762,9 +7504,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "Lv" = (
 /obj/structure/cable{
@@ -7789,9 +7529,7 @@
 	name = "Casino suites";
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/room/room2)
 "LB" = (
 /obj/effect/floor_decal/rust,
@@ -7810,9 +7548,7 @@
 /turf/simulated/floor,
 /area/sector/delerictcasino/engineering)
 "LE" = (
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/room/room2)
 "LF" = (
 /obj/item/stool{
@@ -7970,18 +7706,14 @@
 /area/sector/delerictcasino/dance)
 "MC" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/room/room5)
 "MI" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "MJ" = (
 /obj/structure/table/steel_reinforced,
@@ -8038,9 +7770,7 @@
 /area/sector/delerictcasino/exterior)
 "MY" = (
 /obj/structure/grille,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/exterior)
 "MZ" = (
 /obj/structure/table/rack/shelf,
@@ -8116,9 +7846,7 @@
 	light_color = "#ed983d";
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/spine)
 "Nq" = (
 /obj/structure/railing/grey{
@@ -8134,9 +7862,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/dock)
 "NA" = (
 /turf/simulated/floor/carpet/patterened/blue,
@@ -8210,15 +7936,11 @@
 /area/sector/delerictcasino/ringforrest)
 "NV" = (
 /obj/structure/flora/fey/grass/grass5,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "NW" = (
 /obj/structure/flora/grass/event/heavy_grass1,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "NY" = (
 /obj/structure/metal_edge,
@@ -8340,9 +8062,7 @@
 "Oy" = (
 /obj/effect/floor_decal/rust,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/room/room4)
 "Oz" = (
 /obj/structure/table/steel_reinforced,
@@ -8441,9 +8161,7 @@
 /obj/effect/floor_decal/rust,
 /obj/structure/barricade,
 /obj/machinery/door/airlock/external/glass/bolted,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/room/room4)
 "OX" = (
 /obj/machinery/door/airlock/multi_tile{
@@ -8488,9 +8206,7 @@
 	},
 /area/sector/delerictcasino/ringforrest)
 "Pi" = (
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/restaurant)
 "Pj" = (
 /obj/structure/metal_edge,
@@ -8500,9 +8216,7 @@
 /area/sector/delerictcasino/ringforrest)
 "Pl" = (
 /obj/item/material/shard,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/exterior)
 "Pm" = (
 /obj/item/material/shard,
@@ -8511,18 +8225,14 @@
 "Pn" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/flora/grass/event/sparse_grass1,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "Pp" = (
 /obj/structure/railing/grey,
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "Ps" = (
 /obj/machinery/light{
@@ -8538,9 +8248,7 @@
 	light_color = "#ed983d";
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/spine)
 "Pu" = (
 /obj/structure/bed/chair/comfy/black{
@@ -8586,9 +8294,7 @@
 /obj/structure/flora/grass/event/heavy_grass3,
 /obj/effect/floor_decal/rust,
 /obj/machinery/light/flamp,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/dock)
 "PD" = (
 /turf/simulated/wall/r_wall/prepainted/cargo,
@@ -8610,9 +8316,7 @@
 	dir = 1
 	},
 /obj/structure/flora/grass/event/leafy_bush1,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "PL" = (
 /obj/structure/inflatable/door,
@@ -8637,9 +8341,7 @@
 /area/sector/delerictcasino/dock)
 "PP" = (
 /obj/structure/flora/grass/event/full_grass2,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "PS" = (
 /obj/structure/metal_edge,
@@ -8708,9 +8410,7 @@
 	dir = 5
 	},
 /obj/structure/flora/fey/grass/grass9,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "Qm" = (
 /obj/machinery/light/small,
@@ -8730,17 +8430,13 @@
 /turf/space/basic,
 /area/space)
 "Qr" = (
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "Qt" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
 	},
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "Qz" = (
 /obj/structure/flora/tree/jungle{
@@ -8768,9 +8464,7 @@
 /area/sector/delerictcasino/ringforrest)
 "QB" = (
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/dock)
 "QD" = (
 /obj/structure/flora/tree/fey/small_tree/tree3{
@@ -8899,9 +8593,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/delerictcasino/maintenance)
 "Rx" = (
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "Ry" = (
 /obj/machinery/light/fairy{
@@ -8919,9 +8611,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "RC" = (
 /obj/effect/floor_decal/rust,
@@ -8929,9 +8619,7 @@
 	color = "#ed983d"
 	},
 /obj/structure/railing/grey,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "RD" = (
 /obj/effect/floor_decal/rust,
@@ -9000,9 +8688,7 @@
 	name = "Casino suites";
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/room/room3)
 "RQ" = (
 /obj/effect/floor_decal/corner/blue/border,
@@ -9039,9 +8725,7 @@
 /area/sector/delerictcasino/restaurant)
 "RX" = (
 /obj/machinery/atmospherics/pipe/tank/air,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "RZ" = (
 /obj/effect/floor_decal/river_beach_edge{
@@ -9122,9 +8806,7 @@
 /area/sector/delerictcasino/maintenance)
 "Sr" = (
 /obj/structure/curtain/open/shower,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/exterior)
 "Ss" = (
 /obj/machinery/light/small{
@@ -9229,9 +8911,7 @@
 /obj/structure/flora/grass/event/full_grass2{
 	color = "#ed983d"
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "SS" = (
 /obj/structure/railing/grey{
@@ -9283,9 +8963,7 @@
 /area/sector/delerictcasino/medical/public)
 "Ta" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/room/room1)
 "Tc" = (
 /turf/simulated/floor,
@@ -9393,9 +9071,7 @@
 	light_color = "#ed983d";
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "Tz" = (
 /obj/structure/bed/chair/sofa/beige/left{
@@ -9453,9 +9129,7 @@
 /area/sector/delerictcasino/restaurant)
 "TP" = (
 /obj/structure/flora/grass/event/heavy_grass1,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "TS" = (
 /obj/structure/railing/grey,
@@ -9466,9 +9140,7 @@
 /area/sector/delerictcasino/ringforrest)
 "TV" = (
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/spine)
 "TW" = (
 /obj/effect/floor_decal/river_beach_edge{
@@ -9543,9 +9215,7 @@
 /area/sector/delerictcasino/vault)
 "Un" = (
 /obj/structure/flora/grass/event/yellow_flowers1,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "Uo" = (
 /obj/structure/table/rack/shelf/steel,
@@ -9587,9 +9257,7 @@
 	dir = 8
 	},
 /obj/structure/flora/grass/event/leafy_bush1,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/spine)
 "Uw" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
@@ -9622,9 +9290,7 @@
 	},
 /area/sector/delerictcasino/ringforrest)
 "UC" = (
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/exterior)
 "UE" = (
 /obj/machinery/light/fairy{
@@ -9712,9 +9378,7 @@
 "UY" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "Vb" = (
 /obj/structure/railing/grey{
@@ -9775,9 +9439,7 @@
 "Vk" = (
 /obj/structure/flora/grass/event/heavy_grass3,
 /mob/living/simple_mob/animal/passive/bird/goldcrest,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "Vl" = (
 /obj/structure/flora/rock/rock3,
@@ -10114,9 +9776,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "Xc" = (
 /obj/structure/table/gamblingtable,
@@ -10217,9 +9877,7 @@
 	},
 /area/sector/delerictcasino/ringforrest)
 "Xx" = (
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/room/room3)
 "Xy" = (
 /obj/effect/floor_decal/rust,
@@ -10412,9 +10070,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
 	},
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "YH" = (
 /obj/machinery/light/fairy{
@@ -10440,9 +10096,7 @@
 /area/sector/delerictcasino/ringforrest)
 "YL" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/exterior)
 "YN" = (
 /obj/structure/flora/ausbushes/brflowers,
@@ -10507,9 +10161,7 @@
 /area/sector/delerictcasino/dance)
 "Zh" = (
 /obj/structure/flora/grass/event/leafy_bush1,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/spine)
 "Zi" = (
 /obj/structure/railing/grey,
@@ -10553,9 +10205,7 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "Zo" = (
 /obj/structure/flora/grass/event/full_grass3,
@@ -10594,9 +10244,7 @@
 /area/sector/delerictcasino/ringforrest)
 "Zx" = (
 /obj/structure/flora/fey/grass/grass1,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/spine)
 "Zy" = (
 /obj/effect/floor_decal/corner/grey/border{

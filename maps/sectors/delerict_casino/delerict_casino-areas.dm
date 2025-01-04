@@ -10,10 +10,7 @@
 	name = "\improper Ring Forrest"
 	icon_state = "green"
 	ambience = list('sound/ambience/forest-ambience.ogg')
-	sound_env = PLAIN
-	light_color = "#ffe8a2"
-	light_range = 2
-	light_power = 1
+	sound_env = LARGE_ENCLOSED
 
 /area/sector/delerictcasino/engineering
 	icon_state = "yellow"
