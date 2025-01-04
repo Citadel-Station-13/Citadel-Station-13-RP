@@ -119,14 +119,6 @@ const PatientStateView = (props, context) => {
                 {v}
               </LabeledList.Item>
             ))}
-            {/*             <LabeledList.Item label="Next Step">
-              {procedure.nextSteps.map((nextStep) => (
-                <>
-                  - { nextStep }
-                </>
-              ))}
-              {procedure.nextSteps}
-            </LabeledList.Item> */}
             {!!data.alternative_step && (
               <LabeledList.Item label="Alternative Step">
                 {procedure.alternative_step}
