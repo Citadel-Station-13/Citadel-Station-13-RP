@@ -60,6 +60,7 @@
 
 #define MOB_IFF_FACTION_HIVEBOT "ai-hivebot"
 #define MOB_IFF_FACTION_SWARMER "ai-swarmer"
+#define MOB_IFF_FACTION_CASINO "ai-casino"
 
 //? Alien factions
 
