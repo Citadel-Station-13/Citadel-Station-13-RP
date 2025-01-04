@@ -1866,7 +1866,6 @@
 "afb" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/machinery/door/window/brigdoor/eastleft,
-/obj/map_helper/access_helper/airlock/station/security/general,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/sector/nebula_tradeport/security)
 "afc" = (
@@ -2391,13 +2390,15 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "agw" = (
-/obj/machinery/door/airlock/multi_tile/glass,
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled/old_tile/beige,
+/obj/machinery/door/airlock/multi_tile/glass/polarized{
+	id_tint = "med_office"
+	},
+/turf/simulated/floor/tiled/white,
 /area/sector/nebula_tradeport/medical/public)
 "agx" = (
 /obj/machinery/seed_extractor,
@@ -2852,7 +2853,12 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/turf/simulated/wall/r_wall,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/structure/window/reinforced/polarized{
+	dir = 1;
+	id = "med_office"
+	},
+/turf/simulated/floor/tiled/white,
 /area/sector/nebula_tradeport/medical/public)
 "ahH" = (
 /obj/machinery/light/flamp,
@@ -3644,11 +3650,6 @@
 /obj/map_helper/access_helper/airlock/station/external_airlock,
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
-	},
-/obj/machinery/door/blast/shutters{
-	dir = 2;
-	id = "clerk2";
-	name = "Clerk Shutters"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/commons)
@@ -5288,7 +5289,6 @@
 /area/sector/nebula_tradeport/dock2)
 "anY" = (
 /obj/machinery/door/airlock/security,
-/obj/map_helper/access_helper/airlock/station/security/general,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/sector/nebula_tradeport/security)
 "anZ" = (
@@ -7926,11 +7926,6 @@
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/external_airlock,
-/obj/machinery/door/blast/shutters{
-	dir = 2;
-	id = "clerk2";
-	name = "Clerk Shutters"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/commons)
 "ave" = (
@@ -9503,7 +9498,7 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
 	},
-/turf/simulated/floor/tiled/old_tile/beige,
+/turf/simulated/floor/tiled/white,
 /area/sector/nebula_tradeport/medical/public)
 "ayV" = (
 /obj/structure/cable/green{
@@ -11048,6 +11043,9 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/effect/floor_decal/corner/green/border,
+/obj/structure/sign/department/medbay{
+	pixel_y = 29
+	},
 /turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "aCK" = (
@@ -11406,17 +11404,6 @@
 /obj/item/trash/liquidprotein,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/tradeport/spine)
-"aDJ" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/obj/machinery/air_alarm/alarms_hidden{
-	pixel_y = 22;
-	req_one_access = list(160)
-	},
-/obj/effect/floor_decal/corner/green/border,
-/turf/simulated/floor/tiled,
-/area/tradeport/commhall)
 "aDL" = (
 /obj/machinery/smartfridge,
 /turf/simulated/floor/grass,
@@ -18884,7 +18871,6 @@
 "aYd" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/machinery/door/window/brigdoor/eastright,
-/obj/map_helper/access_helper/airlock/station/security/general,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/sector/nebula_tradeport/security)
 "aYe" = (
@@ -19661,6 +19647,9 @@
 	},
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tradeport/cafeteria)
+"bfF" = (
+/turf/simulated/wall/r_wall/prepainted/medical,
+/area/sector/nebula_tradeport/medical/public)
 "bfK" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 9
@@ -19981,9 +19970,7 @@
 	dir = 8;
 	nightshift_allowed = 0
 	},
-/obj/structure/bed/roller,
-/obj/structure/medical_stand/anesthetic,
-/obj/machinery/iv_drip,
+/obj/structure/filingcabinet/chestdrawer,
 /turf/simulated/floor/tiled/white,
 /area/sector/nebula_tradeport/medical/public)
 "bYS" = (
@@ -20030,11 +20017,16 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/tradeport/cafeteria)
 "cfu" = (
-/obj/structure/bed/roller,
-/obj/machinery/iv_drip,
-/obj/structure/medical_stand/anesthetic,
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 8
+	},
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/obj/machinery/power/apc/alarms_hidden/west_mount,
+/obj/structure/cable/yellow{
+	dir = 4;
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/white,
 /area/sector/nebula_tradeport/medical/public)
@@ -21242,6 +21234,14 @@
 	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/sector/nebula_tradeport/motel)
+"eSH" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/structure/window/reinforced/polarized{
+	dir = 1;
+	id = "med_office"
+	},
+/turf/simulated/floor/tiled/white,
+/area/sector/nebula_tradeport/medical/public)
 "eXQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -21801,6 +21801,7 @@
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
+/obj/machinery/body_scanconsole,
 /turf/simulated/floor/tiled/white,
 /area/sector/nebula_tradeport/medical/public)
 "gPE" = (
@@ -22123,6 +22124,13 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/item/surgical/bonesetter,
+/obj/item/surgical/cautery,
+/obj/item/surgical/circular_saw,
+/obj/item/surgical/bonegel,
+/obj/item/surgical/retractor,
+/obj/item/surgical/scalpel,
+/obj/item/surgical/surgicaldrill,
 /turf/simulated/floor/tiled/white,
 /area/sector/nebula_tradeport/medical/public)
 "hCk" = (
@@ -22728,9 +22736,11 @@
 /area/tradeport/spine)
 "job" = (
 /obj/effect/floor_decal/corner/blue/border,
-/obj/structure/cable/yellow,
-/obj/machinery/power/apc/alarms_hidden/south_mount{
-	req_access = list(160)
+/obj/structure/table/carbon/reinforced,
+/obj/machinery/button/windowtint{
+	pixel_x = -5;
+	pixel_y = 7;
+	id = "med_office"
 	},
 /turf/simulated/floor/tiled/white,
 /area/sector/nebula_tradeport/medical/public)
@@ -23845,6 +23855,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
 	},
+/obj/machinery/bodyscanner,
 /turf/simulated/floor/tiled/white,
 /area/sector/nebula_tradeport/medical/public)
 "mlI" = (
@@ -26081,9 +26092,11 @@
 /turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/spine)
 "tcM" = (
-/obj/machinery/bodyscanner,
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
+	},
+/obj/structure/bed/chair/office/light{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
 /area/sector/nebula_tradeport/medical/public)
@@ -26281,6 +26294,16 @@
 	},
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room7)
+"tDW" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/green/border,
+/obj/structure/sign/department/medbay{
+	pixel_y = 29
+	},
+/turf/simulated/floor/tiled,
+/area/tradeport/commhall)
 "tEL" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
@@ -26332,10 +26355,6 @@
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/tradeport/spine)
-"tQK" = (
-/obj/machinery/body_scanconsole,
-/turf/simulated/floor/tiled/white,
-/area/sector/nebula_tradeport/medical/public)
 "tRl" = (
 /obj/structure/flora/pottedplant/minitree,
 /obj/machinery/light{
@@ -26569,6 +26588,8 @@
 /obj/machinery/light/spot{
 	dir = 1
 	},
+/obj/item/roller,
+/obj/item/roller,
 /turf/simulated/floor/tiled/white,
 /area/sector/nebula_tradeport/medical/public)
 "uxP" = (
@@ -26690,14 +26711,6 @@
 /obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead/main)
-"uQS" = (
-/obj/machinery/button/remote/blast_door{
-	id = "clerk2";
-	pixel_y = 27;
-	req_access = list(160)
-	},
-/turf/simulated/floor/tiled,
-/area/tradeport/commons)
 "uRl" = (
 /obj/structure/fuel_port{
 	pixel_x = -26
@@ -27416,8 +27429,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/scoophead/main)
 "xcp" = (
+/obj/structure/table/carbon/reinforced,
 /obj/structure/cable/yellow{
-	icon_state = "2-4"
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/white,
 /area/sector/nebula_tradeport/medical/public)
@@ -27596,6 +27610,13 @@
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/nebula_tradeport/motel/room3)
+"xGT" = (
+/obj/structure/table/carbon/reinforced,
+/obj/structure/flora/pottedplant/thinbush{
+	pixel_y = 11
+	},
+/turf/simulated/floor/tiled/white,
+/area/sector/nebula_tradeport/medical/public)
 "xHj" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/computer/arcade/orion_trail,
@@ -27712,6 +27733,18 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead)
+"ygF" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/machinery/camera,
+/obj/effect/floor_decal/corner/green/border,
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 22;
+	req_one_access = list(160)
+	},
+/turf/simulated/floor/tiled,
+/area/tradeport/commhall)
 "ygJ" = (
 /obj/effect/floor_decal/spline/fancy{
 	dir = 6
@@ -41846,8 +41879,8 @@ vKs
 mBg
 cfu
 bYr
-abx
-avS
+bfF
+ygF
 aCQ
 aYp
 aVm
@@ -42037,11 +42070,11 @@ eGH
 bcr
 iVZ
 itm
-sjP
+xGT
 xcp
 job
-abx
-aDJ
+eSH
+aby
 aCQ
 aYp
 aVm
@@ -42426,10 +42459,10 @@ vLJ
 vLJ
 mlq
 qGd
-tQK
+sjP
 bcr
-abx
-aby
+bfF
+tDW
 aCQ
 aYp
 aVm
@@ -43010,7 +43043,7 @@ uvg
 qOL
 xhP
 hqi
-abx
+bfF
 aCJ
 aFe
 akM
@@ -59125,7 +59158,7 @@ anq
 agq
 aCM
 anq
-uQS
+agH
 abG
 anq
 akf
