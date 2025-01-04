@@ -56,6 +56,7 @@ const PatientStateView = (props, context) => {
   const { act, data } = useBackend(context);
   const {
     table,
+    hasOccupant,
     patient,
   } = data;
   const patientStat = patientStates[patient.stat] || patientStates[3];
@@ -69,7 +70,7 @@ const PatientStateView = (props, context) => {
   return (
     <>
       <Section title={patient.name || "Patient State"}>
-        {data.hasOccupant && (
+        {hasOccupant && (
           <LabeledList>
             <LabeledList.Item
               label="State"
@@ -119,18 +120,6 @@ const PatientStateView = (props, context) => {
                 {v}
               </LabeledList.Item>
             ))}
-            {!!data.alternative_step && (
-              <LabeledList.Item label="Alternative Step">
-                {procedure.alternative_step}
-                {procedure.alt_chems_needed && (
-                  <>
-                    <b>Required Chemicals:</b>
-                    <br />
-                    {procedure.alt_chems_needed}
-                  </>
-                )}
-              </LabeledList.Item>
-            )}
           </LabeledList>
         </Section>
       ))}

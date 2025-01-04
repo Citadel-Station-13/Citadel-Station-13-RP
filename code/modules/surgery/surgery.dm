@@ -7,7 +7,7 @@
 	var/surgery_odds = 30 // temporary - surgery odds for on-turf.
 
 /datum/surgery_step
-	var/step_name = ""		//label to show for this step on operating consoles
+	var/step_name = ""	//label to show for this step on operating consoles
 
 	var/priority = 0	//steps with higher priority would be attempted first
 
