@@ -88,6 +88,16 @@ Warning: While there is no regulation regarding visiting and scavenging operatio
 	size_x = 1
 	size_y = 1
 
+/mob/living/simple_mob/animal/space/bear/brown/casino
+	icon = 'icons/mob/vore.dmi'
+	name = "Autumn brown bear"
+	desc = "The casino had the good idea to bring Bear pups to populate the ring Forrest ! Surely they don't grow  that fast..."
+	icon_state = "brownbear"
+	icon_living = "brownbear"
+	icon_dead = "brownbear-dead"
+	icon_gib = "bear-gib"
+	iff_factions = MOB_IFF_FACTION_FARM_PET
+
 // ----- ID ------ //
 
 /obj/item/card/id/external/casino1
@@ -153,3 +163,36 @@ Warning: While there is no regulation regarding visiting and scavenging operatio
 /obj/item/paper/casinosec
 	name = "Note - Security System"
 	info = {"Please use the 3 Security Casino Chip to open the shutter, they must be equipped to open the shutters. - Security Team"}
+
+/obj/item/paper/casinowork
+	name = "Note - To the Construction team"
+	info = {"2556-02-04" : To the incomming construction team, please be carefull. Our boss, Benny, is a moron, the plants grew too fast and keep growing to fast.\
+	The bear pup also grew. I think they ate Billy ! We sedated them, and tried to ship them away to a reserve, but the boss decided to keep 2 !\
+	"ThEy ArE cUtE" he said. If you have a other contract, take it please! I think there are leeches in the water ! This station is not worth the danger !"}
+
+/obj/item/paper/casinowork2
+	name = "Letter to Kellern's Bio Farms 1"
+	info = {"2535-11-08" : This is the Botanical team of the Monarch of Autumn Station.\
+	The experimental "Ever Autumn" chem is making wonders to the color of the trees,\
+	But we noticed that the groth rate of the flora here is out of control.\
+	We only put arround 100 ounces in the ground, and now we have issues even killing the plants.\
+	What can we do ?"}
+
+/obj/item/paper/casinowork3
+	name = "Letter from Kellern's Bio Farms"
+	info = {"2535-11-15" : 100 Ounces ?! Didn't you read the label ?! You are supposed to only put down 5 Ounces ! You only can burn it down now !"}
+
+/obj/item/paper/casinowork4
+	name = "Orders from the boss"
+	info = {"2531-01-08" : Botanical team, I want the forrest to be ready as soon as possible.\
+	We found some some unlabled chems from Kellern's. They said something about quantity, but just put everything in the ground.\
+	Director Benny."}
+
+/obj/item/paper/casinowork5
+	name = "Responce to the boss"
+	info = {"2535-11-16" : Director Benny, we have put too much chems on your orders, and we can't kill the plants. They are growing too fast."}
+
+/obj/item/paper/casinowork6
+	name = "Orders from the boss 2"
+	info = {"2535-11-16" : Oops. Oh well. You are all fired.\
+	Director Benny."}

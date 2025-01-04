@@ -10,8 +10,10 @@
 	name = "\improper Ring Forrest"
 	icon_state = "green"
 	ambience = list('sound/ambience/forest-ambience.ogg')
-	requires_power = 0
 	sound_env = PLAIN
+	light_color = "#ffe8a2"
+	light_range = 2
+	light_power = 1
 
 /area/sector/delerictcasino/engineering
 	icon_state = "yellow"
@@ -41,6 +43,7 @@
 
 /area/sector/delerictcasino/room/
 	sound_env = ROOM
+	requires_power = 0
 
 /area/sector/delerictcasino/room/room1
 	name = "\improper Casino Room 1"
@@ -74,7 +77,7 @@
 	name = "\improper Casino Room 8"
 	icon_state = "yellow"
 
-/area/sector/delerictcasino/recpection
+/area/sector/delerictcasino/reception
 	name = "\improper Casino Reception"
 	icon_state = "yellow"
 

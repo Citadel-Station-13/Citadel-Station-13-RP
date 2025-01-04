@@ -10,6 +10,9 @@
 /obj/structure/flora/tree/jungle_small{
 	color = "#ed983d"
 	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/fey/forest_grass{
 	outdoors = 1
 	},
@@ -139,6 +142,12 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"aI" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/wall/r_wall/prepainted/cargo,
+/area/sector/delerictcasino/commons)
 "aJ" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -191,6 +200,13 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"aN" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
+/area/sector/delerictcasino/room/room4)
 "aQ" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/machinery/air_alarm/alarms_hidden{
@@ -252,15 +268,6 @@
 	color = "#677246"
 	},
 /area/sector/delerictcasino/ringforrest)
-"bb" = (
-/obj/structure/cable,
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 32;
-	req_access = null;
-	start_charge = 0
-	},
-/turf/simulated/floor,
-/area/sector/delerictcasino/engineering)
 "bf" = (
 /obj/structure/flora/tree/jungle_small{
 	color = "#ed983d"
@@ -399,6 +406,13 @@
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/delerictcasino/vault)
+"bQ" = (
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/port_gen/pacman,
+/turf/simulated/floor,
+/area/sector/delerictcasino/engineering)
 "bR" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/flora/grass/event/heavy_grass2,
@@ -491,6 +505,12 @@
 "cp" = (
 /turf/simulated/wall/r_wall/prepainted/cargo,
 /area/sector/delerictcasino/room/room3)
+"cr" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/wall/r_wall/prepainted/cargo,
+/area/sector/delerictcasino/commons)
 "ct" = (
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
@@ -526,6 +546,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
 /area/sector/delerictcasino/room/room2)
+"cD" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/wall/r_wall/prepainted/engineering,
+/area/sector/delerictcasino/engineering)
 "cF" = (
 /obj/machinery/light/spot{
 	dir = 4;
@@ -568,6 +594,16 @@
 	color = "#ed983d"
 	},
 /area/sector/delerictcasino/room/room4)
+"cU" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
 "cW" = (
 /obj/structure/bed/padded,
 /obj/structure/bed/padded{
@@ -581,17 +617,13 @@
 	},
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/delerictcasino/crew)
-"cY" = (
-/obj/structure/barricade,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
-/area/sector/delerictcasino/room/room5)
 "cZ" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/handgun,
 /obj/random/handgun,
 /obj/machinery/light/small,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/sector/delerictcasino/vault)
 "dc" = (
@@ -619,6 +651,14 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
 /area/sector/delerictcasino/room/room4)
+"dg" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/apc/west_mount,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/delerictcasino/vault)
 "dh" = (
 /obj/structure/flora/tree/fey/large_tree/tree7{
 	color = "#ed983d"
@@ -636,6 +676,10 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"dk" = (
+/obj/machinery/light,
+/turf/simulated/floor/glass/reinforced/indoors,
+/area/sector/delerictcasino/commons)
 "dl" = (
 /obj/structure/metal_edge,
 /obj/structure/flora/tree/fey/large_tree/tree1{
@@ -786,6 +830,9 @@
 /area/sector/delerictcasino/ringforrest)
 "dY" = (
 /mob/living/simple_mob/mechanical/combat_drone/lesser/casino,
+/obj/machinery/porta_turret/poi{
+	faction = "ai-casino"
+	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/delerictcasino/vault)
 "dZ" = (
@@ -884,6 +931,16 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"eC" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/door/blast/shutters{
+	id = "casinovault3"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/vault)
 "eE" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/machinery/door/window/brigdoor/eastright,
@@ -923,6 +980,13 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/restaurant)
+"eS" = (
+/mob/living/simple_mob/vore/aggressive/frog,
+/turf/simulated/floor/water/river{
+	name = "still water";
+	color = "#ed983d"
+	},
+/area/sector/delerictcasino/ringforrest)
 "eV" = (
 /obj/structure/railing/grey,
 /obj/structure/railing/grey{
@@ -949,6 +1013,11 @@
 "fc" = (
 /turf/simulated/wall/wood,
 /area/sector/delerictcasino/commons)
+"fd" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/flamethrower/full,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/delerictcasino/commons)
 "fe" = (
 /obj/structure/fireplace{
 	pixel_y = 11
@@ -965,6 +1034,15 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/sector/delerictcasino/restaurant)
+"fj" = (
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/apc/west_mount,
+/turf/simulated/floor/tiled/steel_dirty/dark{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/reception)
 "fk" = (
 /obj/structure/flora/grass/event/full_grass3,
 /turf/simulated/floor/tiled/steel_dirty/silver{
@@ -1161,6 +1239,12 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"fR" = (
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/delerictcasino/vault)
 "fS" = (
 /mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison/casino,
 /turf/simulated/floor,
@@ -1185,7 +1269,7 @@
 /turf/simulated/floor/tiled/steel_dirty/dark{
 	outdoors = 1
 	},
-/area/sector/delerictcasino/recpection)
+/area/sector/delerictcasino/reception)
 "ga" = (
 /obj/structure/flora/grass/event/sparse_grass1,
 /turf/simulated/floor/tiled/steel_dirty/silver{
@@ -1207,6 +1291,14 @@
 "gc" = (
 /turf/simulated/wall/r_wall/prepainted/cargo,
 /area/sector/delerictcasino/spine)
+"gd" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/fey/forest_grass{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/dance)
 "gf" = (
 /obj/structure/railing/grey{
 	dir = 8
@@ -1452,6 +1544,12 @@
 	color = "#b88a3b"
 	},
 /area/sector/delerictcasino/ringforrest)
+"hs" = (
+/mob/living/simple_mob/animal/passive/mouse,
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/ringforrest)
 "ht" = (
 /obj/structure/railing/grey{
 	dir = 8
@@ -1500,13 +1598,6 @@
 "hC" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/sector/delerictcasino/dance)
-"hE" = (
-/mob/living/simple_mob/animal/sif/leech,
-/turf/simulated/floor/water/river{
-	name = "still water";
-	color = "#ed983d"
-	},
-/area/sector/delerictcasino/room/room5)
 "hH" = (
 /obj/structure/railing/grey{
 	dir = 8
@@ -1530,9 +1621,6 @@
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/delerictcasino/exterior)
 "hJ" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -1552,6 +1640,15 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"hM" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/engineering)
 "hN" = (
 /obj/structure/closet,
 /turf/simulated/floor/carpet,
@@ -1782,10 +1879,23 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/fey/forest_grass{
 	outdoors = 1
 	},
 /area/sector/delerictcasino/dance)
+"iI" = (
+/obj/machinery/power/smes/buildable/point_of_interest,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/engineering)
 "iL" = (
 /obj/effect/shuttle_landmark{
 	landmark_tag = "casino_pad_3f";
@@ -1821,6 +1931,15 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/sector/delerictcasino/medical/public)
+"iN" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/water/river{
+	name = "still water";
+	color = "#ed983d"
+	},
+/area/sector/delerictcasino/room/room5)
 "iO" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4
@@ -1828,6 +1947,12 @@
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/sector/delerictcasino/security)
+"iP" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/glass/reinforced/indoors,
+/area/sector/delerictcasino/commons)
 "iR" = (
 /turf/simulated/floor/wood/indoors,
 /area/sector/delerictcasino/restaurant)
@@ -1840,6 +1965,13 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/medical/public)
+"iY" = (
+/mob/living/simple_mob/vore/aggressive/frog,
+/turf/simulated/floor/water/river{
+	name = "still water";
+	color = "#677246"
+	},
+/area/sector/delerictcasino/ringforrest)
 "ja" = (
 /obj/structure/table/bench,
 /turf/simulated/floor/tiled/steel_dirty/cyan,
@@ -1958,6 +2090,12 @@
 "jy" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/light/small,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
 /turf/simulated/floor,
 /area/sector/delerictcasino/maintenance)
 "jz" = (
@@ -2008,6 +2146,10 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"jJ" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/turf/simulated/floor/tiled/old_tile/red,
+/area/sector/delerictcasino/vault)
 "jK" = (
 /obj/structure/flora/tree/fey/small_tree/tree6,
 /turf/simulated/floor/tiled/steel_dirty/silver{
@@ -2020,6 +2162,10 @@
 	},
 /turf/simulated/floor,
 /area/sector/delerictcasino/engineering)
+"jV" = (
+/obj/item/paper/casinowork4,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/delerictcasino/commons)
 "jW" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/energy,
@@ -2184,11 +2330,10 @@
 /area/sector/delerictcasino/ringforrest)
 "kK" = (
 /obj/structure/flora/fey/grass/grass7,
-/turf/simulated/floor/water/river{
-	name = "still water";
-	color = "#677246";
-	outdoors = 0
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
+/turf/simulated/floor,
 /area/sector/delerictcasino/engineering)
 "kL" = (
 /turf/simulated/floor/carpet/patterened/blue,
@@ -2199,6 +2344,12 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"kQ" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/simulated/wall/r_wall/prepainted/engineering,
+/area/sector/delerictcasino/engineering)
 "kR" = (
 /obj/structure/railing/grey,
 /turf/simulated/floor/tiled/steel_dirty/silver{
@@ -2277,7 +2428,7 @@
 /turf/simulated/floor/tiled/steel_dirty/dark{
 	outdoors = 1
 	},
-/area/sector/delerictcasino/recpection)
+/area/sector/delerictcasino/reception)
 "lk" = (
 /obj/structure/flora/grass/event/full_grass2{
 	color = "#ed983d"
@@ -2309,6 +2460,15 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"lr" = (
+/obj/effect/floor_decal/corner/white/border{
+	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/delerictcasino/vault)
 "ls" = (
 /obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/white,
@@ -2360,6 +2520,18 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"lG" = (
+/obj/machinery/light/fairy{
+	coloration = "#ed983d";
+	color = "#ed983d";
+	light_color = "#ed983d";
+	dir = 4
+	},
+/mob/living/simple_mob/animal/space/bear/brown/casino,
+/turf/simulated/floor/fey/forest_grass{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/ringforrest)
 "lJ" = (
 /obj/machinery/recharge_station,
 /obj/machinery/light/small{
@@ -2372,6 +2544,13 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/delerictcasino/commons)
+"lN" = (
+/obj/machinery/light/small,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
 "lO" = (
 /obj/structure/metal_edge,
 /obj/structure/railing/grey{
@@ -2438,6 +2617,17 @@
 	color = "#677246"
 	},
 /area/sector/delerictcasino/ringforrest)
+"lW" = (
+/obj/machinery/power/apc/east_mount{
+	pixel_x = 32;
+	req_access = null;
+	start_charge = 0
+	},
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
 "lX" = (
 /turf/simulated/floor,
 /area/sector/delerictcasino/maintenance)
@@ -2533,6 +2723,21 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"mQ" = (
+/obj/structure/railing/grey{
+	dir = 4
+	},
+/obj/machinery/light/fairy{
+	coloration = "#ed983d";
+	color = "#ed983d";
+	light_color = "#ed983d";
+	dir = 4
+	},
+/mob/living/simple_mob/animal/space/bear/brown/casino,
+/turf/simulated/floor/preset/linoleum/indoors{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/ringforrest)
 "mR" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -2599,6 +2804,13 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"nh" = (
+/obj/structure/flora/grass/event/heavy_grass3,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
 "nj" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -2628,6 +2840,13 @@
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/delerictcasino/vault)
+"nq" = (
+/obj/structure/flora/grass/event/heavy_grass3,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
 "nr" = (
 /obj/structure/metal_edge,
 /obj/structure/railing/grey{
@@ -2675,6 +2894,15 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"nH" = (
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/engineering)
 "nI" = (
 /obj/structure/flora/grass/event/heavy_grass2,
 /obj/structure/flora/tree/fey/small_tree/tree4{
@@ -2714,6 +2942,13 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/restaurant)
+"nQ" = (
+/obj/structure/flora/grass/event/full_grass1,
+/mob/living/simple_mob/animal/space/bear/brown/casino,
+/turf/simulated/floor/fey/forest_grass{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/ringforrest)
 "nU" = (
 /obj/effect/shuttle_landmark{
 	landmark_tag = "casino_pad_3b";
@@ -2723,6 +2958,12 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
+"nV" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/white,
+/area/sector/delerictcasino/medical/public)
 "nX" = (
 /obj/machinery/light/fairy{
 	coloration = "#ed983d";
@@ -2811,12 +3052,18 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"os" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
 "ot" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4
 	},
 /turf/simulated/floor,
-/area/sector/delerictcasino/recpection)
+/area/sector/delerictcasino/reception)
 "ou" = (
 /obj/structure/fireplace{
 	pixel_y = 11
@@ -2843,6 +3090,16 @@
 	outdoors = 0
 	},
 /area/sector/delerictcasino/engineering)
+"oB" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
 "oD" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/gun/energy/civtas,
@@ -2905,6 +3162,22 @@
 /turf/simulated/floor/water/river{
 	name = "still water";
 	color = "#ed983d"
+	},
+/area/sector/delerictcasino/ringforrest)
+"oY" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
+"pa" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/light/flamp,
+/turf/simulated/floor/tiled/steel_dirty/dark{
+	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
 "pb" = (
@@ -2982,6 +3255,13 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"pn" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/steel_dirty/cyan,
+/area/sector/delerictcasino/dance)
 "pp" = (
 /obj/effect/floor_decal/corner/blue/border,
 /obj/machinery/sleeper/survival_pod,
@@ -3003,6 +3283,14 @@
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/delerictcasino/vault)
+"pv" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/restaurant)
 "pw" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/tiled/steel_dirty/silver{
@@ -3078,6 +3366,11 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"pK" = (
+/obj/structure/closet/crate/trashcart,
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/delerictcasino/commons)
 "pL" = (
 /obj/structure/metal_edge,
 /obj/machinery/light/fairy{
@@ -3200,6 +3493,12 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"qh" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/wall/r_wall/prepainted/command,
+/area/sector/delerictcasino/maintenance)
 "qi" = (
 /obj/structure/flora/grass/event/full_grass2{
 	color = "#ed983d"
@@ -3294,6 +3593,13 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/room/room6)
+"qT" = (
+/mob/living/simple_mob/vore/aggressive/frog,
+/turf/simulated/floor/water/river{
+	name = "still water";
+	color = "#ed983d"
+	},
+/area/sector/delerictcasino/room/room5)
 "qV" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -3380,6 +3686,18 @@
 	color = "#b88a3b"
 	},
 /area/sector/delerictcasino/ringforrest)
+"rl" = (
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/engineering)
+"rn" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/vault)
 "ro" = (
 /obj/structure/railing/grey{
 	dir = 8
@@ -3422,6 +3740,10 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"rv" = (
+/obj/item/paper/casinowork5,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/delerictcasino/commons)
 "rw" = (
 /turf/simulated/floor/carpet,
 /area/sector/delerictcasino/maintenance)
@@ -3488,6 +3810,10 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/cyan,
 /area/sector/delerictcasino/dance)
+"rP" = (
+/obj/machinery/seed_storage/garden,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/delerictcasino/commons)
 "rQ" = (
 /obj/machinery/light{
 	dir = 4
@@ -3557,6 +3883,13 @@
 	color = "#ed983d"
 	},
 /area/sector/delerictcasino/ringforrest)
+"si" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
 "sj" = (
 /obj/structure/flora/grass/event/sparse_grass1,
 /turf/simulated/floor/tiled/techfloor,
@@ -3579,6 +3912,13 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"sm" = (
+/obj/structure/flora/grass/event/heavy_grass4,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
 "sq" = (
 /obj/structure/railing/grey{
 	dir = 8
@@ -3628,6 +3968,11 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/delerictcasino/commons)
+"sE" = (
+/obj/structure/table/reinforced,
+/obj/item/paper/casinowork,
+/turf/simulated/floor/carpet/patterened/green,
+/area/sector/delerictcasino/crew)
 "sF" = (
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 6
@@ -3666,12 +4011,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/cyan,
 /area/sector/delerictcasino/dance)
-"sP" = (
-/mob/living/simple_mob/animal/space/bear/brown,
-/turf/simulated/floor/fey/forest_grass{
-	outdoors = 1
-	},
-/area/sector/delerictcasino/ringforrest)
 "sQ" = (
 /obj/item/stool{
 	color = "#CB9E04"
@@ -3720,7 +4059,7 @@
 /turf/simulated/floor/tiled/steel_dirty/dark{
 	outdoors = 1
 	},
-/area/sector/delerictcasino/recpection)
+/area/sector/delerictcasino/reception)
 "tc" = (
 /turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
 /area/sector/delerictcasino/room/room3)
@@ -3758,9 +4097,20 @@
 	},
 /turf/simulated/floor,
 /area/sector/delerictcasino/vault)
+"th" = (
+/obj/effect/floor_decal/rust,
+/mob/living/simple_mob/vore/aggressive/frog,
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/ringforrest)
 "ti" = (
 /obj/structure/bed/chair/sofa/beige/corner{
 	dir = 4
+	},
+/obj/machinery/power/apc/west_mount,
+/obj/structure/cable{
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/wood/indoors,
 /area/sector/delerictcasino/crew)
@@ -3894,6 +4244,16 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"tE" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/obj/machinery/power/apc/north_mount,
+/turf/simulated/floor/tiled/white,
+/area/sector/delerictcasino/medical/public)
 "tH" = (
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/delerictcasino/room/room1)
@@ -3919,6 +4279,12 @@
 /area/sector/delerictcasino/ringforrest)
 "tV" = (
 /obj/effect/floor_decal/rust,
+/turf/simulated/floor,
+/area/sector/delerictcasino/dance)
+"tW" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor,
 /area/sector/delerictcasino/dance)
 "tZ" = (
@@ -4012,6 +4378,12 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"uB" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/delerictcasino/vault)
 "uC" = (
 /obj/structure/flora/tree/fey/large_tree/tree5{
 	color = "#ed983d"
@@ -4033,13 +4405,25 @@
 /turf/simulated/floor/tiled/steel_dirty/dark{
 	outdoors = 1
 	},
-/area/sector/delerictcasino/recpection)
+/area/sector/delerictcasino/reception)
+"uN" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
 "uP" = (
 /obj/structure/table/steel_reinforced,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/steel_dirty/dark{
 	outdoors = 1
 	},
-/area/sector/delerictcasino/recpection)
+/area/sector/delerictcasino/reception)
 "uQ" = (
 /obj/structure/railing/grey,
 /turf/simulated/floor/tiled/asteroid_steel{
@@ -4091,16 +4475,36 @@
 /area/sector/delerictcasino/room/room3)
 "vb" = (
 /obj/effect/floor_decal/rust,
+/obj/machinery/light/fairy{
+	coloration = "#ed983d";
+	color = "#ed983d";
+	light_color = "#ed983d";
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel_dirty/silver{
 	outdoors = 1
 	},
 /area/sector/delerictcasino/spine)
+"ve" = (
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/obj/machinery/light/fairy{
+	coloration = "#ed983d";
+	color = "#ed983d";
+	light_color = "#ed983d";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/dock)
 "vh" = (
 /obj/structure/bookcase/manuals/medical,
 /turf/simulated/floor/tiled/steel_dirty/dark{
 	outdoors = 1
 	},
-/area/sector/delerictcasino/recpection)
+/area/sector/delerictcasino/reception)
 "vi" = (
 /obj/structure/railing/grey{
 	dir = 8
@@ -4113,6 +4517,17 @@
 	color = "#b88a3b"
 	},
 /area/sector/delerictcasino/ringforrest)
+"vj" = (
+/obj/machinery/light/fairy{
+	coloration = "#ed983d";
+	color = "#ed983d";
+	light_color = "#ed983d";
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/spine)
 "vk" = (
 /obj/structure/railing/grey,
 /obj/structure/flora/fey/grass/grass9,
@@ -4126,6 +4541,19 @@
 /obj/structure/salvageable/console_broken_os,
 /turf/simulated/floor/tiled/white,
 /area/sector/delerictcasino/medical/public)
+"vm" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/wall/r_wall/prepainted/cargo,
+/area/sector/delerictcasino/reception)
+"vn" = (
+/obj/structure/flora/grass/event/sparse_grass1,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
 "vp" = (
 /obj/structure/table/marble,
 /turf/simulated/floor/carpet/patterened/blue,
@@ -4204,21 +4632,28 @@
 /obj/structure/flora/grass/event/lavender_grass1,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/delerictcasino/vault)
+"vS" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/disk/botany,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/delerictcasino/commons)
 "vU" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
 /area/sector/delerictcasino/room/room2)
+"vV" = (
+/obj/effect/floor_decal/corner/navgold/border{
+	dir = 8
+	},
+/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison/casino,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/delerictcasino/vault)
 "vW" = (
 /obj/structure/bed/chair/sofa/red/right{
 	dir = 8
 	},
 /turf/simulated/floor/wood/indoors,
 /area/sector/delerictcasino/ringforrest)
-"vY" = (
-/obj/structure/table/steel_reinforced,
-/obj/item/clothing/suit/armor/bulletproof,
-/turf/simulated/floor,
-/area/sector/delerictcasino/vault)
 "vZ" = (
 /obj/structure/window/reinforced,
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide,
@@ -4247,11 +4682,11 @@
 "we" = (
 /obj/structure/table/hardwoodtable,
 /turf/simulated/floor/wood/indoors,
-/area/sector/delerictcasino/recpection)
+/area/sector/delerictcasino/reception)
 "wf" = (
 /obj/structure/filingcabinet/chestdrawer,
 /turf/simulated/floor,
-/area/sector/delerictcasino/recpection)
+/area/sector/delerictcasino/reception)
 "wj" = (
 /obj/structure/bed/chair/sofa/blue/right{
 	dir = 4
@@ -4359,6 +4794,15 @@
 /obj/structure/table/bench/standard,
 /turf/simulated/floor/tiled/steel_dirty/cyan,
 /area/sector/delerictcasino/dance)
+"wT" = (
+/obj/structure/salvageable/computer,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/commons)
 "wU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 8
@@ -4492,6 +4936,13 @@
 	color = "#b88a3b"
 	},
 /area/sector/delerictcasino/ringforrest)
+"xB" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/delerictcasino/commons)
 "xD" = (
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
@@ -4641,12 +5092,6 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
-"yo" = (
-/obj/machinery/porta_turret/poi{
-	faction = "ai-casino"
-	},
-/turf/simulated/floor/gold,
-/area/sector/delerictcasino/vault)
 "yp" = (
 /obj/machinery/light/fairy{
 	coloration = "#ed983d";
@@ -4692,10 +5137,20 @@
 /obj/structure/railing/grey,
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
+"yv" = (
+/obj/item/paper/casinowork6,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/delerictcasino/commons)
 "yx" = (
 /obj/structure/flora/tree/fey/small_tree/tree4{
 	color = "#ed983d"
 	},
+/turf/simulated/floor/fey/forest_grass{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/ringforrest)
+"yz" = (
+/mob/living/simple_mob/animal/passive/mouse/brown,
 /turf/simulated/floor/fey/forest_grass{
 	outdoors = 1
 	},
@@ -4708,6 +5163,13 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood/indoors,
+/area/sector/delerictcasino/restaurant)
+"yC" = (
+/obj/machinery/power/apc/south_mount,
+/obj/structure/cable,
+/turf/simulated/floor/tiled/steel_dirty/dark{
+	outdoors = 1
+	},
 /area/sector/delerictcasino/restaurant)
 "yD" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -4774,6 +5236,13 @@
 	},
 /turf/simulated/floor/tiled/old_tile/red,
 /area/sector/delerictcasino/security)
+"yN" = (
+/mob/living/simple_mob/vore/aggressive/frog,
+/turf/simulated/floor/water/river{
+	name = "still water";
+	color = "#b88a3b"
+	},
+/area/sector/delerictcasino/ringforrest)
 "yQ" = (
 /obj/structure/window/reinforced,
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide,
@@ -4815,10 +5284,7 @@
 /area/sector/delerictcasino/room/room5)
 "yX" = (
 /obj/structure/barricade,
-/obj/machinery/door/airlock/multi_tile{
-	name = "Casino suites";
-	dir = 8
-	},
+/obj/machinery/door/airlock/external/glass/bolted,
 /turf/simulated/floor/tiled/steel_dirty/silver{
 	outdoors = 1
 	},
@@ -4957,7 +5423,6 @@
 /area/sector/delerictcasino/ringforrest)
 "zt" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/random/energy,
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/sector/delerictcasino/vault)
@@ -4966,10 +5431,25 @@
 /obj/structure/bed/double/padded,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/delerictcasino/room/room1)
+"zv" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/wall/r_wall/prepainted/cargo,
+/area/sector/delerictcasino/commons)
 "zw" = (
 /obj/structure/closet/largecardboard,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/delerictcasino/crew)
+"zx" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
 "zA" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/eris/steel/bar_dance,
@@ -4999,7 +5479,7 @@
 /turf/simulated/floor/tiled/steel_dirty/dark{
 	outdoors = 1
 	},
-/area/sector/delerictcasino/recpection)
+/area/sector/delerictcasino/reception)
 "zH" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -5136,7 +5616,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood/indoors,
-/area/sector/delerictcasino/recpection)
+/area/sector/delerictcasino/reception)
 "At" = (
 /obj/effect/floor_decal/carpet{
 	dir = 1
@@ -5162,9 +5642,11 @@
 	},
 /area/sector/delerictcasino/restaurant)
 "Ay" = (
-/turf/simulated/floor/water/river{
-	name = "still water";
-	color = "#b88a3b"
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver{
+	outdoors = 1
 	},
 /area/sector/delerictcasino/room/room5)
 "AA" = (
@@ -5188,7 +5670,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood/indoors,
-/area/sector/delerictcasino/recpection)
+/area/sector/delerictcasino/reception)
 "AF" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -5218,6 +5700,11 @@
 "AN" = (
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/delerictcasino/room/room6)
+"AP" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor,
+/area/sector/delerictcasino/engineering)
 "AU" = (
 /obj/structure/railing/grey{
 	dir = 8
@@ -5250,6 +5737,10 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/white,
 /area/sector/delerictcasino/room/room3)
+"Bb" = (
+/obj/machinery/light/small/emergency/flicker,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/delerictcasino/maintenance)
 "Bc" = (
 /obj/structure/flora/grass/event/heavy_grass3,
 /turf/simulated/floor/carpet/patterened/blue,
@@ -5291,6 +5782,15 @@
 /obj/machinery/light/fairy,
 /turf/simulated/floor/tiled/eris/steel/bar_dance,
 /area/sector/delerictcasino/dance)
+"Bp" = (
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/port_gen/pacman{
+	anchored = 1
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/engineering)
 "Bq" = (
 /obj/structure/flora/grass/event/heavy_grass4,
 /turf/simulated/floor/tiled/asteroid_steel{
@@ -5335,6 +5835,12 @@
 /obj/structure/table/fancyblack,
 /turf/simulated/floor/wood/indoors,
 /area/sector/delerictcasino/restaurant)
+"BE" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
 "BG" = (
 /obj/structure/flora/grass/event/full_grass2{
 	color = "#ed983d"
@@ -5413,13 +5919,19 @@
 /area/sector/delerictcasino/ringforrest)
 "BX" = (
 /turf/simulated/wall/r_wall/prepainted/cargo,
-/area/sector/delerictcasino/recpection)
+/area/sector/delerictcasino/reception)
 "Ca" = (
 /turf/simulated/floor/tiled/steel_dirty/dark{
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
 "Cb" = (
+/obj/machinery/light/fairy{
+	coloration = "#ed983d";
+	color = "#ed983d";
+	light_color = "#ed983d";
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel_dirty/silver{
 	outdoors = 1
 	},
@@ -5522,6 +6034,12 @@
 	outdoors = 0
 	},
 /area/sector/delerictcasino/maintenance)
+"CM" = (
+/obj/machinery/light/flamp,
+/turf/simulated/floor/tiled/steel_dirty/silver{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/dock)
 "CQ" = (
 /obj/machinery/atmospherics/component/binary/pump/on{
 	dir = 4
@@ -5533,6 +6051,13 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
 /area/sector/delerictcasino/engineering)
+"CR" = (
+/obj/structure/flora/grass/event/heavy_grass4,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
 "CT" = (
 /obj/machinery/atm{
 	pixel_x = 32
@@ -5541,6 +6066,13 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"CU" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
 "CV" = (
 /obj/structure/metal_edge,
 /obj/structure/metal_edge,
@@ -5563,12 +6095,18 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"Da" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/wall/r_wall/prepainted/cargo,
+/area/sector/delerictcasino/maintenance)
 "Db" = (
 /obj/structure/table/marble,
 /turf/simulated/floor/tiled/steel_dirty/dark{
 	outdoors = 1
 	},
-/area/sector/delerictcasino/recpection)
+/area/sector/delerictcasino/reception)
 "Dd" = (
 /obj/structure/table/bench/wooden,
 /obj/machinery/light/small{
@@ -5672,18 +6210,6 @@
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor,
 /area/sector/delerictcasino/commons)
-"DM" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor,
-/area/sector/delerictcasino/engineering)
 "DN" = (
 /obj/structure/flora/grass/event/sparse_grass1,
 /turf/simulated/floor/tiled/asteroid_steel{
@@ -5773,6 +6299,11 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"Et" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/wall/r_wall/prepainted/engineering,
+/area/sector/delerictcasino/engineering)
 "Eu" = (
 /obj/structure/flora/grass/event/heavy_grass3,
 /turf/simulated/floor/tiled/steel_dirty/silver{
@@ -5800,6 +6331,14 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"Ex" = (
+/obj/effect/floor_decal/rust,
+/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison/casino,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
 "Ez" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -5894,6 +6433,12 @@
 	color = "#ed983d"
 	},
 /area/sector/delerictcasino/ringforrest)
+"Fe" = (
+/mob/living/simple_mob/animal/passive/mouse/brown,
+/turf/simulated/floor/preset/linoleum/indoors{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/ringforrest)
 "Fh" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
@@ -5914,6 +6459,20 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/sector/delerictcasino/restaurant)
+"Fm" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/restaurant)
+"Fn" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
 "Fr" = (
 /obj/structure/railing/grey,
 /obj/structure/railing/grey{
@@ -5952,7 +6511,7 @@
 /turf/simulated/floor/tiled/steel_dirty/dark{
 	outdoors = 1
 	},
-/area/sector/delerictcasino/recpection)
+/area/sector/delerictcasino/reception)
 "FB" = (
 /obj/structure/bed/chair/sofa/black/left{
 	dir = 8
@@ -5991,6 +6550,13 @@
 /obj/effect/floor_decal/rust,
 /obj/structure/flora/grass/event/full_grass2{
 	color = "#ed983d"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
+"FJ" = (
+/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison/casino,
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor,
 /area/sector/delerictcasino/maintenance)
@@ -6084,12 +6650,28 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/sector/delerictcasino/room/room3)
+"Gr" = (
+/obj/machinery/power/apc/west_mount,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/fey/forest_grass{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/dance)
 "Gt" = (
 /obj/structure/table/gamblingtable,
 /turf/simulated/floor/fey/forest_grass{
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"Gx" = (
+/obj/structure/flora/grass/event/sparse_grass1,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
 "Gy" = (
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/steel_dirty/silver{
@@ -6125,6 +6707,9 @@
 /obj/machinery/door/blast/shutters{
 	id = "casinovault2"
 	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor,
 /area/sector/delerictcasino/vault)
 "GE" = (
@@ -6138,19 +6723,22 @@
 	color = "#677246"
 	},
 /area/sector/delerictcasino/ringforrest)
+"GH" = (
+/obj/structure/metal_edge,
+/obj/machinery/light/fairy{
+	coloration = "#ed983d";
+	color = "#ed983d";
+	light_color = "#ed983d";
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/delerictcasino/dock)
 "GI" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
 /turf/simulated/floor/carpet/patterened/green,
 /area/sector/delerictcasino/crew)
-"GL" = (
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
-/obj/machinery/power/smes/buildable/point_of_interest,
-/turf/simulated/floor,
-/area/sector/delerictcasino/engineering)
 "GM" = (
 /obj/machinery/door/blast/regular{
 	dir = 8;
@@ -6280,6 +6868,12 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"Hi" = (
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/turf/simulated/wall/r_wall/prepainted/cargo,
+/area/sector/delerictcasino/commons)
 "Hj" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 8
@@ -6304,10 +6898,26 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/sector/delerictcasino/ringforrest)
+"Hq" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/old_tile/red,
+/area/sector/delerictcasino/vault)
 "Hr" = (
 /obj/effect/floor_decal/corner/blue/border,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/white,
 /area/sector/delerictcasino/medical/public)
+"Ht" = (
+/obj/item/paper/casinowork2,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/delerictcasino/commons)
 "Hz" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -6342,7 +6952,7 @@
 /turf/simulated/floor/tiled/steel_dirty/dark{
 	outdoors = 1
 	},
-/area/sector/delerictcasino/recpection)
+/area/sector/delerictcasino/reception)
 "HJ" = (
 /turf/simulated/floor/tiled/white,
 /area/sector/delerictcasino/room/room3)
@@ -6353,6 +6963,12 @@
 	color = "#b88a3b"
 	},
 /area/sector/delerictcasino/ringforrest)
+"HN" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/delerictcasino/commons)
 "HO" = (
 /turf/simulated/wall/r_wall/prepainted/cargo,
 /area/sector/delerictcasino/room/room1)
@@ -6366,6 +6982,12 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"HU" = (
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/engineering)
 "HX" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/flora/grass/event/full_grass3,
@@ -6430,6 +7052,14 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/sector/delerictcasino/restaurant)
+"Io" = (
+/obj/structure/flora/fey/grass/grass7,
+/mob/living/simple_mob/vore/aggressive/frog,
+/turf/simulated/floor/water/river{
+	name = "still water";
+	color = "#b88a3b"
+	},
+/area/sector/delerictcasino/ringforrest)
 "Ir" = (
 /obj/machinery/light/fairy{
 	coloration = "#ed983d";
@@ -6457,9 +7087,6 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
-"IA" = (
-/turf/space/basic,
-/area/sector/delerictcasino/exterior)
 "IB" = (
 /obj/structure/flora/grass/event/bright_flowers1,
 /turf/simulated/floor/fey/forest_grass{
@@ -6471,7 +7098,7 @@
 /turf/simulated/floor/tiled/steel_dirty/dark{
 	outdoors = 1
 	},
-/area/sector/delerictcasino/recpection)
+/area/sector/delerictcasino/reception)
 "IE" = (
 /obj/structure/metal_edge,
 /obj/machinery/light/fairy{
@@ -6530,10 +7157,25 @@
 "IK" = (
 /turf/simulated/floor/carpet/bcarpet,
 /area/sector/delerictcasino/restaurant)
+"IL" = (
+/obj/machinery/light/flamp,
+/turf/simulated/floor/tiled/steel_dirty/dark{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/ringforrest)
 "IO" = (
 /obj/structure/bed/chair/bay/comfy/captain,
 /turf/simulated/floor,
-/area/sector/delerictcasino/recpection)
+/area/sector/delerictcasino/reception)
+"IR" = (
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/wall/r_wall/prepainted/cargo,
+/area/sector/delerictcasino/commons)
 "IT" = (
 /obj/structure/metal_edge,
 /obj/structure/metal_edge,
@@ -6552,8 +7194,22 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/spine)
+"IV" = (
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/obj/machinery/light/fairy{
+	coloration = "#ed983d";
+	color = "#ed983d";
+	light_color = "#ed983d";
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/dock)
 "IX" = (
-/mob/living/simple_mob/animal/sif/leech,
+/mob/living/simple_mob/vore/aggressive/frog,
 /turf/simulated/floor/water/river{
 	name = "still water";
 	color = "#677246"
@@ -6570,6 +7226,12 @@
 /obj/random/alcohol,
 /turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
 /area/sector/delerictcasino/room/room2)
+"Jb" = (
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/simulated/wall/r_wall/prepainted/cargo,
+/area/sector/delerictcasino/commons)
 "Jc" = (
 /obj/structure/flora/grass/event/full_grass2{
 	color = "#ed983d"
@@ -6614,6 +7276,15 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/exterior)
+"Jl" = (
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/apc/west_mount,
+/turf/simulated/floor/tiled/steel_dirty/silver{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/restaurant)
 "Jm" = (
 /obj/structure/flora/grass/event/full_grass2{
 	color = "#ed983d"
@@ -6622,6 +7293,14 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/dock)
+"Jo" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/restaurant)
 "Jp" = (
 /obj/structure/flora/fey/grass/grass9,
 /obj/effect/floor_decal/rust,
@@ -6787,6 +7466,15 @@
 "JW" = (
 /turf/simulated/floor/glass/reinforced/indoors,
 /area/sector/delerictcasino/commons)
+"JX" = (
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
 "Ka" = (
 /obj/structure/railing/grey,
 /turf/simulated/floor/water/river{
@@ -6907,10 +7595,22 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"KF" = (
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
 "KH" = (
 /obj/structure/flora/grass/event/heavy_grass1,
 /turf/simulated/floor,
 /area/sector/delerictcasino/maintenance)
+"KI" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/reception)
 "KJ" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -6939,13 +7639,6 @@
 /obj/structure/flora/rock/fey/rock1,
 /turf/simulated/floor/wood/indoors,
 /area/sector/delerictcasino/restaurant)
-"KR" = (
-/obj/effect/floor_decal/rust,
-/obj/structure/barricade,
-/turf/simulated/floor/tiled/steel_dirty/silver{
-	outdoors = 1
-	},
-/area/sector/delerictcasino/room/room4)
 "KS" = (
 /obj/structure/statue/marble/male{
 	pixel_y = 14
@@ -6994,6 +7687,12 @@
 /obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/white,
 /area/sector/delerictcasino/room/room3)
+"Lc" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/wall/r_wall/prepainted/engineering,
+/area/sector/delerictcasino/engineering)
 "Ld" = (
 /obj/machinery/atmospherics/component/binary/pump/high_power/on{
 	dir = 1;
@@ -7006,6 +7705,21 @@
 	outdoors = 0
 	},
 /area/sector/delerictcasino/engineering)
+"Li" = (
+/obj/machinery/power/apc/east_mount{
+	pixel_x = 32;
+	req_access = null;
+	start_charge = 0
+	},
+/obj/structure/table/steel_reinforced,
+/obj/item/tool/wirecutters,
+/obj/item/weedkiller/D24,
+/obj/item/weedkiller/D24,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/delerictcasino/commons)
 "Ll" = (
 /obj/structure/flora/fey/grass/grass9,
 /turf/simulated/floor/water/river{
@@ -7013,6 +7727,16 @@
 	color = "#b88a3b"
 	},
 /area/sector/delerictcasino/ringforrest)
+"Lm" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/light/fairy{
+	coloration = "#ed983d";
+	color = "#ed983d";
+	light_color = "#ed983d";
+	dir = 8
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/spine)
 "Ln" = (
 /obj/structure/flora/grass/event/full_grass2{
 	color = "#ed983d"
@@ -7042,6 +7766,15 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"Lv" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
 "Lw" = (
 /obj/effect/floor_decal/corner/navgold/border{
 	dir = 8
@@ -7154,6 +7887,9 @@
 	dir = 6
 	},
 /obj/machinery/power/apc/alarms_hidden/east_mount,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
 /turf/simulated/floor/tiled/old_tile/red,
 /area/sector/delerictcasino/security)
 "LS" = (
@@ -7217,6 +7953,12 @@
 /obj/structure/bed/chair/sofa/blue,
 /turf/simulated/floor/tiled/steel_dirty/cyan,
 /area/sector/delerictcasino/dance)
+"Mx" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/wall/r_wall/prepainted/cargo,
+/area/sector/delerictcasino/crew)
 "Mz" = (
 /obj/structure/table/hardwoodtable,
 /obj/random/alcohol,
@@ -7241,6 +7983,12 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"MJ" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/plantspray/weeds,
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/delerictcasino/commons)
 "MK" = (
 /obj/structure/railing/grey,
 /obj/structure/railing/grey{
@@ -7362,10 +8110,25 @@
 /obj/machinery/atm{
 	pixel_x = -32
 	},
+/obj/machinery/light/fairy{
+	coloration = "#ed983d";
+	color = "#ed983d";
+	light_color = "#ed983d";
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel_dirty/silver{
 	outdoors = 1
 	},
 /area/sector/delerictcasino/spine)
+"Nq" = (
+/obj/structure/railing/grey{
+	dir = 4
+	},
+/mob/living/simple_mob/animal/space/bear/brown/casino,
+/turf/simulated/floor/fey/forest_grass{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/ringforrest)
 "Ns" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -7427,6 +8190,12 @@
 /obj/effect/floor_decal/corner/grey/border,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/sector/delerictcasino/security)
+"NR" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/wall/r_wall/prepainted/cargo,
+/area/sector/delerictcasino/medical/public)
 "NT" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -7508,8 +8277,29 @@
 "Og" = (
 /obj/effect/floor_decal/corner/grey/border,
 /obj/machinery/light,
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/tiled/old_tile/red,
 /area/sector/delerictcasino/security)
+"Oh" = (
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
+"Om" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
 "Oo" = (
 /obj/structure/flora/tree/fey/large_tree/tree5{
 	color = "#ed983d"
@@ -7650,10 +8440,7 @@
 "OV" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/barricade,
-/obj/machinery/door/airlock/multi_tile{
-	name = "Casino suites";
-	dir = 8
-	},
+/obj/machinery/door/airlock/external/glass/bolted,
 /turf/simulated/floor/tiled/steel_dirty/silver{
 	outdoors = 1
 	},
@@ -7679,7 +8466,7 @@
 /area/sector/delerictcasino/ringforrest)
 "Pc" = (
 /turf/simulated/floor,
-/area/sector/delerictcasino/recpection)
+/area/sector/delerictcasino/reception)
 "Pf" = (
 /obj/structure/flora/grass/event/heavy_grass2,
 /obj/structure/railing/grey{
@@ -7737,8 +8524,20 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"Ps" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/glass/reinforced/indoors,
+/area/sector/delerictcasino/commons)
 "Pt" = (
 /obj/structure/flora/grass/event/heavy_grass3,
+/obj/machinery/light/fairy{
+	coloration = "#ed983d";
+	color = "#ed983d";
+	light_color = "#ed983d";
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel_dirty/silver{
 	outdoors = 1
 	},
@@ -7786,6 +8585,7 @@
 "PB" = (
 /obj/structure/flora/grass/event/heavy_grass3,
 /obj/effect/floor_decal/rust,
+/obj/machinery/light/flamp,
 /turf/simulated/floor/tiled/steel_dirty/silver{
 	outdoors = 1
 	},
@@ -7793,6 +8593,14 @@
 "PD" = (
 /turf/simulated/wall/r_wall/prepainted/cargo,
 /area/sector/delerictcasino/security)
+"PG" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/commons)
 "PH" = (
 /obj/structure/curtain/open/bed,
 /turf/simulated/floor/wood/indoors,
@@ -7840,6 +8648,13 @@
 	color = "#b88a3b"
 	},
 /area/sector/delerictcasino/ringforrest)
+"PT" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
 "PU" = (
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/carpet/patterened/blue,
@@ -7904,6 +8719,12 @@
 	},
 /turf/simulated/floor/carpet,
 /area/sector/delerictcasino/maintenance)
+"Qn" = (
+/mob/living/simple_mob/animal/passive/mouse,
+/turf/simulated/floor/preset/linoleum/indoors{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/ringforrest)
 "Qq" = (
 /obj/item/weldingtool,
 /turf/space/basic,
@@ -7997,6 +8818,14 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
+"QQ" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/flora/grass/event/heavy_grass3,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
 "QS" = (
 /turf/simulated/floor/tiled/eris/steel/bar_light,
 /area/sector/delerictcasino/dance)
@@ -8040,6 +8869,12 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
+"Ri" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/wall/r_wall/prepainted/cargo,
+/area/sector/delerictcasino/restaurant)
 "Rm" = (
 /obj/structure/flora/grass/fey/bush/bush3,
 /turf/simulated/floor/water/river{
@@ -8048,9 +8883,6 @@
 	},
 /area/sector/delerictcasino/ringforrest)
 "Ro" = (
-/obj/structure/sign/nosmoking_1{
-	pixel_y = 30
-	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
 /area/sector/delerictcasino/engineering)
@@ -8059,7 +8891,13 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood/indoors,
-/area/sector/delerictcasino/recpection)
+/area/sector/delerictcasino/reception)
+"Rt" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/delerictcasino/maintenance)
 "Rx" = (
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
@@ -8143,6 +8981,9 @@
 	},
 /obj/structure/flora/grass/event/full_grass2{
 	color = "#ed983d"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/delerictcasino/vault)
@@ -8292,7 +9133,7 @@
 /turf/simulated/floor/tiled/steel_dirty/dark{
 	outdoors = 1
 	},
-/area/sector/delerictcasino/recpection)
+/area/sector/delerictcasino/reception)
 "St" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/flashlight/lamp,
@@ -8325,6 +9166,25 @@
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor,
 /area/sector/delerictcasino/vault)
+"SD" = (
+/obj/machinery/appliance/cooker/oven,
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/restaurant)
+"SG" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/room/room4)
 "SI" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
@@ -8406,6 +9266,21 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"SX" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
+"SY" = (
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/simulated/wall/r_wall/prepainted/cargo,
+/area/sector/delerictcasino/medical/public)
 "Ta" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/tiled/steel_dirty/silver{
@@ -8482,7 +9357,7 @@
 /area/sector/delerictcasino/engineering)
 "To" = (
 /turf/simulated/floor/wood/indoors,
-/area/sector/delerictcasino/recpection)
+/area/sector/delerictcasino/reception)
 "Ts" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/item/card/id/external/casino3,
@@ -8547,6 +9422,9 @@
 /area/sector/delerictcasino/dock)
 "TE" = (
 /obj/machinery/light/small{
+	dir = 4
+	},
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor,
@@ -8657,6 +9535,12 @@
 	color = "#677246"
 	},
 /area/sector/delerictcasino/ringforrest)
+"Um" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/delerictcasino/vault)
 "Un" = (
 /obj/structure/flora/grass/event/yellow_flowers1,
 /turf/simulated/floor/tiled/asteroid_steel{
@@ -8943,12 +9827,21 @@
 /obj/structure/table/hardwoodtable,
 /obj/item/paper/casinochips,
 /turf/simulated/floor/wood/indoors,
-/area/sector/delerictcasino/recpection)
+/area/sector/delerictcasino/reception)
 "Vz" = (
 /obj/structure/table/rack/shelf,
 /obj/item/electronic_assembly/drone/arms,
 /turf/simulated/floor,
 /area/sector/delerictcasino/vault)
+"VA" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/dock)
 "VC" = (
 /obj/structure/table,
 /turf/simulated/floor/carpet/patterened/blue,
@@ -8998,6 +9891,15 @@
 /obj/machinery/light/small,
 /turf/simulated/floor,
 /area/sector/delerictcasino/maintenance)
+"VT" = (
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/obj/machinery/power/apc/south_mount,
+/turf/simulated/floor/fey/forest_grass{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/ringforrest)
 "VW" = (
 /obj/structure/flora/tree/fey/large_tree/tree2{
 	color = "#ed983d";
@@ -9013,6 +9915,15 @@
 /obj/structure/flora/grass/event/sparse_grass1,
 /turf/simulated/floor,
 /area/sector/delerictcasino/engineering)
+"VY" = (
+/obj/machinery/light/fairy{
+	coloration = "#ed983d";
+	color = "#ed983d";
+	light_color = "#ed983d";
+	dir = 4
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/spine)
 "VZ" = (
 /obj/structure/railing/grey{
 	dir = 8
@@ -9082,6 +9993,12 @@
 	},
 /turf/simulated/floor,
 /area/sector/delerictcasino/maintenance)
+"Ws" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/steel_dirty/dark{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/reception)
 "Ww" = (
 /obj/structure/flora/tree/fey/large_tree/tree2{
 	color = "#ed983d"
@@ -9093,7 +10010,7 @@
 /area/sector/delerictcasino/ringforrest)
 "Wz" = (
 /obj/structure/flora/fey/large/rock1,
-/mob/living/simple_mob/animal/sif/leech,
+/mob/living/simple_mob/vore/aggressive/frog,
 /turf/simulated/floor/water/river{
 	name = "still water";
 	color = "#ed983d"
@@ -9323,6 +10240,15 @@
 	color = "#677246"
 	},
 /area/sector/delerictcasino/ringforrest)
+"XB" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/old_tile/red,
+/area/sector/delerictcasino/vault)
 "XC" = (
 /obj/structure/sink/kitchen{
 	pixel_y = 17
@@ -9354,6 +10280,15 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/dock)
+"XJ" = (
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/engineering)
 "XL" = (
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 9
@@ -9388,7 +10323,6 @@
 	},
 /area/sector/delerictcasino/maintenance)
 "Yc" = (
-/obj/machinery/power/port_gen/pacman,
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
@@ -9417,7 +10351,16 @@
 "Yv" = (
 /obj/structure/displaycase,
 /turf/simulated/floor/wood/indoors,
-/area/sector/delerictcasino/recpection)
+/area/sector/delerictcasino/reception)
+"Yw" = (
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/engineering)
 "Yy" = (
 /obj/structure/flora/fey/large/bush2{
 	color = "#ed983d"
@@ -9446,6 +10389,17 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/sector/delerictcasino/ringforrest)
+"YB" = (
+/obj/machinery/light/fairy{
+	coloration = "#ed983d";
+	color = "#ed983d";
+	light_color = "#ed983d";
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/dock)
 "YF" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
@@ -9502,6 +10456,17 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"YP" = (
+/obj/machinery/light/fairy{
+	coloration = "#ed983d";
+	color = "#ed983d";
+	light_color = "#ed983d";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/dock)
 "YU" = (
 /turf/simulated/wall/r_wall/prepainted/cargo,
 /area/sector/delerictcasino/crew)
@@ -9580,7 +10545,7 @@
 /turf/simulated/floor/tiled/steel_dirty/dark{
 	outdoors = 1
 	},
-/area/sector/delerictcasino/recpection)
+/area/sector/delerictcasino/reception)
 "Zm" = (
 /obj/structure/flora/grass/event/full_grass2{
 	color = "#ed983d"
@@ -9608,6 +10573,12 @@
 	outdoors = 0
 	},
 /area/sector/delerictcasino/maintenance)
+"Zq" = (
+/mob/living/simple_mob/animal/space/bear/brown/casino,
+/turf/simulated/floor/fey/forest_grass{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/ringforrest)
 "Zs" = (
 /obj/structure/flora/fey/grass/grass4,
 /turf/simulated/floor/water/river{
@@ -9691,6 +10662,10 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"ZO" = (
+/obj/item/paper/casinowork3,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/delerictcasino/commons)
 "ZQ" = (
 /obj/structure/metal_edge,
 /obj/structure/metal_edge,
@@ -9706,12 +10681,12 @@
 	},
 /area/sector/delerictcasino/ringforrest)
 "ZR" = (
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/obj/machinery/power/terminal,
 /obj/machinery/light/small{
 	dir = 4
+	},
+/obj/machinery/power/smes/buildable/point_of_interest,
+/obj/structure/cable{
+	icon_state = "0-2"
 	},
 /turf/simulated/floor,
 /area/sector/delerictcasino/engineering)
@@ -9726,6 +10701,11 @@
 /obj/structure/flora/grass/event/heavy_grass4,
 /turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
 /area/sector/delerictcasino/room/room3)
+"ZW" = (
+/obj/machinery/power/apc/south_mount,
+/obj/structure/cable,
+/turf/simulated/floor,
+/area/sector/delerictcasino/engineering)
 "ZY" = (
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/white,
@@ -19474,7 +20454,7 @@ LO
 LO
 LO
 LO
-hE
+LO
 MC
 ea
 HC
@@ -19664,9 +20644,9 @@ HC
 MC
 MC
 LO
-hE
-yW
 LO
+yW
+qT
 KX
 LO
 ea
@@ -20052,16 +21032,16 @@ gR
 LO
 LO
 yW
+qT
 LO
 LO
 LO
 LO
 LO
 LO
-LO
-LO
+qT
 yW
-qs
+PA
 cS
 PA
 PA
@@ -20241,29 +21221,29 @@ Tg
 Tg
 Ww
 lS
-lS
+Qr
 Ay
 LO
 LO
 LO
-LO
+iN
 LO
 Kx
 le
 LO
 ea
 LO
-LO
+iN
 LO
 PA
 PA
 NA
-gU
+aN
 df
 df
 gU
 gU
-df
+SG
 df
 df
 ps
@@ -20435,14 +21415,14 @@ Tg
 Tg
 lS
 lS
-lS
+Qr
 ea
 ea
 ea
 ea
 ea
 ea
-cY
+yX
 yX
 ea
 ea
@@ -20454,7 +21434,7 @@ ps
 ps
 ps
 ps
-KR
+OV
 OV
 ps
 ps
@@ -21734,6 +22714,7 @@ bM
 ct
 ct
 ct
+zT
 ct
 ct
 ct
@@ -21741,8 +22722,7 @@ ct
 ct
 ct
 ct
-ct
-ct
+zT
 ct
 bM
 bM
@@ -22055,7 +23035,7 @@ js
 Cc
 wa
 Qr
-Rx
+hs
 PP
 Rx
 Qr
@@ -22162,7 +23142,7 @@ HC
 kN
 Tg
 Ca
-Ca
+IL
 Jj
 lm
 ig
@@ -22176,7 +23156,7 @@ ig
 fP
 tx
 tx
-Ca
+IL
 HX
 kR
 xL
@@ -22365,7 +23345,7 @@ ld
 ld
 lu
 ld
-ld
+Zq
 Rb
 Rb
 Zd
@@ -22553,7 +23533,7 @@ es
 nL
 ld
 ld
-sP
+ld
 ld
 ld
 nI
@@ -22593,7 +23573,7 @@ dw
 QU
 QU
 YN
-lZ
+Gr
 he
 zh
 lX
@@ -22621,7 +23601,7 @@ Pu
 Pu
 Pu
 SP
-Pi
+Jo
 gV
 Pi
 Pi
@@ -22636,7 +23616,7 @@ hq
 AV
 eB
 Ca
-Ca
+IL
 IE
 tx
 tx
@@ -22650,7 +23630,7 @@ WH
 WH
 WH
 tx
-Ca
+IL
 es
 Qr
 ri
@@ -22718,7 +23698,7 @@ ct
 ct
 ct
 ct
-ct
+dR
 bM
 ub
 HC
@@ -22787,7 +23767,7 @@ Dq
 lR
 QU
 QU
-Do
+tW
 za
 zh
 lX
@@ -22895,7 +23875,7 @@ ct
 ct
 dR
 bM
-ct
+sI
 ct
 ct
 ct
@@ -22938,10 +23918,10 @@ HC
 kN
 QD
 es
-es
+pa
 CV
 Ez
-hL
+Nq
 Qb
 hL
 hL
@@ -22952,7 +23932,7 @@ hL
 hL
 Us
 dv
-Ca
+IL
 es
 oR
 PS
@@ -22981,7 +23961,7 @@ Dq
 QU
 kp
 kp
-kp
+pn
 lZ
 zh
 lX
@@ -23175,7 +24155,7 @@ Bo
 Er
 QU
 lR
-kp
+pn
 Do
 zh
 xz
@@ -23369,7 +24349,7 @@ Bo
 kp
 Do
 QU
-lZ
+gd
 Do
 zh
 lX
@@ -23399,7 +24379,7 @@ Pu
 SP
 Pi
 Pi
-Pi
+Jl
 Ax
 vz
 vz
@@ -23412,7 +24392,7 @@ rf
 Ee
 Qr
 Ca
-Ca
+IL
 pL
 dv
 ik
@@ -23426,7 +24406,7 @@ dv
 dv
 dv
 dv
-Ca
+IL
 Ca
 Qr
 ri
@@ -23577,11 +24557,11 @@ ms
 lX
 lX
 DG
-nZ
-kl
-kl
+tE
+nV
+nV
 Hr
-DG
+SY
 lX
 gV
 IK
@@ -23593,7 +24573,7 @@ Pu
 SP
 Pi
 EH
-Pi
+pv
 Pi
 vz
 LI
@@ -23775,7 +24755,7 @@ iM
 xD
 cF
 sF
-DG
+NR
 lX
 gV
 IK
@@ -23787,7 +24767,7 @@ Pu
 SP
 Pi
 Pi
-Pi
+pv
 gV
 bF
 vW
@@ -23951,7 +24931,7 @@ hK
 Er
 kp
 zh
-zh
+qh
 zh
 zh
 lX
@@ -23969,7 +24949,7 @@ DG
 DG
 DG
 FD
-DG
+NR
 lX
 gV
 gV
@@ -23981,7 +24961,7 @@ gV
 gV
 gV
 gV
-gV
+Ri
 gV
 zO
 zO
@@ -24145,28 +25125,28 @@ Bo
 Do
 kp
 zh
-lX
-lX
+KF
+BE
+vn
+BE
+BE
+oY
+BE
+BE
+BE
+sm
+BE
+BE
+BE
+BE
+oY
+BE
+BE
+BE
+Lv
 xz
 lX
 lX
-LZ
-lX
-lX
-lX
-JK
-lX
-lX
-lX
-lX
-LZ
-lX
-lX
-lX
-lX
-xz
-lX
-lX
 lX
 rB
 rB
@@ -24175,7 +25155,7 @@ rB
 lX
 rB
 rB
-lX
+os
 rB
 rB
 rB
@@ -24357,19 +25337,19 @@ YU
 YU
 YU
 lX
-lX
-lX
-oc
-lX
-lX
-LZ
-lX
-lX
-oc
-lX
-rB
-rB
-rB
+JX
+BE
+nh
+BE
+BE
+oY
+BE
+BE
+nh
+BE
+PT
+PT
+si
 SU
 rB
 rB
@@ -24447,7 +25427,7 @@ ct
 ct
 dR
 bM
-ct
+sI
 ct
 ct
 ct
@@ -24549,9 +25529,9 @@ Nf
 Tz
 OH
 ti
-YU
-xz
-lX
+Mx
+vn
+Oh
 zO
 zO
 lX
@@ -24745,7 +25725,7 @@ OE
 SN
 YU
 lX
-lX
+os
 zO
 nP
 QF
@@ -24939,7 +25919,7 @@ vM
 kY
 YU
 oc
-lX
+os
 zO
 ZC
 DZ
@@ -25071,7 +26051,7 @@ HC
 HC
 kN
 Ca
-Ca
+IL
 IE
 yp
 WH
@@ -25085,7 +26065,7 @@ tx
 tx
 tx
 tx
-Ca
+IL
 Ca
 Pp
 xL
@@ -25128,12 +26108,12 @@ Av
 cW
 YU
 GI
-CE
+sE
 CE
 Xd
 YU
 lX
-rB
+CU
 zO
 gY
 DZ
@@ -25158,7 +26138,7 @@ gu
 Ng
 Qr
 Ca
-Ca
+IL
 IE
 tx
 tx
@@ -25172,7 +26152,7 @@ tx
 WH
 WH
 WH
-Ca
+IL
 Ca
 Qr
 ri
@@ -25328,11 +26308,11 @@ Xd
 YU
 lX
 jy
-zO
-gY
-DZ
-DZ
-DZ
+Da
+SD
+Fm
+Fm
+yC
 gV
 zb
 Jy
@@ -25521,7 +26501,7 @@ xx
 Xd
 aa
 rB
-rB
+CU
 zO
 hY
 DZ
@@ -25715,7 +26695,7 @@ xF
 ZT
 YU
 rB
-lX
+os
 zO
 eR
 DZ
@@ -25861,7 +26841,7 @@ dv
 FN
 ik
 ik
-Ca
+IL
 es
 oR
 xL
@@ -25909,7 +26889,7 @@ YU
 YU
 YU
 rB
-lX
+os
 zO
 zO
 zO
@@ -25934,7 +26914,7 @@ RS
 fl
 eB
 Ca
-Ca
+IL
 aM
 ik
 dv
@@ -25948,7 +26928,7 @@ dv
 dv
 dv
 dv
-Ca
+IL
 es
 Qr
 ri
@@ -26103,7 +27083,7 @@ lX
 JS
 lX
 Ya
-rB
+CU
 Yk
 Sd
 lX
@@ -26193,7 +27173,7 @@ ct
 ct
 dR
 bM
-ct
+sI
 ct
 ct
 ct
@@ -26297,7 +27277,7 @@ lX
 lX
 lX
 lX
-lX
+os
 lX
 lX
 lX
@@ -26491,7 +27471,7 @@ Ma
 Ma
 Ma
 Ma
-Ma
+cr
 Ma
 Wr
 Wr
@@ -26685,7 +27665,7 @@ Ma
 Ma
 Ma
 Ma
-Ma
+cr
 Ma
 Wr
 Wr
@@ -26778,7 +27758,7 @@ bM
 Oa
 Oa
 yu
-dq
+GH
 ct
 ct
 ct
@@ -26879,7 +27859,7 @@ Ma
 Ma
 Ma
 Ma
-Ma
+cr
 Ma
 Wr
 Wr
@@ -26972,7 +27952,7 @@ bM
 VI
 VI
 Qh
-dq
+GH
 ct
 ct
 ct
@@ -26986,7 +27966,7 @@ ct
 ct
 ct
 ct
-ct
+dR
 bM
 ub
 ub
@@ -27073,7 +28053,7 @@ Ma
 Ma
 Ma
 Ma
-Ma
+cr
 Ma
 lX
 lX
@@ -27157,16 +28137,16 @@ ct
 ct
 ct
 ct
-TD
-VI
-VI
-VI
-VI
-VI
+ve
+YP
+YP
+YP
+YP
+YP
 VI
 Od
 Qh
-dq
+GH
 ct
 ct
 ct
@@ -27207,7 +28187,7 @@ kN
 lS
 lS
 XA
-XA
+iY
 lS
 Ka
 eB
@@ -27267,7 +28247,7 @@ Ma
 Ma
 Ma
 Ma
-Ma
+cr
 Ma
 JK
 VP
@@ -27360,7 +28340,7 @@ kk
 xV
 AZ
 Qh
-dq
+GH
 ct
 ct
 ct
@@ -27461,7 +28441,7 @@ Ma
 Ma
 Ma
 Ma
-Ma
+cr
 Ma
 rB
 rB
@@ -27554,7 +28534,7 @@ QB
 HF
 AZ
 MO
-dq
+GH
 ct
 US
 ct
@@ -27623,14 +28603,14 @@ fc
 Ma
 Ma
 Ma
-yo
+kZ
 kZ
 uw
 uw
 nb
 uw
 kZ
-yo
+kZ
 bo
 bo
 bo
@@ -27644,7 +28624,7 @@ uw
 uw
 uw
 uw
-hQ
+dg
 mB
 bo
 bo
@@ -27655,7 +28635,7 @@ Ma
 Ma
 Ma
 Ma
-Ma
+cr
 Ma
 rB
 rB
@@ -27748,7 +28728,7 @@ HF
 HF
 AZ
 MO
-dq
+GH
 ct
 ct
 ct
@@ -27838,8 +28818,8 @@ uw
 uw
 vR
 uw
+Um
 uw
-uw
 bo
 bo
 bo
@@ -27849,7 +28829,7 @@ Ma
 Ma
 Ma
 Ma
-Ma
+cr
 Ma
 Sd
 rB
@@ -27942,7 +28922,7 @@ HF
 HF
 AZ
 MO
-dq
+GH
 ct
 ct
 ct
@@ -27987,7 +28967,7 @@ Hf
 FE
 oN
 Qr
-Kt
+th
 Kt
 SQ
 ZE
@@ -28013,11 +28993,11 @@ Ma
 Ma
 uw
 wc
+MZ
 uw
 uw
 uw
-uw
-uw
+MZ
 ev
 uw
 uw
@@ -28043,7 +29023,7 @@ wC
 gt
 lX
 xz
-JS
+Om
 lX
 rB
 rB
@@ -28097,20 +29077,20 @@ vb
 Cb
 Cb
 Cb
-aZ
-aZ
+Lm
+Lm
 Cb
 gc
 tZ
 AZ
 AZ
-AZ
+CM
 AZ
 AZ
 IG
 AZ
 AZ
-AZ
+CM
 AZ
 AZ
 kk
@@ -28122,13 +29102,13 @@ AZ
 AZ
 AZ
 AZ
+CM
 AZ
 AZ
 AZ
 AZ
 AZ
-AZ
-AZ
+CM
 AZ
 IG
 HF
@@ -28136,7 +29116,7 @@ HF
 HF
 AZ
 Qh
-dq
+GH
 ct
 ct
 ct
@@ -28226,7 +29206,7 @@ kz
 kz
 kz
 pt
-pt
+lr
 pt
 pt
 JH
@@ -28237,7 +29217,7 @@ lX
 rB
 rB
 rB
-xz
+Gx
 lX
 rB
 rB
@@ -28330,7 +29310,7 @@ HF
 HF
 AZ
 Qh
-dq
+GH
 ct
 ct
 ct
@@ -28401,11 +29381,11 @@ Ma
 Ma
 uw
 uw
-MZ
+uw
 uw
 dY
 uw
-MZ
+uw
 uw
 uw
 uw
@@ -28420,18 +29400,18 @@ Jr
 Jr
 Jr
 uw
-uw
-uw
-uw
+fR
+uB
+uB
 GD
-NI
-rB
-Sd
-rB
-rB
-rB
-rB
-rB
+eC
+PT
+Ex
+PT
+PT
+PT
+PT
+cU
 rB
 rB
 rB
@@ -28524,7 +29504,7 @@ HF
 HF
 AZ
 Qh
-dq
+GH
 ct
 ct
 ct
@@ -28625,7 +29605,7 @@ lX
 rB
 rB
 rB
-rB
+CU
 rB
 rB
 rB
@@ -28718,7 +29698,7 @@ HF
 QB
 AZ
 Qh
-dq
+GH
 ct
 ct
 ct
@@ -28789,11 +29769,11 @@ Ma
 Ma
 uw
 wc
-uw
+MZ
 ev
 uw
 uw
-uw
+MZ
 uw
 Sy
 uw
@@ -28807,7 +29787,7 @@ Kz
 Kz
 Kz
 Kz
-Kz
+vV
 Kz
 LK
 VO
@@ -28819,7 +29799,7 @@ lX
 lX
 JK
 lX
-LZ
+SX
 lX
 rB
 rB
@@ -28912,7 +29892,7 @@ HF
 QB
 AZ
 Fx
-dq
+GH
 ct
 ct
 ct
@@ -29013,7 +29993,7 @@ Ma
 Ma
 Ma
 Ma
-Ma
+cr
 Ma
 Sd
 rB
@@ -29056,49 +30036,49 @@ gf
 gf
 gf
 rV
-hZ
-Cb
-hZ
-hZ
-Cb
-Cb
-Cb
-Cb
-Cb
-Cb
-hZ
-Cb
-Cb
-Cb
+VY
+vj
+VY
+VY
+vj
+vj
+vj
+vj
+vj
+vj
+VY
+vj
+vj
+vj
 gc
 tZ
 fg
 fg
-AZ
-AZ
-AZ
-AZ
-AZ
-IG
-AZ
-AZ
-AZ
-AZ
-AZ
+CM
 AZ
 AZ
 AZ
 AZ
 IG
+CM
 AZ
 AZ
 AZ
 AZ
 AZ
+CM
+AZ
+AZ
+IG
+AZ
+AZ
+CM
 AZ
 AZ
 AZ
 AZ
+AZ
+CM
 AZ
 AZ
 HF
@@ -29106,7 +30086,7 @@ HF
 QB
 AZ
 Fx
-dq
+GH
 ct
 ct
 ct
@@ -29175,14 +30155,14 @@ Ma
 Ma
 Ma
 Ma
-yo
+kZ
 kZ
 uw
 uw
 nb
 uw
 kZ
-yo
+kZ
 bo
 bo
 bo
@@ -29207,7 +30187,7 @@ Ma
 Ma
 Ma
 Ma
-Ma
+cr
 Ma
 rB
 JK
@@ -29300,7 +30280,7 @@ QB
 QB
 AZ
 Fx
-dq
+GH
 ct
 ct
 ct
@@ -29401,7 +30381,7 @@ Ma
 Ma
 Ma
 Ma
-Ma
+cr
 Ma
 rB
 lX
@@ -29494,7 +30474,7 @@ QB
 HF
 fg
 Fx
-dq
+GH
 ct
 ct
 ct
@@ -29595,7 +30575,7 @@ Ma
 Ma
 Ma
 Ma
-Ma
+cr
 Ma
 lX
 TZ
@@ -29688,7 +30668,7 @@ HF
 HF
 fg
 Fx
-dq
+GH
 ct
 ct
 ct
@@ -29729,7 +30709,7 @@ kN
 ba
 XA
 XA
-lS
+yN
 lS
 Ka
 Qr
@@ -29789,7 +30769,7 @@ Ma
 Ma
 Ma
 Ma
-Ma
+cr
 Ma
 JK
 lX
@@ -29882,7 +30862,7 @@ AZ
 AZ
 fg
 Fx
-dq
+GH
 ct
 ct
 ct
@@ -29983,7 +30963,7 @@ ur
 ur
 ur
 Ma
-Ma
+cr
 Ma
 uj
 uj
@@ -30067,16 +31047,16 @@ ct
 ct
 ct
 ct
-TD
-VI
-VI
-VI
-VI
-VI
+IV
+YB
+YB
+YB
+YB
+YB
 fg
 VI
 Fx
-dq
+GH
 ct
 ct
 ct
@@ -30177,7 +31157,7 @@ sY
 HE
 ur
 Ma
-Ma
+cr
 Ma
 uj
 om
@@ -30270,7 +31250,7 @@ bM
 VI
 VI
 Qh
-dq
+GH
 ct
 ct
 ct
@@ -30284,7 +31264,7 @@ ct
 ct
 ct
 ct
-ct
+dR
 bM
 ub
 ub
@@ -30352,7 +31332,7 @@ Ma
 Ma
 Ma
 gz
-vY
+SA
 BP
 gw
 ER
@@ -30371,7 +31351,7 @@ cz
 He
 ur
 Ma
-Ma
+cr
 Ma
 uj
 uj
@@ -30385,7 +31365,7 @@ ID
 ID
 BX
 BX
-rV
+BX
 ID
 Ca
 eq
@@ -30464,7 +31444,7 @@ bM
 GW
 GW
 nN
-dq
+GH
 ct
 ct
 ct
@@ -30565,7 +31545,7 @@ FY
 kb
 ur
 lX
-lX
+os
 lX
 JK
 lX
@@ -30741,8 +31721,8 @@ Ma
 Ma
 ER
 gz
-gz
-gz
+jJ
+Hq
 ER
 Ma
 Ma
@@ -30759,7 +31739,7 @@ WM
 CQ
 ur
 lX
-oc
+nq
 lX
 lX
 lX
@@ -30936,16 +31916,16 @@ Ma
 yS
 gz
 ER
-gz
+XB
 cZ
-Ma
-Ma
-ur
-cz
-cz
-cz
-cz
-cz
+zv
+zv
+Et
+AP
+AP
+AP
+AP
+AP
 LC
 FO
 ed
@@ -30953,7 +31933,7 @@ Ld
 mi
 OX
 lX
-lX
+os
 BX
 Pc
 BX
@@ -31043,7 +32023,7 @@ ct
 ct
 dR
 bM
-ct
+sI
 ct
 ct
 ct
@@ -31085,7 +32065,7 @@ HC
 HC
 kN
 Ca
-Ca
+IL
 Qg
 uT
 qd
@@ -31099,7 +32079,7 @@ ld
 ld
 ld
 gg
-Ca
+IL
 es
 Pp
 PS
@@ -31130,7 +32110,7 @@ Ma
 jW
 ER
 TE
-ER
+rn
 cH
 Ma
 Ma
@@ -31139,7 +32119,7 @@ Yc
 cz
 cl
 cz
-cl
+HU
 cz
 qX
 ed
@@ -31147,7 +32127,7 @@ ks
 Dh
 cz
 lX
-TZ
+lN
 BX
 uJ
 BX
@@ -31172,7 +32152,7 @@ rC
 QG
 Qr
 Ca
-Ca
+IL
 FC
 Tf
 FC
@@ -31186,7 +32166,7 @@ aK
 Es
 aK
 FC
-Ca
+IL
 Ca
 Qr
 ri
@@ -31341,7 +32321,7 @@ OB
 OB
 ur
 JK
-lX
+os
 BX
 uJ
 BX
@@ -31434,7 +32414,7 @@ bM
 Oa
 Oa
 yu
-dq
+GH
 ct
 ct
 ct
@@ -31523,11 +32503,11 @@ Ma
 Ma
 Ma
 ur
-cl
+Bp
 jQ
-cl
+HU
 cz
-cl
+bQ
 yQ
 NC
 Pw
@@ -31535,7 +32515,7 @@ OB
 OB
 ur
 lX
-lX
+os
 BX
 uJ
 BX
@@ -31568,7 +32548,7 @@ Zd
 Ow
 Zd
 mp
-Zd
+Qn
 Zd
 Zd
 ld
@@ -31628,7 +32608,7 @@ Am
 Hj
 Hj
 XI
-dq
+GH
 ct
 ct
 ct
@@ -31717,8 +32697,8 @@ Ma
 Ma
 Ma
 ur
-yF
-DM
+Yw
+AF
 AF
 NF
 pb
@@ -31729,7 +32709,7 @@ cz
 cz
 ur
 lX
-xz
+Gx
 BX
 Pc
 uJ
@@ -31738,7 +32718,7 @@ uJ
 uJ
 uJ
 uJ
-uJ
+fj
 uJ
 uJ
 uJ
@@ -31822,7 +32802,7 @@ Am
 Hj
 Vo
 XI
-dq
+GH
 ct
 ct
 ct
@@ -31866,7 +32846,7 @@ Wf
 sl
 sl
 ZM
-sl
+lG
 sl
 sl
 aT
@@ -31875,7 +32855,7 @@ ld
 Ry
 YH
 SW
-Ca
+IL
 SL
 oR
 PS
@@ -31887,8 +32867,8 @@ eB
 Ca
 Ca
 ld
-ld
-Ma
+VT
+Jb
 Ma
 Ma
 Ma
@@ -31911,11 +32891,11 @@ Ma
 Ma
 Ma
 ur
-cl
-jQ
-cl
+yF
+XJ
+XJ
+rl
 cz
-cl
 ur
 ur
 ur
@@ -31923,7 +32903,7 @@ OB
 cz
 ur
 oc
-lX
+os
 BX
 Pc
 uJ
@@ -31932,7 +32912,7 @@ Pc
 uJ
 uJ
 Pc
-Pc
+KI
 Pc
 uJ
 BX
@@ -31948,7 +32928,7 @@ RS
 Ee
 eB
 Ca
-Ca
+IL
 RF
 Cr
 bB
@@ -31962,7 +32942,7 @@ WL
 RF
 WL
 tC
-es
+pa
 es
 Qr
 ri
@@ -32082,7 +33062,7 @@ Ca
 Pz
 ld
 ld
-Ma
+cr
 Ma
 Ma
 Ma
@@ -32106,10 +33086,10 @@ Ma
 Ma
 ur
 hJ
-DM
-AF
-NF
-pb
+nH
+nH
+nH
+cz
 cz
 cz
 dy
@@ -32117,16 +33097,16 @@ OB
 oA
 ur
 lX
-fS
+FJ
 BX
 Pc
-uP
+Ws
 lh
 uJ
 Zl
-uP
+Ws
 ot
-Pc
+KI
 wf
 uJ
 zD
@@ -32276,7 +33256,7 @@ Ca
 ld
 ld
 dj
-Ma
+cr
 Ma
 Ma
 Ma
@@ -32301,24 +33281,24 @@ Ma
 ur
 cz
 ZR
-GL
+iI
+iI
+hM
 NF
-bb
-cz
-cz
+NF
 kK
-cz
-cz
+hM
+ZW
 ur
 lX
-TZ
+lN
 BX
 Pc
-uP
+Ws
 HI
-uP
+Ws
 Zl
-uP
+Ws
 HI
 uP
 Zl
@@ -32470,42 +33450,42 @@ Ca
 zO
 zO
 zO
-Ma
-Ma
-Ma
-Ma
-Ma
-Ma
-Ma
-Ma
-Ma
-Ma
-Ma
-Ma
-Ma
-Ma
-Ma
-Ma
-Ma
-Ma
-Ma
-Ma
-Ma
-Ma
-ur
-ur
-ur
-ur
-ur
-ur
+Hi
+aI
+aI
+aI
+IR
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+Lc
+Lc
+Lc
+Lc
+Lc
+kQ
 ur
 OB
 xh
-ur
+cD
 ur
 ur
 lX
-lX
+os
 BX
 BX
 BX
@@ -32514,7 +33494,7 @@ BX
 BX
 BX
 BX
-BX
+vm
 BX
 BX
 BX
@@ -32668,7 +33648,7 @@ jf
 CL
 jf
 ix
-jf
+os
 ix
 ix
 jf
@@ -32695,20 +33675,20 @@ rB
 rB
 ix
 jf
-rB
-rB
-rB
-rB
-lX
-lX
-rB
-lX
-Ya
-Ya
-rB
-rB
-lX
-lX
+zx
+PT
+oB
+PT
+uN
+BE
+PT
+BE
+QQ
+QQ
+PT
+PT
+BE
+Fn
 lX
 KH
 lX
@@ -32788,7 +33768,7 @@ ct
 ct
 ct
 ct
-Am
+bM
 Od
 VI
 Qh
@@ -32862,7 +33842,7 @@ jf
 lX
 lX
 rB
-rB
+CU
 lX
 ix
 uo
@@ -32889,9 +33869,9 @@ jf
 CL
 jf
 lX
+os
 lX
-lX
-lX
+lW
 LZ
 lX
 lX
@@ -32982,18 +33962,18 @@ ct
 ct
 ct
 ct
-Am
-Od
+bM
+VA
 VI
 Qh
 bM
 ct
+DX
 ct
 ct
 ct
 ct
-ct
-ct
+DX
 ct
 ct
 bM
@@ -33056,7 +34036,7 @@ Ma
 Ma
 Ma
 DJ
-Ma
+cr
 Ma
 Ma
 jf
@@ -33083,7 +34063,7 @@ PD
 PD
 PD
 zO
-JK
+CR
 lX
 zO
 zO
@@ -33250,10 +34230,10 @@ Zk
 Zk
 Zk
 Zk
-Zk
-OQ
+HN
+pK
 Ma
-tz
+Rt
 WX
 jf
 jf
@@ -33264,7 +34244,7 @@ tz
 tz
 tz
 tz
-tz
+Bb
 PD
 lg
 fG
@@ -33277,7 +34257,7 @@ PD
 PD
 PD
 zO
-lX
+os
 lX
 zO
 lX
@@ -33376,12 +34356,12 @@ AM
 GO
 GO
 GO
-GO
+wT
 AM
 AM
 AM
 JW
-JW
+iP
 kG
 HC
 HC
@@ -33444,7 +34424,7 @@ Mm
 Ma
 Dv
 Zk
-Zk
+HN
 lK
 Ma
 tz
@@ -33471,7 +34451,7 @@ jx
 Zy
 zN
 zO
-xz
+Gx
 xz
 zO
 rw
@@ -33565,7 +34545,7 @@ QO
 ct
 ct
 bM
-AM
+PG
 AM
 AM
 AM
@@ -33638,7 +34618,7 @@ HP
 Ma
 Cw
 Zk
-Zk
+Ht
 OQ
 Ma
 tz
@@ -33665,7 +34645,7 @@ PW
 iO
 NQ
 zO
-lX
+os
 TZ
 zO
 lX
@@ -33694,7 +34674,7 @@ rd
 QG
 eB
 Ca
-Ca
+IL
 Vc
 Xo
 Xo
@@ -33708,7 +34688,7 @@ Xo
 qd
 uT
 qd
-Ca
+IL
 Ca
 Qr
 ri
@@ -33831,9 +34811,9 @@ Zk
 Mm
 Ma
 uk
-Zk
-Zk
-Zk
+ZO
+HN
+fM
 Ma
 tz
 tz
@@ -33859,7 +34839,7 @@ PW
 St
 ao
 zO
-rB
+CU
 lX
 zO
 lX
@@ -33898,7 +34878,7 @@ ld
 Di
 PM
 Zd
-Zd
+Fe
 Ow
 ld
 ld
@@ -33963,7 +34943,7 @@ AM
 Eq
 al
 JW
-JW
+dk
 kG
 HC
 HC
@@ -33996,7 +34976,7 @@ HC
 kN
 lS
 Ca
-Ca
+IL
 FC
 aK
 pN
@@ -34010,7 +34990,7 @@ lm
 pN
 ym
 Es
-Ca
+IL
 Ca
 Pp
 FE
@@ -34026,8 +35006,8 @@ Ma
 Ma
 Vs
 Zk
-Zk
-fM
+HN
+vS
 Ma
 tz
 tz
@@ -34053,7 +35033,7 @@ PW
 ak
 yM
 zO
-rB
+CU
 JK
 zO
 rB
@@ -34198,7 +35178,7 @@ ld
 ld
 ld
 cB
-nk
+nQ
 zC
 jk
 jk
@@ -34219,9 +35199,9 @@ Zk
 sC
 Zk
 sC
-Zk
-sC
-fM
+yv
+xB
+fd
 Ma
 tz
 tz
@@ -34246,8 +35226,8 @@ XQ
 PW
 kF
 Og
-zO
-rB
+Da
+si
 lX
 zO
 rB
@@ -34411,13 +35391,13 @@ AM
 sC
 sC
 sC
-Zk
-Zk
-Zk
-Zk
-fM
+jV
+rv
+rP
+Li
+MJ
 Ma
-tz
+Rt
 tz
 tz
 tz
@@ -34428,7 +35408,7 @@ wA
 ql
 Ft
 wA
-tz
+Bb
 PD
 ak
 bE
@@ -34470,7 +35450,7 @@ rf
 Ee
 Qr
 Ca
-Ca
+IL
 IT
 Zd
 ld
@@ -34484,7 +35464,7 @@ sl
 sl
 OM
 OM
-Ca
+IL
 Ca
 Qr
 ri
@@ -34772,11 +35752,11 @@ HC
 kN
 lS
 Ca
-Ca
+IL
 RF
 WL
 RF
-WL
+mQ
 bB
 bL
 bB
@@ -34786,7 +35766,7 @@ WL
 RF
 WL
 tC
-Ca
+IL
 es
 kR
 PS
@@ -34928,7 +35908,7 @@ JW
 JW
 JW
 JW
-JW
+Ps
 JW
 JW
 JW
@@ -35551,7 +36531,7 @@ kN
 lS
 lS
 Tg
-Tg
+eS
 Tg
 Tg
 JP
@@ -36394,7 +37374,7 @@ eB
 ld
 Di
 ld
-ld
+yz
 eB
 lT
 Tx
@@ -36529,7 +37509,7 @@ lS
 lS
 lS
 lS
-kj
+Io
 lS
 lS
 lS
@@ -37556,7 +38536,7 @@ Pm
 UC
 YL
 FM
-IA
+HC
 HC
 HC
 pw
@@ -37729,7 +38709,7 @@ HC
 HC
 HC
 HC
-IA
+HC
 UC
 UC
 UC
@@ -37737,7 +38717,7 @@ UC
 UC
 UC
 YL
-IA
+HC
 HC
 HC
 HC
@@ -37749,7 +38729,7 @@ UC
 Pl
 YL
 YL
-IA
+HC
 HC
 HC
 HC
