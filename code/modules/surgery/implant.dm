@@ -44,6 +44,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/cavity/make_space
+	step_name = "Prepare cavity"
+
 	allowed_tools = list(
 		/obj/item/surgical/surgicaldrill = 100,
 		/obj/item/pen = 75,
@@ -76,6 +78,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/cavity/close_space
+	step_name = "Seal cavity"
+
 	priority = 2
 	allowed_tools = list(
 		/obj/item/surgical/cautery = 100,
@@ -111,6 +115,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/cavity/place_item
+	step_name = "Implant item"
+
 	priority = 0
 	allowed_tools = list(/obj/item = 100)
 
@@ -168,6 +174,8 @@
 	update_icon()
 
 /datum/surgery_step/cavity/implant_removal
+	step_name = "Remove implant"
+
 	allowed_tools = list(
 		/obj/item/surgical/hemostat = 100,	\
 		/obj/item/surgical/hemostat_primitive = 50, \

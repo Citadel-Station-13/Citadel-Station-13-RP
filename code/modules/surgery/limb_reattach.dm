@@ -22,6 +22,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/limb/attach
+	step_name = "Attach limb"
+
 	allowed_tools = list(/obj/item/organ/external = 100)
 
 	min_duration = 50
@@ -75,6 +77,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/limb/connect
+	step_name = "Connect muscles"
+
 	allowed_tools = list(
 	/obj/item/surgical/hemostat = 100,	\
 	/obj/item/stack/cable_coil = 75, 	\
@@ -115,6 +119,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/limb/mechanize
+	step_name = "Attach prosthetic"
+
 	allowed_tools = list(/obj/item/robot_parts = 100)
 
 	min_duration = 80

@@ -324,7 +324,4 @@
 					continue
 				var/obj/tool_path = tool
 				allowed_tools_by_name += capitalize(initial(tool_path.name))
-			// Please for the love of all that is holy, someone make surgery steps
-			// have names so I don't have to do this stupid pretty_type shit.
-			. += list(pretty_type(S) = english_list(allowed_tools_by_name))
-			// . += "[pretty_type(S)]: [english_list(allowed_tools_by_name)]"
+			. += list(S.step_name = english_list(allowed_tools_by_name))
