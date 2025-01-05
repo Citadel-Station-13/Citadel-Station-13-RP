@@ -24,6 +24,8 @@
 	. = ..()
 	// todo: on update stat
 	RegisterSignal(parent, COMSIG_MOB_ON_UPDATE_MOBILITY, PROC_REF(recheck_stat))
+	var/mob/mob_parent = parent
+	LAZYSET(mob_parent.impairments_feigned, feign_impairment_type, src)
 
 /datum/component/mob_feign_impairment/UnregisterFromParent()
 	. = ..()

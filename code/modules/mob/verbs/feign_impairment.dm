@@ -69,6 +69,9 @@ GLOBAL_LIST_INIT(feign_impairment_types, init_feign_impairment_types())
 	var/power
 
 	if(new_active)
+		if(GetComponent(impairment.component_type))
+			to_chat(src, SPAN_WARNING("You are already pretending to be [impairment.adjective]."))
+			return
 		power = tgui_input_number(
 			src,
 			"What power? ([impairment.power_min] - [impairment.power_max])",
@@ -78,6 +81,9 @@ GLOBAL_LIST_INIT(feign_impairment_types, init_feign_impairment_types())
 			impairment.power_min,
 			round_value = TRUE,
 		)
+	else
+		if(!GetComponent(impairment.component_type))
+			return
 
 	// todo: better logging
 	log_game("[key_name(src)] toggled [impairment] to [new_active ?"on, with power [power]" : "off"]")
