@@ -312,6 +312,8 @@
 			/datum/surgery_step/internal/remove_organ,
 			/datum/surgery_step/internal/attach_organ,
 			/datum/surgery_step/internal/rip_organ,
+			/datum/surgery_step/robotics/detatch_organ_robotic,
+			/datum/surgery_step/robotics/attach_organ_robotic,
 		)
 	for(var/datum/surgery_step/S in possible_next_steps)
 		if (S.type in prompting_surgery_steps)
