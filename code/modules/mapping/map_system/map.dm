@@ -167,7 +167,8 @@
  * Get levels sorted into z-loading order
  */
 /datum/map/proc/get_sorted_levels()
-	#warn this
+	// this only works because tim_sort is stable;
+	// cmp_map_level_load_sequence doesn't touch order if structs aren't active.
 	return tim_sort(levels.Copy(), /proc/cmp_map_level_load_sequence)
 
 /**

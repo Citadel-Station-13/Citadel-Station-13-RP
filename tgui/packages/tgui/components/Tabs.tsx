@@ -4,11 +4,18 @@
  * @license MIT
  */
 
-import { canRender, classes } from 'common/react';
-import { computeBoxClassName, computeBoxProps } from './Box';
+import { BooleanLike, canRender, classes } from 'common/react';
+import { BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 import { Icon } from './Icon';
+import { InfernoNode } from 'inferno';
 
-export const Tabs = props => {
+interface TabsProps extends BoxProps {
+  readonly vertical?: BooleanLike;
+  readonly fill?: BooleanLike;
+  readonly fluid?: BooleanLike;
+}
+
+export const Tabs = (props: TabsProps) => {
   const {
     className,
     vertical,
@@ -35,7 +42,15 @@ export const Tabs = props => {
   );
 };
 
-const Tab = props => {
+interface TabProps extends BoxProps {
+  readonly selected?: BooleanLike;
+  readonly color?: string;
+  readonly icon?: string;
+  readonly leftSlot?: InfernoNode;
+  readonly rightSlot?: InfernoNode;
+}
+
+const Tab = (props: TabProps) => {
   const {
     className,
     selected,
@@ -54,7 +69,7 @@ const Tab = props => {
         'Tab--color--' + color,
         selected && 'Tab--selected',
         className,
-        ...computeBoxClassName(rest),
+        computeBoxClassName(rest),
       ])}
       {...computeBoxProps(rest)}>
       {canRender(leftSlot) && (

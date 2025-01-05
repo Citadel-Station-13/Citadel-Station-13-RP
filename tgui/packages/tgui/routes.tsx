@@ -8,6 +8,7 @@
 
 import { selectBackend, useBackend } from './backend';
 import { Icon, Section, Stack } from './components';
+import { ComponentProps } from './components/Component';
 import { UI_HARD_REFRESHING } from './constants';
 import { selectDebug } from './debug/selectors';
 import { Window } from './layouts';
@@ -15,9 +16,9 @@ import { Window } from './layouts';
 const requireInterface = require.context('./interfaces');
 
 const routingNotFound = (props, context) => {
-  const { tgui_root, tgui_module } = props;
+  const { tguiRoot, tguiModule } = props;
   const { config } = useBackend(context);
-  return tgui_root? (
+  return tguiRoot? (
     <Window>
       <Window.Content scrollable>
         <div>Interface <b>{config.interface || "!!NULL!!"}</b> was not found.</div>
@@ -25,23 +26,23 @@ const routingNotFound = (props, context) => {
     </Window>
   ) : (
     <Section>
-      <div>Module <b>{tgui_module || "!!NULL!!"}</b> was not found.</div>
+      <div>Module <b>{tguiModule || "!!NULL!!"}</b> was not found.</div>
     </Section>
   );
 };
 
-const routingMissingExport = (props, context) => {
-  const { tgui_root, tgui_module } = props;
+const routingMissingExport = (props: ComponentProps & {exportName: string | undefined}, context) => {
+  const { tguiRoot, tguiModule } = props;
   const { config } = useBackend(context);
-  return tgui_root? (
+  return tguiRoot? (
     <Window>
       <Window.Content scrollable>
-        <div>Interface <b>{config.interface}</b> is missing an export.</div>
+        <div>Interface <b>{config.interface}</b> is missing export {props.exportName}.</div>
       </Window.Content>
     </Window>
   ) : (
     <Section>
-      <div>Module <b>{tgui_module}</b> is missing an export.</div>
+      <div>Module <b>{tguiModule}</b> is missing an export {props.exportName}.</div>
     </Section>
   );
 };
@@ -119,7 +120,7 @@ export const getRoutedComponent = store => {
   return directlyRouteComponent(config?.interface);
 };
 
-export const directlyRouteComponent = (name) => {
+export const directlyRouteComponent = (name: string) => {
   let esModule;
   const got: Array<string> = interfacePath(name) as Array<string>;
   for (let i = 0; i < got.length; i++) {
@@ -142,9 +143,16 @@ export const directlyRouteComponent = (name) => {
   if (!esModule) {
     return routingNotFound;
   }
-  const Component = esModule[name];
+
+  let lastSlashPos = name.lastIndexOf('/');
+  const resolvedComponent = lastSlashPos === -1 ? name : name.substring(lastSlashPos + 1);
+
+  const Component = esModule[resolvedComponent];
   if (!Component) {
-    return routingMissingExport;
+    return (props, context) => {
+      props.exportName = resolvedComponent;
+      return routingMissingExport(props, context);
+    };
   }
   return Component;
 };

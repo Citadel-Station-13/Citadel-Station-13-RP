@@ -49,7 +49,7 @@ export class Module<T extends ModuleProps> extends Component<T, {}> {
     let ui_name = nested_data[id]['$tgui'];
     const Component = directlyRouteComponent(ui_name);
     return (
-      <Component tgui_module={ui_name} />
+      <Component tguiModule={ui_name} />
     );
   }
 }
