@@ -16,6 +16,11 @@ GLOBAL_LIST_INIT(feign_impairment_types, init_feign_impairment_types())
 		component_collision_check[instance.component_type] = instance
 		.[path] = instance
 
+// todo: this is better than the old, but still a dumpster fire. impairments
+//       need to be datums so we can have a single tracking system
+//       and a single /datum/component/mob_feign_impairment
+//       to track everything, instead of this crap.
+
 /datum/feign_impairment
 	abstract_type = /datum/feign_impairment
 	var/name
