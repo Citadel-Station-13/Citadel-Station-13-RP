@@ -1,9 +1,9 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 Citadel Station Developers           *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
 // todo: DECLARE_MOB_VERB
-/mob/verb/horizontal_invert_self()
-	set name = "Invert Yourself (Horizontal)"
+/mob/verb/vertical_invert_self()
+	set name = "Invert Yourself (Vertical)"
 	set desc = "Mirror your sprite across the N-S axis."
 	set category = VERB_CATEGORY_IC
 
@@ -15,10 +15,10 @@
 		return
 	TIMER_COOLDOWN_START(src, CD_INDEX_MOB_VERB_INVERT_SELF, 0.5 SECONDS)
 
-	log_game("[key_name(usr)] invoked horizontal_invert_self on [key_name(src)].")
+	log_game("[key_name(usr)] invoked vertical_invert_self on [key_name(src)].")
 
-	var/datum/component/mob_self_horizontal_inversion/inversion = GetComponent(/datum/component/mob_self_horizontal_inversion)
+	var/datum/component/mob_self_vertical_inversion/inversion = GetComponent(/datum/component/mob_self_vertical_inversion)
 	if(inversion)
 		qdel(inversion)
 	else
-		AddComponent(/datum/component/mob_self_horizontal_inversion)
+		AddComponent(/datum/component/mob_self_vertical_inversion)
