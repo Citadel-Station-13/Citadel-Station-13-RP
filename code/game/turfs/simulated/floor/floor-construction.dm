@@ -42,12 +42,19 @@
 			else
 				var/list/built_choices = list()
 				var/list/pick_choices = list()
+				var/matrix/three_fourths_size = matrix()
+				seventy_percent_size.Scale(3 / 4, 3 / 4)
 				for(var/datum/prototype/flooring/potential as anything in possible)
 					built_choices[potential.name] = potential
 					var/image/preview = image(potential.icon, potential.icon_base)
+					preview.transform = three_fourths_size
 					preview.maptext = MAPTEXT_CENTER(potential.name)
 					preview.maptext_width = 64
-					pick_choices[potential.name] = preview
+					var/use_name = potential.name
+					var/notch = 1
+					while(pick_choices[use_name])
+						use_name = "[potential.name] ([notch++])"
+					pick_choices[use_name] = preview
 				var/choice_name = show_radial_menu(e_args.initiator, src, pick_choices)
 				trying_to_make = built_choices[choice_name]
 				if(!trying_to_make)
