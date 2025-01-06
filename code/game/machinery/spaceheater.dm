@@ -20,6 +20,7 @@
 
 /obj/machinery/space_heater/update_icon()
 	cut_overlays()
+	. = ..()
 	icon_state = "sheater[on]"
 	if(panel_open)
 		add_overlay("sheater-open")

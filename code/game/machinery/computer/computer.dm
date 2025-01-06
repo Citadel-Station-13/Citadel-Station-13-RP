@@ -39,8 +39,9 @@
 
 /obj/machinery/computer/update_icon()
 	cut_overlays()
+	. = ..()
 
-	. = list()
+	var/list/to_add_overlays = list()
 
 	// Connecty //TODO: Use TG Smoothing.
 	if(initial(icon_state) == "computer")
@@ -61,13 +62,13 @@
 		if(machine_stat & NOPOWER)
 			playsound(src, 'sound/machines/terminal_off.ogg', 50, 1)
 			return add_overlay("[icon_keyboard]_off")
-		. += icon_keyboard
+		to_add_overlays += icon_keyboard
 
 	// This whole block lets screens ignore lighting and be visible even in the darkest room
 	var/overlay_state = icon_screen
 	if(machine_stat & BROKEN)
 		overlay_state = "[icon_state]_broken"
-	. += overlay_state
+	to_add_overlays += overlay_state
 	//. += emissive_appearance(icon, overlay_state)
 	playsound(src, 'sound/machines/terminal_on.ogg', 50, 1)
 
