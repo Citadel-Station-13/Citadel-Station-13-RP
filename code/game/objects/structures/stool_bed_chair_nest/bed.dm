@@ -19,6 +19,8 @@
 	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
 	buckle_dir = SOUTH
 	buckle_lying = 90
+	// todo: what a dumpster fire, unfuck / fully abstract this using new API,
+	//       or get rid of it. wtf.
 	var/datum/prototype/material/material
 	var/datum/prototype/material/padding_material
 	var/base_icon = "bed"
@@ -40,9 +42,12 @@
 
 // Reuse the cache/code from stools, todo maybe unify.
 /obj/structure/bed/update_icon()
+	if(!material)
+		return ..()
+	cut_overlays()
+	. = ..()
 	// Prep icon.
 	icon_state = ""
-	cut_overlays()
 	var/list/overlays_to_add = list()
 	// Base icon.
 	var/cache_key = "[base_icon]-[material.name]"
@@ -232,9 +237,6 @@
 		for(var/mob/M in old_buckled)
 			buckle_mob(M, BUCKLE_OP_FORCE)
 
-/obj/structure/bed/roller/update_icon()
-	return
-
 /obj/structure/bed/roller/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench() || istype(W,/obj/item/stack) || W.is_wirecutter())
 		return
@@ -374,9 +376,6 @@
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_bed)
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "bed"
-
-/obj/structure/bed/alien/update_icon()
-	return // Doesn't care about material or anything else.
 
 /obj/structure/bed/alien/attackby(obj/item/W, mob/user)
 	return // No deconning.
