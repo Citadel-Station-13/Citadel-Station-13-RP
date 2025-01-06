@@ -11483,7 +11483,6 @@
 /turf/simulated/floor/tiled,
 /area/security/lobby)
 "hmk" = (
-/obj/structure/disposalpipe/segment,
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -14987,7 +14986,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/trash_pit)
 "jLP" = (
-/obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
@@ -15884,8 +15882,9 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 8
+/obj/structure/disposalpipe/junction{
+	dir = 4;
+	icon_state = "pipe-j2"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
@@ -16703,12 +16702,11 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/game_room)
 "kZu" = (
-/obj/structure/bed/chair/comfy/beige{
-	dir = 4
-	},
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk,
 /turf/simulated/floor/carpet/turcarpet,
 /area/crew_quarters/recreation_area)
 "kZA" = (
@@ -16877,12 +16875,6 @@
 /obj/item/camera,
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/security/security_processing)
-"lfy" = (
-/obj/effect/floor_decal/spline/plain{
-	dir = 4
-	},
-/turf/simulated/floor/carpet/turcarpet,
-/area/crew_quarters/recreation_area)
 "lfB" = (
 /obj/structure/table/reinforced,
 /obj/item/reagent_containers/spray/luminol,
@@ -20150,12 +20142,15 @@
 "nvp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/disposalpipe/junction,
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
 /obj/structure/cable/green{
 	icon_state = "2-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
@@ -22817,11 +22812,13 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/security/range)
 "pgJ" = (
+/obj/structure/flora/pottedplant/smalltree,
+/obj/machinery/light/small{
+	dir = 8
+	},
 /obj/machinery/air_alarm{
 	pixel_y = 22
 	},
-/obj/machinery/camera/network/civilian,
-/obj/structure/flora/pottedplant/smalltree,
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "phb" = (
@@ -23783,6 +23780,7 @@
 	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/spline/plain,
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/carpet/turcarpet,
 /area/crew_quarters/recreation_area)
 "pNn" = (
@@ -25371,11 +25369,10 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 27
 	},
-/obj/structure/disposalpipe/trunk,
-/obj/machinery/disposal,
 /obj/machinery/camera/network/civilian{
 	dir = 8
 	},
+/obj/machinery/vending/cola,
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "qNM" = (
@@ -25952,11 +25949,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/bar/catwalk)
-"rme" = (
-/obj/structure/table/woodentable,
-/obj/machinery/recharger,
-/turf/simulated/floor/carpet/turcarpet,
-/area/crew_quarters/recreation_area)
 "rmU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -27610,10 +27602,10 @@
 /turf/simulated/floor/tiled,
 /area/security/hanger)
 "sms" = (
-/obj/machinery/light/small{
-	dir = 1
+/obj/structure/bed/chair/comfy/beige{
+	dir = 4
 	},
-/turf/simulated/wall/r_wall/prepainted,
+/turf/simulated/floor/carpet/turcarpet,
 /area/crew_quarters/recreation_area)
 "smC" = (
 /obj/structure/cable/green{
@@ -29171,11 +29163,11 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/toilet)
 "tkJ" = (
-/obj/structure/bed/chair/comfy/beige{
-	dir = 8
-	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
+	},
+/obj/structure/bed/chair/comfy/beige{
+	dir = 8
 	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/crew_quarters/recreation_area)
@@ -29787,7 +29779,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/obj/machinery/vending/fitness,
+/obj/machinery/vending/snack,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/recreation_area)
 "tHM" = (
@@ -55766,9 +55758,9 @@ yab
 lUu
 fju
 fju
-qmY
+fju
 ewu
-uIh
+sms
 oyF
 jvb
 rks
@@ -55959,10 +55951,10 @@ fju
 yab
 izs
 fju
+fju
+qmY
 ewu
-sms
-ewu
-rme
+uIh
 oyF
 mkn
 jHr
@@ -56153,9 +56145,9 @@ lgM
 yab
 lUu
 fju
-soz
-lfy
-lfy
+ewu
+ewu
+ewu
 tkJ
 cBe
 mkn
@@ -56541,7 +56533,7 @@ yab
 yab
 jbC
 lUu
-ewu
+soz
 syZ
 syZ
 syZ
