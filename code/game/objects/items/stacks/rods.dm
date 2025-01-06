@@ -19,12 +19,13 @@
 	. += create_stack_recipe_datum(name = "grille", product = /obj/structure/grille, cost = 2, time = 1 SECONDS)
 	. += create_stack_recipe_datum(name = "catwalk", product = /obj/structure/catwalk, cost = 2, time = 1 SECONDS)
 
-/obj/item/stack/rods/update_icon()
+/obj/item/stack/rods/update_icon_state()
 	var/amount = get_amount()
 	if((amount <= 5) && (amount > 0))
 		icon_state = "rods-[amount]"
 	else
 		icon_state = "rods"
+	return ..()
 
 /obj/item/stack/rods/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/weldingtool))

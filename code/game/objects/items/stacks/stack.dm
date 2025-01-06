@@ -80,6 +80,7 @@
 	update_icon()
 
 /obj/item/stack/update_icon()
+	. = ..()
 	if(skip_legacy_icon_update)
 		return
 	if(no_variants)
