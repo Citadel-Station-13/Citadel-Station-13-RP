@@ -284,7 +284,6 @@
 		return
 	action_mode_switch = new(src)
 	action_mode_switch.button_additional_only = TRUE
-	action_mode_switch.button_additional_overlay = parent
 
 /datum/object_system/storage/proc/grant_buttons(mob/wearer)
 	ensure_buttons()
@@ -1144,6 +1143,17 @@
 
 /datum/action/storage_gather_mode
 	name = "Switch Gather Mode"
+
+/datum/action/storage_gather_mode/pre_render_hook()
+	if(istype(target, /datum/object_system/storage))
+		var/datum/object_system/storage/storage_datum = target
+		var/obj/storage_target = storage_datum.parent
+		var/image/generated = new
+		generated.appearance = storage_target
+		generated.layer = FLOAT_LAYER
+		generated.plane = FLOAT_PLANE
+		button_additional_overlay = generated
+	return ..()
 
 //? Hooks
 

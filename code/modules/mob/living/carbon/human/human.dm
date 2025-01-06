@@ -1143,6 +1143,7 @@
 
 	inventory.set_inventory_slots(species.inventory_slots)
 	inventory.set_hand_count(species.hud? (species.hud.has_hands ? 2 : 0) : 2)
+	#warn inventory hud gets obliterated by this proc. why?
 
 	// until we unfuck hud datums, this will force reload our entire hud
 	if(hud_used)
