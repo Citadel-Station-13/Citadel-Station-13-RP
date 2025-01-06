@@ -6857,6 +6857,13 @@
 "aso" = (
 /obj/machinery/light,
 /obj/structure/reagent_dispensers/beerkeg,
+/obj/machinery/button/remote/blast_door{
+	pixel_x = 8;
+	pixel_y = -23;
+	dir = 1;
+	id = "tugdoor1b";
+	name = "Tug Barge door"
+	},
 /turf/simulated/floor/plating,
 /area/shuttle/tug)
 "asp" = (
@@ -7309,6 +7316,12 @@
 "atA" = (
 /obj/machinery/light{
 	dir = 1
+	},
+/obj/machinery/button/remote/blast_door{
+	pixel_x = 8;
+	pixel_y = 27;
+	id = "tugdoor1a";
+	name = "Tug Barge door"
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/tug)
@@ -8207,7 +8220,13 @@
 /turf/simulated/floor/tiled/white,
 /area/tradeport/medical)
 "avI" = (
-/obj/random/multiple/corp_crate/no_weapons,
+/obj/machinery/button/remote/blast_door{
+	pixel_x = 8;
+	pixel_y = -23;
+	dir = 1;
+	id = "tugdoor1";
+	name = "Tug Barge door"
+	},
 /turf/simulated/floor/plating,
 /area/shuttle/tug)
 "avJ" = (
@@ -19267,6 +19286,7 @@
 /obj/machinery/door/blast/regular{
 	id = "tugdoor1"
 	},
+/obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/tug)
 "aZg" = (
@@ -19923,6 +19943,14 @@
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/dark,
 /area/sector/nebula_tradeport/motel/room1)
+"bPs" = (
+/obj/machinery/door/blast/regular{
+	id = "tugdoor1a";
+	dir = 4
+	},
+/obj/machinery/atmospheric_field_generator/perma,
+/turf/simulated/floor/plating,
+/area/shuttle/tug)
 "bSu" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 4
@@ -21409,16 +21437,6 @@
 	},
 /turf/simulated/wall/r_wall/prepainted,
 /area/sector/nebula_tradeport/motel/arcade)
-"fBW" = (
-/obj/machinery/button/remote/blast_door{
-	pixel_x = 23;
-	pixel_y = 7;
-	dir = 8;
-	id = "tugdoor1";
-	name = "Tug Barge door"
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/tug)
 "fCA" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -21480,6 +21498,14 @@
 	},
 /turf/space/basic,
 /area/space)
+"fHX" = (
+/obj/machinery/atmospheric_field_generator/perma,
+/obj/machinery/door/blast/regular{
+	id = "tugdoor1a";
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/tug)
 "fIa" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -23112,6 +23138,14 @@
 	},
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room6)
+"khV" = (
+/obj/machinery/atmospheric_field_generator/perma,
+/obj/machinery/door/blast/regular{
+	id = "tugdoor1b";
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/tug)
 "kji" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/structure/railing,
@@ -24491,6 +24525,13 @@
 /obj/structure/flora/pottedplant/smalltree,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/tradeport/spine)
+"ojj" = (
+/obj/machinery/door/blast/regular{
+	id = "tugdoor1"
+	},
+/obj/machinery/atmospheric_field_generator/perma,
+/turf/simulated/floor/plating,
+/area/shuttle/tug)
 "ojq" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
@@ -36661,14 +36702,14 @@ aUh
 amt
 aIs
 aeg
-aog
+bPs
 agT
 agT
 agT
 agT
 agT
 agT
-aog
+khV
 aEd
 aKa
 awk
@@ -36855,14 +36896,14 @@ atJ
 aXB
 arH
 aeg
-aog
+fHX
 agT
 agT
 agT
 agT
 agT
 awv
-aog
+khV
 aEd
 aKa
 awk
@@ -37049,14 +37090,14 @@ aeo
 awi
 aTn
 aeg
-aog
+fHX
 aVR
 aXQ
 agT
 agT
 agT
 ayE
-aog
+khV
 aEd
 aKa
 awk
@@ -37243,14 +37284,14 @@ apL
 aqP
 avN
 aeg
-aog
+fHX
 aVM
 aij
 agT
 agT
 agT
 aaf
-aog
+khV
 aEd
 aKa
 awk
@@ -37636,7 +37677,7 @@ acC
 aij
 agT
 agT
-fBW
+agT
 avI
 aog
 aEd
@@ -37826,12 +37867,12 @@ atV
 atV
 atV
 aog
-aog
-aog
+ojj
+ojj
 aZf
 aZf
-aog
-aog
+ojj
+ojj
 aog
 aEd
 aKa
