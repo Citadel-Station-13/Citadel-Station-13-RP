@@ -6435,8 +6435,8 @@
 	pixel_y = -28
 	},
 /obj/machinery/button/remote/airlock{
-	id = "dorm13";
-	name = "Room 13 Lock";
+	id = "dorm12";
+	name = "Room 12 Lock";
 	pixel_x = 5;
 	pixel_y = -27;
 	specialfunctions = 4
@@ -25949,6 +25949,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/bar/catwalk)
+"rme" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/turcarpet,
+/area/crew_quarters/recreation_area)
 "rmU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -27601,12 +27607,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/hanger)
-"sms" = (
-/obj/structure/bed/chair/comfy/beige{
-	dir = 4
-	},
-/turf/simulated/floor/carpet/turcarpet,
-/area/crew_quarters/recreation_area)
 "smC" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -49961,7 +49961,7 @@ kuK
 syH
 pXE
 vPs
-dmh
+qmV
 oSF
 uqf
 qMv
@@ -50155,8 +50155,8 @@ kSn
 syH
 awA
 wuH
-pAC
-cce
+dmh
+oSF
 uBN
 mEG
 jAj
@@ -50349,8 +50349,8 @@ kSn
 syH
 awA
 wuH
-aWe
-vKG
+pAC
+cce
 bnZ
 bnZ
 bnZ
@@ -50543,7 +50543,7 @@ cZa
 fiy
 kEF
 wuH
-qmV
+aWe
 vKG
 dfI
 bnZ
@@ -50937,7 +50937,7 @@ fWX
 pwE
 pwE
 pwE
-vjb
+qqF
 urn
 uxf
 vjb
@@ -55760,7 +55760,7 @@ fju
 fju
 fju
 ewu
-sms
+rme
 oyF
 jvb
 rks

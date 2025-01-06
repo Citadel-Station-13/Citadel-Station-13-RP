@@ -5973,8 +5973,13 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/courser_dock)
 "eyn" = (
-/obj/structure/flora/pottedplant/minitree,
-/turf/simulated/floor/wood,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/structure/bed/chair/sofa/black/right{
+	dir = 1
+	},
+/turf/simulated/floor/carpet,
 /area/crew_quarters/coffee_shop)
 "eyp" = (
 /obj/structure/cable/green{
@@ -7927,9 +7932,6 @@
 	dir = 4
 	},
 /obj/structure/bed/chair/sofa/black/left,
-/obj/structure/window/reinforced/tinted/frosted{
-	dir = 1
-	},
 /turf/simulated/floor/carpet,
 /area/crew_quarters/coffee_shop)
 "fLD" = (
@@ -8881,10 +8883,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardamidhall)
 "gpv" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 4
+/obj/structure/bed/chair/comfy/black{
+	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
@@ -13631,9 +13631,7 @@
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
 "jNH" = (
-/obj/structure/bed/chair/comfy/black{
-	dir = 8
-	},
+/obj/structure/flora/pottedplant/minitree,
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "jOl" = (
@@ -14652,6 +14650,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
+"kvQ" = (
+/obj/machinery/holopad,
+/turf/simulated/floor/wood,
+/area/crew_quarters/coffee_shop)
 "kvR" = (
 /obj/machinery/door/morgue,
 /turf/simulated/floor/wood,
@@ -15476,10 +15478,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
-"kYx" = (
-/obj/machinery/holopad,
-/turf/simulated/floor/wood,
-/area/crew_quarters/coffee_shop)
 "kYE" = (
 /obj/machinery/power/port_gen/pacman/mrs{
 	anchored = 1
@@ -15662,12 +15660,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardforhall)
-"ljP" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 4
-	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/coffee_shop)
 "lkN" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/drinks/shaker,
@@ -17845,8 +17837,14 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/obj/structure/bed/chair/sofa/black/right{
-	dir = 1
+/obj/structure/table/woodentable,
+/obj/item/reagent_containers/food/condiment/small/saltshaker{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/obj/item/reagent_containers/food/condiment/small/peppermill{
+	pixel_x = 3;
+	pixel_y = 6
 	},
 /turf/simulated/floor/carpet,
 /area/crew_quarters/coffee_shop)
@@ -18573,14 +18571,9 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/obj/structure/table/woodentable,
-/obj/item/reagent_containers/food/condiment/small/saltshaker{
-	pixel_x = -3;
-	pixel_y = 6
-	},
-/obj/item/reagent_containers/food/condiment/small/peppermill{
-	pixel_x = 3;
-	pixel_y = 6
+/obj/structure/bed/chair/sofa/black/left,
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 1
 	},
 /turf/simulated/floor/carpet,
 /area/crew_quarters/coffee_shop)
@@ -19399,6 +19392,14 @@
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/plating,
 /area/tether/station/burial)
+"nSH" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/coffee_shop)
 "nSV" = (
 /obj/random/maintenance/security,
 /turf/simulated/floor/plating,
@@ -25279,13 +25280,6 @@
 "svt" = (
 /turf/simulated/wall/prepainted,
 /area/endeavour/hallway/d1portamidhall)
-"svI" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 4
-	},
-/obj/structure/bed/chair/sofa/black/left,
-/turf/simulated/floor/carpet,
-/area/crew_quarters/coffee_shop)
 "svZ" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -30984,6 +30978,12 @@
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
+"wtM" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/coffee_shop)
 "wup" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -51275,12 +51275,12 @@ aFa
 eRb
 aFa
 aFa
-svI
-noo
-mMT
 fLt
+mMT
+eyn
 noo
 mMT
+eyn
 mYH
 veS
 kAE
@@ -51473,7 +51473,7 @@ eaK
 lDo
 eaK
 eaK
-ljP
+wtM
 rzS
 aFa
 oxw
@@ -51664,7 +51664,7 @@ anY
 aFa
 kLc
 lus
-gpv
+nSH
 gCd
 dGT
 aDo
@@ -52056,7 +52056,7 @@ ifX
 cPp
 eaK
 gnc
-eyn
+jNH
 dCX
 sTI
 kAE
@@ -52248,7 +52248,7 @@ icA
 pzu
 ifX
 cPp
-kYx
+kvQ
 gnc
 rBZ
 aFa
@@ -52832,7 +52832,7 @@ pcR
 loh
 dQJ
 gnc
-jNH
+gpv
 mYH
 veS
 dkq
