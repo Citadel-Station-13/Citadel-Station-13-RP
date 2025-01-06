@@ -14972,7 +14972,6 @@
 /area/crew_quarters/sleep/Dorm_4)
 "jLH" = (
 /obj/structure/catwalk,
-/obj/machinery/door/airlock/maintenance,
 /obj/structure/disposalpipe/segment{
 	dir = 1
 	},
