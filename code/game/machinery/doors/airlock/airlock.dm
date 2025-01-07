@@ -500,6 +500,7 @@ About the new airlock wires panel:
 
 
 /obj/machinery/door/airlock/update_icon(var/doorstate)
+	. = ..()
 	switch(doorstate)
 		if(AIRLOCK_OPEN)
 			icon_state = "open"

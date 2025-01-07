@@ -104,6 +104,7 @@
 	wax = 20000
 
 /obj/item/flame/candle/candelabra/update_icon()
+	. = ..()
 	if(wax == 0)
 		icon_state = "candelabra_melted"
 	else

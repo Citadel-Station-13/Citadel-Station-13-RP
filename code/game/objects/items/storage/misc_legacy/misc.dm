@@ -63,9 +63,9 @@
 	max_combined_volume = WEIGHT_VOLUME_TINY * 6
 	starts_with = list(/obj/item/reagent_containers/food/snacks/wormsickly = 6)
 
-/obj/item/storage/box/wormcan/sickly/update_icon(var/itemremoved = 0)
-	if (contents.len == 0)
-		icon_state = "wormcan_empty_sickly"
+/obj/item/storage/box/wormcan/sickly/update_icon_state()
+	icon_state = length(contents) ? "wormcan_empty_sickly" : "wormcan_sickly"
+	return ..()
 
 /obj/item/storage/box/wormcan/deluxe
 	icon_state = "wormcan_deluxe"

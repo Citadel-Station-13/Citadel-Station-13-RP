@@ -288,6 +288,7 @@
 
 /obj/machinery/power/thermoregulator/update_icon()
 	cut_overlays()
+	. = ..()
 	var/list/overlays_to_add = list()
 	if(on)
 		overlays_to_add += "lasergen-on"
