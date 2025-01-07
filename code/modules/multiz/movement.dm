@@ -337,6 +337,8 @@
 
 	// First hit objects in the turf!
 	for(var/atom/movable/A in landing)
+		if(A.atom_flags & (ATOM_NONWORLD | ATOM_ABSTRACT))
+			continue
 		if(A != src && A.CheckFall(src))
 			return A
 
@@ -562,6 +564,9 @@
 		var/turf/simulated/floor/ground = hit_atom
 		ground.break_tile()
 
-
+// todo: rewrite this entire file
 /mob/CheckFall(atom/movable/falling_atom)
 	return falling_atom.fall_impact(src)
+
+/mob/observer/CheckFall(atom/movable/falling_atom)
+	return FALSE

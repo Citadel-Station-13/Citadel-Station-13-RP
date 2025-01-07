@@ -19,7 +19,7 @@
 			worn_render_flags = initial(worn_render_flags)
 			return TRUE
 		if("invisible")
-			worn_render_flags &= ~WORN_RENDER_SLOT_NO_RENDER
+			worn_render_flags |= WORN_RENDER_SLOT_NO_RENDER
 			return TRUE
 		else
 			return FALSE

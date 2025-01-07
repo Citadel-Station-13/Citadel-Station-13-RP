@@ -279,6 +279,7 @@
 	if(!style_repick_set(choice, user))
 		return
 	// todo: logging API
+	to_chat(user, SPAN_NOTICE("You set [src]'s style to [choice]."))
 	log_game("[key_name(user)] set [src]'s style to [choice]")
 	update_icon()
 	update_worn_icon()

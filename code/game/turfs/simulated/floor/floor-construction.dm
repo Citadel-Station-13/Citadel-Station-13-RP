@@ -43,7 +43,7 @@
 				var/list/built_choices = list()
 				var/list/pick_choices = list()
 				var/matrix/three_fourths_size = matrix()
-				seventy_percent_size.Scale(3 / 4, 3 / 4)
+				three_fourths_size.Scale(3 / 4, 3 / 4)
 				for(var/datum/prototype/flooring/potential as anything in possible)
 					built_choices[potential.name] = potential
 					var/image/preview = image(potential.icon, potential.icon_base)
