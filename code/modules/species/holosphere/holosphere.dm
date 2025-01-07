@@ -115,7 +115,6 @@
 	holosphere_shell.transform_component = transform_component
 	holosphere_shell.hologram = H
 	holosphere_shell.regenerate_icons()
-	holosphere_shell.name = H.name
 
 /datum/species/holosphere/on_remove(mob/living/carbon/human/H)
 	. = ..()
@@ -126,6 +125,7 @@
 
 /datum/species/holosphere/proc/try_transform(force = FALSE)
 	if(force || !IS_DEAD(holosphere_shell))
+		holosphere_shell.name = H.name
 		transform_component.try_transform()
 
 /datum/species/holosphere/proc/try_untransform(force = FALSE)
