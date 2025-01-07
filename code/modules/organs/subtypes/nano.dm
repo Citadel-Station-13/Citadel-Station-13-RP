@@ -146,6 +146,11 @@
 	//Failure
 	return 0
 
+/obj/item/organ/internal/nano/refactory/loaded
+	stored_materials = list(
+		MAT_STEEL = /obj/item/organ/internal/nano/refactory::max_storage,
+	)
+
 /obj/item/organ/internal/mmi_holder/posibrain/nano
 	name = "protean posibrain"
 	desc = "A more advanced version of the standard posibrain, typically found in protean bodies."

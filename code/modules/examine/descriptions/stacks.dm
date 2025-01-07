@@ -7,6 +7,3 @@
 
 /obj/item/stack/material/glass/reinforced
 	description_info = "Use in your hand to build a window.  Reinforced glass is much stronger against damage."
-
-/obj/item/stack/material
-	description_info = "Use in your hand to bring up the recipe menu.  If you have enough sheets, click on something on the list to build it."
