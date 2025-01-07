@@ -13,8 +13,9 @@
 	use_power = USE_POWER_IDLE
 	icon_state = "map_on"
 
-/obj/machinery/atmospherics/component/binary/pump/high_power/update_icon()
+/obj/machinery/atmospherics/component/binary/pump/high_power/update_icon_state()
 	if(!powered())
 		icon_state = "off"
 	else
 		icon_state = "[use_power ? "on" : "off"]"
+	return ..()
