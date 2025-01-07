@@ -100,7 +100,7 @@
 	else if(ishuman(occupant))
 		var/mob/living/carbon/human/H = occupant
 
-		if(H.isSynthetic())
+		if(H.isSynthetic() || H.species.species_flags & CAN_USE_RECHARGE_STATION)
 			// In case they somehow end up with positive values for otherwise unobtainable damage...
 			if(H.getToxLoss() > 0)
 				H.adjustToxLoss(-(rand(1,3)))
