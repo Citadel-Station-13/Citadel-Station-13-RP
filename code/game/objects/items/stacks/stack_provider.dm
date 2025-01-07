@@ -117,7 +117,7 @@
  *
  * @return amount given.
  */
-/datum/stack_provider/proc/give_material(datum/material/path_or_id, amount, force)
+/datum/stack_provider/proc/give_material(datum/prototype/material/path_or_id, amount, force)
 	return 0
 
 /**
@@ -125,5 +125,5 @@
  *
  * @return max amount.
  */
-/datum/stack_provider/proc/get_material_capacity(datum/material/path_or_id)
+/datum/stack_provider/proc/get_material_capacity(datum/prototype/material/path_or_id)
 	return 0

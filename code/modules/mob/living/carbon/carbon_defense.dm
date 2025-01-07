@@ -30,7 +30,7 @@
 	apply_damage(effective_force, I.damage_type, hit_zone, blocked, soaked, sharp=weapon_sharp, edge=weapon_edge, used_weapon=I)
 
 	//Melee weapon embedded object code.
-	if (I && I.damage_type == DAMAGE_TYPE_BRUTE && !I.anchored && !is_robot_module(I) && I.embed_chance > 0)
+	if (I && I.damage_type == DAMAGE_TYPE_BRUTE && !I.anchored && I.embed_chance > 0)
 		var/damage = effective_force
 		if (blocked)
 			damage *= (100 - blocked)/100

@@ -197,7 +197,7 @@
  * @return amount the item mount has
  */
 /datum/item_mount/proc/has_stack(path, amount)
-	. = get_stack(id) || 0
+	. = get_stack(path) || 0
 	if(. < amount)
 		return 0
 
