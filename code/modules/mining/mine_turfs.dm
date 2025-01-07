@@ -193,7 +193,8 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 		return NULLTURF_BORDER
 	return T.density? ADJ_FOUND : NO_ADJ_FOUND
 
-/turf/simulated/mineral/update_appearance(updates)
+/turf/simulated/mineral/update_icon()
+	cut_overlays()
 	. = ..()
 
 	//We are a wall (why does this system work like this??)
@@ -207,39 +208,6 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 		icon = 'icons/turf/walls/natural.dmi'
 //		icon_state = rock_icon_state
 
-	//We are a sand floor
-	else
-		name = "sand"
-		icon = sand_icon // So that way we can source from other files.
-		icon_state = sand_icon_state
-
-/turf/simulated/mineral/update_overlays()
-	. = ..()
-
-	//We are a wall (why does this system work like this??)
-	// todo: refactor this shitheap because this is pants on fucking head awful
-
-	if(density)
-		/*
-		// TODO: Replace these layers with defines. (I have some being added in another PR) @Zandario
-		var/mutable_appearance/appearance
-		if(!(smoothing_junction & NORTH_JUNCTION))
-			appearance = mutable_appearance(icon, "[rock_side_icon_state]_s", layer = EDGE_LAYER)
-			appearance.pixel_y = 32
-			. += appearance
-		if(!(smoothing_junction & SOUTH_JUNCTION))
-			appearance = mutable_appearance(icon, "[rock_side_icon_state]_n", layer = EDGE_LAYER)
-			appearance.pixel_y = -32
-			. += appearance
-		if(!(smoothing_junction & WEST_JUNCTION))
-			appearance = mutable_appearance(icon, "[rock_side_icon_state]_e", layer = EDGE_LAYER)
-			appearance.pixel_x = -32
-			. += appearance
-		if(!(smoothing_junction & EAST_JUNCTION))
-			appearance = mutable_appearance(icon, "[rock_side_icon_state]_w", layer = EDGE_LAYER)
-			appearance.pixel_x = 32
-			. += appearance
-		*/
 		if(archaeo_overlay)
 			. += mutable_appearance(arch_icon, archaeo_overlay)
 		if(excav_overlay)
@@ -247,11 +215,14 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 
 	//We are a sand floor
 	else
+		name = "sand"
+		icon = sand_icon // So that way we can source from other files.
+		icon_state = sand_icon_state
+
 		if(sand_dug)
 			. += mutable_appearance(icon, "dug_overlay")
 		if(overlay_detail)
 			. += mutable_appearance('icons/turf/flooring/decals.dmi', overlay_detail)
-
 
 /turf/simulated/mineral/legacy_ex_act(severity)
 
