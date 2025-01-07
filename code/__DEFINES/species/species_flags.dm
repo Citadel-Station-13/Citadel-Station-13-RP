@@ -28,6 +28,8 @@
 #define CONTAMINATION_IMMUNE (1<<12)
 /// Cannot be ignited
 #define NO_IGNITE (1<<13)
+/// Cannot get nutrition from food
+#define NO_NUTRITION_GAIN (1<<14)
 
 DEFINE_BITFIELD(species_flags, list(
 	BITFIELD(NO_MINOR_CUT),
