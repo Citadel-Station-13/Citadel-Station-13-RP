@@ -15,6 +15,8 @@
 	drop_sound = 'sound/items/drop/gascan.ogg'
 	pickup_sound = 'sound/items/pickup/gascan.ogg'
 
+	#warn item mount support! either that or /mounted subtype with said support for cybogs
+
 	var/spray_particles = 3
 	var/spray_amount = 10	//units of liquid per particle
 	var/max_water = 300

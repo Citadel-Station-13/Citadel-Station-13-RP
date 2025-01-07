@@ -63,4 +63,15 @@
 	provisioned_resource_store = null
 
 /datum/robot_resource_store/proc/regen_provisioned(seconds)
-	#warn impl
+	for(var/key in provisioned_stack_store)
+		var/datum/robot_resource/provisioned/resource = provisioned_stack_store[key]
+		resource.regen(seconds)
+	for(var/key in provisioned_material_store)
+		var/datum/robot_resource/provisioned/resource = provisioned_material_store[key]
+		resource.regen(seconds)
+	for(var/key in provisioned_reagent_store)
+		var/datum/robot_resource/provisioned/resource = provisioned_reagent_store[key]
+		resource.regen(seconds)
+	for(var/key in provisioned_resource_store)
+		var/datum/robot_resource/provisioned/resource = provisioned_resource_store[key]
+		resource.regen(seconds)

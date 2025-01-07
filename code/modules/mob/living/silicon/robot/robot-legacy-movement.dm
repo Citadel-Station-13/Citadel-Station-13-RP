@@ -22,5 +22,5 @@
 		return 0
 
 	var/datum/robot_component/actuator/A = get_component("actuator")
-	if (cell_use_power(A.active_usage))
+	if (legacy_cell_use_power(A.active_usage))
 		return ..()

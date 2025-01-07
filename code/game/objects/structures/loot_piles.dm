@@ -369,7 +369,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/stock_parts/subspace/treatment,
 		/obj/item/frame,
 		/obj/item/broken_device/random,
-		/obj/item/borg/upgrade/restart,
+		/obj/item/robot_upgrade/restart,
 		/obj/item/cell,
 		/obj/item/cell/high,
 		/obj/item/cell/device,
@@ -426,10 +426,10 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/tvcamera,
 		/obj/item/universal_translator,
 		/obj/item/aicard,
-		/obj/item/borg/upgrade/jetpack,
-		/obj/item/borg/upgrade/advhealth,
-		/obj/item/borg/upgrade/vtec,
-		/obj/item/borg/upgrade/tasercooler,
+		/obj/item/robot_upgrade/jetpack,
+		/obj/item/robot_upgrade/advhealth,
+		/obj/item/robot_upgrade/vtec,
+		/obj/item/robot_upgrade/tasercooler,
 		/obj/item/mecha_parts/mecha_equipment/weapon/energy/riggedlaser,
 		/obj/item/mecha_parts/mecha_equipment/tool/drill/diamonddrill,
 		/obj/item/hardsuit_module/device/drill,
@@ -1126,11 +1126,11 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 
 	rare_loot = list(
 		/obj/item/cell/super,
-		/obj/item/borg/upgrade/restart,
-		/obj/item/borg/upgrade/jetpack,
-		/obj/item/borg/upgrade/tasercooler,
-		/obj/item/borg/upgrade/syndicate,
-		/obj/item/borg/upgrade/vtec
+		/obj/item/robot_upgrade/restart,
+		/obj/item/robot_upgrade/jetpack,
+		/obj/item/robot_upgrade/tasercooler,
+		/obj/item/robot_upgrade/syndicate,
+		/obj/item/robot_upgrade/vtec
 		)
 
 // Contains old mediciation, most of it unidentified and has a good chance of being useless.

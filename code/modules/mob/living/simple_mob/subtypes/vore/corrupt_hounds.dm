@@ -61,7 +61,7 @@
 	buckle_lying = FALSE
 
 
-	loot_list = list(/obj/item/borg/upgrade/syndicate = 6, /obj/item/borg/upgrade/vtec = 6, /obj/item/material/knife/ritual = 6, /obj/item/disk/nifsoft/compliance = 6)
+	loot_list = list(/obj/item/robot_upgrade/syndicate = 6, /obj/item/robot_upgrade/vtec = 6, /obj/item/material/knife/ritual = 6, /obj/item/disk/nifsoft/compliance = 6)
 
 /mob/living/simple_mob/vore/aggressive/corrupthound/prettyboi
 	name = "corrupt corrupt hound"

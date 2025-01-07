@@ -469,34 +469,34 @@
 	design_name = "Rename Module"
 	desc = "Used to rename a cyborg."
 	id = "borg_rename_s"
-	build_path = /obj/item/borg/upgrade/rename
+	build_path = /obj/item/robot_upgrade/rename
 
 /datum/prototype/design/science/prosfab/robot_upgrade/reset
 	design_name = "Reset Module"
 	desc = "Used to reset a cyborg's module. Destroys any other upgrades applied to the robot."
 	id = "borg_reset_module"
-	build_path = /obj/item/borg/upgrade/reset
+	build_path = /obj/item/robot_upgrade/reset
 
 /datum/prototype/design/science/prosfab/robot_upgrade/restart
 	design_name = "Emergency Restart Module"
 	desc = "Used to force a restart of a disabled-but-repaired robot, bringing it back online."
 	id = "borg_restart_module"
 	materials_base = list(MAT_STEEL = 45000, MAT_GLASS = 3750)
-	build_path = /obj/item/borg/upgrade/restart
+	build_path = /obj/item/robot_upgrade/restart
 
 /datum/prototype/design/science/prosfab/robot_upgrade/vtec
 	design_name = "VTEC Module"
 	desc = "Used to kick in a robot's VTEC systems, increasing their speed."
 	id = "borg_vtec_module"
 	materials_base = list(MAT_STEEL = 60000, MAT_GLASS = 4500, MAT_GOLD = 3750)
-	build_path = /obj/item/borg/upgrade/vtec
+	build_path = /obj/item/robot_upgrade/vtec
 
 /datum/prototype/design/science/prosfab/robot_upgrade/tasercooler
 	design_name = "Rapid Taser Cooling Module"
 	desc = "Used to cool a mounted taser, increasing the potential current in it and thus its recharge rate."
 	id = "borg_taser_module"
 	materials_base = list(MAT_STEEL = 60000, MAT_GLASS = 4500, MAT_GOLD = 1500, MAT_DIAMOND = 375)
-	build_path = /obj/item/borg/upgrade/tasercooler
+	build_path = /obj/item/robot_upgrade/tasercooler
 
 /datum/prototype/design/science/prosfab/robot_upgrade/bluespaceoresatchel
 	design_name = "Bluespace Ore Satchel Module"
@@ -504,21 +504,21 @@
 	id = "borg_bsorebag_module"
 	req_tech = list(TECH_BLUESPACE = 4, TECH_MATERIAL = 6, TECH_PHORON = 4)
 	materials_base = list(MAT_STEEL = 7500, MAT_GOLD = 1500, MAT_DIAMOND = 750, MAT_URANIUM = 150, MAT_PHORON = 1000)
-	build_path = /obj/item/borg/upgrade/bluespaceorebag
+	build_path = /obj/item/robot_upgrade/bluespaceorebag
 
 /datum/prototype/design/science/prosfab/robot_upgrade/jetpack
 	design_name = "Jetpack Module"
 	desc = "A carbon dioxide jetpack suitable for low-gravity mining operations."
 	id = "borg_jetpack_module"
 	materials_base = list(MAT_STEEL = 7500, MAT_PHORON = 11250, MAT_URANIUM = 15000)
-	build_path = /obj/item/borg/upgrade/jetpack
+	build_path = /obj/item/robot_upgrade/jetpack
 
 /datum/prototype/design/science/prosfab/robot_upgrade/advhealth
 	design_name = "Advanced Health Analyzer Module"
 	desc = "An advanced health analyzer suitable for diagnosing more serious injuries."
 	id = "borg_advhealth_module"
 	materials_base = list(MAT_STEEL = 10000, MAT_GLASS = 6500, MAT_DIAMOND = 350)
-	build_path = /obj/item/borg/upgrade/advhealth
+	build_path = /obj/item/robot_upgrade/advhealth
 
 /datum/prototype/design/science/prosfab/robot_upgrade/syndicate
 	design_name = "Scrambled Equipment Module"
@@ -526,7 +526,7 @@
 	id = "borg_syndicate_module"
 	req_tech = list(TECH_COMBAT = 4, TECH_ILLEGAL = 3)
 	materials_base = list(MAT_STEEL = 7500, MAT_GLASS = 11250, MAT_DIAMOND = 7500)
-	build_path = /obj/item/borg/upgrade/syndicate
+	build_path = /obj/item/robot_upgrade/syndicate
 
 /datum/prototype/design/science/prosfab/robot_upgrade/language
 	design_name = "Language Module"
@@ -534,14 +534,14 @@
 	id = "borg_language_module"
 	req_tech = list(TECH_DATA = 6, TECH_MATERIAL = 6)
 	materials_base = list(MAT_STEEL = 25000, MAT_GLASS = 3000, MAT_GOLD = 350)
-	build_path = /obj/item/borg/upgrade/language
+	build_path = /obj/item/robot_upgrade/language
 
 /datum/prototype/design/science/prosfab/robot_upgrade/sizeshift
 	design_name = "Size Alteration Module"
 	id = "borg_sizeshift_module"
 	req_tech = list(TECH_BLUESPACE = 3, TECH_MATERIAL = 3, TECH_POWER = 2)
 	materials_base = list(MAT_STEEL = 4000, MAT_GLASS = 4000)
-	build_path = /obj/item/borg/upgrade/sizeshift
+	build_path = /obj/item/robot_upgrade/sizeshift
 
 // Synthmorph Bags.
 

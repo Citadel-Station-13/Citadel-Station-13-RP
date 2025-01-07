@@ -27,7 +27,7 @@
 	networks = list(NETWORK_SECURITY)
 	subsystems = list(/mob/living/silicon/proc/subsystem_crew_monitor)
 	can_be_pushed = 0
-	supported_upgrades = list(/obj/item/borg/upgrade/tasercooler)
+	supported_upgrades = list(/obj/item/robot_upgrade/tasercooler)
 
 /obj/item/robot_module/robot/security/general
 	sprites = list(
@@ -86,7 +86,7 @@
 	networks = list(NETWORK_SECURITY)
 	can_be_pushed = 0
 	can_shred = TRUE
-	supported_upgrades = list(/obj/item/borg/upgrade/tasercooler)
+	supported_upgrades = list(/obj/item/robot_upgrade/tasercooler)
 
 /obj/item/robot_module/robot/quad/sec/get_modules()
 	. = ..()

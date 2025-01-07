@@ -21,6 +21,8 @@
 
 /datum/prototype/robot_module/nanotrasen/service/provision_resource_store(datum/robot_resource_store/store)
 	..()
+	store.provisioned_material_store[/datum/prototype/material/steel::id] = new /datum/robot_resource/provisioned/preset/material/steel{regen_per_second = 0}
+	store.provisioned_material_store[/datum/prototype/material/glass::id] = new /datum/robot_resource/provisioned/preset/material/glass{regen_per_second = 0}
 
 #warn translate chassis below
 
@@ -77,45 +79,3 @@
 	. |= list(
 		/obj/item/pupscrubber,
 	)
-
-/obj/item/robot_module/robot/quad/jani/get_synths()
-	. = ..()
-	//Starts empty. Can only recharge with recycled material.
-	.[MATSYN_METAL] = new /datum/matter_synth/metal {
-		name = "Steel reserves";
-		recharge_rate = 0;
-		max_energy = 50000;
-		energy = 0;
-	}
-
-	.[MATSYN_GLASS] = new /datum/matter_synth/glass {
-		name = "Glass reserves";
-		recharge_rate = 0;
-		max_energy = 50000;
-		energy = 0;
-	}
-
-/obj/item/robot_module/robot/quad/jani/handle_special_module_init(mob/living/silicon/robot/R)
-	. = ..()
-
-	src.emag = new /obj/item/robot_builtin/dog_pounce(src) //Pounce
-
-	//Sheet refiners can only produce raw sheets.
-	var/obj/item/stack/material/cyborg/steel/M = new (src)
-	M.name = "steel recycler"
-	M.desc = "A device that refines recycled steel into sheets."
-	M.synths = list(synths_by_kind[MATSYN_METAL])
-	M.explicit_recipes = list(
-		create_stack_recipe_datum(name = "steel sheet", product = /obj/item/stack/material/steel, cost = 1)
-	)
-	. += M
-
-	var/obj/item/stack/material/cyborg/glass/G = new (src)
-	G.name = "glass recycler"
-	G.desc = "A device that refines recycled glass into sheets."
-	G.allow_window_autobuild = FALSE
-	G.synths = list(synths_by_kind[MATSYN_GLASS])
-	M.explicit_recipes = list(
-		create_stack_recipe_datum(name = "glass sheet", product = /obj/item/stack/material/glass, cost = 1)
-	)
-	. += G

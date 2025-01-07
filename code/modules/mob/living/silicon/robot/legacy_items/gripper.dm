@@ -1,3 +1,5 @@
+// todo: this shouldn't be a robot item, this is generic.
+
 //Simple borg hand.
 //Limited use.
 /obj/item/gripper
@@ -233,7 +235,7 @@
 		/obj/item/stock_parts,
 		/obj/item/mmi,
 		/obj/item/robot_parts,
-		/obj/item/borg/upgrade,
+		/obj/item/robot_upgrade,
 		/obj/item/flash, //to build borgs,
 		/obj/item/disk,
 		/obj/item/circuitboard,

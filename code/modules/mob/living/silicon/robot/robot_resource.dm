@@ -29,11 +29,12 @@
 	/// base regen per second
 	var/regen_per_second = 1
 
+/datum/robot_resource/provisioned/proc/regen(seconds)
+	amount = clamp(amount + regen_per_second * seconds, 0, amount_max)
+
 //* --- Implementations / Presets --- *//
 
 //* presets - engineering *//
-
-#warn name the ones in this section
 
 /datum/robot_resource/provisioned/preset/wire
 	name = "wire spool"

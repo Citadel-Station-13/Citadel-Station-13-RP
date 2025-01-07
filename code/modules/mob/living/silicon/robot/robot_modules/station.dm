@@ -57,10 +57,10 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	var/list/datum/matter_synth/synths = list()
 	var/list/synths_by_kind = list()
 	var/obj/item/emag = null
-	var/obj/item/borg/upgrade/jetpack = null
-	var/obj/item/borg/upgrade/advhealth = null
+	var/obj/item/robot_upgrade/jetpack = null
+	var/obj/item/robot_upgrade/advhealth = null
 	var/list/subsystems = list()
-	var/list/obj/item/borg/upgrade/supported_upgrades = list()
+	var/list/obj/item/robot_upgrade/supported_upgrades = list()
 
 	// Bookkeeping
 	var/list/original_languages = list()
@@ -220,7 +220,6 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	R.dogborg = TRUE
 	R.wideborg = TRUE
 	add_verb(R, list(
-		/mob/living/silicon/robot/proc/ex_reserve_refill,
 		/mob/living/silicon/robot/proc/rest_style
 	))
 	if (can_shred)
@@ -230,7 +229,6 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	. = ..()
 	// Reset a bunch of wideborg specific things.
 	remove_verb(R, list(
-		/mob/living/silicon/robot/proc/ex_reserve_refill,
 		/mob/living/proc/shred_limb,
 		/mob/living/silicon/robot/proc/rest_style
 	))

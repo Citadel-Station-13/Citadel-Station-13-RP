@@ -118,7 +118,8 @@
 	if(!scrambledcodes && !foreign_droid)
 		aiCamera = new/obj/item/camera/siliconcam/drone_camera(src)
 	additional_law_channels["Drone"] = ":d"
-	if(!laws) laws = new law_type
+	if(!laws)
+		laws = new law_type
 	if(!module)
 		module = new module_type(src)
 
@@ -192,7 +193,7 @@
 		wear_hat(W)
 		user.visible_message("<span class='notice'>\The [user] puts \the [W] on \the [src].</span>")
 		return
-	else if(istype(W, /obj/item/borg/upgrade/))
+	else if(istype(W, /obj/item/robot_upgrade/))
 		to_chat(user, "<span class='danger'>\The [src] is not compatible with \the [W].</span>")
 		return
 

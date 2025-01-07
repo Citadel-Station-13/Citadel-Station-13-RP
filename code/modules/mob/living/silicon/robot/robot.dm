@@ -72,16 +72,24 @@
 
 	//* Composition *//
 
+	/// set to instance to init as that instance
 	#warn impl
 	var/datum/prototype/robot_chassis/chassis
+	/// set to instance to init as that instance
 	#warn impl
 	var/datum/prototype/robot_iconset/iconset
+	/// set to instance to init as that instance
 	#warn impl
 	var/datum/prototype/robot_module/module_new
 
+	/// all installed upgrades
+	/// * some upgrades are consumed on install.
+	#warn impl
+	var/list/obj/item/robot_upgrade/upgrades
+
 	//* Inventory *//
 
-	inventory = /datum/inventory
+	inventory = /datum/inventory/robot
 	/// Resources store
 	#warn make on new
 	var/datum/robot_resource_store/resources
@@ -90,6 +98,10 @@
 
 	/// If set, we are a blank slate, and are allowed to pick a module and frame.
 	var/can_repick_module = TRUE
+	/// If set, we are able to repick our frame.
+	/// * This does not imply [can_repick_module]. If this is set, and that isn't,
+	///   and we already have a module, we can repick our frame but not our module.
+	var/can_repick_frame = TRUE
 
 	/// Is our integrated light on?
 	var/lights_on = 0
@@ -129,9 +141,6 @@
 	//?3 Modules can be activated at any one time.
 	var/obj/item/robot_module/module_legacy = null
 	var/obj/item/module_active = null
-	var/obj/item/module_state_1 = null
-	var/obj/item/module_state_2 = null
-	var/obj/item/module_state_3 = null
 
 	var/obj/item/radio/borg/radio = null
 	var/obj/item/communicator/integrated/communicator = null
@@ -156,18 +165,13 @@
 	var/has_power = TRUE
 	var/list/req_access = list(ACCESS_SCIENCE_ROBOTICS)
 	var/ident = 0
-	//var/list/laws = list()
 	var/viewalerts = FALSE
 	var/modtype = "Default"
 	var/lower_mod = 0
 	var/jetpack = 0
 	var/datum/effect_system/ion_trail_follow/ion_trail = null
-	var/datum/effect_system/spark_spread/spark_system//So they can initialize sparks whenever/N
-	var/jeton = FALSE
-	var/killswitch = FALSE
-	var/killswitch_time = 60
-	var/weapon_lock = FALSE
-	var/weaponlock_time = 120
+	var/datum/effect_system/spark_spread/spark_system
+	
 	/// Cyborgs will sync their laws with their AI by default
 	var/lawupdate = TRUE
 	/// Used when looking to see if a borg is locked down.
@@ -203,6 +207,10 @@
 	var/original_icon = 'icons/mob/robots.dmi'
 	var/sitting = FALSE
 	var/bellyup = FALSE
+
+	var/shell = FALSE
+	var/deployed = FALSE
+	var/mob/living/silicon/ai/mainframe = null
 
 /mob/living/silicon/robot/Initialize(mapload, unfinished = FALSE)
 	spark_system = new /datum/effect_system/spark_spread()
@@ -492,7 +500,7 @@
 		to_chat(src, "<font color='red'>Your self-diagnosis component isn't functioning.</font>")
 
 	var/datum/robot_component/CO = get_component("diagnosis unit")
-	if (!cell_use_power(CO.active_usage))
+	if (!legacy_cell_use_power(CO.active_usage))
 		to_chat(src, "<font color='red'>Low Power.</font>")
 	var/dat = self_diagnosis()
 	src << browse(dat, "window=robotdiagnosis")
@@ -781,8 +789,8 @@
 			else
 				to_chat(user, "<font color='red'>Access denied.</font>")
 
-	else if(istype(W, /obj/item/borg/upgrade/))
-		var/obj/item/borg/upgrade/U = W
+	else if(istype(W, /obj/item/robot_upgrade/))
+		var/obj/item/robot_upgrade/U = W
 		if(!opened)
 			to_chat(usr, "You must access the borgs internals!")
 		else if(!src.module && U.require_module)
@@ -947,10 +955,6 @@
 	return 0
 
 /mob/living/silicon/robot/proc/installed_modules()
-	if(weapon_lock)
-		to_chat(src, "<font color='red'>Weapon lock active, unable to use modules! Count:[weaponlock_time]</font>")
-		return
-
 	if(!module)
 		pick_module()
 		return
@@ -966,9 +970,7 @@
 
 
 	for (var/obj in module.modules)
-		if (!obj)
-			dat += "<B>Resource depleted</B><BR>"
-		else if(activated(obj))
+		if(activated(obj))
 			dat += "[obj]: <B>Activated</B><BR>"
 		else
 			dat += "[obj]: <A HREF=?src=\ref[src];act=\ref[obj]>Activate</A><BR>"
@@ -977,12 +979,7 @@
 			dat += "[module.emag]: <B>Activated</B><BR>"
 		else
 			dat += "[module.emag]: <A HREF=?src=\ref[src];act=\ref[module.emag]>Activate</A><BR>"
-/*
-		if(activated(obj))
-			dat += "[obj]: \[<B>Activated</B> | <A HREF=?src=\ref[src];deact=\ref[obj]>Deactivate</A>\]<BR>"
-		else
-			dat += "[obj]: \[<A HREF=?src=\ref[src];act=\ref[obj]>Activate</A> | <B>Deactivated</B>\]<BR>"
-*/
+
 	src << browse(dat, "window=robotmod")
 
 
@@ -1161,7 +1158,6 @@
 	if(src.camera)
 		src.camera.clear_all_networks()
 
-
 /mob/living/silicon/robot/proc/ResetSecurityCodes()
 	set category = "Robot Commands"
 	set name = "Reset Identity Codes"
@@ -1234,20 +1230,12 @@
 
 // Uses power from cyborg's cell. Returns 1 on success or 0 on failure.
 // Properly converts using CELLRATE now! Amount is in Joules.
-/mob/living/silicon/robot/proc/cell_use_power(var/amount = 0)
-	// No cell inserted
-	if(!cell)
-		return 0
-
-	// Power cell is empty.
-	if(cell.charge == 0)
-		return 0
-
-	var/power_use = amount * CYBORG_POWER_USAGE_MULTIPLIER
-	if(cell.checked_use(DYNAMIC_W_TO_CELL_UNITS(power_use, 1)))
-		used_power_this_tick += power_use
-		return 1
-	return 0
+/mob/living/silicon/robot/proc/legacy_cell_use_power(var/amount = 0)
+	if(!amount)
+		return TRUE
+	. = draw_checked_power(amount)
+	used_power_this_tick += .
+	return . ? TRUE : FALSE
 
 /mob/living/silicon/robot/binarycheck()
 	if(get_restraining_bolt())
@@ -1396,22 +1384,6 @@
 			sitting = TRUE
 		if("Belly up")
 			bellyup = TRUE
-
-/mob/living/silicon/robot/proc/ex_reserve_refill()
-	set name = "Refill Extinguisher"
-	set category = VERB_CATEGORY_OBJECT
-	var/datum/matter_synth/water = water_res
-	for(var/obj/item/extinguisher/E in module.modules)
-		if(E.reagents.total_volume < E.max_water)
-			if(water && water.energy > 0)
-				var/amount = E.max_water - E.reagents.total_volume
-				if(water.energy < amount)
-					amount = water.energy
-				water.use_charge(amount)
-				E.reagents.add_reagent("water", amount)
-				to_chat(src, "You refill the extinguisher using your water reserves.")
-			else
-				to_chat(src, "Insufficient water reserves.")
 
 /mob/living/silicon/robot/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
 	if(lockcharge)

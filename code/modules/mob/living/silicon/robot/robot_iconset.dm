@@ -5,6 +5,7 @@
  * Base abstraction for silicon iconsets
  *
  * * Iconsets have no behavior.
+ * * This is not considered intrinsic for a robot's behavior, and therefore can be changed without a full state rebuild.
  */
 /datum/prototype/robot_iconset
 	abstract_type = /datum/prototype/robot_iconset

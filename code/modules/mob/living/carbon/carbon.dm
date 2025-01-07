@@ -1,3 +1,6 @@
+/mob/living/carbon
+	inventory = /datum/inventory/humanoid
+
 /mob/living/carbon/Initialize(mapload)
 	. = ..()
 	//setup reagent holders

@@ -4,6 +4,8 @@
 /**
  * The baseline physical chassis for a silicon.
  *
+ * * This is considered intrinsic, and cannot be changed on a robot without fully rebuilding its state.
+ * 
  * Contains:
  *
  * * Base physical stats
