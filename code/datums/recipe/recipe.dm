@@ -84,6 +84,7 @@ GLOBAL_LIST_EMPTY(cooking_recipes)
 	var/list/output_reagents = list()
 	var/list/req_items = list()
 	var/list/req_growns = list()
+	var/out_item_name = "error"
 
 
 	for(var/r in reagents)
@@ -104,9 +105,13 @@ GLOBAL_LIST_EMPTY(cooking_recipes)
 			var/obj/item/reagent_containers/food/snacks/ingredient/ingred = g
 			req_growns += "[fruit[g]]g of [initial(ingred.name)], "
 
+	if(!isnull(result))
+		out_item_name = initial(initial(result).name)
+	else
+		out_item_name = (SSchemistry.fetch_reagent(result_reagents[1]).name)
 
 	return list(
-		"result" = initial(initial(result).name) || (SSchemistry.fetch_reagent(result_reagents[0]).name),
+		"result" = out_item_name,
 		"result_reagents" = output_reagents,
 		"result_amount" = result_quantity,
 		"req_items" = req_items,

@@ -657,8 +657,8 @@
 	result = /obj/item/reagent_containers/food/snacks/wormburger
 
 /datum/cooking_recipe/shrimpcocktail
-	fruit = list("tomato" = 2, "chili" = 2, "lemon" = 2)
-	reagents = list("water" = 5, "sodiumchloride" = 5, "pepper" = 5)
+	fruit = list("tomato" = 20, "chili" = 20, "lemon" = 5)
+	reagents = list("water" = 5, "sodiumchloride" = 5, "blackpepper" = 5)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/shrimp = 100 //shrimp glockenspiel
 	)

@@ -7,6 +7,7 @@
  */
 
 import { InfernoNode } from "inferno";
+import { logger } from "../../logging";
 import { useLocalState, useModule } from "../../backend";
 import { Input, Section, Stack, Tabs } from "../../components";
 import { Modular } from "../../layouts/Modular";
@@ -24,9 +25,9 @@ enum CookingRecipeGuidebookFlags {
 
 interface TGUIGuidebookCookingRecipe {
   // recipe flags: currently untyped because there are none
-  flags: number;
+  // flags: number;
   // reaction guidebook flags
-  guidebookFlags: CookingRecipeGuidebookFlags;
+  // guidebookFlags: CookingRecipeGuidebookFlags;
   // result name string
   result: string;
   // result reagent names
@@ -52,9 +53,9 @@ export const TGUIGuidebookCookingRecipes = (props, context) => {
   let categorizedRecipes: Record<string, TGUIGuidebookCookingRecipe[]> = {};
 
   switch (activeTab) {
-    case 'recipes':
+    case 'recipeTab':
       Object.values(data.recipes).filter(
-        (recipe) => !searchText || recipe.result.toLowerCase().includes(searchText)).forEach(
+        (recipe) => !searchText || recipe.result.includes(searchText)).forEach(
         (recipe) => {
           categorizedRecipes[recipe.req_method].push(recipe);
         });
@@ -87,14 +88,14 @@ export const TGUIGuidebookCookingRecipes = (props, context) => {
           <Stack>
             <Stack.Item grow={1}>
               <Tabs>
-                <Tabs.Tab selected={activeTab === "recipes"}
-                  onClick={() => setActiveTab("recipes")}>
+                <Tabs.Tab selected={activeTab === "recipeTab"}
+                  onClick={() => setActiveTab("recipeTab")}>
                   Recipes
                 </Tabs.Tab>
               </Tabs>
             </Stack.Item>
             <Stack.Item>
-              Search <Input width="100px" onInput={(val) => setSearchText(val.toLowerCase())} />
+              Search <Input width="100px" onInput={(e, value) => setSearchText(value)} />
             </Stack.Item>
           </Stack>
         </Stack.Item>
