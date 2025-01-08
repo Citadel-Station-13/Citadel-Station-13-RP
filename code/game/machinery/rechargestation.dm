@@ -97,6 +97,10 @@
 			D.upgrade_cooldown = world.time + 1 MINUTE
 			D.master_matrix.apply_upgrades(D)
 
+	else if(isHolosphereShell(occupant))
+		var/mob/living/simple_mob/holosphere_shell/shell = occupant
+		handle_human_nutrition(shell.hologram)
+
 	else if(ishuman(occupant))
 		var/mob/living/carbon/human/H = occupant
 
@@ -111,14 +115,8 @@
 			if(H.getBrainLoss() > 0)
 				H.adjustBrainLoss(-(rand(1,3)))
 
-			// Also recharge their internal battery.
-			if(H.nutrition < H.species.max_nutrition)
-				var/needed = clamp(H.species.max_nutrition - H.nutrition, 0, 20)
-				var/drained = cell.use(DYNAMIC_KJ_TO_CELL_UNITS(needed * SYNTHETIC_NUTRITION_KJ_PER_UNIT))
-				H.nutrition += DYNAMIC_CELL_UNITS_TO_KJ(drained) / SYNTHETIC_NUTRITION_KJ_PER_UNIT
+			handle_human_nutrition(H)
 
-			// And clear up radiation
-			H.cure_radiation(RAD_MOB_CURE_SYNTH_CHARGER)
 		var/obj/item/hardsuit/wornrig = H.get_hardsuit()
 		if(wornrig) // just to make sure
 			for(var/obj/item/hardsuit_module/storedmod in wornrig)
@@ -130,6 +128,16 @@
 				var/diff = min(rigcell.maxcharge - rigcell.charge, DYNAMIC_W_TO_CELL_UNITS(charging_power, 1)) // Capped by charging_power / tick
 				var/charge_used = cell.use(diff)
 				rigcell.give(charge_used)
+
+/obj/machinery/recharge_station/proc/handle_human_nutrition(mob/living/carbon/human/H)
+	// Also recharge their internal battery.
+	if(H.nutrition < H.species.max_nutrition)
+		var/needed = clamp(H.species.max_nutrition - H.nutrition, 0, 20)
+		var/drained = cell.use(DYNAMIC_KJ_TO_CELL_UNITS(needed * SYNTHETIC_NUTRITION_KJ_PER_UNIT))
+		H.nutrition += DYNAMIC_CELL_UNITS_TO_KJ(drained) / SYNTHETIC_NUTRITION_KJ_PER_UNIT
+
+	// And clear up radiation
+	H.cure_radiation(RAD_MOB_CURE_SYNTH_CHARGER)
 
 /obj/machinery/recharge_station/examine(mob/user, dist)
 	. = ..()
