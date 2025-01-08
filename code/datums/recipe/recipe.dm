@@ -32,13 +32,18 @@
  * */
 
 
-/// global slot meta cache - all ids must be string!
+/// global recipe cache
 /// initialized by SSearly_init
 GLOBAL_LIST_EMPTY(cooking_recipes)
+GLOBAL_LIST_EMPTY(cooking_recipes_tgui_guidebook_data)
 
 /proc/init_cooking_recipes_glob()
+	GLOB.cooking_recipes = list()
 	for(var/R in subtypesof(/datum/cooking_recipe))
 		GLOB.cooking_recipes += new R
+	for(var/datum/cooking_recipe/R in GLOB.cooking_recipes)
+		GLOB.cooking_recipes_tgui_guidebook_data += list(R.tgui_guidebook_data())
+
 
 
 
@@ -88,22 +93,22 @@ GLOBAL_LIST_EMPTY(cooking_recipes)
 
 
 	for(var/r in reagents)
-		required_reagents += "[reagents[r]]u of [(SSchemistry.fetch_reagent(r)).name], "
+		required_reagents += "[reagents[r]]u of [(SSchemistry.fetch_reagent(r)).name]"
 	for(var/ar in result_reagents)
-		output_reagents += "[result_reagents[ar]]u of [(SSchemistry.fetch_reagent(ar)).name], "
+		output_reagents += "[result_reagents[ar]]u of [(SSchemistry.fetch_reagent(ar)).name]"
 
 	for(var/i in items)
-		if(istype(i, /obj/item/reagent_containers/food/snacks/ingredient))
+		if(ispath(i, /obj/item/reagent_containers/food/snacks/ingredient))
 			var/obj/item/reagent_containers/food/snacks/ingredient/ingred = i
-			req_items += "[items[i]]g of [initial(ingred.name)], "
-		else if(istype(i, /obj/item))
+			req_items += "[items[i]]g of [initial(ingred.name)]"
+		else if(ispath(i, /obj/item))
 			var/obj/item/input_item = i
-			req_items += "[items[i]]x [initial(input_item.name)], "
+			req_items += "\an [initial(input_item.name)]"
 
 	for(var/g in fruit)
-		if(istype(g, /obj/item/reagent_containers/food/snacks/ingredient))
+		if(ispath(g, /obj/item/reagent_containers/food/snacks/ingredient))
 			var/obj/item/reagent_containers/food/snacks/ingredient/ingred = g
-			req_growns += "[fruit[g]]g of [initial(ingred.name)], "
+			req_growns += "[fruit[g]]g of [initial(ingred.name)]"
 
 	if(!isnull(result))
 		out_item_name = initial(initial(result).name)
@@ -112,11 +117,11 @@ GLOBAL_LIST_EMPTY(cooking_recipes)
 
 	return list(
 		"result" = out_item_name,
-		"result_reagents" = output_reagents,
+		"result_reagents" = english_list(output_reagents),
 		"result_amount" = result_quantity,
-		"req_items" = req_items,
-		"req_growns" = req_growns,
-		"req_reagents" = required_reagents,
+		"req_items" = english_list(req_items, nothing_text = "no ingredients"),
+		"req_growns" = english_list(req_growns, nothing_text = "no growns"),
+		"req_reagents" = english_list(required_reagents, nothing_text = "no reagents"),
 		"req_method" = required_method
 	)
 

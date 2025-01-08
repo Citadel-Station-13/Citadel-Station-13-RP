@@ -31,15 +31,15 @@ interface TGUIGuidebookCookingRecipe {
   // result name string
   result: string;
   // result reagent names
-  result_reagents: string[];
+  result_reagents: string;
   // result amount
   result_amount: number;
   // required item names
-  req_items: string[];
+  req_items: string;
   // required grown names
-  req_growns: string[];
+  req_growns: string;
   // required reagent names
-  req_reagents: string[];
+  req_reagents: string;
   // required cooking method
   req_method: string;
 }
@@ -51,13 +51,13 @@ export const TGUIGuidebookCookingRecipes = (props, context) => {
 
   let rendered: InfernoNode | null = null;
   let categorizedRecipes: Record<string, TGUIGuidebookCookingRecipe[]> = {};
-
+  
   switch (activeTab) {
     case 'recipeTab':
       Object.values(data.recipes).filter(
         (recipe) => !searchText || recipe.result.includes(searchText)).forEach(
         (recipe) => {
-          categorizedRecipes[recipe.req_method].push(recipe);
+            (categorizedRecipes[recipe.req_method] = categorizedRecipes[recipe.req_method] || []).push(recipe);
         });
       rendered = (
         <Stack vertical>
@@ -68,7 +68,7 @@ export const TGUIGuidebookCookingRecipes = (props, context) => {
                   <Stack vertical>
                     {catRecipes.sort((r1, r2) => r1.result.localeCompare(r2.result)).map((recipe) => (
                       <Stack.Item key={recipe.result}>
-                        {recipe.result}
+                        {recipe.result} {recipe.req_items} {recipe.req_growns} {recipe.req_reagents}
                       </Stack.Item>
                     ))}
                   </Stack>
