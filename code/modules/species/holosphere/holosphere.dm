@@ -102,6 +102,9 @@
 	// what gear slots we initialised when spawning in for our chameleon gear, so we dont try override job gear with loadout gear
 	var/list/slots_used = list()
 
+	var/actively_healing = TRUE
+	var/heal_rate = 1 // this is pretty high but they have 20 health and it costs nutrition to heal
+
 /datum/species/holosphere/on_apply(mob/living/carbon/human/H)
 	. = ..()
 	RegisterSignal(H, COMSIG_CARBON_UPDATING_OVERLAY, PROC_REF(handle_hologram_overlays))

@@ -262,7 +262,7 @@
 
 	else if(istype(L,  /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = L
-		if(H.isSynthetic() || H.wearing_rig)
+		if(H.isSynthetic() || H.wearing_rig || H.species.species_flags & CAN_USE_RECHARGE_STATION)
 			add_fingerprint(H)
 			H.forceMove(src)
 			H.update_perspective()
