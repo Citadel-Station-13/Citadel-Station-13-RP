@@ -49,8 +49,6 @@
 	var/max_amount = 50
 	/// Determines whether different stack types can merge.
 	var/stacktype_legacy
-	/// Used when directly applied to a turf.
-	var/build_type = null
 	var/uses_charge = 0
 	var/list/charge_costs = null
 	var/list/datum/matter_synth/synths = null
@@ -431,6 +429,12 @@
 	return TRUE
 
 //* Types *//
+
+/**
+ * Get our 'use as type'.
+ */
+/obj/item/stack/proc/get_use_as_type()
+	return stack_type || type
 
 /**
  * We can be used as a specific stack type.
