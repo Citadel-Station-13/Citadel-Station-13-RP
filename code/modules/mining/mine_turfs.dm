@@ -196,6 +196,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 	cut_overlays()
 	. = ..()
 
+	var/list/to_add = list()
 	//We are a wall (why does this system work like this??)
 	// todo: refactor this shitheap because this is pants on fucking head awful
 	if(density)
@@ -208,10 +209,11 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 //		icon_state = rock_icon_state
 
 		if(archaeo_overlay)
-			. += mutable_appearance(arch_icon, archaeo_overlay)
+			to_add += mutable_appearance(arch_icon, archaeo_overlay)
 		if(excav_overlay)
-			. += mutable_appearance(arch_icon, excav_overlay)
+			to_add += mutable_appearance(arch_icon, excav_overlay)
 		if(mineral)
+			to_add += image('icons/modules/mining/ore_overlay.dmi', "rock_[mineral.name]")
 
 	//We are a sand floor
 	else
@@ -220,9 +222,12 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 		icon_state = sand_icon_state
 
 		if(sand_dug)
-			. += mutable_appearance(icon, "dug_overlay")
+			to_add += mutable_appearance(icon, "dug_overlay")
 		if(overlay_detail)
-			. += mutable_appearance('icons/turf/flooring/decals.dmi', overlay_detail)
+			to_add += mutable_appearance('icons/turf/flooring/decals.dmi', overlay_detail)
+
+	if(length(to_add))
+		add_overlay(to_add)
 
 /turf/simulated/mineral/legacy_ex_act(severity)
 
