@@ -211,6 +211,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 			. += mutable_appearance(arch_icon, archaeo_overlay)
 		if(excav_overlay)
 			. += mutable_appearance(arch_icon, excav_overlay)
+		if(mineral)
 
 	//We are a sand floor
 	else
