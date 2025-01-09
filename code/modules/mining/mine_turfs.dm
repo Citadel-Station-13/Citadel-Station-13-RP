@@ -181,10 +181,9 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 	if(prob(20))
 		overlay_detail = "asteroid[rand(0,9)]"
 	if(mineral)
+		update_icon()
 		if(density)
 			MineralSpread()
-		else
-			UpdateMineral()	// this'll work because we're initialized
 
 /* custom smoothing code */
 /turf/simulated/mineral/find_type_in_direction(direction)
@@ -288,21 +287,14 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 			M.selected.action(src)
 
 /turf/simulated/mineral/proc/MineralSpread()
-	UpdateMineral()
 	if(mineral && mineral.spread)
 		for(var/trydir in GLOB.cardinal)
 			if(prob(mineral.spread_chance))
 				var/turf/simulated/mineral/target_turf = get_step(src, trydir)
 				if(istype(target_turf) && target_turf.density && !target_turf.mineral)
 					target_turf.mineral = mineral
+					target_turf.update_icon()
 					target_turf.MineralSpread()
-
-/turf/simulated/mineral/proc/UpdateMineral(update_neighbors)
-	if(!(atom_flags & ATOM_INITIALIZED))
-		return	// /Initialize() will handle us
-	clear_ore_effects()
-	if(mineral && density)
-		new /obj/effect/mineral(src, mineral)
 
 //Not even going to touch this pile of spaghetti
 /turf/simulated/mineral/attackby(obj/item/W as obj, mob/user as mob)
@@ -571,15 +563,10 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 	if(updateIcon)
 		update_appearance()
 
-/turf/simulated/mineral/proc/clear_ore_effects()
-	for(var/obj/effect/mineral/M in contents)
-		qdel(M)
-
-/turf/simulated/mineral/proc/DropMineral(var/amount)
+/turf/simulated/mineral/proc/DropMineral(amount)
 	if(!mineral)
 		return
-	clear_ore_effects()
-	var/obj/item/stack/ore/O = new mineral.ore(src,amount)
+	var/obj/item/stack/ore/O = new mineral.ore(src, amount)
 	return O
 
 /turf/simulated/mineral/proc/excavate_turf()
@@ -600,7 +587,6 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 		GetDrilled(0)
 	else
 		GetDrilled(1)
-	return
 
 /turf/simulated/mineral/proc/GetDrilled(var/artifact_fail = 0)
 
@@ -712,4 +698,4 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 	if(mineral_name && (mineral_name in GLOB.ore_data))
 		mineral = GLOB.ore_data[mineral_name]
 		if(atom_flags & ATOM_INITIALIZED)
-			UpdateMineral()
+			update_icon()
