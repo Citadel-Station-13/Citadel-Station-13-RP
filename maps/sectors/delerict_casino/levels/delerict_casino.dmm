@@ -1761,6 +1761,17 @@
 	color = "#ed983d"
 	},
 /area/sector/delerictcasino/ringforrest)
+"is" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/table/steel_reinforced,
+/obj/machinery/button/remote/blast_door{
+	id = "casinovault3";
+	color = "#1500fff8"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
 "it" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/flashlight/lamp,
@@ -2775,14 +2786,13 @@
 /area/sector/delerictcasino/ringforrest)
 "np" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/button/remote/airlock,
-/obj/machinery/button/remote/airlock{
+/obj/machinery/button/remote/blast_door{
 	id = "casinovault1";
 	color = "#ff0000f8"
 	},
-/obj/machinery/button/remote/airlock{
-	pixel_x = 16;
+/obj/machinery/button/remote/blast_door{
 	id = "casinovault2";
+	pixel_x = 15;
 	color = "#fff200f8"
 	},
 /turf/simulated/floor/tiled/monotechmaint,
@@ -4626,6 +4636,10 @@
 /mob/living/simple_mob/mechanical/corrupt_maint_drone/matriarch/casino,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/delerictcasino/vault)
+"wd" = (
+/obj/structure/window/phoronreinforced/full,
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
 "we" = (
 /obj/structure/table/hardwoodtable,
 /turf/simulated/floor/wood/indoors,
@@ -4667,6 +4681,19 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"wn" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/button/remote/blast_door{
+	id = "casinovault1";
+	color = "#ff0000f8"
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "casinovault2";
+	pixel_x = 15;
+	color = "#fff200f8"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
 "wo" = (
 /obj/structure/flora/tree/fey/small_tree/tree2{
 	color = "#ed983d"
@@ -7610,6 +7637,16 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"KT" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/window/phoronreinforced/full{
+	dir = 4
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
 "KW" = (
 /obj/structure/metal_edge,
 /obj/structure/railing/grey{
@@ -7778,24 +7815,6 @@
 /obj/structure/flora/grass/event/sparse_grass1,
 /turf/simulated/floor/wood/indoors,
 /area/sector/delerictcasino/ringforrest)
-"LJ" = (
-/obj/structure/table/steel_reinforced,
-/obj/machinery/button/remote/airlock,
-/obj/machinery/button/remote/airlock{
-	id = "casinovault1";
-	req_access = list(410);
-	name = "Red Button";
-	color = "#ff0000f8"
-	},
-/obj/machinery/button/remote/airlock{
-	pixel_x = 16;
-	id = "casinovault2";
-	req_access = list(411);
-	name = "Yellow Button";
-	color = "#fff200f8"
-	},
-/turf/simulated/floor,
-/area/sector/delerictcasino/maintenance)
 "LK" = (
 /obj/effect/floor_decal/corner/navgold/border{
 	dir = 8
@@ -9793,7 +9812,7 @@
 	dir = 4
 	},
 /obj/structure/table/steel_reinforced,
-/obj/machinery/button/remote/airlock{
+/obj/machinery/button/remote/blast_door{
 	id = "casinovault3";
 	color = "#1500fff8"
 	},
@@ -10310,19 +10329,6 @@
 	color = "#b88a3b"
 	},
 /area/sector/delerictcasino/ringforrest)
-"Yz" = (
-/obj/machinery/light/small{
-	dir = 4
-	},
-/obj/structure/table/steel_reinforced,
-/obj/machinery/button/remote/airlock{
-	id = "casinovault3";
-	req_access = list(412);
-	name = "Blue Button";
-	color = "#1500fff8"
-	},
-/turf/simulated/floor,
-/area/sector/delerictcasino/maintenance)
 "YA" = (
 /obj/structure/bed/chair/sofa/red{
 	dir = 8
@@ -29338,7 +29344,7 @@ eC
 wG
 Ex
 PT
-PT
+KT
 PT
 PT
 cU
@@ -29530,9 +29536,9 @@ Xh
 NI
 wZ
 ad
-LJ
 lX
-rB
+wd
+wn
 rB
 rB
 CU
@@ -29724,9 +29730,9 @@ VO
 bo
 bo
 bo
-Yz
-lX
-lX
+LZ
+wd
+is
 JK
 lX
 SX
@@ -38615,7 +38621,7 @@ HC
 HC
 HC
 HC
-HC
+ub
 UC
 Pl
 Pl
@@ -38809,8 +38815,8 @@ HC
 HC
 HC
 HC
-HC
-HC
+ub
+ub
 UC
 Pl
 Pl
@@ -38846,7 +38852,7 @@ HC
 HC
 HC
 HC
-HC
+ub
 UC
 Pl
 YL
@@ -39004,6 +39010,13 @@ HC
 HC
 HC
 HC
+ub
+ub
+ub
+ub
+ub
+ub
+ub
 HC
 HC
 HC
@@ -39011,38 +39024,31 @@ HC
 HC
 HC
 HC
+ub
+ub
 HC
 HC
 HC
 HC
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
 HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
+ub
+ub
+ub
+ub
 HC
 HC
 HC
@@ -39198,6 +39204,27 @@ HC
 HC
 HC
 HC
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+ub
 HC
 HC
 HC
@@ -39210,31 +39237,10 @@ HC
 HC
 HC
 HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
+ub
+ub
+ub
+ub
 HC
 HC
 HC

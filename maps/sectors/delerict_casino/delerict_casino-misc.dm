@@ -14,6 +14,7 @@ Warning: While there is no regulation regarding visiting and scavenging operatio
 	color = "#ff8c00" //orange ! :D
 	in_space = 1
 	icon_state = "fueldepot"
+	known = FALSE
 
 	initial_generic_waypoints = list(
 		"casino_pad_1a",
@@ -63,7 +64,7 @@ Warning: While there is no regulation regarding visiting and scavenging operatio
 	base_attack_cooldown =  8
 
 /mob/living/simple_mob/mechanical/combat_drone/lesser/casino
-	name = ""
+	name = "Casino Combat Drone"
 	desc = "An automated combat drone with an aged apperance."
 	color = "#ff9d00"
 	movement_cooldown = 10
