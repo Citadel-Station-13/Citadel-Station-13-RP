@@ -129,7 +129,8 @@
 /datum/species/holosphere/proc/try_transform(force = FALSE)
 	if(force || !IS_DEAD(holosphere_shell))
 		holosphere_shell.name = holosphere_shell.hologram.name
-		transform_component.try_transform()
+		if(transform_component.try_transform())
+			holosphere_shell.hologram.drop_held_items()
 
 /datum/species/holosphere/proc/try_untransform(force = FALSE)
 	if(force || !IS_DEAD(holosphere_shell.hologram))

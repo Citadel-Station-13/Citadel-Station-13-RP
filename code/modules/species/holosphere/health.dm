@@ -5,10 +5,17 @@
 	holosphere_shell.afflict_stun(hologram_death_duration)
 	spawn(hologram_death_duration)
 		if(holosphere_shell.stat != DEAD)
+			return
+		var/revive_cost = total_health * heal_rate
+		if(H.nutrition >= revive_cost)
+			H.nutrition -= revive_cost
 			try_untransform(force = TRUE)
 			H.revive(full_heal = TRUE)
 			var/regenmsg = "<span class='userdanger'>Emitters have returned online. Systems functional.</span>"
 			to_chat(holosphere_shell, regenmsg)
+		else
+			var/failuremsg = "<span class='userdanger'>Emitters unable to turn online due to insufficient battery.</span>"
+			to_chat(holosphere_shell, failuremsg)
 
 /// same way shapeshifter species heals but it does not work if you have no nutrition
 /datum/species/holosphere/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)

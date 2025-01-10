@@ -32,6 +32,8 @@
 /datum/component/custom_transform/proc/try_transform(silent = FALSE)
 	if(transformed.loc == parent)
 		transform(silent)
+		return TRUE
+	return FALSE
 
 /datum/component/custom_transform/proc/untransform(silent = FALSE)
 	var/mob/owner = parent
@@ -46,6 +48,8 @@
 	var/mob/owner = parent
 	if(owner.loc == transformed)
 		untransform(silent)
+		return TRUE
+	return FALSE
 
 /// special handling for when a human transforms taken from protean blob code
 /datum/component/custom_transform/proc/handle_human_transform()
