@@ -137,6 +137,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 /turf/simulated/mineral/floor/icerock/airmix
 	initial_gas_mix = GAS_STRING_STP
 
+// todo: don't make this the same /turf path, it doesn't make semantic sense
 /turf/simulated/mineral/proc/make_floor()
 	if(!density && !opacity)
 		return
@@ -149,10 +150,15 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 	can_build_into_floor = TRUE
 	//SSplanets.addTurf(src)	// Thank you Silicons, this was causing underground areas to have weather effects in them	- Bloop
 	queue_zone_update()
-	QUEUE_SMOOTH(src)
-	QUEUE_SMOOTH_NEIGHBORS(src)
+	smoothing_groups = null
+	canSmoothWith = null
+	if(atom_flags & ATOM_INITIALIZED)
+		SETUP_SMOOTHING()
+		QUEUE_SMOOTH(src)
+		QUEUE_SMOOTH_NEIGHBORS(src)
 	update_icon()
 
+// todo: don't make this the same /turf path, it doesn't make semantic sense
 /turf/simulated/mineral/proc/make_wall()
 	if(density && opacity)
 		return
@@ -165,8 +171,12 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 	can_build_into_floor = FALSE
 	//SSplanets.removeTurf(src)	// Thank you Silicons, this was causing underground areas to have weather effects in them as well -Bloop
 	queue_zone_update()
-	QUEUE_SMOOTH(src)
-	QUEUE_SMOOTH_NEIGHBORS(src)
+	smoothing_groups = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_MINERAL_WALLS)
+	canSmoothWith = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS)
+	if(atom_flags & ATOM_INITIALIZED)
+		SETUP_SMOOTHING()
+		QUEUE_SMOOTH(src)
+		QUEUE_SMOOTH_NEIGHBORS(src)
 	update_icon()
 
 /turf/simulated/mineral/Entered(atom/movable/M as mob|obj)
