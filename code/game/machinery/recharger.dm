@@ -26,7 +26,12 @@
 		var/obj/item/cell/C = charging.get_cell()
 		. += "<span class = 'notice'>Current charge: [C.charge] / [C.maxcharge]</span>"
 
-/obj/machinery/recharger/attackby(obj/item/G, mob/user)
+/obj/machinery/recharger/using_item_on(obj/item/using, datum/event_args/actor/clickchain/e_args, clickchain_flags)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_USAGE_ABORT)
+		return
+
+	var/obj/item/G = using
 	var/allowed = FALSE
 	for (var/allowed_type in allowed_devices)
 		if(istype(G, allowed_type))
@@ -34,71 +39,71 @@
 
 	if(allowed)
 		if(charging)
-			to_chat(user, "<span class='warning'>\A [charging] is already charging here.</span>")
+			to_chat(e_args.performer, "<span class='warning'>\A [charging] is already charging here.</span>")
 			return
 		// Checks to make sure he's not in space doing it, and that the area got proper power.
 		if(!powered())
-			to_chat(user, "<span class='warning'>\The [src] blinks red as you try to insert [G]!</span>")
+			to_chat(e_args.performer, "<span class='warning'>\The [src] blinks red as you try to insert [G]!</span>")
 			return
 		if(istype(G, /obj/item/gun/energy))
 			var/obj/item/gun/energy/E = G
 			if(E.self_recharge)
-				to_chat(user, "<span class='notice'>\The [E] has no recharge port.</span>")
+				to_chat(e_args.performer, "<span class='notice'>\The [E] has no recharge port.</span>")
 				return
 		else if(istype(G, /obj/item/modular_computer))
 			var/obj/item/modular_computer/C = G
 			if(!C.battery_module)
-				to_chat(user, "<span class='notice'>\The [C] does not have a battery installed. </span>")
+				to_chat(e_args.performer, "<span class='notice'>\The [C] does not have a battery installed. </span>")
 				return
 		else if(istype(G, /obj/item/melee/baton))
 			var/obj/item/melee/baton/B = G
 			if(B.use_external_power)
-				to_chat(user, "<span class='notice'>\The [B] has no recharge port.</span>")
+				to_chat(e_args.performer, "<span class='notice'>\The [B] has no recharge port.</span>")
 				return
 		else if(istype(G, /obj/item/flash))
 			var/obj/item/flash/F = G
 			if(F.use_external_power)
-				to_chat(user, "<span class='notice'>\The [F] has no recharge port.</span>")
+				to_chat(e_args.performer, "<span class='notice'>\The [F] has no recharge port.</span>")
 				return
 		else if(istype(G, /obj/item/weldingtool/electric))
 			var/obj/item/weldingtool/electric/EW = G
 			if(EW.use_external_power)
-				to_chat(user, "<span class='notice'>\The [EW] has no recharge port.</span>")
+				to_chat(e_args.performer, "<span class='notice'>\The [EW] has no recharge port.</span>")
 				return
 		else if(istype(G, /obj/item/ammo_magazine/microbattery))
 			var/obj/item/ammo_magazine/microbattery/maggy = G
 			if(!maggy.amount_remaining())
-				to_chat(user, "\The [G] does not have any cells installed.")
+				to_chat(e_args.performer, "\The [G] does not have any cells installed.")
 				return
 		else if(istype(G, /obj/item/gun/ballistic/microbattery))
 			var/obj/item/gun/ballistic/microbattery/gunny = G
 			if(gunny.ammo_magazine)
 				var/obj/item/ammo_magazine/microbattery/maggy = gunny.ammo_magazine
 				if(!maggy.amount_remaining())
-					to_chat(user, "\The [G] does not have any cell in its magazine installed.")
+					to_chat(e_args.performer, "\The [G] does not have any cell in its magazine installed.")
 					return
 			else
-				to_chat(user, "\The [G] does not have a magazine installed..")
+				to_chat(e_args.performer, "\The [G] does not have a magazine installed..")
 				return
 
-		if(!user.attempt_insert_item_for_installation(G, src))
+		if(!e_args.performer.attempt_insert_item_for_installation(G, src))
 			return
 		charging = G
 		update_icon()
-		user.visible_message("[user] inserts [charging] into [src].", "You insert [charging] into [src].")
+		e_args.performer.visible_message("[e_args.performer] inserts [charging] into [src].", "You insert [charging] into [src].")
 
 	else if(portable && G.is_wrench())
 		if(charging)
-			to_chat(user, "<span class='warning'>Remove [charging] first!</span>")
+			to_chat(e_args.performer, "<span class='warning'>Remove [charging] first!</span>")
 			return
 		anchored = !anchored
-		to_chat(user, "You [anchored ? "attached" : "detached"] [src].")
+		to_chat(e_args.performer, "You [anchored ? "attached" : "detached"] [src].")
 		playsound(loc, G.tool_sound, 75, 1)
-	else if(default_deconstruction_screwdriver(user, G))
+	else if(default_deconstruction_screwdriver(e_args.performer, G))
 		return
-	else if(default_deconstruction_crowbar(user, G))
+	else if(default_deconstruction_crowbar(e_args.performer, G))
 		return
-	else if(default_part_replacement(user, G))
+	else if(default_part_replacement(e_args.performer, G))
 		return
 
 /obj/machinery/recharger/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)

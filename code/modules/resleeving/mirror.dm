@@ -11,7 +11,7 @@
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	var/stored_mind = null
 	var/tmp/mob/living/carbon/human/human
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 
 //holder to prevent having to find it each time
 /mob/living/carbon/human/var/obj/item/implant/mirror/mirror
@@ -112,7 +112,7 @@
 	throw_range = 10
 	materials_base = list(MAT_STEEL = 200)
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 
 /obj/item/mirrortool
 	name = "Mirror Installation Tool"
@@ -127,7 +127,7 @@
 	throw_range = 10
 	materials_base = list(MAT_STEEL = 200)
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	var/obj/item/implant/mirror/imp = null
 
 /obj/item/mirrortool/afterattack(atom/target, mob/user, clickchain_flags, list/params)
@@ -137,7 +137,7 @@
 	if(user.zone_sel.selecting == BP_TORSO && imp == null)
 		if(imp == null && H.mirror)
 			H.visible_message("<span class='warning'>[user] is attempting remove [H]'s mirror!</span>")
-			user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+			user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN)
 			user.do_attack_animation(H)
 			var/turf/T1 = get_turf(H)
 			if (T1 && ((H == user) || do_after(user, 20)))
@@ -160,7 +160,7 @@
 				return
 			if(!H.mirror)
 				H.visible_message("<span class='warning'>[user] is attempting to implant [H] with a mirror.</span>")
-				user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+				user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN)
 				user.do_attack_animation(H)
 				var/turf/T1 = get_turf(H)
 				if (T1 && ((H == user) || do_after(user, 20)))

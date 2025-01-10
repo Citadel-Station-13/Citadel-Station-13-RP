@@ -31,7 +31,7 @@
 	possible_transfer_amounts = list(3)
 	volume = 4
 	can_be_placed_into = null
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	atom_flags = OPENCONTAINER
 	integrity_flags = NONE
 	drop_sound = 'sound/items/drop/cloth.ogg'

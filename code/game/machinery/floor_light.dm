@@ -23,8 +23,6 @@ var/list/floor_light_cache = list()
 /obj/machinery/floor_light/prebuilt
 	anchored = TRUE
 
-
-
 /obj/machinery/floor_light/attackby(obj/item/W, mob/user)
 	if(W.is_screwdriver())
 		anchored = !anchored

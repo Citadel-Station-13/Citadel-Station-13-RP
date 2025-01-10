@@ -405,7 +405,7 @@
 			return
 	return ..() //Pistolwhippin'
 
-/obj/item/gun/using_item_on(obj/item/using, datum/event_args/actor/clickchain/e_args, clickchain_flags, datum/callback/reachability_check)
+/obj/item/gun/using_item_on(obj/item/using, datum/event_args/actor/clickchain/e_args, clickchain_flags)
 	. = ..()
 	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
@@ -470,6 +470,7 @@
 	add_fingerprint(user)
 
 	user.break_cloak()
+	user.setClickCooldownLegacy()
 
 	if(!special_check(user))
 		return
@@ -495,7 +496,7 @@
 	var/shoot_time = (burst - 1)* burst_delay
 
 	//These should apparently be disabled to allow for the automatic system to function without causing near-permanant paralysis. Re-enabling them while we sort that out.
-	user.setClickCooldown(shoot_time) //no clicking on things while shooting
+	user.setClickCooldownLegacy(shoot_time) //no clicking on things while shooting
 
 	next_fire_time = world.time + shoot_time
 
@@ -545,7 +546,7 @@
 	add_attack_logs(user,target_for_log,"Fired gun [src.name] ([reflex ? "REFLEX" : "MANUAL"])")
 
 	//update timing
-	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+	user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN)
 
 	next_fire_time = world.time + fire_delay
 
@@ -1130,14 +1131,14 @@
 
 //* Context *//
 
-/obj/item/gun/context_query(datum/event_args/actor/e_args)
+/obj/item/gun/context_menu_query(datum/event_args/actor/e_args)
 	. = ..()
 	if(length(attachments))
-		.["remove-attachment"] = atom_context_tuple("Remove Attachment", image('icons/screen/radial/actions.dmi', "red-arrow-up"), 0, MOBILITY_CAN_USE)
+		.["remove-attachment"] = create_context_menu_tuple("Remove Attachment", image('icons/screen/radial/actions.dmi', "red-arrow-up"), 0, MOBILITY_CAN_USE)
 	if(safety_state != GUN_NO_SAFETY)
-		.["toggle-safety"] = atom_context_tuple("Toggle Safety", image(src), 0, MOBILITY_CAN_USE, TRUE)
+		.["toggle-safety"] = create_context_menu_tuple("Toggle Safety", image(src), 0, MOBILITY_CAN_USE, TRUE)
 
-/obj/item/gun/context_act(datum/event_args/actor/e_args, key)
+/obj/item/gun/context_menu_act(datum/event_args/actor/e_args, key)
 	. = ..()
 	if(.)
 		return

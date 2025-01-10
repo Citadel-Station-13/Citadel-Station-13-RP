@@ -3,7 +3,7 @@
 	desc = "A combined label printer, applicator, and remover, all in a single portable device. Designed to be easy to operate and use."
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "labeler0"
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NO_BLUDGEON
 	w_class = WEIGHT_CLASS_SMALL
 	drop_sound = 'sound/items/handling/tape_drop.ogg'
 	pickup_sound = 'sound/items/handling/tape_pickup.ogg'

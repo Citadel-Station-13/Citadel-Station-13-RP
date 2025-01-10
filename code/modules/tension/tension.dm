@@ -155,7 +155,7 @@
 		var/damage_guess = 0
 		if(ishuman(src) && ishuman(threatened))
 			var/mob/living/carbon/human/H = src
-			var/datum/unarmed_attack/attack = H.get_unarmed_attack(threatened, BP_TORSO)
+			var/datum/melee_attack/unarmed/attack = H.get_unarmed_attack(threatened, BP_TORSO)
 			if(!attack)
 				damage_guess += 5
 
@@ -177,7 +177,7 @@
 		threat_guess += damage_guess
 
 	else
-		var/weapon_attack_speed = get_attack_speed(I) / (1 SECOND)
+		var/weapon_attack_speed = get_attack_speed_legacy(I) / (1 SECOND)
 		var/weapon_damage = I.damage_force
 
 		for(var/datum/modifier/M in modifiers)

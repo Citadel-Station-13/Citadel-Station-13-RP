@@ -38,7 +38,7 @@
 	if(on_attack_hand(e_args))
 		return TRUE
 	if(user.a_intent == INTENT_HARM)
-		return user.melee_attack_chain(src, e_args)
+		return user.melee_attack_chain(e_args)
 	. = _try_interact(user)
 
 /**
@@ -140,7 +140,7 @@
 	if(!..())
 		return FALSE
 
-	setClickCooldown(get_attack_speed())
+	setClickCooldownLegacy(get_attack_speed_legacy())
 	A.attack_generic(src,rand(5,6),"bitten")
 
 /*

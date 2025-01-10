@@ -21,7 +21,7 @@
 	if(L.nutrition < 70)
 		to_chat(L, "<span class='notice'>You need more energy to workout with the [src]!</span>")
 	else //If they have enough nutrition and body weight, they can exercise.
-		L.setClickCooldown(cooldown)
+		L.setClickCooldownLegacy(cooldown)
 		L.nutrition -= 10 * weightloss_power
 		flick("[icon_state]2",src)
 		var/message = pick(messages)

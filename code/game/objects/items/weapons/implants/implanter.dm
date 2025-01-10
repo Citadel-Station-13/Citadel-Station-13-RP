@@ -49,7 +49,7 @@
 		if (imp)
 			target.visible_message("<span class='warning'>[user] is attempting to implant [target].</span>")
 
-			user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+			user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN)
 			user.do_attack_animation(target)
 
 			var/turf/T1 = get_turf(target)

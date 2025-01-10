@@ -60,6 +60,6 @@
 	body_temperature = T20C
 
 	unarmed_types = list( //Bones are pointy, fight me.
-		/datum/unarmed_attack/claws/strong,
-		/datum/unarmed_attack/bite/sharp,
+		/datum/melee_attack/unarmed/claws/strong,
+		/datum/melee_attack/unarmed/bite/sharp,
 		)

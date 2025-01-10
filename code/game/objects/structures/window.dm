@@ -211,7 +211,7 @@
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 
-	user.setClickCooldown(user.get_attack_speed())
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy())
 
 	playsound(loc, 'sound/effects/glassknock.ogg', 80, TRUE)
 	user.visible_message(

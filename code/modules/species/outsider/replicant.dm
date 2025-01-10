@@ -7,7 +7,7 @@
 	name = SPECIES_REPLICANT
 	name_plural = "Replicants"
 	primitive_form = SPECIES_MONKEY
-	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
+	unarmed_types = list(/datum/melee_attack/unarmed/stomp, /datum/melee_attack/unarmed/kick, /datum/melee_attack/unarmed/claws, /datum/melee_attack/unarmed/bite/sharp)
 	blurb = "The remnants of some lost or dead race's research. These seem relatively normal."
 	max_additional_languages = 3
 	whitelist_languages = LANGUAGE_ID_TERMINUS

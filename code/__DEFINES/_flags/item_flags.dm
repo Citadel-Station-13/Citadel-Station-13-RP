@@ -5,7 +5,7 @@
 /// When dropped, it calls qdel on itself
 #define ITEM_DROPDEL			(1<<1)
 /// cannot be used to do normal melee hits - this INCLUDES user overrides of it!
-#define ITEM_NOBLUDGEON			(1<<2)
+#define ITEM_NO_BLUDGEON			(1<<2)
 /// for all things that are technically items but used for various different stuff
 #define ITEM_ABSTRACT			(1<<3)
 /// is this item in a storage datum?
@@ -33,7 +33,7 @@
 DEFINE_BITFIELD(item_flags, list(
 	BITFIELD(ITEM_IN_INVENTORY),
 	BITFIELD(ITEM_DROPDEL),
-	BITFIELD(ITEM_NOBLUDGEON),
+	BITFIELD(ITEM_NO_BLUDGEON),
 	BITFIELD(ITEM_ABSTRACT),
 	BITFIELD(ITEM_IN_STORAGE),
 	BITFIELD(ITEM_THROW_UNCATCHABLE),

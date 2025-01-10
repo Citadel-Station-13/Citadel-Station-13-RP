@@ -93,7 +93,7 @@
 					"<span class='warning'>You hear shredding and ripping.</span>")
 				unbuckle()
 		else
-			user.setClickCooldown(user.get_attack_speed())
+			user.setClickCooldownLegacy(user.get_attack_speed_legacy())
 			var/text = pick("rip","tear","pull", "bite", "tug")
 			user.visible_message(\
 			"<span class='warning'>\The [user] [text]s at \the [src].</span>",\

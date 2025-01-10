@@ -16,7 +16,7 @@ var/global/list/weavable_items = list()
 	return
 
 /obj/effect/weaversilk/attackby(var/obj/item/W, var/mob/user)
-	user.setClickCooldown(user.get_attack_speed(W))
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy(W))
 
 	if(W.damage_force)
 		visible_message("<span class='warning'>\The [src] has been [W.get_attack_verb(src, user)] with \the [W][(user ? " by [user]." : ".")]</span>")

@@ -101,7 +101,7 @@
 	if (user && imps.len)
 		target.visible_message("<span class='notice'>[user] is injecting a backup implant into [target].</span>")
 
-		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+		user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN)
 		user.do_attack_animation(target)
 
 		var/turf/T1 = get_turf(target)
