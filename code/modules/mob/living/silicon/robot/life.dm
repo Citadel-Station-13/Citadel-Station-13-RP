@@ -14,8 +14,6 @@
 		update_items()
 	if (src.stat != DEAD) //still using power
 		use_power()
-		process_killswitch()
-		process_locks()
 		process_queued_alarms()
 
 /mob/living/silicon/robot/proc/clamp_values()
@@ -25,14 +23,8 @@
 		effect.set_duration_from_now(20 SECONDS)
 
 	set_sleeping(0)
-	adjustBruteLoss(0)
-	adjustToxLoss(0)
-	adjustOxyLoss(0)
-	adjustFireLoss(0)
 
 /mob/living/silicon/robot/proc/use_power()
-	// Debug only
-	// to_chat(world, "DEBUG: life.dm line 35: cyborg use_power() called at tick [controller_iteration]")
 	used_power_this_tick = 0
 	for(var/V in components)
 		var/datum/robot_component/C = components[V]
@@ -40,14 +32,14 @@
 
 	if ( cell && is_component_functioning("power cell") && src.cell.charge > 0 )
 		if(src.module_state_1)
-			cell_use_power(50) // 50W load for every enabled tool TODO: tool-specific loads
+			legacy_cell_use_power(50) // 50W load for every enabled tool TODO: tool-specific loads
 		if(src.module_state_2)
-			cell_use_power(50)
+			legacy_cell_use_power(50)
 		if(src.module_state_3)
-			cell_use_power(50)
+			legacy_cell_use_power(50)
 
 		if(lights_on)
-			cell_use_power(30) 	// 30W light. Normal lights would use ~15W, but increased for balance reasons.
+			legacy_cell_use_power(30) 	// 30W light. Normal lights would use ~15W, but increased for balance reasons.
 
 		src.has_power = 1
 	else
@@ -238,26 +230,6 @@
 	if(src.module_state_3)
 		src.module_state_3:screen_loc = ui_inv3
 	updateicon()
-
-/mob/living/silicon/robot/proc/process_killswitch()
-	if(killswitch)
-		killswitch_time --
-		if(killswitch_time <= 0)
-			if(src.client)
-				to_chat(src, "<span class='danger'>Killswitch Activated</span>")
-			killswitch = 0
-			spawn(5)
-				gib()
-
-/mob/living/silicon/robot/proc/process_locks()
-	if(weapon_lock)
-		uneq_all()
-		weaponlock_time --
-		if(weaponlock_time <= 0)
-			if(src.client)
-				to_chat(src, "<span class='danger'>Weapon Lock Timed Out!</span>")
-			weapon_lock = 0
-			weaponlock_time = 120
 
 // todo: better way
 /mob/living/silicon/robot/update_mobility()

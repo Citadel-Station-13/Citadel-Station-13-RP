@@ -311,6 +311,7 @@
 		return force_pierce? COMPONENT_THROW_HIT_PIERCE | COMPONENT_THROW_HIT_NEVERMIND : NONE
 
 /mob/living/proc/embed(var/obj/O, var/def_zone=null)
+	#warn use proper transfer item to loc proc if it's being held
 	O.loc = src
 	src.embedded += O
 	add_verb(src, /mob/proc/yank_out_object)

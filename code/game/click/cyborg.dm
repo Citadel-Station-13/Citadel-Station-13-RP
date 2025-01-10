@@ -65,7 +65,7 @@
 	//? Core cyborg code
 	// Cyborgs have no range-checking unless there is item use
 	if(!I)
-		if(bolt && !bolt.malfunction && A.loc != module)
+		if(bolt && !bolt.malfunction && A.loc != src)
 			return
 		A.add_hiddenprint(src)
 		A.attack_robot(src)

@@ -31,6 +31,6 @@
 	if(!cell)
 		cell = new /obj/item/cell/high(src) // 15k cell, as recharging stations are a lot more rare on the Surface.
 
-	laws = new /datum/ai_laws/gravekeeper()
+	laws = new /datum/ai_lawset/gravekeeper()
 
 	playsound(loc, 'sound/mecha/nominalsyndi.ogg', 75, 0)

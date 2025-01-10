@@ -1,0 +1,63 @@
+/datum/prototype/robot_module/nanotrasen/logistics
+	use_robot_module_path = /obj/item/robot_module/robot/
+	allowed_frames = list(
+	)
+
+/datum/prototype/robot_module/nanotrasen/logistics/create_mounted_item_descriptors(list/normal_out, list/emag_out)
+	if(normal_out)
+		normal_out |= list(
+			/obj/item/borg/sight/material,
+			/obj/item/tool/wrench/cyborg,
+			/obj/item/tool/screwdriver/cyborg,
+			/obj/item/storage/bag/ore,
+			/obj/item/pickaxe/borgdrill,
+			/obj/item/gun/energy/kinetic_accelerator/cyborg,
+			/obj/item/storage/bag/sheetsnatcher/borg,
+			/obj/item/gripper/miner,
+			/obj/item/mining_scanner,
+			/obj/item/pickaxe/plasmacutter,
+		)
+	return ..()
+
+#warn translate chassis below
+
+/obj/item/robot_module/robot/miner
+	name = "miner robot module"
+	channels = list("Supply" = 1)
+	networks = list(NETWORK_MINE)
+	sprites = list(
+		"NM-USE Nanotrasen" = "robotMine",
+		"Cabeiri" = "eyebot-miner",
+		"Haruka" = "marinaMN",
+		"Telemachus" = "toiletbotminer",
+		"WTOperator" = "sleekminer",
+		"XI-GUS" = "spidermining",
+		"XI-ALP" = "heavyMiner",
+		"Basic" = "Miner_old",
+		"Advanced Droid" = "droid-miner",
+		"Treadhead" = "Miner",
+		"Drone" = "drone-miner",
+		"Misato" = "tall2miner",
+		"L3P1-D0T" = "Glitterfly-Miner",
+		"Miss M" = "miss-miner",
+		"Carffin" = "coffin-Service",
+		"Coffing" = "coffin-Mining",
+		"Handy" = "handy-miner",
+		"Acheron" = "mechoid-Miner",
+		"Shellguard Noble" = "Noble-DIG",
+		"ZOOM-BA" = "zoomba-miner",
+		"W02M" = "worm-miner"
+	)
+
+/obj/item/robot_module/robot/quad/miner
+	name = "Mining Quadruped module"
+	sprites = list(
+		"F3-LINE" = "FELI-Mining",
+		"K-MINE" = "kmine",
+		"Cargo Hound" = "cargohound",
+		"Cargo Hound Dark" = "cargohounddark",
+		"Drake" = "drakemine",
+		"Otie" = "otiec"
+	)
+	channels = list("Supply" = 1)
+	can_be_pushed = 0

@@ -171,10 +171,9 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 	..()
 	if(istype(M,/mob/living/silicon/robot))
 		var/mob/living/silicon/robot/R = M
-		if(R.module)
-			for(var/obj/item/storage/bag/ore/O in list(R.module_state_1, R.module_state_2, R.module_state_3))
-				O.autoload(R)
-				return
+		for(var/obj/item/storage/bag/ore/O in list(R.module_state_1, R.module_state_2, R.module_state_3))
+			O.autoload(R)
+			return
 
 /turf/simulated/mineral/Initialize(mapload)
 	. = ..()

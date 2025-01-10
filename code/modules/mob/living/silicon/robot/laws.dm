@@ -44,7 +44,7 @@
 
 /mob/living/silicon/robot/lawsync()
 	laws_sanity_check()
-	var/datum/ai_laws/master = connected_ai && lawupdate ? connected_ai.laws : null
+	var/datum/ai_lawset/master = connected_ai && lawupdate ? connected_ai.laws : null
 	if (master)
 		master.sync(src)
 	..()

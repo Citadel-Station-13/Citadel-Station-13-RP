@@ -1,3 +1,12 @@
+/**
+ * Base definition of mob.
+ */
+/mob
+	//* Inventory *//
+	/// our inventory datum, if any.
+	/// * Set to typepath to initialize.
+	#warn hook / impl
+	var/datum/inventory/inventory
 
 /**
  * Intialize a mob
@@ -9,7 +18,7 @@
  *
  * Other stuff:
  * * Sets the mob focus to itself
- * * Generates huds
+ * * Generates hudsInven
  * * If there are any global alternate apperances apply them to this mob
  * * Intialize the transform of the mob
  */
