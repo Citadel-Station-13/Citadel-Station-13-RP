@@ -40,7 +40,9 @@
 /obj/machinery/computer/update_icon()
 	cut_overlays()
 	. = ..()
+	make_legacy_overlays()
 
+/obj/machinery/computer/proc/make_legacy_overlays()
 	var/list/to_add_overlays = list()
 
 	// Connecty //TODO: Use TG Smoothing.
@@ -72,7 +74,7 @@
 	//. += emissive_appearance(icon, overlay_state)
 	playsound(src, 'sound/machines/terminal_on.ogg', 50, 1)
 
-	add_overlay(.)
+	add_overlay(to_add_overlays)
 
 /obj/machinery/computer/power_change()
 	..()

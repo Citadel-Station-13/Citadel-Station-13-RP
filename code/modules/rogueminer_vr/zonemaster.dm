@@ -337,6 +337,7 @@
 	// Ore-bearing rocks that were mined
 	for(var/turf/T in mineral_rocks)
 		if(!istype(T, /turf/simulated/mineral))
+			continue
 		var/turf/simulated/mineral/mine_turf = T
 		if(mine_turf.mineral)
 			continue

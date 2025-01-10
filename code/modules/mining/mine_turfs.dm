@@ -12,8 +12,8 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral)
 	color = COLOR_ASTEROID_ROCK
 
 	smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = (SMOOTH_GROUP_WALLS+SMOOTH_GROUP_MINERAL_WALLS)
-	canSmoothWith = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS+SMOOTH_GROUP_MINERAL_WALLS)
+	smoothing_groups = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_MINERAL_WALLS)
+	canSmoothWith = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS)
 
 	var/sand_icon = 'icons/turf/flooring/asteroid.dmi'
 	var/rock_side_icon_state = "rock_side"
@@ -151,6 +151,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 	queue_zone_update()
 	QUEUE_SMOOTH(src)
 	QUEUE_SMOOTH_NEIGHBORS(src)
+	update_icon()
 
 /turf/simulated/mineral/proc/make_wall()
 	if(density && opacity)
@@ -166,6 +167,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 	queue_zone_update()
 	QUEUE_SMOOTH(src)
 	QUEUE_SMOOTH_NEIGHBORS(src)
+	update_icon()
 
 /turf/simulated/mineral/Entered(atom/movable/M as mob|obj)
 	..()
@@ -606,6 +608,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 	if (mineral && mineral.result_amount)
 		//if the turf has already been excavated, some of it's ore has been removed
 		DropMineral(mineral.result_amount - mined_ore)
+		mineral = null
 
 	//destroyed artifacts have weird, unpleasant effects
 	//make sure to destroy them before changing the turf though

@@ -1066,7 +1066,7 @@
 #include "code\game\atoms\atom-defense.dm"
 #include "code\game\atoms\atom-examine.dm"
 #include "code\game\atoms\atom-logging.dm"
-#include "code\game\atoms\atom_vv.dm"
+#include "code\game\atoms\atom-vv.dm"
 #include "code\game\atoms\atoms_initializing_EXPENSIVE.dm"
 #include "code\game\atoms\buckling.dm"
 #include "code\game\atoms\defense_old.dm"
