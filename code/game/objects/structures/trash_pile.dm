@@ -202,7 +202,7 @@
 					prob(1);/obj/item/clothing/shoes/syndigaloshes,
 					prob(1);/obj/item/clothing/suit/bio_suit/general,
 					prob(1);/obj/item/clothing/suit/space/emergency,
-					prob(1);/obj/item/clothing/under/harness,
+					prob(1);/obj/item/clothing/under/gear_harness,
 					prob(1);/obj/item/clothing/under/tactical,
 					prob(1);/obj/item/clothing/suit/armor/material/makeshift,
 					prob(1);/obj/item/flashlight/glowstick/orange,
