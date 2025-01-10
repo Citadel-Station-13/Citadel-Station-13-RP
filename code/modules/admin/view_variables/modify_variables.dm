@@ -1,10 +1,10 @@
-GLOBAL_LIST_INIT(VVlocked, list("vars", "datum_flags", "client", "mob"))		//Requires DEBUG
+GLOBAL_LIST_INIT(VVlocked, list("vars", "datum_flags", "client", "mob")) //Requires DEBUG
 GLOBAL_PROTECT(VVlocked)
-GLOBAL_LIST_INIT(VVicon_edit_lock, list("icon", "icon_state", "overlays", "underlays"))		//Requires DEBUG or FUN
+GLOBAL_LIST_INIT(VVicon_edit_lock, list("icon", "icon_state", "overlays", "underlays")) //Requires DEBUG or FUN
 GLOBAL_PROTECT(VVicon_edit_lock)
-GLOBAL_LIST_INIT(VVckey_edit, list("key", "ckey"))	//Requires DEBUG or SPAWN
+GLOBAL_LIST_INIT(VVckey_edit, list("key", "ckey")) //Requires DEBUG or SPAWN
 GLOBAL_PROTECT(VVckey_edit)
-GLOBAL_LIST_INIT(VVpixelmovement, list("bound_x", "bound_y", "step_x", "step_y", "step_size", "bound_height", "bound_width", "bounds"))
+GLOBAL_LIST_INIT(VVpixelmovement, list("bound_x", "bound_y", "step_x", "step_y", "step_size", "bound_height", "bound_width", "bounds")) //No editing ever.
 GLOBAL_PROTECT(VVpixelmovement)
 
 /client/proc/vv_parse_text(O, new_var)
@@ -17,13 +17,13 @@ GLOBAL_PROTECT(VVpixelmovement)
 //FALSE = no subtypes, strict exact type pathing (or the type doesn't have subtypes)
 //TRUE = Yes subtypes
 //NULL = User cancelled at the prompt or invalid type given
-/client/proc/vv_subtype_prompt(var/type)
+/client/proc/vv_subtype_prompt(type)
 	if (!ispath(type))
 		return
 	var/list/subtypes = subtypesof(type)
 	if (!subtypes || !subtypes.len)
 		return FALSE
-	if (subtypes && subtypes.len)
+	if (subtypes?.len)
 		switch(alert("Strict object type detection?", "Type detection", "Strictly this type","This type and subtypes", "Cancel"))
 			if("Strictly this type")
 				return FALSE
@@ -50,14 +50,14 @@ GLOBAL_PROTECT(VVpixelmovement)
 		var/datum/D = thing
 		i++
 		//try one of 3 methods to shorten the type text:
-		//	fancy type,
-		//	fancy type with the base type removed from the begaining,
-		//	the type with the base type removed from the begaining
+		// fancy type,
+		// fancy type with the base type removed from the begaining,
+		// the type with the base type removed from the begaining
 		var/fancytype = types[D.type]
 		if (findtext(fancytype, types[type]))
-			fancytype = copytext(fancytype, length(types[type])+1)
-		var/shorttype = copytext("[D.type]", length("[type]")+1)
-		if (length(shorttype) > length(fancytype))
+			fancytype = copytext(fancytype, length(types[type]) + 1)
+		var/shorttype = copytext("[D.type]", length("[type]") + 1)
+		if (length_char(shorttype) > length_char(fancytype))
 			shorttype = fancytype
 		if (!length(shorttype))
 			shorttype = "/"
@@ -95,15 +95,14 @@ GLOBAL_PROTECT(VVpixelmovement)
 	if (O)
 		L = L.Copy()
 
-	L.len++
-	L[L.len] = var_value
+	L += list(var_value) //var_value could be a list
 
 	switch(alert("Would you like to associate a value with the list entry?",,"Yes","No"))
 		if("Yes")
 			L[var_value] = mod_list_add_ass(O) //hehe
 	if (O)
 		if (O.vv_edit_var(objectvar, L) == FALSE)
-			to_chat(src, "Your edit was rejected by the object.")
+			to_chat(src, "Your edit was rejected by the object.", confidential = TRUE)
 			return
 	log_world("### ListVarEdit by [src]: [(O ? O.type : "/list")] [objectvar]: ADDED=[var_value]")
 	log_admin("[key_name(src)] modified [original_name]'s [objectvar]: ADDED=[var_value]")
@@ -113,7 +112,7 @@ GLOBAL_PROTECT(VVpixelmovement)
 	if(!check_rights(R_VAREDIT))
 		return
 	if(!istype(L, /list))
-		to_chat(src, "Not a List.")
+		to_chat(src, "Not a List.", confidential = TRUE)
 		return
 
 	if(L.len > 1000)
@@ -145,7 +144,7 @@ GLOBAL_PROTECT(VVpixelmovement)
 			L = L.Copy()
 			listclearnulls(L)
 			if (!O.vv_edit_var(objectvar, L))
-				to_chat(src, "Your edit was rejected by the object.")
+				to_chat(src, "Your edit was rejected by the object.", confidential = TRUE)
 				return
 			log_world("### ListVarEdit by [src]: [O.type] [objectvar]: CLEAR NULLS")
 			log_admin("[key_name(src)] modified [original_name]'s [objectvar]: CLEAR NULLS")
@@ -155,7 +154,7 @@ GLOBAL_PROTECT(VVpixelmovement)
 		if(variable == "(CLEAR DUPES)")
 			L = uniqueList(L)
 			if (!O.vv_edit_var(objectvar, L))
-				to_chat(src, "Your edit was rejected by the object.")
+				to_chat(src, "Your edit was rejected by the object.", confidential = TRUE)
 				return
 			log_world("### ListVarEdit by [src]: [O.type] [objectvar]: CLEAR DUPES")
 			log_admin("[key_name(src)] modified [original_name]'s [objectvar]: CLEAR DUPES")
@@ -165,7 +164,7 @@ GLOBAL_PROTECT(VVpixelmovement)
 		if(variable == "(SHUFFLE)")
 			L = shuffle(L)
 			if (!O.vv_edit_var(objectvar, L))
-				to_chat(src, "Your edit was rejected by the object.")
+				to_chat(src, "Your edit was rejected by the object.", confidential = TRUE)
 				return
 			log_world("### ListVarEdit by [src]: [O.type] [objectvar]: SHUFFLE")
 			log_admin("[key_name(src)] modified [original_name]'s [objectvar]: SHUFFLE")
@@ -187,7 +186,7 @@ GLOBAL_PROTECT(VVpixelmovement)
 		assoc_key = L[index]
 	var/default
 	var/variable
-	var/old_assoc_value		//EXPERIMENTAL - Keep old associated value while modifying key, if any
+	var/old_assoc_value //EXPERIMENTAL - Keep old associated value while modifying key, if any
 	if(is_normal_list)
 		if (assoc)
 			variable = L[assoc_key]
@@ -202,9 +201,9 @@ GLOBAL_PROTECT(VVpixelmovement)
 
 	default = vv_get_class(objectvar, variable)
 
-	to_chat(src, "Variable appears to be <b>[uppertext(default)]</b>.")
+	to_chat(src, "Variable appears to be <b>[uppertext(default)]</b>.", confidential = TRUE)
 
-	to_chat(src, "Variable contains: [variable]")
+	to_chat(src, "Variable contains: [variable]", confidential = TRUE)
 
 	if(default == VV_NUM)
 		var/dir_text = ""
@@ -220,7 +219,7 @@ GLOBAL_PROTECT(VVpixelmovement)
 				dir_text += "WEST"
 
 		if(dir_text)
-			to_chat(usr, "If a direction, direction is: [dir_text]")
+			to_chat(usr, "If a direction, direction is: [dir_text]", confidential = TRUE)
 
 	var/original_var = variable
 
@@ -248,7 +247,7 @@ GLOBAL_PROTECT(VVpixelmovement)
 			L.Cut(index, index+1)
 			if (O)
 				if (O.vv_edit_var(objectvar, L))
-					to_chat(src, "Your edit was rejected by the object.")
+					to_chat(src, "Your edit was rejected by the object.", confidential = TRUE)
 					return
 			log_world("### ListVarEdit by [src]: [O.type] [objectvar]: REMOVED=[html_encode("[original_var]")]")
 			log_admin("[key_name(src)] modified [original_name]'s [objectvar]: REMOVED=[original_var]")
@@ -270,7 +269,7 @@ GLOBAL_PROTECT(VVpixelmovement)
 				L[new_var] = old_assoc_value
 	if (O)
 		if (O.vv_edit_var(objectvar, L) == FALSE)
-			to_chat(src, "Your edit was rejected by the object.")
+			to_chat(src, "Your edit was rejected by the object.", confidential = TRUE)
 			return
 	log_world("### ListVarEdit by [src]: [(O ? O.type : "/list")] [objectvar]: [original_var]=[new_var]")
 	log_admin("[key_name(src)] modified [original_name]'s [objectvar]: [original_var]=[new_var]")
@@ -298,7 +297,7 @@ GLOBAL_PROTECT(VVpixelmovement)
 
 	if(param_var_name)
 		if(!(param_var_name in O.vars))
-			to_chat(src, "A variable with this name ([param_var_name]) doesn't exist in this datum ([O])")
+			to_chat(src, "A variable with this name ([param_var_name]) doesn't exist in this datum ([O])", confidential = TRUE)
 			return
 		variable = param_var_name
 
@@ -323,11 +322,11 @@ GLOBAL_PROTECT(VVpixelmovement)
 	var/default = vv_get_class(variable, var_value)
 
 	if(isnull(default))
-		to_chat(src, "Unable to determine variable type.")
+		to_chat(src, "Unable to determine variable type.", confidential = TRUE)
 	else
-		to_chat(src, "Variable appears to be <b>[uppertext(default)]</b>.")
+		to_chat(src, "Variable appears to be <b>[uppertext(default)]</b>.", confidential = TRUE)
 
-	to_chat(src, "Variable contains: [var_value]")
+	to_chat(src, "Variable contains: [var_value]", confidential = TRUE)
 
 	if(default == VV_NUM)
 		var/dir_text = ""
@@ -342,7 +341,7 @@ GLOBAL_PROTECT(VVpixelmovement)
 				dir_text += "WEST"
 
 		if(dir_text)
-			to_chat(src, "If a direction, direction is: [dir_text]")
+			to_chat(src, "If a direction, direction is: [dir_text]", confidential = TRUE)
 
 	if(autodetect_class && default != VV_NULL)
 		if (default == VV_TEXT)
@@ -379,7 +378,7 @@ GLOBAL_PROTECT(VVpixelmovement)
 
 
 	if (O.vv_edit_var(variable, var_new) == FALSE)
-		to_chat(src, "Your edit was rejected by the object.")
+		to_chat(src, "Your edit was rejected by the object.", confidential = TRUE)
 		return
 	vv_update_display(O, "varedited", VV_MSG_EDITED)
 	log_world("### VarEdit by [key_name(src)]: [O.type] [variable]=[var_value] => [var_new]")

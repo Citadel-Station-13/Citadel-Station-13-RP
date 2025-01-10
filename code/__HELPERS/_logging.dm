@@ -304,9 +304,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 	rustg_log_close_all()
 #endif
 
-/**
- * Helper procs for building detailed log lines
- */
+/* Helper procs for building detailed log lines */
 /proc/key_name(whom, include_link = null, include_name = TRUE, highlight_special_characters = TRUE)
 	var/mob/M
 	var/client/C
@@ -332,7 +330,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 		C = GLOB.directory[ckey]
 		if(C)
 			M = C.mob
-	else if(istype(whom, /datum/mind))
+	else if(istype(whom,/datum/mind))
 		var/datum/mind/mind = whom
 		ckey = mind.ckey
 		if(mind.current)
@@ -347,7 +345,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 		if(istype(whom, /atom))
 			var/atom/A = whom
 			swhom = "[A.name]"
-		else if(istype(whom, /datum))
+		else if(isdatum(whom))
 			swhom = "[whom]"
 
 		if(!swhom)
@@ -363,11 +361,11 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 	if(key)
 		if(C?.is_under_stealthmin() && !include_name)
 			if(include_link)
-				. += "<a href='?priv_msg=[REF(C)]'>"
+				. += "<a href='?priv_msg=[C.get_revealed_key()]'>"
 			. += "Administrator"
 		else
 			if(include_link)
-				. += "<a href='?priv_msg=[REF(ckey)]'>"
+				. += "<a href='?priv_msg=[ckey]'>"
 			. += key
 		if(!C)
 			. += "\[DC\]"
