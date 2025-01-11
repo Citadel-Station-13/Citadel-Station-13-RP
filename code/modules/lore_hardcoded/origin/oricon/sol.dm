@@ -12,12 +12,12 @@
 /datum/lore/character_background/origin/oricon/sol/terran
 	name = "Terra"
 	id = "terra"
-	desc = "You are from Humanity's storied homeworld of Terra. Whether you are from the arcologies spanning much of the planet's verdant surface, or it's many orbital habitats, you are likely to have been taught much about humanity's long history upon Earth."
+	desc = "You are from Humanity's storied homeworld of Terra. Whether you are from the arcologies spanning much of the planet's now verdant surface, or it's many orbital habitats, you are likely to have been taught much about humanity's long history upon Earth."
 
 /datum/lore/character_background/origin/oricon/sol/lunarian
 	name = "Luna"
 	id = "luna"
-	desc = "You hail directly from Sol's capital body, the terran moon of Luna. It's intricately built and unimaginably busy underground metropolises are the beating heart of modern human culture, and one you know very well at that."
+	desc = "You hail directly from Sol's premier trading hub, the terran moon of Luna. It's intricately built and unimaginably busy underground metropolises are one of the beating hearts of modern human culture, and one you know very well at that."
 
 
 /datum/lore/character_background/origin/oricon/sol/martian
@@ -78,7 +78,7 @@
 /datum/lore/character_background/origin/oricon/sol/titanian
 	name = "Titania"
 	id = "titania"
-	desc = "A quiet corner of Sol by most standards, Titania is your home. However, you are no stranger to having to travel away from it, as one would not have found a settlement larger than a small hydroponics-farming town back in Titania."
+	desc = "A quiet corner of Sol by most standards, Titan is your home. However, you are no stranger to having to travel away from it, as one would not have found a settlement larger than a small hydroponics-farming town back in Titania."
 
 /datum/lore/character_background/origin/oricon/sol/neptunian
 	name = "Neptune"
