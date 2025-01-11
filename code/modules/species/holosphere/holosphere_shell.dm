@@ -31,6 +31,8 @@
 	legacy_melee_damage_lower = 0
 	legacy_melee_damage_upper = 0
 
+	holder_type = /obj/item/holder/holosphere_shell
+
 	var/eye_icon_state = "holosphere_eye"
 	var/eye_color = rgb(255,255,255)
 
