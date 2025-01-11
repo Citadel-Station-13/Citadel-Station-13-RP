@@ -36,8 +36,11 @@
 	else
 		if(is_stunned())
 			. &= ~(MOBILITY_CAN_USE | MOBILITY_CAN_MOVE | MOBILITY_CAN_PICKUP | MOBILITY_CAN_STORAGE | MOBILITY_CAN_UI | MOBILITY_CAN_PULL | MOBILITY_CAN_RESIST)
-		else if(is_rooted())
-			. &= ~(MOBILITY_CAN_MOVE)
+		else
+			if(is_rooted())
+				. &= ~(MOBILITY_CAN_MOVE)
+			if(is_dazed())
+				. &= ~(MOBILITY_CAN_USE | MOBILITY_CAN_PICKUP | MOBILITY_CAN_UI | MOBILITY_CAN_STORAGE)
 		if(is_knockdown())
 			. &= ~MOBILITY_CAN_STAND
 

@@ -27,7 +27,8 @@
 	if(I)
 		setClickCooldown(100)
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living/carbon, cuff_resist), I, cuff_break = can_break_cuffs())
-	return TRUE
+		return TRUE
+	return ..()
 
 /mob/living/carbon/proc/reduce_cuff_time()
 	return FALSE
