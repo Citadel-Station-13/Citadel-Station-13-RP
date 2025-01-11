@@ -288,11 +288,11 @@
 		for(var/key in instance.material_costs)
 			var/id = material_parts[key]
 			materials[id] += instance.material_costs[key]
-		. = stored_materials.has_multiple(materials, efficiency_multiplier)
+		. = stored_materials.has_multiple(materials) / efficiency_multiplier
 	if(!.)
 		return
 	if(length(instance.reagents))
-		. = min(., stored_reagents?.has_multiple(instance.reagents, efficiency_multiplier))
+		. = min(., stored_reagents?.has_multiple(instance.reagents) / efficiency_multiplier)
 	if(!.)
 		return
 	// ingredients? return 1 at most.
