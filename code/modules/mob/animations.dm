@@ -46,18 +46,21 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 	jitteriness = min(1000, jitteriness + amount)	// store what will be new value
 													// clamped to max 1000
-	if(jitteriness > 100 && !is_jittery)
+
+	var/effective_jitteriness = get_effective_impairment_power_jitter()
+	if(effective_jitteriness > 100 && !is_jittery)
 		spawn(0)
 			jittery_process()
-
 
 /mob/proc/jittery_process()
 	if(IS_DEAD(src))//Dead people dont twitch around
 		return
 
 	is_jittery = 1
-	while(jitteriness > 100)
-		var/amplitude = min(4, jitteriness / 100)
+	var/effective_jitteriness = get_effective_impairment_power_jitter()
+	while(effective_jitteriness > 100)
+		effective_jitteriness = get_effective_impairment_power_jitter()
+		var/amplitude = min(4, effective_jitteriness / 100)
 		pixel_x = get_managed_pixel_x() + rand(-amplitude, amplitude)
 		pixel_y = get_managed_pixel_y()  + rand(-amplitude/3, amplitude/3)
 

@@ -250,7 +250,6 @@
 	icon_base = "asteroidfloor"
 	has_damage_range = null
 	flooring_flags = TURF_REMOVE_CROWBAR
-	build_type = /obj/item/stack/tile/floor/steel
 
 /datum/prototype/flooring/tiling/white
 	name = "floor"
@@ -276,12 +275,10 @@
 /datum/prototype/flooring/tiling/hydro
 	name = "floor"
 	icon_base = "hydrofloor"
-	build_type = /obj/item/stack/tile/floor/steel
 
 /datum/prototype/flooring/tiling/neutral
 	name = "floor"
 	icon_base = "neutral"
-	build_type = /obj/item/stack/tile/floor/steel
 
 /datum/prototype/flooring/tiling/freezer
 	name = "floor"

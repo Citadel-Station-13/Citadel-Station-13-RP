@@ -705,3 +705,67 @@
 	desc = "Issued to staff of the Happy Trails Company."
 	icon_state = "gaia_staff"
 	access = list(250,251,252)
+
+/obj/item/card/id/external/nebula/room1
+	name = "Card to Room 1"
+	desc = "A card that grants usage of Room 1 of the Nebula Motel"
+	icon_state = "guest"
+	job_access_type = null
+	access = list(161)
+
+/obj/item/card/id/external/nebula/room2
+	name = "Card to Room 2"
+	desc = "A card that grants usage of Room 2 of the Nebula Motel"
+	icon_state = "guest"
+	job_access_type = null
+	access = list(162)
+
+/obj/item/card/id/external/nebula/room3
+	name = "Card to Room 3"
+	desc = "A card that grants usage of Room 3 of the Nebula Motel"
+	icon_state = "guest"
+	job_access_type = null
+	access = list(163)
+
+/obj/item/card/id/external/nebula/room4
+	name = "Card to Room 4"
+	desc = "A card that grants usage of Room 4 of the Nebula Motel"
+	icon_state = "guest"
+	job_access_type = null
+	access = list(164)
+
+/obj/item/card/id/external/nebula/room5
+	name = "Card to Room 5"
+	desc = "A card that grants usage of Room 5 of the Nebula Motel"
+	icon_state = "guest"
+	job_access_type = null
+	access = list(165)
+
+/obj/item/card/id/external/nebula/room6
+	name = "Card to Room 6"
+	desc = "A card that grants usage of Room 6 of the Nebula Motel"
+	icon_state = "guest"
+	job_access_type = null
+	access = list(166)
+
+/obj/item/card/id/external/nebula/room7
+	name = "Card to Room 7"
+	desc = "A card that grants usage of Room 7 of the Nebula Motel"
+	icon_state = "guest"
+	job_access_type = null
+	access = list(167)
+
+/obj/item/card/id/external/nebula/room8
+	name = "Card to Room 8"
+	desc = "A card that grants usage of Room 8 of the Nebula Motel"
+	icon_state = "guest"
+	job_access_type = null
+	access = list(169)
+
+/obj/item/card/id/external/nebula/room9
+	name = "Card to the VIP Suit"
+	color = "#ffbd17"
+	desc = "A card that grants usage to the VIP suite of the Nebula Motel, and its Arrowhead shuttle."
+	icon_state = "guest"
+	job_access_type = null
+	access = list(170)
