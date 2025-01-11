@@ -18,4 +18,3 @@
 		icon_state = "off"
 	else
 		icon_state = "[use_power ? "on" : "off"]"
-	return ..()

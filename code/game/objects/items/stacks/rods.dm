@@ -13,6 +13,7 @@
 	materials_base = list(MAT_STEEL = SHEET_MATERIAL_AMOUNT / 2)
 	max_amount = 60
 	attack_verb = list("hit", "bludgeoned", "whacked")
+	skip_legacy_icon_update = TRUE
 
 /obj/item/stack/rods/generate_explicit_recipes()
 	. = list()
