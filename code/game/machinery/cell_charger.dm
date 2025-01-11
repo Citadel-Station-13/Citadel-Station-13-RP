@@ -23,9 +23,7 @@
 
 	if(charging && !(machine_stat & (BROKEN|NOPOWER)))
 		var/newlevel = 	round(charging.percent() * 4.0 / 99)
-		if(chargelevel != newlevel)
-			add_overlay("ccharger-o[newlevel]")
-			chargelevel = newlevel
+		add_overlay("ccharger-o[newlevel]")
 
 /obj/machinery/cell_charger/examine(mob/user, dist)
 	. = ..()
