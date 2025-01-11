@@ -514,6 +514,12 @@
 	//How quickly the species can fly up z-levels (0 is instant, 1 is 7 seconds, 0.5 is ~3.5 seconds)
 	var/flight_mod = 1
 
+	// Alpha values
+	var/minimum_hair_alpha = 255
+	var/maximum_hair_alpha = 255
+	var/minimum_body_alpha = 255
+	var/maximum_body_alpha = 255
+
 /datum/species/New()
 	//! LEGACY
 	is_subspecies = id != uid
@@ -1052,3 +1058,9 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 /datum/species/proc/assert_innate_vision()
 	if(ispath(vision_innate))
 		vision_innate = new vision_innate
+
+/**
+ * Handle specific job outfit stuff if applicable
+ */
+/datum/species/proc/handle_species_job_outfit(var/mob/living/carbon/human/H, var/datum/outfit/outfit)
+  return FALSE // this means it should continue like normal equipping the outfit

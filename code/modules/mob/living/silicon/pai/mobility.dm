@@ -34,7 +34,7 @@
 		forceMove(get_turf(src))
 
 	/// Move us into the shell and move the shell to the ground.
-	transform_component.put_in_object()
+	transform_component.transform()
 
 	update_perspective()
 	set_resting(FALSE)
@@ -83,7 +83,7 @@
 		holder.pai = null
 
 	/// Handle the actual object stuffing via the component, essentially swapping their loc's around
-	transform_component.put_in_mob()
+	transform_component.untransform()
 
 	update_perspective()
 

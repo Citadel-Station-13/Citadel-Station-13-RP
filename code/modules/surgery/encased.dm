@@ -8,6 +8,7 @@
 	blood_level = 1
 
 /datum/surgery_step/open_encased/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
+	if(!..()) return FALSE
 	if (!hasorgans(target))
 		return 0
 

@@ -11,6 +11,13 @@
 	icon_override = copy.icon_override
 	default_worn_icon = copy.default_worn_icon
 	icon_state = copy.icon_state
+	worn_render_flags = copy.worn_render_flags
+
+	var/obj/item/clothing/under/uniform_copy = copy
+	if(istype(uniform_copy))
+		var/obj/item/clothing/under/uniform_self = src
+		uniform_self.snowflake_worn_state = uniform_copy.snowflake_worn_state
+
 	color = copy.color
 	item_state = copy.item_state
 	set_body_cover_flags(copy.body_cover_flags)
@@ -85,6 +92,17 @@
 	disguise(GLOB.clothing_under[picked])
 	update_worn_icon()	//so our overlays update.
 
+/obj/item/clothing/under/chameleon/holosphere
+	name = "holographic jumpsuit"
+	desc = "A holographic jumpsuit."
+	origin_tech = list()
+
+/obj/item/clothing/under/chameleon/holosphere/emp_act(severity)
+	return ..()
+
+/obj/item/clothing/under/chameleon/holosphere/can_unequip(mob/M, slot, mob/user, flags)
+	return FALSE
+
 //*****************
 //**Chameleon Hat**
 //*****************
@@ -114,6 +132,17 @@
 	disguise(GLOB.clothing_head[picked])
 	update_worn_icon()	//so our overlays update.
 
+/obj/item/clothing/head/chameleon/holosphere
+	name = "holographic hat"
+	desc = "A holographic hat."
+	origin_tech = list()
+
+/obj/item/clothing/head/chameleon/holosphere/emp_act(severity)
+	return ..()
+
+/obj/item/clothing/head/chameleon/holosphere/can_unequip(mob/M, slot, mob/user, flags)
+	return FALSE
+
 //******************
 //**Chameleon Suit**
 //******************
@@ -142,6 +171,17 @@
 	disguise(GLOB.clothing_suit[picked])
 	update_worn_icon()	//so our overlays update.
 
+/obj/item/clothing/suit/chameleon/holosphere
+	name = "holographic suit"
+	desc = "A holographic suit."
+	origin_tech = list()
+
+/obj/item/clothing/suit/chameleon/holosphere/emp_act(severity)
+	return ..()
+
+/obj/item/clothing/suit/chameleon/holosphere/can_unequip(mob/M, slot, mob/user, flags)
+	return FALSE
+
 //*******************
 //**Chameleon Shoes**
 //*******************
@@ -168,6 +208,17 @@
 
 	disguise(GLOB.clothing_shoes[picked])
 	update_worn_icon()	//so our overlays update.
+
+/obj/item/clothing/shoes/chameleon/holosphere
+	name = "holographic shoes"
+	desc = "A holographic shoes."
+	origin_tech = list()
+
+/obj/item/clothing/shoes/chameleon/holosphere/emp_act(severity)
+	return ..()
+
+/obj/item/clothing/shoes/chameleon/holosphere/can_unequip(mob/M, slot, mob/user, flags)
+	return FALSE
 
 //**********************
 //**Chameleon Backpack**
@@ -202,6 +253,17 @@
 		var/mob/M = src.loc
 		M.update_inv_back()
 
+/obj/item/storage/backpack/chameleon/holosphere
+	name = "holographic backpack"
+	desc = "A holographic backpack."
+	origin_tech = list()
+
+/obj/item/storage/backpack/chameleon/holosphere/emp_act(severity)
+	return ..()
+
+/obj/item/storage/backpack/chameleon/holosphere/can_unequip(mob/M, slot, mob/user, flags)
+	return FALSE
+
 //********************
 //**Chameleon Gloves**
 //********************
@@ -229,6 +291,17 @@
 
 	disguise(GLOB.clothing_gloves[picked])
 	update_worn_icon()	//so our overlays update.
+
+/obj/item/clothing/gloves/chameleon/holosphere
+	name = "holographic gloves"
+	desc = "A holographic gloves."
+	origin_tech = list()
+
+/obj/item/clothing/gloves/chameleon/holosphere/emp_act(severity)
+	return ..()
+
+/obj/item/clothing/gloves/chameleon/holosphere/can_unequip(mob/M, slot, mob/user, flags)
+	return FALSE
 
 //******************
 //**Chameleon Mask**
@@ -258,6 +331,17 @@
 	disguise(GLOB.clothing_mask[picked])
 	update_worn_icon()	//so our overlays update.
 
+/obj/item/clothing/mask/chameleon/holosphere
+	name = "holographic mask"
+	desc = "A holographic mask."
+	origin_tech = list()
+
+/obj/item/clothing/mask/chameleon/holosphere/emp_act(severity)
+	return ..()
+
+/obj/item/clothing/mask/chameleon/holosphere/can_unequip(mob/M, slot, mob/user, flags)
+	return FALSE
+
 //*********************
 //**Chameleon Glasses**
 //*********************
@@ -286,6 +370,17 @@
 
 	disguise(GLOB.clothing_glasses[picked])
 	update_worn_icon()	//so our overlays update.
+
+/obj/item/clothing/glasses/chameleon/holosphere
+	name = "holographic glasses"
+	desc = "A holographic glasses."
+	origin_tech = list()
+
+/obj/item/clothing/glasses/chameleon/holosphere/emp_act(severity)
+	return ..()
+
+/obj/item/clothing/glasses/chameleon/holosphere/can_unequip(mob/M, slot, mob/user, flags)
+	return FALSE
 
 //******************
 //**Chameleon Belt**
@@ -320,6 +415,17 @@
 	if(ismob(src.loc))
 		var/mob/M = src.loc
 		M.update_inv_belt() //so our overlays update.
+
+/obj/item/storage/belt/chameleon/holosphere
+	name = "holographic belt"
+	desc = "A holographic belt."
+	origin_tech = list()
+
+/obj/item/storage/belt/chameleon/holosphere/emp_act(severity)
+	return ..()
+
+/obj/item/storage/belt/chameleon/holosphere/can_unequip(mob/M, slot, mob/user, flags)
+	return FALSE
 
 //******************
 //**Chameleon Tie**
