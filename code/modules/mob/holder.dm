@@ -126,6 +126,9 @@
 /obj/item/holder/pai
 	origin_tech = list(TECH_DATA = 2)
 
+/obj/item/holder/holosphere_shell
+	origin_tech = list(TECH_DATA = 2) // you monster.
+
 /obj/item/holder/mouse
 	w_class = WEIGHT_CLASS_TINY
 
