@@ -64,5 +64,6 @@
 	gender = NEUTER
 	uses_charge = 1
 	charge_costs = list(500)
-	stacktype = /obj/item/stack/rods
+	stack_type = /obj/item/stack/rods
+	stacktype_legacy = /obj/item/stack/rods
 	no_variants = TRUE

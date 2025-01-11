@@ -30,6 +30,11 @@
 	var/request_type
 	/// ergo: stack type, item type, tool function, etc. what this is depends on [step_type]
 	/// limited autodetection is allowed.
+	///
+	/// allowed:
+	/// * /datum/prototype/material path
+	/// * /obj/item/stack path
+	/// * /obj/item path
 	var/request
 	/// * stacks: amount
 	/// * items: amount; if 0, we just apply the item to it
@@ -157,11 +162,12 @@
 /datum/frame_step/proc/valid_interaction(datum/event_args/actor/actor, obj/item/using_tool, datum/frame2/frame_datum, obj/structure/frame2/frame)
 	switch(request_type)
 		if(FRAME_REQUEST_TYPE_INTERACT)
-			return TRUE
+			return isnull(using_tool)
 		if(FRAME_REQUEST_TYPE_ITEM)
 			return using_tool?.type == request
 		if(FRAME_REQUEST_TYPE_STACK)
-			return using_tool?.type == request
+			var/obj/item/stack/using_stack = using_tool
+			return using_stack.can_use_as_type(request)
 		if(FRAME_REQUEST_TYPE_PROC)
 			return FALSE // override this proc
 		if(FRAME_REQUEST_TYPE_TOOL)

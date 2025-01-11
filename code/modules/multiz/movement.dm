@@ -309,18 +309,12 @@
 	var/obj/structure/stairs/stairs = locate() in landing
 	if(!stairs)
 		// Now lets move there!
-		// todo: this should not use Move
-		if(!Move(landing))
+		if(!forceMove(landing))
 			return 1
 
 		var/atom/A = find_fall_target(oldloc, landing)
 		if(special_fall_handle(A) || !A || !A.check_z_impact(src))
 			return
-		var/mob/drop_mob = locate(/mob, landing)
-		if(drop_mob && !(drop_mob == src) && ismob(drop_mob) && isliving(drop_mob)) //Shitload of checks. This is because the game finds various ways to screw me over.
-			var/mob/living/drop_living = drop_mob
-			if(drop_living.dropped_onto(src))
-				return
 		fall_impact(A)
 	else
 		locationTransitForceMove(landing)
@@ -343,6 +337,8 @@
 
 	// First hit objects in the turf!
 	for(var/atom/movable/A in landing)
+		if(A.atom_flags & (ATOM_NONWORLD | ATOM_ABSTRACT))
+			continue
 		if(A != src && A.CheckFall(src))
 			return A
 
@@ -360,7 +356,7 @@
 // CheckFall landing.fall_impact(src)
 
 //! ## THE FALLING PROCS ###
-
+// todo: rework falling :/
 
 /**
  * Called on everything that falling_atom might hit.
@@ -375,6 +371,8 @@
  * If you are hit: how is it handled.
  * Return TRUE if the generic fall_impact should be called.
  * Return FALSE if you handled it yourself or if there's no effect from hitting you.
+ *
+ * todo: this is a legacy proc
  */
 /atom/proc/check_z_impact(atom/movable/falling_atom)
 	return TRUE
@@ -386,15 +384,18 @@
  * damage_max is the largest amount of damage a thing (currently only mobs and mechs) will take from falling.
  * If silent is True, the proc won't play sound or give a message.
  * If planetary is True, it's harder to stop the fall damage.
+ *
+ *  todo: rework everything lmao
  */
 /atom/movable/proc/fall_impact(atom/hit_atom, damage_min = 0, damage_max = 10, silent = FALSE, planetary = FALSE)
 	if(!silent)
 		visible_message("\The [src] falls from above and slams into \the [hit_atom]!", "You hear something slam into \the [hit_atom].")
 	for(var/atom/movable/A in src.contents)
+		if(A.atom_flags & (ATOM_NONWORLD | ATOM_ABSTRACT))
+			continue
 		A.fall_impact(hit_atom, damage_min, damage_max, silent = TRUE)
 	for(var/mob/M in buckled_mobs)
 		M.fall_impact(hit_atom, damage_min, damage_max, silent, planetary)
-
 
 /// Take damage from falling and hitting the ground.
 /mob/living/fall_impact(atom/hit_atom, damage_min = 0, damage_max = 5, silent = FALSE, planetary = FALSE)
@@ -419,15 +420,15 @@
 		if(!silent)
 			if(planetary)
 				visible_message(
-					SPAN_USERDANGER("\A [src] falls out of the sky and crashes into \the [landing]!"),
-					SPAN_USERDANGER("You fall out of the sky and crash into \the [landing]!"),
+					SPAN_USERDANGER("\A [src] falls out of the sky and crashes into [landing]!"),
+					SPAN_USERDANGER("You fall out of the sky and crash into [landing]!"),
 					SPAN_HEAR("You hear something slam into \the [landing]."),
 				)
 				var/turf/T = get_turf(landing)
 				explosion(T, 0, 1, 2)
 			else
 				visible_message(
-					SPAN_WARNING("\The [src] falls from above and slams into \the [landing]!"),
+					SPAN_WARNING("\The [src] falls from above and slams into [landing]!"),
 					SPAN_DANGER("You fall off and hit \the [landing]!"),
 					SPAN_HEAR("You hear something slam into \the [landing]."),
 				)
@@ -437,7 +438,7 @@
 		// Hits 10 times, because apparently targeting individual limbs lets certain species survive the fall from atmosphere
 		for(var/i = 1 to 10)
 			adjustBruteLoss(rand(damage_min, damage_max))
-		afflict_paralyze(20 * 4)
+		afflict_paralyze(8 SECONDS)
 		update_health()
 
 /mob/living/carbon/human/fall_impact(atom/hit_atom, damage_min, damage_max, silent, planetary)
@@ -563,12 +564,9 @@
 		var/turf/simulated/floor/ground = hit_atom
 		ground.break_tile()
 
-
+// todo: rewrite this entire file
 /mob/CheckFall(atom/movable/falling_atom)
 	return falling_atom.fall_impact(src)
 
-//! I didn't feel like removing @silicons' check in handle_fall(). @Zandario
-/mob/living/proc/dropped_onto(atom/hit_atom)
-	if(!isliving(hit_atom))
-		return FALSE
-	return TRUE
+/mob/observer/CheckFall(atom/movable/falling_atom)
+	return FALSE

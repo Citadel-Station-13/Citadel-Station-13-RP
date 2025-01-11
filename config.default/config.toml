@@ -1,0 +1,19 @@
+[[backend.logging.toggles]]
+	access = true
+	admin = true
+	adminchat = true
+	adminwarn = true
+	attack = true
+	debug = true
+	emote = true
+	game = true
+	ooc = true
+	pda = true
+	runtime = true
+	say = true
+	topic = true
+	vote = true
+	whisper = true
+
+[[backend.repository]]
+	persistence = true

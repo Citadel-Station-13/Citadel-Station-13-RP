@@ -1,6 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+// todo: deal with below; new inventory-level api, don't just mirror from mob?
+
 /**
  * returns if we're holding something in inactive hand slots
  *

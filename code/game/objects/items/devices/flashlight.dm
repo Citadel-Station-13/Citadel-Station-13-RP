@@ -410,6 +410,9 @@
 	START_PROCESSING(SSobj, src)
 	return TRUE
 
+/obj/item/flashlight/flare/survival
+	fuel = 15 MINUTES
+
 //Glowsticks
 
 /obj/item/flashlight/glowstick

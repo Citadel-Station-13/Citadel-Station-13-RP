@@ -73,7 +73,7 @@
 		CRASH("additional arg detected in /floor Initialize. turfs do not have init arguments as ChangeTurf does not accept them.")
 
 	var/datum/prototype/flooring/set_flooring_to
-	if(initial_flooring && (set_flooring_to = RSflooring.fetch(initial_flooring)))
+	if(initial_flooring && (set_flooring_to = RSflooring.fetch_local_or_throw(initial_flooring)))
 		set_flooring(set_flooring_to, TRUE)
 	else
 		// todo: these are only here under else because set flooring will trigger it

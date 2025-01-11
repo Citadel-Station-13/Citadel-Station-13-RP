@@ -32,6 +32,7 @@
 		flat_list[flat_list[i]] = TRUE
 	return flat_list
 
+//! WARNING: this no longer works; byond will NEVER de-assoc a list for json_encode purposes even if this is called!
 /proc/assoc_list_strip_value_inplace(list/input)
 	for(var/i in 1 to length(input))
 		input[input[i]] = null

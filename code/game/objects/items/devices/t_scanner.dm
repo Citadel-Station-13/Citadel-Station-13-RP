@@ -121,7 +121,7 @@
 			continue
 
 		for(var/obj/O in T.contents)
-			if(O.hides_underfloor == OBJ_UNDERFLOOR_NEVER)
+			if(!O.is_hidden_underfloor())
 				continue
 			if(!O.invisibility)
 				continue //if it's already visible don't need an overlay for it

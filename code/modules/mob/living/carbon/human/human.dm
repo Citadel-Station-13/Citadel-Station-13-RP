@@ -187,8 +187,6 @@
 				)
 
 /mob/living/carbon/human/proc/implant_loyalty(override = FALSE) // Won't override by default.
-	if(!config_legacy.use_loyalty_implants && !override) return // Nuh-uh.
-
 	var/obj/item/implant/loyalty/L = new/obj/item/implant/loyalty(src)
 	if(L.handle_implant(src, BP_HEAD))
 		L.post_implant(src)
@@ -912,6 +910,18 @@
 
 	if(L)
 		L.rupture()
+
+/mob/living/carbon/human/proc/asbestos_lung()
+	var/obj/item/organ/internal/lungs/L = internal_organs_by_name[O_LUNGS]
+
+	if(L)
+		L.damage_lung()
+
+/mob/living/carbon/human/proc/heart_attack()
+	var/obj/item/organ/internal/heart/H = internal_organs_by_name[O_HEART]
+
+	if(H)
+		H.heart_attack()
 
 /*
 /mob/living/carbon/human/verb/simulate()

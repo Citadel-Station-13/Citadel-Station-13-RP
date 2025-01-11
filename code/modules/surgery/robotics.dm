@@ -29,6 +29,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/robotics/unscrew_hatch
+	step_name = "Unscrew hatch"
+
 	allowed_tools = list(
 		/obj/item/coin = 50,
 		/obj/item/material/knife = 50
@@ -68,6 +70,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/robotics/open_hatch
+	step_name = "Open hatch"
+
 	allowed_tools = list(
 		/obj/item/surgical/retractor = 100,
 		/obj/item/surgical/retractor_primitive = 75,
@@ -106,6 +110,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/robotics/close_hatch
+	step_name = "Close hatch"
+
 	allowed_tools = list(
 		/obj/item/surgical/retractor = 100,
 		/obj/item/surgical/retractor_primitive = 75,
@@ -145,6 +151,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/robotics/repair_brute
+	step_name = "Fix structure"
+
 	allowed_tools = list(
 		/obj/item/weldingtool = 100,
 		/obj/item/pickaxe/plasmacutter = 50
@@ -186,6 +194,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/robotics/repair_burn
+	step_name = "Fix wiring"
+
 	allowed_tools = list(
 		/obj/item/stack/cable_coil = 100
 	)
@@ -234,6 +244,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/robotics/fix_organ_robotic //For artificial organs
+	step_name = "Repair systems"
+
 	allowed_tools = list(
 	/obj/item/stack/nanopaste = 100,		\
 	/obj/item/surgical/bonegel = 30, 		\
@@ -302,6 +314,7 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/robotics/detatch_organ_robotic
+	step_name = "Decouple system"
 
 	allowed_tools = list(
 	/obj/item/multitool = 100
@@ -355,6 +368,7 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/robotics/attach_organ_robotic
+	step_name = "Install system"
 
 	allowed_tools = list(
 	/obj/item/surgical/FixOVein = 100
@@ -407,6 +421,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/robotics/install_mmi
+	step_name = "Install MMI"
+
 	allowed_tools = list(
 	/obj/item/mmi = 100
 	)
@@ -485,6 +501,8 @@
  */
 
 /datum/surgery_step/robotics/install_nymph
+	step_name = "Install Nymph"
+
 	allowed_tools = list(
 		/obj/item/holder/diona = 100
 	)

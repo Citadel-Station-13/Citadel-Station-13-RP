@@ -421,7 +421,7 @@
 			state = SS_PAUSING
 
 /// Called after the config has been loaded or reloaded.
-/datum/controller/subsystem/proc/OnConfigLoad()
+/datum/controller/subsystem/proc/on_config_loaded()
 	return
 
 /**

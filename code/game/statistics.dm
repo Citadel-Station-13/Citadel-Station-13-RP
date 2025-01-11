@@ -9,7 +9,7 @@
 		log_game("SQL ERROR during population polling. Failed to connect.")
 	else
 		var/datum/db_query/query = SSdbcore.NewQuery(
-			"INSERT INTO [format_table_name("population")] (playercount, admincount, time) VALUES (:pc, :ac, NOW())",
+			"INSERT INTO [DB_PREFIX_TABLE_NAME("population")] (playercount, admincount, time) VALUES (:pc, :ac, NOW())",
 			list(
 				"pc" = sanitizeSQL(playercount),
 				"ac" = sanitizeSQL(admincount),
@@ -48,7 +48,7 @@
 		log_game("SQL ERROR during death reporting. Failed to connect.")
 	else
 		var/datum/db_query/query = SSdbcore.NewQuery(
-			"INSERT INTO [format_table_name("death")] (name, byondkey, job, special, pod, tod, laname, lakey, gender, bruteloss, fireloss, brainloss, oxyloss, coord) VALUES \
+			"INSERT INTO [DB_PREFIX_TABLE_NAME("death")] (name, byondkey, job, special, pod, tod, laname, lakey, gender, bruteloss, fireloss, brainloss, oxyloss, coord) VALUES \
 			(:name, :key, :job, :special, :pod, :time, :laname, :lakey, :gender, :bruteloss, :fireloss, :brainloss, :oxyloss, :coord)",
 			list(
 				"name" = sqlname,
@@ -98,7 +98,7 @@
 		log_game("SQL ERROR during death reporting. Failed to connect.")
 	else
 		var/datum/db_query/query = SSdbcore.NewQuery(
-			"INSERT INTO [format_table_name("death")] (name, byondkey, job, special, pod, tod, laname, lakey, gender, bruteloss, fireloss, brainloss, oxyloss, coord) VALUES \
+			"INSERT INTO [DB_PREFIX_TABLE_NAME("death")] (name, byondkey, job, special, pod, tod, laname, lakey, gender, bruteloss, fireloss, brainloss, oxyloss, coord) VALUES \
 			(:name, :key, :job, :special, :pod, :time, :laname, :lakey, :geender, :bruteloss, :fireloss, :brainloss, :oxyloss, :coord)",
 			list(
 				"name" = sqlname,
@@ -146,7 +146,7 @@
 	else
 
 		var/datum/db_query/max_query = SSdbcore.RunQuery(
-			"SELECT MAX(roundid) AS max_round_id FROM [format_table_name("feedback")]",
+			"SELECT MAX(roundid) AS max_round_id FROM [DB_PREFIX_TABLE_NAME("feedback")]",
 			list(),
 		)
 
@@ -168,7 +168,7 @@
 			var/value = item.get_value()
 
 			var/datum/db_query/query = SSdbcore.NewQuery(
-				"INSERT INTO [format_table_name("feedback")] (id, roundid, time, variable, value) VALUES (null, :rid, Now(), :var, :val)",
+				"INSERT INTO [DB_PREFIX_TABLE_NAME("feedback")] (id, roundid, time, variable, value) VALUES (null, :rid, Now(), :var, :val)",
 				list(
 					"rid" = newroundid,
 					"var" = sanitizeSQL(variable),

@@ -151,8 +151,11 @@
 		/datum/inventory_slot/inventory/id::id,
 	)
 
-/datum/species/adherent/equip_survival_gear(mob/living/carbon/human/H, extendedtank = FALSE, comprehensive = FALSE)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/crystal, /datum/inventory_slot/abstract/put_in_backpack)
+/datum/species/adherent/apply_racial_gear(mob/living/carbon/for_target, list/into_box, list/into_inv)
+	var/obj/item/storage/belt/utility/crystal/give_them_the_toolbelt = new
+	if(!for_target?.inventory?.equip_to_slot_if_possible(give_them_the_toolbelt, /datum/inventory_slot/inventory/belt))
+		into_inv += give_them_the_toolbelt
+	return ..()
 
 /datum/species/adherent/New()
 	/*equip_adjust = list(

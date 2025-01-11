@@ -28,6 +28,7 @@ Yes, this currently includes all turfs, mobs, objs, and misc things. Sorry. We'l
     - /helpers - mapping helpers like autopipe/autocable/baseturf replacers   go here
     - /landmarks - landmark icons
     - /spawners - things like window spawners
+  - /materials - material sprites
   - /mob - mob sprites
     - /bodysets - limbs and their corrosponding sprite accessories & markings & miscellaneous.
                   used in the abstraction of limb sprite from limb definition.

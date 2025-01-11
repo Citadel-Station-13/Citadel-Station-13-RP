@@ -3,7 +3,6 @@
 
 /atom/movable/screen
 	appearance_flags = PIXEL_SCALE | NO_CLIENT_COLOR
-	atom_colouration_system = FALSE
 	plane = HUD_PLANE
 	layer = HUD_LAYER_BASE
 	var/obj/master = null	//A reference to the object in the slot. Grabs or items, generally.
