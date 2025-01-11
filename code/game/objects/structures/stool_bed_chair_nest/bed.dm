@@ -7,6 +7,7 @@
 /*
  * Beds
  */
+// todo: /bed/material, same with chairs, same with tables, etc, because what the fuck is going on
 /obj/structure/bed
 	name = "bed"
 	desc = "This is used to lie in, sleep in or strap on."
@@ -19,6 +20,7 @@
 	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
 	buckle_dir = SOUTH
 	buckle_lying = 90
+
 	// todo: what a dumpster fire, unfuck / fully abstract this using new API,
 	//       or get rid of it. wtf.
 	var/datum/prototype/material/material
@@ -26,6 +28,7 @@
 	var/base_icon = "bed"
 	var/material_color = 1
 	var/can_buckle = TRUE
+	var/legacy_do_not_use_material = FALSE
 
 /obj/structure/bed/Initialize(mapload, new_material, new_padding_material)
 	. = ..(mapload)
@@ -42,7 +45,7 @@
 
 // Reuse the cache/code from stools, todo maybe unify.
 /obj/structure/bed/update_icon()
-	if(!material)
+	if(!material || legacy_do_not_use_material)
 		return ..()
 	cut_overlays()
 	. = ..()
@@ -194,9 +197,14 @@
 	base_icon_state = "rollerbed"
 	anchored = FALSE
 	surgery_odds = 75
+	legacy_do_not_use_material = TRUE
 
 	var/bedtype = /obj/structure/bed/roller
 	var/rollertype = /obj/item/roller
+
+/obj/structure/bed/roller/Initialize(mapload, new_material, new_padding_material)
+	. = ..()
+	material = null
 
 /obj/structure/bed/roller/adv
 	name = "advanced roller bed"
