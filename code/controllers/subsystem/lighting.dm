@@ -162,7 +162,7 @@ SUBSYSTEM_DEF(lighting)
 		//               check QDELING, light sources are LETMELIVE so shouldn't be being
 		//               harddel'd
 		if(QDELING(L))
-
+			continue
 
 		if (L.needs_update != LIGHTING_NO_UPDATE)
 			total_ss_updates += 1
