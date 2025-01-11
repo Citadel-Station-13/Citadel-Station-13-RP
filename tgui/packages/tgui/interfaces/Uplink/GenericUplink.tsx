@@ -1,6 +1,7 @@
 import { BooleanLike } from 'common/react';
+
 import { useLocalState, useSharedState } from '../../backend';
-import { Box, Button, Input, Section, Tabs, NoticeBox, Stack } from '../../components';
+import { Box, Button, Input, NoticeBox, Section, Stack, Tabs } from '../../components';
 
 type GenericUplinkProps = {
   readonly currency?: string | JSX.Element,

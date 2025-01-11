@@ -1,7 +1,8 @@
 import { Fragment } from 'inferno';
-import { formatCommaNumber } from '../format';
+
 import { useBackend } from "../backend";
 import { Box, Button, Flex, LabeledList, ProgressBar, Section } from "../components";
+import { formatCommaNumber } from '../format';
 import { Window } from "../layouts";
 
 export const DishIncubator = (props, context) => {

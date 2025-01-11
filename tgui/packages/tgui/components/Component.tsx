@@ -7,6 +7,7 @@
 
 import { InfernoNode } from "inferno";
 
-export type ComponentProps = {
+// essentialy react propswithchildren
+export type PropsWithChildren = {
   children?: InfernoNode;
 }

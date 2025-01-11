@@ -2,6 +2,7 @@ import { clamp } from 'common/math';
 import { randomInteger, randomNumber, randomPick, randomProb } from 'common/random';
 import { useDispatch } from 'common/redux';
 import { Component } from 'inferno';
+
 import { resolveAsset } from '../assets';
 import { backendSuspendStart, useBackend } from '../backend';
 import { Icon } from '../components';

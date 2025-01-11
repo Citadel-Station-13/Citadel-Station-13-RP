@@ -1,7 +1,8 @@
+import { filter, sortBy } from 'common/collections';
+
 import { useBackend, useSharedState } from "../backend";
-import { Button, Flex, LabeledList, ProgressBar, Section, Tabs, Stack } from "../components";
+import { Button, Flex, LabeledList, ProgressBar, Section, Stack, Tabs } from "../components";
 import { Window } from "../layouts";
-import { sortBy, filter } from 'common/collections';
 
 export const ICPrinter = (props, context) => {
   const { act, data } = useBackend(context);

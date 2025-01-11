@@ -3,8 +3,9 @@
 import { filter } from 'common/collections';
 import { decodeHtmlEntities, toTitleCase } from 'common/string';
 import { Fragment } from 'inferno';
+
 import { useBackend, useLocalState } from "../backend";
-import { Box, ByondUi, Button, Flex, Icon, LabeledList, Input, ProgressBar, Section, Table } from "../components";
+import { Box, Button, ByondUi, Flex, Icon, Input, LabeledList, ProgressBar, Section, Table } from "../components";
 import { Window } from "../layouts";
 import { CrewManifestContent } from './CrewManifest';
 

@@ -1,8 +1,9 @@
+import { filter } from 'common/collections';
 import { Fragment } from 'inferno';
+
 import { useBackend, useSharedState } from "../backend";
 import { Box, Button, LabeledList, Section, Tabs } from "../components";
 import { Window } from "../layouts";
-import { filter } from 'common/collections';
 
 export const ResearchServerController = (props, context) => {
   const { act, data } = useBackend(context);

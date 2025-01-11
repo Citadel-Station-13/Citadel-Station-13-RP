@@ -66,7 +66,7 @@ const diffMap = {
   },
   1: {
     icon: 'stop-circle',
-    color: null,
+    color: undefined,
   },
   2: {
     icon: 'check-circle',

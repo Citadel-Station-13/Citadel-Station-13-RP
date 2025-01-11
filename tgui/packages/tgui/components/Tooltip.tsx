@@ -2,9 +2,9 @@ import { createPopper, Placement, VirtualElement } from '@popperjs/core';
 import { Component, findDOMfromVNode, InfernoNode, render } from 'inferno';
 
 type TooltipProps = {
-  readonly children?: InfernoNode;
-  readonly content: InfernoNode;
-  readonly position?: Placement;
+  children?: InfernoNode;
+  content: InfernoNode;
+  position?: Placement;
 };
 
 type TooltipState = {
@@ -20,7 +20,7 @@ const DEFAULT_OPTIONS = {
   ],
 };
 
-const NULL_RECT_INTERNAL = {
+const NULL_RECT: DOMRect = {
   width: 0,
   height: 0,
   top: 0,
@@ -29,11 +29,7 @@ const NULL_RECT_INTERNAL = {
   left: 0,
   x: 0,
   y: 0,
-};
-
-const NULL_RECT = {
-  ...NULL_RECT_INTERNAL,
-  toJSON: () => JSON.stringify(NULL_RECT_INTERNAL),
+  toJSON: () => null,
 };
 
 export class Tooltip extends Component<TooltipProps, TooltipState> {
@@ -61,7 +57,7 @@ export class Tooltip extends Component<TooltipProps, TooltipState> {
     // This code is copied from `findDOMNode` in inferno-extras.
     // Because this component is written in TypeScript, we will know
     // immediately if this internal variable is removed.
-    return findDOMfromVNode(this.$LI, true);
+    return findDOMfromVNode(this.$LI, true) as Element;
   }
 
   componentDidMount() {
@@ -107,9 +103,7 @@ export class Tooltip extends Component<TooltipProps, TooltipState> {
       return;
     }
 
-    render(
-      <span>{this.props.content}</span>,
-      renderedTooltip,
+    render(<span>{this.props.content}</span>, renderedTooltip,
       () => {
         let singletonPopper = Tooltip.singletonPopper;
         if (singletonPopper === undefined) {

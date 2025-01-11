@@ -1,8 +1,9 @@
 import { sortBy } from 'common/collections';
 import { capitalize, decodeHtmlEntities } from 'common/string';
 import { Fragment } from 'inferno';
+
 import { useBackend, useLocalState } from "../backend";
-import { Box, Button, ByondUi, Flex, LabeledList, Section, Tabs, ColorBox } from "../components";
+import { Box, Button, ByondUi, ColorBox, Flex, LabeledList, Section, Tabs } from "../components";
 import { Window } from "../layouts";
 
 export const AppearanceChanger = (props, context) => {

@@ -48,7 +48,7 @@ export const GuestPassTerminal = (props, context) => {
                 <LabeledList.Item label="Duration (minutes)">
                   <NumberInput width="100%" step={1} value={data.duration}
                     minValue={data.durationMin} maxValue={data.durationMax}
-                    onChange={(e, val) => act('duration', { value: val })} />
+                    onChange={(val) => act('duration', { value: val })} />
                 </LabeledList.Item>
               </LabeledList>
             </Section>

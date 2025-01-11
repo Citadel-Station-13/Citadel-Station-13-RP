@@ -8,23 +8,32 @@ const createBabelConfig = options => {
   const { presets = [], plugins = [], removeConsole } = options;
   return {
     presets: [
-      [require.resolve('@babel/preset-typescript'), {
-        allowDeclareFields: true,
-      }],
-      [require.resolve('@babel/preset-env'), {
-        modules: 'commonjs',
-        useBuiltIns: 'entry',
-        corejs: '3',
-        spec: false,
-        loose: true,
-        targets: [],
-      }],
+      [
+        require.resolve('@babel/preset-typescript'),
+        {
+          allowDeclareFields: true,
+        },
+      ],
+      [
+        require.resolve('@babel/preset-env'),
+        {
+          modules: 'commonjs',
+          useBuiltIns: 'entry',
+          corejs: '3.3.2',
+          spec: false,
+          loose: true,
+          targets: [],
+        },
+      ],
       ...presets,
     ].filter(Boolean),
     plugins: [
-      [require.resolve('@babel/plugin-proposal-class-properties'), {
-        loose: true,
-      }],
+      [
+        require.resolve('@babel/plugin-transform-class-properties'),
+        {
+          loose: true,
+        },
+      ],
       require.resolve('@babel/plugin-transform-jscript'),
       require.resolve('babel-plugin-inferno'),
       removeConsole && require.resolve('babel-plugin-transform-remove-console'),
@@ -36,7 +45,7 @@ const createBabelConfig = options => {
 
 module.exports = api => {
   api.cache(true);
-  const mode = process.env['NODE_ENV'];
+  const mode = process.env.NODE_ENV;
   return createBabelConfig({ mode });
 };
 

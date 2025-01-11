@@ -3,6 +3,7 @@ import { flow } from 'common/fp';
 import { classes } from 'common/react';
 import { capitalize } from 'common/string';
 import { Fragment } from 'inferno';
+
 import { resolveAsset } from '../assets';
 import { useBackend } from '../backend';
 import { Box, Button, Collapsible, Dimmer, Divider, Dropdown, Flex, Icon, LabeledList, NumberInput, ProgressBar, Section } from '../components';
@@ -492,7 +493,7 @@ const StorageMutations = (props, context) => {
 const StorageChromosomes = (props, context) => {
   const { data, act } = useBackend(context);
   const chromos = data.chromoStorage ?? [];
-  const uniqueChromos = uniqBy(chromo => chromo.Name)(chromos);
+  const uniqueChromos = uniqBy(chromos, chromo => chromo.Name);
   const chromoName = data.view.storageChromoName;
   const chromo = chromos.find(chromo => chromo.Name === chromoName);
   return (

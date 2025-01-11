@@ -1,7 +1,7 @@
-import { useBackend, useLocalState } from "../backend";
 import { BooleanLike } from "../../common/react";
+import { useBackend, useLocalState } from "../backend";
+import { Box, Button, Icon, Input, LabeledList, Section, Table } from "../components";
 import { Window } from "../layouts";
-import { Section, Button, LabeledList, Table, Input, Box, Icon } from "../components";
 
 type GpsContext = {
   on: BooleanLike,

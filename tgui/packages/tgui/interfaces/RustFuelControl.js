@@ -1,6 +1,6 @@
 import { useBackend } from "../backend";
-import { Window } from "../layouts";
 import { Button, Section, Table } from "../components";
+import { Window } from "../layouts";
 
 export const RustFuelControl = (props, context) => (
   <Window
