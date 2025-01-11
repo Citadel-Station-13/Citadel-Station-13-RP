@@ -20,17 +20,21 @@ REPOSITORY_DEF(flooring)
 	if(!.)
 		return
 	if(ispath(instance.build_type, /obj/item/stack))
-		LAZYADD(build_item_lookup[instance.build_type], instance)
+		if(build_item_lookup?[instance.build_type])
+			stack_trace("attempted to load [instance.id], but build type [instance.build_type] collides with [build_item_lookup?[instance.build_type]:id]. suppressing [instance.id]'s build_type.")
+		LAZYSET(build_item_lookup, instance.build_type, instance)
 	else if(ispath(instance.build_type, /datum/prototype/material))
 		var/datum/prototype/material/casted_material = instance.build_type
-		LAZYADD(build_material_lookup[initial(casted_material.id)], instance)
+		if(build_material_lookup?[casted_material.id])
+			stack_trace("attempted to load [instance.id], but material [casted_material.id] collides with [build_material_lookup?[casted_material.id]:id]. suppressing [instance.id]'s build_type.")
+		LAZYSET(build_material_lookup, initial(casted_material.id), instance)
 
 /datum/controller/repository/flooring/unload(datum/prototype/flooring/instance)
 	. = ..()
 	if(!.)
 		return
 	if(ispath(instance.build_type, /obj/item/stack))
-		LAZYREMOVE(build_item_lookup[instance.build_type], instance)
+		LAZYREMOVE(build_item_lookup, instance.build_type)
 	else if(ispath(instance.build_type, /datum/prototype/material))
 		var/datum/prototype/material/casted_material = instance.build_type
-		LAZYREMOVE(build_material_lookup[initial(casted_material.id)], instance)
+		LAZYREMOVE(build_material_lookup, initial(casted_material.id))

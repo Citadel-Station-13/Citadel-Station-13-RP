@@ -472,7 +472,7 @@
 	var/mob/living/carbon/human/H = ishuman(M)? M : null
 	var/datum/inventory_slot/slot_meta
 	if(isnull(slot_or_id))
-		slot_or_id = worn_slot
+		slot_or_id = inv_slot_or_index
 	if(isnum(slot_or_id))
 		slot_meta = resolve_inventory_slot((slot_or_id % 2)? /datum/inventory_slot/abstract/hand/left : /datum/inventory_slot/abstract/hand/right)
 	else

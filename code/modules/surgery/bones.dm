@@ -8,6 +8,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/glue_bone
+	step_name = "Glue bone"
+
 	allowed_tools = list(
 		/obj/item/surgical/bonegel = 100
 	)
@@ -50,6 +52,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/set_bone
+	step_name = "Set bone"
+
 	allowed_tools = list(
 		/obj/item/surgical/bonesetter = 100,
 		/obj/item/surgical/bonesetter_primitive = 60
@@ -95,6 +99,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/mend_skull
+	step_name = "Mend skull"
+
 	allowed_tools = list(
 		/obj/item/surgical/bonesetter = 100,
 		/obj/item/surgical/bonesetter_primitive = 60
@@ -135,6 +141,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/finish_bone
+	step_name = "Finish bone"
+
 	allowed_tools = list(
 		/obj/item/surgical/bonegel = 100
 	)
@@ -176,6 +184,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/clamp_bone
+	step_name = "Clamp bone"
+
 	allowed_tools = list(
 		/obj/item/surgical/bone_clamp = 100
 		)
