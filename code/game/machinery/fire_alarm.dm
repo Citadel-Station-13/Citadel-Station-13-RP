@@ -53,6 +53,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm/alarms_hidden, 21)
 
 /obj/machinery/fire_alarm/update_icon()
 	cut_overlays()
+	. = ..()
 	add_overlay("casing")
 
 	if(panel_open)

@@ -33,6 +33,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/item/radio/intercom, 28)
 
 /obj/item/radio/intercom/update_icon(updates)
 	cut_overlays()
+	. = ..()
 	if(!on)
 		icon_state = "intercom-p"
 	else

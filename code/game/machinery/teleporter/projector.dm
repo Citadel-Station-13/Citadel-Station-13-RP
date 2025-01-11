@@ -77,6 +77,7 @@
 
 /obj/machinery/tele_projector/update_icon()
 	cut_overlays()
+	. = ..()
 	if(engaged)
 		var/image/I = image(icon, src, "[initial(icon_state)]_active_overlay")
 		I.plane = ABOVE_LIGHTING_PLANE

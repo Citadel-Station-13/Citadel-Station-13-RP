@@ -737,6 +737,7 @@
 
 /obj/machinery/cryopod/robot/door/gateway/update_icon()
 	cut_overlays()
+	. = ..()
 	if(occupant)
 		var/image/I = image(icon, src, "[base_icon_state]_active_overlay")
 		I.plane = ABOVE_LIGHTING_PLANE

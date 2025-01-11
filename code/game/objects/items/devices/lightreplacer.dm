@@ -161,8 +161,8 @@
 	return new_bulbs
 
 /obj/item/lightreplacer/update_icon()
+	. = ..()
 	icon_state = "lightreplacer[emagged]"
-
 
 /obj/item/lightreplacer/proc/Use(var/mob/user)
 

@@ -15,9 +15,9 @@
 	. = ..()
 	cell = new(src)
 
-/obj/machinery/floodlight/update_icon()
-	cut_overlays()
+/obj/machinery/floodlight/update_icon_state()
 	icon_state = "flood[open ? "o" : ""][open && cell ? "b" : ""]0[on]"
+	return ..()
 
 /obj/machinery/floodlight/process(delta_time)
 	if(!on)

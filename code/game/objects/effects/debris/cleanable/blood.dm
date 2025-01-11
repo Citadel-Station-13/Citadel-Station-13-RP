@@ -68,6 +68,7 @@ var/global/list/image/splatter_cache=list()
 	addtimer(CALLBACK(src, PROC_REF(dry)), BLOOD_DRYING_TIME * (amount + 1))
 
 /obj/effect/debris/cleanable/blood/update_icon()
+	. = ..()
 	if(basecolor == "rainbow")
 		basecolor = "#[get_random_colour(1)]"
 	add_atom_color(basecolor)
@@ -206,6 +207,8 @@ var/global/list/image/splatter_cache=list()
 	var/fleshcolor = "#FFFFFF"
 
 /obj/effect/debris/cleanable/blood/gibs/update_icon()
+	cut_overlays()
+	. = ..()
 
 	var/image/giblets = new(base_icon, "[icon_state]_flesh", dir)
 	if(!fleshcolor || fleshcolor == "rainbow")
@@ -217,7 +220,6 @@ var/global/list/image/splatter_cache=list()
 	blood.Blend(basecolor,ICON_MULTIPLY)
 
 	icon = blood
-	cut_overlays()
 	add_overlay(giblets)
 
 /obj/effect/debris/cleanable/blood/gibs/up

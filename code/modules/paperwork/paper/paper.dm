@@ -74,12 +74,11 @@
 			updateinfolinks()
 
 /obj/item/paper/update_icon()
-	if(icon_state == "paper_talisman")
-		return
+	cut_overlays()
+	. = ..()
 	if(info)
-		icon_state = "paper_words"
-		return
-	icon_state = "paper"
+		// todo: be like, `-content` or something not `_words`
+		add_overlay("[icon_state]_words")
 
 /obj/item/paper/proc/update_space(var/new_text)
 	if(!new_text)

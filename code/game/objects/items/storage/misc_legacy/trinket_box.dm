@@ -18,6 +18,7 @@
 
 /obj/item/storage/trinketbox/update_icon()
 	cut_overlays()
+	. = ..()
 	if(open)
 		icon_state = open_state
 

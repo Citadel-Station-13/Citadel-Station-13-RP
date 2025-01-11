@@ -45,6 +45,7 @@
 
 /obj/item/flamethrower/update_icon()
 	cut_overlays()
+	. = ..()
 
 	var/list/overlays_to_add = list()
 	if(igniter)
@@ -58,8 +59,6 @@
 		item_state = "flamethrower_0"
 
 	add_overlay(overlays_to_add)
-
-	return
 
 /obj/item/flamethrower/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return

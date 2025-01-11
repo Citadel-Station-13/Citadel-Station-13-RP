@@ -20,8 +20,9 @@
 
 	var/datum/radio_frequency/radio_connection
 
-/obj/machinery/air_sensor/update_icon()
+/obj/machinery/air_sensor/update_icon_state()
 	icon_state = "gsensor[on]"
+	return ..()
 
 /obj/machinery/air_sensor/process(delta_time)
 	if(on)

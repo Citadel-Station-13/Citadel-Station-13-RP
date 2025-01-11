@@ -107,6 +107,7 @@
 	return(BRUTELOSS)
 
 /obj/item/chainsaw/update_icon()
+	. = ..()
 	if(on)
 		icon_state = "chainsaw1"
 		item_state = "chainsaw1"
@@ -160,6 +161,7 @@
 	update_icon()
 
 /obj/item/chainsaw/chainsword/update_icon()
+	. = ..()
 	if(on)
 		icon_state = "chainsword1"
 		item_state = "chainsword1"

@@ -17,21 +17,13 @@
 	circuit = /obj/item/circuitboard/cell_charger
 
 /obj/machinery/cell_charger/update_icon()
+	cut_overlays()
 	icon_state = "ccharger[charging ? 1 : 0]"
+	. = ..()
 
 	if(charging && !(machine_stat & (BROKEN|NOPOWER)))
-
 		var/newlevel = 	round(charging.percent() * 4.0 / 99)
-		//to_chat(world, "nl: [newlevel]")
-
-		if(chargelevel != newlevel)
-
-			cut_overlays()
-			add_overlay("ccharger-o[newlevel]")
-
-			chargelevel = newlevel
-	else
-		cut_overlays()
+		add_overlay("ccharger-o[newlevel]")
 
 /obj/machinery/cell_charger/examine(mob/user, dist)
 	. = ..()

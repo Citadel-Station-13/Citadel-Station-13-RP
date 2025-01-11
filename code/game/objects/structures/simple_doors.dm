@@ -117,7 +117,7 @@
 	isSwitchingStates = 0
 	update_nearby_tiles()
 
-/obj/structure/simple_door/update_icon()
+/obj/structure/simple_door/update_icon_state()
 	var/datum/prototype/material/material = get_primary_material()
 	if(isnull(material))
 		icon_state = state? "open" : "closed"
@@ -126,6 +126,7 @@
 		icon_state = "[material.door_icon_base]open"
 	else
 		icon_state = material.door_icon_base
+	return ..()
 
 /obj/structure/simple_door/attackby(obj/item/W as obj, mob/user as mob)
 	if(user.a_intent == INTENT_HARM)

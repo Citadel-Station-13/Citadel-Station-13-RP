@@ -159,11 +159,12 @@
 				if(src != T)
 					links |= T
 
-/obj/machinery/telecomms/update_icon()
+/obj/machinery/telecomms/update_icon_state()
 	if(on)
 		icon_state = initial(icon_state)
 	else
 		icon_state = "[initial(icon_state)]_off"
+	return ..()
 
 /obj/machinery/telecomms/proc/update_power()
 	if(toggled)

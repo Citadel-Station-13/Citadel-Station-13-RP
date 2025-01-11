@@ -194,6 +194,7 @@
 		return 0
 
 /obj/machinery/portable_atmospherics/canister/update_icon()
+	. = ..()
 /*
 update_flag
 1 = holding

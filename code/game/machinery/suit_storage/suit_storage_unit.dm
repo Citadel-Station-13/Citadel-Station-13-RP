@@ -42,7 +42,7 @@
 	if(boots_stored_TYPE)
 		boots_stored = new boots_stored_TYPE(src)
 
-/obj/machinery/suit_storage_unit/update_icon()
+/obj/machinery/suit_storage_unit/update_icon_state()
 	var/hashelmet = 0
 	var/hassuit = 0
 	var/hashuman = 0
@@ -53,6 +53,7 @@
 	if(occupant)
 		hashuman = 1
 	icon_state = "suitstorage[hashelmet][hassuit][hashuman][isopen][islocked][isUV][ispowered][isbroken][issuperUV]"
+	return ..()
 
 /obj/machinery/suit_storage_unit/power_change()
 	..()

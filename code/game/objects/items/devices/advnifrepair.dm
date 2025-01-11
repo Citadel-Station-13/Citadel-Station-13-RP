@@ -32,6 +32,7 @@
 			return
 
 /obj/item/nifrepairer/update_icon()
+	. = ..()
 	if(supply.total_volume)
 		icon_state = "[initial(icon_state)]2"
 	else

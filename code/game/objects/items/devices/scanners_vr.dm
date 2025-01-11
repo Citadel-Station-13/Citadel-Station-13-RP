@@ -265,9 +265,8 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 				return
 		to_chat(usr,"<span class='notice'>Unable to find that mind in Soulcatcher!</span>")
 
-
-
 /obj/item/sleevemate/update_icon()
+	. = ..()
 	if(stored_mind)
 		icon_state = "[initial(icon_state)]_on"
 	else

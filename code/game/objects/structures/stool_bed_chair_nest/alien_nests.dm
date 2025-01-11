@@ -10,9 +10,6 @@
 	integrity = 100
 	integrity_max = 100
 
-/obj/structure/bed/nest/update_icon()
-	return
-
 /obj/structure/bed/nest/mob_resist_buckle(mob/M, semantic)
 	. = ..()
 	if(!.)

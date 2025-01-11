@@ -336,13 +336,13 @@
 
 	// Ore-bearing rocks that were mined
 	for(var/turf/T in mineral_rocks)
-		var/has_minerals = 0
-		for(var/atom/I in T.contents)
-			if(istype(I,/obj/effect/mineral))
-				has_minerals++
-				break
-		if(has_minerals == 0)
-			tally += RM_DIFF_VALUE_ORE
+		if(!istype(T, /turf/simulated/mineral))
+			continue
+		var/turf/simulated/mineral/mine_turf = T
+		if(mine_turf.mineral)
+			continue
+		// no mineral..
+		tally += RM_DIFF_VALUE_ORE
 
 	mineral_rocks.Cut()	// For good measure, to prevent rescoring.
 

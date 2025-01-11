@@ -101,6 +101,7 @@
 	update_icon()
 
 /obj/item/card_fluff/update_icon()
+	. = ..()
 	if(!sprite_stack || !istype(sprite_stack) || sprite_stack == list(""))
 		icon = base_icon
 		icon_state = initial(icon_state)

@@ -88,11 +88,13 @@
 	//QDEL_NULL(soundloop)
 	return ..()
 
-/obj/machinery/atmospherics/component/unary/vent_pump/update_icon(safety = 0)
+/obj/machinery/atmospherics/component/unary/vent_pump/update_icon()
+	cut_overlays()
+	. = ..()
+
 	if(!check_icon_cache())
 		return
 
-	cut_overlays()
 
 	var/vent_icon = "vent"
 

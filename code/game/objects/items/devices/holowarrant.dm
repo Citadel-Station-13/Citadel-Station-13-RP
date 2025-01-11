@@ -61,6 +61,7 @@
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/holowarrant/update_icon()
+	. = ..()
 	if(active)
 		icon_state = "holowarrant_filled"
 	else

@@ -104,11 +104,11 @@
 		else if(isnum(key))
 			scrub_groups |= key
 
-/obj/machinery/atmospherics/component/unary/vent_scrubber/update_icon(safety = 0)
+/obj/machinery/atmospherics/component/unary/vent_scrubber/update_icon()
+	cut_overlays()
+	. = ..()
 	if(!check_icon_cache())
 		return
-
-	cut_overlays()
 
 	var/scrubber_icon = "scrubber"
 
@@ -428,11 +428,11 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/retro/on/welded
 	welded = 1
 
-/obj/machinery/atmospherics/component/unary/vent_scrubber/retro/update_icon(safety = 0)
+/obj/machinery/atmospherics/component/unary/vent_scrubber/retro/update_icon()
+	cut_overlays()
+	. = ..()
 	if(!check_icon_cache())
 		return
-
-	cut_overlays()
 
 	var/scrubber_icon = "scrubber"
 

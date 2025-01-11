@@ -1,3 +1,11 @@
+/**
+ * Base /computer machinery type.
+ *
+ * Has the following responsibilities:
+ * * Smoothly connect to adjacent computers visually as needed.
+ * * Have default construction/deconstruction steps for computer instead of default for machine
+ * * Render screen overlay and a standard light source + emissive
+ */
 /obj/machinery/computer
 	name = "computer"
 	icon = 'icons/obj/computer.dmi'
@@ -39,8 +47,11 @@
 
 /obj/machinery/computer/update_icon()
 	cut_overlays()
+	. = ..()
+	make_legacy_overlays()
 
-	. = list()
+/obj/machinery/computer/proc/make_legacy_overlays()
+	var/list/to_add_overlays = list()
 
 	// Connecty //TODO: Use TG Smoothing.
 	if(initial(icon_state) == "computer")
@@ -59,27 +70,29 @@
 
 	if(icon_keyboard)
 		if(machine_stat & NOPOWER)
-			playsound(src, 'sound/machines/terminal_off.ogg', 50, 1)
-			return add_overlay("[icon_keyboard]_off")
-		. += icon_keyboard
+			to_add_overlays += "[icon_keyboard]_off"
+		else
+			to_add_overlays += icon_keyboard
 
 	// This whole block lets screens ignore lighting and be visible even in the darkest room
 	var/overlay_state = icon_screen
 	if(machine_stat & BROKEN)
 		overlay_state = "[icon_state]_broken"
-	. += overlay_state
+	else if(!(machine_stat & NOPOWER))
+		to_add_overlays += overlay_state
 	//. += emissive_appearance(icon, overlay_state)
-	playsound(src, 'sound/machines/terminal_on.ogg', 50, 1)
 
-	add_overlay(.)
+	add_overlay(to_add_overlays)
 
 /obj/machinery/computer/power_change()
 	..()
 	update_icon()
 	if(machine_stat & NOPOWER)
 		set_light(0)
+		playsound(src, 'sound/machines/terminal_off.ogg', 50, 1)
 	else
 		set_light(light_range_on, light_power_on)
+		playsound(src, 'sound/machines/terminal_on.ogg', 50, 1)
 
 /obj/machinery/computer/drop_products(method, atom/where)
 	. = ..()
@@ -94,11 +107,6 @@
 /obj/machinery/computer/proc/set_broken()
 	machine_stat |= BROKEN
 	update_icon()
-
-/obj/machinery/computer/proc/decode(text)
-	// Adds line breaks
-	text = replacetext(text, "\n", "<BR>")
-	return text
 
 /obj/machinery/computer/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	if(computer_deconstruction_screwdriver(user, I))

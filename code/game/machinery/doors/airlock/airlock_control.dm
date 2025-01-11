@@ -168,7 +168,7 @@
 	var/previous_phoron
 	var/previous_temperature
 
-/obj/machinery/airlock_sensor/update_icon()
+/obj/machinery/airlock_sensor/update_icon_state()
 	if(on)
 		if(alert)
 			icon_state = "airlock_sensor_alert"
@@ -176,6 +176,7 @@
 			icon_state = "airlock_sensor_standby"
 	else
 		icon_state = "airlock_sensor_off"
+	return ..()
 
 /obj/machinery/airlock_sensor/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	var/datum/signal/signal = new
@@ -267,12 +268,12 @@
 
 	var/on = 1
 
-
-/obj/machinery/access_button/update_icon()
+/obj/machinery/access_button/update_icon_state()
 	if(on)
 		icon_state = "access_button_standby"
 	else
 		icon_state = "access_button_off"
+	return ..()
 
 /obj/machinery/access_button/attackby(obj/item/I as obj, mob/user as mob)
 	//Swiping ID on the access button

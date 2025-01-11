@@ -62,6 +62,7 @@
 		..()
 
 /obj/item/flash/update_icon()
+	. = ..()
 	var/obj/item/cell/battery = power_supply
 
 	if(use_external_power)
@@ -71,7 +72,6 @@
 		icon_state = "[base_icon]burnt"
 	else
 		icon_state = "[base_icon]"
-	return
 
 /obj/item/flash/get_cell(inducer)
 	return power_supply

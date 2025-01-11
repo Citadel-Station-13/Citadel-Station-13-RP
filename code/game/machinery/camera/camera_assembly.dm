@@ -139,11 +139,12 @@
 
 	..()
 
-/obj/item/camera_assembly/update_icon()
+/obj/item/camera_assembly/update_icon_state()
 	if(anchored)
 		icon_state = "camera1"
 	else
 		icon_state = "cameracase"
+	return ..()
 
 /obj/item/camera_assembly/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!anchored)

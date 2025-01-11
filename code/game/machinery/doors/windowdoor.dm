@@ -25,6 +25,7 @@
 		src.base_state = src.icon_state
 
 /obj/machinery/door/window/update_icon()
+	. = ..()
 	if(density)
 		icon_state = base_state
 	else

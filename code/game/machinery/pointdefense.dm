@@ -153,11 +153,12 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	if(!id_tag)
 		. += "[desc_panel_image("multitool", user)]to set ident tag and connect to a mainframe."
 
-/obj/machinery/power/pointdefense/update_icon()
+/obj/machinery/power/pointdefense/update_icon_state()
 	if(!active || !id_tag || inoperable())
 		icon_state = "[initial(icon_state)]_off"
 	else
 		icon_state = initial(icon_state)
+	return ..()
 
 /obj/machinery/power/pointdefense/default_unfasten_wrench(var/mob/user, var/obj/item/W, var/time)
 	if((. = ..()))

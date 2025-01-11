@@ -42,6 +42,7 @@ GLOBAL_LIST_EMPTY(holoposters)
 	. += examine_addon
 
 /obj/machinery/holoposter/update_icon()
+	. = ..()
 	if(machine_stat & NOPOWER)
 		icon_state = "off"
 		examine_addon = "It appears to be powered off."

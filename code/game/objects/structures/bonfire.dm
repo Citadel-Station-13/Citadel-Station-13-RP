@@ -200,6 +200,7 @@
 
 /obj/structure/bonfire/update_icon()
 	cut_overlays()
+	. = ..()
 	var/list/overlays_to_add = list()
 	if(burning)
 		var/state
@@ -373,6 +374,7 @@
 
 /obj/structure/fireplace/update_icon()
 	cut_overlays()
+	. = ..()
 	if(burning)
 		var/state
 		switch(get_fuel_amount())

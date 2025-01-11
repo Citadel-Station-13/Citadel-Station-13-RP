@@ -1465,7 +1465,7 @@
 	req_one_access = list(48);
 	name = "Mining Storage"
 	},
-/obj/item/clothing/glasses/material,
+/obj/item/clothing/glasses/meson,
 /turf/simulated/floor/tiled,
 /area/sector/surt/mining_base/common)
 "Hr" = (
@@ -2179,7 +2179,7 @@
 	req_one_access = list(48);
 	name = "Mining Storage"
 	},
-/obj/item/clothing/glasses/material,
+/obj/item/clothing/glasses/meson,
 /turf/simulated/floor/tiled,
 /area/sector/surt/mining_base/common)
 "Wy" = (
