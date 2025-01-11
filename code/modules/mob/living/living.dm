@@ -605,7 +605,7 @@ default behaviour is:
 	return applying
 
 /mob/living/apply_transform(matrix/to_apply)
-	animate(src, transform = to_apply, time = 1 SECONDS)
+	animate(src, transform = to_apply, time = 1 SECONDS, flags = ANIMATION_LINEAR_TRANSFORM | ANIMATION_PARALLEL)
 	update_ssd_overlay()
 
 // This handles setting the client's color variable, which makes everything look a specific color.

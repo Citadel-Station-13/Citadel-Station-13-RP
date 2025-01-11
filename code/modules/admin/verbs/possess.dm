@@ -5,11 +5,6 @@
 	if(!O.loc)
 		return // erm erm erm maybe not?
 
-	if(istype(O,/obj/singularity))
-		if(config_legacy.forbid_singulo_possession)
-			to_chat(usr, "It is forbidden to possess singularities.")
-			return
-
 	var/turf/T = get_turf(O)
 
 	if(T)

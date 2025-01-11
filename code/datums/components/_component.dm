@@ -345,11 +345,10 @@
 	for(var/datum/listening_datum as anything in queued_calls)
 		. |= call(listening_datum, queued_calls[listening_datum])(arglist(arguments))
 
-// The type arg is casted so initial works, you shouldn't be passing a real instance into this
 /**
- * Return any component assigned to this datum of the given type
+ * Return any component assigned to this datum of the given registered component type
  *
- * If it has a registered type, that'll be used instead!
+ * * `registered_type` must be set on the component for this to work.
  *
  * Arguments:
  * * datum/component/c_type The type of the component you want to get a reference to. It will be overridden with the type of its [registered_type] if it's set.
@@ -360,7 +359,9 @@
 	return . && (length(.) ? .[1] : .)
 
 /**
- * Get all components of a given type that are attached to this datum
+ * Get all components of a given registered component type that are attached to this datum
+ *
+ * * `registered_type` must be set on the component for this to work.
  *
  * Arguments:
  * * c_type The component type path

@@ -187,7 +187,7 @@
 		/obj/item/clothing/under/permit,
 		/obj/item/clothing/under/vox/vox_casual,
 		/obj/item/clothing/under/vox/vox_robes,
-		/obj/item/clothing/under/harness,
+		/obj/item/clothing/under/gear_harness,
 		/obj/item/clothing/under/skirt/loincloth,
 		/obj/item/clothing/gloves/vox,
 	)
@@ -345,7 +345,7 @@
 			/obj/item/clothing/suit/storage/toggle/leather_jacket/nanotrasen/sleeveless,
 			/obj/item/clothing/under/pants/chaps,
 			/obj/item/clothing/under/pants/chaps/black,
-			/obj/item/clothing/under/harness,
+			/obj/item/clothing/under/gear_harness,
 			/obj/item/clothing/shoes/laceup/brown,
 			/obj/item/clothing/shoes/boots/jungle,
 			/obj/item/clothing/shoes/boots/jackboots,
