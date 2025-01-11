@@ -67,3 +67,35 @@
 
 /mob/living/simple_mob/holosphere_shell/examine(mob/user, dist)
 	return hologram?.examine(user, dist) || ..()
+
+// simplified version of robo_repair because user cannot equal the shell (the shell has no hands!)
+/mob/living/simple_mob/holosphere_shell/proc/shell_repair(repair_amount, damage_type, damage_desc, obj/item/tool, mob/living/user)
+	var/damage_amount
+	switch(damage_type)
+		if(DAMAGE_TYPE_BRUTE)
+			damage_amount = bruteloss
+		if(DAMAGE_TYPE_BURN)
+			damage_amount = fireloss
+		if("omni")
+			damage_amount = max(bruteloss,fireloss)
+		else
+			return FALSE
+	if(!damage_amount)
+		to_chat(user, SPAN_NOTICE("Nothing to fix!"))
+		return FALSE
+
+	user.setClickCooldown(user.get_attack_speed(tool))
+
+	switch(damage_type)
+		if(DAMAGE_TYPE_BRUTE)
+			src.heal_brute_loss(repair_amount)
+		if(DAMAGE_TYPE_BURN)
+			src.heal_fire_loss(repair_amount)
+		if("omni")
+			src.heal_brute_loss(repair_amount)
+			src.heal_fire_loss(repair_amount)
+
+	if(damage_desc)
+		user.visible_message(SPAN_NOTICE("\The [user] patches [damage_desc] on [src] with [tool]."))
+
+	return TRUE

@@ -120,4 +120,4 @@
 
 #define fast_is_species_type(H, path)	istype(H.species, path)
 
-#define isHolosphereShell(A) istype(A, /mob/living/simple_mob/holosphere_shell)
+#define is_holosphere_shell(A) istype(A, /mob/living/simple_mob/holosphere_shell)

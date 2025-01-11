@@ -97,7 +97,7 @@
 			D.upgrade_cooldown = world.time + 1 MINUTE
 			D.master_matrix.apply_upgrades(D)
 
-	else if(isHolosphereShell(occupant))
+	else if(is_holosphere_shell(occupant))
 		var/mob/living/simple_mob/holosphere_shell/shell = occupant
 		handle_human_nutrition(shell.hologram)
 
