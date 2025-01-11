@@ -11,9 +11,9 @@
 
 /obj/item/robot_builtin/dog_tongue/examine(user)
 	. = ..()
-	if(water.energy)
+	if(item_mount.get_reagent(/datum/reagent/water::id) < 5)
 		. += "<span class='notice'>[src] is wet.</span>"
-	if(water.energy < 5)
+	else
 		. += "<span class='notice'>[src] is dry.</span>"
 
 /obj/item/robot_builtin/dog_tongue/attack_self(mob/user, datum/event_args/actor/actor)

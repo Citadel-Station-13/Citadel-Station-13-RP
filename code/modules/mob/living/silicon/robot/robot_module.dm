@@ -31,6 +31,12 @@
 	#warn hook
 	var/legacy_show_on_manifest = FALSE
 
+	//* Identity *//
+	/// Our display name
+	#warn set on all modules
+	var/display_name = "???"
+
+	//* Mounted Item Descriptor - Injectors *//
 	/// items to inject into normal out
 	/// * paths are allowed
 	/// * anonymous types are allowed
@@ -58,8 +64,6 @@
  *
  * The caller must handle all of these.
  * Unused item instances must be qdel'd.
- *
- * * /obj/item/stack's are not allowed in here. Put those in `create_stacks()`.
  */
 #warn hook
 /datum/prototype/robot_module/proc/create_mounted_item_descriptors(list/normal_out, list/emag_out)
@@ -82,3 +86,12 @@
  */
 /datum/prototype/robot_module/proc/provision_resource_store(datum/robot_resource_store/store)
 	return
+
+//* Name / Description / Identity
+
+/**
+ * Get name as seen by things like robotics consoles that don't use another way
+ * to resolve who / what we are.
+ */
+/datum/prototype/robot_module/proc/get_display_name()
+	return display_name

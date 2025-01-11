@@ -93,6 +93,10 @@
 	/// Resources store
 	#warn make on new
 	var/datum/robot_resource_store/resources
+	/// Module items - normal
+	var/list/obj/item/module_items_normal
+	/// Module items - emag
+	var/list/obj/item/module_items_emag
 
 	//* State *//
 
@@ -171,7 +175,7 @@
 	var/jetpack = 0
 	var/datum/effect_system/ion_trail_follow/ion_trail = null
 	var/datum/effect_system/spark_spread/spark_system
-	
+
 	/// Cyborgs will sync their laws with their AI by default
 	var/lawupdate = TRUE
 	/// Used when looking to see if a borg is locked down.

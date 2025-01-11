@@ -169,7 +169,7 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
-	if(!robot_module_check(item))
+	if(!robot_module_is_registered(item))
 		return
 
 	robot_module_unregister_impl(item)

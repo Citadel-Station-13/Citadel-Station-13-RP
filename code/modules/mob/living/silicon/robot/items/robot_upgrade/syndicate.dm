@@ -8,9 +8,8 @@
 /obj/item/robot_upgrade/syndicate/action(var/mob/living/silicon/robot/R)
 	if(..())
 		return FALSE
-
-	if(R.emag_items == 1)
+	if(R.get_emag_item_state())
 		return FALSE
 
-	R.emag_items = 1
+	R.set_emag_item_state(TRUE)
 	return TRUE

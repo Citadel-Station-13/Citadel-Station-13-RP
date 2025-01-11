@@ -167,14 +167,6 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 	QUEUE_SMOOTH(src)
 	QUEUE_SMOOTH_NEIGHBORS(src)
 
-/turf/simulated/mineral/Entered(atom/movable/M as mob|obj)
-	..()
-	if(istype(M,/mob/living/silicon/robot))
-		var/mob/living/silicon/robot/R = M
-		for(var/obj/item/storage/bag/ore/O in list(R.module_state_1, R.module_state_2, R.module_state_3))
-			O.autoload(R)
-			return
-
 /turf/simulated/mineral/Initialize(mapload)
 	. = ..()
 	if(prob(20))
