@@ -33,7 +33,7 @@ DEFINE_ENUM(movespeed_modifier_calculation_type, list(
 //* params for add_or_update_variable_movespeed_modifier
 
 /// multiplicative_slowdown
-#define MOVESPEED_PARAM_DELAY_MOD "delay"
+#define MOVESPEED_PARAM_HYPERBOLIC_SLOWDOWN "delay"
 /// multiply_speed
 #define MOVESPEED_PARAM_MULTIPLY_SPEED "multiply"
 /// absolute_max_tiles_per_second

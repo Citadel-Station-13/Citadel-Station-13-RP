@@ -9,7 +9,9 @@
 	item_state = "gravwhip"
 	fire_sound_text = "laser blast"
 
-	fire_delay = 15
+	firemodes = /datum/firemode/energy{
+		cycle_cooldown = 1.5 SECONDS;
+	}
 	charge_cost = 300
 
 	cell_type = /obj/item/cell/device/weapon
@@ -27,7 +29,7 @@
 	w_class = WEIGHT_CLASS_TINY
 
 	cell_type = /obj/item/cell/device/weapon/recharge/alien
-	battery_lock = TRUE
+	legacy_battery_lock = TRUE
 	charge_cost = 400
 	charge_meter = FALSE
 

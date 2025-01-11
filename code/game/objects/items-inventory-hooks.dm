@@ -7,7 +7,7 @@
 		// inventory handling
 		if(destination == worn_inside)
 			return ..()
-		var/mob/M = worn_mob()
+		var/mob/M = get_worn_mob()
 		if(!ismob(M))
 			worn_slot = null
 			worn_hook_suppressed = FALSE
@@ -19,7 +19,7 @@
 /obj/item/Move(atom/newloc, direct, glide_size_override)
 	if(!worn_slot)
 		return ..()
-	var/mob/M = worn_mob()
+	var/mob/M = get_worn_mob()
 	if(istype(M))
 		M.temporarily_remove_from_inventory(src, INV_OP_FORCE)
 	else

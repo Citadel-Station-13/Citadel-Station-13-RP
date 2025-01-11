@@ -236,7 +236,7 @@
  * * null
  */
 /obj/item/gun_attachment/proc/set_attachment_actions_to(descriptor)
-	var/mob/worn_mob = attached.worn_mob()
+	var/mob/worn_mob = attached.get_worn_mob()
 
 	if(worn_mob)
 		unregister_attachment_actions(worn_mob)

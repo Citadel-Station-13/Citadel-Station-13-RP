@@ -68,8 +68,8 @@
 /**
  * checks if we're in inventory. if so, returns mob we're in
  */
-/obj/item/proc/is_in_inventory()
-	return worn_slot && worn_mob()
+/obj/item/proc/is_in_inventory() as /mob
+	return inv_inside?.owner
 
 /**
  * checks if we're held in hand
@@ -77,7 +77,7 @@
  * if so, returns mob we're in
  */
 /obj/item/proc/is_being_held() as /mob
-	return (worn_slot == SLOT_ID_HANDS)? worn_mob() : null
+	return isnum(inv_slot_or_index) ? inv_inside?.owner : null
 
 /**
  * checks if we're worn. if so, return mob we're in
@@ -95,9 +95,9 @@
 /obj/item/register_shieldcall(datum/shieldcall/delegate)
 	. = ..()
 	if(delegate.shields_in_inventory)
-		worn_mob()?.register_shieldcall(delegate)
+		get_worn_mob()?.register_shieldcall(delegate)
 
 /obj/item/unregister_shieldcall(datum/shieldcall/delegate)
 	. = ..()
 	if(delegate.shields_in_inventory)
-		worn_mob()?.unregister_shieldcall(delegate)
+		get_worn_mob()?.unregister_shieldcall(delegate)

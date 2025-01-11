@@ -491,7 +491,7 @@
 	if(!can_be_inserted(inserting, actor, silent))
 		return FALSE
 	// point of no return
-	if(actor && (inserting.worn_mob() == actor.performer && !actor.performer.temporarily_remove_from_inventory(inserting, user = actor.performer)))
+	if(actor && (inserting.get_worn_mob() == actor.performer && !actor.performer.temporarily_remove_from_inventory(inserting, user = actor.performer)))
 		if(!silent)
 			actor?.chat_feedback(
 				msg = SPAN_WARNING("[inserting] is stuck to your hand / body!"),

@@ -28,6 +28,9 @@
 	charge_cost = 480
 	projectile_type = /obj/projectile/ion/pistol
 
+/obj/item/gun/energy/ionrifle/weak
+	projectile_type = /obj/projectile/ion/small
+
 /obj/item/gun/energy/decloner
 	name = "biological demolecularisor"
 	desc = "A gun that discharges high amounts of controlled radiation to slowly break a target into component elements."
@@ -46,7 +49,7 @@
 	modifystate = "floramut"
 	cell_type = /obj/item/cell/device/weapon/recharge
 	no_pin_required = 1
-	battery_lock = 1
+	legacy_battery_lock = 1
 	var/singleton/plantgene/gene = null
 
 	firemodes = list(
@@ -58,8 +61,7 @@
 /obj/item/gun/energy/floragun/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	//allow shooting into adjacent hydrotrays regardless of intent
 	if((clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) && istype(target,/obj/machinery/portable_atmospherics/hydroponics))
-		user.visible_message("<span class='danger'>\The [user] fires \the [src] into \the [target]!</span>")
-		Fire(target,user)
+		start_firing_cycle_async(user, get_centered_entity_angle(user, target), NONE, null, target, new /datum/event_args/actor(user))
 		return
 	..()
 
@@ -77,9 +79,7 @@
 
 	to_chat(usr, "<span class='info'>You set the [src]'s targeted genetic area to [genemask].</span>")
 
-	return
-
-/obj/item/gun/energy/floragun/consume_next_projectile()
+/obj/item/gun/energy/floragun/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	. = ..()
 	var/obj/projectile/energy/floramut/gene/G = .
 	if(istype(G))
@@ -142,7 +142,7 @@
 	projectile_type = /obj/projectile/change
 	origin_tech = null
 	cell_type = /obj/item/cell/device/weapon/recharge
-	battery_lock = 1
+	legacy_battery_lock = 1
 	charge_meter = 0
 
 /obj/item/gun/energy/staff/special_check(var/mob/user)
@@ -184,6 +184,24 @@
 			projectile_type = "/obj/projectile/forcebolt"
 	*/
 
+/datum/firemode/energy/dakkalaser
+	burst_delay = 0.1 SECONDS
+
+/datum/firemode/energy/dakkalaser/single
+	name = "1-shot"
+	burst_amount = 1
+	legacy_direct_varedits = list(dispersion = list(0), charge_cost = 24)
+
+/datum/firemode/energy/dakkalaser/five
+	name = "5-burst"
+	burst_amount = 5
+	legacy_direct_varedits = list(burst_accuracy = list(75,75,75,75,75), dispersion = list(1,1,1,1,1))
+
+/datum/firemode/energy/dakkalaser/ten
+	name = "10-burst"
+	burst_amount = 10
+	legacy_direct_varedits = list(burst_accuracy = list(75,75,75,75,75,75,75,75,75,75), dispersion = list(2,2,2,2,2,2,2,2,2,2))
+
 /obj/item/gun/energy/dakkalaser
 	name = "suppression gun"
 	desc = "Coined 'Sparkers' by Tyrmalin dissidents on Larona upon it's inception, the HI-LLG is an energy-based suppression system, used to overwhelm the opposition in a hail of laser blasts."
@@ -195,17 +213,16 @@
 	charge_cost = 24 // 100 shots, it's a spray and pray (to RNGesus) weapon.
 	projectile_type = /obj/projectile/energy/blue_pellet
 	cell_type = /obj/item/cell/device/weapon/recharge
-	battery_lock = 1
+	legacy_battery_lock = 1
 	accuracy = 75 // Suppressive weapons don't work too well if there's no risk of being hit.
-	burst_delay = 1 // Burst faster than average.
 	origin_tech = list(TECH_COMBAT = 6, TECH_MAGNET = 6, TECH_ILLEGAL = 6)
 	one_handed_penalty = 60
 
 	firemodes = list(
-		list(mode_name="single shot", burst = 1, burst_accuracy = list(75), dispersion = list(0), charge_cost = 24),
-		list(mode_name="five shot burst", burst = 5, burst_accuracy = list(75,75,75,75,75), dispersion = list(1,1,1,1,1)),
-		list(mode_name="ten shot burst", burst = 10, burst_accuracy = list(75,75,75,75,75,75,75,75,75,75), dispersion = list(2,2,2,2,2,2,2,2,2,2)),
-		)
+		/datum/firemode/energy/dakkalaser/one,
+		/datum/firemode/energy/dakkalaser/five,
+		/datum/firemode/energy/dakkalaser/ten,
+	)
 
 /obj/item/gun/energy/maghowitzer
 	name = "portable MHD howitzer"
@@ -221,7 +238,7 @@
 	charge_cost = 10000 // Uses large cells, can at max have 3 shots.
 	projectile_type = /obj/projectile/beam/tungsten
 	cell_type = /obj/item/cell/high
-	accept_cell_type = /obj/item/cell
+	cell_system_legacy_use_device = FALSE
 
 	accuracy = 75
 	charge_meter = 0
@@ -249,7 +266,7 @@
 	var/beameffect = user.Beam(target_turf,icon_state="sat_beam",icon='icons/effects/beam.dmi',time=31, maxdistance=10,beam_type=/obj/effect/ebeam)
 	if(beameffect)
 		user.visible_message("<span class='cult'>[user] aims \the [src] at \the [A].</span>")
-	if(power_supply && power_supply.charge >= charge_cost) //Do a delay for pointblanking too.
+	if(obj_cell_slot.cell && obj_cell_slot.cell.charge >= charge_cost) //Do a delay for pointblanking too.
 		power_cycle = TRUE
 		if(do_after(user, 30))
 			if(A.loc == target_turf)
@@ -292,15 +309,12 @@
 		else
 			if(beameffect)
 				qdel(beameffect)
-			handle_click_empty(user)
+			var/datum/gun_firing_cycle/cycle = new
+			cycle.firing_actor = new /datum/event_args/actor(user)
+			post_empty_fire(cycle)
 		power_cycle = FALSE
 	else
 		to_chat(user, "<span class='notice'>\The [src] is already powering up!</span>")
-
-//_vr Items:
-
-/obj/item/gun/energy/ionrifle/weak
-	projectile_type = /obj/projectile/ion/small
 
 /obj/item/gun/energy/medigun //Adminspawn/ERT etc
 	name = "directed restoration system"
@@ -311,100 +325,16 @@
 	icon = 'icons/obj/gun/energy.dmi'
 	slot_flags = SLOT_BELT
 	accuracy = 100
-	fire_delay = 12
+	firemodes = /datum/firemode/energy{
+		cycle_cooldown = 1.2 SECONDS;
+	}
 	fire_sound = 'sound/weapons/eluger.ogg'
 
 	projectile_type = /obj/projectile/beam/medigun
 
-	accept_cell_type = /obj/item/cell
+	cell_system_legacy_use_device = FALSE
 	cell_type = /obj/item/cell/high
 	charge_cost = 2500
-
-/obj/item/gun/energy/service
-	name = "service weapon"
-	icon_state = "service_grip"
-	item_state = "service_grip"
-	desc = "An anomalous weapon, long kept secure. It has recently been acquired by Nanotrasen's Paracausal Monitoring Division. How did it get here?"
-	damage_force = 5
-	slot_flags = SLOT_BELT
-	w_class = WEIGHT_CLASS_NORMAL
-	projectile_type = /obj/projectile/bullet/pistol/medium/silver
-	origin_tech = null
-	fire_delay = 10		//Old pistol
-	charge_cost = 480	//to compensate a bit for self-recharging
-	cell_type = /obj/item/cell/device/weapon/recharge/captain
-	battery_lock = 1
-	one_handed_penalty = 0
-	safety_state = GUN_SAFETY_OFF
-
-/obj/item/gun/energy/service/attack_self(mob/user, datum/event_args/actor/actor)
-	. = ..()
-	if(.)
-		return
-	cycle_weapon(user)
-
-/obj/item/gun/energy/service/proc/cycle_weapon(mob/living/L)
-	var/obj/item/service_weapon
-	var/list/service_weapon_list = subtypesof(/obj/item/gun/energy/service)
-	var/list/display_names = list()
-	var/list/service_icons = list()
-	for(var/V in service_weapon_list)
-		var/obj/item/gun/energy/service/weapontype = V
-		if (V)
-			display_names[initial(weapontype.name)] = weapontype
-			service_icons += list(initial(weapontype.name) = image(icon = initial(weapontype.icon), icon_state = initial(weapontype.icon_state)))
-
-	service_icons = sortList(service_icons)
-
-	var/choice = show_radial_menu(L, src, service_icons)
-	if(!choice || !check_menu(L))
-		return
-
-	var/A = display_names[choice] // This needs to be on a separate var as list member access is not allowed for new
-	service_weapon = new A
-
-	if(service_weapon)
-		qdel(src)
-		L.put_in_active_hand(service_weapon)
-
-/obj/item/gun/energy/service/proc/check_menu(mob/user)
-	if(!istype(user))
-		return FALSE
-	if(QDELETED(src))
-		return FALSE
-	if(user.incapacitated())
-		return FALSE
-	return TRUE
-
-/obj/item/gun/energy/service/grip
-
-/obj/item/gun/energy/service/shatter
-	name = "service weapon (shatter)"
-	icon_state = "service_shatter"
-	projectile_type = /obj/projectile/bullet/pellet/shotgun/silvershot
-	fire_delay = 15		//Increased by 50% for strength.
-	charge_cost = 600	//Charge increased due to shotgun round.
-
-/obj/item/gun/energy/service/spin
-	name = "service weapon (spin)"
-	icon_state = "service_spin"
-	projectile_type = /obj/projectile/bullet/pistol/spin
-	fire_delay = 0	//High fire rate.
-	charge_cost = 80	//Lower cost per shot to encourage rapid fire.
-
-/obj/item/gun/energy/service/pierce
-	name = "service weapon (pierce)"
-	icon_state = "service_pierce"
-	projectile_type = /obj/projectile/bullet/rifle/a762/ap/silver
-	fire_delay = 15		//Increased by 50% for strength.
-	charge_cost = 600	//Charge increased due to sniper round.
-
-/obj/item/gun/energy/service/charge
-	name = "service weapon (charge)"
-	icon_state = "service_charge"
-	projectile_type = /obj/projectile/bullet/burstbullet/service    //Formerly: obj/projectile/bullet/gyro. A little too robust.
-	fire_delay = 20
-	charge_cost = 800	//Three shots.
 
 /obj/item/gun/energy/puzzle_key
 	name = "Key of Anak-Hun-Tamuun"
@@ -415,11 +345,13 @@
 	item_state = "staffofchaos"
 	damage_force = 5
 	charge_meter = 0
-	projectile_type = /obj/projectile/beam/emitter
-	fire_delay = 10
-	charge_cost = 800
+	firemodes = /datum/firemode/energy{
+		projectile_type = /obj/projectile/beam/emitter;
+		cycle_cooldown = 1 SECONDS;
+		charge_cost = 2400 / 3;
+	}
 	cell_type = /obj/item/cell/device/weapon/recharge/captain
-	battery_lock = 1
+	legacy_battery_lock = 1
 	one_handed_penalty = 0
 
 /obj/item/gun/energy/ermitter
@@ -428,10 +360,12 @@
 	icon_state = "ermitter_gun"
 	item_state = "pulse"
 	projectile_type = /obj/projectile/beam/emitter
-	fire_delay = 2 SECONDS
+	firemodes = /datum/firemode/energy{
+		cycle_cooldown = 2 SECONDS;
+	}
 	charge_cost = 900
 	cell_type = /obj/item/cell
-	accept_cell_type = /obj/item/cell
+	cell_system_legacy_use_device = FALSE
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
@@ -452,16 +386,30 @@
 	desc = "Deceptively primitive in appearance, this finely tuned rifle uses an onboard reactor to stimulate the growth of an anomalous crystal. Fragments of this crystal are utilized as ammunition by the weapon."
 	icon_state = "warplockgun"
 	item_state = "huntrifle"
-	projectile_type = /obj/projectile/bullet/cyanideround/jezzail
-	fire_delay = 20
-	charge_cost = 600
+	firemodes = /datum/firemode/energy{
+		projectile_type = /obj/projectile/bullet/cyanideround/jezzail;
+		cycle_cooldown = 2 SECONDS;
+		charge_cost = 2400 / 4;
+	}
 	cell_type = /obj/item/cell/device/weapon
-	battery_lock = 1
+	legacy_battery_lock = 1
 	slot_flags = SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	damage_force = 10
 	one_handed_penalty = 60
+
+// todo: nuke plasma weapons from orbit and rework
+/datum/firemode/energy/plasma
+	cycle_cooldown = 2 SECONDS
+
+/datum/firemode/energy/plasma/normal
+	name = "standard"
+	legacy_direct_varedits = list(projectile_type=/obj/projectile/plasma, charge_cost = 350)
+
+/datum/firemode/energy/plasma/high
+	name = "high power"
+	legacy_direct_varedits = list(projectile_type=/obj/projectile/plasma/hot, charge_cost = 370)
 
 //Plasma Guns Plasma Guns!
 /obj/item/gun/energy/plasma
@@ -470,7 +418,6 @@
 	icon_state = "prifle"
 	item_state = null
 	projectile_type = /obj/projectile/plasma
-	fire_delay = 20
 	charge_cost = 400
 	cell_type = /obj/item/cell/device/weapon
 	slot_flags = SLOT_BELT|SLOT_BACK
@@ -483,34 +430,13 @@
 	var/overheating = 0
 
 	firemodes = list(
-		list(mode_name="standard", projectile_type=/obj/projectile/plasma, charge_cost = 350),
-		list(mode_name="high power", projectile_type=/obj/projectile/plasma/hot, charge_cost = 370),
-		)
+		/datum/firemode/energy/plasma/normal,
+		/datum/firemode/energy/plasma/high,
+	)
 
-/obj/item/gun/energy/plasma/update_icon()
-	. = ..()
-	if(overheating)
-		icon_state = "prifle_overheat"
-		update_worn_icon()
-	else
-		return
-
-/obj/item/gun/energy/plasma/consume_next_projectile(mob/user as mob)
-	. = ..()
-	if(src.projectile_type == /obj/projectile/plasma/hot)
-		switch(rand(1,6))
-			if(1)
-				to_chat(user, "<span class='danger'>The containment coil catastrophically overheats!</span>")
-				overheating = 1
-				spawn(rand(2 SECONDS,5 SECONDS))
-					if(src)
-						visible_message("<span class='critical'>\The [src] detonates!</span>")
-						explosion(get_turf(src), -1, 0, 2, 3)
-						qdel(chambered)
-						qdel(src)
-				return ..()
-			if(2 to 6)
-				return ..()
+/obj/item/gun/energy/plasma/update_icon_state()
+	icon_state = "[initial(icon_state)][overheating ? "_overheat" : ""]"
+	return ..()
 
 /obj/item/gun/energy/plasma/pistol
 	name = "\improper Wyrm plasma pistol"
@@ -523,29 +449,3 @@
 	origin_tech = list(TECH_COMBAT = 6, TECH_ENGINEERING = 5, TECH_MAGNET = 5)
 	materials_base = list(MAT_STEEL = 8000, MAT_GLASS = 2000)
 	one_handed_penalty = 10
-
-/obj/item/gun/energy/plasma/pistol/update_icon()
-	. = ..()
-	if(overheating)
-		icon_state = "ppistol_overheat"
-		update_worn_icon()
-	else
-		return
-
-/obj/item/gun/energy/plasma/pistol/consume_next_projectile(mob/user as mob)
-	. = ..()
-	if(.)
-		if(src.projectile_type == /obj/projectile/plasma/hot)
-			switch(rand(1,6))
-				if(1)
-					to_chat(user, "<span class='danger'>The containment coil catastrophically overheats!</span>")
-					overheating = 1
-					spawn(rand(2 SECONDS,5 SECONDS))
-						if(src)
-							visible_message("<span class='critical'>\The [src] detonates!</span>")
-							explosion(get_turf(src), -1, 0, 2, 3)
-							qdel(chambered)
-							qdel(src)
-					return ..()
-				if(2 to 6)
-					return ..()

@@ -15,7 +15,8 @@
  */
 /datum/controller/subsystem/mapping/proc/get_virtual_dist(turf/A, turf/B, z_dist)
 	// todo: get_dist after 515
-	return get_manhattan_dist(A, B)
+	// todo: redo this proc / split into multiple; manhattan distance isn't what byond uses
+	return get_turf_manhattan_dist(A, B)
 	// A = get_turf(A)
 	// B = get_turf(B)
 	// if(A.z == B.z)

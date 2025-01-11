@@ -1,20 +1,29 @@
+/datum/firemode/energy/taser
+	cycle_cooldown = 0.4 SECONDS
+
+/datum/firemode/energy/taser/stun
+	name = "stun"
+	legacy_direct_varedits = list(projectile_type=/obj/projectile/energy/electrode, modifystate="taser", charge_cost = 240)
+
+/datum/firemode/energy/taser/disable
+	name = "disable"
+	legacy_direct_varedits = list(projectile_type=/obj/projectile/beam/disabler/weak, modifystate="taserblue", charge_cost = 160)
+
 /obj/item/gun/energy/taser
 	name = "taser gun"
 	desc = "The NT Mk31 NL is a small gun used for non-lethal takedowns. An NT exclusive iteration of the Mk30 WT design, the Mk31 features a variable output mechanism which draws from a singular power source, allowing for versatile firing solutions without increased weight."
+	description_info = "This is an energy weapon.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
+	then click where you want to fire.  Most energy weapons can fire through windows harmlessly. To recharge this weapon, use a weapon recharger."
 	icon_state = "taser"
 	item_state = null	//so the human update icon uses the icon_state instead.
 
-	fire_delay = 4
-
 	worth_intrinsic = 350
-
-	projectile_type = /obj/projectile/energy/electrode
 	modifystate = "taser"
 
 	firemodes = list(
-		list(mode_name="stun", projectile_type=/obj/projectile/energy/electrode, modifystate="taser", charge_cost = 240),
-		list(mode_name="disable", projectile_type=/obj/projectile/beam/disabler/weak, modifystate="taserblue", charge_cost = 160),
-		)
+		/datum/firemode/energy/taser/stun,
+		/datum/firemode/energy/taser/disable,
+	)
 
 /obj/item/gun/energy/taser/mounted
 	name = "mounted taser gun"
@@ -60,7 +69,7 @@
 	projectile_type = /obj/projectile/energy/bolt
 	charge_cost = 480
 	cell_type = /obj/item/cell/device/weapon/recharge
-	battery_lock = 1
+	legacy_battery_lock = 1
 	charge_meter = 0
 
 /obj/item/gun/energy/crossbow/ninja
@@ -82,9 +91,11 @@
 	icon_state = "plasma_stun"
 	item_state = "plasma_stun"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_POWER = 3)
-	fire_delay = 20
-	charge_cost = 600
-	projectile_type = /obj/projectile/energy/plasmastun
+	firemodes = /datum/firemode/energy{
+		projectile_type = /obj/projectile/energy/plasmastun;
+		cycle_cooldown = 2 SECONDS;
+		charge_cost = 2400 / 4;
+	}
 	one_handed_penalty = 5
 
 /obj/item/gun/energy/civtas
@@ -93,7 +104,8 @@
 	icon_state = "civtas"
 	item_state = "concealed"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 3, TECH_POWER = 3)
-	projectile_type = /obj/projectile/energy/electrode/stunshot
-	fire_delay = 4
-	charge_cost = 1500
-	cell_type = /obj/item/cell/device/weapon
+	firemodes = /datum/firemode/energy{
+		projectile_type = /obj/projectile/energy/electrode/stunshot;
+		cycle_cooldown = 0.4 SECONDS;
+		charge_cost = 2400 / 2;
+	}

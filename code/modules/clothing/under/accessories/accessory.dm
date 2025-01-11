@@ -91,8 +91,8 @@
 
 	// todo: don't call dropped/pickup if going to same person
 	if(S.worn_slot)
-		pickup(S.worn_mob(), INV_OP_IS_ACCESSORY)
-		equipped(S.worn_mob(), S.worn_slot, INV_OP_IS_ACCESSORY)
+		pickup(S.get_worn_mob(), INV_OP_IS_ACCESSORY)
+		equipped(S.get_worn_mob(), S.worn_slot, INV_OP_IS_ACCESSORY)
 
 	// inventory handling end
 
@@ -112,10 +112,10 @@
 
 	// todo: don't call dropped/pickup if going to same person
 	if(accessory_host.worn_slot)
-		unequipped(accessory_host.worn_mob(), accessory_host.worn_slot, INV_OP_IS_ACCESSORY)
-		var/mob/host_worn_mob = accessory_host.worn_mob()
-		on_unequipped(accessory_host.worn_mob(), accessory_host.worn_slot == SLOT_ID_HANDS ? host_worn_mob.get_held_index(accessory_host) : accessory_host.worn_slot, INV_OP_IS_ACCESSORY)
-		dropped(accessory_host.worn_mob(), INV_OP_IS_ACCESSORY)
+		unequipped(accessory_host.get_worn_mob(), accessory_host.worn_slot, INV_OP_IS_ACCESSORY)
+		var/mob/host_worn_mob = accessory_host.get_worn_mob()
+		on_unequipped(accessory_host.get_worn_mob(), accessory_host.worn_slot == SLOT_ID_HANDS ? host_worn_mob.get_held_index(accessory_host) : accessory_host.worn_slot, INV_OP_IS_ACCESSORY)
+		dropped(accessory_host.get_worn_mob(), INV_OP_IS_ACCESSORY)
 
 	// inventory handling stop
 

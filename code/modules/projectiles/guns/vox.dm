@@ -1,3 +1,5 @@
+// todo: why is all this crap in the root level?
+
 /*
  * Vox Spike Thrower
  *  Alien pinning weapon.
@@ -44,7 +46,7 @@
 /obj/item/gun/launcher/spikethrower/update_release_force()
 	return
 
-/obj/item/gun/launcher/spikethrower/consume_next_projectile()
+/obj/item/gun/launcher/spikethrower/consume_next_throwable(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	if(spikes < 1) return null
 	spikes--
 	return new /obj/item/spike(src)
@@ -62,7 +64,7 @@
 	charge_cost = 300
 	projectile_type = /obj/projectile/beam/stun/darkmatter
 	cell_type = /obj/item/cell/device/weapon/recharge
-	battery_lock = 1
+	legacy_battery_lock = 1
 	accuracy = 30
 
 	firemodes = list(
@@ -124,7 +126,7 @@
 	w_class = WEIGHT_CLASS_HUGE
 	heavy = TRUE
 	cell_type = /obj/item/cell/device/weapon/recharge
-	battery_lock = 1
+	legacy_battery_lock = 1
 	charge_cost = 400
 
 	projectile_type=/obj/projectile/sonic/weak
