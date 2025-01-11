@@ -478,3 +478,14 @@ STANDARD_ACCESS_DATUM(ACCESS_SPECIAL_SILICONS, special/silicons, "Synthetic")
 
 #define ACCESS_NETWORK 404
 STANDARD_ACCESS_DATUM(ACCESS_NETWORK, misc/network, "Network")
+
+// POI
+
+#define ACCESS_CASINO_1 410 //Used for the Casino POI
+STANDARD_ACCESS_DATUM(ACCESS_CASINO_1,  misc/casinoPOI1, "Casino 1")
+
+#define ACCESS_CASINO_2 411 //Used for the Casino POI
+STANDARD_ACCESS_DATUM(ACCESS_CASINO_2,  misc/casinoPOI2, "Casino 2")
+
+#define ACCESS_CASINO_3 412 //Used for the Casino POI
+STANDARD_ACCESS_DATUM(ACCESS_CASINO_3,  misc/casinoPOI3, "Casino 3")
