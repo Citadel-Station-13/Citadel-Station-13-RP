@@ -225,7 +225,9 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 		if(excav_overlay)
 			to_add += mutable_appearance(arch_icon, excav_overlay)
 		if(mineral)
-			to_add += image('icons/modules/mining/ore_overlay.dmi', "rock_[mineral.name]")
+			var/image/mineral_overlay = image('icons/modules/mining/ore_overlay.dmi', "rock_[mineral.name]")
+			mineral_overlay.appearance_flags = KEEP_APART | RESET_COLOR
+			to_add += mineral_overlay
 
 	//We are a sand floor
 	else
