@@ -12080,7 +12080,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4starboardafthall)
 "nsO" = (
-/obj/map_helper/access_helper/airlock/station/engineering/atmospherics,
+/obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
@@ -18377,7 +18377,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/storage/tech)
 "vkX" = (
-/obj/map_helper/access_helper/airlock/station/engineering/atmospherics,
+/obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
@@ -19000,7 +19000,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/map_helper/access_helper/airlock/station/engineering/atmospherics,
+/obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
@@ -21035,7 +21035,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/command/turrets)
 "ycR" = (
-/obj/map_helper/access_helper/airlock/station/engineering/atmospherics,
+/obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
