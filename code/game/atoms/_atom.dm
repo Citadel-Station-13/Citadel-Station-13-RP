@@ -9,8 +9,11 @@
 	layer = TURF_LAYER
 
 	//* Core *//
+
 	/// Atom flags.
 	var/atom_flags = NONE
+	/// Atom spawn flags
+	var/atom_spawn_flags = NONE
 	/// Prototype ID; persistence uses this to know what atom to load, even if the path changes in a refactor.
 	///
 	/// * this is very much a 'set this on type and all subtypes or don't set it at all' situation.

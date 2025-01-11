@@ -9,7 +9,7 @@
 	/// will be assigned the shuttle's ref post-init
 	var/datum/shuttle/shuttle
 
-/area/shuttle/proc/before_bounds_initializing(datum/shuttle/from_shuttle, datum/turf_reservation/from_reservation, datum/shuttle_template/from_template)
+/area/shuttle/proc/before_bounds_initializing(datum/shuttle/from_shuttle, datum/map_reservation/from_reservation, datum/shuttle_template/from_template)
 	shuttle = from_shuttle
 
 /**
@@ -21,7 +21,7 @@
 	/// [name] [count?] [descriptor?]
 	var/descriptor = "Compartment"
 
-/area/shuttle/auto/before_bounds_initializing(datum/shuttle/from_shuttle, datum/turf_reservation/from_reservation, datum/shuttle_template/from_template)
+/area/shuttle/auto/before_bounds_initializing(datum/shuttle/from_shuttle, datum/map_reservation/from_reservation, datum/shuttle_template/from_template)
 	// todo: shuttle
 
 /area/shuttle/auto/proc/auto_name_instance(real_name, display_name)

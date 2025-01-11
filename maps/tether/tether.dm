@@ -28,6 +28,8 @@
 		/datum/map/sector/roguemining_192/one,
 	)
 
+	create_struct = TRUE
+
 	//* LEGACY BELOW *//
 
 	legacy_assert_shuttle_datums = list(
@@ -163,12 +165,9 @@
 	)
 	planet_path = /datum/planet/virgo3b
 	link_above = /datum/map_level/tether/station/surface_mid
-	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES|LEGACY_LEVEL_SEALED
-	link_north = /datum/map_level/tether/mine
-	link_south = /datum/map_level/tether/plains
+	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
+	struct_create_pos = "0,0,0"
 	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
-	link_north = /datum/map_level/tether/mine
-	link_south = /datum/map_level/tether/plains
 	// holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
 	// holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
 
@@ -184,9 +183,8 @@
 		ZTRAIT_GRAVITY,
 	)
 	planet_path = /datum/planet/virgo3b
-	link_above = /datum/map_level/tether/station/surface_high
-	link_below = /datum/map_level/tether/station/surface_low
-	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES|LEGACY_LEVEL_SEALED
+	struct_create_pos = "0,0,1"
+	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	base_turf = /turf/simulated/open
 	// holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
 	// holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*1
@@ -203,9 +201,8 @@
 		ZTRAIT_GRAVITY,
 	)
 	planet_path = /datum/planet/virgo3b
-	link_above = /datum/map_level/tether/transit
-	link_below = /datum/map_level/tether/station/surface_mid
-	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES|LEGACY_LEVEL_SEALED
+	struct_create_pos = "0,0,2"
+	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	base_turf = /turf/simulated/open
 	// holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
 	// holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*2
@@ -222,9 +219,8 @@
 		ZTRAIT_GRAVITY,
 	)
 	planet_path = /datum/planet/virgo3b
-	link_above = /datum/map_level/tether/station/space_low
-	link_below = /datum/map_level/tether/station/surface_high
-	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_SEALED|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONTACT
+	struct_create_pos = "0,0,3"
+	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONTACT
 	base_turf = /turf/simulated/open
 
 /datum/map_level/tether/station/space_low
@@ -237,8 +233,7 @@
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 	)
-	link_above = /datum/map_level/tether/station/space_high
-	link_below = /datum/map_level/tether/transit
+	struct_create_pos = "0,0,4"
 	base_turf = /turf/space
 	// holomap_offset_x = HOLOMAP_ICON_SIZE - TETHER_HOLOMAP_MARGIN_X - TETHER_MAP_SIZE
 	// holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
@@ -254,7 +249,7 @@
 		ZTRAIT_FACILITY_SAFETY,
 		ZTRAIT_LEGACY_BELTER_DOCK,
 	)
-	link_below = /datum/map_level/tether/station/space_low
+	struct_create_pos = "0,0,5"
 	base_turf = /turf/simulated/open
 	// holomap_offset_x = HOLOMAP_ICON_SIZE - TETHER_HOLOMAP_MARGIN_X - TETHER_MAP_SIZE
 	// holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*1
@@ -269,11 +264,10 @@
 		ZTRAIT_STATION,
 		ZTRAIT_GRAVITY,
 	)
-	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_SEALED
+	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER
+	struct_create_pos = "0,1,0"
 	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
 	planet_path = /datum/planet/virgo3b
-	link_below = /datum/map_level/tether/underdark
-	link_south = /datum/map_level/tether/station/surface_low
 
 /datum/map_level/tether/mine/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
@@ -287,7 +281,7 @@
 	traits = list(
 		ZTRAIT_LEGACY_BELTER_TRANSIT,
 	)
-	flags = LEGACY_LEVEL_ADMIN|LEGACY_LEVEL_SEALED|LEGACY_LEVEL_CONTACT
+	flags = LEGACY_LEVEL_ADMIN|LEGACY_LEVEL_CONTACT
 
 /datum/map_level/tether/underdark
 	id = "underdark"
@@ -299,10 +293,10 @@
 		ZTRAIT_STATION,
 		ZTRAIT_GRAVITY,
 	)
-	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_SEALED
+	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER
 	base_turf = /turf/simulated/mineral/floor/virgo3b
 	planet_path = /datum/planet/virgo3b
-	link_above = /datum/map_level/tether/mine
+	struct_create_pos = "0,1,-1"
 
 /datum/map_level/tether/underdark/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
@@ -328,10 +322,10 @@
 	traits = list(
 		ZTRAIT_GRAVITY,
 	)
-	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_SEALED
+	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER
 	base_turf = /turf/simulated/mineral/floor/virgo3b
 	planet_path = /datum/planet/virgo3b
-	link_north = /datum/map_level/tether/station/surface_low
+	struct_create_pos = "0,-1,0"
 
 /datum/map_level/tether/plains/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
