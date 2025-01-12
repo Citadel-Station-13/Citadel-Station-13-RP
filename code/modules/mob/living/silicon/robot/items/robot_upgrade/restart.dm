@@ -19,3 +19,5 @@
 	living_mob_list |= R
 	R.notify_ai(ROBOT_NOTIFICATION_NEW_UNIT)
 	return TRUE
+
+#warn swap

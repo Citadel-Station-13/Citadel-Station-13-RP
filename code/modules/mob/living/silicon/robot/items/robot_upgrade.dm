@@ -10,6 +10,10 @@
 	/// Items provided
 	/// * Lazy-inited
 	var/list/obj/item/mounted_items
+	/// Lazy man's create_mounted_item_descriptor injection.
+	/// * This shouldn't be used at compile time; just override the proc.
+	#warn hook
+	var/list/mounted_item_descriptor_inject
 
 /obj/item/robot_upgrade/Destroy()
 	owner?.uninstall_upgrade(src, TRUE)
@@ -22,7 +26,7 @@
 	create_mounted_items()
 
 /obj/item/robot_upgrade/proc/create_mounted_items()
-	var/list/descriptors = created_mounted_item_descriptors()
+	var/list/descriptors = create_mounted_item_descriptors()
 	#warn impl
 	#warn handle item deletions
 

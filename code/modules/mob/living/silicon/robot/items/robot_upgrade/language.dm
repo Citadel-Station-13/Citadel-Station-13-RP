@@ -13,3 +13,7 @@
 			)
 		return FALSE
 	return ..()
+
+/obj/item/robot_upgrade/language/being_installed(mob/living/silicon/robot/target)
+	target.create_translation_context(/datum/translation_context/variable/learning/silicons)
+	qdel(src)

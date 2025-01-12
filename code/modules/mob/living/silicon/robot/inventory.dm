@@ -69,7 +69,7 @@
 			sight_mode &= ~module_state_1:sight_mode
 		if (client)
 			client.screen -= module_state_1
-		contents -= module_state_1
+		contents -= module_state_1s
 		module_state_1:loc = module
 		module_state_1.unequipped(src, SLOT_ID_HANDS, NONE)
 		module_state_1.on_unequipped(src, 1, NONE)

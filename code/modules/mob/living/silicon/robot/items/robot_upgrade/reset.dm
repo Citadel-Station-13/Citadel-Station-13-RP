@@ -5,8 +5,6 @@
 	item_state = "cyborg_upgrade"
 	require_module = TRUE
 
-/obj/item/robot_upgrade/reset/action(var/mob/living/silicon/robot/R)
-	if(..())
-		return FALSE
-	R.module_reset()
-	return TRUE
+/obj/item/robot_upgrade/reset/being_installed(mob/living/silicon/robot/target)
+	target.module_reset()
+	qdel(src)

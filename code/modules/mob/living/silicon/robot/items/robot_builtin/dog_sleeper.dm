@@ -1,3 +1,9 @@
+// todo: this file is a fucking disgrace, rewrite this to be
+//       /obj/item/robot_builtin/entity_chamber
+//       and make all behavior modular
+//       also take out all fucking references of vore,
+//       if a downstream wants to be vorny power to them they can do it themselves
+
 //Sleeper
 /obj/item/robot_builtin/dog_sleeper
 	name = "Medbelly"
@@ -54,7 +60,7 @@
 		return
 	if(AM.anchored)
 		return
-	if(target in hound.module.modules)
+	if(target in hound.contents)
 		return
 	if(length(contents) >= max_item_count)
 		to_chat(user, "<span class='warning'>Your [src.name] is full. Eject or process contents to continue.</span>")
@@ -526,7 +532,7 @@
 				var/actual_burn = T.getFireLoss() - old_burn
 				var/damage_gain = actual_brute + actual_burn
 				drain(-25 * damage_gain) //25*total loss as with voreorgan stats.
-				item_mount?.push_reagent(/datum/reagent/water, damagE_gain)
+				item_mount?.push_reagent(/datum/reagent/water, damage_gain)
 				if(T.stat == DEAD)
 					if(ishuman(T))
 						message_admins("[key_name(hound)] has digested [key_name(T)] as a dogborg. ([hound ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[hound.x];Y=[hound.y];Z=[hound.z]'>JMP</a>" : "null"])")
@@ -608,7 +614,7 @@
 								if(material == "plastic")
 									item_mount?.push_material(/datum/prototype/material/plastic::id, total_material)
 								if(material == "wood")
-									item_mount?.push_material(/datum/prototype/material/wood::id, total_material)
+									item_mount?.push_material(/datum/prototype/material/wood_plank::id, total_material)
 					else
 						drain(-50 * digested)
 			else if(istype(target,/obj/effect/decal/remains))
