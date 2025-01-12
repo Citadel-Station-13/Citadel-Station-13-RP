@@ -1,54 +1,47 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/datum/prototype/robot_iconset/vale
-	abstract_type = /datum/prototype/robot_iconset/vale
-	icon = 'icons/mob/robot/iconset/vale.dmi'
+/datum/prototype/robot_iconset/hover_glitterfly
+	abstract_type = /datum/prototype/robot_iconset/hover_glitterfly
+	icon = 'icons/mob/robot/iconset/hover_glitterfly.dmi'
 	icon_state_cover = "panel"
 
-/datum/prototype/robot_iconset/vale/standard
+/datum/prototype/robot_iconset/hover_glitterfly/standard
 	icon_state = "standard"
+	icon_state_indicator = "standard-indicator"
 
-/datum/prototype/robot_iconset/vale/standard
-	icon_state = "standard"
+/datum/prototype/robot_iconset/hover_glitterfly/janitor
+	icon_state = "janitor"
+	icon_state_indicator = "janitor-indicator"
 
-/datum/prototype/robot_iconset/vale/standard
-	icon_state = "standard"
+/datum/prototype/robot_iconset/hover_glitterfly/service
+	icon_state = "service"
+	icon_state_indicator = "service-indicator"
 
-/datum/prototype/robot_iconset/vale/standard
-	icon_state = "standard"
+/datum/prototype/robot_iconset/hover_glitterfly/surgeon
+	icon_state = "surgeon"
+	icon_state_indicator = "surgeon-indicator"
 
-/datum/prototype/robot_iconset/vale/standard
-	icon_state = "standard"
+/datum/prototype/robot_iconset/hover_glitterfly/crisis
+	icon_state = "crisis"
+	icon_state_indicator = "crisis-indicator"
 
-/datum/prototype/robot_iconset/vale/standard
-	icon_state = "standard"
+/datum/prototype/robot_iconset/hover_glitterfly/engineering
+	icon_state = "engineering"
+	icon_state_indicator = "engineering-indicator"
 
-/datum/prototype/robot_iconset/vale/standard
-	icon_state = "standard"
+/datum/prototype/robot_iconset/hover_glitterfly/security
+	icon_state = "security"
+	icon_state_indicator = "security-indicator"
 
-/datum/prototype/robot_iconset/vale/standard
-	icon_state = "standard"
+/datum/prototype/robot_iconset/hover_glitterfly/clerical
+	icon_state = "clerical"
+	icon_state_indicator = "clerical-indicator"
 
-/datum/prototype/robot_iconset/vale/standard
-	icon_state = "standard"
+/datum/prototype/robot_iconset/hover_glitterfly/science
+	icon_state = "science"
+	icon_state_indicator = "science-indicator"
 
-/datum/prototype/robot_iconset/vale/standard
-	icon_state = "standard"
-
-/datum/prototype/robot_iconset/vale/standard
-	icon_state = "standard"
-
-/datum/prototype/robot_iconset/vale/standard
-	icon_state = "standard"
-
-/datum/prototype/robot_iconset/vale/standard
-	icon_state = "standard"
-
-/datum/prototype/robot_iconset/vale/standard
-	icon_state = "standard"
-
-/datum/prototype/robot_iconset/vale/standard
-	icon_state = "standard"
-
-#warn impl
+/datum/prototype/robot_iconset/hover_glitterfly/mining
+	icon_state = "mining"
+	icon_state_indicator = "mining-indicator"
