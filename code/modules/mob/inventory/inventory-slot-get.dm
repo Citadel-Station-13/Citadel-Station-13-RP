@@ -13,7 +13,7 @@
  * @return /obj/item or null
  */
 /datum/inventory/proc/get_slot_single(id) as /obj/item
-	. = owner._item_by_slot(type_or_id)
+	. = owner._item_by_slot(id)
 	if(. == INVENTORY_SLOT_DOES_NOT_EXIST)
 		return null
 
@@ -29,7 +29,7 @@
  * @return list() of items
  */
 /datum/inventory/proc/get_slot(id) as /list
-	var/obj/item/in_slot = owner._item_by_slot(type_or_id)
+	var/obj/item/in_slot = owner._item_by_slot(id)
 	if(in_slot == INVENTORY_SLOT_DOES_NOT_EXIST)
 		return
 	if(in_slot)
@@ -60,7 +60,7 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 	. = list()
-	for(var/datum/inventory_slot/slot_id as anything in types_or_ids || base_inventory_slots)
+	for(var/datum/inventory_slot/slot_id as anything in ids || base_inventory_slots)
 		if(ispath(slot_id))
 			slot_id = initial(slot_id.id)
 		. += compound ? get_slot(slot_id) : get_slot_single(slot_id)
