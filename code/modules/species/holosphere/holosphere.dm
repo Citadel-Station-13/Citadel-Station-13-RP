@@ -21,6 +21,8 @@
 	species_flags =            NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN | CONTAMINATION_IMMUNE | NO_BLOOD | NO_NUTRITION_GAIN | CAN_USE_RECHARGE_STATION
 
 	total_health = 20
+	death_health = 0
+	crit_health = -100 // never happens because you hit death health first, and cant go into crit while dead
 
 	hunger_factor = 0 // doesn't get hungry naturally, but instead when healing they use nutrition
 
