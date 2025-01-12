@@ -58,6 +58,12 @@
 /datum/inventory/proc/robot_module_get_all() as /list
 	return list()
 
+/**
+ * Gets all robot modules active.
+ */
+/datum/inventory/proc/robot_module_get_active() as /list
+	return list()
+
 //* Check - Abstraction (Implement These!) *//
 
 /**
@@ -110,6 +116,7 @@
 		on_robot_module_equip(item, index)
 
 /datum/inventory/proc/on_robot_module_equip(obj/item/item, index)
+	PROTECTED_PROC(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 
 /**
@@ -131,18 +138,15 @@
  *
  * @return item unequipped or null
  */
-/datum/inventory/proc/robot_module_unequip_index(obj/item/item) as /obj/item
+/datum/inventory/proc/robot_module_unequip_index(index) as /obj/item
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
-
-	var/index = robot_module_is_active(item)
-	if(!index)
-		return
 
 	robot_module_unequip_impl(item, index)
 	on_robot_module_unequip(item, index)
 
 /datum/inventory/proc/on_robot_module_unequip(obj/item/item, index)
+	PROTECTED_PROC(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 
 //* Registration *//
@@ -160,6 +164,7 @@
 		on_robot_module_register(item)
 
 /datum/inventory/proc/on_robot_module_register(obj/item/item)
+	PROTECTED_PROC(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 
 /**
@@ -176,4 +181,5 @@
 	on_robot_module_unregister(item)
 
 /datum/inventory/proc/on_robot_module_unregister(obj/item/item)
+	PROTECTED_PROC(TRUE)
 	SHOULD_CALL_PARENT(TRUE)

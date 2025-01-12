@@ -14,6 +14,11 @@
 /datum/inventory/robot/robot_module_get_all()
 	return robot_modules ? robot_modules.Copy() : list()
 
+/datum/inventory/proc/robot_module_get_active()
+	. = list()
+	for(var/obj/item/module in active_modules)
+		. += module
+
 /datum/inventory/robot/robot_module_is_active(obj/item/item)
 	return active_modules ? active_modules.Find(item) : 0
 

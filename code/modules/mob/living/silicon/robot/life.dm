@@ -31,12 +31,7 @@
 		C.update_power_state()
 
 	if ( cell && is_component_functioning("power cell") && src.cell.charge > 0 )
-		if(src.module_state_1)
-			legacy_cell_use_power(50) // 50W load for every enabled tool TODO: tool-specific loads
-		if(src.module_state_2)
-			legacy_cell_use_power(50)
-		if(src.module_state_3)
-			legacy_cell_use_power(50)
+		legacy_cell_use_power(50 * length(inventory.robot_module_get_active()))
 
 		if(lights_on)
 			legacy_cell_use_power(30) 	// 30W light. Normal lights would use ~15W, but increased for balance reasons.
@@ -223,12 +218,6 @@
 		for(var/obj/I in src.contents)
 			if(I && !(istype(I,/obj/item/cell) || istype(I,/obj/item/radio)  || istype(I,/obj/machinery/camera) || istype(I,/obj/item/mmi)))
 				src.client.screen += I
-	if(src.module_state_1)
-		src.module_state_1:screen_loc = ui_inv1
-	if(src.module_state_2)
-		src.module_state_2:screen_loc = ui_inv2
-	if(src.module_state_3)
-		src.module_state_3:screen_loc = ui_inv3
 	updateicon()
 
 // todo: better way

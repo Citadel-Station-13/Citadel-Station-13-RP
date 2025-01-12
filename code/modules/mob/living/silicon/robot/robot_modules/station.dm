@@ -29,9 +29,6 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	var/channels = list()
 	var/networks = list()
 	var/sprites = list()
-	var/can_be_pushed = 1
-	/// Enables a verb.
-	var/can_shred = FALSE
 
 	var/languages = list(
 		LANGUAGE_AKHANI = 0,
@@ -53,12 +50,6 @@ GLOBAL_LIST_INIT(robot_modules, list(
 		LANGUAGE_ZADDAT = 0
 		)
 
-	var/list/modules = list()
-	var/list/datum/matter_synth/synths = list()
-	var/list/synths_by_kind = list()
-	var/obj/item/emag = null
-	var/obj/item/robot_upgrade/jetpack = null
-	var/obj/item/robot_upgrade/advhealth = null
 	var/list/subsystems = list()
 	var/list/obj/item/robot_upgrade/supported_upgrades = list()
 
@@ -69,12 +60,11 @@ GLOBAL_LIST_INIT(robot_modules, list(
 /obj/item/robot_module/Initialize(mapload)
 	. = ..()
 	var/mob/living/silicon/robot/R = loc
-	R.module = src
+	R.module_legacy = src
 
 	add_camera_networks(R)
 	add_languages(R)
 	add_subsystems(R)
-	apply_status_flags(R)
 
 	if(R.radio)
 		if(R.shell)
@@ -88,20 +78,10 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	// TODO: REFACTOR CYBORGS THEY ARE ALL SHITCODE
 	INVOKE_ASYNC(R, TYPE_PROC_REF(/mob/living/silicon/robot, choose_icon), R.module_sprites.len + 1, R.module_sprites)
 
-	for (var/entry in get_modules())
-		modules += new entry(src)
-
-	for (var/thing in handle_special_module_init(R))
-		modules += thing
-
-	for(var/obj/item/I in modules)
-		ADD_TRAIT(I, TRAIT_ITEM_NODROP, CYBORG_MODULE_TRAIT)
-
 /obj/item/robot_module/proc/Reset(var/mob/living/silicon/robot/R)
 	remove_camera_networks(R)
 	remove_languages(R)
 	remove_subsystems(R)
-	remove_status_flags(R)
 
 	if(R.radio)
 		R.radio.recalculateChannels()
@@ -122,39 +102,6 @@ GLOBAL_LIST_INIT(robot_modules, list(
 
 /obj/item/robot_module/proc/handle_custom_item(mob/living/silicon/robot/R)
 	return
-
-/obj/item/robot_module/Destroy()
-	for(var/module in modules)
-		qdel(module)
-	modules.Cut()
-	synths_by_kind = null
-	qdel(emag)
-	qdel(jetpack)
-	emag = null
-	jetpack = null
-	return ..()
-
-/obj/item/robot_module/emp_act(severity)
-	if(modules)
-		for(var/obj/O in modules)
-			O.emp_act(severity)
-	if(emag)
-		emag.emp_act(severity)
-	..()
-
-/obj/item/robot_module/proc/respawn_consumable(var/mob/living/silicon/robot/R, var/rate)
-	if(!synths || !synths.len)
-		return
-
-	for(var/datum/matter_synth/T in synths)
-		T.add_charge(T.recharge_rate * rate)
-
-/obj/item/robot_module/proc/rebuild()//Rebuilds the list so it's possible to add/remove items from the module
-	var/list/temp_list = modules
-	modules = list()
-	for(var/obj/O in temp_list)
-		if(O)
-			modules += O
 
 /obj/item/robot_module/proc/add_languages(var/mob/living/silicon/robot/R)
 	// Stores the languages as they were before receiving the module, and whether they could be synthezized.
@@ -192,26 +139,6 @@ GLOBAL_LIST_INIT(robot_modules, list(
 /obj/item/robot_module/proc/remove_subsystems(var/mob/living/silicon/robot/R)
 	remove_verb(R, subsystems)
 
-/obj/item/robot_module/proc/apply_status_flags(var/mob/living/silicon/robot/R)
-	if(!can_be_pushed)
-		R.status_flags &= ~STATUS_CAN_PUSH
-
-/obj/item/robot_module/proc/remove_status_flags(var/mob/living/silicon/robot/R)
-	if(!can_be_pushed)
-		R.status_flags |= STATUS_CAN_PUSH
-
-/obj/item/robot_module/robot/get_modules()
-	. = ..()
-	// Common items that all modules have.
-	. |= list(
-		/obj/item/flash/robot,
-		/obj/item/tool/crowbar/cyborg,
-		/obj/item/extinguisher,
-		/obj/item/gps/robot
-	)
-
-/obj/item/robot_module/robot/quad
-
 /obj/item/robot_module/robot/quad/Initialize()
 	. = ..()
 	var/mob/living/silicon/robot/R = loc
@@ -222,14 +149,11 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	add_verb(R, list(
 		/mob/living/silicon/robot/proc/rest_style
 	))
-	if (can_shred)
-		add_verb(R, /mob/living/proc/shred_limb)
 
 /obj/item/robot_module/robot/quad/Reset(mob/living/silicon/robot/R)
 	. = ..()
 	// Reset a bunch of wideborg specific things.
 	remove_verb(R, list(
-		/mob/living/proc/shred_limb,
 		/mob/living/silicon/robot/proc/rest_style
 	))
 	R.scrubbing = FALSE
@@ -243,29 +167,5 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	water.recharge_rate = 0
 	R.water_res = water
 	.[MATSYN_WATER] = water
-
-/obj/item/robot_module/robot/quad/handle_special_module_init(mob/living/silicon/robot/R)
-	. = ..()
-
-	var/obj/item/robot_builtin/dog_tongue/T = new /obj/item/robot_builtin/dog_tongue(src)
-	T.water = synths_by_kind[MATSYN_WATER]
-	. += T
-
-// Custom sprite stuff. There's a dedicated system for this, not sure why this is done separately.
-
-/obj/item/robot_module/robot/quad/engi/handle_custom_item(mob/living/silicon/robot/R)
-	. = ..()
-	if (R.client?.ckey == "nezuli")
-		sprites["Alina"] = "alina-eng"
-
-/obj/item/robot_module/robot/quad/medi/handle_custom_item(mob/living/silicon/robot/R)
-	. = ..()
-	if (R.client?.ckey == "nezuli")
-		sprites["Alina"] = "alina-med"
-
-/obj/item/robot_module/robot/quad/sec/handle_custom_item(mob/living/silicon/robot/R)
-	. = ..()
-	if (R.client?.ckey == "nezuli")
-		sprites["Alina"] = "alina-sec"
 
 #warn parse this crap

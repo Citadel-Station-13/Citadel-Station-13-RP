@@ -1,9 +1,8 @@
 /mob/living/silicon/robot/Process_Spacemove()
-	if(module)
-		for(var/obj/item/tank/jetpack/J in module.modules)
-			if(istype(J, /obj/item/tank/jetpack))
-				if(J.allow_thrust(0.01))
-					return TRUE
+	for(var/obj/item/tank/jetpack/J in inventory?.robot_module_get_active())
+		if(istype(J, /obj/item/tank/jetpack))
+			if(J.allow_thrust(0.01))
+				return TRUE
 	return ..()
 
 /mob/living/silicon/robot/movement_delay()

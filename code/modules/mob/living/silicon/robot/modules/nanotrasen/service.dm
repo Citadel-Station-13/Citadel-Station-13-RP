@@ -45,12 +45,6 @@
 	R.add_reagent("beer2", 50)
 	src.emag.name = "Mickey Finn's Special Brew"
 
-/obj/item/robot_module/robot/quad/serv/get_modules()
-	. = ..()
-	. |= list(
-		/obj/item/robot_builtin/dog_jaws/small,
-	)
-
 #warn translate chassis below
 
 /obj/item/robot_module/robot/clerical

@@ -64,9 +64,9 @@ GLOBAL_LIST_EMPTY(available_ai_shells)
 	// Languages and comms.
 	languages = AI.languages.Copy()
 	speech_synthesizer_langs = AI.speech_synthesizer_langs.Copy()
-	if(radio && AI.aiRadio && module) //AI keeps all channels, including Syndie if it is an Infiltrator.
+	if(radio && AI.aiRadio && module_legacy) //AI keeps all channels, including Syndie if it is an Infiltrator.
 		radio.subspace_transmission = TRUE
-		module.channels = AI.aiRadio.channels
+		module_legacy.channels = AI.aiRadio.channels
 		radio.recalculateChannels()
 
 // Called after the AI transfers over.
@@ -85,8 +85,8 @@ GLOBAL_LIST_EMPTY(available_ai_shells)
 	mainframe.teleop = null
 	mainframe.deployed_shell = null
 	SetName("[modtype] AI Shell [num2text(ident)]")
-	if(radio && module) //Return radio to normal
-		module.channels = initial(module.channels)
+	if(radio && module_legacy) //Return radio to normal
+		module_legacy.channels = initial(module_legacy.channels)
 		radio.recalculateChannels()
 	if(!QDELETED(camera))
 		camera.c_tag = real_name //update the camera name too
