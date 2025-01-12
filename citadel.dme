@@ -4020,7 +4020,6 @@
 #include "code\modules\mob\living\silicon\robot\items\robot_upgrade\restart.dm"
 #include "code\modules\mob\living\silicon\robot\items\robot_upgrade\sizeshift.dm"
 #include "code\modules\mob\living\silicon\robot\items\robot_upgrade\syndicate.dm"
-#include "code\modules\mob\living\silicon\robot\items\robot_upgrade\tasercooler.dm"
 #include "code\modules\mob\living\silicon\robot\items\robot_upgrade\vtec.dm"
 #include "code\modules\mob\living\silicon\robot\legacy_items\gripper.dm"
 #include "code\modules\mob\living\silicon\robot\legacy_items\robot_items.dm"
