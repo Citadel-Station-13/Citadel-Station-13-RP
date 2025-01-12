@@ -7,6 +7,13 @@
 /datum/prototype/robot_iconset/biped_meka
 	abstract_type = /datum/prototype/robot_iconset/biped_meka
 
+	variations = list(
+		/datum/robot_iconset_variation/sitting,
+		/datum/robot_iconset_variation/dead,
+		/datum/robot_iconset_variation/resting,
+	)
+
+
 /datum/prototype/robot_iconset/biped_meka/one
 	icon_state = "one"
 	icon_state_indicator = "one-indicator"
