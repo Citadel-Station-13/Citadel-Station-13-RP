@@ -54,6 +54,17 @@
 
 	/// skip default / old update_icon() handling
 	var/skip_legacy_icon_update = FALSE
+	/// use new update icon system
+	/// * this is mandatory for all new stacks
+	var/use_new_icon_update = FALSE
+
+	/// Total number of states used in updating icons.
+	/// todo: all stacks should use this, remove `use_new_icon_update
+	///
+	/// * Only active when [use_new_icon_update] is set on
+	/// * This counts up from 1.
+	/// * If null, we don't do icon updates based on amount.
+	var/icon_state_count
 
 	/// Will the item pass its own color var to the created item? Dyed cloth, wood, etc.
 	var/pass_color = FALSE
@@ -78,6 +89,14 @@
 			if(can_merge(S))
 				merge(S)
 	update_icon()
+
+/obj/item/stack/update_icon_state()
+	if(!use_new_icon_update)
+		return ..()
+	if(!icon_state_count)
+		return ..()
+	icon_state = "[base_icon_state || initial(icon_state)]-[get_amount_icon_notch(amount)]"
+	return ..()
 
 /obj/item/stack/update_icon()
 	. = ..()
@@ -425,3 +444,23 @@
 		return FALSE
 	update_icon()
 	return TRUE
+
+//* Getters *//
+
+/**
+ * Get the number for `iconstate-[n]` icon state rendering.
+ *
+ * @return number, or null if `icon_state_count` isn't set.
+ */
+/obj/item/stack/proc/get_amount_icon_notch(the_amount)
+	if(!icon_state_count)
+		return null
+	return CEILING(the_amount / max_amount * icon_state_count, 1)
+
+/**
+ * Get amount remaining.
+ *
+ * todo: stack synth support
+ */
+/obj/item/stack/proc/get_amount()
+	return amount
