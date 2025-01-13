@@ -14,6 +14,8 @@
 	icon_state = "map_on"
 
 /obj/machinery/atmospherics/component/binary/pump/high_power/update_icon_state()
+	// todo: no don't do this
+	SHOULD_CALL_PARENT(FALSE)
 	if(!powered())
 		icon_state = "off"
 	else

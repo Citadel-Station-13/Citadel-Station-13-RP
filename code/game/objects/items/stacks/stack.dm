@@ -95,7 +95,7 @@
 		return ..()
 	if(!icon_state_count)
 		return ..()
-	icon_state = "[base_icon_state || initial(icon_state)]-[get_amount_icon_notch(amount)]"
+	icon_state = "[base_icon_state || initial(icon_state)]-[get_amount_icon_notch(get_amount())]"
 	return ..()
 
 /obj/item/stack/update_icon()
@@ -456,11 +456,3 @@
 	if(!icon_state_count)
 		return null
 	return CEILING(the_amount / max_amount * icon_state_count, 1)
-
-/**
- * Get amount remaining.
- *
- * todo: stack synth support
- */
-/obj/item/stack/proc/get_amount()
-	return amount

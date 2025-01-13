@@ -3,6 +3,7 @@
 	singular_name = "medical pack"
 	icon = 'icons/items/stacks/medical.dmi'
 	use_new_icon_update = TRUE
+	skip_legacy_icon_update = TRUE
 	amount = 10
 	max_amount = 10
 	w_class = WEIGHT_CLASS_SMALL
@@ -445,22 +446,6 @@
 	icon_state = "splint_primitive"
 	base_icon_state = "splint_primitive"
 	amount = 5
-
-/obj/item/stack/medical/advanced/update_icon_state()
-	switch(amount)
-		if(1 to 2)
-			icon_state = initial(icon_state)
-		if(3 to 4)
-			icon_state = "[initial(icon_state)]_4"
-		if(5 to 6)
-			icon_state = "[initial(icon_state)]_6"
-		if(7 to 8)
-			icon_state = "[initial(icon_state)]_8"
-		if(9)
-			icon_state = "[initial(icon_state)]_9"
-		else
-			icon_state = "[initial(icon_state)]_10"
-	return ..()
 
 // todo: kick ashlander crap to ashlander faction or something, why is this here?
 

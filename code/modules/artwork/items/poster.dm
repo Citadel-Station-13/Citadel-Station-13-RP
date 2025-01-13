@@ -30,7 +30,7 @@
 
 /obj/item/poster/proc/set_poster_design(datum/prototype/poster_design/design)
 	src.name = "rolled-up-poster - [design.name]"
-	src.desc = "[initial(src.desc)] [design.desc]"
+	src.desc = "[/obj/item/poster::desc] [design.desc]"
 	src.poster_design_id = design.id
 
 //Places the poster on a wall
