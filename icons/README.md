@@ -22,6 +22,7 @@ Yes, this currently includes all turfs, mobs, objs, and misc things. Sorry. We'l
     - /gearsets - bundled sets, like voidsuits, cryosuits, etc
   - /effects - generic visual effects that are not screen/rendering: e.g. attack, emp, bomb, etc.
   - /items - general, non-module, non-clothing items placed in here
+    - /items/stacks - general `/obj/item/stack` types placed in here.
   - /interface - used for stuff going into spritesheets for tgui, etc. if it's a HUD object, it should go in /screen instead.
   - /machinery - used for sprites for general, non-module machines. use subdirectories if more than one .dmi is needed, or for closely related machinery.
   - /mapping - used for sprites for in-map-editor objects that are   invisible in game world
@@ -34,15 +35,13 @@ Yes, this currently includes all turfs, mobs, objs, and misc things. Sorry. We'l
                   used in the abstraction of limb sprite from limb definition.
     - /sprite_accessories - unconverted sprite accessories
     - /sprite_accessory - modern sprite accessory system
-
   - /modules - used for specific departments / content packs / logical bundles
-    - /{modulename} - the examples before are just that, examples. some modules will require different styles of icon organization.
+    - /{modulename} - the examples below are just that, examples. some modules will require different styles of icon organization.
       - /items - items
       - /clothing - clothing
       - /machinery - machinery
       - /structures - structures
   - /objects - miscellaneous objects that are not items, machinery, or structures
-  - /overmaps - **All** overmap sprites, whether or not it's screen   rendering, goes in here
   - /runtime - follow similar structure inside this, treat it as a   sub-copy. icons in this are copied over for use during runtime
     - currently being deprecated; we have chosen to instead copy over all icons/sounds, so the runtime
       server can access them.
