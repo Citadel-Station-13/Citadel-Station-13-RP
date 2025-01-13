@@ -37,8 +37,9 @@
 	return power
 
 /**
- * called on melee hit
+ * called on item melee hit
  *
+ * * At this rate, the item has already hit us.
  * * check CLICKCHAIN_FLAGS_* as needed, especially UNCONDITIONAL_ABORT and ATTACK_ABORT
  * * clickchain flags are sent down through parent calls.
  *
@@ -55,6 +56,8 @@
 
 /**
  * called on unarmed melee hit
+ *
+ * * At this rate, the attacker has already hit us.
  *
  * @params
  * * user - person attacking

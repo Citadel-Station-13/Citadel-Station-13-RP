@@ -31,6 +31,22 @@
 
 	clickchain.performer.legacy_alter_melee_clickchain(clickchain)
 
+/obj/item/proc/melee_attack(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+
+/**
+ * this is here to allow legacy behaviors to work
+ *
+ * majority of melee attack hooks need to be refactored to item attack handling, tool attack handling,
+ * or refactored in general to use new melee system
+ *
+ * the default behavior of this is to return a nonsensical value that is detected and used to determine that
+ * we should use the new melee system
+ *
+ * @return clickchain flags, or, the exact string `"use_new"`
+ */
+/obj/item/proc/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	return "use_new"
+
 #warn deal with this trainwreck
 #warn parse below
 
@@ -136,6 +152,32 @@
 /obj/item/proc/finalize_mob_melee(mob/target, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
 	return NONE
 
+/**
+ * Low level proc handling the actual melee attack / impact.
+ *
+ * You probably shouldn't be messing with this unless you know what you're doing.
+ * 
+ * @return clickchain flags to return to caller
+ */
+/obj/item/proc/melee_attack(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+
+/**
+ * Low level proc handling the actual melee attack's effects.
+ *
+ * You probably shouldn't be messing with this unless you know what you're doing.
+ *
+ * @return clickchain flags to return to caller
+ */
+/obj/item/proc/melee_attack_impact(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+
+
+/**
+ * Low level proc handling
+ */
+/obj/item/proc/melee_attack_hit()
+
+/obj/item/proc/melee_attack_miss()
+
 /obj/item/proc/attack_object(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult = 1)
 	PROTECTED_PROC(TRUE)	// route via standard_melee_attack please.
 	// todo: move this somewhere else
@@ -212,12 +254,19 @@
 
 	return NONE
 
-/obj/item/proc/finalize_object_melee(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult = 1)
-	return NONE
-
+#warn above
 
 /**
  * Called after we hit something in melee, **whether or not we hit.**
+ *
+ * * Missing is the failure to make contact entirely. If it makes contact and is blocked by shieldcall,
+ *   that's a different deal.
+ *
+ * @params
+ * * target - The target being hit; at this point it can't be redirected
+ * * clickchain - clickchain data
+ * * clickchain_flags - clickchain flags
+ * * missed - Did we miss? Do **not** use clickchain flags to infer this! It's specified explicitly for a reason.
  */
-/obj/item/proc/melee_finalize(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-	
+/obj/item/proc/melee_finalize(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, missed)
+	return
