@@ -157,6 +157,8 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 		QUEUE_SMOOTH(src)
 		QUEUE_SMOOTH_NEIGHBORS(src)
 	update_icon()
+	if(SSair.initialized)
+		queue_zone_update()
 
 // todo: don't make this the same /turf path, it doesn't make semantic sense
 /turf/simulated/mineral/proc/make_wall()
