@@ -15,7 +15,7 @@
 		emag_out |= list(
 			/obj/item/melee/transforming/energy/sword,
 		)
-		
+
 #warn translate chassis below
 
 /obj/item/robot_module/robot/standard
@@ -52,4 +52,3 @@
 	sprites = list(
 		"F3-LINE" = "FELI-Standard"
 	)
-	can_be_pushed = 0

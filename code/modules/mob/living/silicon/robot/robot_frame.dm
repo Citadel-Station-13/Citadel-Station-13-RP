@@ -7,7 +7,7 @@
  * * This is the thing you can actually choose as a player.
  * * This is a thing because icon and chassis are generally disjoint; you don't
  *   want to constrain sprite design to a single functionality, necessarily.
- * * Thus another layer of abstraction was added.
+ *   Thus, another layer of abstraction was added.
  */
 /datum/robot_frame
 	abstract_type = /datum/robot_frame
