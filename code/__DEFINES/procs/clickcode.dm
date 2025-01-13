@@ -1,7 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-//! Clickchain Flags
+//* Clickchain Flags *//
+
 /**
  * flags passed around click procs including but not limited to:
  * ClickOn
@@ -21,6 +22,8 @@
  *   reset.
  */
 
+// todo: audit these flags..
+
 /// stop the click chain from proceeding past this point; usually used if we're deleting or being inserted
 ///
 /// * This is an unconditional abort.
@@ -28,7 +31,7 @@
 #define CLICKCHAIN_DO_NOT_PROPAGATE			(1<<0)
 /// person can reach us normally
 #define CLICKCHAIN_HAS_PROXIMITY			(1<<1)
-/// in tool act - used to check if we should do default proximity checks when none are specified
+/// in tool attack chain - used to check if we should do default proximity checks when none are specified
 /// this is added to clickchain flags by tool_attack_chain.
 #define CLICKCHAIN_TOOL_ACT					(1<<2)
 /// redirected by something - like when a switchtool to another item
@@ -57,11 +60,13 @@
 /// check these for 'did something, the user probably wants to stop now'
 #define CLICKCHAIN_FLAGS_USAGE_ABORT (CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_FULL_BLOCKED | CLICKCHAIN_DID_SOMETHING)
 
-//! Reachability Depths - checked from level of DirectAccess and turf adjacency.
+//* Reachability Depths *//
+
 /// default reachability depth
 #define DEFAULT_REACHABILITY_DEPTH			4
 
-//! Reachability
+//* Reachability Returns *//
+
 /// can't reach - this *must* be a fals-y value.
 #define REACH_FAILED 0
 /// can physically reach normally

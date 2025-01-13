@@ -216,4 +216,8 @@
 	return NONE
 
 
+/**
+ * Called after we hit something in melee, **whether or not we hit.**
+ */
 /obj/item/proc/melee_finalize(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	

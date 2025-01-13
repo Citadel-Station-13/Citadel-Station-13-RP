@@ -84,7 +84,13 @@
 	src.click_params = params || list()
 	// target //
 	src.target = target
-	#warn auto fill: target_zone, using_intent
+
+	//! LEGACY AUTO FILL !//
+	if(isnull(src.using_intent))
+		src.using_intent = performer?.a_intent
+	if(isnull(src.target_zone))
+		src.target_zone = performer?.zone_sel?.selecting || BP_TORSO
+	//! END !//
 
 /datum/event_args/actor/clickchain/clone()
 	var/datum/event_args/actor/clickchain/cloning = ..()
