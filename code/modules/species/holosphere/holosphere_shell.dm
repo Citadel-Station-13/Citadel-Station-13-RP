@@ -101,3 +101,7 @@
 		user.visible_message(SPAN_NOTICE("\The [user] patches [damage_desc] on [src] with [tool]."))
 
 	return TRUE
+
+/mob/living/simple_mob/holosphere_shell/revive(force, full_heal)
+	..()
+	hologram.revive(force, full_heal)
