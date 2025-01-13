@@ -1044,4 +1044,4 @@
 
 /datum/loadout_entry/xeno/uniform
 	name = "Generic - Gear Harness"
-	path = /obj/item/clothing/under/harness
+	path = /obj/item/clothing/under/gear_harness

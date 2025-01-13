@@ -27,7 +27,7 @@
 		if(cell)
 			to_chat(user, "<span class='warning'>\The [src] already has \a [cell] installed.</span>")
 			return
-		if(!user.attempt_insert_item_for_installation(cell, src))
+		if(!user.attempt_insert_item_for_installation(thing, src))
 			return
 		cell = thing
 		playsound(loc, 'sound/machines/click.ogg', 10, 1)

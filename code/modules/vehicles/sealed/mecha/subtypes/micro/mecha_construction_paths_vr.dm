@@ -306,8 +306,6 @@
 	const_holder.cut_overlays()
 	spawn()
 		qdel(src)
-	return
-
 
 /datum/construction/reversible/mecha/gopher
 	result = "/obj/vehicle/sealed/mecha/micro/utility/gopher"

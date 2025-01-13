@@ -16,12 +16,12 @@
 		generate_styles()
 	AddElement(/datum/element/clothing/dynamic_recolor)
 
-/obj/item/clothing/accessory/halo_projector/available_styles(mob/user)
+/obj/item/clothing/accessory/halo_projector/style_repick_query(mob/user)
 	. = ..()
 	for(var/halo_name in global_halo_styles)
 		.[halo_name] = global_halo_styles[halo_name]
 
-/obj/item/clothing/accessory/halo_projector/set_style(style, mob/user)
+/obj/item/clothing/accessory/halo_projector/style_repick_set(style, mob/user)
 	. = ..()
 	if(.)
 		return
