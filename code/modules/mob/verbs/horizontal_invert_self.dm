@@ -1,6 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+// todo: DECLARE_MOB_VERB
 /mob/verb/horizontal_invert_self()
 	set name = "Invert Yourself (Horizontal)"
 	set desc = "Mirror your sprite across the N-S axis."

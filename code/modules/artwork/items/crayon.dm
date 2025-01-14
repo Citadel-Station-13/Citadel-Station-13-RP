@@ -10,6 +10,7 @@
 	pen_color = "#FF0000" //RGB
 	clickable = FALSE
 
+	// todo: reorganize vars
 	/// color name
 	var/crayon_color_name = "red"
 	/// what we show as; e.g. 'crayon', 'marker'
@@ -35,6 +36,7 @@
 	/// can eat
 	var/crayon_edible = TRUE
 
+	// todo: per user this so you can't see what someone else was about to do lmao
 	/// currently picked datapack string path
 	var/current_graffiti_icon_string_path
 	/// currently picked datapack icon state

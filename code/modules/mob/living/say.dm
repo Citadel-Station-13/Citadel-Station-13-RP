@@ -109,11 +109,11 @@ var/list/channel_to_radio_key = new
 		verb = pick("yells","roars","hollers")
 		whispering = 0
 		. = 1
-	if(slurring)
+	if(get_effective_impairment_power_slurring())
 		message = slur(message)
 		verb = pick("slobbers","slurs")
 		. = 1
-	if(stuttering)
+	if(get_effective_impairment_power_stutter())
 		message = stutter(message)
 		verb = pick("stammers","stutters")
 		. = 1

@@ -71,6 +71,11 @@
 	///
 	/// * Supports /obj/item/stack
 	/// * Supports /datum/material
+	///
+	/// todo: as of right now, only a single floor can ever be allowed to be built in this way
+	///       for a given stack or material id.
+	///       at some point, we need to investigate having multiple possibilities
+	/// todo: remove 'subtype build_type suppression' from New()
 	var/build_type
 	/// Amount of material needed to build.
 	var/build_cost = 1
@@ -162,6 +167,13 @@
 		dismantle_tool = dismantle_tool ? list(dismantle_tool) : list()
 	if(!islist(destroy_tool))
 		destroy_tool = destroy_tool ? list(destroy_tool) : list()
+	// subtype build suppression
+	// erase our build_type if our parent type defaults to it
+	// this way only the first declaration on the tree of a certain build type applies
+	if(ispath(parent_type, /datum/prototype/flooring))
+		var/datum/prototype/flooring/parent = parent_type
+		if(initial(parent.build_type) == build_type)
+			build_type = null
 
 /datum/prototype/flooring/proc/get_flooring_overlay(cache_key, base_state, icon_dir = 0, layer = FLOOR_DECAL_LAYER)
 	if(!flooring_cache[cache_key])
