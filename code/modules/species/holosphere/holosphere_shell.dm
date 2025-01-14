@@ -34,7 +34,6 @@
 	holder_type = /obj/item/holder/holosphere_shell
 
 	var/eye_icon_state = "holosphere_eye"
-	var/eye_color = rgb(255,255,255)
 
 	// space movement related
 	var/last_space_movement = 0
@@ -47,7 +46,7 @@
 /mob/living/simple_mob/holosphere_shell/regenerate_icons()
 	cut_overlays()
 	var/image/eye_icon = image('icons/mob/species/holosphere/holosphere.dmi',eye_icon_state)
-	eye_icon.color = eye_color
+	eye_icon.color = rgb(hologram.r_eyes, hologram.b_eyes, hologram.g_eyes)
 	add_overlay(eye_icon)
 
 /mob/living/simple_mob/holosphere_shell/verb/enable_hologram()

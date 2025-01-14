@@ -119,7 +119,6 @@
 	transform_component = H.AddComponent(/datum/component/custom_transform, holosphere_shell, null, null, FALSE)
 	holosphere_shell.transform_component = transform_component
 	holosphere_shell.hologram = H
-	holosphere_shell.regenerate_icons()
 
 /datum/species/holosphere/on_remove(mob/living/carbon/human/H)
 	. = ..()
@@ -133,6 +132,7 @@
 		holosphere_shell.name = holosphere_shell.hologram.name
 		if(transform_component.try_transform())
 			holosphere_shell.hologram.drop_held_items()
+			holosphere_shell.regenerate_icons()
 
 /datum/species/holosphere/proc/try_untransform(force = FALSE)
 	if(force || !IS_DEAD(holosphere_shell.hologram))
