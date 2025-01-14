@@ -123,7 +123,7 @@
 				if(T)
 					T.clean(src, user)
 
-/obj/item/reagent_containers/glass/rag/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/reagent_containers/glass/rag/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(isliving(target)) //Leaving this as isliving.
 		var/mob/living/L = target
 		if(on_fire) //Check if rag is on fire, if so igniting them and stopping.

@@ -663,7 +663,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 
 ////////////////////////////////
 // Special Promethean """surgery"""
-/obj/item/nif/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/nif/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(!ishuman(target) || !ishuman(user) || (target == user))
 		return ..()
 

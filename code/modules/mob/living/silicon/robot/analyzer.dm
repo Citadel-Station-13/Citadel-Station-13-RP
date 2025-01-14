@@ -16,7 +16,7 @@
 	materials_base = list(MAT_STEEL = 500, MAT_GLASS = 200)
 	var/mode = 1;
 
-/obj/item/robotanalyzer/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/robotanalyzer/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	do_scan(target, user)
 
 /obj/item/robotanalyzer/proc/do_scan(mob/living/M as mob, mob/living/user as mob)

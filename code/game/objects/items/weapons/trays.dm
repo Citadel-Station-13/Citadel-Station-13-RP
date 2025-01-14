@@ -15,7 +15,7 @@
 	var/list/carrying = list() // List of things on the tray. - Doohl
 	var/max_carry = 10
 
-/obj/item/tray/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/tray/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 	if(!isliving(user) || !isliving(target))
 		return

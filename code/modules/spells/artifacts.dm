@@ -178,7 +178,7 @@
 /obj/item/necromantic_stone/unlimited
 	unlimited = 1
 
-/obj/item/necromantic_stone/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/necromantic_stone/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/carbon/human/H = target
 	if(!istype(H))
 		return ..()

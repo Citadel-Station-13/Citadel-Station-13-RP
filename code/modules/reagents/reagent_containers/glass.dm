@@ -74,7 +74,7 @@
 		atom_flags |= OPENCONTAINER
 	update_icon()
 
-/obj/item/reagent_containers/glass/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/reagent_containers/glass/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	standard_feed_mob(user, target)

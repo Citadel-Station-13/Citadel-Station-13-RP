@@ -24,8 +24,13 @@
 
 	clickchain.performer.legacy_alter_melee_clickchain(clickchain)
 
-	if(legacy_mob_melee_hook(clickchain.target, clickchain.performer, clickchain_flags, clickchain.click_params, clickchain.melee_damage_multiplier, clickchain.target_zone, clickchain.using_intent) != "use_new")
-		return CLICKCHAIN_DID_SOMETHING
+	var/legacy_retval
+	switch((legacy_reval = legacy_mob_melee_hook_wrapper(clickchain.target, clickchain.performer, clickchain_flags, clickchain.click_params, clickchain.melee_damage_multiplier, clickchain.target_zone, clickchain.using_intent)))
+		if("use_new")
+		if("slept")
+			return CLICKCHAIN_DID_SOMETHING
+		else
+			return legacy_retval
 
 	// todo: set this on item maybe?
 	var/datum/melee_attack/weapon/attack_style = new
@@ -40,6 +45,19 @@
 /mob/proc/legacy_alter_melee_clickchain(datum/event_args/actor/clickchain/clickchain)
 	if(IS_PRONE(src))
 		clickchain.melee_damage_multiplier *= (2 / 3)
+
+/obj/item/proc/legacy_mob_melee_hook_wrapper(atom/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	PRIVATE_PROC(TRUE)
+	if(!ismob(target))
+		return "use_new"
+	// if it sleeps, the caller will know.
+	return legacy_mob_melee_hook_call_wrapper(arglist(args))
+
+/obj/item/proc/legacy_mob_melee_hook_call_wrapper(...)
+	PRIVATE_PROC(TRUE)
+	set waitfor = FALSE
+	. = "slept"
+	return legacy_mob_melee_hook(arglist(args))
 
 /**
  * this is here to allow legacy behaviors to work
@@ -203,7 +221,6 @@
 	. = melee_object_hit(target, clickchain, clickchain_flags)
 
 /obj/item/proc/melee_object_miss(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult = 1)
-	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 	playsound(clickchain.performer, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 	clickchain.visible_feedback(
@@ -214,7 +231,6 @@
 	return CLICKCHAIN_ATTACK_MISSED
 
 /obj/item/proc/melee_object_hit(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 
 	// harmless, just tap them and leave

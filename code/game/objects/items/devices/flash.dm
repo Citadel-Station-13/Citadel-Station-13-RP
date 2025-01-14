@@ -152,7 +152,7 @@
 		return TRUE
 
 //attack_as_weapon
-/obj/item/flash/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/flash/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	flash_mob(target, user)
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 
@@ -305,7 +305,7 @@
 	can_repair = FALSE
 
 //attack_as_weapon
-/obj/item/flash/synthetic/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/flash/synthetic/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 	if(!broken)
 		broken = 1

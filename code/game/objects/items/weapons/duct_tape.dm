@@ -11,7 +11,7 @@
 
 	tool_speed = 2 //It is now used in surgery as a not awful, but probably dangerous option, due to speed.
 
-/obj/item/duct_tape_roll/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/duct_tape_roll/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/carbon/human/H = target
 	if(istype(H))
 		if(user.a_intent == INTENT_HELP)

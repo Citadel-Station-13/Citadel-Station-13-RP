@@ -387,7 +387,7 @@
 		Fire(target, user, shitty_legacy_params) //Otherwise, fire normally.
 		return
 
-/obj/item/gun/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/gun/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/A = target
 	if(!istype(A))
 		return ..()

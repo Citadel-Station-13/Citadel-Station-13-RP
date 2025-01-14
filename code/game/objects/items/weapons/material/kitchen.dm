@@ -21,7 +21,7 @@
 		src.pixel_y = rand(0, 4)
 	create_reagents(5)
 
-/obj/item/material/kitchen/utensil/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/material/kitchen/utensil/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(!istype(target))
 		return ..()
 
@@ -124,7 +124,7 @@
 	drop_sound = 'sound/items/drop/wooden.ogg'
 	pickup_sound = 'sound/items/pickup/wooden.ogg'
 
-/obj/item/material/kitchen/rollingpin/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/material/kitchen/rollingpin/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/L = user
 	if(!istype(L))
 		return ..()

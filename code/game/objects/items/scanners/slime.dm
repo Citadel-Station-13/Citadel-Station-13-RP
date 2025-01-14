@@ -10,7 +10,7 @@
 	throw_range = 7
 	materials_base = list(MAT_STEEL = 30, MAT_GLASS = 20)
 
-/obj/item/slime_scanner/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/slime_scanner/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(!istype(target, /mob/living/simple_mob/slime/xenobio))
 		to_chat(user, "<B>This device can only scan lab-grown slimes!</B>")
