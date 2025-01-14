@@ -34,6 +34,9 @@
 
 	holder_type = /obj/item/holder/holosphere_shell
 
+	mob_size = MOB_MINISCULE
+	pass_flags = ATOM_PASS_TABLE
+
 	var/eye_icon_state = "holosphere_eye"
 
 	// space movement related
