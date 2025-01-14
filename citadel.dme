@@ -1114,6 +1114,7 @@
 #include "code\game\click\melee\melee_combo_tracker.dm"
 #include "code\game\click\melee\melee_combo_set.dm"
 #include "code\game\click\melee\melee_attack\unarmed.dm"
+#include "code\game\click\melee\melee_attack\weapon.dm"
 #include "code\game\content\enigmas\unsorted\cursedform.dm"
 #include "code\game\content\enigmas\unsorted\deadringer.dm"
 #include "code\game\content\enigmas\unsorted\telecube.dm"

@@ -16,8 +16,9 @@
  *
  * @return CLICKCHAIN_* flags. These are added / interpreted by the caller.
  */
-#warn audit calls
 /mob/proc/melee_attack_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	SHOULD_NOT_SLEEP(TRUE)
+
 	if(clickchain_flags & CLICKCHAIN_DO_NOT_ATTACK)
 		return clickchain_flags
 	if(!clickchain.target.is_melee_targetable(clickchain, clickchain_flags))
@@ -31,13 +32,11 @@
 	#warn this should be modulated by clickchain
 	clickchain.performer.setClickCooldownLegacy(clickchain.performer.get_attack_speed_legacy())
 
-#warn deal with this trainwreck
-
 /**
  * @return CLICKCHAIN_* flags
  */
-/mob/proc/melee_attack(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/unarmed/style)
-	SHOULD_CALL_PARENT(TRUE)
+/mob/proc/melee_attack(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/unarmed/attack_style)
+	SHOULD_NOT_SLEEP(TRUE)
 
 	//! Admin Proccall Support
 	if(isatom(clickchain))
@@ -46,8 +45,8 @@
 
 	//! Legacy
 	break_cloak()
-	if(isnull(style))
-		style = default_unarmed_attack_style()
+	if(isnull(attack_style))
+		attack_style = default_unarmed_attack_style()
 	//! End
 
 	/**
@@ -61,31 +60,41 @@
 	// -- resolve our side --
 
 	var/missed = FALSE
-	sort_of_legacy_imprint_upon_melee_clickchain(clickchain)
+	legacy_alter_melee_clickchain(clickchain)
 
 	// -- call on them (if we didn't miss / get called off already) --
 
 	if(!missed)
-		. = clickchain.target.unarmed_melee_act(src, style, clickchain.target_zone, clickchain)
+		. = clickchain.target.unarmed_melee_act(src, attack_style, clickchain.target_zone, clickchain)
 		missed = . & CLICKCHAIN_ATTACK_MISSED
 
 	// -- react to return --
-	style.perform_attack_animation(src, clickchain.target, missed)
-	style.perform_attack_sound(src, clickchain.target, missed)
-	style.perform_attack_message(src, clickchain.target, missed)
+	attack_style.perform_attack_animation(src, clickchain.target, missed)
+	attack_style.perform_attack_sound(src, clickchain.target, missed)
+	attack_style.perform_attack_message(src, clickchain.target, missed)
 
 	// -- call animation on them --
-	clickchain.target.animate_hit_by_attack(style.animation_type)
+	if(!missed)
+		clickchain.target.animate_hit_by_attack(attack_style.animation_type)
 
 	// -- log --
-	log_unarmed_melee(clickchain, style)
+	log_unarmed_melee(clickchain, attack_style)
 
-	return on_melee_attack(clickchain, clickchain_flags, style) | .
+	. |= melee_finalize(clickchain.target, clickchain, clickchain_flags, attack_style, missed)
 
 /**
- * For future use.
+ * Called after a melee attack is executed, regardless of if it hit.
+ *
+ * * Missing is defined as a failure to make contact. Being fully blocked/negated is still a hit.
+ *
+ * @params
+ * * target - The target swung at; at this point it can't be redirected
+ * * clickchain - clickchain data
+ * * clickchain_flags - clickchain flags
+ * * attack_style - unarmed attack style used
+ * * missed - did we miss?
  *
  * @return CLICKCHAIN_* flags
  */
-/mob/proc/on_melee_attack(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/unarmed/style)
-	return
+/mob/proc/melee_finalize(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/unarmed/attack_style, missed)
+	SHOULD_NOT_SLEEP(TRUE)

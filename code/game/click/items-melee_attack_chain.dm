@@ -2,14 +2,6 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
- * called once per clickchain
- * todo: there has to be a better way
- */
-/mob/proc/legacy_alter_melee_clickchain(datum/event_args/actor/clickchain/clickchain)
-	if(IS_PRONE(src))
-		clickchain.melee_damage_multiplier *= (2 / 3)
-
-/**
  * Called to initiate a melee attack with this item.
  *
  * * Called after item_attack_chain()
@@ -22,6 +14,7 @@
  * @return CLICKCHAIN_* flags. These are added / interpreted by the caller.
  */
 /obj/item/proc/melee_attack_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	SHOULD_NOT_SLEEP(TRUE)
 	if(clickchain_flags & CLICKCHAIN_DO_NOT_ATTACK)
 		return CLICKCHAIN_DO_NOT_ATTACK
 	if(item_flags & ITEM_NO_BLUDGEON)
@@ -31,7 +24,22 @@
 
 	clickchain.performer.legacy_alter_melee_clickchain(clickchain)
 
-/obj/item/proc/melee_attack(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	if(legacy_mob_melee_hook(clickchain.target, clickchain.performer, clickchain_flags, clickchain.click_params, clickchain.melee_damage_multiplier, clickchain.target_zone, clickchain.using_intent) != "use_new")
+		return CLICKCHAIN_DID_SOMETHING
+
+	// todo: set this on item maybe?
+	var/datum/melee_attack/weapon/attack_style = new
+	return melee_attack(clickchain, clickchain_flags, attack_style)
+
+	#warn do stuff?
+
+/**
+ * called once per clickchain
+ * todo: there has to be a better way
+ */
+/mob/proc/legacy_alter_melee_clickchain(datum/event_args/actor/clickchain/clickchain)
+	if(IS_PRONE(src))
+		clickchain.melee_damage_multiplier *= (2 / 3)
 
 /**
  * this is here to allow legacy behaviors to work
@@ -47,43 +55,60 @@
 /obj/item/proc/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	return "use_new"
 
-#warn deal with this trainwreck
+/**
+ * Low level proc handling the actual melee attack / impact.
+ *
+ * * You probably shouldn't be messing with this unless you know what you're doing.
+ *
+ * @return clickchain flags to return to caller
+ */
+/obj/item/proc/melee_attack(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
+	SHOULD_NOT_SLEEP(TRUE)
+
+	//*                     -- intent checks --                       *//
+	//*          these should not be here, but the presence of        *//
+	//* melee_hook_for_legacy_mob_behaviors() forces this to be here. *//
+	if(clickchain.target == clickchain.performer && clickchain.using_intent != INTENT_HARM)
+		clickchain.chat_feedback(
+			SPAN_WARNING("You refrain from hitting yourself with [src], as your intent is not set to harm."),
+			src,
+		)
+		return NONE
+	if((item_flags & ITEM_CAREFUL_BLUDGEON) && clickchain.using_intent == INTENT_HELP)
+		clickchain.chat_feedback(
+			SPAN_WARNING("You refrain from hitting [clickchain.target] with [src], as your intent is set to help."),
+			src,
+		)
+		return NONE
+
+	//! LEGACY !//
+	clickchain.performer.break_cloak()
+	if(isliving(clickchain.target))
+		var/mob/living/living_target = clickchain.target
+		clickchain.performer.lastattacked = living_target
+		living_target.lastattacker = clickchain.performer
+	//! END !//
+
+	#warn do stuff??
+
+/**
+ * Low level proc handling the actual melee attack's effects.
+ *
+ * * You probably shouldn't be messing with this unless you know what you're doing.
+ * * This is only called if we did not miss.
+ *
+ * @return clickchain flags to return to caller
+ */
+/obj/item/proc/melee_attack_impact(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
+	SHOULD_NOT_SLEEP(TRUE)
+
 #warn parse below
 
-/obj/item/proc/standard_melee_attack(atom/target, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
-	// is mob, go to that
-	// todo: signals for both
-	if(ismob(target))
-		. |= attack_mob(target, user, clickchain_flags, params, mult, target_zone, intent)
-		if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
-			return
-		return . | finalize_mob_melee(target, user, . | clickchain_flags, params, mult, target_zone, intent)
-	// is obj, go to that
-	. = attack_object(target, e_args, clickchain_flags, mult)
-	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
-		return
-	return . | finalize_object_melee(target, e_args, . | clickchain_flags, mult)
-
+#warn audit calls
 /obj/item/proc/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
+	SHOULD_NOT_SLEEP(TRUE)
 	PROTECTED_PROC(TRUE)	// route via standard_melee_attack please.
 	var/mob/living/L = target
-	// check intent
-	if(user == L)
-		if(user.a_intent != INTENT_HARM)
-			user.action_feedback(SPAN_WARNING("You refrain from hitting yourself with [src], as your intent is not set to harm."), src)
-			return NONE
-	else
-		if((item_flags & ITEM_CAREFUL_BLUDGEON) && user.a_intent == INTENT_HELP)
-			user.action_feedback(SPAN_WARNING("You refrain from hitting [target] with [src], as your intent is set to help."), src)
-			return NONE
-	//? legacy: decloak
-	user.break_cloak()
-	// todo: better tracking
-	user.lastattacked = L
-	L.lastattacker = user
-	// click cooldown
-	// todo: clickcd rework
-	user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 	// animation
 	user.animate_swing_at_target(L)
 	// resolve accuracy
@@ -99,6 +124,7 @@
 	return melee_mob_hit(L, user, clickchain_flags, params, mult, target_zone, intent)
 
 /obj/item/proc/melee_mob_miss(mob/target, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
+	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 	var/mob/living/L = target
 	// todo: proper weapon sound ranges/rework
@@ -107,7 +133,9 @@
 	visible_message("<span class='danger'>\The [user] misses [L] with \the [src]!</span>")
 	return CLICKCHAIN_ATTACK_MISSED
 
+#warn audit calls
 /obj/item/proc/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
+	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 	// harmless, just tap them and leave
 	if(!damage_force)
@@ -149,36 +177,9 @@
 
 	return NONE
 
-/obj/item/proc/finalize_mob_melee(mob/target, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
-	return NONE
-
-/**
- * Low level proc handling the actual melee attack / impact.
- *
- * You probably shouldn't be messing with this unless you know what you're doing.
- * 
- * @return clickchain flags to return to caller
- */
-/obj/item/proc/melee_attack(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-
-/**
- * Low level proc handling the actual melee attack's effects.
- *
- * You probably shouldn't be messing with this unless you know what you're doing.
- *
- * @return clickchain flags to return to caller
- */
-/obj/item/proc/melee_attack_impact(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-
-
-/**
- * Low level proc handling
- */
-/obj/item/proc/melee_attack_hit()
-
-/obj/item/proc/melee_attack_miss()
 
 /obj/item/proc/attack_object(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult = 1)
+	SHOULD_NOT_SLEEP(TRUE)
 	PROTECTED_PROC(TRUE)	// route via standard_melee_attack please.
 	// todo: move this somewhere else
 	if(!target.integrity_enabled)
@@ -193,10 +194,6 @@
 	if((item_flags & ITEM_CAREFUL_BLUDGEON) && clickchain.using_intent == INTENT_HELP)
 		clickchain.initiator.action_feedback(SPAN_WARNING("You refrain from hitting [target] because your intent is set to help."), src)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
-	//? legacy: decloak
-	clickchain.performer.break_cloak()
-	// set mult
-	clickchain.melee_damage_multiplier *= mult
 	// click cooldown
 	// todo: clickcd rework
 	clickchain.performer.setClickCooldownLegacy(clickchain.performer.get_attack_speed_legacy(src))
@@ -206,6 +203,7 @@
 	. = melee_object_hit(target, clickchain, clickchain_flags)
 
 /obj/item/proc/melee_object_miss(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult = 1)
+	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 	playsound(clickchain.performer, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 	clickchain.visible_feedback(
@@ -216,6 +214,7 @@
 	return CLICKCHAIN_ATTACK_MISSED
 
 /obj/item/proc/melee_object_hit(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 
 	// harmless, just tap them and leave
@@ -263,10 +262,13 @@
  *   that's a different deal.
  *
  * @params
- * * target - The target being hit; at this point it can't be redirected
+ * * target - The target swung at; at this point it can't be redirected
  * * clickchain - clickchain data
  * * clickchain_flags - clickchain flags
+ * * attack_style - attack style used
  * * missed - Did we miss? Do **not** use clickchain flags to infer this! It's specified explicitly for a reason.
+ *
+ * @return CLICKCHAIN_* flags
  */
-/obj/item/proc/melee_finalize(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, missed)
-	return
+/obj/item/proc/melee_finalize(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style, missed)
+	SHOULD_NOT_SLEEP(TRUE)

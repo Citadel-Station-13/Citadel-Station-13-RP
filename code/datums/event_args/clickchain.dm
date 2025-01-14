@@ -18,10 +18,11 @@
 /datum/event_args/actor/clickchain
 	//* Using Data *//
 
-	/// optional: attack intent
+	/// (optional) action intent
 	var/using_intent
-	/// optional: hand index, if any
+	/// (optional) hand index
 	var/using_hand_index
+
 	/// with item, if any
 	var/obj/item/using_item
 

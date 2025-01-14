@@ -95,6 +95,7 @@
 		name = "[base_name]"
 	..()
 
+#warn implement this with new procs somehow
 /obj/item/material/twohanded/fireaxe/attack_object(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult = 1)
 	if(istype(target, /obj/structure/window))
 		mult *= 2

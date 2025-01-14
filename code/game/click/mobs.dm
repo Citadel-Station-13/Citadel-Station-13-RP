@@ -31,10 +31,6 @@
 	var/stupid_fucking_shim = list2params(params)
 	RangedAttack(target, stupid_fucking_shim)
 
-// i'm sorry
-/mob/proc/sort_of_legacy_imprint_upon_melee_clickchain(datum/event_args/actor/clickchain/clickchain)
-	if(IS_PRONE(src))
-		clickchain.melee_damage_multiplier *= (2 / 3)
 
 /**
  * default current unarmed attack style
