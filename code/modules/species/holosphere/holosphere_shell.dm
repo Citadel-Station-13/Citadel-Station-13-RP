@@ -5,6 +5,7 @@
 
 	icon = 'icons/mob/species/holosphere/holosphere.dmi'
 	icon_state = "holosphere_body"
+	icon_dead = "holosphere_body"
 
 	maxHealth = 100
 	health = 100
@@ -45,9 +46,10 @@
 
 /mob/living/simple_mob/holosphere_shell/regenerate_icons()
 	cut_overlays()
-	var/image/eye_icon = image('icons/mob/species/holosphere/holosphere.dmi',eye_icon_state)
-	eye_icon.color = rgb(hologram.r_eyes, hologram.b_eyes, hologram.g_eyes)
-	add_overlay(eye_icon)
+	if(stat != DEAD)
+		var/image/eye_icon = image('icons/mob/species/holosphere/holosphere.dmi',eye_icon_state)
+		eye_icon.color = rgb(hologram.r_eyes, hologram.b_eyes, hologram.g_eyes)
+		add_overlay(eye_icon)
 
 /mob/living/simple_mob/holosphere_shell/verb/enable_hologram()
 	set name = "Enable Hologram (Holosphere)"
