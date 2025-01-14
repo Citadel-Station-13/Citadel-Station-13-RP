@@ -99,57 +99,6 @@
 		inv3.icon_state = "inv3"
 	updateicon()
 
-/mob/living/silicon/robot/proc/activated(obj/item/O)
-	if(module_state_1 == O)
-		return 1
-	else if(module_state_2 == O)
-		return 1
-	else if(module_state_3 == O)
-		return 1
-	else
-		return 0
-
-// This one takes an object's type instead of an instance, as above.
-/mob/living/silicon/robot/proc/has_active_type(var/type_to_compare)
-	var/list/active_modules = list(module_state_1, module_state_2, module_state_3)
-	if(is_path_in_list(type_to_compare, active_modules))
-		return TRUE
-	return FALSE
-
-//Helper procs for cyborg modules on the UI.
-//These are hackish but they help clean up code elsewhere.
-
-//module_selected(module) - Checks whether the module slot specified by "module" is currently selected.
-/mob/living/silicon/robot/proc/module_selected(var/module) //Module is 1-3
-	return module == get_selected_module()
-
-//module_active(module) - Checks whether there is a module active in the slot specified by "module".
-/mob/living/silicon/robot/proc/module_active(var/module) //Module is 1-3
-	if(module < 1 || module > 3) return 0
-
-	switch(module)
-		if(1)
-			if(module_state_1)
-				return 1
-		if(2)
-			if(module_state_2)
-				return 1
-		if(3)
-			if(module_state_3)
-				return 1
-	return 0
-
-//get_selected_module() - Returns the slot number of the currently selected module.  Returns 0 if no modules are selected.
-/mob/living/silicon/robot/proc/get_selected_module()
-	if(module_state_1 && module_active == module_state_1)
-		return 1
-	else if(module_state_2 && module_active == module_state_2)
-		return 2
-	else if(module_state_3 && module_active == module_state_3)
-		return 3
-
-	return 0
-
 //select_module(module) - Selects the module slot specified by "module"
 /mob/living/silicon/robot/proc/select_module(var/module) //Module is 1-3
 	if(module < 1 || module > 3) return
@@ -233,8 +182,6 @@
 			return
 		slot_num++
 		if(slot_num > 3) slot_num = 1 //Wrap around.
-
-	return
 
 /mob/living/silicon/robot/proc/activate_module(var/obj/item/O)
 	if(!(locate(O) in src.module.modules) && O != src.module.emag)
