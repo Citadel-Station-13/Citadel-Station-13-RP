@@ -218,15 +218,6 @@
 	 //No egg or mix in final recipe
 	result = /obj/item/reagent_containers/food/snacks/sliceable/cosmicbrownies
 
-/datum/recipe/red_macaron
-	appliance = OVEN
-	reagents = list("egg" = 3, "crayon_dust_red" = 1, "sugar" = 5)
-	items = list(
-		/obj/item/reagent_containers/food/snacks/doughslice
-	)
-	reagent_mix = RECIPE_REAGENT_REPLACE
-	result = /obj/item/reagent_containers/food/snacks/macaron/red
-
 /datum/cooking_recipe/muffin
 	required_method = METHOD_OVEN
 	reagents = list("milk" = 5, "sugar" = 5)

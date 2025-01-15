@@ -25,7 +25,7 @@
 	id = "synthesis-bluecheesewheel"
 	required_reagents = list("milk" = 40, "virusfood" = 5)
 
-	synthesis_product_path = /obj/item/reagent_containers/food/snacks/sliceable/bluecheesewheel
+	synthesis_product_path = /obj/item/reagent_containers/food/snacks/ingredient/bluecheesewheel
 
 /datum/chemical_reaction/food/synthesis/butter
 	name = "Butter"
@@ -40,7 +40,7 @@
 	required_reagents = list("milk" = 40)
 	catalysts = list("enzyme" = 5)
 
-	synthesis_product_path = /obj/item/reagent_containers/food/snacks/sliceable/cheesewheel
+	synthesis_product_path = /obj/item/reagent_containers/food/snacks/ingredient/cheesewheel
 
 /datum/chemical_reaction/food/synthesis/chocolate_bar
 	name = "Chocolate Bar"
@@ -65,17 +65,17 @@
 /datum/chemical_reaction/food/synthesis/dough
 	name = "Dough"
 	id = "synthesis-dough"
-	required_reagents = list("egg" = 3, "flour" = 10)
-	inhibitors = list("water" = 1, "beer" = 1) //To prevent it messing with batter recipes
+	required_reagents = list("water" = 5, "flour" = 10)
+	inhibitors = list("egg" = 1, "beer" = 1) //To prevent it messing with batter recipes
 
-	synthesis_product_path = /obj/item/reagent_containers/food/snacks/dough
+	synthesis_product_path = /obj/item/reagent_containers/food/snacks/ingredient/transformable/dough
 
 /datum/chemical_reaction/food/synthesis/meatball
 	name = "Meatball"
 	id = "synthesis-meatball"
 	required_reagents = list("protein" = 3, "flour" = 5)
 
-	synthesis_product_path = /obj/item/reagent_containers/food/snacks/meatball
+	synthesis_product_path = /obj/item/reagent_containers/food/snacks/ingredient/meatball
 
 /datum/chemical_reaction/food/synthesis/meatsicle
 	name = "Meatsicle"
@@ -89,7 +89,7 @@
 	id = "synthesis-synthflesh"
 	required_reagents = list("blood" = 5, "clonexadone" = 1)
 
-	synthesis_product_path = /obj/item/reagent_containers/food/snacks/meat/synthflesh
+	synthesis_product_path = /obj/item/reagent_containers/food/snacks/ingredient/meat/synthflesh
 
 /datum/chemical_reaction/food/synthesis/tofu
 	name = "Tofu"
@@ -97,4 +97,4 @@
 	required_reagents = list("soymilk" = 10)
 	catalysts = list("enzyme" = 5)
 
-	synthesis_product_path = /obj/item/reagent_containers/food/snacks/tofu
+	synthesis_product_path = /obj/item/reagent_containers/food/snacks/ingredient/tofu

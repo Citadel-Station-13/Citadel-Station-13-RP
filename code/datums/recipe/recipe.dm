@@ -125,7 +125,7 @@ GLOBAL_LIST_EMPTY(cooking_recipes_tgui_guidebook_data)
 		"req_method" = required_method
 	)
 
-/datum/cooking_recipe/proc/check_reagents(var/datum/reagents/avail_reagents)
+/datum/cooking_recipe/proc/check_reagents(var/datum/reagent_holder/avail_reagents)
 	if(!reagents || !reagents.len)
 		return 1
 
