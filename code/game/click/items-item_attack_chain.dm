@@ -38,8 +38,8 @@
  * * If handled, return CLICKCHAIN_DO_NOT_PROPAGATE
  *
  * @params
- * * target - thing we're being used on
- * * e_args - the clickchain data, including who's doing the interaction
+ * * target - thing we're being used on; use this target, do not resolve from clickchain.target!
+ * * clickchain - the clickchain data, including who's doing the interaction
  * * clickchain_flags - the clickchain flags given
  *
  * @return CLICKCHAIN_* flags. These are added / interpreted by the caller.
@@ -54,8 +54,8 @@
  * * item's `item_attack_chain`, and then `used_as_item` are called first.
  *
  * @params
- * * using - the item
- * * e_args - the clickchain data, including who's doing the interaction
+ * * using - the item; use this item, do not resolve from clickchain.using_item!
+ * * clickchain - the clickchain data, including who's doing the interaction
  * * clickchain_flags - the clickchain flags given
  *
  * @return CLICKCHAIN_* flags. These are added / interpreted by the caller.
