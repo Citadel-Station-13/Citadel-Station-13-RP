@@ -34,3 +34,18 @@
 		clickchain,
 	)
 	return NONE
+
+/datum/melee_attack/weapon/perform_attack_animation(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain, missed)
+	return ..()
+
+/datum/melee_attack/weapon/perform_attack_sound(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain, missed)
+	. = ..()
+	if(.)
+		return
+	#warn impl
+
+/datum/melee_attack/weapon/perform_attack_message(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain, missed)
+	. = ..()
+	if(.)
+		return
+	#warn impl

@@ -127,21 +127,24 @@
 	clickchain.performer.legacy_alter_melee_clickchain(clickchain)
 
 	// -- call on them (if we didn't miss / get called off already) --
-
 	if(!missed)
 		. |= clickchain.target.item_melee_act(clickchain.performer, attack_style, clickchain.target_zone, clickchain)
 		missed = . & CLICKCHAIN_ATTACK_MISSED
 
+	// -- redirection can no longer happen --
+	var/atom/fixed_target = clickchain.target
+	var/mob/fixed_performer = clickchain.performer
+
 	// -- react to return --
-	attack_style.perform_attack_animation(clickchain.performer, clickchain.target, clickchain, missed)
-	attack_style.perform_attack_sound(clickchain.performer, clickchain.target, clickchain, missed)
-	attack_style.perform_attack_message(clickchain.performer, clickchain.target, clickchain, missed)
+	attack_style.perform_attack_animation(fixed_performer, fixed_target, clickchain, missed)
+	attack_style.perform_attack_sound(fixed_performer, fixed_target, clickchain, missed)
+	attack_style.perform_attack_message(fixed_performer, fixed_target, clickchain, missed)
 
 	if(!missed)
-		clickchain.target.animate_hit_by_attack(attack_style.animation_type)
-		. |= clickchain.target.on_melee_act(clickchain.performer, attack_style, clickchain)
+		fixed_target.animate_hit_by_weapon(fixed_performer, src)
+		. |= fixed_target.on_melee_act(fixed_performer, attack_style, clickchain)
 
-	. |= melee_finalize(clickchain.target, clickchain, clickchain_flags, attack_style, missed)
+	. |= melee_finalize(fixed_target, clickchain, clickchain_flags, attack_style, missed)
 
 	// -- log --
 	log_weapon_melee(clickchain, attack_style, src)

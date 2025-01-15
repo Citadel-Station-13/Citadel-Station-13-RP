@@ -67,16 +67,19 @@
 		. |= clickchain.target.unarmed_melee_act(src, attack_style, clickchain.target_zone, clickchain)
 		missed = . & CLICKCHAIN_ATTACK_MISSED
 
+	// -- redirection can no longer happen --
+	var/atom/fixed_target = clickchain.target
+
 	// -- react to return --
-	attack_style.perform_attack_animation(src, clickchain.target, clickchain, missed)
-	attack_style.perform_attack_sound(src, clickchain.target, clickchain, missed)
-	attack_style.perform_attack_message(src, clickchain.target, clickchain, missed)
+	attack_style.perform_attack_animation(src, fixed_target, clickchain, missed)
+	attack_style.perform_attack_sound(src, fixed_target, clickchain, missed)
+	attack_style.perform_attack_message(src, fixed_target, clickchain, missed)
 
 	if(!missed)
-		clickchain.target.animate_hit_by_attack(attack_style.animation_type)
-		. |= clickchain.target.on_melee_act(src, attack_style, clickchain)
+		fixed_target.animate_hit_by_attack(attack_style.animation_type)
+		. |= fixed_target.on_melee_act(src, attack_style, clickchain)
 
-	. |= melee_finalize(clickchain.target, clickchain, clickchain_flags, attack_style, missed)
+	. |= melee_finalize(fixed_target, clickchain, clickchain_flags, attack_style, missed)
 
 	// -- log --
 	log_unarmed_melee(clickchain, attack_style)
