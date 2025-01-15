@@ -405,12 +405,12 @@
 			return
 	return ..() //Pistolwhippin'
 
-/obj/item/gun/using_item_on(obj/item/using, datum/event_args/actor/clickchain/e_args, clickchain_flags)
+/obj/item/gun/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
 	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
 	if(istype(using, /obj/item/gun_attachment))
-		user_install_attachment(using, e_args)
+		user_install_attachment(using, clickchain)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/gun/attackby(obj/item/A, mob/user)

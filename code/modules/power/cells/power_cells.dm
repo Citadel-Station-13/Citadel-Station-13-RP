@@ -107,8 +107,8 @@
 	. = ..()
 	add_overlay("[icon_state]1")
 
-/obj/item/fbp_backup_cell/using_as_item(atom/target, datum/event_args/actor/clickchain/e_args, clickchain_flags)
-	var/mob/user = e_args.performer
+/obj/item/fbp_backup_cell/using_as_item(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	var/mob/user = clickchain.performer
 	if(!used && ishuman(target))
 		var/mob/living/carbon/human/H = target
 		if(H.isSynthetic())

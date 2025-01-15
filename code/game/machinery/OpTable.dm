@@ -100,7 +100,7 @@
 
 	take_victim(usr,usr)
 
-/obj/machinery/optable/using_item_on(obj/item/using, datum/event_args/actor/clickchain/e_args, clickchain_flags)
+/obj/machinery/optable/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
 	if(. & CLICKCHAIN_FLAGS_USAGE_ABORT)
 		return

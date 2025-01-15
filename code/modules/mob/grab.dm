@@ -249,7 +249,7 @@
 
 #warn use this instead
 #warn test this
-/obj/item/grab/using_as_item(atom/target, datum/event_args/actor/clickchain/e_args, clickchain_flags)
+/obj/item/grab/using_as_item(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 
 /obj/item/grab/melee_object_hit(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	switch(state)

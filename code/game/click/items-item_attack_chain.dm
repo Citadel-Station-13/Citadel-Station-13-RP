@@ -44,7 +44,7 @@
  *
  * @return CLICKCHAIN_* flags. These are added / interpreted by the caller.
  */
-/obj/item/proc/using_as_item(atom/target, datum/event_args/actor/clickchain/e_args, clickchain_flags)
+/obj/item/proc/using_as_item(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	return NONE
 
 /**
@@ -60,5 +60,5 @@
  *
  * @return CLICKCHAIN_* flags. These are added / interpreted by the caller.
  */
-/atom/proc/using_item_on(obj/item/using, datum/event_args/actor/clickchain/e_args, clickchain_flags)
+/atom/proc/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	return NONE

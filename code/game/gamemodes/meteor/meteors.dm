@@ -182,7 +182,7 @@
 /obj/effect/meteor/legacy_ex_act()
 	return
 
-/obj/effect/meteor/using_item_on(obj/item/using, datum/event_args/actor/clickchain/e_args, clickchain_flags)
+/obj/effect/meteor/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
 	if(istype(using, /obj/item/pickaxe))
 		qdel(src)
