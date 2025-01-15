@@ -46,5 +46,3 @@
 	name = "weapon focusing lens (3-linear multiplexer)"
 	divide_by = 3
 	cheat_factor = 1.3
-
-#warn impl

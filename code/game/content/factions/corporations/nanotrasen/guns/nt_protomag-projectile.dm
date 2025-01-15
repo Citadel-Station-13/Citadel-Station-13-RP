@@ -19,11 +19,17 @@
 /obj/projectile/nt_protomag/standard
 	name = "magnetic slug"
 	color = "#ccaa55"
+	damage_force = 35
+	damage_tier = BULLET_TIER_MEDIUM
+	armor_penetration = 25
 
 /obj/projectile/nt_protomag/sabot
 	name = "dense slug"
 	color = "#ff7700"
 	speed = /obj/projectile/nt_protomag::speed * 1.2
+	damage_force = 25
+	damage_tier = BULLET_TIER_HIGH
+	armor_penetration = 47.5
 
 // todo: this is currently disabled as medcode is not verbose enough for this to work
 // /obj/projectile/nt_protomag/shredder
@@ -33,6 +39,10 @@
 	name = "deforming slug"
 	color = "#3333aa"
 	speed = /obj/projectile/nt_protomag::speed * 0.9
+	damage_force = 10
+	damage_tier = BULLET_TIER_HIGH
+	agony = 30
+	armor_penetration = 40
 
 /obj/projectile/nt_protomag/practice
 	name = "lightweight slug"
@@ -44,6 +54,9 @@
 	name = "disintegrating slug"
 	color = "#888888"
 	speed = /obj/projectile/nt_protomag::speed * 0.6
+	damage_force = 5
+	damage_tier = BULLET_TIER_LOW
+	#warn smoke
 
 /obj/projectile/nt_protomag/emp
 	name = "ion slug"
@@ -63,16 +76,26 @@
 	name = "high-velocity slug"
 	color = "#aaffaa"
 	speed = /obj/projectile/nt_protomag::speed * 1.25
+	damage_force = 35
+	damage_tier = BULLET_TIER_EXTREME
+	armor_penetration = 75
 
 /obj/projectile/nt_protomag/shock
 	name = "piezo slug"
 	color = "#cccc55"
 	speed = /obj/projectile/nt_protomag::speed * 0.8
+	damage_force = 10
+	damage_tier = BULLET_TIER_MEDIUM
+	#warn impl
 
-/obj/projectile/nt_protomag/flare
-	name = "tracer shot"
-	color = "#aa3333"
-	speed = /obj/projectile/nt_protomag::speed * 0.6
+// todo: flare rounds should illuminate the target and a bit of the surroundings with
+//       a weak glow. bright pyrotechnics would not fit into the round.
+// /obj/projectile/nt_protomag/flare
+// 	name = "tracer shot"
+// 	color = "#aa3333"
+// 	speed = /obj/projectile/nt_protomag::speed * 0.6
+// 	damage_force = 5
+// 	damage_tier = BULLET_TIER_LOW
 
 // todo: fuck no, rework fire stacks / fire first, holy crap; even then this should take multiple hits to ignite.
 // /obj/projectile/nt_protomag/incendiary

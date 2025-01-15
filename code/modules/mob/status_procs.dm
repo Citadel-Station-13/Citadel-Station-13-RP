@@ -150,7 +150,7 @@
  * * duration - how long to stagger for
  */
 /mob/proc/afflict_stagger(source, strength, duration)
-	apply_grouped_effect(/datum/status_effect/grouped/staggered, source, strength, duration)
+	apply_grouped_status_effect(/datum/status_effect/grouped/staggered, source, strength, duration)
 
 /**
  * removes a staggering effect source
@@ -164,7 +164,7 @@
 		var/datum/status_effect/grouped/effect = is_staggered()
 		effect.set_source(source, duration = duration)
 		return
-	remove_grouped_effect(/datum/status_effect/grouped/staggered, source)
+	remove_grouped_status_effect(/datum/status_effect/grouped/staggered, source)
 
 /mob/proc/is_staggered()
 	RETURN_TYPE(/datum/status_effect/grouped/staggered)

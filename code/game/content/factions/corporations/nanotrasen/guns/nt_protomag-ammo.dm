@@ -117,12 +117,14 @@
 	projectile_type = /obj/projectile/nt_protomag/shock
 	stripe_color = /obj/projectile/nt_protomag/shock::color
 
-/obj/item/ammo_casing/nt_protomag/magnetic/flare
-	name = "protomag slug (flare)"
-	desc = "A slender ferromagnetic slug. Shatters into a lingering chemical illuminant on impact."
+// todo: flare rounds should illuminate the target and a bit of the surroundings with
+//       a weak glow. bright pyrotechnics would not fit into the round.
+// /obj/item/ammo_casing/nt_protomag/magnetic/flare
+// 	name = "protomag slug (flare)"
+// 	desc = "A slender ferromagnetic slug. Shatters into a lingering chemical illuminant on impact."
 
-	projectile_type = /obj/projectile/nt_protomag/flare
-	stripe_color = /obj/projectile/nt_protomag/flare::color
+// 	projectile_type = /obj/projectile/nt_protomag/flare
+// 	stripe_color = /obj/projectile/nt_protomag/flare::color
 
 // todo: fuck no, rework fire stacks / fire first, holy crap; even then this should take multiple hits to ignite.
 // /obj/item/ammo_casing/nt_protomag/magnetic/incendiary

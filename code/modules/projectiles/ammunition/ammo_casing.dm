@@ -35,7 +35,7 @@
 	/// stored projectile - either null for un-init'd, FALSE for empty, or an instance
 	VAR_PROTECTED/obj/projectile/stored
 
-	//* Icon
+	//* Icon *//
 	/// switch to "[initial(state)]-spent" after expenditure
 	var/icon_spent = TRUE
 
@@ -57,14 +57,6 @@
 
 /obj/item/ammo_casing/get_intrinsic_worth(flags)
 	return loaded()? ..() : 0
-
-//removes the projectile from the ammo casing
-// todo: refactor for actual on-shot or whatever
-/obj/item/ammo_casing/proc/expend()
-	. = stored
-	stored = FALSE
-	setDir(pick(GLOB.cardinal)) //spin spent casings
-	update_icon()
 
 /obj/item/ammo_casing/screwdriver_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = TRUE
@@ -90,16 +82,19 @@
 	)
 	return merge_double_lazy_assoc_list(., ..())
 
-/obj/item/ammo_casing/proc/newshot() //For energy weapons, syringe gun, shotgun shells and wands (!).
-	if(stored)
-		return
-	init_projectile()
-
 /**
  * sees if we're currently loaded
  */
 /obj/item/ammo_casing/proc/loaded()
 	return stored != FALSE
+
+//removes the projectile from the ammo casing
+// todo: refactor for actual on-shot or whatever
+/obj/item/ammo_casing/proc/expend()
+	. = stored
+	stored = FALSE
+	setDir(pick(GLOB.cardinal)) //spin spent casings
+	update_icon()
 
 /**
  * grab projectile

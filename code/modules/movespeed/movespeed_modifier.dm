@@ -191,33 +191,33 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 /mob/proc/add_or_update_variable_movespeed_modifier(datum/movespeed_modifier/type_id_datum, update = TRUE, list/params)
 	var/modified = FALSE
 	var/inject = FALSE
-	var/datum/movespeed_modifier/final
+	var/datum/movespeed_modifier/applying
 	if(istext(type_id_datum))
-		final = LAZYACCESS(movespeed_modification, type_id_datum)
-		if(!final)
+		applying = LAZYACCESS(movespeed_modification, type_id_datum)
+		if(!applying)
 			CRASH("Couldn't find existing modification when provided a text ID.")
 	else if(ispath(type_id_datum))
 		if(!initial(type_id_datum.variable))
 			CRASH("Not a variable modifier")
-		final = LAZYACCESS(movespeed_modification, initial(type_id_datum.id) || "[type_id_datum]")
-		if(!final)
-			final = new type_id_datum
+		applying = LAZYACCESS(movespeed_modification, initial(type_id_datum.id) || "[type_id_datum]")
+		if(!applying)
+			applying = new type_id_datum
 			inject = TRUE
 			modified = TRUE
 	else
 		if(!initial(type_id_datum.variable))
 			CRASH("Not a variable modifier")
-		final = type_id_datum
-		if(!LAZYACCESS(movespeed_modification, final.id))
+		applying = type_id_datum
+		if(!LAZYACCESS(movespeed_modification, applying.id))
 			inject = TRUE
 			modified = TRUE
-	if(final.parse(params))
+	if(applying.parse(params))
 		modified = TRUE
 	if(inject)
-		add_movespeed_modifier(final, FALSE)
+		add_movespeed_modifier(applying, FALSE)
 	if(update && modified)
 		update_movespeed(TRUE)
-	return final
+	return applying
 
 /// Handles the special case of editing the movement var
 /mob/vv_edit_var(var_name, var_value)

@@ -60,10 +60,16 @@
 		Frontier, this standard sidearm received an upgrade adding a more powerful focusing lens used for
 		a lethal setting that can be used in emergencies.
 	"}
+	w_class = WEIGHT_CLASS_NORMAL
 	firemodes = list(
 		/datum/firemode/energy/nt_isd/sidearm/stun,
 		/datum/firemode/energy/nt_isd/sidearm/disable,
 		/datum/firemode/energy/nt_isd/sidearm/lethal,
+	)
+
+/obj/item/gun/energy/nt_isd/sidearm/with_light
+	attachments = list(
+		/obj/item/gun_attachment/flashlight/maglight,
 	)
 
 #warn impl
@@ -105,6 +111,7 @@
 		While Nanotrasen has many times attempted to replace this weapon's place in the staples of its
 		security divisions, all attempts to date have thus far fell short.
 	"}
+	w_class = WEIGHT_CLASS_NORMAL
 	firemodes = list(
 		/datum/firemode/energy/nt_isd/carbine/disable,
 		/datum/firemode/energy/nt_isd/carbine/shock,
@@ -137,6 +144,7 @@
 		non-negligible risk of an incursion resistant to the standard Hephaestus weaponry used
 		at the time by Nanotrasen's internal security.
 	"}
+	w_class = WEIGHT_CLASS_BULKY
 	firemodes = list(
 		/datum/firemode/energy/nt_isd/lance/kill,
 	)
@@ -176,6 +184,7 @@
 		pulse rifles than that of common Frontier energy eaponry, this weapon can be used in a variety
 		of scenarios.
 	"}
+	w_class = WEIGHT_CLASS_NORMAL
 	firemodes = list(
 		/datum/firemode/energy/nt_isd/multiphase/disable,
 		/datum/firemode/energy/nt_isd/multiphase/kill,
@@ -227,6 +236,12 @@
 
 /obj/projectile/nt_isd/electrode
 	name = "stun bolt"
+	base_projectile_effects = list(
+		/datum/projectile_effect/electrical_probe{
+			status_effect_path = /datum/status_effect/taser_stun/nt_isd;
+			status_effect_duration = 3 SECONDS;
+		}
+	)
 	#warn impl
 
 /obj/projectile/nt_isd/disable
@@ -236,6 +251,7 @@
 // todo: this shouldn't be an emp, this should be like synthetik's
 /obj/projectile/nt_isd/ion
 	name = "ion beam"
+	#warn sprite
 	base_projectile_effects = list(
 		/datum/projectile_effect/detonation/legacy_emp{
 			sev_2 = 1;
