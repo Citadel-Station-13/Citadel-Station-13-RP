@@ -20,7 +20,7 @@
 	if(ismob(target))
 		// mob damage is not refactored properly yet
 		return
-	run_damage_instance(
+	target.run_damage_instance(
 		weapon.damage_force * clickchain.melee_damage_multiplier,
 		weapon.damage_type,
 		weapon.damage_tier,

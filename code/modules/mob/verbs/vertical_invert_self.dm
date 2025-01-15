@@ -9,11 +9,11 @@
 
 	// todo: remote control? mobs that don't allow it?
 
-	if(TIMER_COOLDOWN_CHECK(src, CD_INDEX_MOB_VERB_INVERT_SELF))
+	if(TIMER_COOLDOWN_CHECK(src, TIMER_CD_INDEX_MOB_VERB_INVERT_SELF))
 		// todo: don't usr lol
 		to_chat(usr, SPAN_WARNING("You can't do that yet!"))
 		return
-	TIMER_COOLDOWN_START(src, CD_INDEX_MOB_VERB_INVERT_SELF, 0.5 SECONDS)
+	TIMER_COOLDOWN_START(src, TIMER_CD_INDEX_MOB_VERB_INVERT_SELF, 0.5 SECONDS)
 
 	log_game("[key_name(usr)] invoked vertical_invert_self on [key_name(src)].")
 

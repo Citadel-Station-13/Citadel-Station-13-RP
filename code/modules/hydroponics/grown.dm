@@ -250,8 +250,7 @@
 			return
 		reagents.remove_any(rand(1,3))
 		seed.thrown_at(src, L)
-		sleep(-1)
-		if(!src)
+		if(QDELETED(src))
 			return
 		if(prob(35))
 			if(user)
