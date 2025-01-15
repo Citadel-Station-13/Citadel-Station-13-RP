@@ -31,6 +31,8 @@
 	var/show_on_examine = TRUE
 	/// automatically hook firing iteration pre-fire? will call on_firing_cycle_iteration(cycle) if hooked.
 	var/hook_iteration_pre_fire = FALSE
+	/// automatically hook projectile injection? will call on_projectile_injection(cycle, projectile) if hooked.
+	var/hook_projectile_injection = FALSE
 
 	/// The gun we are installed in.
 	var/obj/item/gun/installed
@@ -72,6 +74,8 @@
 	SHOULD_CALL_PARENT(TRUE)
 	if(hook_iteration_pre_fire)
 		RegisterSignal(gun, COMSIG_GUN_FIRING_PREFIRE, PROC_REF(on_firing_cycle_iteration))
+	if(hook_projectile_injection)
+		RegisterSignal(gun, COMSIG_GUN_FIRING_PROJECTILE_INJECTION, PROC_REF(on_projectile_injection))
 
 /**
  * called on detach
@@ -81,6 +85,8 @@
 	SHOULD_CALL_PARENT(TRUE)
 	if(hook_iteration_pre_fire)
 		UnregisterSignal(gun, COMSIG_GUN_FIRING_PREFIRE)
+	if(hook_projectile_injection)
+		UnregisterSignal(gun, COMSIG_GUN_FIRING_PROJECTILE_INJECTION)
 
 //* Gun API - Hooks *//
 
@@ -88,6 +94,15 @@
  * Called right before fire() is invoked, if [hook_iteration_pre_fire] is set.
  */
 /obj/item/gun_component/proc/on_firing_cycle_iteration(datum/gun_firing_cycle/cycle)
+	return
+
+/**
+ * Called right before the projectile itself is fire()'d, if [hook_projectile_injection] is set.
+ *
+ * * This is relatively low level compared to firing cycle iteration, and can be used to
+ *   modify the projectile.
+ */
+/obj/item/gun_component/proc/on_projectile_injection(datum/gun_firing_cycle/cycle, obj/projectile/proj)
 	return
 
 //* Gun API - Actions *//

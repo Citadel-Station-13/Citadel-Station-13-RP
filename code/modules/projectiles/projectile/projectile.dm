@@ -224,7 +224,8 @@
 
 	//*                                          Submunitions                                                  *//
 	//* While projectile has procs to handle this, these vars are used automatically if 'submunitions' is set. *//
-	/// Submunitions to use by default on fire(). Either a number to split self into n fragments.
+	/// Submunitions to use by default on fire().
+	/// * Set to a number to split self into n **additional** fragments.
 	var/submunitions
 	/// Delete ourselves after splitting.
 	var/submunitions_only = FALSE
@@ -236,6 +237,8 @@
 	var/submunition_uniform_disperson = FALSE
 	/// Default submunition linear spread
 	var/submunition_linear_spread = 0
+	/// Default submunition linear spread randomization off
+	var/submunition_uniform_linear_spread = FALSE
 	/// Default submunition distribution enabled? Distrbution means that our stats
 	/// are passed to our submunitions, potentially overwriting their own stats.
 	///
@@ -1181,6 +1184,7 @@
 		submunition_dispersion,
 		submunition_uniform_disperson,
 		submunition_linear_spread,
+		submunition_uniform_linear_spread,
 		submunition_distribution,
 		submunition_distribution_mod,
 		submunition_distribution_overwrite,
@@ -1197,6 +1201,7 @@
  * * dispersion - angular dispersion. uniform min/max, or standard deviation if gaussian.
  * * uniform_dispersion - use deterministic instead of gaussian for dispersion
  * * linear_spread - spread apart this many pixels over every projectile
+ * * uniform_linear_spread - use deterministic linear spread
  * * distribute - distribute our stats across submunitions?
  * * distribute_mod - 2 = each pellet is 2x stronger than it should be in a fair divide, 0.5 = 50% as strong, etc.
  * * distribute_overwrite - overwrite stats of the split submunitions instead of adding.
@@ -1206,13 +1211,14 @@
  *
  * @return list() of submunitions
  */
-/obj/projectile/proc/split_into_submunitions(amount, path, dispersion, uniform_dispersion, linear_spread, distribute, distribute_mod, distribute_overwrite, fire_immediately, datum/callback/on_submunition_ready)
+/obj/projectile/proc/split_into_submunitions(amount, path, dispersion, uniform_dispersion, linear_spread, uniform_linear_spread, distribute, distribute_mod, distribute_overwrite, fire_immediately, datum/callback/on_submunition_ready)
 	// we must be fired; otherwise, things don't work right.
 	ASSERT(fired)
 	. = list()
 	// halve it as we're going in both directions, and artificially multiply by 10 to be
 	// divided out after the rand to boost randomness by a slight bit as rand only returns
 	// whole numbers.
+	#warn uniform linear spread
 	linear_spread *= 0.5 * 10
 	// artificially multiply by 10 to boost randomness
 	dispersion *= 10

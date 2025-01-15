@@ -76,6 +76,12 @@
 	#warn hook
 	/// blackboard for modular gun components to use
 	var/list/blackboard
+	/// multiplier to total cooldown after firing cycle
+	#warn hook
+	var/overall_cooldown_multiply = 1
+	/// adjust to total cooldown after firing cycle
+	#warn hook
+	var/overall_cooldown_adjust = 0
 
 /datum/gun_firing_cycle/proc/finish_iteration(result)
 	last_firing_result = result

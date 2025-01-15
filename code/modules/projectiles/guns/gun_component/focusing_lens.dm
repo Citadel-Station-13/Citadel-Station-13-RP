@@ -24,6 +24,19 @@
 	///   i will replace your eyelids with limes.
 	var/cheat_factor = 1
 
+/obj/item/gun_component/focusing_lens/divide_by/on_projectile_injection(datum/gun_firing_cycle/cycle, obj/projectile/proj)
+	cycle.overall_cooldown_multiply *= 1.25
+	if(proj.submunitions)
+		proj.submunitions *= divide_by
+	else
+		proj.submunitions = divide_by
+	proj.submunitions_only = TRUE
+	proj.submunition_linear_spread = divide_by * 5
+	proj.submunition_uniform_linear_spread = TRUE
+	proj.submunition_distribution = TRUE
+	proj.submunition_distribution_mod = cheat_factor
+	proj.submunition_distribution_overwrite = TRUE
+
 /obj/item/gun_component/focusing_lens/divide_by/two
 	name = "weapon focusing lens (2-linear multiplexer)"
 	divide_by = 2

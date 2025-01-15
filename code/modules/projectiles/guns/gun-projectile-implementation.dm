@@ -30,7 +30,7 @@
 	if(!istype(firing_projectile))
 		// it's an error code if it's not real
 		return firing_projectile
-	// sike; real poitn of no return
+	// sike; real point of no return
 	SEND_SIGNAL(src, COMSIG_GUN_FIRING_PROJECTILE_INJECTION, cycle, firing_projectile)
 	// if they want to abort..
 	if(cycle.next_firing_fail_result)
