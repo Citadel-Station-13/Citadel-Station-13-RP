@@ -1,3 +1,8 @@
+/mob
+	//* Impairments *//
+	/// active feign_impairment types
+	/// * lazy list
+	var/list/impairments_feigned
 
 /**
  * Intialize a mob
