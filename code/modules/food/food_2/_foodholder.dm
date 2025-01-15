@@ -1,0 +1,253 @@
+/obj/item/reagent_containers/glass/food_holder
+	name = "cooking pot"
+	desc = "A cooking pot, for making various types of dishes."
+	icon = 'icons/obj/food_ingredients/cooking_container.dmi'
+	icon_state = "pot"
+	atom_flags = OPENCONTAINER
+
+	var/food_name_override
+
+	var/last_cooking_method
+
+	var/cooker_overlay = "pot"
+
+/obj/item/reagent_containers/glass/food_holder/Initialize(mapload)
+	. = ..()
+	reagents.reagents_holder_flags |= TRANSPARENT
+
+/obj/item/reagent_containers/glass/food_holder/examine(mob/user, dist)
+	. = ..()
+	. += SPAN_NOTICE("<b>Alt-click</b> to remove an ingredient from this.")
+	. += SPAN_NOTICE("<b>Control-click</b> in grab intent to retrieve a serving.")
+	. += SPAN_NOTICE("It contains:")
+	for(var/obj/item/examine_item in contents)
+		if(!istype(examine_item, /obj/item/reagent_containers/food/snacks/ingredient))
+			. += "<span class='notice'>[icon2html(thing = examine_item, target = user)][examine_item].</span>"
+			continue
+
+		var/obj/item/reagent_containers/food/snacks/ingredient/examine_ingredient = examine_item
+		var/cooked_span = "userdanger"
+		switch(examine_ingredient.cookstage)
+			if(RAW)
+				cooked_span = "rose"
+			if(COOKED)
+				cooked_span = "boldnicegreen"
+			if(OVERCOOKED)
+				cooked_span = "yellow"
+			if(BURNT)
+				cooked_span = "tajaran_signlang"
+		. += "<span class='notice'>[icon2html(thing = examine_ingredient, target = user)][examine_ingredient.food_weight]g of [examine_ingredient.name], which looks </span><span class='[cooked_span]'>[examine_ingredient.cookstage2text()]</span><span class='notice'> and has been cooked for about [examine_ingredient.accumulated_time_cooked / 10] seconds.</span>"
+
+/obj/item/reagent_containers/glass/food_holder/update_icon()
+	cut_overlays()
+	var/mutable_appearance/filling_overlay = mutable_appearance(icon, "[icon_state]_filling_overlay")
+	if(LAZYLEN(contents) || reagents.total_volume)
+		filling_overlay.color = tally_color()
+		add_overlay(filling_overlay)
+
+
+
+/obj/item/reagent_containers/glass/proc/tally_color()
+	var/newcolor
+	var/overlay_color
+
+	for(var/obj/item/reagent_containers/food/snacks/ingredient/color_tally in contents)
+		if(color_tally.filling_color == "#FFFFFF")
+			newcolor = AverageColor(get_flat_icon(color_tally, color_tally.dir, 0))
+		else
+			newcolor = color_tally.filling_color
+
+		if(!overlay_color)
+			overlay_color = newcolor
+		else
+			overlay_color = BlendRGB(overlay_color, newcolor, 1/contents.len)
+
+	if(!overlay_color)
+		overlay_color = reagents.get_color()
+	overlay_color = BlendRGB(overlay_color, reagents.get_color(), 0.6)
+	return overlay_color
+
+/obj/item/reagent_containers/glass/food_holder/proc/tick_heat(var/time_cooked, var/heat_level, var/cook_method)
+	last_cooking_method = cook_method
+	for(var/obj/item/reagent_containers/food/snacks/ingredient/cooking_ingredient in contents)
+		cooking_ingredient.process_cooked(time_cooked, heat_level, cook_method) //handles all the cooking stuff actually
+
+
+/obj/item/reagent_containers/glass/food_holder/attackby(obj/item/I, mob/user)
+	if(istype(I, /obj/item/reagent_containers/food/snacks/ingredient))
+		for(var/obj/item/reagent_containers/food/snacks/ingredient/compare_ingredient in contents)
+			if(compare_ingredient.type == I.type)
+				try_merge(I, compare_ingredient, user)
+				update_icon()
+		if(!user.attempt_insert_item_for_installation(I, src))
+			user.visible_message("<span class='notice'>[user] puts [I] into [src].</span>", "<span class='notice'>You put [I] into [src].</span>")
+			update_icon()
+			return
+		return
+	else if(istype(I, /obj/item/reagent_containers/food/snacks))
+		if(!user.attempt_insert_item_for_installation(I, src))
+			user.visible_message("<span class='notice'>[user] puts [I] into [src].</span>", "<span class='notice'>You put [I] into [src].</span>")
+			update_icon()
+			return
+		return
+	else if(istype(I, /obj/item/food_serving))
+		generate_serving(I, user)
+		update_icon()
+	return ..()
+
+/obj/item/reagent_containers/glass/food_holder/CtrlClick(mob/user)
+	if(user.a_intent == INTENT_GRAB)
+		generate_serving(null, user)
+		return
+	else
+		food_name_override = input(user, "What would you like to name the finished dishes?", "Name dishes from container", null) as null|text
+
+/obj/item/reagent_containers/glass/food_holder/AltClick(mob/living/user)
+	var/list/removables = list()
+	var/counter = 0
+	for(var/obj/item/removeding in contents)
+		if(!istype(removeding, /obj/item/reagent_containers/food/snacks/ingredient))
+			user.put_in_hands_or_drop(removeding)
+			continue
+		var/obj/item/reagent_containers/food/snacks/ingredient/I = removeding
+		if(counter)
+			removables["[I.name] ([counter]) \[[I.cookstage2text()]\]"] = I
+		else
+			removables["[I.name] \[[I.cookstage2text()]\]"] = I
+		counter++
+	if(!LAZYLEN(removables))
+		return
+	var/remove_item = removables[1]
+	if(LAZYLEN(removables) > 1)
+		remove_item = input(user, "What to remove?", "Remove from container", null) as null|anything in removables
+	if(remove_item)
+		user.put_in_hands_or_drop(removables[remove_item])
+		update_icon()
+		return TRUE
+	return FALSE
+
+/obj/item/reagent_containers/glass/food_holder/proc/try_merge(obj/item/reagent_containers/food/snacks/ingredient/I, obj/item/reagent_containers/food/snacks/ingredient/compare_ingredient, mob/user)
+	if(I.type != compare_ingredient.type)
+		return
+	if(I.check_merge(compare_ingredient, user))
+		if(user.attempt_insert_item_for_installation(I, src))
+			compare_ingredient.merge_ingredient(I)
+
+
+/obj/item/reagent_containers/glass/food_holder/proc/generate_serving(var/obj/item/food_serving/FS, mob/user)
+	var/obj/item/reagent_containers/food/snacks/food_serving/generated_serving = new /obj/item/reagent_containers/food/snacks/food_serving(null)
+	var/list/tally_flavours = list()
+	var/list/fancy_overlay_to_add = list()
+	var/food_color
+	var/serving_thing_name = "handful"
+	var/foodname = generate_food_name()
+
+	var/fs_icon = FS ? FS.icon : 'icons/obj/food_ingredients/custom_food.dmi'
+	var/fs_iconstate = FS ? FS.icon_state : "handful"
+
+	var/ingredient_count = 0
+
+	for(var/x in contents)
+		if(istype(x, /obj/item/reagent_containers/food/snacks/ingredient))
+			ingredient_count += 1
+
+
+	for(var/obj/item/reagent_containers/food/snacks/ingredient/tally_ingredient in contents)
+		var/ing_ratio = (1/ingredient_count)
+		tally_flavours[tally_ingredient.cookstage_information[tally_ingredient.cookstage][COOKINFO_TASTE]] = WEIGHT_TASTE_DIVISION(tally_ingredient.food_weight) //the more it is the stronger it'll taste
+		var/total_volume_transferred = WEIGHT_TASTE_DIVISION(ing_ratio * tally_ingredient.food_weight)
+		tally_ingredient.reagents.trans_to_holder(generated_serving.reagents, total_volume_transferred, tally_ingredient.cookstage_information[tally_ingredient.cookstage][COOKINFO_NUTRIMULT])
+
+
+		var/ingredient_fillcolor = tally_ingredient.filling_color != "#FFFFFF" ? tally_ingredient.filling_color : AverageColor(get_flat_icon(tally_ingredient, tally_ingredient.dir, 0), 1, 1)
+		if(tally_ingredient.finished_overlay)
+			var/mutable_appearance/filling_overlay = mutable_appearance(fs_icon, "[fs_iconstate]_filling_[tally_ingredient.finished_overlay]")
+			filling_overlay.color = ingredient_fillcolor
+			fancy_overlay_to_add += filling_overlay
+		if(food_color)
+			food_color = BlendRGB(food_color, ingredient_fillcolor, 0.5)
+		else
+			food_color = ingredient_fillcolor
+
+		var/mutable_appearance/mixed_stuff_overlay = mutable_appearance(fs_icon, "[fs_iconstate]_filling")
+		mixed_stuff_overlay.color = food_color
+		fancy_overlay_to_add += mixed_stuff_overlay
+
+		tally_ingredient.consume_weight(ing_ratio * tally_ingredient.food_weight)
+
+	for(var/obj/item/reagent_containers/food/snacks/tally_snack in contents)
+		if(istype(tally_snack, /obj/item/reagent_containers/food/snacks/ingredient))
+			continue
+		tally_snack.reagents.trans_to_holder(generated_serving.reagents, tally_snack.reagents.total_volume, tally_snack.nutriment_desc)
+
+		var/ingredient_fillcolor = tally_snack.filling_color != "#FFFFFF" ? tally_snack.filling_color : AverageColor(get_flat_icon(tally_snack, tally_snack.dir, 0), 1, 1)
+		if(food_color)
+			food_color = BlendRGB(food_color, ingredient_fillcolor, 0.5)
+		else
+			food_color = ingredient_fillcolor
+
+		var/mutable_appearance/mixed_stuff_overlay = mutable_appearance(fs_icon, "[fs_iconstate]_filling")
+		mixed_stuff_overlay.color = food_color
+		fancy_overlay_to_add += mixed_stuff_overlay
+		qdel(tally_snack)
+
+	if(FS)
+		serving_thing_name = FS.serving_type
+		generated_serving.trash = FS
+		FS.forceMove(generated_serving)
+
+	generated_serving.name = "[serving_thing_name] of "
+	generated_serving.name += foodname
+	generated_serving.desc = ("That's a" + generated_serving.name + ". It looks tasty. Potentially.")
+	generated_serving.icon = fs_icon
+	generated_serving.icon_state = fs_iconstate
+	generated_serving.add_overlay(fancy_overlay_to_add)
+	user.put_in_hands_or_drop(generated_serving)
+
+
+/obj/item/reagent_containers/glass/food_holder/proc/generate_food_name()
+	if(food_name_override)
+		return food_name_override
+	var/list/ingredients_names = list()
+	for(var/obj/item/I in contents)
+		ingredients_names |= I.name
+	ingredients_names = english_list(ingredients_names)
+	if(reagents.total_volume >= (reagents.maximum_volume / 2)) //greater than 50%)
+		return "[ingredients_names] soup"
+	if(reagents.total_volume >= (reagents.maximum_volume / 4)) //greater than 25%)
+		return "[ingredients_names] stew"
+	return "[ingredients_names] melange"
+
+
+
+/obj/item/reagent_containers/glass/food_holder/proc/check_recipe_completion(var/cook_method = METHOD_MICROWAVE)
+	var/datum/cooking_recipe/our_recipe = select_recipe(GLOB.cooking_recipes, src, available_method = cook_method)
+	if (!our_recipe)
+		return
+	our_recipe.make_food(src)
+
+
+//visalalize recipe
+
+/obj/item/reagent_containers/glass/food_holder/verb/visualize_recipe()
+	set name = "Visualize Recipe"
+	set desc = "Predicts the output for a given container of food cooked in a specific method."
+	set category = "Object"
+	set src in range(0)
+
+
+	var/cook_method = input(usr, "What cooking method?", "Select cooking method", null) as null|anything in list(METHOD_OVEN,METHOD_GRILL,METHOD_STOVE,METHOD_DEEPFRY,METHOD_MICROWAVE,METHOD_BLOWTORCH,METHOD_ENERGETIC_ANOMALY)
+	if(!cook_method)
+		return
+	var/datum/cooking_recipe/our_recipe = select_recipe(GLOB.cooking_recipes, src, available_method = cook_method)
+	if (!our_recipe)
+		to_chat(usr, "<span class='notice'>The contents of [name] wouldn't make anything special when cooked that way.</span>")
+		return
+
+	var/list/reagent_result_pretty = list()
+	for(var/id in our_recipe.result_reagents)
+		reagent_result_pretty += "[our_recipe.result_reagents[id]]u of [initial((SSchemistry.fetch_reagent(id)).name)]"
+	to_chat(usr, "<span class='notice'>You can see the contents of [name] would make [isnull(initial(initial(our_recipe.result).name)) ? "no item" : initial(initial(our_recipe.result).name)][reagent_result_pretty.len ? " as well as [english_list(reagent_result_pretty)]." : "."]</span>")
+
+
+

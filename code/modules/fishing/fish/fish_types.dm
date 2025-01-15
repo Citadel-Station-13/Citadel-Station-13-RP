@@ -216,7 +216,7 @@
 	desc = "This alien fish bears a passing resemblance to the Terran perch. Known for its poor taste and enlarged dorsal fin, the murkfish has little value to farmers or sport fishers."
 	//description_fluff = ""
 	icon_state = "murkin"
-	fillet_type = /obj/item/reagent_containers/food/snacks/carpmeat/fish/murkfish
+	fillet_type = /obj/item/reagent_containers/food/snacks/ingredient/carp/fish/murkfish
 	required_fluid_type = AQUARIUM_FLUID_SALTWATER
 	stable_population = 3
 	average_size = 30
@@ -264,7 +264,7 @@
 	stable_population = 3
 	average_size = 20
 	average_weight = 1500
-	fillet_type = /obj/item/reagent_containers/food/snacks/meat/crab
+	fillet_type = /obj/item/reagent_containers/food/snacks/ingredient/meat/crab
 	favorite_bait = list(
 		/obj/item/reagent_containers/food/snacks/bait/doughball,
 	)

@@ -35,7 +35,7 @@
 	maxbodytemp = 323		//Above 50 Degrees Celcius
 
 	meat_amount = 1
-	meat_type = /obj/item/reagent_containers/food/snacks/meat/fox
+	meat_type = /obj/item/reagent_containers/food/snacks/ingredient/meat/fox
 	bone_amount = 1
 	hide_amount = 3
 
@@ -122,7 +122,8 @@
 		var/datum/ai_holder/polaris/AI = ai_holder
 		AI.set_follow(friend)
 
-/obj/item/reagent_containers/food/snacks/meat/fox
+
+/obj/item/reagent_containers/food/snacks/ingredient/meat/fox
 	name = "Fox meat"
 	desc = "The fox doesn't say a goddamn thing, now."
 

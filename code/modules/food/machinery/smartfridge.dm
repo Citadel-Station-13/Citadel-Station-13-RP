@@ -23,7 +23,7 @@
 	var/scan_id = 1
 	var/is_secure = 0
 	var/wrenchable = TRUE
-	var/list/accepted_types = list(/obj/item/reagent_containers/food/snacks/grown/)
+	var/list/accepted_types = list(/obj/item/reagent_containers/food/snacks/ingredient/grown/)
 	var/list/blacklisted_types = list()
 	var/datum/wires/smartfridge/wires = null
 	var/icon_contents = "food"
@@ -348,7 +348,7 @@
 	icon_state = "fridge_food"
 	desc = "A climated storage for dishes waiting to be eaten"
 	accepted_types = list(/obj/item/reagent_containers/food/snacks/, /obj/item/reagent_containers/food/condiment/)
-	blacklisted_types = list(/obj/item/reagent_containers/food/snacks/grown/)
+	blacklisted_types = list(/obj/item/reagent_containers/food/snacks/ingredient/grown/)
 
 
 /obj/machinery/smartfridge/drying_rack

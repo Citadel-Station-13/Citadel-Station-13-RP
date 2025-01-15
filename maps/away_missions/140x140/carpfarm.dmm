@@ -578,7 +578,7 @@
 /turf/simulated/floor/tiled,
 /area/awaymission/carpfarm/base)
 "bT" = (
-/obj/item/reagent_containers/food/snacks/carpmeat,
+/obj/item/reagent_containers/food/snacks/ingredient/carp,
 /obj/effect/floor_decal/corner/white/diagonal,
 /obj/structure/table/glass,
 /turf/simulated/floor/tiled,

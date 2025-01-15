@@ -219,3 +219,7 @@ if (!(DATUM.datum_flags & DF_ISPROCESSING)) {\
 #define ORION_GAMER_PAMPHLET -1
 //game begins to have a chance to warn sec and med
 #define ORION_GAMER_REPORT_THRESHOLD 2
+
+#define PROCESS_ON_SSMACHINES 0
+#define PROCESS_ON_SSFASTPROCESS 1
+#define PROCESS_ON_SSPROCESSING 2

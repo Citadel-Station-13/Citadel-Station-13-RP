@@ -1,278 +1,144 @@
-/datum/recipe/ovenchips
-	appliance = OVEN
+/datum/cooking_recipe/ovenchips
+	required_method = METHOD_OVEN
 	items = list(
-		/obj/item/reagent_containers/food/snacks/rawsticks
+		/obj/item/reagent_containers/food/snacks/ingredient/rawsticks = 100
 	)
 	result = /obj/item/reagent_containers/food/snacks/ovenchips
 
-/datum/recipe/ribplate //Putting this here for not seeing a roast section.
-	appliance = OVEN
+/datum/cooking_recipe/ribplate
+	required_method = METHOD_OVEN
 	reagents = list("honey" = 5, "spacespice" = 2, "blackpepper" = 1)
-	items = list(/obj/item/reagent_containers/food/snacks/meat)
-	reagent_mix = RECIPE_REAGENT_REPLACE
+	items = list(/obj/item/reagent_containers/food/snacks/ingredient/meat = 200)
+
 	result = /obj/item/reagent_containers/food/snacks/ribplate
 
-/datum/recipe/ribplate_bear //Putting this here for not seeing a roast section.
-	appliance = OVEN
+/datum/cooking_recipe/ribplate_bear
+	required_method = METHOD_OVEN
 	reagents = list("honey" = 5, "spacespice" = 2, "blackpepper" = 1)
-	items = list(/obj/item/reagent_containers/food/snacks/bearmeat)
-	reagent_mix = RECIPE_REAGENT_REPLACE
+	items = list(/obj/item/reagent_containers/food/snacks/ingredient/bearmeat = 200)
+
 	result = /obj/item/reagent_containers/food/snacks/ribplate_bear
 
-/datum/recipe/teshariroast
-	appliance = OVEN
-	fruit = list("lemon" = 1)
+/datum/cooking_recipe/teshariroast
+	required_method = METHOD_OVEN
+	fruit = list("lemon" = 20)
 	reagents = list("sodiumchloride" = 1, "blackpepper" = 1)
-	items = list(/obj/item/reagent_containers/food/snacks/meat/chicken/teshari)
+	items = list(/obj/item/reagent_containers/food/snacks/ingredient/meat/chicken/teshari = 100)
 	result = /obj/item/reagent_containers/food/snacks/teshariroast
-	reagent_mix = RECIPE_REAGENT_REPLACE
 
-/datum/recipe/dionaroast
-	appliance = OVEN
-	fruit = list("apple" = 1)
-	reagents = list("pacid" = 5) //It dissolves the carapace. Still poisonous, though.
-	items = list(/obj/item/holder/diona)
-	result = /obj/item/reagent_containers/food/snacks/dionaroast
-	reagent_mix = RECIPE_REAGENT_REPLACE //No eating polyacid
 
-//Predesigned breads
-/datum/recipe/bread
-	appliance = OVEN
-	items = list(
-		/obj/item/reagent_containers/food/snacks/dough,
-		/obj/item/reagent_containers/food/snacks/dough,
-		/obj/item/reagent_containers/food/snacks/dough,
-		/obj/item/reagent_containers/food/snacks/dough
-	)
-	reagents = list("sodiumchloride" = 1)
-	result = /obj/item/reagent_containers/food/snacks/sliceable/bread
-
-/datum/recipe/baguette
-	appliance = OVEN
+/datum/cooking_recipe/baguette
+	required_method = METHOD_OVEN
 	reagents = list("sodiumchloride" = 1, "blackpepper" = 1)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/dough,
-		/obj/item/reagent_containers/food/snacks/dough
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough = 200
 	)
 	result = /obj/item/reagent_containers/food/snacks/baguette
-
-
-/datum/recipe/tofubread
-	appliance = OVEN
-	items = list(
-		/obj/item/reagent_containers/food/snacks/dough,
-		/obj/item/reagent_containers/food/snacks/dough,
-		/obj/item/reagent_containers/food/snacks/dough,
-		/obj/item/reagent_containers/food/snacks/tofu,
-		/obj/item/reagent_containers/food/snacks/tofu,
-		/obj/item/reagent_containers/food/snacks/tofu,
-		/obj/item/reagent_containers/food/snacks/cheesewedge,
-		/obj/item/reagent_containers/food/snacks/cheesewedge,
-		/obj/item/reagent_containers/food/snacks/cheesewedge
-	)
-	result = /obj/item/reagent_containers/food/snacks/sliceable/tofubread
-
-
-/datum/recipe/creamcheesebread
-	appliance = OVEN
-	items = list(
-		/obj/item/reagent_containers/food/snacks/dough,
-		/obj/item/reagent_containers/food/snacks/dough,
-		/obj/item/reagent_containers/food/snacks/cheesewedge,
-		/obj/item/reagent_containers/food/snacks/cheesewedge
-	)
-	result = /obj/item/reagent_containers/food/snacks/sliceable/creamcheesebread
-
-/datum/recipe/flatbread
-	appliance = OVEN
-	items = list(
-		/obj/item/reagent_containers/food/snacks/sliceable/flatdough
-	)
-	result = /obj/item/reagent_containers/food/snacks/flatbread
-
-/datum/recipe/meatbread
-	appliance = OVEN
-	items = list(
-		/obj/item/reagent_containers/food/snacks/dough,
-		/obj/item/reagent_containers/food/snacks/dough,
-		/obj/item/reagent_containers/food/snacks/dough,
-		/obj/item/reagent_containers/food/snacks/meat,
-		/obj/item/reagent_containers/food/snacks/meat,
-		/obj/item/reagent_containers/food/snacks/meat,
-		/obj/item/reagent_containers/food/snacks/cheesewedge,
-		/obj/item/reagent_containers/food/snacks/cheesewedge,
-		/obj/item/reagent_containers/food/snacks/cheesewedge
-	)
-	result = /obj/item/reagent_containers/food/snacks/sliceable/meatbread
-
-/datum/recipe/syntibread
-	appliance = OVEN
-	items = list(
-		/obj/item/reagent_containers/food/snacks/dough,
-		/obj/item/reagent_containers/food/snacks/dough,
-		/obj/item/reagent_containers/food/snacks/dough,
-		/obj/item/reagent_containers/food/snacks/meat/synthflesh,
-		/obj/item/reagent_containers/food/snacks/meat/synthflesh,
-		/obj/item/reagent_containers/food/snacks/meat/synthflesh,
-		/obj/item/reagent_containers/food/snacks/cheesewedge,
-		/obj/item/reagent_containers/food/snacks/cheesewedge,
-		/obj/item/reagent_containers/food/snacks/cheesewedge
-	)
-	result = /obj/item/reagent_containers/food/snacks/sliceable/meatbread
-
-/datum/recipe/xenomeatbread
-	appliance = OVEN
-	items = list(
-		/obj/item/reagent_containers/food/snacks/dough,
-		/obj/item/reagent_containers/food/snacks/dough,
-		/obj/item/reagent_containers/food/snacks/dough,
-		/obj/item/reagent_containers/food/snacks/xenomeat,
-		/obj/item/reagent_containers/food/snacks/xenomeat,
-		/obj/item/reagent_containers/food/snacks/xenomeat,
-		/obj/item/reagent_containers/food/snacks/cheesewedge,
-		/obj/item/reagent_containers/food/snacks/cheesewedge,
-		/obj/item/reagent_containers/food/snacks/cheesewedge
-	)
-	result = /obj/item/reagent_containers/food/snacks/sliceable/xenomeatbread
-
-/datum/recipe/bananabread
-	appliance = OVEN
-	fruit = list("banana" = 1)
-	reagents = list("milk" = 5, "sugar" = 15)
-	items = list(
-		/obj/item/reagent_containers/food/snacks/dough,
-		/obj/item/reagent_containers/food/snacks/dough,
-		/obj/item/reagent_containers/food/snacks/dough
-	)
-	result = /obj/item/reagent_containers/food/snacks/sliceable/bananabread
-
-/datum/recipe/spidermeatbread
-	appliance = OVEN
-	items = list(
-		/obj/item/reagent_containers/food/snacks/dough,
-		/obj/item/reagent_containers/food/snacks/dough,
-		/obj/item/reagent_containers/food/snacks/dough,
-		/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
-		/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
-		/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
-		/obj/item/reagent_containers/food/snacks/cheesewedge,
-		/obj/item/reagent_containers/food/snacks/cheesewedge,
-		/obj/item/reagent_containers/food/snacks/cheesewedge
-	)
-	result = /obj/item/reagent_containers/food/snacks/sliceable/spidermeatbread
-
-
-/datum/recipe/bun
-	appliance = OVEN
-	items = list(
-		/obj/item/reagent_containers/food/snacks/dough
-	)
-	result = /obj/item/reagent_containers/food/snacks/bun
 
 //Predesigned pies
 //=======================
 
-/datum/recipe/meatpie
-	appliance = OVEN
+/datum/cooking_recipe/meatpie
+	required_method = METHOD_OVEN
 	items = list(
-		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
-		/obj/item/reagent_containers/food/snacks/meat
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/flat = 100,
+		/obj/item/reagent_containers/food/snacks/ingredient/meat = 100
 	)
 	result = /obj/item/reagent_containers/food/snacks/meatpie
 
-/datum/recipe/tofupie
-	appliance = OVEN
+/datum/cooking_recipe/tofupie
+	required_method = METHOD_OVEN
 	items = list(
-		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
-		/obj/item/reagent_containers/food/snacks/tofu
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/flat = 100,
+		/obj/item/reagent_containers/food/snacks/ingredient/tofu = 100
 	)
 	result = /obj/item/reagent_containers/food/snacks/tofupie
 
-/datum/recipe/xemeatpie
-	appliance = OVEN
+/datum/cooking_recipe/xemeatpie
+	required_method = METHOD_OVEN
 	items = list(
-		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
-		/obj/item/reagent_containers/food/snacks/xenomeat
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/flat = 100,
+		/obj/item/reagent_containers/food/snacks/ingredient/xenomeat = 100
 	)
 	result = /obj/item/reagent_containers/food/snacks/xemeatpie
 
-/datum/recipe/pie
-	appliance = OVEN
-	fruit = list("banana" = 1)
+/datum/cooking_recipe/pie
+	required_method = METHOD_OVEN
+	fruit = list("banana" = 100)
 	reagents = list("sugar" = 5)
-	items = list(/obj/item/reagent_containers/food/snacks/sliceable/flatdough)
+	items = list(/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/flat = 100)
 	result = /obj/item/reagent_containers/food/snacks/pie
 
-/datum/recipe/cherrypie
-	appliance = OVEN
-	fruit = list("cherries" = 1)
+/datum/cooking_recipe/cherrypie
+	required_method = METHOD_OVEN
+	fruit = list("cherries" = 100)
 	reagents = list("sugar" = 10)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/sliceable/flatdough
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/flat = 100
 	)
 	result = /obj/item/reagent_containers/food/snacks/cherrypie
 
 
-/datum/recipe/amanita_pie
-	appliance = OVEN
+/datum/cooking_recipe/amanita_pie
+	required_method = METHOD_OVEN
 	reagents = list("amatoxin" = 5)
-	items = list(/obj/item/reagent_containers/food/snacks/sliceable/flatdough)
+	items = list(/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/flat = 100)
 	result = /obj/item/reagent_containers/food/snacks/amanita_pie
 
-/datum/recipe/plump_pie
-	appliance = OVEN
-	fruit = list("plumphelmet" = 1)
-	items = list(/obj/item/reagent_containers/food/snacks/sliceable/flatdough)
+/datum/cooking_recipe/plump_pie
+	required_method = METHOD_OVEN
+	fruit = list("plumphelmet" = 100)
+	items = list(/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/flat = 100)
 	result = /obj/item/reagent_containers/food/snacks/plump_pie
 
 
-/datum/recipe/pumpkinpie
-	appliance = OVEN
-	fruit = list("pumpkin" = 1)
+/datum/cooking_recipe/pumpkinpie
+	required_method = METHOD_OVEN
+	fruit = list("pumpkin" = 100)
 	reagents = list("milk" = 5, "sugar" = 5, "egg" = 3, "flour" = 10)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/pumpkinpie
-	reagent_mix = RECIPE_REAGENT_REPLACE //We dont want raw egg in the result
+	 //We dont want raw egg in the result
 
-/datum/recipe/appletart
-	appliance = OVEN
-	fruit = list("goldapple" = 1)
+/datum/cooking_recipe/appletart
+	required_method = METHOD_OVEN
+	fruit = list("goldapple" = 100)
 	reagents = list("sugar" = 5, "milk" = 5, "flour" = 10, "egg" = 3)
 	result = /obj/item/reagent_containers/food/snacks/appletart
-	reagent_mix = RECIPE_REAGENT_REPLACE
 
-/datum/recipe/keylimepie
-	appliance = OVEN
-	fruit = list("lime" = 2)
+
+/datum/cooking_recipe/keylimepie
+	required_method = METHOD_OVEN
+	fruit = list("lime" = 200)
 	reagents = list("milk" = 5, "sugar" = 5, "egg" = 3, "flour" = 10)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/keylimepie
-	reagent_mix = RECIPE_REAGENT_REPLACE //No raw egg in finished product, protein after cooking causes magic meatballs otherwise
+	 //No raw egg in finished product, protein after cooking causes magic meatballs otherwise
 
-/datum/recipe/quiche
-	appliance = OVEN
+/datum/cooking_recipe/quiche
+	required_method = METHOD_OVEN
 	reagents = list("milk" = 5, "egg" = 9, "flour" = 10)
-	items = list(/obj/item/reagent_containers/food/snacks/cheesewedge)
+	items = list(/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge = 100)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/quiche
-	reagent_mix = RECIPE_REAGENT_REPLACE //No raw egg in finished product, protein after cooking causes magic meatballs otherwise
+	 //No raw egg in finished product, protein after cooking causes magic meatballs otherwise
 
 //Baked sweets:
 //---------------
 
-/datum/recipe/cookie
-	appliance = OVEN
+/datum/cooking_recipe/cookie
+	required_method = METHOD_OVEN
 	reagents = list("milk" = 10, "sugar" = 10)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/dough,
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough = 100,
 		/obj/item/reagent_containers/food/snacks/chocolatebar
 	)
 	result = /obj/item/reagent_containers/food/snacks/cookie
 	result_quantity = 4
-	reagent_mix = RECIPE_REAGENT_REPLACE
 
-/datum/recipe/fortunecookie
-	appliance = OVEN
+
+/datum/cooking_recipe/fortunecookie
+	required_method = METHOD_OVEN
 	reagents = list("sugar" = 5)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/doughslice,
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/slice = 20,
 		/obj/item/paper
 	)
 	result = /obj/item/reagent_containers/food/snacks/fortunecookie
@@ -316,40 +182,40 @@
 				return 0
 		return . */
 
-/datum/recipe/pretzel
-	appliance = OVEN
-	items = list(/obj/item/reagent_containers/food/snacks/dough)
+/datum/cooking_recipe/pretzel
+	required_method = METHOD_OVEN
+	items = list(/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough = 100)
 	reagents = list("water" = 5, "sodiumchloride" = 2)
 	result = /obj/item/reagent_containers/food/snacks/pretzel
 	result_quantity = 2
 
-/datum/recipe/poppypretzel
-	appliance = OVEN
-	fruit = list("poppy" = 1)
-	items = list(/obj/item/reagent_containers/food/snacks/dough)
+/datum/cooking_recipe/poppypretzel
+	required_method = METHOD_OVEN
+	fruit = list("poppy" = 20)
+	items = list(/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough = 100)
 	result = /obj/item/reagent_containers/food/snacks/poppypretzel
 	result_quantity = 2
 
-/datum/recipe/cracker
-	appliance = OVEN
+/datum/cooking_recipe/cracker
+	required_method = METHOD_OVEN
 	reagents = list("sodiumchloride" = 1)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/doughslice
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/slice = 100
 	)
 	result = /obj/item/reagent_containers/food/snacks/cracker
 
-/datum/recipe/brownies
-	appliance = OVEN
+/datum/cooking_recipe/brownies
+	required_method = METHOD_OVEN
 	reagents = list("browniemix" = 10, "egg" = 3)
-	reagent_mix = RECIPE_REAGENT_REPLACE //No egg or mix in final recipe
+	 //No egg or mix in final recipe
 	result = /obj/item/reagent_containers/food/snacks/sliceable/brownies
 
 
-/datum/recipe/cosmicbrownies
-	appliance = OVEN
+/datum/cooking_recipe/cosmicbrownies
+	required_method = METHOD_OVEN
 	reagents = list("browniemix" = 10, "egg" = 3)
-	fruit = list("ambrosia" = 1)
-	reagent_mix = RECIPE_REAGENT_REPLACE //No egg or mix in final recipe
+	fruit = list("ambrosia" = 10)
+	 //No egg or mix in final recipe
 	result = /obj/item/reagent_containers/food/snacks/sliceable/cosmicbrownies
 
 /datum/recipe/red_macaron
@@ -361,120 +227,93 @@
 	reagent_mix = RECIPE_REAGENT_REPLACE
 	result = /obj/item/reagent_containers/food/snacks/macaron/red
 
-/datum/recipe/yellow_macaron
-	appliance = OVEN
-	reagents = list("egg" = 3, "crayon_dust_yellow" = 1, "sugar" = 5)
-	items = list(
-		/obj/item/reagent_containers/food/snacks/doughslice
-	)
+/datum/cooking_recipe/muffin
+	required_method = METHOD_OVEN
+	reagents = list("milk" = 5, "sugar" = 5)
 	reagent_mix = RECIPE_REAGENT_REPLACE
-	result = /obj/item/reagent_containers/food/snacks/macaron/yellow
-
-/datum/recipe/purple_macaron
-	appliance = OVEN
-	reagents = list("egg" = 3, "crayon_dust_purple" = 1, "sugar" = 5)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/doughslice
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough = 100
 	)
-	reagent_mix = RECIPE_REAGENT_REPLACE
-	result = /obj/item/reagent_containers/food/snacks/macaron/purple
-
-/datum/recipe/green_macaron
-	appliance = OVEN
-	reagents = list("egg" = 3, "crayon_dust_green" = 1, "sugar" = 5)
-	items = list(
-		/obj/item/reagent_containers/food/snacks/doughslice
-	)
-	reagent_mix = RECIPE_REAGENT_REPLACE
-	result = /obj/item/reagent_containers/food/snacks/macaron/green
-
+	result = /obj/item/reagent_containers/food/snacks/muffin
 
 //Pizzas
 //=========================
-/datum/recipe/pizzamargherita
-	appliance = OVEN
-	fruit = list("tomato" = 1)
+/datum/cooking_recipe/pizzamargherita
+	required_method = METHOD_OVEN
+	fruit = list("tomato" = 100)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
-		/obj/item/reagent_containers/food/snacks/cheesewedge,
-		/obj/item/reagent_containers/food/snacks/cheesewedge,
-		/obj/item/reagent_containers/food/snacks/cheesewedge,
-		/obj/item/reagent_containers/food/snacks/cheesewedge
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/flat = 200,
+		/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge = 200
 	)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/pizza/margherita
 
-/datum/recipe/meatpizza
-	appliance = OVEN
-	fruit = list("tomato" = 1)
+/datum/cooking_recipe/meatpizza
+	required_method = METHOD_OVEN
+	fruit = list("tomato" = 100)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
-		/obj/item/reagent_containers/food/snacks/meat,
-		/obj/item/reagent_containers/food/snacks/meat,
-		/obj/item/reagent_containers/food/snacks/meat,
-		/obj/item/reagent_containers/food/snacks/cheesewedge
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/flat = 200,
+		/obj/item/reagent_containers/food/snacks/ingredient/meat = 100,
+		/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge = 100
 	)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/pizza/meatpizza
 
-/datum/recipe/syntipizza
-	appliance = OVEN
-	fruit = list("tomato" = 1)
+/datum/cooking_recipe/syntipizza
+	required_method = METHOD_OVEN
+	fruit = list("tomato" = 100)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
-		/obj/item/reagent_containers/food/snacks/meat/synthflesh,
-		/obj/item/reagent_containers/food/snacks/meat/synthflesh,
-		/obj/item/reagent_containers/food/snacks/meat/synthflesh,
-		/obj/item/reagent_containers/food/snacks/cheesewedge
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/flat = 200,
+		/obj/item/reagent_containers/food/snacks/ingredient/meat/syntiflesh = 100,
+		/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge = 100
 	)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/pizza/meatpizza
 
-/datum/recipe/mushroompizza
-	appliance = OVEN
-	fruit = list("mushroom" = 5, "tomato" = 1)
+/datum/cooking_recipe/mushroompizza
+	required_method = METHOD_OVEN
+	fruit = list("mushroom" = 50, "tomato" = 100)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
-		/obj/item/reagent_containers/food/snacks/cheesewedge
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/flat = 200,
+		/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge = 100
 	)
 
-	reagent_mix = RECIPE_REAGENT_REPLACE //No vomit taste in finished product from chanterelles
+	 //No vomit taste in finished product from chanterelles
 	result = /obj/item/reagent_containers/food/snacks/sliceable/pizza/mushroompizza
 
-/datum/recipe/vegetablepizza
-	appliance = OVEN
-	fruit = list("eggplant" = 1, "carrot" = 1, "corn" = 1, "tomato" = 1)
+/datum/cooking_recipe/vegetablepizza
+	required_method = METHOD_OVEN
+	fruit = list("eggplant" = 25, "carrot" = 25, "corn" = 25, "tomato" = 100)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
-		/obj/item/reagent_containers/food/snacks/cheesewedge
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/flat = 200,
+		/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge = 100
 	)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/pizza/vegetablepizza
 
-/datum/recipe/pineapplepizza
-	appliance = OVEN
-	fruit = list("tomato" = 1)
+/datum/cooking_recipe/pineapplepizza
+	required_method = METHOD_OVEN
+	fruit = list("tomato" = 100)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
-		/obj/item/reagent_containers/food/snacks/cheesewedge,
-		/obj/item/reagent_containers/food/snacks/pineapple_ring,
-		/obj/item/reagent_containers/food/snacks/pineapple_ring
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/flat = 200,
+		/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge = 100,
+		/obj/item/reagent_containers/food/snacks/pineapple_ring = 2
 	)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/pizza/pineapple
 
 //Spicy
 //================
-/datum/recipe/enchiladas
-	appliance = OVEN
-	fruit = list("chili" = 2, "corn" = 1)
-	items = list(/obj/item/reagent_containers/food/snacks/cutlet)
+/datum/cooking_recipe/enchiladas
+	required_method = METHOD_OVEN
+	fruit = list("chili" = 10, "corn" = 100)
+	items = list(/obj/item/reagent_containers/food/snacks/ingredient/cutlet = 100)
 	result = /obj/item/reagent_containers/food/snacks/enchiladas
 
-/datum/recipe/monkeysdelight
-	appliance = OVEN
-	fruit = list("banana" = 1)
+/datum/cooking_recipe/monkeysdelight
+	required_method = METHOD_OVEN
+	fruit = list("banana" = 100)
 	reagents = list("sodiumchloride" = 1, "blackpepper" = 1, "flour" = 10)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/monkeycube
 	)
 	result = /obj/item/reagent_containers/food/snacks/monkeysdelight
-	reagent_mix = RECIPE_REAGENT_REPLACE
+
 
 
 
@@ -482,189 +321,342 @@
 
 // Cakes.
 //============
-/datum/recipe/cake
-	appliance = OVEN
+/datum/cooking_recipe/cake
+	required_method = METHOD_OVEN
 	reagents = list("milk" = 5, "flour" = 15, "sugar" = 15, "egg" = 9)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/plaincake
-	reagent_mix = RECIPE_REAGENT_REPLACE
 
-/datum/recipe/cake/carrot
-	appliance = OVEN
-	fruit = list("carrot" = 3)
+
+/datum/cooking_recipe/cake/carrot
+	required_method = METHOD_OVEN
+	fruit = list("carrot" = 300)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/carrotcake
 
-/datum/recipe/cake/cheese
-	appliance = OVEN
+/datum/cooking_recipe/cake/cheese
+	required_method = METHOD_OVEN
 	items = list(
-		/obj/item/reagent_containers/food/snacks/cheesewedge,
-		/obj/item/reagent_containers/food/snacks/cheesewedge
+		/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge = 200,
 	)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/cheesecake
 
-/datum/recipe/cake/orange
-	appliance = OVEN
-	fruit = list("orange" = 1)
+/datum/cooking_recipe/cake/orange
+	required_method = METHOD_OVEN
+	fruit = list("orange" = 100)
 	reagents = list("milk" = 5, "flour" = 15, "egg" = 9, "orangejuice" = 3, "sugar" = 5)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/orangecake
 
-/datum/recipe/cake/lime
-	appliance = OVEN
-	fruit = list("lime" = 1)
+/datum/cooking_recipe/cake/lime
+	required_method = METHOD_OVEN
+	fruit = list("lime" = 100)
 	reagents = list("milk" = 5, "flour" = 15, "egg" = 9, "limejuice" = 3, "sugar" = 5)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/limecake
 
-/datum/recipe/cake/lemon
-	appliance = OVEN
-	fruit = list("lemon" = 1)
+/datum/cooking_recipe/cake/lemon
+	required_method = METHOD_OVEN
+	fruit = list("lemon" = 100)
 	reagents = list("milk" = 5, "flour" = 15, "egg" = 9, "lemonjuice" = 3, "sugar" = 5)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/lemoncake
 
-/datum/recipe/cake/chocolate
-	appliance = OVEN
+/datum/cooking_recipe/cake/chocolate
+	required_method = METHOD_OVEN
 	items = list(/obj/item/reagent_containers/food/snacks/chocolatebar)
 	reagents = list("milk" = 5, "flour" = 15, "egg" = 9, "coco" = 4, "sugar" = 5)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/chocolatecake
 
-/datum/recipe/cake/birthday
-	appliance = OVEN
+/datum/cooking_recipe/cake/birthday
+	required_method = METHOD_OVEN
 	items = list(/obj/item/clothing/head/cakehat)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/birthdaycake
 
-/datum/recipe/cake/apple
-	appliance = OVEN
-	fruit = list("apple" = 2)
+/datum/cooking_recipe/cake/apple
+	required_method = METHOD_OVEN
+	fruit = list("apple" = 100)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/applecake
 
-/datum/recipe/cake/brain
-	appliance = OVEN
+/datum/cooking_recipe/cake/brain
+	required_method = METHOD_OVEN
 	items = list(/obj/item/organ/internal/brain)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/braincake
 
-/datum/recipe/honeycake
-	appliance = OVEN
+/datum/cooking_recipe/honeycake
+	required_method = METHOD_OVEN
 	reagents = list("milk" = 5, "flour" = 10, "egg" = 6, "honey" = 5)
 	result = /obj/item/reagent_containers/food/snacks/honeycake
 
-/datum/recipe/pancakes
-	appliance = OVEN
-	fruit = list("berries" = 2)
+/datum/cooking_recipe/berryclafoutis
+	fruit = list("berries" = 20)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
-		/obj/item/reagent_containers/food/snacks/sliceable/flatdough
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/flat = 100
 	)
-	result = /obj/item/reagent_containers/food/snacks/pancakes
+	result = /obj/item/reagent_containers/food/snacks/berryclafoutis
 
-/datum/recipe/lasagna
-	appliance = OVEN
-	fruit = list("tomato" = 2, "eggplant" = 1)
+/datum/cooking_recipe/lasagna
+	required_method = METHOD_OVEN
+	fruit = list("tomato" = 200)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
-		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
-		/obj/item/reagent_containers/food/snacks/cutlet,
-		/obj/item/reagent_containers/food/snacks/cutlet
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/flat = 200,
+		/obj/item/reagent_containers/food/snacks/ingredient/cutlet = 200
 	)
 	result = /obj/item/reagent_containers/food/snacks/lasagna
-	reagent_mix = RECIPE_REAGENT_REPLACE
 
-/datum/recipe/honeybun
-	appliance = OVEN
+/datum/cooking_recipe/honeybun
+	required_method = METHOD_OVEN
 	items = list(
-		/obj/item/reagent_containers/food/snacks/dough
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough = 100
 	)
 	reagents = list("honey" = 5)
 	result = /obj/item/reagent_containers/food/snacks/honeybun
 
-/datum/recipe/enchiladas_new
-	appliance = OVEN
-	fruit = list("chili" = 2)
+/datum/cooking_recipe/enchiladas_new
+	required_method = METHOD_OVEN
+	fruit = list("chili" = 20)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/cutlet,
-		/obj/item/reagent_containers/food/snacks/tortilla
+		/obj/item/reagent_containers/food/snacks/ingredient/cutlet = 100,
+		/obj/item/reagent_containers/food/snacks/ingredient/tortilla = 100
 	)
 	result = /obj/item/reagent_containers/food/snacks/enchiladas
 
-//Bacon
-/datum/recipe/bacon_oven
-	appliance = OVEN
+/datum/cooking_recipe/meat_pocket
+	required_method = METHOD_OVEN
 	items = list(
-		/obj/item/reagent_containers/food/snacks/rawbacon,
-		/obj/item/reagent_containers/food/snacks/rawbacon,
-		/obj/item/reagent_containers/food/snacks/rawbacon,
-		/obj/item/reagent_containers/food/snacks/rawbacon,
-		/obj/item/reagent_containers/food/snacks/rawbacon,
-		/obj/item/reagent_containers/food/snacks/rawbacon,
-		/obj/item/reagent_containers/food/snacks/spreads
-	)
-	result = /obj/item/reagent_containers/food/snacks/bacon/oven
-	result_quantity = 6
-
-/datum/recipe/meat_pocket
-	appliance = OVEN
-	items = list(
-		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
-		/obj/item/reagent_containers/food/snacks/meatball,
-		/obj/item/reagent_containers/food/snacks/cheesewedge
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/flat = 100,
+		/obj/item/reagent_containers/food/snacks/ingredient/meatball = 100,
+		/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge = 100
 	)
 	result = /obj/item/reagent_containers/food/snacks/meat_pocket
-	result_quantity = 2
+	result_quantity = 4
 
-/datum/recipe/bacon_flatbread
-	appliance = OVEN
-	fruit = list("tomato" = 2)
+/datum/cooking_recipe/bacon_flatbread
+	required_method = METHOD_OVEN
+	fruit = list("tomato" = 100)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
-		/obj/item/reagent_containers/food/snacks/cheesewedge,
-		/obj/item/reagent_containers/food/snacks/bacon,
-		/obj/item/reagent_containers/food/snacks/bacon,
-		/obj/item/reagent_containers/food/snacks/bacon,
-		/obj/item/reagent_containers/food/snacks/bacon
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/flat = 100,
+		/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge = 100,
+		/obj/item/reagent_containers/food/snacks/ingredient/bacon = 200
 	)
 	result = /obj/item/reagent_containers/food/snacks/bacon_flatbread
 
-/datum/recipe/truffle
-	appliance = OVEN
+/datum/cooking_recipe/truffle
+	required_method = METHOD_OVEN
 	reagents = list("sugar" = 5, "cream" = 5)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/chocolatebar
 	)
-	reagent_mix = RECIPE_REAGENT_REPLACE
+
 	result = /obj/item/reagent_containers/food/snacks/truffle
 	result_quantity = 4
 
-/datum/recipe/croissant
-	appliance = OVEN
+/datum/cooking_recipe/eggplantparm
+	required_method = METHOD_OVEN
+	fruit = list("eggplant" = 400)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge = 200
+		)
+	result = /obj/item/reagent_containers/food/snacks/eggplantparm
+
+/datum/cooking_recipe/croissant
+	required_method = METHOD_OVEN
 	reagents = list("sodiumchloride" = 1, "water" = 5, "milk" = 5)
-	reagent_mix = RECIPE_REAGENT_REPLACE
-	items = list(/obj/item/reagent_containers/food/snacks/dough)
+
+	items = list(/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/slice = 100)
 	result = /obj/item/reagent_containers/food/snacks/croissant
 
-/datum/recipe/macncheese
-	appliance = OVEN
+/* todo: fix
+/datum/cooking_recipe/macncheese
+	required_method = METHOD_OVEN
 	reagents = list("milk" = 5)
-	reagent_mix = RECIPE_REAGENT_REPLACE
 	items = list(
-		/obj/item/reagent_containers/food/snacks/spagetti,
-		/obj/item/reagent_containers/food/snacks/cheesewedge
+		/obj/item/reagent_containers/food/snacks/ingredient/spaghetti = 100,
+		/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge = 100
 	)
 	result = /obj/item/reagent_containers/food/snacks/macncheese
+*/
 
-/datum/recipe/ham
-	appliance = OVEN
+/datum/cooking_recipe/ham
+	required_method = METHOD_OVEN
 	reagents = list("brine" = 15)
-	reagent_mix = RECIPE_REAGENT_REPLACE
 	items = list(
-		/obj/item/reagent_containers/food/snacks/meat,
-		/obj/item/reagent_containers/food/snacks/meat,
-		/obj/item/reagent_containers/food/snacks/meat
+		/obj/item/reagent_containers/food/snacks/ingredient/meat = 300,
 	)
-	result = /obj/item/reagent_containers/food/snacks/ham
+	result = /obj/item/reagent_containers/food/snacks/ingredient/ham
 
-/datum/recipe/rumham
-	appliance = OVEN
+/datum/cooking_recipe/rumham
+	required_method = METHOD_OVEN
 	reagents = list("rum" = 10)
-	fruit = list("cherries" = 1, "spineapple" = 1)
-	reagent_mix = RECIPE_REAGENT_REPLACE
+	fruit = list("cherries" = 20, "spineapple" = 20)
+
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ham
+		/obj/item/reagent_containers/food/snacks/ingredient/ham = 300
 	)
 	result = /obj/item/reagent_containers/food/snacks/rumham
+
+/datum/cooking_recipe/loadedbakedpotato
+	required_method = METHOD_OVEN
+	fruit = list("potato" = 100)
+	items = list(/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge = 20)
+	result = /obj/item/reagent_containers/food/snacks/loadedbakedpotato
+
+/datum/cooking_recipe/donerkebab
+	required_method = 	METHOD_OVEN
+	fruit = list("tomato" = 100, "cabbage" = 100)
+	reagents = list("sodiumchloride" = 1)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/meatsteak = 100,
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/flat = 100
+	)
+	result = /obj/item/reagent_containers/food/snacks/donerkebab
+
+/datum/cooking_recipe/fishfingers
+	required_method = METHOD_OVEN
+	reagents = list("flour" = 10,"egg" = 3)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/carp = 100
+	)
+	result = /obj/item/reagent_containers/food/snacks/fishfingers
+	reagent_mix = RECIPE_REAGENT_REPLACE
+
+
+/datum/cooking_recipe/tofurkey
+	required_method = METHOD_OVEN
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/tofu = 800,
+		/obj/item/reagent_containers/food/snacks/stuffing
+	)
+	result = /obj/item/reagent_containers/food/snacks/tofurkey
+
+/datum/cooking_recipe/chilicheesefries
+	required_method = METHOD_OVEN
+	items = list(
+		/obj/item/reagent_containers/food/snacks/fries,
+		/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge = 100,
+		/obj/item/reagent_containers/food/snacks/hotchili //lol.
+	)
+	reagent_mix = RECIPE_REAGENT_REPLACE //Simplify end product
+	result = /obj/item/reagent_containers/food/snacks/chilicheesefries
+
+/datum/cooking_recipe/meatbun
+	required_method = METHOD_OVEN
+	reagents = list("sodiumchloride" = 1, "water" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/slice = 100,
+		/obj/item/reagent_containers/food/snacks/ingredient/cutlet = 50
+	)
+	reagent_mix = RECIPE_REAGENT_REPLACE //Water used up in cooking
+	result = /obj/item/reagent_containers/food/snacks/meatbun
+
+/datum/cooking_recipe/custardbun
+	required_method = METHOD_OVEN
+	reagents = list("spacespice" = 1, "water" = 5, "egg" = 3)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/slice = 100
+	)
+	reagent_mix = RECIPE_REAGENT_REPLACE //Water, egg used up in cooking
+	result = /obj/item/reagent_containers/food/snacks/custardbun
+
+/datum/cooking_recipe/chips
+	required_method = METHOD_OVEN
+	reagents = list("sodiumchloride" = 1)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/tortilla
+	)
+	result = /obj/item/reagent_containers/food/snacks/chipplate
+
+/datum/cooking_recipe/nachos
+	required_method = METHOD_OVEN
+	items = list(
+		/obj/item/reagent_containers/food/snacks/chipplate,
+		/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge = 100
+	)
+	result = /obj/item/reagent_containers/food/snacks/chipplate/nachos
+
+/datum/cooking_recipe/roastbeef
+	required_method = METHOD_OVEN
+	fruit = list("carrot" = 100, "potato" = 100)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/meat = 100
+	)
+	result = /obj/item/reagent_containers/food/snacks/roastbeef
+
+/datum/cooking_recipe/pillbugball
+	required_method = METHOD_OVEN
+	reagents = list(MAT_CARBON = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/meat/grubmeat = 100
+	)
+	result = /obj/item/reagent_containers/food/snacks/bugball
+
+/datum/cooking_recipe/mammi
+	required_method = METHOD_OVEN
+	fruit = list("orange" = 20)
+	reagents = list("water" = 10, "flour" = 10, "milk" = 5, "sodiumchloride" = 1)
+	result = /obj/item/reagent_containers/food/snacks/mammi
+
+/datum/cooking_recipe/makaroni
+	required_method = METHOD_OVEN
+	reagents = list("flour" = 15, "milk" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/meat/grubmeat = 100,
+		/obj/item/reagent_containers/food/snacks/ingredient/egg = 100,
+		/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge = 200
+	)
+	result = /obj/item/reagent_containers/food/snacks/makaroni
+
+/datum/cooking_recipe/greenham
+	required_method = METHOD_OVEN
+	reagents = list("spacespice" = 2, "water" = 10)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/meat/grubmeat = 100,
+		/obj/item/reagent_containers/food/snacks/bait/worm
+	)
+	result = /obj/item/reagent_containers/food/snacks/greenham
+
+/datum/cooking_recipe/greenhamandeggs
+	required_method = METHOD_OVEN
+	reagents = list("spacespice" = 2, "water" = 10)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/egg = 200,
+		/obj/item/reagent_containers/food/snacks/ingredient/meat/grubmeat = 100,
+		/obj/item/reagent_containers/food/snacks/bait/worm
+	)
+	result = /obj/item/reagent_containers/food/snacks/greenham
+
+/datum/cooking_recipe/puddi
+	required_method = METHOD_OVEN
+	reagents = list("milk" = 10, "sugar" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/egg = 300,
+		/obj/item/reagent_containers/food/snacks/chocolatebar
+	)
+	result = /obj/item/reagent_containers/food/snacks/puddi
+
+/datum/cooking_recipe/puddi_happy
+	required_method = METHOD_OVEN
+	reagents = list("milk" = 10, "sugar" = 5, "honey" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/egg = 300,
+		/obj/item/reagent_containers/food/snacks/chocolatebar
+	)
+	result = /obj/item/reagent_containers/food/snacks/puddi/happy
+
+/datum/cooking_recipe/puddi_angry
+	required_method = METHOD_OVEN
+	fruit = list("chili" = 200)
+	reagents = list("milk" = 10, "sugar" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/egg = 300,
+		/obj/item/reagent_containers/food/snacks/chocolatebar
+	)
+	result = /obj/item/reagent_containers/food/snacks/puddi/angry
+
+
+/datum/cooking_recipe/applepie
+	required_method = METHOD_OVEN
+	fruit = list("apple" = 100)
+	items = list(/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/flat = 100)
+	result = /obj/item/reagent_containers/food/snacks/applepie
+
+/datum/cooking_recipe/plumphelmetbiscuit
+	required_method = METHOD_OVEN
+	fruit = list("plumphelmet" = 20)
+	reagents = list("water" = 5, "flour" = 5)
+	result = /obj/item/reagent_containers/food/snacks/plumphelmetbiscuit

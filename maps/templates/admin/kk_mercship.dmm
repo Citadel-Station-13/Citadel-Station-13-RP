@@ -1736,12 +1736,12 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
-/obj/item/reagent_containers/food/snacks/meat/chicken,
-/obj/item/reagent_containers/food/snacks/meat/chicken,
-/obj/item/reagent_containers/food/snacks/meat/chicken,
-/obj/item/reagent_containers/food/snacks/meat/chicken,
-/obj/item/reagent_containers/food/snacks/meat/chicken,
-/obj/item/reagent_containers/food/snacks/meat/chicken,
+/obj/item/reagent_containers/food/snacks/ingredient/meat/chicken,
+/obj/item/reagent_containers/food/snacks/ingredient/meat/chicken,
+/obj/item/reagent_containers/food/snacks/ingredient/meat/chicken,
+/obj/item/reagent_containers/food/snacks/ingredient/meat/chicken,
+/obj/item/reagent_containers/food/snacks/ingredient/meat/chicken,
+/obj/item/reagent_containers/food/snacks/ingredient/meat/chicken,
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/recreation)
 "iB" = (

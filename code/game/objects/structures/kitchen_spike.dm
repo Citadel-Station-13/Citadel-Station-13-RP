@@ -40,7 +40,7 @@
 		else
 			return 0
 	else if(istype(victim, /mob/living/carbon/alien))
-		meat_type = /obj/item/reagent_containers/food/snacks/xenomeat
+		meat_type = /obj/item/reagent_containers/food/snacks/ingredient/xenomeat
 		icon_state = "spikebloodygreen"
 	else
 		return 0

@@ -6,7 +6,7 @@
 	icon_state = "unloader"
 	density = 1
 	anchored = 1.0
-	speed_process = TRUE
+	speed_process = PROCESS_ON_SSFASTPROCESS
 	var/obj/machinery/mineral/input = null
 	var/obj/machinery/mineral/output = null
 

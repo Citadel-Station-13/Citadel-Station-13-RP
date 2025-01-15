@@ -134,6 +134,35 @@
 			M.afflict_sleeping(20 * 20)
 			M.drowsyness = max(M.drowsyness, 60)
 
+
+/datum/reagent/nutriment/vegetablebroth
+	name = "vegetable broth"
+	id = "vegbroth"
+	description = "A thin broth, made from vegetables."
+	taste_description = "vegetables and salt"
+	nutriment_factor = 0.4
+
+/datum/reagent/nutriment/meatbroth
+	name = "meat broth"
+	id = "meatbroth"
+	description = "A thin broth, made from some sort of meat."
+	taste_description = "meat and salt"
+	nutriment_factor = 0.6
+
+/datum/reagent/nutriment/chickenbroth
+	name = "chicken broth"
+	id = "chickenbroth"
+	description = "A thin broth, made from chicken."
+	taste_description = "chicken and salt"
+	nutriment_factor = 0.5
+
+/datum/reagent/nutriment/fishbroth
+	name = "fish broth"
+	id = "fishbroth"
+	description = "A thin broth, made from some sort of fish."
+	taste_description = "fish and salt"
+	nutriment_factor = 0.6
+
 /datum/reagent/nutriment/mayo
 	name = "mayonnaise"
 	id = "mayo"
@@ -147,6 +176,19 @@
 	id = "flour"
 	description = "This is what you rub all over yourself to pretend to be a ghost."
 	taste_description = "chalky wheat"
+	reagent_state = REAGENT_SOLID
+	nutriment_factor = 1
+	color = "#FFFFFF"
+
+/datum/reagent/nutriment/flour/touch_turf(turf/simulated/T)
+	if(!istype(T, /turf/space))
+		new /obj/effect/debris/cleanable/flour(T)
+
+/datum/reagent/nutriment/cornflour
+	name = "corn flour"
+	id = "cornflour"
+	description = "With the advent of modern autonixtamalizing maize varieties, even YOU can make masa by just grinding down fresh corn."
+	taste_description = "chalky corn"
 	reagent_state = REAGENT_SOLID
 	nutriment_factor = 1
 	color = "#FFFFFF"
@@ -4611,6 +4653,12 @@
 /datum/reagent/nutriment/coating/beerbatter/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
 	M.add_chemical_effect(CE_ALCOHOL, 0.02) //Very slightly alcoholic
+
+/datum/reagent/nutriment/cokebatter
+	name = "cola batter"
+	id = "colabatter"
+	nutriment_factor = 30 //this shit got calories for days son
+	taste_description = "space cola"
 
 //=========================
 //Fats

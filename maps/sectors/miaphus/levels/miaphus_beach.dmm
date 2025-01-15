@@ -2958,10 +2958,10 @@
 /area/sector/miaphus/beach/resort/canteen)
 "xb" = (
 /obj/structure/table/marble,
-/obj/item/reagent_containers/food/snacks/carpmeat/fish,
-/obj/item/reagent_containers/food/snacks/carpmeat/fish,
-/obj/item/reagent_containers/food/snacks/carpmeat/fish,
-/obj/item/reagent_containers/food/snacks/carpmeat/fish,
+/obj/item/reagent_containers/food/snacks/ingredient/carp/fish,
+/obj/item/reagent_containers/food/snacks/ingredient/carp/fish,
+/obj/item/reagent_containers/food/snacks/ingredient/carp/fish,
+/obj/item/reagent_containers/food/snacks/ingredient/carp/fish,
 /turf/simulated/floor/wood,
 /area/sector/miaphus/beach/resort/fishing)
 "xe" = (

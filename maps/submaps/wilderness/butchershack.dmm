@@ -89,7 +89,7 @@
 /obj/item/reagent_containers/food/snacks/cutlet,
 /obj/item/reagent_containers/food/snacks/cutlet,
 /obj/item/reagent_containers/food/snacks/cutlet,
-/obj/item/reagent_containers/food/snacks/sausage,
+/obj/item/reagent_containers/food/snacks/ingredient/sausage,
 /turf/simulated/floor/wood/sif,
 /area/submap/ButcherShack)
 "s" = (

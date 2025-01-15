@@ -687,7 +687,7 @@
 "bu" = (
 /obj/structure/table/darkglass,
 /obj/machinery/atmospherics/pipe/vent,
-/obj/item/reagent_containers/food/snacks/bun,
+/obj/item/reagent_containers/food/snacks/ingredient/bun,
 /obj/item/reagent_containers/food/snacks/applepie,
 /obj/item/reagent_containers/food/snacks/carrotfries,
 /obj/item/storage/box/monkeycubes/sobakacubes,

@@ -9,7 +9,7 @@
 /obj/machinery/seed_extractor/attackby(obj/item/O, mob/user)
 
 	// Fruits and vegetables.
-	if(istype(O, /obj/item/reagent_containers/food/snacks/grown) || istype(O, /obj/item/grown))
+	if(istype(O, /obj/item/reagent_containers/food/snacks/ingredient/grown) || istype(O, /obj/item/grown))
 		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		if(!user.attempt_insert_item_for_installation(O, src))
 			return
@@ -19,7 +19,7 @@
 			var/obj/item/grown/F = O
 			new_seed_type = SSplants.seeds[F.plantname]
 		else
-			var/obj/item/reagent_containers/food/snacks/grown/F = O
+			var/obj/item/reagent_containers/food/snacks/ingredient/grown/F = O
 			new_seed_type = SSplants.seeds[F.plantname]
 
 		if(new_seed_type)
