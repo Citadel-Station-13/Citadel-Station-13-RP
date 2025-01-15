@@ -26,6 +26,7 @@
 	/// * This defaults to the gun's typepath if unset.
 	var/component_type
 
+
 	/// should we be hidden from examine?
 	var/show_on_examine = TRUE
 	/// automatically hook firing iteration pre-fire? will call on_firing_cycle_iteration(cycle) if hooked.
@@ -33,6 +34,8 @@
 
 	/// The gun we are installed in.
 	var/obj/item/gun/installed
+	/// Can we be removed? If this is FALSE, we won't even show in menus.
+	var/can_remove = TRUE
 
 /obj/item/gun_component/examine(mob/user, dist)
 	. = ..()

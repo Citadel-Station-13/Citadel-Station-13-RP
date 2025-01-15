@@ -17,7 +17,7 @@
 	. = list()
 	var/keybind_render_unique_action = actor?.initiator.client?.print_keys_for_keybind_with_prefs_link(/datum/keybinding/item/unique_action)
 	. += "Requires racking the weapon via Unique Action (<b>[keybind_render_unique_action]</b>) between shots. This will initiate an 'active reload', with a <b>constant</b> reload interval where you can finish the action early."
-	. += "Pressing Unique action (<b>[keybind_render_unique_action)]</b>) again will attempt to finish the active reload early. This will <b>abort</b> the reload if it is done at the wrong time."
+	. += "Pressing Unique action (<b>[keybind_render_unique_action]</b>) again will attempt to finish the active reload early. This will <b>abort</b> the reload if it is done at the wrong time."
 	. += "Slowly recharges without a slide rack."
 	. += "Increases the available power on a fired shot."
 	. += "Suffers decreased efficiency on burst shots."

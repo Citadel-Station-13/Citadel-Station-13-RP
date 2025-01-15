@@ -483,7 +483,9 @@
 	if(istype(using, /obj/item/gun_attachment))
 		user_install_attachment(using, e_args)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
-	#warn gun component attach
+	if(istype(using, /obj/item/gun_component))
+		user_install_modular_component(using, e_args)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/gun/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(I.is_multitool())
@@ -570,17 +572,6 @@
 					to_chat(user, "<span class='warning'>You have trouble keeping \the [src] on target with just one hand.</span>")
 				if(46 to INFINITY)
 					to_chat(user, "<span class='warning'>You struggle to keep \the [src] on target with just one hand!</span>")
-		else if(!user.can_wield_item(src))
-			switch(one_handed_penalty)
-				if(1 to 15)
-					if(prob(50)) //don't need to tell them every single time
-						to_chat(user, "<span class='warning'>Your aim wavers slightly.</span>")
-				if(16 to 30)
-					to_chat(user, "<span class='warning'>Your aim wavers as you try to hold \the [src] steady.</span>")
-				if(31 to 45)
-					to_chat(user, "<span class='warning'>You have trouble holding \the [src] steady.</span>")
-				if(46 to INFINITY)
-					to_chat(user, "<span class='warning'>You struggle to hold \the [src] steady!</span>")
 
 	if(recoil)
 		spawn()
@@ -730,9 +721,15 @@
 	. = ..()
 	if(length(attachments))
 		.["remove-attachment"] = atom_context_tuple("Remove Attachment", image('icons/screen/radial/actions.dmi', "red-arrow-up"), 0, MOBILITY_CAN_USE)
+	if(length(modular_components))
+		// only show menu option if atleast one can be removed.
+		for(var/obj/item/gun_component/component as anything in modular_components)
+			if(!component.can_remove)
+				continue
+			.["remove-component"] = atom_context_tuple("Remove Component", image('icons/screen/radial/actions.dmi', "red-arrow-up"), 0, MOBILITY_CAN_USE)
+			break
 	if(safety_state != GUN_NO_SAFETY)
 		.["toggle-safety"] = atom_context_tuple("Toggle Safety", image(src), 0, MOBILITY_CAN_USE, TRUE)
-	#warn gun component detach
 
 /obj/item/gun/context_act(datum/event_args/actor/e_args, key)
 	. = ..()
@@ -747,6 +744,15 @@
 			if(!e_args.performer.Reachability(src) || !(e_args.performer.mobility_flags & MOBILITY_CAN_USE))
 				return TRUE
 			user_uninstall_attachment(attachment, e_args, TRUE)
+			return TRUE
+		if("remove-component")
+			// todo: e_args support
+			var/obj/item/gun_component/component = show_radial_menu(e_args.initiator, src, modular_components)
+			if(!component)
+				return TRUE
+			if(!e_args.performer.Reachability(src) || !(e_args.performer.mobility_flags & MOBILITY_CAN_USE))
+				return TRUE
+			user_uninstall_attachment(component, e_args, TRUE)
 			return TRUE
 		if("toggle-safety")
 			toggle_safety(e_args.performer)

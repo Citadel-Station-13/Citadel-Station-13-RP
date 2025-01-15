@@ -6,7 +6,7 @@
 /**
  * hard check
  */
-/obj/item/gun/proc/can_install_component(obj/item/gun_component/component, datum/event_args/actor/actor, silent, force)
+/obj/item/gun/proc/can_install_modular_component(obj/item/gun_component/component, datum/event_args/actor/actor, silent, force)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	var/count_for_slot = 1 // 1 because we're adding one
 	for(var/obj/item/gun_component/existing in modular_components)
@@ -36,6 +36,16 @@
 	return TRUE
 
 //* Modular Components - Add / Remove *//
+
+/obj/item/gun/proc/user_install_modular_component(obj/item/gun_component/component, datum/event_args/actor/actor)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	#warn impl
+
+/obj/item/gun/proc/user_uninstall_modular_component(obj/item/gun_component/component, datum/event_args/actor/actor, put_in_hands)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	#warn impl
 
 /**
  * * moves the component into us if it wasn't already
