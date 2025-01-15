@@ -51,7 +51,7 @@
 	// - melee attack & receive melee attack (melee_interaction() on /atom? not item_melee_act directly?)
 	// - melee attack shouldn't require attackby() to allow it to, it should be automatic on harm intent (?)
 	// - the item should have final say but we need a way to allow click redirections so..
-	if(resolve_attackby(target, user, params, null, .))
+	if(resolve_attackby(target, user, params, null, ., e_args))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 
 	// todo: signal for afterattack here

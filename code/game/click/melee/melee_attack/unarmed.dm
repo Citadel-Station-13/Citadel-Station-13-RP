@@ -75,16 +75,16 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 		ATTACK_TYPE_UNARMED,
 		src,
 		NONE,
-		target_zone,
+		clickchain.target_zone,
 		null,
 		clickchain,
 	)
 	return NONE
 
-/datum/melee_attack/unarmed/perform_attack_animation(atom/movable/attacker, atom/target, missed)
+/datum/melee_attack/unarmed/perform_attack_animation(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain, missed)
 	return ..()
 
-/datum/melee_attack/unarmed/perform_attack_message(atom/movable/attacker, atom/target, missed)
+/datum/melee_attack/unarmed/perform_attack_message(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain, missed)
 	if(missed)
 		return ..()
 	attacker.visible_message(
@@ -93,7 +93,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	)
 	return TRUE
 
-/datum/melee_attack/unarmed/perform_attack_sound(atom/movable/attacker, atom/target, missed)
+/datum/melee_attack/unarmed/perform_attack_sound(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain, missed)
 	if(missed)
 		return ..()
 	playsound(src, target.hitsound_unarmed(attacker, src), 50, TRUE, -1)

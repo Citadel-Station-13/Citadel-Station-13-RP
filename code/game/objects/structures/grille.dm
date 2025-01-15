@@ -100,12 +100,12 @@
 
 /obj/structure/grille/unarmed_melee_act(mob/attacker, datum/melee_attack/unarmed/style, target_zone, datum/event_args/actor/clickchain/clickchain)
 	if(shock(attacker, 70))
-		return FALSE
+		return CLICKCHAIN_DO_NOT_ATTACK | CLICKCHAIN_DID_SOMETHING
 	return ..()
 
 /obj/structure/grille/item_melee_act(mob/user, obj/item/weapon, target_zone, datum/event_args/actor/clickchain/clickchain)
 	if(shock(user, 70, weapon))
-		return FALSE
+		return CLICKCHAIN_DO_NOT_ATTACK | CLICKCHAIN_DID_SOMETHING
 	return ..()
 
 /obj/structure/grille/drop_products(method, atom/where)

@@ -36,8 +36,6 @@
 	var/datum/melee_attack/weapon/attack_style = new
 	return melee_attack(clickchain, clickchain_flags, attack_style)
 
-	#warn do stuff?
-
 /**
  * called once per clickchain
  * todo: there has to be a better way
@@ -83,6 +81,13 @@
 /obj/item/proc/melee_attack(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
 	SHOULD_NOT_SLEEP(TRUE)
 
+	//! Admin Proccall Support
+	if(isatom(clickchain) && ismob(clickchain_flags))
+		var/mob/proccall_casted_mob = clickchain_flags
+		clickchain = proccall_casted_mob.default_clickchain_event_args(clickchain)
+		clickchain_flags = NONE
+	//! End
+
 	//*                     -- intent checks --                       *//
 	//*          these should not be here, but the presence of        *//
 	//* melee_hook_for_legacy_mob_behaviors() forces this to be here. *//
@@ -105,9 +110,42 @@
 		var/mob/living/living_target = clickchain.target
 		clickchain.performer.lastattacked = living_target
 		living_target.lastattacker = clickchain.performer
+	if(isnull(attack_style))
+		attack_style = new /datum/melee_attack/weapon
 	//! END !//
 
-	#warn do stuff??
+	/**
+	 * the tl;dr of how the chain of negotiations go here is;
+	 *
+	 * 1. resolve if we should hit
+	 * 2. they react to the `_act()`
+	 * 3. we react to what they return, including calling their on_x_act()
+	 */
+
+	// -- resolve our side --
+	var/missed = FALSE
+	clickchain.performer.legacy_alter_melee_clickchain(clickchain)
+
+	// -- call on them (if we didn't miss / get called off already) --
+
+	if(!missed)
+		. |= clickchain.target.item_melee_act(clickchain.performer, attack_style, clickchain.target_zone, clickchain)
+		missed = . & CLICKCHAIN_ATTACK_MISSED
+
+	// -- react to return --
+	attack_style.perform_attack_animation(clickchain.performer, clickchain.target, clickchain, missed)
+	attack_style.perform_attack_sound(clickchain.performer, clickchain.target, clickchain, missed)
+	attack_style.perform_attack_message(clickchain.performer, clickchain.target, clickchain, missed)
+
+	if(!missed)
+		clickchain.target.animate_hit_by_attack(attack_style.animation_type)
+		. |= clickchain.target.on_melee_act(clickchain.performer, attack_style, clickchain)
+
+	. |= melee_finalize(clickchain.target, clickchain, clickchain_flags, attack_style, missed)
+
+	// -- log --
+	log_weapon_melee(clickchain, attack_style, src)
+
 
 /**
  * Low level proc handling the actual melee attack's effects.

@@ -21,14 +21,14 @@
 /**
  * @return TRUE if handled
  */
-/datum/melee_attack/proc/perform_attack_animation(atom/movable/attacker, atom/target, missed)
+/datum/melee_attack/proc/perform_attack_animation(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain, missed)
 	attacker.animate_swing_at_target(target)
 	return TRUE
 
 /**
  * @return TRUE if handled
  */
-/datum/melee_attack/proc/perform_attack_sound(atom/movable/attacker, atom/target, missed)
+/datum/melee_attack/proc/perform_attack_sound(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain, missed)
 	if(missed)
 		playsound(attacker, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 		return TRUE
@@ -37,7 +37,7 @@
 /**
  * @return TRUE if handled
  */
-/datum/melee_attack/proc/perform_attack_message(atom/movable/attacker, atom/target, missed)
+/datum/melee_attack/proc/perform_attack_message(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain, missed)
 	if(missed)
 		attacker.visible_message(
 			SPAN_WARNING("[src] swings for [target], but misses!"),

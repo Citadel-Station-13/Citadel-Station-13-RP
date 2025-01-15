@@ -321,6 +321,7 @@
 	else
 		var/mob/living/victim = pick(viable_targets)
 		success = W.resolve_attackby(victim, user)
+		#warn what the fuck is going on with this proc?
 
 	user.setClickCooldownLegacy(user.get_attack_speed_legacy(W))
 	user.do_attack_animation(src, no_attack_icons = TRUE)

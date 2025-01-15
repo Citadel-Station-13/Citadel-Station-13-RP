@@ -41,6 +41,7 @@
 	//! Admin Proccall Support
 	if(isatom(clickchain))
 		clickchain = default_clickchain_event_args(clickchain)
+		clickchain_flags = NONE
 	//! End
 
 	//! Legacy
@@ -54,33 +55,31 @@
 	 *
 	 * 1. resolve if we should hit
 	 * 2. they react to the `_act()`
-	 * 3. we react to what they return
+	 * 3. we react to what they return, including calling their on_x_act()
 	 */
 
 	// -- resolve our side --
-
 	var/missed = FALSE
 	legacy_alter_melee_clickchain(clickchain)
 
 	// -- call on them (if we didn't miss / get called off already) --
-
 	if(!missed)
-		. = clickchain.target.unarmed_melee_act(src, attack_style, clickchain.target_zone, clickchain)
+		. |= clickchain.target.unarmed_melee_act(src, attack_style, clickchain.target_zone, clickchain)
 		missed = . & CLICKCHAIN_ATTACK_MISSED
 
 	// -- react to return --
-	attack_style.perform_attack_animation(src, clickchain.target, missed)
-	attack_style.perform_attack_sound(src, clickchain.target, missed)
-	attack_style.perform_attack_message(src, clickchain.target, missed)
+	attack_style.perform_attack_animation(src, clickchain.target, clickchain, missed)
+	attack_style.perform_attack_sound(src, clickchain.target, clickchain, missed)
+	attack_style.perform_attack_message(src, clickchain.target, clickchain, missed)
 
-	// -- call animation on them --
 	if(!missed)
 		clickchain.target.animate_hit_by_attack(attack_style.animation_type)
+		. |= clickchain.target.on_melee_act(src, attack_style, clickchain)
+
+	. |= melee_finalize(clickchain.target, clickchain, clickchain_flags, attack_style, missed)
 
 	// -- log --
 	log_unarmed_melee(clickchain, attack_style)
-
-	. |= melee_finalize(clickchain.target, clickchain, clickchain_flags, attack_style, missed)
 
 /**
  * Called after a melee attack is executed, regardless of if it hit.

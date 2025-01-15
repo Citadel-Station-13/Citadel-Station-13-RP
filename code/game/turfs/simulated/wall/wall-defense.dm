@@ -27,41 +27,16 @@
 	var/shieldcall_returns = atom_shieldcall_handle_unarmed_melee(style, clickchain, FALSE, NONE)
 	if(shieldcall_returns & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 		return CLICKCHAIN_FULL_BLOCKED
-	// todo: maybe the unarmed_style side should handle this?
-	run_damage_instance(
-		style.damage * (clickchain ? clickchain.melee_damage_multiplier : 1),
-		style.damage_type,
-		style.damage_tier,
-		style.damage_flag,
-		style.damage_mode,
-		ATTACK_TYPE_UNARMED,
-		style,
-		NONE,
-		target_zone,
-		null,
-		null,
-	)
 	return NONE
 
 /turf/simulated/wall/item_melee_act(mob/user, obj/item/weapon, target_zone, datum/event_args/actor/clickchain/clickchain)
 	var/shieldcall_returns = atom_shieldcall_handle_item_melee(weapon, clickchain, FALSE, NONE)
 	if(shieldcall_returns & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 		return CLICKCHAIN_FULL_BLOCKED
-	// todo: maybe the item side should handle this?
-	run_damage_instance(
-		weapon.damage_force * (clickchain ? clickchain.melee_damage_multiplier : 1),
-		weapon.damage_type,
-		weapon.damage_tier,
-		weapon.damage_flag,
-		weapon.damage_mode,
-		ATTACK_TYPE_MELEE,
-		weapon,
-		NONE,
-		target_zone,
-		null,
-		null,
-	)
 	return NONE
+
+/turf/simulated/wall/on_melee_act(atom/movable/attacker, datum/melee_attack/attack_style, datum/event_args/actor/clickchain/clickchain)
+	return attack_style.perform_attack_impact_entrypoint(attacker, src, clickchain)
 
 /turf/simulated/wall/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	// todo: this method of detecting destruction is shitcode but turf refs don't change so qdeleted() won't work
