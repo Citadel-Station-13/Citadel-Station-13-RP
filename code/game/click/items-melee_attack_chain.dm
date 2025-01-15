@@ -36,14 +36,6 @@
 	var/datum/melee_attack/weapon/attack_style = new
 	return melee_attack(clickchain, clickchain_flags, attack_style)
 
-/**
- * called once per clickchain
- * todo: there has to be a better way
- */
-/mob/proc/legacy_alter_melee_clickchain(datum/event_args/actor/clickchain/clickchain)
-	if(IS_PRONE(src))
-		clickchain.melee_damage_multiplier *= (2 / 3)
-
 /obj/item/proc/legacy_mob_melee_hook_wrapper(atom/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	PRIVATE_PROC(TRUE)
 	if(!ismob(target))
@@ -199,27 +191,9 @@
 
 	//? legacy code start
 	var/power = damage_force
-	if(isliving(user))
-		var/mob/living/attacker = user
-		for(var/datum/modifier/mod in attacker.modifiers)
-			if(!isnull(mod.outgoing_melee_damage_percent))
-				power *= mod.outgoing_melee_damage_percent
-	if(MUTATION_HULK in user.mutations)
-		power *= 2
 	power *= mult
 	L.hit_with_weapon(src, user, power, target_zone)
 	//? legacy code end
-
-	// animate
-	L.animate_hit_by_weapon(user, src)
-
-	// todo: better logging
-	// todo: entity ids?
-	var/newhp
-	if(isliving(target))
-		var/mob/living/casted = target
-		newhp = casted.health
-	log_attack(key_name(src), key_name(target), "attacked with [src] [src.damage_type]-[src.damage_force]=[src.damage_tier] newhp ~[newhp || "unknown"]")
 	return NONE
 
 /obj/item/proc/attack_object(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult = 1)
