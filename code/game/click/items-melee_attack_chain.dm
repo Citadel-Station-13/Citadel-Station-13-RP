@@ -25,7 +25,7 @@
 	clickchain.performer.legacy_alter_melee_clickchain(clickchain)
 
 	var/legacy_retval
-	switch((legacy_reval = legacy_mob_melee_hook_wrapper(clickchain.target, clickchain.performer, clickchain_flags, clickchain.click_params, clickchain.melee_damage_multiplier, clickchain.target_zone, clickchain.using_intent)))
+	switch((legacy_retval = legacy_mob_melee_hook_wrapper(clickchain.target, clickchain.performer, clickchain_flags, clickchain.click_params, clickchain.melee_damage_multiplier, clickchain.target_zone, clickchain.using_intent)))
 		if("use_new")
 		if("slept")
 			return CLICKCHAIN_DID_SOMETHING

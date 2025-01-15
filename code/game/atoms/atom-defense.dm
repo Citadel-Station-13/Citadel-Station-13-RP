@@ -37,9 +37,9 @@
 	return power
 
 /**
- * called on item melee hit
+ * called on incoming item melee
  *
- * * At this rate, the item has already hit us.
+ * * At this point, the item is processing a hit on us.
  * * check CLICKCHAIN_FLAGS_* as needed, especially UNCONDITIONAL_ABORT and ATTACK_ABORT
  * * clickchain flags are sent down through parent calls.
  *
@@ -55,9 +55,9 @@
 	return CLICKCHAIN_DO_NOT_ATTACK
 
 /**
- * called on unarmed melee hit
+ * called on incoming unarmed melee
  *
- * * At this rate, the attacker has already hit us.
+ * * At this point, the item is processing a hit on us.
  *
  * @params
  * * user - person attacking
@@ -69,6 +69,14 @@
  */
 /atom/proc/unarmed_melee_act(mob/attacker, datum/melee_attack/unarmed/style, target_zone, datum/event_args/actor/clickchain/clickchain)
 	return CLICKCHAIN_DO_NOT_ATTACK
+
+/**
+ * Called on a melee going through, whether or not it was blocked
+ *
+ * @return clickchain flags to append
+ */
+/atom/proc/on_melee_act(atom/movable/attacker, datum/melee_attack/attack_style, datum/event_args/actor/clickchain/clickchain)
+	return NONE
 
 /**
  * Because this is the proc that calls on_impact(), handling is necessarily

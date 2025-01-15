@@ -6,7 +6,9 @@
 	message = sanitize_or_reflect(message,src) // Reflect too-long messages, within reason
 	..(message, alt_name = alt_name, whispering = whispering)
 
+// todo: refactor in saycode rewrite
 /mob/living/carbon/human/proc/forcesay(list/append)
+	set waitfor = FALSE
 	if(stat == CONSCIOUS)
 		if(client)
 			var/virgin = 1	//has the text been modified yet?

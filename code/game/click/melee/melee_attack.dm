@@ -3,12 +3,22 @@
 
 /**
  * A descriptor for a type of melee attack.
+ *
+ * * Everything is casted to /movable instead of /mob for attacker,
+ *   to support things like circuit stabby-stabby's later and similarly
+ *   unnecessary fluff.
  */
 /datum/melee_attack
 
 /**
- * * Casted to movable for future support.
+ * Called to perform standard attack effects on a target.
  *
+ * @return clickchain flags
+ */
+/datum/melee_attack/proc/perform_attack_impact_entrypoint(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain)
+	CRASH("base of /datum/melee_attack attack entrypoint reached")
+
+/**
  * @return TRUE if handled
  */
 /datum/melee_attack/proc/perform_attack_animation(atom/movable/attacker, atom/target, missed)
@@ -16,8 +26,6 @@
 	return TRUE
 
 /**
- * * Casted to movable for future support.
- *
  * @return TRUE if handled
  */
 /datum/melee_attack/proc/perform_attack_sound(atom/movable/attacker, atom/target, missed)
@@ -27,8 +35,6 @@
 	return FALSE
 
 /**
- * * Casted to movable for future support.
- *
  * @return TRUE if handled
  */
 /datum/melee_attack/proc/perform_attack_message(atom/movable/attacker, atom/target, missed)

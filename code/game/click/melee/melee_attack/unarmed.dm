@@ -52,6 +52,35 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	var/eye_attack_text
 	var/eye_attack_text_victim
 
+/datum/melee_attack/unarmed/perform_attack_impact_entrypoint(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain)
+	return perform_attack_impact(attacker, target, clickchain)
+
+/**
+ * Called to perform standard attack effects on a target.
+ *
+ * @return clickchain flags
+ */
+/datum/melee_attack/unarmed/proc/perform_attack_impact(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain)
+	PROTECTED_PROC(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	if(ismob(target))
+		// mob damage is not refactored properly yet
+		return
+	run_damage_instance(
+		get_unarmed_damage(attacker, target) * clickchain.melee_damage_multiplier,
+		damage_type,
+		damage_tier,
+		damage_flag,
+		damage_mode,
+		ATTACK_TYPE_UNARMED,
+		src,
+		NONE,
+		target_zone,
+		null,
+		clickchain,
+	)
+	return NONE
+
 /datum/melee_attack/unarmed/perform_attack_animation(atom/movable/attacker, atom/target, missed)
 	return ..()
 
