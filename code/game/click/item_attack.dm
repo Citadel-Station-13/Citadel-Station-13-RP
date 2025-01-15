@@ -33,7 +33,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	return tool.melee_attack_chain(clickchain, clickchain_flags)
 
 /mob/living/attackby(obj/item/tool, mob/user, list/params, clickchain_flags, damage_multiplier, datum/event_args/actor/clickchain/clickchain)
-	if(can_operate(src) && user.a_intent != INTENT_HARM && I.do_surgery(src,user))
+	if(can_operate(src) && user.a_intent != INTENT_HARM && tool.do_surgery(src,user))
 		return NONE
 	if(attempt_vr(src,"vore_attackby",args))
 		return

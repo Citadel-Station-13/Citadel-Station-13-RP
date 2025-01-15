@@ -163,13 +163,10 @@
 
 #warn parse below
 
-#warn audit calls
 /obj/item/proc/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
 	SHOULD_NOT_SLEEP(TRUE)
 	PROTECTED_PROC(TRUE)	// route via standard_melee_attack please.
 	var/mob/living/L = target
-	// animation
-	user.animate_swing_at_target(L)
 	// resolve accuracy
 	var/hit_zone = L.resolve_item_attack(src, user, target_zone)
 	if(!hit_zone)
@@ -181,16 +178,6 @@
 	add_attack_logs(user, L, "attacked with [src] DT [damage_type] F [damage_force] I [user.a_intent]")
 	// hit
 	return melee_mob_hit(L, user, clickchain_flags, params, mult, target_zone, intent)
-
-/obj/item/proc/melee_mob_miss(mob/target, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
-	SHOULD_NOT_SLEEP(TRUE)
-	SHOULD_CALL_PARENT(TRUE)
-	var/mob/living/L = target
-	// todo: proper weapon sound ranges/rework
-	playsound(src, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-	// feedback
-	visible_message("<span class='danger'>\The [user] misses [L] with \the [src]!</span>")
-	return CLICKCHAIN_ATTACK_MISSED
 
 #warn audit calls
 /obj/item/proc/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
@@ -233,33 +220,14 @@
 		var/mob/living/casted = target
 		newhp = casted.health
 	log_attack(key_name(src), key_name(target), "attacked with [src] [src.damage_type]-[src.damage_force]=[src.damage_tier] newhp ~[newhp || "unknown"]")
-
 	return NONE
-
 
 /obj/item/proc/attack_object(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult = 1)
 	SHOULD_NOT_SLEEP(TRUE)
 	PROTECTED_PROC(TRUE)	// route via standard_melee_attack please.
-	// todo: move this somewhere else
-	if(!target.integrity_enabled)
-		// no targeting
-		return NONE
-	if(isobj(target))
-		var/obj/casted = target
-		if(!(casted.obj_flags & OBJ_MELEE_TARGETABLE))
-			// no targeting
-			return NONE
-	// check intent
-	if((item_flags & ITEM_CAREFUL_BLUDGEON) && clickchain.using_intent == INTENT_HELP)
-		clickchain.initiator.action_feedback(SPAN_WARNING("You refrain from hitting [target] because your intent is set to help."), src)
-		return CLICKCHAIN_DO_NOT_PROPAGATE
 	// click cooldown
 	// todo: clickcd rework
 	clickchain.performer.setClickCooldownLegacy(clickchain.performer.get_attack_speed_legacy(src))
-	// animation
-	clickchain.performer.animate_swing_at_target(target)
-	// perform the hit
-	. = melee_object_hit(target, clickchain, clickchain_flags)
 
 /obj/item/proc/melee_object_miss(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult = 1)
 	SHOULD_CALL_PARENT(TRUE)
@@ -298,16 +266,6 @@
 		range = MESSAGE_RANGE_COMBAT_LOUD,
 		visible = SPAN_DANGER("[target] has been [islist(attack_verb)? pick(attack_verb) : attack_verb] with [src] by [clickchain.performer]!")
 	)
-	// damage
-	target.item_melee_act(clickchain.performer, src, null, clickchain)
-	// animate
-	target.animate_hit_by_weapon(clickchain.performer, src)
-
-	// todo: better logging
-	// todo: entity ids?
-	var/newhp = target.integrity
-	log_attack(key_name(src), "[target] ([ref(target)])", "attacked with [src] [src.damage_type]-[src.damage_force]=[src.damage_tier] newhp ~[newhp || "unknown"]")
-
 	return NONE
 
 #warn above

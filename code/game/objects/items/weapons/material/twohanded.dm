@@ -95,12 +95,11 @@
 		name = "[base_name]"
 	..()
 
-#warn implement this with new procs somehow
-/obj/item/material/twohanded/fireaxe/attack_object(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult = 1)
+/obj/item/material/twohanded/fireaxe/melee_attack(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
 	if(istype(target, /obj/structure/window))
-		mult *= 2
+		clickchain.melee_damage_multiplier *= 2
 	else if(istype(target, /obj/effect/plant))
-		mult *= 2
+		clickchain.melee_damage_multiplier *= 2
 	return ..()
 
 /obj/item/material/twohanded/fireaxe/foam
