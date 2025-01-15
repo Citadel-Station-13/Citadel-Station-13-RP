@@ -99,7 +99,7 @@
 	visible_message(SPAN_DANGER("\The [src] hits [hit_human] in the eye[eyes ? "" : " socket"]!"))
 	hit_human.eye_blurry += 12
 	eyes?.take_damage(rand(1, 3))
-	hit_human.emote("scream")
+	hit_human.emote_nosleep("scream")
 
 /obj/item/paper/AltClick(mob/living/carbon/user, obj/item/I)
 	if ( istype(user) )

@@ -318,11 +318,11 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 		for(var/mob/living/M in contents)
 			if (M.stat!=2)
 				if (!iscarbon(M))
-					M.emote("scream")
+					M.emote_nosleep("scream")
 				else
 					var/mob/living/carbon/C = M
 					if (C.can_feel_pain())
-						C.emote("scream")
+						C.emote_nosleep("scream")
 
 			M.death(1)
 			M.ghostize()
@@ -409,11 +409,11 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 		for(var/mob/living/M in contents)
 			if (M.stat!=2)
 				if (!iscarbon(M))
-					M.emote("scream")
+					M.emote_nosleep("scream")
 				else
 					var/mob/living/carbon/C = M
 					if (C.can_feel_pain())
-						C.emote("scream")
+						C.emote_nosleep("scream")
 
 			M.death(1)
 			M.ghostize()

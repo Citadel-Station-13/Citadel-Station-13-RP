@@ -90,7 +90,7 @@
 	visible_message("<span class='warning'>[M] [pick("ran", "slammed")] into \the [src]!</span>")
 	M.apply_damage(15, DAMAGE_TYPE_BURN)
 	M.afflict_paralyze(20 * 5)
-	M.emote("scream")
+	M.emote_nosleep("scream")
 	M.stop_flying()
 
 /obj/machinery/atmospherics/component/unary/cryo_cell/stumble_into(mob/living/M)
@@ -115,7 +115,7 @@
 	..()
 	if(on)
 		M.apply_damage(10, DAMAGE_TYPE_BURN)
-		M.emote("scream")
+		M.emote_nosleep("scream")
 
 /obj/machinery/suit_storage_unit/stumble_into(mob/living/M)
 	if(!ishuman(M) || !isopen || !ispowered || isbroken || occupant || helmet_stored || suit_stored)
