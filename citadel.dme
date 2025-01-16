@@ -314,6 +314,7 @@
 #include "code\__DEFINES\procs\clickcode.dm"
 #include "code\__DEFINES\procs\do_after.dm"
 #include "code\__DEFINES\procs\drain_energy.dm"
+#include "code\__DEFINES\procs\electrocute_act.dm"
 #include "code\__DEFINES\procs\saycode.dm"
 #include "code\__DEFINES\procs\update_icon.dm"
 #include "code\__DEFINES\projectiles\ammo_casing.dm"

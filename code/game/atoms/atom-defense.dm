@@ -136,6 +136,28 @@
 /atom/proc/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	return impact_flags
 
+/**
+ * Called upon receiving an electrical shock of any kind
+ *
+ * @params
+ * * energy - energy, in **kilojoules**
+ * * damage - 'intended' burn damage.
+ *            this should be scaled to an intent of being used on a carbon-type.
+ *            do not scale this to things like walls / high-hp structures. most structures
+ *            don't get damaged by electric shocks anyways.
+ * * internal - this came internally. this means that in general nothing will shield from it
+ * * hit_zone - if specified and non-internal, this zone will be used to check armor.
+ * * flags - ELECTROCUTE_ACT_* flags
+ * * shared_blackboard - (optional) list to both inject into and retrieve data from.
+ *                as a word of warning, this list **will** be a shared list if being used
+ *                in things like multi-hit lightning bolts; we do not make a new list per atom.
+ *
+ * @return energy consumed
+ */
+#warn audit overrides
+/atom/proc/electrocute_act(energy, damage, internal, hit_zone, flags, list/shared_blackboard)
+	return 0
+
 //* Hitsound API *//
 
 // todo: stuff like metal limbs punching walls making special sounds
