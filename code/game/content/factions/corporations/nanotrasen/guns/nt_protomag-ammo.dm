@@ -81,12 +81,13 @@
 	desc = "A slender ferromagnetic slug. A bullet without propellant, for whatever reason."
 	casing_primer = CASING_PRIMER_MAGNETIC
 
-/obj/item/ammo_casing/nt_protomag/magnetic/smoke
-	name = "protomag slug (smoke)"
-	desc = "A slender ferromagnetic slug. While lacking in penetration, this round releases a light smokescreen on impact."
+// todo: i refuse to do this until i can make it pretty
+// /obj/item/ammo_casing/nt_protomag/magnetic/smoke
+// 	name = "protomag slug (smoke)"
+// 	desc = "A slender ferromagnetic slug. While lacking in penetration, this round releases a light smokescreen on impact."
 
-	projectile_type = /obj/projectile/nt_protomag/smoke
-	stripe_color = /obj/projectile/nt_protomag/smoke::color
+// 	projectile_type = /obj/projectile/nt_protomag/smoke
+// 	stripe_color = /obj/projectile/nt_protomag/smoke::color
 
 /obj/item/ammo_casing/nt_protomag/magnetic/emp
 	name = "protomag slug (emp)"

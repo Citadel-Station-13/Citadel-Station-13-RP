@@ -50,13 +50,14 @@
 	damage_force = 5
 	damage_tier = BULLET_TIER_LOW
 
-/obj/projectile/nt_protomag/smoke
-	name = "disintegrating slug"
-	color = "#888888"
-	speed = /obj/projectile/nt_protomag::speed * 0.6
-	damage_force = 5
-	damage_tier = BULLET_TIER_LOW
-	#warn smoke
+// todo: i refuse to do this until i can make it pretty
+// /obj/projectile/nt_protomag/smoke
+// 	name = "disintegrating slug"
+// 	color = "#888888"
+// 	speed = /obj/projectile/nt_protomag::speed * 0.6
+// 	damage_force = 5
+// 	damage_tier = BULLET_TIER_LOW
+// 	#warn smoke
 
 /obj/projectile/nt_protomag/emp
 	name = "ion slug"
