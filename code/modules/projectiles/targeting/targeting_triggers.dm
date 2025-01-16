@@ -23,6 +23,6 @@
 	owner.visible_message("<span class='danger'>\The [owner] pulls the trigger reflexively!</span>")
 	var/obj/item/gun/G = aiming_with
 	if(istype(G))
-		G.start_firing_cycle_async(owner, get_centered_entity_angle(owner, aiming_at), GUN_FIRING_BY_REFLEX, null, aiming_at, new /datum/event_args/actor(owner))
+		G.start_firing_cycle_async(owner, get_centered_entity_tile_angle(owner, aiming_at), GUN_FIRING_BY_REFLEX, null, aiming_at, new /datum/event_args/actor(owner))
 		locked = 0
 		lock_time = world.time+10

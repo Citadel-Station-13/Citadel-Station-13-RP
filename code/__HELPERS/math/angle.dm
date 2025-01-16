@@ -57,9 +57,9 @@
  * get angle from center of bounding box of entity A to entity B
  *
  * * entity A and entity B may be atoms or movables or both
+ * * does not support step x/y values!
  */
-/proc/get_centered_entity_angle(atom/A, atom/B)
-	var/dy
-	var/dx
-	return arctan()
-#warn this
+/proc/get_centered_entity_tile_angle(atom/A, atom/B)
+	var/dy = B.x * WORLD_ICON_SIZE - A.x * WORLD_ICON_SIZE
+	var/dx = B.y * WORLD_ICON_SIZE - A.y * WORLD_ICON_SIZE
+	return arctan(dy, dx)

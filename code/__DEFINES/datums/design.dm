@@ -57,6 +57,7 @@ DEFINE_BITFIELD(design_flags, list(
 
 //munition subcategories
 #define DESIGN_SUBCATEGORY_BALLISTIC "Ballistic"
+#define DESIGN_SUBCATEGORY_MAGNETIC "Magnetic"
 #define DESIGN_SUBCATEGORY_ENERGY "Energy"
 #define DESIGN_SUBCATEGORY_MELEE "Melee"
 #define DESIGN_SUBCATEGORY_AMMO "Ammo"
@@ -91,7 +92,7 @@ DEFINE_BITFIELD(design_flags, list(
 /**
  * Generate a design for an entity.
  *
- * * Design path is appended to 1/datum/prototype/design/generated`.
+ * * Design path is appended to `/datum/prototype/design/generated`.
  */
 #define GENERATE_DESIGN(ENTITY_PATH, DESIGN_PATH, DESIGN_ID) \
 /datum/prototype/design/generated##DESIGN_PATH { \
@@ -129,12 +130,12 @@ GENERATE_DESIGN(ENTITY_PATH, DESIGN_PATH, DESIGN_ID); \
  * Generates for Nanotrasen-standard autolathes. In the future, we might have flags
  * for what factions get it automatically.
  */
-#define GENERATE_DESIGN_FOR_NT_AUTOLATHE(ENTITY_PATH) \
+#define GENERATE_DESIGN_FOR_NT_AUTOLATHE(ENTITY_PATH, DESIGN_PATH, DESIGN_ID) \
 GENERATE_DESIGN_FOR_AUTOLATHE(ENTITY_PATH, DESIGN_PATH, DESIGN_ID)
 
 /**
  * Generates for Nanotrasen-standard autolathes. In the future, we might have flags
  * for what factions get it automatically.
  */
-#define GENERATE_DESIGN_FOR_NT_PROTOLATHE(ENTITY_PATH) \
+#define GENERATE_DESIGN_FOR_NT_PROTOLATHE(ENTITY_PATH, DESIGN_PATH, DESIGN_ID) \
 GENERATE_DESIGN_FOR_PROTOLATHE(ENTITY_PATH, DESIGN_PATH, DESIGN_ID)

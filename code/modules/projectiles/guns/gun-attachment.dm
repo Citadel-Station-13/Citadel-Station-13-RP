@@ -72,6 +72,7 @@
 		actor?.visible_feedback(
 			target = src,
 			visible = SPAN_NOTICE("[actor.performer] attaches [attachment] to [src]'s [attachment.attachment_slot]."),
+			range = MESSAGE_RANGE_CONFIGURATION,
 		)
 	if(attachment.loc != src)
 		attachment.forceMove(src)
@@ -125,6 +126,12 @@
 	attachment.attached = null
 	on_attachment_uninstall(attachment)
 	LAZYREMOVE(attachments, attachment)
+	if(!silent)
+		actor?.visible_feedback(
+			target = src,
+			visible = SPAN_NOTICE("[actor.performer] detaches [attachment] from [src]'s [attachment.attachment_slot]."),
+			range = MESSAGE_RANGE_CONFIGURATION,
+		)
 	return deleting ? null : attachment.uninstall_product_transform(src)
 
 /**

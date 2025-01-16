@@ -961,7 +961,7 @@
 
 		if(!T)
 			return
-		installed_gun.start_firing_cycle_async(assembly, get_centered_entity_angle(assembly, T))
+		installed_gun.start_firing_cycle_async(assembly, get_centered_entity_tile_angle(assembly, T))
 
 /obj/item/integrated_circuit/manipulation/grenade
 	name = "grenade primer"
