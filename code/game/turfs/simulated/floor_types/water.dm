@@ -129,7 +129,7 @@
 
 /mob/living/carbon/human/can_breathe_water()
 	if(species)
-		return species.can_breathe_water()
+		return species.can_breathe_water() || HAS_TRAIT(src, TRAIT_MOB_WATER_BREATHER)
 	return ..()
 
 /mob/living/proc/check_submerged()

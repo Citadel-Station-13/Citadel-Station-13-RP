@@ -278,3 +278,6 @@
 	cost = 1
 	var_changes = list("water_movement" = -4)
 	sort_key = "10-Aquatic"
+
+/datum/trait/positive/aquatic/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+	ADD_TRAIT(H, TRAIT_MOB_WATER_BREATHER, LOADOUT_TRAIT)
