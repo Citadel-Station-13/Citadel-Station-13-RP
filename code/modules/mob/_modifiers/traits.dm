@@ -173,7 +173,7 @@
 
 	stacks = MODIFIER_STACK_FORBID
 
-	slowdown = -1.0							//A bit faster when actually submerged fully in water, as you're not waddling through it. //ChompEDIT - nerf this a lil
+	slowdown = -1.0							//A bit faster when actually submerged fully in water, as you're not waddling through it.
 	siemens_coefficient = 1.5 				//You are, however, underwater. Getting shocked will hurt.
 
 	outgoing_melee_damage_percent = 0.75 	//You are swinging a sword under water...Good luck.
@@ -195,9 +195,9 @@
 		var/turf/simulated/floor/water/water_floor = holder.loc
 		if(water_floor.depth < 1) //You're not in deep enough water anymore.
 			expire(silent = FALSE)
-		if(water_floor.depth > 1) //CHOMPAdd Start
+		if(water_floor.depth > 1)
 			holder.alpha = 50
 		else
-			holder.alpha = 65 //CHOMPAdd End
+			holder.alpha = 65
 	else
 		expire(silent = FALSE)
