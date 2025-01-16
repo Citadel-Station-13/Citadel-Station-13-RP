@@ -20,6 +20,7 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 
 /obj/item/radio/beacon/update_icon()
 	cut_overlays()
+	. = ..()
 	if(!functioning)
 		add_overlay("[base_icon_state]_malfunction")
 	else

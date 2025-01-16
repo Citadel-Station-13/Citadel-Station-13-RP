@@ -214,6 +214,7 @@
 	put_mob(target)
 
 /obj/machinery/atmospherics/component/unary/cryo_cell/update_icon()
+	. = ..()
 	cut_overlay(fluid)
 	fluid.color = null
 	fluid.alpha = max(255 - air_contents.temperature, 50)

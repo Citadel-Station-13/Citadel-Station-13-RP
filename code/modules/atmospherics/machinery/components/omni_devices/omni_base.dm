@@ -49,6 +49,7 @@
 	build_icons()
 
 /obj/machinery/atmospherics/component/quaternary/update_icon()
+	. = ..()
 	if(machine_stat & NOPOWER)
 		set_overlays(overlays_off.Copy())
 	else if(error_check())

@@ -475,9 +475,11 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 
 
 /obj/machinery/door/firedoor/update_icon()
-	var/image/lights_overlay
 	cut_overlays()
+	. = ..()
+
 	set_light(0)
+	var/image/lights_overlay
 	var/do_set_light = FALSE
 
 	if(density)
@@ -504,8 +506,6 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 
 	if(do_set_light)
 		set_light(2, 0.25, COLOR_SUN)
-
-	return
 
 /obj/machinery/door/firedoor/border_only
 /*
