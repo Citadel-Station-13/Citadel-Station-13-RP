@@ -271,3 +271,10 @@
 	var/obj/item/organ/internal/weaver/weak/silk = new(H)
 	H.internal_organs += silk
 	H.internal_organs_by_name[O_WEAVER] = silk
+
+/datum/trait/positive/aquatic
+	name = "Aquatic"
+	desc = "You can breathe under water and can traverse water more efficiently. Additionally, you can eat others in the water."
+	cost = 1
+	var_changes = list("water_movement" = -4)
+	sort_key = "10-Aquatic"
