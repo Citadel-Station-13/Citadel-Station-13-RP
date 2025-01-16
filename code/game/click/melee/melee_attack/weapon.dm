@@ -35,17 +35,35 @@
 	)
 	return NONE
 
-/datum/melee_attack/weapon/perform_attack_animation(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain, missed)
+/datum/melee_attack/weapon/perform_attack_animation(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain, missed, obj/item/weapon)
 	return ..()
 
-/datum/melee_attack/weapon/perform_attack_sound(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain, missed)
+/datum/melee_attack/weapon/perform_attack_sound(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain, missed, obj/item/weapon)
 	. = ..()
 	if(.)
 		return
-	#warn impl
+	if(!weapon.damage_force)
+		playsound(target, 'sound/weapon/tap.ogg', 50, TRUE, -1)
+	else
+		var/resolved = target.hitsound_melee(weapon)
+		if(!isnull(resolved))
+			playsound(target, resolved, 50, TRUE)
 
-/datum/melee_attack/weapon/perform_attack_message(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain, missed)
+/datum/melee_attack/weapon/perform_attack_message(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain, missed, obj/item/weapon)
 	. = ..()
 	if(.)
 		return
-	#warn impl
+	if(!weapon.damage_force)
+		clickchain.visible_feedback(
+			target = target,
+			range = MESSAGE_RANGE_COMBAT_LOUD,
+			visible = SPAN_WARNING("[attacker] harmlessly taps [target] with [weaopn]."),
+			visible_them = SPAN_WARNING("[attacker] harmlessly taps you with [weapon]."),
+			visible_self = SPAN_WARNING("You harmlessly tap [target] with [weapon].")
+		)
+	else
+		clickchain.visible_feedback(
+			target = target,
+			range = MESSAGE_RANGE_COMBAT_LOUD,
+			visible = SPAN_DANGER("[target] has been [islist(weapon.attack_verb)? pick(weapon.attack_verb) : weapon.attack_verb] with [clickchain.weapon] by [attacker]!")
+		)

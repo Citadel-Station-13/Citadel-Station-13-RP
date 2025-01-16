@@ -24,6 +24,7 @@
 	var/using_hand_index
 
 	/// with item, if any
+	/// * must be set in a weapon attack
 	var/obj/item/using_item
 
 	//* Click Data *//

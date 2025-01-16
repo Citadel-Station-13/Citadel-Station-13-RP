@@ -186,60 +186,12 @@
 	// todo: proper weapon sound ranges/rework
 	if(attack_sound)
 		playsound(src, attack_sound, 50, 1, -1)
-	// feedback
-	visible_message(SPAN_DANGER("[L] has been [length(attack_verb)? pick(attack_verb) : attack_verb] with [src] by [user]!"))
 
 	//? legacy code start
 	var/power = damage_force
 	power *= mult
 	L.hit_with_weapon(src, user, power, target_zone)
 	//? legacy code end
-	return NONE
-
-/obj/item/proc/attack_object(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult = 1)
-	SHOULD_NOT_SLEEP(TRUE)
-	PROTECTED_PROC(TRUE)	// route via standard_melee_attack please.
-	// click cooldown
-	// todo: clickcd rework
-	clickchain.performer.setClickCooldownLegacy(clickchain.performer.get_attack_speed_legacy(src))
-
-/obj/item/proc/melee_object_miss(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult = 1)
-	SHOULD_CALL_PARENT(TRUE)
-	playsound(clickchain.performer, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-	clickchain.visible_feedback(
-		target = target,
-		range = MESSAGE_RANGE_COMBAT_LOUD,
-		visible = SPAN_WARNING("[clickchain.performer] swings for [target], but misses!"),
-	)
-	return CLICKCHAIN_ATTACK_MISSED
-
-/obj/item/proc/melee_object_hit(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-	SHOULD_CALL_PARENT(TRUE)
-
-	// harmless, just tap them and leave
-	if(!damage_force)
-		// todo: proper weapon sound ranges/rework
-		playsound(clickchain.performer, 'sound/weapons/tap.ogg', 50, 1, -1)
-		// feedback
-		clickchain.visible_feedback(
-			target = target,
-			range = MESSAGE_RANGE_COMBAT_LOUD,
-			visible = SPAN_WARNING("[clickchain.performer] harmlessly taps [target] with [src]."),
-			visible_them = SPAN_WARNING("[clickchain.performer] harmlessly taps you with [src]."),
-			visible_self = SPAN_WARNING("You harmlessly tap [target] with [src].")
-		)
-		return NONE
-	// sound
-	var/resolved_sound = target.hitsound_melee(src)
-	if(!isnull(resolved_sound))
-		playsound(target, resolved_sound, 50, TRUE)
-	// feedback
-	// todo: grammar
-	clickchain.visible_feedback(
-		target = target,
-		range = MESSAGE_RANGE_COMBAT_LOUD,
-		visible = SPAN_DANGER("[target] has been [islist(attack_verb)? pick(attack_verb) : attack_verb] with [src] by [clickchain.performer]!")
-	)
 	return NONE
 
 #warn above
