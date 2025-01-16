@@ -145,6 +145,35 @@
  *            this should be scaled to an intent of being used on a carbon-type.
  *            do not scale this to things like walls / high-hp structures. most structures
  *            don't get damaged by electric shocks anyways.
+ * * agony - 'intended' agony / pain / stun force
+ *            this should be scaled to an intent of being used on a carbon-type.
+ *            that said, not only carbon-types are allowed to use this.
+ * * internal - this came internally. this means that in general nothing will shield from it
+ * * hit_zone - if specified and non-internal, this zone will be used to check armor.
+ * * flags - ELECTROCUTE_ACT_* flags
+ * * shared_blackboard - (optional) list to both inject into and retrieve data from.
+ *                as a word of warning, this list **will** be a shared list if being used
+ *                in things like multi-hit lightning bolts; we do not make a new list per atom.
+ *
+ * @return overall efficiency / conductivity mutliplier
+ */
+/atom/proc/electrocute_act(energy, damage, agony, internal, hit_zone, flags, list/shared_blackboard)
+	return 1
+
+/**
+ * Called to handle effects of receiving an electrical shock.
+ *
+ * @params
+ * * efficiency - effect multiplier. this should be multiplied to damage / agony / energy / etc
+ *                to get the approximate amount that actually hit us.
+ * * energy - energy, in **kilojoules**
+ * * damage - 'intended' burn damage.
+ *            this should be scaled to an intent of being used on a carbon-type.
+ *            do not scale this to things like walls / high-hp structures. most structures
+ *            don't get damaged by electric shocks anyways.
+ * * agony - 'intended' agony / pain / stun force
+ *            this should be scaled to an intent of being used on a carbon-type.
+ *            that said, not only carbon-types are allowed to use this.
  * * internal - this came internally. this means that in general nothing will shield from it
  * * hit_zone - if specified and non-internal, this zone will be used to check armor.
  * * flags - ELECTROCUTE_ACT_* flags
@@ -154,8 +183,7 @@
  *
  * @return energy consumed
  */
-#warn audit overrides
-/atom/proc/electrocute_act(energy, damage, internal, hit_zone, flags, list/shared_blackboard)
+/atom/proc/on_electrocute_act(efficiency, energy, damage, agony, internal, hit_zone, flags, list/shared_blackboard)
 	return 0
 
 //* Hitsound API *//
