@@ -842,86 +842,66 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	update_wclass()
 
 /obj/item/stack/cable_coil/yellow
-	stack_type = /obj/item/stack/cable_coil
 	color = COLOR_YELLOW
 
 /obj/item/stack/cable_coil/blue
-	stack_type = /obj/item/stack/cable_coil
 	color = COLOR_BLUE
 
 /obj/item/stack/cable_coil/green
-	stack_type = /obj/item/stack/cable_coil
 	color = COLOR_LIME
 
 /obj/item/stack/cable_coil/pink
-	stack_type = /obj/item/stack/cable_coil
 	color = COLOR_PINK
 
 /obj/item/stack/cable_coil/orange
-	stack_type = /obj/item/stack/cable_coil
 	color = COLOR_ORANGE
 
 /obj/item/stack/cable_coil/cyan
-	stack_type = /obj/item/stack/cable_coil
 	color = COLOR_CYAN
 
 /obj/item/stack/cable_coil/white
-	stack_type = /obj/item/stack/cable_coil
 	color = COLOR_WHITE
 
 /obj/item/stack/cable_coil/silver
-	stack_type = /obj/item/stack/cable_coil
 	color = COLOR_SILVER
 
 /obj/item/stack/cable_coil/gray
-	stack_type = /obj/item/stack/cable_coil
 	color = COLOR_GRAY
 
 /obj/item/stack/cable_coil/black
-	stack_type = /obj/item/stack/cable_coil
 	color = COLOR_BLACK
 
 /obj/item/stack/cable_coil/maroon
-	stack_type = /obj/item/stack/cable_coil
 	color = COLOR_MAROON
 
 /obj/item/stack/cable_coil/olive
-	stack_type = /obj/item/stack/cable_coil
 	color = COLOR_OLIVE
 
 /obj/item/stack/cable_coil/lime
-	stack_type = /obj/item/stack/cable_coil
 	color = COLOR_LIME
 
 /obj/item/stack/cable_coil/teal
-	stack_type = /obj/item/stack/cable_coil
 	color = COLOR_TEAL
 
 /obj/item/stack/cable_coil/navy
-	stack_type = /obj/item/stack/cable_coil
 	color = COLOR_NAVY
 
 /obj/item/stack/cable_coil/purple
-	stack_type = /obj/item/stack/cable_coil
 	color = COLOR_PURPLE
 
 /obj/item/stack/cable_coil/beige
-	stack_type = /obj/item/stack/cable_coil
 	color = COLOR_BEIGE
 
 /obj/item/stack/cable_coil/brown
-	stack_type = /obj/item/stack/cable_coil
 	color = COLOR_BROWN
 
 /obj/item/stack/cable_coil/random/Initialize(mapload, new_amount, merge)
 	. = ..()
-	stack_type = /obj/item/stack/cable_coil
 	stacktype_legacy = /obj/item/stack/cable_coil
 	color = pick(COLOR_RED, COLOR_BLUE, COLOR_LIME, COLOR_WHITE, COLOR_PINK, COLOR_YELLOW, COLOR_CYAN, COLOR_SILVER, COLOR_GRAY, COLOR_BLACK, COLOR_MAROON, COLOR_OLIVE, COLOR_LIME, COLOR_TEAL, COLOR_NAVY, COLOR_PURPLE, COLOR_BEIGE, COLOR_BROWN)
 
 /obj/item/stack/cable_coil/random_belt/Initialize(mapload, new_amount, merge)
 	. = ..()
-	stack_type = /obj/item/stack/cable_coil
 	stacktype_legacy = /obj/item/stack/cable_coil
 	color = pick(COLOR_RED, COLOR_YELLOW, COLOR_ORANGE)
 	amount = 30
