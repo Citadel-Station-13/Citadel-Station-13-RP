@@ -77,7 +77,6 @@ GLOBAL_LIST_EMPTY(possible_gifts)
 
 	return gift_type
 
-
 /obj/item/a_gift/anything
 	name = "christmas gift"
 	desc = "It could be anything!"

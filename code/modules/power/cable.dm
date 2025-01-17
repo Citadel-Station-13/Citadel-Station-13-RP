@@ -543,8 +543,10 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	item_state = "coil"
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
 	stack_type = /obj/item/stack/cable_coil
+	stacktype_legacy = /obj/item/stack/cable_coil
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
+	stack_type = /obj/item/stack/cable_coil
 
 /obj/item/stack/cable_coil/Initialize(mapload, new_amount = MAXCOIL, merge, param_color)
 	. = ..()
@@ -914,11 +916,13 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 /obj/item/stack/cable_coil/random/Initialize(mapload, new_amount, merge)
 	. = ..()
 	stack_type = /obj/item/stack/cable_coil
+	stacktype_legacy = /obj/item/stack/cable_coil
 	color = pick(COLOR_RED, COLOR_BLUE, COLOR_LIME, COLOR_WHITE, COLOR_PINK, COLOR_YELLOW, COLOR_CYAN, COLOR_SILVER, COLOR_GRAY, COLOR_BLACK, COLOR_MAROON, COLOR_OLIVE, COLOR_LIME, COLOR_TEAL, COLOR_NAVY, COLOR_PURPLE, COLOR_BEIGE, COLOR_BROWN)
 
 /obj/item/stack/cable_coil/random_belt/Initialize(mapload, new_amount, merge)
 	. = ..()
 	stack_type = /obj/item/stack/cable_coil
+	stacktype_legacy = /obj/item/stack/cable_coil
 	color = pick(COLOR_RED, COLOR_YELLOW, COLOR_ORANGE)
 	amount = 30
 
@@ -957,6 +961,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	slot_flags = SLOT_BELT
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
 	stack_type = null
+	stacktype_legacy = null
 	split_type = /obj/item/stack/cable_coil
 	tool_speed = 0.25
 

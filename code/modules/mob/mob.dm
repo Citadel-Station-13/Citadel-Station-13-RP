@@ -2,6 +2,11 @@
  * Base definition of mob.
  */
 /mob
+	//* Impairments *//
+	/// active feign_impairment types
+	/// * lazy list
+	var/list/impairments_feigned
+
 	//* Inventory *//
 	/// our inventory datum, if any.
 	/// * Set to typepath to initialize.

@@ -19,7 +19,7 @@
 	. = ..()
 	update_icon()
 
-/obj/item/stack/sandbags/update_icon()
+/obj/item/stack/sandbags/update_icon_state()
 	var/amount = get_amount()
 	if((amount >= 35))
 		icon_state = "sandbags_3"
@@ -27,6 +27,7 @@
 		icon_state = "sandbags_2"
 	else
 		icon_state = "sandbags"
+	return ..()
 
 /obj/item/stack/sandbags/generate_explicit_recipes()
 	. = list()

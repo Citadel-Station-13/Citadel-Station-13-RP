@@ -1122,6 +1122,12 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west)
+"fi" = (
+/obj/effect/shuttle_landmark/automatic{
+	base_turf = /turf/simulated/floor/outdoors/snow/lythios43c
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "fj" = (
 /obj/machinery/power/apc/alarms_hidden/north_mount{
 	cell_type = null;
@@ -7096,6 +7102,10 @@
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/storage)
+"Hf" = (
+/obj/tether_away_spawner/lythios_animals,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/exterior/bunker)
 "Hg" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "0-8"
@@ -19002,7 +19012,7 @@ PP
 PP
 PP
 sv
-sv
+cL
 sv
 sv
 sv
@@ -20167,7 +20177,7 @@ PP
 PP
 PP
 sv
-cL
+sv
 sv
 sv
 sv
@@ -20559,7 +20569,7 @@ sv
 sv
 sv
 sv
-sv
+fi
 sv
 sv
 sv
@@ -22121,7 +22131,7 @@ sv
 sv
 sv
 sv
-sv
+fi
 sv
 sv
 sv
@@ -22296,7 +22306,7 @@ PP
 sv
 sv
 sv
-sv
+cL
 sv
 sv
 sv
@@ -23474,7 +23484,7 @@ sv
 sv
 sv
 sv
-cL
+sv
 sv
 sv
 sv
@@ -26180,7 +26190,7 @@ nz
 nz
 nz
 nz
-nz
+Hf
 nz
 YE
 sv
@@ -26188,7 +26198,7 @@ sv
 sv
 sv
 sv
-sv
+fi
 sv
 sv
 sv
@@ -29094,7 +29104,7 @@ sv
 sv
 sv
 sv
-sv
+cL
 sv
 sv
 sv

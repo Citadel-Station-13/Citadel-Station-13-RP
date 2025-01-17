@@ -47,6 +47,7 @@
 	..()
 
 /obj/item/shockpaddles/update_icon()
+	. = ..()
 	icon_state = "defibpaddles[wielded]"
 	item_state = "defibpaddles[wielded]"
 	if(cooldown)

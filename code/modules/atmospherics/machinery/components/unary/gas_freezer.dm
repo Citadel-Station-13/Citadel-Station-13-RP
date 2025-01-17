@@ -46,7 +46,7 @@
 	if(node)
 		update_icon()
 
-/obj/machinery/atmospherics/component/unary/freezer/update_icon()
+/obj/machinery/atmospherics/component/unary/freezer/update_icon_state()
 	if(node)
 		if(use_power && cooling)
 			icon_state = "freezer_1"
@@ -54,7 +54,7 @@
 			icon_state = "freezer"
 	else
 		icon_state = "freezer_0"
-	return
+	return ..()
 
 /obj/machinery/atmospherics/component/unary/freezer/attack_ai(mob/user as mob)
 	ui_interact(user)

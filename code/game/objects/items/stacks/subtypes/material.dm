@@ -52,6 +52,7 @@
 	pixel_y = rand(0,4)-4
 
 	stack_type = src.material.stack_type
+
 	if(islist(src.material.stack_origin_tech))
 		origin_tech = src.material.stack_origin_tech.Copy()
 
