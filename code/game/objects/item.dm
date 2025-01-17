@@ -373,15 +373,6 @@
 		else
 			. = ""
 
-/obj/item/attack_ai(mob/user as mob)
-	if (istype(src.loc, /obj/item/robot_module))
-		//If the item is part of a cyborg module, equip it
-		if(!isrobot(user))
-			return
-		var/mob/living/silicon/robot/R = user
-		R.activate_module(src)
-		R.hud_used.update_robot_modules_display()
-
 /obj/item/proc/talk_into(mob/M as mob, text)
 	return
 

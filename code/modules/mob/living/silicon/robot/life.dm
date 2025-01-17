@@ -83,7 +83,7 @@
 
 	//update the state of modules and components here
 	if (src.stat != 0)
-		uneq_all()
+		inventory.drop_held_items()
 
 	if(radio)
 		if(!is_component_functioning("radio"))

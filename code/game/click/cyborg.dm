@@ -101,11 +101,6 @@
 		trigger_aiming(TARGET_CAN_CLICK)
 		return
 
-//Middle click cycles through selected modules.
-/mob/living/silicon/robot/MiddleClickOn(var/atom/A)
-	cycle_modules()
-	return
-
 //Give cyborgs hotkey clicks without breaking existing uses of hotkey clicks
 // for non-doors/apcs
 /mob/living/silicon/robot/CtrlShiftClickOn(var/atom/A)
