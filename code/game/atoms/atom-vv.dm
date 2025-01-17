@@ -245,3 +245,11 @@
 			else
 				return debug_variable(NAMEOF(src, base_layer), base_layer, 0, src)
 	return ..()
+
+/**
+ * VV wrapper, do not use.
+ */
+/atom/proc/vv_queue_smooth()
+	PRIVATE_PROC(TRUE)
+	QUEUE_SMOOTH(src)
+	QUEUE_SMOOTH_NEIGHBORS(src)

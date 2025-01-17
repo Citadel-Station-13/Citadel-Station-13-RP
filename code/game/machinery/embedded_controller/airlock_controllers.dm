@@ -73,8 +73,7 @@
 	valid_actions = list("cycle_ext", "cycle_int", "force_ext", "force_int")
 	program = /datum/computer/file/embedded_program/airlock/access_controll
 
-
-/obj/machinery/embedded_controller/radio/airlock/access_controller/update_icon()
+/obj/machinery/embedded_controller/radio/airlock/access_controller/update_icon_state()
 	if(on && program)
 		if(program.memory["processing"])
 			icon_state = "access_control_process"
@@ -82,6 +81,7 @@
 			icon_state = "access_control_standby"
 	else
 		icon_state = "access_control_off"
+	return ..()
 
 /obj/machinery/embedded_controller/radio/airlock/access_controller/ui_data(mob/user, datum/tgui/ui)
 	. = list(

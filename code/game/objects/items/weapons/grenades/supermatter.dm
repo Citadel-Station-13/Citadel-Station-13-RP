@@ -20,6 +20,7 @@
 
 /obj/item/grenade/supermatter/update_icon()
 	cut_overlays()
+	. = ..()
 	if(implode_at)
 		add_overlay(image(icon = 'icons/rust.dmi', icon_state = "emfield_s1"))
 
