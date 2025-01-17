@@ -5596,6 +5596,9 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
+/obj/machinery/fire_alarm/south_mount{
+	pixel_y = -24
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/surfacebase/tram)
 "ejN" = (
@@ -20283,10 +20286,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1aftmaint)
-"ozV" = (
-/obj/structure/bed/chair,
-/turf/simulated/floor/tiled,
-/area/endeavour/surfacebase/tram)
 "ozZ" = (
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
@@ -26971,9 +26970,6 @@
 /area/library)
 "tCP" = (
 /obj/machinery/light,
-/obj/machinery/fire_alarm/south_mount{
-	pixel_y = -24
-	},
 /obj/structure/bed/chair{
 	dir = 1
 	},
@@ -41845,7 +41841,7 @@ rTZ
 rTZ
 rTZ
 rTZ
-ozV
+gjY
 cMJ
 nTt
 tAk
@@ -42039,7 +42035,7 @@ eFW
 cMJ
 rTZ
 rTZ
-ozV
+gjY
 cMJ
 tAk
 tAk
@@ -42233,7 +42229,7 @@ eNz
 cMJ
 rTZ
 rTZ
-ozV
+gjY
 cMJ
 tAk
 tAk

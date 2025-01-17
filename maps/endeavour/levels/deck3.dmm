@@ -12676,9 +12676,6 @@
 /turf/simulated/wall/prepainted/civilian,
 /area/maintenance/bar/catwalk)
 "ibm" = (
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 1
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -27750,9 +27747,6 @@
 /obj/machinery/air_alarm{
 	pixel_y = 22
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 8
-	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
@@ -36074,9 +36068,6 @@
 "xyI" = (
 /obj/machinery/air_alarm{
 	pixel_y = 22
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 8
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1

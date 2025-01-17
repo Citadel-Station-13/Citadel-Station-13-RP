@@ -11801,7 +11801,6 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2portamidhall)
 "hbR" = (
-/obj/machinery/ion_engine,
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -17720,10 +17719,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1starboardforhall)
-"kKk" = (
-/obj/machinery/atmospherics/component/unary/engine,
-/turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/shuttle_pad)
 "kKI" = (
 /obj/machinery/light{
 	dir = 8
@@ -70011,7 +70006,7 @@ mwB
 xOh
 nhq
 hbR
-kKk
+ayx
 onF
 nhq
 pRW

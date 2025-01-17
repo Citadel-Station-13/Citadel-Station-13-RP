@@ -7681,16 +7681,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/break_room)
-"ixk" = (
-/obj/effect/floor_decal/spline/fancy{
-	dir = 5
-	},
-/obj/item/paper/crumpled{
-	name = "Hastily crumpled schematics";
-	info = "Right - the equipment's all set and ready to go - as long as you can keep the ship in the drydock for another few days, we can get in, get out, and be gone before we're missed. Map's attached. Burn this if you think you're about to get pinched-"
-	},
-/turf/simulated/floor/carpet/oracarpet,
-/area/engineering/engineering_monitoring)
 "ixG" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -35110,7 +35100,7 @@ oCj
 bHY
 cQR
 bHY
-ixk
+inf
 lNQ
 jlM
 wpR
