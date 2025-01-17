@@ -63,6 +63,8 @@
 /atom/proc/unarmed_act(mob/attacker, datum/unarmed_attack/style, target_zone, datum/event_args/actor/clickchain/clickchain)
 	return CLICKCHAIN_DO_NOT_ATTACK
 
+//* External API / Damage Receiving - Projectiles *//
+
 /**
  * Because this is the proc that calls on_impact(), handling is necessarily
  * done in here for a lot of things.
@@ -138,8 +140,13 @@
 /atom/proc/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	return impact_flags
 
+//* External API / Damage Receiving - Electric *//
+
 /**
  * Called to inflict an electrical shock on this atom.
+ *
+ * * Passing in no damage / stun power is perfectly valid; you can get calculated 'efficiency' / energy used
+ *   by getting returned args.
  *
  * @params
  * * energy - energy, in **kilojoules**
@@ -158,6 +165,8 @@
  * * shared_blackboard - (optional) list to both inject into and retrieve data from.
  *                as a word of warning, this list **will** be a shared list if being used
  *                in things like multi-hit lightning bolts; we do not make a new list per atom.
+ *
+ * @return modified `electrocute_act` args list, indiced with `ELECTROCUTE_ACT_ARG_*` #define indices.
  */
 /atom/proc/electrocute(energy, damage, stun_power, flags, hit_zone, atom/movable/source, list/shared_blackboard)
 	SHOULD_NOT_SLEEP(TRUE)
@@ -204,7 +213,7 @@
  * Called to handle effects of receiving an electrical shock.
  *
  * * This is called by `electrocute_act` to inflict effects.
- * * Modifying args is still allowed here.
+ * * Modifying args is still allowed here, but will **not** be returned to the caller.
  *
  * @params
  * * efficiency - effect multiplier. this should be multiplied to damage / agony / energy / etc
