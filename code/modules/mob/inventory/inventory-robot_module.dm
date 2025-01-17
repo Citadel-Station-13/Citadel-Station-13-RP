@@ -34,45 +34,35 @@
  * In a way, robot module system is an indirection based provider.
  */
 
-//* Slots - Abstraction (Implement These!) *//
+//* On / Off *//
 
-/**
- * Return number of module slots
- */
-/datum/inventory/proc/robot_module_get_slots()
-	return 0
+/datum/inventory/proc/robot_module_supported()
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	return isnull(robot_modules)
 
-/**
- * Sets number of module slots
- *
- * @return new number
- */
-/datum/inventory/proc/robot_module_set_slots(count)
-	return 0
-
-//* Get - Abstraction (Implement These!) *//
+//* Get *//
 
 /**
  * Gets all robot modules registered.
  */
 /datum/inventory/proc/robot_module_get_all() as /list
-	return list()
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	return robot_modules?.Copy() || list()
 
 /**
  * Gets all robot modules active.
  */
 /datum/inventory/proc/robot_module_get_active() as /list
-	return list()
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	. = list()
+	for(var/obj/item/held in held_items)
+		if(robot_module_is_registered(held))
+			. += held
 
-//* Check - Abstraction (Implement These!) *//
-
-/**
- * Checks if an item is active
- *
- * @return 0 if not active (or not registered), # for index if it's active as that index
- */
-/datum/inventory/proc/robot_module_is_active(obj/item/item) as num
-	return null
+//* Check *//
 
 /**
  * Checks if an item is registered to us as a robot module.
@@ -80,74 +70,9 @@
  * @return TRUE if module, FALSE otherwise
  */
 /datum/inventory/proc/robot_module_is_registered(obj/item/item)
-	return 0
-
-//* Registration - Abstraction (Implement These!) *//
-
-/datum/inventory/proc/robot_module_register_impl(obj/item/item)
-	PROTECTED_PROC(TRUE)
-	return FALSE
-
-/datum/inventory/proc/robot_module_unregister_impl(obj/item/item)
-	PROTECTED_PROC(TRUE)
-
-//* Equip / Unequip - Abstraction (Implement These!) *//
-
-/datum/inventory/proc/robot_module_equip_impl(obj/item/item, index)
-	PROTECTED_PROC(TRUE)
-	return FALSE
-
-/datum/inventory/proc/robot_module_unequip_impl(obj/item/item, index)
-	PROTECTED_PROC(TRUE)
-	return FALSE
-
-//* Equip / Unequip *//
-
-/**
- * Activates a robot module.
- *
- * @return TRUE success, FALSE fail
- */
-/datum/inventory/proc/robot_module_equip(obj/item/item, index)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
-	. = robot_module_equip_impl(item, index)
-	if(.)
-		on_robot_module_equip(item, index)
-
-/datum/inventory/proc/on_robot_module_equip(obj/item/item, index)
-	PROTECTED_PROC(TRUE)
-	SHOULD_CALL_PARENT(TRUE)
-
-/**
- * Deactivates a robot module by reference.
- */
-/datum/inventory/proc/robot_module_unequip(obj/item/item)
-	SHOULD_NOT_OVERRIDE(TRUE)
-	SHOULD_NOT_SLEEP(TRUE)
-
-	var/index = robot_module_is_active(item)
-	if(!index)
-		return
-
-	robot_module_unequip_impl(item, index)
-	on_robot_module_unequip(item, index)
-
-/**
- * Deactivates a robot module by index.
- *
- * @return item unequipped or null
- */
-/datum/inventory/proc/robot_module_unequip_index(index) as /obj/item
-	SHOULD_NOT_OVERRIDE(TRUE)
-	SHOULD_NOT_SLEEP(TRUE)
-
-	robot_module_unequip_impl(item, index)
-	on_robot_module_unequip(item, index)
-
-/datum/inventory/proc/on_robot_module_unequip(obj/item/item, index)
-	PROTECTED_PROC(TRUE)
-	SHOULD_CALL_PARENT(TRUE)
+	return item in robot_modules
 
 //* Registration *//
 
@@ -159,9 +84,9 @@
 /datum/inventory/proc/robot_module_register(obj/item/item)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
-	. = robot_module_register_impl(item)
-	if(.)
-		on_robot_module_register(item)
+
+	#warn impl
+	on_robot_module_register(item)
 
 /datum/inventory/proc/on_robot_module_register(obj/item/item)
 	PROTECTED_PROC(TRUE)
@@ -177,7 +102,7 @@
 	if(!robot_module_is_registered(item))
 		return
 
-	robot_module_unregister_impl(item)
+	#warn impl
 	on_robot_module_unregister(item)
 
 /datum/inventory/proc/on_robot_module_unregister(obj/item/item)

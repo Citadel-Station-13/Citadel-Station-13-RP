@@ -34,6 +34,12 @@
 	/// * 1, 3, 5, ... are left
 	/// * 2, 4, 6, ... are right
 	var/list/obj/item/held_items = list()
+	/// robot modules
+	///
+	/// * this is a list with special semantics; null = do not render, existing = render, even if empty.
+	/// * this will be rendered if it's existing.
+	#warn impl
+	var/list/obj/item/robot_modules
 
 	//* Rendering *//
 	/// cached overlays by slot id or hand index

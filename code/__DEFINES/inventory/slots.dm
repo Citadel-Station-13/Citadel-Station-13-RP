@@ -22,12 +22,6 @@
 #define SLOT_ID_LEFT_HAND		"left_hand"
 /// *ONLY USE THIS FOR RENDERING* - this is nonsensical anywhere else
 #define SLOT_ID_RIGHT_HAND		"right_hand"
-/// All cyborg 'inactive modules' are considered this slot.
-#warn impl this slot somehow?
-#define SLOT_ID_ROBOT_MODULE_INACTIVE	"robot-module-inactive"
-/// All cyborg 'active modules' are consdiered this slot.
-#warn impl this slot somehow?
-#define SLOT_ID_ROBOT_MODULE_ACTIVE		"robot-module-active"
 
 //! slot meta slot_equip_checks flags
 /// check slot flags - must match
