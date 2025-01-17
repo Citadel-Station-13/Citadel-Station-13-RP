@@ -364,7 +364,7 @@
 		if(CHECK_MOBILITY(H, MOBILITY_CAN_MOVE | MOBILITY_CAN_USE) || H.handcuffed || arrest_type)
 			cuff = FALSE
 		if(!cuff)
-			H.stun_effect_act(0, stun_strength, null)
+			H.stun_effect_act_parse_this(0, stun_strength, null)
 			playsound(loc, 'sound/weapons/Egloves.ogg', 50, 1, -1)
 			do_attack_animation(H)
 			busy = TRUE
