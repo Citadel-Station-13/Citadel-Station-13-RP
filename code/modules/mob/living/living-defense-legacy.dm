@@ -126,10 +126,6 @@
 		apply_effect(STUTTER, agony_amount/10)
 		apply_effect(EYE_BLUR, agony_amount/10)
 
-/mob/living/proc/electrocute_act_legacy(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null, var/stun = 1)
-	#warn audit
-	return 0 //only carbon liveforms have this proc
-
 /mob/living/emp_act(severity)
 	var/list/L = src.get_equipped_items(TRUE, TRUE)
 	for(var/obj/O in L)

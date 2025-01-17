@@ -15,6 +15,16 @@
 
 //* Misc Effects *//
 
+/mob/living/carbon/electrocute_act(efficiency, energy, damage, agony, flags, hit_zone, list/shared_blackboard, out_energy_consumed)
+	if(!(flags & ELECTROCUTE_ACT_FLAG_INTERNAL))
+		if(species.species_flags & IS_PLANT)
+			switch(hit_zone)
+				if("l_hand")
+					efficiency = 0
+				if("r_hand")
+					efficiency = 0
+	return ..()
+
 /mob/living/carbon/slip_act(slip_class, source, hard_strength, soft_strength, suppressed)
 	. = ..()
 	if(buckled)

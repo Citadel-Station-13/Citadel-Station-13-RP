@@ -138,7 +138,6 @@
 /atom/proc/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	return impact_flags
 
-
 /**
  * Called upon receiving an electrical shock of any kind
  *

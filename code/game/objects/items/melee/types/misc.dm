@@ -360,7 +360,7 @@
 
 	if(wielded || isliving(target))
 		if(prob(10))
-			G.electrocute_act(500, src, def_zone = BP_TORSO)
+			G.electrocute_act_parse_this(500, src, def_zone = BP_TORSO)
 			return
 		if(prob(10))
 			G.dust()

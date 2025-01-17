@@ -1,6 +1,12 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+/mob/electrocute_act(efficiency, energy, damage, agony, flags, hit_zone, list/shared_blackboard, out_energy_consumed)
+	// todo: rework godmode check
+	if(status_flags & STATUS_GODMODE)
+		efficiency = 0
+	return ..()
+
 //* Armor Handling *//
 
 /**

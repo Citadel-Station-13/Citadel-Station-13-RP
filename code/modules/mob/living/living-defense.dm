@@ -113,6 +113,24 @@
 
 //* Misc Effects *//
 
+/mob/living/electrocute_act(efficiency, energy, damage, agony, flags, hit_zone, list/shared_blackboard, out_energy_consumed)
+	// todo: rework this maybe
+	if((fire_stacks < 0) && !(flags & ELECTROCUTE_ACT_FLAG_INTERNAL))
+		// water makes you more ocnductive
+		efficiency *= 1.5
+	return ..()
+
+/mob/living/on_electrocute_act(efficiency, energy, damage, agony, flags, hit_zone, list/shared_blackboard)
+	inflict_electrocute_damage(damage * efficiency, agony * efficiency, flags, hit_zone)
+	return ..()
+
+/**
+ * Called to apply the damage from [electrocute_act()]
+ */
+#warn impl on simple mob, carbon, silicon
+/mob/living/proc/inflict_electrocute_damage(damage, agony, flags, hit_zone)
+	return
+
 /**
  * Processes a slip.
  *
@@ -130,5 +148,3 @@
  */
 /mob/living/proc/slip_act(slip_class, source, hard_strength, soft_strength, suppressed)
 	return 1
-//* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 Citadel Station developers.          *//

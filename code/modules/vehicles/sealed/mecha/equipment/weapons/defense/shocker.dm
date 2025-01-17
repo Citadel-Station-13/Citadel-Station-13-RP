@@ -32,5 +32,5 @@
 	if(!action_checks(user) || !active)
 		return
 
-	user.electrocute_act(shock_damage, src)
+	user.electrocute_act_parse_this(shock_damage, src)
 	return inc_damage

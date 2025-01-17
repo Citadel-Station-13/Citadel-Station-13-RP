@@ -1211,7 +1211,7 @@
 	affects_robots = TRUE
 
 /datum/reagent/grubshock/affect_blood(mob/living/carbon/M, alien, removed)
-	M.electrocute_act(10 * removed, src, 1.0, BP_TORSO, 0)
+	M.electrocute_act_parse_this(10 * removed, src, 1.0, BP_TORSO, 0)
 	if(M.ingested)
 		for(var/datum/reagent/nanite/R in M.ingested.reagent_list)
 			R.remove_self(removed * 30)
@@ -1221,7 +1221,7 @@
 
 
 /datum/reagent/grubshock/affect_ingest(mob/living/carbon/M, alien, removed)
-	M.electrocute_act(10 * removed, src, 1.0, BP_TORSO, 0)
+	M.electrocute_act_parse_this(10 * removed, src, 1.0, BP_TORSO, 0)
 	if(M.ingested)
 		for(var/datum/reagent/nanite/R in M.ingested.reagent_list)
 			R.remove_self(removed * 30)
@@ -1230,7 +1230,7 @@
 			R.remove_self(removed * 20)
 
 /datum/reagent/grubshock/affect_touch(mob/living/carbon/M, alien, removed)
-	M.electrocute_act(10 * volume, src, 1.0, BP_TORSO, 0)
+	M.electrocute_act_parse_this(10 * volume, src, 1.0, BP_TORSO, 0)
 
 //This chem is for removing nanites without grubmeat
 /datum/reagent/lessershock
@@ -1244,7 +1244,7 @@
 	affects_robots = TRUE
 
 /datum/reagent/lessershock/affect_blood(mob/living/carbon/M, alien, removed)
-	M.electrocute_act(5 * removed, src, 1.0, BP_TORSO, 0)
+	M.electrocute_act_parse_this(5 * removed, src, 1.0, BP_TORSO, 0)
 	if(M.ingested)
 		for(var/datum/reagent/nanite/R in M.ingested.reagent_list)
 			R.remove_self(removed)
@@ -1253,7 +1253,7 @@
 			R.remove_self(removed)
 
 /datum/reagent/lessershock/affect_ingest(mob/living/carbon/M, alien, removed)
-	M.electrocute_act(5 * removed, src, 1.0, BP_TORSO, 0)
+	M.electrocute_act_parse_this(5 * removed, src, 1.0, BP_TORSO, 0)
 	if(M.ingested)
 		for(var/datum/reagent/nanite/R in M.ingested.reagent_list)
 			R.remove_self(removed)
@@ -1262,7 +1262,7 @@
 			R.remove_self(removed)
 
 /datum/reagent/lessershock/affect_touch(mob/living/carbon/M, alien, removed)
-	M.electrocute_act(5 * volume, src, 1.0, BP_TORSO, 0)
+	M.electrocute_act_parse_this(5 * volume, src, 1.0, BP_TORSO, 0)
 
 /datum/reagent/asbestos //asbestos removal handled in under datum/reagent/respirodaxon
 	name = "Asbestos"

@@ -57,16 +57,8 @@
 						return 1
 	return 0
 
+#warn parse
 /mob/living/carbon/electrocute_act_legacy(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null, var/stun = 1)
-	if(status_flags & STATUS_GODMODE)
-		return 0	//godmode
-	if(def_zone == "l_hand" || def_zone == "r_hand") //Diona (And any other potential plant people) hands don't get shocked.
-		if(species.species_flags & IS_PLANT)
-			return 0
-	shock_damage *= siemens_coeff
-	if (shock_damage<1)
-		return 0
-
 	src.apply_damage(shock_damage, DAMAGE_TYPE_BURN, def_zone, used_weapon="Electrocution")
 	playsound(loc, /datum/soundbyte/grouped/sparks, 50, 1, -1)
 	if (shock_damage > 15)

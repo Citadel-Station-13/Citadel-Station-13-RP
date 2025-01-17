@@ -302,29 +302,6 @@
 	if(wear_id)
 		return wear_id.GetID()
 
-//Removed the horrible safety parameter. It was only being used by ninja code anyways.
-//Now checks siemens_coefficient of the affected area by default
-/mob/living/carbon/human/electrocute_act_legacy(var/shock_damage, var/obj/source, var/base_siemens_coeff = 1.0, var/def_zone = null)
-
-	if(status_flags & STATUS_GODMODE)	return 0	//godmode
-
-	if (!def_zone)
-		def_zone = pick("l_hand", "r_hand")
-
-	if(species.siemens_coefficient == -1)
-		if(stored_shock_by_ref["\ref[src]"])
-			stored_shock_by_ref["\ref[src]"] += shock_damage
-		else
-			stored_shock_by_ref["\ref[src]"] = shock_damage
-		return
-
-	var/obj/item/organ/external/affected_organ = get_organ(check_zone(def_zone))
-	var/siemens_coeff = base_siemens_coeff * get_siemens_coefficient_organ(affected_organ)
-	if(fire_stacks < 0) // Water makes you more conductive.
-		siemens_coeff *= 1.5
-
-	return ..(shock_damage, source, siemens_coeff, def_zone)
-
 /mob/living/carbon/human/Topic(href, href_list)
 	if (href_list["mach_close"])
 		var/t1 = "window=[href_list["mach_close"]]"

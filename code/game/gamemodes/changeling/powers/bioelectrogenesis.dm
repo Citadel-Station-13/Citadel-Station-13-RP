@@ -43,7 +43,7 @@
 		if(istype(held_item,/obj/item/grab))
 			var/obj/item/grab/G = held_item
 			if(G.affecting)
-				G.affecting.electrocute_act(10 * siemens, src, 1.0, BP_TORSO, 0)
+				G.affecting.electrocute_act_parse_this(10 * siemens, src, 1.0, BP_TORSO, 0)
 				var/agony = 80 * siemens //Does more than if hit with an electric hand, since grabbing is slower.
 				G.affecting.stun_effect_act(0, agony, BP_TORSO, src)
 
@@ -146,7 +146,7 @@
 			to_chat(src, "<span class='warning'>We require more chemicals to electrocute [C]!</span>")
 			return 0
 
-		C.electrocute_act(electrocute_amount * siemens,src,1.0,BP_TORSO)
+		C.electrocute_act_parse_this(electrocute_amount * siemens,src,1.0,BP_TORSO)
 		C.stun_effect_act(0, agony_amount * siemens, BP_TORSO, src)
 
 		add_attack_logs(user,C,"Shocked with [src]")
@@ -168,7 +168,7 @@
 			to_chat(src, "<span class='warning'>We require more chemicals to electrocute [S]!</span>")
 			return 0
 
-		S.electrocute_act(60,src,0.75) //If only they had surge protectors.
+		S.electrocute_act_parse_this(60,src,0.75) //If only they had surge protectors.
 		if(siemens)
 			visible_message("<span class='warning'>Arcs of electricity strike [S]!</span>",
 			"<span class='warning'>Our hand channels raw electricity into [S]</span>",
