@@ -29,21 +29,21 @@
 			/obj/item/stamp/denied,
 			/obj/item/tray/robotray,
 			/obj/item/rsf/loaded,
+			/obj/item/reagent_containers/food/condiment/enzyme,
+		)
+	if(emag_out)
+		emag_out |= list(
+			/obj/item/stamp/chameleon,
+			/obj/item/pen/chameleon,
 		)
 
 /datum/prototype/robot_module/nanotrasen/service/provision_resource_store(datum/robot_resource_store/store)
 	..()
 
-/obj/item/robot_module/robot/clerical/butler/Initialize(mapload)
-	. = ..()
+/datum/prototype/robot_module/nanotrasen/service/legacy_custom_regenerate_resources(mob/living/silicon/robot/robot, dt, multiplier)
+	var/obj/item/reagent_containers/food/condiment/enzyme/E = locate() in robot
+	E.reagents.add_reagent("enzyme", 2 * multiplire * dt)
 
-	src.emag = new /obj/item/reagent_containers/food/drinks/bottle/small/beer(src)
-
-	var/datum/reagent_holder/R = new/datum/reagent_holder(50)
-	src.emag.reagents = R
-	R.my_atom = src.emag
-	R.add_reagent("beer2", 50)
-	src.emag.name = "Mickey Finn's Special Brew"
 
 #warn translate chassis below
 
@@ -103,13 +103,6 @@
 		"W02M" = "worm-service"
 	)
 
-/obj/item/robot_module/robot/clerical/butler/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
-	var/obj/item/reagent_containers/food/condiment/enzyme/E = locate() in src.modules
-	E.reagents.add_reagent("enzyme", 2 * amount)
-	if(src.emag)
-		var/obj/item/reagent_containers/food/drinks/bottle/small/beer/B = src.emag
-		B.reagents.add_reagent("beer2", 2 * amount)
-
 /obj/item/robot_module/robot/clerical/general
 	name = "clerical robot module"
 	sprites = list(
@@ -136,14 +129,6 @@
 		"ZOOM-BA" = "zoomba-clerical",
 		"W02M" = "worm-service"
 	)
-
-/obj/item/robot_module/robot/clerical/general/handle_special_module_init(mob/living/silicon/robot/R)
-	. = ..()
-	// cba to make emags support more than one item
-	if (prob(50))
-		src.emag = new /obj/item/stamp/chameleon(src)
-	else
-		src.emag = new /obj/item/pen/chameleon(src)
 
 // Uses modified K9 sprites.
 /obj/item/robot_module/robot/quad/serv
@@ -184,15 +169,6 @@
 // In a nutshell, basicly service/butler robot but in dog form.
 /obj/item/robot_module/robot/quad/serv/handle_special_module_init(mob/living/silicon/robot/R)
 	. = ..()
-	src.emag = new /obj/item/robot_builtin/dog_pounce(src)
 
 	// These get a larger water synth.
 	synths_by_kind[MATSYN_WATER]:max_energy = 1000
-
-	var/obj/item/rsf/M = new /obj/item/rsf(src)
-	M.stored_matter = 30
-	. += M
-
-	var/obj/item/flame/lighter/zippo/L = new /obj/item/flame/lighter/zippo(src)
-	L.lit = 1
-	. += L

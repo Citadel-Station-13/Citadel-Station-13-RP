@@ -145,7 +145,6 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	ASSERT(istype(R))
 
 	R.dogborg = TRUE
-	R.wideborg = TRUE
 	add_verb(R, list(
 		/mob/living/silicon/robot/proc/rest_style
 	))
@@ -158,7 +157,6 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	))
 	R.scrubbing = FALSE
 	R.dogborg = FALSE
-	R.wideborg = FALSE
 
 /obj/item/robot_module/robot/quad/get_synths(mob/living/silicon/robot/R)
 	. = ..()

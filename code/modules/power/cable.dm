@@ -826,10 +826,6 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		C.denode()// this call may have disconnected some cables that terminated on the centre of the turf, if so split the powernets.
 		return
 
-//////////////////////////////
-// Misc.
-/////////////////////////////
-
 /obj/item/stack/cable_coil/cut
 	item_state = "coil2"
 
@@ -897,17 +893,14 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 
 /obj/item/stack/cable_coil/random/Initialize(mapload, new_amount, merge)
 	. = ..()
-	stacktype_legacy = /obj/item/stack/cable_coil
 	color = pick(COLOR_RED, COLOR_BLUE, COLOR_LIME, COLOR_WHITE, COLOR_PINK, COLOR_YELLOW, COLOR_CYAN, COLOR_SILVER, COLOR_GRAY, COLOR_BLACK, COLOR_MAROON, COLOR_OLIVE, COLOR_LIME, COLOR_TEAL, COLOR_NAVY, COLOR_PURPLE, COLOR_BEIGE, COLOR_BROWN)
 
 /obj/item/stack/cable_coil/random_belt/Initialize(mapload, new_amount, merge)
 	. = ..()
-	stacktype_legacy = /obj/item/stack/cable_coil
 	color = pick(COLOR_RED, COLOR_YELLOW, COLOR_ORANGE)
 	amount = 30
 
 //Endless alien cable coil
-
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_wire
 	name = "Precursor Alpha Object - Recursive Spool"

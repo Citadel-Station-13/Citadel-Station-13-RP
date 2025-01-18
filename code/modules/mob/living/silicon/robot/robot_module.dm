@@ -89,7 +89,10 @@
 /datum/prototype/robot_module/proc/provision_resource_store(datum/robot_resource_store/store)
 	return
 
-//* Name / Description / Identity
+/datum/prototype/robot_module/proc/legacy_custom_regenerate_resources(mob/living/silicon/robot/robot, dt, multiplier)
+	return
+
+//* Name / Description / Identity *//
 
 /**
  * Get name as seen by things like robotics consoles that don't use another way

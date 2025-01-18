@@ -20,6 +20,13 @@
 	QDEL_LIST(mounted_items)
 	return ..()
 
+/obj/item/robot_upgrade/using_as_item(atom/target, datum/event_args/actor/clickchain/e_args, clickchain_flags, datum/callback/reachability_check)
+	. = ..()
+	if(.)
+		return
+	if(isrobot(target))
+		#warn impl
+
 /obj/item/robot_upgrade/proc/ensure_mounted_items_loaded()
 	if(mounted_items)
 		return

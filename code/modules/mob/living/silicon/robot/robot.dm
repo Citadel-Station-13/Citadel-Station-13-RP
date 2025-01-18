@@ -122,29 +122,12 @@
 	var/integrated_light_power = 4.5
 	var/datum/wires/robot/wires
 
-	//* Icon stuff
-	/// Persistent icontype tracking allows for cleaner icon updates
-	var/icontype
-	/// Used to store the associations between sprite names and sprite index.
-	var/module_sprites[0]
-	/// If icon selection has been completed yet.
-	var/icon_selected = 1
-	/// Remaining attempts to select icon before a selection is forced.
-	var/icon_selection_tries = 0
-
 	//* Hud stuff
 
 	var/atom/movable/screen/cells = null
-	var/atom/movable/screen/inv1 = null
-	var/atom/movable/screen/inv2 = null
-	var/atom/movable/screen/inv3 = null
-	/// Used to determine whether they have the module menu shown or not
-	var/shown_robot_modules = 0
-	var/atom/movable/screen/robot_modules_background
 
 	//?3 Modules can be activated at any one time.
 	var/obj/item/robot_module/module_legacy = null
-	var/obj/item/module_active = null
 
 	var/obj/item/radio/borg/radio = null
 	var/obj/item/communicator/integrated/communicator = null
@@ -204,11 +187,8 @@
 	var/pounce_cooldown_time = 40
 	var/leap_at
 	var/dogborg = FALSE //Quadborg special features (overlays etc.)
-	var/wideborg = FALSE //When the borg simply doesn't use standard 32p size.
 	var/scrubbing = FALSE //Floor cleaning enabled
 	var/datum/matter_synth/water_res = null
-	var/notransform
-	var/original_icon = 'icons/mob/robots.dmi'
 	var/sitting = FALSE
 	var/bellyup = FALSE
 
@@ -805,19 +785,6 @@
 			if(U.action(src))
 				user.transfer_item_to_loc(U, src, INV_OP_FORCE)
 				to_chat(usr, "You apply the upgrade to [src]!")
-			else
-				to_chat(usr, "Upgrade error!")
-
-	else if(istype(W, /obj/item/ka_modkit/))
-		var/obj/item/ka_modkit/M = W
-		if(!opened)
-			to_chat(usr, "You must access the borgs internals!")
-		else if(!src.module && M.require_module)
-			to_chat(usr, "The borg must choose a module before it can be upgraded!")
-		else
-			if(M.install(src))
-				user.transfer_item_to_loc(M, src, INV_OP_FORCE)
-				to_chat(usr, "You apply the modkit to [src]!")
 			else
 				to_chat(usr, "Upgrade error!")
 
