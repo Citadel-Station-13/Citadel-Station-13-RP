@@ -4878,6 +4878,7 @@
 #include "code\modules\species\species_helpers.dm"
 #include "code\modules\species\species_hud.dm"
 #include "code\modules\species\species_shapeshift.dm"
+#include "code\modules\species\holosphere\actions.dm"
 #include "code\modules\species\holosphere\appearance.dm"
 #include "code\modules\species\holosphere\health.dm"
 #include "code\modules\species\holosphere\holosphere.dm"
