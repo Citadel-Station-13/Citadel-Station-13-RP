@@ -520,6 +520,10 @@
 	var/minimum_body_alpha = 255
 	var/maximum_body_alpha = 255
 
+	// Actions to grant when species is applied / remove when species is removed
+	var/list/actions_to_apply = list()
+	var/list/actions_applied = list()
+
 /datum/species/New()
 	//! LEGACY
 	is_subspecies = id != uid
@@ -609,6 +613,11 @@
 	for(var/faction in iff_factions_inherent)
 		H.add_iff_faction(faction)
 
+	for(var/path in actions_to_apply)
+		var/datum/action/A = new path()
+		A.grant(H.actions_innate)
+		actions_applied += A
+
 /**
  * called when we are removed from a mob
  */
@@ -638,6 +647,9 @@
 
 	for(var/faction in iff_factions_inherent)
 		H.remove_iff_faction(faction)
+
+	for(var/datum/action/A in actions_applied)
+		A.revoke(H.actions_controlled)
 
 /datum/species/proc/sanitize_species_name(var/name)
 	return sanitizeName(name, MAX_NAME_LEN)
