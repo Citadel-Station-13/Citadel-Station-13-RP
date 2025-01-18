@@ -43,7 +43,7 @@
 	. = screens
 
 	for(var/atom/movable/screen/actor_hud/actor_hud_object in screens)
-		inventory?.hud_object_post_sync(src, actor_hud_object)
+		host?.hud_object_post_sync(src, actor_hud_object)
 	set_active_hand(old_active_hand)
 
 /datum/actor_hud/inventory/on_mob_bound(mob/target)

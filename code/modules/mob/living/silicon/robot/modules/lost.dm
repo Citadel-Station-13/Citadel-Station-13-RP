@@ -1,7 +1,16 @@
 GENERATE_ROBOT_MODULE_PRESET(/lost)
 /datum/prototype/robot_module/lost
-	use_robot_module_path = /obj/item/robot_module/robot/
 	allowed_frames = list(
+		/datum/robot_frame{
+			name = "Drone";
+			robot_iconset = /datum/prototype/robot_iconset/hover_drone/lost;
+			robot_chassis = /datum/prototype/robot_chassis/hover;
+		},
+		/datum/robot_frame{
+			name = "Stray (Canine)";
+			robot_iconset = /datum/prototype/robot_iconset/dog_vale/stray;
+			robot_chassis = /datum/prototype/robot_chassis/quadruped/canine;
+		}
 	)
 
 /datum/prototype/robot_module/lost/provision_resource_store(datum/robot_resource_store/store)
@@ -12,43 +21,28 @@ GENERATE_ROBOT_MODULE_PRESET(/lost)
 	..()
 	if(normal_out)
 		normal_out |= list(
-		// Sec
-		/obj/item/melee/baton/shocker/robot,
-		/obj/item/handcuffs/cyborg,
-		/obj/item/borg/combat/shield,
+			// Sec
+			/obj/item/melee/baton/shocker/robot,
+			/obj/item/handcuffs/cyborg,
+			/obj/item/borg/combat/shield,
 
-		// Med
-		/obj/item/healthanalyzer,
-		/obj/item/reagent_containers/borghypo/lost,
-		/obj/item/shockpaddles/robot/hound,
-		/obj/item/robot_builtin/dog_mirrortool,
+			// Med
+			/obj/item/healthanalyzer,
+			/obj/item/reagent_containers/borghypo/lost,
+			/obj/item/shockpaddles/robot/hound,
+			/obj/item/robot_builtin/dog_mirrortool,
 
-		// Engi
-		/obj/item/weldingtool/electric/mounted,
-		/obj/item/tool/screwdriver/cyborg,
-		/obj/item/tool/wrench/cyborg,
-		/obj/item/tool/wirecutters/cyborg,
-		/obj/item/multitool,
+			// Engi
+			/obj/item/weldingtool/electric/mounted,
+			/obj/item/tool/screwdriver/cyborg,
+			/obj/item/tool/wrench/cyborg,
+			/obj/item/tool/wirecutters/cyborg,
+			/obj/item/multitool,
 
-		// Sci
-		/obj/item/robotanalyzer,
+			// Sci
+			/obj/item/robotanalyzer,
 		)
 	if(emag_out)
 		emag_out |= list(
 			/obj/item/gun/energy/retro/mounted,
 		)
-
-#warn translate chassis below
-
-/obj/item/robot_module/robot/lost
-	name = "lost robot module"
-	sprites = list(
-		"Drone" = "drone-lost"
-	)
-
-/obj/item/robot_module/robot/quad/stray
-	name = "stray robot module"
-	sprites = list(
-		"Stray" = "stray"
-	)
-	can_shred = TRUE
