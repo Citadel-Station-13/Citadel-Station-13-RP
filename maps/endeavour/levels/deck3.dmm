@@ -23228,12 +23228,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3starboardforhall)
-"pqk" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/obj/structure/grille,
-/turf/space/basic,
-/area/space)
 "pqE" = (
 /obj/machinery/vending/hydroseeds,
 /obj/effect/floor_decal/corner/green{
@@ -48009,7 +48003,7 @@ pRW
 pRW
 pRW
 pRW
-pqk
+dlE
 pRW
 wuh
 gmZ
