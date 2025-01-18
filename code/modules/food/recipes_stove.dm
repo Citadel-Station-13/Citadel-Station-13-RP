@@ -240,7 +240,7 @@ custom foods handle soups pretty well, so
 
 /datum/cooking_recipe/syntisteak
 	required_method = METHOD_STOVE
-	items = list(/obj/item/reagent_containers/food/snacks/ingredient/meat/syntiflesh = 100)
+	items = list(/obj/item/reagent_containers/food/snacks/ingredient/meat/synthflesh = 100)
 	result = /obj/item/reagent_containers/food/snacks/meatsteak
 
 /datum/cooking_recipe/stewedsoymeat

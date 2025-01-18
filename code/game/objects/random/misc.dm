@@ -335,7 +335,7 @@
 				prob(20);/obj/item/reagent_containers/food/snacks/ingredient/xenomeat/spidermeat,
 				prob(10);/obj/item/reagent_containers/food/snacks/ingredient/carp,
 				prob(5);/obj/item/reagent_containers/food/snacks/bearmeat,
-				prob(1);/obj/item/reagent_containers/food/snacks/ingredient/meat/syntiflesh,
+				prob(1);/obj/item/reagent_containers/food/snacks/ingredient/meat/synthflesh,
 				prob(1);/obj/item/reagent_containers/food/snacks/ingredient/meat/human,
 				prob(1);/obj/item/reagent_containers/food/snacks/ingredient/meat/monkey,
 				prob(1);/obj/item/reagent_containers/food/snacks/ingredient/meat/corgi,
@@ -352,7 +352,7 @@
 				prob(20);/obj/item/reagent_containers/food/snacks/ingredient/xenomeat/spidermeat,
 				prob(10);/obj/item/reagent_containers/food/snacks/ingredient/carp,
 				prob(5);/obj/item/reagent_containers/food/snacks/bearmeat,
-				prob(1);/obj/item/reagent_containers/food/snacks/ingredient/meat/syntiflesh,
+				prob(1);/obj/item/reagent_containers/food/snacks/ingredient/meat/synthflesh,
 				prob(1);/obj/item/reagent_containers/food/snacks/ingredient/meat/monkey,
 				prob(1);/obj/item/reagent_containers/food/snacks/ingredient/meat/corgi)
 

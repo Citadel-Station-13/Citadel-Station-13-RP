@@ -253,7 +253,7 @@
 	fruit = list("tomato" = 100)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/flat = 200,
-		/obj/item/reagent_containers/food/snacks/ingredient/meat/syntiflesh = 100,
+		/obj/item/reagent_containers/food/snacks/ingredient/meat/synthflesh = 100,
 		/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge = 100
 	)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/pizza/meatpizza

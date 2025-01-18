@@ -20,7 +20,7 @@
 		icon_state = cooked_icon
 
 
-/obj/item/reagent_containers/food/snacks/ingredient/meat/syntiflesh
+/obj/item/reagent_containers/food/snacks/ingredient/meat/synthflesh
 	name = "synthetic meat"
 	desc = "A synthetic slab of flesh."
 

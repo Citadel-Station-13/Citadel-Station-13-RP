@@ -16,7 +16,7 @@
 /datum/cooking_recipe/syntiburger
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/bun = 100,
-		/obj/item/reagent_containers/food/snacks/ingredient/meat/syntiflesh = 100
+		/obj/item/reagent_containers/food/snacks/ingredient/meat/synthflesh = 100
 	)
 	result = /obj/item/reagent_containers/food/snacks/monkeyburger
 
@@ -114,7 +114,7 @@
 /datum/cooking_recipe/syntikabob
 	items = list(
 		/obj/item/stack/rods,
-		/obj/item/reagent_containers/food/snacks/ingredient/meat/syntiflesh = 2
+		/obj/item/reagent_containers/food/snacks/ingredient/meat/synthflesh = 2
 	)
 	result = /obj/item/reagent_containers/food/snacks/monkeykabob
 
