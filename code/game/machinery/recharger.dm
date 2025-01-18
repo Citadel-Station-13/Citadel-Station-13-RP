@@ -209,11 +209,12 @@
 
 	..(severity)
 
-/obj/machinery/recharger/update_icon()	//we have an update_icon() in addition to the stuff in process to make it feel a tiny bit snappier.
+/obj/machinery/recharger/update_icon_state()
 	if(charging)
 		icon_state = icon_state_charging
 	else
 		icon_state = icon_state_idle
+	return ..()
 
 /obj/machinery/recharger/RefreshParts()
 	var/E = 0

@@ -20,7 +20,8 @@
 
 	//node 3 is the outlet, nodes 1 & 2 are intakes
 
-/obj/machinery/atmospherics/component/trinary/mixer/update_icon(var/safety = 0)
+/obj/machinery/atmospherics/component/trinary/mixer/update_icon()
+	. = ..()
 	if(tee)
 		icon_state = "t"
 	else if(mirrored)

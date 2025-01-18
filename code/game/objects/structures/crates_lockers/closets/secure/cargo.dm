@@ -82,7 +82,7 @@
 		/obj/item/mining_scanner,
 		/obj/item/gps/mining,
 		/obj/item/survivalcapsule,
-		/obj/item/clothing/glasses/material,
+		/obj/item/clothing/glasses/meson,
 		/obj/item/clothing/suit/storage/hooded/miner,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/miner,
 		/obj/item/clothing/shoes/boots/winter/mining,
