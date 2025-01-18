@@ -535,7 +535,7 @@
 /area/quartermaster/warehouse)
 "atU" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/foyer)
 "aup" = (
@@ -28220,9 +28220,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3aftmaint)
-"sCx" = (
-/turf/space/basic,
-/area/security/range)
 "sDb" = (
 /obj/structure/catwalk,
 /obj/machinery/door/airlock/maintenance,
@@ -28605,12 +28602,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/security_lockerroom)
-"sRJ" = (
-/obj/structure/closet/secure_closet/freezer/meat{
-	anchored = 1
-	},
-/turf/simulated/floor/tiled/freezer,
-/area/crew_quarters/kitchen)
 "sSl" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 6
@@ -45575,7 +45566,7 @@ fJN
 fJN
 lPz
 lPz
-sCx
+pRW
 pRW
 pRW
 pRW
@@ -46895,9 +46886,9 @@ pir
 sEE
 raR
 iNY
-sRJ
 aVW
-sRJ
+aVW
+aVW
 wEv
 pir
 bqn

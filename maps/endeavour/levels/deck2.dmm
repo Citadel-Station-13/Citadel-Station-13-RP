@@ -784,7 +784,7 @@
 /area/maintenance/research/xenobio)
 "ayx" = (
 /turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "ayB" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 8
@@ -995,9 +995,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
 "aFn" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/machinery/air_alarm{
 	pixel_y = 22
 	},
@@ -1011,7 +1008,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "aFv" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
@@ -1824,7 +1821,7 @@
 "biu" = (
 /obj/structure/sign/deck/second,
 /turf/simulated/wall/r_wall/prepainted,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "bix" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -4222,7 +4219,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "cxJ" = (
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical_science)
@@ -4972,7 +4969,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "cTK" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -6877,7 +6874,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "ecE" = (
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
@@ -7798,7 +7795,7 @@
 	dir = 8
 	},
 /obj/structure/bed/chair/bay/comfy/black,
-/obj/machinery/camera/network/civilian{
+/obj/machinery/camera/network/exploration{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
@@ -7992,7 +7989,7 @@
 /obj/fiftyspawner/steel,
 /obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "eKJ" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 4
@@ -8223,7 +8220,7 @@
 "eTf" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "eTk" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -8912,9 +8909,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_d)
 "fnA" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/machinery/door/airlock/maintenance/common{
 	name = "Flight Ops Support"
 	},
@@ -8927,7 +8921,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "fnS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -8962,7 +8956,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "fpq" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central7,
 /obj/structure/cable/green{
@@ -11804,8 +11798,9 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
+/obj/machinery/camera/network/exploration,
 /turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "hbZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -13332,7 +13327,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/wood,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "hSv" = (
 /obj/item/storage/firstaid/surgery,
 /obj/item/robotanalyzer,
@@ -14109,10 +14104,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/medical/surgeryobs)
 "iur" = (
-/obj/machinery/power/apc/east_mount,
-/obj/structure/cable/green{
-	icon_state = "0-8"
-	},
 /obj/structure/closet/secure_closet/pilot,
 /obj/effect/floor_decal/spline/fancy/wood/cee{
 	dir = 4
@@ -14121,7 +14112,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "iuJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -14409,7 +14400,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "iAl" = (
 /obj/structure/table/glass,
 /obj/machinery/door/window/westleft{
@@ -14988,7 +14979,7 @@
 "iVM" = (
 /obj/effect/floor_decal/spline/fancy/wood/corner,
 /turf/simulated/floor/wood,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "iVW" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/box/donkpockets,
@@ -17531,7 +17522,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "kCt" = (
 /turf/simulated/wall/prepainted/science,
 /area/rnd/research/researchdivision)
@@ -17844,7 +17835,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "kNM" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -18264,15 +18255,12 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/structure/cable/green{
-	icon_state = "2-4"
-	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "kYY" = (
 /obj/structure/sink{
 	dir = 4;
@@ -19028,7 +19016,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/plating,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "lwb" = (
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
@@ -20122,7 +20110,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "miA" = (
 /obj/machinery/air_alarm/monitor/isolation{
 	alarm_id = "isolation_one";
@@ -20287,7 +20275,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "mpP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 5
@@ -20510,9 +20498,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "mwB" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/machinery/air_alarm{
 	pixel_y = 22
 	},
@@ -20522,8 +20507,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/machinery/camera/network/exploration,
 /turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "mwF" = (
 /obj/machinery/light{
 	dir = 4
@@ -21465,7 +21451,7 @@
 	},
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "nbe" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -21752,9 +21738,6 @@
 /obj/item/book/manual/medical_diagnostics_manual,
 /turf/simulated/floor/carpet/blucarpet,
 /area/crew_quarters/medbreak)
-"nhq" = (
-/turf/simulated/wall/r_wall/prepainted,
-/area/tether/surfacebase/shuttle_pad)
 "nhX" = (
 /obj/effect/floor_decal/corner_techfloor_grid/full{
 	dir = 8
@@ -23499,7 +23482,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/wood,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "olB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -23581,7 +23564,7 @@
 /obj/fiftyspawner/phoronrglass,
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "onN" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -25828,9 +25811,6 @@
 /turf/simulated/wall/r_wall/prepainted/medical,
 /area/medical/virology_aft_access)
 "pyb" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
@@ -25838,8 +25818,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/camera/network/exploration,
 /turf/simulated/floor/wood,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "pyk" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -27677,7 +27658,7 @@
 "qxd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "qxs" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -28495,9 +28476,6 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1starboardforhall)
 "qUP" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
 	},
@@ -28508,7 +28486,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "qVs" = (
 /obj/structure/curtain/medical,
 /obj/structure/cable/green{
@@ -28836,7 +28814,7 @@
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "rdl" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -29027,7 +29005,7 @@
 /obj/random/tech_supply,
 /obj/random/tool,
 /turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "rig" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/black{
 	dir = 4
@@ -30275,7 +30253,7 @@
 /obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/wood,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "rYp" = (
 /obj/structure/bed/roller,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -30354,7 +30332,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/wood,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "scE" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -31249,7 +31227,7 @@
 	},
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "sFY" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -33119,7 +33097,7 @@
 "tNI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/wood,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "tNZ" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
@@ -35566,7 +35544,7 @@
 /obj/item/tank/phoron,
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "vtM" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -36081,7 +36059,7 @@
 	},
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "vMn" = (
 /obj/machinery/camera/network/research{
 	dir = 1
@@ -37417,7 +37395,7 @@
 /obj/item/clothing/glasses/welding,
 /obj/item/weldingtool,
 /turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "wvW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -37560,7 +37538,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "wAn" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -37595,7 +37573,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "wBq" = (
 /obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
@@ -37757,7 +37735,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "wGq" = (
 /obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/plating,
@@ -38231,7 +38209,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/plating,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "wTM" = (
 /obj/machinery/floodlight,
 /turf/simulated/floor/plating,
@@ -39067,9 +39045,6 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
@@ -39077,7 +39052,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "xug" = (
 /obj/structure/cable/green{
 	icon_state = "2-4"
@@ -39697,7 +39672,7 @@
 "xLo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "xLu" = (
 /obj/structure/bed/chair/sofa/beige{
 	dir = 8
@@ -39780,7 +39755,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/shuttle_pad)
+/area/exploration/pilot_Office)
 "xOt" = (
 /obj/machinery/camera/network/medbay{
 	dir = 1;
@@ -69031,14 +69006,14 @@ gfI
 vWh
 bgF
 fDK
-nhq
-nhq
+scX
+scX
 iAd
-nhq
-nhq
-nhq
-nhq
-nhq
+scX
+scX
+scX
+scX
+scX
 lmG
 qBd
 pRW
@@ -69228,11 +69203,11 @@ oYE
 biu
 sFS
 kNG
-nhq
+scX
 kCh
 rdi
 rif
-nhq
+scX
 qBd
 jRE
 pRW
@@ -69419,14 +69394,14 @@ vWh
 vWh
 fKA
 xcG
-nhq
+scX
 naZ
 kNG
-nhq
+scX
 vMh
 ayx
 vtx
-nhq
+scX
 pRW
 pRW
 pRW
@@ -69613,14 +69588,14 @@ vWh
 vWh
 pXE
 ana
-nhq
+scX
 wFI
 kNG
 luU
 qxd
 cxF
 eKl
-nhq
+scX
 pRW
 pRW
 pRW
@@ -69814,7 +69789,7 @@ wTK
 xLo
 fpp
 wvk
-nhq
+scX
 pRW
 pRW
 pRW
@@ -70001,14 +69976,14 @@ uFQ
 cwT
 bgF
 vsM
-nhq
+scX
 mwB
 xOh
-nhq
+scX
 hbR
 ayx
 onF
-nhq
+scX
 pRW
 pRW
 pRW
@@ -70195,14 +70170,14 @@ xIg
 hkf
 bkX
 plL
-nhq
+scX
 fnA
-nhq
-nhq
-nhq
-nhq
-nhq
-nhq
+scX
+scX
+scX
+scX
+scX
+scX
 lIp
 pRW
 pRW
@@ -70389,14 +70364,14 @@ tYH
 nrD
 lbX
 fCt
-nhq
+scX
 qUP
 mpL
 wAN
 hSn
-nhq
-nhq
-nhq
+scX
+scX
+scX
 pRW
 pRW
 pRW
@@ -70583,12 +70558,12 @@ cCF
 hGF
 wDK
 qaO
-nhq
+scX
 aFn
 tNI
 rYl
 ecg
-nhq
+scX
 pRW
 pRW
 pRW
@@ -70777,12 +70752,12 @@ qIz
 fOr
 wqT
 qEo
-nhq
+scX
 xuc
 iVM
 wzT
 scw
-nhq
+scX
 lIp
 pRW
 pRW
@@ -70971,7 +70946,7 @@ yiM
 pic
 oCg
 oIp
-nhq
+scX
 pyb
 oli
 eTf
@@ -71165,9 +71140,9 @@ yiM
 pic
 oCg
 oIp
-nhq
+scX
 iur
-nhq
+scX
 eTf
 pRW
 pRW
@@ -71359,9 +71334,9 @@ sBd
 pic
 oCg
 vUJ
-nhq
-nhq
-nhq
+scX
+scX
+scX
 pRW
 pRW
 pRW
