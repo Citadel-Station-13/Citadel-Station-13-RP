@@ -1,3 +1,4 @@
+GENERATE_ROBOT_MODULE_PRESET(/cybersun/sapper)
 /datum/prototype/robot_module/cybersun/sapper
 	use_robot_module_path = /obj/item/robot_module/robot/
 	allowed_frames = list(
@@ -22,7 +23,7 @@
 			/obj/item/stack/tile/roofing,
 			/obj/item/stack/material/glass/reinforced,
 		)
-		
+
 #warn translate chassis below
 /obj/item/robot_module/robot/syndicate/mechanist
 	name = "mechanist robot module"

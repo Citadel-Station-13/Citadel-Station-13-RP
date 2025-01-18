@@ -1,3 +1,4 @@
+GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/service)
 /datum/prototype/robot_module/nanotrasen/service
 	use_robot_module_path = /obj/item/robot_module/robot/service
 	allowed_frames = list(

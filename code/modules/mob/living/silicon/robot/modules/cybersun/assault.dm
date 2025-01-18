@@ -1,3 +1,4 @@
+GENERATE_ROBOT_MODULE_PRESET(/cybersun/assault)
 /datum/prototype/robot_module/cybersun/assault
 	use_robot_module_path = /obj/item/robot_module/robot/
 	allowed_frames = list(

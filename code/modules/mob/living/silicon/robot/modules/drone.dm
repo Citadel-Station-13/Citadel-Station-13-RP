@@ -24,6 +24,13 @@
 			/obj/item/stack/material/glass/reinforced,
 		)
 
+GENERATE_ROBOT_MODULE_PRESET(/drone/construction)
+/datum/prototype/robot_module/drone/construction
+
+GENERATE_ROBOT_MODULE_PRESET(/drone/mining)
+/datum/prototype/robot_module/drone/mining
+
+
 #warn translate chassis below
 
 /obj/item/robot_module/drone

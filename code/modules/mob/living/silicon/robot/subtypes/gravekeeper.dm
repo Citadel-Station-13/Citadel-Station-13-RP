@@ -14,7 +14,6 @@
 	lawchannel = "State"
 	braintype = "Drone"
 	idcard_type = /obj/item/card/id
-	icon_selected = FALSE
 	can_be_antagged = FALSE
 	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/robot/gravekeeper)
 

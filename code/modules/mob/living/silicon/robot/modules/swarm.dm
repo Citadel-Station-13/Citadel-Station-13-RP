@@ -25,6 +25,7 @@
 	id = robot.idcard
 	. += id
 
+GENERATE_ROBOT_MODULE_PRESET(/swarm/ranged)
 /obj/item/robot_module/drone/swarm/ranged
 	name = "swarm gunner module"
 
@@ -32,6 +33,7 @@
 	. = ..()
 	. |= /obj/item/gun/energy/xray/swarm
 
+GENERATE_ROBOT_MODULE_PRESET(/swarm/melee)
 /obj/item/robot_module/drone/swarm/melee/get_modules()
 	. = ..()
 	. |= /obj/item/melee/transforming/energy/sword/ionic_rapier/lance
