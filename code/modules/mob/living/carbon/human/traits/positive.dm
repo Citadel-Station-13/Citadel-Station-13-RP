@@ -283,3 +283,4 @@
 	add_verb(H, /mob/living/carbon/human/proc/underwater_devour)
 	add_verb(H, /mob/living/carbon/human/proc/water_stealth)
 	S.water_movement = min(-4, S.water_movement)
+	..()
