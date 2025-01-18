@@ -10,7 +10,7 @@ GENERATE_ROBOT_MODULE_PRESET(/lost)
 			name = "Stray (Canine)";
 			robot_iconset = /datum/prototype/robot_iconset/dog_vale/stray;
 			robot_chassis = /datum/prototype/robot_chassis/quadruped/canine;
-		}
+		},
 	)
 
 /datum/prototype/robot_module/lost/provision_resource_store(datum/robot_resource_store/store)
