@@ -47,7 +47,7 @@
 		0, 0, 0,
 	)
 
-/obj/machinery/gear_painter/update_icon()
+/obj/machinery/gear_painter/update_icon_state()
 	if(panel_open)
 		icon_state = "colormate_open"
 	else if(inoperable())
@@ -56,6 +56,7 @@
 		icon_state = "colormate_active"
 	else
 		icon_state = "colormate"
+	return ..()
 
 /obj/machinery/gear_painter/Destroy()
 	if(inserted) //please i beg you do not drop nulls
