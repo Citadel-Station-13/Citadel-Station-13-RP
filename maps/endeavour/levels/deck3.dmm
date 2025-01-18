@@ -14609,11 +14609,6 @@
 /obj/random/maintenance/security,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3aftmaint)
-"jwx" = (
-/obj/effect/paint/beastybrown,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/quartermaster/warehouse)
 "jwQ" = (
 /obj/structure/table/rack/shelf,
 /obj/item/radio{
@@ -24630,9 +24625,9 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/security/range)
 "qmQ" = (
-/obj/machinery/door/firedoor,
-/obj/effect/paint/beastybrown,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/beastybrown,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
 "qmV" = (
@@ -55211,7 +55206,7 @@ txc
 txc
 txc
 txc
-jwx
+jon
 vvO
 ciU
 agT
