@@ -29,10 +29,21 @@
 	/// equip object
 	var/atom/movable/screen/actor_hud/inventory/equip_hand/button_equip_hand
 
+	//* Imprinted by /datum/inventory *//
+	/// render held items in row mode; no left/right semantics.
+	/// * will use 'hand' instead of 'hand-(left|right)'
+	#warn impl
+	var/tmp/inv_held_items_row_mode
+
 /datum/actor_hud/inventory/sync_to_preferences(datum/hud_preferences/preference_set)
 	var/old_active_hand = applied_active_hand
 	set_active_hand(null)
-	. = ..()
+
+	var/list/atom/movable/screen/screens = ..()
+	. = screens
+
+	for(var/atom/movable/screen/actor_hud/actor_hud_object in screens)
+		inventory?.hud_object_post_sync(src, actor_hud_object)
 	set_active_hand(old_active_hand)
 
 /datum/actor_hud/inventory/on_mob_bound(mob/target)
@@ -52,6 +63,7 @@
 	ASSERT(!host)
 	host = inventory
 	LAZYADD(inventory.huds_using, src)
+	inventory.hud_alter(src)
 	rebuild(inventory.build_inventory_slots_with_remappings(), length(inventory.held_items))
 	for(var/i in 1 to length(inventory.held_items))
 		if(!inventory.held_items[i])

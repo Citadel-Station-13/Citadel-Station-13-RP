@@ -34,6 +34,9 @@
 	/// * 1, 3, 5, ... are left
 	/// * 2, 4, 6, ... are right
 	var/list/obj/item/held_items = list()
+	/// held items are rendered with this many on one row
+	/// * if set, we will not apply default left/right hand semantics!
+	var/held_items_row_mode
 	/// robot modules
 	///
 	/// * this is a list with special semantics; null = do not render, existing = render, even if empty.
