@@ -1,48 +1,31 @@
-/datum/category_item/catalogue/fauna/silicon/robot/stray
-	name = "Robot - Stray"
-	desc = "Cyborgs may be considered valuable assets on the Frontier, but their \
-	recovery is not always tenable. Vessels lost in space, due either to mishap or \
-	design, will sometimes harbor 'lost' cyborgs. These units are often sole survivors, \
-	serving as living records of their vessel's last minutes. Lost cyborgs are valuable \
-	for a multitude of reasons, and are often claimed as salvage and repurposed."
-	value = CATALOGUER_REWARD_EASY
-
-/mob/living/silicon/robot/stray
+/mob/living/silicon/robot/preset_module/lost
 	lawupdate = 0
 	scrambledcodes = 1
-	icon_state = "stray"
-	modtype = "Stray"
 	lawchannel = "State"
 	braintype = "Drone"
 	idcard_type = /obj/item/card/id
-	icon_selected = FALSE
-	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/robot/stray)
 
-/mob/living/silicon/robot/stray/init()
+/mob/living/silicon/robot/preset_module/lost/init()
 	aiCamera = new/obj/item/camera/siliconcam/robot_camera(src)
 
 	mmi = new /obj/item/mmi/digital/robot(src) // Explicitly a drone.
-	module = new /obj/item/robot_module/robot/quad/stray(src)
-	cut_overlays()
 	init_id()
 
-	updatename("Stray")
-
-	if(!cell)
-		cell = new /obj/item/cell/high(src) // 15k cell, as recharging stations are a lot more rare on the Surface.
-
 	playsound(loc, 'sound/mecha/nominalsyndi.ogg', 75, 0)
+	#warn wtf
 
-/mob/living/silicon/robot/stray/speech_bubble_appearance()
+/mob/living/silicon/robot/preset_module/lost/speech_bubble_appearance()
 	return "synthetic_evil"
 
-/mob/living/silicon/robot/stray/randomlaws
+#warn prnue what we can
 
-/mob/living/silicon/robot/stray/randomlaws/init()
+/mob/living/silicon/robot/preset_module/lost/randomlaws
+
+/mob/living/silicon/robot/preset_module/lost/randomlaws/init()
 	..()
-	laws = give_random_lawset_vore()
+	laws = legacy_give_random_lawset_snowflake()
 
-/mob/living/silicon/proc/give_random_lawset_vore()		// Should be filled out with more vorish possibilities later
+/mob/living/silicon/proc/legacy_give_random_lawset_snowflake()
 	// Decide what kind of laws we want to draw from.
 	var/law_class = pick(
 		prob(25);"good",
@@ -140,7 +123,3 @@
 					return new /datum/ai_lawset/foreign_tsc/aggressive()
 				if(5) // Manicial laugher here.
 					return new /datum/ai_lawset/tyrant()
-
-
-
-	return
