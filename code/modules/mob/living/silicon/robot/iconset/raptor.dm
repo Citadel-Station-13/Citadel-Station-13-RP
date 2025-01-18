@@ -11,6 +11,8 @@
 		/datum/robot_iconset_variation/resting,
 	)
 
+#warn add into relevant modules
+
 /datum/prototype/robot_iconset/raptor/gravekeeper
 	icon_state = "gravekeeper"
 	icon_state_indicator = "indicator"

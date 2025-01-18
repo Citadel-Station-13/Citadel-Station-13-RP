@@ -13,6 +13,7 @@
 		/datum/robot_iconset_variation/resting,
 	)
 
+#warn add into relevant modules
 
 /datum/prototype/robot_iconset/biped_meka/one
 	icon_state = "one"
