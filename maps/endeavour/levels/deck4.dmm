@@ -9613,11 +9613,6 @@
 /obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_eva)
-"kDd" = (
-/obj/structure/catwalk,
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/endeavour/hallway/d4fwdmaint)
 "kDR" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -16566,14 +16561,6 @@
 /obj/machinery/air_alarm/north_mount,
 /turf/simulated/floor/tiled/steel,
 /area/tcommsat/computer)
-"sZO" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/obj/structure/catwalk,
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/endeavour/hallway/d4fwdmaint)
 "tax" = (
 /obj/structure/sign/fire,
 /turf/simulated/wall/r_wall/prepainted/engineering,
@@ -38758,10 +38745,10 @@ dvY
 xXL
 xXL
 xXL
-kDd
+xXL
 lHm
 xXL
-kDd
+xXL
 dvY
 wiw
 szc
@@ -39340,7 +39327,7 @@ qBz
 qBz
 qBz
 qBz
-sZO
+pku
 xXL
 xXL
 lHm
@@ -50434,7 +50421,7 @@ pbx
 pXA
 eDQ
 dvY
-kDd
+xXL
 xXL
 fwR
 jNg

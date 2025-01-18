@@ -11615,15 +11615,6 @@
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
-"iqq" = (
-/obj/machinery/door/airlock/maintenance/common{
-	id_tag = "maint_dorm"
-	},
-/obj/machinery/door/firedoor,
-/obj/structure/catwalk,
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/endeavour/hallway/d1fwdmaint)
 "iqr" = (
 /obj/structure/table/standard,
 /obj/item/inflatable_duck,
@@ -61826,7 +61817,7 @@ wSl
 tHJ
 tHJ
 ivO
-iqq
+uKO
 byt
 byt
 ris

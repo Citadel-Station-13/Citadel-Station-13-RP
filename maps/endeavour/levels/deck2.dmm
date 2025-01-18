@@ -19255,11 +19255,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
-"lCS" = (
-/obj/structure/catwalk,
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/maintenance/research)
 "lDf" = (
 /obj/machinery/air_alarm{
 	dir = 8;
@@ -22558,11 +22553,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/medical/virologymaint)
-"nJI" = (
-/obj/structure/catwalk,
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/maintenance/medbay/aft)
 "nJM" = (
 /obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
@@ -49975,7 +49965,7 @@ aXm
 dyL
 aXm
 fPz
-nJI
+iec
 ukr
 ctj
 ogg
@@ -68590,7 +68580,7 @@ pRW
 pRW
 pRW
 xVe
-lCS
+neh
 neh
 xIf
 xIf
@@ -68785,7 +68775,7 @@ pRW
 pRW
 xVe
 gUD
-lCS
+neh
 neh
 neh
 svm
