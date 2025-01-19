@@ -53,8 +53,8 @@
 	icon_state = "4-8"
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 1
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
@@ -177,10 +177,10 @@
 /area/endeavour/hallway/d1aftmaint)
 "ahv" = (
 /obj/machinery/access_button{
-	command = "cycle_ext";
+	pixel_y = -21;
 	frequency = 1380;
-	master_tag = "civvie_docker";
-	pixel_y = -21
+	command = "cycle_ext";
+	master_tag = "civvie_docker"
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -219,8 +219,8 @@
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 2
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portforhall)
@@ -313,11 +313,11 @@
 "anp" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/access_button{
-	command = "cycle_int";
-	frequency = 1380;
-	master_tag = "civvie_docker";
 	pixel_x = 5;
-	pixel_y = 25
+	pixel_y = 25;
+	frequency = 1380;
+	command = "cycle_int";
+	master_tag = "civvie_docker"
 	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/voidcraft/vertical,
@@ -924,8 +924,8 @@
 /area/hallway/secondary/docking_hallway)
 "aIx" = (
 /obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 2
 	},
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
@@ -1412,10 +1412,10 @@
 /area/endeavour/hallway/d1aftmaint)
 "aXR" = (
 /obj/machinery/button/remote/airlock{
-	id = "gateway";
 	name = "Gateway Blast Doors";
 	dir = 8;
 	pixel_x = 24;
+	id = "gateway";
 	req_one_access = list(19,44)
 	},
 /turf/simulated/floor/tiled/dark,
@@ -1596,8 +1596,8 @@
 	},
 /obj/machinery/airlock_sensor{
 	dir = 8;
-	id_tag = "deck4_dockarm2";
-	pixel_x = 23
+	pixel_x = 23;
+	id_tag = "deck4_dockarm2"
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/map_helper/airlock/sensor/chamber_sensor,
@@ -2459,8 +2459,8 @@
 	dir = 1
 	},
 /obj/item/radio/intercom{
-	dir = 1;
 	name = "Station Intercom (General)";
+	dir = 1;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/steel,
@@ -2623,10 +2623,10 @@
 "bZe" = (
 /obj/machinery/computer/ship/sensors,
 /obj/machinery/button/remote/blast_door{
-	id = "cockpit_lockdown";
 	name = "Cockpit Lockdown";
+	pixel_x = -29;
 	pixel_y = 5;
-	pixel_x = -29
+	id = "cockpit_lockdown"
 	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/cockpit)
@@ -2905,8 +2905,8 @@
 	pixel_x = -24
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
@@ -3039,8 +3039,8 @@
 /area/shuttle/civvie/general)
 "csD" = (
 /obj/machinery/door/window{
-	dir = 8;
 	name = "Mass Driver";
+	dir = 8;
 	req_access = list(22)
 	},
 /obj/machinery/mass_driver{
@@ -3131,12 +3131,12 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "cvH" = (
+/mob/living/simple_mob/animal/passive/lizard{
+	name = "Beppy";
+	desc = "Beppy is the result of a series of funding cuts to the science division's budget. Beppy is not his original name, but it is the only name he has now. He was born a working man, quickly rising through the ranks to become a hotshot in the Nanotrasen science division, only to be stuck in an accident that irretrievably warped him along with his department to an unreachable part of subspace. Years of research and trial and error finally led the science team to return to the correct dimension, albeit all of their souls were transferred into Beppy's body, and his body was transfigured into that of a small green anole. The true moral of this story is that back in nineteen ninety eight the undertaker threw mankind off hell in a cell and plummeted sixteen feet through an announcers table."
+	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
-	},
-/mob/living/simple_mob/animal/passive/lizard{
-	desc = "Beppy is the result of a series of funding cuts to the science division's budget. Beppy is not his original name, but it is the only name he has now. He was born a working man, quickly rising through the ranks to become a hotshot in the Nanotrasen science division, only to be stuck in an accident that irretrievably warped him along with his department to an unreachable part of subspace. Years of research and trial and error finally led the science team to return to the correct dimension, albeit all of their souls were transferred into Beppy's body, and his body was transfigured into that of a small green anole. The true moral of this story is that back in nineteen ninety eight the undertaker threw mankind off hell in a cell and plummeted sixteen feet through an announcers table.";
-	name = "Beppy"
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
@@ -3152,8 +3152,8 @@
 	icon_state = "0-4"
 	},
 /obj/structure/disposalpipe/sortjunction{
-	dir = 1;
 	name = "FD Office";
+	dir = 1;
 	sortType = "FD Office"
 	},
 /turf/simulated/floor/tiled/steel,
@@ -3380,8 +3380,8 @@
 	icon_state = "4-8"
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 1
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -3405,8 +3405,8 @@
 	dir = 4
 	},
 /obj/machinery/door/window{
-	dir = 8;
 	name = "Cafe";
+	dir = 8;
 	req_one_access = list(25)
 	},
 /obj/machinery/door/firedoor{
@@ -3517,9 +3517,9 @@
 	},
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/item/toy/plushie/deer{
+	name = "Steffansson";
 	pixel_x = 8;
-	pixel_y = -8;
-	name = "Steffansson"
+	pixel_y = -8
 	},
 /turf/simulated/floor/grass,
 /area/endeavour/exploration/hallway_aft)
@@ -3612,8 +3612,8 @@
 "cMQ" = (
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/machinery/atmospherics/portables_connector{
-	dir = 4;
-	name = "Engine Fuel Port"
+	name = "Engine Fuel Port";
+	dir = 4
 	},
 /obj/machinery/light{
 	dir = 1
@@ -3624,8 +3624,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 2
 	},
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
@@ -3878,8 +3878,8 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 2
 	},
 /obj/structure/cable/green{
 	icon_state = "2-8"
@@ -3914,8 +3914,8 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 1
 	},
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/navblue/border,
@@ -4078,10 +4078,10 @@
 /area/hallway/secondary/docking_hallway)
 "deU" = (
 /obj/machinery/airlock_sensor{
-	frequency = 1380;
-	id_tag = "courser_dock";
+	dir = 1;
 	pixel_y = -24;
-	dir = 1
+	frequency = 1380;
+	id_tag = "courser_dock"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/courser_dock)
@@ -4417,33 +4417,33 @@
 	},
 /obj/machinery/airlock_sensor{
 	dir = 1;
+	pixel_y = -22;
 	frequency = 1380;
-	id_tag = "endeavour_specops_dock";
-	pixel_y = -22
+	id_tag = "endeavour_specops_dock"
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
+	pixel_y = 32;
 	frequency = 1380;
-	id_tag = "endeavour_specops_dock";
-	pixel_y = 32
+	id_tag = "endeavour_specops_dock"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway2)
 "dsk" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/regular{
+	name = "Bridge Lockdown";
+	icon_state = "pdoor0";
+	opacity = 0;
 	density = 0;
 	dir = 4;
-	icon_state = "pdoor0";
-	id = "bridge_lockdown";
-	name = "Bridge Lockdown";
-	opacity = 0
+	id = "bridge_lockdown"
 	},
 /obj/map_helper/access_helper/airlock/station/head_office/captain,
 /obj/machinery/door/airlock/command{
-	id_tag = "captaindoor";
 	name = "Facility Director's Office";
+	id_tag = "captaindoor";
 	req_one_access = null
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -4536,8 +4536,8 @@
 	dir = 10
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
@@ -4681,8 +4681,8 @@
 /area/crew_quarters/coffee_shop)
 "dDd" = (
 /obj/item/radio/intercom{
-	pixel_y = -24;
-	dir = 8
+	dir = 8;
+	pixel_y = -24
 	},
 /turf/simulated/wall/prepainted,
 /area/maintenance/tool_storage)
@@ -4709,9 +4709,9 @@
 /obj/machinery/door/airlock/voidcraft/vertical,
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
+	pixel_x = 24;
 	frequency = 1380;
-	master_tag = "courser_docker";
-	pixel_x = 24
+	master_tag = "courser_docker"
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
@@ -4771,8 +4771,8 @@
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardafthall)
@@ -4899,8 +4899,8 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
-	name = "Exploration Public Lobby"
+	name = "Exploration Public Lobby";
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/exploration)
@@ -5025,8 +5025,8 @@
 	pixel_x = -9
 	},
 /obj/machinery/light_switch{
-	pixel_y = 5;
-	pixel_x = 25
+	pixel_x = 25;
+	pixel_y = 5
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
@@ -5094,9 +5094,9 @@
 	pixel_y = 32
 	},
 /obj/machinery/button/windowtint{
-	id = "chapel";
 	pixel_x = -24;
-	pixel_y = 26
+	pixel_y = 26;
+	id = "chapel"
 	},
 /turf/simulated/floor/lino,
 /area/chapel/office)
@@ -5337,8 +5337,8 @@
 "dZQ" = (
 /obj/structure/table/marble,
 /obj/item/reagent_containers/food/drinks/britcup{
-	pixel_y = 9;
-	pixel_x = 9
+	pixel_x = 9;
+	pixel_y = 9
 	},
 /turf/simulated/floor/carpet,
 /area/bridge/meeting_room)
@@ -5475,28 +5475,28 @@
 	dir = 4
 	},
 /obj/effect/shuttle_landmark{
-	base_area = /area/endeavour/surfacebase/tram;
-	base_turf = /turf/simulated/floor/tiled/techfloor/grid;
+	name = "Escape Shuttle Endeavour";
 	landmark_tag = "escape_endeavour";
-	name = "Escape Shuttle Endeavour"
+	base_area = /area/endeavour/surfacebase/tram;
+	base_turf = /turf/simulated/floor/tiled/techfloor/grid
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/endeavour/surfacebase/tram)
 "eex" = (
 /obj/structure/sign/directions/engineering{
-	pixel_y = -6;
-	dir = 1
+	dir = 1;
+	pixel_y = -6
 	},
 /obj/structure/sign/directions/cargo{
 	dir = 1
 	},
 /obj/structure/sign/directions/science{
-	pixel_y = 6;
-	dir = 1
+	dir = 1;
+	pixel_y = 6
 	},
 /obj/structure/sign/directions/cryo{
-	pixel_y = 13;
-	dir = 1
+	dir = 1;
+	pixel_y = 13
 	},
 /obj/structure/sign/directions/evac{
 	dir = 8;
@@ -5673,14 +5673,14 @@
 /area/exploration)
 "emL" = (
 /obj/machinery/button/windowtint{
-	id = "pathfinder_office";
 	pixel_x = 26;
-	pixel_y = -26
+	pixel_y = -26;
+	id = "pathfinder_office"
 	},
 /obj/machinery/light_switch{
 	dir = 1;
-	pixel_y = -29;
-	pixel_x = 13
+	pixel_x = 13;
+	pixel_y = -29
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
@@ -5858,8 +5858,8 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 2
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
@@ -5896,8 +5896,8 @@
 /area/endeavour/hallway/d1aftmaint)
 "etW" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Deck 1 Aft Grid";
-	cur_coils = 2
+	cur_coils = 2;
+	RCon_tag = "Deck 1 Aft Grid"
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -5960,10 +5960,10 @@
 "evF" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/porta_turret/stationary{
-	gl_uid = "exploration";
-	installation = /obj/item/gun/energy/phasegun;
 	name = "exploration turret";
-	uid = "exploration"
+	uid = "exploration";
+	gl_uid = "exploration";
+	installation = /obj/item/gun/energy/phasegun
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/excursion/general)
@@ -6225,8 +6225,8 @@
 	dir = 9
 	},
 /obj/item/radio/intercom{
-	dir = 1;
 	name = "Station Intercom (General)";
+	dir = 1;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/steel,
@@ -6442,8 +6442,8 @@
 "ePo" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red,
 /obj/machinery/atmospherics/portables_connector{
-	dir = 4;
-	name = "Toxins Input Connector"
+	name = "Toxins Input Connector";
+	dir = 4
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled,
@@ -6460,8 +6460,8 @@
 /area/space)
 "ePN" = (
 /obj/machinery/air_alarm{
-	frequency = 1441;
 	pixel_y = 22;
+	frequency = 1441;
 	target_temperature = 275.15
 	},
 /turf/simulated/floor/tiled,
@@ -6621,8 +6621,8 @@
 /obj/structure/table/woodentable,
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/structure/sign/goldenplaque{
-	desc = "This plaque is thankfully empty, but is dedicated to those that were killed in the line of duty protecting the NSV Endeavour, and Nanotrasen as a whole.";
 	name = "Memorial Plaque";
+	desc = "This plaque is thankfully empty, but is dedicated to those that were killed in the line of duty protecting the NSV Endeavour, and Nanotrasen as a whole.";
 	pixel_y = 32
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -6759,10 +6759,10 @@
 /area/bridge/office)
 "eYd" = (
 /obj/machinery/access_button/airlock_interior{
-	frequency = 1380;
-	master_tag = "expshuttle_dock";
+	dir = 8;
 	pixel_y = 10;
-	dir = 8
+	frequency = 1380;
+	master_tag = "expshuttle_dock"
 	},
 /turf/simulated/wall/r_wall/prepainted,
 /area/hallway/secondary/docking_hallway2)
@@ -7060,8 +7060,8 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 1
 	},
 /turf/simulated/floor/tiled/monofloor{
 	dir = 4
@@ -7228,8 +7228,8 @@
 	},
 /obj/machinery/air_alarm{
 	dir = 4;
-	frequency = 1441;
-	pixel_x = -23
+	pixel_x = -23;
+	frequency = 1441
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/courser_dock)
@@ -7358,8 +7358,8 @@
 /area/shuttle/excursion/cockpit)
 "fqL" = (
 /obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardforhall)
@@ -7367,8 +7367,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 4
 	},
 /obj/effect/floor_decal/industrial/warning/full,
 /turf/simulated/floor/plating,
@@ -7596,8 +7596,8 @@
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 2
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/exploration/hallway_aft)
@@ -7745,10 +7745,10 @@
 /area/maintenance/substation/dock)
 "fBI" = (
 /obj/machinery/button/remote/airlock{
-	id = "maint_dorm";
 	name = "Door Lock";
 	pixel_x = 24;
 	pixel_y = -4;
+	id = "maint_dorm";
 	specialfunctions = 4
 	},
 /turf/simulated/floor/wood,
@@ -8056,9 +8056,9 @@
 /area/vacant/vacant_bar)
 "fNb" = (
 /obj/machinery/door/blast/regular{
+	name = "Burn Chamber Vent";
 	dir = 8;
-	id = "burn_chamber_v";
-	name = "Burn Chamber Vent"
+	id = "burn_chamber_v"
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/test_area)
@@ -8090,8 +8090,8 @@
 	},
 /obj/machinery/media/jukebox{
 	icon_state = "superjuke-nopower";
-	state_base = "superjuke";
-	pixel_x = -29
+	pixel_x = -29;
+	state_base = "superjuke"
 	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/cockpit)
@@ -8157,9 +8157,9 @@
 	dir = 1
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
+	pixel_y = 32;
 	frequency = 1380;
-	id_tag = "civvie_docker";
-	pixel_y = 32
+	id_tag = "civvie_docker"
 	},
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
@@ -8541,7 +8541,10 @@
 /obj/effect/floor_decal/corner/black/full{
 	dir = 1
 	},
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
+/obj/item/reagent_containers/glass/food_holder/oventray,
+/obj/item/reagent_containers/glass/food_holder/oventray,
+/obj/item/reagent_containers/glass/food_holder/oventray,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/lounge/kitchen_freezer)
 "geF" = (
@@ -8568,9 +8571,9 @@
 	dir = 9
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
+	pixel_x = 25;
 	frequency = 1380;
-	id_tag = "courser_docker";
-	pixel_x = 25
+	id_tag = "courser_docker"
 	},
 /obj/effect/shuttle_landmark/endeavour/deck4/courser,
 /obj/overmap/entity/visitable/ship/landable/courser/endeavour,
@@ -8759,13 +8762,13 @@
 	dir = 6
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump{
-	external_pressure_bound = 0;
-	frequency = 1445;
 	icon_state = "map_vent_in";
+	dir = 8;
+	frequency = 1445;
 	id_tag = "burn_out";
-	initialize_directions = 4;
 	pump_direction = 0;
-	dir = 8
+	external_pressure_bound = 0;
+	initialize_directions = 4
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/test_area)
@@ -8889,8 +8892,8 @@
 "goT" = (
 /obj/structure/flora/pottedplant/minitree,
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 1
 	},
 /obj/machinery/light,
 /obj/structure/cable/green{
@@ -8909,8 +8912,8 @@
 	icon_state = "4-8"
 	},
 /obj/item/radio/intercom{
-	dir = 1;
 	name = "Station Intercom (General)";
+	dir = 1;
 	pixel_y = 26
 	},
 /obj/structure/disposalpipe/segment{
@@ -9060,8 +9063,8 @@
 /area/crew_quarters/heads/hop)
 "gwu" = (
 /obj/machinery/air_alarm{
-	frequency = 1441;
-	pixel_y = 22
+	pixel_y = 22;
+	frequency = 1441
 	},
 /obj/machinery/camera/network/exploration,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -9138,8 +9141,8 @@
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -9543,16 +9546,16 @@
 "gPM" = (
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "shuttle_lockdown";
 	name = "Shuttle Lockdown";
-	opacity = 0
+	icon_state = "pdoor0";
+	opacity = 0;
+	density = 0;
+	id = "shuttle_lockdown"
 	},
 /obj/machinery/access_button/airlock_exterior{
+	pixel_x = 24;
 	frequency = 1380;
-	master_tag = "expshuttle_docker";
-	pixel_x = 24
+	master_tag = "expshuttle_docker"
 	},
 /obj/machinery/door/airlock/voidcraft/vertical,
 /turf/simulated/shuttle/plating,
@@ -9590,8 +9593,8 @@
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -9684,8 +9687,8 @@
 /area/hallway/secondary/docking_hallway)
 "gWe" = (
 /obj/machinery/door/airlock{
-	id_tag = "bathroomlock15";
-	name = "Unit 1"
+	name = "Unit 1";
+	id_tag = "bathroomlock15"
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/coffee_shop)
@@ -9773,6 +9776,9 @@
 /obj/effect/floor_decal/corner/black{
 	dir = 10
 	},
+/obj/item/reagent_containers/glass/food_holder/pan,
+/obj/item/reagent_containers/glass/food_holder/pot,
+/obj/item/reagent_containers/glass/food_holder/skillet,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/lounge/kitchen_freezer)
 "hbb" = (
@@ -9854,9 +9860,9 @@
 	dir = 8
 	},
 /obj/item/gps/internal/base{
+	name = "shuttle beacon";
 	desc = "A tracking beacon embedded in the shuttle systems, to help explorers find where they landed.";
-	gps_tag = "SHUTTLE";
-	name = "shuttle beacon"
+	gps_tag = "SHUTTLE"
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/cockpit)
@@ -9891,17 +9897,17 @@
 /area/endeavour/hallway/d1portamidhall)
 "heD" = (
 /obj/machinery/door/blast/shutters{
+	name = "Colony Director's Shutters";
 	dir = 8;
-	id = "cap_office";
 	layer = 3.1;
-	name = "Colony Director's Shutters"
+	id = "cap_office"
 	},
 /obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "bridge_lockdown";
 	name = "Bridge Lockdown";
-	opacity = 0
+	icon_state = "pdoor0";
+	opacity = 0;
+	density = 0;
+	id = "bridge_lockdown"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint/commandblue,
@@ -10174,7 +10180,7 @@
 /obj/effect/floor_decal/corner/black/full{
 	dir = 1
 	},
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/lounge/kitchen_freezer)
 "hpL" = (
@@ -10284,8 +10290,8 @@
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 2
 	},
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
@@ -10294,9 +10300,9 @@
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
 	dir = 8;
+	pixel_y = 24;
 	frequency = 1380;
-	master_tag = "endeavour_specops_dock";
-	pixel_y = 24
+	master_tag = "endeavour_specops_dock"
 	},
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = null
@@ -10427,9 +10433,9 @@
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
 	dir = 4;
+	pixel_y = 24;
 	frequency = 1380;
-	master_tag = "endeavour_specops_dock";
-	pixel_y = 24
+	master_tag = "endeavour_specops_dock"
 	},
 /obj/machinery/door/firedoor/glass{
 	dir = 8
@@ -10467,8 +10473,8 @@
 	dir = 1
 	},
 /obj/item/radio/intercom{
-	dir = 1;
 	name = "Station Intercom (General)";
+	dir = 1;
 	pixel_y = 26
 	},
 /obj/machinery/light{
@@ -10506,8 +10512,8 @@
 /obj/effect/paint/commandblue,
 /obj/structure/wall_frame,
 /obj/structure/window/reinforced/polarized/full{
-	id = "hop_office2";
-	name = "HoP Office window"
+	name = "HoP Office window";
+	id = "hop_office2"
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
@@ -11260,7 +11266,7 @@
 /turf/simulated/wall/prepainted,
 /area/endeavour/hallway/d1aftmaint)
 "idu" = (
-/obj/machinery/appliance/cooker/grill/stand,
+/obj/machinery/cooking/grill,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "idJ" = (
@@ -11288,8 +11294,8 @@
 /area/bridge/hallway)
 "ieu" = (
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
@@ -11332,10 +11338,10 @@
 "ifX" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/blast/shutters{
+	name = "Cafe Shutters";
 	dir = 2;
-	id = "cafe";
 	layer = 3.1;
-	name = "Cafe Shutters"
+	id = "cafe"
 	},
 /obj/structure/table/marble,
 /turf/simulated/floor/lino,
@@ -11376,8 +11382,8 @@
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 2
 	},
 /turf/simulated/floor/tiled,
 /area/exploration/pathfinder_office)
@@ -11493,8 +11499,8 @@
 /obj/machinery/door/firedoor/glass,
 /obj/map_helper/access_helper/airlock/station/head_office/captain,
 /obj/machinery/door/airlock/command{
-	id_tag = "captaindoor";
 	name = "Facility Director's Office";
+	id_tag = "captaindoor";
 	req_one_access = null
 	},
 /obj/structure/cable/green{
@@ -11524,10 +11530,10 @@
 	id_tag = "deck4_dockarm2_pump"
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
-	frequency = 1380;
-	id_tag = "deck4_dockarm1";
+	pixel_x = 30;
 	pixel_y = 1;
-	pixel_x = 30
+	frequency = 1380;
+	id_tag = "deck4_dockarm1"
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/dark,
@@ -11802,9 +11808,9 @@
 	dir = 4
 	},
 /obj/item/gps/internal/base{
+	name = "shuttle beacon";
 	desc = "A tracking beacon embedded in the shuttle systems, to help explorers find where they landed.";
-	gps_tag = "SHUTTLE";
-	name = "shuttle beacon"
+	gps_tag = "SHUTTLE"
 	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/cockpit)
@@ -11973,8 +11979,8 @@
 /area/endeavour/hallway/d1portforhall)
 "iCK" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 4;
-	name = "Exploration Briefing Room"
+	name = "Exploration Briefing Room";
+	dir = 4
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
@@ -12000,8 +12006,8 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 2
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
@@ -12139,8 +12145,8 @@
 "iLv" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/air_alarm{
-	frequency = 1441;
-	pixel_y = 22
+	pixel_y = 22;
+	frequency = 1441
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/docking_hallway2)
@@ -12164,8 +12170,8 @@
 /area/endeavour/hallway/d1aftmaint)
 "iMY" = (
 /obj/item/radio/intercom{
-	dir = 1;
 	name = "Station Intercom (General)";
+	dir = 1;
 	pixel_y = 26
 	},
 /obj/structure/bookcase/legal/combo,
@@ -12236,8 +12242,8 @@
 /obj/structure/table/woodentable,
 /obj/machinery/computer/skills,
 /obj/item/perfect_tele{
-	desc = "Seems absurd, doesn't it? Yet, here we are. This handheld device is capable of producing bluespace teleportation beacons, and can be activated to translocate the user or a target of their choice to any linked beacon. This one is the Facility Director's.";
-	name = "director's translocator"
+	name = "director's translocator";
+	desc = "Seems absurd, doesn't it? Yet, here we are. This handheld device is capable of producing bluespace teleportation beacons, and can be activated to translocate the user or a target of their choice to any linked beacon. This one is the Facility Director's."
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -12282,8 +12288,8 @@
 "iRz" = (
 /obj/effect/paint/palebottlegreen,
 /obj/structure/window/reinforced/polarized/full{
-	id = "chapel";
-	name = "Chaplain's Office"
+	name = "Chaplain's Office";
+	id = "chapel"
 	},
 /obj/structure/wall_frame,
 /turf/simulated/floor/plating,
@@ -12326,10 +12332,10 @@
 	dir = 5
 	},
 /obj/machinery/atmospherics/component/unary/outlet_injector{
+	dir = 8;
 	frequency = 1445;
 	id = "burn_in";
-	volume_rate = 700;
-	dir = 8
+	volume_rate = 700
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/test_area)
@@ -12434,8 +12440,8 @@
 /area/endeavour/hallway/d1starboardforhall)
 "iYo" = (
 /obj/machinery/atmospherics/component/binary/pump{
-	dir = 8;
-	name = "main fuel pump"
+	name = "main fuel pump";
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cargo)
@@ -12465,8 +12471,8 @@
 /obj/item/pen/crayon/marker/rainbow,
 /obj/item/pen/crayon/rainbow,
 /obj/structure/closet/secure_closet{
-	desc = "Where the Clown keeps their hooliganisms.";
 	name = "funny locker";
+	desc = "Where the Clown keeps their hooliganisms.";
 	req_one_access = list(136)
 	},
 /turf/simulated/floor/carpet/gaycarpet,
@@ -12567,11 +12573,11 @@
 /area/maintenance/station/exploration)
 "jec" = (
 /obj/machinery/requests_console{
-	announcementConsole = 1;
+	name = "Bridge RC";
+	pixel_y = -32;
 	department = "Bridge";
 	departmentType = 5;
-	name = "Bridge RC";
-	pixel_y = -32
+	announcementConsole = 1
 	},
 /obj/machinery/computer/robotics{
 	dir = 1
@@ -12637,8 +12643,8 @@
 /area/bridge/hallway)
 "jhQ" = (
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 1
 	},
 /obj/machinery/vending/dinnerware,
 /obj/effect/floor_decal/corner/black{
@@ -12892,8 +12898,8 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 2
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/exploration/hallway_aft)
@@ -12936,9 +12942,9 @@
 	id = "courser_magazine_1"
 	},
 /obj/machinery/door/blast/regular{
+	name = "Cannon Magazine One";
 	dir = 4;
-	id = "courser_magazine_1";
-	name = "Cannon Magazine One"
+	id = "courser_magazine_1"
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
@@ -13049,8 +13055,8 @@
 /area/maintenance/library)
 "jtj" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
-	name = "Exploration Briefing Room"
+	name = "Exploration Briefing Room";
+	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -13092,9 +13098,9 @@
 	dir = 5
 	},
 /obj/machinery/button/windowtint{
-	id = "hop_office";
 	pixel_x = 24;
-	pixel_y = 25
+	pixel_y = 25;
+	id = "hop_office"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hop)
@@ -13146,9 +13152,9 @@
 "jvK" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /obj/machinery/meter{
+	name = "Distribution Loop";
 	frequency = 1443;
-	id = "dist_aux_meter";
-	name = "Distribution Loop"
+	id = "dist_aux_meter"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
@@ -13247,16 +13253,16 @@
 "jzd" = (
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
+	pixel_x = -24;
 	frequency = 1380;
-	master_tag = "expshuttle_docker";
-	pixel_x = -24
+	master_tag = "expshuttle_docker"
 	},
 /obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "shuttle_lockdown";
 	name = "Shuttle Lockdown";
-	opacity = 0
+	icon_state = "pdoor0";
+	opacity = 0;
+	density = 0;
+	id = "shuttle_lockdown"
 	},
 /obj/machinery/door/airlock/voidcraft/vertical,
 /turf/simulated/floor/tiled,
@@ -13388,8 +13394,8 @@
 	icon_state = "1-8"
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/dock)
@@ -13409,8 +13415,8 @@
 	icon_state = "4-8"
 	},
 /obj/structure/disposalpipe/junction{
-	dir = 4;
-	icon_state = "pipe-j2"
+	icon_state = "pipe-j2";
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardamidhall)
@@ -13422,11 +13428,11 @@
 	dir = 4
 	},
 /obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "bridge_lockdown";
 	name = "Bridge Lockdown";
-	opacity = 0
+	icon_state = "pdoor0";
+	opacity = 0;
+	density = 0;
+	id = "bridge_lockdown"
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -14013,8 +14019,8 @@
 	dir = 1
 	},
 /obj/item/radio/intercom{
-	dir = 1;
 	name = "Station Intercom (General)";
+	dir = 1;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/steel,
@@ -14030,8 +14036,8 @@
 	pixel_y = 32
 	},
 /obj/machinery/atmospherics/component/binary/pump{
-	dir = 4;
-	name = "secondary fuel pump"
+	name = "secondary fuel pump";
+	dir = 4
 	},
 /obj/structure/sign/warning/nosmoking_1{
 	pixel_x = -54;
@@ -14557,8 +14563,8 @@
 /area/endeavour/hallway/d1starboardforhall)
 "kpq" = (
 /obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
@@ -15119,8 +15125,8 @@
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 4
 	},
 /obj/machinery/light{
 	dir = 1
@@ -15684,8 +15690,8 @@
 	dir = 1
 	},
 /obj/item/radio/intercom{
-	dir = 1;
 	name = "Station Intercom (General)";
+	dir = 1;
 	pixel_y = 26
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -15739,8 +15745,8 @@
 /obj/machinery/door/firedoor,
 /obj/map_helper/access_helper/airlock/station/exploration/department,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 8;
 	name = "Exploration Auxilliary";
+	dir = 8;
 	req_access = list()
 	},
 /obj/effect/floor_decal/borderfloor,
@@ -15768,20 +15774,20 @@
 /area/maintenance/library)
 "lno" = (
 /obj/machinery/conveyor_switch/oneway{
-	id = "courser_magazine_2";
 	name = "Magazine Two";
 	pixel_x = 8;
-	pixel_y = 8
+	pixel_y = 8;
+	id = "courser_magazine_2"
 	},
 /obj/machinery/conveyor_switch/oneway{
-	id = "courser_battery";
-	name = "Magazine Feed"
+	name = "Magazine Feed";
+	id = "courser_battery"
 	},
 /obj/machinery/conveyor_switch/oneway{
-	id = "courser_magazine_1";
 	name = "Magazine One";
 	pixel_x = -8;
-	pixel_y = 8
+	pixel_y = 8;
+	id = "courser_magazine_1"
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
@@ -15798,8 +15804,8 @@
 	dir = 1
 	},
 /obj/machinery/air_alarm{
-	frequency = 1441;
-	pixel_y = 22
+	pixel_y = 22;
+	frequency = 1441
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway2)
@@ -16023,8 +16029,8 @@
 	dir = 9
 	},
 /obj/structure/disposalpipe/sortjunction{
-	dir = 4;
 	name = "HoS Office";
+	dir = 4;
 	sortType = "HoS Office"
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -16504,21 +16510,21 @@
 /obj/machinery/door/firedoor/glass,
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/northleft{
-	dir = 8;
+	name = "Reception Window";
 	icon_state = "right";
-	name = "Reception Window"
+	dir = 8
 	},
 /obj/machinery/door/window/brigdoor/eastright{
 	name = "Head of Personnel's Desk";
 	req_access = list(57)
 	},
 /obj/machinery/door/blast/shutters{
+	name = "HoP Office Privacy Shutters";
+	icon_state = "shutter0";
+	opacity = 0;
 	density = 0;
 	dir = 2;
-	icon_state = "shutter0";
-	id = "hop_office_desk";
-	name = "HoP Office Privacy Shutters";
-	opacity = 0
+	id = "hop_office_desk"
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/hop)
@@ -16624,8 +16630,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portforhall)
 "lVq" = (
-/obj/machinery/power/apc/north_mount,
 /mob/living/simple_mob/animal/passive/mimepet,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/mimeoffice)
 "lVu" = (
@@ -16696,8 +16702,8 @@
 /area/maintenance/asmaint)
 "lYx" = (
 /obj/machinery/sparker{
-	id = "burn_chamber";
-	pixel_x = 26
+	pixel_x = 26;
+	id = "burn_chamber"
 	},
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 9
@@ -16706,8 +16712,8 @@
 /area/rnd/test_area)
 "lZv" = (
 /obj/machinery/door/blast/regular{
-	id = "chapelgun";
-	name = "Chapel Launcher Door"
+	name = "Chapel Launcher Door";
+	id = "chapelgun"
 	},
 /turf/simulated/floor/plating,
 /area/tether/station/burial)
@@ -16722,10 +16728,10 @@
 /area/gateway)
 "maq" = (
 /obj/machinery/button/remote/blast_door{
-	dir = 1;
-	id = "hangar_ammo_storage";
 	name = "Courser Ammunition Storage";
-	pixel_y = -26
+	dir = 1;
+	pixel_y = -26;
+	id = "hangar_ammo_storage"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/courser_dock)
@@ -16826,9 +16832,9 @@
 	id = "courser_magazine_2"
 	},
 /obj/machinery/door/blast/regular{
+	name = "Cannon Magazine Two";
 	dir = 4;
-	id = "courser_magazine_2";
-	name = "Cannon Magazine Two"
+	id = "courser_magazine_2"
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
@@ -16852,10 +16858,10 @@
 	},
 /obj/map_helper/access_helper/airlock/station/external_airlock,
 /obj/machinery/access_button/airlock_exterior{
-	frequency = 1380;
-	master_tag = "expshuttle_dock";
+	dir = 4;
 	pixel_x = 28;
-	dir = 4
+	frequency = 1380;
+	master_tag = "expshuttle_dock"
 	},
 /obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/dark,
@@ -17039,8 +17045,8 @@
 	dir = 5
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 2
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/hallway)
@@ -17226,19 +17232,19 @@
 /area/maintenance/asmaint)
 "mrv" = (
 /obj/structure/sign/directions/engineering{
-	pixel_y = -6;
-	dir = 1
+	dir = 1;
+	pixel_y = -6
 	},
 /obj/structure/sign/directions/cargo{
 	dir = 1
 	},
 /obj/structure/sign/directions/science{
-	pixel_y = 6;
-	dir = 1
+	dir = 1;
+	pixel_y = 6
 	},
 /obj/structure/sign/directions/cryo{
-	pixel_y = 13;
-	dir = 1
+	dir = 1;
+	pixel_y = 13
 	},
 /turf/simulated/wall/r_wall/prepainted,
 /area/station/stairs_one)
@@ -17858,19 +17864,19 @@
 	pixel_y = -6
 	},
 /obj/structure/sign/directions/engineering{
-	pixel_y = -12;
-	dir = 1
+	dir = 1;
+	pixel_y = -12
 	},
 /obj/structure/sign/directions/cargo{
 	dir = 1
 	},
 /obj/structure/sign/directions/science{
-	pixel_y = 6;
-	dir = 1
+	dir = 1;
+	pixel_y = 6
 	},
 /obj/structure/sign/directions/cryo{
-	pixel_y = 13;
-	dir = 1
+	dir = 1;
+	pixel_y = 13
 	},
 /turf/simulated/wall/prepainted,
 /area/station/stairs_one)
@@ -17938,10 +17944,10 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/button/remote/blast_door{
-	id = "shuttle_lockdown";
 	name = "Shuttle Lockdown";
 	pixel_x = -6;
-	pixel_y = 26
+	pixel_y = 26;
+	id = "shuttle_lockdown"
 	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
@@ -17968,10 +17974,10 @@
 "mPX" = (
 /obj/machinery/mech_recharger,
 /obj/machinery/turretid/lethal{
-	control_area = "\improper Gateway";
 	pixel_y = 26;
 	req_access = null;
-	req_one_access = list(19,44)
+	req_one_access = list(19,44);
+	control_area = "\improper Gateway"
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -18091,8 +18097,8 @@
 /area/endeavour/hallway/d1starboardforhall)
 "mUi" = (
 /obj/machinery/button/remote/blast_door{
-	id = "cd-blast";
-	name = "Facility Director Lockdown"
+	name = "Facility Director Lockdown";
+	id = "cd-blast"
 	},
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/crew_quarters/captain)
@@ -18148,8 +18154,8 @@
 /obj/structure/table/bench/wooden,
 /obj/effect/mist,
 /obj/machinery/air_alarm{
-	frequency = 1441;
-	pixel_y = 22
+	pixel_y = 22;
+	frequency = 1441
 	},
 /turf/simulated/floor/wood,
 /area/endeavour/surfacebase/sauna)
@@ -18249,10 +18255,10 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/door/blast/shutters{
+	name = "Cafe Shutters";
 	dir = 2;
-	id = "cafe";
 	layer = 3.1;
-	name = "Cafe Shutters"
+	id = "cafe"
 	},
 /obj/structure/table/marble,
 /obj/item/storage/box/donut,
@@ -18543,11 +18549,11 @@
 	dir = 1
 	},
 /obj/machinery/porta_turret/stationary{
-	gl_uid = "exploration";
-	installation = /obj/item/gun/energy/phasegun;
 	name = "exploration turret";
+	uid = "exploration";
 	req_one_access = list(19,43,62,67);
-	uid = "exploration"
+	gl_uid = "exploration";
+	installation = /obj/item/gun/energy/phasegun
 	},
 /obj/effect/floor_decal/industrial/warning/full,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -18713,21 +18719,21 @@
 	locked = 1
 	},
 /obj/machinery/button/remote/airlock{
-	desiredstate = 1;
-	dir = 1;
-	id = "expshuttle_door_L";
 	name = "hatch bolt control";
+	dir = 1;
 	pixel_y = -28;
+	id = "expshuttle_door_L";
 	req_one_access = list(19,43,67);
+	desiredstate = 1;
 	specialfunctions = 4
 	},
 /obj/structure/fans/tiny,
 /obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "shuttle_lockdown";
 	name = "Shuttle Lockdown";
-	opacity = 0
+	icon_state = "pdoor0";
+	opacity = 0;
+	density = 0;
+	id = "shuttle_lockdown"
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cargo)
@@ -18941,8 +18947,8 @@
 "nzo" = (
 /obj/structure/closet,
 /obj/item/reagent_containers/food/drinks/bottle/rum{
-	desc = "TASTE DEMOCRACY";
-	name = "Managed Democra-cider"
+	name = "Managed Democra-cider";
+	desc = "TASTE DEMOCRACY"
 	},
 /obj/random/cigarettes,
 /obj/random/contraband,
@@ -19002,10 +19008,10 @@
 /area/chapel/office)
 "nBm" = (
 /obj/machinery/button/remote/airlock{
-	id = "bathroomlock15";
 	name = "Bathroom Lock";
 	pixel_x = 5;
 	pixel_y = 24;
+	id = "bathroomlock15";
 	specialfunctions = 4
 	},
 /obj/machinery/light/small,
@@ -19283,8 +19289,8 @@
 	dir = 1
 	},
 /obj/item/radio/intercom{
-	dir = 1;
 	name = "Station Intercom (General)";
+	dir = 1;
 	pixel_y = 26
 	},
 /obj/structure/disposalpipe/segment{
@@ -19500,8 +19506,8 @@
 /area/endeavour/hallway/d1fwdmaint)
 "nUG" = (
 /obj/item/radio/intercom{
-	dir = 1;
 	name = "Station Intercom (General)";
+	dir = 1;
 	pixel_y = 26
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -19545,10 +19551,10 @@
 	dir = 1
 	},
 /obj/machinery/button/remote/blast_door{
-	desc = "A remote control-switch for shutters.";
-	id = "hop_office_desk";
 	name = "Desk Privacy Shutter";
-	pixel_x = 25
+	desc = "A remote control-switch for shutters.";
+	pixel_x = 25;
+	id = "hop_office_desk"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hop)
@@ -19695,8 +19701,8 @@
 /area/hydroponics/garden)
 "odj" = (
 /obj/machinery/air_alarm{
-	frequency = 1441;
-	pixel_y = 22
+	pixel_y = 22;
+	frequency = 1441
 	},
 /obj/structure/bed/chair/sofa/brown/left,
 /turf/simulated/floor/carpet/bcarpet,
@@ -19732,8 +19738,8 @@
 /obj/effect/paint/commandblue,
 /obj/structure/wall_frame,
 /obj/structure/window/reinforced/polarized/full{
-	id = "lawyer_blast";
-	name = "Internal Affairs Office"
+	name = "Internal Affairs Office";
+	id = "lawyer_blast"
 	},
 /turf/simulated/floor/plating,
 /area/lawoffice)
@@ -20115,9 +20121,9 @@
 /area/maintenance/asmaint)
 "ovp" = (
 /obj/machinery/meter{
+	name = "Distribution Loop";
 	frequency = 1443;
-	id = "dist_aux_meter";
-	name = "Distribution Loop"
+	id = "dist_aux_meter"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
@@ -20211,8 +20217,8 @@
 /obj/structure/table/woodentable,
 /obj/item/melee/chainofcommand,
 /obj/item/coin/phoron{
-	desc = "The face of the coin shows a portrait of the explorer who discovered the Virgo-Erigone system. The back depicts a Zodiac symbol that represents Virgo.";
-	name = "limited edition phoron coin"
+	name = "limited edition phoron coin";
+	desc = "The face of the coin shows a portrait of the explorer who discovered the Virgo-Erigone system. The back depicts a Zodiac symbol that represents Virgo."
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -20228,8 +20234,8 @@
 	},
 /obj/machinery/camera/network/civilian,
 /obj/item/radio/intercom{
-	dir = 1;
 	name = "Station Intercom (General)";
+	dir = 1;
 	pixel_y = 26
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -20382,12 +20388,12 @@
 /area/teleporter)
 "oDs" = (
 /obj/machinery/door/blast/regular{
+	name = "Bridge Lockdown";
+	icon_state = "pdoor0";
+	opacity = 0;
 	density = 0;
 	dir = 4;
-	icon_state = "pdoor0";
-	id = "bridge_lockdown";
-	name = "Bridge Lockdown";
-	opacity = 0
+	id = "bridge_lockdown"
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/airless/ceiling,
@@ -20503,8 +20509,8 @@
 "oIm" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/machinery/button/windowtint{
-	id = "lawyer_blast";
-	pixel_y = -36
+	pixel_y = -36;
+	id = "lawyer_blast"
 	},
 /obj/machinery/light_switch{
 	pixel_y = -26
@@ -20638,9 +20644,9 @@
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
 	dir = 4;
+	pixel_y = -22;
 	frequency = 1380;
-	master_tag = "courser_docker";
-	pixel_y = -22
+	master_tag = "courser_docker"
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
@@ -20840,8 +20846,8 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
-	name = "Exploration Public Lobby"
+	name = "Exploration Public Lobby";
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/exploration)
@@ -20987,10 +20993,10 @@
 "pcR" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/blast/shutters{
+	name = "Cafe Shutters";
 	dir = 2;
-	id = "cafe";
 	layer = 3.1;
-	name = "Cafe Shutters"
+	id = "cafe"
 	},
 /obj/structure/table/marble,
 /obj/item/storage/box/donut,
@@ -21045,8 +21051,8 @@
 	icon_state = "4-8"
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 2
 	},
 /obj/effect/floor_decal/corner/black/full{
 	dir = 1
@@ -21168,6 +21174,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/endeavour/hallway/d1afthall)
 "phb" = (
+/mob/living/simple_mob/animal/passive/fox/renault,
 /obj/machinery/camera/network/command{
 	dir = 1
 	},
@@ -21178,10 +21185,9 @@
 	dir = 1
 	},
 /obj/structure/dogbed{
-	desc = "A bed made just for the Facility Director's fox.";
-	name = "Renault's Bed"
+	name = "Renault's Bed";
+	desc = "A bed made just for the Facility Director's fox."
 	},
-/mob/living/simple_mob/animal/passive/fox/renault,
 /turf/simulated/floor/carpet/purcarpet,
 /area/bridge)
 "phc" = (
@@ -21246,8 +21252,8 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 8;
-	name = "Library"
+	name = "Library";
+	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
@@ -21328,17 +21334,17 @@
 	icon_state = "4-8"
 	},
 /obj/structure/disposalpipe/sortjunction{
-	dir = 8;
 	name = "Cafe";
+	dir = 8;
 	sortType = "Cafe"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portforhall)
 "pnz" = (
 /obj/item/gps/internal/base{
+	name = "civilian transport beacon";
 	desc = "A tracking beacon embedded in the shuttle systems, to help explorers find where they landed.";
-	gps_tag = "CIVVIE";
-	name = "civilian transport beacon"
+	gps_tag = "CIVVIE"
 	},
 /obj/machinery/computer/ship/sensors{
 	dir = 8
@@ -21770,6 +21776,9 @@
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cargo)
 "pGC" = (
+/mob/living/simple_mob/animal/passive/dog/corgi/Lisa{
+	desc = "It's Lisa, the exploration teams trusty Corgi."
+	},
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 32
 	},
@@ -21779,9 +21788,6 @@
 	},
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
-	},
-/mob/living/simple_mob/animal/passive/dog/corgi/Lisa{
-	desc = "It's Lisa, the exploration teams trusty Corgi."
 	},
 /turf/simulated/floor/tiled,
 /area/exploration/pathfinder_office)
@@ -21796,8 +21802,8 @@
 	},
 /obj/machinery/door/window/northleft,
 /obj/machinery/door/blast/regular{
-	id = "courser_loading_1";
-	name = "Magazine One Input"
+	name = "Magazine One Input";
+	id = "courser_loading_1"
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
@@ -22351,8 +22357,8 @@
 /area/endeavour/hallway/d1fwdmaint)
 "qfY" = (
 /obj/machinery/air_alarm{
-	frequency = 1441;
-	pixel_y = 22
+	pixel_y = 22;
+	frequency = 1441
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/docking_hallway2)
@@ -22401,12 +22407,12 @@
 	req_one_access = null
 	},
 /obj/machinery/door/blast/regular{
+	name = "Bridge Lockdown";
+	icon_state = "pdoor0";
+	opacity = 0;
 	density = 0;
 	dir = 4;
-	icon_state = "pdoor0";
-	id = "bridge_lockdown";
-	name = "Bridge Lockdown";
-	opacity = 0
+	id = "bridge_lockdown"
 	},
 /obj/map_helper/access_helper/airlock/station/command/bridge,
 /turf/simulated/floor/tiled,
@@ -22517,11 +22523,11 @@
 /area/bridge/hallway)
 "qlw" = (
 /obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "cockpit_lockdown";
 	name = "Cockpit Lockdown";
-	opacity = 0
+	icon_state = "pdoor0";
+	opacity = 0;
+	density = 0;
+	id = "cockpit_lockdown"
 	},
 /obj/spawner/window/low_wall/borosillicate/full,
 /obj/effect/paint_stripe/violet,
@@ -22529,8 +22535,8 @@
 /area/shuttle/excursion/cockpit)
 "qmr" = (
 /obj/structure/disposalpipe/junction{
-	dir = 2;
-	icon_state = "pipe-j2"
+	icon_state = "pipe-j2";
+	dir = 2
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
@@ -22584,8 +22590,8 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/door/blast/shutters{
-	id = "hangar_ammo_storage";
-	name = "Ammunition Storage"
+	name = "Ammunition Storage";
+	id = "hangar_ammo_storage"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/exploration/courser_dock)
@@ -22808,8 +22814,8 @@
 /area/endeavour/hallway/d1fwdhall)
 "qzb" = (
 /obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
@@ -22929,11 +22935,11 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "cockpit_lockdown";
 	name = "Cockpit Lockdown";
-	opacity = 0
+	icon_state = "pdoor0";
+	opacity = 0;
+	density = 0;
+	id = "cockpit_lockdown"
 	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/cockpit)
@@ -22968,19 +22974,19 @@
 	pixel_x = -28
 	},
 /obj/machinery/button/remote/airlock{
-	dir = 4;
-	id = "captaindoor";
 	name = "Office Doors";
+	dir = 4;
 	pixel_x = -28;
 	pixel_y = 23;
+	id = "captaindoor";
 	req_access = list(20)
 	},
 /obj/machinery/button/remote/blast_door{
-	dir = 4;
-	id = "cap_office";
 	name = "Security Shutters";
+	dir = 4;
 	pixel_x = -28;
-	pixel_y = 12
+	pixel_y = 12;
+	id = "cap_office"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
@@ -23042,8 +23048,8 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/sortjunction{
-	dir = 4;
 	name = "Security Checkpoint";
+	dir = 4;
 	sortType = "Security Checkpoint"
 	},
 /obj/structure/cable/green{
@@ -23103,11 +23109,11 @@
 /area/shuttle/courser/general)
 "qLk" = (
 /obj/machinery/requests_console{
-	announcementConsole = 1;
+	name = "Bridge RC";
+	pixel_x = -32;
 	department = "Bridge";
 	departmentType = 5;
-	name = "Bridge RC";
-	pixel_x = -32
+	announcementConsole = 1
 	},
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -23203,9 +23209,9 @@
 /area/hallway/secondary/docking_hallway)
 "qNt" = (
 /obj/machinery/button/remote/driver{
-	id = "chapelgun";
 	name = "Chapel Mass Driver";
-	pixel_x = 25
+	pixel_x = 25;
+	id = "chapelgun"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/burial)
@@ -23424,8 +23430,8 @@
 	dir = 5
 	},
 /obj/machinery/airlock_sensor{
-	id_tag = "expshuttle_dock";
-	pixel_x = -23
+	pixel_x = -23;
+	id_tag = "expshuttle_dock"
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/meter,
@@ -23437,11 +23443,11 @@
 /area/maintenance/chapel)
 "qWg" = (
 /obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "shuttle_lockdown";
 	name = "Shuttle Lockdown";
-	opacity = 0
+	icon_state = "pdoor0";
+	opacity = 0;
+	density = 0;
+	id = "shuttle_lockdown"
 	},
 /obj/spawner/window/low_wall/borosillicate/full,
 /obj/effect/paint_stripe/violet,
@@ -23455,10 +23461,10 @@
 	dir = 4
 	},
 /obj/machinery/button/remote/blast_door{
-	dir = 8;
-	id = "sensor-shroud";
 	name = "Sensor Shroud";
+	dir = 8;
 	pixel_x = 32;
+	id = "sensor-shroud";
 	req_access = list(19)
 	},
 /turf/simulated/floor/carpet/purcarpet,
@@ -23540,8 +23546,8 @@
 	icon_state = "4-8"
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
@@ -23574,6 +23580,7 @@
 /turf/simulated/floor/wood,
 /area/library)
 "raV" = (
+/mob/living/simple_mob/animal/passive/dog/corgi/Ian,
 /obj/structure/dogbed{
 	name = "pet bed"
 	},
@@ -23583,7 +23590,6 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
 	},
-/mob/living/simple_mob/animal/passive/dog/corgi/Ian,
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hop)
 "rba" = (
@@ -23800,9 +23806,9 @@
 "rhG" = (
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	dir = 4;
+	pixel_x = -26;
 	frequency = 1380;
-	id_tag = "deck4_dockarm2";
-	pixel_x = -26
+	id_tag = "deck4_dockarm2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
@@ -23905,10 +23911,10 @@
 	req_access = list(25)
 	},
 /obj/machinery/door/blast/shutters{
+	name = "Cafe Shutters";
 	dir = 8;
-	id = "cafe";
 	layer = 3.1;
-	name = "Cafe Shutters"
+	id = "cafe"
 	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -23956,11 +23962,11 @@
 /area/endeavour/hallway/d1portforhall)
 "rmZ" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
+	dir = 1;
+	pixel_y = -24;
 	frequency = 1380;
 	id_tag = "courser_dock";
-	pixel_y = -24;
-	req_one_access = list(19,43,67);
-	dir = 1
+	req_one_access = list(19,43,67)
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/courser_dock)
@@ -24000,9 +24006,9 @@
 	},
 /obj/item/pen/invisible,
 /obj/machinery/button/windowtint{
-	id = "library_study";
 	pixel_x = 26;
-	pixel_y = -26
+	pixel_y = -26;
+	id = "library_study"
 	},
 /obj/item/radio/intercom{
 	pixel_y = -28
@@ -24193,8 +24199,8 @@
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 2
 	},
 /obj/structure/cable/green{
 	icon_state = "2-4"
@@ -24374,9 +24380,9 @@
 /area/exploration/pathfinder_office)
 "rEK" = (
 /obj/machinery/door/blast/regular{
+	name = "Cannon Barrel Shutter";
 	dir = 8;
-	id = "courser_cannon_shroud";
-	name = "Cannon Barrel Shutter"
+	id = "courser_cannon_shroud"
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
@@ -24454,8 +24460,8 @@
 	},
 /obj/machinery/door/window/southleft,
 /obj/machinery/door/blast/regular{
-	id = "courser_loading_2";
-	name = "Magazine Two Input"
+	name = "Magazine Two Input";
+	id = "courser_loading_2"
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
@@ -24506,9 +24512,9 @@
 "rLb" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/door/window/brigdoor/southleft{
+	dir = 1;
 	req_access = list(47);
-	req_one_access = list(47);
-	dir = 1
+	req_one_access = list(47)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
@@ -24543,8 +24549,8 @@
 /area/shuttle/excursion/cargo)
 "rOy" = (
 /obj/machinery/door/airlock/command{
-	id_tag = "blueshielddoor";
 	name = "Blueshield";
+	id_tag = "blueshielddoor";
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/head_office/blueshield,
@@ -24952,8 +24958,8 @@
 /area/library)
 "sgr" = (
 /obj/machinery/door/blast/regular{
-	id = "gateway";
-	dir = 4
+	dir = 4;
+	id = "gateway"
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/dark,
@@ -24969,8 +24975,8 @@
 	icon_state = "4-8"
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/dock)
@@ -25102,8 +25108,8 @@
 /area/shuttle/civvie/general)
 "slW" = (
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -25385,8 +25391,8 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 8;
 	name = "Exploration Prep";
+	dir = 8;
 	req_access = list()
 	},
 /obj/map_helper/access_helper/airlock/station/exploration/department,
@@ -25965,8 +25971,8 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 2
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hop)
@@ -26090,8 +26096,8 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 2
 	},
 /obj/effect/floor_decal/borderfloorblack/corner{
 	dir = 8
@@ -26143,13 +26149,13 @@
 "tbI" = (
 /obj/machinery/computer/ship/engines,
 /obj/machinery/turretid{
-	check_access = 0;
-	control_area = /area/shuttle/excursion/general;
-	gl_uid = "exploration";
 	pixel_y = 32;
+	uid = "exploration";
+	check_access = 0;
 	req_access = null;
 	req_one_access = list(19,43,62,67);
-	uid = "exploration"
+	control_area = /area/shuttle/excursion/general;
+	gl_uid = "exploration"
 	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/cockpit)
@@ -26199,22 +26205,22 @@
 /area/endeavour/hallway/d1starboardforhall)
 "tep" = (
 /obj/machinery/computer/general_air_control/large_tank_control{
-	frequency = 1445;
-	input_tag = "burn_in";
 	name = "Burn Chamber Air Control";
+	frequency = 1445;
+	sensors = list(burn_sensor="Burn  Chamber");
+	input_tag = "burn_in";
 	output_tag = "burn_out";
-	pressure_setting = 0;
-	sensors = list("burn_sensor"="Burn  Chamber")
+	pressure_setting = 0
 	},
 /obj/machinery/button/ignition{
-	id = "burn_chamber";
-	pixel_y = 36
+	pixel_y = 36;
+	id = "burn_chamber"
 	},
 /obj/machinery/button/remote/blast_door{
-	id = "burn_chamber_v";
 	name = "Burn Chamber Vent";
 	pixel_x = 4;
 	pixel_y = 28;
+	id = "burn_chamber_v";
 	req_access = list(55)
 	},
 /turf/simulated/floor/tiled,
@@ -26519,8 +26525,8 @@
 	},
 /obj/machinery/light,
 /obj/structure/disposalpipe/sortjunction/flipped{
-	dir = 4;
 	name = "HoP Office";
+	dir = 4;
 	sortType = "HoP Office"
 	},
 /turf/simulated/floor/tiled/steel,
@@ -26710,9 +26716,9 @@
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/airlock_sensor{
+	pixel_x = -24;
 	frequency = 1380;
-	id_tag = "courser_docker";
-	pixel_x = -24
+	id_tag = "courser_docker"
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/structure/handrail{
@@ -26791,10 +26797,10 @@
 "twI" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/porta_turret/stationary{
-	gl_uid = "exploration";
-	installation = /obj/item/gun/energy/phasegun;
 	name = "exploration turret";
-	uid = "exploration"
+	uid = "exploration";
+	gl_uid = "exploration";
+	installation = /obj/item/gun/energy/phasegun
 	},
 /obj/machinery/light{
 	dir = 4
@@ -26854,9 +26860,9 @@
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
 	dir = 1;
+	pixel_x = -24;
 	frequency = 1380;
-	master_tag = "deck4_dockarm2";
-	pixel_x = -24
+	master_tag = "deck4_dockarm2"
 	},
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = null
@@ -26881,10 +26887,10 @@
 	dir = 8
 	},
 /obj/machinery/door/blast/shutters{
+	name = "Cafe Shutters";
 	dir = 2;
-	id = "cafe";
 	layer = 3.1;
-	name = "Cafe Shutters"
+	id = "cafe"
 	},
 /obj/structure/table/marble,
 /obj/structure/cable/green{
@@ -27446,8 +27452,8 @@
 	pixel_y = 6
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 1
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
@@ -27642,10 +27648,10 @@
 /area/endeavour/surfacebase/sauna)
 "ubJ" = (
 /obj/machinery/door/blast/shutters{
+	name = "Colony Director's Shutters";
 	dir = 2;
-	id = "cap_office";
 	layer = 3.1;
-	name = "Colony Director's Shutters"
+	id = "cap_office"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint/commandblue,
@@ -27797,9 +27803,9 @@
 	id = "courser_battery"
 	},
 /obj/machinery/door/blast/regular{
+	name = "Cannon Chamber Shroud";
 	dir = 4;
-	id = "courser_cannon_chamber";
-	name = "Cannon Chamber Shroud"
+	id = "courser_cannon_chamber"
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
@@ -27942,8 +27948,8 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
@@ -27974,8 +27980,8 @@
 /area/endeavour/hallway/d1starboardforhall)
 "ulS" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
-	name = "Exploration Range"
+	name = "Exploration Range";
+	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -28079,9 +28085,9 @@
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
 	dir = 4;
+	pixel_y = -22;
 	frequency = 1380;
-	master_tag = "courser_docker";
-	pixel_y = -22
+	master_tag = "courser_docker"
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
@@ -28093,8 +28099,8 @@
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/cyan,
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/airlock_sensor{
-	id_tag = "civvie_docker";
-	pixel_y = -24
+	pixel_y = -24;
+	id_tag = "civvie_docker"
 	},
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
@@ -28219,8 +28225,8 @@
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/exploration/hallway_aft)
@@ -28462,8 +28468,8 @@
 	dir = 1
 	},
 /obj/structure/disposalpipe/junction{
-	dir = 4;
-	icon_state = "pipe-j2"
+	icon_state = "pipe-j2";
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/exploration/hallway_aft)
@@ -28941,8 +28947,8 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/sortjunction{
-	dir = 8;
 	name = "Pathfinder's Office";
+	dir = 8;
 	sortType = "Pathfinder's Office"
 	},
 /turf/simulated/floor/tiled/steel,
@@ -28969,8 +28975,8 @@
 /area/maintenance/substation/command)
 "uWM" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Deck 1 Amidships Grid";
-	cur_coils = 2
+	cur_coils = 2;
+	RCon_tag = "Deck 1 Amidships Grid"
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -29002,8 +29008,8 @@
 	},
 /obj/machinery/light,
 /obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardforhall)
@@ -29046,8 +29052,8 @@
 	},
 /obj/structure/window/reinforced,
 /obj/machinery/door/window/brigdoor/eastright{
-	dir = 8;
 	name = "Facility Director's Voidsuit";
+	dir = 8;
 	req_access = list(20)
 	},
 /obj/item/clothing/suit/space/void/captain,
@@ -29111,17 +29117,17 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/button/remote/blast_door{
-	desc = "A remote control-switch for shutters.";
-	id = "cafe";
 	name = "Cafe Shutters";
+	desc = "A remote control-switch for shutters.";
 	pixel_x = -10;
 	pixel_y = 26;
+	id = "cafe";
 	req_access = list();
 	req_one_access = list(25)
 	},
 /obj/machinery/button/holosign{
-	id = "cafesign1";
-	pixel_y = 28
+	pixel_y = 28;
+	id = "cafesign1"
 	},
 /obj/machinery/light_switch{
 	name = "light switch ";
@@ -29132,17 +29138,17 @@
 /area/crew_quarters/coffee_shop)
 "vcl" = (
 /obj/item/radio/intercom{
-	dir = 1;
 	name = "Station Intercom (General)";
+	dir = 1;
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
 /obj/machinery/button/windowtint{
-	id = "hop_office2";
 	pixel_x = 24;
-	pixel_y = 25
+	pixel_y = 25;
+	id = "hop_office2"
 	},
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hop)
@@ -29991,8 +29997,8 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 8;
 	name = "Exploration Prep Auxilliary";
+	dir = 8;
 	req_access = list()
 	},
 /obj/map_helper/access_helper/airlock/station/exploration/department,
@@ -30364,8 +30370,8 @@
 /area/space)
 "vTH" = (
 /obj/item/radio/intercom{
-	dir = 1;
 	name = "Station Intercom (General)";
+	dir = 1;
 	pixel_y = 21
 	},
 /obj/structure/table/reinforced,
@@ -30400,8 +30406,8 @@
 "vVa" = (
 /obj/structure/table/steel,
 /obj/item/deck/cards{
-	pixel_y = 7;
-	pixel_x = 5
+	pixel_x = 5;
+	pixel_y = 7
 	},
 /obj/item/flame/candle,
 /obj/item/storage/box/matches,
@@ -30430,9 +30436,9 @@
 /area/exploration/excursion_dock)
 "vVT" = (
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
+	pixel_x = -22;
 	frequency = 1380;
-	id_tag = "expshuttle_docker";
-	pixel_x = -22
+	id_tag = "expshuttle_docker"
 	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
@@ -30522,9 +30528,9 @@
 /area/shuttle/civvie/cockpit)
 "waV" = (
 /obj/machinery/button/remote/airlock{
-	id = "explo-hanger";
 	name = "Hanger Blast Door Switch";
-	pixel_y = 24
+	pixel_y = 24;
+	id = "explo-hanger"
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -30669,8 +30675,8 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/command{
-	id_tag = "captaindoor";
 	name = "Facility Director's Office";
+	id_tag = "captaindoor";
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/head_office/captain,
@@ -30851,8 +30857,8 @@
 /obj/item/clothing/mask/gas/sexymime,
 /obj/item/clothing/head/soft/mime,
 /obj/structure/closet/secure_closet{
-	desc = "...";
 	name = "silent storage";
+	desc = "...";
 	req_one_access = list(138)
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -30863,8 +30869,8 @@
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/airlock_sensor{
-	id_tag = "expshuttle_dock";
-	pixel_x = 24
+	pixel_x = 24;
+	id_tag = "expshuttle_dock"
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1380;
@@ -31206,8 +31212,8 @@
 /obj/effect/paint/commandblue,
 /obj/structure/wall_frame,
 /obj/structure/window/reinforced/polarized/full{
-	id = "hop_office";
-	name = "HoP Office window"
+	name = "HoP Office window";
+	id = "hop_office"
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
@@ -31267,8 +31273,8 @@
 /area/crew_quarters/heads/hop)
 "wzQ" = (
 /obj/item/radio/intercom{
-	dir = 1;
 	name = "Station Intercom (General)";
+	dir = 1;
 	pixel_y = 26
 	},
 /obj/machinery/light/small,
@@ -31619,8 +31625,8 @@
 	icon_state = "2-4"
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 2
 	},
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
@@ -31718,9 +31724,9 @@
 /area/crew_quarters/lounge)
 "wUf" = (
 /obj/machinery/door/airlock/glass/security{
-	id_tag = "Checkpoint";
-	layer = 2.8;
 	name = "Security";
+	layer = 2.8;
+	id_tag = "Checkpoint";
 	req_one_access = null
 	},
 /obj/machinery/door/firedoor,
@@ -31828,11 +31834,11 @@
 /area/rnd/research/testingrange)
 "wYg" = (
 /obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "shuttle_lockdown";
 	name = "Shuttle Lockdown";
-	opacity = 0
+	icon_state = "pdoor0";
+	opacity = 0;
+	density = 0;
+	id = "shuttle_lockdown"
 	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -31891,8 +31897,8 @@
 /obj/item/suit_cooling_unit,
 /obj/item/reagent_containers/hypospray/autoinjector/biginjector/healing_nanites,
 /obj/item/bluespace_radio{
-	desc = "A long range transceiver set, designed to facilitate communication with a home base while away from a ship-based equipment.";
-	name = "SCR-3000 Surface To Orbit Radio"
+	name = "SCR-3000 Surface To Orbit Radio";
+	desc = "A long range transceiver set, designed to facilitate communication with a home base while away from a ship-based equipment."
 	},
 /turf/simulated/floor/tiled,
 /area/exploration/pathfinder_office)
@@ -32233,8 +32239,8 @@
 /area/lawoffice)
 "xpU" = (
 /obj/structure/table/alien/blue{
-	desc = "Is this imported?";
-	name = "obscure table"
+	name = "obscure table";
+	desc = "Is this imported?"
 	},
 /obj/item/reagent_containers/food/drinks/bottle/bottleofnothing,
 /turf/simulated/floor/carpet/bcarpet,
@@ -32393,8 +32399,8 @@
 "xuK" = (
 /obj/structure/bed/chair/comfy/brown,
 /obj/item/radio/intercom{
-	dir = 1;
 	name = "Station Intercom (General)";
+	dir = 1;
 	pixel_y = 26
 	},
 /turf/simulated/floor/wood,
@@ -32532,8 +32538,8 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 2
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
@@ -32602,15 +32608,15 @@
 /obj/structure/table/woodentable,
 /obj/item/storage/fancy/candle_box,
 /obj/item/storage/fancy/candle_box{
-	pixel_y = 2;
-	pixel_x = 2
+	pixel_x = 2;
+	pixel_y = 2
 	},
 /turf/simulated/floor/lino,
 /area/chapel/office)
 "xzO" = (
 /obj/structure/table/alien/blue{
-	desc = "Is this imported?";
-	name = "obscure table"
+	name = "obscure table";
+	desc = "Is this imported?"
 	},
 /obj/random/action_figure,
 /turf/simulated/floor/carpet/bcarpet,
@@ -32795,8 +32801,8 @@
 	dir = 1
 	},
 /obj/item/radio/intercom{
-	dir = 1;
 	name = "Station Intercom (General)";
+	dir = 1;
 	pixel_y = 26
 	},
 /obj/machinery/camera/network/civilian,
@@ -32910,8 +32916,8 @@
 	dir = 9
 	},
 /obj/effect/floor_decal/borderfloorblack/corner2{
-	alpha = 255;
-	dir = 10
+	dir = 10;
+	alpha = 255
 	},
 /obj/effect/floor_decal/corner/navgold/bordercorner2{
 	dir = 10
@@ -33071,9 +33077,9 @@
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
 	dir = 1;
+	pixel_x = -24;
 	frequency = 1380;
-	master_tag = "deck4_dockarm2";
-	pixel_x = -24
+	master_tag = "deck4_dockarm2"
 	},
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = null
@@ -33162,8 +33168,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/exploration)
@@ -33274,11 +33280,11 @@
 "ycz" = (
 /obj/effect/floor_decal/spline/fancy,
 /obj/machinery/porta_turret/stationary{
-	gl_uid = "exploration";
-	installation = /obj/item/gun/energy/phasegun;
 	name = "exploration turret";
+	uid = "exploration";
 	req_one_access = list(19,43,62,67);
-	uid = "exploration"
+	gl_uid = "exploration";
+	installation = /obj/item/gun/energy/phasegun
 	},
 /obj/effect/floor_decal/industrial/warning/full,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -33291,11 +33297,11 @@
 /area/endeavour/hallway/d1starboardamidhall)
 "ycW" = (
 /obj/machinery/button/remote/blast_door{
-	dir = 4;
-	id = "bridge_lockdown";
 	name = "Bridge Lockdown";
+	dir = 4;
 	pixel_x = -30;
 	pixel_y = 5;
+	id = "bridge_lockdown";
 	req_access = list(19)
 	},
 /obj/machinery/light_switch{
@@ -33322,47 +33328,47 @@
 /area/crew_quarters/lounge/kitchen_freezer)
 "ydy" = (
 /obj/machinery/button/remote/blast_door{
-	dir = 1;
-	id = "courser_cannon_shroud";
 	name = "Cannon Barrel Shutter";
-	pixel_y = -23
+	dir = 1;
+	pixel_y = -23;
+	id = "courser_cannon_shroud"
 	},
 /obj/machinery/button/remote/blast_door{
-	dir = 4;
-	id = "courser_magazine_1";
 	name = "Cannon Magazine One";
-	pixel_x = -10;
-	pixel_y = -33
-	},
-/obj/machinery/button/remote/blast_door{
-	dir = 8;
-	id = "courser_magazine_2";
-	name = "Cannon Magazine Two";
-	pixel_x = 9;
-	pixel_y = -32
-	},
-/obj/machinery/button/remote/blast_door{
 	dir = 4;
-	id = "courser_loading_1";
-	name = "Magazine One Input";
 	pixel_x = -10;
-	pixel_y = -42
+	pixel_y = -33;
+	id = "courser_magazine_1"
 	},
 /obj/machinery/button/remote/blast_door{
+	name = "Cannon Magazine Two";
 	dir = 8;
-	id = "courser_loading_2";
-	name = "Magazine Two Input";
 	pixel_x = 9;
-	pixel_y = -41
+	pixel_y = -32;
+	id = "courser_magazine_2"
+	},
+/obj/machinery/button/remote/blast_door{
+	name = "Magazine One Input";
+	dir = 4;
+	pixel_x = -10;
+	pixel_y = -42;
+	id = "courser_loading_1"
+	},
+/obj/machinery/button/remote/blast_door{
+	name = "Magazine Two Input";
+	dir = 8;
+	pixel_x = 9;
+	pixel_y = -41;
+	id = "courser_loading_2"
 	},
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 8
 	},
 /obj/machinery/button/remote/blast_door{
-	dir = 1;
-	id = "courser_cannon_chamber";
 	name = "Cannon Chamber Shroud";
-	pixel_y = -34
+	dir = 1;
+	pixel_y = -34;
+	id = "courser_cannon_chamber"
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
@@ -33391,8 +33397,8 @@
 /area/endeavour/hallway/d1portamidhall)
 "ydR" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 8;
 	name = "Exploration Prep";
+	dir = 8;
 	req_access = list()
 	},
 /obj/machinery/door/firedoor,
