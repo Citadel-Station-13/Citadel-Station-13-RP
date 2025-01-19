@@ -2,6 +2,36 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/logistics)
 /datum/prototype/robot_module/nanotrasen/logistics
 	use_robot_module_path = /obj/item/robot_module/robot/
 	allowed_frames = list(
+		/datum/robot_frame{
+			name = "Canine - Hound";
+			robot_chassis = /datum/prototype/robot_chassis/quadruped/canine;
+			robot_iconset = /datum/prototype/robot_iconset/dog_k9/logistics;
+		},
+		/datum/robot_frame{
+			name = "Canine - Hound (Dark)";
+			robot_chassis = /datum/prototype/robot_chassis/quadruped/canine;
+			robot_iconset = /datum/prototype/robot_iconset/dog_k9/logistics_dark;
+		},
+		/datum/robot_frame{
+			name = "Canine - Vale";
+			robot_chassis = /datum/prototype/robot_chassis/quadruped/canine;
+			robot_iconset = /datum/prototype/robot_iconset/dog_vale/mining;
+		},
+		/datum/robot_frame{
+			name = "Drake";
+			robot_chassis = /datum/prototype/robot_chassis/quadruped/draconic;
+			robot_iconset = /datum/prototype/robot_iconset/drake_mizartz/medical;
+		},
+		/datum/robot_frame{
+			name = "F3-LINE";
+			robot_chassis = /datum/prototype/robot_chassis/quadruped/feline;
+			robot_iconset = /datum/prototype/robot_iconset/cat_feli/mining;
+		},
+		/datum/robot_frame{
+			name = "Canine - Otie";
+			robot_chassis = /datum/prototype/robot_chassis/quadruped/canine;
+			robot_iconset = /datum/prototype/robot_iconset/dog_otie/science;
+		},
 	)
 
 /datum/prototype/robot_module/nanotrasen/logistics/create_mounted_item_descriptors(list/normal_out, list/emag_out)
@@ -49,16 +79,3 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/logistics)
 		"ZOOM-BA" = "zoomba-miner",
 		"W02M" = "worm-miner"
 	)
-
-/obj/item/robot_module/robot/quad/miner
-	name = "Mining Quadruped module"
-	sprites = list(
-		"F3-LINE" = "FELI-Mining",
-		"K-MINE" = "kmine",
-		"Cargo Hound" = "cargohound",
-		"Cargo Hound Dark" = "cargohounddark",
-		"Drake" = "drakemine",
-		"Otie" = "otiec"
-	)
-	channels = list("Supply" = 1)
-	can_be_pushed = 0

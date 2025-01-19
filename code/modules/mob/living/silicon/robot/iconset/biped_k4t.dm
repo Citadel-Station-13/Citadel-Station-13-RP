@@ -4,8 +4,6 @@
 //                    Attributions                        //
 // All sprites used in this file made by Zydras           //
 
-#warn add into relevant modules
-
 /datum/prototype/robot_iconset/biped_k4t
 	icon_state = "k4t"
 	icon_state_cover = "panel"

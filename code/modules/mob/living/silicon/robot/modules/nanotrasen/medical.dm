@@ -1,7 +1,37 @@
 GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/medical)
 /datum/prototype/robot_module/nanotrasen/medical
-	use_robot_module_path = /obj/item/robot_module/robot/
+	use_robot_module_path = /obj/item/robot_module/robot/medical
 	allowed_frames = list(
+		/datum/robot_frame{
+			name = "Canine - Medihound";
+			robot_chassis = /datum/prototype/robot_chassis/quadruped/canine;
+			robot_iconset = /datum/prototype/robot_iconset/dog_k9/medical;
+		},
+		/datum/robot_frame{
+			name = "Canine - Medihound (Dark)";
+			robot_chassis = /datum/prototype/robot_chassis/quadruped/canine;
+			robot_iconset = /datum/prototype/robot_iconset/dog_k9/medical_dark;
+		},
+		/datum/robot_frame{
+			name = "Canine - Vale";
+			robot_chassis = /datum/prototype/robot_chassis/quadruped/canine;
+			robot_iconset = /datum/prototype/robot_iconset/dog_vale/medical;
+		},
+		/datum/robot_frame{
+			name = "Canine - Borgi";
+			robot_chassis = /datum/prototype/robot_chassis/quadruped/canine;
+			robot_iconset = /datum/prototype/robot_iconset/dog_borgi/medical;
+		},
+		/datum/robot_frame{
+			name = "F3-LINE";
+			robot_chassis = /datum/prototype/robot_chassis/quadruped/feline;
+			robot_iconset = /datum/prototype/robot_iconset/cat_feli/medical;
+		},
+		/datum/robot_frame{
+			name = "Drake";
+			robot_chassis = /datum/prototype/robot_chassis/quadruped/draconic;
+			robot_iconset = /datum/prototype/robot_iconset/drake_mizartz/medical;
+		},
 	)
 
 /datum/prototype/robot_module/nanotrasen/medical/create_mounted_item_descriptors(list/normal_out, list/emag_out)
@@ -93,18 +123,3 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/medical)
 		PS.reagents.add_reagent("pacid", 2 * amount)
 	..()
 
-/obj/item/robot_module/robot/quad/medi
-	name = "MediQuad module"
-	channels = list("Medical" = 1)
-	networks = list(NETWORK_MEDICAL)
-	subsystems = list(/mob/living/silicon/proc/subsystem_crew_monitor)
-	can_be_pushed = 0
-	can_shred = TRUE
-	sprites = list(
-		"Medical Hound" = "medihound",
-		"Dark Medical Hound" = "medihounddark",
-		"Mediborg model V-2" = "vale",
-		"Borgi" = "borgi-medi",
-		"F3-LINE" = "FELI-Medical",
-		"Drake" = "drakemed"
-	)

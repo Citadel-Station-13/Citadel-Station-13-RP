@@ -2,6 +2,66 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/multirole)
 /datum/prototype/robot_module/nanotrasen/multirole
 	use_robot_module_path = /obj/item/robot_module/robot/standard
 	allowed_frames = list(
+		/datum/robot_frame{
+			name = "K4T";
+			robot_chassis = /datum/prototype/robot_chassis/biped;
+			robot_iconset = /datum/prototype/robot_iconset/biped_k4t;
+		},
+		/datum/robot_frame{
+			name = "M-USE (Nanotrasen)";
+			robot_chassis = /datum/prototype/robot_chassis/;
+			robot_iconset = /datum/prototype/robot_iconset/baseline_old/standard;
+		},
+		/datum/robot_frame{
+			name = "Cabeiri";
+			robot_chassis = /datum/prototype/robot_chassis/hover;
+			robot_iconset = /datum/prototype/robot_iconset/eyebot/standard;
+		},
+		/datum/robot_frame{
+			name = "Haruka";
+			robot_chassis = /datum/prototype/robot_chassis/biped;
+			robot_iconset = /datum/prototype/robot_iconset/biped_marina/standard;
+		},
+		/datum/robot_frame{
+			name = "Usagi";
+			robot_chassis = /datum/prototype/robot_chassis/biped;
+			robot_iconset = /datum/prototype/robot_iconset/biped_tall/tallflower;
+		},
+		/datum/robot_frame{
+			name = "Telemachus";
+			robot_chassis = /datum/prototype/robot_chassis/baseline;
+			robot_iconset = /datum/prototype/robot_iconset/baseline_toiletbot;
+		},
+		/datum/robot_frame{
+			name = "WT - Operator";
+			robot_chassis = /datum/prototype/robot_chassis/biped;
+			robot_iconset = /datum/prototype/robot_iconset/biped_sleek;
+		},
+		/datum/robot_frame{
+			name = "WT - Omni";
+			robot_chassis = /datum/prototype/robot_chassis/baseline;
+			robot_iconset = /datum/prototype/robot_iconset/baseline_misc/omoikane;
+		},
+		/datum/robot_frame{
+			name = "XI-GUS";
+			robot_chassis = /datum/prototype/robot_chassis/grounded;
+			robot_iconset = /datum/prototype/robot_iconset/grounded_spider/standard;
+		},
+		/datum/robot_frame{
+			name = "XI-ALP";
+			robot_chassis = /datum/prototype/robot_chassis/biped;
+			robot_iconset = /datum/prototype/robot_iconset/biped_heavy/standard;
+		},
+		/datum/robot_frame{
+			name = "F3-LINE";
+			robot_chassis = /datum/prototype/robot_chassis/quadruped/feline;
+			robot_iconset = /datum/prototype/robot_iconset/cat_feli/standard;
+		},
+		/datum/robot_frame{
+			name = "Basic";
+			robot_chassis = /datum/prototype/robot_chassis/baseline;
+			robot_iconset = /datum/prototype/robot_iconset/baseline_old/standard;
+		}
 	)
 
 /datum/prototype/robot_module/nanotrasen/multirole/create_mounted_item_descriptors(list/normal_out, list/emag_out)
@@ -20,18 +80,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/multirole)
 #warn translate chassis below
 
 /obj/item/robot_module/robot/standard
-	name = "standard robot module"
 	sprites = list(
-		"M-USE Nanotrasen" = "robot",
-		"Cabeiri" = "eyebot-standard",
-		"Haruka" = "marinaSD",
-		"Usagi" = "tallflower",
-		"Telemachus" = "toiletbot",
-		"WTOperator" = "sleekstandard",
-		"WTOmni" = "omoikane",
-		"XI-GUS" = "spider",
-		"XI-ALP" = "heavyStandard",
-		"Basic" = "robot_old",
 		"Android" = "droid",
 		"Drone" = "drone-standard",
 		"Insekt" = "insekt-Default",
@@ -46,10 +95,4 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/multirole)
 		"Shellguard Noble" = "Noble-STD",
 		"ZOOM-BA" = "zoomba-standard",
 		"W02M" = "worm-standard"
-	)
-
-/obj/item/robot_module/robot/quad/basic
-	name = "Standard Quadruped module"
-	sprites = list(
-		"F3-LINE" = "FELI-Standard"
 	)

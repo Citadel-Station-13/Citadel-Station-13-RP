@@ -1,39 +1,39 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/datum/prototype/robot_iconset/vale
-	abstract_type = /datum/prototype/robot_iconset/vale
-	icon = 'icons/mob/robot/iconset/vale.dmi'
+/datum/prototype/robot_iconset/hover_eyebot
+	abstract_type = /datum/prototype/robot_iconset/hover_eyebot
+	icon = 'icons/mob/robot/iconset/hover_eyebot.dmi'
 	icon_state_cover = "panel"
 
-/datum/prototype/robot_iconset/vale/standard
+/datum/prototype/robot_iconset/hover_eyebot/standard
 	icon_state = "standard"
 	icon_state_indicator = "standard-indicator"
 
-/datum/prototype/robot_iconset/vale/engineering
+/datum/prototype/robot_iconset/hover_eyebot/engineering
 	icon_state = "engineering"
 	icon_state_indicator = "engineering-indicator"
 
-/datum/prototype/robot_iconset/vale/janitor
+/datum/prototype/robot_iconset/hover_eyebot/janitor
 	icon_state = "janitor"
 	icon_state_indicator = "janitor-indicator"
 
-/datum/prototype/robot_iconset/vale/medical
+/datum/prototype/robot_iconset/hover_eyebot/medical
 	icon_state = "medical"
 	icon_state_indicator = "medical-indicator"
 
-/datum/prototype/robot_iconset/vale/science
+/datum/prototype/robot_iconset/hover_eyebot/science
 	icon_state = "science"
 	icon_state_indicator = "science-indicator"
 
-/datum/prototype/robot_iconset/vale/mining
+/datum/prototype/robot_iconset/hover_eyebot/mining
 	icon_state = "mining"
 	icon_state_indicator = "mining-indicator"
 
-/datum/prototype/robot_iconset/vale/security
+/datum/prototype/robot_iconset/hover_eyebot/security
 	icon_state = "security"
 	icon_state_indicator = "security-indicator"
 
-/datum/prototype/robot_iconset/vale/combat
+/datum/prototype/robot_iconset/hover_eyebot/combat
 	icon_state = "combat"
 	icon_state_indicator = "combat-indicator"

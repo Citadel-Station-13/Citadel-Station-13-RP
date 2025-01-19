@@ -7,42 +7,42 @@
 	icon_state_cover = "panel"
 	icon_state_indicator = "indicator"
 
-/datum/prototype/robot_iconset/biped_sleke/standard
+/datum/prototype/robot_iconset/biped_sleek/standard
 	icon_state = "standard"
 
-/datum/prototype/robot_iconset/biped_sleke/janitor
+/datum/prototype/robot_iconset/biped_sleek/janitor
 	icon_state = "janitor"
 
-/datum/prototype/robot_iconset/biped_sleke/medical
+/datum/prototype/robot_iconset/biped_sleek/medical
 	icon_state = "medical"
 
-/datum/prototype/robot_iconset/biped_sleke/security
+/datum/prototype/robot_iconset/biped_sleek/security
 	icon_state = "security"
 	icon_state_indicator = "indicator-security"
 
-/datum/prototype/robot_iconset/biped_sleke/mining
+/datum/prototype/robot_iconset/biped_sleek/mining
 	icon_state = "mining"
 
-/datum/prototype/robot_iconset/biped_sleke/service
+/datum/prototype/robot_iconset/biped_sleek/service
 	icon_state = "service"
 
-/datum/prototype/robot_iconset/biped_sleke/science
+/datum/prototype/robot_iconset/biped_sleek/science
 	icon_state = "science"
 
-/datum/prototype/robot_iconset/biped_sleke/clerical
+/datum/prototype/robot_iconset/biped_sleek/clerical
 	icon_state = "clerical"
 
-/datum/prototype/robot_iconset/biped_sleke/engineering
+/datum/prototype/robot_iconset/biped_sleek/engineering
 	icon_state = "engineering"
 	icon_state_indicator = "indicator-commmand"
 
-/datum/prototype/robot_iconset/biped_sleke/cmo
+/datum/prototype/robot_iconset/biped_sleek/cmo
 	icon_state = "cmo"
 	icon_state_indicator = "indicator-commmand"
 
-/datum/prototype/robot_iconset/biped_sleke/hos
+/datum/prototype/robot_iconset/biped_sleek/hos
 	icon_state = "hos"
 	icon_state_indicator = "indicator-security"
 
-/datum/prototype/robot_iconset/biped_sleke/gravekeeper
+/datum/prototype/robot_iconset/biped_sleek/gravekeeper
 	icon_state = "gravekeeper"
