@@ -7,7 +7,7 @@
 
 /mob/living/silicon/robot/movement_delay()
 	. = ..() + speed
-	if(module_active && istype(module_active,/obj/item/borg/combat/mobility))
+	if(get_held_item_of_type(/obj/item/borg/combat/mobility))
 		. -= 2
 
 	if(get_restraining_bolt())	// Borgs with Restraining Bolts move slower.

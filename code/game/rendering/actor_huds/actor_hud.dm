@@ -72,7 +72,7 @@
  * @return objects touched
  */
 /datum/actor_hud/proc/sync_to_preferences(datum/hud_preferences/preference_set)
-	var/list/atom/movable/screen/screens in screens()
+	var/list/atom/movable/screen/screens = screens()
 	for(var/atom/movable/screen/screen_object in screens)
 		screen_object.sync_to_preferences(preference_set)
 	return screens

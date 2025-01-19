@@ -3,7 +3,7 @@
 
 	. = ..()
 
-	// render state & variation
+	// resolve variation & set icon state
 	var/datum/robot_iconset_variation/active_variation
 	if(IS_DEAD(src))
 		var/datum/robot_iconset_variation/dead_variation = iconset?.variations?[/datum/robot_iconset_variation/dead::id]
@@ -14,6 +14,16 @@
 		active_variation = dead_variation
 	else
 		icon_state = base_icon_state
+
+	// render indicator lighting
+	if(IS_CONSCIOUS(src) && (!shell || deployed))
+		if(active_variation)
+			if(active_variation.icon_state_indicator)
+				add_overlay(active_variation.icon_state_indicator)
+			else if(active_variation.icon_state_indicator_append)
+				add_overlay("[icon_state][active_variation.icon_state_indicator_append]")
+		else if(iconset.icon_state_indicator)
+			add_overlay(iconset.icon_state_indicator)
 
 	// render panel
 	if(opened)
@@ -44,11 +54,3 @@
 				icon_state = "[module_sprites[icontype]]-bellyup"
 			else
 				icon_state = "[module_sprites[icontype]]-rest"
-			return
-
-	if(stat == CONSCIOUS)
-		if(!shell || deployed) // Shell borgs that are not deployed will have no eyes.
-			add_overlay(list(
-				"eyes-[module_sprites[icontype]]",
-				emissive_appearance(icon, "eyes-[module_sprites[icontype]]")
-			))
