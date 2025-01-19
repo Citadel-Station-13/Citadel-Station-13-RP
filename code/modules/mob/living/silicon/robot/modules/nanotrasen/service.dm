@@ -1,7 +1,47 @@
 GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/service)
 /datum/prototype/robot_module/nanotrasen/service
-	use_robot_module_path = /obj/item/robot_module/robot/service
+	use_robot_module_path = /obj/item/robot_module/robot/clerical
 	allowed_frames = list(
+		/datum/robot_frame{
+			name = "M-USE (Nanotrasen)";
+			robot_chassis = /datum/prototype/robot_chassis/baseline;
+			robot_iconset = /datum/prototype/robot_iconset/baseline_standard/service;
+		},
+		/datum/robot_frame{
+			name = "M-USE (Nanotrasen) - Clerical";
+			robot_chassis = /datum/prototype/robot_chassis/baseline;
+			robot_iconset = /datum/prototype/robot_iconset/baseline_standard/clerical;
+		},
+		/datum/robot_frame{
+			name = "Cabeiri";
+			robot_chassis = /datum/prototype/robot_chassis/baseline;
+			robot_iconset = /datum/prototype/robot_iconset/hover_eyebot/standard;
+		},
+		/datum/robot_frame{
+			name = "Canine - Pinkhound";
+			robot_chassis = /datum/prototype/robot_chassis/quadruped/canine;
+			robot_iconset = /datum/prototype/robot_iconset/dog_k9/pink;
+		},
+		/datum/robot_frame{
+			name = "Canine - Blackhound";
+			robot_chassis = /datum/prototype/robot_chassis/quadruped/canine;
+			robot_iconset = /datum/prototype/robot_iconset/dog_k9/grey;
+		},
+		/datum/robot_frame{
+			name = "Canine - Hound";
+			robot_chassis = /datum/prototype/robot_chassis/quadruped/canine;
+			robot_iconset = /datum/prototype/robot_iconset/dog_vale/service;
+		},
+		/datum/robot_frame{
+			name = "Canine - Hound V2";
+			robot_chassis = /datum/prototype/robot_chassis/quadruped/canine;
+			robot_iconset = /datum/prototype/robot_iconset/dog_vale/service_dark;
+		},
+		/datum/robot_frame{
+			name = "F3-LINE";
+			robot_chassis = /datum/prototype/robot_chassis/quadruped/feline;
+			robot_iconset = /datum/prototype/robot_iconset/cat_feli/service;
+		},
 	)
 
 /datum/prototype/robot_module/nanotrasen/service/create_mounted_item_descriptors(list/normal_out, list/emag_out)
@@ -43,7 +83,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/service)
 
 /datum/prototype/robot_module/nanotrasen/service/legacy_custom_regenerate_resources(mob/living/silicon/robot/robot, dt, multiplier)
 	var/obj/item/reagent_containers/food/condiment/enzyme/E = locate() in robot
-	E.reagents.add_reagent("enzyme", 2 * multiplire * dt)
+	E.reagents.add_reagent("enzyme", 2 * multiplier * dt)
 
 
 #warn translate chassis below
@@ -77,8 +117,6 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/service)
 
 /obj/item/robot_module/robot/clerical/butler
 	sprites = list(
-		"M-USE Nanotrasen" = "robotServ",
-		"Cabeiri" = "eyebot-standard",
 		"Haruka" = "marinaSV",
 		"Michiru" = "maidbot",
 		"Usagi" = "tallgreen",
@@ -107,8 +145,6 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/service)
 /obj/item/robot_module/robot/clerical/general
 	name = "clerical robot module"
 	sprites = list(
-		"M-USE Nanotrasen" = "robotCler",
-		"Cabeiri" = "eyebot-standard",
 		"Haruka" = "marinaSV",
 		"Usagi" = "tallgreen",
 		"Telemachus" = "toiletbot",
@@ -130,42 +166,6 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/service)
 		"ZOOM-BA" = "zoomba-clerical",
 		"W02M" = "worm-service"
 	)
-
-// Uses modified K9 sprites.
-/obj/item/robot_module/robot/quad/serv
-	name = "Service Quadruped module"
-	sprites = list(
-		"Blackhound" = "k50",
-		"Pinkhound" = "k69",
-		"ServicehoundV2" = "serve2",
-		"ServicehoundV2 Darkmode" = "servedark",
-		"F3-LINE" = "FELI-Service"
-	)
-	languages = list(
-		LANGUAGE_AKHANI		= 1,
-		LANGUAGE_BIRDSONG	= 1,
-		LANGUAGE_CANILUNZT	= 1,
-		LANGUAGE_DAEMON		= 1,
-		LANGUAGE_EAL		= 1,
-		LANGUAGE_ECUREUILIAN= 1,
-		LANGUAGE_ENOCHIAN	= 1,
-		LANGUAGE_GUTTER		= 1,
-		LANGUAGE_ROOTLOCAL	= 0,
-		LANGUAGE_SAGARU		= 1,
-		LANGUAGE_SCHECHI	= 1,
-		LANGUAGE_SIGN		= 0,
-		LANGUAGE_SIIK		= 1,
-		LANGUAGE_SKRELLIAN	= 1,
-		LANGUAGE_SKRELLIANFAR = 0,
-		LANGUAGE_SOL_COMMON	= 1,
-		LANGUAGE_SQUEAKISH	= 1,
-		LANGUAGE_TERMINUS	= 1,
-		LANGUAGE_TRADEBAND	= 1,
-		LANGUAGE_UNATHI		= 1,
-		LANGUAGE_ZADDAT		= 1
-	)
-	channels = list("Service" = 1)
-	can_be_pushed = 0
 
 // In a nutshell, basicly service/butler robot but in dog form.
 /obj/item/robot_module/robot/quad/serv/handle_special_module_init(mob/living/silicon/robot/R)
