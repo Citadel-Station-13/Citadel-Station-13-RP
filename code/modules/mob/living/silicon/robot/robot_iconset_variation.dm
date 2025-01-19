@@ -32,16 +32,16 @@
 
 /datum/robot_iconset_variation/dead
 	id = "dead"
-	icon_state_append = "wreck"
+	icon_state_append = "-wreck"
 
 /datum/robot_iconset_variation/resting
 	id = "resting"
-	icon_state_append = "rest"
+	icon_state_append = "-rest"
 
 /datum/robot_iconset_variation/sitting
 	id = "sitting"
-	icon_state_append = "sit"
+	icon_state_append = "-sit"
 
 /datum/robot_iconset_variation/bellyup
 	id = "bellyup"
-	icon_state_append = "bellyup"
+	icon_state_append = "-bellyup"

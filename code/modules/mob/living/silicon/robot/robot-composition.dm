@@ -16,6 +16,13 @@
  */
 /mob/living/silicon/robot/proc/set_iconset(datum/prototype/robot_iconset/iconset, skip_rebuild)
 
+	if(iconset.icon_dimension_x > 32 || iconset.icon_dimension_y > 32)
+		zmm_flags |= ZMM_LOOKAHEAD
+	else
+		zmm_flags &= ~ZMM_LOOKAHEAD
+
+	base_icon_state = iconset.icon_state
+
 /**
  * Initialize to a module
  */

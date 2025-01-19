@@ -214,7 +214,6 @@
 
 	ident = rand(1, 999)
 	updatename("Default")
-	updateicon()
 
 	radio = new /obj/item/radio/borg(src)
 //	communicator = new /obj/item/communicator/integrated(src)
@@ -252,6 +251,8 @@
 	add_robot_verbs()
 
 	AddComponent(/datum/component/riding_filter/mob/robot)
+
+	update_icon()
 
 /mob/living/silicon/robot/proc/init()
 	aiCamera = new/obj/item/camera/siliconcam/robot_camera(src)
@@ -326,19 +327,6 @@
 	qdel(wires)
 	wires = null
 	return ..()
-
-/mob/living/silicon/robot/proc/set_module_sprites(var/list/new_sprites)
-	if(new_sprites && new_sprites.len)
-		module_sprites = new_sprites.Copy()
-		//Custom_sprite check and entry
-		if (custom_sprite == 1)
-			module_sprites["Custom"] = "[ckey]-[sprite_name]-[modtype]" //Made compliant with custom_sprites.dm line 32. (src.) was apparently redundant as it's implied. ~Mech
-			icontype = "Custom"
-		else
-			icontype = module_sprites[1]
-			icon_state = module_sprites[icontype]
-	updateicon()
-	return module_sprites
 
 /mob/living/silicon/robot/proc/pick_module()
 	if(module)
@@ -427,7 +415,6 @@
 			sprite_name = newname
 
 		updatename()
-		updateicon()
 
 // this verb lets cyborgs see the stations manifest
 /mob/living/silicon/robot/verb/cmd_station_manifest()
@@ -457,8 +444,6 @@
 		radio.set_light(integrated_light_power, 2, l_color = get_light_color_for_icontype(), angle = LIGHT_WIDE)
 	else
 		radio.set_light(0)
-
-	updateicon()
 
 /mob/living/silicon/robot/proc/get_light_color_for_icontype()
 	. = LIGHT_COLOR_TUNGSTEN
@@ -519,7 +504,6 @@
 	set name = "Toggle Cover"
 	locked = !locked
 	to_chat(src, "You [ locked ? "lock" : "unlock"] your interface.")
-	updateicon()
 
 // this function returns the robots jetpack, if one is installed
 /mob/living/silicon/robot/proc/installed_jetpack()
@@ -644,7 +628,7 @@
 			if(cell)
 				to_chat(user, "You close the cover.")
 				opened = 0
-				updateicon()
+				update_icon()
 			else if(wiresexposed && wires.is_all_cut())
 				//Cell is out, wires are exposed, remove MMI, produce damaged chassis, baleet original mob.
 				if(!mmi)
@@ -693,7 +677,7 @@
 			else
 				to_chat(user, "You open the cover.")
 				opened = 1
-				updateicon()
+				update_icon()
 
 	else if (istype(W, /obj/item/cell) && opened)	// trying to put a cell inside
 		var/datum/robot_component/C = components["power cell"]
@@ -726,14 +710,13 @@
 		wiresexposed = !wiresexposed
 		to_chat(user, "The wires have been [wiresexposed ? "exposed" : "unexposed"]")
 		playsound(src, W.tool_sound, 50, 1)
-		updateicon()
+		update_icon()
 
 	else if(W.is_screwdriver() && opened && cell)	// radio
 		if(radio)
 			radio.attackby(W,user)//Push it to the radio to let it handle everything
 		else
 			to_chat(user, "Unable to locate a radio.")
-		updateicon()
 
 	else if(W.is_wrench() && opened && !cell)
 		if(bolt)
@@ -764,7 +747,6 @@
 			if(allowed(usr))
 				locked = !locked
 				to_chat(user, "You [ locked ? "lock" : "unlock"] [src]'s interface.")
-				updateicon()
 			else
 				to_chat(user, "<font color='red'>Access denied.</font>")
 
@@ -879,7 +861,7 @@
 			cell = null
 			cell_component.wrapped = null
 			cell_component.installed = 0
-			updateicon()
+			update_icon()
 		else if(cell_component.installed == -1)
 			cell_component.installed = 0
 			var/obj/item/broken_device = cell_component.wrapped
@@ -1044,42 +1026,6 @@
 	lockcharge = state
 	update_mobility()
 
-/mob/living/silicon/robot/proc/choose_icon(var/triesleft, var/list/module_sprites)
-	if(!module_sprites.len)
-		to_chat(src, "Something is badly wrong with the sprite selection. Harass a coder.")
-		return
-
-	icon_selected = 0
-	src.icon_selection_tries = triesleft
-	if(module_sprites.len == 1 || !client)
-		if(!(icontype in module_sprites))
-			icontype = module_sprites[1]
-	else
-		icontype = input("Select an icon! [triesleft ? "You have [triesleft] more chance\s." : "This is your last try."]", "Robot Icon", icontype, null) in module_sprites
-		if(notransform)
-			to_chat(src, "Your current transformation has not finished yet!")
-			choose_icon(icon_selection_tries, module_sprites)
-			return
-		else
-			transform_with_anim()
-
-	if(icontype == "Custom")
-		icon = CUSTOM_ITEM_SYNTH
-	else // This is to fix an issue where someone with a custom borg sprite chooses a non-custom sprite and turns invisible.
-		icon_state = module_sprites[icontype]
-	updateicon()
-
-	if (module_sprites.len > 1 && triesleft >= 1 && client)
-		icon_selection_tries--
-		var/choice = input("Look at your icon - is this what you want?") in list("Yes","No")
-		if(choice=="No")
-			choose_icon(icon_selection_tries, module_sprites)
-			return
-
-	icon_selected = 1
-	icon_selection_tries = 0
-	to_chat(src, "Your icon has been set. You now require a module reset to change it.")
-
 /mob/living/silicon/robot/proc/sensor_mode() //Medical/Security HUD controller for borgs
 	set name = "Set Sensor Augmentation"
 	set category = "Robot Commands"
@@ -1214,7 +1160,6 @@
 				to_chat(src, "<b>Obey these laws:</b>")
 				laws.show_laws(src)
 				to_chat(src, "<span class='danger'>ALERT: [user.real_name] is your new master. Obey your new laws and [TU.his] commands.</span>")
-				updateicon()
 		else
 			to_chat(user, "You fail to hack [src]'s interface.")
 			to_chat(src, "Hack attempt detected.")
