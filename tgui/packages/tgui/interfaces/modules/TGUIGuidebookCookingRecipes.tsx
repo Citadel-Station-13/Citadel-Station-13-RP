@@ -7,7 +7,6 @@
  */
 
 import { InfernoNode } from "inferno";
-import { logger } from "../../logging";
 import { useLocalState, useModule } from "../../backend";
 import { Input, Section, Stack, Tabs } from "../../components";
 import { Modular } from "../../layouts/Modular";
@@ -51,14 +50,14 @@ export const TGUIGuidebookCookingRecipes = (props, context) => {
 
   let rendered: InfernoNode | null = null;
   let categorizedRecipes: Record<string, TGUIGuidebookCookingRecipe[]> = {};
-  
+
   switch (activeTab) {
     case 'recipeTab':
       Object.values(data.recipes).filter(
         (recipe) => !searchText || recipe.result.includes(searchText)).forEach(
-        (recipe) => {
+          (recipe) => {
             (categorizedRecipes[recipe.req_method] = categorizedRecipes[recipe.req_method] || []).push(recipe);
-        });
+          });
       rendered = (
         <Stack vertical>
           {Object.entries(categorizedRecipes).sort(([cat1, a1], [cat2, a2]) => cat1.localeCompare(cat2)).map(
