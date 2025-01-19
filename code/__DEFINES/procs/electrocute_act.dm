@@ -4,12 +4,15 @@
 //* Flags for /atom/proc/electrocute_act(). *//
 
 /// Shock comes from within entity. Should not run normal armor.
+/// * Implies [ELECTROCUTE_ACT_FLAG_IGNORE_ARMOR]
 #define ELECTROCUTE_ACT_FLAG_INTERNAL (1<<0)
 /// Should hit whole-body even if zone was specified
 #define ELECTROCUTE_ACT_FLAG_DISTRIBUTE (1<<1)
 /// Should hit whole-body equally, don't run distribution calculations
 /// * Implies [ELECTROCUTE_ACT_FLAG_DISTRIBUTE]
 #define ELECTROCUTE_ACT_FLAG_UNIFORM (1<<2)
+/// Do not run protection calculations, for when you already calculated it.
+#define ELECTROCUTE_ACT_FLAG_IGNORE_ARMOR (1<<3)
 
 //* Arg indices for /atom/proc/electrocute_act() return value list *//
 

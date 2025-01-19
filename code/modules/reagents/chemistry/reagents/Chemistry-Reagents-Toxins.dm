@@ -1219,7 +1219,6 @@
 		for(var/datum/reagent/nanite/R in M.bloodstr.reagent_list)
 			R.remove_self(removed * 20)
 
-
 /datum/reagent/grubshock/affect_ingest(mob/living/carbon/M, alien, removed)
 	M.electrocute_act_parse_this(10 * removed, src, 1.0, BP_TORSO, 0)
 	if(M.ingested)
