@@ -19,13 +19,16 @@ are heavily influenced by Soviet futurism and other depictions of future soviet/
 	desc = "The Adar'Mazy pistol, produced by the Hadii-Wrack group. This pistol is the primary sidearm for low ranking officers and \
 	officals in the People's Republic of Adhomai."
 	icon = 'icons/content/factions/tajara/items/guns/taj_colt.dmi'
+	inhand_icon = 'icons/content/factions/tajara/items/guns/taj_colt.dmi'
 	icon_state = "gun"
+
 
 /obj/item/gun/ballistic/deagle/taj
 	name = "Adhomai Hand Cannon"
 	desc = "The Nal'dor heavy pistol, a powerful Hadii-Wrack group handcannon that has gained an infamous reputation through its use by \
 	Commissars of the People's Republic of Adhomai."
 	icon = 'icons/content/factions/tajara/items/guns/taj_deagle.dmi'
+	inhand_icon = 'icons/content/factions/tajara/items/guns/taj_deagle.dmi'
 
 ///////////////////
 //Two Handed
@@ -36,6 +39,7 @@ are heavily influenced by Soviet futurism and other depictions of future soviet/
 	desc = "The Hadii-Wrack Avtomat, is an aging internal magazine automatic rifle of the People's Republic of Adhomai's Grand People's Army \
 	whose long and storied service life is coming to an end as it is phased out in favor of more modern automatics."
 	icon = 'icons/content/factions/tajara/items/guns/taj_automat.dmi'
+	inhand_icon = 'icons/content/factions/tajara/items/guns/taj_automat.dmi'
 	fire_anim = ""
 
 /obj/item/gun/ballistic/automatic/k25/taj
@@ -44,3 +48,5 @@ are heavily influenced by Soviet futurism and other depictions of future soviet/
 	of the People's Republic of Adhomai. The firearm has become a symbol of the growing collaboration between the Worker's League and People's Republic \
 	a cooperation that unsettles many with their nominal superiors in the Orion Confederation and Confederate Commonwealth."
 	icon = 'icons/content/factions/tajara/items/guns/taj_k25.dmi'
+	inhand_icon = 'icons/content/factions/tajara/items/guns/taj_k25.dmi'
+

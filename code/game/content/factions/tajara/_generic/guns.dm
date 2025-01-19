@@ -12,7 +12,7 @@ extremely varied ranging from 19th century crude to modern and post modern autom
 	desc = "A simple Adhomai Hand Cannon. Its simple design dates back to the civil war where hand cannons like it were rushed into service to counter the massive arms shortage \
 	the many factions faced at the start of the war. Since then various local manufacturers have refined the design into a mainstay backup weapon of solider and civilian alike."
 	icon = 'icons/content/factions/tajara/items/guns/taj_pockrifle.dmi'
-	item_state = "pockrifle"
+	inhand_icon = 'icons/content/factions/tajara/items/guns/taj_pockrifle.dmi'
 
 /obj/item/gun/ballistic/contender/taj/a44
 	caliber = /datum/ammo_caliber/a44
@@ -41,6 +41,6 @@ extremely varied ranging from 19th century crude to modern and post modern autom
 	even genuine, are often seen in the hands of Tajaran civilians and weapons collectors. They are especially prominent in many Tajaran states where \
 	strict firearms laws prevent the ownership of modern weapons."
 	icon = 'icons/content/factions/tajara/items/guns/taj_musket.dmi'
+	inhand_icon = 'icons/content/factions/tajara/items/guns/taj_musket.dmi'
 	icon_state = "musket"
 	item_state = "musket"
-	wielded_item_state = "musket-wielded"

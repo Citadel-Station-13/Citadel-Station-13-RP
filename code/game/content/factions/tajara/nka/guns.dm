@@ -20,15 +20,19 @@ as their noble knights can't be knightly unless their weapons are ornate enough.
 	name = "Adhomai revolver"
 	desc = "The Akhan and Khan Royal Service Revolver. Sophisticated but dated, this weapon is a metaphor for the New Kingdom of Adhomai itself."
 	icon = 'icons/content/factions/tajara/items/guns/taj_revolver.dmi'
+	inhand_icon = 'icons/content/factions/tajara/items/guns/taj_revolver.dmi'
 	icon_state = "revolver"
+	item_state = "revolver"
 
 /obj/item/gun/ballistic/revolver/mateba/taj/knife
 	name = "Adhomai knife revolver"
 	desc = "An ornate knife revolver from an Adhomai gunsmith. Popular among Tajaran nobility just before the civil war, many of these revolvers \
 	found their way into the market when they were taken as trophies by Grand People's Army soldiers and DPRA guerillas."
 	icon_state = "knifegun"
+	item_state = "knifegun"
 	caliber = /datum/ammo_caliber/a38
 	ammo_type = /obj/item/ammo_casing/a38
+	max_shells = 9 //Large Cyl
 	damage_force = 15
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 
@@ -41,9 +45,9 @@ as their noble knights can't be knightly unless their weapons are ornate enough.
 	desc = "The Arkhan & Khan carbine (or just A&K-c) bolt action rifle was adopted by the New Kingdom just after the outbreak of the Adhomai civil war. \
 	After many decades of service it is finally been retired as the New Kingdom embraces modern firearms."
 	icon = 'icons/content/factions/tajara/items/guns/taj_boltaction.dmi'
-	item_state = "boltaction"
+	inhand_icon = 'icons/content/factions/tajara/items/guns/taj_boltaction.dmi'
 	icon_state = "boltaction"
-	wielded_item_state = "boltaction-wielded"
+	item_state = "boltaction"
 
 /obj/item/gun/ballistic/automatic/sts35/taj
 	name = "Adhomai assault rifle"
@@ -51,6 +55,9 @@ as their noble knights can't be knightly unless their weapons are ornate enough.
 	Industries' STS-35. The New Kingdom of Adhomai only recently adopted this rifle which it is already rolling out in massive numbers. A feat some say is \
 	beyond the Industrial capabilities of the New Kingdom leading many to speculate that some of the rifles are foriegn supplied."
 	icon = 'icons/content/factions/tajara/items/guns/taj_arifle.dmi'
+	inhand_icon = 'icons/content/factions/tajara/items/guns/taj_arifle.dmi'
+	icon_state = "arifle"
+	item_state = "arifle"
 
 	firemodes = list(
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
@@ -67,3 +74,6 @@ as their noble knights can't be knightly unless their weapons are ornate enough.
 	a must have item for even the most traditional noble. Increasingly these pistols are finding their way to the frontier as their style is increasingly appreciated outside \
 	of Adhomai."
 	icon = 'icons/content/factions/tajara/items/guns/taj_duelinglaser.dmi'
+	inhand_icon = 'icons/content/factions/tajara/items/guns/taj_duelinglaser.dmi'
+	icon_state = "retro"
+	item_state = "retro"
