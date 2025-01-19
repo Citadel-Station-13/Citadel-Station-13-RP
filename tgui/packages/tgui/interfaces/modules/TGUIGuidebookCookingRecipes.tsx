@@ -55,9 +55,9 @@ export const TGUIGuidebookCookingRecipes = (props, context) => {
     case 'recipeTab':
       Object.values(data.recipes).filter(
         (recipe) => !searchText || recipe.result.includes(searchText)).forEach(
-          (recipe) => {
-            (categorizedRecipes[recipe.req_method] = categorizedRecipes[recipe.req_method] || []).push(recipe);
-          });
+        (recipe) => {
+          (categorizedRecipes[recipe.req_method] = categorizedRecipes[recipe.req_method] || []).push(recipe);
+        });
       rendered = (
         <Stack vertical>
           {Object.entries(categorizedRecipes).sort(([cat1, a1], [cat2, a2]) => cat1.localeCompare(cat2)).map(
