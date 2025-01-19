@@ -20733,12 +20733,6 @@
 /obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room1)
-"dPi" = (
-/obj/structure/cable/pink{
-	icon_state = "1-8"
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/scoophead/main)
 "dQr" = (
 /obj/structure/bed/padded,
 /obj/machinery/fire_alarm/north_mount,
@@ -20955,10 +20949,6 @@
 /obj/machinery/light{
 	dir = 8;
 	light_range = 12
-	},
-/obj/machinery/power/apc/hyper/west_mount,
-/obj/structure/cable/pink{
-	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/scoophead/main)
@@ -22235,6 +22225,9 @@
 /obj/item/binoculars/spyglass,
 /obj/machinery/light{
 	dir = 4
+	},
+/obj/structure/cable/pink{
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/scoophead/main)
@@ -23573,9 +23566,6 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 8
 	},
-/obj/structure/cable/pink{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/scoophead/main)
 "ltU" = (
@@ -24003,11 +23993,11 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 4
 	},
-/obj/structure/cable/pink{
-	icon_state = "4-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 6
+	},
+/obj/structure/cable/pink{
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/scoophead/main)
@@ -24451,9 +24441,6 @@
 	name = "Captain's Quarters";
 	req_access = list(160);
 	req_one_access = null
-	},
-/obj/structure/cable/pink{
-	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
@@ -25407,6 +25394,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/sector/nebula_tradeport/medical/public)
+"qOQ" = (
+/obj/structure/cable/pink{
+	icon_state = "4-8"
+	},
+/turf/simulated/wall/prepainted/command,
+/area/shuttle/scoophead/engineering)
 "qPf" = (
 /obj/effect/debris/cleanable/molten_item,
 /turf/simulated/floor/plating,
@@ -25479,9 +25472,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/scoophead/main)
 "qXy" = (
-/obj/structure/cable/pink{
-	icon_state = "4-8"
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/scoophead/engineering)
@@ -25591,9 +25581,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
-	},
-/obj/structure/cable/pink{
-	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/scoophead/main)
@@ -25896,9 +25883,6 @@
 "svz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
-	},
-/obj/structure/cable/pink{
-	icon_state = "4-8"
 	},
 /turf/simulated/wall/rshull,
 /area/shuttle/scoophead/main)
@@ -26500,6 +26484,9 @@
 /obj/structure/cable/pink{
 	icon_state = "0-8";
 	dir = 1
+	},
+/obj/structure/cable/pink{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/scoophead/engineering)
@@ -27349,10 +27336,6 @@
 	dir = 8
 	},
 /obj/structure/cable/pink{
-	icon_state = "2-4";
-	dir = 8
-	},
-/obj/structure/cable/pink{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -27396,9 +27379,6 @@
 	},
 /obj/structure/cable/pink{
 	icon_state = "4-8"
-	},
-/obj/structure/cable/pink{
-	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/scoophead/main)
@@ -57155,7 +57135,7 @@ wWV
 rqL
 lsj
 lsj
-dPi
+lEv
 qXs
 ski
 aDh
@@ -57732,7 +57712,7 @@ aDh
 aDh
 aDh
 qhX
-mNP
+qOQ
 nQY
 mNP
 mNP
