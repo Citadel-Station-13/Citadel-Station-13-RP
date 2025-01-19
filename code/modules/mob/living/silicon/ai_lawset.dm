@@ -31,7 +31,7 @@
 /datum/ai_lawset/proc/append_supplied_law(datum/ai_law/law_datum_or_text)
 	#warn impl
 
-//! legacy below
+	//! legacy below
 
 	var/law_header = "Prime Directives"
 	var/selectable = 0
