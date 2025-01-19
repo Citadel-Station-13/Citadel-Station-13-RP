@@ -153,5 +153,6 @@ var/const/tk_maxrange = 15
 
 /obj/item/tk_grab/update_icon()
 	cut_overlays()
+	. = ..()
 	if(focus && focus.icon && focus.icon_state)
 		add_overlay(image(focus.icon,focus.icon_state))

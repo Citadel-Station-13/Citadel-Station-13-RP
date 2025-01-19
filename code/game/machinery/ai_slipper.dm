@@ -22,11 +22,12 @@
 	..()
 	update_icon()
 
-/obj/machinery/ai_slipper/update_icon()
+/obj/machinery/ai_slipper/update_icon_state()
 	if(machine_stat & (NOPOWER|BROKEN))
 		icon_state = "motion0"
 	else
 		icon_state = disabled ? "motion0" : "motion3"
+	return ..()
 
 /obj/machinery/ai_slipper/proc/setState(var/enabled, var/uses)
 	disabled = disabled

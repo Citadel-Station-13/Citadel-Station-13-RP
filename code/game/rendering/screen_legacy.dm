@@ -118,6 +118,7 @@
 
 /atom/movable/screen/zone_sel/update_icon()
 	cut_overlays()
+	. = ..()
 	add_overlay(image('icons/mob/zone_sel.dmi', "[selecting]"))
 
 /// The UI Button to open the TGUI Crafting Menu

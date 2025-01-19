@@ -26,6 +26,7 @@
 
 /obj/machinery/portable_atmospherics/powered/pump/update_icon()
 	cut_overlays()
+	. = ..()
 	var/list/overlays_to_add = list()
 
 	if(on && cell && cell.charge)
@@ -39,7 +40,6 @@
 	if(connected_port)
 		overlays_to_add += "siphon-connector"
 	add_overlay(overlays_to_add)
-	return
 
 /obj/machinery/portable_atmospherics/powered/pump/emp_act(severity)
 	if(machine_stat & (BROKEN|NOPOWER))
@@ -207,7 +207,7 @@
 
 /obj/machinery/portable_atmospherics/powered/pump/huge/update_icon()
 	cut_overlays()
-
+	. = ..()
 	if(on && !(machine_stat & (NOPOWER|BROKEN)))
 		icon_state = "siphon:1"
 	else
