@@ -139,6 +139,7 @@
 
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/update_icon()
 	cut_overlays()
+	. = ..()
 
 	if(on && !(machine_stat & (NOPOWER|BROKEN)))
 		icon_state = "scrubber:1"

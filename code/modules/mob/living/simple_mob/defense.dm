@@ -145,13 +145,8 @@
 	. = 1 - .
 	. = min(., 1.0)
 
-// Electricity
+#warn deal with
 /mob/living/simple_mob/electrocute_act_legacy(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null)
-	shock_damage *= siemens_coeff
-	if(shock_damage < 1)
-		return 0
-
-	apply_damage(damage = shock_damage, damagetype = DAMAGE_TYPE_BURN, def_zone = null, blocked = null, blocked = resistance, used_weapon = null, sharp = FALSE, edge = FALSE)
 	playsound(loc, /datum/soundbyte/grouped/sparks, 50, 1, -1)
 
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
@@ -171,22 +166,6 @@
 	// Code that calls this expects 1 = immunity so we need to invert again.
 	. = 1 - .
 	. = min(., 1.0)
-
-// Shot with taser/stunvolver
-/mob/living/simple_mob/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone, var/used_weapon=null)
-	if(taser_kill)
-		var/stunDam = 0
-		var/agonyDam = 0
-		var/armor = run_armor_check(def_zone = null, attack_flag = "energy")
-
-		if(stun_amount)
-			stunDam += stun_amount * 0.5
-			apply_damage(damage = stunDam, damagetype = DAMAGE_TYPE_BURN, def_zone = null, blocked = armor, blocked = resistance, used_weapon = used_weapon, sharp = FALSE, edge = FALSE)
-
-		if(agony_amount)
-			agonyDam += agony_amount * 0.5
-			apply_damage(damage = agonyDam, damagetype = DAMAGE_TYPE_BURN, def_zone = null, blocked = armor, blocked = resistance, used_weapon = used_weapon, sharp = FALSE, edge = FALSE)
-
 
 // Electromagnetism
 /mob/living/simple_mob/emp_act(severity)

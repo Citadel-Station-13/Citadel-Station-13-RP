@@ -45,7 +45,7 @@
 			if(G.affecting)
 				G.affecting.electrocute_act_parse_this(10 * siemens, src, 1.0, BP_TORSO, 0)
 				var/agony = 80 * siemens //Does more than if hit with an electric hand, since grabbing is slower.
-				G.affecting.stun_effect_act(0, agony, BP_TORSO, src)
+				G.affecting.stun_effect_act_parse_this(0, agony, BP_TORSO, src)
 
 				add_attack_logs(src,G.affecting,"Changeling shocked")
 
@@ -147,7 +147,7 @@
 			return 0
 
 		C.electrocute_act_parse_this(electrocute_amount * siemens,src,1.0,BP_TORSO)
-		C.stun_effect_act(0, agony_amount * siemens, BP_TORSO, src)
+		C.stun_effect_act_parse_this(0, agony_amount * siemens, BP_TORSO, src)
 
 		add_attack_logs(user,C,"Shocked with [src]")
 

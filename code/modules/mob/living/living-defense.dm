@@ -113,14 +113,14 @@
 
 //* Misc Effects *//
 
-/mob/living/electrocute_act(efficiency, energy, damage, agony, flags, hit_zone, list/shared_blackboard, out_energy_consumed)
+/mob/living/electrocute_act(efficiency, energy, damage, stun_power, flags, hit_zone, atom/movable/source, list/shared_blackboard, out_energy_consumed)
 	// todo: rework this maybe
 	if((fire_stacks < 0) && !(flags & ELECTROCUTE_ACT_FLAG_INTERNAL))
 		// water makes you more ocnductive
 		efficiency *= 1.5
 	return ..()
 
-/mob/living/on_electrocute_act(efficiency, energy, damage, agony, flags, hit_zone, list/shared_blackboard)
+/mob/living/on_electrocute_act(efficiency, energy, damage, stun_power, flags, hit_zone, atom/movable/source, list/shared_blackboard)
 	inflict_electrocute_damage(damage * efficiency, agony * efficiency, flags, hit_zone)
 	return ..()
 
@@ -128,7 +128,7 @@
  * Called to apply the damage from [electrocute_act()]
  */
 #warn impl on simple mob, carbon, silicon
-/mob/living/proc/inflict_electrocute_damage(damage, agony, flags, hit_zone)
+/mob/living/proc/inflict_electrocute_damage(damage, stun_power, flags, hit_zone)
 	return
 
 /**

@@ -57,9 +57,8 @@
 						return 1
 	return 0
 
-#warn parse
+#warn deal with
 /mob/living/carbon/electrocute_act_legacy(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null, var/stun = 1)
-	src.apply_damage(shock_damage, DAMAGE_TYPE_BURN, def_zone, used_weapon="Electrocution")
 	playsound(loc, /datum/soundbyte/grouped/sparks, 50, 1, -1)
 	if (shock_damage > 15)
 		src.visible_message(

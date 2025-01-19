@@ -177,6 +177,7 @@
 		return
 
 /obj/structure/fireaxecabinet/update_icon() //Template: fireaxe[has fireaxe][is opened][hits taken][is smashed]. If you want the opening or closing animations, add "opening" or "closing" right after the numbers
+	. = ..()
 	hasaxe = 0
 	if(fireaxe)
 		hasaxe = 1

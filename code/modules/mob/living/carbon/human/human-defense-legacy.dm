@@ -1,3 +1,18 @@
+#warn deal with this
+//Handles the effects of "stun" weapons
+/mob/living/proc/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone, var/used_weapon=null)
+	if (stun_amount)
+		afflict_stun(20 * stun_amount)
+		afflict_paralyze(20 * stun_amount)
+		apply_effect(STUTTER, stun_amount)
+		apply_effect(EYE_BLUR, stun_amount)
+
+	if (agony_amount)
+		apply_damage(agony_amount, DAMAGE_TYPE_HALLOSS, def_zone, 0, used_weapon)
+		apply_effect(STUTTER, agony_amount/10)
+		apply_effect(EYE_BLUR, agony_amount/10)
+
+#warn deal with this
 /mob/living/carbon/human/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone)
 	var/obj/item/organ/external/affected = get_organ(check_zone(def_zone))
 	var/siemens_coeff = get_siemens_coefficient_organ(affected)
@@ -24,8 +39,6 @@
 				else
 					var/emote_scream = pick("screams in pain and ", "lets out a sharp cry and ", "cries out and ")
 					INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, custom_emote), 1, "[affected.organ_can_feel_pain() ? "" : emote_scream] drops what they were holding in their [affected.name]!")
-
-	..(stun_amount, agony_amount, def_zone)
 
 /mob/living/carbon/human/legacy_mob_armor(var/def_zone, var/type)
 	var/armorval = 0

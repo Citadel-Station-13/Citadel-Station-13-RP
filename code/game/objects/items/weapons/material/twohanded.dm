@@ -50,6 +50,7 @@
 
 /obj/item/material/twohanded/update_icon()
 	icon_state = "[base_icon][!!(item_flags & ITEM_MULTIHAND_WIELDED)]"
+	. = ..()
 	item_state = icon_state
 
 /*

@@ -63,6 +63,8 @@
 /atom/proc/unarmed_act(mob/attacker, datum/unarmed_attack/style, target_zone, datum/event_args/actor/clickchain/clickchain)
 	return CLICKCHAIN_DO_NOT_ATTACK
 
+//* External API / Damage Receiving - Projectiles *//
+
 /**
  * Because this is the proc that calls on_impact(), handling is necessarily
  * done in here for a lot of things.
@@ -138,6 +140,39 @@
 /atom/proc/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	return impact_flags
 
+//* External API / Damage Receiving - Electric *//
+
+/**
+ * Called to inflict an electrical shock on this atom.
+ *
+ * * Passing in no damage / stun power is perfectly valid; you can get calculated 'efficiency' / energy used
+ *   by getting returned args.
+ *
+ * @params
+ * * energy - energy, in **kilojoules**
+ * * damage - 'intended' burn damage.
+ *            this should be scaled to an intent of being used on a carbon-type.
+ *            do not scale this to things like walls / high-hp structures. most structures
+ *            don't get damaged by electric shocks anyways.
+ * * stun_power - 'intended' agony / pain / stun force
+ *            this should be scaled to an intent of being used on a carbon-type as pain damage.
+ *            that said, not only carbon-types are allowed to use this.
+ * * flags - ELECTROCUTE_ACT_* flags
+ * * hit_zone - if specified and non-internal, this zone will be used to check armor.
+ * * source - the source of the electric shock, if provided.
+ *            any movable is a valid value; you are expected to handle touch (unspecified / obj / mob),
+ *            and projectile sources if you are using this.
+ * * shared_blackboard - (optional) list to both inject into and retrieve data from.
+ *                as a word of warning, this list **will** be a shared list if being used
+ *                in things like multi-hit lightning bolts; we do not make a new list per atom.
+ *
+ * @return modified `electrocute_act` args list, indiced with `ELECTROCUTE_ACT_ARG_*` #define indices.
+ */
+/atom/proc/electrocute(energy, damage, stun_power, flags, hit_zone, atom/movable/source, list/shared_blackboard)
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	return electrocute_act(1, energy, damage, stun_power, flags, hit_zone, source, shared_blackboard, 0)
+
 /**
  * Called upon receiving an electrical shock of any kind
  *
@@ -152,11 +187,14 @@
  *            this should be scaled to an intent of being used on a carbon-type.
  *            do not scale this to things like walls / high-hp structures. most structures
  *            don't get damaged by electric shocks anyways.
- * * agony - 'intended' agony / pain / stun force
- *            this should be scaled to an intent of being used on a carbon-type.
+ * * stun_power - 'intended' agony / pain / stun force
+ *            this should be scaled to an intent of being used on a carbon-type as pain damage.
  *            that said, not only carbon-types are allowed to use this.
  * * flags - ELECTROCUTE_ACT_* flags
  * * hit_zone - if specified and non-internal, this zone will be used to check armor.
+ * * source - the source of the electric shock, if provided.
+ *            any movable is a valid value; you are expected to handle touch (unspecified / obj / mob),
+ *            and projectile sources if you are using this.
  * * shared_blackboard - (optional) list to both inject into and retrieve data from.
  *                as a word of warning, this list **will** be a shared list if being used
  *                in things like multi-hit lightning bolts; we do not make a new list per atom.
@@ -164,37 +202,45 @@
  *
  * @return modified args
  */
-/atom/proc/electrocute_act(efficiency, energy, damage, agony, flags, hit_zone, list/shared_blackboard, out_energy_consumed)
+/atom/proc/electrocute_act(efficiency, energy, damage, stun_power, flags, hit_zone, atom/movable/source, list/shared_blackboard, out_energy_consumed)
 	SHOULD_CALL_PARENT(TRUE)
-	out_energy_consumed = on_electrocute_act(efficiency, energy, damage, agony, flags, hit_zone, shared_blackboard, out_energy_consumed)
+	SHOULD_NOT_SLEEP(TRUE)
+	PROTECTED_PROC(TRUE)
+	out_energy_consumed = on_electrocute_act(efficiency, energy, damage, stun_power, flags, hit_zone, source, shared_blackboard, out_energy_consumed)
 	return args.Copy()
 
 /**
  * Called to handle effects of receiving an electrical shock.
  *
- * * This proc-chain should modify arguments directly before calling ..()
- * * Effects are handled at the base by calling on_electrocute_act()
+ * * This is called by `electrocute_act` to inflict effects.
+ * * Modifying args is still allowed here, but will **not** be returned to the caller.
  *
  * @params
  * * efficiency - effect multiplier. this should be multiplied to damage / agony / energy / etc
  *                to get the approximate amount that actually hit us.
  * * energy - energy, in **kilojoules**
  * * damage - 'intended' burn damage.
- *            this should be scaled to an intent of being used on a carbon-type.
+ *            this should be scaled to an intent of being used on a carbon-type as pain damage.
  *            do not scale this to things like walls / high-hp structures. most structures
  *            don't get damaged by electric shocks anyways.
- * * agony - 'intended' agony / pain / stun force
+ * * stun_power - 'intended' agony / pain / stun force
  *            this should be scaled to an intent of being used on a carbon-type.
  *            that said, not only carbon-types are allowed to use this.
  * * flags - ELECTROCUTE_ACT_* flags
  * * hit_zone - if specified and non-internal, this zone will be used to check armor.
+ * * source - the source of the electric shock, if provided.
+ *            any movable is a valid value; you are expected to handle touch (unspecified / obj / mob),
+ *            and projectile sources if you are using this.
  * * shared_blackboard - (optional) list to both inject into and retrieve data from.
  *                as a word of warning, this list **will** be a shared list if being used
  *                in things like multi-hit lightning bolts; we do not make a new list per atom.
  *
  * @return used energy in kilojoules
  */
-/atom/proc/on_electrocute_act(efficiency, energy, damage, agony, flags, hit_zone, list/shared_blackboard)
+/atom/proc/on_electrocute_act(efficiency, energy, damage, stun_power, flags, hit_zone, atom/movable/source, list/shared_blackboard)
+	SHOULD_CALL_PARENT(TRUE)
+	PROTECTED_PROC(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 	return 0
 
 //* Hitsound API *//
