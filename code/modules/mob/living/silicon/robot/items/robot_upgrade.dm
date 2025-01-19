@@ -56,6 +56,8 @@
  * * robot_opinion - what the robot says about it
  * * actor - (optional) person doing the install
  * * silent - (optional) do not emit feedback to the actor
+ *
+ * @return TRUE / FALSE
  */
 /obj/item/robot_upgrade/proc/can_install(mob/living/silicon/robot/target, robot_opinion, datum/event_args/actor/actor, silent)
 	return TRUE
