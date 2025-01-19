@@ -2,6 +2,11 @@ GENERATE_ROBOT_MODULE_PRESET(/cybersun/triage)
 /datum/prototype/robot_module/cybersun/triage
 	use_robot_module_path = /obj/item/robot_module/robot/
 	allowed_frames = list(
+		/datum/robot_frame{
+			name = "Telemachus";
+			robot_chassis = /datum/prototype/robot_chassis/baseline;
+			robot_iconset = /datum/prototype/robot_iconset/baseline_toiletbot/antag;
+		},
 	)
 
 /datum/prototype/robot_module/cybersun/triage/provision_resource_store(datum/robot_resource_store/store)
@@ -41,11 +46,3 @@ GENERATE_ROBOT_MODULE_PRESET(/cybersun/triage)
 			/obj/item/robot_builtin/dog_mirrortool,
 			/obj/item/roller_holder,
 		)
-
-#warn translate chassis below
-
-/obj/item/robot_module/robot/syndicate/combat_medic
-	name = "combat medic robot module"
-	sprites = list(
-		"Telemachus" = "toiletbotantag"
-	)

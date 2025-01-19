@@ -1,11 +1,22 @@
 GENERATE_ROBOT_MODULE_PRESET(/cybersun/assault)
 /datum/prototype/robot_module/cybersun/assault
-	use_robot_module_path = /obj/item/robot_module/robot/
+	use_robot_module_path = /obj/item/robot_module/robot/syndicate
 	allowed_frames = list(
 	)
 
 /datum/prototype/robot_module/cybersun/assault/provision_resource_store(datum/robot_resource_store/store)
 	..()
+
+/datum/prototype/robot_module/cybersun/assault/create_mounted_item_descriptors(list/normal_out, list/emag_out)
+	..()
+	if(normal_out)
+		normal_out |= list(
+		/obj/item/shield_projector/rectangle/weak,
+		/obj/item/gun/energy/dakkalaser,
+		/obj/item/handcuffs/cyborg,
+		/obj/item/melee/baton/robot,
+		/obj/item/melee/transforming/energy/sword,
+	)
 
 #warn translate chassis below
 
@@ -38,29 +49,6 @@ GENERATE_ROBOT_MODULE_PRESET(/cybersun/assault)
 	)
 	var/id
 
-// All syndie modules get these, and the base borg items (flash, crowbar, etc).
-/obj/item/robot_module/robot/syndicate/get_modules()
-	. = ..()
-	. |= list(
-		/obj/item/pinpointer/shuttle/merc,
-		/obj/item/melee/transforming/energy/sword
-	)
-
-/obj/item/robot_module/robot/syndicate/handle_special_module_init(mob/living/silicon/robot/R)
-	. = ..()
-	var/jetpack = new/obj/item/tank/jetpack/carbondioxide(src)
-	. += jetpack
-	R.internals = jetpack
-
-	id = R.idcard
-	. += id
-
-/obj/item/robot_module/robot/syndicate/Destroy()
-	src.modules -= id
-	id = null
-	return ..()
-
-// Gets a big shield and a gun that shoots really fast to scare the opposing force.
 /obj/item/robot_module/robot/syndicate/protector
 	name = "protector robot module"
 	sprites = list(
@@ -68,13 +56,4 @@ GENERATE_ROBOT_MODULE_PRESET(/cybersun/assault)
 		"Cerberus" = "syndie_bloodhound",
 		"Ares" = "squats",
 		"XI-ALP" = "syndi-heavy"
-	)
-
-/obj/item/robot_module/robot/syndicate/protector/get_modules()
-	. = ..()
-	. |= list(
-		/obj/item/shield_projector/rectangle/weak,
-		/obj/item/gun/energy/dakkalaser,
-		/obj/item/handcuffs/cyborg,
-		/obj/item/melee/baton/robot
 	)

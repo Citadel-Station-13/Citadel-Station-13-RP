@@ -3997,6 +3997,7 @@
 #include "code\modules\mob\living\silicon\robot\iconset\dog_vale.dm"
 #include "code\modules\mob\living\silicon\robot\iconset\drake_mizartz.dm"
 #include "code\modules\mob\living\silicon\robot\iconset\grounded_decapod.dm"
+#include "code\modules\mob\living\silicon\robot\iconset\grounded_landmate.dm"
 #include "code\modules\mob\living\silicon\robot\iconset\grounded_mechoid.dm"
 #include "code\modules\mob\living\silicon\robot\iconset\grounded_spider.dm"
 #include "code\modules\mob\living\silicon\robot\iconset\grounded_worm.dm"

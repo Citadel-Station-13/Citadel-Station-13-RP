@@ -3,6 +3,11 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/medical)
 	use_robot_module_path = /obj/item/robot_module/robot/medical
 	allowed_frames = list(
 		/datum/robot_frame{
+			name = "Telemachus";
+			robot_chassis = /datum/prototype/robot_chassis/baseline;
+			robot_iconset = /datum/prototype/robot_iconset/baseline_toiletbot/medical;
+		},
+		/datum/robot_frame{
 			name = "Canine - Medihound";
 			robot_chassis = /datum/prototype/robot_chassis/quadruped/canine;
 			robot_iconset = /datum/prototype/robot_iconset/dog_k9/medical;
@@ -89,7 +94,6 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/medical)
 		"Haruka" = "marinaMD",
 		"Minako" = "arachne",
 		"Usagi" = "tallwhite",
-		"Telemachus" = "toiletbotsurgeon",
 		"WTOperator" = "sleekcmo",
 		"XI-ALP" = "heavyMed",
 		"Basic" = "Medibot",
