@@ -158,12 +158,4 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	R.scrubbing = FALSE
 	R.dogborg = FALSE
 
-/obj/item/robot_module/robot/quad/get_synths(mob/living/silicon/robot/R)
-	. = ..()
-	var/datum/matter_synth/water = new /datum/matter_synth(500)
-	water.name = "Water reserves"
-	water.recharge_rate = 0
-	R.water_res = water
-	.[MATSYN_WATER] = water
-
 #warn parse this crap

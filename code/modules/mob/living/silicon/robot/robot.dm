@@ -212,12 +212,7 @@
 
 	wires = new(src)
 
-	robot_modules_background = new()
-	robot_modules_background.icon = 'icons/screen/hud/styles/common/storage.dmi'
-	robot_modules_background.icon_state = "block"
 	ident = rand(1, 999)
-	module_sprites["Basic"] = "robot"
-	icontype = "Basic"
 	updatename("Default")
 	updateicon()
 

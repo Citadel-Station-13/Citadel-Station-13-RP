@@ -3,7 +3,6 @@
 	desc = "Unlocks new and often deadly module specific items of a robot"
 	icon_state = "cyborg_upgrade3"
 	item_state = "cyborg_upgrade"
-	require_module = TRUE
 
 /obj/item/robot_upgrade/syndicate/can_install(mob/living/silicon/robot/target, robot_opinion, datum/event_args/actor/actor, silent)
 	. = ..()

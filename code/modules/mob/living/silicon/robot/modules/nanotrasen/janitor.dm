@@ -20,10 +20,9 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/janitor)
 		lube_spray.name = "lube spray"
 		emag_out |= lube_spray
 
-/datum/prototype/robot_module/nanotrasen/service/provision_resource_store(datum/robot_resource_store/store)
+/datum/prototype/robot_module/nanotrasen/janitor/provision_resource_store(datum/robot_resource_store/store)
 	..()
-	store.provisioned_material_store[/datum/prototype/material/steel::id] = new /datum/robot_resource/provisioned/preset/material/steel{regen_per_second = 0}
-	store.provisioned_material_store[/datum/prototype/material/glass::id] = new /datum/robot_resource/provisioned/preset/material/glass{regen_per_second = 0}
+	store.provisioned_material_store[/datum/prototype/material/glass::id] = new /datum/robot_resource/provisioned/preset/material/glass{regen_per_second = 1 * SHEET_MATERIAL_AMOUNT}
 
 #warn translate chassis below
 
@@ -55,8 +54,6 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/janitor)
 	)
 
 /obj/item/robot_module/robot/janitor/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
-	var/obj/item/lightreplacer/LR = locate() in src.modules
-	LR.Charge(R, amount)
 	if(src.emag)
 		var/obj/item/reagent_containers/spray/S = src.emag
 		S.reagents.add_reagent("lube", 2 * amount)
@@ -74,9 +71,3 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/janitor)
 	channels = list("Service" = 1)
 	can_be_pushed = 0
 	can_shred = TRUE
-
-/obj/item/robot_module/robot/quad/jani/get_modules()
-	. = ..()
-	. |= list(
-		/obj/item/pupscrubber,
-	)

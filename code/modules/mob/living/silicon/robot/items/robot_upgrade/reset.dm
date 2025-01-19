@@ -3,7 +3,6 @@
 	desc = "Used to reset a cyborg's module. Destroys any other upgrades applied to the robot."
 	icon_state = "cyborg_upgrade1"
 	item_state = "cyborg_upgrade"
-	require_module = TRUE
 
 /obj/item/robot_upgrade/reset/being_installed(mob/living/silicon/robot/target)
 	target.module_reset()

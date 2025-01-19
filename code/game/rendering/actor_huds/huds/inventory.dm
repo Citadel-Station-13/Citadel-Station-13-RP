@@ -9,11 +9,13 @@
 	var/datum/inventory/host
 
 	/// hidden classes, associated to list of reasons
-	var/list/hidden_classes = list(
+	var/tmp/list/hidden_classes = list(
 		(INVENTORY_HUD_CLASS_DRAWER) = list(
 			INVENTORY_HUD_HIDE_SOURCE_DRAWER,
 		),
 	)
+	/// is robot module inventory shown?
+	var/tmp/robot_module_inventory_drawn = FALSE
 
 	/// keyed slot id to screen object
 	var/list/atom/movable/screen/actor_hud/inventory/plate/slot/slots
@@ -300,6 +302,13 @@
 		. += button_equip_hand
 	if(button_drawer)
 		. += button_drawer
+
+//* Robot Modules *//
+
+/datum/actor_hud/inventory/proc/toggle_robot_modules()
+	#warn impl
+
+//* Hidden Classes *//
 
 /datum/actor_hud/inventory/proc/toggle_hidden_class(class, source)
 	var/list/atom/movable/screen/actor_hud/inventory/affected

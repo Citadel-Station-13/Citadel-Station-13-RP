@@ -167,7 +167,36 @@
 		add_overlay(active_image)
 
 /**
- * Button: 'swap hand'
+ * Backplate for robot modules inventory.
+ */
+#warn impl
+/atom/movable/screen/actor_hud/inventory/robot_drawer_backplate
+	icon = 'icons/screen/hud/styles/common/storage.dmi'
+	icon_state = "block"
+
+#warn impl
+
+
+/**
+ * Button: 'oepn robot modules'
+ */
+#warn impl
+/atom/movable/screen/actor_hud/inventory/robot_drawer
+	name = "module drawer"
+	icon_state = "robot-drawer"
+	#warn deal with screen loc
+	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_DRAWER
+
+/atom/movable/screen/actor_hud/inventory/robot_drawer/sync_style(datum/hud_style/style, style_alpha, style_color)
+	..()
+	icon = style.inventory_icons
+
+/atom/movable/screen/actor_hud/inventory/robot_drawer/on_click(mob/user, list/params)
+	// todo: remote control
+	#warn this
+
+/**
+ * Button: 'open inventory slots'
  */
 /atom/movable/screen/actor_hud/inventory/drawer
 	name = "drawer"
