@@ -17,7 +17,7 @@
 		S.try_transform()
 	else if(is_holosphere_shell(M))
 		var/mob/living/simple_mob/holosphere_shell/H = M
-		var/datum/species/holosphere/S = M.hologram.species
+		var/datum/species/holosphere/S = H.hologram.species
 		if(!istype(S))
 			return
 		S.try_untransform()
