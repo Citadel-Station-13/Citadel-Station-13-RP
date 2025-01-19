@@ -283,15 +283,22 @@
 /obj/projectile/beam/shock
 	name = "shock beam"
 	icon_state = "lightning"
-	damage_type = DAMAGE_TYPE_ELECTROCUTE
 
 	muzzle_type = /obj/effect/projectile/muzzle/lightning
 	tracer_type = /obj/effect/projectile/tracer/lightning
 	impact_type = /obj/effect/projectile/impact/lightning
 
-	damage_force = 30
-	agony = 15
+	damage_force = 0
 	eyeblur = 2
+
+	base_projectile_effects = list(
+		/datum/projectile_effect/electrical_impulse{
+			shock_energy = 100;
+			shock_damage = 30;
+			shock_agony = 15;
+			shock_flags = ELECTROCUTE_ACT_FLAG_DISTRIBUTE;
+		},
+	)
 
 /obj/projectile/beam/excavation
 	name = "excavation beam"
@@ -309,7 +316,6 @@
 	name = "point defense salvo"
 	icon_state = "laser"
 	damage_force = 15
-	damage_type = DAMAGE_TYPE_ELECTROCUTE //You should be safe inside a voidsuit
 	light_color = "#A9980A"
 
 	excavation_amount = 200 // Good at shooting rocks

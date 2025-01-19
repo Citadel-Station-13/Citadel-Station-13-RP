@@ -347,13 +347,14 @@
 	else
 		power_source = cell
 		shock_damage = cell_damage
-	var/drained_hp = M.electrocute_act_parse_this(shock_damage, source, siemens_coeff) //zzzzzzap!
-	// 10kw per hp
-	var/drained_energy = drained_hp * 10000
-	if (source_area)
-		source_area.use_power_oneoff(drained_energy)
-	else if (istype(power_source,/datum/powernet))
-		drained_energy = PN.draw_power(drained_energy * 0.001) * 1000
-	else if (istype(power_source, /obj/item/cell))
-		cell.use(DYNAMIC_W_TO_CELL_UNITS(drained_energy, 1))
-	return drained_energy
+	var/list/shock_return = M.electrocute(0, shock_damage * siemens_coeff, 0, ELECTROCUTE_ACT_FLAG_IGNORE_ARMOR, null, source)
+	// // 10kw per hp
+	// var/drained_energy = drained_hp * 10000
+	// if (source_area)
+	// 	source_area.use_power_oneoff(drained_energy)
+	// else if (istype(power_source,/datum/powernet))
+	// 	drained_energy = PN.draw_power(drained_energy * 0.001) * 1000
+	// else if (istype(power_source, /obj/item/cell))
+	// 	cell.use(DYNAMIC_W_TO_CELL_UNITS(drained_energy, 1))
+	// return drained_energy
+	return TRUE
