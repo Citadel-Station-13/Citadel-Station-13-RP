@@ -2,12 +2,18 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
- * Electrical stuns; releases a shock on impact.
+ * Electrical shocks; releases a shock on impact.
  */
-/datum/projectile_effect/electrical_stun
+/datum/projectile_effect/electrical_impulse
 	hook_impact = TRUE
 
-/datum/projectile_effect/electrical_stun/on_impact(obj/projectile/proj, atom/target, impact_flags, def_zone)
+	/// in kj
+	var/shock_energy = 0
+	var/shock_damage = 0
+	var/shock_agony = 0
+	var/shock_flags = NONE
+
+/datum/projectile_effect/electrical_impulse/on_impact(obj/projectile/proj, atom/target, impact_flags, def_zone)
 	return impact_flags
 
 #warn impl
