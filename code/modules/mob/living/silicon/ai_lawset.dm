@@ -1,5 +1,38 @@
+/**
+ * Represents an AI lawset
+ *
+ * * These are not /prototype's; copies are held for silicon mobs.
+ *   They are stored by value, as there's little need to have a massive amount of
+ *   'static' lawsets floating around in the game's data repositories.
+ * * This does mean that storing too many copies of these is a memory drain.
+ *   If the need arises, a `/datum/prototype/ai_lawset_preset` might be made
+ *   to hold things..
+ *
+ * There's a few categories of laws.
+ * They're more or less just a priority system. From highest to lowest priority;
+ *
+ * * Zeroth - this is just a 'you are an antagonist, you don't follow law' with fluff wording.
+ * * Ion - these are injected by special events and whatnot
+ * * Inherent - these are core laws that come before supplied laws.
+ * * Supplied - these are additional laws that go below core laws.
+ */
 /datum/ai_lawset
-	var/name = "Unknown Laws"
+	/// Our in-code name.
+	var/name = "unknown lawset"
+	/// Our player-facing name. [name] will be used if this is not set.
+	var/display_name
+
+/datum/ai_lawset/proc/append_ion_law(datum/ai_law/law_datum_or_text)
+	#warn impl
+
+/datum/ai_lawset/proc/append_inherent_law(datum/ai_law/law_datum_or_text)
+	#warn impl
+
+/datum/ai_lawset/proc/append_supplied_law(datum/ai_law/law_datum_or_text)
+	#warn impl
+
+//! legacy below
+
 	var/law_header = "Prime Directives"
 	var/selectable = 0
 	var/datum/ai_law/zero/zeroth_law = null
@@ -207,3 +240,28 @@
 	var/index = laws.Find(law)
 	if(index)
 		state[index] = do_state
+
+//! legacy above
+
+/**
+ * Preset AI laws.
+ */
+/datum/ai_lawset/preset
+	VAR_PROTECTED/list/preset_ion_laws
+	VAR_PROTECTED/list/preset_inherent_laws
+	VAR_PROTECTED/list/preset_supplied_laws
+
+/datum/ai_lawset/preset/New()
+	..()
+	init_default_laws()
+
+/datum/ai_lawset/preset/proc/init_default_laws()
+	for(var/i in preset_ion_laws)
+		append_ion_law(i)
+	preset_ion_laws = null
+	for(var/i in preset_inherent_laws)
+		append_inherent_law(i)
+	preset_inherent_laws = null
+	for(var/i in preset_supplied_laws)
+		append_supplied_law(i)
+	preset_supplied_laws = null

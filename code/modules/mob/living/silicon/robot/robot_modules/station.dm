@@ -28,7 +28,6 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	item_state = "std_mod"
 	var/channels = list()
 	var/networks = list()
-	var/sprites = list()
 
 	var/languages = list(
 		LANGUAGE_AKHANI = 0,
@@ -71,13 +70,6 @@ GLOBAL_LIST_INIT(robot_modules, list(
 			channels = R.mainframe.aiRadio.channels
 		R.radio.recalculateChannels()
 
-	handle_custom_item(R)
-
-	R.set_module_sprites(sprites)
-
-	// TODO: REFACTOR CYBORGS THEY ARE ALL SHITCODE
-	INVOKE_ASYNC(R, TYPE_PROC_REF(/mob/living/silicon/robot, choose_icon), R.module_sprites.len + 1, R.module_sprites)
-
 /obj/item/robot_module/proc/Reset(var/mob/living/silicon/robot/R)
 	remove_camera_networks(R)
 	remove_languages(R)
@@ -85,23 +77,6 @@ GLOBAL_LIST_INIT(robot_modules, list(
 
 	if(R.radio)
 		R.radio.recalculateChannels()
-
-/// Get a list of all matter synths available to this module. Executes before handle_special_module_init.
-/obj/item/robot_module/proc/get_synths(mob/living/silicon/robot/R)
-	. = list()
-
-/// Get a list of typepaths that should be put into the modules list.
-/obj/item/robot_module/proc/get_modules()
-	SHOULD_CALL_PARENT(TRUE)
-	return list()
-
-// This is for modules that need special handling, not just being added to the modules list.
-/obj/item/robot_module/proc/handle_special_module_init(mob/living/silicon/robot/R)
-	SHOULD_CALL_PARENT(TRUE)
-	. = list()
-
-/obj/item/robot_module/proc/handle_custom_item(mob/living/silicon/robot/R)
-	return
 
 /obj/item/robot_module/proc/add_languages(var/mob/living/silicon/robot/R)
 	// Stores the languages as they were before receiving the module, and whether they could be synthezized.
@@ -144,7 +119,6 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	var/mob/living/silicon/robot/R = loc
 	ASSERT(istype(R))
 
-	R.dogborg = TRUE
 	add_verb(R, list(
 		/mob/living/silicon/robot/proc/rest_style
 	))
@@ -156,6 +130,5 @@ GLOBAL_LIST_INIT(robot_modules, list(
 		/mob/living/silicon/robot/proc/rest_style
 	))
 	R.scrubbing = FALSE
-	R.dogborg = FALSE
 
 #warn parse this crap
