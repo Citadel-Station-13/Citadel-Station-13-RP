@@ -4655,7 +4655,7 @@
 	pixel_x = -4;
 	pixel_y = 4
 	},
-/obj/machinery/appliance/cooker/grill{
+/obj/machinery/cooking/grill{
 	pixel_x = -3;
 	pixel_y = 3
 	},
@@ -4663,16 +4663,16 @@
 	pixel_x = -2;
 	pixel_y = 2
 	},
-/obj/machinery/appliance/cooker/oven{
+/obj/machinery/cooking/oven{
 	pixel_x = -1;
 	pixel_y = 1
 	},
 /obj/item/circuitboard/microwave,
-/obj/machinery/appliance/mixer/cereal{
+/obj/machinery/cooking/fryer{
 	pixel_x = 1;
 	pixel_y = -1
 	},
-/obj/machinery/appliance/mixer/candy{
+/obj/machinery/cooking/stove{
 	pixel_x = 2;
 	pixel_y = -2
 	},

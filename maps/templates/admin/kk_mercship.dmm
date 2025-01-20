@@ -1695,7 +1695,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /obj/effect/floor_decal/corner/white,
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/recreation)
@@ -2139,7 +2139,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 10
 	},
-/obj/machinery/appliance/cooker/grill,
+/obj/machinery/cooking/grill,
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/recreation)
 "kA" = (

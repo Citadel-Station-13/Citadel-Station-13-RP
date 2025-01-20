@@ -2847,11 +2847,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/roid)
 "nm" = (
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/roid)
 "nn" = (
-/obj/machinery/appliance/cooker/grill,
+/obj/machinery/cooking/grill,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/roid)
 "no" = (

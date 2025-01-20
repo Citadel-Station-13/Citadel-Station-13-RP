@@ -30,12 +30,12 @@
 /area/sector/miaphus/beach/desert/poi/huntercamp)
 "u" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
-/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
-/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
-/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
-/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
-/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat/spidermeat,
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat/spidermeat,
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat/spidermeat,
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat/spidermeat,
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat/spidermeat,
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat/spidermeat,
 /turf/simulated/mineral/floor/cave,
 /area/sector/miaphus/beach/desert/poi/huntercamp)
 "x" = (

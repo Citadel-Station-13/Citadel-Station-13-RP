@@ -1856,7 +1856,7 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort/janibar)
 "SG" = (
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /turf/simulated/floor/tiled/eris/cafe,
 /area/tether_away/beach/resort/kitchen)
 "SK" = (
@@ -1958,7 +1958,7 @@
 	},
 /area/tether_away/beach/coast)
 "Wd" = (
-/obj/machinery/appliance/cooker/grill,
+/obj/machinery/cooking/grill,
 /obj/machinery/light{
 	dir = 1
 	},

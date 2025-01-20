@@ -221,7 +221,7 @@
 /turf/simulated/floor/sandstone,
 /area/sector/surt/east/ashlander_village)
 "KA" = (
-/obj/machinery/appliance/cooker/grill/spit,
+/obj/structure/bonfire,
 /turf/simulated/floor/outdoors/dirt,
 /area/sector/surt/east/ashlander_village)
 "LQ" = (
@@ -328,7 +328,7 @@
 /turf/simulated/lava,
 /area/sector/surt/east/explored)
 "Uc" = (
-/obj/machinery/appliance/cooker/grill/spit,
+/obj/structure/bonfire,
 /turf/simulated/floor/sandstone,
 /area/sector/surt/east/ashlander_village)
 "Vj" = (

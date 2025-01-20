@@ -3056,7 +3056,7 @@
 /turf/simulated/floor/tiled/eris/steel/gray_perforated,
 /area/talon/decktwo/bar)
 "JR" = (
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /turf/simulated/floor/tiled/eris/cafe,
 /area/talon/decktwo/kitchen)
 "JT" = (

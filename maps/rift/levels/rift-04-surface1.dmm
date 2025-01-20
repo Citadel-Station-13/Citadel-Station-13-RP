@@ -8010,7 +8010,7 @@
 /turf/simulated/floor/plating,
 /area/medical/psych)
 "fnO" = (
-/obj/machinery/appliance/cooker/grill/stand,
+/obj/machinery/cooking/grill,
 /turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "foq" = (
@@ -31100,7 +31100,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/xenobiology/outpost_autopsy)
 "sMr" = (
-/obj/machinery/appliance/cooker/grill/stand,
+/obj/machinery/cooking/grill,
 /turf/simulated/floor/outdoors/beach/sand/desert/indoors,
 /area/rift/station/public_garden)
 "sMD" = (

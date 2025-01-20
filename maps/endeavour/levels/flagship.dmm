@@ -979,7 +979,7 @@
 /obj/effect/floor_decal/corner/grey/diagonal{
 	dir = 4
 	},
-/obj/machinery/appliance/cooker/grill,
+/obj/machinery/cooking/grill,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -6097,7 +6097,7 @@
 /obj/effect/floor_decal/corner/grey/diagonal{
 	dir = 4
 	},
-/obj/machinery/appliance/cooker/grill,
+/obj/machinery/cooking/grill,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -7561,7 +7561,7 @@
 /area/centcom/control)
 "xh" = (
 /obj/structure/table/woodentable,
-/obj/item/reagent_containers/food/snacks/meatballsoup,
+/obj/item/reagent_containers/food/snacks/ingredient/meatballsoup,
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
 "xi" = (
@@ -7819,7 +7819,7 @@
 /obj/effect/floor_decal/corner/grey/diagonal{
 	dir = 4
 	},
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /obj/machinery/camera/network/crescent{
 	dir = 10
 	},
@@ -8962,7 +8962,7 @@
 /obj/effect/floor_decal/corner/grey/diagonal{
 	dir = 4
 	},
-/obj/machinery/appliance/mixer/cereal,
+/obj/machinery/cooking/fryer,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -9244,7 +9244,7 @@
 /obj/effect/floor_decal/corner/grey/diagonal{
 	dir = 4
 	},
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -11118,7 +11118,7 @@
 /obj/effect/floor_decal/corner/grey/diagonal{
 	dir = 4
 	},
-/obj/machinery/appliance/mixer/cereal,
+/obj/machinery/cooking/fryer,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -14474,7 +14474,7 @@
 /area/centcom/evac)
 "SY" = (
 /obj/structure/table/woodentable,
-/obj/item/reagent_containers/food/snacks/meatballspagetti,
+/obj/item/reagent_containers/food/snacks/ingredient/meatballspaghetti,
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
 "SZ" = (
@@ -15015,7 +15015,7 @@
 /area/tdome/tdomeadmin)
 "Va" = (
 /obj/structure/table/woodentable,
-/obj/item/reagent_containers/food/snacks/meatsteak,
+/obj/item/reagent_containers/food/snacks/ingredient/meatsteak,
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
 "Vb" = (

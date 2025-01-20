@@ -272,7 +272,7 @@
 /turf/simulated/wall,
 /area/class_d/Mountain)
 "NS" = (
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /turf/simulated/floor/tiled,
 /area/class_d/Mountain)
 "Ot" = (

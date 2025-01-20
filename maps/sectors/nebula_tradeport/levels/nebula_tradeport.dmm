@@ -2914,9 +2914,9 @@
 /obj/random/meat/no_sapient,
 /obj/random/meat/no_sapient,
 /obj/structure/window/reinforced,
-/obj/item/reagent_containers/food/snacks/xenomeat,
-/obj/item/reagent_containers/food/snacks/xenomeat,
-/obj/item/reagent_containers/food/snacks/meat/worm,
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat,
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat,
+,
 /obj/item/reagent_containers/food/snacks/bearmeat,
 /obj/item/reagent_containers/food/snacks/bearmeat,
 /turf/simulated/floor/tiled/dark,
@@ -5649,7 +5649,7 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/trade_ship/general)
 "aoZ" = (
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /turf/simulated/floor/wmarble,
 /area/sector/nebula_tradeport/motel/vip)
 "apc" = (
@@ -7377,14 +7377,14 @@
 /obj/item/storage/fancy/egg_box,
 /obj/item/storage/fancy/egg_box,
 /obj/item/storage/fancy/egg_box,
-/obj/item/reagent_containers/food/snacks/meat,
-/obj/item/reagent_containers/food/snacks/meat,
-/obj/item/reagent_containers/food/snacks/meat,
-/obj/item/reagent_containers/food/snacks/meat,
-/obj/item/reagent_containers/food/snacks/meat/chicken,
-/obj/item/reagent_containers/food/snacks/meat/chicken,
-/obj/item/reagent_containers/food/snacks/meat/chicken,
-/obj/item/reagent_containers/food/snacks/meat/chicken,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat/chicken,
+/obj/item/reagent_containers/food/snacks/ingredient/meat/chicken,
+/obj/item/reagent_containers/food/snacks/ingredient/meat/chicken,
+/obj/item/reagent_containers/food/snacks/ingredient/meat/chicken,
 /obj/item/reagent_containers/food/snacks/crabmeat,
 /obj/item/reagent_containers/food/snacks/crabmeat,
 /obj/item/reagent_containers/food/snacks/crabmeat,
@@ -9868,7 +9868,7 @@
 /turf/simulated/floor/grass,
 /area/tradeport)
 "azM" = (
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(160)
@@ -13056,7 +13056,7 @@
 /obj/item/reagent_containers/glass/beaker{
 	pixel_x = 5
 	},
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/shuttle/caravan)
 "aIj" = (
@@ -19982,7 +19982,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /obj/structure/table/hardwoodtable,
 /turf/simulated/floor/tiled/dark,
 /area/sector/nebula_tradeport/motel/room3)
@@ -20129,7 +20129,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /obj/structure/table/hardwoodtable,
 /turf/simulated/floor/tiled/dark,
 /area/sector/nebula_tradeport/motel/room1)
@@ -23076,9 +23076,9 @@
 /area/sector/nebula_tradeport/motel)
 "kbY" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
-/obj/item/reagent_containers/food/snacks/meat,
-/obj/item/reagent_containers/food/snacks/meat,
-/obj/item/reagent_containers/food/snacks/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
 /obj/item/reagent_containers/food/drinks/bottle/cola,
 /obj/item/reagent_containers/food/drinks/bottle/space_up,
 /obj/item/storage/fancy/egg_box,
@@ -23310,7 +23310,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /obj/structure/table/hardwoodtable,
 /turf/simulated/floor/tiled/dark,
 /area/sector/nebula_tradeport/motel/room2)
@@ -23611,7 +23611,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/sector/nebula_tradeport/motel/room2)
 "lxS" = (
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
@@ -24227,9 +24227,9 @@
 /area/sector/nebula_tradeport/motel/vip)
 "nfH" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
-/obj/item/reagent_containers/food/snacks/meat,
-/obj/item/reagent_containers/food/snacks/meat,
-/obj/item/reagent_containers/food/snacks/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
 /obj/item/reagent_containers/food/drinks/bottle/cola,
 /obj/item/reagent_containers/food/drinks/bottle/space_up,
 /obj/item/storage/fancy/egg_box,
@@ -25042,9 +25042,9 @@
 /area/sector/nebula_tradeport/motel/vip)
 "pRx" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
-/obj/item/reagent_containers/food/snacks/meat,
-/obj/item/reagent_containers/food/snacks/meat,
-/obj/item/reagent_containers/food/snacks/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
 /obj/item/reagent_containers/food/drinks/bottle/cola,
 /obj/item/reagent_containers/food/drinks/bottle/space_up,
 /obj/item/storage/fancy/egg_box,
@@ -25710,9 +25710,9 @@
 /area/sector/nebula_tradeport/motel/sauna)
 "rMl" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
-/obj/item/reagent_containers/food/snacks/meat,
-/obj/item/reagent_containers/food/snacks/meat,
-/obj/item/reagent_containers/food/snacks/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
 /obj/item/reagent_containers/food/drinks/bottle/cola,
 /obj/item/reagent_containers/food/drinks/bottle/space_up,
 /obj/item/storage/fancy/egg_box,
@@ -26950,7 +26950,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /obj/structure/table/hardwoodtable,
 /turf/simulated/floor/tiled/dark,
 /area/sector/nebula_tradeport/motel/room4)
@@ -27300,7 +27300,7 @@
 /obj/item/reagent_containers/food/snacks/pancakes,
 /obj/item/reagent_containers/food/snacks/pancakes,
 /obj/item/reagent_containers/food/snacks/pancakes,
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /turf/simulated/floor/wood,
 /area/tradeport/cafeteria)
 "wFr" = (

@@ -3722,7 +3722,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "eiv" = (
-/obj/machinery/appliance/mixer/candy,
+/obj/machinery/cooking/stove,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "eiY" = (
@@ -6344,7 +6344,7 @@
 /turf/simulated/open,
 /area/rnd/research/researchdivision)
 "gQF" = (
-/obj/machinery/appliance/mixer/cereal,
+/obj/machinery/cooking/fryer,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
@@ -12356,7 +12356,7 @@
 /turf/simulated/wall/prepainted/command,
 /area/crew_quarters/heads/hop)
 "ocC" = (
-/obj/machinery/appliance/cooker/grill,
+/obj/machinery/cooking/grill,
 /obj/machinery/light/no_nightshift{
 	dir = 4
 	},
@@ -15996,7 +15996,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay)
 "sJS" = (
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "sKm" = (

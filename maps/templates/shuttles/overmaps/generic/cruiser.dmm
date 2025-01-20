@@ -908,7 +908,7 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/kitchen)
 "cl" = (
-/obj/machinery/appliance/mixer/cereal,
+/obj/machinery/cooking/fryer,
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 9
 	},
@@ -923,7 +923,7 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/kitchen)
 "cn" = (
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /obj/structure/table/steel_reinforced,
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
@@ -931,7 +931,7 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/kitchen)
 "co" = (
-/obj/machinery/appliance/cooker/grill,
+/obj/machinery/cooking/grill,
 /obj/structure/table/steel_reinforced,
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
@@ -940,7 +940,7 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/kitchen)
 "cp" = (
-/obj/machinery/appliance/mixer/candy,
+/obj/machinery/cooking/stove,
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},

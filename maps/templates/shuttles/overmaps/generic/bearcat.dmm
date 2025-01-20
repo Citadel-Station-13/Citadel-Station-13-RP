@@ -1430,7 +1430,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/crew_medbay)
 "dL" = (
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/crew_kitchen)
 "dM" = (

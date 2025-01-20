@@ -2950,7 +2950,7 @@
 /obj/effect/floor_decal/corner/grey/diagonal{
 	dir = 4
 	},
-/obj/machinery/appliance/mixer/cereal,
+/obj/machinery/cooking/fryer,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -2978,7 +2978,7 @@
 /obj/effect/floor_decal/corner/grey/diagonal{
 	dir = 4
 	},
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /obj/machinery/camera/network/crescent{
 	dir = 10
 	},
@@ -2990,7 +2990,7 @@
 /obj/effect/floor_decal/corner/grey/diagonal{
 	dir = 4
 	},
-/obj/machinery/appliance/cooker/grill,
+/obj/machinery/cooking/grill,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -9202,7 +9202,7 @@
 /obj/effect/floor_decal/corner/grey/diagonal{
 	dir = 4
 	},
-/obj/machinery/appliance/mixer/cereal,
+/obj/machinery/cooking/fryer,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -9211,7 +9211,7 @@
 /obj/effect/floor_decal/corner/grey/diagonal{
 	dir = 4
 	},
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -9220,7 +9220,7 @@
 /obj/effect/floor_decal/corner/grey/diagonal{
 	dir = 4
 	},
-/obj/machinery/appliance/cooker/grill,
+/obj/machinery/cooking/grill,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -11806,7 +11806,7 @@
 /area/centcom/security)
 "Li" = (
 /obj/structure/table/woodentable,
-/obj/item/reagent_containers/food/snacks/meatsteak,
+/obj/item/reagent_containers/food/snacks/ingredient/meatsteak,
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
 "Ll" = (
@@ -12743,7 +12743,7 @@
 /area/centcom/security)
 "Pm" = (
 /obj/structure/table/woodentable,
-/obj/item/reagent_containers/food/snacks/meatballspaghetti,
+/obj/item/reagent_containers/food/snacks/ingredient/meatballspaghetti,
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
 "Pp" = (
@@ -14335,7 +14335,7 @@
 /area/centcom/specops)
 "Wp" = (
 /obj/structure/table/woodentable,
-/obj/item/reagent_containers/food/snacks/meatballsoup,
+/obj/item/reagent_containers/food/snacks/ingredient/meatballsoup,
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
 "Wq" = (

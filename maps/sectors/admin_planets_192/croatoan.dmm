@@ -477,7 +477,7 @@
 /area/admin_planet/croatoan/extreme_security_containment_facilities)
 "by" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
-/obj/machinery/appliance/cooker/grill,
+/obj/machinery/cooking/grill,
 /obj/machinery/camera/north_mount,
 /turf/simulated/floor/tiled/white,
 /area/admin_planet/croatoan/civ_kitchen)
@@ -4217,7 +4217,7 @@
 "oB" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/structure/table/marble,
-/obj/machinery/appliance/mixer/cereal,
+/obj/machinery/cooking/fryer,
 /turf/simulated/floor/tiled/white,
 /area/admin_planet/croatoan/civ_kitchen)
 "oC" = (
@@ -7479,7 +7479,7 @@
 /area/admin_planet/croatoan/med_checkpoint_upper)
 "zX" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /turf/simulated/floor/tiled/white,
 /area/admin_planet/croatoan/civ_kitchen)
 "zZ" = (
@@ -13470,7 +13470,7 @@
 "Vd" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/structure/table/marble,
-/obj/machinery/appliance/mixer/candy,
+/obj/machinery/cooking/stove,
 /turf/simulated/floor/tiled/white,
 /area/admin_planet/croatoan/civ_kitchen)
 "Vf" = (

@@ -1481,7 +1481,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/station)
 "ko" = (
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/miaphus/beach/bunker/kitchen)
 "kt" = (
@@ -2653,7 +2653,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/bunker/engi)
 "uQ" = (
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/miaphus/beach/resort/canteen)
@@ -5096,7 +5096,7 @@
 	},
 /area/sector/miaphus/beach/resort)
 "Ri" = (
-/obj/machinery/appliance/cooker/grill,
+/obj/machinery/cooking/grill,
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
@@ -5289,7 +5289,7 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/miaphus/beach/resort/greenhouse)
 "SG" = (
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/miaphus/beach/resort/canteen)
 "SK" = (
