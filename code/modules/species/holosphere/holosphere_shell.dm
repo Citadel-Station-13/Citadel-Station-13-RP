@@ -117,3 +117,25 @@
 /mob/living/simple_mob/holosphere_shell/proc/give_holosphere_actions()
 	var/datum/action/holosphere/toggle_transform/toggle_transform = new()
 	toggle_transform.grant(actions_innate)
+
+/mob/living/simple_mob/holosphere_shell/strip_menu_act(mob/user, action)
+	return hologram.strip_menu_act(arglist(args))
+
+/mob/living/simple_mob/holosphere_shell/strip_menu_options(mob/user)
+	return hologram.strip_menu_options(arglist(args))
+
+/mob/living/simple_mob/holosphere_shell/strip_interaction_prechecks(mob/user, autoclose, allow_loc)
+	allow_loc = TRUE
+	return hologram.strip_interaction_prechecks(arglist(args))
+
+/mob/living/simple_mob/holosphere_shell/open_strip_menu(mob/user)
+	return hologram.open_strip_menu(arglist(args))
+
+/mob/living/simple_mob/holosphere_shell/close_strip_menu(mob/user)
+	return hologram.close_strip_menu(arglist(args))
+
+/mob/living/simple_mob/holosphere_shell/request_strip_menu(mob/user)
+	return hologram.request_strip_menu(arglist(args))
+
+/mob/living/simple_mob/holosphere_shell/render_strip_menu(mob/user)
+	return hologram.render_strip_menu(arglist(args))
