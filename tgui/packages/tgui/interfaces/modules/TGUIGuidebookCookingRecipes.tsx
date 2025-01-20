@@ -67,7 +67,7 @@ export const TGUIGuidebookCookingRecipes = (props, context) => {
                   <Stack vertical>
                     {catRecipes.sort((r1, r2) => r1.result.localeCompare(r2.result)).map((recipe) => (
                       <Stack.Item key={recipe.result}>
-                        {recipe.result} {recipe.req_items} {recipe.req_growns} {recipe.req_reagents}
+                        {recipe.result} requires {recipe.req_items}, {recipe.req_growns} and {recipe.req_reagents}
                       </Stack.Item>
                     ))}
                   </Stack>
