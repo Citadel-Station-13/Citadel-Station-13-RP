@@ -95,13 +95,11 @@
 /obj/item/clothing/under/chameleon/holosphere
 	name = "holographic jumpsuit"
 	desc = "A holographic jumpsuit."
+	clothing_flags = NO_UNEQUIP
 	origin_tech = list()
 
 /obj/item/clothing/under/chameleon/holosphere/emp_act(severity)
 	return ..()
-
-/obj/item/clothing/under/chameleon/holosphere/can_unequip(mob/M, slot, mob/user, flags)
-	return FALSE
 
 //*****************
 //**Chameleon Hat**
@@ -135,13 +133,11 @@
 /obj/item/clothing/head/chameleon/holosphere
 	name = "holographic hat"
 	desc = "A holographic hat."
+	clothing_flags = NO_UNEQUIP
 	origin_tech = list()
 
 /obj/item/clothing/head/chameleon/holosphere/emp_act(severity)
 	return ..()
-
-/obj/item/clothing/head/chameleon/holosphere/can_unequip(mob/M, slot, mob/user, flags)
-	return FALSE
 
 //******************
 //**Chameleon Suit**
@@ -174,13 +170,11 @@
 /obj/item/clothing/suit/chameleon/holosphere
 	name = "holographic suit"
 	desc = "A holographic suit."
+	clothing_flags = NO_UNEQUIP
 	origin_tech = list()
 
 /obj/item/clothing/suit/chameleon/holosphere/emp_act(severity)
 	return ..()
-
-/obj/item/clothing/suit/chameleon/holosphere/can_unequip(mob/M, slot, mob/user, flags)
-	return FALSE
 
 //*******************
 //**Chameleon Shoes**
@@ -212,13 +206,11 @@
 /obj/item/clothing/shoes/chameleon/holosphere
 	name = "holographic shoes"
 	desc = "A holographic shoes."
+	clothing_flags = NO_UNEQUIP
 	origin_tech = list()
 
 /obj/item/clothing/shoes/chameleon/holosphere/emp_act(severity)
 	return ..()
-
-/obj/item/clothing/shoes/chameleon/holosphere/can_unequip(mob/M, slot, mob/user, flags)
-	return FALSE
 
 //**********************
 //**Chameleon Backpack**
@@ -256,13 +248,11 @@
 /obj/item/storage/backpack/chameleon/holosphere
 	name = "holographic backpack"
 	desc = "A holographic backpack."
+	clothing_flags = NO_UNEQUIP
 	origin_tech = list()
 
 /obj/item/storage/backpack/chameleon/holosphere/emp_act(severity)
 	return ..()
-
-/obj/item/storage/backpack/chameleon/holosphere/can_unequip(mob/M, slot, mob/user, flags)
-	return FALSE
 
 //********************
 //**Chameleon Gloves**
@@ -295,13 +285,11 @@
 /obj/item/clothing/gloves/chameleon/holosphere
 	name = "holographic gloves"
 	desc = "A holographic gloves."
+	clothing_flags = NO_UNEQUIP
 	origin_tech = list()
 
 /obj/item/clothing/gloves/chameleon/holosphere/emp_act(severity)
 	return ..()
-
-/obj/item/clothing/gloves/chameleon/holosphere/can_unequip(mob/M, slot, mob/user, flags)
-	return FALSE
 
 //******************
 //**Chameleon Mask**
@@ -334,13 +322,11 @@
 /obj/item/clothing/mask/chameleon/holosphere
 	name = "holographic mask"
 	desc = "A holographic mask."
+	clothing_flags = NO_UNEQUIP
 	origin_tech = list()
 
 /obj/item/clothing/mask/chameleon/holosphere/emp_act(severity)
 	return ..()
-
-/obj/item/clothing/mask/chameleon/holosphere/can_unequip(mob/M, slot, mob/user, flags)
-	return FALSE
 
 //*********************
 //**Chameleon Glasses**
@@ -374,13 +360,11 @@
 /obj/item/clothing/glasses/chameleon/holosphere
 	name = "holographic glasses"
 	desc = "A holographic glasses."
+	clothing_flags = NO_UNEQUIP
 	origin_tech = list()
 
 /obj/item/clothing/glasses/chameleon/holosphere/emp_act(severity)
 	return ..()
-
-/obj/item/clothing/glasses/chameleon/holosphere/can_unequip(mob/M, slot, mob/user, flags)
-	return FALSE
 
 //******************
 //**Chameleon Belt**
@@ -419,13 +403,11 @@
 /obj/item/storage/belt/chameleon/holosphere
 	name = "holographic belt"
 	desc = "A holographic belt."
+	clothing_flags = NO_UNEQUIP
 	origin_tech = list()
 
 /obj/item/storage/belt/chameleon/holosphere/emp_act(severity)
 	return ..()
-
-/obj/item/storage/belt/chameleon/holosphere/can_unequip(mob/M, slot, mob/user, flags)
-	return FALSE
 
 //******************
 //**Chameleon Tie**
