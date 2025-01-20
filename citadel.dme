@@ -3570,7 +3570,6 @@
 #include "code\modules\mining\drilling\drill.dm"
 #include "code\modules\mining\drilling\scanner.dm"
 #include "code\modules\mining\excavation\mine_outcrops.dm"
-#include "code\modules\mining\excavation\mineral_effect.dm"
 #include "code\modules\mining\machinery\machine_input_output_plates.dm"
 #include "code\modules\mining\machinery\machine_processing.dm"
 #include "code\modules\mining\machinery\machine_stacking.dm"
