@@ -1,6 +1,6 @@
 /obj/machinery/cooking/oven
 	name = "oven"
-	desc = "A NanoTrasen Commercial Catering NTCC-35 combi-oven. This one is a smaller model with only three shelves."
+	desc = "A Nanotrasen Commercial Catering NCC-35 combi-oven. This one is a smaller model with only three shelves."
 	icon_state = "oven_off"
 
 	cooker_type = METHOD_OVEN
