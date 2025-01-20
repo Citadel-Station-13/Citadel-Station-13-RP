@@ -47,6 +47,10 @@
 	// the human we belong to
 	var/mob/living/carbon/human/hologram
 
+/mob/living/simple_mob/holosphere_shell/Initialize(mapload)
+	. = ..()
+	give_holosphere_actions()
+
 /mob/living/simple_mob/holosphere_shell/regenerate_icons()
 	cut_overlays()
 	if(stat != DEAD)
@@ -109,3 +113,7 @@
 /mob/living/simple_mob/holosphere_shell/revive(force, full_heal)
 	..()
 	hologram.revive(force, full_heal)
+
+/mob/living/simple_mob/holosphere_shell/proc/give_holosphere_actions()
+	var/datum/action/holosphere/toggle_transform/toggle_transform = new()
+	toggle_transform.grant(actions_innate)
