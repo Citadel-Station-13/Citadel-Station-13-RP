@@ -116,8 +116,8 @@ GLOBAL_LIST_EMPTY(cooking_recipes_tgui_guidebook_data)
 		var/obj/result_type = initial(result)
 		out_item_name = initial(result_type.name)
 	else
-		var/datum/reagent/result_reag = (SSchemistry.fetch_reagent(result_reagents[1])
-		out_item_name = (result_reag.name)
+		var/datum/reagent/result_reag = SSchemistry.fetch_reagent(result_reagents[1])
+		out_item_name = result_reag.name
 
 	return list(
 		"result" = out_item_name,
