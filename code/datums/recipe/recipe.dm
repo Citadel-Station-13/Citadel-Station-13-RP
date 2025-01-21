@@ -93,9 +93,11 @@ GLOBAL_LIST_EMPTY(cooking_recipes_tgui_guidebook_data)
 
 
 	for(var/r in reagents)
-		required_reagents += "[reagents[r]]u of [(SSchemistry.fetch_reagent(r)).name]"
+		var/datum/reagent/req_reag = (SSchemistry.fetch_reagent(r))
+		required_reagents += "[reagents[r]]u of [req_reag.name]"
 	for(var/ar in result_reagents)
-		output_reagents += "[result_reagents[ar]]u of [(SSchemistry.fetch_reagent(ar)).name]"
+		var/datum/reagent/req_outreag = (SSchemistry.fetch_reagent(ar))
+		output_reagents += "[result_reagents[ar]]u of [req_outreag.name]"
 
 	for(var/i in items)
 		if(ispath(i, /obj/item/reagent_containers/food/snacks/ingredient))
@@ -111,9 +113,11 @@ GLOBAL_LIST_EMPTY(cooking_recipes_tgui_guidebook_data)
 			req_growns += "[fruit[g]]g of [initial(ingred.name)]"
 
 	if(!isnull(result))
-		out_item_name = initial(initial(result).name)
+		var/obj/result_type = initial(result)
+		out_item_name = initial(result_type.name)
 	else
-		out_item_name = (SSchemistry.fetch_reagent(result_reagents[1]).name)
+		var/datum/reagent/result_reag = (SSchemistry.fetch_reagent(result_reagents[1])
+		out_item_name = (result_reag.name)
 
 	return list(
 		"result" = out_item_name,
