@@ -11806,7 +11806,6 @@
 /area/centcom/security)
 "Li" = (
 /obj/structure/table/woodentable,
-,
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
 "Ll" = (

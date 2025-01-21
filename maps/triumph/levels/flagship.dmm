@@ -15015,7 +15015,6 @@
 /area/tdome/tdomeadmin)
 "Va" = (
 /obj/structure/table/woodentable,
-,
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
 "Vb" = (

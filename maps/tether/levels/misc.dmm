@@ -1353,7 +1353,6 @@
 /area/unknown/dorm6)
 "lZ" = (
 /obj/structure/table/woodentable,
-,
 /turf/simulated/floor/wood,
 /area/centcom/simulated/restaurant)
 "md" = (
