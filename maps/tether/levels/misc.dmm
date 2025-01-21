@@ -455,7 +455,7 @@
 /area/space)
 "eG" = (
 /obj/structure/table/woodentable,
-/obj/item/reagent_containers/food/snacks/ingredient/meatballspaghetti,
+/obj/item/reagent_containers/food/snacks/meatballspaghetti,
 /turf/simulated/floor/wood,
 /area/centcom/simulated/restaurant)
 "eL" = (
@@ -1353,7 +1353,7 @@
 /area/unknown/dorm6)
 "lZ" = (
 /obj/structure/table/woodentable,
-/obj/item/reagent_containers/food/snacks/ingredient/meatsteak,
+,
 /turf/simulated/floor/wood,
 /area/centcom/simulated/restaurant)
 "md" = (
@@ -2876,7 +2876,7 @@
 /area/centcom/simulated/restaurant)
 "xM" = (
 /obj/structure/table/woodentable,
-/obj/item/reagent_containers/food/snacks/ingredient/meatballsoup,
+/obj/item/reagent_containers/food/snacks/meatballsoup,
 /turf/simulated/floor/wood,
 /area/centcom/simulated/restaurant)
 "xV" = (

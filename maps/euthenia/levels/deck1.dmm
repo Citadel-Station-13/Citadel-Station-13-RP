@@ -3722,7 +3722,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "eiv" = (
-/obj/machinery/cooking/stove,
+/obj/machinery/cooking,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "eiY" = (

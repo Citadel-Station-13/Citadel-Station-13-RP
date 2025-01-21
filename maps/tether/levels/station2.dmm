@@ -4672,7 +4672,7 @@
 	pixel_x = 1;
 	pixel_y = -1
 	},
-/obj/machinery/cooking/stove{
+/obj/machinery/cooking{
 	pixel_x = 2;
 	pixel_y = -2
 	},

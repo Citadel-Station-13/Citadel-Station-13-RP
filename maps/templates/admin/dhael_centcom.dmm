@@ -11806,7 +11806,7 @@
 /area/centcom/security)
 "Li" = (
 /obj/structure/table/woodentable,
-/obj/item/reagent_containers/food/snacks/ingredient/meatsteak,
+,
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
 "Ll" = (
@@ -12743,7 +12743,7 @@
 /area/centcom/security)
 "Pm" = (
 /obj/structure/table/woodentable,
-/obj/item/reagent_containers/food/snacks/ingredient/meatballspaghetti,
+/obj/item/reagent_containers/food/snacks/meatballspaghetti,
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
 "Pp" = (
@@ -14335,7 +14335,7 @@
 /area/centcom/specops)
 "Wp" = (
 /obj/structure/table/woodentable,
-/obj/item/reagent_containers/food/snacks/ingredient/meatballsoup,
+/obj/item/reagent_containers/food/snacks/meatballsoup,
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
 "Wq" = (

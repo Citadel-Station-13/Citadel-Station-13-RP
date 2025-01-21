@@ -7561,7 +7561,7 @@
 /area/centcom/control)
 "xh" = (
 /obj/structure/table/woodentable,
-/obj/item/reagent_containers/food/snacks/ingredient/meatballsoup,
+/obj/item/reagent_containers/food/snacks/meatballsoup,
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
 "xi" = (
@@ -14474,7 +14474,7 @@
 /area/centcom/evac)
 "SY" = (
 /obj/structure/table/woodentable,
-/obj/item/reagent_containers/food/snacks/ingredient/meatballspaghetti,
+/obj/item/reagent_containers/food/snacks/meatballspaghetti,
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
 "SZ" = (
@@ -15015,7 +15015,7 @@
 /area/tdome/tdomeadmin)
 "Va" = (
 /obj/structure/table/woodentable,
-/obj/item/reagent_containers/food/snacks/ingredient/meatsteak,
+,
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
 "Vb" = (

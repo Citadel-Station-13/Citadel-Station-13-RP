@@ -10121,7 +10121,7 @@
 /turf/simulated/floor/carpet/patterened/magneta,
 /area/class_m/inside/coats)
 "Rb" = (
-/obj/machinery/cooking/stove,
+/obj/machinery/cooking,
 /turf/simulated/floor/tiled/dark,
 /area/class_m/inside/main)
 "Re" = (
