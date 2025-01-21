@@ -82,7 +82,7 @@
 	filling_color = "#BBBBAA"
 
 /obj/item/reagent_containers/food/snacks/ingredient/meat/chicken/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.remove_reagent("triglyceride", INFINITY)
 	//Chicken is low fat. Less total calories than other meats
 

@@ -10,7 +10,7 @@
 
 
 /obj/machinery/cooking/oven/Initialize(mapload, newdir)
-	..()
+	. = ..()
 	if(prob(0.1))
 		desc = "Why do they call it oven when you of in the cold food of out hot eat the food?"
 
