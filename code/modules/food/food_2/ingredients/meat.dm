@@ -30,9 +30,20 @@
 	icon_state = "bearmeat"
 	filling_color = "#DB0000"
 
+/obj/item/reagent_containers/food/snacks/ingredient/bearmeat/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 17)
+	reagents.add_reagent("hyperzine", 5)
+	bitesize = 3
+
 /obj/item/reagent_containers/food/snacks/ingredient/horsemeat
 	name = "horse meat"
 	desc = "No no, I said it came from something fast."
+
+/obj/item/reagent_containers/food/snacks/ingredient/horsemeat/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 4)
+	bitesize = 3
 
 /obj/item/reagent_containers/food/snacks/ingredient/xenomeat // Buff 6 >> 10
 	name = "xenomeat"
@@ -269,6 +280,10 @@
 	icon_state = "hugemushroomslice"
 	filling_color = "#E0D7C5"
 	nutriment_amt = 5
+
+/obj/item/reagent_containers/food/snacks/ingredient/hugemushroomslice/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("psilocybin", 3)
 
 /obj/item/reagent_containers/food/snacks/ingredient/tomatomeat
 	name = "tomato slice"

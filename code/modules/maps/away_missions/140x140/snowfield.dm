@@ -77,7 +77,7 @@
 
 	minbodytemp = 0
 
-	meat_type = /obj/item/reagent_containers/food/snacks/bearmeat
+	meat_type = /obj/item/reagent_containers/food/snacks/ingredient/bearmeat
 /datum/say_list/polar_bear
 	speak = list("RAWR!","Rawr!","GRR!","Growl!")
 	emote_hear = list("rawrs","grumbles","grawls")

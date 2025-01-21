@@ -780,78 +780,6 @@
 	reagents.add_reagent("protein", 9)
 	bitesize = 3
 
-/obj/item/reagent_containers/food/snacks/hugemushroomslice // Buff 3 >> 5
-	name = "huge mushroom slice"
-	desc = "A slice from a huge mushroom."
-	icon_state = "hugemushroomslice"
-	filling_color = "#E0D7C5"
-	nutriment_amt = 5
-	nutriment_desc = list("raw" = 2, "mushroom" = 2)
-
-/obj/item/reagent_containers/food/snacks/hugemushroomslice/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("psilocybin", 3)
-	src.bitesize = 6
-
-/obj/item/reagent_containers/food/snacks/tomatomeat
-	name = "tomato slice"
-	desc = "A slice from a huge tomato"
-	icon_state = "tomatomeat"
-	filling_color = "#DB0000"
-	nutriment_amt = 3
-	nutriment_desc = list("raw" = 2, "tomato" = 3)
-
-/obj/item/reagent_containers/food/snacks/tomatomeat/Initialize(mapload)
-	. = ..()
-	src.bitesize = 6
-
-/obj/item/reagent_containers/food/snacks/bearmeat // Buff 12 >> 17
-	name = "bear meat"
-	desc = "A very manly slab of meat."
-	icon_state = "bearmeat"
-	filling_color = "#DB0000"
-
-/obj/item/reagent_containers/food/snacks/bearmeat/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("protein", 17)
-	reagents.add_reagent("hyperzine", 5)
-	src.bitesize = 3
-
-/obj/item/reagent_containers/food/snacks/horsemeat
-	name = "horse meat"
-	desc = "No no, I said it came from something fast."
-	icon_state = "bearmeat"
-	nutriment_amt = 2
-
-/obj/item/reagent_containers/food/snacks/horsemeat/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("protein", 4)
-	bitesize = 3
-
-/obj/item/reagent_containers/food/snacks/ingredient/xenomeat // Buff 6 >> 10
-	name = "xenomeat"
-	desc = "A slab of green meat. Smells like acid."
-	icon_state = "xenomeat"
-	filling_color = "#43DE18"
-
-/obj/item/reagent_containers/food/snacks/ingredient/xenomeat/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("protein", 10)
-	reagents.add_reagent("pacid",6)
-	src.bitesize = 6
-
-/obj/item/reagent_containers/food/snacks/ingredient/xenomeat/spidermeat // Substitute for recipes requiring xeno meat.
-	name = "spider meat"
-	desc = "A slab of green meat."
-	icon_state = "xenomeat"
-	filling_color = "#43DE18"
-
-/obj/item/reagent_containers/food/snacks/ingredient/xenomeat/spidermeat/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("spidertoxin",6)
-	reagents.remove_reagent("pacid",6)
-	src.bitesize = 6
-
 /obj/item/reagent_containers/food/snacks/donkpocket
 	name = "Donk-pocket"
 	desc = "The food of choice for the seasoned traitor."
@@ -1439,18 +1367,6 @@
 	. = ..()
 	bitesize = 2
 
-/obj/item/reagent_containers/food/snacks/ingredient/spaghetti // Buff 1 >> 2
-	name = "Spaghetti"
-	desc = "A bundle of raw spaghetti."
-	icon_state = "spaghetti"
-	filling_color = "#EDDD00"
-	nutriment_amt = 2
-	nutriment_desc = list("noodles" = 2)
-
-/obj/item/reagent_containers/food/snacks/ingredient/spaghetti/Initialize(mapload)
-	. = ..()
-	bitesize = 2
-
 /obj/item/reagent_containers/food/snacks/cheesyfries // Buff 6 >> 8
 	name = "Cheesy Fries"
 	desc = "Fries. Covered in cheese. Duh."
@@ -1488,20 +1404,6 @@
 	reagents.add_reagent("toxin", 1)
 	reagents.add_reagent("carbon", 3)
 	bitesize = 2
-
-/obj/item/reagent_containers/food/snacks/meatsteak // Buff 4 >> 9
-	name = "Meat steak"
-	desc = "A piece of hot spicy meat."
-	icon_state = "meatstake"
-	trash = /obj/item/trash/plate
-	filling_color = "#7A3D11"
-
-/obj/item/reagent_containers/food/snacks/meatsteak/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("protein", 9)
-	reagents.add_reagent("sodiumchloride", 1)
-	reagents.add_reagent("blackpepper", 1)
-	bitesize = 4
 
 /obj/item/reagent_containers/food/snacks/spacylibertyduff // Buff 6 >> 8
 	name = "Spacy Liberty Duff"
@@ -3291,34 +3193,6 @@
 	nutriment_amt = 6
 	nutriment_desc = list("spicy teriyaki" = 6)
 
-///////////////////////////////////////////
-// new old food stuff from bs12
-///////////////////////////////////////////
-
-/* BEGIN CITADEL CHANGE - Moved to /code/modules/food/food/snacks.dm for Aurora kitchen port
-/obj/item/reagent_containers/food/snacks/ingredient/bun/attackby(obj/item/W as obj, mob/user as mob)
-	// Bun + meatball = burger
-	if(istype(W,/obj/item/reagent_containers/food/snacks/meatball))
-		new /obj/item/reagent_containers/food/snacks/monkeyburger(src)
-		to_chat(user, "You make a burger.")
-		qdel(W)
-		qdel(src)
-
-	// Bun + cutlet = hamburger
-	else if(istype(W,/obj/item/reagent_containers/food/snacks/cutlet))
-		new /obj/item/reagent_containers/food/snacks/monkeyburger(src)
-		to_chat(user, "You make a burger.")
-		qdel(W)
-		qdel(src)
-
-	// Bun + sausage = hotdog
-	else if(istype(W,/obj/item/reagent_containers/food/snacks/ingredient/sausage))
-		new /obj/item/reagent_containers/food/snacks/hotdog(src)
-		to_chat(user, "You make a hotdog.")
-		qdel(W)
-		qdel(src)
-END CITADEL CHANGE */
-
 /obj/item/reagent_containers/food/snacks/bunbun // Name fix
 	name = "Improper Bun Bun"
 	desc = "A small bread monkey fashioned from two burger buns."
@@ -3751,9 +3625,6 @@ END CITADEL CHANGE */
 
 /mob/living/simple_animal/lizard
 	kitchen_tag = "lizard"
-
-/obj/item/reagent_containers/food/snacks/ingredient/cheesewheel
-	slices_num = 8
 
 /obj/item/reagent_containers/food/snacks/sausage/battered
 	name = "battered sausage"
@@ -4227,63 +4098,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/honeybun/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("honey", 3)
-
-// Moved /bun/attackby() from /code/modules/food/food/snacks.dm
-/obj/item/reagent_containers/food/snacks/ingredient/bun/attackby(obj/item/W as obj, mob/user as mob)
-	//i honestly should probably refactor this whole thing but idgaf
-	if(istype(W,/obj/item/storage))
-		. = ..() //if you want to bag a ton of buns idk i don't play chef
-		return
-
-	var/obj/item/reagent_containers/food/snacks/result = null
-	// Bun + meatball = burger
-	if(istype(W,/obj/item/reagent_containers/food/snacks/ingredient/meatball))
-		result = new /obj/item/reagent_containers/food/snacks/monkeyburger(src)
-		to_chat(user, "You make a burger.")
-		qdel(W)
-		qdel(src)
-
-	// Bun + cutlet = hamburger
-	else if(istype(W,/obj/item/reagent_containers/food/snacks/ingredient/cutlet))
-		result = new /obj/item/reagent_containers/food/snacks/monkeyburger(src)
-		to_chat(user, "You make a burger.")
-		qdel(W)
-		qdel(src)
-
-	// Bun + sausage = hotdog
-	else if(istype(W,/obj/item/reagent_containers/food/snacks/ingredient/sausage))
-		result = new /obj/item/reagent_containers/food/snacks/hotdog(src)
-		to_chat(user, "You make a hotdog.")
-		qdel(W)
-		qdel(src)
-
-	// Bun + mouse = mouseburger
-	else if(istype(W,/obj/item/reagent_containers/food/snacks/variable/mob))
-		var/obj/item/reagent_containers/food/snacks/variable/mob/MF = W
-
-		switch (MF.kitchen_tag)
-			// if you see me on git blame, i wasn't the one who made this shiticode, i'm just passing through  ~silicons
-			if ("rodent")
-				result = new /obj/item/reagent_containers/food/snacks/mouseburger(src)
-				to_chat(user, "You make a mouse burger!")
-				qdel(src)
-
-			if ("lizard")
-				result = new /obj/item/reagent_containers/food/snacks/mouseburger(src)
-				to_chat(user, "You make a lizard burger!")
-				qdel(src)
-	if (result)
-		if (W.reagents)
-			//Reagents of reuslt objects will be the sum total of both.  Except in special cases where nonfood items are used
-			//Eg robot head
-			result.reagents.clear_reagents()
-			W.reagents.trans_to(result, W.reagents.total_volume)
-			reagents.trans_to(result, reagents.total_volume)
-
-		//If the bun was in your hands, the result will be too
-		if (loc == user)
-			user.drop_item_to_ground(src, INV_OP_FORCE)
-			user.put_in_hands(result)
 
 //chips
 /obj/item/reagent_containers/food/snacks/chip

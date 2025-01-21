@@ -2917,8 +2917,8 @@
 /obj/structure/window/reinforced,
 /obj/item/reagent_containers/food/snacks/ingredient/xenomeat,
 /obj/item/reagent_containers/food/snacks/ingredient/xenomeat,
-/obj/item/reagent_containers/food/snacks/bearmeat,
-/obj/item/reagent_containers/food/snacks/bearmeat,
+/obj/item/reagent_containers/food/snacks/ingredient/bearmeat,
+/obj/item/reagent_containers/food/snacks/ingredient/bearmeat,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "ahO" = (

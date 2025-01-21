@@ -25,7 +25,7 @@
 	attack_sharp = TRUE //It is a pretty sharp horn.
 	attack_edge = TRUE
 	meat_amount = 20
-	meat_type = /obj/item/reagent_containers/food/snacks/horsemeat
+	meat_type = /obj/item/reagent_containers/food/snacks/ingredient/horsemeat
 	butchery_loot = list(/obj/item/stack/animalhide = 6)
 	var/charge_damage_mode = DAMAGE_MODE_PIERCE | DAMAGE_MODE_SHARP
 	var/charge_damage_flag = ARMOR_MELEE

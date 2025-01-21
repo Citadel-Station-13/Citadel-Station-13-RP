@@ -36,7 +36,7 @@
 	attacktext = list("mauled")
 
 	meat_amount = 5
-	meat_type = /obj/item/reagent_containers/food/snacks/bearmeat
+	meat_type = /obj/item/reagent_containers/food/snacks/ingredient/bearmeat
 	bone_amount = 3
 	hide_amount = 5
 

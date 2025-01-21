@@ -39,7 +39,7 @@
 	attacktext = list("kicked")
 
 	meat_amount = 4
-	meat_type = /obj/item/reagent_containers/food/snacks/horsemeat
+	meat_type = /obj/item/reagent_containers/food/snacks/ingredient/horsemeat
 	bone_amount = 2
 	hide_amount = 4
 	exotic_amount = 2
