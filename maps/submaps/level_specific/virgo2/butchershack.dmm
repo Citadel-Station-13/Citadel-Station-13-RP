@@ -79,9 +79,9 @@
 /area/submap/virgo2/ButcherShack)
 "r" = (
 /obj/structure/table/standard,
-/obj/item/reagent_containers/food/snacks/cutlet,
-/obj/item/reagent_containers/food/snacks/cutlet,
-/obj/item/reagent_containers/food/snacks/cutlet,
+/obj/item/reagent_containers/food/snacks/ingredient/cutlet,
+/obj/item/reagent_containers/food/snacks/ingredient/cutlet,
+/obj/item/reagent_containers/food/snacks/ingredient/cutlet,
 /obj/item/reagent_containers/food/snacks/ingredient/sausage,
 /turf/simulated/floor/tiled,
 /area/submap/virgo2/ButcherShack)

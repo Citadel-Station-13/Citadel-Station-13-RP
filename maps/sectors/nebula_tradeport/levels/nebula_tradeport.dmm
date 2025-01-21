@@ -7387,9 +7387,9 @@
 /obj/item/reagent_containers/food/snacks/crabmeat,
 /obj/item/reagent_containers/food/snacks/crabmeat,
 /obj/item/reagent_containers/food/snacks/crabmeat,
-/obj/item/reagent_containers/food/snacks/carpmeat/fish,
-/obj/item/reagent_containers/food/snacks/carpmeat/fish,
-/obj/item/reagent_containers/food/snacks/carpmeat/fish,
+/obj/item/reagent_containers/food/snacks/ingredient/carp/fish,
+/obj/item/reagent_containers/food/snacks/ingredient/carp/fish,
+/obj/item/reagent_containers/food/snacks/ingredient/carp/fish,
 /obj/machinery/light/small{
 	dir = 1
 	},
