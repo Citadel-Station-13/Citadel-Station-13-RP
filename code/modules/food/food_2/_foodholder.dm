@@ -246,8 +246,10 @@
 
 	var/list/reagent_result_pretty = list()
 	for(var/id in our_recipe.result_reagents)
-		reagent_result_pretty += "[our_recipe.result_reagents[id]]u of [initial((SSchemistry.fetch_reagent(id)).name)]"
-	to_chat(usr, "<span class='notice'>You can see the contents of [name] would make [isnull(initial(initial(our_recipe.result).name)) ? "no item" : initial(initial(our_recipe.result).name)][reagent_result_pretty.len ? " as well as [english_list(reagent_result_pretty)]." : "."]</span>")
+		var/datum/reagent/initial_reagent = (SSchemistry.fetch_reagent(id))
+		reagent_result_pretty += "[our_recipe.result_reagents[id]]u of [initial(initial_reagent.name)]"
+	var/obj/recipe_result = initial(our_recipe.result)
+	to_chat(usr, "<span class='notice'>You can see the contents of [name] would make [isnull(initial(recipe_result.name)) ? "no item" : initial(initial(recipe_result.name))][reagent_result_pretty.len ? " as well as [english_list(reagent_result_pretty)]." : "."]</span>")
 
 
 
