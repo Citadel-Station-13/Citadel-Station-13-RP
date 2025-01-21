@@ -2125,6 +2125,7 @@
 	dir = 4
 	},
 /obj/machinery/cryopod/robot/door/gateway/trade/visitor,
+/obj/landmark/spawnpoint/latejoin/outsider,
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "afS" = (
@@ -5110,6 +5111,7 @@
 /area/tradeport/spine)
 "anA" = (
 /obj/machinery/cryopod/robot/door/gateway/trade/visitor,
+/obj/landmark/spawnpoint/latejoin/outsider,
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "anB" = (
@@ -11651,6 +11653,7 @@
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 8
 	},
+/obj/landmark/spawnpoint/latejoin/outsider,
 /turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "aEy" = (
@@ -22349,6 +22352,17 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/scoophead/main)
+"hZh" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/green/border,
+/obj/landmark/spawnpoint/job/outsider/override,
+/turf/simulated/floor/tiled,
+/area/tradeport/commhall)
 "hZT" = (
 /obj/machinery/light{
 	dir = 1
@@ -22533,17 +22547,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/sector/nebula_tradeport/medical/public)
-"itp" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 1
-	},
-/obj/effect/floor_decal/techfloor,
-/obj/effect/floor_decal/corner/green/border{
-	dir = 1
-	},
-/obj/landmark/spawnpoint/latejoin/outsider,
-/turf/simulated/floor/tiled,
-/area/tradeport/commhall)
 "itB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -27398,14 +27401,6 @@
 /obj/item/bedsheet,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/nebula_tradeport/motel/room5)
-"wWl" = (
-/obj/effect/floor_decal/techfloor,
-/obj/effect/floor_decal/corner/green/border{
-	dir = 1
-	},
-/obj/landmark/spawnpoint/latejoin/outsider,
-/turf/simulated/floor/tiled,
-/area/tradeport/commhall)
 "wWB" = (
 /turf/simulated/wall/r_wall,
 /area/sector/nebula_tradeport/motel/room7)
@@ -37263,7 +37258,7 @@ abr
 nHT
 awO
 aYp
-wWl
+aVm
 aoN
 apv
 aWO
@@ -37457,7 +37452,7 @@ abr
 awu
 aCZ
 akM
-itp
+aWb
 aoN
 apv
 aeh
@@ -37842,7 +37837,7 @@ cXs
 cXs
 cWD
 aFw
-aCP
+hZh
 awO
 aYp
 aMJ
