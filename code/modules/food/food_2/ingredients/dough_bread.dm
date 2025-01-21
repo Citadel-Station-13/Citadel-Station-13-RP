@@ -189,35 +189,13 @@
 
 
 /obj/item/reagent_containers/food/snacks/ingredient/bun/attackby(obj/item/I, mob/user)
-	var/obj/item/result
-	// Bun + mouse = mouseburger
-	if(istype(I,/obj/item/reagent_containers/food/snacks/variable/mob))
-		var/obj/item/reagent_containers/food/snacks/variable/mob/MF = I
-		switch (MF.kitchen_tag)
-			if ("rodent")
-				result = new /obj/item/reagent_containers/food/snacks/mouseburger(src)
-				to_chat(user, "You make a mouse burger!")
-				qdel(src)
-			if ("lizard")
-				result = new /obj/item/reagent_containers/food/snacks/mouseburger(src)
-				to_chat(user, "You make a lizard burger!")
-				qdel(src)
-		if (MF.reagents)
-			//Reagents of reuslt objects will be the sum total of both.  Except in special cases where nonfood items are used
-			//Eg robot head
-			result.reagents.clear_reagents()
-			MF.reagents.trans_to(result, MF.reagents.total_volume)
-			reagents.trans_to(result, reagents.total_volume)
-	else if(istype(I,/obj/item/reagent_containers/food/snacks))
+	if(istype(I,/obj/item/reagent_containers/food/snacks))
 		var/obj/item/reagent_containers/food/snacks/customizable/burger/S = new(get_turf(src))
 		S.attackby(I, user)
-		result = S
+		if(loc == user)
+			user.drop_item_to_ground(src, INV_OP_FORCE)
+			user.put_in_hands(S)
 		qdel(src)
-
-
-	if(!isnull(result) && (loc == user))
-		user.drop_item_to_ground(src, INV_OP_FORCE)
-		user.put_in_hands(result)
 	else
 		return ..()
 

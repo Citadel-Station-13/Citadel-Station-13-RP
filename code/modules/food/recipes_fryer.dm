@@ -66,7 +66,7 @@
 /datum/cooking_recipe/pizzacrunch_2
 	required_method = METHOD_DEEPFRY
 	items = list(
-		/obj/item/reagent_containers/food/snacks/variable/pizza
+		/obj/item/reagent_containers/food/snacks/customizable/pizza
 	)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/pizza/crunch
 	reagents = list("batter" = 5)
