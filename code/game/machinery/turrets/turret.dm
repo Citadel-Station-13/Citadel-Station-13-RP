@@ -190,6 +190,7 @@
 	return ..()
 
 /obj/machinery/porta_turret/update_icon()
+	. = ..()
 	if(machine_stat & BROKEN) // Turret is dead.
 		icon_state = "destroyed_target_prism_[turret_type]"
 

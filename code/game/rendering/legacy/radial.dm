@@ -252,6 +252,10 @@ GLOBAL_LIST_EMPTY(radial_menus)
 				//! perform fixup
 				I.plane = FLOAT_PLANE
 				I.layer = FLOAT_LAYER
+				I.maptext = MAPTEXT(I.maptext)
+				I.maptext_width = 64
+				I.maptext_height = 32
+				I.maptext_y = 32
 				//! end
 				choices_icons[id] = I
 		else

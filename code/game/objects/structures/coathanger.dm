@@ -46,6 +46,7 @@
 
 /obj/structure/coatrack/update_icon()
 	cut_overlays()
+	. = ..()
 
 	var/list/overlays_to_add = list()
 	if (istype(coat, /obj/item/clothing/suit/storage/toggle/labcoat))
