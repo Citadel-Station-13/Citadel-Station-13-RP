@@ -2,7 +2,7 @@
 /obj/machinery/vending/loadout
 	name = "Heads, Fingers, and Toes"
 	desc = "A special vendor for hats, gloves, and shoes!"
-	product_ads = "Do you have heads, fingers, and toes? COVER THEM UP!;Show me your toes! Wait. NO DON'T! BUY NEW SHOES!;Don't leave prints, BUY SOME GLOVES!;Remember to check your shoes for micros! You don't have to let them out, but just check for them!;Heads, Fingers, and Toes is not liable for micro entrapment or abuse under the feet of our patrons.!;This little piggy went WE WE WE all the way down to HEADS, FINGERS, AND TOES to pick up some sweet new gloves and shoes."
+	product_ads = "Do you have heads, fingers, and toes? COVER THEM UP!;Show me your toes! Wait. NO DON'T! BUY NEW SHOES!;Don't leave prints, BUY SOME GLOVES!;Portable shade! BUY A HAT!;This little piggy went WE WE WE all the way down to HEADS, FINGERS, AND TOES to pick up some sweet new gloves, shoes, and a big wide hat."
 	icon_state = "glovesnshoes"
 	products = list(
 		/obj/item/clothing/gloves/evening = 5,
@@ -395,7 +395,7 @@
 		/obj/item/clothing/mask/surgical = 5,
 		/obj/item/clothing/mask/gas/half = 5,
 		/obj/item/clothing/mask/warmer = 5,
-	)
+		)
 	premium = list(
 		/obj/item/bedsheet/rainbow = 5,
 		/obj/item/clothing/ears/laurel/silver = 5,
