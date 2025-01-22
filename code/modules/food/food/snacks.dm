@@ -1089,6 +1089,18 @@
 	. = ..()
 	bitesize = 2
 
+/obj/item/reagent_containers/food/snacks/meatsteak // Buff 4 >> 9
+	name = "Meat steak"
+	desc = "A piece of unseasoned, cooked meat."
+	icon_state = "meatstake"
+	trash = /obj/item/trash/plate
+	filling_color = "#7A3D11"
+
+/obj/item/reagent_containers/food/snacks/meatsteak/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 9)
+	bitesize = 4
+
 /obj/item/reagent_containers/food/snacks/meatpie // Buff 10 >> 15
 	name = "Meat-pie"
 	icon_state = "meatpie"

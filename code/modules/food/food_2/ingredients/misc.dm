@@ -5,7 +5,7 @@
 	icon_state = "egg"
 	filling_color = "#fdffd1"
 	volume = 10
-	can_stack = TRUE
+	can_stack = FALSE
 	food_weight = 100
 
 /obj/item/reagent_containers/food/snacks/ingredient/egg/Initialize(mapload)
