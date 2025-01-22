@@ -590,7 +590,7 @@
 /turf/space,
 /area/awaymission/zoo/tradeship)
 "bN" = (
-/obj/item/reagent_containers/food/snacks/hugemushroomslice,
+/obj/item/reagent_containers/food/snacks/ingredient/hugemushroomslice,
 /obj/effect/floor_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
@@ -692,7 +692,7 @@
 /turf/space,
 /area/awaymission/zoo/tradeship)
 "cj" = (
-/obj/item/reagent_containers/food/snacks/hugemushroomslice,
+/obj/item/reagent_containers/food/snacks/ingredient/hugemushroomslice,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "ck" = (

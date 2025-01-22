@@ -168,7 +168,7 @@
 /area/class_m/inside/igloos)
 "aV" = (
 /obj/structure/bonfire,
-/obj/item/reagent_containers/cooking_container/grill,
+
 /turf/simulated/floor/outdoors/gravsnow/lythios43c/indoors,
 /area/class_m/outside/winter)
 "aW" = (

@@ -571,7 +571,7 @@
 "ct" = (
 /obj/structure/closet/crate/freezer,
 /obj/item/reagent_containers/food/snacks/ingredient/meat,
-/obj/item/reagent_containers/food/snacks/hugemushroomslice,
+/obj/item/reagent_containers/food/snacks/ingredient/hugemushroomslice,
 /obj/item/organ/internal/appendix,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/BMPship1)
@@ -708,7 +708,7 @@
 	},
 /area/awaymission/BMPship3)
 "cY" = (
-/obj/item/reagent_containers/food/snacks/hugemushroomslice,
+/obj/item/reagent_containers/food/snacks/ingredient/hugemushroomslice,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/BMPship2)
 "cZ" = (
@@ -763,7 +763,7 @@
 /turf/simulated/floor,
 /area/awaymission/BMPship3)
 "du" = (
-/obj/item/reagent_containers/food/snacks/hugemushroomslice,
+/obj/item/reagent_containers/food/snacks/ingredient/hugemushroomslice,
 /turf/simulated/floor,
 /area/awaymission/BMPship2)
 "dv" = (

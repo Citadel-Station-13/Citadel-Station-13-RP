@@ -57,7 +57,7 @@
 /area/sector/miaphus/beach/desert/poi/huntercamp)
 "D" = (
 /obj/structure/bonfire,
-/obj/item/reagent_containers/cooking_container/grill,
+
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/sector/miaphus/beach/desert/poi/huntercamp)
 "I" = (

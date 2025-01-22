@@ -150,7 +150,7 @@
 /area/class_d/Mountain)
 "zH" = (
 /obj/machinery/appliance/cooker/fryer,
-/obj/item/reagent_containers/cooking_container/fryer,
+
 /obj/machinery/light{
 	dir = 4
 	},
