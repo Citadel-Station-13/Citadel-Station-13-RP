@@ -50,14 +50,12 @@
 /obj/item/reagent_containers/food/snacks/ingredient/update_icon()
 	cut_overlays()
 	var/overlay_amount = FLOOR(food_weight/additional_overlay_weight_threshold, 1)
-	to_chat(world, "recalculated food, overlay amount = [overlay_amount]")//REMOVE THIS LINE
 	if((overlay_amount > 1) && can_stack)
-		for(var/i = 0, i<=overlay_amount, i++)
+		for(var/i = 1, i<overlay_amount, i++)
 			var/mutable_appearance/stuff_overlay = mutable_appearance(icon, icon_state)
 			stuff_overlay.color = color
 			stuff_overlay.pixel_x = pick(rand(-12,-6), rand(6,12))
 			stuff_overlay.pixel_y = pick(rand(-12,-6), rand(6,12))
-			to_chat(world, "adding overlay [i]")//REMOVE THIS LINE
 			add_overlay(stuff_overlay)
 
 /obj/item/reagent_containers/food/snacks/ingredient/attackby(obj/item/I, mob/user)
