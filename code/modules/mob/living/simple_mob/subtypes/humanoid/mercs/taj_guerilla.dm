@@ -214,7 +214,7 @@
 
 /mob/living/simple_mob/humanoid/taj_guerilla/guerilla/sniper
 	name = "Tajara Guerilla Sniper"
-	desc = "A mercenary looking Tajara with an machine pistol. Fast on his feet"
+	desc = "A mercenary looking Tajara with an machine pistol. Fast on his feet."
 	icon_state = "dra_sniper"
 	icon_living = "dra_sniper"
 
