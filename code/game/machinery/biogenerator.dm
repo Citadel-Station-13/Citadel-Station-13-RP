@@ -250,6 +250,7 @@
 
 /obj/machinery/biogenerator/update_icon()
 	cut_overlays()
+	. = ..()
 	if(beaker)
 		add_overlay("[base_icon_state]-standby")
 		if(processing)

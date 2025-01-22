@@ -49,7 +49,7 @@
 				<tr><td>AUTHOR</td><td>TITLE</td><td>CATEGORY</td><td>SS<sup>13</sup>BN</td></tr>"}
 
 				var/datum/db_query/query = SSdbcore.RunQuery(
-					"SELECT author, title, category, id FROM [format_table_name("library")] WHERE author LIKE '%:author%' AND title LIKE '%:title%'[category == "Any"? "" : " AND category = :category"]",
+					"SELECT author, title, category, id FROM [DB_PREFIX_TABLE_NAME("library")] WHERE author LIKE '%:author%' AND title LIKE '%:title%'[category == "Any"? "" : " AND category = :category"]",
 					category == "Any"? list("author" = author, "title" = title) : list("author" = author, "title" = title, "category" = category)
 				)
 
@@ -229,7 +229,7 @@
 				<table>
 				<tr><td><A href='?src=\ref[src];sort=author>AUTHOR</A></td><td><A href='?src=\ref[src];sort=title>TITLE</A></td><td><A href='?src=\ref[src];sort=category>CATEGORY</A></td><td></td></tr>"}
 				var/datum/db_query/query = SSdbcore.RunQuery(
-					"SELECT id, author, title, category FROM [format_table_name("library")] ORDER BY :sortby",
+					"SELECT id, author, title, category FROM [DB_PREFIX_TABLE_NAME("library")] ORDER BY :sortby",
 					list(
 						"sortby" = sortby
 					)
@@ -398,7 +398,7 @@
 							var/sqlcontent = sanitizeSQL(scanner.cache.dat)
 							var/sqlcategory = sanitizeSQL(upload_category)
 							var/datum/db_query/query = SSdbcore.NewQuery(
-								"INSERT INTO [format_table_name("library")] (author, title, content, category) VALUES (:author, :title, :content, :category)",
+								"INSERT INTO [DB_PREFIX_TABLE_NAME("library")] (author, title, content, category) VALUES (:author, :title, :content, :category)",
 								list(
 									"author" = sqlauthor,
 									"title" = sqltitle,
@@ -425,7 +425,7 @@
 			spawn(6)
 				bibledelay = 0
 			var/datum/db_query/query = SSdbcore.RunQuery(
-				"SELECT * FROM [format_table_name("library")] WHERE id = :id",
+				"SELECT * FROM [DB_PREFIX_TABLE_NAME("library")] WHERE id = :id",
 				list(
 					"id" = sqlid
 				)

@@ -221,20 +221,18 @@
 	preferences.on_reconnect()
 	//? END ?//
 
-	//* Create UI *//
+	//* Create interface UI *//
 	// todo: move top level menu here, for now it has to be under prefs.
-	// Instantiate statpanel
 	tgui_stat = new(src, SKIN_BROWSER_ID_STAT)
-	// Instantiate tgui panel
 	tgui_panel = new(src, SKIN_BROWSER_ID_CHAT)
 	// Instantiate cutscene system
 	spawn(1)
 		init_cutscene_system()
-	// instantiate tooltips
 	tooltips = new(src)
-	// start action drawer
+
+	//* Setup on-map HUDs *//
 	action_drawer = new(src)
-	// make action holder
+	actor_huds = new(src)
 	action_holder = new /datum/action_holder/client_actor(src)
 	action_drawer.register_holder(action_holder)
 
@@ -434,20 +432,19 @@
 
 	active_mousedown_item = null
 
-	//* cleanup rendering
-	// clear perspective
+	//* Cleanup rendering *//
 	if(using_perspective)
 		set_perspective(null)
-	// clear HUDs
 	clear_atom_hud_providers()
 
-	//* cleanup client UI *//
+	//* Cleanup interface UI *//
 	QDEL_NULL(tgui_stat)
 	cleanup_cutscene_system()
 	QDEL_NULL(tgui_panel)
 	QDEL_NULL(tooltips)
 
-	//* cleanup map UI *//
+	//* Cleanup on-map HUDs *//
+	QDEL_NULL(actor_huds)
 	QDEL_NULL(action_holder)
 	QDEL_NULL(action_drawer)
 
@@ -470,7 +467,7 @@
 	var/sql_system_ckey = sanitizeSQL(system_ckey)
 	var/sql_ckey = sanitizeSQL(ckey)
 	//check to see if we noted them in the last day.
-	var/datum/DBQuery/query_get_notes = SSdbcore.NewQuery("SELECT id FROM [format_table_name("messages")] WHERE type = 'note' AND targetckey = '[sql_ckey]' AND adminckey = '[sql_system_ckey]' AND timestamp + INTERVAL 1 DAY < NOW() AND deleted = 0 AND expire_timestamp > NOW()")
+	var/datum/DBQuery/query_get_notes = SSdbcore.NewQuery("SELECT id FROM [DB_PREFIX_TABLE_NAME("messages")] WHERE type = 'note' AND targetckey = '[sql_ckey]' AND adminckey = '[sql_system_ckey]' AND timestamp + INTERVAL 1 DAY < NOW() AND deleted = 0 AND expire_timestamp > NOW()")
 	if(!query_get_notes.Execute())
 		qdel(query_get_notes)
 		return
@@ -479,7 +476,7 @@
 		return
 	qdel(query_get_notes)
 	//regardless of above, make sure their last note is not from us, as no point in repeating the same note over and over.
-	query_get_notes = SSdbcore.NewQuery("SELECT adminckey FROM [format_table_name("messages")] WHERE targetckey = '[sql_ckey]' AND deleted = 0 AND expire_timestamp > NOW() ORDER BY timestamp DESC LIMIT 1")
+	query_get_notes = SSdbcore.NewQuery("SELECT adminckey FROM [DB_PREFIX_TABLE_NAME("messages")] WHERE targetckey = '[sql_ckey]' AND deleted = 0 AND expire_timestamp > NOW() ORDER BY timestamp DESC LIMIT 1")
 	if(!query_get_notes.Execute())
 		qdel(query_get_notes)
 		return

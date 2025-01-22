@@ -13,6 +13,12 @@
 	//wrapper_color = COLOR_BLUE
 	starts_with = list(/obj/item/reagent_containers/pill/zoom = 7)
 
+/obj/item/storage/pill_bottle/polonium
+	name = "bottle of pills"
+	desc = "An unlabeled bottle of pills. It seems vaguely warm."
+	//wrapper_color = COLOR_BLUE
+	starts_with = list(/obj/item/reagent_containers/pill/polonium = 7)
+
 /obj/item/reagent_containers/glass/beaker/vial/random
 	atom_flags = NONE
 	var/list/random_reagent_list = list(list("water" = 15) = 1, list("cleaner" = 15) = 1)
@@ -104,7 +110,7 @@
 		/obj/item/card/emag,
 		/obj/item/card/emag_broken,
 		/obj/item/card/id/syndicate,
-		/obj/item/contraband/poster,
+		/obj/item/poster,
 		/obj/item/disposable_teleporter,
 		/obj/item/grenade/flashbang/clusterbang,
 		/obj/item/grenade/flashbang/clusterbang,

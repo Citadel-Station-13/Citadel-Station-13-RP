@@ -100,6 +100,7 @@
 	materials_base = list(MAT_STEEL = 30000, MAT_GLASS = 7500)
 //	req_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 3, TECH_DATA = 3)	//Saving the values just in case
 	var/gender = MALE
+	category = DESIGN_CATEGORY_PROSTHETIC
 
 /datum/prototype/design/science/prosfab/pros/torso/male
 	design_name = "FBP Torso (M)"

@@ -25,7 +25,6 @@
 	"}
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Shadekin"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/shadekin)
-	//rarity_value = 15 //INTERDIMENSIONAL FLUFFERS
 
 	max_additional_languages = 3
 	intrinsic_languages = LANGUAGE_ID_SHADEKIN_HIVEMIND
@@ -75,7 +74,6 @@
 
 	has_glowing_eyes = TRUE
 
-	death_message = "phases to somewhere far away!"
 	male_cough_sounds   = null
 	female_cough_sounds = null
 	male_sneeze_sound   = null
@@ -122,7 +120,6 @@
 
 	vision_innate = /datum/vision/baseline/species_tier_3/for_snowflake_ocs
 
-	//SHADEKIN-UNIQUE STUFF GOES HERE
 	var/list/shadekin_abilities = list(
 		/datum/power/shadekin/phase_shift,
 		/datum/power/shadekin/regenerate_other,
@@ -142,11 +139,6 @@
 
 /datum/species/shadekin/get_bodytype_legacy()
 	return SPECIES_SHADEKIN
-
-/datum/species/shadekin/handle_death(mob/living/carbon/human/H)
-	spawn(1)
-		H.drop_inventory(TRUE, TRUE, TRUE)
-		qdel(H)
 
 /datum/species/shadekin/get_random_name()
 	return "shadekin"

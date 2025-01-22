@@ -1,4 +1,9 @@
+/**
+ * * Returns a /datum/weakref if input is a datum, and not undergoing GC
+ * * Returns null otherwise.
+ */
 /proc/WEAKREF(datum/input)
+	RETURN_TYPE(/datum/weakref)
 	if(istype(input) && !QDELETED(input))
 		if(istype(input, /datum/weakref))
 			return input

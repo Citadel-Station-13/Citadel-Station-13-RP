@@ -8,6 +8,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/fix_vein
+	step_name = "Fix vein"
+
 	priority = 2
 	allowed_tools = list(
 	/obj/item/surgical/FixOVein = 100, \
@@ -70,9 +72,12 @@
 // Necrosis Surgery Step 1
 ///////////////////////////////////////////////////////////////
 /datum/surgery_step/fix_dead_tissue        //Debridement
+	step_name = "Debride tissue"
+
 	priority = 2
 	allowed_tools = list(
 		/obj/item/surgical/scalpel = 100,        \
+		/obj/item/surgical/scalpel_bronze = 90,	\
 		/obj/item/surgical/scalpel_primitive = 80,	\
 		/obj/item/material/knife = 75,    \
 		/obj/item/material/shard = 50,         \
@@ -118,6 +123,8 @@
 // Necrosis Surgery Step 2
 ///////////////////////////////////////////////////////////////
 /datum/surgery_step/treat_necrosis
+	step_name = "Treat necrosis"
+
 	priority = 2
 	allowed_tools = list(
 		/obj/item/reagent_containers/dropper = 100,
@@ -193,9 +200,12 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/hardsuit
+	step_name = "Remove hardsuit"
+
 	allowed_tools = list(
 		/obj/item/weldingtool = 80,
 		/obj/item/surgical/circular_saw = 60,
+		/obj/item/surgical/saw_bronze = 30,
 		/obj/item/surgical/saw_primitive = 25,
 		/obj/item/pickaxe/plasmacutter = 100
 		)
@@ -258,6 +268,8 @@
 	return target_zone == BP_TORSO && (MUTATION_HUSK in target.mutations)
 
 /datum/surgery_step/dehusk/structinitial
+	step_name = "Create mesh"
+
 	allowed_tools = list(
 		/obj/item/surgical/bioregen = 100
 	)
@@ -287,6 +299,8 @@
 	..()
 
 /datum/surgery_step/dehusk/relocateflesh
+	step_name = "Relocate flesh"
+
 	allowed_tools = list(
 		/obj/item/surgical/hemostat = 100,	\
 		/obj/item/stack/cable_coil = 75, 	\
@@ -319,6 +333,8 @@
 	..()
 
 /datum/surgery_step/dehusk/structfinish
+	step_name = "Finish structure"
+
 	allowed_tools = list(
 		/obj/item/surgical/bioregen = 100, \
 		/obj/item/surgical/FixOVein = 30
@@ -363,6 +379,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/internal/detoxify
+	step_name = "Detoxify"
+
 	blood_level = 1
 	allowed_tools = list(/obj/item/surgical/bioregen=100)
 	min_duration = 90

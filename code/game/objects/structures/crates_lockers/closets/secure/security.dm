@@ -327,7 +327,7 @@
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack/dufflebag/sec
 	if(prob(30))
-		starts_with += /obj/item/contraband/poster/nanotrasen
+		starts_with += /obj/item/poster/nanotrasen
 	return ..()
 
 /obj/structure/closet/secure_closet/security/cargo/Initialize(mapload)
@@ -407,11 +407,11 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 	anchored = 1
 
 	starts_with = list(
-		/obj/item/contraband/poster/nanotrasen,
-		/obj/item/contraband/poster/nanotrasen,
-		/obj/item/contraband/poster/nanotrasen,
-		/obj/item/contraband/poster/nanotrasen,
-		/obj/item/contraband/poster/nanotrasen)
+		/obj/item/poster/nanotrasen,
+		/obj/item/poster/nanotrasen,
+		/obj/item/poster/nanotrasen,
+		/obj/item/poster/nanotrasen,
+		/obj/item/poster/nanotrasen)
 
 /obj/structure/closet/secure_closet/courtroom
 	name = "courtroom locker"

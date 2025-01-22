@@ -1,8 +1,3 @@
-//There has to be a better way to define this shit. ~ Z
-//can't equip anything
-/mob/living/carbon/alien/attack_ui(slot_id)
-	return
-
 /mob/living/carbon/alien/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
@@ -25,7 +20,6 @@
 
 			grabbed_by += G
 			G.affecting = src
-			G.synch()
 
 			LAssailant = L
 

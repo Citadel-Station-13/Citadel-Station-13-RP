@@ -714,7 +714,7 @@
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/ship/ghostship/hangarcontrol)
 "dv" = (
-/obj/structure/sign/poster/nanotrasen,
+/obj/structure/poster/nanotrasen,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/corridor1)
 "dw" = (
@@ -1026,7 +1026,7 @@
 /turf/simulated/floor,
 /area/ship/ghostship/engines2)
 "ei" = (
-/obj/structure/sign/poster/nanotrasen,
+/obj/structure/poster/nanotrasen,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/hangarcontrol)
 "ej" = (
@@ -1301,7 +1301,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/maintenance1)
 "eS" = (
-/obj/structure/sign/poster/nanotrasen,
+/obj/structure/poster/nanotrasen,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/maintenance1)
 "eT" = (
@@ -2637,7 +2637,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/secmain)
 "hG" = (
-/obj/structure/sign/poster/nanotrasen,
+/obj/structure/poster/nanotrasen,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/secmain)
 "hH" = (
@@ -3146,7 +3146,7 @@
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/ship/ghostship/corridor6)
 "iq" = (
-/obj/structure/sign/poster/nanotrasen,
+/obj/structure/poster/nanotrasen,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/bridge)
 "ir" = (
@@ -5893,7 +5893,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/seclobby2)
 "nM" = (
-/obj/structure/sign/poster/nanotrasen,
+/obj/structure/poster/nanotrasen,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/seclobby2)
 "nN" = (
@@ -7322,7 +7322,7 @@
 /turf/simulated/floor/flesh,
 /area/ship/ghostship/sm)
 "qI" = (
-/obj/structure/sign/poster/nanotrasen,
+/obj/structure/poster/nanotrasen,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/captqua)
 "qJ" = (
@@ -8428,7 +8428,7 @@
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/ship/ghostship/seccells)
 "ty" = (
-/obj/structure/sign/poster/nanotrasen,
+/obj/structure/poster/nanotrasen,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/seccells)
 "tz" = (
@@ -8448,7 +8448,7 @@
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/ship/ghostship/sechall)
 "tA" = (
-/obj/structure/sign/poster/nanotrasen,
+/obj/structure/poster/nanotrasen,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/seclobby)
 "tB" = (
@@ -8872,7 +8872,7 @@
 /turf/simulated/floor/reinforced,
 /area/ship/ghostship/starboardhangar)
 "uv" = (
-/obj/structure/sign/poster/nanotrasen,
+/obj/structure/poster/nanotrasen,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/expedition)
 "uw" = (
@@ -9317,7 +9317,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/corridor2)
 "vD" = (
-/obj/structure/sign/poster/nanotrasen,
+/obj/structure/poster/nanotrasen,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/corridor2)
 "vE" = (
@@ -9402,7 +9402,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/maintenance2)
 "vS" = (
-/obj/structure/sign/poster/nanotrasen,
+/obj/structure/poster/nanotrasen,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/maintenance2)
 "vT" = (
@@ -9963,11 +9963,11 @@
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/ship/ghostship/maintenancerim)
 "xm" = (
-/obj/structure/sign/poster/nanotrasen,
+/obj/structure/poster/nanotrasen,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/northairlock)
 "xn" = (
-/obj/structure/sign/poster/nanotrasen,
+/obj/structure/poster/nanotrasen,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/maintenancerim)
 "xo" = (
@@ -10073,7 +10073,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ghostship/southairlock)
 "xT" = (
-/obj/structure/sign/poster,
+/obj/structure/poster,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/maintenancerim)
 "xU" = (
@@ -10571,7 +10571,7 @@
 /turf/simulated/floor/wood/broken,
 /area/ship/ghostship/cabin7)
 "FH" = (
-/obj/structure/sign/poster/nanotrasen,
+/obj/structure/poster/nanotrasen,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/medical)
 "FN" = (
@@ -10929,7 +10929,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ghostship/engineeringstorage)
 "NF" = (
-/obj/structure/sign/poster,
+/obj/structure/poster,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/maintenance1)
 "NW" = (

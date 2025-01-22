@@ -49,6 +49,7 @@
 	build_icons()
 
 /obj/machinery/atmospherics/component/quaternary/update_icon()
+	. = ..()
 	if(machine_stat & NOPOWER)
 		set_overlays(overlays_off.Copy())
 	else if(error_check())
@@ -193,7 +194,7 @@
 		var/turf/T = get_turf(src)
 		if(!istype(T))
 			return
-		if(T.hides_underfloor_objects() && istype(P.node, /obj/machinery/atmospherics/pipe) && P.node.hides_underfloor == OBJ_UNDERFLOOR_ALWAYS)
+		if(T.hides_underfloor_objects() && istype(P.node, /obj/machinery/atmospherics/pipe) && P.node.will_hide_underfloor())
 			//pipe_state = icon_manager.get_atmos_icon("underlay_down", P.dir, color_cache_name(P.node))
 			pipe_state = icon_manager.get_atmos_icon("underlay", P.dir, color_cache_name(P.node), "down")
 		else

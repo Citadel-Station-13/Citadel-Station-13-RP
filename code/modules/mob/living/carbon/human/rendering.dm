@@ -575,7 +575,7 @@
 			if(husk)
 				base_icon.ColorTone(husk_color_mod)
 			else if(hulk)
-				var/list/tone = ReadRGB(hulk_color_mod)
+				var/list/tone = rgb2num(hulk_color_mod)
 				base_icon.MapColors(rgb(tone[1],0,0),rgb(0,tone[2],0),rgb(0,0,tone[3]))
 
 		// Handle husk overlay.
@@ -838,25 +838,17 @@
 	inventory.update_slot_render(SLOT_ID_BACK)
 
 /mob/living/carbon/human/update_inv_handcuffed()
+	inventory.on_handcuffed_update()
 	inventory.update_slot_render(SLOT_ID_HANDCUFFED)
 
 /mob/living/carbon/human/update_inv_legcuffed()
 	inventory.update_slot_render(SLOT_ID_LEGCUFFED)
 
-/mob/living/carbon/human/update_inv_r_hand()
-	if(isnull(r_hand))
-		remove_standing_overlay(HUMAN_OVERLAY_RHAND)
+/mob/living/carbon/human/update_inv_hand(index)
+	if(isnull(inventory.held_items[index]))
+		remove_standing_overlay(HUMAN_OVERLAY_HAND(index))
 		return
 	set_standing_overlay(
-		HUMAN_OVERLAY_RHAND,
-		r_hand.render_mob_appearance(src, 2, BODYTYPE_DEFAULT),
-	)
-
-/mob/living/carbon/human/update_inv_l_hand()
-	if(isnull(l_hand))
-		remove_standing_overlay(HUMAN_OVERLAY_LHAND)
-		return
-	set_standing_overlay(
-		HUMAN_OVERLAY_LHAND,
-		l_hand.render_mob_appearance(src, 1, BODYTYPE_DEFAULT),
+		HUMAN_OVERLAY_HAND(index),
+		inventory.held_items[index].render_mob_appearance(src, index, BODYTYPE_DEFAULT),
 	)

@@ -18,3 +18,13 @@ DEFINE_SHARED_BITFIELD(reagent_guidebook_flags, list(
 	BITFIELD(REAGENT_GUIDEBOOK_UNLISTED),
 	BITFIELD(REAGENT_GUIDEBOOK_HIDDEN),
 ))
+
+//* flags for /datum/reagent/var/reagent_filter_flags *//
+
+/// the default flag that reagents have by default.
+#define REAGENT_FILTER_GENERIC (1<<0)
+
+/// **disallow** from common medical machinery, like sleepers.
+///
+/// * high-end reagents filtration / systems should be able to hit this
+#define REAGENT_FILTER_NO_COMMON_BIOANALYSIS (1<<23)

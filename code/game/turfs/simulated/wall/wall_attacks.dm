@@ -75,6 +75,9 @@
 	return 0
 
 /turf/simulated/wall/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+	. = ..()
+	if(.)
+		return
 	add_fingerprint(user)
 	user.setClickCooldown(user.get_attack_speed())
 	var/rotting = (locate(/obj/effect/overlay/wallrot) in src)
