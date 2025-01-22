@@ -201,7 +201,7 @@
 				"Could use a nice cigarrr...",
 				"Still betterrr then the factorrries...",
 				"They didn't say it would be this borrring.",
-				"Been forreverrr since I have some good gin")
+				"Been forreverrr since I had some good gin.")
 	emote_see = list("sniffs.", "coughs.", "mrrrps.", "looks around.", "chokes on a hairball.", "flicks their tail.")
 	say_maybe_target = list("Who's therrre?")
 	threaten_sound = 'sound/weapons/TargetOn.ogg'
