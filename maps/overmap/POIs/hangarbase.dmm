@@ -494,7 +494,7 @@
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
-	id = "hangarbase_airlock_blastdoors";
+	id = /turf/simulated/floor/tiled/steel;
 	opacity = 0;
 	dir = 4
 	},
@@ -533,7 +533,7 @@
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
-	id = s;
+	id = "hangarbase_airlock_blastdoors";
 	opacity = 0;
 	dir = 4
 	},
