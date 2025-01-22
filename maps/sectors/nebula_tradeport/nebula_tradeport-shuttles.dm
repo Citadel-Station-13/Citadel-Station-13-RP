@@ -112,7 +112,7 @@
 	name = "Scoophead Engine Bay"
 
 /area/shuttle/scoophead/main2
-	name = "Scoophead TraderSection"
+	name = "Scoophead Trader Section"
 
 //Arrowhead Shuttle
 
