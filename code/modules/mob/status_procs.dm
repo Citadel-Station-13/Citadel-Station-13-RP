@@ -141,6 +141,39 @@
 			afflict_root(amount)
 	return TRUE
 
+/mob/proc/is_dazed()
+	RETURN_TYPE(/datum/status_effect)
+	return has_status_effect(/datum/status_effect/incapacitation/daze)
+
+/mob/proc/afflict_daze(amount)
+	if(!(status_flags & STATUS_CAN_ROOT))
+		return FALSE
+	apply_status_effect(/datum/status_effect/incapacitation/daze, amount)
+	return TRUE
+
+/mob/proc/adjust_dazed(amount)
+	if(!(status_flags & STATUS_CAN_ROOT))
+		return FALSE
+	var/datum/status_effect/effect = is_dazed()
+	if(effect)
+		effect.adjust_duration(amount)
+	else if(amount > 0)
+		afflict_daze(amount)
+	return TRUE
+
+/mob/proc/set_dazed(amount)
+	if(!(status_flags & STATUS_CAN_ROOT))
+		return FALSE
+	if(amount == 0)
+		remove_status_effect(/datum/status_effect/incapacitation/daze)
+	else
+		var/datum/status_effect/effect = is_dazed()
+		if(effect)
+			effect.set_duration_from_now(amount)
+		else if(amount > 0)
+			afflict_daze(amount)
+	return TRUE
+
 /**
  * apply a staggering effect
  *
