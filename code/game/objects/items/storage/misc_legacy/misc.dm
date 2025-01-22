@@ -21,10 +21,12 @@
 
 /obj/item/storage/box/donut/update_icon()
 	cut_overlays()
+	. = ..()
 	var/i = 0
 	for(var/obj/item/reagent_containers/food/snacks/donut/D in contents)
-		add_overlay("[i][D.overlay_state]")
-		i++
+		add_overlay("[i++][D.overlay_state]")
+		if(i >= 6)
+			break
 
 /obj/item/storage/box/donut/empty
 	empty = TRUE
@@ -50,9 +52,9 @@
 	. = ..()
 	obj_storage.update_icon_on_item_change = TRUE
 
-/obj/item/storage/box/wormcan/update_icon(var/itemremoved = 0)
-	if (contents.len == 0)
-		icon_state = "wormcan_empty"
+/obj/item/storage/box/wormcan/update_icon_state()
+	icon_state = length(contents) ? "wormcan" : "wormcan_empty"
+	return ..()
 
 /obj/item/storage/box/wormcan/sickly
 	icon_state = "wormcan_sickly"
@@ -61,9 +63,9 @@
 	max_combined_volume = WEIGHT_VOLUME_TINY * 6
 	starts_with = list(/obj/item/reagent_containers/food/snacks/wormsickly = 6)
 
-/obj/item/storage/box/wormcan/sickly/update_icon(var/itemremoved = 0)
-	if (contents.len == 0)
-		icon_state = "wormcan_empty_sickly"
+/obj/item/storage/box/wormcan/sickly/update_icon_state()
+	icon_state = length(contents) ? "wormcan_empty_sickly" : "wormcan_sickly"
+	return ..()
 
 /obj/item/storage/box/wormcan/deluxe
 	icon_state = "wormcan_deluxe"
@@ -73,8 +75,8 @@
 	starts_with = list(/obj/item/reagent_containers/food/snacks/wormdeluxe = 6)
 
 /obj/item/storage/box/wormcan/deluxe/update_icon(var/itemremoved = 0)
-	if (contents.len == 0)
-		icon_state = "wormcan_empty_deluxe"
+	icon_state = length(contents) ? "wormcan_deluxe" : "wormcan_empty_deluxe"
+	return ..()
 
 //Snowflake Survival Knife Code
 /obj/item/storage/box/survival_knife
