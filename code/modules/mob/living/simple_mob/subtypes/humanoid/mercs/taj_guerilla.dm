@@ -278,7 +278,7 @@
 
 /mob/living/simple_mob/humanoid/taj_guerilla/insurgent/sawn_rifle
 	name = "Tajara Insurgent Bandit"
-	desc = "A masked insurgent with a sawn off rifle. You probably don't want him to get close"
+	desc = "A masked insurgent with a sawn off rifle. You probably don't want him to get close."
 	icon_state = "pra_bandit"
 	icon_living = "pra_bandit"
 
