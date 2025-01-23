@@ -108,9 +108,7 @@ GLOBAL_LIST_EMPTY(cooking_recipes_tgui_guidebook_data)
 			req_items += "\an [initial(input_item.name)]"
 
 	for(var/g in fruit)
-		if(ispath(g, /obj/item/reagent_containers/food/snacks/ingredient))
-			var/obj/item/reagent_containers/food/snacks/ingredient/ingred = g
-			req_growns += "[fruit[g]]g of [initial(ingred.name)]"
+		req_growns += "[fruit[g]]g of [g]"
 
 	if(!isnull(result))
 		var/obj/result_type = initial(result)
