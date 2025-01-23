@@ -104,12 +104,11 @@
 
 /obj/machinery/vending/sovietsoda
 	name = "BODA"
-	desc = "An old sweet water vending machine,how did this end up here?"
+	desc = "An old sweet water vending machine. How did this end up here?"
 	icon_state = "sovietsoda"
 	product_ads = "For Tsar and Country.;Have you fulfilled your nutrition quota today?;Very nice!;We are simple people, for this is all we eat.;If there is a person, there is a problem. If there is no person, then there is no problem."
 	products = list(
 		/obj/item/reagent_containers/food/drinks/bottle/space_up = 30,
-		/obj/item/reagent_containers/food/snacks/tofu = 20,
 	)
 	contraband = list(
 		/obj/item/reagent_containers/food/drinks/bottle/cola = 20,
