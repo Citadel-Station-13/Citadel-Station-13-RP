@@ -375,7 +375,7 @@
 				)
 
 	legacy_melee_damage_lower = 18
-	legacy_melee_damage_upper = 18 //It hits you with a hardened nanite fist. Thats supposed to hurt  
+	legacy_melee_damage_upper = 18 //It hits you with a hardened nanite fist. Thats supposed to hurt
 	movement_cooldown = 1 //again faster than standard grunts
 	movement_sound = 'sound/enigma/enigma_move.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting //Made to draw fire hence kiting
@@ -394,7 +394,7 @@
 	}
 	var/obj/item/shield_projector/shield_projector = new shield_type(src)
 	shield_projector.create_shields()
-	return ..()	
+	return ..()
 
 /mob/living/simple_mob/mechanical/hivebot/enigma/P4/Banshee
 	name = "banshee"
@@ -415,7 +415,7 @@
 				"rad"		= 100
 				)
 
-	legacy_melee_damage_lower = 35 //armed with two arm mounted phase blades 
+	legacy_melee_damage_lower = 35 //armed with two arm mounted phase blades
 	legacy_melee_damage_upper = 35 //I hate damage variance
 	attack_armor_pen = 25
 	base_attack_cooldown = 7 //1.3 attacks per second
@@ -435,7 +435,7 @@
 	special_attack_cooldown = 15 SECONDS //Phase coils are not trivial to miniaturize
 
 	var/leap_warmup = 1 SECOND // How long the leap telegraphing is.
-	var/leap_sound = 'sound/weapons/Phasecoilengage.ogg' 
+	var/leap_sound = 'sound/weapons/Phasecoilengage.ogg'
 
 // Multiplies damage if the victim is stunned in some form, including a successful leap.
 /mob/living/simple_mob/mechanical/hivebot/enigma/P4/Banshee/apply_bonus_melee_damage(atom/A, damage_amount)
@@ -489,8 +489,8 @@
 		to_chat(victim, SPAN_CRITICAL("\The [src] disengages its phase coils right ontop you and knocks you to the ground!"))
 		. = TRUE
 
-	set_AI_busy(FALSE)	
-	
+	set_AI_busy(FALSE)
+
 // Boss
 
 
@@ -588,7 +588,7 @@
 					continue
 				if(L.stat)
 					continue // Otherwise it can get pretty laggy if there's loads of corpses around.
-				L.inflict_shock_damage(i * 2)
+				L.inflict_shock_damage_legacy(i * 2)
 				if(L && L.has_polaris_AI()) // Some mobs delete themselves when dying.
 					L.ai_holder.react_to_attack_polaris(src)
 

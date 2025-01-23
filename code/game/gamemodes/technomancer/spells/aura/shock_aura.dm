@@ -33,6 +33,6 @@
 			to_chat(L, "<span class='danger'>ERROR: Electrical fault detected!</span>")
 			L.stuttering += 3
 
-		L.electrocute(power * 10, power, 0, NONE, def_zone, src)
+		L.electrocute(power * 10, power, 0, ELECTROCUTE_ACT_FLAG_INTERNAL | ELECTROCUTE_ACT_FLAG_UNIFORM, BP_TORSO, src)
 
 	adjust_instability(3)

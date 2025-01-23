@@ -2,8 +2,7 @@
     name = "disabler beam"
     icon_state = "omnilaser"
     nodamage = 1
-    taser_effect = 1
-    agony = 100 //One shot stuns for the time being until adjustments are fully made.
+    agony = 40
     damage_type = DAMAGE_TYPE_HALLOSS
     light_color = "#00CECE"
 

@@ -215,7 +215,7 @@
 	// If a non-player simple_mob was struck, inflict huge damage.
 	// If the damage is fatal, it is turned to ash.
 	if(!client)
-		inflict_shock_damage(200) // Mobs that are very beefy or resistant to shock may survive getting struck.
+		inflict_shock_damage_legacy(200) // Mobs that are very beefy or resistant to shock may survive getting struck.
 		update_health()
 		if(health <= 0)
 			visible_message(SPAN_CRITICAL("\The [src] disintegrates into ash!"))

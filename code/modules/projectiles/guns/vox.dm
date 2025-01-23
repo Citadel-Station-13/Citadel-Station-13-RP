@@ -78,7 +78,6 @@
 	icon_state = "darkt"
 	fire_sound = 'sound/weapons/eLuger.ogg'
 	nodamage = 1
-	taser_effect = 1
 	agony = 55
 	damage_type = DAMAGE_TYPE_HALLOSS
 	light_color = "#8837A3"

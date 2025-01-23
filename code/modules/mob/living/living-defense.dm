@@ -121,7 +121,7 @@
 	return ..()
 
 /mob/living/on_electrocute_act(efficiency, energy, damage, stun_power, flags, hit_zone, atom/movable/source, list/shared_blackboard)
-	inflict_electrocute_damage(damage * efficiency, agony * efficiency, flags, hit_zone)
+	inflict_electrocute_damage(damage * efficiency, stun_power * efficiency, flags, hit_zone)
 	return ..()
 
 /**

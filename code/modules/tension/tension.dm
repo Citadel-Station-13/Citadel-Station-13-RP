@@ -32,7 +32,7 @@
 		potential_damage *= 1 SECOND / (base_attack_cooldown + melee_attack_delay)
 	else
 		var/obj/projectile/P = new projectiletype(src)
-		if(P.nodamage || P.taser_effect) // Tasers are somewhat less scary.
+		if(P.nodamage)
 			potential_damage = P.agony / 2
 		else
 			potential_damage = P.damage_force

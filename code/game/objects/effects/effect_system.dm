@@ -304,7 +304,7 @@ steam.start() -- spawns the effect
 	color = "#4D4D4D"
 
 /obj/effect/particle_effect/smoke/elemental/shock/affect(mob/living/L)
-	L.inflict_shock_damage(strength)
+	L.inflict_shock_damage_legacy(strength)
 
 /obj/effect/particle_effect/smoke/elemental/mist
 	name = "misty cloud"

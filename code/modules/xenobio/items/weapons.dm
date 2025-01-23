@@ -80,9 +80,6 @@
 	icon_state = "omni"
 	agony = 4
 	nodamage = TRUE
-	// For whatever reason the projectile qdels itself early if this is on, meaning on_hit() won't be called on prometheans.
-	// Probably for the best so that it doesn't harm the slime.
-	taser_effect = FALSE
 
 	muzzle_type = /obj/effect/projectile/muzzle/laser_omni
 	tracer_type = /obj/effect/projectile/tracer/laser_omni

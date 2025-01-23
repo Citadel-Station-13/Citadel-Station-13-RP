@@ -206,10 +206,8 @@
 	name = "stun beam"
 	icon_state = "stun"
 	fire_sound = 'sound/weapons/Taser.ogg'
-	nodamage = 1
-	taser_effect = 1
-	agony = 40
-	damage_type = DAMAGE_TYPE_HALLOSS
+	nodamage = TRUE
+	damage = 0
 	light_color = "#FFFFFF"
 	impact_sounds = null
 
@@ -218,6 +216,12 @@
 	muzzle_type = /obj/effect/projectile/muzzle/stun
 	tracer_type = /obj/effect/projectile/tracer/stun
 	impact_type = /obj/effect/projectile/impact/stun
+
+	base_projectile_effects = list(
+		/datum/projectile_effect/electrical_impulse{
+			shock_agony = 40;
+		}
+	)
 
 /obj/projectile/beam/stun/weak
 	name = "weak stun beam"
@@ -235,7 +239,6 @@
 	icon_state = "lightning"
 	fire_sound = 'sound/weapons/Taser.ogg'
 	nodamage = 1
-	taser_effect = 1
 	agony = 30
 	damage_type = DAMAGE_TYPE_HALLOSS
 	light_color = "#FFFFFF"
@@ -260,7 +263,7 @@
 /obj/projectile/beam/stun/disabler
 	name = "disabler beam"
 	icon_state = "stun"
-	taser_effect = 0
+
 	agony = 20
 
 	muzzle_type = /obj/effect/projectile/muzzle/laser_omni

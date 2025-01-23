@@ -319,7 +319,6 @@
 	var/SA_bonus_damage = 0 // Some bullets inflict extra damage on simple animals.
 	var/SA_vulnerability = null // What kind of simple animal the above bonus damage should be applied to. Set to null to apply to all SAs.
 	var/nodamage = 0 //Determines if the projectile will skip any damage inflictions
-	var/taser_effect = 0 //If set then the projectile will apply it's agony damage using stun_effect_act_parse_this() to mobs it hits, and other damage will be ignored
 	var/legacy_penetrating = 0 //If greater than zero, the projectile will pass through dense objects as specified by on_penetrate()
 		//Effects
 	var/incendiary = 0 //1 for ignite on hit, 2 for trail of fire. 3 maybe later for burst of fire around the impact point. - Mech
@@ -1130,14 +1129,6 @@
 			playsound(L, pick(impact_sounds), 75)
 		else if(!isnull(impact_sounds))
 			playsound(L, impact_sounds, 75)
-
-		//Stun Beams
-		if(src.taser_effect)
-			L.stun_effect_act_parse_this(0, src.agony, hit_zone, src)
-			to_chat(L, "<font color='red'>You have been hit by [src]!</font>")
-			if(!src.nodamage)
-				L.apply_damage(final_damage, src.damage_type, hit_zone, absorb, soaked, 0, src, sharp=proj_sharp, edge=proj_edge)
-			return
 
 		if(!src.nodamage)
 			L.apply_damage(final_damage, src.damage_type, hit_zone, absorb, soaked, 0, src, sharp=proj_sharp, edge=proj_edge)
