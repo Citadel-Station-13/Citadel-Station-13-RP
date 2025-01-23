@@ -151,6 +151,8 @@
 		/obj/item/storage/toolbox/lunchbox/syndicate = 3,
 		/obj/item/storage/toolbox/lunchbox/cyancowgirl = 3,
 		/obj/item/trash/bowl = 30,
+		/obj/item/food_serving = 60,
+		/obj/item/food_serving/plate = 60,
 		/obj/item/reagent_containers/glass/food_holder/oventray = 6,
 		/obj/item/reagent_containers/glass/food_holder/fryer_basket= 4,
 		/obj/item/reagent_containers/glass/food_holder/pan = 4,
