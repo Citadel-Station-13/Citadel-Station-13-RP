@@ -1,5 +1,6 @@
 GENERATE_ROBOT_MODULE_PRESET(/lost)
 /datum/prototype/robot_module/lost
+	light_color = "#AAAA00"
 	allowed_frames = list(
 		/datum/robot_frame{
 			name = "Drone";

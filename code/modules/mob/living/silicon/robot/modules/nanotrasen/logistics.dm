@@ -1,6 +1,7 @@
 GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/logistics)
 /datum/prototype/robot_module/nanotrasen/logistics
-	use_robot_module_path = /obj/item/robot_module/robot/
+	use_robot_module_path = /obj/item/robot_module/robot/logistics
+	light_color = "#FBE281"
 	allowed_frames = list(
 		/datum/robot_frame{
 			name = "Canine - Hound";
@@ -52,7 +53,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/logistics)
 
 #warn translate chassis below
 
-/obj/item/robot_module/robot/miner
+/obj/item/robot_module/robot/logistics
 	name = "miner robot module"
 	channels = list("Supply" = 1)
 	networks = list(NETWORK_MINE)

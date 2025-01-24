@@ -1,6 +1,7 @@
 GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/janitor)
 /datum/prototype/robot_module/nanotrasen/janitor
 	use_robot_module_path = /obj/item/robot_module/robot/janitor
+	light_color = "#CC60FF"
 	allowed_frames = list(
 	)
 

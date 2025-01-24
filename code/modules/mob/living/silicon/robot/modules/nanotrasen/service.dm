@@ -1,6 +1,7 @@
 GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/service)
 /datum/prototype/robot_module/nanotrasen/service
 	use_robot_module_path = /obj/item/robot_module/robot/clerical
+	light_color = "#6AED63"
 	allowed_frames = list(
 		/datum/robot_frame{
 			name = "M-USE (Nanotrasen)";

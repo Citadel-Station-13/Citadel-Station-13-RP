@@ -1,5 +1,6 @@
 /datum/prototype/robot_module/swarm
 	use_robot_module_path = /obj/item/robot_module/robot/swarm
+	light_color = "#77FFFF"
 	allowed_frames = list(
 	)
 

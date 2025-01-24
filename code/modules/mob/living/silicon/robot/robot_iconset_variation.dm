@@ -30,6 +30,9 @@
 	/// state append to override our cover state with
 	var/icon_state_cover_append
 
+	/// is the player allowed to choose it while resting?
+	var/alt_resting_state = FALSE
+
 /datum/robot_iconset_variation/dead
 	id = "dead"
 	icon_state_append = "-wreck"
@@ -41,7 +44,9 @@
 /datum/robot_iconset_variation/sitting
 	id = "sitting"
 	icon_state_append = "-sit"
+	alt_resting_state = TRUE
 
 /datum/robot_iconset_variation/bellyup
 	id = "bellyup"
 	icon_state_append = "-bellyup"
+	alt_resting_state = TRUE

@@ -3928,7 +3928,6 @@
 #include "code\modules\mob\living\silicon\robot\robot-legacy-animation_vr.dm"
 #include "code\modules\mob\living\silicon\robot\robot-legacy-damage.dm"
 #include "code\modules\mob\living\silicon\robot\robot-legacy-emag.dm"
-#include "code\modules\mob\living\silicon\robot\robot-legacy-flashlights.dm"
 #include "code\modules\mob\living\silicon\robot\robot-legacy-items.dm"
 #include "code\modules\mob\living\silicon\robot\robot-legacy-movement.dm"
 #include "code\modules\mob\living\silicon\robot\robot-legacy-remote_control.dm"

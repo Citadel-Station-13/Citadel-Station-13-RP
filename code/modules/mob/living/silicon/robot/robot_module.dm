@@ -31,6 +31,10 @@
 	#warn hook
 	var/legacy_show_on_manifest = FALSE
 
+	//* Lighting *//
+	/// Default lighting color
+	var/light_color = "#ffffff"
+
 	//* Identity *//
 	/// Our display name
 	#warn set on all modules

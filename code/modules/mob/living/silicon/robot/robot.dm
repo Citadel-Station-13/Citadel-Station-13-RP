@@ -106,6 +106,11 @@
 	/// * This does not imply [can_repick_module]. If this is set, and that isn't,
 	///   and we already have a module, we can repick our frame but not our module.
 	var/can_repick_frame = TRUE
+	/// Currently active voluntary sprite variation for rest.
+	/// * Reset upon stopping resting.
+	/// * This is the ID of the variation.
+	#warn impl picker
+	var/picked_resting_variation
 
 	/// Is our integrated light on?
 	var/lights_on = 0
@@ -440,21 +445,11 @@
 	lights_on = !lights_on
 	to_chat(usr, "You [lights_on ? "enable" : "disable"] your integrated light.")
 
+	// todo: more customization for light colors / lights / whatever
 	if (lights_on)
-		radio.set_light(integrated_light_power, 2, l_color = get_light_color_for_icontype(), angle = LIGHT_WIDE)
+		radio.set_light(integrated_light_power, 2, l_color = module_new?.light_color || "#FFFFFF", angle = LIGHT_WIDE)
 	else
 		radio.set_light(0)
-
-/mob/living/silicon/robot/proc/get_light_color_for_icontype()
-	. = LIGHT_COLOR_TUNGSTEN
-	if (icon in GLOB.borg_light_color_lut)
-		var/list/lut = GLOB.borg_light_color_lut[icon]
-		if (module_sprites[icontype] in lut)
-			return lut[module_sprites[icontype]]
-
-	// Don't want to runtime if an admin is varediting a borg's icon.
-	else if (!(datum_flags & DF_VAR_EDITED))
-		CRASH("[icon] is missing entries in the borg flashlight LUT.")
 
 /mob/living/silicon/robot/verb/self_diagnosis_verb()
 	set category = "Robot Commands"
@@ -507,9 +502,7 @@
 
 // this function returns the robots jetpack, if one is installed
 /mob/living/silicon/robot/proc/installed_jetpack()
-	if(module)
-		return (locate(/obj/item/tank/jetpack) in module.modules)
-	return 0
+	return locate(/obj/item/tank/jetpack) in inventory.robot_modules
 
 // update the status screen display
 /mob/living/silicon/robot/statpanel_data(client/C)
@@ -529,9 +522,20 @@
 		if (current_jetpack)
 			STATPANEL_DATA_ENTRY("Internal Atmosphere Info", current_jetpack.name)
 			STATPANEL_DATA_ENTRY("Tank Pressure", current_jetpack.air_contents.return_pressure())
-		if(module)
-			for(var/datum/matter_synth/ms in module.synths)
-				STATPANEL_DATA_LINE("[ms.name]: [ms.energy]/[ms.max_energy]")
+		// todo: robot panel; this shouldn't be in statpanel, it's not critical data
+		if(resources)
+			for(var/key in resources.provisioned_stack_store)
+				var/datum/robot_resource/resource = resources.provisioned_stack_store
+				STATPANEL_DATA_LINE("[resource.name]: [resource.ammount]/[resource.amount_max]")
+			for(var/key in resources.provisioned_material_store)
+				var/datum/robot_resource/resource = resources.provisioned_material_store
+				STATPANEL_DATA_LINE("[resource.name]: [resource.ammount]/[resource.amount_max]")
+			for(var/key in resources.provisioned_reagent_store)
+				var/datum/robot_resource/resource = resources.provisioned_reagent_store
+				STATPANEL_DATA_LINE("[resource.name]: [resource.ammount]/[resource.amount_max]")
+			for(var/key in resources.provisioned_resource_store)
+				var/datum/robot_resource/resource = resources.provisioned_resource_store
+				STATPANEL_DATA_LINE("[resource.name]: [resource.ammount]/[resource.amount_max]")
 
 /mob/living/silicon/robot/restrained()
 	return 0

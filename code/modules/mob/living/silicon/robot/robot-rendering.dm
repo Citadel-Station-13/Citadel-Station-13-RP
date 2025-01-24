@@ -12,6 +12,11 @@
 		else
 			icon_state = "[base_icon_state][dead_variation.icon_state_append]"
 		active_variation = dead_variation
+	else if(resting)
+		if(picked_resting_variation)
+			active_variation = iconset?.variations?[picked_resting_variation]
+		if(!active_variation)
+			active_variation = iconset?.variations?[/datum/robot_iconset_variation/resting::id]
 	else
 		icon_state = base_icon_state
 
@@ -42,15 +47,3 @@
 				add_overlay("[using_panel_state]-cell")
 			else
 				add_overlay("[using_panel_state]-empty")
-
-#warn below
-/mob/living/silicon/robot/updateicon()
-	if (dogborg)
-		// Resting dogborgs don't get overlays.
-		if (stat == CONSCIOUS && resting)
-			if(sitting)
-				icon_state = "[module_sprites[icontype]]-sit"
-			else if(bellyup)
-				icon_state = "[module_sprites[icontype]]-bellyup"
-			else
-				icon_state = "[module_sprites[icontype]]-rest"
