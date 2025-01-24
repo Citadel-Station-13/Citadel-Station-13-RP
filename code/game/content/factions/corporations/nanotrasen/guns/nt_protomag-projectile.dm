@@ -81,13 +81,21 @@
 	damage_tier = BULLET_TIER_EXTREME
 	armor_penetration = 75
 
+// todo: the impulse should be semi armor piercing
 /obj/projectile/nt_protomag/shock
 	name = "piezo slug"
 	color = "#cccc55"
 	speed = /obj/projectile/nt_protomag::speed * 0.8
 	damage_force = 10
 	damage_tier = BULLET_TIER_MEDIUM
-	#warn impl
+	base_projectile_effects = list(
+		/datum/projectile_effect/electrical_impulse{
+			shock_damage = 15;
+			shock_agony = 30;
+			shock_energy = 50;
+			shock_flags = ELECTROCUTE_ACT_FLAG_DISTRIBUTE;
+		}
+	)
 
 // todo: flare rounds should illuminate the target and a bit of the surroundings with
 //       a weak glow. bright pyrotechnics would not fit into the round.

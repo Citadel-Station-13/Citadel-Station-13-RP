@@ -13,6 +13,10 @@
 #define ELECTROCUTE_ACT_FLAG_UNIFORM (1<<2)
 /// Do not run protection calculations, for when you already calculated it.
 #define ELECTROCUTE_ACT_FLAG_IGNORE_ARMOR (1<<3)
+/// Do not run VFX, SFX, or message
+#define ELECTROCUTE_ACT_FLAG_SILENT (1<<4)
+/// Do not emit sparks, ignite things around the entity, etc
+#define ELECTROCUTE_ACT_FLAG_CONTAINED (1<<5)
 
 //* Arg indices for /atom/proc/electrocute_act() return value list *//
 

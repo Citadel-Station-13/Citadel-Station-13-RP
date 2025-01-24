@@ -347,7 +347,18 @@
 	else
 		power_source = cell
 		shock_damage = cell_damage
-	var/list/shock_return = M.electrocute(0, shock_damage * siemens_coeff, 0, ELECTROCUTE_ACT_FLAG_IGNORE_ARMOR, null, source)
+	var/stun_calculation
+	if(shock_damage >= 100)
+		stun_calculation = 200
+	else if(shock_damage >= 50)
+		stun_calculation = rand(75, 100)
+	else if(shock_damage >= 30)
+		stun_calculation = rand(35, 50)
+	else if(shock_damage >= 20)
+		stun_calculation = rand(20, 35)
+	else
+		stun_calculation = shock_damage
+	var/list/shock_return = M.electrocute(0, shock_damage * siemens_coeff, stun_calculation, ELECTROCUTE_ACT_FLAG_IGNORE_ARMOR, null, source)
 	// // 10kw per hp
 	// var/drained_energy = drained_hp * 10000
 	// if (source_area)

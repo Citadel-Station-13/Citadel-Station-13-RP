@@ -57,39 +57,6 @@
 						return 1
 	return 0
 
-#warn deal with
-/mob/living/carbon/electrocute_act_legacy(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null, var/stun = 1)
-	playsound(loc, /datum/soundbyte/grouped/sparks, 50, 1, -1)
-	if (shock_damage > 15)
-		src.visible_message(
-			"<span class='warning'>[src] was electrocuted[source ? " by the [source]" : ""]!</span>", \
-			"<span class='danger'>You feel a powerful shock course through your body!</span>", \
-			"<span class='warning'>You hear a heavy electrical crack.</span>" \
-		)
-	else
-		src.visible_message(
-			"<span class='warning'>[src] was shocked[source ? " by the [source]" : ""].</span>", \
-			"<span class='warning'>You feel a shock course through your body.</span>", \
-			"<span class='warning'>You hear a zapping sound.</span>" \
-		)
-
-	if(stun)
-		switch(shock_damage)
-			if(16 to 20)
-				afflict_stun(20 * 2)
-			if(21 to 25)
-				afflict_paralyze(20 * 2)
-			if(26 to 30)
-				afflict_paralyze(20 * 5)
-			if(31 to INFINITY)
-				afflict_paralyze(20 * 10) //This should work for now, more is really silly and makes you lay there forever
-
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-	s.set_up(5, 1, loc)
-	s.start()
-
-	return shock_damage
-
 // Knifing
 /mob/living/carbon/proc/attack_throat(obj/item/W, obj/item/grab/G, mob/user)
 

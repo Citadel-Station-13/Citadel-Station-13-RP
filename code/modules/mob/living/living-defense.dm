@@ -121,7 +121,26 @@
 	return ..()
 
 /mob/living/on_electrocute_act(efficiency, energy, damage, stun_power, flags, hit_zone, atom/movable/source, list/shared_blackboard)
-	inflict_electrocute_damage(damage * efficiency, stun_power * efficiency, flags, hit_zone)
+	if(efficiency > 0)
+		inflict_electrocute_damage(damage * efficiency, stun_power * efficiency, flags, hit_zone)
+		if(!(flags & ELECTROCUTE_ACT_FLAG_SILENT))
+			playsound(src, /datum/soundbyte/grouped/sparks, 50, TRUE, -1)
+			if(damage * efficiency > 15)
+				visible_message(
+					SPAN_WARNING("[src] was electrocuted[source ? "by [source]" : ""]!"),
+					SPAN_DANGER("You feel a powerful shock course through your body[source ? "as you make contact with [source]" : ""]!"),
+					SPAN_WARNING("You hear a heavy electrical crack."),
+				)
+			else
+				visible_message(
+					SPAN_WARNING("[src] was shocked[source ? "by [source]" : ""]!"),
+					SPAN_DANGER("You feel a shock course through your body[source ? "as you make contact with [source]" : ""]!"),
+					SPAN_WARNING("You hear an electrical crack."),
+				)
+		if(!(flags & ELECTROCUTE_ACT_FLAG_CONTAINED))
+			var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+			sparks.set_up(5, 1, loc)
+			sparks.start()
 	return ..()
 
 /**
