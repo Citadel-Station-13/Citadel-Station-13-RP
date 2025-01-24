@@ -754,21 +754,6 @@
 			else
 				to_chat(user, "<font color='red'>Access denied.</font>")
 
-	else if(istype(W, /obj/item/robot_upgrade/))
-		var/obj/item/robot_upgrade/U = W
-		if(!opened)
-			to_chat(usr, "You must access the borgs internals!")
-		else if(!src.module && U.require_module)
-			to_chat(usr, "The borg must choose a module before it can be upgraded!")
-		else if(U.locked)
-			to_chat(usr, "The upgrade is locked and cannot be used yet!")
-		else
-			if(U.action(src))
-				user.transfer_item_to_loc(U, src, INV_OP_FORCE)
-				to_chat(usr, "You apply the upgrade to [src]!")
-			else
-				to_chat(usr, "Upgrade error!")
-
 	else
 		if( !(istype(W, /obj/item/robotanalyzer) || istype(W, /obj/item/healthanalyzer)) )
 			if(W.damage_force > 0)

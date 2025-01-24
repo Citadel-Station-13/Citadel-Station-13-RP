@@ -24,8 +24,11 @@
 	. = ..()
 	if(.)
 		return
-	if(isrobot(target))
-		#warn impl
+	if(!isrobot(target))
+		return
+	var/mob/living/silicon/robot/robot_target = target
+	robot_target.install_upgrade(src, actor = e_args)
+	return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 
 /obj/item/robot_upgrade/proc/ensure_mounted_items_loaded()
 	if(mounted_items)

@@ -3934,7 +3934,7 @@
 #include "code\modules\mob\living\silicon\robot\robot-power.dm"
 #include "code\modules\mob\living\silicon\robot\robot-rendering.dm"
 #include "code\modules\mob\living\silicon\robot\robot-resources.dm"
-#include "code\modules\mob\living\silicon\robot\robot-upgades.dm"
+#include "code\modules\mob\living\silicon\robot\robot-upgrades.dm"
 #include "code\modules\mob\living\silicon\robot\robot.dm"
 #include "code\modules\mob\living\silicon\robot\robot_chassis.dm"
 #include "code\modules\mob\living\silicon\robot\robot_frame.dm"
