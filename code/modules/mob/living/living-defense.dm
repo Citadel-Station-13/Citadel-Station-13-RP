@@ -146,7 +146,6 @@
 /**
  * Called to apply the damage from [electrocute_act()]
  */
-#warn impl on simple mob, carbon, silicon
 /mob/living/proc/inflict_electrocute_damage(damage, stun_power, flags, hit_zone)
 	return
 

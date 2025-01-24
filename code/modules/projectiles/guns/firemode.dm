@@ -35,7 +35,6 @@
 
 	//* Projectile Effects *//
 	/// passed to bullet in fire()
-	#warn hook
 	var/list/add_projectile_effects
 
 	//* LEGACY *//

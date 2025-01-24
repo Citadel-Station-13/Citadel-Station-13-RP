@@ -119,10 +119,14 @@
 	 * If this is ever violated bad things may happen and things may explode.
 	 */
 
+	/**
+	 * As another word of warning, a runtime error in this proc is very bad,
+	 * as the firing cycle is logged at the end.
+	 */
+
 	if(isnull(firemode))
 		firemode = legacy_get_firemode()
 		ASSERT(firemode)
-	#warn logging
 
 	// create cycle
 	var/datum/gun_firing_cycle/our_cycle = new
@@ -182,6 +186,8 @@
 	// send end hooks
 	on_firing_cycle_end(our_cycle)
 	SEND_SIGNAL(src, COMSIG_GUN_FIRING_CYCLE_END, our_cycle)
+	// log
+	log_projectile_firing_cycle(src, firer, our_cycle, actor)
 
 	return our_cycle
 

@@ -75,7 +75,6 @@
 		/datum/prototype/material/glass::id = 12.5,
 	)
 
-#warn materials for below
 /obj/item/ammo_casing/nt_protomag/magnetic
 	name = "protomag slug"
 	desc = "A slender ferromagnetic slug. A bullet without propellant, for whatever reason."
@@ -95,6 +94,12 @@
 
 	projectile_type = /obj/projectile/nt_protomag/emp
 	stripe_color = /obj/projectile/nt_protomag/emp::color
+	materials_base = list(
+		/datum/prototype/material/steel::id = 25,
+		/datum/prototype/material/glass::id = 12.5,
+		/datum/prototype/material/uranium::id = 25,
+		/datum/prototype/material/silver::id = 25,
+	)
 
 // todo: this is currently disabled as simplemobs are not complex-AI enough for us to do this, and we don't need a PVP-only tool
 // /obj/item/ammo_casing/nt_protomag/magnetic/concussive
@@ -110,6 +115,12 @@
 
 	projectile_type = /obj/projectile/nt_protomag/penetrator
 	stripe_color = /obj/projectile/nt_protomag/penetrator::color
+	materials_base = list(
+		/datum/prototype/material/steel::id = 25,
+		/datum/prototype/material/glass::id = 12.5,
+		/datum/prototype/material/uranium::id = 25,
+		/datum/prototype/material/diamond::id = 35,
+	)
 
 /obj/item/ammo_casing/nt_protomag/magnetic/shock
 	name = "protomag slug (shock)"
@@ -117,6 +128,12 @@
 
 	projectile_type = /obj/projectile/nt_protomag/shock
 	stripe_color = /obj/projectile/nt_protomag/shock::color
+	materials_base = list(
+		/datum/prototype/material/steel::id = 25,
+		/datum/prototype/material/glass::id = 12.5,
+		/datum/prototype/material/silver::id = 25,
+		/datum/prototype/material/gold::id = 25,
+	)
 
 // todo: flare rounds should illuminate the target and a bit of the surroundings with
 //       a weak glow. bright pyrotechnics would not fit into the round.

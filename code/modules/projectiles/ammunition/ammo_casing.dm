@@ -37,7 +37,6 @@
 
 	//* Projectile Effects *//
 	/// passed to bullet in fire()
-	#warn hook
 	var/list/add_projectile_effects
 
 	//* Icon *//
@@ -127,6 +126,7 @@
 	if(istype(stored))
 		CRASH("double init?")
 	stored = new projectile_type(src)
+	stored.add_projectile_effects(add_projectile_effects)
 	return stored
 
 /obj/item/ammo_casing/update_icon_state()

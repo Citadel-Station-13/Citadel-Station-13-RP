@@ -201,6 +201,7 @@
 /obj/projectile/nt_isd/laser
 	abstract_type = /obj/projectile/nt_isd/laser
 	damage_type = DAMAGE_TYPE_BURN
+	hitscan = TRUE
 
 /obj/projectile/nt_isd/laser/rifle
 	name = "laser"
@@ -232,21 +233,32 @@
 
 /obj/projectile/nt_isd/shock
 	name = "energy beam"
-	#warn impl
+	#warn sprite
+	hitscan = TRUE
+	base_projectile_effects = list(
+		/datum/projectile_effect/electrical_impulse{
+			shock_energy = 50;
+			shock_damage = 20;
+			shock_agony = 40;
+			shock_flags = ELECTROCUTE_ACT_FLAG_DISTRIBUTE;
+		}
+	)
 
 /obj/projectile/nt_isd/electrode
 	name = "stun bolt"
+	#warn sprite
 	base_projectile_effects = list(
 		/datum/projectile_effect/electrical_probe{
 			status_effect_path = /datum/status_effect/taser_stun/nt_isd;
 			status_effect_duration = 3 SECONDS;
 		}
 	)
-	#warn impl
 
 /obj/projectile/nt_isd/disable
 	name = "disabler beam"
-	#warn impl
+	#warn sprite
+	hitscan = TRUE
+	agony = 25
 
 // todo: this shouldn't be an emp, this should be like synthetik's
 /obj/projectile/nt_isd/ion

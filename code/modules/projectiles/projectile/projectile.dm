@@ -402,6 +402,17 @@
 	expire()
 
 /**
+ * Adds projectile effects.
+ */
+/obj/projectile/proc/add_projectile_effects(list/datum/projectile_effect/effects)
+	if(!length(effects))
+		return
+	if(additional_projectile_effects)
+		additional_projectile_effects += effects
+	else
+		additional_projectile_effects = effects.Copy()
+
+/**
  * Fires a projectile.
  *
  * todo: reverify no_source_check; it probably shouldn't be in here. maybe have a proc

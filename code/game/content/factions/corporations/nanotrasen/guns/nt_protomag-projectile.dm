@@ -113,5 +113,3 @@
 // todo: fuck no, not until chloral and chemicals are reworked; this round is meant to take like 2-3 units maximum, on that note.
 // /obj/projectile/nt_protomag/reagent
 // 	name = "chemical slug"
-
-#warn impl all

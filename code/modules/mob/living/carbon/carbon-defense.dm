@@ -35,7 +35,30 @@
 			// hit one part
 			apply_damage(damage, DAMAGE_TYPE_BURN, hit_zone, used_weapon = "electrical burns")
 	if(stun_power)
-		#warn impl
+		adjustHalLoss(stun_power)
+		default_combat_knockdown(stun_power)
+		apply_effect(STUTTER, sqrt(stun_power))
+		apply_effect(EYE_BLUR, sqrt(stun_power) * 0.5)
+		if(stun_power > 20)
+			var/obj/item/knock_out_of_hand
+			var/obj/item/organ/knock_out_of_hand_organ
+			var/knock_out_descriptor
+			switch(hit_zone)
+				if(BP_L_HAND, BP_L_ARM)
+					knock_out_of_hand = get_left_held_item()
+					knock_out_of_hand_organ = get_organ(BP_L_HAND)
+					knock_out_descriptor = "left hand"
+				if(BP_R_HAND | BP_R_ARM)
+					knock_out_of_hand = get_right_held_item()
+					knock_out_of_hand_organ = get_organ(BP_R_HAND)
+					knock_out_descriptor = "right hand"
+			if(knock_out_of_hand && knock_out_of_hand_organ)
+				if(drop_item_to_ground(knock_out_of_hand))
+					if (affected.robotic >= ORGAN_ROBOT)
+						INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, custom_emote), 1, "drops what they were holding, their [knock_out_of_hand_organ.name] malfunctioning!")
+					else
+						var/emote_scream = pick("screams in pain and ", "lets out a sharp cry and ", "cries out and ")
+						INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, custom_emote), 1, "[knock_out_of_hand_organ.organ_can_feel_pain() ? "" : emote_scream] drops what they were holding in their [knock_out_of_hand_organ.name]!")
 
 /mob/living/carbon/slip_act(slip_class, source, hard_strength, soft_strength, suppressed)
 	. = ..()
