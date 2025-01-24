@@ -57,7 +57,7 @@
 		clickchain.visible_feedback(
 			target = target,
 			range = MESSAGE_RANGE_COMBAT_LOUD,
-			visible = SPAN_WARNING("[attacker] harmlessly taps [target] with [weaopn]."),
+			visible = SPAN_WARNING("[attacker] harmlessly taps [target] with [weapon]."),
 			visible_them = SPAN_WARNING("[attacker] harmlessly taps you with [weapon]."),
 			visible_self = SPAN_WARNING("You harmlessly tap [target] with [weapon].")
 		)
@@ -65,5 +65,5 @@
 		clickchain.visible_feedback(
 			target = target,
 			range = MESSAGE_RANGE_COMBAT_LOUD,
-			visible = SPAN_DANGER("[target] has been [islist(weapon.attack_verb)? pick(weapon.attack_verb) : weapon.attack_verb] with [clickchain.weapon] by [attacker]!")
+			visible = SPAN_DANGER("[target] has been [islist(weapon.attack_verb)? pick(weapon.attack_verb) : weapon.attack_verb] with [weapon] by [attacker]!")
 		)
