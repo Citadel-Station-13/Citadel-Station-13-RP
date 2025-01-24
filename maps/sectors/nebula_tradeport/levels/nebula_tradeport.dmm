@@ -2125,6 +2125,7 @@
 	dir = 4
 	},
 /obj/machinery/cryopod/robot/door/gateway/trade/visitor,
+/obj/landmark/spawnpoint/latejoin/outsider,
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "afS" = (
@@ -5111,6 +5112,7 @@
 /area/tradeport/spine)
 "anA" = (
 /obj/machinery/cryopod/robot/door/gateway/trade/visitor,
+/obj/landmark/spawnpoint/latejoin/outsider,
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "anB" = (
@@ -11652,6 +11654,7 @@
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 8
 	},
+/obj/landmark/spawnpoint/latejoin/outsider,
 /turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "aEy" = (
@@ -19712,9 +19715,6 @@
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel)
-"bqy" = (
-/turf/simulated/wall/prepainted/exploration,
-/area/shuttle/scoophead/main2)
 "bqF" = (
 /obj/effect/floor_decal/corner/red/border{
 	dir = 9
@@ -19761,7 +19761,7 @@
 	id = "scoophead_office"
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/scoophead/main2)
+/area/shuttle/scoophead/main)
 "bsc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -19782,7 +19782,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/scoophead/main2)
+/area/shuttle/scoophead/main)
 "btw" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
@@ -19867,7 +19867,7 @@
 	id = "scoophead_office"
 	},
 /turf/simulated/floor/carpet/patterened/red,
-/area/shuttle/scoophead/main2)
+/area/shuttle/scoophead/main)
 "bEl" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
@@ -19910,7 +19910,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/carpet/patterened/red,
-/area/shuttle/scoophead/main2)
+/area/shuttle/scoophead/main)
 "bHd" = (
 /obj/structure/aquarium/prefilled,
 /turf/simulated/floor/carpet/turcarpet,
@@ -20558,7 +20558,7 @@
 	req_one_access = null
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/scoophead/main2)
+/area/shuttle/scoophead/main)
 "dzE" = (
 /obj/structure/toilet{
 	dir = 4
@@ -20596,7 +20596,7 @@
 	id = "scoophead_room"
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/scoophead/main2)
+/area/shuttle/scoophead/main)
 "dCd" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
@@ -20653,7 +20653,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/scoophead/main2)
+/area/shuttle/scoophead/main)
 "dGF" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/structure/curtain/black,
@@ -20736,12 +20736,6 @@
 /obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room1)
-"dPi" = (
-/obj/structure/cable/pink{
-	icon_state = "1-8"
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/scoophead/main)
 "dQr" = (
 /obj/structure/bed/padded,
 /obj/machinery/fire_alarm/north_mount,
@@ -20959,10 +20953,6 @@
 	dir = 8;
 	light_range = 12
 	},
-/obj/machinery/power/apc/hyper/west_mount,
-/obj/structure/cable/pink{
-	dir = 8
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/scoophead/main)
 "ekB" = (
@@ -21126,7 +21116,7 @@
 	pixel_x = -32
 	},
 /turf/simulated/floor/carpet/patterened/blue,
-/area/shuttle/scoophead/main2)
+/area/shuttle/scoophead/main)
 "eEX" = (
 /obj/structure/simple_door/hardwood,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -21344,7 +21334,7 @@
 	id = "scoophead_office"
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/scoophead/main2)
+/area/shuttle/scoophead/main)
 "fir" = (
 /obj/machinery/computer/ship/sensors,
 /obj/effect/floor_decal/techfloor{
@@ -21462,7 +21452,7 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/scoophead/main2)
+/area/shuttle/scoophead/main)
 "fFF" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -22116,7 +22106,7 @@
 	id = "scoophead_office"
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/scoophead/main2)
+/area/shuttle/scoophead/main)
 "hyI" = (
 /obj/structure/table/hardwoodtable,
 /obj/machinery/chemical_dispenser/catering/bar_coffee{
@@ -22239,6 +22229,9 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/structure/cable/pink{
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/scoophead/main)
 "hMU" = (
@@ -22350,6 +22343,17 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/scoophead/main)
+"hZh" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/green/border,
+/obj/landmark/spawnpoint/job/outsider/override,
+/turf/simulated/floor/tiled,
+/area/tradeport/commhall)
 "hZT" = (
 /obj/machinery/light{
 	dir = 1
@@ -22534,17 +22538,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/sector/nebula_tradeport/medical/public)
-"itp" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 1
-	},
-/obj/effect/floor_decal/techfloor,
-/obj/effect/floor_decal/corner/green/border{
-	dir = 1
-	},
-/obj/landmark/spawnpoint/latejoin/outsider,
-/turf/simulated/floor/tiled,
-/area/tradeport/commhall)
 "itB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -22641,7 +22634,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/carpet/patterened/red,
-/area/shuttle/scoophead/main2)
+/area/shuttle/scoophead/main)
 "iQo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/meter,
@@ -22690,7 +22683,7 @@
 /obj/structure/curtain/open/shower,
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/tiled/neutral,
-/area/shuttle/scoophead/main2)
+/area/shuttle/scoophead/main)
 "jdu" = (
 /obj/machinery/washing_machine,
 /obj/item/storage/laundry_basket{
@@ -22774,7 +22767,7 @@
 	pixel_x = 32
 	},
 /turf/simulated/floor/carpet/patterened/red,
-/area/shuttle/scoophead/main2)
+/area/shuttle/scoophead/main)
 "jpc" = (
 /obj/structure/window/reinforced/polarized{
 	dir = 8;
@@ -22782,7 +22775,7 @@
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
-/area/shuttle/scoophead/main2)
+/area/shuttle/scoophead/main)
 "juq" = (
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/old_tile/blue,
@@ -22965,7 +22958,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/scoophead/main2)
+/area/shuttle/scoophead/main)
 "jQe" = (
 /obj/machinery/computer/ship/helm{
 	dir = 1
@@ -23273,6 +23266,10 @@
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 8
 	},
+/obj/structure/cable/pink{
+	icon_state = "2-4";
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/scoophead/engineering)
 "kJj" = (
@@ -23572,9 +23569,6 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 8
 	},
-/obj/structure/cable/pink{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/scoophead/main)
 "ltU" = (
@@ -23585,7 +23579,7 @@
 /area/sector/nebula_tradeport/motel)
 "luK" = (
 /turf/simulated/floor/wood,
-/area/shuttle/scoophead/main2)
+/area/shuttle/scoophead/main)
 "luQ" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/structure/curtain/open/black,
@@ -24002,11 +23996,11 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 4
 	},
-/obj/structure/cable/pink{
-	icon_state = "4-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 6
+	},
+/obj/structure/cable/pink{
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/scoophead/main)
@@ -24113,9 +24107,6 @@
 	},
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/shuttle/arrowhead)
-"mLx" = (
-/turf/simulated/wall/prepainted/command,
-/area/shuttle/scoophead/main2)
 "mMt" = (
 /obj/effect/shuttle_landmark/triumph/trade/arrowhead,
 /obj/overmap/entity/visitable/ship/landable/trade/arrowhead,
@@ -24271,7 +24262,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/scoophead/main2)
+/area/shuttle/scoophead/main)
 "nkf" = (
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 8
@@ -24453,9 +24444,6 @@
 	name = "Captain's Quarters";
 	req_access = list(160);
 	req_one_access = null
-	},
-/obj/structure/cable/pink{
-	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
@@ -24730,7 +24718,7 @@
 /obj/item/pen/fountain,
 /obj/item/pen,
 /turf/simulated/floor/carpet/patterened/red,
-/area/shuttle/scoophead/main2)
+/area/shuttle/scoophead/main)
 "oFP" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -24839,7 +24827,7 @@
 	id = "scoophead_room"
 	},
 /turf/simulated/floor/wood,
-/area/shuttle/scoophead/main2)
+/area/shuttle/scoophead/main)
 "pfv" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
@@ -25409,6 +25397,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/sector/nebula_tradeport/medical/public)
+"qOQ" = (
+/obj/structure/cable/pink{
+	icon_state = "4-8"
+	},
+/turf/simulated/wall/prepainted/command,
+/area/shuttle/scoophead/engineering)
 "qPf" = (
 /obj/effect/debris/cleanable/molten_item,
 /turf/simulated/floor/plating,
@@ -25481,14 +25475,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/scoophead/main)
 "qXy" = (
-/obj/structure/cable/pink{
-	icon_state = "4-8"
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
-/obj/structure/cable/pink{
-	icon_state = "2-4";
-	dir = 4
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/scoophead/engineering)
 "qYk" = (
@@ -25512,7 +25499,7 @@
 /obj/structure/bed/pod,
 /obj/item/bedsheet/brown,
 /turf/simulated/floor/carpet/patterened/blue,
-/area/shuttle/scoophead/main2)
+/area/shuttle/scoophead/main)
 "rbV" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -25597,9 +25584,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
-	},
-/obj/structure/cable/pink{
-	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/scoophead/main)
@@ -25809,20 +25793,6 @@
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room7)
-"rYx" = (
-/obj/machinery/door/airlock/command{
-	name = "Captain's Quarters";
-	req_access = list(160);
-	req_one_access = null
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
-	dir = 4
-	},
-/obj/structure/cable/pink{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/scoophead/main2)
 "rYV" = (
 /obj/machinery/light,
 /obj/structure/flora/pottedplant/drooping,
@@ -25916,9 +25886,6 @@
 "svz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
-	},
-/obj/structure/cable/pink{
-	icon_state = "4-8"
 	},
 /turf/simulated/wall/rshull,
 /area/shuttle/scoophead/main)
@@ -26303,7 +26270,7 @@
 /obj/item/storage/single_use/mre/random,
 /obj/item/storage/single_use/mre/random,
 /turf/simulated/floor/carpet/patterened/blue,
-/area/shuttle/scoophead/main2)
+/area/shuttle/scoophead/main)
 "tBI" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/item/storage/box/glasses/meta,
@@ -26516,10 +26483,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 6
 	},
+/obj/machinery/power/apc/hyper/west_mount,
 /obj/structure/cable/pink{
+	icon_state = "0-8";
 	dir = 1
 	},
-/obj/machinery/power/apc/hyper/west_mount,
+/obj/structure/cable/pink{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/scoophead/engineering)
 "umb" = (
@@ -26534,7 +26505,7 @@
 	gps_tag = "SCOOP"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/scoophead/main2)
+/area/shuttle/scoophead/main)
 "umU" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
@@ -26577,7 +26548,7 @@
 	dir = 4
 	},
 /turf/simulated/wall/prepainted/command,
-/area/shuttle/scoophead/main2)
+/area/shuttle/scoophead/main)
 "uuk" = (
 /obj/structure/noticeboard{
 	pixel_y = 29
@@ -26699,7 +26670,7 @@
 "uFC" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/carpet/patterened/red,
-/area/shuttle/scoophead/main2)
+/area/shuttle/scoophead/main)
 "uHN" = (
 /obj/machinery/light{
 	dir = 1
@@ -26827,7 +26798,7 @@
 	pixel_x = 32
 	},
 /turf/simulated/floor/wood,
-/area/shuttle/scoophead/main2)
+/area/shuttle/scoophead/main)
 "vff" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -27123,7 +27094,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/carpet/patterened/red,
-/area/shuttle/scoophead/main2)
+/area/shuttle/scoophead/main)
 "wlu" = (
 /obj/machinery/shipsensors,
 /turf/simulated/floor/plating,
@@ -27175,7 +27146,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/neutral,
-/area/shuttle/scoophead/main2)
+/area/shuttle/scoophead/main)
 "wqt" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4
@@ -27217,7 +27188,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/carpet/patterened/red,
-/area/shuttle/scoophead/main2)
+/area/shuttle/scoophead/main)
 "wvG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/neutral,
@@ -27368,8 +27339,7 @@
 	dir = 8
 	},
 /obj/structure/cable/pink{
-	icon_state = "2-4";
-	dir = 8
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/scoophead/engineering)
@@ -27389,24 +27359,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room7)
-"wSZ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/shuttle/scoophead/main2)
 "wUd" = (
 /obj/structure/bed/padded,
 /obj/machinery/fire_alarm/north_mount,
 /obj/item/bedsheet,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/nebula_tradeport/motel/room5)
-"wWl" = (
-/obj/effect/floor_decal/techfloor,
-/obj/effect/floor_decal/corner/green/border{
-	dir = 1
-	},
-/obj/landmark/spawnpoint/latejoin/outsider,
-/turf/simulated/floor/tiled,
-/area/tradeport/commhall)
 "wWB" = (
 /turf/simulated/wall/r_wall,
 /area/sector/nebula_tradeport/motel/room7)
@@ -27416,9 +27374,6 @@
 	},
 /obj/structure/cable/pink{
 	icon_state = "4-8"
-	},
-/obj/structure/cable/pink{
-	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/scoophead/main)
@@ -27619,13 +27574,13 @@
 	},
 /obj/machinery/computer/shuttle_control/explore/trade/scoophead,
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/scoophead/main2)
+/area/shuttle/scoophead/main)
 "xvE" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/scoophead/main2)
+/area/shuttle/scoophead/main)
 "xwL" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
@@ -37264,7 +37219,7 @@ abr
 nHT
 awO
 aYp
-wWl
+aVm
 aoN
 apv
 aWO
@@ -37458,7 +37413,7 @@ abr
 awu
 aCZ
 akM
-itp
+aWb
 aoN
 apv
 aeh
@@ -37843,7 +37798,7 @@ cXs
 cXs
 cWD
 aFw
-aCP
+hZh
 awO
 aYp
 aMJ
@@ -54454,13 +54409,13 @@ aDh
 aDh
 acd
 aDh
-wSZ
-wSZ
-wSZ
-bqy
-bqy
-bqy
-bqy
+gsa
+gsa
+gsa
+kJj
+kJj
+kJj
+kJj
 aDh
 aDh
 awV
@@ -54647,15 +54602,15 @@ aDh
 aDh
 aDh
 acd
-wSZ
-wSZ
+gsa
+gsa
 btq
 umb
-mLx
+yfg
 wqg
 jbA
-bqy
-bqy
+kJj
+kJj
 aDh
 aDh
 awV
@@ -54841,11 +54796,11 @@ aDh
 aDh
 aDh
 acd
-wSZ
+gsa
 xuJ
 xvE
 fES
-mLx
+yfg
 rai
 luK
 eDY
@@ -55035,7 +54990,7 @@ aDh
 aDh
 aDh
 aDh
-wSZ
+gsa
 dFp
 jPy
 nhC
@@ -55229,15 +55184,15 @@ aDh
 aDh
 aDh
 aDh
-bqy
-bqy
-mLx
-rYx
-mLx
+kJj
+kJj
+yfg
+hIZ
+yfg
 utC
-mLx
+yfg
 jpc
-wSZ
+gsa
 aDh
 aDh
 awV
@@ -57175,7 +57130,7 @@ wWV
 rqL
 lsj
 lsj
-dPi
+lEv
 qXs
 ski
 aDh
@@ -57752,7 +57707,7 @@ aDh
 aDh
 aDh
 qhX
-mNP
+qOQ
 nQY
 mNP
 mNP
