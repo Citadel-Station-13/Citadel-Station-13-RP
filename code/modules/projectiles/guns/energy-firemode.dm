@@ -8,7 +8,14 @@
 
 	//* Projectile Formation *//
 	/// projectile type
+	/// * This can be either a type, or an anonymous type
 	var/projectile_type
+	/// projectile instance
+	/// * overrides [projectile_type]
+	/// * if set, causes the gun to clone this projectile on fire
+	/// * this is considered a shared reference if set! this means cloned firemodes share the same projectile instance
+	#warn hook
+	var/projectile_instance
 
 // todo: this shouldn't even exist.
 /datum/firemode/energy/New(obj/item/gun/inherit_from_gun, list/direct_varedits)
@@ -28,4 +35,5 @@
 	var/datum/firemode/energy/cloning = ..()
 	cloning.charge_cost = charge_cost
 	cloning.projectile_type = projectile_type
+	cloning.projectile_instance = projectile_instance
 	return cloning
