@@ -207,7 +207,7 @@
 	icon_state = "stun"
 	fire_sound = 'sound/weapons/Taser.ogg'
 	nodamage = TRUE
-	damage_force =  = 0
+	damage_force = 0
 	light_color = "#FFFFFF"
 	impact_sounds = null
 
