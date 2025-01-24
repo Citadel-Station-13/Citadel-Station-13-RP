@@ -5,6 +5,18 @@
 	icon = 'icons/obj/module.dmi'
 	icon_state = "cyborg_upgrade"
 
+	//* Actions *//
+	/// actions to give the owner of this upgrade
+	///
+	/// valid starting values include:
+	/// * list of actions / typepaths
+	/// * single action / typepath
+	var/list/datum/action/upgrade_actions
+	/// set to a string to initialize upgrade_actions with a generic action of this name
+	var/upgrade_action_name
+	/// description for upgrade action; defaults to [desc]
+	var/upgrade_action_desc
+
 	/// Who we're installed in.
 	var/mob/living/silicon/robot/owner
 	/// Items provided
@@ -81,6 +93,8 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 
+	grant_upgrade_actions(target)
+
 /**
  * Called on uninstall.
  *
@@ -89,3 +103,38 @@
 /obj/item/robot_upgrade/proc/on_uninstall(mob/living/silicon/robot/target)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
+
+	revoke_upgrade_actions(target)
+
+//* Actions *//
+
+/obj/item/robot_upgrade/proc/ensure_upgrade_actions_loaded()
+	if(islist(upgrade_actions))
+		for(var/i in 1 to length(upgrade_actions))
+			var/key = upgrade_actions[i]
+			if(ispath(key, /datum/action))
+				upgrade_actions[i] = key = new key(src)
+	else if(ispath(upgrade_actions, /datum/action))
+		upgrade_actions = new upgrade_actions
+	else if(istype(upgrade_actions, /datum/action))
+	else if(upgrade_action_name)
+		var/datum/action/upgrade_action/creating = new(src)
+		upgrade_actions = creating
+		creating.name = upgrade_action_name
+		creating.desc = upgrade_action_desc || desc
+
+/obj/item/robot_upgrade/proc/grant_upgrade_actions(mob/target)
+	if(islist(upgrade_actions))
+		for(var/datum/action/action in upgrade_actions)
+			action.grant(target.actions_innate)
+	else if(istype(upgrade_actions, /datum/action))
+		var/datum/action/action = upgrade_actions
+		action.grant(target.actions_innate)
+
+/obj/item/robot_upgrade/proc/revoke_upgrade_actions(mob/target)
+	if(islist(upgrade_actions))
+		for(var/datum/action/action in upgrade_actions)
+			action.revoke(target.actions_innate)
+	else if(istype(upgrade_actions, /datum/action))
+		var/datum/action/action = upgrade_actions
+		action.revoke(target.actions_innate)

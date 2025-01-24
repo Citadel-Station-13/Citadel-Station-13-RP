@@ -82,11 +82,9 @@ var/global/list/drone_matrices = list()
 		if(MTX_UPG_HEALTH)
 			D.maxHealth += 15
 		if(MTX_UPG_MOP)
-			D.module.modules -= locate(/obj/item/mop) in D.module.modules
-			D.module.modules += new/obj/item/mop/advanced(D.module)
+			D.inventory.robot_module_register(new /obj/item/mop/advanced)
 		if(MTX_UPG_T)
-			D.module.modules -= locate(/obj/item/t_scanner) in D.module.modules
-			D.module.modules += new/obj/item/t_scanner/upgraded(D.module)
+			D.inventory.robot_module_register(new /obj/item/t_scanner/upgraded)
 	LAZYADD(D.matrix_upgrades, upgrade_type)
 
 /proc/assign_drone_to_matrix(mob/living/silicon/robot/drone/D, var/matrix_tag)

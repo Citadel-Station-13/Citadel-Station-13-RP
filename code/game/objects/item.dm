@@ -446,8 +446,10 @@
 	attempt_pickup(usr)
 
 /**
- *This proc is executed when someone clicks the on-screen UI button.
- *The default action is attack_self().
+ * This proc is executed when someone clicks the on-screen UI button.
+ * The default action is attack_self().
+ *
+ * @return TRUE if handled
  */
 /obj/item/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	attack_self(usr)

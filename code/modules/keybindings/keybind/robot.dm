@@ -54,5 +54,5 @@
 
 /datum/keybinding/robot/unequip_module/down(client/user)
 	var/mob/living/silicon/robot/R = user.mob
-	R.uneq_active()
+	R.drop_active_held_item()
 	return TRUE
