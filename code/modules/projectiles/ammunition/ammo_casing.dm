@@ -35,6 +35,11 @@
 	/// stored projectile - either null for un-init'd, FALSE for empty, or an instance
 	VAR_PROTECTED/obj/projectile/stored
 
+	//* Projectile Effects *//
+	/// passed to bullet in fire()
+	#warn hook
+	var/list/add_projectile_effects
+
 	//* Icon *//
 	/// switch to "[initial(state)]-spent" after expenditure
 	var/icon_spent = TRUE

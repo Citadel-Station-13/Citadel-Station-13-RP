@@ -33,6 +33,11 @@
 	/// this must be created in [make_radial_appearance()] as this cannot be set to image() or similar at compile time
 	var/radial_appearance
 
+	//* Projectile Effects *//
+	/// passed to bullet in fire()
+	#warn hook
+	var/list/add_projectile_effects
+
 	//* LEGACY *//
 	/// direct vv edits to the gun applied when we're selected.
 	///
