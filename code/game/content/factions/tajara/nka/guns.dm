@@ -71,7 +71,7 @@ as their noble knights can't be knightly unless their weapons are ornate enough.
 	name = "Adhomai dueling laser"
 	desc = "The New Kingdom of Adhomai's was resistant to the adoption of energy weapons until an enterprising Tajara technician presented the crown prince with a ornate \
 	laser pistol built in the style of old flintlock dueling pistols. As planned laser mania instantly took over NKA high society and laser pistols such as these became \
-	a must have item for even the most traditional noble. Increasingly these pistols are finding their way to the frontier as their style is increasingly appreciated outside \
+	a must have item for even the most traditional noble. Increasingly these pistols are finding their way to the frontier as their style brings in customers outside \
 	of Adhomai."
 	icon = 'icons/content/factions/tajara/items/guns/taj_duelinglaser.dmi'
 	inhand_icon = 'icons/content/factions/tajara/items/guns/taj_duelinglaser.dmi'
