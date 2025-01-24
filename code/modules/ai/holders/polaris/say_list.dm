@@ -211,17 +211,17 @@
 	say_understood = list("Yes sirrr my liege!", "At once sirrre!")
 	say_cannot = list("I cannot my lorrrd!")
 	say_got_target = list("Messa will take you!")
-	say_threaten = list("Cease Trrrespasserrr!", "You trrread on prrrivate prrropurrty!")
+	say_threaten = list("Begone Trrrespasserrr!", "You trrread on prrivate prropurrty!")
 	say_stand_down = list("S'rrrendarrr good.")
-	say_escalate = list("You'll make a fine rrrug!", "For Adhomai!")
+	say_escalate = list("You'll make a fine rrrug!", "Forr Adhomai!")
 
 /datum/say_list/tajara/pra
 	say_understood = list("Aye Comrrrade!", "Togetherrr!")
 	say_cannot = list("I cannot sirrr!")
 	say_got_target = list("We will be liberrated!")
-	say_threaten = list("You some corrporrrate pig?!", "This land belong to the people!")
+	say_threaten = list("You some corrporrrate pig?!", "This land belongs to the people!")
 	say_stand_down = list("Grreat.")
-	say_escalate = list("Die corrporrate dog!", "For Adhomai!")
+	say_escalate = list("Die corrporrate dog!", "Forr Adhomai!")
 
 /datum/say_list/tajara/dra
 	say_understood = list("Yeah got it...", "Affirrrmative!")
@@ -229,4 +229,4 @@
 	say_got_target = list("Welcome to the snowfields!")
 	say_threaten = list("You think you can stop us?!", "This is a frree terrrritorry! Scrram!")
 	say_stand_down = list("Grrreat now we gotta move camp.")
-	say_escalate = list("You'll neverrr stop us all!", "For Adhomai!")
+	say_escalate = list("You'll neverrr stop us all!", "Forr Adhomai!")
