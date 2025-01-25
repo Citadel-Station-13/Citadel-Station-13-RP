@@ -335,7 +335,7 @@ class DmiTransformPipeline:
         self.dmi = dmi
         self.path = path
 
-    def greyscale_all_states(self):
+    def greyscale_all_states(self) -> DmiTransformPipeline:
         # todo: customizable lum's
         LUM_R = 0.213
         LUM_G = 0.715
@@ -344,7 +344,9 @@ class DmiTransformPipeline:
         for state in self.dmi.states:
             DmiTransformPipeline._greyscale_state(state)
 
-    def greyscale_state(self, name: str):
+        return self
+
+    def greyscale_state(self, name: str) -> DmiTransformPipeline:
         # todo: customizable lum's
         LUM_R = 0.213
         LUM_G = 0.715
@@ -360,9 +362,10 @@ class DmiTransformPipeline:
 
         DmiTransformPipeline._greyscale_state(found)
 
-    def _greyscale_state(state: State):
-        state.frames = [PIL.ImageOps.grayscale(f) for f in state.frames]
+        return self
 
+    def _greyscale_state(self, state: State):
+        state.frames = [PIL.ImageOps.grayscale(f) for f in state.frames]
 
     def commit(self):
         if self.commited:
