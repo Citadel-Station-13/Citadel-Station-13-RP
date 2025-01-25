@@ -364,7 +364,7 @@ class DmiTransformPipeline:
 
         return self
 
-    def _greyscale_state(self, state: State):
+    def _greyscale_state(state: State):
         state.frames = [PIL.ImageOps.grayscale(f) for f in state.frames]
 
     def commit(self):
