@@ -3,13 +3,16 @@ from PIL.PngImagePlugin import PngInfo
 
 import math
 
-from .constants import *
-from .dirs import *
-from .helpers import *
-from .state import *
+from .dmi_constants import *
+from .dmi_helpers import *
+from .dmi_state import *
 
 class Dmi:
     version = "4.0"
+
+    width: int
+    height: int
+    states: list[State]
 
     def __init__(self, width, height):
         self.width = width
@@ -35,7 +38,7 @@ class Dmi:
         assert next(line_iter) == "# BEGIN DMI"
         assert next(line_iter) == f"version = {cls.version}"
 
-        dmi = Dmi(*DMI_DEFAULT_SIZE)
+        dmi = Dmi(*DEFAULT_SIZE)
         state = None
 
         for line in line_iter:

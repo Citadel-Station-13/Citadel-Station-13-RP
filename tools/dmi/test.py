@@ -1,7 +1,7 @@
 import os
 import sys
-from dmi import *
 
+from tools.dmi.dmi import *
 
 def _self_test():
     # test: can we load every DMI in the tree
@@ -13,7 +13,7 @@ def _self_test():
             if filename.endswith('.dmi'):
                 fullpath = os.path.join(dirpath, filename)
                 try:
-                    codec.Dmi.from_file(fullpath)
+                    Dmi.from_file(fullpath)
                 except Exception:
                     print('Failed on:', fullpath)
                     raise

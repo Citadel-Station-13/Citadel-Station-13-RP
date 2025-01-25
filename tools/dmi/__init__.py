@@ -1,6 +1,9 @@
 # Tools for working with modern DreamMaker icon files (PNGs + metadata)
 
-from .codec import dmi
+from .dmi import *
 
-def load_dmi(path):
-    return dmi.Dmi.from_file(path)
+def transform(path):
+    loaded: Dmi
+
+    # todo: trycatch
+    loaded = Dmi.from_file(path)

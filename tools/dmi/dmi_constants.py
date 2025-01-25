@@ -24,3 +24,8 @@ DIR_NAMES = {
     '0': SOUTH,
     None: SOUTH,
 }
+
+DEFAULT_SIZE = 32, 32
+
+LOOP_UNLIMITED = 0
+LOOP_ONCE = 1

@@ -1,8 +1,21 @@
-from .constants import *
-from .dirs import *
+from PIL import Image
+
+from .dmi_constants import *
+from .dmi_helpers import *
+from .dmi import *
 
 class State:
-    def __init__(self, dmi, name, *, loop=DMI_ANIM_LOOP_UNLIMITED, rewind=False, movement=False, dirs=1):
+    dmi: Dmi
+    name: str
+    loop: int
+    rewind: bool
+    movement: bool
+    dirs: int
+    frames: list[Image.Image]
+    delays: list[int]
+    hotspots: list[(int, int)]
+
+    def __init__(self, dmi, name, *, loop=LOOP_ONCE, rewind=False, movement=False, dirs=1):
         self.dmi = dmi
         self.name = name
         self.loop = loop
