@@ -363,11 +363,16 @@ class DmiTransformPipeline:
     def _greyscale_state(state: State):
         state.frames = [DmiTransformPipeline._greyscale_image(f) for f in state.frames]
 
+    '''
+    Greyscales an image. This is not in-place.
+    '''
     def _greyscale_image(image: Image.Image) -> Image.Image:
         # todo: customizable lum's
         LUM_R = 0.213
         LUM_G = 0.715
         LUM_B = 0.072
+
+        image = image.copy()
 
         for x in range(image.width):
             for y in range(image.height):
@@ -378,6 +383,8 @@ class DmiTransformPipeline:
                     int(b * LUM_B),
                     a,
                 ))
+
+        return image
 
     def commit(self):
         if self.committed:
