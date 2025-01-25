@@ -139,3 +139,12 @@
 
 /mob/living/simple_mob/holosphere_shell/render_strip_menu(mob/user)
 	return hologram.render_strip_menu(arglist(args))
+
+/mob/living/simple_mob/holosphere_shell/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+	var/mob/living/L = user
+	if(!istype(L))
+		return
+	if(L.a_intent == INTENT_HELP)
+		get_scooped(L)
+	else
+		..()
