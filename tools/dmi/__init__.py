@@ -368,6 +368,6 @@ class DmiTransformPipeline:
         state.frames = [PIL.ImageOps.grayscale(f) for f in state.frames]
 
     def commit(self):
-        if self.commited:
+        if self.committed:
             raise Exception("dmi pipeline already committed.")
         self.dmi.to_file(self.path)
