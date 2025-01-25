@@ -13,7 +13,7 @@ def _self_test():
             if filename.endswith('.dmi'):
                 fullpath = os.path.join(dirpath, filename)
                 try:
-                    Dmi.from_file(fullpath)
+                    codec.Dmi.from_file(fullpath)
                 except Exception:
                     print('Failed on:', fullpath)
                     raise

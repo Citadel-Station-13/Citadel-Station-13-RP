@@ -141,6 +141,13 @@
 /obj/projectile/proc/render_hitscan_tracers(duration = tracer_duration)
 	// don't stay too long
 	ASSERT(duration >= 0 && duration <= 10 SECONDS)
+
+	if(tracer_icon)
+		#warn use new rendering system
+		return
+
+	//! legacy below !//
+
 	// check everything
 	if(!has_tracer || !duration || !length(tracer_vertices))
 		return
