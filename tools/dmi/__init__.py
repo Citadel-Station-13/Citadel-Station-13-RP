@@ -342,7 +342,7 @@ class DmiTransformPipeline:
         LUM_B = 0.072
 
         for state in self.dmi.states:
-            self._greyscale_state(state)
+            DmiTransformPipeline._greyscale_state(state)
 
     def greyscale_state(self, name: str):
         # todo: customizable lum's
@@ -358,7 +358,7 @@ class DmiTransformPipeline:
         if not found:
             raise Exception("cannot find state with name {}".format(name))
 
-        self._greyscale_state(found)
+        DmiTransformPipeline._greyscale_state(found)
 
     def _greyscale_state(state: State):
         state.frames = [PIL.ImageOps.grayscale(f) for f in state.frames]
