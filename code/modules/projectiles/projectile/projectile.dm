@@ -593,33 +593,15 @@
 /**
  * todo: annihilate this
  */
-/obj/projectile/proc/launch_projectile_common(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
+/obj/projectile/proc/launch_projectile_legacy(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
+	var/direct_target
+	if(get_turf(target) == get_turf(src))
+		direct_target = target
+
+	preparePixelProjectile(target, user? user : get_turf(src), params, forced_spread)
 	original_target = target
 	def_zone = check_zone(target_zone)
 	firer = user
-
-/**
- * todo: annihilate this
- */
-/obj/projectile/proc/launch_projectile(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
-	var/direct_target
-	if(get_turf(target) == get_turf(src))
-		direct_target = target
-
-	preparePixelProjectile(target, user? user : get_turf(src), params, forced_spread)
-	launch_projectile_common(target, target_zone, user, params, angle_override, forced_spread)
-	return fire(angle_override, direct_target)
-
-/**
- * todo: annihilate this
- */
-/obj/projectile/proc/launch_projectile_from_turf(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
-	var/direct_target
-	if(get_turf(target) == get_turf(src))
-		direct_target = target
-
-	preparePixelProjectile(target, user? user : get_turf(src), params, forced_spread)
-	launch_projectile_common(target, target_zone, user, params, angle_override, forced_spread)
 	return fire(angle_override, direct_target)
 
 /**

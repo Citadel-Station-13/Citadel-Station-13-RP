@@ -79,8 +79,6 @@
 
 	effective_angle += rand(-effective_dispersion, effective_dispersion)
 
-	#warn launching's launch_projectile_common
-
 	launching.add_projectile_effects(cycle.firemode.add_projectile_effects)
 	launching.fire(effective_angle, get_turf(cycle.original_target) == get_turf(src) ? cycle.original_target : null)
 

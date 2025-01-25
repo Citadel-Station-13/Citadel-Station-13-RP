@@ -141,7 +141,7 @@
 	P.accuracy_overall_modify *= 1 + calculate_accuracy() / 100
 	P.dispersion += calculate_dispersion()
 
-	P.launch_projectile(target = A, target_zone = null, user = src, params = null, angle_override = null, forced_spread = 0)
+	P.launch_projectile_legacy(target = A, target_zone = null, user = src, params = null, angle_override = null, forced_spread = 0)
 	if(needs_reload)
 		reload_count++
 
