@@ -245,17 +245,6 @@
 		var/mob/M = src.loc
 		M.update_inv_back()
 
-/obj/item/storage/backpack/chameleon/holosphere
-	name = "holographic backpack"
-	desc = "A holographic backpack."
-	origin_tech = list()
-
-/obj/item/storage/backpack/chameleon/holosphere/can_unequip(mob/M, slot, mob/user, flags)
-	return FALSE
-
-/obj/item/storage/backpack/chameleon/holosphere/emp_act(severity)
-	return ..()
-
 //********************
 //**Chameleon Gloves**
 //********************

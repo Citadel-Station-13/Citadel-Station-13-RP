@@ -91,7 +91,6 @@
 		SLOT_ID_SUIT    = /obj/item/clothing/suit/chameleon/holosphere,
 		SLOT_ID_HEAD    = /obj/item/clothing/head/chameleon/holosphere,
 		SLOT_ID_SHOES   = /obj/item/clothing/shoes/chameleon/holosphere,
-		SLOT_ID_BACK    = /obj/item/storage/backpack/chameleon/holosphere,
 		SLOT_ID_GLOVES  = /obj/item/clothing/gloves/chameleon/holosphere,
 		SLOT_ID_MASK    = /obj/item/clothing/mask/chameleon/holosphere,
 		SLOT_ID_GLASSES = /obj/item/clothing/glasses/chameleon/holosphere,
