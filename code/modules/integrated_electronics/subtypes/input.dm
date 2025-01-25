@@ -380,7 +380,7 @@
 	power_draw_per_use = 30
 	var/radius = 1
 
-/obj/item/integrated_circuit/input/advanced_locator/on_data_written()
+/obj/item/integrated_circuit/input/view_filter/on_data_written()
 	var/rad = get_pin_data(IC_INPUT, 2)
 	if(isnum(rad))
 		rad = clamp(rad, 0, 8)
