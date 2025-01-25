@@ -373,9 +373,9 @@ class DmiTransformPipeline:
             for y in range(image.height):
                 (r, g, b, a) = image.getpixel((x, y))
                 image.putpixel((x, y), (
-                    r * LUM_R,
-                    g * LUM_G,
-                    b * LUM_B,
+                    int(r * LUM_R),
+                    int(g * LUM_G),
+                    int(b * LUM_B),
                     a,
                 ))
 
