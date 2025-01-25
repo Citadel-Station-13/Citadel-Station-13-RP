@@ -126,7 +126,13 @@
 			add_attack_logs(user, src, "Removed [ours] from slot [slot_id]")
 			user.put_in_hands_or_drop(ours)
 		else
-			add_attack_logs(user, src, "Failed to remove [ours] from slot [slot_id]")
+			if(slot_id == SLOT_ID_BACK && istype(ours, /obj/item/storage/backpack))
+				var/obj/item/storage/backpack/B = ours
+				for(var/atom/movable/AM in B.contents) //Dump whatever's in the bag before deleting.
+					AM.forceMove(src.loc)
+				add_attack_logs(user, src, "Emptying [ours] from slot [slot_id] onto floor")
+			else
+				add_attack_logs(user, src, "Failed to remove [ours] from slot [slot_id]")
 	else
 		if(equip_to_slot_if_possible(theirs, slot_id))
 			add_attack_logs(user, src, "Put [theirs] in slot [slot_id]")
