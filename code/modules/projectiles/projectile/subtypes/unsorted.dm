@@ -186,7 +186,7 @@
 	embed_chance = 0 // nope
 	nodamage = 1
 	damage_type = DAMAGE_TYPE_HALLOSS
-	muzzle_type = /obj/effect/projectile/muzzle/bullet
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/bullet
 
 /obj/projectile/bola
 	name = "bola"
@@ -194,7 +194,7 @@
 	damage_force = 5
 	embed_chance = 0 //Nada.
 	damage_type = DAMAGE_TYPE_HALLOSS
-	muzzle_type = null
+	legacy_muzzle_type = null
 
 	combustion = FALSE
 
@@ -215,7 +215,7 @@
 	damage_force = 10
 	embed_chance = 0 //Nada.
 	damage_type = DAMAGE_TYPE_BRUTE
-	muzzle_type = null
+	legacy_muzzle_type = null
 
 	combustion = FALSE
 
@@ -242,9 +242,9 @@
 	light_power = 3
 	light_color = "#3300ff"
 
-	muzzle_type = /obj/effect/projectile/tungsten/muzzle
-	tracer_type = /obj/effect/projectile/tungsten/tracer
-	impact_type = /obj/effect/projectile/tungsten/impact
+	legacy_muzzle_type = /obj/effect/projectile/tungsten/muzzle
+	legacy_tracer_type = /obj/effect/projectile/tungsten/tracer
+	legacy_impact_type = /obj/effect/projectile/tungsten/impact
 
 /obj/projectile/beam/tungsten/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()

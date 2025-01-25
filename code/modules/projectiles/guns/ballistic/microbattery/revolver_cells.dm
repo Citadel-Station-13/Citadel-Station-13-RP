@@ -90,9 +90,9 @@
 	damage_type = DAMAGE_TYPE_HALLOSS
 	light_color = "#00CC33"
 
-	muzzle_type = /obj/effect/projectile/muzzle/laser_omni
-	tracer_type = /obj/effect/projectile/tracer/laser_omni
-	impact_type = /obj/effect/projectile/impact/laser_omni
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/laser_omni
+	legacy_tracer_type = /obj/effect/projectile/tracer/laser_omni
+	legacy_impact_type = /obj/effect/projectile/impact/laser_omni
 
 /obj/projectile/beam/final_option/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()

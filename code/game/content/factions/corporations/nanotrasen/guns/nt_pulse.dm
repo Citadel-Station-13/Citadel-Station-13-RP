@@ -10,7 +10,7 @@
  */
 /obj/item/gun/energy/nt_pulse
 	abstract_type = /obj/item/gun/energy/nt_pulse
-	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/pulse.dmi'
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/nt_pulse.dmi'
 	description_fluff = {"
 		A breakthrough weapon from Nanotrasen's Research Division, pulse weapons utilize rare crystals in its generation array,
 		allowing for a more laminar and cohesive beam than prior thought possible. Closely guarded designs to this day,
@@ -117,18 +117,19 @@
 
 //* Projectiles *//
 
+// todo: nt_pulse?
 /obj/projectile/beam/pulse
 	name = "pulse"
-	icon_state = "u_laser"
 	fire_sound = 'sound/weapons/gauss_shoot.ogg'
 	damage_force = 60
 	damage_tier = LASER_TIER_EXTREME
 	armor_penetration = 75
 	light_color = "#0066FF"
 
-	muzzle_type = /obj/effect/projectile/muzzle/laser_pulse
-	tracer_type = /obj/effect/projectile/tracer/laser_pulse
-	impact_type = /obj/effect/projectile/impact/laser_pulse
+	tracer_icon = 'icons/content/factions/corporations/nanotrasen/items/guns/nt_pulse-projectile.dmi'
+	tracer_state_muzzle = "pulse-muzzle"
+	tracer_state_impact = "pulse-impact"
+	tracer_state_beam = "pulse-beam"
 
 // todo: this shouldn't be here i think
 /obj/projectile/beam/pulse/shotgun

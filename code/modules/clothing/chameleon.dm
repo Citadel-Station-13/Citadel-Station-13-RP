@@ -390,9 +390,9 @@
 		P.fire_sound = initial(copy_projectile.fire_sound)
 		P.hitscan = initial(copy_projectile.hitscan)
 		P.speed = initial(copy_projectile.speed)
-		P.muzzle_type = initial(copy_projectile.muzzle_type)
-		P.tracer_type = initial(copy_projectile.tracer_type)
-		P.impact_type = initial(copy_projectile.impact_type)
+		P.legacy_muzzle_type = initial(copy_projectile.legacy_muzzle_type)
+		P.legacy_tracer_type = initial(copy_projectile.legacy_tracer_type)
+		P.legacy_impact_type = initial(copy_projectile.legacy_impact_type)
 	return P
 
 /obj/item/gun/energy/chameleon/emp_act(severity)

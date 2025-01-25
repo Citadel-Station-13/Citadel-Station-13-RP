@@ -81,9 +81,9 @@
 	agony = 4
 	nodamage = TRUE
 
-	muzzle_type = /obj/effect/projectile/muzzle/laser_omni
-	tracer_type = /obj/effect/projectile/tracer/laser_omni
-	impact_type = /obj/effect/projectile/impact/laser_omni
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/laser_omni
+	legacy_tracer_type = /obj/effect/projectile/tracer/laser_omni
+	legacy_impact_type = /obj/effect/projectile/impact/laser_omni
 
 /obj/projectile/beam/stun/xeno/weak //Weaker variant for non-research equipment, turrets, or rapid fire types.
 	agony = 3

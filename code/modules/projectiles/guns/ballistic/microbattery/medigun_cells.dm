@@ -16,9 +16,9 @@
 
 	combustion = FALSE
 
-	muzzle_type = /obj/effect/projectile/muzzle/medigun
-	tracer_type = /obj/effect/projectile/tracer/medigun
-	impact_type = /obj/effect/projectile/impact/medigun
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/medigun
+	legacy_tracer_type = /obj/effect/projectile/tracer/medigun
+	legacy_impact_type = /obj/effect/projectile/impact/medigun
 
 /obj/projectile/beam/medical_cell/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()

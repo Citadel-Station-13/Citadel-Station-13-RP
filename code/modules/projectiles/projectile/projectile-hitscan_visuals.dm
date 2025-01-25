@@ -147,39 +147,39 @@
 	var/list/atom/movable/beam_components = list()
 
 	// muzzle
-	if(muzzle_type && tracer_muzzle_flash)
+	if(legacy_muzzle_type && tracer_muzzle_flash)
 		var/datum/point/starting = tracer_vertices[1]
-		var/atom/movable/muzzle_effect = starting.instantiate_movable_with_unmanaged_offsets(muzzle_type)
+		var/atom/movable/muzzle_effect = starting.instantiate_movable_with_unmanaged_offsets(legacy_muzzle_type)
 		if(muzzle_effect)
 			// turn it
 			var/matrix/muzzle_transform = matrix()
 			muzzle_transform.Turn(original_angle)
 			muzzle_effect.transform = muzzle_transform
 			muzzle_effect.color = color
-			muzzle_effect.set_light(muzzle_flash_range, muzzle_flash_intensity, muzzle_flash_color_override? muzzle_flash_color_override : color)
+			muzzle_effect.set_light(legacy_muzzle_flash_range, legacy_muzzle_flash_intensity, legacy_muzzle_flash_color_override? legacy_muzzle_flash_color_override : color)
 			// add to list
 			beam_components += muzzle_effect
 	// impact
-	if(impact_type && tracer_impact_effect)
+	if(legacy_impact_type && tracer_impact_effect)
 		var/datum/point/starting = tracer_vertices[length(tracer_vertices)]
-		var/atom/movable/impact_effect = starting.instantiate_movable_with_unmanaged_offsets(impact_type)
+		var/atom/movable/impact_effect = starting.instantiate_movable_with_unmanaged_offsets(legacy_impact_type)
 		if(impact_effect)
 			// turn it
 			var/matrix/impact_transform = matrix()
 			impact_transform.Turn(angle)
 			impact_effect.transform = impact_transform
 			impact_effect.color = color
-			impact_effect.set_light(impact_light_range, impact_light_intensity, impact_light_color_override? impact_light_color_override : color)
+			impact_effect.set_light(legacy_impact_light_range, legacy_impact_light_intensity, legacy_impact_light_color_override? legacy_impact_light_color_override : color)
 			// add to list
 			beam_components += impact_effect
 	// path tracers
-	if(tracer_type)
+	if(legacy_tracer_type)
 		var/tempref = "\ref[src]"
 		for(var/i in 1 to length(tracer_vertices) - 1)
 			var/j = i + 1
 			var/datum/point/first_point = tracer_vertices[i]
 			var/datum/point/second_point = tracer_vertices[j]
-			generate_tracer_between_points(first_point, second_point, beam_components, tracer_type, color, duration, hitscan_light_range, hitscan_light_color_override, hitscan_light_intensity, tempref)
+			generate_tracer_between_points(first_point, second_point, beam_components, legacy_tracer_type, color, duration, legacy_hitscan_light_range, legacy_hitscan_light_color_override, legacy_hitscan_light_intensity, tempref)
 
 	QDEL_LIST_IN(beam_components, duration)
 

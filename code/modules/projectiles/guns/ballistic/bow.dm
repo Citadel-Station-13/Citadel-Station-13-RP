@@ -49,7 +49,6 @@
 		src.ready = 1
 		to_chat(user, "<span class='notice'>You draw back the bowstring.</span>")
 		playsound(src, 'sound/weapons/bowdraw.wav', 75, 0) //gets way too high pitched if the freq varies
-		consume_next_projectile()
 		update_icon()
 	else
 		return

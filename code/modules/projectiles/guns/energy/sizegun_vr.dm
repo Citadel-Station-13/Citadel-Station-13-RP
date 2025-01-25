@@ -69,9 +69,9 @@
 	damage_flag = ARMOR_LASER
 	var/set_size = 1 //Let's default to 100%
 
-	muzzle_type = /obj/effect/projectile/muzzle/xray
-	tracer_type = /obj/effect/projectile/tracer/xray
-	impact_type = /obj/effect/projectile/impact/xray
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/xray
+	legacy_tracer_type = /obj/effect/projectile/tracer/xray
+	legacy_impact_type = /obj/effect/projectile/impact/xray
 
 /obj/projectile/beam/sizelaser/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()

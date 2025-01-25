@@ -197,11 +197,17 @@
 
 /obj/projectile/nt_isd
 	abstract_type = /obj/projectile/nt_isd
+	icon = 'icons/modules/projectiles/projectile.dmi'
+	tracer_icon = 'icons/modules/projectiles/projectile-tracer.dmi'
 
 /obj/projectile/nt_isd/laser
 	abstract_type = /obj/projectile/nt_isd/laser
 	damage_type = DAMAGE_TYPE_BURN
 	hitscan = TRUE
+	color = "#cc0000"
+	tracer_state_muzzle = "laser-1-muzzle"
+	tracer_state_beam = "laser-1-beam"
+	tracer_state_impact = "laser-1-beam"
 
 /obj/projectile/nt_isd/laser/rifle
 	name = "laser"
@@ -224,16 +230,18 @@
 
 /obj/projectile/nt_isd/laser/lance
 	name = "particle beam"
+	color = "#00cc00"
 	damage_force = 30
 	damage_tier = LASER_TIER_HIGH
 	// todo: remove
 	armor_penetration = 50
 
-#warn sprites for above
-
 /obj/projectile/nt_isd/shock
 	name = "energy beam"
-	#warn sprite
+	color = "#cccc00"
+	tracer_state_muzzle = "discharge-1-muzzle"
+	tracer_state_beam = "discharge-1-beam"
+	tracer_state_impact = "discharge-1-beam"
 	hitscan = TRUE
 	base_projectile_effects = list(
 		/datum/projectile_effect/electrical_impulse{
@@ -246,7 +254,8 @@
 
 /obj/projectile/nt_isd/electrode
 	name = "stun bolt"
-	#warn sprite
+	color = "#cccc00"
+	icon_state = "discharge-1"
 	base_projectile_effects = list(
 		/datum/projectile_effect/electrical_probe{
 			status_effect_path = /datum/status_effect/taser_stun/nt_isd;
@@ -256,14 +265,17 @@
 
 /obj/projectile/nt_isd/disable
 	name = "disabler beam"
-	#warn sprite
+	color = "#00cccc"
+	tracer_state_muzzle = "laser-1-muzzle"
+	tracer_state_beam = "laser-1-beam"
+	tracer_state_impact = "impact-1-beam"
 	hitscan = TRUE
 	agony = 25
 
 // todo: this shouldn't be an emp, this should be like synthetik's
 /obj/projectile/nt_isd/ion
 	name = "ion beam"
-	#warn sprite
+	icon_state = "particle-1"
 	base_projectile_effects = list(
 		/datum/projectile_effect/detonation/legacy_emp{
 			sev_2 = 1;

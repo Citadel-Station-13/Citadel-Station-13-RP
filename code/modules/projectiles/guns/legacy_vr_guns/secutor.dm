@@ -65,9 +65,9 @@
 	light_range = 2
 	light_power = 0.6
 	light_color = "#BF2F4B"
-	muzzle_type = /obj/effect/projectile/muzzle/secutorkill
-	tracer_type = /obj/effect/projectile/tracer/secutorkill
-	impact_type = /obj/effect/projectile/impact/secutorkill
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/secutorkill
+	legacy_tracer_type = /obj/effect/projectile/tracer/secutorkill
+	legacy_impact_type = /obj/effect/projectile/impact/secutorkill
 	damage_force = 20
 
 //--------------- Projectiles ----------------

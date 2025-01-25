@@ -82,9 +82,9 @@
 	damage_type = DAMAGE_TYPE_HALLOSS
 	light_color = "#8837A3"
 
-	muzzle_type = /obj/effect/projectile/muzzle/darkmatterstun
-	tracer_type = /obj/effect/projectile/tracer/darkmatterstun
-	impact_type = /obj/effect/projectile/impact/darkmatterstun
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/darkmatterstun
+	legacy_tracer_type = /obj/effect/projectile/tracer/darkmatterstun
+	legacy_impact_type = /obj/effect/projectile/impact/darkmatterstun
 
 /obj/projectile/beam/darkmatter
 	name = "dark matter bolt"
@@ -98,9 +98,9 @@
 
 	embed_chance = 0
 
-	muzzle_type = /obj/effect/projectile/muzzle/darkmatter
-	tracer_type = /obj/effect/projectile/tracer/darkmatter
-	impact_type = /obj/effect/projectile/impact/darkmatter
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/darkmatter
+	legacy_tracer_type = /obj/effect/projectile/tracer/darkmatter
+	legacy_impact_type = /obj/effect/projectile/impact/darkmatter
 
 /obj/projectile/energy/darkmatter
 	name = "dark matter pellet"

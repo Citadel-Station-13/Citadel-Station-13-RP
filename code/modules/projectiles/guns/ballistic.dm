@@ -103,7 +103,6 @@
 	if(magazine_type)
 		icon_state = "[silenced_state][magazine_state]"
 
-#warn sigh
 /obj/item/gun/ballistic/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	//get the next casing
 	if(loaded.len)
@@ -362,7 +361,6 @@
 	if(ammo_magazine)
 		. += "It has \a [ammo_magazine] loaded."
 	. += "Has [getAmmo()] round\s remaining."
-	return
 
 /obj/item/gun/ballistic/proc/getAmmo()
 	var/bullets = 0
@@ -373,18 +371,6 @@
 	if(chambered)
 		bullets += 1
 	return bullets
-
-/* Unneeded -- so far.
-//in case the weapon has firemodes and can't unload using attack_hand()
-/obj/item/gun/ballistic/verb/unload_gun()
-	set name = "Unload Ammo"
-	set category = VERB_CATEGORY_OBJECT
-	set src in usr
-
-	if(usr.stat || usr.restrained()) return
-
-	unload_ammo(usr)
-*/
 
 //* Ammo *//
 

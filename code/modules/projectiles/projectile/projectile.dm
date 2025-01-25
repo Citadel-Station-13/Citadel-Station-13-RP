@@ -222,6 +222,34 @@
 	//        optimally physics loop should handle tracking for stuff like animations, not require on hit processing to check turfs
 	var/turf/trajectory_moving_to
 
+	//* Rendering *//
+
+	/// Hitscan tracers - icon file
+	/// * Setting this to a file will enable new tracer rendering system.
+	var/tracer_icon
+	/// Muzzle state
+	/// * Muzzle state should be pointing NORTH, and non-directional
+	var/tracer_state_muzzle
+	/// Impact state
+	/// * impact state should be pointing NORTH, and non-directional
+	var/tracer_state_impact
+	/// Beam state
+	/// * Beam state should be pointing NORTH, and non-directional
+	/// * Beam will be stretched out
+	var/tracer_state_beam
+	/// Beam should be tiled instead of stretched
+	/// * This is more expensive than stretching.
+	/// * This does not always work perfectly as we currently cannot
+	///   truncate a pixel overflow.
+	var/tracer_state_beam_use_tiling = FALSE
+	/// Tile every n pixels
+	/// * This is just the Y height of your beam sprite file, usually
+	var/tracer_state_beam_tile_interval = 32
+	/// Emissive glow strength of tracer (muzzle + beam + impact), from
+	/// 0 to 255
+	/// * Colored lighting is not currently natively supported
+	var/tracer_auto_emissive_strength = 127
+
 	//*                                          Submunitions                                                  *//
 	//* While projectile has procs to handle this, these vars are used automatically if 'submunitions' is set. *//
 	/// Submunitions to use by default on fire().
@@ -272,24 +300,24 @@
 	//Hitscan
 	/// do we have a tracer? if not we completely ignore hitscan logic
 	var/has_tracer = TRUE
-	var/tracer_type
-	var/muzzle_type
-	var/impact_type
+	var/legacy_tracer_type
+	var/legacy_muzzle_type
+	var/legacy_impact_type
 
 	var/miss_sounds
 	var/ricochet_sounds
 	var/list/impact_sounds	//for different categories, IMPACT_MEAT etc
 
 	//Fancy hitscan lighting effects!
-	var/hitscan_light_intensity = 1.5
-	var/hitscan_light_range = 0.75
-	var/hitscan_light_color_override
-	var/muzzle_flash_intensity = 3
-	var/muzzle_flash_range = 1.5
-	var/muzzle_flash_color_override
-	var/impact_light_intensity = 3
-	var/impact_light_range = 2
-	var/impact_light_color_override
+	var/legacy_hitscan_light_intensity = 1.5
+	var/legacy_hitscan_light_range = 0.75
+	var/legacy_hitscan_light_color_override
+	var/legacy_muzzle_flash_intensity = 3
+	var/legacy_muzzle_flash_range = 1.5
+	var/legacy_muzzle_flash_color_override
+	var/legacy_impact_light_intensity = 3
+	var/legacy_impact_light_range = 2
+	var/legacy_impact_light_color_override
 
 	//Targetting
 	var/yo = null
