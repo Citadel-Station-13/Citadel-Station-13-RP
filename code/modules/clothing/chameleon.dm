@@ -248,8 +248,10 @@
 /obj/item/storage/backpack/chameleon/holosphere
 	name = "holographic backpack"
 	desc = "A holographic backpack."
-	clothing_flags = NO_UNEQUIP
 	origin_tech = list()
+
+/obj/item/storage/backpack/chameleon/holosphere/can_unequip(mob/M, slot, mob/user, flags)
+	return FALSE
 
 /obj/item/storage/backpack/chameleon/holosphere/emp_act(severity)
 	return ..()
