@@ -392,7 +392,7 @@
 			to_chat(usr,"<span class='notice'><b>Darkness:</b> [darkness]</span>")
 		if("energy")
 			var/mob/living/carbon/human/H = usr
-			if(istype(H) && istype(H.species, /datum/species/shadekin))
+			if(istype(H) && istype(H.species, /datum/species/shadekin_legacy))
 				to_chat(usr,"<span class='notice'><b>Energy:</b> [H.shadekin_get_energy(H)]</span>")
 
 		if("danger level")

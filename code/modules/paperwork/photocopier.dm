@@ -300,7 +300,7 @@
 			/* // Commented out because no icons exist, BUT if someone wants to sprite some more ASSCHEEKS, then just uncomment these and you have asses for each species. - Rykka.
 			if(SPECIES_TESHARI)
 				temp_img = icon('icons/obj/butts.dmi', "tesh")
-			if(SPECIES_SHADEKIN || SPECIES_SHADEKIN_CREW)
+			if(SPECIES_SHADEKIN_LEGACY || SPECIES_SHADEKIN_LEGACY_CREW)
 				temp_img = icon('icons/obj/butts.dmi', "shadekin")
 			if(SPECIES_ALRAUNE)
 				temp_img = icon('icons/obj/butts.dmi', "alraune")

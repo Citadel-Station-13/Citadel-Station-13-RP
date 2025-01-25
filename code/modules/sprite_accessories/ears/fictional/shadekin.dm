@@ -5,4 +5,4 @@
 	do_colouration = 1
 	legacy_use_additive_color_matrix = FALSE
 	apply_restrictions = TRUE
-	species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
+	species_allowed = list(SPECIES_SHADEKIN_LEGACY, SPECIES_SHADEKIN_LEGACY_CREW)

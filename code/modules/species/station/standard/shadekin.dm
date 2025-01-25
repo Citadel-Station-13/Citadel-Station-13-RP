@@ -1,8 +1,8 @@
-/datum/species/shadekin/black_eyed
-	uid = SPECIES_ID_SHADEKIN_BLACK
-	id = SPECIES_ID_SHADEKIN_BLACK
-	name = SPECIES_SHADEKIN_CREW
-	name_plural = SPECIES_SHADEKIN_CREW
+/datum/species/shadekin_legacy/black_eyed
+	uid = SHADEKIN_ID_SHADEKIN_LEGACY_BLACK
+	id = SHADEKIN_ID_SHADEKIN_LEGACY_BLACK
+	name = SPECIES_SHADEKIN_LEGACY_CREW
+	name_plural = SPECIES_SHADEKIN_LEGACY_CREW
 	category = "Special"
 	icobase = 'icons/mob/human_races/r_shadekin_vr.dmi'
 	deform = 'icons/mob/human_races/r_shadekin_vr.dmi'
@@ -102,8 +102,8 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/crewkin)
 		)
 
-/datum/species/shadekin/get_bodytype_legacy()
-	return SPECIES_SHADEKIN
+/datum/species/shadekin_legacy/get_bodytype_legacy()
+	return SPECIES_SHADEKIN_LEGACY
 
-/datum/species/shadekin/can_breathe_water()
+/datum/species/shadekin_legacy/can_breathe_water()
 	return TRUE	//they dont quite breathe

@@ -81,7 +81,7 @@
 //? species specific source
 
 /// shadekin phasing ability
-#define SPECIES_SHADEKIN_PHASING_TRAIT "shadekin1"
+#define SPECIES_SHADEKIN_LEGACY_PHASING_TRAIT "shadekin1"
 
 //? component source
 

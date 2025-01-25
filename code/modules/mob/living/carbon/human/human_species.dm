@@ -77,7 +77,7 @@
 	species = /datum/species/dremachir
 
 /mob/living/carbon/human/shadekin
-	species = /datum/species/shadekin
+	species = /datum/species/shadekin_legacy
 
 /mob/living/carbon/human/adherent
 	species = /datum/species/adherent
