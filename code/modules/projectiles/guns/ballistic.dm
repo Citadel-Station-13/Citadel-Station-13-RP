@@ -103,8 +103,10 @@
 	if(magazine_type)
 		icon_state = "[silenced_state][magazine_state]"
 
-// todo: rework
+#warn sigh
 /obj/item/gun/ballistic/consume_next_projectile(datum/gun_firing_cycle/cycle)
+	SHOULD_NOT_SLEEP(TRUE)
+
 	//get the next casing
 	if(loaded.len)
 		chambered = loaded[1] //load next casing.
@@ -113,9 +115,19 @@
 	else if(ammo_magazine && ammo_magazine.amount_remaining())
 		chambered = ammo_magazine.pop(src)
 
-	if (chambered)
-		return chambered.expend()
-	return null
+	if(!chambered)
+		return
+
+	return prime_casing(cycle, chambered, CASING_PRIMER_CHEMICAL)
+
+/**
+ * Primes the casing being fired, and expends it.
+ *
+ * Either will return an /obj/projectile,
+ * or return a GUN_FIRED_* define that is not SUCCESS.
+ */
+/obj/item/gun/ballistic/proc/prime_casing(datum/gun_firing_cycle/cycle, obj/item/ammo_casing/casing, casing_primer)
+	return casing.process_fire(casing_primer)
 
 /obj/item/gun/ballistic/post_fire(atom/firer, angle, firing_flags, datum/firemode/firemode, iteration, firing_result, atom/target, datum/event_args/actor/actor)
 	. = ..()
@@ -126,7 +138,8 @@
 
 // todo: refactor
 /obj/item/gun/ballistic/proc/process_chambered()
-	if (!chambered) return
+	if (!chambered)
+		return
 
 	// Aurora forensics port, gunpowder residue.
 	if(chambered.leaves_residue)

@@ -12,6 +12,8 @@
 	/// * this is set before the fire() call, which means fire() and post_fire()
 	///   can access this for current iteration.
 	var/cycle_iterations_fired = 0
+	/// cooldown to impart after cycle
+	var/cycle_cooldown = 0.2 SECONDs
 
 	//* targeting *//
 	/// original target
@@ -70,17 +72,13 @@
 	var/next_firing_fail_result
 	/// on this iteration, have this much dispersion added
 	var/next_dispersion_adjust
-	#warn hook
 	/// on this iteration, force adjust the angle by this much (pos = cw, neg = ccw); this is in degrees
-	var/next_angle_adjust
 	#warn hook
 	/// blackboard for modular gun components to use
 	var/list/blackboard
 	/// multiplier to total cooldown after firing cycle
-	#warn hook
 	var/overall_cooldown_multiply = 1
 	/// adjust to total cooldown after firing cycle
-	#warn hook
 	var/overall_cooldown_adjust = 0
 
 /datum/gun_firing_cycle/proc/finish_iteration(result)

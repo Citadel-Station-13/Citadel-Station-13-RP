@@ -24,8 +24,6 @@
 		clickchain.legacy_get_target_zone(),
 	)
 	return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
-	#warn handle pointblank
-	#warn impl
 
 //* Firing Cycle *//
 
@@ -141,6 +139,7 @@
 	our_cycle.original_tile_pixel_x = tile_pixel_x
 	our_cycle.original_tile_pixel_y = tile_pixel_y
 	our_cycle.original_target_zone = target_zone
+	our_cycle.cycle_cooldown = firemode.cycle_cooldown
 	// cycle notch
 	our_cycle.cycle_notch = ++firing_cycle_next
 	if(firing_cycle_next >= SHORT_REAL_LIMIT)
@@ -188,6 +187,8 @@
 	SEND_SIGNAL(src, COMSIG_GUN_FIRING_CYCLE_END, our_cycle)
 	// log
 	log_projectile_firing_cycle(src, firer, our_cycle, actor)
+	// set delay
+	next_fire_cycle = world.time + max(0, our_cycle.cycle_cooldown * our_cycle.overall_cooldown_multiply + our_cycle.overall_cooldown_adjust)
 
 	return our_cycle
 

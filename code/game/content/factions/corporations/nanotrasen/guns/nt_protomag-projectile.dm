@@ -12,9 +12,25 @@
 	icon_state = "kinetic"
 	speed = /obj/projectile::speed * 1.1
 
+	var/penalty_speed_multiplier = 1
+	var/penalty_damage_multiplier = 1
+	var/penalty_damage_tier
+	var/penalty_legacy_armor_penetration
+
 /obj/projectile/nt_protomag/Initialize(mapload)
 	. = ..()
 	add_overlay(/image/projectile/nt_protomag_emissive)
+
+/**
+ * Called when fired without magnetic boosting.
+ */
+/obj/projectile/nt_protomag/proc/penalize()
+	damage_force *= penalty_damage_multiplier
+	if(!isnull(penalty_damage_tier))
+		damage_tier = penalty_damage_tier
+	if(!isnull(penalty_legacy_armor_penetration))
+		armor_penetration = penalty_legacy_armor_penetration
+	speed *= penalty_speed_multiplier
 
 /obj/projectile/nt_protomag/standard
 	name = "magnetic slug"
@@ -22,6 +38,9 @@
 	damage_force = 35
 	damage_tier = BULLET_TIER_MEDIUM
 	armor_penetration = 25
+	penalty_speed_multiplier = 3 / 4
+	penalty_damage_tier = BULLET_TIER_LOW
+	penalty_legacy_armor_penetration = 15
 
 /obj/projectile/nt_protomag/sabot
 	name = "dense slug"
@@ -30,6 +49,9 @@
 	damage_force = 25
 	damage_tier = BULLET_TIER_HIGH
 	armor_penetration = 47.5
+	penalty_speed_multiplier = 4 / 5
+	penalty_damage_tier = BULLET_TIER_MEDIUM
+	penalty_legacy_armor_penetration = 25
 
 // todo: this is currently disabled as medcode is not verbose enough for this to work
 // /obj/projectile/nt_protomag/shredder
@@ -43,6 +65,9 @@
 	damage_tier = BULLET_TIER_HIGH
 	agony = 30
 	armor_penetration = 40
+	penalty_speed_multiplier = 3 / 4
+	penalty_damage_tier = BULLET_TIER_LOW
+	penalty_legacy_armor_penetration = 15
 
 /obj/projectile/nt_protomag/practice
 	name = "lightweight slug"

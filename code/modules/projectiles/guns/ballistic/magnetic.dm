@@ -11,7 +11,6 @@
 	/// * in kilojoules
 	var/base_shot_power = /obj/item/cell/device/weapon::maxcharge * (1 / 24)
 
-
 	/// Render battery state.
 	///
 	/// * Uses MAGNETIC_RENDER_BATTERY_* enums
@@ -20,14 +19,10 @@
 
 #warn impl all
 
-/obj/item/gun/ballistic/magnetic/consume_next_projectile(datum/gun_firing_cycle/cycle)
-	var/obj/item/ammo_casing/chambered_peek = chambered
-	var/shot_power_draw = base_shot_power * chambered_peek.effective_mass_multiplier
+/obj/item/gun/ballistic/magnetic/prime_casing(datum/gun_firing_cycle/cycle, obj/item/ammo_casing/casing, casing_primer)
+	var/shot_power_draw = base_shot_power * casing.effective_mass_multiplier
 	if(!obj_cell_slot.check_charge(shot_power_draw))
-		return GUN_FIRED_FAIL_EMPTY
-
-	#warn impl
+		casing_primer = CASING_PRIMER_CHEMICAL
 	. = ..()
-	// not a failure result
 	if(!isnum(.))
 		obj_cell_slot.use(shot_power_draw)

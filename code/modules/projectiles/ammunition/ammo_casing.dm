@@ -60,7 +60,7 @@
 	return ..()
 
 /obj/item/ammo_casing/get_intrinsic_worth(flags)
-	return loaded()? ..() : 0
+	return is_loaded()? ..() : 0
 
 /obj/item/ammo_casing/screwdriver_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = TRUE
@@ -86,19 +86,65 @@
 	)
 	return merge_double_lazy_assoc_list(., ..())
 
-/**
- * sees if we're currently loaded
- */
-/obj/item/ammo_casing/proc/loaded()
-	return stored != FALSE
+/obj/item/ammo_casing/update_icon_state()
+	. = ..()
+	if(icon_spent && !is_loaded())
+		icon_state = "[base_icon_state || initial(icon_state)]-spent"
+	else
+		icon_state = base_icon_state || icon_state
 
-//removes the projectile from the ammo casing
-// todo: refactor for actual on-shot or whatever
+/obj/item/ammo_casing/examine(mob/user, dist)
+	. = ..()
+	if(!is_loaded())
+		. += "This one is spent."
+
+/obj/item/ammo_casing/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(istype(I, /obj/item/ammo_magazine))
+		var/obj/item/ammo_magazine/mag = I
+		mag.quick_gather(get_turf(src), user)
+		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
+
+//* Caliber *//
+
+/obj/item/ammo_casing/proc/get_caliber_string()
+	return resolve_caliber(caliber)?.caliber
+
+/obj/item/ammo_casing/proc/get_caliber()
+	RETURN_TYPE(/datum/ammo_caliber)
+	return resolve_caliber(caliber)
+
+//* Firing *//
+
+/**
+ * Called as we're fired.
+ *
+ * @params
+ * * priming_methods - the priming methods being used to fire us
+ *
+ * @return /obj/projectile to shoot, or a GUN_FIRED_* fail status
+ */
+/obj/item/ammo_casing/proc/process_fire(priming_methods)
+	if(priming_methods & casing_primer)
+		return GUN_FIRED_FAIL_INERT
+	return expend()
+
+/**
+ * Uses the ammo casing, returning the projectile retrieved, updating icon, etc
+ */
 /obj/item/ammo_casing/proc/expend()
 	. = stored
 	stored = FALSE
 	setDir(pick(GLOB.cardinal)) //spin spent casings
 	update_icon()
+
+//* Getters *//
+
+/**
+ * sees if we're currently loaded
+ */
+/obj/item/ammo_casing/proc/is_loaded()
+	return stored != FALSE
 
 /**
  * grab projectile
@@ -110,6 +156,8 @@
 		if(FALSE)
 			return null
 	return stored
+
+//* Projectile *//
 
 /**
  * make projectile automatically but only if we're not expended
@@ -128,34 +176,6 @@
 	stored = new projectile_type(src)
 	stored.add_projectile_effects(add_projectile_effects)
 	return stored
-
-/obj/item/ammo_casing/update_icon_state()
-	. = ..()
-	if(icon_spent && !loaded())
-		icon_state = "[base_icon_state || initial(icon_state)]-spent"
-	else
-		icon_state = base_icon_state || icon_state
-
-/obj/item/ammo_casing/examine(mob/user, dist)
-	. = ..()
-	if(!loaded())
-		. += "This one is spent."
-
-/obj/item/ammo_casing/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
-	if(istype(I, /obj/item/ammo_magazine))
-		var/obj/item/ammo_magazine/mag = I
-		mag.quick_gather(get_turf(src), user)
-		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
-	return ..()
-
-//* Caliber *//
-
-/obj/item/ammo_casing/proc/get_caliber_string()
-	return resolve_caliber(caliber)?.caliber
-
-/obj/item/ammo_casing/proc/get_caliber()
-	RETURN_TYPE(/datum/ammo_caliber)
-	return resolve_caliber(caliber)
 
 //* Render *//
 

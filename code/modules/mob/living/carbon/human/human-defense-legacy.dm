@@ -80,10 +80,6 @@
 
 	return (siemens_value/max(total, 1))
 
-// Returns a number between 0 to 1, with 1 being total protection.
-/mob/living/carbon/human/get_shock_protection()
-	return min(1 - get_siemens_coefficient_average(), 1) // Don't go above 1, but negatives are fine.
-
 // Returns a list of clothing that is currently covering def_zone.
 /mob/living/carbon/human/proc/get_clothing_list_organ(var/obj/item/organ/external/def_zone, var/type)
 	var/list/results = list()

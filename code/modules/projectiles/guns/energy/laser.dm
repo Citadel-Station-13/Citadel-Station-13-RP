@@ -328,21 +328,6 @@
 	cell_type = /obj/item/cell/device/weapon
 	unstable = 1
 
-// todo: this is dumb
-/obj/item/gun/energy/zip/consume_next_projectile(datum/gun_firing_cycle/cycle)
-	. = ..()
-	if(.)
-		if(unstable)
-			if(prob(10))
-				// todo: actor support if we keep this shit
-				visible_message("<span class='danger'>The cell overcooks and ruptures!</span>")
-				spawn(rand(2 SECONDS,5 SECONDS))
-					if(!QDELETED(src))
-						visible_message("<span class='critical'>\The [src] detonates!</span>")
-						explosion(get_turf(src), -1, 0, 2, 3)
-						qdel(chambered)
-						qdel(src)
-
 //NT SpecOps Laser Rifle
 /obj/item/gun/energy/combat
 	name = "NT-LR-4 laser rifle"

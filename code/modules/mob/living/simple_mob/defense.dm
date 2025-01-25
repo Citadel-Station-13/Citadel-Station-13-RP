@@ -145,28 +145,6 @@
 	. = 1 - .
 	. = min(., 1.0)
 
-#warn deal with
-/mob/living/simple_mob/electrocute_act_legacy(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null)
-	playsound(loc, /datum/soundbyte/grouped/sparks, 50, 1, -1)
-
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-	s.set_up(5, 1, loc)
-	s.start()
-
-/mob/living/simple_mob/get_shock_protection()
-	. = shock_resist
-	. = 1 - . // Invert from 1 = immunity to 0 = immunity.
-
-	// Doing it this way makes multiplicative stacking not get out of hand, so two modifiers that give 0.5 protection will be combined to 0.75 in the end.
-	for(var/thing in modifiers)
-		var/datum/modifier/M = thing
-		if(!isnull(M.siemens_coefficient))
-			. *= M.siemens_coefficient
-
-	// Code that calls this expects 1 = immunity so we need to invert again.
-	. = 1 - .
-	. = min(., 1.0)
-
 // Electromagnetism
 /mob/living/simple_mob/emp_act(severity)
 	..() // To emp_act() its contents.

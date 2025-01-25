@@ -315,7 +315,7 @@
 	for(var/obj/item/ammo_casing/casing in where)
 		if(. > needed)
 			break
-		if(!casing.loaded())
+		if(!casing.is_loaded())
 			continue
 		if(!isnull(why_cant_load_casing(casing)))
 			continue
@@ -419,7 +419,7 @@
 	// try to resupply
 	for(var/i in length(ammo_internal) to 1 step -1)
 		var/obj/item/ammo_casing/loaded = ammo_internal[i]
-		if(loaded.loaded())
+		if(loaded.is_loaded())
 			continue
 		loaded.forceMove(transfer_old_to || drop_location())
 		ammo_internal[i] = casing
@@ -441,7 +441,7 @@
 		return ammo_current + length(ammo_internal)
 	. = ammo_current
 	for(var/obj/item/ammo_casing/casing as anything in ammo_internal)
-		if(casing.loaded())
+		if(casing.is_loaded())
 			.++
 
 /obj/item/ammo_magazine/proc/amount_missing(live_only)
