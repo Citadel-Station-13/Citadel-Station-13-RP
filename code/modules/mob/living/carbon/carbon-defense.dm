@@ -54,7 +54,7 @@
 					knock_out_descriptor = "right hand"
 			if(knock_out_of_hand && knock_out_of_hand_organ)
 				if(drop_item_to_ground(knock_out_of_hand))
-					if (affected.robotic >= ORGAN_ROBOT)
+					if(!knock_out_of_hand_organ.organ_can_feel_pain())
 						INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, custom_emote), 1, "drops what they were holding, their [knock_out_of_hand_organ.name] malfunctioning!")
 					else
 						var/emote_scream = pick("screams in pain and ", "lets out a sharp cry and ", "cries out and ")

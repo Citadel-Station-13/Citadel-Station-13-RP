@@ -127,10 +127,9 @@
 	speed = 5 * WORLD_ICON_SIZE
 	homing_turn_speed = 85
 
-/obj/projectile/energy/homing_bolt/launch_projectile(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
+/obj/projectile/energy/homing_bolt/fire(set_angle_to, atom/direct_target, no_source_check, datum/callback/on_submunition_ready)
 	..()
-	if(target)
-		set_homing_target(target)
+	set_homing_target(original_target)
 
 #define ELECTRIC_ZAP_POWER 20000
 
