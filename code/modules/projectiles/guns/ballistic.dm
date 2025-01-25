@@ -105,8 +105,6 @@
 
 #warn sigh
 /obj/item/gun/ballistic/consume_next_projectile(datum/gun_firing_cycle/cycle)
-	SHOULD_NOT_SLEEP(TRUE)
-
 	//get the next casing
 	if(loaded.len)
 		chambered = loaded[1] //load next casing.

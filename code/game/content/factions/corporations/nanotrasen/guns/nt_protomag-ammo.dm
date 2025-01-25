@@ -25,14 +25,12 @@
 	effective_mass_multiplier = /obj/item/ammo_casing/nt_protomag::effective_mass_multiplier * 0.5
 
 /obj/item/ammo_casing/nt_protomag/magboosted/process_fire(casing_primer)
-	var/obj/projectile/proj = ..()
-	if(!proj)
-		return
+	var/obj/projectile/nt_protomag/proj_or_firing_status = ..()
+	if(!istype(proj_or_firing_status))
+		return proj_or_firing_status
 	if(!(casing_primer & CASING_PRIMER_MAGNETIC))
-		proj.penalize()
-	return proj
-
-#warn make these lose performance if shot without magnetic priming
+		proj_or_firing_status.penalize()
+	return proj_or_firing_status
 
 /obj/item/ammo_casing/nt_protomag/magboosted/standard
 	projectile_type = /obj/projectile/nt_protomag/standard

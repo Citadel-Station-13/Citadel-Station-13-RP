@@ -540,43 +540,6 @@
 /obj/item/gun/proc/handle_click_safety(mob/user)
 	user.visible_message(SPAN_WARNING("[user] squeezes the trigger of \the [src] but it doesn't move!"), SPAN_WARNING("You squeeze the trigger but it doesn't move!"), range = MESSAGE_RANGE_COMBAT_SILENCED)
 
-//called after successfully firing
-/obj/item/gun/proc/handle_post_fire(mob/user, atom/target, var/pointblank=0, var/reflex=0)
-	SHOULD_NOT_OVERRIDE(TRUE)
-	#warn obliterate this
-	if(silenced)
-		to_chat(user, "<span class='warning'>You fire \the [src][pointblank ? " point blank at \the [target]":""][reflex ? " by reflex":""]</span>")
-		for(var/mob/living/L in oview(2,user))
-			if(L.stat)
-				continue
-			if(L.has_status_effect(/datum/status_effect/sight/blindness))
-				to_chat(L, "You hear a [fire_sound_text]!")
-				continue
-			to_chat(L, 	"<span class='danger'>\The [user] fires \the [src][pointblank ? " point blank at \the [target]":""][reflex ? " by reflex":""]!</span>")
-	else
-		user.visible_message(
-			"<span class='danger'>\The [user] fires \the [src][pointblank ? " point blank at \the [target]":""][reflex ? " by reflex":""]!</span>",
-			"<span class='warning'>You fire \the [src][pointblank ? " point blank at \the [target]":""][reflex ? " by reflex":""]!</span>",
-			"You hear a [fire_sound_text]!"
-			)
-
-	if(one_handed_penalty)
-		if(!(item_flags & ITEM_MULTIHAND_WIELDED))
-			switch(one_handed_penalty)
-				if(1 to 15)
-					if(prob(50)) //don't need to tell them every single time
-						to_chat(user, "<span class='warning'>Your aim wavers slightly.</span>")
-				if(16 to 30)
-					to_chat(user, "<span class='warning'>Your aim wavers as you fire \the [src] with just one hand.</span>")
-				if(31 to 45)
-					to_chat(user, "<span class='warning'>You have trouble keeping \the [src] on target with just one hand.</span>")
-				if(46 to INFINITY)
-					to_chat(user, "<span class='warning'>You struggle to keep \the [src] on target with just one hand!</span>")
-
-	if(recoil)
-		spawn()
-			shake_camera(user, recoil+1, recoil)
-
 /obj/item/gun/proc/play_fire_sound(var/mob/user, var/obj/projectile/P)
 	var/shot_sound = fire_sound
 

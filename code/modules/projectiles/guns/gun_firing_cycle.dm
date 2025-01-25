@@ -13,7 +13,7 @@
 	///   can access this for current iteration.
 	var/cycle_iterations_fired = 0
 	/// cooldown to impart after cycle
-	var/cycle_cooldown = 0.2 SECONDs
+	var/cycle_cooldown = 0.2 SECONDS
 
 	//* targeting *//
 	/// original target
@@ -73,7 +73,7 @@
 	/// on this iteration, have this much dispersion added
 	var/next_dispersion_adjust
 	/// on this iteration, force adjust the angle by this much (pos = cw, neg = ccw); this is in degrees
-	#warn hook
+	var/next_angle_adjust
 	/// blackboard for modular gun components to use
 	var/list/blackboard
 	/// multiplier to total cooldown after firing cycle

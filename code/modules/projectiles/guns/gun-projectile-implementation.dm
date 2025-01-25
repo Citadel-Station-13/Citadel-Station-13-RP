@@ -99,6 +99,7 @@
  * * Once the projectile is made, you must delete it if you want to cancel. Otherwise, it's a memory leak.
  */
 /obj/item/gun/proc/consume_next_projectile(datum/gun_firing_cycle/cycle)
+	SHOULD_NOT_SLEEP(TRUE)
 	. = GUN_FIRED_FAIL_UNKNOWN
 	// todo: on base /gun/projectile?
 	CRASH("attempted to process next projectile on base /gun")

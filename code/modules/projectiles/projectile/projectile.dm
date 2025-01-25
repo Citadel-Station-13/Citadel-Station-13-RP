@@ -1199,11 +1199,13 @@
 	// we must be fired; otherwise, things don't work right.
 	ASSERT(fired)
 	. = list()
-	// halve it as we're going in both directions, and artificially multiply by 10 to be
-	// divided out after the rand to boost randomness by a slight bit as rand only returns
-	// whole numbers.
-	#warn uniform linear spread
-	linear_spread *= 0.5 * 10
+	// if we're not using uniform linear spread, set it to something to use with rand.
+	// otherwise, leave it as is and it'll be calculated on every iteration
+	if(!uniform_linear_spread)
+		// halve it as we're going in both directions, and artificially multiply by 10 to be
+		// divided out after the rand to boost randomness by a slight bit as rand only returns
+		// whole numbers.
+		linear_spread *= 0.5 * 10
 	// artificially multiply by 10 to boost randomness
 	dispersion *= 10
 	var/px_rand_mul = calculated_dy
@@ -1211,7 +1213,7 @@
 	for(var/iter in 1 to amount)
 		var/obj/projectile/split = new path
 		split.imprint_from_supermunition(src, amount, distribute, distribute_mod, distribute_overwrite)
-		var/our_linear_spread = rand(-linear_spread, linear_spread) * 0.1
+		var/our_linear_spread = iter ? (uniform_linear_spread ? -linear_spread + ((iter - 1) / (amount - 1)) * linear_spread : rand(-linear_spread, linear_spread) * 0.1) : 1
 		var/our_angle_mod = uniform_dispersion ? rand(-dispersion, dispersion) * 0.1 : gaussian(0, dispersion)
 		split.pixel_x = pixel_x + px_rand_mul * our_linear_spread
 		split.pixel_y = pixel_y + py_rand_mul * our_linear_spread

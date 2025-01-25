@@ -87,12 +87,45 @@
 /obj/item/gun/proc/on_firing_cycle_start(datum/gun_firing_cycle/cycle)
 	SHOULD_NOT_SLEEP(TRUE)
 
+	cycle.firing_actor?.visible_feedback(
+		range = silenced ? MESSAGE_RANGE_COMBAT_SILENCED : MESSAGE_RANGE_COMBAT_LOUD,
+		visible = SPAN_DANGER("[cycle.firing_actor.performer] fires [src][cycle.firing_flags & GUN_FIRING_POINT_BLANK ? " point blank at [cycle.original_target]" : ""][cycle.firing_flags & GUN_FIRING_BY_REFLEX ? " by reflex" : ""]!"),
+		audible = SPAN_WARNING("You hear a [fire_sound_text]"),
+		otherwise_self = SPAN_WARNING("You fire [src][cycle.firing_flags & GUN_FIRING_POINT_BLANK ? " point blank at [cycle.original_target]" : ""][cycle.firing_flags & GUN_FIRING_BY_REFLEX ? " by reflex" : ""]!"),
+	)
+
 /**
  * Hook for firing cycle end
  */
 /obj/item/gun/proc/on_firing_cycle_end(datum/gun_firing_cycle/cycle)
 	SHOULD_NOT_SLEEP(TRUE)
 	update_icon()
+
+	if(cycle.firing_actor)
+		if(one_handed_penalty)
+			if(!(item_flags & ITEM_MULTIHAND_WIELDED))
+				switch(one_handed_penalty)
+					if(1 to 15)
+						if(prob(50))
+							cycle.firing_actor.chat_feedback(
+								SPAN_WARNING("Your aim wavers slightly."),
+								target = src,
+							)
+					if(16 to 30)
+						cycle.firing_actor.chat_feedback(
+							SPAN_WARNING("Your aim wavers as you fire [src] with just one hand."),
+							target = src,
+						)
+					if(31 to 45)
+						cycle.firing_actor.chat_feedback(
+							SPAN_WARNING("You have trouble keeping [src] on target with just one hand."),
+							target = src,
+						)
+					if(46 to INFINITY)
+						cycle.firing_actor.chat_feedback(
+							SPAN_WARNING("You have struggle to keep [src] on target with just one hand!"),
+							target = src,
+						)
 
 /**
  * called exactly once at the start of a firing cycle to start it
@@ -214,13 +247,22 @@
 /**
  * Called on successful firing
  *
+ * todo: actor / event_args support from cycle
+ *
  * @return FALSE to abort firing cycle.
  */
 /obj/item/gun/proc/post_live_fire(datum/gun_firing_cycle/cycle)
+	var/mob/legacy_user = get_worn_mob()
+	if(legacy_user)
+		if(recoil)
+			spawn()
+				shake_camera(legacy_user, recoil + 1, recoil)
 	return TRUE
 
 /**
  * Called if someone tries to fire us without live ammo in the chamber (or chamber-equivalent)
+ *
+ * todo: actor / event_args support from cycle
  *
  * @return FALSE to abort firing cycle.
  */
@@ -230,7 +272,7 @@
 		default_click_empty(cycle)
 	return FALSE
 
-// todo: actor / event_args support
+// todo: actor / event_args support from cycle
 /obj/item/gun/proc/default_click_empty(datum/gun_firing_cycle/cycle)
 	var/mob/holding_us = get_worn_mob()
 	if(holding_us)
