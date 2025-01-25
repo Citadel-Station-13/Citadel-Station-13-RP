@@ -369,7 +369,8 @@
 	desc = "This circuit will filter every object in assembly view."
 	extended_desc = "The first pin is ref to filter, to see avaliable filters go to Filter category. The output will contents everything with filtering type"
 	inputs = list(
-		"filter" = IC_PINTYPE_REF
+		"filter" = IC_PINTYPE_REF,
+		"radius" = IC_PINTYPE_NUMBER
 	)
 	outputs = list(
 		"objects" = IC_PINTYPE_LIST
@@ -377,12 +378,19 @@
 	activators = list("scan" = IC_PINTYPE_PULSE_IN, "on scanned" = IC_PINTYPE_PULSE_OUT)
 	spawn_flags = IC_SPAWN_RESEARCH
 	power_draw_per_use = 30
+	var/radius = 1
+
+/obj/item/integrated_circuit/input/advanced_locator/on_data_written()
+	var/rad = get_pin_data(IC_INPUT, 2)
+	if(isnum(rad))
+		rad = clamp(rad, 0, 8)
+		radius = rad
 
 /obj/item/integrated_circuit/input/view_filter/do_work(ord)
 	var/list/objects = list()
 	var/obj/item/integrated_circuit/filter/ref/filter = get_pin_data(IC_INPUT, 1)
 	if(istype(filter) && assembly && (filter in assembly.assembly_components))
-		for(var/atom/A in view(get_turf(assembly)))
+		for(var/atom/A in view(radius,get_turf(assembly)))
 			if(istype(A, filter.filter_type))
 				objects.Add(WEAKREF(A))
 		set_pin_data(IC_OUTPUT, 1, objects)
