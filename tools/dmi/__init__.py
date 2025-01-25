@@ -5,6 +5,7 @@ import math
 import PIL
 from PIL import Image
 from PIL.PngImagePlugin import PngInfo
+import PIL.PngImagePlugin
 
 # Header #
 
@@ -24,6 +25,9 @@ def transform(path):
     loaded = Dmi.from_file(path)
 
     return DmiTransformPipeline(loaded, path)
+
+def load(path):
+    return Dmi.from_file(path)
 
 # Constants #
 
@@ -336,10 +340,6 @@ class DmiTransformPipeline:
         self.path = path
 
     def greyscale_all_states(self) -> DmiTransformPipeline:
-        # todo: customizable lum's
-        LUM_R = 0.213
-        LUM_G = 0.715
-        LUM_B = 0.072
 
         for state in self.dmi.states:
             DmiTransformPipeline._greyscale_state(state)
@@ -347,10 +347,6 @@ class DmiTransformPipeline:
         return self
 
     def greyscale_state(self, name: str) -> DmiTransformPipeline:
-        # todo: customizable lum's
-        LUM_R = 0.213
-        LUM_G = 0.715
-        LUM_B = 0.072
 
         found: State = None
         for state in self.dmi.states:
@@ -365,7 +361,23 @@ class DmiTransformPipeline:
         return self
 
     def _greyscale_state(state: State):
-        state.frames = [PIL.ImageOps.grayscale(f) for f in state.frames]
+        state.frames = [DmiTransformPipeline._greyscale_image(f) for f in state.frames]
+
+    def _greyscale_image(image: Image.Image) -> Image.Image:
+        # todo: customizable lum's
+        LUM_R = 0.213
+        LUM_G = 0.715
+        LUM_B = 0.072
+
+        for x in range(image.width):
+            for y in range(image.height):
+                (r, g, b, a) = image.getpixel((x, y))
+                image.putpixel((x, y), (
+                    r * LUM_R,
+                    g * LUM_G,
+                    b * LUM_B,
+                    a,
+                ))
 
     def commit(self):
         if self.committed:
