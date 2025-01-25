@@ -60,9 +60,6 @@ DIR_NAMES = {
 
 DEFAULT_SIZE = 32, 32
 
-LOOP_UNLIMITED = 0
-LOOP_ONCE = 1
-
 # Helpers #
 
 def escape(text):
@@ -98,7 +95,8 @@ def parse_bool(value):
 class State:
     dmi: Dmi
     name: str
-    loop: int
+    # number for times, None for infinite
+    loop: int | None
     rewind: bool
     movement: bool
     dirs: int
@@ -106,7 +104,7 @@ class State:
     delays: list[int]
     hotspots: list[(int, int)]
 
-    def __init__(self, dmi, name, *, loop=LOOP_ONCE, rewind=False, movement=False, dirs=1):
+    def __init__(self, dmi, name, *, loop=None, rewind=False, movement=False, dirs=1):
         self.dmi = dmi
         self.name = name
         self.loop = loop
@@ -227,7 +225,7 @@ class Dmi:
             elif key == 'loop':
                 state.loop = int(value)
             elif key == 'rewind':
-                state.rewind = parse_bool(value)
+                state.rewind = True
             elif key == 'hotspot':
                 x, y, frm = [int(x) for x in value.split(',')]
                 state.hotspot(frm - 1, x, y)
@@ -250,6 +248,9 @@ class Dmi:
                     state.frames.append(im)
                     i += 1
             state._nframes = None
+
+        # DEBUG
+        dmi._metadata = metadata
 
         return dmi
 
@@ -279,7 +280,7 @@ class Dmi:
             comment += f"\tframes = {state.framecount}\n"
             if state.framecount > 1 and len(state.delays):  # any(x != 1 for x in state.delays):
                 comment += "\tdelay = " + ",".join(map(str, state.delays)) + "\n"
-            if state.loop != 0:
+            if state.loop != None:
                 comment += f"\tloop = {state.loop}\n"
             if state.rewind:
                 comment += "\trewind = 1\n"
@@ -374,13 +375,14 @@ class DmiTransformPipeline:
 
         image = image.copy()
 
+        # todo: use np, make this fast
         for x in range(image.width):
             for y in range(image.height):
                 (r, g, b, a) = image.getpixel((x, y))
                 image.putpixel((x, y), (
-                    int(r * LUM_R),
-                    int(g * LUM_G),
-                    int(b * LUM_B),
+                    int(r * LUM_R + g * LUM_G + b * LUM_B),
+                    int(r * LUM_R + g * LUM_G + b * LUM_B),
+                    int(r * LUM_R + g * LUM_G + b * LUM_B),
                     a,
                 ))
 
