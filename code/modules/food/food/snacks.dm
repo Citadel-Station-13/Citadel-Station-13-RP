@@ -5481,16 +5481,6 @@
 	bitesize = 0.01 //impossible to eat
 	reagents.add_reagent("carbon", 5)
 
-/obj/item/reagent_containers/food/snacks/ingredient/shrimp
-	name = "raw shrimp"
-	desc = "An old-Earth sea creature. Formerly a luxury item, shrimp are commonly farmed as an easy source of protein."
-	icon_state = "shrimp_raw"
-	nutriment_amt = 5
-
-/obj/item/reagent_containers/food/snacks/ingredient/shrimp/Initialize(mapload)
-	. = ..()
-	bitesize = 1
-
 /obj/item/reagent_containers/food/snacks/shrimpcooked
 	name = "steamed shrimp"
 	desc = "Shrimp are most commonly steamed. The meat is firm, but succulent. It's still a favorite filling for a variety of dishes."
