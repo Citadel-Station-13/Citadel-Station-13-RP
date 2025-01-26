@@ -152,12 +152,13 @@
 
 	return ..()
 
-/obj/item/gun/energy/staff/handle_click_empty(mob/user = null)
+/obj/item/gun/energy/staff/default_click_empty(datum/gun_firing_cycle/cycle)
 	if (user)
 		user.visible_message("*fizzle*", "<span class='danger'>*fizzle*</span>")
 	else
 		src.visible_message("*fizzle*")
 	playsound(src.loc, /datum/soundbyte/grouped/sparks, 100, 1)
+
 /*
 /obj/item/gun/energy/staff/animate
 	name = "staff of animation"
@@ -165,6 +166,7 @@
 	projectile_type = /obj/projectile/animate
 	charge_cost = 240
 */
+
 /obj/item/gun/energy/staff/focus
 	name = "mental focus"
 	desc = "An artifact that channels the will of the user into destructive bolts of force. If you aren't careful with it, you might poke someone's brain out."
@@ -187,7 +189,7 @@
 /datum/firemode/energy/dakkalaser
 	burst_delay = 0.1 SECONDS
 
-/datum/firemode/energy/dakkalaser/single
+/datum/firemode/energy/dakkalaser/one
 	name = "1-shot"
 	burst_amount = 1
 	legacy_direct_varedits = list(dispersion = list(0), charge_cost = 24)

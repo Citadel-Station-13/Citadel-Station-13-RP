@@ -10,7 +10,7 @@
 	abstract_type = /obj/item/ammo_magazine/nt_protomag
 	desc = "A magazine for a magnetic weapon of some kind."
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/protomag/magazines.dmi'
-	ammo_caliber = /datum/caliber/nt_protomag
+	ammo_caliber = /datum/ammo_caliber/nt_protomag
 
 //* Sidearm Magazines *//
 

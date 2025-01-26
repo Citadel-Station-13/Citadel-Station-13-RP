@@ -19,7 +19,12 @@
 		list(mode_name="low-power", fire_delay=8, projectile_type=/obj/projectile/beam/weaklaser, charge_cost = 60),
 	)
 
-/obj/item/gun/energy/frontier/unload_ammo(var/mob/user)
+/obj/item/gun/energy/frontier/on_attack_hand(datum/event_args/actor/clickchain/e_args)
+	. = ..()
+	if(.)
+		return
+	#warn inactive held item check
+	var/mob/user = e_args.performer
 	if(recharging)
 		return
 	recharging = 1
@@ -101,7 +106,10 @@
 	firemodes = list(
 	)
 
-/obj/item/gun/energy/frontier/taj/unload_ammo(var/mob/user)
+/obj/item/gun/energy/frontier/taj/on_attack_hand(datum/event_args/actor/clickchain/e_args)
+	. = ..()
+	#warn inactive held check or component this shit
+	var/mob/user = e_args.performer
 	if(recharging)
 		return
 	recharging = 1

@@ -14,7 +14,12 @@
 	var/recharging = 0
 	var/phase_power = 150
 
-/obj/item/gun/energy/hardlight_bow/unload_ammo(var/mob/user)
+/obj/item/gun/energy/hardlight_bow/on_attack_hand(datum/event_args/actor/clickchain/e_args)
+	. = ..()
+	if(.)
+		return
+	#warn offhand or component
+	var/mob/user = e_args.performer
 	if(recharging)
 		return
 	recharging = 1

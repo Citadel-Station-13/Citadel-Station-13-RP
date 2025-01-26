@@ -16,6 +16,7 @@
 		for specialized cartridges have been released for field testing, though many of said rounds require
 		a large amount of energy to discharge, in contrast to more normal hybrid rounds.
 	"}
+	caliber = /datum/ammo_caliber/nt_protomag
 
 //* Sidearm *//
 

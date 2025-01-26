@@ -94,7 +94,7 @@
 	burst_amount = 5
 	legacy_direct_varedits = list(burst_accuracy=list(65,65,65), dispersion=list(0.0, 0.2, 0.5), projectile_type=/obj/projectile/beam/excavation, modifystate="fm-2tstun")
 
-/datum/firemode/energy/mining_carbine/scatetr
+/datum/firemode/energy/mining_carbine/scatter
 	name = "scatter"
 	legacy_direct_varedits = list(projectile_type=/obj/projectile/scatter/excavation, modifystate="fm-2tkill", charge_cost = 40)
 

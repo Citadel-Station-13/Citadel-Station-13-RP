@@ -48,7 +48,7 @@
 					knock_out_of_hand = get_left_held_item()
 					knock_out_of_hand_organ = get_organ(BP_L_HAND)
 					knock_out_descriptor = "left hand"
-				if(BP_R_HAND | BP_R_ARM)
+				if(BP_R_HAND, BP_R_ARM)
 					knock_out_of_hand = get_right_held_item()
 					knock_out_of_hand_organ = get_organ(BP_R_HAND)
 					knock_out_descriptor = "right hand"
@@ -58,7 +58,7 @@
 						INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, custom_emote), 1, "drops what they were holding, their [knock_out_of_hand_organ.name] malfunctioning!")
 					else
 						var/emote_scream = pick("screams in pain and ", "lets out a sharp cry and ", "cries out and ")
-						INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, custom_emote), 1, "[knock_out_of_hand_organ.organ_can_feel_pain() ? "" : emote_scream] drops what they were holding in their [knock_out_of_hand_organ.name]!")
+						INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, custom_emote), 1, "[knock_out_of_hand_organ.organ_can_feel_pain() ? "" : emote_scream] drops what they were holding in their [knock_out_descriptor]!")
 
 /mob/living/carbon/slip_act(slip_class, source, hard_strength, soft_strength, suppressed)
 	. = ..()

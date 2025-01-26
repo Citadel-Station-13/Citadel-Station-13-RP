@@ -535,7 +535,7 @@
 		/obj/item/gun/energy/phasegun/pistol,
 		/obj/item/gun/energy/nt_pulse/carbine,
 		/obj/item/gun/energy/retro,
-		/obj/item/gun/energy/service,
+		/obj/item/gun/energy/nt_pmd/service_revolver,
 		/obj/item/gun/energy/stunrevolver,
 		/obj/item/gun/energy/taser,
 		/obj/item/gun/energy/toxgun,
