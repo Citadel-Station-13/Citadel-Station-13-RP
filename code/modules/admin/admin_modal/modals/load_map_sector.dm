@@ -3,7 +3,7 @@
 
 // todo: sensical admin rights
 // todo: better verb category
-ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Upload Map Sector", "Upload a custom map.", VERB_CATEGORY_ADMIN)
+ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map sector.", VERB_CATEGORY_ADMIN)
 	caller.holder.open_admin_modal(/datum/admin_modal/load_map_sector)
 
 /**
@@ -269,7 +269,7 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Upload Map Sector", "Upload a custom m
 	)
 
 /datum/admin_modal/load_map_sector/proc/level_index_data(index)
-	var/datum/map_level/level = SAFEACCESS(buffer.levels, index)
+	var/datum/map_level/level = buffer.levels[index]
 	return list(
 		"id" = level.id,
 		"displayId" = level.display_id,
@@ -323,7 +323,7 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Upload Map Sector", "Upload a custom m
 	var/datum/map_level/appending = new(buffer)
 	appending.name = "Custom Level"
 	appending.display_name = "Unknown Sector"
-	buffer.levels += appending
+	LAZYADD(buffer.levels, appending)
 	update_level_index_data(length(buffer.levels))
 	update_ui_data()
 

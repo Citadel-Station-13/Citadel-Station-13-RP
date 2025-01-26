@@ -1,7 +1,7 @@
 import { BooleanLike } from "common/react";
 import { InfernoNode } from "inferno";
 import { actFunctionType, useBackend, useLocalState } from "tgui/backend";
-import { Box, Section, Tabs } from "tgui/components";
+import { Box, Button, Section, Stack, Tabs } from "tgui/components";
 import { Window } from "tgui/layouts";
 
 interface ModalData {
@@ -62,34 +62,55 @@ export const LoadMapSector = (props, context) => {
   return (
     <Window width={600} height={800} title="Upload Map Sector">
       <Window.Content>
-        <Box width="100%" height="33%">
-          <MapPane data={mapData} overmapData={overmapData} act={act} />
-        </Box>
-        <Box width="100%" height="66%">
-          <Section title="Levels" fill overflow="auto">
-            {renderedLevels}
-          </Section>
-        </Box>
+        <Stack vertical>
+          <Stack.Item height="33%">
+            <Section title="Configuration">
+              <MapPane data={mapData} overmapData={overmapData} act={act} />
+            </Section>
+          </Stack.Item>
+          <Stack.Item height="66%">
+            <Section title="Levels" fill overflow="auto"
+              height="100%"
+              buttons={(
+                <Button
+                  content="Add Level"
+                  icon="plus"
+                  onClick={() => act('newLevel')} />
+              )}>
+              {renderedLevels}
+            </Section>
+          </Stack.Item>
+        </Stack>
       </Window.Content>
     </Window>
   );
 };
 
-interface MapProps {
+interface MapPaneProps {
   readonly data: ModalMapData;
   readonly overmapData: ModalOvermapData;
   readonly act: actFunctionType;
 }
 
-const MapPane = (props: MapProps, context) => {
+const MapPane = (props: MapPaneProps, context) => {
   const [mapTab, setMapTab] = useLocalState(context, 'mapPaneTab', 'map');
   return (
     <Box width="100%" height="100%">
-      <Section title="Map" fill>
-        <Tabs fluid>
-          <Tabs.Tab selected={mapTab === 'map'} onClick={() => setMapTab('map')}>Map</Tabs.Tab>
-          <Tabs.Tab selected={mapTab === 'overmap'} onClick={() => setMapTab('overmap')}>Overmap</Tabs.Tab>
-        </Tabs>
+      <Tabs fluid>
+        <Tabs.Tab
+          style={{ "text-align": "center", "font-weight": "bold" }}
+          selected={mapTab === 'map'}
+          onClick={() => setMapTab('map')}>
+          Map
+        </Tabs.Tab>
+        <Tabs.Tab
+          style={{ "text-align": "center", "font-weight": "bold" }}
+          selected={mapTab === 'overmap'}
+          onClick={() => setMapTab('overmap')}>
+          Overmap
+        </Tabs.Tab>
+      </Tabs>
+      <Section>
         {mapTab === 'map' && (
           <>
             {JSON.stringify(props.data)}
