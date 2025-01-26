@@ -81,9 +81,11 @@
 		return FALSE
 	return ..()
 
-/obj/item/gun/launcher/crossbow/consume_next_throwable(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
+/obj/item/gun/launcher/crossbow/consume_next_throwable(datum/gun_firing_cycle/cycle)
 	. = bolt
 	bolt = null
+	if(!.)
+		return GUN_FIRED_FAIL_EMPTY
 
 /obj/item/gun/launcher/crossbow/post_fire(datum/gun_firing_cycle/cycle)
 	. = ..()

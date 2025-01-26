@@ -6,7 +6,39 @@
  */
 /obj/item/gun/projectile
 
-#warn firing
+/obj/item/gun/projectile/fire(datum/gun_firing_cycle/cycle)
+	//! LEGACY
+	// handle legacy systems
+	var/held_twohanded = TRUE
+	if(ismob(cycle.firing_atom))
+		var/mob/mob_firer = cycle.firing_atom
+		held_twohanded = item_flags & ITEM_MULTIHAND_WIELDED
+	//! END
+
+	// point of no return
+	var/obj/projectile/firing_projectile = consume_next_projectile(cycle)
+	if(!istype(firing_projectile))
+		// it's an error code if it's not real
+		return firing_projectile
+	// sike; real point of no return
+	SEND_SIGNAL(src, COMSIG_GUN_FIRING_PROJECTILE_INJECTION, cycle, firing_projectile)
+	// if they want to abort..
+	if(cycle.next_firing_fail_result)
+		// todo: deleting projectile here immediately in all cases is potentially unsound
+		qdel(firing_projectile)
+		return cycle.next_firing_fail_result
+
+	//! LEGACY
+	process_accuracy(firing_projectile, cycle.firing_actor?.performer, cycle.original_target, cycle.cycle_iterations_fired, held_twohanded)
+	// todo: this is ass because if the projectile misses we still get additional damage
+	// todo: Reachability(), not Adjacent().
+	if((cycle.firing_flags & GUN_FIRING_POINT_BLANK) && cycle.original_target && cycle.firing_atom.Adjacent(cycle.original_target))
+		process_point_blank(firing_projectile, cycle.firing_actor?.performer, cycle.original_target)
+	//! END
+
+	launch_projectile(cycle, firing_projectile)
+
+	return ..()
 
 /**
  * Called to actually fire a projectile.

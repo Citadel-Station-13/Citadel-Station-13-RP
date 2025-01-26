@@ -84,12 +84,14 @@
 	var/max_darts = 1
 	var/obj/item/syringe_cartridge/next
 
-/obj/item/gun/launcher/syringe/consume_next_throwable(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
+/obj/item/gun/launcher/syringe/consume_next_throwable(datum/gun_firing_cycle/cycle)
 	if(next)
 		next.prime()
 		. = next
 		darts -= next
 		next = null
+	else
+		return GUN_FIRED_FAIL_EMPTY
 
 /obj/item/gun/launcher/syringe/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()

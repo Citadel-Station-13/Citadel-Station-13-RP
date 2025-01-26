@@ -228,6 +228,28 @@
 //* Firing *//
 
 /**
+ * Called to fire a single time.
+ */
+/obj/item/gun/proc/fire(datum/gun_firing_cycle/cycle)
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
+
+	//! LEGACY
+	play_fire_sound(cycle.firing_actor?.performer, firing_projectile)
+	if(ismob(cycle.firing_atom))
+		mob_firer.break_cloak()
+	//! END
+
+	// todo: do we really need to newtonian move always? some guns shouldn't?
+	if(ismovable(cycle.firing_atom))
+		var/atom/movable/movable_firer = cycle.firing_atom
+		movable_firer.newtonian_move(angle2dir(cycle.original_angle))
+
+	// todo: muzzle flash implementation
+
+	last_fire = world.time
+
+/**
  * Called to handle post fire
  *
  * @return FALSE to abort firing cycle

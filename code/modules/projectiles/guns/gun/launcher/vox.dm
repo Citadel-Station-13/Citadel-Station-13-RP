@@ -46,8 +46,9 @@
 /obj/item/gun/launcher/spikethrower/update_release_force()
 	return
 
-/obj/item/gun/launcher/spikethrower/consume_next_throwable(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
-	if(spikes < 1) return null
+/obj/item/gun/launcher/spikethrower/consume_next_throwable(datum/gun_firing_cycle/cycle)
+	if(spikes < 1)
+		return GUN_FIRED_FAIL_EMPTY
 	spikes--
 	return new /obj/item/spike(src)
 
