@@ -153,6 +153,8 @@
 	return ..()
 
 /obj/item/gun/energy/staff/default_click_empty(datum/gun_firing_cycle/cycle)
+	// if this runtimes, too fucking bad
+	var/mob/user = cycle.firing_actor.performer
 	if (user)
 		user.visible_message("*fizzle*", "<span class='danger'>*fizzle*</span>")
 	else
