@@ -59,7 +59,7 @@
 	ammo_preload = /obj/item/ammo_casing/nt_protomag##_AMMO; \
 	rendering_static_overlay_color = /obj/item/ammo_casing/nt_protomag##_AMMO::stripe_color; \
 } \
-/obj/item/ammo_magazine/nt_protomag/rifle##SUFFIX { \
+/obj/item/ammo_magazine/nt_protomag/rifle##_SUFFIX { \
 	name = "protomag rifle magazine (" + _NAME + ")"; \
 	ammo_preload = /obj/item/ammo_casing/nt_protomag##_AMMO; \
 	rendering_static_overlay_color = /obj/item/ammo_casing/nt_protomag##_AMMO::stripe_color; \
@@ -70,8 +70,8 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_protomag/rifle##_SUFFIX
 /**
  * Generates magazines and designs for special protomag ammo.
  */
-#define NT_PROTOMAG_MAGAZINE_TYPEGEN_SPECIAL(ID, SUFFIX, NAME, AMMO) \
-NT_PROTOMAG_MAGAZINE_TYPEGEN(ID, SUFFIX, NAME, AMMO); \
+#define NT_PROTOMAG_MAGAZINE_TYPEGEN_SPECIAL(_ID, _SUFFIX, _NAME, _AMMO) \
+NT_PROTOMAG_MAGAZINE_TYPEGEN(_ID, _SUFFIX, _NAME, _AMMO); \
 /datum/prototype/design/generated/nt_protomag_ammo/pistol##_SUFFIX { \
 	lathe_type = LATHE_TYPE_PROTOLATHE; \
 } \
