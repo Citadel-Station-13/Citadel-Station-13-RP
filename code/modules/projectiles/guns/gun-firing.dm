@@ -219,7 +219,7 @@
 	on_firing_cycle_end(our_cycle)
 	SEND_SIGNAL(src, COMSIG_GUN_FIRING_CYCLE_END, our_cycle)
 	// log
-	log_projectile_firing_cycle(src, firer, our_cycle, actor)
+	log_gun_firing_cycle(src, firer, our_cycle, actor)
 	// set delay
 	next_fire_cycle = world.time + max(0, our_cycle.cycle_cooldown * our_cycle.overall_cooldown_multiply + our_cycle.overall_cooldown_adjust)
 
@@ -236,6 +236,7 @@
 
 	//! LEGACY
 	if(ismob(cycle.firing_atom))
+		var/mob/mob_firer = cycle.firing_atom
 		mob_firer.break_cloak()
 	//! END
 

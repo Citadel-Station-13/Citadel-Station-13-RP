@@ -415,10 +415,9 @@
  *
  * @params
  * * location - where to clone us
- * * include_contents - include semantic contents; ergo 'what we are hosting' vs 'what we are'
  */
-/atom/movable/clone(atom/location, include_contents)
-	return ..(include_contents)
+/atom/movable/clone(atom/location)
+	return ..()
 
 //? Perspectives
 /**

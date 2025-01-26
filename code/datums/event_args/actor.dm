@@ -20,7 +20,7 @@
 	src.performer = performer
 	src.initiator = initiator || performer
 
-/datum/event_args/actor/clone(include_contents)
+/datum/event_args/actor/clone()
 	var/datum/event_args/actor/cloning = new
 	cloning.performer = performer
 	cloning.initiator = initiator

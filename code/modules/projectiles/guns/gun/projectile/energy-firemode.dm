@@ -30,7 +30,7 @@
 			if("projectile_type")
 				src.projectile_type = value
 
-/datum/firemode/energy/clone(include_contents)
+/datum/firemode/energy/clone()
 	var/datum/firemode/energy/cloning = ..()
 	cloning.charge_cost = charge_cost
 	cloning.projectile_type = projectile_type
@@ -39,5 +39,5 @@
 
 /datum/firemode/energy/proc/instance_projectile()
 	if(projectile_instance)
-		#warn impl
+		return projectile_instance.clone()
 	return projectile_type ? new projectile_type : null

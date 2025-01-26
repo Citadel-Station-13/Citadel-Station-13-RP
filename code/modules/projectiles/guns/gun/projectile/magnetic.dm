@@ -15,6 +15,7 @@
 	one_handed_penalty = 15
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4, TECH_ILLEGAL = 2, TECH_MAGNET = 4)
 	w_class = WEIGHT_CLASS_BULKY
+	cell_system = TRUE
 
 	var/obj/item/stock_parts/capacitor/capacitor        // Installed capacitor. Higher rating == faster charge between shots.
 	var/obj/item/stock_parts/manipulator/manipulator    // Installed manipulator. Mostly for Phoron Bore, higher rating == less mats consumed upon firing
@@ -39,9 +40,10 @@
 	START_PROCESSING(SSobj, src)
 	if(capacitor)
 		power_per_tick = (power_cost*0.15) * capacitor.rating
-	update_icon()
 	. = ..()
 	obj_cell_slot.legacy_use_device_cells = FALSE
+	// todo : dont update icon here
+	update_icon()
 
 /obj/item/gun/projectile/magnetic/Destroy()
 	STOP_PROCESSING(SSobj, src)

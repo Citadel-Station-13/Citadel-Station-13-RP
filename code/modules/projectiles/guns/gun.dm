@@ -285,8 +285,7 @@
 	if(requires_icon_update)
 		update_icon()
 
-	//! LEGACY BELOW !//
-
+	//! LEGACY: Rendering
 	// if neither of these are here, we are using legacy render. //
 	if(!item_renderer && !mob_renderer && render_use_legacy_by_default)
 		item_icons = list(
@@ -315,31 +314,6 @@
 					stack_trace("[actual] ([actual.type]) couldn't be auto-installed on initialize despite being in list.")
 					qdel(actual)
 
-	//! LEGACY: firemodes
-	if(!islist(firemodes))
-		firemodes = list(firemodes)
-	for(var/i in 1 to firemodes.len)
-		var/key = firemodes[i]
-		if(islist(key))
-			firemodes[i] = new /datum/firemode(src, key)
-		else if(IS_ANONYMOUS_TYPEPATH(key))
-			firemodes[i] = new key
-		else if(ispath(key))
-			firemodes[i] = new key
-	if(length(firemodes))
-		sel_mode = 0
-		switch_firemodes()
-
-	//! LEGACY: accuracy
-	if(isnull(scoped_accuracy))
-		scoped_accuracy = accuracy
-
-	//! LEGACY: pin
-	if(pin)
-		pin = new pin(src)
-
-	//! LEGACY ABOVE !//
-
 	// cell system //
 	if(cell_system)
 		var/datum/object_system/cell_slot/slot = init_cell_slot(cell_type)
@@ -362,6 +336,29 @@
 				modular_component_slots = typelist(NAMEOF(src, modular_component_slots), modular_component_slots)
 		else
 			modular_component_slots = null
+
+	//! LEGACY: firemodes
+	if(!islist(firemodes))
+		firemodes = list(firemodes)
+	for(var/i in 1 to firemodes.len)
+		var/key = firemodes[i]
+		if(islist(key))
+			firemodes[i] = new /datum/firemode(src, key)
+		else if(IS_ANONYMOUS_TYPEPATH(key))
+			firemodes[i] = new key
+		else if(ispath(key))
+			firemodes[i] = new key
+	if(length(firemodes))
+		sel_mode = 1
+		switch_firemodes()
+
+	//! LEGACY: accuracy
+	if(isnull(scoped_accuracy))
+		scoped_accuracy = accuracy
+
+	//! LEGACY: pin
+	if(pin)
+		pin = new pin(src)
 
 	// firemodes //
 	reconsider_firemode_action()
@@ -646,7 +643,7 @@
 
 // PENDING FIREMODE REWORK
 /obj/item/gun/proc/legacy_get_firemode() as /datum/firemode
-	if(!length(firemodes) || (sel_mode > length(firemodes)))
+	if(!length(firemodes) || (sel_mode < 1) || (sel_mode > length(firemodes)))
 		return
 	return firemodes[sel_mode]
 

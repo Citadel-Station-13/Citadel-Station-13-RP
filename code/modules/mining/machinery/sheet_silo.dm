@@ -58,7 +58,7 @@
 	sheets.use(mat_amount)
 	sheets_by_material[mat_id] += mat_amount
 
-/obj/machinery/sheet_silo/clone(atom/location, include_contents)
+/obj/machinery/sheet_silo/clone(atom/location)
 	var/obj/machinery/sheet_silo/clone = ..()
 	clone.sheets_by_material = sheets_by_material.Copy()
 	return clone

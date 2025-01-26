@@ -63,9 +63,12 @@
 				src.cycle_cooldown = value
 			if("burst_delay")
 				src.burst_delay = value
-		LAZYSET(legacy_direct_varedits, varname, value || inherit_from_gun.vars[varname])
+		if(value)
+			LAZYSET(legacy_direct_varedits, varname, value)
+		else if(inherit_from_gun.vars.Find(varname))
+			LAZYSET(legacy_direct_varedits, varname, inherit_from_gun.vars[varname])
 
-/datum/firemode/clone(include_contents)
+/datum/firemode/clone()
 	var/datum/firemode/creating = new type
 	creating.name = name
 	creating.burst_amount = burst_amount
@@ -80,7 +83,10 @@
 // todo: annihilate this
 /datum/firemode/proc/apply_legacy_variables(obj/item/gun/gun)
 	for(var/varname in legacy_direct_varedits)
-		gun.vars[varname] = legacy_direct_varedits[varname]
+		switch(varname)
+			if("mode_name")
+			else
+				gun.vars[varname] = legacy_direct_varedits[varname]
 
 /datum/firemode/proc/fetch_radial_appearance()
 	return radial_appearance || (radial_appearance = make_radial_appearance())
