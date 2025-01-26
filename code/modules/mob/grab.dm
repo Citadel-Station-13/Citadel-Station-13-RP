@@ -198,7 +198,9 @@
 			if(affecting.loc != assailant.loc || size_difference(affecting, assailant) > 0)
 				force_down = 0
 			else
-				affecting.afflict_paralyze(20 * 2)
+				affecting.afflict_knockdown(3 SECONDS)
+				affecting.afflict_root(3 SECONDS)
+				affecting.afflict_daze(3 SECONDS)
 
 	if(state >= GRAB_NECK)
 		affecting.afflict_stun(20 * 3)
@@ -650,7 +652,9 @@
 
 /obj/item/grab/proc/apply_pinning(mob/target, mob/attacker)
 	force_down = 1
-	target.afflict_paralyze(20 * 3)
+	target.afflict_knockdown(4 SECONDS)
+	target.afflict_root(4 SECONDS)
+	target.afflict_daze(4 SECONDS)
 	step_to(attacker, target)
 	attacker.setDir(EAST) //face the victim
 	target.setDir(SOUTH) //face up
