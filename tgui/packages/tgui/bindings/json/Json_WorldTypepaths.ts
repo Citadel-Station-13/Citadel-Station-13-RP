@@ -3,9 +3,10 @@
  * @license MIT
  */
 
-import { DM_AtomSpawnFlags } from "../types";
+import { Json_AssetPackBase } from ".";
+import { DM_AtomSpawnFlags } from "../game";
 
-export interface Json_WorldTypepaths {
+export interface Json_WorldTypepaths extends Json_AssetPackBase {
   turfs: typepathDescriptorList;
   objs: typepathDescriptorList;
   mobs: typepathDescriptorList;

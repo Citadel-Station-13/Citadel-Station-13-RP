@@ -42,9 +42,11 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 	//* load *//
 
 	/// primed for load?
-	var/primed = FALSE
+	var/tmp/primed = FALSE
 	/// all checks pass?
-	var/ready = FALSE
+	var/tmp/ready = FALSE
+	/// loaded?
+	var/tmp/loaded = FALSE
 
 	var/tmp/world_maxz_at_prime
 
@@ -67,8 +69,6 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 		else
 			QDEL_NULL(buffer)
 	return ..()
-
-#warn impl
 
 /datum/admin_modal/load_map_sector/ui_nested_data(mob/user, datum/tgui/ui)
 	. = ..()
@@ -325,7 +325,18 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 	if(world.maxz != world_maxz_at_prime)
 		unprime()
 		return FALSE
-	#warn impl
+	if(loaded)
+		return TRUE
+	. = do_load()
+	if(!.)
+		return
+	loaded = TRUE
+
+/datum/admin_modal/load_map_sector/proc/do_load()
+	set waitfor = FALSE
+
+	. = TRUE
+	SSmapping.load_map(buffer)
 
 /datum/admin_modal/load_map_sector/proc/create_level()
 	var/datum/map_level/appending = new(buffer)

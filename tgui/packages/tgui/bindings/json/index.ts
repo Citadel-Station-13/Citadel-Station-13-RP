@@ -11,6 +11,8 @@ export enum JsonMappings {
   MapSystem = "MapSystem",
 }
 
+export interface Json_AssetPackBase {}
+
 export const resolveJsonAssetName = (jsonType: JsonMappings) => `${jsonType}.json`;
 
 export { Json_WorldTypepaths } from './Json_WorldTypepaths';
