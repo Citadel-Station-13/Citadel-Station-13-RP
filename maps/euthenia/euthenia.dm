@@ -25,6 +25,7 @@
 		/datum/map/sector/frozen_192,
 		/datum/map/sector/wasteland_192,
 		/datum/map/sector/nebula_tradeport,
+		/datum/map/sector/delerict_casino,
 		/datum/map/sector/surt,
 		/datum/map/sector/miaphus,
 		/datum/map/sector/roguemining_192/one,
