@@ -5595,6 +5595,9 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
+/obj/machinery/fire_alarm/south_mount{
+	pixel_y = -24
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/surfacebase/tram)
 "ejN" = (
@@ -11611,15 +11614,6 @@
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
-"iqq" = (
-/obj/machinery/door/airlock/maintenance/common{
-	id_tag = "maint_dorm"
-	},
-/obj/machinery/door/firedoor,
-/obj/structure/catwalk,
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/endeavour/hallway/d1fwdmaint)
 "iqr" = (
 /obj/structure/table/standard,
 /obj/item/inflatable_duck,
@@ -20282,10 +20276,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1aftmaint)
-"ozV" = (
-/obj/structure/bed/chair,
-/turf/simulated/floor/tiled,
-/area/endeavour/surfacebase/tram)
 "ozZ" = (
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
@@ -26970,9 +26960,6 @@
 /area/library)
 "tCP" = (
 /obj/machinery/light,
-/obj/machinery/fire_alarm/south_mount{
-	pixel_y = -24
-	},
 /obj/structure/bed/chair{
 	dir = 1
 	},
@@ -41844,7 +41831,7 @@ rTZ
 rTZ
 rTZ
 rTZ
-ozV
+gjY
 cMJ
 nTt
 tAk
@@ -42038,7 +42025,7 @@ eFW
 cMJ
 rTZ
 rTZ
-ozV
+gjY
 cMJ
 tAk
 tAk
@@ -42232,7 +42219,7 @@ eNz
 cMJ
 rTZ
 rTZ
-ozV
+gjY
 cMJ
 tAk
 tAk
@@ -61829,7 +61816,7 @@ wSl
 tHJ
 tHJ
 ivO
-iqq
+uKO
 byt
 byt
 ris
