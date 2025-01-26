@@ -4,13 +4,13 @@
  * @license MIT
  */
 
-import { classes } from 'common/react';
+import { BooleanLike, classes } from 'common/react';
 import { RefObject } from 'inferno';
 import { computeFlexClassName, computeFlexItemClassName, computeFlexItemProps, computeFlexProps, FlexItemProps, FlexProps } from './Flex';
 
 type StackProps = FlexProps & {
-  readonly vertical?: boolean;
-  readonly fill?: boolean;
+  readonly vertical?: BooleanLike;
+  readonly fill?: BooleanLike;
 };
 
 export const Stack = (props: StackProps) => {
@@ -56,7 +56,7 @@ const StackItem = (props: StackItemProps) => {
 Stack.Item = StackItem;
 
 type StackDividerProps = FlexItemProps & {
-  readonly hidden?: boolean;
+  readonly hidden?: BooleanLike;
 };
 
 const StackDivider = (props: StackDividerProps) => {

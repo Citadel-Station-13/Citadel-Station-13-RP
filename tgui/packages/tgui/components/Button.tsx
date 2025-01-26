@@ -6,8 +6,8 @@
 
 import { Placement } from '@popperjs/core';
 import { KEY_ENTER, KEY_ESCAPE, KEY_SPACE } from 'common/keycodes';
-import { BooleanLike, classes, pureComponentHooks, StrictlyStringLike } from 'common/react';
-import { Component, createRef } from 'inferno';
+import { BooleanLike, classes, pureComponentHooks } from 'common/react';
+import { Component, createRef, InfernoNode } from 'inferno';
 import { createLogger } from '../logging';
 import { Box, BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 import { Icon } from './Icon';
@@ -28,7 +28,7 @@ export type ButtonProps = BoxProps & {
   readonly color?: string | BooleanLike;
   readonly disabled?: BooleanLike;
   readonly selected?: BooleanLike;
-  readonly tooltip?: StrictlyStringLike;
+  readonly tooltip?: InfernoNode;
   readonly tooltipPosition?: Placement;
   readonly ellipsis?: BooleanLike;
   readonly circular?: BooleanLike;

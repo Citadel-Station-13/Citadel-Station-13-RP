@@ -44,7 +44,7 @@ export const Tabs = (props: TabsProps) => {
 
 interface TabProps extends BoxProps {
   readonly selected?: BooleanLike;
-  readonly color?: string;
+  readonly color?: string | null | undefined;
   readonly icon?: string;
   readonly leftSlot?: InfernoNode;
   readonly rightSlot?: InfernoNode;

@@ -56,7 +56,7 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 		loud_rejection("Cannot load new map sectors while the server is initializing.")
 		return FALSE
 	. = ..()
-	buffer = new
+	buffer = new /datum/map/custom
 	buffer.name = "Custom Map"
 
 /datum/admin_modal/load_map_sector/Destroy()

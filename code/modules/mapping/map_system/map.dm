@@ -443,3 +443,5 @@
  * custom maps
  */
 /datum/map/custom
+	center = TRUE
+	orientation = SOUTH
