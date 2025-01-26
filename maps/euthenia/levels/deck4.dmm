@@ -775,7 +775,7 @@
 /area/main_map/maintenance/deck_four/starboard)
 "cN" = (
 /obj/structure/table/standard,
-/obj/item/gun/energy/taser/xeno,
+/obj/item/gun/projectile/energy/taser/xeno,
 /obj/item/melee/baton/slime/loaded,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
@@ -1043,10 +1043,10 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/item/gun/energy/kinetic_accelerator,
-/obj/item/gun/energy/kinetic_accelerator,
-/obj/item/gun/energy/kinetic_accelerator,
-/obj/item/gun/energy/kinetic_accelerator,
+/obj/item/gun/projectile/energy/kinetic_accelerator,
+/obj/item/gun/projectile/energy/kinetic_accelerator,
+/obj/item/gun/projectile/energy/kinetic_accelerator,
+/obj/item/gun/projectile/energy/kinetic_accelerator,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "dF" = (
@@ -13214,7 +13214,7 @@
 /area/exploration/explorer_prep)
 "Tg" = (
 /obj/structure/table/standard,
-/obj/item/gun/energy/taser/xeno,
+/obj/item/gun/projectile/energy/taser/xeno,
 /obj/item/multitool,
 /obj/structure/window/reinforced{
 	dir = 8

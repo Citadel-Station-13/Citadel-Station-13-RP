@@ -769,7 +769,7 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "rl" = (
 /obj/effect/debris/cleanable/dirt,
-/obj/item/gun/energy/taser/xeno,
+/obj/item/gun/projectile/energy/taser/xeno,
 /turf/simulated/floor/tiled/white,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "rm" = (
@@ -862,7 +862,7 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "tC" = (
 /obj/structure/table/rack,
-/obj/item/gun/energy/sniperrifle,
+/obj/item/gun/projectile/energy/sniperrifle,
 /turf/simulated/floor/tiled/steel,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "tE" = (
@@ -890,7 +890,7 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "uI" = (
 /obj/structure/table/rack,
-/obj/item/gun/ballistic/shotgun/doublebarrel,
+/obj/item/gun/projectile/ballistic/shotgun/doublebarrel,
 /turf/simulated/floor/tiled/steel,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "uP" = (
@@ -1541,7 +1541,7 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "IO" = (
 /obj/structure/table/rack,
-/obj/item/gun/energy/ionrifle/pistol,
+/obj/item/gun/projectile/energy/ionrifle/pistol,
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
 	},
