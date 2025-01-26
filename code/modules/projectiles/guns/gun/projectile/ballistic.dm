@@ -6,7 +6,7 @@
  * They have simulation / support for both direct-load / internal magazines, as well as
  * attached / inserted external magazines.
  */
-/obj/item/gun/ballistic
+/obj/item/gun/projectile/ballistic
 	name = "gun"
 	desc = "A gun that fires bullets."
 	description_info = "This is a ballistic weapon.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
@@ -79,7 +79,7 @@
 	//var/list/icon_keys = list()		//keys
 	//var/list/ammo_states = list()	//values
 
-/obj/item/gun/ballistic/Initialize(mapload, starts_loaded = TRUE)
+/obj/item/gun/projectile/ballistic/Initialize(mapload, starts_loaded = TRUE)
 	. = ..()
 	if(starts_loaded)
 		if(ispath(ammo_type) && (load_method & (SINGLE_CASING|SPEEDLOADER)))
@@ -94,7 +94,7 @@
 	else if(load_method & MAGAZINE)
 		load_method_converted |= MAGAZINE_TYPE_NORMAL
 
-/obj/item/gun/ballistic/update_icon_state()
+/obj/item/gun/projectile/ballistic/update_icon_state()
 	. = ..()
 	if((item_renderer || mob_renderer) || !render_use_legacy_by_default)
 		return // using new system
@@ -103,7 +103,7 @@
 	if(magazine_type)
 		icon_state = "[silenced_state][magazine_state]"
 
-/obj/item/gun/ballistic/consume_next_projectile(datum/gun_firing_cycle/cycle)
+/obj/item/gun/projectile/ballistic/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	//get the next casing
 	if(loaded.len)
 		chambered = loaded[1] //load next casing.
@@ -123,10 +123,10 @@
  * Either will return an /obj/projectile,
  * or return a GUN_FIRED_* define that is not SUCCESS.
  */
-/obj/item/gun/ballistic/proc/prime_casing(datum/gun_firing_cycle/cycle, obj/item/ammo_casing/casing, casing_primer)
+/obj/item/gun/projectile/ballistic/proc/prime_casing(datum/gun_firing_cycle/cycle, obj/item/ammo_casing/casing, casing_primer)
 	return casing.process_fire(casing_primer)
 
-/obj/item/gun/ballistic/post_fire(atom/firer, angle, firing_flags, datum/firemode/firemode, iteration, firing_result, atom/target, datum/event_args/actor/actor)
+/obj/item/gun/projectile/ballistic/post_fire(atom/firer, angle, firing_flags, datum/firemode/firemode, iteration, firing_result, atom/target, datum/event_args/actor/actor)
 	. = ..()
 	switch(firing_result)
 		// process chamber
@@ -134,7 +134,7 @@
 			process_chambered()
 
 // todo: refactor
-/obj/item/gun/ballistic/proc/process_chambered()
+/obj/item/gun/projectile/ballistic/proc/process_chambered()
 	if (!chambered)
 		return
 
@@ -171,7 +171,7 @@
 #define SPEED_RELOAD_SPEED    0.5 SECONDS
 //Attempts to load A into src, depending on the type of thing being loaded and the load_method
 //Maybe this should be broken up into separate procs for each load method?
-/obj/item/gun/ballistic/proc/load_ammo(obj/item/A, mob/user)
+/obj/item/gun/projectile/ballistic/proc/load_ammo(obj/item/A, mob/user)
 	if(istype(A, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/AM = A
 		if(!(load_method_converted & AM.magazine_type) || !accepts_caliber(AM.ammo_caliber) || allowed_magazines && !is_type_in_list(A, allowed_magazines))
@@ -269,7 +269,7 @@
 #undef SPEED_RELOAD_SPEED
 
 //attempts to unload src. If allow_dump is set to 0, the speedloader unloading method will be disabled
-/obj/item/gun/ballistic/proc/unload_ammo(mob/user, var/allow_dump=1)
+/obj/item/gun/projectile/ballistic/proc/unload_ammo(mob/user, var/allow_dump=1)
 	if(ammo_magazine)
 		user.put_in_hands_or_drop(ammo_magazine)
 		user.visible_message("[user] removes [ammo_magazine] from [src].", "<span class='notice'>You remove [ammo_magazine] from [src].</span>")
@@ -298,7 +298,7 @@
 		to_chat(user, "<span class='warning'>[src] is empty.</span>")
 	update_icon()
 
-/obj/item/gun/ballistic/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/projectile/ballistic/attackby(var/obj/item/A as obj, mob/user as mob)
 	..()
 	load_ammo(A, user)
 
@@ -323,7 +323,7 @@
 				set_weight_class(WEIGHT_CLASS_SMALL)
 				update_icon()
 
-/obj/item/gun/ballistic/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/gun/projectile/ballistic/attack_self(mob/user, datum/event_args/actor/actor)
 	if(firemodes.len > 1)
 		switch_firemodes(user)
 	else if(ammo_magazine)
@@ -336,13 +336,13 @@
 		unload_ammo(user)
 	update_icon()
 
-/obj/item/gun/ballistic/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/gun/projectile/ballistic/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		unload_ammo(user, allow_dump=0)
 	else
 		return ..()
 
-/obj/item/gun/ballistic/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+/obj/item/gun/projectile/ballistic/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	..()
 	if(auto_eject && ammo_magazine && !ammo_magazine.amount_remaining())
 		ammo_magazine.loc = get_turf(src.loc)
@@ -356,13 +356,13 @@
 		ammo_magazine = null
 		update_icon() //make sure to do this after unsetting ammo_magazine
 
-/obj/item/gun/ballistic/examine(mob/user, dist)
+/obj/item/gun/projectile/ballistic/examine(mob/user, dist)
 	. = ..()
 	if(ammo_magazine)
 		. += "It has \a [ammo_magazine] loaded."
 	. += "Has [getAmmo()] round\s remaining."
 
-/obj/item/gun/ballistic/proc/getAmmo()
+/obj/item/gun/projectile/ballistic/proc/getAmmo()
 	var/bullets = 0
 	if(loaded)
 		bullets += loaded.len
@@ -377,7 +377,7 @@
 /**
  * Can accept an ammo casing
  */
-/obj/item/gun/ballistic/proc/accepts_casing(obj/item/ammo_casing/casing)
+/obj/item/gun/projectile/ballistic/proc/accepts_casing(obj/item/ammo_casing/casing)
 	if(!accepts_caliber(casing.caliber))
 		return FALSE
 	return TRUE
@@ -393,7 +393,7 @@
  *
  * @return TRUE / FALSE
  */
-/obj/item/gun/ballistic/proc/accepts_caliber(datum/ammo_caliber/caliberlike)
+/obj/item/gun/projectile/ballistic/proc/accepts_caliber(datum/ammo_caliber/caliberlike)
 	var/datum/ammo_caliber/ours = resolve_caliber(caliber)
 	var/datum/ammo_caliber/theirs = resolve_caliber(caliberlike)
 	return ours.equivalent(theirs)
@@ -403,7 +403,7 @@
 /**
  * Returns an overlay for a magazine. This can be a string, or anything else that goes into our 'overlays' list.
  */
-/obj/item/gun/ballistic/proc/get_magazine_overlay_for(obj/item/ammo_magazine/magazine)
+/obj/item/gun/projectile/ballistic/proc/get_magazine_overlay_for(obj/item/ammo_magazine/magazine)
 	var/effective_magazine_class = magazine.magazine_class
 	if(!(effective_magazine_class & render_magazine_overlay))
 		if(render_magazine_overlay & MAGAZINE_CLASS_GENERIC)
@@ -412,7 +412,7 @@
 			return
 	return global.magazine_class_bit_to_state[log(2, magazine.magazine_class) + 1]
 
-/obj/item/gun/ballistic/update_icon()
+/obj/item/gun/projectile/ballistic/update_icon()
 	// todo: shouldn't need this check, deal with legacy
 	if(!item_renderer && !mob_renderer && render_use_legacy_by_default)
 		return ..()

@@ -23,45 +23,45 @@
 	id = "stunrevolver"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_POWER = 2)
 	materials_base = list(MAT_STEEL = 4000)
-	build_path = /obj/item/gun/energy/stunrevolver
+	build_path = /obj/item/gun/projectile/energy/stunrevolver
 
 /datum/prototype/design/science/weapon/energy/nuclear_gun
 	id = "nuclear_gun"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 5, TECH_POWER = 3)
 	materials_base = list(MAT_STEEL = 5000, MAT_GLASS = 1000, MAT_URANIUM = 500)
-	build_path = /obj/item/gun/energy/gun/nuclear
+	build_path = /obj/item/gun/projectile/energy/gun/nuclear
 
 /datum/prototype/design/science/weapon/energy/phoronpistol
 	id = "ppistol"
 	req_tech = list(TECH_COMBAT = 5, TECH_PHORON = 4)
 	materials_base = list(MAT_STEEL = 5000, MAT_GLASS = 1000, MAT_PHORON = 3000)
-	build_path = /obj/item/gun/energy/toxgun
+	build_path = /obj/item/gun/projectile/energy/toxgun
 
 /datum/prototype/design/science/weapon/energy/lasercannon
 	desc = "The lasing medium of this prototype is enclosed in a tube lined with uranium-235 and subjected to high neutron flux in a nuclear reactor core."
 	id = "lasercannon"
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3, TECH_POWER = 3)
 	materials_base = list(MAT_STEEL = 10000, MAT_GLASS = 1000, MAT_DIAMOND = 2000)
-	build_path = /obj/item/gun/energy/lasercannon
+	build_path = /obj/item/gun/projectile/energy/lasercannon
 
 /datum/prototype/design/science/weapon/energy/decloner
 	id = "decloner"
 	req_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 7, TECH_BIO = 5, TECH_POWER = 6)
 	materials_base = list(MAT_GOLD = 5000,MAT_URANIUM = 10000)
-	build_path = /obj/item/gun/energy/decloner
+	build_path = /obj/item/gun/projectile/energy/decloner
 
 /datum/prototype/design/science/weapon/energy/temp_gun
 	desc = "A gun that shoots high-powered glass-encased energy temperature bullets."
 	id = "temp_gun"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 4, TECH_POWER = 3, TECH_MAGNET = 2)
 	materials_base = list(MAT_STEEL = 5000, MAT_GLASS = 500, MAT_SILVER = 3000)
-	build_path = /obj/item/gun/energy/temperature
+	build_path = /obj/item/gun/projectile/energy/temperature
 
 /datum/prototype/design/science/weapon/energy/flora_gun
 	id = "flora_gun"
 	req_tech = list(TECH_MATERIAL = 2, TECH_BIO = 3, TECH_POWER = 3)
 	materials_base = list(MAT_STEEL = 2000, MAT_GLASS = 500, MAT_URANIUM = 500)
-	build_path = /obj/item/gun/energy/floragun
+	build_path = /obj/item/gun/projectile/energy/floragun
 
 /datum/prototype/design/science/weapon/ballistic
 	subcategory = DESIGN_SUBCATEGORY_BALLISTIC
@@ -75,14 +75,14 @@
 	desc = "An advanced 9mm SMG with a reflective laser optic."
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3)
 	materials_base = list(MAT_STEEL = 8000, MAT_SILVER = 2000, MAT_DIAMOND = 1000)
-	build_path = /obj/item/gun/ballistic/automatic/advanced_smg
+	build_path = /obj/item/gun/projectile/ballistic/automatic/advanced_smg
 
 /datum/prototype/design/science/weapon/ballistic/p90
 	id = "p90"
 	desc = "The H90K is a compact, large capacity submachine gun produced by Hephaestus Industries. Despite its fierce reputation, it still manages to feel like a toy. Uses 9mm rounds."
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
 	materials_base = list(MAT_STEEL = 5000, MAT_PLASTIC = 5000, MAT_URANIUM = 1000)
-	build_path = /obj/item/gun/ballistic/automatic/p90
+	build_path = /obj/item/gun/projectile/ballistic/automatic/p90
 
 /datum/prototype/design/science/weapon/ballistic/ammo
 	abstract_type = /datum/prototype/design/science/weapon/ballistic/ammo
@@ -250,15 +250,15 @@
 
 /datum/prototype/design/science/weapon/magnetic/nt_protomag
 	abstract_type = /datum/prototype/design/science/weapon/magnetic/nt_protomag
-	desc = /obj/item/gun/ballistic/magnetic/modular/nt_protomag::desc
+	desc = /obj/item/gun/projectile/ballistic/magnetic/nt_protomag::desc
 
 /datum/prototype/design/science/weapon/magnetic/nt_protomag/pistol
 	design_name = "protomag sidearm"
-	build_path = /obj/item/gun/ballistic/magnetic/modular/nt_protomag/sidearm
+	build_path = /obj/item/gun/projectile/ballistic/magnetic/nt_protomag/sidearm
 
 /datum/prototype/design/science/weapon/magnetic/nt_protomag/rifle
 	design_name = "protomag rifle"
-	build_path = /obj/item/gun/ballistic/magnetic/modular/nt_protomag/rifle
+	build_path = /obj/item/gun/projectile/ballistic/magnetic/nt_protomag/rifle
 
 /datum/prototype/design/science/weapon/phase
 	abstract_type = /datum/prototype/design/science/weapon/phase
@@ -270,25 +270,25 @@
 	id = "phasepistol"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2, TECH_POWER = 2)
 	materials_base = list(MAT_STEEL = 4000)
-	build_path = /obj/item/gun/energy/phasegun/pistol
+	build_path = /obj/item/gun/projectile/energy/phasegun/pistol
 
 /datum/prototype/design/science/weapon/phase/phase_carbine
 	id = "phasecarbine"
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2, TECH_POWER = 2)
 	materials_base = list(MAT_STEEL = 6000, MAT_GLASS = 1500)
-	build_path = /obj/item/gun/energy/phasegun
+	build_path = /obj/item/gun/projectile/energy/phasegun
 
 /datum/prototype/design/science/weapon/phase/phase_rifle
 	id = "phaserifle"
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3, TECH_POWER = 3)
 	materials_base = list(MAT_STEEL = 7000, MAT_GLASS = 2000, MAT_SILVER = 500)
-	build_path = /obj/item/gun/energy/phasegun/rifle
+	build_path = /obj/item/gun/projectile/energy/phasegun/rifle
 
 /datum/prototype/design/science/weapon/phase/phase_cannon
 	id = "phasecannon"
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 4, TECH_POWER = 4)
 	materials_base = list(MAT_STEEL = 10000, MAT_GLASS = 2000, MAT_SILVER = 1000, MAT_DIAMOND = 750)
-	build_path = /obj/item/gun/energy/phasegun/cannon
+	build_path = /obj/item/gun/projectile/energy/phasegun/cannon
 
 // Other weapons
 
@@ -303,7 +303,7 @@
 	id = "dartgun_r"
 	req_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 4, TECH_BIO = 4, TECH_MAGNET = 3, TECH_ILLEGAL = 1)
 	materials_base = list(MAT_STEEL = 5000, MAT_GOLD = 5000, MAT_SILVER = 2500, MAT_GLASS = 750)
-	build_path = /obj/item/gun/ballistic/dartgun/research
+	build_path = /obj/item/gun/projectile/ballistic/dartgun/research
 
 /datum/prototype/design/science/weapon/chemsprayer
 	desc = "An advanced chem spraying device."
@@ -315,7 +315,7 @@
 	id = "fuelrod_gun"
 	req_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 4, TECH_PHORON = 4, TECH_ILLEGAL = 5, TECH_MAGNET = 5)
 	materials_base = list(MAT_STEEL = 10000, MAT_GLASS = 2000, MAT_GOLD = 500, MAT_SILVER = 500, MAT_URANIUM = 1000, MAT_PHORON = 3000, MAT_DIAMOND = 1000)
-	build_path = /obj/item/gun/magnetic/fuelrod
+	build_path = /obj/item/gun/projectile/magnetic/fuelrod
 
 // Ammo for those
 
@@ -381,21 +381,21 @@
 	id = "netgun"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 5, TECH_MAGNET = 3)
 	materials_base = list(MAT_STEEL = 6000, MAT_GLASS = 3000)
-	build_path = /obj/item/gun/energy/netgun
+	build_path = /obj/item/gun/projectile/energy/netgun
 
 /datum/prototype/design/science/weapon/energy/sickshot
 	desc = "The 'Discombobulator' is a 4-shot energy revolver that causes nausea and confusion."
 	id = "sickshot"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_MAGNET = 2)
 	materials_base = list(MAT_STEEL = 3000, MAT_GLASS = 2000)
-	build_path = /obj/item/gun/energy/sickshot
+	build_path = /obj/item/gun/projectile/energy/sickshot
 
 /datum/prototype/design/science/weapon/pummeler
 	desc = "With the 'Pummeler', punt anyone you don't like out of the room!"
 	id = "pummeler"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_MAGNET = 5)
 	materials_base = list(MAT_STEEL = 3000, MAT_GLASS = 3000, MAT_URANIUM = 1000)
-	build_path = /obj/item/gun/energy/pummeler
+	build_path = /obj/item/gun/projectile/energy/pummeler
 
 /datum/prototype/design/science/weapon/particle
 	abstract_type = /datum/prototype/design/science/weapon/particle
@@ -408,14 +408,14 @@
 	id = "advparticle"
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 5, TECH_POWER = 3, TECH_MAGNET = 3)
 	materials_base = list(MAT_STEEL = 5000, MAT_GLASS = 1000, MAT_GOLD = 1000, MAT_URANIUM = 750)
-	build_path = /obj/item/gun/energy/particle/advanced
+	build_path = /obj/item/gun/projectile/energy/particle/advanced
 
 /datum/prototype/design/science/weapon/particle/particlecannon
 	design_name = "Anti-particle cannon"
 	id = "particlecannon"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 5, TECH_POWER = 4, TECH_MAGNET = 4)
 	materials_base = list(MAT_STEEL = 10000, MAT_GLASS = 1500, MAT_GOLD = 2000, MAT_URANIUM = 1000, MAT_DIAMOND = 2000)
-	build_path = /obj/item/gun/energy/particle/cannon
+	build_path = /obj/item/gun/projectile/energy/particle/cannon
 
 /datum/prototype/design/science/weapon/particle/pressureinterlock
 	design_name = "APP pressure interlock"
@@ -435,7 +435,7 @@
 	id = "nsfw_prototype"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 4, TECH_POWER = 4, TECH_COMBAT = 7)
 	materials_base = list(MAT_STEEL = 10000, MAT_GLASS = 6000, MAT_PHORON = 8000, MAT_URANIUM = 4000)
-	build_path = /obj/item/gun/ballistic/microbattery/combat/prototype
+	build_path = /obj/item/gun/projectile/ballistic/microbattery/combat/prototype
 
 /datum/prototype/design/science/weapon/cell_based/prototype_nsfw_mag
 	design_name = "combat cell magazine"

@@ -190,6 +190,7 @@
 	/// currently installed components.
 	///
 	/// * This is a lazy list.
+	/// * This is nulled out if [modular_system] is off.
 	var/list/obj/item/gun_component/modular_components
 	/// lazy way to set internal slots, because this is modified so often
 	///
@@ -348,16 +349,19 @@
 
 	// modular components //
 	if(islist(modular_component_slots))
-		var/list/existing_typelist = get_typelist(NAMEOF(src, modular_component_slots))
-		if(existing_typelist)
-			modular_component_slots = existing_typelist
+		if(modular_system)
+			var/list/existing_typelist = get_typelist(NAMEOF(src, modular_component_slots))
+			if(existing_typelist)
+				modular_component_slots = existing_typelist
+			else
+				// if it's 1. a list and 2. we can't grab a typelist for it,
+				// we make it, patching internal modules lazily
+				var/internal_modules_patch = modular_component_slots[GUN_COMPONENT_INTERNAL_MODULE]
+				if(isnull(internal_modules_patch))
+					modular_component_slots[GUN_COMPONENT_INTERNAL_MODULE] = modular_component_slots_internal
+				modular_component_slots = typelist(NAMEOF(src, modular_component_slots), modular_component_slots)
 		else
-			// if it's 1. a list and 2. we can't grab a typelist for it,
-			// we make it, patching internal modules lazily
-			var/internal_modules_patch = modular_component_slots[GUN_COMPONENT_INTERNAL_MODULE]
-			if(isnull(internal_modules_patch))
-				modular_component_slots[GUN_COMPONENT_INTERNAL_MODULE] = modular_component_slots_internal
-			modular_component_slots = typelist(NAMEOF(src, modular_component_slots), modular_component_slots)
+			modular_component_slots = null
 
 	// firemodes //
 	reconsider_firemode_action()

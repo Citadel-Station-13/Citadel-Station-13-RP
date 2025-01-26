@@ -91,12 +91,12 @@
 
 //* Heavy Rifles *//
 
-/obj/item/gun/ballistic/nt_expedition/heavy_rifle
-	abstract_type = /obj/item/gun/ballistic/nt_expedition/heavy_rifle
+/obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle
+	abstract_type = /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-heavy.dmi'
 	caliber = /datum/ammo_caliber/nt_expedition/heavy_rifle
 
-/obj/item/gun/ballistic/nt_expedition/heavy_rifle/singleshot
+/obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/singleshot
 	name = "marksman rifle"
 	desc = "The XNR(S) Mk.10 \"Old Man\" marksman rifle; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
@@ -110,7 +110,7 @@
 	item_renderer = /datum/gun_item_renderer/empty_state
 	load_method = SINGLE_CASING | SPEEDLOADER
 
-/obj/item/gun/ballistic/nt_expedition/heavy_rifle/semirifle
+/obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/semirifle
 	name = "heavy rifle"
 	desc = "The XNR Mk.9 \"Ranger\" heavy rifle; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
@@ -126,7 +126,7 @@
 	item_renderer = /datum/gun_item_renderer/empty_state
 	load_method = MAGAZINE | SINGLE_CASING
 
-/obj/item/gun/ballistic/nt_expedition/heavy_rifle/autorifle
+/obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/autorifle
 	name = "heavy automatic rifle"
 	desc = "The XNR MK.9 Mod.1 \"Auto Ranger\" heavy rifle; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
@@ -142,7 +142,7 @@
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	load_method = MAGAZINE | SINGLE_CASING
 
-/obj/item/gun/ballistic/nt_expedition/heavy_rifle/lmg
+/obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/lmg
 	name = "light machine gun"
 	desc = "The XNR Mk.9 Mod.2 \"Hailmaker\" light machine gun; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"

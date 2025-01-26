@@ -3,7 +3,7 @@
  *
  * These are guns that generally will only utilize energy to generate their ammunition.
  */
-/obj/item/gun/energy
+/obj/item/gun/projectile/energy
 	name = "energy gun"
 	desc = "A basic energy-based gun. Nanotrasen, Hephaestus, Ward-Takahashi, and countless other smaller corporations have their own version of this reliable design."
 	icon = 'icons/obj/gun/energy.dmi'
@@ -34,7 +34,7 @@
 
 	var/legacy_battery_lock = 0	//If set, weapon cannot switch batteries
 
-/obj/item/gun/energy/Initialize(mapload)
+/obj/item/gun/projectile/energy/Initialize(mapload)
 	if(self_recharge)
 		cell_system = TRUE
 		cell_type = cell_type || /obj/item/cell/device/weapon
@@ -42,12 +42,12 @@
 	. = ..()
 	update_icon()
 
-/obj/item/gun/energy/Destroy()
+/obj/item/gun/projectile/energy/Destroy()
 	if(self_recharge)
 		STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/gun/energy/process(delta_time)
+/obj/item/gun/projectile/energy/process(delta_time)
 	if(self_recharge) //Every [recharge_time] ticks, recharge a shot for the battery
 		if(world.time > last_fire + charge_delay)	//Doesn't work if you've fired recently
 			if(!obj_cell_slot.cell || obj_cell_slot.cell.charge >= obj_cell_slot.cell.maxcharge)
@@ -91,18 +91,18 @@
 			charge_tick = 0
 	return 1
 
-/obj/item/gun/energy/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/projectile/energy/attackby(var/obj/item/A as obj, mob/user as mob)
 	..()
 
-/obj/item/gun/energy/switch_firemodes(mob/user)
+/obj/item/gun/projectile/energy/switch_firemodes(mob/user)
 	if(..())
 		update_icon()
 
-/obj/item/gun/energy/emp_act(severity)
+/obj/item/gun/projectile/energy/emp_act(severity)
 	..()
 	update_icon()
 
-/obj/item/gun/energy/consume_next_projectile(datum/gun_firing_cycle/cycle)
+/obj/item/gun/projectile/energy/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	var/datum/firemode/energy/energy_firemode = legacy_get_firemode()
 	if(!istype(energy_firemode))
 		return null
@@ -112,7 +112,7 @@
 			return null
 	return energy_firemode.instance_projectile()
 
-/obj/item/gun/energy/proc/get_external_power_supply()
+/obj/item/gun/projectile/energy/proc/get_external_power_supply()
 	if(isrobot(src.loc))
 		var/mob/living/silicon/robot/R = src.loc
 		return R.cell
@@ -126,7 +126,7 @@
 					return suit.cell
 	return null
 
-/obj/item/gun/energy/examine(mob/user, dist)
+/obj/item/gun/projectile/energy/examine(mob/user, dist)
 	. = ..()
 	if(obj_cell_slot.cell)
 		if(charge_cost)
@@ -138,7 +138,7 @@
 		. += "Does not have a power cell."
 	return
 
-/obj/item/gun/energy/update_icon(ignore_inhands)
+/obj/item/gun/projectile/energy/update_icon(ignore_inhands)
 	. = ..()
 	if((item_renderer || mob_renderer) || !render_use_legacy_by_default)
 		return // using new system
@@ -173,7 +173,7 @@
 
 //* Ammo *//
 
-/obj/item/gun/energy/get_ammo_ratio()
+/obj/item/gun/projectile/energy/get_ammo_ratio()
 	var/obj/item/cell/cell = obj_cell_slot.cell
 	if(!cell)
 		return 0
@@ -182,7 +182,7 @@
 
 //* Power *//
 
-/obj/item/gun/energy/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot)
+/obj/item/gun/projectile/energy/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot)
 	if(legacy_battery_lock)
 		return FALSE
 	return ..()

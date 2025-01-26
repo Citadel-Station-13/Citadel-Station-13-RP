@@ -21,8 +21,8 @@
  * * Stun weapons should generally be worse at stunning than lethal modes of that weapon
  *   are at downing someone who is armored.
  */
-/obj/item/gun/energy/nt_isd
-	abstract_type = /obj/item/gun/energy/nt_isd
+/obj/item/gun/projectile/energy/nt_isd
+	abstract_type = /obj/item/gun/projectile/energy/nt_isd
 
 //* Energy Sidearm *//
 
@@ -47,7 +47,7 @@
 	charge_cost = 2400 / 15
 	projectile_type = /obj/projectile/nt_isd/laser/sidearm
 
-/obj/item/gun/energy/nt_isd/sidearm
+/obj/item/gun/projectile/energy/nt_isd/sidearm
 	name = "hybrid taser"
 	desc = "A versatile energy sidearm used by corporate security."
 	description_fluff = {"
@@ -67,7 +67,7 @@
 		/datum/firemode/energy/nt_isd/sidearm/lethal,
 	)
 
-/obj/item/gun/energy/nt_isd/sidearm/with_light
+/obj/item/gun/projectile/energy/nt_isd/sidearm/with_light
 	attachments = list(
 		/obj/item/gun_attachment/flashlight/maglight,
 	)
@@ -97,7 +97,7 @@
 	charge_cost = 2400 / 10
 	projectile_type = /obj/projectile/nt_isd/laser/rifle
 
-/obj/item/gun/energy/nt_isd/carbine
+/obj/item/gun/projectile/energy/nt_isd/carbine
 	name = "energy carbine"
 	desc = "A versatile energy carbine often seen in the hands of frontier groups."
 	description_fluff = {"
@@ -131,7 +131,7 @@
 	charge_cost = 2400 / 12
 	projectile_type = /obj/projectile/nt_isd/laser/lance
 
-/obj/item/gun/energy/nt_isd/lance
+/obj/item/gun/projectile/energy/nt_isd/lance
 	name = "energy lance"
 	desc = "A particle rifle used by corporate security. Shoots focused particle beams."
 	description_fluff = {"
@@ -174,7 +174,7 @@
 	projectile_type = /obj/projectile/nt_isd/ion
 	charge_cost = 2400 / 5
 
-/obj/item/gun/energy/nt_isd/multiphase
+/obj/item/gun/projectile/energy/nt_isd/multiphase
 	name = "multiphase sidearm"
 	desc = "A prototype sidearm for high-ranking corporate security."
 	description_fluff = {"

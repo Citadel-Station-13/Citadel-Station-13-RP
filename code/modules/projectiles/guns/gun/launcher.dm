@@ -16,6 +16,8 @@
 /obj/item/gun/launcher/proc/update_release_force(obj/projectile)
 	return 0
 
+#warn firing (this ain't it)
+
 /obj/item/gun/launcher/fire(datum/gun_firing_cycle/cycle)
 	. = ..()
 

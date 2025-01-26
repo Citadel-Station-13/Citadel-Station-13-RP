@@ -8,8 +8,8 @@
 /**
  * NT's military (Asset Protection & Emergency Responder) energy rifles
  */
-/obj/item/gun/energy/nt_pulse
-	abstract_type = /obj/item/gun/energy/nt_pulse
+/obj/item/gun/projectile/energy/nt_pulse
+	abstract_type = /obj/item/gun/projectile/energy/nt_pulse
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/nt_pulse.dmi'
 	description_fluff = {"
 		A breakthrough weapon from Nanotrasen's Research Division, pulse weapons utilize rare crystals in its generation array,
@@ -36,7 +36,7 @@
 	charge_cost = 160
 	projectile_type = /obj/projectile/beam/pulse
 
-/obj/item/gun/energy/nt_pulse/rifle
+/obj/item/gun/projectile/energy/nt_pulse/rifle
 	prototype_id = "nt-pulse-rifle"
 	name = "pulse rifle"
 	desc = "A powerful energy rifle with multiple intensity selectors."
@@ -87,7 +87,7 @@
 	charge_cost = 240
 	projectile_type = /obj/projectile/beam/pulse
 
-/obj/item/gun/energy/nt_pulse/carbine
+/obj/item/gun/projectile/energy/nt_pulse/carbine
 	prototype_id = "nt-pulse-carbine"
 	name = "pulse carbine"
 	desc = "A powerful energy carbine with multiple intensity selectors."

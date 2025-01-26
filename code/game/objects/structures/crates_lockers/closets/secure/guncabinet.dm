@@ -24,9 +24,9 @@
 		var/lazors = 0
 		var/shottas = 0
 		for (var/obj/item/gun/G in contents)
-			if (istype(G, /obj/item/gun/energy))
+			if (istype(G, /obj/item/gun/projectile/energy))
 				lazors++
-			if (istype(G, /obj/item/gun/ballistic))
+			if (istype(G, /obj/item/gun/projectile/ballistic))
 				shottas++
 		for (var/i = 0 to 2)
 			if(lazors || shottas) // only make icons if we have one of the two types.
@@ -60,7 +60,7 @@
 	req_one_access = list(ACCESS_SECURITY_ARMORY,ACCESS_COMMAND_CAPTAIN)
 
 	starts_with = list(
-		/obj/item/gun/energy/gun = 4)
+		/obj/item/gun/projectile/energy/gun = 4)
 
 
 /obj/structure/closet/secure_closet/guncabinet/rifle
@@ -69,13 +69,13 @@
 
 	starts_with = list(
 		/obj/item/ammo_magazine/a7_62mm/clip/hunter = 9,
-		/obj/item/gun/ballistic/shotgun/pump/rifle = 2)
+		/obj/item/gun/projectile/ballistic/shotgun/pump/rifle = 2)
 
 /obj/structure/closet/secure_closet/guncabinet/rifle/Initialize(mapload)
 	if(prob(85))
-		starts_with += /obj/item/gun/ballistic/shotgun/pump/rifle
+		starts_with += /obj/item/gun/projectile/ballistic/shotgun/pump/rifle
 	else
-		starts_with += /obj/item/gun/ballistic/shotgun/pump/rifle/lever
+		starts_with += /obj/item/gun/projectile/ballistic/shotgun/pump/rifle/lever
 	return ..()
 
 /obj/structure/closet/secure_closet/guncabinet/phase
@@ -83,7 +83,7 @@
 	req_one_access = list(ACCESS_GENERAL_EXPLORER,ACCESS_SECURITY_BRIG)
 
 	starts_with = list(
-		/obj/item/gun/energy/phasegun = 2,
+		/obj/item/gun/projectile/energy/phasegun = 2,
 		/obj/item/cell/device/weapon = 2,
 		/obj/item/clothing/accessory/permit/gun/planetside)
 
@@ -97,6 +97,6 @@
 
 /obj/structure/closet/secure_closet/guncabinet/excursion/legacy_spawn_contents()
 	for(var/i in 1 to 4)
-		new /obj/item/gun/energy/frontier/locked(src)
+		new /obj/item/gun/projectile/energy/frontier/locked(src)
 	for(var/i in 1 to 4)
-		new /obj/item/gun/energy/frontier/locked/holdout (src)
+		new /obj/item/gun/projectile/energy/frontier/locked/holdout (src)

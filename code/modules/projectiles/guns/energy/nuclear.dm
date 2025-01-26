@@ -12,7 +12,7 @@
 	projectile_type = /obj/projectile/beam
 	charge_cost = 2400 / 5
 
-/obj/item/gun/energy/gun
+/obj/item/gun/projectile/energy/gun
 	name = "energy gun"
 	desc = "Another bestseller of Lawson Arms and "+TSC_HEPH+", the LAEP90 Perun is a versatile energy based sidearm, capable of switching between low and high capacity projectile settings. In other words: Stun or Kill."
 	description_info = "This is an energy weapon.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
@@ -30,7 +30,7 @@
 		/datum/firemode/energy/energy_gun/kill,
 	)
 
-/obj/item/gun/energy/gun/mounted
+/obj/item/gun/projectile/energy/gun/mounted
 	name = "mounted energy gun"
 	self_recharge = 1
 	use_external_power = 1
@@ -58,7 +58,7 @@
 	burst_amount = 3
 	legacy_direct_varedits = list(burst_accuracy=list(65,65,65), dispersion=list(0.0, 0.2, 0.5), projectile_type=/obj/projectile/beam/burstlaser, modifystate="fm-2tkill")
 
-/obj/item/gun/energy/gun/burst
+/obj/item/gun/projectile/energy/gun/burst
 	name = "burst laser"
 	desc = "The FM-2t is a versatile energy based weapon, capable of switching between stun or kill with a three round burst option for both settings."
 	icon_state = "fm-2tstun100"	//May resprite this to be more rifley
@@ -103,7 +103,7 @@
 	burst_amount = 5
 	legacy_direct_varedits = list(burst_accuracy=list(65,65,65), dispersion=list(0.0, 0.2, 0.5), projectile_type=/obj/projectile/scatter/excavation, modifystate="fm-2tkill")
 
-/obj/item/gun/energy/gun/miningcarbine
+/obj/item/gun/projectile/energy/gun/miningcarbine
 	name = "mining carbine"
 	desc = "Following Miner's demand for a portable excavation laser, a military-favourite FM-2t has been modified to shoot excavation lasers."
 	icon_state = "fm-2tstun100"	//May resprite this to be more rifley
@@ -136,7 +136,7 @@
 	projectile_type = /obj/projectile/beam
 	charge_cost = 2400 / 5
 
-/obj/item/gun/energy/gun/nuclear
+/obj/item/gun/projectile/energy/gun/nuclear
 	name = "advanced energy gun"
 	desc = "An energy gun with an experimental miniaturized reactor."
 	icon_state = "nucgunstun"
@@ -173,7 +173,7 @@
 	charge_cost = 2400 / 6
 
 //NT SpecOps Laser Pistol
-/obj/item/gun/energy/gun/combat
+/obj/item/gun/projectile/energy/gun/combat
 	name = "NT-ES-2 energy pistol"
 	desc = "A purpose-built energy weapon designed to function as a sidearm for Nanotrasen special operations. This weapon is ideal for hazardous environments where both lethal and non-lethal responses may be required."
 	icon_state = "clpistolstun100"

@@ -12,7 +12,7 @@
 	charge_cost = 2400 / 8
 
 /datum/firemode/energy/nt_pmd/service_revolver/normal/make_radial_appearance()
-	return image(/obj/item/gun/energy/nt_pmd/service_revolver::icon, "service-normal")
+	return image(/obj/item/gun/projectile/energy/nt_pmd/service_revolver::icon, "service-normal")
 
 /datum/firemode/energy/nt_pmd/service_revolver/shatter
 	name = "shatter"
@@ -21,7 +21,7 @@
 	charge_cost = 2400 / 5
 
 /datum/firemode/energy/nt_pmd/service_revolver/shatter/make_radial_appearance()
-	return image(/obj/item/gun/energy/nt_pmd/service_revolver::icon, "service-shatter")
+	return image(/obj/item/gun/projectile/energy/nt_pmd/service_revolver::icon, "service-shatter")
 
 /datum/firemode/energy/nt_pmd/service_revolver/spin
 	name = "spin"
@@ -30,7 +30,7 @@
 	charge_cost = 2400 / 80
 
 /datum/firemode/energy/nt_pmd/service_revolver/spin/make_radial_appearance()
-	return image(/obj/item/gun/energy/nt_pmd/service_revolver::icon, "service-spin")
+	return image(/obj/item/gun/projectile/energy/nt_pmd/service_revolver::icon, "service-spin")
 
 /datum/firemode/energy/nt_pmd/service_revolver/pierce
 	name = "pierce"
@@ -39,7 +39,7 @@
 	charge_cost = 2400 / 5
 
 /datum/firemode/energy/nt_pmd/service_revolver/pierce/make_radial_appearance()
-	return image(/obj/item/gun/energy/nt_pmd/service_revolver::icon, "service-pierce")
+	return image(/obj/item/gun/projectile/energy/nt_pmd/service_revolver::icon, "service-pierce")
 
 /datum/firemode/energy/nt_pmd/service_revolver/charge
 	name = "charge"
@@ -48,9 +48,9 @@
 	charge_cost = 2400 / 4
 
 /datum/firemode/energy/nt_pmd/service_revolver/charge/make_radial_appearance()
-	return image(/obj/item/gun/energy/nt_pmd/service_revolver::icon, "service-charge")
+	return image(/obj/item/gun/projectile/energy/nt_pmd/service_revolver::icon, "service-charge")
 
-/obj/item/gun/energy/nt_pmd/service_revolver
+/obj/item/gun/projectile/energy/nt_pmd/service_revolver
 	name = "service weapon"
 	icon_state = "service_grip"
 	#warn rename icon states, move icon over, add icon states to firemodes

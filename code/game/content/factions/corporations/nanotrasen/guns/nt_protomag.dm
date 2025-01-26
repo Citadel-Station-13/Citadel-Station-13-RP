@@ -4,8 +4,8 @@
 /**
  * Modular mag-boosted weapons, courtesy of the Nanotrasen Research Division.
  */
-/obj/item/gun/ballistic/magnetic/modular/nt_protomag
-	abstract_type = /obj/item/gun/ballistic/magnetic/modular/nt_protomag
+/obj/item/gun/projectile/ballistic/magnetic/nt_protomag
+	abstract_type = /obj/item/gun/projectile/ballistic/magnetic/nt_protomag
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/protomag/gun.dmi'
 	desc = "A modular ferromagnetic-boosted weapon. Uses experimental ferromagnetic ammunition."
 	description_fluff = {"
@@ -18,11 +18,13 @@
 	"}
 	caliber = /datum/ammo_caliber/nt_protomag
 
+	modular_system = TRUE
+
 //* Sidearm *//
 
 #warn impl all
 
-/obj/item/gun/ballistic/magnetic/modular/nt_protomag/sidearm
+/obj/item/gun/projectile/ballistic/magnetic/nt_protomag/sidearm
 	name = "protomag sidearm"
 	item_renderer = /datum/gun_item_renderer/overlays{
 		count = 4;
@@ -38,7 +40,7 @@
 
 #warn impl all
 
-/obj/item/gun/ballistic/magnetic/modular/nt_protomag/rifle
+/obj/item/gun/projectile/ballistic/magnetic/nt_protomag/rifle
 	name = "protomag rifle"
 	item_renderer = /datum/gun_item_renderer/overlays{
 		count = 4;

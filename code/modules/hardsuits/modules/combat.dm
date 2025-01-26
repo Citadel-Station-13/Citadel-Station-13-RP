@@ -131,7 +131,7 @@
 	interface_name = "mounted laser cannon"
 	interface_desc = "A shoulder-mounted cell-powered laser cannon."
 
-	var/gun_type = /obj/item/gun/energy/lasercannon/mounted
+	var/gun_type = /obj/item/gun/projectile/energy/lasercannon/mounted
 	var/obj/item/gun/gun
 
 /obj/item/hardsuit_module/mounted/Initialize(mapload)
@@ -160,7 +160,7 @@
 	interface_name = "mounted energy gun"
 	interface_desc = "A forearm-mounted suit-powered energy gun."
 
-	gun_type = /obj/item/gun/energy/gun/mounted
+	gun_type = /obj/item/gun/projectile/energy/gun/mounted
 
 /obj/item/hardsuit_module/mounted/taser
 
@@ -176,7 +176,7 @@
 	interface_name = "mounted taser"
 	interface_desc = "A shoulder-mounted cell-powered taser."
 
-	gun_type = /obj/item/gun/energy/taser/mounted
+	gun_type = /obj/item/gun/projectile/energy/taser/mounted
 
 /obj/item/hardsuit_module/mounted/energy_blade
 
@@ -197,7 +197,7 @@
 	active_power_cost = 10
 	passive_power_cost = 0
 
-	gun_type = /obj/item/gun/energy/crossbow/ninja
+	gun_type = /obj/item/gun/projectile/energy/crossbow/ninja
 
 /obj/item/hardsuit_module/mounted/energy_blade/process(delta_time)
 

@@ -15,6 +15,7 @@
 /**
  * called to perform a single firing operation
  */
+#warn into projectile.dm
 /obj/item/gun/proc/fire(datum/gun_firing_cycle/cycle)
 	SHOULD_NOT_SLEEP(TRUE)
 
@@ -56,50 +57,3 @@
 		movable_firer.newtonian_move(angle2dir(cycle.original_angle))
 
 	// todo: muzzle flash
-
-/**
- * Called to actually fire a projectile.
- */
-/obj/item/gun/proc/launch_projectile(datum/gun_firing_cycle/cycle, obj/projectile/launching)
-	//! LEGACY
-	// this is just stupid lol why are we transcluding name directly into autopsy reports??
-	launching.shot_from = src.name
-	// this shouldn't be a hard-set thing and should be attachment set
-	launching.silenced = src.silenced
-	launching.p_x = cycle.original_tile_pixel_x
-	launching.p_y = cycle.original_tile_pixel_y
-	//! END
-
-	launching.original_target = cycle.original_target
-	launching.firer = cycle.firing_atom
-	launching.def_zone = cycle.original_target_zone
-
-	var/effective_angle = cycle.original_angle + cycle.base_angle_adjust + cycle.next_angle_adjust
-	var/effective_dispersion = cycle.base_dispersion_adjust + cycle.next_dispersion_adjust
-
-	effective_angle += rand(-effective_dispersion, effective_dispersion)
-
-	launching.add_projectile_effects(cycle.firemode.add_projectile_effects)
-	launching.fire(effective_angle, get_turf(cycle.original_target) == get_turf(src) ? cycle.original_target : null)
-
-/**
- * Obtains the next projectile to fire.
- *
- * Either will return an /obj/projectile,
- * or return a GUN_FIRED_* define that is not SUCCESS.
- *
- * * Things like jams go in here.
- * * Things like 'the next bullet is empty so we fail' go in here
- * * Everything is optional here. Things like portable turrets reserve the right to 'pull' from the gun without caring about params.
- *
- * This should be called as the point of no return.
- *
- * * All of your checks that can / should fail go before the ..() call, as that's what makes the projectile.
- * * Anything that doesn't do anything but emit side effects go after.
- * * Once the projectile is made, you must delete it if you want to cancel. Otherwise, it's a memory leak.
- */
-/obj/item/gun/proc/consume_next_projectile(datum/gun_firing_cycle/cycle)
-	SHOULD_NOT_SLEEP(TRUE)
-	. = GUN_FIRED_FAIL_UNKNOWN
-	// todo: on base /gun/projectile?
-	CRASH("attempted to process next projectile on base /gun")

@@ -1,12 +1,12 @@
 /**
  * Magnetic Guns
  *
- * Not to be confused with /obj/item/gun/ballistic/magnetic,
+ * Not to be confused with /obj/item/gun/projectile/ballistic/magnetic,
  * these guns are generally special and use special ammo,
  * like fuel rods and RCDs. They also **optionally** consume energy to fire,
  * and have an inbuilt capacitor charge system.
  */
-/obj/item/gun/magnetic
+/obj/item/gun/projectile/magnetic
 	name = "improvised coilgun"
 	desc = "A coilgun hastily thrown together out of a basic frame and advanced power storage components. Is it safe for it to be duct-taped together like that?"
 	icon_state = "coilgun"
@@ -35,7 +35,7 @@
 	/// * Uses MAGNETIC_RENDER_BATTERY_* enums
 	var/render_battery_overlay = MAGNETIC_RENDER_BATTERY_NEVER
 
-/obj/item/gun/magnetic/Initialize(mapload)
+/obj/item/gun/projectile/magnetic/Initialize(mapload)
 	START_PROCESSING(SSobj, src)
 	if(capacitor)
 		power_per_tick = (power_cost*0.15) * capacitor.rating
@@ -43,13 +43,13 @@
 	. = ..()
 	obj_cell_slot.legacy_use_device_cells = FALSE
 
-/obj/item/gun/magnetic/Destroy()
+/obj/item/gun/projectile/magnetic/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	QDEL_NULL(loaded)
 	QDEL_NULL(capacitor)
 	. = ..()
 
-/obj/item/gun/magnetic/process(delta_time)
+/obj/item/gun/projectile/magnetic/process(delta_time)
 	if(capacitor)
 		if(obj_cell_slot.cell)
 			if(capacitor.charge < capacitor.max_charge && obj_cell_slot.cell.checked_use(power_per_tick))
@@ -58,7 +58,7 @@
 			capacitor.use(capacitor.charge * 0.05)
 	update_icon()
 
-/obj/item/gun/magnetic/update_icon()
+/obj/item/gun/projectile/magnetic/update_icon()
 	var/list/overlays_to_add = list()
 	cut_overlays()
 	if(removable_components)
@@ -78,11 +78,11 @@
 	add_overlay(overlays_to_add)
 	..()
 
-/obj/item/gun/magnetic/proc/show_ammo(var/mob/user)
+/obj/item/gun/projectile/magnetic/proc/show_ammo(var/mob/user)
 	if(loaded)
 		to_chat(user, "<span class='notice'>It has \a [loaded] loaded.</span>")
 
-/obj/item/gun/magnetic/examine(var/mob/user)
+/obj/item/gun/projectile/magnetic/examine(var/mob/user)
 	. = ..()
 	show_ammo(user)
 
@@ -99,7 +99,7 @@
 		else
 			. += "<span class='notice'>The capacitor charge indicator is <font color ='[COLOR_GREEN]'>green</font>.</span>"
 
-/obj/item/gun/magnetic/attackby(var/obj/item/thing, var/mob/user)
+/obj/item/gun/projectile/magnetic/attackby(var/obj/item/thing, var/mob/user)
 	if(removable_components)
 		if(thing.is_screwdriver())
 			if(!capacitor)
@@ -148,7 +148,7 @@
 		return
 	. = ..()
 
-/obj/item/gun/magnetic/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/gun/projectile/magnetic/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		var/obj/item/removing
 
@@ -165,14 +165,14 @@
 			return
 	. = ..()
 
-/obj/item/gun/magnetic/proc/check_ammo()
+/obj/item/gun/projectile/magnetic/proc/check_ammo()
 	return loaded
 
-/obj/item/gun/magnetic/proc/use_ammo()
+/obj/item/gun/projectile/magnetic/proc/use_ammo()
 	qdel(loaded)
 	loaded = null
 
-/obj/item/gun/magnetic/consume_next_projectile(datum/gun_firing_cycle/cycle)
+/obj/item/gun/projectile/magnetic/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	if(!check_ammo() || !capacitor || capacitor.charge < power_cost)
 		return
 
@@ -188,7 +188,7 @@
 
 	return new projectile_type(src)
 
-/obj/item/gun/magnetic/fuelrod
+/obj/item/gun/projectile/magnetic/fuelrod
 	name = "Fuel-Rod Cannon"
 	desc = "A bulky weapon designed to fire reactor core fuel rods at absurd velocities... who thought this was a good idea?!"
 	description_antag = "This device is capable of firing reactor fuel assemblies, acquired from a R-UST fuel compressor and an appropriate fueltype. Be warned, Supermatter rods may have unforseen consequences."
@@ -209,11 +209,11 @@
 
 	cell_type = /obj/item/cell/high
 
-/obj/item/gun/magnetic/fuelrod/Initialize(mapload)
+/obj/item/gun/projectile/magnetic/fuelrod/Initialize(mapload)
 	capacitor = new /obj/item/stock_parts/capacitor
 	return ..()
 
-/obj/item/gun/magnetic/fuelrod/consume_next_projectile(datum/gun_firing_cycle/cycle)
+/obj/item/gun/projectile/magnetic/fuelrod/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	if(!check_ammo() || !capacitor || capacitor.charge < power_cost)
 		return
 
@@ -254,5 +254,5 @@
 
 //* Object System - Cell *//
 
-/obj/item/gun/magnetic/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot)
+/obj/item/gun/projectile/magnetic/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot)
 	return removable_components && ..()

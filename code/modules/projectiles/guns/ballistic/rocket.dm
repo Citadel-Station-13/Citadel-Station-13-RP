@@ -1,4 +1,4 @@
-/obj/item/gun/ballistic/rocket
+/obj/item/gun/projectile/ballistic/rocket
 	name = "rocket launcher"
 	desc = "MAGGOT."
 	icon_state = "rocket"
@@ -17,7 +17,7 @@
 	one_handed_penalty = 30
 
 /*
-/obj/item/gun/ballistic/rocket/proc/load(obj/item/ammo_casing/rocket/R, mob/user)
+/obj/item/gun/projectile/ballistic/rocket/proc/load(obj/item/ammo_casing/rocket/R, mob/user)
 	if(R.loadable)
 		if(rockets.len >= max_rockets)
 			to_chat(user, "<span class='warning'>[src] is full.</span>")
@@ -29,7 +29,7 @@
 		return
 	to_chat(user, "<span class='warning'>[R] doesn't seem to fit in the [src]!</span>")
 
-/obj/item/gun/ballistic/rocket/proc/unload(mob/user)
+/obj/item/gun/projectile/ballistic/rocket/proc/unload(mob/user)
 	if(rockets.len)
 		var/obj/item/ammo_casing/rocket/R = rockets[rockets.len]
 		rockets.len--
@@ -39,13 +39,13 @@
 	else
 		to_chat(user, "<span class='warning'>[src] is empty.</span>")
 
-/obj/item/gun/ballistic/rocket/attackby(obj/item/I, mob/user)
+/obj/item/gun/projectile/ballistic/rocket/attackby(obj/item/I, mob/user)
 	if((istype(I, /obj/item/ammo_casing/rocket)))
 		load(I, user)
 	else
 		..()
 
-/obj/item/gun/ballistic/rocket/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/gun/projectile/ballistic/rocket/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		unload(user)
 	else
@@ -59,12 +59,12 @@
 	return null
 */
 
-// /obj/item/gun/ballistic/rocket/handle_post_fire(mob/user, atom/target)
+// /obj/item/gun/projectile/ballistic/rocket/handle_post_fire(mob/user, atom/target)
 // 	message_admins("[key_name_admin(user)] fired a rocket from a rocket launcher ([src.name]) at [target].")
 // 	log_game("[key_name_admin(user)] used a rocket launcher ([src.name]) at [target].")
 // 	..()
 
-/obj/item/gun/ballistic/rocket/collapsible
+/obj/item/gun/projectile/ballistic/rocket/collapsible
 	name = "disposable rocket launcher"
 	desc = "A single use rocket launcher designed with portability in mind. This disposable launcher must be extended before it can fire."
 	icon_state = "missile"
@@ -76,24 +76,24 @@
 	var/collapsed = 1
 	var/empty = 0
 
-/obj/item/gun/ballistic/rocket/collapsible/special_check(mob/user)
+/obj/item/gun/projectile/ballistic/rocket/collapsible/special_check(mob/user)
 	if(collapsed)
 		to_chat(user, "<span class='warning'>[src] is collapsed! You must extend it before firing!</span>")
 		return 0
 	return ..()
 
-/obj/item/gun/ballistic/rocket/collapsible/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/projectile/ballistic/rocket/collapsible/attackby(var/obj/item/A as obj, mob/user as mob)
 	to_chat(user, "<span class='danger'>You cannot reload the [src]!</span>")
 	return
 
-/obj/item/gun/ballistic/rocket/collapsible/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/gun/projectile/ballistic/rocket/collapsible/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		to_chat(user, "<span class='danger'>You cannot unload the [src]'s munition!</span>")
 		return
 	else
 		return ..()
 
-/obj/item/gun/ballistic/rocket/collapsible/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/gun/projectile/ballistic/rocket/collapsible/attack_self(mob/user, datum/event_args/actor/actor)
 	if(collapsed)
 		to_chat(user, "<span class='notice'>You pull out the tube on the [src], readying the weapon to be fired.</span>")
 		icon_state = "[initial(icon_state)]-extended"
@@ -108,7 +108,7 @@
 		item_state = "[initial(item_state)]"
 		collapsed = 1
 
-/obj/item/gun/ballistic/rocket/collapsible/consume_next_projectile(datum/gun_firing_cycle/cycle)
+/obj/item/gun/projectile/ballistic/rocket/collapsible/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	. = ..()
 	if(empty)
 		return
@@ -118,7 +118,7 @@
 		icon_state = "[initial(icon_state)]-empty"
 		empty = 1
 
-/obj/item/gun/ballistic/rocket/tyrmalin
+/obj/item/gun/projectile/ballistic/rocket/tyrmalin
 	name = "rokkit launcher"
 	desc = "A sloppily machined tube designed to function as a recoilless rifle. Sometimes used by Tyrmalin defense teams. It draws skeptical looks even amongst their ranks."
 	icon_state = "rokkitlauncher"
@@ -127,7 +127,7 @@
 	unstable = 1
 
 // todo: dumb
-/obj/item/gun/ballistic/rocket/tyrmalin/consume_next_projectile(datum/gun_firing_cycle/cycle)
+/obj/item/gun/projectile/ballistic/rocket/tyrmalin/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	. = ..()
 	if(.)
 		if(unstable)
@@ -153,14 +153,14 @@
 				if(21 to 100)
 					return ..()
 
-/obj/item/gun/ballistic/rocket/tyrmalin/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/gun/projectile/ballistic/rocket/tyrmalin/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src && destroyed)
 		to_chat(user, "<span class='danger'>\The [src]'s chamber is too warped to extract the casing!</span>")
 		return
 	else
 		return ..()
 
-/obj/item/gun/ballistic/rocket/tyrmalin/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/projectile/ballistic/rocket/tyrmalin/attackby(var/obj/item/A as obj, mob/user as mob)
 	. = ..()
 	if(A.is_material_stack_of(/datum/prototype/material/plasteel))
 		var/obj/item/stack/material/M = A
@@ -214,19 +214,19 @@
 					build_step++
 					to_chat(user, "<span class='notice'>You close the hatch and complete the advanced rokkit launcher.</span>")
 					var/turf/T = get_turf(src)
-					new /obj/item/gun/ballistic/rocket/tyrmalin_advanced(T)
+					new /obj/item/gun/projectile/ballistic/rocket/tyrmalin_advanced(T)
 					qdel(src)
 
 /obj/item/tyrmalin_rocket_assembly/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	.=..()
 	update_icon()
 
-/obj/item/gun/ballistic/rocket/tyrmalin_advanced
+/obj/item/gun/projectile/ballistic/rocket/tyrmalin_advanced
 	name = "advanced rokkit launcher"
 	desc = "A compact missile launcher fielded by Tyrmalin mech hunters. It looks more sturdy and refined than the prior iteration."
 	icon_state = "rokkitlauncher_adv"
 
-/obj/item/gun/ballistic/rocket/tyrmalin_advanced/update_icon_state()
+/obj/item/gun/projectile/ballistic/rocket/tyrmalin_advanced/update_icon_state()
 	. = ..()
 	if(loaded.len)
 		icon_state = "[initial(icon_state)]-loaded"

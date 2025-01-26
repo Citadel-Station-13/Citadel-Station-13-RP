@@ -1,10 +1,17 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/obj/item/gun/ballistic/magnetic
+/obj/item/gun/projectile/ballistic/magnetic
 	cell_system = TRUE
 	cell_system_legacy_use_device = TRUE
 	cell_type = /obj/item/cell/device/weapon
+
+	modular_component_slots = list(
+		GUN_COMPONENT_ACCELERATION_COIL = 1,
+		GUN_COMPONENT_ACTIVE_COOLER = 1,
+		GUN_COMPONENT_ENERGY_HANDLER = 1,
+		GUN_COMPONENT_POWER_UNIT = 1,
+	)
 
 	/// base power draw per shot
 	///
@@ -19,7 +26,7 @@
 
 #warn impl all
 
-/obj/item/gun/ballistic/magnetic/prime_casing(datum/gun_firing_cycle/cycle, obj/item/ammo_casing/casing, casing_primer)
+/obj/item/gun/projectile/ballistic/magnetic/prime_casing(datum/gun_firing_cycle/cycle, obj/item/ammo_casing/casing, casing_primer)
 	var/shot_power_draw = base_shot_power * casing.effective_mass_multiplier
 	if(!obj_cell_slot.check_charge(shot_power_draw))
 		casing_primer = CASING_PRIMER_CHEMICAL

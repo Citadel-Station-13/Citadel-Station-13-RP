@@ -1,5 +1,5 @@
 // For general use
-/obj/item/gun/ballistic/automatic/battlerifle
+/obj/item/gun/projectile/ballistic/automatic/battlerifle
 	name = "\improper JSDF service rifle"
 	desc = "You had your chance to be afraid before you joined my beloved Corps! But, to guide you back to the true path, I have brought this motivational device! Uses 9.5x40mm rounds."
 	icon_state = "battlerifle"
@@ -18,11 +18,11 @@
 	slot_flags = SLOT_BACK
 	one_handed_penalty = 60 // The weapon itself is heavy
 
-/obj/item/gun/ballistic/automatic/battlerifle/update_icon()
+/obj/item/gun/projectile/ballistic/automatic/battlerifle/update_icon()
 	. = ..()
 	update_worn_icon()
 
-/obj/item/gun/ballistic/automatic/battlerifle/update_icon_state()
+/obj/item/gun/projectile/ballistic/automatic/battlerifle/update_icon_state()
 	. = ..()
 	if(istype(ammo_magazine,/obj/item/ammo_magazine/m95))
 		icon_state = "battlerifle"
@@ -30,7 +30,7 @@
 		icon_state = (ammo_magazine)? "battlerifle" : "battlerifle_empty"
 
 // For general use
-/obj/item/gun/ballistic/shotgun/pump/JSDF
+/obj/item/gun/projectile/ballistic/shotgun/pump/JSDF
 	name = "\improper JSDF tactical shotgun"
 	desc = "All you greenhorns who wanted to see Xenomorphs up close... this is your lucky day. Uses 12g rounds."
 	icon_state = "haloshotgun"
@@ -41,7 +41,7 @@
 	max_shells = 12
 
 // For general use
-/obj/item/gun/ballistic/automatic/pdw
+/obj/item/gun/projectile/ballistic/automatic/pdw
 	name = "personal defense weapon"
 	desc = "The X-9MM is a select-fire personal defense weapon designed in-house by Xing Private Security. It was made to compete with the WT550 Saber, but never caught on with Nanotrasen. Uses 9mm rounds."
 	icon_state = "pdw"
@@ -59,11 +59,11 @@
 		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=6,    burst_accuracy=list(0,-15,-30), dispersion=list(0.0, 0.6, 0.6))
 		)
 
-/obj/item/gun/ballistic/automatic/pdw/update_icon()
+/obj/item/gun/projectile/ballistic/automatic/pdw/update_icon()
 	. = ..()
 	update_worn_icon()
 
-/obj/item/gun/ballistic/automatic/pdw/update_icon_state()
+/obj/item/gun/projectile/ballistic/automatic/pdw/update_icon_state()
 	. = ..()
 	if(istype(ammo_magazine,/obj/item/ammo_magazine/a9mm))
 		icon_state = "pdw-short"
@@ -71,7 +71,7 @@
 		icon_state = (ammo_magazine)? "pdw" : "pdw-empty"
 
 // For general use
-/obj/item/gun/energy/imperial
+/obj/item/gun/projectile/energy/imperial
 	name = "imperial energy pistol"
 	desc = "An elegant weapon developed by the Imperium Auream. Their weaponsmiths have cleverly found a way to make a gun that is only about the size of an average energy pistol, yet with the fire power of a laser carbine."
 	icon_state = "ge_pistol"
@@ -87,7 +87,7 @@
 	projectile_type = /obj/projectile/beam/imperial
 
 // For general use
-/obj/item/gun/ballistic/automatic/stg
+/obj/item/gun/projectile/ballistic/automatic/stg
 	name = "\improper Sturmgewehr"
 	desc = "An STG-560 built by RauMauser. Experience the terror of the Siegfried line, redone for the 26th century! The Kaiser would be proud. Uses unique 7.92x33mm Kurz rounds."
 	icon_state = "stg60"
@@ -100,11 +100,11 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/a7_92mm)
 	load_method = MAGAZINE
 
-/obj/item/gun/ballistic/automatic/stg/update_icon()
+/obj/item/gun/projectile/ballistic/automatic/stg/update_icon()
 	. = ..()
 	update_worn_icon()
 
-/obj/item/gun/ballistic/automatic/stg/update_icon_state()
+/obj/item/gun/projectile/ballistic/automatic/stg/update_icon_state()
 	. = ..()
 	icon_state = (ammo_magazine)? "stg60" : "stg60-e"
 	item_state = (ammo_magazine)? "arifle" : "arifle-e"
@@ -121,7 +121,7 @@
 	legacy_direct_varedits = list(charge_cost=240,projectile_type=/obj/projectile/beam/eluger, modifystate="elugerkill", fire_sound='sound/weapons/eluger.ogg')
 
 // ------------ Energy Luger ------------
-/obj/item/gun/energy/gun/eluger
+/obj/item/gun/projectile/energy/gun/eluger
 	name = "energy Luger"
 	desc = "The finest sidearm produced by RauMauser. Although its battery cannot be removed, its ergonomic design makes it easy to shoot, allowing for rapid follow-up shots. It also has the ability to toggle between stun and kill."
 	icon_state = "elugerstun100"
@@ -136,7 +136,7 @@
 	)
 
 //Civilian gun
-/obj/item/gun/ballistic/giskard
+/obj/item/gun/projectile/ballistic/giskard
 	name = "\improper \"Giskard\" holdout pistol"
 	desc = "The FS HG .380 \"Giskard\" can even fit into the pocket! Uses .380 rounds."
 	icon_state = "giskardcivil"
@@ -148,7 +148,7 @@
 	fire_sound = 'sound/weapons/gunshot_pathetic.ogg'
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 3)
 
-/obj/item/gun/ballistic/giskard/update_icon_state()
+/obj/item/gun/projectile/ballistic/giskard/update_icon_state()
 	. = ..()
 	if(ammo_magazine && ammo_magazine.amount_remaining())
 		icon_state = "giskardcivil"
@@ -156,7 +156,7 @@
 		icon_state = "giskardcivil_empty"
 
 //Not so civilian gun
-/obj/item/gun/ballistic/giskard/olivaw
+/obj/item/gun/projectile/ballistic/giskard/olivaw
 	name = "\improper \"Olivaw\" holdout burst-pistol"
 	desc = "The FS HG .380 \"Olivaw\" is a more advanced version of the \"Giskard\". This one seems to have a two-round burst-fire mode. Uses .380 rounds."
 	icon_state = "olivawcivil"
@@ -165,7 +165,7 @@
 		list(mode_name="2-round bursts", burst=2, fire_delay=0.2, move_delay=4,    burst_accuracy=list(0,-15),       dispersion=list(1.2, 1.8)),
 		)
 
-/obj/item/gun/ballistic/giskard/olivaw/update_icon_state()
+/obj/item/gun/projectile/ballistic/giskard/olivaw/update_icon_state()
 	. = ..()
 	if(ammo_magazine && ammo_magazine.amount_remaining())
 		icon_state = "olivawcivil"
@@ -173,7 +173,7 @@
 		icon_state = "olivawcivil_empty"
 
 //Detective gun
-/obj/item/gun/ballistic/revolver/consul
+/obj/item/gun/projectile/ballistic/revolver/consul
 	name = "\improper \"Consul\" Revolver"
 	desc = "Are you feeling lucky, punk? Uses .44 rounds."
 	icon_state = "inspector"
@@ -183,7 +183,7 @@
 	handle_casings = CYCLE_CASINGS
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3)
 
-/obj/item/gun/ballistic/revolver/consul/update_overlays()
+/obj/item/gun/projectile/ballistic/revolver/consul/update_overlays()
 	. = ..()
 	if(loaded.len==0)
 		. += "inspector_off"
@@ -203,7 +203,7 @@
 	burst_amount = 3
 
 // No idea what this is for.
-/obj/item/gun/ballistic/automatic/sol
+/obj/item/gun/projectile/ballistic/automatic/sol
 	name = "\improper \"Sol\" SMG"
 	desc = "The FS 9x19mm \"Sol\" is a compact and reliable submachine gun. Uses 9mm rounds."
 	icon_state = "SMG-IS"
@@ -223,7 +223,7 @@
 	burst_accuracy=list(0,-15,-15)
 	dispersion=list(0.0, 0.6, 1.0)
 
-/obj/item/gun/ballistic/automatic/sol/proc/update_charge()
+/obj/item/gun/projectile/ballistic/automatic/sol/proc/update_charge()
 	if(!ammo_magazine)
 		return
 	var/ratio = ammo_magazine.amount_remaining() / ammo_magazine.ammo_max
@@ -232,13 +232,13 @@
 	ratio = round(ratio, 0.25) * 100
 	add_overlay("smg_[ratio]")
 
-/obj/item/gun/ballistic/automatic/sol/update_icon()
+/obj/item/gun/projectile/ballistic/automatic/sol/update_icon()
 	icon_state = (ammo_magazine)? "SMG-IS" : "SMG-IS-empty"
 	cut_overlay()
 	update_charge()
 
 //HoP gun
-/obj/item/gun/energy/gun/martin
+/obj/item/gun/projectile/energy/gun/martin
 	name = "holdout energy gun"
 	desc = "The FS PDW E \"Martin\" is small holdout e-gun. Don't miss!"
 	icon_state = "PDW"
@@ -256,7 +256,7 @@
 		list(mode_name="lethal", projectile_type=/obj/projectile/beam, fire_sound='sound/weapons/Laser.ogg', charge_cost = 1200),
 		)
 
-/obj/item/gun/energy/gun/martin/update_overlays()
+/obj/item/gun/projectile/energy/gun/martin/update_overlays()
 	. = ..()
 	var/datum/firemode/current_mode = firemodes[sel_mode]
 	switch(current_mode.name)

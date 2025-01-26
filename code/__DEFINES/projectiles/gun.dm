@@ -34,7 +34,7 @@
 /// failed - we're no longer being held / mounted / whatever
 #define GUN_FIRED_FAIL_UNMOUNTED (1<<3)
 
-//* rendering enums - /obj/item/gun/ballistic *//
+//* rendering enums - /obj/item/gun/projectile/ballistic *//
 
 //? render_bolt_overlay
 
@@ -60,7 +60,7 @@
 /// * render `[base state]-break-close` if closed
 #define BALLISTIC_RENDER_BREAK_BOTH 3
 
-//* rendering enums - /obj/item/gun/ballistic/magnetic, /obj/item/gun/magnetic *//
+//* rendering enums - /obj/item/gun/projectile/ballistic/magnetic, /obj/item/gun/projectile/magnetic *//
 
 //? render_battery_overlay
 
