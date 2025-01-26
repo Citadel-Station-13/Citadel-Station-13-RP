@@ -222,10 +222,12 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 			update_level_index_data(target_level_index)
 			. = TRUE
 		if("levelAirIndoors")
+			#warn check it
 			target_level.air_indoors = params["air"]
 			update_level_index_data(target_level_index)
 			. = TRUE
 		if("levelAirOutdoors")
+			#warn check it
 			target_level.air_outdoors = params["air"]
 			update_level_index_data(target_level_index)
 			. = TRUE
@@ -280,12 +282,11 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 		"baseTurf" = level.base_turf,
 		"baseArea" = level.base_area,
 		"structPos" = level.struct_create_pos,
-		"airIndoors",
-		"airOutdoors",
-		"ceilingHeight",
-		"fileName",
+		"airIndoors" = level.air_indoors,
+		"airOutdoors" = level.air_outdoors,
+		"ceilingHeight" = level.ceiling_height,
+		"fileName" = "[level.path]",
 	)
-	#warn impl checks in prime for: ceiling height, air indoors, air outdoors, base turf, base area
 
 /datum/admin_modal/load_map_sector/proc/update_level_index_data(index)
 	push_ui_data(
@@ -297,6 +298,13 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 /datum/admin_modal/load_map_sector/proc/prime()
 	computed_errors = list()
 	world_maxz_at_prime = world.maxz
+
+	for(var/i in 1 to length(buffer.levels))
+		var/datum/map_level/checking_level = buffer.levels
+		if(!istype(checking_level))
+			computed_errors += "Index [i] is not a map level. What happened? Yell at coders."
+			continue
+	#warn ceiling height
 
 	primed = TRUE
 	ready = TRUE
