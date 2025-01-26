@@ -547,19 +547,6 @@
 /obj/item/gun/proc/handle_click_safety(mob/user)
 	user.visible_message(SPAN_WARNING("[user] squeezes the trigger of \the [src] but it doesn't move!"), SPAN_WARNING("You squeeze the trigger but it doesn't move!"), range = MESSAGE_RANGE_COMBAT_SILENCED)
 
-/obj/item/gun/proc/play_fire_sound(var/mob/user, var/obj/projectile/P)
-	var/shot_sound = fire_sound
-
-	if(!shot_sound && istype(P) && P.fire_sound) // If the gun didn't have a fire_sound, but the projectile exists, and has a sound...
-		shot_sound = P.fire_sound
-	if(!shot_sound) // If there's still no sound...
-		return
-
-	if(silenced)
-		playsound(src, shot_sound, 10, 1)
-	else
-		playsound(src, shot_sound, 50, 1)
-
 /obj/item/gun/proc/toggle_scope(var/zoom_amount=2.0)
 	//looking through a scope limits your periphereal vision
 	//still, increase the view size by a tiny amount so that sniping isn't too restricted to NSEW

@@ -53,3 +53,16 @@
 			P.accuracy_overall_modify += 1 + (M.accuracy / 100)
 		if(!isnull(M.accuracy_dispersion))
 			P.dispersion = max(P.dispersion + M.accuracy_dispersion, 0)
+
+/obj/item/gun/proc/play_fire_sound(var/mob/user, var/obj/projectile/P)
+	var/shot_sound = fire_sound
+
+	if(!shot_sound && istype(P) && P.fire_sound) // If the gun didn't have a fire_sound, but the projectile exists, and has a sound...
+		shot_sound = P.fire_sound
+	if(!shot_sound) // If there's still no sound...
+		return
+
+	if(silenced)
+		playsound(src, shot_sound, 10, 1)
+	else
+		playsound(src, shot_sound, 50, 1)

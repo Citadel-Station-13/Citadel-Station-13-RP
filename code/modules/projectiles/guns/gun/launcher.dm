@@ -28,7 +28,7 @@
 		qdel(throwing_projectile)
 		return cycle.next_firing_fail_result
 
-	launch_throwable(cycle, firing_projectile)
+	launch_throwable(cycle, throwing_projectile)
 
 	return ..()
 

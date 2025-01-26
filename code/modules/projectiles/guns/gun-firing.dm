@@ -235,7 +235,6 @@
 	SHOULD_CALL_PARENT(TRUE)
 
 	//! LEGACY
-	play_fire_sound(cycle.firing_actor?.performer, firing_projectile)
 	if(ismob(cycle.firing_atom))
 		mob_firer.break_cloak()
 	//! END
