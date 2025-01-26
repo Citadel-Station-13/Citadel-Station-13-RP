@@ -96,7 +96,33 @@
 
 /atom/movable/screen/plane_master/emissive/Initialize(mapload)
 	. = ..()
-	add_filter("em_block_masking", 1, color_matrix_filter(GLOB.em_mask_matrix))
+	color = GLOB.em_mask_matrix
+	add_filter(
+		"blur",
+		5,
+		list(
+			"size" = 2.5,
+		),
+	)
+	add_filter(
+		"shadow",
+		10,
+		list(
+			"x" = 0,
+			"y" = 0,
+			"size" = 1.5,
+			"offset" = 1,
+			"color" = "#2323237a",
+		),
+	)
+	add_filter(
+		"outline",
+		20,
+		list(
+			"size" = 0,
+			"color" = "#000000",
+		),
+	)
 	#warn bloom filter
 
 /atom/movable/screen/plane_master/lightmask

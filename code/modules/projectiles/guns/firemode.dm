@@ -85,6 +85,7 @@
 	for(var/varname in legacy_direct_varedits)
 		switch(varname)
 			if("mode_name")
+			if("burst")
 			else
 				gun.vars[varname] = legacy_direct_varedits[varname]
 
