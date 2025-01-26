@@ -100,30 +100,29 @@
 	add_filter(
 		"blur",
 		5,
-		list(
-			"size" = 2.5,
+		gauss_blur_filter(
+			2.5,
 		),
 	)
 	add_filter(
 		"shadow",
 		10,
-		list(
-			"x" = 0,
-			"y" = 0,
-			"size" = 1.5,
-			"offset" = 1,
-			"color" = "#2323237a",
+		drop_shadow_filter(
+			0,
+			0,
+			1.5,
+			1,
+			"#2323237a",
 		),
 	)
 	add_filter(
 		"outline",
 		20,
-		list(
-			"size" = 0,
-			"color" = "#000000",
+		outline_filter(
+			0,
+			"#000000",
 		),
 	)
-	#warn bloom filter
 
 /atom/movable/screen/plane_master/lightmask
 	plane = LIGHTMASK_PLANE

@@ -86,6 +86,7 @@
 		switch(varname)
 			if("mode_name")
 			if("burst")
+			if("move_delay")
 			else
 				gun.vars[varname] = legacy_direct_varedits[varname]
 
