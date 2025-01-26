@@ -16,7 +16,9 @@
 /obj/item/gun/launcher/proc/update_release_force(obj/projectile)
 	return 0
 
-/obj/item/gun/launcher/process_projectile(obj/projectile, mob/user, atom/target, var/target_zone, var/params=null, var/pointblank=0, var/reflex=0)
+/obj/item/gun/launcher/fire(datum/gun_firing_cycle/cycle)
+	. = ..()
+
 	update_release_force(projectile)
 	projectile.forceMove(get_turf(user))
 	projectile.throw_at_old(target, throw_distance, release_force, user)

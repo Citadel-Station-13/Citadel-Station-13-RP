@@ -61,5 +61,7 @@
 		return null
 	return chambered?.get_projectile()
 
-/obj/item/gun/magic/handle_click_empty(mob/user)
+/obj/item/gun/magic/default_click_empty(datum/gun_firing_cycle/cycle)
+	// if this runtimes, too fucking bad!
+	var/mob/user = cycle.firing_actor.performer
 	to_chat(user, "<span class='warning'>The [name] whizzles quietly.</span>")
