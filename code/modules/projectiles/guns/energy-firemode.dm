@@ -14,8 +14,7 @@
 	/// * overrides [projectile_type]
 	/// * if set, causes the gun to clone this projectile on fire
 	/// * this is considered a shared reference if set! this means cloned firemodes share the same projectile instance
-	#warn hook
-	var/projectile_instance
+	var/obj/projectile/projectile_instance
 
 // todo: this shouldn't even exist.
 /datum/firemode/energy/New(obj/item/gun/inherit_from_gun, list/direct_varedits)
@@ -37,3 +36,8 @@
 	cloning.projectile_type = projectile_type
 	cloning.projectile_instance = projectile_instance
 	return cloning
+
+/datum/firemode/energy/proc/instance_projectile()
+	if(projectile_instance)
+		#warn impl
+	return projectile_type ? new projectile_type : null

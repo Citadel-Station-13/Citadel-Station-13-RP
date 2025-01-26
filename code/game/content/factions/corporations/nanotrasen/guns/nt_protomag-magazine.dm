@@ -53,46 +53,46 @@
 /**
  * Generates magazines and designs for normal protomag ammo.
  */
-#define NT_PROTOMAG_MAG_TYPEGEN(ID, SUFFIX, NAME, AMMO) \
-/obj/item/ammo_magazine/nt_protomag/pistol##SUFFIX { \
-	name = "protomag sidearm magazine (" + NAME + ")"; \
-	ammo_preload = /obj/item/ammo_casing/nt_protomag##AMMO; \
-	rendering_static_overlay_color = /obj/item/ammo_casing/nt_protomag##AMMO::stripe_color; \
+#define NT_PROTOMAG_MAGAZINE_TYPEGEN(_ID, _SUFFIX, _NAME, _AMMO) \
+/obj/item/ammo_magazine/nt_protomag/pistol##_SUFFIX { \
+	name = "protomag sidearm magazine (" + _NAME + ")"; \
+	ammo_preload = /obj/item/ammo_casing/nt_protomag##_AMMO; \
+	rendering_static_overlay_color = /obj/item/ammo_casing/nt_protomag##_AMMO::stripe_color; \
 } \
 /obj/item/ammo_magazine/nt_protomag/rifle##SUFFIX { \
-	name = "protomag rifle magazine (" + NAME + ")"; \
-	ammo_preload = /obj/item/ammo_casing/nt_protomag##AMMO; \
-	rendering_static_overlay_color = /obj/item/ammo_casing/nt_protomag##AMMO::stripe_color; \
+	name = "protomag rifle magazine (" + _NAME + ")"; \
+	ammo_preload = /obj/item/ammo_casing/nt_protomag##_AMMO; \
+	rendering_static_overlay_color = /obj/item/ammo_casing/nt_protomag##_AMMO::stripe_color; \
 } \
-GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_protomag/pistol##SUFFIX, /nt_protomag_ammo/pistol/##SUFFIX, "NTMagPistolAmmo" + ##ID); \
-GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_protomag/rifle##SUFFIX, /nt_protomag_ammo/rifle/##SUFFIX, "NTMagRifleAmmo" + ##ID);
+GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_protomag/pistol##_SUFFIX, /nt_protomag_ammo/pistol##_SUFFIX, "nt-ammo-magpistol-" + ##_ID); \
+GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_protomag/rifle##_SUFFIX, /nt_protomag_ammo/rifle##_SUFFIX, "nt-ammo-magrifle-" + ##_ID);
 
 /**
  * Generates magazines and designs for special protomag ammo.
  */
-#define NT_PROTOMAG_MAG_TYPEGEN_SPECIAL(ID, SUFFIX, NAME, AMMO) \
-NT_PROTOMAG_MAG_TYPEGEN(ID, SUFFIX, NAME, AMMO); \
-/datum/prototype/design/generated/nt_protomag_ammo/pistol/##SUFFIX { \
+#define NT_PROTOMAG_MAGAZINE_TYPEGEN_SPECIAL(ID, SUFFIX, NAME, AMMO) \
+NT_PROTOMAG_MAGAZINE_TYPEGEN(ID, SUFFIX, NAME, AMMO); \
+/datum/prototype/design/generated/nt_protomag_ammo/pistol##_SUFFIX { \
 	lathe_type = LATHE_TYPE_PROTOLATHE; \
 } \
-/datum/prototype/design/generated/nt_protomag_ammo/rifle/##SUFFIX { \
+/datum/prototype/design/generated/nt_protomag_ammo/rifle##_SUFFIX { \
 	lathe_type = LATHE_TYPE_PROTOLATHE; \
 }
 
-NT_PROTOMAG_MAG_TYPEGEN("Standard", /standard, "standard", /magboosted/standard)
-NT_PROTOMAG_MAG_TYPEGEN("Sabot", /sabot, "sabot", /magboosted/sabot)
-// NT_PROTOMAG_MAG_TYPEGEN("Shredder", /shredder, "shredder", /magboosted/shredder)
-NT_PROTOMAG_MAG_TYPEGEN("Impact", /impact, "impact", /magboosted/impact)
-NT_PROTOMAG_MAG_TYPEGEN("Practice", /practice, "practice", /magboosted/practice)
+NT_PROTOMAG_MAGAZINE_TYPEGEN("standard", /standard, "standard", /magboosted/standard)
+NT_PROTOMAG_MAGAZINE_TYPEGEN("sabot", /sabot, "sabot", /magboosted/sabot)
+// NT_PROTOMAG_MAGAZINE_TYPEGEN("shredder", /shredder, "shredder", /magboosted/shredder)
+NT_PROTOMAG_MAGAZINE_TYPEGEN("impact", /impact, "impact", /magboosted/impact)
+NT_PROTOMAG_MAGAZINE_TYPEGEN("practice", /practice, "practice", /magboosted/practice)
 
-// NT_PROTOMAG_MAG_TYPEGEN_SPECIAL("Smoke", /smoke, "smoke", /magnetic/smoke)
-NT_PROTOMAG_MAG_TYPEGEN_SPECIAL("Emp", /emp, "emp", /magnetic/emp)
-// NT_PROTOMAG_MAG_TYPEGEN_SPECIAL("Concussive", /concussive, "concussive", /magnetic/concussive)
-NT_PROTOMAG_MAG_TYPEGEN_SPECIAL("Penetrator", /penetrator, "penetrator", /magnetic/penetrator)
-NT_PROTOMAG_MAG_TYPEGEN_SPECIAL("Shock", /shock, "shock", /magnetic/shock)
-// NT_PROTOMAG_MAG_TYPEGEN_SPECIAL("Flare", /flare, "flare", /magnetic/flare)
-// NT_PROTOMAG_MAG_TYPEGEN_SPECIAL("Incendiary", /incendiary, "incendiary", /magnetic/incendiary)
-// NT_PROTOMAG_MAG_TYPEGEN_SPECIAL("Reagent", /reagent, "reagent", /magnetic/reagent)
+// NT_PROTOMAG_MAGAZINE_TYPEGEN_SPECIAL("smoke", /smoke, "smoke", /magnetic/smoke)
+NT_PROTOMAG_MAGAZINE_TYPEGEN_SPECIAL("emp", /emp, "emp", /magnetic/emp)
+// NT_PROTOMAG_MAGAZINE_TYPEGEN_SPECIAL("concussive", /concussive, "concussive", /magnetic/concussive)
+NT_PROTOMAG_MAGAZINE_TYPEGEN_SPECIAL("penetrator", /penetrator, "penetrator", /magnetic/penetrator)
+NT_PROTOMAG_MAGAZINE_TYPEGEN_SPECIAL("Shock", /shock, "shock", /magnetic/shock)
+// NT_PROTOMAG_MAGAZINE_TYPEGEN_SPECIAL("flare", /flare, "flare", /magnetic/flare)
+// NT_PROTOMAG_MAGAZINE_TYPEGEN_SPECIAL("incendiary", /incendiary, "incendiary", /magnetic/incendiary)
+// NT_PROTOMAG_MAGAZINE_TYPEGEN_SPECIAL("reagent", /reagent, "reagent", /magnetic/reagent)
 
-#undef NT_PROTOMAG_MAG_TYPEGEN
-#undef NT_PROTOMAG_MAG_TYPEGEN_SPECIAL
+#undef NT_PROTOMAG_MAGAZINE_TYPEGEN
+#undef NT_PROTOMAG_MAGAZINE_TYPEGEN_SPECIAL

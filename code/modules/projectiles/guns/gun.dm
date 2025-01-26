@@ -104,8 +104,10 @@
 	 */
 	var/list/firemodes = /datum/firemode
 	/// use radial for firemode
-	var/firemodes_use_radial = FALSE
 	#warn impl
+	var/firemodes_use_radial = FALSE
+	/// firemode swap action
+	var/datum/action/firemode_swap_action
 
 	//* Firing *//
 
@@ -357,7 +359,8 @@
 				modular_component_slots[GUN_COMPONENT_INTERNAL_MODULE] = modular_component_slots_internal
 			modular_component_slots = typelist(NAMEOF(src, modular_component_slots), modular_component_slots)
 
-	#warn firemode action if needed
+	// firemodes //
+	reconsider_firemode_action()
 
 /obj/item/gun/Destroy()
 	if(locate(/obj/projectile) in src)
@@ -656,15 +659,22 @@
 		return
 	return firemodes[sel_mode]
 
+//* Actions *//
+
 /obj/item/gun/register_item_actions(mob/user)
 	. = ..()
 	for(var/obj/item/gun_attachment/attachment as anything in attachments)
 		attachment.register_attachment_actions(user)
+	firemode_swap_action?.grant(user.inventory.actions)
 
 /obj/item/gun/unregister_item_actions(mob/user)
 	. = ..()
 	for(var/obj/item/gun_attachment/attachment as anything in attachments)
 		attachment.unregister_attachment_actions(user)
+	firemode_swap_action?.revoke(user.inventory.actions)
+
+/obj/item/gun/proc/reconsider_firemode_action()
+	#warn impl
 
 //* Ammo *//
 

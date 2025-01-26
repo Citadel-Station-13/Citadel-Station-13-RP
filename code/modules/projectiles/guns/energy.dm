@@ -110,8 +110,7 @@
 	if(effective_power_use)
 		if(!obj_cell_slot?.checked_use(effective_power_use))
 			return null
-	var/projectile_path = isnull(energy_firemode.projectile_type) ? projectile_type : energy_firemode.projectile_type
-	return new projectile_path
+	return energy_firemode.instance_projectile()
 
 /obj/item/gun/energy/proc/get_external_power_supply()
 	if(isrobot(src.loc))
