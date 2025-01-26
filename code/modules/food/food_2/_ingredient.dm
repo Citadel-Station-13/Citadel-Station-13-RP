@@ -273,6 +273,7 @@
 			our_nutrient.data[create_ingredient.cookstage_information[cookstage][COOKINFO_TASTE]] = WEIGHT_TASTE_DIVISION(food_weight)
 			if(istype(loc, /obj/machinery/cooking))
 				var/obj/machinery/cooking/CK = loc
+				CK.remove_specific_item(src)
 				CK.insert_item(create_ingredient)
 
 		qdel(src)

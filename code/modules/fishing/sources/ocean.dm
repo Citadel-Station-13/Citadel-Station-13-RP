@@ -10,7 +10,7 @@
 		/obj/item/fish/trout = 8,
 		/obj/item/fish/perch = 6,
 		/obj/item/fish/salmon = 6,
-		/obj/item/reagent_containers/food/snacks/shrimp = 5,
+		/obj/item/reagent_containers/food/snacks/ingredient/shrimp = 5,
 		/obj/item/fish/crab = 5,
 		/obj/item/fish/lanternfish = 5,
 		/obj/random/fishing_junk = 5,

@@ -5481,13 +5481,13 @@
 	bitesize = 0.01 //impossible to eat
 	reagents.add_reagent("carbon", 5)
 
-/obj/item/reagent_containers/food/snacks/shrimp
+/obj/item/reagent_containers/food/snacks/ingredient/shrimp
 	name = "raw shrimp"
 	desc = "An old-Earth sea creature. Formerly a luxury item, shrimp are commonly farmed as an easy source of protein."
 	icon_state = "shrimp_raw"
 	nutriment_amt = 5
 
-/obj/item/reagent_containers/food/snacks/shrimp/Initialize(mapload)
+/obj/item/reagent_containers/food/snacks/ingredient/shrimp/Initialize(mapload)
 	. = ..()
 	bitesize = 1
 

@@ -16,7 +16,7 @@ GLOBAL_LIST_INIT(generic_fishing_common_list, list(
 		/obj/item/fish/bass = 10,
 		/obj/item/fish/trout = 8,
 		/obj/item/fish/perch = 6,
-		/obj/item/reagent_containers/food/snacks/shrimp = 5,
+		/obj/item/reagent_containers/food/snacks/ingredient/shrimp = 5,
 		/obj/item/fish/murkin = 8,
 		/obj/item/fish/rockfish = 5,
 		/obj/item/fish/crab = 1

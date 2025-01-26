@@ -213,20 +213,11 @@
 	if(!LAZYLEN(contents))
 		return
 	var/list/removables = list()
-	var/counter = 0
 	for(var/obj/item/reagent_containers/food/snacks/ingredient/I in food_containers)
-		if(counter)
-			removables["[I.name] ([counter]) \[[I.cookstage2text()]\]"] = I
-		else
-			removables["[I.name] \[[I.cookstage2text()]\]"] = I
-		counter++
-	counter = 0
+		removables["[I.name] ([food_containers[I]]) \[[I.cookstage2text()]\]"] = I
+
 	for(var/obj/item/reagent_containers/glass/food_holder/FH in food_containers)
-		if(counter)
-			removables["[FH.name] ([counter])"] = FH
-		else
-			removables[FH.name] = FH
-		counter++
+		removables["[FH.name] ([food_containers[FH]])"] = FH
 	var/remove_item = removables[1]
 	if(LAZYLEN(food_containers ) > 1)
 		remove_item = input(user, "What to remove?", "Remove from cooker", null) as null|anything in removables
@@ -236,6 +227,11 @@
 		update_icon()
 		return TRUE
 	return FALSE
+
+/obj/machinery/cooking/proc/remove_specific_item(obj/item/I)
+	if(I in food_containers)
+		food_containers -= I
+		I.forceMove(null)
 
 /obj/machinery/cooking/proc/has_space()
 	if (food_containers.len >= max_contents)
