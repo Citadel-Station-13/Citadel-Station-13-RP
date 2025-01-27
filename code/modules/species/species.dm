@@ -1075,4 +1075,4 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
  * Handle specific job outfit stuff if applicable
  */
 /datum/species/proc/handle_species_job_outfit(var/mob/living/carbon/human/H, var/datum/outfit/outfit)
-  return FALSE // this means it should continue like normal equipping the outfit
+  return

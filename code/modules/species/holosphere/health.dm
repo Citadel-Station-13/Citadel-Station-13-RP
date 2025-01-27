@@ -1,6 +1,7 @@
 /datum/species/holosphere/handle_death(var/mob/living/carbon/human/H, gibbed)
+	message_admins(gibbed)
 	if(gibbed)
-		qdel(holosphere_shell)
+		QDEL_NULL(holosphere_shell)
 		return
 
 	var/deathmsg = "<span class='userdanger'>Systems critically damaged. Emitters temporarily offline.</span>"

@@ -75,7 +75,7 @@
 		J.toggle_valve()
 
 /datum/outfit/proc/equip(mob/living/carbon/human/H, rank, assignment)
-	if(H.species?.handle_species_job_outfit(H, src)) return
+	H.species?.handle_species_job_outfit(H, src)
 
 	equip_base(H)
 

@@ -86,8 +86,6 @@
 	handle_specific_job_clothing(H, outfit.head, SLOT_ID_HEAD)
 	handle_specific_job_clothing(H, outfit.glasses, SLOT_ID_GLASSES)
 
-	return TRUE
-
 /datum/species/holosphere/proc/handle_specific_job_clothing(mob/living/carbon/human/H, path, slot_id)
 	if(isnull(path)) return
 	var/obj/item/equipped = equipped_chameleon_gear[slot_id]
