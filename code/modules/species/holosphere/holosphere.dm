@@ -27,7 +27,7 @@
 	hunger_factor = 0 // doesn't get hungry naturally, but instead when healing they use nutrition
 
 	has_organ = list(
-		O_BRAIN     = /obj/item/organ/internal/brain
+		O_BRAIN     = /obj/item/organ/internal/brain/holosphere
 	)
 	vision_organ = O_BRAIN
 

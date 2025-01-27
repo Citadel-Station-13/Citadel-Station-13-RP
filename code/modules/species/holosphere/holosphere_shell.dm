@@ -34,7 +34,7 @@
 
 	holder_type = /obj/item/holder/holosphere_shell
 
-	mob_size = MOB_MINISCULE
+	mob_size = MOB_MEDIUM
 	pass_flags = ATOM_PASS_TABLE
 
 	var/eye_icon_state = "holosphere_eye"
