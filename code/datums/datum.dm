@@ -174,7 +174,7 @@
  *
  * Arguments:
  * * name - Filter name
- * * priority - Priority used when sorting the filter.
+ * * priority - Priority used when sorting the filter. Lower is applied first.
  * * params - Parameters of the filter.
  */
 /datum/proc/add_filter(name, priority, list/params)

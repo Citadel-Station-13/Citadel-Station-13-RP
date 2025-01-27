@@ -98,10 +98,17 @@
 	. = ..()
 	color = GLOB.em_mask_matrix
 	add_filter(
+		"color",
+		50,
+		color_matrix_filter(
+			GLOB.em_mask_matrix,
+		),
+	)
+	add_filter(
 		"blur",
 		5,
 		gauss_blur_filter(
-			2.5,
+			1.5,
 		),
 	)
 	add_filter(
