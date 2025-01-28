@@ -42,7 +42,7 @@
 			client.screen -= module_state_2
 		contents -= module_state_2
 		module_state_2.unequipped(src, SLOT_ID_HANDS, NONE)
-		module_state_1.on_unequipped(src, 2, NONE)
+		module_state_2.on_unequipped(src, 2, NONE)
 		module_active = null
 		module_state_2:loc = module
 		module_state_2 = null
@@ -54,7 +54,7 @@
 			client.screen -= module_state_3
 		contents -= module_state_3
 		module_state_3.unequipped(src, SLOT_ID_HANDS, NONE)
-		module_state_1.on_unequipped(src, 3, NONE)
+		module_state_3.on_unequipped(src, 3, NONE)
 		module_active = null
 		module_state_3:loc = module
 		module_state_3 = null

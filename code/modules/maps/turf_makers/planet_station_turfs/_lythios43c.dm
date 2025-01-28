@@ -70,6 +70,7 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 	blocks_air = FALSE
 	can_build_into_floor = TRUE
 	smoothing_groups = (SMOOTH_GROUP_FLOOR_SNOW)
+	canSmoothWith = null
 	icon = 'icons/turf/flooring/asteroid.dmi'
 	icon_state = "asteroid"
 	color = LIGHT_COLOR_BLUE
@@ -77,6 +78,7 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 		SETUP_SMOOTHING()
 		QUEUE_SMOOTH(src)
 		QUEUE_SMOOTH_NEIGHBORS(src)
+	update_icon()
 	if(SSair.initialized)
 		queue_zone_update()
 

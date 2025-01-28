@@ -30,6 +30,7 @@
 		/obj/item/storage/single_use/med_pouch/oxyloss = 3,
 		/obj/item/storage/single_use/med_pouch/burn = 3,
 		/obj/item/storage/single_use/med_pouch/trauma = 3,
+		/obj/item/hypospray = 6,
 		/obj/item/storage/hypokit = 6,
 	)
 	contraband = list(

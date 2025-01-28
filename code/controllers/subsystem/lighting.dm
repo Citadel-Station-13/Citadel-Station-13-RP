@@ -158,6 +158,12 @@ SUBSYSTEM_DEF(lighting)
 	while (lq_idex <= curr_lights.len)
 		var/datum/light_source/L = curr_lights[lq_idex++]
 
+		// citadel edit: light source can be deleted before update, if that happens, skip
+		//               check QDELING, light sources are LETMELIVE so shouldn't be being
+		//               harddel'd
+		if(QDELING(L))
+			continue
+
 		if (L.needs_update != LIGHTING_NO_UPDATE)
 			total_ss_updates += 1
 			L.update_corners()

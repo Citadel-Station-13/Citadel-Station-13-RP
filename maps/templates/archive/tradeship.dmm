@@ -1537,7 +1537,7 @@
 /obj/item/clothing/under/cheongsam,
 /obj/item/clothing/under/hosformalmale,
 /obj/item/clothing/under/hosformalfem,
-/obj/item/clothing/under/harness,
+/obj/item/clothing/under/gear_harness,
 /obj/item/clothing/under/gladiator,
 /obj/item/clothing/under/ert,
 /obj/item/clothing/under/schoolgirl,

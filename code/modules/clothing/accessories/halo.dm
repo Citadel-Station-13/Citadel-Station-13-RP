@@ -16,12 +16,12 @@
 		generate_styles()
 	AddElement(/datum/element/clothing/dynamic_recolor)
 
-/obj/item/clothing/accessory/halo_projector/available_styles(mob/user)
+/obj/item/clothing/accessory/halo_projector/style_repick_query(mob/user)
 	. = ..()
 	for(var/halo_name in global_halo_styles)
 		.[halo_name] = global_halo_styles[halo_name]
 
-/obj/item/clothing/accessory/halo_projector/set_style(style, mob/user)
+/obj/item/clothing/accessory/halo_projector/style_repick_set(style, mob/user)
 	. = ..()
 	if(.)
 		return
@@ -30,11 +30,11 @@
 
 /obj/item/clothing/accessory/halo_projector/equipped(mob/user, slot, flags)
 	. = ..()
-	RegisterSignal(user, COMSIG_MOB_UPDATE_TRANSFORM, PROC_REF(on_update_transform))
+	RegisterSignal(user, COMSIG_MOVABLE_ON_UPDATE_TRANSFORM, PROC_REF(on_update_transform))
 
 /obj/item/clothing/accessory/halo_projector/unequipped(mob/user, slot, flags)
 	. = ..()
-	UnregisterSignal(user, COMSIG_MOB_UPDATE_TRANSFORM)
+	UnregisterSignal(user, COMSIG_MOVABLE_ON_UPDATE_TRANSFORM)
 
 /obj/item/clothing/accessory/halo_projector/proc/on_update_transform(datum/source, matrix/old_transform, matrix/new_transform)
 	SIGNAL_HANDLER

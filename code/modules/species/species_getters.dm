@@ -98,10 +98,7 @@
 	return ((H && H.isSynthetic()) ? "encounters a hardware fault and suddenly reboots!" : knockout_message)
 
 /datum/species/proc/get_death_message(mob/living/carbon/human/H)
-	if(config_legacy.show_human_death_message)
-		return ((H && H.isSynthetic()) ? "gives one shrill beep before falling lifeless." : death_message)
-	else
-		return "no message"
+	return ((H && H.isSynthetic()) ? "gives one shrill beep before falling lifeless." : death_message)
 
 /datum/species/proc/get_ssd(mob/living/carbon/human/H)
 	if(H)
@@ -162,9 +159,9 @@
 		else
 			return capitalize(pick(GLOB.first_names_male)) + " " + capitalize(pick(GLOB.last_names))
 
-	var/datum/prototype/language/species_language = RSlanguages.fetch(get_name_language_id())
+	var/datum/prototype/language/species_language = RSlanguages.fetch_local_or_throw(get_name_language_id())
 	if(!species_language)
-		species_language = RSlanguages.fetch(default_language)
+		species_language = RSlanguages.fetch_local_or_throw(default_language)
 	if(!species_language)
 		return "unknown"
 	return species_language.get_random_name(gender)

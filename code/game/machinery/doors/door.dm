@@ -290,11 +290,12 @@
 			open()
 	..()
 
-/obj/machinery/door/update_icon()
+/obj/machinery/door/update_icon_state()
 	if(density)
 		icon_state = "door1"
 	else
 		icon_state = "door0"
+	return ..()
 
 /obj/machinery/door/proc/do_animate(animation)
 	switch(animation)
@@ -324,7 +325,7 @@
 	do_animate(DOOR_ANIMATION_OPEN)
 	set_opacity(0)
 	sleep(3)
-	src.density = 0
+	set_density(FALSE)
 	update_nearby_tiles()
 	sleep(7)
 	src.layer = open_layer
@@ -350,7 +351,7 @@
 	close_door_at = 0
 	do_animate(DOOR_ANIMATION_CLOSE)
 	sleep(3)
-	src.density = 1
+	set_density(TRUE)
 	explosion_resistance = initial(explosion_resistance)
 	src.layer = closed_layer
 	update_nearby_tiles()

@@ -12,8 +12,8 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral)
 	color = COLOR_ASTEROID_ROCK
 
 	smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = (SMOOTH_GROUP_WALLS+SMOOTH_GROUP_MINERAL_WALLS)
-	canSmoothWith = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS+SMOOTH_GROUP_MINERAL_WALLS)
+	smoothing_groups = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_MINERAL_WALLS)
+	canSmoothWith = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS)
 
 	var/sand_icon = 'icons/turf/flooring/asteroid.dmi'
 	var/rock_side_icon_state = "rock_side"
@@ -137,6 +137,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 /turf/simulated/mineral/floor/icerock/airmix
 	initial_gas_mix = GAS_STRING_STP
 
+// todo: don't make this the same /turf path, it doesn't make semantic sense
 /turf/simulated/mineral/proc/make_floor()
 	if(!density && !opacity)
 		return
@@ -149,9 +150,17 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 	can_build_into_floor = TRUE
 	//SSplanets.addTurf(src)	// Thank you Silicons, this was causing underground areas to have weather effects in them	- Bloop
 	queue_zone_update()
-	QUEUE_SMOOTH(src)
-	QUEUE_SMOOTH_NEIGHBORS(src)
+	smoothing_groups = null
+	canSmoothWith = null
+	if(atom_flags & ATOM_INITIALIZED)
+		SETUP_SMOOTHING()
+		QUEUE_SMOOTH(src)
+		QUEUE_SMOOTH_NEIGHBORS(src)
+	update_icon()
+	if(SSair.initialized)
+		queue_zone_update()
 
+// todo: don't make this the same /turf path, it doesn't make semantic sense
 /turf/simulated/mineral/proc/make_wall()
 	if(density && opacity)
 		return
@@ -164,8 +173,13 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 	can_build_into_floor = FALSE
 	//SSplanets.removeTurf(src)	// Thank you Silicons, this was causing underground areas to have weather effects in them as well -Bloop
 	queue_zone_update()
-	QUEUE_SMOOTH(src)
-	QUEUE_SMOOTH_NEIGHBORS(src)
+	smoothing_groups = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_MINERAL_WALLS)
+	canSmoothWith = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS)
+	if(atom_flags & ATOM_INITIALIZED)
+		SETUP_SMOOTHING()
+		QUEUE_SMOOTH(src)
+		QUEUE_SMOOTH_NEIGHBORS(src)
+	update_icon()
 
 /turf/simulated/mineral/Entered(atom/movable/M as mob|obj)
 	..()
@@ -181,10 +195,9 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 	if(prob(20))
 		overlay_detail = "asteroid[rand(0,9)]"
 	if(mineral)
+		update_icon()
 		if(density)
 			MineralSpread()
-		else
-			UpdateMineral()	// this'll work because we're initialized
 
 /* custom smoothing code */
 /turf/simulated/mineral/find_type_in_direction(direction)
@@ -193,9 +206,11 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 		return NULLTURF_BORDER
 	return T.density? ADJ_FOUND : NO_ADJ_FOUND
 
-/turf/simulated/mineral/update_appearance(updates)
+/turf/simulated/mineral/update_icon()
+	cut_overlays()
 	. = ..()
 
+	var/list/to_add = list()
 	//We are a wall (why does this system work like this??)
 	// todo: refactor this shitheap because this is pants on fucking head awful
 	if(density)
@@ -207,51 +222,28 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 		icon = 'icons/turf/walls/natural.dmi'
 //		icon_state = rock_icon_state
 
+		if(archaeo_overlay)
+			to_add += mutable_appearance(arch_icon, archaeo_overlay)
+		if(excav_overlay)
+			to_add += mutable_appearance(arch_icon, excav_overlay)
+		if(mineral)
+			var/image/mineral_overlay = image('icons/modules/mining/ore_overlay.dmi', "rock_[mineral.name]")
+			mineral_overlay.appearance_flags = KEEP_APART | RESET_COLOR
+			to_add += mineral_overlay
+
 	//We are a sand floor
 	else
 		name = "sand"
 		icon = sand_icon // So that way we can source from other files.
 		icon_state = sand_icon_state
 
-/turf/simulated/mineral/update_overlays()
-	. = ..()
-
-	//We are a wall (why does this system work like this??)
-	// todo: refactor this shitheap because this is pants on fucking head awful
-
-	if(density)
-		/*
-		// TODO: Replace these layers with defines. (I have some being added in another PR) @Zandario
-		var/mutable_appearance/appearance
-		if(!(smoothing_junction & NORTH_JUNCTION))
-			appearance = mutable_appearance(icon, "[rock_side_icon_state]_s", layer = EDGE_LAYER)
-			appearance.pixel_y = 32
-			. += appearance
-		if(!(smoothing_junction & SOUTH_JUNCTION))
-			appearance = mutable_appearance(icon, "[rock_side_icon_state]_n", layer = EDGE_LAYER)
-			appearance.pixel_y = -32
-			. += appearance
-		if(!(smoothing_junction & WEST_JUNCTION))
-			appearance = mutable_appearance(icon, "[rock_side_icon_state]_e", layer = EDGE_LAYER)
-			appearance.pixel_x = -32
-			. += appearance
-		if(!(smoothing_junction & EAST_JUNCTION))
-			appearance = mutable_appearance(icon, "[rock_side_icon_state]_w", layer = EDGE_LAYER)
-			appearance.pixel_x = 32
-			. += appearance
-		*/
-		if(archaeo_overlay)
-			. += mutable_appearance(arch_icon, archaeo_overlay)
-		if(excav_overlay)
-			. += mutable_appearance(arch_icon, excav_overlay)
-
-	//We are a sand floor
-	else
 		if(sand_dug)
-			. += mutable_appearance(icon, "dug_overlay")
+			to_add += mutable_appearance(icon, "dug_overlay")
 		if(overlay_detail)
-			. += mutable_appearance('icons/turf/flooring/decals.dmi', overlay_detail)
+			to_add += mutable_appearance('icons/turf/flooring/decals.dmi', overlay_detail)
 
+	if(length(to_add))
+		add_overlay(to_add)
 
 /turf/simulated/mineral/legacy_ex_act(severity)
 
@@ -317,21 +309,14 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 			M.selected.action(src)
 
 /turf/simulated/mineral/proc/MineralSpread()
-	UpdateMineral()
 	if(mineral && mineral.spread)
 		for(var/trydir in GLOB.cardinal)
 			if(prob(mineral.spread_chance))
 				var/turf/simulated/mineral/target_turf = get_step(src, trydir)
 				if(istype(target_turf) && target_turf.density && !target_turf.mineral)
 					target_turf.mineral = mineral
+					target_turf.update_icon()
 					target_turf.MineralSpread()
-
-/turf/simulated/mineral/proc/UpdateMineral(update_neighbors)
-	if(!(atom_flags & ATOM_INITIALIZED))
-		return	// /Initialize() will handle us
-	clear_ore_effects()
-	if(mineral && density)
-		new /obj/effect/mineral(src, mineral)
 
 //Not even going to touch this pile of spaghetti
 /turf/simulated/mineral/attackby(obj/item/W as obj, mob/user as mob)
@@ -600,15 +585,10 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 	if(updateIcon)
 		update_appearance()
 
-/turf/simulated/mineral/proc/clear_ore_effects()
-	for(var/obj/effect/mineral/M in contents)
-		qdel(M)
-
-/turf/simulated/mineral/proc/DropMineral(var/amount)
+/turf/simulated/mineral/proc/DropMineral(amount)
 	if(!mineral)
 		return
-	clear_ore_effects()
-	var/obj/item/stack/ore/O = new mineral.ore(src,amount)
+	var/obj/item/stack/ore/O = new mineral.ore(src, amount)
 	return O
 
 /turf/simulated/mineral/proc/excavate_turf()
@@ -629,7 +609,6 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 		GetDrilled(0)
 	else
 		GetDrilled(1)
-	return
 
 /turf/simulated/mineral/proc/GetDrilled(var/artifact_fail = 0)
 
@@ -643,6 +622,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 	if (mineral && mineral.result_amount)
 		//if the turf has already been excavated, some of it's ore has been removed
 		DropMineral(mineral.result_amount - mined_ore)
+		mineral = null
 
 	//destroyed artifacts have weird, unpleasant effects
 	//make sure to destroy them before changing the turf though
@@ -741,4 +721,4 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 	if(mineral_name && (mineral_name in GLOB.ore_data))
 		mineral = GLOB.ore_data[mineral_name]
 		if(atom_flags & ATOM_INITIALIZED)
-			UpdateMineral()
+			update_icon()

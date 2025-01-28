@@ -23,6 +23,7 @@
 		/datum/map/sector/frozen_192,
 		/datum/map/sector/wasteland_192,
 		/datum/map/sector/nebula_tradeport,
+		/datum/map/sector/delerict_casino,
 		/datum/map/sector/surt,
 		/datum/map/sector/miaphus,
 		/datum/map/sector/roguemining_192/one,
@@ -101,7 +102,7 @@
 
 	bot_patrolling = FALSE
 
-	allowed_spawns = list("Tram Station","Gateway","Cryogenic Storage","Cyborg Storage","Beruang Trading Corp Cryo")
+	allowed_spawns = list("Tram Station","Gateway","Cryogenic Storage","Cyborg Storage","Beruang Trading Corp Cryo","Nebula Visitor Arrival")
 	spawnpoint_died = /datum/spawnpoint/tram
 	spawnpoint_left = /datum/spawnpoint/tram
 	spawnpoint_stayed = /datum/spawnpoint/cryo

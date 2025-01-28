@@ -8,11 +8,12 @@
 	density = 1
 	var/wired = 0
 
-/obj/structure/firedoor_assembly/update_icon()
+/obj/structure/firedoor_assembly/update_icon_state()
 	if(anchored)
 		icon_state = "door_anchored"
 	else
 		icon_state = "door_construction"
+	return ..()
 
 /obj/structure/firedoor_assembly/attackby(obj/item/C, mob/user as mob)
 	if(istype(C, /obj/item/stack/cable_coil) && !wired && anchored)

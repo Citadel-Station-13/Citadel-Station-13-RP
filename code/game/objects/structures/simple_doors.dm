@@ -15,9 +15,14 @@
 	var/isSwitchingStates = 0
 	var/oreAmount = 7
 
-/obj/structure/simple_door/Initialize(mapload, material)
-	if(!isnull(material))
-		set_primary_material(RSmaterials.fetch(material))
+/obj/structure/simple_door/Initialize(mapload, datum/prototype/material/material_like)
+	if(!isnull(material_like))
+		var/resolved_material = RSmaterials.fetch_or_defer(material_like)
+		switch(resolved_material)
+			if(REPOSITORY_FETCH_DEFER)
+				// todo: handle
+			else
+				set_primary_material(resolved_material)
 	return ..()
 
 /obj/structure/simple_door/update_material_single(datum/prototype/material/material)
@@ -112,7 +117,7 @@
 	isSwitchingStates = 0
 	update_nearby_tiles()
 
-/obj/structure/simple_door/update_icon()
+/obj/structure/simple_door/update_icon_state()
 	var/datum/prototype/material/material = get_primary_material()
 	if(isnull(material))
 		icon_state = state? "open" : "closed"
@@ -121,6 +126,7 @@
 		icon_state = "[material.door_icon_base]open"
 	else
 		icon_state = material.door_icon_base
+	return ..()
 
 /obj/structure/simple_door/attackby(obj/item/W as obj, mob/user as mob)
 	if(user.a_intent == INTENT_HARM)

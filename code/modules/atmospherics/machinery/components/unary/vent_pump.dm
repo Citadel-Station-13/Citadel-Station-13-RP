@@ -88,11 +88,13 @@
 	//QDEL_NULL(soundloop)
 	return ..()
 
-/obj/machinery/atmospherics/component/unary/vent_pump/update_icon(safety = 0)
+/obj/machinery/atmospherics/component/unary/vent_pump/update_icon()
+	cut_overlays()
+	. = ..()
+
 	if(!check_icon_cache())
 		return
 
-	cut_overlays()
 
 	var/vent_icon = "vent"
 
@@ -100,7 +102,7 @@
 	if(!istype(T))
 		return
 
-	if(is_probably_hidden_underfloor() && istype(node, /obj/machinery/atmospherics/pipe) && node.hides_underfloor == OBJ_UNDERFLOOR_ALWAYS)
+	if(is_hidden_underfloor() && istype(node, /obj/machinery/atmospherics/pipe) && node.will_hide_underfloor())
 		vent_icon += "h"
 
 	if(welded)
@@ -118,7 +120,7 @@
 		var/turf/T = get_turf(src)
 		if(!istype(T))
 			return
-		if(is_probably_hidden_underfloor() && istype(node, /obj/machinery/atmospherics/pipe) && node.hides_underfloor == OBJ_UNDERFLOOR_ALWAYS)
+		if(is_hidden_underfloor() && istype(node, /obj/machinery/atmospherics/pipe) && node.will_hide_underfloor())
 			return
 		else
 			if(node)
@@ -276,7 +278,7 @@
 	if (!(machine_stat & NOPOWER) && on)
 		to_chat(user, "<span class='warning'>You cannot unwrench \the [src], turn it off first.</span>")
 		return 1
-	if(is_probably_hidden_underfloor() && node?.hides_underfloor == OBJ_UNDERFLOOR_ALWAYS)
+	if(is_hidden_underfloor() && node?.will_hide_underfloor())
 		to_chat(user, "<span class='warning'>You must remove the plating first.</span>")
 		return 1
 	if(unsafe_pressure())
@@ -497,7 +499,7 @@
 	if(!istype(T))
 		return
 
-	if(T.hides_underfloor_objects() && istype(node, /obj/machinery/atmospherics/pipe) && node.hides_underfloor == OBJ_UNDERFLOOR_ALWAYS)
+	if(T.hides_underfloor_objects() && istype(node, /obj/machinery/atmospherics/pipe) && node.will_hide_underfloor())
 		vent_icon += "h"
 
 	if(welded)

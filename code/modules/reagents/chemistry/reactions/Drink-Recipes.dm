@@ -1802,7 +1802,7 @@
 	id = "braindrain"
 	result = "braindrain"
 	required_reagents = list("blud" = 1, "vodka" = 1, "kahlua" = 1)
-	result_amount = 3\
+	result_amount = 3
 
 //Blood-based Cocktails
 //All of these drinks should contain some level of blood_content in their reagent code

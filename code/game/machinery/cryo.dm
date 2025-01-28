@@ -112,7 +112,7 @@
 		occupantData["stat"] = occupant.stat
 		occupantData["health"] = occupant.health
 		occupantData["maxHealth"] = occupant.getMaxHealth()
-		occupantData["minHealth"] = config_legacy.health_threshold_dead
+		occupantData["minHealth"] = occupant.getMinHealth()
 		occupantData["bruteLoss"] = occupant.getBruteLoss()
 		occupantData["oxyLoss"] = occupant.getOxyLoss()
 		occupantData["toxLoss"] = occupant.getToxLoss()
@@ -214,6 +214,7 @@
 	put_mob(target)
 
 /obj/machinery/atmospherics/component/unary/cryo_cell/update_icon()
+	. = ..()
 	cut_overlay(fluid)
 	fluid.color = null
 	fluid.alpha = max(255 - air_contents.temperature, 50)

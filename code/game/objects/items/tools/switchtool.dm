@@ -359,7 +359,7 @@
 
 /obj/item/switchtool/holo/Initialize(mapload)
 	. = ..()
-	add_atom_colour(light_color, FIXED_COLOUR_PRIORITY)
+	add_atom_color(light_color)
 
 /obj/item/switchtool/holo/deploy(var/obj/item/module) //We lightin' it up in here
 	..()

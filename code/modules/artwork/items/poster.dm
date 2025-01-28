@@ -26,11 +26,11 @@
 		poster_design_id = pick(RSposter_designs.fetch_by_tag_mutable(poster_random_tag))
 	if(poster_design_id != src.poster_design_id)
 		src.poster_design_id = poster_design_id
-	set_poster_design(RSposter_designs.fetch(poster_design_id))
+	set_poster_design(RSposter_designs.fetch_local_or_throw(poster_design_id))
 
 /obj/item/poster/proc/set_poster_design(datum/prototype/poster_design/design)
 	src.name = "rolled-up-poster - [design.name]"
-	src.desc = "[initial(src.desc)] [design.desc]"
+	src.desc = "[/obj/item/poster::desc] [design.desc]"
 	src.poster_design_id = design.id
 
 //Places the poster on a wall

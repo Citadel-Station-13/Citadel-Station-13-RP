@@ -47,7 +47,7 @@
 		0, 0, 0,
 	)
 
-/obj/machinery/gear_painter/update_icon()
+/obj/machinery/gear_painter/update_icon_state()
 	if(panel_open)
 		icon_state = "colormate_open"
 	else if(inoperable())
@@ -56,6 +56,7 @@
 		icon_state = "colormate_active"
 	else
 		icon_state = "colormate"
+	return ..()
 
 /obj/machinery/gear_painter/Destroy()
 	if(inserted) //please i beg you do not drop nulls
@@ -192,7 +193,7 @@
 				drop_item()
 				return TRUE
 			if("clear")
-				inserted.remove_atom_colour(FIXED_COLOUR_PRIORITY)
+				inserted.remove_atom_color()
 				playsound(src, 'sound/effects/spray3.ogg', 50, 1)
 				temp = "Cleared Successfully!"
 				return TRUE
@@ -236,7 +237,7 @@
 	if(!color_to_use || !check_valid_color(color_to_use, user))
 		to_chat(user, SPAN_NOTICE("Invalid color."))
 		return FALSE
-	inserted.add_atom_colour(color_to_use, FIXED_COLOUR_PRIORITY)
+	inserted.add_atom_color(color_to_use)
 	playsound(src, 'sound/effects/spray3.ogg', 50, 1)
 	return TRUE
 
@@ -285,7 +286,7 @@
 
 /obj/machinery/gear_painter/proc/check_valid_color(list/cm, mob/user)
 	if(!islist(cm))		// normal
-		var/list/HSV = ReadHSV(RGBtoHSV(cm))
+		var/list/HSV = rgb2hsv(cm)
 		if(HSV[3] < minimum_normal_lightness)
 			temp = "[cm] is too dark (Minimum lightness: [minimum_normal_lightness])"
 			return FALSE
@@ -294,7 +295,7 @@
 		// We test using full red, green, blue, and white
 		// A predefined number of them must pass to be considered valid
 		var/passed = 0
-#define COLORTEST(thestring, thematrix) passed += (ReadHSV(RGBtoHSV(RGBMatrixTransform(thestring, thematrix)))[3] >= minimum_matrix_lightness)
+#define COLORTEST(thestring, thematrix) passed += (rgb2hsv(RGBMatrixTransform(thestring, thematrix))[3] >= minimum_matrix_lightness)
 		COLORTEST("FF0000", cm)
 		COLORTEST("00FF00", cm)
 		COLORTEST("0000FF", cm)

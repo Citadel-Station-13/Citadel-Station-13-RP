@@ -74,11 +74,17 @@ GLOBAL_LIST_EMPTY(crayon_data_lookup_by_string_icon_path)
 	var/centering_pixel_y
 
 /datum/crayon_decal_meta/proc/tgui_crayon_data()
+	//!                                  uh oh! byond alert!                                !//
+	//! associative lists are contagious and we really need a flat list or tgui crashes!    !//
+	//!                                 manually flatten it.                                !//
+	var/list/i_really_dislike_byond = list()
+	for(var/key in states)
+		i_really_dislike_byond += key
+
 	return list(
 		"name" = name,
-		"states" = states,
+		"states" = i_really_dislike_byond,
 		"width" = width,
 		"height" = height,
 		"id" = id,
 	)
-

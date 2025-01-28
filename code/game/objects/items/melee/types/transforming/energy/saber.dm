@@ -83,6 +83,7 @@
 	armor_penetration = 35
 	colorable = TRUE
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	worn_render_flags = WORN_RENDER_SLOT_NO_RENDER | WORN_RENDER_INHAND_ONE_FOR_ALL
 
 	passive_parry = /datum/passive_parry{
 		parry_chance_default = 60;
