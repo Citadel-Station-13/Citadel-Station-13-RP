@@ -18,8 +18,7 @@ SUBSYSTEM_DEF(processing)
 		currentrun = processing.Copy()
 	//cache for sanic speed (lists are references anyways)
 	var/list/current_run = currentrun
-	// nominal time between runs in seconds
-	var/dt = SUBSYSTEM_FIRE_COMPUTE_DT
+	var/dt = nominal_dt_s
 
 	while(current_run.len)
 		var/datum/thing = current_run[current_run.len]

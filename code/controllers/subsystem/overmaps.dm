@@ -1,7 +1,6 @@
 SUBSYSTEM_DEF(overmaps)
 	name = "Overmaps"
 	wait = 1 SECONDS
-	priority = FIRE_PRIORITY_OVERMAPS
 	init_order = INIT_ORDER_OVERMAPS
 	runlevels = RUNLEVEL_GAME|RUNLEVEL_POSTGAME
 	subsystem_flags = SS_KEEP_TIMING

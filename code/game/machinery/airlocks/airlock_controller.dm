@@ -117,11 +117,11 @@
 	#warn stuff
 	// todo: we need proper tick bracket machine support & fastmos
 	STOP_MACHINE_PROCESSING(src)
-	START_PROCESSING(SSfastprocess, src)
+	START_PROCESSING(SSprocess_5fps, src)
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/airlock_controller/Destroy()
-	STOP_PROCESSING(SSfastprocess, src)
+	STOP_PROCESSING(SSprocess_5fps, src)
 	return ..()
 
 /obj/machinery/airlock_controller/LateInitialize()
