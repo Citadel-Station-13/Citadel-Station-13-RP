@@ -36,6 +36,16 @@
 	SHOULD_NOT_SLEEP(TRUE)
 
 /**
+ * called when a traversal event comes in
+ *
+ * * fired shuttle, and dock-side
+ * * can be blocked
+ * * only one is fired
+ */
+/datum/shuttle_hook/proc/on_traversal(datum/event_args/shuttle/translation/event)
+	SHOULD_NOT_SLEEP(TRUE)
+
+/**
  * called when a docking event comes in
  *
  * * fired shuttle-side and dock-side
