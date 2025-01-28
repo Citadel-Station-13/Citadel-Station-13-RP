@@ -59,3 +59,49 @@
 
 /datum/gun_mob_renderer/states/dedupe_key()
 	return "states-[use_firemode]-[count]-[empty_state]"
+
+
+/**
+ * uses either 1 to n or only the nth overlay to render on-mob
+ *
+ * if use_firemode is set, the firemode append will be appended before our default appends.
+ * if use_firemode is set, the firemode overlay will be overlaid independently from overlays
+ *
+ * overlay state is "[gun.base_worn_state]-[n]"
+ * empty state append is -empty
+ *
+ * if use_single_overlay is set, we only render the -n'th state,
+ * otherwise we render -1 to -n, or -empty if empty (and use empty state is on)
+ *
+ * * firemode is not taken into account for empty state.
+ * * "[base]-[firemode]-[count]"
+ */
+#warn impl
+/datum/gun_mob_renderer/overlays
+	/// total count of overlays, from 1 to amount
+	var/count
+	/// add "-empty" overlay when we're empty, instead of adding nothing
+	var/use_empty
+	/// only use the n-th overlay, instead of adding 1 to n
+	var/use_single
+	/// additionally, add an "-[firemode]" state for our firemode's render_key
+	var/use_firemode
+
+/datum/gun_mob_renderer/overlays/render(obj/item/gun/gun, ammo_ratio, firemode_key)
+	// todo: do we really need to always return TRUE and force an update?
+	var/base_icon_state = gun.base_mob_state || gun.base_icon_state || initial(gun.icon_state)
+	if(!ammo_ratio)
+		if(empty_state)
+			gun.inhand_state = "[base_icon_state][firemode_key && use_firemode && "-[firemode_key]"]-empty"
+		else
+			gun.inhand_state = base_icon_state
+		if(render_slots)
+			gun.worn_state = gun.inhand_state
+		return
+	gun.inhand_state = "[base_icon_state][use_firemode && firemode_key && "-[firemode_key]"]-[ceil(count * ammo_ratio)]"
+	if(render_slots)
+		gun.worn_state = gun.inhand_state
+	return TRUE
+
+/datum/gun_mob_renderer/overlays/dedupe_key()
+	return "states-[use_firemode]-[count]-[empty_state]"

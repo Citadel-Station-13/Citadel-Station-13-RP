@@ -29,12 +29,12 @@
  * uses a copy of a segment to render inventory/world
  *
  * if use_firemode is set, the firemode append will be appended before our default appends.
- * if independent_firemode is set, the firemode overlay will be overlaid independently from segments
+ * if use_firemode is set, the firemode overlay will be overlaid independently from segments
  *
  * segment state is "[gun.base_icon_state]-ammo"
  * empty state is "[gun.base_icon_state]-empty"
  *
- * * you probably don't need both use_firemode and independent_firemode.
+ * * you probably don't need both use_firemode and use_firemode.
  * * firemode is not taken into account for empty state.
  */
 /datum/gun_item_renderer/segments
@@ -44,7 +44,7 @@
 	var/offset_x = 0
 	var/offset_y = 0
 	var/use_empty = FALSE
-	var/independent_firemode = FALSE
+	var/use_firemode = FALSE
 
 /datum/gun_item_renderer/segments/render(obj/item/gun/gun, ammo_ratio, firemode_key)
 	var/base_icon_state = gun.base_icon_state || initial(gun.icon_state)
@@ -52,7 +52,7 @@
 		gun.add_overlay("[base_icon_state]-[gun.render_additional_state]")
 	if(gun.render_additional_exclusive)
 		return
-	if(independent_firemode && firemode_key)
+	if(use_firemode && firemode_key)
 		gun.add_overlay("[base_icon_state]-[firemode_key]")
 	if(!ammo_ratio)
 		if(use_empty)
@@ -68,13 +68,13 @@
 		gun.add_overlay(creating)
 
 /datum/gun_item_renderer/segments/dedupe_key()
-	return "segments-[use_firemode]-[count]-[initial_x]-[initial_y]-[offset_x]-[offset_y]-[use_empty]-[use_firemode]-[independent_firemode]"
+	return "segments-[use_firemode]-[count]-[initial_x]-[initial_y]-[offset_x]-[offset_y]-[use_empty]-[use_firemode]-[use_firemode]"
 
 /**
  * uses either 1 to n or only the nth overlay to render inventory/world
  *
  * if use_firemode is set, the firemode append will be appended before our default appends.
- * if independent_firemode is set, the firemode overlay will be overlaid independently from overlays
+ * if use_firemode is set, the firemode overlay will be overlaid independently from overlays
  *
  * overlay state is "[gun.base_icon_state]-[n]"
  * empty state append is -empty
@@ -93,7 +93,7 @@
 	/// only use the n-th overlay, instead of adding 1 to n
 	var/use_single
 	/// additionally, add an "-[firemode]" state for our firemode's render_key
-	var/independent_firemode
+	var/use_firemode
 
 /datum/gun_item_renderer/overlays/render(obj/item/gun/gun, ammo_ratio, firemode_key)
 	var/base_icon_state = gun.base_icon_state || initial(gun.icon_state)
@@ -101,7 +101,7 @@
 		gun.add_overlay("[base_icon_state]-[gun.render_additional_state]")
 	if(gun.render_additional_exclusive)
 		return
-	if(independent_firemode && firemode_key)
+	if(use_firemode && firemode_key)
 		gun.add_overlay("[base_icon_state]-[firemode_key]")
 	if(!ammo_ratio)
 		if(use_empty)
@@ -115,7 +115,7 @@
 			gun.add_overlay("[base_icon_state]-[append]-[i]")
 
 /datum/gun_item_renderer/overlays/dedupe_key()
-	return "overlays-[use_firemode]-[count]-[use_empty]-[use_single]-[independent_firemode]"
+	return "overlays-[use_firemode]-[count]-[use_empty]-[use_single]-[use_firemode]"
 
 /**
  * uses icon states to render inventory/world

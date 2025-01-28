@@ -237,9 +237,7 @@
 	/// for de-duping
 	var/static/list/mob_renderer_store = list()
 
-	/// render as -wield if we're wielded? applied at the end of our base worn state no matter what
-	///
-	///  todo: impl
+	/// render as -wield if we're wielded? applied at the end of our base worn state no matter what if on and we are wielded.
 	///
 	/// * ignores [mob_renderer]
 	/// * ignores [render_additional_exclusive] / [render_additional_worn]

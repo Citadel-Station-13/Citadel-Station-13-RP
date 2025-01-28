@@ -26,11 +26,19 @@
 
 /obj/item/gun/projectile/ballistic/magnetic/nt_protomag/sidearm
 	name = "protomag sidearm"
+	icon_state = "pistol-map"
+	base_icon_state = "pistol"
 	item_renderer = /datum/gun_item_renderer/overlays{
 		count = 4;
 		use_empty = TRUE;
 		use_single = TRUE;
 	}
+	mob_renderer = /datum/gun_mob_renderer/overlays{
+		count = 3;
+		use_empty = TRUE;
+		use_single = TRUE;
+	}
+	worn_render_flags = NONE
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	render_battery_overlay = MAGNETIC_RENDER_BATTERY_IN
 	fire_sound = 'sound/content/factions/corporations/nanotrasen/protomag-pistol.ogg'
@@ -42,11 +50,21 @@
 
 /obj/item/gun/projectile/ballistic/magnetic/nt_protomag/rifle
 	name = "protomag rifle"
+	icon_state = "rifle-map"
+	base_icon_state = "rifle"
 	item_renderer = /datum/gun_item_renderer/overlays{
 		count = 4;
 		use_empty = TRUE;
 		use_single = TRUE;
 	}
+	mob_renderer = /datum/gun_mob_renderer/overlays{
+		count = 4;
+		use_empty = TRUE;
+		use_single = TRUE;
+	}
+	slot_flags = SLOT_BACK
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	render_mob_wielded = TRUE
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	render_battery_overlay = MAGNETIC_RENDER_BATTERY_IN
 	base_shot_power = /obj/item/cell/device/weapon::maxcharge * (1 / (/obj/item/ammo_magazine/nt_protomag/rifle::ammo_max * 4))

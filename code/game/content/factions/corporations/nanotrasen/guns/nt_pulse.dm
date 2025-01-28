@@ -58,7 +58,7 @@
 	item_renderer = /datum/gun_item_renderer/segments{
 		count = 4;
 		offset_x = 2;
-		independent_firemode = TRUE;
+		use_firemode = TRUE;
 		use_firemode = TRUE;
 		use_empty = TRUE;
 	}
@@ -105,7 +105,7 @@
 	item_renderer = /datum/gun_item_renderer/segments{
 		count = 4;
 		offset_x = 2;
-		independent_firemode = TRUE;
+		use_firemode = TRUE;
 		use_firemode = TRUE;
 		use_empty = TRUE;
 	}
