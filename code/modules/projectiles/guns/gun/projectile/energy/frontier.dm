@@ -23,10 +23,12 @@
 	. = ..()
 	if(.)
 		return
-	#warn inactive held item check
 	var/mob/user = e_args.performer
+	if(!user.inventory.count_empty_hands())
+		return
 	if(recharging)
 		return
+	. = TRUE
 	recharging = 1
 	update_icon()
 	user.visible_message("<span class='notice'>[user] opens \the [src] and starts pumping the handle.</span>", \
@@ -108,10 +110,14 @@
 
 /obj/item/gun/projectile/energy/frontier/taj/on_attack_hand(datum/event_args/actor/clickchain/e_args)
 	. = ..()
-	#warn inactive held check or component this shit
+	if(.)
+		return
+	if(!user.inventory.count_empty_hands())
+		return
 	var/mob/user = e_args.performer
 	if(recharging)
 		return
+	. = TRUE
 	recharging = 1
 	update_icon()
 	user.visible_message("<span class='notice'>[user] begins to turn the crank of \the [src].</span>", \
