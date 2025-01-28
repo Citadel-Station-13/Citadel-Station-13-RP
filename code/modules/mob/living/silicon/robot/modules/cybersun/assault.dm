@@ -3,10 +3,27 @@ GENERATE_ROBOT_MODULE_PRESET(/cybersun/assault)
 	use_robot_module_path = /obj/item/robot_module/robot/syndicate
 	light_color = "#FF0000"
 	allowed_frames = list(
+		/datum/robot_frame{
+			name = "Cerberus";
+			robot_chassis = /datum/prototype/robot_chassis/grounded;
+			robot_iconset = /datum/prototype/robot_iconset/grounded_landmate/security_cybersun;
+		},
+		/datum/robot_frame{
+			name = "Cerberus - Treaded";
+			robot_chassis = /datum/prototype/robot_chassis/grounded;
+			robot_iconset = /datum/prototype/robot_iconset/grounded_landmate/security_cybersun_tread;
+		},
+		/datum/robot_frame{
+			name = "XI - ALP";
+			robot_chassis = /datum/prototype/robot_chassis/biped;
+			robot_iconset = /datum/prototype/robot_iconset/biped_heavy/antag;
+		},
+		/datum/robot_frame{
+			name = "XI - GUS";
+			robot_chassis = /datum/prototype/robot_chassis/grounded;
+			robot_iconset = /datum/prototype/robot_iconset/grounded_spider/combat;
+		},
 	)
-
-/datum/prototype/robot_module/cybersun/assault/provision_resource_store(datum/robot_resource_store/store)
-	..()
 
 /datum/prototype/robot_module/cybersun/assault/create_mounted_item_descriptors(list/normal_out, list/emag_out)
 	..()
@@ -39,22 +56,9 @@ GENERATE_ROBOT_MODULE_PRESET(/cybersun/assault)
 		LANGUAGE_TERMINUS = 1,
 		LANGUAGE_ZADDAT = 0
 	)
-	sprites = list(
-		"Cerberus" = "syndie_bloodhound",
-		"Cerberus - Treaded" = "syndie_treadhound",
-		"Ares" = "squats",
-		"Telemachus" = "toiletbotantag",
-		"WTOperator" = "hosborg",
-		"XI-GUS" = "spidersyndi",
-		"XI-ALP" = "syndi-heavy"
-	)
-	var/id
 
 /obj/item/robot_module/robot/syndicate/protector
 	name = "protector robot module"
 	sprites = list(
-		"Cerberus - Treaded" = "syndie_treadhound",
-		"Cerberus" = "syndie_bloodhound",
 		"Ares" = "squats",
-		"XI-ALP" = "syndi-heavy"
 	)

@@ -3,6 +3,16 @@ GENERATE_ROBOT_MODULE_PRESET(/cybersun/sapper)
 	use_robot_module_path = /obj/item/robot_module/robot/
 	light_color = "#FF0000"
 	allowed_frames = list(
+		/datum/robot_frame{
+			name = "XI-GUS";
+			robot_chassis = /datum/prototype/robot_chassis/grounded;
+			robot_iconset = /datum/prototype/robot_iconset/grounded_spider;
+		},
+		/datum/robot_frame{
+			name = "Landmate";
+			robot_chassis = /datum/prototype/robot_chassis/grounded;
+			robot_iconset = /datum/prototype/robot_iconset/grounded_landmate/engineering_cybersun;
+		},
 	)
 
 /datum/prototype/robot_module/cybersun/sapper/provision_resource_store(datum/robot_resource_store/store)
@@ -23,35 +33,23 @@ GENERATE_ROBOT_MODULE_PRESET(/cybersun/sapper)
 			/obj/item/stack/tile/floor,
 			/obj/item/stack/tile/roofing,
 			/obj/item/stack/material/glass/reinforced,
+
+			/obj/item/borg/sight/meson,
+			/obj/item/weldingtool/electric/mounted/cyborg,
+			/obj/item/tool/screwdriver/cyborg,
+			/obj/item/tool/wrench/cyborg,
+			/obj/item/tool/wirecutters/cyborg,
+			/obj/item/multitool/ai_detector,
+			/obj/item/pickaxe/plasmacutter,
+			/obj/item/rcd/electric/mounted/borg/lesser, // Can't eat rwalls to prevent AI core cheese.
+			/obj/item/melee/transforming/energy/sword/ionic_rapier,
+
+			// FBP repair.
+			/obj/item/robotanalyzer,
+			/obj/item/shockpaddles/robot,
+			/obj/item/gripper/no_use/organ/robotics,
+
+			// Hacking other things.
+			/obj/item/card/robot/syndi,
+			/obj/item/card/emag,
 		)
-
-#warn translate chassis below
-/obj/item/robot_module/robot/syndicate/mechanist
-	name = "mechanist robot module"
-	sprites = list(
-		"XI-GUS" = "spidersyndi",
-		"WTOperator" = "sleekhos"
-	)
-
-/obj/item/robot_module/robot/syndicate/mechanist/get_modules()
-	. = ..()
-	. |= list(
-		/obj/item/borg/sight/meson,
-		/obj/item/weldingtool/electric/mounted/cyborg,
-		/obj/item/tool/screwdriver/cyborg,
-		/obj/item/tool/wrench/cyborg,
-		/obj/item/tool/wirecutters/cyborg,
-		/obj/item/multitool/ai_detector,
-		/obj/item/pickaxe/plasmacutter,
-		/obj/item/rcd/electric/mounted/borg/lesser, // Can't eat rwalls to prevent AI core cheese.
-		/obj/item/melee/transforming/energy/sword/ionic_rapier,
-
-		// FBP repair.
-		/obj/item/robotanalyzer,
-		/obj/item/shockpaddles/robot,
-		/obj/item/gripper/no_use/organ/robotics,
-
-		// Hacking other things.
-		/obj/item/card/robot/syndi,
-		/obj/item/card/emag
-	)
