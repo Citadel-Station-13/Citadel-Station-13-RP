@@ -1,5 +1,4 @@
 /datum/species/holosphere/handle_death(var/mob/living/carbon/human/H, gibbed)
-	message_admins(gibbed)
 	if(gibbed)
 		QDEL_NULL(holosphere_shell)
 		return

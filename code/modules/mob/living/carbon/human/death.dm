@@ -70,7 +70,6 @@
 	update_hud_med_status()
 
 	//Handle species-specific deaths.
-	message_admins("A [gibbed]")
 	species.handle_death(src, gibbed)
 	animate_tail_stop()
 	stop_flying()
