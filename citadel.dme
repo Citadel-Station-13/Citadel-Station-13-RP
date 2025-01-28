@@ -1134,6 +1134,7 @@
 #include "code\game\content\factions\corporations\nanotrasen\guns\nt_protomag-magazine.dm"
 #include "code\game\content\factions\corporations\nanotrasen\guns\nt_protomag-projectile.dm"
 #include "code\game\content\factions\corporations\nanotrasen\guns\nt_protomag.dm"
+#include "code\game\content\factions\corporations\nanotrasen\guns\nt_prototype.dm"
 #include "code\game\content\factions\corporations\nanotrasen\guns\nt_pulse.dm"
 #include "code\game\content\factions\corporations\nanotrasen\nanotrasen-supply\animals.dm"
 #include "code\game\content\factions\corporations\nanotrasen\nanotrasen-supply\atmospherics.dm"
