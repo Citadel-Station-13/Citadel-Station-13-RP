@@ -18,10 +18,12 @@
 	. = ..()
 	if(.)
 		return
-	#warn offhand or component
 	var/mob/user = e_args.performer
+	if(!user.inventory.count_empty_hands())
+		return
 	if(recharging)
 		return
+	. = TRUE
 	recharging = 1
 	user.visible_message("<span class='notice'>[user] begins to tighten \the [src]'s electric bowstring.</span>", \
 						"<span class='notice'>You begin to tighten \the [src]'s electric bowstring</span>")
