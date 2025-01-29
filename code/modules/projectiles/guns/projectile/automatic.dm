@@ -435,7 +435,7 @@
 /obj/item/gun/ballistic/automatic/tommygun
 	name = "\improper Tommy Gun"
 	desc = "This weapon was made famous by gangsters in the 20th century. Cybersun Industries began reproducing these for a target market of historic gun collectors and classy criminals. \
-	after they dissolved the same plans used by Cybersun are now used by countless small manufacturers and criminal organizations. Uses .45 rounds."
+	After they dissolved, the same plans used by Cybersun are now used by countless small manufacturers and criminal organizations. Uses .45 rounds."
 	icon_state = "tommygun"
 	w_class = WEIGHT_CLASS_NORMAL
 	caliber = /datum/ammo_caliber/a45

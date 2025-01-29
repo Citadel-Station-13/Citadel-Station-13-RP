@@ -41,7 +41,7 @@ be a coup de'tat. Aesthetically they share a lot with the 20th century latin Ame
 /obj/item/gun/ballistic/automatic/fal/taj
 	name = "Adhomai battle rifle"
 	desc = "When faced with creating a modern battle rifle for the Democratic Republic of Adhomai, Hotak's Arms simply scaled up their machine pistol design \
-	to a rifle capable of chamber 7.62mm a round already in use by DRA marksmen. The new rifle proved itself a match for its peers and DRA propaganda recieved \
+	to a rifle capable of chambering 7.62mm a round already in use by DRA marksmen. The new rifle proved itself a match for its peers and DRA propaganda recieved \
 	a noticeable boost showing off its Adhomai original design."
 	icon = 'icons/content/factions/tajara/items/guns/taj_fal.dmi'
 	inhand_icon = 'icons/content/factions/tajara/items/guns/taj_fal.dmi'
