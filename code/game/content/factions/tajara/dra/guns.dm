@@ -20,6 +20,7 @@ be a coup de'tat. Aesthetically they share a lot with the 20th century latin Ame
 	inhand_icon = 'icons/content/factions/tajara/items/guns/taj_uzi.dmi'
 	icon_state = "mini-uzi"
 	item_state = "mini-uzi"
+	render_use_legacy_by_default = FALSE
 
 ///////////////////
 //Two Handed
@@ -31,6 +32,8 @@ be a coup de'tat. Aesthetically they share a lot with the 20th century latin Ame
 	many high value targets in the name of defending the Democratic Republic of Adhomai."
 	icon = 'icons/content/factions/tajara/items/guns/taj_svd.dmi'
 	inhand_icon = 'icons/content/factions/tajara/items/guns/taj_svd.dmi'
+	wielded_item_state = "SVD-wielded"
+	render_use_legacy_by_default = FALSE
 
 /obj/item/gun/ballistic/SVD/taj/scope()
 	toggle_scope(2.0)
@@ -44,4 +47,6 @@ be a coup de'tat. Aesthetically they share a lot with the 20th century latin Ame
 	inhand_icon = 'icons/content/factions/tajara/items/guns/taj_fal.dmi'
 	icon_state = "fal"
 	item_state = "fal"
+	wielded_item_state = "fal-wielded"
+	render_use_legacy_by_default = FALSE
 

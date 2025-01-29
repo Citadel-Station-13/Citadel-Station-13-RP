@@ -23,6 +23,7 @@ as their noble knights can't be knightly unless their weapons are ornate enough.
 	inhand_icon = 'icons/content/factions/tajara/items/guns/taj_revolver.dmi'
 	icon_state = "revolver"
 	item_state = "revolver"
+	render_use_legacy_by_default = FALSE
 
 /obj/item/gun/ballistic/revolver/mateba/taj/knife
 	name = "Adhomai knife revolver"
@@ -35,6 +36,7 @@ as their noble knights can't be knightly unless their weapons are ornate enough.
 	max_shells = 9 //Large Cyl
 	damage_force = 15
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
+	render_use_legacy_by_default = FALSE
 
 ///////////////////
 //Two Handed
@@ -48,6 +50,8 @@ as their noble knights can't be knightly unless their weapons are ornate enough.
 	inhand_icon = 'icons/content/factions/tajara/items/guns/taj_boltaction.dmi'
 	icon_state = "boltaction"
 	item_state = "boltaction"
+	wielded_item_state = "boltaction-wielded"
+	render_use_legacy_by_default = FALSE
 
 /obj/item/gun/ballistic/automatic/sts35/taj
 	name = "Adhomai assault rifle"
@@ -58,6 +62,8 @@ as their noble knights can't be knightly unless their weapons are ornate enough.
 	inhand_icon = 'icons/content/factions/tajara/items/guns/taj_arifle.dmi'
 	icon_state = "arifle"
 	item_state = "arifle"
+	wielded_item_state = "arifle-wielded"
+	render_use_legacy_by_default = FALSE
 
 	firemodes = list(
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
@@ -77,3 +83,4 @@ as their noble knights can't be knightly unless their weapons are ornate enough.
 	inhand_icon = 'icons/content/factions/tajara/items/guns/taj_duelinglaser.dmi'
 	icon_state = "retro"
 	item_state = "retro"
+	render_use_legacy_by_default = FALSE

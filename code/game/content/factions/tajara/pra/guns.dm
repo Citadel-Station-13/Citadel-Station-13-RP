@@ -21,6 +21,7 @@ are heavily influenced by Soviet futurism and other depictions of future soviet/
 	icon = 'icons/content/factions/tajara/items/guns/taj_colt.dmi'
 	inhand_icon = 'icons/content/factions/tajara/items/guns/taj_colt.dmi'
 	icon_state = "gun"
+	render_use_legacy_by_default = FALSE
 
 
 /obj/item/gun/ballistic/deagle/taj
@@ -29,6 +30,7 @@ are heavily influenced by Soviet futurism and other depictions of future soviet/
 	Commissars of the People's Republic of Adhomai."
 	icon = 'icons/content/factions/tajara/items/guns/taj_deagle.dmi'
 	inhand_icon = 'icons/content/factions/tajara/items/guns/taj_deagle.dmi'
+	render_use_legacy_by_default = FALSE
 
 ///////////////////
 //Two Handed
@@ -40,7 +42,9 @@ are heavily influenced by Soviet futurism and other depictions of future soviet/
 	whose long and storied service life is coming to an end as it is phased out in favor of more modern automatics."
 	icon = 'icons/content/factions/tajara/items/guns/taj_automat.dmi'
 	inhand_icon = 'icons/content/factions/tajara/items/guns/taj_automat.dmi'
+	wielded_item_state = "automat-wielded"
 	fire_anim = ""
+	render_use_legacy_by_default = FALSE
 
 /obj/item/gun/ballistic/automatic/k25/taj
 	name = "Tajara Service Rifle"
@@ -49,4 +53,6 @@ are heavily influenced by Soviet futurism and other depictions of future soviet/
 	a cooperation that unsettles many with their nominal superiors in the Orion Confederation and Confederate Commonwealth."
 	icon = 'icons/content/factions/tajara/items/guns/taj_k25.dmi'
 	inhand_icon = 'icons/content/factions/tajara/items/guns/taj_k25.dmi'
+	wielded_item_state = "k25-wielded"
+	render_use_legacy_by_default = FALSE
 

@@ -13,6 +13,7 @@ extremely varied ranging from 19th century crude to modern and post modern autom
 	the many factions faced at the start of the war. Since then various local manufacturers have refined the design into a mainstay backup weapon of solider and civilian alike."
 	icon = 'icons/content/factions/tajara/items/guns/taj_pockrifle.dmi'
 	inhand_icon = 'icons/content/factions/tajara/items/guns/taj_pockrifle.dmi'
+	render_use_legacy_by_default = FALSE
 
 /obj/item/gun/ballistic/contender/taj/a44
 	caliber = /datum/ammo_caliber/a44
@@ -34,6 +35,7 @@ extremely varied ranging from 19th century crude to modern and post modern autom
 	accuracy = -15
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
+	render_use_legacy_by_default = FALSE
 
 /obj/item/gun/ballistic/musket/taj
 	name = "Adhomian musket"
@@ -44,3 +46,5 @@ extremely varied ranging from 19th century crude to modern and post modern autom
 	inhand_icon = 'icons/content/factions/tajara/items/guns/taj_musket.dmi'
 	icon_state = "musket"
 	item_state = "musket"
+	wielded_item_state = "musket-wielded"
+	render_use_legacy_by_default = FALSE
