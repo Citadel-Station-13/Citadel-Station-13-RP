@@ -495,7 +495,7 @@
 /datum/cooking_recipe/shrimpfriedrice
 	required_method = METHOD_STOVE
 	fruit = list("corn" = 100, "carrot" = 100, "peas" = 100)
-	reagents = list("water" = 5, "sodiumchloride" = 5)
+	reagents = list("water" = 5, "sodiumchloride" = 2)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/shrimp = 100,
 		/obj/item/reagent_containers/food/snacks/boiledrice

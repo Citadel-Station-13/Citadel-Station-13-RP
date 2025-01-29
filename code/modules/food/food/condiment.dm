@@ -13,7 +13,7 @@
 	atom_flags = OPENCONTAINER
 	possible_transfer_amounts = list(1,5,10)
 	center_of_mass = list("x"=16, "y"=6)
-	volume = 50
+	volume = 60
 
 /obj/item/reagent_containers/food/condiment/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	return
@@ -137,36 +137,36 @@
 
 /obj/item/reagent_containers/food/condiment/enzyme/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("enzyme", 50)
+	reagents.add_reagent("enzyme", 60)
 
 /obj/item/reagent_containers/food/condiment/sugar/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("sugar", 50)
+	reagents.add_reagent("sugar", 60)
 
 /obj/item/reagent_containers/food/condiment/ketchup/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("ketchup", 50)
+	reagents.add_reagent("ketchup", 60)
 
 /obj/item/reagent_containers/food/condiment/hotsauce/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("capsaicin", 50)
+	reagents.add_reagent("capsaicin", 60)
 
 /obj/item/reagent_containers/food/condiment/cornoil/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("cornoil", 50)
+	reagents.add_reagent("cornoil", 60)
 
 /obj/item/reagent_containers/food/condiment/coldsauce/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("frostoil", 50)
+	reagents.add_reagent("frostoil", 60)
 
 /obj/item/reagent_containers/food/condiment/soysauce/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("soysauce", 50)
+	reagents.add_reagent("soysauce", 60)
 
 /obj/item/reagent_containers/food/condiment/small
-	possible_transfer_amounts = list(1,20)
+	possible_transfer_amounts = list(1,30)
 	amount_per_transfer_from_this = 1
-	volume = 20
+	volume = 30
 	center_of_mass = list()
 
 /obj/item/reagent_containers/food/condiment/small/on_reagent_change()
@@ -179,7 +179,7 @@
 
 /obj/item/reagent_containers/food/condiment/small/saltshaker/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("sodiumchloride", 20)
+	reagents.add_reagent("sodiumchloride", 30)
 
 /obj/item/reagent_containers/food/condiment/small/peppermill
 	name = "pepper mill"
@@ -188,7 +188,7 @@
 
 /obj/item/reagent_containers/food/condiment/small/peppermill/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("blackpepper", 20)
+	reagents.add_reagent("blackpepper", 30)
 
 /obj/item/reagent_containers/food/condiment/small/sugar
 	name = "sugar"
@@ -197,7 +197,7 @@
 
 /obj/item/reagent_containers/food/condiment/small/sugar/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("sugar", 20)
+	reagents.add_reagent("sugar", 30)
 
 //MRE condiments and drinks.
 
@@ -428,16 +428,16 @@
 	desc = "An exotic blend of spices for cooking. Definitely not worms."
 	icon = 'icons/obj/food.dmi'
 	icon_state = "spacespicebottle"
-	possible_transfer_amounts = list(1,40) //for clown turning the lid off
+	possible_transfer_amounts = list(1,60) //for clown turning the lid off
 	amount_per_transfer_from_this = 1
-	volume = 40
+	volume = 60
 
 /obj/item/reagent_containers/food/condiment/spacespice/on_reagent_change()
 	return
 
 /obj/item/reagent_containers/food/condiment/spacespice/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("spacespice", 40)
+	reagents.add_reagent("spacespice", 60)
 
 
 /// Meme stuff that someone made for Lythios. Moved here cause we hate map dependent items!
