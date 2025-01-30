@@ -4659,10 +4659,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^3.16.1":
-  version: 3.16.1
-  resolution: "core-js@npm:3.16.1"
-  checksum: 10c0/c73230c7ddc1c45e9d175d1b500fb51d76c14046009b7dbc242311acf1974301eac35fb5515f50879586e476b39ba25ed926fc4df68748ed9fc04fe9d2841939
+"core-js@npm:^3.39.0":
+  version: 3.40.0
+  resolution: "core-js@npm:3.40.0"
+  checksum: 10c0/db7946ada881e845d8b157061945b1187618fa45cf162f392a151e8a497962aed2da688c982eaa1d444c864be97a70f8be4d73385294b515d224dd164d19f1d4
   languageName: node
   linkType: hard
 
@@ -10453,10 +10453,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"regenerator-runtime@npm:^0.13.4, regenerator-runtime@npm:^0.13.9":
+"regenerator-runtime@npm:^0.13.4":
   version: 0.13.9
   resolution: "regenerator-runtime@npm:0.13.9"
   checksum: 10c0/b0f26612204f061a84064d2f3361629eae09993939112b9ffc3680bb369ecd125764d6654eace9ef11b36b44282ee52b988dda946ea52d372e7599a30eea73ee
+  languageName: node
+  linkType: hard
+
+"regenerator-runtime@npm:^0.14.1":
+  version: 0.14.1
+  resolution: "regenerator-runtime@npm:0.14.1"
+  checksum: 10c0/1b16eb2c4bceb1665c89de70dcb64126a22bc8eb958feef3cd68fe11ac6d2a4899b5cd1b80b0774c7c03591dc57d16631a7f69d2daa2ec98100e2f29f7ec4cc4
   languageName: node
   linkType: hard
 
@@ -11943,10 +11950,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "tgui-polyfill@workspace:packages/tgui-polyfill"
   dependencies:
-    core-js: "npm:^3.16.1"
-    regenerator-runtime: "npm:^0.13.9"
+    core-js: "npm:^3.39.0"
+    regenerator-runtime: "npm:^0.14.1"
     terser: "npm:^5.14.2"
-    unfetch: "npm:^4.2.0"
+    unfetch: "npm:^5.0.0"
   languageName: unknown
   linkType: soft
 
@@ -12502,10 +12509,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unfetch@npm:^4.2.0":
-  version: 4.2.0
-  resolution: "unfetch@npm:4.2.0"
-  checksum: 10c0/a5c0a896a6f09f278b868075aea65652ad185db30e827cb7df45826fe5ab850124bf9c44c4dafca4bf0c55a0844b17031e8243467fcc38dd7a7d435007151f1b
+"unfetch@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "unfetch@npm:5.0.0"
+  checksum: 10c0/ccbbf648a384d57aeaf3bd4972761327a6cf60c84a3edb8e2f9d18aed0df6214576fc8fcd444ea87672e8e32f4a74590bc5c07756f053f57f492c6d8363045c9
   languageName: node
   linkType: hard
 
