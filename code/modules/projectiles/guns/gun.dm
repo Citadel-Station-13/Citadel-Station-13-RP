@@ -752,3 +752,7 @@
 	if(needs_worn_update)
 		update_worn_icon()
 	return ..()
+
+/obj/item/gun/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot/slot_meta, icon_used)
+	. = ..()
+

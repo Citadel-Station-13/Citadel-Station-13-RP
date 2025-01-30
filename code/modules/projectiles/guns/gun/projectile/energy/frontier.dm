@@ -112,7 +112,7 @@
 	. = ..()
 	if(.)
 		return
-	if(!user.inventory.count_empty_hands())
+	if(!e_args.performer.inventory.count_empty_hands())
 		return
 	var/mob/user = e_args.performer
 	if(recharging)

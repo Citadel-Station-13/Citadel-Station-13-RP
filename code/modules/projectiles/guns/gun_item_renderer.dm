@@ -16,7 +16,7 @@
 /**
  * Writes necessary states to gun.
  */
-/datum/gun_item_renderer/proc/render(obj/item/gun/gun, ammo_ratio, firemode_key)
+/datum/gun_item_renderer/proc/render(obj/item/gun/gun, ammo_ratio, firemode_key, mode_color)
 	CRASH("attempted to render with abstract gun renderer")
 
 /**
@@ -38,15 +38,24 @@
  * * firemode is not taken into account for empty state.
  */
 /datum/gun_item_renderer/segments
+	/// total count of segments, from 1 to amount
 	var/count = 0
+	/// initial pixel x offset
 	var/initial_x = 0
+	/// initial pixel y offset
 	var/initial_y = 0
+	/// pixel x offset to apply on every consequetive segment
 	var/offset_x = 0
+	/// pixel y offset to apply on every consequetive segment
 	var/offset_y = 0
+	/// render -empty while empty
 	var/use_empty = FALSE
-	var/use_firemode = FALSE
+	/// additionally, add an "-[firemode]" state for our firemode's render_key
+	var/use_firemode
+	/// use gun requested render color on ammo bar
+	var/use_color
 
-/datum/gun_item_renderer/segments/render(obj/item/gun/gun, ammo_ratio, firemode_key)
+/datum/gun_item_renderer/segments/render(obj/item/gun/gun, ammo_ratio, firemode_key, mode_color)
 	var/base_icon_state = gun.base_icon_state || initial(gun.icon_state)
 	if(gun.render_additional_state)
 		gun.add_overlay("[base_icon_state]-[gun.render_additional_state]")
@@ -94,8 +103,10 @@
 	var/use_single
 	/// additionally, add an "-[firemode]" state for our firemode's render_key
 	var/use_firemode
+	/// use gun requested render color on ammo bar
+	var/use_color
 
-/datum/gun_item_renderer/overlays/render(obj/item/gun/gun, ammo_ratio, firemode_key)
+/datum/gun_item_renderer/overlays/render(obj/item/gun/gun, ammo_ratio, firemode_key, mode_color)
 	var/base_icon_state = gun.base_icon_state || initial(gun.icon_state)
 	if(gun.render_additional_state)
 		gun.add_overlay("[base_icon_state]-[gun.render_additional_state]")
@@ -130,7 +141,7 @@
 	var/use_firemode_empty
 	var/count
 
-/datum/gun_item_renderer/states/render(obj/item/gun/gun, ammo_ratio, firemode_key)
+/datum/gun_item_renderer/states/render(obj/item/gun/gun, ammo_ratio, firemode_key, mode_color)
 	var/base_icon_state = gun.base_icon_state || initial(gun.icon_state)
 	if(gun.render_additional_exclusive)
 		gun.icon_state = "[base_icon_state][gun.render_additional_state ? "-[gun.render_additional_state]" : ""]"
@@ -159,7 +170,7 @@
  */
 /datum/gun_item_renderer/empty_state
 
-/datum/gun_item_renderer/empty_state/render(obj/item/gun/gun, ammo_ratio, firemode_key)
+/datum/gun_item_renderer/empty_state/render(obj/item/gun/gun, ammo_ratio, firemode_key, mode_color)
 	var/base_icon_state = gun.base_icon_state || initial(gun.icon_state)
 	gun.icon_state = "[base_icon_state][firemode_key && use_firemode ? "-[firemode_key]" : ""][ammo_ratio ? "" : "-empty"]"
 

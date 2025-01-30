@@ -18,10 +18,20 @@
 /**
  * Writes necessary states to gun.
  *
- * @return TRUE if gun needs to change inventory state.
+ * @return TRUE if gun needs to update mob state.
  */
-/datum/gun_mob_renderer/proc/render(obj/item/gun/gun, ammo_ratio, firemode_key)
+/datum/gun_mob_renderer/proc/render(obj/item/gun/gun, ammo_ratio, firemode_key, mode_color)
 	CRASH("attempted to render with abstract gun renderer")
+
+/**
+ * Writes states to on-mob overlay.
+ *
+ * * hand_index is specified if we're in hand
+ * * slot is specified if we're not
+ */
+/datum/gun_mob_renderer/proc/render_overlays(mutable_appearance/rendering_onto, bodytype, datum/inventory_slot/slot, hand_index)
+	return
+	#warn this
 
 /**
  * our de-duping key
@@ -41,7 +51,7 @@
 	/// add "-empty" when empty; otherwise, we don't add anything at all
 	var/empty_state = FALSE
 
-/datum/gun_mob_renderer/states/render(obj/item/gun/gun, ammo_ratio, firemode_key)
+/datum/gun_mob_renderer/states/render(obj/item/gun/gun, ammo_ratio, firemode_key, mode_color)
 	// todo: do we really need to always return TRUE and force an update?
 	var/base_icon_state = gun.base_mob_state || gun.base_icon_state || initial(gun.icon_state)
 	if(!ammo_ratio)
@@ -86,8 +96,10 @@
 	var/use_single
 	/// additionally, add an "-[firemode]" state for our firemode's render_key
 	var/use_firemode
+	/// use gun requested render color on ammo bar
+	var/use_color
 
-/datum/gun_mob_renderer/overlays/render(obj/item/gun/gun, ammo_ratio, firemode_key)
+/datum/gun_mob_renderer/overlays/render(obj/item/gun/gun, ammo_ratio, firemode_key, mode_color)
 	// todo: do we really need to always return TRUE and force an update?
 	var/base_icon_state = gun.base_mob_state || gun.base_icon_state || initial(gun.icon_state)
 	if(!ammo_ratio)
