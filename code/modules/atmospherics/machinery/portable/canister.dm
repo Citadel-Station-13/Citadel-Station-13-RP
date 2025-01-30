@@ -2,7 +2,7 @@
 
 /obj/machinery/portable_atmospherics/canister
 	name = "canister"
-	icon = 'icons/obj/atmos.dmi'
+	icon = 'icons/modules/atmospherics/portable/canister.dmi'
 	icon_state = "yellow"
 	density = 1
 	interaction_flags_machine = INTERACT_MACHINE_OFFLINE
@@ -44,7 +44,6 @@
 	var/temperature_resistance = 1000 + T0C
 	volume = 1000
 	use_power = USE_POWER_OFF
-	var/update_flag = 0
 
 /obj/machinery/portable_atmospherics/canister/get_containing_worth(flags)
 	. = ..()
@@ -168,73 +167,27 @@
 /obj/machinery/portable_atmospherics/canister/deuterium
 	name = "Canister \[Deuterium\]"
 
-
-
-/obj/machinery/portable_atmospherics/canister/proc/check_change()
-	var/old_flag = update_flag
-	update_flag = 0
-	if(holding)
-		update_flag |= 1
-	if(connected_port)
-		update_flag |= 2
-
-	var/tank_pressure = air_contents.return_pressure()
-	if(tank_pressure < 10)
-		update_flag |= 4
-	else if(tank_pressure < ONE_ATMOSPHERE)
-		update_flag |= 8
-	else if(tank_pressure < 15*ONE_ATMOSPHERE)
-		update_flag |= 16
-	else
-		update_flag |= 32
-
-	if(update_flag == old_flag)
-		return 1
-	else
-		return 0
-
 /obj/machinery/portable_atmospherics/canister/update_icon()
-	. = ..()
-/*
-update_flag
-1 = holding
-2 = connected_port
-4 = tank_pressure < 10
-8 = tank_pressure < ONE_ATMOS
-16 = tank_pressure < 15*ONE_ATMOS
-32 = tank_pressure go boom.
-*/
-
-	if (atom_flags & ATOM_BROKEN)
-		cut_overlays()
-		icon_state = "[canister_color]-1"
-		return
-
-	if(icon_state != "[canister_color]")
-		icon_state = "[canister_color]"
-
-	if(check_change()) //Returns 1 if no change needed to icons.
-		return
-
 	cut_overlays()
-	var/list/overlays_to_add = list()
+	icon_state = "[base_icon_state || initial(icon_state)][atom_flags & ATOM_BROKEN ? "-broken" : ""]"
+	. = ..()
+	if(atom_flags & ATOM_BROKEN)
+		return
 
-	if(update_flag & 1)
-		overlays_to_add += "can-open"
-	if(update_flag & 2)
-		overlays_to_add += "can-connector"
-	if(update_flag & 4)
-		overlays_to_add += "can-o0"
-	if(update_flag & 8)
-		overlays_to_add += "can-o1"
-	else if(update_flag & 16)
-		overlays_to_add += "can-o2"
-	else if(update_flag & 32)
-		overlays_to_add += "can-o3"
+	if(holding)
+		add_overlay("open")
+	if(connected_port)
+		add_overlay("connector")
 
-	add_overlay(overlays_to_add)
-
-	return
+	var/pressure = air_contents.return_pressure()
+	if(pressure < 10)
+		add_overlay("gauge-0")
+	else if(pressure < ONE_ATMOSPHERE)
+		add_overlay("gauge-1")
+	else if(pressure < 15 * ONE_ATMOSPHERE)
+		add_overlay("gauge-2")
+	else
+		add_overlay("gauge-3")
 
 // todo: generic fire
 /obj/machinery/portable_atmospherics/canister/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
@@ -380,6 +333,7 @@ update_flag
 				if(label)
 					canister_color = colors[label]
 					icon_state = colors[label]
+					base_icon_state = icon_state
 					name = "Canister: [label]"
 		if("pressure")
 			var/pressure = params["pressure"]

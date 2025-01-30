@@ -66,6 +66,7 @@
 		set_active_hand(inventory.owner.active_hand)
 
 /datum/actor_hud/inventory/proc/unbind_from_inventory(datum/inventory/inventory)
+	ASSERT(host == inventory)
 	for(var/i in 1 to length(inventory.held_items))
 		if(!inventory.held_items[i])
 			continue
