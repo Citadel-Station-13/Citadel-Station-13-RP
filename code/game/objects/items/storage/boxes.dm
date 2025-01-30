@@ -24,12 +24,13 @@
 	desc = "It's just an ordinary box."
 	icon_state = "box"
 	item_state = "syringe_kit"
-	var/foldable = /obj/item/stack/material/cardboard	// BubbleWrap - if set, can be folded (when empty) into a sheet of cardboard
 	max_single_weight_class = WEIGHT_CLASS_SMALL
 	max_combined_volume = STORAGE_VOLUME_BOX
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 	worth_intrinsic = 25
+
+	var/foldable = /obj/item/stack/material/cardboard	// BubbleWrap - if set, can be folded (when empty) into a sheet of cardboard
 
 	/// dynamic state support
 	var/dynamic_state = TRUE
@@ -60,20 +61,20 @@
 	new foldable(get_turf(src))
 	qdel(src)
 
-/obj/item/storage/box/survival
+/obj/item/storage/box/legacy_survival
 	name = "emergency supply box"
 	desc = "A survival box issued to crew members for use in emergency situations."
 	starts_with = list(
 		/obj/item/clothing/mask/breath
 	)
 
-/obj/item/storage/box/survival/synth
+/obj/item/storage/box/legacy_survival/synth
 	name = "synthetic supply box"
 	desc = "A survival box issued to synthetic crew members for use in emergency situations."
 	starts_with = list(
 	)
 
-/obj/item/storage/box/survival/comp
+/obj/item/storage/box/legacy_survival/comp
 	name = "emergency supply box"
 	desc = "A comprehensive survival box issued to crew members for use in emergency situations. Contains additional supplies."
 	icon_state = "survival"
@@ -624,20 +625,20 @@
 	icon_state = "firingpins"
 	starts_with = list(/obj/item/firing_pin = 8)
 
-/obj/item/storage/box/survival
+/obj/item/storage/box/legacy_survival
 	starts_with = list(
 		/obj/item/tool/prybar/red,
 		/obj/item/clothing/glasses/goggles,
 		/obj/item/clothing/mask/breath
 	)
 
-/obj/item/storage/box/survival/synth
+/obj/item/storage/box/legacy_survival/synth
 	starts_with = list(
 		/obj/item/tool/prybar/red,
 		/obj/item/clothing/glasses/goggles
 	)
 
-/obj/item/storage/box/survival/comp
+/obj/item/storage/box/legacy_survival/comp
 	starts_with = list(
 		/obj/item/tool/prybar/red,
 		/obj/item/clothing/glasses/goggles,
@@ -667,7 +668,7 @@
 	desc = "A box full of service keys, for the HoP to give out as necessary."
 	starts_with = list(/obj/item/encryptionkey/headset_service = 7)
 
-/obj/item/storage/box/survival/space
+/obj/item/storage/box/legacy_survival/space
 	name = "boxed emergency suit and helmet"
 	icon_state = "survivaleng"
 	starts_with = list(

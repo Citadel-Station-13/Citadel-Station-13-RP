@@ -30,6 +30,8 @@
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery_step/repairflesh/scan_injury
+	step_name = "Scan injury"
+
 	allowed_tools = list(
 	/obj/item/healthanalyzer = 100,
 	/obj/item/atmos_analyzer = 10
@@ -80,6 +82,8 @@
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery_step/repairflesh/repair_burns
+	step_name = "Reconstruct skin"
+
 	allowed_tools = list(
 	/obj/item/stack/medical/advanced/ointment = 100,
 	/obj/item/surgical/FixOVein = 100,
@@ -149,6 +153,8 @@
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery_step/repairflesh/repair_brute
+	step_name = "Repair skin"
+
 	allowed_tools = list(
 	/obj/item/stack/medical/advanced/bruise_pack = 100,
 	/obj/item/surgical/cautery = 100,

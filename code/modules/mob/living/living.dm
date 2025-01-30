@@ -331,6 +331,15 @@ default behaviour is:
 	health = (health/maxHealth) * (newMaxHealth) // Adjust existing health
 	maxHealth = newMaxHealth
 
+// Use this to get a mob's min health whenever possible. (modifiers for minHealth don't exist currently!)
+/mob/living/proc/getMinHealth()
+	return minHealth
+
+/mob/living/proc/getCritHealth()
+	return critHealth
+
+/mob/living/proc/getSoftCritHealth()
+	return softCritHealth
 
 /mob/living/Confuse(amount)
 	for(var/datum/modifier/M in modifiers)
@@ -596,7 +605,7 @@ default behaviour is:
 	return applying
 
 /mob/living/apply_transform(matrix/to_apply)
-	animate(src, transform = to_apply, time = 1 SECONDS)
+	animate(src, transform = to_apply, time = 1 SECONDS, flags = ANIMATION_LINEAR_TRANSFORM | ANIMATION_PARALLEL)
 	update_ssd_overlay()
 
 // This handles setting the client's color variable, which makes everything look a specific color.

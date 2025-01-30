@@ -15,15 +15,12 @@ SUBSYSTEM_DEF(server_maint)
 	var/delay = 5
 	var/cleanup_ticker = 0
 
-/datum/controller/subsystem/server_maint/PreInit()
-	world.hub_password = "" //quickly! before the hubbies see us.
-
 /datum/controller/subsystem/server_maint/Initialize()
 	if (fexists("tmp/"))
 		fdel("tmp/")
 
-	if (CONFIG_GET(flag/hub))
-		world.update_hub_visibility(TRUE)
+	if (!!CONFIG_GET(flag/hub) != !!GLOB.hub_visibility)
+		world.update_hub_visibility(CONFIG_GET(flag/hub))
 
 	//Keep in mind, because of how delay works adding a list here makes each list take wait * delay more time to clear
 	//Do it for stuff that's properly important, and shouldn't have null checks inside its other uses
@@ -91,15 +88,7 @@ SUBSYSTEM_DEF(server_maint)
 		C?.tgui_panel?.send_roundrestart()
 
 /datum/controller/subsystem/server_maint/proc/UpdateHubStatus()
-	if(!CONFIG_GET(flag/hub) || !CONFIG_GET(number/max_hub_pop))
-		return FALSE //no point, hub / auto hub controls are disabled
-
-	var/max_pop = CONFIG_GET(number/max_hub_pop)
-
-	if(GLOB.clients.len > max_pop)
-		world.update_hub_visibility(FALSE)
-	else
-		world.update_hub_visibility(TRUE)
+	return // disabled.
 
 #undef PING_BUFFER_TIME
 

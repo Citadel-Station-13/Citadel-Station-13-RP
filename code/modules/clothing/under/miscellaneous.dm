@@ -724,12 +724,6 @@
 	icon_state = "cuttop_red"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "red", SLOT_ID_LEFT_HAND = "red")
 
-/obj/item/clothing/under/harness
-	name = "gear harness"
-	desc = "How... minimalist."
-	icon_state = "gear_harness"
-	body_cover_flags = 0
-
 /obj/item/clothing/under/dress/white
 	name = "white wedding dress"
 	desc = "A fancy white dress with a blue underdress."
