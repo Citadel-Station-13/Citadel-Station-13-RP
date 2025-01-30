@@ -10,8 +10,6 @@
  * todo: better documentation
  */
 /datum/gun_mob_renderer
-	/// firemode state is taken into account
-	var/use_firemode = FALSE
 	/// render to worn_state, not just inhand_state
 	var/render_slots = FALSE
 
@@ -50,6 +48,8 @@
 	var/count = 0
 	/// add "-empty" when empty; otherwise, we don't add anything at all
 	var/empty_state = FALSE
+	/// firemode state is taken into account
+	var/use_firemode = FALSE
 
 /datum/gun_mob_renderer/states/render(obj/item/gun/gun, ammo_ratio, firemode_key, mode_color)
 	// todo: do we really need to always return TRUE and force an update?
@@ -100,20 +100,9 @@
 	var/use_color
 
 /datum/gun_mob_renderer/overlays/render(obj/item/gun/gun, ammo_ratio, firemode_key, mode_color)
-	// todo: do we really need to always return TRUE and force an update?
-	var/base_icon_state = gun.base_mob_state || gun.base_icon_state || initial(gun.icon_state)
-	if(!ammo_ratio)
-		if(empty_state)
-			gun.inhand_state = "[base_icon_state][firemode_key && use_firemode && "-[firemode_key]"]-empty"
-		else
-			gun.inhand_state = base_icon_state
-		if(render_slots)
-			gun.worn_state = gun.inhand_state
-		return
-	gun.inhand_state = "[base_icon_state][use_firemode && firemode_key && "-[firemode_key]"]-[ceil(count * ammo_ratio)]"
-	if(render_slots)
-		gun.worn_state = gun.inhand_state
-	return TRUE
+
+
+/datum/gun_mob_renderer/overlays/render_overlays(mutable_appearance/rendering_onto, bodytype, datum/inventory_slot/slot, hand_index)
 
 /datum/gun_mob_renderer/overlays/dedupe_key()
-	return "states-[use_firemode]-[count]-[empty_state]"
+	return "states-[use_firemode]-[count]-[use_empty]-[use_single]-[use_color]"

@@ -5,13 +5,9 @@
 /**
  * gun render system
  *
- * if use_firemode is set, the firemode append will be appended before our default appends.
- *
  * todo: better documentation
  */
 /datum/gun_item_renderer
-	/// firemode render_key is appended, somewhere, to the overall state when generating states
-	var/use_firemode = FALSE
 
 /**
  * Writes necessary states to gun.
@@ -77,7 +73,7 @@
 		gun.add_overlay(creating)
 
 /datum/gun_item_renderer/segments/dedupe_key()
-	return "segments-[use_firemode]-[count]-[initial_x]-[initial_y]-[offset_x]-[offset_y]-[use_empty]-[use_firemode]-[use_firemode]"
+	return "segments-[use_firemode]-[count]-[initial_x]-[initial_y]-[offset_x]-[offset_y]-[use_empty]-[use_firemode]-[use_color]"
 
 /**
  * uses either 1 to n or only the nth overlay to render inventory/world
@@ -126,7 +122,7 @@
 			gun.add_overlay("[base_icon_state]-[append]-[i]")
 
 /datum/gun_item_renderer/overlays/dedupe_key()
-	return "overlays-[use_firemode]-[count]-[use_empty]-[use_single]-[use_firemode]"
+	return "overlays-[use_firemode]-[count]-[use_empty]-[use_single]-[use_firemode]-[use_color]"
 
 /**
  * uses icon states to render inventory/world
@@ -137,6 +133,8 @@
  * empty state append is -empty
  */
 /datum/gun_item_renderer/states
+	/// additionally, add an "-[firemode]" state for our firemode's render_key
+	var/use_firemode
 	var/use_empty
 	var/use_firemode_empty
 	var/count
@@ -169,6 +167,8 @@
  * * can optionally append a firemode key
  */
 /datum/gun_item_renderer/empty_state
+	/// additionally, add an "-[firemode]" state for our firemode's render_key
+	var/use_firemode
 
 /datum/gun_item_renderer/empty_state/render(obj/item/gun/gun, ammo_ratio, firemode_key, mode_color)
 	var/base_icon_state = gun.base_icon_state || initial(gun.icon_state)
