@@ -8,7 +8,7 @@
 	try_transform(force = TRUE)
 	holosphere_shell.afflict_stun(hologram_death_duration)
 	spawn(hologram_death_duration)
-		if(holosphere_shell.stat != DEAD)
+		if(H.stat != DEAD)
 			return
 		var/revive_cost = total_health * heal_rate
 		if(H.nutrition >= revive_cost)
@@ -16,7 +16,7 @@
 			try_untransform(force = TRUE)
 			H.revive(full_heal = TRUE)
 			var/regenmsg = "<span class='userdanger'>Emitters have returned online. Systems functional.</span>"
-			to_chat(holosphere_shell, regenmsg)
+			to_chat(H, regenmsg)
 		else
 			var/failuremsg = "<span class='userdanger'>Emitters unable to turn online due to insufficient battery.</span>"
 			to_chat(holosphere_shell, failuremsg)
