@@ -299,7 +299,7 @@
 	legacy_melee_damage_upper = 5
 	movement_cooldown = 2
 	movement_sound = 'sound/enigma/enigma_move.ogg'
-	ai_holder_type = /datum/ai_holder/polaris/simple_mob/hivebot
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged
 	projectiletype = /obj/projectile/beam/weak
 
 /mob/living/simple_mob/mechanical/hivebot/enigma/trooper/marksman
@@ -323,7 +323,7 @@
 	legacy_melee_damage_lower = 5
 	legacy_melee_damage_upper = 5
 	base_attack_cooldown = 25
-	movement_cooldown = 4
+	movement_cooldown = 3
 	movement_sound = 'sound/enigma/enigma_move.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/sniper
 	projectiletype = /obj/projectile/beam/xray
@@ -388,7 +388,7 @@
 		shield_health = 100;
 		max_shield_health = 100;
 		shield_regen_delay = 5 SECONDS;
-		shield_regen_amount = 5;
+		shield_regen_amount = 30;
 		size_x = 1;
 		size_y = 1;
 		always_on = TRUE;
