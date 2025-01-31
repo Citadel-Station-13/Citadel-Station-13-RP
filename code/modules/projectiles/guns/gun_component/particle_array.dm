@@ -9,8 +9,17 @@
 
 	/// base charge cost
 	var/charge_cost = /obj/item/cell/device/weapon::maxcharge / 24
+	/// considered lethal?
+	/// * lethal arrays can be disabled on a separate 'safety' setting
+	var/considered_lethal = FALSE
 
-/obj/item/gun_component/particle_array/proc/generate_projectile(datum/gun_firing_cycle/cycle)
-	return
+	/// projectile type
+	var/projectile_type
 
-// TODO: This file is mostly stubs and WIPs.
+/**
+ * Generates a projectile.
+ * * The projectile will be created in nullspace. You must immediately
+ *   move or delete it, or this constitutes a memory leak.
+ */
+/obj/item/gun_component/particle_array/proc/generate_projectile(datum/gun_firing_cycle/cycle) as /obj/projectile
+	return new projectile_type

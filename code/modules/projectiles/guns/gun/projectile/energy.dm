@@ -16,6 +16,52 @@
 	cell_system = TRUE
 	cell_type = /obj/item/cell/device/weapon
 
+	//* Modular System *//
+
+	/**
+	 * Extremely inefficient, but here's our ordered registration list
+	 * of particle arrays.
+	 *
+	 * * Particle arrays are manually selected separate from firemode,
+	 *   so that modular components don't need to mutate firemode
+	 *   when being inserted/removed.
+	 */
+	var/list/obj/item/gun_component/particle_array/modular_particle_arrays
+	/**
+	 * Currently selected particle array
+	 *
+	 * * Only populated if [modular_system] is TRUE
+	 * * If null while modular system is on, the gun will misfire until it's enabled.
+	 * * The particle array will entirely override firemode `projectile_type`
+	 */
+	var/obj/item/gun_component/particle_array/modular_particle_array_active
+
+	/**
+	 * Particle array selection action
+	 *
+	 * * Lazy inited when needed
+	 */
+	#warn impl
+	var/datum/action/modular_particle_array_swap_action
+	/**
+	 * Particle array lethal safety action
+	 *
+	 * * Lazy inited when needed
+	 */
+	#warn impl
+	var/datum/action/modular_particle_array_safety_action
+
+	/**
+	 * Lethal arrays are locked
+	 *
+	 * * This only stops the user from selecting in UI, this will not stop
+	 * [set_particle_array] from manually forcing the gun to that mode!
+	 * * Likewise, this will not stop firing cycles from selecting
+	 *   a lethal mode.
+	 */
+	var/modular_particle_array_safety = FALSE
+
+	//! LEGACY BELOW !//
 	// todo: do not use this var, use firemodes
 	var/charge_cost = 240 //How much energy is needed to fire.
 
