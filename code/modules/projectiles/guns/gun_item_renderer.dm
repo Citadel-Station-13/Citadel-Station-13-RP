@@ -25,7 +25,7 @@
  * uses a copy of a segment to render inventory/world
  *
  * if use_firemode is set, the firemode append will be appended before our default appends.
- * if use_firemode is set, the firemode overlay will be overlaid independently from segments
+ * if independent_firemode is set, the firemode overlay will be overlaid independently from segments
  *
  * segment state is "[gun.base_icon_state]-ammo"
  * empty state is "[gun.base_icon_state]-empty"
@@ -46,10 +46,15 @@
 	var/offset_y = 0
 	/// render -empty while empty
 	var/use_empty = FALSE
-	/// additionally, add an "-[firemode]" state for our firemode's render_key
+	/// additionally, add "-[firemode]" to the segment
 	var/use_firemode
 	/// use gun requested render color on ammo bar
 	var/use_color
+	/// additionally, add an "-firemode" that's colored by the firemode's render color
+	var/independent_colored_firemode
+	/// additionally, add an "-[firemode]" state for our firemode's render_key
+	/// * overrides [independent_colored_firemode]
+	var/independent_firemode
 
 /datum/gun_item_renderer/segments/render(obj/item/gun/gun, ammo_ratio, firemode_key, mode_color)
 	var/base_icon_state = gun.base_icon_state || initial(gun.icon_state)
@@ -57,7 +62,7 @@
 		gun.add_overlay("[base_icon_state]-[gun.render_additional_state]")
 	if(gun.render_additional_exclusive)
 		return
-	if(use_firemode && firemode_key)
+	if(independent_firemode && firemode_key)
 		gun.add_overlay("[base_icon_state]-[firemode_key]")
 	if(!ammo_ratio)
 		if(use_empty)
@@ -73,13 +78,13 @@
 		gun.add_overlay(creating)
 
 /datum/gun_item_renderer/segments/dedupe_key()
-	return "segments-[use_firemode]-[count]-[initial_x]-[initial_y]-[offset_x]-[offset_y]-[use_empty]-[use_firemode]-[use_color]"
+	return "segments-[use_firemode]-[count]-[initial_x]-[initial_y]-[offset_x]-[offset_y]-[use_empty]-[independent_firemode ? 1 : (independent_colored_firemode ? 2 : 0)]-[use_color]"
 
 /**
  * uses either 1 to n or only the nth overlay to render inventory/world
  *
  * if use_firemode is set, the firemode append will be appended before our default appends.
- * if use_firemode is set, the firemode overlay will be overlaid independently from overlays
+ * if independent_firemode is set, the firemode overlay will be overlaid independently from segments
  *
  * overlay state is "[gun.base_icon_state]-[n]"
  * empty state append is -empty
@@ -97,10 +102,15 @@
 	var/use_empty
 	/// only use the n-th overlay, instead of adding 1 to n
 	var/use_single
-	/// additionally, add an "-[firemode]" state for our firemode's render_key
+	/// additionally, add "-[firemode]" to the segment
 	var/use_firemode
 	/// use gun requested render color on ammo bar
 	var/use_color
+	/// additionally, add an "-firemode" that's colored by the firemode's render color
+	var/independent_colored_firemode
+	/// additionally, add an "-[firemode]" state for our firemode's render_key
+	/// * overrides [independent_colored_firemode]
+	var/independent_firemode
 
 /datum/gun_item_renderer/overlays/render(obj/item/gun/gun, ammo_ratio, firemode_key, mode_color)
 	var/base_icon_state = gun.base_icon_state || initial(gun.icon_state)
@@ -108,7 +118,7 @@
 		gun.add_overlay("[base_icon_state]-[gun.render_additional_state]")
 	if(gun.render_additional_exclusive)
 		return
-	if(use_firemode && firemode_key)
+	if(independent_firemode && firemode_key)
 		gun.add_overlay("[base_icon_state]-[firemode_key]")
 	if(!ammo_ratio)
 		if(use_empty)
@@ -122,7 +132,7 @@
 			gun.add_overlay("[base_icon_state]-[append]-[i]")
 
 /datum/gun_item_renderer/overlays/dedupe_key()
-	return "overlays-[use_firemode]-[count]-[use_empty]-[use_single]-[use_firemode]-[use_color]"
+	return "overlays-[use_firemode]-[count]-[use_empty]-[use_single]-[independent_firemode ? 1 : (independent_colored_firemode ? 2 : 0)]-[use_color]"
 
 /**
  * uses icon states to render inventory/world

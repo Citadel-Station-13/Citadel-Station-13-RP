@@ -22,7 +22,7 @@
 
 //* Sidearm *//
 
-#warn impl all
+#warn impl all ; materials
 
 /obj/item/gun/projectile/ballistic/magnetic/nt_protomag/sidearm
 	name = "protomag sidearm"
@@ -44,9 +44,16 @@
 	fire_sound = 'sound/content/factions/corporations/nanotrasen/protomag-pistol.ogg'
 	base_shot_power = /obj/item/cell/device/weapon::maxcharge * (1 / (/obj/item/ammo_magazine/nt_protomag/sidearm::ammo_max * 4))
 
+	modular_component_slots = list(
+		GUN_COMPONENT_ACTIVE_COOLER = 1,
+		GUN_COMPONENT_ENERGY_HANDLER = 1,
+		GUN_COMPONENT_ACCELERATION_COIL = 1,
+		GUN_COMPONENT_POWER_UNIT = 1,
+	)
+
 //* Rifle *//
 
-#warn impl all
+#warn impl all ; materials
 
 /obj/item/gun/projectile/ballistic/magnetic/nt_protomag/rifle
 	name = "protomag rifle"
@@ -70,4 +77,9 @@
 	base_shot_power = /obj/item/cell/device/weapon::maxcharge * (1 / (/obj/item/ammo_magazine/nt_protomag/rifle::ammo_max * 4))
 	fire_sound = 'sound/content/factions/corporations/nanotrasen/protomag-rifle.ogg'
 
-#warn materials
+	modular_component_slots = list(
+		GUN_COMPONENT_ACTIVE_COOLER = 1,
+		GUN_COMPONENT_ENERGY_HANDLER = 2,
+		GUN_COMPONENT_ACCELERATION_COIL = 2,
+		GUN_COMPONENT_POWER_UNIT = 2,
+	)

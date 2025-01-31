@@ -168,11 +168,13 @@
 /obj/item/gun/projectile/energy/examine(mob/user, dist)
 	. = ..()
 	if(obj_cell_slot.cell)
-		if(charge_cost)
-			var/shots_remaining = round(obj_cell_slot.cell.charge / max(1, charge_cost))	// Paranoia
-			. += "Has [shots_remaining] shot\s remaining."
-		else
-			. += "Has infinite shots remaining."
+		if(!modular_system)
+			// todo: proper modular system handling for estimation
+			if(charge_cost)
+				var/shots_remaining = round(obj_cell_slot.cell.charge / max(1, charge_cost))	// Paranoia
+				. += "Has [shots_remaining] shot\s remaining."
+			else
+				. += "Has infinite shots remaining."
 	else
 		. += "Does not have a power cell."
 

@@ -50,6 +50,10 @@
 /obj/item/gun/projectile/energy/nt_isd/sidearm
 	name = "hybrid taser"
 	desc = "A versatile energy sidearm used by corporate security."
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/isd/sidearm.dmi'
+	icon_state = "sidearm"
+	base_icon_state = "sidearm"
+	worn_render_flags = NONE
 	description_fluff = {"
 		A sidearm designed and manufactured by the Nanotrasen Research Division for its internal
 		security needs. Specialized in non-lethal takedowns of high-risk perpetrators, the ENP-17
@@ -66,13 +70,23 @@
 		/datum/firemode/energy/nt_isd/sidearm/disable,
 		/datum/firemode/energy/nt_isd/sidearm/lethal,
 	)
+	item_renderer = /datum/gun_item_renderer/segments{
+		count = 4;
+		offset_x = 2;
+		independent_colored_firemode = TRUE;
+		use_color = TRUE;
+		use_empty = TRUE;
+	}
+	mob_renderer = /datum/gun_mob_renderer/overlays{
+		use_single = TRUE;
+		use_color = TRUE;
+		use_empty = TRUE;
+	}
 
 /obj/item/gun/projectile/energy/nt_isd/sidearm/with_light
 	attachments = list(
 		/obj/item/gun_attachment/flashlight/maglight,
 	)
-
-#warn impl
 
 //* Energy Carbine *//
 
@@ -100,6 +114,10 @@
 /obj/item/gun/projectile/energy/nt_isd/carbine
 	name = "energy carbine"
 	desc = "A versatile energy carbine often seen in the hands of frontier groups."
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/isd/carbine.dmi'
+	icon_state = "carbine"
+	base_icon_state = "carbine"
+	worn_render_flags = NONE
 	description_fluff = {"
 		A production model energy weapon developed in joint between the Nanotrasen Research Division
 		and Hephaestus Industries. Containing multiple focusing modes for its integrated particle
@@ -134,6 +152,10 @@
 /obj/item/gun/projectile/energy/nt_isd/lance
 	name = "energy lance"
 	desc = "A particle rifle used by corporate security. Shoots focused particle beams."
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/isd/lance.dmi'
+	icon_state = "lance"
+	base_icon_state = "lance"
+	worn_render_flags = NONE
 	description_fluff = {"
 		Developed and used primarily by the Nanotrasen Research Division, the ENR-18 was
 		designed to be a specialized anti-armour weapon supplied to response teams and sparingly
@@ -148,8 +170,16 @@
 	firemodes = list(
 		/datum/firemode/energy/nt_isd/lance/kill,
 	)
-
-#warn impl
+	item_renderer = /datum/gun_item_renderer/segments{
+		offset_x = 3
+		count = 4;
+		use_color = TRUE;
+		independent_colored_firemode = TRUE;
+	}
+	mob_renderer = /datum/gun_mob_renderer/states{
+		count = 4;
+		use_empty = TRUE;
+	}
 
 //* Multiphase Sidearm *//
 
@@ -177,6 +207,10 @@
 /obj/item/gun/projectile/energy/nt_isd/multiphase
 	name = "multiphase sidearm"
 	desc = "A prototype sidearm for high-ranking corporate security."
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/isd/multiphase.dmi'
+	icon_state = "multiphase"
+	base_icon_state = "multiphase"
+	worn_render_flags = NONE
 	description_fluff = {"
 		A very expensive development of the Nanotrasen Research Division, the ENP-19 is
 		a durable sidearm manufactured for usage by the leaders of many internal security teams.

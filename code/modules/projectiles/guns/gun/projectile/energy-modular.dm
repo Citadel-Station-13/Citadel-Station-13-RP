@@ -3,29 +3,54 @@
 
 /obj/item/gun/projectile/energy/on_modular_component_uninstall(obj/item/gun_component/component, datum/event_args/actor/actor, silent)
 	..()
-	if(!istype(component, /obj/item/gun_component/particle_array))
-		return
-	if(component == active_particle_array)
-		set_particle_array(null)
+	// auto switch
+	if(component == modular_particle_array_active)
+		auto_set_particle_array(null)
 
 /obj/item/gun/projectile/energy/on_modular_component_install(obj/item/gun_component/component, datum/event_args/actor/actor, silent)
 	..()
-	if(!istype(component, /obj/item/gun_component/particle_array))
-		return
-	if(!active_particle_array)
-		set_particle_array(component)
+	// auto switch
+	if(!modular_particle_array_active)
+		auto_set_particle_array(null)
 
 /**
  * Unlike [set_particle_array], this will automatically pick the first inserted
  * array if the passed in array is null and there is one available.
  */
 /obj/item/gun/projectile/energy/proc/auto_set_particle_array(obj/item/gun_component/particle_array/array)
+	if(!modular_system)
+		return
+	if(!array)
+		array = get_next_particle_array()
+	return set_particle_array(array)
 
 /obj/item/gun/projectile/energy/proc/set_particle_array(obj/item/gun_component/particle_array/array)
+	if(!modular_system)
+		return
 
+	modular_particle_array_active = array
 	update_icon()
 
-#warn impl; action, etc
+/obj/item/gun/projectile/energy/proc/get_next_particle_array() as /obj/item/gun_component/particle_array
+	if(!modular_system)
+		return
+
+	if(!modular_particle_array_active)
+		for(var/obj/item/gun_component/particle_array/first_array in modular_components)
+			return first_array
+	else
+		var/current_index = modular_components.Find(modular_particle_array_active)
+		if(!current_index)
+			CRASH("can't find current particle array in active")
+		for(var/i in current_index + 1 to length(modular_components))
+			if(istype(modular_components[i], /obj/item/gun_component/particle_array))
+				return modular_components[i]
+		for(var/i in 1 to current_index - 1)
+			if(istype(modular_components[i], /obj/item/gun_component/particle_array))
+				return modular_components[i]
 
 /obj/item/gun/projectile/energy/proc/reconsider_particle_array_actions()
+	if(!modular_system)
+		return
+
 	#warn impl
