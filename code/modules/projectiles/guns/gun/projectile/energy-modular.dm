@@ -26,3 +26,6 @@
 	update_icon()
 
 #warn impl; action, etc
+
+/obj/item/gun/projectile/energy/proc/reconsider_particle_array_actions()
+	#warn impl

@@ -19,15 +19,6 @@
 	//* Modular System *//
 
 	/**
-	 * Extremely inefficient, but here's our ordered registration list
-	 * of particle arrays.
-	 *
-	 * * Particle arrays are manually selected separate from firemode,
-	 *   so that modular components don't need to mutate firemode
-	 *   when being inserted/removed.
-	 */
-	var/list/obj/item/gun_component/particle_array/modular_particle_arrays
-	/**
 	 * Currently selected particle array
 	 *
 	 * * Only populated if [modular_system] is TRUE
@@ -149,6 +140,8 @@
 	update_icon()
 
 /obj/item/gun/projectile/energy/consume_next_projectile(datum/gun_firing_cycle/cycle)
+	if(modular_system)
+		return modular_particle_array_active ? modular_particle_array_active.consume_next_projectile(cycle) : GUN_FIRED_FAIL_INERT
 	var/datum/firemode/energy/energy_firemode = legacy_get_firemode()
 	if(!istype(energy_firemode))
 		return null
@@ -182,7 +175,6 @@
 			. += "Has infinite shots remaining."
 	else
 		. += "Does not have a power cell."
-	return
 
 /obj/item/gun/projectile/energy/update_icon(ignore_inhands)
 	. = ..()
@@ -216,6 +208,18 @@
 
 	if(!ignore_inhands)
 		update_worn_icon()
+
+//* Actions *//
+
+/obj/item/gun/energy/register_item_actions(mob/user)
+	. = ..()
+	modular_particle_array_safety_action?.grant(user.inventory.actions)
+	modular_particle_array_swap_action?.grant(user.inventory.actions)
+
+/obj/item/gun/energy/unregister_item_actions(mob/user)
+	. = ..()
+	modular_particle_array_safety_action?.revoke(user.inventory.actions)
+	modular_particle_array_swap_action?.revoke(user.inventory.actions)
 
 //* Ammo *//
 

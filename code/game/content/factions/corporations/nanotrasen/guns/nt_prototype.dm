@@ -18,6 +18,7 @@
 		for internal usage. A variety of modules can be installed inside, and the entire
 		system is built to allow for easy maintenance out on the field.
 	"}
+	modular_system = TRUE
 
 //* Sidearm *//
 
@@ -28,14 +29,40 @@
 	name = "energy sidearm"
 	desc = "A versatile energy sidearm wielded by corporate expeditionary teams."
 	icon = 'icons/content/faction/corporations/nanotrasen/items/guns/energy/sidearm.dmi'
+	icon_state = "sidearm"
 
 	w_class = WEIGHT_CLASS_NORMAL
 	firemodes = list(
 		/datum/firemode/energy/nt_prototype/sidearm,
 	)
-	#warn attachment support
+	attachment_alignment = list(
+		GUN_ATTACHMENT_SLOT_SIDEBARREL = list(
+			26,
+			15,
+		),
+	)
 
-#warn impl
+	item_renderer = /datum/gun_item_renderer/overlays{
+		count = 4;
+		use_empty = TRUE;
+		use_single = TRUE;
+		use_color = TRUE;
+	}
+	mob_renderer = /datum/gun_mob_renderer/overlays{
+		count = 4;
+		use_empty = TRUE;
+		use_single = TRUE;
+		use_color = TRUE;
+	}
+	render_mob_wielded = TRUE
+
+	modular_component_slots = list(
+		GUN_COMPONENT_ACTIVE_COOLER = 1,
+		GUN_COMPONENT_ENERGY_HANDLER = 1,
+		GUN_COMPONENT_FOCUSING_LENS = 1,
+		GUN_COMPONENT_PARTICLE_ARRAY = 2,
+		GUN_COMPONENT_POWER_UNIT = 1,
+	)
 
 //* Carbine *//
 
@@ -46,14 +73,41 @@
 	name = "energy carbine"
 	desc = "A versatile energy carbine wielded by corporate expeditionary teams."
 	icon = 'icons/content/faction/corporations/nanotrasen/items/guns/energy/carbine.dmi'
+	icon_state = "carbine"
 
 	w_class = WEIGHT_CLASS_NORMAL
 	firemodes = list(
 		/datum/firemode/energy/nt_prototype/carbine,
 	)
-	#warn attachment support
+	attachment_alignment = list(
+		GUN_ATTACHMENT_SLOT_SIDEBARREL = list(
+			27,
+			15,
+		),
+	)
 
-#warn impl
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	item_renderer = /datum/gun_item_renderer/overlays{
+		count = 4;
+		use_empty = TRUE;
+		use_single = TRUE;
+		use_color = TRUE;
+	}
+	mob_renderer = /datum/gun_mob_renderer/overlays{
+		count = 4;
+		use_empty = TRUE;
+		use_single = TRUE;
+		use_color = TRUE;
+	}
+	render_mob_wielded = TRUE
+
+	modular_component_slots = list(
+		GUN_COMPONENT_ACTIVE_COOLER = 1,
+		GUN_COMPONENT_ENERGY_HANDLER = 1,
+		GUN_COMPONENT_FOCUSING_LENS = 2,
+		GUN_COMPONENT_PARTICLE_ARRAY = 3,
+		GUN_COMPONENT_POWER_UNIT = 1,
+	)
 
 //* Rifle *//
 
@@ -64,10 +118,38 @@
 	name = "energy rifle"
 	desc = "A versatile energy rifle wielded by corporate expeditionary teams."
 	icon = 'icons/content/faction/corporations/nanotrasen/items/guns/energy/rifle.dmi'
+	icon_state = "rifle"
 
 	w_class = WEIGHT_CLASS_BULKY
 	firemodes = list(
 		/datum/firemode/energy/nt_prototype/rifle,
 	)
+	attachment_alignment = list(
+		GUN_ATTACHMENT_SLOT_SIDEBARREL = list(
+			28,
+			13,
+		),
+	)
 
-#warn impl
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	item_renderer = /datum/gun_item_renderer/overlays{
+		count = 4;
+		use_empty = TRUE;
+		use_single = TRUE;
+		use_color = TRUE;
+	}
+	mob_renderer = /datum/gun_mob_renderer/overlays{
+		count = 4;
+		use_empty = TRUE;
+		use_single = TRUE;
+		use_color = TRUE;
+	}
+	render_mob_wielded = TRUE
+
+	modular_component_slots = list(
+		GUN_COMPONENT_ACTIVE_COOLER = 1,
+		GUN_COMPONENT_ENERGY_HANDLER = 2,
+		GUN_COMPONENT_FOCUSING_LENS = 2,
+		GUN_COMPONENT_PARTICLE_ARRAY = 3,
+		GUN_COMPONENT_POWER_UNIT = 2,
+	)
