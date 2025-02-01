@@ -12,22 +12,22 @@
 		"tips" = /datum/sprite_accessory_marking{
 			name = "Tips";
 			icon_state_append = "-tips";
-			coloration_mode = COLORATION_MODE_MULTIPLY;
+			colorable = TRUE;
 		},
 		"stripes" = /datum/sprite_accessory_marking{
 			name = "Stripes";
 			icon_state_append = "-stripes";
-			coloration_mode = COLORATION_MODE_MULTIPLY;
+			colorable = TRUE;
 		},
 		"stripes_underbelly" = /datum/sprite_accessory_marking{
 			name = "Stripes (Underbelly)";
 			icon_state_append = "-stripes_underbelly";
-			coloration_mode = COLORATION_MODE_MULTIPLY;
+			colorable = TRUE;
 		},
 		"underbelly" = /datum/sprite_accessory_marking{
 			name = "Underbelly";
 			icon_state_append = "-underbelly";
-			coloration_mode = COLORATION_MODE_MULTIPLY;
+			colorable = TRUE;
 		},
 	)
 
@@ -45,21 +45,21 @@
 		"tips" = /datum/sprite_accessory_marking{
 			name = "Tips";
 			icon_state_append = "-tips";
-			coloration_mode = COLORATION_MODE_MULTIPLY;
+			colorable = TRUE;
 		},
 		"stripes" = /datum/sprite_accessory_marking{
 			name = "Stripes";
 			icon_state_append = "-stripes";
-			coloration_mode = COLORATION_MODE_MULTIPLY;
+			colorable = TRUE;
 		},
 		"stripes_underbelly" = /datum/sprite_accessory_marking{
 			name = "Stripes (Underbelly)";
 			icon_state_append = "-stripes_underbelly";
-			coloration_mode = COLORATION_MODE_MULTIPLY;
+			colorable = TRUE;
 		},
 		"underbelly" = /datum/sprite_accessory_marking{
 			name = "Underbelly";
 			icon_state_append = "-underbelly";
-			coloration_mode = COLORATION_MODE_MULTIPLY;
+			colorable = TRUE;
 		},
 	)
