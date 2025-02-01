@@ -234,8 +234,16 @@
 		/datum/firemode/energy/nt_isd/multiphase/kill,
 		/datum/firemode/energy/nt_isd/multiphase/ion,
 	)
-
-#warn impl
+	item_renderer = /datum/gun_item_renderer/segments{
+		offset_x = 4
+		count = 4;
+		use_color = TRUE;
+		independent_colored_firemode = TRUE;
+	}
+	mob_renderer = /datum/gun_mob_renderer/states{
+		count = 4;
+		use_empty = TRUE;
+	}
 
 //* Projectiles *//
 
