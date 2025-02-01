@@ -280,12 +280,14 @@
 /datum/action/item_action/modular_energy_particle_array_swap
 	name = "Toggle Particle Array"
 	desc = "Toggle the active particle array being used."
+	target_type = /obj/item/gun/projectile/energy
 
 /datum/action/item_action/modular_energy_particle_array_swap/pre_render_hook()
 	. = ..()
 	var/image/item_overlay = button_additional_overlay
-	var/image/symbol_overlay = image('icons/screen/actions/generic-overlays', "swap")
-	symbol_overlay.color = "#00ff00"
+	var/image/symbol_overlay = image('icons/modules/projectiles/components/particle_array.dmi', "stock")
+	symbol_overlay.pixel_x = 10
+	symbol_overlay.pixel_y = 8
 	item_overlay.add_overlay(symbol_overlay)
 	target_type = /obj/item/gun/projectile/energy
 

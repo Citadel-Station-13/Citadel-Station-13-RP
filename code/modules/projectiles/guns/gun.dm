@@ -660,7 +660,13 @@
 	firemode_swap_action?.revoke(user.inventory.actions)
 
 /obj/item/gun/proc/reconsider_firemode_action()
-	#warn impl
+	if(length(firemodes) <= 1)
+		QDEL_NULL(firemode_swap_action)
+		return
+	if(!firemode_swap_action)
+		firemode_swap_action = new /datum/action/item_action/gun_firemode_swap(src)
+		if(inv_inside)
+			firemode_swap_action.grant(inv_inside.actions)
 
 //* Ammo *//
 
@@ -755,4 +761,23 @@
 
 /obj/item/gun/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot/slot_meta, icon_used)
 	. = ..()
+	#warn impl
 
+//* Action Datums *//
+
+/datum/action/item_action/gun_firemode_swap
+	name = "Toggle Particle Array"
+	desc = "Toggle the active particle array being used."
+	target_type = /obj/item/gun
+
+/datum/action/item_action/gun_firemode_swap/pre_render_hook()
+	. = ..()
+	var/image/item_overlay = button_additional_overlay
+	var/image/symbol_overlay = image('icons/screen/actions/generic-overlays', "swap")
+	symbol_overlay.color = "#00ff00"
+	item_overlay.add_overlay(symbol_overlay)
+	target_type = /obj/item/gun/projectile/energy
+
+/datum/action/item_action/gun_firemode_swap/invoke_target(obj/item/gun/target, datum/event_args/actor/actor)
+	. = ..()
+	target.switch_firemodes(actor.performer)
