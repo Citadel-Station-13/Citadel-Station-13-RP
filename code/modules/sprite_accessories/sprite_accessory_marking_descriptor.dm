@@ -15,3 +15,12 @@
 		"color" = color,
 		"emissive" = emissive,
 	)
+
+/datum/sprite_accessory_marking_descriptor/deserialize(list/data)
+	color = data["color"]
+	emissive = data["emissive"]
+
+/datum/sprite_accessory_marking_descriptor/clone()
+	var/datum/sprite_accessory_marking_descriptor/creating = new
+	creating.color = color
+	creating.emissive = emissive

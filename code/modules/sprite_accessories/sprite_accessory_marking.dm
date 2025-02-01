@@ -27,8 +27,15 @@
 	/// * example: "-abc" --> "tail-shark_big-abc"
 	/// * variations will mutate base accessory state!
 	var/icon_state_append
-	// todo: icon_state_direct as text | list() for variations
+	/// direct icon state to use
+	/// * this ignores base icon state
+	var/icon_state_direct
+	/// variation override for direct icon state
+	/// * if a variation is missing, this marking will simply not render.
+	var/list/icon_state_direct_variations
+
 	// todo: has_add_state for applying -add as additive overlay on ourselves
+	//       do we even need it?
 
 	//* blending *//
 	/// blend this onto parent in 'add' rather than 'overlay' mode

@@ -83,12 +83,13 @@ GLOBAL_LIST_EMPTY(sprite_accessory_icon_cache)
 	var/apply_restrictions = FALSE		//whether to apply restrictions for specific tails/ears/wings
 	// these two are moved up for now
 	// if this is set, we will also apply sidedness (front/behind/side enum) to it!
-	/// * EXPLICITLY INCOMPATIBLE WITH NEW MARKINGS SYSTEM. undefined behavior WILL result.
 	var/extra_overlay // Icon state of an additional overlay to blend in.
 	// if this is set, we will also apply sidedness (front/behind/side enum) to it!
-	/// * EXPLICITLY INCOMPATIBLE WITH NEW MARKINGS SYSTEM. undefined behavior WILL result.
 	var/extra_overlay2
 	var/can_be_hidden = TRUE
+
+/datum/sprite_accessory/New()
+	#warn extra overlay --> coloration
 
 /**
  * todo: with_base_state completely tramples extra_overlay, extra_overlay2

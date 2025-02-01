@@ -3,61 +3,57 @@
 
 /**
  * Instance descriptors of sprite accessories.
+ *
+ * * Anything that needs to modify any variable - including 'variation' - must own their copy. Use clone() as needed.
  */
 /datum/sprite_accessory_descriptor
 	//* Descriptions *//
 
 	/// sprite accessory ID
 	var/id
-	/// color channels, packed
-	var/packed_coloration
+	/// color channels, if the accessory is colorable
+	var/list/colors
 	/// emissive power; 0 to 1, with 0 being off
 	var/emissive = 0
 	/// markings: id = /datum/sprite_accessory_marking_descriptor instance
 	var/list/markings
-
-	//* Buffers *//
-
-	/// color channels, unpacked
-	///
-	/// * this follows the coloration format; this is not necessarily a list of colors
-	/// * this is done on render
-	var/tmp/list/unpacked_coloration
+	/// active variation
+	var/variation
 
 /datum/sprite_accessory_descriptor/serialize()
-	return list(
+	. = list(
 		"id" = id,
-		"coloration" = packed_coloration,
+		"colors" = colors,
 		"emissive" = emissive,
 	)
+	if(markings)
+		var/list/serialized_markings = list()
+		for(var/id in markings)
+			var/datum/sprite_accessory_marking_descriptor/marking_descriptor = markings[id]
+			serialized_markings[id] = marking_descriptor.serialize()
+		.["markings"] = serialized_markings
 
 /datum/sprite_accessory_descriptor/deserialize(list/data)
 	id = data["id"]
-	packed_coloration = data["coloration"]
+	colors = data["colors"]
 	emissive = data["emissive"]
+	if(data["markings"])
+		var/list/serialized_marking_descriptors = data["markings"]
+		for(var/id in serialized_marking_descriptors)
+			var/datum/sprite_accessory_marking_descriptor/deserialized_marking_descriptor = new
+			deserialized_marking_descriptor.deserialize(serialized_marking_descriptors[id])
+			markings[id] = deserialized_marking_descriptor
 
-/**
- * Set coloration to a packed string.
- *
- * * Does not sanitize. Be careful.
- */
-/datum/sprite_accessory_descriptor/proc/set_packed_coloration(packed)
-	packed_coloration = pack_coloration_string(packed)
-	unpacked_coloration = null
-
-/**
- * Set coloration to a set of colors.
- *
- * * Does not sanitize. Be careful.
- */
-/datum/sprite_accessory_descriptor/proc/set_unpacked_coloration(list/colors)
-	packed_coloration = pack_coloration_string(colors)
-	unpacked_coloration = null
-
-/**
- * @return list of colors
- */
-/datum/sprite_accessory_descriptor/proc/get_unpacked_coloration()
-	if(!unpacked_coloration)
-		unpacked_coloration = unpack_coloration_string(packed_coloration)
-	return unpacked_coloration
+/datum/sprite_accessory_descriptor/clone()
+	var/datum/sprite_accessory_descriptor/creating = new
+	creating.id = id
+	creating.colors = colors?.Copy()
+	creating.emissive = emissive
+	if(markings)
+		var/list/built_markings = list()
+		for(var/id in markings)
+			var/datum/sprite_accessory_marking_descriptor = markings[id]
+			built_markings[id] = marking_descriptor.clone
+		creating.markings = built_markings
+	creating.variation = variation
+	return creating

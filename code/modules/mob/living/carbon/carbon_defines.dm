@@ -55,3 +55,8 @@
 	//the second is the message in question.
 	var/last_taste_time = 0
 	var/last_taste_text = ""
+
+	//* Sprite Accessories *//
+	/// Sprite acceessories, with slot enum to /datum/sprite_accessory_descriptor
+	var/list/sprite_accessories
+	#warn impl
