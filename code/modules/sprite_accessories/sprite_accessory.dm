@@ -22,9 +22,11 @@ GLOBAL_LIST_EMPTY(sprite_accessory_icon_cache)
 
 	//* coloration *//
 	/// coloration mode
+	/// * this does not affect the modes of markings; markings will always render on-top of the accessory
 	//  todo: rigsuit update first, this is a placeholder
 	var/coloration_mode
 	/// color amount when in overlays mode; other colors will be rendered in _2, _3, etc;
+	/// * if an additive state exists, it will be rendered ontop of coloration.
 	//  todo: rigsuit update first, this is a placeholder
 	var/coloration_amount = 1
 
@@ -61,8 +63,9 @@ GLOBAL_LIST_EMPTY(sprite_accessory_icon_cache)
 
 	//* rendering *//
 	/// used for making stuff not look flat and other effects.
-	/// a state with [icon_state]-add will be blended in ADD mode, rather than overlay mode.
-	/// -front, -back, -side will be specified as needed too if this is the case.
+	/// * a state with [icon_state]-add will be blended in ADD mode, rather than overlay mode.
+	/// * -front, -back, -side will be specified as needed too if this is the case.
+	/// * the additive state will be below any sprite accessory markings.
 	var/has_add_state = FALSE
 
 	//* legacy below

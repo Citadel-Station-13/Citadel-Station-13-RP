@@ -19,10 +19,8 @@
 	var/id
 
 	//* coloration *//
-	/// coloration mode
-	var/coloration_mode
-	/// color amount when in overlays mode; other colors will be rendered as _2, _3, etc;
-	var/coloration_amount = 1
+	/// allow coloring? we use single-color matrix, so no fancy matrix shenanigans please!
+	var/colorable = FALSE
 
 	//* icon *//
 	/// relative icon state append to base accessory state
