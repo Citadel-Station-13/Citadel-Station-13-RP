@@ -167,6 +167,7 @@
 	update_icon()
 
 /turf/simulated/shuttle/wall/voidcraft/update_icon()
+	. = ..()
 	if(stripe_color)
 		cut_overlays()
 		var/image/I = image(icon = src.icon, icon_state = "o_[icon_state]")

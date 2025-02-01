@@ -30,7 +30,7 @@
 
 	/// Globally unique ID for usage with the repository this is stored in.
 	///
-	/// * IDs should be named like "kebab-case-abcd-1234".
+	/// * IDs should be named like "CamelCase" as per prototype standards in many ECS games.
 	/// * IDs should be globally unique across rounds.
 	/// * Hardcoded prototypes should always be referred to via type instead of ID where possible
 	/// * All persistent prototypes bear the burden of not colliding with hardcoded prototypes.
@@ -40,6 +40,9 @@
 
 	// TODO: deal with the rest of this
 
+	// todo: anonymous is kinda wrong. only procgen'd prototypes should have procedural ids.
+	//       right now, this is just here to support transferring legacy stuff over without having to manually assign IDs
+	//       to everything. this does mean that ::id won't be usable until it's taken off of a subtype.
 	/// anonymous? if true, coded id is ignored.
 	var/anonymous = FALSE
 	/// namespace for anonymous generation - must be set if anonymous

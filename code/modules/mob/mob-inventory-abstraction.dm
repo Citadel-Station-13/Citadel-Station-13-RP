@@ -40,7 +40,6 @@
  * logic - apply logic like dropping stuff from pockets when unequippiing a jumpsuit imemdiately?
  */
 /mob/proc/_set_inv_slot(slot, obj/item/I, flags)
-	PROTECTED_PROC(TRUE)
 	. = INVENTORY_SLOT_DOES_NOT_EXIST
 	CRASH("Attempting to set inv slot of [slot] to [I] went to base /mob. You probably had someone assigning to a nonexistant slot!")
 
@@ -49,26 +48,22 @@
  * usually used when safety checks detect something is amiss
  */
 /mob/proc/_slot_by_item(obj/item/I)
-	PROTECTED_PROC(TRUE)
 
 /**
  * doubles as slot detection
  * returns -1 if no slot
  * YES, MAGIC VALUE BUT SOLE USER IS 20 LINES ABOVE, SUE ME.
  */
-/mob/proc/_item_by_slot(slot)
-	PROTECTED_PROC(TRUE)
+/mob/proc/_item_by_slot(slot) as /obj/item
 	return INVENTORY_SLOT_DOES_NOT_EXIST
 
 /mob/proc/_get_all_slots(include_restraints)
-	PROTECTED_PROC(TRUE)
 	return list()
 
 /**
  * return all slot ids we implement
  */
 /mob/proc/_get_inventory_slot_ids()
-	PROTECTED_PROC(TRUE)
 	return list()
 
 /**
@@ -76,7 +71,6 @@
  * useful for other species that don't have a slot so you don't have jumpsuit requirements apply
  */
 /mob/proc/_semantic_slot_id_check(id)
-	PROTECTED_PROC(TRUE)
 	return TRUE
 
 //* Optional Behaviors *//
@@ -224,6 +218,7 @@
 
 	I.held_index = null
 	I.unequipped(src, SLOT_ID_HANDS, flags)
+	I.on_unequipped(src, index, flags)
 
 	if(!(flags & INV_OP_NO_UPDATE_ICONS))
 		update_inv_hand(index)

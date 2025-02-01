@@ -104,11 +104,11 @@
 		else if(isnum(key))
 			scrub_groups |= key
 
-/obj/machinery/atmospherics/component/unary/vent_scrubber/update_icon(safety = 0)
+/obj/machinery/atmospherics/component/unary/vent_scrubber/update_icon()
+	cut_overlays()
+	. = ..()
 	if(!check_icon_cache())
 		return
-
-	cut_overlays()
 
 	var/scrubber_icon = "scrubber"
 
@@ -131,7 +131,7 @@
 		var/turf/T = get_turf(src)
 		if(!istype(T))
 			return
-		if(T.hides_underfloor_objects() && istype(node, /obj/machinery/atmospherics/pipe) && node.hides_underfloor == OBJ_UNDERFLOOR_ALWAYS)
+		if(T.hides_underfloor_objects() && istype(node, /obj/machinery/atmospherics/pipe) && node.will_hide_underfloor())
 			return
 		else
 			if(node)
@@ -234,7 +234,7 @@
 		to_chat(user, "<span class='warning'>You cannot unwrench \the [src], turn it off first.</span>")
 		return 1
 	var/turf/T = src.loc
-	if(T?.hides_underfloor_objects() && node?.hides_underfloor == OBJ_UNDERFLOOR_ALWAYS)
+	if(T?.hides_underfloor_objects() && node?.will_hide_underfloor())
 		to_chat(user, "<span class='warning'>You must remove the plating first.</span>")
 		return 1
 	if(unsafe_pressure())
@@ -428,11 +428,11 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/retro/on/welded
 	welded = 1
 
-/obj/machinery/atmospherics/component/unary/vent_scrubber/retro/update_icon(safety = 0)
+/obj/machinery/atmospherics/component/unary/vent_scrubber/retro/update_icon()
+	cut_overlays()
+	. = ..()
 	if(!check_icon_cache())
 		return
-
-	cut_overlays()
 
 	var/scrubber_icon = "scrubber"
 

@@ -23,12 +23,14 @@ It also serves the purposes of portraying the Lore accurate effect of "Acausal L
 	return ..()
 
 /datum/component/horror_aura/process()
-	if(ismob(parent) && !remain_while_dead)
+	var/atom/A = parent //Not bothering to check if it's an atom. If someone attaches a horror aura component to a mere datum, they're out of their mind.
+	if(ismob(A) && !remain_while_dead)
 		var/mob/M = parent
 		if(IS_DEAD(M))
 			qdel(src)
 			return
-	aura_effect()
+	if(A.z in SSmobs.busy_z_levels) //don't spam EMP admin logs when nobody's around. :^)
+		aura_effect()
 
 /datum/component/horror_aura/proc/aura_effect()
 	for(var/mob/living/carbon/human/H in range(radius, parent))

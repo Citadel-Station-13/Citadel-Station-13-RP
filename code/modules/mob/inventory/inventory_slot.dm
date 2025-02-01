@@ -93,6 +93,13 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	var/static/id_next = 0
 	/// flags
 	var/inventory_slot_flags = INV_SLOT_IS_RENDERED
+	/// filter flags
+	var/inventory_filter_flags = INV_FILTER_UNKNOWN
+	/// semantic layer
+	///
+	/// * higher = outer, lower = inner
+	/// * outer ones intercept hits/whatnot first
+	var/semantic_layer = 0
 	/// display order - higher is upper. a <hr> is applied on 0.
 	var/sort_order = 0
 
@@ -268,12 +275,14 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 /datum/inventory_slot/inventory
 	abstract_type = /datum/inventory_slot/inventory
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_HUD_REQUIRES_EXPAND | INV_SLOT_CONSIDERED_WORN
+	inventory_filter_flags = INV_FILTER_EQUIPMENT
 	inventory_hud_rendered = TRUE
 
 /datum/inventory_slot/inventory/back
 	name = "back"
 	render_key = "back"
 	id = SLOT_ID_BACK
+	semantic_layer = 100
 	sort_order = 2000
 	display_name = "back"
 	display_preposition = "on"
@@ -301,6 +310,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "uniform"
 	render_key = "under"
 	id = SLOT_ID_UNIFORM
+	semantic_layer = 0
 	sort_order = 5000
 	display_name = "body"
 	display_preposition = "on"
@@ -430,6 +440,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "head"
 	render_key = "head"
 	id = SLOT_ID_HEAD
+	semantic_layer = /datum/inventory_slot/inventory/uniform::semantic_layer + 1
 	sort_order = 10000
 	display_name = "head"
 	display_preposition = "on"
@@ -471,6 +482,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "outerwear"
 	render_key = "suit"
 	id = SLOT_ID_SUIT
+	semantic_layer = /datum/inventory_slot/inventory/uniform::semantic_layer + 10
 	sort_order = 7000
 	display_name = "suit"
 	display_preposition = "over"
@@ -545,6 +557,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "belt"
 	render_key = "belt"
 	id = SLOT_ID_BELT
+	semantic_layer = /datum/inventory_slot/inventory/uniform::semantic_layer + 15
 	sort_order = 6000
 	display_name = "waist"
 	display_preposition = "on"
@@ -585,6 +598,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	id = SLOT_ID_LEFT_POCKET
 	display_name = "left pocket"
 	display_preposition = "in"
+	semantic_layer = /datum/inventory_slot/inventory/uniform::semantic_layer + 1
 
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_HANDS
 	inventory_hud_main_axis = 1
@@ -596,6 +610,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	id = SLOT_ID_RIGHT_POCKET
 	display_name = "right pocket"
 	display_preposition = "in"
+	semantic_layer = /datum/inventory_slot/inventory/uniform::semantic_layer + 1
 
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_HANDS
 	inventory_hud_main_axis = 2
@@ -609,6 +624,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	sort_order = 3000
 	display_name = "badge"
 	display_preposition = "as"
+	semantic_layer = /datum/inventory_slot/inventory/uniform::semantic_layer + 1
 
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_HANDS
 	inventory_hud_main_axis = -3
@@ -642,6 +658,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "shoes"
 	render_key = "shoes"
 	id = SLOT_ID_SHOES
+	semantic_layer = /datum/inventory_slot/inventory/uniform::semantic_layer + 3
 	sort_order = 4000
 	display_name = "feet"
 	display_preposition = "on"
@@ -683,6 +700,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "gloves"
 	render_key = "gloves"
 	id = SLOT_ID_GLOVES
+	semantic_layer = /datum/inventory_slot/inventory/uniform::semantic_layer + 3
 	sort_order = 6500
 	display_name = "hands"
 	display_preposition = "on"
@@ -712,6 +730,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "glasses"
 	render_key = "glasses"
 	id = SLOT_ID_GLASSES
+	semantic_layer = /datum/inventory_slot/inventory/uniform::semantic_layer + 3
 	sort_order = 7500
 	display_name = "eyes"
 	display_preposition = "over"
@@ -741,6 +760,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "suit storage"
 	render_key = "suit-store"
 	id = SLOT_ID_SUIT_STORAGE
+	semantic_layer = /datum/inventory_slot/inventory/uniform::semantic_layer + 20
 	sort_order = 500
 	display_name = "suit"
 	display_preposition = "on"
@@ -779,6 +799,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	sort_order = 9500
 	abstract_type = /datum/inventory_slot/inventory/ears
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN | INV_SLOT_HUD_REQUIRES_EXPAND
+	semantic_layer = /datum/inventory_slot/inventory/uniform::semantic_layer + 3
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/ears.dmi',
 		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/ears.dmi',
@@ -829,6 +850,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "mask"
 	render_key = "mask"
 	id = SLOT_ID_MASK
+	semantic_layer = /datum/inventory_slot/inventory/uniform::semantic_layer + 3
 	sort_order = 9250
 	display_name = "face"
 	display_preposition = "on"
@@ -874,6 +896,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	always_show_on_strip_menu = FALSE
 	abstract_type = /datum/inventory_slot/restraints
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_STRIPPABLE | INV_SLOT_STRIP_ONLY_REMOVES | INV_SLOT_STRIP_SIMPLE_LINK
+	inventory_filter_flags = INV_FILTER_RESTRAINTS
 
 /datum/inventory_slot/restraints/handcuffs
 	name = "handcuffed"
@@ -882,6 +905,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	display_name = "hands"
 	display_preposition = "around"
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_PROC
+	semantic_layer = /datum/inventory_slot/inventory/uniform::semantic_layer + 30
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/mob.dmi',
 		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/handcuffs.dmi',
@@ -899,6 +923,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	display_name = "legs"
 	display_preposition = "around"
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_PROC
+	semantic_layer = /datum/inventory_slot/inventory/uniform::semantic_layer + 30
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/mob.dmi',
 		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/handcuffs.dmi',

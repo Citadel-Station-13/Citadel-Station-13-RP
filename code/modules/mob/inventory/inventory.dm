@@ -17,14 +17,13 @@
 	var/datum/action_holder/actions
 
 	//* Caches *//
-	/// cached overlays by slot id or hand index
-	var/list/rendered_normal_overlays = list()
-	/// cached overlays by slot id
-	// todo: emissives
-	// var/list/rendered_emissive_overlays = list()
+	/// Cache holder
+	var/list/cache = list()
 
 	//* HUDs *//
 	/// Actor HUDs using us
+	///
+	/// * Lazy list
 	var/list/datum/actor_hud/inventory/huds_using
 
 	//* Inventory *//
@@ -36,11 +35,19 @@
 	/// * 2, 4, 6, ... are right
 	var/list/obj/item/held_items = list()
 
+	//* Rendering *//
+	/// cached overlays by slot id or hand index
+	var/list/rendered_normal_overlays = list()
+	/// cached overlays by slot id
+	// todo: emissives
+	// var/list/rendered_emissive_overlays = list()
+
 	//* Slots *//
 	/// our base slot ids associated to remappings
 	///
+	/// * Lazy list
 	/// * key: string id; value: remapping list with keys of INVENTORY_SLOT_REMAP_*
-	/// * never ever modify this list in-place, this is why it's private; this may be shared lists in species!
+	/// * Never ever modify this list in-place, this is why it's private; this may be shared lists in species!
 	VAR_PRIVATE/list/base_inventory_slots
 
 /datum/inventory/New(mob/M)
@@ -57,6 +64,14 @@
 	for(var/datum/actor_hud/inventory/hud in huds_using)
 		hud.unbind_from_inventory(src)
 	return ..()
+
+//* Cache *//
+
+/**
+ * Invalidate all caches.
+ */
+/datum/inventory/proc/invalidate_cache()
+	cache = list()
 
 //* Queries *//
 
@@ -102,6 +117,10 @@
 			over.worn_inside = inside
 		I.worn_over = null
 		I.worn_inside = null
+		// make sure it's inside us, and not the other item
+		I.worn_hook_suppressed = TRUE
+		I.forceMove(src)
+		I.worn_hook_suppressed = FALSE
 		// call procs to inform things
 		inside.equip_on_worn_over_remove(src, old_slot, user, I, flags)
 		if(over)
@@ -119,6 +138,10 @@
 		over.worn_hook_suppressed = FALSE
 		// put it back in the slot
 		_equip_slot(over, old_slot, flags)
+		var/datum/inventory_slot/old_slot_meta = resolve_inventory_slot(old_slot)
+		for(var/datum/actor_hud/inventory/hud in inventory?.huds_using)
+			hud.remove_item(I, old_slot_meta)
+			hud.add_item(over, old_slot_meta)
 
 /**
  * drop items if a bodypart is missing

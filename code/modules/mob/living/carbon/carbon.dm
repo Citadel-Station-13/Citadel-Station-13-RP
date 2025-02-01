@@ -19,7 +19,9 @@
 	return ..()
 
 /mob/living/carbon/init_inventory()
-	. = ..()
+	if(inventory)
+		return
+	inventory = new(src)
 	inventory.set_hand_count(2)
 	if(species) // todo: sigh we need to talk about init order; this shouldn't be needed
 		inventory.set_inventory_slots(species.inventory_slots)
@@ -59,7 +61,7 @@
 	return ..()
 
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/M)
-	if(src.health >= config_legacy.health_threshold_crit)
+	if(src.health >= getCritHealth())
 		if(src == M && istype(src, /mob/living/carbon/human))
 
 			var/mob/living/carbon/human/H = src

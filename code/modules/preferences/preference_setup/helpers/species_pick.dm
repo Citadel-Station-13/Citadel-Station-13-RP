@@ -12,14 +12,14 @@
 /datum/preferences/proc/resolve_whitelisted_species()
 	var/list/ids = config.all_alien_whitelists_for(client_ckey)
 	. = list()
-	for(var/datum/character_species/CS as anything in SScharacters.all_character_species())
+	for(var/datum/species/CS as anything in SScharacters.all_character_species())
 		if((ckey(CS.uid) in ids) || (CS.species_spawn_flags & SPECIES_SPAWN_WHITELIST_FLEXIBLE && (ckey(CS.superspecies_id) in ids)))
 			. += CS.uid
 
 /**
  * check if we can play a species
  */
-/datum/preferences/proc/check_character_species(datum/character_species/CS)
+/datum/preferences/proc/check_character_species(datum/species/CS)
 	if((CS.species_spawn_flags & SPECIES_SPAWN_SECRET) && !(config.check_alien_whitelist(ckey(CS.name), client_ckey)))
 		return FALSE
 	return TRUE
@@ -29,7 +29,7 @@
 	return species_pick_finalize(uid, user)
 
 /datum/preferences/proc/species_pick_finalize(uid, mob/user)
-	var/datum/character_species/CS = SScharacters.resolve_character_species(uid)
+	var/datum/species/CS = SScharacters.resolve_character_species(uid)
 	if(!CS)
 		to_chat(user, SPAN_WARNING("No species by id [uid] found; this is likely a bug!"))
 		return TRUE // close window; it shouldn't be letting us select null species
@@ -39,9 +39,9 @@
 	refresh(user, TRUE)
 	return TRUE	// yay done
 
-/datum/preferences/proc/set_character_species(datum/character_species/CS, mob/user)
+/datum/preferences/proc/set_character_species(datum/species/CS, mob/user)
 	// first set their vars
-	set_preference(/datum/category_item/player_setup_item/background/real_species, CS.real_species_uid())
+	set_preference(/datum/category_item/player_setup_item/background/real_species, CS.id)
 	set_preference(/datum/category_item/player_setup_item/background/char_species, CS.uid)
 	custom_species = null
 	//! WARNING: SHITCODE AHEAD / LEGACY SHIMS

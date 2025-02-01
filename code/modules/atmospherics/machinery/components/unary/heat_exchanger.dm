@@ -16,11 +16,12 @@
 	/// * values above 1 currently do nothing
 	var/thermal_conduction_power = 1
 
-/obj/machinery/atmospherics/component/unary/heat_exchanger/update_icon()
+/obj/machinery/atmospherics/component/unary/heat_exchanger/update_icon_state()
 	if(node)
 		icon_state = "intact"
 	else
 		icon_state = "exposed"
+	return ..()
 
 /obj/machinery/atmospherics/component/unary/heat_exchanger/process()
 	..()
@@ -49,7 +50,7 @@
 /obj/machinery/atmospherics/component/unary/heat_exchanger/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if (!W.is_wrench())
 		return ..()
-	if(is_probably_hidden_underfloor())
+	if(is_hidden_underfloor())
 		to_chat(user, "<span class='warning'>You must remove the plating first.</span>")
 		return 1
 	if(unsafe_pressure())

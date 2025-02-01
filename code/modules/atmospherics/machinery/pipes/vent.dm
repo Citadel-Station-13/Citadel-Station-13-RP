@@ -40,8 +40,9 @@
 	return list(node1)
 
 /obj/machinery/atmospherics/pipe/vent/update_icon()
+	. = ..()
 	if(node1)
-		if(is_probably_hidden_underfloor())
+		if(is_hidden_underfloor())
 			icon_state = "hintact"
 		else
 			icon_state = "intact"

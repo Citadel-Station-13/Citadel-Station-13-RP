@@ -80,7 +80,7 @@
 
 	// now for hands
 	if(has_hands())
-		for(var/i in 1 to get_nominal_hand_count())
+		for(var/i in 1 to inventory.get_hand_count())
 			switch(i)
 				if(1)
 					. += "Left hand: "
@@ -88,7 +88,7 @@
 					. += "Right hand: "
 				else
 					. += "Hand [i]: "
-			var/obj/item/holding = get_held_index(i)
+			var/obj/item/holding = inventory.held_items[i]
 			. += "<a href='?src=[REF(src)];strip=hand;id=[i]'>[holding? holding.name : "nothing"]</a><br>"
 		. += "<hr>"
 
@@ -138,10 +138,10 @@
 	if(!strip_interaction_prechecks(user))
 		return FALSE
 
-	if((index < 1) || (index > get_nominal_hand_count()))
+	if((index < 1) || (index > inventory.get_hand_count()))
 		return FALSE
 
-	var/obj/item/ours = get_held_index(index)
+	var/obj/item/ours = inventory.get_hand_single(index)
 	var/obj/item/theirs = user.get_active_held_item()
 
 	if(!ours && !theirs)

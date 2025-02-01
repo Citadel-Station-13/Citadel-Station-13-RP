@@ -5,7 +5,7 @@
 	the Research Division. While lacking most of the luxuries and heavy tooling of other shuttles, it does \
 	contain a suite of astronavigational utilities."
 	id = "nt-vector"
-	relative_path = "sci_vector.dmm"
+	path = "maps/shuttles/factions/corporations/nanotrasen/sci_vector.dmm"
 
 	descriptor = /datum/shuttle_descriptor{
 		mass = 25;

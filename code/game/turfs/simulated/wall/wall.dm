@@ -23,6 +23,7 @@
 	integrity_failure = 0
 
 	armor_type = /datum/armor/object/heavy
+	outdoors = FALSE
 
 	opacity = TRUE
 	density = TRUE
@@ -166,8 +167,8 @@
 				material_outer.place_dismantled_product(src)
 
 	for(var/obj/O in src.contents) //Eject contents!
-		if(istype(O,/obj/structure/sign/poster))
-			var/obj/structure/sign/poster/P = O
+		if(istype(O,/obj/structure/poster))
+			var/obj/structure/poster/P = O
 			P.roll_and_drop(src)
 		else
 			O.forceMove(src)

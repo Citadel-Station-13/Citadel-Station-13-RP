@@ -3,31 +3,31 @@
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/class_h/explored)
 "h" = (
-/turf/simulated/floor/water/shoreline/corner/classh,
+/turf/simulated/floor/water/shoreline/corner,
 /area/class_h/explored)
 "j" = (
-/turf/simulated/floor/water/shoreline/classh,
+/turf/simulated/floor/water/shoreline,
 /area/class_h/explored)
 "m" = (
-/turf/simulated/floor/water/shoreline/corner/classh{
+/turf/simulated/floor/water/shoreline/corner{
 	dir = 1
 	},
 /area/class_h/explored)
 "n" = (
-/turf/simulated/mineral/classh,
+/turf/simulated/mineral,
 /area/class_h/explored)
 "o" = (
-/turf/simulated/floor/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline{
 	dir = 6
 	},
 /area/class_h/explored)
 "t" = (
-/turf/simulated/floor/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline{
 	dir = 9
 	},
 /area/class_h/explored)
 "u" = (
-/turf/simulated/floor/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline{
 	dir = 1
 	},
 /area/class_h/explored)
@@ -35,30 +35,30 @@
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/class_h/unexplored)
 "z" = (
-/turf/simulated/floor/water/shoreline/corner/classh{
+/turf/simulated/floor/water/shoreline/corner{
 	dir = 4
 	},
 /area/class_h/explored)
 "E" = (
-/turf/simulated/floor/water/shoreline/corner/classh{
+/turf/simulated/floor/water/shoreline/corner{
 	dir = 8
 	},
 /area/class_h/explored)
 "G" = (
-/turf/simulated/floor/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline{
 	dir = 8
 	},
 /area/class_h/explored)
 "O" = (
-/turf/simulated/floor/water/classh,
+/turf/simulated/floor/water,
 /area/class_h/explored)
 "R" = (
-/turf/simulated/floor/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline{
 	dir = 4
 	},
 /area/class_h/explored)
 "W" = (
-/turf/simulated/floor/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline{
 	dir = 5
 	},
 /area/class_h/explored)

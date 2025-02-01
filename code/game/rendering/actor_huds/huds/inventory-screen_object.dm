@@ -51,6 +51,7 @@
 	return ..()
 
 /atom/movable/screen/actor_hud/inventory/plate/update_icon(updates)
+	cut_overlays()
 	. = ..()
 	var/image/self_render = new
 	self_render.icon = self_icon
@@ -59,7 +60,7 @@
 	self_render.color = self_color
 	self_render.plane = HUD_PLANE
 	self_render.layer = HUD_LAYER_INVENTORY
-	underlays = list(self_render)
+	add_overlay(self_render)
 
 /atom/movable/screen/actor_hud/inventory/plate/sync_style(datum/hud_style/style, style_alpha, style_color)
 	self_alpha = style_alpha
@@ -124,23 +125,26 @@
 	var/hand_index
 	/// should we have handcuffed overlay?
 	var/handcuffed = FALSE
+	/// should we have the active overlay?
+	var/active = FALSE
 
 /atom/movable/screen/actor_hud/inventory/plate/hand/Initialize(mapload, datum/inventory/host, hand_index)
 	. = ..()
 	src.hand_index = hand_index
 	sync_index(hand_index)
+	update_icon()
 
 /atom/movable/screen/actor_hud/inventory/plate/hand/sync_style(datum/hud_style/style, style_alpha, style_color)
 	self_icon = style.inventory_icons
 	..()
 
 /atom/movable/screen/actor_hud/inventory/plate/hand/handle_inventory_click(mob/user, obj/item/with_item)
-	hud.owner.swap_hand(hand_index)
+	hud.owner.mob.swap_hand(hand_index)
 
 /atom/movable/screen/actor_hud/inventory/plate/hand/proc/sync_index(index = hand_index)
 	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_HAND(index)
 	name = "[index % 2? "left" : "right"] hand[index > 2? " #[index]" : ""]"
-	icon_state = "hand-[index % 2? "left" : "right"]"
+	self_icon_state = "hand-[index % 2? "left" : "right"]"
 
 /atom/movable/screen/actor_hud/inventory/plate/hand/proc/set_handcuffed(state)
 	if(state == handcuffed)
@@ -148,10 +152,19 @@
 	handcuffed = state
 	update_icon()
 
-/atom/movable/screen/actor_hud/inventory/plate/hand/update_overlays()
+/atom/movable/screen/actor_hud/inventory/plate/hand/update_icon(updates)
 	. = ..()
 	if(handcuffed)
-		. += image('icons/mob/screen_gen.dmi', "[hand_index % 2 ? "r_hand" : "l_hand"]_hud_handcuffs")
+		add_overlay(image('icons/mob/screen_gen.dmi', "[hand_index % 2 ? "r_hand" : "l_hand"]_hud_handcuffs"))
+	if(active)
+		var/image/active_image = new
+		active_image.icon = self_icon
+		active_image.icon_state = "[self_icon_state]-active"
+		active_image.plane = HUD_PLANE
+		active_image.layer = HUD_LAYER_INVENTORY
+		active_image.alpha = self_alpha
+		active_image.color = self_color
+		add_overlay(active_image)
 
 /**
  * Button: 'swap hand'

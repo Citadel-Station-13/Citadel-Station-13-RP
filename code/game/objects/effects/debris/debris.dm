@@ -60,19 +60,19 @@
 
 //* Atom Color - we don't use the expensive system. *//
 
-/obj/effect/debris/get_atom_colour()
+/obj/effect/debris/get_atom_color()
 	return color
 
-/obj/effect/debris/add_atom_colour(coloration, colour_priority)
+/obj/effect/debris/add_atom_color(coloration, colour_priority)
 	color = coloration
 
-/obj/effect/debris/remove_atom_colour(colour_priority, coloration)
+/obj/effect/debris/remove_atom_color(colour_priority, coloration)
 	color = null
 
-/obj/effect/debris/update_atom_colour()
+/obj/effect/debris/update_atom_color()
 	return
 
-/obj/effect/debris/copy_atom_colour(atom/other, colour_priority)
+/obj/effect/debris/copy_atom_color(atom/other, colour_priority)
 	if(isnull(other.color))
 		return
 	color = other.color

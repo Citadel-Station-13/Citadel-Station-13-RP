@@ -75,19 +75,16 @@
 		for(var/atom/A in get_turf(hit_atom))
 			src.reagents.touch(A)
 		src.icon_state = "burst"
-		spawn(5)
-			if(src)
-				qdel(src)
-	return
+		QDEL_IN(src, 5)
 
-/obj/item/toy/balloon/update_icon()
-	if(src.reagents.total_volume >= 1)
+/obj/item/toy/balloon/update_icon_state()
+	if(reagents.total_volume)
 		icon_state = "waterballoon"
 	else
 		icon_state = "waterballoon-e"
+	return ..()
 
 /obj/item/toy/syndicateballoon
-	prototype_id = "balloon-syndicate"
 	name = "criminal balloon"
 	desc = "There is a tag on the back that reads \"FUK NT!11!\"."
 	throw_force = 0
@@ -99,7 +96,6 @@
 	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/toy/nanotrasenballoon
-	prototype_id = "balloon-nanotrasen"
 	name = "criminal balloon"
 	desc = "Across the balloon the following is printed: \"Man, I love Nanotrasen soooo much. I use only NT products. You have NO idea.\""
 	throw_force = 0
@@ -114,7 +110,6 @@
  * Fake telebeacon
  */
 /obj/item/toy/blink
-	prototype_id = "toy-teleporter-beacon"
 	name = "electronic blink toy game"
 	desc = "Blink.  Blink.  Blink. Ages 8 and up."
 	icon = 'icons/obj/machines/teleporter.dmi'
@@ -129,7 +124,6 @@
  * Fake singularity
  */
 /obj/item/toy/spinningtoy
-	prototype_id = "toy-singularity"
 	name = "gravitational singularity"
 	desc = "\"Singulo\" brand spinning toy."
 	icon = 'icons/obj/singularity.dmi'

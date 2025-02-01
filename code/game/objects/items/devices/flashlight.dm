@@ -150,10 +150,9 @@
 
 		var/mob/living/carbon/human/H = L	//mob has protective eyewear
 		if(istype(H))
-			for(var/obj/item/clothing/C in list(H.head,H.wear_mask,H.glasses))
-				if(istype(C) && (C.body_cover_flags & EYES))
-					to_chat(user, SPAN_WARNING("You're going to need to remove [C.name] first."))
-					return
+			for(var/obj/item/C in H.inventory.query_coverage(EYES))
+				to_chat(user, SPAN_WARNING("You're going to need to remove [C.name] first."))
+				return
 
 			var/obj/item/organ/vision
 			if(H.species.vision_organ)
@@ -410,6 +409,9 @@
 	damage_type = DAMAGE_TYPE_BURN
 	START_PROCESSING(SSobj, src)
 	return TRUE
+
+/obj/item/flashlight/flare/survival
+	fuel = 15 MINUTES
 
 //Glowsticks
 

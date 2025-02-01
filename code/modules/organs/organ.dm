@@ -331,6 +331,9 @@
 /obj/item/organ/proc/bruise()
 	damage = max(damage, min_bruised_damage)
 
+/obj/item/organ/proc/break_organ()
+	damage = max(damage, min_broken_damage)
+
 /// Being used to make robutt hearts, etc
 /obj/item/organ/proc/robotize()
 	robotic = ORGAN_ROBOT

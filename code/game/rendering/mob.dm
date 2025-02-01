@@ -24,6 +24,8 @@
 		client.global_planes.apply(client)
 		client.update_clickcatcher()
 		client.using_perspective?.reload(client, TRUE)
+		client.actor_huds.reassert_onto_owner()
+		client.action_drawer.reassert_screen()
 		INVOKE_ASYNC(client, TYPE_PROC_REF(/client, init_viewport_blocking))
 	reload_fullscreen()
 	hud_used?.reorganize_alerts()

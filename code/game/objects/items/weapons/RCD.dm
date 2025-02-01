@@ -134,7 +134,7 @@
 			"Change Window Type" = image(icon = 'icons/mob/radial.dmi', icon_state = "windowtype")
 		)
 	*/
-	var/choice = show_radial_menu(user, src, choices, custom_check = CALLBACK(src, PROC_REF(check_menu), user), require_near = TRUE, tooltips = TRUE)
+	var/choice = show_radial_menu(user, user.is_holding(src) ? user : src, choices, custom_check = CALLBACK(src, PROC_REF(check_menu), user), require_near = TRUE, tooltips = TRUE)
 	if(!check_menu(user))
 		return
 	switch(choice)
@@ -473,6 +473,7 @@
 		update_icon()
 
 /obj/effect/constructing_effect/update_icon()
+	. = ..()
 	icon_state = "rcd"
 	if (delay < 10)
 		icon_state += "_shortest"

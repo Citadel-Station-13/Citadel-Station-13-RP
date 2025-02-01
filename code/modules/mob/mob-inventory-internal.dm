@@ -33,12 +33,12 @@
 			var/obj/item/held = item_by_slot_id(SLOT_ID_BELT)
 			if(flags & INV_OP_FORCE)
 				return held?.obj_storage?.insert(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_SOUND)
-			return held?.obj_storage?.auto_handle_interacted_insertion(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_SUPPRESS_SOUND)
+			return held?.obj_storage?.auto_handle_inventory_insertion(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_SUPPRESS_SOUND)
 		if(/datum/inventory_slot/abstract/put_in_backpack)
 			var/obj/item/held = item_by_slot_id(SLOT_ID_BACK)
 			if(flags & INV_OP_FORCE)
 				return held?.obj_storage?.insert(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_SOUND)
-			return held?.obj_storage?.auto_handle_interacted_insertion(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_SUPPRESS_SOUND)
+			return held?.obj_storage?.auto_handle_inventory_insertion(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_SUPPRESS_SOUND)
 		if(/datum/inventory_slot/abstract/put_in_hands)
 			return put_in_hands(I, flags)
 		if(/datum/inventory_slot/abstract/put_in_storage, /datum/inventory_slot/abstract/put_in_storage_try_active)
@@ -48,7 +48,7 @@
 					if(active_storage?.insert(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_WARNING))
 						return TRUE
 				else
-					if(active_storage?.auto_handle_interacted_insertion(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_SUPPRESS_SOUND))
+					if(active_storage?.auto_handle_inventory_insertion(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_SUPPRESS_SOUND))
 						return TRUE
 			for(var/obj/item/held in get_equipped_items_in_slots(list(
 				SLOT_ID_BELT,
@@ -62,7 +62,7 @@
 					continue
 				if(flags & INV_OP_FORCE)
 					return held.obj_storage.insert(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_SOUND)
-				return held.obj_storage.auto_handle_interacted_insertion(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_SUPPRESS_SOUND)
+				return held.obj_storage.auto_handle_inventory_insertion(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_SUPPRESS_SOUND)
 			return FALSE
 		if(/datum/inventory_slot/abstract/attach_as_accessory)
 			for(var/obj/item/clothing/C in get_equipped_items())
@@ -104,8 +104,9 @@
 		if(!can_unequip(I, I.worn_slot, flags, user))
 			return FALSE
 		old = I.worn_slot
-		_unequip_slot(I.worn_slot, flags)
-		I.unequipped(src, I.worn_slot, flags)
+		_unequip_slot(old, flags, I)
+		I.on_unequipped(src, old, flags)
+		I.unequipped(src, old, flags)
 		handle_item_denesting(I, old, flags, user)
 
 	// this qdeleted catches unequipped() deleting the item.
@@ -133,9 +134,11 @@
 
 	log_inventory("[key_name(src)] unequipped [I] from [old].")
 
-/mob/proc/_unequip_slot(slot, flags)
+/mob/proc/_unequip_slot(slot, flags, obj/item/yanking)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	var/obj/item/old = _item_by_slot(slot)
+	if(old != yanking)
+		return FALSE
 	. = _set_inv_slot(slot, null, flags) != INVENTORY_SLOT_DOES_NOT_EXIST
 	if(.)
 		inventory.on_item_exited(old, resolve_inventory_slot(slot))
@@ -164,8 +167,6 @@
  * @return TRUE/FALSE on success
  */
 /mob/proc/_equip_item(obj/item/I, flags, slot, mob/user = src)
-	PROTECTED_PROC(TRUE)
-
 	if(!I)		// how tf would we put on "null"?
 		return FALSE
 
@@ -256,7 +257,8 @@
 		if(old_slot == SLOT_ID_HANDS)
 			unequip_hand_impl(I, get_held_index(I), flags)
 		else
-			_unequip_slot(old_slot, flags)
+			_unequip_slot(old_slot, flags, I)
+		I.on_unequipped(src, old_slot, flags)
 		I.unequipped(src, old_slot, flags)
 		// sigh
 		handle_item_denesting(I, old_slot, flags, user)
@@ -278,8 +280,9 @@
 		if(old_slot == SLOT_ID_HANDS)
 			unequip_hand_impl(I, get_held_index(I), flags)
 		else
-			_unequip_slot(old_slot, flags)
+			_unequip_slot(old_slot, flags, I)
 		I.unequipped(src, old_slot, flags)
+		I.on_unequipped(src, old_slot, flags)
 		// TODO: HANDLE DELETIONS ON EQUIPPED PROPERLY
 		// sigh
 		_equip_slot(I, slot, flags)

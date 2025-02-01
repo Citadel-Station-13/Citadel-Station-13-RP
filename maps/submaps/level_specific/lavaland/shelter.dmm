@@ -4,70 +4,70 @@
 /area/template_noop)
 "e" = (
 /obj/effect/decal/remains/human,
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/wood,
+/area/sector/surt/idleruins)
 "i" = (
 /turf/simulated/wall,
 /area/template_noop)
 "n" = (
 /turf/simulated/wall,
-/area/lavaland/idleruins)
+/area/sector/surt/idleruins)
 "p" = (
 /obj/effect/gibspawner/robot,
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/wood,
+/area/sector/surt/idleruins)
 "q" = (
 /obj/machinery/door/blast/regular,
-/turf/simulated/floor/plating/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/plating,
+/area/sector/surt/idleruins)
 "r" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/wood,
+/area/sector/surt/idleruins)
 "x" = (
 /obj/structure/boulder,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/outdoors/ash_sand,
 /area/template_noop)
 "y" = (
 /obj/structure/boulder,
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/wood,
+/area/sector/surt/idleruins)
 "z" = (
 /obj/structure/girder/displaced,
-/turf/simulated/floor/plating/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/plating,
+/area/sector/surt/idleruins)
 "B" = (
 /obj/structure/bookcase,
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/wood,
+/area/sector/surt/idleruins)
 "C" = (
 /obj/structure/boulder,
 /obj/machinery/door/blast/regular/open,
-/turf/simulated/floor/plating/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/plating,
+/area/sector/surt/idleruins)
 "E" = (
 /obj/item/material/twohanded/spear/plasteel,
 /obj/effect/decal/remains/lizard,
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/wood,
+/area/sector/surt/idleruins)
 "O" = (
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/wood,
+/area/sector/surt/idleruins)
 "P" = (
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/outdoors/ash_sand,
 /area/template_noop)
 "R" = (
 /obj/structure/boulder,
 /obj/structure/table,
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/wood,
+/area/sector/surt/idleruins)
 "W" = (
 /obj/structure/bed/double,
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/wood,
+/area/sector/surt/idleruins)
 "X" = (
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/outdoors/ash_sand,
+/area/sector/surt/idleruins)
 
 (1,1,1) = {"
 a
