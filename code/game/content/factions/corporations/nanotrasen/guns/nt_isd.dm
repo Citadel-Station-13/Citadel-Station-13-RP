@@ -135,8 +135,18 @@
 		/datum/firemode/energy/nt_isd/carbine/shock,
 		/datum/firemode/energy/nt_isd/carbine/kill,
 	)
-
-#warn impl
+	item_renderer = /datum/gun_item_renderer/segments{
+		count = 4;
+		offset_x = 3;
+		independent_colored_firemode = TRUE;
+		use_color = TRUE;
+		use_empty = TRUE;
+	}
+	mob_renderer = /datum/gun_mob_renderer/overlays{
+		use_single = TRUE;
+		use_color = TRUE;
+		use_empty = TRUE;
+	}
 
 //* Energy Lance *//
 
