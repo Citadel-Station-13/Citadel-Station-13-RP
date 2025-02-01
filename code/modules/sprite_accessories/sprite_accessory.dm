@@ -25,15 +25,32 @@ GLOBAL_LIST_EMPTY(sprite_accessory_icon_cache)
 	//  todo: rigsuit update first, this is a placeholder
 	var/coloration_mode
 	/// color amount when in overlays mode; other colors will be rendered in _2, _3, etc;
-	/// _add will go ontop.
 	//  todo: rigsuit update first, this is a placeholder
 	var/coloration_amount = 1
 
-	//* icon location & base state *//
+	//* icon *//
 	/// The icon file the accessory is located in.
 	var/icon
 	/// The icon_state of the accessory.
 	var/icon_state
+	/// sidedness; how many more states we need to inject for it to work
+	var/icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_NONE
+	/// alignment; how we should align the sprite to the mob
+	/// we will always be able to be re-aligned by the mob for obvious reasons, especially if their
+	/// bodyparts are misaligned when the bodyparts in question are considered our anchors.
+	var/icon_alignment = SPRITE_ACCESSORY_ALIGNMENT_IGNORE
+	/// width of icon
+	var/icon_dimension_x = 32
+	/// height of icon
+	var/icon_dimension_y = 32
+
+	//* markings *//
+	/// assoc list id to sprite_accessory_marking datum or type to init
+	/// * anonymous types are allowed as value, but discouraged
+	#warn impl
+	var/list/markings
+
+	//* variations *//
 	/// default variation is called 'Normal'
 	/// assoc list; name to state.
 	var/list/variations
@@ -41,21 +58,10 @@ GLOBAL_LIST_EMPTY(sprite_accessory_icon_cache)
 	var/list/variation_animation_times
 	/// time required for one 'cycle' of a variation animation, defaulting
 	var/variation_animation_time = 2 SECONDS
-	/// sidedness; how many more states we need to inject for it to work
-	var/icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_NONE
-
-	//* icon dimensions & alignment *//
-	var/icon_dimension_x = 32
-	var/icon_dimension_y = 32
-	/// alignment; how we should align the sprite to the mob
-	/// we will always be able to be re-aligned by the mob for obvious reasons, especially if their
-	/// bodyparts are misaligned when the bodyparts in question are considered our anchors.
-	var/icon_alignment = SPRITE_ACCESSORY_ALIGNMENT_IGNORE
 
 	//* rendering *//
-	/// overlay/blend this in with ADD mode, rather than overlay mode.
 	/// used for making stuff not look flat and other effects.
-	/// a state with [icon_state]-add will be added.
+	/// a state with [icon_state]-add will be blended in ADD mode, rather than overlay mode.
 	/// -front, -back, -side will be specified as needed too if this is the case.
 	var/has_add_state = FALSE
 
@@ -74,8 +80,10 @@ GLOBAL_LIST_EMPTY(sprite_accessory_icon_cache)
 	var/apply_restrictions = FALSE		//whether to apply restrictions for specific tails/ears/wings
 	// these two are moved up for now
 	// if this is set, we will also apply sidedness (front/behind/side enum) to it!
+	/// * EXPLICITLY INCOMPATIBLE WITH NEW MARKINGS SYSTEM. undefined behavior WILL result.
 	var/extra_overlay // Icon state of an additional overlay to blend in.
 	// if this is set, we will also apply sidedness (front/behind/side enum) to it!
+	/// * EXPLICITLY INCOMPATIBLE WITH NEW MARKINGS SYSTEM. undefined behavior WILL result.
 	var/extra_overlay2
 	var/can_be_hidden = TRUE
 
