@@ -5038,6 +5038,7 @@
 #include "code\modules\sprite_accessories\tail\pokemon.dm"
 #include "code\modules\sprite_accessories\tail\rodents_and_adjacent.dm"
 #include "code\modules\sprite_accessories\tail\scalies.dm"
+#include "code\modules\sprite_accessories\tail\shark.dm"
 #include "code\modules\sprite_accessories\tail\snake.dm"
 #include "code\modules\sprite_accessories\tail\synthetic.dm"
 #include "code\modules\sprite_accessories\tail\taurs.dm"
