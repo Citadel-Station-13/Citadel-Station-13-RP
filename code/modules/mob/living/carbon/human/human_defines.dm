@@ -83,60 +83,6 @@
 	var/g_skin = 206
 	var/b_skin = 179
 
-	//* ears, horns, tails, wings and custom species.
-	var/datum/sprite_accessory/ears/ear_style = null
-	var/r_ears  = 30
-	var/g_ears  = 30
-	var/b_ears  = 30
-	var/r_ears2 = 30
-	var/g_ears2 = 30
-	var/b_ears2 = 30
-	var/r_ears3 = 30 // Trust me, we could always use more colour. No japes.
-	var/g_ears3 = 30
-	var/b_ears3 = 30
-
-	var/datum/sprite_accessory/ears/horn_style = null
-	var/r_horn  = 30
-	var/g_horn  = 30
-	var/b_horn  = 30
-	var/r_horn2 = 30
-	var/g_horn2 = 30
-	var/b_horn2 = 30
-	var/r_horn3 = 30
-	var/g_horn3 = 30
-	var/b_horn3 = 30
-
-	var/datum/sprite_accessory/tail/tail_style = null
-	var/r_tail  = 30
-	var/g_tail  = 30
-	var/b_tail  = 30
-	var/r_tail2 = 30
-	var/g_tail2 = 30
-	var/b_tail2 = 30
-	var/r_tail3 = 30
-	var/g_tail3 = 30
-	var/b_tail3 = 30
-	// pain
-	var/legacy_tail_variation
-
-	var/datum/sprite_accessory/wing/wing_style = null
-	var/grad_wingstyle = "None"
-	var/r_gradwing = 0
-	var/g_gradwing = 0
-	var/b_gradwing = 0
-	// pain
-	var/legacy_wing_variation
-
-	var/r_wing  = 30
-	var/g_wing  = 30
-	var/b_wing  = 30
-	var/r_wing2 = 30
-	var/g_wing2 = 30
-	var/b_wing2 = 30
-	var/r_wing3 = 30
-	var/g_wing3 = 30
-	var/b_wing3 = 30
-
 	/// What's my status?
 	var/vantag_pref = VANTAG_NONE
 	// todo: REOMVE THIS FOR SPECIES VAR CHANGES

@@ -50,3 +50,5 @@
 	if(id)
 		src.id = id
 	#warn sanitize layer
+
+#warn how to render gradients?
