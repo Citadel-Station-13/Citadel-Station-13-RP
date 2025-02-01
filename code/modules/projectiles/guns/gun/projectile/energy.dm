@@ -213,12 +213,12 @@
 
 //* Actions *//
 
-/obj/item/gun/energy/register_item_actions(mob/user)
+/obj/item/gun/projectile/energy/register_item_actions(mob/user)
 	. = ..()
 	modular_particle_array_safety_action?.grant(user.inventory.actions)
 	modular_particle_array_swap_action?.grant(user.inventory.actions)
 
-/obj/item/gun/energy/unregister_item_actions(mob/user)
+/obj/item/gun/projectile/energy/unregister_item_actions(mob/user)
 	. = ..()
 	modular_particle_array_safety_action?.revoke(user.inventory.actions)
 	modular_particle_array_swap_action?.revoke(user.inventory.actions)
