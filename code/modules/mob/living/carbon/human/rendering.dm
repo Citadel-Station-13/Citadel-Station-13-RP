@@ -78,10 +78,10 @@
 	else
 		head_spriteacc_offset = 0
 
-	render_spriteacc_ears()
-	render_spriteacc_horns()
-	render_spriteacc_hair()
-	render_spriteacc_facehair()
+	render_sprite_accessory(SPRITE_ACCESSORY_SLOT_EARS)
+	render_sprite_accessory(SPRITE_ACCESSORY_SLOT_HORNS)
+	render_sprite_accessory(SPRITE_ACCESSORY_SLOT_HAIR)
+	render_sprite_accessory(SPRITE_ACCESSORY_SLOT_FACEHAIR)
 
 //? Body
 
@@ -260,10 +260,8 @@
 	stand_icon.Blend(base_icon,ICON_OVERLAY)
 	icon = stand_icon
 
-	//tail
-	render_spriteacc_tail()
-	//wing
-	render_spriteacc_wings()
+	render_sprite_accessory(SPRITE_ACCESSORY_SLOT_TAIL)
+	render_sprite_accessory(SPRITE_ACCESSORY_SLOT_WINGS)
 
 /mob/living/carbon/human/proc/update_skin()
 	var/image/skin = species.update_skin(src)
