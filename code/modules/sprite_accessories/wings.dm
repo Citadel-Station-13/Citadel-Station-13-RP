@@ -8,6 +8,10 @@
 
 	legacy_use_additive_color_matrix = TRUE // Only appliciable if do_coloration = 1
 
+/datum/sprite_accessory/wing
+	..()
+	#warn inject gradient marking
+
 /datum/sprite_accessory/wing/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state, with_variation, flattened)
 	var/list/image/layers = ..()
 
