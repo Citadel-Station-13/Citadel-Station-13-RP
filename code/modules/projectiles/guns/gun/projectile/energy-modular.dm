@@ -27,24 +27,55 @@
 /obj/item/gun/projectile/energy/proc/set_particle_array(obj/item/gun_component/particle_array/array)
 	if(!modular_system)
 		return
+	if(array == modular_particle_array_active)
+		return
 
 	modular_particle_array_active = array
 	update_icon()
 
-/obj/item/gun/projectile/energy/proc/get_next_particle_array() as /obj/item/gun_component/particle_array
+/obj/item/gun/projectile/energy/proc/get_next_particle_array(obey_safety) as /obj/item/gun_component/particle_array
 	if(!modular_system)
 		return
 
 	if(!modular_particle_array_active)
 		for(var/obj/item/gun_component/particle_array/first_array in modular_components)
+			if(obey_safety && modular_particle_array_safety && first_array.considered_lethal)
+				continue
 			return first_array
 	else
 		var/current_index = modular_components.Find(modular_particle_array_active)
 		if(!current_index)
 			CRASH("can't find current particle array in active")
 		for(var/i in current_index + 1 to length(modular_components))
-			if(istype(modular_components[i], /obj/item/gun_component/particle_array))
-				return modular_components[i]
+			var/obj/item/gun_component/particle_array/maybe_array = modular_components[i]
+			if(!istype(maybe_array))
+				continue
+			if(obey_safety && modular_particle_array_safety && maybe_array.considered_lethal)
+				continue
+			return maybe_array
 		for(var/i in 1 to current_index - 1)
-			if(istype(modular_components[i], /obj/item/gun_component/particle_array))
-				return modular_components[i]
+			var/obj/item/gun_component/particle_array/maybe_array = modular_components[i]
+			if(!istype(maybe_array))
+				continue
+			if(obey_safety && modular_particle_array_safety && maybe_array.considered_lethal)
+				continue
+			return maybe_array
+
+/obj/item/gun/projectile/energy/proc/user_swap_particle_array(datum/event_args/actor/actor)
+	auto_set_particle_array(get_next_particle_array())
+	if(modular_particle_array_active)
+		actor.chat_feedback(
+			SPAN_NOTICE("You set [src] to use its [modular_particle_array_active.selection_name] emitter."),
+			target = src,
+		)
+	else
+		actor.chat_feedback(
+			SPAN_WARNING("[src] has no particle emitters installed, or all of them are disabled by safeties!"),
+			target = src,
+		)
+
+/obj/item/gun/projectile/energy/proc/user_swap_particle_safety(datum/event_args/actor/actor)
+	#warn impl
+
+	if(modular_particle_array_active.considered_lethal)
+		user_swap_particle_array(actor)
