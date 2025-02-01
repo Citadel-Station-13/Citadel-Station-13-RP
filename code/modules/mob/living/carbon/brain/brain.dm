@@ -58,6 +58,9 @@
 		ghostize()		//Ghostize checks for key so nothing else is necessary.
 	return ..()
 
+/mob/living/carbon/brain/init_inventory()
+	return
+
 /mob/living/carbon/brain/update_mobility(blocked, forced)
 	if(in_contents_of(/obj/vehicle/sealed/mecha) || istype(loc, /obj/item/mmi))
 		. = ..(blocked, forced)

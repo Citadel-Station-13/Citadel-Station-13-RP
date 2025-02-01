@@ -32,7 +32,6 @@
 	dark_slowdown = 3
 	snow_movement  = -2 // Ignore light snow
 	water_movement = -4 // Ignore shallow water
-	hud_type = /datum/hud_data/diona
 	siemens_coefficient = 0.3
 	show_ssd = "completely quiescent"
 	health_hud_intensity = 2.5
@@ -119,18 +118,35 @@
 
 	genders = list(PLURAL)
 
+	//* Inventory *//
+
+	inventory_slots = list(
+		/datum/inventory_slot/inventory/back::id,
+		/datum/inventory_slot/inventory/suit::id = list(
+			INVENTORY_SLOT_REMAP_MAIN_AXIS = 0,
+			INVENTORY_SLOT_REMAP_CROSS_AXIS = 1,
+		),
+		/datum/inventory_slot/inventory/suit_storage::id,
+		/datum/inventory_slot/inventory/uniform::id,
+		/datum/inventory_slot/inventory/ears/left::id = list(
+			INVENTORY_SLOT_REMAP_MAIN_AXIS = 2,
+			INVENTORY_SLOT_REMAP_CROSS_AXIS = 2,
+		),
+		/datum/inventory_slot/inventory/ears/right::id,
+		/datum/inventory_slot/inventory/pocket/left::id,
+		/datum/inventory_slot/inventory/pocket/right::id,
+		/datum/inventory_slot/inventory/id::id,
+		/datum/inventory_slot/inventory/head::id = list(
+			INVENTORY_SLOT_REMAP_MAIN_AXIS = 1,
+			INVENTORY_SLOT_REMAP_CROSS_AXIS = 1,
+		),
+	)
 
 /datum/species/diona/can_understand(mob/other)
 	var/mob/living/carbon/alien/diona/D = other
 	if(istype(D))
 		return TRUE
 	return FALSE
-
-/datum/species/diona/equip_survival_gear(mob/living/carbon/human/H)
-	if(H.backbag == 1)
-		H.equip_to_slot_or_del(new /obj/item/flashlight/flare(H), /datum/inventory_slot/abstract/hand/right)
-	else
-		H.equip_to_slot_or_del(new /obj/item/flashlight/flare(H.back), /datum/inventory_slot/abstract/put_in_backpack)
 
 /datum/species/diona/handle_death(mob/living/carbon/human/H)
 

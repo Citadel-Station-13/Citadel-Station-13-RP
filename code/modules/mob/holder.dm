@@ -2,6 +2,8 @@
 /obj/item/holder
 	name = "holder"
 	desc = "You shouldn't ever see this."
+	icon = 'icons/system/blank_32x32.dmi'
+	icon_state = ""
 	SET_APPEARANCE_FLAGS(KEEP_TOGETHER | PIXEL_SCALE | TILE_BOUND)
 	slot_flags = SLOT_HEAD | SLOT_HOLSTER
 	show_messages = 1
@@ -72,7 +74,8 @@
 	// appearance clone their ass
 	var/mutable_appearance/MA = new
 	MA.appearance = M
-	MA.plane = plane
+	MA.plane = FLOAT_PLANE
+	MA.layer = FLOAT_LAYER
 	MA.dir = SOUTH
 	add_overlay(MA)
 	name = M.name

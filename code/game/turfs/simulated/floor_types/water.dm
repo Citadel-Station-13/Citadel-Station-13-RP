@@ -24,7 +24,7 @@
 
 /turf/simulated/floor/water/Initialize(mapload)
 	. = ..()
-	var/singleton/flooring/F = get_flooring_data(/singleton/flooring/water)
+	var/datum/prototype/flooring/F = RSflooring.fetch_local_or_throw(/datum/prototype/flooring/water)
 	footstep_sounds = F?.footstep_sounds
 	update_icon()
 
@@ -91,6 +91,8 @@
 			return
 		if(!istype(newloc, /turf/simulated/floor/water))
 			to_chat(L, "<span class='warning'>You climb out of \the [src].</span>")
+			// attempt to remove this if possible
+			L.remove_a_modifier_of_type(/datum/modifier/trait/underwater_stealth)
 	..()
 
 /turf/simulated/floor/water/pre_fishing_query(obj/item/fishing_rod/rod, mob/user)
@@ -129,7 +131,7 @@
 
 /mob/living/carbon/human/can_breathe_water()
 	if(species)
-		return species.can_breathe_water()
+		return species.can_breathe_water() || HAS_TRAIT(src, TRAIT_MOB_WATER_BREATHER)
 	return ..()
 
 /mob/living/proc/check_submerged()
@@ -223,6 +225,7 @@ var/list/shoreline_icon_cache = list()
 
 //Supernatural/Horror Pool Turfs
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/water/acid)
 /turf/simulated/floor/water/acid
 	name = "hissing pool"
 	desc = "A sickly green liquid. It emanates an acrid stench. It seems shallow enough to walk through, if needed."
@@ -303,6 +306,7 @@ var/list/shoreline_icon_cache = list()
 			to_chat(L, "<span class='warning'>You climb out of \the [src].</span>")
 	..()
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/water/acid/deep)
 /turf/simulated/floor/water/acid/deep
 	name = "deep hissing pool"
 	desc = "A body of sickly green liquid. It emanates an acrid stench.  It seems quite deep."

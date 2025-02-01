@@ -101,23 +101,38 @@
 		else
 			calling_arguments = args
 	if(datum_flags & DF_VAR_EDITED)
-		return WrapAdminProcCall(object, delegate, calling_arguments)
-	if(object == GLOBAL_PROC)
-		return call(delegate)(arglist(calling_arguments))
-	return call(object, delegate)(arglist(calling_arguments))
+		. = WrapAdminProcCall(object, delegate, calling_arguments)
+	else if(object == GLOBAL_PROC)
+		. = call(delegate)(arglist(calling_arguments))
+	else
+		. = call(object, delegate)(arglist(calling_arguments))
+	pass()
 
 /**
  * Invoke this callback and crash if it sleeps.
  *
  * * Use when a callback should never sleep, as call() cannot be verified by static analysis.
+ * * Do not use in performance critical code. This wraps calls more aggressively than InvokeAsync().
+ * * `null` is returned if the call sleeps.
+ *
+ * The specific use case here is an async call where:
+ *
+ * * It's always invalid behavior for a callback to sleep.
+ * * The caller should be protected (caller shouldn't be interrupted by the sleep).
+ *
+ * This allows enforcement of the above invariants by loudly runtiming and bringing attention to the issue,
+ * as opposed to the usual way of compile checking it (which we can't because this is a reflection-based call to an arbitrary proc).
  */
 /datum/callback/proc/invoke_no_sleep(...)
 	. = CALLBACK_SLEEP_SENTINEL
-	ASYNC
-		. = Invoke(arglist(args))
+	. = invoke_no_sleep_call(arglist(args))
 	if(. == CALLBACK_SLEEP_SENTINEL)
 		. = null
 		CRASH("Callback [src] slept on a no-sleeping invoke.")
+
+/datum/callback/proc/invoke_no_sleep_call(...)
+	set waitfor = FALSE
+	. = Invoke(arglist(args))
 
 /**
  * Invoke this callback async (waitfor=false)

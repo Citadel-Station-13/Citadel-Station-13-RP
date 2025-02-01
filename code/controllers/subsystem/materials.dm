@@ -7,10 +7,6 @@ SUBSYSTEM_DEF(materials)
 	/// material recipes
 	var/list/datum/stack_recipe/material/material_stack_recipes
 
-	// todo: Recover() should keep procedural materials
-	// however, i can't be assed to write Recover() until we do procedural materials
-	// thus, dealing with it later :^)
-
 	/// ticked atoms
 	var/list/ticking = list()
 	/// currentrun
@@ -25,7 +21,7 @@ SUBSYSTEM_DEF(materials)
 
 /datum/controller/subsystem/materials/Initialize()
 	initialize_material_recipes()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/materials/Recover()
 	initialize_material_recipes()
@@ -112,12 +108,16 @@ SUBSYSTEM_DEF(materials)
 	// todo: optimize
 	. = list()
 	for(var/i in 1 to length(L))
-		var/key = L[i]
-		var/datum/prototype/material/resolved = RSmaterials.fetch(key)
-		if(isnull(resolved))
-			continue
+		var/datum/prototype/material/key = L[i]
 		var/value = L[key]
-		.[resolved.id] = value
+		if(istype(key))
+			key = key.id
+		else if(ispath(key))
+			key = initial(key.id)
+		else if(istext(key))
+		else
+			CRASH("what? '[key]'")
+		.[key] = value
 
 /**
  * ensures a list is full of material references for keys
@@ -130,10 +130,14 @@ SUBSYSTEM_DEF(materials)
 	. = list()
 	for(var/i in 1 to length(L))
 		var/key = L[i]
-		var/datum/prototype/material/resolved = RSmaterials.fetch(key)
-		if(isnull(resolved))
-			continue
 		var/value = L[key]
+		var/datum/prototype/material/resolved = RSmaterials.fetch_or_defer(key)
+		switch(resolved)
+			if(null)
+				continue
+			if(REPOSITORY_FETCH_DEFER)
+				// todo: handle this
+				continue
 		.[resolved] = value
 
 /**
@@ -146,9 +150,15 @@ SUBSYSTEM_DEF(materials)
 	. = list()
 	for(var/i in 1 to length(L))
 		var/key = L[i]
-		var/value = L[key]
-		var/datum/prototype/material/resolved = RSmaterials.fetch(value)
-		.[key] = resolved?.id
+		var/datum/prototype/material/value = L[key]
+		if(istype(value))
+			value = value.id
+		else if(ispath(value))
+			value = initial(value.id)
+		else if(istext(value))
+		else
+			CRASH("what? '[value]'")
+		.[key] = value
 
 /**
  * ensures a list is full of material references for values
@@ -161,7 +171,12 @@ SUBSYSTEM_DEF(materials)
 	for(var/i in 1 to length(L))
 		var/key = L[i]
 		var/value = L[key]
-		var/datum/prototype/material/resolved = RSmaterials.fetch(value)
+		var/datum/prototype/material/resolved = RSmaterials.fetch_or_defer(value)
+		switch(resolved)
+			if(REPOSITORY_FETCH_DEFER)
+				// todo: handle this
+			else
+				value = resolved
 		.[key] = resolved
 
 /**
@@ -171,7 +186,7 @@ SUBSYSTEM_DEF(materials)
  */
 /datum/controller/subsystem/materials/proc/all_materials()
 	RETURN_TYPE(/list)
-	return RSmaterials.fetch_subtypes(/datum/prototype/material):Copy()
+	return RSmaterials.fetch_subtypes_immutable(/datum/prototype/material):Copy()
 
 /**
  * drop a material sheet

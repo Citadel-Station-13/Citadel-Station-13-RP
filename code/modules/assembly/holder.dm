@@ -45,6 +45,7 @@
 
 /obj/item/assembly_holder/update_icon()
 	cut_overlays()
+	. = ..()
 	if(a_left)
 		add_overlay("[a_left.icon_state]_left")
 		for(var/O in a_left.attached_overlays)
@@ -154,7 +155,7 @@
 		master.receive_signal()
 	return TRUE
 
-/obj/item/assembly_holder/hear_talk(mob/living/M as mob, msg, verb, datum/language/speaking)
+/obj/item/assembly_holder/hear_talk(mob/living/M as mob, msg, verb, datum/prototype/language/speaking)
 	if(a_right)
 		a_right.hear_talk(M,msg,verb,speaking)
 	if(a_left)

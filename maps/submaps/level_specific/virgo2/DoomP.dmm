@@ -16,7 +16,7 @@
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/virgo2/DoomP)
 "af" = (
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/virgo2/DoomP)
 "ah" = (
 /obj/random/landmine,

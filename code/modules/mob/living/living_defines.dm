@@ -122,16 +122,9 @@
 	var/custom_whisper = null
 
 	//? inventory
-	var/hand = null
-	var/obj/item/l_hand = null
-	var/obj/item/r_hand = null
 	var/obj/item/back = null//Human/Monkey
 	var/obj/item/tank/internal = null//Human/Monkey
 	var/obj/item/clothing/mask/wear_mask = null//Carbon
-
-	// TODO: /tg/ arbitrary hand numbers
-	/// Set to TRUE to enable the use of hands and the hands hud
-	var/has_hands = FALSE
 
 	//* Carry Weight
 	//  todo: put all this on /datum/inventory after hand refactor
@@ -174,3 +167,7 @@
 	var/list/datum/disease2/disease/virus2 = list()
 	var/image/pathogen
 	var/datum/immune_system/immune_system
+
+	var/minHealth = MOB_MINIMUM_HEALTH
+	var/softCritHealth = MOB_SOFT_CRITICAL_HEALTH
+	var/critHealth = MOB_CRITICAL_HEALTH

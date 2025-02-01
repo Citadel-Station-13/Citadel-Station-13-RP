@@ -1,16 +1,19 @@
 /datum/prototype/design/science/weapon
+	category = DESIGN_CATEGORY_MUNITIONS
 	abstract_type = /datum/prototype/design/science/weapon
 
 /datum/prototype/design/science/weapon/generate_name(template)
 	return "Weapon prototype ([..()])"
 
 /datum/prototype/design/science/weapon/ammo
+	category = DESIGN_SUBCATEGORY_AMMO
 	abstract_type = /datum/prototype/design/science/weapon/ammo
 
 /datum/prototype/design/science/weapon/ammo/generate_name(template)
 	return "Weapon ammo ([..()])"
 
 /datum/prototype/design/science/weapon/energy
+	subcategory = DESIGN_SUBCATEGORY_ENERGY
 	abstract_type = /datum/prototype/design/science/weapon/energy
 
 /datum/prototype/design/science/weapon/energy/generate_name(template)
@@ -61,6 +64,7 @@
 	build_path = /obj/item/gun/energy/floragun
 
 /datum/prototype/design/science/weapon/ballistic
+	subcategory = DESIGN_SUBCATEGORY_BALLISTIC
 	abstract_type = /datum/prototype/design/science/weapon/ballistic
 
 /datum/prototype/design/science/weapon/ballistic/generate_name(template)
@@ -321,6 +325,7 @@
 	build_path = /obj/item/ammo_casing/dart/chemdart
 
 /datum/prototype/design/science/weapon/melee
+	subcategory = DESIGN_SUBCATEGORY_MELEE
 	abstract_type = /datum/prototype/design/science/weapon/melee
 
 /datum/prototype/design/science/weapon/melee/generate_name(template)
@@ -416,14 +421,19 @@
 /datum/prototype/design/science/weapon/cell_based/prototype_nsfw_mag
 	design_name = "combat cell magazine"
 	id = "nsfw_mag_prototype"
+	subcategory = DESIGN_SUBCATEGORY_AMMO
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 4, TECH_POWER = 4, TECH_COMBAT = 7)
 	materials_base = list(MAT_STEEL = 8000, MAT_GLASS = 4000, MAT_PHORON = 4000)
 	build_path = /obj/item/ammo_magazine/microbattery/combat/prototype
 
 /datum/prototype/design/science/nsfw_cell
+	category = DESIGN_CATEGORY_MUNITIONS
+	subcategory = DESIGN_SUBCATEGORY_AMMO
 	abstract_type = /datum/prototype/design/science/nsfw_cell
 
 /datum/prototype/design/science/nsfw_cell/generate_name(template)
+	category = DESIGN_CATEGORY_MUNITIONS
+	subcategory = DESIGN_SUBCATEGORY_AMMO
 	return "Microbattery prototype ([..()])"
 
 /datum/prototype/design/science/nsfw_cell/stun
@@ -476,6 +486,7 @@
 	build_path = /obj/item/ammo_casing/microbattery/combat/stripper
 
 /datum/prototype/design/science/modweapon
+	category = DESIGN_CATEGORY_MUNITIONS
 	abstract_type = /datum/prototype/design/science/modweapon
 
 /datum/prototype/design/science/modweapon/generate_name(template)
@@ -553,6 +564,8 @@
 	build_path = /obj/item/gun/energy/modular/nuke
 
 /datum/prototype/design/science/modweaponnodule
+	category = DESIGN_CATEGORY_MUNITIONS
+	subcategory = DESIGN_SUBCATEGORY_PARTS
 	abstract_type = /datum/prototype/design/science/modweaponnodule
 
 /datum/prototype/design/science/modweaponnodule/generate_name(template)
@@ -818,6 +831,8 @@
 */
 
 /datum/prototype/design/science/pin
+	category = DESIGN_CATEGORY_MUNITIONS
+	subcategory = DESIGN_SUBCATEGORY_PINS
 	abstract_type = /datum/prototype/design/science/pin
 
 /datum/prototype/design/science/pin/generate_name(template)

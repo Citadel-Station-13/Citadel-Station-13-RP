@@ -1,4 +1,5 @@
 /datum/prototype/design/science/disk
+	category = DESIGN_CATEGORY_DATA
 	abstract_type = /datum/prototype/design/science/disk
 
 /datum/prototype/design/science/disk/generate_name(template)

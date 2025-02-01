@@ -116,19 +116,43 @@
 		)
 
 /datum/species/vox/get_random_name(gender)
-	var/datum/language/species_language = SScharacters.resolve_language(default_language)
+	var/datum/prototype/language/species_language = RSlanguages.fetch(default_language)
 	return species_language.get_random_name(gender)
 
-/datum/species/vox/equip_survival_gear(mob/living/carbon/human/H, extendedtank = FALSE, comprehensive = FALSE)
-	. = ..()
-
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/breath(H), SLOT_ID_MASK, INV_OP_SILENT | INV_OP_FLUFFLESS)
-	if(H.backbag == 1)
-		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), SLOT_ID_BACK, INV_OP_SILENT | INV_OP_FLUFFLESS)
-		H.internal = H.back
+/datum/species/vox/apply_survival_gear(mob/living/carbon/for_target, list/into_box, list/into_inv)
+	// ensure they have a valid mask
+	var/mask_type = /obj/item/clothing/mask/breath
+	if(for_target)
+		var/obj/item/existing_mask = for_target.inventory.get_slot_single(/datum/inventory_slot/inventory/mask)
+		if(existing_mask?.clothing_flags & ALLOWINTERNALS)
+		else
+			if(for_target.temporarily_remove_from_inventory(existing_mask, INV_OP_FORCE | INV_OP_SILENT))
+				into_inv?.Add(existing_mask)
+				var/obj/item/creating_mask = new mask_type
+				if(for_target.inventory.equip_to_slot_if_possible(creating_mask, /datum/inventory_slot/inventory/mask, INV_OP_SILENT | INV_OP_FLUFFLESS))
+				else
+					into_inv?.Add(creating_mask)
+			else
+				into_inv?.Add(mask_type)
 	else
-		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), /datum/inventory_slot/abstract/hand/right, INV_OP_SILENT | INV_OP_FLUFFLESS)
-		H.internal = H.r_hand
-	H.internal = locate(/obj/item/tank) in H.contents
-	if(istype(H.internal,/obj/item/tank) && H.internals)
-		H.internals.icon_state = "internal1"
+		into_inv?.Add(mask_type)
+	// ensure they have a vox tank
+	var/tank_type = /obj/item/tank/vox
+	if(for_target)
+		var/obj/item/tank/equipping_tank = new tank_type
+		var/could_place = TRUE
+		if(for_target.inventory.equip_to_slot_if_possible(equipping_tank, /datum/inventory_slot/inventory/pocket/left))
+		else if(for_target.inventory.equip_to_slot_if_possible(equipping_tank, /datum/inventory_slot/inventory/pocket/right))
+		else if(for_target.inventory.put_in_hands(equipping_tank))
+		else
+			could_place = FALSE
+		if(could_place)
+			// todo: refactor this shit
+			for_target.internal = equipping_tank
+			for_target.internals.icon_state = "internal1"
+		else
+			into_inv?.Add(tank_type)
+	else
+		into_inv?.Add(tank_type)
+
+	return ..()

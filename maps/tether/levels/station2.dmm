@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
 /obj/item/toy/plushie/frog,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tether/station/visitorhallway/lounge)
 "ab" = (
 /obj/effect/floor_decal/rust/mono_rusted1,
@@ -1870,7 +1870,7 @@
 /area/quartermaster/office)
 "dU" = (
 /obj/structure/undies_wardrobe,
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_y = -32
 	},
 /obj/effect/floor_decal/corner/lime{
@@ -2967,7 +2967,7 @@
 	dir = 9
 	},
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tether/station/visitorhallway/lounge)
 "gh" = (
 /obj/structure/window/reinforced{
@@ -3116,7 +3116,7 @@
 /obj/machinery/door/window/northright{
 	dir = 2
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_x = 32
 	},
 /turf/simulated/floor/tiled,
@@ -6437,7 +6437,7 @@
 /obj/effect/floor_decal/spline/fancy{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tether/station/visitorhallway/lounge)
 "nd" = (
 /obj/structure/table/woodentable,
@@ -7005,7 +7005,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_y = 32
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -7388,7 +7388,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
@@ -8449,7 +8449,7 @@
 /area/quartermaster/belterdock/gear)
 "rj" = (
 /obj/structure/flora/tree/jungle_small,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tether/station/visitorhallway/lounge)
 "rk" = (
 /obj/machinery/door/airlock/maintenance/cargo{
@@ -8636,7 +8636,7 @@
 	dir = 1
 	},
 /obj/structure/flora/ausbushes/grassybush,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tether/station/visitorhallway/lounge)
 "rD" = (
 /obj/structure/catwalk,
@@ -9476,7 +9476,7 @@
 "ti" = (
 /obj/structure/closet/wardrobe/suit,
 /obj/machinery/light,
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_y = -32
 	},
 /obj/effect/floor_decal/corner/lime{
@@ -9697,7 +9697,7 @@
 /area/tether/station/dock_one)
 "tG" = (
 /obj/structure/flora/ausbushes/leafybush,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tether/station/visitorhallway/lounge)
 "tH" = (
 /obj/structure/table/steel,
@@ -9801,7 +9801,7 @@
 /area/quartermaster/belterdock)
 "tQ" = (
 /obj/effect/floor_decal/asteroid,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tether/exploration/pilot_office)
 "tR" = (
 /obj/structure/table/glass,
@@ -10612,7 +10612,7 @@
 	pixel_x = 3
 	},
 /mob/living/simple_mob/animal/passive/snake/noodle,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tether/exploration/pilot_office)
 "vu" = (
 /obj/structure/table/steel,
@@ -10935,7 +10935,7 @@
 	dir = 5
 	},
 /obj/structure/flora/ausbushes/palebush,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tether/station/visitorhallway/lounge)
 "wb" = (
 /obj/structure/bed/chair/shuttle{
@@ -11626,7 +11626,7 @@
 /area/gateway/prep_room)
 "xu" = (
 /obj/structure/flora/tree/jungle,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tether/station/visitorhallway/lounge)
 "xv" = (
 /obj/effect/floor_decal/borderfloor{
@@ -12014,7 +12014,7 @@
 /area/quartermaster/belterdock)
 "yk" = (
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tether/exploration/pilot_office)
 "yl" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -12322,7 +12322,7 @@
 /area/ai_monitored/storage/eva)
 "yP" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tether/exploration/pilot_office)
 "yQ" = (
 /obj/machinery/door/firedoor,
@@ -12600,7 +12600,7 @@
 /area/chapel/main)
 "zs" = (
 /obj/machinery/door/window/northright,
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_x = 32
 	},
 /turf/simulated/floor/tiled,
@@ -12875,7 +12875,7 @@
 /obj/structure/flora/ausbushes/sparsegrass{
 	pixel_x = 5
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tether/station/visitorhallway/lounge)
 "Aa" = (
 /obj/structure/table/woodentable,
@@ -13286,7 +13286,7 @@
 /obj/machinery/camera/network/tether{
 	dir = 4
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_x = -32
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -14078,7 +14078,7 @@
 	dir = 4;
 	pixel_x = 3
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tether/exploration/pilot_office)
 "Cw" = (
 /obj/machinery/ai_status_display{
@@ -14322,7 +14322,7 @@
 /area/storage/tech)
 "CV" = (
 /obj/structure/flora/ausbushes/stalkybush,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tether/station/visitorhallway/lounge)
 "CW" = (
 /obj/effect/floor_decal/borderfloor{
@@ -14882,7 +14882,7 @@
 	dir = 8
 	},
 /obj/structure/flora/ausbushes/palebush,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tether/station/visitorhallway/lounge)
 "Ef" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -15873,7 +15873,7 @@
 	pixel_x = 2;
 	pixel_y = 1
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tether/station/visitorhallway/lounge)
 "Gm" = (
 /obj/structure/disposalpipe/segment{
@@ -16620,7 +16620,7 @@
 "HI" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/camera/network/civilian,
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_y = 32
 	},
 /turf/simulated/floor/wood,
@@ -17435,7 +17435,7 @@
 /obj/structure/flora/ausbushes/sparsegrass{
 	pixel_x = -5
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tether/station/visitorhallway/lounge)
 "Jz" = (
 /obj/structure/disposalpipe/segment{
@@ -17806,7 +17806,7 @@
 	pixel_x = -2;
 	pixel_y = 3
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tether/station/visitorhallway/lounge)
 "Kl" = (
 /obj/effect/floor_decal/techfloor{
@@ -17906,7 +17906,7 @@
 "Kx" = (
 /obj/structure/table/steel,
 /obj/item/material/ashtray/glass,
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_x = -32
 	},
 /obj/random/maintenance/clean,
@@ -18080,7 +18080,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/port)
 "KO" = (
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tether/station/visitorhallway/lounge)
 "KP" = (
 /obj/structure/cable/green{
@@ -18794,7 +18794,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_x = 32
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -19173,7 +19173,7 @@
 /obj/structure/flora/ausbushes/lavendergrass{
 	pixel_y = 10
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tether/station/visitorhallway/lounge)
 "MX" = (
 /obj/effect/floor_decal/techfloor{
@@ -20335,7 +20335,7 @@
 	dir = 4;
 	pixel_x = -2
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tether/exploration/pilot_office)
 "Pp" = (
 /obj/structure/cable{
@@ -20406,7 +20406,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 10
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled,
@@ -20727,7 +20727,7 @@
 /area/tether/station/visitorhallway/office)
 "Qg" = (
 /obj/machinery/vending/giftvendor,
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -20757,7 +20757,7 @@
 /obj/structure/bed/chair/wood{
 	dir = 1
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_y = -32
 	},
 /turf/simulated/floor/wood,
@@ -25409,7 +25409,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 1
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled,

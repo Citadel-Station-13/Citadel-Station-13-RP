@@ -20,7 +20,7 @@
 
 //? Languages
 /datum/species/proc/get_default_language_id()
-	var/datum/language/L = default_language
+	var/datum/prototype/language/L = default_language
 	return ispath(L)? initial(L.id) : L
 
 /datum/species/proc/get_intrinsic_language_ids()
@@ -29,16 +29,16 @@
 		return galactic_language? list(LANGUAGE_ID_COMMON) : list()
 	. = list()
 	if(islist(intrinsic_languages))
-		for(var/datum/language/id_or_path as anything in intrinsic_languages)
+		for(var/datum/prototype/language/id_or_path as anything in intrinsic_languages)
 			. += ispath(id_or_path)? initial(id_or_path.id) : id_or_path
 	else
-		var/datum/language/L = intrinsic_languages
+		var/datum/prototype/language/L = intrinsic_languages
 		. += ispath(L)? initial(L.id) : L
 	if(galactic_language)
 		. |= LANGUAGE_ID_COMMON
 
 /datum/species/proc/get_name_language_id()
-	var/datum/language/L = name_language
+	var/datum/prototype/language/L = name_language
 	return ispath(name_language)? initial(L.id) : name_language
 
 /datum/species/proc/get_max_additional_languages()
@@ -50,10 +50,10 @@
 		return list()
 	. = list()
 	if(islist(whitelist_languages))
-		for(var/datum/language/id_or_path as anything in whitelist_languages)
+		for(var/datum/prototype/language/id_or_path as anything in whitelist_languages)
 			. += ispath(id_or_path)? initial(id_or_path.id) : id_or_path
 	else
-		var/datum/language/L = whitelist_languages
+		var/datum/prototype/language/L = whitelist_languages
 		. += ispath(L)? initial(L.id) : L
 
 //? misc
@@ -98,10 +98,7 @@
 	return ((H && H.isSynthetic()) ? "encounters a hardware fault and suddenly reboots!" : knockout_message)
 
 /datum/species/proc/get_death_message(mob/living/carbon/human/H)
-	if(config_legacy.show_human_death_message)
-		return ((H && H.isSynthetic()) ? "gives one shrill beep before falling lifeless." : death_message)
-	else
-		return "no message"
+	return ((H && H.isSynthetic()) ? "gives one shrill beep before falling lifeless." : death_message)
 
 /datum/species/proc/get_ssd(mob/living/carbon/human/H)
 	if(H)
@@ -162,9 +159,9 @@
 		else
 			return capitalize(pick(GLOB.first_names_male)) + " " + capitalize(pick(GLOB.last_names))
 
-	var/datum/language/species_language = SScharacters.resolve_language_id(get_name_language_id())
+	var/datum/prototype/language/species_language = RSlanguages.fetch_local_or_throw(get_name_language_id())
 	if(!species_language)
-		species_language = SScharacters.resolve_language_id(default_language)
+		species_language = RSlanguages.fetch_local_or_throw(default_language)
 	if(!species_language)
 		return "unknown"
 	return species_language.get_random_name(gender)

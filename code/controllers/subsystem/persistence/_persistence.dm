@@ -30,12 +30,10 @@ SUBSYSTEM_DEF(persistence)
 	build_prototype_id_lookup()
 	/// load panic bunker bypass
 	load_panic_bunker()
-
 	// todo: should this be here? save_the_world is in ticker.
 	if(CONFIG_GET(flag/persistence))
 		load_the_world()
-
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/persistence/Shutdown()
 	/// save panic bunker bypass

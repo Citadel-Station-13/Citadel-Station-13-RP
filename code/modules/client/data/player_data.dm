@@ -94,7 +94,7 @@ GLOBAL_LIST_EMPTY(player_data)
 		return
 	var/datum/db_query/lookup
 	lookup = SSdbcore.ExecuteQuery(
-		"SELECT id, playerid, firstseen FROM [format_table_name("player_lookup")] WHERE ckey = :ckey",
+		"SELECT id, playerid, firstseen FROM [DB_PREFIX_TABLE_NAME("player_lookup")] WHERE ckey = :ckey",
 		list(
 			"ckey" = ckey
 		)
@@ -111,7 +111,7 @@ GLOBAL_LIST_EMPTY(player_data)
 			lookup_pid = text2num(lookup_pid)
 		qdel(lookup)
 		lookup = SSdbcore.ExecuteQuery(
-			"SELECT id, flags, datediff(Now(), firstseen), firstseen, misc FROM [format_table_name("player")] WHERE id = :id",
+			"SELECT id, flags, datediff(Now(), firstseen), firstseen, misc FROM [DB_PREFIX_TABLE_NAME("player")] WHERE id = :id",
 			list(
 				"id" = lookup_pid
 			)
@@ -147,7 +147,7 @@ GLOBAL_LIST_EMPTY(player_data)
 	var/datum/db_query/insert
 	if(migrate_firstseen)
 		insert = SSdbcore.ExecuteQuery(
-			"INSERT INTO [format_table_name("player")] (flags, firstseen, lastseen, misc) VALUES (:flags, :fs, Now(), :misc)",
+			"INSERT INTO [DB_PREFIX_TABLE_NAME("player")] (flags, firstseen, lastseen, misc) VALUES (:flags, :fs, Now(), :misc)",
 			list(
 				"flags" = player_flags,
 				"fs" = migrate_firstseen,
@@ -157,7 +157,7 @@ GLOBAL_LIST_EMPTY(player_data)
 		player_first_seen = migrate_firstseen
 	else
 		insert = SSdbcore.ExecuteQuery(
-			"INSERT INTO [format_table_name("player")] (flags, firstseen, lastseen, misc) VALUES (:flags, Now(), Now(), :misc)",
+			"INSERT INTO [DB_PREFIX_TABLE_NAME("player")] (flags, firstseen, lastseen, misc) VALUES (:flags, Now(), Now(), :misc)",
 			list(
 				"flags" = player_flags,
 				"misc" = safe_json_encode(player_misc),
@@ -173,7 +173,7 @@ GLOBAL_LIST_EMPTY(player_data)
 	qdel(insert)
 	// now update lookup
 	insert = SSdbcore.ExecuteQuery(
-		"UPDATE [format_table_name("player_lookup")] SET playerid = :pid WHERE id = :id",
+		"UPDATE [DB_PREFIX_TABLE_NAME("player_lookup")] SET playerid = :pid WHERE id = :id",
 		list(
 			"id" = lookup_id,
 			"pid" = insert_id
@@ -211,7 +211,7 @@ GLOBAL_LIST_EMPTY(player_data)
 
 /datum/player_data/proc/_save()
 	qdel(SSdbcore.ExecuteQuery(
-		"UPDATE [format_table_name("player")] SET flags = :flags, misc = :misc WHERE id = :id",
+		"UPDATE [DB_PREFIX_TABLE_NAME("player")] SET flags = :flags, misc = :misc WHERE id = :id",
 		list(
 			"flags" = player_flags,
 			"id" = player_id,
@@ -232,7 +232,7 @@ GLOBAL_LIST_EMPTY(player_data)
 	if(!block_on_available())
 		return FALSE
 	qdel(SSdbcore.ExecuteQuery(
-		"UPDATE [format_table_name("player")] SET lastseen = Now() WHERE id = :id",
+		"UPDATE [DB_PREFIX_TABLE_NAME("player")] SET lastseen = Now() WHERE id = :id",
 		list(
 			"id" = player_id,
 		)

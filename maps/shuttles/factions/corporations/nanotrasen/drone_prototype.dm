@@ -5,7 +5,7 @@
 	for frontier exploration. Definitely not safe for life. As an upside, it runs on ion propulsion that \
 	doesn't need to be refuelled for weeks on end." // v1 from ultrakill
 	id = "nt-drone-v1"
-	relative_path = "drone_prototype.dmm"
+	path = "maps/shuttles/factions/corporations/nanotrasen/drone_prototype.dmm"
 
 	descriptor = /datum/shuttle_descriptor{
 		mass = 5;

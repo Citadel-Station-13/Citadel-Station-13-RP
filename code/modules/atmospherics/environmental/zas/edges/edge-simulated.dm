@@ -106,3 +106,6 @@
 		/ (heat_capacity_A_scaled + heat_capacity_B_scaled)
 	air_A.temperature = average_temperature
 	air_B.temperature = average_temperature
+
+	air_A.update_values()
+	air_B.update_values()

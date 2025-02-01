@@ -45,6 +45,7 @@
 
 /obj/item/flamethrower/update_icon()
 	cut_overlays()
+	. = ..()
 
 	var/list/overlays_to_add = list()
 	if(igniter)
@@ -58,8 +59,6 @@
 		item_state = "flamethrower_0"
 
 	add_overlay(overlays_to_add)
-
-	return
 
 /obj/item/flamethrower/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
@@ -198,6 +197,7 @@
 	//air_transfer.toxins = air_transfer.toxins * 5 // This is me not comprehending the air system. I realize this is stupid and I could probably make it work without fucking it up like this, but there you have it. -- TLE
 	new/obj/effect/debris/cleanable/liquid_fuel/flamethrower_fuel(target,air_transfer.gas[GAS_ID_PHORON],get_dir(loc,target))
 	air_transfer.gas[GAS_ID_PHORON] = 0
+	air_transfer.update_values()
 	target.assume_air(air_transfer)
 	//Burn it based on transfered gas
 	//target.hotspot_expose(part4.air_contents.temperature*2,300)

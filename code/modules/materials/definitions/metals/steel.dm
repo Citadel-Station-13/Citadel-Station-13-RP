@@ -1,6 +1,13 @@
-/datum/prototype/material/steel
+GENERATE_MATERIAL_STACKS(/steel)
+DECLARE_MATERIAL(/steel)
 	id = MAT_STEEL
 	name = MAT_STEEL
+
+	display_name = "steel"
+
+	icon = 'icons/materials/metals/steel.dmi'
+	icon_stack_count = 3
+
 	stack_type = /obj/item/stack/material/steel
 	icon_base = 'icons/turf/walls/solid_wall.dmi'
 	icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'

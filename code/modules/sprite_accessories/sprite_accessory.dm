@@ -102,7 +102,7 @@ GLOBAL_LIST_EMPTY(sprite_accessory_icon_cache)
 				continue
 			if(!istext(colors[i]))
 				stack_trace("attempted to use non-text color string with legacy additive; this is not supported.")
-			var/list/decoded = ReadRGB(colors[i])
+			var/list/decoded = rgb2num(colors[i])
 			var/list/computed = list(
 				1, 0, 0,
 				0, 1, 0,

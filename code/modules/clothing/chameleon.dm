@@ -13,7 +13,7 @@
 	icon_state = copy.icon_state
 	color = copy.color
 	item_state = copy.item_state
-	body_cover_flags = copy.body_cover_flags
+	set_body_cover_flags(copy.body_cover_flags)
 	inv_hide_flags = copy.inv_hide_flags
 	gender = copy.gender
 
@@ -400,10 +400,7 @@
 	desc = "It's a desert eagle."
 	icon_state = "deagle"
 	update_icon()
-	if (ismob(src.loc))
-		var/mob/M = src.loc
-		M.update_inv_r_hand()
-		M.update_inv_l_hand()
+	update_worn_icon()
 
 /obj/item/gun/energy/chameleon/disguise(var/newtype)
 	var/obj/item/gun/copy = ..()
@@ -434,9 +431,4 @@
 		return
 
 	disguise(gun_choices[picked])
-
-	//so our overlays update.
-	if (ismob(src.loc))
-		var/mob/M = src.loc
-		M.update_inv_r_hand()
-		M.update_inv_l_hand()
+	update_worn_icon()

@@ -507,7 +507,7 @@
 "bq" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/hos,
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = -32
 	},
 /turf/simulated/shuttle/floor/black,
@@ -1200,7 +1200,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "cW" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = -32
 	},
 /turf/simulated/shuttle/floor/black,
@@ -1286,11 +1286,11 @@
 	dir = 1
 	},
 /obj/structure/table/steel_reinforced,
-/obj/item/contraband/poster,
-/obj/item/contraband/poster,
-/obj/item/contraband/poster,
-/obj/item/contraband/poster,
-/obj/item/contraband/poster,
+/obj/item/poster,
+/obj/item/poster,
+/obj/item/poster,
+/obj/item/poster,
+/obj/item/poster,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "dg" = (
@@ -1537,7 +1537,7 @@
 /obj/item/clothing/under/cheongsam,
 /obj/item/clothing/under/hosformalmale,
 /obj/item/clothing/under/hosformalfem,
-/obj/item/clothing/under/harness,
+/obj/item/clothing/under/gear_harness,
 /obj/item/clothing/under/gladiator,
 /obj/item/clothing/under/ert,
 /obj/item/clothing/under/schoolgirl,

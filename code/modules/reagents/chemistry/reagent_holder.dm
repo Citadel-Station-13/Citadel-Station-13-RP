@@ -365,9 +365,9 @@
 	if (!target || !target.reagents)
 		return
 
-	amount = min(amount, get_reagent_amount(id))
+	amount = min(amount, get_reagent_amount(id), target.reagents.maximum_volume - target.reagents.total_volume)
 
-	if(!amount)
+	if(amount <= 0)
 		return
 
 	var/datum/reagent_holder/F = new /datum/reagent_holder(amount)
@@ -539,6 +539,49 @@
 		R.on_update (A)
 	update_total()
 
+//* Filtering *//
+
+/**
+ * Filters chemicals by `reagent_filter_flags`
+ *
+ * @params
+ * * transfer_to - where to transfer to
+ * * amount - volume limit
+ * * flags - only these flags are allowed
+ */
+/datum/reagent_holder/proc/filter_to_holder(datum/reagent_holder/transfer_to, amount = INFINITY, flags)
+	if(amount <= 0)
+		return
+	var/list/filtering_ids = list()
+	for(var/datum/reagent/reagent in reagent_list)
+		if(!(reagent.reagent_filter_flags & flags))
+			continue
+		filtering_ids += reagent.id
+	return transfer_to_holder(transfer_to, filtering_ids, amount)
+
+/**
+ * Filters chemicals by `reagent_filter_flags`
+ *
+ * @params
+ * * amount - volume limit
+ * * flags - only these flags are allowed
+ */
+/datum/reagent_holder/proc/filter_to_void(amount = INFINITY, flags)
+	if(amount <= 0)
+		return
+	var/total_filterable = 0
+	var/list/datum/reagent/filtering = list()
+	for(var/datum/reagent/reagent in reagent_list)
+		if(!(reagent.reagent_filter_flags & flags))
+			continue
+		total_filterable += reagent.volume
+		filtering += reagent
+	var/ratio = amount / total_filterable
+	for(var/datum/reagent/to_filter in filtering)
+		remove_reagent(to_filter.id, to_filter.volume * ratio, TRUE)
+	reconsider_reactions()
+	return min(amount, total_filterable)
+
 //* Queries *//
 
 /**
@@ -620,7 +663,7 @@
 	if(!total_volume)
 		return
 	if(!reagents)
-		var/ratio = min(1, (target.maximum_volume - target.total_volume) / total_volume)
+		var/ratio = min(1, min(amount, target.maximum_volume - target.total_volume) / total_volume)
 		. = total_volume * ratio
 		if(!copy)
 			for(var/datum/reagent/R as anything in reagent_list)
@@ -646,7 +689,7 @@
 			reagents_transferring += R
 		if(!total_transferable)
 			return 0
-		var/ratio = min(1, (target.maximum_volume - target.total_volume) / total_transferable)
+		var/ratio = min(1, min(amount, target.maximum_volume - target.total_volume) / total_transferable)
 		. = total_transferable * ratio
 		if(!copy)
 			for(var/datum/reagent/R as anything in reagents_transferring)

@@ -194,6 +194,7 @@
 		return 0
 
 /obj/machinery/portable_atmospherics/canister/update_icon()
+	. = ..()
 /*
 update_flag
 1 = holding
@@ -527,6 +528,7 @@ update_flag
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide/roomfiller/Initialize(mapload)
 	. = ..()
 	air_contents.gas[GAS_ID_NITROUS_OXIDE] = 9*4000
+	air_contents.update_values()
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide/roomfiller/LateInitialize()

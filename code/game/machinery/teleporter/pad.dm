@@ -21,6 +21,7 @@
 
 /obj/machinery/tele_pad/update_icon()
 	cut_overlays()
+	. = ..()
 	if(com?.projector?.engaged)
 		update_use_power(USE_POWER_ACTIVE)
 		var/image/I = image(icon, src, "[initial(icon_state)]_active_overlay")

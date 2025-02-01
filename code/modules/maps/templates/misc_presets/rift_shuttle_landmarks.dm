@@ -28,7 +28,7 @@ Need to turn all of these into proper initializers like this:
 /obj/effect/shuttle_landmark/rift/deck3/oldcentury
 	name = "NSB Atlas - Secondary Civilian Transport Pad"
 	landmark_tag = "rift_oldcentury_pad"
-	docking_controller = "rift_oldcentury_dock"
+	docking_controller = "oldcentury_dock"
 	base_turf = /turf/simulated/floor/reinforced/lythios43c
 	base_area = /area/rift/surfacebase/outside/outside3
 
@@ -42,6 +42,18 @@ Need to turn all of these into proper initializers like this:
 /obj/effect/shuttle_landmark/rift/deck3/trade
 	name = "NSB Atlas - Trade Pad"
 	landmark_tag = "rift_trade_dock"
+	base_turf = /turf/simulated/floor/reinforced/lythios43c
+	base_area = /area/rift/surfacebase/outside/outside3
+
+/obj/effect/shuttle_landmark/rift/deck3/scoophead
+	name = "NSB Atlas - Scoophead Pad"
+	landmark_tag = "rift_scoophead_dock"
+	base_turf = /turf/simulated/floor/reinforced/lythios43c
+	base_area = /area/rift/surfacebase/outside/outside3
+
+/obj/effect/shuttle_landmark/rift/deck3/udang
+	name = "NSB Atlas - Udang Pad"
+	landmark_tag = "rift_udang_dock"
 	base_turf = /turf/simulated/floor/reinforced/lythios43c
 	base_area = /area/rift/surfacebase/outside/outside3
 
@@ -81,25 +93,25 @@ Need to turn all of these into proper initializers like this:
 /obj/effect/shuttle_landmark/rift/deck4/excursion_sky
 	name = "NSB Atlas Airspace (SE)"
 	landmark_tag = "rift_airspace_SE"
-	base_turf = /turf/simulated/sky/lythios43c
+	base_turf = /turf/simulated/fake_sky/lythios43c
 	base_area = /area/rift/surfacebase/outside/outside3
 
 /obj/effect/shuttle_landmark/rift/deck4/east
 	name = "NSB Atlas Airspace (E)"
 	landmark_tag = "rift_airspace_E"
-	base_turf = /turf/simulated/sky/lythios43c
+	base_turf = /turf/simulated/fake_sky/lythios43c
 	base_area = /area/rift/surfacebase/outside/outside3
 
 /obj/effect/shuttle_landmark/rift/deck4/northeast
 	name = "NSB Atlas Airspace (NE)"
 	landmark_tag = "rift_airspace_NE"
-	base_turf = /turf/simulated/sky/lythios43c
+	base_turf = /turf/simulated/fake_sky/lythios43c
 	base_area = /area/rift/surfacebase/outside/outside3
 
 /obj/effect/shuttle_landmark/rift/deck4/north
 	name = "SB Atlas Airspace (N)"
 	landmark_tag = "rift_airspace_N"
-	base_turf = /turf/simulated/sky/lythios43c
+	base_turf = /turf/simulated/fake_sky/lythios43c
 	base_area = /area/rift/surfacebase/outside/outside3
 
 // OFF-STATION NAV POINTS
@@ -143,6 +155,14 @@ Need to turn all of these into proper initializers like this:
 /obj/effect/shuttle_landmark/transit/rift/trade
 	name = "In transit"
 	landmark_tag = "nav_transit_trade"
+
+/obj/effect/shuttle_landmark/transit/rift/trade/udang
+	name = "In transit"
+	landmark_tag = "nav_transit_udang"
+
+/obj/effect/shuttle_landmark/transit/rift/trade/scoophead
+	name = "In transit"
+	landmark_tag = "nav_transit_scoophead"
 
 /obj/effect/shuttle_landmark/transit/rift/emt
 	name = "In transit"

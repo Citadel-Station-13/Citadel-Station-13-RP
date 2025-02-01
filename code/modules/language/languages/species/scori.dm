@@ -1,4 +1,4 @@
-/datum/language/scori
+/datum/prototype/language/scori
 	id = LANGUAGE_ID_SCORI
 	name = LANGUAGE_SCORI
 	language_flags = LANGUAGE_WHITELISTED

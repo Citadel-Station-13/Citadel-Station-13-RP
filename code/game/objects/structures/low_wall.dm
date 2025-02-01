@@ -48,9 +48,14 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 	paint_color = COLOR_WALL_GUNMETAL
 	stripe_color = COLOR_WALL_GUNMETAL
 
-/obj/structure/wall_frame/Initialize(mapload, material)
-	if(!isnull(material))
-		set_primary_material(RSmaterials.fetch(material))
+/obj/structure/wall_frame/Initialize(mapload, datum/prototype/material/material_like)
+	if(!isnull(material_like))
+		var/resolved_material = RSmaterials.fetch_or_defer(material_like)
+		switch(resolved_material)
+			if(REPOSITORY_FETCH_DEFER)
+				// todo: handle
+			else
+				set_primary_material(resolved_material)
 	. = ..()
 	update_overlays()
 

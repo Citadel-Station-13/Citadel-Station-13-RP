@@ -58,6 +58,7 @@ SUBSYSTEM_DEF(ticker)
 
 	var/triai = 0//Global holder for Triumvirate
 
+	var/delay_explained = FALSE
 	var/round_end_announced = 0 // Spam Prevention. Announce round end only once.
 
 	//station_explosion used to be a variable for every mob's hud. Which was a waste!
@@ -75,8 +76,7 @@ SUBSYSTEM_DEF(ticker)
 		syndicate_code_response = generate_code_phrase()
 
 	start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
-
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/ticker/fire()
 	switch(current_state)
@@ -164,7 +164,9 @@ SUBSYSTEM_DEF(ticker)
 	return ready
 
 /datum/controller/subsystem/ticker/proc/handle_no_players_ready()
-	to_chat(world, SPAN_ANNOUNCE("No Players are ready to play, delaying round start."))
+	if(!delay_explained)
+		to_chat(world, SPAN_ANNOUNCE("No Players are ready to play, delaying round start."))
+		delay_explained = TRUE
 	start_at = world.time + 1 MINUTE
 	timeLeft = max(0,start_at - world.time)
 

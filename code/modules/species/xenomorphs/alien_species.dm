@@ -325,6 +325,21 @@
 		/mob/living/carbon/human/proc/acidspit,
 		)
 
+	//* Inventory *//
+
+	inventory_slots = list(
+		/datum/inventory_slot/inventory/suit::id = list(
+			INVENTORY_SLOT_REMAP_MAIN_AXIS = 0,
+			INVENTORY_SLOT_REMAP_CROSS_AXIS = 4,
+		),
+		/datum/inventory_slot/inventory/pocket/left::id,
+		/datum/inventory_slot/inventory/pocket/right::id,
+		/datum/inventory_slot/inventory/head::id = list(
+			INVENTORY_SLOT_REMAP_MAIN_AXIS = 0,
+			INVENTORY_SLOT_REMAP_CROSS_AXIS = 3,
+		),
+	)
+
 /datum/species/xenos/queen/handle_login_special(var/mob/living/carbon/human/H)
 	..()
 	// Make sure only one official queen exists at any point.
@@ -338,10 +353,7 @@
 /datum/hud_data/alien
 
 	icon = 'icons/mob/screen1_alien.dmi'
-	has_a_intent =  1
-	has_m_intent =  1
 	has_warnings =  1
-	has_hands =     1
 	has_drop =      1
 	has_throw =     1
 	has_resist =    1
@@ -349,10 +361,3 @@
 	has_nutrition = 0
 	has_bodytemp =  0
 	has_internals = 0
-
-	gear = list(
-		SLOT_ID_SUIT =   list("loc" = ui_belt,      "name" = "Suit",         "slot" = SLOT_ID_SUIT, "state" = "equip",  "dir" = SOUTH),
-		SLOT_ID_HEAD =         list("loc" = ui_id,        "name" = "Hat",          "slot" = SLOT_ID_HEAD,      "state" = "hair"),
-		SLOT_ID_LEFT_POCKET =     list("loc" = ui_storage1,  "name" = "Left Pocket",  "slot" = SLOT_ID_LEFT_POCKET,   "state" = "pocket"),
-		SLOT_ID_RIGHT_POCKET =     list("loc" = ui_storage2,  "name" = "Right Pocket", "slot" = SLOT_ID_RIGHT_POCKET,   "state" = "pocket"),
-		)

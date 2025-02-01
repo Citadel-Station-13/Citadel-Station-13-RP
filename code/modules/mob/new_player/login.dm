@@ -22,4 +22,4 @@
 	return ..()
 
 /mob/new_player/login_cutscene()
-	client.start_cutscene(SSlobby.titlescreen)
+	client.start_cutscene(SStitlescreen.titlescreen)
