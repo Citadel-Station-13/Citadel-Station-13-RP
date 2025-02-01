@@ -2,10 +2,11 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /obj/item/gun_component/particle_array/ion_splash
-	name = /obj/item/gun_component/particle_array::name + " (electromagnetic beam)"
+	name = /obj/item/gun_component/particle_array::name + " (electromagnetic burst)"
 	desc = "A particle array that generates an ion bolt that splashes on impact."
 
 	considered_lethal = FALSE
+	selection_name = "electromagnetic burst"
 
 	#warn charge
 

@@ -599,7 +599,7 @@
 	. = ..()
 	if(!(item_flags & ITEM_IN_INVENTORY))
 		return
-	. += image('icons/obj/gun/common.dmi', "safety_[check_safety()? "on" : "off"]")
+	add_overlay(image('icons/modules/projectiles/guns/common-overlays.dmi', "safety-[check_safety()? "on" : "off"]"))
 
 /obj/item/gun/proc/toggle_safety(mob/user)
 	if(user)

@@ -48,9 +48,3 @@
 		for(var/i in 1 to current_index - 1)
 			if(istype(modular_components[i], /obj/item/gun_component/particle_array))
 				return modular_components[i]
-
-/obj/item/gun/projectile/energy/proc/reconsider_particle_array_actions()
-	if(!modular_system)
-		return
-
-	#warn impl

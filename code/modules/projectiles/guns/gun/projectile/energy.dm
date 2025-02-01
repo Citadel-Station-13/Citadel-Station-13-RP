@@ -84,6 +84,14 @@
 		STOP_PROCESSING(SSobj, src)
 	return ..()
 
+/obj/item/gun/projectile/energy/update_overlays()
+	. = ..()
+	if(!(item_flags & ITEM_IN_INVENTORY))
+		return
+	if(!modular_system)
+		return
+	add_overlay(image('icons/modules/projectiles/guns/common-overlays.dmi', "lethal-[modular_particle_array_safety? "on" : "off"]"))
+
 /obj/item/gun/projectile/energy/process(delta_time)
 	if(self_recharge) //Every [recharge_time] ticks, recharge a shot for the battery
 		if(world.time > last_fire + charge_delay)	//Doesn't work if you've fired recently
@@ -223,6 +231,20 @@
 	modular_particle_array_safety_action?.revoke(user.inventory.actions)
 	modular_particle_array_swap_action?.revoke(user.inventory.actions)
 
+/obj/item/gun/projectile/energy/proc/reconsider_particle_array_actions()
+	if(!modular_system)
+		QDEL_NULL(modular_particle_array_safety_action)
+		QDEL_NULL(modular_particle_array_swap_action)
+		return
+	if(!modular_particle_array_safety_action)
+		modular_particle_array_safety_action = new /datum/action/item_action/modular_energy_particle_array_safety(src)
+		if(inv_inside)
+			modular_particle_array_safety_action.grant(inv_inside.actions)
+	if(!modular_particle_array_swap_action)
+		modular_particle_array_safety_action = new /datum/action/item_action/modular_energy_particle_array_swap(src)
+		if(inv_inside)
+			modular_particle_array_safety_action.grant(inv_inside.actions)
+
 //* Ammo *//
 
 /obj/item/gun/projectile/energy/get_ammo_ratio()
@@ -238,3 +260,35 @@
 	if(legacy_battery_lock)
 		return FALSE
 	return ..()
+
+//* Action Datums *//
+
+/datum/action/item_action/modular_energy_particle_array_safety
+	name = "Toggle Lethal Arrays"
+	desc = "Toggle being able to swap to installed particle arrays that are considered lethal."
+
+/datum/action/item_action/modular_energy_particle_array_safety/pre_render_hook()
+	. = ..()
+	var/image/item_overlay = button_additional_overlay
+	var/image/symbol_overlay = image('icons/screen/actions/generic-overlays', "lock")
+	symbol_overlay.color = "#ccaa00"
+	item_overlay.add_overlay(symbol_overlay)
+
+/datum/action/item_action/modular_energy_particle_array_safety/invoke_target(datum/target, datum/event_args/actor/actor)
+	. = ..()
+	#warn impl
+
+/datum/action/item_action/modular_energy_particle_array_swap
+	name = "Toggle Particle Array"
+	desc = "Toggle the active particle array being used."
+
+/datum/action/item_action/modular_energy_particle_array_swap/pre_render_hook()
+	. = ..()
+	var/image/item_overlay = button_additional_overlay
+	var/image/symbol_overlay = image('icons/screen/actions/generic-overlays', "swap")
+	symbol_overlay.color = "#00ff00"
+	item_overlay.add_overlay(symbol_overlay)
+
+/datum/action/item_action/modular_energy_particle_array_swap/invoke_target(datum/target, datum/event_args/actor/actor)
+	. = ..()
+	#warn impl

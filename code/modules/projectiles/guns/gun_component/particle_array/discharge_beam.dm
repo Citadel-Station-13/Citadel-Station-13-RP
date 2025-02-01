@@ -6,6 +6,7 @@
 	desc = "A particle array that generates an ionized pathway to send an electric discharge through."
 
 	considered_lethal = TRUE
+	selection_name = "discharge beam"
 
 	#warn charge
 

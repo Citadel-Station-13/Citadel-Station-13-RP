@@ -6,6 +6,7 @@
 	desc = "A particle array that generates a coherent ion beam."
 
 	considered_lethal = TRUE
+	selection_name = "coherent ion"
 
 	#warn charge
 

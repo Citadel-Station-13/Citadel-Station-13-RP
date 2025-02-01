@@ -2,11 +2,12 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /obj/item/gun_component/particle_array/particle_beam
-	name = /obj/item/gun_component/particle_array::name + " (particle beam)"
+	name = /obj/item/gun_component/particle_array::name + " (laser)"
 	desc = "A particle array that emits a damaging beam. Bog-standard, really."
 
 	base_energy_cost = /obj/item/cell/device/weapon::maxcharge / 8 * 500
 	considered_lethal = TRUE
+	selection_name = "laser"
 
 	// todo: /obj/projectile/modular_energy/*
 	//       allows for easier runtime reflection

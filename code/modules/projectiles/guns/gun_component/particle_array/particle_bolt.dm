@@ -2,10 +2,11 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /obj/item/gun_component/particle_array/particle_bolt
-	name = /obj/item/gun_component/particle_array::name + " (particle bolt)"
-	desc = "A particle array that emits a tight energy bolt."
+	name = /obj/item/gun_component/particle_array::name + " (bolt)"
+	desc = "A particle array that emits a tight, damaging energy bolt. Boring."
 
 	considered_lethal = TRUE
+	selection_name = "bolt"
 
 	#warn charge
 

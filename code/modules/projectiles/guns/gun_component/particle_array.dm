@@ -13,6 +13,9 @@
 	/// * lethal arrays can be disabled on a separate 'safety' setting
 	var/considered_lethal = FALSE
 
+	/// our selection name
+	var/selection_name = "unknown particle"
+
 	/// projectile type
 	var/projectile_type
 
