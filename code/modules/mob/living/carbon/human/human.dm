@@ -1660,7 +1660,7 @@
 /mob/living/carbon/human/get_centering_pixel_x_offset(dir)
 	. = ..()
 	// uh oh stinky
-	if(!isTaurTail(tail_style) || !(dir & (EAST|WEST)))
+	if(!legacy_has_taur_tail() || !(dir & (EAST|WEST)))
 		return
 	// groan
 	. += ((size_multiplier * icon_scale_x) - 1) * ((dir & EAST)? -16 : 16)

@@ -5,7 +5,7 @@
  * flatten all keyed overlays
  */
 /mob/living/carbon/proc/flatten_standing_overlays()
-	return
+	reapply_standing_overlays()
 
 /**
  * rebuild all keyed overlays

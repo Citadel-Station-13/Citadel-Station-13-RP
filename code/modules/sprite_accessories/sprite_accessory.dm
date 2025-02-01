@@ -91,6 +91,9 @@ GLOBAL_LIST_EMPTY(sprite_accessory_icon_cache)
 /datum/sprite_accessory/New()
 	#warn extra overlay --> coloration
 
+/datum/sprite_accessory/proc/render_new(mob/for_whom, datum/sprite_accessory_descriptor/with_descriptor, layer_front, layer_behind, layer_side, flattened)
+	#warn impl
+
 /**
  * todo: with_base_state completely tramples extra_overlay, extra_overlay2
  * we need to redo this at some point.

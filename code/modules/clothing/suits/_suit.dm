@@ -26,7 +26,7 @@
 	//Pyramid of doom-y. Improve somehow?
 	if(!taurized && slot == SLOT_ID_SUIT && ishuman(user))
 		var/mob/living/carbon/human/H = user
-		if(isTaurTail(H.tail_style))
+		if(H.legacy_has_taur_tail())
 			var/datum/sprite_accessory/tail/legacy_taur/taurtail = H.tail_style
 			var/list/resolved = resolve_worn_assets(user, resolve_inventory_slot(/datum/inventory_slot/inventory/suit), FALSE, H.species.get_effective_bodytype(user, src, SLOT_ID_SUIT))
 			if(taurtail.suit_sprites && (resolved[2] in icon_states(taurtail.suit_sprites)))

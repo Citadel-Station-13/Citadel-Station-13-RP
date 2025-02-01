@@ -24,3 +24,12 @@
 	var/datum/sprite_accessory_marking_descriptor/creating = new
 	creating.color = color
 	creating.emissive = emissive
+
+/datum/sprite_accessory_marking_descriptor/proc/operator~=(datum/sprite_accessory_marking_descriptor/other)
+	if(!istype(other))
+		return FALSE
+	if(color != other.color)
+		return FALSE
+	if(emissive != other.emissive)
+		return FALSE
+	return TRUE

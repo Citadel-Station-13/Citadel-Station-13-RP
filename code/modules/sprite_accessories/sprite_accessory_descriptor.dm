@@ -57,3 +57,21 @@
 		creating.markings = built_markings
 	creating.variation = variation
 	return creating
+
+/datum/sprite_accessory_descriptor/proc/operator~=(datum/sprite_accessory_descriptor/other)
+	if(!istype(other))
+		return FALSE
+	if(id != other.id)
+		return FALSE
+	if(colors !~ other.colors)
+		return FALSE
+	if(emissive != other.emissive)
+		return FALSE
+	if(length(markings ^ other.markings))
+		return FALSE
+	for(var/id in markings)
+		if(markings[id] !~ other.markings[id])
+			return FALSE
+	if(variation != other.variation)
+		return FALSE
+	return TRUE
