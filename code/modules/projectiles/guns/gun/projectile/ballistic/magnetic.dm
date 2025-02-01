@@ -21,10 +21,7 @@
 	/// Render battery state.
 	///
 	/// * Uses MAGNETIC_RENDER_BATTERY_* enums
-	#warn impl
 	var/render_battery_overlay = MAGNETIC_RENDER_BATTERY_NEVER
-
-#warn impl all
 
 /obj/item/gun/projectile/ballistic/magnetic/prime_casing(datum/gun_firing_cycle/cycle, obj/item/ammo_casing/casing, casing_primer)
 	var/shot_power_draw = base_shot_power * casing.effective_mass_multiplier
@@ -33,3 +30,18 @@
 	. = ..()
 	if(!isnum(.))
 		obj_cell_slot.use(shot_power_draw)
+
+/obj/item/gun/projectile/ballistic/magnetic/update_icon()
+	. = ..()
+	switch(render_battery_overlay)
+		if(MAGNETIC_RENDER_BATTERY_BOTH)
+			if(obj_cell_slot?.cell)
+				add_overlay("[base_icon_state]-battery-in")
+			else
+				add_overlay("[base_icon_state]-battery-out")
+		if(MAGNETIC_RENDER_BATTERY_IN)
+			if(obj_cell_slot?.cell)
+				add_overlay("[base_icon_state]-battery")
+		if(MAGNETIC_RENDER_BATTERY_OUT)
+			if(!obj_cell_slot?.cell)
+				add_overlay("[base_icon_state]-battery")
