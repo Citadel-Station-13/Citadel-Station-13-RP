@@ -74,6 +74,8 @@
 	var/next_dispersion_adjust
 	/// on this iteration, force adjust the angle by this much (pos = cw, neg = ccw); this is in degrees
 	var/next_angle_adjust
+	/// energy cost multiplier for the projectile
+	var/next_projectile_cost_multiplier = 1
 	/// blackboard for modular gun components to use
 	var/list/blackboard
 	/// multiplier to total cooldown after firing cycle
@@ -89,3 +91,6 @@
 	next_angle_adjust = \
 	next_firing_fail_result = \
 		null
+
+	next_projectile_cost_multiplier = \
+		1

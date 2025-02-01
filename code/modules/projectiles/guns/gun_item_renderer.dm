@@ -97,12 +97,14 @@
  */
 /datum/gun_item_renderer/overlays
 	/// total count of overlays, from 1 to amount
+	/// * example: "[base]-[count]"
 	var/count
 	/// add "-empty" overlay when we're empty, instead of adding nothing
 	var/use_empty
 	/// only use the n-th overlay, instead of adding 1 to n
 	var/use_single
-	/// additionally, add "-[firemode]" to the segment
+	/// additionally, add "-[firemode]" to the overlay, before the count
+	/// * example: "[base]-[firemode]-[count]"
 	var/use_firemode
 	/// use gun requested render color on ammo bar
 	var/use_color

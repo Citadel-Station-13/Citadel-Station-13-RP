@@ -52,8 +52,9 @@
 
 /obj/item/gun/projectile/energy/nt_pmd/service_revolver
 	name = "service weapon"
-	icon_state = "service_grip"
-	#warn rename icon states, move icon over, add icon states to firemodes
+	icon = 'icons/content/factions/nanotrasen/items/guns/nt_pmd/service_revolver.dmi'
+	icon_state = "service"
+	base_icon_state = "service"
 	desc = "An anomalous weapon, long kept secure. It has recently been acquired by Nanotrasen's Paracausal Monitoring Division. How did it get here?"
 	damage_force = 5
 	slot_flags = SLOT_BELT
@@ -70,3 +71,8 @@
 		/datum/firemode/energy/nt_pmd/service_revolver/pierce,
 		/datum/firemode/energy/nt_pmd/service_revolver/charge,
 	)
+	item_renderer = /datum/gun_item_renderer/overlays{
+		count = 4;
+		use_single = TRUE;
+		independent_firemode = TRUE;
+	}

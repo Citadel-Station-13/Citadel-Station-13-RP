@@ -22,7 +22,6 @@
 
 //* Sidearm *//
 
-#warn impl all ; materials
 
 /obj/item/gun/projectile/ballistic/magnetic/nt_protomag/sidearm
 	name = "protomag sidearm"
@@ -51,9 +50,17 @@
 		GUN_COMPONENT_POWER_UNIT = 1,
 	)
 
-//* Rifle *//
+	materials_base = list(
+		/datum/prototype/material/steel::id = 3500,
+		/datum/prototype/material/glass::id = 500,
+		/datum/prototype/material/silver::id = 750,
+		/datum/prototype/material/gold::id = 350,
+		/datum/prototype/material/copper::id = 750,
+		/datum/prototype/material/diamond::id = 250,
+		/datum/prototype/material/lead::id = 250,
+	)
 
-#warn impl all ; materials
+//* Rifle *//
 
 /obj/item/gun/projectile/ballistic/magnetic/nt_protomag/rifle
 	name = "protomag rifle"
@@ -82,4 +89,14 @@
 		GUN_COMPONENT_ENERGY_HANDLER = 2,
 		GUN_COMPONENT_ACCELERATION_COIL = 2,
 		GUN_COMPONENT_POWER_UNIT = 2,
+	)
+
+	materials_base = list(
+		/datum/prototype/material/steel::id = 5000,
+		/datum/prototype/material/glass::id = 1500,
+		/datum/prototype/material/silver::id = 1500,
+		/datum/prototype/material/gold::id = 800,
+		/datum/prototype/material/copper::id = 1200,
+		/datum/prototype/material/diamond::id = 350,
+		/datum/prototype/material/lead::id = 450,
 	)

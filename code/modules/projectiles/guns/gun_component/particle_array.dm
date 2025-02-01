@@ -20,8 +20,7 @@
  * Consume next projectile hook
  */
 /obj/item/gun_component/particle_array/proc/consume_next_projectile(datum/gun_firing_cycle/cycle) as /obj/projectile
-	#warn cycle charge cost mod
-	var/effective_power_use = base_energy_cost
+	var/effective_power_use = base_energy_cost * cycle.next_projectile_cost_multiplier
 	if(effective_power_use)
 		if(!installed.modular_use_checked_power(src, effective_power_use))
 			return GUN_FIRED_FAIL_EMPTY

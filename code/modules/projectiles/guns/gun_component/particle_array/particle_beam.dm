@@ -5,7 +5,7 @@
 	name = /obj/item/gun_component/particle_array::name + " (particle beam)"
 	desc = "A particle array that emits a damaging beam. Bog-standard, really."
 
-	charge_cost = /obj/item/cell/device/weapon::maxcharge / 8
+	base_energy_cost = /obj/item/cell/device/weapon::maxcharge / 8 * 500
 	considered_lethal = TRUE
 
 	// todo: /obj/projectile/modular_energy/*
