@@ -8,7 +8,7 @@
 
 	legacy_use_additive_color_matrix = TRUE // Only appliciable if do_coloration = 1
 
-/datum/sprite_accessory/wing
+/datum/sprite_accessory/wing/New()
 	..()
 	#warn inject gradient marking
 
