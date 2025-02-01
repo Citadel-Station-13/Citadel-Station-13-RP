@@ -5,7 +5,7 @@
 /datum/action/holosphere/toggle_transform
 	name = "Toggle Hologram"
 	desc = "Toggle Hologram"
-	button_icon_state = "transform"
+	button_icon_state = "toggle_transform"
 
 /datum/action/holosphere/toggle_transform/invoke_target(mob/M, datum/event_args/actor/actor)
 	. = ..()
@@ -28,8 +28,12 @@
 	desc = "Change Loadout"
 	button_icon_state = "change_loadout"
 
-/datum/action/holosphere/change_loadout/invoke_target(mob/living/carbon/human/H, datum/event_args/actor/actor)
-	var/datum/species/holosphere/S = H.species
-	if(!istype(S))
-		return
-	H.switch_loadout_holosphere()
+/datum/action/holosphere/change_loadout/invoke_target(mob/M, datum/event_args/actor/actor)
+	. = ..()
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		var/datum/species/holosphere/S = H.species
+		if(!istype(S))
+			message_admins("NOT HOLOSPHERE")
+			return
+		H.switch_loadout_holosphere()

@@ -115,7 +115,7 @@
 	hologram.revive(force, full_heal)
 
 /mob/living/simple_mob/holosphere_shell/proc/give_holosphere_actions()
-	var/datum/action/holosphere/toggle_transform/toggle_transform = new()
+	var/datum/action/holosphere/toggle_transform/toggle_transform = new(src)
 	toggle_transform.grant(actions_innate)
 
 /mob/living/simple_mob/holosphere_shell/strip_menu_act(mob/user, action)

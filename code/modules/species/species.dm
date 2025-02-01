@@ -614,7 +614,7 @@
 		H.add_iff_faction(faction)
 
 	for(var/path in actions_to_apply)
-		var/datum/action/A = new path()
+		var/datum/action/A = new path(H)
 		A.grant(H.actions_innate)
 		actions_applied += A
 
