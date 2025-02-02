@@ -28,6 +28,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/taj_guerilla)
 
 	movement_cooldown = 1
+	minbodytemp = 200
 
 	status_flags = 0
 
