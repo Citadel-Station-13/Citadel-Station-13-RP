@@ -391,15 +391,6 @@
 		var/mob/M = src.loc
 		M.update_inv_belt() //so our overlays update.
 
-/obj/item/storage/belt/chameleon/holosphere
-	name = "holographic belt"
-	desc = "A holographic belt."
-	clothing_flags = NO_UNEQUIP
-	origin_tech = list()
-
-/obj/item/storage/belt/chameleon/holosphere/emp_act(severity)
-	return ..()
-
 //******************
 //**Chameleon Tie**
 //******************
