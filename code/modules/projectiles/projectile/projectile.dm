@@ -248,7 +248,7 @@
 	/// Emissive glow strength of tracer (muzzle + beam + impact), from
 	/// 0 to 255
 	/// * Colored lighting is not currently natively supported
-	var/tracer_auto_emissive_strength = 127
+	var/tracer_auto_emissive_strength = 192
 
 	//*                                          Submunitions                                                  *//
 	//* While projectile has procs to handle this, these vars are used automatically if 'submunitions' is set. *//

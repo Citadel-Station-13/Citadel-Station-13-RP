@@ -142,16 +142,72 @@
 	// don't stay too long
 	ASSERT(duration >= 0 && duration <= 10 SECONDS)
 
+	// check everything
+	if(!has_tracer || !duration || !length(tracer_vertices))
+		return
+
+	var/list/atom/movable/created = list()
+	QDEL_LIST_IN(created, duration)
+
+	// if tracer icon exists, use new rendering system
 	if(tracer_icon)
-		#warn use new rendering system
+		if(tracer_state_beam)
+			for(var/i in 1 to length(tracer_vertices) - 1)
+				var/j = i + 1
+				var/datum/point/point_a = tracer_vertices[i]
+				var/datum/point/point_b = tracer_vertices[j]
+				if(tracer_state_beam_use_tiling)
+					// fucked up
+					var/total_pixel_length = pixel_length_between_points(point_a, point_b)
+					var/tracer_angle = angle_between_points(point_a, point_b)
+					var/dx = sin(tracer_angle)
+					var/dy = cos(tracer_angle)
+					for(var/iter in 0 to ceil(total_pixel_length / WORLD_ICON_SIZE))
+						var/resultant_x = point_a.x + dx * iter * WORLD_ICON_SIZE
+						var/resultant_y = point_a.y + dy * iter * WORLD_ICON_SIZE
+						var/turf/resultant_turf = locate(
+							ceil(floor(resultant_x) / WORLD_ICON_SIZE),
+							ceil(floor(resultant_y) / WORLD_ICON_SIZE),
+							point_a.z,
+						)
+						var/resultant_px = resultant_x % WORLD_ICON_SIZE
+						if(!resultant_px)
+							resultant_px = WORLD_ICON_SIZE * 0.5
+						else
+							resultant_py -= WORLD_ICON_SIZE * 0.5
+						var/resultant_py = resultant_y % WORLD_ICON_SIZE
+						if(!resultant_py)
+							resultant_py = WORLD_ICON_SIZE * 0.5
+						else
+							resultant_py -= WORLD_ICON_SIZE * 0.5
+						if(resultant_turf)
+							created += new /atom/movable/render/projectile_tracer/segment(resultant_turf, tracer_icon, tracer_state_beam, tracer_angle, resultant_px, resultant_py, color, tracer_auto_emissive_strength)
+				else
+					var/datum/point/midpoint = point_midpoint_points(point_a, point_b)
+					var/turf/midpoint_turf = midpoint.return_turf()
+					var/midpoint_px = midpoint.return_px()
+					var/midpoint_py = midpoint.return_py()
+					if(midpoint_turf)
+						created += new /atom/movable/render/projectile_tracer/line(midpoint_turf, tracer_icon, tracer_state_beam, original_angle, midpoint_px, midpoint_py, color, tracer_auto_emissive_strength, pixel_length_between_points(point_a, point_b))
+		if(tracer_state_muzzle && tracer_muzzle_flash)
+			var/datum/point/starting = tracer_vertices[1]
+			var/turf/starting_turf = starting.return_turf()
+			if(starting_turf)
+				var/starting_px = starting.return_px()
+				var/starting_py = starting.return_py()
+				created += new /atom/movable/render/projectile_tracer/muzzle(starting_turf, tracer_icon, tracer_state_muzzle, original_angle, starting_px, starting_py, color, tracer_auto_emissive_strength)
+		if(tracer_state_impact && tracer_impact_effect)
+			var/datum/point/ending = tracer_vertices[length(tracer_vertices)]
+			var/turf/ending_turf = ending.return_turf()
+			if(ending_turf)
+				var/ending_px = ending.return_px()
+				var/ending_py = ending.return_py()
+				created += new /atom/movable/render/projectile_tracer/impact(ending_turf, tracer_icon, tracer_state_muzzle, angle, ending_px, ending_py, color, tracer_auto_emissive_strength)
 		return
 
 	//! legacy below !//
 
-	// check everything
-	if(!has_tracer || !duration || !length(tracer_vertices))
-		return
-	var/list/atom/movable/beam_components = list()
+	var/list/atom/movable/beam_components = created
 
 	// muzzle
 	if(legacy_muzzle_type && tracer_muzzle_flash)
@@ -188,8 +244,6 @@
 			var/datum/point/second_point = tracer_vertices[j]
 			generate_tracer_between_points(first_point, second_point, beam_components, legacy_tracer_type, color, duration, legacy_hitscan_light_range, legacy_hitscan_light_color_override, legacy_hitscan_light_intensity, tempref)
 
-	QDEL_LIST_IN(beam_components, duration)
-
 /obj/projectile/proc/cleanup_hitscan_tracers()
 	tracer_vertices = null
 
@@ -200,3 +254,38 @@
 	// render & cleanup
 	render_hitscan_tracers()
 	cleanup_hitscan_tracers()
+
+//* Tracer Objects *//
+
+/**
+ * Tracer object
+ *
+ * * angle is clockwise from north
+ */
+/atom/movable/render/projectile_tracer
+	SET_APPEARANCE_FLAGS(NONE)
+
+/atom/movable/render/projectile_tracer/Initialize(mapload, icon/use_icon, use_icon_state, angle, px, py, color, emissive)
+	src.icon = use_icon
+	src.icon_state = use_icon_state
+	var/matrix/turn_to = matrix()
+	turn_to.Turn(angle)
+	src.transform = turn_to
+	src.pixel_x = px
+	src.pixel_y = py
+	src.color = color
+	if(emissive)
+		#warn impl
+	return ..()
+
+/atom/movable/render/projectile_tracer/impact
+
+/atom/movable/render/projectile_tracer/muzzle
+
+/atom/movable/render/projectile_tracer/line
+
+/atom/movable/render/projectile_tracer/line/Initialize(mapload, icon/use_icon, use_icon_state, angle, px, py, color, emissive, pixel_length)
+	. = ..()
+	#warn impl
+
+/atom/movable/render/projectile_tracer/segment

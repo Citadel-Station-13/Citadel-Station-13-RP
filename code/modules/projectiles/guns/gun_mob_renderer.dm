@@ -16,7 +16,7 @@
  *
  * @return TRUE if gun needs to update mob state.
  */
-/datum/gun_mob_renderer/proc/render(obj/item/gun/gun, base_worn_state, ammo_ratio, firemode_key, mode_color)
+/datum/gun_mob_renderer/proc/render(obj/item/gun/gun, base_worn_state, ammo_ratio, firemode_key, firemode_color)
 	CRASH("attempted to render with abstract gun renderer")
 
 /**
@@ -24,7 +24,7 @@
  *
  * * States will automatically be appended with something like '_left', '_right', '_all', etc, by the gun.
  */
-/datum/gun_mob_renderer/proc/render_overlays(obj/item/gun/gun, base_worn_state, ammo_ratio, firemode_key, mode_color) as /list
+/datum/gun_mob_renderer/proc/render_overlays(obj/item/gun/gun, base_worn_state, ammo_ratio, firemode_key, firemode_color) as /list
 	return list()
 
 /**
@@ -47,7 +47,7 @@
 	/// add "-[firemode]" before the "-[n]" is added to the state
 	var/use_firemode = FALSE
 
-/datum/gun_mob_renderer/states/render(obj/item/gun/gun, base_worn_state, ammo_ratio, firemode_key, mode_color)
+/datum/gun_mob_renderer/states/render(obj/item/gun/gun, base_worn_state, ammo_ratio, firemode_key, firemode_color)
 	// todo: do we really need to always return TRUE and force an update?
 	if(!ammo_ratio)
 		if(empty_state)
@@ -81,7 +81,6 @@
  * * firemode is not taken into account for empty state.
  * * "[base]-[firemode]-[count]"
  */
-#warn impl
 /datum/gun_mob_renderer/overlays
 	/// total count of overlays, from 1 to amount
 	var/count
@@ -99,11 +98,11 @@
 	/// * overrides [independent_colored_firemode]
 	var/independent_firemode
 
-/datum/gun_mob_renderer/overlays/render(obj/item/gun/gun, base_worn_state, ammo_ratio, firemode_key, mode_color)
+/datum/gun_mob_renderer/overlays/render(obj/item/gun/gun, base_worn_state, ammo_ratio, firemode_key, firemode_color)
 	// todo: do we really need to always return TRUE and force an update?
 	return TRUE
 
-/datum/gun_mob_renderer/overlays/render_overlays(obj/item/gun/gun, base_worn_state, ammo_ratio, firemode_key, mode_color) as /list
+/datum/gun_mob_renderer/overlays/render_overlays(obj/item/gun/gun, base_worn_state, ammo_ratio, firemode_key, firemode_color)
 	. = list()
 	if(gun.render_skip)
 		return

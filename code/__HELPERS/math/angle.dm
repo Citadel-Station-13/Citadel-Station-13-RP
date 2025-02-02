@@ -58,6 +58,8 @@
  *
  * * entity A and entity B may be atoms or movables or both
  * * does not support step x/y values!
+ *
+ * @return angle between A and B, as degrees **clockwise from north**
  */
 /proc/get_centered_entity_tile_angle(atom/A, atom/B)
 	var/dy = B.x * WORLD_ICON_SIZE - A.x * WORLD_ICON_SIZE

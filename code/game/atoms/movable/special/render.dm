@@ -8,6 +8,10 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	vis_flags = NONE
 
+/atom/movable/render/Initialize(mapload)
+	atom_flags |= ATOM_INITIALIZED
+	return INITIALIZE_HINT_NORMAL
+
 /**
  * For particles
  */
