@@ -75,16 +75,14 @@
 		for(var/atom/A in get_turf(hit_atom))
 			src.reagents.touch(A)
 		src.icon_state = "burst"
-		spawn(5)
-			if(src)
-				qdel(src)
-	return
+		QDEL_IN(src, 5)
 
-/obj/item/toy/balloon/update_icon()
-	if(src.reagents.total_volume >= 1)
+/obj/item/toy/balloon/update_icon_state()
+	if(reagents.total_volume)
 		icon_state = "waterballoon"
 	else
 		icon_state = "waterballoon-e"
+	return ..()
 
 /obj/item/toy/syndicateballoon
 	name = "criminal balloon"

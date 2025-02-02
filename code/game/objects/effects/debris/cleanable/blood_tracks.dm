@@ -125,6 +125,7 @@
 
 /obj/effect/debris/cleanable/blood/tracks/update_icon()
 	cut_overlays()
+	. = ..()
 	color = "#FFFFFF"
 	var/truedir=0
 

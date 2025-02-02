@@ -54,6 +54,7 @@
 	update_icon()
 
 /obj/item/material/twohanded/update_icon()
+	. = ..()
 	icon_state = "[base_icon][wielded]"
 	item_state = icon_state
 
