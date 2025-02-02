@@ -11,6 +11,6 @@
 //* no reason to need it for global loading, and global migrations
 //* should be low level anyways
 #define CHARACTER_VERSION_MIN -1
-#define CHARACTER_VERSION_MAX 5
+#define CHARACTER_VERSION_MAX 6
 /// what nulled version fields are considered; this basically makes them go through all migrations
 #define CHARACTER_VERSION_LEGACY 0

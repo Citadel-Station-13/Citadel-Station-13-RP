@@ -244,6 +244,133 @@
 				catlist -= key
 				catlist["/datum/loadout_tweak/color"] = val
 		WRITE_FILE(S["all_underwear_metadata"], all_underwear_metadata)
+	if(current_version < 6)
+		var/datum/character_appearance/creating_appearance
+		#warn create character appearance
+
+		LAZYINITLIST(creating_appearance.sprite_accessories)
+		var/migrate_r_hair
+		var/migrate_g_hair
+		var/migrate_b_hair
+		var/migrate_hair_id
+
+		var/migrate_r_hair_gradient
+		var/migrate_g_hair_gradient
+		var/migrate_b_hair_gradient
+		var/migrate_hair_gradient_style
+
+		var/migrate_r_facial_hair
+		var/migrate_g_facial_hair
+		var/migrate_b_facial_hair
+		var/migrate_facial_hair_id
+
+		var/migrate_r_ears
+		var/migrate_g_ears
+		var/migrate_b_ears
+		var/migrate_r_2_ears
+		var/migrate_g_2_ears
+		var/migrate_b_2_ears
+		var/migrate_r_3_ears
+		var/migrate_g_3_ears
+		var/mgirate_b_3_ears
+		var/migrate_ears_id
+
+		var/migrate_r_horns
+		var/migrate_g_horns
+		var/migrate_b_horns
+		var/migrate_r_2_horns
+		var/migrate_g_2_horns
+		var/migrate_b_2_horns
+		var/migrate_r_3_horns
+		var/migrate_g_3_horns
+		var/mgirate_b_3_horns
+		var/migrate_horns_id
+
+		var/migrate_r_tail
+		var/migrate_g_tail
+		var/migrate_b_tail
+		var/migrate_r_2_tail
+		var/migrate_g_2_tail
+		var/migrate_b_2_tail
+		var/migrate_r_3_tail
+		var/migrate_g_3_tail
+		var/mgirate_b_3_tail
+		var/migrate_tail_id
+
+		var/migrate_r_wings
+		var/migrate_g_wings
+		var/migrate_b_wings
+		var/migrate_r_2_wings
+		var/migrate_g_2_wings
+		var/migrate_b_2_wings
+		var/migrate_r_3_wings
+		var/migrate_g_3_wings
+		var/mgirate_b_3_wings
+		var/migrate_wings_id
+
+		var/migrate_r_wing_gradient
+		var/migrate_g_wing_gradient
+		var/migrate_b_wing_gradient
+		var/migrate_wing_gradient_style
+
+		S["hair_red"]			>> migrate_r_hair
+		S["hair_green"]			>> migrate_g_hair
+		S["hair_blue"]			>> migrate_b_hair
+		S["grad_red"]			>> migrate_r_hair_gradient
+		S["grad_green"]			>> migrate_g_hair_gradient
+		S["grad_blue"]			>> migrate_b_hair_gradient
+		S["facial_red"]			>> migrate_r_facial_hair
+		S["facial_green"]		>> migrate_g_facial_hair
+		S["facial_blue"]		>> migrate_b_facial_hair
+		S["hair_style"]			>> migrate_hair_id
+		S["facial_style"]		>> migrate_facial_hair_id
+		S["grad_style_name"]	>> migrate_hair_gradient_style
+		S["grad_wingstyle_name"]>> migrate_wing_gradient_style
+		S["ear_style_id"]	>> migrate_ears_id
+		S["r_ears"]			>> migrate_r_ears
+		S["g_ears"]			>> migrate_g_ears
+		S["b_ears"]			>> migrate_b_ears
+		S["r_ears2"]		>> migrate_r_2_ears
+		S["g_ears2"]		>> migrate_g_2_ears
+		S["b_ears2"]		>> migrate_b_2_ears
+		S["r_ears3"]		>> migrate_r_3_ears
+		S["g_ears3"]		>> migrate_g_3_ears
+		S["b_ears3"]		>> migrate_b_3_ears
+		S["horn_style_id"]		>> migrate_horns_id
+		S["r_horn"]			>> migrate_r_horn
+		S["g_horn"]			>> migrate_g_horn
+		S["b_horn"]			>> migrate_b_horn
+		S["r_horn2"]		>> migrate_r_2_horns
+		S["g_horn2"]		>> migrate_g_2_horns
+		S["b_horn2"]		>> migrate_b_2_horns
+		S["r_horn3"]		>> migrate_r_3_horns
+		S["g_horn3"]		>> migrate_g_3_horns
+		S["b_horn3"]		>> migrate_b_3_horns
+		S["tail_style_id"]		>> migrate_tail_id
+		S["r_tail"]			>> migrate_r_tail
+		S["g_tail"]			>> migrate_g_tail
+		S["b_tail"]			>> migrate_b_tail
+		S["r_tail2"]		>> migrate_r_2_tail
+		S["g_tail2"]		>> migrate_g_2_tail
+		S["b_tail2"]		>> migrate_b_2_tail
+		S["r_tail3"]		>> migrate_r_3_tail
+		S["g_tail3"]		>> migrate_g_3_tail
+		S["b_tail3"]		>> migrate_b_3_tail
+		S["wing_style_id"]		>> migrate_wings_id
+		S["r_wing"]			>> migrate_r_wings
+		S["g_wing"]			>> migrate_g_wings
+		S["b_wing"]			>> migrate_b_wings
+		S["r_wing2"]		>> migrate_r_2_wings
+		S["g_wing2"]		>> migrate_g_2_wings
+		S["b_wing2"]		>> migrate_b_2_wings
+		S["r_wing3"]		>> migrate_r_3_wings
+		S["g_wing3"]		>> migrate_g_3_wings
+		S["b_wing3"]		>> migrate_b_3_wings
+		S["r_gradwing"]		>> migrate_r_wing_gradient
+		S["g_gradwing"]		>> migrate_g_wing_gradient
+		S["b_gradwing"]		>> migrate_b_wing_gradient
+
+		#warn kick all of this into the new appearance datum
 
 /**
  * clientless migration of savefiles

@@ -51,24 +51,6 @@
 	/// current head overlay pixel y offset
 	var/head_spriteacc_offset = 0
 
-	//* Hair colour and style
-	var/h_style = "Bald"
-	var/r_hair = 0
-	var/g_hair = 0
-	var/b_hair = 0
-
-	//* Hair gradients
-	var/grad_style = "None"
-	var/r_grad = 0
-	var/g_grad = 0
-	var/b_grad = 0
-
-	//* Facial hair colour and style
-	var/f_style = "Shaved"
-	var/r_facial = 0
-	var/g_facial = 0
-	var/b_facial = 0
-
 	//* Eye colour
 	var/r_eyes = 0
 	var/g_eyes = 0

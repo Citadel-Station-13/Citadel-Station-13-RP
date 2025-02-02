@@ -3,6 +3,9 @@
 //? ABSTRACT
 #define CHARACTER_DATA_VERSION "_VERSION_"
 
+//? Character
+#define CHARACTER_DATA_APPEARANCE "appearance"
+
 //? Backgrounds
 #define CHARACTER_DATA_ORIGIN "lore_origin"
 #define CHARACTER_DATA_CITIZENSHIP "lore_citizenship"
