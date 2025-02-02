@@ -9,6 +9,7 @@
 	vis_flags = NONE
 
 /atom/movable/render/Initialize(mapload)
+	SHOULD_CALL_PARENT(FALSE)
 	atom_flags |= ATOM_INITIALIZED
 	return INITIALIZE_HINT_NORMAL
 

@@ -174,7 +174,7 @@
 						if(!resultant_px)
 							resultant_px = WORLD_ICON_SIZE * 0.5
 						else
-							resultant_py -= WORLD_ICON_SIZE * 0.5
+							resultant_px -= WORLD_ICON_SIZE * 0.5
 						var/resultant_py = resultant_y % WORLD_ICON_SIZE
 						if(!resultant_py)
 							resultant_py = WORLD_ICON_SIZE * 0.5
@@ -268,14 +268,17 @@
 /atom/movable/render/projectile_tracer/Initialize(mapload, icon/use_icon, use_icon_state, angle, px, py, color, emissive)
 	src.icon = use_icon
 	src.icon_state = use_icon_state
-	var/matrix/turn_to = matrix()
+	var/matrix/turn_to = transform
 	turn_to.Turn(angle)
 	src.transform = turn_to
 	src.pixel_x = px
 	src.pixel_y = py
 	src.color = color
 	if(emissive)
-		#warn impl
+		var/image/emissive_image = new /image
+		emissive_image.appearance = appearance
+		emissive_image.plane = EMISSIVE_PLANE
+		emissive_image.color = GLOB.emissive_color
 	return ..()
 
 /atom/movable/render/projectile_tracer/impact
@@ -286,6 +289,8 @@
 
 /atom/movable/render/projectile_tracer/line/Initialize(mapload, icon/use_icon, use_icon_state, angle, px, py, color, emissive, pixel_length)
 	. = ..()
-	#warn impl
+	var/matrix/extending = transform
+	extending.Scale(pixel_length / WORLD_ICON_SIZE)
+	src.transform = extending
 
 /atom/movable/render/projectile_tracer/segment
