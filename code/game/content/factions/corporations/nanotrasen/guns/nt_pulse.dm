@@ -65,7 +65,7 @@
 	mob_renderer = /datum/gun_mob_renderer/states{
 		use_firemode = TRUE;
 		count = 4;
-		empty_state = TRUE;
+		use_empty = TRUE;
 	}
 
 //* Carbine *//
@@ -112,7 +112,7 @@
 	mob_renderer = /datum/gun_mob_renderer/states{
 		use_firemode = TRUE;
 		count = 4;
-		empty_state = TRUE;
+		use_empty = TRUE;
 	}
 
 //* Projectiles *//

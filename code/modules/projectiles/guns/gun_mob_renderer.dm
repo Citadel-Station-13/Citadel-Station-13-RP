@@ -37,20 +37,20 @@
  * renders via inhand_state or worn_state if [render_slots] is on
  *
  * when not empty, adds -[n] for the state
- * when empty, adds -empty for the state, but only if empty_state is on.
+ * when empty, adds -empty for the state, but only if use_empty is on.
  */
 /datum/gun_mob_renderer/states
 	/// how many states there are
 	var/count = 0
 	/// add "-empty" when empty; otherwise, we don't add anything at all
-	var/empty_state = FALSE
+	var/use_empty = FALSE
 	/// add "-[firemode]" before the "-[n]" is added to the state
 	var/use_firemode = FALSE
 
 /datum/gun_mob_renderer/states/render(obj/item/gun/gun, base_worn_state, ammo_ratio, firemode_key, firemode_color)
 	// todo: do we really need to always return TRUE and force an update?
 	if(!ammo_ratio)
-		if(empty_state)
+		if(use_empty)
 			gun.inhand_state = "[base_worn_state][firemode_key && use_firemode && "-[firemode_key]"]-empty"
 		else
 			gun.inhand_state = base_worn_state
@@ -63,7 +63,7 @@
 	return TRUE
 
 /datum/gun_mob_renderer/states/dedupe_key()
-	return "states-[render_slots]-[use_firemode]-[count]-[empty_state]"
+	return "states-[render_slots]-[use_firemode]-[count]-[use_empty]"
 
 
 /**
