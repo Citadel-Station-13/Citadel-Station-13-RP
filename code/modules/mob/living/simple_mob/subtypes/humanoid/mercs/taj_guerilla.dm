@@ -70,6 +70,7 @@
 	icon_state = "nka"
 	icon_living = "nka"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/taj_guerilla/bandits)
+	iff_factions = MOB_IFF_FACTION_TAJARA_NKA
 
 	armor_type = list(/datum/armor/general/medieval/light)
 
@@ -189,6 +190,7 @@
 	icon_state = "dra"
 	icon_living = "dra"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/taj_guerilla/guerillas)
+	iff_factions = MOB_IFF_FACTION_TAJARA_DRA
 
 	armor_type = list(/datum/armor/station/combat)
 
@@ -268,6 +270,7 @@
 	icon_state = "pra"
 	icon_living = "pra"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/taj_guerilla/insurgents)
+	iff_factions = MOB_IFF_FACTION_TAJARA_PRA
 
 	armor_type = list(/datum/armor/station/ballistic)
 
@@ -344,3 +347,101 @@
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged
 
 	loot_list = list(/obj/item/gun/ballistic/automatic/k25/taj = 100)
+
+//////////////////////
+// Neutral Variants //
+//////////////////////
+
+//These guys do not attack crew and non-hostile. They have different names to match. Safe to save you shouldn't shoot these guys
+
+/mob/living/simple_mob/humanoid/taj_guerilla/bandit/rifle/neutral
+	name = "New Kingdom Rifleman"
+	desc = "A rifleman from the New Kingdom of Adhomai. Hard to believe they still send solider into battle with such dated equipment."
+	catalogue_data = list()
+	iff_factions = MOB_IFF_FACTION_NEUTRAL
+
+/mob/living/simple_mob/humanoid/taj_guerilla/bandit/assault_rifle/neutral
+	name = "New Kingdom Soldier"
+	desc = "A soldier from the New Kingdom of Adhomai. Seems even a backward kingdom can give their men good rifles."
+	catalogue_data = list()
+	iff_factions = MOB_IFF_FACTION_NEUTRAL
+
+/mob/living/simple_mob/humanoid/taj_guerilla/bandit/sword/revolver/neutral
+	name = "New Kingdom Shock Trooper"
+	desc = "A soldier from the New Kingdom of Adhomai with a sword and rifle. Sometimes it can helpful to bring swords to gunfights."
+	catalogue_data = list()
+	iff_factions = MOB_IFF_FACTION_NEUTRAL
+
+/mob/living/simple_mob/humanoid/taj_guerilla/guerilla/uzi/neutral
+	name = "Tajara Mercenary Gunman"
+	desc = "A Tajara merc with a Uzi. He seems a lot cooler headed then human mercs."
+	catalogue_data = list()
+	iff_factions = MOB_IFF_FACTION_NEUTRAL
+
+/mob/living/simple_mob/humanoid/taj_guerilla/guerilla/sniper/neutral
+	name = "Tajara Mercenary Sniper"
+	desc = "A Tajara merc with a sniper. Judging by the lack of holes in you, he's chill with you."
+	catalogue_data = list()
+	iff_factions = MOB_IFF_FACTION_NEUTRAL
+
+/mob/living/simple_mob/humanoid/taj_guerilla/guerilla/fal/neutral
+	name = "Tajara Mercenary Commando"
+	desc = "A Tajara merc with an assault rifle. He seems to be overall chill person."
+	catalogue_data = list()
+	iff_factions = MOB_IFF_FACTION_NEUTRAL
+
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/dual_pistols/neutral
+	name = "PVSM Gunslinger"
+	desc = "A member of the People's Republic of Adhomai Volunteer Space Militia, armed with two pistols."
+	catalogue_data = list()
+	iff_factions = MOB_IFF_FACTION_NEUTRAL
+
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/automat/neutral
+	name = "PVSM Gunner"
+	desc = "A member of the People's Republic of Adhomai Volunteer Space Militia, armed with a heavy automat."
+	catalogue_data = list()
+	iff_factions = MOB_IFF_FACTION_NEUTRAL
+
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/bullpup/neutral
+	name = "PVSM Infatryman"
+	desc = "A member of the People's Republic of Adhomai Volunteer Space Militia, armed with fancy bullpup."
+	catalogue_data = list()
+	iff_factions = MOB_IFF_FACTION_NEUTRAL
+
+////////////////////////
+// Mercenary Variants //
+////////////////////////
+
+//Are Allied with Mercs and eachother for varied engagements
+/mob/living/simple_mob/humanoid/taj_guerilla/bandit/sword/merc_faction
+	iff_factions = MOB_IFF_FACTION_MERCENARY
+
+/mob/living/simple_mob/humanoid/taj_guerilla/bandit/sword/revolver/merc_faction
+	iff_factions = MOB_IFF_FACTION_MERCENARY
+
+/mob/living/simple_mob/humanoid/taj_guerilla/bandit/rifle/merc_faction
+	iff_factions = MOB_IFF_FACTION_MERCENARY
+
+/mob/living/simple_mob/humanoid/taj_guerilla/bandit/assault_rifle/merc_faction
+	iff_factions = MOB_IFF_FACTION_MERCENARY
+
+/mob/living/simple_mob/humanoid/taj_guerilla/guerilla/uzi/merc_faction
+	iff_factions = MOB_IFF_FACTION_MERCENARY
+
+/mob/living/simple_mob/humanoid/taj_guerilla/guerilla/sniper/merc_faction
+	iff_factions = MOB_IFF_FACTION_MERCENARY
+
+/mob/living/simple_mob/humanoid/taj_guerilla/guerilla/fal/merc_faction
+	iff_factions = MOB_IFF_FACTION_MERCENARY
+
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/sawn_rifle/merc_faction
+	iff_factions = MOB_IFF_FACTION_MERCENARY
+
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/dual_pistols/merc_faction
+	iff_factions = MOB_IFF_FACTION_MERCENARY
+
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/automat/merc_faction
+	iff_factions = MOB_IFF_FACTION_MERCENARY
+
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/bullpup/merc_faction
+	iff_factions = MOB_IFF_FACTION_MERCENARY
