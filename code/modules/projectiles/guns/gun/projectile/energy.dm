@@ -273,7 +273,7 @@
 /datum/action/item_action/modular_energy_particle_array_safety/pre_render_hook()
 	. = ..()
 	var/image/item_overlay = button_additional_overlay
-	var/image/symbol_overlay = image('icons/screen/actions/generic-overlays', "lock")
+	var/image/symbol_overlay = image('icons/screen/actions/generic-overlays.dmi', "lock")
 	symbol_overlay.color = "#ccaa00"
 	item_overlay.add_overlay(symbol_overlay)
 

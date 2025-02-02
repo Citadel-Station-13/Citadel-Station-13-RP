@@ -11,7 +11,6 @@
 	// handle legacy systems
 	var/held_twohanded = TRUE
 	if(ismob(cycle.firing_atom))
-		var/mob/mob_firer = cycle.firing_atom
 		held_twohanded = item_flags & ITEM_MULTIHAND_WIELDED
 	//! END
 

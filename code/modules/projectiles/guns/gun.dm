@@ -784,7 +784,7 @@
 /datum/action/item_action/gun_firemode_swap/pre_render_hook()
 	. = ..()
 	var/image/item_overlay = button_additional_overlay
-	var/image/symbol_overlay = image('icons/screen/actions/generic-overlays', "swap")
+	var/image/symbol_overlay = image('icons/screen/actions/generic-overlays.dmi', "swap")
 	symbol_overlay.color = "#00ff00"
 	item_overlay.add_overlay(symbol_overlay)
 	target_type = /obj/item/gun/projectile/energy

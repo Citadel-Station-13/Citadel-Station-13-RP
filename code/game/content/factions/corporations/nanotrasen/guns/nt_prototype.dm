@@ -28,7 +28,7 @@
 /obj/item/gun/projectile/energy/nt_prototype/sidearm
 	name = "energy sidearm"
 	desc = "A versatile energy sidearm wielded by corporate expeditionary teams."
-	icon = 'icons/content/faction/corporations/nanotrasen/items/guns/energy/sidearm.dmi'
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/energy/sidearm.dmi'
 	icon_state = "sidearm"
 
 	w_class = WEIGHT_CLASS_NORMAL
@@ -72,7 +72,7 @@
 /obj/item/gun/projectile/energy/nt_prototype/carbine
 	name = "energy carbine"
 	desc = "A versatile energy carbine wielded by corporate expeditionary teams."
-	icon = 'icons/content/faction/corporations/nanotrasen/items/guns/energy/carbine.dmi'
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/energy/carbine.dmi'
 	icon_state = "carbine"
 
 	w_class = WEIGHT_CLASS_NORMAL
@@ -117,7 +117,7 @@
 /obj/item/gun/projectile/energy/nt_prototype/rifle
 	name = "energy rifle"
 	desc = "A versatile energy rifle wielded by corporate expeditionary teams."
-	icon = 'icons/content/faction/corporations/nanotrasen/items/guns/energy/rifle.dmi'
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/energy/rifle.dmi'
 	icon_state = "rifle"
 
 	w_class = WEIGHT_CLASS_BULKY

@@ -359,6 +359,7 @@
 	else
 		stun_calculation = shock_damage
 	var/list/shock_return = M.electrocute(0, shock_damage * siemens_coeff, stun_calculation, ELECTROCUTE_ACT_FLAG_IGNORE_ARMOR, null, source)
+	pass(shock_return)
 	// // 10kw per hp
 	// var/drained_energy = drained_hp * 10000
 	// if (source_area)

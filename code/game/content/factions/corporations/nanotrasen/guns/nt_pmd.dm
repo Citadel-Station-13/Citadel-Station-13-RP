@@ -52,7 +52,7 @@
 
 /obj/item/gun/projectile/energy/nt_pmd/service_revolver
 	name = "service weapon"
-	icon = 'icons/content/factions/nanotrasen/items/guns/nt_pmd/service_revolver.dmi'
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/nt_pmd/service_revolver.dmi'
 	icon_state = "service"
 	base_icon_state = "service"
 	desc = "An anomalous weapon, long kept secure. It has recently been acquired by Nanotrasen's Paracausal Monitoring Division. How did it get here?"

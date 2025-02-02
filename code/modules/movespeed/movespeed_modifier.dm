@@ -276,7 +276,6 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 		if((M.movespeed_modifier_flags & MOVESPEED_MODIFIER_REQUIRES_GRAVITY) && !in_gravity)
 			continue
 		//! END
-		var/amt = M.hyperbolic_slowdown
 		. = M.apply_multiplicative(., src)
 	cached_hyperbolic_slowdown = min(., 10 / MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND)
 	if(!client)

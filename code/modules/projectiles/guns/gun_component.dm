@@ -44,7 +44,6 @@
 	var/list/summarized = summarize_bullet_points()
 	if(!length(summarized))
 		return
-	var/list/transformed = list()
 	for(var/string in summarized)
 		. += "<li>[string]</li>"
 
