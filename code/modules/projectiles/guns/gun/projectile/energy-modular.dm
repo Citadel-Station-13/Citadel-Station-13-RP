@@ -75,7 +75,17 @@
 		)
 
 /obj/item/gun/projectile/energy/proc/user_swap_particle_safety(datum/event_args/actor/actor)
-	#warn impl
+	modular_particle_array_safety = !modular_particle_array_safety
+	if(modular_particle_array_safety)
+		actor.chat_feedback(
+			SPAN_NOTICE("You enable [src]'s lethal-mode safety."),
+			target = src,
+		)
+	else
+		actor.chat_feedback(
+			SPAN_WARNING("You disable [src]'s lethal-mode safety."),
+			target = src,
+		)
 
 	if(modular_particle_array_active.considered_lethal)
 		user_swap_particle_array(actor)

@@ -21,7 +21,6 @@
 	var/render_key
 	/// firemode color, used if we're doing colored `-firemode` sprite or colored `-ammo` sprite
 	var/render_color
-	#warn impl
 
 	//* UI *//
 	/// appearance used for radial

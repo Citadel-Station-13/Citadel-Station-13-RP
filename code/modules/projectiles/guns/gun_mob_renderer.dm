@@ -5,8 +5,6 @@
 /**
  * gun render system
  *
- * if use_firemode is set, the firemode append will be appended before our default appends.
- *
  * todo: better documentation
  */
 /datum/gun_mob_renderer
@@ -18,7 +16,7 @@
  *
  * @return TRUE if gun needs to update mob state.
  */
-/datum/gun_mob_renderer/proc/render(obj/item/gun/gun, ammo_ratio, firemode_key, mode_color)
+/datum/gun_mob_renderer/proc/render(obj/item/gun/gun, base_worn_state, ammo_ratio, firemode_key, mode_color)
 	CRASH("attempted to render with abstract gun renderer")
 
 /**
@@ -29,7 +27,6 @@
  */
 /datum/gun_mob_renderer/proc/render_overlays(mutable_appearance/rendering_onto, bodytype, datum/inventory_slot/slot, hand_index)
 	return
-	#warn this
 
 /**
  * our de-duping key
@@ -48,39 +45,38 @@
 	var/count = 0
 	/// add "-empty" when empty; otherwise, we don't add anything at all
 	var/empty_state = FALSE
-	/// firemode state is taken into account
+	/// add "-[firemode]" before the "-[n]" is added to the state
 	var/use_firemode = FALSE
 
-/datum/gun_mob_renderer/states/render(obj/item/gun/gun, ammo_ratio, firemode_key, mode_color)
+/datum/gun_mob_renderer/states/render(obj/item/gun/gun, base_worn_state, ammo_ratio, firemode_key, mode_color)
 	// todo: do we really need to always return TRUE and force an update?
-	var/base_icon_state = gun.base_mob_state || gun.base_icon_state || initial(gun.icon_state)
 	if(!ammo_ratio)
 		if(empty_state)
-			gun.inhand_state = "[base_icon_state][firemode_key && use_firemode && "-[firemode_key]"]-empty"
+			gun.inhand_state = "[base_worn_state][firemode_key && use_firemode && "-[firemode_key]"]-empty"
 		else
-			gun.inhand_state = base_icon_state
+			gun.inhand_state = base_worn_state
 		if(render_slots)
 			gun.worn_state = gun.inhand_state
 		return
-	gun.inhand_state = "[base_icon_state][use_firemode && firemode_key && "-[firemode_key]"]-[ceil(count * ammo_ratio)]"
+	gun.inhand_state = "[base_worn_state][use_firemode && firemode_key && "-[firemode_key]"]-[ceil(count * ammo_ratio)]"
 	if(render_slots)
 		gun.worn_state = gun.inhand_state
 	return TRUE
 
 /datum/gun_mob_renderer/states/dedupe_key()
-	return "states-[use_firemode]-[count]-[empty_state]"
+	return "states-[render_slots]-[use_firemode]-[count]-[empty_state]"
 
 
 /**
  * uses either 1 to n or only the nth overlay to render on-mob
  *
  * if use_firemode is set, the firemode append will be appended before our default appends.
- * if use_firemode is set, the firemode overlay will be overlaid independently from overlays
+ * if independent_firemode is set, the firemode overlay will be overlaid independently from overlays
  *
  * overlay state is "[gun.base_worn_state]-[n]"
  * empty state append is -empty
  *
- * if use_single_overlay is set, we only render the -n'th state,
+ * if `use_single` is set, we only render the -n'th state,
  * otherwise we render -1 to -n, or -empty if empty (and use empty state is on)
  *
  * * firemode is not taken into account for empty state.
@@ -94,15 +90,21 @@
 	var/use_empty
 	/// only use the n-th overlay, instead of adding 1 to n
 	var/use_single
-	/// additionally, add an "-[firemode]" state for our firemode's render_key
-	var/use_firemode
+	/// add "-[firemode]" before the "-[n]" for the overlays
+	var/use_firemode = FALSE
 	/// use gun requested render color on ammo bar
 	var/use_color
+	/// additionally, add an "-firemode" overlay that's colored by the firemode's render color
+	var/independent_colored_firemode
+	/// additionally, add an "-[firemode]" overlay for our firemode's render_key
+	/// * overrides [independent_colored_firemode]
+	var/independent_firemode
 
-/datum/gun_mob_renderer/overlays/render(obj/item/gun/gun, ammo_ratio, firemode_key, mode_color)
-
+/datum/gun_mob_renderer/overlays/render(obj/item/gun/gun, base_worn_state, ammo_ratio, firemode_key, mode_color)
+	return TRUE
 
 /datum/gun_mob_renderer/overlays/render_overlays(mutable_appearance/rendering_onto, bodytype, datum/inventory_slot/slot, hand_index)
 
+
 /datum/gun_mob_renderer/overlays/dedupe_key()
-	return "states-[use_firemode]-[count]-[use_empty]-[use_single]-[use_color]"
+	return "states-[render_slots]-[independent_firemode ? 1 : (independent_colored_firemode ? 2 : 0)]-[count]-[use_firemode]-[use_empty]-[use_single]-[use_color]"

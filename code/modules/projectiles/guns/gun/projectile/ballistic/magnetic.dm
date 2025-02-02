@@ -13,10 +13,8 @@
 		GUN_COMPONENT_POWER_UNIT = 1,
 	)
 
-	/// base power draw per shot
-	///
-	/// * in kilojoules
-	var/base_shot_power = /obj/item/cell/device/weapon::maxcharge * (1 / 24)
+	/// base power draw per shot in cell units
+	var/base_charge_cost = /obj/item/cell/device/weapon::maxcharge * (1 / 24)
 
 	/// Render battery state.
 	///
@@ -24,7 +22,7 @@
 	var/render_battery_overlay = MAGNETIC_RENDER_BATTERY_NEVER
 
 /obj/item/gun/projectile/ballistic/magnetic/prime_casing(datum/gun_firing_cycle/cycle, obj/item/ammo_casing/casing, casing_primer)
-	var/shot_power_draw = base_shot_power * casing.effective_mass_multiplier
+	var/shot_power_draw = base_charge_cost * casing.effective_mass_multiplier
 	if(!obj_cell_slot.check_charge(shot_power_draw))
 		casing_primer = CASING_PRIMER_CHEMICAL
 	. = ..()

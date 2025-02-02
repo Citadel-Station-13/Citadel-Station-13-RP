@@ -242,20 +242,10 @@
 	/// * ignores [mob_renderer]
 	/// * ignores [render_additional_exclusive] / [render_additional_worn]
 	/// * ordering: [base]-wield-[additional]-[...rest]
-	#warn impl
-	var/render_mob_wielded = FALSE
-	/// state to add as an append
-	///
-	/// * segment and overlay renders add [base_icon_state]-[append]
-	/// * state renders set state to [base_icon_state]-[wield?]-[append]-[...rest]
-	#warn erase?
-	var/render_additional_state
-	/// only render [render_additional_state]
-	#warn deal with this
-	var/render_additional_exclusive = FALSE
-	/// [render_additional_state] and [render_additional_exclusive] apply to worn sprites
-	//  todo: impl
-	var/render_additional_worn = FALSE
+	var/render_wielded = FALSE
+	/// skip normal rendering, just render as base icon/worn states
+	/// * useful if a subtype wants to handle itself
+	var/render_skip = FALSE
 
 	/// use the old render system, if item_renderer and mob_renderer are not set
 	//  todo: remove
@@ -750,18 +740,29 @@
 	if(!item_renderer && !mob_renderer && render_use_legacy_by_default)
 		return ..()
 	cut_overlays()
-	var/ratio_left = get_ammo_ratio()
+	. = ..()
+
+	var/using_base_icon_state = base_icon_state || initial(icon_state)
+	var/using_base_worn_state = base_mob_state || using_base_icon_state || initial(worn_state)
+	var/using_ratio = get_ammo_ratio()
 	var/datum/firemode/using_firemode = legacy_get_firemode()
-	item_renderer?.render(src, ratio_left, using_firemode?.render_key)
-	var/needs_worn_update = mob_renderer?.render(src, ratio_left, using_firemode?.render_key)
-	// todo: render_mob_wielded
+	var/using_color = get_firemode_color()
+
+	item_renderer?.render(src, using_base_icon_state, using_ratio, using_firemode?.render_key, using_color)
+	var/needs_worn_update = mob_renderer?.render(src, using_base_worn_state, using_ratio, using_firemode?.render_key, using_color)
+
 	if(needs_worn_update)
 		update_worn_icon()
-	return ..()
 
 /obj/item/gun/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot/slot_meta, icon_used)
-	. = ..()
-	#warn impl
+	mob_renderer?.render_overlays(MA, bodytype, slot_meta, inhands)
+	return ..()
+
+/**
+ * Gets the color our firemode renders as during rendering.
+ */
+/obj/item/gun/proc/get_firemode_color()
+	return legacy_get_firemode()?.render_color
 
 //* Action Datums *//
 

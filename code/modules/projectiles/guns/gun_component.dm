@@ -107,11 +107,11 @@
 
 //* Gun API - Actions *//
 
-/obj/item/gun_component/proc/use_power(joules)
-	return installed.modular_use_power(src, joules)
+/obj/item/gun_component/proc/use_power(energy)
+	return installed.modular_use_power(src, energy)
 
-/obj/item/gun_component/proc/use_checked_power(joules, reserve)
-	return installed.modular_use_checked_power(src, joules, reserve)
+/obj/item/gun_component/proc/use_checked_power(energy, reserve)
+	return installed.modular_use_checked_power(src, energy, reserve)
 
 //* Information *//
 

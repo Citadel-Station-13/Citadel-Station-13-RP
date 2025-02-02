@@ -54,7 +54,7 @@
 		use_single = TRUE;
 		use_color = TRUE;
 	}
-	render_mob_wielded = TRUE
+	render_wielded = TRUE
 
 	modular_component_slots = list(
 		GUN_COMPONENT_ACTIVE_COOLER = 1,
@@ -99,7 +99,7 @@
 		use_single = TRUE;
 		use_color = TRUE;
 	}
-	render_mob_wielded = TRUE
+	render_wielded = TRUE
 
 	modular_component_slots = list(
 		GUN_COMPONENT_ACTIVE_COOLER = 1,
@@ -144,7 +144,7 @@
 		use_single = TRUE;
 		use_color = TRUE;
 	}
-	render_mob_wielded = TRUE
+	render_wielded = TRUE
 
 	modular_component_slots = list(
 		GUN_COMPONENT_ACTIVE_COOLER = 1,

@@ -12,7 +12,7 @@
 /**
  * Writes necessary states to gun.
  */
-/datum/gun_item_renderer/proc/render(obj/item/gun/gun, ammo_ratio, firemode_key, mode_color)
+/datum/gun_item_renderer/proc/render(obj/item/gun/gun, ammo_ratio, firemode_key, firemode_color)
 	CRASH("attempted to render with abstract gun renderer")
 
 /**
@@ -50,32 +50,43 @@
 	var/use_firemode
 	/// use gun requested render color on ammo bar
 	var/use_color
-	/// additionally, add an "-firemode" that's colored by the firemode's render color
+	/// additionally, add an "-firemode" overlay that's colored by the firemode's render color
 	var/independent_colored_firemode
-	/// additionally, add an "-[firemode]" state for our firemode's render_key
+	/// additionally, add an "-[firemode]" overlay for our firemode's render_key
 	/// * overrides [independent_colored_firemode]
 	var/independent_firemode
 
-/datum/gun_item_renderer/segments/render(obj/item/gun/gun, ammo_ratio, firemode_key, mode_color)
-	var/base_icon_state = gun.base_icon_state || initial(gun.icon_state)
-	if(gun.render_additional_state)
-		gun.add_overlay("[base_icon_state]-[gun.render_additional_state]")
-	if(gun.render_additional_exclusive)
+/datum/gun_item_renderer/segments/render(obj/item/gun/gun, base_icon_state, ammo_ratio, firemode_key, firemode_color)
+	if(gun.render_skip)
+		gun.icon_state = base_icon_state
 		return
-	if(independent_firemode && firemode_key)
-		gun.add_overlay("[base_icon_state]-[firemode_key]")
+	var/list/to_add = list()
+	if(independent_firemode)
+		if(firemode_key)
+			to_add += "[base_icon_state]-[firemode_key]"
+	else if(independent_colored_firemode)
+		var/image/colored_firemode_overlay = new /image
+		colored_firemode_overlay.icon_state = "[base_icon_state]-firemode"
+		colored_firemode_overlay.color = firemode_color
+		to_add += colored_firemode_overlay
 	if(!ammo_ratio)
 		if(use_empty)
-			gun.add_overlay("[base_icon_state]-empty")
-		return
-	var/x = initial_x
-	var/y = initial_y
-	var/append = "[use_firemode && firemode_key ? "-[firemode_key]" : ""]"
-	for(var/i in 1 to ceil(count * ammo_ratio))
-		var/image/creating = image(gun.icon, "[base_icon_state][append]-ammo", null, null, x, y)
-		x += offset_x
-		y += offset_y
-		gun.add_overlay(creating)
+			to_add += "[base_icon_state]-empty"
+	else
+		var/x = initial_x
+		var/y = initial_y
+		var/ammo_state = "[base_icon_state][use_firemode ? (firemode_key ? firemode_key : "") : ""]-ammo"
+		for(var/i in 1 to ceil(count * ammo_ratio))
+			var/image/segment = new /image
+			segment.icon_state = ammo_state
+			segment.pixel_x = x
+			segment.pixel_y = y
+			x += offset_x
+			y += offset_y
+			if(use_color)
+				segment.color = firemode_color
+			to_add += segment
+	gun.add_overlay(to_add)
 
 /datum/gun_item_renderer/segments/dedupe_key()
 	return "segments-[use_firemode]-[count]-[initial_x]-[initial_y]-[offset_x]-[offset_y]-[use_empty]-[independent_firemode ? 1 : (independent_colored_firemode ? 2 : 0)]-[use_color]"
@@ -114,24 +125,45 @@
 	/// * overrides [independent_colored_firemode]
 	var/independent_firemode
 
-/datum/gun_item_renderer/overlays/render(obj/item/gun/gun, ammo_ratio, firemode_key, mode_color)
-	var/base_icon_state = gun.base_icon_state || initial(gun.icon_state)
-	if(gun.render_additional_state)
-		gun.add_overlay("[base_icon_state]-[gun.render_additional_state]")
-	if(gun.render_additional_exclusive)
+/datum/gun_item_renderer/overlays/render(obj/item/gun/gun, base_icon_state, ammo_ratio, firemode_key, firemode_color)
+	if(gun.render_skip)
+		gun.icon_state = base_icon_state
 		return
-	if(independent_firemode && firemode_key)
-		gun.add_overlay("[base_icon_state]-[firemode_key]")
+	var/list/to_add = list()
+	if(independent_firemode)
+		if(firemode_key)
+			to_add += "[base_icon_state]-[firemode_key]"
+	else if(independent_colored_firemode)
+		var/image/colored_firemode_overlay = new /image
+		colored_firemode_overlay.icon_state = "[base_icon_state]-firemode"
+		colored_firemode_overlay.color = firemode_color
+		to_add += colored_firemode_overlay
 	if(!ammo_ratio)
 		if(use_empty)
-			gun.add_overlay("[base_icon_state]-empty")
-		return
-	var/append = "[use_firemode && firemode_key && "-[firemode_key]"]"
-	if(use_single)
-		gun.add_overlay("[base_icon_state]-[append]-[ceil(count * ammo_ratio)]")
+			to_add += "[base_icon_state]-empty"
 	else
-		for(var/i in 1 to ceil(count * ammo_ratio))
-			gun.add_overlay("[base_icon_state]-[append]-[i]")
+		if(use_single)
+			var/single_state = "[base_icon_state][use_firemode ? (firemode_key ? firemode_key : "") : ""]"
+			if(use_color)
+				var/image/colored_single_overlay = new /image
+				colored_single_overlay.icon_state = single_state
+				colored_single_overlay.color = firemode_color
+				to_add += colored_single_overlay
+			else
+				to_add += single_state
+		else
+			var/base_ammo_prepend = "[base_icon_state][use_firemode ? (firemode_key ? firemode_key : "") : ""]-"
+			if(use_color)
+				for(var/i in 1 to ceil(count * ammo_ratio))
+					var/image/colored_ammo_overlay = new /image
+					colored_ammo_overlay.icon_state = "[base_ammo_prepend][i]"
+					if(use_color)
+						colored_ammo_overlay.color = firemode_color
+					to_add += colored_ammo_overlay
+			else
+				for(var/i in 1 to ceil(count * ammo_ratio))
+					to_add += "[base_ammo_prepend][i]"
+	gun.add_overlay(to_add)
 
 /datum/gun_item_renderer/overlays/dedupe_key()
 	return "overlays-[use_firemode]-[count]-[use_empty]-[use_single]-[independent_firemode ? 1 : (independent_colored_firemode ? 2 : 0)]-[use_color]"
@@ -151,8 +183,10 @@
 	var/use_firemode_empty
 	var/count
 
-/datum/gun_item_renderer/states/render(obj/item/gun/gun, ammo_ratio, firemode_key, mode_color)
-	var/base_icon_state = gun.base_icon_state || initial(gun.icon_state)
+/datum/gun_item_renderer/states/render(obj/item/gun/gun, base_icon_state, ammo_ratio, firemode_key, firemode_color)
+	if(gun.render_skip)
+		gun.icon_state = base_icon_state
+		return
 	if(gun.render_additional_exclusive)
 		gun.icon_state = "[base_icon_state][gun.render_additional_state ? "-[gun.render_additional_state]" : ""]"
 		return
@@ -182,8 +216,10 @@
 	/// additionally, add an "-[firemode]" state for our firemode's render_key
 	var/use_firemode
 
-/datum/gun_item_renderer/empty_state/render(obj/item/gun/gun, ammo_ratio, firemode_key, mode_color)
-	var/base_icon_state = gun.base_icon_state || initial(gun.icon_state)
+/datum/gun_item_renderer/empty_state/render(obj/item/gun/gun, base_icon_state, ammo_ratio, firemode_key, firemode_color)
+	if(gun.render_skip)
+		gun.icon_state = base_icon_state
+		return
 	gun.icon_state = "[base_icon_state][firemode_key && use_firemode ? "-[firemode_key]" : ""][ammo_ratio ? "" : "-empty"]"
 
 /datum/gun_item_renderer/empty_state/dedupe_key()

@@ -152,20 +152,24 @@
 /**
  * Try to use a certain amount of power.
  *
+ * @params
+ * * component - the component drawing power
+ * * amount - how much power to use, in cell units
+ *
  * @return amount used
  */
-/obj/item/gun/proc/modular_use_power(obj/item/gun_component/component, joules)
-	return obj_cell_slot?.use(DYNAMIC_J_TO_CELL_UNITS(joules))
+/obj/item/gun/proc/modular_use_power(obj/item/gun_component/component, amount)
+	return obj_cell_slot?.use(amount)
 
 /**
  * Try to use a certain amount of power. Fails if insufficient.
  *
  * @params
  * * component - the component drawing power
- * * joules - how much power to use, in joules
+ * * amount - how much power to use, in cell units
  * * reserve - how many joules must be remaining after use, in joules
  *
  * @return amount used
  */
-/obj/item/gun/proc/modular_use_checked_power(obj/item/gun_component/component, joules, reserve)
-	return obj_cell_slot?.checked_use(DYNAMIC_J_TO_CELL_UNITS(joules), reserve)
+/obj/item/gun/proc/modular_use_checked_power(obj/item/gun_component/component, amount, reserve)
+	return obj_cell_slot?.checked_use(amount, reserve)

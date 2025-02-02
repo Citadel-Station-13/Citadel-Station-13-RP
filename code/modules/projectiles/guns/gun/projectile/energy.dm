@@ -251,13 +251,17 @@
 		return 0
 	return cell.charge / cell.maxcharge
 
-
 //* Power *//
 
 /obj/item/gun/projectile/energy/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot)
 	if(legacy_battery_lock)
 		return FALSE
 	return ..()
+
+//* Rendering *//
+
+/obj/item/gun/projectile/energy/get_firemode_color()
+	return modular_particle_array_active ? modular_particle_array_active.render_color : ..()
 
 //* Action Datums *//
 
