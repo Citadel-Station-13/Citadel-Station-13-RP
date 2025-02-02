@@ -36,9 +36,12 @@
 	play_fire_sound(cycle.firing_actor?.performer, firing_projectile)
 	//! END
 
+	if(!isturf(cycle.firing_atom.loc))
+		return GUN_FIRED_FAIL_UNMOUNTED
 	launch_projectile(cycle, firing_projectile)
 
-	return ..()
+	..()
+	. = GUN_FIRED_SUCCESS
 
 /**
  * Called to actually fire a projectile.
@@ -62,6 +65,7 @@
 
 	effective_angle += rand(-effective_dispersion, effective_dispersion)
 
+	launching.forceMove(cycle.firing_atom.loc)
 	launching.add_projectile_effects(cycle.firemode.add_projectile_effects)
 	launching.fire(effective_angle, get_turf(cycle.original_target) == get_turf(src) ? cycle.original_target : null)
 

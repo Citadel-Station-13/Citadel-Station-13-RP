@@ -229,6 +229,8 @@
 
 /**
  * Called to fire a single time.
+ *
+ * @return GUN_FIRED_* result enum
  */
 /obj/item/gun/proc/fire(datum/gun_firing_cycle/cycle)
 	SHOULD_NOT_SLEEP(TRUE)
