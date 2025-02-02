@@ -743,7 +743,7 @@
 	. = ..()
 
 	var/using_base_icon_state = base_icon_state || initial(icon_state)
-	var/using_base_worn_state = base_mob_state || using_base_icon_state || initial(worn_state)
+	var/using_base_worn_state = base_mob_state || initial(worn_state) || using_base_icon_state
 	var/using_ratio = get_ammo_ratio()
 	var/datum/firemode/using_firemode = legacy_get_firemode()
 	var/using_color = get_firemode_color()
@@ -755,7 +755,17 @@
 		update_worn_icon()
 
 /obj/item/gun/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot/slot_meta, icon_used)
-	mob_renderer?.render_overlays(MA, bodytype, slot_meta, inhands)
+	// todo: the code copypaste here is atrocious
+	var/using_base_worn_state = base_mob_state || initial(worn_state) || base_icon_state || initial(icon_state)
+	var/using_ratio = get_ammo_ratio()
+	var/datum/firemode/using_firemode = legacy_get_firemode()
+	var/using_color = get_firemode_color()
+	var/list/overlays = mob_renderer?.render_overlays(src, using_base_worn_state, using_ratio, using_firemode?.render_key, using_color)
+	if(length(overlays))
+		var/append = "_[slot_meta.render_key]"
+		for(var/image/touching_up as anything in overlays)
+			touching_up.icon_state += append
+		MA.overlays += overlays
 	return ..()
 
 /**

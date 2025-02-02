@@ -20,13 +20,12 @@
 	CRASH("attempted to render with abstract gun renderer")
 
 /**
- * Writes states to on-mob overlay.
+ * Returns states to write to an on-mob overlay.
  *
- * * hand_index is specified if we're in hand
- * * slot is specified if we're not
+ * * States will automatically be appended with something like '_left', '_right', '_all', etc, by the gun.
  */
-/datum/gun_mob_renderer/proc/render_overlays(mutable_appearance/rendering_onto, bodytype, datum/inventory_slot/slot, hand_index)
-	return
+/datum/gun_mob_renderer/proc/render_overlays(obj/item/gun/gun, base_worn_state, ammo_ratio, firemode_key, mode_color) as /list
+	return list()
 
 /**
  * our de-duping key
@@ -101,10 +100,46 @@
 	var/independent_firemode
 
 /datum/gun_mob_renderer/overlays/render(obj/item/gun/gun, base_worn_state, ammo_ratio, firemode_key, mode_color)
+	// todo: do we really need to always return TRUE and force an update?
 	return TRUE
 
-/datum/gun_mob_renderer/overlays/render_overlays(mutable_appearance/rendering_onto, bodytype, datum/inventory_slot/slot, hand_index)
-
+/datum/gun_mob_renderer/overlays/render_overlays(obj/item/gun/gun, base_worn_state, ammo_ratio, firemode_key, mode_color) as /list
+	. = list()
+	if(gun.render_skip)
+		return
+	if(independent_firemode)
+		if(firemode_key)
+			. += "[base_worn_state]-[firemode_key]"
+	else if(independent_colored_firemode)
+		var/image/colored_firemode_overlay = new /image
+		colored_firemode_overlay.icon_state = "[base_worn_state]-firemode"
+		colored_firemode_overlay.color = firemode_color
+		. += colored_firemode_overlay
+	if(!ammo_ratio)
+		if(use_empty)
+			. += "[base_worn_state]-empty"
+	else
+		if(use_single)
+			var/single_state = "[base_worn_state][use_firemode ? (firemode_key ? firemode_key : "") : ""]"
+			if(use_color)
+				var/image/colored_single_overlay = new /image
+				colored_single_overlay.icon_state = single_state
+				colored_single_overlay.color = firemode_color
+				. += colored_single_overlay
+			else
+				. += single_state
+		else
+			var/base_ammo_prepend = "[base_worn_state][use_firemode ? (firemode_key ? firemode_key : "") : ""]-"
+			if(use_color)
+				for(var/i in 1 to ceil(count * ammo_ratio))
+					var/image/colored_ammo_overlay = new /image
+					colored_ammo_overlay.icon_state = "[base_ammo_prepend][i]"
+					if(use_color)
+						colored_ammo_overlay.color = firemode_color
+					. += colored_ammo_overlay
+			else
+				for(var/i in 1 to ceil(count * ammo_ratio))
+					. += "[base_ammo_prepend][i]"
 
 /datum/gun_mob_renderer/overlays/dedupe_key()
 	return "states-[render_slots]-[independent_firemode ? 1 : (independent_colored_firemode ? 2 : 0)]-[count]-[use_firemode]-[use_empty]-[use_single]-[use_color]"
