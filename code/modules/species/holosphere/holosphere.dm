@@ -93,8 +93,7 @@
 		SLOT_ID_SHOES   = /obj/item/clothing/shoes/chameleon/holosphere,
 		SLOT_ID_GLOVES  = /obj/item/clothing/gloves/chameleon/holosphere,
 		SLOT_ID_MASK    = /obj/item/clothing/mask/chameleon/holosphere,
-		SLOT_ID_GLASSES = /obj/item/clothing/glasses/chameleon/holosphere,
-		SLOT_ID_BELT    = /obj/item/storage/belt/chameleon/holosphere
+		SLOT_ID_GLASSES = /obj/item/clothing/glasses/chameleon/holosphere
 	)
 	var/list/equipped_chameleon_gear = list()
 
