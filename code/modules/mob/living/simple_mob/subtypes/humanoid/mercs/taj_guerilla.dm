@@ -245,7 +245,7 @@
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged/surpressor
 
-	loot_list = list(/obj/item/gun/ballistic/automatic/automat/taj = 100)
+	loot_list = list(/obj/item/gun/ballistic/automatic/fal/taj = 100)
 
 
 ///////////////////////////////
