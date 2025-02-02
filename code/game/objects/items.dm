@@ -437,12 +437,9 @@
 
 	attempt_pickup(usr)
 
-/**
- *This proc is executed when someone clicks the on-screen UI button.
- *The default action is attack_self().
- */
 /obj/item/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	attack_self(usr)
+	return TRUE
 
 /obj/item/proc/get_loc_turf()
 	var/atom/L = loc

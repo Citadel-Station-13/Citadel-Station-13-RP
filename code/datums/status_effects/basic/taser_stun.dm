@@ -36,8 +36,16 @@
 	apply_pain_to_owner(old_timeleft * 0.1 * pain_per_second * pain_reapplication_multiplier)
 
 /datum/status_effect/taser_stun/proc/apply_pain_to_owner(amount)
+	if(!isliving(owner))
+		return
+	var/mob/living/owner_mob = owner
+	owner_mob.adjustHalLoss(amount)
+	if(issimple(owner_mob))
+		var/mob/living/simple_mob/owner_simple_mob = owner_mob
+		if(owner_simple_mob.taser_kill)
+			owner_simple_mob.take_overall_damage(burn = amount)
 
-#warn impl - movespeed modifier, pain damagewz
+#warn impl - movespeed modifier
 
 
 /datum/status_effect/taser_stun/nt_isd

@@ -658,6 +658,9 @@
 		if(inv_inside)
 			firemode_swap_action.grant(inv_inside.actions)
 
+/obj/item/gun/ui_action_click(datum/action/action, datum/event_args/actor/actor)
+	return FALSE
+
 //* Ammo *//
 
 /**

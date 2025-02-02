@@ -42,7 +42,7 @@
 	SHOULD_NOT_SLEEP(TRUE)
 
 	// invoke async; when it returns, our firing_cycle will still be set
-	INVOKE_ASYNC(PROC_REF(firing_cycle), firer, angle, firing_flags, firemode, target, actor, tile_pixel_x, tile_pixel_y, target_zone)
+	INVOKE_ASYNC(src, PROC_REF(firing_cycle), firer, angle, firing_flags, firemode, target, actor, tile_pixel_x, tile_pixel_y, target_zone)
 	// check to make sure it's always set
 	ASSERT(firing_cycle)
 	// return it; beware that it can be mutated in the firing cycle.
