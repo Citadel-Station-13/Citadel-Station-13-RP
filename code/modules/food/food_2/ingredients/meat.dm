@@ -75,7 +75,7 @@
 // TODO: rewrite kitchen code to check a var on the meat item so we can remove
 // all these sybtypes.
 /obj/item/reagent_containers/food/snacks/ingredient/meat/human
-	name = "porcine(?) meat"
+	name = "porcine meat"
 	desc = "Tastes vaguely like pork."
 
 /obj/item/reagent_containers/food/snacks/ingredient/meat/monkey
@@ -126,7 +126,7 @@
 
 /obj/item/reagent_containers/food/snacks/ingredient/meat/grubmeat
 	name = "grubmeat"
-	desc = "A slab of grub meat, it gives a gentle shock if you touch it"
+	desc = "A slab of grub meat, it gives a gentle shock if you touch it."
 	cookstage_information = list(list(0, 0.5, "raw, disturbingly juicy insect-flesh"), list(45 SECONDS, 1.2, "cooked, slimy insect meat"), list(60 SECONDS, 0.9, "rubbery, slimy and thoroughly overcooked insect meat"), list(75 SECONDS, 0.1, "a lump of char with some rubbery parts"))
 	icon_state = "grubmeat"
 	center_of_mass = list("x"=16, "y"=10)
@@ -143,6 +143,8 @@
 	desc = "A thin piece of meat."
 	cookstage_information = list(list(0, 0.5, "raw meat"), list(30 SECONDS, 1.2, "cooked meat"), list(45 SECONDS, 0.9, "rubbery meat"), list(60 SECONDS, 0.1, "a lump of char with some rubbery parts"))
 	icon = 'icons/obj/food_ingredients.dmi'
+	slice_path = /obj/item/reagent_containers/food/snacks/ingredient/bacon
+	slices_num = 4
 	icon_state = "rawcutlet"
 	bitesize = 1
 	name_on_cook = "cutlet"
@@ -193,7 +195,7 @@
 	if(reached_stage == COOKED)
 		desc = "Mmmmm, bacon."
 		icon_state = "bacon"
-		reagents.add_reagent("protein", 0.6)
+		reagents.add_reagent("protein", 0.5)
 
 //please don't get distracted by this half-price gammon
 /obj/item/reagent_containers/food/snacks/ingredient/ham
