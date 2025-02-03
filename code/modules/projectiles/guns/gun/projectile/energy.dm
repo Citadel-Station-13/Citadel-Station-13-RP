@@ -2,6 +2,8 @@
  * Energy Guns
  *
  * These are guns that generally will only utilize energy to generate their ammunition.
+ *
+ * * Only /datum/firmeode/energy-typed firemodes are allowed in these guns.
  */
 /obj/item/gun/projectile/energy
 	name = "energy gun"
@@ -217,8 +219,7 @@
 		else
 			icon_state = "[initial(icon_state)]"
 
-	if(!ignore_inhands)
-		update_worn_icon()
+	update_worn_icon()
 
 //* Actions *//
 
@@ -244,7 +245,7 @@
 /obj/item/gun/projectile/energy/proc/reconsider_lethal_safety_action()
 	var/has_lethal_modes = FALSE
 
-	for(var/datum/firemode/firemode as anything in firemodes)
+	for(var/datum/firemode/energy/firemode in firemodes)
 		if(firemode.considered_lethal)
 			has_lethal_modes = TRUE
 			break
@@ -300,7 +301,8 @@
 
 	if(modular_particle_array_active.considered_lethal)
 		user_swap_particle_array(actor)
-	if(legacy_get_firemode()?.considered_lethal)
+	var/datum/firemode/energy/current_firemode = legacy_get_firemode()
+	if(current_firemode?.considered_lethal)
 		switch_firemodes(actor.performer)
 
 //* Action Datums *//

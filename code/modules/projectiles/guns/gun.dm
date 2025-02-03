@@ -561,15 +561,50 @@
 	if(firemodes.len <= 1)
 		return null
 
-	sel_mode++
-	if(sel_mode > firemodes.len)
-		sel_mode = 1
-	var/datum/firemode/new_mode = firemodes[sel_mode]
+	var/datum/firemode/new_mode = get_next_firemode()
+	if(new_mode)
+		sel_mode = firemodes.Find(new_mode)
 	new_mode.apply_legacy_variables(src)
 	if(user)
 		to_chat(user, "<span class='notice'>\The [src] is now set to [new_mode.name].</span>")
 		playsound(loc, selector_sound, 50, 1)
 	return new_mode
+
+#warn ugh
+/**
+ * Picks the next firemode.
+ *
+ * Caveats:
+ * * `prefer_nonlethal` is a suggestion. It's invalid behavior for guns to not
+ *   have a firemode, so if none can be found that isn't lethal, one will be
+ *   selected anyways.
+ *
+ * @params
+ * * prefer_nonlethal - prefer a nonlethal firemode.
+ */
+/obj/item/gun/proc/get_next_firemode(prefer_nonlethal) as /datum/firmeode
+	// todo: this is just for compatibility when 'firemode' becomes a variable
+	var/datum/firemode/firemode = legacy_get_firemode()
+
+	var/datum/firemode/first_found
+	var/datum/firemode/preferred
+	if(!firemode)
+		for(var/datum/firemode/potential as anything in firemodes)
+			if(!first_found)
+				first_found = potential
+			if(obey_safety && potential.considered_lethal)
+				continue
+			preferred = potential
+			break
+	else
+
+	return preferred || first_found
+
+// PENDING FIREMODE REWORK
+/obj/item/gun/proc/legacy_get_firemode() as /datum/firemode
+	if(!length(firemodes) || (sel_mode < 1) || (sel_mode > length(firemodes)))
+		return
+	return firemodes[sel_mode]
 
 /obj/item/gun/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
@@ -633,12 +668,6 @@
  */
 /obj/item/gun/proc/check_safety()
 	return (safety_state == GUN_SAFETY_ON)
-
-// PENDING FIREMODE REWORK
-/obj/item/gun/proc/legacy_get_firemode() as /datum/firemode
-	if(!length(firemodes) || (sel_mode < 1) || (sel_mode > length(firemodes)))
-		return
-	return firemodes[sel_mode]
 
 //* Actions *//
 
