@@ -89,6 +89,10 @@
 	/// Blacklisted attachment types.
 	var/attachment_type_blacklist = NONE
 
+	//* Feedback *//
+	/// Last world.time we made a 'can't fire yet!' message.
+	var/last_cooldown_message
+
 	//* Firemode *//
 	/**
 	 * The list of our possible firemodes.
@@ -270,8 +274,6 @@
 		var/mob_renderer_key = mob_renderer.dedupe_key()
 		mob_renderer = mob_renderer_store[mob_renderer_key] || (mob_renderer_store[mob_renderer_key] = mob_renderer)
 		requires_icon_update = TRUE
-	if(requires_icon_update)
-		update_icon()
 
 	//! LEGACY: Rendering
 	// if neither of these are here, we are using legacy render. //
@@ -324,6 +326,9 @@
 				modular_component_slots = typelist(NAMEOF(src, modular_component_slots), modular_component_slots)
 		else
 			modular_component_slots = null
+
+	if(requires_icon_update)
+		update_icon()
 
 	//! LEGACY: firemodes
 	if(!islist(firemodes))
@@ -780,8 +785,8 @@
 //* Action Datums *//
 
 /datum/action/item_action/gun_firemode_swap
-	name = "Toggle Particle Array"
-	desc = "Toggle the active particle array being used."
+	name = "Switch Firemode"
+	desc = "Switch to the next firemode."
 	target_type = /obj/item/gun
 
 /datum/action/item_action/gun_firemode_swap/pre_render_hook()

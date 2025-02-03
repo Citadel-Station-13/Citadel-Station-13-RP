@@ -6,11 +6,17 @@
 	name = "stun"
 	projectile_type = /obj/projectile/beam/stun/med
 	charge_cost = 2400 / 10
+	legacy_direct_varedits = list(
+		"modifystate" = "energystun",
+	)
 
 /datum/firemode/energy/energy_gun/kill
 	name = "lethal"
 	projectile_type = /obj/projectile/beam
 	charge_cost = 2400 / 5
+	legacy_direct_varedits = list(
+		"modifystate" = "energykill",
+	)
 
 /obj/item/gun/projectile/energy/gun
 	name = "energy gun"

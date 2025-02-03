@@ -16,6 +16,10 @@
 	/// * this is considered a shared reference if set! this means cloned firemodes share the same projectile instance
 	var/obj/projectile/projectile_instance
 
+	//* Safety *//
+	/// Setting is considered lethal
+	var/considered_lethal = FALSE
+
 // todo: this shouldn't even exist.
 /datum/firemode/energy/New(obj/item/gun/inherit_from_gun, list/direct_varedits)
 	..()

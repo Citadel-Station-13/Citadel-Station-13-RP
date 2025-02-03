@@ -33,22 +33,24 @@
 	 * * Lazy inited when needed
 	 */
 	var/datum/action/modular_particle_array_swap_action
+
+	//* Safety *//
+
 	/**
-	 * Particle array lethal safety action
+	 * Lethal safety action
 	 *
 	 * * Lazy inited when needed
 	 */
-	var/datum/action/modular_particle_array_safety_action
-
+	var/datum/action/lethal_safety_action
 	/**
-	 * Lethal arrays are locked
+	 * Lethal firemodes and particle arrays are locked
 	 *
 	 * * This only stops the user from selecting in UI, this will not stop
-	 * [set_particle_array] from manually forcing the gun to that mode!
+	 * [set_particle_array] or [set_firemode] from manually forcing the gun to that mode!
 	 * * Likewise, this will not stop firing cycles from selecting
-	 *   a lethal mode.
+	 *   a lethal mode / array.
 	 */
-	var/modular_particle_array_safety = FALSE
+	var/lethal_safety = FALSE
 
 	//! LEGACY BELOW !//
 	// todo: do not use this var, use firemodes
@@ -75,7 +77,11 @@
 		cell_type = cell_type || /obj/item/cell/device/weapon
 		START_PROCESSING(SSobj, src)
 	. = ..()
+	// todo: this isn't necessarily needed
 	update_icon()
+
+	reconsider_lethal_safety_action()
+	reconsider_particle_array_action()
 
 /obj/item/gun/projectile/energy/Destroy()
 	if(self_recharge)
@@ -88,7 +94,7 @@
 		return
 	if(!modular_system)
 		return
-	add_overlay(image('icons/modules/projectiles/guns/common-overlays.dmi', "lethal-[modular_particle_array_safety? "on" : "off"]"))
+	add_overlay(image('icons/modules/projectiles/guns/common-overlays.dmi', "lethal-[lethal_safety? "on" : "off"]"))
 
 /obj/item/gun/projectile/energy/process(delta_time)
 	if(self_recharge) //Every [recharge_time] ticks, recharge a shot for the battery
@@ -133,9 +139,6 @@
 		else
 			charge_tick = 0
 	return 1
-
-/obj/item/gun/projectile/energy/attackby(var/obj/item/A as obj, mob/user as mob)
-	..()
 
 /obj/item/gun/projectile/energy/switch_firemodes(mob/user)
 	if(..())
@@ -184,7 +187,7 @@
 	else
 		. += "Does not have a power cell."
 
-/obj/item/gun/projectile/energy/update_icon(ignore_inhands)
+/obj/item/gun/projectile/energy/update_icon()
 	. = ..()
 	if((item_renderer || mob_renderer) || !render_use_legacy_by_default)
 		return // using new system
@@ -221,27 +224,44 @@
 
 /obj/item/gun/projectile/energy/register_item_actions(mob/user)
 	. = ..()
-	modular_particle_array_safety_action?.grant(user.inventory.actions)
+	lethal_safety_action?.grant(user.inventory.actions)
 	modular_particle_array_swap_action?.grant(user.inventory.actions)
 
 /obj/item/gun/projectile/energy/unregister_item_actions(mob/user)
 	. = ..()
-	modular_particle_array_safety_action?.revoke(user.inventory.actions)
+	lethal_safety_action?.revoke(user.inventory.actions)
 	modular_particle_array_swap_action?.revoke(user.inventory.actions)
 
-/obj/item/gun/projectile/energy/proc/reconsider_particle_array_actions()
+/obj/item/gun/projectile/energy/proc/reconsider_particle_array_action()
 	if(!modular_system)
-		QDEL_NULL(modular_particle_array_safety_action)
 		QDEL_NULL(modular_particle_array_swap_action)
-		return
-	if(!modular_particle_array_safety_action)
-		modular_particle_array_safety_action = new /datum/action/item_action/modular_energy_particle_array_safety(src)
-		if(inv_inside)
-			modular_particle_array_safety_action.grant(inv_inside.actions)
-	if(!modular_particle_array_swap_action)
-		modular_particle_array_safety_action = new /datum/action/item_action/modular_energy_particle_array_swap(src)
-		if(inv_inside)
-			modular_particle_array_safety_action.grant(inv_inside.actions)
+	else
+		if(!modular_particle_array_swap_action)
+			lethal_safety_action = new /datum/action/item_action/modular_energy_particle_array_swap(src)
+			if(inv_inside)
+				lethal_safety_action.grant(inv_inside.actions)
+
+/obj/item/gun/projectile/energy/proc/reconsider_lethal_safety_action()
+	var/has_lethal_modes = FALSE
+
+	for(var/datum/firemode/firemode as anything in firemodes)
+		if(firemode.considered_lethal)
+			has_lethal_modes = TRUE
+			break
+	if(!has_lethal_modes)
+		if(modular_system)
+			for(var/obj/item/gun_component/particle_array/particle_array in modular_components)
+				if(particle_array.considered_lethal)
+					has_lethal_modes = TRUE
+					break
+
+	if(!has_lethal_modes)
+		QDEL_NULL(lethal_safety_action)
+	else
+		if(!lethal_safety_action)
+			lethal_safety_action = new /datum/action/item_action/modular_energy_particle_array_safety(src)
+			if(inv_inside)
+				lethal_safety_action.grant(inv_inside.actions)
 
 //* Ammo *//
 
@@ -263,6 +283,26 @@
 /obj/item/gun/projectile/energy/get_firemode_color()
 	return modular_particle_array_active ? modular_particle_array_active.render_color : ..()
 
+//* Safety *//
+
+/obj/item/gun/projectile/energy/proc/user_swap_lethal_safety(datum/event_args/actor/actor)
+	lethal_safety = !lethal_safety
+	if(lethal_safety)
+		actor.chat_feedback(
+			SPAN_NOTICE("You enable [src]'s lethal-mode safety."),
+			target = src,
+		)
+	else
+		actor.chat_feedback(
+			SPAN_WARNING("You disable [src]'s lethal-mode safety."),
+			target = src,
+		)
+
+	if(modular_particle_array_active.considered_lethal)
+		user_swap_particle_array(actor)
+	if(legacy_get_firemode()?.considered_lethal)
+		switch_firemodes(actor.performer)
+
 //* Action Datums *//
 
 /datum/action/item_action/modular_energy_particle_array_safety
@@ -279,7 +319,7 @@
 
 /datum/action/item_action/modular_energy_particle_array_safety/invoke_target(obj/item/gun/projectile/energy/target, datum/event_args/actor/actor)
 	. = ..()
-	target.user_swap_particle_safety(actor)
+	target.user_swap_lethal_safety(actor)
 
 /datum/action/item_action/modular_energy_particle_array_swap
 	name = "Toggle Particle Array"

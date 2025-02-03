@@ -58,10 +58,20 @@
  */
 /obj/item/gun/proc/start_firing_cycle(atom/firer, angle, firing_flags, datum/firemode/firemode, atom/target, datum/event_args/actor/actor, tile_pixel_x, tile_pixel_y, target_zone) as /datum/gun_firing_cycle
 	SHOULD_CALL_PARENT(TRUE)
-	#warn check next fire time / delays; silently fail if there's a cycle ongoing or right after, and give a message if there isn't
-	// if(world.time < next_fire_time)
-	// 	if (world.time % 3) //to prevent spam
-	// 		to_chat(user, "<span class='warning'>[src] is not ready to fire again!</span>")
+
+	// firing cycle ongoing: silently fail
+	if(firing_cycle)
+		return
+
+	// on cooldown: loudly fail
+	if(world.time < next_fire_cycle)
+		if(last_cooldown_message > world.time + 0.75 SECONDS)
+			actor?.chat_feedback(
+				SPAN_WARNING("[src] is not ready to fire again!"),
+				target = src,
+			)
+			last_cooldown_message = world.time
+		return
 
 	//! LEGACY
 	if(!special_check(actor?.performer))
