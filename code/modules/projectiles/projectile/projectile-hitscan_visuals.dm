@@ -162,12 +162,14 @@
 					var/tracer_angle = angle_between_points(point_a, point_b)
 					var/dx = sin(tracer_angle)
 					var/dy = cos(tracer_angle)
-					for(var/iter in 0 to ceil(total_pixel_length / WORLD_ICON_SIZE))
-						var/resultant_x = point_a.x + dx * iter * WORLD_ICON_SIZE
-						var/resultant_y = point_a.y + dy * iter * WORLD_ICON_SIZE
+					var/iterations = total_pixel_length / WORLD_ICON_SIZE
+					iterations = CEILING(iterations, 1)
+					for(var/iter in 0 to iterations)
+						var/resultant_x = (point_a.x + dx * iter * WORLD_ICON_SIZE) / WORLD_ICON_SIZE
+						var/resultant_y = (point_a.y + dy * iter * WORLD_ICON_SIZE) / WORLD_ICON_SIZE
 						var/turf/resultant_turf = locate(
-							ceil(floor(resultant_x) / WORLD_ICON_SIZE),
-							ceil(floor(resultant_y) / WORLD_ICON_SIZE),
+							round(resultant_x),
+							round(resultant_y),
 							point_a.z,
 						)
 						var/resultant_px = resultant_x % WORLD_ICON_SIZE

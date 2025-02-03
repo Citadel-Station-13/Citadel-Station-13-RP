@@ -58,7 +58,11 @@
 
 // todo: shouldn't be global scope
 /proc/point_midpoint_points(datum/point/a, datum/point/b)	//Obviously will not support multiZ calculations! Same for the two below.
-	return new /datum/point(a.x + (b.x - a.x) / 2, a.y + (b.y - a.y) / 2, a.z)
+	var/datum/point/created = new
+	created.x = a.x + (b.x - a.x) / 2
+	created.y = a.y + (b.y - a.y) / 2
+	created.z = a.z
+	return created
 
 // todo: shouldn't be global scope
 /proc/pixel_length_between_points(datum/point/a, datum/point/b)
