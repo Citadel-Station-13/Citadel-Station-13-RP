@@ -272,8 +272,14 @@
 		var/valid = 1
 		var/list/cooked_items = list()
 
+		var/obj/temp = new /obj(src) //To prevent infinite loops, all results will be moved into a temporary location so they're not considered as inputs for other recipes
 		while(valid)
-			cooked_items.Add(recipe.make_food(src, null))
+			var/list/things = list()
+			things.Add(recipe.make_food(src))
+			cooked_items += things
+			//Move cooked things to the buffer so they're not considered as ingredients
+			for (var/atom/movable/AM in things)
+				AM.forceMove(temp)
 
 			valid = 0
 			recipe = select_recipe(GLOB.cooking_recipes,src, available_method = METHOD_MICROWAVE)
