@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-#warn ugh
-/obj/item/gun/projectile/energy/get_next_firemode(obey_safety)
+/obj/item/gun/projectile/energy/is_preferred_firemode(datum/firemode/energy/firemode)
+	return ..() && (lethal_safety ? !firemode.considered_lethal : TRUE)
