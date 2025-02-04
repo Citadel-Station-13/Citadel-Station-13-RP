@@ -30,22 +30,40 @@
 	. = ..()
 	. += SPAN_NOTICE("It currently contains [LAZYLEN(food_containers)] items:")
 	for(var/obj/item/examine_item in food_containers)
-		if(!istype(examine_item, /obj/item/reagent_containers/food/snacks/ingredient))
-			. += "<span class='notice'>[icon2html(thing = examine_item, target = user)][examine_item].</span>"
-			continue
-
-		var/obj/item/reagent_containers/food/snacks/ingredient/examine_ingredient = examine_item
 		var/cooked_span = "userdanger"
-		switch(examine_ingredient.cookstage)
-			if(RAW)
-				cooked_span = "rose"
-			if(COOKED)
-				cooked_span = "boldnicegreen"
-			if(OVERCOOKED)
-				cooked_span = "yellow"
-			if(BURNT)
-				cooked_span = "tajaran_signlang"
-		. += "<span class='notice'>[icon2html(thing = examine_ingredient, target = user)][examine_ingredient.name], which looks </span><span class='[cooked_span]'>[examine_ingredient.cookstage2text()]</span><span class='notice'> and has been cooked for about [examine_ingredient.accumulated_time_cooked / 10] seconds.</span>"
+		if(istype(examine_item, /obj/item/reagent_containers/glass/food_holder))
+			var/obj/item/reagent_containers/glass/food_holder/FH = examine_item
+			var/list/cookdata = FH.get_most_cooked_time()
+			var/cooktext
+			switch(cookdata[2])
+				if(RAW)
+					cooktext = "raw"
+					cooked_span = "rose"
+				if(COOKED)
+					cooktext = "cooked"
+					cooked_span = "boldnicegreen"
+				if(OVERCOOKED)
+					cooktext = "overcooked"
+					cooked_span = "yellow"
+				if(BURNT)
+					cooktext = "burnt"
+					cooked_span = "tajaran_signlang"
+			
+			. += "<span class='notice'>[icon2html(thing = examine_item, target = user)][examine_item]. It's been cooking for around [cookdata[1]] seconds and its contents look </span><span class='[cooked_span]'>[cooktext].</span>"
+		else if(istype(examine_item, /obj/item/reagent_containers/food/snacks/ingredient))
+			var/obj/item/reagent_containers/food/snacks/ingredient/examine_ingredient = examine_item
+			switch(examine_ingredient.cookstage)
+				if(RAW)
+					cooked_span = "rose"
+				if(COOKED)
+					cooked_span = "boldnicegreen"
+				if(OVERCOOKED)
+					cooked_span = "yellow"
+				if(BURNT)
+					cooked_span = "tajaran_signlang"
+			. += "<span class='notice'>[icon2html(thing = examine_ingredient, target = user)][examine_ingredient.name], which looks </span><span class='[cooked_span]'>[examine_ingredient.cookstage2text()]</span><span class='notice'> and has been cooked for about [examine_ingredient.accumulated_time_cooked / 10] seconds.</span>"
+		else
+			. += "<span class='notice'>[icon2html(thing = examine_item, target = user)][examine_item].</span>"
 
 	switch(cooking_power)
 		if(0)

@@ -18,7 +18,7 @@
 	desc = "A pan for sauces."
 	icon_state = "pan"
 	cooker_overlay = "pan"
-	volume = 90
+	volume = 120
 
 /obj/item/reagent_containers/glass/food_holder/skillet
 	name = "skillet"

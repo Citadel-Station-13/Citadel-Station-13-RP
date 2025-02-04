@@ -29,8 +29,9 @@
 	desc = "How did I get here?"
 	icon = 'icons/obj/food_ingredients/custom_food.dmi'
 	icon_state = "handful"
+
+	bitesize = 5
 	/*
-	var/bitesize = 1
 	var/bitecount = 0
 	var/trash = null
 	var/dried_type = null
