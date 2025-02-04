@@ -122,6 +122,7 @@ var/list/floor_light_cache = list()
 
 /obj/machinery/floor_light/update_icon()
 	cut_overlays()
+	. = ..()
 	if(use_power && !broken())
 		if(isnull(damaged))
 			var/cache_key = "floorlight-[default_light_colour]"

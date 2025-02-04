@@ -42,6 +42,7 @@
 
 // Baystation12 chairs with their larger update_icons proc
 /obj/structure/bed/chair/bay/update_icon()
+	// todo: this should call parent
 	// Strings.
 	desc = initial(desc)
 	if(padding_material)

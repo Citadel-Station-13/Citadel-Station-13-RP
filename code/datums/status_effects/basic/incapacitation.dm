@@ -32,6 +32,10 @@
 	identifier = "root"
 	requires_mobility_update = TRUE
 
+/datum/status_effect/incapacitation/daze
+	identifier = "daze"
+	requires_mobility_update = TRUE
+
 /datum/status_effect/incapacitation/unconscious
 	identifier = "unconscious"
 	requires_stat_update = TRUE
