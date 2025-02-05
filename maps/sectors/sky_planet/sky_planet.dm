@@ -78,7 +78,7 @@
 			list(z_index),
 			225,
 			/area/sector/sky_planet/sky/unexplored,
-			/datum/map_template/submap/sky_planet_rigs,
+			/datum/map_template/submap/level_specific/sky_planet_rigs,
 		)
 	)
 
