@@ -4,7 +4,18 @@
 	width = 192
 	height = 192
 	levels = list(
-		/datum/map_level/sector/
+		/datum/map_level/sector/sky_planet/sky_upper_west,
+		/datum/map_level/sector/sky_planet/sky_west,
+		/datum/map_level/sector/sky_planet/ground_west,
+		/datum/map_level/sector/sky_planet/sky_upper_east,
+		/datum/map_level/sector/sky_planet/sky_east,
+		/datum/map_level/sector/sky_planet/ground_east,
+	)
+
+	legacy_assert_shuttle_datums = list(
+		/datum/shuttle/autodock/overmap/voidline/redcomet
+		/datum/shuttle/autodock/overmap/voidline/bonnethead
+		/datum/shuttle/autodock/overmap/voidline/paripari
 	)
 
 /datum/map_level/sector/sky_planet
@@ -18,11 +29,10 @@
 	display_name = "Lythios43a - Upper West"
 	path = "maps/sectors/sky_planet/levels/sky_planet_upper_sky_west.dmm"
 	base_turf = /turf/simulated/open
-	link_east =
-	link_below =
+	link_east = /datum/map_level/sector/sky_planet/sky_upper_east
+	link_below = /datum/map_level/sector/sky_planet/sky_west
 	air_outdoors = /datum/atmosphere/planet/sky_planet/sky
 	planet_path = /datum/planet/sky_planet
-
 
 
 /datum/map_level/sector/sky_planet/sky_west
@@ -31,10 +41,10 @@
 	display_name = "Lythios43a - Sky West"
 	path = "maps/sectors/sky_planet/levels/sky_planet_sky_west.dmm"
 	base_turf = /turf/simulated/open
-	link_east =
-	link_below =
-	link_above =
-	air_outdoors = /datum/atmosphere/planet/sky_planet/sky
+	link_east = /datum/map_level/sector/sky_planet/sky_east
+	link_below = /datum/map_level/sector/sky_planet/ground_west
+	link_above = /datum/map_level/sector/sky_planet/sky_west
+	air_outdoors = /datum/atmosphere/planet/sky_planet/ground
 
 
 /datum/map_level/sector/sky_planet/ground_west
@@ -42,20 +52,19 @@
 	name = "Sector - Lythios43a : Ground West"
 	display_name = "Lythios43a - Ground West"
 	path = "maps/sectors/sky_planet/levels/sky_planet_ground_west.dmm"
-	base_turf =
-	link_east =
-	link_below =
-	link_above =
+	base_turf = /turf/simulated/floor/outdoors/rocks
+	link_east = /datum/map_level/sector/sky_planet/ground_east
+	link_above = /datum/map_level/sector/sky_planet/sky_west
 	air_outdoors = /datum/atmosphere/planet/sky_planet/ground
 
 /datum/map_level/sector/sky_planet/sky_upper_east
 	id = "Skyplanetuppereast"
 	name = "Sector - Lythios43a : Upper east"
 	display_name = "Lythios43a - Upper east"
-	path = ""
-	base_turf =
-	link_east =
-	link_below =
+	path = "maps/sectors/sky_planet/levels/sky_planet_upper_sky_east.dmm"
+	base_turf = /turf/simulated/open
+	link_west = /datum/map_level/sector/sky_planet/sky_upper_west
+	link_below = /datum/map_level/sector/sky_planet/sky_east
 	air_outdoors = /datum/atmosphere/planet/sky_planet/sky
 	planet_path = /datum/planet/sky_planet
 	base_turf = /turf/simulated/open
@@ -77,33 +86,20 @@
 	id = "Skyplanetskyeast"
 	name = "Sector - Lythios43a : Sky east"
 	display_name = "Lythios43a - Sky east"
-	path = ""
-	base_turf =
-	link_east =
-	link_below =
-	link_above =
-	air_outdoors = /datum/atmosphere/planet/sky_planet/sky
-	base_turf = /turf/simulated/fake_sky
-
-/datum/map_level/sector/sky_planet/ground_upper_east
-	id = "Skyplanetgroundeast"
-	name = "Sector - Lythios43a : Upper Ground east"
-	display_name = "Lythios43a - Upper Ground east"
-	path = ""
-	base_turf =
-	link_east =
-	link_below =
-	link_above =
-	air_outdoors = /datum/atmosphere/planet/sky_planet/ground
+	path = "maps/sectors/sky_planet/levels/sky_planet_sky_east.dmm"
 	base_turf = /turf/simulated/open
+	link_west = /datum/map_level/sector/sky_planet/sky_west
+	link_below = /datum/map_level/sector/sky_planet/ground_east
+	link_above = /datum/map_level/sector/sky_planet/sky_upper_east
+	air_outdoors = /datum/atmosphere/planet/sky_planet/ground
+	base_turf = /turf/simulated/fake_sky
 
 /datum/map_level/sector/sky_planet/ground_east
 	id = "Skyplanetgroundeast"
 	name = "Sector - Lythios43a : Ground east"
 	display_name = "Lythios43a - Ground east"
-	path = ""
-	base_turf =
-	link_east =
-	link_below =
-	link_above =
+	path = "maps/sectors/sky_planet/levels/sky_planet_ground_east.dmm"
+	base_turf = /turf/simulated/floor/outdoors/rocks
+	link_west = /datum/map_level/sector/sky_planet/ground_west
+	link_above = /datum/map_level/sector/sky_planet/sky_east
 	air_outdoors = /datum/atmosphere/planet/sky_planet/ground
