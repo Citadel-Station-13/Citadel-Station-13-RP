@@ -178,7 +178,7 @@
 	name = "Voidline Rig - Arrowhead Pad"
 	landmark_tag = "voidline_arrowhead"
 	base_turf = /turf/simulated/floor/reinforced
-	base_area = /area/sector/sky_planet/sky
+	base_area = /area/sector/sky_planet/racing_station/dock
 
 //Public
 

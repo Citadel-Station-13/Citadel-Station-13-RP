@@ -75,9 +75,7 @@
 /turf/simulated/floor/cult,
 /area/sector/sky_planet/outpost)
 "H" = (
-/obj/structure/stairs/top{
-	dir = 8
-	},
+/obj/structure/stairs/spawner/west,
 /turf/simulated/floor/cult,
 /area/sector/sky_planet/outpost)
 "I" = (
@@ -88,9 +86,7 @@
 /area/sector/sky_planet/sky)
 "K" = (
 /obj/structure/catwalk,
-/obj/structure/stairs/top{
-	dir = 1
-	},
+/obj/structure/stairs/spawner/north,
 /turf/simulated/floor/outdoors/rocks,
 /area/sector/sky_planet/sky)
 "M" = (
@@ -8372,7 +8368,7 @@ a
 Y
 K
 X
-R
+a
 a
 a
 a
