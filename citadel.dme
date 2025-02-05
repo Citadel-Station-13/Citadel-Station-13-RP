@@ -5456,6 +5456,7 @@
 #include "maps\sectors\nebula_tradeport\nebula_tradeport.dm"
 #include "maps\sectors\piratebase_192\piratebase_192.dm"
 #include "maps\sectors\roguemining_192\roguemining_192.dm"
+#include "maps\sectors\sky_planet\sky_planet.dm"
 #include "maps\sectors\sky_planet\sky_planet-areas.dm"
 #include "maps\sectors\sky_planet\sky_planet-misc.dm"
 #include "maps\sectors\sky_planet\sky_planet-shuttles.dm"
