@@ -7357,7 +7357,7 @@
 /area/sector/sky_planet/outpost/docking_port1)
 "UE" = (
 /obj/machinery/door/airlock/vault{
-	req_one_access = nul
+	req_one_access = null
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/security)
