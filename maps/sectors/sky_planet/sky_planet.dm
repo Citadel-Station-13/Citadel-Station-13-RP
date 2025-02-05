@@ -1,5 +1,5 @@
 /datum/map/sector/sky_planet
-	id = "Lythias 43a"
+	id = "lythias43a"
 	name = "Sector - Sky Planet"
 	width = 192
 	height = 192
@@ -13,9 +13,9 @@
 	)
 
 	legacy_assert_shuttle_datums = list(
-		/datum/shuttle/autodock/overmap/voidline/redcomet
-		/datum/shuttle/autodock/overmap/voidline/bonnethead
-		/datum/shuttle/autodock/overmap/voidline/paripari
+		/datum/shuttle/autodock/overmap/voidline/redcomet,
+		/datum/shuttle/autodock/overmap/voidline/bonnethead,
+		/datum/shuttle/autodock/overmap/voidline/paripari,
 	)
 
 /datum/map_level/sector/sky_planet
