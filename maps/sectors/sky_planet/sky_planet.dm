@@ -43,8 +43,9 @@
 	base_turf = /turf/simulated/open
 	link_east = /datum/map_level/sector/sky_planet/sky_east
 	link_below = /datum/map_level/sector/sky_planet/ground_west
-	link_above = /datum/map_level/sector/sky_planet/sky_west
+	link_above = /datum/map_level/sector/sky_planet/sky_upper_west
 	air_outdoors = /datum/atmosphere/planet/sky_planet/ground
+	planet_path = /datum/planet/sky_planet
 
 
 /datum/map_level/sector/sky_planet/ground_west
@@ -56,6 +57,7 @@
 	link_east = /datum/map_level/sector/sky_planet/ground_east
 	link_above = /datum/map_level/sector/sky_planet/sky_west
 	air_outdoors = /datum/atmosphere/planet/sky_planet/ground
+	planet_path = /datum/planet/sky_planet/ground
 
 /datum/map_level/sector/sky_planet/sky_upper_east
 	id = "Skyplanetuppereast"
@@ -103,3 +105,4 @@
 	link_west = /datum/map_level/sector/sky_planet/ground_west
 	link_above = /datum/map_level/sector/sky_planet/sky_east
 	air_outdoors = /datum/atmosphere/planet/sky_planet/ground
+	planet_path = /datum/planet/sky_planet/ground

@@ -122,7 +122,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/paripari)
 "aS" = (
 /turf/simulated/floor/reinforced,
 /area/sector/sky_planet/outpost/docking_port2)
@@ -165,7 +165,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /turf/simulated/wall/r_wall/prepainted/civilian,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/paripari)
 "bh" = (
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran,
 /turf/simulated/floor/tiled/techfloor,
@@ -258,6 +258,10 @@
 	},
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
+"bL" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/turf/space/basic,
+/area/shuttle/paripari)
 "bS" = (
 /obj/structure/bed/chair/office{
 	dir = 4
@@ -272,7 +276,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "cc" = (
 /obj/machinery/button/remote/airlock{
 	pixel_y = 25;
@@ -331,7 +335,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1379;
 	dir = 1;
-	id_tag = "outpostNTexplo2_dock_pump"
+	id_tag = "westrig2_dock_pump"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
@@ -339,6 +343,12 @@
 /obj/machinery/door/airlock/multi_tile/glass,
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/sky_planet/outpost/office)
+"cy" = (
+/obj/structure/fuel_port{
+	pixel_x = -27
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/shuttle/paripari)
 "cC" = (
 /obj/structure/table/standard,
 /turf/simulated/floor/carpet/patterened/blue,
@@ -464,7 +474,7 @@
 "dm" = (
 /obj/machinery/atmospherics/pipe/tank/air,
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "dn" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4
@@ -617,7 +627,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /turf/simulated/wall/r_wall/prepainted/civilian,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/paripari)
 "ez" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
@@ -629,7 +639,7 @@
 /obj/machinery/airlock_sensor{
 	pixel_x = -25;
 	pixel_y = 25;
-	id_tag = "outpostNTsec_dock"
+	id_tag = "northrig2_dock"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
@@ -678,7 +688,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "eS" = (
 /obj/structure/fence{
 	dir = 4
@@ -851,7 +861,7 @@
 	},
 /obj/machinery/air_alarm/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techmaint,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/paripari)
 "fZ" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
@@ -942,7 +952,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/paripari)
 "gC" = (
 /obj/structure/table/hardwoodtable,
 /turf/simulated/floor/carpet/patterened/green,
@@ -951,7 +961,7 @@
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/space/basic,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/paripari)
 "gH" = (
 /obj/structure/table/steel_reinforced,
 /obj/effect/floor_decal/rust,
@@ -962,7 +972,7 @@
 	dir = 8
 	},
 /turf/space/basic,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/paripari)
 "gQ" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
@@ -977,7 +987,7 @@
 	dir = 5
 	},
 /turf/simulated/wall/r_wall/prepainted/security,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "gT" = (
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/outpost/office)
@@ -1077,17 +1087,17 @@
 	name = "Engine Fuel Port"
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "hF" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/machinery/airlock_sensor{
 	pixel_x = -25;
 	pixel_y = 25;
-	id_tag = "outpostNTciv3_dock"
+	id_tag = "southrig3_dock"
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/access_button/airlock_exterior{
-	master_tag = "outpostNTciv3_dock";
+	master_tag = "southrig3_dock";
 	pixel_y = -12;
 	pixel_x = -23
 	},
@@ -1145,7 +1155,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/paripari)
 "hW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
@@ -1162,13 +1172,13 @@
 "hZ" = (
 /obj/machinery/computer/shuttle_control/explore/paripari,
 /turf/simulated/floor/tiled/techmaint,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/paripari)
 "ia" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "ib" = (
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
@@ -1263,7 +1273,7 @@
 /obj/machinery/airlock_sensor{
 	pixel_x = -25;
 	pixel_y = 25;
-	id_tag = "outpostNTexplo3_dock"
+	id_tag = "westrig2_dock"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
@@ -1405,6 +1415,10 @@
 /obj/effect/floor_decal/corner/green/diagonal,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/station_city/restaurant)
+"jB" = (
+/obj/machinery/telecomms/relay/preset/telecomms,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/paripari)
 "jG" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -1497,7 +1511,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "kf" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor,
@@ -1520,7 +1534,7 @@
 	dir = 6
 	},
 /turf/simulated/wall/r_wall/prepainted/security,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "kp" = (
 /obj/structure/closet/secure_closet/guncabinet,
 /obj/effect/floor_decal/corner/red/border,
@@ -1577,6 +1591,10 @@
 	},
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/sky_planet/station_city/offices)
+"kO" = (
+/obj/machinery/telecomms/relay/preset/telecomms,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/bonnethead)
 "kP" = (
 /obj/structure/closet/walllocker_double/north,
 /obj/effect/floor_decal/corner/red/border{
@@ -1605,7 +1623,7 @@
 "la" = (
 /obj/machinery/telecomms/relay/preset/telecomms,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "lb" = (
 /obj/effect/floor_decal/corner/yellow/full{
 	dir = 8
@@ -1622,7 +1640,7 @@
 	name = "Engine Fuel Port"
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "le" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/ammo_casing/a5_56mm,
@@ -1634,7 +1652,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "lh" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/street)
@@ -1675,7 +1693,7 @@
 	dir = 8
 	},
 /turf/simulated/wall/r_wall/prepainted/security,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "lp" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -1731,7 +1749,7 @@
 /obj/effect/floor_decal/techfloor/corner,
 /obj/effect/floor_decal/steeldecal/steel_decals10,
 /turf/simulated/floor/tiled/techmaint,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/paripari)
 "lD" = (
 /obj/machinery/door/blast/regular,
 /turf/simulated/wall/solidrock,
@@ -1746,7 +1764,7 @@
 /area/sector/sky_planet/outpost/docking_port1)
 "lG" = (
 /turf/simulated/wall/r_wall/prepainted/civilian,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/paripari)
 "lJ" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor,
@@ -1806,7 +1824,7 @@
 	cur_coils = 3
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "mi" = (
 /obj/structure/flora/tree/fey/large_tree/tree7,
 /turf/simulated/floor/fey/forest_grass,
@@ -1824,7 +1842,7 @@
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
-	id_tag = "outpostNTciv3_dock";
+	id_tag = "southrig3_dock";
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1863,7 +1881,7 @@
 /obj/map_helper/access_helper/airlock/station/external_airlock,
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
-	master_tag = "outpostNTexplo1_dock";
+	master_tag = "southrig1_dock";
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -1913,7 +1931,7 @@
 "mL" = (
 /obj/item/circuitboard/helm,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "mN" = (
 /obj/machinery/appliance/cooker/grill/stand,
 /turf/simulated/floor/fey/forest_grass,
@@ -1961,7 +1979,7 @@
 /obj/effect/shuttle_landmark/skyplanet/voidline/paripari,
 /obj/overmap/entity/visitable/ship/landable/trade/paripari,
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/paripari)
 "nb" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -2120,7 +2138,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "oj" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	pixel_y = 13
@@ -2135,7 +2153,7 @@
 "op" = (
 /obj/machinery/atmospherics/pipe/tank/air,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "os" = (
 /turf/simulated/floor/plating,
 /area/sector/sky_planet/sky)
@@ -2185,7 +2203,7 @@
 	invisibility = 101
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/paripari)
 "oM" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1
@@ -2261,7 +2279,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1379;
 	dir = 1;
-	id_tag = "outpostNTexplo1_dock_pump"
+	id_tag = "southrig1_dock_pump"
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techmaint,
@@ -2326,6 +2344,12 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/beige,
 /area/sector/sky_planet/racing_station/dock2)
+"pG" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/red{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/shuttle/paripari)
 "pH" = (
 /obj/machinery/iv_drip,
 /obj/effect/floor_decal/rust,
@@ -2406,7 +2430,7 @@
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
 	pixel_x = -24;
-	master_tag = "outpostNTexplo1_dock"
+	master_tag = "southrig1_dock"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/sky_planet/outpost/office)
@@ -2444,10 +2468,14 @@
 /area/sector/sky_planet/station_city/street)
 "qh" = (
 /obj/machinery/door/blast/regular{
-	id = "Arrowhead Airlock"
+	id = "Redcomet Airlock"
+	},
+/obj/machinery/button/remote/airlock{
+	id = "Redcomet Airlock";
+	pixel_x = 25
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "qj" = (
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#b88a3b"
@@ -2464,13 +2492,19 @@
 "ql" = (
 /obj/machinery/atmospherics/valve,
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "qn" = (
 /obj/structure/window/reinforced/full{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/shop)
+"qs" = (
+/obj/machinery/atmospherics/component/unary/engine{
+	dir = 8
+	},
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/bonnethead)
 "qt" = (
 /obj/structure/flora/tree/fey/large_tree/tree6,
 /turf/simulated/floor/fey/forest_grass,
@@ -2518,7 +2552,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/paripari)
 "qL" = (
 /obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techfloor,
@@ -2728,7 +2762,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /turf/simulated/wall/r_wall/prepainted/security,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "sa" = (
 /turf/simulated/floor/carpet/patterened/green,
 /area/sector/sky_planet/station_city/offices)
@@ -2770,14 +2804,14 @@
 "sk" = (
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/access_button/airlock_interior{
-	master_tag = "outpostNTexplo3_dock";
+	master_tag = "westrig1_dock";
 	pixel_x = 10;
 	pixel_y = -22
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1379;
 	dir = 1;
-	id_tag = "outpostNTexplo3_dock_pump"
+	id_tag = "westrig1_dock_pump"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/sky_planet/outpost/office)
@@ -2791,7 +2825,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "sr" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -2800,7 +2834,7 @@
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1379;
-	id_tag = "outpostNTciv2_dock_pump";
+	id_tag = "eastrig1_dock_pump";
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2938,7 +2972,7 @@
 	dir = 8
 	},
 /turf/simulated/wall/r_wall/prepainted/engineering,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "ti" = (
 /obj/effect/floor_decal/corner/red/full{
 	dir = 4
@@ -2985,7 +3019,7 @@
 	cur_coils = 3
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "tB" = (
 /obj/effect/floor_decal/corner/green/diagonal,
 /obj/effect/floor_decal/rust,
@@ -3042,7 +3076,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1379;
 	dir = 1;
-	id_tag = "outpostNTsec_dock_pump"
+	id_tag = "northrig2_dock_pump"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
@@ -3157,7 +3191,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "us" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -3335,7 +3369,7 @@
 	invisibility = 101
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "vF" = (
 /obj/structure/flora/fey/grass/grass8,
 /obj/effect/floor_decal/rust/mono_rusted3{
@@ -3429,7 +3463,7 @@
 "we" = (
 /obj/machinery/shipsensors,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "wf" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -3488,16 +3522,16 @@
 	dir = 8
 	},
 /turf/simulated/wall/r_wall/prepainted/civilian,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/paripari)
 "wx" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1379;
-	id_tag = "outpostNTemt_dock_pump"
+	id_tag = "eastrig1_dock_pump"
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
-	id_tag = "outpostNTemt_dock";
+	id_tag = "eastrig1_dock";
 	pixel_y = 25
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -3534,7 +3568,13 @@
 "wI" = (
 /obj/item/circuitboard/helm,
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
+"wJ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/shuttle/paripari)
 "wL" = (
 /obj/machinery/door/blast/regular/open,
 /obj/effect/floor_decal/rust/mono_rusted3{
@@ -3570,10 +3610,10 @@
 	name = "Pilot's Seat"
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "wT" = (
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "wW" = (
 /obj/effect/floor_decal/borderfloorblack,
 /turf/simulated/floor/tiled/techfloor,
@@ -4167,7 +4207,7 @@
 "AW" = (
 /obj/machinery/air_alarm/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "AY" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-8"
@@ -4176,7 +4216,7 @@
 /area/sector/sky_planet/outpost/medical)
 "Ba" = (
 /turf/simulated/wall/r_wall/prepainted/engineering,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "Bc" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -4248,7 +4288,7 @@
 	name = "Pilot's Seat"
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "BB" = (
 /turf/simulated/floor/carpet/oracarpet,
 /area/sector/sky_planet/station_city/appartement2)
@@ -4271,7 +4311,7 @@
 	dir = 6
 	},
 /turf/simulated/wall/r_wall/prepainted/civilian,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/paripari)
 "BF" = (
 /obj/machinery/door/airlock/multi_tile,
 /turf/simulated/floor/tiled/techfloor,
@@ -4316,6 +4356,9 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/outpost/office)
+"BQ" = (
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/shuttle/paripari)
 "BU" = (
 /obj/structure/cable/green{
 	dir = 4;
@@ -4363,7 +4406,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "Cn" = (
 /obj/structure/bed/chair/office/light{
 	dir = 1
@@ -4396,7 +4439,7 @@
 "Cy" = (
 /obj/machinery/computer/ship/engines,
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "CH" = (
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran,
 /turf/simulated/floor/tiled/techfloor,
@@ -4404,7 +4447,7 @@
 "CK" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/space/basic,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "CL" = (
 /obj/structure/table/hardwoodtable,
 /obj/item/event/prop/laptop2,
@@ -4448,14 +4491,14 @@
 	dir = 8
 	},
 /turf/simulated/shuttle/plating/airless/carry,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "CX" = (
 /obj/structure/table/bench/steel,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/office)
 "CY" = (
 /turf/simulated/wall/r_wall/prepainted/security,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "Df" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 4
@@ -4470,7 +4513,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/paripari)
 "Dg" = (
 /obj/machinery/light/spot{
 	dir = 1
@@ -4528,13 +4571,13 @@
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/access_button/airlock_exterior{
 	pixel_x = -24;
-	master_tag = "outpostNTexplo3_dock";
+	master_tag = "westrig1_dock";
 	pixel_y = -23
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1379;
 	dir = 1;
-	id_tag = "outpostNTexplo3_dock_pump"
+	id_tag = "westrig1_dock_pump"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/sky_planet/outpost/office)
@@ -4554,13 +4597,13 @@
 "DF" = (
 /obj/machinery/atmospherics/valve,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "DH" = (
 /obj/machinery/door/airlock/glass_external/public,
 /obj/map_helper/access_helper/airlock/station/external_airlock,
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
-	master_tag = "outpostNTexplo2_dock";
+	master_tag = "westrig2_dock";
 	pixel_x = 24;
 	pixel_y = -1
 	},
@@ -4678,6 +4721,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/sector/sky_planet/racing_station/dock2)
+"Ep" = (
+/obj/machinery/atmospherics/portables_connector,
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/shuttle/paripari)
 "Eq" = (
 /obj/effect/floor_decal/rust,
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran,
@@ -4725,7 +4772,7 @@
 	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
-	master_tag = "outpostNTciv3_dock";
+	master_tag = "southrig3_dock";
 	pixel_y = 2;
 	pixel_x = -24
 	},
@@ -4778,6 +4825,10 @@
 "ES" = (
 /turf/simulated/floor/carpet/patterened,
 /area/sector/sky_planet/station_city/appartement)
+"ET" = (
+/obj/machinery/shipsensors,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/paripari)
 "EV" = (
 /obj/structure/table/marble,
 /obj/effect/floor_decal/corner/blue/diagonal,
@@ -4813,7 +4864,7 @@
 /area/sector/sky_planet/station_city/police)
 "Fg" = (
 /turf/simulated/floor/tiled/techmaint,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/paripari)
 "Fi" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /obj/item/reagent_containers/blood/prelabeled/OMinus,
@@ -4859,7 +4910,7 @@
 "Fv" = (
 /obj/machinery/computer/shuttle_control/explore/redcomet,
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "Fw" = (
 /obj/structure/closet/largecardboard,
 /turf/simulated/floor/carpet/purcarpet,
@@ -4892,7 +4943,7 @@
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1379;
-	id_tag = "outpostNTciv3_dock_pump";
+	id_tag = "southrig3_dock_pump";
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4939,7 +4990,7 @@
 /obj/machinery/airlock_sensor{
 	pixel_x = -25;
 	pixel_y = 25;
-	id_tag = "outpostNTciv1_dock"
+	id_tag = "northrig3_dock"
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/techfloor,
@@ -5022,7 +5073,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "Gp" = (
 /obj/machinery/light/spot{
 	dir = 1
@@ -5097,7 +5148,7 @@
 	dir = 6
 	},
 /turf/simulated/wall/r_wall/prepainted/engineering,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "GG" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -27
@@ -5241,7 +5292,7 @@
 	invisibility = 101
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "HI" = (
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/sky_planet/station_city/offices)
@@ -5255,13 +5306,13 @@
 	pixel_x = -27
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/paripari)
 "HS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/red{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "HU" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -5378,7 +5429,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/paripari)
 "IG" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/reagent_containers/food/condiment/small/packet/ketchup,
@@ -5417,7 +5468,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "IP" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/effect/floor_decal/rust,
@@ -5436,7 +5487,7 @@
 /area/sector/sky_planet/racing_station/lounge)
 "IT" = (
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "IU" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/machinery/light/small,
@@ -5453,7 +5504,7 @@
 	dir = 5
 	},
 /turf/simulated/wall/r_wall/prepainted/civilian,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/paripari)
 "Ja" = (
 /obj/machinery/door/airlock/glass/civilian,
 /turf/simulated/floor/wood/indoors,
@@ -5519,7 +5570,7 @@
 	},
 /obj/machinery/door/airlock/voidcraft/survival_pod,
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "Js" = (
 /turf/simulated/floor/tiled/kafel_full/beige,
 /area/sector/sky_planet/racing_station/lounge)
@@ -5573,7 +5624,7 @@
 /obj/map_helper/access_helper/airlock/station/external_airlock,
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
-	master_tag = "outpostNTexplo2_dock";
+	master_tag = "westrig2_dock";
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -5647,11 +5698,11 @@
 /obj/machinery/airlock_sensor{
 	pixel_x = -25;
 	pixel_y = 25;
-	id_tag = "outpostNTexplo3_dock"
+	id_tag = "westrig1_dock"
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
-	id_tag = "outpostNTexplo3_dock";
+	id_tag = "westrig1_dock";
 	pixel_y = 25
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -5686,10 +5737,14 @@
 /area/sector/sky_planet/outpost/office)
 "Kr" = (
 /obj/machinery/door/blast/regular{
-	id = "Arrowhead Airlock"
+	id = "Paripari Airlock"
+	},
+/obj/machinery/button/remote/airlock{
+	id = "Paripari Airlock";
+	pixel_x = 25
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/paripari)
 "Ks" = (
 /obj/effect/floor_decal/corner/red/border,
 /obj/machinery/light,
@@ -5793,6 +5848,10 @@
 /obj/item/ammo_casing/a5_56mm,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/police)
+"Lb" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/redcomet)
 "Le" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor,
@@ -5823,7 +5882,7 @@
 	dir = 4
 	},
 /turf/simulated/wall/r_wall/prepainted/engineering,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "Lt" = (
 /obj/spawner/window/low_wall/full/firelocks,
 /turf/simulated/floor/reinforced,
@@ -5884,7 +5943,7 @@
 "LM" = (
 /obj/machinery/atmospherics/portables_connector,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "LQ" = (
 /obj/machinery/vending/tool,
 /turf/simulated/floor/tiled/techfloor,
@@ -5964,7 +6023,7 @@
 /obj/map_helper/access_helper/airlock/station/external_airlock,
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
-	master_tag = "outpostNTsec_dock";
+	master_tag = "northrig2_dock";
 	pixel_x = -21;
 	pixel_y = -1
 	},
@@ -5996,13 +6055,13 @@
 	dir = 4
 	},
 /obj/machinery/access_button/airlock_exterior{
-	master_tag = "outpostNTciv2_dock";
+	master_tag = "eastrig1_dock";
 	pixel_y = 32;
 	pixel_x = 22
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
-	id_tag = "outpostNTciv2_dock";
+	id_tag = "eastrig1_dock";
 	pixel_x = 1;
 	pixel_y = 31
 	},
@@ -6072,7 +6131,7 @@
 "Nf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/red,
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/paripari)
 "Ng" = (
 /obj/machinery/power/smes/buildable{
 	charge = 1.5e+007;
@@ -6249,7 +6308,7 @@
 /obj/machinery/airlock_sensor{
 	pixel_x = 9;
 	pixel_y = 25;
-	id_tag = "outpostNTemt_dock"
+	id_tag = "eastrig1_dock"
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/techmaint,
@@ -6366,7 +6425,7 @@
 	dir = 6
 	},
 /turf/simulated/wall/r_wall/prepainted/civilian,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/paripari)
 "Oy" = (
 /obj/structure/table/hardwoodtable,
 /obj/item/storage/box/glasses/meta,
@@ -6531,7 +6590,7 @@
 /obj/effect/shuttle_landmark/skyplanet/voidline/bonnethead,
 /obj/overmap/entity/visitable/ship/landable/trade/bonnethead,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "Px" = (
 /obj/structure/fuel_port{
 	pixel_x = -27
@@ -6541,7 +6600,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "Py" = (
 /obj/structure/bed/chair/office{
 	dir = 4
@@ -6582,7 +6641,7 @@
 	pixel_y = -33
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "PJ" = (
 /obj/structure/table/standard,
 /turf/simulated/floor/wood/indoors,
@@ -6594,10 +6653,13 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1379;
 	dir = 1;
-	id_tag = "outpostNTexplo2_dock_pump"
+	id_tag = "westrig2_dock_pump"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
+"PN" = (
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/paripari)
 "PQ" = (
 /obj/structure/table/marble{
 	color = "#555555";
@@ -6681,7 +6743,7 @@
 /obj/effect/shuttle_landmark/skyplanet/voidline/redcomet,
 /obj/overmap/entity/visitable/ship/landable/trade/redcomet,
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "QA" = (
 /obj/structure/bed/chair/sofa/brown/corner{
 	dir = 4
@@ -6712,7 +6774,7 @@
 	name = "Pilot's Seat"
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/paripari)
 "QM" = (
 /obj/structure/fence/wooden,
 /turf/simulated/floor/fey/forest_grass,
@@ -6934,10 +6996,17 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/office)
+"Sg" = (
+/obj/machinery/power/smes/buildable{
+	charge = 15000;
+	cur_coils = 3
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/shuttle/paripari)
 "Sh" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "Si" = (
 /obj/effect/paint/sun,
 /obj/effect/paint_stripe/black,
@@ -6980,7 +7049,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
-	master_tag = "outpostNTciv1_dock";
+	master_tag = "northrig3_dock";
 	pixel_x = 26;
 	pixel_y = -1
 	},
@@ -6992,7 +7061,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "Sy" = (
 /obj/structure/flora/tree/fey/large_tree/tree1,
 /turf/simulated/floor/fey/forest_grass,
@@ -7128,7 +7197,7 @@
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
-	id_tag = "outpostNTexplo2_dock";
+	id_tag = "westrig2_dock";
 	pixel_y = 25
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7139,13 +7208,13 @@
 "Td" = (
 /obj/item/circuitboard/helm,
 /turf/simulated/floor/tiled/techmaint,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/paripari)
 "Te" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "Ti" = (
 /turf/simulated/floor/carpet/patterened/brown,
 /area/sector/sky_planet/station_city/offices)
@@ -7183,7 +7252,7 @@
 "Ts" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "Tt" = (
 /obj/item/ammo_casing/a5_56mm,
 /obj/effect/floor_decal/rust,
@@ -7279,6 +7348,10 @@
 	},
 /turf/simulated/floor/lino,
 /area/sector/sky_planet/outpost/office)
+"Ud" = (
+/obj/machinery/shipsensors,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/bonnethead)
 "Uf" = (
 /obj/structure/sink{
 	dir = 4;
@@ -7378,7 +7451,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "UJ" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -7438,11 +7511,11 @@
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
-	id_tag = "outpostNTsec_dock";
+	id_tag = "northrig2_dock";
 	pixel_x = 26
 	},
 /obj/machinery/access_button/airlock_exterior{
-	master_tag = "outpostNTsec_dock";
+	master_tag = "northrig2_dock";
 	pixel_y = 32;
 	pixel_x = 22
 	},
@@ -7512,7 +7585,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "Vu" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -7569,7 +7642,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "VN" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	pixel_y = 13
@@ -7582,7 +7655,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /turf/simulated/wall/r_wall/prepainted/engineering,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "VP" = (
 /obj/effect/floor_decal/industrial/danger,
 /turf/simulated/floor/plating,
@@ -7592,7 +7665,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "VR" = (
 /obj/effect/floor_decal/industrial/danger/corner{
 	dir = 1
@@ -7638,11 +7711,11 @@
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
-	id_tag = "outpostNTciv1_dock";
+	id_tag = "northrig3_dock";
 	pixel_x = 26
 	},
 /obj/machinery/access_button/airlock_exterior{
-	master_tag = "outpostNTciv1_dock";
+	master_tag = "northrig3_dock";
 	pixel_y = 32;
 	pixel_x = 22
 	},
@@ -7681,7 +7754,7 @@
 "Wp" = (
 /obj/machinery/atmospherics/portables_connector,
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "Wq" = (
 /obj/structure/window/reinforced/survival_pod{
 	dir = 8
@@ -7760,7 +7833,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "WQ" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/storage/backpack/parachute,
@@ -7909,7 +7982,7 @@
 	dir = 5
 	},
 /turf/simulated/wall/r_wall/prepainted/engineering,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "XH" = (
 /obj/structure/bed/chair/sofa/brown/corner{
 	dir = 1
@@ -7951,7 +8024,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/redcomet)
 "XS" = (
 /obj/effect/floor_decal/corner/red/border{
 	dir = 5
@@ -7964,7 +8037,7 @@
 	dir = 8
 	},
 /obj/machinery/access_button/airlock_interior{
-	master_tag = "outpostNTemt_dock";
+	master_tag = "eastrig1_dock";
 	pixel_x = -23;
 	pixel_y = -22
 	},
@@ -7990,10 +8063,14 @@
 /area/sector/sky_planet/outpost/docking_port1)
 "Yg" = (
 /obj/machinery/door/blast/regular{
-	id = "Arrowhead Airlock"
+	id = "Bonnethead Airlock"
+	},
+/obj/machinery/button/remote/airlock{
+	id = "Bonnethead Airlock";
+	pixel_x = 25
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "Yh" = (
 /obj/machinery/door/blast/regular,
 /turf/simulated/floor/reinforced,
@@ -8008,7 +8085,7 @@
 "Yn" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "Yo" = (
 /obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/tiled/techfloor/monogrid,
@@ -8042,12 +8119,12 @@
 /obj/machinery/airlock_sensor{
 	pixel_x = -25;
 	pixel_y = 25;
-	id_tag = "outpostNTexplo1_dock"
+	id_tag = "southrig1_dock"
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	dir = 4;
 	frequency = 1380;
-	id_tag = "outpostNTexplo1_dock";
+	id_tag = "southrig1_dock";
 	pixel_x = -26;
 	pixel_y = 1
 	},
@@ -8098,7 +8175,7 @@
 "YK" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/paripari)
 "YL" = (
 /obj/structure/table/bench/steel,
 /obj/effect/floor_decal/corner/red/border,
@@ -8188,7 +8265,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1379;
 	dir = 1;
-	id_tag = "outpostNTexplo1_dock_pump"
+	id_tag = "southrig1_dock_pump"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/sky_planet/outpost/office)
@@ -8211,7 +8288,7 @@
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1379;
-	id_tag = "outpostNTciv3_dock_pump";
+	id_tag = "southrig3_dock_pump";
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -8246,12 +8323,12 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1379;
 	dir = 8;
-	id_tag = "outpostNTemt_dock_pump"
+	id_tag = "eastrig1_dock_pump"
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/access_button/airlock_exterior{
 	pixel_x = 8;
-	master_tag = "outpostNTemt_dock";
+	master_tag = "eastrig1_dock";
 	pixel_y = -23
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -8266,11 +8343,11 @@
 /obj/machinery/airlock_sensor{
 	pixel_x = -25;
 	pixel_y = 25;
-	id_tag = "outpostNTciv2_dock"
+	id_tag = "eastrig1_dock"
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1379;
-	id_tag = "outpostNTciv2_dock_pump";
+	id_tag = "eastrig1_dock_pump";
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -8306,7 +8383,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/bonnethead)
 "ZR" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -28543,9 +28620,9 @@ sD
 sD
 iS
 la
-MR
-MR
-MR
+Lb
+Lb
+Lb
 we
 iS
 iS
@@ -28736,11 +28813,11 @@ iS
 sD
 sD
 iS
-MR
-MR
+Lb
+Lb
 wI
-MR
-MR
+Lb
+Lb
 iS
 iS
 sD
@@ -28930,11 +29007,11 @@ iS
 sD
 ZM
 iS
-MR
+Lb
 Cy
 lf
 bV
-MR
+Lb
 iS
 iS
 sD
@@ -29124,11 +29201,11 @@ iS
 sD
 sD
 iS
-MR
+Lb
 Fv
 ke
 BA
-MR
+Lb
 iS
 iS
 sD
@@ -32024,10 +32101,10 @@ zK
 sD
 sD
 iS
-CK
-CK
-CK
-CK
+bL
+bL
+bL
+bL
 iS
 oI
 iS
@@ -32218,10 +32295,10 @@ zK
 sD
 sD
 iS
-CK
+bL
 Fg
 Td
-CK
+bL
 iS
 iS
 iS
@@ -32412,10 +32489,10 @@ zK
 Oq
 ZM
 iS
-CK
+bL
 HO
 QL
-CK
+bL
 iS
 iS
 iS
@@ -32606,11 +32683,11 @@ zK
 sD
 sD
 iS
-CK
+bL
 hZ
 Fg
 gF
-we
+ET
 iS
 iS
 sD
@@ -32805,7 +32882,7 @@ oL
 Fg
 lG
 lG
-la
+jB
 iS
 sD
 sD
@@ -33000,15 +33077,15 @@ lA
 Df
 lG
 lG
-MJ
+PN
 sD
 sD
 iS
-la
+kO
 Ba
 HS
 Ba
-we
+Ud
 iS
 iS
 sD
@@ -33192,7 +33269,7 @@ lG
 fY
 qJ
 hV
-wT
+cy
 lG
 lG
 sD
@@ -33383,10 +33460,10 @@ sD
 ZM
 iS
 lG
-Wp
-UI
-Ck
-wT
+Ep
+wJ
+pG
+BQ
 mZ
 Kr
 sD
@@ -33577,7 +33654,7 @@ Oq
 sD
 iS
 lG
-Wp
+Ep
 YK
 gz
 Nf
@@ -33771,11 +33848,11 @@ sD
 sD
 iS
 lG
-Wp
+Ep
 YK
 aQ
-wT
-md
+BQ
+Sg
 lG
 sD
 sD
@@ -33965,10 +34042,10 @@ sD
 sD
 iS
 lG
-Wp
+Ep
 YK
-wT
-wT
+BQ
+BQ
 Ov
 IZ
 sD
@@ -34159,9 +34236,9 @@ sD
 Vl
 iS
 lG
-Wp
+Ep
 YK
-wT
+BQ
 Ov
 bg
 gP
@@ -34555,13 +34632,13 @@ iS
 iS
 sD
 sD
-CU
-CU
-CU
-CU
-CU
-CU
-CU
+qs
+qs
+qs
+qs
+qs
+qs
+qs
 iS
 sD
 sD

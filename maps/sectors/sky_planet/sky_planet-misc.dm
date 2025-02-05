@@ -71,9 +71,9 @@
 	base_area = /area/sector/sky_planet/sky
 
 /obj/effect/shuttle_landmark/skyplanet/ntoutpost/excursion3
-	name = "NT Outpost Hyades - West Rig 3 (Explo)"
+	name = "NT Outpost Hyades - West Rig 2 (Explo)"
 	landmark_tag = "sky_excursion3_dock"
-	docking_controller = "westrig3_dock"
+	docking_controller = "westrig2_dock"
 	base_turf = /turf/simulated/open/skyplanet
 	base_area = /area/sector/sky_planet/sky
 
