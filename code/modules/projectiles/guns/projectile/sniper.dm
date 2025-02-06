@@ -110,18 +110,3 @@
 	set popup_menu = 1
 
 	toggle_scope(2.0)
-
-/obj/item/gun/ballistic/SVD/taj
-	name = "Adhomai sniper rifle"
-	desc = "The Hotaki Marksman rifle, in stark contrast to the usual products of Hotak's arms, is an elegant and precise rifle that has taken the lives of many high value targets in the name of defending the Democratic People's Republic of Adhomai."
-	icon_state = "svd-taj"
-	item_state = "svd-taj"
-	wielded_item_state = "svd-taj-wielded"
-
-
-/obj/item/gun/ballistic/SVD/taj/update_icon_state()
-	. = ..()
-	if(ammo_magazine)
-		icon_state = "SVD-taj"
-	else
-		icon_state = "SVD-taj-empty"

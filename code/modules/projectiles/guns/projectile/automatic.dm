@@ -397,21 +397,6 @@
 	else
 		icon_state = "mini-uzi-custom-empty"
 
-/obj/item/gun/ballistic/automatic/mini_uzi/taj
-	name = "\improper Adhomai Uzi"
-	desc = "The Hotak's Arms machine pistol has developed a fierce reputation for its use by guerillas of the Democratic People's Republic of Adhomai. Its top loading magazine allows one to go completely prone in the deep snow banks of Adhomai while maintaining good weapon stability."
-	icon_state = "mini-uzi-taj"
-	item_state = "mini-uzi-taj"
-
-/obj/item/gun/ballistic/automatic/mini_uzi/taj/update_icon_state()
-	. = ..()
-	if(ammo_magazine)
-		icon_state = "mini-uzi-taj"
-		item_state = "mini-uzi-taj"
-	else
-		icon_state = "mini-uzi-taj-empty"
-		item_state = "mini-uzi-taj-empty"
-
 /obj/item/gun/ballistic/automatic/p90
 	name = "personal defense weapon"
 	desc = "The H90K is a compact, large capacity submachine gun produced by Hephaestus Industries. Despite its fierce reputation, it still manages to feel like a toy. Uses 5.7x28mm rounds."
@@ -449,7 +434,8 @@
 
 /obj/item/gun/ballistic/automatic/tommygun
 	name = "\improper Tommy Gun"
-	desc = "This weapon was made famous by gangsters in the 20th century. Cybersun Industries is currently reproducing these for a target market of historic gun collectors and classy criminals. Uses .45 rounds."
+	desc = "This weapon was made famous by gangsters in the 20th century. Cybersun Industries began reproducing these for a target market of historic gun collectors and classy criminals. \
+	After they dissolved, the same plans used by Cybersun are now used by countless small manufacturers and criminal organizations. Uses .45 rounds."
 	icon_state = "tommygun"
 	w_class = WEIGHT_CLASS_NORMAL
 	caliber = /datum/ammo_caliber/a45
@@ -552,14 +538,6 @@
 /obj/item/gun/ballistic/automatic/automat/holy
 	ammo_type = /obj/item/ammo_casing/a7_62mm/silver
 	holy = TRUE
-
-/obj/item/gun/ballistic/automatic/automat/taj
-	name = "Adhomai automat"
-	desc = "The Hadii-Wrack Avtomat, is an aging internal magazine automatic rifle of the People's Republic of Adhomai's Grand People's Army whose long and storied service life is coming to an end as it is phased out in favor of more modern automatics."
-	icon_state = "automat-taj"
-	item_state = "automat-taj"
-	wielded_item_state = "automat-taj-wielded"
-	fire_anim = ""
 
 /obj/item/gun/ballistic/automatic/holyshot
 	name = "Holy automatic shotgun"
