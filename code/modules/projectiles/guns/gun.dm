@@ -110,7 +110,6 @@
 	/// active firemode
 	var/datum/firemode/firemode
 	/// use radial for firemode
-	#warn impl
 	var/firemodes_use_radial = FALSE
 	/// firemode swap action
 	var/datum/action/firemode_swap_action

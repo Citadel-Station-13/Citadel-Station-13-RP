@@ -299,7 +299,7 @@
 		user_swap_particle_array(actor)
 	var/datum/firemode/energy/current_firemode = firemode
 	if(current_firemode?.considered_lethal)
-		switch_firemodes(actor.performer)
+		user_switch_firemodes(actor)
 
 //* Action Datums *//
 

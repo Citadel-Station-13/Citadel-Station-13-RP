@@ -56,18 +56,24 @@
 	return preferred || first_found
 
 /obj/item/gun/proc/user_switch_firemodes(datum/event_args/actor/actor, datum/firemode/request_firemode)
-	#warn impl
-
+	switch(length(firemodes))
+		if(0)
+			return
+		if(1)
+			if(firemode && (!request_firemode || (request_firemode == firemode)))
+				return
+	var/datum/firemode/switch_to = (request_firemode && (request_firemode in firemodes) && request_firemode) ||	\
+		(firemodes_use_radial ? user_firemode_radial(actor) : get_next_firemode())
+	set_firemode(switch_to)
+	actor.chat_feedback(
+		SPAN_NOTICE("[src] is now set to [switch_to.name]."),
+		target = src,
+	)
 	playsound(src, selector_sound, 50, 1)
 
-// /obj/item/gun/proc/switch_firemodes(mob/user)
-// 	if(firemodes.len <= 1)
-// 		return null
-
-// 	var/datum/firemode/new_mode = get_next_firemode()
-// 	if(new_mode)
-// 		sel_mode = firemodes.Find(new_mode)
-// 	new_mode.apply_legacy_variables(src)
-// 	if(user)
-// 		to_chat(user, "<span class='notice'>\The [src] is now set to [new_mode.name].</span>")
-// 	return new_mode
+/obj/item/gun/proc/user_firemode_radial(datum/event_args/actor/actor)
+	var/atom/use_anchor = inv_inside ? inv_inside.owner : src
+	var/list/use_choices = list()
+	for(var/datum/firemode/firemode as anything in firemodes)
+		use_choices[firemode] = firemode.fetch_radial_appearance()
+	return show_radial_menu(actor.initiator, use_anchor, use_choices, require_near = TRUE)
