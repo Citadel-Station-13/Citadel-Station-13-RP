@@ -258,8 +258,7 @@
 
 /obj/item/gun/projectile/energy/gun/martin/update_overlays()
 	. = ..()
-	var/datum/firemode/current_mode = firemodes[sel_mode]
-	switch(current_mode.name)
+	switch(firemode.name)
 		if("stun")
 			. += "taser_pdw"
 		if("lethal")

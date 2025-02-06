@@ -42,7 +42,7 @@
 	cut_overlays()
 
 /obj/item/gun/projectile/energy/secutor/special_check(mob/user)
-	if(!emagged && legacy_get_firemode()?.name == "lethal" && get_security_level() == "green")
+	if(!emagged && firemode.name == "lethal" && get_security_level() == "green")
 		to_chat(user,"<span class='warning'>The trigger refuses to depress while on the lethal setting and while under security level blue!</span>")
 		return FALSE
 

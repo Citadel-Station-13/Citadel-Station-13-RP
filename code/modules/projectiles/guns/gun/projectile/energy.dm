@@ -142,10 +142,6 @@
 			charge_tick = 0
 	return 1
 
-/obj/item/gun/projectile/energy/switch_firemodes(mob/user)
-	if(..())
-		update_icon()
-
 /obj/item/gun/projectile/energy/emp_act(severity)
 	..()
 	update_icon()
@@ -153,7 +149,7 @@
 /obj/item/gun/projectile/energy/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	if(modular_system)
 		return modular_particle_array_active ? modular_particle_array_active.consume_next_projectile(cycle) : GUN_FIRED_FAIL_INERT
-	var/datum/firemode/energy/energy_firemode = legacy_get_firemode()
+	var/datum/firemode/energy/energy_firemode = firemode
 	if(!istype(energy_firemode))
 		return null
 	var/effective_power_use = isnull(energy_firemode.charge_cost) ? charge_cost : energy_firemode.charge_cost
@@ -301,7 +297,7 @@
 
 	if(modular_particle_array_active.considered_lethal)
 		user_swap_particle_array(actor)
-	var/datum/firemode/energy/current_firemode = legacy_get_firemode()
+	var/datum/firemode/energy/current_firemode = firemode
 	if(current_firemode?.considered_lethal)
 		switch_firemodes(actor.performer)
 

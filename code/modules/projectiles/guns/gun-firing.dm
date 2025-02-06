@@ -16,7 +16,7 @@
 		resolved_firer,
 		resolved_angle,
 		resolved_firing_flags,
-		legacy_get_firemode(),
+		firemode,
 		clickchain.target,
 		clickchain,
 		clickchain.click_params_tile_px,
@@ -166,7 +166,7 @@
 	 */
 
 	if(isnull(firemode))
-		firemode = legacy_get_firemode()
+		firemode = src.firemode
 		ASSERT(firemode)
 
 	// create cycle

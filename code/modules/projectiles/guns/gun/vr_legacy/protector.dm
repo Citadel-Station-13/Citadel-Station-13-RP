@@ -35,7 +35,7 @@
 	var/emagged = FALSE
 
 /obj/item/gun/projectile/energy/protector/special_check(mob/user)
-	if(!emagged && legacy_get_firemode()?.name == "lethal" && get_security_level() == "green")
+	if(!emagged &&firemode.name == "lethal" && get_security_level() == "green")
 		to_chat(user,"<span class='warning'>The trigger refuses to depress while on the lethal setting under security level green!</span>")
 		return FALSE
 

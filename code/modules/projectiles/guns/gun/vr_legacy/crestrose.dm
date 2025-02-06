@@ -26,11 +26,6 @@
 	list(mode_name="scythe", icon_state="crestrose",item_state = "crestrose",damage_force=15),
 	)
 
-/obj/item/gun/projectile/ballistic/automatic/fluff/crestrose/switch_firemodes(mob/user)
-	if(..())
-		update_icon()
-		update_worn_icon()
-
 // todo: uhh we can fix it later maybe idfk
 // /obj/item/gun/projectile/ballistic/automatic/fluff/crestrose/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 // 	if(default_parry_check(user, attacker, damage_source) && prob(50))

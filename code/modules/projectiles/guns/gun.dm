@@ -107,6 +107,8 @@
 	 * This variable may either be a list, of the above, or a singular of the above.
 	 */
 	var/list/firemodes = /datum/firemode
+	/// active firemode
+	var/datum/firemode/firemode
 	/// use radial for firemode
 	#warn impl
 	var/firemodes_use_radial = FALSE
@@ -151,7 +153,6 @@
 	var/one_handed_penalty = 0 // Penalty applied if someone fires a two-handed gun with one hand.
 	var/atom/movable/screen/auto_target/auto_target
 
-	var/sel_mode = 1 //index of the currently selected mode
 	var/selector_sound = 'sound/weapons/guns/selector.ogg'
 
 	//aiming system stuff
@@ -261,19 +262,16 @@
 	AddComponent(/datum/component/wielding)
 
 	//* instantiate & dedupe renderers *//
-	var/requires_icon_update
 	if(item_renderer)
 		if(ispath(item_renderer) || IS_ANONYMOUS_TYPEPATH(item_renderer))
 			item_renderer = new item_renderer
 		var/item_renderer_key = item_renderer.dedupe_key()
 		item_renderer = item_renderer_store[item_renderer_key] || (item_renderer_store[item_renderer_key] = item_renderer)
-		requires_icon_update = TRUE
 	if(mob_renderer)
 		if(ispath(mob_renderer) || IS_ANONYMOUS_TYPEPATH(mob_renderer))
 			mob_renderer = new mob_renderer
 		var/mob_renderer_key = mob_renderer.dedupe_key()
 		mob_renderer = mob_renderer_store[mob_renderer_key] || (mob_renderer_store[mob_renderer_key] = mob_renderer)
-		requires_icon_update = TRUE
 
 	//! LEGACY: Rendering
 	// if neither of these are here, we are using legacy render. //
@@ -304,14 +302,14 @@
 					stack_trace("[actual] ([actual.type]) couldn't be auto-installed on initialize despite being in list.")
 					qdel(actual)
 
-	// cell system //
+	//* cell system *//
 	if(cell_system)
 		var/datum/object_system/cell_slot/slot = init_cell_slot(cell_type)
 		slot.legacy_use_device_cells = cell_system_legacy_use_device
 		slot.remove_yank_offhand = TRUE
 		slot.remove_yank_context = TRUE
 
-	// modular components //
+	//* modular components *//
 	if(islist(modular_component_slots))
 		if(modular_system)
 			var/list/existing_typelist = get_typelist(NAMEOF(src, modular_component_slots))
@@ -327,10 +325,7 @@
 		else
 			modular_component_slots = null
 
-	if(requires_icon_update)
-		update_icon()
-
-	//! LEGACY: firemodes
+	//* firemodes *//
 	if(!islist(firemodes))
 		firemodes = list(firemodes)
 	for(var/i in 1 to firemodes.len)
@@ -342,8 +337,8 @@
 		else if(ispath(key))
 			firemodes[i] = new key
 	if(length(firemodes))
-		sel_mode = 1
-		switch_firemodes()
+		set_firemode(firemodes[1], TRUE)
+	reconsider_firemode_action()
 
 	//! LEGACY: accuracy
 	if(isnull(scoped_accuracy))
@@ -353,8 +348,7 @@
 	if(pin)
 		pin = new pin(src)
 
-	// firemodes //
-	reconsider_firemode_action()
+	update_icon()
 
 /obj/item/gun/Destroy()
 	if(locate(/obj/projectile) in src)
@@ -370,9 +364,8 @@
 			. += "It has \a [pin] installed."
 		else
 			. += "It doesn't have a firing pin installed, and won't fire."
-	if(firemodes.len > 1)
-		var/datum/firemode/current_mode = firemodes[sel_mode]
-		. += "The fire selector is set to [current_mode.name]."
+	if(firemode)
+		. += "The fire selector is set to [firemode.name]."
 	if(safety_state != GUN_NO_SAFETY)
 		. += SPAN_NOTICE("The safety is [check_safety() ? "on" : "off"].")
 	for(var/obj/item/gun_attachment/attachment as anything in attachments)
@@ -557,25 +550,6 @@
 		accuracy = initial(accuracy)
 		recoil = initial(recoil)
 
-/obj/item/gun/proc/switch_firemodes(mob/user)
-	if(firemodes.len <= 1)
-		return null
-
-	var/datum/firemode/new_mode = get_next_firemode()
-	if(new_mode)
-		sel_mode = firemodes.Find(new_mode)
-	new_mode.apply_legacy_variables(src)
-	if(user)
-		to_chat(user, "<span class='notice'>\The [src] is now set to [new_mode.name].</span>")
-		playsound(loc, selector_sound, 50, 1)
-	return new_mode
-
-// PENDING FIREMODE REWORK
-/obj/item/gun/proc/legacy_get_firemode() as /datum/firemode
-	if(!length(firemodes) || (sel_mode < 1) || (sel_mode > length(firemodes)))
-		return
-	return firemodes[sel_mode]
-
 /obj/item/gun/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
@@ -752,7 +726,7 @@
 	var/using_base_icon_state = base_icon_state || initial(icon_state)
 	var/using_base_worn_state = base_mob_state || initial(worn_state) || using_base_icon_state
 	var/using_ratio = get_ammo_ratio()
-	var/datum/firemode/using_firemode = legacy_get_firemode()
+	var/datum/firemode/using_firemode = firemode
 	var/using_color = get_firemode_color()
 
 	item_renderer?.render(src, using_base_icon_state, using_ratio, using_firemode?.render_key, using_color)
@@ -765,7 +739,7 @@
 	// todo: the code copypaste here is atrocious
 	var/using_base_worn_state = base_mob_state || initial(worn_state) || base_icon_state || initial(icon_state)
 	var/using_ratio = get_ammo_ratio()
-	var/datum/firemode/using_firemode = legacy_get_firemode()
+	var/datum/firemode/using_firemode = firemode
 	var/using_color = get_firemode_color()
 	var/list/overlays = mob_renderer?.render_overlays(src, using_base_worn_state, using_ratio, using_firemode?.render_key, using_color)
 	if(length(overlays))
@@ -779,7 +753,7 @@
  * Gets the color our firemode renders as during rendering.
  */
 /obj/item/gun/proc/get_firemode_color()
-	return legacy_get_firemode()?.render_color
+	return firemode?.render_color
 
 //* Action Datums *//
 
@@ -798,4 +772,4 @@
 
 /datum/action/item_action/gun_firemode_swap/invoke_target(obj/item/gun/target, datum/event_args/actor/actor)
 	. = ..()
-	target.switch_firemodes(actor.performer)
+	target.user_switch_firemodes(actor)

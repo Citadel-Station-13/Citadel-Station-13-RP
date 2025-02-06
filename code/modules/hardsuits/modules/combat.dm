@@ -145,7 +145,7 @@
 		return 0
 
 	if(!target)
-		gun.switch_firemodes(holder.wearer)
+		gun.user_switch_firemodes(new /datum/event_args/actor(holder.wearer))
 		return 1
 
 	gun.start_firing_cycle_async(holder.wearer, get_centered_entity_tile_angle(holder.wearer, target), NONE, null, target, new /datum/event_args/actor(holder.wearer))
