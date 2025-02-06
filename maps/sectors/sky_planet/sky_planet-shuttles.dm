@@ -75,7 +75,7 @@
 	name = "Udang Pari-pari Racing Shuttle"
 	warmup_time = 8
 	shuttle_area = list(/area/shuttle/paripari)
-	current_location = "voidline_pari-pari"
+	current_location = "voidline_udang"
 	docking_controller_tag = "voidline_pari-pari_docker"
 	fuel_consumption = 5
 	move_time = 10

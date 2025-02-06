@@ -42,7 +42,7 @@
 		"Dart EMT Shuttle" = list("sky_emt4_dock"),
 		"Red Comet Racing Shuttle" = list ("voidline_redcomet"),
 		"Bonnethead Racing Shuttle" = list ("voidline_bonnethead"),
-		"Udang Pari-pari Racing Shuttle" = list ("voidline_pari-pari"),
+		"Udang Pari-pari Racing Shuttle" = list ("voidline_udang"),
 		"Arrowhead Racing Shuttle" = list ("voidline_arrowhead"),
 		)
 
@@ -170,7 +170,7 @@
 
 /obj/effect/shuttle_landmark/skyplanet/voidline/paripari
 	name = "Voidline Rig - Udang Pari-pari Pad"
-	landmark_tag = "voidline_pari-pari"
+	landmark_tag = "voidline_udang"
 	base_turf = /turf/simulated/floor/reinforced
 	base_area = /area/sector/sky_planet/racing_station/dock
 
