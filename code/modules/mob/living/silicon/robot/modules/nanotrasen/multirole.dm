@@ -3,67 +3,31 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/multirole)
 	id = "nt-multirole"
 	use_robot_module_path = /obj/item/robot_module/robot/standard
 	light_color = "#FFFFFF"
-	allowed_frames = list(
-		/datum/robot_frame{
-			name = "K4T";
-			robot_chassis = /datum/prototype/robot_chassis/biped;
-			robot_iconset = /datum/prototype/robot_iconset/biped_k4t;
-		},
-		/datum/robot_frame{
-			name = "M-USE (Nanotrasen)";
-			robot_chassis = /datum/prototype/robot_chassis/;
-			robot_iconset = /datum/prototype/robot_iconset/baseline_old/standard;
-		},
-		/datum/robot_frame{
-			name = "Cabeiri";
-			robot_chassis = /datum/prototype/robot_chassis/hover;
-			robot_iconset = /datum/prototype/robot_iconset/eyebot/standard;
-		},
-		/datum/robot_frame{
-			name = "Haruka";
-			robot_chassis = /datum/prototype/robot_chassis/biped;
-			robot_iconset = /datum/prototype/robot_iconset/biped_marina/standard;
-		},
-		/datum/robot_frame{
-			name = "Usagi";
-			robot_chassis = /datum/prototype/robot_chassis/biped;
-			robot_iconset = /datum/prototype/robot_iconset/biped_tall/tallflower;
-		},
-		/datum/robot_frame{
-			name = "Telemachus";
-			robot_chassis = /datum/prototype/robot_chassis/baseline;
-			robot_iconset = /datum/prototype/robot_iconset/baseline_toiletbot;
-		},
-		/datum/robot_frame{
-			name = "WT - Operator";
-			robot_chassis = /datum/prototype/robot_chassis/biped;
-			robot_iconset = /datum/prototype/robot_iconset/biped_sleek;
-		},
-		/datum/robot_frame{
-			name = "WT - Omni";
-			robot_chassis = /datum/prototype/robot_chassis/baseline;
-			robot_iconset = /datum/prototype/robot_iconset/baseline_misc/omoikane;
-		},
-		/datum/robot_frame{
-			name = "XI-GUS";
-			robot_chassis = /datum/prototype/robot_chassis/grounded;
-			robot_iconset = /datum/prototype/robot_iconset/grounded_spider/standard;
-		},
-		/datum/robot_frame{
-			name = "XI-ALP";
-			robot_chassis = /datum/prototype/robot_chassis/biped;
-			robot_iconset = /datum/prototype/robot_iconset/biped_heavy/standard;
-		},
-		/datum/robot_frame{
-			name = "F3-LINE";
-			robot_chassis = /datum/prototype/robot_chassis/quadruped/feline;
-			robot_iconset = /datum/prototype/robot_iconset/cat_feli/standard;
-		},
-		/datum/robot_frame{
-			name = "Basic";
-			robot_chassis = /datum/prototype/robot_chassis/baseline;
-			robot_iconset = /datum/prototype/robot_iconset/baseline_old/standard;
-		}
+	iconsets = list(
+		/datum/prototype/robot_iconset/biped_k4t,
+		/datum/prototype/robot_iconset/baseline_old/standard,
+		/datum/prototype/robot_iconset/hover_eyebot/standard,
+		/datum/prototype/robot_iconset/biped_marina/standard,
+		/datum/prototype/robot_iconset/biped_tall/tallflower,
+		/datum/prototype/robot_iconset/baseline_toiletbot/standard,
+		/datum/prototype/robot_iconset/biped_sleek/standard,
+		/datum/prototype/robot_iconset/grounded_spider/standard,
+		/datum/prototype/robot_iconset/biped_heavy/standard,
+		/datum/prototype/robot_iconset/cat_feli/standard,
+		/datum/prototype/robot_iconset/baseline_standard/standard,
+		/datum/prototype/robot_iconset/baseline_misc/omoikane,
+		/datum/prototype/robot_iconset/hover_drone/standard,
+		/datum/prototype/robot_iconset/biped_insekt/standard,
+		/datum/prototype/robot_iconset/biped_tall/alternative/standard,
+		/datum/prototype/robot_iconset/hover_glitterfly/standard,
+		/datum/prototype/robot_iconset/biped_miss/standard,
+		/datum/prototype/robot_iconset/hover_x88/standard,
+		/datum/prototype/robot_iconset/hover_coffin/standard,
+		/datum/prototype/robot_iconset/hover_handy/standard,
+		/datum/prototype/robot_iconset/grounded_mechoid/standard,
+		/datum/prototype/robot_iconset/biped_noble/standard,
+		/datum/prototype/robot_iconset/grounded_zoomba/standard,
+		/datum/prototype/robot_iconset/grounded_worm/standard,
 	)
 
 /datum/prototype/robot_module/nanotrasen/multirole/create_mounted_item_descriptors(list/normal_out, list/emag_out)
@@ -84,17 +48,6 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/multirole)
 /obj/item/robot_module/robot/standard
 	sprites = list(
 		"Android" = "droid",
-		"Drone" = "drone-standard",
-		"Insekt" = "insekt-Default",
-		"Misato" = "tall2standard",
-		"L3P1-D0T" = "Glitterfly-Standard",
 		"Convict" = "servitor",
-		"Miss M" = "miss-standard",
-		"Coffin" = "coffin-Standard",
-		"X-88" = "xeightyeight-standard",
-		"Handy" = "handy-standard",
-		"Acheron" = "mechoid-Standard",
 		"Shellguard Noble" = "Noble-STD",
-		"ZOOM-BA" = "zoomba-standard",
-		"W02M" = "worm-standard"
 	)

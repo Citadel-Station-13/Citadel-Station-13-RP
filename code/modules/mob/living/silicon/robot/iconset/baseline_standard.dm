@@ -2,6 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/prototype/robot_iconset/baseline_standard
+	display_name = "M-USE"
 	abstract_type = /datum/prototype/robot_iconset/baseline_standard
 	chassis = /datum/prototype/robot_chassis/baseline
 	icon = 'icons/mob/robot/iconset/baseline_standard.dmi'

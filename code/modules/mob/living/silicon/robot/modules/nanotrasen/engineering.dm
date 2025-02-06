@@ -33,9 +33,9 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/engineering)
 		/datum/prototype/robot_iconset/hover_x88/engineering,
 		/datum/prototype/robot_iconset/biped_noble/engineering,
 		/datum/prototype/robot_iconset/grounded_mechoid/engineering,
-		/datum/prototype/robot_iconset/worm/engineering,
-		/datum/prototype/robot_iconset/,
-		/datum/prototype/robot_iconset/,
+		/datum/prototype/robot_iconset/grounded_worm/engineering,
+		/datum/prototype/robot_iconset/baseline_standard/engineering,
+		/datum/prototype/robot_iconset/baseline_old/hazardvest,
 		/datum/prototype/robot_iconset/,
 		/datum/prototype/robot_iconset/,
 		/datum/prototype/robot_iconset/,
@@ -88,7 +88,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/engineering)
 		emag_out |= list(
 			/obj/item/melee/baton/robot/arm,
 		)
-		
+
 #warn translate chassis below
 
 /obj/item/robot_module/robot/engineering
@@ -97,7 +97,5 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/engineering)
 	networks = list(NETWORK_ENGINEERING)
 	subsystems = list(/mob/living/silicon/proc/subsystem_power_monitor)
 	sprites = list(
-		"M-USE Nanotrasen" = "robotEngi",
-		"Basic" = "Engineering",
 		"Antique" = "engineerrobot",
 	)

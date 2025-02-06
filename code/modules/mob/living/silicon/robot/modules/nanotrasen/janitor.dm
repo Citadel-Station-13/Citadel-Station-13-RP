@@ -18,7 +18,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/janitor)
 		/datum/prototype/robot_iconset/grounded_mechoid/janitor,
 		/datum/prototype/robot_iconset/grounded_zoomba/janitor,
 		/datum/prototype/robot_iconset/biped_noble/janitor,
-		/datum/prototype/robot_iconset/worm/janitor,
+		/datum/prototype/robot_iconset/grounded_worm/janitor,
 		/datum/prototype/robot_iconset/dog_borgi/janitor,
 		/datum/prototype/robot_iconset/dog_k9/janitor,
 		/datum/prototype/robot_iconset/dog_otie/janitor,

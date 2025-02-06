@@ -3,7 +3,24 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/research)
 	id = "nt-research"
 	use_robot_module_path = /obj/item/robot_module/robot/
 	light_color = "#CC60FF"
-	allowed_frames = list(
+	iconsets = list(
+		/datum/prototype/robot_iconset/dog_otie/science,
+		/datum/prototype/robot_iconset/hover_eyebot/science,
+		/datum/prototype/robot_iconset/biped_marina/service,
+		/datum/prototype/robot_iconset/grounded_spider/science,
+		/datum/prototype/robot_iconset/biped_sleek/science,
+		/datum/prototype/robot_iconset/biped_droid/science,
+		/datum/prototype/robot_iconset/hover_drone/science,
+		/datum/prototype/robot_iconset/hover_handy/science,
+		/datum/prototype/robot_iconset/biped_insekt/science,
+		/datum/prototype/robot_iconset/hover_glitterfly/science,
+		/datum/prototype/robot_iconset/hover_x88/science,
+		/datum/prototype/robot_iconset/grounded_mechoid/science,
+		/datum/prototype/robot_iconset/dog_borgi/science,
+		/datum/prototype/robot_iconset/dog_k9/science,
+		/datum/prototype/robot_iconset/dog_k9/science_dark,
+		/datum/prototype/robot_iconset/dog_vale/science,
+		/datum/prototype/robot_iconset/cat_feli/research,
 	)
 
 /datum/prototype/robot_module/nanotrasen/research/provision_resource_store(datum/robot_resource_store/store)
@@ -50,20 +67,8 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/research)
 	channels = list("Science" = 1)
 	sprites = list(
 		"L'Ouef" = "peaceborg",
-		"Cabeiri" = "eyebot-science",
-		"Haruka" = "marinaSCI",
-		"WTDove" = "whitespider",
-		"WTOperator" = "sleekscience",
-		"Droid" = "droid-science",
-		"Drone" = "drone-science",
-		"Handy" = "handy-science",
-		"Insekt" = "insekt-Sci",
-		"L3P1-D0T" = "Glitterfly-Research",
 		"Coffsearch" = "coffin-Research",
-		"X-88" = "xeightyeight-science",
-		"Acheron" = "mechoid-Science",
 		"ZOOM-BA" = "zoomba-research",
-		"W02M" = "worm-engineering"
 	)
 
 /obj/item/robot_module/robot/research/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
@@ -74,16 +79,3 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/research)
 		S.desc = initial(S.desc)
 		S.update_icon()
 	..()
-
-/obj/item/robot_module/robot/quad/sci
-	name = "SciQuad Module"
-	sprites = list(
-		"Research Hound" = "science",
-		"Borgi" = "borgi-sci",
-		"F3-LINE" = "FELI-Research",
-		"Sci-9" = "scihound",
-		"Sci-9 Dark" = "scihounddark"
-	)
-	channels = list("Science" = 1)
-	can_be_pushed = 0
-	can_shred = TRUE

@@ -3,37 +3,27 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/logistics)
 	id = "nt-logistics"
 	use_robot_module_path = /obj/item/robot_module/robot/logistics
 	light_color = "#FBE281"
-	allowed_frames = list(
-		/datum/robot_frame{
-			name = "Canine - Hound";
-			robot_chassis = /datum/prototype/robot_chassis/quadruped/canine;
-			robot_iconset = /datum/prototype/robot_iconset/dog_k9/logistics;
-		},
-		/datum/robot_frame{
-			name = "Canine - Hound (Dark)";
-			robot_chassis = /datum/prototype/robot_chassis/quadruped/canine;
-			robot_iconset = /datum/prototype/robot_iconset/dog_k9/logistics_dark;
-		},
-		/datum/robot_frame{
-			name = "Canine - Vale";
-			robot_chassis = /datum/prototype/robot_chassis/quadruped/canine;
-			robot_iconset = /datum/prototype/robot_iconset/dog_vale/mining;
-		},
-		/datum/robot_frame{
-			name = "Drake";
-			robot_chassis = /datum/prototype/robot_chassis/quadruped/draconic;
-			robot_iconset = /datum/prototype/robot_iconset/drake_mizartz/medical;
-		},
-		/datum/robot_frame{
-			name = "F3-LINE";
-			robot_chassis = /datum/prototype/robot_chassis/quadruped/feline;
-			robot_iconset = /datum/prototype/robot_iconset/cat_feli/mining;
-		},
-		/datum/robot_frame{
-			name = "Canine - Otie";
-			robot_chassis = /datum/prototype/robot_chassis/quadruped/canine;
-			robot_iconset = /datum/prototype/robot_iconset/dog_otie/science;
-		},
+	iconsets = list(
+		/datum/prototype/robot_iconset/dog_k9/logistics,
+		/datum/prototype/robot_iconset/dog_k9/logistics_dark,
+		/datum/prototype/robot_iconset/dog_vale/mining,
+		/datum/prototype/robot_iconset/drake_mizartz/mining,
+		/datum/prototype/robot_iconset/cat_feli/mining,
+		/datum/prototype/robot_iconset/hover_eyebot/mining,
+		/datum/prototype/robot_iconset/biped_marina/miner,
+		/datum/prototype/robot_iconset/biped_heavy/miner,
+		/datum/prototype/robot_iconset/grounded_spider/mining,
+		/datum/prototype/robot_iconset/baseline_toiletbot/logistics,
+		/datum/prototype/robot_iconset/biped_sleek/mining,
+		/datum/prototype/robot_iconset/hover_drone/mining,
+		/datum/prototype/robot_iconset/hover_glitterfly/mining,
+		/datum/prototype/robot_iconset/biped_miss/mining,
+		/datum/prototype/robot_iconset/hover_handy/mining,
+		/datum/prototype/robot_iconset/grounded_mechoid/miner,
+		/datum/prototype/robot_iconset/biped_tall/alternative/miner,
+		/datum/prototype/robot_iconset/biped_noble/mining,
+		/datum/prototype/robot_iconset/zoomba/miner,
+		/datum/prototype/robot_iconset/grounded_worm/miner,
 	)
 
 /datum/prototype/robot_module/nanotrasen/logistics/create_mounted_item_descriptors(list/normal_out, list/emag_out)
@@ -60,24 +50,8 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/logistics)
 	networks = list(NETWORK_MINE)
 	sprites = list(
 		"NM-USE Nanotrasen" = "robotMine",
-		"Cabeiri" = "eyebot-miner",
-		"Haruka" = "marinaMN",
-		"Telemachus" = "toiletbotminer",
-		"WTOperator" = "sleekminer",
-		"XI-GUS" = "spidermining",
-		"XI-ALP" = "heavyMiner",
 		"Basic" = "Miner_old",
-		"Advanced Droid" = "droid-miner",
 		"Treadhead" = "Miner",
-		"Drone" = "drone-miner",
-		"Misato" = "tall2miner",
-		"L3P1-D0T" = "Glitterfly-Miner",
-		"Miss M" = "miss-miner",
 		"Carffin" = "coffin-Service",
 		"Coffing" = "coffin-Mining",
-		"Handy" = "handy-miner",
-		"Acheron" = "mechoid-Miner",
-		"Shellguard Noble" = "Noble-DIG",
-		"ZOOM-BA" = "zoomba-miner",
-		"W02M" = "worm-miner"
 	)

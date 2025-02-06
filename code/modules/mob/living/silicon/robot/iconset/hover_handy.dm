@@ -44,6 +44,6 @@
 	icon_state = "engineering"
 	icon_state_indicator = "engineering-indicator"
 
-/datum/prototype/robot_iconset/hover_handy/service
-	icon_state = "service"
-	icon_state_indicator = "service-indicator"
+/datum/prototype/robot_iconset/hover_handy/science
+	icon_state = "science"
+	icon_state_indicator = "science-indicator"

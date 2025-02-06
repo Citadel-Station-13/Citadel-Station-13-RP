@@ -2,7 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/prototype/robot_iconset/hover_glitterfly
-	display_name = "Glitterfly"
+	display_name = "L3P1-D0T"
 	abstract_type = /datum/prototype/robot_iconset/hover_glitterfly
 	chassis = /datum/prototype/robot_chassis/hover
 	icon = 'icons/mob/robot/iconset/hover_glitterfly.dmi'
