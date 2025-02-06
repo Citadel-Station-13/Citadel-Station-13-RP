@@ -168,7 +168,7 @@
 	base_turf = /turf/simulated/floor/reinforced
 	base_area = /area/sector/sky_planet/racing_station/dock
 
-/obj/effect/shuttle_landmark/skyplanet/voidline/paripari
+/obj/effect/shuttle_landmark/skyplanet/voidline/udang
 	name = "Voidline Rig - Udang Pari-pari Pad"
 	landmark_tag = "voidline_udang"
 	base_turf = /turf/simulated/floor/reinforced

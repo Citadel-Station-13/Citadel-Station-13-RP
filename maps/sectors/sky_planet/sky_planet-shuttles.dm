@@ -76,14 +76,14 @@
 	warmup_time = 8
 	shuttle_area = list(/area/shuttle/paripari)
 	current_location = "voidline_udang"
-	docking_controller_tag = "voidline_pari-pari_docker"
+	docking_controller_tag = "voidline_udang_docker"
 	fuel_consumption = 5
 	move_time = 10
 
 /obj/overmap/entity/visitable/ship/landable/trade/paripari
-	name = "Udang pari-pari Racing Shuttle"
+	name = "Udang Pari-pari Racing Shuttle"
 	desc = "A racing shuttle, that arrived last during the 2542 Voidline shuttle race."
-	scanner_name = "Udang pari-pari Racing Shuttle"
+	scanner_name = "Udang Pari-pari Racing Shuttle"
 	scanner_desc = @{"[i]Registration[/i]: ---
 [i]Class[/i]: Racing Shuttle
 [i]Transponder[/i]: Transmitting (CIV), Registered with the Lythios 43a Voidline Racing Sky Rig, non-hostile
@@ -92,11 +92,11 @@
 	fore_dir = WEST
 	vessel_mass = 10000
 	vessel_size = SHIP_SIZE_SMALL
-	shuttle = "Udang pari-pari Racing Shuttle"
+	shuttle = "Udang Pari-pari Racing Shuttle"
 
 /obj/machinery/computer/shuttle_control/explore/paripari
 	name = "short jump console"
-	shuttle_tag = "Udang pari-pari Racing Shuttle"
+	shuttle_tag = "Udang Pari-pari Racing Shuttle"
 
 /area/shuttle/paripari
 	name = "Udang pari-pari"
