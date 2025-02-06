@@ -2,6 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/prototype/robot_iconset/hover_handy
+	display_name = "Handy"
 	abstract_type = /datum/prototype/robot_iconset/hover_handy
 	chassis = /datum/prototype/robot_chassis/hover
 	icon = 'icons/mob/robot/iconset/hover_handy.dmi'

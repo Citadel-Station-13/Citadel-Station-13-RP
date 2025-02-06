@@ -2,6 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/prototype/robot_iconset/biped_sleek
+	display_name = "Ward-Takashi Operator"
 	abstract_type = /datum/prototype/robot_iconset/biped_sleek
 	chassis = /datum/prototype/robot_chassis/biped
 	icon = 'icons/mob/robot/iconset/biped_sleek.dmi'

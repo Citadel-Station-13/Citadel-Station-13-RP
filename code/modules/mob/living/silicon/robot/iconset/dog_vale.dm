@@ -2,6 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/prototype/robot_iconset/dog_vale
+	display_name = "Canine - Vale"
 	abstract_type = /datum/prototype/robot_iconset/dog_vale
 	chassis = /datum/prototype/robot_chassis/quadruped/canine
 	icon = 'icons/mob/robot/iconset/dog_vale.dmi'
@@ -17,7 +18,6 @@
 /datum/prototype/robot_iconset/dog_vale/standard
 	icon_state = "standard"
 	icon_state_indicator = "standard-indicator"
-
 
 /datum/prototype/robot_iconset/dog_vale/medical
 	icon_state = "medical"
@@ -48,6 +48,7 @@
 	icon_state_indicator = "service-indicator"
 
 /datum/prototype/robot_iconset/dog_vale/service_dark
+	display_name = parent_type::name + " (Dark)"
 	icon_state = "service_dark"
 	icon_state_indicator = "service_dark-indicator"
 

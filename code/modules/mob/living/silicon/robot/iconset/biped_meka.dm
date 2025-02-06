@@ -5,6 +5,7 @@
 // All sprites used in this file made by GhostSheep/TheOOZ //
 
 /datum/prototype/robot_iconset/biped_meka
+	display_name = "Meka"
 	abstract_type = /datum/prototype/robot_iconset/biped_meka
 	chassis = /datum/prototype/robot_chassis/biped
 

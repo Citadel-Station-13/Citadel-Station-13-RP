@@ -3,12 +3,8 @@ GENERATE_ROBOT_MODULE_PRESET(/cybersun/triage)
 	id = "cybersun-triage"
 	use_robot_module_path = /obj/item/robot_module/robot/
 	light_color = "#FF0000"
-	allowed_frames = list(
-		/datum/robot_frame{
-			name = "Telemachus";
-			robot_chassis = /datum/prototype/robot_chassis/baseline;
-			robot_iconset = /datum/prototype/robot_iconset/baseline_toiletbot/antag;
-		},
+	iconsets = list(
+		/datum/prototype/robot_iconset/baseline_toiletbot,
 	)
 
 /datum/prototype/robot_module/cybersun/triage/provision_resource_store(datum/robot_resource_store/store)

@@ -2,6 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/prototype/robot_iconset/dog_otie
+	display_name = "Canine - Otie"
 	abstract_type = /datum/prototype/robot_iconset/dog_otie
 	chassis = /datum/prototype/robot_chassis/quadruped/canine
 	icon = 'icons/mob/robot/iconset/dog_otie.dmi'

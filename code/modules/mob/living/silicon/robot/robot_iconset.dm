@@ -6,9 +6,23 @@
  *
  * * Iconsets have no behavior.
  * * This is not considered intrinsic for a robot's behavior, and therefore can be changed without a full state rebuild.
+ *
+ * todo: please give ids to all of this..
  */
 /datum/prototype/robot_iconset
 	abstract_type = /datum/prototype/robot_iconset
+	anonymous = TRUE
+
+	/// the name of this iconset
+	var/name
+	/// the display name of this iconset
+	/// * this is player facing!
+	/// * defaults to [name]
+	var/display_name
+	/// the path, id, or instance of robot chassis we are supposed to be
+	/// * this is not enforced, this is used for auto-gen
+	/// * this is required if [module_ids] is specified
+	var/chassis
 
 	/// icon
 	var/icon
@@ -54,14 +68,6 @@
 	/// * /datum/robot_iconset_variation/sitting
 	/// * /datum/robot_iconset_variation/bellyup
 	var/list/variations
-
-	/// the name of this iconset
-	/// * this is player facing!
-	var/name
-	/// the path, id, or instance of robot chassis we are supposed to be
-	/// * this is not enforced, this is used for auto-gen
-	/// * this is required if [module_ids] is specified
-	var/chassis
 
 /datum/prototype/robot_iconset/New()
 	..()

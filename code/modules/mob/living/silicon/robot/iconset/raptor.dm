@@ -2,6 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/prototype/robot_iconset/raptor
+	display_name = "Raptor"
 	abstract_type = /datum/prototype/robot_iconset/raptor
 	chassis = /datum/prototype/robot_chassis/quadruped/raptor
 	icon = 'icons/mob/robot/iconset/raptor.dmi'

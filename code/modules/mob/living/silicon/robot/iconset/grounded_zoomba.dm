@@ -1,8 +1,9 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/datum/prototype/robot_iconset/zoomba
-	abstract_type = /datum/prototype/robot_iconset/zoomba
+/datum/prototype/robot_iconset/grounded_zoomba
+	display_name = "ZOOM-BA"
+	abstract_type = /datum/prototype/robot_iconset/grounded_zoomba
 
 	icon = 'icons/mob/robot/iconset/zoomba.dmi'
 	icon_state_indicator = "indicator-lighting"
@@ -14,36 +15,36 @@
 		/datum/robot_iconset_variation/dead,
 	)
 
-/datum/prototype/robot_iconset/zoomba/standard
+/datum/prototype/robot_iconset/grounded_zoomba/standard
 	icon_state = "standard"
 
-/datum/prototype/robot_iconset/zoomba/clerical
+/datum/prototype/robot_iconset/grounded_zoomba/clerical
 	icon_state = "clerical"
 
-/datum/prototype/robot_iconset/zoomba/engineering
+/datum/prototype/robot_iconset/grounded_zoomba/engineering
 	icon_state = "engineering"
 
-/datum/prototype/robot_iconset/zoomba/janitor
+/datum/prototype/robot_iconset/grounded_zoomba/janitor
 	icon_state = "janitor"
 
-/datum/prototype/robot_iconset/zoomba/medical
+/datum/prototype/robot_iconset/grounded_zoomba/medical
 	icon_state = "medical"
 
-/datum/prototype/robot_iconset/zoomba/crisis
+/datum/prototype/robot_iconset/grounded_zoomba/crisis
 	icon_state = "crisis"
 
-/datum/prototype/robot_iconset/zoomba/miner
+/datum/prototype/robot_iconset/grounded_zoomba/miner
 	icon_state = "miner"
 
-/datum/prototype/robot_iconset/zoomba/research
+/datum/prototype/robot_iconset/grounded_zoomba/research
 	icon_state = "research"
 
-/datum/prototype/robot_iconset/zoomba/service
+/datum/prototype/robot_iconset/grounded_zoomba/service
 	icon_state = "service"
 
-/datum/prototype/robot_iconset/zoomba/combat
+/datum/prototype/robot_iconset/grounded_zoomba/combat
 	icon_state = "combat"
 
-/datum/prototype/robot_iconset/zoomba/security
+/datum/prototype/robot_iconset/grounded_zoomba/security
 	icon_state = "security"
 	variations = list()

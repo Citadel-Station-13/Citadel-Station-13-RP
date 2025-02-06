@@ -2,6 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/prototype/robot_iconset/worm
+	display_name = "W02M"
 	abstract_type = /datum/prototype/robot_iconset/worm
 
 	icon = 'icons/mob/robot/iconset/worm.dmi'

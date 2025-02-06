@@ -5,6 +5,7 @@
 // All sprites used in this file made by Zydras           //
 
 /datum/prototype/robot_iconset/biped_k4t
+	display_name = "K4T"
 	icon_state = "k4t"
 	icon_state_cover = "panel"
 	icon_state_indicator = "indicator"

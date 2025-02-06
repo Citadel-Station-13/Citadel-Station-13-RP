@@ -3,17 +3,11 @@ GENERATE_ROBOT_MODULE_PRESET(/cybersun/assault)
 	id = "cybersun-assault"
 	use_robot_module_path = /obj/item/robot_module/robot/syndicate
 	light_color = "#FF0000"
+	iconsets = list(
+		/datum/prototype/robot_iconset/grounded_landmate/security_cybersun,
+		/datum/prototype/robot_iconset/grounded_landmate/security_cybersun_tread,
+	)
 	allowed_frames = list(
-		/datum/robot_frame{
-			name = "Cerberus";
-			robot_chassis = /datum/prototype/robot_chassis/grounded;
-			robot_iconset = /datum/prototype/robot_iconset/grounded_landmate/security_cybersun;
-		},
-		/datum/robot_frame{
-			name = "Cerberus - Treaded";
-			robot_chassis = /datum/prototype/robot_chassis/grounded;
-			robot_iconset = /datum/prototype/robot_iconset/grounded_landmate/security_cybersun_tread;
-		},
 		/datum/robot_frame{
 			name = "XI - ALP";
 			robot_chassis = /datum/prototype/robot_chassis/biped;

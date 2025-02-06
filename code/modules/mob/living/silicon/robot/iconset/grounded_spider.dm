@@ -2,6 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/prototype/robot_iconset/grounded_spider
+	display_name = "XI-GUS"
 	abstract_type = /datum/prototype/robot_iconset/grounded_spider
 	chassis = /datum/prototype/robot_chassis/grounded
 	icon = 'icons/mob/robot/iconset/grounded_spider.dmi'

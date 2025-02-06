@@ -25,7 +25,11 @@
 
 	/// Allowed robot frames.
 	/// * set to list of typepaths/anonymous types to init
-	var/list/datum/robot_frame/allowed_frames = list()
+	var/list/datum/robot_frame/frames = list()
+	/// Generate robot frames from iconsets.
+	/// * set to list of `/datum/prototype/robot_iconset` ids or paths
+	/// * the iconset must have `chassis` set, or this will runtime.
+	var/list/iconsets = list()
 
 	/// show on manifest?
 	#warn hook

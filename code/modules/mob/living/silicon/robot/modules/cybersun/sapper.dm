@@ -3,17 +3,9 @@ GENERATE_ROBOT_MODULE_PRESET(/cybersun/sapper)
 	id = "cybersun-sapper"
 	use_robot_module_path = /obj/item/robot_module/robot/
 	light_color = "#FF0000"
-	allowed_frames = list(
-		/datum/robot_frame{
-			name = "XI-GUS";
-			robot_chassis = /datum/prototype/robot_chassis/grounded;
-			robot_iconset = /datum/prototype/robot_iconset/grounded_spider;
-		},
-		/datum/robot_frame{
-			name = "Landmate";
-			robot_chassis = /datum/prototype/robot_chassis/grounded;
-			robot_iconset = /datum/prototype/robot_iconset/grounded_landmate/engineering_cybersun;
-		},
+	iconsets = list(
+		/datum/prototype/robot_iconset/grounded_landmate/engineering_cybersun,
+		/datum/prototype/robot_iconset/grounded_spider/combat,
 	)
 
 /datum/prototype/robot_module/cybersun/sapper/provision_resource_store(datum/robot_resource_store/store)

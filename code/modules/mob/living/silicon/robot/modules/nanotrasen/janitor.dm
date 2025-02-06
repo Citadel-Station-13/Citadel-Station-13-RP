@@ -3,7 +3,28 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/janitor)
 	id = "nt-janitor"
 	use_robot_module_path = /obj/item/robot_module/robot/janitor
 	light_color = "#CC60FF"
-	allowed_frames = list(
+	iconsets = list(
+		/datum/prototype/robot_iconset/baseline_toiletbot/janitor,
+		/datum/prototype/robot_iconset/hover_eyebot/janitor,
+		/datum/prototype/robot_iconset/biped_marina/janitor,
+		/datum/prototype/robot_iconset/biped_sleek/janitor,
+		/datum/prototype/robot_iconset/biped_heavy/janitor,
+		/datum/prototype/robot_iconset/grounded_landmate/janitor,
+		/datum/prototype/robot_iconset/biped_tall/alternative/janitor,
+		/datum/prototype/robot_iconset/hover_drone/janitor,
+		/datum/prototype/robot_iconset/hover_glitterfly/janitor,
+		/datum/prototype/robot_iconset/biped_miss/janitor,
+		/datum/prototype/robot_iconset/hover_handy/janitor,
+		/datum/prototype/robot_iconset/grounded_mechoid/janitor,
+		/datum/prototype/robot_iconset/grounded_zoomba/janitor,
+		/datum/prototype/robot_iconset/biped_noble/janitor,
+		/datum/prototype/robot_iconset/worm/janitor,
+		/datum/prototype/robot_iconset/dog_borgi/janitor,
+		/datum/prototype/robot_iconset/dog_k9/janitor,
+		/datum/prototype/robot_iconset/dog_otie/janitor,
+		/datum/prototype/robot_iconset/dog_vale/janitor,
+		/datum/prototype/robot_iconset/drake_mizartz/janitor,
+		/datum/prototype/robot_iconset/cat_feli/janitor,
 	)
 
 /datum/prototype/robot_module/nanotrasen/janitor/create_mounted_item_descriptors(list/normal_out, list/emag_out)
@@ -34,42 +55,13 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/janitor)
 	sprites = list(
 		"M-USE Nanotrasen" = "robotJani",
 		"Arachne" = "crawler",
-		"Cabeiri" = "eyebot-janitor",
-		"Haruka" = "marinaJN",
-		"Telemachus" = "toiletbotjanitor",
-		"WTOperator" = "sleekjanitor",
-		"XI-ALP" = "heavyRes",
 		"Basic" = "JanBot2",
 		"Mopbot"  = "janitorrobot",
-		"Mop Gear Rex" = "mopgearrex",
-		"Drone" = "drone-janitor",
-		"Misato" = "tall2janitor",
-		"L3P1-D0T" = "Glitterfly-Janitor",
-		"Miss M" = "miss-janitor",
 		"Cleriffin" = "coffin-Clerical",
 		"Coffstodial" = "coffin-Custodial",
-		"Handy" = "handy-janitor",
-		"Acheron" = "mechoid-Janitor",
-		"Shellguard Noble" = "Noble-CLN",
-		"ZOOM-BA" = "zoomba-janitor",
-		"W02M" = "worm-janitor"
 	)
 
 /obj/item/robot_module/robot/janitor/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
 	if(src.emag)
 		var/obj/item/reagent_containers/spray/S = src.emag
 		S.reagents.add_reagent("lube", 2 * amount)
-
-/obj/item/robot_module/robot/quad/jani
-	name = "JaniQuad module"
-	sprites = list(
-		"Custodial Hound" = "scrubpup",
-		"Borgi" = "borgi-jani",
-		"Otieborg" = "otiej",
-		"Janihound, J9" = "J9",
-		"F3-LINE" = "FELI-Janitor",
-		"Drake" = "drakejanit"
-	)
-	channels = list("Service" = 1)
-	can_be_pushed = 0
-	can_shred = TRUE

@@ -2,6 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/prototype/robot_iconset/grounded_mechoid
+	display_name = "Acheron"
 	abstract_type = /datum/prototype/robot_iconset/grounded_mechoid
 	chassis = /datum/prototype/robot_chassis/grounded
 	icon = 'icons/mob/robot/iconset/grounded_mechoid.dmi'

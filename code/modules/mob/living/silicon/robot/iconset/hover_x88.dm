@@ -2,6 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/prototype/robot_iconset/hover_x88
+	display_name = "X-88"
 	abstract_type = /datum/prototype/robot_iconset/hover_x88
 	icon = 'icons/mob/robot/iconset/hover_x88.dmi'
 	icon_state_cover = "panel"

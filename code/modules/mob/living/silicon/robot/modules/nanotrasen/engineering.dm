@@ -3,7 +3,42 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/engineering)
 	id = "nt-engineering"
 	use_robot_module_path = /obj/item/robot_module/robot/engineering
 	light_color = "#FDD800"
-	allowed_frames = list(
+	iconsets = list(
+		/datum/prototype/robot_iconset/dog_borgi/engineering,
+		/datum/prototype/robot_iconset/dog_k9/engineering,
+		/datum/prototype/robot_iconset/dog_k9/engineering_dark,
+		/datum/prototype/robot_iconset/dog_otie/engineering,
+		/datum/prototype/robot_iconset/dog_pupdozer/engineering,
+		/datum/prototype/robot_iconset/dog_vale/engineering,
+		/datum/prototype/robot_iconset/cat_feli/engineering,
+		/datum/prototype/robot_iconset/drake_mizartz/engineering,
+		/datum/prototype/robot_iconset/hover_eyebot/engineering,
+		/datum/prototype/robot_iconset/baseline_toiletbot/engineering,
+		/datum/prototype/robot_iconset/biped_marina/engineering,
+		/datum/prototype/robot_iconset/biped_sleek/engineering,
+		/datum/prototype/robot_iconset/grounded_spider/engineering,
+		/datum/prototype/robot_iconset/biped_heavy/engineering,
+		/datum/prototype/robot_iconset/grounded_landmate/engineering,
+		/datum/prototype/robot_iconset/grounded_landmate/engineering_tread,
+		/datum/prototype/robot_iconset/grounded_landmate/treadwell,
+		/datum/prototype/robot_iconset/hover_drone/engineering,
+		/datum/prototype/robot_iconset/hover_handy/engineering,
+		/datum/prototype/robot_iconset/hover_glitterfly/engineering,
+		/datum/prototype/robot_iconset/hover_coffin/engineering,
+		/datum/prototype/robot_iconset/hover_coffin/construction,
+		/datum/prototype/robot_iconset/biped_miss/engineering,
+		/datum/prototype/robot_iconset/biped_tall/alternative/engineer,
+		/datum/prototype/robot_iconset/biped_marina/engineering,
+		/datum/prototype/robot_iconset/grounded_zoomba/engineering,
+		/datum/prototype/robot_iconset/hover_x88/engineering,
+		/datum/prototype/robot_iconset/biped_noble/engineering,
+		/datum/prototype/robot_iconset/grounded_mechoid/engineering,
+		/datum/prototype/robot_iconset/worm/engineering,
+		/datum/prototype/robot_iconset/,
+		/datum/prototype/robot_iconset/,
+		/datum/prototype/robot_iconset/,
+		/datum/prototype/robot_iconset/,
+		/datum/prototype/robot_iconset/,
 	)
 
 /datum/prototype/robot_module/nanotrasen/engineering/provision_resource_store(datum/robot_resource_store/store)
@@ -53,6 +88,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/engineering)
 		emag_out |= list(
 			/obj/item/melee/baton/robot/arm,
 		)
+		
 #warn translate chassis below
 
 /obj/item/robot_module/robot/engineering
@@ -62,47 +98,6 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/engineering)
 	subsystems = list(/mob/living/silicon/proc/subsystem_power_monitor)
 	sprites = list(
 		"M-USE Nanotrasen" = "robotEngi",
-		"Cabeiri" = "eyebot-engineering",
-		"Haruka" = "marinaENG",
-		"Usagi" = "tallyellow",
-		"Telemachus" = "toiletbotengineering",
-		"WTOperator" = "sleekce",
-		"XI-GUS" = "spidereng",
-		"XI-ALP" = "heavyEng",
 		"Basic" = "Engineering",
 		"Antique" = "engineerrobot",
-		"Landmate" = "landmate",
-		"Landmate - Treaded" = "engiborg+tread",
-		"Drone" = "drone-engineer",
-		"Treadwell" = "treadwell",
-		"Handy" = "handy-engineer",
-		"Misato" = "tall2engineer",
-		"L3P1-D0T" = "Glitterfly-Engineering",
-		"Miss M" = "miss-engineer",
-		"Coffstruction" = "coffin-Construction",
-		"Coffgineer" = "coffin-Engineering",
-		"X-88" = "xeightyeight-engineering",
-		"Acheron" = "mechoid-Engineering",
-		"Shellguard Noble" = "Noble-ENG",
-		"ZOOM-BA" = "zoomba-engineering",
-		"W02M" = "worm-engineering"
 	)
-
-/obj/item/robot_module/robot/quad/engi
-	name = "EngiQuad module"
-	sprites = list(
-		"Pupdozer" = "pupdozer",
-		"V2 Engidog" = "thottbot",
-		"Borgi" = "borgi-eng",
-		"Engineering Hound" = "engihound",
-		"Engineering Hound Dark" = "engihounddark",
-		"F3-LINE" = "FELI-Engineer",
-		"Drake" = "drakeeng",
-		"Otie" = "otiee"
-	)
-	channels = list("Engineering" = 1)
-	networks = list(NETWORK_ENGINEERING)
-	subsystems = list(/mob/living/silicon/proc/subsystem_power_monitor)
-	can_be_pushed = 0
-	can_shred = TRUE
-

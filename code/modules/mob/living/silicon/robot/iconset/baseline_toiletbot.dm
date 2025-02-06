@@ -2,6 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/prototype/robot_iconset/baseline_toiletbot
+	display_name = "Telemachus"
 	abstract_type = /datum/prototype/robot_iconset/baseline_toiletbot
 	chassis = /datum/prototype/robot_chassis/baseline
 	icon = 'icons/mob/robot/iconset/baseline_toiletbot.dmi'

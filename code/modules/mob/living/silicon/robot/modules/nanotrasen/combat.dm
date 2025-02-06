@@ -3,6 +3,13 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/combat)
 	id = "nt-combat"
 	use_robot_module_path = /obj/item/robot_module/robot/combat
 	light_color = "#FF0000"
+	iconsets = list(
+		/datum/prototype/robot_iconset/hover_eyebot/combat,
+		/datum/prototype/robot_iconset/biped_insekt/combat,
+		/datum/prototype/robot_iconset/grounded_zoomba/combat,
+		/datum/prototype/robot_iconset/cat_feli/combat,
+		/datum/prototype/robot_iconset/biped_marina/combat,
+	)
 	allowed_frames = list(
 	)
 
@@ -26,31 +33,13 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/combat)
 #warn translate chassis below
 
 /obj/item/robot_module/robot/security/combat
-	name = "combat robot module"
 	sprites = list(
-		"Haruka" = "marinaCB",
-		"Cabeiri" = "eyebot-combat",
 		"Combat Android" = "droid-combat",
-		"Insekt" = "insekt-Combat",
 		"Acheron" = "mechoid-Combat",
-		"ZOOM-BA" = "zoomba-combat"
 	)
 
 /obj/item/robot_module/robot/quad/ert
-	name = "Emergency Response module"
-	channels = list("Security" = 1)
-	networks = list(NETWORK_SECURITY)
-	can_be_pushed = 0
 	sprites = list(
 		"Standard" = "ert",
 		"Borgi" = "borgi",
-		"F3-LINE" = "FELI-Combat"
-	)
-
-	can_shred = TRUE
-
-/obj/item/robot_module/robot/quad/ert/get_modules()
-	. = ..()
-	. |= list(
-		/obj/item/robot_builtin/dog_swordtail
 	)
