@@ -1,25 +1,3 @@
-GLOBAL_LIST_INIT(robot_modules, list(
-	"Standard"		= /obj/item/robot_module/robot/standard,
-	"Service" 		= /obj/item/robot_module/robot/clerical/butler,
-	"Clerical" 		= /obj/item/robot_module/robot/clerical/general,
-	"Research" 		= /obj/item/robot_module/robot/research,
-	"Miner" 		= /obj/item/robot_module/robot/miner,
-	"Medical" 		= /obj/item/robot_module/robot/medical/surgeon,
-	"Security" 		= /obj/item/robot_module/robot/security/general,
-	"Combat" 		= /obj/item/robot_module/robot/security/combat,
-	"Engineering"	= /obj/item/robot_module/robot/engineering,
-	"Janitor" 		= /obj/item/robot_module/robot/janitor,
-	"Quadruped"		= /obj/item/robot_module/robot/quad/basic,
-	"MediQuad"		= /obj/item/robot_module/robot/quad/medi,
-	"SecuriQuad"	= /obj/item/robot_module/robot/quad/sec,
-	"JaniQuad"		= /obj/item/robot_module/robot/quad/jani,
-	"SciQuad"		= /obj/item/robot_module/robot/quad/sci,
-	"EngiQuad"		= /obj/item/robot_module/robot/quad/engi,
-	"Mining Quad"	= /obj/item/robot_module/robot/quad/miner,
-	"Service Quad"	= /obj/item/robot_module/robot/quad/serv,
-	"ERT"			= /obj/item/robot_module/robot/quad/ert
-	))
-
 /obj/item/robot_module
 	name = "robot module"
 	icon = 'icons/obj/module.dmi'

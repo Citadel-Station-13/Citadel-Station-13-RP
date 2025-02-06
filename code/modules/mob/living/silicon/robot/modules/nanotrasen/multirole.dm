@@ -49,5 +49,4 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/multirole)
 	sprites = list(
 		"Android" = "droid",
 		"Convict" = "servitor",
-		"Shellguard Noble" = "Noble-STD",
 	)

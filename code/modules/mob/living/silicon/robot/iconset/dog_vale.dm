@@ -48,7 +48,7 @@
 	icon_state_indicator = "service-indicator"
 
 /datum/prototype/robot_iconset/dog_vale/service_dark
-	display_name = parent_type::name + " (Dark)"
+	display_name = /datum/prototype/robot_iconset/dog_vale::name + " (Dark)"
 	icon_state = "service_dark"
 	icon_state_indicator = "service_dark-indicator"
 

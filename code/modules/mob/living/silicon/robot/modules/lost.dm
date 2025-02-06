@@ -2,17 +2,9 @@ GENERATE_ROBOT_MODULE_PRESET(/lost)
 /datum/prototype/robot_module/lost
 	id = "lost"
 	light_color = "#AAAA00"
-	allowed_frames = list(
-		/datum/robot_frame{
-			name = "Drone";
-			robot_iconset = /datum/prototype/robot_iconset/hover_drone/lost;
-			robot_chassis = /datum/prototype/robot_chassis/hover;
-		},
-		/datum/robot_frame{
-			name = "Canine";
-			robot_iconset = /datum/prototype/robot_iconset/dog_vale/stray;
-			robot_chassis = /datum/prototype/robot_chassis/quadruped/canine;
-		},
+	iconsets = list(
+		/datum/prototype/robot_iconset/hover_drone/lost,
+		/datum/prototype/robot_iconset/dog_vale/stray,
 	)
 
 /datum/prototype/robot_module/lost/provision_resource_store(datum/robot_resource_store/store)

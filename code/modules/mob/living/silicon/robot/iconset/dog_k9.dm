@@ -30,12 +30,12 @@
 	icon_state_indicator = "red-indicator"
 
 /datum/prototype/robot_iconset/dog_k9/medical_dark
-	display_name = parent_type::name + " (Dark)"
+	display_name = /datum/prototype/robot_iconset/dog_k9::name + " (Dark)"
 	icon_state = "medical_dark"
 	icon_state_indicator = "medical_dark-indicator"
 
 /datum/prototype/robot_iconset/dog_k9/science_dark
-	display_name = parent_type::name + " (Dark)"
+	display_name = /datum/prototype/robot_iconset/dog_k9::name + " (Dark)"
 	icon_state = "science_dark"
 	icon_state_indicator = "science_dark-indicator"
 
@@ -44,7 +44,7 @@
 	icon_state_indicator = "science-indicator"
 
 /datum/prototype/robot_iconset/dog_k9/engineering_dark
-	display_name = parent_type::name + " (Dark)"
+	display_name = /datum/prototype/robot_iconset/dog_k9::name + " (Dark)"
 	icon_state = "engineering_dark"
 	icon_state_indicator = "engineering_dark-indicator"
 
@@ -53,7 +53,7 @@
 	icon_state_indicator = "engineering-indicator"
 
 /datum/prototype/robot_iconset/dog_k9/logistics_dark
-	display_name = parent_type::name + " (Dark)"
+	display_name = /datum/prototype/robot_iconset/dog_k9::name + " (Dark)"
 	icon_state = "logistics_dark"
 	icon_state_indicator = "logistics_dark-indicator"
 
