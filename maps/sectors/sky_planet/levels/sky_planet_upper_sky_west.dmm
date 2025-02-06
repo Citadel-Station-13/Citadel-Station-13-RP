@@ -1976,8 +1976,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/sky_planet/sky)
 "mZ" = (
-/obj/effect/shuttle_landmark/skyplanet/voidline/paripari,
 /obj/overmap/entity/visitable/ship/landable/trade/paripari,
+/obj/effect/shuttle_landmark/skyplanet/voidline/udang,
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/shuttle/paripari)
 "nb" = (
