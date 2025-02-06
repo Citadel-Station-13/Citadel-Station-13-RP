@@ -1,5 +1,6 @@
 GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/logistics)
 /datum/prototype/robot_module/nanotrasen/logistics
+	id = "nt-logistics"
 	use_robot_module_path = /obj/item/robot_module/robot/logistics
 	light_color = "#FBE281"
 	allowed_frames = list(

@@ -1,5 +1,6 @@
 GENERATE_ROBOT_MODULE_PRESET(/gravekeeper)
 /datum/prototype/robot_module/gravekeeper
+	id = "gravekeeper"
 	use_robot_module_path = /obj/item/robot_module/robot/
 	light_color = "#AAAA00"
 	allowed_frames = list(

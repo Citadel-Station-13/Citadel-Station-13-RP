@@ -1,4 +1,5 @@
 /datum/prototype/robot_module/drone
+	id = "drone"
 	use_robot_module_path = /obj/item/robot_module/robot/drone
 	#warn frames
 	allowed_frames = list(
@@ -51,6 +52,7 @@
 
 GENERATE_ROBOT_MODULE_PRESET(/drone/construction)
 /datum/prototype/robot_module/drone/construction
+	id = "drone-construction"
 
 /datum/prototype/robot_module/drone/construction/create_mounted_item_descriptors(list/normal_out, list/emag_out)
 	..()
@@ -61,6 +63,7 @@ GENERATE_ROBOT_MODULE_PRESET(/drone/construction)
 
 GENERATE_ROBOT_MODULE_PRESET(/drone/mining)
 /datum/prototype/robot_module/drone/mining
+	id = "drone-mining"
 
 /datum/prototype/robot_module/drone/mining/create_mounted_item_descriptors(list/normal_out, list/emag_out)
 	..()

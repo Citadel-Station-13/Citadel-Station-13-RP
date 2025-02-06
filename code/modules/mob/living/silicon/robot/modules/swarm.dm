@@ -1,8 +1,15 @@
 /datum/prototype/robot_module/swarm
+	id = "swarmer"
 	use_robot_module_path = /obj/item/robot_module/robot/swarm
 	light_color = "#77FFFF"
 	allowed_frames = list(
 	)
+
+/datum/prototype/robot_module/swarm/gunner
+	id = "swarmer-gunner"
+
+/datum/prototype/robot_module/swarm/melee
+	id = "swarmer-melee"
 
 #warn translate chassis below
 

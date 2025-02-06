@@ -1,5 +1,6 @@
 GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/service)
 /datum/prototype/robot_module/nanotrasen/service
+	id = "nt-service"
 	use_robot_module_path = /obj/item/robot_module/robot/clerical
 	light_color = "#6AED63"
 	allowed_frames = list(

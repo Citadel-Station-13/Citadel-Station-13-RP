@@ -55,6 +55,17 @@
 	/// * /datum/robot_iconset_variation/bellyup
 	var/list/variations
 
+	/// the name of this iconset
+	/// * this is player facing!
+	var/name
+	/// the path, id, or instance of robot chassis we are supposed to be
+	/// * this is not enforced, this is used for auto-gen
+	/// * this is required if [module_ids] is specified
+	var/chassis
+
+/datum/prototype/robot_iconset/New()
+	..()
+
 
 #warn impl
 #warn resolve variations

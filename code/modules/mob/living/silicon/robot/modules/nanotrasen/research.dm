@@ -1,5 +1,6 @@
 GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/research)
 /datum/prototype/robot_module/nanotrasen/research
+	id = "nt-research"
 	use_robot_module_path = /obj/item/robot_module/robot/
 	light_color = "#CC60FF"
 	allowed_frames = list(

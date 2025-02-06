@@ -118,7 +118,7 @@
 		upgrade_actions = new upgrade_actions
 	else if(istype(upgrade_actions, /datum/action))
 	else if(upgrade_action_name)
-		var/datum/action/upgrade_action/creating = new(src)
+		var/datum/action/robot_upgrade_action/creating = new(src)
 		upgrade_actions = creating
 		creating.name = upgrade_action_name
 		creating.desc = upgrade_action_desc || desc
