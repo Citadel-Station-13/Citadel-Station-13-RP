@@ -105,13 +105,3 @@
 	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
 	sound_env = SMALL_ENCLOSED
-
-//Scoophead dedicated landing spot
-/datum/shuttle/autodock/overmap/voidline/arrowhead
-	name = "Udang Pari-pari Racing Shuttle"
-	warmup_time = 8
-	shuttle_area = list(/area/shuttle/paripari)
-	current_location = "voidline_pari-pari"
-	docking_controller_tag = "voidline_pari-pari_docker"
-	fuel_consumption = 5
-	move_time = 10
