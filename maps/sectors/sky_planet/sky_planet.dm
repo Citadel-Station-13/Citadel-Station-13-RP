@@ -31,7 +31,7 @@
 	base_turf = /turf/simulated/open
 	link_east = /datum/map_level/sector/sky_planet/sky_upper_east
 	link_below = /datum/map_level/sector/sky_planet/sky_west
-	air_outdoors = /datum/atmosphere/planet/sky_planet/sky
+	air_outdoors = /datum/atmosphere/planet/sky_planet
 	planet_path = /datum/planet/sky_planet
 
 
@@ -67,7 +67,7 @@
 	base_turf = /turf/simulated/open
 	link_west = /datum/map_level/sector/sky_planet/sky_upper_west
 	link_below = /datum/map_level/sector/sky_planet/sky_east
-	air_outdoors = /datum/atmosphere/planet/sky_planet/sky
+	air_outdoors = /datum/atmosphere/planet/sky_planet
 	planet_path = /datum/planet/sky_planet
 	base_turf = /turf/simulated/open
 

@@ -1,3 +1,13 @@
+/datum/atmosphere/planet/sky_planet
+	base = list(
+		/datum/gas/oxygen = 0.22,
+		/datum/gas/nitrogen = 0.78,
+	)
+	pressure_low = 110.1
+	pressure_high = 110.1
+	temperature_low = 225.3
+	temperature_high = 230.3
+
 /datum/atmosphere/planet/sky_planet/ground
 	base = list(
 		/datum/gas/carbon_dioxide = 0.60,
@@ -8,16 +18,6 @@
 	pressure_high = 180.1
 	temperature_low = 400.15
 	temperature_high = 450.15
-
-/datum/atmosphere/planet/sky_planet/sky
-	base = list(
-		/datum/gas/oxygen = 0.22,
-		/datum/gas/nitrogen = 0.78,
-	)
-	pressure_low = 110.1
-	pressure_high = 110.1
-	temperature_low = 225.3
-	temperature_high = 230.3
 
 /datum/time/sky_planet
 	seconds_in_day = 3 HOURS
