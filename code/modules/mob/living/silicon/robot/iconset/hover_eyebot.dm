@@ -3,6 +3,7 @@
 
 /datum/prototype/robot_iconset/hover_eyebot
 	abstract_type = /datum/prototype/robot_iconset/hover_eyebot
+	chassis = /datum/prototype/robot_chassis/hover
 	icon = 'icons/mob/robot/iconset/hover_eyebot.dmi'
 	icon_state_cover = "panel"
 

@@ -3,6 +3,7 @@
 
 /datum/prototype/robot_iconset/raptor
 	abstract_type = /datum/prototype/robot_iconset/raptor
+	chassis = /datum/prototype/robot_chassis/quadruped/raptor
 	icon = 'icons/mob/robot/iconset/raptor.dmi'
 	icon_state_cover = "panel"
 	variations = list(

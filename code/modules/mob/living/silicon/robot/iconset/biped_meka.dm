@@ -6,6 +6,7 @@
 
 /datum/prototype/robot_iconset/biped_meka
 	abstract_type = /datum/prototype/robot_iconset/biped_meka
+	chassis = /datum/prototype/robot_chassis/biped
 
 	variations = list(
 		/datum/robot_iconset_variation/sitting,

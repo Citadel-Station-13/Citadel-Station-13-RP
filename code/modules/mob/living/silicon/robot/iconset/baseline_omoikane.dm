@@ -3,6 +3,7 @@
 
 /datum/prototype/robot_iconset/baseline_misc
 	abstract_type = /datum/prototype/robot_iconset/baseline_misc
+	chassis = /datum/prototype/robot_chassis/baseline
 	icon = 'icons/mob/robot/iconset/baseline_misc.dmi'
 	icon_state_cover = "panel"
 	icon_state_indicator = "indicator-lights"

@@ -3,6 +3,7 @@
 
 /datum/prototype/robot_iconset/biped_noble
 	abstract_type = /datum/prototype/robot_iconset/biped_noble
+	chassis = /datum/prototype/robot_chassis/biped
 	icon = 'icons/mob/robot/iconset/biped_noble.dmi'
 	icon_state_cover = "panel"
 

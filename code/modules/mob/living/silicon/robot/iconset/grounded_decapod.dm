@@ -3,6 +3,7 @@
 
 /datum/prototype/robot_iconset/grounded_decapod
 	abstract_type = /datum/prototype/robot_iconset/grounded_decapod
+	chassis = /datum/prototype/robot_chassis/grounded
 	icon = 'icons/mob/robot/iconset/grounded_decapod.dmi'
 	icon_state_cover = "panel"
 

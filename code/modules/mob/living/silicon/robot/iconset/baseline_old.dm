@@ -3,6 +3,7 @@
 
 /datum/prototype/robot_iconset/baseline_old
 	abstract_type = /datum/prototype/robot_iconset/baseline_old
+	chassis = /datum/prototype/robot_chassis/baseline
 	icon = 'icons/mob/robot/iconset/baseline_old.dmi'
 	icon_state_cover = "panel"
 

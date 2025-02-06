@@ -3,6 +3,7 @@
 
 /datum/prototype/robot_iconset/grounded_landmate
 	abstract_type = /datum/prototype/robot_iconset/grounded_landmate
+	chassis = /datum/prototype/robot_chassis/grounded
 	icon = 'icons/mob/robot/iconset/grounded_landmate.dmi'
 	icon_state_cover = "panel"
 

@@ -3,6 +3,7 @@
 
 /datum/prototype/robot_iconset/hover_coffin
 	abstract_type = /datum/prototype/robot_iconset/hover_coffin
+	chassis = /datum/prototype/robot_chassis/hover
 	icon = 'icons/mob/robot/iconset/hover_coffin.dmi'
 	icon_state_cover = "panel"
 

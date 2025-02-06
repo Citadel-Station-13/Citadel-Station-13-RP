@@ -3,6 +3,7 @@
 
 /datum/prototype/robot_iconset/grounded_spider
 	abstract_type = /datum/prototype/robot_iconset/grounded_spider
+	chassis = /datum/prototype/robot_chassis/grounded
 	icon = 'icons/mob/robot/iconset/grounded_spider.dmi'
 	icon_state_cover = "panel"
 
