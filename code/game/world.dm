@@ -507,6 +507,8 @@ GLOBAL_LIST(topic_status_cache)
 	// update
 	for(var/datum/controller/subsystem/subsystem in Master.subsystems)
 		subsystem.on_ticklag_changed(old, ticklag)
+	for(var/mob/mob in GLOB.mob_list)
+		mob.update_movespeed()
 
 //* Log Shunter *//
 

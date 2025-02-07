@@ -43,26 +43,23 @@ Key procs
 	var/blacklisted_movetypes = NONE
 
 	//* Caclulations *//
-	/// calculation type
-	var/calculation_type = MOVESPEED_CALCULATION_HYPERBOLIC
-
-	//* Calculations - HYPERBOLIC, HYPERBOLIC_BOOST *//
-	/// For: HYPERBOLIC, HYPERBOLIC_BOOST
+	/// For: HYPERBOLIC - add this amount to hyperbolic value
 	/// * This is just a raw modifier to current movement delay
 	/// * This has a hyperbolic effect; reducing movement delay at already low values speeds someone up a lot more
 	///   than at high values.
-	var/hyperbolic_slowdown = 0
+	var/mod_hyperbolic_slowdown = 0
+	/// For: MULTIPLY - multiply resulting speed by
+	/// * Applies before [hyperbolic_slowdown]
+	/// * May not be 0.
+	var/mod_multiply_speed = 1
 
-	//* Calculations - MULTIPLY *//
-	/// multiply resulting speed by
-	var/multiply_speed = 1
-
-	//* Calculations - HYPERBOLIC_BOOST, MULTIPLY *//
-	/// Absolute max tiles we can boost to
-	var/absolute_max_tiles_per_second = INFINITY
-	/// Max tiles per second we can boost
-	var/max_tiles_per_second_boost = INFINITY
-
+	//* Calculations - Limits *//
+	/// do not allow boosting over this overall speed
+	var/limit_tiles_per_second_max = INFINITY
+	/// do not allow boosting more than this in tiles per second
+	var/limit_tiles_per_second_add = INFINITY
+	/// do not allow slowing under this speed
+	var/limit_tiles_per_second_min = 0
 
 /datum/movespeed_modifier/New()
 	..()
@@ -74,61 +71,46 @@ Key procs
   *
   * The minimum move delay is always world.tick_lag. Attempting to go lower will result in the excess being cut.
   * This is so math doesn't break down when something attempts to break through the asymptote at 0 for move delay to speed.
+  *
+  * todo: unit test this
   */
 /datum/movespeed_modifier/proc/apply_multiplicative(existing, mob/target)
-	// todo: we should max/min to ticklag rather than 0, but, we can't until everything is moved to modifiers.
-	// todo: this is all shitty god we need to get rid of movement_delay() proper aaaa
-	switch(calculation_type)
-	/*
-		if(MOVESPEED_CALCULATION_HYPERBOLIC)
-			return max(world.tick_lag, existing + hyperbolic_slowdown)
-		if(MOVESPEED_CALCULATION_HYPERBOLIC_BOOST)
-			var/current_tiles = 10 / max(existing, world.tick_lag)
-			var/max_buff_to = max(existing + hyperbolic_slowdown, 10 / absolute_max_tiles_per_second, 10 / (current_tiles + max_tiles_per_second_boost))
-			return clamp(max_buff_to, world.tick_lag, existing)
-		if(MOVESPEED_CALCULATION_MULTIPLY)
-			var/current_tiles = 10 / max(world.tick_lag, existing)
-			return 10 / (current_tiles * multiply_speed)
-	*/
-		if(MOVESPEED_CALCULATION_HYPERBOLIC)
-			// going below 0 would fuck multipliers up pretty badly
-			// return max(0, existing + hyperbolic_slowdown)
-			//! WE DO IT ANYWAYS - LEGACY
-			return existing + hyperbolic_slowdown
-		if(MOVESPEED_CALCULATION_HYPERBOLIC_BOOST)
-			var/current_tiles = 10 / max(existing, world.tick_lag)
-			var/max_buff_to = max(existing + hyperbolic_slowdown, 10 / absolute_max_tiles_per_second, 10 / (current_tiles + max_tiles_per_second_boost))
-			return min(existing, max_buff_to)
-		if(MOVESPEED_CALCULATION_MULTIPLY)
-			if(existing > 0)
-				var/current_tiles = 10 / existing
-				return 10 / (current_tiles * multiply_speed)
-			else
-				var/current_tiles = 10 / config_legacy.run_speed
-				return 10 / (current_tiles * multiply_speed)
-		if(MOVESPEED_CALCULATION_LEGACY_MULTIPLY)
-			target.cached_movespeed_multiply *= multiply_speed
-			return existing
+	. = existing
+	if(mod_multiply_speed != /datum/movespeed_modifier::mod_multiply_speed)
+		. /= mod_multiply_speed
+	if(mod_hyperbolic_slowdown != /datum/movespeed_modifier::mod_hyperbolic_slowdown)
+		. += mod_hyperbolic_slowdown
+	if(. == existing)
+		return
+	else
+		if(. > existing)
+			// . > existing: slower
+			if(limit_tiles_per_second_min != /datum/movespeed_modifier::limit_tiles_per_second_min)
+				. = min(., 10 / limit_tiles_per_second_min)
+			// ensure calculations did not speed us up
+			. = max(existing, .)
 		else
-			return existing
+			// . < existing: faster
+			if(limit_tiles_per_second_add != /datum/movespeed_modifier::limit_tiles_per_second_add)
+				. = max(., 10 / ((10 / existing) + limit_tiles_per_second_add))
+			if(limit_tiles_per_second_max != /datum/movespeed_modifier::limit_tiles_per_second_max)
+				. = max(., 10 / limit_tiles_per_second_max)
+			// ensure calculations did not slow us up
+			. = min(existing, .)
 
 /**
  * applies from params
  */
 /datum/movespeed_modifier/proc/parse(list/params)
 	. = FALSE
-	if(!isnull(params[MOVESPEED_PARAM_HYPERBOLIC_SLOWDOWN]))
+	var/static/list/valid_set = MOVESPEED_PARAM_VALID_SET
+	for(var/key in params)
+		if(!valid_set[key])
+			continue
+		if(!isnum(params[key]))
+			continue
 		. = TRUE
-		hyperbolic_slowdown = params[MOVESPEED_PARAM_HYPERBOLIC_SLOWDOWN]
-	if(!isnull(params[MOVESPEED_PARAM_MULTIPLY_SPEED]))
-		. = TRUE
-		multiply_speed = params[MOVESPEED_PARAM_MULTIPLY_SPEED]
-	if(!isnull(params[MOVESPEED_PARAM_MAX_TILE_ABSOLUTE]))
-		. = TRUE
-		absolute_max_tiles_per_second = params[MOVESPEED_PARAM_MAX_TILE_ABSOLUTE]
-	if(!isnull(params[MOVESPEED_PARAM_MAX_TILE_BOOST]))
-		. = TRUE
-		max_tiles_per_second_boost = params[MOVESPEED_PARAM_MAX_TILE_BOOST]
+		vars[key] = params[key]
 
 GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 

@@ -4588,6 +4588,7 @@
 #include "code\modules\projectiles\guns\gun_firing_cycle.dm"
 #include "code\modules\projectiles\guns\gun_item_renderer.dm"
 #include "code\modules\projectiles\guns\gun_mob_renderer.dm"
+#include "code\modules\projectiles\guns\gun\gun-interaction.dm"
 #include "code\modules\projectiles\guns\gun\launcher.dm"
 #include "code\modules\projectiles\guns\gun\projectile-legacy.dm"
 #include "code\modules\projectiles\guns\gun\projectile.dm"

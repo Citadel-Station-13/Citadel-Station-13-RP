@@ -15,8 +15,8 @@
 	///   is inflicted at 25% strength on reapply
 	var/pain_reapplication_multiplier = 0.25
 	/// movespeed modifier path
-	#warn impl
-	var/movespeed_modifier
+	/// * this must be an unique one only taser effects can apply, as this doesn't check if it's already there..
+	var/movespeed_modifier = /datum/movespeed_modifier/mob_taser_disrupt
 
 /datum/status_effect/taser_stun/tick(dt)
 	apply_pain_to_owner(pain_per_second * dt)
@@ -44,9 +44,6 @@
 		var/mob/living/simple_mob/owner_simple_mob = owner_mob
 		if(owner_simple_mob.taser_kill)
 			owner_simple_mob.take_overall_damage(burn = amount)
-
-#warn impl - movespeed modifier
-
 
 /datum/status_effect/taser_stun/nt_isd
 	identifier = "taser_stun-nt_isd"
