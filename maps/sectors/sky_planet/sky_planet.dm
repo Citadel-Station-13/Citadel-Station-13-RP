@@ -28,7 +28,7 @@
 	name = "Sector - Lythios43a : Upper West"
 	display_name = "Lythios43a - Upper West"
 	path = "maps/sectors/sky_planet/levels/sky_planet_upper_sky_west.dmm"
-	base_turf = /turf/simulated/open
+	base_turf = /turf/simulated/open/skyplanet
 	link_east = /datum/map_level/sector/sky_planet/sky_upper_east
 	link_below = /datum/map_level/sector/sky_planet/sky_west
 	air_outdoors = /datum/atmosphere/planet/sky_planet
@@ -64,7 +64,7 @@
 	name = "Sector - Lythios43a : Upper east"
 	display_name = "Lythios43a - Upper east"
 	path = "maps/sectors/sky_planet/levels/sky_planet_upper_sky_east.dmm"
-	base_turf = /turf/simulated/open
+	base_turf = /turf/simulated/open/skyplanet
 	link_west = /datum/map_level/sector/sky_planet/sky_upper_west
 	link_below = /datum/map_level/sector/sky_planet/sky_east
 	air_outdoors = /datum/atmosphere/planet/sky_planet

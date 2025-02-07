@@ -1,7 +1,8 @@
 /datum/atmosphere/planet/sky_planet
 	base = list(
-		/datum/gas/oxygen = 0.22,
-		/datum/gas/nitrogen = 0.78,
+		/datum/gas/oxygen = 0.24,
+		/datum/gas/nitrogen = 0.72,
+		/datum/gas/carbon_dioxide = 0.04,
 	)
 	pressure_low = 110.1
 	pressure_high = 110.1
@@ -10,9 +11,9 @@
 
 /datum/atmosphere/planet/sky_planet/ground
 	base = list(
-		/datum/gas/carbon_dioxide = 0.60,
-		/datum/gas/nitrogen = 0.30,
-		/datum/gas/phoron = 0.10,
+		/datum/gas/nitrogen = 0.10,
+		/datum/gas/oxygen = 0.03,
+		/datum/gas/carbon_dioxide = 0.87,
 	)
 	pressure_low = 180.1
 	pressure_high = 180.1
@@ -46,7 +47,7 @@
 	switch(sun_position)
 		if(0 to 0.20) // Night
 			low_brightness = 0.1
-			low_color = "#000066"
+			low_color = "#27276c"
 
 			high_brightness = 0.4
 			high_color = "#66004D"
@@ -145,34 +146,34 @@
 	switch(sun_position)
 		if(0 to 0.20) // Night
 			low_brightness = 0.1
-			low_color = "#000066"
+			low_color = "#27276c"
 
 			high_brightness = 0.4
-			high_color = "#0b2fa8"
+			high_color = "#66004D"
 			min = 0
 
 		if(0.20 to 0.30) // Twilight
 			low_brightness = 0.4
-			low_color = "#0a0f66"
+			low_color = "#66004D"
 
 			high_brightness = 0.7
-			high_color = "#091689"
+			high_color = "#CC3300"
 			min = 0.40
 
 		if(0.30 to 0.40) // Sunrise/set
 			low_brightness = 0.7
-			low_color = "#5f5714"
+			low_color = "#CC3300"
 
 			high_brightness = 2.0
-			high_color = "#6d3f11"
+			high_color = "#FF9933"
 			min = 0.50
 
 		if(0.40 to 1.00) // Noon
 			low_brightness = 2.0
-			low_color = "#725f0aff"
+			low_color = "#DDDDDD"
 
 			high_brightness = 12.0
-			high_color = "#ba9a0e"
+			high_color = "#FFFFFF"
 			min = 0.70
 
 	var/interpolate_weight = (abs(min - sun_position)) * 4

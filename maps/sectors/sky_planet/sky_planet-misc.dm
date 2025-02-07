@@ -13,6 +13,7 @@
 	icon_state = "globe"
 	color = "#bfff00"
 	known = TRUE
+	in_space = 0
 
 	initial_generic_waypoints = list(
 		"skyplanet_voidline_pad1",
