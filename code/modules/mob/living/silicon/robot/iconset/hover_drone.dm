@@ -25,10 +25,12 @@
 	icon_state_indicator = "janitor-indicator"
 
 /datum/prototype/robot_iconset/hover_drone/medical
+	display_name = /datum/prototype/robot_iconset/hover_drone::display_name + " (Medical)"
 	icon_state = "medical"
 	icon_state_indicator = "medical-indicator"
 
 /datum/prototype/robot_iconset/hover_drone/surgery
+	display_name = /datum/prototype/robot_iconset/hover_drone::display_name + " (Surgery)"
 	icon_state = "surgery"
 	icon_state_indicator = "surgery-indicator"
 

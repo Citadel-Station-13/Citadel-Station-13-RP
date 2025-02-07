@@ -3,42 +3,37 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/medical)
 	id = "nt-medical"
 	use_robot_module_path = /obj/item/robot_module/robot/medical
 	light_color = "#0099FF"
-	allowed_frames = list(
-		/datum/robot_frame{
-			name = "Telemachus";
-			robot_chassis = /datum/prototype/robot_chassis/baseline;
-			robot_iconset = /datum/prototype/robot_iconset/baseline_toiletbot/medical;
-		},
-		/datum/robot_frame{
-			name = "Canine - Medihound";
-			robot_chassis = /datum/prototype/robot_chassis/quadruped/canine;
-			robot_iconset = /datum/prototype/robot_iconset/dog_k9/medical;
-		},
-		/datum/robot_frame{
-			name = "Canine - Medihound (Dark)";
-			robot_chassis = /datum/prototype/robot_chassis/quadruped/canine;
-			robot_iconset = /datum/prototype/robot_iconset/dog_k9/medical_dark;
-		},
-		/datum/robot_frame{
-			name = "Canine - Vale";
-			robot_chassis = /datum/prototype/robot_chassis/quadruped/canine;
-			robot_iconset = /datum/prototype/robot_iconset/dog_vale/medical;
-		},
-		/datum/robot_frame{
-			name = "Canine - Borgi";
-			robot_chassis = /datum/prototype/robot_chassis/quadruped/canine;
-			robot_iconset = /datum/prototype/robot_iconset/dog_borgi/medical;
-		},
-		/datum/robot_frame{
-			name = "F3-LINE";
-			robot_chassis = /datum/prototype/robot_chassis/quadruped/feline;
-			robot_iconset = /datum/prototype/robot_iconset/cat_feli/medical;
-		},
-		/datum/robot_frame{
-			name = "Drake";
-			robot_chassis = /datum/prototype/robot_chassis/quadruped/draconic;
-			robot_iconset = /datum/prototype/robot_iconset/drake_mizartz/medical;
-		},
+	iconsets = list(
+		/datum/prototype/robot_iconset/baseline_toiletbot/medical,
+		/datum/prototype/robot_iconset/dog_borgi/medical,
+		/datum/prototype/robot_iconset/dog_k9/medical,
+		/datum/prototype/robot_iconset/dog_k9/medical_dark,
+		/datum/prototype/robot_iconset/dog_vale/medical,
+		/datum/prototype/robot_iconset/drake_mizartz/medical,
+		/datum/prototype/robot_iconset/cat_feli/medical,
+		/datum/prototype/robot_iconset/baseline_standard/medical,
+		/datum/prototype/robot_iconset/hover_eyebot/medical,
+		/datum/prototype/robot_iconset/biped_marina/medical,
+		/datum/prototype/robot_iconset/biped_tall/tallwhite,
+		/datum/prototype/robot_iconset/biped_tall/alternative/medical,
+		/datum/prototype/robot_iconset/biped_sleek/cmo,
+		/datum/prototype/robot_iconset/biped_sleek/medical,
+		/datum/prototype/robot_iconset/biped_heavy/medical,
+		/datum/prototype/robot_iconset/baseline_old/medical,
+		/datum/prototype/robot_iconset/biped_droid/medical,
+		/datum/prototype/robot_iconset/hover_drone/medical,
+		/datum/prototype/robot_iconset/hover_handy/medical,
+		/datum/prototype/robot_iconset/hover_drone/surgery,
+		/datum/prototype/robot_iconset/biped_insekt/medical,
+		/datum/prototype/robot_iconset/hover_glitterfly/surgeon,
+		/datum/prototype/robot_iconset/biped_miss/medical,
+		/datum/prototype/robot_iconset/hover_x88/medical,
+		/datum/prototype/robot_iconset/grounded_mechoid/medical,
+		/datum/prototype/robot_iconset/biped_noble/medical,
+		/datum/prototype/robot_iconset/grounded_zoomba/medical,
+		/datum/prototype/robot_iconset/grounded_worm/crisis,
+		/datum/prototype/robot_iconset/,
+		/datum/prototype/robot_iconset/,
 	)
 
 /datum/prototype/robot_module/nanotrasen/medical/create_mounted_item_descriptors(list/normal_out, list/emag_out)
@@ -87,34 +82,14 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/medical)
 	channels = list("Medical" = 1)
 	networks = list(NETWORK_MEDICAL)
 	subsystems = list(/mob/living/silicon/proc/subsystem_crew_monitor)
-	can_be_pushed = 0
 
 /obj/item/robot_module/robot/medical/surgeon
 	name = "medical robot module"
 	sprites = list(
-		"M-USE Nanotrasen" = "robotMedi",
-		"Cabeiri" = "eyebot-medical",
-		"Haruka" = "marinaMD",
 		"Minako" = "arachne",
-		"Usagi" = "tallwhite",
-		"WTOperator" = "sleekcmo",
-		"XI-ALP" = "heavyMed",
-		"Basic" = "Medibot",
-		"Advanced Droid" = "droid-medical",
 		"Needles" = "medicalrobot",
-		"Drone" = "drone-surgery",
-		"Handy" = "handy-med",
-		"Insekt" = "insekt-Med",
-		"Misato" = "tall2medical",
-		"L3P1-D0T" = "Glitterfly-Surgeon",
-		"Miss M" = "miss-medical",
 		"Coffical" = "coffin-Medical",
 		"Coffcue" = "coffin-Rescue",
-		"X-88" = "xeightyeight-medical",
-		"Acheron" = "mechoid-Medical",
-		"Shellguard Noble" = "Noble-MED",
-		"ZOOM-BA" = "zoomba-medical",
-		"W02M" = "worm-crisis"
 	)
 
 /obj/item/robot_module/robot/medical/surgeon/handle_special_module_init(mob/living/silicon/robot/R)

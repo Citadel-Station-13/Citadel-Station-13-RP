@@ -16,6 +16,7 @@
 	icon_state = "janitor"
 
 /datum/prototype/robot_iconset/biped_sleek/medical
+	display_name = /datum/prototype/robot_iconset/biped_sleek::display_name + " (Medical)"
 	icon_state = "medical"
 
 /datum/prototype/robot_iconset/biped_sleek/security
@@ -39,6 +40,7 @@
 	icon_state_indicator = "indicator-commmand"
 
 /datum/prototype/robot_iconset/biped_sleek/cmo
+	display_name = /datum/prototype/robot_iconset/biped_sleek::display_name + " (CMO)"
 	icon_state = "cmo"
 	icon_state_indicator = "indicator-commmand"
 
