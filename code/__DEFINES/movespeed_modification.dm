@@ -30,6 +30,11 @@ DEFINE_SHARED_BITFIELD(movespeed_modifier_flags, list(
 #define MOVESPEED_PRIORITY_DEFAULT 0
 #define MOVESPEED_PRIORITY_CARRY_WEIGHT 10
 
+//* Constants *//
+
+/// minimum TPS mobs may move at; used to prevent softlocks
+#define MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND (1 / 3)
+
 //* Conflicts IDs *//
 // None yet
 
