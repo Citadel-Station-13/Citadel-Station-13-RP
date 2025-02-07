@@ -91,6 +91,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/engineering)
 
 #warn translate chassis below
 
+// todo: legacy
 /obj/item/robot_module/robot/engineering
 	name = "engineering robot module"
 	channels = list("Engineering" = 1)

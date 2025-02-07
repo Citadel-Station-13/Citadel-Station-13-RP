@@ -49,6 +49,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/janitor)
 
 #warn translate chassis below
 
+// todo: legacy
 /obj/item/robot_module/robot/janitor
 	name = "janitorial robot module"
 	channels = list("Service" = 1)

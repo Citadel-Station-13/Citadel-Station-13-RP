@@ -37,6 +37,7 @@
 	icon_state_indicator = "security-indicator"
 
 /datum/prototype/robot_iconset/hover_glitterfly/clerical
+	display_name = /datum/prototype/robot_iconset/hover_glitterfly::display_name + " (Clerical)"
 	icon_state = "clerical"
 	icon_state_indicator = "clerical-indicator"
 

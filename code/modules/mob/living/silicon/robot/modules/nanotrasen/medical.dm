@@ -81,6 +81,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/medical)
 
 #warn translate chassis below
 
+// todo: legacy
 /obj/item/robot_module/robot/medical
 	name = "medical robot module"
 	channels = list("Medical" = 1)

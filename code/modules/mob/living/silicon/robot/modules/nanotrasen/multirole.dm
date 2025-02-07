@@ -45,6 +45,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/multirole)
 
 #warn translate chassis below
 
+// todo: legacy
 /obj/item/robot_module/robot/standard
 	sprites = list(
 		"Android" = "droid",

@@ -23,12 +23,14 @@
 	icon_state = "janitor"
 
 /datum/prototype/robot_iconset/baseline_standard/service
+	display_name = /datum/prototype/robot_iconset/baseline_standard::display_name + " (Service)"
 	icon_state = "service"
 
 /datum/prototype/robot_iconset/baseline_standard/logistics
 	icon_state = "logistics"
 
 /datum/prototype/robot_iconset/baseline_standard/clerical
+	display_name = /datum/prototype/robot_iconset/baseline_standard::display_name + " (Clerical)"
 	icon_state = "clerical"
 
 /datum/prototype/robot_iconset/baseline_standard/standard

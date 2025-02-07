@@ -9,6 +9,8 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/combat)
 		/datum/prototype/robot_iconset/grounded_zoomba/combat,
 		/datum/prototype/robot_iconset/cat_feli/combat,
 		/datum/prototype/robot_iconset/biped_marina/combat,
+		/datum/prototype/robot_iconset/grounded_mechoid/combat,
+		/datum/prototype/robot_iconset/dog_k9/blade,
 	)
 	allowed_frames = list(
 	)
@@ -32,14 +34,8 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/combat)
 
 #warn translate chassis below
 
+// todo: legacy
 /obj/item/robot_module/robot/security/combat
 	sprites = list(
 		"Combat Android" = "droid-combat",
-		"Acheron" = "mechoid-Combat",
-	)
-
-/obj/item/robot_module/robot/quad/ert
-	sprites = list(
-		"Standard" = "ert",
-		"Borgi" = "borgi",
 	)

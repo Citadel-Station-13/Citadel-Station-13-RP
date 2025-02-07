@@ -17,6 +17,7 @@
 	icon_state_indicator = "hydroponics-indicator"
 
 /datum/prototype/robot_iconset/hover_handy/clerk
+	display_name = /datum/prototype/robot_iconset/hover_handy::display_name + " (Clerk)"
 	icon_state = "clerk"
 	icon_state_indicator = "clerk-indicator"
 
@@ -25,6 +26,7 @@
 	icon_state_indicator = "janitor-indicator"
 
 /datum/prototype/robot_iconset/hover_handy/service
+	display_name = /datum/prototype/robot_iconset/hover_handy::display_name + " (Service)"
 	icon_state = "service"
 	icon_state_indicator = "service-indicator"
 

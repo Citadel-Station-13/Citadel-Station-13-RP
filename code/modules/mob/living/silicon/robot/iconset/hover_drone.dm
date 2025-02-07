@@ -37,6 +37,7 @@
 	icon_state_indicator = "security-indicator"
 
 /datum/prototype/robot_iconset/hover_drone/service
+	display_name = /datum/prototype/robot_iconset/hover_drone::display_name + " (Service)"
 	icon_state = "service"
 	icon_state_indicator = "service-indicator"
 
@@ -49,6 +50,7 @@
 	icon_state_indicator = "chemistry-indicator"
 
 /datum/prototype/robot_iconset/hover_drone/hydroponics
+	display_name = /datum/prototype/robot_iconset/hover_drone::display_name + " (Hydroponics)"
 	icon_state = "hydroponics"
 	icon_state_indicator = "hydroponics-indicator"
 

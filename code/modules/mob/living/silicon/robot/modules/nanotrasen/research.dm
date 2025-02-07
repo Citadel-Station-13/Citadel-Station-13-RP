@@ -62,6 +62,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/research)
 
 #warn translate chassis below
 
+// todo: legacy
 /obj/item/robot_module/robot/research
 	name = "research module"
 	channels = list("Science" = 1)

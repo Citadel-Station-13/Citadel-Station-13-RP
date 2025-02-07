@@ -3,47 +3,41 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/service)
 	id = "nt-service"
 	use_robot_module_path = /obj/item/robot_module/robot/clerical
 	light_color = "#6AED63"
-	allowed_frames = list(
-		/datum/robot_frame{
-			name = "M-USE (Nanotrasen)";
-			robot_chassis = /datum/prototype/robot_chassis/baseline;
-			robot_iconset = /datum/prototype/robot_iconset/baseline_standard/service;
-		},
-		/datum/robot_frame{
-			name = "M-USE (Nanotrasen) - Clerical";
-			robot_chassis = /datum/prototype/robot_chassis/baseline;
-			robot_iconset = /datum/prototype/robot_iconset/baseline_standard/clerical;
-		},
-		/datum/robot_frame{
-			name = "Cabeiri";
-			robot_chassis = /datum/prototype/robot_chassis/baseline;
-			robot_iconset = /datum/prototype/robot_iconset/hover_eyebot/standard;
-		},
-		/datum/robot_frame{
-			name = "Canine - Pinkhound";
-			robot_chassis = /datum/prototype/robot_chassis/quadruped/canine;
-			robot_iconset = /datum/prototype/robot_iconset/dog_k9/pink;
-		},
-		/datum/robot_frame{
-			name = "Canine - Blackhound";
-			robot_chassis = /datum/prototype/robot_chassis/quadruped/canine;
-			robot_iconset = /datum/prototype/robot_iconset/dog_k9/grey;
-		},
-		/datum/robot_frame{
-			name = "Canine - Hound";
-			robot_chassis = /datum/prototype/robot_chassis/quadruped/canine;
-			robot_iconset = /datum/prototype/robot_iconset/dog_vale/service;
-		},
-		/datum/robot_frame{
-			name = "Canine - Hound V2";
-			robot_chassis = /datum/prototype/robot_chassis/quadruped/canine;
-			robot_iconset = /datum/prototype/robot_iconset/dog_vale/service_dark;
-		},
-		/datum/robot_frame{
-			name = "F3-LINE";
-			robot_chassis = /datum/prototype/robot_chassis/quadruped/feline;
-			robot_iconset = /datum/prototype/robot_iconset/cat_feli/service;
-		},
+	iconsets = list(
+		/datum/prototype/robot_iconset/baseline_standard/service,
+		/datum/prototype/robot_iconset/baseline_standard/clerical,
+		/datum/prototype/robot_iconset/dog_k9/grey,
+		/datum/prototype/robot_iconset/dog_k9/pink,
+		/datum/prototype/robot_iconset/dog_vale/service,
+		/datum/prototype/robot_iconset/dog_vale/service_dark,
+		/datum/prototype/robot_iconset/cat_feli/service,
+		/datum/prototype/robot_iconset/drake_mizartz/peacekeeper,
+		/datum/prototype/robot_iconset/biped_marina/service,
+		/datum/prototype/robot_iconset/biped_maid,
+		/datum/prototype/robot_iconset/biped_tall/tallgreen,
+		/datum/prototype/robot_iconset/baseline_toiletbot/security,
+		/datum/prototype/robot_iconset/biped_sleek/service,
+		/datum/prototype/robot_iconset/baseline_misc/omoikane,
+		/datum/prototype/robot_iconset/grounded_spider/standard,
+		/datum/prototype/robot_iconset/biped_heavy/service,
+		/datum/prototype/robot_iconset/baseline_old/service,
+		/datum/prototype/robot_iconset/baseline_old/service_fancy,
+		/datum/prototype/robot_iconset/baseline_old/service_hydro,
+		/datum/prototype/robot_iconset/baseline_old/service_skirt,
+		/datum/prototype/robot_iconset/baseline_old/service_sweater,
+		/datum/prototype/robot_iconset/grounded_spider/command,
+		/datum/prototype/robot_iconset/biped_tall/alternative/service,
+		/datum/prototype/robot_iconset/hover_drone/service,
+		/datum/prototype/robot_iconset/hover_drone/hydroponics,
+		/datum/prototype/robot_iconset/hover_glitterfly/clerical,
+		/datum/prototype/robot_iconset/hover_glitterfly/service,
+		/datum/prototype/robot_iconset/hover_handy/service,
+		/datum/prototype/robot_iconset/grounded_mechoid/service,
+		/datum/prototype/robot_iconset/grounded_zoomba/service,
+		/datum/prototype/robot_iconset/biped_noble/service,
+		/datum/prototype/robot_iconset/grounded_worm/service,
+		/datum/prototype/robot_iconset/biped_miss/service,
+		/datum/prototype/robot_iconset/hover_handy/clerk,
 	)
 
 /datum/prototype/robot_module/nanotrasen/service/create_mounted_item_descriptors(list/normal_out, list/emag_out)
@@ -87,9 +81,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/service)
 	var/obj/item/reagent_containers/food/condiment/enzyme/E = locate() in robot
 	E.reagents.add_reagent("enzyme", 2 * multiplier * dt)
 
-
-#warn translate chassis below
-
+// todo: legacy
 /obj/item/robot_module/robot/clerical
 	name = "service robot module"
 	channels = list("Service" = 1)
@@ -115,58 +107,6 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/service)
 		LANGUAGE_TRADEBAND	= 1,
 		LANGUAGE_UNATHI		= 1,
 		LANGUAGE_ZADDAT		= 1
-	)
-
-/obj/item/robot_module/robot/clerical/butler
-	sprites = list(
-		"Haruka" = "marinaSV",
-		"Michiru" = "maidbot",
-		"Usagi" = "tallgreen",
-		"Telemachus" = "toiletbot",
-		"WTOperator" = "sleekservice",
-		"WTOmni" = "omoikane",
-		"XI-GUS" = "spider",
-		"XI-ALP" = "heavyServ",
-		"Standard" = "Service2",
-		"Waitress" = "Service",
-		"Bro" = "Brobot",
-		"Rich" = "maximillion",
-		"Drone - Service" = "drone-service",
-		"Drone - Hydro" = "drone-hydro",
-		"Misato" = "tall2service",
-		"L3P1-D0T" = "Glitterfly-Service",
-		"Miss M" = "miss-service",
-		"Handy - Service" = "handy-service",
-		"Handy - Hydro" = "handy-hydro",
-		"Acheron" = "mechoid-Service",
-		"Shellguard Noble" = "Noble-SRV",
-		"ZOOM-BA" = "zoomba-service",
-		"W02M" = "worm-service"
-	)
-
-/obj/item/robot_module/robot/clerical/general
-	name = "clerical robot module"
-	sprites = list(
-		"Haruka" = "marinaSV",
-		"Usagi" = "tallgreen",
-		"Telemachus" = "toiletbot",
-		"WTOperator" = "sleekclerical",
-		"WTOmni" = "omoikane",
-		"XI-GUS" = "spidercom",
-		"XI-ALP" = "heavyServ",
-		"Waitress" = "Service",
-		"Bro" = "Brobot",
-		"Rich" = "maximillion",
-		"Default" = "Service2",
-		"Drone" = "drone-blu",
-		"Misato" = "tall2service",
-		"L3P1-D0T" = "Glitterfly-Clerical",
-		"Miss M" = "miss-service",
-		"Handy" = "handy-clerk",
-		"Acheron" = "mechoid-Service",
-		"Shellguard Noble" = "Noble-SRV",
-		"ZOOM-BA" = "zoomba-clerical",
-		"W02M" = "worm-service"
 	)
 
 // In a nutshell, basicly service/butler robot but in dog form.

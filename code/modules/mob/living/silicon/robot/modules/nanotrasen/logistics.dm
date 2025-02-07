@@ -44,6 +44,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/logistics)
 
 #warn translate chassis below
 
+// todo: legacy
 /obj/item/robot_module/robot/logistics
 	name = "miner robot module"
 	channels = list("Supply" = 1)

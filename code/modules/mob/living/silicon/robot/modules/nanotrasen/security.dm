@@ -3,7 +3,37 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/security)
 	id = "nt-security"
 	use_robot_module_path = /obj/item/robot_module/robot/security
 	light_color = "#FF0000"
-	allowed_frames = list(
+	iconsets = list(
+		/datum/prototype/robot_iconset/baseline_standard/security,
+		/datum/prototype/robot_iconset/hover_eyebot/security,
+		/datum/prototype/robot_iconset/grounded_landmate/security,
+		/datum/prototype/robot_iconset/grounded_landmate/security_tread,
+		/datum/prototype/robot_iconset/biped_marina/security,
+		/datum/prototype/robot_iconset/biped_tall/tallred,
+		/datum/prototype/robot_iconset/baseline_toiletbot/security,
+		/datum/prototype/robot_iconset/biped_sleek/security,
+		/datum/prototype/robot_iconset/grounded_spider/security,
+		/datum/prototype/robot_iconset/biped_heavy/security,
+		/datum/prototype/robot_iconset/baseline_old/security,
+		/datum/prototype/robot_iconset/baseline_old/security_riot,
+		/datum/prototype/robot_iconset/hover_drone/security,
+		/datum/prototype/robot_iconset/biped_insekt/security,
+		/datum/prototype/robot_iconset/biped_tall/alternative/security,
+		/datum/prototype/robot_iconset/biped_miss/security,
+		/datum/prototype/robot_iconset/hover_glitterfly/security,
+		/datum/prototype/robot_iconset/grounded_mechoid/security,
+		/datum/prototype/robot_iconset/hover_handy/security,
+		/datum/prototype/robot_iconset/biped_noble/security,
+		/datum/prototype/robot_iconset/grounded_zoomba/security,
+		/datum/prototype/robot_iconset/grounded_worm/security,
+		/datum/prototype/robot_iconset/dog_borgi/security,
+		/datum/prototype/robot_iconset/dog_k9/security,
+		/datum/prototype/robot_iconset/dog_otie/security,
+		/datum/prototype/robot_iconset/dog_pupdozer/security,
+		/datum/prototype/robot_iconset/dog_vale/security,
+		/datum/prototype/robot_iconset/cat_feli/security,
+		/datum/prototype/robot_iconset/drake_mizartz/security,
+		/datum/prototype/robot_iconset/dog_k9/red,
 	)
 
 /datum/prototype/robot_module/nanotrasen/security/create_mounted_item_descriptors(list/normal_out, list/emag_out)
@@ -24,6 +54,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/security)
 
 #warn translate chassis below
 
+// todo: legacy
 /obj/item/robot_module/robot/security
 	name = "security robot module"
 	channels = list("Security" = 1)
@@ -34,29 +65,8 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/security)
 
 /obj/item/robot_module/robot/security/general
 	sprites = list(
-		"M-USE Nanotrasen" = "robotSecy",
-		"Cabeiri" = "eyebot-security",
-		"Cerberus" = "bloodhound",
-		"Cerberus - Treaded" = "treadhound",
-		"Haruka" = "marinaSC",
-		"Usagi" = "tallred",
-		"Telemachus" = "toiletbotsecurity",
-		"WTOperator" = "sleeksecurity",
-		"XI-GUS" = "spidersec",
-		"XI-ALP" = "heavySec",
-		"Basic" = "secborg",
 		"Black Knight" = "securityrobot",
-		"Drone" = "drone-sec",
-		"Insekt" = "insekt-Sec",
-		"Misato" = "tall2security",
-		"L3P1-D0T" = "Glitterfly-Security",
-		"Miss M" = "miss-security",
 		"Coffcurity" = "coffin-Combat",
-		"Handy" = "handy-sec",
-		"Acheron" = "mechoid-Security",
-		"Shellguard Noble" = "Noble-SEC",
-		"ZOOM-BA" = "zoomba-security",
-		"W02M" = "worm-security"
 	)
 
 /obj/item/robot_module/robot/security/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
@@ -76,15 +86,6 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/security)
 
 /obj/item/robot_module/robot/quad/sec
 	name = "SecuriQuad module"
-	sprites = list(
-		"K9 hound" = "k9",
-		"K9 Alternative" = "k92",
-		"Secborg model V-2" = "secborg",
-		"Borgi" = "borgi-sec",
-		"Otieborg" = "oties",
-		"F3-LINE" = "FELI-Security",
-		"Drake" = "drakesec"
-	)
 	channels = list("Security" = 1)
 	networks = list(NETWORK_SECURITY)
 	can_be_pushed = 0
