@@ -2,7 +2,7 @@
 	INVOKE_ASYNC(src, PROC_REF(do_transform_animation))
 
 /mob/living/silicon/robot/proc/do_transform_animation()
-	notransform = TRUE
+	transforming = TRUE
 	dir = SOUTH
 	var/obj/effect/temp_visual/decoy/fading/fivesecond/ANM = new /obj/effect/temp_visual/decoy/fading/fivesecond(loc, src)
 	ANM.layer = layer - 0.01
@@ -19,4 +19,4 @@
 	if(!prev_lockcharge)
 		SetLockdown(0)
 	anchored = FALSE
-	notransform = FALSE
+	transforming = FALSE
