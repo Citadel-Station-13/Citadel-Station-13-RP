@@ -32,6 +32,9 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/medical)
 		/datum/prototype/robot_iconset/biped_noble/medical,
 		/datum/prototype/robot_iconset/grounded_zoomba/medical,
 		/datum/prototype/robot_iconset/grounded_worm/crisis,
+		/datum/prototype/robot_iconset/raptor/medical,
+		/datum/prototype/robot_iconset/,
+		/datum/prototype/robot_iconset/,
 		/datum/prototype/robot_iconset/,
 		/datum/prototype/robot_iconset/,
 	)

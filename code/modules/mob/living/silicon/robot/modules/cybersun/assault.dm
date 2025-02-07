@@ -6,18 +6,10 @@ GENERATE_ROBOT_MODULE_PRESET(/cybersun/assault)
 	iconsets = list(
 		/datum/prototype/robot_iconset/grounded_landmate/security_cybersun,
 		/datum/prototype/robot_iconset/grounded_landmate/security_cybersun_tread,
-	)
-	allowed_frames = list(
-		/datum/robot_frame{
-			name = "XI - ALP";
-			robot_chassis = /datum/prototype/robot_chassis/biped;
-			robot_iconset = /datum/prototype/robot_iconset/biped_heavy/antag;
-		},
-		/datum/robot_frame{
-			name = "XI - GUS";
-			robot_chassis = /datum/prototype/robot_chassis/grounded;
-			robot_iconset = /datum/prototype/robot_iconset/grounded_spider/combat;
-		},
+		/datum/prototype/robot_iconset/raptor/syndicate_medical,
+		/datum/prototype/robot_iconset/biped_heavy/antag,
+		/datum/prototype/robot_iconset/grounded_spider/combat,
+		/datum/prototype/robot_iconset/,
 	)
 
 /datum/prototype/robot_module/cybersun/assault/create_mounted_item_descriptors(list/normal_out, list/emag_out)

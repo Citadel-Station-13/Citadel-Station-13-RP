@@ -12,8 +12,6 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/combat)
 		/datum/prototype/robot_iconset/grounded_mechoid/combat,
 		/datum/prototype/robot_iconset/dog_k9/blade,
 	)
-	allowed_frames = list(
-	)
 
 /datum/prototype/robot_module/nanotrasen/combat/create_mounted_item_descriptors(list/normal_out, list/emag_out)
 	if(normal_out)

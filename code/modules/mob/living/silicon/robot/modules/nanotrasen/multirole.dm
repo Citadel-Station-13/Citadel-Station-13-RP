@@ -28,6 +28,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/multirole)
 		/datum/prototype/robot_iconset/biped_noble/standard,
 		/datum/prototype/robot_iconset/grounded_zoomba/standard,
 		/datum/prototype/robot_iconset/grounded_worm/standard,
+		/datum/prototype/robot_iconset/raptor/peacekeeper,
 	)
 
 /datum/prototype/robot_module/nanotrasen/multirole/create_mounted_item_descriptors(list/normal_out, list/emag_out)

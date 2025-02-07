@@ -38,6 +38,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/service)
 		/datum/prototype/robot_iconset/grounded_worm/service,
 		/datum/prototype/robot_iconset/biped_miss/service,
 		/datum/prototype/robot_iconset/hover_handy/clerk,
+		/datum/prototype/robot_iconset/raptor/service,
 	)
 
 /datum/prototype/robot_module/nanotrasen/service/create_mounted_item_descriptors(list/normal_out, list/emag_out)

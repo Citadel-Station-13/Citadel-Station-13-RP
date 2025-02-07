@@ -6,6 +6,7 @@ GENERATE_ROBOT_MODULE_PRESET(/cybersun/sapper)
 	iconsets = list(
 		/datum/prototype/robot_iconset/grounded_landmate/engineering_cybersun,
 		/datum/prototype/robot_iconset/grounded_spider/combat,
+		/datum/prototype/robot_iconset/raptor/syndicate_machinist,
 	)
 
 /datum/prototype/robot_module/cybersun/sapper/provision_resource_store(datum/robot_resource_store/store)

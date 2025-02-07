@@ -3,7 +3,10 @@ GENERATE_ROBOT_MODULE_PRESET(/gravekeeper)
 	id = "gravekeeper"
 	use_robot_module_path = /obj/item/robot_module/robot/
 	light_color = "#AAAA00"
-	allowed_frames = list(
+	iconsets = list(
+		/datum/prototype/robot_iconset/biped_sleek/gravekeeper,
+		/datum/prototype/robot_iconset/hover_drone/gravekeeper,
+		/datum/prototype/robot_iconset/raptor/gravekeeper,
 	)
 
 /datum/prototype/robot_module/gravekeeper/provision_resource_store(datum/robot_resource_store/store)
@@ -38,13 +41,3 @@ GENERATE_ROBOT_MODULE_PRESET(/gravekeeper)
 		emag_out |= list(
 			/obj/item/gun/energy/retro/mounted,
 		)
-
-
-#warn translate chassis below
-
-/obj/item/robot_module/robot/gravekeeper
-	name = "gravekeeper robot module"
-	sprites = list(
-		"Drone" = "drone-gravekeeper",
-		"Sleek" = "sleek-gravekeeper"
-	)

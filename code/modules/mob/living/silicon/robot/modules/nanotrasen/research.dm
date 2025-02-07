@@ -21,6 +21,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/research)
 		/datum/prototype/robot_iconset/dog_k9/science_dark,
 		/datum/prototype/robot_iconset/dog_vale/science,
 		/datum/prototype/robot_iconset/cat_feli/research,
+		/datum/prototype/robot_iconset/grounded_zoomba/research,
 	)
 
 /datum/prototype/robot_module/nanotrasen/research/provision_resource_store(datum/robot_resource_store/store)
@@ -69,7 +70,6 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/research)
 	sprites = list(
 		"L'Ouef" = "peaceborg",
 		"Coffsearch" = "coffin-Research",
-		"ZOOM-BA" = "zoomba-research",
 	)
 
 /obj/item/robot_module/robot/research/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)

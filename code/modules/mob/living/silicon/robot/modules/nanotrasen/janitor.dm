@@ -25,6 +25,8 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/janitor)
 		/datum/prototype/robot_iconset/dog_vale/janitor,
 		/datum/prototype/robot_iconset/drake_mizartz/janitor,
 		/datum/prototype/robot_iconset/cat_feli/janitor,
+		/datum/prototype/robot_iconset/raptor,
+		/datum/prototype/robot_iconset/baseline_standard/janitor,
 	)
 
 /datum/prototype/robot_module/nanotrasen/janitor/create_mounted_item_descriptors(list/normal_out, list/emag_out)
@@ -54,7 +56,6 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/janitor)
 	name = "janitorial robot module"
 	channels = list("Service" = 1)
 	sprites = list(
-		"M-USE Nanotrasen" = "robotJani",
 		"Arachne" = "crawler",
 		"Basic" = "JanBot2",
 		"Mopbot"  = "janitorrobot",

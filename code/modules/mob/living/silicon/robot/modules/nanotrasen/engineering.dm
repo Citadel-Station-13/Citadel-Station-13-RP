@@ -36,8 +36,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/engineering)
 		/datum/prototype/robot_iconset/grounded_worm/engineering,
 		/datum/prototype/robot_iconset/baseline_standard/engineering,
 		/datum/prototype/robot_iconset/baseline_old/hazardvest,
-		/datum/prototype/robot_iconset/,
-		/datum/prototype/robot_iconset/,
+		/datum/prototype/robot_iconset/raptor/engineering,
 		/datum/prototype/robot_iconset/,
 	)
 

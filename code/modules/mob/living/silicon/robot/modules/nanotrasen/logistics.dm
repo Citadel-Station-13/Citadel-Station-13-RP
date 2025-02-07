@@ -24,6 +24,12 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/logistics)
 		/datum/prototype/robot_iconset/biped_noble/mining,
 		/datum/prototype/robot_iconset/zoomba/miner,
 		/datum/prototype/robot_iconset/grounded_worm/miner,
+		/datum/prototype/robot_iconset/raptor/mining,
+		/datum/prototype/robot_iconset/,
+		/datum/prototype/robot_iconset/,
+		/datum/prototype/robot_iconset/,
+		/datum/prototype/robot_iconset/,
+		/datum/prototype/robot_iconset/,
 	)
 
 /datum/prototype/robot_module/nanotrasen/logistics/create_mounted_item_descriptors(list/normal_out, list/emag_out)
