@@ -4581,6 +4581,7 @@
 #include "code\modules\projectiles\guns\gun-attachment.dm"
 #include "code\modules\projectiles\guns\gun-firemode.dm"
 #include "code\modules\projectiles\guns\gun-firing.dm"
+#include "code\modules\projectiles\guns\gun-interaction.dm"
 #include "code\modules\projectiles\guns\gun-modular.dm"
 #include "code\modules\projectiles\guns\gun.dm"
 #include "code\modules\projectiles\guns\gun_attachment.dm"
