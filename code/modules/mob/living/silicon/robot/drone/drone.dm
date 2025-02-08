@@ -71,7 +71,7 @@
 	hat_y_offset = -12
 	can_pull_mobs = MOB_PULL_SAME
 	//holder_type = /obj/item/holder/drone/heavy
-/mob/living/silicon/robot/drone/construction/matriarch
+/mob/living/silicon/robot/drone/matriarch
 	name = "matriarch drone"
 	module_type = /obj/item/robot_module/drone/construction/matriarch
 	law_type = /datum/ai_lawset/drone/matriarch
@@ -126,7 +126,7 @@
 
 //Redefining some robot procs...
 
-/mob/living/silicon/robot/drone/construction/matriarch/Namepick()
+/mob/living/silicon/robot/drone/matriarch/Namepick()
 	set category = "Robot Commands"
 	if(custom_name)
 		return 0
@@ -378,30 +378,30 @@
 	..()
 	flavor_text = "It's a bulky mining drone stamped with a Grayson logo."
 
-/mob/living/silicon/robot/drone/construction/matriarch/init()
+/mob/living/silicon/robot/drone/matriarch/init()
 	..()
 	add_verb(src, /mob/living/silicon/robot/verb/Namepick)
 	flavor_text = "It's a small matriarch drone. The casing is stamped with an corporate logo and the subscript: '[(LEGACY_MAP_DATUM).company_name] Recursive Repair Systems: Heart Of The Swarm!'"
 
-/mob/living/silicon/robot/drone/construction/matriarch/welcome_drone()
+/mob/living/silicon/robot/drone/matriarch/welcome_drone()
 	to_chat(src, "<b>You are a matriarch maintenance drone, a tiny-brained robotic repair machine</b>.")
 	to_chat(src, "You have no individual will, no personality, and no drives or urges other than your laws.")
 	to_chat(src, "Remember,  you are <b>lawed against interference with the crew</b>. Also remember, <b>you DO NOT take orders from the AI.</b>")
 	to_chat(src, "Use <b>say ;Hello</b> to talk to other drones and <b>say Hello</b> to speak silently to your nearby fellows.")
 
-/mob/living/silicon/robot/drone/construction/matriarch/Initialize()
+/mob/living/silicon/robot/drone/matriarch/Initialize()
 	. = ..()
 	matrix_tag = "[(LEGACY_MAP_DATUM).company_name]"
 
-/mob/living/silicon/robot/drone/construction/matriarch/shut_down()
+/mob/living/silicon/robot/drone/matriarch/shut_down()
 	return
 
-/mob/living/silicon/robot/drone/construction/matriarch/transfer_personality(client/player)
+/mob/living/silicon/robot/drone/matriarch/transfer_personality(client/player)
 	. = ..()
 	assign_drone_to_matrix(src, matrix_tag)
 	master_matrix.message_drones(SPAN_NOTICE("Energy surges through your circuits. The matriarch has come online."))
 
-/mob/living/silicon/robot/drone/construction/matriarch/ghostize(can_reenter_corpse, should_set_timer)
+/mob/living/silicon/robot/drone/matriarch/ghostize(can_reenter_corpse, should_set_timer)
 	. = ..()
 	if(can_reenter_corpse || stat == DEAD)
 		return

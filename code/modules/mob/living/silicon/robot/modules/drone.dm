@@ -2,7 +2,7 @@
 	id = "drone"
 	use_robot_module_path = /obj/item/robot_module/robot/drone
 	#warn frames
-	allowed_frames = list(
+	iconsets = list(
 	)
 
 /datum/prototype/robot_module/drone/provision_resource_store(datum/robot_resource_store/store)
@@ -80,12 +80,8 @@ GENERATE_ROBOT_MODULE_PRESET(/drone/mining)
 			/obj/item/pickaxe/diamonddrill,
 		)
 
-#warn translate chassis below
-
 /obj/item/robot_module/drone
-	name = "drone module"
 	channels = list("Engineering" = 1, "Supply" = 1)
 	networks = list(NETWORK_ENGINEERING, NETWORK_MINE)
 
 /obj/item/robot_module/drone/construction/matriarch
-	name = "matriarch drone module"

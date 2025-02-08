@@ -29,6 +29,7 @@
 	icon_state = "mining"
 
 /datum/prototype/robot_iconset/hover_coffin/research
+	display_name = "Coffsearch"
 	icon_state = "research"
 
 /datum/prototype/robot_iconset/hover_coffin/clerical
@@ -41,3 +42,7 @@
 /datum/prototype/robot_iconset/hover_coffin/engineering
 	display_name = "Coffgineer"
 	icon_state = "engineering"
+
+/datum/prototype/robot_iconset/hover_coffin/combat
+	display_name = "Coffcurity"
+	icon_state = "combat"

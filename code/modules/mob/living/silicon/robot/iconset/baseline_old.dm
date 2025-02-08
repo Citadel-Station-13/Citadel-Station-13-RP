@@ -23,6 +23,10 @@
 /datum/prototype/robot_iconset/baseline_old/security
 	icon_state = "security"
 
+/datum/prototype/robot_iconset/baseline_old/security_2
+	display_name = "Basic (Alt)"
+	icon_state = "security_2"
+
 /datum/prototype/robot_iconset/baseline_old/service_sweater
 	display_name = /datum/prototype/robot_iconset/baseline_old::display_name + " (Sweater)"
 	icon_state = "service_sweater"
@@ -46,6 +50,7 @@
 	icon_state = "medical"
 
 /datum/prototype/robot_iconset/baseline_old/medical_2
+	display_name = "Basic (Alt)"
 	icon_state = "medical_2"
 
 /datum/prototype/robot_iconset/baseline_old/security_riot

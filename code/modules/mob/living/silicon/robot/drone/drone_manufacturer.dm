@@ -6,7 +6,7 @@
 
 /proc/count_matriarchs()
 	var/matriarchs = 0
-	for(var/mob/living/silicon/robot/drone/construction/matriarch/M in GLOB.player_list)
+	for(var/mob/living/silicon/robot/drone/matriarch/M in GLOB.player_list)
 		matriarchs++
 	return matriarchs
 
@@ -46,7 +46,7 @@
 /obj/machinery/drone_fabricator/matriarch
 	name = "matriarch drone fabricator"
 	fabricator_tag = "Upper Level Matriarch"
-	drone_type = /mob/living/silicon/robot/drone/construction/matriarch
+	drone_type = /mob/living/silicon/robot/drone/matriarch
 
 /obj/machinery/drone_fabricator/update_icon_state()
 	. = ..()
@@ -97,7 +97,7 @@
 	if(!produce_drones || !config_legacy.allow_drone_spawn || count_drones() >= config_legacy.max_maint_drones)
 		return
 
-	if((drone_type == /mob/living/silicon/robot/drone/construction/matriarch) && (count_matriarchs() > 0))
+	if((drone_type == /mob/living/silicon/robot/drone/matriarch) && (count_matriarchs() > 0))
 		return
 
 	if(player && !istype(player.mob,/mob/observer/dead))

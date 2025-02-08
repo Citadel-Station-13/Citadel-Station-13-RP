@@ -22,6 +22,9 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/research)
 		/datum/prototype/robot_iconset/dog_vale/science,
 		/datum/prototype/robot_iconset/cat_feli/research,
 		/datum/prototype/robot_iconset/grounded_zoomba/research,
+		/datum/prototype/robot_iconset/hover_coffin/research,
+		// the science coder's pet robot module can live on inside science :)
+		/datum/prototype/robot_iconset/grounded_landmate/peacekeeper,
 	)
 
 /datum/prototype/robot_module/nanotrasen/research/provision_resource_store(datum/robot_resource_store/store)
@@ -60,17 +63,9 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/research)
 			/obj/item/borg/combat/shield,
 		)
 
-
-#warn translate chassis below
-
 // todo: legacy
 /obj/item/robot_module/robot/research
-	name = "research module"
 	channels = list("Science" = 1)
-	sprites = list(
-		"L'Ouef" = "peaceborg",
-		"Coffsearch" = "coffin-Research",
-	)
 
 /obj/item/robot_module/robot/research/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
 	var/obj/item/reagent_containers/syringe/S = locate() in src.modules

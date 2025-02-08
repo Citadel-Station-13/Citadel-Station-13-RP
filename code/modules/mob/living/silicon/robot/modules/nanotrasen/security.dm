@@ -35,6 +35,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/security)
 		/datum/prototype/robot_iconset/drake_mizartz/security,
 		/datum/prototype/robot_iconset/dog_k9/red,
 		/datum/prototype/robot_iconset/raptor/security,
+		/datum/prototype/robot_iconset/hover_coffin/combat,
 	)
 
 /datum/prototype/robot_module/nanotrasen/security/create_mounted_item_descriptors(list/normal_out, list/emag_out)
@@ -53,21 +54,11 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/security)
 			/obj/item/gun/energy/laser/mounted,
 		)
 
-#warn translate chassis below
-
 // todo: legacy
 /obj/item/robot_module/robot/security
-	name = "security robot module"
 	channels = list("Security" = 1)
 	networks = list(NETWORK_SECURITY)
 	subsystems = list(/mob/living/silicon/proc/subsystem_crew_monitor)
-	can_be_pushed = 0
-
-/obj/item/robot_module/robot/security/general
-	sprites = list(
-		"Black Knight" = "securityrobot",
-		"Coffcurity" = "coffin-Combat",
-	)
 
 /obj/item/robot_module/robot/security/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
 	var/obj/item/flash/F = locate() in src.modules

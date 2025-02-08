@@ -3979,6 +3979,7 @@
 #include "code\modules\mob\living\silicon\robot\drone\~defines.dm"
 #include "code\modules\mob\living\silicon\robot\frames\placeholder.dm"
 #include "code\modules\mob\living\silicon\robot\iconset\baseline_droid.dm"
+#include "code\modules\mob\living\silicon\robot\iconset\baseline_drone.dm"
 #include "code\modules\mob\living\silicon\robot\iconset\baseline_misc.dm"
 #include "code\modules\mob\living\silicon\robot\iconset\baseline_old.dm"
 #include "code\modules\mob\living\silicon\robot\iconset\baseline_standard.dm"
