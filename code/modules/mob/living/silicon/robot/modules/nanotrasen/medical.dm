@@ -33,10 +33,8 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/medical)
 		/datum/prototype/robot_iconset/grounded_zoomba/medical,
 		/datum/prototype/robot_iconset/grounded_worm/crisis,
 		/datum/prototype/robot_iconset/raptor/medical,
-		/datum/prototype/robot_iconset/,
-		/datum/prototype/robot_iconset/,
-		/datum/prototype/robot_iconset/,
-		/datum/prototype/robot_iconset/,
+		/datum/prototype/robot_iconset/hover_coffin/medical,
+		/datum/prototype/robot_iconset/baseline_old/medical_2,
 	)
 
 /datum/prototype/robot_module/nanotrasen/medical/create_mounted_item_descriptors(list/normal_out, list/emag_out)
@@ -77,23 +75,11 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/medical)
 	store.provisioned_stack_store[/obj/item/stack/medical/splint] = new /datum/robot_resource/provisioned/preset/splints
 	store.provisioned_stack_store[/obj/item/stack/nanopaste] = new /datum/robot_resource/provisioned/preset/nanopaste
 
-#warn translate chassis below
-
 // todo: legacy
 /obj/item/robot_module/robot/medical
-	name = "medical robot module"
 	channels = list("Medical" = 1)
 	networks = list(NETWORK_MEDICAL)
 	subsystems = list(/mob/living/silicon/proc/subsystem_crew_monitor)
-
-/obj/item/robot_module/robot/medical/surgeon
-	name = "medical robot module"
-	sprites = list(
-		"Minako" = "arachne",
-		"Needles" = "medicalrobot",
-		"Coffical" = "coffin-Medical",
-		"Coffcue" = "coffin-Rescue",
-	)
 
 /obj/item/robot_module/robot/medical/surgeon/handle_special_module_init(mob/living/silicon/robot/R)
 	. = ..()

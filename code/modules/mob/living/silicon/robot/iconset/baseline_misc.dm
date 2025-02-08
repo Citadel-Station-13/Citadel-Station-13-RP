@@ -13,3 +13,8 @@
 	display_name = "Ward-Takashi - Omni"
 	icon_state = "omoikane"
 	icon_state_indicator = "omoikane-indicator"
+
+/datum/prototype/robot_iconset/baseline_misc/arachne
+	display_name = "Ward-Takashi - Arachne"
+	icon_state = "arachne"
+	icon_state_indicator = "arachne-indicator"

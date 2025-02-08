@@ -27,6 +27,10 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/janitor)
 		/datum/prototype/robot_iconset/cat_feli/janitor,
 		/datum/prototype/robot_iconset/raptor,
 		/datum/prototype/robot_iconset/baseline_standard/janitor,
+		/datum/prototype/robot_iconset/baseline_old/janitor,
+		/datum/prototype/robot_iconset/baseline_old/janitor_2,
+		/datum/prototype/robot_iconset/hover_coffin/custodial,
+		/datum/prototype/robot_iconset/baseline_misc/arachne,
 	)
 
 /datum/prototype/robot_module/nanotrasen/janitor/create_mounted_item_descriptors(list/normal_out, list/emag_out)
@@ -49,19 +53,9 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/janitor)
 	..()
 	store.provisioned_material_store[/datum/prototype/material/glass::id] = new /datum/robot_resource/provisioned/preset/material/glass{regen_per_second = 1 * SHEET_MATERIAL_AMOUNT}
 
-#warn translate chassis below
-
 // todo: legacy
 /obj/item/robot_module/robot/janitor
-	name = "janitorial robot module"
 	channels = list("Service" = 1)
-	sprites = list(
-		"Arachne" = "crawler",
-		"Basic" = "JanBot2",
-		"Mopbot"  = "janitorrobot",
-		"Cleriffin" = "coffin-Clerical",
-		"Coffstodial" = "coffin-Custodial",
-	)
 
 /obj/item/robot_module/robot/janitor/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
 	if(src.emag)

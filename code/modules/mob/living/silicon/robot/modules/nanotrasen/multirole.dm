@@ -1,7 +1,7 @@
 GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/multirole)
 /datum/prototype/robot_module/nanotrasen/multirole
 	id = "nt-multirole"
-	use_robot_module_path = /obj/item/robot_module/robot/standard
+	use_robot_module_path = /obj/item/robot_module/robot
 	light_color = "#FFFFFF"
 	iconsets = list(
 		/datum/prototype/robot_iconset/biped_k4t,
@@ -29,6 +29,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/multirole)
 		/datum/prototype/robot_iconset/grounded_zoomba/standard,
 		/datum/prototype/robot_iconset/grounded_worm/standard,
 		/datum/prototype/robot_iconset/raptor/peacekeeper,
+		/datum/prototype/robot_iconset/baseline_droid/standard,
 	)
 
 /datum/prototype/robot_module/nanotrasen/multirole/create_mounted_item_descriptors(list/normal_out, list/emag_out)
@@ -43,12 +44,3 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/multirole)
 		emag_out |= list(
 			/obj/item/melee/transforming/energy/sword,
 		)
-
-#warn translate chassis below
-
-// todo: legacy
-/obj/item/robot_module/robot/standard
-	sprites = list(
-		"Android" = "droid",
-		"Convict" = "servitor",
-	)

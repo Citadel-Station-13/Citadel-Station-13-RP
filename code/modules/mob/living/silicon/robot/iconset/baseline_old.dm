@@ -17,6 +17,9 @@
 /datum/prototype/robot_iconset/baseline_old/hazardvest
 	icon_state = "hazardvest"
 
+/datum/prototype/robot_iconset/baseline_old/engineer
+	icon_state = "engineer"
+
 /datum/prototype/robot_iconset/baseline_old/security
 	icon_state = "security"
 
@@ -42,9 +45,16 @@
 /datum/prototype/robot_iconset/baseline_old/medical
 	icon_state = "medical"
 
+/datum/prototype/robot_iconset/baseline_old/medical_2
+	icon_state = "medical_2"
+
 /datum/prototype/robot_iconset/baseline_old/security_riot
 	display_name = /datum/prototype/robot_iconset/baseline_old::display_name + " (Riot)"
 	icon_state = "security_riot"
 
 /datum/prototype/robot_iconset/baseline_old/janitor
 	icon_state = "janitor"
+
+/datum/prototype/robot_iconset/baseline_old/janitor_2
+	display_name = "Basic (Alt)"
+	icon_state = "janitor_2"

@@ -11,6 +11,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/combat)
 		/datum/prototype/robot_iconset/biped_marina/combat,
 		/datum/prototype/robot_iconset/grounded_mechoid/combat,
 		/datum/prototype/robot_iconset/dog_k9/blade,
+		/datum/prototype/robot_iconset/baseline_droid/combat,
 	)
 
 /datum/prototype/robot_module/nanotrasen/combat/create_mounted_item_descriptors(list/normal_out, list/emag_out)
@@ -29,11 +30,3 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/combat)
 			/obj/item/gun/energy/lasercannon/mounted,
 		)
 	return ..()
-
-#warn translate chassis below
-
-// todo: legacy
-/obj/item/robot_module/robot/security/combat
-	sprites = list(
-		"Combat Android" = "droid-combat",
-	)

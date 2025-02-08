@@ -12,12 +12,14 @@
 	icon_state = "standard"
 
 /datum/prototype/robot_iconset/hover_coffin/medical
+	display_name = "Coffical"
 	icon_state = "medical"
 
 /datum/prototype/robot_iconset/hover_coffin/syndicate
 	icon_state = "syndicate"
 
 /datum/prototype/robot_iconset/hover_coffin/custodial
+	display_name = "Coffstodial"
 	icon_state = "custodial"
 
 /datum/prototype/robot_iconset/hover_coffin/service

@@ -37,3 +37,11 @@
 /datum/prototype/robot_iconset/baseline_toiletbot/antag
 	icon_state = "antag"
 	icon_state_indicator = "indicator-lighting-antag"
+
+/datum/prototype/robot_iconset/baseline_toiletbot/syndicate
+	icon_state = "syndicate"
+	icon_state_indicator = "indicator-lighting-syndicate"
+
+/datum/prototype/robot_iconset/baseline_toiletbot/ninja
+	icon_state = "ninja"
+	icon_state_indicator = "indicator-lighting-ninja"

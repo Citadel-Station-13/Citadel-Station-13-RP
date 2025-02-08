@@ -27,6 +27,7 @@
 	icon_state_indicator = "janitor-indicator"
 
 /datum/prototype/robot_iconset/grounded_landmate/mining
+	display_name = "Treadhead"
 	icon_state = "mining"
 	icon_state_indicator = "mining-indicator"
 

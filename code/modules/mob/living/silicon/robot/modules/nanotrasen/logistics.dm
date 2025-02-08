@@ -25,11 +25,9 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/logistics)
 		/datum/prototype/robot_iconset/zoomba/miner,
 		/datum/prototype/robot_iconset/grounded_worm/miner,
 		/datum/prototype/robot_iconset/raptor/mining,
-		/datum/prototype/robot_iconset/,
-		/datum/prototype/robot_iconset/,
-		/datum/prototype/robot_iconset/,
-		/datum/prototype/robot_iconset/,
-		/datum/prototype/robot_iconset/,
+		/datum/prototype/robot_iconset/baseline_standard/logistics,
+		/datum/prototype/robot_iconset/grounded_landmate/minibng,
+		/datum/prototype/robot_iconset/hover_coffin/mining,
 	)
 
 /datum/prototype/robot_module/nanotrasen/logistics/create_mounted_item_descriptors(list/normal_out, list/emag_out)
@@ -48,17 +46,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/logistics)
 		)
 	return ..()
 
-#warn translate chassis below
-
 // todo: legacy
 /obj/item/robot_module/robot/logistics
-	name = "miner robot module"
 	channels = list("Supply" = 1)
 	networks = list(NETWORK_MINE)
-	sprites = list(
-		"NM-USE Nanotrasen" = "robotMine",
-		"Basic" = "Miner_old",
-		"Treadhead" = "Miner",
-		"Carffin" = "coffin-Service",
-		"Coffing" = "coffin-Mining",
-	)

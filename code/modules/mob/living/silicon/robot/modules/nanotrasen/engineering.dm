@@ -37,7 +37,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/engineering)
 		/datum/prototype/robot_iconset/baseline_standard/engineering,
 		/datum/prototype/robot_iconset/baseline_old/hazardvest,
 		/datum/prototype/robot_iconset/raptor/engineering,
-		/datum/prototype/robot_iconset/,
+		/datum/prototype/robot_iconset/baseline_old/engineer,
 	)
 
 /datum/prototype/robot_module/nanotrasen/engineering/provision_resource_store(datum/robot_resource_store/store)
@@ -88,14 +88,8 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/engineering)
 			/obj/item/melee/baton/robot/arm,
 		)
 
-#warn translate chassis below
-
 // todo: legacy
 /obj/item/robot_module/robot/engineering
-	name = "engineering robot module"
 	channels = list("Engineering" = 1)
 	networks = list(NETWORK_ENGINEERING)
 	subsystems = list(/mob/living/silicon/proc/subsystem_power_monitor)
-	sprites = list(
-		"Antique" = "engineerrobot",
-	)

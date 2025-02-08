@@ -76,7 +76,7 @@ GENERATE_ROBOT_MODULE_PRESET(/drone/mining)
 			/obj/item/storage/bag/sheetsnatcher/borg,
 		)
 	if(emag_out)
-		emag_out |= lisT(
+		emag_out |= list(
 			/obj/item/pickaxe/diamonddrill,
 		)
 
