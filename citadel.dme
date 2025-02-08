@@ -551,7 +551,6 @@
 #include "code\controllers\repository\materials.dm"
 #include "code\controllers\repository\poster_designs.dm"
 #include "code\controllers\repository\robot_chassis.dm"
-#include "code\controllers\repository\robot_frames.dm"
 #include "code\controllers\repository\robot_iconset.dm"
 #include "code\controllers\repository\robot_modules.dm"
 #include "code\controllers\repository\structs.dm"

@@ -31,6 +31,13 @@
 	/// * the iconset must have `chassis` set, or this will runtime.
 	var/list/iconsets = list()
 
+	/// Required selection groups
+	/// * If both this and `selection_groups_any` are null, this can't be picked.
+	var/list/selection_groups_all
+	/// Required selection groups
+	/// * If both this and `selection_groups_all` are null, this can't be picked.
+	var/list/selection_groups_any
+
 	/// show on manifest?
 	#warn hook
 	var/legacy_show_on_manifest = FALSE

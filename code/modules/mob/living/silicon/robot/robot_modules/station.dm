@@ -34,6 +34,7 @@
 	var/list/original_languages = list()
 	var/list/added_networks = list()
 
+#warn hook
 /obj/item/robot_module/Initialize(mapload)
 	. = ..()
 	var/mob/living/silicon/robot/R = loc
@@ -48,6 +49,7 @@
 			channels = R.mainframe.aiRadio.channels
 		R.radio.recalculateChannels()
 
+#warn hook
 /obj/item/robot_module/proc/Reset(var/mob/living/silicon/robot/R)
 	remove_camera_networks(R)
 	remove_languages(R)

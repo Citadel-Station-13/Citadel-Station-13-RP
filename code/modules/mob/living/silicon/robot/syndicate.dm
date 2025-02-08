@@ -2,7 +2,6 @@
 	lawupdate = 0
 	scrambledcodes = 1
 	icon_state = "securityrobot"
-	modtype = "Security"
 	lawchannel = "State"
 	idcard_type = /obj/item/card/id/syndicate
 

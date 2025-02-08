@@ -7,6 +7,28 @@
 /mob/living/silicon/robot/proc/rebuild()
 
 /**
+ * Hard reset, to unformatted
+ *
+ * todo: rework maybe?
+ */
+/mob/living/silicon/robot/proc/perform_module_reset(perform_transform_animation)
+	set_chassis(null, TRUE)
+	set_module(null, TRUE)
+	set_iconset(RSrobot_iconsets.fetch_local_or_throw(/datum/prototype/robot_iconset/baseline_standard/standard), TRUE)
+	rebuild()
+
+	can_repick_frame = TRUE
+	can_repick_module = TRUE
+
+	//! legacy
+	lights_on = FALSE
+	radio.set_light(0)
+	if(perform_transform_animation)
+		transform_with_anim()
+	//! end
+	#warn impl
+
+/**
  * Initialize to a chassis
  */
 /mob/living/silicon/robot/proc/set_chassis(datum/prototype/robot_chassis/chassis, skip_rebuild)

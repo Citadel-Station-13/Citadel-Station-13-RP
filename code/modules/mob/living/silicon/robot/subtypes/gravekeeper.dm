@@ -10,7 +10,6 @@
 	lawupdate = 0
 	scrambledcodes = 1
 	icon_state = "drone-lost"
-	modtype = "Gravekeeper"
 	lawchannel = "State"
 	braintype = "Drone"
 	idcard_type = /obj/item/card/id

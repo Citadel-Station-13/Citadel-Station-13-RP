@@ -87,6 +87,12 @@
 	#warn impl
 	var/list/obj/item/robot_upgrade/upgrades
 
+	//* Configuration *//
+
+	/// Allowed selection groups for robot module picking
+	/// * Null = cannot pick anything, so, uh, don't fuck around with this.
+	var/list/module_pick_selection_groups
+
 	//* Inventory *//
 
 	inventory = /datum/inventory/robot
@@ -159,7 +165,6 @@
 	var/ident = 0
 	var/viewalerts = FALSE
 	var/modtype = "Default"
-	var/lower_mod = 0
 	var/jetpack = 0
 	var/datum/effect_system/ion_trail_follow/ion_trail = null
 	var/datum/effect_system/spark_spread/spark_system
@@ -786,27 +791,8 @@
 					SPAN_WARNING("You successfully break your [bolt]."))
 				bolt.malfunction = MALFUNCTION_PERMANENT
 
-	return
-
 /mob/living/silicon/robot/proc/module_reset()
-	shown_robot_modules = FALSE
-	if (client)
-		hud_used.update_robot_modules_display()
-	transform_with_anim()
-	uneq_all()
-	modtype = initial(modtype)
-	hands.icon_state = initial(hands.icon_state)
-
-	lights_on = FALSE
-	radio.set_light(0)
-
 	notify_ai(ROBOT_NOTIFICATION_MODULE_RESET, module.name)
-	module.Reset(src)
-
-	choose_icon(0, set_module_sprites(list("Default" = "robot")))
-
-	qdel(module)
-	module = null
 	updatename("Default")
 
 /mob/living/silicon/robot/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)

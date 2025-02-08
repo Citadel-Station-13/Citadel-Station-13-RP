@@ -6,3 +6,7 @@
 	module_new = /datum/prototype/robot_module##SUFFIX; \
 } \
 /datum/prototype/robot_module##SUFFIX
+
+//* /datum/prototype/robot_module selection groups *//
+
+#define ROBOT_MODULE_SELECTION_GROUP_NANOTRASEN "nanotrasen"
