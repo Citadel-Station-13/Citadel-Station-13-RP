@@ -83,7 +83,7 @@
 	. = ..()
 	generate_field()
 
-/obj/machinery/atmospheric_field_generator/update_icon()
+/obj/machinery/atmospheric_field_generator/update_icon_state()
 	if(machine_stat & BROKEN)
 		icon_state = "arfg_broken"
 	else if(hatch_open && wires_intact)
@@ -94,6 +94,7 @@
 		icon_state = "arfg_on"
 	else
 		icon_state = "arfg_off"
+	return ..()
 
 /obj/machinery/atmospheric_field_generator/power_change()
 	var/oldstat
@@ -192,6 +193,7 @@
 
 /obj/structure/atmospheric_retention_field/update_icon()
 	cut_overlays()
+	. = ..()
 	var/list/dirs = list()
 	for(var/obj/structure/atmospheric_retention_field/F in orange(src,1))
 		dirs += get_dir(src, F)
@@ -202,8 +204,6 @@
 	for(var/i = 1 to 4)
 		var/image/I = image(icon, "[basestate][connections[i]]", dir = 1<<(i-1))
 		add_overlay(I)
-
-	return
 
 /obj/structure/atmospheric_retention_field/Initialize(mapload)
 	. = ..()

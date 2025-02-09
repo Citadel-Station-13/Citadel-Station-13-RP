@@ -20,6 +20,7 @@ var/global/list/ashtray_cache = list()
 	color = null
 
 	cut_overlays()
+	. = ..()
 	var/datum/prototype/material/material = get_primary_material()
 	var/list/overlays_to_add = list()
 

@@ -21,6 +21,7 @@
 	var/global/list/overlay_cache = list() //cache recent overlays
 
 /obj/item/t_scanner/update_icon()
+	. = ..()
 	icon_state = "t-ray[on]"
 
 /obj/item/t_scanner/AltClick()

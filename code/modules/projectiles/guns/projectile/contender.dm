@@ -79,20 +79,6 @@
 	caliber = /datum/ammo_caliber/a7_62mm
 	ammo_type = /obj/item/ammo_casing/a7_62mm/silver
 
-/obj/item/gun/ballistic/contender/taj
-	name = "Adhomai pocket rifle"
-	desc = "A hand cannon produced by Akhan and Khan. Its simple design dates back to the civil war where hand cannons like it were rushed into service to counter the massive arms shortage the Kingdom of Adhomai faced at the start of the war. Since then A&K have refined the design into a mainstay backup weapon of solider and civilian alike."
-	icon_state = "pockrifle_d"
-	icon_retracted = "pockrifle_d-empty"
-
-/obj/item/gun/ballistic/contender/taj/a44
-	caliber = /datum/ammo_caliber/a44
-	ammo_type = /obj/item/ammo_casing/a44
-
-/obj/item/gun/ballistic/contender/taj/a762
-	caliber = /datum/ammo_caliber/a7_62mm
-	ammo_type = /obj/item/ammo_casing/a7_62mm
-
 /obj/item/gun/ballistic/contender/pipegun
 	name = "improvised pipe rifle"
 	desc = "A single shot, handmade pipe rifle. It almost functions like a bolt action. Accepts shotgun shells."

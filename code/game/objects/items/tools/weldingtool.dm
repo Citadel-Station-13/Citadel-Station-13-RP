@@ -752,6 +752,7 @@
 	return
 
 /obj/item/weldingtool/electric/crystal/update_icon()
+	. = ..()
 	icon_state = welding ? "crystal_welder_on" : "crystal_welder"
 	item_state = welding ? "crystal_tool_lit"  : "crystal_tool"
 	update_worn_icon()
