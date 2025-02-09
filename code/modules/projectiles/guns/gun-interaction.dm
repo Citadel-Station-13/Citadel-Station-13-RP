@@ -3,6 +3,21 @@
 
 #warn impl
 
+/**
+ * @return TRUE if handled
+ */
+/obj/item/gun/proc/auto_inhand_rack_chamber(datum/event_args/actor/e_args)
+
+/**
+ * @return TRUE if handled
+ */
+/obj/item/gun/proc/auto_inhand_switch_firemodes(datum/event_args/actor/e_args)
+
+/**
+ * @return TRUE if handled
+ */
+/obj/item/gun/proc/auto_inhand_try_wield(datum/event_args/actor/e_args)
+
 // //* ------ Inhand Triggers ------ *//
 
 // //* Attack Self *//
