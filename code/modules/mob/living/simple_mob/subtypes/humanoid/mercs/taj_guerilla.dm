@@ -132,7 +132,7 @@
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged
 
-	loot_list = list(/obj/item/gun/ballistic/shotgun/pump/rifle/taj = 100)
+	loot_list = list(/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/taj = 100)
 
 /mob/living/simple_mob/humanoid/taj_guerilla/bandit/sword/revolver
 	name = "Tajara Bandit Raider"
@@ -149,7 +149,7 @@
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/aggressive/blood_hunter
 
-	loot_list = list(/obj/item/material/sword/plasteel = 100, /obj/item/gun/ballistic/revolver/mateba/taj = 100)
+	loot_list = list(/obj/item/material/sword/plasteel = 100, /obj/item/gun/projectile/ballistic/revolver/mateba/taj = 100)
 
 /mob/living/simple_mob/humanoid/taj_guerilla/bandit/assault_rifle
 	name = "Tajara Bandit Armsman"
@@ -166,7 +166,7 @@
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged
 
-	loot_list = list(/obj/item/gun/ballistic/automatic/sts35/taj = 100)
+	loot_list = list(/obj/item/gun/projectile/ballistic/automatic/sts35/taj = 100)
 
 ///////////////////////////////
 //		Guerillas
@@ -213,7 +213,7 @@
 	needs_reload = TRUE
 	reload_max = 16
 
-	loot_list = list(/obj/item/gun/ballistic/automatic/mini_uzi/taj = 100)
+	loot_list = list(/obj/item/gun/projectile/ballistic/automatic/mini_uzi/taj = 100)
 
 /mob/living/simple_mob/humanoid/taj_guerilla/guerilla/sniper
 	name = "Tajara Guerilla Sniper"
@@ -229,7 +229,7 @@
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting/sniper
 
-	loot_list = list(/obj/item/gun/ballistic/SVD/taj = 100)
+	loot_list = list(/obj/item/gun/projectile/ballistic/SVD/taj = 100)
 
 /mob/living/simple_mob/humanoid/taj_guerilla/guerilla/fal
 	name = "Tajara Guerilla Commando"
@@ -246,7 +246,7 @@
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged/surpressor
 
-	loot_list = list(/obj/item/gun/ballistic/automatic/fal/taj = 100)
+	loot_list = list(/obj/item/gun/projectile/ballistic/automatic/fal/taj = 100)
 
 
 ///////////////////////////////
@@ -295,7 +295,7 @@
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged/shotgun //He is compensating for sawn rifle range by getting close
 
-	loot_list = list(/obj/item/gun/ballistic/shotgun/pump/rifle/taj/sawn = 100)
+	loot_list = list(/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/taj/sawn = 100)
 
 /mob/living/simple_mob/humanoid/taj_guerilla/insurgent/dual_pistols
 	name = "Tajara Insurgent Gunslinger"
@@ -313,7 +313,7 @@
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged/shotgun //Also likes getting close
 
-	loot_list = list(/obj/item/gun/ballistic/colt/taj = 100, /obj/item/gun/ballistic/colt/taj = 100)
+	loot_list = list(/obj/item/gun/projectile/ballistic/colt/taj = 100, /obj/item/gun/projectile/ballistic/colt/taj = 100)
 
 /mob/living/simple_mob/humanoid/taj_guerilla/insurgent/automat
 	name = "Tajara Insurgent Gunner"
@@ -330,7 +330,7 @@
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged/surpressor //Not great considering they don't have much ammo
 
-	loot_list = list(/obj/item/gun/ballistic/automatic/automat/taj = 100)
+	loot_list = list(/obj/item/gun/projectile/ballistic/automatic/automat/taj = 100)
 
 /mob/living/simple_mob/humanoid/taj_guerilla/insurgent/bullpup
 	name = "Tajara Insurgent Revolutionary"
@@ -347,7 +347,7 @@
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged
 
-	loot_list = list(/obj/item/gun/ballistic/automatic/k25/taj = 100)
+	loot_list = list(/obj/item/gun/projectile/ballistic/automatic/k25/taj = 100)
 
 //////////////////////
 // Neutral Variants //
