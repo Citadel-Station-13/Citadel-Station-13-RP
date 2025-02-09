@@ -115,3 +115,19 @@
  */
 /datum/prototype/robot_module/proc/get_display_name()
 	return display_name
+
+//* Application *//
+
+/**
+ * Called when we're being set onto a robot.
+ */
+/datum/prototype/robot_module/proc/on_install(mob/living/silicon/robot/robot)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+
+/**
+ * Called when we're being unset from a robot.
+ */
+/datum/prototype/robot_module/proc/on_install(mob/living/silicon/robot/robot)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)

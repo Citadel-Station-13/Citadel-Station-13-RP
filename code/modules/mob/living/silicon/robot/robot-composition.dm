@@ -3,12 +3,25 @@
 
 /**
  * Hard reset, rebuild from composition.
+ *
+ * todo: better name?
  */
 /mob/living/silicon/robot/proc/rebuild()
 
 /**
+ * Annihilate composition
+ *
+ * todo: better name?
+ */
+/mob/living/silicon/robot/proc/wipe_for_gc()
+	set_chassis(null, TRUE)
+	set_iconset(null, TRUE)
+	set_module(null, TRUE)
+
+/**
  * Hard reset, to unformatted
  *
+ * todo: better name?
  * todo: rework maybe?
  */
 /mob/living/silicon/robot/proc/perform_module_reset(perform_transform_animation)

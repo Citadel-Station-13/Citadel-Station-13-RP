@@ -53,6 +53,14 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/janitor)
 	..()
 	store.provisioned_material_store[/datum/prototype/material/glass::id] = new /datum/robot_resource/provisioned/preset/material/glass{regen_per_second = 1 * SHEET_MATERIAL_AMOUNT}
 
+/datum/prototype/robot_module/nanotrasen/janitor/on_install(mob/living/silicon/robot/robot)
+	..()
+	robot.legacy_floor_scrubbing = TRUE
+
+/datum/prototype/robot_module/nanotrasen/janitor/on_uninstall(mob/living/silicon/robot/robot)
+	..()
+	robot.legacy_floor_scrubbing = FALSE
+
 // todo: legacy
 /obj/item/robot_module/robot/janitor
 	channels = list("Service" = 1)

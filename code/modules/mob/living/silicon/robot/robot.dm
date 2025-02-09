@@ -131,6 +131,8 @@
 	/// * This is the ID of the variation.
 	#warn impl picker
 	var/picked_resting_variation
+	/// legacy: are we floor scrubbing?
+	var/legacy_floor_scrubbing = FALSE
 
 	/// Is our integrated light on?
 	var/lights_on = 0
@@ -337,6 +339,7 @@
 //If there's an MMI in the robot, have it ejected when the mob goes away. --NEO
 //Improved /N
 /mob/living/silicon/robot/Destroy()
+	wipe_for_gc()
 	if(mmi && mind)//Safety for when a cyborg gets dust()ed. Or there is no MMI inside.
 		var/turf/T = get_turf(loc)//To hopefully prevent run time errors.
 		if(T)	mmi.loc = T
@@ -926,70 +929,37 @@
 
 /mob/living/silicon/robot/Moved()
 	. = ..()
-	if(module)
-		if(module.type == /obj/item/robot_module/robot/janitor)
-			var/turf/tile = loc
-			if(isturf(tile))
-				tile.clean_blood()
-				if (istype(tile, /turf/simulated))
-					var/turf/simulated/S = tile
-					S.dirt = 0
-				for(var/A in tile)
-					if(istype(A, /obj/effect))
-						if(istype(A, /obj/effect/rune) || istype(A, /obj/effect/debris/cleanable) || istype(A, /obj/effect/overlay))
-							qdel(A)
-					else if(istype(A, /obj/item))
-						var/obj/item/cleaned_item = A
-						cleaned_item.clean_blood()
-					else if(istype(A, /mob/living/carbon/human))
-						var/mob/living/carbon/human/cleaned_human = A
-						if(cleaned_human.lying)
-							if(cleaned_human.head)
-								cleaned_human.head.clean_blood()
-								cleaned_human.update_inv_head(0)
-							if(cleaned_human.wear_suit)
-								cleaned_human.wear_suit.clean_blood()
-								cleaned_human.update_inv_wear_suit(0)
-							else if(cleaned_human.w_uniform)
-								cleaned_human.w_uniform.clean_blood()
-								cleaned_human.update_inv_w_uniform(0)
-							if(cleaned_human.shoes)
-								cleaned_human.shoes.clean_blood()
-								cleaned_human.update_inv_shoes(0)
-							cleaned_human.clean_blood(1)
-							to_chat(cleaned_human, "<font color='red'>[src] cleans your face!</font>")
-
-
-	if(scrubbing)
-		var/datum/matter_synth/water = water_res
-		if(water && water.energy >= 1)
-			var/turf/tile = loc
-			if(isturf(tile))
-				water.use_charge(1)
-				tile.clean_blood()
-				if(istype(tile, /turf/simulated))
-					var/turf/simulated/T = tile
-					T.dirt = 0
-				for(var/A in tile)
-					if(istype(A,/obj/effect/rune) || istype(A,/obj/effect/debris/cleanable) || istype(A,/obj/effect/overlay))
+	if(legacy_floor_scrubbing)
+		var/turf/tile = loc
+		if(isturf(tile))
+			tile.clean_blood()
+			if (istype(tile, /turf/simulated))
+				var/turf/simulated/S = tile
+				S.dirt = 0
+			for(var/A in tile)
+				if(istype(A, /obj/effect))
+					if(istype(A, /obj/effect/rune) || istype(A, /obj/effect/debris/cleanable) || istype(A, /obj/effect/overlay))
 						qdel(A)
-					else if(istype(A, /mob/living/carbon/human))
-						var/mob/living/carbon/human/cleaned_human = A
-						if(cleaned_human.lying)
-							if(cleaned_human.head)
-								cleaned_human.head.clean_blood()
-								cleaned_human.update_inv_head(0)
-							if(cleaned_human.wear_suit)
-								cleaned_human.wear_suit.clean_blood()
-								cleaned_human.update_inv_wear_suit(0)
-							else if(cleaned_human.w_uniform)
-								cleaned_human.w_uniform.clean_blood()
-								cleaned_human.update_inv_w_uniform(0)
-							if(cleaned_human.shoes)
-								cleaned_human.shoes.clean_blood()
-								cleaned_human.update_inv_shoes(0)
-							cleaned_human.clean_blood(1)
-							to_chat(cleaned_human, "<span class='warning'>[src] cleans your face!</span>")
+				else if(istype(A, /obj/item))
+					var/obj/item/cleaned_item = A
+					cleaned_item.clean_blood()
+				else if(istype(A, /mob/living/carbon/human))
+					var/mob/living/carbon/human/cleaned_human = A
+					if(cleaned_human.lying)
+						if(cleaned_human.head)
+							cleaned_human.head.clean_blood()
+							cleaned_human.update_inv_head(0)
+						if(cleaned_human.wear_suit)
+							cleaned_human.wear_suit.clean_blood()
+							cleaned_human.update_inv_wear_suit(0)
+						else if(cleaned_human.w_uniform)
+							cleaned_human.w_uniform.clean_blood()
+							cleaned_human.update_inv_w_uniform(0)
+						if(cleaned_human.shoes)
+							cleaned_human.shoes.clean_blood()
+							cleaned_human.update_inv_shoes(0)
+						cleaned_human.clean_blood(1)
+						to_chat(cleaned_human, "<font color='red'>[src] cleans your face!</font>")
 
 /mob/living/silicon/robot/proc/self_destruct()
 	gib()
