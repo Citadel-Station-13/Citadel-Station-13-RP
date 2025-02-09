@@ -4,7 +4,7 @@
 	lawchannel = "State"
 	braintype = "Drone"
 	idcard_type = /obj/item/card/id
-	conf_mmi_type = /obj/item/mmi/digital/robot
+	conf_mmi_create_type = /obj/item/mmi/digital/robot
 	conf_auto_ai_link = FALSE
 	conf_reboot_sound = 'sound/mecha/nominalsyndi.ogg'
 

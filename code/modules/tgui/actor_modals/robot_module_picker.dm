@@ -30,7 +30,7 @@
 	. = list()
 
 	var/list/our_selection_groups = for_robot.conf_module_pick_selection_groups
-	for(var/datum/prototype/robot_module/module as anything in RSrobot_modules)
+	for(var/datum/prototype/robot_module/module as anything in RSrobot_modules.fetch_multi(/datum/prototype/robot_module))
 		if(!length(module.selection_groups_all) && !length(module.selection_groups_any))
 			continue
 		if(length(module.selection_groups_all) != (module.selection_groups_all & our_selection_groups))

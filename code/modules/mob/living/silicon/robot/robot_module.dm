@@ -128,6 +128,6 @@
 /**
  * Called when we're being unset from a robot.
  */
-/datum/prototype/robot_module/proc/on_install(mob/living/silicon/robot/robot)
+/datum/prototype/robot_module/proc/on_uninstall(mob/living/silicon/robot/robot)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)

@@ -13,7 +13,45 @@
 		/datum/robot_iconset_variation/resting,
 	)
 
-#warn add into relevant modules
+/datum/prototype/robot_iconset/raptor/gravekeeper
+	icon_state = "gravekeeper"
+	icon_state_indicator = "indicator"
+
+/datum/prototype/robot_iconset/raptor/gravekeeper
+	icon_state = "lost"
+	icon_state_indicator = "indicator"
+
+/datum/prototype/robot_iconset/raptor/lost
+	icon_state = "service"
+	icon_state_indicator = "indicator"
+
+/datum/prototype/robot_iconset/raptor/service
+	icon_state = "security"
+	icon_state_indicator = "indicator"
+
+/datum/prototype/robot_iconset/raptor/security
+	icon_state = "mining"
+	icon_state_indicator = "indicator"
+
+/datum/prototype/robot_iconset/raptor/mining
+	icon_state = "medical"
+	icon_state_indicator = "indicator"
+
+/datum/prototype/robot_iconset/raptor/medical
+	icon_state = "medical"
+	icon_state_indicator = "indicator"
+
+/datum/prototype/robot_iconset/raptor/janitor
+	icon_state = "janitor"
+	icon_state_indicator = "indicator"
+
+/datum/prototype/robot_iconset/raptor/centcom
+	icon_state = "centcom"
+	icon_state_indicator = "indicator"
+
+/datum/prototype/robot_iconset/raptor/engineering
+	icon_state = "engineering"
+	icon_state_indicator = "indicator"
 
 /datum/prototype/robot_iconset/raptor/peacekeeper
 	icon_state = "peacekeeper"

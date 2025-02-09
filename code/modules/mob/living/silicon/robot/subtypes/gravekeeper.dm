@@ -18,4 +18,4 @@
 	conf_default_lawset_type = /datum/ai_lawset/gravekeeper
 	conf_auto_ai_link = FALSE
 	conf_reboot_sound = 'sound/mecha/nominasyndi.ogg'
-	conf_mmi_type = /obj/item/mmi/digital/robot
+	conf_mmi_create_type = /obj/item/mmi/digital/robot

@@ -29,4 +29,4 @@
 /datum/robot_frame/New()
 	// todo: DB pull if needed
 	robot_iconset = RSrobot_iconsets.fetch_local_or_throw(robot_iconset)
-	robot_chassis = RSrobot_chassiss.fetch_local_or_throw(robot_chassis)
+	robot_chassis = RSrobot_chassis.fetch_local_or_throw(robot_chassis)
