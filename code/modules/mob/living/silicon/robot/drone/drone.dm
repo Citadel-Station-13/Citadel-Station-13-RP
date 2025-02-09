@@ -17,6 +17,14 @@
 	integrated_light_power = 3
 	local_transmit = 1
 
+	description_info = "Drones are player-controlled synthetics which are lawed to maintain the station and not \
+	interact with anyone else, except for other drones.  They hold a wide array of tools to build, repair, maintain, and clean. \
+	They function similarly to other synthetics, in that they require recharging regularly, have laws, and are resilient to many hazards, \
+	such as fire, radiation, vacuum, and more.  Ghosts can join the round as a maintenance drone by using the appropriate verb in the 'ghost' tab. \
+	An inactive drone can be rebooted by swiping an ID card on it with engineering or robotics access, and an active drone can be shut down in the same manner."
+
+	description_antag = "An Electromagnetic Sequencer can be used to subvert the drone to your cause."
+
 	can_pull_size = WEIGHT_CLASS_HUGE
 	can_pull_mobs = MOB_PULL_SMALLER
 	can_enter_vent_with = list(
@@ -28,6 +36,9 @@
 	mob_always_swap = 1
 
 	mob_size = MOB_SMALL // pulled here from a _vr file
+
+	conf_mmi_create_type = /obj/item/mmi/digital/robot
+	conf_cell_create_type = /obj/item/cell/high
 
 	//Used for self-mailing.
 	var/mail_destination = ""
@@ -70,6 +81,7 @@
 	hat_x_offset = 1
 	hat_y_offset = -12
 	can_pull_mobs = MOB_PULL_SAME
+
 	//holder_type = /obj/item/holder/drone/heavy
 /mob/living/silicon/robot/drone/matriarch
 	name = "matriarch drone"
@@ -80,6 +92,7 @@
 	integrated_light_power = 4
 	name_override = 1
 	var/matrix_tag
+
 /mob/living/silicon/robot/drone/mining
 	icon_state = "miningdrone"
 	item_state = "constructiondrone"
@@ -97,13 +110,6 @@
 	add_language("Robot Talk", 0)
 	add_language("Drone Talk", 1)
 	serial_number = rand(0,999)
-
-	//They are unable to be upgraded, so let's give them a bit of a better battery.
-	cell.maxcharge = 10000
-	cell.charge = 10000
-
-	// NO BRAIN.
-	mmi = null
 
 	//We need to screw with their HP a bit. They have around one fifth as much HP as a full borg.
 	for(var/V in components) if(V != "power cell")

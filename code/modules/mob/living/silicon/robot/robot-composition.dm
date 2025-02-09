@@ -37,13 +37,27 @@
  * Initialize to a iconset
  */
 /mob/living/silicon/robot/proc/set_iconset(datum/prototype/robot_iconset/iconset, skip_rebuild)
+	src.iconset = iconset
 
-	if(iconset.icon_dimension_x > 32 || iconset.icon_dimension_y > 32)
-		zmm_flags |= ZMM_LOOKAHEAD
+	if(iconset)
+		if(iconset.icon_dimension_x > WORLD_ICON_SIZE || iconset.icon_dimension_y > WORLD_ICON_SIZE)
+			zmm_flags |= ZMM_WIDE_LOAD
+		else
+			zmm_flags &= ~ZMM_WIDE_LOAD
+		base_icon_state = iconset.icon_state
+		icon = iconset.icon
+		// todo: should this be set and not adjust?
+		set_base_pixel_x(iconset.base_pixel_x)
+		icon_x_dimension = iconset.icon_dimension_x
+		icon_y_dimension = iconset.icon_dimension_y
 	else
-		zmm_flags &= ~ZMM_LOOKAHEAD
-
-	base_icon_state = iconset.icon_state
+		zmm_flags &= ~ZMM_WIDE_LOAD
+		base_icon_state = initial(base_icon_state) || initial(icon_state)
+		icon = initial(icon)
+		// todo: should this be set and not adjust?
+		set_base_pixel_x(0)
+		icon_x_dimension = initial(icon_x_dimension)
+		icon_y_dimension = initial(icon_y_dimension)
 
 /**
  * Initialize to a module

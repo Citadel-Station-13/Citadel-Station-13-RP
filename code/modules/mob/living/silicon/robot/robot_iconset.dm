@@ -44,13 +44,10 @@
 	var/icon_state_cover
 
 	/// Icon width
-	#warn hook
 	var/icon_dimension_x = 32
 	/// Icon height
-	#warn hook
 	var/icon_dimension_y = 32
 	/// x axis shift to the borg's sprite
-	#warn hook
 	var/base_pixel_x = 0
 
 	/// indicator lighting colorable?

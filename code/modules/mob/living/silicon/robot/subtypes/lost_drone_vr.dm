@@ -4,20 +4,12 @@
 	lawchannel = "State"
 	braintype = "Drone"
 	idcard_type = /obj/item/card/id
-
-/mob/living/silicon/robot/preset_module/lost/init()
-	aiCamera = new/obj/item/camera/siliconcam/robot_camera(src)
-
-	mmi = new /obj/item/mmi/digital/robot(src) // Explicitly a drone.
-	init_id()
-
-	playsound(loc, 'sound/mecha/nominalsyndi.ogg', 75, 0)
-	#warn wtf
+	conf_mmi_type = /obj/item/mmi/digital/robot
+	conf_auto_ai_link = FALSE
+	conf_reboot_sound = 'sound/mecha/nominalsyndi.ogg'
 
 /mob/living/silicon/robot/preset_module/lost/speech_bubble_appearance()
 	return "synthetic_evil"
-
-#warn prnue what we can
 
 /mob/living/silicon/robot/preset_module/lost/randomlaws
 

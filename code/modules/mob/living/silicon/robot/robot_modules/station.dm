@@ -1,9 +1,4 @@
 /obj/item/robot_module
-	name = "robot module"
-	icon = 'icons/obj/module.dmi'
-	icon_state = "std_module"
-	w_class = WEIGHT_CLASS_HUGE
-	item_state = "std_mod"
 	var/channels = list()
 	var/networks = list()
 
@@ -28,7 +23,6 @@
 		)
 
 	var/list/subsystems = list()
-	var/list/obj/item/robot_upgrade/supported_upgrades = list()
 
 	// Bookkeeping
 	var/list/original_languages = list()
@@ -93,22 +87,3 @@
 
 /obj/item/robot_module/proc/remove_subsystems(var/mob/living/silicon/robot/R)
 	remove_verb(R, subsystems)
-
-/obj/item/robot_module/robot/quad/Initialize()
-	. = ..()
-	var/mob/living/silicon/robot/R = loc
-	ASSERT(istype(R))
-
-	add_verb(R, list(
-		/mob/living/silicon/robot/proc/rest_style
-	))
-
-/obj/item/robot_module/robot/quad/Reset(mob/living/silicon/robot/R)
-	. = ..()
-	// Reset a bunch of wideborg specific things.
-	remove_verb(R, list(
-		/mob/living/silicon/robot/proc/rest_style
-	))
-	R.scrubbing = FALSE
-
-#warn parse this crap

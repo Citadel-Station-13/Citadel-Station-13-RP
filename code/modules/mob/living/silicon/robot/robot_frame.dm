@@ -26,4 +26,7 @@
 	/// restrict to ckeys in list
 	var/list/donator_only
 
-#warn resolve prototypes
+/datum/robot_frame/New()
+	// todo: DB pull if needed
+	robot_iconset = RSrobot_iconsets.fetch_local_or_throw(robot_iconset)
+	robot_chassis = RSrobot_chassiss.fetch_local_or_throw(robot_chassis)

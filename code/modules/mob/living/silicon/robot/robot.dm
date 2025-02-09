@@ -91,7 +91,21 @@
 
 	/// Allowed selection groups for robot module picking
 	/// * Null = cannot pick anything, so, uh, don't fuck around with this.
-	var/list/module_pick_selection_groups
+	/// todo: module based?
+	var/list/conf_module_pick_selection_groups
+	/// Initial default lawset
+	/// * An instance or a type is accepted
+	/// todo: module based?
+	var/conf_default_lawset_type = /datum/ai_lawset/nanotrasen
+	/// Auto connect to AI
+	/// todo: module bsaed?
+	var/conf_auto_ai_link = TRUE
+	/// Bootup sound
+	var/conf_reboot_sound = 'sound/voice/liveagain.ogg'
+	/// MMI type to make if we have none
+	var/conf_mmi_create_type
+	/// Create cell type if it doesn't exist
+	var/conf_cell_create_type = /obj/item/cell/high/plus
 
 	//* Inventory *//
 
@@ -247,9 +261,7 @@
 		C.wrapped = new C.external_type
 
 	if(!cell)
-		cell = new /obj/item/cell/high(src)
-		cell.maxcharge = 15000
-		cell.charge = 15000
+		cell = conf_cell_create_type
 
 	. = ..()
 
@@ -265,8 +277,18 @@
 	update_icon()
 
 /mob/living/silicon/robot/proc/init()
-	aiCamera = new/obj/item/camera/siliconcam/robot_camera(src)
-	laws = new /datum/ai_lawset/nanotrasen()
+	aiCamera = new /obj/item/camera/siliconcam/robot_camera(src)
+
+	if(istype(conf_default_lawset_type, /datum/ai_lawset))
+		laws = conf_default_lawset_type.clone()
+	else if(ispath(conf_default_lawset_type, /datum/ai_lawset))
+		laws = new conf_default_lawset_type
+	else if(IS_ANONYMOUS_TYPEPATH(conf_default_lawset_type))
+		laws = new conf_default_lawset_type
+	else
+		laws = new /datum/ai_lawset
+
+	#warn conf_auto_ai_link
 	additional_law_channels["Binary"] = "#b"
 	var/new_ai = select_active_ai_with_fewest_borgs()
 	if(new_ai)
@@ -275,7 +297,10 @@
 	else
 		lawupdate = 0
 
-	playsound(loc, 'sound/voice/liveagain.ogg', 75, 1)
+	if(conf_mmi_create_type && !mmi)
+		mmi = new /obj/item/mmi/digital/robot(src)
+
+	playsound(src, conf_reboot_sound, 75, TRUE)
 
 /mob/living/silicon/robot/SetName(pickedName as text)
 	custom_name = pickedName

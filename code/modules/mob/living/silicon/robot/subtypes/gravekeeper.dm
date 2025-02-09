@@ -15,14 +15,7 @@
 	idcard_type = /obj/item/card/id
 	can_be_antagged = FALSE
 	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/robot/gravekeeper)
-
-/mob/living/silicon/robot/preset_module/gravekeeper/init()
-	aiCamera = new/obj/item/camera/siliconcam/robot_camera(src)
-
-	mmi = new /obj/item/mmi/digital/robot(src) // Explicitly a drone.
-	init_id()
-	laws = new /datum/ai_lawset/gravekeeper()
-
-	playsound(loc, 'sound/mecha/nominalsyndi.ogg', 75, 0)
-
-#warn prune what we can
+	conf_default_lawset_type = /datum/ai_lawset/gravekeeper
+	conf_auto_ai_link = FALSE
+	conf_reboot_sound = 'sound/mecha/nominasyndi.ogg'
+	conf_mmi_type = /obj/item/mmi/digital/robot

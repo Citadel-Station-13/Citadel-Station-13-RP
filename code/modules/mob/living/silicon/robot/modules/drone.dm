@@ -1,8 +1,8 @@
 /datum/prototype/robot_module/drone
 	id = "drone"
 	use_robot_module_path = /obj/item/robot_module/robot/drone
-	#warn frames
 	iconsets = list(
+		/datum/prototype/robot_iconset/baseline_drone/construction,
 	)
 
 /datum/prototype/robot_module/drone/provision_resource_store(datum/robot_resource_store/store)
@@ -53,6 +53,9 @@
 GENERATE_ROBOT_MODULE_PRESET(/drone/construction)
 /datum/prototype/robot_module/drone/construction
 	id = "drone-construction"
+	iconsets = list(
+		/datum/prototype/robot_iconset/baseline_drone/construction,
+	)
 
 /datum/prototype/robot_module/drone/construction/create_mounted_item_descriptors(list/normal_out, list/emag_out)
 	..()
@@ -64,6 +67,9 @@ GENERATE_ROBOT_MODULE_PRESET(/drone/construction)
 GENERATE_ROBOT_MODULE_PRESET(/drone/mining)
 /datum/prototype/robot_module/drone/mining
 	id = "drone-mining"
+	iconsets = list(
+		/datum/prototype/robot_iconset/baseline_drone/mining,
+	)
 
 /datum/prototype/robot_module/drone/mining/create_mounted_item_descriptors(list/normal_out, list/emag_out)
 	..()
@@ -80,6 +86,7 @@ GENERATE_ROBOT_MODULE_PRESET(/drone/mining)
 			/obj/item/pickaxe/diamonddrill,
 		)
 
+// todo: legacy crap
 /obj/item/robot_module/drone
 	channels = list("Engineering" = 1, "Supply" = 1)
 	networks = list(NETWORK_ENGINEERING, NETWORK_MINE)

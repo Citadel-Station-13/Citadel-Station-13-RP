@@ -29,7 +29,7 @@
 /datum/tgui_actor_modal/robot_module_picker/proc/get_pickable_frames(mob/living/silicon/robot/for_robot) as /list
 	. = list()
 
-	var/list/our_selection_groups = for_robot.module_pick_selection_groups
+	var/list/our_selection_groups = for_robot.conf_module_pick_selection_groups
 	for(var/datum/prototype/robot_module/module as anything in RSrobot_modules)
 		if(!length(module.selection_groups_all) && !length(module.selection_groups_any))
 			continue
