@@ -793,7 +793,8 @@
 		/obj/item/storage/backpack/dufflebag = 10,
 	)
 	premium = list(
-		/obj/item/clothing/under/color/rainbow = 1,
+		/obj/item/clothing/under/color/rainbow = 5,
+		/obj/item/clothing/under/color/rainbow_skirt = 5,
 	)
 	contraband = list(
 		/obj/item/clothing/under/rank/clown = 1,

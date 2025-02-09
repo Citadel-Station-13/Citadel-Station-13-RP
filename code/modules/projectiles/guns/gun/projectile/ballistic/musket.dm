@@ -95,15 +95,6 @@
 	. = ..()
 	reagents.add_reagent("gunpowder", 30)
 
-/obj/item/gun/projectile/ballistic/musket/taj
-	name = "adhomian musket"
-	desc = "For the Tajara, the era of black powder warfare was not all that long ago. As result many genuine Adhomian both reproduction and \
-	even genuine muskets are often seen in the hands of Tajaran civilians, and weapons collectors, especially since such weapons circumvent the \
-	normally strict weapons laws in many Tajaran states."
-	icon_state = "musket-taj"
-	item_state = "musket-taj"
-	wielded_item_state = "musket-taj-wielded"
-
 /obj/item/gun/projectile/ballistic/musket/tribal
 	name = "tribal musket"
 	desc = "A musket housed in bone furnishing and held together with sinew. It uses as obsidian striker."
@@ -127,7 +118,6 @@
 	desc = "A brass black powder pistol with a strange gear like firing mechanism. You are not quite certain how it actually works though."
 	icon_state = "flintlock-brass"
 	item_state = "deagleg"
-
 
 /obj/item/gun/projectile/ballistic/musket/pistol/tribal
 	name = "tribal flintlock"

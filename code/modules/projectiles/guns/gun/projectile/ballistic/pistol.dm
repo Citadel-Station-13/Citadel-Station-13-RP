@@ -68,19 +68,6 @@
 		to_chat(M, "Your gun is now sprited as [choice]. Say hello to your new friend.")
 		return 1
 
-/obj/item/gun/projectile/ballistic/colt/taj
-	name = "Adhomai Pistol"
-	desc = "The Adar'Mazy pistol, produced by the Hadii-Wrack group. This pistol is the primary sidearm for low ranking officers and officals in the People's Republic of Adhomai."
-	icon_state = "colt-taj"
-
-/*//apart of reskins that have two sprites, touching may result in frustration and breaks
-/obj/item/gun/projectile/ballistic/colt/detective/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-	if(!unique_reskin && loc == user)
-		reskin_gun(user)
-		return
-	..()
-*/
-
 /obj/item/gun/projectile/ballistic/sec
 	name = ".45 pistol"
 	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a Nanotrasen subsidiary. Found pretty much everywhere humans are. This one is a less-lethal variant that only accepts .45 rubber or flash magazines."
@@ -136,11 +123,6 @@
 	desc = "A Deagle brand Deagle for operators operating operationally. Uses .44 rounds."
 	icon_state = "deaglecamo"
 	item_state = "deagleg"
-
-/obj/item/gun/projectile/ballistic/deagle/taj
-	name = "Adhomai Hand Cannon"
-	desc = "The Nal'dor heavy pistol, a powerful Hadii-Wrack group handcannon that has gained an infamous reputation through its use by Commissars of the People's Republic of Adhomai."
-	icon_state = "deagle-taj"
 
 /obj/item/gun/projectile/ballistic/gyropistol // Does this even appear anywhere outside of admin abuse?
 	name = "gyrojet pistol"
@@ -387,16 +369,6 @@
 	if(use_shotgun)
 		return shotgun.fire(cycle)
 	return ..()
-
-/* Having issues with getting this to work atm.
-/obj/item/gun/projectile/ballistic/konigin/examine(mob/user, dist)
-	. = ..()
-
-	if(shotgun.loaded)
-		. += "\The [shotgun] has \a [shotgun.loaded] loaded."
-	else
-		. += "\The [shotgun] is empty."
-*/
 
 //Exploration/Pathfinder Sidearms
 /obj/item/gun/projectile/ballistic/ntles

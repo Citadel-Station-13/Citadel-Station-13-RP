@@ -31,13 +31,6 @@
 	desc = "A bolt-action rifle with a heavy, high-quality wood stock that has a beautiful finish. Clearly not intended to be used in combat. Uses 7.62mm rounds."
 	ammo_type = /obj/item/ammo_casing/a7_62mm/silver
 
-/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/taj
-	name = "Adhomai bolt action rifle"
-	desc = "The A&K-c bolt action rifle. Though a simple and dated design, this Akhan and Khan rifle is a mainstay of the of the Imperial Adhomain Army and has kept Tajaran monarchy safe since the civil war."
-	item_state = "boltaction-taj"
-	icon_state = "boltaction-taj"
-	wielded_item_state = "boltaction-taj-wielded"
-
 /obj/item/gun/projectile/ballistic/shotgun/pump/rifle/vox_hunting
 	name = "vox hunting rifle"
 	desc = "This ancient rifle bears traces of an assembly meant to house power cells, implying it used to fire energy beams. It has since been crudely modified to fire standard 7.62mm rounds."
