@@ -144,7 +144,7 @@
 /turf/simulated/floor/tiled/kafel_full/gray,
 /area/submap/skyplanet/poi/clown)
 "wl" = (
-/obj/structure/bed/chair/sofa/orange/left,
+/obj/structure/bed/chair/sofa/left,
 /turf/simulated/floor/wood/indoors,
 /area/submap/skyplanet/poi/clown)
 "xf" = (
@@ -184,7 +184,7 @@
 /turf/simulated/floor/tiled/kafel_full/gray,
 /area/submap/skyplanet/poi/clown)
 "Ep" = (
-/obj/structure/bed/chair/sofa/orange/right,
+/obj/structure/bed/chair/sofa/right,
 /turf/simulated/floor/wood/indoors,
 /area/submap/skyplanet/poi/clown)
 "GR" = (
@@ -241,7 +241,7 @@
 /turf/simulated/floor/wood/indoors,
 /area/submap/skyplanet/poi/clown)
 "Ld" = (
-/obj/structure/bed/chair/sofa/orange/right{
+/obj/structure/bed/chair/sofa/right{
 	dir = 1
 	},
 /turf/simulated/floor/wood/indoors,
@@ -330,7 +330,7 @@
 /turf/simulated/floor/wood/indoors,
 /area/submap/skyplanet/poi/clown)
 "Xn" = (
-/obj/structure/bed/chair/sofa/orange/left{
+/obj/structure/bed/chair/sofa/left{
 	dir = 1
 	},
 /turf/simulated/floor/wood/indoors,
