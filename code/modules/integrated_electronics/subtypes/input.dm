@@ -413,6 +413,9 @@
 		"genetic destability"	= IC_PINTYPE_NUMBER,
 		"slime core amount"		= IC_PINTYPE_NUMBER,
 		"Growth progress"		= IC_PINTYPE_NUMBER,
+		"rabid"					= IC_PINTYPE_BOOLEAN,
+		"disciplined"			= IC_PINTYPE_BOOLEAN,
+		"obedience"				= IC_PINTYPE_NUMBER
 	)
 	activators = list("scan" = IC_PINTYPE_PULSE_IN, "on scanned" = IC_PINTYPE_PULSE_OUT)
 	spawn_flags = IC_SPAWN_RESEARCH
@@ -434,6 +437,10 @@
 			set_pin_data(IC_OUTPUT, 7, T.mutation_chance)
 			set_pin_data(IC_OUTPUT, 8, T.cores)
 			set_pin_data(IC_OUTPUT, 9, T.amount_grown/1000)
+			var/datum/ai_holder/polaris/simple_mob/xenobio_slime/AI = T.ai_holder
+			set_pin_data(IC_OUTPUT, 10, AI.rabid)
+			set_pin_data(IC_OUTPUT, 11, AI.obedience)
+			set_pin_data(IC_OUTPUT, 12, AI.discipline)
 
 
 		push_data()
