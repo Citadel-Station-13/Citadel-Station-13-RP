@@ -99,7 +99,7 @@
 	if(!T)
 		return 0
 
-	if(T.slowdown)
+	if(T.slowdown && !is_avoiding_ground()) //Only if we are touching the ground
 		var/turf_move_cost = T.slowdown
 		if(istype(T, /turf/simulated/floor/water))
 			if(species.water_movement)
