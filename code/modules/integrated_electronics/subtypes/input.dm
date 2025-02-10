@@ -1857,3 +1857,60 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 		set_pin_data(IC_OUTPUT, 16, H.health)
 	push_data()
 	activate_pin(2)
+
+
+/obj/item/integrated_circuit/input/projectile_simulator
+	name = "projectile simulator"
+	desc = "An IR laser pointer with a camera. Aim at a target or location and get the output the final result. Aiming at coordinates will output a hit refrence. Aiming at a refrence will output a hit or not hit pulse."
+	icon_state = "medscan_adv"
+	complexity = 8
+	inputs = list(
+		"x" = IC_PINTYPE_NUMBER,
+		"y" = IC_PINTYPE_NUMBER,
+		"target ref" = IC_PINTYPE_REF
+	)
+	outputs = list(
+		"target hit"       = IC_PINTYPE_REF
+	)
+	activators = list(
+		"shoot cords" = IC_PINTYPE_PULSE_IN,
+		"shoot ref" = IC_PINTYPE_PULSE_IN,
+		"cords out" = IC_PINTYPE_PULSE_OUT,
+		"target hit" = IC_PINTYPE_PULSE_OUT,
+		"target missed" = IC_PINTYPE_PULSE_OUT
+		)
+	spawn_flags = IC_SPAWN_RESEARCH
+	origin_tech = list(TECH_ENGINEERING = 3, TECH_DATA = 3)
+	power_draw_per_use = 20
+
+/obj/item/integrated_circuit/input/projectile_simulator/do_work(ord)
+	switch(ord)
+		if(1)
+			var/list/hit_things
+			var/turf/T = get_turf(assembly)
+			var/target_x = get_pin_data(IC_INPUT, 1)
+			var/target_y = get_pin_data(IC_INPUT, 2)
+			var/turf/A = locate(clamp(target_x + T.x,0,world.maxx), clamp(target_y + T.y,0,world.maxy), T.z)
+			var/obj/projectile/trace/trace_projectile = new(assembly.loc)
+			trace_projectile.pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
+			trace_projectile.prepare_trace(A, TRUE)
+			trace_projectile.fire()
+			hit_things = trace_projectile.scanned_atoms
+			if(hit_things.len)
+				set_pin_data(IC_OUTPUT, 1, WEAKREF(hit_things[1]))
+				activate_pin(3)
+		if(2)
+			var/atom/target = get_pin_data(IC_INPUT, 3)
+			var/obj/projectile/trace/trace_projectile = new(assembly.loc)
+			trace_projectile.pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
+			trace_projectile.prepare_trace(target, TRUE)
+			trace_projectile.fire()
+			if(trace_projectile.could_hit_target)
+				activate_pin(4)
+				return
+			activate_pin(5)
+
+
+
+
+
