@@ -80,6 +80,14 @@
 /obj/effect/floor_decal/corner/navgold/border,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1aftmaint)
+"acZ" = (
+/obj/machinery/fire_alarm/west_mount,
+/obj/structure/sign/deck/first{
+	pixel_x = 32
+	},
+/obj/spawner/window/low_wall/full/firelocks,
+/turf/simulated/floor/plating,
+/area/station/stairs_one)
 "adZ" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 5
@@ -736,7 +744,7 @@
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
 "aFB" = (
-/turf/space/basic,
+/turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardafthall)
 "aFD" = (
 /obj/structure/disposalpipe/segment,
@@ -2967,7 +2975,7 @@
 /obj/structure/sign/deck/first{
 	pixel_x = -32
 	},
-/turf/simulated/open,
+/turf/simulated/floor/tiled/steel,
 /area/station/stairs_one)
 "cvc" = (
 /obj/effect/floor_decal/corner/blue{
@@ -3983,11 +3991,11 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/lounge)
 "dgz" = (
-/obj/structure/sign/deck/first{
-	pixel_x = 32
-	},
-/turf/simulated/open,
-/area/station/stairs_one)
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/navgold/border,
+/obj/machinery/vending/cigarette,
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d1afthall)
 "dgF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -7986,7 +7994,6 @@
 /obj/effect/floor_decal/corner/navgold/border{
 	dir = 8
 	},
-/obj/machinery/vending/cigarette,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d1afthall)
 "fUg" = (
@@ -9772,6 +9779,9 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/space)
+"hkG" = (
+/turf/simulated/floor/tiled/steel,
+/area/station/stairs_one)
 "hkL" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/effect/floor_decal/corner_steel_grid{
@@ -31023,8 +31033,6 @@
 /obj/machinery/camera/network/civilian{
 	dir = 4
 	},
-/obj/structure/closet/emcloset,
-/obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
 "xdD" = (
@@ -31076,6 +31084,8 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/structure/closet/emcloset,
+/obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
 "xfa" = (
@@ -42540,12 +42550,12 @@ jLe
 jLe
 aEU
 cuR
-iDg
+hkG
 fVP
 kHh
 wfp
 kHh
-fVP
+acZ
 iDg
 iDg
 aEU
@@ -42733,15 +42743,15 @@ ckc
 ckc
 jLe
 aEU
-iDg
-iDg
+hkG
+hkG
 lOm
 ueA
 brQ
 xuO
-lOm
+aEU
 iDg
-dgz
+iDg
 aEU
 dZr
 dZr
@@ -42934,8 +42944,8 @@ cUW
 rAN
 gKk
 coS
-wXu
-aEU
+lOm
+lOm
 aEU
 nCl
 dZr
@@ -43518,7 +43528,7 @@ kim
 ujK
 rhR
 kHh
-uWM
+dgz
 kQd
 xNI
 xNI
@@ -46813,7 +46823,7 @@ ciZ
 hlO
 cOe
 acQ
-ciZ
+dhw
 nlF
 cfS
 dPQ
@@ -47007,7 +47017,7 @@ ciZ
 hlO
 cOe
 acQ
-ciZ
+dhw
 dhw
 cfS
 dPQ
@@ -47201,8 +47211,8 @@ ciZ
 hlO
 cOe
 acQ
-ciZ
-ciZ
+dhw
+dhw
 aFB
 aFB
 qfo
@@ -50302,7 +50312,7 @@ wNy
 lDc
 jZp
 mrv
-xdS
+tuq
 aFB
 aFB
 gGW
@@ -50496,7 +50506,7 @@ kAE
 nYy
 gIW
 gGW
-xdS
+tuq
 aFB
 aFB
 tCG
@@ -50690,8 +50700,8 @@ qUh
 hyg
 dFa
 kAg
-xdS
-xdS
+tuq
+tuq
 aFB
 gGW
 qqo
@@ -50884,8 +50894,8 @@ eUP
 hOL
 gtu
 nMe
-xdS
-xdS
+tuq
+tuq
 aFB
 qdt
 aEU
