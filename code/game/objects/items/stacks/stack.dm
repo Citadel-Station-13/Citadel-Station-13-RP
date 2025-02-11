@@ -111,7 +111,7 @@
 		explicit_recipes = get_typelist(explicit_recipes)
 	else
 		explicit_recipes = typelist(NAMEOF(src, explicit_recipes), generate_explicit_recipes())
-	if(new_amount != null)
+	if(!isnull(new_amount))
 		amount = new_amount
 	// todo: lint this to make sure everyone sets this, don't set in initialize as a safety net
 	if(!stack_type)

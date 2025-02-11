@@ -524,14 +524,10 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 // Definitions
 ////////////////////////////////
 
-#define MAXCOIL 30
-
 /obj/item/stack/cable_coil
 	name = "cable coil"
 	icon = 'icons/obj/power.dmi'
 	icon_state = "coil"
-	amount = MAXCOIL
-	max_amount = MAXCOIL
 	color = COLOR_RED
 	desc = "A coil of power cable."
 	throw_force = 10
@@ -542,12 +538,13 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	slot_flags = SLOT_BELT
 	item_state = "coil"
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
+	max_amount = 30
 	stack_type = /obj/item/stack/cable_coil
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
 	stack_type = /obj/item/stack/cable_coil
 
-/obj/item/stack/cable_coil/Initialize(mapload, new_amount = MAXCOIL, merge, param_color)
+/obj/item/stack/cable_coil/Initialize(mapload, new_amount, merge, param_color)
 	. = ..()
 	if (param_color) // It should be red by default, so only recolor it if parameter was specified.
 		add_atom_color(param_color)
@@ -923,8 +920,6 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_wire)
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "coil"
-	amount = MAXCOIL
-	max_amount = MAXCOIL
 	color = COLOR_SILVER
 	throw_force = 10
 	w_class = WEIGHT_CLASS_SMALL
