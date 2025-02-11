@@ -54,24 +54,19 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/security)
 			/obj/item/gun/energy/laser/mounted,
 		)
 
+// todo: this is evil
+/datum/prototype/robot_module/nanotrasen/security/legacy_custom_regenerate_resources(mob/living/silicon/robot/robot, dt, multiplier)
+	..()
+	for(var/obj/item/flash/flash in robot.inventory.robot_modules)
+		// todo: refactor flash
+		flash.times_used = 0
+		if(flash.broken)
+			flash.broken = 0
+			flash.icon_state = "flash"
+
 // todo: legacy
 /obj/item/robot_module/robot/security
 	channels = list("Security" = 1)
 	networks = list(NETWORK_SECURITY)
 	subsystems = list(/mob/living/silicon/proc/subsystem_crew_monitor)
-
-/obj/item/robot_module/robot/security/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
-	var/obj/item/flash/F = locate() in src.modules
-	if(F.broken)
-		F.broken = 0
-		F.times_used = 0
-		F.icon_state = "flash"
-	else if(F.times_used)
-		F.times_used--
-	var/obj/item/gun/energy/taser/mounted/cyborg/T = locate() in src.modules
-	if(T.power_supply.charge < T.power_supply.maxcharge)
-		T.power_supply.give(T.charge_cost * amount)
-		T.update_icon()
-	else
-		T.charge_tick = 0
 

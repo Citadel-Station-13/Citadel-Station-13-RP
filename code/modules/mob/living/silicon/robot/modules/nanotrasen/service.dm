@@ -75,9 +75,6 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/service)
 			/obj/item/pen/chameleon,
 		)
 
-/datum/prototype/robot_module/nanotrasen/service/provision_resource_store(datum/robot_resource_store/store)
-	..()
-
 /datum/prototype/robot_module/nanotrasen/service/legacy_custom_regenerate_resources(mob/living/silicon/robot/robot, dt, multiplier)
 	var/obj/item/reagent_containers/food/condiment/enzyme/E = locate() in robot
 	E.reagents.add_reagent("enzyme", 2 * multiplier * dt)
@@ -109,10 +106,3 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/service)
 		LANGUAGE_UNATHI		= 1,
 		LANGUAGE_ZADDAT		= 1
 	)
-
-// In a nutshell, basicly service/butler robot but in dog form.
-/obj/item/robot_module/robot/quad/serv/handle_special_module_init(mob/living/silicon/robot/R)
-	. = ..()
-
-	// These get a larger water synth.
-	synths_by_kind[MATSYN_WATER]:max_energy = 1000

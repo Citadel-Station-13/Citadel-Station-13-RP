@@ -63,15 +63,17 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/research)
 			/obj/item/borg/combat/shield,
 		)
 
+// todo: this is evil
+/datum/prototype/robot_module/nanotrasen/research/legacy_custom_regenerate_resources(mob/living/silicon/robot/robot, dt, multiplier)
+	..()
+	for(var/obj/item/reagent_containers/syringe/syringe in robot.inventory.robot_modules)
+		// todo: refactor syringes
+		if(syringe.mode == 2)
+			syringe.reagents?.clear_reagents()
+			syringe.mode = initial(syringe.mode)
+			syringe.desc = initial(syringe.desc)
+			syringe.update_icon()
+
 // todo: legacy
 /obj/item/robot_module/robot/research
 	channels = list("Science" = 1)
-
-/obj/item/robot_module/robot/research/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
-	var/obj/item/reagent_containers/syringe/S = locate() in src.modules
-	if(S.mode == 2)
-		S.reagents.clear_reagents()
-		S.mode = initial(S.mode)
-		S.desc = initial(S.desc)
-		S.update_icon()
-	..()

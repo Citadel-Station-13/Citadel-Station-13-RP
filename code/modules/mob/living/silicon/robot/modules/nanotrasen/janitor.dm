@@ -61,11 +61,14 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/janitor)
 	..()
 	robot.legacy_floor_scrubbing = FALSE
 
+// todo: this is evil
+/datum/prototype/robot_module/nanotrasen/janitor/legacy_custom_regenerate_resources(mob/living/silicon/robot/robot, dt, multiplier)
+	..()
+	for(var/obj/item/reagent_containers/spray/maybe_evil_lube_spray in robot.inventory.robot_modules)
+		if(maybe_evil_lube_spray.name != "lube spray")
+			continue
+		maybe_evil_lube_spray.reagents?.add_reagent(/datum/reagent/lube::id, 2 * dt)
+
 // todo: legacy
 /obj/item/robot_module/robot/janitor
 	channels = list("Service" = 1)
-
-/obj/item/robot_module/robot/janitor/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
-	if(src.emag)
-		var/obj/item/reagent_containers/spray/S = src.emag
-		S.reagents.add_reagent("lube", 2 * amount)

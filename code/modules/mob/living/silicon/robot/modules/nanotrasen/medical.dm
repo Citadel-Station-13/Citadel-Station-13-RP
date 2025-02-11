@@ -67,6 +67,11 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/medical)
 			/obj/item/roller_holder,
 			/obj/item/robot_builtin/dog_mirrortool,
 		)
+	if(emag_out)
+		var/obj/item/reagent_containers/spray/acid_spray = new
+		acid_spray.reagents.add_reagent(/datum/reagent/acid/polyacid::id, 250)
+		acid_spray.name = "Polyacid spray"
+		emag_out |= acid_spray
 
 /datum/prototype/robot_module/nanotrasen/medical/provision_resource_store(datum/robot_resource_store/store)
 	..()
@@ -75,22 +80,16 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/medical)
 	store.provisioned_stack_store[/obj/item/stack/medical/splint] = new /datum/robot_resource/provisioned/preset/splints
 	store.provisioned_stack_store[/obj/item/stack/nanopaste] = new /datum/robot_resource/provisioned/preset/nanopaste
 
+// todo: this is evil
+/datum/prototype/robot_module/nanotrasen/medical/legacy_custom_regenerate_resources(mob/living/silicon/robot/robot, dt, multiplier)
+	..()
+	for(var/obj/item/reagent_containers/spray/maybe_evil_acid_spray in robot.inventory.robot_modules)
+		if(maybe_evil_acid_spray.name != "Polyacid spray")
+			continue
+		maybe_evil_acid_spray.reagents?.add_reagent(/datum/reagent/acid/polyacid::id, 2 * dt)
+
 // todo: legacy
 /obj/item/robot_module/robot/medical
 	channels = list("Medical" = 1)
 	networks = list(NETWORK_MEDICAL)
 	subsystems = list(/mob/living/silicon/proc/subsystem_crew_monitor)
-
-/obj/item/robot_module/robot/medical/surgeon/handle_special_module_init(mob/living/silicon/robot/R)
-	. = ..()
-
-	src.emag = new /obj/item/reagent_containers/spray(src)
-	src.emag.reagents.add_reagent("pacid", 250)
-	src.emag.name = "Polyacid spray"
-
-/obj/item/robot_module/robot/medical/surgeon/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
-	if(src.emag)
-		var/obj/item/reagent_containers/spray/PS = src.emag
-		PS.reagents.add_reagent("pacid", 2 * amount)
-	..()
-
