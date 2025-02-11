@@ -10,5 +10,3 @@
 	SHOULD_NOT_OVERRIDE(TRUE) // no excuses, don't do it! robots are composition.
 
 	module_new?.legacy_custom_regenerate_resources(src, seconds, multiplier)
-	#warn impl
-

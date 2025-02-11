@@ -9,6 +9,7 @@
  *
  * * not to be confused with `/datum/admin_modal`; these have a specific
  *   user and target, usually
+ * * these should be in `tgui/interfaces/actor_modal` ideally.
  */
 /datum/tgui_actor_modal
 
