@@ -1,9 +1,9 @@
-/datum/species/shadekin/black_eyed
-	uid = SPECIES_ID_SHADEKIN_BLACK
-	name = SPECIES_SHADEKIN_CREW
-	name_plural = SPECIES_SHADEKIN_CREW
-	uid = SPECIES_ID_SHADEKIN_BLACK
-	id = SPECIES_ID_SHADEKIN
+/datum/species/shadekin_legacy/black_eyed
+	uid = SHADEKIN_ID_SHADEKIN_LEGACY_BLACK
+	name = SPECIES_SHADEKIN_LEGACY_CREW
+	name_plural = SPECIES_SHADEKIN_LEGACY_CREW
+	uid = SHADEKIN_ID_SHADEKIN_LEGACY_BLACK
+	id = SHADEKIN_ID_SHADEKIN_LEGACY
 
 	slowdown = 0 // Originally 0.5 (As slow as unathi), lowered to 0 to be at human speed.
 	item_slowdown_mod = 2 // Originally 1.5. They're not as physically fits, slowed down more by heavy gear.

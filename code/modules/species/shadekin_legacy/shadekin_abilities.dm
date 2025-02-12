@@ -33,7 +33,7 @@
 
 	var/ability_cost = 100
 
-	if(species.get_species_id() != SPECIES_ID_SHADEKIN)
+	if(species.get_species_id() != SHADEKIN_ID_SHADEKIN_LEGACY)
 		to_chat(src, SPAN_WARNING("Only a shadekin can use that!"))
 		return FALSE
 	else if(stat)
@@ -111,7 +111,7 @@
 		alpha = initial(alpha)
 
 		// probably replace with a trait later.
-		remove_atom_phasing(SPECIES_SHADEKIN_PHASING_TRAIT)
+		remove_atom_phasing(SPECIES_SHADEKIN_LEGACY_PHASING_TRAIT)
 
 		//Potential phase-in vore
 		if(can_be_drop_pred) //Toggleable in vore panel
@@ -156,7 +156,7 @@
 		alpha = 127
 
 		// probably replace with a trait later.
-		add_atom_phasing(SPECIES_SHADEKIN_PHASING_TRAIT)
+		add_atom_phasing(SPECIES_SHADEKIN_LEGACY_PHASING_TRAIT)
 
 		incorporeal_move = TRUE
 		density = FALSE
@@ -191,8 +191,8 @@
 
 	var/ability_cost = 50
 
-	//var/datum/species/shadekin/SK = species
-	if(species.get_species_id() != SPECIES_ID_SHADEKIN)
+	//var/datum/species/shadekin_legacy/SK = species
+	if(species.get_species_id() != SHADEKIN_ID_SHADEKIN_LEGACY)
 		to_chat(src, "<span class='warning'>Only a shadekin can use that!</span>")
 		return FALSE
 	else if(stat)
@@ -259,8 +259,8 @@
 
 	var/ability_cost = 25
 
-	//var/datum/species/shadekin/SK = species
-	if(species.get_species_id() != SPECIES_ID_SHADEKIN)
+	//var/datum/species/shadekin_legacy/SK = species
+	if(species.get_species_id() != SHADEKIN_ID_SHADEKIN_LEGACY)
 		to_chat(src, "<span class='warning'>Only a shadekin can use that!</span>")
 		return FALSE
 	else if(stat)

@@ -57,7 +57,7 @@
 	clip_mask_icon = null
 	clip_mask_state = null
 	apply_restrictions = TRUE
-	species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
+	species_allowed = list(SPECIES_SHADEKIN_LEGACY, SPECIES_SHADEKIN_LEGACY_CREW)
 
 /datum/sprite_accessory/tail/legacy_taur/shadekin_tail/shadekin_tail_2c
 	name = "Shadekin Tail dual-color"

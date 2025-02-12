@@ -334,8 +334,8 @@
 	return TRUE
 
 /mob/living/carbon/human/proc/shadekin_get_energy()
-	var/datum/species/shadekin/sk = species
-	var/datum/species/shadekin/black_eyed/besk = species
+	var/datum/species/shadekin_legacy/sk = species
+	var/datum/species/shadekin_legacy/black_eyed/besk = species
 
 	if(istype(sk))
 		return sk.get_energy(src)
@@ -344,8 +344,8 @@
 	return FALSE
 
 /mob/living/carbon/human/proc/shadekin_get_max_energy()
-	var/datum/species/shadekin/sk = species
-	var/datum/species/shadekin/black_eyed/besk = species
+	var/datum/species/shadekin_legacy/sk = species
+	var/datum/species/shadekin_legacy/black_eyed/besk = species
 
 	if(istype(sk))
 		return sk.get_max_energy(src)
@@ -354,8 +354,8 @@
 	return FALSE
 
 /mob/living/carbon/human/proc/shadekin_set_energy(new_energy)
-	var/datum/species/shadekin/sk = species
-	var/datum/species/shadekin/black_eyed/besk = species
+	var/datum/species/shadekin_legacy/sk = species
+	var/datum/species/shadekin_legacy/black_eyed/besk = species
 
 	if(istype(sk))
 		sk.set_energy(src, new_energy)
@@ -364,8 +364,8 @@
 	return FALSE
 
 /mob/living/carbon/human/proc/shadekin_set_max_energy(new_max_energy)
-	var/datum/species/shadekin/sk = species
-	var/datum/species/shadekin/black_eyed/besk = species
+	var/datum/species/shadekin_legacy/sk = species
+	var/datum/species/shadekin_legacy/black_eyed/besk = species
 
 	if(istype(sk))
 		sk.set_max_energy(src, new_max_energy)
@@ -376,8 +376,8 @@
 
 
 /mob/living/carbon/human/proc/shadekin_adjust_energy(amount)
-	var/datum/species/shadekin/sk = species
-	var/datum/species/shadekin/black_eyed/besk = species
+	var/datum/species/shadekin_legacy/sk = species
+	var/datum/species/shadekin_legacy/black_eyed/besk = species
 
 	if(istype(sk))
 		if(amount > 0 || !(sk.check_infinite_energy(src)))

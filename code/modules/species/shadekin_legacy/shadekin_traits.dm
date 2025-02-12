@@ -1,5 +1,5 @@
 /datum/trait/kintype
-	allowed_species = list(SPECIES_SHADEKIN)
+	allowed_species = list(SPECIES_SHADEKIN_LEGACY)
 	var/color = BLUE_EYES
 	name = "Shadekin Blue Adaptation"
 	desc = "Good energy regeneration in darkness, decreased regeneration in the light and unchanged health!"
@@ -127,7 +127,7 @@
 	group_short_name = "Orange-Eyed"
 	show_when_forbidden = FALSE
 
-/datum/trait/kintype/apply(datum/species/shadekin/S, mob/living/carbon/human/H)
+/datum/trait/kintype/apply(datum/species/shadekin_legacy/S, mob/living/carbon/human/H)
 	if (istype(S))
 		..(S,H)
 		if(color) //Sanity check to see if they're actually a shadekin, otherwise just don't do anything. They shouldn't be able to spawn with the trait.

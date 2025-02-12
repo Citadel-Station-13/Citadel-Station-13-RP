@@ -209,6 +209,13 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR
 
+#warn game_world ; plane refactor?
+/atom/movable/screen/plane_master/game_world/electromagnetic
+	#warn impl
+	default_invisible = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR
+
 /atom/movable/screen/plane_master/observer
 	plane = OBSERVER_PLANE
 	default_invisible = TRUE

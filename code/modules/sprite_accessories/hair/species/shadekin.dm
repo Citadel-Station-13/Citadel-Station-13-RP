@@ -6,7 +6,7 @@
 	icon = 'icons/mob/human_face_vr.dmi'
 	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "shadekin_short"
-	species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
+	species_allowed = list(SPECIES_SHADEKIN_LEGACY, SPECIES_SHADEKIN_LEGACY_CREW)
 	apply_restrictions = TRUE
 	random_generation_gender = null
 
@@ -16,7 +16,7 @@
 	icon = 'icons/mob/human_face_vr.dmi'
 	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "shadekin_poofy"
-	species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
+	species_allowed = list(SPECIES_SHADEKIN_LEGACY, SPECIES_SHADEKIN_LEGACY_CREW)
 	apply_restrictions = TRUE
 	random_generation_gender = null
 
@@ -26,6 +26,6 @@
 	icon = 'icons/mob/human_face_vr.dmi'
 	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "shadekin_long"
-	species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
+	species_allowed = list(SPECIES_SHADEKIN_LEGACY, SPECIES_SHADEKIN_LEGACY_CREW)
 	apply_restrictions = TRUE
 	random_generation_gender = null

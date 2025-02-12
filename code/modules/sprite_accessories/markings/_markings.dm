@@ -401,7 +401,7 @@
 	icon_state = "shadekin-snoot"
 	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_HEAD)
-	species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
+	species_allowed = list(SPECIES_SHADEKIN_LEGACY, SPECIES_SHADEKIN_LEGACY_CREW)
 	apply_restrictions = TRUE
 
 /datum/sprite_accessory/marking/talons
