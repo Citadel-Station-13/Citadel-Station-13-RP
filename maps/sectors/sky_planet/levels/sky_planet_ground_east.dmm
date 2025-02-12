@@ -12,7 +12,7 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/freezer,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
 "aR" = (
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/holofloor/reinforced,
@@ -29,6 +29,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/sky)
+"bU" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/black/border{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/poi)
 "cB" = (
 /obj/spawner/window/low_wall/reinforced/tinted/full/firelocks,
 /turf/simulated/floor/tiled/techfloor,
@@ -38,14 +47,14 @@
 /obj/item/material/shard,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/freezer,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
 "cU" = (
 /obj/effect/floor_decal/corner/navblue/border,
 /obj/machinery/body_scanconsole{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/freezer,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
 "dN" = (
 /obj/item/stack/medical/crude_pack,
 /turf/simulated/floor/outdoors/rocks/caves,
@@ -55,7 +64,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/freezer,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
 "eF" = (
 /obj/machinery/mining/drill,
 /obj/machinery/light/small/emergency/flicker,
@@ -77,11 +86,24 @@
 "fC" = (
 /turf/simulated/wall/r_wall,
 /area/sector/sky_planet/sky)
+"ga" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/black/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/poi)
 "gc" = (
 /turf/simulated/floor/plating,
 /area/sector/sky_planet/sky)
 "gl" = (
 /turf/simulated/floor/water/acid/outdoors,
+/area/sector/sky_planet/rock)
+"gF" = (
+/mob/living/simple_mob/humanoid/cultist/mad,
+/turf/simulated/floor/outdoors/rocks/caves,
 /area/sector/sky_planet/rock)
 "gR" = (
 /obj/effect/floor_decal/corner/navblue/diagonal,
@@ -89,12 +111,12 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/freezer,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
 "hg" = (
 /obj/structure/closet/crate/secure/corporate/veymed,
 /obj/random/medical/pillbottle,
 /turf/simulated/floor/plating,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
 "iq" = (
 /turf/simulated/mineral,
 /area/sector/sky_planet/rock)
@@ -112,7 +134,7 @@
 "iZ" = (
 /obj/machinery/door/airlock/external,
 /turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
 "je" = (
 /turf/simulated/floor/water/acid/outdoors,
 /area/sector/sky_planet/sky)
@@ -120,7 +142,7 @@
 /obj/effect/floor_decal/corner/navblue/diagonal,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/freezer,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
 "jw" = (
 /obj/structure/railing/grey,
 /obj/structure/railing/grey{
@@ -140,9 +162,27 @@
 "jG" = (
 /turf/simulated/floor/outdoors/rocks/caves,
 /area/sector/sky_planet/rock)
+"jI" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/black/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/poi)
 "ka" = (
 /obj/effect/blocker,
 /turf/simulated/lava,
+/area/sector/sky_planet/sky)
+"kl" = (
+/obj/item/flashlight/glowstick/red{
+	on = 1
+	},
+/turf/simulated/floor/plating,
 /area/sector/sky_planet/sky)
 "ks" = (
 /turf/simulated/wall/r_wall,
@@ -170,16 +210,16 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/freezer,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
 "lO" = (
 /obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/plating,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
 "mt" = (
 /obj/effect/debris/cleanable/blood/drip,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
 "ne" = (
 /obj/effect/blocker,
 /turf/simulated/floor/water/acid/outdoors,
@@ -198,6 +238,30 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/rock)
+"oR" = (
+/obj/effect/floor_decal/borderfloorblack/cee,
+/obj/effect/floor_decal/corner/black/border{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/black/border{
+	dir = 6
+	},
+/obj/machinery/door/airlock/voidcraft,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/poi)
+"oV" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/storage/single_use/mre/menu11,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/poi)
+"pj" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/storage/single_use/mrebag/side,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/poi)
+"pr" = (
+/turf/simulated/wall/r_lead,
+/area/sector/sky_planet/poi)
 "pV" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor,
@@ -211,7 +275,7 @@
 /obj/structure/bed/pod,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/freezer,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
 "qr" = (
 /obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/techfloor,
@@ -220,12 +284,41 @@
 /mob/living/simple_mob/mechanical/hivebot/miner,
 /turf/simulated/floor/outdoors/rocks,
 /area/sector/sky_planet/rock)
+"qM" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/black/border,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/poi)
 "qQ" = (
 /obj/effect/floor_decal/corner/navblue/border,
 /obj/structure/bed/pod,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
+"qW" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 8
+	},
+/obj/random/firstaid{
+	pixel_y = 16;
+	pixel_x = -7
+	},
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/effect/floor_decal/corner/black{
+	dir = 6
+	},
+/obj/structure/bed/chair,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/poi)
+"rb" = (
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/effect/floor_decal/corner/black{
+	dir = 5
+	},
+/obj/structure/closet,
+/obj/item/survivalcapsule/military,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/poi)
 "rk" = (
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 1
@@ -235,14 +328,23 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/freezer,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
+"rN" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/black/border{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/poi)
 "rS" = (
 /obj/effect/floor_decal/corner/navblue/diagonal,
 /obj/machinery/door/window/brigdoor/southleft,
 /obj/effect/decal/remains,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/freezer,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
 "rX" = (
 /turf/simulated/floor/outdoors/ash_sand,
 /area/sector/sky_planet/sky)
@@ -257,7 +359,7 @@
 "uc" = (
 /obj/effect/decal/remains,
 /turf/simulated/floor/tiled/freezer,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
 "ug" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -269,17 +371,21 @@
 /obj/effect/floor_decal/corner/navblue/border,
 /obj/machinery/sleeper/survival_pod,
 /turf/simulated/floor/tiled/freezer,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
 "uN" = (
 /turf/simulated/lava,
 /area/sector/sky_planet/rock)
 "vI" = (
 /obj/machinery/door/airlock,
 /turf/simulated/floor/plating,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
 "vV" = (
 /turf/simulated/shuttle/wall/voidcraft/blue,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
+"vY" = (
+/obj/effect/decal/remains,
+/turf/simulated/floor/plating,
+/area/sector/sky_planet/poi)
 "wl" = (
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 5
@@ -288,13 +394,38 @@
 /obj/item/clothing/suit/storage/toggle/labcoat/green,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/freezer,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
+"ws" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/black/border{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/poi)
 "wQ" = (
 /obj/machinery/floodlight{
 	on = 1
 	},
 /turf/simulated/floor/outdoors/rocks,
 /area/sector/sky_planet/rock)
+"xe" = (
+/obj/effect/floor_decal/rust,
+/obj/item/flashlight/glowstick/red{
+	on = 1
+	},
+/turf/simulated/floor/plating,
+/area/sector/sky_planet/poi)
+"xr" = (
+/turf/simulated/floor/plating,
+/area/sector/sky_planet/poi)
+"xG" = (
+/obj/item/flashlight/glowstick/red{
+	on = 1
+	},
+/turf/simulated/floor/outdoors/rocks,
+/area/sector/sky_planet/sky)
 "yJ" = (
 /mob/living/simple_mob/mechanical/hivebot/surveyor,
 /turf/simulated/floor/outdoors/rocks,
@@ -314,7 +445,7 @@
 /obj/effect/floor_decal/corner/navblue/diagonal,
 /obj/structure/window/reinforced,
 /turf/simulated/floor/tiled/freezer,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
 "zR" = (
 /obj/structure/stairs/spawner/east,
 /turf/simulated/floor/tiled/techfloor,
@@ -327,7 +458,7 @@
 /obj/effect/floor_decal/corner/navblue/diagonal,
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/freezer,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
 "Bj" = (
 /obj/random/drinkbottle,
 /obj/effect/floor_decal/rust,
@@ -338,6 +469,19 @@
 /obj/effect/blocker,
 /turf/simulated/floor/outdoors/rocks,
 /area/sector/sky_planet/sky)
+"Ci" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/black/border{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/poi)
+"Cj" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/sector/sky_planet/poi)
 "CB" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/light/small/emergency/flicker{
@@ -345,6 +489,21 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/rock)
+"DD" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/black/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/black/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/poi)
 "DR" = (
 /obj/effect/decal/remains,
 /turf/simulated/floor/plating,
@@ -356,6 +515,13 @@
 /obj/structure/bed/pod,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/freezer,
+/area/sector/sky_planet/poi)
+"Em" = (
+/obj/effect/floor_decal/rust,
+/obj/item/flashlight/glowstick/red{
+	on = 1
+	},
+/turf/simulated/floor/plating,
 /area/sector/sky_planet/sky)
 "Es" = (
 /obj/effect/floor_decal/rust,
@@ -365,11 +531,22 @@
 "Ev" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/rock)
+"EA" = (
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/effect/floor_decal/corner/black{
+	dir = 5
+	},
+/obj/structure/closet,
+/obj/item/material/knife/machete,
+/obj/item/material/knife/tacknife/combatknife,
+/obj/item/gun/energy/kinetic_accelerator,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/poi)
 "ES" = (
 /obj/effect/floor_decal/corner/navblue/border,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/freezer,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
 "Fl" = (
 /obj/effect/debris/cleanable/vomit,
 /turf/simulated/floor/outdoors/rocks,
@@ -380,10 +557,36 @@
 	},
 /turf/simulated/floor/holofloor/reinforced,
 /area/sector/sky_planet/rock)
+"Gd" = (
+/obj/spawner/window/low_wall/reinforced/tinted/full/firelocks,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/poi)
+"Gk" = (
+/obj/machinery/light/small/emergency/flicker,
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/effect/floor_decal/corner/black{
+	dir = 5
+	},
+/obj/structure/closet,
+/obj/item/storage/box/flare,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/poi)
 "GL" = (
 /obj/random/crystal,
 /turf/simulated/floor/outdoors/rocks,
 /area/sector/sky_planet/rock)
+"GX" = (
+/obj/machinery/sleeper/survival_pod,
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/effect/floor_decal/corner/black{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/poi)
+"Hl" = (
+/obj/structure/fans,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/poi)
 "Ht" = (
 /obj/structure/event/prop/campfire,
 /turf/simulated/floor/outdoors/rocks/caves,
@@ -398,7 +601,7 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/freezer,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
 "IL" = (
 /obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/outdoors/rocks/caves,
@@ -413,7 +616,7 @@
 /obj/effect/decal/remains,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/freezer,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
 "Jo" = (
 /mob/living/simple_mob/mechanical/hivebot/swarm,
 /turf/simulated/floor/outdoors/rocks,
@@ -422,11 +625,35 @@
 /obj/random/roguemineloot,
 /turf/simulated/floor/outdoors/rocks,
 /area/sector/sky_planet/rock)
+"KB" = (
+/obj/structure/bed/pod,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/effect/floor_decal/corner/black{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/poi)
 "KG" = (
 /obj/effect/floor_decal/corner/navblue/diagonal,
 /obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/freezer,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
+"Lb" = (
+/obj/effect/floor_decal/borderfloorblack/cee{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/black/border{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/black/border{
+	dir = 5
+	},
+/obj/machinery/door/airlock/voidcraft,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/poi)
 "Lj" = (
 /obj/item/tank/emergency/oxygen/double,
 /turf/simulated/floor/outdoors/rocks/caves,
@@ -435,11 +662,15 @@
 /obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/outdoors/rocks,
 /area/sector/sky_planet/sky)
+"Mi" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/poi)
 "Mk" = (
 /obj/effect/floor_decal/corner/navblue/diagonal,
 /obj/machinery/sleeper/survival_pod,
 /turf/simulated/floor/tiled/freezer,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
 "Mz" = (
 /obj/machinery/giga_drill,
 /turf/simulated/floor/outdoors/rocks,
@@ -448,11 +679,11 @@
 /obj/structure/closet,
 /obj/item/clothing/suit/storage/toggle/labcoat/green,
 /turf/simulated/floor/plating,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
 "Nt" = (
 /obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
 "NH" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/tool/alien,
@@ -465,22 +696,27 @@
 /obj/machinery/door/window/brigdoor/southleft,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/freezer,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
 "OQ" = (
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 1
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/freezer,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
 "Ps" = (
 /obj/machinery/door/airlock,
 /turf/simulated/floor/holofloor/reinforced,
 /area/sector/sky_planet/rock)
+"Py" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/storage/single_use/mrebag/side/menu10,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/poi)
 "PA" = (
 /obj/effect/floor_decal/corner/navblue/border,
 /turf/simulated/floor/tiled/freezer,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
 "PB" = (
 /obj/machinery/light/small/emergency/flicker{
 	dir = 1
@@ -494,7 +730,11 @@
 /obj/effect/decal/remains,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/freezer,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
+"Qe" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/poi)
 "Qf" = (
 /obj/structure/event/prop/excavation_drill,
 /turf/simulated/floor/tiled/techfloor,
@@ -509,12 +749,36 @@
 	},
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/freezer,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
+"RA" = (
+/obj/item/flashlight/glowstick/red{
+	on = 1
+	},
+/turf/simulated/floor/outdoors/rocks/caves,
+/area/sector/sky_planet/rock)
 "RQ" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/rock)
+"Sg" = (
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/effect/floor_decal/corner/black{
+	dir = 6
+	},
+/obj/item/modular_computer/laptop/preset/custom_loadout/standard,
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/poi)
+"Sl" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/black/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/poi)
 "Sn" = (
 /obj/structure/simple_door/cult,
 /turf/simulated/floor/outdoors/rocks/caves,
@@ -528,11 +792,17 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/freezer,
+/area/sector/sky_planet/poi)
+"Ul" = (
+/obj/item/flashlight/glowstick/red{
+	on = 1
+	},
+/turf/simulated/floor/outdoors/ash_sand,
 /area/sector/sky_planet/sky)
 "Un" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/shuttle/wall/voidcraft/blue,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
 "UL" = (
 /turf/simulated/wall/solidrock,
 /area/sector/sky_planet/rock)
@@ -544,23 +814,40 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/freezer,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
+"US" = (
+/obj/structure/bed/pod,
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/effect/floor_decal/corner/black{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/poi)
 "UV" = (
 /obj/effect/floor_decal/corner/navblue/diagonal,
 /obj/machinery/door/window/brigdoor/northleft,
 /turf/simulated/floor/tiled/freezer,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
 "Vd" = (
 /obj/effect/floor_decal/corner/navblue/diagonal,
 /obj/structure/window/reinforced,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/freezer,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
 "Vj" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/multiple/gun/projectile/shotgun,
 /turf/simulated/floor/outdoors/rocks,
 /area/sector/sky_planet/rock)
+"Vz" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/black/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/poi)
 "Wi" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/junk,
@@ -574,7 +861,12 @@
 /area/sector/sky_planet/sky)
 "XL" = (
 /turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
+"XW" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/storage/single_use/mrebag/menu2,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/poi)
 "Ya" = (
 /obj/structure/grille,
 /turf/simulated/floor/tiled/techfloor,
@@ -582,7 +874,7 @@
 "YK" = (
 /obj/effect/floor_decal/corner/navblue/diagonal,
 /turf/simulated/floor/tiled/freezer,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/poi)
 "Zs" = (
 /turf/level_border,
 /area/sector/sky_planet/sky)
@@ -871,8 +1163,8 @@ iV
 iV
 iV
 iV
-iV
-iV
+rX
+rX
 iV
 iV
 iV
@@ -1066,7 +1358,7 @@ iV
 iV
 iV
 iV
-iV
+rX
 iV
 iV
 iV
@@ -1260,18 +1552,18 @@ iV
 iV
 iV
 iV
+rX
+rX
 iV
 iV
 iV
 iV
 iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
+pr
+pr
+pr
+pr
+pr
 iV
 iV
 iV
@@ -1454,19 +1746,19 @@ iV
 iV
 iV
 iV
+rX
 iV
 iV
 iV
 iV
 iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
+pr
+pr
+GX
+qW
+Sg
+pr
+pr
 iV
 iV
 iV
@@ -1649,19 +1941,19 @@ iV
 iV
 iV
 iV
+rX
 iV
 iV
 iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
+pr
+pr
+pr
+bU
+Vz
+Vz
+ws
+pr
+pr
 iV
 iV
 iV
@@ -1842,20 +2134,20 @@ iV
 iV
 iV
 iV
+rX
+rX
 iV
 iV
 iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
+pr
+Hl
+pr
+jI
+oV
+Py
+qM
+rb
+pr
 iV
 iV
 iV
@@ -2036,20 +2328,20 @@ iV
 iV
 iV
 iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
+rX
+rX
+rX
+rX
+rX
+Lb
+DD
+oR
+ga
+pj
+Qe
+qM
+Gk
+pr
 iV
 iV
 iV
@@ -2230,20 +2522,20 @@ iV
 iV
 iV
 iV
+rX
+rX
 iV
 iV
 iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
+pr
+Hl
+pr
+jI
+XW
+Qe
+qM
+EA
+pr
 iV
 iV
 iV
@@ -2424,20 +2716,20 @@ iV
 iV
 iV
 iV
+rX
 iV
 iV
 iV
 iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
+pr
+pr
+pr
+Ci
+Sl
+Sl
+rN
+pr
+pr
 iV
 iV
 iV
@@ -2617,20 +2909,20 @@ iV
 iV
 iV
 iV
+rX
+rX
 iV
 iV
 iV
 iV
 iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
+pr
+pr
+US
+KB
+US
+pr
+pr
 iV
 iV
 iV
@@ -2810,6 +3102,8 @@ iV
 iV
 iV
 iV
+rX
+rX
 iV
 iV
 iV
@@ -2817,13 +3111,11 @@ iV
 iV
 iV
 iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
+pr
+pr
+pr
+pr
+pr
 iV
 iV
 iV
@@ -3003,9 +3295,9 @@ iV
 iV
 iV
 iV
-iV
-iV
-iV
+rX
+rX
+rX
 iV
 iV
 iV
@@ -3188,17 +3480,17 @@ iV
 iV
 iV
 iV
-iV
-iV
+rX
+rX
 Hz
 Hz
 Hz
 Hz
-iV
-iV
-iV
-iV
-iV
+rX
+rX
+rX
+rX
+rX
 iV
 iV
 iV
@@ -3341,6 +3633,18 @@ iV
 iV
 iV
 iV
+rX
+rX
+rX
+iV
+iV
+iV
+iV
+iV
+je
+je
+je
+iV
 iV
 iV
 iV
@@ -3352,18 +3656,6 @@ iV
 je
 je
 je
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-je
-je
-je
 je
 je
 je
@@ -3381,18 +3673,18 @@ iV
 iV
 iV
 iV
-iV
-iV
+rX
+rX
 iV
 Hz
 Hz
 Hz
 Hz
+rX
+rX
+rX
 iV
-iV
-iV
-iV
-iV
+rX
 iV
 iV
 iV
@@ -3533,38 +3825,16 @@ rX
 iV
 iV
 iV
+rX
+rX
+iV
+iV
+rX
+rX
+rX
 iV
 iV
 iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-je
-je
-je
-je
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-je
-je
-je
-je
-je
-je
-je
-je
-je
 je
 je
 je
@@ -3582,11 +3852,33 @@ je
 je
 je
 je
+je
+je
+je
+je
+je
+je
+je
+je
+je
 iV
 iV
 iV
 iV
 iV
+rX
+rX
+iV
+iV
+je
+je
+je
+je
+iV
+iV
+iV
+iV
+rX
 iV
 iV
 iV
@@ -3726,43 +4018,21 @@ rX
 rX
 rX
 iV
+rX
+rX
 iV
 iV
 iV
 iV
 iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-je
-je
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
+rX
+rX
+rX
 iV
 iV
 je
 je
-je
-je
-je
-je
-je
-je
-je
-je
-je
-je
-je
+iV
 iV
 iV
 iV
@@ -3776,11 +4046,33 @@ je
 je
 je
 je
+je
+je
+je
+je
+je
+je
+je
+je
+je
 iV
 iV
 iV
 iV
+rX
+rX
 iV
+iV
+iV
+je
+je
+je
+je
+iV
+iV
+iV
+iV
+rX
 iV
 iV
 iV
@@ -3920,6 +4212,7 @@ fC
 rX
 rX
 iV
+rX
 iV
 iV
 iV
@@ -3928,9 +4221,8 @@ iV
 iV
 iV
 iV
-iV
-iV
-iV
+rX
+rX
 iV
 Hz
 Hz
@@ -3960,8 +4252,8 @@ iV
 iV
 iV
 iV
-iV
-iV
+rX
+rX
 iV
 iV
 iV
@@ -3974,8 +4266,8 @@ iV
 iV
 iV
 iV
-iV
-iV
+rX
+rX
 iV
 iV
 iV
@@ -4114,6 +4406,7 @@ fC
 fC
 rX
 rX
+rX
 iV
 iV
 iV
@@ -4123,36 +4416,13 @@ iV
 iV
 iV
 iV
-iV
-iV
-iV
+rX
+rX
 Hz
 Hz
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-je
-je
-je
-je
-je
-je
-je
-je
-je
-je
-je
-iV
-iV
-iV
-iV
+rX
+rX
+rX
 iV
 iV
 iV
@@ -4164,12 +4434,34 @@ je
 je
 je
 je
+je
+je
+je
+je
+je
+je
+je
+iV
+iV
+iV
+rX
+rX
+rX
 iV
 iV
 iV
 iV
 iV
+je
+je
+je
+je
 iV
+iV
+iV
+iV
+rX
+rX
 iV
 iV
 iV
@@ -4307,24 +4599,10 @@ fC
 fC
 fC
 rX
-iV
-iV
-iV
-je
-iV
-iV
-iV
-iV
-iV
-iV
+rX
 iV
 iV
 je
-je
-je
-iV
-iV
-iV
 iV
 iV
 iV
@@ -4336,18 +4614,10 @@ iV
 je
 je
 je
-je
-je
-je
-je
-je
-je
-je
 iV
-iV
-iV
-iV
-iV
+rX
+rX
+rX
 iV
 iV
 iV
@@ -4359,12 +4629,34 @@ je
 je
 je
 je
+je
+je
+je
+je
+je
+je
+iV
+iV
+rX
+rX
 iV
 iV
 iV
 iV
 iV
 iV
+iV
+iV
+je
+je
+je
+je
+iV
+iV
+iV
+iV
+rX
+rX
 iV
 iV
 iV
@@ -4500,25 +4792,12 @@ fC
 fC
 fC
 rX
-iV
-iV
-iV
-je
-je
-je
-iV
-iV
-iV
-iV
-iV
-iV
+rX
+rX
 iV
 je
 je
-iV
-iV
-iV
-iV
+je
 iV
 iV
 iV
@@ -4528,21 +4807,11 @@ iV
 iV
 je
 je
-je
-je
-je
-je
-je
-je
-je
-je
 iV
 iV
 iV
-iV
-iV
-iV
-iV
+rX
+rX
 iV
 iV
 iV
@@ -4553,12 +4822,35 @@ je
 je
 je
 je
+je
+je
+je
+je
+je
+je
+iV
+iV
+iV
+rX
 iV
 iV
 iV
 iV
 iV
 iV
+iV
+iV
+iV
+je
+je
+je
+je
+iV
+iV
+iV
+iV
+rX
+rX
 iV
 iV
 iV
@@ -4694,16 +4986,7 @@ fC
 fC
 rX
 rX
-iV
-iV
-iV
-je
-je
-je
-iV
-iV
-iV
-iV
+rX
 iV
 iV
 je
@@ -4715,6 +4998,15 @@ iV
 iV
 iV
 iV
+je
+je
+je
+iV
+iV
+iV
+iV
+rX
+rX
 iV
 iV
 iV
@@ -4732,7 +5024,7 @@ je
 je
 iV
 iV
-iV
+rX
 iV
 iV
 iV
@@ -4751,8 +5043,8 @@ iV
 iV
 iV
 iV
-iV
-iV
+rX
+rX
 iV
 iV
 iV
@@ -4888,54 +5180,7 @@ fC
 rX
 rX
 iV
-iV
-iV
-je
-je
-je
-je
-iV
-iV
-iV
-iV
-iV
-iV
-je
-je
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-je
-je
-je
-je
-je
-je
-je
-je
-je
-je
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
+rX
 iV
 je
 je
@@ -4947,6 +5192,53 @@ iV
 iV
 iV
 iV
+je
+je
+iV
+iV
+iV
+iV
+iV
+rX
+rX
+iV
+iV
+iV
+iV
+je
+je
+je
+je
+je
+je
+je
+je
+je
+je
+iV
+iV
+iV
+rX
+rX
+iV
+iV
+iV
+iV
+iV
+iV
+iV
+iV
+iV
+je
+je
+je
+je
+iV
+iV
+iV
+iV
+rX
+rX
 iV
 iV
 iV
@@ -5081,54 +5373,7 @@ fC
 rX
 rX
 iV
-iV
-iV
-iV
-je
-je
-je
-je
-iV
-iV
-iV
-iV
-iV
-iV
-je
-je
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-je
-je
-je
-je
-je
-je
-je
-je
-je
-je
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
+rX
 iV
 iV
 je
@@ -5141,7 +5386,54 @@ iV
 iV
 iV
 iV
+je
+je
 iV
+iV
+iV
+iV
+iV
+iV
+rX
+iV
+iV
+iV
+iV
+je
+je
+je
+je
+je
+je
+je
+je
+je
+je
+iV
+iV
+rX
+rX
+iV
+iV
+iV
+iV
+iV
+iV
+iV
+iV
+iV
+iV
+je
+je
+je
+je
+iV
+iV
+iV
+iV
+iV
+rX
+rX
 iV
 iV
 iV
@@ -5274,7 +5566,7 @@ fC
 rX
 rX
 rX
-iV
+rX
 iV
 rX
 iV
@@ -5296,6 +5588,30 @@ iV
 iV
 iV
 iV
+rX
+iV
+iV
+iV
+iV
+je
+je
+je
+je
+je
+je
+je
+je
+je
+je
+iV
+iV
+rX
+iV
+iV
+iV
+iV
+iV
+iV
 iV
 iV
 iV
@@ -5305,37 +5621,13 @@ je
 je
 je
 je
-je
-je
-je
-je
-je
-je
 iV
 iV
 iV
 iV
 iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-je
-je
-je
-je
-iV
-iV
-iV
-iV
-iV
-iV
-iV
+rX
+rX
 iV
 iV
 iV
@@ -5491,6 +5783,30 @@ iV
 iV
 iV
 iV
+rX
+iV
+iV
+iV
+je
+je
+je
+je
+je
+je
+je
+je
+je
+je
+iV
+rX
+rX
+iV
+iV
+iV
+iV
+iV
+iV
+iV
 iV
 iV
 iV
@@ -5499,37 +5815,13 @@ je
 je
 je
 je
-je
-je
-je
-je
-je
-je
 iV
 iV
 iV
 iV
 iV
 iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-je
-je
-je
-je
-iV
-iV
-iV
-iV
-iV
-iV
-iV
+rX
 iV
 iV
 iV
@@ -5660,6 +5952,53 @@ iV
 rX
 rX
 rX
+rX
+iV
+iV
+iV
+iV
+iV
+je
+je
+je
+je
+iV
+iV
+iV
+iV
+iV
+je
+je
+iV
+iV
+iV
+iV
+iV
+iV
+iV
+iV
+rX
+iV
+iV
+iV
+je
+je
+je
+je
+je
+je
+je
+je
+je
+iV
+iV
+rX
+iV
+iV
+iV
+iV
+iV
+iV
 iV
 iV
 iV
@@ -5675,55 +6014,8 @@ iV
 iV
 iV
 iV
-je
-je
 iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-je
-je
-je
-je
-je
-je
-je
-je
-je
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-je
-je
-je
-je
-iV
-iV
-iV
-iV
-iV
-iV
-iV
+rX
 iV
 iV
 iV
@@ -5878,6 +6170,28 @@ iV
 iV
 iV
 iV
+rX
+rX
+iV
+iV
+iV
+iV
+iV
+je
+je
+je
+je
+je
+je
+je
+iV
+iV
+rX
+iV
+iV
+iV
+iV
+iV
 iV
 iV
 iV
@@ -5889,36 +6203,14 @@ je
 je
 je
 je
-je
-je
-je
 iV
 iV
 iV
 iV
 iV
 iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-je
-je
-je
-je
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
+rX
+rX
 iV
 iV
 iV
@@ -6073,6 +6365,28 @@ iV
 iV
 iV
 iV
+rX
+rX
+iV
+iV
+iV
+iV
+je
+je
+je
+je
+je
+je
+iV
+iV
+rX
+rX
+iV
+iV
+iV
+iV
+iV
+iV
 iV
 iV
 iV
@@ -6083,36 +6397,14 @@ je
 je
 je
 je
-je
-je
 iV
 iV
 iV
 iV
 iV
 iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-je
-je
-je
-je
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
+rX
+rX
 iV
 iV
 iV
@@ -6268,6 +6560,27 @@ iV
 iV
 iV
 iV
+rX
+rX
+iV
+iV
+iV
+iV
+je
+je
+je
+je
+iV
+iV
+rX
+rX
+iV
+iV
+iV
+iV
+iV
+iV
+iV
 iV
 iV
 iV
@@ -6278,27 +6591,6 @@ je
 je
 je
 je
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-je
-je
-je
-je
 je
 iV
 iV
@@ -6306,7 +6598,7 @@ iV
 iV
 iV
 iV
-iV
+rX
 iV
 iV
 iV
@@ -6462,6 +6754,26 @@ iV
 iV
 iV
 iV
+rX
+rX
+rX
+iV
+iV
+iV
+iV
+iV
+je
+iV
+iV
+rX
+rX
+iV
+iV
+iV
+iV
+iV
+iV
+iV
 iV
 iV
 iV
@@ -6471,26 +6783,6 @@ iV
 iV
 iV
 je
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-je
 je
 je
 je
@@ -6500,7 +6792,7 @@ iV
 iV
 iV
 iV
-iV
+rX
 iV
 iV
 iV
@@ -6658,6 +6950,8 @@ iV
 iV
 iV
 iV
+rX
+rX
 iV
 iV
 iV
@@ -6665,9 +6959,7 @@ iV
 iV
 iV
 iV
-iV
-iV
-iV
+rX
 iV
 iV
 iV
@@ -6694,7 +6986,7 @@ iV
 iV
 iV
 iV
-iV
+rX
 iV
 iV
 iV
@@ -6853,15 +7145,15 @@ iV
 iV
 iV
 iV
+rX
 iV
 iV
 iV
 iV
 iV
-iV
-iV
-iV
-iV
+rX
+rX
+rX
 iV
 iV
 iV
@@ -6888,8 +7180,8 @@ iV
 iV
 iV
 iV
-iV
-iV
+rX
+rX
 iV
 iV
 iV
@@ -7048,12 +7340,12 @@ iV
 iV
 iV
 iV
+rX
+rX
 iV
-iV
-iV
-iV
-iV
-iV
+rX
+rX
+rX
 iV
 iV
 iV
@@ -7082,8 +7374,8 @@ iV
 iV
 iV
 iV
-iV
-iV
+rX
+rX
 iV
 iV
 iV
@@ -7243,8 +7535,8 @@ iV
 iV
 iV
 iV
-iV
-iV
+rX
+rX
 iV
 iV
 iV
@@ -7277,7 +7569,7 @@ iV
 iV
 iV
 iV
-iV
+rX
 iV
 iV
 iV
@@ -7471,7 +7763,7 @@ iV
 iV
 iV
 iV
-iV
+rX
 iV
 iV
 iV
@@ -7665,7 +7957,7 @@ iV
 iV
 iV
 iV
-iV
+rX
 iV
 iV
 iV
@@ -7859,8 +8151,8 @@ iV
 iV
 iV
 iV
-iV
-iV
+rX
+rX
 iV
 iV
 iV
@@ -8053,8 +8345,8 @@ iV
 iV
 iV
 iV
-iV
-iV
+rX
+rX
 iV
 iV
 iV
@@ -8247,8 +8539,8 @@ iV
 iV
 iV
 iV
-iV
-iV
+rX
+rX
 iV
 iV
 iV
@@ -8441,7 +8733,7 @@ iV
 iV
 iV
 iV
-iV
+rX
 iV
 iV
 iV
@@ -8635,7 +8927,7 @@ iV
 iV
 iV
 iV
-iV
+rX
 iV
 iV
 iV
@@ -8828,8 +9120,8 @@ iV
 iV
 iV
 iV
-iV
-iV
+rX
+rX
 iV
 iV
 iV
@@ -9022,7 +9314,7 @@ iV
 iV
 iV
 iV
-iV
+rX
 iV
 iV
 iV
@@ -9216,7 +9508,7 @@ iV
 iV
 iV
 iV
-iV
+rX
 iV
 iV
 iV
@@ -9410,7 +9702,7 @@ iV
 iV
 iV
 iV
-iV
+rX
 iV
 iV
 iV
@@ -9604,7 +9896,7 @@ iV
 iV
 iV
 iV
-iV
+rX
 iV
 iV
 iV
@@ -9798,7 +10090,7 @@ iV
 iV
 iV
 iV
-iV
+rX
 iV
 iV
 iV
@@ -9991,8 +10283,8 @@ je
 iV
 iV
 iV
-iV
-iV
+rX
+rX
 iV
 iV
 iV
@@ -10185,7 +10477,7 @@ je
 iV
 iV
 iV
-iV
+rX
 iV
 iV
 iV
@@ -10379,7 +10671,7 @@ je
 iV
 iV
 iV
-iV
+rX
 iV
 iV
 iV
@@ -10572,8 +10864,8 @@ je
 je
 iV
 iV
-iV
-iV
+rX
+rX
 iV
 iV
 iV
@@ -10766,7 +11058,7 @@ je
 je
 iV
 iV
-iV
+rX
 iV
 iV
 iV
@@ -10960,7 +11252,7 @@ je
 je
 iV
 iV
-iV
+rX
 iV
 iV
 iV
@@ -11154,8 +11446,8 @@ je
 iV
 iV
 iV
-iV
-iV
+rX
+rX
 iV
 iV
 iV
@@ -11348,7 +11640,7 @@ iV
 iV
 iV
 iV
-iV
+rX
 iV
 iV
 iV
@@ -11542,7 +11834,7 @@ iV
 iV
 iV
 iV
-iV
+rX
 iV
 iV
 iV
@@ -11735,8 +12027,8 @@ je
 iV
 iV
 iV
-iV
-iV
+rX
+rX
 iV
 iV
 iV
@@ -11930,7 +12222,7 @@ iV
 iV
 iV
 iV
-iV
+rX
 iV
 iV
 iV
@@ -12123,8 +12415,8 @@ iV
 iV
 iV
 iV
-iV
-iV
+rX
+rX
 iV
 iV
 iV
@@ -12317,8 +12609,8 @@ iV
 iV
 iV
 iV
-iV
-iV
+rX
+rX
 iV
 iV
 iV
@@ -12511,7 +12803,7 @@ je
 iV
 iV
 iV
-iV
+rX
 iV
 iV
 iV
@@ -12705,8 +12997,8 @@ je
 iV
 iV
 iV
-iV
-iV
+rX
+rX
 iV
 iV
 iV
@@ -12899,8 +13191,8 @@ je
 je
 iV
 iV
-iV
-iV
+rX
+rX
 iV
 iV
 je
@@ -14451,8 +14743,8 @@ iV
 iV
 iV
 je
-iV
-iV
+rX
+rX
 iV
 iV
 iV
@@ -14645,8 +14937,8 @@ iV
 iV
 iV
 iV
-iV
-iV
+rX
+rX
 iV
 iV
 iV
@@ -14839,8 +15131,8 @@ iV
 iV
 iV
 iV
-iV
-iV
+rX
+rX
 iV
 iV
 iV
@@ -15033,9 +15325,9 @@ iV
 iV
 iV
 iV
-iV
-iV
-iV
+rX
+rX
+rX
 iV
 iV
 iV
@@ -15224,12 +15516,12 @@ iV
 iV
 iV
 iV
+rX
 iV
 iV
-iV
-iV
-iV
-iV
+rX
+rX
+rX
 iV
 iV
 iV
@@ -15421,8 +15713,8 @@ rX
 iV
 iV
 iV
-iV
-iV
+rX
+rX
 iV
 iV
 iV
@@ -15617,7 +15909,7 @@ iV
 iV
 iV
 iV
-iV
+rX
 iV
 iV
 iV
@@ -16004,7 +16296,7 @@ iV
 iV
 iV
 iV
-iV
+rX
 iV
 iV
 iV
@@ -23370,7 +23662,7 @@ rX
 rX
 rX
 rX
-rX
+Ul
 rX
 rX
 rX
@@ -24141,7 +24433,7 @@ rX
 rX
 rX
 iV
-iV
+xG
 rX
 rX
 rX
@@ -25305,14 +25597,14 @@ gc
 vV
 hg
 hg
-lf
+Mi
 vV
-az
-lf
+Cj
+Mi
 vV
-az
-lf
-az
+Cj
+Mi
+Cj
 vV
 az
 az
@@ -25498,20 +25790,20 @@ az
 gc
 vV
 hg
-az
-gc
+Cj
+xr
 iZ
 XL
 mt
 iZ
-az
-az
+Cj
+Cj
 XL
 vV
 az
 az
 az
-gc
+kl
 gc
 gc
 iV
@@ -25889,7 +26181,7 @@ Un
 vV
 PR
 Ot
-az
+Cj
 SX
 Ja
 IH
@@ -26083,7 +26375,7 @@ az
 vV
 Ee
 zQ
-az
+xe
 mt
 UV
 qo
@@ -26660,13 +26952,13 @@ iV
 iV
 iV
 iV
-iV
+xG
 rX
 vV
 Ee
 Vd
-gc
-az
+xr
+Cj
 UV
 qQ
 vV
@@ -26888,7 +27180,7 @@ iq
 iq
 jG
 IL
-jG
+RA
 IL
 Sn
 jG
@@ -27054,7 +27346,7 @@ vV
 aD
 lk
 jn
-az
+Cj
 Mk
 uK
 vV
@@ -27081,7 +27373,7 @@ iq
 iq
 iq
 IL
-jG
+gF
 Ht
 IL
 iq
@@ -27247,8 +27539,8 @@ rX
 vV
 Rn
 AN
-az
-az
+Cj
+xe
 uc
 ES
 vV
@@ -27442,8 +27734,8 @@ vV
 rk
 gR
 jn
-az
-az
+Cj
+Cj
 PA
 vV
 rX
@@ -27635,7 +27927,7 @@ rX
 vV
 OQ
 jn
-DR
+vY
 YK
 jn
 cU
@@ -27829,8 +28121,8 @@ iV
 vV
 wl
 MA
-az
-gc
+Cj
+xr
 ez
 UP
 vV
@@ -28216,10 +28508,10 @@ iV
 iV
 iV
 vV
-DR
+vY
 lf
-az
-lf
+Cj
+Mi
 vV
 iV
 iV
@@ -28412,7 +28704,7 @@ rX
 vV
 DR
 Bj
-az
+Em
 DR
 vV
 rX
@@ -28603,12 +28895,12 @@ iV
 iV
 iV
 rX
-cB
+Gd
 lf
 bz
 bz
 az
-cB
+Gd
 rX
 iV
 iV

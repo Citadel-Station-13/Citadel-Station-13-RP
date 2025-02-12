@@ -236,6 +236,10 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/water/acid)
 	slowdown = 4
 	depth = 4
 	layer = WATER_FLOOR_LAYER
+	light = 1
+	light_color = "#43ff09"
+	light_range = 8
+	light_power = 2
 
 /turf/simulated/floor/water/acid/update_icon()
 	..() // To get the edges.

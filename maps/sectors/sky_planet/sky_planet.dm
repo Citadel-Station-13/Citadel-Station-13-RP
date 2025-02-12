@@ -1,5 +1,5 @@
 /datum/map/sector/sky_planet
-	id = "lythias43a"
+	id = "lythios43a"
 	name = "Sector - Sky Planet"
 	width = 192
 	height = 192
