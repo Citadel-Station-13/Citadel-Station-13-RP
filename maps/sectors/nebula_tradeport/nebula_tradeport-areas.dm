@@ -145,21 +145,3 @@
 	icon_state = "green"
 
 /area/sector/nebula_tradeport/expansion
-
-//Scoophead
-
-/area/shuttle/scoophead
-	requires_power = 1
-	icon_state = "shuttle2"
-	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
-	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
-	sound_env = SMALL_ENCLOSED
-
-/area/shuttle/scoophead/cockpit
-	name = "Scoophead Cockpit"
-
-/area/shuttle/scoophead/main
-	name = "Scoophead Trading Section"
-
-/area/shuttle/scoophead/engineering
-	name = "Scoophead Engine Bay"
