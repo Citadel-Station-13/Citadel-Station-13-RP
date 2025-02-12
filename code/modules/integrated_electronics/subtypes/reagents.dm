@@ -611,10 +611,20 @@
 	how much reagent is moved per pulse, between 0 and 50.  Amount is given for each separate reagent."
 	atom_flags = OPENCONTAINER
 	complexity = 8
-	inputs = list("source" = IC_PINTYPE_REF, "target" = IC_PINTYPE_REF, "injection amount" = IC_PINTYPE_NUMBER, "list of reagents" = IC_PINTYPE_LIST)
-	inputs_default = list("3" = 5)
+	inputs = list(
+		"source" = IC_PINTYPE_REF,
+		"target" = IC_PINTYPE_REF,
+		"injection amount" = IC_PINTYPE_NUMBER,
+		"list of reagents" = IC_PINTYPE_LIST
+		)
+	inputs_default = list(
+		"3" = 5
+		)
 	outputs = list()
-	activators = list("transfer reagents" = IC_PINTYPE_PULSE_IN, "on transfer" = IC_PINTYPE_PULSE_OUT)
+	activators = list(
+		"transfer reagents" = IC_PINTYPE_PULSE_IN,
+		"on transfer" = IC_PINTYPE_PULSE_OUT
+		)
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_DATA = 2, TECH_BIO = 2)
 	var/transfer_amount = 10
@@ -636,27 +646,25 @@
 	var/atom/movable/source = get_pin_data_as_type(IC_INPUT, 1, /atom/movable)
 	var/atom/movable/target = get_pin_data_as_type(IC_INPUT, 2, /atom/movable)
 	var/list/demand = get_pin_data(IC_INPUT, 4)
-	if(!istype(source) || !istype(target)) //Invalid input
+	// Check for invalid input.
+	if(!check_target(source) || !check_target(target))
 		return
-	var/turf/T = get_turf(src)
-	if(source.Adjacent(T) && target.Adjacent(T))
-		if(!source.reagents || !target.reagents)
-			return
-		if(ismob(source) || ismob(target))
-			return
-		if(!source.is_open_container() || !target.is_open_container())
-			return
-		if(!target.reagents.available_volume())
-			return
-		for(var/datum/reagent/G in source.reagents.reagent_list)
-			if (!direc)
-				if(G.id in demand)
-					source.reagents.trans_id_to(target, G.id, transfer_amount)
-			else
-				if(!(G.id in demand))
-					source.reagents.trans_id_to(target, G.id, transfer_amount)
-		activate_pin(2)
-		push_data()
+	if(!source.reagents || !target.reagents)
+		return
+	// FALSE in those procs makes mobs invalid targets.
+	if(!source.is_open_container(FALSE) || istype(source, /mob))
+		return
+	if(target.reagents.maximum_volume - target.reagents.total_volume <= 0)
+		return
+	for(var/datum/reagent/G in source.reagents?.reagent_list)
+		if (!direc)
+			if(G.id in demand)
+				source.reagents.trans_id_to(target, G.id, transfer_amount)
+		else
+			if(!(G.id in demand))
+				source.reagents.trans_id_to(target, G.id, transfer_amount)
+	activate_pin(2)
+	push_data()
 
 /obj/item/integrated_circuit/reagent/extinguisher
 	name = "integrated extinguisher"
@@ -712,3 +720,30 @@
 	activate_pin(2)
 
 
+/obj/item/integrated_circuit/reagent/purger
+	name = "reagent purger"
+	desc = "A safe way to dispose of unwanted fluids."
+	icon_state = "smoke"
+	extended_desc = "The purger clears its storage when pulsed."
+	atom_flags = OPENCONTAINER
+	volume = 60
+	complexity = 4
+	cooldown_per_use = 1
+	inputs = list()
+	outputs = list(
+		"volume used" = IC_PINTYPE_NUMBER,
+		"self reference" = IC_PINTYPE_SELFREF
+		)
+	activators = list(
+		"purge" = IC_PINTYPE_PULSE_IN,
+		"on purged" = IC_PINTYPE_PULSE_OUT
+		)
+	spawn_flags = IC_SPAWN_RESEARCH
+	power_draw_per_use = 2
+
+/obj/item/integrated_circuit/reagent/purger/on_reagent_change()
+	push_vol()
+
+/obj/item/integrated_circuit/reagent/purger/do_work()
+	reagents.clear_reagents()
+	activate_pin(2)
