@@ -17150,7 +17150,6 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/high/south_mount,
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/oldcentury)
@@ -19246,7 +19245,6 @@
 /turf/simulated/wall/rshull,
 /area/shuttle/oldcentury)
 "fxP" = (
-/obj/machinery/power/apc/high/west_mount,
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
