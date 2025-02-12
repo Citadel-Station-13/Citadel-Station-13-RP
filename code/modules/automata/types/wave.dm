@@ -376,7 +376,7 @@
 			if(O.density && O.opacity)
 				. -= dense_falloff
 				break
-	T.maptext = "[power]"
+	T.maptext = MAPTEXT("[power]")
 	impacted += T
 
 GLOBAL_DATUM(active_wave_automata_test, /datum/automata/wave)
