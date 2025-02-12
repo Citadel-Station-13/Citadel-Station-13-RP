@@ -111,7 +111,7 @@
 /turf/simulated/floor/tiled/white,
 /area/submap/Diner)
 "aw" = (
-/obj/item/reagent_containers/food/snacks/variable/cereal,
+
 /obj/machinery/light{
 	icon_state = "tube1";
 	dir = 4
@@ -180,13 +180,13 @@
 /area/submap/Diner)
 "aI" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/reagent_containers/food/snacks/meat,
-/obj/item/reagent_containers/food/snacks/meat,
-/obj/item/reagent_containers/food/snacks/meat,
-/obj/item/reagent_containers/food/snacks/meat,
-/obj/item/reagent_containers/food/snacks/meat,
-/obj/item/reagent_containers/food/snacks/meat,
-/obj/item/reagent_containers/food/snacks/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
 /turf/simulated/floor/tiled/freezer,
 /area/submap/Diner)
 "aJ" = (
@@ -226,14 +226,14 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/item/reagent_containers/food/snacks/meat,
-/obj/item/reagent_containers/food/snacks/meat,
-/obj/item/reagent_containers/food/snacks/meat,
-/obj/item/reagent_containers/food/snacks/meat,
-/obj/item/reagent_containers/food/snacks/meat,
-/obj/item/reagent_containers/food/snacks/meat,
-/obj/item/reagent_containers/food/snacks/meat,
-/obj/item/reagent_containers/food/snacks/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
 /turf/simulated/floor/tiled/freezer,
 /area/submap/Diner)
 "aO" = (
@@ -302,7 +302,7 @@
 /area/submap/Diner)
 "aZ" = (
 /obj/effect/floor_decal/corner/red/diagonal,
-/obj/machinery/appliance/cooker/grill,
+/obj/machinery/cooking/grill,
 /turf/simulated/floor/tiled/white,
 /area/submap/Diner)
 "ba" = (

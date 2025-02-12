@@ -1431,7 +1431,7 @@
 /turf/simulated/floor/tiled/eris/steel/bar_dance,
 /area/sector/delerictcasino/dance)
 "gY" = (
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
@@ -1666,7 +1666,7 @@
 	},
 /area/sector/delerictcasino/ringforrest)
 "hY" = (
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
@@ -9117,7 +9117,7 @@
 /turf/simulated/floor,
 /area/sector/delerictcasino/vault)
 "SD" = (
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},

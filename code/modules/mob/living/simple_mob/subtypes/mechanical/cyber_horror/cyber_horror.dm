@@ -207,7 +207,7 @@
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 	meat_amount = 2
-	meat_type = /obj/item/reagent_containers/food/snacks/meat/vox
+	meat_type = /obj/item/reagent_containers/food/snacks/ingredient/meat/vox
 	bone_amount = 2
 	bone_type = /obj/item/stack/material/bone
 

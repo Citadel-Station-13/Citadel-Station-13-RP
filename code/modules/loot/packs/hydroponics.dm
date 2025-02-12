@@ -7,7 +7,7 @@
 		/obj/machinery/portable_atmospherics/hydroponics = 3,
 		/obj/item/reagent_containers/food/drinks/bottle/rum = 2,
 		/obj/item/reagent_containers/food/drinks/bottle/whiskey = 2,
-		/obj/item/reagent_containers/food/snacks/grown/ambrosiadeus = 5,
+		/obj/item/reagent_containers/food/snacks/ingredient/grown/ambrosiadeus = 5,
 		/obj/item/flame/lighter/zippo = 1,
 		/obj/item/seeds/ambrosiadeusseed = 3,
 	)

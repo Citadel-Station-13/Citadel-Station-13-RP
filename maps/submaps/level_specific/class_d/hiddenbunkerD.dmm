@@ -150,7 +150,7 @@
 /area/class_d/Mountain)
 "zH" = (
 /obj/machinery/appliance/cooker/fryer,
-/obj/item/reagent_containers/cooking_container/fryer,
+
 /obj/machinery/light{
 	dir = 4
 	},
@@ -272,7 +272,7 @@
 /turf/simulated/wall,
 /area/class_d/Mountain)
 "NS" = (
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /turf/simulated/floor/tiled,
 /area/class_d/Mountain)
 "Ot" = (

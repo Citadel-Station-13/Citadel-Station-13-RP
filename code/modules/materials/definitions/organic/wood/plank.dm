@@ -149,6 +149,11 @@
 		cost = 1,
 	)
 	recipes += create_stack_recipe_datum(
+		name = "wooden bowl",
+		product = /obj/item/food_serving/woodbowl,
+		cost = 1,
+	)
+	recipes += create_stack_recipe_datum(
 		name = "wood floor tile",
 		product = /obj/item/stack/tile/wood,
 		cost = 1,

@@ -10,6 +10,15 @@
 /**
  * Checks for specific types in a list.
  */
+/proc/is_exact_type_in_list(atom/A, list/L)
+	for(var/type in L)
+		if(A.type == type)
+			return TRUE
+	return FALSE
+
+/**
+ * Checks for specific types in a list.
+ */
 /proc/is_path_in_list(path, list/L)
 	for(var/P in L)
 		if(ispath(path, P))

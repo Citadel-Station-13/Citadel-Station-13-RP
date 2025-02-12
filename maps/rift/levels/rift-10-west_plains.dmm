@@ -3589,7 +3589,7 @@
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/west)
 "qv" = (
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /obj/machinery/light/small,
 /turf/simulated/floor/wood/lythios43c,
 /area/rift/exterior/nuketown/interior)
@@ -9761,7 +9761,7 @@
 /turf/simulated/floor/wood,
 /area/rnd/outpost/breakroom)
 "TD" = (
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /turf/simulated/floor/wood/lythios43c,
 /area/rift/exterior/nuketown/interior)
 "TF" = (

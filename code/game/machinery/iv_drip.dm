@@ -237,7 +237,7 @@
 	// log_combat(usr, target, "attached_victim", src, "containing: ([container.get_reagent_log_string()])")
 	add_fingerprint(usr)
 	attached_victim = target
-	if(!speed_process)
+	if(speed_process == PROCESS_ON_SSMACHINES)
 		START_MACHINE_PROCESSING(src)
 	else
 		START_PROCESSING(SSprocess_5fps, src)

@@ -13,9 +13,9 @@
 /area/submap/debrisfield_vr/foodstand)
 "e" = (
 /obj/structure/closet/secure_closet/freezer/meat,
-/obj/item/reagent_containers/food/snacks/carpmeat,
-/obj/item/reagent_containers/food/snacks/carpmeat,
-/obj/item/reagent_containers/food/snacks/carpmeat,
+/obj/item/reagent_containers/food/snacks/ingredient/carp,
+/obj/item/reagent_containers/food/snacks/ingredient/carp,
+/obj/item/reagent_containers/food/snacks/ingredient/carp,
 /turf/simulated/floor/wood,
 /area/submap/debrisfield_vr/foodstand)
 "f" = (

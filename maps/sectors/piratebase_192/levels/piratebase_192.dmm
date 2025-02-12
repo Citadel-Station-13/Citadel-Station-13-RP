@@ -331,7 +331,7 @@
 /turf/simulated/floor/carpet,
 /area/piratebase/captain)
 "dj" = (
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/piratebase/mess)

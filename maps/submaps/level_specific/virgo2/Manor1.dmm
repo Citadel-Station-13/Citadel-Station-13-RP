@@ -219,7 +219,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "aY" = (
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "aZ" = (
@@ -228,7 +228,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "ba" = (
-/obj/machinery/appliance/cooker/grill,
+/obj/machinery/cooking/grill,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "bb" = (
@@ -407,8 +407,8 @@
 /area/submap/virgo2/Manor1)
 "bG" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
-/obj/item/reagent_containers/food/snacks/sausage,
-/obj/item/reagent_containers/food/snacks/sausage,
+/obj/item/reagent_containers/food/snacks/ingredient/sausage,
+/obj/item/reagent_containers/food/snacks/ingredient/sausage,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "bH" = (
