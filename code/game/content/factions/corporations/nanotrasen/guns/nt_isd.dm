@@ -334,3 +334,5 @@
 			sev_3 = 2;
 		},
 	)
+
+#warn fire sounds for everything

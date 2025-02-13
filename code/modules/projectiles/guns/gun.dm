@@ -745,8 +745,12 @@
 	var/list/overlays = mob_renderer?.render_overlays(src, using_base_worn_state, using_ratio, using_firemode?.render_key, using_color)
 	if(length(overlays))
 		var/append = "_[slot_meta.render_key]"
-		for(var/image/touching_up as anything in overlays)
-			touching_up.icon_state += append
+		for(var/i in 1 to length(overlays))
+			var/image/maybe_image_touching_up = overlays[i]
+			if(istext(maybe_image_touching_up))
+				overlays[i] = maybe_image_touching_up + append
+			else if(isimage(maybe_image_touching_up) || ismutableappearance(maybe_image_touching_up))
+				maybe_image_touching_up.icon_state += append
 		MA.overlays += overlays
 	return ..()
 
@@ -768,6 +772,8 @@
 	var/image/item_overlay = button_additional_overlay
 	var/image/symbol_overlay = image('icons/screen/actions/generic-overlays.dmi', "swap")
 	symbol_overlay.color = "#00ff00"
+	symbol_overlay.alpha = 200
+	symbol_overlay.pixel_y = -16
 	item_overlay.add_overlay(symbol_overlay)
 	target_type = /obj/item/gun/projectile/energy
 

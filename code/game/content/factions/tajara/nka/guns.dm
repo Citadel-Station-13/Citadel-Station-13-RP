@@ -73,7 +73,7 @@ as their noble knights can't be knightly unless their weapons are ornate enough.
 ///////////////////
 //Energy
 ///////////////////
-/obj/item/gun/energy/retro/taj
+/obj/item/gun/projectile/energy/retro/taj
 	name = "Adhomai dueling laser"
 	desc = "The New Kingdom of Adhomai's was resistant to the adoption of energy weapons until an enterprising Tajara technician presented the crown prince with a ornate \
 	laser pistol built in the style of old flintlock dueling pistols. As planned laser mania instantly took over NKA high society and laser pistols such as these became \

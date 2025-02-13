@@ -284,6 +284,19 @@
 	/// Originally clicked target
 	var/atom/original_target
 
+	//* SFX / VFX *//
+
+	/**
+	 * Default fire sound
+	 *
+	 * * Gun has final say.
+	 *
+	 * Accepts:
+	 * * a file (not a string path to a file)
+	 * * a sound effect id
+	 */
+	var/fire_sound = 'sound/weapons/Gunshot_old.ogg'
+
 	//* legacy below *//
 
 	//Fired processing vars
@@ -376,8 +389,6 @@
 	var/antimagic_damage_factor = 0
 
 	var/embed_chance = 0	//Base chance for a projectile to embed
-
-	var/fire_sound = 'sound/weapons/Gunshot_old.ogg' // Can be overriden in gun.dm's fire_sound var. It can also be null but I don't know why you'd ever want to do that. -Ace
 
 	// todo: currently unimplemneted
 	var/vacuum_traversal = TRUE //Determines if the projectile can exist in vacuum, if false, the projectile will be deleted if it enters vacuum.
@@ -1310,3 +1321,11 @@
 	else if(isturf(target))
 		return target.density
 	return FALSE
+
+//* SFX / VFX *//
+
+/**
+ * Resolve SFX to pass into playsound, if defaulting to us
+ */
+/obj/projectile/proc/resolve_sfx()
+	return get_sfx(fire_sound)

@@ -177,8 +177,8 @@
 	if(obj_cell_slot.cell)
 		if(!modular_system)
 			// todo: proper modular system handling for estimation
-			if(charge_cost)
-				var/shots_remaining = round(obj_cell_slot.cell.charge / max(1, charge_cost))	// Paranoia
+			var/shots_remaining = get_estimated_shots_remaining()
+			if(shots_remaining != INFINITY)
 				. += "Has [shots_remaining] shot\s remaining."
 			else
 				. += "Has infinite shots remaining."
@@ -266,7 +266,53 @@
 	var/obj/item/cell/cell = obj_cell_slot.cell
 	if(!cell)
 		return 0
-	return cell.charge / cell.maxcharge
+	var/estimated_cost = get_estimated_charge_cost()
+	if(!estimated_cost)
+		return 1
+	return floor(cell.charge / estimated_cost) / floor(cell.maxcharge / estimated_cost)
+
+/**
+ * Estimates how many shots the gun's power supply has charge for
+ *
+ * todo: no consideration for firing charge modifiers imparted by modular components
+ */
+/obj/item/gun/projectile/energy/proc/get_estimated_charge_cost()
+	if(modular_system)
+		return modular_particle_array_active?.base_charge_cost
+	var/datum/firemode/energy/energy_firemode = firemode
+	return energy_firemode.charge_cost
+
+/**
+ * Estimates how many shots the gun's power supply has charge for
+ *
+ * todo: no consideration for mounting
+ *
+ * @return estimated shot amount, or INFINITY if we do not use charge or are in an invalid state
+ */
+/obj/item/gun/projectile/energy/proc/get_estimated_shots_remaining()
+	var/obj/item/cell/cell = obj_cell_slot.cell
+	if(!cell)
+		return 0
+	var/estimated_cost = get_estimated_charge_cost()
+	if(!estimated_cost)
+		return INFINITY
+	return floor(cell.charge / estimated_cost)
+
+/**
+ * Estimates how many shots the gun's power supply can hold, total
+ *
+ * todo: no consideration for mounting
+ *
+ * @return estimated shot amount, or INFINITY if we do not use charge or are in an invalid state
+ */
+/obj/item/gun/projectile/energy/proc/get_estimated_shots_capacity()
+	var/obj/item/cell/cell = obj_cell_slot.cell
+	if(!cell)
+		return 0
+	var/estimated_cost = get_estimated_charge_cost()
+	if(!estimated_cost)
+		return INFINITY
+	return floor(cell.maxcharge / estimated_cost)
 
 //* Power *//
 
