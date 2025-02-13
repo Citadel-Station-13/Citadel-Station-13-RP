@@ -358,7 +358,7 @@
 
 /obj/item/gun/examine(mob/user, dist)
 	. = ..()
-	if(should_attack_self_swtich_firemodes())
+	if(should_attack_self_switch_firemodes())
 		. += ""
 		// examine_list += SPAN_NOTICE("[parent] seems to be able to be used with [hands] hands. Press your \"Wield Item\" keybind [user?.client?.print_keys_for_keybind_with_prefs_link(/datum/keybinding/mob/multihand_wield, " ")]to toggle wielding.")
 		#warn impl
