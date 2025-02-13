@@ -15,11 +15,10 @@
 	/// our ID
 	var/id
 	/// keyed accounts
-	/// * lazy list
 	/// * these accounts, while having an account number,
 	///   may be accessed by key.
-	var/list/keyed_accounts
+	var/list/keyed_accounts = list()
 	/// all accounts belonging to, as a flat list
-	var/list/dautm/economy_account/accounts
+	var/list/datum/economy_account/accounts = list()
 
 #warn impl

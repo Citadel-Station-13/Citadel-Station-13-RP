@@ -222,6 +222,7 @@
 #include "code\__DEFINES\dcs\signals\signals_mob\signals_mob_mobility.dm"
 #include "code\__DEFINES\dcs\signals\signals_mob\signals_mob_organs.dm"
 #include "code\__DEFINES\dcs\signals\signals_mob\signals_mob_simple.dm"
+#include "code\__DEFINES\economy\balancing.dm"
 #include "code\__DEFINES\economy\category.dm"
 #include "code\__DEFINES\economy\currency.dm"
 #include "code\__DEFINES\economy\payment.dm"

@@ -6,12 +6,12 @@
 	item_state_slots = list(
 		SLOT_ID_WORN_ID = "id"
 	)
+	slot_flags = SLOT_ID | SLOT_EARS
 
 	/// Access levels held by this card.
 	var/list/access = list()
 	/// The name registered_name on the card.
 	var/registered_name = "Unknown"
-	slot_flags = SLOT_ID | SLOT_EARS
 
 	var/age = "\[UNSET\]"
 	var/dna_hash = "\[UNSET\]"
@@ -40,6 +40,9 @@
 	var/mining_points = 0	// For redeeming at mining equipment vendors
 	var/survey_points = 0	// For redeeming at explorer equipment vendors.
 	var/engineer_points = 0	// For redeeming at engineering equipment vendors
+
+	/// i don't know what this does but you have to deal with this now
+	var/money = 2000
 
 /obj/item/card/id/Initialize(mapload)
 	. = ..()

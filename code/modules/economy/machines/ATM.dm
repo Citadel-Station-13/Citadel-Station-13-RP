@@ -1,15 +1,4 @@
-/*
-
-TODO:
-give money an actual use (QM stuff, vending machines)
-send money to people (might be worth attaching money to custom database thing for this, instead of being in the ID)
-log transactions
-
-*/
-
 GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/polaroid2.ogg'))
-
-/obj/item/card/id/var/money = 2000
 
 /obj/machinery/atm
 	name = "Automatic Teller Machine"

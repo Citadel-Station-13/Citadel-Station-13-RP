@@ -12,10 +12,6 @@
 	/// Determines if this job can be spawned into by players
 	var/join_types = JOB_ROUNDSTART | JOB_LATEJOIN
 
-	//? Economy
-	/// starting money multiplier
-	var/economy_payscale = ECONOMY_PAYSCALE_JOB_DEFAULT
-
 	//? Access
 	// Job access. The use of minimal_access and additional_access is determined by a config setting: config.jobs_have_minimal_access
 	/// Minimal access
@@ -327,16 +323,27 @@
 	// TODO: job refactor
 
 /datum/role/job/proc/get_economic_payscale()
-	var/datum/department/D = SSjob.get_primary_department_of_job(src)
-	return economy_payscale * (istype(D)? D.economy_payscale : 1)
+	var/highest_department_multiplier = null
+	for(var/department in departments)
+		var/datum/department/maybe_department = SSjob.department_datums[department]
+		highest_department_multiplier = max(highest_department_multiplier, maybe_department?.economy_payscale)
+	if(isnull(highest_department_multiplier))
+		highest_department_multiplier = 1
+	return economy_payscale * highest_department_multiplier
 
 /datum/role/job/proc/setup_account(var/mob/living/carbon/human/H)
 	if(!account_allowed || (H.mind && H.mind.initial_account))
 		return
 
 	// Give them an account in the station database
-	var/money_amount = round(get_economic_payscale() * ECONOMY_PAYSCALE_BASE * ECONOMY_PAYSCALE_MULT * \
-	H.mind.original_pref_economic_modifier + gaussian(ECONOMY_PAYSCALE_RANDOM_MEAN, ECONOMY_PAYSCALE_RANDOM_DEV))
+	var/money_amount = round(
+		  get_economic_payscale() \
+		* ECONOMY_PAYSCALE_BASE \
+		* ECONOMY_PAYSCALE_MULT \
+		* H.mind.original_pref_economic_modifier \
+		* gaussian(ECONOMY_PAYSCALE_RANDOM_MULT_MEAN, ECONOMY_PAYSCALE_RANDOM_MULT_DEV) \
+		+ gaussian(ECONOMY_PAYSCALE_RANDOM_ADD_MEAN, ECONOMY_PAYSCALE_RANDOM_ADD_DEV)
+	)
 	var/datum/economy_account/M = create_account(H.real_name, money_amount, null, offmap_spawn)
 	if(H.mind)
 		var/remembered_info = ""
