@@ -1,6 +1,7 @@
 // This one isn't very useful since no real centcom jobs exist yet.
 // Instead the jobs like ERT are hardcoded in.
 /datum/department/centcom
+	id = "centcom"
 	name = "Central Command"
 	short_name = "Centcom"
 	color = "#A52A2A"

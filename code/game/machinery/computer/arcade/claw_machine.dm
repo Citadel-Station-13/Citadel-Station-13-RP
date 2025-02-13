@@ -93,7 +93,7 @@
 	else
 		visible_message(SPAN_INFO("\The [usr] swipes \the [ID_container] through \the [src]."))
 	playsound(src, 'sound/machines/id_swipe.ogg', 50, 1)
-	var/datum/money_account/customer_account = get_account(I.associated_account_number)
+	var/datum/economy_account/customer_account = get_account(I.associated_account_number)
 	if(!customer_account)
 		visible_message(SPAN_WARNING("Error: Unable to access account. Please contact technical support if problem persists."))
 		return FALSE

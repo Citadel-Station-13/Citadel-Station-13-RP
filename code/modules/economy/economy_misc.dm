@@ -65,9 +65,9 @@
 //Frigates are medium sized vessels, often used for escorting larger ships. They will rapidly find themselves outclassed if forced to face heavy warships head on.
 
 GLOBAL_VAR(current_date_string)
-GLOBAL_DATUM(vendor_account, /datum/money_account)
-GLOBAL_DATUM(station_account, /datum/money_account)
-GLOBAL_LIST_EMPTY_TYPED(department_accounts, /datum/money_account)
+GLOBAL_DATUM(vendor_account, /datum/economy_account)
+GLOBAL_DATUM(station_account, /datum/economy_account)
+GLOBAL_LIST_EMPTY_TYPED(department_accounts, /datum/economy_account)
 GLOBAL_VAR_INIT(num_financial_terminals, 1)
 GLOBAL_VAR_INIT(next_account_number, 0)
 GLOBAL_LIST_EMPTY(all_money_accounts)
@@ -132,7 +132,7 @@ GLOBAL_VAR_INIT(economy_init, FALSE)
 /proc/create_department_account(department)
 	GLOB.next_account_number = rand(111111, 999999)
 
-	var/datum/money_account/department_account = new()
+	var/datum/economy_account/department_account = new()
 	department_account.owner_name = "[department] Account"
 	department_account.account_number = rand(111111, 999999)
 	department_account.remote_access_pin = rand(1111, 111111)

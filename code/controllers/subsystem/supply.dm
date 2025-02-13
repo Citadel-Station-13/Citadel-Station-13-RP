@@ -2,13 +2,23 @@ SUBSYSTEM_DEF(supply)
 	name = "Supply"
 	wait = 300
 
+	//* static legacy shit *//
 
-	// Supply Points
-	var/points = 50
-	var/points_per_second = 1.5 / 30
-	var/points_per_slip = 2
-	var/points_per_money = 0.06 // 1 point for $50
-	var/points_per_trash = 0.1 // Weighted value, tentative.
+	/// amount of money for correctly approving / denying paperwork
+	//  todo: faction specific
+	var/money_reward_per_correct_manifest = 25
+	/// amount of money deducted for incorrectly approved or denied paperwork
+	//  todo: faction specific
+	var/money_penalty_per_incorrect_manifest = 150
+	/// amount of money given to the station per **second**
+	//  todo: faction specific, drive with SSeconomy?
+	var/money_passive_generation_per_second = 2.5
+	/// world faction id to resolve account from
+	var/cargo_account_faction_id = /datum/world_faction/corporation/nanotrasen::id
+	/// static account id to bind to withi nfaction
+	#warn impl ???? wtf is this
+	var/cargo_account_bind_id = /datum/department/cargo::id
+
 	// Control
 	var/ordernum
 	var/list/shoppinglist = list()			// Approved orders

@@ -10,7 +10,7 @@
 	var/transaction_amount = 0
 	var/transaction_purpose = "Default charge"
 	var/access_code = 0
-	var/datum/money_account/linked_account
+	var/datum/economy_account/linked_account
 
 /obj/item/eftpos/Initialize(mapload)
 	. = ..()
@@ -243,7 +243,7 @@
 			if(linked_account)
 				if(!linked_account.suspended)
 					var/attempt_pin = ""
-					var/datum/money_account/D = get_account(C.associated_account_number)
+					var/datum/economy_account/D = get_account(C.associated_account_number)
 					if(D.security_level)
 						attempt_pin = input("Enter pin code", "EFTPOS transaction") as num
 						D = null

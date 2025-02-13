@@ -10,7 +10,7 @@
 	var/receipt_num
 	var/machine_id = ""
 	var/obj/item/card/id/held_card
-	var/datum/money_account/detailed_account_view
+	var/datum/economy_account/detailed_account_view
 	var/creating_new_account = 0
 	var/const/fund_cap = 1000000
 
@@ -98,7 +98,7 @@
 
 	var/list/accounts[0]
 	for(var/i=1, i<=GLOB.all_money_accounts.len, i++)
-		var/datum/money_account/D = GLOB.all_money_accounts[i]
+		var/datum/economy_account/D = GLOB.all_money_accounts[i]
 		accounts.Add(list(list(\
 			"account_number"=D.account_number,\
 			"owner_name"=D.owner_name,\
@@ -257,7 +257,7 @@
 					"}
 
 					for(var/i=1, i<=GLOB.all_money_accounts.len, i++)
-						var/datum/money_account/D = GLOB.all_money_accounts[i]
+						var/datum/economy_account/D = GLOB.all_money_accounts[i]
 						text += {"
 								<tr>
 									<td>#[D.account_number]</td>

@@ -1,4 +1,5 @@
 /datum/department/cargo
+	id = "cargo"
 	name = DEPARTMENT_CARGO
 	short_name = "Car"
 	color = "#BB9040"

@@ -4,7 +4,7 @@
 	name = "bank account hacker"
 	departments = list(DEPARTMENT_EVERYONE)
 	reusable = TRUE
-	var/datum/money_account/affected_account
+	var/datum/economy_account/affected_account
 	var/active
 	var/activeFor
 	var/end_time

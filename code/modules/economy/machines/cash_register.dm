@@ -19,7 +19,7 @@
 
 	var/cash_stored = 0
 	var/obj/item/confirm_item
-	var/datum/money_account/linked_account
+	var/datum/economy_account/linked_account
 	var/account_to_connect = null
 
 
@@ -225,7 +225,7 @@
 
 	// Access account for transaction
 	if(check_account())
-		var/datum/money_account/D = get_account(I.associated_account_number)
+		var/datum/economy_account/D = get_account(I.associated_account_number)
 		var/attempt_pin = ""
 		if(D && D.security_level)
 			attempt_pin = input("Enter PIN", "Transaction") as num

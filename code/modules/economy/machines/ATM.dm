@@ -22,7 +22,7 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 	circuit =  /obj/item/circuitboard/atm
 	/// can accept deposits using these payment types
 	var/deposit_payment_types = PAYMENT_TYPE_CASH | PAYMENT_TYPE_HOLOCHIPS | PAYMENT_TYPE_CHARGE_CARD
-	var/datum/money_account/authenticated_account
+	var/datum/economy_account/authenticated_account
 	var/number_incorrect_tries = 0
 	var/previous_account_number = 0
 	var/max_pin_attempts = 3
@@ -357,7 +357,7 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 		var/tried_pin = input_pin
 
 		//We'll need more information if an account's security is greater than zero so let's find out what the security setting is
-		var/datum/money_account/D
+		var/datum/economy_account/D
 		//Below is to avoid a runtime
 		if(tried_account_num)
 			D = get_account(tried_account_num)
@@ -379,7 +379,7 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 					playsound(src, 'sound/machines/buzz-two.ogg', 50, 1)
 
 					//create an entry in the account transaction log
-					var/datum/money_account/failed_account = get_account(tried_account_num)
+					var/datum/economy_account/failed_account = get_account(tried_account_num)
 					if(failed_account)
 						var/datum/transaction/T = new()
 						T.target_name = failed_account.owner_name

@@ -1,4 +1,5 @@
 /datum/department/synthetic
+	id = "synthetic"
 	name = DEPARTMENT_SYNTHETIC
 	short_name = "Bot"
 	color = "#222222"

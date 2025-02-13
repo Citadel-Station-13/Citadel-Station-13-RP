@@ -201,7 +201,7 @@
 				var/payer_name = "Unknown"
 				switch(data[DYNAMIC_PAYMENT_DATA_CURRENCY_TYPE])
 					if(PAYMENT_TYPE_BANK_CARD)
-						var/datum/money_account/A = data[DYNAMIC_PAYMENT_DATA_BANK_ACCOUNT]
+						var/datum/economy_account/A = data[DYNAMIC_PAYMENT_DATA_BANK_ACCOUNT]
 						if(A)
 							payer_name = A.owner_name
 					else

@@ -1,9 +1,7 @@
 
-/datum/money_account
+/datum/economy_account
 	var/owner_name = ""
-	var/account_number = 0
 	var/remote_access_pin = 0
-	var/money = 0
 	var/list/transaction_log = list()
 	var/suspended = 0
 	var/security_level = 0	//0 - auto-identify from worn ID, require only account number
@@ -21,7 +19,7 @@
 /proc/create_account(var/new_owner_name = "Default user", var/starting_funds = 0, var/obj/machinery/account_database/source_db)
 
 	//create a new account
-	var/datum/money_account/M = new()
+	var/datum/economy_account/M = new()
 	M.owner_name = new_owner_name
 	M.remote_access_pin = rand(1111, 111111)
 	M.money = starting_funds
@@ -77,7 +75,7 @@
 	return M
 
 /proc/charge_to_account(var/attempt_account_number, var/source_name, var/purpose, var/terminal_id, var/amount)
-	for(var/datum/money_account/D in GLOB.all_money_accounts)
+	for(var/datum/economy_account/D in GLOB.all_money_accounts)
 		if(D.account_number == attempt_account_number && !D.suspended)
 			D.money += amount
 
@@ -100,11 +98,11 @@
 
 //this returns the first account datum that matches the supplied accnum/pin combination, it returns null if the combination did not match any account
 /proc/attempt_account_access(var/attempt_account_number, var/attempt_pin_number, var/valid_card)
-	var/datum/money_account/D = get_account(attempt_account_number)
+	var/datum/economy_account/D = get_account(attempt_account_number)
 	if(D && (D.security_level != 2 || valid_card) && (!D.security_level || D.remote_access_pin == attempt_pin_number) )
 		return D
 
 /proc/get_account(var/account_number)
-	for(var/datum/money_account/D in GLOB.all_money_accounts)
+	for(var/datum/economy_account/D in GLOB.all_money_accounts)
 		if(D.account_number == account_number)
 			return D

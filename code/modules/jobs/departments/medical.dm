@@ -1,4 +1,5 @@
 /datum/department/medical
+	id = "medical"
 	name = DEPARTMENT_MEDICAL
 	short_name = "Med"
 	color = "#006600"
