@@ -323,19 +323,6 @@
 				set_weight_class(WEIGHT_CLASS_SMALL)
 				update_icon()
 
-/obj/item/gun/projectile/ballistic/attack_self(mob/user, datum/event_args/actor/actor)
-	if(firemodes.len > 1)
-		switch_firemodes(user)
-	else if(ammo_magazine)
-		ammo_magazine.forceMove(user.drop_location())
-		user.visible_message("[user] dumps [ammo_magazine] from [src] onto the floor.", SPAN_NOTICE("You dump [ammo_magazine] from [src] onto the floor."))
-		playsound(src, mag_remove_sound, 50, 1)
-		ammo_magazine.update_icon()
-		ammo_magazine = null
-	else
-		unload_ammo(user)
-	update_icon()
-
 /obj/item/gun/projectile/ballistic/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		unload_ammo(user, allow_dump=0)

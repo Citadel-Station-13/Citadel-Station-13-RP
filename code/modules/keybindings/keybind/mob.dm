@@ -95,7 +95,7 @@
 
 /datum/keybinding/mob/multihand_wield
 	hotkey_keys = list("ShiftX")
-	classic_keys = list("X")
+	classic_keys = list("ShiftX")
 	name = "multihand_wield"
 	full_name = "Wield Item"
 	description = "Wield an item with two, or more hands (if it's supported)."
@@ -103,6 +103,7 @@
 /datum/keybinding/mob/multihand_wield/down(client/user)
 	// yes, get component is asinine sometimes
 	// i don't care though, this is such a small feature
+	// todo: refactor this
 	var/obj/item/I = user.mob.get_active_held_item()
 	if(!I)
 		to_chat(user, SPAN_WARNING("You are not holding anything to wield."))

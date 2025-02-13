@@ -358,6 +358,14 @@
 
 /obj/item/gun/examine(mob/user, dist)
 	. = ..()
+	if(should_attack_self_swtich_firemodes())
+		. += ""
+		// examine_list += SPAN_NOTICE("[parent] seems to be able to be used with [hands] hands. Press your \"Wield Item\" keybind [user?.client?.print_keys_for_keybind_with_prefs_link(/datum/keybinding/mob/multihand_wield, " ")]to toggle wielding.")
+		#warn impl
+	if(should_unique_action_rack_chamber())
+		. += ""
+		// examine_list += SPAN_NOTICE("[parent] seems to be able to be used with [hands] hands. Press your \"Wield Item\" keybind [user?.client?.print_keys_for_keybind_with_prefs_link(/datum/keybinding/mob/multihand_wield, " ")]to toggle wielding.")
+		#warn impl
 	if(!no_pin_required)
 		if(pin)
 			. += "It has \a [pin] installed."
@@ -548,12 +556,6 @@
 	if(!zoom)
 		accuracy = initial(accuracy)
 		recoil = initial(recoil)
-
-/obj/item/gun/attack_self(mob/user, datum/event_args/actor/actor)
-	. = ..()
-	if(.)
-		return
-	switch_firemodes(user)
 
 /obj/item/gun/proc/handle_pins(mob/living/user)
 	if(no_pin_required)
