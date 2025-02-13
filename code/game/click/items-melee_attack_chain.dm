@@ -156,8 +156,7 @@
 #warn parse below
 
 /obj/item/proc/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
-	SHOULD_NOT_SLEEP(TRUE)
-	PROTECTED_PROC(TRUE)	// route via standard_melee_attack please.
+	SHOULD_NOT_OVERRIDE(TRUE)
 	var/mob/living/L = target
 	// resolve accuracy
 	var/hit_zone = L.resolve_item_attack(src, user, target_zone)
@@ -174,25 +173,6 @@
 #warn audit calls
 /obj/item/proc/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
 	SHOULD_NOT_SLEEP(TRUE)
-	SHOULD_CALL_PARENT(TRUE)
-	// harmless, just tap them and leave
-	if(!damage_force)
-		// todo: proper weapon sound ranges/rework
-		playsound(src, 'sound/weapons/tap.ogg', 50, 1, -1)
-		// feedback
-		user.visible_message(SPAN_WARNING("[user] harmlessly taps [target] with [src]."))
-		return NONE
-	var/mob/living/L = target
-	// todo: proper weapon sound ranges/rework
-	if(attack_sound)
-		playsound(src, attack_sound, 50, 1, -1)
-
-	//? legacy code start
-	var/power = damage_force
-	power *= mult
-	L.hit_with_weapon(src, user, power, target_zone)
-	//? legacy code end
-	return NONE
 
 #warn above
 

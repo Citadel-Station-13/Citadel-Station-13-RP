@@ -97,9 +97,9 @@
 	..()
 
 /obj/item/material/twohanded/fireaxe/melee_attack(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
-	if(istype(target, /obj/structure/window))
+	if(istype(clickchain.target, /obj/structure/window))
 		clickchain.melee_damage_multiplier *= 2
-	else if(istype(target, /obj/effect/plant))
+	else if(istype(clickchain.target, /obj/effect/plant))
 		clickchain.melee_damage_multiplier *= 2
 	return ..()
 
