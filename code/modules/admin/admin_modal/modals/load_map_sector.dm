@@ -222,12 +222,17 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 			update_level_index_data(target_level_index)
 			. = TRUE
 		if("levelAirIndoors")
-			#warn check it
+			. = TRUE
+			if(!SSair.validate_gas_string(params["air"]))
+				loud_rejection("Gas string [params["air"]] failed validation.")
+				return
 			target_level.air_indoors = params["air"]
 			update_level_index_data(target_level_index)
-			. = TRUE
 		if("levelAirOutdoors")
-			#warn check it
+			. = TRUE
+			if(!SSair.validate_gas_string(params["air"]))
+				loud_rejection("Gas string [params["air"]] failed validation.")
+				return
 			target_level.air_outdoors = params["air"]
 			update_level_index_data(target_level_index)
 			. = TRUE

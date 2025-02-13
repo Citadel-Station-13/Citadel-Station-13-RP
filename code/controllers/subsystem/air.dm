@@ -370,6 +370,25 @@ SUBSYSTEM_DEF(air)
 		return
 	return (cached_strings[gas_string] = unpack_gas_string(gas_string))
 
+/**
+ * Validates a gas string.
+ * * Unlike parsing, this is considered absolute and doesn't accept a turf for context.
+ * * 'use area', 'use outdoors', 'use indoors' are allowed if allow_turf_contextual
+ */
+/datum/controller/subsystem/air/proc/validate_gas_string(gas_string, allow_turf_contextual)
+	// these are only valid if we allow contextual
+	if(
+		gas_string == ATMOSPHERE_USE_AREA || \
+		gas_string == ATMOSPHERE_USE_OUTDOORS || \
+		gas_string = ATMOSPHERE_USE_INDOORS
+	)
+		return allow_turf_contextual
+	// requires it to already be generated
+	if(generated_atmospheres[gas_string])
+		return TRUE
+	// we, at the moment, don't validate anything else
+	return TRUE
+
 /datum/controller/subsystem/air/proc/unpack_gas_string(gas_string)
 	var/list/built = new /list(2)
 	var/list/unpacked = params2list(gas_string)
