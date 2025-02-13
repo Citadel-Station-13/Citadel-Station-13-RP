@@ -20,7 +20,7 @@
  *
  * @return /datum/firemode instance
  */
-/obj/item/gun/proc/get_next_firemode(prefer_nonlethal) as /datum/firmeode
+/obj/item/gun/proc/get_next_firemode(prefer_nonlethal) as /datum/firemode
 	var/datum/firemode/first_found
 	var/datum/firemode/preferred
 	if(!firemode)
