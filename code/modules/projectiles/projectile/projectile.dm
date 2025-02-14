@@ -1196,6 +1196,8 @@
  * * tier - effective armor tier of object; modulates actual energy lost
  */
 /obj/projectile/proc/dampen_on_pierce_experimental(atom/entity, force, tier)
+	if(!force || !damage_force)
+		return
 	var/tdiff = damage_tier - tier
 	var/dmult = src.damage_force / force
 	var/malus = dmult >= 1 ? ((1 / dmult) ** tdiff * 10) : (10 * ((1 / dmult) / (1 + tdiff)))

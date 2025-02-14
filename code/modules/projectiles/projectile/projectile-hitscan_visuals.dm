@@ -189,8 +189,9 @@
 					var/turf/midpoint_turf = midpoint.return_turf()
 					var/midpoint_px = midpoint.return_px()
 					var/midpoint_py = midpoint.return_py()
+					var/tracer_angle = angle_between_points(point_a, point_b)
 					if(midpoint_turf)
-						created += new /atom/movable/render/projectile_tracer/line(midpoint_turf, tracer_icon, tracer_state_beam, original_angle, midpoint_px, midpoint_py, color, tracer_auto_emissive_strength, pixel_length_between_points(point_a, point_b))
+						created += new /atom/movable/render/projectile_tracer/line(midpoint_turf, tracer_icon, tracer_state_beam, tracer_angle, midpoint_px, midpoint_py, color, tracer_auto_emissive_strength, pixel_length_between_points(point_a, point_b))
 		if(tracer_state_muzzle && tracer_muzzle_flash)
 			var/datum/point/starting = tracer_vertices[1]
 			var/turf/starting_turf = starting.return_turf()
@@ -204,7 +205,7 @@
 			if(ending_turf)
 				var/ending_px = ending.return_px()
 				var/ending_py = ending.return_py()
-				created += new /atom/movable/render/projectile_tracer/impact(ending_turf, tracer_icon, tracer_state_muzzle, angle, ending_px, ending_py, color, tracer_auto_emissive_strength)
+				created += new /atom/movable/render/projectile_tracer/impact(ending_turf, tracer_icon, tracer_state_impact, angle, ending_px, ending_py, color, tracer_auto_emissive_strength)
 		return
 
 	//! legacy below !//
