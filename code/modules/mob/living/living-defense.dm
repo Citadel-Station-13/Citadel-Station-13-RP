@@ -1,6 +1,13 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+//* FX *//
+
+/mob/living/get_combat_fx_classifier(attack_type, datum/weapon, target_zone)
+	if(isSynthetic())
+		return COMBAT_IMPACT_FX_METAL
+	return COMBAT_IMPACT_FX_FLESH
+
 //* Projectile Handling *//
 
 /mob/living/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
@@ -80,9 +87,6 @@
 		// todo: this should just be in base projectile on_impact
 		impact_flags |= proj.inflict_impact_damage(src, bullet_act_args[BULLET_ACT_ARG_EFFICIENCY], impact_flags, bullet_act_args[BULLET_ACT_ARG_ZONE])
 	return ..()
-
-/mob/living/get_bullet_impact_effect_type(var/def_zone)
-	return BULLET_IMPACT_MEAT
 
 /**
  * @return zone to hit, or null to miss

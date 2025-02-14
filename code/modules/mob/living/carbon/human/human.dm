@@ -1603,14 +1603,6 @@
 /mob/living/carbon/human/set_nutrition(amount)
 	nutrition = clamp(amount, 0, species.max_nutrition * 1.5)
 
-/mob/living/carbon/human/get_bullet_impact_effect_type(var/def_zone)
-	var/obj/item/organ/external/E = get_organ(def_zone)
-	if(!E || E.is_stump())
-		return BULLET_IMPACT_NONE
-	if(BP_IS_ROBOTIC(E))
-		return BULLET_IMPACT_METAL
-	return BULLET_IMPACT_MEAT
-
 /mob/living/carbon/human/reduce_cuff_time()
 	if(istype(gloves, /obj/item/clothing/gloves/gauntlets/hardsuit))
 		return 2

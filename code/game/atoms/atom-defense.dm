@@ -243,6 +243,21 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	return 0
 
+//* FX API *//
+
+/**
+ * Gets the COMBAT_FX_* enum that we count as for a given hit
+ *
+ * @params
+ * * attack_type - ATTACK_TYPE_* enum
+ * * weapon - (optional) the value of this depends on the attack type; check defines folder for attack type
+ * * target_zone - (optional) where were we hit
+ *
+ * @return COMBAT_IMPACT_FX_* classifier
+ */
+/atom/proc/get_combat_fx_classifier(attack_type, datum/weapon, target_zone)
+	return COMBAT_IMPACT_FX_GENERIC
+
 //* Hitsound API *//
 
 // todo: stuff like metal limbs punching walls making special sounds
@@ -283,7 +298,7 @@
 	. = hitsound_override(P.damage_type, P.damage_mode, ATTACK_TYPE_PROJECTILE, P)
 	if(.)
 		return
-	return islist(P.impact_sounds)? pick(P.impact_sounds) : P.impact_sounds
+	return P.resolve_impact_sfx(get_fx_classifier(ATTACK_TYPE_PROJECTILE, P), src)
 
 /atom/proc/hitsound_throwhit(obj/item/I)
 	. = I.attacksound_override(src, ATTACK_TYPE_THROWN)

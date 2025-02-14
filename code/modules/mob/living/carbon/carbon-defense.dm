@@ -1,6 +1,18 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+//* FX *//
+
+/mob/living/carbon/get_combat_fx_classifier(attack_type, datum/weapon, target_zone)
+	if(!target_zone)
+		return ..()
+	var/obj/item/organ/external/hit_bodypart = get_organ(target_zone)
+	if(!hit_bodypart || hit_bodypart.is_stump())
+		return ..()
+	if(BP_IS_ROBOTIC(hit_bodypart))
+		return COMBAT_IMPACT_FX_METAL
+	return COMBAT_IMPACT_FX_FLESH
+
 //* Projectile Handling *//
 
 /mob/living/carbon/process_bullet_miss(obj/projectile/proj, impact_flags, def_zone, efficiency)

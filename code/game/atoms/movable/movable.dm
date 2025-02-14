@@ -397,9 +397,6 @@
 		master = null
 	return ..()
 
-/atom/movable/proc/get_bullet_impact_effect_type()
-	return BULLET_IMPACT_NONE
-
 // todo: we should probably have a way to just copy an appearance clone or something without render-targeting
 
 /**

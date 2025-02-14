@@ -1164,11 +1164,9 @@
 			proj_sharp = 0
 			proj_edge = 0
 
-		var/list/impact_sounds = islist(src.impact_sounds)? LAZYACCESS(src.impact_sounds, L.get_bullet_impact_effect_type(hit_zone)) : src.impact_sounds
-		if(length(impact_sounds))
-			playsound(L, pick(impact_sounds), 75)
-		else if(!isnull(impact_sounds))
-			playsound(L, impact_sounds, 75)
+		var/resolved_impact_sound = resolve_impact_sfx(L.get_combat_fx_classifier(ATTACK_TYPE_PROJECTILE, src, hit_zone), L)
+		if(resolved_impact_sound)
+			playsound(L, resolved_impact_sound, 75, TRUE)
 
 		if(!src.nodamage)
 			L.apply_damage(final_damage, src.damage_type, hit_zone, absorb, soaked, 0, src, sharp=proj_sharp, edge=proj_edge)

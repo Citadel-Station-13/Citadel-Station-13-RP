@@ -1,6 +1,13 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+//* FX *//
+
+/mob/living/get_combat_fx_classifier(attack_type, datum/weapon, target_zone)
+	return COMBAT_IMPACT_FX_METAL
+
+//* Misc Effects *//
+
 /mob/living/silicon/inflict_electrocute_damage(damage, agony, flags, hit_zone)
 	take_overall_damage(0, damage, null, "electrical overload")
 
