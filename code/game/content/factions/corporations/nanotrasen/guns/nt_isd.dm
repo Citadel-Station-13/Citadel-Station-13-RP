@@ -286,7 +286,7 @@
 
 /obj/projectile/nt_isd/laser/lance
 	name = "particle beam"
-	color = "#00cc00"
+	color = "#00ff00"
 	damage_force = 30
 	damage_tier = LASER_TIER_HIGH
 	// todo: remove
@@ -295,7 +295,7 @@
 
 /obj/projectile/nt_isd/shock
 	name = "energy beam"
-	color = "#cccc00"
+	color = "#ffff00"
 	tracer_state_muzzle = "discharge-1-muzzle"
 	tracer_state_beam = "discharge-1-beam"
 	tracer_state_impact = "discharge-1-beam"
@@ -313,7 +313,7 @@
 
 /obj/projectile/nt_isd/electrode
 	name = "stun bolt"
-	color = "#cccc00"
+	color = "#ffff00"
 	icon_state = "discharge-1"
 	base_projectile_effects = list(
 		/datum/projectile_effect/electrical_probe{
@@ -326,7 +326,7 @@
 
 /obj/projectile/nt_isd/disable
 	name = "disabler beam"
-	color = "#00cccc"
+	color = "#00ffff"
 	tracer_state_muzzle = "laser-1-muzzle"
 	tracer_state_beam = "laser-1-beam"
 	tracer_state_impact = "impact-1-beam"

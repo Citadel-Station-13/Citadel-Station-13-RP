@@ -291,9 +291,9 @@
 /atom/movable/render/projectile_tracer/line
 
 /atom/movable/render/projectile_tracer/line/Initialize(mapload, icon/use_icon, use_icon_state, angle, px, py, color, emissive, pixel_length)
-	. = ..()
 	var/matrix/extending = transform
 	extending.Scale(1, pixel_length / WORLD_ICON_SIZE)
 	src.transform = extending
+	return ..()
 
 /atom/movable/render/projectile_tracer/segment
