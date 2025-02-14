@@ -131,6 +131,8 @@
 	tracer_state_impact = "pulse-impact"
 	tracer_state_beam = "pulse-beam"
 
+	impact_sounds = PROJECTILE_IMPACT_SOUNDS_ENERGY
+
 // todo: this shouldn't be here i think
 /obj/projectile/beam/pulse/shotgun
 	damage_force = 50

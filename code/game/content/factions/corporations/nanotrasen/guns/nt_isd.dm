@@ -251,6 +251,7 @@
 	abstract_type = /obj/projectile/nt_isd
 	icon = 'icons/modules/projectiles/projectile.dmi'
 	tracer_icon = 'icons/modules/projectiles/projectile-tracer.dmi'
+	impact_sounds = PROJECTILE_IMPACT_SOUNDS_ENERGY
 
 /obj/projectile/nt_isd/laser
 	abstract_type = /obj/projectile/nt_isd/laser
@@ -260,6 +261,7 @@
 	tracer_state_muzzle = "laser-1-muzzle"
 	tracer_state_beam = "laser-1-beam"
 	tracer_state_impact = "laser-1-beam"
+	fire_sound = /datum/soundbyte/laser_1
 
 /obj/projectile/nt_isd/laser/rifle
 	name = "laser"
@@ -272,6 +274,7 @@
 	damage_tier = LASER_TIER_HIGH // ;)
 	// todo: remove
 	armor_penetration = 20
+	fire_sound = /datum/soundbyte/laser_4
 
 /obj/projectile/nt_isd/laser/multiphase
 	name = "focused laser"
@@ -279,6 +282,7 @@
 	damage_tier = LASER_TIER_HIGH
 	// todo: remove
 	armor_penetration = 37.5
+	fire_sound = /datum/soundbyte/laser_3
 
 /obj/projectile/nt_isd/laser/lance
 	name = "particle beam"
@@ -287,6 +291,7 @@
 	damage_tier = LASER_TIER_HIGH
 	// todo: remove
 	armor_penetration = 50
+	fire_sound = /datum/soundbyte/laser_2
 
 /obj/projectile/nt_isd/shock
 	name = "energy beam"
@@ -303,6 +308,7 @@
 			shock_flags = ELECTROCUTE_ACT_FLAG_DISTRIBUTE;
 		}
 	)
+	fire_sound = /datum/soundbyte/taser_2
 
 /obj/projectile/nt_isd/electrode
 	name = "stun bolt"
@@ -314,6 +320,7 @@
 			status_effect_duration = 3 SECONDS;
 		}
 	)
+	fire_sound = /datum/soundbyte/taser_1
 
 /obj/projectile/nt_isd/disable
 	name = "disabler beam"
@@ -323,6 +330,7 @@
 	tracer_state_impact = "impact-1-beam"
 	hitscan = TRUE
 	agony = 25
+	fire_sound = /datum/soundbyte/disabler_1
 
 // todo: this shouldn't be an emp, this should be like synthetik's
 /obj/projectile/nt_isd/ion
@@ -334,5 +342,4 @@
 			sev_3 = 2;
 		},
 	)
-
-#warn fire sounds for everything
+	fire_sound = /datum/soundbyte/ion_pulse

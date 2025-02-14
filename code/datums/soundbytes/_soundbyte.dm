@@ -23,6 +23,7 @@
  * - id - defaults to path for preloaded, otherwise should be made in init
  */
 /datum/soundbyte
+	abstract_type = /datum/soundbyte
 	/// unique id
 	var/id
 	/// name
@@ -60,6 +61,7 @@
  * todo: obliterate grouped so we can have proper domain'd paths and whatnot.
  */
 /datum/soundbyte/grouped
+	abstract_type = /datum/soundbyte/grouped
 	path = list()
 	runtime_loaded = FALSE
 

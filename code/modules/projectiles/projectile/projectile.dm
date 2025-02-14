@@ -293,9 +293,18 @@
 	 *
 	 * Accepts:
 	 * * a file (not a string path to a file)
-	 * * a sound effect id
+	 * * a soundbyte path or id
 	 */
 	var/fire_sound = 'sound/weapons/Gunshot_old.ogg'
+	/**
+	 * Default impact sounds
+	 *
+	 * Accepts:
+	 * * Null - auto-detect
+	 * * List - list of files, or soundbyte path's or id's. It will be selected from at random
+	 * * Anything else - passed into get_sfx().
+	 */
+	var/list/impact_sound
 
 	//* legacy below *//
 
@@ -319,7 +328,6 @@
 
 	var/miss_sounds
 	var/ricochet_sounds
-	var/list/impact_sounds	//for different categories, IMPACT_MEAT etc
 
 	//Fancy hitscan lighting effects!
 	var/legacy_hitscan_light_intensity = 1.5
