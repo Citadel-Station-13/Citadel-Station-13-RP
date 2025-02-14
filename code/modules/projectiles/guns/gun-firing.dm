@@ -40,9 +40,10 @@
 /obj/item/gun/proc/start_firing_cycle_async(atom/firer, angle, firing_flags, datum/firemode/firemode, atom/target, datum/event_args/actor/actor, tile_pixel_x, tile_pixel_y, target_zone) as /datum/gun_firing_cycle
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
-	set waitfor = FALSE
 
-	start_firing_cycle(firer, angle, firing_flags, firemode, target, actor, tile_pixel_x, tile_pixel_y, target_zone)
+	// todo: return firing cycle datum; this tramples return values by the way
+	ASYNC
+		start_firing_cycle(firer, angle, firing_flags, firemode, target, actor, tile_pixel_x, tile_pixel_y, target_zone)
 
 /**
  * starts, and blocks on a firing cycle
