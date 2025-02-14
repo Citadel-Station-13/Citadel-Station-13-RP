@@ -18,7 +18,7 @@
 	light_range = 2
 	light_power = 0.5
 	light_color = "#FF0D00"
-	impact_sounds = list(BULLET_IMPACT_MEAT = SOUNDS_LASER_MEAT, BULLET_IMPACT_METAL = SOUNDS_LASER_METAL)
+	impact_sound = PROJECTILE_IMPACT_SOUNDS_ENERGY
 
 	legacy_muzzle_type = /obj/effect/projectile/muzzle/laser
 	legacy_tracer_type = /obj/effect/projectile/tracer/laser

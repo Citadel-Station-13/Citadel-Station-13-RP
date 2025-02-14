@@ -251,7 +251,7 @@
 	abstract_type = /obj/projectile/nt_isd
 	icon = 'icons/modules/projectiles/projectile.dmi'
 	tracer_icon = 'icons/modules/projectiles/projectile-tracer.dmi'
-	impact_sounds = PROJECTILE_IMPACT_SOUNDS_ENERGY
+	impact_sound = PROJECTILE_IMPACT_SOUNDS_ENERGY
 
 /obj/projectile/nt_isd/laser
 	abstract_type = /obj/projectile/nt_isd/laser

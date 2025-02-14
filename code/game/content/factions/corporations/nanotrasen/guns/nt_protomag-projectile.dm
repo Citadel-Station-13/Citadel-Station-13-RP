@@ -12,7 +12,7 @@
 	icon_state = "kinetic"
 	speed = /obj/projectile::speed * 1.1
 
-	impact_sounds = PROJECTILE_IMPACT_SOUNDS_KINETIC
+	impact_sound = PROJECTILE_IMPACT_SOUNDS_KINETIC
 
 	var/penalty_speed_multiplier = 1
 	var/penalty_damage_multiplier = 1

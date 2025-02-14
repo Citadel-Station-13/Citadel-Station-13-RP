@@ -6,7 +6,7 @@
 	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_LASER
 	eyeblur = 2
-	impact_sounds = null
+	impact_sound = null
 
 /obj/projectile/beam/weaklaser
 	name = "weak laser"
@@ -209,7 +209,6 @@
 	nodamage = TRUE
 	damage_force = 0
 	light_color = "#FFFFFF"
-	impact_sounds = null
 
 	combustion = FALSE
 
@@ -248,7 +247,7 @@
 	legacy_muzzle_type = /obj/effect/projectile/muzzle/lightning
 	legacy_tracer_type = /obj/effect/projectile/tracer/lightning
 	legacy_impact_type = /obj/effect/projectile/impact/lightning
-	impact_sounds = null
+	impact_sound = null
 
 /obj/projectile/beam/disabler/weak
 	name = "weak disabler beam"
