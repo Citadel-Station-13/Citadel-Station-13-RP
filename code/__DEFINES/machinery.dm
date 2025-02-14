@@ -219,3 +219,12 @@ if (!(DATUM.datum_flags & DF_ISPROCESSING)) {\
 #define ORION_GAMER_PAMPHLET -1
 //game begins to have a chance to warn sec and med
 #define ORION_GAMER_REPORT_THRESHOLD 2
+
+/// Blank Status Display
+#define SD_BLANK 0
+/// Shows the emergency shuttle timer
+#define SD_EMERGENCY 1
+/// Shows an arbitrary message, user-set
+#define SD_MESSAGE 2
+/// Shows an alert picture (e.g. red alert, radiation, etc.)
+#define SD_PICTURE 3

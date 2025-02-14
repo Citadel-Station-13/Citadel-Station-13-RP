@@ -52,3 +52,6 @@
 		/datum/power/shadekin/regenerate_other,
 		/datum/power/shadekin/create_shade,
 	)
+
+	energy_light = 0.5
+	energy_dark = 1
