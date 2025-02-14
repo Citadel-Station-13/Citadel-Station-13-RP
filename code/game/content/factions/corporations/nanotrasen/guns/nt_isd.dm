@@ -274,7 +274,7 @@
 	damage_tier = LASER_TIER_HIGH // ;)
 	// todo: remove
 	armor_penetration = 20
-	fire_sound = /datum/soundbyte/laser_4
+	fire_sound = /datum/soundbyte/laser_3/pistol
 
 /obj/projectile/nt_isd/laser/multiphase
 	name = "focused laser"
@@ -282,7 +282,7 @@
 	damage_tier = LASER_TIER_HIGH
 	// todo: remove
 	armor_penetration = 37.5
-	fire_sound = /datum/soundbyte/laser_3
+	fire_sound = /datum/soundbyte/laser_3/rifle
 
 /obj/projectile/nt_isd/laser/lance
 	name = "particle beam"
@@ -309,6 +309,7 @@
 		}
 	)
 	fire_sound = /datum/soundbyte/taser_2
+	impact_sound = /datum/soundbyte/taser_hit
 
 /obj/projectile/nt_isd/electrode
 	name = "stun bolt"
@@ -321,6 +322,7 @@
 		}
 	)
 	fire_sound = /datum/soundbyte/taser_1
+	impact_sound = /datum/soundbyte/taser_hit
 
 /obj/projectile/nt_isd/disable
 	name = "disabler beam"

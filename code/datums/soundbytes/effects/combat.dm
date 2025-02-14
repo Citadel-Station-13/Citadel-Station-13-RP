@@ -57,10 +57,10 @@
 	is_sfx = TRUE
 	id = "projectile-impact-kinetic-flesh"
 	path = list(
-		'sound/soundbytes/effects/combat/projectile_impact/kinetic-flesh-1',
-		'sound/soundbytes/effects/combat/projectile_impact/kinetic-flesh-2',
-		'sound/soundbytes/effects/combat/projectile_impact/kinetic-flesh-3',
-		'sound/soundbytes/effects/combat/projectile_impact/kinetic-flesh-4',
+		'sound/soundbytes/effects/combat/projectile_impact/kinetic-flesh-1.ogg',
+		'sound/soundbytes/effects/combat/projectile_impact/kinetic-flesh-2.ogg',
+		'sound/soundbytes/effects/combat/projectile_impact/kinetic-flesh-3.ogg',
+		'sound/soundbytes/effects/combat/projectile_impact/kinetic-flesh-4.ogg',
 	)
 
 /datum/soundbyte/grouped/projectile_impact_kinetic_on_metal
@@ -68,9 +68,9 @@
 	is_sfx = TRUE
 	id = "projectile-impact-kinetic-metal"
 	path = list(
-		'sound/soundbytes/effects/combat/projectile_impact/kinetic-metal-1',
-		'sound/soundbytes/effects/combat/projectile_impact/kinetic-metal-2',
-		'sound/soundbytes/effects/combat/projectile_impact/kinetic-metal-3',
+		'sound/soundbytes/effects/combat/projectile_impact/kinetic-metal-1.ogg',
+		'sound/soundbytes/effects/combat/projectile_impact/kinetic-metal-2.ogg',
+		'sound/soundbytes/effects/combat/projectile_impact/kinetic-metal-3.ogg',
 	)
 
 /datum/soundbyte/grouped/projectile_impact_energy_on_flesh
@@ -78,8 +78,8 @@
 	is_sfx = TRUE
 	id = "projectile-impact-energy-flesh"
 	path = list(
-		'sound/soundbytes/effects/combat/projectile_impact/energy-flesh-1',
-		'sound/soundbytes/effects/combat/projectile_impact/energy-flesh-2',
+		'sound/soundbytes/effects/combat/projectile_impact/energy-flesh-1.ogg',
+		'sound/soundbytes/effects/combat/projectile_impact/energy-flesh-2.ogg',
 	)
 
 /datum/soundbyte/grouped/projectile_impact_energy_on_metal
@@ -87,6 +87,6 @@
 	is_sfx = TRUE
 	id = "projectile-impact-energy-metal"
 	path = list(
-		'sound/soundbytes/effects/combat/projectile_impact/energy-metal-1',
-		'sound/soundbytes/effects/combat/projectile_impact/energy-metal-2',
+		'sound/soundbytes/effects/combat/projectile_impact/energy-metal-1.ogg',
+		'sound/soundbytes/effects/combat/projectile_impact/energy-metal-2.ogg',
 	)
