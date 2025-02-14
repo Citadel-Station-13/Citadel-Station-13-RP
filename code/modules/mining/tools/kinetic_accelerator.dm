@@ -301,7 +301,7 @@
 	to_chat(R, "<span class='alert'>Upgrade error - Aborting Kinetic Accelerator linking.</span>") //No applicable KA found, insufficient capacity, or some other problem.
 */
 
-/obj/item/ka_modkit/proc/install(obj/item/gun/energy/kinetic_accelerator/KA, mob/user)
+/obj/item/ka_modkit/proc/install(obj/item/gun/projectile/energy/kinetic_accelerator/KA, mob/user)
 	. = TRUE
 	if(src in KA.modkits) // Sanity check to prevent installing the same modkit twice thanks to occasional click/lag delays.
 		return FALSE
@@ -337,7 +337,7 @@
 		to_chat(user, "<span class='notice'>You don't have room(<b>[KA.get_remaining_mod_capacity()]%</b> remaining, [cost]% needed) to install this modkit. Use a crowbar to remove existing modkits.</span>")
 		. = FALSE
 
-/obj/item/ka_modkit/proc/uninstall(obj/item/gun/energy/kinetic_accelerator/KA, forcemove = TRUE)
+/obj/item/ka_modkit/proc/uninstall(obj/item/gun/projectile/energy/kinetic_accelerator/KA, forcemove = TRUE)
 	KA.modkits -= src
 	if(forcemove)
 		forceMove(get_turf(KA))
@@ -345,11 +345,11 @@
 /obj/item/ka_modkit/proc/modify_projectile(obj/projectile/kinetic/K)
 
 //use this one for effects you want to trigger before any damage is done at all and before damage is decreased by pressure
-/obj/item/ka_modkit/proc/projectile_prehit(obj/projectile/kinetic/K, atom/target, obj/item/gun/energy/kinetic_accelerator/KA)
+/obj/item/ka_modkit/proc/projectile_prehit(obj/projectile/kinetic/K, atom/target, obj/item/gun/projectile/energy/kinetic_accelerator/KA)
 //use this one for effects you want to trigger before mods that do damage
-/obj/item/ka_modkit/proc/projectile_strike_predamage(obj/projectile/kinetic/K, turf/target_turf, atom/target, obj/item/gun/energy/kinetic_accelerator/KA)
+/obj/item/ka_modkit/proc/projectile_strike_predamage(obj/projectile/kinetic/K, turf/target_turf, atom/target, obj/item/gun/projectile/energy/kinetic_accelerator/KA)
 //and this one for things that don't need to trigger before other damage-dealing mods
-/obj/item/ka_modkit/proc/projectile_strike(obj/projectile/kinetic/K, turf/target_turf, atom/target, obj/item/gun/energy/kinetic_accelerator/KA)
+/obj/item/ka_modkit/proc/projectile_strike(obj/projectile/kinetic/K, turf/target_turf, atom/target, obj/item/gun/projectile/energy/kinetic_accelerator/KA)
 
 //Range
 /obj/item/ka_modkit/range
@@ -368,7 +368,7 @@
 	minebot_upgrade = FALSE
 	var/decreased
 
-/obj/item/ka_modkit/cooldown/install(obj/item/gun/energy/kinetic_accelerator/KA, mob/user)
+/obj/item/ka_modkit/cooldown/install(obj/item/gun/projectile/energy/kinetic_accelerator/KA, mob/user)
 	. = ..()
 	if(.)
 		var/old = KA.overheat_time
@@ -376,7 +376,7 @@
 		decreased = old - KA.overheat_time
 
 
-/obj/item/ka_modkit/cooldown/uninstall(obj/item/gun/energy/kinetic_accelerator/KA)
+/obj/item/ka_modkit/cooldown/uninstall(obj/item/gun/projectile/energy/kinetic_accelerator/KA)
 	KA.overheat_time += decreased
 	..()
 
@@ -412,7 +412,7 @@
 	var/turf_aoe = FALSE
 	var/stats_stolen = FALSE
 
-/obj/item/ka_modkit/aoe/install(obj/item/gun/energy/kinetic_accelerator/KA, mob/user)
+/obj/item/ka_modkit/aoe/install(obj/item/gun/projectile/energy/kinetic_accelerator/KA, mob/user)
 	. = ..()
 	if(.)
 		for(var/obj/item/ka_modkit/aoe/AOE in KA.modkits) //make sure only one of the aoe modules has values if somebody has multiple
@@ -424,7 +424,7 @@
 			AOE.turf_aoe = FALSE
 			AOE.stats_stolen = TRUE
 
-/obj/item/ka_modkit/aoe/uninstall(obj/item/gun/energy/kinetic_accelerator/KA)
+/obj/item/ka_modkit/aoe/uninstall(obj/item/gun/projectile/energy/kinetic_accelerator/KA)
 	..()
 	modifier = initial(modifier) //get our modifiers back
 	turf_aoe = initial(turf_aoe)
@@ -433,7 +433,7 @@
 /obj/item/ka_modkit/aoe/modify_projectile(obj/projectile/kinetic/K)
 	K.name = "kinetic explosion"
 
-/obj/item/ka_modkit/aoe/projectile_strike(obj/projectile/kinetic/K, turf/target_turf, atom/target, obj/item/gun/energy/kinetic_accelerator/KA)
+/obj/item/ka_modkit/aoe/projectile_strike(obj/projectile/kinetic/K, turf/target_turf, atom/target, obj/item/gun/projectile/energy/kinetic_accelerator/KA)
 	if(stats_stolen)
 		return
 	new /obj/effect/temp_visual/explosion/fast(target_turf)
@@ -481,7 +481,7 @@
 	modifier = -14 //Makes the cooldown 3 seconds(with no cooldown mods) if you miss. Don't miss.
 	cost = 50
 
-/obj/item/ka_modkit/cooldown/repeater/projectile_strike_predamage(obj/projectile/kinetic/K, turf/target_turf, atom/target, obj/item/gun/energy/kinetic_accelerator/KA)
+/obj/item/ka_modkit/cooldown/repeater/projectile_strike_predamage(obj/projectile/kinetic/K, turf/target_turf, atom/target, obj/item/gun/projectile/energy/kinetic_accelerator/KA)
 	var/valid_repeat = FALSE
 	if(isliving(target))
 		var/mob/living/L = target
@@ -502,7 +502,7 @@
 	cost = 20
 	var/static/list/damage_heal_order = list(BRUTE, BURN, OXY)
 
-/obj/item/ka_modkit/lifesteal/projectile_prehit(obj/projectile/kinetic/K, atom/target, obj/item/gun/energy/kinetic_accelerator/KA)
+/obj/item/ka_modkit/lifesteal/projectile_prehit(obj/projectile/kinetic/K, atom/target, obj/item/gun/projectile/energy/kinetic_accelerator/KA)
 	if(isliving(target) && isliving(K.firer))
 		var/mob/living/L = target
 		if(L.stat == DEAD)
@@ -518,7 +518,7 @@
 	cost = 30
 	modifier = 0.25 //A bonus 15 damage if you burst the field on a target, 60 if you lure them into it.
 
-/obj/item/ka_modkit/resonator_blasts/projectile_strike(obj/projectile/kinetic/K, turf/target_turf, atom/target, obj/item/gun/energy/kinetic_accelerator/KA)
+/obj/item/ka_modkit/resonator_blasts/projectile_strike(obj/projectile/kinetic/K, turf/target_turf, atom/target, obj/item/gun/projectile/energy/kinetic_accelerator/KA)
 	if(target_turf && !ismineralturf(target_turf)) //Don't make fields on mineral turfs.
 		var/obj/effect/resonance/R = locate(/obj/effect/resonance) in target_turf
 		if(R)
@@ -537,7 +537,7 @@
 	var/maximum_bounty = 25
 	var/list/bounties_reaped = list()
 
-/obj/item/ka_modkit/bounty/projectile_prehit(obj/projectile/kinetic/K, atom/target, obj/item/gun/energy/kinetic_accelerator/KA)
+/obj/item/ka_modkit/bounty/projectile_prehit(obj/projectile/kinetic/K, atom/target, obj/item/gun/projectile/energy/kinetic_accelerator/KA)
 	if(isliving(target))
 		var/mob/living/L = target
 		var/list/existing_marks = L.has_status_effect_list(STATUS_EFFECT_SYPHONMARK)
@@ -548,7 +548,7 @@
 				qdel(SM)
 		L.apply_status_effect(STATUS_EFFECT_SYPHONMARK, src)
 
-/obj/item/ka_modkit/bounty/projectile_strike(obj/projectile/kinetic/K, turf/target_turf, atom/target, obj/item/gun/energy/kinetic_accelerator/KA)
+/obj/item/ka_modkit/bounty/projectile_strike(obj/projectile/kinetic/K, turf/target_turf, atom/target, obj/item/gun/projectile/energy/kinetic_accelerator/KA)
 	if(isliving(target))
 		var/mob/living/L = target
 		if(bounties_reaped[L.type])
@@ -590,12 +590,12 @@
 	cost = 20
 	denied_type = /obj/item/ka_modkit/trigger_guard
 
-/obj/item/ka_modkit/trigger_guard/install(obj/item/gun/energy/kinetic_accelerator/KA, mob/user)
+/obj/item/ka_modkit/trigger_guard/install(obj/item/gun/projectile/energy/kinetic_accelerator/KA, mob/user)
 	. = ..()
 	if(.)
 		KA.trigger_guard = TRIGGER_GUARD_ALLOW_ALL
 
-/obj/item/ka_modkit/trigger_guard/uninstall(obj/item/gun/energy/kinetic_accelerator/KA)
+/obj/item/ka_modkit/trigger_guard/uninstall(obj/item/gun/projectile/energy/kinetic_accelerator/KA)
 	KA.trigger_guard = TRIGGER_GUARD_NORMAL
 	..()
 */
@@ -610,13 +610,13 @@
 	var/chassis_icon = "kineticgun_u"
 	var/chassis_name = "super-kinetic accelerator"
 
-/obj/item/ka_modkit/chassis_mod/install(obj/item/gun/energy/kinetic_accelerator/KA, mob/user)
+/obj/item/ka_modkit/chassis_mod/install(obj/item/gun/projectile/energy/kinetic_accelerator/KA, mob/user)
 	. = ..()
 	if(.)
 		KA.icon_state = chassis_icon
 		KA.name = chassis_name
 
-/obj/item/ka_modkit/chassis_mod/uninstall(obj/item/gun/energy/kinetic_accelerator/KA)
+/obj/item/ka_modkit/chassis_mod/uninstall(obj/item/gun/projectile/energy/kinetic_accelerator/KA)
 	KA.icon_state = initial(KA.icon_state)
 	KA.name = initial(KA.name)
 	..()
