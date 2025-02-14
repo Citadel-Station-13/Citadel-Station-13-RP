@@ -38,7 +38,7 @@
 	data[DYNAMIC_PAYMENT_DATA_BANK_ACCOUNT] = customer_account
 	data[DYNAMIC_PAYMENT_DATA_CURRENCY_TYPE] = PAYMENT_TYPE_BANK_CARD
 	// transaction log
-	var/datum/transaction/T = new
+	var/datum/economy_transaction/T = new
 	T.amount = amount
 	var/list/details = predicate.query_transaction_details(data)
 	T.target_name = details[CHARGE_DETAIL_RECIPIENT]

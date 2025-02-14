@@ -8,14 +8,6 @@
 							//1 - require manual login / account number and pin
 							//2 - require card and manual login
 
-/datum/transaction
-	var/target_name = ""
-	var/purpose = ""
-	var/amount = 0
-	var/date = ""
-	var/time = ""
-	var/source_terminal = ""
-
 /proc/create_account(var/new_owner_name = "Default user", var/starting_funds = 0, var/obj/machinery/account_database/source_db)
 
 	//create a new account
@@ -25,7 +17,7 @@
 	M.money = starting_funds
 
 	//create an entry in the account transaction log for when it was created
-	var/datum/transaction/T = new()
+	var/datum/economy_transaction/T = new()
 	T.target_name = new_owner_name
 	T.purpose = "Account creation"
 	T.amount = starting_funds
@@ -80,7 +72,7 @@
 			D.money += amount
 
 			//create a transaction log entry
-			var/datum/transaction/T = new()
+			var/datum/economy_transaction/T = new()
 			T.target_name = source_name
 			T.purpose = purpose
 			if(amount < 0)

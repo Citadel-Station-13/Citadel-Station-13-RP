@@ -226,7 +226,7 @@
 					linked_account.money += transaction_amount
 
 					// Create log entry in client's account
-					var/datum/transaction/T = new()
+					var/datum/economy_transaction/T = new()
 					T.target_name = "[linked_account.owner_name]"
 					T.purpose = transaction_purpose
 					T.amount = "([transaction_amount])"
@@ -269,7 +269,7 @@
 			linked_account.money += transaction_amount
 
 			// Create log entry in owner's account
-			var/datum/transaction/T = new()
+			var/datum/economy_transaction/T = new()
 			T.target_name = E.owner_name
 			T.purpose = transaction_purpose
 			T.amount = "[transaction_amount]"

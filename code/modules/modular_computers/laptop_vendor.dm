@@ -297,7 +297,7 @@
 		return 0
 	else
 		customer_account.money -= total_price
-		var/datum/transaction/T = new()
+		var/datum/economy_transaction/T = new()
 		T.target_name = "Computer Manufacturer (via [src.name])"
 		T.purpose = "Purchase of [(devtype == 1) ? "laptop computer" : "tablet microcomputer"]."
 		T.amount = total_price

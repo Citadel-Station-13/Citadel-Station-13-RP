@@ -51,7 +51,7 @@
 		affected_account.money -= lost
 
 		//create a taunting log entry
-		var/datum/transaction/T = new()
+		var/datum/economy_transaction/T = new()
 		T.target_name = pick("","yo brotha from anotha motha","el Presidente","chieF smackDowN","Nobody")
 		T.purpose = pick("Ne$ ---ount fu%ds init*&lisat@*n","PAY BACK YOUR MUM","Funds withdrawal","pWnAgE","l33t hax","liberationez","Hit","Nothing")
 		T.amount = pick("","([rand(0,99999)])","alla money","9001$","HOLLA HOLLA GET DOLLA","([lost])")

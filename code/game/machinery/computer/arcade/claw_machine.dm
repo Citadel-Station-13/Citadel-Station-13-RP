@@ -123,7 +123,7 @@
 		customer_account.money -= gameprice
 
 		// create entry in the purchaser's account log
-		var/datum/transaction/T = new()
+		var/datum/economy_transaction/T = new()
 		T.target_name = "[GLOB.vendor_account.owner_name] (via [name])"
 		T.purpose = "Purchase of arcade game([name])"
 		if(gameprice > 0)
@@ -146,7 +146,7 @@
 /obj/machinery/computer/arcade/clawmachine/proc/credit_purchase(target as text)
 	GLOB.vendor_account.money += gameprice
 
-	var/datum/transaction/T = new()
+	var/datum/economy_transaction/T = new()
 	T.target_name = target
 	T.purpose = "Purchase of arcade game([name])"
 	T.amount = "[gameprice]"

@@ -64,20 +64,7 @@
 //Destroyers are medium sized vessels, often used for escorting larger ships but able to go toe-to-toe with them if need be.
 //Frigates are medium sized vessels, often used for escorting larger ships. They will rapidly find themselves outclassed if forced to face heavy warships head on.
 
-GLOBAL_VAR(current_date_string)
-GLOBAL_DATUM(vendor_account, /datum/economy_account)
-GLOBAL_DATUM(station_account, /datum/economy_account)
-GLOBAL_LIST_EMPTY_TYPED(department_accounts, /datum/economy_account)
-GLOBAL_VAR_INIT(num_financial_terminals, 1)
-GLOBAL_VAR_INIT(next_account_number, 0)
-GLOBAL_LIST_EMPTY(all_money_accounts)
-GLOBAL_LIST_EMPTY(transaction_devices)
-GLOBAL_VAR_INIT(economy_init, FALSE)
-
 /proc/setup_economy()
-	if(GLOB.economy_init)
-		return 2
-
 	//news_network.CreateFeedChannel("The [(LEGACY_MAP_DATUM).starsys_name] Times", "[(LEGACY_MAP_DATUM).starsys_name] Times ExoNode - [(LEGACY_MAP_DATUM).station_short]", 1, 1)
 	news_network.CreateFeedChannel("The Gibson Gazette", "Editor Mike Hammers", 1, 1)
 	news_network.CreateFeedChannel("Oculum Content Aggregator", "Oculus v6rev7", 1, 1)
@@ -103,9 +90,6 @@ GLOBAL_VAR_INIT(economy_init, FALSE)
 
 	GLOB.current_date_string = "[num2text(rand(1,31))] [pick("January","February","March","April","May","June","July","August","September","October","November","December")], [game_year]"
 
-	GLOB.economy_init = 1
-	return 1
-
 /proc/create_station_account()
 	if(!GLOB.station_account)
 		GLOB.next_account_number = rand(111111, 999999)
@@ -117,7 +101,7 @@ GLOBAL_VAR_INIT(economy_init, FALSE)
 		GLOB.station_account.money = 100000
 
 		//create an entry in the account transaction log for when it was created
-		var/datum/transaction/T = new()
+		var/datum/economy_transaction/T = new()
 		T.target_name = GLOB.station_account.owner_name
 		T.purpose = "Account creation"
 		T.amount = 100000
@@ -139,7 +123,7 @@ GLOBAL_VAR_INIT(economy_init, FALSE)
 	department_account.money = 10000
 
 	//create an entry in the account transaction log for when it was created
-	var/datum/transaction/T = new()
+	var/datum/economy_transaction/T = new()
 	T.target_name = department_account.owner_name
 	T.purpose = "Account creation"
 	T.amount = department_account.money

@@ -271,7 +271,7 @@
 /obj/machinery/vending/proc/credit_purchase(var/target as text)
 	GLOB.vendor_account.money += currently_vending.price
 
-	var/datum/transaction/T = new()
+	var/datum/economy_transaction/T = new()
 	T.target_name = target
 	T.purpose = "Purchase of [currently_vending.item_name]"
 	T.amount = "[currently_vending.price]"

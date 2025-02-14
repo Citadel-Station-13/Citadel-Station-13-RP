@@ -95,7 +95,7 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 				playsound(src, 'sound/items/polaroid2.ogg', 50, 1)
 
 			//create a transaction log entry
-			var/datum/transaction/T = new()
+			var/datum/economy_transaction/T = new()
 			T.target_name = authenticated_account.owner_name
 			T.purpose = "Credit deposit"
 			T.amount = amount
@@ -111,7 +111,7 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 
 /obj/machinery/atm/proc/generate_ui_transaction_log(var/list/transaction_list)
 	var/list/passed_list = list()
-	for(var/datum/transaction/T in transaction_list)
+	for(var/datum/economy_transaction/T in transaction_list)
 		var/transaction_num = 0
 		var/list/new_list = list()
 		new_list["target_name"] = T.target_name
@@ -209,7 +209,7 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 						authenticated_account.money -= transfer_amount
 
 						//create an entry in the account transaction log
-						var/datum/transaction/T = new()
+						var/datum/economy_transaction/T = new()
 						T.target_name = "Account #[target_account_number]"
 						T.purpose = transfer_purpose
 						T.source_terminal = machine_id
@@ -243,7 +243,7 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 						spawn_money(amount,src.loc,user)
 
 					//create an entry in the account transaction log
-					var/datum/transaction/T = new()
+					var/datum/economy_transaction/T = new()
 					T.target_name = authenticated_account.owner_name
 					T.purpose = "Credit withdrawal"
 					T.amount = "([amount])"
@@ -272,7 +272,7 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 				R.info += "<td><b>Value</b></td>"
 				R.info += "<td><b>Source terminal ID</b></td>"
 				R.info += "</tr>"
-				for(var/datum/transaction/T in authenticated_account.transaction_log)
+				for(var/datum/economy_transaction/T in authenticated_account.transaction_log)
 					R.info += "<tr>"
 					R.info += "<td>[T.date]</td>"
 					R.info += "<td>[T.time]</td>"
@@ -370,7 +370,7 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 					//create an entry in the account transaction log
 					var/datum/economy_account/failed_account = get_account(tried_account_num)
 					if(failed_account)
-						var/datum/transaction/T = new()
+						var/datum/economy_transaction/T = new()
 						T.target_name = failed_account.owner_name
 						T.purpose = "Unauthorised login attempt"
 						T.source_terminal = machine_id
@@ -389,7 +389,7 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 			ticks_left_timeout = 120
 
 			//create a transaction log entry
-			var/datum/transaction/T = new()
+			var/datum/economy_transaction/T = new()
 			T.target_name = authenticated_account.owner_name
 			T.purpose = "Remote terminal access"
 			T.source_terminal = machine_id

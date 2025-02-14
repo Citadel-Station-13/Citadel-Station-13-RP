@@ -139,7 +139,7 @@
 						linked_account.money += transaction_amount
 
 						//create entry in the EFTPOS linked account transaction log
-						var/datum/transaction/T = new()
+						var/datum/economy_transaction/T = new()
 						T.target_name = E.owner_name //D.owner_name
 						T.purpose = (transaction_purpose ? transaction_purpose : "None supplied.")
 						T.amount = transaction_amount
@@ -260,7 +260,7 @@
 								linked_account.money += transaction_amount
 
 								//create entries in the two account transaction logs
-								var/datum/transaction/T = new()
+								var/datum/economy_transaction/T = new()
 								T.target_name = "[linked_account.owner_name] (via [eftpos_name])"
 								T.purpose = transaction_purpose
 								if(transaction_amount > 0)

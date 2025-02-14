@@ -7,4 +7,5 @@
 	color = "#A52A2A"
 	sorting_order = 20 // Above Command.
 	centcom_only = TRUE
+	economy_payscale = ECONOMY_PAYSCALE_DEPT_CENTCOM
 

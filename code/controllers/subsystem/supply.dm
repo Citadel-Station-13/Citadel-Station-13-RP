@@ -74,7 +74,9 @@ SUBSYSTEM_DEF(supply)
 // Supply shuttle SSticker - handles supply point regeneration
 // This is called by the process scheduler every thirty seconds
 /datum/controller/subsystem/supply/fire(resumed)
-	points += max(0, ((world.time - last_fire) / 10) * points_per_second)
+	var/datum/economy_account/cargo_account = resolve_station_cargo_account()
+	var/elapsed_time_in_seconds = (world.time - last_fire) * 0.1
+	cargo_account?.adjust_balance_without_logging(money_passive_generation_per_second)
 
 // To stop things being sent to CentCom which should not be sent to centcom. Recursively checks for these types.
 /datum/controller/subsystem/supply/proc/forbidden_atoms_check(atom/A)
@@ -378,7 +380,13 @@ SUBSYSTEM_DEF(supply)
 			"value" = new_value
 		)
 
-//* Estimation *//
+//* Economy *//
+
+/**
+ * gets the station's cargo account
+ */
+/datum/controller/subsystem/supply/proc/resolve_station_cargo_account() as /datum/economy_account
+	return SSeconomy.resolve_keyed_account(/datum/department/cargo::id, /datum/world_faction/corporation/nanotrasen::id)
 
 //* Entity Descriptors *//
 

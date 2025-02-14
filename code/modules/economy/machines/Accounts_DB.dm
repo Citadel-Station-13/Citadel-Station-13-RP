@@ -23,7 +23,7 @@
 		return 1
 
 /obj/machinery/account_database/proc/create_transation(target, reason, amount)
-	var/datum/transaction/T = new()
+	var/datum/economy_transaction/T = new()
 	T.target_name = target
 	T.purpose = reason
 	T.amount = amount
@@ -84,7 +84,7 @@
 		data["suspended"] = detailed_account_view.suspended
 
 		var/list/trx[0]
-		for (var/datum/transaction/T in detailed_account_view.transaction_log)
+		for (var/datum/economy_transaction/T in detailed_account_view.transaction_log)
 			trx.Add(list(list(\
 				"date" = T.date, \
 				"time" = T.time, \
@@ -223,7 +223,7 @@
 							<tbody>
 						"}
 
-					for (var/datum/transaction/T in detailed_account_view.transaction_log)
+					for (var/datum/economy_transaction/T in detailed_account_view.transaction_log)
 						text += {"
 									<tr>
 										<td>[T.date] [T.time]</td>

@@ -14,7 +14,7 @@
 		if(!D.suspended)
 			D.money += winner_sum
 
-			var/datum/transaction/T = new()
+			var/datum/economy_transaction/T = new()
 			T.target_name = "The [(LEGACY_MAP_DATUM).starsys_name] Times Grand Slam -Stellar- Lottery"
 			T.purpose = "Winner!"
 			T.amount = winner_sum
