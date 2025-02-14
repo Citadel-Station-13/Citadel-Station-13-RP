@@ -23,6 +23,3 @@ GLOBAL_LIST_INIT(projectile_impact_sfx_lut, list(
 		PROJECTILE_IMPACT_SOUNDS_KINETIC = /datum/soundbyte/grouped/projectile_impact_kinetic_on_metal,
 	),
 ))
-
-#warn rest
-

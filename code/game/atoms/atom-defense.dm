@@ -298,7 +298,7 @@
 	. = hitsound_override(P.damage_type, P.damage_mode, ATTACK_TYPE_PROJECTILE, P)
 	if(.)
 		return
-	return P.resolve_impact_sfx(get_fx_classifier(ATTACK_TYPE_PROJECTILE, P), src)
+	return P.resolve_impact_sfx(get_combat_fx_classifier(ATTACK_TYPE_PROJECTILE, P), src)
 
 /atom/proc/hitsound_throwhit(obj/item/I)
 	. = I.attacksound_override(src, ATTACK_TYPE_THROWN)

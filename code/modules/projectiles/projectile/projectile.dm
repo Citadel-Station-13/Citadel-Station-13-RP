@@ -1353,6 +1353,9 @@
 	// 3. impact sound is a single thing
 	// 3a. lookup from globals (handle enums)
 	var/resolved = GLOB.projectile_impact_sfx_lut[fx_classifier][impact_sound]
-	#warn impl
+	if(resolved)
+		if(islist(resolved))
+			return length(resolved) ? get_sfx(pick(resolved)) : null
+		return get_sfx(resolved)
 	// 3b. just resolve as sfx
 	return get_sfx(impact_sound)
