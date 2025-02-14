@@ -232,6 +232,8 @@
 	log_gun_firing_cycle(src, firer, our_cycle, actor)
 	// set delay
 	next_fire_cycle = world.time + max(0, our_cycle.cycle_cooldown * our_cycle.overall_cooldown_multiply + our_cycle.overall_cooldown_adjust)
+	// clear
+	firing_cycle = null
 
 	return our_cycle
 
