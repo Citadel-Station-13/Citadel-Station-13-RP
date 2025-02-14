@@ -35,18 +35,14 @@
  * * if firer is a mob, we use its calculations for that depending on how we're held
  * * if firer is ourselves, projectile comes out of us. this is implementation defined.
  *
- * @return firing cycle datum
+ * todo: return firing cycle datum
  */
 /obj/item/gun/proc/start_firing_cycle_async(atom/firer, angle, firing_flags, datum/firemode/firemode, atom/target, datum/event_args/actor/actor, tile_pixel_x, tile_pixel_y, target_zone) as /datum/gun_firing_cycle
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
+	set waitfor = FALSE
 
-	// invoke async; when it returns, our firing_cycle will still be set
-	INVOKE_ASYNC(src, PROC_REF(start_firing_cycle), firer, angle, firing_flags, firemode, target, actor, tile_pixel_x, tile_pixel_y, target_zone)
-	// check to make sure it's always set
-	ASSERT(firing_cycle)
-	// return it; beware that it can be mutated in the firing cycle.
-	return firing_cycle
+	start_firing_cycle(firer, angle, firing_flags, firemode, target, actor, tile_pixel_x, tile_pixel_y, target_zone)
 
 /**
  * starts, and blocks on a firing cycle
@@ -55,6 +51,8 @@
  * * if firer is a turf, projectile is centered on turf
  * * if firer is a mob, we use its calculations for that depending on how we're held
  * * if firer is ourselves, projectile comes out of us. this is implementation defined.
+ *
+ * @return firing cycle datum
  */
 /obj/item/gun/proc/start_firing_cycle(atom/firer, angle, firing_flags, datum/firemode/firemode, atom/target, datum/event_args/actor/actor, tile_pixel_x, tile_pixel_y, target_zone) as /datum/gun_firing_cycle
 	SHOULD_CALL_PARENT(TRUE)
@@ -65,7 +63,7 @@
 
 	// on cooldown: loudly fail
 	if(world.time < next_fire_cycle)
-		if(last_cooldown_message > world.time + 0.75 SECONDS)
+		if(last_cooldown_message + 0.75 SECONDS < world.time)
 			actor?.chat_feedback(
 				SPAN_WARNING("[src] is not ready to fire again!"),
 				target = src,
@@ -96,21 +94,16 @@
  */
 /obj/item/gun/proc/on_firing_cycle_start(datum/gun_firing_cycle/cycle)
 	SHOULD_NOT_SLEEP(TRUE)
-
-	cycle.firing_actor?.visible_feedback(
-		range = silenced ? MESSAGE_RANGE_COMBAT_SILENCED : MESSAGE_RANGE_COMBAT_LOUD,
-		visible = SPAN_DANGER("[cycle.firing_actor.performer] fires [src][cycle.firing_flags & GUN_FIRING_POINT_BLANK ? " point blank at [cycle.original_target]" : ""][cycle.firing_flags & GUN_FIRING_BY_REFLEX ? " by reflex" : ""]!"),
-		audible = SPAN_WARNING("You hear a [fire_sound_text]"),
-		otherwise_self = SPAN_WARNING("You fire [src][cycle.firing_flags & GUN_FIRING_POINT_BLANK ? " point blank at [cycle.original_target]" : ""][cycle.firing_flags & GUN_FIRING_BY_REFLEX ? " by reflex" : ""]!"),
-	)
+	SHOULD_CALL_PARENT(TRUE)
 
 /**
  * Hook for firing cycle end
  */
 /obj/item/gun/proc/on_firing_cycle_end(datum/gun_firing_cycle/cycle)
 	SHOULD_NOT_SLEEP(TRUE)
-	update_icon()
+	SHOULD_CALL_PARENT(TRUE)
 
+	update_icon()
 	if(cycle.firing_actor)
 		if(one_handed_penalty)
 			if(!(item_flags & ITEM_MULTIHAND_WIELDED))
@@ -272,6 +265,8 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	switch(cycle.last_firing_result)
 		if(GUN_FIRED_SUCCESS)
+			if(cycle.cycle_iterations_fired == 1)
+				post_first_successful_fire(cycle)
 			return post_live_fire(cycle)
 		if(GUN_FIRED_FAIL_EMPTY, GUN_FIRED_FAIL_INERT)
 			return post_empty_fire(cycle)
@@ -281,6 +276,19 @@
 //* Firing - Default Handlers (Overridable) *//
 
 /**
+ * Called after the first successful fire of a cycle.
+ */
+/obj/item/gun/proc/post_first_successful_fire(datum/gun_firing_cycle/cycle)
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
+	cycle.firing_actor?.visible_feedback(
+		range = silenced ? MESSAGE_RANGE_COMBAT_SILENCED : MESSAGE_RANGE_COMBAT_LOUD,
+		visible = SPAN_DANGER("[cycle.firing_actor.performer] fires [src][cycle.firing_flags & GUN_FIRING_POINT_BLANK ? " point blank at [cycle.original_target]" : ""][cycle.firing_flags & GUN_FIRING_BY_REFLEX ? " by reflex" : ""]!"),
+		audible = SPAN_WARNING("You hear a [fire_sound_text]"),
+		otherwise_self = SPAN_WARNING("You fire [src][cycle.firing_flags & GUN_FIRING_POINT_BLANK ? " point blank at [cycle.original_target]" : ""][cycle.firing_flags & GUN_FIRING_BY_REFLEX ? " by reflex" : ""]!"),
+	)
+
+/**
  * Called on successful firing
  *
  * todo: actor / event_args support from cycle
@@ -288,6 +296,7 @@
  * @return FALSE to abort firing cycle.
  */
 /obj/item/gun/proc/post_live_fire(datum/gun_firing_cycle/cycle)
+	SHOULD_NOT_SLEEP(TRUE)
 	var/mob/legacy_user = get_worn_mob()
 	if(legacy_user)
 		if(recoil)
@@ -303,6 +312,7 @@
  * @return FALSE to abort firing cycle.
  */
 /obj/item/gun/proc/post_empty_fire(datum/gun_firing_cycle/cycle)
+	SHOULD_NOT_SLEEP(TRUE)
 	if(!(cycle.firing_flags & GUN_FIRING_NO_CLICK_EMPTY))
 		// default click empty
 		default_click_empty(cycle)

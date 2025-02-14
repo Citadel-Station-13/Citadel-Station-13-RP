@@ -359,9 +359,9 @@
 /obj/item/gun/examine(mob/user, dist)
 	. = ..()
 	if(should_attack_self_switch_firemodes())
-		. += SPAN_NOTICE("Press 'Activate In Hand' [user?.client?.print_keys_for_keybind_with_prefs_link(/datum/keybinding/item/activate_inhand, " ")]while holding this gun in your active hand to swap its firing configuration.")
+		. += SPAN_NOTICE("Press '<b>Activate In Hand</b>' [user?.client?.print_keys_for_keybind_with_prefs_link(/datum/keybinding/item/activate_inhand, " ")]while holding this gun in your active hand to swap its firing configuration.")
 	if(should_unique_action_rack_chamber())
-		. += SPAN_NOTICE("Press 'Unique Action' [user?.client?.print_keys_for_keybind_with_prefs_link(/datum/keybinding/item/activate_inhand, " ")]while holding this gun in your active hand to rack its chamber.")
+		. += SPAN_NOTICE("Press '<b>Unique Action</b>' [user?.client?.print_keys_for_keybind_with_prefs_link(/datum/keybinding/item/activate_inhand, " ")]while holding this gun in your active hand to rack its chamber.")
 	if(!no_pin_required)
 		if(pin)
 			. += "It has \a [pin] installed."
@@ -570,7 +570,7 @@
 	. = ..()
 	if(!(item_flags & ITEM_IN_INVENTORY))
 		return
-	add_overlay(image('icons/modules/projectiles/guns/common-overlays.dmi', "safety-[check_safety()? "on" : "off"]"))
+	. += image('icons/modules/projectiles/guns/common-overlays.dmi', "safety-[check_safety()? "on" : "off"]")
 
 /obj/item/gun/proc/toggle_safety(mob/user)
 	if(user)
@@ -643,9 +643,12 @@
  *
  * * Used by rendering
  *
+ * @params
+ * * rounded - round to nearest ammo
+ *
  * @return number as 0 to 1, inclusive
  */
-/obj/item/gun/proc/get_ammo_ratio()
+/obj/item/gun/proc/get_ammo_ratio(rounded)
 	return 0
 
 //* Context *//

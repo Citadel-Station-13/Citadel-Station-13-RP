@@ -151,11 +151,11 @@
 		return modular_particle_array_active ? modular_particle_array_active.consume_next_projectile(cycle) : GUN_FIRED_FAIL_INERT
 	var/datum/firemode/energy/energy_firemode = firemode
 	if(!istype(energy_firemode))
-		return null
+		return GUN_FIRED_FAIL_INERT
 	var/effective_power_use = isnull(energy_firemode.charge_cost) ? charge_cost : energy_firemode.charge_cost
 	if(effective_power_use)
 		if(!obj_cell_slot?.checked_use(effective_power_use))
-			return null
+			return GUN_FIRED_FAIL_EMPTY
 	return energy_firemode.instance_projectile()
 
 /obj/item/gun/projectile/energy/proc/get_external_power_supply()
@@ -262,14 +262,16 @@
 
 //* Ammo *//
 
-/obj/item/gun/projectile/energy/get_ammo_ratio()
+/obj/item/gun/projectile/energy/get_ammo_ratio(rounded)
 	var/obj/item/cell/cell = obj_cell_slot.cell
 	if(!cell)
 		return 0
 	var/estimated_cost = get_estimated_charge_cost()
 	if(!estimated_cost)
 		return 1
-	return floor(cell.charge / estimated_cost) / floor(cell.maxcharge / estimated_cost)
+	if(rounded)
+		return floor(cell.charge / estimated_cost) / floor(cell.maxcharge / estimated_cost)
+	return cell.charge / cell.maxcharge
 
 /**
  * Estimates how many shots the gun's power supply has charge for

@@ -1,11 +1,11 @@
 /datum/firemode/energy/energy_gun
 	abstract_type = /datum/firemode/energy/energy_gun
-	cycle_cooldown = 1 SECONDS
 
 /datum/firemode/energy/energy_gun/stun
 	name = "stun"
 	projectile_type = /obj/projectile/beam/stun/med
 	charge_cost = 2400 / 10
+	cycle_cooldown = 0.4 SECONDS
 	legacy_direct_varedits = list(
 		"modifystate" = "energystun",
 	)
@@ -14,6 +14,7 @@
 	name = "lethal"
 	projectile_type = /obj/projectile/beam
 	charge_cost = 2400 / 5
+	cycle_cooldown = 0.8 SECONDS
 	legacy_direct_varedits = list(
 		"modifystate" = "energykill",
 	)

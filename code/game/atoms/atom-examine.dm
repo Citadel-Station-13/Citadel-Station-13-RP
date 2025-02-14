@@ -49,6 +49,9 @@
  * * user - who's examining. can be null
  * * dist - effective distance of examine, usually from user to src.
  */
+// todo: examine(datum/event_args/examine/e_args)
+// todo: standard controls / ui/ux help
+// todo: examine_more()?
 /atom/proc/examine(mob/user, dist = 1)
 	var/examine_string = get_examine_string(user, thats = TRUE)
 	if(examine_string)
