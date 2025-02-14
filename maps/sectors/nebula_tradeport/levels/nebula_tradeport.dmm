@@ -929,7 +929,7 @@
 	dir = 8
 	},
 /obj/structure/table/steel_reinforced,
-/obj/item/gun/ballistic/automatic/as24{
+/obj/item/gun/projectile/ballistic/automatic/as24{
 	desc = "Never ask to speak to the manager.";
 	name = "Kate"
 	},
@@ -3474,7 +3474,7 @@
 	req_access = list(160)
 	},
 /obj/structure/table/marble,
-/obj/item/gun/energy/decloner,
+/obj/item/gun/projectile/energy/decloner,
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
@@ -3825,7 +3825,7 @@
 	dir = 8
 	},
 /obj/structure/table/wooden_reinforced,
-/obj/item/gun/energy/netgun,
+/obj/item/gun/projectile/energy/netgun,
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/safari)
 "ajX" = (
@@ -5923,7 +5923,7 @@
 "apM" = (
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/frontier/taj,
+/obj/item/gun/projectile/energy/frontier/taj,
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
 "apN" = (
@@ -7907,7 +7907,7 @@
 	req_access = list(160)
 	},
 /obj/structure/table/marble,
-/obj/item/gun/energy/alien,
+/obj/item/gun/projectile/energy/alien,
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
@@ -8203,7 +8203,7 @@
 	req_access = list(160)
 	},
 /obj/structure/table/marble,
-/obj/item/gun/energy/gun/fluff/dominator,
+/obj/item/gun/projectile/energy/gun/fluff/dominator,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cyndishow)
 "avG" = (
@@ -10781,7 +10781,7 @@
 	dir = 1
 	},
 /obj/structure/table/marble,
-/obj/item/gun/ballistic/shotgun/pump/JSDF{
+/obj/item/gun/projectile/ballistic/shotgun/pump/JSDF{
 	desc = "The Iceman cometh.";
 	name = "mercenary tactical shotgun"
 	},
@@ -13226,9 +13226,9 @@
 /obj/structure/closet/crate/secure/weapon{
 	req_access = list(160)
 	},
-/obj/item/gun/energy/civtas,
-/obj/item/gun/energy/civtas,
-/obj/item/gun/energy/civtas,
+/obj/item/gun/projectile/energy/civtas,
+/obj/item/gun/projectile/energy/civtas,
+/obj/item/gun/projectile/energy/civtas,
 /obj/random/energy,
 /obj/random/handgun,
 /obj/random/weapon/guarenteed,
@@ -14050,8 +14050,8 @@
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/table/rack/shelf/steel,
 /obj/item/storage/box/survival_knife,
-/obj/item/gun/energy/stripper,
-/obj/item/gun/energy/sizegun,
+/obj/item/gun/projectile/energy/stripper,
+/obj/item/gun/projectile/energy/sizegun,
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
 "aKS" = (
@@ -14361,7 +14361,7 @@
 	dir = 1
 	},
 /obj/structure/bookcase,
-/obj/item/gun/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
 /turf/simulated/floor/wood,
 /area/shuttle/trade_ship/general)
 "aLL" = (
@@ -14583,8 +14583,8 @@
 /obj/structure/closet/crate/secure/weapon{
 	req_access = list(160)
 	},
-/obj/item/gun/energy/phasegun/pistol,
-/obj/item/gun/energy/phasegun/pistol,
+/obj/item/gun/projectile/energy/phasegun/pistol,
+/obj/item/gun/projectile/energy/phasegun/pistol,
 /obj/random/weapon/guarenteed,
 /obj/random/energy,
 /obj/random/energy,
@@ -17152,7 +17152,7 @@
 	req_access = list(160)
 	},
 /obj/structure/table/marble,
-/obj/item/gun/energy/gun/fluff/gunsword,
+/obj/item/gun/projectile/energy/gun/fluff/gunsword,
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
 	},

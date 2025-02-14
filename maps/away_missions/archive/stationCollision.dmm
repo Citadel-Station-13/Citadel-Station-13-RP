@@ -657,7 +657,7 @@
 /obj/item/clothing/suit/armor/riot,
 /obj/item/clothing/head/helmet/swat,
 /obj/effect/decal/remains/human,
-/obj/item/gun/energy/laser/practice,
+/obj/item/gun/projectile/energy/laser/practice,
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "dj" = (
@@ -668,7 +668,7 @@
 /obj/item/clothing/suit/armor/riot,
 /obj/item/clothing/head/helmet/swat,
 /obj/effect/decal/remains/human,
-/obj/item/gun/energy/laser/practice,
+/obj/item/gun/projectile/energy/laser/practice,
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "dk" = (
@@ -815,7 +815,7 @@
 /obj/item/clothing/suit/armor/riot,
 /obj/item/clothing/head/helmet/swat,
 /obj/effect/decal/remains/human,
-/obj/item/gun/energy/laser/practice,
+/obj/item/gun/projectile/energy/laser/practice,
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "dK" = (
@@ -1250,12 +1250,12 @@
 /area/awaymission/research)
 "fD" = (
 /obj/structure/table/holotable,
-/obj/item/gun/energy/floragun{
+/obj/item/gun/projectile/energy/floragun{
 	pixel_x = 2;
 	pixel_y = 3
 	},
 /obj/machinery/light,
-/obj/item/gun/energy/taser{
+/obj/item/gun/projectile/energy/taser{
 	pixel_x = -2;
 	pixel_y = -2
 	},
@@ -1279,7 +1279,7 @@
 	},
 /obj/item/clothing/shoes/syndigaloshes,
 /obj/effect/debris/cleanable/blood/splatter,
-/obj/item/gun/ballistic/silenced,
+/obj/item/gun/projectile/ballistic/silenced,
 /turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "fH" = (
@@ -1426,7 +1426,7 @@
 /obj/item/clothing/under/rank/captain,
 /obj/effect/decal/remains/human,
 /obj/effect/debris/cleanable/blood/splatter,
-/obj/item/gun/energy/retro,
+/obj/item/gun/projectile/energy/retro,
 /turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "gk" = (
@@ -1590,7 +1590,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/debris/cleanable/blood/splatter,
-/obj/item/gun/ballistic/shotgun/pump,
+/obj/item/gun/projectile/ballistic/shotgun/pump,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "gJ" = (
@@ -1826,7 +1826,7 @@
 	dir = 8
 	},
 /obj/item/clothing/suit/space/syndicate,
-/obj/item/gun/ballistic/shotgun/pump,
+/obj/item/gun/projectile/ballistic/shotgun/pump,
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "hA" = (
@@ -2068,7 +2068,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/item/gun/ballistic/automatic/c20r,
+/obj/item/gun/projectile/ballistic/automatic/c20r,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "im" = (
@@ -2135,7 +2135,7 @@
 /obj/item/ammo_casing/a10mm,
 /obj/item/clothing/under/syndicate,
 /obj/effect/debris/cleanable/blood/splatter,
-/obj/item/gun/ballistic/automatic/c20r,
+/obj/item/gun/projectile/ballistic/automatic/c20r,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "iC" = (
@@ -2154,7 +2154,7 @@
 /obj/item/ammo_casing/a10mm,
 /obj/item/clothing/under/syndicate,
 /obj/effect/debris/cleanable/blood/splatter,
-/obj/item/gun/ballistic/automatic/c20r,
+/obj/item/gun/projectile/ballistic/automatic/c20r,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "iE" = (

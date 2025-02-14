@@ -559,7 +559,7 @@
 /obj/structure/table/reinforced,
 /obj/item/melee/baton/loaded,
 /obj/item/melee/baton/loaded,
-/obj/item/gun/energy/taser,
+/obj/item/gun/projectile/energy/taser,
 /obj/machinery/camera/network/crescent,
 /turf/simulated/floor/tiled,
 /area/centcom/simulated/security)
@@ -3722,7 +3722,7 @@
 "Ej" = (
 /obj/structure/closet/secure_closet/nanotrasen_security,
 /obj/item/storage/box/handcuffs,
-/obj/item/gun/energy/gun,
+/obj/item/gun/projectile/energy/gun,
 /obj/item/shield/riot,
 /turf/simulated/floor/tiled,
 /area/centcom/simulated/security)
