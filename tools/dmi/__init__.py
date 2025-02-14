@@ -1,5 +1,6 @@
 # Tools for working with modern DreamMaker icon files (PNGs + metadata)
 
+import colorsys
 import math
 
 import PIL
@@ -340,6 +341,41 @@ class DmiTransformPipeline:
         self.dmi = dmi
         self.path = path
 
+    def lighten_state(self, name: str | list[str], ratio: float) -> DmiTransformPipeline:
+        if type(name) == "str":
+            self.dmi.states = [DmiTransformPipeline._lighten_state(s, ratio) if s.name == name else s for s in self.dmi.states]
+        else:
+            self.dmi.states = [DmiTransformPipeline._lighten_state(s, ratio) if s.name in name else s for s in self.dmi.states]
+        return self
+
+    def _lighten_state(state: State, ratio: float) -> State:
+        state.frames = [DmiTransformPipeline._lighten_image(f, ratio) for f in state.frames]
+        return state
+
+    '''
+    Lightens an image. This is not in-place.
+    Accepts a ratio of 'distance to white' to change.
+    Ratio may be 0 to 1.
+    '''
+    def _lighten_image(image: Image.Image, ratio: float) -> Image.Image:
+        if(ratio == 0):
+            return image.copy()
+        if(ratio > 1):
+            raise ValueError("Ratio is not within bounds.")
+
+        image = image.copy()
+
+        # todo: use np, make this fast
+        for x in range(image.width):
+            for y in range(image.height):
+                (r, g, b, a) = image.getpixel((x, y))
+                (h, s, v) = colorsys.rgb_to_hsv(r / 255, g / 255, b / 255)
+                v = v + (1 - v) * ratio
+                (r, g, b) = colorsys.hsv_to_rgb(h, s, v)
+                image.putpixel((x, y), (round(r * 255), round(g * 255), round(b * 255), a))
+
+        return image
+
     def greyscale_all_states(self) -> DmiTransformPipeline:
 
         for state in self.dmi.states:
@@ -347,22 +383,16 @@ class DmiTransformPipeline:
 
         return self
 
-    def greyscale_state(self, name: str) -> DmiTransformPipeline:
-
-        found: State = None
-        for state in self.dmi.states:
-            if state.name == name:
-                found = state
-
-        if not found:
-            raise Exception("cannot find state with name {}".format(name))
-
-        DmiTransformPipeline._greyscale_state(found)
-
+    def greyscale_state(self, name: str | list[str]) -> DmiTransformPipeline:
+        if type(name) == "str":
+            self.dmi.states = [DmiTransformPipeline._greyscale_state(s) if s.name == name else s for s in self.dmi.states]
+        else:
+            self.dmi.states = [DmiTransformPipeline._greyscale_state(s) if s.name in name else s for s in self.dmi.states]
         return self
 
-    def _greyscale_state(state: State):
+    def _greyscale_state(state: State) -> State:
         state.frames = [DmiTransformPipeline._greyscale_image(f) for f in state.frames]
+        return state
 
     '''
     Greyscales an image. This is not in-place.
