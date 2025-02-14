@@ -14,7 +14,7 @@
 	damage_flag = ARMOR_ENERGY
 	armor_penetration = 15
 
-	var/impact_sound = 'sound/effects/uncloak.ogg'
+	impact_sound = 'sound/effects/uncloak.ogg'
 	var/crack_sound = 'sound/effects/teleport.ogg'
 	fire_sound = 'sound/effects/zzzt.ogg'
 
@@ -99,7 +99,6 @@
 			return
 
 /obj/projectile/energy/hook/proc/perform_intent_unique(atom/target)
-	playsound(src, impact_sound, 40, 1)
 	var/success = FALSE
 	if(istype(target,/turf))
 		if(launcher_intent)

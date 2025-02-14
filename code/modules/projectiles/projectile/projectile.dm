@@ -1335,5 +1335,26 @@
 /**
  * Resolve SFX to pass into playsound, if defaulting to us
  */
-/obj/projectile/proc/resolve_sfx()
+/obj/projectile/proc/resolve_fire_sfx()
 	return get_sfx(fire_sound)
+
+/**
+ * Resolve impact SFX
+ *
+ * @params
+ * * fx_classifier - (optional) COMBAT_IMPACT_FX_* enum
+ * * impacting - (optional) the thing we're hitting
+ */
+/obj/projectile/proc/resolve_impact_sfx(fx_classifier = COMBAT_IMPACT_FX_GENERIC, atom/impacting)
+	// 1. impact sound is null
+	if(isnull(impact_sound))
+		return
+	// 2. impact sound is a list
+	if(islist(impact_sound) && length(impact_sound))
+		return get_sfx(pick(impact_sound))
+	// 3. impact sound is a single thing
+	// 3a. lookup from globals (handle enums)
+	var/resolved = GLOB.projectile_impact_sfx_lut[fx_classifier][impact_sound]
+	#warn impl
+	// 3b. just resolve as sfx
+	return get_sfx(impact_sound)

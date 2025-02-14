@@ -58,7 +58,7 @@
 	var/shot_sound = fire_sound
 
 	if(!shot_sound && istype(P)) // If the gun didn't have a fire_sound, but the projectile exists, and has a sound...
-		shot_sound = P.resolve_sfx()
+		shot_sound = P.resolve_fire_sfx()
 	if(!shot_sound) // If there's still no sound...
 		return
 

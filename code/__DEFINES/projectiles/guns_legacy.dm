@@ -11,9 +11,6 @@
 #define SPEEDLOADER 	2
 ///The magazine item itself goes inside the gun
 #define MAGAZINE 		4
-#define BULLET_IMPACT_NONE  "none"
-#define BULLET_IMPACT_METAL "metal"
-#define BULLET_IMPACT_MEAT  "meat"
 
 // safety states
 /// no safeties are on this gun
