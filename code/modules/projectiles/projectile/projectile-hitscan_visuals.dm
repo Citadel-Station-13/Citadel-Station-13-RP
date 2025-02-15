@@ -150,62 +150,61 @@
 	QDEL_LIST_IN(created, duration)
 
 	// if tracer icon exists, use new rendering system
-	if(tracer_icon)
-		if(tracer_state_beam)
-			for(var/i in 1 to length(tracer_vertices) - 1)
-				var/j = i + 1
-				var/datum/point/point_a = tracer_vertices[i]
-				var/datum/point/point_b = tracer_vertices[j]
-				if(tracer_state_beam_use_tiling)
-					// fucked up
-					var/total_pixel_length = pixel_length_between_points(point_a, point_b)
-					var/tracer_angle = angle_between_points(point_a, point_b)
-					var/dx = sin(tracer_angle)
-					var/dy = cos(tracer_angle)
-					var/iterations = total_pixel_length / WORLD_ICON_SIZE
-					iterations = CEILING(iterations, 1)
-					for(var/iter in 0 to iterations)
-						var/resultant_x = (point_a.x + dx * iter * WORLD_ICON_SIZE) / WORLD_ICON_SIZE
-						var/resultant_y = (point_a.y + dy * iter * WORLD_ICON_SIZE) / WORLD_ICON_SIZE
-						var/turf/resultant_turf = locate(
-							round(resultant_x),
-							round(resultant_y),
-							point_a.z,
-						)
-						var/resultant_px = resultant_x % WORLD_ICON_SIZE
-						if(!resultant_px)
-							resultant_px = WORLD_ICON_SIZE * 0.5
-						else
-							resultant_px -= WORLD_ICON_SIZE * 0.5
-						var/resultant_py = resultant_y % WORLD_ICON_SIZE
-						if(!resultant_py)
-							resultant_py = WORLD_ICON_SIZE * 0.5
-						else
-							resultant_py -= WORLD_ICON_SIZE * 0.5
-						if(resultant_turf)
-							created += new /atom/movable/render/projectile_tracer/segment(resultant_turf, tracer_icon, tracer_state_beam, tracer_angle, resultant_px, resultant_py, color, tracer_auto_emissive_strength)
-				else
-					var/datum/point/midpoint = point_midpoint_points(point_a, point_b)
-					var/turf/midpoint_turf = midpoint.return_turf()
-					var/midpoint_px = midpoint.return_px()
-					var/midpoint_py = midpoint.return_py()
-					var/tracer_angle = angle_between_points(point_a, point_b)
-					if(midpoint_turf)
-						created += new /atom/movable/render/projectile_tracer/line(midpoint_turf, tracer_icon, tracer_state_beam, tracer_angle, midpoint_px, midpoint_py, color, tracer_auto_emissive_strength, pixel_length_between_points(point_a, point_b))
-		if(tracer_state_muzzle && tracer_muzzle_flash)
+	if(tracer_icon && tracer_icon_state)
+		for(var/i in 1 to length(tracer_vertices) - 1)
+			var/j = i + 1
+			var/datum/point/point_a = tracer_vertices[i]
+			var/datum/point/point_b = tracer_vertices[j]
+			if(tracer_is_tiled)
+				// fucked up
+				var/total_pixel_length = pixel_length_between_points(point_a, point_b)
+				var/tracer_angle = angle_between_points(point_a, point_b)
+				var/dx = sin(tracer_angle)
+				var/dy = cos(tracer_angle)
+				var/iterations = total_pixel_length / WORLD_ICON_SIZE
+				iterations = CEILING(iterations, 1)
+				for(var/iter in 0 to iterations)
+					var/resultant_x = (point_a.x + dx * iter * WORLD_ICON_SIZE) / WORLD_ICON_SIZE
+					var/resultant_y = (point_a.y + dy * iter * WORLD_ICON_SIZE) / WORLD_ICON_SIZE
+					var/turf/resultant_turf = locate(
+						round(resultant_x),
+						round(resultant_y),
+						point_a.z,
+					)
+					var/resultant_px = resultant_x % WORLD_ICON_SIZE
+					if(!resultant_px)
+						resultant_px = WORLD_ICON_SIZE * 0.5
+					else
+						resultant_px -= WORLD_ICON_SIZE * 0.5
+					var/resultant_py = resultant_y % WORLD_ICON_SIZE
+					if(!resultant_py)
+						resultant_py = WORLD_ICON_SIZE * 0.5
+					else
+						resultant_py -= WORLD_ICON_SIZE * 0.5
+					if(resultant_turf)
+						created += new /atom/movable/render/projectile_tracer/segment(resultant_turf, tracer_icon, "[tracer_icon_state]-beam", tracer_angle, resultant_px, resultant_py, color, tracer_emissive_strength)
+			else
+				var/datum/point/midpoint = point_midpoint_points(point_a, point_b)
+				var/turf/midpoint_turf = midpoint.return_turf()
+				var/midpoint_px = midpoint.return_px()
+				var/midpoint_py = midpoint.return_py()
+				var/tracer_angle = angle_between_points(point_a, point_b)
+				if(midpoint_turf)
+					created += new /atom/movable/render/projectile_tracer/line(midpoint_turf, tracer_icon, "[tracer_icon_state]-beam", tracer_angle, midpoint_px, midpoint_py, color, tracer_emissive_strength, pixel_length_between_points(point_a, point_b))
+		if(tracer_muzzle_flash)
 			var/datum/point/starting = tracer_vertices[1]
 			var/turf/starting_turf = starting.return_turf()
 			if(starting_turf)
 				var/starting_px = starting.return_px()
 				var/starting_py = starting.return_py()
-				created += new /atom/movable/render/projectile_tracer/muzzle(starting_turf, tracer_icon, tracer_state_muzzle, original_angle, starting_px, starting_py, color, tracer_auto_emissive_strength)
-		if(tracer_state_impact && tracer_impact_effect)
+				created += new /atom/movable/render/projectile_tracer/muzzle(starting_turf, tracer_icon, "[tracer_icon_state]-muzzle", original_angle, starting_px, starting_py, color, tracer_emissive_strength)
+		if(tracer_impact_effect)
 			var/datum/point/ending = tracer_vertices[length(tracer_vertices)]
 			var/turf/ending_turf = ending.return_turf()
 			if(ending_turf)
 				var/ending_px = ending.return_px()
 				var/ending_py = ending.return_py()
-				created += new /atom/movable/render/projectile_tracer/impact(ending_turf, tracer_icon, tracer_state_impact, angle, ending_px, ending_py, color, tracer_auto_emissive_strength)
+				created += new /atom/movable/render/projectile_tracer/impact(ending_turf, tracer_icon, "[tracer_icon_state]-impact", angle, ending_px, ending_py, color, tracer_emissive_strength)
 		return
 
 	//! legacy below !//

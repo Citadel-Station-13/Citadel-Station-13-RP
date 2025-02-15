@@ -127,9 +127,7 @@
 	light_color = "#0066FF"
 
 	tracer_icon = 'icons/content/factions/corporations/nanotrasen/items/guns/nt_pulse-projectile.dmi'
-	tracer_state_muzzle = "pulse-muzzle"
-	tracer_state_impact = "pulse-impact"
-	tracer_state_beam = "pulse-beam"
+	tracer_icon_state = "pulse"
 
 	impact_sound = PROJECTILE_IMPACT_SOUNDS_ENERGY
 

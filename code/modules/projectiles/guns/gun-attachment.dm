@@ -5,7 +5,7 @@
  * Check if we can attach an attachment
  */
 /obj/item/gun/proc/can_install_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor, silent)
-	if(!attachment.attachment_slot || !attachment_alignment[attachment.attachment_slot])
+	if(!attachment.attachment_slot || !attachment_alignment?[attachment.attachment_slot])
 		if(!silent)
 			actor?.chat_feedback(
 				SPAN_WARNING("[attachment] won't fit anywhere on [src]!"),

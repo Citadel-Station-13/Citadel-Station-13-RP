@@ -227,28 +227,21 @@
 	/// Hitscan tracers - icon file
 	/// * Setting this to a file will enable new tracer rendering system.
 	var/tracer_icon
-	/// Muzzle state
-	/// * Muzzle state should be pointing NORTH, and non-directional
-	var/tracer_state_muzzle
-	/// Impact state
-	/// * impact state should be pointing NORTH, and non-directional
-	var/tracer_state_impact
-	/// Beam state
-	/// * Beam state should be pointing NORTH, and non-directional
-	/// * Beam will be stretched out
-	var/tracer_state_beam
-	/// Beam should be tiled instead of stretched
+	/// Tracer state
+	/// * We generate "-muzzle", "-beam", "-impact" from this state.
+	var/tracer_icon_state
+	/// The beam part of the tracer should be tiled instead of stretched
 	/// * This is more expensive than stretching.
 	/// * This does not always work perfectly as we currently cannot
 	///   truncate a pixel overflow.
-	var/tracer_state_beam_use_tiling = FALSE
+	var/tracer_is_tiled = FALSE
 	/// Tile every n pixels
 	/// * This is just the Y height of your beam sprite file, usually
-	var/tracer_state_beam_tile_interval = 32
-	/// Emissive glow strength of tracer (muzzle + beam + impact), from
-	/// 0 to 255
+	var/tracer_segment_length = 32
+	/// Emissive glow strength of tracer (muzzle + beam + impact), from 0 to 255
+	/// * This automatically makes the tracer emissive.
 	/// * Colored lighting is not currently natively supported
-	var/tracer_auto_emissive_strength = 192
+	var/tracer_emissive_strength = 192
 
 	//*                                          Submunitions                                                  *//
 	//* While projectile has procs to handle this, these vars are used automatically if 'submunitions' is set. *//
@@ -285,7 +278,6 @@
 	var/atom/original_target
 
 	//* SFX / VFX *//
-
 	/**
 	 * Default fire sound
 	 *

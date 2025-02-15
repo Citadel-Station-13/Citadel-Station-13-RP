@@ -82,6 +82,12 @@
 		use_color = TRUE;
 		use_empty = TRUE;
 	}
+	attachment_alignment = list(
+		GUN_ATTACHMENT_SLOT_SIDEBARREL = list(
+			28,
+			14,
+		)
+	)
 
 /obj/item/gun/projectile/energy/nt_isd/sidearm/with_light
 	attachments = list(
@@ -258,9 +264,7 @@
 	damage_type = DAMAGE_TYPE_BURN
 	hitscan = TRUE
 	color = "#cc0000"
-	tracer_state_muzzle = "laser-1-muzzle"
-	tracer_state_beam = "laser-1-beam"
-	tracer_state_impact = "laser-1-beam"
+	tracer_icon_state = "laser-1"
 	fire_sound = /datum/soundbyte/laser_1
 
 /obj/projectile/nt_isd/laser/rifle
@@ -296,9 +300,7 @@
 /obj/projectile/nt_isd/shock
 	name = "energy beam"
 	color = "#ffff00"
-	tracer_state_muzzle = "discharge-1-muzzle"
-	tracer_state_beam = "discharge-1-beam"
-	tracer_state_impact = "discharge-1-beam"
+	tracer_icon_state = "discharge-1"
 	hitscan = TRUE
 	base_projectile_effects = list(
 		/datum/projectile_effect/electrical_impulse{
@@ -327,9 +329,7 @@
 /obj/projectile/nt_isd/disable
 	name = "disabler beam"
 	color = "#00ffff"
-	tracer_state_muzzle = "laser-1-muzzle"
-	tracer_state_beam = "laser-1-beam"
-	tracer_state_impact = "impact-1-beam"
+	tracer_icon_state = "laser-1"
 	hitscan = TRUE
 	agony = 25
 	fire_sound = /datum/soundbyte/disabler_1
