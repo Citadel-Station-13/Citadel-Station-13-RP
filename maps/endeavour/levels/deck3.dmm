@@ -721,10 +721,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/hanger)
-"ayZ" = (
-/obj/structure/railing,
-/turf/simulated/floor/plating,
-/area/vacant/vacant_shop)
 "azB" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -771,12 +767,18 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/toilet)
 "aAV" = (
-/obj/structure/catwalk,
-/obj/machinery/light/small{
+/obj/random/trash_pile,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/janitor)
+/area/space)
 "aBl" = (
 /obj/structure/closet/wardrobe,
 /obj/item/toy/plushie/black_cat,
@@ -942,8 +944,16 @@
 /turf/simulated/floor/plating,
 /area/crew_quarters/sleep/Dorm_13)
 "aGV" = (
-/turf/simulated/shuttle/wall/voidcraft/blue,
-/area/endeavour/hallway/d3portforhall)
+/obj/random/trash_pile,
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/space)
 "aHh" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -4096,9 +4106,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "cUA" = (
-/obj/random/trash_pile,
-/obj/structure/railing,
-/turf/simulated/floor/plating,
+/turf/simulated/shuttle/wall/voidcraft/blue,
 /area/vacant/vacant_shop)
 "cUM" = (
 /obj/structure/table/woodentable,
@@ -6136,7 +6144,8 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/sleep/cryo)
 "egL" = (
-/turf/simulated/wall/r_wall/prepainted,
+/obj/structure/sign/deck/third,
+/turf/simulated/shuttle/wall/voidcraft/blue,
 /area/janitor)
 "ehd" = (
 /obj/effect/floor_decal/corner/green{
@@ -7048,8 +7057,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/endeavour/hallway/d3fwdmaint)
 "eKq" = (
-/turf/simulated/shuttle/wall/voidcraft/blue,
-/area/endeavour/hallway/d3aftmaint)
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/vacant/vacant_shop)
 "eLl" = (
 /obj/structure/table/rack/shelf,
 /obj/item/radio{
@@ -7954,9 +7963,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/trash_pit)
-"fsu" = (
-/turf/simulated/open,
-/area/endeavour/hallway/d3afthall)
 "fsN" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -9069,9 +9075,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/space)
-"gfJ" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/endeavour/hallway/d3portforhall)
 "ggB" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/structure/curtain/open/bed{
@@ -10971,9 +10974,9 @@
 /turf/simulated/floor/tiled,
 /area/space)
 "hFO" = (
-/obj/random/trash_pile,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
-/area/vacant/vacant_shop)
+/area/space)
 "hFQ" = (
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/cable/orange{
@@ -11330,17 +11333,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/foyer)
 "hVe" = (
-/obj/random/trash_pile,
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
+/turf/simulated/open,
 /area/janitor)
 "hVo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -11519,8 +11512,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "iac" = (
-/turf/simulated/floor/holofloor/tiled/dark,
-/area/endeavour/hallway/d3afthall)
+/obj/structure/railing,
+/turf/simulated/floor/plating,
+/area/space)
 "iaj" = (
 /obj/structure/table/marble,
 /obj/machinery/cash_register/civilian{
@@ -12111,10 +12105,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
-"iEv" = (
-/obj/machinery/door/airlock/maintenance,
-/turf/simulated/floor/plating,
-/area/janitor)
 "iEz" = (
 /obj/effect/floor_decal/corner/red{
 	dir = 9
@@ -12277,7 +12267,7 @@
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/security/hallway)
 "iJC" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/turf/space/basic,
 /area/endeavour/station/stairs_three)
 "iJR" = (
 /obj/structure/plasticflaps/mining,
@@ -13356,10 +13346,6 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar/lounge)
-"jBe" = (
-/obj/structure/sign/deck/third,
-/turf/simulated/shuttle/wall/voidcraft/blue,
-/area/endeavour/hallway/d3afthall)
 "jBD" = (
 /obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/steel_grid,
@@ -14776,7 +14762,7 @@
 /turf/simulated/floor/tiled/white,
 /area/endeavour/hallway/d3aftmaint)
 "kEi" = (
-/turf/simulated/shuttle/wall/voidcraft/blue,
+/turf/space/basic,
 /area/maintenance/bar/lower)
 "kEF" = (
 /obj/structure/disposalpipe/segment{
@@ -15154,8 +15140,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/endeavour/hallway/d3portforhall)
 "kWu" = (
-/turf/simulated/wall/r_wall/prepainted/cargo,
-/area/janitor)
+/obj/random/trash_pile,
+/obj/structure/railing,
+/turf/simulated/floor/plating,
+/area/space)
 "kWJ" = (
 /obj/structure/table/woodentable,
 /obj/item/storage/box/donkpockets,
@@ -15271,11 +15259,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/endeavour/hallway/d3aftmaint)
-"laQ" = (
-/obj/machinery/floodlight,
-/obj/structure/railing,
-/turf/simulated/floor/plating,
-/area/vacant/vacant_shop)
 "lbQ" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/dark,
@@ -17373,12 +17356,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/warehouse)
-"mJK" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/vacant/vacant_shop)
 "mJQ" = (
 /obj/effect/floor_decal/techfloor,
 /obj/effect/floor_decal/techfloor/hole,
@@ -18003,9 +17980,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/brig)
 "nkL" = (
-/obj/structure/catwalk,
+/obj/machinery/floodlight,
+/obj/structure/railing,
 /turf/simulated/floor/plating,
-/area/janitor)
+/area/space)
 "nkT" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -18784,9 +18762,6 @@
 /obj/machinery/space_heater,
 /turf/simulated/floor/plating,
 /area/space)
-"nNf" = (
-/turf/simulated/shuttle/wall/voidcraft/blue,
-/area/endeavour/hallway/d3afthall)
 "nNj" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -20072,8 +20047,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "oFi" = (
-/turf/simulated/open,
-/area/endeavour/hallway/d3portforhall)
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/janitor)
 "oFk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -20180,17 +20155,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/space)
-"oIv" = (
-/obj/random/trash_pile,
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/janitor)
 "oIN" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -23042,9 +23006,6 @@
 /obj/effect/paint/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/refinery)
-"qOp" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/endeavour/hallway/d3aftmaint)
 "qOr" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -39400,8 +39361,8 @@ pRW
 pRW
 pRW
 pRW
-pRW
-pRW
+hFO
+eAp
 pRW
 pRW
 pRW
@@ -39594,8 +39555,8 @@ pRW
 pRW
 pRW
 pRW
-pRW
-pRW
+bfD
+bfD
 pRW
 pRW
 pRW
@@ -39788,8 +39749,8 @@ pRW
 pRW
 pRW
 pRW
-pRW
-pRW
+aGV
+bfD
 pRW
 pRW
 pRW
@@ -39982,8 +39943,8 @@ pRW
 pRW
 pRW
 pRW
-pRW
-pRW
+bfD
+bfD
 pRW
 pRW
 pRW
@@ -40176,8 +40137,8 @@ pRW
 pRW
 pRW
 pRW
-pRW
-pRW
+bLl
+aAV
 pRW
 pRW
 pRW
@@ -40370,8 +40331,8 @@ pRW
 pRW
 pRW
 pRW
-pRW
-pRW
+bfD
+bfD
 pRW
 pRW
 pRW
@@ -40564,8 +40525,8 @@ pRW
 pRW
 pRW
 pRW
-pRW
-pRW
+kWu
+bfD
 pRW
 pRW
 pRW
@@ -40758,8 +40719,8 @@ pRW
 pRW
 pRW
 pRW
-pRW
-pRW
+iac
+bfD
 pRW
 pRW
 pRW
@@ -40952,8 +40913,8 @@ pRW
 pRW
 pRW
 pRW
-pRW
-pRW
+nkL
+bfD
 pRW
 pRW
 pRW
@@ -41146,8 +41107,8 @@ pRW
 pRW
 pRW
 pRW
-pRW
-pRW
+nhl
+bfD
 pRW
 pRW
 pRW
@@ -41340,8 +41301,8 @@ pRW
 pRW
 pRW
 pRW
-pRW
-pRW
+suh
+bfD
 pRW
 pRW
 pRW
@@ -41534,8 +41495,8 @@ pRW
 pRW
 pRW
 pRW
-pRW
-pRW
+kcl
+bfD
 pRW
 pRW
 mDp
@@ -45247,8 +45208,8 @@ bgi
 sUU
 sUU
 pYt
-iEv
-egL
+vRH
+vRH
 vRH
 vRH
 vRH
@@ -45440,12 +45401,12 @@ wku
 hOP
 dZs
 fSM
-pYt
-nkL
-nkL
-vRH
 xbK
 ehv
+ehv
+xbK
+vRH
+vRH
 kEi
 iJC
 qHq
@@ -45634,14 +45595,14 @@ kRc
 rBZ
 fPt
 rpc
-pYt
-oIv
-nkL
-vRH
-nNf
-fsu
-fsu
-jBe
+ehv
+hVe
+hVe
+egL
+fnv
+fnv
+fnv
+fnv
 fnv
 fnv
 fnv
@@ -45828,14 +45789,14 @@ vge
 vqi
 voJ
 uAt
-pYt
-nkL
-nkL
-vRH
-nNf
-fsu
-fsu
-iac
+ehv
+hVe
+hVe
+oFi
+fnv
+fnv
+fnv
+fnv
 fnv
 fnv
 fnv
@@ -46022,14 +45983,14 @@ aNk
 mhK
 lcL
 lcL
-kWu
-aAV
+ehv
 hVe
-vRH
-nNf
-fsu
-fsu
-iac
+hVe
+oFi
+fnv
+fnv
+fnv
+fnv
 fnv
 fnv
 fnv
@@ -46216,14 +46177,14 @@ wku
 xMc
 ipU
 fhx
-kWu
-nkL
-nkL
-vRH
-aGV
-oFi
-oFi
-eKq
+ehv
+hVe
+hVe
+ehv
+rqN
+rqN
+rqN
+gFU
 gFU
 gFU
 gFU
@@ -46410,14 +46371,14 @@ ffP
 qJd
 nUf
 yhJ
-lcL
+eKq
 cUA
-xHY
-mfm
-gfJ
-aGV
-aGV
-qOp
+cUA
+eKq
+rqN
+rqN
+rqN
+gFU
 gFU
 gFU
 gFU
@@ -46605,8 +46566,8 @@ smo
 lEF
 jQE
 lcL
-ayZ
-xHY
+mfm
+mfm
 mfm
 rqN
 rqN
@@ -46799,8 +46760,8 @@ dpX
 hvX
 xyD
 lcL
-laQ
-xHY
+mfm
+mfm
 mfm
 rqN
 rqN
@@ -46993,8 +46954,8 @@ goX
 oxG
 muK
 lcL
-prq
-xHY
+mfm
+mfm
 mfm
 rqN
 rqN
@@ -47187,8 +47148,8 @@ xUN
 gea
 wss
 lcL
-hFO
-xHY
+mfm
+mfm
 mfm
 rqN
 rqN
@@ -47381,8 +47342,8 @@ pdT
 sNE
 lVp
 lcL
-mJK
-xHY
+mfm
+mfm
 mfm
 rqN
 rqN

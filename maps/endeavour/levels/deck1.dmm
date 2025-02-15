@@ -12,7 +12,7 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1portamidhall)
 "abs" = (
-/turf/simulated/open,
+/turf/space/basic,
 /area/endeavour/hallway/d1afthall)
 "abD" = (
 /obj/machinery/light,
@@ -4744,7 +4744,7 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1fwdmaint)
 "dMB" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/turf/space/basic,
 /area/crew_quarters/heads/hop)
 "dNj" = (
 /obj/structure/cable/green{
@@ -5628,8 +5628,8 @@
 /turf/simulated/wall/r_wall/prepainted/exploration,
 /area/exploration/showers)
 "evm" = (
-/turf/simulated/shuttle/wall/voidcraft/blue,
-/area/endeavour/hallway/d1portforhall)
+/turf/simulated/open,
+/area/endeavour/hallway/d1aftmaint)
 "evs" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/ship_munition/disperser_charge/fire,
@@ -6525,8 +6525,7 @@
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "eZR" = (
-/obj/structure/closet/emcloset,
-/turf/simulated/floor/plating,
+/turf/simulated/open,
 /area/exploration)
 "eZZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -16582,7 +16581,7 @@
 /area/endeavour/hallway/d1fwdhall)
 "mAo" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/endeavour/hallway/d1afthall)
+/area/exploration)
 "mBp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -22195,8 +22194,8 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
 "qOk" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/endeavour/hallway/d1portforhall)
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/endeavour/hallway/d1aftmaint)
 "qOl" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -25126,8 +25125,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "tfY" = (
-/turf/simulated/floor/plating,
-/area/exploration)
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/exploration/pathfinder_office)
 "tgG" = (
 /obj/machinery/door/airlock/glass_external{
 	name = "Courser Hangar";
@@ -25882,14 +25881,7 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/surfacebase/tram)
 "tGb" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/door/airlock/maintenance/common,
-/obj/machinery/door/firedoor{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
+/turf/simulated/shuttle/wall/voidcraft/blue,
 /area/exploration)
 "tGh" = (
 /obj/structure/cable/green{
@@ -27921,7 +27913,7 @@
 /area/rnd/research/testingrange)
 "vdw" = (
 /turf/simulated/shuttle/wall/voidcraft/blue,
-/area/endeavour/hallway/d1afthall)
+/area/exploration/pathfinder_office)
 "vdz" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -28964,7 +28956,7 @@
 /area/space)
 "vQw" = (
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/crew_quarters/heads/hop)
+/area/exploration)
 "vQN" = (
 /obj/effect/floor_decal/sign/a,
 /turf/simulated/wall/r_wall/prepainted,
@@ -29892,12 +29884,8 @@
 /turf/simulated/floor/glass/reinforced,
 /area/endeavour/hallway/d1fwdhall)
 "wzh" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/exploration)
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/endeavour/hallway/d1aftmaint)
 "wzN" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -31380,7 +31368,7 @@
 /area/maintenance/substation/dock)
 "xNZ" = (
 /turf/simulated/shuttle/wall/voidcraft/blue,
-/area/crew_quarters/heads/hop)
+/area/endeavour/hallway/d1aftmaint)
 "xOD" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central7,
 /obj/structure/cable/green{
@@ -43566,14 +43554,14 @@ qQg
 poP
 ffU
 qTj
-bMm
+mAo
 tGb
-cqc
-cqc
+tGb
 mAo
-vdw
-vdw
-mAo
+abs
+abs
+abs
+abs
 kHh
 arx
 hQD
@@ -43760,14 +43748,14 @@ aID
 ubd
 ihG
 nwQ
-bMm
-wzh
+tGb
 eZR
-cqc
-vdw
+eZR
+tGb
 abs
 abs
-vdw
+abs
+abs
 gXo
 arx
 hQD
@@ -43954,14 +43942,14 @@ lcn
 gGO
 cgw
 qvM
-bMm
-wzh
-tfY
-cqc
-evm
-iLD
-iLD
+tGb
+eZR
+eZR
 vQw
+xdS
+xdS
+xdS
+dMB
 lQO
 oVo
 nFx
@@ -44148,14 +44136,14 @@ evV
 lQM
 ugn
 bmL
-qTj
-gPV
-wim
-aNK
+vdw
 evm
-iLD
-iLD
-vQw
+evm
+qOk
+xdS
+xdS
+xdS
+dMB
 lQO
 oVo
 nFx
@@ -44342,14 +44330,14 @@ trI
 trI
 qey
 emL
-qTj
-gPV
-wim
-aNK
+vdw
 evm
-iLD
-iLD
+evm
 xNZ
+xdS
+xdS
+xdS
+dMB
 lQO
 oVo
 nFx
@@ -44536,13 +44524,13 @@ xaF
 tIH
 xzr
 jAa
-qTj
-gPV
-wLB
-npN
-qOk
-evm
-evm
+tfY
+xNZ
+xNZ
+wzh
+xdS
+xdS
+xdS
 dMB
 lQO
 oVo

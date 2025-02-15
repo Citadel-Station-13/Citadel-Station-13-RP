@@ -956,7 +956,7 @@
 /area/medical/psych_ward)
 "aFN" = (
 /turf/simulated/shuttle/wall/voidcraft/blue,
-/area/endeavour/hallway/d2portafthall)
+/area/rnd/research/researchdivision)
 "aGm" = (
 /obj/structure/closet/crate,
 /obj/random/maintenance/engineering,
@@ -1334,9 +1334,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2aftmaint)
-"aXF" = (
-/turf/simulated/open,
-/area/endeavour/hallway/d2portafthall)
 "aYt" = (
 /obj/structure/cable/orange{
 	icon_state = "1-2"
@@ -5572,8 +5569,8 @@
 /turf/simulated/floor/tiled,
 /area/maintenance/medbay/aft)
 "dyQ" = (
-/turf/simulated/floor/holofloor/tiled/dark,
-/area/crew_quarters/cafeteria)
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/rnd/research/researchdivision)
 "dyS" = (
 /obj/machinery/door/blast/regular,
 /obj/machinery/atmospheric_field_generator/perma,
@@ -6654,8 +6651,8 @@
 /turf/simulated/floor/plating,
 /area/medical/patient_wing)
 "ehC" = (
-/turf/simulated/shuttle/wall/voidcraft/blue,
-/area/crew_quarters/cafeteria)
+/turf/simulated/open,
+/area/rnd/reception_desk)
 "ehP" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -9909,8 +9906,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
 "goH" = (
-/obj/effect/floor_decal/borderfloorblack,
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/rnd/reception_desk)
 "goI" = (
 /obj/structure/table/steel_reinforced,
@@ -11779,15 +11775,9 @@
 /turf/simulated/floor/reinforced,
 /area/maintenance/research/lower)
 "huY" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 4
-	},
-/obj/map_helper/access_helper/airlock/station/public,
-/obj/machinery/door/airlock/glass/research{
-	name = "R&D Distribution Area"
-	},
+/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled,
-/area/crew_quarters/cafeteria)
+/area/maintenance/medbay/aft)
 "hve" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 5
@@ -27319,8 +27309,8 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/surgeryprep)
 "reF" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/endeavour/hallway/d2portafthall)
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/rnd/reception_desk)
 "reX" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 4
@@ -27896,7 +27886,7 @@
 /area/assembly/robotics/surgery)
 "rBK" = (
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/endeavour/hallway/d2portafthall)
+/area/rnd/research/researchdivision)
 "rCE" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/cable/orange{
@@ -28660,7 +28650,7 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/exploration/pilot_Office)
 "sdA" = (
-/turf/simulated/floor/plating,
+/turf/simulated/floor/holofloor/tiled/dark,
 /area/rnd/reception_desk)
 "seE" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -34412,8 +34402,8 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "vUa" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/crew_quarters/cafeteria)
+/turf/simulated/open,
+/area/rnd/research/researchdivision)
 "vUf" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -45923,9 +45913,9 @@ ooD
 pdM
 rOO
 qhg
-fcH
-fcH
-fcH
+huY
+huY
+huY
 ejI
 oaU
 hQy
@@ -49989,14 +49979,14 @@ aws
 kfO
 kfO
 kfO
-kfO
-kCt
-ydL
-ydL
-reF
+dyQ
 aFN
 aFN
-reF
+dyQ
+qwq
+qwq
+qwq
+qwq
 eHm
 eHm
 eHm
@@ -50183,14 +50173,14 @@ aws
 kfO
 kfO
 kfO
-kfO
-kCt
-ydL
-ydL
 aFN
-aXF
-aXF
+vUa
+vUa
 aFN
+qwq
+qwq
+qwq
+qwq
 eHm
 eHm
 eHm
@@ -50377,14 +50367,14 @@ aws
 kfO
 kfO
 kfO
-kfO
-kCt
-ydL
-ydL
 aFN
-aXF
-aXF
+vUa
+vUa
 rBK
+qwq
+qwq
+qwq
+qwq
 eHm
 eHm
 eHm
@@ -50571,14 +50561,14 @@ ckP
 nOJ
 nOJ
 nOJ
-nOJ
-whu
+reF
+ehC
+ehC
 sdA
-sdA
-aFN
-aXF
-aXF
-dyQ
+qwq
+qwq
+qwq
+bOx
 sud
 sud
 sud
@@ -50765,14 +50755,14 @@ hwg
 oWH
 nOJ
 nOJ
-nOJ
-whu
-sdA
-sdA
-aFN
-aXF
-aXF
+reF
 ehC
+ehC
+reF
+qwq
+qwq
+qwq
+bOx
 sud
 sud
 sud
@@ -50960,13 +50950,13 @@ oWH
 nOJ
 yfS
 goH
-whu
-sdA
-sdA
 reF
-aFN
-aFN
-vUa
+reF
+goH
+qwq
+qwq
+qwq
+bOx
 sud
 sud
 fhj
@@ -51157,12 +51147,12 @@ irM
 whu
 whu
 whu
-rkZ
-rkZ
-rkZ
-fZy
-huY
-huY
+qwq
+qwq
+qwq
+bOx
+bOx
+bOx
 fZy
 pWE
 qhk
