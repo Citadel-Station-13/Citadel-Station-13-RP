@@ -151,7 +151,8 @@
  * * This is a default hook that's always executed, even if there's a callback provided to the component.
  */
 /obj/item/proc/on_wield(mob/user, hands)
-	return
+	SHOULD_CALL_PARENT(TRUE)
+	update_worn_icon()
 
 /**
  * Called when wielded via wielding component.
@@ -161,6 +162,7 @@
  * * This is a default hook that's always executed, even if there's a callback provided to the component.
  */
 /obj/item/proc/on_unwield(mob/user, hands)
-	return
+	SHOULD_CALL_PARENT(TRUE)
+	update_worn_icon()
 
 

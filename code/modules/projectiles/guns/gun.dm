@@ -725,7 +725,7 @@
 
 	var/using_base_icon_state = base_icon_state || initial(icon_state)
 	var/using_base_worn_state = base_mob_state || initial(worn_state) || using_base_icon_state
-	var/using_ratio = get_ammo_ratio()
+	var/using_ratio = get_ammo_ratio(TRUE)
 	var/datum/firemode/using_firemode = firemode
 	var/using_color = get_firemode_color()
 

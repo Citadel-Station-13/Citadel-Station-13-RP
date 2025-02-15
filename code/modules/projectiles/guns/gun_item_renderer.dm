@@ -143,7 +143,7 @@
 			to_add += "[base_icon_state]-empty"
 	else
 		if(use_single)
-			var/single_state = "[base_icon_state][use_firemode ? (firemode_key ? firemode_key : "") : ""]"
+			var/single_state = "[base_icon_state][use_firemode ? (firemode_key ? firemode_key : "") : ""]-[ceil(count * ammo_ratio)]"
 			if(use_color)
 				var/image/colored_single_overlay = new /image
 				colored_single_overlay.icon_state = single_state

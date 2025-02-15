@@ -8,6 +8,7 @@
 	base_charge_cost = /obj/item/cell/device/weapon::maxcharge / 8 * 500
 	considered_lethal = TRUE
 	selection_name = "laser"
+	render_color = "#ff0000"
 
 	// todo: /obj/projectile/modular_energy/*
 	//       allows for easier runtime reflection

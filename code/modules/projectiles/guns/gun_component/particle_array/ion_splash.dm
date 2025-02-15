@@ -7,6 +7,7 @@
 
 	considered_lethal = FALSE
 	selection_name = "electromagnetic burst"
+	render_color = "#00ffff"
 
 	#warn charge
 

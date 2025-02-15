@@ -100,6 +100,9 @@
 
 /datum/gun_mob_renderer/overlays/render(obj/item/gun/gun, base_worn_state, ammo_ratio, firemode_key, firemode_color)
 	// todo: do we really need to always return TRUE and force an update?
+	gun.inhand_state = base_worn_state
+	if(render_slots)
+		gun.worn_state = gun.inhand_state
 	return TRUE
 
 /datum/gun_mob_renderer/overlays/render_overlays(obj/item/gun/gun, base_worn_state, ammo_ratio, firemode_key, firemode_color)
@@ -119,7 +122,7 @@
 			. += "[base_worn_state]-empty"
 	else
 		if(use_single)
-			var/single_state = "[base_worn_state][use_firemode ? (firemode_key ? firemode_key : "") : ""]"
+			var/single_state = "[base_worn_state][use_firemode ? (firemode_key ? firemode_key : "") : ""]-[ceil(count * ammo_ratio)]"
 			if(use_color)
 				var/image/colored_single_overlay = new /image
 				colored_single_overlay.icon_state = single_state

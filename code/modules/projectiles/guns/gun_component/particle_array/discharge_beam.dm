@@ -7,6 +7,7 @@
 
 	considered_lethal = TRUE
 	selection_name = "discharge beam"
+	render_color = "#ffff00"
 
 	#warn charge
 

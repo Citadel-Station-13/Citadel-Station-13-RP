@@ -64,7 +64,7 @@
 
 	// on cooldown: loudly fail
 	if(world.time < next_fire_cycle)
-		if(last_cooldown_message + 0.75 SECONDS < world.time)
+		if(max(last_cooldown_message, last_fire) + 0.75 SECONDS < world.time)
 			actor?.chat_feedback(
 				SPAN_WARNING("[src] is not ready to fire again!"),
 				target = src,

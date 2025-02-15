@@ -24,11 +24,12 @@ SUBSYSTEM_DEF(status_effects)
 		return
 	var/i
 	var/datum/status_effect/effect
+	// todo: this is mildly inefficient when there's a lot of slow-ticking status effects
 	for(i in 1 to length(to_tick))
 		effect = to_tick[i]
 		if(effect.tick_next > world.time)
 			continue
-		effect.tick(effect.tick_interval * 10)
+		effect.tick(effect.tick_interval * 0.1)
 		effect.tick_next = world.time + effect.tick_interval
 		if(MC_TICK_CHECK_USAGE) // effect.tick() is SHOULD NOT SLEEP.
 			return

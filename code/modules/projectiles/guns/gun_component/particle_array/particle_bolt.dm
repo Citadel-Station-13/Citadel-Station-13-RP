@@ -7,6 +7,7 @@
 
 	considered_lethal = TRUE
 	selection_name = "bolt"
+	render_color = "#ff0000"
 
 	#warn charge
 

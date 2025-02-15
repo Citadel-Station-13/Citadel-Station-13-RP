@@ -7,6 +7,7 @@
 
 	considered_lethal = TRUE
 	selection_name = "coherent ion"
+	render_color = "#ffffff"
 
 	#warn charge
 

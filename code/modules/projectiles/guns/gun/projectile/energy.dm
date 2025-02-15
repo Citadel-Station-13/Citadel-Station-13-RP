@@ -239,18 +239,7 @@
 				lethal_safety_action.grant(inv_inside.actions)
 
 /obj/item/gun/projectile/energy/proc/reconsider_lethal_safety_action()
-	var/has_lethal_modes = FALSE
-
-	for(var/datum/firemode/energy/firemode in firemodes)
-		if(firemode.considered_lethal)
-			has_lethal_modes = TRUE
-			break
-	if(!has_lethal_modes)
-		if(modular_system)
-			for(var/obj/item/gun_component/particle_array/particle_array in modular_components)
-				if(particle_array.considered_lethal)
-					has_lethal_modes = TRUE
-					break
+	var/has_lethal_modes = has_lethal_modes || has_lethal_firemode()
 
 	if(!has_lethal_modes)
 		QDEL_NULL(lethal_safety_action)

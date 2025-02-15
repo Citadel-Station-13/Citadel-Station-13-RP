@@ -38,7 +38,7 @@
 	base_icon_state = "rifle"
 	rendering_static_overlay = "rifle-stripe"
 
-	rendering_system = GUN_RENDERING_STATES
+	rendering_system = GUN_RENDERING_SEGMENTS
 	rendering_count = 6
 	rendering_segment_x_offset = -2
 
