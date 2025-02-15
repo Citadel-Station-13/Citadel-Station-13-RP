@@ -330,7 +330,9 @@
 	for(var/i in 1 to firemodes.len)
 		var/key = firemodes[i]
 		if(islist(key))
-			firemodes[i] = new /datum/firemode(src, key)
+			// todo: i'm so so sorry
+			var/firemode_type = istype(src, /obj/item/gun/projectile/energy) ? /datum/firemode/energy : /datum/firemode
+			firemodes[i] = new firemode_type(src, key)
 		else if(IS_ANONYMOUS_TYPEPATH(key))
 			firemodes[i] = new key
 		else if(ispath(key))

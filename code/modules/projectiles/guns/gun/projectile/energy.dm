@@ -17,6 +17,7 @@
 
 	cell_system = TRUE
 	cell_type = /obj/item/cell/device/weapon
+	firemodes = /datum/firemode/energy
 
 	//* Modular System *//
 
@@ -239,7 +240,7 @@
 				lethal_safety_action.grant(inv_inside.actions)
 
 /obj/item/gun/projectile/energy/proc/reconsider_lethal_safety_action()
-	var/has_lethal_modes = has_lethal_modes || has_lethal_firemode()
+	var/has_lethal_modes = modular_system || has_lethal_firemode()
 
 	if(!has_lethal_modes)
 		QDEL_NULL(lethal_safety_action)
