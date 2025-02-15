@@ -170,7 +170,6 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/clothing/head/tajaran/army_commissar,
 /obj/item/clothing/head/tajaran/army_commissar,
-/obj/random/gun/random,
 /turf/simulated/floor/tiled/kafel_full/gray,
 /area/submap/skyplanet/poi/sdf)
 "sk" = (
@@ -358,11 +357,6 @@
 /obj/structure/closet/crate/large/corporate,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/skyplanet/poi/sdf)
-"Ym" = (
-/obj/structure/table/standard,
-/obj/item/gun/energy/frontier/taj,
-/turf/simulated/floor/tiled/techfloor,
-/area/submap/skyplanet/poi/sdf)
 "Yw" = (
 /obj/structure/salvageable/data{
 	pixel_x = 5
@@ -384,7 +378,6 @@
 "Zp" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/clothing/head/tajaran/nka_cap,
-/obj/item/gun/ballistic/deagle/taj,
 /turf/simulated/floor/tiled/kafel_full/gray,
 /area/submap/skyplanet/poi/sdf)
 "Zt" = (
@@ -690,7 +683,7 @@ DI
 DI
 DI
 EG
-Ym
+EG
 mE
 YM
 EG

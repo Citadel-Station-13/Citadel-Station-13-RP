@@ -45,7 +45,6 @@
 /obj/item/storage/daki{
 	icon_state = "daki_Sue Bowchief"
 	},
-/obj/item/gun/energy/frontier/taj,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/skyplanet/poi/cludge)
 "j" = (

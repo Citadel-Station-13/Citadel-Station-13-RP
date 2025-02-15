@@ -67,8 +67,6 @@
 "B" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/effect/floor_decal/rust,
-/obj/item/gun/energy/frontier/taj,
-/obj/item/gun/energy/frontier/taj,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/submap/skyplanet/poi/broken2)
 "D" = (

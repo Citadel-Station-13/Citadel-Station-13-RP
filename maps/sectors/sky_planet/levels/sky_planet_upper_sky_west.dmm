@@ -1403,11 +1403,6 @@
 	},
 /turf/simulated/floor/carpet/patterened,
 /area/sector/sky_planet/station_city/appartement)
-"ir" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/frontier/taj,
-/turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/station_city/police)
 "iw" = (
 /obj/machinery/photocopier,
 /turf/simulated/floor/tiled/techfloor,
@@ -1739,7 +1734,6 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
 	},
-/obj/item/gun/energy/frontier/taj,
 /obj/structure/closet,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/security)
@@ -27342,7 +27336,7 @@ RW
 EE
 Gf
 fO
-ir
+EE
 RW
 Wl
 Mq

@@ -28,8 +28,6 @@
 /obj/machinery/light/spot{
 	dir = 8
 	},
-/obj/item/gun/ballistic/automatic/mini_uzi/taj,
-/obj/item/gun/ballistic/colt/taj,
 /turf/simulated/floor/tiled/techmaint,
 /area/submap/skyplanet/poi/tajaranreb)
 "he" = (
@@ -268,7 +266,6 @@
 /area/submap/skyplanet/poi/tajaranreb)
 "Ul" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/ballistic/musket/taj,
 /turf/simulated/floor/tiled/techmaint,
 /area/submap/skyplanet/poi/tajaranreb)
 "Xh" = (
