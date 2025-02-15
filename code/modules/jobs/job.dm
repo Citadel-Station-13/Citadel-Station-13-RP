@@ -60,9 +60,6 @@
 	///Do people with this job need to be given headsets and told how to use them?  E.g. Cyborgs don't.
 	var/has_headset = TRUE
 
-	/// Does this job type come with a station account?
-	var/account_allowed = 1
-
 	/// What outfit datum does this job use in its default title?
 	var/outfit_type
 
@@ -322,43 +319,14 @@
 
 	// TODO: job refactor
 
-/datum/role/job/proc/get_economic_payscale()
+/datum/role/job/get_economic_payscale()
 	var/highest_department_multiplier = null
 	for(var/department in departments)
 		var/datum/department/maybe_department = SSjob.department_datums[department]
 		highest_department_multiplier = max(highest_department_multiplier, maybe_department?.economy_payscale)
 	if(isnull(highest_department_multiplier))
 		highest_department_multiplier = 1
-	return economy_payscale * highest_department_multiplier
-
-/datum/role/job/proc/setup_account(var/mob/living/carbon/human/H)
-	if(!account_allowed || (H.mind && H.mind.initial_account))
-		return
-
-	// Give them an account in the station database
-	var/money_amount = round(
-		  get_economic_payscale() \
-		* ECONOMY_PAYSCALE_BASE \
-		* ECONOMY_PAYSCALE_MULT \
-		* H.mind.original_pref_economic_modifier \
-		* gaussian(ECONOMY_PAYSCALE_RANDOM_MULT_MEAN, ECONOMY_PAYSCALE_RANDOM_MULT_DEV) \
-		+ gaussian(ECONOMY_PAYSCALE_RANDOM_ADD_MEAN, ECONOMY_PAYSCALE_RANDOM_ADD_DEV)
-	)
-	var/datum/economy_account/M = create_account(H.real_name, money_amount, null, offmap_spawn)
-	if(H.mind)
-		var/remembered_info = ""
-		remembered_info += "<b>Your account number is:</b> #[M.account_number]<br>"
-		remembered_info += "<b>Your account pin is:</b> [M.remote_access_pin]<br>"
-		remembered_info += "<b>Your account funds are:</b> $[M.money]<br>"
-
-		if(M.transaction_log.len)
-			var/datum/economy_transaction/T = M.transaction_log[1]
-			remembered_info += "<b>Your account was created:</b> [T.time], [T.date] at [T.source_terminal]<br>"
-		H.mind.store_memory(remembered_info)
-
-		H.mind.initial_account = M
-
-	to_chat(H, "<span class='notice'><b>Your account number is: [M.account_number], your account pin is: [M.remote_access_pin]</b></span>")
+	return ..() * highest_department_multiplier
 
 // Overrideable separately so AIs/borgs can have cardborg hats without unneccessary new()/qdel()
 /datum/role/job/proc/equip_preview(mob/living/carbon/human/H, var/alt_title)

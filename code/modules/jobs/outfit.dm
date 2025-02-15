@@ -20,9 +20,6 @@
 	var/datum/role/job/J = SSjob.get_job(rank)
 	if(J)
 		C.access = J.get_access()
-	if(H.mind)
-		var/datum/mind/M = H.mind
-		if(M.initial_account)
-			var/datum/economy_account/A = M.initial_account
-			C.associated_account_number = A.account_number
+	if(H.mind?.initial_economy_account_number)
+		C.associated_account_number = H.mind.initial_economy_account_number
 	return C

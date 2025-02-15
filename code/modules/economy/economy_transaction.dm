@@ -46,11 +46,11 @@
 
 	/// stated date / tiem
 	/// * plaintext ISO-8601: "YYYY-MM-DD"
-	/// * in universal galactic time
+	/// * in universal galactic time (so, IC time!)
 	var/audit_date
 	/// stated date / time
 	/// * plaintext ISO-8601: "HH:MM:SS"
-	/// * in universal galactic time
+	/// * in universal galactic time (so, IC time!)
 	var/audit_time
 
 
@@ -84,9 +84,11 @@
  *
  * * This will clone ourselves and inject a new copy into the account
  * * This will set `acct_num_target` as necessary on the created transaction
+ * * This will set `audit_date` and `audit_time` to the current time as IC time.
  */
 /datum/economy_transaction/proc/execute_system_transaction(datum/economy_account/account)
 	#warn impl
+	#warn set date / time to 'now'
 
 /**
  * Executes as a transfer from one account to another
@@ -96,3 +98,4 @@
  */
 /datum/economy_transaction/proc/execute_transfer_transaction(datum/economy_account/from_account, datum/economy_account/to_account)
 	#warn impl
+	#warn set date / time to 'now'

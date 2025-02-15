@@ -25,6 +25,16 @@
  * 	yourself.
  */
 
+/**
+ * # /datum/mind
+ *
+ * Mind datums are a representation of one's character.
+ * While the actual physical mob is who you controlled, this more abstractly
+ * represents 'you'.
+ *
+ * Humans must have mind datums to have continuity beyond their physical selves,
+ * have memories, etc.
+ */
 /datum/mind
 	/// ckey of mind
 	var/ckey
@@ -39,13 +49,17 @@
 	var/mob/living/original	//TODO: remove.not used in any meaningful way ~Carn. First I'll need to tweak the way silicon-mobs handle minds.
 	var/active = FALSE
 
-	//? Characteristics
+	//* Abilities *//
+	/// mind-level abilities
+	var/list/datum/ability/abilities
+
+	//* Characteristics *//
 	/// characteristics holder
 	var/datum/characteristics_holder/characteristics
 
-	//? Abilities
-	/// mind-level abilities
-	var/list/datum/ability/abilities
+	//* Economy *//
+	/// Account number of our personal funds account, if any
+	var/initial_economy_account_number
 
 	//? Preferences
 	/**
@@ -88,9 +102,6 @@
 
 	/// The world.time since the mob has been brigged, or -1 if not at all.
 	var/brigged_since = -1
-
-	/// Put this here for easier tracking ingame.
-	var/datum/economy_account/initial_account
 
 	/// Used for antag tcrystal trading, more info in code\game\objects\items\telecrystals.dm
 	var/accept_tcrystals = 0
