@@ -2,8 +2,8 @@
 
 import colorsys
 import math
+import re
 
-import PIL
 from PIL import Image
 from PIL.PngImagePlugin import PngInfo
 import PIL.PngImagePlugin
@@ -341,6 +341,11 @@ class DmiTransformPipeline:
         self.dmi = dmi
         self.path = path
 
+    def lighten_state_pattern(self, pattern: str, ratio: float) -> DmiTransformPipeline:
+        matcher: re.Pattern = re.compile(pattern)
+        self.dmi.states = [DmiTransformPipeline._lighten_state(s, ratio) if matcher.fullmatch(s.name) else s for s in self.dmi.states]
+        return self
+
     def lighten_state(self, name: str | list[str], ratio: float) -> DmiTransformPipeline:
         if type(name) == "str":
             self.dmi.states = [DmiTransformPipeline._lighten_state(s, ratio) if s.name == name else s for s in self.dmi.states]
@@ -375,6 +380,11 @@ class DmiTransformPipeline:
                 image.putpixel((x, y), (round(r * 255), round(g * 255), round(b * 255), a))
 
         return image
+
+    def greyscale_state_pattern(self, pattern: str) -> DmiTransformPipeline:
+        matcher: re.Pattern = re.compile(pattern)
+        self.dmi.states = [DmiTransformPipeline._greyscale_state(s) if matcher.fullmatch(s.name) else s for s in self.dmi.states]
+        return self
 
     def greyscale_all_states(self) -> DmiTransformPipeline:
 
