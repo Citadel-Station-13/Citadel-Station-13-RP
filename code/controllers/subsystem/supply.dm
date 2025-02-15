@@ -14,10 +14,9 @@ SUBSYSTEM_DEF(supply)
 	//  todo: faction specific, drive with SSeconomy?
 	var/money_passive_generation_per_second = 2.5
 	/// world faction id to resolve account from
-	var/cargo_account_faction_id = /datum/world_faction/corporation/nanotrasen::id
+	var/cargo_account_faction_id = /datum/world_faction/core/station::id
 	/// static account id to bind to withi nfaction
-	#warn impl ???? wtf is this
-	var/cargo_account_bind_id = /datum/department/cargo::id
+	var/cargo_account_bind_id = /datum/department/station/cargo::id
 
 	// Control
 	var/ordernum
@@ -386,7 +385,7 @@ SUBSYSTEM_DEF(supply)
  * gets the station's cargo account
  */
 /datum/controller/subsystem/supply/proc/resolve_station_cargo_account() as /datum/economy_account
-	return SSeconomy.resolve_keyed_account(/datum/department/cargo::id, /datum/world_faction/corporation/nanotrasen::id)
+	return SSeconomy.resolve_keyed_account(/datum/department/station/cargo::id, /datum/world_faction/corporation/nanotrasen::id)
 
 //* Entity Descriptors *//
 

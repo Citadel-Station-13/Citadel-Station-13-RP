@@ -1108,6 +1108,8 @@
 #include "code\game\content\enigmas\unsorted\cursedform.dm"
 #include "code\game\content\enigmas\unsorted\deadringer.dm"
 #include "code\game\content\enigmas\unsorted\telecube.dm"
+#include "code\game\content\factions\core\core.dm"
+#include "code\game\content\factions\core\station\station-faction.dm"
 #include "code\game\content\factions\corporations\corporation.dm"
 #include "code\game\content\factions\corporations\cybersun\clothing\jackets.dm"
 #include "code\game\content\factions\corporations\gorlex\items\guns\phoron_spitter.dm"

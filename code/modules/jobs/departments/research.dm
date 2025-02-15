@@ -1,4 +1,4 @@
-/datum/department/research
+/datum/department/station/research
 	id = "science"
 	name = DEPARTMENT_RESEARCH
 	short_name = "Sci"

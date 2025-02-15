@@ -23,3 +23,7 @@
 	/// starting pay modifier
 	var/economy_payscale = ECONOMY_PAYSCALE_DEPT_DEFAULT
 
+/**
+ * station departments are this
+ */
+/datum/department/station

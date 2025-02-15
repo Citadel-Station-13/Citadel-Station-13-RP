@@ -1,6 +1,6 @@
 // placeholder file
 // Mostly for if someone wanted to rewrite manifest code to be map-agnostic.
-/datum/department/misc
+/datum/department/station/misc
 	id = "misc"
 	name = "Miscellaneous"
 	short_name = "Misc"

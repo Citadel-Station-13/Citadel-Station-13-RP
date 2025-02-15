@@ -3,13 +3,6 @@
 
 /**
  * An individual transaction made in economy system
- *
- * Transactions are either:
- * * sourced - source to target
- * * non-sourced - target, without source
- *
- * Transactions should be stored on transaction log of both source (if existing)
- * and target. UIs will automatically render the direction of the transaction as needed.
  */
 /datum/economy_transaction
 	//*                      book-keeping                        *//
@@ -62,3 +55,44 @@
 
 
 #warn impl
+
+/datum/economy_transaction/New(amount)
+	src.amount = amount
+
+/datum/economy_transaction/clone()
+	var/datum/economy_transaction/transaction = new
+	if(acct_num_src)
+		transaction.acct_num_src = acct_num_src
+	if(acct_num_target)
+		transaction.acct_num_target = acct_num_target
+	if(amount)
+		transaction.amount = amount
+	if(audit_purpose_as_unsafe_html)
+		transaction.audit_purpose_as_unsafe_html = audit_purpose_as_unsafe_html
+	if(audit_terminal_as_unsafe_html)
+		transaction.audit_terminal_as_unsafe_html = audit_terminal_as_unsafe_html
+	if(audit_dest_name_as_unsafe_html)
+		transaction.audit_dest_name_as_unsafe_html = audit_dest_name_as_unsafe_html
+	if(audit_date)
+		transaction.audit_date = audit_date
+	if(audit_time)
+		transaction.audit_time = audit_time
+	return transaction
+
+/**
+ * Executes against an account
+ *
+ * * This will clone ourselves and inject a new copy into the account
+ * * This will set `acct_num_target` as necessary on the created transaction
+ */
+/datum/economy_transaction/proc/execute_system_transaction(datum/economy_account/account)
+	#warn impl
+
+/**
+ * Executes as a transfer from one account to another
+ *
+ * * This will clone ourselves twice and inject new copies into both accounts
+ * * This will set `acct_num_target` and `acct_num_src` as necessary on the created transactions
+ */
+/datum/economy_transaction/proc/execute_transfer_transaction(datum/economy_account/from_account, datum/economy_account/to_account)
+	#warn impl

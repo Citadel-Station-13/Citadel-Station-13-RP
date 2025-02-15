@@ -1,4 +1,4 @@
-/datum/department/medical
+/datum/department/station/medical
 	id = "medical"
 	name = DEPARTMENT_MEDICAL
 	short_name = "Med"

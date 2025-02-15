@@ -20,6 +20,8 @@
 	var/faction_account_key
 
 	/// transaction log
+	/// * this should never be directly edited, including to add transactions.
+	///   use the procs on the transaction.
 	var/list/datum/economy_transaction/transaction_log
 	/// amount of balance change between the last transaction log and now
 	var/transaction_log_change_since_last = 0
@@ -36,5 +38,5 @@
  * * the transaction should either have us as the source or the target
  * * source-less transactions always have us as the target
  */
-/datum/economy_account/proc/append_transaction(datum/economy_transaction/transaction)
+/datum/economy_account/proc/append_transaction_log(datum/economy_transaction/transaction)
 	#warn trim

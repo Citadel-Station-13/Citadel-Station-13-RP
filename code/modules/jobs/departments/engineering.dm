@@ -1,4 +1,4 @@
-/datum/department/engineering
+/datum/department/station/engineering
 	id = "engineering"
 	name = DEPARTMENT_ENGINEERING
 	short_name = "Eng"

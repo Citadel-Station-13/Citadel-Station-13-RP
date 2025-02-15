@@ -292,12 +292,12 @@
 			ping("Unable to access account: incorrect credentials.")
 			return 0
 
-	if(total_price > customer_account.money)
+	if(total_price > customer_account.balance)
 		ping("Insufficient funds in account.")
 		return 0
 	else
-		customer_account.money -= total_price
-		var/datum/economy_transaction/T = new()
+		var/datum/economy_transaction/transaction = new(-total_price)
+
 		T.target_name = "Computer Manufacturer (via [src.name])"
 		T.purpose = "Purchase of [(devtype == 1) ? "laptop computer" : "tablet microcomputer"]."
 		T.amount = total_price

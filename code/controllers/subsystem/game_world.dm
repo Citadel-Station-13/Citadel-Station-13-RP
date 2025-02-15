@@ -77,6 +77,7 @@ SUBSYSTEM_DEF(game_world)
 		active_location_lookup[id] = location
 
 	active_faction_lookup = list()
+	active_faction_lookup[/datum/world_faction/core/station::id] = faction_lookup[/datum/world_faction/core/station::id]
 	for(var/id in faction_lookup)
 		var/datum/world_faction/faction = faction_lookup[id]
 		if(!length(faction.location_ids & active_location_lookup))

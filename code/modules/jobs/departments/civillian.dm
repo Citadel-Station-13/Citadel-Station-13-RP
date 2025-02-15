@@ -1,4 +1,4 @@
-/datum/department/civilian
+/datum/department/station/civilian
 	id = "civilian"
 	name = DEPARTMENT_CIVILIAN
 	short_name = "Civ"

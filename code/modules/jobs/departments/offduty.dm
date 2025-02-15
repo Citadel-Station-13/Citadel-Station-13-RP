@@ -1,4 +1,4 @@
-/datum/department/misc
+/datum/department/station/off_duty
 	id = "offduty"
 	name = "Off-Duty"
 	short_name = "Offduty"
