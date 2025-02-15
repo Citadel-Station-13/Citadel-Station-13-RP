@@ -66,7 +66,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 /mob/living/carbon/human/apply_transform(matrix/to_apply)
 	var/anim_time = CHECK_MOBILITY(src, MOBILITY_CAN_STAND)? 3 : 1
-	animate(src, transform = to_apply, time = anim_time, flags = ANIMATION_PARALLEL)
+	animate(src, transform = to_apply, time = anim_time, flags = ANIMATION_PARALLEL | ANIMATION_LINEAR_TRANSFORM)
 	update_icon_special() //May contain transform-altering things
 	update_ssd_overlay()
 

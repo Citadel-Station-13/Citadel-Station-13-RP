@@ -1,5 +1,5 @@
 
-/obj/item/gun/ballistic/caseless/phoron_spitter // phoron war SMG that fires phoron shards.
+/obj/item/gun/projectile/ballistic/caseless/phoron_spitter // phoron war SMG that fires phoron shards.
 	name = "Gorlex 'SHRAPNEL-SPITTER' Phoron SMG"
 	desc = "A short-barrel SMG from the Phoron Wars that lacks conventional ammo, instead using compressed matter cartridges. Coils accelerate a ferromagnetic, self-oxidizing cloud of alloy. Lack of traditional cycling means it can fire blindingly fast. Like all caseless weapons, it's fallen by the wayside, and is no longer produced."
 	w_class = WEIGHT_CLASS_BULKY
@@ -24,13 +24,13 @@
 		list(mode_name="fuller auto", burst=2, fire_delay=-1, move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1)
 		)
 
-/obj/item/gun/ballistic/caseless/phoron_spitter/Initialize(mapload)
+/obj/item/gun/projectile/ballistic/caseless/phoron_spitter/Initialize(mapload)
 	. = ..()
 	var/fluff_date = rand(2501,2543)
 	desc += "\nYou see a stamp on the side: GORLEX MARAUDERS, MANUFACTURED IN [fluff_date]."
 
 // todo: gun rendering system
-/obj/item/gun/ballistic/caseless/phoron_spitter/update_icon_state()
+/obj/item/gun/projectile/ballistic/caseless/phoron_spitter/update_icon_state()
 	. = ..()
 	if(ammo_magazine)
 		icon_state = initial(icon_state)

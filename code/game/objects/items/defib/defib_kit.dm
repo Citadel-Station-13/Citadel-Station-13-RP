@@ -40,8 +40,8 @@
 	bcell = /obj/item/cell/apc
 
 /obj/item/defib_kit/update_icon()
-
 	cut_overlays()
+	. = ..()
 	var/list/new_overlays = list()
 
 	if(paddles && paddles.loc == src) //in case paddles got destroyed somehow.

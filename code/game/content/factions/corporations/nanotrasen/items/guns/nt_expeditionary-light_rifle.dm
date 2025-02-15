@@ -115,12 +115,12 @@
 
 //* Light Rifles *//
 
-/obj/item/gun/ballistic/nt_expedition/light_rifle
-	abstract_type = /obj/item/gun/ballistic/nt_expedition/light_rifle
+/obj/item/gun/projectile/ballistic/nt_expedition/light_rifle
+	abstract_type = /obj/item/gun/projectile/ballistic/nt_expedition/light_rifle
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-light.dmi'
 	caliber = /datum/ammo_caliber/nt_expedition/light_rifle
 
-/obj/item/gun/ballistic/nt_expedition/light_rifle/pistol
+/obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/pistol
 	name = "high-caliber pistol"
 	desc = "The XNP Mk.9 \"David\" revolver; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
@@ -135,7 +135,7 @@
 	base_icon_state = "revolver"
 	render_break_overlay = BALLISTIC_RENDER_BREAK_OPEN
 
-/obj/item/gun/ballistic/nt_expedition/light_rifle/semirifle
+/obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/semirifle
 	name = "semi-automatic rifle"
 	desc = "The XNR Mk.4 \"Scout\" light rifle; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
@@ -151,7 +151,7 @@
 	base_icon_state = "semi"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 
-/obj/item/gun/ballistic/nt_expedition/light_rifle/autorifle
+/obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/autorifle
 	name = "automatic rifle"
 	desc = "The XNR Mk.4 Mod.1 \"Auto Scout\" light rifle; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
@@ -167,7 +167,7 @@
 	base_icon_state = "auto"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 
-/obj/item/gun/ballistic/nt_expedition/light_rifle/pdw
+/obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/pdw
 	name = "personal defense weapon"
 	desc = "The XNR Mk.4 Mod.2 \"Little Scout\" personal defense weapon; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
@@ -183,7 +183,7 @@
 	base_icon_state = "pdw"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 
-/obj/item/gun/ballistic/nt_expedition/light_rifle/lmg
+/obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/lmg
 	name = "squad automatic weapon"
 	desc = "The XNR Mk.4 Mod.3 \"Machine Scout\" squad automatic weapon; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"

@@ -97,7 +97,6 @@
 	desc = "It's a gruesome pile of thick, sticky resin shaped like a nest."
 	icon = 'icons/mob/alien.dmi'
 	icon_state = "nest"
-	color = "#321a49"
 	material = "xenoresin_hybrid"
 	padding_material = "xenoresin_hybrid"
 	hit_sound_brute = 'sound/effects/attackblob.ogg'

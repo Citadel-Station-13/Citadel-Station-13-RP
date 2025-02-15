@@ -275,8 +275,9 @@
 			else
 				toggle_pump()
 
-/obj/machinery/sleeper/update_icon()
+/obj/machinery/sleeper/update_icon_state()
 	icon_state = "sleeper_[occupant ? TRUE : FALSE]"
+	return ..()
 
 /obj/machinery/sleeper/attackby(var/obj/item/I, var/mob/user)
 	if(istype(I, /obj/item/grab))

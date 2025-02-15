@@ -353,7 +353,7 @@
 /obj/item/organ/proc/digitize()
 	robotize()
 
-/obj/item/organ/proc/removed(var/mob/living/user)
+/obj/item/organ/proc/removed(var/mob/living/user, var/ignore_vital = FALSE)
 	if(owner)
 		owner.internal_organs_by_name[organ_tag] = null
 		owner.internal_organs_by_name -= organ_tag
@@ -371,7 +371,7 @@
 		if(!organ_blood || !organ_blood.data["blood_DNA"])
 			owner.vessel.trans_to(src, 5, 1, 1)
 
-		if(owner && vital)
+		if(owner && vital && !ignore_vital)
 			if(user)
 				add_attack_logs(user, owner, "Removed vital organ [src.name]")
 			if(owner.stat != DEAD)

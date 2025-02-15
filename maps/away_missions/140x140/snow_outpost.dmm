@@ -980,8 +980,8 @@
 /area/awaymission/snow_outpost/powered)
 "ed" = (
 /obj/structure/table/steel,
-/obj/item/gun/ballistic/automatic/wt550,
-/obj/item/gun/ballistic/automatic/p90,
+/obj/item/gun/projectile/ballistic/automatic/wt550,
+/obj/item/gun/projectile/ballistic/automatic/p90,
 /turf/simulated/floor/tiled/steel_grid,
 /area/awaymission/snow_outpost/powered)
 "ee" = (
@@ -1482,7 +1482,7 @@
 /area/awaymission/snow_outpost/powered)
 "fJ" = (
 /obj/structure/table/steel,
-/obj/item/gun/ballistic/pistol,
+/obj/item/gun/projectile/ballistic/pistol,
 /obj/machinery/light/small{
 	dir = 4;
 	pixel_y = 0

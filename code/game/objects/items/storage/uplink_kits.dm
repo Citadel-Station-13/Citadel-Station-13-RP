@@ -7,7 +7,7 @@
 			new /obj/item/clothing/shoes/syndigaloshes(src)
 
 		if("stealth")
-			new /obj/item/gun/energy/crossbow(src)
+			new /obj/item/gun/projectile/energy/crossbow(src)
 			new /obj/item/pen/reagent/paralysis(src)
 			new /obj/item/chameleon(src)
 
@@ -21,7 +21,7 @@
 			new /obj/item/tank/emergency/oxygen/double(src)
 
 		if("guns")
-			new /obj/item/gun/ballistic/revolver(src)
+			new /obj/item/gun/projectile/ballistic/revolver(src)
 			new /obj/item/ammo_magazine/a357/speedloader(src)
 			new /obj/item/card/emag(src)
 			new /obj/item/plastique(src)
@@ -151,7 +151,7 @@
 		/obj/item/clothing/mask/chameleon,
 		/obj/item/clothing/glasses/chameleon,
 		/obj/item/clothing/accessory/chameleon,
-		/obj/item/gun/energy/chameleon
+		/obj/item/gun/projectile/energy/chameleon
 	)
 
 /obj/item/storage/box/syndie_kit/clerical
@@ -177,7 +177,7 @@
 	name = "\improper Smooth operator"
 	desc = "Compact 9mm with silencer kit."
 	starts_with = list(
-		/obj/item/gun/ballistic/pistol,
+		/obj/item/gun/projectile/ballistic/pistol,
 		/obj/item/silencer
 	)
 
