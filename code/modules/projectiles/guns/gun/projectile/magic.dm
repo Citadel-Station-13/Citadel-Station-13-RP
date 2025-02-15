@@ -1,9 +1,3 @@
-/**
- * Magic "Guns"
- *
- * These quite literally just use magic. They contain default handling for charges,
- * self charging, etc, but that's it; they don't support cells or casings or anything like that.
- */
 /obj/item/gun/projectile/magic
 	name = "magic staff"
 	desc = "This staff is boring to watch because even though it came first you've seen everything it can do in other staves for years."

@@ -29,6 +29,11 @@
 	one_handed_penalty = 30
 	worth_intrinsic = 350
 
+	firemodes = list(
+		/datum/firemode/energy/laser_rifle/normal,
+		/datum/firemode/energy/laser_rifle/suppression,
+	)
+
 /obj/item/gun/projectile/energy/laser/mounted
 	self_recharge = 1
 	use_external_power = 1
