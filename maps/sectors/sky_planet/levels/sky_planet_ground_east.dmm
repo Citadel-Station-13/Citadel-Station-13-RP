@@ -539,7 +539,6 @@
 /obj/structure/closet,
 /obj/item/material/knife/machete,
 /obj/item/material/knife/tacknife/combatknife,
-/obj/item/gun/energy/kinetic_accelerator,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/poi)
 "ES" = (

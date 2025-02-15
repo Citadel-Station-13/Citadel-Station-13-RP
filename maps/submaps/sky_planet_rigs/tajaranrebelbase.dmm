@@ -121,8 +121,8 @@
 /turf/template_noop,
 /area/template_noop)
 "ur" = (
-/mob/living/simple_mob/mechanical/cyber_horror/tajaran,
 /obj/effect/floor_decal/rust,
+/mob/living/simple_mob/humanoid/taj_guerilla/bandit/sword/revolver,
 /turf/simulated/floor/tiled/techmaint,
 /area/submap/skyplanet/poi/tajaranreb)
 "uB" = (
@@ -154,19 +154,23 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techmaint,
 /area/submap/skyplanet/poi/tajaranreb)
-"xa" = (
-/mob/living/simple_mob/mechanical/cyber_horror/tajaran,
-/turf/simulated/floor/tiled/techmaint,
-/area/submap/skyplanet/poi/tajaranreb)
 "xm" = (
 /obj/machinery/porta_turret/poi,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"ym" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/bandit/sword,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/tajaranreb)
+"BO" = (
+/obj/effect/floor_decal/rust,
+/mob/living/simple_mob/humanoid/taj_guerilla/bandit/rifle,
 /turf/simulated/floor/tiled/techmaint,
 /area/submap/skyplanet/poi/tajaranreb)
 "Ce" = (
 /obj/machinery/light/spot{
 	dir = 8
 	},
-/mob/living/simple_mob/mechanical/cyber_horror/tajaran,
 /turf/simulated/floor/tiled/techmaint,
 /area/submap/skyplanet/poi/tajaranreb)
 "CA" = (
@@ -212,7 +216,6 @@
 /obj/machinery/light/spot{
 	dir = 4
 	},
-/mob/living/simple_mob/mechanical/cyber_horror/tajaran,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techmaint,
 /area/submap/skyplanet/poi/tajaranreb)
@@ -248,6 +251,14 @@
 /obj/random/multiple/corp_crate/no_weapons,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"Oz" = (
+/obj/structure/window/reinforced/survival_pod{
+	dir = 1
+	},
+/obj/effect/floor_decal/rust,
+/mob/living/simple_mob/humanoid/taj_guerilla/bandit/sword/revolver,
 /turf/simulated/floor/tiled/techmaint,
 /area/submap/skyplanet/poi/tajaranreb)
 "OD" = (
@@ -355,7 +366,7 @@ Ul
 cT
 cT
 cJ
-cJ
+BO
 cJ
 CS
 Ce
@@ -373,7 +384,7 @@ cT
 cT
 cJ
 cJ
-ur
+cJ
 Fk
 CS
 cJ
@@ -443,7 +454,7 @@ cT
 cJ
 Ml
 cJ
-xa
+CS
 cT
 pC
 pC
@@ -462,7 +473,7 @@ jc
 cJ
 cT
 cT
-nV
+Oz
 tf
 tf
 cJ
@@ -470,7 +481,7 @@ cT
 uB
 Zj
 Zj
-Zj
+ym
 Gk
 Zj
 pH
@@ -512,7 +523,7 @@ tf
 cJ
 jc
 Zj
-Zj
+ym
 Zj
 Zj
 Zj
@@ -550,7 +561,7 @@ cT
 wk
 cT
 cT
-xa
+CS
 Ez
 cJ
 CS
@@ -613,13 +624,13 @@ tZ
 tZ
 cT
 cT
-ur
+cJ
 cJ
 Fk
 ur
 cJ
 cJ
-cJ
+BO
 fn
 OD
 Dm
