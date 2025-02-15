@@ -3,21 +3,31 @@
 
 /**
  * An individual transaction made in economy system
+ *
+ * Transactions are either:
+ * * sourced - source to target
+ * * non-sourced - target, without source
+ *
+ * Transactions should be stored on transaction log of both source (if existing)
+ * and target. UIs will automatically render the direction of the transaction as needed.
  */
 /datum/economy_transaction
 	//*                      book-keeping                        *//
 	//* these are handled by internals and may not be falsified. *//
 
 	/// source account number, if any
+	/// * only sourced / point-to-point / transfer transactions have this set
 	var/acct_num_src
 	/// destination account number, if any
-	var/acct_num_dest
+	/// * non point-to-point transactions / system transactions will always have
+	///   the target account as this!
+	var/acct_num_target
 
-	/// amount of change to the source
-	/// * if the destination is specified, this is, by default, the opposite change of source!
-	///   this means that if this is '50', it means source gained 50 and destination lost 50
+	/// balance change to target
+	/// * if the source is specified, this is, by default, the opposite change of target!
+	///   this means that if this is '50', it means source lost 50 and target gained 50
 	/// * confusing, i know.
-	var/balance_change_to_source = 0
+	var/amount = 0
 
 	//*                        auditing                 *//
 	//* these are fluff fields and may be falsified.    *//

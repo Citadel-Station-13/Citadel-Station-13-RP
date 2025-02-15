@@ -29,3 +29,12 @@
  */
 /datum/economy_account/proc/adjust_balance_without_logging(amount)
 	#warn impl
+
+/**
+ * append a transaction to the transaction log
+ *
+ * * the transaction should either have us as the source or the target
+ * * source-less transactions always have us as the target
+ */
+/datum/economy_account/proc/append_transaction(datum/economy_transaction/transaction)
+	#warn trim

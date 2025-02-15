@@ -82,23 +82,36 @@ SUBSYSTEM_DEF(economy)
 /**
  * Create and execute a transaction from a source account to a destination account.
  *
- * * account numbers are valid for 'source' and 'destination' parameters
+ * * amount is unchecked, this can and will send accounts into the negatives.
+ *
+ * @params
+ * * source - source account
+ * * destination - destination account
+ * * amount - amount being transferred from source to destination
+ *
+ * @return /datum/economy_transaction
  */
 /datum/controller/subsystem/economy/proc/execute_transfer_transaction(
 	datum/economy_account/source,
 	datum/economy_account/destination,
 	amount,
-)
+) as /datum/economy_transaction
 
 /**
  * Create and execute a transaction against a source account without a destination accout
  *
- * * account numbers are valid for the 'target' parameter
+ * * amount is unchecked, this can and will send accounts into the negatives.
+ *
+ * @params
+ * * target - target account
+ * * amount - adjustment amount to target
+ *
+ * @return /datum/economy_transaction
  */
 /datum/controller/subsystem/economy/proc/execute_system_transaction(
 	datum/economy_account/target,
 	amount,
-)
+) as /datum/economy_transaction
 
 
 #warn impl all
