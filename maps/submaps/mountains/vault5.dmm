@@ -14,7 +14,7 @@
 "d" = (
 /obj/structure/alien/weeds,
 /obj/structure/bed/nest,
-/obj/item/gun/ballistic/p92x/large,
+/obj/item/gun/projectile/ballistic/p92x/large,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/vault5)
 "e" = (
@@ -50,7 +50,7 @@
 "k" = (
 /obj/structure/alien/weeds,
 /obj/item/clothing/head/helmet/tac,
-/obj/item/gun/ballistic/SVD,
+/obj/item/gun/projectile/ballistic/SVD,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/vault5)
 "A" = (

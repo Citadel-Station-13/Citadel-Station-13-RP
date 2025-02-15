@@ -98,7 +98,7 @@
 /obj/item/bone/skull/unknown,
 /obj/item/bone,
 /obj/item/bone/ribs,
-/obj/item/gun/energy/gun/burst,
+/obj/item/gun/projectile/energy/gun/burst,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/DJOutpost1)
 "at" = (
@@ -321,7 +321,7 @@
 /area/submap/DJOutpost1)
 "aZ" = (
 /obj/structure/table/rack,
-/obj/item/gun/energy/lasershotgun,
+/obj/item/gun/projectile/energy/lasershotgun,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/DJOutpost1)
 "ba" = (

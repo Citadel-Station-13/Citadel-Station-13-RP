@@ -43,7 +43,7 @@
  *
  * e.g. XNS Mk.6 -> T = S for shotgun, prototype 6.
  */
-/obj/item/gun/ballistic/nt_expedition
+/obj/item/gun/projectile/ballistic/nt_expedition
 	description_fluff_categorizer = {"
 		This weapon is part of the experimental lineage of chemical-primed kinetic weaponry developed as part of a joint effort between Hephaestus Industries and the Nanotrasen Research Division. Created both to enhance compatibility as well as to improve security on installations operated by the Triumvirate, the 'NT Expeditionary' line boasts an above-average reliability rating
 		in addition to being rather simple to restock out on the Frontier.

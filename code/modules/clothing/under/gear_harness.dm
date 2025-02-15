@@ -7,10 +7,10 @@
 /obj/item/clothing/under/gear_harness/style_repick_query(mob/user)
 	. = ..()
 	var/image/normal_image = image(icon, "gear_harness")
-	normal_image.maptext = "normal"
+	normal_image.maptext = MAPTEXT("normal")
 	.["normal"] = normal_image
 	var/image/invisible_image = image('icons/system/blank_32x32.dmi', "")
-	invisible_image.maptext = "invisible"
+	invisible_image.maptext = MAPTEXT("invisible")
 	.["invisible"] = invisible_image
 
 /obj/item/clothing/under/gear_harness/style_repick_set(style, mob/user)

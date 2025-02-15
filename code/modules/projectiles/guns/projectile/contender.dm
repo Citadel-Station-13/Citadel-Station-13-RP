@@ -1,4 +1,4 @@
-/obj/item/gun/ballistic/contender
+/obj/item/gun/projectile/ballistic/contender
 	name = "Thompson Contender"
 	desc = "A perfect, pristine replica of an ancient one-shot hand-cannon. For when you really want to make a hole. This one has been modified to work almost like a bolt-action."
 	icon_state = "pockrifle"
@@ -13,7 +13,7 @@
 	load_method = SINGLE_CASING
 	heavy = TRUE
 
-/obj/item/gun/ballistic/contender/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/gun/projectile/ballistic/contender/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -35,34 +35,34 @@
 	icon_state = initial(icon_state)
 	retracted_bolt = 0
 
-/obj/item/gun/ballistic/contender/load_ammo(var/obj/item/A, mob/user)
+/obj/item/gun/projectile/ballistic/contender/load_ammo(var/obj/item/A, mob/user)
 	if(!retracted_bolt)
 		to_chat(user, "<span class='notice'>You can't load [src] without cycling the bolt.</span>")
 		return
 	..()
 
-/obj/item/gun/ballistic/contender/a44
+/obj/item/gun/projectile/ballistic/contender/a44
 	caliber = /datum/ammo_caliber/a44
 	ammo_type = /obj/item/ammo_casing/a44
 
-/obj/item/gun/ballistic/contender/a762
+/obj/item/gun/projectile/ballistic/contender/a762
 	caliber = /datum/ammo_caliber/a7_62mm
 	ammo_type = /obj/item/ammo_casing/a7_62mm
 
-/obj/item/gun/ballistic/contender/tacticool
+/obj/item/gun/projectile/ballistic/contender/tacticool
 	desc = "A modified replica of an ancient one-shot hand-cannon, reinvented with a tactical look. For when you really want to make a hole. This one has been modified to work almost like a bolt-action."
 	icon_state = "pockrifle_b"
 	icon_retracted = "pockrifle_b-empty"
 
-/obj/item/gun/ballistic/contender/tacticool/a44
+/obj/item/gun/projectile/ballistic/contender/tacticool/a44
 	caliber = /datum/ammo_caliber/a44
 	ammo_type = /obj/item/ammo_casing/a44
 
-/obj/item/gun/ballistic/contender/tacticool/a762
+/obj/item/gun/projectile/ballistic/contender/tacticool/a762
 	caliber = /datum/ammo_caliber/a7_62mm
 	ammo_type = /obj/item/ammo_casing/a7_62mm
 
-/obj/item/gun/ballistic/contender/holy
+/obj/item/gun/projectile/ballistic/contender/holy
 	name = "Divine Challenger"
 	desc = "A beautifully engraved pocket rifle with a silvered barrel made of incense wood.Sometimes one good hit is all you need to vanquish a great evil and these handcannons will deliver that one shot."
 	icon_state = "pockrifle_c"
@@ -71,15 +71,15 @@
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_OCCULT = 1)
 	holy = TRUE
 
-/obj/item/gun/ballistic/contender/holy/a44
+/obj/item/gun/projectile/ballistic/contender/holy/a44
 	caliber = /datum/ammo_caliber/a44
 	ammo_type = /obj/item/ammo_casing/a44/silver
 
-/obj/item/gun/ballistic/contender/holy/a762
+/obj/item/gun/projectile/ballistic/contender/holy/a762
 	caliber = /datum/ammo_caliber/a7_62mm
 	ammo_type = /obj/item/ammo_casing/a7_62mm/silver
 
-/obj/item/gun/ballistic/contender/pipegun
+/obj/item/gun/projectile/ballistic/contender/pipegun
 	name = "improvised pipe rifle"
 	desc = "A single shot, handmade pipe rifle. It almost functions like a bolt action. Accepts shotgun shells."
 	icon_state = "pipegun"
@@ -90,7 +90,7 @@
 	projectile_type = /obj/projectile/bullet/shotgun
 	unstable = 1
 
-/obj/item/gun/ballistic/contender/pipegun/consume_next_projectile(mob/user as mob)
+/obj/item/gun/projectile/ballistic/contender/pipegun/consume_next_projectile(mob/user as mob)
 	. = ..()
 	//var/instability = rand(1,100)
 	if(.)
@@ -109,13 +109,13 @@
 			handle_click_empty()
 			return
 
-/obj/item/gun/ballistic/contender/pipegun/Fire(atom/target, mob/living/user, clickparams, pointblank, reflex)
+/obj/item/gun/projectile/ballistic/contender/pipegun/Fire(atom/target, mob/living/user, clickparams, pointblank, reflex)
 	. = ..()
 	if(destroyed)
 		to_chat(user, "<span class='notice'>\The [src] is completely inoperable!</span>")
 		handle_click_empty()
 
-/obj/item/gun/ballistic/contender/pipegun/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/gun/projectile/ballistic/contender/pipegun/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src && destroyed)
 		to_chat(user, "<span class='danger'>\The [src]'s chamber is too warped to extract the casing!</span>")
 		return

@@ -32274,7 +32274,7 @@
 "toX" = (
 /obj/structure/table/standard,
 /obj/item/melee/baton/slime/loaded,
-/obj/item/gun/energy/taser/xeno,
+/obj/item/gun/projectile/energy/taser/xeno,
 /obj/item/slime_scanner,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
