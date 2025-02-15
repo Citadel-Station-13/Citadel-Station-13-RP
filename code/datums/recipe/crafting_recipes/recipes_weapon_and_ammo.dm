@@ -316,7 +316,7 @@
 
 /datum/crafting_recipe/pipebow
 	name = "Pipe Bow"
-	result =  /obj/item/gun/ballistic/bow/pipe
+	result =  /obj/item/gun/projectile/ballistic/bow/pipe
 	reqs = list(/obj/item/pipe = 5,
 	/obj/item/stack/material/plastic = 15,
 	/obj/item/weaponcrafting/string = 5)
@@ -326,7 +326,7 @@
 
 /datum/crafting_recipe/dartgun
 	name = "Prototype Dart Gun"
-	result =  /obj/item/gun/ballistic/dartgun/research
+	result =  /obj/item/gun/projectile/ballistic/dartgun/research
 	reqs = list(/obj/item/stack/material/steel = 10,
 	/obj/item/stack/material/glass = 5,
 	/obj/item/tank/emergency/oxygen = 1,
@@ -349,7 +349,7 @@
 
 /datum/crafting_recipe/rapiddartgun
 	name = "Protoype Dart Gun (Rapid)"
-	result = /obj/item/gun/ballistic/dartgun
+	result = /obj/item/gun/projectile/ballistic/dartgun
 	reqs = list(
 		/obj/item/ammo_casing/dart/chemdart = 1,
 		/obj/item/stack/material/plastic = 5,
@@ -390,7 +390,7 @@
 /*
 /datum/crafting_recipe/ishotgun
 	name = "Improvised Shotgun"
-	result = /obj/item/gun/ballistic/revolver/doublebarrel/improvised
+	result = /obj/item/gun/projectile/ballistic/revolver/doublebarrel/improvised
 	reqs = list(/obj/item/pipe = 1,
 				/obj/item/weaponcrafting/receiver = 1,
 				/obj/item/weaponcrafting/stock = 1,
@@ -403,7 +403,7 @@
 
 /datum/crafting_recipe/piperifle
 	name = "Pipe Rifle"
-	result = /obj/item/gun/ballistic/contender/pipegun
+	result = /obj/item/gun/projectile/ballistic/contender/pipegun
 	reqs = list(/obj/item/pipe = 1,
 				/obj/item/weaponcrafting/receiver = 1,
 				/obj/item/weaponcrafting/stock = 1,
@@ -415,7 +415,7 @@
 
 /datum/crafting_recipe/musket_ashlander
 	name = "Musket (Tribal)"
-	result = /obj/item/gun/ballistic/musket/tribal
+	result = /obj/item/gun/projectile/ballistic/musket/tribal
 	reqs = list(/obj/item/stack/animalhide/goliath_hide = 2,
 				/obj/item/stack/material/bone = 10,
 				/obj/item/stack/sinew = 2,
@@ -429,7 +429,7 @@
 
 /datum/crafting_recipe/flintlock_ashlander
 	name = "Flintlock (Tribal)"
-	result = /obj/item/gun/ballistic/musket/pistol/tribal
+	result = /obj/item/gun/projectile/ballistic/musket/pistol/tribal
 	reqs = list(/obj/item/stack/animalhide/goliath_hide = 2,
 				/obj/item/stack/material/bone = 5,
 				/obj/item/stack/sinew = 2,
