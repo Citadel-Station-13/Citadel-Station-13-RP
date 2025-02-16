@@ -78,6 +78,7 @@
 		use_empty = TRUE;
 	}
 	mob_renderer = /datum/gun_mob_renderer/overlays{
+		count = 4;
 		use_single = TRUE;
 		use_color = TRUE;
 		use_empty = TRUE;
@@ -149,6 +150,7 @@
 		use_empty = TRUE;
 	}
 	mob_renderer = /datum/gun_mob_renderer/overlays{
+		count = 4;
 		use_single = TRUE;
 		use_color = TRUE;
 		use_empty = TRUE;
@@ -246,9 +248,11 @@
 		use_color = TRUE;
 		independent_colored_firemode = TRUE;
 	}
-	mob_renderer = /datum/gun_mob_renderer/states{
+	mob_renderer = /datum/gun_mob_renderer/overlays{
 		count = 4;
+		use_color = TRUE;
 		use_empty = TRUE;
+		use_single = TRUE;
 	}
 
 //* Projectiles *//
@@ -263,8 +267,9 @@
 	abstract_type = /obj/projectile/nt_isd/laser
 	damage_type = DAMAGE_TYPE_BURN
 	hitscan = TRUE
-	color = "#cc0000"
+	color = "#ff1100"
 	tracer_icon_state = "laser-1"
+	tracer_has_add_state = TRUE
 	fire_sound = /datum/soundbyte/laser_1
 
 /obj/projectile/nt_isd/laser/rifle
@@ -301,6 +306,7 @@
 	name = "energy beam"
 	color = "#ffff00"
 	tracer_icon_state = "discharge-1"
+	tracer_has_add_state = TRUE
 	hitscan = TRUE
 	base_projectile_effects = list(
 		/datum/projectile_effect/electrical_impulse{
@@ -330,6 +336,7 @@
 	name = "disabler beam"
 	color = "#00ffff"
 	tracer_icon_state = "laser-1"
+	tracer_has_add_state = TRUE
 	hitscan = TRUE
 	agony = 25
 	fire_sound = /datum/soundbyte/disabler_1

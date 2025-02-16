@@ -360,12 +360,12 @@ class DmiTransformPipeline:
     '''
     Lightens an image. This is not in-place.
     Accepts a ratio of 'distance to white' to change.
-    Ratio may be 0 to 1.
+    Ratio may be -1 to 1.
     '''
     def _lighten_image(image: Image.Image, ratio: float) -> Image.Image:
         if(ratio == 0):
             return image.copy()
-        if(ratio > 1):
+        if(ratio > 1 or ratio < -1):
             raise ValueError("Ratio is not within bounds.")
 
         image = image.copy()
@@ -375,7 +375,7 @@ class DmiTransformPipeline:
             for y in range(image.height):
                 (r, g, b, a) = image.getpixel((x, y))
                 (h, s, v) = colorsys.rgb_to_hsv(r / 255, g / 255, b / 255)
-                v = v + (1 - v) * ratio
+                v = v + (1 - v) * ratio if ratio > 0 else v * (1 + ratio)
                 (r, g, b) = colorsys.hsv_to_rgb(h, s, v)
                 image.putpixel((x, y), (round(r * 255), round(g * 255), round(b * 255), a))
 

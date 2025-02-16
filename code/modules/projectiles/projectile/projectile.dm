@@ -230,6 +230,9 @@
 	/// Tracer state
 	/// * We generate "-muzzle", "-beam", "-impact" from this state.
 	var/tracer_icon_state
+	/// Tracer has add state
+	/// * Will add overlays of "-muzzle-add", "-beam-add", "-impact-add".
+	var/tracer_has_add_state = FALSE
 	/// The beam part of the tracer should be tiled instead of stretched
 	/// * This is more expensive than stretching.
 	/// * This does not always work perfectly as we currently cannot
