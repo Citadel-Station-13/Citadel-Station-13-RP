@@ -112,7 +112,7 @@
 "sx" = (
 /obj/machinery/mech_recharger,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced/outdoors,
 /area/submap/skyplanet/poi/mechbase)
 "sC" = (
 /obj/structure/salvageable/console_broken_os{
@@ -283,7 +283,7 @@
 /area/submap/skyplanet/poi/mechbase)
 "PM" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced/outdoors,
 /area/submap/skyplanet/poi/mechbase)
 "PP" = (
 /obj/item/mecha_parts/chassis/geiger,
@@ -292,7 +292,7 @@
 "Qe" = (
 /obj/structure/loot_pile/mecha/ripley,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced/outdoors,
 /area/submap/skyplanet/poi/mechbase)
 "Qh" = (
 /obj/structure/table/rack/shelf/steel,
@@ -372,7 +372,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/submap/skyplanet/poi/mechbase)
 "XS" = (
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced/outdoors,
 /area/submap/skyplanet/poi/mechbase)
 "Zk" = (
 /obj/item/mecha_parts/mecha_equipment/tool/jetpack,
@@ -392,7 +392,7 @@
 /obj/structure/shuttle/engine/propulsion{
 	dir = 8
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced/outdoors,
 /area/submap/skyplanet/poi/mechbase)
 
 (1,1,1) = {"

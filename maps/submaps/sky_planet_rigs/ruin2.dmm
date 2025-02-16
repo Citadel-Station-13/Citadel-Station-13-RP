@@ -12,7 +12,7 @@
 "j" = (
 /obj/effect/floor_decal/rust,
 /obj/random/cutout,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/outdoors,
 /area/submap/skyplanet/poi/broken2)
 "k" = (
 /obj/machinery/door/airlock,
@@ -20,7 +20,7 @@
 /area/submap/skyplanet/poi/broken2)
 "m" = (
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/outdoors,
 /area/template_noop)
 "o" = (
 /obj/random/mob/robotic,
@@ -37,7 +37,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/submap/skyplanet/poi/broken2)
 "s" = (
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/outdoors,
 /area/submap/skyplanet/poi/broken2)
 "t" = (
 /obj/structure/table/rack/shelf/steel,
@@ -53,7 +53,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/submap/skyplanet/poi/broken2)
 "x" = (
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/outdoors,
 /area/template_noop)
 "y" = (
 /obj/machinery/door/airlock,
@@ -98,7 +98,7 @@
 /area/submap/skyplanet/poi/broken2)
 "P" = (
 /obj/random/cutout,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/outdoors,
 /area/submap/skyplanet/poi/broken2)
 "Q" = (
 /obj/structure/table/rack/shelf/steel,
@@ -114,7 +114,7 @@
 /area/submap/skyplanet/poi/broken2)
 "W" = (
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/outdoors,
 /area/submap/skyplanet/poi/broken2)
 "X" = (
 /obj/structure/event/prop/processor2,

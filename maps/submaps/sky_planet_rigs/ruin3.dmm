@@ -4,7 +4,7 @@
 /area/submap/skyplanet/poi/broken3)
 "d" = (
 /obj/spawner/window/low_wall/full/nogrille,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/outdoors,
 /area/submap/skyplanet/poi/broken3)
 "f" = (
 /turf/template_noop,
@@ -30,7 +30,7 @@
 /area/submap/skyplanet/poi/broken3)
 "y" = (
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/outdoors,
 /area/template_noop)
 "B" = (
 /obj/structure/bed/padded,
@@ -50,7 +50,7 @@
 /turf/simulated/floor/carpet,
 /area/submap/skyplanet/poi/broken3)
 "M" = (
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/outdoors,
 /area/template_noop)
 "N" = (
 /turf/simulated/wall/wood/log,

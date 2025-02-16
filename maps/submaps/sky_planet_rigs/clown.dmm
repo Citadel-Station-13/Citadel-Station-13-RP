@@ -286,7 +286,7 @@
 /turf/simulated/floor/wood/indoors,
 /area/submap/skyplanet/poi/clown)
 "Qk" = (
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced/outdoors,
 /area/template_noop)
 "Qp" = (
 /obj/structure/table/bench/glass,

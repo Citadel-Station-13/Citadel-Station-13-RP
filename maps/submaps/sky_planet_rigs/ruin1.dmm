@@ -1,13 +1,13 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/outdoors,
 /area/template_noop)
 "c" = (
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/techmaint,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/template_noop)
 "k" = (
-/turf/simulated/floor/tiled/techmaint,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/template_noop)
 "C" = (
 /turf/template_noop,
@@ -21,7 +21,7 @@
 /area/template_noop)
 "Z" = (
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/outdoors,
 /area/template_noop)
 
 (1,1,1) = {"
