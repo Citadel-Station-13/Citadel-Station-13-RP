@@ -127,7 +127,8 @@
 /obj/item/gun/projectile/ballistic/proc/prime_casing(datum/gun_firing_cycle/cycle, obj/item/ammo_casing/casing, casing_primer)
 	return casing.process_fire(casing_primer)
 
-/obj/item/gun/projectile/ballistic/post_fire(atom/firer, angle, firing_flags, datum/firemode/firemode, iteration, firing_result, atom/target, datum/event_args/actor/actor)
+// todo: rework this
+/obj/item/gun/projectile/ballistic/post_fire(datum/gun_firing_cycle/cycle)
 	. = ..()
 	switch(firing_result)
 		// process chamber

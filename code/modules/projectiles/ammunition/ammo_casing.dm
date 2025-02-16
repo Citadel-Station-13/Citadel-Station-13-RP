@@ -127,7 +127,9 @@
 /obj/item/ammo_casing/proc/process_fire(priming_methods)
 	if(!(priming_methods & casing_primer))
 		return GUN_FIRED_FAIL_INERT
-	return expend()
+	. = expend()
+	if(!.)
+		return GUN_FIRED_FAIL_INERT
 
 /**
  * Uses the ammo casing, returning the projectile retrieved, updating icon, etc
