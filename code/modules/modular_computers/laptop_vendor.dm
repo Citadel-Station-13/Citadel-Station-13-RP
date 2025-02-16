@@ -1,5 +1,5 @@
 // A vendor machine for modular computer portable devices - Laptops and Tablets
-
+// todo: should be /machinery/vending
 /obj/machinery/lapvend
 	name = "computer vendor"
 	desc = "A vending machine with a built-in microfabricator, capable of dispensing various NT-branded computers."

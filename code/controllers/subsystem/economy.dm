@@ -67,6 +67,13 @@ SUBSYSTEM_DEF(economy)
 	RETURN_TYPE(/datum/economy_account)
 	#warn impl ; create a vendor account?
 
+/**
+ * get the account of the main map
+ */
+/datum/controller/subsystem/economy/proc/resolve_station_account() as /datum/economy_account
+	RETURN_TYPE(/datum/economy_account)
+	return resolve_keyed_account(/datum/world_faction/core/station::id, /datum/world_faction/core/station::id)
+
 //* Allocation *//
 
 /**
