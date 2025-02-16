@@ -105,12 +105,13 @@
 
 /obj/item/gun/projectile/ballistic/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	//get the next casing
-	if(loaded.len)
-		chambered = loaded[1] //load next casing.
-		if(handle_casings != HOLD_CASINGS)
-			loaded -= chambered
-	else if(ammo_magazine && ammo_magazine.amount_remaining())
-		chambered = ammo_magazine.pop(src)
+	if(!chambered)
+		if(loaded.len)
+			chambered = loaded[1] //load next casing.
+			if(handle_casings != HOLD_CASINGS)
+				loaded -= chambered
+		else if(ammo_magazine && ammo_magazine.amount_remaining())
+			chambered = ammo_magazine.pop(src)
 
 	if(!chambered)
 		return
@@ -360,6 +361,11 @@
 	return bullets
 
 //* Ammo *//
+
+/obj/item/gun/projectile/ballistic/get_ammo_ratio(rounded)
+	if(!ammo_magazine)
+		return 0
+	return ammo_magazine.amount_remaining() / ammo_magazine.ammo_max
 
 /**
  * Can accept an ammo casing

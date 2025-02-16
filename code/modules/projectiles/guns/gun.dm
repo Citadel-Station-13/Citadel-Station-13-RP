@@ -373,6 +373,11 @@
 		. += "The fire selector is set to [firemode.name]."
 	if(safety_state != GUN_NO_SAFETY)
 		. += SPAN_NOTICE("The safety is [check_safety() ? "on" : "off"].")
+	if(obj_cell_slot)
+		if(!obj_cell_slot.cell)
+			. += "Its cell slot is <b>empty</b>."
+		else
+			. += "Its cell is at [round(obj_cell_slot.cell.charge / obj_cell_slot.cell.maxcharge, 1)]% charge."
 	for(var/obj/item/gun_attachment/attachment as anything in attachments)
 		. += "It has [attachment] installed on its [attachment.attachment_slot].[attachment.can_detach ? "" : " It doesn't look like it can be removed."]"
 	for(var/obj/item/gun_component/component as anything in modular_components)

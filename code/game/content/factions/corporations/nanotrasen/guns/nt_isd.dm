@@ -272,7 +272,7 @@
 	abstract_type = /obj/projectile/nt_isd/laser
 	damage_type = DAMAGE_TYPE_BURN
 	hitscan = TRUE
-	color = "#ff3300"
+	color = "#ff1100"
 	tracer_icon_state = "laser-1"
 	tracer_add_state = TRUE
 	tracer_add_state_alpha = 65
@@ -286,7 +286,7 @@
 /obj/projectile/nt_isd/laser/sidearm
 	name = "phaser blast"
 	damage_force = 20
-	damage_tier = LASER_TIER_HIGH // ;)
+	damage_tier = LASER_TIER_MEDIUM // ;)
 	// todo: remove
 	armor_penetration = 20
 	fire_sound = /datum/soundbyte/laser_3/pistol
@@ -359,4 +359,5 @@
 			sev_3 = 2;
 		},
 	)
+	color = "#00aaff"
 	fire_sound = /datum/soundbyte/ion_pulse

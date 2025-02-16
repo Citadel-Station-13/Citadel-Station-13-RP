@@ -54,7 +54,7 @@
  * Generates magazines and designs for normal protomag ammo.
  */
 #define NT_PROTOMAG_MAGAZINE_TYPEGEN(_ID, _SUFFIX, _NAME, _AMMO) \
-/obj/item/ammo_magazine/nt_protomag/pistol##_SUFFIX { \
+/obj/item/ammo_magazine/nt_protomag/sidearm##_SUFFIX { \
 	name = "protomag sidearm magazine (" + _NAME + ")"; \
 	ammo_preload = /obj/item/ammo_casing/nt_protomag##_AMMO; \
 	rendering_static_overlay_color = /obj/item/ammo_casing/nt_protomag##_AMMO::stripe_color; \
@@ -64,7 +64,7 @@
 	ammo_preload = /obj/item/ammo_casing/nt_protomag##_AMMO; \
 	rendering_static_overlay_color = /obj/item/ammo_casing/nt_protomag##_AMMO::stripe_color; \
 } \
-GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_protomag/pistol##_SUFFIX, /nt_protomag_ammo/pistol##_SUFFIX, "nt-ammo-magpistol-" + ##_ID); \
+GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_protomag/sidearm##_SUFFIX, /nt_protomag_ammo/sidearm##_SUFFIX, "nt-ammo-magpistol-" + ##_ID); \
 GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_protomag/rifle##_SUFFIX, /nt_protomag_ammo/rifle##_SUFFIX, "nt-ammo-magrifle-" + ##_ID);
 
 /**
@@ -72,7 +72,7 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_protomag/rifle##_SUFFIX
  */
 #define NT_PROTOMAG_MAGAZINE_TYPEGEN_SPECIAL(_ID, _SUFFIX, _NAME, _AMMO) \
 NT_PROTOMAG_MAGAZINE_TYPEGEN(_ID, _SUFFIX, _NAME, _AMMO); \
-/datum/prototype/design/generated/nt_protomag_ammo/pistol##_SUFFIX { \
+/datum/prototype/design/generated/nt_protomag_ammo/sidearm##_SUFFIX { \
 	lathe_type = LATHE_TYPE_PROTOLATHE; \
 } \
 /datum/prototype/design/generated/nt_protomag_ammo/rifle##_SUFFIX { \
