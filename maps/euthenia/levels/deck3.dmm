@@ -7214,7 +7214,7 @@
 /area/hydroponics/garden)
 "gSP" = (
 /obj/structure/table/standard,
-/obj/item/gun/energy/taser/xeno,
+/obj/item/gun/projectile/energy/taser/xeno,
 /obj/item/melee/baton/slime/loaded,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
@@ -14677,7 +14677,7 @@
 /area/medical/resleeving)
 "nQw" = (
 /obj/structure/table/standard,
-/obj/item/gun/energy/taser/xeno,
+/obj/item/gun/projectile/energy/taser/xeno,
 /obj/item/multitool,
 /obj/item/melee/baton/slime/loaded,
 /turf/simulated/floor/tiled/white,
@@ -17484,7 +17484,7 @@
 /area/main_map/maintenance/deck_three)
 "qoc" = (
 /obj/structure/table/standard,
-/obj/item/gun/energy/taser/xeno,
+/obj/item/gun/projectile/energy/taser/xeno,
 /obj/item/multitool,
 /obj/structure/window/reinforced{
 	dir = 8
