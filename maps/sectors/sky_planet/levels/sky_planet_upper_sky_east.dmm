@@ -49,7 +49,9 @@
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/sector/sky_planet/rock)
 "gL" = (
-/turf/simulated/floor/holofloor/reinforced,
+/turf/simulated/floor/holofloor/reinforced{
+	outdoors = 1
+	},
 /area/sector/sky_planet/sky)
 "hK" = (
 /obj/structure/table/steel,
@@ -72,6 +74,9 @@
 /obj/item/clothing/gloves/ring/material/gold,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/sector/sky_planet/rock)
+"lQ" = (
+/turf/simulated/mineral,
+/area/sector/sky_planet/sky)
 "mD" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -31541,13 +31546,13 @@ dq
 dq
 dq
 dq
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+gL
+gL
+gL
+Sz
+Sz
+Sz
+Sz
 dq
 dq
 dq
@@ -31732,13 +31737,13 @@ dq
 dq
 dq
 dq
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+gL
+gL
+gL
+gL
+gL
+gL
+Sz
 Oh
 Oh
 Oh
@@ -31925,14 +31930,14 @@ cf
 dq
 dq
 dq
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+gL
+gL
+gL
+gL
+gL
+gL
+gL
+Sz
 Oh
 Oh
 Oh
@@ -32121,12 +32126,12 @@ dq
 dq
 dq
 dq
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+gL
+gL
+gL
+gL
+gL
+Sz
 Oh
 Oh
 Oh
@@ -32314,13 +32319,13 @@ dq
 dq
 dq
 dq
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+gL
+gL
+gL
+gL
+gL
+gL
+Sz
 Oh
 Oh
 Oh
@@ -32507,14 +32512,14 @@ cf
 dq
 dq
 dq
-Oh
+lQ
 dq
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+gL
+gL
+gL
+gL
+gL
+Sz
 Oh
 Oh
 Oh
@@ -32703,11 +32708,11 @@ dq
 dq
 dq
 dq
-Oh
-Oh
-Oh
-Oh
-Oh
+Sz
+Sz
+Sz
+Sz
+Sz
 Oh
 Oh
 Oh
@@ -32897,8 +32902,8 @@ dq
 dq
 dq
 dq
-Oh
-Oh
+Sz
+Sz
 Oh
 Oh
 Oh
@@ -33091,7 +33096,7 @@ dq
 dq
 dq
 dq
-Oh
+Sz
 Oh
 Oh
 Oh

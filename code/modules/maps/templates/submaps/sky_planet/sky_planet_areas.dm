@@ -49,3 +49,39 @@
 /area/submap/skyplanet/poi/broken3
 	name = "POI - Ruined rig 3"
 	requires_power = 0
+
+/area/submap/skyplanet/poi/ruins1
+	name = "POI - Fallen rig"
+	requires_power = 0
+
+/area/submap/skyplanet/poi/ruins2
+	name = "POI - Fallen rig 2"
+	requires_power = 0
+
+/area/submap/skyplanet/poi/ruins3
+	name = "POI - Abondonned outpost"
+	requires_power = 0
+
+/area/submap/skyplanet/poi/bio
+	name = "POI - Abondonned biodome"
+	requires_power = 0
+
+/area/submap/skyplanet/poi/shuttlecrash
+	name = "POI - Crash site 1"
+	requires_power = 0
+
+/area/submap/skyplanet/poi/shuttlecrash2
+	name = "POI - Crash site 2"
+	requires_power = 0
+
+/area/submap/skyplanet/poi/shuttlecrash3
+	name = "POI - Crash site 3"
+	requires_power = 0
+
+/area/submap/skyplanet/poi/shuttlecrash4
+	name = "POI - Crash site 4"
+	requires_power = 0
+
+/area/submap/skyplanet/poi/shuttlecrash5
+	name = "POI - Crash site 5"
+	requires_power = 0

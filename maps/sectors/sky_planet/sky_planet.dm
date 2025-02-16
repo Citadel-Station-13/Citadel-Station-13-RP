@@ -59,6 +59,20 @@
 	air_outdoors = /datum/atmosphere/planet/sky_planet/ground
 	planet_path = /datum/planet/sky_planet/ground
 
+/datum/map_level/sector/sky_planet/ground_west/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+	. = ..()
+	additional_generation?.Add(
+		CALLBACK(
+			GLOBAL_PROC,
+			GLOBAL_PROC_REF(seed_submaps),
+			list(z_index),
+			225,
+			/area/sector/sky_planet/ground/unexplored,
+			/datum/map_template/submap/level_specific/sky_planet_ground,
+		)
+	)
+
+
 /datum/map_level/sector/sky_planet/sky_upper_east
 	id = "Skyplanetuppereast"
 	name = "Sector - Lythios43a : Upper east"
@@ -106,3 +120,16 @@
 	link_above = /datum/map_level/sector/sky_planet/sky_east
 	air_outdoors = /datum/atmosphere/planet/sky_planet/ground
 	planet_path = /datum/planet/sky_planet/ground
+
+/datum/map_level/sector/sky_planet/ground_east/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+	. = ..()
+	additional_generation?.Add(
+		CALLBACK(
+			GLOBAL_PROC,
+			GLOBAL_PROC_REF(seed_submaps),
+			list(z_index),
+			225,
+			/area/sector/sky_planet/ground/unexplored,
+			/datum/map_template/submap/level_specific/sky_planet_ground,
+		)
+	)

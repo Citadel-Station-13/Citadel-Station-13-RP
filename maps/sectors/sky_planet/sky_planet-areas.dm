@@ -17,6 +17,10 @@
 	name = "\improper Away Mission - Sky Rigs"
 	icon_state = "unexplored"
 
+/area/sector/sky_planet/ground/unexplored
+	name = "\improper Away Mission - Ground"
+	icon_state = "unexplored"
+
 //NT Outpost
 
 /area/sector/sky_planet/outpost
