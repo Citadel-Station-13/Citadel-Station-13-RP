@@ -1,3 +1,10 @@
+/**
+ * Identification cards.
+ *
+ * * Can have access encoded into it
+ * * Can hvae a general set of data of its owner encoded into it
+ * * Can be linked to a /datum/economy_account to be used as a bank card.
+ */
 /obj/item/card/id
 	name = "identification card"
 	desc = "A card used to provide ID and determine access across the station."

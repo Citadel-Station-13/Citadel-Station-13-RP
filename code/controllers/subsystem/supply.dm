@@ -21,6 +21,10 @@ SUBSYSTEM_DEF(supply)
 	var/list/datum/supply_export_handler/export_handlers = list(
 		new /datum/supply_export_handler/auto_stacks,
 	)
+	/// default export faction
+	var/datum/supply_faction/export_faction = new
+
+	//* actual legacy stuff below *//
 
 	// Control
 	var/ordernum
@@ -36,39 +40,6 @@ SUBSYSTEM_DEF(supply)
 	// Shuttle Movement
 	var/movetime = 1200
 	var/datum/shuttle/autodock/ferry/supply/shuttle
-
-// TODO - Refactor to use the Supply Subsystem (SSsupply)
-
-// Supply packs are in /code/datums/supplypacks
-// Computers are in /code/game/machinery/computer/supply.dm
-
-/datum/supply_order
-	var/ordernum							// Unfabricatable index
-	var/index								// Fabricatable index
-	var/datum/supply_pack/object = null
-	var/cost								// Cost of the supply pack (Fabricatable) (Changes not reflected when purchasing supply packs, this is cosmetic only)
-	var/name								// Name of the supply pack datum (Fabricatable)
-	var/ordered_by = null					// Who requested the order
-	var/comment = null						// What reason was given for the order
-	var/approved_by = null					// Who approved the order
-	var/ordered_at							// Date and time the order was requested at
-	var/approved_at							// Date and time the order was approved at
-	var/status								// [Requested, Accepted, Denied, Shipped]
-
-/datum/legacy_exported_crate
-	/// name of crate
-	var/name = "Unknown"
-	/// total value of crate
-	var/value = 0
-	/// list("object" = name, "value" = value, "quantity" = quantity)
-	var/list/contents = list()
-
-/datum/legacy_exported_crate/clone()
-	var/datum/legacy_exported_crate/cloning = new
-	cloning.name = name
-	cloning.value = value
-	cloning.contents = deep_copy_list(contents)
-	return cloning
 
 /datum/controller/subsystem/supply/Initialize()
 	ordernum = rand(1,9000)

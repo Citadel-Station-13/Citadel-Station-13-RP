@@ -31,9 +31,11 @@ SUBSYSTEM_DEF(economy)
 //* Lookup *//
 
 /datum/controller/subsystem/economy/proc/resolve_faction(id) as /datum/economy_faction
+	RETURN_TYPE(/datum/economy_faction)
 	return faction_lookup[id]
 
 /datum/controller/subsystem/economy/proc/resolve_account_number(number) as /datum/economy_account
+	RETURN_TYPE(/datum/economy_account)
 	return account_lookup["[number]"]
 
 /**
@@ -44,6 +46,7 @@ SUBSYSTEM_DEF(economy)
  *             it'll have the same ID.
  */
 /datum/controller/subsystem/economy/proc/resolve_keyed_account(id, datum/economy_faction/faction) as /datum/economy_account
+	RETURN_TYPE(/datum/economy_account)
 	if(faction)
 		var/datum/economy_faction/resolved_faction
 		if(istext(faction))
@@ -55,6 +58,14 @@ SUBSYSTEM_DEF(economy)
 		return faction?.keyed_accounts[id]
 	else
 		return keyed_accounts[id]
+
+/**
+ * legacy: get the vendor account to send stuff to if a vendor doesn't have a specific
+ * target account
+ */
+/datum/controller/subsystem/economy/proc/resolve_fallback_vendor_account() as /datum/economy_account
+	RETURN_TYPE(/datum/economy_account)
+	#warn impl ; create a vendor account?
 
 //* Allocation *//
 
