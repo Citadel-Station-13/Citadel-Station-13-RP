@@ -25,6 +25,8 @@
 	var/shot_power_draw = base_charge_cost * casing.effective_mass_multiplier
 	if(!obj_cell_slot.check_charge(shot_power_draw))
 		casing_primer = CASING_PRIMER_CHEMICAL
+	else
+		casing_primer = CASING_PRIMER_CHEMICAL | CASING_PRIMER_MAGNETIC
 	. = ..()
 	if(!isnum(.))
 		obj_cell_slot.use(shot_power_draw)
