@@ -154,6 +154,7 @@
  */
 /obj/item/proc/on_wield(mob/user, hands)
 	SHOULD_CALL_PARENT(TRUE)
+	update_icon()
 	update_worn_icon()
 
 /**
@@ -165,6 +166,5 @@
  */
 /obj/item/proc/on_unwield(mob/user, hands)
 	SHOULD_CALL_PARENT(TRUE)
+	update_icon()
 	update_worn_icon()
-
-

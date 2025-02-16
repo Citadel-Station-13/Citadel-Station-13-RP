@@ -114,7 +114,7 @@
 			chambered = ammo_magazine.pop(src)
 
 	if(!chambered)
-		return
+		return GUN_FIRED_FAIL_EMPTY
 
 	return prime_casing(cycle, chambered, CASING_PRIMER_CHEMICAL)
 

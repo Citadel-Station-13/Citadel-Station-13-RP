@@ -732,6 +732,8 @@
 
 	var/using_base_icon_state = base_icon_state || initial(icon_state)
 	var/using_base_worn_state = base_mob_state || initial(worn_state) || using_base_icon_state
+	if(render_wielded && (item_flags & ITEM_MULTIHAND_WIELDED))
+		using_base_worn_state = "[using_base_worn_state]-wield"
 	var/using_ratio = get_ammo_ratio(TRUE)
 	var/datum/firemode/using_firemode = firemode
 	var/using_color = get_firemode_color()
@@ -746,6 +748,8 @@
 /obj/item/gun/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot/slot_meta, icon_used)
 	// todo: the code copypaste here is atrocious
 	var/using_base_worn_state = base_mob_state || initial(worn_state) || base_icon_state || initial(icon_state)
+	if(render_wielded && (item_flags & ITEM_MULTIHAND_WIELDED))
+		using_base_worn_state = "[using_base_worn_state]-wield"
 	var/using_ratio = get_ammo_ratio()
 	var/datum/firemode/using_firemode = firemode
 	var/using_color = get_firemode_color()

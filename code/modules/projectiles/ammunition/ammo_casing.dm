@@ -125,7 +125,7 @@
  * @return /obj/projectile to shoot, or a GUN_FIRED_* fail status
  */
 /obj/item/ammo_casing/proc/process_fire(priming_methods)
-	if(priming_methods & casing_primer)
+	if(!(priming_methods & casing_primer))
 		return GUN_FIRED_FAIL_INERT
 	return expend()
 

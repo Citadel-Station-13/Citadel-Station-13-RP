@@ -126,8 +126,8 @@
 	var/independent_firemode
 
 /datum/gun_item_renderer/overlays/render(obj/item/gun/gun, base_icon_state, ammo_ratio, firemode_key, firemode_color)
+	gun.icon_state = base_icon_state
 	if(gun.render_skip)
-		gun.icon_state = base_icon_state
 		return
 	var/list/to_add = list()
 	if(independent_firemode)
@@ -184,8 +184,8 @@
 	var/count
 
 /datum/gun_item_renderer/states/render(obj/item/gun/gun, base_icon_state, ammo_ratio, firemode_key, firemode_color)
+	gun.icon_state = base_icon_state
 	if(gun.render_skip)
-		gun.icon_state = base_icon_state
 		return
 	if(!ammo_ratio)
 		if(use_empty)
