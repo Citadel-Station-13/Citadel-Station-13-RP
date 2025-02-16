@@ -130,7 +130,7 @@
 // todo: rework this
 /obj/item/gun/projectile/ballistic/post_fire(datum/gun_firing_cycle/cycle)
 	. = ..()
-	switch(firing_result)
+	switch(cycle.last_firing_result)
 		// process chamber
 		if(GUN_FIRED_FAIL_INERT, GUN_FIRED_SUCCESS, GUN_FIRED_FAIL_EMPTY)
 			process_chambered()
