@@ -753,7 +753,7 @@
 	desc = "Siphons water from nearby sinks and stores it inside its own storage."
 	icon_state = "reagent_pump"
 	atom_flags = OPENCONTAINER
-	complexity = 8
+	complexity = 16
 	inputs = list()
 	outputs = list("volume used" = IC_PINTYPE_NUMBER,"self reference" = IC_PINTYPE_SELFREF)
 	activators = list(
@@ -764,7 +764,7 @@
 		)
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_DATA = 2, TECH_BIO = 2)
-	volume = 1000
+	volume = 180
 	power_draw_per_use = 10
 
 /obj/item/integrated_circuit/reagent/sink/on_reagent_change()
