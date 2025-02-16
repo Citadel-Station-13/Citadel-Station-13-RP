@@ -1,5 +1,5 @@
 // -------------- Protector -------------
-/obj/item/gun/energy/protector
+/obj/item/gun/projectile/energy/protector
 	name = "Hephaestus \'Myrmidon\'"
 	desc = "The Hephaestus Industries Myrmidon is a common energy sidearm for private security firms in the known galaxy. The Myrmidon can both stun and kill, its lethal mode locked to the alert level of its owner's choice. In the case of Nanotrasen facilities, this is most often locked to Code Blue."
 	description_info = "The \'Myrmidon\' can't be set to lethal unless the station is on Code Blue or higher. Security officers may carry it on Code Green, since its stun abilities are all that can be used until the code is raised, which then unlocks and allows its lethal capabilities."
@@ -36,7 +36,7 @@
 
 	var/emagged = FALSE
 
-/obj/item/gun/energy/protector/special_check(mob/user)
+/obj/item/gun/projectile/energy/protector/special_check(mob/user)
 	if(!emagged && mode_name == "lethal" && get_security_level() == "green")
 		to_chat(user,"<span class='warning'>The trigger refuses to depress while on the lethal setting under security level green!</span>")
 		return FALSE
@@ -44,7 +44,7 @@
 	return ..()
 
 
-/obj/item/gun/energy/protector/emag_act(var/remaining_charges,var/mob/user)
+/obj/item/gun/projectile/energy/protector/emag_act(var/remaining_charges,var/mob/user)
 	..()
 	if(!emagged)
 		emagged = TRUE
@@ -53,7 +53,7 @@
 	return TRUE
 
 //Update icons from /tg/, so fancy! Use this more!
-/obj/item/gun/energy/protector/update_icon()
+/obj/item/gun/projectile/energy/protector/update_icon()
 	cut_overlay()
 	var/list/overlays_to_add = list()
 	var/ratio = 0

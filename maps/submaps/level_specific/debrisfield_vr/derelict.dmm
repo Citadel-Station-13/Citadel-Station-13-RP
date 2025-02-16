@@ -298,7 +298,7 @@
 /area/submap/debrisfield_vr/derelict/interior)
 "ba" = (
 /obj/random/humanoidremains,
-/obj/item/gun/energy/ionrifle,
+/obj/item/gun/projectile/energy/ionrifle,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/submap/debrisfield_vr/derelict/interior)
 "bb" = (
@@ -324,7 +324,7 @@
 /turf/space,
 /area/space)
 "bg" = (
-/obj/item/gun/energy/ionrifle,
+/obj/item/gun/projectile/energy/ionrifle,
 /turf/space,
 /area/space)
 "bh" = (

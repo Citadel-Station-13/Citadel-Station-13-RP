@@ -341,7 +341,7 @@
 /area/template_noop)
 "on" = (
 /obj/structure/table/rack/shelf,
-/obj/item/gun/energy/lasercannon,
+/obj/item/gun/projectile/energy/lasercannon,
 /turf/simulated/shuttle/floor/red,
 /area/submap/HeadscientistHQ)
 "oy" = (
@@ -457,7 +457,7 @@
 /area/submap/HeadscientistHQ)
 "uA" = (
 /obj/structure/table/rack/shelf,
-/obj/item/gun/energy/sniperrifle/locked,
+/obj/item/gun/projectile/energy/sniperrifle/locked,
 /turf/simulated/shuttle/floor/red,
 /area/submap/HeadscientistHQ)
 "uG" = (

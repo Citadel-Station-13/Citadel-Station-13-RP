@@ -95,14 +95,14 @@
 
 //* Light Sidearms *//
 
-/obj/item/gun/ballistic/nt_expedition/light_sidearm
-	abstract_type = /obj/item/gun/ballistic/nt_expedition/light_sidearm
+/obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm
+	abstract_type = /obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/sidearm-light.dmi'
 	caliber = /datum/ammo_caliber/nt_expedition/light_sidearm
 
 //* Pistol *//
 
-/obj/item/gun/ballistic/nt_expedition/light_sidearm/pistol
+/obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm/pistol
 	name = "light pistol"
 	desc = "The XNP Mk.1 \"Noisy Moth\" pistol; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
@@ -119,7 +119,7 @@
 
 //* SMG *//
 
-/obj/item/gun/ballistic/nt_expedition/light_sidearm/smg
+/obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm/smg
 	name = "machine pistol"
 	desc = "The XNMP Mk.3 \"Buzzer\" machine pistol; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"

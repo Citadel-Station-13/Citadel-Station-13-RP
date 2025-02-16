@@ -9,7 +9,7 @@
  * * Extremely powerful. Non-acquirable by most means.
  * * Synchronous Slide Charging is inbuilt and non-replaceable.
  */
-/obj/item/gun/ballistic/magnetic/nt_protomag/srp
+/obj/item/gun/projectile/ballistic/magnetic/nt_protomag/srp
 	name = "anti-material rifle"
 	desc = "A devastating single-shot rifle. Fires ferromagnetic slugs using a bank of internal supercapacitors."
 	description_fluff = {"

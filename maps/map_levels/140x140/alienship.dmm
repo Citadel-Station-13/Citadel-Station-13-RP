@@ -482,7 +482,7 @@
 /area/tether_away/alienship)
 "cF" = (
 /obj/structure/closet/alien,
-/obj/item/gun/energy/alien,
+/obj/item/gun/projectile/energy/alien,
 /turf/simulated/shuttle/floor/alienplating,
 /area/tether_away/alienship)
 "cG" = (
@@ -535,7 +535,7 @@
 /area/tether_away/alienship)
 "cS" = (
 /obj/structure/table/alien,
-/obj/item/gun/energy/alien,
+/obj/item/gun/projectile/energy/alien,
 /turf/simulated/shuttle/floor/alienplating,
 /area/tether_away/alienship)
 "cT" = (

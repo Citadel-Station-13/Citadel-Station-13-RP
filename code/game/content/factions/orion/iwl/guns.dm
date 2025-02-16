@@ -1,4 +1,4 @@
-/obj/item/gun/ballistic/automatic/k25
+/obj/item/gun/projectile/ballistic/automatic/k25
 	name = "League Service Rifle"
 	desc = "A cheaply-made but rugged and reliable K25 semi-automatic rifle. A staple weapon of the Interplanetary Worker's League naval and armed forces, it handles a lighter caliber than other weaponry but packs quite the punch either way."
 	icon = 'icons/content/factions/orion/iwl/items/guns/k25.dmi'
@@ -17,11 +17,11 @@
 	render_use_legacy_by_default = FALSE
 	item_state = null
 
-/obj/item/gun/ballistic/automatic/k25/update_icon()
+/obj/item/gun/projectile/ballistic/automatic/k25/update_icon()
 	. = ..()
 	update_worn_icon()
 
-/obj/item/gun/ballistic/automatic/k25/update_icon_state()
+/obj/item/gun/projectile/ballistic/automatic/k25/update_icon_state()
 	. = ..()
 	if(ammo_magazine)
 		icon_state = "k25"

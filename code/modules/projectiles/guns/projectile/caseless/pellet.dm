@@ -1,7 +1,7 @@
 /datum/ammo_caliber/pellet
 	caliber = "pellet"
 
-/obj/item/gun/ballistic/caseless/pellet
+/obj/item/gun/projectile/ballistic/caseless/pellet
 	name = "pellet gun"
 	desc = "An air powered rifle that shoots near harmless plastic pellets. Used for recreation in enviroments where firearm ownership is restricted."
 	icon = 'icons/obj/gun/ballistic/caseless/pellet.dmi'

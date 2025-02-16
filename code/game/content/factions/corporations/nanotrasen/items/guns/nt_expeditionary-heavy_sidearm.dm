@@ -84,12 +84,12 @@
 
 //* Heavy Sidearms *//
 
-/obj/item/gun/ballistic/nt_expedition/heavy_sidearm
-	abstract_type = /obj/item/gun/ballistic/nt_expedition/heavy_sidearm
+/obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm
+	abstract_type = /obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/sidearm-heavy.dmi'
 	caliber = /datum/ammo_caliber/nt_expedition/heavy_sidearm
 
-/obj/item/gun/ballistic/nt_expedition/heavy_sidearm/pistol
+/obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/pistol
 	name = "heavy pistol"
 	desc = "The XNP Mk.2 \"Angry Moth\" sidearm; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
@@ -105,7 +105,7 @@
 	base_icon_state = "pistol"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 
-/obj/item/gun/ballistic/nt_expedition/heavy_sidearm/revolver
+/obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/revolver
 	name = "heavy revolver"
 	desc = "The XNP Mk.5 \"Roller\" revolver; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
@@ -118,7 +118,7 @@
 	load_method = SINGLE_CASING | SPEEDLOADER
 	icon_state = "revolver"
 
-/obj/item/gun/ballistic/nt_expedition/heavy_sidearm/smg
+/obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/smg
 	name = "submachine gun"
 	desc = "The XNMP Mk.8 \"Buzzsaw\" submachine gun; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"

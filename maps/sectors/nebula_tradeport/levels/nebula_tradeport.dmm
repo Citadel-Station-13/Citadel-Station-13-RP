@@ -929,7 +929,7 @@
 	dir = 8
 	},
 /obj/structure/table/steel_reinforced,
-/obj/item/gun/ballistic/automatic/as24{
+/obj/item/gun/projectile/ballistic/automatic/as24{
 	desc = "Never ask to speak to the manager.";
 	name = "Kate"
 	},
@@ -3474,7 +3474,7 @@
 	req_access = list(160)
 	},
 /obj/structure/table/marble,
-/obj/item/gun/energy/decloner,
+/obj/item/gun/projectile/energy/decloner,
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
@@ -3825,7 +3825,7 @@
 	dir = 8
 	},
 /obj/structure/table/wooden_reinforced,
-/obj/item/gun/energy/netgun,
+/obj/item/gun/projectile/energy/netgun,
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/safari)
 "ajX" = (
@@ -5923,7 +5923,7 @@
 "apM" = (
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/frontier/taj,
+/obj/item/gun/projectile/energy/frontier/taj,
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
 "apN" = (
@@ -7907,7 +7907,7 @@
 	req_access = list(160)
 	},
 /obj/structure/table/marble,
-/obj/item/gun/energy/alien,
+/obj/item/gun/projectile/energy/alien,
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
@@ -8203,7 +8203,7 @@
 	req_access = list(160)
 	},
 /obj/structure/table/marble,
-/obj/item/gun/energy/gun/fluff/dominator,
+/obj/item/gun/projectile/energy/gun/fluff/dominator,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cyndishow)
 "avG" = (
@@ -10781,7 +10781,7 @@
 	dir = 1
 	},
 /obj/structure/table/marble,
-/obj/item/gun/ballistic/shotgun/pump/JSDF{
+/obj/item/gun/projectile/ballistic/shotgun/pump/JSDF{
 	desc = "The Iceman cometh.";
 	name = "mercenary tactical shotgun"
 	},
@@ -13226,9 +13226,9 @@
 /obj/structure/closet/crate/secure/weapon{
 	req_access = list(160)
 	},
-/obj/item/gun/energy/civtas,
-/obj/item/gun/energy/civtas,
-/obj/item/gun/energy/civtas,
+/obj/item/gun/projectile/energy/civtas,
+/obj/item/gun/projectile/energy/civtas,
+/obj/item/gun/projectile/energy/civtas,
 /obj/random/energy,
 /obj/random/handgun,
 /obj/random/weapon/guarenteed,
@@ -14050,8 +14050,8 @@
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/table/rack/shelf/steel,
 /obj/item/storage/box/survival_knife,
-/obj/item/gun/energy/stripper,
-/obj/item/gun/energy/sizegun,
+/obj/item/gun/projectile/energy/stripper,
+/obj/item/gun/projectile/energy/sizegun,
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
 "aKS" = (
@@ -14361,7 +14361,7 @@
 	dir = 1
 	},
 /obj/structure/bookcase,
-/obj/item/gun/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
 /turf/simulated/floor/wood,
 /area/shuttle/trade_ship/general)
 "aLL" = (
@@ -14583,8 +14583,8 @@
 /obj/structure/closet/crate/secure/weapon{
 	req_access = list(160)
 	},
-/obj/item/gun/energy/phasegun/pistol,
-/obj/item/gun/energy/phasegun/pistol,
+/obj/item/gun/projectile/energy/phasegun/pistol,
+/obj/item/gun/projectile/energy/phasegun/pistol,
 /obj/random/weapon/guarenteed,
 /obj/random/energy,
 /obj/random/energy,
@@ -17152,7 +17152,7 @@
 	req_access = list(160)
 	},
 /obj/structure/table/marble,
-/obj/item/gun/energy/gun/fluff/gunsword,
+/obj/item/gun/projectile/energy/gun/fluff/gunsword,
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
 	},
@@ -19761,7 +19761,7 @@
 	id = "scoophead_office"
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/scoophead/main)
+/area/shuttle/scoophead/cockpit)
 "bsc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -19782,7 +19782,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/scoophead/main)
+/area/shuttle/scoophead/cockpit)
 "btw" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
@@ -19867,7 +19867,7 @@
 	id = "scoophead_office"
 	},
 /turf/simulated/floor/carpet/patterened/red,
-/area/shuttle/scoophead/main)
+/area/shuttle/scoophead/cockpit)
 "bEl" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
@@ -19910,7 +19910,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/carpet/patterened/red,
-/area/shuttle/scoophead/main)
+/area/shuttle/scoophead/cockpit)
 "bHd" = (
 /obj/structure/aquarium/prefilled,
 /turf/simulated/floor/carpet/turcarpet,
@@ -19947,6 +19947,9 @@
 /obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/plating,
 /area/shuttle/tug)
+"bRZ" = (
+/turf/simulated/wall/prepainted/exploration,
+/area/shuttle/scoophead/cockpit)
 "bSu" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 4
@@ -20133,6 +20136,9 @@
 /obj/structure/table/hardwoodtable,
 /turf/simulated/floor/tiled/dark,
 /area/sector/nebula_tradeport/motel/room1)
+"crT" = (
+/turf/simulated/wall/prepainted/command,
+/area/shuttle/scoophead/cockpit)
 "csb" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
@@ -20558,7 +20564,7 @@
 	req_one_access = null
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/scoophead/main)
+/area/shuttle/scoophead/cockpit)
 "dzE" = (
 /obj/structure/toilet{
 	dir = 4
@@ -20596,7 +20602,7 @@
 	id = "scoophead_room"
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/scoophead/main)
+/area/shuttle/scoophead/cockpit)
 "dCd" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
@@ -20653,7 +20659,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/scoophead/main)
+/area/shuttle/scoophead/cockpit)
 "dGF" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/structure/curtain/black,
@@ -21116,7 +21122,7 @@
 	pixel_x = -32
 	},
 /turf/simulated/floor/carpet/patterened/blue,
-/area/shuttle/scoophead/main)
+/area/shuttle/scoophead/cockpit)
 "eEX" = (
 /obj/structure/simple_door/hardwood,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -21334,7 +21340,7 @@
 	id = "scoophead_office"
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/scoophead/main)
+/area/shuttle/scoophead/cockpit)
 "fir" = (
 /obj/machinery/computer/ship/sensors,
 /obj/effect/floor_decal/techfloor{
@@ -21452,7 +21458,7 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/scoophead/main)
+/area/shuttle/scoophead/cockpit)
 "fFF" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -22106,7 +22112,7 @@
 	id = "scoophead_office"
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/scoophead/main)
+/area/shuttle/scoophead/cockpit)
 "hyI" = (
 /obj/structure/table/hardwoodtable,
 /obj/machinery/chemical_dispenser/catering/bar_coffee{
@@ -22634,7 +22640,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/carpet/patterened/red,
-/area/shuttle/scoophead/main)
+/area/shuttle/scoophead/cockpit)
 "iQo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/meter,
@@ -22683,7 +22689,7 @@
 /obj/structure/curtain/open/shower,
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/tiled/neutral,
-/area/shuttle/scoophead/main)
+/area/shuttle/scoophead/cockpit)
 "jdu" = (
 /obj/machinery/washing_machine,
 /obj/item/storage/laundry_basket{
@@ -22767,7 +22773,7 @@
 	pixel_x = 32
 	},
 /turf/simulated/floor/carpet/patterened/red,
-/area/shuttle/scoophead/main)
+/area/shuttle/scoophead/cockpit)
 "jpc" = (
 /obj/structure/window/reinforced/polarized{
 	dir = 8;
@@ -22775,7 +22781,7 @@
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
-/area/shuttle/scoophead/main)
+/area/shuttle/scoophead/cockpit)
 "juq" = (
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/old_tile/blue,
@@ -22958,7 +22964,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/scoophead/main)
+/area/shuttle/scoophead/cockpit)
 "jQe" = (
 /obj/machinery/computer/ship/helm{
 	dir = 1
@@ -23579,7 +23585,7 @@
 /area/sector/nebula_tradeport/motel)
 "luK" = (
 /turf/simulated/floor/wood,
-/area/shuttle/scoophead/main)
+/area/shuttle/scoophead/cockpit)
 "luQ" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/structure/curtain/open/black,
@@ -24262,7 +24268,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/scoophead/main)
+/area/shuttle/scoophead/cockpit)
 "nkf" = (
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 8
@@ -24718,7 +24724,7 @@
 /obj/item/pen/fountain,
 /obj/item/pen,
 /turf/simulated/floor/carpet/patterened/red,
-/area/shuttle/scoophead/main)
+/area/shuttle/scoophead/cockpit)
 "oFP" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -24827,7 +24833,7 @@
 	id = "scoophead_room"
 	},
 /turf/simulated/floor/wood,
-/area/shuttle/scoophead/main)
+/area/shuttle/scoophead/cockpit)
 "pfv" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
@@ -25499,7 +25505,7 @@
 /obj/structure/bed/pod,
 /obj/item/bedsheet/brown,
 /turf/simulated/floor/carpet/patterened/blue,
-/area/shuttle/scoophead/main)
+/area/shuttle/scoophead/cockpit)
 "rbV" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -26270,7 +26276,7 @@
 /obj/item/storage/single_use/mre/random,
 /obj/item/storage/single_use/mre/random,
 /turf/simulated/floor/carpet/patterened/blue,
-/area/shuttle/scoophead/main)
+/area/shuttle/scoophead/cockpit)
 "tBI" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/item/storage/box/glasses/meta,
@@ -26505,7 +26511,7 @@
 	gps_tag = "SCOOP"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/scoophead/main)
+/area/shuttle/scoophead/cockpit)
 "umU" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
@@ -26548,7 +26554,7 @@
 	dir = 4
 	},
 /turf/simulated/wall/prepainted/command,
-/area/shuttle/scoophead/main)
+/area/shuttle/scoophead/cockpit)
 "uuk" = (
 /obj/structure/noticeboard{
 	pixel_y = 29
@@ -26670,7 +26676,7 @@
 "uFC" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/carpet/patterened/red,
-/area/shuttle/scoophead/main)
+/area/shuttle/scoophead/cockpit)
 "uHN" = (
 /obj/machinery/light{
 	dir = 1
@@ -26798,7 +26804,7 @@
 	pixel_x = 32
 	},
 /turf/simulated/floor/wood,
-/area/shuttle/scoophead/main)
+/area/shuttle/scoophead/cockpit)
 "vff" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -26830,6 +26836,10 @@
 /obj/landmark/spawnpoint/job/trader,
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
+"vkf" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/shuttle/scoophead/cockpit)
 "vld" = (
 /turf/simulated/wall/r_wall,
 /area/sector/nebula_tradeport/motel/room8)
@@ -27094,7 +27104,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/carpet/patterened/red,
-/area/shuttle/scoophead/main)
+/area/shuttle/scoophead/cockpit)
 "wlu" = (
 /obj/machinery/shipsensors,
 /turf/simulated/floor/plating,
@@ -27146,7 +27156,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/neutral,
-/area/shuttle/scoophead/main)
+/area/shuttle/scoophead/cockpit)
 "wqt" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4
@@ -27188,7 +27198,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/carpet/patterened/red,
-/area/shuttle/scoophead/main)
+/area/shuttle/scoophead/cockpit)
 "wvG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/neutral,
@@ -27574,13 +27584,13 @@
 	},
 /obj/machinery/computer/shuttle_control/explore/trade/scoophead,
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/scoophead/main)
+/area/shuttle/scoophead/cockpit)
 "xvE" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/scoophead/main)
+/area/shuttle/scoophead/cockpit)
 "xwL" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
@@ -27674,6 +27684,20 @@
 	},
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room7)
+"xWa" = (
+/obj/machinery/door/airlock/command{
+	name = "Captain's Quarters";
+	req_access = list(160);
+	req_one_access = null
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/cable/pink{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/scoophead/cockpit)
 "xYE" = (
 /obj/structure/lattice,
 /obj/structure/railing/grey,
@@ -27724,7 +27748,7 @@
 /obj/structure/lattice,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/shuttle/scoophead)
+/area/shuttle/scoophead/cockpit)
 "ygF" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -54409,13 +54433,13 @@ aDh
 aDh
 acd
 aDh
-gsa
-gsa
-gsa
-kJj
-kJj
-kJj
-kJj
+vkf
+vkf
+vkf
+bRZ
+bRZ
+bRZ
+bRZ
 aDh
 aDh
 awV
@@ -54602,15 +54626,15 @@ aDh
 aDh
 aDh
 acd
-gsa
-gsa
+vkf
+vkf
 btq
 umb
-yfg
+crT
 wqg
 jbA
-kJj
-kJj
+bRZ
+bRZ
 aDh
 aDh
 awV
@@ -54796,11 +54820,11 @@ aDh
 aDh
 aDh
 acd
-gsa
+vkf
 xuJ
 xvE
 fES
-yfg
+crT
 rai
 luK
 eDY
@@ -54990,7 +55014,7 @@ aDh
 aDh
 aDh
 aDh
-gsa
+vkf
 dFp
 jPy
 nhC
@@ -55184,15 +55208,15 @@ aDh
 aDh
 aDh
 aDh
-kJj
-kJj
-yfg
-hIZ
-yfg
+bRZ
+bRZ
+crT
+xWa
+crT
 utC
-yfg
+crT
 jpc
-gsa
+vkf
 aDh
 aDh
 awV
