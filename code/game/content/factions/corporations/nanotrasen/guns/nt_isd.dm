@@ -310,7 +310,7 @@
 
 /obj/projectile/nt_isd/shock
 	name = "energy beam"
-	color = "#ffff00"
+	color = "#ffff94"
 	tracer_icon_state = "discharge-1"
 	tracer_add_state = TRUE
 	tracer_add_state_alpha = 175

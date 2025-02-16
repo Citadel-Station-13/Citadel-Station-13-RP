@@ -49,4 +49,4 @@
 	identifier = "taser_stun-nt_isd"
 	duration = 3 SECONDS
 	pain_per_second = 10
-	pain_reapplication_multiplier = 0.5
+	pain_reapplication_multiplier = 1
