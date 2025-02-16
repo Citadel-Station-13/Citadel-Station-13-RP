@@ -6,6 +6,7 @@
 	icon_state = "staffofnothing"
 	item_state = "staff"
 	fire_sound = 'sound/weapons/emitter.ogg'
+	no_pin_required = TRUE
 	var/checks_antimagic = TRUE
 	var/max_charges = 6
 	var/charges = 0
@@ -13,7 +14,6 @@
 	var/charge_tick = 0
 	var/can_charge = 1
 	var/no_den_usage
-	pin = /obj/item/firing_pin/magic
 
 	/// the projectile type we generate
 	//  todo: this should be on /obj/item/gun/projectile/magic/basic
