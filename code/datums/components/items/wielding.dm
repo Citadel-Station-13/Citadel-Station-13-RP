@@ -75,6 +75,8 @@
 		creating.host = src
 		made += creating
 	offhands = made
+	var/obj/item/item_parent = parent
+	item_parent.item_flags |= ITEM_MULTIHAND_WIELDED
 	src.wielder = wielder
 	to_chat(src.wielder, SPAN_WARNING("You start wielding [parent] with [hands == 2? "both" : "[hands]"] hands."))
 	post_wield(src.wielder, hands)

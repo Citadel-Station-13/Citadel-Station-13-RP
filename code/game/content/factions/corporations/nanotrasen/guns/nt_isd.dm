@@ -272,10 +272,10 @@
 	abstract_type = /obj/projectile/nt_isd/laser
 	damage_type = DAMAGE_TYPE_BURN
 	hitscan = TRUE
-	color = "#ff1100"
+	color = "#ff3300"
 	tracer_icon_state = "laser-1"
 	tracer_add_state = TRUE
-	tracer_add_state_alpha = 175
+	tracer_add_state_alpha = 65
 	fire_sound = /datum/soundbyte/laser_1
 
 /obj/projectile/nt_isd/laser/rifle
@@ -313,7 +313,7 @@
 	color = "#ffff94"
 	tracer_icon_state = "discharge-1"
 	tracer_add_state = TRUE
-	tracer_add_state_alpha = 175
+	tracer_add_state_alpha = 65
 	hitscan = TRUE
 	base_projectile_effects = list(
 		/datum/projectile_effect/electrical_impulse{
@@ -344,7 +344,7 @@
 	color = "#00ffff"
 	tracer_icon_state = "laser-1"
 	tracer_add_state = TRUE
-	tracer_add_state_alpha = 175
+	tracer_add_state_alpha = 65
 	hitscan = TRUE
 	agony = 25
 	fire_sound = /datum/soundbyte/disabler_1
