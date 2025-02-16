@@ -46,6 +46,8 @@
 		var/current_index = modular_components.Find(modular_particle_array_active)
 		if(!current_index)
 			CRASH("can't find current particle array in active")
+		// default to current
+		. = modular_particle_array_active
 		for(var/i in current_index + 1 to length(modular_components))
 			var/obj/item/gun_component/particle_array/maybe_array = modular_components[i]
 			if(!istype(maybe_array))

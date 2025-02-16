@@ -133,7 +133,9 @@
  * Uses the ammo casing, returning the projectile retrieved, updating icon, etc
  */
 /obj/item/ammo_casing/proc/expend()
-	. = stored
+	. = lazy_init_projectile()
+	if(isnull(.))
+		return
 	stored = FALSE
 	setDir(pick(GLOB.cardinal)) //spin spent casings
 	update_icon()
