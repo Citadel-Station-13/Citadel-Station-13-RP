@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-//* rendering enums - /obj/item/gun/ballistic *//
+//* rendering enums - /obj/item/gun/projectile/ballistic *//
 
 //? render_bolt_overlay
 

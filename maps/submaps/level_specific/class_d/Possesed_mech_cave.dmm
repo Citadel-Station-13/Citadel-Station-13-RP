@@ -170,7 +170,7 @@
 /obj/item/ammo_casing/a12g/flare,
 /obj/item/ammo_casing/a12g/flare,
 /obj/item/ammo_casing/a12g/flare,
-/obj/item/gun/ballistic/shotgun/flare,
+/obj/item/gun/projectile/ballistic/shotgun/flare,
 /turf/simulated/floor/classd/indoors,
 /area/class_d/explored/underground)
 "GP" = (

@@ -139,7 +139,7 @@
 		explosion(get_turf(src), -1, 1, 2, 5, adminlog = 1)
 	..()
 
-/obj/item/gun/energy/xray/swarm
+/obj/item/gun/projectile/energy/xray/swarm
 	name = "spectral projector"
 	desc = "A high-power laser gun capable of expelling concentrated gamma blasts, which are able to penetrate matter easier than \
 	standard xray beams, resulting in an effective 'anti-everything' energy weapon."
@@ -157,6 +157,6 @@
 		list(mode_name="deter", projectile_type=/obj/projectile/beam/shock, charge_cost = 175),
 		)
 
-/obj/item/gun/energy/xray/swarm/Initialize(mapload)
+/obj/item/gun/projectile/energy/xray/swarm/Initialize(mapload)
 	. = ..()
 	adjust_scale(-1, 1)

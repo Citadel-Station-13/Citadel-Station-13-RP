@@ -330,7 +330,7 @@
 /obj/item/flashlight/maglight,
 /obj/item/storage/belt/security/tactical,
 /obj/item/storage/backpack/dufflebag/syndie,
-/obj/item/gun/ballistic/silenced,
+/obj/item/gun/projectile/ballistic/silenced,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/barracks)
 "aT" = (
@@ -668,7 +668,7 @@
 /obj/item/flashlight/maglight,
 /obj/item/storage/belt/security/tactical,
 /obj/item/storage/backpack/dufflebag/syndie,
-/obj/item/gun/ballistic/silenced,
+/obj/item/gun/projectile/ballistic/silenced,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/barracks)
 "bJ" = (
@@ -763,7 +763,7 @@
 /obj/item/flashlight/maglight,
 /obj/item/storage/belt/security/tactical,
 /obj/item/storage/backpack/dufflebag/syndie,
-/obj/item/gun/ballistic/silenced,
+/obj/item/gun/projectile/ballistic/silenced,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/barracks)
 "bR" = (
