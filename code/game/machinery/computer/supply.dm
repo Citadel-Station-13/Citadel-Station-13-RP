@@ -150,7 +150,7 @@
 			)
 
 	// Compile exported crates
-	for(var/datum/exported_crate/E in SSsupply.exported_crates)
+	for(var/datum/legacy_exported_crate/E in SSsupply.legacy_exported_crates)
 		receipts[++receipts.len] = list(
 				"ref" = "\ref[E]",
 				"contents" = E.contents,
@@ -332,7 +332,7 @@
 		SSsupply.deny_all_pending(user)
 
 	if(href_list["export_ref"])
-		var/datum/exported_crate/E = locate(href_list["export_ref"])
+		var/datum/legacy_exported_crate/E = locate(href_list["export_ref"])
 
 		// Invalid ref
 		if(!istype(E))

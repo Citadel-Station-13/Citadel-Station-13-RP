@@ -93,8 +93,3 @@
 	var/datum/economy_account/D = get_account(attempt_account_number)
 	if(D && (D.security_level != 2 || valid_card) && (!D.security_level || D.remote_access_pin == attempt_pin_number) )
 		return D
-
-/proc/get_account(var/account_number)
-	for(var/datum/economy_account/D in GLOB.all_money_accounts)
-		if(D.account_number == account_number)
-			return D

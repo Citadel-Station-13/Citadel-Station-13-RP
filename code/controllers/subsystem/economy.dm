@@ -20,6 +20,11 @@ SUBSYSTEM_DEF(economy)
 	var/list/keyed_accounts = list()
 
 /datum/controller/subsystem/economy/Initialize()
+	//news_network.CreateFeedChannel("The [(LEGACY_MAP_DATUM).starsys_name] Times", "[(LEGACY_MAP_DATUM).starsys_name] Times ExoNode - [(LEGACY_MAP_DATUM).station_short]", 1, 1)
+	news_network.CreateFeedChannel("The Gibson Gazette", "Editor Mike Hammers", 1, 1)
+	news_network.CreateFeedChannel("Oculum Content Aggregator", "Oculus v6rev7", 1, 1)
+
+	#warn do we really need this init?
 	setup_economy()
 	return ..()
 

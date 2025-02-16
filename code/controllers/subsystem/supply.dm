@@ -17,15 +17,21 @@ SUBSYSTEM_DEF(supply)
 	var/cargo_account_faction_id = /datum/world_faction/core/station::id
 	/// static account id to bind to withi nfaction
 	var/cargo_account_bind_id = /datum/department/station/cargo::id
+	/// export handlers
+	var/list/datum/supply_export_handler/export_handlers = list(
+		new /datum/supply_export_handler/auto_stacks,
+	)
 
 	// Control
 	var/ordernum
 	var/list/shoppinglist = list()			// Approved orders
 	var/list/legacy_supply_packs = list()			// All supply packs
 	var/static/list/legacy_supply_categories = list()
-	var/list/exported_crates = list()		// Crates sent from the station
+	var/list/legacy_exported_crates = list()		// Crates sent from the station
 	var/list/order_history = list()			// History of orders, showing edits made by users
+	// todo: replace with using a proper event logging api
 	var/list/adm_order_history = list()		// Complete history of all orders, for admin use
+	// todo: replace with using a proper event logging api
 	var/list/adm_export_history = list()	// Complete history of all crates sent back on the shuttle, for admin use
 	// Shuttle Movement
 	var/movetime = 1200
@@ -49,10 +55,20 @@ SUBSYSTEM_DEF(supply)
 	var/approved_at							// Date and time the order was approved at
 	var/status								// [Requested, Accepted, Denied, Shipped]
 
-/datum/exported_crate
-	var/name
-	var/value
-	var/list/contents
+/datum/legacy_exported_crate
+	/// name of crate
+	var/name = "Unknown"
+	/// total value of crate
+	var/value = 0
+	/// list("object" = name, "value" = value, "quantity" = quantity)
+	var/list/contents = list()
+
+/datum/legacy_exported_crate/clone()
+	var/datum/legacy_exported_crate/cloning = new
+	cloning.name = name
+	cloning.value = value
+	cloning.contents = deep_copy_list(contents)
+	return cloning
 
 /datum/controller/subsystem/supply/Initialize()
 	ordernum = rand(1,9000)
@@ -96,84 +112,75 @@ SUBSYSTEM_DEF(supply)
 
 // Selling
 /datum/controller/subsystem/supply/proc/sell()
-	// Loop over each area in the supply shuttle
+	// todo: better way to grab eerything
+	var/list/atom/movable/loose_entities = list()
+	var/list/atom/movable/container_entities = list()
 	for(var/area/subarea in shuttle.shuttle_area)
-		callHook("sell_shuttle", list(subarea));
-		for(var/atom/movable/MA in subarea)
-			if(MA.anchored)
+		for(var/atom/movable/entity in subarea)
+			if(entity.anchored)
 				continue
-
-			var/datum/exported_crate/EC = new /datum/exported_crate()
-			EC.name = "\proper[MA.name]"
-			EC.value = 0
-			EC.contents = list()
-			var/base_value = 0
-
-			// Must be in a crate!
-			if(istype(MA,/obj/structure/closet/crate))
-				var/obj/structure/closet/crate/CR = MA
-				callHook("sell_crate", list(CR, subarea))
-
-				points += points_per_money * CR.get_worth(GET_WORTH_FLAGS_SUPPLY_DETECTION)
-				var/find_slip = 1
-
-				for(var/atom/A in CR)
-					EC.contents[++EC.contents.len] = list(
-							"object" = "\proper[A.name]",
-							"value" = 0,
-							"quantity" = 1
-						)
-
-					// Sell manifests
-					if(find_slip && istype(A,/obj/item/paper/manifest))
-						var/obj/item/paper/manifest/slip = A
-						if(!slip.is_copy && slip.stamped && slip.stamped.len)	// Yes, the clown stamp will work. clown is the highest authority on the station, it makes sense, trust me guys
-							points += points_per_slip
-							EC.contents[EC.contents.len]["value"] = points_per_slip
-							find_slip = 0
-						continue
-
-					// Sell phoron and platinum
-					if(istype(A, /obj/item/stack/material))
-						var/obj/item/stack/material/P = A
-						if(istype(P.material))
-							var/thaler_per_sheet = P.material.worth
-							var/total_thaler = thaler_per_sheet * P.amount
-							var/total_points = total_thaler * points_per_money
-							EC.contents[EC.contents.len]["value"] = total_points
-							EC.contents[EC.contents.len]["quantity"] = P.amount
-							EC.value += EC.contents[EC.contents.len]["value"]
-
-					// Sell spacebucks
-					if(istype(A, /obj/item/spacecash))
-						var/obj/item/spacecash/cashmoney = A
-						EC.contents[EC.contents.len]["value"] = cashmoney.worth * points_per_money
-						EC.contents[EC.contents.len]["quantity"] = cashmoney.worth
-						EC.value += EC.contents[EC.contents.len]["value"]
-
-					// Sell trash
-					if(istype(A, /obj/item/trash))
-						EC.contents[EC.contents.len]["value"] = points_per_trash
-
-
-			// Make a log of it, but it wasn't shipped properly, and so isn't worth anything
+			if(entity.atom_flags & (ATOM_NONWORLD | ATOM_ABSTRACT))
+				continue
+			if(entity.supply_export_is_container())
+				container_entities += entity
 			else
-				EC.contents = list(
-						"error" = "Error: Product was improperly packaged. Payment rendered null under terms of agreement."
-					)
+				loose_entities += entity
 
-			exported_crates += EC
-			points += EC.value
-			EC.value += base_value
+	legacy_supply_demand_supply_sell_hook(loose_entities + container_entities)
 
-			// Duplicate the receipt for the admin-side log
-			var/datum/exported_crate/adm = new()
-			adm.name = EC.name
-			adm.value = EC.value
-			adm.contents = deep_copy_list(EC.contents)
-			adm_export_history += adm
+	var/datum/economy_account/account_to_fund = resolve_station_cargo_account()
 
-			qdel(MA)
+	// handle loose
+	if(length(loose_entities))
+		legacy_supply_demand_supply_sell_hook(loose_entities)
+		var/datum/supply_export/export = new(loose_entities)
+		export.run(export_handlers, export_faction)
+
+		#warn fund account
+		var/datum/legacy_exported_crate/legacy_report = export.generate_legacy_exported_crate()
+		adm_export_history += legacy_report.clone()
+		legacy_exported_crates += legacy_report
+	// handle containers
+	if(length(container_entities))
+		for(var/datum/supply_export/export_result as anything in recursively_sell_container_entities(container_entities))
+			#warn fund account
+			var/datum/legacy_exported_crate/legacy_report = export_result.generate_legacy_exported_crate()
+			adm_export_history += legacy_report.clone()
+			legacy_exported_crates += legacy_report
+			#warn impl
+
+	#warn handle returned / stamped manifests
+	#warn this
+
+/**
+ * @return list(/datum/supply_export's)
+ */
+/datum/controller/subsystem/supply/proc/recursively_sell_container_entities(list/atom/movable/container_entities, datum/supply_export/parent_export, safety = 128) as /list
+	RETURN_TYPE(/list)
+
+	safety = min(128, safety)
+	if(safety < 0)
+		cRASH("hit safety on recursive container sell")
+
+	. = list()
+	for(var/atom/movable/container_entity as anything in container_entities)
+		var/list/atom/movable/container_contents = list(container_entity)
+		var/list/atom/movable/processing = container_entity.contents.Copy()
+		var/list/atom/movable/nested_containers = list()
+		for(var/i = 1, i <= length(processing), i++)
+			var/atom/movable/inside = processing[i]
+			if(inside.supply_export_is_container())
+				nested_containers += inside
+				continue
+			container_contents += inside
+			var/list/maybe_nested = inside.supply_export_recurse()
+			if(maybe_nested)
+				processing += maybe_nested
+
+		var/datum/supply_export/container_export = new(container_contents)
+		container_export.run(export_handlers, export_faction)
+		. += container_export
+		. += recursively_sell_container_entities(nested_containers, container_export, safety - 1)
 
 /datum/controller/subsystem/supply/proc/get_clear_turfs()
 	var/list/clear_turfs = list()
@@ -184,7 +191,7 @@ SUBSYSTEM_DEF(supply)
 				continue
 			var/occupied = 0
 			for(var/atom/A in T.contents)
-				if((A.atom_flags & ATOM_ABSTRACT))
+				if((A.atom_flags & (ATOM_ABSTRACT | ATOM_NONWORLD)))
 					continue
 				occupied = 1
 				break
@@ -351,16 +358,15 @@ SUBSYSTEM_DEF(supply)
 	adm_order_history += adm_order
 
 // Will delete the specified export receipt from the user-side list
-/datum/controller/subsystem/supply/proc/delete_export(var/datum/exported_crate/E, var/mob/user)
+/datum/controller/subsystem/supply/proc/delete_export(var/datum/legacy_exported_crate/E, var/mob/user)
 	// Making sure they know what they're doing
 	if(alert(user, "Are you sure you want to delete this record?", "Delete Record","No","Yes") == "Yes")
 		if(alert(user, "Are you really sure? There is no way to recover the receipt once deleted.", "Delete Record", "No", "Yes") == "Yes")
 			log_admin("[key_name(user)] has deleted export receipt \ref[E] [E] from the user-side export history.")
-			SSsupply.exported_crates -= E
-	return
+			SSsupply.legacy_exported_crates -= E
 
 // Will add an item entry to the specified export receipt on the user-side list
-/datum/controller/subsystem/supply/proc/add_export_item(var/datum/exported_crate/E, var/mob/user)
+/datum/controller/subsystem/supply/proc/add_export_item(var/datum/legacy_exported_crate/E, var/mob/user)
 	var/new_name = input(user, "Name", "Please enter the name of the item.") as null|text
 	if(!new_name)
 		return

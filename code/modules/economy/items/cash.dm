@@ -124,6 +124,12 @@
 /obj/item/spacecash/amount_static_currency()
 	return worth
 
+//* Supply *//
+
+/obj/item/spacecash/supply_export_enumerate(datum/supply_export/export)
+	export.earned_direct_cash += worth
+	export.earned += worth
+
 /obj/item/spacecash/c1
 	name = "1 Thaler"
 	icon_state = "spacecash1"

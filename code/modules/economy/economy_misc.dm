@@ -65,19 +65,11 @@
 //Frigates are medium sized vessels, often used for escorting larger ships. They will rapidly find themselves outclassed if forced to face heavy warships head on.
 
 /proc/setup_economy()
-	//news_network.CreateFeedChannel("The [(LEGACY_MAP_DATUM).starsys_name] Times", "[(LEGACY_MAP_DATUM).starsys_name] Times ExoNode - [(LEGACY_MAP_DATUM).station_short]", 1, 1)
-	news_network.CreateFeedChannel("The Gibson Gazette", "Editor Mike Hammers", 1, 1)
-	news_network.CreateFeedChannel("Oculum Content Aggregator", "Oculus v6rev7", 1, 1)
-
 	for(var/loc_type in typesof(/datum/trade_destination) - /datum/trade_destination)
 		var/datum/trade_destination/D = new loc_type
 		weighted_randomevent_locations[D] = D.viable_random_events.len
 		weighted_mundaneevent_locations[D] = D.viable_mundane_events.len
 
-	create_station_account()
-
-	for(var/department in economy_station_departments)
-		create_department_account(department)
 	create_department_account("Vendor")
 	GLOB.vendor_account = GLOB.department_accounts["Vendor"]
 
@@ -92,13 +84,11 @@
 
 /proc/create_station_account()
 	if(!GLOB.station_account)
-		GLOB.next_account_number = rand(111111, 999999)
 
 		GLOB.station_account = new()
 		GLOB.station_account.owner_name = "[station_name()] Station Account"
 		GLOB.station_account.account_number = rand(111111, 999999)
 		GLOB.station_account.remote_access_pin = rand(1111, 111111)
-		GLOB.station_account.money = 100000
 
 		//create an entry in the account transaction log for when it was created
 		var/datum/economy_transaction/T = new()
@@ -108,19 +98,15 @@
 		T.date = "2nd April, 2555"
 		T.time = "11:24"
 		T.source_terminal = "Biesel GalaxyNet Terminal #277"
-
 		//add the account
 		GLOB.station_account.transaction_log.Add(T)
-		GLOB.all_money_accounts.Add(GLOB.station_account)
 
 /proc/create_department_account(department)
-	GLOB.next_account_number = rand(111111, 999999)
 
 	var/datum/economy_account/department_account = new()
 	department_account.owner_name = "[department] Account"
 	department_account.account_number = rand(111111, 999999)
 	department_account.remote_access_pin = rand(1111, 111111)
-	department_account.money = 10000
 
 	//create an entry in the account transaction log for when it was created
 	var/datum/economy_transaction/T = new()
@@ -133,6 +119,4 @@
 
 	//add the account
 	department_account.transaction_log.Add(T)
-	GLOB.all_money_accounts.Add(department_account)
 
-	GLOB.department_accounts[department] = department_account
