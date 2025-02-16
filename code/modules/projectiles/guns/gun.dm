@@ -736,6 +736,7 @@
 
 	if(needs_worn_update)
 		update_worn_icon()
+	firemode_swap_action?.update_buttons()
 
 /obj/item/gun/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot/slot_meta, icon_used)
 	// todo: the code copypaste here is atrocious
@@ -767,6 +768,7 @@
 	name = "Switch Firemode"
 	desc = "Switch to the next firemode."
 	target_type = /obj/item/gun
+	check_mobility_flags = MOBILITY_CAN_USE
 
 /datum/action/item_action/gun_firemode_swap/pre_render_hook()
 	. = ..()

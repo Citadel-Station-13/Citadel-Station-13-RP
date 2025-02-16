@@ -188,35 +188,37 @@
 
 /obj/item/gun/projectile/energy/update_icon()
 	. = ..()
-	if((item_renderer || mob_renderer) || !render_use_legacy_by_default)
-		return // using new system
-	if(obj_cell_slot.cell == null)
-		if(modifystate)
-			icon_state = "[modifystate]_open"
-		else
-			icon_state = "[initial(icon_state)]_open"
-		return
-	else if(charge_meter)
-		var/ratio = obj_cell_slot.cell.percent() * 0.01
+	if(!(item_renderer || mob_renderer) && render_use_legacy_by_default)
+		if(obj_cell_slot.cell == null)
+			if(modifystate)
+				icon_state = "[modifystate]_open"
+			else
+				icon_state = "[initial(icon_state)]_open"
+			return
+		else if(charge_meter)
+			var/ratio = obj_cell_slot.cell.percent() * 0.01
 
-		//make sure that rounding down will not give us the empty state even if we have charge for a shot left.
-		if(obj_cell_slot.cell.charge < charge_cost)
-			ratio = 0
-		else
-			ratio = max(round(ratio, 0.25) * 100, 25)
+			//make sure that rounding down will not give us the empty state even if we have charge for a shot left.
+			if(obj_cell_slot.cell.charge < charge_cost)
+				ratio = 0
+			else
+				ratio = max(round(ratio, 0.25) * 100, 25)
 
-		if(modifystate)
-			icon_state = "[modifystate][ratio]"
-		else
-			icon_state = "[initial(icon_state)][ratio]"
+			if(modifystate)
+				icon_state = "[modifystate][ratio]"
+			else
+				icon_state = "[initial(icon_state)][ratio]"
 
-	else if(obj_cell_slot.cell)
-		if(modifystate)
-			icon_state = "[modifystate]"
-		else
-			icon_state = "[initial(icon_state)]"
+		else if(obj_cell_slot.cell)
+			if(modifystate)
+				icon_state = "[modifystate]"
+			else
+				icon_state = "[initial(icon_state)]"
 
-	update_worn_icon()
+		update_worn_icon()
+
+	modular_particle_array_swap_action?.update_buttons()
+	lethal_safety_action?.update_buttons()
 
 //* Actions *//
 
@@ -240,10 +242,12 @@
 				lethal_safety_action.grant(inv_inside.actions)
 
 /obj/item/gun/projectile/energy/proc/reconsider_lethal_safety_action()
-	var/has_lethal_modes = modular_system || has_lethal_firemode()
+	var/has_lethal_modes = modular_system || has_mixed_lethality_firemodes()
 
 	if(!has_lethal_modes)
 		QDEL_NULL(lethal_safety_action)
+		// flip lethal safety off, just in case we have all lethal firemodes
+		lethal_safety = FALSE
 	else
 		if(!lethal_safety_action)
 			lethal_safety_action = new /datum/action/item_action/modular_energy_particle_array_safety(src)
@@ -260,8 +264,11 @@
 	if(!estimated_cost)
 		return 1
 	if(rounded)
-		return floor(cell.charge / estimated_cost) / floor(cell.maxcharge / estimated_cost)
-	return cell.charge / cell.maxcharge
+		var/full_shots = floor(cell.maxcharge / estimated_cost)
+		if(!full_shots)
+			return 0
+		return floor(cell.charge / estimated_cost) / full_shots
+	return cell.maxcharge ? cell.charge / cell.maxcharge : 0
 
 /**
  * Estimates how many shots the gun's power supply has charge for
@@ -333,7 +340,7 @@
 			target = src,
 		)
 
-	if(modular_particle_array_active.considered_lethal)
+	if(modular_particle_array_active?.considered_lethal)
 		user_swap_particle_array(actor)
 	var/datum/firemode/energy/current_firemode = firemode
 	if(current_firemode?.considered_lethal)
@@ -345,6 +352,7 @@
 	name = "Toggle Lethal Arrays"
 	desc = "Toggle being able to swap to installed particle arrays that are considered lethal."
 	target_type = /obj/item/gun/projectile/energy
+	check_mobility_flags = MOBILITY_CAN_USE
 
 /datum/action/item_action/modular_energy_particle_array_safety/pre_render_hook()
 	. = ..()
@@ -361,6 +369,7 @@
 	name = "Toggle Particle Array"
 	desc = "Toggle the active particle array being used."
 	target_type = /obj/item/gun/projectile/energy
+	check_mobility_flags = MOBILITY_CAN_USE
 
 /datum/action/item_action/modular_energy_particle_array_swap/pre_render_hook()
 	. = ..()

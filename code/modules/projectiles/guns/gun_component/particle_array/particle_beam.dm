@@ -5,7 +5,7 @@
 	name = /obj/item/gun_component/particle_array::name + " (laser)"
 	desc = "A particle array that emits a damaging beam. Bog-standard, really."
 
-	base_charge_cost = /obj/item/cell/device/weapon::maxcharge / 8 * 500
+	base_charge_cost = /obj/item/cell/device/weapon::maxcharge / 8
 	considered_lethal = TRUE
 	selection_name = "laser"
 	render_color = "#ff0000"

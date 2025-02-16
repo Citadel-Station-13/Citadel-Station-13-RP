@@ -20,6 +20,8 @@
 	return ..()
 
 /datum/action/item_action/calculate_availability()
+	if(!check_mobility_flags)
+		return 1
 	var/obj/item/item = target
 	var/mob/worn = item.get_worn_mob()
 	return worn? (worn.mobility_flags & check_mobility_flags? 1 : 0) : 1

@@ -46,6 +46,7 @@
 	render_color = "#ff0000"
 	charge_cost = 2400 / 15
 	projectile_type = /obj/projectile/nt_isd/laser/sidearm
+	considered_lethal = TRUE
 
 /obj/item/gun/projectile/energy/nt_isd/sidearm
 	name = "hybrid taser"
@@ -111,12 +112,14 @@
 	render_color = "#ffff00"
 	charge_cost = 2400 / 10
 	projectile_type = /obj/projectile/nt_isd/shock
+	considered_lethal = TRUE
 
 /datum/firemode/energy/nt_isd/carbine/kill
 	name = "kill"
 	render_color = "#ff0000"
 	charge_cost = 2400 / 10
 	projectile_type = /obj/projectile/nt_isd/laser/rifle
+	considered_lethal = TRUE
 
 /obj/item/gun/projectile/energy/nt_isd/carbine
 	name = "energy carbine"
@@ -214,6 +217,7 @@
 	render_color = "#ff0000"
 	projectile_type = /obj/projectile/nt_isd/laser/multiphase
 	charge_cost = 2400 / 12
+	considered_lethal = TRUE
 
 // todo: this is an ion beam, not an EMP pulse
 /datum/firemode/energy/nt_isd/multiphase/ion
@@ -221,6 +225,7 @@
 	render_color = "#456aaa"
 	projectile_type = /obj/projectile/nt_isd/ion
 	charge_cost = 2400 / 5
+	considered_lethal = TRUE
 
 /obj/item/gun/projectile/energy/nt_isd/multiphase
 	name = "multiphase sidearm"
@@ -269,7 +274,8 @@
 	hitscan = TRUE
 	color = "#ff1100"
 	tracer_icon_state = "laser-1"
-	tracer_has_add_state = TRUE
+	tracer_add_state = TRUE
+	tracer_add_state_alpha = 175
 	fire_sound = /datum/soundbyte/laser_1
 
 /obj/projectile/nt_isd/laser/rifle
@@ -306,7 +312,8 @@
 	name = "energy beam"
 	color = "#ffff00"
 	tracer_icon_state = "discharge-1"
-	tracer_has_add_state = TRUE
+	tracer_add_state = TRUE
+	tracer_add_state_alpha = 175
 	hitscan = TRUE
 	base_projectile_effects = list(
 		/datum/projectile_effect/electrical_impulse{
@@ -336,7 +343,8 @@
 	name = "disabler beam"
 	color = "#00ffff"
 	tracer_icon_state = "laser-1"
-	tracer_has_add_state = TRUE
+	tracer_add_state = TRUE
+	tracer_add_state_alpha = 175
 	hitscan = TRUE
 	agony = 25
 	fire_sound = /datum/soundbyte/disabler_1

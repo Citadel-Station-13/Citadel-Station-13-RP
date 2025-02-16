@@ -182,7 +182,7 @@
 					else
 						resultant_py -= WORLD_ICON_SIZE * 0.5
 					if(resultant_turf)
-						created += new /atom/movable/render/projectile_tracer/segment(resultant_turf, tracer_icon, "[tracer_icon_state]-beam", tracer_has_add_state, tracer_angle, resultant_px, resultant_py, color, tracer_emissive_strength)
+						created += new /atom/movable/render/projectile_tracer/segment(resultant_turf, tracer_icon, "[tracer_icon_state]-beam", tracer_add_state, tracer_add_state_alpha, tracer_angle, resultant_px, resultant_py, color, tracer_emissive_strength)
 			else
 				var/datum/point/midpoint = point_midpoint_points(point_a, point_b)
 				var/turf/midpoint_turf = midpoint.return_turf()
@@ -190,21 +190,21 @@
 				var/midpoint_py = midpoint.return_py()
 				var/tracer_angle = angle_between_points(point_a, point_b)
 				if(midpoint_turf)
-					created += new /atom/movable/render/projectile_tracer/line(midpoint_turf, tracer_icon, "[tracer_icon_state]-beam", tracer_has_add_state, tracer_angle, midpoint_px, midpoint_py, color, tracer_emissive_strength, pixel_length_between_points(point_a, point_b))
+					created += new /atom/movable/render/projectile_tracer/beam(midpoint_turf, tracer_icon, "[tracer_icon_state]-beam", tracer_add_state, tracer_add_state_alpha, tracer_angle, midpoint_px, midpoint_py, color, tracer_emissive_strength, pixel_length_between_points(point_a, point_b))
 		if(tracer_muzzle_flash)
 			var/datum/point/starting = tracer_vertices[1]
 			var/turf/starting_turf = starting.return_turf()
 			if(starting_turf)
 				var/starting_px = starting.return_px()
 				var/starting_py = starting.return_py()
-				created += new /atom/movable/render/projectile_tracer/muzzle(starting_turf, tracer_icon, "[tracer_icon_state]-muzzle", tracer_has_add_state, original_angle, starting_px, starting_py, color, tracer_emissive_strength)
+				created += new /atom/movable/render/projectile_tracer/muzzle(starting_turf, tracer_icon, "[tracer_icon_state]-muzzle", tracer_add_state, tracer_add_state_alpha, original_angle, starting_px, starting_py, color, tracer_emissive_strength)
 		if(tracer_impact_effect)
 			var/datum/point/ending = tracer_vertices[length(tracer_vertices)]
 			var/turf/ending_turf = ending.return_turf()
 			if(ending_turf)
 				var/ending_px = ending.return_px()
 				var/ending_py = ending.return_py()
-				created += new /atom/movable/render/projectile_tracer/impact(ending_turf, tracer_icon, "[tracer_icon_state]-impact", tracer_has_add_state, angle, ending_px, ending_py, color, tracer_emissive_strength)
+				created += new /atom/movable/render/projectile_tracer/impact(ending_turf, tracer_icon, "[tracer_icon_state]-impact", tracer_add_state, tracer_add_state_alpha, angle, ending_px, ending_py, color, tracer_emissive_strength)
 		return
 
 	//! legacy below !//
@@ -267,7 +267,8 @@
 /atom/movable/render/projectile_tracer
 	SET_APPEARANCE_FLAGS(NONE)
 
-/atom/movable/render/projectile_tracer/Initialize(mapload, icon/use_icon, use_icon_state, use_icon_add_state, angle, px, py, color, emissive)
+// todo: maybe don't have arg hell?
+/atom/movable/render/projectile_tracer/Initialize(mapload, icon/use_icon, use_icon_state, use_icon_add_state, use_add_state_alpha, angle, px, py, color, emissive)
 	src.icon = use_icon
 	src.icon_state = use_icon_state
 	var/matrix/turn_to = transform
@@ -285,7 +286,8 @@
 		appearance_flags |= KEEP_TOGETHER
 		var/image/image = image(icon, "[icon_state]-add")
 		image.blend_mode = BLEND_ADD
-		image.appearance_flags = RESET_COLOR
+		image.appearance_flags = RESET_COLOR | KEEP_APART
+		image.alpha = use_add_state_alpha
 		overlays += image
 	return ..()
 
@@ -293,9 +295,9 @@
 
 /atom/movable/render/projectile_tracer/muzzle
 
-/atom/movable/render/projectile_tracer/line
+/atom/movable/render/projectile_tracer/beam
 
-/atom/movable/render/projectile_tracer/line/Initialize(mapload, icon/use_icon, use_icon_state, use_icon_add_state, angle, px, py, color, emissive, pixel_length)
+/atom/movable/render/projectile_tracer/beam/Initialize(mapload, icon/use_icon, use_icon_state, use_icon_add_state, use_add_state_alpha, angle, px, py, color, emissive, pixel_length)
 	var/matrix/extending = transform
 	extending.Scale(1, pixel_length / WORLD_ICON_SIZE)
 	src.transform = extending
