@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
 /**
  * a faction in the in-game universe
@@ -49,4 +49,7 @@
 	RETURN_TYPE(/datum/economy_faction)
 	if(!economy_faction)
 		return
-	return new economy_faction
+	var/datum/economy_faction/creating = new economy_faction
+	creating.id = id
+	creating.abbreviation = abbreviation
+	return creating
