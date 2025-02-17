@@ -287,12 +287,12 @@
 	src.pixel_y = py
 	src.color = color
 	if(emissive)
-		var/image/emissive_image = image(icon, icon_state)
+		var/image/emissive_image = new /image/projectile/projectile_tracer_emissive(icon, icon_state)
 		emissive_image.layer = MANGLE_PLANE_AND_LAYER(plane, layer)
 		emissive_image.alpha = emissive
 		overlays += emissive_image
 	if(use_icon_add_state)
-		var/image/image = image(icon, "[icon_state]-add")
+		var/image/image = new /image/projectile/projectile_tracer_add(icon, "[icon_state]-add")
 		image.alpha = use_add_state_alpha
 		overlays += image
 	return ..()
