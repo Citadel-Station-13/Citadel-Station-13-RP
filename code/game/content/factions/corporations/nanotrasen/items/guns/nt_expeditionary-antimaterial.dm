@@ -77,13 +77,13 @@
 
 //* Antimaterial Weapons *//
 
-/obj/item/gun/ballistic/nt_expedition/antimaterial
-	abstract_type = /obj/item/gun/ballistic/nt_expedition/antimaterial
+/obj/item/gun/projectile/ballistic/nt_expedition/antimaterial
+	abstract_type = /obj/item/gun/projectile/ballistic/nt_expedition/antimaterial
 	caliber = /datum/ammo_caliber/nt_expedition/antimaterial
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/antimaterial.dmi'
 
 // todo: placeholder sprite
-/obj/item/gun/ballistic/nt_expedition/antimaterial/singleshot
+/obj/item/gun/projectile/ballistic/nt_expedition/antimaterial/singleshot
 	name = "anti-material rifle"
 	desc = "The XNR Mk.11 \"Immobilizer\" anti-material rifle; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"

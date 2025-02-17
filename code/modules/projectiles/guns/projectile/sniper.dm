@@ -1,6 +1,6 @@
 ////////////// PTR-7 Anti-Materiel Rifle //////////////
 
-/obj/item/gun/ballistic/heavysniper
+/obj/item/gun/projectile/ballistic/heavysniper
 	name = "anti-materiel rifle"
 	desc = "A portable anti-armour rifle fitted with a scope, the HI PTR-7 Rifle was originally designed to used against armoured exosuits. It is capable of punching through windows and non-reinforced walls with ease. Fires armor piercing 12.7mm shells."
 	icon_state = "heavysniper"
@@ -24,13 +24,13 @@
 	one_handed_penalty = 90
 	var/bolt_open = 0
 
-/obj/item/gun/ballistic/heavysniper/update_icon()
+/obj/item/gun/projectile/ballistic/heavysniper/update_icon()
 	if(bolt_open)
 		icon_state = "heavysniper-open"
 	else
 		icon_state = "heavysniper"
 
-/obj/item/gun/ballistic/heavysniper/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/gun/projectile/ballistic/heavysniper/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -52,23 +52,23 @@
 	add_fingerprint(user)
 	update_icon()
 
-/obj/item/gun/ballistic/heavysniper/special_check(mob/user)
+/obj/item/gun/projectile/ballistic/heavysniper/special_check(mob/user)
 	if(bolt_open)
 		to_chat(user, "<span class='warning'>You can't fire [src] while the bolt is open!</span>")
 		return 0
 	return ..()
 
-/obj/item/gun/ballistic/heavysniper/load_ammo(var/obj/item/A, mob/user)
+/obj/item/gun/projectile/ballistic/heavysniper/load_ammo(var/obj/item/A, mob/user)
 	if(!bolt_open)
 		return
 	..()
 
-/obj/item/gun/ballistic/heavysniper/unload_ammo(mob/user, var/allow_dump=1)
+/obj/item/gun/projectile/ballistic/heavysniper/unload_ammo(mob/user, var/allow_dump=1)
 	if(!bolt_open)
 		return
 	..()
 
-/obj/item/gun/ballistic/heavysniper/verb/scope()
+/obj/item/gun/projectile/ballistic/heavysniper/verb/scope()
 	set category = VERB_CATEGORY_OBJECT
 	set name = "Use Scope"
 	set popup_menu = 1
@@ -77,7 +77,7 @@
 
 ////////////// Dragunov Sniper Rifle //////////////
 
-/obj/item/gun/ballistic/SVD
+/obj/item/gun/projectile/ballistic/SVD
 	name = "\improper Dragunov"
 	desc = "The SVD, also known as the Dragunov, is mass produced with an Optical Sniper Sight so simple that even Ivan can use it. Too bad for you that the inscriptions are written in Russian. Uses 7.62mm rounds."
 	icon_state = "SVD"
@@ -97,14 +97,14 @@
 	magazine_type = /obj/item/ammo_magazine/a7_62mm/svd
 	allowed_magazines = list(/obj/item/ammo_magazine/a7_62mm/svd)
 
-/obj/item/gun/ballistic/SVD/update_icon_state()
+/obj/item/gun/projectile/ballistic/SVD/update_icon_state()
 	. = ..()
 	if(ammo_magazine)
 		icon_state = "SVD"
 	else
 		icon_state = "SVD-empty"
 
-/obj/item/gun/ballistic/SVD/verb/scope()
+/obj/item/gun/projectile/ballistic/SVD/verb/scope()
 	set category = VERB_CATEGORY_OBJECT
 	set name = "Use Scope"
 	set popup_menu = 1

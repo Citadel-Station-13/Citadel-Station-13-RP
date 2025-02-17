@@ -1,6 +1,6 @@
 // Phase weapons go here
 
-/obj/item/gun/energy/phasegun
+/obj/item/gun/projectile/energy/phasegun
 	name = "phase carbine"
 	desc = "The NT EW26 Artemis is a downsized energy weapon, specifically designed for use against wildlife."
 	icon_state = "phasecarbine"
@@ -12,7 +12,7 @@
 	one_handed_penalty = 15
 	no_pin_required = 1
 
-/obj/item/gun/energy/phasegun/pistol
+/obj/item/gun/projectile/energy/phasegun/pistol
 	name = "phase pistol"
 	desc = "The NT  EW15 Apollo is an energy handgun, specifically designed for self-defense against aggressive wildlife."
 	icon_state = "phase"
@@ -23,16 +23,16 @@
 	projectile_type = /obj/projectile/energy/phase/light
 	one_handed_penalty = 0
 
-/obj/item/gun/energy/phasegun/pistol/mounted
+/obj/item/gun/projectile/energy/phasegun/pistol/mounted
 	name = "mounted phase pistol"
 	self_recharge = 1
 	use_external_power = 1
 
-/obj/item/gun/energy/phasegun/pistol/mounted/cyborg
+/obj/item/gun/projectile/energy/phasegun/pistol/mounted/cyborg
 	charge_cost = 400
 	recharge_time = 7
 
-/obj/item/gun/energy/phasegun/rifle
+/obj/item/gun/projectile/energy/phasegun/rifle
 	name = "phase rifle"
 	desc = "The NT EW31 Orion is a specialist energy weapon, intended for use against hostile wildlife."
 	icon_state = "phaserifle"
@@ -44,7 +44,7 @@
 	projectile_type = /obj/projectile/energy/phase/heavy
 	one_handed_penalty = 30
 
-/obj/item/gun/energy/phasegun/cannon
+/obj/item/gun/projectile/energy/phasegun/cannon
 	name = "phase cannon"
 	desc = "The NT EW50 Gaia is a massive energy weapon, purpose-built for clearing land. You feel dirty just looking at it."
 	icon_state = "phasecannon"
