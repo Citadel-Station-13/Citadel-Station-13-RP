@@ -1,3 +1,4 @@
+// todo: obliterate this and replace wtih an anchored / tethered eftpos
 /obj/machinery/cash_register
 	name = "cash register"
 	desc = "Swipe your ID card to make purchases electronically."
@@ -26,9 +27,7 @@
 // Claim machine ID
 /obj/machinery/cash_register/Initialize(mapload, newdir)
 	. = ..()
-	machine_id = "RETAIL UNIT #[GLOB.num_financial_terminals++]"
 	cash_stored = rand(10, 70)*10
-	GLOB.transaction_devices += src // Global reference list to be properly set up by /proc/setup_economy()
 
 /obj/machinery/cash_register/examine(mob/user, dist)
 	. = ..()

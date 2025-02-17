@@ -35,7 +35,7 @@
 	/// nominal climb delay before modifiers
 	var/climb_delay = 3.5 SECONDS
 
-	//* Coloration
+	//* Coloration *//
 	/// coloration mode
 	var/coloration_mode = COLORATION_MODE_NONE
 	/// coloration:
@@ -160,7 +160,7 @@
 	/// volume when breaking out using resist process
 	var/breakout_volume = 100
 
-	//? Systems - naming convention is 'obj_[system]'
+	//* Systems - naming convention is 'obj_[system]' *//
 	/// cell slot system
 	var/datum/object_system/cell_slot/obj_cell_slot
 	/// storage system

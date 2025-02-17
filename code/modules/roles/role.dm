@@ -52,10 +52,17 @@
 		  get_economic_payscale() \
 		* ECONOMY_PAYSCALE_BASE \
 		* ECONOMY_PAYSCALE_MULT \
-		* H.mind.original_pref_economic_modifier \
+		* person.original_pref_economic_modifier \
 		* gaussian(ECONOMY_PAYSCALE_RANDOM_MULT_MEAN, ECONOMY_PAYSCALE_RANDOM_MULT_DEV) \
 		+ gaussian(ECONOMY_PAYSCALE_RANDOM_ADD_MEAN, ECONOMY_PAYSCALE_RANDOM_ADD_DEV)
 	)
+
+	// todo: more fluff from it being from the actual role's faction (and make sure role faction has economy account)
+	var/datum/economy_transaction/initial_funding_transaction = new(starting_amount)
+	initial_funding_transaction.audit_terminal_as_unsafe_html = ECONOMY_FORMAT_SYSTEM_TERMINAL_RANDOM
+	initial_funding_transaction.audit_purpose_as_unsafe_html = "Initial account creation"
+	initial_funding_transaction.audit_peer_name_as_unsafe_html = "Orion Fudiciary Network"
+	initial_funding_transaction.execute_system_transaction(creating)
 
 	#warn impl
 
@@ -83,7 +90,15 @@
  * Imprint managed accounts on someone
  */
 /datum/role/proc/economy_imprint_managed_accounts(datum/mind/person)
-	#warn impl
+	for(var/key in economy_grant_account_details)
+		var/list/nested_keys_maybe = economy_grant_account_details[key]
+		if(!nested_keys_maybe)
+			var/datum/economy_account/top_level = SSeconomy.resolve_keyed_account(key)
+			person.store_memory_of_economy_account(top_level, "[top_level.owner_name]")
+		else
+			for(var/nested_key in nested_keys_maybe)
+				var/datum/economy_account/nested_account = SSeconomy.resolve_keyed_account(nested_key, key)
+				person.store_memory_of_economy_account(nested_account, "[nested_account.owner_name]")
 
 /**
  * Get economy account datums someone should have access to.

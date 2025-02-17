@@ -552,9 +552,7 @@
 	special_role =    null
 	role_alt_title =  null
 	assigned_job =    null
-	//faction =       null //Uncommenting this causes a compile error due to 'undefined type', fucked if I know.
 	changeling =      null
-	initial_account = null
 	objectives =      list()
 	special_verbs =   list()
 	has_been_rev =    0

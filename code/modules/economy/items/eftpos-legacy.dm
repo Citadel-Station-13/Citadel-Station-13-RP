@@ -1,3 +1,4 @@
+// todo: combine with retail scanner
 /obj/item/eftpos
 	name = "\improper EFTPOS scanner"
 	desc = "Swipe your ID card to make purchases electronically."
@@ -20,69 +21,6 @@
 	//the user of the EFTPOS device can change the target account though, and no-one will be the wiser (except whoever's being charged)
 	linked_account = GLOB.station_account
 	return INITIALIZE_HINT_LATELOAD
-
-/obj/item/eftpos/LateInitialize()
-	. = ..()
-	print_reference()
-
-	//create a short manual as well
-	var/obj/item/paper/R = new(src.loc)
-	R.name = "Steps to success: Correct EFTPOS Usage"
-	/*
-	R.info += "<b>When first setting up your EFTPOS device:</b>"
-	R.info += "1. Memorise your EFTPOS command code (provided with all EFTPOS devices).<br>"
-	R.info += "2. Confirm that your EFTPOS device is connected to your local accounts database. For additional assistance with this step, contact Nanotrasen IT Support<br>"
-	R.info += "3. Confirm that your EFTPOS device has been linked to the account that you wish to recieve funds for all transactions processed on this device.<br>"
-	R.info += "<b>When starting a new transaction with your EFTPOS device:</b>"
-	R.info += "1. Ensure the device is UNLOCKED so that new data may be entered.<br>"
-	R.info += "2. Enter a sum of money and reference message for the new transaction.<br>"
-	R.info += "3. Lock the transaction, it is now ready for your customer.<br>"
-	R.info += "4. If at this stage you wish to modify or cancel your transaction, you may simply reset (unlock) your EFTPOS device.<br>"
-	R.info += "5. Give your EFTPOS device to the customer, they must authenticate the transaction by swiping their ID card and entering their PIN number.<br>"
-	R.info += "6. If done correctly, the transaction will be logged to both accounts with the reference you have entered, the terminal ID of your EFTPOS device and the money transferred across accounts.<br>"
-	*/
-	//Temptative new manual:
-	R.info += "<b>First EFTPOS setup:</b><br>"
-	R.info += "1. Memorise your EFTPOS command code (provided with all EFTPOS devices).<br>"
-	R.info += "2. Connect the EFTPOS to the account in which you want to receive the funds.<br><br>"
-	R.info += "<b>When starting a new transaction:</b><br>"
-	R.info += "1. Enter the amount of money you want to charge and a purpose message for the new transaction.<br>"
-	R.info += "2. Lock the new transaction. If you want to modify or cancel the transaction, you simply have to reset your EFTPOS device.<br>"
-	R.info += "3. Give the EFTPOS device to your customer, he/she must finish the transaction by swiping their ID card or a charge card with enough funds.<br>"
-	R.info += "4. If everything is done correctly, the money will be transferred. To unlock the device you will have to reset the EFTPOS device.<br>"
-
-
-	//stamp the paper
-	var/image/stampoverlay = image('icons/obj/bureaucracy.dmi')
-	stampoverlay.icon_state = "paper_stamp-cent"
-	if(!R.stamped)
-		R.stamped = new
-	R.offset_x += 0
-	R.offset_y += 0
-	R.ico += "paper_stamp-cent"
-	R.stamped += /obj/item/stamp
-	R.add_overlay(stampoverlay)
-	R.stamps += "<HR><i>This paper has been stamped by the EFTPOS device.</i>"
-
-/obj/item/eftpos/proc/print_reference()
-	var/obj/item/paper/R = new(src.loc)
-	R.name = "Reference: [eftpos_name]"
-	R.info = "<b>[eftpos_name] reference</b><br><br>"
-	R.info += "Access code: [access_code]<br><br>"
-	R.info += "<b>Do not lose or misplace this code.</b><br>"
-
-	//stamp the paper
-	var/image/stampoverlay = image('icons/obj/bureaucracy.dmi')
-	stampoverlay.icon_state = "paper_stamp-cent"
-	if(!R.stamped)
-		R.stamped = new
-	R.stamped += /obj/item/stamp
-	R.add_overlay(stampoverlay)
-	R.stamps += "<HR><i>This paper has been stamped by the EFTPOS device.</i>"
-	var/obj/item/smallDelivery/D = new(R.loc)
-	R.loc = D
-	D.wrapped = R
-	D.name = "small parcel - 'EFTPOS access code'"
 
 /obj/item/eftpos/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
@@ -160,17 +98,6 @@
 /obj/item/eftpos/Topic(var/href, var/href_list)
 	if(href_list["choice"])
 		switch(href_list["choice"])
-			if("change_code")
-				var/attempt_code = input("Re-enter the current EFTPOS access code", "Confirm old EFTPOS code") as num
-				if(attempt_code == access_code)
-					var/trycode = input("Enter a new access code for this device (4-6 digits, numbers only)", "Enter new EFTPOS code") as num
-					if(trycode >= 1000 && trycode <= 999999)
-						access_code = trycode
-					else
-						alert("That is not a valid code!")
-					print_reference()
-				else
-					to_chat(usr, "[icon2html(thing = src, target = usr)]<span class='warning'>Incorrect code entered.</span>")
 			if("change_id")
 				var/attempt_code = text2num(input("Re-enter the current EFTPOS access code", "Confirm EFTPOS code"))
 				if(attempt_code == access_code)

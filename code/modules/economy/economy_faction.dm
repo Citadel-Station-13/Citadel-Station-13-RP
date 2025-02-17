@@ -33,4 +33,3 @@
  */
 /datum/economy_faction/proc/random_ephemeral_terminal_name()
 	#warn impl
-

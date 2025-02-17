@@ -1,3 +1,4 @@
+// todo: combine with eftpos
 /obj/item/retail_scanner
 	name = "retail scanner"
 	desc = "Swipe your ID card to make purchases electronically."
@@ -5,9 +6,7 @@
 	icon_state = "retail_idle"
 	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	slot_flags = SLOT_BELT
-	req_access = list(ACCESS_COMMAND_BRIDGE)
 	w_class = WEIGHT_CLASS_SMALL
-	origin_tech = list(TECH_MATERIAL = 1)
 
 	var/locked = 1
 	var/emagged = 0
@@ -22,23 +21,9 @@
 	var/datum/economy_account/linked_account
 	var/account_to_connect = null
 
-
-// Claim machine ID
-/obj/item/retail_scanner/Initialize(mapload)
-	. = ..()
-	machine_id = "[station_name()] RETAIL #[GLOB.num_financial_terminals++]"
-	if(locate(/obj/structure/table) in loc)
-		pixel_y = 3
-	GLOB.transaction_devices += src // Global reference list to be properly set up by /proc/setup_economy()
-
 // Always face the user when put on a table
 /obj/item/retail_scanner/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))	return
-	if(istype(target, /obj/structure/table))
-		src.pixel_y = 3 // Shift it up slightly to look better on table
-		src.dir = get_dir(src, user)
-	else
-		scan_item_price(target)
+	scan_item_price(target)
 
 // Reset dir when picked back up
 /obj/item/retail_scanner/pickup(mob/user, flags, atom/oldLoc)

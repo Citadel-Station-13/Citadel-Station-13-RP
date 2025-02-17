@@ -64,59 +64,19 @@
 //Destroyers are medium sized vessels, often used for escorting larger ships but able to go toe-to-toe with them if need be.
 //Frigates are medium sized vessels, often used for escorting larger ships. They will rapidly find themselves outclassed if forced to face heavy warships head on.
 
-/proc/setup_economy()
+/proc/setup_economy_legacy()
+	//news_network.CreateFeedChannel("The [(LEGACY_MAP_DATUM).starsys_name] Times", "[(LEGACY_MAP_DATUM).starsys_name] Times ExoNode - [(LEGACY_MAP_DATUM).station_short]", 1, 1)
+	news_network.CreateFeedChannel("The Gibson Gazette", "Editor Mike Hammers", 1, 1)
+	news_network.CreateFeedChannel("Oculum Content Aggregator", "Oculus v6rev7", 1, 1)
 	for(var/loc_type in typesof(/datum/trade_destination) - /datum/trade_destination)
 		var/datum/trade_destination/D = new loc_type
 		weighted_randomevent_locations[D] = D.viable_random_events.len
 		weighted_mundaneevent_locations[D] = D.viable_mundane_events.len
 
-	create_department_account("Vendor")
-	GLOB.vendor_account = GLOB.department_accounts["Vendor"]
-
+	#warn destroy the below
 	for(var/obj/item/retail_scanner/RS in GLOB.transaction_devices)
 		if(RS.account_to_connect)
 			RS.linked_account = GLOB.department_accounts[RS.account_to_connect]
 	for(var/obj/machinery/cash_register/CR in GLOB.transaction_devices)
 		if(CR.account_to_connect)
 			CR.linked_account = GLOB.department_accounts[CR.account_to_connect]
-
-	GLOB.current_date_string = "[num2text(rand(1,31))] [pick("January","February","March","April","May","June","July","August","September","October","November","December")], [game_year]"
-
-/proc/create_station_account()
-	if(!GLOB.station_account)
-
-		GLOB.station_account = new()
-		GLOB.station_account.owner_name = "[station_name()] Station Account"
-		GLOB.station_account.account_number = rand(111111, 999999)
-		GLOB.station_account.remote_access_pin = rand(1111, 111111)
-
-		//create an entry in the account transaction log for when it was created
-		var/datum/economy_transaction/T = new()
-		T.target_name = GLOB.station_account.owner_name
-		T.purpose = "Account creation"
-		T.amount = 100000
-		T.date = "2nd April, 2555"
-		T.time = "11:24"
-		T.source_terminal = "Biesel GalaxyNet Terminal #277"
-		//add the account
-		GLOB.station_account.transaction_log.Add(T)
-
-/proc/create_department_account(department)
-
-	var/datum/economy_account/department_account = new()
-	department_account.owner_name = "[department] Account"
-	department_account.account_number = rand(111111, 999999)
-	department_account.remote_access_pin = rand(1111, 111111)
-
-	//create an entry in the account transaction log for when it was created
-	var/datum/economy_transaction/T = new()
-	T.target_name = department_account.owner_name
-	T.purpose = "Account creation"
-	T.amount = department_account.money
-	T.date = "2nd April, 2555"
-	T.time = "11:24"
-	T.source_terminal = "Biesel GalaxyNet Terminal #277"
-
-	//add the account
-	department_account.transaction_log.Add(T)
-

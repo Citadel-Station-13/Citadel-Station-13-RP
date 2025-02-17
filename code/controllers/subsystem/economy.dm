@@ -19,14 +19,18 @@ SUBSYSTEM_DEF(economy)
 	/// * this is for global accounts, not factional accounts
 	var/list/keyed_accounts = list()
 
-/datum/controller/subsystem/economy/Initialize()
-	//news_network.CreateFeedChannel("The [(LEGACY_MAP_DATUM).starsys_name] Times", "[(LEGACY_MAP_DATUM).starsys_name] Times ExoNode - [(LEGACY_MAP_DATUM).station_short]", 1, 1)
-	news_network.CreateFeedChannel("The Gibson Gazette", "Editor Mike Hammers", 1, 1)
-	news_network.CreateFeedChannel("Oculum Content Aggregator", "Oculus v6rev7", 1, 1)
+	/// fallback vendor account
+	var/datum/economy_account/fallback_vendor_account
 
-	#warn do we really need this init?
-	setup_economy()
+/datum/controller/subsystem/economy/Initialize()
+	setup_economy_legacy()
+	initialize_fallback_vendor_account()
 	return ..()
+
+/datum/controller/subsystem/economy/proc/initialize_fallback_vendor_account()
+	var/datum/economy_account/allocating = allocate_account()
+	allocating.owner_name = "Vendor"
+	fallback_vendor_account = allocating
 
 //* Lookup *//
 
@@ -65,7 +69,7 @@ SUBSYSTEM_DEF(economy)
  */
 /datum/controller/subsystem/economy/proc/resolve_fallback_vendor_account() as /datum/economy_account
 	RETURN_TYPE(/datum/economy_account)
-	#warn impl ; create a vendor account?
+	return fallback_vendor_account
 
 /**
  * get the account of the main map

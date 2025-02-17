@@ -1,40 +1,10 @@
-
-/datum/economy_account
-	var/owner_name = ""
-	var/remote_access_pin = 0
-	var/list/transaction_log = list()
-	var/suspended = 0
-	var/security_level = 0	//0 - auto-identify from worn ID, require only account number
-							//1 - require manual login / account number and pin
-							//2 - require card and manual login
-
 /proc/create_account(var/new_owner_name = "Default user", var/starting_funds = 0, var/obj/machinery/account_database/source_db)
-
-	//create a new account
-	var/datum/economy_account/M = new()
-	M.owner_name = new_owner_name
-	M.remote_access_pin = rand(1111, 111111)
-	M.money = starting_funds
-
 	//create an entry in the account transaction log for when it was created
-	var/datum/economy_transaction/T = new()
-	T.target_name = new_owner_name
-	T.purpose = "Account creation"
-	T.amount = starting_funds
 	if(!source_db)
-		//set a random date, time and location some time over the past few decades
-		T.date = "[num2text(rand(1,31))] [pick("January","February","March","April","May","June","July","August","September","October","November","December")], 25[rand(10,56)]"
-		T.time = "[rand(0,24)]:[rand(11,59)]"
-		T.source_terminal = "NTGalaxyNet Terminal #[rand(111,1111)]"
-
-		M.account_number = rand(111111, 999999)
 	else
 		T.date = GLOB.current_date_string
 		T.time = stationtime2text()
 		T.source_terminal = source_db.machine_id
-
-		M.account_number = GLOB.next_account_number
-		GLOB.next_account_number += rand(1,25)
 
 		//create a sealed package containing the account details
 		var/obj/item/smallDelivery/P = new /obj/item/smallDelivery(source_db.loc)
@@ -59,11 +29,6 @@
 		R.stamped += /obj/item/stamp
 		R.add_overlay(stampoverlay)
 		R.stamps += "<HR><i>This paper has been stamped by the Accounts Database.</i>"
-
-	//add the account
-	M.transaction_log.Add(T)
-	GLOB.all_money_accounts.Add(M)
-
 	return M
 
 /proc/charge_to_account(var/attempt_account_number, var/source_name, var/purpose, var/terminal_id, var/amount)

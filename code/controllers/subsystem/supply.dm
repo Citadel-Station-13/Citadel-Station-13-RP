@@ -131,7 +131,7 @@ SUBSYSTEM_DEF(supply)
 
 	safety = min(128, safety)
 	if(safety < 0)
-		cRASH("hit safety on recursive container sell")
+		CRASH("hit safety on recursive container sell")
 
 	. = list()
 	for(var/atom/movable/container_entity as anything in container_entities)
@@ -221,8 +221,9 @@ SUBSYSTEM_DEF(supply)
 	// do not double purchase!!
 	if(O.status != SUP_ORDER_REQUESTED)
 		return FALSE
+	var/datum/economy_account/cargo_account = resolve_station_cargo_account()
 	// Not enough points to purchase the crate
-	if(SSsupply.points <= O.object.legacy_cost)
+	if(cargo_account.balance <= O.object.worth)
 		return FALSE
 
 	// Based on the current model, there shouldn't be any entries in order_history, requestlist, or shoppinglist, that aren't matched in adm_order_history
@@ -249,7 +250,10 @@ SUBSYSTEM_DEF(supply)
 	adm_order.approved_at = stationdate2text() + " - " + stationtime2text()
 
 	// Deduct cost
-	SSsupply.points -= O.object.legacy_cost
+	var/datum/economy_transaction/buy_transaction = new(O.object.worth)
+	buy_transaction.audit_purpose_as_unsafe_html = "Cargo Purchase - [O.object.name]"
+	buy_transaction.audit_terminal_as_unsafe_html = "Cargo Console"
+	buy_transaction.execute_system_transaction(cargo_accout)
 	return TRUE
 
 // Will deny the specified order. Only useful if the order is currently requested, but available at any status
