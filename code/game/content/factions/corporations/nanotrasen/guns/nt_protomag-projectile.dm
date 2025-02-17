@@ -56,7 +56,7 @@
 	name = "dense slug"
 	color = "#ff7700"
 	speed = /obj/projectile/nt_protomag::speed * 1.2
-	damage_force = 25
+	damage_force = 30
 	damage_tier = BULLET_TIER_HIGH
 	armor_penetration = 47.5
 	penalty_speed_multiplier = 4 / 5
@@ -112,7 +112,7 @@
 	name = "high-velocity slug"
 	color = "#aaffaa"
 	speed = /obj/projectile/nt_protomag::speed * 1.25
-	damage_force = 35
+	damage_force = 30
 	damage_tier = BULLET_TIER_EXTREME
 	armor_penetration = 75
 

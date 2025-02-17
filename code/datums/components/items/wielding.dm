@@ -99,7 +99,10 @@
 	if(offhands)
 		var/list/old = offhands
 		offhands = null
-		QDEL_LIST(old)
+		for(var/obj/item/offhand/offhand as anything in old)
+			// might already be qdeleting if we're unwield()ing due to a dropped()
+			if(!QDELETED(offhand))
+				qdel(offhand)
 	var/obj/item/I = parent
 	var/mob/unwielding = wielder
 	I.item_flags &= ~ITEM_MULTIHAND_WIELDED

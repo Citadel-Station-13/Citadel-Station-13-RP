@@ -187,5 +187,5 @@
  * todo: for now, this just returns a string without the keybind UI open link.
  */
 /client/proc/print_keys_for_keybind_with_prefs_link(datum/keybinding/binding_or_path, append) as text
-	var/list/keys = get_keys_for_keybind(/datum/keybinding/mob/multihand_wield)
+	var/list/keys = get_keys_for_keybind(binding_or_path)
 	return length(keys) ? "<b>([english_list(keys)])</b>[append]" : "<b>(Unbound)</b>[append]"

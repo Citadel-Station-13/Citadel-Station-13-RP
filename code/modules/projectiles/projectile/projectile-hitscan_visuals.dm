@@ -259,13 +259,22 @@
 
 //* Tracer Objects *//
 
+/image/projectile/projectile_tracer_emissive
+	appearance_flags = KEEP_APART | RESET_COLOR
+	plane = EMISSIVE_PLANE
+	color = EMISSIVE_COLOR
+
+/image/projectile/projectile_tracer_add
+	blend_mode = BLEND_ADD
+	appearance_flags = KEEP_APART | RESET_COLOR
+
 /**
  * Tracer object
  *
  * * angle is clockwise from north
  */
 /atom/movable/render/projectile_tracer
-	SET_APPEARANCE_FLAGS(NONE)
+	SET_APPEARANCE_FLAGS(KEEP_TOGETHER)
 
 // todo: maybe don't have arg hell?
 /atom/movable/render/projectile_tracer/Initialize(mapload, icon/use_icon, use_icon_state, use_icon_add_state, use_add_state_alpha, angle, px, py, color, emissive)
@@ -278,18 +287,12 @@
 	src.pixel_y = py
 	src.color = color
 	if(emissive)
-		var/image/emissive_image = new /image
-		emissive_image.appearance = appearance
-		emissive_image.appearance_flags = KEEP_APART | RESET_COLOR
-		emissive_image.plane = EMISSIVE_PLANE
-		emissive_image.color = GLOB.emissive_color
+		var/image/emissive_image = image(icon, icon_state)
 		emissive_image.layer = MANGLE_PLANE_AND_LAYER(plane, layer)
+		emissive_image.alpha = emissive
 		overlays += emissive_image
 	if(use_icon_add_state)
-		appearance_flags |= KEEP_TOGETHER
 		var/image/image = image(icon, "[icon_state]-add")
-		image.blend_mode = BLEND_ADD
-		image.appearance_flags = KEEP_APART | RESET_COLOR
 		image.alpha = use_add_state_alpha
 		overlays += image
 	return ..()

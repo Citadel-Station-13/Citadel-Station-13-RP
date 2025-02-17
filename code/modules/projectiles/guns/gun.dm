@@ -363,7 +363,7 @@
 	if(should_attack_self_switch_firemodes())
 		. += SPAN_NOTICE("Press '<b>Activate In Hand</b>' [user?.client?.print_keys_for_keybind_with_prefs_link(/datum/keybinding/item/activate_inhand, " ")]while holding this gun in your active hand to swap its firing configuration.")
 	if(should_unique_action_rack_chamber())
-		. += SPAN_NOTICE("Press '<b>Unique Action</b>' [user?.client?.print_keys_for_keybind_with_prefs_link(/datum/keybinding/item/activate_inhand, " ")]while holding this gun in your active hand to rack its chamber.")
+		. += SPAN_NOTICE("Press '<b>Unique Action</b>' [user?.client?.print_keys_for_keybind_with_prefs_link(/datum/keybinding/item/unique_action, " ")]while holding this gun in your active hand to rack its chamber.")
 	if(!no_pin_required)
 		if(pin)
 			. += "It has \a [pin] installed."
