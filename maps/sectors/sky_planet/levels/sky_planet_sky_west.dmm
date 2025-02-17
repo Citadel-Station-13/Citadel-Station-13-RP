@@ -2160,7 +2160,7 @@
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
 "Yb" = (
-/obj/random/gun,
+/obj/random/gun/random,
 /obj/structure/table/rack,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/sky_planet/station_city/street)
