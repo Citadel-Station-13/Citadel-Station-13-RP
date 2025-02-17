@@ -50,6 +50,15 @@
 
 //* Typegen *//
 
+/datum/prototype/design/generated/nt_protomag_ammo
+	abstract_type = /datum/prototype/design/generated/nt_protomag_ammo
+
+/datum/prototype/design/generated/nt_protomag_ammo/sidearm
+	abstract_type = /datum/prototype/design/generated/nt_protomag_ammo/sidearm
+
+/datum/prototype/design/generated/nt_protomag_ammo/rifle
+	abstract_type = /datum/prototype/design/generated/nt_protomag_ammo/rifle
+
 /**
  * Generates magazines and designs for normal protomag ammo.
  */

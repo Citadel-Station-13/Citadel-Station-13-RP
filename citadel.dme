@@ -839,6 +839,7 @@
 #include "code\datums\components\turfs\transition_border.dm"
 #include "code\datums\design\design.dm"
 #include "code\datums\design\design_holder.dm"
+#include "code\datums\design\generated.dm"
 #include "code\datums\design\designs\sheets.dm"
 #include "code\datums\design\designs\ammo\_ammo.dm"
 #include "code\datums\design\designs\ammo\lmg.dm"

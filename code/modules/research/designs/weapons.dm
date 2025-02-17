@@ -253,10 +253,12 @@
 	desc = /obj/item/gun/projectile/ballistic/magnetic/nt_protomag::desc
 
 /datum/prototype/design/science/weapon/magnetic/nt_protomag/pistol
+	id = "nt-magpistol"
 	design_name = "protomag sidearm"
 	build_path = /obj/item/gun/projectile/ballistic/magnetic/nt_protomag/sidearm
 
 /datum/prototype/design/science/weapon/magnetic/nt_protomag/rifle
+	id = "nt-magrifle"
 	design_name = "protomag rifle"
 	build_path = /obj/item/gun/projectile/ballistic/magnetic/nt_protomag/rifle
 
