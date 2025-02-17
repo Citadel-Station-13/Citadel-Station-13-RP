@@ -11162,7 +11162,7 @@
 	},
 /obj/structure/table/woodentable,
 /obj/item/storage/box/beanbags,
-/obj/item/gun/ballistic/shotgun/doublebarrel,
+/obj/item/gun/projectile/ballistic/shotgun/doublebarrel,
 /obj/item/paper{
 	info = "This permit signifies that the Bartender is permitted to posess this firearm in the bar, and ONLY the bar. Failure to adhere to this permit will result in confiscation of the weapon and possibly arrest.";
 	name = "Shotgun permit"
@@ -13474,7 +13474,7 @@
 /area/crew_quarters/captain)
 "ifZ" = (
 /obj/structure/table/standard,
-/obj/item/gun/energy/taser/xeno,
+/obj/item/gun/projectile/energy/taser/xeno,
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 4;
 	pixel_y = -28
@@ -18304,7 +18304,7 @@
 /area/tether/surfacebase/medical/surgery2)
 "lgT" = (
 /obj/structure/table/standard,
-/obj/item/gun/energy/taser/xeno,
+/obj/item/gun/projectile/energy/taser/xeno,
 /obj/item/melee/baton/slime/loaded,
 /obj/machinery/light_switch{
 	dir = 1;
@@ -18844,8 +18844,8 @@
 /obj/item/moneybag,
 /obj/item/inflatable_duck,
 /obj/machinery/power/apc/east_mount,
-/obj/item/gun/ballistic/revolver/capgun,
-/obj/item/gun/ballistic/revolver/capgun,
+/obj/item/gun/projectile/ballistic/revolver/capgun,
+/obj/item/gun/projectile/ballistic/revolver/capgun,
 /obj/item/toy/cultsword,
 /obj/item/toy/cultsword,
 /obj/item/bikehorn/rubberducky,

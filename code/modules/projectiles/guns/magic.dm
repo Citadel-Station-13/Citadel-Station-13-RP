@@ -1,4 +1,4 @@
-/obj/item/gun/magic
+/obj/item/gun/projectile/magic
 	name = "magic staff"
 	desc = "This staff is boring to watch because even though it came first you've seen everything it can do in other staves for years."
 	slot_flags = SLOT_BACK
@@ -16,10 +16,10 @@
 	pin = /obj/item/firing_pin/magic
 
 	/// the projectile type we generate
-	//  todo: this should be on /obj/item/gun/magic/basic
+	//  todo: this should be on /obj/item/gun/projectile/magic/basic
 	projectile_type = /obj/projectile/magic
 
-/obj/item/gun/magic/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+/obj/item/gun/projectile/magic/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(no_den_usage)
 		var/area/A = get_area(user)
 		if(istype(A, /area/wizard_station))
@@ -32,28 +32,28 @@
 		return
 	. = ..()
 
-/obj/item/gun/magic/Initialize(mapload)
+/obj/item/gun/projectile/magic/Initialize(mapload)
 	. = ..()
 	charges = max_charges
 	if(can_charge)
 		START_PROCESSING(SSobj, src)
 
-/obj/item/gun/magic/Destroy()
+/obj/item/gun/projectile/magic/Destroy()
 	if(can_charge)
 		STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/gun/magic/process(delta_time)
+/obj/item/gun/projectile/magic/process(delta_time)
 	charge_tick++
 	if(charge_tick < recharge_rate || charges >= max_charges)
 		return
 	charge_tick = 0
 	charges++
 
-/obj/item/gun/magic/consume_next_projectile()
+/obj/item/gun/projectile/magic/consume_next_projectile()
 	if(charges <= 0)
 		return null
 	return chambered?.get_projectile()
 
-/obj/item/gun/magic/handle_click_empty(mob/user)
+/obj/item/gun/projectile/magic/handle_click_empty(mob/user)
 	to_chat(user, "<span class='warning'>The [name] whizzles quietly.</span>")

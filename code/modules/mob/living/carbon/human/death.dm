@@ -8,7 +8,7 @@
 		deadnif.wear(10) //Presumably it's gone through some shit if they got gibbed?
 
 	for(var/obj/item/organ/I in internal_organs)
-		I.removed()
+		I.removed(src, TRUE)
 		if(istype(loc,/turf))
 			I.throw_at_old(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),30)
 

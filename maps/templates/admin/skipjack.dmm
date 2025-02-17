@@ -172,7 +172,7 @@
 	},
 /area/skipjack_station)
 "az" = (
-/obj/item/gun/energy/sonic,
+/obj/item/gun/projectile/energy/sonic,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -294,8 +294,8 @@
 /area/skipjack_station)
 "aM" = (
 /obj/structure/table/rack,
-/obj/item/gun/energy/darkmatter,
-/obj/item/gun/energy/darkmatter,
+/obj/item/gun/projectile/energy/darkmatter,
+/obj/item/gun/projectile/energy/darkmatter,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -375,7 +375,7 @@
 	},
 /area/skipjack_station)
 "aW" = (
-/obj/item/gun/energy/plasmastun,
+/obj/item/gun/projectile/energy/plasmastun,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"

@@ -1,4 +1,4 @@
-/obj/item/gun/energy/gun/fluff/gunsword
+/obj/item/gun/projectile/energy/gun/fluff/gunsword
 	name = "Sword Buster"
 	desc = "The Sword Buster gun is custom built using the science behind a Golden Empire pistol. The cell can be removed in close range and used as energy shortsword."
 

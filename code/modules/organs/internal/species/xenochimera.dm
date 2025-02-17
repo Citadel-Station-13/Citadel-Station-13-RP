@@ -38,3 +38,6 @@
 /obj/item/organ/internal/intestine/xenochimera
 	name = "harvesting fronds"
 	icon_state = "xenoch_intestine"
+
+/obj/item/organ/internal/weaver/weak/xenochimera
+	name = "protein reservoir"
