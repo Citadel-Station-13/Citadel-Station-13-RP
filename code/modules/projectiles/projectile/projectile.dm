@@ -485,6 +485,11 @@
 	ASSERT(!fired)
 	fired = TRUE
 
+	//! legacy
+	// todo: caller should do this; we should check that we're on a turf
+	forceMove(get_turf(src))
+	//! end
+
 	// set angle if needed
 	if(isnum(set_angle_to))
 		set_angle(set_angle_to)
@@ -539,7 +544,6 @@
 	if(dispersion)
 		set_angle(angle + rand(-dispersion, dispersion))
 	original_angle = angle
-	forceMove(starting)
 	//! legacy above
 
 	// start physics & kickstart movement

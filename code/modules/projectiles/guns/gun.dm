@@ -334,9 +334,9 @@
 			var/firemode_type = istype(src, /obj/item/gun/projectile/energy) ? /datum/firemode/energy : /datum/firemode
 			firemodes[i] = new firemode_type(src, key)
 		else if(IS_ANONYMOUS_TYPEPATH(key))
-			firemodes[i] = new key
+			firemodes[i] = new key(src)
 		else if(ispath(key))
-			firemodes[i] = new key
+			firemodes[i] = new key(src)
 	if(length(firemodes))
 		set_firemode(firemodes[1], TRUE)
 	reconsider_firemode_action()

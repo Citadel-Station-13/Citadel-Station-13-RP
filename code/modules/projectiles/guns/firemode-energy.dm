@@ -26,16 +26,19 @@
 // todo: this shouldn't even exist.
 /datum/firemode/energy/New(obj/item/gun/inherit_from_gun, list/direct_varedits)
 	..()
-	if(!length(direct_varedits))
-		return
-	for(var/varname in direct_varedits)
-		var/value = direct_varedits[varname]
-		// pull out special crap
-		switch(varname)
-			if("charge_cost")
-				src.charge_cost = value
-			if("projectile_type")
-				src.projectile_type = value
+	if(isnull(charge_cost))
+		var/obj/item/gun/projectile/energy/they_were_lazy_so_grab_from_gun = inherit_from_gun
+		charge_cost = they_were_lazy_so_grab_from_gun.charge_cost
+
+/datum/firemode/energy/parse_legacy_varset(key, value)
+	. = TRUE
+	switch(key)
+		if("charge_cost")
+			src.charge_cost = value
+		if("projectile_type")
+			src.projectile_type = value
+		else
+			return ..()
 
 /datum/firemode/energy/clone()
 	var/datum/firemode/energy/cloning = ..()

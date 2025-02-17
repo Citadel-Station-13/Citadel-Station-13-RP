@@ -51,21 +51,35 @@
 		return
 	for(var/varname in direct_varedits)
 		var/value = direct_varedits[varname]
-		// pull out special crap
-		// these don't corrospond to our own vars, these corrospond to old hardcoded strings.
-		switch(varname)
-			if("mode_name")
-				src.name = value
-			if("burst")
-				src.burst_amount = value
-			if("fire_delay")
-				src.cycle_cooldown = value
-			if("burst_delay")
-				src.burst_delay = value
 		if(value)
 			LAZYSET(legacy_direct_varedits, varname, value)
 		else if(inherit_from_gun.vars.Find(varname))
 			LAZYSET(legacy_direct_varedits, varname, inherit_from_gun.vars[varname])
+	if(!length(legacy_direct_varedits))
+		return
+	var/list/parse_again = legacy_direct_varedits
+	legacy_direct_varedits = list()
+	for(var/key in parse_again)
+		if(parse_legacy_varset(key, parse_again[key]))
+			continue
+		legacy_direct_varedits[key] = parse_again[key]
+
+/**
+ * @return TRUE if we can drop it
+ */
+/datum/firemode/proc/parse_legacy_varset(key, value)
+	. = TRUE
+	switch(key)
+		if("mode_name")
+			src.name = value
+		if("burst")
+			src.burst_amount = value
+		if("fire_delay")
+			src.cycle_cooldown = value
+		if("burst_delay")
+			src.burst_delay = value
+		else
+			. = FALSE
 
 /datum/firemode/clone()
 	var/datum/firemode/creating = new type
