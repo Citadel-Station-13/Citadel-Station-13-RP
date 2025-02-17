@@ -29,18 +29,18 @@
 		"Excursion Shuttle" = list("sky_excursion2_dock"),
 		"Excursion Shuttle" = list("sky_excursion3_dock"),
 		"Excursion Shuttle" = list("sky_excursion4_dock"),
-		"Courser Scouting Vessel" = list("sky_courser_dock"),
+		"Courser Scouting Vessel" = list("sky_civvie_dock"),
 		"Hammerhead Patrol Barge" = list("sky_hammerhead_dock"),
 		"Civilian Transport" = list("sky_civvie_dock"),
 		"Civilian Transport" = list("sky_civvie2_dock"),
 		"Civilian Transport" = list("sky_civvie3_dock"),
 		"Civilian Transport" = list("sky_civvie4_dock"),
-		"Civilian Century Shuttle" = list("sky_oldcentury_dock"),
-		"Civilian Century Shuttle" = list("sky_oldcentury_dock2"),
-		"Dart EMT Shuttle" = list("sky_emt_dock"),
-		"Dart EMT Shuttle" = list("sky_emt2_dock"),
-		"Dart EMT Shuttle" = list("sky_emt3_dock"),
-		"Dart EMT Shuttle" = list("sky_emt4_dock"),
+		"Civilian Century Shuttle" = list("sky_civvie_dock"),
+		"Civilian Century Shuttle" = list("sky_civvie2_dock"),
+		"Dart EMT Shuttle" = list("sky_excursion_dock"),
+		"Dart EMT Shuttle" = list("sky_excursion2_dock"),
+		"Dart EMT Shuttle" = list("sky_excursion3_dock"),
+		"Dart EMT Shuttle" = list("sky_excursion4_dock"),
 		"Red Comet Racing Shuttle" = list ("voidline_redcomet"),
 		"Bonnethead Racing Shuttle" = list ("voidline_bonnethead"),
 		"Udang Pari-pari Racing Shuttle" = list ("voidline_udang"),
@@ -57,101 +57,66 @@
 
 //landmarks
 
-/obj/effect/shuttle_landmark/skyplanet/ntoutpost/excursion
-	name = "NT Outpost Hyades - West Rig 1 (Explo)"
+/obj/effect/shuttle_landmark/skyplanet/ntoutpost/westrig1
+	name = "NT Outpost Hyades - West Rig 1"
 	landmark_tag = "sky_excursion_dock"
 	docking_controller = "westrig1_dock"
 	base_turf = /turf/simulated/open/skyplanet
 	base_area = /area/sector/sky_planet/sky
 
-/obj/effect/shuttle_landmark/skyplanet/ntoutpost/excursion2
-	name = "NT Outpost Hyades - South Rig 1 (Explo)"
+/obj/effect/shuttle_landmark/skyplanet/ntoutpost/southrig1
+	name = "NT Outpost Hyades - South Rig 1"
 	landmark_tag = "sky_excursion2_dock"
 	docking_controller = "southrig1_dock"
 	base_turf = /turf/simulated/open/skyplanet
 	base_area = /area/sector/sky_planet/sky
 
-/obj/effect/shuttle_landmark/skyplanet/ntoutpost/excursion3
-	name = "NT Outpost Hyades - West Rig 2 (Explo)"
+/obj/effect/shuttle_landmark/skyplanet/ntoutpost/westrig2
+	name = "NT Outpost Hyades - West Rig 2"
 	landmark_tag = "sky_excursion3_dock"
 	docking_controller = "westrig2_dock"
 	base_turf = /turf/simulated/open/skyplanet
 	base_area = /area/sector/sky_planet/sky
 
-/obj/effect/shuttle_landmark/skyplanet/ntoutpost/excursion4
-	name = "NT Outpost Hyades - South Rig 3 (Explo)"
+/obj/effect/shuttle_landmark/skyplanet/ntoutpost/southrig3
+	name = "NT Outpost Hyades - South Rig 3"
 	landmark_tag = "sky_excursion4_dock"
 	docking_controller = "southrig3_dock"
 	base_turf = /turf/simulated/open/skyplanet
 	base_area = /area/sector/sky_planet/sky
 
-/obj/effect/shuttle_landmark/skyplanet/ntoutpost/civvie
-	name = "NT Outpost Hyades - North Rig 2 (Civ)"
+/obj/effect/shuttle_landmark/skyplanet/ntoutpost/northrig2
+	name = "NT Outpost Hyades - North Rig 2"
 	landmark_tag = "sky_civvie_dock"
 	docking_controller = "northrig2_dock"
 	base_turf = /turf/simulated/open/skyplanet
 	base_area = /area/sector/sky_planet/sky
 
-/obj/effect/shuttle_landmark/skyplanet/ntoutpost/civvie2
-	name = "NT Outpost Hyades - North Rig 3 (Civ)"
+/obj/effect/shuttle_landmark/skyplanet/ntoutpost/northrig3
+	name = "NT Outpost Hyades - North Rig 3"
 	landmark_tag = "sky_civvie2_dock"
 	docking_controller = "northrig3_dock"
 	base_turf = /turf/simulated/open/skyplanet
 	base_area = /area/sector/sky_planet/sky
 
-/obj/effect/shuttle_landmark/skyplanet/ntoutpost/civvie3
-	name = "NT Outpost Hyades - East Rig 1 (Civ)"
+/obj/effect/shuttle_landmark/skyplanet/ntoutpost/eastrig1
+	name = "NT Outpost Hyades - East Rig 1"
 	landmark_tag = "sky_civvie3_dock"
 	docking_controller = "eastrig1_dock"
 	base_turf = /turf/simulated/open/skyplanet
 	base_area = /area/sector/sky_planet/sky
 
-/obj/effect/shuttle_landmark/skyplanet/ntoutpost/civvie4
-	name = "NT Outpost Hyades - East Rig 3 (Civ)"
+/obj/effect/shuttle_landmark/skyplanet/ntoutpost/eastrig3
+	name = "NT Outpost Hyades - East Rig 3"
 	landmark_tag = "sky_civvie4_dock"
 	docking_controller = "eastrig3_dock"
 	base_turf = /turf/simulated/open/skyplanet
 	base_area = /area/sector/sky_planet/sky
 
-/obj/effect/shuttle_landmark/skyplanet/ntoutpost/oldcentury
-	name = "NT Outpost Hyades - North Rig 2 (Oldcent)"
-	landmark_tag = "sky_oldcentury_dock"
+/obj/effect/shuttle_landmark/skyplanet/ntoutpost/northrig2/hammerhead
+	name = "NT Outpost Hyades - North Rig 2 (Hammerhead)"
+	landmark_tag = "sky_hammerhead_dock"
 	docking_controller = "northrig2_dock"
-	base_turf = /turf/simulated/open/skyplanet
-	base_area = /area/sector/sky_planet/sky
-
-/obj/effect/shuttle_landmark/skyplanet/ntoutpost/oldcentury2
-	name = "NT Outpost Hyades - North Rig 3 (Oldcent)"
-	landmark_tag = "sky_oldcentury2_dock"
-	docking_controller = "northrig3_dock"
-	base_turf = /turf/simulated/open/skyplanet
-	base_area = /area/sector/sky_planet/sky
-
-/obj/effect/shuttle_landmark/skyplanet/ntoutpost/emt
-	name = "NT Outpost Hyades - South Rig 1 (EMT)"
-	landmark_tag = "sky_emt_dock"
-	docking_controller = "southrig1_dock"
-	base_turf = /turf/simulated/open/skyplanet
-	base_area = /area/sector/sky_planet/sky
-
-/obj/effect/shuttle_landmark/skyplanet/ntoutpost/emt2
-	name = "NT Outpost Hyades - South Rig 3 (EMT)"
-	landmark_tag = "sky_emt2_dock"
-	docking_controller = "southrig3_dock"
-	base_turf = /turf/simulated/open/skyplanet
-	base_area = /area/sector/sky_planet/sky
-
-/obj/effect/shuttle_landmark/skyplanet/ntoutpost/emt3
-	name = "NT Outpost Hyades - East Rig 1 (EMT)"
-	landmark_tag = "sky_emt3_dock"
-	docking_controller = "eastrig1_dock"
-	base_turf = /turf/simulated/open/skyplanet
-	base_area = /area/sector/sky_planet/sky
-
-/obj/effect/shuttle_landmark/skyplanet/ntoutpost/emt4
-	name = "NT Outpost Hyades - East Rig 3 (EMT)"
-	landmark_tag = "sky_emt4_dock"
-	docking_controller = "eastrig3_dock"
 	base_turf = /turf/simulated/open/skyplanet
 	base_area = /area/sector/sky_planet/sky
 
