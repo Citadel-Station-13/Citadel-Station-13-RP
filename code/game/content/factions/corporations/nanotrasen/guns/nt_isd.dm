@@ -117,7 +117,7 @@
 /datum/firemode/energy/nt_isd/carbine/kill
 	name = "kill"
 	render_color = "#ff0000"
-	charge_cost = 2400 / 10
+	charge_cost = 2400 / 12
 	projectile_type = /obj/projectile/nt_isd/laser/rifle
 	considered_lethal = TRUE
 
@@ -280,7 +280,7 @@
 
 /obj/projectile/nt_isd/laser/rifle
 	name = "laser"
-	damage_force = 40
+	damage_force = 35
 	damage_tier = LASER_TIER_MEDIUM
 
 /obj/projectile/nt_isd/laser/sidearm

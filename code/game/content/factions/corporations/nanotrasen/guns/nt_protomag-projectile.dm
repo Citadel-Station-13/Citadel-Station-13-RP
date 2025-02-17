@@ -3,13 +3,20 @@
 
 /image/projectile/nt_protomag_emissive
 	icon_state = "kinetic-emissive"
+	appearance_flags = KEEP_APART | RESET_COLOR
 	plane = EMISSIVE_PLANE
 	layer = MANGLE_PLANE_AND_LAYER(/obj/projectile/nt_protomag::plane, /obj/projectile/nt_protomag::layer)
+	color = EMISSIVE_COLOR
+
+/image/projectile/nt_protomag_add
+	icon_state = "kinetic-add"
+	appearance_flags = KEEP_APART | RESET_COLOR
 
 /obj/projectile/nt_protomag
 	abstract_type = /obj/projectile/nt_protomag
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/protomag/projectile.dmi'
 	icon_state = "kinetic"
+	SET_APPEARANCE_FLAGS(KEEP_TOGETHER)
 	speed = /obj/projectile::speed * 1.1
 
 	impact_sound = PROJECTILE_IMPACT_SOUNDS_KINETIC
@@ -22,6 +29,7 @@
 /obj/projectile/nt_protomag/Initialize(mapload)
 	. = ..()
 	add_overlay(/image/projectile/nt_protomag_emissive)
+	add_overlay(/image/projectile/nt_protomag_add)
 
 /**
  * Called when fired without magnetic boosting.

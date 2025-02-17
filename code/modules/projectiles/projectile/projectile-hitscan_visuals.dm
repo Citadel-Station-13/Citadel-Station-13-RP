@@ -280,13 +280,16 @@
 	if(emissive)
 		var/image/emissive_image = new /image
 		emissive_image.appearance = appearance
+		emissive_image.appearance_flags = KEEP_APART | RESET_COLOR
 		emissive_image.plane = EMISSIVE_PLANE
 		emissive_image.color = GLOB.emissive_color
+		emissive_image.layer = MANGLE_PLANE_AND_LAYER(plane, layer)
+		overlays += emissive_image
 	if(use_icon_add_state)
 		appearance_flags |= KEEP_TOGETHER
 		var/image/image = image(icon, "[icon_state]-add")
 		image.blend_mode = BLEND_ADD
-		image.appearance_flags = RESET_COLOR | KEEP_APART
+		image.appearance_flags = KEEP_APART | RESET_COLOR
 		image.alpha = use_add_state_alpha
 		overlays += image
 	return ..()
