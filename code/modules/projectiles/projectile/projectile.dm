@@ -228,7 +228,7 @@
 	/// Emissive glow strength of tracer (muzzle + beam + impact), from 0 to 255
 	/// * This automatically makes the tracer emissive.
 	/// * Colored lighting is not currently natively supported
-	var/auto_emissive_strength = 192
+	var/auto_emissive_strength = 0
 
 	/// Hitscan tracers - icon file
 	/// * Setting this to a file will enable new tracer rendering system.

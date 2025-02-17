@@ -29,6 +29,9 @@
 	if(isnull(charge_cost))
 		var/obj/item/gun/projectile/energy/they_were_lazy_so_grab_from_gun = inherit_from_gun
 		charge_cost = they_were_lazy_so_grab_from_gun.charge_cost
+	if(isnull(projectile_type))
+		var/obj/item/gun/projectile/energy/they_were_lazy_so_grab_from_gun = inherit_from_gun
+		projectile_type = they_were_lazy_so_grab_from_gun.projectile_type
 
 /datum/firemode/energy/parse_legacy_varset(key, value)
 	. = TRUE

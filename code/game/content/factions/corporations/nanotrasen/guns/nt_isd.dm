@@ -120,6 +120,7 @@
 	charge_cost = 2400 / 12
 	projectile_type = /obj/projectile/nt_isd/laser/rifle
 	considered_lethal = TRUE
+	cycle_cooldown = 0.45 SECONDS
 
 /obj/item/gun/projectile/energy/nt_isd/carbine
 	name = "energy carbine"
@@ -167,7 +168,7 @@
 /datum/firemode/energy/nt_isd/lance/kill
 	name = "kill"
 	render_color = "#00ff00"
-	charge_cost = 2400 / 12
+	charge_cost = 2400 / 15
 	projectile_type = /obj/projectile/nt_isd/laser/lance
 
 /obj/item/gun/projectile/energy/nt_isd/lance
@@ -218,14 +219,16 @@
 	projectile_type = /obj/projectile/nt_isd/laser/multiphase
 	charge_cost = 2400 / 12
 	considered_lethal = TRUE
+	cycle_cooldown = 0.6 SECONDS
 
 // todo: this is an ion beam, not an EMP pulse
 /datum/firemode/energy/nt_isd/multiphase/ion
 	name = "ion"
 	render_color = "#45a3aa"
 	projectile_type = /obj/projectile/nt_isd/ion
-	charge_cost = 2400 / 5
+	charge_cost = 2400 / 6
 	considered_lethal = TRUE
+	cycle_cooldown = 0.8 SECONDS
 
 /obj/item/gun/projectile/energy/nt_isd/multiphase
 	name = "multiphase sidearm"
@@ -276,6 +279,7 @@
 	tracer_icon_state = "laser-1"
 	tracer_add_state = TRUE
 	tracer_add_state_alpha = 65
+	auto_emissive_strength = 192
 	fire_sound = /datum/soundbyte/laser_1
 	pass_flags = ATOM_PASS_FLAGS_BEAM
 
@@ -294,7 +298,7 @@
 
 /obj/projectile/nt_isd/laser/multiphase
 	name = "focused laser"
-	damage_force = 40
+	damage_force = 35
 	damage_tier = LASER_TIER_HIGH
 	// todo: remove
 	armor_penetration = 37.5
@@ -303,7 +307,7 @@
 /obj/projectile/nt_isd/laser/lance
 	name = "particle beam"
 	color = "#00ff00"
-	damage_force = 30
+	damage_force = 35
 	damage_tier = LASER_TIER_HIGH
 	// todo: remove
 	armor_penetration = 50
@@ -315,6 +319,7 @@
 	tracer_icon_state = "discharge-1"
 	tracer_add_state = TRUE
 	tracer_add_state_alpha = 65
+	auto_emissive_strength = 192
 	hitscan = TRUE
 	base_projectile_effects = list(
 		/datum/projectile_effect/electrical_impulse{
@@ -339,6 +344,7 @@
 	)
 	fire_sound = /datum/soundbyte/taser_1
 	impact_sound = /datum/soundbyte/taser_hit
+	auto_emissive_strength = 192
 
 /obj/projectile/nt_isd/disable
 	name = "disabler beam"
@@ -346,6 +352,7 @@
 	tracer_icon_state = "laser-1"
 	tracer_add_state = TRUE
 	tracer_add_state_alpha = 65
+	auto_emissive_strength = 192
 	hitscan = TRUE
 	agony = 20
 	fire_sound = /datum/soundbyte/disabler_1
@@ -360,5 +367,6 @@
 			sev_3 = 2;
 		},
 	)
-	color = "#00eaff"
+	color = "#0048ff"
 	fire_sound = /datum/soundbyte/ion_pulse
+	auto_emissive_strength = 192
