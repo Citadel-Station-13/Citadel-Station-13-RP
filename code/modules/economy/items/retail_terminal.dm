@@ -72,7 +72,6 @@
 /obj/item/retail_terminal/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 
-
 #warn always face user when put on a table
 
 /obj/item/retail_terminal/cash_register

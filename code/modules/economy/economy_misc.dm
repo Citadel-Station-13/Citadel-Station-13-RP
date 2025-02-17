@@ -72,11 +72,3 @@
 		var/datum/trade_destination/D = new loc_type
 		weighted_randomevent_locations[D] = D.viable_random_events.len
 		weighted_mundaneevent_locations[D] = D.viable_mundane_events.len
-
-	#warn destroy the below
-	for(var/obj/item/retail_scanner/RS in GLOB.transaction_devices)
-		if(RS.account_to_connect)
-			RS.linked_account = GLOB.department_accounts[RS.account_to_connect]
-	for(var/obj/machinery/cash_register/CR in GLOB.transaction_devices)
-		if(CR.account_to_connect)
-			CR.linked_account = GLOB.department_accounts[CR.account_to_connect]

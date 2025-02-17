@@ -1,3 +1,5 @@
+#warn annhilate this goddamn file
+
 /proc/create_account(var/new_owner_name = "Default user", var/starting_funds = 0, var/obj/machinery/account_database/source_db)
 	//create an entry in the account transaction log for when it was created
 	if(!source_db)

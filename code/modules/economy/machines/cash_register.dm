@@ -59,33 +59,6 @@
 		open_cash_box()
 
 
-/obj/machinery/cash_register/interact(mob/user as mob)
-	var/dat = "<h2>Cash Register<hr></h2>"
-	if (locked)
-		dat += "<a href='?src=\ref[src];choice=toggle_lock'>Unlock</a><br>"
-		dat += "Linked account: <b>[linked_account ? linked_account.owner_name : "None"]</b><br>"
-		dat += "<b>[cash_locked? "Unlock" : "Lock"] Cash Box</b> | "
-	else
-		dat += "<a href='?src=\ref[src];choice=toggle_lock'>Lock</a><br>"
-		dat += "Linked account: <a href='?src=\ref[src];choice=link_account'>[linked_account ? linked_account.owner_name : "None"]</a><br>"
-		dat += "<a href='?src=\ref[src];choice=toggle_cash_lock'>[cash_locked? "Unlock" : "Lock"] Cash Box</a> | "
-	dat += "<a href='?src=\ref[src];choice=custom_order'>Custom Order</a><hr>"
-
-	if(item_list.len)
-		dat += get_current_transaction()
-		dat += "<br>"
-
-	for(var/i=transaction_logs.len, i>=1, i--)
-		dat += "[transaction_logs[i]]<br>"
-
-	if(transaction_logs.len)
-		dat += locked ? "<br>" : "<a href='?src=\ref[src];choice=reset_log'>Reset Log</a><br>"
-		dat += "<br>"
-	dat += "<i>Device ID:</i> [machine_id]"
-	user << browse(dat, "window=cash_register;size=350x500")
-	onclose(user, "cash_register")
-
-
 /obj/machinery/cash_register/Topic(var/href, var/href_list)
 	if(..())
 		return
@@ -161,7 +134,6 @@
 				transaction_logs.Cut()
 				to_chat(usr, "[icon2html(thing = src, target = usr)]<span class='notice'>Transaction log reset.</span>")
 	updateDialog()
-
 
 
 /obj/machinery/cash_register/attackby(obj/item/O as obj, user as mob)
