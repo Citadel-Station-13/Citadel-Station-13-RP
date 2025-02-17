@@ -693,7 +693,8 @@
 	switch(key)
 		if("remove-attachment")
 			// todo: e_args support
-			var/obj/item/gun_attachment/attachment = show_radial_menu(e_args.initiator, src, attachments)
+			// todo: better automatic context / radial menus none of this manual anchoring bullshit
+			var/obj/item/gun_attachment/attachment = show_radial_menu(e_args.initiator, isturf(loc) ? src : e_args.performer, attachments)
 			if(!attachment)
 				return TRUE
 			if(!e_args.performer.Reachability(src) || !(e_args.performer.mobility_flags & MOBILITY_CAN_USE))
@@ -702,7 +703,8 @@
 			return TRUE
 		if("remove-component")
 			// todo: e_args support
-			var/obj/item/gun_component/component = show_radial_menu(e_args.initiator, src, modular_components)
+			// todo: better automatic context / radial menus none of this manual anchoring bullshit
+			var/obj/item/gun_component/component = show_radial_menu(e_args.initiator, isturf(loc) ? src : e_args.performer, modular_components)
 			if(!component)
 				return TRUE
 			if(!e_args.performer.Reachability(src) || !(e_args.performer.mobility_flags & MOBILITY_CAN_USE))

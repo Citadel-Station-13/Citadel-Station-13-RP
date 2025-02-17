@@ -7,7 +7,7 @@
 	name = "laser"
 	icon_state = "laser"
 	fire_sound = 'sound/weapons/weaponsounds_laserstrong.ogg'
-	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
+	pass_flags = ATOM_PASS_FLAGS_BEAM
 	damage_force = 40
 	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_LASER

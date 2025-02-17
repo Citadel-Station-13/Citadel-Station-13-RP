@@ -44,7 +44,7 @@
 /datum/firemode/energy/nt_isd/sidearm/lethal
 	name = "kill"
 	render_color = "#ff0000"
-	charge_cost = 2400 / 15
+	charge_cost = 2400 / 12
 	projectile_type = /obj/projectile/nt_isd/laser/sidearm
 	considered_lethal = TRUE
 
@@ -222,7 +222,7 @@
 // todo: this is an ion beam, not an EMP pulse
 /datum/firemode/energy/nt_isd/multiphase/ion
 	name = "ion"
-	render_color = "#456aaa"
+	render_color = "#45a3aa"
 	projectile_type = /obj/projectile/nt_isd/ion
 	charge_cost = 2400 / 5
 	considered_lethal = TRUE
@@ -277,6 +277,7 @@
 	tracer_add_state = TRUE
 	tracer_add_state_alpha = 65
 	fire_sound = /datum/soundbyte/laser_1
+	pass_flags = ATOM_PASS_FLAGS_BEAM
 
 /obj/projectile/nt_isd/laser/rifle
 	name = "laser"
@@ -318,8 +319,8 @@
 	base_projectile_effects = list(
 		/datum/projectile_effect/electrical_impulse{
 			shock_energy = 50;
-			shock_damage = 20;
-			shock_agony = 40;
+			shock_damage = 7.5;
+			shock_agony = 32.5;
 			shock_flags = ELECTROCUTE_ACT_FLAG_DISTRIBUTE;
 		}
 	)
@@ -346,7 +347,7 @@
 	tracer_add_state = TRUE
 	tracer_add_state_alpha = 65
 	hitscan = TRUE
-	agony = 25
+	agony = 20
 	fire_sound = /datum/soundbyte/disabler_1
 
 // todo: this shouldn't be an emp, this should be like synthetik's
@@ -359,5 +360,5 @@
 			sev_3 = 2;
 		},
 	)
-	color = "#00aaff"
+	color = "#00eaff"
 	fire_sound = /datum/soundbyte/ion_pulse

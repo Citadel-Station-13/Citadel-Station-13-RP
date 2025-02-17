@@ -16,6 +16,7 @@
  * hence why projectiles can realistically path across corners based on their 'hitbox center'.
  */
 /obj/projectile
+	SET_APPEARANCE_FLAGS(NONE)
 	name = "projectile"
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "bullet"
@@ -27,18 +28,20 @@
 
 	//* Collision Handling *//
 
-	/** PROJECTILE PIERCING
-	  * WARNING:
-	  * Projectile piercing MUST be done using these variables.
-	  * Ordinary passflags will result in can_hit_target being false unless directly clicked on - similar to pass_flags_phase but without even going to process_hit.
-	  * The two flag variables below both use pass flags.
-	  * In the context of ATOM_PASS_THROWN, it means the projectile will ignore things that are currently "in the air" from a throw.
-	  *
-	  * Also, projectiles sense hits using Bump(), and then pierce them if necessary.
-	  * They simply do not follow conventional movement rules.
-	  * NEVER flag a projectile as PHASING movement type.
-	  * If you so badly need to make one go through *everything*, override check_pierce() for your projectile to always return PROJECTILE_PIERCE_PHASE/HIT.
-	  */
+	/**
+	 * PROJECTILE PIERCING
+	 * WARNING:
+	 * Projectile piercing MUST be done using these variables.
+	 * Ordinary passflags will result in can_hit_target being false unless directly clicked on - similar to pass_flags_phase but without even going to process_hit.
+	 * The two flag variables below both use pass flags.
+	 * In the context of ATOM_PASS_THROWN, it means the projectile will ignore things that are currently "in the air" from a throw.
+	 *
+	 * Also, projectiles sense hits using Bump(), and then pierce them if necessary.
+	 * They simply do not follow conventional movement rules.
+	 * NEVER flag a projectile as PHASING movement type.
+	 * If you so badly need to make one go through *everything*, override check_pierce() for your projectile to always return PROJECTILE_PIERCE_PHASE/HIT.
+	 */
+
 	/// The "usual" flags of pass_flags is used in that can_hit_target ignores these unless they're specifically targeted/clicked on. This behavior entirely bypasses process_hit if triggered, rather than phasing which uses prehit_pierce() to check.
 	pass_flags = ATOM_PASS_TABLE
 	/// we handle our own go through
@@ -155,13 +158,11 @@
 
 	//* Physics - Tracers *//
 	/// tracer /datum/point's
-	var/list/tracer_vertices
+	var/list/phys_tracer_vertices
 	/// first point is a muzzle effect
-	var/tracer_muzzle_flash
+	var/phys_tracer_do_muzzle
 	/// last point is an impact
-	var/tracer_impact_effect
-	/// default tracer duration
-	var/tracer_duration = 5
+	var/phys_tracer_do_impact
 
 	//* Physics - State *//
 	/// paused? if so, we completely get passed over during processing
@@ -224,6 +225,11 @@
 
 	//* Rendering *//
 
+	/// Emissive glow strength of tracer (muzzle + beam + impact), from 0 to 255
+	/// * This automatically makes the tracer emissive.
+	/// * Colored lighting is not currently natively supported
+	var/auto_emissive_strength = 192
+
 	/// Hitscan tracers - icon file
 	/// * Setting this to a file will enable new tracer rendering system.
 	var/tracer_icon
@@ -243,10 +249,8 @@
 	/// Tile every n pixels
 	/// * This is just the Y height of your beam sprite file, usually
 	var/tracer_segment_length = 32
-	/// Emissive glow strength of tracer (muzzle + beam + impact), from 0 to 255
-	/// * This automatically makes the tracer emissive.
-	/// * Colored lighting is not currently natively supported
-	var/tracer_emissive_strength = 192
+	/// default tracer duration
+	var/tracer_lifetime = 5
 
 	//*                                          Submunitions                                                  *//
 	//* While projectile has procs to handle this, these vars are used automatically if 'submunitions' is set. *//
@@ -418,6 +422,13 @@
 					stack_trace("tried to make a projectile with an invalid effect in base_projectile_effects")
 				base_projectile_effects[i] = effectlike
 			base_projectile_effects = typelist(NAMEOF(src, base_projectile_effects), base_projectile_effects)
+	if(auto_emissive_strength && !hitscan)
+		appearance_flags |= KEEP_TOGETHER
+		var/image/emissive_image = new /image/projectile/projectile_tracer_emissive(icon, icon_state)
+		emissive_image.layer = MANGLE_PLANE_AND_LAYER(plane, layer)
+		emissive_image.alpha = auto_emissive_strength
+		emissive_image.color = GLOB.emissive_color
+		add_overlay(emissive_image)
 	return ..()
 
 /obj/projectile/Destroy()
@@ -516,7 +527,7 @@
 	// setup physics
 	setup_physics()
 
-	// legacy below
+	//! legacy below
 	var/turf/starting = get_turf(src)
 	if(isnull(angle))	//Try to resolve through offsets if there's no angle set.
 		if(isnull(xo) || isnull(yo))
@@ -529,7 +540,7 @@
 		set_angle(angle + rand(-dispersion, dispersion))
 	original_angle = angle
 	forceMove(starting)
-	// legacy aboev
+	//! legacy above
 
 	// start physics & kickstart movement
 	if(hitscan)
@@ -728,6 +739,9 @@
 		return
 	// not even fired yet
 	if(!fired)
+		return
+	// no loc?
+	if(!loc)
 		return
 	// scan the turf for anything we need to hit
 	scan_moved_turf(loc)
@@ -1229,9 +1243,9 @@
  * @params
  * * amount - amount to use
  * * path - typepath to use
- * * dispersion - angular dispersion. uniform min/max, or standard deviation if gaussian.
- * * uniform_dispersion - use deterministic instead of gaussian for dispersion
- * * linear_spread - spread apart this many pixels over every projectile
+ * * angular_spread - angular dispersion
+ * * uniform_angular_spread - use deterministic angular spread
+ * * linear_spread - spread apart this many pixels over every projectile, perpendicular to the path of travel
  * * uniform_linear_spread - use deterministic linear spread
  * * distribute - distribute our stats across submunitions?
  * * distribute_mod - 2 = each pellet is 2x stronger than it should be in a fair divide, 0.5 = 50% as strong, etc.
@@ -1242,29 +1256,30 @@
  *
  * @return list() of submunitions
  */
-/obj/projectile/proc/split_into_submunitions(amount, path, dispersion, uniform_dispersion, linear_spread, uniform_linear_spread, distribute, distribute_mod, distribute_overwrite, fire_immediately, datum/callback/on_submunition_ready)
+/obj/projectile/proc/split_into_submunitions(amount, path, angular_spread, uniform_angular_spread, linear_spread, uniform_linear_spread, distribute, distribute_mod, distribute_overwrite, fire_immediately, datum/callback/on_submunition_ready)
 	// we must be fired; otherwise, things don't work right.
 	ASSERT(fired)
 	. = list()
-	// if we're not using uniform linear spread, set it to something to use with rand.
-	// otherwise, leave it as is and it'll be calculated on every iteration
+	// spread / angular_spread: if not uniform, set it to be random
+	// halve it as we go in both directions, multiply by 100 to be divided out as rand() only works with whole numbers.
 	if(!uniform_linear_spread)
-		// halve it as we're going in both directions, and artificially multiply by 10 to be
-		// divided out after the rand to boost randomness by a slight bit as rand only returns
-		// whole numbers.
-		linear_spread *= 0.5 * 10
-	// artificially multiply by 10 to boost randomness
-	dispersion *= 10
-	var/px_rand_mul = calculated_dy
-	var/py_rand_mul = calculated_dx
+		linear_spread *= 0.5 * 100
+	if(!uniform_angular_spread)
+		angular_spread *= 0.5 * 100
+	var/perpendicular_angle = angle + 90
+	var/px_perpendicular = sin(perpendicular_angle)
+	var/py_perpendicular = cos(perpendicular_angle)
 	for(var/iter in 1 to amount)
-		var/obj/projectile/split = new path
+		var/obj/projectile/split = new path(loc)
 		split.imprint_from_supermunition(src, amount, distribute, distribute_mod, distribute_overwrite)
-		var/our_linear_spread = iter ? (uniform_linear_spread ? -linear_spread + ((iter - 1) / (amount - 1)) * linear_spread : rand(-linear_spread, linear_spread) * 0.1) : 1
-		var/our_angle_mod = uniform_dispersion ? rand(-dispersion, dispersion) * 0.1 : gaussian(0, dispersion)
-		split.pixel_x = pixel_x + px_rand_mul * our_linear_spread
-		split.pixel_y = pixel_y + py_rand_mul * our_linear_spread
-		split.forceMove(loc)
+		var/our_linear_spread = 0
+		if(amount > 1)
+			our_linear_spread = uniform_linear_spread ? -linear_spread + ((iter - 1) / (amount - 1)) * linear_spread : rand(-linear_spread, linear_spread) * 0.01
+		var/our_angle_mod = 0
+		if(amount > 1)
+			our_angle_mod = uniform_angular_spread ? -angular_spread + ((iter - 1) / (amount - 1)) * angular_spread : rand(-angular_spread, angular_spread) * 0.01
+		split.pixel_x = pixel_x + px_perpendicular * our_linear_spread
+		split.pixel_y = pixel_y + py_perpendicular * our_linear_spread
 		split.set_angle(angle + our_angle_mod)
 		on_submunition_ready?.InvokeAsync(split)
 		if(fire_immediately)
@@ -1287,8 +1302,11 @@
 	shot_from = parent.shot_from
 	silenced = parent.silenced
 	firer = parent.firer
+	original_angle = parent.original_angle
 	//! end
 
+	// share targeting data
+	original_target = parent.original_target
 	// share impacted data
 	impacted = parent.impacted?.Copy()
 	// distrbute if needed

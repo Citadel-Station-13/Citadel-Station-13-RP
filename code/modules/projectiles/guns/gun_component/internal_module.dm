@@ -17,7 +17,7 @@
  */
 #warn test this
 /obj/item/gun_component/internal_module/double_shot
-	name = "AN-94 Fire Controller"
+	name = "\improper AN-94 Fire Controller"
 	desc = /obj/item/gun_component/internal_module::desc + " This will cause the gun to fire one additional round per burst, at the cost of reduced accuracy."
 	hook_iteration_pre_fire = TRUE
 

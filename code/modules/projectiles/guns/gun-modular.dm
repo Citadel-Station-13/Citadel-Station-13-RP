@@ -116,8 +116,10 @@
 
 /**
  * * deletes the component if no location is provided to move it to
+ *
+ * @return uninstalled item
  */
-/obj/item/gun/proc/uninstall_modular_component(obj/item/gun_component/component, datum/event_args/actor/actor, silent, force, atom/new_loc)
+/obj/item/gun/proc/uninstall_modular_component(obj/item/gun_component/component, datum/event_args/actor/actor, silent, force, atom/new_loc) as /obj/item
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
@@ -128,8 +130,8 @@
 	component.on_uninstall(src, actor, silent)
 	// component.remove_gun_overlay()
 	component.installed = null
-	on_modular_component_uninstall(component, actor, silent)
 	LAZYREMOVE(modular_components, component)
+	on_modular_component_uninstall(component, actor, silent)
 	// todo: logging
 
 	if(!silent)
@@ -141,8 +143,10 @@
 
 	if(new_loc)
 		component.forceMove(new_loc)
+		. = component
 	else
 		qdel(component)
+		. = null
 
 //* Modular Components - Hooks *//
 
