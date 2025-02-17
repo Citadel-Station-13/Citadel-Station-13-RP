@@ -276,7 +276,7 @@
  * * angle is clockwise from north
  */
 /atom/movable/render/projectile_tracer
-	SET_APPEARANCE_FLAGS(PIXEL_SCALE | KEEP_TOGETHER)
+	SET_APPEARANCE_FLAGS(KEEP_TOGETHER)
 	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER
 

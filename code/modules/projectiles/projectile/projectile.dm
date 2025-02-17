@@ -469,8 +469,10 @@
  * * on_submunition_ready - (optional) callback to execute when a submunition is readied, right before it's fire()'d.
  */
 /obj/projectile/proc/fire(set_angle_to, atom/direct_target, no_source_check, datum/callback/on_submunition_ready)
-	// don't fire multiple times
+	SHOULD_CALL_PARENT(TRUE)
+
 	ASSERT(!fired)
+	fired = TRUE
 
 	// set angle if needed
 	if(isnum(set_angle_to))
@@ -527,7 +529,6 @@
 		set_angle(angle + rand(-dispersion, dispersion))
 	original_angle = angle
 	forceMove(starting)
-	fired = TRUE
 	// legacy aboev
 
 	// start physics & kickstart movement

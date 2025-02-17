@@ -13,7 +13,7 @@
 	if(!modular_component_slots?[component.component_slot])
 		if(!silent)
 			actor?.chat_feedback(
-				SPAN_WARNING("[component] doesn't go on [src]]!"),
+				SPAN_WARNING("[component] doesn't go on [src]s!"),
 				target = src,
 			)
 		return FALSE
