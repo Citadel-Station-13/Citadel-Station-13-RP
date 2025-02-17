@@ -24,9 +24,15 @@
 	///   without making it too op. if you set this to a ridiculous value like 2,
 	///   i will replace your eyelids with limes.
 	var/cheat_factor = 1
+	/// cooldown multiplier
+	var/cooldown_multiplier = 1.25
+	/// power multiplier
+	var/power_consumption_multiplier = 1
 
 /obj/item/gun_component/focusing_lens/divide_by/on_projectile_injection(obj/item/gun/source, datum/gun_firing_cycle/cycle, obj/projectile/proj)
-	cycle.overall_cooldown_multiply *= 1.25
+	divide_by = clamp(divide_by, 1, 20)
+	cycle.overall_cooldown_multiply *= cooldown_multiplier
+	cycle.next_projectile_cost_multiplier *= power_consumption_multiplier
 	if(proj.submunitions)
 		proj.submunitions *= divide_by
 	else
@@ -46,4 +52,4 @@
 /obj/item/gun_component/focusing_lens/divide_by/three
 	name = "weapon focusing lens (3-linear multiplexer)"
 	divide_by = 3
-	cheat_factor = 1.3
+	cheat_factor = 1.2

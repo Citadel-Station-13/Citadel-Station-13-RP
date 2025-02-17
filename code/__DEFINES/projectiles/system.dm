@@ -6,10 +6,10 @@
 //*                    to determine their renderers instead.                           *//
 
 /// no automatic rendering
-#define GUN_RENDERING_DISABLED 0
+#define GUN_RENDERING_DISABLED "disabled"
 /// overlay rendering
-#define GUN_RENDERING_OVERLAYS 1
+#define GUN_RENDERING_OVERLAYS "overlays"
 /// state rendering
-#define GUN_RENDERING_STATES 2
+#define GUN_RENDERING_STATES "states"
 /// for some guns, we render segmented overlays with offsets
-#define GUN_RENDERING_SEGMENTS 3
+#define GUN_RENDERING_SEGMENTS "segments"

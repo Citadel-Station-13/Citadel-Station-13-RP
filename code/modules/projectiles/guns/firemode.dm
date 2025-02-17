@@ -47,8 +47,6 @@
 
 // todo: this shouldn't even exist.
 /datum/firemode/New(obj/item/gun/inherit_from_gun, list/direct_varedits)
-	if(!length(direct_varedits))
-		return
 	for(var/varname in direct_varedits)
 		var/value = direct_varedits[varname]
 		if(value)

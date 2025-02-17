@@ -131,13 +131,13 @@
 			playsound(src, /datum/soundbyte/grouped/sparks, 50, TRUE, -1)
 			if(damage * efficiency > 15)
 				visible_message(
-					SPAN_WARNING("[src] was electrocuted[source ? "by [source]" : ""]!"),
+					SPAN_WARNING("[src] was electrocuted[source ? " by [source]" : ""]!"),
 					SPAN_DANGER("You feel a powerful shock course through your body[source ? "as you make contact with [source]" : ""]!"),
 					SPAN_WARNING("You hear a heavy electrical crack."),
 				)
 			else
 				visible_message(
-					SPAN_WARNING("[src] was shocked[source ? "by [source]" : ""]!"),
+					SPAN_WARNING("[src] was shocked[source ? " by [source]" : ""]!"),
 					SPAN_DANGER("You feel a shock course through your body[source ? "as you make contact with [source]" : ""]!"),
 					SPAN_WARNING("You hear an electrical crack."),
 				)

@@ -223,6 +223,8 @@
 			var/count = 0
 			while(length(loaded) < max_shells)
 				var/obj/item/ammo_casing/inserting = AM.peek()
+				if(!inserting)
+					break
 				if(!accepts_casing(inserting))
 					break
 				inserting = AM.pop(src)
@@ -366,7 +368,7 @@
 /obj/item/gun/projectile/ballistic/get_ammo_ratio(rounded)
 	if(!ammo_magazine)
 		return 0
-	return ammo_magazine.amount_remaining() / ammo_magazine.ammo_max
+	return min(1, ammo_magazine.amount_remaining() / ammo_magazine.ammo_max)
 
 /**
  * Can accept an ammo casing

@@ -1264,12 +1264,15 @@
 	// we must be fired; otherwise, things don't work right.
 	ASSERT(fired)
 	. = list()
-	// spread / angular_spread: if not uniform, set it to be random
-	// halve it as we go in both directions, multiply by 100 to be divided out as rand() only works with whole numbers.
+	// linear / angular spread;
+	// halve it as we go in both directions
+	linear_spread *= 0.5
+	angular_spread *= 0.5
+	// if not uniform, multiply by 100 to be divided out as rand() only works with whole numbers.
 	if(!uniform_linear_spread)
-		linear_spread *= 0.5 * 100
+		linear_spread *= 100
 	if(!uniform_angular_spread)
-		angular_spread *= 0.5 * 100
+		angular_spread *= 100
 	var/perpendicular_angle = angle + 90
 	var/px_perpendicular = sin(perpendicular_angle)
 	var/py_perpendicular = cos(perpendicular_angle)
@@ -1278,10 +1281,10 @@
 		split.imprint_from_supermunition(src, amount, distribute, distribute_mod, distribute_overwrite)
 		var/our_linear_spread = 0
 		if(amount > 1)
-			our_linear_spread = uniform_linear_spread ? -linear_spread + ((iter - 1) / (amount - 1)) * linear_spread : rand(-linear_spread, linear_spread) * 0.01
+			our_linear_spread = uniform_linear_spread ? -linear_spread + ((iter - 1) / (amount - 1)) * linear_spread * 2 : rand(-linear_spread, linear_spread) * 0.01
 		var/our_angle_mod = 0
 		if(amount > 1)
-			our_angle_mod = uniform_angular_spread ? -angular_spread + ((iter - 1) / (amount - 1)) * angular_spread : rand(-angular_spread, angular_spread) * 0.01
+			our_angle_mod = uniform_angular_spread ? -angular_spread + ((iter - 1) / (amount - 1)) * angular_spread * 2: rand(-angular_spread, angular_spread) * 0.01
 		split.pixel_x = pixel_x + px_perpendicular * our_linear_spread
 		split.pixel_y = pixel_y + py_perpendicular * our_linear_spread
 		split.set_angle(angle + our_angle_mod)

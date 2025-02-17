@@ -649,6 +649,7 @@
  * Gets the ratio of our ammo left
  *
  * * Used by rendering
+ * * DO NOT RETURN OVER 1.
  *
  * @params
  * * rounded - round to nearest ammo

@@ -133,14 +133,14 @@
 		else
 			var/base_ammo_prepend = "[base_worn_state][use_firemode ? (firemode_key ? firemode_key : "") : ""]-"
 			if(use_color)
-				for(var/i in 1 to ceil(count * ammo_ratio))
+				for(var/i in 1 to min(count, ceil(count * ammo_ratio)))
 					var/image/colored_ammo_overlay = new /image
 					colored_ammo_overlay.icon_state = "[base_ammo_prepend][i]"
 					if(use_color)
 						colored_ammo_overlay.color = firemode_color
 					. += colored_ammo_overlay
 			else
-				for(var/i in 1 to ceil(count * ammo_ratio))
+				for(var/i in 1 to min(count, ceil(count * ammo_ratio)))
 					. += "[base_ammo_prepend][i]"
 
 /datum/gun_mob_renderer/overlays/dedupe_key()

@@ -267,8 +267,8 @@
 		var/full_shots = floor(cell.maxcharge / estimated_cost)
 		if(!full_shots)
 			return 0
-		return floor(cell.charge / estimated_cost) / full_shots
-	return cell.maxcharge ? cell.charge / cell.maxcharge : 0
+		return min(1, floor(cell.charge / estimated_cost) / full_shots)
+	return min(1, cell.maxcharge ? cell.charge / cell.maxcharge : 0)
 
 /**
  * Estimates how many shots the gun's power supply has charge for
