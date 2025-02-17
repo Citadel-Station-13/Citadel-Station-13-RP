@@ -9404,7 +9404,7 @@
 /area/quartermaster/garage)
 "goE" = (
 /obj/structure/table/standard,
-/obj/item/gun/energy/taser/xeno,
+/obj/item/gun/projectile/energy/taser/xeno,
 /obj/item/melee/baton/slime/loaded,
 /obj/machinery/light_switch{
 	dir = 1;
@@ -19795,8 +19795,8 @@
 /obj/item/pizzavoucher,
 /obj/item/moneybag,
 /obj/item/inflatable_duck,
-/obj/item/gun/ballistic/revolver/capgun,
-/obj/item/gun/ballistic/revolver/capgun,
+/obj/item/gun/projectile/ballistic/revolver/capgun,
+/obj/item/gun/projectile/ballistic/revolver/capgun,
 /obj/item/toy/cultsword,
 /obj/item/toy/cultsword,
 /obj/item/bikehorn/rubberducky,
@@ -25774,7 +25774,7 @@
 /area/rnd/hallway)
 "pOV" = (
 /obj/structure/table/standard,
-/obj/item/gun/energy/taser/xeno,
+/obj/item/gun/projectile/energy/taser/xeno,
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 4;
 	pixel_y = -28
@@ -29111,11 +29111,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/library)
 "rKC" = (
-/obj/machinery/photocopier,
 /obj/item/radio/intercom{
 	dir = 1;
 	pixel_y = 24
 	},
+/obj/machinery/libraryscanner,
 /turf/simulated/floor/carpet,
 /area/library)
 "rKJ" = (

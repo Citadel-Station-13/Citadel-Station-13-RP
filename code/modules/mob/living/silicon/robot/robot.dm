@@ -972,11 +972,11 @@
 			if(sleeper_r)
 				add_overlay("[module_sprites[icontype]]-sleeper_r")
 
-			if(istype(module_active, /obj/item/gun/energy/taser/mounted/cyborg))
+			if(istype(module_active, /obj/item/gun/projectile/energy/taser/mounted/cyborg))
 				add_overlay("taser")
-			else if(istype(module_active, /obj/item/gun/energy/laser/mounted))
+			else if(istype(module_active, /obj/item/gun/projectile/energy/laser/mounted))
 				add_overlay("laser")
-			else if(istype(module_active, /obj/item/gun/energy/taser/xeno/robot))
+			else if(istype(module_active, /obj/item/gun/projectile/energy/taser/xeno/robot))
 				add_overlay("taser")
 
 			if(lights_on)

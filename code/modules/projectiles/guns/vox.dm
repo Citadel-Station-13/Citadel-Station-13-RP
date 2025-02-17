@@ -52,7 +52,7 @@
 /*
  * Vox Darkmatter Cannon
  */
-/obj/item/gun/energy/darkmatter
+/obj/item/gun/projectile/energy/darkmatter
 	name = "dark matter gun"
 	desc = "A vicious alien beam weapon. Parts of it quiver gelatinously, as though the thing is insectile and alive."
 	icon_state = "darkcannon"
@@ -116,7 +116,7 @@
 /*
  * Vox Sonic Cannon
  */
-/obj/item/gun/energy/sonic
+/obj/item/gun/projectile/energy/sonic
 	name = "soundcannon"
 	desc = "A vicious alien sound weapon. Parts of it quiver gelatinously, as though the thing is insectile and alive."
 	icon_state = "noise"

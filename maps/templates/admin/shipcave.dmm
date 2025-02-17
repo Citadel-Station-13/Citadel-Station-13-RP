@@ -306,9 +306,9 @@
 /area/awaymission/shipcave/ship)
 "di" = (
 /obj/structure/table/rack/shelf,
-/obj/item/gun/ballistic/shotgun/pump/rifle/lever/arnold,
-/obj/item/gun/ballistic/shotgun/pump/rifle/lever/arnold,
-/obj/item/gun/ballistic/shotgun/pump/rifle/lever/arnold,
+/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/lever/arnold,
+/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/lever/arnold,
+/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/lever/arnold,
 /obj/item/storage/box/shotgunshells/large,
 /obj/item/storage/box/shotgunshells/large,
 /obj/item/storage/box/shotgunshells/large,
@@ -455,7 +455,7 @@
 /area/awaymission/shipcave/ship/hangar)
 "eC" = (
 /obj/structure/table/hardwoodtable,
-/obj/item/gun/ballistic/contender/a762,
+/obj/item/gun/projectile/ballistic/contender/a762,
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/awaymission/shipcave/ship/entertainment)
 "eE" = (
@@ -738,9 +738,9 @@
 /area/awaymission/shipcave/ship/entertainment)
 "he" = (
 /obj/structure/table/rack/shelf,
-/obj/item/gun/ballistic/automatic/fal,
-/obj/item/gun/ballistic/automatic/fal,
-/obj/item/gun/ballistic/automatic/fal,
+/obj/item/gun/projectile/ballistic/automatic/fal,
+/obj/item/gun/projectile/ballistic/automatic/fal,
+/obj/item/gun/projectile/ballistic/automatic/fal,
 /obj/item/ammo_magazine/a7_62mm,
 /obj/item/ammo_magazine/a7_62mm,
 /obj/item/ammo_magazine/a7_62mm,
@@ -798,9 +798,9 @@
 /area/awaymission/shipcave/ship/guns)
 "hF" = (
 /obj/structure/table/rack/shelf,
-/obj/item/gun/ballistic/garand/sniper,
-/obj/item/gun/ballistic/garand/sniper,
-/obj/item/gun/ballistic/garand/sniper,
+/obj/item/gun/projectile/ballistic/garand/sniper,
+/obj/item/gun/projectile/ballistic/garand/sniper,
+/obj/item/gun/projectile/ballistic/garand/sniper,
 /obj/item/ammo_magazine/a7_62mm/garand,
 /obj/item/ammo_magazine/a7_62mm/garand,
 /obj/item/ammo_magazine/a7_62mm/garand,
@@ -862,9 +862,9 @@
 /area/awaymission/shipcave/ship/engines)
 "il" = (
 /obj/structure/table/rack/shelf,
-/obj/item/gun/ballistic/revolver/dirty_harry,
-/obj/item/gun/ballistic/revolver/dirty_harry,
-/obj/item/gun/ballistic/revolver/dirty_harry,
+/obj/item/gun/projectile/ballistic/revolver/dirty_harry,
+/obj/item/gun/projectile/ballistic/revolver/dirty_harry,
+/obj/item/gun/projectile/ballistic/revolver/dirty_harry,
 /obj/item/ammo_magazine/a44/speedloader,
 /obj/item/ammo_magazine/a44/speedloader,
 /obj/item/ammo_magazine/a44/speedloader,
@@ -1529,7 +1529,7 @@
 /turf/simulated/floor,
 /area/awaymission/shipcave/ship/hangar)
 "nV" = (
-/obj/item/gun/ballistic/contender/a762,
+/obj/item/gun/projectile/ballistic/contender/a762,
 /obj/effect/debris/cleanable/blood,
 /obj/effect/decal/remains,
 /obj/machinery/light{
@@ -1943,7 +1943,7 @@
 /area/awaymission/shipcave/temple)
 "tI" = (
 /obj/structure/table/reinforced,
-/obj/item/gun/energy/medigun{
+/obj/item/gun/projectile/energy/medigun{
 	name = "prototype medigun";
 	desc = "Some old looking medigun. Crude labels show it belonged to a 'Mr. Ludwig' and the 'Universitat Stuttgart'."
 	},
@@ -2138,9 +2138,9 @@
 /area/awaymission/shipcave)
 "wf" = (
 /obj/structure/table/rack/shelf,
-/obj/item/gun/ballistic/automatic/mini_uzi,
-/obj/item/gun/ballistic/automatic/mini_uzi,
-/obj/item/gun/ballistic/automatic/mini_uzi,
+/obj/item/gun/projectile/ballistic/automatic/mini_uzi,
+/obj/item/gun/projectile/ballistic/automatic/mini_uzi,
+/obj/item/gun/projectile/ballistic/automatic/mini_uzi,
 /obj/item/ammo_magazine/a45/uzi,
 /obj/item/ammo_magazine/a45/uzi,
 /obj/item/ammo_magazine/a45/uzi,
@@ -2481,7 +2481,7 @@
 /area/awaymission/shipcave/ship/hangar)
 "zg" = (
 /obj/structure/table/rack/shelf,
-/obj/item/gun/ballistic/automatic/lmg/m60,
+/obj/item/gun/projectile/ballistic/automatic/lmg/m60,
 /obj/item/ammo_magazine/a7_62mm/m60,
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/awaymission/shipcave/ship/armory)
@@ -2532,9 +2532,9 @@
 /area/awaymission/shipcave/ship/entertainment)
 "zG" = (
 /obj/structure/table/rack/shelf,
-/obj/item/gun/ballistic/shotgun/pump/slug,
-/obj/item/gun/ballistic/shotgun/pump/slug,
-/obj/item/gun/ballistic/shotgun/pump/slug,
+/obj/item/gun/projectile/ballistic/shotgun/pump/slug,
+/obj/item/gun/projectile/ballistic/shotgun/pump/slug,
+/obj/item/gun/projectile/ballistic/shotgun/pump/slug,
 /obj/item/storage/box/shotgunammo/large,
 /obj/item/storage/box/shotgunammo/large,
 /obj/item/storage/box/shotgunammo/large,
@@ -2988,7 +2988,7 @@
 /area/awaymission/shipcave/ship/execution)
 "DO" = (
 /obj/structure/table/alien/blue,
-/obj/item/gun/energy/alien,
+/obj/item/gun/projectile/energy/alien,
 /turf/simulated/shuttle/floor/alien,
 /area/awaymission/shipcave/ship/vault)
 "DZ" = (
@@ -3386,7 +3386,7 @@
 /area/awaymission/shipcave/ship/hangar)
 "Ig" = (
 /obj/structure/table/alien,
-/obj/item/gun/energy/alien,
+/obj/item/gun/projectile/energy/alien,
 /turf/simulated/floor/flesh,
 /area/awaymission/shipcave/ship/vault)
 "Ih" = (
@@ -3903,9 +3903,9 @@
 /area/awaymission/shipcave/ship/ammo)
 "Ol" = (
 /obj/structure/table/rack/shelf,
-/obj/item/gun/ballistic/shotgun/doublebarrel/sawn/alt,
-/obj/item/gun/ballistic/shotgun/doublebarrel/sawn/alt,
-/obj/item/gun/ballistic/shotgun/doublebarrel/sawn/alt,
+/obj/item/gun/projectile/ballistic/shotgun/doublebarrel/sawn/alt,
+/obj/item/gun/projectile/ballistic/shotgun/doublebarrel/sawn/alt,
+/obj/item/gun/projectile/ballistic/shotgun/doublebarrel/sawn/alt,
 /obj/item/ammo_magazine/a12g/clip/pellet,
 /obj/item/ammo_magazine/a12g/clip/pellet,
 /obj/item/ammo_magazine/a12g/clip/pellet,
@@ -4221,7 +4221,7 @@
 "RO" = (
 /obj/structure/table/steel,
 /obj/item/ammo_magazine/a7_62mm/clip/practice,
-/obj/item/gun/ballistic/luger/brown{
+/obj/item/gun/projectile/ballistic/luger/brown{
 	desc = "A worn proof mark shows an eagle and the number 135. How old is this gun?";
 	name = "\improper A very old Luger"
 	},
@@ -4747,9 +4747,9 @@
 /area/awaymission/shipcave/ship/captain)
 "Xh" = (
 /obj/structure/table/rack/shelf,
-/obj/item/gun/ballistic/p92x/brown,
-/obj/item/gun/ballistic/p92x/brown,
-/obj/item/gun/ballistic/p92x/brown,
+/obj/item/gun/projectile/ballistic/p92x/brown,
+/obj/item/gun/projectile/ballistic/p92x/brown,
+/obj/item/gun/projectile/ballistic/p92x/brown,
 /obj/item/ammo_magazine/a9mm,
 /obj/item/ammo_magazine/a9mm,
 /obj/item/ammo_magazine/a9mm,
@@ -4874,9 +4874,9 @@
 /area/awaymission/shipcave/ship/hangar)
 "YD" = (
 /obj/structure/table/rack/shelf,
-/obj/item/gun/ballistic/deagle,
-/obj/item/gun/ballistic/deagle,
-/obj/item/gun/ballistic/deagle,
+/obj/item/gun/projectile/ballistic/deagle,
+/obj/item/gun/projectile/ballistic/deagle,
+/obj/item/gun/projectile/ballistic/deagle,
 /obj/item/ammo_magazine/a44,
 /obj/item/ammo_magazine/a44,
 /obj/item/ammo_magazine/a44,

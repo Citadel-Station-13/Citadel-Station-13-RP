@@ -1,5 +1,5 @@
 //Expedition pistol
-/obj/item/gun/energy/frontier
+/obj/item/gun/projectile/energy/frontier
 	name = "Expedition Crank Phaser"
 	desc = "An extraordinarily rugged laser weapon, built to last and requiring effectively no maintenance. Includes a built-in crank charger for recharging away from civilization."
 	icon_state = "phaser"
@@ -19,7 +19,7 @@
 		list(mode_name="low-power", fire_delay=8, projectile_type=/obj/projectile/beam/weaklaser, charge_cost = 60),
 	)
 
-/obj/item/gun/energy/frontier/unload_ammo(var/mob/user)
+/obj/item/gun/projectile/energy/frontier/unload_ammo(var/mob/user)
 	if(recharging)
 		return
 	recharging = 1
@@ -36,24 +36,24 @@
 	recharging = 0
 	update_icon()
 
-/obj/item/gun/energy/frontier/update_icon()
+/obj/item/gun/projectile/energy/frontier/update_icon()
 	if(recharging)
 		icon_state = "[initial(icon_state)]_pump"
 		return
 	..()
 
-/obj/item/gun/energy/frontier/emp_act(severity)
+/obj/item/gun/projectile/energy/frontier/emp_act(severity)
 	return ..(severity+2)
 
-/obj/item/gun/energy/frontier/legacy_ex_act() //|rugged|
+/obj/item/gun/projectile/energy/frontier/legacy_ex_act() //|rugged|
 	return
 
-/obj/item/gun/energy/frontier/locked
+/obj/item/gun/projectile/energy/frontier/locked
 	desc = "An extraordinarily rugged laser weapon, built to last and requiring effectively no maintenance. Includes a built-in crank charger for recharging away from civilization. This one has a safety interlock that prevents firing while in proximity to the facility."
 	pin = /obj/item/firing_pin/explorer
 
 //Phaser Carbine - Reskinned phaser
-/obj/item/gun/energy/frontier/locked/carbine
+/obj/item/gun/projectile/energy/frontier/locked/carbine
 	name = "Expedition Phaser Carbine"
 	desc = "An ergonomically improved version of the venerable frontier phaser, the carbine is a fairly new weapon, and has only been produced in limited numbers so far. Includes a built-in crank charger for recharging away from civilization. This one has a safety interlock that prevents firing while in proximity to the facility."
 	icon_state = "carbinekill"
@@ -68,7 +68,7 @@
 	)
 
 //Expeditionary Holdout Phaser Pistol
-/obj/item/gun/energy/frontier/locked/holdout
+/obj/item/gun/projectile/energy/frontier/locked/holdout
 	name = "Holdout Phaser Pistol"
 	desc = "An minaturized weapon designed for the purpose of expeditionary support to defend themselves on the field. Includes a built-in crank charger for recharging away from civilization. This one has a safety interlock that prevents firing while in proximity to the facility."
 	icon = 'icons/obj/gun/energy.dmi'
@@ -86,7 +86,7 @@
 		list(mode_name="stun", fire_delay=12, projectile_type=/obj/projectile/beam/stun/med, modifystate="holdoutshock", charge_cost = 300),
 	)
 
-/obj/item/gun/energy/frontier/taj
+/obj/item/gun/projectile/energy/frontier/taj
 	name = "Adhomai crank laser"
 	desc = "The \"Icelance\" crank charged laser rifle, produced by the Hadii-Wrack group for the People's Republic of Adhomai's Grand People's Army."
 	icon = 'icons/obj/gun/energy.dmi'
@@ -101,7 +101,7 @@
 	firemodes = list(
 	)
 
-/obj/item/gun/energy/frontier/taj/unload_ammo(var/mob/user)
+/obj/item/gun/projectile/energy/frontier/taj/unload_ammo(var/mob/user)
 	if(recharging)
 		return
 	recharging = 1

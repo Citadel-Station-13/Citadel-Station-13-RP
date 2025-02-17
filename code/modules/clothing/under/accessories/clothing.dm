@@ -137,8 +137,8 @@
 	icon_state = "roughcloak"
 	item_state = "roughcloak"
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
-	/obj/item/gun/ballistic, /obj/item/ammo_magazine, /obj/item/melee/baton)
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/projectile/energy,
+	/obj/item/gun/projectile/ballistic, /obj/item/ammo_magazine, /obj/item/melee/baton)
 	item_action_name = "Adjust Cloak"
 
 /obj/item/clothing/accessory/poncho/rough_cloak/attack_self(mob/user, datum/event_args/actor/actor)
@@ -178,7 +178,7 @@
 	icon_state = "klbr"
 	icon_override = 'icons/mob/clothing/suits.dmi'
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
-	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/gun/energy,/obj/item/reagent_containers/spray/pepper,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/flashlight/maglight,/obj/item/clothing/head/helmet)
+	allowed = list(/obj/item/gun/projectile/ballistic/sec/flash, /obj/item/gun/projectile/energy,/obj/item/reagent_containers/spray/pepper,/obj/item/gun/projectile/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/flashlight/maglight,/obj/item/clothing/head/helmet)
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
 	body_cover_flags = UPPER_TORSO|ARMS
 	siemens_coefficient = 0.9
@@ -213,7 +213,7 @@
 	allowed = list(
 		/obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/pickaxe, /obj/item/material/twohanded/spear, /obj/item/material/twohanded/spear/bone,
 		/obj/item/material/knife/tacknife/combatknife/bone, /obj/item/material/knife/tacknife/survival/bone, /obj/item/material/knife/tacknife/survival/bone, /obj/item/melee/ashlander,
-		/obj/item/gun/ballistic/musket/pistol)
+		/obj/item/gun/projectile/ballistic/musket/pistol)
 	item_action_name = "Adjust Cloak"
 
 /*

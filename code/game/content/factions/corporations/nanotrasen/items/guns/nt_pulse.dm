@@ -25,10 +25,10 @@
 	render_key = "destroy"
 	settings = list(mode_name = "destroy", projectile_type = /obj/projectile/beam/pulse, charge_cost = 240)
 
-/obj/item/gun/energy/nt_pulse
+/obj/item/gun/projectile/energy/nt_pulse
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/nt_pulse.dmi'
 
-/obj/item/gun/energy/nt_pulse/rifle
+/obj/item/gun/projectile/energy/nt_pulse/rifle
 	name = "pulse rifle"
 	desc = "A powerful energy rifle with multiple intensity selectors."
 	// intentionally the same as all pulse weapons to save memory
@@ -66,7 +66,7 @@
 		empty_state = TRUE;
 	}
 
-/obj/item/gun/energy/nt_pulse/carbine
+/obj/item/gun/projectile/energy/nt_pulse/carbine
 	name = "pulse carbine"
 	desc = "A powerful energy carbine with multiple intensity selectors."
 	// intentionally the same as all pulse weapons to save memory
