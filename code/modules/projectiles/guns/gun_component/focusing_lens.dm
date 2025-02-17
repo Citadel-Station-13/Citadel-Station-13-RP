@@ -15,6 +15,7 @@
 		A special focusing lens that multiplexes a passing particle beam.
 	"}
 	component_type = /obj/item/gun_component/focusing_lens/divide_by
+	hook_projectile_injection = TRUE
 
 	/// divides a beam to this number of parallel beams
 	var/divide_by = 1
@@ -24,7 +25,7 @@
 	///   i will replace your eyelids with limes.
 	var/cheat_factor = 1
 
-/obj/item/gun_component/focusing_lens/divide_by/on_projectile_injection(datum/gun_firing_cycle/cycle, obj/projectile/proj)
+/obj/item/gun_component/focusing_lens/divide_by/on_projectile_injection(obj/item/gun/source, datum/gun_firing_cycle/cycle, obj/projectile/proj)
 	cycle.overall_cooldown_multiply *= 1.25
 	if(proj.submunitions)
 		proj.submunitions *= divide_by

@@ -10,6 +10,13 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 	var/count_for_slot = 1 // 1 because we're adding one
+	if(!modular_component_slots?[component.component_slot])
+		if(!silent)
+			actor?.chat_feedback(
+				SPAN_WARNING("[component] doesn't go on [src]]!"),
+				target = src,
+			)
+		return FALSE
 	for(var/obj/item/gun_component/existing in modular_components)
 		if(existing.component_slot == component.component_slot)
 			count_for_slot++

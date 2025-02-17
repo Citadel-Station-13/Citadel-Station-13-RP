@@ -707,7 +707,7 @@
 				return TRUE
 			if(!e_args.performer.Reachability(src) || !(e_args.performer.mobility_flags & MOBILITY_CAN_USE))
 				return TRUE
-			user_uninstall_attachment(component, e_args, TRUE)
+			user_uninstall_modular_component(component, e_args, TRUE)
 			return TRUE
 		if("toggle-safety")
 			toggle_safety(e_args.performer)

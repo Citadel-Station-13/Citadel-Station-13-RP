@@ -19,11 +19,12 @@
 /obj/item/gun_component/internal_module/double_shot
 	name = "AN-94 Fire Controller"
 	desc = /obj/item/gun_component/internal_module::desc + " This will cause the gun to fire one additional round per burst, at the cost of reduced accuracy."
+	hook_iteration_pre_fire = TRUE
 
 	/// angular dispersion to impose on the last round in the burst, and the round we add
 	var/dispersion_amount = 5
 
-/obj/item/gun_component/internal_module/double_shot/on_firing_cycle_iteration(datum/gun_firing_cycle/cycle)
+/obj/item/gun_component/internal_module/double_shot/on_firing_cycle_iteration(obj/item/gun/source, datum/gun_firing_cycle/cycle)
 	// only invoke on last iteration
 	if(cycle.cycle_iterations_fired != cycle.firing_iterations)
 		return

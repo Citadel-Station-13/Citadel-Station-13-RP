@@ -20,6 +20,7 @@
 		/obj/item/mecha_parts = "//mech_part",
 		/obj/item/organ = "//organ",
 		/obj/item/gun_attachment = "//gun-attachment",
+		/obj/item/gun_component = "//gun-component",
 		/obj/item/gun/projectile/ballistic = "//gun-ballistic",
 		/obj/item/gun/projectile/energy = "//gun-energy",
 		/obj/item/gun/projectile/magnetic = "//gun-magnetic",

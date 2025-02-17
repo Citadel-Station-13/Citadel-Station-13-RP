@@ -262,6 +262,8 @@
 /image/projectile/projectile_tracer_emissive
 	appearance_flags = KEEP_APART | RESET_COLOR
 	plane = EMISSIVE_PLANE
+	layer = MANGLE_PLANE_AND_LAYER(/atom/movable/render/projectile_tracer::plane, /atom/movable/render/projectile_tracer::layer)
+	color = EMISSIVE_COLOR
 	color = EMISSIVE_COLOR
 
 /image/projectile/projectile_tracer_add
@@ -274,7 +276,9 @@
  * * angle is clockwise from north
  */
 /atom/movable/render/projectile_tracer
-	SET_APPEARANCE_FLAGS(KEEP_TOGETHER)
+	SET_APPEARANCE_FLAGS(PIXEL_SCALE | KEEP_TOGETHER)
+	plane = MOB_PLANE
+	layer = ABOVE_MOB_LAYER
 
 // todo: maybe don't have arg hell?
 /atom/movable/render/projectile_tracer/Initialize(mapload, icon/use_icon, use_icon_state, use_icon_add_state, use_add_state_alpha, angle, px, py, color, emissive)
@@ -290,6 +294,7 @@
 		var/image/emissive_image = new /image/projectile/projectile_tracer_emissive(icon, icon_state)
 		emissive_image.layer = MANGLE_PLANE_AND_LAYER(plane, layer)
 		emissive_image.alpha = emissive
+		emissive_image.color = GLOB.emissive_color
 		overlays += emissive_image
 	if(use_icon_add_state)
 		var/image/image = new /image/projectile/projectile_tracer_add(icon, "[icon_state]-add")
