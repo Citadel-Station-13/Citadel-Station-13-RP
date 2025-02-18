@@ -20,6 +20,15 @@
 /// prevent these types
 #define PAYMENT_TYPES_EXCEPT_FOR(types)		(~(types))
 
+//* payment op flags *//
+
+/// no sound
+#define PAYMENT_OP_SILENT (1<<0)
+/// no message
+#define PAYMENT_OP_SUPPRESSED (1<<1)
+
+//! legacy below !//
+
 // kinds of static currency
 /// not static currency
 #define NOT_STATIC_CURRENCY				0

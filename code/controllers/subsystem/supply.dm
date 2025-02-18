@@ -253,7 +253,7 @@ SUBSYSTEM_DEF(supply)
 	var/datum/economy_transaction/buy_transaction = new(O.object.worth)
 	buy_transaction.audit_purpose_as_unsafe_html = "Cargo Purchase - [O.object.name]"
 	buy_transaction.audit_terminal_as_unsafe_html = "Cargo Console"
-	buy_transaction.execute_system_transaction(cargo_accout)
+	buy_transaction.execute_system_transaction(cargo_account)
 	return TRUE
 
 // Will deny the specified order. Only useful if the order is currently requested, but available at any status
@@ -313,7 +313,7 @@ SUBSYSTEM_DEF(supply)
 	new_order.index = new_order.ordernum	// Index can be fabricated, or falsified. Ordernum is a permanent marker used to track the order
 	new_order.object = S
 	new_order.name = S.name
-	new_order.cost = S.legacy_cost
+	new_order.cost = S.worth
 	new_order.ordered_by = idname
 	new_order.comment = reason
 	new_order.ordered_at = stationdate2text() + " - " + stationtime2text()

@@ -170,6 +170,23 @@
 		to_chat(user, "You short out \the [src]'s product lock.")
 		return 1
 
+/obj/machinery/vending/using_item_on(obj/item/using, datum/event_args/actor/clickchain/e_args, clickchain_flags, datum/callback/reachability_check)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+
+	if(currently_vending && using.economy_is_payment())
+		var/datum/economy_payment/payment = new
+		payment.amount = currently_vending.price
+		payment.audit_terminal_name_as_unsafe_html = name
+		payment.audit_purpose_as_unsafe_html = "Purchase of [currently_vending.item_name]"
+		payment.audit_recipient_as_unsafe_html = "Vendor"
+
+		if(using.economy_attempt_payment(payment, NONE, e_args, e_args))
+			if(payment.out_success)
+			return CLICKCHAIN_DID_SOMETHING
+		#warn impl
+
 /obj/machinery/vending/attackby(obj/item/W, mob/user)
 	var/obj/item/card/id/I = W.GetID()
 
@@ -255,30 +272,6 @@
 				stock(W, R, user)
 				return
 		..()
-
-/obj/machinery/vending/query_transaction_details(list/data)
-	. = ..()
-	.[CHARGE_DETAIL_DEVICE] = name
-	.[CHARGE_DETAIL_LOCATION] = get_area(src).name
-	.[CHARGE_DETAIL_REASON] = currently_vending? "Purchase of [currently_vending.item_name]" : "Unknown"
-	.[CHARGE_DETAIL_RECIPIENT] = "Vendor"
-
-/**
- *  Add money for current purchase to the vendor account.
- *
- *  Called after the money has already been taken from the customer.
- */
-/obj/machinery/vending/proc/credit_purchase(var/target as text)
-	GLOB.vendor_account.money += currently_vending.price
-
-	var/datum/economy_transaction/T = new()
-	T.target_name = target
-	T.purpose = "Purchase of [currently_vending.item_name]"
-	T.amount = "[currently_vending.price]"
-	T.source_terminal = name
-	T.date = GLOB.current_date_string
-	T.time = stationtime2text()
-	GLOB.vendor_account.transaction_log.Add(T)
 
 /obj/machinery/vending/attack_ai(mob/user as mob)
 	return attack_hand(user)

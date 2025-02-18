@@ -407,7 +407,7 @@
 
 /obj/item/gun/using_item_on(obj/item/using, datum/event_args/actor/clickchain/e_args, clickchain_flags, datum/callback/reachability_check)
 	. = ..()
-	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
 	if(istype(using, /obj/item/gun_attachment))
 		user_install_attachment(using, e_args)

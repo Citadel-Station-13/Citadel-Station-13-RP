@@ -21,9 +21,9 @@
 	/// * if null, money is taken but not fully sent
 	var/send_to_account_number
 
-	/// allowed currency types
+	/// allowed payment types; this is PAYMENT_TYPE_* flags
 	/// * this is a suggestion, and is only enforced currency-side
-	var/currency_types_allowed
+	var/payment_types_allowed = PAYMENT_TYPE_ALL
 
 	/// terminal name
 	/// * Do not allow user input without sanitizing!
@@ -32,7 +32,7 @@
 	/// * Do not allow user input without sanitizing!
 	var/audit_purpose_as_unsafe_html
 	/// who's it being sent to
-	var/audit_recepient_as_unsafe_html
+	var/audit_recipient_as_unsafe_html
 
 	/// executed? used to prevent double-executions
 	/// * sometimes it might be beneficial to allow it; e.g. if you're drawing

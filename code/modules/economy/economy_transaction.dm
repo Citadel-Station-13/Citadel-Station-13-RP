@@ -61,7 +61,7 @@
 
 /datum/economy_transaction/clone()
 	var/datum/economy_transaction/transaction = new
-	if(acct_num_src)
+	if(acct_num_peer)
 		transaction.acct_num_peer = acct_num_peer
 	if(acct_num_target)
 		transaction.acct_num_target = acct_num_target
@@ -71,8 +71,8 @@
 		transaction.audit_purpose_as_unsafe_html = audit_purpose_as_unsafe_html
 	if(audit_terminal_as_unsafe_html)
 		transaction.audit_terminal_as_unsafe_html = audit_terminal_as_unsafe_html
-	if(audit_dest_name_as_unsafe_html)
-		transaction.audit_dest_name_as_unsafe_html = audit_dest_name_as_unsafe_html
+	if(audit_peer_name_as_unsafe_html)
+		transaction.audit_peer_name_as_unsafe_html = audit_peer_name_as_unsafe_html
 	if(audit_date)
 		transaction.audit_date = audit_date
 	if(audit_time)

@@ -71,7 +71,9 @@
 	// Check if the crew succeeded or failed!
 	if(required_items.len == 0)
 		// Success!
-		SSsupply.points += 100 * severity
+		var/datum/economy_account/cargo_account = SSsupply.resolve_station_cargo_account()
+		// todo: i'm too lazy to make a transaction log
+		cargo_account.adjust_balance_without_logging(10000 * severity)
 		var/msg = "Great work! With those items you delivered our inventory levels all match up. "
 		msg += "[capitalize(pick(GLOB.first_names_female))] from accounting will have nothing to complain about. "
 		msg += "I think you'll find a little something in your supply account."

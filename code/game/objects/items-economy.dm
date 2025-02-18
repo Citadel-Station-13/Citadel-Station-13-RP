@@ -2,6 +2,12 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /**
+ * Checks if we're valid for receiving [economy_attempt_payment]'s
+ */
+/obj/item/proc/economy_is_payment()
+	return FALSE
+
+/**
  * Core economy payment API
  *
  * Allows using an item as currency.
@@ -14,10 +20,11 @@
  *
  * @params
  * * payment - the payment being made
+ * * payment_op_flags - PAYMENT_OP_* flags
  * * actor - (optional) the actor doing it.
  * * clickchain - (optional) clickchain datum; if this exists, the actor is doing it as part of a click.
  *
  * @return TRUE if **handled**, FALSE otherwise.
  */
-/obj/item/proc/economy_attempt_payment(datum/economy_payment/payment, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain)
+/obj/item/proc/economy_attempt_payment(datum/economy_payment/payment, payment_op_flags, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain)
 	return FALSE
