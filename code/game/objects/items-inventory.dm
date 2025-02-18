@@ -10,12 +10,13 @@
  * * Called after on_inv_pickup on a pickup
  *
  * @params
+ * * wearer - The mob whose inventory we're in.
  * * inventory - The inventory we're in
  * * slot_id_or_index - Text slot ID or numerical hand index
  * * inv_op_flags - INV_OP_* bits.
  * * actor - (optional) Actor data of who's putting it on us.
  */
-/obj/item/proc/on_inv_equipped(datum/inventory/inventory, slot_id_or_index, inv_op_flags, datum/event_args/actor/actor)
+/obj/item/proc/on_inv_equipped(mob/wearer,datum/inventory/inventory, slot_id_or_index, inv_op_flags, datum/event_args/actor/actor)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
@@ -26,12 +27,13 @@
  * * Called before on_inv_dropped on a drop
  *
  * @params
+ * * wearer - The mob whose inventory we're in.
  * * inventory - The inventory we're in
  * * slot_id_or_index - Text slot ID or numerical hand index
  * * inv_op_flags - INV_OP_* bits.
  * * actor - (optional) Actor data of who's putting it on us.
  */
-/obj/item/proc/on_inv_unequipped(datum/inventory/inventory, slot_id_or_index, inv_op_flags, datum/event_args/actor/actor)
+/obj/item/proc/on_inv_unequipped(mob/wearer,datum/inventory/inventory, slot_id_or_index, inv_op_flags, datum/event_args/actor/actor)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
@@ -43,11 +45,12 @@
  * * Called before on_inv_equipped
  *
  * @params
+ * * wearer - The mob whose inventory we're entering
  * * inventory - The inventory we're entering
  * * inv_op_flags - INV_OP_* bits.
  * * actor - (optional) Actor data of who's putting it on us.
  */
-/obj/item/proc/on_inv_pickup(datum/inventory/inventory, inv_op_flags, datum/event_args/actor/actor)
+/obj/item/proc/on_inv_pickup(mob/wearer, datum/inventory/inventory, inv_op_flags, datum/event_args/actor/actor)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
@@ -59,11 +62,12 @@
  * * Called after on_inv_unequipped
  *
  * @params
+ * * wearer - The mob whose inventory we're exiting
  * * inventory - The inventory we're exiting
  * * inv_op_flags - INV_OP_* bits.
  * * actor - (optional) Actor data of who's putting it on us.
  */
-/obj/item/proc/on_inv_dropped(datum/inventory/inventory, inv_op_flags, datum/event_args/actor/actor)
+/obj/item/proc/on_inv_dropped(mob/wearer, datum/inventory/inventory, inv_op_flags, datum/event_args/actor/actor)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 

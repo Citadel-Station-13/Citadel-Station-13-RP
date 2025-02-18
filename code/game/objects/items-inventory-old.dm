@@ -35,7 +35,7 @@
 		playsound(src, equip_sound, 30, ignore_walls = FALSE)
 
 	// call the new hook instead
-	on_inv_equipped(user.inventory, slot == SLOT_ID_HANDS? user.get_held_index(src) : slot, flags)
+	on_inv_equipped(user, user.inventory, slot == SLOT_ID_HANDS? user.get_held_index(src) : slot, flags)
 
 
 /**

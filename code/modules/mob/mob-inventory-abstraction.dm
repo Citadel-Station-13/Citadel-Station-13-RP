@@ -214,7 +214,7 @@
 
 	I.held_index = null
 	I.unequipped(src, SLOT_ID_HANDS, flags)
-	I.on_inv_unequipped(inventory, index, flags)
+	I.on_inv_unequipped(src, inventory, index, flags)
 
 	if(!(flags & INV_OP_NO_UPDATE_ICONS))
 		update_inv_hand(index)

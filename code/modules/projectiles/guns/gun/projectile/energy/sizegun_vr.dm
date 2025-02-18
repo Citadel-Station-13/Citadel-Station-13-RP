@@ -22,15 +22,13 @@
 			modifystate		= "sizegun-grow",
 			fire_sound		= 'sound/weapons/pulse3.ogg'
 		))
+	item_action_name = "Select Size"
 
 /obj/item/gun/projectile/energy/sizegun/Initialize(mapload)
 	. = ..()
 	add_obj_verb(src, /obj/item/gun/projectile/energy/sizegun/proc/select_size)
 
-/obj/item/gun/projectile/energy/sizegun/attack_self(mob/user, datum/event_args/actor/actor)
-	. = ..()
-	if(.)
-		return
+/obj/item/gun/projectile/energy/sizegun/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	. = ..()
 	select_size()
 
