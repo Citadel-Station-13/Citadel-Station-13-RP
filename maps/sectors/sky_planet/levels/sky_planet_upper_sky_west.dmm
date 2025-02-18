@@ -15,7 +15,6 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/obj/effect/particle_effect/cloud,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
 "ai" = (
@@ -291,7 +290,6 @@
 /obj/structure/window/reinforced/full{
 	dir = 4
 	},
-/obj/effect/particle_effect/cloud,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
 "bI" = (
@@ -767,7 +765,6 @@
 /area/sector/sky_planet/station_city/street)
 "eP" = (
 /obj/structure/lattice,
-/obj/effect/particle_effect/cloud,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
 "eQ" = (
@@ -927,7 +924,6 @@
 	},
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/effect/particle_effect/cloud,
 /turf/simulated/floor/tiled/techfloor/monogrid{
 	outdoors = 1
 	},
@@ -1024,7 +1020,6 @@
 	dir = 4
 	},
 /obj/structure/catwalk,
-/obj/effect/particle_effect/cloud,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/outpost/docking_port1)
 "gr" = (
@@ -1051,7 +1046,6 @@
 /area/sector/sky_planet/outpost/office)
 "gv" = (
 /obj/effect/shuttle_landmark/skyplanet/ntoutpost/eastrig1,
-/obj/effect/particle_effect/cloud,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
 "gx" = (
@@ -1150,7 +1144,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/effect/particle_effect/cloud,
 /turf/simulated/floor/tiled/techfloor/monogrid{
 	outdoors = 1
 	},
@@ -1165,7 +1158,6 @@
 /obj/structure/window/reinforced/full{
 	dir = 8
 	},
-/obj/effect/particle_effect/cloud,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
 "hj" = (
@@ -1500,7 +1492,6 @@
 /area/sector/sky_planet/station_city/shop)
 "jd" = (
 /mob/living/simple_mob/aggressive/dragoon,
-/obj/effect/particle_effect/cloud,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
 "jh" = (
@@ -1887,7 +1878,6 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/obj/effect/particle_effect/cloud,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
 "lo" = (
@@ -1981,7 +1971,6 @@
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
-/obj/effect/particle_effect/cloud,
 /turf/simulated/floor/plating,
 /area/sector/sky_planet/sky)
 "lN" = (
@@ -2193,7 +2182,6 @@
 "mY" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/catwalk,
-/obj/effect/particle_effect/cloud,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
 "mZ" = (
@@ -2252,7 +2240,6 @@
 /area/sector/sky_planet/racing_station/lounge)
 "nn" = (
 /mob/living/simple_mob/aggressive/dragoon/blue,
-/obj/effect/particle_effect/cloud,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
 "ns" = (
@@ -2281,7 +2268,6 @@
 /area/sector/sky_planet/station_city/shop)
 "nz" = (
 /obj/effect/shuttle_landmark/skyplanet/ntoutpost/northrig2,
-/obj/effect/particle_effect/cloud,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
 "nA" = (
@@ -2390,7 +2376,6 @@
 /area/sector/sky_planet/outpost/office)
 "of" = (
 /obj/effect/shuttle_landmark/skyplanet/ntoutpost/northrig3,
-/obj/effect/particle_effect/cloud,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
 "oh" = (
@@ -2540,7 +2525,6 @@
 /area/sector/sky_planet/station_city/police)
 "pb" = (
 /obj/effect/shuttle_landmark/skyplanet/ntoutpost/southrig3,
-/obj/effect/particle_effect/cloud,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
 "pc" = (
@@ -2810,7 +2794,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/shop)
 "qr" = (
-/obj/effect/particle_effect/cloud,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
 "qs" = (
@@ -3069,7 +3052,6 @@
 /area/sector/sky_planet/station_city/shop)
 "rP" = (
 /obj/effect/shuttle_landmark/skyplanet/ntoutpost/eastrig3,
-/obj/effect/particle_effect/cloud,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
 "rT" = (
@@ -3354,17 +3336,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
-"tt" = (
-/obj/structure/railing/grey{
-	dir = 4
-	},
-/obj/structure/window/reinforced/full{
-	dir = 4
-	},
-/obj/effect/particle_effect/cloud,
-/obj/effect/particle_effect/cloud,
-/turf/simulated/open/skyplanet,
-/area/sector/sky_planet/sky)
 "tu" = (
 /obj/machinery/air_alarm/alarms_hidden/north_mount,
 /obj/machinery/power/smes/buildable{
@@ -3552,7 +3523,6 @@
 	},
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/effect/particle_effect/cloud,
 /turf/simulated/floor/tiled/techfloor/monogrid{
 	outdoors = 1
 	},
@@ -3644,7 +3614,6 @@
 /area/sector/sky_planet/outpost/docking_port1)
 "uR" = (
 /obj/effect/shuttle_landmark/skyplanet/ntoutpost/westrig1,
-/obj/effect/particle_effect/cloud,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
 "uS" = (
@@ -3694,11 +3663,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/racing_station/dock2)
-"vp" = (
-/obj/effect/particle_effect/cloud,
-/obj/effect/particle_effect/cloud,
-/turf/simulated/open/skyplanet,
-/area/sector/sky_planet/sky)
 "vr" = (
 /turf/simulated/floor/wood/sif/indoors,
 /area/sector/sky_planet/racing_station/dock)
@@ -3977,7 +3941,6 @@
 /area/sector/sky_planet/racing_station/dock)
 "wP" = (
 /obj/structure/catwalk,
-/obj/effect/particle_effect/cloud,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
 "wQ" = (
@@ -4104,7 +4067,6 @@
 	},
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/effect/particle_effect/cloud,
 /turf/simulated/floor/tiled/techfloor/monogrid{
 	outdoors = 1
 	},
@@ -4451,7 +4413,6 @@
 /area/sector/sky_planet/outpost/office)
 "zX" = (
 /obj/structure/railing/grey,
-/obj/effect/particle_effect/cloud,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
 "zZ" = (
@@ -4705,7 +4666,6 @@
 /area/shuttle/bonnethead)
 "Bb" = (
 /obj/effect/shuttle_landmark/skyplanet/ntoutpost/southrig1,
-/obj/effect/particle_effect/cloud,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
 "Bc" = (
@@ -4964,7 +4924,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/dock)
 "CJ" = (
-/obj/effect/particle_effect/cloud,
 /turf/level_border,
 /area/sector/sky_planet/sky)
 "CL" = (
@@ -4979,7 +4938,6 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/obj/effect/particle_effect/cloud,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
 "CN" = (
@@ -6820,7 +6778,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/effect/particle_effect/cloud,
 /turf/simulated/floor/tiled/techfloor/monogrid{
 	outdoors = 1
 	},
@@ -6856,7 +6813,6 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/obj/effect/particle_effect/cloud,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
 "Nl" = (
@@ -6933,7 +6889,6 @@
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
-/obj/effect/particle_effect/cloud,
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/sky_planet/sky)
 "NA" = (
@@ -7026,7 +6981,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/effect/particle_effect/cloud,
 /turf/simulated/floor/tiled/techfloor/monogrid{
 	outdoors = 1
 	},
@@ -7722,7 +7676,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/effect/particle_effect/cloud,
 /turf/simulated/floor/tiled/techfloor/monogrid{
 	outdoors = 1
 	},
@@ -8080,7 +8033,6 @@
 	dir = 8
 	},
 /obj/structure/catwalk,
-/obj/effect/particle_effect/cloud,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
 "Tq" = (
@@ -8207,7 +8159,6 @@
 /area/sector/sky_planet/outpost/office)
 "Ui" = (
 /obj/effect/shuttle_landmark/skyplanet/ntoutpost/westrig2,
-/obj/effect/particle_effect/cloud,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
 "Uj" = (
@@ -37953,7 +37904,7 @@ Qp
 Qp
 Qp
 os
-vp
+qr
 qr
 qr
 qr
@@ -38147,7 +38098,7 @@ Qp
 Qp
 Qp
 os
-vp
+qr
 qr
 qr
 qr
@@ -38341,7 +38292,7 @@ Qp
 Qp
 Qp
 os
-vp
+qr
 qr
 qr
 qr
@@ -38535,7 +38486,7 @@ Qp
 Qp
 Qp
 os
-vp
+qr
 qr
 qr
 qr
@@ -38729,7 +38680,7 @@ Qp
 Qp
 Qp
 He
-vp
+qr
 qr
 qr
 qr
@@ -38923,7 +38874,7 @@ Qp
 Qp
 Qp
 os
-vp
+qr
 qr
 qr
 qr
@@ -39117,7 +39068,7 @@ Qp
 Qp
 Qp
 He
-tt
+bH
 bH
 bH
 bH

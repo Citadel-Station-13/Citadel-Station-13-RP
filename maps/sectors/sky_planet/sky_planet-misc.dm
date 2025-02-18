@@ -43,8 +43,16 @@
 /turf/simulated/open/skyplanet
 	name = "the sky"
 	desc = "It's the sky! Be careful!"
+	icon = 'icons/turf/sky.dmi'
+	icon_state = "sky"
 	edge_blending_priority = 0.5
 	initial_gas_mix = ATMOSPHERE_ID_SKYPLANET
+	color = "#ffeab0"
+
+/turf/simulated/open/skyplanetInitialize(mapload)
+	. = ..()
+	icon = 'icons/turf/sky.dmi'
+	icon_state = "sky"
 
 /obj/effect/particle_effect/cloud
 	name = "cloud"
@@ -55,6 +63,16 @@
 	anchored = 1
 	mouse_opacity = 0
 	layer = 0.5
+
+/turf/simulated/sky/skyplanet
+	name = "virgo 2 atmosphere"
+	desc = "Be careful where you step!"
+	color = "#ffeab0"
+	initial_gas_mix =  ATMOSPHERE_ID_SKYPLANET
+
+/turf/simulated/sky/skyplanet/Initialize(mapload)
+	skyfall_levels = list(z+1)
+	. = ..()
 
 //landmarks
 

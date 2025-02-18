@@ -83,7 +83,6 @@
 	link_below = /datum/map_level/sector/sky_planet/sky_east
 	air_outdoors = /datum/atmosphere/planet/sky_planet
 	planet_path = /datum/planet/sky_planet
-	base_turf = /turf/simulated/open
 
 /datum/map_level/sector/sky_planet/sky_upper_east/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
