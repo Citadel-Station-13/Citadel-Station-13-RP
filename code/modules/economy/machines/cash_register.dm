@@ -141,8 +141,8 @@
 	var/obj/item/card/id/I = O.GetID()
 	if(I)
 		scan_card(I, O)
-	else if (istype(O, /obj/item/charge_card))
-		var/obj/item/charge_card/E = O
+	else if (istype(O, /obj/item/cash_card))
+		var/obj/item/cash_card/E = O
 		scan_wallet(E)
 	else if (istype(O, /obj/item/spacecash))
 		var/obj/item/spacecash/SC = O
@@ -391,18 +391,6 @@
 
 	transaction_logs += dat
 
-
-/obj/machinery/cash_register/proc/check_account()
-	if (!linked_account)
-		usr.visible_message("[icon2html(thing = src, target = world)]<span class='warning'>Unable to connect to linked account.</span>")
-		return 0
-
-	if(linked_account.suspended)
-		src.visible_message("[icon2html(thing = src, target = world)]<span class='warning'>Connected account has been suspended.</span>")
-		return 0
-	return 1
-
-
 /obj/machinery/cash_register/proc/transaction_complete()
 	/// Visible confirmation
 	playsound(src, 'sound/machines/chime.ogg', 25)
@@ -410,15 +398,6 @@
 	flick("register_approve", src)
 	reset_memory()
 	updateDialog()
-
-
-/obj/machinery/cash_register/proc/reset_memory()
-	transaction_amount = null
-	transaction_purpose = ""
-	item_list.Cut()
-	price_list.Cut()
-	confirm_item = null
-
 
 /obj/machinery/cash_register/verb/open_cash_box()
 	set category = VERB_CATEGORY_OBJECT
@@ -469,9 +448,6 @@
 	                         "<span class='notice'>You have unsecured \the [src] from the floor.</span>")
 	anchored = !anchored
 	manipulating = 0
-	return
-
-
 
 /obj/machinery/cash_register/emag_act(var/remaining_charges, var/mob/user)
 	if(!emagged)
@@ -482,39 +458,3 @@
 		locked = 0
 		cash_locked = 0
 		open_cash_box()
-
-
-//--Premades--//
-
-/obj/machinery/cash_register/command
-	account_to_connect = "Command"
-
-/obj/machinery/cash_register/medical
-	account_to_connect = "Medical"
-
-/obj/machinery/cash_register/engineering
-	account_to_connect = "Engineering"
-
-/obj/machinery/cash_register/science
-	account_to_connect = "Science"
-
-/obj/machinery/cash_register/security
-	account_to_connect = "Security"
-
-/obj/machinery/cash_register/cargo
-	account_to_connect = "Cargo"
-
-/obj/machinery/cash_register/civilian
-	account_to_connect = "Civilian"
-
-/obj/machinery/cash_register/trader
-	name = "Nebula Gas Cash Register"
-	account_to_connect = "Civilian"
-	machine_id = "Nebula Gas RETAIL UNIT"
-	req_access = list(160)
-
-/obj/machinery/cash_register/resort
-	name = "Gaia Station Cash Register"
-	account_to_connect = "Civilian"
-	machine_id = "Gaia Station RETAIL UNIT"
-	req_access = list(252)
