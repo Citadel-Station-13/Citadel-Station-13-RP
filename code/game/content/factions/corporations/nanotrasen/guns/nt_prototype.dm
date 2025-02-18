@@ -1,8 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/datum/firemode/energy/nt_prototype
-	abstract_type = /datum/firemode/energy/nt_prototype
+/datum/firemode/energy/nt_protolaser
+	abstract_type = /datum/firemode/energy/nt_protolaser
 
 /**
  * Weapons built by the Nanotrasen Research Division
@@ -11,8 +11,8 @@
  * * Expensive
  * * Joint with Hephaestus / Vey-Med, canonically
  */
-/obj/item/gun/projectile/energy/nt_prototype
-	abstract_type = /obj/item/gun/projectile/energy/nt_prototype
+/obj/item/gun/projectile/energy/nt_protolaser
+	abstract_type = /obj/item/gun/projectile/energy/nt_protolaser
 	description_fluff = {"
 		A modular energy weapon manufactured by the Nanotrasen Research Division
 		for internal usage. A variety of modules can be installed inside, and the entire
@@ -20,12 +20,18 @@
 	"}
 	modular_system = TRUE
 
+/datum/prototype/design/generated/nt_protolaser
+	abstract_type = /datum/prototype/design/generated/nt_protolaser
+	category = DESIGN_CATEGORY_MUNITIONS
+	subcategory = SUBCATEGORY_ENER
+
 //* Sidearm *//
 
-/datum/firemode/energy/nt_prototype/sidearm
-	abstract_type = /datum/firemode/energy/nt_prototype/sidearm
+/datum/firemode/energy/nt_protolaser/sidearm
+	abstract_type = /datum/firemode/energy/nt_protolaser/sidearm
 
-/obj/item/gun/projectile/energy/nt_prototype/sidearm
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_prototype/sidearm, /nt_protolaser/sidearm, "nt-protolaser-sidearm")
+/obj/item/gun/projectile/energy/nt_protolaser/sidearm
 	name = "energy sidearm"
 	desc = "A versatile energy sidearm wielded by corporate expeditionary teams."
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/energy/sidearm.dmi'
@@ -33,7 +39,7 @@
 
 	w_class = WEIGHT_CLASS_NORMAL
 	firemodes = list(
-		/datum/firemode/energy/nt_prototype/sidearm,
+		/datum/firemode/energy/nt_protolaser/sidearm,
 	)
 	attachment_alignment = list(
 		GUN_ATTACHMENT_SLOT_SIDEBARREL = list(
@@ -64,12 +70,21 @@
 		GUN_COMPONENT_POWER_UNIT = 1,
 	)
 
+	materials_base = list(
+		/datum/prototype/material/steel::id = 1750,
+		/datum/prototype/material/glass::id = 500,
+		/datum/prototype/material/silver::id = 250,
+		/datum/prototype/material/gold::id = 125,
+		/datum/prototype/material/copper::id = 500,
+	)
+
 //* Carbine *//
 
-/datum/firemode/energy/nt_prototype/carbine
-	abstract_type = /datum/firemode/energy/nt_prototype/carbine
+/datum/firemode/energy/nt_protolaser/carbine
+	abstract_type = /datum/firemode/energy/nt_protolaser/carbine
 
-/obj/item/gun/projectile/energy/nt_prototype/carbine
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_prototype/carbine, /nt_protolaser/carbine, "nt-protolaser-carbine")
+/obj/item/gun/projectile/energy/nt_protolaser/carbine
 	name = "energy carbine"
 	desc = "A versatile energy carbine wielded by corporate expeditionary teams."
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/energy/carbine.dmi'
@@ -77,7 +92,7 @@
 
 	w_class = WEIGHT_CLASS_NORMAL
 	firemodes = list(
-		/datum/firemode/energy/nt_prototype/carbine,
+		/datum/firemode/energy/nt_protolaser/carbine,
 	)
 	attachment_alignment = list(
 		GUN_ATTACHMENT_SLOT_SIDEBARREL = list(
@@ -109,12 +124,21 @@
 		GUN_COMPONENT_POWER_UNIT = 1,
 	)
 
+	materials_base = list(
+		/datum/prototype/material/steel::id = 2750,
+		/datum/prototype/material/glass::id = 750,
+		/datum/prototype/material/silver::id = 750,
+		/datum/prototype/material/gold::id = 250,
+		/datum/prototype/material/copper::id = 500,
+	)
+
 //* Rifle *//
 
-/datum/firemode/energy/nt_prototype/rifle
-	abstract_type = /datum/firemode/energy/nt_prototype/rifle
+/datum/firemode/energy/nt_protolaser/rifle
+	abstract_type = /datum/firemode/energy/nt_protolaser/rifle
 
-/obj/item/gun/projectile/energy/nt_prototype/rifle
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_protolaser/rifle, /nt_protolaser/rifle, "nt-protolaser-rifle")
+/obj/item/gun/projectile/energy/nt_protolaser/rifle
 	name = "energy rifle"
 	desc = "A versatile energy rifle wielded by corporate expeditionary teams."
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/energy/rifle.dmi'
@@ -122,7 +146,7 @@
 
 	w_class = WEIGHT_CLASS_BULKY
 	firemodes = list(
-		/datum/firemode/energy/nt_prototype/rifle,
+		/datum/firemode/energy/nt_protolaser/rifle,
 	)
 	attachment_alignment = list(
 		GUN_ATTACHMENT_SLOT_SIDEBARREL = list(
@@ -152,4 +176,12 @@
 		GUN_COMPONENT_FOCUSING_LENS = 2,
 		GUN_COMPONENT_PARTICLE_ARRAY = 3,
 		GUN_COMPONENT_POWER_UNIT = 2,
+	)
+
+	materials_base = list(
+		/datum/prototype/material/steel::id = 4000,
+		/datum/prototype/material/glass::id = 1250,
+		/datum/prototype/material/silver::id = 1250,
+		/datum/prototype/material/gold::id = 750,
+		/datum/prototype/material/copper::id = 500,
 	)

@@ -17,8 +17,12 @@
 		a large amount of energy to discharge, in contrast to more normal hybrid rounds.
 	"}
 	caliber = /datum/ammo_caliber/nt_protomag
-
 	modular_system = TRUE
+
+/datum/prototype/design/generated/nt_protomag
+	abstract_type = /datum/prototype/design/generated/nt_protomag
+	category = DESIGN_CATEGORY_MUNITIONS
+	subcategory = DESIGN_SUBCATEGORY_MAGNETIC
 
 //* Sidearm *//
 
@@ -32,6 +36,7 @@
 	use_empty = TRUE
 	use_single = TRUE
 
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/magnetic/nt_protomag/sidearm, /nt_protomag/sidearm, "nt-magpistol")
 /obj/item/gun/projectile/ballistic/magnetic/nt_protomag/sidearm
 	name = "protomag sidearm"
 	icon_state = "pistol-map"
@@ -55,9 +60,8 @@
 		/datum/prototype/material/steel::id = 3500,
 		/datum/prototype/material/glass::id = 500,
 		/datum/prototype/material/silver::id = 750,
-		/datum/prototype/material/gold::id = 350,
+		/datum/prototype/material/gold::id = 750,
 		/datum/prototype/material/copper::id = 750,
-		/datum/prototype/material/diamond::id = 250,
 		/datum/prototype/material/lead::id = 250,
 	)
 
@@ -73,12 +77,13 @@
 	use_empty = TRUE
 	use_single = TRUE
 
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/magnetic/nt_protomag/rifle, /nt_protomag/rifle, "nt-magpistol")
 /obj/item/gun/projectile/ballistic/magnetic/nt_protomag/rifle
 	name = "protomag rifle"
 	icon_state = "rifle-map"
 	base_icon_state = "rifle"
-	item_renderer = /datum/gun_item_renderer/overlays/nt_protomag/sidearm
-	mob_renderer = /datum/gun_mob_renderer/overlays/nt_protomag/sidearm
+	item_renderer = /datum/gun_item_renderer/overlays/nt_protomag/rifle
+	mob_renderer = /datum/gun_mob_renderer/overlays/nt_protomag/rifle
 	slot_flags = SLOT_BACK
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	render_wielded = TRUE
@@ -98,8 +103,7 @@
 		/datum/prototype/material/steel::id = 5000,
 		/datum/prototype/material/glass::id = 1500,
 		/datum/prototype/material/silver::id = 1500,
-		/datum/prototype/material/gold::id = 800,
+		/datum/prototype/material/gold::id = 1250,
 		/datum/prototype/material/copper::id = 1200,
-		/datum/prototype/material/diamond::id = 350,
 		/datum/prototype/material/lead::id = 450,
 	)

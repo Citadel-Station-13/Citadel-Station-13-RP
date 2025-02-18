@@ -52,6 +52,8 @@
 
 /datum/prototype/design/generated/nt_protomag_ammo
 	abstract_type = /datum/prototype/design/generated/nt_protomag_ammo
+	category = DESIGN_CATEGORY_MUNITIONS
+	subcategory = DESIGN_SUBCATEGORY_AMMO
 
 /datum/prototype/design/generated/nt_protomag_ammo/sidearm
 	abstract_type = /datum/prototype/design/generated/nt_protomag_ammo/sidearm

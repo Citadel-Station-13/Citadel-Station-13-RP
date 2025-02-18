@@ -273,7 +273,9 @@
 
 /obj/projectile/nt_isd/laser
 	abstract_type = /obj/projectile/nt_isd/laser
+	pass_flags = ATOM_PASS_FLAGS_BEAM
 	damage_type = DAMAGE_TYPE_BURN
+	damage_flag = ARMOR_LASER
 	hitscan = TRUE
 	color = "#ff1100"
 	tracer_icon_state = "laser-1"
@@ -281,7 +283,9 @@
 	tracer_add_state_alpha = 65
 	auto_emissive_strength = 192
 	fire_sound = /datum/soundbyte/laser_1
-	pass_flags = ATOM_PASS_FLAGS_BEAM
+	eyeblur = 2
+	impact_sound = PROJECTILE_IMPACT_SOUNDS_ENERGY
+	projectile_type = PROJECTILE_TYPE_BEAM | PROJECTILE_TYPE_PHOTONIC
 
 /obj/projectile/nt_isd/laser/rifle
 	name = "laser"
@@ -331,6 +335,7 @@
 	)
 	fire_sound = /datum/soundbyte/taser_2
 	impact_sound = /datum/soundbyte/taser_hit
+	projectile_type = PROJECTILE_TYPE_BEAM
 
 /obj/projectile/nt_isd/electrode
 	name = "stun bolt"
@@ -345,6 +350,7 @@
 	fire_sound = /datum/soundbyte/taser_1
 	impact_sound = /datum/soundbyte/taser_hit
 	auto_emissive_strength = 192
+	projectile_type = PROJECTILE_TYPE_ENERGY
 
 /obj/projectile/nt_isd/disable
 	name = "disabler beam"
@@ -356,6 +362,7 @@
 	hitscan = TRUE
 	agony = 20
 	fire_sound = /datum/soundbyte/disabler_1
+	projectile_type = PROJECTILE_TYPE_BEAM | PROJECTILE_TYPE_PHOTONIC
 
 // todo: this shouldn't be an emp, this should be like synthetik's
 /obj/projectile/nt_isd/ion
@@ -370,3 +377,4 @@
 	color = "#0048ff"
 	fire_sound = /datum/soundbyte/ion_pulse
 	auto_emissive_strength = 192
+	projectile_type = PROJECTILE_TYPE_ENERGY
