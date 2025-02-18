@@ -1,3 +1,16 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
+
+/obj/item/card/id/economy_is_payment()
+	return !!associated_account_number
+
+/obj/item/card/id/economy_attempt_payment(datum/economy_payment/payment, payment_op_flags, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain)
+	if(!associated_account_number)
+		return FALSE
+
+
+#warn impl
+
 // currently just id cards
 
 /obj/item/card/id/attempt_dynamic_currency(mob/user, atom/movable/predicate, amount, force, prevent_types, list/data, silent, visual_range)

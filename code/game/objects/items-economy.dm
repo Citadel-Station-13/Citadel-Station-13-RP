@@ -20,11 +20,12 @@
  *
  * @params
  * * payment - the payment being made
- * * payment_op_flags - PAYMENT_OP_* flags
- * * actor - (optional) the actor doing it.
+ * * payment_op_flags - (optional) PAYMENT_OP_* flags
+ * * accepting_entity - (optional) entity being inserted into; this is required for messages.
+ * * actor - (optional) the actor doing it; this is required for messages.
  * * clickchain - (optional) clickchain datum; if this exists, the actor is doing it as part of a click.
  *
  * @return TRUE if **handled**, FALSE otherwise.
  */
-/obj/item/proc/economy_attempt_payment(datum/economy_payment/payment, payment_op_flags, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain)
+/obj/item/proc/economy_attempt_payment(datum/economy_payment/payment, payment_op_flags, atom/movable/accepting_entity, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain)
 	return FALSE

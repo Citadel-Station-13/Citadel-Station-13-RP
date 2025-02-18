@@ -33,28 +33,6 @@
 		R.stamps += "<HR><i>This paper has been stamped by the Accounts Database.</i>"
 	return M
 
-/proc/charge_to_account(var/attempt_account_number, var/source_name, var/purpose, var/terminal_id, var/amount)
-	for(var/datum/economy_account/D in GLOB.all_money_accounts)
-		if(D.account_number == attempt_account_number && !D.suspended)
-			D.money += amount
-
-			//create a transaction log entry
-			var/datum/economy_transaction/T = new()
-			T.target_name = source_name
-			T.purpose = purpose
-			if(amount < 0)
-				T.amount = "([amount])"
-			else
-				T.amount = "[amount]"
-			T.date = GLOB.current_date_string
-			T.time = stationtime2text()
-			T.source_terminal = terminal_id
-			D.transaction_log.Add(T)
-
-			return 1
-
-	return 0
-
 //this returns the first account datum that matches the supplied accnum/pin combination, it returns null if the combination did not match any account
 /proc/attempt_account_access(var/attempt_account_number, var/attempt_pin_number, var/valid_card)
 	var/datum/economy_account/D = get_account(attempt_account_number)

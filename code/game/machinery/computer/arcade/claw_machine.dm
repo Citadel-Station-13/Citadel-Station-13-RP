@@ -34,7 +34,7 @@
 			payment.allow_partial = TRUE
 			payment.amount = INFINITY
 
-		if(using.economy_attempt_payment(payment, NONE, e_args, e_args))
+		if(using.economy_attempt_payment(payment, NONE, src, e_args, e_args))
 			if(payment.out_success)
 				gamepaid = TRUE
 				instructions = "Hit start to play!"

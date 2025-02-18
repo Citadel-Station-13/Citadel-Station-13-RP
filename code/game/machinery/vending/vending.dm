@@ -182,7 +182,7 @@
 		payment.audit_purpose_as_unsafe_html = "Purchase of [currently_vending.item_name]"
 		payment.audit_recipient_as_unsafe_html = "Vendor"
 
-		if(using.economy_attempt_payment(payment, NONE, e_args, e_args))
+		if(using.economy_attempt_payment(payment, NONE, src, e_args, e_args))
 			if(payment.out_success)
 			return CLICKCHAIN_DID_SOMETHING
 		#warn impl
@@ -196,6 +196,7 @@
 
 		var/obj/item/paying_with = I || W
 		var/list/data = list()
+		// /obj/item/proc/attempt_use_currency(mob/user, atom/movable/predicate, amount, force, prevent_types, list/data = list(), silent, visual_range = 7)
 		var/amount = paying_with.attempt_use_currency(user, src, currently_vending.price, FALSE, NONE, data, FALSE, 7)
 		switch(amount)
 			if(PAYMENT_DYNAMIC_ERROR)

@@ -116,7 +116,7 @@
 		if(P.category == active_category)
 			var/list/pack = list(
 					"name" = P.name,
-					"cost" = P.legacy_cost,
+					"cost" = P.worth,
 					"contraband" = P.legacy_contraband,
 					"manifest" = P.nanoui_manifest_list(),
 					"random" = P.nanoui_is_random() && P.lazy_gacha_amount,
@@ -166,7 +166,7 @@
 	data["shuttle_auth"] = (authorization & SUP_SEND_SHUTTLE) // Whether this ui is permitted to control the supply shuttle
 	data["order_auth"] = (authorization & SUP_ACCEPT_ORDERS)   // Whether this ui is permitted to accept/deny requested orders
 	data["shuttle"] = shuttle_status
-	data["supply_points"] = SSsupply.points
+	data["money"] = SSsupply.resolve_station_cargo_account()?.balance || 0
 	data["categories"] = SSsupply.legacy_supply_categories
 	data["active_category"] = active_category
 	data["supply_packs"] = pack_list

@@ -102,6 +102,8 @@
 	SC.set_worth(amount)
 	usr.put_in_hands(SC)
 
+#warn deal with
+
 /obj/item/spacecash/is_static_currency(prevent_types)
 	return (prevent_types & PAYMENT_TYPE_CASH)? NOT_STATIC_CURRENCY : PLURAL_STATIC_CURRENCY
 
@@ -210,6 +212,8 @@
 	if (!(user in view(2)) && user!=src.loc)
 		return
 	. += "<font color=#4F49AF>Charge card's owner: [src.owner_name]. Thalers remaining: [src.worth].</font>"
+
+#warn deal with
 
 /obj/item/spacecash/ewallet/is_static_currency(prevent_types)
 	return (prevent_types & PAYMENT_TYPE_CHARGE_CARD)? NOT_STATIC_CURRENCY : DISCRETE_STATIC_CURRENCY

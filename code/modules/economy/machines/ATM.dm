@@ -209,6 +209,8 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 				return TRUE
 			var/target_account_number = text2num(params["target_acc_number"])
 			var/transfer_purpose = params["purpose"]
+			#warn impl
+			var/datum/economy_transaction/transfer_transaction = new(transfer_amount)
 			if(charge_to_account(target_account_number, authenticated_account.owner_name, transfer_purpose, machine_id, transfer_amount))
 				to_chat(user, "[icon2html(thing = src, target = user)]<span class='info'>Funds transfer successful.</span>")
 				authenticated_account.money -= transfer_amount
@@ -224,6 +226,27 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 				authenticated_account.transaction_log.Add(T)
 			else
 				to_chat(user, "[icon2html(thing = src, target = user)]<span class='warning'>Funds transfer failed.</span>")
+			// /proc/charge_to_account(var/attempt_account_number, var/source_name, var/purpose, var/terminal_id, var/amount)
+			// 	for(var/datum/economy_account/D in GLOB.all_money_accounts)
+			// 		if(D.account_number == attempt_account_number && !D.suspended)
+			// 			D.money += amount
+
+			// 			//create a transaction log entry
+			// 			var/datum/economy_transaction/T = new()
+			// 			T.target_name = source_name
+			// 			T.purpose = purpose
+			// 			if(amount < 0)
+			// 				T.amount = "([amount])"
+			// 			else
+			// 				T.amount = "[amount]"
+			// 			T.date = GLOB.current_date_string
+			// 			T.time = stationtime2text()
+			// 			T.source_terminal = terminal_id
+			// 			D.transaction_log.Add(T)
+
+			// 			return 1
+
+			// 	return 0
 		if("change_security_level")
 			if(!authenticated_account)
 				return
