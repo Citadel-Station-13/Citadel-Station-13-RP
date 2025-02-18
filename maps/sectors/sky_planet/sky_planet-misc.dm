@@ -42,36 +42,33 @@
 
 /turf/simulated/open/skyplanet
 	name = "the sky"
-	desc = "It's the sky! Be careful!"
+	desc = "It's the sky! Be careful! Falling from that would be lethal !"
 	icon = 'icons/turf/sky.dmi'
 	icon_state = "sky"
 	edge_blending_priority = 0.5
 	initial_gas_mix = ATMOSPHERE_ID_SKYPLANET
 	color = "#ffeab0"
+	outdoors = 1
 
 /turf/simulated/open/skyplanet/Initialize(mapload)
 	icon = 'icons/turf/sky.dmi'
 	icon_state = "sky"
+	ASSERT(!isnull(below()))
+	outdoors = 1
 
-/obj/effect/particle_effect/cloud
-	name = "cloud"
-	icon = 'icons/turf/sky.dmi'
-	icon_state = "sky"
-	color = "#ffea9dff"
-	opacity = 1
-	anchored = 1
-	mouse_opacity = 0
-	layer = 0.5
+/turf/simulated/open/skyplanet/Entered(atom/movable/mover)
+	..()
+	if(mover.movement_type & MOVEMENT_GROUND)
+		mover.fall()
+		mover.fall_impact(42, 90, FALSE, TRUE)
+		to_chat(mover, "<span class='warning'>You made a 2 miles fall !</span>")
 
-/turf/simulated/sky/skyplanet
-	name = "virgo 2 atmosphere"
-	desc = "Be careful where you step!"
-	color = "#ffeab0"
-	initial_gas_mix =  ATMOSPHERE_ID_SKYPLANET
-
-/turf/simulated/sky/skyplanet/Initialize(mapload)
-	skyfall_levels = list(z+1)
+// Called when thrown object lands on this turf.
+/turf/simulated/open/skyplanet/throw_landed(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
+	if(AM.movement_type & MOVEMENT_GROUND)
+		AM.fall()
+
 
 //landmarks
 
