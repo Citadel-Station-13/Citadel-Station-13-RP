@@ -62,8 +62,8 @@
 			scan_card(I, O)
 		else
 			to_chat(usr, "[icon2html(thing = src, target = usr)]<span class='warning'>Unable to connect to linked account.</span>")
-	else if (istype(O, /obj/item/cash_card))
-		var/obj/item/cash_card/E = O
+	else if (istype(O, /obj/item/charge_card))
+		var/obj/item/charge_card/E = O
 		if (linked_account)
 			if(!linked_account.suspended)
 				if(transaction_locked && !transaction_paid)

@@ -17,7 +17,7 @@
 
 /obj/item/spacecash/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/spacecash))
-		if(istype(W, /obj/item/cash_card)) return 0
+		if(istype(W, /obj/item/charge_card)) return 0
 
 		var/obj/item/spacecash/SC = W
 
@@ -102,11 +102,15 @@
 #warn deal with
 
 /obj/item/spacecash/economy_is_payment()
+	return TRUE
 
-/obj/item/spacecash/economy_attempt_payment(datum/economy_payment/payment, payment_op_flags, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain)
-
-/obj/item/spacecash/is_static_currency(prevent_types)
-	return (prevent_types & PAYMENT_TYPE_CASH)? NOT_STATIC_CURRENCY : PLURAL_STATIC_CURRENCY
+/obj/item/spacecash/economy_attempt_payment(datum/economy_payment/payment, payment_op_flags, atom/movable/accepting_entity, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain)
+	if((payment.payment_types_allowed & PAYMENT_TYPE_CASH))
+		actor?.chat_feedback(
+			SPAN_WARNING("[accepting_entity] doesn't accept cash."),
+			target = accepting_entity,
+		)
+		return TRUE
 
 /obj/item/spacecash/do_static_currency_feedback(amount, mob/user, atom/target, range)
 	user.visible_message(SPAN_NOTICE("[user] inserts some cash into [target]."), SPAN_NOTICE("You insert [amount] [CURRENCY_NAME_PLURAL_PROPER] into [target]."), SPAN_NOTICE("You hear some papers shuffling."), range)

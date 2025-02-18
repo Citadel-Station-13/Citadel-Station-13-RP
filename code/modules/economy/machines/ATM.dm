@@ -354,7 +354,7 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 
 
 /obj/machinery/atm/proc/spawn_ewallet(var/sum, loc, mob/living/carbon/human/human_user as mob)
-	var/obj/item/cash_card/E = new /obj/item/cash_card(loc)
+	var/obj/item/charge_card/E = new /obj/item/charge_card(loc)
 	if(ishuman(human_user) && !human_user.get_active_held_item())
 		human_user.put_in_hands(E)
 	E.worth = sum

@@ -4,7 +4,7 @@
 /obj/item/card/id/economy_is_payment()
 	return !!associated_account_number
 
-/obj/item/card/id/economy_attempt_payment(datum/economy_payment/payment, payment_op_flags, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain)
+/obj/item/card/id/economy_attempt_payment(datum/economy_payment/payment, payment_op_flags, atom/movable/accepting_entity, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain)
 	if(!associated_account_number)
 		return FALSE
 

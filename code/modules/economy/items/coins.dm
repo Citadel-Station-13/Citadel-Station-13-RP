@@ -20,9 +20,6 @@
 	pixel_x = rand(0,16)-8
 	pixel_y = rand(0,8)-8
 
-/obj/item/coin/do_static_currency_feedback(amount, mob/user, atom/target, range)
-	visible_message(SPAN_NOTICE("[user] insert [src] into [target]."), SPAN_NOTICE("You insert [src] into [target]."), SPAN_NOTICE("You hear a metallic clink."), range)
-
 /obj/item/coin/iron
 	name = "iron coin"
 	icon_state = "coin_iron"

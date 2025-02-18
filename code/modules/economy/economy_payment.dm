@@ -34,24 +34,21 @@
 	/// who's it being sent to
 	var/audit_recipient_as_unsafe_html
 
-	/// executed? used to prevent double-executions
-	/// * sometimes it might be beneficial to allow it; e.g. if you're drawing
-	///   from multiple sources. by default, it shouldn't be allowed.
-	/// * completed does not imply successful; check [out_success] for that.
-	var/completed = FALSE
-
-	/// output; successful?
-	var/out_success = FALSE
+	/// output; result? uses PAYMENT_RESULT_* enums
+	/// * this is PAYMENT_RESULT_UNSET until we are finished.
+	var/out_payment_result = PAYMENT_RESULT_UNSET
 	/// output; amount paid
 	var/out_amount_paid = 0
+	/// output; error explanation (short please!)
+	var/out_error_reason = "Unknown failure."
 
 /**
  * Reset status to allow for re-execution
  */
 /datum/economy_payment/proc/reset()
-	completed = FALSE
-	out_success = FALSE
-	out_amount_paid = 0
+	out_payment_result = initial(out_payment_result)
+	out_error_reason = initial(out_error_reason)
+	out_amount_paid = initial(out_amount_paid)
 
 /**
  * Reset status, subtracting paid amount from amount
@@ -62,8 +59,17 @@
  *   is paid than should be paid.
  */
 /datum/economy_payment/proc/reset_and_accumulate()
-	completed = FALSE
-	out_success = FALSE
 	amount -= out_amount_paid
+	reset()
 
-#warn impl all
+/**
+ * Checks if we executed yet
+ */
+/datum/economy_payment/proc/is_handled()
+	return out_payment_result != PAYMENT_RESULT_UNSET
+
+/**
+ * Checks if we're successful
+ */
+/datum/economy_payment/proc/is_successful()
+	return out_payment_result == PAYMENT_RESULT_SUCCESS
