@@ -282,7 +282,7 @@
 	tracer_add_state = TRUE
 	tracer_add_state_alpha = 65
 	auto_emissive_strength = 192
-	fire_sound = /datum/soundbyte/laser_1
+	fire_sound = /datum/soundbyte/guns/energy/laser_1
 	eyeblur = 2
 	impact_sound = PROJECTILE_IMPACT_SOUNDS_ENERGY
 	projectile_type = PROJECTILE_TYPE_BEAM | PROJECTILE_TYPE_PHOTONIC
@@ -298,7 +298,7 @@
 	damage_tier = LASER_TIER_MEDIUM // ;)
 	// todo: remove
 	armor_penetration = 20
-	fire_sound = /datum/soundbyte/laser_3/pistol
+	fire_sound = /datum/soundbyte/guns/energy/laser_3/pistol
 
 /obj/projectile/nt_isd/laser/multiphase
 	name = "focused laser"
@@ -306,7 +306,7 @@
 	damage_tier = LASER_TIER_HIGH
 	// todo: remove
 	armor_penetration = 37.5
-	fire_sound = /datum/soundbyte/laser_3/rifle
+	fire_sound = /datum/soundbyte/guns/energy/laser_3/rifle
 
 /obj/projectile/nt_isd/laser/lance
 	name = "particle beam"
@@ -315,7 +315,7 @@
 	damage_tier = LASER_TIER_HIGH
 	// todo: remove
 	armor_penetration = 50
-	fire_sound = /datum/soundbyte/laser_2
+	fire_sound = /datum/soundbyte/guns/energy/laser_2
 
 /obj/projectile/nt_isd/shock
 	name = "energy beam"
@@ -333,8 +333,8 @@
 			shock_flags = ELECTROCUTE_ACT_FLAG_DISTRIBUTE;
 		}
 	)
-	fire_sound = /datum/soundbyte/taser_2
-	impact_sound = /datum/soundbyte/taser_hit
+	fire_sound = /datum/soundbyte/guns/energy/taser_2
+	impact_sound = /datum/soundbyte/guns/energy/taser_hit
 	projectile_type = PROJECTILE_TYPE_BEAM
 
 /obj/projectile/nt_isd/electrode
@@ -347,8 +347,8 @@
 			status_effect_duration = 3 SECONDS;
 		}
 	)
-	fire_sound = /datum/soundbyte/taser_1
-	impact_sound = /datum/soundbyte/taser_hit
+	fire_sound = /datum/soundbyte/guns/energy/taser_1
+	impact_sound = /datum/soundbyte/guns/energy/taser_hit
 	auto_emissive_strength = 192
 	projectile_type = PROJECTILE_TYPE_ENERGY
 
@@ -361,7 +361,7 @@
 	auto_emissive_strength = 192
 	hitscan = TRUE
 	agony = 20
-	fire_sound = /datum/soundbyte/disabler_1
+	fire_sound = /datum/soundbyte/guns/energy/disabler_1
 	projectile_type = PROJECTILE_TYPE_BEAM | PROJECTILE_TYPE_PHOTONIC
 
 // todo: this shouldn't be an emp, this should be like synthetik's
@@ -375,6 +375,6 @@
 		},
 	)
 	color = "#0048ff"
-	fire_sound = /datum/soundbyte/ion_pulse
+	fire_sound = /datum/soundbyte/guns/energy/ion_pulse
 	auto_emissive_strength = 192
 	projectile_type = PROJECTILE_TYPE_ENERGY

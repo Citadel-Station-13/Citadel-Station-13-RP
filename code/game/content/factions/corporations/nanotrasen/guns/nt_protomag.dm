@@ -56,7 +56,7 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/magnetic/nt
 	worn_render_flags = NONE
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	render_battery_overlay = MAGNETIC_RENDER_BATTERY_IN
-	fire_sound = /datum/soundbyte/magrifle_1/pistol
+	fire_sound = /datum/soundbyte/guns/magnetic/magnetic_1/pistol
 	base_charge_cost = /obj/item/cell/device/weapon::maxcharge * (1 / (/obj/item/ammo_magazine/nt_protomag/sidearm::ammo_max * 4))
 
 	modular_component_slots = list(
@@ -101,7 +101,7 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/magnetic/nt
 	render_wielded = TRUE
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	render_battery_overlay = MAGNETIC_RENDER_BATTERY_IN
-	fire_sound = /datum/soundbyte/magrifle_1/rifle
+	fire_sound = /datum/soundbyte/guns/magnetic/magnetic_1/rifle
 	base_charge_cost = /obj/item/cell/device/weapon::maxcharge * (1 / (/obj/item/ammo_magazine/nt_protomag/rifle::ammo_max * 4))
 
 	modular_component_slots = list(
