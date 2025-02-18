@@ -1,5 +1,7 @@
-/*****************************Coin********************************/
-
+/**
+ * Despite being in the economy module,
+ * coins have no value or purpose whatsoever for economy as of time of writing.
+ */
 /obj/item/coin
 	icon = 'icons/obj/items.dmi'
 	name = "Coin"

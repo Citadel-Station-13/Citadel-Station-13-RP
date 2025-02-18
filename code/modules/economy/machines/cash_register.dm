@@ -141,8 +141,8 @@
 	var/obj/item/card/id/I = O.GetID()
 	if(I)
 		scan_card(I, O)
-	else if (istype(O, /obj/item/spacecash/ewallet))
-		var/obj/item/spacecash/ewallet/E = O
+	else if (istype(O, /obj/item/cash_card))
+		var/obj/item/cash_card/E = O
 		scan_wallet(E)
 	else if (istype(O, /obj/item/spacecash))
 		var/obj/item/spacecash/SC = O

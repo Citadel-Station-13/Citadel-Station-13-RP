@@ -2760,6 +2760,7 @@
 #include "code\modules\economy\TradeDestinations.dm"
 #include "code\modules\economy\worth.dm"
 #include "code\modules\economy\items\cash.dm"
+#include "code\modules\economy\items\cash_card.dm"
 #include "code\modules\economy\items\coins.dm"
 #include "code\modules\economy\items\eftpos-legacy.dm"
 #include "code\modules\economy\items\retail_tagger.dm"

@@ -1,26 +1,23 @@
 /obj/item/spacecash
 	name = "0 Thaler"
 	desc = "It's worth 0 Thalers."
-	gender = PLURAL
 	icon = 'icons/obj/items.dmi'
 	icon_state = "spacecash1"
-	opacity = 0
-	density = 0
-	anchored = 0.0
-	damage_force = 1.0
-	throw_force = 1.0
+	gender = PLURAL
+	damage_force = 1
+	throw_force = 1
 	throw_speed = 1
 	throw_range = 2
 	w_class = WEIGHT_CLASS_SMALL
-	var/access = list()
-	access = ACCESS_MISC_CASHCRATE
-	var/worth = 0
 	drop_sound = 'sound/items/drop/paper.ogg'
 	pickup_sound = 'sound/items/pickup/paper.ogg'
 
+	/// Amount of money this is.
+	var/worth = 0
+
 /obj/item/spacecash/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/spacecash))
-		if(istype(W, /obj/item/spacecash/ewallet)) return 0
+		if(istype(W, /obj/item/cash_card)) return 0
 
 		var/obj/item/spacecash/SC = W
 
@@ -103,6 +100,10 @@
 	usr.put_in_hands(SC)
 
 #warn deal with
+
+/obj/item/spacecash/economy_is_payment()
+
+/obj/item/spacecash/economy_attempt_payment(datum/economy_payment/payment, payment_op_flags, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain)
 
 /obj/item/spacecash/is_static_currency(prevent_types)
 	return (prevent_types & PAYMENT_TYPE_CASH)? NOT_STATIC_CURRENCY : PLURAL_STATIC_CURRENCY
@@ -187,48 +188,3 @@
 	if (ishuman(human_user) && !human_user.get_active_held_item())
 		human_user.put_in_hands(SC)
 
-/obj/item/spacecash/ewallet
-	name = "charge card"
-	icon_state = "efundcard"
-	desc = "A card that holds an amount of money."
-	drop_sound = 'sound/items/drop/card.ogg'
-	pickup_sound = 'sound/items/pickup/card.ogg'
-	var/owner_name = "" //So the ATM can set it so the EFTPOS can put a valid name on transactions.
-
-/obj/item/spacecash/ewallet/attack_self(mob/user, datum/event_args/actor/actor)
-	. = ..()
-	if(.)
-		return
-	return //Don't act
-
-/obj/item/spacecash/ewallet/attackby()
-	return //like actual
-
-/obj/item/spacecash/ewallet/update_icon()
-	return //space cash
-
-/obj/item/spacecash/ewallet/examine(mob/user, dist)
-	. = ..()
-	if (!(user in view(2)) && user!=src.loc)
-		return
-	. += "<font color=#4F49AF>Charge card's owner: [src.owner_name]. Thalers remaining: [src.worth].</font>"
-
-#warn deal with
-
-/obj/item/spacecash/ewallet/is_static_currency(prevent_types)
-	return (prevent_types & PAYMENT_TYPE_CHARGE_CARD)? NOT_STATIC_CURRENCY : DISCRETE_STATIC_CURRENCY
-
-/obj/item/spacecash/ewallet/do_static_currency_feedback(amount, mob/user, atom/target, range)
-	visible_message(SPAN_NOTICE("[user] swipes [src] through [target]."), SPAN_NOTICE("You swipe [src] through [target]."), SPAN_NOTICE("You hear a card swipe."), range)
-
-/obj/item/spacecash/ewallet/amount_static_currency()
-	return worth
-
-/obj/item/spacecash/ewallet/consume_static_currency(amount, force, mob/user, atom/target, range)
-	if(force)
-		amount = min(amount, worth)
-	if(amount > worth)
-		return PAYMENT_INSUFFICIENT
-	worth -= amount
-	do_static_currency_feedback(amount, user, target, range)
-	return amount
