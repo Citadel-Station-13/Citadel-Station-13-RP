@@ -22,7 +22,7 @@
 	var/empty_sprite = 0 //This is just a dirty var so it doesn't fudge up.
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/consume_next_projectile(datum/gun_firing_cycle/cycle)
-	return chambered?.get_projectile()
+	return chambered?.process_fire(CASING_PRIMER_CHEMICAL)
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/attack_self(mob/user, datum/event_args/actor/actor)
 	// todo: this breaks other attack self interactions :(

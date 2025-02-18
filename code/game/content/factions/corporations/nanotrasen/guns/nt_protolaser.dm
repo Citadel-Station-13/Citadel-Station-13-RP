@@ -25,10 +25,12 @@
 	category = DESIGN_CATEGORY_MUNITIONS
 	subcategory = DESIGN_SUBCATEGORY_ENERGY
 
+/datum/prototype/design/generated/nt_protolaser/generate_name(template)
+	return ..("modular energy prototype - [template]")
+
 //* Sidearm *//
 
 /datum/firemode/energy/nt_protolaser/sidearm
-	abstract_type = /datum/firemode/energy/nt_protolaser/sidearm
 
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_protolaser/sidearm, /nt_protolaser/sidearm, "nt-protolaser-sidearm")
 /obj/item/gun/projectile/energy/nt_protolaser/sidearm
@@ -81,7 +83,6 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_protolaser/
 //* Carbine *//
 
 /datum/firemode/energy/nt_protolaser/carbine
-	abstract_type = /datum/firemode/energy/nt_protolaser/carbine
 
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_protolaser/carbine, /nt_protolaser/carbine, "nt-protolaser-carbine")
 /obj/item/gun/projectile/energy/nt_protolaser/carbine
@@ -135,7 +136,6 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_protolaser/
 //* Rifle *//
 
 /datum/firemode/energy/nt_protolaser/rifle
-	abstract_type = /datum/firemode/energy/nt_protolaser/rifle
 
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_protolaser/rifle, /nt_protolaser/rifle, "nt-protolaser-rifle")
 /obj/item/gun/projectile/energy/nt_protolaser/rifle

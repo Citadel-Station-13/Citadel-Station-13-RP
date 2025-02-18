@@ -1,6 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun_component/particle_array/particle_beam, /gun_component/particle_array/particle_beam, "gun_component-particle_array-particle_beam")
 /obj/item/gun_component/particle_array/particle_beam
 	name = /obj/item/gun_component/particle_array::name + " (laser)"
 	desc = "A particle array that emits a damaging beam. Bog-standard, really."

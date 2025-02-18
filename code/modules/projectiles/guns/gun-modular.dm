@@ -73,7 +73,7 @@
 			target = src,
 		)
 		return FALSE
-	var/obj/item/uninstalled = uninstall_modular_component(component, actor)
+	var/obj/item/uninstalled = uninstall_modular_component(component, actor, new_loc = src)
 	if(put_in_hands && actor?.performer)
 		actor.performer.put_in_hands_or_drop(uninstalled)
 	else

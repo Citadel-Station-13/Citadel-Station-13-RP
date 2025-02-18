@@ -36,6 +36,7 @@
 	proj.submunition_distribution_mod = cheat_factor
 	proj.submunition_distribution_overwrite = TRUE
 
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun_component/focusing_lens/divide_by/two, /gun_component/focusing_lens/divide_by_two, "gun_component-focusing_lens-divide_by_two")
 /obj/item/gun_component/focusing_lens/divide_by/two
 	name = "weapon focusing lens (2-linear multiplexer)"
 	divide_by = 2
@@ -49,6 +50,7 @@
 		/datum/prototype/material/silver::id = 125,
 	)
 
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun_component/focusing_lens/divide_by/three, /gun_component/focusing_lens/divide_by_three, "gun_component-focusing_lens-divide_by_three")
 /obj/item/gun_component/focusing_lens/divide_by/three
 	name = "weapon focusing lens (3-linear multiplexer)"
 	divide_by = 3

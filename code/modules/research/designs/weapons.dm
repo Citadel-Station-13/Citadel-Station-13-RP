@@ -241,27 +241,6 @@
 	materials_base = list(MAT_STEEL = 2000, MAT_COPPER = 500)
 	build_path = /obj/item/ammo_magazine/a5_7mm/five_seven/highcap/hunter
 
-/datum/prototype/design/science/weapon/magnetic
-	subcategory = DESIGN_SUBCATEGORY_MAGNETIC
-	abstract_type = /datum/prototype/design/science/weapon/magnetic
-
-/datum/prototype/design/science/weapon/magnetic/generate_name(template)
-	return "Magnetic weapon prototype ([..()])"
-
-/datum/prototype/design/science/weapon/magnetic/nt_protomag
-	abstract_type = /datum/prototype/design/science/weapon/magnetic/nt_protomag
-	desc = /obj/item/gun/projectile/ballistic/magnetic/nt_protomag::desc
-
-/datum/prototype/design/science/weapon/magnetic/nt_protomag/pistol
-	id = "nt-magpistol"
-	design_name = "protomag sidearm"
-	build_path = /obj/item/gun/projectile/ballistic/magnetic/nt_protomag/sidearm
-
-/datum/prototype/design/science/weapon/magnetic/nt_protomag/rifle
-	id = "nt-magrifle"
-	design_name = "protomag rifle"
-	build_path = /obj/item/gun/projectile/ballistic/magnetic/nt_protomag/rifle
-
 /datum/prototype/design/science/weapon/phase
 	abstract_type = /datum/prototype/design/science/weapon/phase
 

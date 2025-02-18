@@ -108,6 +108,10 @@
 	if(!I)
 		to_chat(user, SPAN_WARNING("You are not holding anything to wield."))
 		return FALSE
+	if(istype(I, /obj/item/offhand/wielding))
+		var/obj/item/offhand/wielding/unwield_this_offhand = I
+		unwield_this_offhand.host.unwield()
+		return TRUE
 	var/datum/component/wielding/comp = I.GetComponent(/datum/component/wielding)
 	if(!comp)
 		to_chat(user, SPAN_WARNING("That can't be wielded."))

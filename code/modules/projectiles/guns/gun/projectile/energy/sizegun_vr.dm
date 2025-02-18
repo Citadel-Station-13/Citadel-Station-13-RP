@@ -12,7 +12,7 @@
 	charge_cost = 240
 	projectile_type = /obj/projectile/beam/sizelaser
 	origin_tech = list(TECH_BLUESPACE = 4)
-	modifystate = "sizegun-shrink"
+	modifystate = "sizegun-grow"
 	no_pin_required = 1
 	legacy_battery_lock = 1
 	var/size_set_to = 1

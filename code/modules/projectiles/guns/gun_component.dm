@@ -1,6 +1,12 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+/datum/prototype/design/generated/gun_component
+	abstract_type = /datum/prototype/design/generated/gun_component
+
+/datum/prototype/design/generated/gun_component/generate_name(template)
+	return ..("modular gun component - [template]")
+
 /**
  * A component used in guns with modular parts.
  *

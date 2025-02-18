@@ -7,6 +7,7 @@
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/protomag/ammo.dmi'
 	icon_state = "slug"
 	caliber = /datum/ammo_caliber/nt_protomag
+	casing_flags = CASING_DELETE
 
 	/// override strip color
 	var/stripe_color
