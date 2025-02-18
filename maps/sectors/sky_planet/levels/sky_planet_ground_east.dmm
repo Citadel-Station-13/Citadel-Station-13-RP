@@ -5,7 +5,7 @@
 "az" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground)
 "aD" = (
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 1
@@ -25,13 +25,13 @@
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/ash_sand,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground)
 "bz" = (
 /obj/structure/salvageable/console_broken_os{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground)
 "bU" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 9
@@ -44,7 +44,7 @@
 "cB" = (
 /obj/spawner/window/low_wall/reinforced/tinted/full/firelocks,
 /turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground)
 "cC" = (
 /obj/effect/floor_decal/corner/navblue/diagonal,
 /obj/item/material/shard,
@@ -85,10 +85,10 @@
 "ft" = (
 /obj/structure/grille/broken,
 /turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground)
 "fC" = (
 /turf/simulated/wall/r_wall,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground)
 "ga" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -100,7 +100,7 @@
 /area/sector/sky_planet/poi)
 "gc" = (
 /turf/simulated/floor/plating,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground)
 "gl" = (
 /turf/simulated/floor/water/acid/outdoors,
 /area/sector/sky_planet/rock)
@@ -133,14 +133,14 @@
 /area/sector/sky_planet/rock)
 "iV" = (
 /turf/simulated/floor/outdoors/rocks,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground)
 "iZ" = (
 /obj/machinery/door/airlock/external,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/poi)
 "je" = (
 /turf/simulated/floor/water/acid/outdoors,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground)
 "jn" = (
 /obj/effect/floor_decal/corner/navblue/diagonal,
 /obj/effect/floor_decal/rust,
@@ -184,13 +184,13 @@
 "ka" = (
 /obj/effect/blocker,
 /turf/simulated/lava,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground)
 "kl" = (
 /obj/item/flashlight/glowstick/red{
 	on = 1
 	},
 /turf/simulated/floor/plating,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground)
 "ks" = (
 /turf/simulated/wall/r_wall,
 /area/sector/sky_planet/rock)
@@ -209,7 +209,7 @@
 "lf" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground)
 "lk" = (
 /obj/effect/floor_decal/corner/navblue/diagonal,
 /obj/structure/bed/chair/bay/comfy/blue{
@@ -230,7 +230,7 @@
 "ne" = (
 /obj/effect/blocker,
 /turf/simulated/floor/water/acid/outdoors,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground)
 "nL" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/multiple/miningdrills,
@@ -276,7 +276,7 @@
 "pW" = (
 /obj/structure/catwalk,
 /turf/simulated/lava,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground)
 "qo" = (
 /obj/effect/floor_decal/corner/navblue/border,
 /obj/structure/bed/pod,
@@ -354,7 +354,7 @@
 /area/sector/sky_planet/poi)
 "rX" = (
 /turf/simulated/floor/outdoors/ash_sand,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground)
 "sa" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techfloor,
@@ -435,7 +435,7 @@
 	on = 1
 	},
 /turf/simulated/floor/outdoors/rocks,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground)
 "yJ" = (
 /mob/living/simple_mob/mechanical/hivebot/surveyor,
 /turf/simulated/floor/outdoors/rocks,
@@ -451,11 +451,11 @@
 /area/sector/sky_planet/rock)
 "zh" = (
 /turf/simulated/lava,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground)
 "zm" = (
 /obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/outdoors/rocks,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground)
 "zQ" = (
 /obj/effect/floor_decal/corner/navblue/diagonal,
 /obj/structure/window/reinforced,
@@ -479,14 +479,14 @@
 /obj/effect/floor_decal/rust,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground)
 "Bv" = (
 /turf/simulated/floor/outdoors/ash_sand,
 /area/sector/sky_planet/ground/unexplored)
 "BB" = (
 /obj/effect/blocker,
 /turf/simulated/floor/outdoors/rocks,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground)
 "Ci" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 5
@@ -525,7 +525,7 @@
 "DR" = (
 /obj/effect/decal/remains,
 /turf/simulated/floor/plating,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground)
 "DU" = (
 /turf/simulated/lava,
 /area/sector/sky_planet/ground/unexplored)
@@ -543,7 +543,7 @@
 	on = 1
 	},
 /turf/simulated/floor/plating,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground)
 "Es" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/light/small/emergency/flicker,
@@ -570,7 +570,7 @@
 "Fl" = (
 /obj/effect/debris/cleanable/vomit,
 /turf/simulated/floor/outdoors/rocks,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground)
 "FS" = (
 /obj/machinery/light/small/emergency/flicker{
 	dir = 4
@@ -620,7 +620,7 @@
 "Hz" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/water/acid/outdoors,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground)
 "IH" = (
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 10
@@ -687,7 +687,7 @@
 "Mb" = (
 /obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/outdoors/rocks,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground)
 "Mi" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor,
@@ -815,7 +815,7 @@
 "SE" = (
 /obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/outdoors/ash_sand,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground)
 "SX" = (
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 8
@@ -830,7 +830,7 @@
 	on = 1
 	},
 /turf/simulated/floor/outdoors/ash_sand,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground)
 "Un" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/shuttle/wall/voidcraft/blue,
@@ -890,7 +890,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/rocks,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground)
 "XL" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/poi)
@@ -902,14 +902,14 @@
 "Ya" = (
 /obj/structure/grille,
 /turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground)
 "YK" = (
 /obj/effect/floor_decal/corner/navblue/diagonal,
 /turf/simulated/floor/tiled/freezer,
 /area/sector/sky_planet/poi)
 "Zs" = (
 /turf/level_border,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground)
 
 (1,1,1) = {"
 UL

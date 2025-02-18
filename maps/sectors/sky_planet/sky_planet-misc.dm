@@ -22,25 +22,18 @@
 		"skyplanet_voidline_pad4",
 		"skyplanet_voidline_pad5",
 		"skyplanet_voidline_pad6",
+		"sky_excursion_dock",
+		"sky_excursion2_dock",
+		"sky_excursion3_dock",
+		"sky_excursion4_dock",
+		"sky_civvie_dock",
+		"sky_civvie2_dock",
+		"sky_civvie3_dock",
+		"sky_civvie4_dock",
+
 		)
 
 	initial_restricted_waypoints = list(
-		"Excursion Shuttle" = list("sky_excursion_dock"),
-		"Excursion Shuttle" = list("sky_excursion2_dock"),
-		"Excursion Shuttle" = list("sky_excursion3_dock"),
-		"Excursion Shuttle" = list("sky_excursion4_dock"),
-		"Courser Scouting Vessel" = list("sky_civvie_dock"),
-		"Hammerhead Patrol Barge" = list("sky_hammerhead_dock"),
-		"Civilian Transport" = list("sky_civvie_dock"),
-		"Civilian Transport" = list("sky_civvie2_dock"),
-		"Civilian Transport" = list("sky_civvie3_dock"),
-		"Civilian Transport" = list("sky_civvie4_dock"),
-		"Civilian Century Shuttle" = list("sky_civvie_dock"),
-		"Civilian Century Shuttle" = list("sky_civvie2_dock"),
-		"Dart EMT Shuttle" = list("sky_excursion_dock"),
-		"Dart EMT Shuttle" = list("sky_excursion2_dock"),
-		"Dart EMT Shuttle" = list("sky_excursion3_dock"),
-		"Dart EMT Shuttle" = list("sky_excursion4_dock"),
 		"Red Comet Racing Shuttle" = list ("voidline_redcomet"),
 		"Bonnethead Racing Shuttle" = list ("voidline_bonnethead"),
 		"Udang Pari-pari Racing Shuttle" = list ("voidline_udang"),
@@ -50,10 +43,18 @@
 /turf/simulated/open/skyplanet
 	name = "the sky"
 	desc = "It's the sky! Be careful!"
+	edge_blending_priority = 0.5
+	initial_gas_mix = ATMOSPHERE_ID_SKYPLANET
+
+/obj/effect/particle_effect/cloud
+	name = "cloud"
 	icon = 'icons/turf/sky.dmi'
 	icon_state = "sky"
-	color = "#ffda85"
-	edge_blending_priority = 0.5
+	color = "#ffea9dff"
+	opacity = 1
+	anchored = 1
+	mouse_opacity = 0
+	layer = 0.5
 
 //landmarks
 

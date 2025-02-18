@@ -1,7 +1,6 @@
 /area/sector/sky_planet
 	name = "Away Mission - Sky Planet"
 	area_flags = AREA_RAD_SHIELDED
-	initial_gas_mix = ATMOSPHERE_USE_OUTDOORS
 	initial_outdoors = TRUE
 
 //Sky
@@ -12,6 +11,16 @@
 	requires_power = 1
 	ambience = AMBIENCE_GENERIC
 	dynamic_lighting = 1
+	initial_gas_mix = ATMOSPHERE_ID_SKYPLANET
+
+/area/sector/sky_planet/ground
+	name = "Lythios 43a ground"
+	icon_state = "blue"
+	requires_power = 1
+	ambience = AMBIENCE_GENERIC
+	dynamic_lighting = 1
+	icon_state = "unexplored"
+	initial_gas_mix = ATMOSPHERE_ID_SKYPLANET_GROUND
 
 /area/sector/sky_planet/sky/unexplored
 	name = "\improper Away Mission - Sky Rigs"

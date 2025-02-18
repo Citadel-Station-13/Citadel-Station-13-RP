@@ -79,18 +79,6 @@
 	skyfall_levels = list(z+1)
 	. = ..()
 
-/turf/simulated/sky/skyplanet
-	name = "Sky Planet Clouds"
-	desc = "Be careful where you step!"
-	color = "#ffe8a9"
-	initial_gas_mix = ATMOSPHERE_ID_SKYPLANET
-	outdoors = 1
-	density = 0
-
-/turf/simulated/sky/skyplanet/Initialize(mapload)
-	skyfall_levels = list(z - 1)
-	. = ..()
-
 /turf/simulated/sky/depths
 	name = "darkness"
 	desc = "A straight drop down into the depths below."
