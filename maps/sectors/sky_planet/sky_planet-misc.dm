@@ -49,8 +49,7 @@
 	initial_gas_mix = ATMOSPHERE_ID_SKYPLANET
 	color = "#ffeab0"
 
-/turf/simulated/open/skyplanetInitialize(mapload)
-	. = ..()
+/turf/simulated/open/skyplanet/Initialize(mapload)
 	icon = 'icons/turf/sky.dmi'
 	icon_state = "sky"
 
