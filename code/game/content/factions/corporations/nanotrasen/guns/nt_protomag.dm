@@ -19,6 +19,16 @@
 	caliber = /datum/ammo_caliber/nt_protomag
 	modular_system = TRUE
 
+	var/legacy_discharged_fire_sound
+
+// todo: unified fire sound handling
+/obj/item/gun/projectile/ballistic/magnetic/nt_protomag/legacy_resolve_fire_sound(mob/user, obj/projectile/P)
+	if(istype(P, /obj/projectile/nt_protomag))
+		var/obj/projectile/nt_protomag/fitted_projectile = P
+		if(fitted_projectile.penalized)
+			return legacy_discharged_fire_sound || ..()
+	return ..()
+
 /datum/prototype/design/generated/nt_protomag
 	abstract_type = /datum/prototype/design/generated/nt_protomag
 	category = DESIGN_CATEGORY_MUNITIONS
@@ -46,7 +56,7 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/magnetic/nt
 	worn_render_flags = NONE
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	render_battery_overlay = MAGNETIC_RENDER_BATTERY_IN
-	fire_sound = 'sound/content/factions/corporations/nanotrasen/protomag-pistol.ogg'
+	fire_sound = /datum/soundbyte/magrifle_1/pistol
 	base_charge_cost = /obj/item/cell/device/weapon::maxcharge * (1 / (/obj/item/ammo_magazine/nt_protomag/sidearm::ammo_max * 4))
 
 	modular_component_slots = list(
@@ -64,6 +74,8 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/magnetic/nt
 		/datum/prototype/material/copper::id = 750,
 		/datum/prototype/material/lead::id = 250,
 	)
+
+	legacy_discharged_fire_sound = 'sound/weapons/gunshot/gunshot_pistol.ogg'
 
 //* Rifle *//
 
@@ -89,8 +101,8 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/magnetic/nt
 	render_wielded = TRUE
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	render_battery_overlay = MAGNETIC_RENDER_BATTERY_IN
+	fire_sound = /datum/soundbyte/magrifle_1/rifle
 	base_charge_cost = /obj/item/cell/device/weapon::maxcharge * (1 / (/obj/item/ammo_magazine/nt_protomag/rifle::ammo_max * 4))
-	fire_sound = 'sound/content/factions/corporations/nanotrasen/protomag-rifle.ogg'
 
 	modular_component_slots = list(
 		GUN_COMPONENT_ACTIVE_COOLER = 1,
@@ -107,3 +119,5 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/magnetic/nt
 		/datum/prototype/material/copper::id = 1200,
 		/datum/prototype/material/lead::id = 450,
 	)
+
+	legacy_discharged_fire_sound = 'sound/weapons/gunshot/gunshot_strong.ogg'

@@ -73,7 +73,7 @@
 	var/accuracy_disabled = FALSE
 	/// perfect accuracy below this range (in pixels)
 	///
-	/// * this means the projectile doesn't enforce inaccuracy; not the target!
+	/// * this means the projectile doesn't enforce inaccuracy; not the target or gun!
 	/// * remember that even if a projectile clips a single pixel on a target turf, it hits.
 	/// * right now, accuracy is slightly more than it should be due to distance being ticked up post-impact.
 	var/accuracy_perfect_range = WORLD_ICON_SIZE * 7

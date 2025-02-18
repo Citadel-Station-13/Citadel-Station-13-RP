@@ -55,10 +55,7 @@
 			P.dispersion = max(P.dispersion + M.accuracy_dispersion, 0)
 
 /obj/item/gun/proc/play_fire_sound(var/mob/user, var/obj/projectile/P)
-	var/shot_sound = fire_sound
-
-	if(!shot_sound && istype(P)) // If the gun didn't have a fire_sound, but the projectile exists, and has a sound...
-		shot_sound = P.resolve_fire_sfx()
+	var/shot_sound = legacy_resolve_fire_sound(user, P)
 	if(!shot_sound) // If there's still no sound...
 		return
 
@@ -66,3 +63,9 @@
 		playsound(src, shot_sound, 10, 1)
 	else
 		playsound(src, shot_sound, 50, 1)
+
+/obj/item/gun/proc/legacy_resolve_fire_sound(var/mob/user, var/obj/projectile/P)
+	. = fire_sound
+
+	if(!. && istype(P)) // If the gun didn't have a fire_sound, but the projectile exists, and has a sound...
+		. = P.resolve_fire_sfx()

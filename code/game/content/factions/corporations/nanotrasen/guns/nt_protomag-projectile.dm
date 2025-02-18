@@ -21,6 +21,8 @@
 
 	impact_sound = PROJECTILE_IMPACT_SOUNDS_KINETIC
 
+	var/penalized = FALSE
+
 	var/penalty_speed_multiplier = 1
 	var/penalty_damage_multiplier = 1
 	var/penalty_damage_tier
@@ -41,6 +43,7 @@
 	if(!isnull(penalty_legacy_armor_penetration))
 		armor_penetration = penalty_legacy_armor_penetration
 	speed *= penalty_speed_multiplier
+	penalized = TRUE
 
 /obj/projectile/nt_protomag/standard
 	name = "magnetic slug"

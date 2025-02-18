@@ -17,6 +17,7 @@
 	// set slot
 	worn_slot = slot
 	inv_slot_or_index = slot == SLOT_ID_HANDS ? user.get_held_index(src) : slot
+	inv_inside = user.inventory
 	// register carry
 	if(isliving(user))
 		var/mob/living/L = user
@@ -34,7 +35,7 @@
 		playsound(src, equip_sound, 30, ignore_walls = FALSE)
 
 	// call the new hook instead
-	on_equipped(user, slot == SLOT_ID_HANDS? user.get_held_index(src) : slot, flags)
+	on_inv_equipped(user.inventory, slot == SLOT_ID_HANDS? user.get_held_index(src) : slot, flags)
 
 
 /**
@@ -50,6 +51,7 @@
 	// clear slot
 	worn_slot = null
 	inv_slot_or_index = null
+	inv_inside = null
 	// clear carry
 	if(isliving(user))
 		var/mob/living/L = user
@@ -65,7 +67,7 @@
 	if(!(flags & INV_OP_DIRECTLY_DROPPING) && (slot != SLOT_ID_HANDS) && unequip_sound)
 		playsound(src, unequip_sound, 30, ignore_walls = FALSE)
 
-	// on_unequipped cannot be called here, as we don't know the inventory index exactly
+	// on_inv_unequipped cannot be called here, as we don't know the inventory index exactly
 	// todo: kill unequipped()
 
 /**

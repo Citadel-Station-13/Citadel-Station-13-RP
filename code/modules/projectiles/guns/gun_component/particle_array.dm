@@ -39,3 +39,11 @@
  */
 /obj/item/gun_component/particle_array/proc/generate_projectile(datum/gun_firing_cycle/cycle) as /obj/projectile
 	return new projectile_type
+
+/**
+ * Base projectile subtype for particle array / modular energy weapons.
+ */
+/obj/projectile/particle_array
+	abstract_type = /obj/projectile/particle_array
+	icon = 'icons/modules/projectiles/projectile.dmi'
+	tracer_icon = 'icons/modules/projectiles/projectile-tracer.dmi'

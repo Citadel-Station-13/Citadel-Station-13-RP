@@ -23,14 +23,14 @@
 /datum/prototype/design/generated/nt_protolaser
 	abstract_type = /datum/prototype/design/generated/nt_protolaser
 	category = DESIGN_CATEGORY_MUNITIONS
-	subcategory = SUBCATEGORY_ENER
+	subcategory = DESIGN_SUBCATEGORY_ENERGY
 
 //* Sidearm *//
 
 /datum/firemode/energy/nt_protolaser/sidearm
 	abstract_type = /datum/firemode/energy/nt_protolaser/sidearm
 
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_prototype/sidearm, /nt_protolaser/sidearm, "nt-protolaser-sidearm")
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_protolaser/sidearm, /nt_protolaser/sidearm, "nt-protolaser-sidearm")
 /obj/item/gun/projectile/energy/nt_protolaser/sidearm
 	name = "energy sidearm"
 	desc = "A versatile energy sidearm wielded by corporate expeditionary teams."
@@ -83,7 +83,7 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_prototype/s
 /datum/firemode/energy/nt_protolaser/carbine
 	abstract_type = /datum/firemode/energy/nt_protolaser/carbine
 
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_prototype/carbine, /nt_protolaser/carbine, "nt-protolaser-carbine")
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_protolaser/carbine, /nt_protolaser/carbine, "nt-protolaser-carbine")
 /obj/item/gun/projectile/energy/nt_protolaser/carbine
 	name = "energy carbine"
 	desc = "A versatile energy carbine wielded by corporate expeditionary teams."
