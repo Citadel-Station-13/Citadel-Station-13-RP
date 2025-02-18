@@ -3818,7 +3818,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/substation)
 "IC" = (
-/obj/machinery/mineral/equipment_vendor,
+/obj/machinery/point_redemption_vendor/mining,
 /turf/simulated/floor/tiled/monotile,
 /area/outpost/mining_main/refinery)
 "IE" = (

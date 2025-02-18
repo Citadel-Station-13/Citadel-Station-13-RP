@@ -15176,7 +15176,7 @@
 /turf/simulated/wall/prepainted/security,
 /area/security/customs)
 "EH" = (
-/obj/machinery/mineral/equipment_vendor/survey,
+/obj/machinery/point_redemption_vendor/survey,
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/purple/border,
 /obj/effect/floor_decal/spline/plain,
@@ -25551,7 +25551,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/machinery/mineral/equipment_vendor,
+/obj/machinery/point_redemption_vendor/mining,
 /obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22

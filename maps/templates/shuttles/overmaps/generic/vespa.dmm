@@ -10161,7 +10161,7 @@
 	},
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/purple/border,
-/obj/machinery/mineral/equipment_vendor/survey,
+/obj/machinery/point_redemption_vendor/survey,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/expedition)
 "wJ" = (
