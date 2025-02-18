@@ -182,57 +182,27 @@
 		payment.audit_purpose_as_unsafe_html = "Purchase of [currently_vending.item_name]"
 		payment.audit_recipient_as_unsafe_html = "Vendor"
 
-		if(using.economy_attempt_payment(payment, NONE, src, e_args, e_args))
-			if(payment.out_success)
+		if(using.economy_attempt_payment(payment, NONE, src, e_args, e_args) && payment.is_handled())
+			if(payment.is_successful())
+				vend(currently_vending, e_args.performer)
+			else
+				switch(payment.out_payment_result)
+					if(PAYMENT_RESULT_ERROR)
+						status_message = payment.out_error_reason
+						status_error = TRUE
+					if(PAYMENT_RESULT_INSUFFICIENT)
+						status_message = "Insufficient funds."
+						status_error = TRUE
+					else
+						status_message = "Unhandled payment error: [payment.out_payment_result]"
+						status_error = TRUE
+			SSnanoui.update_uis(src)
 			return CLICKCHAIN_DID_SOMETHING
-		#warn impl
 
 /obj/machinery/vending/attackby(obj/item/W, mob/user)
 	var/obj/item/card/id/I = W.GetID()
 
-	if(currently_vending && GLOB.vendor_account && !GLOB.vendor_account.suspended)
-		var/paid = FALSE
-		var/handled = FALSE
-
-		var/obj/item/paying_with = I || W
-		var/list/data = list()
-		// /obj/item/proc/attempt_use_currency(mob/user, atom/movable/predicate, amount, force, prevent_types, list/data = list(), silent, visual_range = 7)
-		var/amount = paying_with.attempt_use_currency(user, src, currently_vending.price, FALSE, NONE, data, FALSE, 7)
-		switch(amount)
-			if(PAYMENT_DYNAMIC_ERROR)
-				if(data[DYNAMIC_PAYMENT_DATA_FAIL_REASON])
-					status_message = data[DYNAMIC_PAYMENT_DATA_FAIL_REASON]
-					status_error = TRUE
-				SSnanoui.update_uis(src)
-				return
-			if(PAYMENT_NOT_CURRENCY)
-				handled = FALSE
-			if(PAYMENT_INSUFFICIENT)
-				handled = TRUE
-				to_chat(user, SPAN_WARNING("That is not enough money!"))
-			else
-				handled = TRUE
-				paid = amount == currently_vending.price
-
-		if(handled)
-			if(paid)
-				var/payer_name = "Unknown"
-				switch(data[DYNAMIC_PAYMENT_DATA_CURRENCY_TYPE])
-					if(PAYMENT_TYPE_BANK_CARD)
-						var/datum/economy_account/A = data[DYNAMIC_PAYMENT_DATA_BANK_ACCOUNT]
-						if(A)
-							payer_name = A.owner_name
-					else
-						payer_name = "(cash)"
-				credit_purchase(payer_name)
-				vend(currently_vending, usr)
-			SSnanoui.update_uis(src)
-			return // don't smack that machine with your 2 thalers
-
-	if(I || istype(W, /obj/item/spacecash))
-		attack_hand(user)
-		return
-	else if(W.is_screwdriver())
+	if(W.is_screwdriver())
 		panel_open = !panel_open
 		to_chat(user, "You [panel_open ? "open" : "close"] the maintenance panel.")
 		playsound(src, W.tool_sound, 50, 1)
@@ -267,7 +237,6 @@
 			anchored = !anchored
 		return
 	else
-
 		for(var/datum/stored_item/vending_product/R in product_records)
 			if(istype(W, R.item_path) && (W.name == R.item_name))
 				stock(W, R, user)

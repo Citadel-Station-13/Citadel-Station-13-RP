@@ -7,19 +7,16 @@
 	desc = "A card that holds an amount of money."
 	drop_sound = 'sound/items/drop/card.ogg'
 	pickup_sound = 'sound/items/pickup/card.ogg'
-	var/owner_name = "" //So the ATM can set it so the EFTPOS can put a valid name on transactions.
 
-/obj/item/charge_card/attack_self(mob/user, datum/event_args/actor/actor)
+	/// stated owner name, if any
+	var/owner_name
+	/// balance remaining
+	var/balance = 0
+
+/obj/item/charge_card/Initialize(mapload, balance)
 	. = ..()
-	if(.)
-		return
-	return //Don't act
-
-/obj/item/charge_card/attackby()
-	return //like actual
-
-/obj/item/charge_card/update_icon()
-	return //space cash
+	if(balance)
+		src.balance = balance
 
 /obj/item/charge_card/examine(mob/user, dist)
 	. = ..()
@@ -42,9 +39,6 @@
 
 /obj/item/charge_card/do_static_currency_feedback(amount, mob/user, atom/target, range)
 	visible_message(SPAN_NOTICE("[user] swipes [src] through [target]."), SPAN_NOTICE("You swipe [src] through [target]."), SPAN_NOTICE("You hear a card swipe."), range)
-
-/obj/item/charge_card/amount_static_currency()
-	return worth
 
 /obj/item/charge_card/consume_static_currency(amount, force, mob/user, atom/target, range)
 	if(force)

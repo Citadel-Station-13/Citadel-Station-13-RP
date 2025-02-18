@@ -105,3 +105,24 @@ SUBSYSTEM_DEF(economy)
 	#warn impl
 
 #warn impl all
+
+//* Misc *//
+
+/**
+ * Best-effort attempt to pick a random account.
+ *
+ * @params
+ * * require_faction - require a specific faction type / path / instance / id
+ * * require_personal - do not return department / system accounts
+ */
+/datum/controller/subsystem/economy/proc/pull_account_lottery(require_faction, require_personal) as /datum/economy_account
+	RETURN_TYPE(/datum/economy_account)
+	var/list/datum/economy_account/picking_from = list()
+	if(require_faction)
+		var/datum/economy_faction/restrict_to_faction = resolve_faction(require_faction)
+		for(var/datum/economy_account/account as anything in restrict_to_faction.accounts)
+	else
+		for(var/account_id in account_lookup)
+			var/datum/economy_account/account = account_lookup[account_id]
+
+	#warn impl

@@ -243,7 +243,7 @@
 					transaction_complete()
 
 
-/obj/machinery/cash_register/proc/scan_wallet(obj/item/spacecash/ewallet/E)
+/obj/machinery/cash_register/proc/scan_wallet(obj/item/charge_card/E)
 	if (!transaction_amount)
 		return
 

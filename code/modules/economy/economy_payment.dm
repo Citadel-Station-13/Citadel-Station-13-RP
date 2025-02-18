@@ -64,6 +64,9 @@
 
 /**
  * Checks if we executed yet
+ * * This is important to use in clickchain to know if it should continue, or if the user
+ *   should / would stop after having already finished an action.
+ * * This doesn't imply success!
  */
 /datum/economy_payment/proc/is_handled()
 	return out_payment_result != PAYMENT_RESULT_UNSET

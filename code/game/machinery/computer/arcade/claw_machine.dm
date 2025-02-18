@@ -71,7 +71,7 @@
 
 
 ///// Ewallet
-/obj/machinery/computer/arcade/clawmachine/proc/pay_with_ewallet(obj/item/spacecash/ewallet/wallet)
+/obj/machinery/computer/arcade/clawmachine/proc/pay_with_ewallet(obj/item/charge_card/wallet)
 	if(!emagged)
 		visible_message(SPAN_INFO("\The [usr] swipes \the [wallet] through \the [src]."))
 		playsound(src, 'sound/machines/id_swipe.ogg', 50, TRUE)

@@ -17,7 +17,7 @@
  * * export - the export
  * * faction - the supply faction being exported to
  */
-/datum/supply_export_handler/proc/run_against(datum/spply_export/export, datum/supply_faction/faction)
+/datum/supply_export_handler/proc/run_against(datum/supply_export/export, datum/supply_faction/faction)
 	return
 
 #warn impl
