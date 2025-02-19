@@ -55,14 +55,12 @@
 	icon_state = "sky"
 	ASSERT(!isnull(below()))
 	outdoors = 1
-	set_light(0, 0, "#FFFFFF")
+	set_light(1, 1, "#ffda5f")
 
 /turf/simulated/open/skyplanet/Entered(atom/movable/mover)
 	..()
 	if(mover.movement_type & MOVEMENT_GROUND)
 		mover.fall()
-		mover.fall_impact(42, 90, FALSE, TRUE)
-		to_chat(mover, "<span class='warning'>You made a 2 miles fall !</span>")
 
 // Called when thrown object lands on this turf.
 /turf/simulated/open/skyplanet/throw_landed(atom/movable/AM, datum/thrownthing/TT)
