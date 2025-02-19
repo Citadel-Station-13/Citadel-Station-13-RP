@@ -382,6 +382,7 @@
 		. += "It has [attachment] installed on its [attachment.attachment_slot].[attachment.can_detach ? "" : " It doesn't look like it can be removed."]"
 	for(var/obj/item/gun_component/component as anything in modular_components)
 		. += "It has a [component.get_examine_fragment()] installed."
+	// todo: help examine for modular components
 
 /obj/item/gun/on_wield(mob/user, hands)
 	. = ..()
