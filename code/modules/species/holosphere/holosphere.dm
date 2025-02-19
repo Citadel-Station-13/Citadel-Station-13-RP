@@ -10,11 +10,16 @@
 	name = SPECIES_HOLOSPHERE
 	uid = SPECIES_ID_HOLOSPHERE
 	id = SPECIES_ID_HOLOSPHERE
-	category = SPECIES_CATEGORY_RESTRICTED
+	category = SPECIES_CAEGORY_HOLOSPHERE
 	name_plural   = "Holospheres"
 	override_worn_legacy_bodytype = SPECIES_HUMAN
 	icobase = 'icons/mob/species/human/body_greyscale.dmi'
 	deform  = 'icons/mob/species/human/deformed_body_greyscale.dmi'
+
+	blurb = {"This species is testmerged and currently being tested - things might break, and everything about it is subject to change!
+	"}
+
+	//selects_bodytype = TRUE
 
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR | HAS_BODY_ALPHA | HAS_HAIR_ALPHA
