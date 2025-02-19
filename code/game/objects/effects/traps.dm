@@ -176,7 +176,7 @@ Add those other swinging traps you mentioned above!
 
 /obj/effect/trap/pit/punji/Crossed(atom/AM as mob|obj)
 	. = ..()
-	if(AM.is_incorporeal())
+	if(AM.is_incorporeal() || AM.is_avoiding_ground())
 		return
 
 	if(!tripped)
@@ -215,7 +215,7 @@ Add those other swinging traps you mentioned above!
 
 /obj/effect/trap/pit/bone_breaker/Crossed(atom/AM as mob|obj)
 	. = ..()
-	if(AM.is_incorporeal())
+	if(AM.is_incorporeal() || AM.is_avoiding_ground())
 		return
 
 	if(!tripped)
@@ -274,7 +274,7 @@ Add those other swinging traps you mentioned above!
 
 /obj/effect/trap/pit/tentacle/Crossed(atom/AM as mob|obj)
 	. = ..()
-	if(AM.is_incorporeal())
+	if(AM.is_incorporeal() || AM.is_avoiding_ground())
 		return
 
 	if(!tripped)
