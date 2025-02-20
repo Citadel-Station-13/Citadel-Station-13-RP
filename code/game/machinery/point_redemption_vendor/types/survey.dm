@@ -1,11 +1,15 @@
 /obj/machinery/point_redemption_vendor/survey
 	name = "exploration equipment vendor"
 	desc = "An equipment vendor for explorers, points collected with a survey scanner can be spent here."
-	icon = 'icons/obj/machines/mining_machines.dmi'
-	icon_state = "exploration"
+	icon = 'icons/machinery/point_redemption_vendor/survey.dmi'
+	icon_state = "vendor"
+	icon_state_append_deny = "-deny"
+	icon_state_append_open = "-open"
+	icon_state_append_off = "-off"
+	icon_state_append_broken = "-broken"
+	icon_state_append_vend = "-vend"
+	point_type = POINT_REDEMPTION_TYPE_SURVEY
 	circuit = /obj/item/circuitboard/point_redemption_vendor/survey
-	icon_deny = "exploration-deny"
-	var/icon_vend = "exploration-vend"
 	child = TRUE
 	prize_list = list(
 		new /datum/point_redemption_item("1 Marker Beacon",				/obj/item/stack/marker_beacon,								1),
@@ -61,23 +65,3 @@
 		new /datum/point_redemption_item("1000 Thalers",				/obj/item/spacecash/c1000,									1000),
 		new /datum/point_redemption_item("Defense Equipment - Marksman Box",	/obj/item/gunbox/marksman,							1000),
 		)
-
-#warn prune
-
-/obj/machinery/point_redemption_vendor/survey/interact(mob/user)
-	user.set_machine(src)
-
-	var/dat
-	dat +="<div class='statusDisplay'>"
-	if(istype(inserted_id))
-		dat += "You have [inserted_id.survey_points] survey points collected. <A href='?src=\ref[src];choice=eject'>Eject ID.</A><br>"
-	else
-		dat += "No ID inserted.  <A href='?src=\ref[src];choice=insert'>Insert ID.</A><br>"
-	dat += "</div>"
-	dat += "<br><b>Equipment point cost list:</b><BR><table border='0' width='100%'>"
-	for(var/datum/point_redemption_item/prize in prize_list)
-		dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Purchase</A></td></tr>"
-	dat += "</table>"
-	var/datum/browser/popup = new(user, "miningvendor", "Survey Equipment Vendor", 400, 600)
-	popup.set_content(dat)
-	popup.open()

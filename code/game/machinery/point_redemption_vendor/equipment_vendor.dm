@@ -24,15 +24,6 @@
 	else
 		icon_state = "[initial(icon_state)]-off"
 
-/obj/machinery/point_redemption_vendor/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-	if(..())
-		return
-	interact(user)
-
-/obj/machinery/point_redemption_vendor/attack_ghost(mob/user)
-	. = ..()
-	interact(user)
-
 /obj/machinery/point_redemption_vendor/interact(mob/user)
 	user.set_machine(src)
 
@@ -117,11 +108,6 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	..()
 
-/obj/machinery/point_redemption_vendor/drop_products(method, atom/where)
-	. = ..()
-	inserted_id?.forceMove(where)
-	inserted_id = null
-
 /obj/machinery/point_redemption_vendor/proc/RedeemVoucher(obj/item/mining_voucher/voucher, mob/redeemer)
 	var/selection = input(redeemer, "Pick your equipment", "Mining Voucher Redemption") as null|anything in list("Kinetic Accelerator", "Resonator", "Mining Drone", "Advanced Scanner", "Crusher")
 	if(!selection || !Adjacent(redeemer) || voucher.loc != redeemer)
@@ -142,10 +128,3 @@
 	if(!name)
 		name = "Generic Entry"
 	prize_list += new /datum/point_redemption_item(name, path, cost)
-
-/obj/machinery/point_redemption_vendor/legacy_ex_act(severity, target)
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-	s.set_up(5, 1, src)
-	s.start()
-	if(prob(50 / severity) && severity < 3)
-		qdel(src)

@@ -1,8 +1,12 @@
 /obj/machinery/point_redemption_vendor/mining
 	name = "mining equipment vendor"
 	desc = "An equipment vendor for miners, points collected at an ore redemption machine can be spent here."
-	icon = 'icons/obj/machines/mining_machines.dmi'
-	icon_state = "mining"
+	icon = 'icons/machinery/point_redemption_vendor/mining.dmi'
+	icon_state = "vendor"
+	icon_state_append_deny = "-deny"
+	icon_state_append_open = "-open"
+	icon_state_append_off = "-off"
+	point_type = POINT_REDEMPTION_TYPE_MINING
 	circuit = /obj/item/circuitboard/point_redemption_vendor/mining
 	prize_list = list(
 		new /datum/point_redemption_item("1 Marker Beacon",				/obj/item/stack/marker_beacon,										10),
