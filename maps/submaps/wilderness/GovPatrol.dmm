@@ -35,7 +35,7 @@
 /turf/template_noop,
 /area/submap/GovPatrol)
 "j" = (
-/obj/item/gun/ballistic/shotgun/pump/rifle/lever,
+/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/lever,
 /turf/template_noop,
 /area/submap/GovPatrol)
 "k" = (

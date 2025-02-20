@@ -3082,7 +3082,7 @@
 /area/sector/delerictcasino/maintenance)
 "oD" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/civtas,
+/obj/item/gun/projectile/energy/civtas,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/sector/delerictcasino/vault)
 "oE" = (

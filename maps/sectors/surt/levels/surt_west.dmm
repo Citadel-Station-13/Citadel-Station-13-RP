@@ -555,7 +555,7 @@
 /obj/item/measuring_tape,
 /obj/item/stack/flag/yellow,
 /obj/item/gps/science,
-/obj/item/gun/energy/phasegun/pistol,
+/obj/item/gun/projectile/energy/phasegun/pistol,
 /obj/item/storage/belt/archaeology,
 /obj/item/ano_scanner,
 /obj/item/clothing/mask/breath,
@@ -1452,7 +1452,7 @@
 "Hk" = (
 /obj/structure/table/rack,
 /obj/item/storage/bag/ore,
-/obj/item/gun/energy/kinetic_accelerator,
+/obj/item/gun/projectile/energy/kinetic_accelerator,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -1551,7 +1551,7 @@
 /obj/item/measuring_tape,
 /obj/item/stack/flag/yellow,
 /obj/item/gps/science,
-/obj/item/gun/energy/phasegun/pistol,
+/obj/item/gun/projectile/energy/phasegun/pistol,
 /obj/item/storage/belt/archaeology,
 /obj/item/ano_scanner,
 /obj/item/clothing/mask/breath,
@@ -2168,7 +2168,7 @@
 "Wv" = (
 /obj/structure/table/rack,
 /obj/item/storage/bag/ore,
-/obj/item/gun/energy/kinetic_accelerator,
+/obj/item/gun/projectile/energy/kinetic_accelerator,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 4

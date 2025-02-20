@@ -790,7 +790,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor,
-/obj/item/gun/energy/laser/practice,
+/obj/item/gun/projectile/energy/laser/practice,
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/security/range)
 "aAS" = (
@@ -12554,10 +12554,10 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/item/gun/energy/kinetic_accelerator,
-/obj/item/gun/energy/kinetic_accelerator,
-/obj/item/gun/energy/kinetic_accelerator,
-/obj/item/gun/energy/kinetic_accelerator,
+/obj/item/gun/projectile/energy/kinetic_accelerator,
+/obj/item/gun/projectile/energy/kinetic_accelerator,
+/obj/item/gun/projectile/energy/kinetic_accelerator,
+/obj/item/gun/projectile/energy/kinetic_accelerator,
 /obj/effect/floor_decal/corner/brown/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/quartermaster/belterdock/gear)
@@ -16030,12 +16030,12 @@
 /area/security/hallway)
 "kBP" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/gun/projectile/energy/gun,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/item/gun/energy/gun,
+/obj/item/gun/projectile/energy/gun,
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
@@ -17200,8 +17200,8 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/effect/floor_decal/industrial/outline/red,
-/obj/item/gun/energy/phasegun/rifle,
-/obj/item/gun/energy/phasegun/rifle,
+/obj/item/gun/projectile/energy/phasegun/rifle,
+/obj/item/gun/projectile/energy/phasegun/rifle,
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "lsx" = (
@@ -17600,9 +17600,9 @@
 /obj/item/ammo_magazine/a5_7mm/five_seven/ap,
 /obj/item/ammo_magazine/a5_7mm/five_seven/ap,
 /obj/item/ammo_magazine/a5_7mm/five_seven/ap,
-/obj/item/gun/ballistic/fiveseven,
-/obj/item/gun/ballistic/fiveseven,
-/obj/item/gun/ballistic/fiveseven,
+/obj/item/gun/projectile/ballistic/fiveseven,
+/obj/item/gun/projectile/ballistic/fiveseven,
+/obj/item/gun/projectile/ballistic/fiveseven,
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "lEi" = (
@@ -17660,7 +17660,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/outline/red,
-/obj/item/gun/energy/ionrifle,
+/obj/item/gun/projectile/energy/ionrifle,
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "lIp" = (
@@ -19450,13 +19450,13 @@
 /obj/machinery/camera/network/security,
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/ballistic/automatic/wt550{
+/obj/item/gun/projectile/ballistic/automatic/wt550{
 	pixel_y = 7
 	},
-/obj/item/gun/ballistic/automatic/wt550{
+/obj/item/gun/projectile/ballistic/automatic/wt550{
 	pixel_y = -7
 	},
-/obj/item/gun/ballistic/automatic/wt550,
+/obj/item/gun/projectile/ballistic/automatic/wt550,
 /obj/item/ammo_magazine/a9mm/top_mount,
 /obj/item/ammo_magazine/a9mm/top_mount,
 /obj/item/ammo_magazine/a9mm/top_mount,
@@ -21240,10 +21240,10 @@
 	pixel_x = 6;
 	pixel_y = -1
 	},
-/obj/item/gun/ballistic/shotgun/pump/combat,
-/obj/item/gun/ballistic/shotgun/pump/combat,
-/obj/item/gun/ballistic/shotgun/pump/combat,
-/obj/item/gun/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "odd" = (
@@ -24386,7 +24386,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/gun/ballistic/luger/brown,
+/obj/item/gun/projectile/ballistic/luger/brown,
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "qdl" = (
@@ -24940,7 +24940,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d3portforhall)
 "qwH" = (
-/obj/item/gun/energy/civtas,
+/obj/item/gun/projectile/energy/civtas,
 /obj/item/clothing/gloves/white,
 /obj/item/clothing/suit/chef,
 /obj/item/clothing/shoes/dress/white,
@@ -27103,7 +27103,7 @@
 	dir = 10
 	},
 /obj/structure/closet/secure_closet/warden{
-	starts_with = list(/obj/item/storage/box/survival_knife,/obj/item/clothing/suit/storage/vest/warden,/obj/item/clothing/under/rank/warden,/obj/item/clothing/under/rank/warden/corp,/obj/item/clothing/under/rank/warden/skirt_pleated,/obj/item/clothing/suit/storage/vest/wardencoat,/obj/item/clothing/suit/storage/vest/wardencoat/alt,/obj/item/clothing/head/helmet/dermal,/obj/item/clothing/head/helmet/warden,/obj/item/clothing/head/helmet/warden/hat,/obj/item/cartridge/security,/obj/item/radio/headset/headset_sec,/obj/item/radio/headset/headset_sec/alt,/obj/item/clothing/accessory/armor/helmetcamera/security,/obj/item/clothing/accessory/armor/helmetcamera/security/body,/obj/item/clothing/glasses/sunglasses/sechud,/obj/item/barrier_tape_roll/police,/obj/item/clothing/accessory/badge/holo/warden,/obj/item/storage/box/flashbangs,/obj/item/storage/box/firingpins,/obj/item/storage/belt/security,/obj/item/reagent_containers/spray/pepper,/obj/item/melee/baton/loaded,/obj/item/gun/energy/gun,/obj/item/cell/device/weapon,/obj/item/storage/box/holobadge,/obj/item/clothing/head/beret/sec/corporate/warden,/obj/item/clothing/suit/storage/hooded/wintercoat/security,/obj/item/clothing/shoes/boots/winter/security,/obj/item/gps/security,/obj/item/flashlight/maglight,/obj/item/megaphone,/obj/item/clothing/mask/gas/half,/obj/item/gun/ballistic/shotgun/pump/combat/warden,/obj/item/holowarrant)
+	starts_with = list(/obj/item/storage/box/survival_knife,/obj/item/clothing/suit/storage/vest/warden,/obj/item/clothing/under/rank/warden,/obj/item/clothing/under/rank/warden/corp,/obj/item/clothing/under/rank/warden/skirt_pleated,/obj/item/clothing/suit/storage/vest/wardencoat,/obj/item/clothing/suit/storage/vest/wardencoat/alt,/obj/item/clothing/head/helmet/dermal,/obj/item/clothing/head/helmet/warden,/obj/item/clothing/head/helmet/warden/hat,/obj/item/cartridge/security,/obj/item/radio/headset/headset_sec,/obj/item/radio/headset/headset_sec/alt,/obj/item/clothing/accessory/armor/helmetcamera/security,/obj/item/clothing/accessory/armor/helmetcamera/security/body,/obj/item/clothing/glasses/sunglasses/sechud,/obj/item/barrier_tape_roll/police,/obj/item/clothing/accessory/badge/holo/warden,/obj/item/storage/box/flashbangs,/obj/item/storage/box/firingpins,/obj/item/storage/belt/security,/obj/item/reagent_containers/spray/pepper,/obj/item/melee/baton/loaded,/obj/item/gun/projectile/energy/gun,/obj/item/cell/device/weapon,/obj/item/storage/box/holobadge,/obj/item/clothing/head/beret/sec/corporate/warden,/obj/item/clothing/suit/storage/hooded/wintercoat/security,/obj/item/clothing/shoes/boots/winter/security,/obj/item/gps/security,/obj/item/flashlight/maglight,/obj/item/megaphone,/obj/item/clothing/mask/gas/half,/obj/item/gun/projectile/ballistic/shotgun/pump/combat/warden,/obj/item/holowarrant)
 	},
 /obj/item/book/manual/security_space_law,
 /obj/structure/cable/green,
@@ -32399,7 +32399,7 @@
 	},
 /obj/item/ammo_magazine/a7_62mm,
 /obj/item/ammo_magazine/a7_62mm,
-/obj/item/gun/ballistic/automatic/z8,
+/obj/item/gun/projectile/ballistic/automatic/z8,
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/dark,
@@ -32943,9 +32943,9 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/item/gun/energy/taser,
-/obj/item/gun/energy/taser,
-/obj/item/gun/energy/taser,
+/obj/item/gun/projectile/energy/taser,
+/obj/item/gun/projectile/energy/taser,
+/obj/item/gun/projectile/energy/taser,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "vAQ" = (
@@ -32990,7 +32990,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/gun/ballistic/shotgun/pump/rifle/lever/win1895,
+/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/lever/win1895,
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "vBg" = (
@@ -33803,9 +33803,9 @@
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/ballistic/automatic/sts35,
-/obj/item/gun/ballistic/automatic/sts35,
-/obj/item/gun/ballistic/automatic/sts35,
+/obj/item/gun/projectile/ballistic/automatic/sts35,
+/obj/item/gun/projectile/ballistic/automatic/sts35,
+/obj/item/gun/projectile/ballistic/automatic/sts35,
 /obj/item/ammo_magazine/a5_56mm/ext,
 /obj/item/ammo_magazine/a5_56mm/ext,
 /obj/item/ammo_magazine/a5_56mm/ext,
@@ -35519,7 +35519,7 @@
 /area/security/range)
 "xeB" = (
 /obj/structure/closet/secure_closet/bar,
-/obj/item/gun/ballistic/shotgun/doublebarrel,
+/obj/item/gun/projectile/ballistic/shotgun/doublebarrel,
 /obj/item/storage/box/beanbags/large,
 /obj/item/storage/box/beanbags/large,
 /obj/item/clothing/accessory/permit/gun/bar,
@@ -35532,7 +35532,7 @@
 	dir = 4;
 	pixel_x = -24
 	},
-/obj/item/gun/ballistic/shotgun/doublebarrel,
+/obj/item/gun/projectile/ballistic/shotgun/doublebarrel,
 /turf/simulated/floor/wood,
 /area/endeavour/surfacebase/bar_backroom)
 "xfd" = (
@@ -35789,8 +35789,8 @@
 /area/endeavour/hallway/d3afthall)
 "xqo" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
+/obj/item/gun/projectile/energy/laser,
+/obj/item/gun/projectile/energy/laser,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -36362,7 +36362,7 @@
 /obj/structure/closet/hydrant{
 	pixel_y = 30
 	},
-/obj/item/gun/ballistic/shotgun/flare,
+/obj/item/gun/projectile/ballistic/shotgun/flare,
 /obj/item/storage/box/flashshells,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
@@ -36616,7 +36616,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor,
-/obj/item/gun/energy/laser/practice,
+/obj/item/gun/projectile/energy/laser/practice,
 /obj/machinery/light_switch{
 	pixel_y = -26
 	},

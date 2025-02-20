@@ -4106,7 +4106,7 @@
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/porta_turret/stationary{
 	gl_uid = "exploration";
-	installation = /obj/item/gun/energy/phasegun;
+	installation = /obj/item/gun/projectile/energy/phasegun;
 	name = "exploration turret";
 	req_one_access = list(19,43,62,67);
 	uid = "exploration"
@@ -6580,7 +6580,7 @@
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/porta_turret/stationary{
 	gl_uid = "exploration";
-	installation = /obj/item/gun/energy/phasegun;
+	installation = /obj/item/gun/projectile/energy/phasegun;
 	name = "exploration turret";
 	uid = "exploration"
 	},
@@ -13489,7 +13489,7 @@
 	name = "gun safe";
 	req_access = list(1)
 	},
-/obj/item/gun/ballistic/revolver/consul,
+/obj/item/gun/projectile/ballistic/revolver/consul,
 /obj/item/ammo_magazine/a44/speedloader,
 /obj/item/ammo_magazine/a44/speedloader,
 /turf/simulated/floor/tiled/dark,
