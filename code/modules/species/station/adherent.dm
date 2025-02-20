@@ -188,6 +188,8 @@
 */
 /datum/species/adherent/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	for(var/key in H.standing_overlays)
+		if(key == HUMAN_OVERLAY_BODY)
+			continue
 		H.cut_overlay(H.standing_overlays[key])
 	//Todo: find a better way to adjust clothing, than to wipe all overlays
 
