@@ -256,6 +256,7 @@
 	// todo: muzzle flash implementation
 
 	last_fire = world.time
+	return GUN_FIRED_SUCCESS
 
 /**
  * Called to handle post fire

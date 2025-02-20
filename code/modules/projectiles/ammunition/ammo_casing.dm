@@ -129,7 +129,7 @@
 		return GUN_FIRED_FAIL_INERT
 	. = expend()
 	if(!.)
-		return GUN_FIRED_FAIL_INERT
+		return GUN_FIRED_FAIL_EMPTY
 
 /**
  * Uses the ammo casing, returning the projectile retrieved, updating icon, etc
