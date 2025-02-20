@@ -330,7 +330,7 @@
 
 /obj/item/gun/projectile/ballistic/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
-		if(ammo_magazine && unload_ammo(user, allow_dump=0))
+		if(unload_ammo(user, allow_dump=0))
 		else
 			return ..()
 	else
