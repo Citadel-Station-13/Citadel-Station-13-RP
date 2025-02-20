@@ -25,7 +25,7 @@
 	if(desc)
 		src.desc = desc
 
-	if(!ispath(src.path, /atom/mvoable))
+	if(!ispath(src.path, /atom/movable))
 		CRASH("invalid path '[src.path]'.")
 
 	if(desc == initial(desc))

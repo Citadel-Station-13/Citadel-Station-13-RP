@@ -11,7 +11,7 @@
 		new /datum/point_redemption_item("Laser Pointer",				    /obj/item/laser_pointer,										9),
 		new /datum/point_redemption_item("Plush Toy",					    /obj/random/plushie,											3),
 		new /datum/point_redemption_item("GPS Device",					    /obj/item/gps/engineering,									    1),
-		new /datum/point_redemption_item("50 Point Transfer Card",		    /obj/item/card/mining_point_card/engineering,				    50),
+		new /datum/point_redemption_item("50 Point Transfer Card",		    /obj/item/point_redemption_voucher/preloaded/engineering/c50,	50),
 		new /datum/point_redemption_item("Umbrella",					    /obj/item/melee/umbrella/random,								20),
 		new /datum/point_redemption_item("100 Thaler",					    /obj/item/spacecash/c100,									    4),
 		new /datum/point_redemption_item("1000 Thaler",					    /obj/item/spacecash/c1000,									    40),

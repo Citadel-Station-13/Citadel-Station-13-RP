@@ -1246,45 +1246,33 @@
 /obj/item/stack/telecrystal{
 	amount = 240
 	},
-/obj/item/card/mining_point_card{
-	mine_points = 50000
-	},
-/obj/item/card/mining_point_card{
-	mine_points = 50000
-	},
-/obj/item/card/mining_point_card{
-	mine_points = 50000
-	},
-/obj/item/card/mining_point_card{
-	mine_points = 50000
-	},
-/obj/item/card/mining_point_card{
-	mine_points = 50000
-	},
-/obj/item/card/mining_point_card{
-	mine_points = 50000
-	},
-/obj/item/card/mining_point_card/survey{
+/obj/item/point_redemption_voucher/preloaded/mining/c50000,
+/obj/item/point_redemption_voucher/preloaded/mining/c50000,
+/obj/item/point_redemption_voucher/preloaded/mining/c50000,
+/obj/item/point_redemption_voucher/preloaded/mining/c50000,
+/obj/item/point_redemption_voucher/preloaded/mining/c50000,
+/obj/item/point_redemption_voucher/preloaded/mining/c50000,
+/obj/item/point_redemption_voucher/preloaded/survey/c50{
 	name = "survey point card";
 	survey_points = 5000
 	},
-/obj/item/card/mining_point_card/survey{
+/obj/item/point_redemption_voucher/preloaded/survey/c50{
 	name = "survey point card";
 	survey_points = 5000
 	},
-/obj/item/card/mining_point_card/survey{
+/obj/item/point_redemption_voucher/preloaded/survey/c50{
 	name = "survey point card";
 	survey_points = 5000
 	},
-/obj/item/card/mining_point_card/survey{
+/obj/item/point_redemption_voucher/preloaded/survey/c50{
 	name = "survey point card";
 	survey_points = 5000
 	},
-/obj/item/card/mining_point_card/survey{
+/obj/item/point_redemption_voucher/preloaded/survey/c50{
 	name = "survey point card";
 	survey_points = 5000
 	},
-/obj/item/card/mining_point_card/survey{
+/obj/item/point_redemption_voucher/preloaded/survey/c50{
 	name = "survey point card";
 	survey_points = 5000
 	},

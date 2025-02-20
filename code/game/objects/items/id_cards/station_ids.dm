@@ -78,8 +78,11 @@
 	. = ..()
 	if(.)
 		. += "<br>"
-	if(mining_points)
-		. += "There's [mining_points] mining equipment redemption point\s loaded onto this card."
+	for(var/key in stored_redemption_points)
+		var/amount = stored_redemption_points[key]
+		if(!amount)
+			continue
+		. += "There's [amount] [key] equipment redemption point[amount > 1 ? "s" : ""] loaded on this card."
 
 /obj/item/card/id/update_name()
 	name = "[registered_name? "[registered_name]'s " : ""]ID Card [assignment? "([assignment])" : ""]"

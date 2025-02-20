@@ -22,7 +22,7 @@
 		new /datum/point_redemption_item("Survey Tools - Shovel",		/obj/item/shovel,											40),
 		new /datum/point_redemption_item("Survey Tools - Mechanical Trap",	/obj/item/beartrap,										50),
 		new /datum/point_redemption_item("Shelter Capsule",				/obj/item/survivalcapsule,									50),
-		new /datum/point_redemption_item("Point Transfer Card",			/obj/item/card/mining_point_card/survey,					50),
+		new /datum/point_redemption_item("Point Transfer Card",			/obj/item/point_redemption_voucher/preloaded/survey/c50,					50),
 		new /datum/point_redemption_item("Regular Firstaid Kit",		/obj/item/storage/firstaid/regular,							50),
 	//	new /datum/point_redemption_item("Advanced Firstaid Kit",		/obj/item/storage/firstaid/adv,								50),
 	//	new /datum/point_redemption_item("Bone Restoration Medicine",	/obj/item/storage/firstaid/bonemed,							50),
