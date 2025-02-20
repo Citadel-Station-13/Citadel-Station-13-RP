@@ -130,18 +130,6 @@
 	recoil = 10
 	accuracy = 40
 
-/*
-//This is being stubborn. Might need more input. / In fact, I'm gonna save this work for some larger kind of "Recoil Size Check" system later.
-/obj/item/gun/projectile/ballistic/shotgun/pump/combat/grit/Fire(atom/target, mob/living/user)
-	. = ..()
-	if(user.mob_size < MOB_MEDIUM)
-		var/mob/living/L = target
-		var/throwdir = get_dir(user,L)
-		var/destination = turn(throwdir, 180)
-		user.forceMove(destination)
-		user.emote("flip")
-*/
-
 /obj/item/gun/projectile/ballistic/shotgun/doublebarrel
 	name = "double-barreled shotgun"
 	desc = "A truely classic weapon. No need to change what works. Uses 12g rounds."

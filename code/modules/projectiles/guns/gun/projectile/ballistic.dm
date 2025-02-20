@@ -280,6 +280,7 @@
 		playsound(src.loc, mag_remove_sound, 50, 1)
 		ammo_magazine.update_icon()
 		ammo_magazine = null
+		. = TRUE
 	else if(loaded.len)
 		//presumably, if it can be speed-loaded, it can be speed-unloaded.
 		if(allow_dump && (load_method & SPEEDLOADER))
@@ -298,9 +299,9 @@
 			user.put_in_hands_or_drop(C)
 			user.visible_message("[user] removes \a [C] from [src].", "<span class='notice'>You remove \a [C] from [src].</span>")
 		playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
-	else
-		to_chat(user, "<span class='warning'>[src] is empty.</span>")
-	update_icon()
+		. = TRUE
+	if(.)
+		update_icon()
 
 /obj/item/gun/projectile/ballistic/attackby(var/obj/item/A as obj, mob/user as mob)
 	..()
@@ -329,8 +330,7 @@
 
 /obj/item/gun/projectile/ballistic/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
-		if(ammo_magazine)
-			unload_ammo(user, allow_dump=0)
+		if(ammo_magazine && unload_ammo(user, allow_dump=0))
 		else
 			return ..()
 	else

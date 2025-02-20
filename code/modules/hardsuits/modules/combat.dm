@@ -138,6 +138,7 @@
 	. = ..()
 	gun = new gun_type(src)
 	gun.safety_state = GUN_SAFETY_OFF
+	gun.one_handed_penalty = 0
 
 /obj/item/hardsuit_module/mounted/engage(atom/target)
 
