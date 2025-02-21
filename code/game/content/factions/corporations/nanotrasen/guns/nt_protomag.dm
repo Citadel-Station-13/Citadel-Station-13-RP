@@ -89,7 +89,7 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/magnetic/nt
 	use_empty = TRUE
 	use_single = TRUE
 
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/magnetic/nt_protomag/rifle, /nt_protomag/rifle, "nt-magpistol")
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/magnetic/nt_protomag/rifle, /nt_protomag/rifle, "nt-magrifle")
 /obj/item/gun/projectile/ballistic/magnetic/nt_protomag/rifle
 	name = "protomag rifle"
 	icon_state = "rifle-map"
