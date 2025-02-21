@@ -43,16 +43,15 @@
 	/// * this is unsanitized html, do not allow player input without an encode!
 	/// * being an audit field, this is not a systems book-keeping field.
 	var/audit_peer_name_as_unsafe_html
-
 	/// stated date / tiem
-	/// * plaintext ISO-8601: "YYYY-MM-DD"
+	/// * plaintext ISO-8601: "YYYY-MM-DDTHH:MM:SS"
 	/// * in universal galactic time (so, IC time!)
-	var/audit_date
-	/// stated date / time
-	/// * plaintext ISO-8601: "HH:MM:SS"
-	/// * in universal galactic time (so, IC time!)
-	var/audit_time
-
+	/// * This value is inferred for IC logging if not provided.
+	var/audit_timestamp_as_unsafe_html
+	/// stated balance change
+	/// * there's pretty much no possible reason for you to be messing with this but this is here if you want to
+	/// * This value is inferred for IC logging if not provided (please don't provide it)
+	var/audit_balance_change_as_unsafe_html
 
 #warn impl
 
@@ -73,18 +72,14 @@
 		transaction.audit_terminal_as_unsafe_html = audit_terminal_as_unsafe_html
 	if(audit_peer_name_as_unsafe_html)
 		transaction.audit_peer_name_as_unsafe_html = audit_peer_name_as_unsafe_html
-	if(audit_date)
-		transaction.audit_date = audit_date
-	if(audit_time)
-		transaction.audit_time = audit_time
+	if(audit_timestamp_as_unsafe_html)
+		transaction.audit_timestamp_as_unsafe_html = audit_timestamp_as_unsafe_html
+	if(audit_balance_change_as_unsafe_html)
+		transaction.audit_balance_change_as_unsafe_html = audit_balance_change_as_unsafe_html
 	return transaction
 
 /**
  * Executes against an account
- *
- * * This will clone ourselves and inject a new copy into the account
- * * This will set `acct_num_target` as necessary on the created transaction
- * * This will set `audit_date` and `audit_time` to the current time as IC time.
  */
 /datum/economy_transaction/proc/execute_system_transaction(datum/economy_account/account)
 	#warn impl
@@ -92,9 +87,6 @@
 
 /**
  * Executes as a transfer from one account to another
- *
- * * This will clone ourselves twice and inject new copies into both accounts
- * * This will set `acct_num_target` and `acct_num_src` as necessary on the created transactions
  */
 /datum/economy_transaction/proc/execute_transfer_transaction(datum/economy_account/from_account, datum/economy_account/to_account)
 	#warn impl

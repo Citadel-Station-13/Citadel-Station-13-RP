@@ -14,14 +14,6 @@
 	var/creating_new_account = 0
 	var/const/fund_cap = 1000000
 
-/obj/machinery/account_database/proc/get_access_level()
-	if (!held_card)
-		return 0
-	if (ACCESS_CENTCOM_ADMIRAL in held_card.access)
-		return 2
-	else if((ACCESS_COMMAND_BANKING in held_card.access) || (ACCESS_COMMAND_BANKING in held_card.access))
-		return 1
-
 /obj/machinery/account_database/proc/create_transation(target, reason, amount)
 	var/datum/economy_transaction/T = new()
 	T.target_name = target
@@ -56,11 +48,6 @@
 		SSnanoui.update_uis(src)
 
 	attack_hand(user)
-
-/obj/machinery/account_database/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-	if(machine_stat & (NOPOWER|BROKEN))
-		return
-	nano_ui_interact(user)
 
 /obj/machinery/account_database/nano_ui_interact(mob/user, ui_key="main", var/datum/nanoui/ui = null, var/force_open = 1)
 	user.set_machine(src)
@@ -125,16 +112,6 @@
 			if("create_account")
 				creating_new_account = 1
 
-			if("add_funds")
-				var/amount = input("Enter the amount you wish to add", "Silently add funds") as num
-				if(detailed_account_view)
-					detailed_account_view.money = min(detailed_account_view.money + amount, fund_cap)
-
-			if("remove_funds")
-				var/amount = input("Enter the amount you wish to remove", "Silently remove funds") as num
-				if(detailed_account_view)
-					detailed_account_view.money = max(detailed_account_view.money - amount, -fund_cap)
-
 			if("toggle_suspension")
 				if(detailed_account_view)
 					detailed_account_view.suspended = !detailed_account_view.suspended
@@ -175,15 +152,6 @@
 						if(!usr.attempt_insert_item_for_installation(C, src))
 							return
 						held_card = C
-
-			if("view_account_detail")
-				var/index = text2num(href_list["account_index"])
-				if(index && index <= GLOB.all_money_accounts.len)
-					detailed_account_view = GLOB.all_money_accounts[index]
-
-			if("view_accounts_list")
-				detailed_account_view = null
-				creating_new_account = 0
 
 			if("revoke_payroll")
 				var/funds = detailed_account_view.money

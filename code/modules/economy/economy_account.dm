@@ -10,6 +10,8 @@
 	/// Our account number.
 	/// * Account numbers must be **globally unique** at time of writing.
 	/// * Account numbers are strings.
+	/// * Account numbers may not have spaces, and must be serializable as this is used for
+	///   UI unique-keys within the backend.
 	#warn impl uniqueness
 	#warn audit access
 	var/account_number
@@ -17,6 +19,9 @@
 	//* Balance *//
 
 	/// Amount of money in it.
+	/// * Should only be changed by executing `/datum/economy_transaction`'s.
+	/// * Not doing so will result in weird behaviors. This is not just for IC logging, this
+	///   is a backend system. Don't mess around.
 	var/balance = 0
 
 	//* Faction *//
@@ -26,14 +31,10 @@
 	/// our id, if we're a keyed account for our factoin
 	var/faction_account_key
 
-	//* Transaction Logging *//
+	//* Logging *//
 
-	/// transaction log
-	/// * this should never be directly edited, including to add transactions.
-	///   use the procs on the transaction.
-	var/list/datum/economy_transaction/transaction_log
-	/// amount of balance change between the last transaction log and now
-	var/transaction_log_change_since_last = 0
+	/// log entries
+	var/list/datum/economy_account_log/audit_log
 
 	//* Fluff *//
 
@@ -64,26 +65,12 @@
 	return ..()
 
 /**
- * Change the account's balance without making a transaction.
+ * Appends an audit entry to the log.
  *
- * * Best-faith effort will be made to track this in transaction log automatically.
+ * * All parameters accept raw HTMl. This is an extremely unsafe proc; make sure you properly sanitize things.
  */
-/datum/economy_account/proc/adjust_balance_without_logging(amount)
+/datum/economy_account/proc/append_audit_log(datum/economy_account_log/log_entry)
 	#warn impl
-
-/**
- * append a transaction to the transaction log
- *
- * * Should only be called from `/datum/economy_transaction`.
- * * We must own the transaction's reference after this; modifying it in IC transaction log variable
- *   is still allowed but this shouldn't be a shared instance.
- */
-/datum/economy_account/proc/append_transaction_log(datum/economy_transaction/transaction)
-	#warn impl
-
-	// trim
-	if(length(transaction_log) > 1000)
-		transaction_log.Cut(1, 2)
 
 /**
  * Randomize our access credentials

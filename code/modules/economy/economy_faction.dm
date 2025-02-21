@@ -39,3 +39,32 @@
 	if(!abbreviation)
 		return "-- coders forgot to set abbreviation on faction id '[id]', point and laugh --"
 	return "[abbreviation] ACH Node #[ECONOMY_GENERATE_EPHEMERAL_TERMINAL_ID]"
+
+/**
+ * Checks if an uplink can manage an account
+ * * Assumed that the account is part of our faction. This will not check for you.
+ * 
+ * todo: access constraints, should that be here or in the uplink?
+ */
+/datum/economy_faction/proc/uplink_can_manage_account(datum/economy_account/account) as /datum/economy_account
+	RETURN_TYPE(/datum/economy_account)
+	#warn impl
+
+/**
+ * Gets accounts an uplink can access.
+ *
+ * todo: access constraints, should that be here or in the uplink?
+ */
+/datum/economy_faction/proc/uplink_get_managed_accounts() as /list
+	RETURN_TYPE(/list)
+	#warn impl
+
+/**
+ * Gets accounts an uplink can access that are root accounts to fund from / withdraw into
+ * * This is stuff like station and department accounts
+ *
+ * todo: access constraints, should that be here or in the uplink?
+ */
+/datum/economy_faction/proc/uplink_get_managed_source_accounts() as /list
+	RETURN_TYPE(/list)
+	#warn impl

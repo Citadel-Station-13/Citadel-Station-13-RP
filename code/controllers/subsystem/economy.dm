@@ -38,7 +38,7 @@ SUBSYSTEM_DEF(economy)
 	RETURN_TYPE(/datum/economy_faction)
 	return faction_lookup[id]
 
-/datum/controller/subsystem/economy/proc/resolve_account_number(number) as /datum/economy_account
+/datum/controller/subsystem/economy/proc/resolve_account(number) as /datum/economy_account
 	RETURN_TYPE(/datum/economy_account)
 	return account_lookup["[number]"]
 
@@ -113,6 +113,8 @@ SUBSYSTEM_DEF(economy)
  *
  * * Terminal IDs must be globally unique across all rounds and economy factions.
  * * Terminal IDs should be player-readable.
+ * * Do not randomly call this for ephemerals unless you know what you're doing! You can
+ *   exhaust the available round-pool of terminal IDs.
  */
 /datum/controller/subsystem/economy/proc/generate_round_stable_terminal_id()
 	#warn impl
@@ -136,4 +138,26 @@ SUBSYSTEM_DEF(economy)
 		for(var/account_id in account_lookup)
 			var/datum/economy_account/account = account_lookup[account_id]
 
+	#warn impl
+
+//* Timestamping *//
+
+/**
+ * Gets the current time as galactic time (UTC + year offset)
+ *
+ * * Output will be ISO-8601
+ */
+/datum/controller/subsystem/economy/proc/timestamp_now()
+	#warn impl
+
+/**
+ * Gets the current date as galactic time (UTC + year offset)
+ */
+/datum/controller/subsystem/economy/proc/timestamp_now_date()
+	#warn impl
+
+/**
+ * Gets the current time as galactic time (UTC + year offset)
+ */
+/datum/controller/subsystem/economy/proc/timestamp_now_time()
 	#warn impl

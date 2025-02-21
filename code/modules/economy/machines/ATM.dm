@@ -1,5 +1,6 @@
 GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/polaroid2.ogg'))
 
+// todo: rewrite this from scratch
 /obj/machinery/atm
 	name = "Automatic Teller Machine"
 	desc = "For all your monetary needs!"
