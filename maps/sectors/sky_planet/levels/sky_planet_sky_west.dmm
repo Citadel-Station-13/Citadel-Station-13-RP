@@ -313,7 +313,7 @@
 /turf/simulated/open{
 	outdoors = 1
 	},
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground/sky)
 "gV" = (
 /obj/item/ammo_magazine/a5_56mm/ext/empty,
 /turf/simulated/floor/tiled/monotechmaint,
@@ -480,7 +480,7 @@
 /turf/simulated/open{
 	outdoors = 1
 	},
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground/sky)
 "kM" = (
 /obj/structure/window/phoronreinforced/full{
 	dir = 1
@@ -580,7 +580,7 @@
 /turf/simulated/open{
 	outdoors = 1
 	},
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground/sky)
 "mR" = (
 /obj/structure/flora/grass/event/bright_flowers1,
 /turf/simulated/floor/fey/forest_grass,
@@ -683,7 +683,7 @@
 /turf/simulated/open{
 	outdoors = 1
 	},
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground/sky)
 "pX" = (
 /obj/structure/closet/crate/corporate/thinktronic,
 /turf/simulated/floor/tiled/techfloor/lythios43c,
@@ -1025,7 +1025,7 @@
 /turf/simulated/open{
 	outdoors = 1
 	},
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground/sky)
 "xd" = (
 /obj/structure/window/phoronreinforced/full{
 	dir = 4
@@ -1112,7 +1112,7 @@
 /turf/simulated/open{
 	outdoors = 1
 	},
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground/sky)
 "zJ" = (
 /obj/structure/holohoop{
 	dir = 4
@@ -1142,7 +1142,7 @@
 /turf/simulated/open{
 	outdoors = 1
 	},
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground/sky)
 "AS" = (
 /obj/structure/flora/tree/fey/small_tree/tree3,
 /turf/simulated/floor/fey/forest_grass,
@@ -1458,7 +1458,7 @@
 /turf/simulated/open{
 	outdoors = 1
 	},
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground/sky)
 "Jo" = (
 /obj/structure/curtain/medical,
 /turf/simulated/floor/tiled/techfloor/lythios43c,
@@ -1784,7 +1784,7 @@
 /turf/simulated/open{
 	outdoors = 1
 	},
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground/sky)
 "Qr" = (
 /obj/structure/bed/chair/pew/left{
 	dir = 4
@@ -1891,7 +1891,7 @@
 /area/sector/sky_planet/station_city/street)
 "Sd" = (
 /turf/level_border,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground/sky)
 "Si" = (
 /obj/effect/decal/remains/robot,
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran,
@@ -2024,7 +2024,7 @@
 /turf/simulated/open{
 	outdoors = 1
 	},
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground/sky)
 "UD" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4;
@@ -2042,7 +2042,7 @@
 /turf/simulated/floor/tiled/techfloor/monogrid{
 	outdoors = 1
 	},
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground/sky)
 "UN" = (
 /obj/structure/lightpost/urban,
 /turf/simulated/floor/tiled/monotechmaint,
@@ -2174,7 +2174,7 @@
 /turf/simulated/open{
 	outdoors = 1
 	},
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground/sky)
 "Ym" = (
 /obj/item/robot_parts/robot_component/camera,
 /obj/item/ammo_casing/a5_56mm,

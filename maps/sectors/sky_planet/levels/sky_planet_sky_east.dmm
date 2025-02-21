@@ -34,7 +34,7 @@
 /area/sector/sky_planet/rock)
 "jd" = (
 /turf/simulated/wall/r_wall,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground/sky)
 "jj" = (
 /obj/structure/catwalk,
 /obj/machinery/light/small/emergency/flicker,
@@ -82,7 +82,7 @@
 "tK" = (
 /obj/effect/blocker,
 /turf/simulated/open,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground/sky)
 "ua" = (
 /obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/old_tile,
@@ -123,7 +123,7 @@
 /area/sector/sky_planet/rock)
 "zw" = (
 /turf/simulated/open,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground/sky)
 "Am" = (
 /obj/machinery/appliance/cooker/oven,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -145,14 +145,14 @@
 /area/sector/sky_planet/rock)
 "Cd" = (
 /turf/simulated/floor/tiled/techfloor/lythios43c,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground/sky)
 "DE" = (
 /turf/level_border,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground/sky)
 "EC" = (
 /obj/structure/lattice,
 /turf/simulated/open,
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground/sky)
 "EU" = (
 /obj/effect/debris/cleanable/blood/gibs/xeno,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -223,7 +223,7 @@
 /turf/simulated/floor/holofloor/reinforced{
 	outdoors = 1
 	},
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/ground/sky)
 "Sx" = (
 /obj/structure/toilet{
 	dir = 4
