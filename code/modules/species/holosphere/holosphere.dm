@@ -36,6 +36,9 @@
 	)
 	vision_organ = O_BRAIN
 
+	name_language    = LANGUAGE_ID_EAL
+	intrinsic_languages = LANGUAGE_ID_EAL
+
 	has_limbs = list(
 		BP_TORSO  = list("path" = /obj/item/organ/external/chest/indestructible/holosphere),
 		BP_GROIN  = list("path" = /obj/item/organ/external/groin/indestructible/holosphere),
