@@ -559,3 +559,8 @@
  */
 /datum/tgui/proc/still_interactive()
 	return status == UI_INTERACTIVE
+
+//* Setters *//
+
+/datum/tgui/proc/set_title(string)
+	title = string

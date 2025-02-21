@@ -2,27 +2,7 @@
 /obj/machinery/point_redemption_vendor
 	icon = 'icons/obj/machines/mining_machines.dmi'
 	anchored = TRUE
-	var/icon_deny = "mining-deny"
-	var/obj/item/card/id/inserted_id
-	var/child = FALSE//To tell topic() to bypass this iteration of it
 	var/list/prize_list = list()
-
-/obj/machinery/point_redemption_vendor/power_change()
-	var/old_stat = machine_stat
-	..()
-	if(old_stat != machine_stat)
-		update_icon()
-	if(inserted_id && !powered())
-		visible_message("<span class='notice'>The ID slot indicator light flickers on \the [src] as it spits out a card before powering down.</span>")
-		inserted_id.forceMove(get_turf(src))
-
-/obj/machinery/point_redemption_vendor/update_icon()
-	if(panel_open)
-		icon_state = "[initial(icon_state)]-open"
-	else if(powered())
-		icon_state = initial(icon_state)
-	else
-		icon_state = "[initial(icon_state)]-off"
 
 /obj/machinery/point_redemption_vendor/interact(mob/user)
 	user.set_machine(src)
@@ -87,16 +67,8 @@
 		else
 			to_chat(usr, "<span class='warning'>Error: Please insert a valid ID!</span>")
 			flick(icon_deny, src)
-	updateUsrDialog()
 
 /obj/machinery/point_redemption_vendor/attackby(obj/item/I, mob/user, params)
-	if(default_deconstruction_screwdriver(user, I))
-		updateUsrDialog()
-		return CLICKCHAIN_DO_NOT_PROPAGATE
-	if(default_part_replacement(user, I))
-		return CLICKCHAIN_DO_NOT_PROPAGATE
-	if(default_deconstruction_crowbar(user, I))
-		return CLICKCHAIN_DO_NOT_PROPAGATE
 	if(istype(I,/obj/item/card/id))
 		if(!powered())
 			return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -107,24 +79,3 @@
 			interact(user)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	..()
-
-/obj/machinery/point_redemption_vendor/proc/RedeemVoucher(obj/item/mining_voucher/voucher, mob/redeemer)
-	var/selection = input(redeemer, "Pick your equipment", "Mining Voucher Redemption") as null|anything in list("Kinetic Accelerator", "Resonator", "Mining Drone", "Advanced Scanner", "Crusher")
-	if(!selection || !Adjacent(redeemer) || voucher.loc != redeemer)
-		return
-	var/drop_location = drop_location()
-	switch(selection)
-		if("Kinetic Accelerator")
-			new /obj/item/gun/energy/kinetic_accelerator(drop_location)
-		if("Resonator")
-			new /obj/item/resonator(drop_location)
-	qdel(voucher)
-
-/obj/machinery/point_redemption_vendor/proc/new_prize(var/name, var/path, var/cost) // Generic proc for adding new entries. Good for abusing for FUN and PROFIT.
-	if(!cost)
-		cost = 100
-	if(!path)
-		path = /obj/item/stack/marker_beacon
-	if(!name)
-		name = "Generic Entry"
-	prize_list += new /datum/point_redemption_item(name, path, cost)

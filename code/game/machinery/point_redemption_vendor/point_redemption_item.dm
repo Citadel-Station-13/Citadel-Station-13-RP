@@ -31,3 +31,16 @@
 	if(desc == initial(desc))
 		var/atom/movable/casted = src.path
 		desc = initial(casted.desc)
+
+/**
+ * @return list of entities created
+ */
+/datum/point_redemption_item/proc/instantiate(atom/where, amount = 1) as /list
+	RETURN_TYPE(/list)
+	. = list()
+	var/safety = 50
+	for(var/i in 1 to amount)
+		if(!--safety)
+			CRASH("safety limit hit")
+		var/atom/movable/created = new path(where)
+		. += created
