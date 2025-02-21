@@ -30,7 +30,6 @@
 		"sky_civvie2_dock",
 		"sky_civvie3_dock",
 		"sky_civvie4_dock",
-
 		)
 
 	initial_restricted_waypoints = list(
@@ -123,13 +122,6 @@
 	name = "NT Outpost Hyades - East Rig 3"
 	landmark_tag = "sky_civvie4_dock"
 	docking_controller = "eastrig3_dock"
-	base_turf = /turf/simulated/open/skyplanet
-	base_area = /area/sector/sky_planet/sky
-
-/obj/effect/shuttle_landmark/skyplanet/ntoutpost/northrig2/hammerhead
-	name = "NT Outpost Hyades - North Rig 2 (Hammerhead)"
-	landmark_tag = "sky_hammerhead_dock"
-	docking_controller = "northrig2_dock"
 	base_turf = /turf/simulated/open/skyplanet
 	base_area = /area/sector/sky_planet/sky
 
