@@ -22,7 +22,7 @@
 		/obj/item/gun_attachment = "//gun-attachment",
 		/obj/item/gun/projectile/ballistic = "//gun-ballistic",
 		/obj/item/gun/projectile/energy = "//gun-energy",
-		/obj/item/gun/magnetic = "//gun-magnetic",
+		/obj/item/gun/projectile/magnetic = "//gun-magnetic",
 		/obj/item/gun = "//gun",
 		/obj/item/ammo_casing = "//ammo",
 		/obj/item/ammo_magazine = "//magazine",

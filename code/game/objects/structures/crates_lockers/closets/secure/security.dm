@@ -107,7 +107,7 @@
 		/obj/item/storage/belt/security,
 		/obj/item/flash,
 		/obj/item/melee/baton/loaded,
-		/obj/item/gun/magnetic/railgun/heater/pistol/hos,
+		/obj/item/gun/projectile/magnetic/railgun/heater/pistol/hos,
 		/obj/item/cell/device/weapon,
 		/obj/item/clothing/accessory/holster/waist,
 		/obj/item/melee/telebaton,
