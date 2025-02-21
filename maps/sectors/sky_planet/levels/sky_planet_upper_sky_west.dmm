@@ -7591,10 +7591,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/sky_planet/racing_station/dock2)
-"QY" = (
-/obj/effect/shuttle_landmark/skyplanet/ntoutpost/northrig2/hammerhead,
-/turf/simulated/open/skyplanet,
-/area/sector/sky_planet/sky)
 "QZ" = (
 /obj/structure/bed/chair/bay/chair/padded/brown{
 	dir = 1
@@ -20270,7 +20266,7 @@ qr
 qr
 qr
 qr
-QY
+qr
 qr
 qr
 qr
