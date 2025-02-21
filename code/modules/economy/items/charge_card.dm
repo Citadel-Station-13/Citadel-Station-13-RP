@@ -24,6 +24,8 @@
 		return
 	. += "<font color=#4F49AF>Charge card's owner: [src.owner_name]. Thalers remaining: [src.worth].</font>"
 
+//* Economy *//
+
 /obj/item/charge_card/economy_is_payment()
 	return TRUE
 
@@ -35,16 +37,32 @@
 		)
 		return TRUE
 
-#warn deal with
+	var/paying_amount
 
-/obj/item/charge_card/do_static_currency_feedback(amount, mob/user, atom/target, range)
-	visible_message(SPAN_NOTICE("[user] swipes [src] through [target]."), SPAN_NOTICE("You swipe [src] through [target]."), SPAN_NOTICE("You hear a card swipe."), range)
+	if(balance < payment.amount)
+		if(payment.allow_partial)
+			paying_amount = balance
+	else
+		paying_amount = payment.amount
 
-/obj/item/charge_card/consume_static_currency(amount, force, mob/user, atom/target, range)
-	if(force)
-		amount = min(amount, worth)
-	if(amount > worth)
-		return PAYMENT_INSUFFICIENT
-	worth -= amount
-	do_static_currency_feedback(amount, user, target, range)
-	return amount
+	if(!(payment_op_flags & PAYMENT_OP_SUPPRESSED))
+		actor?.visible_feedback(
+			target = accepting_entity,
+			range = MESSAGE_RANGE_ITEM_HARD,
+			visible = SPAN_NOTICE("[actor.performer] swipes [src] through [accepting_entity]."),
+			otherwise_self = SPAN_NOTICE("You swipe [src] through [accepting_entity]."),
+		)
+	// todo: sound
+
+	if(balance < paying_amount)
+		// unlike with cash, this is a swipe, which means the machine will get the result.
+		payment.out_payment_result = PAYMENT_RESULT_INSUFFICIENT
+		return TRUE
+
+	balance -= paying_amount
+	ASSERT(balance >= 0)
+
+	payment.out_payment_result = PAYMENT_RESULT_SUCCESS
+	payment.out_amount_paid = paying_amount
+	update_appearance()
+	return TRUE

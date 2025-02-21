@@ -99,7 +99,7 @@
 	SC.set_worth(amount)
 	usr.put_in_hands(SC)
 
-#warn deal with
+//* Economy *//
 
 /obj/item/spacecash/economy_is_payment()
 	return TRUE
@@ -112,24 +112,45 @@
 		)
 		return TRUE
 
-/obj/item/spacecash/do_static_currency_feedback(amount, mob/user, atom/target, range)
-	user.visible_message(SPAN_NOTICE("[user] inserts some cash into [target]."), SPAN_NOTICE("You insert [amount] [CURRENCY_NAME_PLURAL_PROPER] into [target]."), SPAN_NOTICE("You hear some papers shuffling."), range)
+	var/paying_amount
 
-/obj/item/spacecash/consume_static_currency(amount, force, mob/user, atom/target, range)
-	if(force)
-		amount = min(amount, worth)
-	if(amount > worth)
-		return PAYMENT_INSUFFICIENT
-	worth -= amount
-	do_static_currency_feedback(amount, user, target, range)
-	. = amount
+	if(worth < payment.amount)
+		if(payment.allow_partial)
+			paying_amount = worth
+		else
+			actor?.chat_feedback(
+				SPAN_WARNING("[src] isn't enough to pay [accepting_entity] with."),
+				target = src,
+			)
+			// don't actually execute payment as this isn't a card swipe and we're
+			// not inserting the cash.
+			// todo: should we have a system to allow logical insertion and rejection?
+			//       this system currently doesn't support the machine itself throwing an error
+			//       as from its perspective the cash was never inserted.
+			return TRUE
+	else
+		paying_amount = payment.amount
+
+	if(!(payment_op_flags & PAYMENT_OP_SUPPRESSED))
+		actor?.visible_feedback(
+			target = accepting_entity,
+			range = MESSAGE_RANGE_ITEM_HARD,
+			visible = SPAN_NOTICE("[actor.performer] inserts some cash into [accepting_entity]."),
+			otherwise_self = SPAN_NOTICE("You insert some cash into [accepting_entity]."),
+		)
+	// todo: sound
+
+	worth -= paying_amount
+	ASSERT(worth >= 0)
+
+	payment.out_payment_result = PAYMENT_RESULT_SUCCESS
+	payment.out_amount_paid = paying_amount
+
 	if(!worth)
 		qdel(src)
-		return
-	update_appearance()
-
-/obj/item/spacecash/amount_static_currency()
-	return worth
+	else
+		update_appearance()
+	return TRUE
 
 //* Supply *//
 
