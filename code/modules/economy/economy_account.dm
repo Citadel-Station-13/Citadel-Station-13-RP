@@ -77,3 +77,15 @@
  */
 /datum/economy_account/proc/randomize_credentials()
 	security_passkey = "[rand(11111111, 99999999)]"
+
+/**
+ * Sets our security lock status.
+ */
+/datum/economy_account/proc/set_security_lock(lock_status)
+	security_lock = lock_status
+
+/**
+ * Sets our security level.
+ */
+/datum/economy_account/proc/set_security_level(level_enum)
+	security_level = level_enum

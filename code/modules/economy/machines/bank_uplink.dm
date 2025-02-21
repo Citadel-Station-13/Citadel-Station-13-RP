@@ -84,7 +84,7 @@
 	switch(action)
 		if("createAccount")
 			var/create_owner_name = params["createOwnerName"]
-			var/create_fund_from_id = params["createFundSource"]
+			var/create_fund_account = params["createFundSource"]
 			var/create_fund_amount = params["createFundAmount"]
 			var/create_target_faction = params["createTargetFaction"]
 
@@ -100,8 +100,8 @@
 			// resolve fund source account if it's being funded
 			var/datum/economy_account/resolve_fund_source_account
 			if(create_fund_amount)
-				resolve_fund_source_account = SSeconomy.resolve_account(create_fund_from_id)
-				if(!fund_from_account || !can_access_account(resolve_fund_source_account))
+				resolve_fund_source_account = SSeconomy.resolve_account(create_fund_account)
+				if(!create_fund_account || !can_access_account(resolve_fund_source_account))
 					// this means they can't access the account anymore
 					ui_push_faction_accounts(resolve_target_faction)
 					return TRUE
@@ -115,8 +115,6 @@
 			created_account.randomize_credentials()
 			// log & fund (if necessary) the account
 			var/datum/economy_transaction/initial_funding_transaction = new(resolve_fund_source_account ? create_fund_amount : 0)
-			initial_funding_transaction.audit_date = SSeconomy.timestamp_now_date()
-			initial_funding_transaction.audit_time = SSeconomy.timestamp_now_time()
 			if(resolve_fund_source_account)
 				initial_funding_transaction.audit_peer_name_as_unsafe_html = resolve_fund_source_account.owner_name
 			initial_funding_transaction.audit_purpose_as_unsafe_html = "Initial account creation (authorization by [get_authorizing_name()])"
@@ -141,6 +139,13 @@
 			var/fund_amount
 			var/fund_reason
 		if("suspendAccount")
+			if(!validated_target_account)
+				return TRUE
+			var/target_state = params["value"]
+			validated_target_account.set_security_lock(target_state)
+			#warn audit log
+			ui_push_account_details(validated_target_account)
+			return TRUE
 		if("printAccountStatus")
 			if(!try_invoke_print_cooldown())
 				return TRUE
@@ -166,8 +171,8 @@
 	// our UI is an arbitrary key-value system
 	// accounts are pushed as 'acct-[id]', flat
 	// factions are pushed as 'fact-[id]', flat
-	// faction list is pushed as 'factions' = list(faction id 1, faction id 2, ...)
 
+	.["terminalId"] = terminal_id
 
 /obj/machinery/computer/bank_uplink/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
@@ -215,8 +220,8 @@
 		<h1><center>Account Details (Confidential)</center></h1><hr>
 		<i>Account holder:</i> [account.owner_name]<br>
 		<i>Account number:</i> [account.account_number]<br>
-		<i>Account pin:</i> [account.remote_access_pin]<br>
-		<i>Starting balance:</i> $[account.money]<br>
+		<i>Account pin:</i> [account.security_passkey]<br>
+		<i>Starting balance:</i> $[account.balance]<br>
 		<i>Date / Time:</i> [SSeconomy.timestamp_now()]<br>
 		<i>Creation uplink ID:</i> #[terminal_id]<br>
 		<i>Authorizing individual:</i> [get_authorizing_name()]<br>
