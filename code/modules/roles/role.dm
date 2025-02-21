@@ -59,7 +59,7 @@
 
 	// todo: more fluff from it being from the actual role's faction (and make sure role faction has economy account)
 	var/datum/economy_transaction/initial_funding_transaction = new(starting_amount)
-	initial_funding_transaction.audit_terminal_as_unsafe_html = ECONOMY_FORMAT_SYSTEM_TERMINAL_RANDOM
+	initial_funding_transaction.audit_terminal_as_unsafe_html = ECONOMY_FORMAT_EPHEMERAL_SYSTEM_TERMINAL
 	initial_funding_transaction.audit_purpose_as_unsafe_html = "Initial account creation"
 	initial_funding_transaction.audit_peer_name_as_unsafe_html = "Orion Fudiciary Network"
 	initial_funding_transaction.execute_system_transaction(creating)

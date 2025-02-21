@@ -68,6 +68,10 @@
 	. = ..()
 
 /obj/item/retail_terminal/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "items/RetaiTerminal.tsx")
+		ui.open()
 
 /obj/item/retail_terminal/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()

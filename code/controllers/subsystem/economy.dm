@@ -106,6 +106,17 @@ SUBSYSTEM_DEF(economy)
 
 #warn impl all
 
+//* Terminals *//
+
+/**
+ * Get a round-stable terminal ID.
+ *
+ * * Terminal IDs must be globally unique across all rounds and economy factions.
+ * * Terminal IDs should be player-readable.
+ */
+/datum/controller/subsystem/economy/proc/generate_round_stable_terminal_id()
+	#warn impl
+
 //* Misc *//
 
 /**

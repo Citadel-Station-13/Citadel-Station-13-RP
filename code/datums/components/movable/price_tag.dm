@@ -3,6 +3,10 @@
 
 /**
  * /obj only
+ *
+ * * This is an extension-style component, and is hooked into /obj level via GetComponent().
+ *
+ * todo: allow ripping it off of things
  */
 /datum/component/price_tag
 	registered_type = /datum/component/price_tag

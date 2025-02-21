@@ -24,7 +24,11 @@
 	/// all accounts belonging to, as a flat list
 	var/list/datum/economy_account/accounts = list()
 
-#warn impl
+/datum/economy_faction/Destroy()
+	// doing this is a horrible idea but if someone's going to be unhinged..
+	QDEL_LIST(accounts)
+	keyed_accounts = null
+	return ..()
 
 /**
  * Gets a random terminal name for this faction
@@ -32,4 +36,6 @@
  *   an instanced terminal, nor does it track any state / permeance.
  */
 /datum/economy_faction/proc/random_ephemeral_terminal_name()
-	#warn impl
+	if(!abbreviation)
+		return "-- coders forgot to set abbreviation on faction id '[id]', point and laugh --"
+	return "[abbreviation] ACH Node #[ECONOMY_GENERATE_EPHEMERAL_TERMINAL_ID]"
