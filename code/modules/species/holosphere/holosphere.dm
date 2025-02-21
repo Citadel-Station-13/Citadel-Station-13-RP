@@ -91,6 +91,13 @@
 	radiation_mod = 0
 	toxins_mod =	0
 
+	cold_level_1 = 0
+	cold_level_2 = 0
+	cold_level_3 = 0
+
+	warning_low_pressure = -1
+	hazard_low_pressure = -1
+
 	actions_to_apply = list(
 		/datum/action/holosphere/toggle_transform,
 		/datum/action/holosphere/change_loadout
