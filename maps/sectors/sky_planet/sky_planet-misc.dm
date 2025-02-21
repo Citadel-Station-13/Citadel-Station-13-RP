@@ -55,7 +55,7 @@
 	icon_state = "sky"
 	ASSERT(!isnull(below()))
 	outdoors = 1
-	set_light(2, 2, color)
+	set_light(2, 2, "#FFFFFF")
 
 /turf/simulated/open/skyplanet/Entered(atom/movable/mover)
 	..()
