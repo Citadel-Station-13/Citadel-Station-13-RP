@@ -3,6 +3,9 @@
 //*****************
 
 /obj/item/proc/disguise(var/newtype, var/mob/user)
+	if(isnull(newtype))
+		disguise_blank()
+		return
 	//this is necessary, unfortunately, as initial() does not play well with list vars
 	var/obj/item/copy = new newtype(null) //so that it is GCed once we exit
 	desc = copy.desc
@@ -36,6 +39,21 @@
 
 	return copy
 
+/obj/item/proc/disguise_blank()
+	desc = ""
+	name = "nothing"
+	icon = null
+	icon_override = null
+	default_worn_icon = null
+	icon_state = null
+	worn_render_flags = null
+	color = null
+	item_state = null
+	inv_hide_flags = null
+	item_icons = null
+	item_state_slots = null
+	sprite_sheets = null
+
 // Subtypes shall override this, not /disguise()
 /obj/item/proc/OnDisguise(var/obj/item/copy, var/mob/user)
 	return
@@ -65,6 +83,8 @@
 		.[name] = path
  	tim_sort(., GLOBAL_PROC_REF(cmp_text_asc))
 
+ 	. = list("None") + .
+
 /obj/item/clothing/under/chameleon
 //starts off as black
 	name = "black jumpsuit"
@@ -86,7 +106,7 @@
 	set category = "Chameleon Items"
 	set src in usr
 
-	if(!ispath(GLOB.clothing_under[picked]))
+	if(picked != "None" && !ispath(GLOB.clothing_under[picked]))
 		return
 
 	disguise(GLOB.clothing_under[picked])
@@ -124,7 +144,7 @@
 	set category = "Chameleon Items"
 	set src in usr
 
-	if(!ispath(GLOB.clothing_head[picked]))
+	if(picked != "None" && !ispath(GLOB.clothing_head[picked]))
 		return
 
 	disguise(GLOB.clothing_head[picked])
@@ -161,7 +181,7 @@
 	set category = "Chameleon Items"
 	set src in usr
 
-	if(!ispath(GLOB.clothing_suit[picked]))
+	if(picked != "None" && !ispath(GLOB.clothing_suit[picked]))
 		return
 
 	disguise(GLOB.clothing_suit[picked])
@@ -197,7 +217,7 @@
 	set category = "Chameleon Items"
 	set src in usr
 
-	if(!ispath(GLOB.clothing_shoes[picked]))
+	if(picked != "None" && !ispath(GLOB.clothing_shoes[picked]))
 		return
 
 	disguise(GLOB.clothing_shoes[picked])
@@ -235,7 +255,7 @@
 	set category = "Chameleon Items"
 	set src in usr
 
-	if(!ispath(GLOB.clothing_backpack[picked]))
+	if(picked != "None" && !ispath(GLOB.clothing_backpack[picked]))
 		return
 
 	disguise(GLOB.clothing_backpack[picked])
@@ -267,7 +287,7 @@
 	set category = "Chameleon Items"
 	set src in usr
 
-	if(!ispath(GLOB.clothing_gloves[picked]))
+	if(picked != "None" && !ispath(GLOB.clothing_gloves[picked]))
 		return
 
 	disguise(GLOB.clothing_gloves[picked])
@@ -304,7 +324,7 @@
 	set category = "Chameleon Items"
 	set src in usr
 
-	if(!ispath(GLOB.clothing_mask[picked]))
+	if(picked != "None" && !ispath(GLOB.clothing_mask[picked]))
 		return
 
 	disguise(GLOB.clothing_mask[picked])
@@ -342,7 +362,7 @@
 	set category = "Chameleon Items"
 	set src in usr
 
-	if(!ispath(GLOB.clothing_glasses[picked]))
+	if(picked != "None" && !ispath(GLOB.clothing_glasses[picked]))
 		return
 
 	disguise(GLOB.clothing_glasses[picked])
@@ -382,7 +402,7 @@
 	set category = "Chameleon Items"
 	set src in usr
 
-	if(!ispath(GLOB.clothing_belt[picked]))
+	if(!picked != "None" && ispath(GLOB.clothing_belt[picked]))
 		return
 
 	disguise(GLOB.clothing_belt[picked])
@@ -414,7 +434,7 @@
 	set category = "Chameleon Items"
 	set src in usr
 
-	if(!ispath(GLOB.clothing_accessory[picked]))
+	if(picked != "None" && !ispath(GLOB.clothing_accessory[picked]))
 		return
 
 	disguise(GLOB.clothing_accessory[picked])
