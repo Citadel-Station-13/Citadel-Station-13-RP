@@ -107,6 +107,7 @@
 	link_below = /datum/map_level/sector/sky_planet/ground_east
 	link_above = /datum/map_level/sector/sky_planet/sky_upper_east
 	air_outdoors = /datum/atmosphere/planet/sky_planet/ground
+	base_turf = /turf/simulated/fake_sky
 
 /datum/map_level/sector/sky_planet/ground_east
 	id = "Skyplanetgroundeast"
