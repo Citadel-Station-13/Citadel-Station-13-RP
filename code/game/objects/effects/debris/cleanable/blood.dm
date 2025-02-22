@@ -85,7 +85,7 @@ var/global/list/image/splatter_cache=list()
 
 /obj/effect/debris/cleanable/blood/Crossed(mob/living/carbon/human/perp)
 	. = ..()
-	if(perp.is_incorporeal())
+	if(perp.is_incorporeal() || perp.is_avoiding_ground())
 		return
 	if (!istype(perp))
 		return

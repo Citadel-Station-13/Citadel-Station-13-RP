@@ -11,7 +11,7 @@
 /turf/simulated/floor/trap/Entered(atom/A)
 	if(isliving(A) && !tripped)
 		var/mob/living/L = A
-		if(L.hovering) // Flying things shouldn't trigger pressure plates.
+		if(L.is_avoiding_ground()) // Flying things shouldn't trigger pressure plates.
 			return ..()
 		trigger()
 	else
