@@ -8,6 +8,8 @@ SUBSYSTEM_DEF(persistence)
 	init_order = INIT_ORDER_PERSISTENCE
 	subsystem_flags = SS_NO_FIRE
 
+	//* World *//
+
 	/// world already loaded?
 	var/static/world_loaded = FALSE
 	/// world saved how many times?
@@ -18,33 +20,25 @@ SUBSYSTEM_DEF(persistence)
 	//  todo: interface on subsystem panel
 	var/static/world_non_canon = FALSE
 
+	//* Prototype Lookup *//
+
 	/// prototype id to typepath
 	var/list/prototype_id_to_path
 
 /datum/controller/subsystem/persistence/Initialize()
 	/// build prototype lookup list
 	build_prototype_id_lookup()
-	LoadPersistence()
+	/// load panic bunker bypass
+	load_panic_bunker()
 	// todo: should this be here? save_the_world is in ticker.
 	if(CONFIG_GET(flag/persistence))
 		load_the_world()
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/persistence/Shutdown()
-	SavePersistence()
+	/// save panic bunker bypass
+	save_panic_bunker()
 	return ..()
-
-/**
-  * Loads all persistent information from disk.
-  */
-/datum/controller/subsystem/persistence/proc/LoadPersistence()
-	LoadPanicBunker()
-
-/**
-  * Saves all persistent information to disk.
-  */
-/datum/controller/subsystem/persistence/proc/SavePersistence()
-	SavePanicBunker()
 
 //* ID Mapping *//
 
