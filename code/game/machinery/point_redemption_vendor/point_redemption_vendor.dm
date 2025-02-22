@@ -50,7 +50,9 @@
 	if(machine_stat != old_stat)
 		update_icon()
 	if(!powered() && inserted_id)
-		SPAN_NOTICE("The ID slot indicator light on [src] flickers as it spits out [inserted_id].")
+		visible_message(
+			SPAN_NOTICE("The ID slot indicator light on [src] flickers as it spits out [inserted_id]."),
+		)
 		inserted_id.forceMove(drop_location())
 
 /obj/machinery/point_redemption_vendor/drop_products(method, atom/where)
@@ -97,7 +99,7 @@
 	switch(action)
 		if("idcard")
 			if(inserted_id)
-				e_args.performer.visible_feedback(
+				e_args.visible_feedback(
 					target = src,
 					range_hard = MESSAGE_RANGE_INVENTORY_SOFT,
 					visible_hard = SPAN_NOTICE("[e_args.performer] retrieves [inserted_id] from [src]."),

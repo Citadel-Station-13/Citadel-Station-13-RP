@@ -1484,7 +1484,6 @@
 #include "code\game\machinery\pipe\pipe_dispenser.dm"
 #include "code\game\machinery\pipe\pipe_recipes.dm"
 #include "code\game\machinery\point_redemption_vendor\construction.dm"
-#include "code\game\machinery\point_redemption_vendor\equipment_vendor.dm"
 #include "code\game\machinery\point_redemption_vendor\point_redemption_item.dm"
 #include "code\game\machinery\point_redemption_vendor\point_redemption_vendor.dm"
 #include "code\game\machinery\point_redemption_vendor\point_redemption_voucher.dm"
