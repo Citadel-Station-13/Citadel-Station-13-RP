@@ -79,7 +79,7 @@
 								if(H.reagents.get_reagent_amount("cryptobiolin") + force < force*2)
 									H.reagents.add_reagent("cryptobiolin", force)
 						if("halloss")
-							H.stun_effect_act(1, force / 2, BP_TORSO, src)
+							H.electrocute(stun_power = force / 2)
 						else
 							return
 					if(update)	H.update_damage_overlay()

@@ -353,7 +353,7 @@
 	pixel_y = 32
 	},
 /obj/item/clothing/shoes/magboots,
-/obj/item/gun/projectile/energy/gun/taser,
+/obj/item/gun/projectile/energy/taser,
 /obj/item/flash,
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)
@@ -400,7 +400,7 @@
 	dir = 1;
 	pixel_y = -32
 	},
-/obj/item/gun/projectile/energy/gun/taser,
+/obj/item/gun/projectile/energy/taser,
 /obj/item/flash,
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)
@@ -464,7 +464,7 @@
 	pixel_x = 32
 	},
 /obj/item/clothing/shoes/magboots,
-/obj/item/gun/projectile/energy/gun/taser,
+/obj/item/gun/projectile/energy/taser,
 /obj/item/flash,
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)
@@ -712,7 +712,7 @@
 	pixel_x = -32
 	},
 /obj/item/clothing/shoes/magboots,
-/obj/item/gun/projectile/energy/gun/taser,
+/obj/item/gun/projectile/energy/taser,
 /obj/item/flash,
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)

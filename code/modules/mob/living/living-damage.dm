@@ -35,8 +35,6 @@
 			adjustCloneLoss(damage * blocked)
 		if(DAMAGE_TYPE_HALLOSS)
 			adjustHalLoss(damage * blocked)
-		if(DAMAGE_TYPE_ELECTROCUTE)
-			electrocute_act(damage, used_weapon, 1.0, def_zone)
 		if(DAMAGE_TYPE_BIOACID)
 			if(isSynthetic())
 				adjustFireLoss(damage * blocked)

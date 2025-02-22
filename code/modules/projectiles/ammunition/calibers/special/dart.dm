@@ -57,7 +57,7 @@
 	var/reagent_amount = 15
 	range = WORLD_ICON_SIZE * 15
 
-	muzzle_type = null
+	legacy_muzzle_type = null
 
 /obj/projectile/bullet/chemdart/Initialize(mapload)
 	. = ..()

@@ -14,64 +14,6 @@
 
 	feedback_add_details("admin_verb","DG2") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-// callproc moved to code/modules/admin/callproc
-
-/client/proc/simple_DPS()
-	set name = "Simple DPS"
-	set category = "Debug"
-	set desc = "Gives a really basic idea of how much hurt something in-hand does."
-
-	var/obj/item/I = null
-	var/mob/living/user = null
-	if(isliving(usr))
-		user = usr
-		I = user.get_active_held_item()
-		if(!I || !istype(I))
-			to_chat(user, "<span class='warning'>You need to have something in your active hand, to use this verb.</span>")
-			return
-		var/weapon_attack_speed = user.get_attack_speed(I) / 10
-		var/weapon_damage = I.damage_force
-		var/modified_damage_percent = 1
-
-		for(var/datum/modifier/M in user.modifiers)
-			if(!isnull(M.outgoing_melee_damage_percent))
-				weapon_damage *= M.outgoing_melee_damage_percent
-				modified_damage_percent *= M.outgoing_melee_damage_percent
-
-		if(istype(I, /obj/item/gun))
-			var/obj/item/gun/G = I
-			var/obj/projectile/P
-
-			if(istype(I, /obj/item/gun/projectile/energy))
-				var/obj/item/gun/projectile/energy/energy_gun = G
-				P = new energy_gun.projectile_type()
-
-			else if(istype(I, /obj/item/gun/projectile/ballistic))
-				var/obj/item/gun/projectile/ballistic/projectile_gun = G
-				var/obj/item/ammo_casing/ammo = projectile_gun.chambered
-				P = ammo.get_projectile()
-
-			else
-				to_chat(user, "<span class='warning'>DPS calculation by this verb is not supported for \the [G]'s type. Energy or Ballistic only, sorry.</span>")
-
-			weapon_damage = P.damage_force
-			weapon_attack_speed = G.fire_delay / 10
-			qdel(P)
-
-		var/DPS = weapon_damage / weapon_attack_speed
-		to_chat(user, "<span class='notice'>Damage: [weapon_damage][modified_damage_percent != 1 ? " (Modified by [modified_damage_percent*100]%)":""]</span>")
-		to_chat(user, "<span class='notice'>Attack Speed: [weapon_attack_speed]/s</span>")
-		to_chat(user, "<span class='notice'>\The [I] does <b>[DPS]</b> damage per second.</span>")
-		if(DPS > 0)
-			to_chat(user, "<span class='notice'>At your maximum health ([user.getMaxHealth()]), it would take approximately;</span>")
-			to_chat(user, "<span class='notice'>[(user.getMaxHealth() - user.getCritHealth()) / DPS] seconds to softcrit you. ([user.getSoftCritHealth()] health)</span>")
-			to_chat(user, "<span class='notice'>[(user.getMaxHealth() - user.getCritHealth()) / DPS] seconds to hardcrit you. ([user.getCritHealth()] health)</span>")
-			to_chat(user, "<span class='notice'>[(user.getMaxHealth() - user.getMinHealth()) / DPS] seconds to kill you. ([user.getMinHealth()] health)</span>")
-
-	else
-		to_chat(user, "<span class='warning'>You need to be a living mob, with hands, and for an object to be in your active hand, to use this verb.</span>")
-		return
-
 /client/proc/Cell()
 	set category = "Debug"
 	set name = "Cell"

@@ -430,8 +430,6 @@
 		holder.owner = null
 		GLOB.admins -= src //delete them on the managed one too
 
-	active_mousedown_item = null
-
 	//* Cleanup rendering *//
 	if(using_perspective)
 		set_perspective(null)

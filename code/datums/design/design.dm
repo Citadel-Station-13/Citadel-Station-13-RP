@@ -38,8 +38,11 @@
 	/// desc of item before any desc-generation is done. also shown in ui. if null, it'll be auto-detected from the build_path if possible.
 	var/build_desc
 	/// type of what we build
+	///
+	/// * Autodetection only works on /obj's.
 	var/build_path
-	/// types of lathes that can print us
+	/// Types of lathes that can print us.
+	/// * Type: /bitfield/lathe_type
 	var/lathe_type = NONE
 	/// time needed in deciseconds - for stacks, this is time *PER SHEET*.
 	var/work = 5 SECONDS
@@ -85,9 +88,12 @@
 		is_stack = TRUE
 		var/obj/item/stack/stack_path = build_path
 		max_stack = initial(stack_path.max_amount)
-	var/obj/item/instance = SSatoms.instance_atom_immediate(build_path)
+	var/obj/instance = SSatoms.instance_atom_immediate(build_path)
 	// lathe designs shouldn't be qdeleting, but incase someone puts in a random..
 	if(QDELETED(instance))
+		return
+	if(!isobj(instance))
+		qdel(instance)
 		return
 	if(isnull(materials_base))
 		var/list/fetched = instance.detect_material_base_costs()
