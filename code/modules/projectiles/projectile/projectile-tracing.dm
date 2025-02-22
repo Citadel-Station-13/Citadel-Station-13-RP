@@ -40,6 +40,7 @@
 	return ..()
 
 /obj/projectile/trace/pre_impact(atom/target, impact_flags, def_zone)
+	scanned_atoms += target
 	if(target == original_target)
 		could_hit_target = TRUE
 		if(del_on_success)
@@ -50,7 +51,6 @@
 		could_hit_target = TRUE
 		if(del_on_success)
 			return PROJECTILE_IMPACT_DELETE
-	scanned_atoms += target
 	. = ..()
 	// tracers only count as 'can move across' if pre_impact() says we should phase/pierce.
 	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_GO_THROUGH)
