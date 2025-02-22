@@ -406,7 +406,8 @@
 		if(prob(10) && (efficiency >= 0.9))
 			L.afflict_stun(2 SECONDS)
 			L.Confuse(1)
-		L.throw_at_old(get_edge_target_turf(L, throwdir), rand(3,6), 10)
+		if(!L.throwing)
+			L.throw_at_old(get_edge_target_turf(L, throwdir), rand(3,6), 10)
 
 /* Incendiary */
 

@@ -251,7 +251,7 @@
 /obj/item/proc/update_worn_icon()
 	if(!worn_slot)
 		return	// acceptable
-	var/mob/M = worn_mob()
+	var/mob/M = get_worn_mob()
 	ASSERT(M)	// not acceptable
 	if(held_index)
 		M.update_inv_hand(held_index)
@@ -468,7 +468,7 @@
 
 	return data
 
-/obj/item/proc/debug_worn_assets(slot_or_id, mob/M = worn_mob(), bodytype)
+/obj/item/proc/debug_worn_assets(slot_or_id, mob/M = get_worn_mob(), bodytype)
 	var/mob/living/carbon/human/H = ishuman(M)? M : null
 	var/datum/inventory_slot/slot_meta
 	if(isnull(slot_or_id))

@@ -143,7 +143,7 @@
 /area/submap/virgo2/Rockybase)
 "aD" = (
 /obj/structure/table/rack,
-/obj/item/gun/projectile/energy/gun/taser,
+/obj/item/gun/projectile/energy/taser,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "aE" = (

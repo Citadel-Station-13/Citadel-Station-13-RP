@@ -397,9 +397,6 @@
 		master = null
 	return ..()
 
-/atom/movable/proc/get_bullet_impact_effect_type()
-	return BULLET_IMPACT_NONE
-
 // todo: we should probably have a way to just copy an appearance clone or something without render-targeting
 
 /**
@@ -415,10 +412,9 @@
  *
  * @params
  * * location - where to clone us
- * * include_contents - include semantic contents; ergo 'what we are hosting' vs 'what we are'
  */
-/atom/movable/clone(atom/location, include_contents)
-	return ..(include_contents)
+/atom/movable/clone(atom/location)
+	return ..()
 
 //? Perspectives
 /**

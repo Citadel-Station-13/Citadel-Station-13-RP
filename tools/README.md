@@ -8,8 +8,13 @@ All versions are grabbed from ../dependencies.sh
 - /build: The build system
 - /ci: Scripts used for our CI suite
 - /common: Common functions/things to include.
+- /dmi: A Python DMI handling module.
 - /setup_dev_db: Automatic way to setup and provision a development database, stored in the local data directory.
 - /tgs4_scripts: Scripts for tgstation-server to orchestrate server compiles/deploys/etc.
+
+# Python
+
+Python modules can be accessed from the root of /tools folder.
 
 # Todo
 

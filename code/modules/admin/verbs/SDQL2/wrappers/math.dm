@@ -26,3 +26,12 @@
 
 /proc/sdql_turn(dir, angle)
 	return turn(dir, angle)
+
+/proc/sdql_round(A, B)
+	return round(A, B)
+
+/proc/sdql_floor(A, B = 1)
+	return FLOOR(A, B)
+
+/proc/sdql_ceil(A, B = 1)
+	return CEILING(A, B)

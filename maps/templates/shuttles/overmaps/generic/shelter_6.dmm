@@ -1142,9 +1142,6 @@
 /obj/item/hardsuit/pmc/security,
 /obj/item/hardsuit/pmc/security,
 /obj/item/hardsuit/light/ninja,
-/obj/item/gun/projectile/energy/modular/cannon,
-/obj/item/gun/projectile/energy/modular/carbine,
-/obj/item/gun/projectile/energy/modular,
 /obj/item/gun/projectile/energy/medigun,
 /obj/item/gun/projectile/energy/captain,
 /obj/item/material/knife/machete/deluxe{

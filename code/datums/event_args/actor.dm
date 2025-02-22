@@ -1,7 +1,16 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
+
+// todo: mob.generate_simulated_actor(...)
+
 /**
  * used to hold semantic data about an action being done by an actor vs initiator (controller)
  */
 /datum/event_args/actor
+	/// Is this a simulated event?
+	/// * This is used for logging.
+	/// * This should be set to TRUE if this didn't originate from a player's client.
+	var/simulated = FALSE
 	/// the mob performing the action
 	var/mob/performer
 	/// the mob actually initiating the action, e.g. a remote controller.
@@ -11,8 +20,11 @@
 	src.performer = performer
 	src.initiator = initiator || performer
 
-/datum/event_args/actor/clone(include_contents)
-	return new /datum/event_args/actor(performer, initiator)
+/datum/event_args/actor/clone()
+	var/datum/event_args/actor/cloning = new
+	cloning.performer = performer
+	cloning.initiator = initiator
+	return cloning
 
 //* Logging *//
 

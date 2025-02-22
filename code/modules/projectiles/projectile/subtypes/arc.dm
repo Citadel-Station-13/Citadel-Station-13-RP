@@ -43,16 +43,10 @@
 	var/datum/point/starting_point = new(starting)
 	return pixel_length_between_points(current_point, starting_point)
 
-/obj/projectile/arc/launch_projectile(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
-	fired_dir = get_dir(user, target) // Used to determine if the projectile should turn in the air.
-	distance_to_fly = calculate_initial_pixel_distance(user, target) // Calculates how many pixels to travel before hitting the ground.
-	..() // Does the actual launching. The projectile will be out after this.
-
-// For legacy.
-/obj/projectile/arc/old_style_target(atom/target, atom/source)
+/obj/projectile/arc/fire(set_angle_to, atom/direct_target, no_source_check, datum/callback/on_submunition_ready)
 	..()
-	fired_dir = get_dir(source, target)
-	distance_to_fly = calculate_initial_pixel_distance(source, target)
+	fired_dir = angle2dir(angle)
+	distance_to_fly = calculate_initial_pixel_distance(src, original_target)
 
 /obj/projectile/arc/physics_iteration(pixels)
 	// Do the other important stuff first.
