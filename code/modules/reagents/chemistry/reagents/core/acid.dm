@@ -21,7 +21,7 @@
 		if(H.head)
 			if(H.head.integrity_flags & INTEGRITY_ACIDPROOF)
 				to_chat(H, "<span class='danger'>Your [H.head] protects you from the acid.</span>")
-				remove_self(volume)
+				metabolism.legacy_current_holder.remove_reagent(id, volume)
 				return
 			else if(removed > meltdose)
 				to_chat(H, "<span class='danger'>Your [H.head] melts away!</span>")
@@ -35,7 +35,7 @@
 		if(H.wear_mask)
 			if(H.wear_mask.integrity_flags & INTEGRITY_ACIDPROOF)
 				to_chat(H, "<span class='danger'>Your [H.wear_mask] protects you from the acid.</span>")
-				remove_self(volume)
+				metabolism.legacy_current_holder.remove_reagent(id, volume)
 				return
 			else if(removed > meltdose)
 				to_chat(H, "<span class='danger'>Your [H.wear_mask] melts away!</span>")
@@ -58,11 +58,11 @@
 		if(removed <= 0)
 			return
 
-	if(volume < meltdose) // Not enough to melt anything
+	if(metabolism.legacy_volume_remaining < meltdose) // Not enough to melt anything
 		M.take_random_targeted_damage(brute = 0, brute = removed * power * 0.2) //burn damage, since it causes chemical burns. Acid doesn't make bones shatter, like brute trauma would.
 		return
 	if(!M.unacidable && removed > 0)
-		if(istype(M, /mob/living/carbon/human) && volume >= meltdose)
+		if(istype(M, /mob/living/carbon/human) && metabolism.legacy_volume_remaining >= meltdose)
 			var/mob/living/carbon/human/H = M
 			var/obj/item/organ/external/affecting = H.get_organ(BP_HEAD)
 			if(affecting)
@@ -87,5 +87,5 @@
 		for(var/mob/M in viewers(5, O))
 			to_chat(M, "<span class='warning'>\The [O] melts.</span>")
 		qdel(O)
-		remove_self(meltdose) // 10 units of acid will not melt EVERYTHING on the tile
+		. += meltdose
 
