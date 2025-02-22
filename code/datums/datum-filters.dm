@@ -4,7 +4,7 @@
  *
  * Arguments:
  * * name - Filter name
- * * priority - Priority used when sorting the filter.
+ * * priority - Priority used when sorting the filter. Lower is applied first.
  * * params - Parameters of the filter.
  */
 /datum/proc/add_filter(name, priority, list/params)
@@ -37,6 +37,10 @@
 		atom_cast.filters += filter(arglist(arguments))
 	UNSETEMPTY(filter_data)
 	SEND_SIGNAL(src, COMSIG_ATOM_RELOAD_FILTERS)
+
+/obj/item/update_filters()
+	. = ..()
+	update_action_buttons()
 
 /** Update a filter's parameter to the new one. If the filter doesn't exist we won't do anything.
  *
@@ -110,6 +114,7 @@
 
 	if(.)
 		update_filters()
+	return .
 
 /datum/proc/clear_filters()
 	ASSERT(isatom(src) || isimage(src))
