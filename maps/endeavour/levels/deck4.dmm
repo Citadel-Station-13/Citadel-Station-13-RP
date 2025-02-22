@@ -7293,11 +7293,11 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/endeavour/hallway/d4portforhall)
 "hHi" = (
-/obj/effect/floor_decal/corner/paleblue{
-	dir = 5
+/obj/machinery/computer/med_data{
+	dir = 1
 	},
-/turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4fwdmaint)
 "hHC" = (
 /obj/structure/window/basic{
 	dir = 1
@@ -7391,12 +7391,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/command/turrets)
 "hKh" = (
-/obj/effect/floor_decal/corner/paleblue{
-	dir = 10
-	},
-/obj/effect/floor_decal/corner/paleblue{
-	dir = 4
-	},
 /obj/machinery/light/no_nightshift,
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/command/turrets)
@@ -9544,6 +9538,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/engineering/storage)
+"kaa" = (
+/obj/structure/catwalk,
+/obj/machinery/computer/med_data{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4fwdmaint)
 "kab" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/lightorange/border,
@@ -13082,9 +13083,6 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4starboardamidhall)
 "nLM" = (
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
 /turf/simulated/floor/tiled/dark,
 /area/endeavour/hallway/d4fwdmaint)
 "nMm" = (
@@ -13719,14 +13717,17 @@
 /turf/simulated/floor/tiled/steel,
 /area/tcommsat/computer)
 "oyc" = (
-/obj/effect/floor_decal/corner/paleblue{
-	dir = 10
-	},
 /obj/machinery/newscaster{
 	pixel_y = -32
 	},
 /obj/machinery/computer/mecha{
 	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/command/turrets)
@@ -15899,9 +15900,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "rfo" = (
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
 /obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/dark,
 /area/endeavour/hallway/d4fwdmaint)
@@ -41601,7 +41599,7 @@ wiw
 crZ
 suN
 ttr
-hHi
+xKd
 oyc
 wiw
 bkn
@@ -41795,7 +41793,7 @@ wiw
 ohC
 nNh
 ttr
-xKd
+ttr
 hKh
 wiw
 bkn
@@ -43154,8 +43152,8 @@ xXL
 xXL
 lHm
 xXL
-xXL
-dvY
+kaa
+hHi
 xsV
 bkn
 xom
@@ -43348,8 +43346,8 @@ dvY
 dvY
 qBz
 dvY
-xXL
-dvY
+kaa
+hHi
 xsV
 bkn
 hPQ
@@ -43542,8 +43540,8 @@ goj
 qBz
 qBz
 dvY
-xXL
-dvY
+kaa
+hHi
 xsV
 pXJ
 ulo
@@ -49365,7 +49363,7 @@ gPd
 qBz
 dvY
 xXL
-pUe
+dvY
 hRW
 eeD
 eeD
@@ -51310,7 +51308,7 @@ gGG
 gGG
 mLs
 nLM
-qgV
+gpO
 qgV
 rax
 doA
