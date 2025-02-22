@@ -154,6 +154,7 @@
 		if(EJECT_CASINGS) //eject casing onto ground.
 			if(chambered.casing_flags & CASING_DELETE)
 				qdel(chambered)
+				chambered = null
 				return
 			else
 				chambered.forceMove(get_turf(src))
