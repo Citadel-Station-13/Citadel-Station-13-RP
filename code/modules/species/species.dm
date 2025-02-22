@@ -1052,7 +1052,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 			T.remove(src, H)
 		src.traits = traits
 
-		H.icon_state = lowertext(get_bodytype_legacy())
+		//H.icon_state = lowertext(get_bodytype_legacy())
 
 		if(holder_type)
 			H.holder_type = holder_type
