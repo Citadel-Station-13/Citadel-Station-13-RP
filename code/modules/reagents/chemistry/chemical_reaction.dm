@@ -117,6 +117,12 @@
 	/// todo: reactions being able to go in reverse once reaching equilibrium
 	var/equilibrium = INFINITY
 
+	/**
+	 * Perform data calculations. This is semi-expensive.
+	 */
+	var/has_data_semantics = FALSE
+	#warn deal with this
+
 	//* Reaction - Feedback *//
 	/// if set, everyone around sees this on react
 	var/reaction_message_instant = "The solution begins to bubble."
@@ -201,6 +207,19 @@
 #warn refactor
 /datum/chemical_reaction/proc/send_data(datum/reagent_holder/holder, reaction_limit)
 	return null
+
+/**
+ * Performs data calculations for the data **initializer** to give to the result.
+ *
+ * * Only called if `has_data_semantics` is on.
+ *
+ * @params
+ * * holder - source holder
+ * * multiplier - reaction multiplier
+ */
+#warn this
+/datum/chemical_reaction/proc/compute_result_data_initializer(datum/reagent_holder/holder, multiplier)
+	return
 
 //* Guidebook *//
 
