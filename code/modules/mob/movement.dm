@@ -2,7 +2,7 @@
 //See code/modules/movespeed/movespeed_modifier.dm
 /mob/proc/movement_delay()	//update /living/movement_delay() if you change this
 	SHOULD_CALL_PARENT(TRUE)
-	return cached_multiplicative_slowdown
+	return cached_hyperbolic_slowdown
 
 /mob/proc/applyMoveCooldown(amount)
 	move_delay = max(move_delay, world.time + amount)
@@ -130,7 +130,7 @@
 		return
 	// nonliving get handled differently
 	if(!isliving(mob))
-		mob.move_delay = world.time + mob.cached_multiplicative_slowdown
+		mob.move_delay = world.time + mob.cached_hyperbolic_slowdown
 		return mob.Move(n, direct)
 	// autoghost if needed
 	if((mob.stat == DEAD) && isliving(mob) && !mob.forbid_seeing_deadchat)

@@ -155,9 +155,6 @@
 /proc/_roll(dice)
 	return roll(dice)
 
-/proc/_round(A, B = 1)
-	return round(A, B)
-
 /proc/_sin(X)
 	return sin(X)
 

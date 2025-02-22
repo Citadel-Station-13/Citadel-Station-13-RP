@@ -353,7 +353,7 @@
 //*****************
 //**Chameleon Gun**
 //*****************
-/obj/item/gun/energy/chameleon
+/obj/item/gun/projectile/energy/chameleon
 	name = "desert eagle"
 	desc = "A hologram projector in the shape of a gun. There is a dial on the side to change the gun's disguise."
 	icon = 'icons/obj/gun/holographic.dmi'
@@ -366,12 +366,12 @@
 	projectile_type = /obj/projectile/chameleon
 	charge_meter = 0
 	charge_cost = 48 //uses next to no power, since it's just holograms
-	battery_lock = 1
+	legacy_battery_lock = 1
 
 	var/obj/projectile/copy_projectile
 	var/global/list/gun_choices
 
-/obj/item/gun/energy/chameleon/Initialize(mapload)
+/obj/item/gun/projectile/energy/chameleon/Initialize(mapload)
 	. = ..()
 
 	if(!gun_choices)
@@ -380,9 +380,9 @@
 			var/obj/item/gun/G = gun_type
 			src.gun_choices[initial(G.name)] = gun_type
 
-/obj/item/gun/energy/chameleon/consume_next_projectile()
+/obj/item/gun/projectile/energy/chameleon/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	var/obj/projectile/P = ..()
-	if(P && ispath(copy_projectile))
+	if(istype(P) && ispath(copy_projectile))
 		P.name = initial(copy_projectile.name)
 		P.icon = initial(copy_projectile.icon)
 		P.icon_state = initial(copy_projectile.icon_state)
@@ -390,19 +390,19 @@
 		P.fire_sound = initial(copy_projectile.fire_sound)
 		P.hitscan = initial(copy_projectile.hitscan)
 		P.speed = initial(copy_projectile.speed)
-		P.muzzle_type = initial(copy_projectile.muzzle_type)
-		P.tracer_type = initial(copy_projectile.tracer_type)
-		P.impact_type = initial(copy_projectile.impact_type)
+		P.legacy_muzzle_type = initial(copy_projectile.legacy_muzzle_type)
+		P.legacy_tracer_type = initial(copy_projectile.legacy_tracer_type)
+		P.legacy_impact_type = initial(copy_projectile.legacy_impact_type)
 	return P
 
-/obj/item/gun/energy/chameleon/emp_act(severity)
+/obj/item/gun/projectile/energy/chameleon/emp_act(severity)
 	name = "desert eagle"
 	desc = "It's a desert eagle."
 	icon_state = "deagle"
 	update_icon()
 	update_worn_icon()
 
-/obj/item/gun/energy/chameleon/disguise(var/newtype)
+/obj/item/gun/projectile/energy/chameleon/disguise(var/newtype)
 	var/obj/item/gun/copy = ..()
 
 	modifystate = copy.icon_state
@@ -422,7 +422,7 @@
 		copy_projectile = null
 		//charge_meter = 0
 
-/obj/item/gun/energy/chameleon/verb/change(picked in gun_choices)
+/obj/item/gun/projectile/energy/chameleon/verb/change(picked in gun_choices)
 	set name = "Change Gun Appearance"
 	set category = "Chameleon Items"
 	set src in usr

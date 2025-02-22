@@ -33,12 +33,6 @@
 			to_chat(L, "<span class='danger'>ERROR: Electrical fault detected!</span>")
 			L.stuttering += 3
 
-		if(ishuman(L))
-			var/mob/living/carbon/human/H = L
-			var/obj/item/organ/external/affected = H.get_organ(check_zone(BP_TORSO))
-			H.electrocute_act(power, src, H.get_siemens_coefficient_organ(affected), affected)
-		else
-			L.electrocute_act(power, src, 0.75, BP_TORSO)
-
+		L.electrocute(power * 10, power, 0, ELECTROCUTE_ACT_FLAG_INTERNAL | ELECTROCUTE_ACT_FLAG_UNIFORM, BP_TORSO, src)
 
 	adjust_instability(3)

@@ -42,7 +42,7 @@
 /obj/structure/sign/department/armory{
 	pixel_x = 32
 	},
-/obj/item/gun/ballistic/automatic/z8,
+/obj/item/gun/projectile/ballistic/automatic/z8,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "abg" = (
@@ -3451,8 +3451,8 @@
 /area/medical/medbay_primary_storage)
 "bYv" = (
 /obj/structure/table/steel,
-/obj/item/gun/energy/laser/practice,
-/obj/item/gun/energy/laser/practice,
+/obj/item/gun/projectile/energy/laser/practice,
+/obj/item/gun/projectile/energy/laser/practice,
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 4;
 	pixel_y = -28
@@ -7520,10 +7520,10 @@
 /area/crew_quarters/sleep/Dorm_2)
 "eIB" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/gun/projectile/energy/gun,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/camera/network/security,
 /obj/machinery/air_alarm{
@@ -8373,10 +8373,10 @@
 /area/maintenance/substation/surface_two)
 "fmV" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/ionrifle{
+/obj/item/gun/projectile/energy/ionrifle{
 	pixel_y = 5
 	},
-/obj/item/gun/energy/ionrifle,
+/obj/item/gun/projectile/energy/ionrifle,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
@@ -14873,10 +14873,10 @@
 "jqk" = (
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/phasegun/rifle{
+/obj/item/gun/projectile/energy/phasegun/rifle{
 	pixel_y = 4
 	},
-/obj/item/gun/energy/phasegun/rifle{
+/obj/item/gun/projectile/energy/phasegun/rifle{
 	pixel_y = -4
 	},
 /obj/structure/cable/green{
@@ -16521,8 +16521,8 @@
 /area/crew_quarters/heads/hor)
 "kre" = (
 /obj/structure/table/steel,
-/obj/item/gun/ballistic/shotgun/pump/rifle/practice,
-/obj/item/gun/ballistic/shotgun/pump/rifle/practice,
+/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/practice,
+/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/practice,
 /obj/item/ammo_magazine/a7_62mm/clip/practice,
 /obj/item/ammo_magazine/a7_62mm/clip/practice,
 /obj/item/ammo_magazine/a7_62mm/clip/practice,
@@ -18117,16 +18117,16 @@
 "llD" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/item/gun/energy/secutor{
+/obj/item/gun/projectile/energy/secutor{
 	pixel_y = -5
 	},
-/obj/item/gun/energy/secutor{
+/obj/item/gun/projectile/energy/secutor{
 	pixel_y = -3
 	},
-/obj/item/gun/energy/secutor{
+/obj/item/gun/projectile/energy/secutor{
 	pixel_y = -1
 	},
-/obj/item/gun/energy/secutor{
+/obj/item/gun/projectile/energy/secutor{
 	pixel_y = 1
 	},
 /turf/simulated/floor/tiled/dark,
@@ -19243,11 +19243,11 @@
 "lVi" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/effect/floor_decal/industrial/outline/red,
-/obj/item/gun/ballistic/automatic/wt550{
+/obj/item/gun/projectile/ballistic/automatic/wt550{
 	pixel_y = -7
 	},
-/obj/item/gun/ballistic/automatic/wt550,
-/obj/item/gun/ballistic/automatic/wt550{
+/obj/item/gun/projectile/ballistic/automatic/wt550,
+/obj/item/gun/projectile/ballistic/automatic/wt550{
 	pixel_y = 7
 	},
 /turf/simulated/floor/tiled/dark,
@@ -21092,7 +21092,7 @@
 /obj/effect/floor_decal/borderfloorblack/cee,
 /obj/item/ammo_magazine/a44,
 /obj/item/ammo_magazine/a44,
-/obj/item/gun/ballistic/deagle/taj,
+/obj/item/gun/projectile/ballistic/deagle/taj,
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "mVF" = (
@@ -27488,28 +27488,28 @@
 /obj/structure/sign/department/armory{
 	pixel_y = 32
 	},
-/obj/item/gun/ballistic/shotgun/pump/combat{
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat{
 	pixel_y = 7
 	},
-/obj/item/gun/ballistic/shotgun/pump/combat{
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat{
 	pixel_y = 7
 	},
-/obj/item/gun/ballistic/shotgun/pump/combat{
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat{
 	pixel_y = 7
 	},
-/obj/item/gun/ballistic/shotgun/pump/combat{
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat{
 	pixel_y = 7
 	},
-/obj/item/gun/energy/laser{
+/obj/item/gun/projectile/energy/laser{
 	pixel_y = -8
 	},
-/obj/item/gun/energy/laser{
+/obj/item/gun/projectile/energy/laser{
 	pixel_y = -8
 	},
-/obj/item/gun/energy/laser{
+/obj/item/gun/projectile/energy/laser{
 	pixel_y = -8
 	},
-/obj/item/gun/energy/laser{
+/obj/item/gun/projectile/energy/laser{
 	pixel_y = -8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -29869,14 +29869,14 @@
 "syF" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/item/gun/energy/taser{
+/obj/item/gun/projectile/energy/taser{
 	pixel_y = -4
 	},
-/obj/item/gun/energy/taser{
+/obj/item/gun/projectile/energy/taser{
 	pixel_y = -2
 	},
-/obj/item/gun/energy/taser,
-/obj/item/gun/energy/taser{
+/obj/item/gun/projectile/energy/taser,
+/obj/item/gun/projectile/energy/taser{
 	pixel_y = 2
 	},
 /turf/simulated/floor/tiled/dark,
@@ -36290,9 +36290,9 @@
 "wQJ" = (
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/ballistic/fiveseven,
-/obj/item/gun/ballistic/fiveseven,
-/obj/item/gun/ballistic/fiveseven,
+/obj/item/gun/projectile/ballistic/fiveseven,
+/obj/item/gun/projectile/ballistic/fiveseven,
+/obj/item/gun/projectile/ballistic/fiveseven,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "wRc" = (

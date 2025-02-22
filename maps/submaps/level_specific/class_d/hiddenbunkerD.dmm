@@ -330,7 +330,7 @@
 /area/class_d/Mountain)
 "TI" = (
 /obj/structure/table/reinforced,
-/obj/item/gun/ballistic/automatic/tommygun,
+/obj/item/gun/projectile/ballistic/automatic/tommygun,
 /obj/machinery/light{
 	dir = 4
 	},
