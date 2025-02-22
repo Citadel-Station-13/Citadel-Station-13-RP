@@ -10,7 +10,6 @@
 	icon_state_append_vend = "-vend"
 	point_type = POINT_REDEMPTION_TYPE_SURVEY
 	circuit = /obj/item/circuitboard/point_redemption_vendor/survey
-	child = TRUE
 	prize_list = list(
 		new /datum/point_redemption_item("1 Marker Beacon",				/obj/item/stack/marker_beacon,								1),
 		new /datum/point_redemption_item("10 Marker Beacons",			/obj/item/stack/marker_beacon/ten,							10),

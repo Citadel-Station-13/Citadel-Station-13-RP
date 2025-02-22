@@ -9,8 +9,6 @@
 	/// stored points
 	var/list/stored_redemption_points
 
-#warn impl all
-
 /obj/item/point_redemption_voucher/Initialize(mapload, list/points)
 	. = ..()
 	if(points)

@@ -44,10 +44,10 @@
 	return ..()
 
 /obj/machinery/point_redemption_vendor/power_change()
-	var/old_stat = stat
+	var/old_stat = machine_stat
 	. = ..()
 	// todo: machine-level update icon hook?
-	if(stat != old_stat)
+	if(machine_stat != old_stat)
 		update_icon()
 	if(!powered() && inserted_id)
 		SPAN_NOTICE("The ID slot indicator light on [src] flickers as it spits out [inserted_id].")
@@ -63,23 +63,69 @@
 	. = ..()
 	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
-	if(istype(using, /obj/item/card/id))
-		if(inserted_id)
-			e_args?.chat_feedback(
-				SPAN_WARNING("[src] already has an inserted ID."),
-				target = src,
-			)
-			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
-		#warn impl
+	if(handle_id_insertion(using, e_args))
+		// in either case they wouldn't do anything because the id is either not on them anymore
+		// or is not going to touch the machine
+		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
-/obj/machinery/point_redemption_vendor/ui_act(action, list/params, datum/tgui/ui)
+/**
+ * @return TRUE if handled
+ */
+/obj/machinery/point_redemption_vendor/proc/handle_id_insertion(obj/item/maybe_id, datum/event_args/actor/actor)
+	if(istype(maybe_id, /obj/item/card/id))
+		return FALSE
+	if(inserted_id)
+		actor.chat_feedback(
+			SPAN_WARNING("[src] already has an inserted ID."),
+			target = src,
+		)
+		return TRUE
+	if(!actor.performer.attempt_insert_item_for_installation(maybe_id, src))
+		return TRUE
+	actor.chat_feedback(
+		SPAN_NOTICE("You insert [maybe_id] into [src]'s card slot."),
+		target = src,
+	)
+	inserted_id = maybe_id
+	return TRUE
+
+/obj/machinery/point_redemption_vendor/ui_act(action, list/params, datum/tgui/ui, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return
 
 	switch(action)
 		if("idcard")
+			if(inserted_id)
+				e_args.performer.visible_feedback(
+					target = src,
+					range_hard = MESSAGE_RANGE_INVENTORY_SOFT,
+					visible_hard = SPAN_NOTICE("[e_args.performer] retrieves [inserted_id] from [src]."),
+				)
+				e_args.performer.put_in_hands_or_drop(inserted_id)
+				inserted_id = null
+			else if(!inserted_id)
+				var/obj/item/active_held = e_args.performer.get_active_held_item()
+				handle_id_insertion(active_held, e_args)
+			return TRUE
 		if("buy")
+			if(!inserted_id)
+				return TRUE
+			// double-verify incase entry changed; we don't give them the refs though so
+			// no locate() in list!
+			var/target_index = params["index"]
+			var/target_name = params["name"]
+			if(target_index < 1 || target_index > length(prize_list))
+				update_static_data(hard_refresh = TRUE)
+				return TRUE
+			var/datum/point_redemption_item/resolved = prize_list[target_index]
+			if(resolved.name != target_name)
+				update_static_data(hard_refresh = TRUE)
+				return TRUE
+			if(inserted_id.get_redemption_points(point_type) < resolved.cost)
+				return TRUE
+			vend_item(resolved)
+			return TRUE
 
 /obj/machinery/point_redemption_vendor/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -109,3 +155,17 @@
 		"owner" = inserted_id.registered_name,
 	) : null
 
+/obj/machinery/point_redemption_vendor/proc/vend_item(datum/point_redemption_item/item)
+	item.instantiate(drop_location())
+	flick_vend()
+	return TRUE
+
+/obj/machinery/point_redemption_vendor/proc/flick_deny()
+	if(!icon_state_append_deny)
+		return
+	flick("[base_icon_state || initial(icon_state)][icon_state_append_deny]", src)
+
+/obj/machinery/point_redemption_vendor/proc/flick_vend()
+	if(!icon_state_append_vend)
+		return
+	flick("[base_icon_state || initial(icon_state)][icon_state_append_vend]", src)

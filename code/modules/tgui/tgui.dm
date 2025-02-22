@@ -412,7 +412,7 @@
 					window = window,
 					src_object = src_object)
 				process_status()
-				if(src_object.ui_act(action, payload, src))
+				if(src_object.ui_act(action, payload, src, new /datum/event_args/actor(usr)))
 					SStgui.update_uis(src_object)
 				return FALSE
 			if("mod/")	// module act
