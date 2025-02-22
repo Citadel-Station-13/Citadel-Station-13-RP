@@ -34,6 +34,11 @@
 /obj/item/cell/high/empty
 	charge = 0
 
+/obj/item/cell/high/plus
+	name = "high-capacity power cell"
+	icon_state = "hcell"
+	maxcharge = 15000
+
 /obj/item/cell/super
 	name = "super-capacity power cell"
 	origin_tech = list(TECH_POWER = 5)

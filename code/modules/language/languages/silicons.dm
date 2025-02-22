@@ -55,7 +55,7 @@
 	if (isrobot(speaker))
 		var/mob/living/silicon/robot/R = speaker
 		var/datum/robot_component/C = R.components["comms"]
-		R.cell_use_power(C.active_usage)
+		R.legacy_cell_use_power(C.active_usage)
 
 /datum/prototype/language/binary/drone
 	id = LANGUAGE_ID_DRONE_BINARY

@@ -217,7 +217,7 @@
 	target_stack.use(1)
 	var/obj/item/stack/S = new rod_product(get_turf(user))
 	S.add_fingerprint(user)
-	S.add_to_stacks(user)
+	S.legacy_add_to_stacks_please_refactor_me(user)
 
 /datum/prototype/material/proc/build_wired_product(mob/living/user, obj/item/stack/used_stack, obj/item/stack/target_stack)
 	if(!wire_product)

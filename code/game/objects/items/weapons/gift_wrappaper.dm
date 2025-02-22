@@ -276,7 +276,7 @@
 		return
 	var/mob/living/carbon/human/H = target
 
-	if (istype(H.inventory.get_slot_single(/datum/inventory_slot/inventory/suit), /obj/item/clothing/suit/straight_jacket) || H.stat)
+	if (istype(H.inventory.get_slot_single(/datum/inventory_slot/inventory/suit::id), /obj/item/clothing/suit/straight_jacket) || H.stat)
 		if (src.amount > 2)
 			var/obj/effect/spresent/present = new /obj/effect/spresent (H.loc)
 			src.amount -= 2

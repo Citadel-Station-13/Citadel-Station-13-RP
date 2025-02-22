@@ -65,7 +65,7 @@
 	//? Core cyborg code
 	// Cyborgs have no range-checking unless there is item use
 	if(!I)
-		if(bolt && !bolt.malfunction && A.loc != module)
+		if(bolt && !bolt.malfunction && A.loc != src)
 			return
 		A.add_hiddenprint(src)
 		A.attack_robot(src)
@@ -100,11 +100,6 @@
 		// todo: refactor aiming
 		trigger_aiming(TARGET_CAN_CLICK)
 		return
-
-//Middle click cycles through selected modules.
-/mob/living/silicon/robot/MiddleClickOn(var/atom/A)
-	cycle_modules()
-	return
 
 //Give cyborgs hotkey clicks without breaking existing uses of hotkey clicks
 // for non-doors/apcs

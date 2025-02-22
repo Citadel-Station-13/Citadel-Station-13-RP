@@ -8,14 +8,12 @@
  * * For compound items, this only returns the outermost / host / root.
  *
  * @params
- * * type_or_id - slot typepath or id
+ * * id - slot id
  *
  * @return /obj/item or null
  */
-/datum/inventory/proc/get_slot_single(datum/inventory_slot/type_or_id) as /obj/item
-	if(ispath(type_or_id))
-		type_or_id = initial(type_or_id.id)
-	. = owner._item_by_slot(type_or_id)
+/datum/inventory/proc/get_slot_single(id) as /obj/item
+	. = owner._item_by_slot(id)
 	if(. == INVENTORY_SLOT_DOES_NOT_EXIST)
 		return null
 
@@ -26,14 +24,12 @@
  * * If multiple items are compounded on one item (e.g. clothing accessories), this gets all of them.
  *
  * @params
- * * type_or_id - slot typepath or id
+ * * id - slot id
  *
  * @return list() of items
  */
-/datum/inventory/proc/get_slot(datum/inventory_slot/type_or_id) as /list
-	if(ispath(type_or_id))
-		type_or_id = initial(type_or_id.id)
-	var/obj/item/in_slot = owner._item_by_slot(type_or_id)
+/datum/inventory/proc/get_slot(id) as /list
+	var/obj/item/in_slot = owner._item_by_slot(id)
 	if(in_slot == INVENTORY_SLOT_DOES_NOT_EXIST)
 		return
 	if(in_slot)
@@ -60,11 +56,11 @@
  *
  * @return list() of items
  */
-/datum/inventory/proc/get_slots_unsafe(list/types_or_ids, compound) as /list
+/datum/inventory/proc/get_slots_unsafe(list/ids, compound) as /list
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 	. = list()
-	for(var/datum/inventory_slot/slot_id as anything in types_or_ids || base_inventory_slots)
+	for(var/datum/inventory_slot/slot_id as anything in ids || base_inventory_slots)
 		if(ispath(slot_id))
 			slot_id = initial(slot_id.id)
-		var/obj/item/fetched = owner._item_by_slot(slot_id)
-		if(istype(fetched))
-			. += compound ? fetched.inv_slot_attached() : fetched
+		. += compound ? get_slot(slot_id) : get_slot_single(slot_id)
