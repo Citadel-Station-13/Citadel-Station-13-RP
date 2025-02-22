@@ -101,8 +101,8 @@
 			if(inserted_id)
 				e_args.visible_feedback(
 					target = src,
-					range_hard = MESSAGE_RANGE_INVENTORY_SOFT,
-					visible_hard = SPAN_NOTICE("[e_args.performer] retrieves [inserted_id] from [src]."),
+					range = MESSAGE_RANGE_INVENTORY_SOFT,
+					visible = SPAN_NOTICE("[e_args.performer] retrieves [inserted_id] from [src]."),
 				)
 				e_args.performer.put_in_hands_or_drop(inserted_id)
 				inserted_id = null
