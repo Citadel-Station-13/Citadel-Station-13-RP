@@ -3,8 +3,8 @@
 <!-- Supply points and shuttle status -->
 <div class='statusDisplay'>
 	<!-- List points -->
-	Supply points: {{:data.supply_points}}<br>
-	
+	Balance: {{:data.money}}<br>
+
 	<!-- Shuttle status -->
 	<div class='item'>
 		<H4>Supply Shuttle</H4>
@@ -42,35 +42,35 @@
 
 <!-- Menu -->
 {{if data.currentTab == 0}}
-	<div>	
+	<div>
 		<!-- List supply packs -->
 		<div class='item'>
 			{{:helper.link('Request items', 'note', {'switch_tab' : 1})}}
 		</div>
-		
+
 		<!-- Accepted orders -->
 		<div class='item'>
 			{{:helper.link('View accepted orders', 'cart', {'switch_tab' : "Approved"})}}
 		</div>
-		
+
 		<!-- Pending orders -->
 		<div class='item'>
 			{{:helper.link('View pending requests', 'cart', {'switch_tab' : "Requested"})}}
 		</div>
-		
+
 		<!-- Order history -->
 		{{:helper.link('View order history', 'document', {'switch_tab' : "All"})}}
-		
+
 		<!-- Receipt history -->
 		<div class='item'>
 			{{:helper.link('View export history', 'document', {'switch_tab' : "Export"})}}
 		</div>
 	</div>
-	
+
 {{else}}
 	{{:helper.link('Back to menu', 'arrowreturn-1-w', {'switch_tab' : 0})}}
 
-	
+
 	<!-- List supply pack categories -->
 	{{if data.currentTab == 1}}
 		{{for data.categories}}
@@ -78,7 +78,7 @@
 				{{:helper.link(value, 'bookmark', {'switch_tab' : value, 'active_category' : value})}}
 			</div>
 		{{/for}}
-	
+
 	<!-- List exported crates, their contents, and their values -->
 	{{else data.currentTab == "Export"}}
 		<H3>Exported Crates</H3>
@@ -98,7 +98,7 @@
 						{{/if}}
 					</div>
 				{{/for}}
-				
+
 				{{if value.error}}
 					<div class='itemLabelNarrow'>
 						<span class='bad'>
@@ -121,7 +121,7 @@
 						{{/if}}
 					{{/for}}
 				{{/if}}
-				
+
 				{{if data.order_auth}}
 					<br>{{:helper.link('Add item to record', 'plus', {'export_ref' : value.ref, 'add_item' : 1, 'user' : data.user})}}
 					<br>{{:helper.link('Delete record', 'trash', {'export_ref' : value.ref, 'delete' : 1, 'user' : data.user})}}
@@ -130,11 +130,11 @@
 		{{empty}}
 			<div class='average'>No receipts on record!</div>
 		{{/for}}
-	
+
 	<!-- Browse orders -->
 	<!-- currentTab == "Approved": Orders waiting to be shipped -->
 	<!-- currentTab == "Requested": Orders waiting to be accepted -->
-	<!-- currentTab == "All": All orders -->	
+	<!-- currentTab == "All": All orders -->
 	{{else data.currentTab == "Approved" || data.currentTab == "Requested" || data.currentTab == "All"}}
 		<H3>{{:data.currentTab}} Orders</H3>
 		{{for data.orders}}
@@ -157,7 +157,7 @@
 							</div>
 						{{/if}}
 					{{/for}}
-					
+
 					{{if data.currentTab == "All"}}
 						<div class='itemLabelNarrow'>
 							Status
@@ -169,7 +169,7 @@
 							<br>{{:helper.link('Delete record', 'trash', {'order_ref' : value.ref, 'delete' : 1, 'user' : data.user})}}
 						{{/if}}
 					{{/if}}
-					
+
 					{{if data.order_auth && data.currentTab == "Requested"}}
 						{{:helper.link('Approve', 'check', {'order_ref' : value.ref, 'approve' : 1, 'user' : data.user})}}
 						{{:helper.link('Deny',   'cancel', {'order_ref' : value.ref, 'deny' : 1,    'user' : data.user})}}
@@ -179,41 +179,41 @@
 		{{empty}}
 			<div class='average'>No orders on record!</div>
 		{{/for}}
-		
+
 		{{if data.currentTab == "Requested" && data.order_auth}}
 			{{:helper.link('Clear all requests', 'trash', {'clear_all_requests' : 1, 'user' : data.user})}}
 		{{/if}}
-	
+
 	<!-- List supplypacks from individual category -->
 	<!-- currentTab will be set to the category name -->
 	{{else}}
 		<div class='item'>
 			{{:helper.link('Back to categories', 'arrow-return-1-w', {'switch_tab' : 1})}}
 		</div>
-		
+
 		<h4>
 			{{:data.active_category}}
 		</h4>
-		
+
 		{{for data.supply_packs :packValue:packIndex}}
 			{{if !packValue.contraband || data.contraband}}
 				<div class='item'>
 					<!-- Sending 'expand' will toggle the value of packValue.expand -->
 					{{:helper.link(packValue.name + ' - ' + packValue.cost, packValue.expand ? 'folder-open' : 'folder-collapsed', {'cartridge_topic' : 1, 'pack_ref' : packValue.ref, 'expand' : 1})}}
 				</div>
-			
+
 				{{if packValue.expand}}
 					<div class='item'>
 						<div class='itemLabel'>
 							{{if packValue.random}}
 								Contains any {{:packValue.random}} of:<br>
 							{{/if}}
-						
+
 							{{for packValue.manifest :manifestElem:manifestIndex}}
 								{{:manifestElem}}<br>
 							{{/for}}
 						</div>
-							
+
 						<div class='itemContent'>
 							{{:helper.link('Request', 'cart', {'cartridge_topic' : 1, 'pack_ref' : packValue.ref, 'request' : 1, 'user' : data.user})}}
 						</div>
@@ -222,5 +222,5 @@
 				{{/if}}
 			{{/if}}
 		{{/for}}
-	{{/if}}		
+	{{/if}}
 {{/if}}

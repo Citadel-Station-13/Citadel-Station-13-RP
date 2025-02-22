@@ -1,3 +1,4 @@
+// todo: obliterate this and replace wtih an anchored / tethered eftpos
 /obj/machinery/cash_register
 	name = "cash register"
 	desc = "Swipe your ID card to make purchases electronically."
@@ -19,16 +20,14 @@
 
 	var/cash_stored = 0
 	var/obj/item/confirm_item
-	var/datum/money_account/linked_account
+	var/datum/economy_account/linked_account
 	var/account_to_connect = null
 
 
 // Claim machine ID
 /obj/machinery/cash_register/Initialize(mapload, newdir)
 	. = ..()
-	machine_id = "RETAIL UNIT #[GLOB.num_financial_terminals++]"
 	cash_stored = rand(10, 70)*10
-	GLOB.transaction_devices += src // Global reference list to be properly set up by /proc/setup_economy()
 
 /obj/machinery/cash_register/examine(mob/user, dist)
 	. = ..()
@@ -58,33 +57,6 @@
 /obj/machinery/cash_register/AltClick(mob/user)
 	if(Adjacent(user))
 		open_cash_box()
-
-
-/obj/machinery/cash_register/interact(mob/user as mob)
-	var/dat = "<h2>Cash Register<hr></h2>"
-	if (locked)
-		dat += "<a href='?src=\ref[src];choice=toggle_lock'>Unlock</a><br>"
-		dat += "Linked account: <b>[linked_account ? linked_account.owner_name : "None"]</b><br>"
-		dat += "<b>[cash_locked? "Unlock" : "Lock"] Cash Box</b> | "
-	else
-		dat += "<a href='?src=\ref[src];choice=toggle_lock'>Lock</a><br>"
-		dat += "Linked account: <a href='?src=\ref[src];choice=link_account'>[linked_account ? linked_account.owner_name : "None"]</a><br>"
-		dat += "<a href='?src=\ref[src];choice=toggle_cash_lock'>[cash_locked? "Unlock" : "Lock"] Cash Box</a> | "
-	dat += "<a href='?src=\ref[src];choice=custom_order'>Custom Order</a><hr>"
-
-	if(item_list.len)
-		dat += get_current_transaction()
-		dat += "<br>"
-
-	for(var/i=transaction_logs.len, i>=1, i--)
-		dat += "[transaction_logs[i]]<br>"
-
-	if(transaction_logs.len)
-		dat += locked ? "<br>" : "<a href='?src=\ref[src];choice=reset_log'>Reset Log</a><br>"
-		dat += "<br>"
-	dat += "<i>Device ID:</i> [machine_id]"
-	user << browse(dat, "window=cash_register;size=350x500")
-	onclose(user, "cash_register")
 
 
 /obj/machinery/cash_register/Topic(var/href, var/href_list)
@@ -164,14 +136,13 @@
 	updateDialog()
 
 
-
 /obj/machinery/cash_register/attackby(obj/item/O as obj, user as mob)
 	// Check for a method of paying (ID, PDA, e-wallet, cash, ect.)
 	var/obj/item/card/id/I = O.GetID()
 	if(I)
 		scan_card(I, O)
-	else if (istype(O, /obj/item/spacecash/ewallet))
-		var/obj/item/spacecash/ewallet/E = O
+	else if (istype(O, /obj/item/cash_card))
+		var/obj/item/cash_card/E = O
 		scan_wallet(E)
 	else if (istype(O, /obj/item/spacecash))
 		var/obj/item/spacecash/SC = O
@@ -225,7 +196,7 @@
 
 	// Access account for transaction
 	if(check_account())
-		var/datum/money_account/D = get_account(I.associated_account_number)
+		var/datum/economy_account/D = get_account(I.associated_account_number)
 		var/attempt_pin = ""
 		if(D && D.security_level)
 			attempt_pin = input("Enter PIN", "Transaction") as num
@@ -246,7 +217,7 @@
 					linked_account.money += transaction_amount
 
 					// Create log entry in client's account
-					var/datum/transaction/T = new()
+					var/datum/economy_transaction/T = new()
 					T.target_name = "[linked_account.owner_name]"
 					T.purpose = transaction_purpose
 					T.amount = "([transaction_amount])"
@@ -272,7 +243,7 @@
 					transaction_complete()
 
 
-/obj/machinery/cash_register/proc/scan_wallet(obj/item/spacecash/ewallet/E)
+/obj/machinery/cash_register/proc/scan_wallet(obj/item/charge_card/E)
 	if (!transaction_amount)
 		return
 
@@ -294,7 +265,7 @@
 			linked_account.money += transaction_amount
 
 			// Create log entry in owner's account
-			var/datum/transaction/T = new()
+			var/datum/economy_transaction/T = new()
 			T.target_name = E.owner_name
 			T.purpose = transaction_purpose
 			T.amount = "[transaction_amount]"
@@ -420,18 +391,6 @@
 
 	transaction_logs += dat
 
-
-/obj/machinery/cash_register/proc/check_account()
-	if (!linked_account)
-		usr.visible_message("[icon2html(thing = src, target = world)]<span class='warning'>Unable to connect to linked account.</span>")
-		return 0
-
-	if(linked_account.suspended)
-		src.visible_message("[icon2html(thing = src, target = world)]<span class='warning'>Connected account has been suspended.</span>")
-		return 0
-	return 1
-
-
 /obj/machinery/cash_register/proc/transaction_complete()
 	/// Visible confirmation
 	playsound(src, 'sound/machines/chime.ogg', 25)
@@ -439,15 +398,6 @@
 	flick("register_approve", src)
 	reset_memory()
 	updateDialog()
-
-
-/obj/machinery/cash_register/proc/reset_memory()
-	transaction_amount = null
-	transaction_purpose = ""
-	item_list.Cut()
-	price_list.Cut()
-	confirm_item = null
-
 
 /obj/machinery/cash_register/verb/open_cash_box()
 	set category = VERB_CATEGORY_OBJECT
@@ -498,9 +448,6 @@
 	                         "<span class='notice'>You have unsecured \the [src] from the floor.</span>")
 	anchored = !anchored
 	manipulating = 0
-	return
-
-
 
 /obj/machinery/cash_register/emag_act(var/remaining_charges, var/mob/user)
 	if(!emagged)
@@ -511,39 +458,3 @@
 		locked = 0
 		cash_locked = 0
 		open_cash_box()
-
-
-//--Premades--//
-
-/obj/machinery/cash_register/command
-	account_to_connect = "Command"
-
-/obj/machinery/cash_register/medical
-	account_to_connect = "Medical"
-
-/obj/machinery/cash_register/engineering
-	account_to_connect = "Engineering"
-
-/obj/machinery/cash_register/science
-	account_to_connect = "Science"
-
-/obj/machinery/cash_register/security
-	account_to_connect = "Security"
-
-/obj/machinery/cash_register/cargo
-	account_to_connect = "Cargo"
-
-/obj/machinery/cash_register/civilian
-	account_to_connect = "Civilian"
-
-/obj/machinery/cash_register/trader
-	name = "Nebula Gas Cash Register"
-	account_to_connect = "Civilian"
-	machine_id = "Nebula Gas RETAIL UNIT"
-	req_access = list(160)
-
-/obj/machinery/cash_register/resort
-	name = "Gaia Station Cash Register"
-	account_to_connect = "Civilian"
-	machine_id = "Gaia Station RETAIL UNIT"
-	req_access = list(252)

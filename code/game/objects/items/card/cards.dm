@@ -6,8 +6,8 @@
  *		FINGERPRINT CARD
  */
 
-/*
- * DATA CARDS - Used for the teleporter
+/**
+ * Generalized data-cards / smart-cards
  */
 /obj/item/card
 	name = "card"
