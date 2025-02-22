@@ -462,9 +462,7 @@
 	attack_verb = "prods"
 
 /datum/blob_type/energized_jelly/on_attack(obj/structure/blob/B, mob/living/victim, def_zone)
-	victim.electrocute_act(10, src, 1, def_zone)
-	victim.stun_effect_act(0, 40, BP_TORSO, src)
-
+	victim.electrocute(0, 10, 40, NONE, BP_TORSO, src)
 
 // A blob with area of effect attacks.
 /datum/blob_type/explosive_lattice

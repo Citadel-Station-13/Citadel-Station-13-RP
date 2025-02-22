@@ -44,7 +44,7 @@
 	new /obj/item/secbot_assembly/ed209_assembly(Tsec)
 
 	var/obj/item/gun/projectile/energy/taser/G = new used_weapon(Tsec)
-	G.power_supply.charge = 0
+	G.obj_cell_slot.cell.set_charge(0)
 	if(prob(50))
 		new /obj/item/robot_parts/l_leg(Tsec)
 	if(prob(50))

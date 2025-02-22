@@ -68,66 +68,6 @@
 		/obj/item/clothing/under/gimmick/rank/head_of_personnel/suit/skirt,
 		/obj/item/clothing/glasses/sunglasses)
 
-/*
-/obj/structure/closet/secure_closet/hos
-	name = "head of security's locker"
-	req_access = list(ACCESS_SECURITY_HOS)
-	icon_state = "hossecure1"
-	icon_closed = "hossecure"
-	icon_locked = "hossecure1"
-	icon_opened = "hossecureopen"
-	icon_broken = "hossecurebroken"
-	icon_off = "hossecureoff"
-	req_access = list(ACCESS_SECURITY_HOS)
-	storage_capacity = 2.5 * MOB_MEDIUM
-
-	starts_with = list(
-		/obj/item/clothing/head/helmet/HoS,
-		/obj/item/clothing/head/helmet/HoS/hat,
-		/obj/item/clothing/suit/storage/vest/hos,
-		/obj/item/clothing/under/rank/head_of_security/jensen,
-		/obj/item/clothing/under/rank/head_of_security/corp,
-		/obj/item/clothing/suit/storage/vest/hoscoat/jensen,
-		/obj/item/clothing/suit/storage/vest/hoscoat,
-		/obj/item/clothing/under/bodysuit/bodysuitseccom,
-		/obj/item/clothing/head/helmet/dermal,
-		/obj/item/cartridge/hos,
-		/obj/item/radio/headset/heads/hos,
-		/obj/item/radio/headset/heads/hos/alt,
-		/obj/item/clothing/glasses/sunglasses/sechud,
-		/obj/item/barrier_tape_roll/police,
-		/obj/item/shield/riot,
-		/obj/item/shield/transforming/telescopic,
-		/obj/item/storage/box/holobadge/hos,
-		/obj/item/storage/box/firingpins,
-		/obj/item/clothing/accessory/badge/holo/hos,
-		/obj/item/reagent_containers/spray/pepper,
-		/obj/item/tool/crowbar/red,
-		/obj/item/storage/box/flashbangs,
-		/obj/item/storage/belt/security,
-		/obj/item/flash,
-		/obj/item/melee/baton/loaded,
-		/obj/item/gun/magnetic/railgun/heater/pistol/hos,
-		/obj/item/cell/device/weapon,
-		/obj/item/clothing/accessory/holster/waist,
-		/obj/item/melee/telebaton,
-		/obj/item/clothing/head/beret/sec/corporate/hos,
-		/obj/item/clothing/suit/storage/hooded/wintercoat/security/hos,
-		/obj/item/clothing/shoes/boots/winter/security,
-		/obj/item/gps/security/hos,
-		/obj/item/flashlight/maglight,
-		/obj/item/clothing/mask/gas/half)
-
-/obj/structure/closet/secure_closet/hos/Initialize(mapload)
-	if(prob(50))
-		starts_with += /obj/item/storage/backpack/security
-	else
-		starts_with += /obj/item/storage/backpack/satchel/sec
-	if(prob(50))
-		starts_with += /obj/item/storage/backpack/dufflebag/sec
-	return ..()
-*/
-
 //_vr file contents:
 /obj/structure/closet/secure_closet/hos
 	name = "head of security's attire"
@@ -180,7 +120,7 @@
 		/obj/item/tool/crowbar/red,
 		/obj/item/flash,
 		/obj/item/melee/baton/loaded,
-		/obj/item/gun/projectile/energy/gun/multiphase,
+		/obj/item/gun/projectile/energy/nt_isd/multiphase,
 		/obj/item/melee/telebaton,
 		/obj/item/storage/box/survival_knife,
 		/obj/item/gps/security/hos,

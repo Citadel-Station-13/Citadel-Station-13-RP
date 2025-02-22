@@ -18,12 +18,6 @@
  */
 /obj/item/material/twohanded
 	w_class = WEIGHT_CLASS_BULKY
-	var/unwielded_force_multiplier = 0.25
-	var/wielded = 0
-	var/wieldsound = null
-	var/unwieldsound = null
-	var/base_icon
-	var/base_name
 	attack_sound = "swing_hit"
 	drop_sound = 'sound/items/drop/sword.ogg'
 	pickup_sound = 'sound/items/pickup/sword.ogg'
@@ -31,38 +25,33 @@
 		parry_chance_melee = 15;
 	}
 
-/obj/item/material/twohanded/update_worn_icon()
-	var/mob/living/M = loc
-	if(istype(M) && M.can_wield_item(src) && is_held_twohanded(M))
-		wielded = 1
-		name = "[base_name] (wielded)"
-	else
-		wielded = 0
-		name = "[base_name]"
-	update_icon()
-	update_material_parts()
-	..()
+	var/base_icon
+	var/base_name
+	var/unwielded_force_multiplier = 0.25
 
-/obj/item/material/twohanded/update_material_parts()
+/obj/item/material/twohanded/Initialize(mapload, material_key)
 	. = ..()
-	if(!wielded)
-		damage_force *= unwielded_force_multiplier
-		// don't affect throwforce
+	//* datum component - wielding *//
+	AddComponent(/datum/component/wielding)
+
+/obj/item/material/twohanded/on_wield(mob/user, hands)
+	. = ..()
+
+/obj/item/material/twohanded/on_unwield(mob/user, hands)
+	. = ..()
+
+/obj/item/material/twohanded/standard_melee_attack(atom/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(!(item_flags & ITEM_MULTIHAND_WIELDED))
+		mult *= unwielded_force_multiplier
 
 /obj/item/material/twohanded/Initialize(mapload, material_key)
 	. = ..()
 	update_icon()
 
 /obj/item/material/twohanded/update_icon()
+	icon_state = "[base_icon][!!(item_flags & ITEM_MULTIHAND_WIELDED)]"
 	. = ..()
-	icon_state = "[base_icon][wielded]"
 	item_state = icon_state
-
-/obj/item/material/twohanded/dropped(mob/user, flags, atom/newLoc)
-	..()
-	if(wielded)
-		spawn(0)
-			update_worn_icon()
 
 /*
  * Fireaxe
@@ -84,17 +73,13 @@
 	pickup_sound = 'sound/items/pickup/axe.ogg'
 	heavy = TRUE
 
-/obj/item/material/twohanded/fireaxe/update_worn_icon()
-	var/mob/living/M = loc
-	if(istype(M) && M.can_wield_item(src) && M.is_holding(src) && !M.are_usable_hands_full())
-		wielded = 1
-		pry = 1
-		name = "[base_name] (wielded)"
-	else
-		wielded = 0
-		pry = 0
-		name = "[base_name]"
-	..()
+/obj/item/material/twohanded/fireaxe/on_wield(mob/user, hands)
+	. = ..()
+	pry = TRUE
+
+/obj/item/material/twohanded/fireaxe/on_unwield(mob/user, hands)
+	. = ..()
+	pry = FALSE
 
 /obj/item/material/twohanded/fireaxe/attack_object(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult = 1)
 	if(istype(target, /obj/structure/window))
@@ -187,7 +172,7 @@
 
 /obj/item/material/twohanded/spear/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
-	if(explosive && wielded) //Citadel edit removes qdel and explosive.forcemove(AM)
+	if(explosive && (item_flags & ITEM_MULTIHAND_WIELDED)) //Citadel edit removes qdel and explosive.forcemove(AM)
 		user.say("[war_cry]")
 		explosive.detonate()
 

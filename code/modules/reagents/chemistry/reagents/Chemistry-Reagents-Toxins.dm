@@ -1184,21 +1184,21 @@
 	affects_robots = TRUE
 
 /datum/reagent/grubshock/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
-	M.electrocute_act(10 * removed, src, 1.0, BP_TORSO, 0)
+	M.electrocute(0, 10 * removed, 0, ELETROCUTE_ACT_FLAG_INTERNAL, null)
 	for(var/datum/reagent/nanite/path_check in M.ingested.get_reagent_datums())
 		M.ingested.remove_reagent(path_check.id, removed * 30)
 	for(var/datum/reagent/nanite/path_check in M.bloodstr.get_reagent_datums())
 		M.bloodstr.remove_reagent(path_check.id, removed * 30)
 
 /datum/reagent/grubshock/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
-	M.electrocute_act(10 * removed, src, 1.0, BP_TORSO, 0)
+	M.electrocute(0, 10 * removed, 0, ELETROCUTE_ACT_FLAG_INTERNAL, null)
 	for(var/datum/reagent/nanite/path_check in M.ingested.get_reagent_datums())
 		M.ingested.remove_reagent(path_check.id, removed * 30)
 	for(var/datum/reagent/nanite/path_check in M.bloodstr.get_reagent_datums())
 		M.bloodstr.remove_reagent(path_check.id, removed * 30)
 
 /datum/reagent/grubshock/affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
-	M.electrocute_act(10 * removed, src, 1.0, BP_TORSO, 0)
+	M.electrocute(0, 10 * removed, 0, ELETROCUTE_ACT_FLAG_INTERNAL, null)
 
 //This chem is for removing nanites without grubmeat
 /datum/reagent/lessershock
@@ -1212,21 +1212,21 @@
 	affects_robots = TRUE
 
 /datum/reagent/lessershock/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
-	M.electrocute_act(5 * removed, src, 1.0, BP_TORSO, 0)
+	M.electrocute(0, 5 * removed, 0, ELETROCUTE_ACT_FLAG_INTERNAL, null)
 	for(var/datum/reagent/nanite/path_check in M.ingested.get_reagent_datums())
 		M.ingested.remove_reagent(path_check.id, removed)
 	for(var/datum/reagent/nanite/path_check in M.bloodstr.get_reagent_datums())
 		M.bloodstr.remove_reagent(path_check.id, removed)
 
 /datum/reagent/lessershock/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
-	M.electrocute_act(5 * removed, src, 1.0, BP_TORSO, 0)
+	M.electrocute(0, 5 * removed, 0, ELETROCUTE_ACT_FLAG_INTERNAL, null)
 	for(var/datum/reagent/nanite/path_check in M.ingested.get_reagent_datums())
 		M.ingested.remove_reagent(path_check.id, removed)
 	for(var/datum/reagent/nanite/path_check in M.bloodstr.get_reagent_datums())
 		M.bloodstr.remove_reagent(path_check.id, removed)
 
 /datum/reagent/lessershock/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
-	M.electrocute_act(5 * removed, src, 1.0, BP_TORSO, 0)
+	M.electrocute(0, 5 * removed, 0, ELETROCUTE_ACT_FLAG_INTERNAL, null)
 
 /datum/reagent/asbestos //asbestos removal handled in under datum/reagent/respirodaxon
 	name = "Asbestos"

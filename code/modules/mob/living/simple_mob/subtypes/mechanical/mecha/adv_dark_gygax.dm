@@ -127,10 +127,9 @@
 	speed = 5 * WORLD_ICON_SIZE
 	homing_turn_speed = 85
 
-/obj/projectile/energy/homing_bolt/launch_projectile(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
+/obj/projectile/energy/homing_bolt/fire(set_angle_to, atom/direct_target, no_source_check, datum/callback/on_submunition_ready)
 	..()
-	if(target)
-		set_homing_target(target)
+	set_homing_target(original_target)
 
 #define ELECTRIC_ZAP_POWER 20000
 
@@ -165,7 +164,7 @@
 					continue
 				if(L.stat)
 					continue // Otherwise it can get pretty laggy if there's loads of corpses around.
-				L.inflict_shock_damage(i * 2)
+				L.inflict_shock_damage_legacy(i * 2)
 				if(L && L.has_polaris_AI()) // Some mobs delete themselves when dying.
 					L.ai_holder.react_to_attack_polaris(src)
 

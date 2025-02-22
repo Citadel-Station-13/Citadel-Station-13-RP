@@ -579,9 +579,9 @@
 	antimagic_check = TRUE
 	antimagic_damage_factor = 0.66
 
-	muzzle_type = /obj/effect/projectile/muzzle/inversion
-	tracer_type = /obj/effect/projectile/tracer/inversion
-	impact_type = /obj/effect/projectile/impact/inversion
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/inversion
+	legacy_tracer_type = /obj/effect/projectile/tracer/inversion
+	legacy_impact_type = /obj/effect/projectile/impact/inversion
 
 //Harvester Pain Orb
 
