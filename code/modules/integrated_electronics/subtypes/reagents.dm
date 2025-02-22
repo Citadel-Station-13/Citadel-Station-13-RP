@@ -747,3 +747,52 @@
 /obj/item/integrated_circuit/reagent/purger/do_work()
 	reagents.clear_reagents()
 	activate_pin(2)
+
+/obj/item/integrated_circuit/reagent/sink
+	name = "water sink siphon"
+	desc = "Siphons water from nearby sinks and stores it inside its own storage."
+	icon_state = "reagent_pump"
+	atom_flags = OPENCONTAINER
+	complexity = 16
+	inputs = list()
+	outputs = list("volume used" = IC_PINTYPE_NUMBER,"self reference" = IC_PINTYPE_SELFREF)
+	activators = list(
+		"push ref" = 	IC_PINTYPE_PULSE_IN,
+		"siphon sink" = IC_PINTYPE_PULSE_IN,
+		"on success" =	IC_PINTYPE_PULSE_OUT,
+		"on fail"	=	IC_PINTYPE_PULSE_OUT
+		)
+	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
+	origin_tech = list(TECH_ENGINEERING = 2, TECH_DATA = 2, TECH_BIO = 2)
+	volume = 180
+	power_draw_per_use = 10
+
+/obj/item/integrated_circuit/reagent/sink/on_reagent_change()
+	set_pin_data(IC_OUTPUT, 1, reagents.total_volume)
+	push_data()
+
+/obj/item/integrated_circuit/reagent/sink/do_work(ord)
+	switch(ord)
+		if(1)
+			var/list/nearby_things = range(1, get_turf(src))
+			var/list/valid_things = list()
+			for(var/atom/thing in nearby_things)
+				if(thing.type == /obj/structure/sink)
+					valid_things.Add(thing)
+					break
+			if(valid_things.len)
+				reagents.add_reagent("water", volume - reagents.total_volume)
+				set_pin_data(IC_OUTPUT, 1, reagents.total_volume)
+				push_data()
+				activate_pin(3)
+			else
+				activate_pin(4)
+		if(2)
+			set_pin_data(IC_OUTPUT, 2, WEAKREF(src))
+			push_data()
+
+
+/obj/item/integrated_circuit/reagent/sink/interact(mob/user)
+	set_pin_data(IC_OUTPUT, 2, WEAKREF(src))
+	push_data()
+	..()
