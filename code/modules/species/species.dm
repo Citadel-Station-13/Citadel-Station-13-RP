@@ -48,6 +48,15 @@
 	///Used for metabolizing reagents.
 	var/reagent_tag
 
+	//* Appearance *//
+	/// bodyset to use by default
+	var/datum/prototype/bodyset/bodyset = /datum/prototype/bodyset/organic/human
+	/// bodysets that can be chosen. automatically includes [bodyset].
+	///
+	/// * If this is null, **we can choose any bodyset.**
+	var/list/datum/prototype/bodyset/bodysets = list()
+	#warn hook in new
+
 	//* Traits / Physiology *//
 	/// Intrinsic datum traits to apply to the mob
 	var/list/mob_traits
@@ -98,14 +107,6 @@
 	var/list/iff_factions_inherent
 
 	//? Icons
-	/// Normal icon set.
-	var/icobase      = 'icons/mob/species/human/body.dmi'
-	/// Mutated icon set.
-	var/deform       = 'icons/mob/species/human/deformed_body.dmi'
-	/// Preview icon used in species selection.
-	var/preview_icon = 'icons/mob/species/human/preview.dmi'
-	/// Species-specific husk sprite if applicable.
-	var/husk_icon    = 'icons/mob/species/default_husk.dmi'
 	/// Used for mob icon generation for non-32x32 species.
 	var/icon_template = 'icons/mob/species/template.dmi'
 	/// Makes the icon wider/thinner.
@@ -147,8 +148,6 @@
 	var/color_mult = 0
 	/// force non greyscale icons to greyscale before multiplying? WARNING :CITADEL JANK, REPLACE ASAP
 	var/color_force_greyscale = FALSE
-	var/damage_overlays = 'icons/mob/species/human/damage_overlay.dmi'
-	var/damage_mask     = 'icons/mob/species/human/damage_mask.dmi'
 	var/blood_mask      = 'icons/mob/species/human/blood_mask.dmi'
 	/// The icon_state used inside OnFire.dmi for when on fire.
 	var/fire_icon_state = "humanoid"
@@ -558,7 +557,7 @@
 			built += new path
 		abilities = built
 
-	sprite_accessory_defaults = resolve_sprite_accessory_key_list_inplace(sprite_accessory_defaults)
+	sprite_accessory_defaults = RSsprite_accessories.resolve_slot_key_value_list_inplace(sprite_accessory_defaults)
 
 /**
  * called when we apply to a mob
@@ -1003,8 +1002,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 
 	//Initials so it works with a simple path passed, or an instance
 	base_species = to_copy.name
-	icobase = to_copy.icobase
-	deform = to_copy.deform
+	bodyset = to_copy.bodyset
 	sprite_accessory_defaults = to_copy.sprite_accessory_defaults.Copy()
 	color_mult = to_copy.color_mult
 	primitive_form = to_copy.primitive_form
@@ -1012,8 +1010,6 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	flesh_color = to_copy.flesh_color
 	base_color = to_copy.base_color
 	blood_mask = to_copy.blood_mask
-	damage_mask = to_copy.damage_mask
-	damage_overlays = to_copy.damage_overlays
 	move_trail = move_trail
 	has_floating_eyes = has_floating_eyes
 

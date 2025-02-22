@@ -1,11 +1,11 @@
-/datum/sprite_accessory/tail/ztail
+/datum/prototype/sprite_accessory/tail/ztail
 	name = "jagged flufftail"
 	id = "tail_jagged_flufftail"
 	icon_state = "ztail"
 	do_colouration = 1
 	legacy_use_additive_color_matrix = FALSE
 
-/datum/sprite_accessory/tail/curltail
+/datum/prototype/sprite_accessory/tail/curltail
 	name = "curltail (vwag)"
 	id = "tail_curltail"
 	icon_state = "curltail"
@@ -15,14 +15,14 @@
 	extra_overlay = "curltail_mark"
 	extra_overlay_w = "curltail_mark_w"
 
-/datum/sprite_accessory/tail/wagtail
+/datum/prototype/sprite_accessory/tail/wagtail
 	name = "avian wagtail, colorable"
 	id = "tail_avian_wagtail"
 	icon_state = "wagtail"
 	do_colouration = 1
 	legacy_use_additive_color_matrix = FALSE
 
-/datum/sprite_accessory/tail/deertail
+/datum/prototype/sprite_accessory/tail/deertail
 	name = "deer tail, dual-color"
 	id = "tail_deer"
 	icon_state = "deertail"
@@ -30,7 +30,7 @@
 	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "deertail_mark"
 
-/datum/sprite_accessory/tail/Segmentedtail
+/datum/prototype/sprite_accessory/tail/Segmentedtail
 	name = "Segmented tail, animated"
 	id = "tail_segmented"
 	icon_state = "Segmentedtail"
@@ -40,7 +40,7 @@
 	ani_state = "Segmentedtail_w"
 	extra_overlay_w = "Segmentedtailmarking_w"
 
-/datum/sprite_accessory/tail/shorttail
+/datum/prototype/sprite_accessory/tail/shorttail
 	name = "shorttail (vwag)"
 	id = "tail_shorttail"
 	icon_state = "straighttail"

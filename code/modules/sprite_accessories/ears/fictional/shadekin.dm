@@ -1,4 +1,4 @@
-/datum/sprite_accessory/ears/shadekin
+/datum/prototype/sprite_accessory/ears/shadekin
 	name = "Shadekin Ears, colorable"
 	id = "ears_shadekin"
 	icon_state = "shadekin"

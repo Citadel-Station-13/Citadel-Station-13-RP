@@ -11,13 +11,9 @@
 	default_bodytype = BODYTYPE_TAJARAN
 	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/tajaran
 
-	icobase      = 'icons/mob/species/tajaran/body_greyscale.dmi'
-	deform       = 'icons/mob/species/tajaran/deformed_body_greyscale.dmi'
-	preview_icon = 'icons/mob/species/tajaran/preview.dmi'
-	husk_icon    = 'icons/mob/species/tajaran/husk.dmi'
-
+	bodyset = /datum/prototype/bodyset/organic/tajaran
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/tajaran,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/tajaran,
 	)
 
 	max_additional_languages = 3

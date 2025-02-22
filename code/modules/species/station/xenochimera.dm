@@ -10,13 +10,10 @@
 	base_species = SPECIES_XENOCHIMERA
 	category = "Special"
 	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/xenochimera
+	bodyset = /datum/prototype/bodyset/organic/human
+	bodysets = null
 
 	selects_bodytype = TRUE
-
-	icobase      = 'icons/mob/species/xenochimera/body.dmi'
-	deform       = 'icons/mob/species/xenochimera/deformed_body.dmi'
-	preview_icon = 'icons/mob/species/xenochimera/preview.dmi'
-	husk_icon    = 'icons/mob/species/xenochimera/husk.dmi'
 
 	max_additional_languages = 5
 

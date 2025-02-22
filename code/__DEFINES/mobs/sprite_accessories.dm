@@ -8,7 +8,7 @@ DEFINE_BITFIELD(hair_flags, list(
 ))
 // Hair Defines
 
-//* /datum/sprite_accessory/var/icon_sidedness
+//* /datum/prototype/sprite_accessory/var/icon_sidedness
 //? These must be numbers! They also must be consequetive from 1 as they are list indices for rendering!
 
 /// no additional states
@@ -18,7 +18,7 @@ DEFINE_BITFIELD(hair_flags, list(
 
 // todo: DEFINE_ENUM
 
-//* /datum/sprite_accessory/var/icon_alignment
+//* /datum/prototype/sprite_accessory/var/icon_alignment
 
 /// for some asinine reason just ignore it
 #define SPRITE_ACCESSORY_ALIGNMENT_IGNORE "ignore"

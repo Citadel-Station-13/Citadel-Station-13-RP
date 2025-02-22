@@ -1,5 +1,5 @@
 //? rabbit
-/datum/sprite_accessory/ears/bnnuy //bnnuy
+/datum/prototype/sprite_accessory/ears/bnnuy //bnnuy
 	name = "Bnnuy Ears"
 	id = "ears_bunny"
 	icon = 'icons/mob/sprite_accessories/ears_32x64.dmi'
@@ -9,7 +9,7 @@
 	do_colouration = 1
 	legacy_use_additive_color_matrix = FALSE
 
-/datum/sprite_accessory/ears/bnnuy2
+/datum/prototype/sprite_accessory/ears/bnnuy2
 	name = "Bnnuy Ears 2"
 	id = "ears_bunny_2"
 	icon = 'icons/mob/sprite_accessories/ears_32x64.dmi'
@@ -19,7 +19,7 @@
 	do_colouration = 1
 	legacy_use_additive_color_matrix = FALSE
 
-/datum/sprite_accessory/ears/bunnyalt
+/datum/prototype/sprite_accessory/ears/bunnyalt
 	name = "bunny 2, dual-color"
 	id = "ears_bunny_colorable_2"
 	icon_state = "bunny-alt"
@@ -27,21 +27,21 @@
 	do_colouration = 1
 	legacy_use_additive_color_matrix = FALSE
 
-/datum/sprite_accessory/ears/bunnyhc
+/datum/prototype/sprite_accessory/ears/bunnyhc
 	name = "bunny, colorable"
 	id = "ears_bunny_colorable"
 	icon_state = "bunny"
 	do_colouration = 1
 	legacy_use_additive_color_matrix = FALSE
 
-/datum/sprite_accessory/ears/bunny_floppy
+/datum/prototype/sprite_accessory/ears/bunny_floppy
 	name = "floppy bunny ears (colorable)"
 	id = "ears_bunny_floppy"
 	icon_state = "floppy_bun"
 	do_colouration = 1
 	legacy_use_additive_color_matrix = FALSE
 
-/datum/sprite_accessory/ears/bunny_tall
+/datum/prototype/sprite_accessory/ears/bunny_tall
 	name = "Bunny Tall Ears"
 	id = "ears_bunny_tall"
 	icon = 'icons/mob/sprite_accessories/ears_32x64.dmi'
@@ -50,12 +50,12 @@
 	do_colouration = 1
 	legacy_use_additive_color_matrix = FALSE
 
-/datum/sprite_accessory/ears/bunny_white
+/datum/prototype/sprite_accessory/ears/bunny_white
 	name = "bunny, white"
 	id = "ears_bunny_white"
 	icon_state = "bunny"
 
-/datum/sprite_accessory/ears/rabbit_swept
+/datum/prototype/sprite_accessory/ears/rabbit_swept
 	name = "Rabbit Ears (swept back)"
 	id = "ears_rabbit_back"
 	icon = 'icons/mob/sprite_accessories/ears_32x64.dmi'
@@ -63,7 +63,7 @@
 	do_colouration = 1
 	legacy_use_additive_color_matrix = FALSE
 
-/datum/sprite_accessory/ears/swooped_bunny
+/datum/prototype/sprite_accessory/ears/swooped_bunny
 	name = "Swooped bunny ears (colorable)"
 	id = "ears_bunny_swoop"
 	icon_state = "swooped_bunny"

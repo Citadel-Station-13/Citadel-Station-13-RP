@@ -9,7 +9,6 @@
 	icon_template = 'icons/mob/species/werebeast/template.dmi'
 	icobase       = 'icons/mob/species/werebeast/body.dmi'
 	deform        = 'icons/mob/species/werebeast/deformed_body.dmi'
-	preview_icon  = 'icons/mob/species/werebeast/preview.dmi'
 
 	max_additional_languages = 3
 	intrinsic_languages = LANGUAGE_ID_VULPKANIN

@@ -4,13 +4,11 @@
 	name = SPECIES_RAPALA
 	name_plural = "Rapalans"
 
-	icobase      = 'icons/mob/species/rapala/body.dmi'
-	deform       = 'icons/mob/species/rapala/deformed_body.dmi'
-	preview_icon = 'icons/mob/species/rapala/preview.dmi'
-	husk_icon    = 'icons/mob/species/rapala/husk.dmi'
+	bodyset = /datum/prototype/bodyset/organic/rapala
+
 
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/rapala,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/rapala,
 	)
 
 	max_additional_languages = 3

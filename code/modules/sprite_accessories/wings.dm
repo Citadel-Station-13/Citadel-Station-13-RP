@@ -1,5 +1,5 @@
-/datum/sprite_accessory/wing
-	abstract_type = /datum/sprite_accessory/wing
+/datum/prototype/sprite_accessory/wing
+	abstract_type = /datum/prototype/sprite_accessory/wing
 	name = "You should not see this..."
 	icon = 'icons/mob/sprite_accessories/wings.dmi'
 	icon_dimension_x = 64
@@ -8,7 +8,7 @@
 
 	legacy_use_additive_color_matrix = TRUE // Only appliciable if do_coloration = 1
 
-/datum/sprite_accessory/wing/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state, with_variation, flattened)
+/datum/prototype/sprite_accessory/wing/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state, with_variation, flattened)
 	var/list/image/layers = ..()
 
 	if(flattened)
@@ -29,7 +29,7 @@
 
 	return layers
 
-/datum/sprite_accessory/wing/flat_cache_keys(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state = icon_state, with_variation, flattened)
+/datum/prototype/sprite_accessory/wing/flat_cache_keys(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state = icon_state, with_variation, flattened)
 	. = ..()
 	if(!ishuman(for_whom))
 		return
