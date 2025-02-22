@@ -37,3 +37,17 @@
 			processing += A.contents
 			lim = processing.len
 			. += A
+
+/atom/proc/get_all_contents_filtered(list/filter_typecache)
+	if(!length(filter_typecache))
+		return get_all_contents()
+	var/list/processing = list(src)
+	. = list()
+	var/i = 0
+	var/lim = 1
+	while(i < lim)
+		var/atom/A = processing[++i]
+		if(!filter_typecache[A.type])
+			processing += A.contents
+			lim = processing.len
+			. += A

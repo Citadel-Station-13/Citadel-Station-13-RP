@@ -18,11 +18,7 @@ SUBSYSTEM_DEF(processing)
 		currentrun = processing.Copy()
 	//cache for sanic speed (lists are references anyways)
 	var/list/current_run = currentrun
-	// tick_lag is in deciseconds
-	// in ticker, our wait is that many ds
-	// in non-ticker, our wait is either wait in ds, or a minimum of tick_lag in ds
-	// we convert it to seconds with * 0.1
-	var/dt = (subsystem_flags & SS_TICKER? (wait * world.tick_lag) : max(world.tick_lag, wait)) * 0.1
+	var/dt = nominal_dt_s
 
 	while(current_run.len)
 		var/datum/thing = current_run[current_run.len]

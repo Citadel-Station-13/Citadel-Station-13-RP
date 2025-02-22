@@ -56,3 +56,5 @@ Yes, this currently includes all turfs, mobs, objs, and misc things. Sorry. We'l
     - /rendering - low level rendering things like clickcatcher
   - /structures - used for sprites for general, non-module structures. use subdirectories if more than one .dmi is needed, or for closely related structures.
   - /system - used for internal fuctions, like get_flat_icon and similar.
+  - /turf - not just /turf, but /turf, and /area, and any other 'tiled map visuals' used to render the world (or render the map in an editor)
+    - /area - area visuals. these can either be debug, map visuals, or 'real' effects overlaid by /area
