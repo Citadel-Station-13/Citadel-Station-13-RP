@@ -66,7 +66,7 @@ You will find a dispenser within the room you started in which contains some bas
 
 /obj/machinery/porta_turret/alien/abductor
 	name = "anti-personnel turret"
-	installation = /obj/item/gun/projectile/energy/gun/taser
+	installation = /obj/item/gun/projectile/energy/taser
 	lethal = FALSE
 	integrity = 500
 	integrity_max = 500
