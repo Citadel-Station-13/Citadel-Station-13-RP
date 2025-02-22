@@ -86,7 +86,7 @@
 
 /datum/melee_attack/unarmed/slime_glomp/apply_effects(var/mob/living/carbon/human/user,var/mob/living/carbon/human/target,var/armour,var/attack_damage,var/zone)
 	..()
-	user.apply_stored_shock_to(target)
+	// user.apply_stored_shock_to(target)
 
 /datum/melee_attack/unarmed/stomp/weak
 	attack_verb_legacy = list("jumped on")

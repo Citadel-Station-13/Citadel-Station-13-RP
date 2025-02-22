@@ -169,11 +169,8 @@
 
 /**
  * makes a clone of this datum
- *
- * @params
- * * include_contents - include semantic contents; ergo 'what we are hosting' vs 'what we are'
  */
-/datum/proc/clone(include_contents)
+/datum/proc/clone()
 	return new type
 
 //* Serialization *//

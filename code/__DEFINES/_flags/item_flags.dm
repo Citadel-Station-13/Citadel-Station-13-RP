@@ -14,7 +14,7 @@
 #define ITEM_THROW_UNCATCHABLE	(1<<5)
 /// we cannot be used a tool on click, no matter what
 #define ITEM_NO_TOOL_ATTACK		(1<<6)
-/// we're dual wielded - multi-wielding coming later tm
+/// we're wielded, usually via /datum/component/wielding
 #define ITEM_MULTIHAND_WIELDED	(1<<7)
 /// don't allow help intent attacking
 #define ITEM_CAREFUL_BLUDGEON	(1<<8)

@@ -177,7 +177,7 @@
 
 	//stun effects
 	if(status)
-		L.stun_effect_act(stun, agony, target_zone, src)
+		L.electrocute(0, 0, agony, NONE, target_zone, src)
 		msg_admin_attack("[key_name(user)] stunned [key_name(L)] with the [src].")
 
 		if(ishuman(L))
@@ -351,7 +351,7 @@
 	animate(H, transform=turn(matrix(), 16*shake_dir), pixel_x=init_px + 4*shake_dir, time=1)
 	animate(transform=null, pixel_x=init_px, time=6, easing=ELASTIC_EASING)
 
-	L.stun_effect_act(stunforce, agonyforce, target_zone, src)
+	L.electrocute(0, 0, agonyforce, NONE, target_zone, src)
 	msg_admin_attack("[key_name(user)] stunned [key_name(L)] with the [src].")
 
 	deductcharge(hitcost)

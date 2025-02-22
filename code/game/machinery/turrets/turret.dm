@@ -392,7 +392,7 @@
 					to_chat(user, "<span class='notice'>You remove the turret and salvage some components.</span>")
 					if(installation)
 						var/obj/item/gun/projectile/energy/Gun = new installation(loc)
-						Gun.power_supply.charge = gun_charge
+						Gun.obj_cell_slot.cell.charge = gun_charge
 						Gun.update_icon()
 					if(prob(50))
 						new /obj/item/stack/material/steel(loc, rand(1,4))

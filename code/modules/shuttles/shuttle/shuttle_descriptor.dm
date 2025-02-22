@@ -24,7 +24,7 @@
 	/// time spent in transit when performing a move
 	var/jump_move_time = 10 SECONDS
 
-/datum/shuttle_descriptor/clone(include_contents)
+/datum/shuttle_descriptor/clone()
 	var/datum/shuttle_descriptor/clone = ..()
 
 	clone.mass = mass

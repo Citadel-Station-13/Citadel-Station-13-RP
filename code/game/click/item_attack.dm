@@ -28,7 +28,6 @@ avoid code duplication. This includes items that may sometimes act as a standard
 		add_fingerprint(user)
 	return target.attackby(src, user, params, clickchain_flags, attack_modifier, clickchain)
 
-// No comment
 /atom/proc/attackby(obj/item/tool, mob/user, list/params, clickchain_flags, damage_multiplier, datum/event_args/actor/clickchain/clickchain)
 	return tool.melee_attack_chain(clickchain, clickchain_flags)
 

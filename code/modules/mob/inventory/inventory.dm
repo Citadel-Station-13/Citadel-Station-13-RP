@@ -9,7 +9,7 @@
  */
 /datum/inventory
 	//* Basics *//
-	/// owning mob
+	/// owning mob, if any
 	var/mob/owner
 
 	//* Actions *//

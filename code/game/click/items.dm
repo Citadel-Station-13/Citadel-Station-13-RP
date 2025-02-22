@@ -5,7 +5,8 @@
 
 //? Click-Chain system - using an item in hand to "attack", whether in melee or ranged.
 
-// todo: refactor attack object/mob to just melee attack or something
+// todo: refactor attack object/mob to just melee_attack_chain and a single melee attack system or something
+// todo: yeah most of this file needs re-evaluated again, especially for event_args/actor/clickchain support & right clicks
 
 /**
  * Called when trying to click something that the user can Reachability() to.
