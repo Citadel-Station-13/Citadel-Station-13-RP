@@ -25,23 +25,23 @@
 		new /datum/point_redemption_item("Hardsuit - Intelligence Storage",	/obj/item/hardsuit_module/ai_container,								25),
 		new /datum/point_redemption_item("Injector (L) - Panacea",          /obj/item/reagent_containers/hypospray/autoinjector/biginjector/purity,	50),
 		//Mining vendor steals - Ends
-        //Power tools like the CE gets, if kev comes crying: https://cdn.discordapp.com/attachments/296237931587305472/956517623519141908/unknown.png
+		//Power tools like the CE gets, if kev comes crying: https://cdn.discordapp.com/attachments/296237931587305472/956517623519141908/unknown.png
 		new /datum/point_redemption_item("Advanced Hardsuit",							/obj/item/hardsuit/ce,									150),
-        new /datum/point_redemption_item("Power Tool - Hand Drill",                     /obj/item/tool/screwdriver/power,                   80),
-        new /datum/point_redemption_item("Power Tool - Jaws of life",                   /obj/item/tool/crowbar/power,                       80),
-        new /datum/point_redemption_item("Power Tool - Experimental Welder",            /obj/item/weldingtool/experimental,                 80),
-        new /datum/point_redemption_item("Power Tool - Upgraded T-Ray Scanner",         /obj/item/t_scanner/upgraded,                       80),
-        new /datum/point_redemption_item("Power Tool - Advanced T-Ray Scanner",         /obj/item/t_scanner/advanced,                       80),
-        new /datum/point_redemption_item("Power Tool - Long Range Atmosphere scanner",  /obj/item/atmos_analyzer/longrange,                       80),
+		new /datum/point_redemption_item("Power Tool - Hand Drill",                     /obj/item/tool/screwdriver/power,                   80),
+		new /datum/point_redemption_item("Power Tool - Jaws of life",                   /obj/item/tool/crowbar/power,                       80),
+		new /datum/point_redemption_item("Power Tool - Experimental Welder",            /obj/item/weldingtool/experimental,                 80),
+		new /datum/point_redemption_item("Power Tool - Upgraded T-Ray Scanner",         /obj/item/t_scanner/upgraded,                       80),
+		new /datum/point_redemption_item("Power Tool - Advanced T-Ray Scanner",         /obj/item/t_scanner/advanced,                       80),
+		new /datum/point_redemption_item("Power Tool - Long Range Atmosphere scanner",  /obj/item/atmos_analyzer/longrange,                       80),
 		//new /datum/point_redemption_item("Power Tool - Holofan Projector", 				/obj/item/holosign_creator/combifan,				80),
-        new /datum/point_redemption_item("Superior Welding Goggles",                    /obj/item/clothing/glasses/welding/superior,        50),
+		new /datum/point_redemption_item("Superior Welding Goggles",                    /obj/item/clothing/glasses/welding/superior,        50),
 
-        //Level 2 stock parts, to make engineering kinda self sufficent for minor upgrades but the parts are also kinda expansive
-        new /datum/point_redemption_item("Stock Parts - Advanced Capacitor",        /obj/item/stock_parts/capacitor/adv,        20),
-        new /datum/point_redemption_item("Stock Parts - Advanced Scanning Module",  /obj/item/stock_parts/scanning_module/adv,  20),
-        new /datum/point_redemption_item("Stock Parts - Nano-Manipulator",          /obj/item/stock_parts/manipulator/nano,     20),
-        new /datum/point_redemption_item("Stock Parts - High-Power Micro-Laser",    /obj/item/stock_parts/micro_laser/high,     20),
-        new /datum/point_redemption_item("Stock Parts - Advanced Matter Bin",       /obj/item/stock_parts/matter_bin/adv,       20),
+		//Level 2 stock parts, to make engineering kinda self sufficent for minor upgrades but the parts are also kinda expansive
+		new /datum/point_redemption_item("Stock Parts - Advanced Capacitor",        /obj/item/stock_parts/capacitor/adv,        20),
+		new /datum/point_redemption_item("Stock Parts - Advanced Scanning Module",  /obj/item/stock_parts/scanning_module/adv,  20),
+		new /datum/point_redemption_item("Stock Parts - Nano-Manipulator",          /obj/item/stock_parts/manipulator/nano,     20),
+		new /datum/point_redemption_item("Stock Parts - High-Power Micro-Laser",    /obj/item/stock_parts/micro_laser/high,     20),
+		new /datum/point_redemption_item("Stock Parts - Advanced Matter Bin",       /obj/item/stock_parts/matter_bin/adv,       20),
 
 		//Special Resources which the vendor is the primary source off:
 		new /datum/point_redemption_item("Special Parts - Vimur Tank", 				/obj/item/tank/vimur, 5),
