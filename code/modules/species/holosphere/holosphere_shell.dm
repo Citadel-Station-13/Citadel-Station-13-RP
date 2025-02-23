@@ -37,6 +37,8 @@
 	mob_size = MOB_MEDIUM
 	pass_flags = ATOM_PASS_TABLE
 
+	has_langs = list(LANGUAGE_GALCOM, LANGUAGE_EAL)
+
 	var/eye_icon_state = "holosphere_eye"
 
 	// space movement related
