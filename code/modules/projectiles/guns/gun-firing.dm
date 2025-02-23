@@ -73,7 +73,7 @@
 		return
 
 	//! LEGACY
-	if(!special_check(actor?.performer))
+	if(actor && !special_check(actor?.performer))
 		return
 	//! END
 
