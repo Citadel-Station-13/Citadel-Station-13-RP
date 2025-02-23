@@ -21,7 +21,7 @@
 		command_announcement.Announce("Attention, [station_name()], hostile fighters entered the area of operations", "GPS Displaying hostile signals", new_sound = sound('sound/effects/siren.ogg', volume=25))
 
 /datum/event/fighter/start()
-	switch(rand(1,100))
+	switch(rand(0,100))
 		if(1 to 100)
 			spawncount = rand(2 * severity * toughness, 4 * severity * toughness)
 			piratestring = "bandits"
