@@ -21,7 +21,7 @@
 		if(H.head)
 			if(H.head.integrity_flags & INTEGRITY_ACIDPROOF)
 				to_chat(H, "<span class='danger'>Your [H.head] protects you from the acid.</span>")
-				metabolism.legacy_current_holder.remove_reagent(id, volume)
+				metabolism.legacy_current_holder.remove_reagent(id, metabolism.legacy_volume_remaining)
 				return
 			else if(removed > meltdose)
 				to_chat(H, "<span class='danger'>Your [H.head] melts away!</span>")
@@ -35,7 +35,7 @@
 		if(H.wear_mask)
 			if(H.wear_mask.integrity_flags & INTEGRITY_ACIDPROOF)
 				to_chat(H, "<span class='danger'>Your [H.wear_mask] protects you from the acid.</span>")
-				metabolism.legacy_current_holder.remove_reagent(id, volume)
+				metabolism.legacy_current_holder.remove_reagent(id, metabolism.legacy_volume_remaining)
 				return
 			else if(removed > meltdose)
 				to_chat(H, "<span class='danger'>Your [H.wear_mask] melts away!</span>")

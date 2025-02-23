@@ -401,9 +401,11 @@
 	if(istype(target, /mob/living))
 		var/mob/living/living_target = target
 		if(istype(target, /mob/living/simple_mob/animal/roach))
-			living_target.adjustToxLoss(10 * removed)
+			living_target.adjustToxLoss(10 * allocated)
+			. = max(., allocated)
 		else if(istype(target, /mob/living/simple_mob/animal/giant_spider))
-			living_target.adjustToxLoss(5 * removed)
+			living_target.adjustToxLoss(5 * allocated)
+			. = max(., allocated)
 
 /datum/reagent/toxin/pestbgone/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_APIDAEN)

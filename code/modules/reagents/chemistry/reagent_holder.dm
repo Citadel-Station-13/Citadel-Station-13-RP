@@ -457,9 +457,31 @@
 	else if(ismob(target))
 	else if(isobj(target))
 
-
-
 #warn deal with these
+
+/**
+ * Applies a fraction of our reagents to a target without
+ * actually draining those reagents
+ *
+ * * This is labelled unsafe because this can and will cause reagent
+ *   duplication; we just don't care because it's the only way
+ *   to implement smoke and foam without a full rewrite of all
+ *   volumetric balancing constants.
+ */
+/datum/reagent_holder/proc/unsafe_apply_single_target_touch(atom/target, ratio)
+
+/**
+ * Applies a fraction of our reagents to a target without
+ * actually draining those reagents
+ *
+ * * This is labelled unsafe because this can and will cause reagent
+ *   duplication; we just don't care because it's the only way
+ *   to implement smoke and foam without a full rewrite of all
+ *   volumetric balancing constants.
+ * *
+ */
+/datum/reagent_holder/proc/unsafe_apply_single_target_vapor(atom/target, ratio)
+
 
 //* Filtering *//
 

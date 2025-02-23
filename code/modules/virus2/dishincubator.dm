@@ -71,16 +71,11 @@
 	data["blood_already_infected"] = null
 
 	if (beaker)
-		var/datum/reagent/blood/B = locate(/datum/reagent/blood) in beaker.reagents.reagent_list
-		data["can_breed_virus"] = dish && dish.virus2 && B
+		var/datum/blood_mixture/sample_blood_mixture = legacy_virus2_access_blood_mixture(beaker.reagents)
+		data["can_breed_virus"] = dish && dish.virus2 && sample_blood_mixture
 
-		if (B)
-			if (!B.data["virus2"])
-				B.data["virus2"] = list()
-
-			var/list/virus = B.data["virus2"]
-			for (var/ID in virus)
-				data["blood_already_infected"] = virus[ID]
+		for (var/ID in sample_blood_mixture?.legacy_virus2)
+			data["blood_already_infected"] = virus[ID]
 
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
@@ -133,10 +128,10 @@
 				foodsupply += 10
 			SSnanoui.update_uis(src)
 
-		if (locate(/datum/reagent/toxin) in beaker.reagents.reagent_list && toxins < 100)
-			for(var/datum/reagent/toxin/T in beaker.reagents.reagent_list)
-				toxins += max(T.strength,1)
-				beaker.reagents.remove_reagent(T.id,1)
+		if(toxins < 100)
+			for(var/datum/reagent/toxin/tox in beaker.reagents.get_reagent_datums())
+				toxins += max(tox.strength,1)
+				beaker.reagents.remove_reagent(tox.id,1)
 				if(toxins > 100)
 					toxins = 100
 					break

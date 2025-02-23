@@ -367,9 +367,9 @@
 		rejecting = null
 
 	if(istype(owner))
-		var/datum/reagent/blood/organ_blood = locate(/datum/reagent/blood) in reagents.reagent_list
-		if(!organ_blood || !organ_blood.data["blood_DNA"])
-			owner.vessel.trans_to(src, 5, 1, 1)
+		if(!reagents.has_reagent(/datum/reagent/blood::id))
+			var/datum/blood_mixture/owner_mixture = owner.take_blood_mixture(5, TRUE)
+			reagents.add_reagent(/datum/reagent/blood::id, 5, owner_mixture))
 
 		if(owner && vital && !ignore_vital)
 			if(user)
