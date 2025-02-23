@@ -44,6 +44,9 @@
 /datum/nutriment_data/static_spawn_initializer
 	cooked = TRUE
 
+/**
+ * * data: /datum/nutriment_data
+ */
 /datum/reagent/nutriment
 	name = "Nutriment"
 	id = "nutriment"

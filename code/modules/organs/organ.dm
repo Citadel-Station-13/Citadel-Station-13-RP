@@ -369,7 +369,7 @@
 	if(istype(owner))
 		if(!reagents.has_reagent(/datum/reagent/blood::id))
 			var/datum/blood_mixture/owner_mixture = owner.take_blood_mixture(5, TRUE)
-			reagents.add_reagent(/datum/reagent/blood::id, 5, owner_mixture))
+			reagents.add_reagent(/datum/reagent/blood::id, 5, owner_mixture)
 
 		if(owner && vital && !ignore_vital)
 			if(user)
@@ -475,7 +475,7 @@
 
 	//Process infections
 	if(reagents)
-		if(reagents.reagent_volumes(/datum/reagent/blood::id) && prob(40) && get_turf(src))
+		if(reagents.has_reagent(/datum/reagent/blood::id) && prob(40) && get_turf(src))
 			blood_splatter_legacy(get_turf(src), reagents.reagent_datas[/datum/reagent/blood::id], FALSE)
 			reagents.remove_reagent(/datum/reagent/blood, 0.1)
 		adjust_germ_level(rand(2,6))

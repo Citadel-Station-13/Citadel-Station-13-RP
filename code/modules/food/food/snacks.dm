@@ -4084,12 +4084,11 @@ END CITADEL CHANGE */
 		if (do_coating_prefix == 1)
 			name = "[coating.coated_adj] [name]"
 
-	for (var/r in reagents.reagent_list)
-		var/datum/reagent/R = r
-		if (istype(R, /datum/reagent/nutriment/coating))
-			var/datum/reagent/nutriment/coating/C = R
-			C.data["cooked"] = 1
-			C.name = C.cooked_name
+	for(var/datum/reagent/nutriment/coating/coating in reagents.get_reagent_datums())
+		var/datum/nutriment_data/coating_data = reagents.reagent_datas?[coating.id]
+		if(!coating_data)
+			continue
+		coating_data.cooked = TRUE
 
 /obj/item/reagent_containers/food/snacks/proc/on_consume(var/mob/eater, var/mob/feeder = null)
 	if(!reagents.total_volume)
@@ -4257,7 +4256,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/sliceable/pizza/crunch/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("batter", 6.5)
-	coating = reagents.get_reagent("batter")
+	coating = SSchemistry.fetch_reagent(/datum/reagent/nutriment/coating/batter::id)
 	reagents.add_reagent("cooking_oil", 4)
 	bitesize = 2
 
