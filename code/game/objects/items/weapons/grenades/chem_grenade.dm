@@ -170,9 +170,10 @@
 		steam.attach(src)
 		steam.start()
 
-		for(var/atom/A in view(affected_area, src.loc))
-			if( A == src ) continue
-			src.reagents.touch(A)
+		for(var/turf/spraying_turf in view(affected_area, get_turf(src)))
+			if( A == src)
+				continue
+			reagents.auto_spray(spraying_turf, 1, TRUE, 0)
 
 	if(istype(loc, /mob/living/carbon))		//drop dat grenade if it goes off in your hand
 		var/mob/living/carbon/C = loc

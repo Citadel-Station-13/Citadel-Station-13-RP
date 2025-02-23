@@ -113,7 +113,7 @@
 		if(91 to INFINITY)
 			filling_overlay.icon_state = "reagent100"
 
-	filling_overlay.color = mix_color_from_reagents(target_reagents.reagent_list)
+	filling_overlay.color = target_reagents.get_color()
 	. += filling_overlay
 
 /obj/machinery/iv_drip/OnMouseDropLegacy(mob/living/target)
@@ -218,8 +218,8 @@
 				visible_message(SPAN_HEAR("[src] beeps loudly."))
 				playsound(loc, 'sound/machines/twobeep_high.ogg', 50, TRUE)
 			var/atom/movable/target = reagent_container
-			attached_victim.take_blood(target, amount)
-			update_appearance()
+			if(attached_victim.take_blood_legacy(target, amount) > 0)
+				update_appearance()
 
 /// Called when an IV is attached.
 /obj/machinery/iv_drip/proc/attach_iv(mob/living/target, mob/user)
@@ -303,7 +303,7 @@
 	. += "[src] is [injection_mode ? "injecting" : "taking blood"]."
 
 	if(reagent_container)
-		if(reagent_container.reagents && reagent_container.reagents.reagent_list.len)
+		if(reagent_container.reagents?.total_volume)
 			. += SPAN_NOTICE("Attached is \a [reagent_container] with [reagent_container.reagents.total_volume] units of liquid.")
 		else
 			. += SPAN_NOTICE("Attached is an empty [reagent_container.name].")

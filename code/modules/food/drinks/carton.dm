@@ -65,6 +65,7 @@
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 	start_reagent = /datum/reagent/blood/synthblood
+	start_data_initializer = new /datum/blood_mixture/preset/single/synthblood
 
 /obj/item/reagent_containers/food/drinks/bludbox
 	name = "Bludbox carton"
@@ -75,6 +76,7 @@
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 	start_reagent = /datum/reagent/drink/blud
+	start_data_initializer = new /datum/blood_mixture/preset/single/synthblood
 
 /obj/item/reagent_containers/food/drinks/bludboxlight
 	name = "Bludbox Light carton"
@@ -85,4 +87,4 @@
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 	start_reagent = /datum/reagent/drink/blud/bludlight
-
+	start_data_initializer = new /datum/blood_mixture/preset/single/synthblood

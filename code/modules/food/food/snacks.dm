@@ -16,6 +16,7 @@
 	var/survivalfood = FALSE
 	var/nutriment_amt = 0
 	var/list/nutriment_desc = list("food" = 1)
+	#warn ohhh no
 	var/datum/reagent/nutriment/coating/coating = null
 	var/sealed = FALSE
 	var/custom_open_sound
@@ -3985,9 +3986,7 @@ END CITADEL CHANGE */
 //Code for dipping food in batter
 /obj/item/reagent_containers/food/snacks/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(target.is_open_container() && target.reagents && !(istype(target, /obj/item/reagent_containers/food)))
-		for (var/r in target.reagents.reagent_list)
-
-			var/datum/reagent/R = r
+		for(var/datum/reagent/R as anything in target.reagents.get_reagent_datums())
 			if (istype(R, /datum/reagent/nutriment/coating))
 				if (apply_coating(R, user))
 					return 1
@@ -4002,12 +4001,11 @@ END CITADEL CHANGE */
 
 	//Calculate the reagents of the coating needed
 	var/req = 0
-	for (var/r in reagents.reagent_list)
-		var/datum/reagent/R = r
+	for(var/datum/reagent/R as anything in reagents.get_reagent_datums())
 		if (istype(R, /datum/reagent/nutriment))
-			req += R.volume * 0.2
+			req += reagents.reagent_volumes[R.id] * 0.2
 		else
-			req += R.volume * 0.1
+			req += reagents.reagent_volumes[R.id] * 0.1
 
 	req += w_class*0.5
 
@@ -4030,7 +4028,7 @@ END CITADEL CHANGE */
 	C.holder.trans_to_holder(reagents, req)
 
 	//We're done with C now, repurpose the var to hold a reference to our local instance of it
-	C = reagents.get_reagent(id)
+	C = SSchemistry.fetch_reagent(id)
 	if (!C)
 		return
 
@@ -4086,12 +4084,11 @@ END CITADEL CHANGE */
 		if (do_coating_prefix == 1)
 			name = "[coating.coated_adj] [name]"
 
-	for (var/r in reagents.reagent_list)
-		var/datum/reagent/R = r
-		if (istype(R, /datum/reagent/nutriment/coating))
-			var/datum/reagent/nutriment/coating/C = R
-			C.data["cooked"] = 1
-			C.name = C.cooked_name
+	for(var/datum/reagent/nutriment/coating/coating in reagents.get_reagent_datums())
+		var/datum/nutriment_data/coating_data = reagents.reagent_datas?[coating.id]
+		if(!coating_data)
+			continue
+		coating_data.cooked = TRUE
 
 /obj/item/reagent_containers/food/snacks/proc/on_consume(var/mob/eater, var/mob/feeder = null)
 	if(!reagents.total_volume)
@@ -4259,7 +4256,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/sliceable/pizza/crunch/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("batter", 6.5)
-	coating = reagents.get_reagent("batter")
+	coating = SSchemistry.fetch_reagent(/datum/reagent/nutriment/coating/batter::id)
 	reagents.add_reagent("cooking_oil", 4)
 	bitesize = 2
 

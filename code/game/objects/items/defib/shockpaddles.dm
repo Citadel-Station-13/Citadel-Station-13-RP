@@ -135,7 +135,7 @@
 	if(!heart)
 		return TRUE
 
-	var/blood_volume = H.vessel.get_reagent_amount("blood")
+	var/blood_volume = H.blood_holder.get_total_volume()
 	if(!heart || heart.is_broken())
 		blood_volume *= 0.3
 	else if(heart.is_bruised())
