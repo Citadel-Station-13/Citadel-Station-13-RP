@@ -4,6 +4,8 @@
 /**
  * Describes stuff you can get for points in a point redemption vendor.
  * * Does not store info about the type of points, at time of writing.
+ *
+ * todo: category system
  */
 /datum/point_redemption_item
 	var/name = "Unknown Item"

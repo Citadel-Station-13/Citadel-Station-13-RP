@@ -74,7 +74,7 @@
  * @return TRUE if handled
  */
 /obj/machinery/point_redemption_vendor/proc/handle_id_insertion(obj/item/maybe_id, datum/event_args/actor/actor)
-	if(istype(maybe_id, /obj/item/card/id))
+	if(!istype(maybe_id, /obj/item/card/id))
 		return FALSE
 	if(inserted_id)
 		actor.chat_feedback(
@@ -132,7 +132,7 @@
 /obj/machinery/point_redemption_vendor/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "machines/PointRedemptionVendor.tsx")
+		ui = new(user, src, "machines/PointRedemptionVendor")
 		ui.set_title(name)
 		ui.open()
 

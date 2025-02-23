@@ -5,6 +5,9 @@
  * Kinda self explanatory; stores points you can apply to a card.
  */
 /obj/item/point_redemption_voucher
+	name = "point redemption voucher"
+	desc = "A voucher with redemption points that you can apply to an ID card to use at an equipment vendor."
+
 
 	/// stored points
 	var/list/stored_redemption_points
