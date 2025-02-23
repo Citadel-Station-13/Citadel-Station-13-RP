@@ -96,7 +96,47 @@
  */
 /datum/map_struct/proc/validate(list/z_grid, list/out_errors)
 	. = TRUE
-	#warn impl
+	var/list/planes = list()
+	for(var/idx in 1 to length(z_grid))
+		var/pos_string = z_grid[idx]
+		var/datum/map_level/level = z_grid[pos_string]
+		if(!istype(level))
+			out_errors?.Add("Index [idx] was not a map level datum.")
+			. = FALSE
+			continue
+		if(!istext(pos_string))
+			out_errors?.Add("Index [idx] did not have a valid z-grid string: '[pos_string]'")
+			. = FALSE
+			continue
+		grid_parser.Find(pos_string)
+		if(length(grid_parser.group) != 3)
+			out_errors?.Add("Index [idx] failed grid position parse: '[pos_string]'.")
+			. = FALSE
+			continue
+		var/x = text2num(grid_parser.group[1])
+		var/y = text2num(grid_parser.group[2])
+		var/z = text2num(grid_parser.group[3])
+		if(length(grid_parser.group) != 3)
+			out_errors?.Add("Index [idx] failed grid position decode: '[pos_string]'.")
+			. = FALSE
+			continue
+		LAZYADD(planes["[x],[y]"], level)
+	for(var/plane_key in planes)
+		var/list/datum/map_level/plane_levels = planes[plane_key]
+		var/found_ceiling_height
+		for(var/datum/map_level/plane_level as anything in plane_levels)
+			if(isnull(plane_level.ceiling_height))
+				continue
+			if(plane_level.ceiling_height == 0)
+				out_errors?.Add("Plane [plane_key] has a zero ceiling height level.")
+				. = FALSE
+				break
+			if(!isnull(found_ceiling_height) && found_ceiling_height != plane_level.ceiling_height)
+				out_errors?.Add("Plane [plane_key] has mismatching ceiling heights.")
+				. = FALSE
+				break
+			else
+				found_ceiling_height = plane_level.ceiling_height
 
 /**
  * Sets all the transitions and whatnot for our map levels

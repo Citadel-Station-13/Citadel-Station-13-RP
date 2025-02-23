@@ -189,17 +189,17 @@
 	for(var/level_idx in 1 to length(levels))
 		var/datum/map_level/level = levels[level_idx]
 		if(!istype(level))
-			out_errors?.Add("Index [level_idx] is not a valid map level datum.")
+			out_errors?.Add("map: Index [level_idx] is not a valid map level datum.")
 			. = FALSE
 			continue
 		if(struct_positions[level.struct_create_pos])
-			out_errors?.Add("Index [level_idx] collides with index [levels.Find(struct_positions[level.struct_create_pos])] on struct position '[level.struct_create_pos]'")
+			out_errors?.Add("map: Index [level_idx] collides with index [levels.Find(struct_positions[level.struct_create_pos])] on struct position '[level.struct_create_pos]'")
 			. = FALSE
 		else
 			struct_positions[level.struct_create_pos] = level
 		if(level.id)
 			if(keyed_levels[level.id])
-				out_errors?.Add("Index [level_idx] collides with index [levels.find(keyed_levels[level.id])] on level id '[level.id]'")
+				out_errors?.Add("map: Index [level_idx] collides with index [levels.find(keyed_levels[level.id])] on level id '[level.id]'")
 			else
 				keyed_levels[level.id] = level
 	// can't run overall checks if any levels are individually invalid
@@ -209,8 +209,12 @@
 	var/datum/map_struct/validation_struct = new
 	if(!validation_struct.validate(struct_positions))
 		return FALSE
-	if(!dry_run && !validate_load(out_errors))
-		return FALSE
+	var/list/struct_errors_out = out_errors ? list() : null
+	if(!dry_run && !validate_load(struct_errors_out))
+		. = FALSE
+	if(length(struct_errors_out))
+		for(var/str in struct_errors_out)
+			out_errors?.Add("struct: [str]")
 
 /**
  * validate that we can currently load
@@ -226,7 +230,7 @@
 		var/datum/map_level/level = levels[level_idx]
 		if(SSmapping.keyed_levels[level.id])
 			. = FALSE
-			out_errors?.Add("Index [level_idx] has id of '[level.id]' which is already taken by a currently loaded level.")
+			out_errors?.Add("map: Index [level_idx] has id of '[level.id]' which is already taken by a currently loaded level.")
 
 /**
  * primary station map
