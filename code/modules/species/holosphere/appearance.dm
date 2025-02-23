@@ -52,17 +52,42 @@
 
 	equip_loadout(source, loadout)
 
+// essentially a copy of the normal loadout behaviour and we then apply it to the chameleon outfit
 /datum/species/holosphere/proc/equip_loadout(mob/living/carbon/human/H, list/datum/loadout_entry/loadout)
 	for(var/datum/loadout_entry/entry as anything in loadout)
 		var/use_slot = entry.slot
 		if(isnull(use_slot))
 			continue
+
 		var/obj/item/equipped = equipped_chameleon_gear[use_slot]
-		if(equipped)
-			equipped.disguise(entry.path, H)
-			equipped.update_worn_icon()
-			slots_used += use_slot
-			loadout -= entry
+		if(!equipped)
+			continue
+
+		var/list/entry_data = loadout[entry]
+
+		var/list/tweak_assembled = list()
+		for(var/datum/loadout_tweak/tweak as anything in entry.tweaks)
+			var/tweak_data = entry_data[LOADOUT_ENTRYDATA_TWEAKS]?[tweak.id]
+			if(isnull(tweak_data))
+				continue
+			entry.path = tweak.tweak_spawn_path(entry.path, tweak_data)
+			tweak_assembled[tweak] = tweak_data
+
+		for(var/datum/loadout_tweak/tweak as anything in tweak_assembled)
+			tweak.tweak_item(equipped, tweak_assembled[tweak])
+
+		equipped.disguise(entry.path, H)
+
+		if((entry.loadout_customize_flags & LOADOUT_CUSTOMIZE_NAME) && entry_data[LOADOUT_ENTRYDATA_RENAME])
+			equipped.name = entry_data[LOADOUT_ENTRYDATA_RENAME]
+		if((entry.loadout_customize_flags & LOADOUT_CUSTOMIZE_DESC) && entry_data[LOADOUT_ENTRYDATA_REDESC])
+			equipped.desc = entry_data[LOADOUT_ENTRYDATA_REDESC]
+		if((entry.loadout_customize_flags & LOADOUT_CUSTOMIZE_COLOR) && entry_data[LOADOUT_ENTRYDATA_RECOLOR])
+			equipped.color = entry_data[LOADOUT_ENTRYDATA_RECOLOR]
+
+		equipped.update_worn_icon()
+		slots_used += use_slot
+		loadout -= entry
 
 	// no loadout items in that slot, hide the items icon
 	for(var/slot in equipped_chameleon_gear)
