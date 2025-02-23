@@ -380,7 +380,7 @@ SUBSYSTEM_DEF(air)
 	if(
 		gas_string == ATMOSPHERE_USE_AREA || \
 		gas_string == ATMOSPHERE_USE_OUTDOORS || \
-		gas_string = ATMOSPHERE_USE_INDOORS
+		gas_string == ATMOSPHERE_USE_INDOORS
 	)
 		return allow_turf_contextual
 	// requires it to already be generated

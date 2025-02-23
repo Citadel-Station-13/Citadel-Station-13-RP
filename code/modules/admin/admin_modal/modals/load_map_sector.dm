@@ -304,15 +304,19 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 	computed_errors = list()
 	world_maxz_at_prime = world.maxz
 
+	var/passed = TRUE
+
 	for(var/i in 1 to length(buffer.levels))
 		var/datum/map_level/checking_level = buffer.levels
 		if(!istype(checking_level))
+			passed = FALSE
 			computed_errors += "Index [i] is not a map level. What happened? Yell at coders."
 			continue
-	#warn ceiling height
+	if(!buffer.validate(computed_errors))
+		passed = FALSE
 
-	primed = TRUE
-	ready = TRUE
+	primed = passed
+	ready = passed
 
 	update_static_data()
 

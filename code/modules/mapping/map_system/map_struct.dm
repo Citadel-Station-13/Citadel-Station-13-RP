@@ -85,6 +85,20 @@
 	return ..()
 
 /**
+ * validates our struct
+ * * can be called before actually trying to construct
+ *
+ * @params
+ * * z_grid - see construct()
+ * * out_errors - (optional) human readable errors get added to this list if provided
+ *
+ * @return TRUE / FALSE
+ */
+/datum/map_struct/proc/validate(list/z_grid, list/out_errors)
+	. = TRUE
+	#warn impl
+
+/**
  * Sets all the transitions and whatnot for our map levels
  *
  * * This'll make them lead to adjacent levels.

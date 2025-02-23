@@ -172,6 +172,63 @@
 	return tim_sort(levels.Copy(), /proc/cmp_map_level_load_sequence)
 
 /**
+ * validates that everything works
+ *
+ * @params
+ * * out_errors - (optional) human readable errors get added to this list if provided
+ * * dry_run - (optional) do not validate loading; otherwise we also validate that we currently can load,
+ *             which invokes non-deterministic checks based on current round state
+ *
+ * @return TRUE / FALSE
+ */
+/datum/map/proc/validate(list/out_errors, dry_run)
+	. = TRUE
+	var/list/struct_positions = list()
+	var/list/keyed_levels = list()
+	// validate levels individually
+	for(var/level_idx in 1 to length(levels))
+		var/datum/map_level/level = levels[level_idx]
+		if(!istype(level))
+			out_errors?.Add("Index [level_idx] is not a valid map level datum.")
+			. = FALSE
+			continue
+		if(struct_positions[level.struct_create_pos])
+			out_errors?.Add("Index [level_idx] collides with index [levels.Find(struct_positions[level.struct_create_pos])] on struct position '[level.struct_create_pos]'")
+			. = FALSE
+		else
+			struct_positions[level.struct_create_pos] = level
+		if(level.id)
+			if(keyed_levels[level.id])
+				out_errors?.Add("Index [level_idx] collides with index [levels.find(keyed_levels[level.id])] on level id '[level.id]'")
+			else
+				keyed_levels[level.id] = level
+	// can't run overall checks if any levels are individually invalid
+	if(!.)
+		return
+	// validate struct
+	var/datum/map_struct/validation_struct = new
+	if(!validation_struct.validate(struct_positions))
+		return FALSE
+	if(!dry_run && !validate_load(out_errors))
+		return FALSE
+
+/**
+ * validate that we can currently load
+ *
+ * @params
+ * * out_errors - (optional) human readable errors get added to this list if provided
+ *
+ * @return TRUE / FALSE
+ */
+/datum/map/proc/validate_load(list/out_errors)
+	. = TRUE
+	for(var/level_idx in 1 to length(levels))
+		var/datum/map_level/level = levels[level_idx]
+		if(SSmapping.keyed_levels[level.id])
+			. = FALSE
+			out_errors?.Add("Index [level_idx] has id of '[level.id]' which is already taken by a currently loaded level.")
+
+/**
  * primary station map
  *
  * this is what's loaded at init. this determines what other maps initially load.
