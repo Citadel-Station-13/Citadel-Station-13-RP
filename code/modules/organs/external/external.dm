@@ -6,6 +6,10 @@
 	organ_tag = "limb"
 	decays = FALSE
 
+	//* Behaviour *//
+	/// this covers things like 'can this limb be injected' or 'can this limb be healed'
+	var/behaviour_flags = NONE
+
 	//* Coverage *//
 	/// body_cover_flags that count as covering us
 	var/body_part_flags = NONE

@@ -44,6 +44,9 @@
 		else if(affected.robotic >= ORGAN_ROBOT)
 			to_chat(user, "<span class='danger'>You cannot inject a robotic limb.</span>")
 			return
+		else if(affected.behaviour_flags & BODYPART_NO_INJECT)
+			to_chat(user, "<span class='danger'>You cannot inject this limb.</span>")
+			return
 
 		// Prototype Hypo functionality
 		if(H != user && prototype)

@@ -80,6 +80,15 @@
 		if(S.robo_repair(15, DAMAGE_TYPE_BRUTE, "some dents", src, user))
 			remove_fuel(1, user)
 		return NONE
+	if(is_holosphere_shell(target) && user.a_intent == INTENT_HELP)
+		if(!welding)
+			to_chat(user, "<span class='warning'>You'll need to turn [src] on to patch the damage on [target]!</span>")
+			return NONE
+		var/mob/living/simple_mob/holosphere_shell/shell = target
+		shell.shell_repair(10, DAMAGE_TYPE_BRUTE, "some dents", src, user)
+		remove_fuel(1, user)
+		return NONE
+
 	return ..()
 
 /obj/item/weldingtool/attackby(obj/item/W as obj, mob/living/user as mob)

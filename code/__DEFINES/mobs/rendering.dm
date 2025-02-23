@@ -2,7 +2,7 @@
 //* Copyright (c) 2024 silicons                             *//
 
 //* human overlay enums for standing_overlays
-
+#define HUMAN_OVERLAY_BODY "body"
 #define HUMAN_OVERLAY_SKIN "skin"
 #define HUMAN_OVERLAY_MUTATIONS "mutations"
 #define HUMAN_OVERLAY_MODIFIERS "mutations"
@@ -85,9 +85,15 @@
 #define HUMAN_LAYER_SPRITEACC_TAIL_BEHIND (FLOAT_LAYER - 955)
 
 //! legacy - genetics
-#define HUMAN_LAYER_MUTATIONS (FLOAT_LAYER - 1000)
+#define HUMAN_LAYER_MUTATIONS (FLOAT_LAYER - 998)
+
+#define HUMAN_LAYER_BODY (FLOAT_LAYER - 999)
 
 //* Helpers *//
 
 /// end proc immediately if we're being deleted or transformed into something
 #define HUMAN_RENDER_ABORT_IF_DELETING if(QDELING(src) || transforming) return
+
+// carbon appearance update enums
+#define CARBON_APPEARANCE_UPDATE_CLOTHING "clothing"
+#define CARBON_APPEARANCE_UPDATE_OTHER "other"

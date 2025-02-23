@@ -296,3 +296,8 @@
 		return
 
 	style_repick_open(usr)
+
+/obj/item/clothing/can_unequip(mob/M, slot, mob/user, flags)
+	if(clothing_flags & NO_UNEQUIP)
+		return FALSE
+	return ..()
