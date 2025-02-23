@@ -27,13 +27,19 @@
 
 /datum/reagent_holder/metabolism/add_reagent(id, amount, data_initializer, skip_reactions)
 	. = ..()
-	LAZYINITLIST(reagent_metabolisms)
-	#warn impl
+	if(!reagent_volumes?[id])
+		return
+	if(reagent_metabolisms?[id])
+		return
+	var/datum/reagent_metabolism/metabolism = new
+	metabolism.peak_dose = max(metabolism.peak_dose, reagent_volumes[id])
+	LAZYSET(reagent_metabolisms, id, metabolism)
 
 /datum/reagent_holder/metabolism/remove_reagent(id, amount, skip_reactions)
 	. = ..()
-	LAZYINITLIST(reagent_metabolisms)
-	#warn impl
+	if(reagent_volumes?[id])
+		return
+	LAZYREMOVE(reagent_metabolisms, id)
 
 // "Specialized" metabolism datums
 /datum/reagent_holder/metabolism/bloodstream

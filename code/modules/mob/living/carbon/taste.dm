@@ -28,7 +28,6 @@ calculate text size per text.
 			var/datum/reagent/R = SSchemistry.fetch_reagent(id)
 			if(!R.taste_mult)
 				continue
-			#warn check this shit
 			if(R.id == "nutriment") //this is ugly but apparently only nutriment (not subtypes) has taste data TODO figure out why
 				var/list/taste_data = reagent_datas?[id]
 				for(var/taste in taste_data)

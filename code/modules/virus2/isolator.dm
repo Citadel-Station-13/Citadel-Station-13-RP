@@ -158,7 +158,7 @@
 			P.info += "<hr>"
 
 			var/datum/blood_mixture/mixture = sample.reagents.get_reagent_data(/datum/reagent/blood)
-			for(var/datum/blood_fragment/blood_data as anything in mixture.fragments)
+			for(var/datum/blood_fragment/blood_data as anything in mixture.fragment_volumes)
 				var/mob/living/carbon/human/D = blood_data.legacy_donor
 				P.info += "<large><u>[D.get_true_species_name()] [blood_data.legacy_name]:</u></large><br>[blood_data.legacy_blood_dna]<br>"
 

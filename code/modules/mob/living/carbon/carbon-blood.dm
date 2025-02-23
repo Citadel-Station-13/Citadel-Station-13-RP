@@ -169,7 +169,6 @@
 	creating.legacy_blood_type = dna.b_type
 	creating.legacy_donor = src
 	creating.legacy_species = isSynthetic() ? "synthetic" : species.name
-	#warn how to deal with name / color?
 	creating.legacy_name = species.get_blood_name(src)
 	creating.color = species.get_blood_colour(src)
 	return creating

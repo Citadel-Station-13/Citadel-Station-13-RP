@@ -12,19 +12,26 @@
 	var/taste_total = 0
 
 /datum/nutriment_data/proc/set_taste(description, amount)
-	#warn impl
+	LAZYSET(taste, description, amount)
 
 /datum/nutriment_data/proc/add_taste(description, amount, skip_culling)
-	#warn impl ; cull if needed
+	LAZYINITLIST(taste)
+	taste[description] = taste[description] + amount
 
 	if(!skip_culling)
 		cull_taste()
 
 /datum/nutriment_data/proc/remove_taste(description, amount)
-	#warn impl
+	if(!amount)
+		LAZYREMOVE(taste, description)
+	else if(taste[description])
+		taste[description] -= amount
+		if(taste[description] <= 0)
+			taste -= description
 
 /datum/nutriment_data/proc/cull_taste()
 	// this should be a define (10 being max) but idrc lol
+	tim_sort(taste, /proc/cmp_numeric_dsc, TRUE)
 	taste?.len = min(length(taste), 10)
 
 /datum/nutriment_data/proc/merge_from(datum/nutriment_data/source)

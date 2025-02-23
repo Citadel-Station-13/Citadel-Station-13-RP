@@ -171,8 +171,6 @@
 		steam.start()
 
 		for(var/turf/spraying_turf in view(affected_area, get_turf(src)))
-			if( A == src)
-				continue
 			reagents.auto_spray(spraying_turf, 1, TRUE, 0)
 
 	if(istype(loc, /mob/living/carbon))		//drop dat grenade if it goes off in your hand

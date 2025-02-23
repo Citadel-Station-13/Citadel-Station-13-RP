@@ -22,7 +22,6 @@
 /obj/effect/water/proc/set_up(var/turf/target, var/step_count = 5, var/delay = 5)
 	if(!target)
 		return
-	touched = list()
 	QDEL_IN(src, step_count * delay + 10)
 	for(var/i = 1 to step_count)
 		if(!loc)

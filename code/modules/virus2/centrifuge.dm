@@ -56,12 +56,12 @@
 		data["busy"] = "Isolating pathogens..."
 	else
 		if(sample)
-			var/datum/reagent/blood/B = locate(/datum/reagent/blood) in sample.reagents.reagent_list
-			if(B)
-				data["antibodies"] = antigens2string(B.data["antibodies"], none=null)
+			var/datum/blood_mixture/sample_blood_mixture = legacy_virus2_access_blood_mixture(sample.reagents)
+			if(sample_blood_mixture)
+				data["antibodies"] = antigens2string(sample_blood_mixture.legacy_antibodies, none=null)
 
 				var/list/pathogens[0]
-				var/list/virus = B.data["virus2"]
+				var/list/virus = sample_blood_mixture.legacy_virus2
 				for(var/ID in virus)
 					var/datum/disease2/disease/V = virus[ID]
 					pathogens.Add(list(list("name" = V.name(), "spread_type" = V.spreadtype, "reference" = "\ref[V]")))
@@ -69,9 +69,8 @@
 				data["pathogens"] = pathogens
 
 			else
-				var/datum/reagent/antibodies/A = locate(/datum/reagent/antibodies) in sample.reagents.reagent_list
-				if(A)
-					data["antibodies"] = antigens2string(A.data["antibodies"], none=null)
+				if(sample.reagents.reagent_datas?[/datum/reagent/antibodies::id])
+					data["antibodies"] = antigens2string(sample.reagents.reagent_datas?[/datum/reagent/antibodies::id], none=null)
 				data["is_antibody_sample"] = 1
 
 	return data

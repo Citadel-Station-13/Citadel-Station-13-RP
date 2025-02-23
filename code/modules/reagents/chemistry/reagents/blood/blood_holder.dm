@@ -9,25 +9,55 @@
  *
  * * We own all fragments in us. We always copy when giving references, and always copy
  *   when accepting references.
+ * * This datum is differently optimized than /datum/blood_mixture, which is
+ *   intended as a method of transferring blood around the game's code.
  */
 /datum/blood_holder
 	/// Our host blood.
-	var/datum/blood_fragment/host_blood
+	VAR_PRIVATE/datum/blood_fragment/host_blood
 	/// Amount of host blood we have
-	var/host_blood_volume = 0
-	/// Our fragments that aren't ourselves, associated to the ratio they are of guest_blood_volume.
-	var/list/datum/blood_fragment/guest_bloods
-	/// Total amount of guest blood volume
-	var/guest_blood_volume = 0
+	VAR_PRIVATE/host_blood_volume = 0
+	/// Our fragments that aren't ourselves, associated to their volume.
+	VAR_PRIVATE/list/datum/blood_fragment/guest_blood_volumes
+	/// Total amount of guest blood volume; this is a cached value
+	VAR_PRIVATE/tmp/cached_guest_blood_volume = 0
+	/// Total amount of guest blood volume we're pending to erase; this is a cached value
+	/// * this is used to optimize.
+	///   if we store blood fragment ratios, we have a very fast uniform removal operation,
+	///   and very slow non-uniform insertion and removal as we have to recompute ratios
+	///   every time. if we store volumes, it's the other way around but nothing is fast.
+	///   by storing both volume and a 'borrowed uniform removal ratio',
+	///   we can have fast performance for both types of operations.
+	/// * if this is non-0, guest blood volume values are not 'real' and are
+	///   actually the value times the ratio of (total volume - borrowed volume) / total volume.
+	VAR_PRIVATE/tmp/cached_guest_blood_volume_borrow = 0
+
+// todo: serialize
+// todo: deserialize
+// todo: clone
+
+/**
+ * recalculate caches and reconcile state
+ * * required to make guest blood volumes accurate again
+ */
+/datum/blood_holder/proc/reconcile()
+	#warn reconcile guest blood volumes
+
+//* total blood *//
 
 /datum/blood_holder/proc/get_total_volume()
-	return host_blood_volume + guest_blood_volume
+	return host_blood_volume + cached_guest_blood_volume - cached_guest_blood_volume_borrow
+
+//* host blood *//
 
 /datum/blood_holder/proc/set_host_fragment_to(datum/blood_fragment/fragment)
 	host_blood = fragment.clone()
 
 /datum/blood_holder/proc/set_host_volume(amount)
 	host_blood_volume = amount
+
+/datum/blood_holder/proc/get_host_volume()
+	return host_blood_volume
 
 /**
  * @return amount change
@@ -36,6 +66,14 @@
 	. = host_blood_volume
 	host_blood_volume = max(host_blood_volume + amount, 0)
 	. = host_blood_volume - .
+
+//* guest blood *//
+
+// none yet because we haven't needed any yet
+
+//* mixture operations *//
+
+#warn below
 
 /**
  * @return amount injected
@@ -175,12 +213,17 @@
 		guest_bloods.len = 0
 	return creating
 
+
+#warn how to handle color? compute_color_from_data, don't forget!
+
+#warn above
+
+//* misc *//
+
 /**
  * assimilate all guest bloods immediately
  */
 /datum/blood_holder/proc/do_immediate_assimilate_all()
-	host_blood_volume += max(0, guest_blood_volume)
-	guest_blood_volume = 0
-	guest_bloods = list()
-
-#warn how to handle color? compute_color_from_data, don't forget!
+	host_blood_volume += max(0, cached_guest_blood_volume - cached_guest_blood_volume_borrow)
+	cached_guest_blood_volume = cached_guest_blood_volume_borrow = 0
+	guest_blood_volumes = list()

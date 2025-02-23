@@ -33,7 +33,7 @@
 		addtimer(CALLBACK(src, PROC_REF(harden)), 15 SECONDS)
 
 /obj/effect/foam/Destroy()
-	iF(carried_reagents_shared_ref)
+	if(carried_reagents_shared_ref)
 		carried_reagents_shared_ref = null
 	return ..()
 

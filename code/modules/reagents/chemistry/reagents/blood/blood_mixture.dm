@@ -14,11 +14,10 @@
 	var/legacy_is_synthetic = FALSE
 
 	/// Fragments, associated to volume in units.
-	/// * Reading the key (fragment datum) is allowed and is the only reason
-	///   this is not a private variable.
-	/// * Writing in any way to this list or interpreting the value of the association
-	///   is not.
-	var/list/datum/blood_fragment/fragment_volumes
+	VAR_PRIVATE/list/datum/blood_fragment/fragments
+	/// Cached total amount
+	VAR_PRIVATE/tmp/cached_fragment_total_volume
+	#warn how
 
 	/// The total amount of all of our fragments
 	/// * Only useful in a return-value context. This is to avoid needing to recalcualte this.
@@ -29,6 +28,9 @@
 
 /datum/blood_mixture/New(list/fragments)
 	#warn impl; autonormalize ratios / amounts
+
+// todo: serialize
+// todo: deserialize
 
 /datum/blood_mixture/clone(include_contents)
 	var/datum/blood_mixture/copy = new /datum/blood_mixture
@@ -75,6 +77,30 @@
 	return list(
 		(highest_to_use.legacy_blood_dna) = (highest_to_use.legacy_blood_type),
 	)
+
+/**
+ * * You may only use the keys of the returned list to access fragments in a read-only fashion.
+ *   You may not use this to infer the ratio or volume of any fragment.
+ * * You are not allowed to edit this list or the datums in its entries in any way,
+ *   unless you clone() said datums or deep_list_clone() the list first.
+ */
+/datum/blood_mixture/proc/unsafe_get_fragment_list_ref() as /list
+	RETURN_TYPE(/list)
+	#warn impl
+
+/**
+ * You are not allowed to edit the returned datum without clone()ing it first.
+ */
+/datum/blood_mixture/proc/unsafe_get_first_fragment_ref() as /datum/blood_fragment
+	RETURN_TYPE(/datum/blood_fragment)
+	#warn impl
+
+/**
+ * You are not allowed to edit the returned datum without clone()ing it first.
+ */
+/datum/blood_mixture/proc/unsafe_get_fragment_ref(index) as /datum/blood_fragment
+	RETURN_TYPE(/datum/blood_fragment)
+	#warn impl
 
 //* Subtypes *//
 
