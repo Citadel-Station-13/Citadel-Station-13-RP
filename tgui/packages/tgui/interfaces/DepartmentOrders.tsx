@@ -135,7 +135,7 @@ const DepartmentCatalog = (props, context) => {
         <Tabs textAlign="center" fluid>
           {supplies.map(cat => (
             <Tabs.Tab
-              key={cat}
+              key={cat.name}
               selected={tabCategory === cat}
               onClick={() => (setTabCategory(cat))}>
               {cat.name}

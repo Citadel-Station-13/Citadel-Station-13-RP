@@ -1,3 +1,4 @@
+// todo: rework
 /datum/minimap
 	var/name = "minimap"
 	var/icon/overlay_icon

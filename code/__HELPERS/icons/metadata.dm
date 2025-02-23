@@ -1,4 +1,26 @@
 /**
+ * autoamtically uses native icon_states() or fast_icon_states() heuristically
+ */
+/proc/adaptive_icon_states(what)
+	if(isfile(what))
+		var/into_path = "[what]"
+		if(length(into_path))
+			// compiled
+			. = rustg_dmi_icon_states(into_path)
+		else
+			// runtime
+			return icon_states(what)
+	else if(isicon(what))
+		return icon_states(what)
+	else if(istext(what))
+		// assume path on server
+		. = rustg_dmi_icon_states(what)
+	if(!length(.))
+		. = list()
+		CRASH("failed to run icon states; please check the input / source.")
+	. = json_decode(.)
+
+/**
  * icon_states() but doesn't leak memory out the ass
  *
  * warning: this is actually pretty slow on runtime loaded or created /file and /icon objects.

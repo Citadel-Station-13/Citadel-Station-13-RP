@@ -10,7 +10,7 @@
  */
 import { BooleanLike } from "common/react";
 import { InfernoNode } from "inferno";
-import { getModuleData, useBackend, useLocalState } from "../../backend";
+import { useBackend, useLocalState } from "../../backend";
 import { Button, Flex, Section, Stack, Tooltip } from "../../components";
 import { Window } from "../../layouts";
 import { GamePreferenceEntry, GamePreferenceEntrySchema } from "./GamePreferenceEntry";
@@ -120,7 +120,7 @@ export const GamePreferences = (props, context) => {
 };
 
 const GamePreferencesBody = (props, context) => {
-  const { act, data } = useBackend<GamePreferencesData>(context);
+  const { act, data, nested_data } = useBackend<GamePreferencesData>(context);
 
   let categoryCache = computeGamePreferenceCategoryCache(data.entries);
   let [activeCategory, setActiveCategory] = useLocalState<string>(context, "prefsCategoryActive", Object.keys(categoryCache)[0]);
@@ -128,7 +128,7 @@ const GamePreferencesBody = (props, context) => {
 
   // todo: this is so fucking awful bros please don't make the same mistake on character setup.
   if (activeMiddleware && (typeof activeMiddleware === 'string')) {
-    let middlewareData = getModuleData(context, activeMiddleware);
+    let middlewareData = nested_data[activeMiddleware];
     switch (activeMiddleware) {
       case 'keybindings':
         return (
