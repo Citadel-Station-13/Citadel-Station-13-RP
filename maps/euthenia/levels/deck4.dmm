@@ -8324,7 +8324,7 @@
 /turf/simulated/floor/reinforced/outdoors,
 /area/space)
 "CB" = (
-/obj/machinery/mineral/equipment_vendor,
+/obj/machinery/point_redemption_vendor/mining,
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
 	},

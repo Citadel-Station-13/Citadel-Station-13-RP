@@ -73,7 +73,7 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
 
     if(istype(W, /obj/item/card/id))
         var/obj/item/card/id/used_id = W
-        used_id.engineer_points += points_stored
+        used_id.adjust_redemption_points(POINT_REDEMPTION_TYPE_ENGINEERING, points_stored)
         to_chat(user, SPAN_NOTICE("You transfer [points_stored] points to your ID"))
         points_stored = 0
         return
