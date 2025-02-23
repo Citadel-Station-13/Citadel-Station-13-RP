@@ -32,5 +32,5 @@
 	if(!action_checks(user) || !active)
 		return
 
-	user.electrocute_act(shock_damage, src)
+	user.electrocute(damage = shock_damage, hit_zone = BP_TORSO, source = src)
 	return inc_damage

@@ -980,7 +980,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 /**
  * clones us into a new datum
  */
-/datum/species/clone(include_contents)
+/datum/species/clone()
 	var/datum/species/created = new type
 	created.copy_from(src)
 	return created

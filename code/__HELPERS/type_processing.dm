@@ -20,9 +20,10 @@
 		/obj/item/mecha_parts = "//mech_part",
 		/obj/item/organ = "//organ",
 		/obj/item/gun_attachment = "//gun-attachment",
+		/obj/item/gun_component = "//gun-component",
 		/obj/item/gun/projectile/ballistic = "//gun-ballistic",
 		/obj/item/gun/projectile/energy = "//gun-energy",
-		/obj/item/gun/magnetic = "//gun-magnetic",
+		/obj/item/gun/projectile/magnetic = "//gun-magnetic",
 		/obj/item/gun = "//gun",
 		/obj/item/ammo_casing = "//ammo",
 		/obj/item/ammo_magazine = "//magazine",
@@ -51,7 +52,6 @@
 
 /proc/get_fancy_list_of_atom_types()
 	return make_types_fancy(typesof(/atom))
-
 
 /proc/get_fancy_list_of_datum_types()
 	return make_types_fancy(typesof(/datum) - typesof(/atom))
