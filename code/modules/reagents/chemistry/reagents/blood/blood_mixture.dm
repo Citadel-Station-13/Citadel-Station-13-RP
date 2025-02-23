@@ -4,6 +4,7 @@
 /**
  * Reagent blood data
  */
+#warn fragment_volumes, and a total amount tracker / manual gc system.
 /datum/blood_mixture
 	var/list/legacy_antibodies
 	var/list/legacy_virus2
@@ -12,8 +13,12 @@
 	#warn hook
 	var/legacy_is_synthetic = FALSE
 
-	/// Fragments, associated to **ratio of total**.
-	var/list/datum/blood_fragment/fragments
+	/// Fragments, associated to volume in units.
+	/// * Reading the key (fragment datum) is allowed and is the only reason
+	///   this is not a private variable.
+	/// * Writing in any way to this list or interpreting the value of the association
+	///   is not.
+	var/list/datum/blood_fragment/fragment_volumes
 
 	/// The total amount of all of our fragments
 	/// * Only useful in a return-value context. This is to avoid needing to recalcualte this.

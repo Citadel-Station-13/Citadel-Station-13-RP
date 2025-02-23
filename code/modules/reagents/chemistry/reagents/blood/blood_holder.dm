@@ -47,7 +47,6 @@
 		amount = mixture.ctx_return_amount
 	if(!amount)
 		return 0
-	#warn impl; check for host blood
 
 	// todo: auto-trim system
 
@@ -57,12 +56,18 @@
 		for(var/datum/blood_fragment/potential_injecting as anything in mixture.fragments)
 			if(host_blood.equivalent(potential_injecting))
 				var/computed_amount = (1 - mixture.fragments[potential_injecting]) * amount
-				amount -= computed_amount
 				. += adjust_host_volume(computed_amount)
-				continue
+				continue first_pass
 			for(var/datum/blood_fragment/potential_pair as anything in guest_bloods)
 				if(potential_pair.equivalent(potential_injecting))
-					#warn impl; scaling will be a pain here
+					var/computed_amount = (1 - mixture.fragments[potential_injecting]) * amount
+					var/new_guest_blood_volume = guest_blood_volume + computed_amount
+					var/scaler = guest_blood_volume / new_guest_blood_volume
+					var/adder = computed_amount / new_guest_blood_volume
+					for(var/datum/blood_fragment/rescaling as anything in guest_bloods)
+						guest_bloods[rescaling] = guest_bloods[rescaling] * scaler
+					guest_bloods[potential_pair] += adder
+					guest_blood_volume = new_guest_blood_volume
 					continue first_pass
 			new_fragments += potential_injecting
 

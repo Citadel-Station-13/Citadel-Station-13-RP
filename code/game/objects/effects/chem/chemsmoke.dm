@@ -99,16 +99,10 @@
 	if(!location)
 		return
 
-	if(chemholder.reagents.reagent_list.len) //reagent application - only run if there are extra reagents in the smoke
-		for(var/turf/T in wallList)
-			chemholder.reagents.touch_turf(T)
-		for(var/turf/T in targetTurfs)
-			chemholder.reagents.touch_turf(T)
-			for(var/atom/A in T.contents)
-				if(istype(A, /obj/effect/particle_effect/smoke/chem) || istype(A, /mob))
-					continue
-				else if(isobj(A) && (A.atom_flags & ATOM_ABSTRACT))
-					chemholder.reagents.touch_obj(A)
+	var/list/reapplication_exclusion_injection = list()
+	if(length(chemholder.reagents.reagent_volumes))
+		for(var/turf/T in wallList + targetTurfs)
+			chemholder.reagents.auto_spray(T, 1, TRUE, reapplication_exclusion_injection, 0)
 
 	var/color = chemholder.reagents.get_color() //build smoke icon
 	var/icon/I

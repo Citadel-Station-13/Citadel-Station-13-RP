@@ -25,6 +25,10 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 	//* Data *//
 	/// Supports data system.
+	/// * If data is supported, the data must be
+	///   a primitive (number, string),
+	///   a datum implementing clone(), or
+	///   a list with the same semantics.
 	var/holds_data = FALSE
 
 	//* Economy *//

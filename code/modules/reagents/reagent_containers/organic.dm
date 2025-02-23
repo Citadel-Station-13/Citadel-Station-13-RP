@@ -135,7 +135,7 @@
 		return
 	if(W && W.get_weight_class() <= get_weight_class() && (atom_flags & OPENCONTAINER))
 		to_chat(user, "<span class='notice'>You dip \the [W] into \the [src].</span>")
-		reagents.auto_spill(W, 1, FALSE, TRUE)
+		reagents.auto_spill(W, 1, TRUE, FALSE)
 
 /obj/item/reagent_containers/organic/proc/update_name_label()
 	if(label_text == "")

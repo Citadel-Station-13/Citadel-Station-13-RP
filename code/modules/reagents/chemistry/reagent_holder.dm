@@ -62,6 +62,14 @@
 		my_atom = null
 	return ..()
 
+/datum/reagent_holder/clone()
+	var/datum/reagent_holder/creating = new type
+	creating.reagent_volumes = reagent_volumes.Copy()
+	creating.reagent_datas = deep_clone_list(reagent_datas)
+	creating.temperature = temperature
+	creating.total_volume = total_volume
+	return creating
+
 // Used in attack logs for reagents in pills and such
 /datum/reagent_holder/proc/log_list()
 	if(!length(reagent_volumes))
@@ -443,13 +451,19 @@
  * @params
  * * target - what to splash on
  * * ratio - % to apply
+ * * keep_remaining - return unused reagents to holder. this effectively just clears a ratio of (or all) reagents after if not set
  * * splash - splash around. if it's an object, we can hit stuff around it; if it's a turf, we can hit
  *            anything on the turf.
- * * keep_remaining - return unused reagents to holder.
+ * * unsafe_drain_ratio - multiplier to actual drained amount. you can set this below 1
+ *                        to make it drain less than it should. if you set this to a value that isn't
+ *                        between 0 and 1 we will explode spectacularly so don't do it
  *
  * @return amount splashed
  */
-/datum/reagent_holder/proc/auto_spill(atom/target, ratio, splash, keep_remaining)
+/datum/reagent_holder/proc/auto_spill(atom/target, ratio, keep_remaining, splash, unsafe_drain_ratio)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+
 	. = ratio * total_volume
 	if(splash)
 
@@ -457,7 +471,47 @@
 	else if(ismob(target))
 	else if(isobj(target))
 
+	if(!keep_remaining)
+		if(ratio < 1)
+			#warn remove ratio
+		else
+			clear_reagents()
+
+/**
+ * [auto_spill()] but for turf application, usually used for sprays.
+ *
+ * @params
+ * * target - what to splash on, whether a turf or a single atom.
+ * * ratio - % to apply
+ * * keep_remaining - return unused reagents to holder. this effectively just clears a ratio of (or all) reagents after if not set
+ * * reapplication_exclusion - a list that can be provided to provide entities that are already
+ *                             sprayed on. this will be modified by this proc to associate
+ *                             entities sprayed to TRUE.
+ * * unsafe_drain_ratio - multiplier to actual drained amount. you can set this below 1
+ *                        to make it drain less than it should. if you set this to a value that isn't
+ *                        between 0 and 1 we will explode spectacularly so don't do it
+ *
+ * @return amount splashed
+ */
+/datum/reagent_holder/proc/auto_spray(atom/target, ratio, keep_remaining, list/reapplication_exclusion = list(), unsafe_drain_ratio = 1)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+
+	#warn check atom abstract / whatever
+
 #warn deal with these
+
+
+/**
+ * Applies a fraction of our reagents to a turf without actually
+ * draining those reagents.
+ *
+ * * This is labelled unsafe because this can and will cause reagent
+ *   duplication; we just don't care because it's the only way
+ *   to implement smoke, foam, and some other things without a full rewrite of all
+ *   volumetric balancing constants.
+ */
+/datum/reagent_holder/proc/unsafe_apply_turf_spray(turf/target, ratio)
 
 /**
  * Applies a fraction of our reagents to a target without
@@ -465,7 +519,7 @@
  *
  * * This is labelled unsafe because this can and will cause reagent
  *   duplication; we just don't care because it's the only way
- *   to implement smoke and foam without a full rewrite of all
+ *   to implement smoke, foam, and some other things without a full rewrite of all
  *   volumetric balancing constants.
  */
 /datum/reagent_holder/proc/unsafe_apply_single_target_touch(atom/target, ratio)
@@ -476,7 +530,7 @@
  *
  * * This is labelled unsafe because this can and will cause reagent
  *   duplication; we just don't care because it's the only way
- *   to implement smoke and foam without a full rewrite of all
+ *   to implement smoke, foam, and some other things without a full rewrite of all
  *   volumetric balancing constants.
  * *
  */
