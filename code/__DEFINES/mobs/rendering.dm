@@ -14,15 +14,7 @@
 #define HUMAN_OVERLAY_FIRE "fire"
 #define HUMAN_OVERLAY_LIQUID "liquid"
 #define HUMAN_OVERLAY_HAND(INDEX) "hand-[INDEX]"
-
-// todo: sprite accessories list system
-
-#define HUMAN_OVERLAY_HAIR "hair"
-#define HUMAN_OVERLAY_FACEHAIR "facehair"
-#define HUMAN_OVERLAY_TAIL "tail"
-#define HUMAN_OVERLAY_WINGS "wings"
-#define HUMAN_OVERLAY_HORNS "horns"
-#define HUMAN_OVERLAY_EARS "ears"
+#define HUMAN_OVERLAY_SPRITE_ACCESSORY(SLOT) "spriteacc-[SLOT]"
 
 //* human rendering layers
 //* human layers are via FLOAT_LAYER so all of these are negative

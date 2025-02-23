@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station developers.          *//
 
-//* coloration_mode; only bitfields for quick checks. only one can be applied at a time!
+//* coloration_mode; only bitfields for quick checks. only one can be applied at a time! *//
 
 /// no recoloring
 #define COLORATION_MODE_NONE (1<<0)
@@ -18,6 +18,7 @@
 /// red-green-blue matrix for parts 1, 2, 3
 #define COLORATION_MODE_RGB_MATRIX (1<<6)
 /// overlays - dynamic amount
+/// * blending is done via multiply
 //  todo: implement
 #define COLORATION_MODE_OVERLAYS (1<<7)
 

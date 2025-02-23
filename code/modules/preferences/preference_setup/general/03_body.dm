@@ -11,23 +11,10 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	sort_order = 3
 
 /datum/category_item/player_setup_item/general/body/load_character(var/savefile/S)
-	S["hair_red"]			>> pref.r_hair
-	S["hair_green"]			>> pref.g_hair
-	S["hair_blue"]			>> pref.b_hair
-	S["grad_red"]			>> pref.r_grad
-	S["grad_green"]			>> pref.g_grad
-	S["grad_blue"]			>> pref.b_grad
-	S["facial_red"]			>> pref.r_facial
-	S["facial_green"]		>> pref.g_facial
-	S["facial_blue"]		>> pref.b_facial
 	S["skin_tone"]			>> pref.s_tone
 	S["skin_red"]			>> pref.r_skin
 	S["skin_green"]			>> pref.g_skin
 	S["skin_blue"]			>> pref.b_skin
-	S["hair_style"]			>> pref.h_style_id
-	S["facial_style"]		>> pref.f_style_id
-	S["grad_style_name"]	>> pref.grad_style
-	S["grad_wingstyle_name"]>> pref.grad_wingstyle
 	S["eyes_red"]			>> pref.r_eyes
 	S["eyes_green"]			>> pref.g_eyes
 	S["eyes_blue"]			>> pref.b_eyes
@@ -48,23 +35,10 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	S["s_base"]				>> pref.s_base
 
 /datum/category_item/player_setup_item/general/body/save_character(var/savefile/S)
-	S["hair_red"]			<< pref.r_hair
-	S["hair_green"]			<< pref.g_hair
-	S["hair_blue"]			<< pref.b_hair
-	S["grad_red"]			<< pref.r_grad
-	S["grad_green"]			<< pref.g_grad
-	S["grad_blue"]			<< pref.b_grad
-	S["facial_red"]			<< pref.r_facial
-	S["facial_green"]		<< pref.g_facial
-	S["facial_blue"]		<< pref.b_facial
 	S["skin_tone"]			<< pref.s_tone
 	S["skin_red"]			<< pref.r_skin
 	S["skin_green"]			<< pref.g_skin
 	S["skin_blue"]			<< pref.b_skin
-	S["hair_style"]	<< pref.h_style_id
-	S["facial_style"]	<< pref.f_style_id
-	S["grad_style_name"]	<< pref.grad_style
-	S["grad_wingstyle_name"]<< pref.grad_wingstyle
 	S["eyes_red"]			<< pref.r_eyes
 	S["eyes_green"]			<< pref.g_eyes
 	S["eyes_blue"]			<< pref.b_eyes
@@ -84,23 +58,10 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	S["s_base"]				<< pref.s_base
 
 /datum/category_item/player_setup_item/general/body/sanitize_character(var/savefile/S)
-	pref.r_hair			= sanitize_integer(pref.r_hair, 0, 255, initial(pref.r_hair))
-	pref.g_hair			= sanitize_integer(pref.g_hair, 0, 255, initial(pref.g_hair))
-	pref.b_hair			= sanitize_integer(pref.b_hair, 0, 255, initial(pref.b_hair))
-	pref.r_grad			= sanitize_integer(pref.r_grad, 0, 255, initial(pref.r_grad))
-	pref.g_grad			= sanitize_integer(pref.g_grad, 0, 255, initial(pref.g_grad))
-	pref.b_grad			= sanitize_integer(pref.b_grad, 0, 255, initial(pref.b_grad))
-	pref.r_facial		= sanitize_integer(pref.r_facial, 0, 255, initial(pref.r_facial))
-	pref.g_facial		= sanitize_integer(pref.g_facial, 0, 255, initial(pref.g_facial))
-	pref.b_facial		= sanitize_integer(pref.b_facial, 0, 255, initial(pref.b_facial))
 	pref.s_tone			= sanitize_integer(pref.s_tone, -185, 34, initial(pref.s_tone))
 	pref.r_skin			= sanitize_integer(pref.r_skin, 0, 255, initial(pref.r_skin))
 	pref.g_skin			= sanitize_integer(pref.g_skin, 0, 255, initial(pref.g_skin))
 	pref.b_skin			= sanitize_integer(pref.b_skin, 0, 255, initial(pref.b_skin))
-	pref.h_style_id		= sanitize_inlist(pref.h_style_id, GLOB.sprite_accessory_hair)
-	pref.f_style_id		= sanitize_inlist(pref.f_style_id, GLOB.sprite_accessory_facial_hair)
-	pref.grad_style		= sanitize_inlist(pref.grad_style, GLOB.hair_gradients, initial(pref.grad_style))
-	pref.grad_wingstyle	= sanitize_inlist(pref.grad_wingstyle, GLOB.hair_gradients, initial(pref.grad_wingstyle))
 	pref.r_eyes			= sanitize_integer(pref.r_eyes, 0, 255, initial(pref.r_eyes))
 	pref.g_eyes			= sanitize_integer(pref.g_eyes, 0, 255, initial(pref.g_eyes))
 	pref.b_eyes			= sanitize_integer(pref.b_eyes, 0, 255, initial(pref.b_eyes))
@@ -124,31 +85,10 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		return TRUE
 	var/mob/living/carbon/human/character = M
 	// Copy basic values
-	character.r_eyes			= pref.r_eyes
-	character.g_eyes			= pref.g_eyes
-	character.b_eyes			= pref.b_eyes
-	character.r_hair			= pref.r_hair
-	character.g_hair			= pref.g_hair
-	character.b_hair			= pref.b_hair
-	character.r_grad			= pref.r_grad
-	character.g_grad			= pref.g_grad
-	character.b_grad			= pref.b_grad
-	character.r_gradwing		= pref.r_gradwing
-	character.g_gradwing		= pref.g_gradwing
-	character.b_gradwing		= pref.b_gradwing
-	character.r_facial			= pref.r_facial
-	character.g_facial			= pref.g_facial
-	character.b_facial			= pref.b_facial
 	character.r_skin			= pref.r_skin
 	character.g_skin			= pref.g_skin
 	character.b_skin			= pref.b_skin
 	character.s_tone			= pref.s_tone
-	var/datum/sprite_accessory/S = GLOB.sprite_accessory_hair[pref.h_style_id]
-	character.h_style = S.name
-	S = GLOB.sprite_accessory_facial_hair[pref.f_style_id]
-	character.f_style = S.name
-	character.grad_style		= pref.grad_style
-	character.grad_wingstyle	= pref.grad_wingstyle
 	character.b_type			= pref.b_type
 	character.synth_color 		= pref.synth_color
 	character.r_synth			= pref.r_synth

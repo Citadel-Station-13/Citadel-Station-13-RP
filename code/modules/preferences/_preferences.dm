@@ -29,13 +29,19 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	return creating
 
 /datum/preferences
-		//* Intrinsics
+	//* Intrinsics *//
 	/// did we load yet?
 	var/initialized = FALSE
 
-		//* Error Handling
+	//* Error Handling *//
 	/// queued error messages to display
 	var/list/io_error_queue
+
+	//*                 Characters v2 Staging                     *//
+	//* These are direct datums that can be translated over to    *//
+	//* the new character system once that's done.                *//
+	#warn impl / hook
+	var/datum/character_appearance/character_appearance
 
 	//* ## Doohickeys For Savefiles
 	var/path
@@ -60,7 +66,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	//? These lists may only ever contain associative key-values, where
 	//? values MUST be string, number, or null.
 	//? Savefiles do not play nice with typepaths.
-		//* Loaded data
+	//* Loaded data *//
 	/// character data
 	var/list/character
 	/// global data
@@ -91,32 +97,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/backbag = 2
 	/// PDA type.
 	var/pdachoice = 1
-	/// Hair type.
-	var/h_style_id
-	/// Hair color.
-	var/r_hair = 0
-	/// Hair color.
-	var/g_hair = 0
-	/// Hair color.
-	var/b_hair = 0
-	/// Gradient style.
-	var/grad_style = "None"
-	/// Gradient color.
-	var/r_grad = 0
-	/// Gradient color.
-	var/g_grad = 0
-	/// Gradient color.
-	var/b_grad = 0
-	/// Gradient style.
-	var/grad_wingstyle = "None"
-	/// Face hair type.
-	var/f_style_id
-	/// Face hair color.
-	var/r_facial = 0
-	/// Face hair color.
-	var/g_facial = 0
-	/// Face hair color.
-	var/b_facial = 0
 	/// Skin tone.
 	var/s_tone = 0
 	/// Skin color.

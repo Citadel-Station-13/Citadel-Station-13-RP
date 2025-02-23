@@ -63,6 +63,7 @@ GLOBAL_LIST_EMPTY(hair_gradient_icon_cache)
 	..()
 	if(append_s_at_end)
 		icon_state = "[icon_state]_s"
+	#warn inject gradient marking
 
 /datum/sprite_accessory/hair/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state, with_variation, flattened)
 	var/list/image/layers = ..()
