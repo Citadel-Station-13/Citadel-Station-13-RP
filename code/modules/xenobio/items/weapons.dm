@@ -41,6 +41,12 @@
 	hitcost = 200
 	use_external_power = TRUE
 
+/datum/firemode/energy/xeno_taser
+	name = "stun"
+	cycle_cooldown = 0.4 SECONDS
+	projectile_type = /obj/projectile/beam/stun/xeno
+	charge_cost = 240
+
 // Xeno stun gun + projectile
 /obj/item/gun/projectile/energy/taser/xeno
 	name = "xeno taser gun"
@@ -50,12 +56,13 @@
 	fire_sound = 'sound/weapons/taser2.ogg'
 	charge_cost = 120 // Twice as many shots.
 	no_pin_required = 1
-	projectile_type = /obj/projectile/beam/stun/xeno
 	accuracy = 30 // Make it a bit easier to hit the slimes.
 	description_info = "This gun will stun a slime or other lesser slimy lifeform for about two seconds, if hit with the projectile it fires."
 	description_fluff = "An easy to use weapon designed by Nanotrasen, for Nanotrasen.  This weapon is designed to subdue lesser \
 	slime-based xeno lifeforms at a distance.  It is ineffective at stunning non-slimy lifeforms such as humanoids."
-	firemodes = list()
+	firemodes = list(
+		/datum/firemode/energy/xeno_taser
+	)
 
 /obj/item/gun/projectile/energy/taser/xeno/robot // Borg version
 	self_recharge = 1
@@ -66,8 +73,6 @@
 	desc = "An NT Mk30 NL retrofitted to fire beams for subduing non-humanoid slimy xeno life forms."
 	icon_state = "taserold"
 	item_state = "taser"
-	projectile_type = /obj/projectile/beam/stun/xeno/weak
-	charge_cost = 480
 	accuracy = 0 //Same accuracy as a normal Sec taser.
 	description_fluff = "An NT Mk30 NL retrofitted after the events that occurred aboard the NRS Prometheus."
 
@@ -84,9 +89,6 @@
 	legacy_muzzle_type = /obj/effect/projectile/muzzle/laser_omni
 	legacy_tracer_type = /obj/effect/projectile/tracer/laser_omni
 	legacy_impact_type = /obj/effect/projectile/impact/laser_omni
-
-/obj/projectile/beam/stun/xeno/weak //Weaker variant for non-research equipment, turrets, or rapid fire types.
-	agony = 3
 
 /obj/projectile/beam/stun/xeno/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()

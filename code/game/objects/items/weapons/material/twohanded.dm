@@ -31,22 +31,21 @@
 
 /obj/item/material/twohanded/Initialize(mapload, material_key)
 	. = ..()
-	//* datum component - wielding *//
 	AddComponent(/datum/component/wielding)
+	update_icon()
 
 /obj/item/material/twohanded/on_wield(mob/user, hands)
 	. = ..()
+	update_icon()
 
 /obj/item/material/twohanded/on_unwield(mob/user, hands)
 	. = ..()
+	update_icon()
 
 /obj/item/material/twohanded/standard_melee_attack(atom/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(!(item_flags & ITEM_MULTIHAND_WIELDED))
 		mult *= unwielded_force_multiplier
-
-/obj/item/material/twohanded/Initialize(mapload, material_key)
-	. = ..()
-	update_icon()
+	return ..()
 
 /obj/item/material/twohanded/update_icon()
 	icon_state = "[base_icon][!!(item_flags & ITEM_MULTIHAND_WIELDED)]"
