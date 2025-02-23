@@ -75,7 +75,7 @@
 		data["can_breed_virus"] = dish && dish.virus2 && sample_blood_mixture
 
 		for (var/ID in sample_blood_mixture?.legacy_virus2)
-			data["blood_already_infected"] = virus[ID]
+			data["blood_already_infected"] = sample_blood_mixture.legacy_virus2[ID]
 
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
