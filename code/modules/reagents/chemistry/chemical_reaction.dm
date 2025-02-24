@@ -201,26 +201,6 @@
 	for(var/id in required_reagents)
 		required_reagents_unit_volume += required_reagents[id]
 
-//obtains any special data that will be provided to the reaction products
-//this is called just before reactants are removed.
-// todo: rework data system
-#warn refactor
-/datum/chemical_reaction/proc/send_data(datum/reagent_holder/holder, reaction_limit)
-	return null
-
-/**
- * Performs data calculations for the data **initializer** to give to the result.
- *
- * * Only called if `has_data_semantics` is on.
- *
- * @params
- * * holder - source holder
- * * multiplier - reaction multiplier
- */
-#warn this
-/datum/chemical_reaction/proc/compute_result_data_initializer(datum/reagent_holder/holder, multiplier)
-	return
-
 //* Guidebook *//
 
 /**
@@ -308,6 +288,20 @@
 	if(holder.temperature < temperature_low || holder.temperature > temperature_high)
 		return FALSE
 	return TRUE
+
+//* Data *//
+
+/**
+ * Performs data calculations for the data **initializer** to give to the result.
+ *
+ * * Only called if `has_data_semantics` is on.
+ *
+ * @params
+ * * holder - source holder
+ * * multiplier - reaction multiplier
+ */
+/datum/chemical_reaction/proc/compute_result_data_initializer(datum/reagent_holder/holder, multiplier)
+	return
 
 //* Queries *//
 

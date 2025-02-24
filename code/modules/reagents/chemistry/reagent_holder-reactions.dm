@@ -219,7 +219,12 @@
 			remove_reagent(id, maximum_multiplier * reaction.required_reagents[id], TRUE)
 			ids_to_recheck[id] = TRUE
 		if(reaction.result_amount > 0)
-			add_reagent(reaction.result, maximum_multiplier * reaction.result_amount, null, TRUE)
+			add_reagent(
+				reaction.result,
+				maximum_multiplier * reaction.result_amount,
+				reaction.has_data_semantics ? reaction.compute_result_data_initializer(src, maximum_multiplier) : null,
+				TRUE,
+			)
 			ids_to_recheck[reaction.result] = TRUE
 
 		reaction.on_reaction_tick(src, delta_time, maximum_multiplier)
@@ -304,7 +309,12 @@
 			remove_reagent(id, maximum_multiplier * reaction.required_reagents[id], TRUE)
 			ids_to_recheck[id] = TRUE
 		if(reaction.result && reaction.result_amount > 0)
-			add_reagent(reaction.result, maximum_multiplier * reaction.result_amount, null, TRUE)
+			add_reagent(
+				reaction.result,
+				maximum_multiplier * reaction.result_amount,
+				reaction.has_data_semantics ? reaction.compute_result_data_initializer(src, maximum_multiplier) : null,
+				TRUE,
+			)
 			ids_to_recheck[reaction.result] = TRUE
 
 		reaction.on_reaction_instant(src, maximum_multiplier)
