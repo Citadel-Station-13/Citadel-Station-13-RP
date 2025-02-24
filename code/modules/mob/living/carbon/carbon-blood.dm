@@ -20,7 +20,7 @@
 		return
 
 	blood_holder.set_host_fragment_to(create_natural_blood_fragment())
-	blood_holder.do_immediate_assimilate_all()
+	blood_holder.do_assimilate_all()
 	if(!do_not_regenerate)
 		blood_holder.set_host_volume(species.blood_volume)
 

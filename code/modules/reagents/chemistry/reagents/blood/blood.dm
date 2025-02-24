@@ -31,6 +31,7 @@
 /datum/reagent/blood/mix_data(datum/blood_mixture/old_data, old_volume, datum/blood_mixture/new_data, new_volume, datum/reagent_holder/holder)
 	if(!old_data)
 		old_data = new
+	old_data.unsafe_merge_other_into_self(new_data, new_volume, old_volume)
 
 	var/list/new_fragments = list()
 	// put everything in sorted in descending volumes
@@ -54,10 +55,6 @@
 
 	old_data.fragments = new_fragments
 
-	old_data.legacy_antibodies |= new_data.legacy_antibodies
-	old_data.legacy_is_synthetic ||= new_data.legacy_is_synthetic
-	old_data.legacy_virus2 |= new_data.legacy_virus2
-	old_data.legacy_trace_chem ||= new_data.legacy_trace_chem
 
 	return old_data
 

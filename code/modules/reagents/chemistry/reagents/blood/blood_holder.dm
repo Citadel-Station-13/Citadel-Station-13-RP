@@ -56,79 +56,37 @@
 
 //* mixture operations *//
 
-#warn below
-
 /**
  * @return amount injected
  */
 /datum/blood_holder/proc/inject_mixture(datum/blood_mixture/mixture, amount)
-	if(amount < 0)
-		return 0
 	if(isnull(amount))
 		amount = mixture.ctx_return_amount
-	if(!amount)
+	if(amount <= 0)
 		return 0
 
-	// todo: auto-trim system
-
-	var/list/datum/blood_fragment/new_fragments = list()
-
-	first_pass:
-		for(var/datum/blood_fragment/potential_injecting as anything in mixture.fragments)
-			if(host_blood.equivalent(potential_injecting))
-				var/computed_amount = (1 - mixture.fragments[potential_injecting]) * amount
-				. += adjust_host_volume(computed_amount)
-				continue first_pass
-			for(var/datum/blood_fragment/potential_pair as anything in guest_bloods)
-				if(potential_pair.equivalent(potential_injecting))
-					var/computed_amount = (1 - mixture.fragments[potential_injecting]) * amount
-					var/new_guest_blood_volume = guest_blood_volume + computed_amount
-					var/scaler = guest_blood_volume / new_guest_blood_volume
-					var/adder = computed_amount / new_guest_blood_volume
-					for(var/datum/blood_fragment/rescaling as anything in guest_bloods)
-						guest_bloods[rescaling] = guest_bloods[rescaling] * scaler
-					guest_bloods[potential_pair] += adder
-					guest_blood_volume = new_guest_blood_volume
-					continue first_pass
-			new_fragments += potential_injecting
-
-	var/old_volume = guest_blood_volume
+	var/old_volume = host_blood_volume + cached_guest_blood_volume
+	var/list/fragment_ratios = mixture.unsafe_get_fragment_list_ref()
+	for(var/datum/blood_fragment/fragment as anything in fragment_ratios)
+		var/ratio = fragment_ratios[fragment]
+		inject_fragment(fragment, amount * ratio)
+	return (cached_guest_blood_volume + host_blood_volume) - old_volume
 
 /**
  * @return amount injected
  */
 /datum/blood_holder/proc/inject_fragment(datum/blood_fragment/fragment, amount)
-	if(amount < 0)
+	if(amount <= 0)
 		return 0
 	if(host_blood.equivalent(fragment))
 		return adjust_host_volume(amount)
 
-	// default to new fragment, which results in a new one being made
-	var/datum/blood_fragment/found = fragment
-	for(var/datum/blood_fragment/checking as anything in guest_bloods)
+	for(var/i in 1 to length(guest_blood_volumes))
+		var/datum/blood_fragment/checking = guest_blood_volumes[i]
 		if(checking.equivalent(fragment))
-			found = checking
-			break
-
-	//! bELOW
-
-	var/old_volume = guest_blood_volume
-	guest_blood_volume += amount
-	var/scaler = old_volume / guest_blood_volume
-
-	for(var/datum/blood_fragment/scaling as anything in guest_bloods)
-		guest_bloods[scaling] *= scaler
-
-	if(!existing)
-		guest_bloods[fragment] = 1 - scaler
-	else
-		guest_bloods[existing] += 1 - scaler
-
-	#warn autotrim
-
-	return amount
-
-#warn above
+			guest_blood_volumes[checking] += amount
+			return
+	guest_blood_volumes[fragment] = amount
 
 /**
  * Erases blood uniformly.
@@ -208,14 +166,57 @@
 		cached_guest_blood_volume = 0
 	return creating
 
-#warn how to handle color? compute_color_from_data, don't forget!
+/**
+ * Gets our overall color.
+ */
+/datum/blood_holder/proc/get_color()
+	// red, green, blue, alpha, total
+	var/list/rgbat = decode_rgba(host_blood.color || "#000000")
+	// index 5
+	rgbat += host_blood_volume
+
+	for(var/datum/blood_fragment/fragment as anything in guest_blood_volumes)
+		var/guest_volume = guest_blood_volumes[fragment]
+		var/list/decoded_guest = decode_rgba(fragment.color || "#000000")
+		rgbat[1] += decoded_guest[1] * guest_volume
+		rgbat[2] += decoded_guest[2] * guest_volume
+		rgbat[3] += decoded_guest[3] * guest_volume
+		rgbat[4] += decoded_guest[4] * guest_volume
+		rgbat[5] += guest_volume
+
+	var/divisor = rgbat[5]
+	return rgb(
+		rgbat[1] / divisor,
+		rgbat[2] / divisor,
+		rgbat[3] / divisor,
+		rgbat[4] / divisor,
+	)
 
 //* misc *//
 
 /**
  * assimilate all guest bloods immediately
  */
-/datum/blood_holder/proc/do_immediate_assimilate_all()
-	host_blood_volume += max(0, cached_guest_blood_volume - cached_guest_blood_volume_borrow)
-	cached_guest_blood_volume = cached_guest_blood_volume_borrow = 0
+/datum/blood_holder/proc/do_assimilate_all()
+	host_blood_volume += max(0, cached_guest_blood_volume)
+	cached_guest_blood_volume = 0
 	guest_blood_volumes = list()
+
+/**
+ * assimilates guest blood
+ */
+/datum/blood_holder/proc/do_assimilate(volume)
+	if(!length(guest_blood_volumes))
+		return
+	var/max_assimilate_per_iteration = max(volume * (1 / 7), volume / length(guest_blood_volumes))
+	var/iterations = 0
+	while(volume > 0)
+		if(++iterations > 20)
+			CRASH("too many iterations in blood assimilation simualtion")
+		var/random_index = rand(1, length(guest_blood_volumes))
+		var/datum/blood_fragment/random_fragment = guest_blood_volumes[random_index]
+		var/random_volume = guest_blood_volumes[random_fragment]
+		var/random_assimilate = min(random_volume, max(volume * 0.5, max_assimilate_per_iteration))
+		volume -= random_assimilate
+		cached_guest_blood_volume -= random_assimilate
+		guest_blood_volumes[random_fragment] -= random_assimilate

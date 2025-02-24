@@ -418,6 +418,7 @@
 #include "code\__HELPERS\verbs.dm"
 #include "code\__HELPERS\visual_effects.dm"
 #include "code\__HELPERS\animations\attack.dm"
+#include "code\__HELPERS\color\decode.dm"
 #include "code\__HELPERS\datastructs\bodytypes.dm"
 #include "code\__HELPERS\datastructs\filters.dm"
 #include "code\__HELPERS\datastructs\ingredients.dm"

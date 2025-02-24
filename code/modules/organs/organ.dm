@@ -388,12 +388,12 @@
 
 	var/datum/blood_mixture/mixture_data = reagents.get_reagent_data(/datum/reagent/blood)
 	transplant_data = list()
-	if(!mixture_data || length(mixture_data.fragments) < 1)
+	if(!mixture_data?.unsafe_get_fragment_ref(1))
 		transplant_data["species"] =    target?.species.name
 		transplant_data["blood_type"] = target?.dna.b_type
 		transplant_data["blood_DNA"] =  target?.dna.unique_enzymes
 	else
-		var/datum/blood_fragment/use_fragment = mixture_data.fragments[1]
+		var/datum/blood_fragment/use_fragment = mixture_data.unsafe_get_fragment_ref(1)
 		transplant_data["species"] =    use_fragment.legacy_species
 		transplant_data["blood_type"] = use_fragment.legacy_blood_type
 		transplant_data["blood_DNA"] =  use_fragment.legacy_blood_dna
