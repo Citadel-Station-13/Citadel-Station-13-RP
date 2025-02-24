@@ -516,3 +516,6 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #error T_BOARD already defined elsewhere, we can't use it.
 #endif
 #define T_BOARD(name) "circuit board (" + (name) + ")"
+
+//name for blank icon states for clothing
+#define CLOTHING_BLANK_ICON_STATE "blank"

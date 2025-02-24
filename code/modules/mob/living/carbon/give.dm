@@ -46,7 +46,7 @@
 	. = list()
 	for(var/i in scan)
 		var/mob/living/L = i
-		if(!GLOB.typecache_living[L.type])
+		if(!GLOB.typecache_living[L.type] || L.client == null)
 			continue
 		. += L
 	. -= src
