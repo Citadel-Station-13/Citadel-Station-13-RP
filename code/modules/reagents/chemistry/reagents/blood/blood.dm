@@ -32,48 +32,7 @@
 	if(!old_data)
 		old_data = new
 	old_data.unsafe_merge_other_into_self(new_data, new_volume, old_volume)
-
-	#warn below
-	var/list/new_fragments = list()
-	// put everything in sorted in descending volumes
-	// O(n^2) my behated...
-	for(var/datum/blood_fragment/fragment as anything in old_data.fragments)
-		mixture_mixing_injection(new_fragments, fragment, old_data.fragments[fragment] * old_volume)
-	for(var/datum/blood_fragment/fragment as anything in new_data.fragments)
-		mixture_mixing_injection(new_fragments, fragment, new_data.fragments[fragment] * new_volume)
-	// prune
-	if(length(new_fragments) > 10)
-		new_fragments.len = 10
-	// perform ratio fixup
-	var/total_volume = 0
-	for(var/datum/blood_fragment/fragment as anything in new_fragments)
-		var/their_ratio = new_fragments[fragment]
-		total_volume += their_ratio
-	if(total_volume)
-		var/ratio_multiplier = 1 / total_volume
-		for(var/datum/blood_fragment/fragment as anything in new_fragments)
-			new_fragments[fragment] *= ratio_multiplier
-	#warn above
-
 	return old_data
-
-/datum/reagent/blood/proc/mixture_mixing_injection(list/new_fragments, datum/blood_fragment/fragment, volume)
-	var/first_index_lesser
-	for(var/i in 1 to length(new_fragments))
-		var/datum/blood_fragment/checking = new_fragments[i]
-		if(checking.equivalent(fragment))
-			new_fragments[checking] += volume
-			// perform ordering fixup
-			var/fixup_index = i
-			while(fixup_index > 1 && new_fragments[fixup_index - 1] < new_fragments[fixup_index])
-				new_fragments.Swap(fixup_index - 1, fixup_index)
-			return
-		if(!first_index_lesser && new_fragments[checking] < volume)
-			first_index_lesser = i
-	if(!first_index_lesser)
-		first_index_lesser = length(new_fragments) + 1
-	new_fragments.Insert(first_index_lesser, fragment)
-	new_fragments[fragment] = volume
 
 /datum/reagent/blood/on_touch_turf(turf/target, remaining, allocated, data)
 	. = ..()

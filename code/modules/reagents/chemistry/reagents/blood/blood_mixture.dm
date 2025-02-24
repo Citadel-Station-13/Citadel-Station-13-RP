@@ -148,8 +148,33 @@
 				fragment_ratios[data.clone()] = other.fragment_ratios[data]
 		return
 
-	
-	#warn impl
+	var/their_ratio_to_us = other_volume / self_volume
+	for(var/datum/blood_fragment/their_fragment as anything in other.fragment_ratios)
+		var/their_fragment_ratio = other.fragment_ratios[their_fragment]
+		var/datum/blood_fragment/found_our_fragment = their_fragment
+
+		for(var/datum/blood_fragment/our_fragment as anything in fragment_ratios)
+			if(!our_fragment.equivalent(their_fragment))
+				continue
+			found_our_fragment = our_fragment
+			break
+
+		fragment_ratios[found_our_fragment] += their_fragment_ratio_to_us * their_fragment_ratio
+
+	// auto prune from 11+ to 5 if needed
+	if(length(fragment_ratios) > 10)
+		fragment_ratios = tim_sort(fragment_ratios, /proc/cmp_numeric_dsc, TRUE)
+		var/pruned_ratio = 0
+		for(var/i in 6 to length(fragment_ratios))
+			pruned_ratio += fragment_ratios[fragment_ratios[i]]
+		fragment_ratios[fragment_ratios[length(fragment_ratios)]] += pruned_ratio
+	// perform ratio fixup
+	var/total_ratio = 0
+	for(var/key in fragment_ratios)
+		total_ratio += fragment_ratios[key]
+	var/fixup_multiplier = 1 / total_ratio
+	for(var/key in fragment_ratios)
+		fragment_ratios[key] *= fixup_multiplier
 
 //* Subtypes *//
 
