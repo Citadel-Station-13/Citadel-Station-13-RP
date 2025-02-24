@@ -126,6 +126,8 @@
 	var/actively_healing = TRUE
 	var/heal_rate = 1 // this is pretty high but they have 20 health and it costs nutrition to heal
 
+	var/heal_nutrition_multiplier = 10 // 10 nutrition per hp healed
+
 /datum/species/holosphere/on_apply(mob/living/carbon/human/H)
 	. = ..()
 	RegisterSignal(H, COMSIG_CARBON_UPDATING_OVERLAY, PROC_REF(handle_hologram_overlays))
