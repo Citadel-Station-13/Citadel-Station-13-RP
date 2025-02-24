@@ -24,11 +24,12 @@ calculate text size per text.
 	var/list/out = list()
 	var/list/tastes = list() //descriptor = strength
 	if(minimum_percent <= 100)
-		for(var/datum/reagent/R in reagent_list)
+		for(var/id in reagent_volumes)
+			var/datum/reagent/R = SSchemistry.fetch_reagent(id)
 			if(!R.taste_mult)
 				continue
 			if(R.id == "nutriment") //this is ugly but apparently only nutriment (not subtypes) has taste data TODO figure out why
-				var/list/taste_data = R.get_data()
+				var/list/taste_data = reagent_datas?[id]
 				for(var/taste in taste_data)
 					if(taste in tastes)
 						tastes[taste] += taste_data[taste]

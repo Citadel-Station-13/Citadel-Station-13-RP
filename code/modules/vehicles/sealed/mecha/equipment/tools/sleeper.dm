@@ -246,15 +246,15 @@
 		// filter 3 units per chem-type inside them, or remaining volume, whichever is lesser
 		// we will also pump out 1/3 of that volume as their blood.
 		var/filtered_volume = M.reagents?.filter_to_void(
-			length(M.reagents.reagent_list) * 3,
+			length(M.reagents.reagent_volumes) * 3,
 			dialysis_reagent_filter_flags
 		)
-		M.vessel.filter_to_void(filtered_volume * (1 / 3),dialysis_reagent_filter_flags)
+		M.erase_blood(filtered_volume * (1 / 3))
 		S.chassis.use_power(S.energy_drain)
 	if(S.pumping > 0)
 		// filter 3 units per chem-type inside them, or remaining volume, whichever is lesser
 		M.ingested?.filter_to_void(
-			length(M.ingested.reagent_list) * 3,
+			length(M.ingested.reagent_volumes) * 3,
 			dialysis_reagent_filter_flags,
 		)
 		S.chassis.use_power(S.energy_drain)

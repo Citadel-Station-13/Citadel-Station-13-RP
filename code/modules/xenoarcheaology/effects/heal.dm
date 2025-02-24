@@ -16,13 +16,13 @@
 					if(affecting && istype(affecting))
 						affecting.heal_damage(25 * weakness, 25 * weakness)
 				//H:heal_organ_damage(25, 25)
-				H.vessel.add_reagent("blood",5)
+				H.blood_holder.adjust_host_volume(5)
 				H.nutrition += 50 * weakness
 				H.adjustBrainLoss(-25 * weakness)
 				H.cure_radiation(RAD_MOB_CURE_ANOMALY_BURST * weakness)
 				H.bodytemperature = initial(H.bodytemperature)
 				spawn(1)
-					H.fixblood()
+					H.reset_blood_to_species()
 			//
 			C.adjustOxyLoss(-25 * weakness)
 			C.adjustToxLoss(-25 * weakness)

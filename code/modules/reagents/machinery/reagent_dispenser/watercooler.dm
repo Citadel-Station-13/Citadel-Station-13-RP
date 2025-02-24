@@ -45,9 +45,7 @@
 			if(do_after(user, 20) && bottle)
 				to_chat(user, "<span class='notice'>You unfasten the jug.</span>")
 				var/obj/item/reagent_containers/glass/cooler_bottle/G = new /obj/item/reagent_containers/glass/cooler_bottle( src.loc )
-				for(var/datum/reagent/R in reagents.reagent_list)
-					var/total_reagent = reagents.get_reagent_amount(R.id)
-					G.reagents.add_reagent(R.id, total_reagent)
+				reagents.transfer_to_holder(G.reagents)
 				reagents.clear_reagents()
 				bottle = 0
 				update_icon()
@@ -94,9 +92,7 @@
 					bottle = 1
 					update_icon()
 					to_chat(user, "<span class='notice'>You screw the bottle onto the water-cooler!</span>")
-					for(var/datum/reagent/R in G.reagents.reagent_list)
-						var/total_reagent = G.reagents.get_reagent_amount(R.id)
-						reagents.add_reagent(R.id, total_reagent)
+					G.reagents.transfer_to_holder(reagents)
 					qdel(G)
 			else
 				to_chat(user, "<span class='warning'>You need to wrench down the cooler first.</span>")

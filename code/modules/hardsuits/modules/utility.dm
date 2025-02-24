@@ -180,12 +180,12 @@
 
 	// Magical chemical filtration system, do not question it.
 	var/total_transferred = 0
-	for(var/datum/reagent/R in input_item.reagents.reagent_list)
+	for(var/datum/reagent/R in input_item.reagents.get_reagent_datums())
 		for(var/chargetype in charges)
 			var/datum/rig_charge/charge = charges[chargetype]
 			if(charge.display_name == R.id)
 
-				var/chems_to_transfer = R.volume
+				var/chems_to_transfer = input_item.reagents.reagent_volumes[R.id]
 
 				if((charge.charges + chems_to_transfer) > max_reagent_volume)
 					chems_to_transfer = max_reagent_volume - charge.charges
@@ -193,7 +193,6 @@
 				charge.charges += chems_to_transfer
 				input_item.reagents.remove_reagent(R.id, chems_to_transfer)
 				total_transferred += chems_to_transfer
-
 				break
 
 	if(total_transferred)
