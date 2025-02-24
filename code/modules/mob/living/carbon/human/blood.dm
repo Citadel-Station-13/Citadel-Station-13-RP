@@ -32,11 +32,11 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 	var/mechanical_circulation = HAS_TRAIT(src, TRAIT_MECHANICAL_CIRCULATION)
 
 	if(stat != DEAD && bodytemperature >= 170)	//Dead or cryosleep people do not pump the blood.
+		// assimilate foreign blood separately
+		blood_holder.do_assimilate(1.5)
 
 		var/blood_volume_raw = blood_holder.get_total_volume()
 		var/blood_volume = round((blood_volume_raw/species.blood_volume)*100) // Percentage.
-
-		#warn assimilate other bloods; no hemolytic reaction system yet
 
 		//Blood regeneration if there is some space
 		if(blood_volume_raw < species.blood_volume)
@@ -229,8 +229,9 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 	//! behavior tightly coupled to /datum/blood_mixture. !//
 	var/total_ratio_incompatible = 0
 	var/list/direct_mixture_fragment_ratios = mixture.unsafe_get_fragment_list_ref()
+	var/datum/blood_fragment/our_host_blood_fragment = blood_holder.unsafe_get_host_fragment_ref()
 	for(var/datum/blood_fragment/fragment as anything in direct_mixture_fragment_ratios)
-		if(blood_holder.host_blood.compatible_with_self(fragment))
+		if(our_host_blood_fragment.compatible_with_self(fragment))
 			continue
 		// rejected
 		var/fragment_ratio = direct_mixture_fragment_ratios[fragment]

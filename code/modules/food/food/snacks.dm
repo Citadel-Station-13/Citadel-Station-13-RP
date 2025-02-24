@@ -16,7 +16,6 @@
 	var/survivalfood = FALSE
 	var/nutriment_amt = 0
 	var/list/nutriment_desc = list("food" = 1)
-	#warn ohhh no
 	var/datum/reagent/nutriment/coating/coating = null
 	var/sealed = FALSE
 	var/custom_open_sound
@@ -3988,13 +3987,13 @@ END CITADEL CHANGE */
 	if(target.is_open_container() && target.reagents && !(istype(target, /obj/item/reagent_containers/food)))
 		for(var/datum/reagent/R as anything in target.reagents.get_reagent_datums())
 			if (istype(R, /datum/reagent/nutriment/coating))
-				if (apply_coating(R, user))
+				if (apply_coating(R, user, target.reagents))
 					return 1
 
 	return ..()
 
 //This proc handles drawing coatings out of a container when this food is dipped into it
-/obj/item/reagent_containers/food/snacks/proc/apply_coating(var/datum/reagent/nutriment/coating/C, var/mob/user)
+/obj/item/reagent_containers/food/snacks/proc/apply_coating(datum/reagent/nutriment/coating/C, mob/user, datum/reagent_holder/coating_holder)
 	if (coating)
 		to_chat(user, "The [src] is already coated in [coating.name]!")
 		return 0
@@ -4013,7 +4012,7 @@ END CITADEL CHANGE */
 		//the food has no reagents left, its probably getting deleted soon
 		return 0
 
-	if (C.volume < req)
+	if (coating_holder.reagent_volumes?[C.id] < req)
 		to_chat(user, SPAN_WARNING( "There's not enough [C.name] to coat the [src]!"))
 		return 0
 
@@ -4025,12 +4024,7 @@ END CITADEL CHANGE */
 		reagents.maximum_volume += extra
 
 	//Suck the coating out of the holder
-	C.holder.trans_to_holder(reagents, req)
-
-	//We're done with C now, repurpose the var to hold a reference to our local instance of it
-	C = SSchemistry.fetch_reagent(id)
-	if (!C)
-		return
+	coating_holder.transfer_to_holder(src, list(C.id), req)
 
 	coating = C
 	//Now we have to do the witchcraft with masking images

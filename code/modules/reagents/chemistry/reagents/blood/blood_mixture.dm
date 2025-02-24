@@ -4,13 +4,10 @@
 /**
  * Reagent blood data
  */
-#warn fragment_volumes, and a total amount tracker / manual gc system.
 /datum/blood_mixture
 	var/list/legacy_antibodies
 	var/list/legacy_virus2
-	#warn uhh
 	var/legacy_trace_chem
-	#warn hook
 	var/legacy_is_synthetic = FALSE
 
 	/// Fragments, associated to volume in units.
@@ -70,7 +67,13 @@
  * Get overall name
  */
 /datum/blood_mixture/proc/get_name()
-	#warn impl
+	var/datum/blood_fragment/highest_fragment
+	var/highest_ratio
+	for(var/datum/blood_fragment/fragment as anything in fragment_ratios)
+		if(fragment_ratios[fragment] > highest_ratio)
+			highest_ratio = fragment_ratios[fragment]
+			highest_fragment = fragment
+	return highest_fragment?.legacy_name
 
 /**
  * Get atom blood DNA variable
@@ -159,7 +162,7 @@
 			found_our_fragment = our_fragment
 			break
 
-		fragment_ratios[found_our_fragment] += their_fragment_ratio_to_us * their_fragment_ratio
+		fragment_ratios[found_our_fragment] += their_ratio_to_us * their_fragment_ratio
 
 	// auto prune from 11+ to 5 if needed
 	if(length(fragment_ratios) > 10)
@@ -178,19 +181,33 @@
 
 //* Subtypes *//
 
+/datum/blood_mixture/preset
+
+/datum/blood_mixture/preset/New()
+	..()
+	setup()
+
+/datum/blood_mixture/preset/proc/setup()
+	return
+
 /datum/blood_mixture/preset/single
 	var/tmp/prefill_volume
 
-/datum/blood_mixture/preset/single/New(list/fragments, volume = src.prefill_volume)
+/datum/blood_mixture/preset/single/setup()
 	..()
-	#warn do stuff; if no fragments exist, we are whole ratio, otherwise we are prefill volume of ratio
+	fragment_ratios[create_preset_fragment()] = 1
 
 /datum/blood_mixture/preset/single/proc/create_preset_fragment()
+	return new /datum/blood_fragment
 
 /datum/blood_mixture/preset/single/synthblood
 
+/datum/blood_mixture/preset/single/synthblood/setup()
+	..()
+	legacy_is_synthetic = TRUE
+
 /datum/blood_mixture/preset/single/synthblood/create_preset_fragment()
-	var/datum/blood_fragment/creating = new
+	var/datum/blood_fragment/creating = ..()
 	creating.color = "#999966"
 	creating.legacy_blood_type = "O-"
 	return creating

@@ -220,3 +220,12 @@
 		volume -= random_assimilate
 		cached_guest_blood_volume -= random_assimilate
 		guest_blood_volumes[random_fragment] -= random_assimilate
+
+//* unsafe access to internals *//
+
+/**
+ * Get a direct reference to host blood.
+ * * You are not allowed to edit this.
+ */
+/datum/blood_holder/proc/unsafe_get_host_fragment_ref()
+	return host_blood
