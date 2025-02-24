@@ -269,10 +269,9 @@
 	reconsider_reactions()
 	return amount
 
-// todo: annihilate this proc
 // Transfers [amount] reagents from [src] to [target], multiplying them by [multiplier].
 // Returns actual amount removed from [src] (not amount transferred to [target]).
-#warn audit
+// todo: audit this proc
 /datum/reagent_holder/proc/trans_to_holder(datum/reagent_holder/target, amount = 1, multiplier = 1, copy = 0)
 	return transfer_to_holder(target, null, amount, copy, multiplier)
 
@@ -284,7 +283,7 @@
  * If for some reason touch effects are bypassed (e.g. injecting stuff directly into a reagent container or person),
  * call the appropriate trans_to_*() proc.
  */
-#warn audit
+// todo: audit this proc
 /datum/reagent_holder/proc/trans_to(atom/target, amount = 1, multiplier = 1, copy = 0)
 	touch(target) //First, handle mere touch effects
 
@@ -326,7 +325,7 @@
 // Attempts to place a reagent on the mob's skin.
 // Reagents are not guaranteed to transfer to the target.
 // Do not call this directly, call trans_to() instead.
-#warn audit
+// todo: audit this proc
 /datum/reagent_holder/proc/splash_mob(mob/target, amount = 1, copy = 0)
 	var/perm = 1
 	if(isliving(target)) //will we ever even need to tranfer reagents to non-living mobs?
@@ -338,7 +337,7 @@
 		perm = L.reagent_permeability()
 	return trans_to_mob(target, amount, CHEM_TOUCH, perm, copy)
 
-#warn audit
+// todo: audit this proc
 /datum/reagent_holder/proc/trans_to_mob(mob/target, amount = 1, type = CHEM_INJECT, multiplier = 1, copy = 0) // Transfer after checking into which holder...
 	if(!target || !istype(target))
 		return
@@ -358,7 +357,7 @@
 		. = trans_to_holder(R, amount, multiplier, copy)
 		R.touch_mob(target)
 
-#warn audit
+// todo: audit this proc
 /datum/reagent_holder/proc/trans_to_turf(turf/target, amount = 1, multiplier = 1, copy = 0) // Turfs don't have any reagents (at least, for now). Just touch it.
 	if(!target)
 		return
@@ -369,7 +368,7 @@
 	return
 
 /// Objects may or may not; if they do, it's probably a beaker or something and we need to transfer properly; otherwise, just touch.
-#warn audit
+// todo: audit this proc
 /datum/reagent_holder/proc/trans_to_obj(obj/target, amount = 1, multiplier = 1, copy = 0)
 	if(!target)
 		return
@@ -389,7 +388,7 @@
 	return reagents
 
 //Spreads the contents of this reagent holder all over the vicinity of the target turf.
-#warn audit
+// todo: audit this proc
 /datum/reagent_holder/proc/splash_area(turf/epicentre, range = 3, portion = 1.0, multiplier = 1, copy = 0)
 	var/list/things = dview(range, epicentre, INVISIBILITY_LIGHTING)
 	var/list/turfs = list()
@@ -411,7 +410,7 @@
 
 //Spreads the contents of this reagent holder all over the target turf, dividing among things in it.
 //50% is divided between mobs, 20% between objects, and whatever is left on the turf itself
-#warn audit
+// todo: audit this proc
 /datum/reagent_holder/proc/splash_turf(turf/T, amount = null, multiplier = 1, copy = 0)
 	if (isnull(amount))
 		amount = total_volume

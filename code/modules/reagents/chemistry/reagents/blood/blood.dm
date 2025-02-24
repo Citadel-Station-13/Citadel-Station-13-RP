@@ -33,6 +33,7 @@
 		old_data = new
 	old_data.unsafe_merge_other_into_self(new_data, new_volume, old_volume)
 
+	#warn below
 	var/list/new_fragments = list()
 	// put everything in sorted in descending volumes
 	// O(n^2) my behated...
@@ -52,9 +53,7 @@
 		var/ratio_multiplier = 1 / total_volume
 		for(var/datum/blood_fragment/fragment as anything in new_fragments)
 			new_fragments[fragment] *= ratio_multiplier
-
-	old_data.fragments = new_fragments
-
+	#warn above
 
 	return old_data
 

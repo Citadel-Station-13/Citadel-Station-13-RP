@@ -142,10 +142,13 @@
 	legacy_trace_chem ||= other.legacy_trace_chem
 
 	if(!self_volume)
-		if(length(other.lfragment_ratios))
-			fragment_ratios = list()
+		fragment_ratios = list()
+		if(length(other.fragment_ratios))
 			for(var/datum/blood_fragment/data as anything in other.fragment_ratios)
-				fragment_ratios[data.clone()] = other.lfragment_ratios[data]
+				fragment_ratios[data.clone()] = other.fragment_ratios[data]
+		return
+
+	
 	#warn impl
 
 //* Subtypes *//
