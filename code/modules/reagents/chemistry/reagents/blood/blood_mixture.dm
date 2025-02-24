@@ -14,10 +14,7 @@
 	var/legacy_is_synthetic = FALSE
 
 	/// Fragments, associated to volume in units.
-	VAR_PRIVATE/list/datum/blood_fragment/fragments
-	/// Cached total amount
-	VAR_PRIVATE/tmp/cached_fragment_total_volume
-	#warn how
+	VAR_PRIVATE/list/datum/blood_fragment/fragment_ratios
 
 	/// The total amount of all of our fragments
 	/// * Only useful in a return-value context. This is to avoid needing to recalcualte this.
@@ -25,9 +22,6 @@
 	/// * In a reagent / storage context, the reagent's volume will always supercede this.
 	/// * This is not copied during a clone, as it's purely return-value context.
 	var/tmp/ctx_return_amount = 0
-
-/datum/blood_mixture/New(list/fragments)
-	#warn impl; autonormalize ratios / amounts
 
 // todo: serialize
 // todo: deserialize
@@ -79,6 +73,16 @@
 	)
 
 /**
+ * * passed in fragment ratios are not auto-normalized; you must do that.
+ * * passed in fragment ratios are directly referenced, not copied.
+ *
+ * @params
+ * * fragment_ratios - list of /datum/blood_fragment to number as a ratio from (0, 1]
+ */
+/datum/blood_mixture/proc/unsafe_set_fragment_list_ref(list/fragment_ratios)
+	src.fragment_ratios = fragment_ratios
+
+/**
  * * You may only use the keys of the returned list to access fragments in a read-only fashion.
  *   You may not use this to infer the ratio or volume of any fragment.
  * * You are not allowed to edit this list or the datums in its entries in any way,
@@ -86,21 +90,17 @@
  */
 /datum/blood_mixture/proc/unsafe_get_fragment_list_ref() as /list
 	RETURN_TYPE(/list)
-	#warn impl
+	return fragment_ratios
 
 /**
  * You are not allowed to edit the returned datum without clone()ing it first.
- */
-/datum/blood_mixture/proc/unsafe_get_first_fragment_ref() as /datum/blood_fragment
-	RETURN_TYPE(/datum/blood_fragment)
-	#warn impl
-
-/**
- * You are not allowed to edit the returned datum without clone()ing it first.
+ * * This is checked to ensure the index isn't out of bounds on the high end.
  */
 /datum/blood_mixture/proc/unsafe_get_fragment_ref(index) as /datum/blood_fragment
 	RETURN_TYPE(/datum/blood_fragment)
-	#warn impl
+	if(index < length(fragment_ratios))
+		return
+	return fragment_ratios[index]
 
 //* Subtypes *//
 

@@ -214,7 +214,7 @@
 		visible_message(SPAN_INFO("\The [src] displays a warning: 'Not enough biomass. [biomass] stored and [biomass_needed] needed.'"))
 		return FALSE
 
-	var/datum/blood_fragment/using_fragment = length(loaded_blood_mixture?.fragment_volumes) ? loaded_blood_mixture.fragment_volumes[1] : null
+	var/datum/blood_fragment/using_fragment = loaded_blood_mixture.unsafe_get_fragment_ref(1)
 	if(!using_fragment)
 		visible_message(SPAN_INFO("\The [src] displays a warning: 'No DNA saved. Insert a blood sample.'"))
 		return FALSE
@@ -224,7 +224,7 @@
 	var/new_organ = choice
 	var/obj/item/organ/O = new new_organ(get_turf(src))
 	O.status |= ORGAN_CUT_AWAY
-	var/datum/blood_fragment/using_fragment = loaded_blood_mixture.fragment_volumes[1]
+	var/datum/blood_fragment/using_fragment = loaded_blood_mixture.unsafe_get_fragment_ref(1)
 	var/mob/living/carbon/human/C = using_fragment.legacy_donor
 	O.set_dna(C.dna)
 	O.species = C.species

@@ -21,32 +21,15 @@
 	VAR_PRIVATE/list/datum/blood_fragment/guest_blood_volumes
 	/// Total amount of guest blood volume; this is a cached value
 	VAR_PRIVATE/tmp/cached_guest_blood_volume = 0
-	/// Total amount of guest blood volume we're pending to erase; this is a cached value
-	/// * this is used to optimize.
-	///   if we store blood fragment ratios, we have a very fast uniform removal operation,
-	///   and very slow non-uniform insertion and removal as we have to recompute ratios
-	///   every time. if we store volumes, it's the other way around but nothing is fast.
-	///   by storing both volume and a 'borrowed uniform removal ratio',
-	///   we can have fast performance for both types of operations.
-	/// * if this is non-0, guest blood volume values are not 'real' and are
-	///   actually the value times the ratio of (total volume - borrowed volume) / total volume.
-	VAR_PRIVATE/tmp/cached_guest_blood_volume_borrow = 0
 
 // todo: serialize
 // todo: deserialize
 // todo: clone
 
-/**
- * recalculate caches and reconcile state
- * * required to make guest blood volumes accurate again
- */
-/datum/blood_holder/proc/reconcile()
-	#warn reconcile guest blood volumes
-
 //* total blood *//
 
 /datum/blood_holder/proc/get_total_volume()
-	return host_blood_volume + cached_guest_blood_volume - cached_guest_blood_volume_borrow
+	return host_blood_volume + cached_guest_blood_volume
 
 //* host blood *//
 
@@ -120,13 +103,14 @@
 	if(host_blood.equivalent(fragment))
 		return adjust_host_volume(amount)
 
-	// todo: auto-trim system
-
-	var/datum/blood_fragment/existing
+	// default to new fragment, which results in a new one being made
+	var/datum/blood_fragment/found = fragment
 	for(var/datum/blood_fragment/checking as anything in guest_bloods)
 		if(checking.equivalent(fragment))
-			existing = checking
+			found = checking
 			break
+
+	//! bELOW
 
 	var/old_volume = guest_blood_volume
 	guest_blood_volume += amount
@@ -140,7 +124,11 @@
 	else
 		guest_bloods[existing] += 1 - scaler
 
+	#warn autotrim
+
 	return amount
+
+#warn above
 
 /**
  * Erases blood uniformly.
@@ -150,15 +138,7 @@
  * @return amount erased
  */
 /datum/blood_holder/proc/checked_erase(amount)
-	var/total = host_blood_volume + guest_blood_volume
-	if(amount < total)
-		return 0
-	var/multiplier = 1 - (amount / total)
-	host_blood_volume *= multiplier
-	guest_blood_volume *= multiplier
-	if(!guest_blood_volume)
-		guest_bloods.len = 0
-	return amount
+	return (cached_guest_blood_volume + host_blood_volume) < amount ? 0 : erase(amount)
 
 /**
  * Erases blood uniformly.
@@ -166,13 +146,18 @@
  * @return amount erased
  */
 /datum/blood_holder/proc/erase(amount)
-	var/total = host_blood_volume + guest_blood_volume
-	var/multiplier = max(0, 1 - (amount / total))
+	var/total = host_blood_volume + cached_guest_blood_volume
 	. = min(amount, total)
+	var/multiplier = max(0, 1 - (. / total))
+
 	host_blood_volume *= multiplier
-	guest_blood_volume *= multiplier
-	if(!guest_blood_volume)
-		guest_bloods.len = 0
+	cached_guest_blood_volume *= multiplier
+	for(var/datum/blood_fragment/fragment as anything in guest_blood_volumes)
+		guest_blood_volumes[fragment] *= multiplier
+
+	if(cached_guest_blood_volume <= 0)
+		guest_blood_volumes.len = 0
+		cached_guest_blood_volume = 0
 
 /**
  * Takes a blood mixture from us.
@@ -185,12 +170,7 @@
  * @return mixture taken or null
  */
 /datum/blood_holder/proc/checked_draw(amount) as /datum/blood_mixture
-	if(get_total_volume() < amount)
-		return null
-	var/datum/blood_mixture/taken = draw(amount)
-	// assert that it is enough
-	taken.ctx_return_amount = amount
-	return taken
+	return (cached_guest_blood_volume + host_blood_volume) < amount ? 0 : draw(amount)
 
 /**
  * Takes a blood mixture from us.
@@ -206,17 +186,29 @@
  * @return mixture taken
  */
 /datum/blood_holder/proc/draw(amount, infinite) as /datum/blood_mixture
+	var/total = host_blood_volume + cached_guest_blood_volume
+	amount = min(amount, total)
+	var/multiplier = max(0, 1 - (amount / total))
+
 	var/datum/blood_mixture/creating = new
-	creating.fragments = list()
-	#warn impl fragments self/others, amounts
-	if(!guest_blood_volume)
-		guest_bloods.len = 0
+	creating.ctx_return_amount = amount
+	var/list/fragment_ratio_list = list()
+	for(var/datum/blood_fragment/fragment as anything in guest_blood_volumes)
+		fragment_ratio_list[fragment] = guest_blood_volumes[fragment] / total
+	fragment_ratio_list[host_blood] = host_blood_volume / total
+	creating.unsafe_set_fragment_list_ref(fragment_ratio_list)
+
+	host_blood_volume *= multiplier
+	cached_guest_blood_volume *= multiplier
+	for(var/datum/blood_fragment/fragment as anything in guest_blood_volumes)
+		guest_blood_volumes[fragment] *= multiplier
+
+	if(cached_guest_blood_volume <= 0)
+		guest_blood_volumes.len = 0
+		cached_guest_blood_volume = 0
 	return creating
 
-
 #warn how to handle color? compute_color_from_data, don't forget!
-
-#warn above
 
 //* misc *//
 
