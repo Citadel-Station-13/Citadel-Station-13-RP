@@ -121,7 +121,6 @@
 	 * Perform data calculations. This is semi-expensive.
 	 */
 	var/has_data_semantics = FALSE
-	#warn deal with this
 
 	//* Reaction - Feedback *//
 	/// if set, everyone around sees this on react

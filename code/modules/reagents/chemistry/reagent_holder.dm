@@ -316,7 +316,8 @@
 		return
 
 	var/datum/reagent_holder/F = new /datum/reagent_holder(amount)
-	var/tmpdata = get_data(id)
+	var/datum/reagent/resolved = SSchemistry.fetch_reagent(id)
+	var/tmpdata = resolved.make_copy_data_initializer(reagent_datas?[resolved.id])
 	F.add_reagent(id, amount, tmpdata)
 	remove_reagent(id, amount)
 
@@ -446,6 +447,7 @@
  *
  * * 'auto' designates the fact that we're default handling. Use with caution; this reserves
  *   the right to do pretty much anything, really.
+ * * We will always splash around a mob's limbs; there's no way to turn this off, even if 'splash' is off.
  * * Returned amount is amount removed. This doesn't actually return the amount 'consumed'.
  * * The ratio controls actual amount consumed for splash; if something isn't consumed, it's still deleted.
  *
@@ -471,6 +473,9 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
+	if(target.atom_flags & (ATOM_ABSTRACT | ATOM_NONWORLD))
+		return 0
+
 	. = ratio * total_volume
 	if(splash)
 
@@ -488,7 +493,8 @@
  * [auto_spill()] but for turf application, usually used for sprays.
  *
  * @params
- * * target - what to splash on, whether a turf or a single atom.
+ * * target - what to splash on, whether a turf or a single atom. if it's a single atom,
+ *            we will not splash around.
  * * ratio - % to apply
  * * keep_remaining - return unused reagents to holder. this effectively just clears a ratio of (or all) reagents after if not set
  * * reapplication_exclusion - a list that can be provided to provide entities that are already
@@ -504,7 +510,16 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
-	#warn check atom abstract / whatever
+	if(target.atom_flags & (ATOM_ABSTRACT | ATOM_NONWORLD))
+		return 0
+
+	if(isturf(target))
+		#warn check atom abstract / whatever
+
+	else
+		if(!reapplication_exclusion[target])
+			reapplication_exclusion[target] = TRUE
+			. = auto_spill(target, ratio, keep_remaining, FALSE, unsafe_drain_ratio)
 
 //* Filtering *//
 

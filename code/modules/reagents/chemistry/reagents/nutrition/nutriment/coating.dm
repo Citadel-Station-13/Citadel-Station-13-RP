@@ -29,8 +29,8 @@
 			M.vomit()
 	..()
 
-// todo: cooked_name isn't implemented right now!
-#warn cooked name?
+/datum/reagent/nutriment/coating/compute_name_with_data(datum/nutriment_data/data)
+	return data.cooked ? cooked_name : ..()
 
 /datum/reagent/nutriment/coating/batter
 	name = "batter mix"

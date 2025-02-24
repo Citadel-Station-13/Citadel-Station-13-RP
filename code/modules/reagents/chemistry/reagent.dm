@@ -337,7 +337,19 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		"alcoholStrength" = null,
 	)
 
-//* Holder - Application *//
+//* Identity *//
+
+/**
+ * Get name from data
+ * * May be skipped if reagent has no data semantics.
+ *
+ * @params
+ * * data - the data. It can be casted to the expected type as needed.
+ */
+/datum/reagent/proc/compute_name_with_data(data)
+	return name
+
+//* Touch *//
 
 #warn hook all
 
