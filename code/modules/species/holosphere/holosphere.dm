@@ -150,6 +150,10 @@
 
 /datum/species/holosphere/proc/try_transform(force = FALSE)
 	if(force || !IS_DEAD(holosphere_shell))
+		if(holosphere_shell.hologram.incapacitated(INCAPACITATION_ALL))
+			to_chat(holosphere_shell.hologram, SPAN_WARNING("You can't do that right now!"))
+			return
+
 		holosphere_shell.name = holosphere_shell.hologram.name
 		if(transform_component.try_transform())
 			holosphere_shell.hologram.drop_held_items()
