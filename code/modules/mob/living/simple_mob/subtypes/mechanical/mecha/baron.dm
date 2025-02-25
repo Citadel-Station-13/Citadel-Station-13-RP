@@ -12,6 +12,7 @@
 	desc = "A pirate used space superiority fighter, one-seater. Not capable of ground operations."
 	icon = 'icons/mecha/fighters64x64.dmi'
 	icon_state = "baron"
+	color = "#5a4f2e"
 	movement_cooldown = 1
 	wreckage = /obj/effect/decal/mecha_wreckage/baron
 	catalogue_data = list(/datum/category_item/catalogue/technology/baron/pirate)

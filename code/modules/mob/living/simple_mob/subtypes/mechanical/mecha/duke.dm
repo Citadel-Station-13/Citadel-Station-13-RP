@@ -7,7 +7,7 @@
 	name = "pirate duke"
 	desc = "A pirate used space heavy fighter, one-seater. Not capable of ground operations."
 	icon = 'icons/mecha/fighters64x64.dmi'
-	icon_state = "duke"
+	icon_state = "duke_cw"
 	movement_cooldown = 1.5
 	wreckage = /obj/effect/decal/mecha_wreckage/duke
 	catalogue_data = list(/datum/category_item/catalogue/technology/duke/pirate)
