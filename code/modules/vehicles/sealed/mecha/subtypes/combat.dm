@@ -20,11 +20,11 @@
 	encumbrance_gap = 1.5
 
 	starting_components = list(
-		/obj/item/vehicle_component/integral/hull/durable,
-		/obj/item/vehicle_component/integral/actuator,
-		/obj/item/vehicle_component/integral/armor/reinforced,
-		/obj/item/vehicle_component/integral/gas,
-		/obj/item/vehicle_component/integral/electrical
+		/obj/item/vehicle_component/hull/durable,
+		/obj/item/vehicle_component/actuator,
+		/obj/item/vehicle_component/armor/reinforced,
+		/obj/item/vehicle_component/gas,
+		/obj/item/vehicle_component/electrical
 		)
 
 /*

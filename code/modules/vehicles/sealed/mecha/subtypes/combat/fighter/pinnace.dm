@@ -18,7 +18,7 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/pinnace/loaded/Initialize(mapload) //Loaded version with guns
 	. = ..()
-	var/obj/item/vehicle_component/module/ME = new /obj/item/vehicle_component/module/tool/passenger
+	var/obj/item/vehicle_module/ME = new /obj/item/vehicle_module/tool/passenger
 	ME.attach(src)
 
 /obj/effect/decal/mecha_wreckage/pinnace

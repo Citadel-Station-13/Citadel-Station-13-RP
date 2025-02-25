@@ -37,11 +37,11 @@
 	max_special_equip = 1
 
 	starting_components = list(
-		/obj/item/vehicle_component/integral/hull/lightweight,
-		/obj/item/vehicle_component/integral/actuator,
-		/obj/item/vehicle_component/integral/armor,
-		/obj/item/vehicle_component/integral/gas,
-		/obj/item/vehicle_component/integral/electrical
+		/obj/item/vehicle_component/hull/lightweight,
+		/obj/item/vehicle_component/actuator,
+		/obj/item/vehicle_component/armor,
+		/obj/item/vehicle_component/gas,
+		/obj/item/vehicle_component/electrical
 		)
 
 	var/in_gravity_damage = 20
@@ -205,9 +205,9 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/gunpod/loaded/Initialize(mapload) //Loaded version with guns
 	. = ..()
-	var/obj/item/vehicle_component/module/ME = new /obj/item/vehicle_component/module/weapon/energy/laser
+	var/obj/item/vehicle_module/ME = new /obj/item/vehicle_module/weapon/energy/laser
 	ME.attach(src)
-	ME = new /obj/item/vehicle_component/module/weapon/ballistic/missile_rack/explosive
+	ME = new /obj/item/vehicle_module/weapon/ballistic/missile_rack/explosive
 	ME.attach(src)
 
 /obj/vehicle/sealed/mecha/combat/fighter/gunpod/recon
@@ -216,9 +216,9 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/gunpod/recon/Initialize(mapload) //Blinky
 	. = ..()
-	var/obj/item/vehicle_component/module/ME = new /obj/item/vehicle_component/module/teleporter(src)
+	var/obj/item/vehicle_module/ME = new /obj/item/vehicle_module/teleporter(src)
 	ME.attach(src)
-	ME = new /obj/item/vehicle_component/module/tesla_energy_relay(src)
+	ME = new /obj/item/vehicle_module/tesla_energy_relay(src)
 	ME.attach(src)
 
 /obj/vehicle/sealed/mecha/combat/fighter/gunpod/update_icon()

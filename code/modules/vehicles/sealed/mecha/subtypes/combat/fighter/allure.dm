@@ -15,7 +15,7 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/allure/loaded/Initialize(mapload) //Loaded version with guns
 	. = ..()
-	var/obj/item/vehicle_component/module/ME = new /obj/item/vehicle_component/module/cloak
+	var/obj/item/vehicle_module/ME = new /obj/item/vehicle_module/cloak
 	ME.attach(src)
 
 /obj/vehicle/sealed/mecha/combat/fighter/allure/royalty
@@ -27,7 +27,7 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/allure/royalty/loaded/Initialize(mapload) //Loaded version with guns
 	. = ..()
-	var/obj/item/vehicle_component/module/ME = new /obj/item/vehicle_component/module/cloak
+	var/obj/item/vehicle_module/ME = new /obj/item/vehicle_module/cloak
 	ME.attach(src)
 
 /obj/effect/decal/mecha_wreckage/allure

@@ -336,8 +336,8 @@
 	can_hold = list(
 		/obj/item/vehicle_part,
 		/obj/item/vehicle_part/micro,
-		/obj/item/vehicle_component/module,
-		/obj/item/mecha_parts/mecha_tracking
+		/obj/item/vehicle_module,
+		/obj/item/vehicle_tracking_beacon
 		)
 
 /obj/item/gripper/no_use/loader //This is used to disallow building with metal.

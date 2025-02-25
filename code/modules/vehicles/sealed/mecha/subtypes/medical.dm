@@ -10,18 +10,18 @@
 	cargo_capacity = 1
 
 	starting_components = list(
-		/obj/item/vehicle_component/integral/hull,
-		/obj/item/vehicle_component/integral/actuator,
-		/obj/item/vehicle_component/integral/armor/lightweight,
-		/obj/item/vehicle_component/integral/gas,
-		/obj/item/vehicle_component/integral/electrical
+		/obj/item/vehicle_component/hull,
+		/obj/item/vehicle_component/actuator,
+		/obj/item/vehicle_component/armor/lightweight,
+		/obj/item/vehicle_component/gas,
+		/obj/item/vehicle_component/electrical
 		)
 
 /obj/vehicle/sealed/mecha/medical/Initialize(mapload)
 	. = ..()
 	var/turf/T = get_turf(src)
 	if(isPlayerLevel(T.z))
-		new /obj/item/mecha_parts/mecha_tracking(src)
+		new /obj/item/vehicle_tracking_beacon(src)
 
 /*	// One horrific bastardization of glorious inheritence dead. A billion to go. ~Mech
 /obj/vehicle/sealed/mecha/medical/mechturn(direction)

@@ -22,11 +22,11 @@
 	max_special_equip = 1
 
 	starting_components = list(
-		/obj/item/vehicle_component/integral/hull/durable,
-		/obj/item/vehicle_component/integral/actuator,
-		/obj/item/vehicle_component/integral/armor/marshal,
-		/obj/item/vehicle_component/integral/gas,
-		/obj/item/vehicle_component/integral/electrical
+		/obj/item/vehicle_component/hull/durable,
+		/obj/item/vehicle_component/actuator,
+		/obj/item/vehicle_component/armor/marshal,
+		/obj/item/vehicle_component/gas,
+		/obj/item/vehicle_component/electrical
 		)
 
 	overload_possible = 1
@@ -57,11 +57,11 @@
 	max_special_equip = 2
 
 	starting_equipment = list(
-		/obj/item/vehicle_component/module/weapon/honker,
-		/obj/item/vehicle_component/module/weapon/ballistic/missile_rack/grenade/banana,
-		/obj/item/vehicle_component/module/weapon/ballistic/scattershot,
-		/obj/item/vehicle_component/module/tesla_energy_relay,
-		/obj/item/vehicle_component/module/teleporter
+		/obj/item/vehicle_module/weapon/honker,
+		/obj/item/vehicle_module/weapon/ballistic/missile_rack/grenade/banana,
+		/obj/item/vehicle_module/weapon/ballistic/scattershot,
+		/obj/item/vehicle_module/tesla_energy_relay,
+		/obj/item/vehicle_module/teleporter
 		)
 
 /obj/vehicle/sealed/mecha/combat/honker/cluwne/add_cell(var/obj/item/cell/C=null)

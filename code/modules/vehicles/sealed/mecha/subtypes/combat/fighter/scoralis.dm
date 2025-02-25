@@ -12,9 +12,9 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/scoralis/loaded/Initialize(mapload) //Loaded version with guns
 	. = ..()
-	var/obj/item/vehicle_component/module/ME = new /obj/item/vehicle_component/module/weapon/ballistic/lmg
+	var/obj/item/vehicle_module/ME = new /obj/item/vehicle_module/weapon/ballistic/lmg
 	ME.attach(src)
-	ME = new /obj/item/vehicle_component/module/cloak
+	ME = new /obj/item/vehicle_module/cloak
 	ME.attach(src)
 
 /obj/effect/decal/mecha_wreckage/scoralis

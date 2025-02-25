@@ -24,11 +24,11 @@
 	max_special_equip = 1
 
 	starting_components = list(
-		/obj/item/vehicle_component/integral/hull/durable,
-		/obj/item/vehicle_component/integral/actuator,
-		/obj/item/vehicle_component/integral/armor/military,
-		/obj/item/vehicle_component/integral/gas,
-		/obj/item/vehicle_component/integral/electrical
+		/obj/item/vehicle_component/hull/durable,
+		/obj/item/vehicle_component/actuator,
+		/obj/item/vehicle_component/armor/military,
+		/obj/item/vehicle_component/gas,
+		/obj/item/vehicle_component/electrical
 		)
 
 	defence_mode_possible = 1
