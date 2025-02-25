@@ -57,7 +57,7 @@
 		new /datum/point_redemption_item("Hardsuit - Maneuvering Jets",	/obj/item/hardsuit_module/maneuvering_jets,								1250),
 		new /datum/point_redemption_item("Hardsuit - Intelligence Storage",	/obj/item/hardsuit_module/ai_container,								2500),
 		new /datum/point_redemption_item("Hardsuit - Smoke Bomb Deployer",	/obj/item/hardsuit_module/grenade_launcher/smoke,					2000),
-		new /datum/point_redemption_item("Industrial Equipment - Phoron Bore",	/obj/item/gun/magnetic/matfed,						3000),
+		new /datum/point_redemption_item("Industrial Equipment - Phoron Bore",	/obj/item/gun/projectile/magnetic/matfed,						3000),
 		new /datum/point_redemption_item("Industrial Equipment - Sheet-Snatcher",/obj/item/storage/bag/sheetsnatcher,				500),
 		new /datum/point_redemption_item("Repurposed Equipment - Mining Carbine",	/obj/item/gun/projectile/energy/gun/miningcarbine,						5000),
 		new /datum/point_redemption_item("Digital Tablet - Standard",	/obj/item/modular_computer/tablet/preset/custom_loadout/standard,	500),
