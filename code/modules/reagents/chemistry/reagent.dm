@@ -362,8 +362,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * * allocated - how much is supposed to be hitting the obj (useful for sprays)
  *               this might be over remaining, due to how call order works. always check remaining.
  * * data - our reagent data, if any
- * * spread_between - (optional) unlike turfs, there's potentially a lot of objects.
- *                    this hints at how many objs are being hit. this is optional.
  *
  * @return amount used, if any
  */

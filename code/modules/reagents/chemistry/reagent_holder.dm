@@ -285,8 +285,6 @@
  */
 // todo: audit this proc
 /datum/reagent_holder/proc/trans_to(atom/target, amount = 1, multiplier = 1, copy = 0)
-	touch(target) //First, handle mere touch effects
-
 	if(ismob(target))
 		return splash_mob(target, amount, copy)
 	if(isturf(target))
@@ -356,7 +354,7 @@
 	else
 		var/datum/reagent_holder/R = new /datum/reagent_holder(amount)
 		. = trans_to_holder(R, amount, multiplier, copy)
-		R.touch_mob(target)
+		R.auto_spill(target, 1)
 
 // todo: audit this proc
 /datum/reagent_holder/proc/trans_to_turf(turf/target, amount = 1, multiplier = 1, copy = 0) // Turfs don't have any reagents (at least, for now). Just touch it.
@@ -365,8 +363,7 @@
 
 	var/datum/reagent_holder/R = new /datum/reagent_holder(amount * multiplier)
 	. = trans_to_holder(R, amount, multiplier, copy)
-	R.touch_turf(target, amount)
-	return
+	R.auto_spill(target, 1)
 
 /// Objects may or may not; if they do, it's probably a beaker or something and we need to transfer properly; otherwise, just touch.
 // todo: audit this proc
@@ -377,7 +374,7 @@
 	if(!target.reagents)
 		var/datum/reagent_holder/R = new /datum/reagent_holder(amount * multiplier)
 		. = trans_to_holder(R, amount, multiplier, copy)
-		R.touch_obj(target, amount)
+		R.auto_spill(target, 1)
 		return
 
 	return trans_to_holder(target.reagents, amount, multiplier, copy)
@@ -466,6 +463,9 @@
  * * unsafe_drain_ratio - multiplier to actual drained amount. you can set this below 1
  *                        to make it drain less than it should. if you set this to a value that isn't
  *                        between 0 and 1 we will explode spectacularly so don't do it
+ * * zone - target zone of a target.
+ *          this might be ignored for most things.
+ *          if applied directly to a bodypart, it might be overridden.
  *
  * @return amount splashed
  */
@@ -477,17 +477,34 @@
 		return 0
 
 	. = ratio * total_volume
-	if(splash)
 
+	// todo: this should probably be handled on the target-side
 	if(isturf(target))
+		for(var/id in reagent_volumes)
+			var/datum/reagent/resolved = SSchemistry.fetch_reagent(id)
+			var/vol = reagent_volumes[id]
+			var/used = resolved ? resolved.on_touch_turf(target, vol, ratio * vol, reagent_datas?[id]) : 0
+			var/drained = (keep_remaining ? used : vol) * unsafe_drain_ratio
+			if(drained)
+				remove_reagent(id, drained, TRUE)
 	else if(ismob(target))
+		for(var/id in reagent_volumes)
+			var/datum/reagent/resolved = SSchemistry.fetch_reagent(id)
+			var/vol = reagent_volumes[id]
+			var/used = resolved ? resolved.on_touch_mob(target, vol, ratio * vol, reagent_datas?[id], zone) : 0
+			var/drained = (keep_remaining ? used : vol) * unsafe_drain_ratio
+			if(drained)
+				remove_reagent(id, drained, TRUE)
 	else if(isobj(target))
+		for(var/id in reagent_volumes)
+			var/datum/reagent/resolved = SSchemistry.fetch_reagent(id)
+			var/vol = reagent_volumes[id]
+			var/used = resolved ? resolved.on_touch_obj(target, vol, ratio * vol, reagent_datas?[id]) : 0
+			var/drained = (keep_remaining ? used : vol) * unsafe_drain_ratio
+			if(drained)
+				remove_reagent(id, drained, TRUE)
 
-	if(!keep_remaining)
-		if(ratio < 1)
-			#warn remove ratio
-		else
-			clear_reagents()
+	if(splash)
 
 /**
  * [auto_spill()] but for turf application, usually used for sprays.
@@ -514,8 +531,11 @@
 		return 0
 
 	if(isturf(target))
-		#warn check atom abstract / whatever
-
+		for(var/atom/movable/AM as anything in target.contents)
+			if(AM.atom_flags & (ATOM_ABSTRACT | ATOM_NONWORLD))
+				continue
+			auto_spill(AM, ratio, TRUE, FALSE, unsafe_drain_ratio)
+		auto_spill(target, ratio, TRUE, FALSE, unsafe_drain_ratio)
 	else
 		if(!reapplication_exclusion[target])
 			reapplication_exclusion[target] = TRUE
