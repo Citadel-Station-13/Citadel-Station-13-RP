@@ -9,50 +9,50 @@
 	construct = new /datum/construction/mecha/fighter/baron_chassis(src)
 
 
-/obj/item/vehicle_chassis/part/baron_core
+/obj/item/vehicle_part/fighter/baron_core
 	name="\improper Baron Core"
 	icon_state = "baron_core"
 	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 5, TECH_BIO = 2, TECH_ENGINEERING = 4)
 
-/obj/item/vehicle_chassis/part/baron_cockpit
+/obj/item/vehicle_part/fighter/baron_cockpit
 	name="\improper Baron Cockpit"
 	icon_state = "baron_cockpit"
 	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 5, TECH_BIO = 2, TECH_ENGINEERING = 4)
 
-/obj/item/vehicle_chassis/part/baron_left_wing
+/obj/item/vehicle_part/fighter/baron_left_wing
 	name="\improper Baron Left Wing"
 	icon_state = "baron_l_wing"
 	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 5, TECH_ENGINEERING = 4)
 
-/obj/item/vehicle_chassis/part/baron_right_wing
+/obj/item/vehicle_part/fighter/baron_right_wing
 	name="\improper Baron Right Wing"
 	icon_state = "baron_r_wing"
 	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 5, TECH_ENGINEERING = 4)
 
-/obj/item/vehicle_chassis/part/baron_main_engine
+/obj/item/vehicle_part/fighter/baron_main_engine
 	name="\improper Baron Main Engine"
 	icon_state = "baron_m_engine"
 	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 5, TECH_ENGINEERING = 4)
 
-/obj/item/vehicle_chassis/part/baron_left_engine
+/obj/item/vehicle_part/fighter/baron_left_engine
 	name="\improper Baron Left Engine"
 	icon_state = "baron_l_engine"
 	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 5, TECH_ENGINEERING = 4)
 
-/obj/item/vehicle_chassis/part/baron_right_engine
+/obj/item/vehicle_part/fighter/baron_right_engine
 	name="\improper Baron Right Engine"
 	icon_state = "baron_r_engine"
 	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 5, TECH_ENGINEERING = 4)
 
 /datum/construction/mecha/fighter/baron_chassis
 	result = "/obj/vehicle/sealed/mecha/combat/fighter/baron"
-	steps = list(list("key"=/obj/item/vehicle_chassis/part/baron_core),//1
-					 list("key"=/obj/item/vehicle_chassis/part/baron_cockpit),//2
-					 list("key"=/obj/item/vehicle_chassis/part/baron_main_engine),//3
-					 list("key"=/obj/item/vehicle_chassis/part/baron_left_engine),//4
-					 list("key"=/obj/item/vehicle_chassis/part/baron_right_engine),//5
-					 list("key"=/obj/item/vehicle_chassis/part/baron_left_wing),//6
-					 list("key"=/obj/item/vehicle_chassis/part/baron_right_wing)//final
+	steps = list(list("key"=/obj/item/vehicle_part/fighter/baron_core),//1
+					 list("key"=/obj/item/vehicle_part/fighter/baron_cockpit),//2
+					 list("key"=/obj/item/vehicle_part/fighter/baron_main_engine),//3
+					 list("key"=/obj/item/vehicle_part/fighter/baron_left_engine),//4
+					 list("key"=/obj/item/vehicle_part/fighter/baron_right_engine),//5
+					 list("key"=/obj/item/vehicle_part/fighter/baron_left_wing),//6
+					 list("key"=/obj/item/vehicle_part/fighter/baron_right_wing)//final
 					)
 
 /datum/construction/mecha/fighter/baron_chassis/custom_action(step, obj/item/I, mob/user)

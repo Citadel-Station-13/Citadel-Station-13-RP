@@ -9,50 +9,50 @@
 	construct = new /datum/construction/mecha/fighter/pinnace_chassis(src)
 
 
-/obj/item/vehicle_chassis/part/pinnace_core
+/obj/item/vehicle_part/fighter/pinnace_core
 	name="\improper Pinnace Core"
 	icon_state = "pinnace_core"
 	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_BIO = 2, TECH_ENGINEERING = 2)
 
-/obj/item/vehicle_chassis/part/pinnace_cockpit
+/obj/item/vehicle_part/fighter/pinnace_cockpit
 	name="\improper Pinnace Cockpit"
 	icon_state = "pinnace_cockpit"
 	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_BIO = 2, TECH_ENGINEERING = 2)
 
-/obj/item/vehicle_chassis/part/pinnace_left_wing
+/obj/item/vehicle_part/fighter/pinnace_left_wing
 	name="\improper Pinnace Left Wing"
 	icon_state = "pinnace_l_wing"
 	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 
-/obj/item/vehicle_chassis/part/pinnace_right_wing
+/obj/item/vehicle_part/fighter/pinnace_right_wing
 	name="\improper Pinnace Right Wing"
 	icon_state = "pinnace_r_wing"
 	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 
-/obj/item/vehicle_chassis/part/pinnace_main_engine
+/obj/item/vehicle_part/fighter/pinnace_main_engine
 	name="\improper Pinnace Main Engine"
 	icon_state = "pinnace_m_engine"
 	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 
-/obj/item/vehicle_chassis/part/pinnace_left_engine
+/obj/item/vehicle_part/fighter/pinnace_left_engine
 	name="\improper Pinnace Left Engine"
 	icon_state = "pinnace_l_engine"
 	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 
-/obj/item/vehicle_chassis/part/pinnace_right_engine
+/obj/item/vehicle_part/fighter/pinnace_right_engine
 	name="\improper Pinnace Right Engine"
 	icon_state = "pinnace_r_engine"
 	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 
 /datum/construction/mecha/fighter/pinnace_chassis
 	result = "/obj/vehicle/sealed/mecha/combat/fighter/pinnace"
-	steps = list(list("key"=/obj/item/vehicle_chassis/part/pinnace_core),//1
-					 list("key"=/obj/item/vehicle_chassis/part/pinnace_cockpit),//2
-					 list("key"=/obj/item/vehicle_chassis/part/pinnace_main_engine),//3
-					 list("key"=/obj/item/vehicle_chassis/part/pinnace_left_engine),//4
-					 list("key"=/obj/item/vehicle_chassis/part/pinnace_right_engine),//5
-					 list("key"=/obj/item/vehicle_chassis/part/pinnace_left_wing),//6
-					 list("key"=/obj/item/vehicle_chassis/part/pinnace_right_wing)//final
+	steps = list(list("key"=/obj/item/vehicle_part/fighter/pinnace_core),//1
+					 list("key"=/obj/item/vehicle_part/fighter/pinnace_cockpit),//2
+					 list("key"=/obj/item/vehicle_part/fighter/pinnace_main_engine),//3
+					 list("key"=/obj/item/vehicle_part/fighter/pinnace_left_engine),//4
+					 list("key"=/obj/item/vehicle_part/fighter/pinnace_right_engine),//5
+					 list("key"=/obj/item/vehicle_part/fighter/pinnace_left_wing),//6
+					 list("key"=/obj/item/vehicle_part/fighter/pinnace_right_wing)//final
 					)
 
 /datum/construction/mecha/fighter/pinnace_chassis/custom_action(step, obj/item/I, mob/user)

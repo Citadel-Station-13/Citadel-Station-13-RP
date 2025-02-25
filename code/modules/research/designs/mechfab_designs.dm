@@ -1056,49 +1056,49 @@
 /datum/prototype/design/science/mechfab/fighter/pinnace/core
 	design_name = "Pinnace Core"
 	id = "pinnace_core"
-	build_path = /obj/item/vehicle_chassis/part/pinnace_core
+	build_path = /obj/item/vehicle_part/fighter/pinnace_core
 	work = 3 * 60
 	materials_base = list(MAT_STEEL = 25000, MAT_GLASS = 7000, MAT_PLASTEEL = 7000)
 
 /datum/prototype/design/science/mechfab/fighter/pinnace/cockpit
 	design_name = "Pinnace Cockpit"
 	id = "pinnace_cockpit"
-	build_path = /obj/item/vehicle_chassis/part/pinnace_cockpit
+	build_path = /obj/item/vehicle_part/fighter/pinnace_cockpit
 	work = 3 * 15
 	materials_base = list(MAT_STEEL = 2500, MAT_PLASTEEL = 2500, MAT_GLASS = 7500, MAT_PLASTIC = 2500)
 
 /datum/prototype/design/science/mechfab/fighter/pinnace/main_engine
 	design_name = "Pinnace Main Engine"
 	id = "pinnace_main_engine"
-	build_path = /obj/item/vehicle_chassis/part/pinnace_main_engine
+	build_path = /obj/item/vehicle_part/fighter/pinnace_main_engine
 	work = 3 * 25
 	materials_base = list(MAT_STEEL = 15000, MAT_PLASTEEL = 5000)
 
 /datum/prototype/design/science/mechfab/fighter/pinnace/left_engine
 	design_name = "Pinnace Left Engine"
 	id = "pinnace_left_engine"
-	build_path = /obj/item/vehicle_chassis/part/pinnace_left_engine
+	build_path = /obj/item/vehicle_part/fighter/pinnace_left_engine
 	work = 3 * 25
 	materials_base = list(MAT_STEEL = 10000, MAT_PLASTEEL = 2500)
 
 /datum/prototype/design/science/mechfab/fighter/pinnace/right_engine
 	design_name = "Pinnace Right Engine"
 	id = "pinnace_right_engine"
-	build_path = /obj/item/vehicle_chassis/part/pinnace_right_engine
+	build_path = /obj/item/vehicle_part/fighter/pinnace_right_engine
 	work = 3 * 25
 	materials_base = list(MAT_STEEL = 10000, MAT_PLASTEEL = 2500)
 
 /datum/prototype/design/science/mechfab/fighter/pinnace/left_wing
 	design_name = "Pinnace Left Wing"
 	id = "pinnace_left_wing"
-	build_path = /obj/item/vehicle_chassis/part/pinnace_left_wing
+	build_path = /obj/item/vehicle_part/fighter/pinnace_left_wing
 	work = 3 * 20
 	materials_base = list(MAT_STEEL = 7000, MAT_PLASTIC = 3000, MAT_PLASTEEL = 5000)
 
 /datum/prototype/design/science/mechfab/fighter/pinnace/right_wing
 	design_name = "Pinnace Right Wing"
 	id = "pinnace_right_wing"
-	build_path = /obj/item/vehicle_chassis/part/pinnace_right_wing
+	build_path = /obj/item/vehicle_part/fighter/pinnace_right_wing
 	work = 3 * 20
 	materials_base = list(MAT_STEEL = 7000, MAT_PLASTIC = 3000, MAT_PLASTEEL = 5000)
 
@@ -1119,49 +1119,49 @@
 /datum/prototype/design/science/mechfab/fighter/baron/core
 	design_name = "Baron Core"
 	id = "baron_core"
-	build_path = /obj/item/vehicle_chassis/part/baron_core
+	build_path = /obj/item/vehicle_part/fighter/baron_core
 	work = 3 * 60
 	materials_base = list(MAT_STEEL = 37500, MAT_GLASS = 15000, MAT_PLASTEEL = 15000)
 
 /datum/prototype/design/science/mechfab/fighter/baron/cockpit
 	design_name = "Baron Cockpit"
 	id = "baron_cockpit"
-	build_path = /obj/item/vehicle_chassis/part/baron_cockpit
+	build_path = /obj/item/vehicle_part/fighter/baron_cockpit
 	work = 3 * 15
 	materials_base = list(MAT_STEEL = 5000, MAT_PLASTEEL = 5000, MAT_GLASS = 10000, MAT_PLASTIC = 5000)
 
 /datum/prototype/design/science/mechfab/fighter/baron/main_engine
 	design_name = "Baron Main Engine"
 	id = "baron_main_engine"
-	build_path = /obj/item/vehicle_chassis/part/baron_main_engine
+	build_path = /obj/item/vehicle_part/fighter/baron_main_engine
 	work = 3 * 25
 	materials_base = list(MAT_STEEL = 25000, MAT_PLASTEEL = 10000)
 
 /datum/prototype/design/science/mechfab/fighter/baron/left_engine
 	design_name = "Baron Left Engine"
 	id = "baron_left_engine"
-	build_path = /obj/item/vehicle_chassis/part/baron_left_engine
+	build_path = /obj/item/vehicle_part/fighter/baron_left_engine
 	work = 3 * 25
 	materials_base = list(MAT_STEEL = 20000, MAT_PLASTEEL = 5000)
 
 /datum/prototype/design/science/mechfab/fighter/baron/right_engine
 	design_name = "Baron Right Engine"
 	id = "baron_right_engine"
-	build_path = /obj/item/vehicle_chassis/part/baron_right_engine
+	build_path = /obj/item/vehicle_part/fighter/baron_right_engine
 	work = 3 * 25
 	materials_base = list(MAT_STEEL = 20000, MAT_PLASTEEL = 5000)
 
 /datum/prototype/design/science/mechfab/fighter/baron/left_wing
 	design_name = "Baron Left Wing"
 	id = "baron_left_wing"
-	build_path = /obj/item/vehicle_chassis/part/baron_left_wing
+	build_path = /obj/item/vehicle_part/fighter/baron_left_wing
 	work = 3 * 20
 	materials_base = list(MAT_STEEL = 15000, MAT_PLASTIC = 6000, MAT_PLASTEEL = 10000)
 
 /datum/prototype/design/science/mechfab/fighter/baron/right_wing
 	design_name = "Baron Right Wing"
 	id = "baron_right_wing"
-	build_path = /obj/item/vehicle_chassis/part/baron_right_wing
+	build_path = /obj/item/vehicle_part/fighter/baron_right_wing
 	work = 3 * 20
 	materials_base = list(MAT_STEEL = 15000, MAT_PLASTIC = 6000, MAT_PLASTEEL = 10000)
 
@@ -1182,48 +1182,48 @@
 /datum/prototype/design/science/mechfab/fighter/duke/core
 	design_name = "Duke Core"
 	id = "duke_core"
-	build_path = /obj/item/vehicle_chassis/part/duke_core
+	build_path = /obj/item/vehicle_part/fighter/duke_core
 	work = 3 * 60
 	materials_base = list(MAT_STEEL = 37500, MAT_GLASS = 10000, MAT_PLASTEEL = 20000)
 
 /datum/prototype/design/science/mechfab/fighter/duke/cockpit
 	design_name = "Duke Cockpit"
 	id = "duke_cockpit"
-	build_path = /obj/item/vehicle_chassis/part/duke_cockpit
+	build_path = /obj/item/vehicle_part/fighter/duke_cockpit
 	work = 3 * 15
 	materials_base = list(MAT_STEEL = 5000, MAT_GLASS = 2500, MAT_PLASTEEL = 5000, MAT_PLASTIC = 5000)
 
 /datum/prototype/design/science/mechfab/fighter/duke/main_engine
 	design_name = "Duke Main Engine"
 	id = "duke_main_engine"
-	build_path = /obj/item/vehicle_chassis/part/duke_main_engine
+	build_path = /obj/item/vehicle_part/fighter/duke_main_engine
 	work = 3 * 25
 	materials_base = list(MAT_STEEL = 25000, MAT_PLASTEEL = 15000)
 
 /datum/prototype/design/science/mechfab/fighter/duke/left_engine
 	design_name = "Duke Left Engine"
 	id = "duke_left_engine"
-	build_path = /obj/item/vehicle_chassis/part/duke_left_engine
+	build_path = /obj/item/vehicle_part/fighter/duke_left_engine
 	work = 3 * 25
 	materials_base = list(MAT_STEEL = 20000, MAT_PLASTEEL = 10000)
 
 /datum/prototype/design/science/mechfab/fighter/duke/right_engine
 	design_name = "Duke Right Engine"
 	id = "duke_right_engine"
-	build_path = /obj/item/vehicle_chassis/part/duke_right_engine
+	build_path = /obj/item/vehicle_part/fighter/duke_right_engine
 	work = 3 * 25
 	materials_base = list(MAT_STEEL = 20000, MAT_PLASTEEL = 10000)
 
 /datum/prototype/design/science/mechfab/fighter/duke/left_wing
 	design_name = "Duke Left Wing"
 	id = "duke_left_wing"
-	build_path = /obj/item/vehicle_chassis/part/duke_left_wing
+	build_path = /obj/item/vehicle_part/fighter/duke_left_wing
 	work = 3 * 20
 	materials_base = list(MAT_STEEL = 10000, MAT_PLASTIC = 5000, MAT_PLASTEEL = 20000)
 
 /datum/prototype/design/science/mechfab/fighter/duke/right_wing
 	design_name = "Duke Right Wing"
 	id = "duke_right_wing"
-	build_path = /obj/item/vehicle_chassis/part/duke_right_wing
+	build_path = /obj/item/vehicle_part/fighter/duke_right_wing
 	work = 3 * 20
 	materials_base = list(MAT_STEEL = 10000, MAT_PLASTIC = 5000, MAT_PLASTEEL = 20000)
