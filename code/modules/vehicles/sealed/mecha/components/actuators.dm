@@ -1,5 +1,5 @@
 
-/obj/item/mecha_parts/component/actuator
+/obj/item/vehicle_component/actuator
 	name = "mecha actuator"
 	icon = 'icons/mecha/mech_component.dmi'
 	icon_state = "motor"
@@ -22,10 +22,10 @@
 
 	var/strafing_multiplier = 1
 
-/obj/item/mecha_parts/component/actuator/get_step_delay()
+/obj/item/vehicle_component/actuator/get_step_delay()
 	return step_delay
 
-/obj/item/mecha_parts/component/actuator/hispeed
+/obj/item/vehicle_component/actuator/hispeed
 	name = "overclocked mecha actuator"
 
 	step_delay = -1
