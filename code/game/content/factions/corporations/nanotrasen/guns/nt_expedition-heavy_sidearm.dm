@@ -141,3 +141,4 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/nt_expediti
 	base_icon_state = "smg"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	#warn materials
+	#warn firemodes
