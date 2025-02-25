@@ -35,25 +35,29 @@
 	/// * if our requested class isn't on a gun, the gun reserves the right to render us as the default class ('-mag')
 	var/magazine_class = MAGAZINE_CLASS_GENERIC
 
+	#warn hook everything
+
 	//* for magazines
 	/// magazine type - must match gun's to be fitted into it, if gun's is
 	/// setting this to a gun's typepath is allowed, this is an arbitrary field.
 	//  todo: impl
 	var/magazine_restrict
-	// todo: magazine_insert_delay
-	// todo: magazine_remove_delay
+	/// Inherent insertion delay
+	var/magazine_insert_delay = 0
+	/// Inherent removal delay
+	var/magazine_remove_delay = 0
 
 	//* for speedloaders
-	/// inherent speedloader delay, added to gun's speedloaders_delay
-	//  todo: impl
-	var/speedloader_delay = 0
 	/// speedloader type - must match gun's to fit ammo in, if gun's is set
-	//  todo: impl
 	var/speedloader_restrict
+	/// inherent speedloader delay, added to gun's speedloaders_delay
+	var/speedloader_delay = 0
 
 	//* for stripper clips / usage as single loader
-	// todo: clip_load_delay
-	// todo: clip_restrict
+	/// stripper clip type - must match gun's to fit ammo in, if gun's is set
+	var/clip_restrict
+	/// inherent delay on each shell loaded
+	var/clip_delay = 0
 
 	//* loading *//
 	/// sound for loading a piece of ammo

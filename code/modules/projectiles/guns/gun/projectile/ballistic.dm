@@ -7,18 +7,96 @@
  * attached / inserted external magazines.
  */
 /obj/item/gun/projectile/ballistic
-	name = "gun"
 	desc = "A gun that fires bullets."
 	description_info = "This is a ballistic weapon.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
 	then click where you want to fire.  To reload, click the weapon in your hand to unload (if needed), then add the appropriate ammo.  The description \
 	will tell you what caliber you need."
 	icon = 'icons/obj/gun/ballistic.dmi'
 	icon_state = "revolver"
-	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	w_class = WEIGHT_CLASS_NORMAL
 	materials_base = list(MAT_STEEL = 1000)
 	recoil = 0
 	projectile_type = /obj/projectile/bullet/pistol/strong	//Only used for chameleon guns
+
+	//* Ammunition *//
+
+	#warn hook everything
+
+	/// Inserted magazine
+	/// * Ignored if [internal_magazine] is enabled.
+	var/obj/item/ammo_magazine/magazine
+	/// Magazine restrict; restricts inserted magazines to those that
+	/// match this.
+	/// * If not set, ammo-side is allowed to set it and we will act like
+	///   ours is set to our typepath.
+	var/magazine_restrict
+	/// Magazine insert sound
+	var/magazine_insert_sound = 'sound/weapons/guns/interaction/pistol_magin.ogg'
+	/// Magazine removal sound
+	var/magazine_remove_sound = 'sound/weapons/guns/interaction/pistol_magout.ogg'
+	/// Preloads us with a magazine type.
+	/// * Ignored if [internal_magazine] is enabled.
+	var/magazine_preload
+
+	/// Allow speedloaders
+	/// * [internal_magazine] is required to use speedloaders.
+	var/speedloader_allowed = TRUE
+	/// Speedloader restrict; restricts speedloader usage to speedloader magazines
+	/// that match this.
+	/// * If not set, ammo-side is allowed to set it and we will act like
+	///   ours is set to our typepath.
+	var/speedloader_restrict
+	/// Delay for speedloader refills
+	var/speedloader_delay
+	/// Speedloader sound
+	var/speedloader_sound
+
+	/// If set, we use an internal magazine.
+	/// * Changing this post-Initialize() is considered undefined behavior.
+	/// * Only internal magazine guns work with speedloaders.
+	var/internal_magazine = FALSE
+	/// Sets our internal magazine size.
+	/// * Changing this post-Initialize() is considered undefined behavior.
+	var/internal_magazine_size = 0
+	/// Internal magazine list
+	/// * This is an indexed list. Non-revolverlikes will trim the list as
+	///   needed, while revolverlikes will keep the list size static.
+	/// * This is separate from [magazine] on purpose.
+	var/list/obj/item/ammo_casing/internal_magazine_vec
+	/// Preloads internal magazine with this ammo type
+	var/internal_magazine_preload_ammo
+	/// The internal magazine should act like a looping list
+	/// rather than being a stack.
+	/// * Basically, makes this act like a revolver. Ejected rounds
+	///
+	var/internal_magazine_is_revolver = FALSE
+
+	/// Allow single loading without a speedloader.
+	/// * This loads to internal magazine.
+	/// * If no internal magazine is provided, this loads to chambered.
+	var/single_load = TRUE
+	/// Single load sound
+	var/single_load_sound = 'sound/weapons/guns/interaction/bullet_insert.ogg'
+	/// Delay for single loading, whether by hand or from clip
+	/// * If this is 0, and the clip's is 0, clips act like speedloaders.
+	var/single_load_delay = 0
+
+	//* Chamber *//
+	/// Chambered round
+	var/obj/item/ammo_casing/chamber
+	/// Eject rounds after firing
+	var/chamber_eject_after_fire = TRUE
+	/// Spin the internal magazine after firing
+	/// * Has no effect if [internal_magazine_indexed] is off.
+	var/chamber_cycle_after_fire = TRUE
+	/// A loaded magazine will leave a bullet in the chamber
+	/// once removed.
+	/// * If this is TRUE, the chamber **immediately** takes a bullet from the
+	///   magazine once it's inserted.
+	/// * If this is FALSE, the chamber does not take the bullet until it's being
+	///   fired.
+	/// * This must be true to allow manual loading without a magazine.
+	var/chamber_magazine_separation = TRUE
 
 	//* Configuration *//
 	/// If set, accepts ammo and magazines of this caliber.
@@ -53,34 +131,6 @@
 	/// * uses BALLISTIC_RENDER_BREAK_* enums
 	/// * This is also used for LMGs, and any other gun requiring this stuff.
 	var/render_break_overlay = BALLISTIC_RENDER_BREAK_NEVER
-
-	//! LEGACY BELOW
-
-	var/handle_casings = EJECT_CASINGS	//determines how spent casings should be handled
-	var/load_method = SINGLE_CASING|SPEEDLOADER //1 = Single shells, 2 = box or quick loader, 3 = magazine
-	var/load_method_converted = TRUE
-
-	// todo: rework mag handling, internal magazine?
-
-	//For SINGLE_CASING or SPEEDLOADER guns
-	var/max_shells = 0			//the number of casings that will fit inside
-	var/ammo_type = null		//the type of ammo that the gun comes preloaded with
-	var/list/loaded = list()	//stored ammo
-	var/load_sound = 'sound/weapons/guns/interaction/bullet_insert.ogg'
-
-	//For MAGAZINE guns
-	var/magazine_type = null	//the type of magazine that the gun comes preloaded with
-	var/obj/item/ammo_magazine/ammo_magazine = null //stored magazine
-	var/allowed_magazines		//determines list of which magazines will fit in the gun
-	var/auto_eject = 0			//if the magazine should automatically eject itself when empty.
-	var/auto_eject_sound = null
-	var/mag_insert_sound = 'sound/weapons/guns/interaction/pistol_magin.ogg'
-	var/mag_remove_sound = 'sound/weapons/guns/interaction/pistol_magout.ogg'
-	var/can_special_reload = TRUE //Whether or not we can perform tactical/speed reloads on this gun
-	//TODO generalize ammo icon states for guns
-	//var/magazine_states = 0
-	//var/list/icon_keys = list()		//keys
-	//var/list/ammo_states = list()	//values
 
 /obj/item/gun/projectile/ballistic/Initialize(mapload, starts_loaded = TRUE)
 	. = ..()
