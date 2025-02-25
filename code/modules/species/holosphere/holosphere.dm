@@ -136,7 +136,7 @@
 	if(istype(H, /mob/living/carbon/human/dummy))
 		return
 
-	holosphere_shell = new(H)
+	holosphere_shell = new(H, H)
 	transform_component = H.AddComponent(/datum/component/custom_transform, holosphere_shell, null, null, FALSE)
 	holosphere_shell.transform_component = transform_component
 	holosphere_shell.hologram = H
@@ -169,3 +169,8 @@
 		return
 
 	holosphere_species.try_transform()
+
+/datum/species/holosphere/apply_survival_gear(mob/living/carbon/for_target, list/into_box, list/into_inv)
+	into_box?.Add(/obj/item/tool/prybar/red)
+	into_box?.Add(/obj/item/flashlight/flare/survival)
+	into_box?.Add(/obj/item/fbp_backup_cell)
