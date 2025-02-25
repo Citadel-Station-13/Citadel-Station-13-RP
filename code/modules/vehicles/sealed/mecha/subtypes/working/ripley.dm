@@ -17,11 +17,11 @@
 	encumbrance_gap = 2
 
 	starting_components = list(
-		/obj/item/mecha_parts/component/hull/durable,
-		/obj/item/mecha_parts/component/actuator,
-		/obj/item/mecha_parts/component/armor/mining,
-		/obj/item/mecha_parts/component/gas,
-		/obj/item/mecha_parts/component/electrical
+		/obj/item/vehicle_component/integral/hull/durable,
+		/obj/item/vehicle_component/integral/actuator,
+		/obj/item/vehicle_component/integral/armor/mining,
+		/obj/item/vehicle_component/integral/gas,
+		/obj/item/vehicle_component/integral/electrical
 		)
 
 	icon_scale_x = 1.2
@@ -61,7 +61,7 @@
 
 /obj/vehicle/sealed/mecha/working/ripley/deathripley/Initialize(mapload)
 	. = ..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp/safety
+	var/obj/item/vehicle_component/equipment/ME = new /obj/item/vehicle_component/equipment/tool/hydraulic_clamp/safety
 	ME.attach(src)
 	return
 
@@ -73,14 +73,14 @@
 	. = ..()
 	//Attach drill
 	if(prob(25)) //Possible diamond drill... Feeling lucky?
-		var/obj/item/mecha_parts/mecha_equipment/tool/drill/diamonddrill/D = new /obj/item/mecha_parts/mecha_equipment/tool/drill/diamonddrill
+		var/obj/item/vehicle_component/equipment/tool/drill/diamonddrill/D = new /obj/item/vehicle_component/equipment/tool/drill/diamonddrill
 		D.attach(src)
 	else
-		var/obj/item/mecha_parts/mecha_equipment/tool/drill/D = new /obj/item/mecha_parts/mecha_equipment/tool/drill
+		var/obj/item/vehicle_component/equipment/tool/drill/D = new /obj/item/vehicle_component/equipment/tool/drill
 		D.attach(src)
 
 	//Attach hydrolic clamp
-	var/obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp/HC = new /obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp
+	var/obj/item/vehicle_component/equipment/tool/hydraulic_clamp/HC = new /obj/item/vehicle_component/equipment/tool/hydraulic_clamp
 	HC.attach(src)
 	for(var/obj/item/mecha_parts/mecha_tracking/B in src.contents)//Deletes the beacon so it can't be found easily
 		qdel (B)

@@ -22,11 +22,11 @@
 	max_special_equip = 1
 
 	starting_components = list(
-		/obj/item/mecha_parts/component/hull/durable,
-		/obj/item/mecha_parts/component/actuator,
-		/obj/item/mecha_parts/component/armor/marshal,
-		/obj/item/mecha_parts/component/gas,
-		/obj/item/mecha_parts/component/electrical
+		/obj/item/vehicle_component/integral/hull/durable,
+		/obj/item/vehicle_component/integral/actuator,
+		/obj/item/vehicle_component/integral/armor/marshal,
+		/obj/item/vehicle_component/integral/gas,
+		/obj/item/vehicle_component/integral/electrical
 		)
 
 	overload_possible = 1
@@ -59,10 +59,10 @@
 	max_special_equip = 2
 
 	starting_equipment = list(
-		/obj/item/mecha_parts/mecha_equipment/weapon/whisperblade,
-		/obj/item/mecha_parts/mecha_equipment/weapon/infernoblade,
-		/obj/item/mecha_parts/mecha_equipment/omni_shield/reticence,
-		/obj/item/mecha_parts/mecha_equipment/cloak
+		/obj/item/vehicle_component/equipment/weapon/whisperblade,
+		/obj/item/vehicle_component/equipment/weapon/infernoblade,
+		/obj/item/vehicle_component/equipment/omni_shield/reticence,
+		/obj/item/vehicle_component/equipment/cloak
 		)
 
 /obj/vehicle/sealed/mecha/combat/reticent/reticence/add_cell(var/obj/item/cell/C=null)

@@ -39,11 +39,11 @@
 	max_special_equip = 1
 
 	starting_components = list(
-		/obj/item/mecha_parts/component/hull/lightweight,
-		/obj/item/mecha_parts/component/actuator,
-		/obj/item/mecha_parts/component/armor,
-		/obj/item/mecha_parts/component/gas,
-		/obj/item/mecha_parts/component/electrical
+		/obj/item/vehicle_component/integral/hull/lightweight,
+		/obj/item/vehicle_component/integral/actuator,
+		/obj/item/vehicle_component/integral/armor,
+		/obj/item/vehicle_component/integral/gas,
+		/obj/item/vehicle_component/integral/electrical
 		)
 
 /obj/vehicle/sealed/mecha/combat/fighter/Initialize(mapload)
@@ -205,9 +205,9 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/gunpod/loaded/Initialize(mapload) //Loaded version with guns
 	. = ..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
+	var/obj/item/vehicle_component/equipment/ME = new /obj/item/vehicle_component/equipment/weapon/energy/laser
 	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/explosive
+	ME = new /obj/item/vehicle_component/equipment/weapon/ballistic/missile_rack/explosive
 	ME.attach(src)
 
 /obj/vehicle/sealed/mecha/combat/fighter/gunpod/recon
@@ -216,9 +216,9 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/gunpod/recon/Initialize(mapload) //Blinky
 	. = ..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/teleporter(src)
+	var/obj/item/vehicle_component/equipment/ME = new /obj/item/vehicle_component/equipment/teleporter(src)
 	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/tesla_energy_relay(src)
+	ME = new /obj/item/vehicle_component/equipment/tesla_energy_relay(src)
 	ME.attach(src)
 
 /obj/vehicle/sealed/mecha/combat/fighter/gunpod/update_icon()
@@ -284,9 +284,9 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/baron/loaded/Initialize(mapload) //Loaded version with guns
 	. = ..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
+	var/obj/item/vehicle_component/equipment/ME = new /obj/item/vehicle_component/equipment/weapon/energy/laser
 	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/omni_shield
+	ME = new /obj/item/vehicle_component/equipment/omni_shield
 	ME.attach(src)
 
 /obj/effect/decal/mecha_wreckage/baron
@@ -303,9 +303,9 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/baron/sec/loaded/Initialize(mapload) //Loaded version with guns
 	. = ..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
+	var/obj/item/vehicle_component/equipment/ME = new /obj/item/vehicle_component/equipment/weapon/energy/laser
 	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/phase
+	ME = new /obj/item/vehicle_component/equipment/weapon/energy/phase
 	ME.attach(src)
 
 /datum/category_item/catalogue/technology/baron
@@ -343,9 +343,9 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/duke/loaded/Initialize(mapload) //Loaded version with guns
 	. = ..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
+	var/obj/item/vehicle_component/equipment/ME = new /obj/item/vehicle_component/equipment/weapon/energy/laser
 	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/explosive
+	ME = new /obj/item/vehicle_component/equipment/weapon/ballistic/missile_rack/explosive
 	ME.attach(src)
 
 /obj/vehicle/sealed/mecha/combat/fighter/duke/db
@@ -357,9 +357,9 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/duke/db/loaded/Initialize(mapload) //Loaded version with guns
 	. = ..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
+	var/obj/item/vehicle_component/equipment/ME = new /obj/item/vehicle_component/equipment/weapon/energy/laser
 	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/explosive
+	ME = new /obj/item/vehicle_component/equipment/weapon/ballistic/missile_rack/explosive
 	ME.attach(src)
 
 /obj/vehicle/sealed/mecha/combat/fighter/duke/cw
@@ -371,9 +371,9 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/duke/cw/loaded/Initialize(mapload) //Loaded version with guns
 	. = ..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
+	var/obj/item/vehicle_component/equipment/ME = new /obj/item/vehicle_component/equipment/weapon/energy/laser
 	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/explosive
+	ME = new /obj/item/vehicle_component/equipment/weapon/ballistic/missile_rack/explosive
 	ME.attach(src)
 
 /obj/effect/decal/mecha_wreckage/duke
@@ -422,9 +422,9 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/scoralis/loaded/Initialize(mapload) //Loaded version with guns
 	. = ..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg
+	var/obj/item/vehicle_component/equipment/ME = new /obj/item/vehicle_component/equipment/weapon/ballistic/lmg
 	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/cloak
+	ME = new /obj/item/vehicle_component/equipment/cloak
 	ME.attach(src)
 
 /obj/effect/decal/mecha_wreckage/scoralis
@@ -461,7 +461,7 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/allure/loaded/Initialize(mapload) //Loaded version with guns
 	. = ..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/cloak
+	var/obj/item/vehicle_component/equipment/ME = new /obj/item/vehicle_component/equipment/cloak
 	ME.attach(src)
 
 /obj/vehicle/sealed/mecha/combat/fighter/allure/royalty
@@ -473,7 +473,7 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/allure/royalty/loaded/Initialize(mapload) //Loaded version with guns
 	. = ..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/cloak
+	var/obj/item/vehicle_component/equipment/ME = new /obj/item/vehicle_component/equipment/cloak
 	ME.attach(src)
 
 /obj/effect/decal/mecha_wreckage/allure
@@ -515,7 +515,7 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/pinnace/loaded/Initialize(mapload) //Loaded version with guns
 	. = ..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/tool/passenger
+	var/obj/item/vehicle_component/equipment/ME = new /obj/item/vehicle_component/equipment/tool/passenger
 	ME.attach(src)
 
 /obj/effect/decal/mecha_wreckage/pinnace

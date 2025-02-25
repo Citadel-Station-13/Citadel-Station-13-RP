@@ -22,11 +22,11 @@
 	max_special_equip = 1
 
 	starting_components = list(
-		/obj/item/mecha_parts/component/hull/lightweight,
-		/obj/item/mecha_parts/component/actuator,
-		/obj/item/mecha_parts/component/armor/marshal,
-		/obj/item/mecha_parts/component/gas,
-		/obj/item/mecha_parts/component/electrical
+		/obj/item/vehicle_component/integral/hull/lightweight,
+		/obj/item/vehicle_component/integral/actuator,
+		/obj/item/vehicle_component/integral/armor/marshal,
+		/obj/item/vehicle_component/integral/gas,
+		/obj/item/vehicle_component/integral/electrical
 		)
 
 	overload_possible = 1
@@ -70,10 +70,10 @@
 	max_special_equip = 2
 
 	starting_equipment = list(
-		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot,
-		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/grenade/clusterbang,
-		/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay,
-		/obj/item/mecha_parts/mecha_equipment/teleporter
+		/obj/item/vehicle_component/equipment/weapon/ballistic/scattershot,
+		/obj/item/vehicle_component/equipment/weapon/ballistic/missile_rack/grenade/clusterbang,
+		/obj/item/vehicle_component/equipment/tesla_energy_relay,
+		/obj/item/vehicle_component/equipment/teleporter
 		)
 
 /obj/vehicle/sealed/mecha/combat/gygax/dark/add_cell(var/obj/item/cell/C=null)
@@ -113,11 +113,11 @@
 	max_special_equip = 1
 
 	starting_components = list(
-		/obj/item/mecha_parts/component/hull,
-		/obj/item/mecha_parts/component/actuator,
-		/obj/item/mecha_parts/component/armor/lightweight,
-		/obj/item/mecha_parts/component/gas,
-		/obj/item/mecha_parts/component/electrical
+		/obj/item/vehicle_component/integral/hull,
+		/obj/item/vehicle_component/integral/actuator,
+		/obj/item/vehicle_component/integral/armor/lightweight,
+		/obj/item/vehicle_component/integral/gas,
+		/obj/item/vehicle_component/integral/electrical
 		)
 
 //Meant for random spawns.

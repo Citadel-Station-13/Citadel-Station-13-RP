@@ -1204,15 +1204,15 @@
 
 /obj/random/multiple/mechtool/item_to_spawn()
 	return pick(
-				prob(12);list(/obj/item/mecha_parts/mecha_equipment/tool/drill),
-				prob(10);list(/obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp),
-				prob(8);list(/obj/item/mecha_parts/mecha_equipment/generator),
-				prob(7);list(/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot/rigged),
-				prob(6);list(/obj/item/mecha_parts/mecha_equipment/repair_droid),
-				prob(3);list(/obj/item/mecha_parts/mecha_equipment/gravcatapult),
-				prob(2);list(/obj/item/mecha_parts/mecha_equipment/weapon/energy/riggedlaser),
-				prob(2);list(/obj/item/mecha_parts/mecha_equipment/weapon/energy/flamer/rigged),
-				prob(1);list(/obj/item/mecha_parts/mecha_equipment/tool/drill/diamonddrill),
+				prob(12);list(/obj/item/vehicle_component/equipment/tool/drill),
+				prob(10);list(/obj/item/vehicle_component/equipment/tool/hydraulic_clamp),
+				prob(8);list(/obj/item/vehicle_component/equipment/generator),
+				prob(7);list(/obj/item/vehicle_component/equipment/weapon/ballistic/scattershot/rigged),
+				prob(6);list(/obj/item/vehicle_component/equipment/repair_droid),
+				prob(3);list(/obj/item/vehicle_component/equipment/gravcatapult),
+				prob(2);list(/obj/item/vehicle_component/equipment/weapon/energy/riggedlaser),
+				prob(2);list(/obj/item/vehicle_component/equipment/weapon/energy/flamer/rigged),
+				prob(1);list(/obj/item/vehicle_component/equipment/tool/drill/diamonddrill),
 				)
 
 //Random Bedsheet Spawner

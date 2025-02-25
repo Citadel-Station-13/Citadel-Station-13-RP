@@ -28,11 +28,11 @@
 	encumbrance_gap = 2
 
 	starting_components = list(
-		/obj/item/mecha_parts/component/hull/durable,
-		/obj/item/mecha_parts/component/actuator,
-		/obj/item/mecha_parts/component/armor/alien,
-		/obj/item/mecha_parts/component/gas,
-		/obj/item/mecha_parts/component/electrical
+		/obj/item/vehicle_component/integral/hull/durable,
+		/obj/item/vehicle_component/integral/actuator,
+		/obj/item/vehicle_component/integral/armor/alien,
+		/obj/item/vehicle_component/integral/gas,
+		/obj/item/vehicle_component/integral/electrical
 		)
 
 	cloak_possible = TRUE
@@ -42,8 +42,8 @@
 /obj/vehicle/sealed/mecha/combat/phazon/equipped/Initialize(mapload)
 	. = ..()
 	starting_equipment = list(
-		/obj/item/mecha_parts/mecha_equipment/tool/rcd,
-		/obj/item/mecha_parts/mecha_equipment/gravcatapult
+		/obj/item/vehicle_component/equipment/tool/rcd,
+		/obj/item/vehicle_component/equipment/gravcatapult
 		)
 	return
 
