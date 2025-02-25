@@ -1,35 +1,35 @@
 // The Casing //
-/obj/item/microbattery_casing/combat
+/obj/item/ammo_casing/microbattery/combat
 	name = "\'Hydra\' microbattery - UNKNOWN"
 	desc = "A miniature battery for an energy weapon."
 	//catalogue_data = list(/datum/category_item/catalogue/information/organization/nanotrasen)
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 1, TECH_MAGNETS = 2)
 
-/obj/item/microbattery_casing/combat/lethal
+/obj/item/ammo_casing/microbattery/combat/lethal
 	name = "\'Hydra\' microbattery - LETHAL"
 	type_color = "#bf3d3d"
 	type_name = "<span style='color:#bf3d3d;font-weight:bold;'>LETHAL</span>"
 	projectile_type = /obj/projectile/beam
 
-/obj/item/microbattery_casing/combat/stun
+/obj/item/ammo_casing/microbattery/combat/stun
 	name = "\'Hydra\' microbattery - STUN"
 	type_color = "#0f81bc"
 	type_name = "<span style='color:#0f81bc;font-weight:bold;'>STUN</span>"
 	projectile_type = /obj/projectile/beam/stun/blue
 
-/obj/item/microbattery_casing/combat/net
+/obj/item/ammo_casing/microbattery/combat/net
 	name = "\'Hydra\' microbattery - NET"
 	type_color = "#43f136"
 	type_name = "<span style='color:#43d136;font-weight:bold;'>NET</span>"
 	projectile_type = /obj/projectile/beam/energy_net
 
-/obj/item/microbattery_casing/combat/xray
+/obj/item/ammo_casing/microbattery/combat/xray
 	name = "\'Hydra\' microbattery - XRAY"
 	type_color = "#32c025"
 	type_name = "<span style='color:#32c025;font-weight:bold;'>XRAY</span>"
 	projectile_type = /obj/projectile/beam/xray
 
-/obj/item/microbattery_casing/combat/shotstun
+/obj/item/ammo_casing/microbattery/combat/shotstun
 	name = "\'Hydra\' microbattery - SCATTERSTUN"
 	type_color = "#88ffff"
 	type_name = "<span style='color:#88ffff;font-weight:bold;'>SCATTERSTUN</span>"
@@ -44,13 +44,13 @@
 	damage_mode = NONE
 	damage_flag = ARMOR_MELEE
 
-/obj/item/microbattery_casing/combat/ion
+/obj/item/ammo_casing/microbattery/combat/ion
 	name = "\'Hydra\' microbattery - ION"
 	type_color = "#d084d6"
 	type_name = "<span style='color:#d084d6;font-weight:bold;'>ION</span>"
 	projectile_type = /obj/projectile/ion/small
 
-/obj/item/microbattery_casing/combat/stripper
+/obj/item/ammo_casing/microbattery/combat/stripper
 	name = "\'Hydra\' microbattery - STRIPPER"
 	type_color = "#fc8d0f"
 	type_name = "<span style='color:#fc8d0f;font-weight:bold;'>STRIPPER</span>"
@@ -76,7 +76,7 @@
 		H.drop_slots_to_ground(list(SLOT_ID_SUIT, SLOT_ID_UNIFORM, SLOT_ID_BACK, SLOT_ID_SHOES, SLOT_ID_GLOVES))
 		//Hats can stay! Most other things fall off with removing these.
 
-/obj/item/microbattery_casing/combat/final
+/obj/item/ammo_casing/microbattery/combat/final
 	name = "\'Hydra\' microbattery - FINAL OPTION"
 	type_color = "#fcfc0f"
 	type_name = "<span style='color:#000000;font-weight:bold;'>FINAL OPTION</span>" //Doesn't look good in yellow in chat
