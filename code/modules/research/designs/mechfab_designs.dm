@@ -12,59 +12,59 @@
 /datum/prototype/design/science/mechfab/ripley/chassis
 	design_name = "Ripley Chassis"
 	id = "ripley_chassis"
-	build_path = /obj/item/mecha_parts/chassis/ripley
+	build_path = /obj/item/vehicle_chassis/ripley
 	work = (10 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 15000)
 
 /datum/prototype/design/science/mechfab/ripley/chassis/firefighter
 	design_name = "Firefigher Chassis"
 	id = "firefighter_chassis"
-	build_path = /obj/item/mecha_parts/chassis/firefighter
+	build_path = /obj/item/vehicle_chassis/firefighter
 
 /datum/prototype/design/science/mechfab/ripley/chassis/geiger
 	design_name = "Geiger Chassis"
 	id = "geiger_chassis"
-	build_path = /obj/item/mecha_parts/chassis/geiger
+	build_path = /obj/item/vehicle_chassis/geiger
 
 /datum/prototype/design/science/mechfab/ripley/torso
 	design_name = "Ripley Torso"
 	id = "ripley_torso"
-	build_path = /obj/item/mecha_parts/part/ripley_torso
+	build_path = /obj/item/vehicle_part/ripley_torso
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 30000, MAT_GLASS = 11250)
 
 /datum/prototype/design/science/mechfab/ripley/torso/geiger
 	design_name = "Geiger Torso"
 	id = "geiger_torso"
-	build_path = /obj/item/mecha_parts/part/geiger_torso
+	build_path = /obj/item/vehicle_part/geiger_torso
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 25000, MAT_GLASS = 10000)
 
 /datum/prototype/design/science/mechfab/ripley/left_arm
 	design_name = "Ripley Left Arm"
 	id = "ripley_left_arm"
-	build_path = /obj/item/mecha_parts/part/ripley_left_arm
+	build_path = /obj/item/vehicle_part/ripley_left_arm
 	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 18750)
 
 /datum/prototype/design/science/mechfab/ripley/right_arm
 	design_name = "Ripley Right Arm"
 	id = "ripley_right_arm"
-	build_path = /obj/item/mecha_parts/part/ripley_right_arm
+	build_path = /obj/item/vehicle_part/ripley_right_arm
 	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 18750)
 
 /datum/prototype/design/science/mechfab/ripley/left_leg
 	design_name = "Ripley Left Leg"
 	id = "ripley_left_leg"
-	build_path = /obj/item/mecha_parts/part/ripley_left_leg
+	build_path = /obj/item/vehicle_part/ripley_left_leg
 	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 22500)
 
 /datum/prototype/design/science/mechfab/ripley/right_leg
 	design_name = "Ripley Right Leg"
 	id = "ripley_right_leg"
-	build_path = /obj/item/mecha_parts/part/ripley_right_leg
+	build_path = /obj/item/vehicle_part/ripley_right_leg
 	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 22500)
 
@@ -75,49 +75,49 @@
 /datum/prototype/design/science/mechfab/odysseus/chassis
 	design_name = "Odysseus Chassis"
 	id = "odysseus_chassis"
-	build_path = /obj/item/mecha_parts/chassis/odysseus
+	build_path = /obj/item/vehicle_chassis/odysseus
 	work = (10 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 15000)
 
 /datum/prototype/design/science/mechfab/odysseus/torso
 	design_name = "Odysseus Torso"
 	id = "odysseus_torso"
-	build_path = /obj/item/mecha_parts/part/odysseus_torso
+	build_path = /obj/item/vehicle_part/odysseus_torso
 	work = (18 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 18750)
 
 /datum/prototype/design/science/mechfab/odysseus/head
 	design_name = "Odysseus Head"
 	id = "odysseus_head"
-	build_path = /obj/item/mecha_parts/part/odysseus_head
+	build_path = /obj/item/vehicle_part/odysseus_head
 	work = (10 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 1500, MAT_GLASS = 7500)
 
 /datum/prototype/design/science/mechfab/odysseus/left_arm
 	design_name = "Odysseus Left Arm"
 	id = "odysseus_left_arm"
-	build_path = /obj/item/mecha_parts/part/odysseus_left_arm
+	build_path = /obj/item/vehicle_part/odysseus_left_arm
 	work = (12 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 7500)
 
 /datum/prototype/design/science/mechfab/odysseus/right_arm
 	design_name = "Odysseus Right Arm"
 	id = "odysseus_right_arm"
-	build_path = /obj/item/mecha_parts/part/odysseus_right_arm
+	build_path = /obj/item/vehicle_part/odysseus_right_arm
 	work = (12 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 7500)
 
 /datum/prototype/design/science/mechfab/odysseus/left_leg
 	design_name = "Odysseus Left Leg"
 	id = "odysseus_left_leg"
-	build_path = /obj/item/mecha_parts/part/odysseus_left_leg
+	build_path = /obj/item/vehicle_part/odysseus_left_leg
 	work = (13 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 11250)
 
 /datum/prototype/design/science/mechfab/odysseus/right_leg
 	design_name = "Odysseus Right Leg"
 	id = "odysseus_right_leg"
-	build_path = /obj/item/mecha_parts/part/odysseus_right_leg
+	build_path = /obj/item/vehicle_part/odysseus_right_leg
 	work = (13 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 11250)
 
@@ -128,62 +128,62 @@
 /datum/prototype/design/science/mechfab/gygax/chassis/serenity
 	design_name = "Serenity Chassis"
 	id = "serenity_chassis"
-	build_path = /obj/item/mecha_parts/chassis/serenity
+	build_path = /obj/item/vehicle_chassis/serenity
 	materials_base = list(MAT_STEEL = 18750, MAT_PHORON = 4000)
 
 /datum/prototype/design/science/mechfab/gygax/chassis
 	design_name = "Gygax Chassis"
 	id = "gygax_chassis"
-	build_path = /obj/item/mecha_parts/chassis/gygax
+	build_path = /obj/item/vehicle_chassis/gygax
 	work = (10 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 18750)
 
 /datum/prototype/design/science/mechfab/gygax/torso
 	design_name = "Gygax Torso"
 	id = "gygax_torso"
-	build_path = /obj/item/mecha_parts/part/gygax_torso
+	build_path = /obj/item/vehicle_part/gygax_torso
 	work = (30 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 37500, MAT_GLASS = 15000)
 
 /datum/prototype/design/science/mechfab/gygax/head
 	design_name = "Gygax Head"
 	id = "gygax_head"
-	build_path = /obj/item/mecha_parts/part/gygax_head
+	build_path = /obj/item/vehicle_part/gygax_head
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 15000, MAT_GLASS = 7500)
 
 /datum/prototype/design/science/mechfab/gygax/left_arm
 	design_name = "Gygax Left Arm"
 	id = "gygax_left_arm"
-	build_path = /obj/item/mecha_parts/part/gygax_left_arm
+	build_path = /obj/item/vehicle_part/gygax_left_arm
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 22500)
 
 /datum/prototype/design/science/mechfab/gygax/right_arm
 	design_name = "Gygax Right Arm"
 	id = "gygax_right_arm"
-	build_path = /obj/item/mecha_parts/part/gygax_right_arm
+	build_path = /obj/item/vehicle_part/gygax_right_arm
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 22500)
 
 /datum/prototype/design/science/mechfab/gygax/left_leg
 	design_name = "Gygax Left Leg"
 	id = "gygax_left_leg"
-	build_path = /obj/item/mecha_parts/part/gygax_left_leg
+	build_path = /obj/item/vehicle_part/gygax_left_leg
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 26250)
 
 /datum/prototype/design/science/mechfab/gygax/right_leg
 	design_name = "Gygax Right Leg"
 	id = "gygax_right_leg"
-	build_path = /obj/item/mecha_parts/part/gygax_right_leg
+	build_path = /obj/item/vehicle_part/gygax_right_leg
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 26250)
 
 /datum/prototype/design/science/mechfab/gygax/armour
 	design_name = "Gygax Armour Plates"
 	id = "gygax_armour"
-	build_path = /obj/item/mecha_parts/part/gygax_armour
+	build_path = /obj/item/vehicle_part/gygax_armour
 	work = (60 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 37500, MAT_DIAMOND = 7500)
 
@@ -194,56 +194,56 @@
 /datum/prototype/design/science/mechfab/durand/chassis
 	design_name = "Durand Chassis"
 	id = "durand_chassis"
-	build_path = /obj/item/mecha_parts/chassis/durand
+	build_path = /obj/item/vehicle_chassis/durand
 	work = (10 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 18750)
 
 /datum/prototype/design/science/mechfab/durand/torso
 	design_name = "Durand Torso"
 	id = "durand_torso"
-	build_path = /obj/item/mecha_parts/part/durand_torso
+	build_path = /obj/item/vehicle_part/durand_torso
 	work = (30 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 41250, MAT_GLASS = 15000, MAT_SILVER = 7500)
 
 /datum/prototype/design/science/mechfab/durand/head
 	design_name = "Durand Head"
 	id = "durand_head"
-	build_path = /obj/item/mecha_parts/part/durand_head
+	build_path = /obj/item/vehicle_part/durand_head
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 18750, MAT_GLASS = 7500, MAT_SILVER = 2250)
 
 /datum/prototype/design/science/mechfab/durand/left_arm
 	design_name = "Durand Left Arm"
 	id = "durand_left_arm"
-	build_path = /obj/item/mecha_parts/part/durand_left_arm
+	build_path = /obj/item/vehicle_part/durand_left_arm
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 26250, MAT_SILVER = 2250)
 
 /datum/prototype/design/science/mechfab/durand/right_arm
 	design_name = "Durand Right Arm"
 	id = "durand_right_arm"
-	build_path = /obj/item/mecha_parts/part/durand_right_arm
+	build_path = /obj/item/vehicle_part/durand_right_arm
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 26250, MAT_SILVER = 2250)
 
 /datum/prototype/design/science/mechfab/durand/left_leg
 	design_name = "Durand Left Leg"
 	id = "durand_left_leg"
-	build_path = /obj/item/mecha_parts/part/durand_left_leg
+	build_path = /obj/item/vehicle_part/durand_left_leg
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 30000, MAT_SILVER = 2250)
 
 /datum/prototype/design/science/mechfab/durand/right_leg
 	design_name = "Durand Right Leg"
 	id = "durand_right_leg"
-	build_path = /obj/item/mecha_parts/part/durand_right_leg
+	build_path = /obj/item/vehicle_part/durand_right_leg
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 30000, MAT_SILVER = 2250)
 
 /datum/prototype/design/science/mechfab/durand/armour
 	design_name = "Durand Armour Plates"
 	id = "durand_armour"
-	build_path = /obj/item/mecha_parts/part/durand_armour
+	build_path = /obj/item/vehicle_part/durand_armour
 	work = (60 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 37500, MAT_URANIUM = 7500)
 
@@ -255,7 +255,7 @@
 /datum/prototype/design/science/mechfab/janus/chassis
 	design_name = "Janus Chassis"
 	id = "janus_chassis"
-	build_path = /obj/item/mecha_parts/chassis/janus
+	build_path = /obj/item/vehicle_chassis/janus
 	work = (100 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_DURASTEEL = 19000, MAT_MORPHIUM = 10500, MAT_PLASTEEL = 5500, MAT_LEAD = 2500)
 	req_tech = list(TECH_MATERIAL = 7, TECH_BLUESPACE = 5, TECH_MAGNET = 6, TECH_PHORON = 3, TECH_ARCANE = 1, TECH_PRECURSOR = 3)
@@ -263,42 +263,42 @@
 /datum/prototype/design/science/mechfab/janus/torso
 	design_name = "Imperion Torso"
 	id = "janus_torso"
-	build_path = /obj/item/mecha_parts/part/janus_torso
+	build_path = /obj/item/vehicle_part/janus_torso
 	work = (300 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 30000, MAT_DURASTEEL = 8000, MAT_MORPHIUM = 10000, MAT_GOLD = 5000, MAT_VERDANTIUM = 5000)
 
 /datum/prototype/design/science/mechfab/janus/head
 	design_name = "Imperion Head"
 	id = "janus_head"
-	build_path = /obj/item/mecha_parts/part/janus_head
+	build_path = /obj/item/vehicle_part/janus_head
 	work = (200 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 30000, MAT_DURASTEEL = 2000, MAT_MORPHIUM = 6000, MAT_GOLD = 5000)
 
 /datum/prototype/design/science/mechfab/janus/left_arm
 	design_name = "Prototype Gygax Left Arm"
 	id = "janus_left_arm"
-	build_path = /obj/item/mecha_parts/part/janus_left_arm
+	build_path = /obj/item/vehicle_part/janus_left_arm
 	work = (200 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 30000, MAT_METALHYDROGEN = 3000, MAT_DURASTEEL = 2000, MAT_MORPHIUM = 3000, MAT_GOLD = 5000, MAT_DIAMOND = 7000)
 
 /datum/prototype/design/science/mechfab/janus/right_arm
 	design_name = "Prototype Gygax Right Arm"
 	id = "janus_right_arm"
-	build_path = /obj/item/mecha_parts/part/janus_right_arm
+	build_path = /obj/item/vehicle_part/janus_right_arm
 	work = (200 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 30000, MAT_METALHYDROGEN = 3000, MAT_DURASTEEL = 2000, MAT_MORPHIUM = 3000, MAT_GOLD = 5000, MAT_DIAMOND = 7000)
 
 /datum/prototype/design/science/mechfab/janus/left_leg
 	design_name = "Prototype Durand Left Leg"
 	id = "janus_left_leg"
-	build_path = /obj/item/mecha_parts/part/janus_left_leg
+	build_path = /obj/item/vehicle_part/janus_left_leg
 	work = (200 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 30000, MAT_METALHYDROGEN = 3000, MAT_DURASTEEL = 2000, MAT_MORPHIUM = 3000, MAT_GOLD = 5000, MAT_URANIUM = 7000)
 
 /datum/prototype/design/science/mechfab/janus/right_leg
 	design_name = "Prototype Durand Right Leg"
 	id = "janus_right_leg"
-	build_path = /obj/item/mecha_parts/part/janus_right_leg
+	build_path = /obj/item/vehicle_part/janus_right_leg
 	work = (200 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 30000, MAT_METALHYDROGEN = 3000, MAT_DURASTEEL = 2000, MAT_MORPHIUM = 3000, MAT_GOLD = 5000, MAT_URANIUM = 7000)
 
@@ -316,56 +316,56 @@
 /datum/prototype/design/science/mechfab/honker/chassis
 	design_name = "H.O.N.K. Chassis"
 	id = "honker_chassis"
-	build_path = /obj/item/mecha_parts/chassis/honker
+	build_path = /obj/item/vehicle_chassis/honker
 	work = (10 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 18750)
 
 /datum/prototype/design/science/mechfab/honker/torso
 	design_name = "H.O.N.K. Torso"
 	id = "honker_torso"
-	build_path = /obj/item/mecha_parts/part/honker_torso
+	build_path = /obj/item/vehicle_part/honker_torso
 	work = (30 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 37500, MAT_GLASS = 15000, MAT_PLASTIC = 10000)
 
 /datum/prototype/design/science/mechfab/honker/head
 	design_name = "H.O.N.K. Head"
 	id = "honker_head"
-	build_path = /obj/item/mecha_parts/part/honker_head
+	build_path = /obj/item/vehicle_part/honker_head
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 15000, MAT_GLASS = 7500, MAT_PLASTIC = 5000)
 
 /datum/prototype/design/science/mechfab/honker/left_arm
 	design_name = "H.O.N.K. Left Arm"
 	id = "honker_left_arm"
-	build_path = /obj/item/mecha_parts/part/honker_left_arm
+	build_path = /obj/item/vehicle_part/honker_left_arm
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 22500, MAT_PLASTIC = 12000)
 
 /datum/prototype/design/science/mechfab/honker/right_arm
 	design_name = "H.O.N.K. Right Arm"
 	id = "honker_right_arm"
-	build_path = /obj/item/mecha_parts/part/honker_right_arm
+	build_path = /obj/item/vehicle_part/honker_right_arm
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 22500, MAT_PLASTIC = 12000)
 
 /datum/prototype/design/science/mechfab/honker/left_leg
 	design_name = "H.O.N.K. Left Leg"
 	id = "honker_left_leg"
-	build_path = /obj/item/mecha_parts/part/honker_left_leg
+	build_path = /obj/item/vehicle_part/honker_left_leg
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 26250, MAT_PLASTIC = 15000)
 
 /datum/prototype/design/science/mechfab/honker/right_leg
 	design_name = "H.O.N.K. Right Leg"
 	id = "honker_right_leg"
-	build_path = /obj/item/mecha_parts/part/honker_right_leg
+	build_path = /obj/item/vehicle_part/honker_right_leg
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 26250, MAT_PLASTIC = 15000)
 
 /datum/prototype/design/science/mechfab/honker/armour
 	design_name = "H.O.N.K. Armour Plates"
 	id = "honker_armour"
-	build_path = /obj/item/mecha_parts/part/honker_armour
+	build_path = /obj/item/vehicle_part/honker_armour
 	work = (60 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 37500, MAT_DIAMOND = 7500, MAT_PLASTIC = 5000, MAT_BANANIUM = 20000)
 
@@ -376,56 +376,56 @@
 /datum/prototype/design/science/mechfab/reticent/chassis
 	design_name = "Reticent Chassis"
 	id = "reticent_chassis"
-	build_path = /obj/item/mecha_parts/chassis/reticent
+	build_path = /obj/item/vehicle_chassis/reticent
 	work = (10 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 18750)
 
 /datum/prototype/design/science/mechfab/reticent/torso
 	design_name = "Reticent Torso"
 	id = "reticent_torso"
-	build_path = /obj/item/mecha_parts/part/reticent_torso
+	build_path = /obj/item/vehicle_part/reticent_torso
 	work = (30 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 37500, MAT_GLASS = 15000, MAT_OSMIUM = 5000)
 
 /datum/prototype/design/science/mechfab/reticent/head
 	design_name = "Reticent Head"
 	id = "reticent_head"
-	build_path = /obj/item/mecha_parts/part/reticent_head
+	build_path = /obj/item/vehicle_part/reticent_head
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 15000, MAT_GLASS = 7500, MAT_OSMIUM = 5000)
 
 /datum/prototype/design/science/mechfab/reticent/left_arm
 	design_name = "Reticent Left Arm"
 	id = "reticent_left_arm"
-	build_path = /obj/item/mecha_parts/part/reticent_left_arm
+	build_path = /obj/item/vehicle_part/reticent_left_arm
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 22500, MAT_PLASTIC = 12000)
 
 /datum/prototype/design/science/mechfab/reticent/right_arm
 	design_name = "Reticent Right Arm"
 	id = "reticent_right_arm"
-	build_path = /obj/item/mecha_parts/part/reticent_right_arm
+	build_path = /obj/item/vehicle_part/reticent_right_arm
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 22500, MAT_PLASTIC = 12000)
 
 /datum/prototype/design/science/mechfab/reticent/left_leg
 	design_name = "Reticent Left Leg"
 	id = "reticent_left_leg"
-	build_path = /obj/item/mecha_parts/part/reticent_left_leg
+	build_path = /obj/item/vehicle_part/reticent_left_leg
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 26250, MAT_PLASTIC = 15000)
 
 /datum/prototype/design/science/mechfab/reticent/right_leg
 	design_name = "Reticent Right Leg"
 	id = "reticent_right_leg"
-	build_path = /obj/item/mecha_parts/part/reticent_right_leg
+	build_path = /obj/item/vehicle_part/reticent_right_leg
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 26250, MAT_PLASTIC = 15000)
 
 /datum/prototype/design/science/mechfab/reticent/armour
 	design_name = "Reticent Armour Plates"
 	id = "reticent_armour"
-	build_path = /obj/item/mecha_parts/part/reticent_armour
+	build_path = /obj/item/vehicle_part/reticent_armour
 	work = (60 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 37500, MAT_OSMIUM = 7500, MAT_PLASTIC = 5000, MAT_SILENCIUM = 20000)
 

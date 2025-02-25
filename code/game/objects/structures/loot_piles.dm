@@ -656,12 +656,12 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/stack/material/steel{amount = 25},
 		/obj/item/stack/material/glass{amount = 10},
 		/obj/item/stack/material/plasteel{amount = 5},
-		/obj/item/mecha_parts/chassis/ripley,
-		/obj/item/mecha_parts/part/ripley_torso,
-		/obj/item/mecha_parts/part/ripley_left_arm,
-		/obj/item/mecha_parts/part/ripley_right_arm,
-		/obj/item/mecha_parts/part/ripley_left_leg,
-		/obj/item/mecha_parts/part/ripley_right_leg,
+		/obj/item/vehicle_chassis/ripley,
+		/obj/item/vehicle_part/ripley_torso,
+		/obj/item/vehicle_part/ripley_left_arm,
+		/obj/item/vehicle_part/ripley_right_arm,
+		/obj/item/vehicle_part/ripley_left_leg,
+		/obj/item/vehicle_part/ripley_right_leg,
 		/obj/item/kit/paint/ripley,
 		/obj/item/kit/paint/ripley/flames_red,
 		/obj/item/kit/paint/ripley/flames_blue
@@ -702,12 +702,12 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/stack/material/steel{amount = 40},
 		/obj/item/stack/material/glass{amount = 20},
 		/obj/item/stack/material/plasteel{amount = 10},
-		/obj/item/mecha_parts/chassis/ripley,
-		/obj/item/mecha_parts/part/ripley_torso,
-		/obj/item/mecha_parts/part/ripley_left_arm,
-		/obj/item/mecha_parts/part/ripley_right_arm,
-		/obj/item/mecha_parts/part/ripley_left_leg,
-		/obj/item/mecha_parts/part/ripley_right_leg,
+		/obj/item/vehicle_chassis/ripley,
+		/obj/item/vehicle_part/ripley_torso,
+		/obj/item/vehicle_part/ripley_left_arm,
+		/obj/item/vehicle_part/ripley_right_arm,
+		/obj/item/vehicle_part/ripley_left_leg,
+		/obj/item/vehicle_part/ripley_right_leg,
 		/obj/random/paintkit,
 		/obj/random/paintkit
 		)
@@ -737,13 +737,13 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/stack/material/steel{amount = 25},
 		/obj/item/stack/material/glass{amount = 10},
 		/obj/item/stack/material/plasteel{amount = 5},
-		/obj/item/mecha_parts/chassis/odysseus,
-		/obj/item/mecha_parts/part/odysseus_head,
-		/obj/item/mecha_parts/part/odysseus_torso,
-		/obj/item/mecha_parts/part/odysseus_left_arm,
-		/obj/item/mecha_parts/part/odysseus_right_arm,
-		/obj/item/mecha_parts/part/odysseus_left_leg,
-		/obj/item/mecha_parts/part/odysseus_right_leg
+		/obj/item/vehicle_chassis/odysseus,
+		/obj/item/vehicle_part/odysseus_head,
+		/obj/item/vehicle_part/odysseus_torso,
+		/obj/item/vehicle_part/odysseus_left_arm,
+		/obj/item/vehicle_part/odysseus_right_arm,
+		/obj/item/vehicle_part/odysseus_left_leg,
+		/obj/item/vehicle_part/odysseus_right_leg
 		)
 
 	uncommon_loot = list(
@@ -780,14 +780,14 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/stack/material/steel{amount = 25},
 		/obj/item/stack/material/glass{amount = 10},
 		/obj/item/stack/material/plasteel{amount = 5},
-		/obj/item/mecha_parts/chassis/gygax,
-		/obj/item/mecha_parts/part/gygax_head,
-		/obj/item/mecha_parts/part/gygax_torso,
-		/obj/item/mecha_parts/part/gygax_left_arm,
-		/obj/item/mecha_parts/part/gygax_right_arm,
-		/obj/item/mecha_parts/part/gygax_left_leg,
-		/obj/item/mecha_parts/part/gygax_right_leg,
-		/obj/item/mecha_parts/part/gygax_armour
+		/obj/item/vehicle_chassis/gygax,
+		/obj/item/vehicle_part/gygax_head,
+		/obj/item/vehicle_part/gygax_torso,
+		/obj/item/vehicle_part/gygax_left_arm,
+		/obj/item/vehicle_part/gygax_right_arm,
+		/obj/item/vehicle_part/gygax_left_leg,
+		/obj/item/vehicle_part/gygax_right_leg,
+		/obj/item/vehicle_part/gygax_armour
 		)
 
 	uncommon_loot = list(
@@ -835,14 +835,14 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/stack/material/steel{amount = 25},
 		/obj/item/stack/material/glass{amount = 10},
 		/obj/item/stack/material/plasteel{amount = 5},
-		/obj/item/mecha_parts/chassis/durand,
-		/obj/item/mecha_parts/part/durand_head,
-		/obj/item/mecha_parts/part/durand_torso,
-		/obj/item/mecha_parts/part/durand_left_arm,
-		/obj/item/mecha_parts/part/durand_right_arm,
-		/obj/item/mecha_parts/part/durand_left_leg,
-		/obj/item/mecha_parts/part/durand_right_leg,
-		/obj/item/mecha_parts/part/durand_armour
+		/obj/item/vehicle_chassis/durand,
+		/obj/item/vehicle_part/durand_head,
+		/obj/item/vehicle_part/durand_torso,
+		/obj/item/vehicle_part/durand_left_arm,
+		/obj/item/vehicle_part/durand_right_arm,
+		/obj/item/vehicle_part/durand_left_leg,
+		/obj/item/vehicle_part/durand_right_leg,
+		/obj/item/vehicle_part/durand_armour
 		)
 
 	uncommon_loot = list(
@@ -886,13 +886,13 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/storage/toolbox/syndicate/powertools,
 		/obj/item/stack/material/plasteel{amount = 20},
 		/obj/item/stack/material/durasteel{amount = 10},
-		/obj/item/mecha_parts/chassis/phazon,
-		/obj/item/mecha_parts/part/phazon_head,
-		/obj/item/mecha_parts/part/phazon_torso,
-		/obj/item/mecha_parts/part/phazon_left_arm,
-		/obj/item/mecha_parts/part/phazon_right_arm,
-		/obj/item/mecha_parts/part/phazon_left_leg,
-		/obj/item/mecha_parts/part/phazon_right_leg
+		/obj/item/vehicle_chassis/phazon,
+		/obj/item/vehicle_part/phazon_head,
+		/obj/item/vehicle_part/phazon_torso,
+		/obj/item/vehicle_part/phazon_left_arm,
+		/obj/item/vehicle_part/phazon_right_arm,
+		/obj/item/vehicle_part/phazon_left_leg,
+		/obj/item/vehicle_part/phazon_right_leg
 		)
 
 	uncommon_loot = list(
@@ -923,19 +923,19 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/stack/material/glass{amount = 10},
 		/obj/item/stack/material/plasteel{amount = 5},
 		/obj/item/bikehorn,
-		/obj/item/mecha_parts/chassis/honker,
-		/obj/item/mecha_parts/part/honker_head,
-		/obj/item/mecha_parts/part/honker_torso,
-		/obj/item/mecha_parts/part/honker_left_arm,
-		/obj/item/mecha_parts/part/honker_right_arm,
-		/obj/item/mecha_parts/part/honker_left_leg,
-		/obj/item/mecha_parts/part/honker_right_leg
+		/obj/item/vehicle_chassis/honker,
+		/obj/item/vehicle_part/honker_head,
+		/obj/item/vehicle_part/honker_torso,
+		/obj/item/vehicle_part/honker_left_arm,
+		/obj/item/vehicle_part/honker_right_arm,
+		/obj/item/vehicle_part/honker_left_leg,
+		/obj/item/vehicle_part/honker_right_leg
 		)
 
 	uncommon_loot = list(
 		/obj/item/vehicle_component/equipment/weapon/ballistic/missile_rack/grenade/banana,
 		/obj/item/vehicle_component/equipment/weapon/honker,
-		/obj/item/mecha_parts/part/honker_armour
+		/obj/item/vehicle_part/honker_armour
 		)
 
 	rare_loot = list(
@@ -961,19 +961,19 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/stack/material/steel{amount = 25},
 		/obj/item/stack/material/glass{amount = 10},
 		/obj/item/stack/material/plasteel{amount = 5},
-		/obj/item/mecha_parts/chassis/reticent,
-		/obj/item/mecha_parts/part/reticent_head,
-		/obj/item/mecha_parts/part/reticent_torso,
-		/obj/item/mecha_parts/part/reticent_left_arm,
-		/obj/item/mecha_parts/part/reticent_right_arm,
-		/obj/item/mecha_parts/part/reticent_left_leg,
-		/obj/item/mecha_parts/part/reticent_right_leg
+		/obj/item/vehicle_chassis/reticent,
+		/obj/item/vehicle_part/reticent_head,
+		/obj/item/vehicle_part/reticent_torso,
+		/obj/item/vehicle_part/reticent_left_arm,
+		/obj/item/vehicle_part/reticent_right_arm,
+		/obj/item/vehicle_part/reticent_left_leg,
+		/obj/item/vehicle_part/reticent_right_leg
 		)
 
 	uncommon_loot = list(
 		/obj/item/vehicle_component/equipment/weapon/whisperblade,
 		/obj/item/vehicle_component/equipment/weapon/infernoblade,
-		/obj/item/mecha_parts/part/reticent_armour
+		/obj/item/vehicle_part/reticent_armour
 		)
 
 	rare_loot = list(

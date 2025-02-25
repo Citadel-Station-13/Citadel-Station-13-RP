@@ -334,8 +334,8 @@
 	desc = "A large, heavy-duty grasping tool used in construction of mechs."
 
 	can_hold = list(
-		/obj/item/mecha_parts/part,
-		/obj/item/mecha_parts/part/micro,
+		/obj/item/vehicle_part,
+		/obj/item/vehicle_part/micro,
 		/obj/item/vehicle_component/equipment,
 		/obj/item/mecha_parts/mecha_tracking
 		)

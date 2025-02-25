@@ -6,39 +6,39 @@
 /datum/prototype/design/science/mechfab/gopher/chassis
 	name = "Gopher Chassis"
 	id = "gopher_chassis"
-	build_path = /obj/item/mecha_parts/chassis/micro/gopher
+	build_path = /obj/item/vehicle_chassis/micro/gopher
 	work = (3 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 7000)
 
 /datum/prototype/design/science/mechfab/gopher/torso
 	name = "Gopher Torso"
 	id = "gopher_torso"
-	build_path = /obj/item/mecha_parts/part/micro/gopher_torso
+	build_path = /obj/item/vehicle_part/micro/gopher_torso
 	materials_base = list(MAT_STEEL = 15000, MAT_GLASS = 5250)
 
 /datum/prototype/design/science/mechfab/gopher/left_arm
 	name = "Gopher Left Arm"
 	id = "gopher_left_arm"
-	build_path = /obj/item/mecha_parts/part/micro/gopher_left_arm
+	build_path = /obj/item/vehicle_part/micro/gopher_left_arm
 	materials_base = list(MAT_STEEL = 8750)
 
 /datum/prototype/design/science/mechfab/gopher/right_arm
 	name = "Gopher Right Arm"
 	id = "gopher_right_arm"
-	build_path = /obj/item/mecha_parts/part/micro/gopher_right_arm
+	build_path = /obj/item/vehicle_part/micro/gopher_right_arm
 
 	materials_base = list(MAT_STEEL = 8750)
 
 /datum/prototype/design/science/mechfab/gopher/left_leg
 	name = "Gopher Left Leg"
 	id = "gopher_left_leg"
-	build_path = /obj/item/mecha_parts/part/micro/gopher_left_leg
+	build_path = /obj/item/vehicle_part/micro/gopher_left_leg
 	materials_base = list(MAT_STEEL = 12500)
 
 /datum/prototype/design/science/mechfab/gopher/right_leg
 	name = "Gopher Right Leg"
 	id = "gopher_right_leg"
-	build_path = /obj/item/mecha_parts/part/micro/gopher_right_leg
+	build_path = /obj/item/vehicle_part/micro/gopher_right_leg
 	materials_base = list(MAT_STEEL = 12500)
 
 /datum/prototype/design/science/mecha/drill/micro
@@ -63,44 +63,44 @@
 /datum/prototype/design/science/mechfab/polecat/chassis
 	name = "Polecat Chassis"
 	id = "polecat_chassis"
-	build_path = /obj/item/mecha_parts/chassis/micro/polecat
+	build_path = /obj/item/vehicle_chassis/micro/polecat
 	work = (3 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 7000)
 
 /datum/prototype/design/science/mechfab/polecat/torso
 	name = "Polecat Torso"
 	id = "polecat_torso"
-	build_path = /obj/item/mecha_parts/part/micro/polecat_torso
+	build_path = /obj/item/vehicle_part/micro/polecat_torso
 	materials_base = list(MAT_STEEL = 15000, MAT_GLASS = 5250)
 
 /datum/prototype/design/science/mechfab/polecat/left_arm
 	name = "Polecat Left Arm"
 	id = "polecat_left_arm"
-	build_path = /obj/item/mecha_parts/part/micro/polecat_left_arm
+	build_path = /obj/item/vehicle_part/micro/polecat_left_arm
 	materials_base = list(MAT_STEEL = 8750)
 
 /datum/prototype/design/science/mechfab/polecat/right_arm
 	name = "Polecat Right Arm"
 	id = "polecat_right_arm"
-	build_path = /obj/item/mecha_parts/part/micro/polecat_right_arm
+	build_path = /obj/item/vehicle_part/micro/polecat_right_arm
 	materials_base = list(MAT_STEEL = 8750)
 
 /datum/prototype/design/science/mechfab/polecat/left_leg
 	name = "Polecat Left Leg"
 	id = "polecat_left_leg"
-	build_path = /obj/item/mecha_parts/part/micro/polecat_left_leg
+	build_path = /obj/item/vehicle_part/micro/polecat_left_leg
 	materials_base = list(MAT_STEEL = 12500)
 
 /datum/prototype/design/science/mechfab/polecat/right_leg
 	name = "Polecat Right Leg"
 	id = "polecat_right_leg"
-	build_path = /obj/item/mecha_parts/part/micro/polecat_right_leg
+	build_path = /obj/item/vehicle_part/micro/polecat_right_leg
 	materials_base = list(MAT_STEEL = 12500)
 
 /datum/prototype/design/science/mechfab/polecat/armour
 	name = "Polecat Armour Plates"
 	id = "polecat_armour"
-	build_path = /obj/item/mecha_parts/part/micro/polecat_armour
+	build_path = /obj/item/vehicle_part/micro/polecat_armour
 	work = (25 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 12500, MAT_PLASTIC = 7500)
 
@@ -143,50 +143,50 @@
 /datum/prototype/design/science/mechfab/weasel/chassis
 	name = "Weasel Chassis"
 	id = "weasel_chassis"
-	build_path = /obj/item/mecha_parts/chassis/micro/weasel
+	build_path = /obj/item/vehicle_chassis/micro/weasel
 	work = (3 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 7000)
 
 /datum/prototype/design/science/mechfab/weasel/torso
 	name = "Weasel Torso"
 	id = "weasel_torso"
-	build_path = /obj/item/mecha_parts/part/micro/weasel_torso
+	build_path = /obj/item/vehicle_part/micro/weasel_torso
 	materials_base = list(MAT_STEEL = 15000, MAT_GLASS = 5250)
 
 /datum/prototype/design/science/mechfab/weasel/left_arm
 	name = "Weasel Left Arm"
 	id = "weasel_left_arm"
-	build_path = /obj/item/mecha_parts/part/micro/weasel_left_arm
+	build_path = /obj/item/vehicle_part/micro/weasel_left_arm
 	materials_base = list(MAT_STEEL = 8750)
 
 /datum/prototype/design/science/mechfab/weasel/right_arm
 	name = "Weasel Right Arm"
 	id = "weasel_right_arm"
-	build_path = /obj/item/mecha_parts/part/micro/weasel_right_arm
+	build_path = /obj/item/vehicle_part/micro/weasel_right_arm
 	materials_base = list(MAT_STEEL = 8750)
 
 /*/datum/prototype/design/science/mechfab/weasel/left_leg
 	name = "Weasel Left Leg"
 	id = "weasel_left_leg"
-	build_path = /obj/item/mecha_parts/part/micro/weasel_left_leg
+	build_path = /obj/item/vehicle_part/micro/weasel_left_leg
 	materials_base = list(MAT_STEEL = 12500)
 
 /datum/prototype/design/science/mechfab/weasel/right_leg
 	name = "Weasel Right Leg"
 	id = "weasel_right_leg"
-	build_path = /obj/item/mecha_parts/part/micro/weasel_right_leg
+	build_path = /obj/item/vehicle_part/micro/weasel_right_leg
 	materials_base = list(MAT_STEEL = 12500)*/
 
 /datum/prototype/design/science/mechfab/weasel/tri_leg
 	name = "Weasel Tri Leg"
 	id = "weasel_right_leg"
-	build_path = /obj/item/mecha_parts/part/micro/weasel_tri_leg
+	build_path = /obj/item/vehicle_part/micro/weasel_tri_leg
 	materials_base = list(MAT_STEEL = 27500)
 
 /datum/prototype/design/science/mechfab/weasel/head
 	name = "Weasel Head"
 	id = "weasel_head"
-	build_path = /obj/item/mecha_parts/part/micro/weasel_head
+	build_path = /obj/item/vehicle_part/micro/weasel_head
 	materials_base = list(MAT_STEEL = 7000, MAT_GLASS = 2500)
 
 /datum/prototype/design/science/mecha/medigun
