@@ -131,7 +131,7 @@
 			shock_damage = 15;
 			shock_agony = 30;
 			shock_energy = 50;
-			shock_flags = ELECTROCUTE_ACT_FLAG_DISTRIBUTE;
+			shock_flags = ELECTROCUTE_ACT_FLAG_DISTRIBUTE | ELECTROCUTE_ACT_FLAG_DO_NOT_STUN;
 		}
 	)
 
