@@ -74,7 +74,7 @@
  * @return TRUE if handled
  */
 /obj/machinery/point_redemption_vendor/proc/handle_id_insertion(obj/item/maybe_id, datum/event_args/actor/actor)
-	if(istype(maybe_id, /obj/item/card/id))
+	if(!istype(maybe_id, /obj/item/card/id))
 		return FALSE
 	if(inserted_id)
 		actor.chat_feedback(
@@ -101,8 +101,8 @@
 			if(inserted_id)
 				e_args.visible_feedback(
 					target = src,
-					range_hard = MESSAGE_RANGE_INVENTORY_SOFT,
-					visible_hard = SPAN_NOTICE("[e_args.performer] retrieves [inserted_id] from [src]."),
+					range = MESSAGE_RANGE_INVENTORY_SOFT,
+					visible = SPAN_NOTICE("[e_args.performer] retrieves [inserted_id] from [src]."),
 				)
 				e_args.performer.put_in_hands_or_drop(inserted_id)
 				inserted_id = null
@@ -132,7 +132,7 @@
 /obj/machinery/point_redemption_vendor/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "machines/PointRedemptionVendor.tsx")
+		ui = new(user, src, "machines/PointRedemptionVendor")
 		ui.set_title(name)
 		ui.open()
 
