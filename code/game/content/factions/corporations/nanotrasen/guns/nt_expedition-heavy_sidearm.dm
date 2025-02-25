@@ -4,6 +4,7 @@
 //* Caliber *//
 
 /datum/ammo_caliber/nt_expedition/heavy_sidearm
+	name = "NT-9-LR"
 	caliber = "nt-heavy-sidearm"
 	diameter = 9
 	length = 34
@@ -11,10 +12,12 @@
 //* Ammo Casings *//
 
 /obj/item/ammo_casing/nt_expedition/heavy_sidearm
-	name = "ammo casing (NT-9-magnum)"
+	name = "ammo casing (NT-9-LR)"
 	desc = "A standardized 9mm cartridge for NT Expeditionary kinetics. This one seems to be for heavy-duty sidearms."
 	caliber = /datum/ammo_caliber/nt_expedition/heavy_sidearm
 	projectile_type = /obj/projectile/bullet/nt_expedition/heavy_sidearm
+
+	#warn materials
 
 	/// specifically for /obj/item/ammo_magazine/nt_expedition/heavy_rifle's
 	var/speedloader_state = "basic"
@@ -22,12 +25,12 @@
 /obj/item/ammo_casing/nt_expedition/heavy_sidearm/piercing
 	icon_state = "piercing"
 	speedloader_state = "piercing"
-	// todo: implement casing + magazine
+	// todo: implement projectile + magazine
 
 /obj/item/ammo_casing/nt_expedition/heavy_sidearm/rubber
 	icon_state = "rubber"
 	speedloader_state = "rubber"
-	// todo: implement casing + magazine
+	// todo: implement projectile + magazine
 
 //* Magazines *//
 
@@ -36,7 +39,6 @@
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/sidearm-heavy-ammo.dmi'
 	rendering_system = GUN_RENDERING_DISABLED
 	ammo_caliber = /datum/ammo_caliber/nt_expedition/heavy_sidearm
-	ammo_max = 5
 	ammo_preload = /obj/item/ammo_casing/nt_expedition/heavy_sidearm
 
 /obj/item/ammo_magazine/nt_expedition/heavy_sidearm/speedloader
@@ -66,13 +68,17 @@
 	base_icon_state = "magazine"
 	rendering_static_overlay = "magazine-stripe"
 	magazine_type = MAGAZINE_TYPE_NORMAL
+	ammo_max = 10
 
+GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidearm/smg, /nt_expedition_ammo/heavy_sidearm/smg, "nt-ammo-9mmLR-smg");
 /obj/item/ammo_magazine/nt_expedition/heavy_sidearm/smg
 	name = "smg magazine (NT-9-LR)"
 	icon_state = "smg-1"
 	base_icon_state = "smg"
 	rendering_static_overlay = "smg-stripe"
 	magazine_type = MAGAZINE_TYPE_NORMAL
+	ammo_max = 20
+	#warn materials
 
 //* Projectiles *//
 
@@ -118,6 +124,7 @@
 	load_method = SINGLE_CASING | SPEEDLOADER
 	icon_state = "revolver"
 
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/smg, /nt_expedition/heavy_smg, "nt-expeditionary-heavy_smg")
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/smg
 	name = "submachine gun"
 	desc = "The XNMP Mk.8 \"Buzzsaw\" submachine gun; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
@@ -133,3 +140,4 @@
 	icon_state = "smg-map"
 	base_icon_state = "smg"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
+	#warn materials

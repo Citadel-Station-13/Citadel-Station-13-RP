@@ -4,6 +4,7 @@
 //* Caliber *//
 
 /datum/ammo_caliber/nt_expedition/light_sidearm
+	name = "NT-9"
 	caliber = "nt-light-sidearm"
 	diameter = 9
 	length = 29
@@ -28,7 +29,6 @@
 	base_icon_state = "magazine"
 	rendering_system = GUN_RENDERING_DISABLED
 	ammo_caliber = /datum/ammo_caliber/nt_expedition/light_sidearm
-	ammo_max = 5
 	ammo_preload = /obj/item/ammo_casing/nt_expedition/light_sidearm
 
 /obj/item/ammo_magazine/nt_expedition/light_sidearm/speedloader
@@ -75,21 +75,23 @@
 	rendering_system = GUN_RENDERING_STATES
 	rendering_count = 5
 	rendering_static_overlay = "pistol-stripe"
-	ammo_max = 8
+	ammo_max = 14
 
+GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/light_sidearm/smg, /nt_expedition_ammo/light_sidearm/smg, "nt-ammo-9mm-smg");
 /obj/item/ammo_magazine/nt_expedition/light_sidearm/smg
 	icon_state = "smg-1"
 	base_icon_state = "smg"
 	rendering_system = GUN_RENDERING_STATES
 	rendering_count = 1
 	rendering_static_overlay = "smg-stripe"
-	ammo_max = 24
+	ammo_max = 28
+	#warn materials
 
 //* Projectiles *//
 
 /obj/projectile/bullet/nt_expedition/light_sidearm
 	name = "bullet"
-	damage_force = 35
+	damage_force = 30
 	damage_tier = LERP(BULLET_TIER_LOW, BULLET_TIER_MEDIUM, 0.25)
 	armor_penetration = 10
 
@@ -119,6 +121,7 @@
 
 //* SMG *//
 
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm/smg, /nt_expedition/light_smg, "nt-expeditionary-light_smg")
 /obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm/smg
 	name = "machine pistol"
 	desc = "The XNMP Mk.3 \"Buzzer\" machine pistol; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
@@ -133,3 +136,4 @@
 	icon_state = "smg-map"
 	base_icon_state = "smg"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC | MAGAZINE_CLASS_EXTENDED
+	#warn materials

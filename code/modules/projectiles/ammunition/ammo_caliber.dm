@@ -39,6 +39,8 @@ GLOBAL_LIST_INIT(calibers, init_calibers())
  */
 /datum/ammo_caliber
 	abstract_type = /datum/ammo_caliber
+	/// display name, if any; this is allowed to be null
+	var/name
 	/// caliber string
 	var/caliber
 	/// both diameter / length are set, which means we can do dynamic measurements

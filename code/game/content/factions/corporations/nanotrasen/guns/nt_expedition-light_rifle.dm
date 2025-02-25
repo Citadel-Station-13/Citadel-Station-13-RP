@@ -4,6 +4,7 @@
 //* Caliber *//
 
 /datum/ammo_caliber/nt_expedition/light_rifle
+	name = "NT-7.5"
 	caliber = "nt-light-rifle"
 	diameter = 7.5
 	length = 39
@@ -11,7 +12,7 @@
 //* Ammo Casings *//
 
 /obj/item/ammo_casing/nt_expedition/light_rifle
-	name = "ammo casing (NT-7.5-SR)"
+	name = "ammo casing (NT-7.5)"
 	desc = "A standardized 7.5x39mm cartridge for NT Expeditionary kinetics. This one seems to be for lightweight automatics."
 	caliber = /datum/ammo_caliber/nt_expedition/light_rifle
 	projectile_type = /obj/projectile/bullet/nt_expedition/light_rifle
@@ -39,13 +40,13 @@
 	base_icon_state = "magazine"
 	rendering_system = GUN_RENDERING_DISABLED
 	ammo_caliber = /datum/ammo_caliber/nt_expedition/light_rifle
-	ammo_max = 5
 	ammo_preload = /obj/item/ammo_casing/nt_expedition/light_rifle
 
 /obj/item/ammo_magazine/nt_expedition/light_rifle/speedloader
 	name = "speedloader (NT-7.5)"
 	icon_state = "speedloader"
 	base_icon_state = "speedloader"
+	ammo_max = 6
 
 /obj/item/ammo_magazine/nt_expedition/light_rifle/speedloader/update_icon(updates)
 	cut_overlays()

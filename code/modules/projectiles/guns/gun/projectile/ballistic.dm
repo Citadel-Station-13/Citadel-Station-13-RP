@@ -21,12 +21,15 @@
 	projectile_type = /obj/projectile/bullet/pistol/strong	//Only used for chameleon guns
 
 	//* Configuration *//
-
 	/// If set, accepts ammo and magazines of this caliber.
 	var/caliber = /datum/ammo_caliber/a357
 
-	//* Rendering *//
+	//* Interaction *//
+	/// Show caliber on examine.
+	#warn impl
+	var/show_caliber_on_examine = TRUE
 
+	//* Rendering *//
 	/// Render an overlay when magazine is in.
 	///
 	/// todo: mob renderer integration
