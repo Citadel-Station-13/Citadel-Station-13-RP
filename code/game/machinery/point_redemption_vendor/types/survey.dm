@@ -53,7 +53,7 @@
 		new	/datum/point_redemption_item("Defense Equipment - AXHS Gun Case",	/obj/item/storage/lockbox/axhs,						250),
 		new	/datum/point_redemption_item("Conscript Pack",				/obj/item/storage/lockbox/russian,							250),
 		new /datum/point_redemption_item("Extraction Equipment - Fulton Beacon",	/obj/item/fulton_core,							300),
-		new /datum/point_redemption_item("Industrial Equipment - Phoron Bore",	/obj/item/gun/magnetic/matfed,						300),
+		new /datum/point_redemption_item("Industrial Equipment - Phoron Bore",	/obj/item/gun/projectile/magnetic/matfed,						300),
 		new /datum/point_redemption_item("Luxury Shelter Capsule",		/obj/item/survivalcapsule/luxury,							310),
 		new	/datum/point_redemption_item("Colonial Recce Pack",			/obj/item/storage/lockbox/colonial,							350),
 		//uav code is cursed  new /datum/point_redemption_item("UAV - Recon Skimmer",			/obj/item/uav,												400),
