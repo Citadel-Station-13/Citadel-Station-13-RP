@@ -57,7 +57,6 @@
 	damage_force = 5
 	damage_tier = MELEE_TIER_MEDIUM
 	preserve_item = 1
-	origin_tech = list(TECH_COMBAT = 1)
 	attack_verb = list("struck", "hit", "bashed")
 	zoomdevicename = "scope"
 	inhand_default_type = INHAND_DEFAULT_ICON_GUNS
