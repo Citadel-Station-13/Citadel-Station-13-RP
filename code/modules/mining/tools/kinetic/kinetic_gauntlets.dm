@@ -69,7 +69,7 @@
 	if(.)
 		return
 
-/obj/item/kinetic_gauntlets/on_equipped(mob/wearer, slot_id_or_index, inv_op_flags, datum/event_args/actor/actor)
+/obj/item/kinetic_gauntlets/on_inv_equipped(mob/wearer, datum/inventory/inventory, slot_id_or_index, inv_op_flags, datum/event_args/actor/actor)
 	. = ..()
 	if(slot_id_or_index == /datum/inventory_slot/inventory/gloves::id)
 		start_recharge()
@@ -78,7 +78,7 @@
 			combo_tracker.on_continuation_begin = CALLBACK(src, PROC_REF(on_continuation_begin))
 			combo_tracker.on_continuation_end = CALLBACK(src, PROC_REF(on_continuation_end))
 
-/obj/item/kinetic_gauntlets/on_unequipped(mob/wearer, slot_id_or_index, inv_op_flags, datum/event_args/actor/actor)
+/obj/item/kinetic_gauntlets/on_inv_unequipped(mob/wearer, datum/inventory/inventory, slot_id_or_index, inv_op_flags, datum/event_args/actor/actor)
 	. = ..()
 	discharge()
 	QDEL_NULL(combo_tracker)
