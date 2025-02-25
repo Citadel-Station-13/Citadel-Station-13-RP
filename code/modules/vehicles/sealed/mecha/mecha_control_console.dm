@@ -68,6 +68,7 @@
 			stored_data = null
 			return TRUE
 
+// todo: this is on the old path because it isn't converted to any kind of new system yet
 /obj/item/mecha_parts/mecha_tracking
 	name = "Exosuit tracking beacon"
 	desc = "Device used to transmit exosuit data."
