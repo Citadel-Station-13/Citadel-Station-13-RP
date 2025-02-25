@@ -1,4 +1,4 @@
-/obj/item/vehicle_component/equipment/speedboost
+/obj/item/vehicle_component/module/speedboost
 	name = "ripley leg actuator overdrive"
 	desc = "System enhancements and overdrives to make a ripley's legs move faster."
 	icon_state = "tesla"
@@ -10,7 +10,7 @@
 	var/slowdown_multiplier = 0.75	// How much does the exosuit multiply its slowdown by if it's the proper type?
 
 /*
-/obj/item/vehicle_component/equipment/speedboost/attach(obj/vehicle/sealed/mecha/M as obj)
+/obj/item/vehicle_component/module/speedboost/attach(obj/vehicle/sealed/mecha/M as obj)
 	..()
 	if(enable_special)
 		chassis.step_in = 3 // As fast as a gygax without overload. Slower than Ody.
@@ -19,13 +19,13 @@
 	return
 */
 
-/obj/item/vehicle_component/equipment/speedboost/get_step_delay()
+/obj/item/vehicle_component/module/speedboost/get_step_delay()
 	if(enable_special)
 		return -1
 	else
 		return 3
 
-/obj/item/vehicle_component/equipment/speedboost/detach()
+/obj/item/vehicle_component/module/speedboost/detach()
 	chassis.step_in = initial(chassis.step_in)
 	..()
 	return

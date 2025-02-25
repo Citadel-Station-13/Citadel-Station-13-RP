@@ -1,4 +1,4 @@
-/obj/item/vehicle_component/equipment/tool/powertool
+/obj/item/vehicle_component/module/tool/powertool
 	name = "pneumatic wrench"
 	desc = "An exosuit-mounted hydraulic wrench."
 	icon_state = "mecha_wrench"
@@ -13,18 +13,18 @@
 	var/obj/item/my_tool = null
 	var/tooltype = /obj/item/tool/wrench/power
 
-/obj/item/vehicle_component/equipment/tool/powertool/Initialize(mapload)
+/obj/item/vehicle_component/module/tool/powertool/Initialize(mapload)
 	my_tool = new tooltype(src)
 	my_tool.name = name
 	my_tool.anchored = TRUE
 	ADD_TRAIT(my_tool, TRAIT_ITEM_NODROP, GENERIC_TRAIT)
 	return ..()
 
-/obj/item/vehicle_component/equipment/tool/powertool/Destroy()
+/obj/item/vehicle_component/module/tool/powertool/Destroy()
 	QDEL_NULL(my_tool)
 	return ..()
 
-/obj/item/vehicle_component/equipment/tool/powertool/action(var/atom/target)
+/obj/item/vehicle_component/module/tool/powertool/action(var/atom/target)
 	if(!action_checks(target))
 		return FALSE
 
@@ -33,21 +33,21 @@
 
 	target.attackby(my_tool,chassis.occupant_legacy)
 
-/obj/item/vehicle_component/equipment/tool/powertool/prybar
+/obj/item/vehicle_component/module/tool/powertool/prybar
 	name = "pneumatic prybar"
 	desc = "An exosuit-mounted pneumatic prybar."
 	icon_state = "mecha_crowbar"
 	tooltype = /obj/item/tool/crowbar/power
 	ready_sound = 'sound/mecha/gasdisconnected.ogg'
 
-/obj/item/vehicle_component/equipment/tool/powertool/cutter
+/obj/item/vehicle_component/module/tool/powertool/cutter
 	name = "pneumatic cablecutter"
 	desc = "An exosuit-mounted pneumatic cablecutter."
 	icon_state = "mecha_cablecutter"
 	tooltype = /obj/item/tool/wirecutters/power
 	ready_sound = 'sound/mecha/gasdisconnected.ogg'
 
-/obj/item/vehicle_component/equipment/tool/powertool/screwdriver
+/obj/item/vehicle_component/module/tool/powertool/screwdriver
 	name = "pneumatic screwdriver"
 	desc = "An exosuit-mounted pneumatic screwdriver."
 	icon_state = "mecha_screwdriver"

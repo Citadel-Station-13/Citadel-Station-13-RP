@@ -336,7 +336,7 @@
 	can_hold = list(
 		/obj/item/vehicle_part,
 		/obj/item/vehicle_part/micro,
-		/obj/item/vehicle_component/equipment,
+		/obj/item/vehicle_component/module,
 		/obj/item/mecha_parts/mecha_tracking
 		)
 

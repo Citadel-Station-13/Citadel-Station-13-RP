@@ -27,11 +27,11 @@
 
 /obj/vehicle/sealed/mecha/medical/odysseus/loaded/Initialize(mapload)
 	. = ..()
-	var/obj/item/vehicle_component/equipment/ME = new /obj/item/vehicle_component/equipment/tool/sleeper
+	var/obj/item/vehicle_component/module/ME = new /obj/item/vehicle_component/module/tool/sleeper
 	ME.attach(src)
-	ME = new /obj/item/vehicle_component/equipment/tool/sleeper
+	ME = new /obj/item/vehicle_component/module/tool/sleeper
 	ME.attach(src)
-	ME = new /obj/item/vehicle_component/equipment/tool/syringe_gun
+	ME = new /obj/item/vehicle_component/module/tool/syringe_gun
 	ME.attach(src)
 
 //Meant for random spawns.

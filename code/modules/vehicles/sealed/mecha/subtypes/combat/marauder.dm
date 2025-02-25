@@ -38,10 +38,10 @@
 		)
 
 	starting_equipment = list(
-		/obj/item/vehicle_component/equipment/weapon/energy/pulse,
-		/obj/item/vehicle_component/equipment/weapon/ballistic/missile_rack/explosive,
-		/obj/item/vehicle_component/equipment/tesla_energy_relay,
-		/obj/item/vehicle_component/equipment/antiproj_armor_booster
+		/obj/item/vehicle_component/module/weapon/energy/pulse,
+		/obj/item/vehicle_component/module/weapon/ballistic/missile_rack/explosive,
+		/obj/item/vehicle_component/module/tesla_energy_relay,
+		/obj/item/vehicle_component/module/antiproj_armor_booster
 		)
 
 	icon_scale_x = 1.5
@@ -62,11 +62,11 @@
 	max_equip = 5
 
 	starting_equipment = list(
-		/obj/item/vehicle_component/equipment/weapon/ballistic/scattershot,
-		/obj/item/vehicle_component/equipment/weapon/ballistic/missile_rack/explosive,
-		/obj/item/vehicle_component/equipment/tesla_energy_relay,
-		/obj/item/vehicle_component/equipment/antiproj_armor_booster,
-		/obj/item/vehicle_component/equipment/teleporter
+		/obj/item/vehicle_component/module/weapon/ballistic/scattershot,
+		/obj/item/vehicle_component/module/weapon/ballistic/missile_rack/explosive,
+		/obj/item/vehicle_component/module/tesla_energy_relay,
+		/obj/item/vehicle_component/module/antiproj_armor_booster,
+		/obj/item/vehicle_component/module/teleporter
 		)
 
 //Note that is the Mauler

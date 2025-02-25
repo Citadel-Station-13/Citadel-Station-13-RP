@@ -59,10 +59,10 @@
 	max_special_equip = 2
 
 	starting_equipment = list(
-		/obj/item/vehicle_component/equipment/weapon/whisperblade,
-		/obj/item/vehicle_component/equipment/weapon/infernoblade,
-		/obj/item/vehicle_component/equipment/omni_shield/reticence,
-		/obj/item/vehicle_component/equipment/cloak
+		/obj/item/vehicle_component/module/weapon/whisperblade,
+		/obj/item/vehicle_component/module/weapon/infernoblade,
+		/obj/item/vehicle_component/module/omni_shield/reticence,
+		/obj/item/vehicle_component/module/cloak
 		)
 
 /obj/vehicle/sealed/mecha/combat/reticent/reticence/add_cell(var/obj/item/cell/C=null)

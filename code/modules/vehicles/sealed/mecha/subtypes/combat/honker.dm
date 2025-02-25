@@ -57,11 +57,11 @@
 	max_special_equip = 2
 
 	starting_equipment = list(
-		/obj/item/vehicle_component/equipment/weapon/honker,
-		/obj/item/vehicle_component/equipment/weapon/ballistic/missile_rack/grenade/banana,
-		/obj/item/vehicle_component/equipment/weapon/ballistic/scattershot,
-		/obj/item/vehicle_component/equipment/tesla_energy_relay,
-		/obj/item/vehicle_component/equipment/teleporter
+		/obj/item/vehicle_component/module/weapon/honker,
+		/obj/item/vehicle_component/module/weapon/ballistic/missile_rack/grenade/banana,
+		/obj/item/vehicle_component/module/weapon/ballistic/scattershot,
+		/obj/item/vehicle_component/module/tesla_energy_relay,
+		/obj/item/vehicle_component/module/teleporter
 		)
 
 /obj/vehicle/sealed/mecha/combat/honker/cluwne/add_cell(var/obj/item/cell/C=null)

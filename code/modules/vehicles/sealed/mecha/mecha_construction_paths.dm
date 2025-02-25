@@ -2939,13 +2939,13 @@
 //////////////////////
 /datum/construction/mecha/fighter/pinnace_chassis
 	result = "/obj/vehicle/sealed/mecha/combat/fighter/pinnace"
-	steps = list(list("key"=/obj/item/mecha_parts/fighter/part/pinnace_core),//1
-					 list("key"=/obj/item/mecha_parts/fighter/part/pinnace_cockpit),//2
-					 list("key"=/obj/item/mecha_parts/fighter/part/pinnace_main_engine),//3
-					 list("key"=/obj/item/mecha_parts/fighter/part/pinnace_left_engine),//4
-					 list("key"=/obj/item/mecha_parts/fighter/part/pinnace_right_engine),//5
-					 list("key"=/obj/item/mecha_parts/fighter/part/pinnace_left_wing),//6
-					 list("key"=/obj/item/mecha_parts/fighter/part/pinnace_right_wing)//final
+	steps = list(list("key"=/obj/item/vehicle_chassis/part/pinnace_core),//1
+					 list("key"=/obj/item/vehicle_chassis/part/pinnace_cockpit),//2
+					 list("key"=/obj/item/vehicle_chassis/part/pinnace_main_engine),//3
+					 list("key"=/obj/item/vehicle_chassis/part/pinnace_left_engine),//4
+					 list("key"=/obj/item/vehicle_chassis/part/pinnace_right_engine),//5
+					 list("key"=/obj/item/vehicle_chassis/part/pinnace_left_wing),//6
+					 list("key"=/obj/item/vehicle_chassis/part/pinnace_right_wing)//final
 					)
 
 /datum/construction/mecha/fighter/pinnace_chassis/custom_action(step, obj/item/I, mob/user)
@@ -3222,13 +3222,13 @@
 //////////////////////
 /datum/construction/mecha/fighter/baron_chassis
 	result = "/obj/vehicle/sealed/mecha/combat/fighter/baron"
-	steps = list(list("key"=/obj/item/mecha_parts/fighter/part/baron_core),//1
-					 list("key"=/obj/item/mecha_parts/fighter/part/baron_cockpit),//2
-					 list("key"=/obj/item/mecha_parts/fighter/part/baron_main_engine),//3
-					 list("key"=/obj/item/mecha_parts/fighter/part/baron_left_engine),//4
-					 list("key"=/obj/item/mecha_parts/fighter/part/baron_right_engine),//5
-					 list("key"=/obj/item/mecha_parts/fighter/part/baron_left_wing),//6
-					 list("key"=/obj/item/mecha_parts/fighter/part/baron_right_wing)//final
+	steps = list(list("key"=/obj/item/vehicle_chassis/part/baron_core),//1
+					 list("key"=/obj/item/vehicle_chassis/part/baron_cockpit),//2
+					 list("key"=/obj/item/vehicle_chassis/part/baron_main_engine),//3
+					 list("key"=/obj/item/vehicle_chassis/part/baron_left_engine),//4
+					 list("key"=/obj/item/vehicle_chassis/part/baron_right_engine),//5
+					 list("key"=/obj/item/vehicle_chassis/part/baron_left_wing),//6
+					 list("key"=/obj/item/vehicle_chassis/part/baron_right_wing)//final
 					)
 
 /datum/construction/mecha/fighter/baron_chassis/custom_action(step, obj/item/I, mob/user)
@@ -3505,13 +3505,13 @@
 //////////////////////
 /datum/construction/mecha/fighter/duke_chassis
 	result = "/obj/vehicle/sealed/mecha/combat/fighter/duke"
-	steps = list(list("key"=/obj/item/mecha_parts/fighter/part/duke_core),//1
-					 list("key"=/obj/item/mecha_parts/fighter/part/duke_cockpit),//2
-					 list("key"=/obj/item/mecha_parts/fighter/part/duke_main_engine),//3
-					 list("key"=/obj/item/mecha_parts/fighter/part/duke_left_engine),//4
-					 list("key"=/obj/item/mecha_parts/fighter/part/duke_right_engine),//5
-					 list("key"=/obj/item/mecha_parts/fighter/part/duke_left_wing),//6
-					 list("key"=/obj/item/mecha_parts/fighter/part/duke_right_wing)//final
+	steps = list(list("key"=/obj/item/vehicle_chassis/part/duke_core),//1
+					 list("key"=/obj/item/vehicle_chassis/part/duke_cockpit),//2
+					 list("key"=/obj/item/vehicle_chassis/part/duke_main_engine),//3
+					 list("key"=/obj/item/vehicle_chassis/part/duke_left_engine),//4
+					 list("key"=/obj/item/vehicle_chassis/part/duke_right_engine),//5
+					 list("key"=/obj/item/vehicle_chassis/part/duke_left_wing),//6
+					 list("key"=/obj/item/vehicle_chassis/part/duke_right_wing)//final
 					)
 
 /datum/construction/mecha/fighter/duke_chassis/custom_action(step, obj/item/I, mob/user)

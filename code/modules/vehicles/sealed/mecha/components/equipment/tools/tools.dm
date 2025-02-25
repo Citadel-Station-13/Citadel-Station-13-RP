@@ -1,2 +1,2 @@
-/obj/item/vehicle_component/equipment/tool
+/obj/item/vehicle_component/module/tool
 	equip_type = EQUIP_UTILITY

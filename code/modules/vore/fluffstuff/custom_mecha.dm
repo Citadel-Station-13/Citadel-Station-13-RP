@@ -9,9 +9,9 @@
 
 /obj/vehicle/sealed/mecha/combat/phazon/scree/Initialize(mapload)
 	. = ..()
-	var/obj/item/vehicle_component/equipment/ME = new /obj/item/vehicle_component/equipment/weapon/energy/taser
+	var/obj/item/vehicle_component/module/ME = new /obj/item/vehicle_component/module/weapon/energy/taser
 	ME.attach(src)
-	ME = new /obj/item/vehicle_component/equipment/tesla_energy_relay
+	ME = new /obj/item/vehicle_component/module/tesla_energy_relay
 	ME.attach(src)
 
 /obj/effect/decal/mecha_wreckage/phazon/scree

@@ -1,4 +1,4 @@
-/obj/item/vehicle_component/equipment/cloak
+/obj/item/vehicle_component/module/cloak
 	name = "cloaking device"
 	desc = "Integrated cloaking system. High power usage, but does render you invisible to the naked eye. Doesn't prevent noise, however."
 	icon_state = "tesla"
@@ -11,27 +11,27 @@
 
 	var/datum/global_iterator/mecha_cloak/cloak_iterator
 
-/obj/item/vehicle_component/equipment/cloak/Initialize(mapload)
+/obj/item/vehicle_component/module/cloak/Initialize(mapload)
 	. = ..()
 	cloak_iterator = new /datum/global_iterator/mecha_cloak(list(src),0)
 	cloak_iterator.set_delay(equip_cooldown)
 
-/obj/item/vehicle_component/equipment/cloak/Destroy()
+/obj/item/vehicle_component/module/cloak/Destroy()
 	QDEL_NULL(cloak_iterator)
 	return ..()
 
-/obj/item/vehicle_component/equipment/cloak/detach()
+/obj/item/vehicle_component/module/cloak/detach()
 	QDEL_NULL(cloak_iterator)
 	if(!equip_ready) //We were running
 		stop_cloak()
 	return ..()
 
-/obj/item/vehicle_component/equipment/cloak/get_equip_info()
+/obj/item/vehicle_component/module/cloak/get_equip_info()
 	if(!chassis)
 		return
 	return "<span style=\"color:[equip_ready ? "#0f0":"#f00"];\">*</span>&nbsp;[src.name] - <a href='?src=\ref[src];toggle_cloak=1'>[equip_ready ? "A" : "Dea"]ctivate</a>"
 
-/obj/item/vehicle_component/equipment/cloak/Topic(href, href_list)
+/obj/item/vehicle_component/module/cloak/Topic(href, href_list)
 	..()
 	if(href_list["toggle_cloak"])
 		if(equip_ready)
@@ -40,7 +40,7 @@
 			stop_cloak()
 	return
 
-/obj/item/vehicle_component/equipment/cloak/proc/start_cloak()
+/obj/item/vehicle_component/module/cloak/proc/start_cloak()
 	if(chassis)
 		chassis.cloak()
 	log_message("Activated.")
@@ -48,7 +48,7 @@
 	set_ready_state(0)
 	playsound(src, 'sound/effects/EMPulse.ogg', 100, 1)
 
-/obj/item/vehicle_component/equipment/cloak/proc/stop_cloak()
+/obj/item/vehicle_component/module/cloak/proc/stop_cloak()
 	if(chassis)
 		chassis.uncloak()
 	log_message("Deactivated.")
@@ -57,7 +57,7 @@
 	playsound(src, 'sound/effects/EMPulse.ogg', 100, 1)
 
 // These things are so silly
-/datum/global_iterator/mecha_cloak/process(var/obj/item/vehicle_component/equipment/cloak/cloak)
+/datum/global_iterator/mecha_cloak/process(var/obj/item/vehicle_component/module/cloak/cloak)
 	//Removed from chassis
 	if(!cloak.chassis)
 		stop()

@@ -704,7 +704,7 @@
 	desc = "If you're seeing this, someone did a dum-dum."
 
 /obj/item/weldingtool/electric/mounted/exosuit
-	var/obj/item/vehicle_component/equipment/equip_mount = null
+	var/obj/item/vehicle_component/module/equip_mount = null
 	flame_intensity = 1
 	eye_safety_modifier = 2
 	always_process = TRUE
@@ -712,7 +712,7 @@
 /obj/item/weldingtool/electric/mounted/exosuit/Initialize(mapload)
 	. = ..()
 
-	if(istype(loc, /obj/item/vehicle_component/equipment))
+	if(istype(loc, /obj/item/vehicle_component/module))
 		equip_mount = loc
 
 /obj/item/weldingtool/electric/mounted/exosuit/process()

@@ -117,16 +117,16 @@
 
 /obj/vehicle/sealed/mecha/combat/honker/cluwne/Initialize(mapload)
 	. = ..()
-	var/obj/item/vehicle_component/equipment/ME = new /obj/item/vehicle_component/equipment/weapon/energy/pulse
+	var/obj/item/vehicle_component/module/ME = new /obj/item/vehicle_component/module/weapon/energy/pulse
 	ME.attach(src)
-	ME = new /obj/item/vehicle_component/equipment/weapon/ballistic/missile_rack/explosive
+	ME = new /obj/item/vehicle_component/module/weapon/ballistic/missile_rack/explosive
 	ME.attach(src)
-	ME = new /obj/item/vehicle_component/equipment/weapon/ballistic/missile_rack/banana_mortar
+	ME = new /obj/item/vehicle_component/module/weapon/ballistic/missile_rack/banana_mortar
 	ME.attach(src)
-	ME = new /obj/item/vehicle_component/equipment/weapon/honker
+	ME = new /obj/item/vehicle_component/module/weapon/honker
 	ME.attach(src)
 
-/obj/item/vehicle_component/equipment/weapon/ballistic/missile_rack/banana_mortar
+/obj/item/vehicle_component/module/weapon/ballistic/missile_rack/banana_mortar
 	name = "Banana Mortar"
 	icon = 'icons/mecha/mecha_equipment_vr.dmi'
 	icon_state = "mecha_bananamrtr"
@@ -142,7 +142,7 @@
 			return 0
 		return ..()
 
-/obj/item/vehicle_component/equipment/weapon/honker
+/obj/item/vehicle_component/module/weapon/honker
 	name = "\improper HoNkER BlAsT 5000"
 	icon = 'icons/mecha/mecha_equipment_vr.dmi'
 	icon_state = "mecha_honker"

@@ -1,4 +1,4 @@
-/obj/item/vehicle_component/equipment/weapon/ballistic/lmg
+/obj/item/vehicle_component/module/weapon/ballistic/lmg
 	name = "\improper Ultra AC 2"
 	desc = "A superior version of the standard Hephaestus Autocannon MK2 design."
 	icon_state = "mecha_uac2"
@@ -11,7 +11,7 @@
 	projectile_energy_cost = 20
 	fire_cooldown = 2
 
-/obj/item/vehicle_component/equipment/weapon/ballistic/lmg_heavy
+/obj/item/vehicle_component/module/weapon/ballistic/lmg_heavy
 	name = "\improper AC 10"
 	desc = "The original in anti-mech firepower, the standard Hephaestus Autocannon MK10 design fires AP slugs in order to damage other heavy armor suits. This does mean its rate between bursts is longer than most."
 	icon_state = "mecha_uac2"
@@ -24,7 +24,7 @@
 	projectile_energy_cost = 60
 	fire_cooldown = 2
 
-/obj/item/vehicle_component/equipment/weapon/ballistic/gauss_rifle
+/obj/item/vehicle_component/module/weapon/ballistic/gauss_rifle
 	name = "\improper gauss rifle"
 	desc = "The current standard in non-laser, anti-armor firepower, this weapon is the same as those mounted on light tanks for their primary weapon. Fires a single nickle-iron slug at high speed. Requires a long charge time between shots. "
 	icon_state = "mecha_uac2-rig"
@@ -35,7 +35,7 @@
 	projectiles_per_shot = 1
 	projectile_energy_cost = 100
 
-/obj/item/vehicle_component/equipment/weapon/ballistic/lmg/rigged
+/obj/item/vehicle_component/module/weapon/ballistic/lmg/rigged
 	name = "jury-rigged machinegun"
 	desc = "The cross between a jackhammer and a whole lot of zipguns."
 	icon_state = "mecha_uac2-rig"

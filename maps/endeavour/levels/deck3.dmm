@@ -22419,9 +22419,9 @@
 "oOf" = (
 /obj/machinery/camera/network/prison,
 /obj/structure/table/reinforced,
-/obj/item/vehicle_component/equipment/weapon/energy/phase,
-/obj/item/vehicle_component/equipment/weapon/energy/phase,
-/obj/item/vehicle_component/equipment/weapon/energy/phase,
+/obj/item/vehicle_component/module/weapon/energy/phase,
+/obj/item/vehicle_component/module/weapon/energy/phase,
+/obj/item/vehicle_component/module/weapon/energy/phase,
 /obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor/tiled,
 /area/security/hanger)
@@ -32701,9 +32701,9 @@
 /area/endeavour/hallway/d3aftmaint)
 "vvV" = (
 /obj/structure/table/reinforced,
-/obj/item/vehicle_component/equipment/weapon/energy/microtaser,
-/obj/item/vehicle_component/equipment/weapon/energy/taser,
-/obj/item/vehicle_component/equipment/weapon/energy/taser,
+/obj/item/vehicle_component/module/weapon/energy/microtaser,
+/obj/item/vehicle_component/module/weapon/energy/taser,
+/obj/item/vehicle_component/module/weapon/energy/taser,
 /turf/simulated/floor/tiled,
 /area/security/hanger)
 "vvX" = (

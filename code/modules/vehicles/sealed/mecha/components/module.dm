@@ -8,7 +8,7 @@
 #define EQUIP_MICRO_UTILITY	"micro_utility"
 #define EQUIP_MICRO_WEAPON	"micro_weapon"
 
-/obj/item/vehicle_component/equipment
+/obj/item/vehicle_component/module
 	name = "mecha equipment"
 	icon = 'icons/mecha/mecha_equipment.dmi'
 	icon_state = "mecha_equip"
@@ -35,7 +35,7 @@
 	///Does the component slow/speed up the suit?
 	var/step_delay = 0
 
-/obj/item/vehicle_component/equipment/proc/do_after_cooldown(target=1)
+/obj/item/vehicle_component/module/proc/do_after_cooldown(target=1)
 	sleep(equip_cooldown)
 	set_ready_state(1)
 	if(ready_sound) //Kind of like the kinetic accelerator.
@@ -44,28 +44,28 @@
 		return TRUE
 	return FALSE
 
-/obj/item/vehicle_component/equipment/examine(mob/user, dist)
+/obj/item/vehicle_component/module/examine(mob/user, dist)
 	. = ..()
 	. += SPAN_NOTICE("[src] will fill [equip_type?"a [equip_type]":"any"] slot.")
 
-/obj/item/vehicle_component/equipment/proc/add_equip_overlay(obj/vehicle/sealed/mecha/M as obj)
+/obj/item/vehicle_component/module/proc/add_equip_overlay(obj/vehicle/sealed/mecha/M as obj)
 	return
 
-/obj/item/vehicle_component/equipment/proc/update_chassis_page()
+/obj/item/vehicle_component/module/proc/update_chassis_page()
 	if(chassis)
 		send_byjax(chassis.occupant_legacy,"exosuit.browser","eq_list",chassis.get_equipment_list())
 		send_byjax(chassis.occupant_legacy,"exosuit.browser","equipment_menu",chassis.get_equipment_menu(),"dropdowns")
 		return TRUE
 	return
 
-/obj/item/vehicle_component/equipment/proc/update_equip_info()
+/obj/item/vehicle_component/module/proc/update_equip_info()
 	if(chassis)
 		send_byjax(chassis.occupant_legacy,"exosuit.browser","\ref[src]",get_equip_info())
 		return TRUE
 	return
 
 ///Missiles detonating, teleporter creating singularity?
-/obj/item/vehicle_component/equipment/proc/destroy()
+/obj/item/vehicle_component/module/proc/destroy()
 	if(chassis)
 		if(equip_type)
 			if(equip_type == EQUIP_HULL)
@@ -94,7 +94,7 @@
 		src.update_chassis_page()
 		chassis.occupant_message(SPAN_DANGER("The [src] is destroyed!"))
 		chassis.log_append_to_last("[src] is destroyed.",1)
-		if(istype(src, /obj/item/vehicle_component/equipment/weapon))//Gun
+		if(istype(src, /obj/item/vehicle_component/module/weapon))//Gun
 			switch(chassis.mech_faction)
 				if(MECH_FACTION_NT)
 					src.chassis.occupant_legacy << sound('sound/mecha/weapdestrnano.ogg',volume=70)
@@ -114,22 +114,22 @@
 		qdel(src)
 	return
 
-/obj/item/vehicle_component/equipment/proc/critfail()
+/obj/item/vehicle_component/module/proc/critfail()
 	if(chassis)
 		log_message("Critical failure",1)
 	return
 
-/obj/item/vehicle_component/equipment/proc/get_equip_info()
+/obj/item/vehicle_component/module/proc/get_equip_info()
 	if(!chassis) return
 	return "<span style=\"color:[equip_ready?"#0f0":"#f00"];\">*</span>&nbsp;[chassis.selected==src?"<b>":"<a href='?src=\ref[chassis];select_equip=\ref[src]'>"][src.name][chassis.selected==src?"</b>":"</a>"]"
 
-/obj/item/vehicle_component/equipment/proc/is_ranged()//add a distance restricted equipment. Why not?
+/obj/item/vehicle_component/module/proc/is_ranged()//add a distance restricted equipment. Why not?
 	return range&RANGED
 
-/obj/item/vehicle_component/equipment/proc/is_melee()
+/obj/item/vehicle_component/module/proc/is_melee()
 	return range&MELEE
 
-/obj/item/vehicle_component/equipment/proc/enable_special_checks(atom/target)
+/obj/item/vehicle_component/module/proc/enable_special_checks(atom/target)
 	if(ispath(required_type))
 		return istype(target, required_type)
 
@@ -138,7 +138,7 @@
 			return TRUE
 	return FALSE
 
-/obj/item/vehicle_component/equipment/proc/action_checks(atom/target)
+/obj/item/vehicle_component/module/proc/action_checks(atom/target)
 	if(!target)
 		return FALSE
 	if(!chassis)
@@ -149,14 +149,14 @@
 		return FALSE
 	return TRUE
 
-/obj/item/vehicle_component/equipment/proc/action(atom/target)
+/obj/item/vehicle_component/module/proc/action(atom/target)
 	return
 
-/obj/item/vehicle_component/equipment/proc/can_attach(obj/vehicle/sealed/mecha/M as obj)
+/obj/item/vehicle_component/module/proc/can_attach(obj/vehicle/sealed/mecha/M as obj)
 	//if(M.equipment.len >= M.max_equip)
 	//	return FALSE
 	if(!allow_duplicate)
-		for(var/obj/item/vehicle_component/equipment/ME in M.equipment) //Exact duplicate components aren't allowed.
+		for(var/obj/item/vehicle_component/module/ME in M.equipment) //Exact duplicate components aren't allowed.
 			if(ME.type == src.type)
 				return FALSE
 	if(equip_type == EQUIP_HULL && M.hull_equipment.len < M.max_hull_equip)
@@ -184,7 +184,7 @@
 	*/
 	return FALSE
 
-/obj/item/vehicle_component/equipment/proc/attach(obj/vehicle/sealed/mecha/M as obj)
+/obj/item/vehicle_component/module/proc/attach(obj/vehicle/sealed/mecha/M as obj)
 	//M.equipment += src
 	var/has_equipped = FALSE
 	if(equip_type == EQUIP_HULL && M.hull_equipment.len < M.max_hull_equip && !has_equipped)
@@ -220,7 +220,7 @@
 	src.update_chassis_page()
 	return
 
-/obj/item/vehicle_component/equipment/proc/detach(atom/moveto=null)
+/obj/item/vehicle_component/module/proc/detach(atom/moveto=null)
 	moveto = moveto || get_turf(chassis)
 	if(src.forceMove(moveto))
 		chassis.equipment -= src
@@ -248,33 +248,33 @@
 	enable_special = FALSE
 	return
 
-/obj/item/vehicle_component/equipment/Topic(href,href_list)
+/obj/item/vehicle_component/module/Topic(href,href_list)
 	if(href_list["detach"])
 		src.detach()
 	return
 
-/obj/item/vehicle_component/equipment/proc/set_ready_state(state)
+/obj/item/vehicle_component/module/proc/set_ready_state(state)
 	equip_ready = state
 	if(chassis)
 		send_byjax(chassis.occupant_legacy,"exosuit.browser","\ref[src]",src.get_equip_info())
 	return
 
-/obj/item/vehicle_component/equipment/proc/occupant_message(message)
+/obj/item/vehicle_component/module/proc/occupant_message(message)
 	if(chassis)
 		chassis.occupant_message("[icon2html(src, world)] [message]")
 	return
 
-/obj/item/vehicle_component/equipment/proc/log_message(message)
+/obj/item/vehicle_component/module/proc/log_message(message)
 	if(chassis)
 		chassis.log_message("<i>[src]:</i> [message]")
 	return
 
 ///Allows mech equipment to do an action upon the mech moving
-/obj/item/vehicle_component/equipment/proc/MoveAction()
+/obj/item/vehicle_component/module/proc/MoveAction()
 	return
 
 ///Equipment returns its slowdown or speedboost.
-/obj/item/vehicle_component/equipment/proc/get_step_delay()
+/obj/item/vehicle_component/module/proc/get_step_delay()
 	return step_delay
 
 //* Chassis - Physicality *//
@@ -285,5 +285,5 @@
  * * This is usually our mech.
  * * If we are not mounted, this always fails.
  */
-/obj/item/vehicle_component/equipment/proc/sufficiently_adjacent(atom/entity)
+/obj/item/vehicle_component/module/proc/sufficiently_adjacent(atom/entity)
 	return chassis?.sufficiently_adjacent(entity)

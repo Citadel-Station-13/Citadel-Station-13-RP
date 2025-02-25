@@ -1,4 +1,4 @@
-/obj/item/vehicle_component/equipment/antiproj_armor_booster
+/obj/item/vehicle_component/module/antiproj_armor_booster
 	name = "\improper RW armor booster"
 	desc = "Ranged-weaponry armor booster. Boosts exosuit armor against ranged attacks. Completely blocks taser shots, but requires energy to operate."
 	icon_state = "mecha_abooster_proj"
@@ -13,7 +13,7 @@
 
 	equip_type = EQUIP_HULL
 
-/obj/item/vehicle_component/equipment/antiproj_armor_booster/handle_projectile_contact(var/obj/projectile/Proj, var/inc_damage)
+/obj/item/vehicle_component/module/antiproj_armor_booster/handle_projectile_contact(var/obj/projectile/Proj, var/inc_damage)
 	if(!action_checks(src))
 		return inc_damage
 	if(prob(chassis.deflect_chance*deflect_coeff))
@@ -29,7 +29,7 @@
 		do_after_cooldown()
 	return max(0, inc_damage)
 
-/obj/item/vehicle_component/equipment/antiproj_armor_booster/handle_ranged_contact(var/obj/A, var/inc_damage = 0)
+/obj/item/vehicle_component/module/antiproj_armor_booster/handle_ranged_contact(var/obj/A, var/inc_damage = 0)
 	if(!action_checks(A))
 		return inc_damage
 	if(prob(chassis.deflect_chance*deflect_coeff))
@@ -45,30 +45,30 @@
 		do_after_cooldown()
 	return max(0, inc_damage)
 
-/obj/item/vehicle_component/equipment/antiproj_armor_booster/get_equip_info()
+/obj/item/vehicle_component/module/antiproj_armor_booster/get_equip_info()
 	if(!chassis) return
 	return "<span style=\"color:[equip_ready?"#0f0":"#f00"];\">*</span>&nbsp;[src.name]"
 
 /*
-/obj/item/vehicle_component/equipment/antiproj_armor_booster/can_attach(obj/vehicle/sealed/mecha/M as obj)
+/obj/item/vehicle_component/module/antiproj_armor_booster/can_attach(obj/vehicle/sealed/mecha/M as obj)
 	if(..())
 		if(!M.proc_res["dynbulletdamage"] && !M.proc_res["dynhitby"])
 			return 1
 	return 0
 
-/obj/item/vehicle_component/equipment/antiproj_armor_booster/attach(obj/vehicle/sealed/mecha/M as obj)
+/obj/item/vehicle_component/module/antiproj_armor_booster/attach(obj/vehicle/sealed/mecha/M as obj)
 	..()
 	chassis.proc_res["dynbulletdamage"] = src
 	chassis.proc_res["dynhitby"] = src
 	return
 
-/obj/item/vehicle_component/equipment/antiproj_armor_booster/detach()
+/obj/item/vehicle_component/module/antiproj_armor_booster/detach()
 	chassis.proc_res["dynbulletdamage"] = null
 	chassis.proc_res["dynhitby"] = null
 	..()
 	return
 
-/obj/item/vehicle_component/equipment/antiproj_armor_booster/proc/dynbulletdamage(var/obj/projectile/Proj)
+/obj/item/vehicle_component/module/antiproj_armor_booster/proc/dynbulletdamage(var/obj/projectile/Proj)
 	if(istype(Proj, /obj/projectile/test))
 		return // Don't care about test projectiles, just what comes after them
 	if(!action_checks(src))
@@ -86,7 +86,7 @@
 	do_after_cooldown()
 	return
 
-/obj/item/vehicle_component/equipment/antiproj_armor_booster/proc/dynhitby(atom/movable/A)
+/obj/item/vehicle_component/module/antiproj_armor_booster/proc/dynhitby(atom/movable/A)
 	if(!action_checks(A))
 		return chassis.dynhitby(A)
 	if(prob(chassis.deflect_chance*deflect_coeff) || istype(A, /mob/living) || istype(A, /obj/item/mecha_parts/mecha_tracking))
