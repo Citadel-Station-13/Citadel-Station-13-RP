@@ -1,10 +1,10 @@
 /datum/construction/mecha/polecat_chassis
 	steps = list(
-		list("key"=/obj/item/mecha_parts/micro/part/polecat_torso),//1
-		list("key"=/obj/item/mecha_parts/micro/part/polecat_left_arm),//2
-		list("key"=/obj/item/mecha_parts/micro/part/polecat_right_arm),//3
-		list("key"=/obj/item/mecha_parts/micro/part/polecat_left_leg),//4
-		list("key"=/obj/item/mecha_parts/micro/part/polecat_right_leg),//5
+		list("key"=/obj/item/mecha_parts/part/micro/polecat_torso),//1
+		list("key"=/obj/item/mecha_parts/part/micro/polecat_left_arm),//2
+		list("key"=/obj/item/mecha_parts/part/micro/polecat_right_arm),//3
+		list("key"=/obj/item/mecha_parts/part/micro/polecat_left_leg),//4
+		list("key"=/obj/item/mecha_parts/part/micro/polecat_right_leg),//5
 	)
 
 /datum/construction/mecha/polecat_chassis/custom_action(step, atom/used_atom, mob/user)
@@ -40,7 +40,7 @@
 			"backkey"=IS_CROWBAR,
 			"desc"="External armor is installed."),
 		//3
-		list("key"=/obj/item/mecha_parts/micro/part/polecat_armour,
+		list("key"=/obj/item/mecha_parts/part/micro/polecat_armour,
 			"backkey"=/obj/item/weldingtool,
 			"desc"="Internal armor is welded."),
 		//4
@@ -264,7 +264,7 @@
 				holder.icon_state = "polecat19"
 			else
 				user.visible_message("[user] pries external armor layer from [holder].", "You pry the external armor layer from [holder].") // Rykka does smol grammar fix.
-				new /obj/item/mecha_parts/micro/part/polecat_armour(get_turf(holder))// Actually gives you the polecat's armored plates back instead of plasteel.
+				new /obj/item/mecha_parts/part/micro/polecat_armour(get_turf(holder))// Actually gives you the polecat's armored plates back instead of plasteel.
 				holder.icon_state = "polecat17"
 		if(1)
 			if(diff==FORWARD)
@@ -281,11 +281,11 @@
 
 /datum/construction/mecha/gopher_chassis
 	steps = list(
-		list("key"=/obj/item/mecha_parts/micro/part/gopher_torso),//1
-		list("key"=/obj/item/mecha_parts/micro/part/gopher_left_arm),//2
-		list("key"=/obj/item/mecha_parts/micro/part/gopher_right_arm),//3
-		list("key"=/obj/item/mecha_parts/micro/part/gopher_left_leg),//4
-		list("key"=/obj/item/mecha_parts/micro/part/gopher_right_leg),//5
+		list("key"=/obj/item/mecha_parts/part/micro/gopher_torso),//1
+		list("key"=/obj/item/mecha_parts/part/micro/gopher_left_arm),//2
+		list("key"=/obj/item/mecha_parts/part/micro/gopher_right_arm),//3
+		list("key"=/obj/item/mecha_parts/part/micro/gopher_left_leg),//4
+		list("key"=/obj/item/mecha_parts/part/micro/gopher_right_leg),//5
 	)
 
 /datum/construction/mecha/gopher_chassis/custom_action(step, atom/used_atom, mob/user)
@@ -488,11 +488,11 @@
 
 /datum/construction/mecha/weasel_chassis
 	steps = list(
-		list("key"=/obj/item/mecha_parts/micro/part/weasel_torso),//1
-		list("key"=/obj/item/mecha_parts/micro/part/weasel_head),//2
-		list("key"=/obj/item/mecha_parts/micro/part/weasel_left_arm),//3
-		list("key"=/obj/item/mecha_parts/micro/part/weasel_right_arm),//4
-		list("key"=/obj/item/mecha_parts/micro/part/weasel_tri_leg),//5
+		list("key"=/obj/item/mecha_parts/part/micro/weasel_torso),//1
+		list("key"=/obj/item/mecha_parts/part/micro/weasel_head),//2
+		list("key"=/obj/item/mecha_parts/part/micro/weasel_left_arm),//3
+		list("key"=/obj/item/mecha_parts/part/micro/weasel_right_arm),//4
+		list("key"=/obj/item/mecha_parts/part/micro/weasel_tri_leg),//5
 	)
 
 /datum/construction/reversible/mecha/gopher/custom_action(step, atom/used_atom, mob/user)
