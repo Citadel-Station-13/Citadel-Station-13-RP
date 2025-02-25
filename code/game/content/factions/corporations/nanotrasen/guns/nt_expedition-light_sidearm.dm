@@ -114,7 +114,6 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/light_sidear
 		A small compensator and internal recoil dampeners make the increase in felt recoil negligible,
 		while its magazine gives it enough ammunition for those in a pinch to take chance shots.
 	"} + "<br>"
-	load_method = SINGLE_CASING | MAGAZINE
 	icon_state = "pistol-map"
 	base_icon_state = "pistol"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
@@ -132,7 +131,6 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/nt_expediti
 		combat weapon, but it will certainly raise the alarm when its shrill report sounds in
 		the dead of night.
 	"} + "<br>"
-	load_method = SINGLE_CASING | MAGAZINE
 	icon_state = "smg-map"
 	base_icon_state = "smg"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC | MAGAZINE_CLASS_EXTENDED

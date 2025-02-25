@@ -18,7 +18,7 @@
 
 	load_method = MAGAZINE //Nyeh heh hehhh.
 	magazine_type = null
-	allowed_magazines = list(/obj/item/ammo_magazine/microbattery)
+	allowed_magazines = list(/obj/item/microbattery_magazine)
 	caliber = /datum/ammo_caliber/microbattery
 	handle_casings = HOLD_CASINGS //Don't eject batteries!
 	recoil = 0
@@ -28,12 +28,12 @@
 
 /obj/item/gun/projectile/ballistic/microbattery/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	if(chambered && ammo_magazine)
-		var/obj/item/ammo_casing/microbattery/batt = chambered
+		var/obj/item/microbattery_casing/batt = chambered
 		if(batt.shots_left)
 			return new chambered.projectile_type()
 		else
 			for(var/B in ammo_magazine.ammo_internal)
-				var/obj/item/ammo_casing/microbattery/other_batt = B
+				var/obj/item/microbattery_casing/other_batt = B
 				if(istype(other_batt,chambered.type) && other_batt.shots_left)
 					switch_to(other_batt)
 					return new chambered.projectile_type()
@@ -45,13 +45,13 @@
 	if(!chambered)
 		return
 
-	var/obj/item/ammo_casing/microbattery/batt = chambered
+	var/obj/item/microbattery_casing/batt = chambered
 
 	charge_left = batt.shots_left
 	max_charge = initial(batt.shots_left)
 	if(ammo_magazine) //Crawl to find more
 		for(var/B in ammo_magazine.ammo_internal)
-			var/obj/item/ammo_casing/microbattery/bullet = B
+			var/obj/item/microbattery_casing/bullet = B
 			if(istype(bullet,batt.type))
 				charge_left += bullet.shots_left
 				max_charge += initial(bullet.shots_left)
@@ -81,7 +81,7 @@
 
 	for(var/index in 1 to ammo_internal.len)
 		var/true_index = ((our_slot + index - 1) % ammo_internal.len) + 1 // Stupid ONE BASED lists!
-		var/obj/item/ammo_casing/microbattery/next_batt = ammo_internal[true_index]
+		var/obj/item/microbattery_casing/next_batt = ammo_internal[true_index]
 		if(chambered != next_batt && !istype(next_batt, chambered.type))
 			switch_to(next_batt)
 			break
@@ -103,7 +103,7 @@
 	if(!chambered)
 		return
 
-	var/obj/item/ammo_casing/microbattery/batt = chambered
+	var/obj/item/microbattery_casing/batt = chambered
 	var/batt_color = batt.type_color //Used many times
 
 	//Mode bar
@@ -136,17 +136,17 @@
 
 /obj/item/storage/secure/briefcase/nsfw_pack_hybrid/legacy_spawn_contents()
 	new /obj/item/gun/projectile/ballistic/microbattery(src)
-	new /obj/item/ammo_magazine/microbattery/advanced(src)
-	new /obj/item/ammo_casing/microbattery/combat/stun(src)
-	new /obj/item/ammo_casing/microbattery/combat/stun(src)
-	new /obj/item/ammo_casing/microbattery/combat/stun(src)
-	new /obj/item/ammo_casing/microbattery/combat/net(src)
-	new /obj/item/ammo_casing/microbattery/combat/net(src)
-	new /obj/item/ammo_casing/microbattery/medical/brute3(src)
-	new /obj/item/ammo_casing/microbattery/medical/burn3(src)
-	new /obj/item/ammo_casing/microbattery/medical/stabilize2(src)
-	new /obj/item/ammo_casing/microbattery/medical/toxin3(src)
-	new /obj/item/ammo_casing/microbattery/medical/omni3(src)
+	new /obj/item/microbattery_magazine/advanced(src)
+	new /obj/item/microbattery_casing/combat/stun(src)
+	new /obj/item/microbattery_casing/combat/stun(src)
+	new /obj/item/microbattery_casing/combat/stun(src)
+	new /obj/item/microbattery_casing/combat/net(src)
+	new /obj/item/microbattery_casing/combat/net(src)
+	new /obj/item/microbattery_casing/medical/brute3(src)
+	new /obj/item/microbattery_casing/medical/burn3(src)
+	new /obj/item/microbattery_casing/medical/stabilize2(src)
+	new /obj/item/microbattery_casing/medical/toxin3(src)
+	new /obj/item/microbattery_casing/medical/omni3(src)
 
 /obj/item/storage/secure/briefcase/nsfw_pack_hybrid_combat
 	name = "military cell-loaded gun kit"
@@ -156,14 +156,14 @@
 
 /obj/item/storage/secure/briefcase/nsfw_pack_hybrid_combat/legacy_spawn_contents()
 	new /obj/item/gun/projectile/ballistic/microbattery(src)
-	new /obj/item/ammo_magazine/microbattery/advanced(src)
-	new /obj/item/ammo_casing/microbattery/combat/shotstun(src)
-	new /obj/item/ammo_casing/microbattery/combat/shotstun(src)
-	new /obj/item/ammo_casing/microbattery/combat/lethal(src)
-	new /obj/item/ammo_casing/microbattery/combat/lethal(src)
-	new /obj/item/ammo_casing/microbattery/combat/lethal(src)
-	new /obj/item/ammo_casing/microbattery/combat/ion(src)
-	new /obj/item/ammo_casing/microbattery/combat/xray(src)
-	new /obj/item/ammo_casing/microbattery/medical/stabilize2(src)
-	new /obj/item/ammo_casing/microbattery/medical/haste(src)
-	new /obj/item/ammo_casing/microbattery/medical/resist(src)
+	new /obj/item/microbattery_magazine/advanced(src)
+	new /obj/item/microbattery_casing/combat/shotstun(src)
+	new /obj/item/microbattery_casing/combat/shotstun(src)
+	new /obj/item/microbattery_casing/combat/lethal(src)
+	new /obj/item/microbattery_casing/combat/lethal(src)
+	new /obj/item/microbattery_casing/combat/lethal(src)
+	new /obj/item/microbattery_casing/combat/ion(src)
+	new /obj/item/microbattery_casing/combat/xray(src)
+	new /obj/item/microbattery_casing/medical/stabilize2(src)
+	new /obj/item/microbattery_casing/medical/haste(src)
+	new /obj/item/microbattery_casing/medical/resist(src)

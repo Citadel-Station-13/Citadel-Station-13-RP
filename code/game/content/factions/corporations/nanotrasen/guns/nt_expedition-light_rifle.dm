@@ -131,7 +131,8 @@
 		Unfortunately, the downsides of using such a heavy caliber in a sidearm package limits its
 		practical use. This is nonetheless seen now and then in the hands of enthusiasts.
 	"} + "<br>"
-	load_method = SINGLE_CASING | SPEEDLOADER
+	internal_magazine = TRUE
+	internal_magazine_size = /obj/item/ammo_magazine/nt_expedition/light_rifle/speedloader::ammo_max
 	icon_state = "revolver"
 	base_icon_state = "revolver"
 	render_break_overlay = BALLISTIC_RENDER_BREAK_OPEN
@@ -147,7 +148,6 @@
 		relatively compact magazines. However, larger magazines will also work with this
 		workhorse of a weapon.
 	"} + "<br>"
-	load_method = SINGLE_CASING | MAGAZINE
 	icon_state = "semi-map"
 	base_icon_state = "semi"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
@@ -163,7 +163,6 @@
 		standard to the forward handguard. Issued with larger magazines to make better use of
 		the automatic fire this weapon is capable of.
 	"} + "<br>"
-	load_method = SINGLE_CASING | MAGAZINE
 	icon_state = "auto-map"
 	base_icon_state = "auto"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
@@ -179,7 +178,6 @@
 		this weapon's ability to fold away helps make it easy to package and
 		store inside cramped cockpits and into survival kits with its compact magazines.
 	"} + "<br>"
-	load_method = SINGLE_CASING | MAGAZINE
 	icon_state = "pdw-map"
 	base_icon_state = "pdw"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
@@ -194,7 +192,6 @@
 		recon teams and security units while keeping a common set of parts
 		to reduce the complexities of servicing and maintaining the series as a whole.
 	"} + "<br>"
-	load_method = SINGLE_CASING | MAGAZINE
 	icon_state = "saw-map"
 	base_icon_state = "saw"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC

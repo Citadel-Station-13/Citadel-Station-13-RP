@@ -2,16 +2,17 @@
 	name = "Thompson Contender"
 	desc = "A perfect, pristine replica of an ancient one-shot hand-cannon. For when you really want to make a hole. This one has been modified to work almost like a bolt-action."
 	icon_state = "pockrifle"
-	var/icon_retracted = "pockrifle-empty"
 	item_state = "revolver"
 	caliber = /datum/ammo_caliber/a357
-	handle_casings = HOLD_CASINGS
-	max_shells = 1
-	ammo_type = /obj/item/ammo_casing/a357
+	internal_magazine = TRUE
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a357
+	internal_magazine_size = 1
+	chamber_eject_after_fire = FALSE
 	projectile_type = /obj/projectile/bullet/pistol/strong
-	var/retracted_bolt = 0
 	load_method = SINGLE_CASING
 	heavy = TRUE
+	var/icon_retracted = "pockrifle-empty"
+	var/retracted_bolt = 0
 
 /obj/item/gun/projectile/ballistic/contender/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()

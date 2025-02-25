@@ -144,8 +144,6 @@
 	// todo: purge with fire
 	// todo: do not use this var, use firemodes on /energy
 	var/projectile_type = /obj/projectile	//On ballistics, only used to check for the cham gun
-	// todo: this should be on /ballistic, and be `internal_chambered`.
-	var/obj/item/ammo_casing/chambered = null
 
 	var/wielded_item_state
 	var/one_handed_penalty = 0 // Penalty applied if someone fires a two-handed gun with one hand.

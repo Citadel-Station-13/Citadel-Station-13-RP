@@ -46,6 +46,7 @@
 	icon_state = "speedloader"
 	base_icon_state = "speedloader"
 	magazine_type = MAGAZINE_TYPE_SPEEDLOADER
+	ammo_max = 6
 
 /obj/item/ammo_magazine/nt_expedition/heavy_sidearm/speedloader/update_icon(updates)
 	cut_overlays()
@@ -106,7 +107,6 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidear
 		Feeding from medium-sized magazines, this full-sized service pistol is seen when
 		fighting is expected and not simply a possibility.
 	"} + "<br>"
-	load_method = SINGLE_CASING | MAGAZINE
 	icon_state = "pistol-map"
 	base_icon_state = "pistol"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
@@ -121,7 +121,8 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidear
 		this weapon is seen in the hands of those who prefer style over functionality or want
 		the fine trigger control a triple-action revolver provides.
 	"} + "<br>"
-	load_method = SINGLE_CASING | SPEEDLOADER
+	internal_magazine = TRUE
+	internal_magazine_size = /obj/item/ammo_magazine/nt_expedition/heavy_sidearm/speedloader::ammo_max
 	icon_state = "revolver"
 
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/smg, /nt_expedition/heavy_smg, "nt-expeditionary-heavy_smg")
@@ -136,7 +137,6 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/nt_expediti
 		in dense jungle foliage, where the high-velocity rounds batter aside light cover
 		with relative ease.
 	"} + "<br>"
-	load_method = SINGLE_CASING | MAGAZINE
 	icon_state = "smg-map"
 	base_icon_state = "smg"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC

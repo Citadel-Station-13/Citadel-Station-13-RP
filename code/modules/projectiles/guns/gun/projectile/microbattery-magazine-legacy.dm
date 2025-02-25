@@ -1,6 +1,4 @@
-// todo: /ammo_magazine/microbattery
-
-/obj/item/ammo_magazine/microbattery
+/obj/item/microbattery_magazine
 	name = "microbattery magazine"
 	desc = "A microbattery holder for a cell-based variable weapon."
 	icon = 'icons/modules/projectiles/legacy/microbattery_old.dmi'
@@ -14,19 +12,19 @@
 	var/capname = "nsfw_mag" //as above
 	var/chargename = "nsfw_mag" //as above
 
-/obj/item/ammo_magazine/microbattery/why_cant_load_casing(obj/item/ammo_casing/casing)
-	if(!istype(casing, /obj/item/ammo_casing/microbattery))
+/obj/item/microbattery_magazine/why_cant_load_casing(obj/item/ammo_casing/casing)
+	if(!istype(casing, /obj/item/microbattery_casing))
 		return "not a microbattery"
 	return ..()
 
-/obj/item/ammo_magazine/microbattery/update_icon()
+/obj/item/microbattery_magazine/update_icon()
 	cut_overlays()
 	if(!ammo_internal.len)
 		return //Why bother
 
 	var/current = 0
 	for(var/B in ammo_internal)
-		var/obj/item/ammo_casing/microbattery/batt = B
+		var/obj/item/microbattery_casing/batt = B
 		var/image/cap = image(icon, icon_state = "[capname]_cap")
 		cap.color = batt.type_color
 		cap.pixel_x = current * x_offset //Caps don't need a pixel_y offset
@@ -41,7 +39,9 @@
 
 		current++ //Increment for offsets
 
-/obj/item/ammo_magazine/microbattery/advanced
+/obj/item/microbattery_magazine/proc/cycle_to_next
+
+/obj/item/microbattery_magazine/advanced
 	name = "advanced microbattery magazine"
 	desc = "A microbattery holder for a cell-based variable weapon. This one has much more cell capacity!"
 	ammo_max = 6

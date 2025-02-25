@@ -38,9 +38,9 @@
 	#warn hook everything
 
 	//* for magazines
-	/// magazine type - must match gun's to be fitted into it, if gun's is
-	/// setting this to a gun's typepath is allowed, this is an arbitrary field.
-	//  todo: impl
+	/// magazine type - must match gun's to be fitted into it, if gun's is.
+	/// * setting this to a gun's typepath is allowed, this is an arbitrary field.
+	/// * if gun's is set and we're not, this value defaults to our typepath.
 	var/magazine_restrict
 	/// Inherent insertion delay
 	var/magazine_insert_delay = 0
@@ -49,12 +49,16 @@
 
 	//* for speedloaders
 	/// speedloader type - must match gun's to fit ammo in, if gun's is set
+	/// * setting this to a gun's typepath is allowed, this is an arbitrary field.
+	/// * if gun's is set and we're not, this value defaults to our typepath.
 	var/speedloader_restrict
 	/// inherent speedloader delay, added to gun's speedloaders_delay
 	var/speedloader_delay = 0
 
 	//* for stripper clips / usage as single loader
 	/// stripper clip type - must match gun's to fit ammo in, if gun's is set
+	/// * setting this to a gun's typepath is allowed, this is an arbitrary field.
+	/// * if gun's is set and we're not, this value defaults to our typepath.
 	var/clip_restrict
 	/// inherent delay on each shell loaded
 	var/clip_delay = 0
@@ -74,15 +78,15 @@
 	/// can bullets be removed?
 	var/ammo_removable = TRUE
 	/// ammo list
-	/// only instantiated when we need to for memory reasons
-	/// should not be directly manipulated unless you know what you're doing.
+	/// * only instantiated when we need to for memory reasons
+	/// * should not be directly manipulated unless you know what you're doing.
 	///
 	/// spec:
-	/// ammo_preload is what 'current ammo' is, type-wise
-	/// ammo_internal is considered the list of 1 to n casings infront of ammo_current.
-	/// index 1 is the bottom, index ammo_internal.len is the top of the magazine.
-	/// peek/draw will peek/draw the last index first all the way to the first, and after that,
-	/// ammo_current is considered the 'reserve' pool (as just a number).
+	/// * ammo_preload is what 'current ammo' is, type-wise
+	/// * ammo_internal is considered the list of 1 to n casings infront of ammo_current.
+	/// * index 1 is the bottom, index ammo_internal.len is the top of the magazine.
+	/// * peek/draw will peek/draw the last index first all the way to the first, and after that,
+	/// * ammo_current is considered the 'reserve' pool (as just a number).
 	var/list/obj/item/ammo_casing/ammo_internal
 	/// caliber - set to typepath to init
 	var/ammo_caliber
@@ -95,12 +99,6 @@
 	var/ammo_restrict
 	/// if set and ammo_restrict uses typepaths, doesn't allow subtypes
 	var/ammo_restrict_no_subtypes = FALSE
-	/// init all contents on initialize instead of lazy-drawing
-	///
-	/// todo: kill this with fire
-	///
-	/// * used for things like microbatteries / legacy content
-	var/ammo_legacy_init_everything = FALSE
 
 	//* Rendering *//
 	/// use default rendering system
@@ -142,8 +140,6 @@
 			static_overlay.color = rendering_static_overlay_color
 		add_overlay(static_overlay, TRUE)
 
-	if(ammo_legacy_init_everything)
-		instantiate_internal_list()
 	if(isnull(ammo_current))
 		ammo_current = ammo_max
 

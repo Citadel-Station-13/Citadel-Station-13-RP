@@ -26,8 +26,6 @@ DEFINE_BITFIELD_NEW(ammo_casing_flags, list(
 #define CASING_PRIMER_CHEMICAL (1<<0)
 /// magnetic acceleration
 #define CASING_PRIMER_MAGNETIC (1<<1)
-/// activate microbattery cell
-#define CASING_PRIMER_MICROBATTERY (1<<2)
 
 DEFINE_BITFIELD_NEW(ammo_casing_primer, list(
 	/obj/item/ammo_casing = list(
@@ -36,5 +34,4 @@ DEFINE_BITFIELD_NEW(ammo_casing_primer, list(
 ), list(
 	BITFIELD_NEW("Chemical", CASING_PRIMER_CHEMICAL),
 	BITFIELD_NEW("Magnetic", CASING_PRIMER_MAGNETIC),
-	BITFIELD_NEW("Microbattery", CASING_PRIMER_MICROBATTERY),
 ))

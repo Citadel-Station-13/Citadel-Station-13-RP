@@ -125,7 +125,6 @@
 	icon_state = "semi"
 	base_icon_state = "semi"
 	item_renderer = /datum/gun_item_renderer/empty_state
-	load_method = MAGAZINE | SINGLE_CASING
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/autorifle
 	name = "heavy automatic rifle"
@@ -141,7 +140,6 @@
 	icon_state = "auto-map"
 	base_icon_state = "auto"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
-	load_method = MAGAZINE | SINGLE_CASING
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/lmg
 	name = "light machine gun"
@@ -156,7 +154,6 @@
 		force makes this weapon's name a logical choice.
 	"} + "<br>"
 	icon_state = "lmg"
-	load_method = MAGAZINE | SINGLE_CASING
 
 	// todo: rendering; how are we going to render both unloaded and open?
 	// todo: rendering; maybe expand the render additional to allow for generation of a list?

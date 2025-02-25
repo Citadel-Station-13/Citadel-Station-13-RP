@@ -27,8 +27,6 @@
 	var/obj/item/ammo_magazine/magazine
 	/// Magazine restrict; restricts inserted magazines to those that
 	/// match this.
-	/// * If not set, ammo-side is allowed to set it and we will act like
-	///   ours is set to our typepath.
 	var/magazine_restrict
 	/// Magazine insert sound
 	var/magazine_insert_sound = 'sound/weapons/guns/interaction/pistol_magin.ogg'
@@ -43,8 +41,6 @@
 	var/speedloader_allowed = TRUE
 	/// Speedloader restrict; restricts speedloader usage to speedloader magazines
 	/// that match this.
-	/// * If not set, ammo-side is allowed to set it and we will act like
-	///   ours is set to our typepath.
 	var/speedloader_restrict
 	/// Delay for speedloader refills
 	var/speedloader_delay
@@ -77,9 +73,18 @@
 	var/single_load = TRUE
 	/// Single load sound
 	var/single_load_sound = 'sound/weapons/guns/interaction/bullet_insert.ogg'
-	/// Delay for single loading, whether by hand or from clip
-	/// * If this is 0, and the clip's is 0, clips act like speedloaders.
+	/// Delay for single loading
 	var/single_load_delay = 0
+
+	/// Clip restrict; restricts stripper clips to those that match this.
+	var/clip_restrict
+	/// Delay for clip loading
+	/// * If this is 0, and the clip's is 0, clips act like speedloaders.
+	/// * Defaults to [single_load_delay]
+	var/clip_delay
+	/// Clip load sound
+	/// * Defaults to [single_load_sound]
+	var/clip_load_sound
 
 	//* Chamber *//
 	/// Chambered round

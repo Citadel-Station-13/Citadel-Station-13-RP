@@ -394,7 +394,7 @@
 	subcategory = DESIGN_SUBCATEGORY_AMMO
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 4, TECH_POWER = 4, TECH_COMBAT = 7)
 	materials_base = list(MAT_STEEL = 8000, MAT_GLASS = 4000, MAT_PHORON = 4000)
-	build_path = /obj/item/ammo_magazine/microbattery/combat/prototype
+	build_path = /obj/item/microbattery_magazine/combat/prototype
 
 /datum/prototype/design/science/nsfw_cell
 	category = DESIGN_CATEGORY_MUNITIONS
@@ -411,49 +411,49 @@
 	id = "nsfw_cell_stun"
 	req_tech = list(TECH_MATERIAL = 4, TECH_MAGNET = 2, TECH_POWER = 3, TECH_COMBAT = 3)
 	materials_base = list(MAT_STEEL = 5000, MAT_GLASS = 5000)
-	build_path = /obj/item/ammo_casing/microbattery/combat/stun
+	build_path = /obj/item/microbattery_casing/combat/stun
 
 /datum/prototype/design/science/nsfw_cell/lethal
 	design_name = "LETHAL"
 	id = "nsfw_cell_lethal"
 	req_tech = list(TECH_MATERIAL = 4, TECH_MAGNET = 3, TECH_POWER = 3, TECH_COMBAT = 5)
 	materials_base = list(MAT_STEEL = 5000, MAT_GLASS = 5000, MAT_PHORON = 3000)
-	build_path = /obj/item/ammo_casing/microbattery/combat/lethal
+	build_path = /obj/item/microbattery_casing/combat/lethal
 
 /datum/prototype/design/science/nsfw_cell/net
 	design_name = "NET"
 	id = "nsfw_cell_net"
 	req_tech = list(TECH_MATERIAL = 4, TECH_MAGNET = 3, TECH_POWER = 3, TECH_COMBAT = 4)
 	materials_base = list(MAT_STEEL = 5000, MAT_GLASS = 5000, MAT_URANIUM = 3000)
-	build_path = /obj/item/ammo_casing/microbattery/combat/net
+	build_path = /obj/item/microbattery_casing/combat/net
 
 /datum/prototype/design/science/nsfw_cell/ion
 	design_name = "ION"
 	id = "nsfw_cell_ion"
 	req_tech = list(TECH_MATERIAL = 5, TECH_MAGNET = 3, TECH_POWER = 5, TECH_COMBAT = 5)
 	materials_base = list(MAT_STEEL = 5000, MAT_GLASS = 5000, MAT_SILVER = 3000)
-	build_path = /obj/item/ammo_casing/microbattery/combat/ion
+	build_path = /obj/item/microbattery_casing/combat/ion
 
 /datum/prototype/design/science/nsfw_cell/shotstun
 	design_name = "SCATTERSTUN"
 	id = "nsfw_cell_shotstun"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 3, TECH_POWER = 6, TECH_COMBAT = 6)
 	materials_base = list(MAT_STEEL = 5000, MAT_GLASS = 5000, MAT_SILVER = 2000, MAT_GOLD = 2000)
-	build_path = /obj/item/ammo_casing/microbattery/combat/shotstun
+	build_path = /obj/item/microbattery_casing/combat/shotstun
 
 /datum/prototype/design/science/nsfw_cell/xray
 	design_name = "XRAY"
 	id = "nsfw_cell_xray"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 4, TECH_POWER = 5, TECH_COMBAT = 7)
 	materials_base = list(MAT_STEEL = 5000, MAT_GLASS = 5000, MAT_SILVER = 1000, MAT_GOLD = 1000, MAT_URANIUM = 1000, MAT_PHORON = 1000)
-	build_path = /obj/item/ammo_casing/microbattery/combat/xray
+	build_path = /obj/item/microbattery_casing/combat/xray
 
 /datum/prototype/design/science/nsfw_cell/stripper
 	design_name = "STRIPPER"
 	id = "nsfw_cell_stripper"
 	req_tech = list(TECH_MATERIAL = 7, TECH_BIO = 4, TECH_POWER = 4, TECH_COMBAT = 4, TECH_ILLEGAL = 5)
 	materials_base = list(MAT_STEEL = 5000, MAT_GLASS = 5000, MAT_URANIUM = 2000, MAT_PHORON = 2000, MAT_DIAMOND = 500)
-	build_path = /obj/item/ammo_casing/microbattery/combat/stripper
+	build_path = /obj/item/microbattery_casing/combat/stripper
 
 /datum/prototype/design/science/pin
 	category = DESIGN_CATEGORY_MUNITIONS
