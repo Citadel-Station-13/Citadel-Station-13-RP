@@ -76,7 +76,6 @@
 	)
 /*
 	admin_levels = list()
-	sealed_levels = list()
 	empty_levels = null
 
 	station_levels = list(Z_LEVEL_DECK_ONE,

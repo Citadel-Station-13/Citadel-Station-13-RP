@@ -59,9 +59,9 @@ export const Flex = (props: FlexProps) => {
 Flex.defaultHooks = pureComponentHooks;
 
 export type FlexItemProps = BoxProps & {
-  grow?: number | CSSWideKeyword | undefined;
+  grow?: number | CSSWideKeyword | undefined | null | boolean;
   order?: number;
-  shrink?: number | CSSWideKeyword | undefined;
+  shrink?: number | CSSWideKeyword | undefined | null | boolean;
   basis?: string | BooleanLike;
   align?: CSSWideKeyword | "flex-start" | "flex-end" | "center" | "baseline" | "stretch" | "auto" | undefined;
 };

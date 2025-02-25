@@ -70,7 +70,7 @@
 	// WARNING - We can't figure out a good base_area or base_turf from inspecttion, as the shuttle is already built!
 	// For now its going to just do world.area and z level base turf. Beware!
 	var/area/base_area = world.area
-	var/base_turf = SSmapping.level_baseturf(get_z(start_loc)) || /turf/simulated/floor/plating
+	var/base_turf = SSmapping.level_get_baseturf(get_z(start_loc)) || /turf/simulated/floor/plating
 	var/obj/effect/shuttle_landmark/automatic/champagne/starting_landmark = new(start_loc, base_area, base_turf)
 
 	// Okay first things first create the shuttle Override to no areas to prevent runtimes, then add them in.

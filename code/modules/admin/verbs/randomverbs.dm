@@ -16,33 +16,6 @@
 	message_admins("[key_name_admin(usr)] made [key_name_admin(M)] drop everything!", 1)
 	feedback_add_details("admin_verb","DEVR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_prison(mob/M as mob in GLOB.mob_list)
-	set category = "Admin"
-	set name = "Prison"
-	if(!holder)
-		to_chat(src, "Only administrators may use this command.")
-		return
-	if (ismob(M))
-		if(istype(M, /mob/living/silicon/ai))
-			alert("The AI can't be sent to prison you jerk!", null, null, null, null, null)
-			return
-		//strip their stuff before they teleport into a cell :downs:
-		for(var/obj/item/I in M.get_equipped_items(TRUE, TRUE))
-			M.drop_item_to_ground(I, INV_OP_FORCE)
-		//teleport person to cell
-		M.afflict_unconscious(20 * 5)
-		sleep(5)	//so they black out before warping
-		M.loc = pick(prisonwarp)
-		if(istype(M, /mob/living/carbon/human))
-			var/mob/living/carbon/human/prisoner = M
-			prisoner.equip_to_slot_or_del(new /obj/item/clothing/under/color/prison(prisoner), SLOT_ID_UNIFORM)
-			prisoner.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(prisoner), SLOT_ID_SHOES)
-		spawn(50)
-			to_chat(M, "<font color='red'>You have been sent to the prison station!</font>")
-		log_admin("[key_name(usr)] sent [key_name(M)] to the prison station.")
-		message_admins("<font color=#4F49AF>[key_name_admin(usr)] sent [key_name_admin(M)] to the prison station.</font>", 1)
-		feedback_add_details("admin_verb","PRISON") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
 //Allows staff to determine who the newer players are.
 /client/proc/cmd_check_new_players()
 	set category = "Admin"

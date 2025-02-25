@@ -69,7 +69,7 @@
 		return 1
 
 /datum/nano_module/alarm_monitor/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = default_state)
-	var/list/data = host.initial_data()
+	var/list/data = host.initial_nano_data()
 
 	var/categories[0]
 	for(var/datum/alarm_handler/AH in alarm_handlers)

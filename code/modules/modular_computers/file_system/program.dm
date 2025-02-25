@@ -226,7 +226,7 @@
 	else
 		return -1
 
-/obj/item/modular_computer/initial_data()
+/obj/item/modular_computer/initial_nano_data()
 	return get_header_data()
 
 /obj/item/modular_computer/update_layout()
