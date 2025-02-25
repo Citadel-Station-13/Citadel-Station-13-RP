@@ -10,23 +10,36 @@
 	drop_sound = 'sound/items/drop/ring.ogg'
 	pickup_sound = 'sound/items/pickup/ring.ogg'
 
-	//* Casing
+	//* Casing *//
 	/// casing flags - see __DEFINES/projectiles/ammo_casing.dm
 	var/casing_flags = NONE
 	/// what types of primer we react to
 	var/casing_primer = CASING_PRIMER_CHEMICAL
-	/// projectile type
-	var/projectile_type
 	/// caliber - set to typepath of datum for compile checking
+	///
+	/// todo: rename to casing_caliber?
 	///
 	/// * may be typepath of caliber (recommended)
 	/// * may be instance of caliber (not recommended, but allowable for special cases)
 	/// * may NOT be string of caliber, currently
 	var/caliber
+	/// Effective mass multiplier.
+	///
+	/// * This is used to calculate energy draw for magnetic weapons.
+	/// * Set this as a multiple of a parent type's multiplier.
+	var/effective_mass_multiplier = 1
+
+	//* Projectile *//
+	/// projectile type
+	var/projectile_type
 	/// stored projectile - either null for un-init'd, FALSE for empty, or an instance
 	VAR_PROTECTED/obj/projectile/stored
 
-	//* Icon
+	//* Projectile Effects *//
+	/// passed to bullet in fire()
+	var/list/add_projectile_effects
+
+	//* Icon *//
 	/// switch to "[initial(state)]-spent" after expenditure
 	var/icon_spent = TRUE
 
@@ -47,15 +60,7 @@
 	return ..()
 
 /obj/item/ammo_casing/get_intrinsic_worth(flags)
-	return loaded()? ..() : 0
-
-//removes the projectile from the ammo casing
-// todo: refactor for actual on-shot or whatever
-/obj/item/ammo_casing/proc/expend()
-	. = stored
-	stored = FALSE
-	setDir(pick(GLOB.cardinal)) //spin spent casings
-	update_icon()
+	return is_loaded()? ..() : 0
 
 /obj/item/ammo_casing/screwdriver_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = TRUE
@@ -81,55 +86,16 @@
 	)
 	return merge_double_lazy_assoc_list(., ..())
 
-/obj/item/ammo_casing/proc/newshot() //For energy weapons, syringe gun, shotgun shells and wands (!).
-	if(stored)
-		return
-	init_projectile()
-
-/**
- * sees if we're currently loaded
- */
-/obj/item/ammo_casing/proc/loaded()
-	return stored != FALSE
-
-/**
- * grab projectile
- */
-/obj/item/ammo_casing/proc/get_projectile()
-	switch(stored)
-		if(null)
-			return lazy_init_projectile()
-		if(FALSE)
-			return null
-	return stored
-
-/**
- * make projectile automatically but only if we're not expended
- */
-/obj/item/ammo_casing/proc/lazy_init_projectile()
-	if(stored == FALSE)
-		return null
-	return init_projectile()
-
-/**
- * makes a new projectile
- */
-/obj/item/ammo_casing/proc/init_projectile()
-	if(istype(stored))
-		CRASH("double init?")
-	stored = new projectile_type(src)
-	return stored
-
 /obj/item/ammo_casing/update_icon_state()
 	. = ..()
-	if(icon_spent && !loaded())
+	if(icon_spent && !is_loaded())
 		icon_state = "[base_icon_state || initial(icon_state)]-spent"
 	else
 		icon_state = base_icon_state || icon_state
 
 /obj/item/ammo_casing/examine(mob/user, dist)
 	. = ..()
-	if(!loaded())
+	if(!is_loaded())
 		. += "This one is spent."
 
 /obj/item/ammo_casing/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
@@ -147,6 +113,73 @@
 /obj/item/ammo_casing/proc/get_caliber()
 	RETURN_TYPE(/datum/ammo_caliber)
 	return resolve_caliber(caliber)
+
+//* Firing *//
+
+/**
+ * Called as we're fired.
+ *
+ * @params
+ * * priming_methods - the priming methods being used to fire us
+ *
+ * @return /obj/projectile to shoot, or a GUN_FIRED_* fail status
+ */
+/obj/item/ammo_casing/proc/process_fire(priming_methods)
+	if(!(priming_methods & casing_primer))
+		return GUN_FIRED_FAIL_INERT
+	. = expend()
+	if(!.)
+		return GUN_FIRED_FAIL_EMPTY
+
+/**
+ * Uses the ammo casing, returning the projectile retrieved, updating icon, etc
+ */
+/obj/item/ammo_casing/proc/expend()
+	. = lazy_init_projectile()
+	if(isnull(.))
+		return
+	stored = FALSE
+	setDir(pick(GLOB.cardinal)) //spin spent casings
+	update_icon()
+
+//* Getters *//
+
+/**
+ * sees if we're currently loaded
+ */
+/obj/item/ammo_casing/proc/is_loaded()
+	return stored != FALSE
+
+/**
+ * grab projectile
+ */
+/obj/item/ammo_casing/proc/get_projectile()
+	switch(stored)
+		if(null)
+			return lazy_init_projectile()
+		if(FALSE)
+			return null
+	return stored
+
+//* Projectile *//
+
+/**
+ * make projectile automatically but only if we're not expended
+ */
+/obj/item/ammo_casing/proc/lazy_init_projectile()
+	if(stored == FALSE)
+		return null
+	return init_projectile()
+
+/**
+ * makes a new projectile
+ */
+/obj/item/ammo_casing/proc/init_projectile()
+	if(istype(stored))
+		CRASH("double init?")
+	stored = new projectile_type(src)
+	stored.add_projectile_effects(add_projectile_effects)
+	return stored
 
 //* Render *//
 

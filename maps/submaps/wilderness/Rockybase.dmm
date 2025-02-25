@@ -200,7 +200,7 @@
 /area/submap/Rockybase)
 "aQ" = (
 /obj/structure/table/rack,
-/obj/item/gun/ballistic/pistol,
+/obj/item/gun/projectile/ballistic/pistol,
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
 	},
@@ -208,7 +208,7 @@
 /area/submap/Rockybase)
 "aR" = (
 /obj/structure/table/rack,
-/obj/item/gun/energy/gun/taser,
+/obj/item/gun/projectile/energy/taser,
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
 	},
@@ -235,8 +235,8 @@
 /area/submap/Rockybase)
 "aV" = (
 /obj/structure/table/rack,
-/obj/item/gun/ballistic/shotgun/pump/combat,
-/obj/item/gun/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/Rockybase)
 "aW" = (
@@ -362,7 +362,7 @@
 "bn" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
-/obj/item/gun/ballistic/pistol,
+/obj/item/gun/projectile/ballistic/pistol,
 /turf/simulated/floor/holofloor/lino,
 /area/submap/Rockybase)
 "bo" = (
@@ -416,7 +416,7 @@
 /area/submap/Rockybase)
 "bx" = (
 /obj/structure/table/rack,
-/obj/item/gun/energy/ionrifle/pistol,
+/obj/item/gun/projectile/energy/ionrifle/pistol,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/Rockybase)
 "by" = (

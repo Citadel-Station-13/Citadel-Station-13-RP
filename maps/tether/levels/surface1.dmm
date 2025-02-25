@@ -7921,8 +7921,8 @@
 	dir = 1
 	},
 /obj/structure/table/reinforced,
-/obj/item/gun/energy/laser/practice,
-/obj/item/gun/ballistic/shotgun/pump/rifle/practice,
+/obj/item/gun/projectile/energy/laser/practice,
+/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/practice,
 /obj/item/ammo_magazine/a7_62mm/clip/practice,
 /obj/item/ammo_magazine/a7_62mm/clip/practice,
 /turf/simulated/floor/tiled/dark,

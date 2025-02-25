@@ -144,8 +144,8 @@
 /area/shuttle/curabitur/curashuttle/med)
 "at" = (
 /obj/structure/closet/crate/large,
-/obj/item/gun/energy/particle/cannon,
-/obj/item/gun/energy/particle/cannon,
+/obj/item/gun/projectile/energy/particle/cannon,
+/obj/item/gun/projectile/energy/particle/cannon,
 /turf/simulated/floor/carpet/bcarpet,
 /area/shuttle/curabitur/curashuttle/cockpit)
 "au" = (
@@ -287,7 +287,7 @@
 /obj/item/storage/secure/safe{
 	pixel_x = 31
 	},
-/obj/item/gun/ballistic/automatic/mini_uzi,
+/obj/item/gun/projectile/ballistic/automatic/mini_uzi,
 /obj/item/card/id/syndicate{
 	access = list(616);
 	assignment = "Curabitur Contractor";
