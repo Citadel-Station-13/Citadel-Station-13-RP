@@ -33,7 +33,7 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 
 	if(stat != DEAD && bodytemperature >= 170)	//Dead or cryosleep people do not pump the blood.
 		// assimilate foreign blood separately
-		blood_holder.do_assimilate(1.5)
+		blood_holder.do_assimilate(0.5)
 
 		var/blood_volume_raw = blood_holder.get_total_volume()
 		var/blood_volume = round((blood_volume_raw/species.blood_volume)*100) // Percentage.

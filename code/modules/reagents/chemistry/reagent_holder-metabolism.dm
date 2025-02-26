@@ -27,6 +27,10 @@
 
 /datum/reagent_holder/metabolism/add_reagent(id, amount, data_initializer, skip_reactions)
 	. = ..()
+	// todo: we need on_reagent_load and on_reagent_unload hooks, none of this add/remove reagent overriding.
+	if(ispath(id))
+		var/datum/reagent/path = id
+		id = initial(path.id)
 	if(!reagent_volumes?[id])
 		return
 	if(reagent_metabolisms?[id])
@@ -37,6 +41,10 @@
 
 /datum/reagent_holder/metabolism/remove_reagent(id, amount, skip_reactions)
 	. = ..()
+	// todo: we need on_reagent_load and on_reagent_unload hooks, none of this add/remove reagent overriding.
+	if(ispath(id))
+		var/datum/reagent/path = id
+		id = initial(path.id)
 	if(reagent_volumes?[id])
 		return
 	LAZYREMOVE(reagent_metabolisms, id)

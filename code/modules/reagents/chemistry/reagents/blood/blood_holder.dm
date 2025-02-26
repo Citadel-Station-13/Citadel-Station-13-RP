@@ -220,6 +220,7 @@
 		volume -= random_assimilate
 		cached_guest_blood_volume -= random_assimilate
 		guest_blood_volumes[random_fragment] -= random_assimilate
+		host_blood_volume += random_assimilate
 
 //* unsafe access to internals *//
 
