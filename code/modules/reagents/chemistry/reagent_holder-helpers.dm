@@ -4,6 +4,7 @@
  * Returns reagent datum of highest single reagent in volume, or null if we are empty.
  */
 /datum/reagent_holder/proc/get_majority_reagent_datum() as /datum/reagent
+	RETURN_TYPE(/datum/reagent)
 	var/highest_so_far = 0
 	var/id_so_far
 	for(var/id in reagent_volumes)
@@ -15,10 +16,12 @@
  * Returns reagent name of highest single reagent in volume, or null if we are empty.
  */
 /datum/reagent_holder/proc/get_majority_reagent_name()
-	return get_majority_reagent_datum()?.name
+	var/datum/reagent/resolved = get_majority_reagent_datum()
+	return resolved ? resolved.name : null
 
 /**
  * Returns reagent ID of highest single reagent in volume, or null if we are empty.
  */
 /datum/reagent_holder/proc/get_majority_reagent_id()
-	return get_majority_reagent_datum()?.id
+	var/datum/reagent/resolved = get_majority_reagent_datum()
+	return resolved ? resolved.id : null
