@@ -7,15 +7,9 @@
 	ammo_caliber = /datum/ammo_caliber/microbattery
 	ammo_max = 3
 	ammo_current = 0
-	ammo_legacy_init_everything = TRUE
 	var/x_offset = 5  //for update_icon() shenanigans- moved here so it can be adjusted for bigger mags
 	var/capname = "nsfw_mag" //as above
 	var/chargename = "nsfw_mag" //as above
-
-/obj/item/ammo_magazine/microbattery/why_cant_load_casing(obj/item/ammo_casing/casing)
-	if(!istype(casing, /obj/item/ammo_casing/microbattery))
-		return "not a microbattery"
-	return ..()
 
 /obj/item/ammo_magazine/microbattery/update_icon()
 	cut_overlays()
@@ -38,8 +32,6 @@
 			add_overlay(charge)
 
 		current++ //Increment for offsets
-
-/obj/item/ammo_magazine/microbattery/proc/cycle_to_next
 
 /obj/item/ammo_magazine/microbattery/advanced
 	name = "advanced microbattery magazine"

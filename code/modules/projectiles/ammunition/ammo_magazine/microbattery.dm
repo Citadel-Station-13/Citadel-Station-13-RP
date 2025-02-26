@@ -8,8 +8,21 @@
  * * Microbattery guns don't necessarily need to use us, but normal
  *   magazines do not support cycling.
  */
-/obj/item/ammo_casing/microbattery
+/obj/item/ammo_magazine/microbattery
 	name = "microbattery magazine"
 	desc = "An experimental magazine for particle batteries used by hybrid energy weapons."
 
+	/// Supports cycling
+	var/supports_cycling = TRUE
+
 #warn impl all
+
+/**
+ * Microbattery magazines need to support basically acting like a revolver.
+ */
+/obj/item/ammo_magazine/microbattery/proc/populate_datastructures()
+
+/**
+ * Cycles the ammo in a looping manner.
+ */
+/obj/item/ammo_magazine/microbattery/proc/cycle_ammo()

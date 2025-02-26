@@ -14,17 +14,14 @@
 
 	origin_tech = list(TECH_COMBAT = 7, TECH_MATERIAL = 6, TECH_MAGNETS = 4)
 
-	fire_sound = 'sound/weapons/Taser.ogg'
 
 	load_method = MAGAZINE //Nyeh heh hehhh.
 	magazine_type = null
 	magazine_restrict = /obj/item/ammo_magazine/microbattery
 	caliber = /datum/ammo_caliber/microbattery
 	handle_casings = HOLD_CASINGS //Don't eject batteries!
-	recoil = 0
 	var/charge_left = 0
 	var/max_charge = 0
-	charge_sections = 5
 
 /obj/item/gun/projectile/ballistic/microbattery/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	if(chambered && ammo_magazine)

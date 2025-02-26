@@ -6,6 +6,10 @@
 /obj/item/gun/projectile/ballistic/microbattery/nt_hydra
 	abstract_type = /obj/item/gun/projectile/ballistic/microbattery/nt_hydra
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/nt_hydra.dmi'
+	icon_state = "hydra"
+	base_icon_state = "hydra"
+	// todo: placeholder
+	fire_sound = 'sound/weapons/Taser.ogg'
 
 #warn impl
 

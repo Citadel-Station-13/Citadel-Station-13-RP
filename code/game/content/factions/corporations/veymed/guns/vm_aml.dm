@@ -6,6 +6,10 @@
 /obj/item/gun/projectile/ballistic/microbattery/vm_aml
 	abstract_type = /obj/item/gun/projectile/ballistic/microbattery/vm_aml
 	icon = 'icons/content/factions/corporations/veymed/items/guns/vm_aml.dmi'
+	icon_state = "sidearm"
+	base_icon_state = "sidearm"
+	// todo: placeholder
+	fire_sound = 'sound/weapons/Taser.ogg'
 
 #warn impl
 
@@ -19,6 +23,8 @@
 
 /obj/item/ammo_magazine/microbattery/vm_aml
 	ammo_caliber = /datum/ammo_caliber/microbattery/vm_aml
+
+/obj/item/ammo_magazine/microbattery/vm_aml/advanced
 
 /obj/item/ammo_casing/microbattery/vm_aml
 	caliber = /datum/ammo_caliber/microbattery/vm_aml
