@@ -27,12 +27,12 @@
 		if(!loc)
 			return
 		step_towards(src, target)
-		reagents?.perform_uniform_contact(get_turf(src), 1, null, reapplication_exclusion_injection)
+		reagents?.perform_uniform_contact(get_turf(src), 1, null, reagents_reapplication_injection)
 		sleep(delay)
 
 /obj/effect/water/Crossed(atom/movable/AM, oldloc)
 	..()
-	reagents?.perform_uniform_contact(AM, 1, null, reapplication_exclusion_injection)
+	reagents?.perform_uniform_contact(AM, 1, null, reagents_reapplication_injection)
 
 //Used by spraybottles.
 /obj/effect/water/chempuff

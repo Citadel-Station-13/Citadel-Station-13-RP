@@ -17,7 +17,7 @@
  *
  * @return amount used
  */
-/datum/reagent_holder/proc/perform_entity_dip(atom/target, ratio, unsafe_drain_ratio = 1)
+/datum/reagent_holder/proc/perform_entity_dip(atom/target, ratio, zone, unsafe_drain_ratio = 1)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 

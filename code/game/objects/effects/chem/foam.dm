@@ -54,7 +54,7 @@
 /obj/effect/foam/proc/checkReagents() // transfer any reagents to the floor
 	if(!metal && carried_reagents_shared_ref)
 		var/turf/T = get_turf(src)
-		carried_reagents_shared_ref.perform_uniform_contact(T, 1, null, reapplication_exclusion_injection)
+		carried_reagents_shared_ref.perform_uniform_contact(T, 1)
 
 /obj/effect/foam/process()
 	if(--amount < 0)
