@@ -16926,7 +16926,7 @@
 	dir = 4
 	},
 /obj/random/junk,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/trash_pit)
 "nbL" = (
 /turf/simulated/floor/airless,
