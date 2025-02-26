@@ -83,12 +83,6 @@
 
 /* Internal procs */
 
-/datum/reagent_holder/proc/update_total() // Updates volume.
-	var/new_volume = 0
-	for(var/id in reagent_volumes)
-		new_volume += reagent_volumes[id]
-	total_volume = new_volume
-
 /datum/reagent_holder/proc/holder_full()
 	if(total_volume >= maximum_volume)
 		return TRUE
@@ -112,7 +106,7 @@
 		var/datum/reagent/accessing = id
 		id = initial(accessing.id)
 
-	amount = min(amount, maximum_volume - total_volume)
+	amount = REAGENT_HOLDER_VOLUME_QUANTIZE(min(amount, maximum_volume - total_volume))
 	if(amount <= 0)
 		return 0
 
@@ -234,7 +228,7 @@
 	total_volume = 0
 	temperature = initial(temperature)
 
-/datum/reagent_holder/proc/has_reagent(id, amount = 0.00001)
+/datum/reagent_holder/proc/has_reagent(id, amount = REAGENT_HOLDER_VOLUME_PRECISION)
 	if(ispath(id))
 		var/datum/reagent/path = id
 		id = initial(path.id)
@@ -591,6 +585,7 @@
 /**
  * Transfers to a holder.
  *
+ * * Transference is done uniformly within the target reagents, keeping any ratios between them during the transfer.
  * * It is **undefined behavior** to have duplicate IDs in the list of reagent IDs to filter by.
  * * Reagent instances are not allowed in reagent filter list.
  *
@@ -625,16 +620,15 @@
 		if(!total_transferable)
 			return 0
 		ratio = min(1, min(amount, target.maximum_volume - target.total_volume) / total_transferable)
-		. = total_transferable * ratio
 	else
 		ids_to_transfer = reagent_volumes
 		ratio = min(1, min(amount, target.maximum_volume - target.total_volume) / total_volume)
-		. = total_volume * ratio
 
 	if(!copy)
 		for(var/id in ids_to_transfer)
 			var/datum/reagent/resolved = SSchemistry.fetch_reagent(id)
-			var/transferred = reagent_volumes[id] * ratio
+			var/transferred = REAGENT_HOLDER_VOLUME_QUANTIZE(reagent_volumes[id] * ratio)
+			. += transferred
 			target.add_reagent(
 				id,
 				transferred,
@@ -645,7 +639,8 @@
 	else
 		for(var/id in ids_to_transfer)
 			var/datum/reagent/resolved = SSchemistry.fetch_reagent(id)
-			var/transferred = reagent_volumes[id] * ratio
+			var/transferred = REAGENT_HOLDER_VOLUME_QUANTIZE(reagent_volumes[id] * ratio)
+			. += transferred
 			target.add_reagent(
 				id,
 				transferred,
@@ -674,3 +669,16 @@
 			"id" = R.id,
 		)
 	return built
+
+//* Updates *//
+
+/**
+ * Updates total volume, quantizing all reagent amounts as well.
+ */
+/datum/reagent_holder/proc/update_total()
+	var/new_volume = 0
+	for(var/id in reagent_volumes)
+		var/amount = REAGENT_HOLDER_VOLUME_QUANTIZE(reagent_volumes[id])
+		reagent_volumes[id] = amount
+		new_volume += amount
+	total_volume = new_volume

@@ -23,7 +23,6 @@
 
 	for(var/datum/reagent/current in get_reagent_datums())
 		current.on_mob_life(parent, metabolism_type, src, speed_mult, force_allow_dead)
-	update_total()
 
 /datum/reagent_holder/metabolism/add_reagent(id, amount, data_initializer, skip_reactions)
 	. = ..()
