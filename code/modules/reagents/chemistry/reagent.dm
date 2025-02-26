@@ -351,8 +351,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 //* Touch *//
 
-#warn hook all
-
 /**
  * Called when we're sprayed / splashed onto an obj
  *
@@ -400,66 +398,4 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * @return amount used, if any
  */
 /datum/reagent/proc/on_touch_mob(mob/target, remaining, allocated, data, zone)
-	. = 0
-	if(istype(src, /mob/living/carbon))
-		var/mob/living/carbon/casted = src
-		. += on_touch_carbon(target, remaining, allocated, data, zone, casted.get_bodypart_for_zone(zone))
-	else if(istype(src, /mob/living/simple_mob))
-		. += on_touch_simple(target, remaining, allocated, data, zone)
-	else if(istype(src, /mob/living/silicon))
-		. += on_touch_silicon(target, remaining, allocated, data, zone)
-
-/**
- * Called by on_touch_mob().
- *
- * * Do not manually implement splashing if a limb is specified. The caller does this already.
- *
- * @params
- * * target - the mob
- * * remaining - how much is left in the thing being splashed.
- * * allocated - how much is supposed to be hitting the target limb (useful for sprays).
- *               this might be over remaining, due to how call order works. always check remaining.
- * * data - our reagent data, if any
- * * zone - (optional) target body zone
- * * limb - (optional) the external organ splashed onto.
- *
- * @return amount used, if any
- */
-/datum/reagent/proc/on_touch_carbon(mob/living/carbon/target, remaining, allocated, data, zone, obj/item/organ/external/limb)
-	return 0
-
-/**
- * Called by on_touch_mob().
- *
- * * Do not manually implement splashing if a limb is specified. The caller does this already.
- *
- * @params
- * * target - the mob
- * * remaining - how much is left in the thing being splashed.
- * * allocated - how much is supposed to be hitting the target limb (useful for sprays).
- *               this might be over remaining, due to how call order works. always check remaining.
- * * data - our reagent data, if any
- * * zone - (optional) target body zone
- *
- * @return amount used, if any
- */
-/datum/reagent/proc/on_touch_silicon(mob/living/silicon/target, remaining, allocated, data, zone)
-	return 0
-
-/**
- * Called by on_touch_mob().
- *
- * * Do not manually implement splashing if a limb is specified. The caller does this already.
- *
- * @params
- * * target - the mob
- * * remaining - how much is left in the thing being splashed.
- * * allocated - how much is supposed to be hitting the target limb (useful for sprays).
- *               this might be over remaining, due to how call order works. always check remaining.
- * * data - our reagent data, if any
- * * zone - (optional) target body zone
- *
- * @return amount used, if any
- */
-/datum/reagent/proc/on_touch_simple(mob/living/simple_mob/target, remaining, allocated, data, zone)
 	return 0

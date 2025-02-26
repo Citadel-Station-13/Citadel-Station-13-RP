@@ -40,7 +40,7 @@
 	if(!(TT.throw_flags & THROW_AT_IS_GENTLE))
 		if(src.reagents.total_volume >= 1)
 			src.visible_message("<span class='warning'>\The [src] bursts!</span>","You hear a pop and a splash.")
-			reagents.auto_spill(A, 1, FALSE, TRUE)
+			reagents.perform_entity_splash(A, 1)
 			src.icon_state = "burst"
 			QDEL_IN(src, 5)
 
@@ -49,7 +49,7 @@
 	if(!(TT.throw_flags & THROW_AT_IS_GENTLE))
 		if(src.reagents.total_volume >= 1)
 			src.visible_message("<span class='warning'>\The [src] bursts!</span>","You hear a pop and a splash.")
-			reagents.auto_spill(A, 1, FALSE, TRUE)
+			reagents.perform_entity_splash(A, 1)
 			src.icon_state = "burst"
 			QDEL_IN(src, 5)
 

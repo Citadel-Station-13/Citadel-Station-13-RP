@@ -1282,7 +1282,7 @@
 	for(var/obj/effect/debris/cleanable/blood/B in T)
 		qdel(B)
 
-/datum/reagent/sterilizine/on_touch_simple(mob/living/simple_mob/target, remaining, allocated, data, zone)
+/datum/reagent/sterilizine/on_touch_mob(mob/target, remaining, allocated, data, zone)
 	. = ..()
 	if(istype(target, /mob/living/simple_mob/slime))
 		var/mob/living/simple_mob/slime/S = target

@@ -254,13 +254,15 @@
 	glass_name = "durian paste"
 	glass_desc = "Durian paste. It smells horrific."
 
-/datum/reagent/nutriment/durian/on_touch_carbon(mob/living/carbon/target, remaining, allocated, data, zone, obj/item/organ/external/limb)
+/datum/reagent/nutriment/durian/on_touch_mob(mob/target, remaining, allocated, data, zone)
+	. = ..()
 	if(!target.isSynthetic())
 		var/message = pick("Oh god, it smells disgusting here.", "What is that stench?", "That's an awful odor.")
 		to_chat(target, "<span class='alien'>[message]</span>")
 		if(prob(clamp(allocated, 5, 90)))
-			target.vomit()
-	return ..()
+			if(iscarbon(target))
+				var/mob/living/carbon/living_target = target
+				living_target.vomit()
 
 /datum/reagent/nutriment/durian/on_touch_turf(turf/target, remaining, allocated, data)
 	var/obj/effect/debris/cleanable/chemcoating/C = new /obj/effect/debris/cleanable/chemcoating(target)

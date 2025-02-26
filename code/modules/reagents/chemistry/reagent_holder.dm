@@ -354,7 +354,7 @@
 	else
 		var/datum/reagent_holder/R = new /datum/reagent_holder(amount)
 		. = trans_to_holder(R, amount, multiplier, copy)
-		R.auto_spill(target, 1)
+		R.perform_entity_contact(target, 1)
 
 // todo: audit this proc
 /datum/reagent_holder/proc/trans_to_turf(turf/target, amount = 1, multiplier = 1, copy = 0) // Turfs don't have any reagents (at least, for now). Just touch it.
@@ -363,7 +363,7 @@
 
 	var/datum/reagent_holder/R = new /datum/reagent_holder(amount * multiplier)
 	. = trans_to_holder(R, amount, multiplier, copy)
-	R.auto_spill(target, 1)
+	R.perform_entity_contact(target, 1)
 
 /// Objects may or may not; if they do, it's probably a beaker or something and we need to transfer properly; otherwise, just touch.
 // todo: audit this proc
@@ -374,7 +374,7 @@
 	if(!target.reagents)
 		var/datum/reagent_holder/R = new /datum/reagent_holder(amount * multiplier)
 		. = trans_to_holder(R, amount, multiplier, copy)
-		R.auto_spill(target, 1)
+		R.perform_entity_contact(target, 1)
 		return
 
 	return trans_to_holder(target.reagents, amount, multiplier, copy)
@@ -402,7 +402,7 @@
 	for (var/turf/T in turfs)
 		var/datum/reagent_holder/TR = new /datum/reagent_holder(turfportion)
 		R.trans_to_holder(TR, turfportion, 1, 0)
-		#warn uh
+		TR.perform_uniform_contact(T, 1)
 		// TR.splash_turf(T)
 	qdel(R)
 
@@ -436,110 +436,6 @@
 	trans_to(T, total_volume, multiplier, copy)
 	if (total_volume <= 0)
 		qdel(src)
-
-//* Application *//
-
-/**
- * Spill us onto an entity.
- *
- * * 'auto' designates the fact that we're default handling. Use with caution; this reserves
- *   the right to do pretty much anything, really.
- * * We will always splash around a mob's limbs; there's no way to turn this off, even if 'splash' is off.
- * * Returned amount is amount removed. This doesn't actually return the amount 'consumed'.
- * * The ratio controls actual amount consumed for splash; if something isn't consumed, it's still deleted.
- *
- * The reality of this proc is that this is not enough (intentionally) to prevent reagent duping of any kind.
- *
- * If we actually enforced hard unit conservation, a lot of reagents would just not do much on splash
- * because it wouldn't apply enough to be a big deal, and we can't have it do more with less because
- * that would make the reagent too powerful.
- *
- * @params
- * * target - what to splash on
- * * ratio - % to apply
- * * keep_remaining - return unused reagents to holder. this effectively just clears a ratio of (or all) reagents after if not set
- * * splash - splash around. if it's an object, we can hit stuff around it; if it's a turf, we can hit
- *            anything on the turf.
- * * unsafe_drain_ratio - multiplier to actual drained amount. you can set this below 1
- *                        to make it drain less than it should. if you set this to a value that isn't
- *                        between 0 and 1 we will explode spectacularly so don't do it
- * * zone - target zone of a target.
- *          this might be ignored for most things.
- *          if applied directly to a bodypart, it might be overridden.
- *
- * @return amount splashed
- */
-/datum/reagent_holder/proc/auto_spill(atom/target, ratio, keep_remaining, splash, unsafe_drain_ratio)
-	SHOULD_NOT_OVERRIDE(TRUE)
-	SHOULD_NOT_SLEEP(TRUE)
-
-	if(target.atom_flags & (ATOM_ABSTRACT | ATOM_NONWORLD))
-		return 0
-
-	. = ratio * total_volume
-
-	// todo: this should probably be handled on the target-side
-	if(isturf(target))
-		for(var/id in reagent_volumes)
-			var/datum/reagent/resolved = SSchemistry.fetch_reagent(id)
-			var/vol = reagent_volumes[id]
-			var/used = resolved ? resolved.on_touch_turf(target, vol, ratio * vol, reagent_datas?[id]) : 0
-			var/drained = (keep_remaining ? used : vol) * unsafe_drain_ratio
-			if(drained)
-				remove_reagent(id, drained, TRUE)
-	else if(ismob(target))
-		for(var/id in reagent_volumes)
-			var/datum/reagent/resolved = SSchemistry.fetch_reagent(id)
-			var/vol = reagent_volumes[id]
-			var/used = resolved ? resolved.on_touch_mob(target, vol, ratio * vol, reagent_datas?[id], zone) : 0
-			var/drained = (keep_remaining ? used : vol) * unsafe_drain_ratio
-			if(drained)
-				remove_reagent(id, drained, TRUE)
-	else if(isobj(target))
-		for(var/id in reagent_volumes)
-			var/datum/reagent/resolved = SSchemistry.fetch_reagent(id)
-			var/vol = reagent_volumes[id]
-			var/used = resolved ? resolved.on_touch_obj(target, vol, ratio * vol, reagent_datas?[id]) : 0
-			var/drained = (keep_remaining ? used : vol) * unsafe_drain_ratio
-			if(drained)
-				remove_reagent(id, drained, TRUE)
-
-	if(splash)
-
-/**
- * [auto_spill()] but for turf application, usually used for sprays.
- *
- * @params
- * * target - what to splash on, whether a turf or a single atom. if it's a single atom,
- *            we will not splash around.
- * * ratio - % to apply
- * * keep_remaining - return unused reagents to holder. this effectively just clears a ratio of (or all) reagents after if not set
- * * reapplication_exclusion - a list that can be provided to provide entities that are already
- *                             sprayed on. this will be modified by this proc to associate
- *                             entities sprayed to TRUE.
- * * unsafe_drain_ratio - multiplier to actual drained amount. you can set this below 1
- *                        to make it drain less than it should. if you set this to a value that isn't
- *                        between 0 and 1 we will explode spectacularly so don't do it
- *
- * @return amount splashed
- */
-/datum/reagent_holder/proc/auto_spray(atom/target, ratio, keep_remaining, list/reapplication_exclusion = list(), unsafe_drain_ratio = 1)
-	SHOULD_NOT_OVERRIDE(TRUE)
-	SHOULD_NOT_SLEEP(TRUE)
-
-	if(target.atom_flags & (ATOM_ABSTRACT | ATOM_NONWORLD))
-		return 0
-
-	if(isturf(target))
-		for(var/atom/movable/AM as anything in target.contents)
-			if(AM.atom_flags & (ATOM_ABSTRACT | ATOM_NONWORLD))
-				continue
-			auto_spill(AM, ratio, TRUE, FALSE, unsafe_drain_ratio)
-		auto_spill(target, ratio, TRUE, FALSE, unsafe_drain_ratio)
-	else
-		if(!reapplication_exclusion[target])
-			reapplication_exclusion[target] = TRUE
-			. = auto_spill(target, ratio, keep_remaining, FALSE, unsafe_drain_ratio)
 
 //* Filtering *//
 

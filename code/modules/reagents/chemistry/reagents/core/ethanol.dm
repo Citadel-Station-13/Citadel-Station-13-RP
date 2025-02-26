@@ -25,9 +25,8 @@
 	glass_name = "ethanol"
 	glass_desc = "A well-known alcohol with a variety of applications."
 
-/datum/reagent/ethanol/on_touch_carbon(mob/living/carbon/target, remaining, allocated, data, zone, obj/item/organ/external/limb)
+/datum/reagent/ethanol/on_touch_mob(mob/target, remaining, allocated, data, zone)
 	. = ..()
-
 	var/mob/living/L = target
 	if(istype(L))
 		L.adjust_fire_stacks(allocated / 15)

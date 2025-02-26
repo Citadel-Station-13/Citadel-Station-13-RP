@@ -102,7 +102,7 @@
 	var/list/reapplication_exclusion_injection = list()
 	if(length(chemholder.reagents.reagent_volumes))
 		for(var/turf/T in wallList + targetTurfs)
-			chemholder.reagents.auto_spray(T, 1, TRUE, reapplication_exclusion_injection, 0)
+			chemholder.reagents.perform_uniform_contact(T, 1, null, reapplication_exclusion_injection)
 
 	var/color = chemholder.reagents.get_color() //build smoke icon
 	var/icon/I

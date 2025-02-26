@@ -4746,6 +4746,7 @@
 #include "code\modules\reagents\chemistry\helpers.dm"
 #include "code\modules\reagents\chemistry\machinery.dm"
 #include "code\modules\reagents\chemistry\reagent.dm"
+#include "code\modules\reagents\chemistry\reagent_holder-application.dm"
 #include "code\modules\reagents\chemistry\reagent_holder-color.dm"
 #include "code\modules\reagents\chemistry\reagent_holder-helpers.dm"
 #include "code\modules\reagents\chemistry\reagent_holder-legacy.dm"
