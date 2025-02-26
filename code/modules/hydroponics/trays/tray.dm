@@ -1,3 +1,5 @@
+// todo: use something like /datum/component/atmos_connector_attach
+// todo: /obj/machinery/hydroponics_tray or /obj/machinery/portable_atmospherics/hydroponics_tray
 /obj/machinery/portable_atmospherics/hydroponics
 	name = "hydroponics tray"
 	icon = 'icons/obj/hydroponics_machines.dmi'
@@ -233,8 +235,8 @@
 
 //Process reagents being input into the tray.
 /obj/machinery/portable_atmospherics/hydroponics/proc/process_reagents()
-
-	if(!reagents) return
+	if(!reagents)
+		return
 
 	if(reagents.total_volume <= 0)
 		return

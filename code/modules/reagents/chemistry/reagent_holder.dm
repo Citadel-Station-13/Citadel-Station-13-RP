@@ -231,6 +231,8 @@
 /datum/reagent_holder/proc/clear_reagents()
 	reagent_volumes = null
 	reagent_datas = null
+	total_volume = 0
+	temperature = initial(temperature)
 
 /datum/reagent_holder/proc/has_reagent(id, amount = 0.00001)
 	if(ispath(id))

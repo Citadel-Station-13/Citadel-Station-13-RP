@@ -20,6 +20,7 @@
 		var/effective_weight = volume * resolved_reagent.color_weight
 		switch(length(effective_color))
 			if(7)
+				total_a += 255 * effective_weight
 			if(9)
 				total_a += hex2num(copytext(resolved_reagent.color, 8, 10)) * effective_weight
 			else
