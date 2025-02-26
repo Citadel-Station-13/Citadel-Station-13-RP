@@ -271,8 +271,9 @@
 	if (valve_open)
 		user.action_feedback(SPAN_WARNING("[src]'s valve closes automatically as you yank \the [tank] out. That was close."), src)
 	valve_open = FALSE
+	. = ..()
 	update_icon()
-	return ..()
+	return .
 
 
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide
