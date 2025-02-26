@@ -171,8 +171,11 @@
 	if(ispath(id))
 		var/datum/reagent/path = id
 		id = initial(path.id)
+
+	amount = REAGENT_HOLDER_VOLUME_QUANTIZE(amount)
 	if(amount <= 0)
 		return 0
+
 	var/current = reagent_volumes?[id]
 	if(!current)
 		return
@@ -627,7 +630,7 @@
 	if(!copy)
 		for(var/id in ids_to_transfer)
 			var/datum/reagent/resolved = SSchemistry.fetch_reagent(id)
-			var/transferred = REAGENT_HOLDER_VOLUME_QUANTIZE(reagent_volumes[id] * ratio)
+			var/transferred = reagent_volumes[id] * ratio
 			. += transferred
 			target.add_reagent(
 				id,
@@ -639,7 +642,7 @@
 	else
 		for(var/id in ids_to_transfer)
 			var/datum/reagent/resolved = SSchemistry.fetch_reagent(id)
-			var/transferred = REAGENT_HOLDER_VOLUME_QUANTIZE(reagent_volumes[id] * ratio)
+			var/transferred = reagent_volumes[id] * ratio
 			. += transferred
 			target.add_reagent(
 				id,

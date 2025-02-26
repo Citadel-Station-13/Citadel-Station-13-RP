@@ -3,7 +3,7 @@
 
 //* Constants *//
 
-#define REAGENT_HOLDER_VOLUME_PRECISION 0.01
+#define REAGENT_HOLDER_VOLUME_PRECISION 0.00001
 #define REAGENT_HOLDER_VOLUME_QUANTIZE(VAL) round(VAL, REAGENT_HOLDER_VOLUME_PRECISION)
 
 //* flags for /datum/reagent_holder/var/reagent_holder_flags *//
