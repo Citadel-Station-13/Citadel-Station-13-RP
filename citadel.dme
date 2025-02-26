@@ -2848,7 +2848,6 @@
 #include "code\modules\examine\descriptions\structures.dm"
 #include "code\modules\examine\descriptions\telecomms.dm"
 #include "code\modules\examine\descriptions\turfs.dm"
-#include "code\modules\examine\descriptions\weapons.dm"
 #include "code\modules\fishing\fish.dm"
 #include "code\modules\fishing\fish_source.dm"
 #include "code\modules\fishing\fishing.dm"

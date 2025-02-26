@@ -1,42 +1,45 @@
 // For all intents and purposes, these work exactly the same as pump shotguns. It's unnecessary to make their own procs for them.
 
+// todo: default-unloaded, add /loaded
+// todo: shouldn't be /shotgun/pump, should just be /bolt_action_rifle or something
 /obj/item/gun/projectile/ballistic/shotgun/pump/rifle
 	name = "bolt action rifle"
 	desc = "A reproduction of an almost ancient weapon design from the early 20th century. It's still popular among hunters and collectors due to its reliability. Uses 7.62mm rounds."
 	item_state = "boltaction"
 	icon_state = "boltaction"
 	fire_sound = 'sound/weapons/Gunshot_generic_rifle.ogg'
-	max_shells = 5
+	internal_magazine = TRUE
+	internal_magazine_size = 5
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a7_62mm
 	caliber = /datum/ammo_caliber/a7_62mm
+	chamber_cycle_after_fire = FALSE
 	heavy = TRUE
 	origin_tech = list(TECH_COMBAT = 1)// Old as shit rifle doesn't have very good tech.
-	ammo_type = /obj/item/ammo_casing/a7_62mm
-	load_method = SINGLE_CASING|SPEEDLOADER
 	action_sound = 'sound/weapons/riflebolt.ogg'
 	worth_intrinsic = 300
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/rifle/practice // For target practice
 	desc = "A bolt-action rifle with a lightweight synthetic wood stock, designed for competitive shooting. Comes shipped with practice rounds pre-loaded into the gun. Popular among professional marksmen. Uses 7.62mm rounds."
-	ammo_type = /obj/item/ammo_casing/a7_62mm/practice
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a7_62mm/practice
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/rifle/ceremonial
 	name = "ceremonial bolt-action rifle"
 	desc = "A bolt-action rifle with a heavy, high-quality wood stock that has a beautiful finish. Clearly not intended to be used in combat. Uses 7.62mm rounds."
 	icon_state = "boltaction_c"
 	item_state = "boltaction_c"
-	ammo_type = /obj/item/ammo_casing/a7_62mm/blank
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a7_62mm/blank
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/rifle/ceremonial/holy
 	name = "blessed bolt-action rifle"
 	desc = "A bolt-action rifle with a heavy, high-quality wood stock that has a beautiful finish. Clearly not intended to be used in combat. Uses 7.62mm rounds."
-	ammo_type = /obj/item/ammo_casing/a7_62mm/silver
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a7_62mm/silver
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/rifle/vox_hunting
 	name = "vox hunting rifle"
 	desc = "This ancient rifle bears traces of an assembly meant to house power cells, implying it used to fire energy beams. It has since been crudely modified to fire standard 7.62mm rounds."
 	icon_state = "vox_hunting"
 	item_state = "vox_hunting"
-	ammo_type = /obj/item/ammo_casing/a7_62mm
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a7_62mm
 	throw_force = 10
 	damage_force = 20
 
@@ -69,16 +72,15 @@
 	desc = "A reproduction of an almost ancient weapon design from the 19th century. This one uses a lever-action to move new rounds into the chamber. Uses .357 rounds."
 	item_state = "leveraction"
 	icon_state = "leveraction"
-	max_shells = 10
 	caliber = /datum/ammo_caliber/a357
-	load_method = SINGLE_CASING
-	ammo_type = /obj/item/ammo_casing/a357
+	internal_magazine_size = 10
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a357
 	action_sound = 'sound/weapons/riflebolt.ogg'
 	one_handed_penalty = 15
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/rifle/lever/holy
 	name = "blessed lever-action"
-	ammo_type = /obj/item/ammo_casing/a357/silver
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a357/silver
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/rifle/lever/attackby(var/obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/transforming/energy) || istype(A, /obj/item/pickaxe/plasmacutter) && w_class != WEIGHT_CLASS_NORMAL)
@@ -98,7 +100,7 @@
 			recoil = 1 // Less Ouch
 			accuracy = -5 // You know damn well why.
 			item_state = "gun"
-			max_shells = 5
+			internal_magazine_size = 5
 			slot_flags &= ~SLOT_BACK	//you can't sling it on your back
 			slot_flags |= (SLOT_BELT|SLOT_HOLSTER) //but you can wear it on your hip (how's that for a big iron) - or in a holster, why not.
 			name = "Mare's Leg"
@@ -112,7 +114,7 @@
 	desc = "An iconic manually operated lever action rifle, offering adequate stopping power due to it's still powerful cartridge while at the same time having a rather respectable firing rate due to it's mechanism. It is very probable this is a replica instead of a museum piece, but rifles of this pattern still see usage as colonist guns in some far off regions. Uses .44 rounds."
 	item_state = "levercarabine" // That isn't how carbine is spelled ya knob! :U
 	icon_state = "levercarabine"
-	max_shells = 10
+	internal_magazine_size = 10
 	caliber = /datum/ammo_caliber/a44
 	load_method = SINGLE_CASING
 	ammo_type = /obj/item/ammo_casing/a44
@@ -141,7 +143,7 @@
 			recoil = 1 // Less Ouch
 			accuracy = -5 // You know damn well why.
 			item_state = "gun"
-			max_shells = 5
+			internal_magazine_size = 5
 			slot_flags &= ~SLOT_BACK	//you can't sling it on your back
 			slot_flags |= (SLOT_BELT|SLOT_HOLSTER) //but you can wear it on your hip (how's that for a big iron) - or in a holster, why not.
 			name = "Mare's Leg"
@@ -157,7 +159,7 @@
 	icon_state = "arnold"
 	slot_flags = SLOT_BACK
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
-	max_shells = 5
+	internal_magazine_size = 5
 	caliber = /datum/ammo_caliber/a12g
 	load_method = SINGLE_CASING
 	action_sound = 'sound/weapons/riflebolt.ogg'
@@ -174,7 +176,7 @@
 	slot_flags = SLOT_BACK
 	ammo_type = /obj/item/ammo_casing/a7_62mm
 	load_method = SINGLE_CASING|SPEEDLOADER
-	max_shells = 5
+	internal_magazine_size = 5
 	caliber = /datum/ammo_caliber/a7_62mm
 	action_sound = 'sound/weapons/riflebolt.ogg'
 	animated_pump = 1
@@ -189,7 +191,7 @@
 	item_state = "boltaction"
 	icon_state = "boltaction-scoped"
 	fire_sound = 'sound/weapons/Gunshot_generic_rifle.ogg'
-	max_shells = 5
+	internal_magazine_size = 5
 	caliber = /datum/ammo_caliber/a7_62mm
 	heavy = TRUE
 	origin_tech = list(TECH_COMBAT = 1)

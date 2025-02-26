@@ -50,7 +50,7 @@
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT
 	magazine_preload = /obj/item/ammo_magazine/a9mm/large
-	magazine_restrict = /obj/item/ammo_magazine/a9mm, /obj/item/ammo_magazine/a9mm/large
+	magazine_restrict = /obj/item/ammo_magazine/a9mm
 
 	firemodes = list(
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),

@@ -72,8 +72,7 @@
 	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a Nanotrasen subsidiary. Found pretty much everywhere humans are. This one is a less-lethal variant that only accepts .45 rubber or flash magazines."
 	icon_state = "secguncomp"
 	magazine_preload = /obj/item/ammo_magazine/a45/doublestack/rubber
-	magazine_restrict = /obj/item/ammo_magazine/a45/doublestack/rubber, /obj/item/ammo_magazine/a45/doublestack/flash, /obj/item/ammo_magazine/a45/doublestack/practice
-
+	magazine_restrict = /obj/item/ammo_magazine/a45/doublestack/rubber
 	caliber = /datum/ammo_caliber/a45
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 
@@ -269,17 +268,6 @@
 /obj/item/gun/projectile/ballistic/p92x/sec
 	desc = "A widespread sidearm called the P92X which is used by military, police, and security forces across the galaxy. This one is a less-lethal variant that only accepts 9mm rubber or flash magazines."
 	magazine_preload = /obj/item/ammo_magazine/a9mm/rubber
-//	magazine_restrict = /obj/item/ammo_magazine/a9mm/rubber, /obj/item/ammo_magazine/a9mm/flash
-
-//Ported this over from the _vr before deletion. Commenting them out because I'm not sure we want these in.
-/*
-/obj/item/gun/projectile/ballistic/p92x/large/licensed
-	icon_state = "p92x-brown"
-	magazine_preload = /obj/item/ammo_magazine/a9mm/large // Spawns with big magazines that are legal.
-
-/obj/item/gun/projectile/ballistic/p92x/large/licensed/hp
-	magazine_preload = /obj/item/ammo_magazine/a9mm/large/hp // Spawns with legal hollow-point mag
-*/
 
 /obj/item/gun/projectile/ballistic/p92x/brown
 	icon_state = "p92x-brown"
@@ -313,7 +301,6 @@
 	magazine_preload = /obj/item/ammo_magazine/biomatter
 	magazine_restrict = /obj/item/ammo_magazine/biomatter
 
-
 //Hey did you ever see Kingsman? Well, you know this gun then.
 /obj/item/gun/projectile/ballistic/konigin
 	name = "Konigin-63 compact"
@@ -328,7 +315,6 @@
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
 	magazine_preload = /obj/item/ammo_magazine/a9mm/compact/double
 	magazine_restrict = /obj/item/ammo_magazine/a9mm/compact
-
 
 /obj/item/gun/projectile/ballistic/konigin
 	firemodes = list(

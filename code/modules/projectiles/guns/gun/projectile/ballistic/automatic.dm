@@ -288,7 +288,6 @@
 	desc = "The MG 42 is an antique Terran machine gun, and very few original platforms have survived to the modern day. The Schwarzlindt Arms LTD manufacturer's stamp on the body marks this as a Frontier reproduction. It is no less deadly."
 	icon_state = "mg42closed50"
 	item_state = "mg42closed"
-	max_shells = 50
 	caliber = /datum/ammo_caliber/a7_62mm
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 1, TECH_ILLEGAL = 2)
 	magazine_preload = /obj/item/ammo_magazine/a7_62mm/mg42
@@ -670,7 +669,6 @@
 	caliber = /datum/ammo_caliber/a75
 	origin_tech = list(TECH_COMBAT = 5, TECH_ILLEGAL = 2)
 	fire_sound = 'sound/weapons/gunshot/gunshot_bolter.ogg'
-	max_shells = 30
 	magazine_preload = /obj/item/ammo_magazine/a75/rifle
 	magazine_restrict = /obj/item/ammo_magazine/a75/rifle
 	magazine_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
@@ -693,7 +691,6 @@
 	description_fluff = "The HI-GP mk 2 'Onager' may perhaps be considered the one successful prototype to come out of Hephaestus' reclamatory efforts. Thanks to its large size many of the issues with ease of maintenance were successfully mitigated. However, the expense of replacing parts and the cost of the weapon's exotic ammunition still resulted in the inititative being considered a failure."
 	icon_state = "stormbolter"
 	item_state = "stormbolter"
-	max_shells = 50
 	magazine_preload = /obj/item/ammo_magazine/a75/box
 	magazine_restrict = /obj/item/ammo_magazine/a75/box
 	one_handed_penalty = 100
