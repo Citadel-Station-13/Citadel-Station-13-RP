@@ -1,4 +1,32 @@
-// The Casing //
+/obj/item/storage/secure/briefcase/nsfw_pack
+	name = "\improper NT-102b \'Hydra\' gun kit"
+	desc = "A storage case for a multi-purpose handgun. Variety hour!"
+	w_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
+
+/obj/item/storage/secure/briefcase/nsfw_pack/legacy_spawn_contents()
+	new /obj/item/gun/projectile/ballistic/microbattery/nt_hydra(src)
+	new /obj/item/ammo_magazine/microbattery/nt_hydra(src)
+	for(var/path in subtypesof(/obj/item/ammo_casing/microbattery/combat))
+		new path(src)
+
+/obj/item/storage/secure/briefcase/nsfw_pack_hos
+	name = "\improper NT-102b \'Hydra\' gun kit"
+	desc = "A storage case for a multi-purpose handgun. Variety hour!"
+	w_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
+
+/obj/item/storage/secure/briefcase/nsfw_pack_hos/legacy_spawn_contents()
+	new /obj/item/gun/projectile/ballistic/microbattery/nt_hydra(src)
+	new /obj/item/ammo_magazine/microbattery/nt_hydra(src)
+	new /obj/item/ammo_casing/microbattery/combat/lethal(src)
+	new /obj/item/ammo_casing/microbattery/combat/lethal(src)
+	new /obj/item/ammo_casing/microbattery/combat/stun(src)
+	new /obj/item/ammo_casing/microbattery/combat/stun(src)
+	new /obj/item/ammo_casing/microbattery/combat/stun(src)
+	new /obj/item/ammo_casing/microbattery/combat/net(src)
+	new /obj/item/ammo_casing/microbattery/combat/ion(src)
+
 /obj/item/ammo_casing/microbattery/combat
 	name = "\'Hydra\' microbattery - UNKNOWN"
 	desc = "A miniature battery for an energy weapon."
@@ -75,36 +103,3 @@
 			return
 		H.drop_slots_to_ground(list(SLOT_ID_SUIT, SLOT_ID_UNIFORM, SLOT_ID_BACK, SLOT_ID_SHOES, SLOT_ID_GLOVES))
 		//Hats can stay! Most other things fall off with removing these.
-
-/obj/item/ammo_casing/microbattery/combat/final
-	name = "\'Hydra\' microbattery - FINAL OPTION"
-	type_color = "#fcfc0f"
-	type_name = "<span style='color:#000000;font-weight:bold;'>FINAL OPTION</span>" //Doesn't look good in yellow in chat
-	projectile_type = /obj/projectile/beam/final_option
-
-/obj/projectile/beam/final_option
-	name = "final option beam"
-	icon_state = "omnilaser"
-	nodamage = 1
-	agony = 5
-	damage_type = DAMAGE_TYPE_HALLOSS
-	light_color = "#00CC33"
-
-	legacy_muzzle_type = /obj/effect/projectile/muzzle/laser_omni
-	legacy_tracer_type = /obj/effect/projectile/tracer/laser_omni
-	legacy_impact_type = /obj/effect/projectile/impact/laser_omni
-
-/obj/projectile/beam/final_option/on_impact(atom/target, impact_flags, def_zone, efficiency)
-	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
-		return
-
-	if(isliving(impacted))
-		var/mob/living/L = impacted
-		if(L.mind)
-			var/nif
-			if(ishuman(L))
-				var/mob/living/carbon/human/H = L
-				nif = H.nif
-			SStranscore.m_backup(L.mind,nif,one_time = TRUE)
-		L.gib()

@@ -25,4 +25,23 @@
 	/// color used for firemode color when we switch to this
 	var/microbattery_mode_color
 
-#warn impl all
+	/// allow recharging
+	var/can_recharge = TRUE
+
+	/// shots left; defaults to max
+	var/shots_remaining
+	/// shots max
+	var/shots_capacity = 0
+
+	// todo: charge costs should probably be a thing lmfao
+
+/obj/item/ammo_casing/microbattery/expend()
+	if(isnull(shots_remaining))
+		if(!shots_capacity)
+			return
+		shots_remaining = shots_capacity
+	if(shots_remaining <= 0)
+		return
+	--shots_remaining
+	. = stored
+	stored = null

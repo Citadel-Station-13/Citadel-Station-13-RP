@@ -142,11 +142,11 @@
 	new /obj/item/ammo_casing/microbattery/combat/stun(src)
 	new /obj/item/ammo_casing/microbattery/combat/net(src)
 	new /obj/item/ammo_casing/microbattery/combat/net(src)
-	new /obj/item/ammo_casing/microbattery/medical/brute3(src)
-	new /obj/item/ammo_casing/microbattery/medical/burn3(src)
-	new /obj/item/ammo_casing/microbattery/medical/stabilize2(src)
-	new /obj/item/ammo_casing/microbattery/medical/toxin3(src)
-	new /obj/item/ammo_casing/microbattery/medical/omni3(src)
+	new /obj/item/ammo_casing/microbattery/vm_aml/brute3(src)
+	new /obj/item/ammo_casing/microbattery/vm_aml/burn3(src)
+	new /obj/item/ammo_casing/microbattery/vm_aml/stabilize2(src)
+	new /obj/item/ammo_casing/microbattery/vm_aml/toxin3(src)
+	new /obj/item/ammo_casing/microbattery/vm_aml/omni3(src)
 
 /obj/item/storage/secure/briefcase/nsfw_pack_hybrid_combat
 	name = "military cell-loaded gun kit"
@@ -164,6 +164,6 @@
 	new /obj/item/ammo_casing/microbattery/combat/lethal(src)
 	new /obj/item/ammo_casing/microbattery/combat/ion(src)
 	new /obj/item/ammo_casing/microbattery/combat/xray(src)
-	new /obj/item/ammo_casing/microbattery/medical/stabilize2(src)
-	new /obj/item/ammo_casing/microbattery/medical/haste(src)
-	new /obj/item/ammo_casing/microbattery/medical/resist(src)
+	new /obj/item/ammo_casing/microbattery/vm_aml/stabilize2(src)
+	new /obj/item/ammo_casing/microbattery/vm_aml/haste(src)
+	new /obj/item/ammo_casing/microbattery/vm_aml/resist(src)

@@ -135,7 +135,9 @@
  * Uses the ammo casing, returning the projectile retrieved, updating icon, etc
  */
 /obj/item/ammo_casing/proc/expend()
-	. = lazy_init_projectile()
+	if(isnull(stored))
+		. = init_projectile()
+	stored = FALSE
 	if(isnull(.))
 		return
 	stored = FALSE
@@ -156,20 +158,12 @@
 /obj/item/ammo_casing/proc/get_projectile()
 	switch(stored)
 		if(null)
-			return lazy_init_projectile()
+			return init_projectile()
 		if(FALSE)
 			return null
 	return stored
 
 //* Projectile *//
-
-/**
- * make projectile automatically but only if we're not expended
- */
-/obj/item/ammo_casing/proc/lazy_init_projectile()
-	if(stored == FALSE)
-		return null
-	return init_projectile()
 
 /**
  * makes a new projectile

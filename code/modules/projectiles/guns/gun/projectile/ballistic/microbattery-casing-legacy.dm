@@ -6,14 +6,9 @@
 	slot_flags = SLOT_BELT | SLOT_EARS
 	throw_force = 1
 	w_class = WEIGHT_CLASS_TINY
-	var/shots_left = 4
-
 	leaves_residue = 0
 	caliber = /datum/ammo_caliber/microbattery
-	var/type_color = null
-	var/type_name = null
 	projectile_type = /obj/projectile/beam
-
 	casing_primer = CASING_PRIMER_MICROBATTERY
 
 /obj/item/ammo_casing/microbattery/Initialize(mapload)
