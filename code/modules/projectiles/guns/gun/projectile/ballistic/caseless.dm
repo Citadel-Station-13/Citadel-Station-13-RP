@@ -14,7 +14,7 @@
 
 /obj/item/gun/projectile/ballistic/caseless/prototype/update_icon_state()
 	. = ..()
-	if(ammo_magazine)
+	if(magazine)
 		icon_state = initial(icon_state)
 	else
 		icon_state = "[initial(icon_state)]-empty"

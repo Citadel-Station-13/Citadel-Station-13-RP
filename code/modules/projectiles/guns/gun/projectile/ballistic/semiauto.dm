@@ -18,7 +18,7 @@
 
 /obj/item/gun/projectile/ballistic/garand/update_icon_state()
 	. = ..()
-	if(ammo_magazine)
+	if(magazine)
 		icon_state = initial(icon_state)
 	else
 		icon_state = "[initial(icon_state)]-empty"
@@ -59,7 +59,7 @@
 
 /obj/item/gun/projectile/ballistic/apinae_stinger/update_icon_state()
 	. = ..()
-	icon_state = "apigun-[ammo_magazine ? round(ammo_magazine.amount_remaining(), 2) : "e"]"
+	icon_state = "apigun-[magazine ? round(magazine.amount_remaining(), 2) : "e"]"
 
 /obj/item/gun/projectile/ballistic/reconrifle
 	name = "Expeditionary Reconnaissance Rifle"
@@ -91,7 +91,7 @@
 
 /obj/item/gun/projectile/ballistic/reconrifle/update_icon_state()
 	. = ..()
-	if(ammo_magazine)
+	if(magazine)
 		icon_state = initial(icon_state)
 	else
 		icon_state = "[initial(icon_state)]-empty"

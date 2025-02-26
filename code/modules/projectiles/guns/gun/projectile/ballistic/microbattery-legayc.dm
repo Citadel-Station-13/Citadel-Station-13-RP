@@ -49,7 +49,7 @@
 
 	charge_left = batt.shots_left
 	max_charge = initial(batt.shots_left)
-	if(ammo_magazine) //Crawl to find more
+	if(magazine) //Crawl to find more
 		for(var/B in ammo_magazine.ammo_internal)
 			var/obj/item/ammo_casing/microbattery/bullet = B
 			if(istype(bullet,batt.type))
@@ -88,7 +88,7 @@
 
 /obj/item/gun/projectile/ballistic/microbattery/load_ammo(var/obj/item/A, mob/user)
 	. = ..()
-	if(ammo_magazine && ammo_magazine.amount_remaining())
+	if(magazine && ammo_magazine.amount_remaining())
 		switch_to(ammo_magazine.ammo_internal[1])
 
 /obj/item/gun/projectile/ballistic/microbattery/unload_ammo(mob/user, var/allow_dump=1)

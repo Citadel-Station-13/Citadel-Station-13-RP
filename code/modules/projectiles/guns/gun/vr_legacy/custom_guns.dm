@@ -150,7 +150,7 @@
 
 /obj/item/gun/projectile/ballistic/giskard/update_icon_state()
 	. = ..()
-	if(ammo_magazine && ammo_magazine.amount_remaining())
+	if(magazine && magazine.amount_remaining())
 		icon_state = "giskardcivil"
 	else
 		icon_state = "giskardcivil_empty"
@@ -167,7 +167,7 @@
 
 /obj/item/gun/projectile/ballistic/giskard/olivaw/update_icon_state()
 	. = ..()
-	if(ammo_magazine && ammo_magazine.amount_remaining())
+	if(magazine && magazine.amount_remaining())
 		icon_state = "olivawcivil"
 	else
 		icon_state = "olivawcivil_empty"
@@ -226,7 +226,7 @@
 /obj/item/gun/projectile/ballistic/automatic/sol/proc/update_charge()
 	if(!ammo_magazine)
 		return
-	var/ratio = ammo_magazine.amount_remaining() / ammo_magazine.ammo_max
+	var/ratio = magazine.amount_remaining() / magazine.ammo_max
 	if(ratio < 0.25 && ratio != 0)
 		ratio = 0.25
 	ratio = round(ratio, 0.25) * 100

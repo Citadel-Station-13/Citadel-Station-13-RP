@@ -99,7 +99,7 @@
 
 /obj/item/gun/projectile/ballistic/SVD/update_icon_state()
 	. = ..()
-	if(ammo_magazine)
+	if(magazine)
 		icon_state = "SVD"
 	else
 		icon_state = "SVD-empty"

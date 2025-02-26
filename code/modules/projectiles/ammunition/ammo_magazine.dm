@@ -39,10 +39,9 @@
 	#warn hook everything
 
 	//* for magazines *//
-	/// magazine type - must match gun's to be fitted into it, if gun's is.
-	/// * setting this to a gun's typepath is allowed, this is an arbitrary field.
-	/// * if gun's is set and we're not, this value defaults to our typepath.
-	var/magazine_restrict
+	/// magazine restrict - must match gun's to be fitted into it, if gun's is.
+	//  todo: implement when we need multi-restrictions, single-typepath-and-subtypes works for now; maybe rename to magazine_tags or magazine_allow?
+	// var/magazine_restrict
 	/// Inherent insertion delay
 	var/magazine_insert_delay = 0
 	/// Inherent removal delay
@@ -50,9 +49,8 @@
 
 	//* for speedloaders *//
 	/// speedloader type - must match gun's to fit ammo in, if gun's is set
-	/// * setting this to a gun's typepath is allowed, this is an arbitrary field.
-	/// * if gun's is set and we're not, this value defaults to our typepath.
-	var/speedloader_restrict
+	//  todo: implement when we need multi-restrictions, single-typepath-and-subtypes works for now; maybe rename to magazine_tags or magazine_allow?
+	// var/speedloader_restrict
 	/// inherent speedloader delay, added to gun's speedloaders_delay
 	var/speedloader_delay = 0
 

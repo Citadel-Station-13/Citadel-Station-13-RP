@@ -23,7 +23,7 @@
 
 /obj/item/gun/projectile/ballistic/automatic/k25/update_icon_state()
 	. = ..()
-	if(ammo_magazine)
+	if(magazine)
 		icon_state = "k25"
 	else
 		icon_state = "k25-empty"

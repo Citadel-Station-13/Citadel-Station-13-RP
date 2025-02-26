@@ -12,7 +12,7 @@
 
 /obj/item/gun/projectile/ballistic/colt/update_icon_state()
 	. = ..()
-	if(ammo_magazine)
+	if(magazine)
 		if(unique_reskin)
 			icon_state = unique_reskin
 		else
@@ -154,7 +154,7 @@
 
 /obj/item/gun/projectile/ballistic/gyropistol/bolter/update_icon_state()
 	. = ..()
-	icon_state = "bolt_pistol-[ammo_magazine ? round(ammo_magazine.amount_remaining(), 2) : "empty"]"
+	icon_state = "bolt_pistol-[magazine ? round(magazine.amount_remaining(), 2) : "empty"]"
 
 /obj/item/gun/projectile/ballistic/gyropistol/bolter/black
 	desc = "A boxy sidearm seemingly designed for a larger hand. This one is painted black."
@@ -163,7 +163,7 @@
 
 /obj/item/gun/projectile/ballistic/gyropistol/bolter/black/update_icon_state()
 	. = ..()
-	icon_state = "bolt_pistolblack-[ammo_magazine ? round(ammo_magazine.amount_remaining(), 2) : "empty"]"
+	icon_state = "bolt_pistolblack-[magazine ? round(magazine.amount_remaining(), 2) : "empty"]"
 
 /obj/item/gun/projectile/ballistic/pistol
 	name = "compact pistol"
@@ -481,7 +481,7 @@
 
 /obj/item/gun/projectile/ballistic/apinae_pistol/update_icon_state()
 	. = ..()
-	icon_state = "apipistol-[ammo_magazine ? round(ammo_magazine.amount_remaining(), 2) : "e"]"
+	icon_state = "apipistol-[magazine ? round(magazine.amount_remaining(), 2) : "e"]"
 
 //Tyrmalin Weapons
 /obj/item/gun/projectile/ballistic/pirate/junker_pistol

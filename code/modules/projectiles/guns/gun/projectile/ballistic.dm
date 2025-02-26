@@ -31,6 +31,12 @@
 	var/magazine_class = MAGAZINE_CLASSES_DEFAULT_FIT
 	/// Magazine restrict; restricts inserted magazines to those that
 	/// match this.
+	///
+	/// How this is checked:
+	/// * [magazine_class] is applied first, and will reject the magazine if it doesn't match.
+	/// * If this is a path, that path and its subtypes are allowed.
+	///
+	//  todo: are multi-restrictions necessary? a single type-and-subtypes seems to work fine for now.
 	var/magazine_restrict
 	/// Magazine insert sound
 	var/magazine_insert_sound = 'sound/weapons/guns/interaction/pistol_magin.ogg'
@@ -51,6 +57,11 @@
 	var/speedloader_allowed = TRUE
 	/// Speedloader restrict; restricts speedloader usage to speedloader magazines
 	/// that match this.
+	///
+	/// How this is checked:
+	/// * If this is a path, that path and its subtypes are allowed.
+	///
+	//  todo: are multi-restrictions necessary? a single type-and-subtypes seems to work fine for now.
 	var/speedloader_restrict
 	/// Delay for speedloader refills
 	var/speedloader_delay
@@ -218,7 +229,7 @@
 				chambered.randomize_offsets_after_eject()
 				playsound(src.loc, "casing", 50, 1)
 		if(CYCLE_CASINGS) //cycle the casing back to the end.
-			if(ammo_magazine)
+			if(magazine)
 				CRASH("attempted to cycle casing with a mag in; guncode doesn't support this use case, this is for revolver-likes only currently!")
 			loaded += chambered
 
@@ -238,7 +249,7 @@
 			to_chat(user, SPAN_WARNING("[AM] won't load into [src]!"))
 			return
 		if(AM.magazine_type & MAGAZINE_TYPE_NORMAL)
-			if(ammo_magazine)
+			if(magazine)
 				if(user.a_intent == INTENT_HELP || user.a_intent == INTENT_DISARM)
 					to_chat(user, SPAN_WARNING("[src] already has a magazine loaded."))//already a magazine here
 					return
@@ -332,7 +343,7 @@
 
 //attempts to unload src. If allow_dump is set to 0, the speedloader unloading method will be disabled
 /obj/item/gun/projectile/ballistic/proc/unload_ammo(mob/user, var/allow_dump=1)
-	if(ammo_magazine)
+	if(magazine)
 		user.put_in_hands_or_drop(ammo_magazine)
 		user.visible_message("[user] removes [ammo_magazine] from [src].", "<span class='notice'>You remove [ammo_magazine] from [src].</span>")
 		playsound(src.loc, mag_remove_sound, 50, 1)
@@ -404,7 +415,7 @@
 			)
 		if(auto_eject_sound)
 			playsound(user, auto_eject_sound, 40, 1)
-		ammo_magazine.update_icon()
+		magazine.update_icon()
 		ammo_magazine = null
 		update_icon() //make sure to do this after unsetting ammo_magazine
 
@@ -454,8 +465,6 @@
 		return FALSE
 	return TRUE
 
-//* Caliber *//
-
 /**
  * Accepts:
  *
@@ -469,6 +478,29 @@
 	var/datum/ammo_caliber/ours = resolve_caliber(caliber)
 	var/datum/ammo_caliber/theirs = resolve_caliber(caliberlike)
 	return ours.equivalent(theirs)
+
+/**
+ * Can accept a specific 'restrict' value
+ *
+ * @params
+ * * requested - our side; what we accept
+ * * provided - magazine side; what they give
+ * * provided_path - magazine path
+ */
+/obj/item/gun/projectile/ballistic/proc/check_magazine_restrict(requested, provided, provided_path)
+	// 0. if no magazine restrict is set, accept.
+	if(isnull(requested))
+		return TRUE
+	// 1. if they are the type of 'magazine_restrict' or a related variable, accept.
+	if(ispath(provided_path, requested))
+		return TRUE
+	return FALSE
+
+/obj/item/gun/projectile/ballistic/proc/accepts_magazine(obj/item/ammo_magazine/magazine)
+	return magazine_restrict ? check_magazine_restrict(magazine_restrict, null, magazine.type) : TRUE
+
+/obj/item/gun/projectile/ballistic/proc/accepts_speedloader(obj/item/ammo_magazine/magazine)
+	return speedloader_restrict ? check_magazine_restrict(speedloader_restrict, null, magazine.type) : TRUE
 
 //* Rendering *//
 
@@ -492,7 +524,7 @@
 	// todo: render_break_overlay
 	// todo: render_bolt_overlay
 	if(render_magazine_overlay)
-		if(ammo_magazine)
+		if(magazine)
 			var/overlay = get_magazine_overlay_for(ammo_magazine)
 			if(overlay)
 				add_overlay(overlay)
