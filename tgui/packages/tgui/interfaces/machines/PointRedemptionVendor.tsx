@@ -59,7 +59,7 @@ export const PointRedemptionVendor = (props, context) => {
                       <Button.Confirm color="transparent"
                         content="Vend" onClick={() => act('vend', {
                           name: item.name,
-                          index: index,
+                          index: index + 1,
                         })} />
                     </Stack.Item>
                   </Stack>

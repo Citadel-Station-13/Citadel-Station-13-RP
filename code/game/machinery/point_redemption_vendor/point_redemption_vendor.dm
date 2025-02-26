@@ -110,7 +110,7 @@
 				var/obj/item/active_held = e_args.performer.get_active_held_item()
 				handle_id_insertion(active_held, e_args)
 			return TRUE
-		if("buy")
+		if("vend")
 			if(!inserted_id)
 				return TRUE
 			// double-verify incase entry changed; we don't give them the refs though so
