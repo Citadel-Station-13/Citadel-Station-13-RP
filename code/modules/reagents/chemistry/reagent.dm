@@ -361,6 +361,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  *               this might be over remaining, due to how call order works. always check remaining.
  * * data - our reagent data, if any
  *
+ * todo: add temperature
+ *
  * @return amount used, if any
  */
 /datum/reagent/proc/on_touch_obj(obj/target, remaining, allocated, data)
@@ -375,6 +377,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * * allocated - how much is supposed to be hitting the turf (useful for sprays)
  *               this might be over remaining, due to how call order works. always check remaining.
  * * data - our reagent data, if any
+ *
+ * todo: add temperature
  *
  * @return amount used, if any
  */
@@ -394,6 +398,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  *               it might be useful to subtract from this in overrides before invoking ..() sometimes.
  * * data - our reagent data, if any
  * * zone - (optional) the body zone targeted
+ *
+ * todo: add temperature
  *
  * @return amount used, if any
  */

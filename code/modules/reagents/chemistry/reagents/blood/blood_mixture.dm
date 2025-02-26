@@ -139,10 +139,16 @@
  * * self_volume - our volume
  */
 /datum/blood_mixture/proc/unsafe_merge_other_into_self(datum/blood_mixture/other, other_volume, self_volume)
-	legacy_antibodies |= other.legacy_antibodies
-	legacy_is_synthetic ||= other.legacy_is_synthetic
-	legacy_virus2 |= other.legacy_virus2
-	legacy_trace_chem ||= other.legacy_trace_chem
+	if(other.legacy_antibodies)
+		LAZYDISTINCTADD(legacy_antibodies, other.legacy_antibodies)
+	if(other.legacy_is_synthetic)
+		legacy_is_synthetic ||= other.legacy_is_synthetic
+	if(other.legacy_virus2)
+		LAZYDISTINCTADD(legacy_virus2, other.legacy_virus2)
+	if(other.legacy_trace_chem)
+		var/list/yikes = length(legacy_trace_chem) ? params2list(legacy_trace_chem) : list()
+		yikes ||= params2list(other.legacy_trace_chem)
+		legacy_trace_chem = list2params(yikes)
 
 	if(!self_volume)
 		fragment_ratios = list()

@@ -633,13 +633,23 @@
 		for(var/id in ids_to_transfer)
 			var/datum/reagent/resolved = SSchemistry.fetch_reagent(id)
 			var/transferred = reagent_volumes[id] * ratio
-			target.add_reagent(id, transferred, resolved.make_copy_data_initializer(reagent_datas[id]), TRUE)
+			target.add_reagent(
+				id,
+				transferred,
+				resolved.holds_data ? resolved.make_copy_data_initializer(reagent_datas?[id]) : null,
+				TRUE,
+			)
 			remove_reagent(id, transferred, TRUE)
 	else
 		for(var/id in ids_to_transfer)
 			var/datum/reagent/resolved = SSchemistry.fetch_reagent(id)
 			var/transferred = reagent_volumes[id] * ratio
-			target.add_reagent(id, transferred, resolved.make_copy_data_initializer(reagent_datas[id]), TRUE)
+			target.add_reagent(
+				id,
+				transferred,
+				resolved.holds_data ? resolved.make_copy_data_initializer(reagent_datas?[id]) : null,
+				TRUE,
+			)
 
 	if(!defer_reactions)
 		if(!copy)

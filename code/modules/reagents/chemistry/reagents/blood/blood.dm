@@ -28,10 +28,14 @@
 /datum/reagent/blood/make_copy_data_initializer(datum/blood_mixture/data)
 	return data
 
+/datum/reagent/blood/preprocess_data(data_initializer)
+	return data_initializer
+
 /datum/reagent/blood/mix_data(datum/blood_mixture/old_data, old_volume, datum/blood_mixture/new_data, new_volume, datum/reagent_holder/holder)
 	if(!old_data)
 		old_data = new
-	old_data.unsafe_merge_other_into_self(new_data, new_volume, old_volume)
+	if(new_data)
+		old_data.unsafe_merge_other_into_self(new_data, new_volume, old_volume)
 	return old_data
 
 /datum/reagent/blood/on_touch_turf(turf/target, remaining, allocated, data)

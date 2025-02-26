@@ -17,15 +17,17 @@
 		var/volume = reagent_volumes[id]
 		var/datum/reagent/resolved_reagent = SSchemistry.reagent_lookup[id]
 		var/effective_color = resolved_reagent.holds_data ? resolved_reagent.compute_color_with_data(reagent_datas?[resolved_reagent.id]) : resolved_reagent.color
-		switch(effective_color)
+		var/effective_weight = volume * resolved_reagent.color_weight
+		switch(length(effective_color))
 			if(7)
 			if(9)
-				total_a += hex2num(copytext(resolved_reagent.color, 8, 10)) * volume * resolved_reagent.color_weight
+				total_a += hex2num(copytext(resolved_reagent.color, 8, 10)) * effective_weight
 			else
 				// todo: this should be checked in reagent init. just runtime at this point.
 				stack_trace("reagent id [id] has an incorrect color set: [resolved_reagent.color]")
 				resolved_reagent.color = "#ffffff"
-		total_r += hex2num(copytext(resolved_reagent.color, 2, 4)) * volume * resolved_reagent.color_weight
-		total_g += hex2num(copytext(resolved_reagent.color, 4, 6)) * volume * resolved_reagent.color_weight
-		total_b += hex2num(copytext(resolved_reagent.color, 6, 8)) * volume * resolved_reagent.color_weight
+		total_r += hex2num(copytext(resolved_reagent.color, 2, 4)) * effective_weight
+		total_g += hex2num(copytext(resolved_reagent.color, 4, 6)) * effective_weight
+		total_b += hex2num(copytext(resolved_reagent.color, 6, 8)) * effective_weight
+		total_weight += effective_weight
 	return rgb(total_r / total_weight, total_g / total_weight, total_b / total_weight, total_a / total_weight)
