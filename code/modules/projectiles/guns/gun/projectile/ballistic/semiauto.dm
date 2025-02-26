@@ -40,6 +40,7 @@
 
 	toggle_scope(2.0)
 
+// todo: default-unloaded, add /loaded
 /obj/item/gun/projectile/ballistic/apinae_stinger
 	name = "\improper Apinae Stinger Rifle"
 	desc = "A biotechnological marvel, this living rifle can grow its ammo when provided with liquified wax. It fires poisonous bolts of barbed chitin."
@@ -51,16 +52,15 @@
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_BIO = 7)
 	slot_flags = SLOT_BACK
 	fire_sound = 'sound/weapons/rifleshot.ogg'
-	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/biovial
-	allowed_magazines = list(/obj/item/ammo_magazine/biovial)
-	projectile_type = /obj/projectile/bullet/organic/stinger
+	magazine_preload = /obj/item/ammo_magazine/biovial
+	magazine_restrict = /obj/item/ammo_magazine/biovial
 	one_handed_penalty = 25
 
 /obj/item/gun/projectile/ballistic/apinae_stinger/update_icon_state()
 	. = ..()
 	icon_state = "apigun-[magazine ? round(magazine.amount_remaining(), 2) : "e"]"
 
+// todo: default-unloaded, add /loaded
 /obj/item/gun/projectile/ballistic/reconrifle
 	name = "Expeditionary Reconnaissance Rifle"
 	desc = "A bullpup semi-automatic designated marksman's rifle outfitted with a 4x magnification scope. The purple stripe running the length of it's retro beige furniture indicates that this belongs to Nanotrasen Exploration personnel."
@@ -71,14 +71,14 @@
 	fire_sound = 'sound/weapons/Gunshot_heavy.ogg'
 	load_method = MAGAZINE
 	caliber = /datum/ammo_caliber/a7_62mm
-	magazine_type = /obj/item/ammo_magazine/a7_62mm
-	allowed_magazines = list(/obj/item/ammo_magazine/a7_62mm)
+	magazine_preload = /obj/item/ammo_magazine/a7_62mm
+	magazine_restrict = /obj/item/ammo_magazine/a7_62mm
 	projectile_type = /obj/projectile/bullet/rifle/a762
 	w_class = WEIGHT_CLASS_HUGE
 	accuracy = 70
 	scoped_accuracy = 100
-	mag_insert_sound = 'sound/weapons/guns/interaction/batrifle_magin.ogg'
-	mag_remove_sound = 'sound/weapons/guns/interaction/batrifle_magout.ogg'
+	magazine_insert_sound = 'sound/weapons/guns/interaction/batrifle_magin.ogg'
+	magazine_remove_sound = 'sound/weapons/guns/interaction/batrifle_magout.ogg'
 	heavy = TRUE
 	one_handed_penalty = 20
 

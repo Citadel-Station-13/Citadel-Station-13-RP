@@ -4,8 +4,8 @@
 	icon_state = "rocket"
 	item_state = "rocket"
 	caliber = /datum/ammo_caliber/rocket
-	max_shells = 1
-	load_method = SINGLE_CASING
+	internal_magazine = TRUE
+	internal_magazine_size = 1
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	throw_speed = 2
@@ -228,7 +228,7 @@
 
 /obj/item/gun/projectile/ballistic/rocket/tyrmalin_advanced/update_icon_state()
 	. = ..()
-	if(loaded.len)
+	if(get_ammo_remaining())
 		icon_state = "[initial(icon_state)]-loaded"
 	else
 		icon_state = "[initial(icon_state)]"

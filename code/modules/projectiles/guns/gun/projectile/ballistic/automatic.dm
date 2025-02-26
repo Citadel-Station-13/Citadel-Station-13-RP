@@ -4,8 +4,8 @@
 	icon_state = "c05r"	//Used because it's not used anywhere else
 	load_method = SPEEDLOADER
 	ammo_type = /obj/item/ammo_casing/a9mm
-	mag_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
-	mag_remove_sound = 'sound/weapons/guns/interaction/smg_magout.ogg'
+	magazine_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
+	magazine_remove_sound = 'sound/weapons/guns/interaction/smg_magout.ogg'
 //Burst is the number of bullets fired; Fire delay is the time you have to wait to shoot the gun again, Move delay is the same but for moving after shooting. .
 //Burst accuracy is the accuracy of each bullet fired in the burst. Dispersion is how much the bullets will 'spread' away from where you aimed.
 
@@ -347,8 +347,8 @@
 	magazine_restrict = /obj/item/ammo_magazine/a12g/drum
 	heavy = TRUE
 	one_handed_penalty = 30 //The AA12 can be fired one-handed fairly easily.
-	mag_insert_sound = 'sound/weapons/guns/interaction/lmg_magin.ogg'
-	mag_remove_sound = 'sound/weapons/guns/interaction/lmg_magout.ogg'
+	magazine_insert_sound = 'sound/weapons/guns/interaction/lmg_magin.ogg'
+	magazine_remove_sound = 'sound/weapons/guns/interaction/lmg_magout.ogg'
 
 	firemodes = list(
 		list(mode_name="semiauto", burst=1, fire_delay=0),
