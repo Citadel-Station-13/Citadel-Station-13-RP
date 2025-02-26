@@ -217,7 +217,7 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 		return ..()
 
 	// todo: ??? why is this here ???
-	reset_blood_to_species_if_needed()
+	reset_blood_to_species_if_needed(TRUE)
 
 	// at some point we'll simulate immune system but for now this is just
 	// raw conversion to toxin
