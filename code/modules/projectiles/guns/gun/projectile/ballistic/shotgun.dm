@@ -12,7 +12,7 @@
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
 	load_method = SINGLE_CASING|SPEEDLOADER
 	ammo_type = /obj/item/ammo_casing/a12g/beanbag
-	projectile_type = /obj/projectile/bullet/shotgun
+
 	handle_casings = HOLD_CASINGS
 	one_handed_penalty = 15
 	var/recentpump = 0 // to prevent spammage
@@ -261,7 +261,7 @@
 	caliber = /datum/ammo_caliber/a12g
 	accuracy = -15 //Its a flaregun and you expected accuracy?
 	ammo_type = /obj/item/ammo_casing/a12g/flare
-	projectile_type = /obj/projectile/energy/flash
+
 	one_handed_penalty = 0
 	worth_intrinsic = 150
 
@@ -321,7 +321,7 @@
 	damage_force = 5
 	caliber = /datum/ammo_caliber/foam
 	ammo_type = /obj/item/ammo_casing/foam
-	projectile_type = /obj/projectile/bullet/reusable/foam
+
 	one_handed_penalty = 5
 	fire_sound = 'sound/items/syringeproj.ogg'
 

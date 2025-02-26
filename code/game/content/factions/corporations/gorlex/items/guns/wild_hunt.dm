@@ -9,9 +9,9 @@
 	caliber = /datum/ammo_caliber/a12_7mm
 	recoil = 1
 	accuracy = -10
-	allowed_magazines = list(/obj/item/ammo_magazine/a12_7mm/wild_hunt)
+	magazine_restrict = /obj/item/ammo_magazine/a12_7mm/wild_hunt
+	magazine_auto_eject = TRUE
 	one_handed_penalty = 100 //you simply do not
-	auto_eject = 1
 	fire_sound = 'sound/weapons/gunshot/gunshot_tech_huge.ogg'
 	render_use_legacy_by_default = FALSE
 

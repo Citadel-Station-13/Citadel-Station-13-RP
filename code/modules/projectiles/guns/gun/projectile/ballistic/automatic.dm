@@ -1,18 +1,3 @@
-/obj/item/gun/projectile/ballistic/automatic //This should never be spawned in, it is just here because of code necessities.
-	name = "daka SMG"
-	desc = "A small SMG. You really shouldn't be able to get this gun. Uses 9mm rounds."
-	icon_state = "c05r"	//Used because it's not used anywhere else
-	load_method = SPEEDLOADER
-	ammo_type = /obj/item/ammo_casing/a9mm
-	magazine_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
-	magazine_remove_sound = 'sound/weapons/guns/interaction/smg_magout.ogg'
-//Burst is the number of bullets fired; Fire delay is the time you have to wait to shoot the gun again, Move delay is the same but for moving after shooting. .
-//Burst accuracy is the accuracy of each bullet fired in the burst. Dispersion is how much the bullets will 'spread' away from where you aimed.
-
-	firemodes = list(
-		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
-		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    burst_accuracy=list(60,30,0), dispersion=list(0.0, 0.6, 1.0)))
-
 /obj/item/gun/projectile/ballistic/automatic/advanced_smg
 	name = "advanced SMG"
 	desc = "The NT-S3W is an advanced submachine gun design, using a reflective laser optic for increased accuracy over competing models. Chambered for 9mm rounds."
@@ -21,7 +6,9 @@
 	caliber = /datum/ammo_caliber/a9mm
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT
-	allowed_magazines = list(/obj/item/ammo_magazine/a9mm/advanced_smg, /obj/item/ammo_magazine/a9mm)
+	magazine_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
+	magazine_remove_sound = 'sound/weapons/guns/interaction/smg_magout.ogg'
+	magazine_restrict = /obj/item/ammo_magazine/a9mm/advanced_smg
 
 	firemodes = list(
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
@@ -44,6 +31,8 @@
 	slot_flags = SLOT_BELT|SLOT_BACK
 	magazine_preload = /obj/item/ammo_magazine/a10mm
 	magazine_restrict = /obj/item/ammo_magazine/a10mm
+	magazine_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
+	magazine_remove_sound = 'sound/weapons/guns/interaction/smg_magout.ogg'
 	magazine_auto_eject = TRUE
 
 	one_handed_penalty = 15
@@ -102,7 +91,9 @@
 	slot_flags = SLOT_BELT
 	magazine_preload = /obj/item/ammo_magazine/a9mm/top_mount/rubber
 	magazine_restrict = /obj/item/ammo_magazine/a9mm/top_mount
-	projectile_type = /obj/projectile/bullet/pistol/medium
+	magazine_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
+	magazine_remove_sound = 'sound/weapons/guns/interaction/smg_magout.ogg'
+
 	worth_intrinsic = 450
 
 /obj/item/gun/projectile/ballistic/automatic/wt550/update_icon_state()
@@ -145,7 +136,7 @@
 	origin_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 3)
 	slot_flags = SLOT_BACK
 	magazine_preload = /obj/item/ammo_magazine/a7_62mm
-	allowed_magazines = list(/obj/item/ammo_magazine/a7_62mm)
+	magazine_restrict = /obj/item/ammo_magazine/a7_62mm
 	magazine_auto_eject = TRUE
 	magazine_insert_sound = 'sound/weapons/guns/interaction/batrifle_magin.ogg'
 	magazine_remove_sound = 'sound/weapons/guns/interaction/batrifle_magout.ogg'
@@ -216,7 +207,6 @@
 	caliber = /datum/ammo_caliber/a5_56mm
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 2)
 	slot_flags = SLOT_BACK
-	load_method = MAGAZINE
 	magazine_preload = /obj/item/ammo_magazine/a5_56mm/saw
 	magazine_restrict = /obj/item/ammo_magazine/a5_56mm
 	magazine_insert_sound = 'sound/weapons/guns/interaction/lmg_magin.ogg'
@@ -375,6 +365,8 @@
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 5)
 	magazine_preload = /obj/item/ammo_magazine/a45/uzi
 	magazine_restrict = /obj/item/ammo_magazine/a45/uzi
+	magazine_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
+	magazine_remove_sound = 'sound/weapons/guns/interaction/smg_magout.ogg'
 
 	firemodes = list(
 		list(mode_name="semiauto", burst=1, fire_delay=0),
@@ -415,6 +407,8 @@
 	slot_flags = SLOT_BELT // ToDo: Belt sprite.
 	magazine_preload = /obj/item/ammo_magazine/a5_7mm/p90
 	magazine_restrict = /obj/item/ammo_magazine/a5_7mm/p90
+	magazine_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
+	magazine_remove_sound = 'sound/weapons/guns/interaction/smg_magout.ogg'
 
 	firemodes = list(
 		list(mode_name="semiauto", burst=1, fire_delay=0),
@@ -450,6 +444,8 @@
 	slot_flags = SLOT_BELT // ToDo: Belt sprite.
 	magazine_preload = /obj/item/ammo_magazine/a45/tommy
 	magazine_restrict = /obj/item/ammo_magazine/a45/tommy
+	magazine_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
+	magazine_remove_sound = 'sound/weapons/guns/interaction/smg_magout.ogg'
 
 	firemodes = list(
 		list(mode_name="semiauto", burst=1, fire_delay=0),
@@ -473,6 +469,8 @@
 	slot_flags = SLOT_BACK
 	magazine_preload = /obj/item/ammo_magazine/a7_62mm
 	magazine_restrict = /obj/item/ammo_magazine/a7_62mm
+	magazine_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
+	magazine_remove_sound = 'sound/weapons/guns/interaction/smg_magout.ogg'
 	heavy = TRUE
 	one_handed_penalty = 45
 
@@ -503,6 +501,8 @@
 	slot_flags = SLOT_BACK
 	magazine_preload = /obj/item/ammo_magazine/a7_62mm
 	magazine_restrict = /obj/item/ammo_magazine/a7_62mm
+	magazine_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
+	magazine_remove_sound = 'sound/weapons/guns/interaction/smg_magout.ogg'
 	heavy = TRUE
 
 	firemodes = list(
@@ -559,6 +559,8 @@
 	slot_flags = SLOT_BACK
 	magazine_preload = /obj/item/ammo_magazine/a12g/drum/holy
 	magazine_restrict = /obj/item/ammo_magazine/a12g/drum
+	magazine_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
+	magazine_remove_sound = 'sound/weapons/guns/interaction/smg_magout.ogg'
 
 	one_handed_penalty = 40
 
@@ -587,10 +589,11 @@
 	caliber = /datum/ammo_caliber/biomatter
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
-	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/biomatter/large/banana
-	allowed_magazines = list(/obj/item/ammo_magazine/biomatter/large/banana)
-	projectile_type = /obj/projectile/bullet/organic
+	magazine_preload = /obj/item/ammo_magazine/biomatter/large/banana
+	magazine_restrict = /obj/item/ammo_magazine/biomatter/large/banana
+	magazine_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
+	magazine_remove_sound = 'sound/weapons/guns/interaction/smg_magout.ogg'
+
 
 	one_handed_penalty = 30
 
@@ -613,11 +616,10 @@
 	desc = "Although it experienced an initially successful production run, the WT274 AB-SMG was discontinued in favor of the more reliable WT550. Utilizing a twin-linked barrel assembly, the WT274's ammo consumption was a major factor in its retirement."
 	icon_state = "wt274"
 	item_state = "gun"
-	load_method = MAGAZINE
 	caliber = /datum/ammo_caliber/a45
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 5)
-	magazine_type = /obj/item/ammo_magazine/a45/wt274
-	allowed_magazines = list(/obj/item/ammo_magazine/a45/wt274)
+	magazine_preload = /obj/item/ammo_magazine/a45/wt274
+	magazine_restrict = /obj/item/ammo_magazine/a45/wt274
 	one_handed_penalty = 10
 
 	firemodes = list(
@@ -643,9 +645,10 @@
 	fire_sound = 'sound/weapons/gunshot/gunshot_uzi.wav'
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT
-	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/a5_7mm/harpy_smg/ap
-	allowed_magazines = list(/obj/item/ammo_magazine/a5_7mm/harpy_smg)
+	magazine_preload = /obj/item/ammo_magazine/a5_7mm/harpy_smg/ap
+	magazine_restrict = /obj/item/ammo_magazine/a5_7mm/harpy_smg
+	magazine_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
+	magazine_remove_sound = 'sound/weapons/guns/interaction/smg_magout.ogg'
 
 	firemodes = list(
 		list(mode_name="semiauto", burst=1, fire_delay=0),
@@ -655,7 +658,7 @@
 
 /obj/item/gun/projectile/ballistic/automatic/combat/update_icon_state()
 	. = ..()
-	icon_state = (ammo_magazine)? "combatsmg" : "combatsmg-empty"
+	icon_state = magazine? "combatsmg" : "combatsmg-empty"
 
 // Please don't spawn these regularly. I'm mostly just adding these for fun.
 /obj/item/gun/projectile/ballistic/automatic/bolter
@@ -666,11 +669,12 @@
 	item_state = "bolter"
 	caliber = /datum/ammo_caliber/a75
 	origin_tech = list(TECH_COMBAT = 5, TECH_ILLEGAL = 2)
-	load_method = MAGAZINE
 	fire_sound = 'sound/weapons/gunshot/gunshot_bolter.ogg'
 	max_shells = 30
-	magazine_type = /obj/item/ammo_magazine/a75/rifle
-	allowed_magazines = list(/obj/item/ammo_magazine/a75/rifle)
+	magazine_preload = /obj/item/ammo_magazine/a75/rifle
+	magazine_restrict = /obj/item/ammo_magazine/a75/rifle
+	magazine_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
+	magazine_remove_sound = 'sound/weapons/guns/interaction/smg_magout.ogg'
 	heavy = TRUE
 	one_handed_penalty = 80
 
@@ -690,8 +694,8 @@
 	icon_state = "stormbolter"
 	item_state = "stormbolter"
 	max_shells = 50
-	magazine_type = /obj/item/ammo_magazine/a75/box
-	allowed_magazines = list(/obj/item/ammo_magazine/a75/box)
+	magazine_preload = /obj/item/ammo_magazine/a75/box
+	magazine_restrict = /obj/item/ammo_magazine/a75/box
 	one_handed_penalty = 100
 
 	firemodes = list(
@@ -710,20 +714,20 @@
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "toy_smg"
 	caliber = /datum/ammo_caliber/foam
-	magazine_type = /obj/item/ammo_magazine/foam/smg
-	allowed_magazines = list(/obj/item/ammo_magazine/foam/smg)
+	magazine_preload = /obj/item/ammo_magazine/foam/smg
+	magazine_restrict = /obj/item/ammo_magazine/foam/smg
 	fire_sound = 'sound/items/syringeproj.ogg'
 
 /obj/item/gun/projectile/ballistic/automatic/advanced_smg/foam/update_icon_state()
 	. = ..()
-	icon_state = (ammo_magazine)? "toy_smg" : "toy_smg-empty"
+	icon_state = (magazine)? "toy_smg" : "toy_smg-empty"
 
 /obj/item/gun/projectile/ballistic/automatic/advanced_smg/foam/blue
 	icon_state = "toy_smg_blue"
 
 /obj/item/gun/projectile/ballistic/automatic/advanced_smg/foam/blue/update_icon_state()
 	. = ..()
-	icon_state = (ammo_magazine)? "toy_smg_blue" : "toy_smg_blue-empty"
+	icon_state = (magazine)? "toy_smg_blue" : "toy_smg_blue-empty"
 
 //Foam c20r
 /obj/item/gun/projectile/ballistic/automatic/c20r/foam
@@ -733,9 +737,9 @@
 	icon_state = "toy_c20"
 	damage_force = 5
 	caliber = /datum/ammo_caliber/foam
-	magazine_type = /obj/item/ammo_magazine/foam/smg
-	allowed_magazines = list(/obj/item/ammo_magazine/foam/smg)
-	projectile_type = /obj/projectile/bullet/reusable/foam
+	magazine_preload = /obj/item/ammo_magazine/foam/smg
+	magazine_restrict = /obj/item/ammo_magazine/foam/smg
+
 	one_handed_penalty = 5
 	fire_sound = 'sound/items/syringeproj.ogg'
 
@@ -754,9 +758,9 @@
 	icon_state = "toy_lmgclosed100"
 	damage_force = 5
 	caliber = /datum/ammo_caliber/foam
-	magazine_type = /obj/item/ammo_magazine/foam/lmg
-	allowed_magazines = list(/obj/item/ammo_magazine/foam/lmg)
-	projectile_type = /obj/projectile/bullet/reusable/foam
+	magazine_preload = /obj/item/ammo_magazine/foam/lmg
+	magazine_restrict = /obj/item/ammo_magazine/foam/lmg
+
 	one_handed_penalty = 45 //It's plastic.
 	fire_sound = 'sound/items/syringeproj.ogg'
 	heavy = FALSE

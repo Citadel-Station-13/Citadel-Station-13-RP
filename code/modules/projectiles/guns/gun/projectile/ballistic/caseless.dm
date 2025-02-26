@@ -7,9 +7,8 @@
 	caliber = /datum/ammo_caliber/a5mm
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 3)
 	slot_flags = SLOT_BACK
-	load_method = MAGAZINE
 	magazine_type = null // R&D builds this. Starts unloaded.
-	allowed_magazines = list(/obj/item/ammo_magazine/m5mmcaseless)
+	magazine_restrict = /obj/item/ammo_magazine/m5mmcaseless
 	one_handed_penalty = 15
 
 /obj/item/gun/projectile/ballistic/caseless/prototype/update_icon_state()
@@ -20,7 +19,7 @@
 		icon_state = "[initial(icon_state)]-empty"
 
 /obj/item/gun/projectile/ballistic/caseless/prototype/loaded
-	magazine_type = /obj/item/ammo_magazine/m5mmcaseless
+	magazine_preload = /obj/item/ammo_magazine/m5mmcaseless
 
 /obj/item/gun/projectile/ballistic/caseless/pellet
 	name = "pellet gun"

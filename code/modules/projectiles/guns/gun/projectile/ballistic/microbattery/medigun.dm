@@ -9,7 +9,7 @@
 	description_fluff = "The Vey-Med AML 'Medigun' allows one to customize their loadout in the field, or before deploying, to allow emergency response personnel to deliver a variety of ranged healing options."
 	description_antag = ""
 	origin_tech = list(TECH_MATERIAL = 4, TECH_MAGNET = 2, TECH_BIO = 5)
-	allowed_magazines = list(/obj/item/ammo_magazine/microbattery/medical)
+	magazine_restrict = /obj/item/ammo_magazine/microbattery/medical
 	no_pin_required = 1
 
 /obj/item/gun/projectile/ballistic/microbattery/medical/cmo

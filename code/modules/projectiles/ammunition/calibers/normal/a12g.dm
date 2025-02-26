@@ -263,7 +263,7 @@
 	base_icon_state = "shotgun-clip"
 	ammo_caliber = /datum/ammo_caliber/a12g
 	materials_base = list(MAT_STEEL = 1440)
-	magazine_type = MAGAZINE_TYPE_POUCH
+	magazine_type = NONE
 	ammo_preload = /obj/item/ammo_casing/a12g
 	ammo_current = 0
 	ammo_max = 4

@@ -72,8 +72,8 @@
 				return
 		else if(istype(G, /obj/item/gun/projectile/ballistic/microbattery))
 			var/obj/item/gun/projectile/ballistic/microbattery/gunny = G
-			if(gunny.ammo_magazine)
-				var/obj/item/ammo_magazine/microbattery/maggy = gunny.ammo_magazine
+			if(gunny.magazine)
+				var/obj/item/ammo_magazine/microbattery/maggy = gunny.magazine
 				if(!maggy.amount_remaining())
 					to_chat(user, "\The [G] does not have any cell in its magazine installed.")
 					return
@@ -182,7 +182,7 @@
 
 		else if(istype(charging, /obj/item/gun/projectile/ballistic/microbattery))
 			var/obj/item/gun/projectile/ballistic/microbattery/gunny = charging
-			charge_mag(gunny.ammo_magazine)
+			charge_mag(gunny.magazine)
 
 /obj/machinery/recharger/proc/charge_mag(obj/item/ammo_magazine/microbattery/maggy)
 	var/tally = maggy.amount_remaining()

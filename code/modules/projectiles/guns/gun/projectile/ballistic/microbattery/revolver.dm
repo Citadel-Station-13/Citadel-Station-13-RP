@@ -7,7 +7,7 @@
 	//catalogue_data = list(/datum/category_item/catalogue/information/organization/nanotrasen)
 
 	description_fluff = "The Nanotrasen 'Nanotech Selectable Fire Weapon' allows one to customize their loadout in the field, or before deploying, to achieve various results in a weapon they are already familiar with wielding."
-	allowed_magazines = list(/obj/item/ammo_magazine/microbattery/combat)
+	magazine_restrict = /obj/item/ammo_magazine/microbattery/combat
 
 /obj/item/gun/projectile/ballistic/microbattery/combat/prototype
 	name = "prototype cell-loaded revolver"
@@ -17,7 +17,7 @@
 
 	description_info = "This gun is an energy weapon that uses interchangable microbatteries in a magazine. Each battery is a different beam type, and up to three can be loaded in the magazine. Each battery usually provides four discharges of that beam type, and multiple from the same type may be loaded to increase the number of shots for that type."
 	description_antag = ""
-	allowed_magazines = list(/obj/item/ammo_magazine/microbattery/combat/prototype)
+	magazine_restrict = /obj/item/ammo_magazine/microbattery/combat/prototype
 
 	origin_tech = list(TECH_COMBAT = 7, TECH_MATERIAL = 4, TECH_MAGNETS = 3)
 

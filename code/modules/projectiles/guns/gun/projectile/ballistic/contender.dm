@@ -8,7 +8,7 @@
 	internal_magazine_preload_ammo = /obj/item/ammo_casing/a357
 	internal_magazine_size = 1
 	chamber_eject_after_fire = FALSE
-	projectile_type = /obj/projectile/bullet/pistol/strong
+
 	load_method = SINGLE_CASING
 	heavy = TRUE
 	var/icon_retracted = "pockrifle-empty"
@@ -87,7 +87,7 @@
 	item_state = "revolver"
 	caliber = /datum/ammo_caliber/a12g
 	ammo_type = /obj/item/ammo_casing/a12g/improvised
-	projectile_type = /obj/projectile/bullet/shotgun
+
 	unstable = 1
 
 /obj/item/gun/projectile/ballistic/contender/pipegun/consume_next_projectile(datum/gun_firing_cycle/cycle)

@@ -11,10 +11,9 @@
 	max_shells = 36
 	caliber = /datum/ammo_caliber/a9_5mm
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
-	magazine_type = /obj/item/ammo_magazine/m95
-	allowed_magazines = list(/obj/item/ammo_magazine/m95)
+	magazine_preload = /obj/item/ammo_magazine/m95
+	magazine_restrict = /obj/item/ammo_magazine/m95
 	fire_sound = 'sound/weapons/battlerifle.ogg'
-	load_method = MAGAZINE
 	slot_flags = SLOT_BACK
 	one_handed_penalty = 60 // The weapon itself is heavy
 
@@ -27,7 +26,7 @@
 	if(istype(ammo_magazine,/obj/item/ammo_magazine/m95))
 		icon_state = "battlerifle"
 	else
-		icon_state = (ammo_magazine)? "battlerifle" : "battlerifle_empty"
+		icon_state = magazine? "battlerifle" : "battlerifle_empty"
 
 // For general use
 /obj/item/gun/projectile/ballistic/shotgun/pump/JSDF
@@ -50,9 +49,8 @@
 	caliber = /datum/ammo_caliber/a9mm
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT
-	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/a9mm/large
-	allowed_magazines = list(/obj/item/ammo_magazine/a9mm, /obj/item/ammo_magazine/a9mm/large)
+	magazine_preload = /obj/item/ammo_magazine/a9mm/large
+	magazine_restrict = /obj/item/ammo_magazine/a9mm, /obj/item/ammo_magazine/a9mm/large
 
 	firemodes = list(
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
@@ -68,7 +66,7 @@
 	if(istype(ammo_magazine,/obj/item/ammo_magazine/a9mm))
 		icon_state = "pdw-short"
 	else
-		icon_state = (ammo_magazine)? "pdw" : "pdw-empty"
+		icon_state = magazine? "pdw" : "pdw-empty"
 
 // For general use
 /obj/item/gun/projectile/energy/imperial
@@ -96,9 +94,8 @@
 	max_shells = 30
 	caliber = /datum/ammo_caliber/a7_92mm
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2, TECH_ILLEGAL = 6)
-	magazine_type = /obj/item/ammo_magazine/a7_92mm
-	allowed_magazines = list(/obj/item/ammo_magazine/a7_92mm)
-	load_method = MAGAZINE
+	magazine_preload = /obj/item/ammo_magazine/a7_92mm
+	magazine_restrict = /obj/item/ammo_magazine/a7_92mm
 
 /obj/item/gun/projectile/ballistic/automatic/stg/update_icon()
 	. = ..()
@@ -106,8 +103,8 @@
 
 /obj/item/gun/projectile/ballistic/automatic/stg/update_icon_state()
 	. = ..()
-	icon_state = (ammo_magazine)? "stg60" : "stg60-e"
-	item_state = (ammo_magazine)? "arifle" : "arifle-e"
+	icon_state = magazine? "stg60" : "stg60-e"
+	item_state = magazine? "arifle" : "arifle-e"
 
 /datum/firemode/energy/eluger
 	cycle_cooldown = 0.4 SECONDS
@@ -141,9 +138,8 @@
 	desc = "The FS HG .380 \"Giskard\" can even fit into the pocket! Uses .380 rounds."
 	icon_state = "giskardcivil"
 	caliber = /datum/ammo_caliber/a38
-	magazine_type = /obj/item/ammo_magazine/a38
-	allowed_magazines = list(/obj/item/ammo_magazine/a38)
-	load_method = MAGAZINE
+	magazine_preload = /obj/item/ammo_magazine/a38
+	magazine_restrict = /obj/item/ammo_magazine/a38
 	w_class = WEIGHT_CLASS_SMALL
 	fire_sound = 'sound/weapons/gunshot_pathetic.ogg'
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 3)
@@ -211,9 +207,8 @@
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BELT
 	caliber = /datum/ammo_caliber/a9mm
-	magazine_type = /obj/item/ammo_magazine/a9mm
-	allowed_magazines = list(/obj/item/ammo_magazine/a9mm)
-	load_method = MAGAZINE
+	magazine_preload = /obj/item/ammo_magazine/a9mm
+	magazine_restrict = /obj/item/ammo_magazine/a9mm
 	multi_aim = 1
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
 	firemodes = list(
@@ -233,7 +228,7 @@
 	add_overlay("smg_[ratio]")
 
 /obj/item/gun/projectile/ballistic/automatic/sol/update_icon()
-	icon_state = (ammo_magazine)? "SMG-IS" : "SMG-IS-empty"
+	icon_state = magazine? "SMG-IS" : "SMG-IS-empty"
 	cut_overlay()
 	update_charge()
 

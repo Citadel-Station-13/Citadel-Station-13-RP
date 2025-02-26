@@ -17,7 +17,7 @@
 	load_method = SINGLE_CASING
 	max_shells = 1
 	ammo_type = /obj/item/ammo_casing/a12_7mm
-	projectile_type = /obj/projectile/bullet/rifle/a12_7mm
+
 	load_sound = 'sound/weapons/guns/interaction/rifle_load.ogg'
 	accuracy = -45
 	scoped_accuracy = 95
@@ -87,15 +87,14 @@
 	slot_flags = SLOT_BACK // Needs a sprite.
 	origin_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 2, TECH_ILLEGAL = 8)
 	caliber = /datum/ammo_caliber/a7_62mm
-	load_method = MAGAZINE
 	accuracy = -45 //shooting at the hip
 	scoped_accuracy = 95
 	heavy = TRUE
 //	requires_two_hands = 1
 	one_handed_penalty = 60 // The weapon itself is heavy, and the long barrel makes it hard to hold steady with just one hand.
 	fire_sound = 'sound/weapons/Gunshot_SVD.ogg' // Has a very unique sound.
-	magazine_type = /obj/item/ammo_magazine/a7_62mm/svd
-	allowed_magazines = list(/obj/item/ammo_magazine/a7_62mm/svd)
+	magazine_preload = /obj/item/ammo_magazine/a7_62mm/svd
+	magazine_restrict = /obj/item/ammo_magazine/a7_62mm/svd
 
 /obj/item/gun/projectile/ballistic/SVD/update_icon_state()
 	. = ..()

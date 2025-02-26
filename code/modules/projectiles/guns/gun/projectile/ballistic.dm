@@ -525,6 +525,6 @@
 	// todo: render_bolt_overlay
 	if(render_magazine_overlay)
 		if(magazine)
-			var/overlay = get_magazine_overlay_for(ammo_magazine)
+			var/overlay = get_magazine_overlay_for(magazine)
 			if(overlay)
 				add_overlay(overlay)

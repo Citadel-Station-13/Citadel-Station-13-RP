@@ -2,13 +2,12 @@
 	var/unique_reskin
 	name = ".45 pistol"
 	desc = "A cheap Martian knock-off of a Colt M1911. Uses .45 rounds."
-	magazine_type = /obj/item/ammo_magazine/a45/singlestack
-	allowed_magazines = list(/obj/item/ammo_magazine/a45/singlestack)
-	projectile_type = /obj/projectile/bullet/pistol/medium
+	magazine_preload = /obj/item/ammo_magazine/a45/singlestack
+	magazine_restrict = /obj/item/ammo_magazine/a45/singlestack
+
 	icon_state = "colt"
 	caliber = /datum/ammo_caliber/a45
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
-	load_method = MAGAZINE
 
 /obj/item/gun/projectile/ballistic/colt/update_icon_state()
 	. = ..()
@@ -25,7 +24,7 @@
 
 /obj/item/gun/projectile/ballistic/colt/detective
 	desc = "A Martian recreation of an old pistol. Uses .45 rounds."
-	magazine_type = /obj/item/ammo_magazine/a45/singlestack/rubber
+	magazine_preload = /obj/item/ammo_magazine/a45/singlestack/rubber
 
 /obj/item/gun/projectile/ballistic/colt/detective/verb/rename_gun()
 	set name = "Name Gun"
@@ -72,16 +71,15 @@
 	name = ".45 pistol"
 	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a Nanotrasen subsidiary. Found pretty much everywhere humans are. This one is a less-lethal variant that only accepts .45 rubber or flash magazines."
 	icon_state = "secguncomp"
-	magazine_type = /obj/item/ammo_magazine/a45/doublestack/rubber
-	allowed_magazines = list(/obj/item/ammo_magazine/a45/doublestack/rubber, /obj/item/ammo_magazine/a45/doublestack/flash, /obj/item/ammo_magazine/a45/doublestack/practice)
-	projectile_type = /obj/projectile/bullet/pistol/medium
+	magazine_preload = /obj/item/ammo_magazine/a45/doublestack/rubber
+	magazine_restrict = /obj/item/ammo_magazine/a45/doublestack/rubber, /obj/item/ammo_magazine/a45/doublestack/flash, /obj/item/ammo_magazine/a45/doublestack/practice
+
 	caliber = /datum/ammo_caliber/a45
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
-	load_method = MAGAZINE
 
 /obj/item/gun/projectile/ballistic/sec/flash
 	name = ".45 signal pistol"
-	magazine_type = /obj/item/ammo_magazine/a45/doublestack/flash
+	magazine_preload = /obj/item/ammo_magazine/a45/doublestack/flash
 
 /obj/item/gun/projectile/ballistic/sec/wood
 	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a Nanotrasen subsidiary. This one has a sweet wooden grip and only accepts .45 rubber or flash magazines."
@@ -97,10 +95,9 @@
 	silenced = 1
 	recoil = 0
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 8)
-	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/a45/doublestack
-	allowed_magazines = list(/obj/item/ammo_magazine/a45/doublestack)
-	projectile_type = /obj/projectile/bullet/pistol/medium
+	magazine_preload = /obj/item/ammo_magazine/a45/doublestack
+	magazine_restrict = /obj/item/ammo_magazine/a45/doublestack
+
 
 /obj/item/gun/projectile/ballistic/deagle
 	name = "desert eagle"
@@ -110,9 +107,8 @@
 	damage_force = 14.0
 	caliber = /datum/ammo_caliber/a44
 	fire_sound = 'sound/weapons/Gunshot_deagle.ogg'
-	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/a44
-	allowed_magazines = list(/obj/item/ammo_magazine/a44)
+	magazine_preload = /obj/item/ammo_magazine/a44
+	magazine_restrict = /obj/item/ammo_magazine/a44
 
 /obj/item/gun/projectile/ballistic/deagle/gold
 	desc = "A gold plated gun folded over a million times by superior martian gunsmiths. Uses .44 rounds."
@@ -133,9 +129,8 @@
 	fire_sound = 'sound/weapons/railgun.ogg'
 	origin_tech = list(TECH_COMBAT = 3)
 	ammo_type = "/obj/item/ammo_casing/a75"
-	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/a75
-	allowed_magazines = list(/obj/item/ammo_magazine/a75)
+	magazine_preload = /obj/item/ammo_magazine/a75
+	magazine_restrict = /obj/item/ammo_magazine/a75
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 
@@ -148,8 +143,8 @@
 	max_shells = 10
 	fire_sound = 'sound/weapons/gunshot/gunshot_bolter.ogg'
 	origin_tech = list(TECH_COMBAT = 5, TECH_ILLEGAL = 3)
-	magazine_type = /obj/item/ammo_magazine/a75
-	allowed_magazines = list(/obj/item/ammo_magazine/a75)
+	magazine_preload = /obj/item/ammo_magazine/a75
+	magazine_restrict = /obj/item/ammo_magazine/a75
 	auto_eject = 0
 
 /obj/item/gun/projectile/ballistic/gyropistol/bolter/update_icon_state()
@@ -176,14 +171,13 @@
 	suppressible = TRUE
 	silenced_icon = "pistol_silencer"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 2)
-	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/a9mm/compact
-	allowed_magazines = list(/obj/item/ammo_magazine/a9mm/compact)
-	projectile_type = /obj/projectile/bullet/pistol
+	magazine_preload = /obj/item/ammo_magazine/a9mm/compact
+	magazine_restrict = /obj/item/ammo_magazine/a9mm/compact
+
 
 /obj/item/gun/projectile/ballistic/pistol/flash
 	name = "compact signal pistol"
-	magazine_type = /obj/item/ammo_magazine/a9mm/compact/flash
+	magazine_preload = /obj/item/ammo_magazine/a9mm/compact/flash
 
 /obj/item/silencer
 	name = "silencer"
@@ -248,7 +242,7 @@
 	load_method = SINGLE_CASING
 	max_shells = 2
 	ammo_type = /obj/item/ammo_casing/a357
-	projectile_type = /obj/projectile/bullet/pistol/strong
+
 
 /obj/item/gun/projectile/ballistic/luger
 	name = "\improper P08 Luger"
@@ -256,10 +250,9 @@
 	icon_state = "p08"
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
 	caliber = /datum/ammo_caliber/a9mm
-	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/a9mm/compact
-	allowed_magazines = list(/obj/item/ammo_magazine/a9mm/compact)
-	projectile_type = /obj/projectile/bullet/pistol
+	magazine_preload = /obj/item/ammo_magazine/a9mm/compact
+	magazine_restrict = /obj/item/ammo_magazine/a9mm/compact
+
 
 /obj/item/gun/projectile/ballistic/luger/brown
 	icon_state = "p08b"
@@ -270,30 +263,29 @@
 	icon_state = "p92x"
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
 	caliber = /datum/ammo_caliber/a9mm
-	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/a9mm
-	allowed_magazines = list(/obj/item/ammo_magazine/a9mm) // Can accept illegal large capacity magazines, or compact magazines.
+	magazine_preload = /obj/item/ammo_magazine/a9mm
+	magazine_restrict = /obj/item/ammo_magazine/a9mm // Can accept illegal large capacity magazines, or compact magazines.
 
 /obj/item/gun/projectile/ballistic/p92x/sec
 	desc = "A widespread sidearm called the P92X which is used by military, police, and security forces across the galaxy. This one is a less-lethal variant that only accepts 9mm rubber or flash magazines."
-	magazine_type = /obj/item/ammo_magazine/a9mm/rubber
-//	allowed_magazines = list(/obj/item/ammo_magazine/a9mm/rubber, /obj/item/ammo_magazine/a9mm/flash)
+	magazine_preload = /obj/item/ammo_magazine/a9mm/rubber
+//	magazine_restrict = /obj/item/ammo_magazine/a9mm/rubber, /obj/item/ammo_magazine/a9mm/flash
 
 //Ported this over from the _vr before deletion. Commenting them out because I'm not sure we want these in.
 /*
 /obj/item/gun/projectile/ballistic/p92x/large/licensed
 	icon_state = "p92x-brown"
-	magazine_type = /obj/item/ammo_magazine/a9mm/large // Spawns with big magazines that are legal.
+	magazine_preload = /obj/item/ammo_magazine/a9mm/large // Spawns with big magazines that are legal.
 
 /obj/item/gun/projectile/ballistic/p92x/large/licensed/hp
-	magazine_type = /obj/item/ammo_magazine/a9mm/large/hp // Spawns with legal hollow-point mag
+	magazine_preload = /obj/item/ammo_magazine/a9mm/large/hp // Spawns with legal hollow-point mag
 */
 
 /obj/item/gun/projectile/ballistic/p92x/brown
 	icon_state = "p92x-brown"
 
 /obj/item/gun/projectile/ballistic/p92x/large
-	magazine_type = /obj/item/ammo_magazine/a9mm/large // Spawns with illegal magazines.
+	magazine_preload = /obj/item/ammo_magazine/a9mm/large // Spawns with illegal magazines.
 
 /obj/item/gun/projectile/ballistic/r9
 	name = "C96-Red 9"
@@ -316,12 +308,11 @@
 	icon_state = "clownpistol"
 	item_state = "revolver"
 	caliber = /datum/ammo_caliber/biomatter
-	load_method = MAGAZINE
 	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
-	magazine_type = /obj/item/ammo_magazine/biomatter
-	allowed_magazines = list(/obj/item/ammo_magazine/biomatter)
-	projectile_type = /obj/projectile/bullet/organic
+	magazine_preload = /obj/item/ammo_magazine/biomatter
+	magazine_restrict = /obj/item/ammo_magazine/biomatter
+
 
 //Hey did you ever see Kingsman? Well, you know this gun then.
 /obj/item/gun/projectile/ballistic/konigin
@@ -335,10 +326,9 @@
 	suppressible = TRUE
 	silenced_icon = "konigin_silencer"
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
-	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/a9mm/compact/double
-	allowed_magazines = list(/obj/item/ammo_magazine/a9mm/compact)
-	projectile_type = /obj/projectile/bullet/pistol
+	magazine_preload = /obj/item/ammo_magazine/a9mm/compact/double
+	magazine_restrict = /obj/item/ammo_magazine/a9mm/compact
+
 
 /obj/item/gun/projectile/ballistic/konigin
 	firemodes = list(
@@ -377,11 +367,10 @@
 	icon_state = "ntles"
 	item_state = "pistol"
 	caliber = /datum/ammo_caliber/a5_7mm
-	load_method = MAGAZINE
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
-	magazine_type = /obj/item/ammo_magazine/a5_7mm/nt_les
-	allowed_magazines = list(/obj/item/ammo_magazine/a5_7mm/nt_les)
-	projectile_type = /obj/projectile/bullet/pistol/lap
+	magazine_preload = /obj/item/ammo_magazine/a5_7mm/nt_les
+	magazine_restrict = /obj/item/ammo_magazine/a5_7mm/nt_les
+
 	one_handed_penalty = 30
 	var/collapsible = 1
 	var/extended = 0
@@ -423,11 +412,10 @@
 	icon_state = "fiveseven"
 	item_state = "pistol"
 	caliber = /datum/ammo_caliber/a5_7mm
-	load_method = MAGAZINE
 	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
-	magazine_type = /obj/item/ammo_magazine/a5_7mm/five_seven
-	allowed_magazines = list(/obj/item/ammo_magazine/a5_7mm/five_seven)
+	magazine_preload = /obj/item/ammo_magazine/a5_7mm/five_seven
+	magazine_restrict = /obj/item/ammo_magazine/a5_7mm/five_seven
 	one_handed_penalty = 0
 
 /obj/item/gun/projectile/ballistic/fiveseven/update_icon_state()
@@ -440,12 +428,11 @@
 	name = "large pistol"
 	desc = "A bulky semi-automatic handgun with 'NT AX59' engraved on the slide. Comes with an integrated light module and a small lanyard loop at the bottom of the grip. Uses .45 rounds."
 	description_fluff = "The Advanced Expeditionary Handgun System, more commonly known by it's model name 'AX59', or coloquially as the 'Axe', was one of the first attempts by Nanotrasen to modernize and standardize their Exploration department's gear in the years following the Phoron Wars, although it was swiftly replaced by more compact, field-rechargeable energy weapon designs within only a few years. A handgun chambered in the .45 ACP cartridge, it was designed to offer enough stopping power to handle common 'environmental threats' such as hostile fauna within a small form factor, ideally eliminating the need to carry a long gun, although the final design was still considered bulky even by the time of it's introduction. Some of this weight, thankfully, owes itself to features specifically designed for it's use in Exploration:  All base models come equipped with a non-detachable weapon-mounted light and are issued alongside a durable wire lanyard."
-	projectile_type = /obj/projectile/bullet/pistol/medium
+
 	icon_state = "ax59"
 	caliber = /datum/ammo_caliber/a45
-	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/a45/doublestack
-	allowed_magazines = list(/obj/item/ammo_magazine/a45/doublestack)
+	magazine_preload = /obj/item/ammo_magazine/a45/doublestack
+	magazine_restrict = /obj/item/ammo_magazine/a45/doublestack
 	pin = /obj/item/firing_pin/explorer
 	attachments = list(
 		/obj/item/gun_attachment/flashlight/internal,
@@ -461,9 +448,8 @@
 	description_fluff = "A later derivative of what started as the Advanced Expeditionary Handgun System (AXHS), the AX99 entered production solely at the behest of the company's Paracausal Monitoring Division shortly after it's establishment due to the new department's need for a standardized handgun design that could operate reliably even under anomalous circumstances and against unknown threats. Compared to it's predecessor, it is chambered for the more powerful .44 Magnum cartridge and equipped with a partially redesigned operating system able to withstand the higher pressure, as well as a longer ported barrel and slide assembly. On the other hand, it has been stripped of fragile electronic utilities such as the underbarrel light. It has been occasionally referred to as the 'Silver Axe' due to it's use in conjuction with silver rounds, although it is perfectly capable of operating with standard ammunition."
 	icon_state = "ax99"
 	caliber = /datum/ammo_caliber/a44
-	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/a44
-	allowed_magazines = list(/obj/item/ammo_magazine/a44)
+	magazine_preload = /obj/item/ammo_magazine/a44
+	magazine_restrict = /obj/item/ammo_magazine/a44
 
 //Apidean Weapons
 /obj/item/gun/projectile/ballistic/apinae_pistol
@@ -472,12 +458,11 @@
 	icon_state = "apipistol"
 	item_state = "florayield"
 	caliber = /datum/ammo_caliber/biomatter/wax
-	load_method = MAGAZINE
 	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2, TECH_BIO = 5)
-	magazine_type = /obj/item/ammo_magazine/biovial
-	allowed_magazines = list(/obj/item/ammo_magazine/biovial)
-	projectile_type = /obj/projectile/bullet/organic/wax
+	magazine_preload = /obj/item/ammo_magazine/biovial
+	magazine_restrict = /obj/item/ammo_magazine/biovial
+
 
 /obj/item/gun/projectile/ballistic/apinae_pistol/update_icon_state()
 	. = ..()
@@ -505,9 +490,8 @@
 	item_state = null
 	w_class = WEIGHT_CLASS_SMALL
 	caliber = /datum/ammo_caliber/foam
-	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/foam/pistol
-	allowed_magazines = list(/obj/item/ammo_magazine/foam/pistol)
+	magazine_preload = /obj/item/ammo_magazine/foam/pistol
+	magazine_restrict = /obj/item/ammo_magazine/foam/pistol
 	fire_sound = 'sound/items/syringeproj.ogg'
 
 /obj/item/gun/projectile/ballistic/pistol/foam/blue

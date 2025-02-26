@@ -13,9 +13,8 @@
 	fire_sound_text = "a metallic click"
 	recoil = 0
 	silenced = 1
-	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/chemdart
-	allowed_magazines = list(/obj/item/ammo_magazine/chemdart)
+	magazine_preload = /obj/item/ammo_magazine/chemdart
+	magazine_restrict = /obj/item/ammo_magazine/chemdart
 	var/default_magazine_casing_count = 5
 	var/track_magazine = 1
 	auto_eject = 0
@@ -173,8 +172,8 @@
 	description_info = "The dart gun is capable of storing two beakers. In order to use the dart gun, you must first use it in-hand to open its mixing UI. The dart-gun will only draw from beakers with mixing enabled. If multiple are enabled, the gun will draw from them in equal amounts."
 	icon_state = "dartgun_sci-empty"
 	base_state = "dartgun_sci"
-	magazine_type = /obj/item/ammo_magazine/chemdart/small
-	allowed_magazines = list(/obj/item/ammo_magazine/chemdart)
+	magazine_preload = /obj/item/ammo_magazine/chemdart/small
+	magazine_restrict = /obj/item/ammo_magazine/chemdart
 	default_magazine_casing_count = 3
 	max_beakers = 2
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 4, TECH_BIO = 4, TECH_MAGNET = 2, TECH_ILLEGAL = 1)
@@ -190,7 +189,6 @@
 	fire_sound_text = "a metallic click"
 	recoil = 0
 	silenced = 1
-	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/chemdart
-	allowed_magazines = list(/obj/item/ammo_magazine/chemdart)
+	magazine_preload = /obj/item/ammo_magazine/chemdart
+	magazine_restrict = /obj/item/ammo_magazine/chemdart
 	auto_eject = 0
