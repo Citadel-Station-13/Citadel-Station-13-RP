@@ -257,7 +257,7 @@
 		dat += ib_dat
 
 		// Blood level
-		if(M:vessel)
+		if(H.blood_holder)
 			var/blood_volume = H.blood_holder.get_total_volume()
 			var/blood_percent =  round((blood_volume / H.species.blood_volume)*100)
 			var/blood_type = H.dna.b_type

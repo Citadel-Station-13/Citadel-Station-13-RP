@@ -4016,8 +4016,6 @@ END CITADEL CHANGE */
 		to_chat(user, SPAN_WARNING( "There's not enough [C.name] to coat the [src]!"))
 		return 0
 
-	var/id = C.id
-
 	//First make sure there's space for our batter
 	if (reagents.available_volume() < req+5)
 		var/extra = req+5 - reagents.available_volume()

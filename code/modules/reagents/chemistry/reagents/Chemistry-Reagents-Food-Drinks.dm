@@ -216,13 +216,13 @@
 	color = "#4F3500"
 
 // todo: reagent effects
-/datum/reagent/nutriment/peanutoil/apply_to_turf(turf/target, remaining, allocated, data)
+/datum/reagent/nutriment/peanutoil/on_touch_turf(turf/target, remaining, allocated, data)
+	. = ..()
 	if(allocated >= 5)
 		if(istype(target, /turf/simulated))
 			var/turf/simulated/sim_target = target
 			sim_target.wet_floor()
-		return 5
-	return 0
+		. = max(., 5)
 
 /datum/reagent/nutriment/peanutbutter
 	name = "Peanut Butter"
@@ -4521,7 +4521,6 @@
 	. = min(., 2.5)//Cap multiplier at 2.5
 
 /datum/reagent/nutriment/triglyceride/oil/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
-	var/temperature = metabolism.legacy_current_holder.temperature
 	var/dfactor = heatdamage(M, metabolism.legacy_current_holder)
 	if (dfactor)
 		M.take_random_targeted_damage(brute = 0, brute = removed * 1.5 * dfactor)

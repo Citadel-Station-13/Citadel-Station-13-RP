@@ -113,7 +113,6 @@
 		M.antibodies |= data["antibodies"]
 
 /datum/reagent/blood/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
-	var/datum/blood_mixture/data = metabolism.legacy_data
 	if(alien == IS_SLIME) //They don't have blood, so it seems weird that they would instantly 'process' the chemical like another species does.
 		legacy_affect_ingest(M, alien, removed, metabolism)
 		return

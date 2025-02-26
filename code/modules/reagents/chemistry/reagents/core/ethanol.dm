@@ -102,24 +102,24 @@
 				if(7)
 					to_chat(M,SPAN_USERDANGER("You are getting dangerously drunk![hydration_str]"))
 	var/hydration_removal=(clamp((M.hydration-150)/300,0,1)*effect_level) + max(0,(M.hydration-450)/300)
-	var/removed = 0
+	var/metabolized = 0
 	if(hydration_removal>0)
 		M.adjust_hydration(-hydration_removal)
-		removed += removed*hydration_removal*3
+		metabolized += removed*hydration_removal*3
 	if(effect_level>=4 && prob(effect_level-2))
 		M.Confuse(60)
 	if(effect_level>=5 && prob(effect_level-4) && !M.lastpuke)
 		M.vomit(1,0)
 		if(M.nutrition>=100)
-			removed += DOSE_LEVEL/4
+			metabolized += DOSE_LEVEL/4
 	if(effect_level>=6 && prob(effect_level-5))
 		M.drowsyness=max(M.drowsyness,60)
 	if(effect_level>=7)
 		M.add_chemical_effect(CE_ALCOHOL_TOXIC, toxicity*strength_mod)
 		if(metabolism.legacy_volume_remaining>DOSE_LEVEL*7)
-			removed += REM // liver working overtime, or whatever (mostly to prevent people from always just dying from this)
-	if(removed)
-		metabolism.legacy_current_holder.remove_reagent(id, removed)
+			metabolized += REM // liver working overtime, or whatever (mostly to prevent people from always just dying from this)
+	if(metabolized)
+		metabolism.legacy_current_holder.remove_reagent(id, metabolized)
 	#undef DOSE_LEVEL
 
 /datum/reagent/ethanol/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)

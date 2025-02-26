@@ -99,7 +99,6 @@
 						to_chat(user, "<span class='warning'>You are already drawing blood from [T.name].</span>")
 						return
 
-					var/amount_drawn = 0
 					drawing = 1
 					if(istype(T, /mob/living/carbon/human))
 						var/mob/living/carbon/human/H = T
@@ -110,13 +109,13 @@
 								if(!do_mob(user, target, time))
 									drawing = 0
 									return
-							amount_drawn = T.take_blood_legacy(src, amount)
+							T.take_blood_legacy(src, amount)
 							drawing = 0
 					else
 						if(!do_mob(user, target, time))
 							drawing = 0
 							return
-						amount_drawn = T.take_blood_legacy(src,amount)
+						T.take_blood_legacy(src,amount)
 						drawing = 0
 
 					to_chat(user, "<span class='notice'>You take a blood sample from [target].</span>")

@@ -1123,7 +1123,7 @@
 	/// radiate the person a bit just in case they're armored
 	M.rad_act(RAD_INTENSITY_CHEM_IRRADIATED_NANITES_SELF)
 
-/datum/reagent/nanite/irradiated/affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
+/datum/reagent/nanite/irradiated/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	radiation_pulse(M, RAD_INTENSITY_CHEM_IRRADIATED_NANITES)
 	M.rad_act(RAD_INTENSITY_CHEM_IRRADIATED_NANITES_SELF)
 
@@ -1201,8 +1201,10 @@
 	for(var/datum/reagent/nanite/path_check in M.bloodstr.get_reagent_datums())
 		M.bloodstr.remove_reagent(path_check.id, removed * 30)
 
-/datum/reagent/grubshock/affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
-	M.electrocute(0, 10 * removed, 0, ELECTROCUTE_ACT_FLAG_INTERNAL, null)
+/datum/reagent/grubshock/on_touch_mob(mob/target, remaining, allocated, data, zone)
+	..()
+	target.electrocute(0, 10 * allocated, 0, ELECTROCUTE_ACT_FLAG_INTERNAL, null)
+	return allocated
 
 //This chem is for removing nanites without grubmeat
 /datum/reagent/lessershock
@@ -1256,7 +1258,8 @@
 		if(prob(1))
 			H.asbestos_lung()
 
-/datum/reagent/asbestos/overdose(mob/living/carbon/human/M, alien, removed)
+/datum/reagent/asbestos/legacy_affect_overdose(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
+	. = ..()
 	var/mob/living/carbon/human/H = M
 	if(prob(4))
 		M.emote("cough")

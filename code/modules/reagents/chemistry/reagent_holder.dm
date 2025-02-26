@@ -622,7 +622,7 @@
 			ids_to_transfer += potential
 		if(!total_transferable)
 			return 0
-		var/ratio = min(1, min(amount, target.maximum_volume - target.total_volume) / total_transferable)
+		ratio = min(1, min(amount, target.maximum_volume - target.total_volume) / total_transferable)
 		. = total_transferable * ratio
 	else
 		ids_to_transfer = reagent_volumes

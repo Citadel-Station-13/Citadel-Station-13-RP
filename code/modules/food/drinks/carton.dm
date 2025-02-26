@@ -64,7 +64,7 @@
 	center_of_mass = list("x"=16, "y"=9)
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
-	start_with_single_reagent = /datum/reagent/blood/synthblood
+	start_with_single_reagent = /datum/reagent/blood
 	start_with_single_data_initializer = new /datum/blood_mixture/preset/single/synthblood
 
 /obj/item/reagent_containers/food/drinks/bludbox
