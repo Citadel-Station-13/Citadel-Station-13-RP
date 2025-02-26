@@ -10,7 +10,7 @@
 	wielded_item_state = "pellet-wielded"
 	caliber = /datum/ammo_caliber/pellet
 	fire_sound = 'sound/weapons/tap.ogg'
-	max_shells = 1
-	ammo_type = /obj/item/ammo_casing/p_pellet
-	load_method = SINGLE_CASING
+	internal_magazine = TRUE
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/p_pellet
+	internal_magazine_size = 1
 	item_icons = list("left_hand" = 'icons/mob/items/lefthand_guns.dmi', "right_hand" = 'icons/mob/items/righthand_guns.dmi')

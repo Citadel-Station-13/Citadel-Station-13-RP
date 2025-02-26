@@ -109,12 +109,13 @@
 
 	//* Chamber *//
 	/// Chambered round
-	var/obj/item/ammo_casing/chamber
+	/// * This is considered an internal variable; use getters / setters to manipulate it.
+	VAR_PROTECTED/obj/item/ammo_casing/chamber
 	/// Eject rounds after firing
 	var/chamber_eject_after_fire = TRUE
 	/// Spin the internal magazine after firing
 	/// * Has no effect if [internal_magazine_is_revolver] is off.
-	var/chamber_cycle_after_fire = TRUE
+	var/chamber_spin_after_fire = TRUE
 	/// A loaded magazine will leave a bullet in the chamber
 	/// once removed.
 	/// * If this is TRUE, the chamber **immediately** takes a bullet from the
@@ -501,6 +502,15 @@
 
 /obj/item/gun/projectile/ballistic/proc/accepts_speedloader(obj/item/ammo_magazine/magazine)
 	return speedloader_restrict ? check_magazine_restrict(speedloader_restrict, null, magazine.type) : TRUE
+
+//* Chamber *//
+
+/**
+ * Get currently chambered projectile
+ */
+/obj/item/gun/projectile/ballistic/proc/get_chambered() as /obj/item/ammo_casing
+	RETURN_TYPE(/obj/item/ammo_casing)
+	return chamber
 
 //* Rendering *//
 

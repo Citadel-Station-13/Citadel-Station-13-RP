@@ -10,7 +10,7 @@
 	if(user.stat)
 		return
 
-	if(chambered)
+	if(get_chambered())
 		to_chat(user, "<span class='warning'>You need to empty the rifle to break it down.</span>")
 	else
 		collapse_rifle(user)
