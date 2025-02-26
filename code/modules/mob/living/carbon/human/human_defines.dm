@@ -275,3 +275,6 @@
 	var/hiding_horns = FALSE
 
 	var/datum/ability_handler/ab_handler
+
+	var/body_alpha = 255
+	var/hair_alpha = 255

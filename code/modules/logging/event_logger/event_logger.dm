@@ -9,7 +9,7 @@
 /datum/world_event_logger/json_flatfile/setup_logger(log_directory)
 	for(var/varname in vars)
 		if(copytext(varname, 1, 6) == "log__")
-			var/path = "[log_directory]/event_logger/[copytext(varname, 6)]"
+			var/path = "[log_directory]/event_logger/[copytext(varname, 6)].txt"
 			vars[varname] = path
 			start_log(path)
 			WRITE_LOG(path, "## header-version: [version]")
