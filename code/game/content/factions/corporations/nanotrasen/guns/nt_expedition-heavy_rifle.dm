@@ -109,7 +109,8 @@
 	icon_state = "single"
 	base_icon_state = "single"
 	item_renderer = /datum/gun_item_renderer/empty_state
-	load_method = SINGLE_CASING | SPEEDLOADER
+	internal_magazine = TRUE
+	internal_magazine_size = 1
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/semirifle
 	name = "heavy rifle"

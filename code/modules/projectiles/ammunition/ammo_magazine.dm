@@ -23,10 +23,11 @@
 	throw_range = 10
 	preserve_item = 1
 
-	//* dynamic config; can be changed at runtime freely
+	//* dynamic config; can be changed at runtime freely *//
 	/// what types of magazines are we?
 	///
 	/// * this is a bitfield
+	/// * this determines how we act when used on / with / by a gun
 	var/magazine_type = MAGAZINE_TYPE_NORMAL
 	/// the class we ask the gun to render us as
 	///
@@ -37,7 +38,7 @@
 
 	#warn hook everything
 
-	//* for magazines
+	//* for magazines *//
 	/// magazine type - must match gun's to be fitted into it, if gun's is.
 	/// * setting this to a gun's typepath is allowed, this is an arbitrary field.
 	/// * if gun's is set and we're not, this value defaults to our typepath.
@@ -47,7 +48,7 @@
 	/// Inherent removal delay
 	var/magazine_remove_delay = 0
 
-	//* for speedloaders
+	//* for speedloaders *//
 	/// speedloader type - must match gun's to fit ammo in, if gun's is set
 	/// * setting this to a gun's typepath is allowed, this is an arbitrary field.
 	/// * if gun's is set and we're not, this value defaults to our typepath.
@@ -55,11 +56,7 @@
 	/// inherent speedloader delay, added to gun's speedloaders_delay
 	var/speedloader_delay = 0
 
-	//* for stripper clips / usage as single loader
-	/// stripper clip type - must match gun's to fit ammo in, if gun's is set
-	/// * setting this to a gun's typepath is allowed, this is an arbitrary field.
-	/// * if gun's is set and we're not, this value defaults to our typepath.
-	var/clip_restrict
+	//* for stripper clips / usage as single loader *//
 	/// inherent delay on each shell loaded
 	var/clip_delay = 0
 

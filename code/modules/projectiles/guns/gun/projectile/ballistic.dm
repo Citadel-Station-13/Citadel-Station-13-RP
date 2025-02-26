@@ -25,6 +25,10 @@
 	/// Inserted magazine
 	/// * Ignored if [internal_magazine] is enabled.
 	var/obj/item/ammo_magazine/magazine
+	/// magazine types allowed for insertion
+	/// * This makes you able to let a gun use things like speedloaders
+	///   as magazines directly.
+	var/magazine_class = MAGAZINE_CLASSES_DEFAULT_FIT
 	/// Magazine restrict; restricts inserted magazines to those that
 	/// match this.
 	var/magazine_restrict
@@ -35,6 +39,12 @@
 	/// Preloads us with a magazine type.
 	/// * Ignored if [internal_magazine] is enabled.
 	var/magazine_preload
+	/// Automatically eject magazine once empty
+	/// * Ignored if [internal_magazine] is enabled.
+	var/magazine_auto_eject = FALSE
+	/// Magazine auto-eject sound
+	/// * Played additionally to [magazine_remove_sound]
+	var/magazine_auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 
 	/// Allow speedloaders
 	/// * [internal_magazine] is required to use speedloaders.
@@ -46,6 +56,18 @@
 	var/speedloader_delay
 	/// Speedloader sound
 	var/speedloader_sound
+
+	/// Allow single loading without a speedloader, whether by hand or via clip magazines.
+	/// * This loads to internal magazine.
+	/// * If no internal magazine is provided, this loads to chambered.
+	var/single_load_allowed = TRUE
+	/// Single load sound
+	var/single_load_sound = 'sound/weapons/guns/interaction/bullet_insert.ogg'
+	/// Delay for single loading
+	/// * If this is 0 and so is a clip's, clips act like speedloaders.
+	var/single_load_delay = 0
+
+	//* Ammunition - Internal *//
 
 	/// If set, we use an internal magazine.
 	/// * Changing this post-Initialize() is considered undefined behavior.
@@ -59,32 +81,20 @@
 	///   needed, while revolverlikes will keep the list size static.
 	/// * This is separate from [magazine] on purpose.
 	var/list/obj/item/ammo_casing/internal_magazine_vec
+	/// The current position in [internal_magazine_vec] we are at.
+	/// * This position in the list will be put into chambered and nulled out, as it's technically
+	///   the chambered round.
+	/// * This is to avoid duplicate references, as those are pretty much asking for trouble.
+	/// * This is only used if [internal_magazine_is_revolver] is enabled.
+	var/internal_magazine_borrowed_offset
 	/// Preloads internal magazine with this ammo type
 	var/internal_magazine_preload_ammo
 	/// The internal magazine should act like a looping list
 	/// rather than being a stack.
-	/// * Basically, makes this act like a revolver. Ejected rounds
-	///
+	/// * Basically, makes this act like a revolver. Round ejection still works.
+	/// * [internal_magazine_borrowed_offset] will be put into the chamber, and nulled.
+	///   Anything reading internal_magazine_vec should know how to handle this.
 	var/internal_magazine_is_revolver = FALSE
-
-	/// Allow single loading without a speedloader.
-	/// * This loads to internal magazine.
-	/// * If no internal magazine is provided, this loads to chambered.
-	var/single_load = TRUE
-	/// Single load sound
-	var/single_load_sound = 'sound/weapons/guns/interaction/bullet_insert.ogg'
-	/// Delay for single loading
-	var/single_load_delay = 0
-
-	/// Clip restrict; restricts stripper clips to those that match this.
-	var/clip_restrict
-	/// Delay for clip loading
-	/// * If this is 0, and the clip's is 0, clips act like speedloaders.
-	/// * Defaults to [single_load_delay]
-	var/clip_delay
-	/// Clip load sound
-	/// * Defaults to [single_load_sound]
-	var/clip_load_sound
 
 	//* Chamber *//
 	/// Chambered round
@@ -92,24 +102,28 @@
 	/// Eject rounds after firing
 	var/chamber_eject_after_fire = TRUE
 	/// Spin the internal magazine after firing
-	/// * Has no effect if [internal_magazine_indexed] is off.
+	/// * Has no effect if [internal_magazine_is_revolver] is off.
 	var/chamber_cycle_after_fire = TRUE
 	/// A loaded magazine will leave a bullet in the chamber
 	/// once removed.
 	/// * If this is TRUE, the chamber **immediately** takes a bullet from the
 	///   magazine once it's inserted.
 	/// * If this is FALSE, the chamber does not take the bullet until it's being
-	///   fired.
-	/// * This must be true to allow manual loading without a magazine.
+	///   fired, and the chamber will never hold a bullet if a magazine isn't inserted.
+	/// * This must be TRUE to allow manual loading without a magazine.
 	var/chamber_magazine_separation = TRUE
+	/// chamber will still clear a shot even if it doesn't fire
+	/// * basically means a gun will automatically un-jam itself
+	/// * you're a coward if you turn this on
+	/// * this does not affect cycling chambers like revolvers! duh.
+	var/chamber_eject_if_inert = FALSE
 
 	//* Configuration *//
 	/// If set, accepts ammo and magazines of this caliber.
-	var/caliber = /datum/ammo_caliber/a357
+	var/caliber
 
 	//* Interaction *//
 	/// Show caliber on examine.
-	#warn impl
 	var/show_caliber_on_examine = TRUE
 
 	//* Rendering *//
@@ -126,7 +140,7 @@
 	/// todo: mob renderer integration
 	/// todo: this is not supported yet
 	///
-	/// * uses BALLISTIC_RENDER_BOLT_* enms
+	/// * uses BALLISTIC_RENDER_BOLT_* enums
 	var/render_bolt_overlay = BALLISTIC_RENDER_BOLT_NEVER
 	/// Render the state of a gun that's 'break action'
 	///
@@ -137,15 +151,11 @@
 	/// * This is also used for LMGs, and any other gun requiring this stuff.
 	var/render_break_overlay = BALLISTIC_RENDER_BREAK_NEVER
 
-/obj/item/gun/projectile/ballistic/Initialize(mapload, starts_loaded = TRUE)
+/obj/item/gun/projectile/ballistic/Initialize(mapload)
 	. = ..()
-	if(starts_loaded)
-		if(ispath(ammo_type) && (load_method & (SINGLE_CASING|SPEEDLOADER)))
-			for(var/i in 1 to max_shells)
-				loaded += new ammo_type(src)
-		if(ispath(magazine_type) && (load_method & MAGAZINE))
-			ammo_magazine = new magazine_type(src)
 	update_icon()
+
+
 
 	if(load_method & SPEEDLOADER)
 		load_method_converted |= MAGAZINE_TYPE_SPEEDLOADER | MAGAZINE_TYPE_CLIP
@@ -157,24 +167,13 @@
 	if((item_renderer || mob_renderer) || !render_use_legacy_by_default)
 		return // using new system
 	var/silenced_state = silenced ? silenced_icon : initial(icon_state)
-	var/magazine_state = ammo_magazine ? "" : "-empty"
-	if(magazine_type)
+	var/magazine_state = magazine ? "" : "-empty"
+	if(magazine)
 		icon_state = "[silenced_state][magazine_state]"
 
 /obj/item/gun/projectile/ballistic/consume_next_projectile(datum/gun_firing_cycle/cycle)
-	//get the next casing
-	if(!chambered)
-		if(loaded.len)
-			chambered = loaded[1] //load next casing.
-			if(handle_casings != HOLD_CASINGS)
-				loaded -= chambered
-		else if(ammo_magazine && ammo_magazine.amount_remaining())
-			chambered = ammo_magazine.pop(src)
-
-	if(!chambered)
-		return GUN_FIRED_FAIL_EMPTY
-
-	return prime_casing(cycle, chambered, CASING_PRIMER_CHEMICAL)
+	#warn handle internal magazine and magazine chamber separation
+	return chamber ? prime_casing(cycle, chamber, CASING_PRIMER_CHEMICAL) : GUN_FIRED_FAIL_EMPTY
 
 /**
  * Primes the casing being fired, and expends it.
@@ -411,26 +410,41 @@
 
 /obj/item/gun/projectile/ballistic/examine(mob/user, dist)
 	. = ..()
-	if(ammo_magazine)
-		. += "It has \a [ammo_magazine] loaded."
-	. += "Has [getAmmo()] round\s remaining."
-
-/obj/item/gun/projectile/ballistic/proc/getAmmo()
-	var/bullets = 0
-	if(loaded)
-		bullets += loaded.len
-	if(ammo_magazine)
-		bullets += ammo_magazine.amount_remaining()
-	if(chambered)
-		bullets += 1
-	return bullets
+	if(show_caliber_on_examine)
+		#warn show_caliber_on_examine
+	if(magazine)
+		. += "It has \a [magazine] loaded."
+	. += "Has [get_ammo_remaining()] round\s remaining."
 
 //* Ammo *//
 
 /obj/item/gun/projectile/ballistic/get_ammo_ratio(rounded)
-	if(!ammo_magazine)
-		return 0
-	return min(1, ammo_magazine.amount_remaining() / ammo_magazine.ammo_max)
+	if(internal_magazine)
+		var/remaining
+		if(internal_magazine_is_revolver)
+			for(var/i in 1 to length(internal_magazine_is_revolver))
+				if(internal_magazine_vec[i])
+					remaining += 1
+		else
+			remaining = length(internal_magazine_vec)
+		return min(1, remaining / internal_magazine_size)
+	else
+		if(!magazine)
+			return 0
+		return min(1, magazine.amount_remaining() / magazine.ammo_max)
+
+/obj/item/gun/projectile/ballistic/get_ammo_remaining()
+	if(internal_magazine)
+		if(internal_magazine_is_revolver)
+			for(var/i in 1 to length(internal_magazine_is_revolver))
+				if(internal_magazine_vec[i])
+					. += 1
+		else
+			. = length(internal_magazine_vec)
+	else
+		. = magazine?.amount_remaining()
+	if(chamber)
+		. += 1
 
 /**
  * Can accept an ammo casing

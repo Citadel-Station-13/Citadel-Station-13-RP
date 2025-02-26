@@ -657,6 +657,18 @@
 /obj/item/gun/proc/get_ammo_ratio(rounded)
 	return 0
 
+/**
+ * Gets approximate ammo left.
+ *
+ * * Used by examine
+ * * Do not return under 0
+ * * Round this yourself if you want.
+ *
+ * @return number
+ */
+/obj/item/gun/proc/get_ammo_remaining()
+	return 0
+
 //* Cell System *//
 
 /obj/item/gun/object_cell_slot_inserted(obj/item/cell/cell, datum/object_system/cell_slot/slot)
