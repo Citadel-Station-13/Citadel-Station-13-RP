@@ -211,7 +211,7 @@
 	magazine_restrict = /obj/item/ammo_magazine/a5_56mm
 	magazine_insert_sound = 'sound/weapons/guns/interaction/lmg_magin.ogg'
 	magazine_remove_sound= 'sound/weapons/guns/interaction/lmg_magout.ogg'
-	can_special_reload = FALSE
+	interact_allow_tactical_reload = FALSE
 	heavy = TRUE
 	one_handed_penalty = 75
 

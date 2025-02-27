@@ -167,13 +167,13 @@
 		// NSFW Batteries
 		else if(istype(charging, /obj/item/ammo_casing/microbattery))
 			var/obj/item/ammo_casing/microbattery/batt = charging
-			if(batt.shots_left >= initial(batt.shots_left))
-				batt.shots_left = initial(batt.shots_left)
+			if(batt.shots_remaining >= batt.shots_capacity)
+				batt.shots_remaining = batt.shots_capacity
 				icon_state = icon_state_charged
 				update_use_power(USE_POWER_IDLE)
 			else
 				icon_state = icon_state_charging
-				batt.shots_left++
+				batt.shots_remaining++
 				update_use_power(USE_POWER_ACTIVE)
 			return
 
@@ -187,9 +187,9 @@
 /obj/machinery/recharger/proc/charge_mag(obj/item/ammo_magazine/microbattery/maggy)
 	var/tally = maggy.amount_remaining()
 	for(var/obj/item/ammo_casing/microbattery/batt in maggy)
-		if(batt.shots_left < initial(batt.shots_left))
+		if(batt.shots_remaining < batt.shots_capacity)
 			icon_state = icon_state_charging
-			batt.shots_left++
+			batt.shots_remaining++
 			update_use_power(USE_POWER_ACTIVE)
 		else
 			tally -= 1

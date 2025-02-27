@@ -59,8 +59,9 @@
 
 /obj/item/ammo_casing/microbattery/vm_aml/brute
 	name = "\'AML\' nanite cell - BRUTE"
-	type_color = "#BF0000"
-	type_name = "<span style='color:#BF0000;font-weight:bold;'>BRUTE</span>"
+	microbattery_group_key = "brute"
+	microbattery_mode_color = "#BF0000"
+	microbattery_mode_name = "<span style='color:#BF0000;font-weight:bold;'>BRUTE</span>"
 	projectile_type = /obj/projectile/beam/medical_cell/brute
 
 /obj/projectile/beam/medical_cell/brute/on_hit_legacy(var/mob/living/carbon/human/target)
@@ -71,8 +72,9 @@
 
 /obj/item/ammo_casing/microbattery/vm_aml/burn
 	name = "\'AML\' nanite cell - BURN"
-	type_color = "#FF8000"
-	type_name = "<span style='color:#FF8000;font-weight:bold;'>BURN</span>"
+	microbattery_group_key = "burn"
+	microbattery_mode_color = "#FF8000"
+	microbattery_mode_name = "<span style='color:#FF8000;font-weight:bold;'>BURN</span>"
 	projectile_type = /obj/projectile/beam/medical_cell/burn
 
 /obj/projectile/beam/medical_cell/burn/on_hit_legacy(var/mob/living/carbon/human/target)
@@ -83,8 +85,9 @@
 
 /obj/item/ammo_casing/microbattery/vm_aml/stabilize
 	name = "\'AML\' nanite cell - STABILIZE" //Disinfects all open wounds, cures oxy damage
-	type_color = "#0080FF"
-	type_name = "<span style='color:#0080FF;font-weight:bold;'>STABILIZE</span>"
+	microbattery_group_key = "stabilize"
+	microbattery_mode_color = "#0080FF"
+	microbattery_mode_name = "<span style='color:#0080FF;font-weight:bold;'>STABILIZE</span>"
 	projectile_type = /obj/projectile/beam/medical_cell/stabilize
 
 /obj/projectile/beam/medical_cell/stabilize/on_hit_legacy(var/mob/living/carbon/human/target)
@@ -111,8 +114,9 @@
 
 /obj/item/ammo_casing/microbattery/vm_aml/toxin
 	name = "\'AML\' nanite cell - TOXIN"
-	type_color = "#00A000"
-	type_name = "<span style='color:#00A000;font-weight:bold;'>TOXIN</span>"
+	microbattery_group_key = "tox"
+	microbattery_mode_color = "#00A000"
+	microbattery_mode_name = "<span style='color:#00A000;font-weight:bold;'>TOXIN</span>"
 	projectile_type = /obj/projectile/beam/medical_cell/toxin
 
 /obj/projectile/beam/medical_cell/toxin/on_hit_legacy(var/mob/living/carbon/human/target)
@@ -123,8 +127,9 @@
 
 /obj/item/ammo_casing/microbattery/vm_aml/omni
 	name = "\'AML\' nanite cell - OMNI"
-	type_color = "#8040FF"
-	type_name = "<span style='color:#8040FF;font-weight:bold;'>OMNI</span>"
+	microbattery_group_key = "omni"
+	microbattery_mode_color = "#8040FF"
+	microbattery_mode_name = "<span style='color:#8040FF;font-weight:bold;'>OMNI</span>"
 	projectile_type = /obj/projectile/beam/medical_cell/omni
 
 /obj/projectile/beam/medical_cell/omni/on_hit_legacy(var/mob/living/carbon/human/target)
@@ -138,8 +143,9 @@
 
 /obj/item/ammo_casing/microbattery/vm_aml/antirad
 	name = "\'AML\' nanite cell - ANTIRAD"
-	type_color = "#008000"
-	type_name = "<span style='color:#008000;font-weight:bold;'>ANTIRAD</span>"
+	microbattery_group_key = "antirad"
+	microbattery_mode_color = "#008000"
+	microbattery_mode_name = "<span style='color:#008000;font-weight:bold;'>ANTIRAD</span>"
 	projectile_type = /obj/projectile/beam/medical_cell/antirad
 
 /obj/projectile/beam/medical_cell/antirad/on_hit_legacy(var/mob/living/carbon/human/target)
@@ -151,8 +157,9 @@
 
 /obj/item/ammo_casing/microbattery/vm_aml/brute2
 	name = "\'AML\' nanite cell - BRUTE-II"
-	type_color = "#BF0000"
-	type_name = "<span style='color:#BF0000;font-weight:bold;'>BRUTE-II</span>"
+	microbattery_group_key = "brute-2"
+	microbattery_mode_color = "#BF0000"
+	microbattery_mode_name = "<span style='color:#BF0000;font-weight:bold;'>BRUTE-II</span>"
 	projectile_type = /obj/projectile/beam/medical_cell/brute2
 
 /obj/projectile/beam/medical_cell/brute2/on_hit_legacy(var/mob/living/carbon/human/target)
@@ -163,8 +170,9 @@
 
 /obj/item/ammo_casing/microbattery/vm_aml/burn2
 	name = "\'AML\' nanite cell - BURN-II"
-	type_color = "#FF8000"
-	type_name = "<span style='color:#FF8000;font-weight:bold;'>BURN-II</span>"
+	microbattery_group_key = "burn-2"
+	microbattery_mode_color = "#FF8000"
+	microbattery_mode_name = "<span style='color:#FF8000;font-weight:bold;'>BURN-II</span>"
 	projectile_type = /obj/projectile/beam/medical_cell/burn2
 
 /obj/projectile/beam/medical_cell/burn2/on_hit_legacy(var/mob/living/carbon/human/target)
@@ -175,8 +183,9 @@
 
 /obj/item/ammo_casing/microbattery/vm_aml/stabilize2
 	name = "\'AML\' nanite cell - STABILIZE-II" //Disinfects and bandages all open wounds, cures all oxy damage
-	type_color = "#0080FF"
-	type_name = "<span style='color:#0080FF;font-weight:bold;'>STABILIZE-II</span>"
+	microbattery_group_key = "stabilize-2"
+	microbattery_mode_color = "#0080FF"
+	microbattery_mode_name = "<span style='color:#0080FF;font-weight:bold;'>STABILIZE-II</span>"
 	projectile_type = /obj/projectile/beam/medical_cell/stabilize2
 
 /obj/projectile/beam/medical_cell/stabilize2/on_hit_legacy(var/mob/living/carbon/human/target)
@@ -198,8 +207,9 @@
 
 /obj/item/ammo_casing/microbattery/vm_aml/omni2
 	name = "\'AML\' nanite cell - OMNI-II"
-	type_color = "#8040FF"
-	type_name = "<span style='color:#8040FF;font-weight:bold;'>OMNI-II</span>"
+	microbattery_group_key = "omni-2"
+	microbattery_mode_color = "#8040FF"
+	microbattery_mode_name = "<span style='color:#8040FF;font-weight:bold;'>OMNI-II</span>"
 	projectile_type = /obj/projectile/beam/medical_cell/omni2
 
 /obj/projectile/beam/medical_cell/omni2/on_hit_legacy(var/mob/living/carbon/human/target)
@@ -213,8 +223,9 @@
 
 /obj/item/ammo_casing/microbattery/vm_aml/toxin2
 	name = "\'AML\' nanite cell - TOXIN-II"
-	type_color = "#00A000"
-	type_name = "<span style='color:#00A000;font-weight:bold;'>TOXIN-II</span>"
+	microbattery_group_key = "tox-2"
+	microbattery_mode_color = "#00A000"
+	microbattery_mode_name = "<span style='color:#00A000;font-weight:bold;'>TOXIN-II</span>"
 	projectile_type = /obj/projectile/beam/medical_cell/toxin2
 
 /obj/projectile/beam/medical_cell/toxin2/on_hit_legacy(var/mob/living/carbon/human/target)
@@ -225,8 +236,9 @@
 
 /obj/item/ammo_casing/microbattery/vm_aml/haste
 	name = "\'AML\' nanite cell - HASTE"
-	type_color = "#FF3300"
-	type_name = "<span style='color:#FF3300;font-weight:bold;'>HASTE</span>"
+	microbattery_group_key = "haste"
+	microbattery_mode_color = "#FF3300"
+	microbattery_mode_name = "<span style='color:#FF3300;font-weight:bold;'>HASTE</span>"
 	projectile_type = /obj/projectile/beam/medical_cell/haste
 
 /obj/projectile/beam/medical_cell/haste/on_hit_legacy(var/mob/living/carbon/human/target)
@@ -245,8 +257,9 @@
 
 /obj/item/ammo_casing/microbattery/vm_aml/resist
 	name = "\'AML\' nanite cell - RESIST"
-	type_color = "#555555"
-	type_name = "<span style='color:#555555;font-weight:bold;'>RESIST</span>"
+	microbattery_group_key = "resist"
+	microbattery_mode_color = "#555555"
+	microbattery_mode_name = "<span style='color:#555555;font-weight:bold;'>RESIST</span>"
 	projectile_type = /obj/projectile/beam/medical_cell/resist
 
 /obj/projectile/beam/medical_cell/resist/on_hit_legacy(var/mob/living/carbon/human/target)
@@ -265,8 +278,9 @@
 
 /obj/item/ammo_casing/microbattery/vm_aml/corpse_mend
 	name = "\'AML\' nanite cell - CORPSE MEND"
-	type_color = "#669900"
-	type_name = "<span style='color:#669900;font-weight:bold;'>CORPSE MEND</span>"
+	microbattery_group_key = "corpsemend"
+	microbattery_mode_color = "#669900"
+	microbattery_mode_name = "<span style='color:#669900;font-weight:bold;'>CORPSE MEND</span>"
 	projectile_type = /obj/projectile/beam/medical_cell/corpse_mend
 
 /obj/projectile/beam/medical_cell/corpse_mend/on_hit_legacy(var/mob/living/carbon/human/target)
@@ -281,8 +295,9 @@
 
 /obj/item/ammo_casing/microbattery/vm_aml/brute3
 	name = "\'AML\' nanite cell - BRUTE-III"
-	type_color = "#BF0000"
-	type_name = "<span style='color:#BF0000;font-weight:bold;'>BRUTE-III</span>"
+	microbattery_group_key = "brute-3"
+	microbattery_mode_color = "#BF0000"
+	microbattery_mode_name = "<span style='color:#BF0000;font-weight:bold;'>BRUTE-III</span>"
 	projectile_type = /obj/projectile/beam/medical_cell/brute3
 
 /obj/projectile/beam/medical_cell/brute3/on_hit_legacy(var/mob/living/carbon/human/target)
@@ -293,8 +308,9 @@
 
 /obj/item/ammo_casing/microbattery/vm_aml/burn3
 	name = "\'AML\' nanite cell - BURN-III"
-	type_color = "#FF8000"
-	type_name = "<span style='color:#FF8000;font-weight:bold;'>BURN-III</span>"
+	microbattery_group_key = "burn-3"
+	microbattery_mode_color = "#FF8000"
+	microbattery_mode_name = "<span style='color:#FF8000;font-weight:bold;'>BURN-III</span>"
 	projectile_type = /obj/projectile/beam/medical_cell/burn3
 
 /obj/projectile/beam/medical_cell/burn3/on_hit_legacy(var/mob/living/carbon/human/target)
@@ -305,8 +321,9 @@
 
 /obj/item/ammo_casing/microbattery/vm_aml/toxin3
 	name = "\'AML\' nanite cell - TOXIN-III"
-	type_color = "#00A000"
-	type_name = "<span style='color:#00A000;font-weight:bold;'>TOXIN-III</span>"
+	microbattery_group_key = "tox-3"
+	microbattery_mode_color = "#00A000"
+	microbattery_mode_name = "<span style='color:#00A000;font-weight:bold;'>TOXIN-III</span>"
 	projectile_type = /obj/projectile/beam/medical_cell/toxin3
 
 /obj/projectile/beam/medical_cell/toxin3/on_hit_legacy(var/mob/living/carbon/human/target)
@@ -317,8 +334,9 @@
 
 /obj/item/ammo_casing/microbattery/vm_aml/omni3
 	name = "\'AML\' nanite cell - OMNI-III"
-	type_color = "#8040FF"
-	type_name = "<span style='color:#8040FF;font-weight:bold;'>OMNI-III</span>"
+	microbattery_group_key = "omni-3"
+	microbattery_mode_color = "#8040FF"
+	microbattery_mode_name = "<span style='color:#8040FF;font-weight:bold;'>OMNI-III</span>"
 	projectile_type = /obj/projectile/beam/medical_cell/omni3
 
 /obj/projectile/beam/medical_cell/omni3/on_hit_legacy(var/mob/living/carbon/human/target)
@@ -333,8 +351,9 @@
 // Illegal cells!
 /obj/item/ammo_casing/microbattery/vm_aml/shrink
 	name = "\'AML\' nanite cell - SHRINK"
-	type_color = "#910ffc"
-	type_name = "<span style='color:#910ffc;font-weight:bold;'>SHRINK</span>"
+	microbattery_group_key = "size-shrink"
+	microbattery_mode_color = "#910ffc"
+	microbattery_mode_name = "<span style='color:#910ffc;font-weight:bold;'>SHRINK</span>"
 	projectile_type = /obj/projectile/beam/medical_cell/shrink
 
 /obj/projectile/beam/medical_cell/shrink/on_hit_legacy(var/mob/living/carbon/human/target)
@@ -347,8 +366,9 @@
 
 /obj/item/ammo_casing/microbattery/vm_aml/grow
 	name = "\'AML\' nanite cell - GROW"
-	type_color = "#fc0fdc"
-	type_name = "<span style='color:#fc0fdc;font-weight:bold;'>GROW</span>"
+	microbattery_group_key = "size-grow"
+	microbattery_mode_color = "#fc0fdc"
+	microbattery_mode_name = "<span style='color:#fc0fdc;font-weight:bold;'>GROW</span>"
 	projectile_type = /obj/projectile/beam/medical_cell/grow
 
 /obj/projectile/beam/medical_cell/grow/on_hit_legacy(var/mob/living/carbon/human/target)
@@ -361,8 +381,9 @@
 
 /obj/item/ammo_casing/microbattery/vm_aml/normalsize
 	name = "\'AML\' nanite cell - NORMALSIZE"
-	type_color = "#C70FEC"
-	type_name = "<span style='color:#C70FEC;font-weight:bold;'>NORMALSIZE</span>"
+	microbattery_group_key = "size-normal"
+	microbattery_mode_color = "#C70FEC"
+	microbattery_mode_name = "<span style='color:#C70FEC;font-weight:bold;'>NORMALSIZE</span>"
 	projectile_type = /obj/projectile/beam/medical_cell/normalsize
 
 /obj/projectile/beam/medical_cell/normalsize/on_hit_legacy(var/mob/living/carbon/human/target)

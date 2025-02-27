@@ -35,32 +35,37 @@
 
 /obj/item/ammo_casing/microbattery/combat/lethal
 	name = "\'Hydra\' microbattery - LETHAL"
-	type_color = "#bf3d3d"
-	type_name = "<span style='color:#bf3d3d;font-weight:bold;'>LETHAL</span>"
+	microbattery_group_key = "lethal"
+	microbattery_mode_color = "#bf3d3d"
+	microbattery_mode_name = "<span style='color:#bf3d3d;font-weight:bold;'>LETHAL</span>"
 	projectile_type = /obj/projectile/beam
 
 /obj/item/ammo_casing/microbattery/combat/stun
 	name = "\'Hydra\' microbattery - STUN"
-	type_color = "#0f81bc"
-	type_name = "<span style='color:#0f81bc;font-weight:bold;'>STUN</span>"
+	microbattery_group_key = "stun"
+	microbattery_mode_color = "#0f81bc"
+	microbattery_mode_name = "<span style='color:#0f81bc;font-weight:bold;'>STUN</span>"
 	projectile_type = /obj/projectile/beam/stun/blue
 
 /obj/item/ammo_casing/microbattery/combat/net
 	name = "\'Hydra\' microbattery - NET"
-	type_color = "#43f136"
-	type_name = "<span style='color:#43d136;font-weight:bold;'>NET</span>"
+	microbattery_group_key = "net"
+	microbattery_mode_color = "#43f136"
+	microbattery_mode_name = "<span style='color:#43d136;font-weight:bold;'>NET</span>"
 	projectile_type = /obj/projectile/beam/energy_net
 
 /obj/item/ammo_casing/microbattery/combat/xray
 	name = "\'Hydra\' microbattery - XRAY"
-	type_color = "#32c025"
-	type_name = "<span style='color:#32c025;font-weight:bold;'>XRAY</span>"
+	microbattery_group_key = "xray"
+	microbattery_mode_color = "#32c025"
+	microbattery_mode_name = "<span style='color:#32c025;font-weight:bold;'>XRAY</span>"
 	projectile_type = /obj/projectile/beam/xray
 
 /obj/item/ammo_casing/microbattery/combat/shotstun
 	name = "\'Hydra\' microbattery - SCATTERSTUN"
-	type_color = "#88ffff"
-	type_name = "<span style='color:#88ffff;font-weight:bold;'>SCATTERSTUN</span>"
+	microbattery_group_key = "scatterstun"
+	microbattery_mode_color = "#88ffff"
+	microbattery_mode_name = "<span style='color:#88ffff;font-weight:bold;'>SCATTERSTUN</span>"
 	projectile_type = /obj/projectile/bullet/pellet/e_shot_stun
 
 /obj/projectile/bullet/pellet/e_shot_stun
@@ -74,14 +79,16 @@
 
 /obj/item/ammo_casing/microbattery/combat/ion
 	name = "\'Hydra\' microbattery - ION"
-	type_color = "#d084d6"
-	type_name = "<span style='color:#d084d6;font-weight:bold;'>ION</span>"
+	microbattery_group_key = "ion"
+	microbattery_mode_color = "#d084d6"
+	microbattery_mode_name = "<span style='color:#d084d6;font-weight:bold;'>ION</span>"
 	projectile_type = /obj/projectile/ion/small
 
 /obj/item/ammo_casing/microbattery/combat/stripper
 	name = "\'Hydra\' microbattery - STRIPPER"
-	type_color = "#fc8d0f"
-	type_name = "<span style='color:#fc8d0f;font-weight:bold;'>STRIPPER</span>"
+	microbattery_group_key = "stripper"
+	microbattery_mode_color = "#fc8d0f"
+	microbattery_mode_name = "<span style='color:#fc8d0f;font-weight:bold;'>STRIPPER</span>"
 	projectile_type = /obj/projectile/bullet/stripper
 
 /obj/projectile/bullet/stripper

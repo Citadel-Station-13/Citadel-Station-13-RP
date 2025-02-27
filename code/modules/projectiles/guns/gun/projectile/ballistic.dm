@@ -135,7 +135,9 @@
 
 	//* Interaction *//
 	/// Show caliber on examine.
-	var/show_caliber_on_examine = TRUE
+	var/interact_show_caliber_on_examine = TRUE
+	/// Allow tactical / combat / whatever reloading
+	var/interact_allow_tactical_reload = TRUE
 
 	//* Rendering *//
 	/// Render an overlay when magazine is in.
@@ -421,7 +423,7 @@
 
 /obj/item/gun/projectile/ballistic/examine(mob/user, dist)
 	. = ..()
-	if(show_caliber_on_examine)
+	if(interact_show_caliber_on_examine)
 		#warn show_caliber_on_examine
 	if(magazine)
 		. += "It has \a [magazine] loaded."
