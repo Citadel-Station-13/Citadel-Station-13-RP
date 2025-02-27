@@ -12,7 +12,6 @@
 	internal_magazine_size = 5
 	internal_magazine_preload_ammo = /obj/item/ammo_casing/a7_62mm
 	caliber = /datum/ammo_caliber/a7_62mm
-	chamber_cycle_after_fire = FALSE
 	heavy = TRUE
 	origin_tech = list(TECH_COMBAT = 1)// Old as shit rifle doesn't have very good tech.
 	action_sound = 'sound/weapons/riflebolt.ogg'

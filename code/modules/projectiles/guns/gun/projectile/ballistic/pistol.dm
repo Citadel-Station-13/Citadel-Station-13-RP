@@ -123,15 +123,12 @@
 	name = "gyrojet pistol"
 	desc = "Speak softly, and carry a big gun. Fires rare .75 caliber self-propelled exploding bolts--because fuck you and everything around you."
 	icon_state = "gyropistol"
-	max_shells = 8
 	caliber = /datum/ammo_caliber/a75
 	fire_sound = 'sound/weapons/railgun.ogg'
 	origin_tech = list(TECH_COMBAT = 3)
-	ammo_type = "/obj/item/ammo_casing/a75"
 	magazine_preload = /obj/item/ammo_magazine/a75
 	magazine_restrict = /obj/item/ammo_magazine/a75
-	auto_eject = 1
-	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
+	magazine_auto_eject = TRUE
 
 /obj/item/gun/projectile/ballistic/gyropistol/bolter
 	name = "\improper Scorpion bolt pistol"
@@ -139,12 +136,11 @@
 	description_fluff = "The HI-GP mk 3 'Scorpion' was an attempt to downsize the larger Ballistae model even further. Many of the weapon's issues persisted, compounded by the smaller size of the mechanical components within. Most prototypes sheared or broke, and were prone to malfunction due to the instense strain of extensive firing."
 	icon_state = "bolt_pistol"
 	item_state = "bolt_pistol"
-	max_shells = 10
 	fire_sound = 'sound/weapons/gunshot/gunshot_bolter.ogg'
 	origin_tech = list(TECH_COMBAT = 5, TECH_ILLEGAL = 3)
 	magazine_preload = /obj/item/ammo_magazine/a75
 	magazine_restrict = /obj/item/ammo_magazine/a75
-	auto_eject = 0
+	magazine_auto_eject = FALSE
 
 /obj/item/gun/projectile/ballistic/gyropistol/bolter/update_icon_state()
 	. = ..()
@@ -191,10 +187,10 @@
 	icon_state = "sawnshotgun"
 	item_state = "sawnshotgun"
 	recoil = 3 //Improvised weapons = poor ergonomics
-	handle_casings = CYCLE_CASINGS //player has to take the old casing out manually before reloading
-	load_method = SINGLE_CASING
+	internal_magazine = TRUE
+	internal_magazine_size = 1
+	chamber_eject_after_fire = FALSE
 	safety_state = GUN_NO_SAFETY
-	max_shells = 1 //literally just a barrel
 	unstable = 1
 
 	// todo: caliber types?
@@ -216,7 +212,7 @@
 	)
 
 /obj/item/gun/projectile/ballistic/pirate/Initialize(mapload)
-	ammo_type = pick(ammo_types)
+	var/ammo_type = pick(ammo_types)
 	desc += " Uses [ammo_types[ammo_type]] rounds."
 
 	var/obj/item/ammo_casing/ammo = ammo_type
@@ -237,11 +233,13 @@
 	item_state = "concealed"
 	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
-	handle_casings = CYCLE_CASINGS //player has to take the old casing out manually before reloading
-	load_method = SINGLE_CASING
-	max_shells = 2
-	ammo_type = /obj/item/ammo_casing/a357
-
+	chamber_eject_after_fire = FALSE
+	chamber_spin_after_fire = TRUE
+	internal_magazine = TRUE
+	internal_magazine_is_revolver = TRUE
+	internal_magazine_size = 2
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a357
+	caliber = /datum/ammo_caliber/a357
 
 /obj/item/gun/projectile/ballistic/luger
 	name = "\improper P08 Luger"
@@ -251,7 +249,6 @@
 	caliber = /datum/ammo_caliber/a9mm
 	magazine_preload = /obj/item/ammo_magazine/a9mm/compact
 	magazine_restrict = /obj/item/ammo_magazine/a9mm/compact
-
 
 /obj/item/gun/projectile/ballistic/luger/brown
 	icon_state = "p08b"
@@ -460,12 +457,12 @@
 	desc = "A strange handgun made from industrial parts. It appears to accept multiple rounds thanks to an internal magazine. Favored by Tyrmalin wannabe-gunslingers."
 	icon_state = "junker_pistol"
 	item_state = "revolver"
-	load_method = SINGLE_CASING
 	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
 	recoil = 3
-	handle_casings = CYCLE_CASINGS
-	max_shells = 3
+	internal_magazine_size = 3
+	internal_magazine_is_revolver = TRUE
+	chamber_spin_after_fire = TRUE
 
 //Donksoft Weapons
 /obj/item/gun/projectile/ballistic/pistol/foam
