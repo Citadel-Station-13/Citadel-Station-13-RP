@@ -23,6 +23,6 @@
 /obj/item/ammo_magazine/microbattery/proc/populate_datastructures()
 
 /**
- * Cycles the ammo in a looping manner.
+ * Cycles the ammo in a looping manner to the next group
  */
-/obj/item/ammo_magazine/microbattery/proc/cycle_ammo()
+/obj/item/ammo_magazine/microbattery/proc/cycle_ammo_group()

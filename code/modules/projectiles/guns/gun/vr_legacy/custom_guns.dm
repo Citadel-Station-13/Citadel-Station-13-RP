@@ -88,7 +88,6 @@
 	icon_state = "stg60"
 	item_state = "arifle"
 	w_class = WEIGHT_CLASS_BULKY
-	max_shells = 30
 	caliber = /datum/ammo_caliber/a7_92mm
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2, TECH_ILLEGAL = 6)
 	magazine_preload = /obj/item/ammo_magazine/a7_92mm
@@ -172,8 +171,7 @@
 	icon_state = "inspector"
 	item_state = "revolver"
 	caliber = /datum/ammo_caliber/a44
-	ammo_type = /obj/item/ammo_casing/a44/rubber
-	handle_casings = CYCLE_CASINGS
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a44/rubber
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3)
 
 /obj/item/gun/projectile/ballistic/revolver/consul/update_overlays()

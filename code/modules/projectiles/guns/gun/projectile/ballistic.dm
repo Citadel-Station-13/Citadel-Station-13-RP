@@ -150,6 +150,10 @@
 	var/interact_show_caliber_on_examine = TRUE
 	/// Allow tactical / combat / whatever reloading
 	var/interact_allow_tactical_reload = TRUE
+	/// Speed (drop mag) reload speed
+	var/interact_speed_reload_delay = 0.5 SECONDS
+	/// Tactical (swap mag) reload speed
+	var/interact_tactical_reload_delay = 1 SECONDS
 
 	//* Rendering *//
 	/// Render an overlay when magazine is in.
