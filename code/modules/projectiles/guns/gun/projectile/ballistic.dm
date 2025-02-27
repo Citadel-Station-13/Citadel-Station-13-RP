@@ -102,6 +102,7 @@
 	var/internal_magazine_preload_ammo
 	/// The internal magazine should act like a looping list
 	/// rather than being a stack.
+	/// * Changing this post-Initialize() is considered undefined behavior.
 	/// * Basically, makes this act like a revolver. Round ejection still works.
 	/// * [internal_magazine_borrowed_offset] will be put into the chamber, and nulled.
 	///   Anything reading internal_magazine_vec should know how to handle this.
@@ -169,12 +170,8 @@
 	. = ..()
 	update_icon()
 
+	#warn preload ammo / internal mag as needed
 
-
-	if(load_method & SPEEDLOADER)
-		load_method_converted |= MAGAZINE_TYPE_SPEEDLOADER | MAGAZINE_TYPE_CLIP
-	else if(load_method & MAGAZINE)
-		load_method_converted |= MAGAZINE_TYPE_NORMAL
 
 /obj/item/gun/projectile/ballistic/update_icon_state()
 	. = ..()
@@ -513,6 +510,27 @@
 /obj/item/gun/projectile/ballistic/proc/get_chambered() as /obj/item/ammo_casing
 	RETURN_TYPE(/obj/item/ammo_casing)
 	return chamber
+
+/**
+ * Cycles the chamber
+ */
+/obj/item/gun/projectile/ballistic/proc/cycle_chamber()
+	#warn impl
+
+/**
+ * Ejects a chambered casing
+ */
+/obj/item/gun/projectile/ballistic/proc/eject_chamber()
+	#warn impl
+
+/**
+ * Switches to a certain index in our internal magazine
+ * * Crashes if we don't use internal magazine
+ */
+/obj/item/gun/projectile/ballistic/proc/unsafe_spin_chamber_to_index(index)
+	if(!internal_magazine)
+		CRASH("attempted to swap chamber index on a non-internal magazine gun")
+	#warn impl
 
 //* Rendering *//
 

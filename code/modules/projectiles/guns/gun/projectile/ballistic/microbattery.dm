@@ -14,3 +14,7 @@
 #warn impl all
 
 #warn action for cycling the magazine
+
+/obj/item/gun/projectile/ballistic/microbattery/proc/cycle_microbattery_group()
+	#warn impl
+

@@ -4623,6 +4623,7 @@
 #include "code\modules\projectiles\guns\gun\launcher\syringe_gun.dm"
 #include "code\modules\projectiles\guns\gun\launcher\vox.dm"
 #include "code\modules\projectiles\guns\gun\projectile\ballistic-interaction.dm"
+#include "code\modules\projectiles\guns\gun\projectile\ballistic-legacy.dm"
 #include "code\modules\projectiles\guns\gun\projectile\ballistic.dm"
 #include "code\modules\projectiles\guns\gun\projectile\energy-firemode.dm"
 #include "code\modules\projectiles\guns\gun\projectile\energy-interaction.dm"

@@ -4,8 +4,8 @@
 	description_info = "The dart gun is capable of storing three beakers. In order to use the dart gun, you must first use it in-hand to open its mixing UI. The dart-gun will only draw from beakers with mixing enabled. If multiple are enabled, the gun will draw from them in equal amounts."
 	description_antag = "The dart gun is silenced, but cannot pierce thick clothing such as armor or space-suits, and thus is better for use against soft targets, or commonly exposed areas of the body."
 	icon_state = "dartgun-empty"
+	base_icon_state = "dartgun"
 	item_state = null
-	var/base_state = "dartgun"
 	origin_tech = list(TECH_COMBAT = 7, TECH_MATERIAL = 6, TECH_BIO = 5, TECH_MAGNET = 2, TECH_ILLEGAL = 3)
 
 	caliber = /datum/ammo_caliber/dart
@@ -15,9 +15,9 @@
 	silenced = 1
 	magazine_preload = /obj/item/ammo_magazine/chemdart
 	magazine_restrict = /obj/item/ammo_magazine/chemdart
+	magazine_auto_eject = FALSE
 	var/default_magazine_casing_count = 5
 	var/track_magazine = 1
-	auto_eject = 0
 
 	var/list/beakers = list() //All containers inside the gun.
 	var/list/mixing = list() //Containers being used for mixing.
@@ -37,19 +37,19 @@
 
 /obj/item/gun/projectile/ballistic/dartgun/update_icon_state()
 	. = ..()
-	if(!ammo_magazine)
-		icon_state = "[base_state]-empty"
+	if(!magazine)
+		icon_state = "[base_icon_state]-empty"
 		return 1
 	if(track_magazine)
 		if(magazine.amount_remaining() == 0)
-			icon_state = "[base_state]-0"
+			icon_state = "[base_icon_state]-0"
 		else if(magazine.amount_remaining() > default_magazine_casing_count)
-			icon_state = "[base_state]-[default_magazine_casing_count]"
+			icon_state = "[base_icon_state]-[default_magazine_casing_count]"
 		else
-			icon_state = "[base_state]-[magazine.amount_remaining()]"
+			icon_state = "[base_icon_state]-[magazine.amount_remaining()]"
 		return 1
 	else
-		icon_state = "[base_state]"
+		icon_state = "[base_icon_state]"
 
 /obj/item/gun/projectile/ballistic/dartgun/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	. = ..()
@@ -171,7 +171,7 @@
 	desc = "Zeng-Hu Pharmaceutical's entry into the arms market, the Z-H P Artemis is a gas-powered dart gun capable of delivering chemical cocktails swiftly across short distances. This one seems to be an early model with an NT stamp."
 	description_info = "The dart gun is capable of storing two beakers. In order to use the dart gun, you must first use it in-hand to open its mixing UI. The dart-gun will only draw from beakers with mixing enabled. If multiple are enabled, the gun will draw from them in equal amounts."
 	icon_state = "dartgun_sci-empty"
-	base_state = "dartgun_sci"
+	base_icon_state = "dartgun_sci"
 	magazine_preload = /obj/item/ammo_magazine/chemdart/small
 	magazine_restrict = /obj/item/ammo_magazine/chemdart
 	default_magazine_casing_count = 3
