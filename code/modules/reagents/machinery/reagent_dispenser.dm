@@ -32,10 +32,11 @@
 /obj/structure/reagent_dispensers/examine(mob/user, dist)
 	. = ..()
 	if(get_dist(user, src) <= 2)
+		// todo: generic reagent examine
 		. += "<span class='notice'>It contains:</span>"
-		if(reagents && reagents.reagent_list.len)
-			for(var/datum/reagent/R in reagents.reagent_list)
-				. += "<span class='notice'>[R.volume] units of [R.name]</span>"
+		if(reagents.total_volume)
+			for(var/datum/reagent/R in reagents?.get_reagent_datums())
+				. += "<span class='notice'>[reagents.reagent_volumes[R.id]] units of [R.name]</span>"
 		else
 			. += "<span class='notice'>Nothing.</span>"
 

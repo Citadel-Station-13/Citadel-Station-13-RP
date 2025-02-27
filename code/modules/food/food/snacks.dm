@@ -3985,29 +3985,26 @@ END CITADEL CHANGE */
 //Code for dipping food in batter
 /obj/item/reagent_containers/food/snacks/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(target.is_open_container() && target.reagents && !(istype(target, /obj/item/reagent_containers/food)))
-		for (var/r in target.reagents.reagent_list)
-
-			var/datum/reagent/R = r
+		for(var/datum/reagent/R as anything in target.reagents.get_reagent_datums())
 			if (istype(R, /datum/reagent/nutriment/coating))
-				if (apply_coating(R, user))
+				if (apply_coating(R, user, target.reagents))
 					return 1
 
 	return ..()
 
 //This proc handles drawing coatings out of a container when this food is dipped into it
-/obj/item/reagent_containers/food/snacks/proc/apply_coating(var/datum/reagent/nutriment/coating/C, var/mob/user)
+/obj/item/reagent_containers/food/snacks/proc/apply_coating(datum/reagent/nutriment/coating/C, mob/user, datum/reagent_holder/coating_holder)
 	if (coating)
 		to_chat(user, "The [src] is already coated in [coating.name]!")
 		return 0
 
 	//Calculate the reagents of the coating needed
 	var/req = 0
-	for (var/r in reagents.reagent_list)
-		var/datum/reagent/R = r
+	for(var/datum/reagent/R as anything in reagents.get_reagent_datums())
 		if (istype(R, /datum/reagent/nutriment))
-			req += R.volume * 0.2
+			req += reagents.reagent_volumes[R.id] * 0.2
 		else
-			req += R.volume * 0.1
+			req += reagents.reagent_volumes[R.id] * 0.1
 
 	req += w_class*0.5
 
@@ -4015,11 +4012,9 @@ END CITADEL CHANGE */
 		//the food has no reagents left, its probably getting deleted soon
 		return 0
 
-	if (C.volume < req)
+	if (coating_holder.reagent_volumes?[C.id] < req)
 		to_chat(user, SPAN_WARNING( "There's not enough [C.name] to coat the [src]!"))
 		return 0
-
-	var/id = C.id
 
 	//First make sure there's space for our batter
 	if (reagents.available_volume() < req+5)
@@ -4027,12 +4022,7 @@ END CITADEL CHANGE */
 		reagents.maximum_volume += extra
 
 	//Suck the coating out of the holder
-	C.holder.trans_to_holder(reagents, req)
-
-	//We're done with C now, repurpose the var to hold a reference to our local instance of it
-	C = reagents.get_reagent(id)
-	if (!C)
-		return
+	coating_holder.transfer_to_holder(src, list(C.id), req)
 
 	coating = C
 	//Now we have to do the witchcraft with masking images
@@ -4086,12 +4076,11 @@ END CITADEL CHANGE */
 		if (do_coating_prefix == 1)
 			name = "[coating.coated_adj] [name]"
 
-	for (var/r in reagents.reagent_list)
-		var/datum/reagent/R = r
-		if (istype(R, /datum/reagent/nutriment/coating))
-			var/datum/reagent/nutriment/coating/C = R
-			C.data["cooked"] = 1
-			C.name = C.cooked_name
+	for(var/datum/reagent/nutriment/coating/coating in reagents.get_reagent_datums())
+		var/datum/nutriment_data/coating_data = reagents.reagent_datas?[coating.id]
+		if(!coating_data)
+			continue
+		coating_data.cooked = TRUE
 
 /obj/item/reagent_containers/food/snacks/proc/on_consume(var/mob/eater, var/mob/feeder = null)
 	if(!reagents.total_volume)
@@ -4259,7 +4248,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/sliceable/pizza/crunch/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("batter", 6.5)
-	coating = reagents.get_reagent("batter")
+	coating = SSchemistry.fetch_reagent(/datum/reagent/nutriment/coating/batter::id)
 	reagents.add_reagent("cooking_oil", 4)
 	bitesize = 2
 

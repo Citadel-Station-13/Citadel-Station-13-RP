@@ -192,9 +192,8 @@
 
 /obj/item/vehicle_module/tool/syringe_gun/proc/get_current_reagents()
 	var/output
-	for(var/datum/reagent/R in reagents.reagent_list)
-		if(R.volume > 0)
-			output += "[R]: [round(R.volume,0.001)] - <a href=\"?src=\ref[src];purge_reagent=[R.id]\">Purge Reagent</a><br />"
+	for(var/datum/reagent/R in reagents.get_reagent_datums())
+		output += "[R]: [round(reagents.reagent_volumes[R.id],0.001)] - <a href=\"?src=\ref[src];purge_reagent=[R.id]\">Purge Reagent</a><br />"
 	if(output)
 		output += "Total: [round(reagents.total_volume,0.001)]/[reagents.maximum_volume] - <a href=\"?src=\ref[src];purge_all=1\">Purge All</a>"
 	return output || "None"
@@ -229,7 +228,7 @@
 		occupant_message("<span class=\"alert\">No reagent info gained from [A].</span>")
 		return 0
 	occupant_message("Analyzing reagents...")
-	for(var/datum/reagent/R in A.reagents.reagent_list)
+	for(var/datum/reagent/R in A.reagents.get_reagent_datums())
 		if(R.id in known_reagents)
 			occupant_message("Reagent \"[R.name]\" already present in database, skipping.")
 		else if(R.reagent_state == 2 && add_known_reagent(R.id,R.name))

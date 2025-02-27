@@ -8,7 +8,7 @@
 	item_state = "carton"
 	center_of_mass = list("x"=16, "y"=8)
 	isGlass = 0
-	start_reagent = /datum/reagent/drink/milk/cream
+	start_with_single_reagent = /datum/reagent/drink/milk/cream
 
 /obj/item/reagent_containers/food/drinks/bottle/milk
 	name = "Large Milk Carton"
@@ -17,4 +17,4 @@
 	item_state = "carton"
 	center_of_mass = list("x"=16, "y"=9)
 	isGlass = 0
-	start_reagent = /datum/reagent/drink/milk
+	start_with_single_reagent = /datum/reagent/drink/milk

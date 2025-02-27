@@ -19,7 +19,7 @@
 
 	if((damage > 5 || damage + burn_dam >= 15) && type == WOUND_TYPE_BURN && (robotic < ORGAN_ROBOT) && !(species.species_flags & NO_BLOOD))
 		var/fluid_loss = 0.4 * (damage/(owner.getMaxHealth() - owner.getMinHealth())) * owner.species.blood_volume*(1 - owner.species.blood_level_fatal)
-		owner.remove_blood(fluid_loss)
+		owner.erase_blood(fluid_loss)
 
 	// first check whether we can widen an existing wound
 	if(length(wounds) > 0 && prob(max(50+(wound_tally-1)*10,90)))

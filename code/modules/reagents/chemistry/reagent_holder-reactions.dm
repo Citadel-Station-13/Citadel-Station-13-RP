@@ -12,11 +12,7 @@
 /datum/reagent_holder/proc/reconsider_reactions()
 	SHOULD_NOT_SLEEP(TRUE)
 
-	var/list/reagent_ids = list()
-	for(var/datum/reagent/reagent in reagent_list)
-		reagent_ids[reagent.id] = TRUE
-
-	var/list/datum/chemical_reaction/reactions = SSchemistry.immutable_relevant_reactions_for_reagent_ids(reagent_ids)
+	var/list/datum/chemical_reaction/reactions = SSchemistry.immutable_relevant_reactions_for_reagent_ids(reagent_volumes)
 	check_reactions(reactions)
 
 //* Internal API *//
@@ -223,7 +219,12 @@
 			remove_reagent(id, maximum_multiplier * reaction.required_reagents[id], TRUE)
 			ids_to_recheck[id] = TRUE
 		if(reaction.result_amount > 0)
-			add_reagent(reaction.result, maximum_multiplier * reaction.result_amount, null, TRUE)
+			add_reagent(
+				reaction.result,
+				maximum_multiplier * reaction.result_amount,
+				reaction.has_data_semantics ? reaction.compute_result_data_initializer(src, maximum_multiplier) : null,
+				TRUE,
+			)
 			ids_to_recheck[reaction.result] = TRUE
 
 		reaction.on_reaction_tick(src, delta_time, maximum_multiplier)
@@ -308,7 +309,12 @@
 			remove_reagent(id, maximum_multiplier * reaction.required_reagents[id], TRUE)
 			ids_to_recheck[id] = TRUE
 		if(reaction.result && reaction.result_amount > 0)
-			add_reagent(reaction.result, maximum_multiplier * reaction.result_amount, null, TRUE)
+			add_reagent(
+				reaction.result,
+				maximum_multiplier * reaction.result_amount,
+				reaction.has_data_semantics ? reaction.compute_result_data_initializer(src, maximum_multiplier) : null,
+				TRUE,
+			)
 			ids_to_recheck[reaction.result] = TRUE
 
 		reaction.on_reaction_instant(src, maximum_multiplier)
