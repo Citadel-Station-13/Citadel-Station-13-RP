@@ -435,7 +435,7 @@
 /obj/item/clothing/accessory/sweater
 	name = "sweater"
 	desc = "A warm knit sweater."
-	icon_override = 'icons/mob/clothing/ties.dmi'
+	icon_override = 'icons/mob/clothing/sweaters.dmi' // cutting down on the >9000 states .dmi
 	icon_state = "sweater"
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
@@ -456,7 +456,7 @@
 		else if(H.species.get_effective_bodytype(H, src, SLOT_ID_SUIT) == BODYTYPE_VOX)
 			icon_override = 'icons/mob/clothing/species/vox/ties.dmi'
 		else
-			icon_override = 'icons/mob/clothing/ties.dmi'
+			icon_override = 'icons/mob/clothing/sweaters.dmi'
 		update_worn_icon()
 
 /obj/item/clothing/accessory/sweater/pink
@@ -568,6 +568,11 @@
 	name = "Mega Milk sweater (m)"
 	desc = "A white shirt with blue sleeves. The words 'Mega Milk' have been written in black around the chest area. The shirt itself is quite well-fitting, accentuating the curves."
 	icon_state = "milk_sweater_m"
+
+/obj/item/clothing/accessory/sweater/asymetric
+	name = "Asymetric Sweater"
+	desc = "A loose knit sweater with an exceptionally wide neckline. It's hard to wear without it falling to one side and revealing your shoulder, or more."
+	icon_state = "asymetric"
 
 //***
 // End of sweaters
