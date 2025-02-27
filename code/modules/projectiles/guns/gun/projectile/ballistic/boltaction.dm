@@ -14,7 +14,7 @@
 	caliber = /datum/ammo_caliber/a7_62mm
 	heavy = TRUE
 	origin_tech = list(TECH_COMBAT = 1)// Old as shit rifle doesn't have very good tech.
-	action_sound = 'sound/weapons/riflebolt.ogg'
+	chamber_manual_cycle_sound = 'sound/weapons/riflebolt.ogg'
 	worth_intrinsic = 300
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/rifle/practice // For target practice
@@ -74,7 +74,7 @@
 	caliber = /datum/ammo_caliber/a357
 	internal_magazine_size = 10
 	internal_magazine_preload_ammo = /obj/item/ammo_casing/a357
-	action_sound = 'sound/weapons/riflebolt.ogg'
+	chamber_manual_cycle_sound = 'sound/weapons/riflebolt.ogg'
 	one_handed_penalty = 15
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/rifle/lever/holy
@@ -118,7 +118,7 @@
 	load_method = SINGLE_CASING
 	ammo_type = /obj/item/ammo_casing/a44
 	animated_pump = 1
-	action_sound = 'sound/weapons/riflebolt.ogg'
+	chamber_manual_cycle_sound = 'sound/weapons/riflebolt.ogg'
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/rifle/lever/vintage/holy
 	name = "blessed lever-action"
@@ -161,7 +161,7 @@
 	internal_magazine_size = 5
 	caliber = /datum/ammo_caliber/a12g
 	load_method = SINGLE_CASING
-	action_sound = 'sound/weapons/riflebolt.ogg'
+	chamber_manual_cycle_sound = 'sound/weapons/riflebolt.ogg'
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/rifle/lever/arnold/holy
 	name = "blessed lever-action shotgun"
@@ -177,7 +177,7 @@
 	load_method = SINGLE_CASING|SPEEDLOADER
 	internal_magazine_size = 5
 	caliber = /datum/ammo_caliber/a7_62mm
-	action_sound = 'sound/weapons/riflebolt.ogg'
+	chamber_manual_cycle_sound = 'sound/weapons/riflebolt.ogg'
 	animated_pump = 1
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/rifle/lever/win1895/holy
@@ -195,7 +195,7 @@
 	heavy = TRUE
 	origin_tech = list(TECH_COMBAT = 1)
 	load_method = SINGLE_CASING|SPEEDLOADER
-	action_sound = 'sound/weapons/riflebolt.ogg'
+	chamber_manual_cycle_sound = 'sound/weapons/riflebolt.ogg'
 	pin = /obj/item/firing_pin/explorer
 	w_class = WEIGHT_CLASS_HUGE // So it can't fit in a backpack.
 	ammo_type = /obj/item/ammo_casing/a7_62mm/sniperhunter

@@ -15,43 +15,19 @@
 	chamber_cycle_after_fire = FALSE
 
 	one_handed_penalty = 15
-	var/recentpump = 0 // to prevent spammage
-	var/action_sound = 'sound/weapons/shotgunpump.ogg'
+	chamber_manual_cycle_sound = 'sound/weapons/shotgunpump.ogg'
 	load_sound = 'sound/weapons/guns/interaction/shotgun_insert.ogg'
-	var/animated_pump = 0 //This is for cyling animations.
 	var/empty_sprite = 0 //This is just a dirty var so it doesn't fudge up.
-
-/obj/item/gun/projectile/ballistic/shotgun/pump/attack_self(mob/user, datum/event_args/actor/actor)
-	// todo: this breaks other attack self interactions :(
-	if(world.time >= recentpump + 10)
-		pump(user)
-		recentpump = world.time
-
-/obj/item/gun/projectile/ballistic/shotgun/pump/proc/pump(mob/M as mob)
-	playsound(M, action_sound, 60, 1)
-
-	if(chambered)//We have a shell in the chamber
-		chambered.loc = get_turf(src)//Eject casing
-		chambered = null
-
-	if(loaded.len)
-		var/obj/item/ammo_casing/AC = loaded[1] //load next casing.
-		loaded -= AC //Remove casing from loaded list.
-		chambered = AC
-
-	if(animated_pump)//This affects all bolt action and shotguns.
-		flick("[icon_state]-cycling", src)//This plays any pumping
-
-	update_icon()
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/update_icon_state()
 	. = ..()
-	if(!empty_sprite)//Just a dirty check
-		return
-	if((loaded.len) || (chambered))
-		icon_state = "[icon_state]"
-	else
-		icon_state = "[icon_state]-empty"
+	if(!(item_renderer || mob_renderer) && render_use_legacy_by_default)
+		if(!empty_sprite)//Just a dirty check
+			return
+		if(get_ammo_remaining())
+			icon_state = "[icon_state]"
+		else
+			icon_state = "[icon_state]-empty"
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/slug
 	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12g
@@ -247,8 +223,6 @@
 	desc = "A common mass produced emergency flare gun capable of shooting a single flare great distances for signalling air and ground forces alike. As it loads 12g flare shells it can also function as improvised 12g shotgun. On it a description reads: 'Warning: Possession is prohibited outside of emergency situations'."
 	icon_state = "flareg"
 	item_state = "flareg"
-	load_method = SINGLE_CASING
-	handle_casings = CYCLE_CASINGS
 	internal_magazine_size = 1
 	w_class = WEIGHT_CLASS_SMALL
 	damage_force = 5
@@ -282,9 +256,8 @@
 	desc = " A single barrel shotgun with a long curved stock and an axe head wrapped around the end of the barrel. More axe than shotgun, the blade has been treated with an odd smelling incense. Loads using 12g shells."
 	icon_state = "axeshotgun"
 	item_state = "axeshotgun"
-	load_method = SINGLE_CASING
-	handle_casings = CYCLE_CASINGS
 	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12g/silver
+	internal_magazine_is_revolver = TRUE
 	internal_magazine_size = 1
 	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 25
@@ -297,8 +270,6 @@
 	desc = "A compact shotgun designed to be mounted underneath a proper weapon, this secondary unit usually has a limited capacity."
 	icon_state = null
 	item_state = null
-	load_method = SINGLE_CASING
-	handle_casings = CYCLE_CASINGS
 	internal_magazine_size = 1
 	w_class = WEIGHT_CLASS_TINY
 	caliber = /datum/ammo_caliber/a12g
@@ -320,20 +291,5 @@
 	one_handed_penalty = 5
 	fire_sound = 'sound/items/syringeproj.ogg'
 
-/obj/item/gun/projectile/ballistic/shotgun/pump/foam/pump(mob/M as mob)
-	playsound(M, action_sound, 60, 1)
-
-	if(chambered)//We have a shell in the chamber
-		chambered = null
-
-	if(loaded.len)
-		var/obj/item/ammo_casing/AC = loaded[1] //load next casing.
-		loaded -= AC //Remove casing from loaded list.
-		chambered = AC
-
-	if(animated_pump)//This affects all bolt action and shotguns.
-		flick("[icon_state]-cycling", src)//This plays any pumping
-
-	update_icon()
 /obj/item/gun/projectile/ballistic/shotgun/pump/foam/blue
 	icon_state = "toy_shotgun_blue"

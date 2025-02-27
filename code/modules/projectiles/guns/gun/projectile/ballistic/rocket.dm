@@ -71,8 +71,8 @@
 	item_state = "missile"
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = SLOT_BELT
-	handle_casings = HOLD_CASINGS
-	ammo_type = /obj/item/ammo_casing/rocket
+	chamber_cycle_after_fire = FALSE
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/rocket
 	var/collapsed = 1
 	var/empty = 0
 
@@ -123,7 +123,6 @@
 	desc = "A sloppily machined tube designed to function as a recoilless rifle. Sometimes used by Tyrmalin defense teams. It draws skeptical looks even amongst their ranks."
 	icon_state = "rokkitlauncher"
 	item_state = "rocket"
-	handle_casings = HOLD_CASINGS
 	unstable = 1
 
 // todo: dumb
