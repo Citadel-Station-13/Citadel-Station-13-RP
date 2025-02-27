@@ -190,8 +190,8 @@
 		total_volume -= amount
 		. = amount
 	// -- deal with floating point inaccuracy incase we went below 0 --
-	if(total_volume < 0)
-		total_volume = 0
+	if(total_volume < REAGENT_HOLDER_VOLUME_PRECISION) clear_reagents()
+	// -- end
 	if(!skip_reactions)
 		try_reactions_for_reagent_change(id)
 	//! LEGACY
@@ -218,8 +218,8 @@
 	reagent_volumes -= id
 	total_volume -= current
 	// -- deal with floating point inaccuracy incase we went below 0 --
-	if(total_volume < 0)
-		total_volume = 0
+	if(total_volume < REAGENT_HOLDER_VOLUME_PRECISION) clear_reagents()
+	// -- end
 	if(!skip_reactions)
 		try_reactions_for_reagent_change(id)
 	//! LEGACY
