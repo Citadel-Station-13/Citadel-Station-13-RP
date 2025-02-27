@@ -9,11 +9,10 @@
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BACK
 	//fire_sound = 'sound/weapons/rifleshot.ogg'
-	load_method = MAGAZINE // ToDo: Make it so MAGAZINE, SPEEDLOADER and SINGLE_CASING can all be used on the same gun.
 	magazine_preload = /obj/item/ammo_magazine/a7_62mm/garand
 	magazine_restrict = /obj/item/ammo_magazine/a7_62mm/garand
-	auto_eject = 1
-	auto_eject_sound = 'sound/weapons/garand_ping.ogg'
+	magazine_auto_eject = TRUE
+	magazine_auto_eject_sound = 'sound/weapons/garand_ping.ogg'
 	one_handed_penalty = 15
 
 /obj/item/gun/projectile/ballistic/garand/update_icon_state()
@@ -58,7 +57,7 @@
 
 /obj/item/gun/projectile/ballistic/apinae_stinger/update_icon_state()
 	. = ..()
-	icon_state = "apigun-[magazine ? round(magazine.amount_remaining(), 2) : "e"]"
+	icon_state = "apigun-[magazine ? round(magazine.get_amount_remaining(), 2) : "e"]"
 
 // todo: default-unloaded, add /loaded
 /obj/item/gun/projectile/ballistic/reconrifle

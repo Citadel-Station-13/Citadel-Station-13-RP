@@ -13,8 +13,7 @@
 	fire_sound = 'sound/weapons/Gunshot_light.ogg'
 	damage_force = 3
 	recoil = 2
-	auto_eject = 1
-	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
+	magazine_auto_eject = TRUE
 	attack_sound = null
 	caliber = /datum/ammo_caliber/a7_62mm
 	magazine_preload = /obj/item/ammo_magazine/a7_62mm

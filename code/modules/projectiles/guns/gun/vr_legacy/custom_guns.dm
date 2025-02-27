@@ -8,7 +8,6 @@
 	item_icons = null
 	w_class = WEIGHT_CLASS_BULKY
 	recoil = 1.5 // The battlerifle was known for its nasty recoil.
-	max_shells = 36
 	caliber = /datum/ammo_caliber/a9_5mm
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
 	magazine_preload = /obj/item/ammo_magazine/m95
@@ -21,12 +20,10 @@
 	. = ..()
 	update_worn_icon()
 
+// todo: new render system
 /obj/item/gun/projectile/ballistic/automatic/battlerifle/update_icon_state()
 	. = ..()
-	if(istype(ammo_magazine,/obj/item/ammo_magazine/m95))
-		icon_state = "battlerifle"
-	else
-		icon_state = magazine? "battlerifle" : "battlerifle_empty"
+	icon_state = magazine? "battlerifle" : "battlerifle_empty"
 
 // For general use
 /obj/item/gun/projectile/ballistic/shotgun/pump/JSDF
@@ -36,8 +33,8 @@
 	icon_override = 'icons/obj/gun/ballistic.dmi'
 	item_state = "haloshotgun_i"
 	item_icons = null
-	ammo_type = /obj/item/ammo_casing/a12g
-	max_shells = 12
+	internal_magazine_size = 12
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12g
 
 // For general use
 /obj/item/gun/projectile/ballistic/automatic/pdw
@@ -63,7 +60,7 @@
 
 /obj/item/gun/projectile/ballistic/automatic/pdw/update_icon_state()
 	. = ..()
-	if(istype(ammo_magazine,/obj/item/ammo_magazine/a9mm))
+	if(istype(magazine, /obj/item/ammo_magazine/a9mm))
 		icon_state = "pdw-short"
 	else
 		icon_state = magazine? "pdw" : "pdw-empty"
@@ -146,7 +143,7 @@
 
 /obj/item/gun/projectile/ballistic/giskard/update_icon_state()
 	. = ..()
-	if(magazine && magazine.amount_remaining())
+	if(magazine && magazine.get_amount_remaining())
 		icon_state = "giskardcivil"
 	else
 		icon_state = "giskardcivil_empty"
@@ -163,7 +160,7 @@
 
 /obj/item/gun/projectile/ballistic/giskard/olivaw/update_icon_state()
 	. = ..()
-	if(magazine && magazine.amount_remaining())
+	if(magazine && magazine.get_amount_remaining())
 		icon_state = "olivawcivil"
 	else
 		icon_state = "olivawcivil_empty"
@@ -181,7 +178,7 @@
 
 /obj/item/gun/projectile/ballistic/revolver/consul/update_overlays()
 	. = ..()
-	if(loaded.len==0)
+	if(get_ammo_remaining())
 		. += "inspector_off"
 	else
 		. += "inspector_on"
@@ -219,9 +216,9 @@
 	dispersion=list(0.0, 0.6, 1.0)
 
 /obj/item/gun/projectile/ballistic/automatic/sol/proc/update_charge()
-	if(!ammo_magazine)
+	if(!magazine)
 		return
-	var/ratio = magazine.amount_remaining() / magazine.ammo_max
+	var/ratio = magazine.get_amount_remaining() / magazine.ammo_max
 	if(ratio < 0.25 && ratio != 0)
 		ratio = 0.25
 	ratio = round(ratio, 0.25) * 100

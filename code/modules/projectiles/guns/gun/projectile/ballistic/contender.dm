@@ -7,7 +7,7 @@
 	internal_magazine = TRUE
 	internal_magazine_preload_ammo = /obj/item/ammo_casing/a357
 	internal_magazine_size = 1
-	chamber_eject_after_fire = FALSE
+	chamber_cycle_after_fire = FALSE
 
 	load_method = SINGLE_CASING
 	heavy = TRUE

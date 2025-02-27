@@ -52,7 +52,7 @@
 	cut_overlays()
 	. = ..()
 	var/list/overlays_to_add = list()
-	for(var/i in 1 to min(4, amount_remaining()))
+	for(var/i in 1 to min(4, get_amount_remaining()))
 		var/obj/item/ammo_casing/nt_expedition/heavy_sidearm/predicted_path = peek_path_of_position(i)
 		var/append = "basic"
 		if(ispath(predicted_path, /obj/item/ammo_casing/nt_expedition/heavy_sidearm))

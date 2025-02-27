@@ -91,6 +91,8 @@
 	/// * This is an indexed list. Non-revolverlikes will trim the list as
 	///   needed, while revolverlikes will keep the list size static.
 	/// * This is separate from [magazine] on purpose.
+	/// * The top round is the bottom of the list, ergo last element.
+	///   This makes insertion and removal very fast.
 	var/list/obj/item/ammo_casing/internal_magazine_vec
 	/// The current position in [internal_magazine_vec] we are at.
 	/// * This position in the list will be put into chambered and nulled out, as it's technically
@@ -112,8 +114,15 @@
 	/// Chambered round
 	/// * This is considered an internal variable; use getters / setters to manipulate it.
 	VAR_PROTECTED/obj/item/ammo_casing/chamber
-	/// Eject rounds after firing
-	var/chamber_eject_after_fire = TRUE
+	/// Eject rounds after firing and chamber the next one
+	var/chamber_cycle_after_fire = TRUE
+	/// chamber will still clear a shot even if it doesn't fire
+	/// * basically means a gun will automatically un-jam itself
+	/// * you're a coward if you turn this on
+	/// * this does not affect cycling chambers like revolvers! duh.
+	var/chamber_cycle_after_inert = FALSE
+	/// chamber cycle sound
+	var/chamber_cycle_sound = /datum/soundbyte/guns/ballistic/rack_chamber/generic_1
 	/// Spin the internal magazine after firing
 	/// * Has no effect if [internal_magazine_is_revolver] is off.
 	var/chamber_spin_after_fire = TRUE
@@ -125,11 +134,6 @@
 	///   fired, and the chamber will never hold a bullet if a magazine isn't inserted.
 	/// * This must be TRUE to allow manual loading without a magazine.
 	var/chamber_magazine_separation = TRUE
-	/// chamber will still clear a shot even if it doesn't fire
-	/// * basically means a gun will automatically un-jam itself
-	/// * you're a coward if you turn this on
-	/// * this does not affect cycling chambers like revolvers! duh.
-	var/chamber_eject_if_inert = FALSE
 
 	//* Configuration *//
 	/// If set, accepts ammo and magazines of this caliber.
@@ -186,37 +190,22 @@
 	#warn handle internal magazine and magazine chamber separation
 	return chamber ? prime_casing(cycle, chamber, CASING_PRIMER_CHEMICAL) : GUN_FIRED_FAIL_EMPTY
 
-/**
- * Primes the casing being fired, and expends it.
- *
- * Either will return an /obj/projectile,
- * or return a GUN_FIRED_* define that is not SUCCESS.
- */
-/obj/item/gun/projectile/ballistic/proc/prime_casing(datum/gun_firing_cycle/cycle, obj/item/ammo_casing/casing, casing_primer)
-	return casing.process_fire(casing_primer)
-
-// todo: rework this
 /obj/item/gun/projectile/ballistic/post_fire(datum/gun_firing_cycle/cycle)
 	. = ..()
 	switch(cycle.last_firing_result)
-		// process chamber
-		if(GUN_FIRED_FAIL_INERT, GUN_FIRED_SUCCESS, GUN_FIRED_FAIL_EMPTY)
-			process_chambered()
+		if(GUN_FIRED_SUCCESS)
+			legacy_emit_chambered_residue()
+			if(magazine_auto_eject && !magazine.get_amount_remaining())
+				eject_magazine(null, null, TRUE)
+		if(GUN_FIRED_FAIL_INERT)
+		if(GUN_FIRED_FAIL_EMPTY)
+		#warn handle all
+
 
 // todo: refactor
 /obj/item/gun/projectile/ballistic/proc/process_chambered()
 	if (!chambered)
 		return
-
-	// Aurora forensics port, gunpowder residue.
-	if(chambered.leaves_residue)
-		var/mob/living/carbon/human/H = loc
-		if(istype(H))
-			if(!istype(H.gloves, /obj/item/clothing))
-				H.gunshot_residue = chambered.get_caliber_string()
-			else
-				var/obj/item/clothing/G = H.gloves
-				G.gunshot_residue = chambered.get_caliber_string()
 
 	switch(handle_casings)
 		if(EJECT_CASINGS) //eject casing onto ground.
@@ -405,20 +394,6 @@
 	else
 		return ..()
 
-/obj/item/gun/projectile/ballistic/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	..()
-	if(auto_eject && ammo_magazine && !ammo_magazine.amount_remaining())
-		ammo_magazine.loc = get_turf(src.loc)
-		user.visible_message(
-			"[ammo_magazine] falls out and clatters on the floor!",
-			"<span class='notice'>[ammo_magazine] falls out and clatters on the floor!</span>"
-			)
-		if(auto_eject_sound)
-			playsound(user, auto_eject_sound, 40, 1)
-		magazine.update_icon()
-		ammo_magazine = null
-		update_icon() //make sure to do this after unsetting ammo_magazine
-
 /obj/item/gun/projectile/ballistic/examine(mob/user, dist)
 	. = ..()
 	if(interact_show_caliber_on_examine)
@@ -442,7 +417,7 @@
 	else
 		if(!magazine)
 			return 0
-		return min(1, magazine.amount_remaining() / magazine.ammo_max)
+		return min(1, magazine.get_amount_remaining() / magazine.ammo_max)
 
 /obj/item/gun/projectile/ballistic/get_ammo_remaining()
 	if(internal_magazine)
@@ -453,17 +428,9 @@
 		else
 			. = length(internal_magazine_vec)
 	else
-		. = magazine?.amount_remaining()
+		. = magazine?.get_amount_remaining()
 	if(chamber)
 		. += 1
-
-/**
- * Can accept an ammo casing
- */
-/obj/item/gun/projectile/ballistic/proc/accepts_casing(obj/item/ammo_casing/casing)
-	if(!accepts_caliber(casing.caliber))
-		return FALSE
-	return TRUE
 
 /**
  * Accepts:
@@ -478,6 +445,20 @@
 	var/datum/ammo_caliber/ours = resolve_caliber(caliber)
 	var/datum/ammo_caliber/theirs = resolve_caliber(caliberlike)
 	return ours.equivalent(theirs)
+
+/**
+ * Can accept an ammo casing
+ */
+/obj/item/gun/projectile/ballistic/proc/accepts_casing(obj/item/ammo_casing/casing)
+	if(!accepts_caliber(casing.caliber))
+		return FALSE
+	return TRUE
+
+/obj/item/gun/projectile/ballistic/proc/accepts_magazine(obj/item/ammo_magazine/magazine)
+	return magazine_restrict ? check_magazine_restrict(magazine_restrict, null, magazine.type) : TRUE
+
+/obj/item/gun/projectile/ballistic/proc/accepts_speedloader(obj/item/ammo_magazine/magazine)
+	return speedloader_restrict ? check_magazine_restrict(speedloader_restrict, null, magazine.type) : TRUE
 
 /**
  * Can accept a specific 'restrict' value
@@ -496,11 +477,64 @@
 		return TRUE
 	return FALSE
 
-/obj/item/gun/projectile/ballistic/proc/accepts_magazine(obj/item/ammo_magazine/magazine)
-	return magazine_restrict ? check_magazine_restrict(magazine_restrict, null, magazine.type) : TRUE
+/**
+ * Load casing.
+ *
+ * * Has no sanity checks. Run [accepts_casing()] yourself.
+ * * This also means this'll let you insert into chamber even with a magazine
+ *   inserted if the chamber is empty.
+ * * Inserts into first open position of internal magazine if it's a revolver-like structure.
+ * * Inserts into top of internal magazine if it's not.
+ *
+ * @return TRUE / FALSE success / fail
+ */
+/obj/item/gun/projectile/ballistic/proc/insert_casing(obj/item/ammo_casing/casing, silent)
+	if(internal_magazine)
+		// insert into internal magazine
+		if(internal_magazine_is_revolver)
+			#warn impl; insert one after current pos, wrapping if needed
+		else
+			if(length(internal_magazine_vec) < internal_magazine_size)
+				internal_magazine_vec += casing
+				casing.forceMove(src)
+	else
+		// insert into chamber
+		if(!chamber)
+			. = TRUE
+			casing.forceMove(src)
+			chamber = caisng
+	if(. && !silent)
+		playsound(src, single_load_sound, 50, TRUE)
 
-/obj/item/gun/projectile/ballistic/proc/accepts_speedloader(obj/item/ammo_magazine/magazine)
-	return speedloader_restrict ? check_magazine_restrict(speedloader_restrict, null, magazine.type) : TRUE
+/**
+ * Load from a speedloader.
+ *
+ * * Has no sanity checks. Run [accepts_casing()] yourself.
+ * * Doesn't check delay. That's your job.
+ *
+ * @return amount loaded
+ */
+/obj/item/gun/projectile/ballistic/proc/insert_speedloader(obj/item/ammo_magazine/speedloader, silent)
+	// only works with internal magazines
+	if(!internal_magazine)
+		return 0
+	#warn impl
+
+/**
+ * Load magazine
+ *
+ * * Has no sanity checks. Run [accepts_magazine()] yourself.
+ *
+ * @return TRUE / FALSE success / fail
+ */
+/obj/item/gun/projectile/ballistic/proc/insert_magazine(obj/item/ammo_magazine/magazine, silent)
+	#warn impl
+
+/**
+ * Eject inserted magazine
+ */
+/obj/item/gun/projectile/ballistic/proc/eject_magazine(atom/new_loc = drop_location(), silent, auto_eject)
+	#warn impl, make sound, etc
 
 //* Chamber *//
 
@@ -522,6 +556,15 @@
  */
 /obj/item/gun/projectile/ballistic/proc/eject_chamber()
 	#warn impl
+
+/**
+ * Primes the casing being fired, and expends it.
+ *
+ * Either will return an /obj/projectile,
+ * or return a GUN_FIRED_* define that is not SUCCESS.
+ */
+/obj/item/gun/projectile/ballistic/proc/prime_casing(datum/gun_firing_cycle/cycle, obj/item/ammo_casing/casing, casing_primer)
+	return casing.process_fire(casing_primer)
 
 /**
  * Switches to a certain index in our internal magazine

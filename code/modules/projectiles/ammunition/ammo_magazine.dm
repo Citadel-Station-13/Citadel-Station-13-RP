@@ -165,7 +165,7 @@
 
 /obj/item/ammo_magazine/examine(mob/user, dist)
 	. = ..()
-	var/amount_left = amount_remaining()
+	var/amount_left = get_amount_remaining()
 	. += "There [(amount_left == 1)? "is" : "are"] [amount_left] round\s left!"
 
 /**
@@ -181,11 +181,11 @@
  */
 /obj/item/ammo_magazine/proc/transfer_rounds_to(obj/item/ammo_magazine/receiver, update_icon)
 	. = 0
-	var/amount_missing = receiver.amount_missing()
+	var/get_amount_missing = receiver.get_amount_missing()
 	// todo: mixed caliber support
 	if(!receiver.loads_caliber(ammo_caliber))
 		return
-	for(var/i in 1 to min(amount_missing, amount_remaining()))
+	for(var/i in 1 to min(get_amount_missing, amount_remaining()))
 		receiver.push(pop(receiver, TRUE), TRUE)
 		++.
 	update_icon()
@@ -236,7 +236,7 @@
 	if(!ammo_removable)
 		return
 	. = TRUE
-	if(!amount_remaining())
+	if(!get_amount_remaining())
 		e_args.chat_feedback(SPAN_WARNING("[src] is empty."), src)
 		return
 	e_args.chat_feedback(SPAN_NOTICE("You remove a round from [src]."), src)
@@ -252,7 +252,7 @@
 	if(!ammo_removable)
 		return
 	. = TRUE
-	if(!amount_remaining())
+	if(!get_amount_remaining())
 		e_args.chat_feedback(SPAN_WARNING("[src] is empty."), src)
 		return
 	e_args.chat_feedback(SPAN_NOTICE("You remove a round from [src]."), src)
@@ -265,7 +265,7 @@
 		if(!isnull(why_cant_load_casing(casing)))
 			to_chat(user, SPAN_WARNING("[I] doesn't fit into [src]!"))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
-		if(!amount_missing())
+		if(!get_amount_missing())
 			to_chat(user, SPAN_WARNING("[src] is full."))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(!user.temporarily_remove_from_inventory(casing, user = user))
@@ -303,7 +303,7 @@
 /obj/item/ammo_magazine/proc/quick_gather(turf/where, mob/user)
 	. = 0
 	var/needed
-	if((needed = amount_remaining()) >= ammo_max)
+	if((needed = get_amount_remaining()) >= ammo_max)
 		user?.action_feedback(SPAN_WARNING("[src] is full."), src)
 		return
 	// todo: de-instantiate unmodified rounds
@@ -327,7 +327,7 @@
 	if(rendering_system == GUN_RENDERING_DISABLED)
 		return ..()
 	cut_overlays()
-	var/count = CEILING(amount_remaining() / ammo_max * rendering_count, 1)
+	var/count = CEILING(get_amount_remaining() / ammo_max * rendering_count, 1)
 	if(count == rendering_count_current)
 		return
 	rendering_count_current = count
@@ -396,7 +396,7 @@
  * @return TRUE/FALSE on success/failure
  */
 /obj/item/ammo_magazine/proc/push(obj/item/ammo_casing/casing, no_update)
-	if(amount_remaining() >= ammo_max)
+	if(get_amount_remaining() >= ammo_max)
 		return FALSE
 	LAZYADD(ammo_internal, casing)
 	if(casing.loc != src)
@@ -429,9 +429,9 @@
 //* Ammo - Getters *//
 
 /obj/item/ammo_magazine/proc/is_full()
-	return amount_remaining() >= ammo_max
+	return get_amount_remaining() >= ammo_max
 
-/obj/item/ammo_magazine/proc/amount_remaining(live_only)
+/obj/item/ammo_magazine/proc/get_amount_remaining(live_only)
 	if(!live_only)
 		return ammo_current + length(ammo_internal)
 	. = ammo_current
@@ -439,8 +439,8 @@
 		if(casing.is_loaded())
 			.++
 
-/obj/item/ammo_magazine/proc/amount_missing(live_only)
-	return ammo_max - amount_remaining(live_only)
+/obj/item/ammo_magazine/proc/get_amount_missing(live_only)
+	return ammo_max - get_amount_remaining(live_only)
 
 /**
  * Gets the predicted typepath of a casing a given index from the top, where 1 is the top.

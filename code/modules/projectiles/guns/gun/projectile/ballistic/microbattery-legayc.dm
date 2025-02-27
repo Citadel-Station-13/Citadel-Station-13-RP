@@ -85,7 +85,7 @@
 
 /obj/item/gun/projectile/ballistic/microbattery/load_ammo(var/obj/item/A, mob/user)
 	. = ..()
-	if(magazine && ammo_magazine.amount_remaining())
+	if(magazine && ammo_magazine.get_amount_remaining())
 		switch_to(ammo_magazine.ammo_internal[1])
 
 /obj/item/gun/projectile/ballistic/microbattery/unload_ammo(mob/user, var/allow_dump=1)

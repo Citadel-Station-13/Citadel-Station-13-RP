@@ -40,7 +40,7 @@
 /obj/item/gun/projectile/ballistic/automatic/c20r/update_icon_state()
 	. = ..()
 	if(magazine)
-		icon_state = "c20r-[round(magazine.amount_remaining(),4)]"
+		icon_state = "c20r-[round(magazine.get_amount_remaining(),4)]"
 	else
 		icon_state = "c20r"
 
@@ -99,7 +99,7 @@
 /obj/item/gun/projectile/ballistic/automatic/wt550/update_icon_state()
 	. = ..()
 	if(magazine)
-		icon_state = "wt550-[round(magazine.amount_remaining(),4)]"
+		icon_state = "wt550-[round(magazine.get_amount_remaining(),4)]"
 	else
 		icon_state = "wt550"
 
@@ -180,7 +180,7 @@
 /obj/item/gun/projectile/ballistic/automatic/z8/update_icon_state()
 	. = ..()
 	if(magazine)
-		icon_state = "carbine-[round(magazine.amount_remaining(),2)]"
+		icon_state = "carbine-[round(magazine.get_amount_remaining(),2)]"
 	else
 		icon_state = "carbine"
 
@@ -266,7 +266,7 @@
 		icon_state = "l6[cover_open ? "open" : "closed"]mag"
 		item_state = icon_state
 	else
-		icon_state = "l6[cover_open ? "open" : "closed"][magazine ? round(magazine.amount_remaining(), 10) : "-empty"]"
+		icon_state = "l6[cover_open ? "open" : "closed"][magazine ? round(magazine.get_amount_remaining(), 10) : "-empty"]"
 		item_state = "l6[cover_open ? "open" : "closed"][magazine ? "" : "-empty"]"
 
 /obj/item/gun/projectile/ballistic/automatic/lmg/load_ammo(var/obj/item/A, mob/user)
@@ -296,7 +296,7 @@
 
 /obj/item/gun/projectile/ballistic/automatic/lmg/mg42/update_icon_state()
 	. = ..()
-	icon_state = "mg42[cover_open ? "open" : "closed"][magazine ? round(magazine.amount_remaining(), 25) : "-empty"]"
+	icon_state = "mg42[cover_open ? "open" : "closed"][magazine ? round(magazine.get_amount_remaining(), 25) : "-empty"]"
 	item_state = "mg42[cover_open ? "open" : "closed"][magazine ? "" : "-empty"]"
 
 // todo: default-unloaded, add /loaded
@@ -317,7 +317,7 @@
 
 /obj/item/gun/projectile/ballistic/automatic/lmg/m60/update_icon_state()
 	. = ..()
-	icon_state = "M60[cover_open ? "open" : "closed"][magazine ? round(magazine.amount_remaining(), 15) : "-empty"]"
+	icon_state = "M60[cover_open ? "open" : "closed"][magazine ? round(magazine.get_amount_remaining(), 15) : "-empty"]"
 	item_state = "M60[cover_open ? "open" : "closed"][magazine ? "" : "-empty"]"
 
 //Future AA-12
@@ -416,7 +416,7 @@
 
 /obj/item/gun/projectile/ballistic/automatic/p90/update_icon_state()
 	. = ..()
-	icon_state = "p90smg-[magazine ? round(magazine.amount_remaining(), 6) : "empty"]"
+	icon_state = "p90smg-[magazine ? round(magazine.get_amount_remaining(), 6) : "empty"]"
 
 // todo: default-unloaded, add /loaded
 /obj/item/gun/projectile/ballistic/automatic/p90/custom
@@ -429,7 +429,7 @@
 
 /obj/item/gun/projectile/ballistic/automatic/p90/custom/update_icon_state()
 	. = ..()
-	icon_state = "p90smgC-[magazine ? round(magazine.amount_remaining(), 6) : "e"]"
+	icon_state = "p90smgC-[magazine ? round(magazine.get_amount_remaining(), 6) : "e"]"
 
 // todo: default-unloaded, add /loaded
 /obj/item/gun/projectile/ballistic/automatic/tommygun
@@ -683,7 +683,7 @@
 
 /obj/item/gun/projectile/ballistic/automatic/bolter/update_icon_state()
 	. = ..()
-	icon_state = "bolter-[magazine ? round(magazine.amount_remaining(), 2) : "empty"]"
+	icon_state = "bolter-[magazine ? round(magazine.get_amount_remaining(), 2) : "empty"]"
 
 /obj/item/gun/projectile/ballistic/automatic/bolter/storm
 	name = "\improper Onager heavy bolt rifle"
@@ -702,7 +702,7 @@
 
 /obj/item/gun/projectile/ballistic/automatic/bolter/storm/update_icon_state()
 	. = ..()
-	icon_state = "stormbolter-[magazine ? round(magazine.amount_remaining(), 10) : "empty"]"
+	icon_state = "stormbolter-[magazine ? round(magazine.get_amount_remaining(), 10) : "empty"]"
 
 //Foam Weapons
 /obj/item/gun/projectile/ballistic/automatic/advanced_smg/foam
@@ -743,7 +743,7 @@
 /obj/item/gun/projectile/ballistic/automatic/c20r/foam/update_icon_state()
 	. = ..()
 	if(magazine)
-		icon_state = "toy_c20r-[round(magazine.amount_remaining(),4)]"
+		icon_state = "toy_c20r-[round(magazine.get_amount_remaining(),4)]"
 	else
 		icon_state = "toy_c20r"
 
@@ -765,7 +765,7 @@
 
 /obj/item/gun/projectile/ballistic/automatic/lmg/foam/update_icon_state()
 	. = ..()
-	icon_state = "toy_lmg[cover_open ? "open" : "closed"][magazine ? round(magazine.amount_remaining(), 10) : "-empty"]"
+	icon_state = "toy_lmg[cover_open ? "open" : "closed"][magazine ? round(magazine.get_amount_remaining(), 10) : "-empty"]"
 	item_state = "toy_lmg[cover_open ? "open" : "closed"][magazine ? "" : "-empty"]"
 
 /obj/item/gun/projectile/ballistic/automatic/lmg/foam/update_icon()

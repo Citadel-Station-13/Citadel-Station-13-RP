@@ -144,7 +144,7 @@
 
 /obj/item/gun/projectile/ballistic/gyropistol/bolter/update_icon_state()
 	. = ..()
-	icon_state = "bolt_pistol-[magazine ? round(magazine.amount_remaining(), 2) : "empty"]"
+	icon_state = "bolt_pistol-[magazine ? round(magazine.get_amount_remaining(), 2) : "empty"]"
 
 /obj/item/gun/projectile/ballistic/gyropistol/bolter/black
 	desc = "A boxy sidearm seemingly designed for a larger hand. This one is painted black."
@@ -153,7 +153,7 @@
 
 /obj/item/gun/projectile/ballistic/gyropistol/bolter/black/update_icon_state()
 	. = ..()
-	icon_state = "bolt_pistolblack-[magazine ? round(magazine.amount_remaining(), 2) : "empty"]"
+	icon_state = "bolt_pistolblack-[magazine ? round(magazine.get_amount_remaining(), 2) : "empty"]"
 
 /obj/item/gun/projectile/ballistic/pistol
 	name = "compact pistol"
@@ -189,7 +189,7 @@
 	recoil = 3 //Improvised weapons = poor ergonomics
 	internal_magazine = TRUE
 	internal_magazine_size = 1
-	chamber_eject_after_fire = FALSE
+	chamber_cycle_after_fire = FALSE
 	safety_state = GUN_NO_SAFETY
 	unstable = 1
 
@@ -233,7 +233,7 @@
 	item_state = "concealed"
 	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
-	chamber_eject_after_fire = FALSE
+	chamber_cycle_after_fire = FALSE
 	chamber_spin_after_fire = TRUE
 	internal_magazine = TRUE
 	internal_magazine_is_revolver = TRUE
@@ -403,7 +403,7 @@
 
 /obj/item/gun/projectile/ballistic/fiveseven/update_icon_state()
 	. = ..()
-	if(istype(ammo_magazine,/obj/item/ammo_magazine/a5_7mm/five_seven/highcap))
+	if(istype(magazine, /obj/item/ammo_magazine/a5_7mm/five_seven/highcap))
 		icon_state = "fiveseven-extended"
 
 //AXHS Series
@@ -449,7 +449,7 @@
 
 /obj/item/gun/projectile/ballistic/apinae_pistol/update_icon_state()
 	. = ..()
-	icon_state = "apipistol-[magazine ? round(magazine.amount_remaining(), 2) : "e"]"
+	icon_state = "apipistol-[magazine ? round(magazine.get_amount_remaining(), 2) : "e"]"
 
 //Tyrmalin Weapons
 /obj/item/gun/projectile/ballistic/pirate/junker_pistol

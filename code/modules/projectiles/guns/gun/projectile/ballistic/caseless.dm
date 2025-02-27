@@ -7,7 +7,6 @@
 	caliber = /datum/ammo_caliber/a5mm
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 3)
 	slot_flags = SLOT_BACK
-	magazine_type = null // R&D builds this. Starts unloaded.
 	magazine_restrict = /obj/item/ammo_magazine/m5mmcaseless
 	one_handed_penalty = 15
 
@@ -28,7 +27,7 @@
 	item_state = "pellet"
 	wielded_item_state = "pellet-wielded"
 	caliber = /datum/ammo_caliber/pellet
+	internal_magazine = TRUE
+	internal_magazine_size = 1
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/p_pellet
 	fire_sound = 'sound/weapons/tap.ogg'
-	max_shells = 1
-	ammo_type = /obj/item/ammo_casing/p_pellet
-	load_method = SINGLE_CASING

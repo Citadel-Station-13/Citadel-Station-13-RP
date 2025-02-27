@@ -5,9 +5,11 @@
 	item_state = "revolver"
 	caliber = /datum/ammo_caliber/a357
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
-	handle_casings = CYCLE_CASINGS
-	max_shells = 6
-	ammo_type = /obj/item/ammo_casing/a357
+	chamber_spin_after_fire = TRUE
+	internal_magazine = TRUE
+	internal_magazine_size = 6
+	internal_magazine_is_revolver = TRUE
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a357
 
 	magazine_insert_sound = 'sound/weapons/guns/interaction/rev_magin.ogg'
 	magazine_remove_sound = 'sound/weapons/guns/interaction/rev_magout.ogg'
@@ -79,9 +81,8 @@
 	icon_state = "detective"
 	caliber = /datum/ammo_caliber/a45
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
-	ammo_type = /obj/item/ammo_casing/a45/rubber
-	max_shells = 7
-
+	internal_magazine_size = 7
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a45/rubber
 
 /obj/item/gun/projectile/ballistic/revolver/detective45/verb/rename_gun()
 	set name = "Name Gun"
@@ -133,15 +134,14 @@
 	icon_state = "deckard-empty"
 	caliber = /datum/ammo_caliber/a38
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
-	ammo_type = /obj/item/ammo_casing/a38
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a38
 
 /obj/item/gun/projectile/ballistic/revolver/deckard/emp
-	ammo_type = /obj/item/ammo_casing/a38/emp
-
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a38/emp
 
 /obj/item/gun/projectile/ballistic/revolver/deckard/update_icon_state()
 	. = ..()
-	if(loaded.len)
+	if(get_ammo_remaining())
 		icon_state = "deckard-loaded"
 	else
 		icon_state = "deckard-empty"
@@ -158,10 +158,8 @@
 	item_state = "revolver"
 	caliber = /datum/ammo_caliber/cap_gun
 	origin_tech = list(TECH_COMBAT = 1, TECH_MATERIAL = 1)
-	handle_casings = CYCLE_CASINGS
-	max_shells = 7
-	ammo_type = /obj/item/ammo_casing/cap_gun
-
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/cap_gun
+	internal_magazine_size = 7
 
 /obj/item/gun/projectile/ballistic/revolver/judge
 	name = "\"The Judge\""
@@ -178,7 +176,12 @@
 
 /obj/item/gun/projectile/ballistic/revolver/lemat
 	name = "LeMat Revolver"
-	desc = "The LeMat revolver is a 9-shot revolver with a secondar barrel for firing shotgun shells. Cybersun Industries still produces this iconic revolver in limited numbers, deliberately inflating the value of these collectible reproduction pistols. Uses .38 rounds and 12g shotgun shells."
+	desc = {"
+		The LeMat revolver is a 9-shot revolver with a secondary barrel for firing shotgun shells.
+		Cybersun Industries still produces this iconic revolver in limited numbers,
+		deliberately inflating the value of these collectible reproduction pistols.
+		Uses .38 rounds and 12g shotgun shells.
+	"}
 	icon_state = "lemat"
 	item_state = "revolver"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
@@ -276,15 +279,14 @@
 	desc = "A rugged top break revolver based on the Webley Mk. VI model, with modern improvements. Uses .44 magnum rounds."
 	icon_state = "webley2"
 	item_state = "webley2"
-	caliber = /datum/ammo_caliber/a44
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
-	handle_casings = CYCLE_CASINGS
-	max_shells = 6
-	ammo_type = /obj/item/ammo_casing/a44
+	caliber = /datum/ammo_caliber/a44
+	internal_magazine_size = 6
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a44
 
 /obj/item/gun/projectile/ballistic/revolver/webley/holy
 	name = "blessed service revolver"
-	ammo_type = /obj/item/ammo_casing/a44/silver
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a44/silver
 
 /obj/item/gun/projectile/ballistic/revolver/webley/auto
 	name = "autorevolver"
@@ -304,13 +306,12 @@
 	caliber = /datum/ammo_caliber/a44
 	fire_sound = 'sound/weapons/Gunshot_deagle.ogg'
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
-	handle_casings = CYCLE_CASINGS
-	max_shells = 6
-	ammo_type = /obj/item/ammo_casing/a44
+	internal_magazine_size = 6
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a44
 
 /obj/item/gun/projectile/ballistic/revolver/dirty_harry/holy
 	name = "Blessed Model 29"
-	ammo_type = /obj/item/ammo_casing/a44/silver
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a44/silver
 
 //NT SpecOps Revolver
 /obj/item/gun/projectile/ballistic/revolver/combat
@@ -322,11 +323,11 @@
 		cycle_cooldown = 0.5 SECONDS;
 	}
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3)
-	ammo_type = /obj/item/ammo_casing/a44
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a44
 
 /obj/item/gun/projectile/ballistic/revolver/combat/update_icon_state()
 	. = ..()
-	if(loaded.len)
+	if(get_ammo_remaining())
 		icon_state = "combatrevolver"
 	else
 		icon_state = "combatrevolver-e"

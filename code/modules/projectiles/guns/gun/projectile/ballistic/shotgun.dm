@@ -3,26 +3,23 @@
 	desc = "The mass-produced W-T Remmington 29x shotgun is a favourite of police and security forces on many worlds. Uses 12g rounds."
 	icon_state = "shotgun"
 	item_state = "shotgun"
-	max_shells = 4
+	internal_magazine_size = 4
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	damage_force = 10
 	slot_flags = SLOT_BACK
 	caliber = /datum/ammo_caliber/a12g
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
-	load_method = SINGLE_CASING|SPEEDLOADER
-	ammo_type = /obj/item/ammo_casing/a12g/beanbag
+	internal_magazine = TRUE
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12g/beanbag
+	chamber_cycle_after_fire = FALSE
 
-	handle_casings = HOLD_CASINGS
 	one_handed_penalty = 15
 	var/recentpump = 0 // to prevent spammage
 	var/action_sound = 'sound/weapons/shotgunpump.ogg'
 	load_sound = 'sound/weapons/guns/interaction/shotgun_insert.ogg'
 	var/animated_pump = 0 //This is for cyling animations.
 	var/empty_sprite = 0 //This is just a dirty var so it doesn't fudge up.
-
-/obj/item/gun/projectile/ballistic/shotgun/pump/consume_next_projectile(datum/gun_firing_cycle/cycle)
-	return chambered ? chambered.process_fire(CASING_PRIMER_CHEMICAL) : GUN_FIRED_FAIL_EMPTY
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/attack_self(mob/user, datum/event_args/actor/actor)
 	// todo: this breaks other attack self interactions :(
@@ -57,7 +54,7 @@
 		icon_state = "[icon_state]-empty"
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/slug
-	ammo_type = /obj/item/ammo_casing/a12g
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12g
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/combat
 	name = "combat shotgun"
@@ -66,9 +63,8 @@
 	item_state = "cshotgun"
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2)
 	worth_intrinsic = 500
-	max_shells = 7 //match the ammo box capacity, also it can hold a round in the chamber anyways, for a total of 8.
-	ammo_type = /obj/item/ammo_casing/a12g
-	load_method = SINGLE_CASING|SPEEDLOADER
+	internal_magazine_size = 7
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12g
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/combat/warden
 	name = "warden's shotgun"
@@ -76,7 +72,7 @@
 	icon_state = "shotgun_w"
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = WEIGHT_CLASS_NORMAL
-	ammo_type = /obj/item/ammo_casing/a12g/beanbag
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12g/beanbag
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/combat/warden/verb/rename_gun()
 	set name = "Name Gun"
@@ -123,7 +119,7 @@
 	icon_state = "grit"
 	item_state = "grit"
 	caliber = /datum/ammo_caliber/a10g
-	ammo_type = /obj/item/ammo_casing/a10g/pellet/grit
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a10g/pellet/grit
 	fire_sound = 'sound/weapons/gunshot/musket.ogg'
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 4)
 	one_handed_penalty = 5
@@ -139,14 +135,14 @@
 	//In principle someone could make a speedloader for it, so it makes sense.
 	load_method = SINGLE_CASING|SPEEDLOADER
 	handle_casings = CYCLE_CASINGS
-	max_shells = 2
+	internal_magazine_size = 2
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	damage_force = 10
 	slot_flags = SLOT_BACK
 	caliber = /datum/ammo_caliber/a12g
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 1)
-	ammo_type = /obj/item/ammo_casing/a12g/beanbag
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12g/beanbag
 
 	firemodes = list(
 		list(mode_name="fire one barrel at a time", one_handed_penalty = 15, burst=1),
@@ -154,16 +150,16 @@
 		)
 
 /obj/item/gun/projectile/ballistic/shotgun/doublebarrel/pellet
-	ammo_type = /obj/item/ammo_casing/a12g/pellet
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12g/pellet
 
 /obj/item/gun/projectile/ballistic/shotgun/doublebarrel/holy
-	ammo_type = /obj/item/ammo_casing/a12g/silver
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12g/silver
 	desc = "Alright you primitive screw heads, listen up. See this? This... is my BOOMSTICK."
 
 /obj/item/gun/projectile/ballistic/shotgun/doublebarrel/flare
 	name = "signal shotgun"
 	desc = "A double-barreled shotgun meant to fire signal flare shells. Uses 12g rounds."
-	ammo_type = /obj/item/ammo_casing/a12g/flare
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12g/flare
 
 /obj/item/gun/projectile/ballistic/shotgun/doublebarrel/unload_ammo(user, allow_dump)
 	..(user, allow_dump=1)
@@ -198,7 +194,7 @@
 	recoil = 3
 	accuracy = 40
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
-	ammo_type = /obj/item/ammo_casing/a12g/pellet
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12g/pellet
 	w_class = WEIGHT_CLASS_NORMAL
 	damage_force = 5
 	one_handed_penalty = 5
@@ -208,7 +204,7 @@
 	accuracy = 40
 
 /obj/item/gun/projectile/ballistic/shotgun/doublebarrel/sawn/alt/holy // A Special Skin for the sawn off,makes it look like the sawn off from Blood.
-	ammo_type = /obj/item/ammo_casing/a12g/silver
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12g/silver
 
 /obj/item/gun/projectile/ballistic/shotgun/doublebarrel/quad
 	name = "quad-barreled shotgun"
@@ -218,15 +214,14 @@
 	recoil = 2
 	load_method = SINGLE_CASING|SPEEDLOADER
 	handle_casings = CYCLE_CASINGS
-	max_shells = 4
+	internal_magazine_size = 4
 	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 5
 	accuracy = 40
 	slot_flags = SLOT_BACK
-	ammo_type = /obj/item/ammo_casing/a12g/pellet
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12g/pellet
 	caliber = /datum/ammo_caliber/a12g
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 1)
-	ammo_type = /obj/item/ammo_casing/a12g/pellet
 
 	firemodes = list(
 		list(mode_name="fire one barrel at a time", burst=1),
@@ -241,7 +236,7 @@
 	recoil = 0
 	accuracy = 80
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
-	ammo_type = /obj/item/ammo_casing/a10g/silver
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a10g/silver
 	w_class = WEIGHT_CLASS_NORMAL
 	safety_state = GUN_SAFETY_OFF
 	damage_force = 15
@@ -254,13 +249,13 @@
 	item_state = "flareg"
 	load_method = SINGLE_CASING
 	handle_casings = CYCLE_CASINGS
-	max_shells = 1
+	internal_magazine_size = 1
 	w_class = WEIGHT_CLASS_SMALL
 	damage_force = 5
 	slot_flags = SLOT_BELT
 	caliber = /datum/ammo_caliber/a12g
 	accuracy = -15 //Its a flaregun and you expected accuracy?
-	ammo_type = /obj/item/ammo_casing/a12g/flare
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12g/flare
 
 	one_handed_penalty = 0
 	worth_intrinsic = 150
@@ -289,8 +284,8 @@
 	item_state = "axeshotgun"
 	load_method = SINGLE_CASING
 	handle_casings = CYCLE_CASINGS
-	ammo_type = /obj/item/ammo_casing/a12g/silver
-	max_shells = 1
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12g/silver
+	internal_magazine_size = 1
 	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 25
 	slot_flags = SLOT_BACK
@@ -304,10 +299,10 @@
 	item_state = null
 	load_method = SINGLE_CASING
 	handle_casings = CYCLE_CASINGS
-	max_shells = 1
+	internal_magazine_size = 1
 	w_class = WEIGHT_CLASS_TINY
 	caliber = /datum/ammo_caliber/a12g
-	ammo_type = /obj/item/ammo_casing/a12g
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12g
 	one_handed_penalty = 0
 	safety_state = GUN_SAFETY_OFF
 
@@ -317,10 +312,10 @@
 	desc = "A relatively faithful recreation of a pump action shotgun, this one only accepts foam darts."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "toy_shotgun"
-	max_shells = 8
+	internal_magazine_size = 8
 	damage_force = 5
 	caliber = /datum/ammo_caliber/foam
-	ammo_type = /obj/item/ammo_casing/foam
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/foam
 
 	one_handed_penalty = 5
 	fire_sound = 'sound/items/syringeproj.ogg'

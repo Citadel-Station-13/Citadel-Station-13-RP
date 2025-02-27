@@ -57,7 +57,7 @@
 		-4,
 		-5,
 	)
-	for(var/i in 1 to min(6, amount_remaining()))
+	for(var/i in 1 to min(6, get_amount_remaining()))
 		var/obj/item/ammo_casing/nt_expedition/light_sidearm/predicted_path = peek_path_of_position(i)
 		var/append = "basic"
 		if(ispath(predicted_path, /obj/item/ammo_casing/nt_expedition/light_sidearm))

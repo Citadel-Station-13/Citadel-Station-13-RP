@@ -13,7 +13,7 @@
 	origin_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 2, TECH_ILLEGAL = 8)
 	caliber = /datum/ammo_caliber/a12_7mm
 	recoil = 5 //extra kickback
-	chamber_eject_after_fire = FALSE
+	chamber_cycle_after_fire = FALSE
 	handle_casings = HOLD_CASINGS
 	load_method = SINGLE_CASING
 	max_shells = 1

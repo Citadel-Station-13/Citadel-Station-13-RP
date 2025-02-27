@@ -41,12 +41,12 @@
 		icon_state = "[base_icon_state]-empty"
 		return 1
 	if(track_magazine)
-		if(magazine.amount_remaining() == 0)
+		if(magazine.get_amount_remaining() == 0)
 			icon_state = "[base_icon_state]-0"
-		else if(magazine.amount_remaining() > default_magazine_casing_count)
+		else if(magazine.get_amount_remaining() > default_magazine_casing_count)
 			icon_state = "[base_icon_state]-[default_magazine_casing_count]"
 		else
-			icon_state = "[base_icon_state]-[magazine.amount_remaining()]"
+			icon_state = "[base_icon_state]-[magazine.get_amount_remaining()]"
 		return 1
 	else
 		icon_state = "[base_icon_state]"
@@ -119,8 +119,8 @@
 		dat += "There are no beakers inserted!<br><br>"
 
 	if(magazine)
-		if(magazine.amount_remaining())
-			dat += "The dart cartridge has [magazine.amount_remaining()] shots remaining."
+		if(magazine.get_amount_remaining())
+			dat += "The dart cartridge has [magazine.get_amount_remaining()] shots remaining."
 		else
 			dat += "<font color='red'>The dart cartridge is empty!</font>"
 		dat += " \[<A href='?src=\ref[src];eject_cart=1'>Eject</A>\]"
@@ -191,4 +191,4 @@
 	silenced = 1
 	magazine_preload = /obj/item/ammo_magazine/chemdart
 	magazine_restrict = /obj/item/ammo_magazine/chemdart
-	auto_eject = 0
+	magazine_auto_eject = FALSE
