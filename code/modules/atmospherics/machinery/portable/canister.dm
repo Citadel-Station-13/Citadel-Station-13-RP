@@ -273,8 +273,6 @@
 	valve_open = FALSE
 	. = ..()
 	update_icon()
-	return .
-
 
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide
 	name = "Canister: \[N2O\]"
