@@ -51,6 +51,20 @@
 				user.visible_message("<span class='notice'>\The [user] applies some nanite paste on [user != L ? "[L]'s [S.name]" : "[S]"] with [src].</span>",\
 				"<span class='notice'>You apply some nanite paste on [user == L ? "your" : "[L]'s"] [S.name].</span>")
 
+	if (is_holosphere_shell(L))
+		var/mob/living/simple_mob/holosphere_shell/shell = L
+		if(shell.getBruteLoss() || shell.getFireLoss())
+			if(!can_use(1))
+				to_chat(user, SPAN_WARNING("There isn't enough left."))
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+			if(do_after(user,7 * tool_speed))
+				shell.adjustBruteLoss(-15)
+				shell.adjustFireLoss(-15)
+				shell.update_health()
+				use(1)
+				user.visible_message("<span class='notice'>\The [user] applied some [src] on [shell]'s damaged areas.</span>",\
+				"<span class='notice'>You apply some [src] at [shell]'s damaged areas.</span>")
+
 /obj/item/stack/nanopaste/advanced
 	name = "advanced nanopaste"
 	singular_name = "advanced nanite swarm"

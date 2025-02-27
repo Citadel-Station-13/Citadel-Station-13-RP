@@ -49,9 +49,10 @@
 	// the human we belong to
 	var/mob/living/carbon/human/hologram
 
-/mob/living/simple_mob/holosphere_shell/Initialize(mapload)
+/mob/living/simple_mob/holosphere_shell/Initialize(mapload, mob/living/carbon/human/H)
 	. = ..()
 	give_holosphere_actions()
+	RegisterSignal(src, COMSIG_MOB_SAY, PROC_REF(handle_hologram_shell_speech))
 
 /mob/living/simple_mob/holosphere_shell/regenerate_icons()
 	cut_overlays()
@@ -163,3 +164,9 @@
 	var/got = min((((amount * GLOB.cellrate) / SYNTHETIC_NUTRITION_KJ_PER_UNIT) * SYNTHETIC_NUTRITION_INDUCER_CHEAT_FACTOR), needed)
 	hologram.adjust_nutrition(got)
 	return (got * SYNTHETIC_NUTRITION_KJ_PER_UNIT) / GLOB.cellrate / SYNTHETIC_NUTRITION_INDUCER_CHEAT_FACTOR
+
+/mob/living/simple_mob/holosphere_shell/proc/handle_hologram_shell_speech(datum/source, list/message_args)
+	var/message = message_args["message"]
+	var/language_name = message_args["language_name"]
+	var/language_flags = message_args["language_flags"]
+	message_args["message"] = hologram.handle_autohiss(message, language_name, language_flags, TRUE)
