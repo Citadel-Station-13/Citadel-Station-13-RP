@@ -5786,7 +5786,7 @@
 /turf/simulated/wall/prepainted/engineering,
 /area/engineering/locker_room)
 "ut" = (
-/obj/machinery/mineral/equipment_vendor/engineering,
+/obj/machinery/point_redemption_vendor/engineering,
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "uv" = (
@@ -8593,7 +8593,7 @@
 /turf/simulated/floor/lino,
 /area/chapel/office)
 "Fr" = (
-/obj/machinery/mineral/equipment_vendor,
+/obj/machinery/point_redemption_vendor/mining,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/quartermaster/belterdock/refinery)
 "Fv" = (

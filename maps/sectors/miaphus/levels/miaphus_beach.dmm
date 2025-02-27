@@ -1116,7 +1116,6 @@
 "hK" = (
 /obj/effect/decal/remains/tajaran,
 /obj/random/mob/spider/nurse,
-/obj/item/mining_voucher,
 /obj/random/multiple/miningdrills,
 /obj/random/junk,
 /turf/simulated/mineral/floor/cave{

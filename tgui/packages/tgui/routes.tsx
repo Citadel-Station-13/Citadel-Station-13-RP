@@ -83,7 +83,9 @@ const interfaceSubdirectories = [
 ];
 
 const interfacePath = (name: string) => {
-  let built: [string?] = [];
+  let built: [string?] = [
+    name,
+  ];
   for (let i = 0; i < interfaceSubdirectories.length; i++) {
     let dir = interfaceSubdirectories[i];
     built.push(`${dir}/${name}.js`);
@@ -113,7 +115,7 @@ export const getRoutedComponent = store => {
   return directlyRouteComponent(config?.interface);
 };
 
-export const directlyRouteComponent = (name) => {
+export const directlyRouteComponent = (name: string) => {
   let esModule;
   const got: Array<string> = interfacePath(name) as Array<string>;
   for (let i = 0; i < got.length; i++) {
@@ -136,7 +138,10 @@ export const directlyRouteComponent = (name) => {
   if (!esModule) {
     return routingNotFound;
   }
-  const Component = esModule[name];
+  // pull out any /'s as the interface is often a path, not just the interface export
+  const nameHasABackslash = name.lastIndexOf("/");
+  const realName = nameHasABackslash === -1 ? name : name.substring(nameHasABackslash + 1);
+  const Component = esModule[realName];
   if (!Component) {
     return routingMissingExport;
   }

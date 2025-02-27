@@ -1021,7 +1021,7 @@
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck2/starboard_fore)
 "aIF" = (
-/obj/machinery/mineral/equipment_vendor/engineering,
+/obj/machinery/point_redemption_vendor/engineering,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "aIM" = (

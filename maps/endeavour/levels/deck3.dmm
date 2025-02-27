@@ -19472,7 +19472,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "mXi" = (
-/obj/machinery/mineral/equipment_vendor,
+/obj/machinery/point_redemption_vendor/mining,
 /obj/effect/floor_decal/corner/brown/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/quartermaster/belterdock/gear)

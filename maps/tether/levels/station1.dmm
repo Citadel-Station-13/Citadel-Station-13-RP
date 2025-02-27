@@ -5903,7 +5903,7 @@
 /area/engineering/foyer)
 "lY" = (
 /obj/effect/floor_decal/spline/fancy,
-/obj/machinery/mineral/equipment_vendor/survey{
+/obj/machinery/point_redemption_vendor/survey{
 	pixel_y = 5
 	},
 /obj/structure/flora/ausbushes/lavendergrass{

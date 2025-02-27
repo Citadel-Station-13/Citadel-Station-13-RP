@@ -1441,7 +1441,7 @@
 /turf/simulated/floor/bone,
 /area/sector/surt/central/explored)
 "GE" = (
-/obj/machinery/mineral/equipment_vendor,
+/obj/machinery/point_redemption_vendor/mining,
 /turf/simulated/floor/tiled,
 /area/sector/surt/mining_base/common)
 "GT" = (
