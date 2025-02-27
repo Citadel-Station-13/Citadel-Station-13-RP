@@ -78,6 +78,11 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/rnd/breakroom)
+"acs" = (
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/turf/simulated/floor/plating,
+/area/rnd/xenobiology)
 "act" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/item/paper_bin,
@@ -470,6 +475,16 @@
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/hallway/d2portamidhall)
+"aqz" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/obj/machinery/disposal,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/rnd/xenobiology)
 "aqP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -639,6 +654,16 @@
 /obj/spawner/window/low_wall/reinforced/full,
 /obj/effect/paint/purplegray,
 /turf/simulated/floor/reinforced,
+/area/rnd/xenobiology)
+"avH" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "xenobiocoldroom"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/black{
+	dir = 4
+	},
+/turf/simulated/floor/bluegrid,
 /area/rnd/xenobiology)
 "aws" = (
 /turf/simulated/wall/prepainted,
@@ -1032,6 +1057,31 @@
 	},
 /turf/simulated/floor/plating,
 /area/medical/virologymaint)
+"aIM" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "xenobio6";
+	name = "Containment Blast Doors";
+	opacity = 0
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/grille,
+/obj/structure/window/phoronreinforced/full,
+/turf/simulated/floor/reinforced,
+/area/rnd/xenobiology)
 "aJe" = (
 /obj/structure/window/reinforced,
 /obj/structure/table/standard,
@@ -3398,7 +3448,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/purple{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid,
 /area/rnd/xenobiology)
 "ckP" = (
 /obj/map_helper/access_helper/airlock/station/maintenance,
@@ -3632,6 +3688,19 @@
 /obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/space)
+"cuK" = (
+/obj/machinery/button/remote/blast_door{
+	id = "xenobio6";
+	name = "Containment Blast Doors";
+	pixel_y = 28;
+	req_access = list(55)
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/black{
+	dir = 4
+	},
+/obj/structure/plasticflaps/mining,
+/turf/simulated/floor/reinforced,
+/area/rnd/xenobiology)
 "cuL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -4360,6 +4429,9 @@
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/tiled,
+/area/space)
+"cRw" = (
+/turf/simulated/wall/r_wall,
 /area/space)
 "cRy" = (
 /obj/structure/table/steel_reinforced,
@@ -6686,6 +6758,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/space)
+"ekm" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/purple{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/xenobiology)
 "ekq" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint/babyblue,
@@ -7414,8 +7492,11 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/cafeteria)
 "eLj" = (
-/obj/structure/reagent_dispensers/watertank,
-/turf/simulated/floor/tiled,
+/obj/machinery/conveyor{
+	dir = 1;
+	id = "xenobiocoldroom"
+	},
+/turf/simulated/floor/bluegrid,
 /area/rnd/xenobiology)
 "eMi" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -8434,11 +8515,31 @@
 /turf/simulated/open,
 /area/maintenance/substation/medical_science)
 "fry" = (
-/obj/structure/reagent_dispensers/watertank,
-/obj/machinery/status_display{
-	pixel_y = 30
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "xenobio6";
+	name = "Containment Blast Doors";
+	opacity = 0
 	},
-/turf/simulated/floor/tiled,
+/obj/machinery/door/window/brigdoor/northright{
+	dir = 8;
+	name = "Containment Pen";
+	req_access = list(55)
+	},
+/obj/machinery/door/window/brigdoor/northright{
+	dir = 4;
+	name = "Containment Pen";
+	req_access = list(55)
+	},
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "xenobiocoldroom"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/black{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "frJ" = (
 /obj/machinery/camera/network/outside,
@@ -10311,6 +10412,10 @@
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless/ceiling,
 /area/medical/medbay_primary_storage)
+"gHT" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/turf/simulated/floor/tiled,
+/area/rnd/xenobiology)
 "gIr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
@@ -14141,6 +14246,10 @@
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled,
 /area/medical/virology_aft_access)
+"jkp" = (
+/obj/machinery/atmospherics/pipe/vent/high_volume,
+/turf/simulated/floor/airless/ceiling,
+/area/rnd/xenobiology)
 "jkG" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -14339,6 +14448,19 @@
 	},
 /turf/simulated/floor/tiled,
 /area/space)
+"jpQ" = (
+/obj/machinery/conveyor{
+	dir = 1;
+	id = "xenobiocoldroom"
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/simulated/floor/bluegrid,
+/area/rnd/xenobiology)
 "jqr" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
@@ -15082,6 +15204,9 @@
 	},
 /obj/machinery/light{
 	dir = 1
+	},
+/obj/machinery/status_display{
+	pixel_y = 30
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
@@ -23402,11 +23527,11 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d2fwdmaint)
 "ppR" = (
-/obj/machinery/camera/network/outside{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 9
 	},
-/turf/space,
-/area/space)
+/turf/simulated/floor/tiled,
+/area/rnd/xenobiology)
 "ppZ" = (
 /obj/machinery/atmospherics/component/unary/freezer{
 	dir = 8;
@@ -23989,6 +24114,16 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/endeavour/hallway/d1starboardafthall)
+"pFm" = (
+/obj/machinery/conveyor_switch/oneway{
+	id = "xenobiocoldroom";
+	name = "XenoBio Cold Room"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
+/area/rnd/xenobiology)
 "pFp" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor,
@@ -24486,6 +24621,10 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
+"pUo" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/simulated/floor/tiled,
+/area/maintenance/research/lower)
 "pUq" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/medical{
@@ -24899,6 +25038,17 @@
 /obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/tiled/dark,
 /area/endeavour/hallway/d2afthall)
+"qgi" = (
+/obj/machinery/conveyor{
+	dir = 1;
+	id = "xenobiocoldroom"
+	},
+/obj/machinery/camera/network/research{
+	dir = 4;
+	network = list("Xenobiology")
+	},
+/turf/simulated/floor/bluegrid,
+/area/rnd/xenobiology)
 "qgo" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -28137,6 +28287,13 @@
 	},
 /turf/simulated/floor/wood,
 /area/endeavour/hallway/d1starboardforhall)
+"skr" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "xenobiocoldroom"
+	},
+/turf/simulated/floor/bluegrid,
+/area/rnd/xenobiology)
 "skH" = (
 /obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
@@ -30050,6 +30207,7 @@
 	dir = 4;
 	pixel_x = 22
 	},
+/obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/tiled,
 /area/maintenance/research/lower)
 "ttq" = (
@@ -31852,6 +32010,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/hallway)
+"uEv" = (
+/obj/structure/disposaloutlet{
+	dir = 8
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/turf/simulated/floor/bluegrid,
+/area/rnd/xenobiology)
 "uEG" = (
 /obj/structure/cable/green,
 /obj/machinery/power/apc/south_mount,
@@ -33604,6 +33771,19 @@
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
+"vMY" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
+/obj/machinery/atmospherics/valve{
+	name = "EMERGENCY VENT TO SPACE";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/rnd/xenobiology)
 "vNt" = (
 /obj/machinery/camera/network/outside{
 	dir = 1
@@ -34829,6 +35009,31 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/medical/virology)
+"wzn" = (
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "xenobio6";
+	name = "Containment Blast Doors";
+	opacity = 0
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/grille,
+/obj/structure/window/phoronreinforced/full,
+/turf/simulated/floor/reinforced,
+/area/rnd/xenobiology)
 "wzx" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -41658,7 +41863,7 @@ pRW
 jRE
 qBd
 cMM
-cMM
+upp
 upp
 pRW
 pRW
@@ -41852,7 +42057,7 @@ pRW
 qBd
 lmG
 cMM
-cMM
+upp
 upp
 upp
 upp
@@ -42046,10 +42251,10 @@ pRW
 jRE
 qBd
 cMM
-cMM
 upp
-ozA
-ozA
+avH
+qgi
+eLj
 upp
 jHx
 fHl
@@ -42240,10 +42445,10 @@ pRW
 pRW
 pRW
 cMM
-cMM
 upp
-ozA
-ozA
+skr
+eLj
+eLj
 upp
 eZZ
 pFL
@@ -42431,13 +42636,13 @@ pRW
 pRW
 pRW
 pRW
+cRw
 pRW
-ppR
-cMM
 cMM
 upp
-ozA
-ozA
+skr
+eLj
+eLj
 upp
 eZZ
 opc
@@ -42625,13 +42830,13 @@ pRW
 pRW
 pRW
 pRW
+cRw
 pRW
-mDp
-cMM
 cMM
 upp
-ozA
-ozA
+skr
+jpQ
+uEv
 upp
 eZZ
 opc
@@ -42819,13 +43024,13 @@ pRW
 pRW
 pRW
 pRW
+cRw
 pRW
-mDp
-cMM
 cMM
 upp
-ozA
-ozA
+fry
+wzn
+aIM
 upp
 eZZ
 uxu
@@ -43013,13 +43218,13 @@ pRW
 pRW
 pRW
 pRW
+cRw
 pRW
-mDp
-cMM
 cMM
 upp
-ozA
-ozA
+cuK
+pFm
+aqz
 upp
 eZZ
 jQD
@@ -43207,14 +43412,14 @@ pRW
 pRW
 pRW
 pRW
+cRw
 pRW
-pRW
-cMM
 cMM
 upp
-ozA
-ozA
-ozA
+wlm
+vMY
+wlm
+wlm
 ckH
 wlm
 wlm
@@ -43401,17 +43606,17 @@ pRW
 pRW
 pRW
 pRW
+cRw
 pRW
-pRW
-cMM
-cMM
-upp
-ozA
-ozA
-upp
-eZZ
-fry
-eLj
+jkp
+acs
+gHT
+ppR
+jMj
+jMj
+ekm
+jMj
+jMj
 vTK
 oZR
 jMj
@@ -43420,7 +43625,7 @@ jMj
 oPo
 auj
 ttm
-oPo
+pUo
 fBl
 otC
 xzW
@@ -43595,13 +43800,13 @@ pRW
 pRW
 pRW
 pRW
+cRw
 pRW
-pRW
-cMM
 cMM
 upp
+upp
 ozA
-ozA
+upp
 upp
 eZZ
 upp
@@ -43789,11 +43994,11 @@ pRW
 pRW
 pRW
 pRW
+cRw
 pRW
-pRW
-cMM
 cMM
 upp
+ozA
 ozA
 ozA
 upp
@@ -43986,8 +44191,8 @@ pRW
 pRW
 pRW
 cMM
-cMM
 upp
+ozA
 ozA
 ozA
 upp
@@ -44180,8 +44385,8 @@ pRW
 jRE
 qBd
 cMM
-cMM
 upp
+ozA
 ozA
 ozA
 upp
@@ -44374,8 +44579,8 @@ pRW
 qBd
 lmG
 cMM
-cMM
 upp
+ozA
 ozA
 ozA
 upp
@@ -44568,8 +44773,8 @@ pRW
 jRE
 qBd
 cMM
-cMM
 upp
+ozA
 ozA
 ozA
 upp
@@ -44762,8 +44967,8 @@ pRW
 pRW
 pRW
 cMM
-cMM
 upp
+ozA
 ozA
 ozA
 upp
@@ -44956,7 +45161,7 @@ pRW
 pRW
 pRW
 cMM
-cMM
+upp
 upp
 ozA
 ozA
@@ -45150,7 +45355,7 @@ fik
 fik
 vNt
 cMM
-cMM
+upp
 upp
 ozA
 ozA
@@ -45344,7 +45549,7 @@ fik
 fik
 fik
 cMM
-cMM
+upp
 upp
 ozA
 ozA

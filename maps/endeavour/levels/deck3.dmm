@@ -3537,12 +3537,9 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "cHf" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/surfacebase/entertainment)
 "cHp" = (
 /turf/simulated/floor/airless/ceiling,
 /area/security/hanger)
@@ -4439,6 +4436,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
+"djn" = (
+/obj/structure/closet/emcloset,
+/turf/simulated/floor/plating,
+/area/tether/surfacebase/entertainment)
 "djB" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/carpet/bcarpet,
@@ -5081,9 +5082,12 @@
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/warehouse)
 "dJG" = (
-/obj/machinery/portable_atmospherics/powered/scrubber,
+/obj/structure/table/rack/shelf/steel,
+/obj/item/tank/emergency/oxygen/double,
+/obj/item/tank/emergency/oxygen/engi,
+/obj/item/tank/emergency/oxygen/engi,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/surfacebase/entertainment)
 "dJX" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/effect/floor_decal/corner/green/full,
@@ -6626,10 +6630,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "eNA" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/storage/briefcase/inflatable,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/surfacebase/entertainment)
 "eNE" = (
 /turf/simulated/floor/airless/ceiling,
 /area/security/evidence_storage)
@@ -8053,6 +8055,10 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
+"fUO" = (
+/obj/machinery/floodlight,
+/turf/simulated/floor/plating,
+/area/tether/surfacebase/entertainment)
 "fUU" = (
 /obj/structure/filingcabinet,
 /turf/simulated/floor/wood,
@@ -12936,6 +12942,13 @@
 /obj/structure/grille,
 /turf/simulated/floor/airless/ceiling,
 /area/space)
+"jPh" = (
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/obj/machinery/door/airlock/maintenance,
+/turf/simulated/floor/plating,
+/area/tether/surfacebase/entertainment)
 "jPs" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -14356,6 +14369,13 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/belterdock)
+"kUO" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/storage/toolbox/emergency,
+/obj/item/storage/toolbox/emergency,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/tether/surfacebase/entertainment)
 "kVp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -15055,12 +15075,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/starboardsolar)
 "lzC" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/tank/emergency/oxygen/double,
-/obj/item/tank/emergency/oxygen/engi,
-/obj/item/tank/emergency/oxygen/engi,
+/obj/machinery/portable_atmospherics/powered/scrubber,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/surfacebase/entertainment)
 "lAm" = (
 /turf/simulated/floor/tiled,
 /area/janitor)
@@ -17865,9 +17882,9 @@
 /turf/simulated/floor/tiled,
 /area/security/lobby)
 "nMU" = (
-/obj/machinery/space_heater,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/surfacebase/entertainment)
 "nNj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -18933,6 +18950,10 @@
 	},
 /turf/simulated/floor/grass,
 /area/endeavour/station/stairs_three)
+"ozu" = (
+/obj/machinery/space_heater,
+/turf/simulated/floor/plating,
+/area/tether/surfacebase/entertainment)
 "oAk" = (
 /obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
@@ -23993,12 +24014,12 @@
 /turf/simulated/floor/tiled/white,
 /area/quartermaster/belterdock/gear)
 "soe" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/storage/toolbox/emergency,
-/obj/item/storage/toolbox/emergency,
+/obj/machinery/light/small{
+	dir = 1
+	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/surfacebase/entertainment)
 "soz" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/machinery/door/firedoor{
@@ -25806,6 +25827,11 @@
 	},
 /turf/simulated/floor/crystal,
 /area/endeavour/hallway/d3fwdmaint)
+"tHs" = (
+/obj/structure/reagent_dispensers/watertank,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/tether/surfacebase/entertainment)
 "tHC" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -29674,6 +29700,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/monodark,
 /area/quartermaster/delivery)
+"wDH" = (
+/obj/structure/closet/emcloset,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d3portforhall)
 "wEv" = (
 /turf/simulated/wall/prepainted,
 /area/crew_quarters/sleep/Dorm_12)
@@ -31119,9 +31149,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/space)
 "xIv" = (
-/obj/machinery/floodlight,
+/obj/structure/closet,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/engineering,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/surfacebase/entertainment)
 "xIP" = (
 /turf/simulated/floor/crystal,
 /area/endeavour/hallway/d3fwdhall)
@@ -31655,9 +31687,10 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar/lounge)
 "ybd" = (
-/obj/structure/closet/emcloset,
+/obj/structure/table/rack/shelf/steel,
+/obj/item/storage/briefcase/inflatable,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/surfacebase/entertainment)
 "ybF" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -57004,15 +57037,15 @@ pRW
 pRW
 ibA
 tlS
+dJG
+kUO
+tHs
+ozu
 tlS
-tlS
-tlS
-kfo
-kfo
-kfo
-kfo
-kfo
-rqN
+eNA
+xIv
+eNA
+sTd
 eZW
 cnt
 daO
@@ -57198,15 +57231,15 @@ pRW
 pRW
 tUu
 tlS
-kfo
-kfo
-kfo
-kfo
-kfo
-kfo
-kfo
-kfo
-rqN
+soe
+cHf
+eNA
+eNA
+jPh
+eNA
+eNA
+eNA
+wDH
 eZW
 wex
 kAe
@@ -57392,15 +57425,15 @@ pRW
 pRW
 pRW
 tlS
-kfo
-kfo
-kfo
-kfo
-kfo
-kfo
-kfo
-kfo
-rqN
+ybd
+djn
+lzC
+fUO
+tlS
+nMU
+eNA
+eNA
+sTd
 eZW
 eZW
 krn
@@ -61653,16 +61686,16 @@ pRW
 pRW
 pRW
 pRW
-lzC
-soe
-uBK
-nMU
-avK
-nhl
-eiK
-nhl
-nhl
-avK
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
 pRW
 tUu
 alQ
@@ -61847,16 +61880,16 @@ pRW
 pRW
 pRW
 pRW
-cHf
-kZH
-nhl
-nhl
-wiJ
-nhl
-nhl
-nhl
-ybd
-avK
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
 pRW
 pRW
 alQ
@@ -62041,16 +62074,16 @@ pRW
 pRW
 pRW
 pRW
-eNA
-ybd
-dJG
-xIv
-avK
-suh
-nhl
-nhl
-nhl
-avK
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
 pRW
 jGe
 jYr
