@@ -17,4 +17,3 @@
 
 /obj/item/gun/projectile/ballistic/microbattery/proc/cycle_microbattery_group()
 	#warn impl
-

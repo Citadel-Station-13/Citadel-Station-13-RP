@@ -23,18 +23,6 @@
 	var/charge_left = 0
 	var/max_charge = 0
 
-/obj/item/gun/projectile/ballistic/microbattery/consume_next_projectile(datum/gun_firing_cycle/cycle)
-	if(chambered && ammo_magazine)
-		var/obj/item/ammo_casing/microbattery/batt = chambered
-		if(batt.shots_left)
-			return new chambered.projectile_type()
-		else
-			for(var/B in ammo_magazine.ammo_internal)
-				var/obj/item/ammo_casing/microbattery/other_batt = B
-				if(istype(other_batt,chambered.type) && other_batt.shots_left)
-					switch_to(other_batt)
-					return new chambered.projectile_type()
-
 /obj/item/gun/projectile/ballistic/microbattery/proc/update_charge()
 	charge_left = 0
 	max_charge = 0
@@ -123,44 +111,3 @@
 		. += charge_bar
 
 
-
-// The Pack //
-/obj/item/storage/secure/briefcase/nsfw_pack_hybrid
-	name = "hybrid cell-loaded gun kit"
-	desc = "A storage case for a multi-purpose handgun. Variety hour!"
-	w_class = WEIGHT_CLASS_NORMAL
-	max_single_weight_class = WEIGHT_CLASS_NORMAL
-
-/obj/item/storage/secure/briefcase/nsfw_pack_hybrid/legacy_spawn_contents()
-	new /obj/item/gun/projectile/ballistic/microbattery(src)
-	new /obj/item/ammo_magazine/microbattery/advanced(src)
-	new /obj/item/ammo_casing/microbattery/combat/stun(src)
-	new /obj/item/ammo_casing/microbattery/combat/stun(src)
-	new /obj/item/ammo_casing/microbattery/combat/stun(src)
-	new /obj/item/ammo_casing/microbattery/combat/net(src)
-	new /obj/item/ammo_casing/microbattery/combat/net(src)
-	new /obj/item/ammo_casing/microbattery/vm_aml/brute3(src)
-	new /obj/item/ammo_casing/microbattery/vm_aml/burn3(src)
-	new /obj/item/ammo_casing/microbattery/vm_aml/stabilize2(src)
-	new /obj/item/ammo_casing/microbattery/vm_aml/toxin3(src)
-	new /obj/item/ammo_casing/microbattery/vm_aml/omni3(src)
-
-/obj/item/storage/secure/briefcase/nsfw_pack_hybrid_combat
-	name = "military cell-loaded gun kit"
-	desc = "A storage case for a multi-purpose handgun. Variety hour!"
-	w_class = WEIGHT_CLASS_NORMAL
-	max_single_weight_class = WEIGHT_CLASS_NORMAL
-
-/obj/item/storage/secure/briefcase/nsfw_pack_hybrid_combat/legacy_spawn_contents()
-	new /obj/item/gun/projectile/ballistic/microbattery(src)
-	new /obj/item/ammo_magazine/microbattery/advanced(src)
-	new /obj/item/ammo_casing/microbattery/combat/shotstun(src)
-	new /obj/item/ammo_casing/microbattery/combat/shotstun(src)
-	new /obj/item/ammo_casing/microbattery/combat/lethal(src)
-	new /obj/item/ammo_casing/microbattery/combat/lethal(src)
-	new /obj/item/ammo_casing/microbattery/combat/lethal(src)
-	new /obj/item/ammo_casing/microbattery/combat/ion(src)
-	new /obj/item/ammo_casing/microbattery/combat/xray(src)
-	new /obj/item/ammo_casing/microbattery/vm_aml/stabilize2(src)
-	new /obj/item/ammo_casing/microbattery/vm_aml/haste(src)
-	new /obj/item/ammo_casing/microbattery/vm_aml/resist(src)

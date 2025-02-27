@@ -66,7 +66,7 @@
 	/// Delay for speedloader refills
 	var/speedloader_delay
 	/// Speedloader sound
-	var/speedloader_sound
+	var/speedloader_sound = 'sound/weapons/guns/interaction/bullet_insert.ogg'
 
 	/// Allow single loading without a speedloader, whether by hand or via clip magazines.
 	/// * This loads to internal magazine.
@@ -121,11 +121,17 @@
 	/// * you're a coward if you turn this on
 	/// * this does not affect cycling chambers like revolvers! duh.
 	var/chamber_cycle_after_inert = FALSE
-	/// chamber cycle sound
-	var/chamber_cycle_sound = /datum/soundbyte/guns/ballistic/rack_chamber/generic_1
-	/// Spin the internal magazine after firing
+	/// chamber manual cycle sound
+	/// * not played on an automatic cycle (from live / inert fire)
+	var/chamber_manual_cycle_sound = /datum/soundbyte/guns/ballistic/rack_chamber/generic_1
+	/// Spin the internal magazine after a live firing
 	/// * Has no effect if [internal_magazine_is_revolver] is off.
+	/// * If you don't want the casing to drop, you need to remove [chamber_cycle_after_fire]
 	var/chamber_spin_after_fire = TRUE
+	/// Spin the internal magazine after an inert fire
+	/// * Has no effect if [internal_magazine_is_revolver] is off.
+	/// * If you don't want the casing to drop, you need to remove [chamber_cycle_after_fire]
+	var/chamber_spin_after_inert = TRUE
 	/// A loaded magazine will leave a bullet in the chamber
 	/// once removed.
 	/// * If this is TRUE, the chamber **immediately** takes a bullet from the
@@ -186,6 +192,23 @@
 	if(magazine)
 		icon_state = "[silenced_state][magazine_state]"
 
+/obj/item/gun/projectile/ballistic/using_item_on(obj/item/using, datum/event_args/actor/clickchain/e_args, clickchain_flags, datum/callback/reachability_check)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+	if(istype(using, /obj/item/ammo_magazine))
+		return user_clickchain_apply_magazine(using, e_args, e_args)
+	else if(istype(using, /obj/item/ammo_casing))
+		return user_clickchain_apply_casing(using, e_args, e_args)
+
+/obj/item/gun/projectile/ballistic/on_attack_hand(datum/event_args/actor/clickchain/e_args)
+	. = ..()
+	if(.)
+		return
+	if(e_args.performer.is_holding_inactive(src))
+		if(user_clickchain_unload(e_args, e_args) & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+			return TRUE
+
 /obj/item/gun/projectile/ballistic/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	#warn handle internal magazine and magazine chamber separation
 	return chamber ? prime_casing(cycle, chamber, CASING_PRIMER_CHEMICAL) : GUN_FIRED_FAIL_EMPTY
@@ -196,7 +219,7 @@
 		if(GUN_FIRED_SUCCESS)
 			legacy_emit_chambered_residue()
 			if(magazine_auto_eject && !magazine.get_amount_remaining())
-				eject_magazine(null, null, TRUE)
+				remove_magazine(null, null, TRUE)
 		if(GUN_FIRED_FAIL_INERT)
 		if(GUN_FIRED_FAIL_EMPTY)
 		#warn handle all
@@ -225,10 +248,6 @@
 	if(handle_casings != HOLD_CASINGS)
 		chambered = null
 
-///time it takes to tac reload a gun
-#define TACTICAL_RELOAD_SPEED 1 SECOND
-///time it takes to speed reload a gun
-#define SPEED_RELOAD_SPEED    0.5 SECONDS
 //Attempts to load A into src, depending on the type of thing being loaded and the load_method
 //Maybe this should be broken up into separate procs for each load method?
 /obj/item/gun/projectile/ballistic/proc/load_ammo(obj/item/A, mob/user)
@@ -306,60 +325,6 @@
 		loaded.Insert(1, C) //add to the head of the list
 		user.visible_message("[user] inserts \a [C] into [src].", "<span class='notice'>You insert \a [C] into [src].</span>")
 		playsound(src.loc, load_sound, 50, 1)
-
-	else if(istype(A, /obj/item/storage))
-		var/obj/item/storage/storage = A
-		if(!(load_method & SINGLE_CASING))
-			return //incompatible
-
-		to_chat(user, "<span class='notice'>You start loading \the [src].</span>")
-		sleep(1 SECOND)
-		for(var/obj/item/ammo_casing/ammo in storage.contents)
-			if(!accepts_caliber(ammo.caliber))
-				continue
-
-			load_ammo(ammo, user)
-
-			if(loaded.len >= max_shells)
-				to_chat(user, "<span class='warning'>[src] is full.</span>")
-				break
-			sleep(1 SECOND)
-
-	update_icon()
-
-#undef TACTICAL_RELOAD_SPEED
-#undef SPEED_RELOAD_SPEED
-
-//attempts to unload src. If allow_dump is set to 0, the speedloader unloading method will be disabled
-/obj/item/gun/projectile/ballistic/proc/unload_ammo(mob/user, var/allow_dump=1)
-	if(magazine)
-		user.put_in_hands_or_drop(ammo_magazine)
-		user.visible_message("[user] removes [ammo_magazine] from [src].", "<span class='notice'>You remove [ammo_magazine] from [src].</span>")
-		playsound(src.loc, mag_remove_sound, 50, 1)
-		ammo_magazine.update_icon()
-		ammo_magazine = null
-		. = TRUE
-	else if(loaded.len)
-		//presumably, if it can be speed-loaded, it can be speed-unloaded.
-		if(allow_dump && (load_method & SPEEDLOADER))
-			var/count = 0
-			var/turf/T = get_turf(user)
-			if(T)
-				for(var/obj/item/ammo_casing/C in loaded)
-					C.loc = T
-					count++
-				loaded.Cut()
-			if(count)
-				user.visible_message("[user] unloads [src].", "<span class='notice'>You unload [count] round\s from [src].</span>")
-		else if(load_method & SINGLE_CASING)
-			var/obj/item/ammo_casing/C = loaded[loaded.len]
-			loaded.len--
-			user.put_in_hands_or_drop(C)
-			user.visible_message("[user] removes \a [C] from [src].", "<span class='notice'>You remove \a [C] from [src].</span>")
-		playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
-		. = TRUE
-	if(.)
-		update_icon()
 
 /obj/item/gun/projectile/ballistic/attackby(var/obj/item/A as obj, mob/user as mob)
 	..()
@@ -502,7 +467,7 @@
 		if(!chamber)
 			. = TRUE
 			casing.forceMove(src)
-			chamber = caisng
+			chamber = casing
 	if(. && !silent)
 		playsound(src, single_load_sound, 50, TRUE)
 
@@ -528,13 +493,78 @@
  * @return TRUE / FALSE success / fail
  */
 /obj/item/gun/projectile/ballistic/proc/insert_magazine(obj/item/ammo_magazine/magazine, silent)
-	#warn impl
+	if(!magazine || src.magazine)
+		return FALSE
+	if(!silent)
+		playsound(src, magazine_insert_sound, 75, TRUE)
+	magazine.forceMove(src)
+	src.magazine = magazine
+	return TRUE
 
 /**
  * Eject inserted magazine
+ *
+ * * This can make a sound if it's not using silent param.
+ *
+ * @return removed magazine
  */
-/obj/item/gun/projectile/ballistic/proc/eject_magazine(atom/new_loc = drop_location(), silent, auto_eject)
-	#warn impl, make sound, etc
+/obj/item/gun/projectile/ballistic/proc/remove_magazine(atom/new_loc, silent, auto_eject) as /obj/item/ammo_magazine
+	RETURN_TYPE(/obj/item/ammo_magazine)
+	if(!magazine)
+		return
+	if(!silent)
+		if(auto_eject)
+			playsound(src, magazine_auto_eject_sound, 75, TRUE)
+		else
+			playsound(src, magazine_remove_sound, 75, TRUE)
+	. = magazine
+	if(new_loc)
+		magazine.forceMove(new_loc)
+	else
+		magazine.moveToNullspace()
+	magazine = null
+
+/**
+ * Eject **a** casing.
+ *
+ * * This can make a sound if it's not using silent param.
+ * * For guns with external magazines, this removes chambered and only chambered.
+ * * For guns with internal magazines, see params
+ *
+ * @params
+ * * new_loc - where to put the casing
+ * * silent - don't make a noise
+ * * use_top_for_internal - remove from chambered, then top of magazine first.
+ */
+/obj/item/gun/projectile/ballistic/proc/remove_casing(atom/new_loc, silent, use_top_for_internal) as /obj/item/ammo_casing
+	RETURN_TYPE(/obj/item/ammo_casing)
+	var/obj/item/ammo_casing/ejecting
+
+	// internal: eject requested index if is revolver and requested index,
+	//           otherwise remove top or bottom based on params
+	if(internal_magazine)
+		#warn impl these
+		if(internal_magazine && internal_magazine_is_revolver)
+		if(use_top_for_internal)
+	// external: eject chamber only
+	else if(chamber)
+		ejecting = eject_chamber(TRUE, FALSE, null)
+
+	if(!ejecting)
+		return
+	if(!silent)
+		playsound(src, single_load_sound, 50, TRUE)
+	. = ejecting
+	if(new_loc)
+		ejecting.forceMove(new_loc)
+	else if(ejecting.loc)
+		ejecting.moveToNullspace()
+
+// todo: impl for advanced revolver shenanigans
+/obj/item/gun/projectile/ballistic/proc/remove_casing_from_revolver_index(atom/new_loc, silent, force_index)
+	if(!internal_magazine || !internal_magazine_is_revolver)
+		CRASH("attempted to call 'remove_casing_from_revolver_index' on a non-internal-revolver-like gun.")
+	CRASH("unimplemented proc")
 
 //* Chamber *//
 
@@ -548,13 +578,14 @@
 /**
  * Cycles the chamber
  */
-/obj/item/gun/projectile/ballistic/proc/cycle_chamber()
+/obj/item/gun/projectile/ballistic/proc/cycle_chamber(silent, from_fire)
 	#warn impl
 
 /**
  * Ejects a chambered casing
  */
-/obj/item/gun/projectile/ballistic/proc/eject_chamber()
+/obj/item/gun/projectile/ballistic/proc/eject_chamber(silent, from_fire, atom/move_to) as /obj/item/ammo_casing
+	RETURN_TYPE(/obj/item/ammo_casing)
 	#warn impl
 
 /**
@@ -568,11 +599,11 @@
 
 /**
  * Switches to a certain index in our internal magazine
- * * Crashes if we don't use internal magazine
+ * * Crashes if we don't use internal magazine that's a revolver-like magazine
  */
 /obj/item/gun/projectile/ballistic/proc/unsafe_spin_chamber_to_index(index)
-	if(!internal_magazine)
-		CRASH("attempted to swap chamber index on a non-internal magazine gun")
+	if(!internal_magazine || !internal_magazine_is_revolver)
+		CRASH("attempted to swap chamber index on a gun that doesn't use an internal revolver-like datastructure")
 	#warn impl
 
 //* Rendering *//

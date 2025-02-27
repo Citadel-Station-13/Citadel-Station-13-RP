@@ -476,14 +476,14 @@
 
 /obj/item/gun/using_item_on(obj/item/using, datum/event_args/actor/clickchain/e_args, clickchain_flags, datum/callback/reachability_check)
 	. = ..()
-	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
 	if(istype(using, /obj/item/gun_attachment))
 		user_install_attachment(using, e_args)
-		return CLICKCHAIN_DO_NOT_PROPAGATE
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	if(istype(using, /obj/item/gun_component))
 		user_install_modular_component(using, e_args)
-		return CLICKCHAIN_DO_NOT_PROPAGATE
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 
 /obj/item/gun/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(I.is_multitool())

@@ -7,10 +7,11 @@
 /obj/item/ammo_casing/microbattery
 	name = "microbattery"
 	desc = "An experimental particle battery used for a hybrid energy weapon."
-	slot_flags = SLOT_EARS
+	slot_flags = SLOT_EARS | SLOT_POCKET | SLOT_BELT
 	w_class = WEIGHT_CLASS_TINY
 
-	#warn how to handle caliber?
+	caliber = /datum/ammo_caliber/microbattery
+	casing_primer = CASING_PRIMER_MICROBATTERY
 
 	// todo: residue vars are legacy
 	leaves_residue = FALSE

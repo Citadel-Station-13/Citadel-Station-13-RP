@@ -185,7 +185,7 @@
 	// todo: mixed caliber support
 	if(!receiver.loads_caliber(ammo_caliber))
 		return
-	for(var/i in 1 to min(get_amount_missing, amount_remaining()))
+	for(var/i in 1 to min(get_amount_missing, get_amount_remaining()))
 		receiver.push(pop(receiver, TRUE), TRUE)
 		++.
 	update_icon()
