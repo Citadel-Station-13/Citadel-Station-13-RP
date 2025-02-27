@@ -224,42 +224,12 @@
 		if(GUN_FIRED_FAIL_EMPTY)
 		#warn handle all
 
-
-// todo: refactor
-/obj/item/gun/projectile/ballistic/proc/process_chambered()
-	if (!chambered)
-		return
-
-	switch(handle_casings)
-		if(EJECT_CASINGS) //eject casing onto ground.
-			if(chambered.casing_flags & CASING_DELETE)
-				qdel(chambered)
-				chambered = null
-				return
-			else
-				chambered.forceMove(get_turf(src))
-				chambered.randomize_offsets_after_eject()
-				playsound(src.loc, "casing", 50, 1)
-		if(CYCLE_CASINGS) //cycle the casing back to the end.
-			if(magazine)
-				CRASH("attempted to cycle casing with a mag in; guncode doesn't support this use case, this is for revolver-likes only currently!")
-			loaded += chambered
-
-	if(handle_casings != HOLD_CASINGS)
-		chambered = null
-
-//Attempts to load A into src, depending on the type of thing being loaded and the load_method
-//Maybe this should be broken up into separate procs for each load method?
 /obj/item/gun/projectile/ballistic/proc/load_ammo(obj/item/A, mob/user)
 	if(istype(A, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/AM = A
-		if(!(load_method_converted & AM.magazine_type) || !accepts_caliber(AM.ammo_caliber) || allowed_magazines && !is_type_in_list(A, allowed_magazines))
-			to_chat(user, SPAN_WARNING("[AM] won't load into [src]!"))
-			return
 		if(AM.magazine_type & MAGAZINE_TYPE_NORMAL)
 			if(magazine)
 				if(user.a_intent == INTENT_HELP || user.a_intent == INTENT_DISARM)
-					to_chat(user, SPAN_WARNING("[src] already has a magazine loaded."))//already a magazine here
 					return
 				else
 					if(user.a_intent == INTENT_GRAB) //Tactical reloading
@@ -284,15 +254,6 @@
 							ammo_magazine.dropInto(user.loc)
 							user.visible_message(SPAN_WARNING("\The [user] reloads \the [src] with \the [AM]!"),
 													SPAN_WARNING("You speed reload \the [src] with \the [AM]!"))
-				ammo_magazine = AM
-				playsound(loc, mag_insert_sound, 75, 1)
-				update_icon()
-				AM.update_icon()
-			if(!user.attempt_insert_item_for_installation(AM, src))
-				return
-			ammo_magazine = AM
-			user.visible_message("[user] inserts [AM] into [src].", "<span class='notice'>You insert [AM] into [src].</span>")
-			playsound(src.loc, mag_insert_sound, 50, 1)
 		else if(AM.magazine_type & (MAGAZINE_TYPE_SPEEDLOADER | MAGAZINE_TYPE_CLIP))
 			if(loaded.len >= max_shells)
 				to_chat(user, "<span class='warning'>[src] is full!</span>")
@@ -420,6 +381,10 @@
 	return TRUE
 
 /obj/item/gun/projectile/ballistic/proc/accepts_magazine(obj/item/ammo_magazine/magazine)
+	if(!(magazine_class & magazine.magazine_class))
+		return FALSE
+	if(!accepts_caliber(magazine.ammo_caliber))
+		return FALSE
 	return magazine_restrict ? check_magazine_restrict(magazine_restrict, null, magazine.type) : TRUE
 
 /obj/item/gun/projectile/ballistic/proc/accepts_speedloader(obj/item/ammo_magazine/magazine)
@@ -579,13 +544,28 @@
  * Cycles the chamber
  */
 /obj/item/gun/projectile/ballistic/proc/cycle_chamber(silent, from_fire)
+	eject_chamber(silent, from_fire, drop_location())
 	#warn impl
 
 /**
  * Ejects a chambered casing
+ *
+ * @return casing, or null if it was deleted
  */
 /obj/item/gun/projectile/ballistic/proc/eject_chamber(silent, from_fire, atom/move_to) as /obj/item/ammo_casing
 	RETURN_TYPE(/obj/item/ammo_casing)
+
+	if(chamber.casing_flags & CASING_DELETE)
+		qdel(chamber)
+		return
+	if(move_to)
+		chamber.forceMove(move_to)
+	chamber.randomize_offsets_after_eject()
+	. = chamber
+	chamber = null
+	// todo: soundbyte this
+	if(!silent)
+		playsound(src, "casing", 50, TRUE)
 	#warn impl
 
 /**
