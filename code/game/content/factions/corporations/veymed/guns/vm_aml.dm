@@ -22,12 +22,18 @@
 	}
 
 /obj/item/ammo_magazine/microbattery/vm_aml
+	icon = 'icons/content/factions/corporations/veymed/items/guns/vm_aml.dmi'
+	icon_state = "mag"
 	ammo_caliber = /datum/ammo_caliber/microbattery/vm_aml
 
 /obj/item/ammo_magazine/microbattery/vm_aml/advanced
+	icon_state = "mag_ext"
 
 /obj/item/ammo_casing/microbattery/vm_aml
+	icon = 'icons/content/factions/corporations/veymed/items/guns/vm_aml.dmi'
 	caliber = /datum/ammo_caliber/microbattery/vm_aml
+
+	var/stripe_color = "#000000"
 
 // /**
 //  * Modular mag-boosted weapons, courtesy of the Nanotrasen Research Division.
