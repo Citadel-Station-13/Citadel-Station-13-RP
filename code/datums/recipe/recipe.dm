@@ -270,17 +270,17 @@
 			//Iterate through everything in buffer. If the target has less than the buffer, then top it up
 			for(var/id in temp.reagents.reagent_volumes)
 				var/volume = temp.reagents.reagent_volumes[id]
-				if(tempholder.reagents.reagent_volumes[id] < volume)
-					temp.reagents.trans_id_to(tempholder, id, volume - tempholder.reagents.reagent_volumes[id])
+				if(tempholder.reagents.reagent_volumes?[id] < volume)
+					temp.reagents.trans_id_to(tempholder, id, volume - tempholder.reagents.reagent_volumes?[id])
 
 		if (RECIPE_REAGENT_MIN)
 			//Min is slightly more complex. We want the result to have the lowest from each side
 			//But zero will not count. Where a side has zero its ignored and the side with a nonzero value is used
 			for(var/id in temp.reagents.reagent_volumes)
 				var/volume = temp.reagents.reagent_volumes[id]
-				if(!tempholder.reagents.reagent_volumes[id])
+				if(!tempholder.reagents.reagent_volumes?[id])
 					temp.reagents.trans_id_to(tempholder, id, volume)
-				else if(tempholder.reagents.reagent_volumes[id] > volume)
+				else if(tempholder.reagents.reagent_volumes?[id] > volume)
 					temp.reagents.remove_reagent(id, tempholder.reagents.reagent_volumes[id] - volume)
 
 	if (results.len > 1)
