@@ -104,7 +104,7 @@
 	else if(ishuman(occupant))
 		var/mob/living/carbon/human/H = occupant
 
-		if(H.isSynthetic() || H.species.species_flags & CAN_USE_RECHARGE_STATION)
+		if(H.isSynthetic())
 			// In case they somehow end up with positive values for otherwise unobtainable damage...
 			if(H.getToxLoss() > 0)
 				H.adjustToxLoss(-(rand(1,3)))
@@ -270,7 +270,7 @@
 
 	else if(istype(L,  /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = L
-		if(H.isSynthetic() || H.wearing_rig || H.species.species_flags & CAN_USE_RECHARGE_STATION)
+		if(H.isSynthetic() || H.wearing_rig)
 			add_fingerprint(H)
 			H.forceMove(src)
 			H.update_perspective()
