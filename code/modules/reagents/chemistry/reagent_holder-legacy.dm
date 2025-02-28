@@ -4,7 +4,7 @@
  * @return null if not found, otherwise amount as number
  */
 /datum/reagent_holder/proc/legacy_direct_access_reagent_amount(id)
-	return reagent_volumes[id]
+	return reagent_volumes?[id]
 
 /**
  * todo: what do we do with this?
