@@ -18,9 +18,13 @@
 	recoil = 0
 	projectile_type = /obj/projectile/bullet/pistol/strong	//Only used for chameleon guns
 
-	//* Ammunition *//
+	//* Actions *//
 
-	#warn hook everything
+	#warn this
+	/// If we're an internal mag gun, this is our chamber spin action.
+	var/datum/action/item_action/gun_spin_chamber/chamber_spin_action
+
+	//* Ammunition *//
 
 	/// Inserted magazine
 	/// * Ignored if [internal_magazine] is enabled.
@@ -157,6 +161,8 @@
 	var/interact_speed_reload_delay = 0.5 SECONDS
 	/// Tactical (swap mag) reload speed
 	var/interact_tactical_reload_delay = 1 SECONDS
+	/// Allow spinning the chamber if we're a revolver-like
+	var/interact_allow_chamber_spin = TRUE
 
 	//* Rendering *//
 	/// Render an overlay when magazine is in.

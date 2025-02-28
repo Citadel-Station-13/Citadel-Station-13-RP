@@ -113,9 +113,8 @@
 	icon_state = "levercarabine"
 	internal_magazine_size = 10
 	caliber = /datum/ammo_caliber/a44
-	load_method = SINGLE_CASING
 	internal_magazine_preload_ammo = /obj/item/ammo_casing/a44
-	animated_pump = 1
+	// animated_pump = 1
 	chamber_manual_cycle_sound = 'sound/weapons/riflebolt.ogg'
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/rifle/lever/vintage/holy
@@ -156,7 +155,6 @@
 	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12g/pellet
 	internal_magazine_size = 5
 	caliber = /datum/ammo_caliber/a12g
-	load_method = SINGLE_CASING
 	chamber_manual_cycle_sound = 'sound/weapons/riflebolt.ogg'
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/rifle/lever/arnold/holy
@@ -174,7 +172,7 @@
 	internal_magazine_size = 5
 	caliber = /datum/ammo_caliber/a7_62mm
 	chamber_manual_cycle_sound = 'sound/weapons/riflebolt.ogg'
-	animated_pump = 1
+	// animated_pump = 1
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/rifle/lever/win1895/holy
 	name = "blessed lever-action"

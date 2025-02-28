@@ -174,14 +174,19 @@
 
 	// ToDo: Remove accuracy debuf in exchange for slightly injuring your hand every time you fire it.
 
+// todo: secondary shotgun should be handled as an underbarrel attachment, CM style
 /obj/item/gun/projectile/ballistic/revolver/lemat
 	name = "LeMat Revolver"
 	desc = {"
-		The LeMat revolver is a 9-shot revolver with a secondary barrel for firing shotgun shells.
-		Cybersun Industries still produces this iconic revolver in limited numbers,
-		deliberately inflating the value of these collectible reproduction pistols.
-		Uses .38 rounds and 12g shotgun shells.
+		A knockoff LeMat revolver that lacks a shotgun shell option.
+		Legends say the remnants of Cybersun will return the real thing sooner or later.
 	"}
+	// desc = {"
+	// 	The LeMat revolver is a 9-shot revolver with a secondary barrel for firing shotgun shells.
+	// 	Cybersun Industries still produces this iconic revolver in limited numbers,
+	// 	deliberately inflating the value of these collectible reproduction pistols.
+	// 	Uses .38 rounds and 12g shotgun shells.
+	// "}
 	icon_state = "lemat"
 	item_state = "revolver"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
@@ -189,88 +194,88 @@
 	internal_magazine_preload_ammo = /obj/item/ammo_casing/a38
 	caliber = /datum/ammo_caliber/a38
 
-	var/secondary_max_shells = 1
-	var/secondary_caliber = /datum/ammo_caliber/a12g
-	var/secondary_ammo_type = /obj/item/ammo_casing/a12g
-	var/flipped_firing = 0
-	var/list/secondary_loaded = list()
-	var/list/tertiary_loaded = list()
+// 	var/secondary_max_shells = 1
+// 	var/secondary_caliber = /datum/ammo_caliber/a12g
+// 	var/secondary_ammo_type = /obj/item/ammo_casing/a12g
+// 	var/flipped_firing = 0
+// 	var/list/secondary_loaded = list()
+// 	var/list/tertiary_loaded = list()
 
-/obj/item/gun/projectile/ballistic/revolver/lemat/Initialize(mapload)
-	for(var/i in 1 to secondary_max_shells)
-		secondary_loaded += new secondary_ammo_type(src)
-	return ..()
+// /obj/item/gun/projectile/ballistic/revolver/lemat/Initialize(mapload)
+// 	for(var/i in 1 to secondary_max_shells)
+// 		secondary_loaded += new secondary_ammo_type(src)
+// 	return ..()
 
-/obj/item/gun/projectile/ballistic/revolver/lemat/verb/swap_firingmode()
-	set name = "Swap Firing Mode"
-	set category = VERB_CATEGORY_OBJECT
-	set desc = "Click to swap from one method of firing to another."
+// /obj/item/gun/projectile/ballistic/revolver/lemat/verb/swap_firingmode()
+// 	set name = "Swap Firing Mode"
+// 	set category = VERB_CATEGORY_OBJECT
+// 	set desc = "Click to swap from one method of firing to another."
 
-	var/mob/living/carbon/human/M = usr
-	if(!M.mind)
-		return 0
+// 	var/mob/living/carbon/human/M = usr
+// 	if(!M.mind)
+// 		return 0
 
-	to_chat(M, "<span class='notice'>You change the firing mode on \the [src].</span>")
-	if(!flipped_firing)
-		if(max_shells && secondary_max_shells)
-			max_shells = secondary_max_shells
+// 	to_chat(M, "<span class='notice'>You change the firing mode on \the [src].</span>")
+// 	if(!flipped_firing)
+// 		if(max_shells && secondary_max_shells)
+// 			max_shells = secondary_max_shells
 
-		if(caliber && secondary_caliber)
-			caliber = secondary_caliber
+// 		if(caliber && secondary_caliber)
+// 			caliber = secondary_caliber
 
-		if(ammo_type && secondary_ammo_type)
-			ammo_type = secondary_ammo_type
+// 		if(ammo_type && secondary_ammo_type)
+// 			ammo_type = secondary_ammo_type
 
-		if(secondary_loaded)
-			tertiary_loaded = loaded.Copy()
-			loaded = secondary_loaded
+// 		if(secondary_loaded)
+// 			tertiary_loaded = loaded.Copy()
+// 			loaded = secondary_loaded
 
-		flipped_firing = 1
+// 		flipped_firing = 1
 
-	else
-		if(max_shells)
-			max_shells = initial(max_shells)
+// 	else
+// 		if(max_shells)
+// 			max_shells = initial(max_shells)
 
-		if(caliber && secondary_caliber)
-			caliber = initial(caliber)
+// 		if(caliber && secondary_caliber)
+// 			caliber = initial(caliber)
 
-		if(ammo_type && secondary_ammo_type)
-			ammo_type = initial(ammo_type)
+// 		if(ammo_type && secondary_ammo_type)
+// 			ammo_type = initial(ammo_type)
 
-		if(tertiary_loaded)
-			secondary_loaded = loaded.Copy()
-			loaded = tertiary_loaded
+// 		if(tertiary_loaded)
+// 			secondary_loaded = loaded.Copy()
+// 			loaded = tertiary_loaded
 
-		flipped_firing = 0
+// 		flipped_firing = 0
 
-/obj/item/gun/projectile/ballistic/revolver/lemat/spin_cylinder()
-	set name = "Spin cylinder"
-	set desc = "Fun when you're bored out of your skull."
-	set category = VERB_CATEGORY_OBJECT
+// /obj/item/gun/projectile/ballistic/revolver/lemat/spin_cylinder()
+// 	set name = "Spin cylinder"
+// 	set desc = "Fun when you're bored out of your skull."
+// 	set category = VERB_CATEGORY_OBJECT
 
-	chamber_offset = 0
-	visible_message("<span class='warning'>\The [usr] spins the cylinder of \the [src]!</span>", \
-	"<span class='notice'>You hear something metallic spin and click.</span>")
-	playsound(src.loc, 'sound/weapons/revolver_spin.ogg', 100, 1)
-	if(!flipped_firing)
-		loaded = shuffle(loaded)
-		if(rand(1,max_shells) > loaded.len)
-			chamber_offset = rand(0,max_shells - loaded.len)
+// 	chamber_offset = 0
+// 	visible_message("<span class='warning'>\The [usr] spins the cylinder of \the [src]!</span>", \
+// 	"<span class='notice'>You hear something metallic spin and click.</span>")
+// 	playsound(src.loc, 'sound/weapons/revolver_spin.ogg', 100, 1)
+// 	if(!flipped_firing)
+// 		loaded = shuffle(loaded)
+// 		if(rand(1,max_shells) > loaded.len)
+// 			chamber_offset = rand(0,max_shells - loaded.len)
 
-/obj/item/gun/projectile/ballistic/revolver/lemat/examine(mob/user, dist)
-	. = ..()
-	if(secondary_loaded)
-		var/to_print
-		for(var/round in secondary_loaded)
-			to_print += round
-		. += "\The [src] has a secondary barrel loaded with \a [to_print]"
-	else
-		. += "\The [src] has a secondary barrel that is empty."
+// /obj/item/gun/projectile/ballistic/revolver/lemat/examine(mob/user, dist)
+// 	. = ..()
+// 	if(secondary_loaded)
+// 		var/to_print
+// 		for(var/round in secondary_loaded)
+// 			to_print += round
+// 		. += "\The [src] has a secondary barrel loaded with \a [to_print]"
+// 	else
+// 		. += "\The [src] has a secondary barrel that is empty."
 
 /obj/item/gun/projectile/ballistic/revolver/lemat/holy
 	name = "Blessed LeMat Revolver"
-	ammo_type = /obj/item/ammo_casing/a38/silver
-	secondary_ammo_type = /obj/item/ammo_casing/a12g/silver
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a38/silver
+	// secondary_ammo_type = /obj/item/ammo_casing/a12g/silver
 
 //Ported from Bay
 /obj/item/gun/projectile/ballistic/revolver/webley

@@ -110,7 +110,7 @@
 			switch(clickchain.using_intent)
 				if(INTENT_GRAB)
 					if(do_after(actor.performer, interact_tactical_reload_delay, src, mobility_flags = MOBILITY_CAN_USE))
-						put_backk_in_hand = remove_magazine(silent = TRUE)
+						put_back_in_hand = remove_magazine(silent = TRUE)
 						tactical_reload_append = ", swapping out the old magazine in the process"
 					else
 						return CLICKCHAIN_DID_SOMETHING
