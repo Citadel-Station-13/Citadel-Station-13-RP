@@ -10,7 +10,7 @@
 	if(internal_magazine)
 		// check for speedloader accept before overriding default behavior,
 		// unless default behavior allows speedloader-type'd magazines anyways
-		if((magazine.magazine_type & MAGAZINE_TYPE_SPEEDLOADER) && (accepts_speedloader(magazine) || !(magazine.magazine_type & magazine_type)))
+		if(speedloader_allowed && (magazine.magazine_type & MAGAZINE_TYPE_SPEEDLOADER) && (accepts_speedloader(magazine) || !(magazine.magazine_type & magazine_type)))
 			return user_clickchain_speedload_from_magazine(magazine, actor, clickchain, no_sound, no_message)
 		// clip just always runs unless gun accepts it as magazine
 		else if((magazine.magazine_type & MAGAZINE_TYPE_CLIP) && !accepts_magazine(magazine))
@@ -154,6 +154,12 @@
  */
 /obj/item/gun/projectile/ballistic/proc/user_clickchain_apply_casing(obj/item/ammo_casing/casing, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
 	#warn impl
+
+	if(clickchain)
+		if(!clickchain.performer.attempt_insert_item_for_installation(magazine, src))
+			return CLICKCHAIN_DID_SOMETHING
+
+	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
 /**
  * * The weird proc args is because this technically supports non-clickchain use.
