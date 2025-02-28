@@ -591,6 +591,13 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 			if(S.robo_repair(5*use_amt, DAMAGE_TYPE_BURN, "some damaged wiring", src, user))
 				use(use_amt)
 		return
+	if(is_holosphere_shell(target) && user.a_intent == INTENT_HELP)
+		var/mob/living/simple_mob/holosphere_shell/shell = target
+		var/use_amt = min(src.amount, CEILING(shell.fireloss / 20, 1), 5)
+		if(can_use(use_amt))
+			if(shell.shell_repair(5*use_amt, DAMAGE_TYPE_BURN, "some damaged wiring", src, user))
+				use(use_amt)
+		return
 	return ..()
 
 /obj/item/stack/cable_coil/update_icon()

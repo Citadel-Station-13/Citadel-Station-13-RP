@@ -144,7 +144,7 @@
 	if(chambered.leaves_residue)
 		var/mob/living/carbon/human/H = loc
 		if(istype(H))
-			if(!H.gloves)
+			if(!istype(H.gloves, /obj/item/clothing))
 				H.gunshot_residue = chambered.get_caliber_string()
 			else
 				var/obj/item/clothing/G = H.gloves
@@ -154,6 +154,7 @@
 		if(EJECT_CASINGS) //eject casing onto ground.
 			if(chambered.casing_flags & CASING_DELETE)
 				qdel(chambered)
+				chambered = null
 				return
 			else
 				chambered.forceMove(get_turf(src))

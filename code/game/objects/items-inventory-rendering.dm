@@ -308,7 +308,11 @@
 
 	var/list/resolved = resolve_worn_assets(M, slot_meta, inhands, bodytype)
 
-	return _render_mob_appearance(M, slot_meta, inhands, bodytype, resolved[WORN_DATA_ICON], resolved[WORN_DATA_STATE], resolved[WORN_DATA_LAYER], resolved [WORN_DATA_SIZE_X], resolved[WORN_DATA_SIZE_Y], resolved[WORN_DATA_ALIGN_Y])
+	var/rendered = list(_render_mob_appearance(M, slot_meta, inhands, bodytype, resolved[WORN_DATA_ICON], resolved[WORN_DATA_STATE], resolved[WORN_DATA_LAYER], resolved [WORN_DATA_SIZE_X], resolved[WORN_DATA_SIZE_Y], resolved[WORN_DATA_ALIGN_Y]))
+
+	SEND_SIGNAL(M, COMSIG_CARBON_UPDATING_OVERLAY, rendered, CARBON_APPEARANCE_UPDATE_CLOTHING)
+
+	return rendered[1]
 
 /obj/item/proc/_render_mob_appearance(mob/M, datum/inventory_slot/slot_meta, inhands, bodytype, icon_used, state_used, layer_used, dim_x, dim_y, align_y)
 	SHOULD_NOT_OVERRIDE(TRUE) // if you think you need to, rethink.

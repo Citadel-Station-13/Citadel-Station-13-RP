@@ -1312,6 +1312,9 @@
 	else if (affecting.thick_skin && prob(70 - round(affecting.brute_dam + affecting.burn_dam / 2)))	// Allows transplanted limbs with thick skin to maintain their resistance.
 		. = 0
 		fail_msg = "Your needle fails to penetrate \the [affecting]'s thick hide..."
+	else if (affecting.behaviour_flags & BODYPART_NO_INJECT)
+		. = 0
+		fail_msg = "That limb is unable to be penetrated."
 	else
 		switch(target_zone)
 			if(BP_HEAD) //If targeting head, check helmets
@@ -1586,12 +1589,12 @@
 
 /mob/living/carbon/human/inducer_scan(obj/item/inducer/I, list/things_to_induce = list(), inducer_flags)
 	. = ..()
-	if(isSynthetic())
+	if(isSynthetic() || fast_is_species_type(src, /datum/species/holosphere)) // for code reasons holospheres are not 'synthetic'
 		things_to_induce += src
 
 /mob/living/carbon/human/inducer_act(obj/item/inducer/I, amount, inducer_flags)
 	. = ..()
-	if(!isSynthetic())
+	if(!isSynthetic() && !fast_is_species_type(src, /datum/species/holosphere))
 		return
 	var/needed = (species.max_nutrition - nutrition)
 	if(needed <= 0)

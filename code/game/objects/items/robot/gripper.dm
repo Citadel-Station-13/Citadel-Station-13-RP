@@ -334,10 +334,10 @@
 	desc = "A large, heavy-duty grasping tool used in construction of mechs."
 
 	can_hold = list(
-		/obj/item/mecha_parts/part,
-		/obj/item/mecha_parts/micro/part,
-		/obj/item/mecha_parts/mecha_equipment,
-		/obj/item/mecha_parts/mecha_tracking
+		/obj/item/vehicle_part,
+		/obj/item/vehicle_part/micro,
+		/obj/item/vehicle_module,
+		/obj/item/vehicle_tracking_beacon
 		)
 
 /obj/item/gripper/no_use/loader //This is used to disallow building with metal.
