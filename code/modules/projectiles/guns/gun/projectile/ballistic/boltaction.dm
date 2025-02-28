@@ -114,13 +114,13 @@
 	internal_magazine_size = 10
 	caliber = /datum/ammo_caliber/a44
 	load_method = SINGLE_CASING
-	internal_magazine_preload_type = /obj/item/ammo_casing/a44
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a44
 	animated_pump = 1
 	chamber_manual_cycle_sound = 'sound/weapons/riflebolt.ogg'
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/rifle/lever/vintage/holy
 	name = "blessed lever-action"
-	internal_magazine_preload_type = /obj/item/ammo_casing/a44/silver
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a44/silver
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/rifle/lever/vintage/attackby(var/obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/transforming/energy) || istype(A, /obj/item/pickaxe/plasmacutter) && w_class != WEIGHT_CLASS_NORMAL)
@@ -153,7 +153,7 @@
 	item_state = "arnold"
 	icon_state = "arnold"
 	slot_flags = SLOT_BACK
-	internal_magazine_preload_type = /obj/item/ammo_casing/a12g/pellet
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12g/pellet
 	internal_magazine_size = 5
 	caliber = /datum/ammo_caliber/a12g
 	load_method = SINGLE_CASING
@@ -161,7 +161,7 @@
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/rifle/lever/arnold/holy
 	name = "blessed lever-action shotgun"
-	internal_magazine_preload_type = /obj/item/ammo_casing/a12g/silver
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12g/silver
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/rifle/lever/win1895
 	name = "Winchester 1895"
@@ -169,7 +169,7 @@
 	item_state = "win1895"
 	icon_state = "win1895"
 	slot_flags = SLOT_BACK
-	internal_magazine_preload_type = /obj/item/ammo_casing/a7_62mm
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a7_62mm
 	load_method = SINGLE_CASING|SPEEDLOADER
 	internal_magazine_size = 5
 	caliber = /datum/ammo_caliber/a7_62mm
@@ -178,7 +178,7 @@
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/rifle/lever/win1895/holy
 	name = "blessed lever-action"
-	internal_magazine_preload_type = /obj/item/ammo_casing/a7_62mm/silver
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a7_62mm/silver
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/scopedrifle
 	name = "scoped bolt action"
@@ -193,7 +193,7 @@
 	chamber_manual_cycle_sound = 'sound/weapons/riflebolt.ogg'
 	pin = /obj/item/firing_pin/explorer
 	w_class = WEIGHT_CLASS_HUGE // So it can't fit in a backpack.
-	internal_magazine_preload_type = /obj/item/ammo_casing/a7_62mm/sniperhunter
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a7_62mm/sniperhunter
 	accuracy = 50 //Forced missing fucking sucks ass
 	scoped_accuracy = 100
 

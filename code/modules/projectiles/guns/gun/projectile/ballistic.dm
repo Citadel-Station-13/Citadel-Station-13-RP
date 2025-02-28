@@ -26,8 +26,11 @@
 	/// * Ignored if [internal_magazine] is enabled.
 	var/obj/item/ammo_magazine/magazine
 	/// magazine types allowed for insertion
-	/// * This makes you able to let a gun use things like speedloaders
-	///   as magazines directly.
+	/// * You probably want [magazine_class]. This lets you override normal behavior
+	///   for what magazines receive the function calls for loading as magazines, and is
+	///   for advanced uses only.
+	var/magazine_type = MAGAZINE_TYPE_NORMAL
+	/// magazine classes allowed for insertion
 	var/magazine_class = MAGAZINE_CLASSES_DEFAULT_FIT
 	/// Magazine restrict; restricts inserted magazines to those that
 	/// match this.
@@ -231,33 +234,6 @@
 /obj/item/gun/projectile/ballistic/proc/load_ammo(obj/item/A, mob/user)
 	if(istype(A, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/AM = A
-		if(AM.magazine_type & MAGAZINE_TYPE_NORMAL)
-			if(magazine)
-				if(user.a_intent == INTENT_HELP || user.a_intent == INTENT_DISARM)
-					return
-				else
-					if(user.a_intent == INTENT_GRAB) //Tactical reloading
-						if(!can_special_reload)
-							to_chat(user, SPAN_WARNING("You can't tactically reload this gun!"))
-							return
-						if(do_after(user, TACTICAL_RELOAD_SPEED, src))
-							if(!user.attempt_insert_item_for_installation(AM, src))
-								return
-							ammo_magazine.update_icon()
-							user.put_in_hands_or_drop(ammo_magazine)
-							user.visible_message(SPAN_WARNING("\The [user] reloads \the [src] with \the [AM]!"),
-													SPAN_WARNING("You tactically reload \the [src] with \the [AM]!"))
-					else //Speed reloading
-						if(!can_special_reload)
-							to_chat(user, SPAN_WARNING("You can't speed reload this gun!"))
-							return
-						if(do_after(user, SPEED_RELOAD_SPEED, src))
-							if(!user.attempt_insert_item_for_installation(AM, src))
-								return
-							ammo_magazine.update_icon()
-							ammo_magazine.dropInto(user.loc)
-							user.visible_message(SPAN_WARNING("\The [user] reloads \the [src] with \the [AM]!"),
-													SPAN_WARNING("You speed reload \the [src] with \the [AM]!"))
 		else if(AM.magazine_type & (MAGAZINE_TYPE_SPEEDLOADER | MAGAZINE_TYPE_CLIP))
 			if(loaded.len >= max_shells)
 				to_chat(user, "<span class='warning'>[src] is full!</span>")
@@ -369,9 +345,13 @@
  * * Caliber path
  * * Caliber instance
  *
+ * @params
+ * * caliberlike - caliber to test
+ * * for_magazine - are we testing for a magazine insertion?
+ *
  * @return TRUE / FALSE
  */
-/obj/item/gun/projectile/ballistic/proc/accepts_caliber(datum/ammo_caliber/caliberlike)
+/obj/item/gun/projectile/ballistic/proc/accepts_caliber(datum/ammo_caliber/caliberlike, for_magazine)
 	if(!caliber)
 		return TRUE
 	var/datum/ammo_caliber/ours = resolve_caliber(caliber)
@@ -389,7 +369,9 @@
 /obj/item/gun/projectile/ballistic/proc/accepts_magazine(obj/item/ammo_magazine/magazine)
 	if(!(magazine_class & magazine.magazine_class))
 		return FALSE
-	if(!accepts_caliber(magazine.ammo_caliber))
+	if(!(magazine_type & magazine.magazine_type))
+		return FALSE
+	if(!accepts_caliber(magazine.ammo_caliber, TRUE))
 		return FALSE
 	return magazine_restrict ? check_magazine_restrict(magazine_restrict, null, magazine.type) : TRUE
 

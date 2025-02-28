@@ -278,14 +278,14 @@
 	icon_state = "r9"
 	origin_tech = list(TECH_COMBAT = 1, TECH_MATERIAL =1) //VERY OLD
 	caliber = /datum/ammo_caliber/a9mm
-	load_method = SPEEDLOADER
-	max_shells = 10
-	ammo_type = /obj/item/ammo_casing/a9mm
+	internal_magazine = TRUE
+	internal_magazine_preload_ammo = 10
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a9mm
 
 /obj/item/gun/projectile/ballistic/r9/holy
 	name = "Blessed Red 9"
 	desc = "Ah, the choice of an avid gun collector! It's a nice gun, stranger."
-	ammo_type = /obj/item/ammo_casing/a9mm/silver
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a9mm/silver
 
 /obj/item/gun/projectile/ballistic/clown_pistol
 	name = "clown pistol"
@@ -360,11 +360,11 @@
 
 /obj/item/gun/projectile/ballistic/ntles/update_icon_state()
 	. = ..()
-	if(!extended && ammo_magazine)
+	if(!extended && magazine)
 		icon_state = "ntles"
-	else if(extended && ammo_magazine)
+	else if(extended && magazine)
 		icon_state = "ntles_extended"
-	else if(extended && !ammo_magazine)
+	else if(extended && !magazine)
 		icon_state = "ntles_extended-empty"
 	else
 		icon_state = "ntles-empty"
