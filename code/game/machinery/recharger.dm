@@ -57,7 +57,7 @@
 				return
 		else if(istype(G, /obj/item/melee/baton))
 			var/obj/item/melee/baton/B = G
-			if(B.use_external_power)
+			if(B.legacy_use_external_power)
 				to_chat(clickchain.performer, "<span class='notice'>\The [B] has no recharge port.</span>")
 				return
 		else if(istype(G, /obj/item/flash))
