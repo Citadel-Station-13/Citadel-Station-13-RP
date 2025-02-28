@@ -126,6 +126,7 @@
 				return TRUE
 			if(inserted_id.get_redemption_points(point_type) < resolved.cost)
 				return TRUE
+			inserted_id.adjust_redemption_points(point_type, -resolved.cost)
 			vend_item(resolved)
 			return TRUE
 
