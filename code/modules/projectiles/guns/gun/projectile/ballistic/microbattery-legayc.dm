@@ -14,10 +14,6 @@
 
 	origin_tech = list(TECH_COMBAT = 7, TECH_MATERIAL = 6, TECH_MAGNETS = 4)
 
-
-	load_method = MAGAZINE //Nyeh heh hehhh.
-	magazine_type = null
-	magazine_restrict = /obj/item/ammo_magazine/microbattery
 	caliber = /datum/ammo_caliber/microbattery
 	handle_casings = HOLD_CASINGS //Don't eject batteries!
 	var/charge_left = 0
@@ -51,34 +47,6 @@
 	chambered = new_batt
 	update_charge()
 	update_icon()
-
-/obj/item/gun/projectile/ballistic/microbattery/attack_self(mob/user, datum/event_args/actor/actor)
-	if(!chambered)
-		return
-
-	var/list/ammo_internal = ammo_magazine.ammo_internal
-
-	if(ammo_internal.len == 1)
-		return //silly you.
-
-	//Find an ammotype that ISN'T the same, or exhaust the list and don't change.
-	var/our_slot = ammo_internal.Find(chambered)
-
-	for(var/index in 1 to ammo_internal.len)
-		var/true_index = ((our_slot + index - 1) % ammo_internal.len) + 1 // Stupid ONE BASED lists!
-		var/obj/item/ammo_casing/microbattery/next_batt = ammo_internal[true_index]
-		if(chambered != next_batt && !istype(next_batt, chambered.type))
-			switch_to(next_batt)
-			break
-
-/obj/item/gun/projectile/ballistic/microbattery/load_ammo(var/obj/item/A, mob/user)
-	. = ..()
-	if(magazine && ammo_magazine.get_amount_remaining())
-		switch_to(ammo_magazine.ammo_internal[1])
-
-/obj/item/gun/projectile/ballistic/microbattery/unload_ammo(mob/user, var/allow_dump=1)
-	chambered = null
-	return ..()
 
 /obj/item/gun/projectile/ballistic/microbattery/update_overlays()
 	. = ..()
