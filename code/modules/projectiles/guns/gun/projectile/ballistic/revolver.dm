@@ -185,10 +185,9 @@
 	icon_state = "lemat"
 	item_state = "revolver"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
-	handle_casings = CYCLE_CASINGS
-	max_shells = 9
+	internal_magazine_size = 9
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a38
 	caliber = /datum/ammo_caliber/a38
-	ammo_type = /obj/item/ammo_casing/a38
 
 	var/secondary_max_shells = 1
 	var/secondary_caliber = /datum/ammo_caliber/a12g

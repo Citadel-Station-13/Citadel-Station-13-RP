@@ -1,4 +1,5 @@
 /datum/ammo_caliber/a357
+	id = "a357"
 	caliber = ".357"
 	diameter = 9.1
 	length = 40

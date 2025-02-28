@@ -7,40 +7,41 @@
 	internal_magazine = TRUE
 	internal_magazine_preload_ammo = /obj/item/ammo_casing/a357
 	internal_magazine_size = 1
-	chamber_cycle_after_fire = FALSE
+	chamber_cycle_after_fire = TRUE
 
-	load_method = SINGLE_CASING
 	heavy = TRUE
-	var/icon_retracted = "pockrifle-empty"
-	var/retracted_bolt = 0
+	// var/icon_retracted = "pockrifle-empty"
+	// var/retracted_bolt = 0
 
-/obj/item/gun/projectile/ballistic/contender/attack_self(mob/user, datum/event_args/actor/actor)
-	. = ..()
-	if(.)
-		return
-	if(chambered)
-		chambered.loc = get_turf(src)
-		chambered = null
-		var/obj/item/ammo_casing/C = loaded[1]
-		loaded -= C
+// todo: bolt system
 
-	if(!retracted_bolt)
-		to_chat(user, "<span class='notice'>You cycle back the bolt on [src], ejecting the casing and allowing you to reload.</span>")
-		icon_state = icon_retracted
-		retracted_bolt = 1
-		return 1
-	else if(retracted_bolt && loaded.len)
-		to_chat(user, "<span class='notice'>You cycle the loaded round into the chamber, allowing you to fire.</span>")
-	else
-		to_chat(user, "<span class='notice'>You cycle the bolt back into position, leaving the gun empty.</span>")
-	icon_state = initial(icon_state)
-	retracted_bolt = 0
+// /obj/item/gun/projectile/ballistic/contender/attack_self(mob/user, datum/event_args/actor/actor)
+// 	. = ..()
+// 	if(.)
+// 		return
+// 	if(chambered)
+// 		chambered.loc = get_turf(src)
+// 		chambered = null
+// 		var/obj/item/ammo_casing/C = loaded[1]
+// 		loaded -= C
 
-/obj/item/gun/projectile/ballistic/contender/load_ammo(var/obj/item/A, mob/user)
-	if(!retracted_bolt)
-		to_chat(user, "<span class='notice'>You can't load [src] without cycling the bolt.</span>")
-		return
-	..()
+// 	if(!retracted_bolt)
+// 		to_chat(user, "<span class='notice'>You cycle back the bolt on [src], ejecting the casing and allowing you to reload.</span>")
+// 		icon_state = icon_retracted
+// 		retracted_bolt = 1
+// 		return 1
+// 	else if(retracted_bolt && loaded.len)
+// 		to_chat(user, "<span class='notice'>You cycle the loaded round into the chamber, allowing you to fire.</span>")
+// 	else
+// 		to_chat(user, "<span class='notice'>You cycle the bolt back into position, leaving the gun empty.</span>")
+// 	icon_state = initial(icon_state)
+// 	retracted_bolt = 0
+
+// /obj/item/gun/projectile/ballistic/contender/load_ammo(var/obj/item/A, mob/user)
+// 	if(!retracted_bolt)
+// 		to_chat(user, "<span class='notice'>You can't load [src] without cycling the bolt.</span>")
+// 		return
+// 	..()
 
 /obj/item/gun/projectile/ballistic/contender/a44
 	caliber = /datum/ammo_caliber/a44

@@ -1,4 +1,5 @@
 /datum/ammo_caliber/a12_7mm
+	id = "a12_7mm"
 	caliber = "12.7mm"
 
 /obj/item/ammo_casing/a12_7mm

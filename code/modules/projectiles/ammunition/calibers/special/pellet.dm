@@ -1,4 +1,5 @@
 /datum/ammo_caliber/pellet
+	id = "pellet"
 	caliber = "pellet"
 
 //* Ammunition *//

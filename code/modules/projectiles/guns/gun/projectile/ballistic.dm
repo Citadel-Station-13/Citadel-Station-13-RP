@@ -372,6 +372,8 @@
  * @return TRUE / FALSE
  */
 /obj/item/gun/projectile/ballistic/proc/accepts_caliber(datum/ammo_caliber/caliberlike)
+	if(!caliber)
+		return TRUE
 	var/datum/ammo_caliber/ours = resolve_caliber(caliber)
 	var/datum/ammo_caliber/theirs = resolve_caliber(caliberlike)
 	return ours.equivalent(theirs)

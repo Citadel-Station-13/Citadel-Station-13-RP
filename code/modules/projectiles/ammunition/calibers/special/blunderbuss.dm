@@ -1,4 +1,5 @@
 /datum/ammo_caliber/blunderbuss
+	id = "blunderbuss"
 	caliber = "blunderbuss"
 
 /obj/item/ammo_casing/blunderbuss

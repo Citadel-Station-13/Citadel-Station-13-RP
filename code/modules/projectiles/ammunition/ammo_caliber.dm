@@ -11,6 +11,7 @@ GLOBAL_LIST_INIT(calibers, init_calibers())
 			continue
 		var/datum/ammo_caliber/created = new path
 		.[created.type] = created
+		.[created.id] = created
 		if(created.caliber)
 			if(.[created.caliber])
 				stack_trace("collision between [path] and [.[created.caliber]:type] for caliber [created.caliber]")
@@ -39,6 +40,8 @@ GLOBAL_LIST_INIT(calibers, init_calibers())
  */
 /datum/ammo_caliber
 	abstract_type = /datum/ammo_caliber
+	/// id ; must be unique
+	var/id
 	/// display name, if any; this is allowed to be null
 	var/name
 	/// caliber string
@@ -70,4 +73,4 @@ GLOBAL_LIST_INIT(calibers, init_calibers())
  * checks if other caliber is equivalent to us
  */
 /datum/ammo_caliber/proc/equivalent(datum/ammo_caliber/other)
-	return other.caliber == caliber || (measured && other.measured && (other.diameter == diameter) && (other.length == length))
+	return other.id == id || other.caliber == caliber || (measured && other.measured && (other.diameter == diameter) && (other.length == length))

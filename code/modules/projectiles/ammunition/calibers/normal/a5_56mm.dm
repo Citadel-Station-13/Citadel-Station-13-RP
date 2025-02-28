@@ -1,4 +1,5 @@
 /datum/ammo_caliber/a5_56mm
+	id = "a5_56mm"
 	caliber = "5.56mm"
 
 //* Casings

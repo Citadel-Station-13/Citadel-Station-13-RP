@@ -1,4 +1,5 @@
 /datum/ammo_caliber/a7_62mm
+	id = "a7_62mm"
 	caliber = "7.62mm"
 
 //* Casings *//

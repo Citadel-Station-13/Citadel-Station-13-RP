@@ -160,7 +160,8 @@
 				beakers -= B
 				B.loc = get_turf(src)
 	else if (href_list["eject_cart"])
-		unload_ammo(usr)
+		var/datum/event_args/actor/actor = new(usr)
+		user_clickchain_unload(actor)
 	src.updateUsrDialog()
 	return
 

@@ -1,4 +1,5 @@
 /datum/ammo_caliber/a12g
+	id = "a12g"
 	caliber = "12g"
 	diameter = 18.53
 	length = 69.85

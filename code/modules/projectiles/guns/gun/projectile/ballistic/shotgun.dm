@@ -109,8 +109,6 @@
 	item_state = "dshotgun"
 	//SPEEDLOADER because rapid unloading.
 	//In principle someone could make a speedloader for it, so it makes sense.
-	load_method = SINGLE_CASING|SPEEDLOADER
-	handle_casings = CYCLE_CASINGS
 	internal_magazine_size = 2
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
@@ -123,7 +121,7 @@
 	firemodes = list(
 		list(mode_name="fire one barrel at a time", one_handed_penalty = 15, burst=1),
 		list(mode_name="fire both barrels at once", one_handed_penalty = 35, burst=2),
-		)
+	)
 
 /obj/item/gun/projectile/ballistic/shotgun/doublebarrel/pellet
 	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12g/pellet
@@ -144,7 +142,7 @@
 /obj/item/gun/projectile/ballistic/shotgun/doublebarrel/attackby(var/obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/transforming/energy) || istype(A, /obj/item/pickaxe/plasmacutter))
 		to_chat(user, "<span class='notice'>You begin to shorten the barrel of \the [src].</span>")
-		if(loaded.len)
+		if(get_ammo_remaining())
 			// todo: what happens if it's inside a container?
 			user.visible_message("<span class='danger'>The shotgun goes off!</span>", "<span class='danger'>The shotgun goes off in your face!</span>")
 			start_firing_cycle_async(src, rand(0, 360), firemode = firemodes[2])
@@ -188,8 +186,6 @@
 	icon_state = "shotgun_q"
 	item_state = "qshotgun"
 	recoil = 2
-	load_method = SINGLE_CASING|SPEEDLOADER
-	handle_casings = CYCLE_CASINGS
 	internal_magazine_size = 4
 	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 5

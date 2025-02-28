@@ -1,5 +1,5 @@
-
 /datum/ammo_caliber/biomatter/wax
+	id = "wax"
 	caliber = "wax"
 
 /obj/item/ammo_casing/biomatter/wax

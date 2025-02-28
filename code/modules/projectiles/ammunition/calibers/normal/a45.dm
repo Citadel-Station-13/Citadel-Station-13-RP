@@ -1,4 +1,5 @@
 /datum/ammo_caliber/a45
+	id = "a45"
 	caliber = ".45"
 
 //* Casings

@@ -1,5 +1,6 @@
 /datum/ammo_caliber/cap_gun
-	caliber = "capgun"
+	id = "cap_gun"
+	caliber = "cap_gun"
 
 /obj/item/ammo_casing/cap_gun
 	name = "cap"

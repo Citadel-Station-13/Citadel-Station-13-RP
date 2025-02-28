@@ -74,7 +74,7 @@
  * @return clickchain flags
  */
 /obj/item/gun/projectile/ballistic/proc/user_clickchain_unload_ammo(datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
-	var/obj/item/ammo_casing/unloaded = remove_casing(null, no_soud)
+	var/obj/item/ammo_casing/unloaded = remove_casing(null, no_sound)
 	if(!unloaded)
 		return NONE
 	if(clickchain)
@@ -85,7 +85,7 @@
 		actor?.visible_feedback(
 			target = src,
 			range = MESSAGE_RANGE_INVENTORY_SOFT,
-			visible = "[actor.performer] removes [unlaoded] from [src].",
+			visible = "[actor.performer] removes [unloaded] from [src].",
 			otherwise_self = SPAN_NOTICE("You remove [unloaded] from [src]."),
 		)
 	return CLICKCHAIN_DID_SOMETHING
@@ -107,7 +107,7 @@
 		actor?.visible_feedback(
 			target = src,
 			range = MESSAGE_RANGE_INVENTORY_SOFT,
-			visible = "[actor.performer] removes [unlaoded] from [src].",
+			visible = "[actor.performer] removes [unloaded] from [src].",
 			otherwise_self = SPAN_NOTICE("You remove [unloaded] from [src]."),
 		)
 	return CLICKCHAIN_DID_SOMETHING
@@ -129,7 +129,7 @@
 		actor?.visible_feedback(
 			target = src,
 			range = MESSAGE_RANGE_INVENTORY_SOFT,
-			visible = "[actor.performer] removes [unlaoded] from [src].",
+			visible = "[actor.performer] removes [unloaded] from [src].",
 			otherwise_self = SPAN_NOTICE("You remove [unloaded] from [src]."),
 		)
 	return CLICKCHAIN_DID_SOMETHING

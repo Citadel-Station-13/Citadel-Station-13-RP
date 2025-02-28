@@ -1,4 +1,5 @@
 /datum/ammo_caliber/dart
+	id = "dart"
 	caliber = "dart"
 
 //* Casings *//
