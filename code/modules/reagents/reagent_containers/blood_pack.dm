@@ -41,7 +41,7 @@
 		var/datum/blood_fragment/fragment = new
 		fragment.legacy_blood_type = blood_type
 		mixture.unsafe_set_fragment_list_ref(list(
-			fragment = 1,
+			(fragment) = 1,
 		))
 		reagents.add_reagent("blood", 200, mixture)
 		update_icon()

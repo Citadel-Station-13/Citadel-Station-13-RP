@@ -9,7 +9,7 @@
 
 /obj/effect/water/Initialize(mapload)
 	. = ..()
-	reagents_reapplication_injection = TRUE
+	reagents_reapplication_injection = list()
 	QDEL_IN(src, 15 SECONDS)
 
 /obj/effect/water/Destroy()
