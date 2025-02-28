@@ -572,7 +572,7 @@
 /obj/item/clothing/accessory/sweater/asymetric
 	name = "Asymetric Sweater"
 	desc = "A loose knit sweater with an exceptionally wide neckline. It's hard to wear without it falling to one side and revealing your shoulder, or more."
-	icon_state = "asymetric"
+	icon_state = "asymetric" // don't you dare commit/pr this without making a container icon
 
 //***
 // End of sweaters
