@@ -63,6 +63,10 @@
 	// todo: this is a multiplier, not a divisor
 	throw_force = damage_force * throw_force_multiplier
 
+/obj/item/material/melee_finalize(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style, missed)
+	. = ..()
+
+
 /obj/item/material/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 	MATERIAL_INVOKE(src, MATERIAL_TRAIT_ATTACK, on_mob_attack, target, target_zone, src, ATTACK_TYPE_MELEE)

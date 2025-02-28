@@ -22,7 +22,28 @@
  *   reset.
  */
 
-// todo: audit these flags..
+// todo: these flags are somewhat weird; infact, most of them are somewhat awful and need to be redone.
+//       as an example, DO_NOT_PROPAGATE started as a "this thing's deleted, please stop engaging with it"
+//       and an immediate abort.
+//
+//       but what if we want to communicate "hey, we did something, stop doing more things"?
+//       example: screwdriver is usually used for construction but something wanted to override it
+//       so it says "we're done here". that became the DID_SOMETHING flag, which is checked
+//       for 'interaction continue'.
+//
+//       that, however, has its own issues. what if we want something triggering at end of
+//       clickchain that reacts based on data? we want to differentiate between
+//       1. "we were deleted but the user touched the entity",
+//       2. "action completed but we were taken away / moved out of user",
+//       3. "action halted by user when they realized they can't do something"
+//          (e.g. "you don't have enough money to insert it into the vendor")
+//       4. "action completed and the user wants to stop now but actually touched the entity"
+//       5. "we were deleted but the user **did not** touch the entity"
+//
+//       this might all seem like semantics but if we ever add generic components that
+//       need to hook on **any** contact of an item with an entity, this'll be needed.
+//       door charges like the old /tg/ item are an example; we want it to engage on any contact,
+//       not just on open.
 
 /// stop the click chain from proceeding past this point; usually used if we're deleting or being inserted
 ///

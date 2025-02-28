@@ -136,22 +136,11 @@
 		fixed_target.animate_hit_by_weapon(fixed_performer, src)
 		. |= fixed_target.on_melee_act(fixed_performer, attack_style, clickchain)
 
-	. |= melee_finalize(fixed_target, clickchain, clickchain_flags, attack_style, missed)
+	if(!QDELETED(src))
+		. |= melee_finalize(fixed_target, clickchain, clickchain_flags, attack_style, missed)
 
 	// -- log --
 	log_weapon_melee(clickchain, attack_style, src)
-
-
-/**
- * Low level proc handling the actual melee attack's effects.
- *
- * * You probably shouldn't be messing with this unless you know what you're doing.
- * * This is only called if we did not miss.
- *
- * @return clickchain flags to return to caller
- */
-/obj/item/proc/melee_attack_impact(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
-	SHOULD_NOT_SLEEP(TRUE)
 
 #warn parse below
 
@@ -170,9 +159,8 @@
 	// hit
 	return melee_mob_hit(L, user, clickchain_flags, params, mult, target_zone, intent)
 
-#warn audit calls
 /obj/item/proc/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
-	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_NOT_OVERRIDE(TRUE)
 
 #warn above
 
@@ -181,6 +169,7 @@
  *
  * * Missing is the failure to make contact entirely. If it makes contact and is blocked by shieldcall,
  *   that's a different deal.
+ * * This does not run if we're qdel'd.
  *
  * @params
  * * target - The target swung at; at this point it can't be redirected

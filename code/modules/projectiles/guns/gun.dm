@@ -456,6 +456,9 @@
 		e_args.using_intent = user.a_intent
 		return handle_clickchain_fire(e_args, clickchain_flags)
 
+/obj/item/gun/melee_attack(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
+	#warn impl
+
 /obj/item/gun/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/A = target
 	if(!istype(A))
@@ -674,21 +677,21 @@
 
 //* Context *//
 
-/obj/item/gun/context_query(datum/event_args/actor/e_args)
+/obj/item/gun/context_menu_query(datum/event_args/actor/e_args)
 	. = ..()
 	if(length(attachments))
-		.["remove-attachment"] = atom_context_tuple("Remove Attachment", image('icons/screen/radial/actions.dmi', "red-arrow-up"), 0, MOBILITY_CAN_USE)
+		.["remove-attachment"] = create_context_menu_tuple("Remove Attachment", image('icons/screen/radial/actions.dmi', "red-arrow-up"), 0, MOBILITY_CAN_USE)
 	if(length(modular_components))
 		// only show menu option if atleast one can be removed.
 		for(var/obj/item/gun_component/component as anything in modular_components)
 			if(!component.can_remove)
 				continue
-			.["remove-component"] = atom_context_tuple("Remove Component", image('icons/screen/radial/actions.dmi', "red-arrow-up"), 0, MOBILITY_CAN_USE)
+			.["remove-component"] = create_context_menu_tuple("Remove Component", image('icons/screen/radial/actions.dmi', "red-arrow-up"), 0, MOBILITY_CAN_USE)
 			break
 	if(safety_state != GUN_NO_SAFETY)
-		.["toggle-safety"] = atom_context_tuple("Toggle Safety", image(src), 0, MOBILITY_CAN_USE, TRUE)
+		.["toggle-safety"] = create_context_menu_tuple("Toggle Safety", image(src), 0, MOBILITY_CAN_USE, TRUE)
 
-/obj/item/gun/context_act(datum/event_args/actor/e_args, key)
+/obj/item/gun/context_menu_act(datum/event_args/actor/e_args, key)
 	. = ..()
 	if(.)
 		return

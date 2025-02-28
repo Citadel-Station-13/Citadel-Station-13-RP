@@ -42,9 +42,9 @@
 	. = ..()
 	update_icon()
 
-/obj/item/material/twohanded/standard_melee_attack(atom/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/material/twohanded/melee_attack(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
 	if(!(item_flags & ITEM_MULTIHAND_WIELDED))
-		mult *= unwielded_force_multiplier
+		clickchain.melee_damage_multiplier *= unwielded_force_multiplier
 	return ..()
 
 /obj/item/material/twohanded/update_icon()

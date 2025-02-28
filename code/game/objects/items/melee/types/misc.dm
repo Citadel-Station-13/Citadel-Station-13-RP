@@ -185,6 +185,10 @@
 	var/poison_amount = 5
 	var/poison_type = "shredding_nanites"
 
+/obj/item/melee/nanite_knife/melee_finalize(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style, missed)
+	. = ..()
+	#warn impl
+	
 /obj/item/melee/nanite_knife/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 	var/mob/living/L = target

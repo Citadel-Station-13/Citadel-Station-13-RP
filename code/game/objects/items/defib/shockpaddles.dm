@@ -162,6 +162,11 @@
 		busy = 0
 		update_icon()
 
+#warn impl
+/obj/item/shockpaddles/using_as_item(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+
+
 //Since harm-intent now skips the delay for deliberate placement, you have to be able to hit them in combat in order to shock people.
 /obj/item/shockpaddles/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/L = target
