@@ -1,4 +1,5 @@
 /datum/chemical_reaction/paint
+	abstract_type = /datum/chemical_reaction/paint
 	var/result_color
 
 /datum/chemical_reaction/paint/compute_result_data_initializer(datum/reagent_holder/holder, multiplier)

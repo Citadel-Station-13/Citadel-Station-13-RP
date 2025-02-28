@@ -131,7 +131,13 @@
 				src,
 			)
 		else
-			reagent_datas = list((id) = reagent.mix_data(null, 0, reagent.preprocess_data(data_initializer), amount, src))
+			reagent_datas = list((id) = reagent.mix_data(
+				null,
+				0,
+				reagent.preprocess_data(data_initializer),
+				amount,
+				src,
+			))
 
 	total_volume += amount
 
