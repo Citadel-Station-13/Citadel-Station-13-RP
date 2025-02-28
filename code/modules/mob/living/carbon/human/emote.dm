@@ -34,7 +34,7 @@
 		if("beep", "buzz", "buzz2", "chime", "die", "dwoop", "error", "honk", "no", "ping", "rcough", "rsneeze", "scary", "shutdown","startup", "warn", "ye", "yes")
 
 			var/obj/item/organ/o = internal_organs_by_name[O_VOICE]
-			if(!isSynthetic() && (!o || !(o.robotic >= ORGAN_ASSISTED)))
+			if(!isSynthetic() && (!o || !(o.robotic >= ORGAN_ASSISTED)) && !fast_is_species_type(src, /datum/species/holosphere))
 				to_chat(src, "<span class='warning'>You are not a synthetic.</span>")
 				return
 
