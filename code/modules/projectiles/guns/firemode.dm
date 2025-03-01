@@ -16,7 +16,6 @@
 
 	//* projectile *//
 
-	#warn hook
 	/// impart base dispersion to every single projectile
 	/// * this should rarely be used; instability system is better and
 	///   more suited for compatibility with other sources of dispersion

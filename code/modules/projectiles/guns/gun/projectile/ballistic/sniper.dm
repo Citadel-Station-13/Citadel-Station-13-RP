@@ -16,6 +16,7 @@
 	internal_magazine = TRUE
 	internal_magazine_size = 1
 	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12_7mm
+	bolt_simulation = TRUE
 	chamber_cycle_after_fire = FALSE
 	single_load_sound = 'sound/weapons/guns/interaction/rifle_load.ogg'
 	accuracy = -45
@@ -24,48 +25,10 @@
 	var/bolt_open = 0
 
 /obj/item/gun/projectile/ballistic/heavysniper/update_icon()
-	if(bolt_open)
-		icon_state = "heavysniper-open"
-	else
+	if(bolt_closed)
 		icon_state = "heavysniper"
-
-/obj/item/gun/projectile/ballistic/heavysniper/attack_self(mob/user, datum/event_args/actor/actor)
-	. = ..()
-	if(.)
-		return
-	playsound(src.loc, 'sound/weapons/flipblade.ogg', 50, 1)
-	bolt_open = !bolt_open
-	if(bolt_open)
-		if(chambered)
-			to_chat(user, "<span class='notice'>You work the bolt open, ejecting [chambered]!</span>")
-			chambered.loc = get_turf(src)
-			loaded -= chambered
-			chambered = null
-		else
-			to_chat(user, "<span class='notice'>You work the bolt open.</span>")
-		playsound(src.loc, 'sound/weapons/guns/interaction/rifle_boltback.ogg', 50, 1)
 	else
-		to_chat(user, "<span class='notice'>You work the bolt closed.</span>")
-		playsound(src.loc, 'sound/weapons/guns/interaction/rifle_boltforward.ogg', 50, 1)
-		bolt_open = 0
-	add_fingerprint(user)
-	update_icon()
-
-/obj/item/gun/projectile/ballistic/heavysniper/special_check(mob/user)
-	if(bolt_open)
-		to_chat(user, "<span class='warning'>You can't fire [src] while the bolt is open!</span>")
-		return 0
-	return ..()
-
-/obj/item/gun/projectile/ballistic/heavysniper/load_ammo(var/obj/item/A, mob/user)
-	if(!bolt_open)
-		return
-	..()
-
-/obj/item/gun/projectile/ballistic/heavysniper/unload_ammo(mob/user, var/allow_dump=1)
-	if(!bolt_open)
-		return
-	..()
+		icon_state = "heavysniper-open"
 
 /obj/item/gun/projectile/ballistic/heavysniper/verb/scope()
 	set category = VERB_CATEGORY_OBJECT

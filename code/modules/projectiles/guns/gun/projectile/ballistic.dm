@@ -126,6 +126,35 @@
 	///   Anything reading internal_magazine_vec should know how to handle this.
 	var/internal_magazine_is_revolver = FALSE
 
+	//* Bolt *//
+
+	#warn implement this
+	/// Perform simplified bolt simulation on the gun.
+	///
+	/// Bolt simulated guns do the following:
+	/// * The bolt must be closed to fire.
+	/// * The bolt will close when cycling (charging) the chamber, whether
+	///   manually or automatically.
+	/// * The bolt will open after firing.
+	/// * By default, chambered round cannot be accessed while the bolt is closed
+	/// * By default, internal magazine cannot be accessed while the bolt is closed
+	/// * By default, external magazine cannot be inserted or removed while the bolt is closed
+	/// * By default, the 'cycle chamber' interaction will instead close or open
+	///   the bolt. If the bolt is being closed, it will also cycle the chamber.
+	/// * Enable bolt-state rendering if [render_bolt_overlay] is on.
+	var/bolt_simulation = FALSE
+	/// Is the bolt closed right now?
+	/// * No effect without [bolt_simulation]
+	var/bolt_closed = TRUE
+	/// Sound to manipulate the bolt.
+	/// * Played in lieu of chambering sound if that exists and this is a manual bolt
+	///   manipulation.
+	var/bolt_open_sound = 'sound/weapons/guns/interaction/rifle_boltback.ogg'
+	/// Sound to manipulate the bolt.
+	/// * Played in lieu of chambering sound if that exists and this is a manual bolt
+	///   manipulation.
+	var/bolt_close_sound = 'sound/weapons/guns/interaction/rifle_boltforward.ogg'
+
 	//* Chamber *//
 	/// Chambered round
 	/// * This is considered an internal variable; use getters / setters to manipulate it.
@@ -147,6 +176,7 @@
 	/// Spin the internal magazine after an inert fire
 	/// * Has no effect if [internal_magazine_is_revolver] is off.
 	/// * If you don't want the casing to drop, you need to remove [chamber_cycle_after_fire]
+	/// * There's no manual spin button at time of writing; this should generally be enabled.
 	var/chamber_spin_after_inert = TRUE
 	/// A loaded magazine will leave a bullet in the chamber
 	/// once removed.
@@ -155,6 +185,8 @@
 	/// * If this is FALSE, the chamber does not take the bullet until it's being
 	///   fired, and the chamber will never hold a bullet if a magazine isn't inserted.
 	/// * This must be TRUE to allow manual loading without a magazine.
+	/// * This only affects external magazines. Internal magazines have special
+	///   handling that entirely ignores this.
 	var/chamber_magazine_separation = TRUE
 
 	//* Configuration *//

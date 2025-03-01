@@ -30,7 +30,7 @@
 	icon_state = "detective"
 	caliber = /datum/ammo_caliber/a38
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
-	ammo_type = /obj/item/ammo_casing/a38
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a38
 
 /obj/item/gun/projectile/ballistic/revolver/detective/verb/rename_gun()
 	set name = "Name Gun"
