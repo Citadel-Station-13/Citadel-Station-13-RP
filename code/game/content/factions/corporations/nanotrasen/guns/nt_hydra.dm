@@ -83,7 +83,7 @@
 	. = ..()
 	update_icon()
 
-/obj/item/ammo_casing/microbattery/update_icon()
+/obj/item/ammo_casing/microbattery/nt_hydra/update_icon()
 	cut_overlays()
 	. = ..()
 	var/image/stripe = image(icon, "[base_icon_state]-stripe")

@@ -2,7 +2,7 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /**
- * * The weird proc args is because this technically supports non-clickchain use.
+ * * The weird proc args is because this supports non-clickchain use.
  *
  * @return clickchain flags
  */
@@ -148,7 +148,7 @@
 	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
 /**
- * * The weird proc args is because this technically supports non-clickchain use.
+ * * The weird proc args is because this supports non-clickchain use.
  *
  * @return clickchain flags
  */
@@ -162,7 +162,7 @@
 	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
 /**
- * * The weird proc args is because this technically supports non-clickchain use.
+ * * The weird proc args is because this supports non-clickchain use.
  *
  * @return clickchain flags
  */
@@ -172,7 +172,7 @@
 	return user_clickchain_unload_ammo(actor, clickchain, no_sound, no_message)
 
 /**
- * * The weird proc args is because this technically supports non-clickchain use.
+ * * The weird proc args is because this supports non-clickchain use.
  *
  * @return clickchain flags
  */
@@ -194,7 +194,7 @@
 	return CLICKCHAIN_DID_SOMETHING
 
 /**
- * * The weird proc args is because this technically supports non-clickchain use.
+ * * The weird proc args is because this supports non-clickchain use.
  *
  * @return clickchain flags
  */
@@ -216,7 +216,7 @@
 	return CLICKCHAIN_DID_SOMETHING
 
 /**
- * * The weird proc args is because this technically supports non-clickchain use.
+ * * The weird proc args is because this supports non-clickchain use.
  *
  * @return clickchain flags
  */
@@ -235,4 +235,16 @@
 			visible = "[actor.performer] removes [unloaded] from [src].",
 			otherwise_self = SPAN_NOTICE("You remove [unloaded] from [src]."),
 		)
+	return CLICKCHAIN_DID_SOMETHING
+
+/**
+ * * The weird proc args is because this supports non-clickchain use
+ *
+ * @return clickchain flags
+ */
+/obj/item/gun/projectile/ballistic/proc/user_clickchain_spin_chamber(datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
+	if(!internal_magazine || !internal_magazine_is_revolver)
+		return NONE
+	unsafe_spin_chamber_to_index(rand(1, length(internal_magazine_vec)))
+	#warn impl
 	return CLICKCHAIN_DID_SOMETHING

@@ -13,7 +13,6 @@
 
 	magazine_insert_sound = 'sound/weapons/guns/interaction/rev_magin.ogg'
 	magazine_remove_sound = 'sound/weapons/guns/interaction/rev_magout.ogg'
-	var/chamber_offset = 0 //how many empty chambers in the cylinder until you hit a round
 
 /obj/item/gun/projectile/ballistic/revolver/holy
 	name = "blessed revolver"
@@ -31,17 +30,6 @@
 	loaded = shuffle(loaded)
 	if(rand(1,max_shells) > loaded.len)
 		chamber_offset = rand(0,max_shells - loaded.len)
-
-// todo: dumb
-/obj/item/gun/projectile/ballistic/revolver/consume_next_projectile(datum/gun_firing_cycle/cycle)
-	if(chamber_offset)
-		chamber_offset--
-		return
-	return ..()
-
-/obj/item/gun/projectile/ballistic/revolver/load_ammo(var/obj/item/A, mob/user)
-	chamber_offset = 0
-	return ..()
 
 /obj/item/gun/projectile/ballistic/revolver/mateba
 	name = "mateba"

@@ -14,17 +14,34 @@
 /obj/item/ammo_casing/nt_expedition/light_sidearm
 	name = "ammo casing (NT-9)"
 	desc = "A standardized 9mm cartridge for NT Expeditionary kinetics. This one seems to be for lightweight pistols and sidearms."
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/sidearm-light-ammo.dmi'
+	icon_state = "basic"
+	icon_spent = TRUE
 	caliber = /datum/ammo_caliber/nt_expedition/light_sidearm
 	projectile_type = /obj/projectile/bullet/nt_expedition/light_sidearm
 
+	materials_base = list(
+		/datum/prototype/material/steel::id = 75,
+	)
+
 	/// specifically for /obj/item/ammo_magazine/nt_expedition/light_sidearm's
 	var/speedloader_state = "basic"
+
+// todo: implement projectile + magazine
+// /obj/item/ammo_casing/nt_expedition/light_sidearm/piercing
+// 	icon_state = "piercing"
+// 	speedloader_state = "piercing"
+
+// todo: implement projectile + magazine
+// /obj/item/ammo_casing/nt_expedition/light_sidearm/rubber
+// 	icon_state = "rubber"
+// 	speedloader_state = "rubber"
 
 //* Magazines *//
 
 /obj/item/ammo_magazine/nt_expedition/light_sidearm
 	name = "ammo magazine (NT-9)"
-	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-heavy-ammo.dmi'
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/sidearm-light-ammo.dmi'
 	icon_state = "magazine"
 	base_icon_state = "magazine"
 	rendering_system = GUN_RENDERING_DISABLED
