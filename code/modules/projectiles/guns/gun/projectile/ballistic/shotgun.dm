@@ -135,9 +135,6 @@
 	desc = "A double-barreled shotgun meant to fire signal flare shells. Uses 12g rounds."
 	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12g/flare
 
-/obj/item/gun/projectile/ballistic/shotgun/doublebarrel/unload_ammo(user, allow_dump)
-	..(user, allow_dump=1)
-
 //this is largely hacky and bad :(	-Pete
 /obj/item/gun/projectile/ballistic/shotgun/doublebarrel/attackby(var/obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/transforming/energy) || istype(A, /obj/item/pickaxe/plasmacutter))

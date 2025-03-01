@@ -269,17 +269,24 @@
 		icon_state = "l6[cover_open ? "open" : "closed"][magazine ? round(magazine.get_amount_remaining(), 10) : "-empty"]"
 		item_state = "l6[cover_open ? "open" : "closed"][magazine ? "" : "-empty"]"
 
-/obj/item/gun/projectile/ballistic/automatic/lmg/load_ammo(var/obj/item/A, mob/user)
+// todo: we should just have break / bolt handled at base /ballistic maybe?
+/obj/item/gun/projectile/ballistic/automatic/lmg/user_clickchain_apply_magazine(obj/item/ammo_magazine/magazine, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
 	if(!cover_open)
-		to_chat(user, "<span class='warning'>You need to open the cover to load [src].</span>")
-		return
-	..()
+		actor?.chat_feedback(
+			SPAN_RADIO("You need to open the cover to be able to load [src]."),
+			target = src,
+		)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	return ..()
 
-/obj/item/gun/projectile/ballistic/automatic/lmg/unload_ammo(mob/user, var/allow_dump=1)
+/obj/item/gun/projectile/ballistic/automatic/lmg/user_clickchain_unload_magazine(datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
 	if(!cover_open)
-		to_chat(user, "<span class='warning'>You need to open the cover to unload [src].</span>")
-		return
-	..()
+		actor?.chat_feedback(
+			SPAN_RADIO("You need to open the cover to be able to load [src]."),
+			target = src,
+		)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	return ..()
 
 //MG42 - It's an old gun, but it's just for fun!
 // todo: default-unloaded, add /loaded
