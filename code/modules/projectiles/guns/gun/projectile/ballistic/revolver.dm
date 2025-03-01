@@ -141,11 +141,11 @@
 	desc = "A revolving hand-shotgun by Cybersun Industries that packs the power of a 12 guage in the palm of your hand (if you don't break your wrist). Uses 12g rounds."
 	icon_state = "judge"
 	caliber = /datum/ammo_caliber/a12g
+	internal_magazine_size = 2
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12g
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 4)
-	max_shells = 5
 	recoil = 2 // ow my fucking hand
 	accuracy = -15 // smooth bore + short barrel = shit accuracy
-	ammo_type = /obj/item/ammo_casing/a12g
 
 	// ToDo: Remove accuracy debuf in exchange for slightly injuring your hand every time you fire it.
 
@@ -222,20 +222,6 @@
 // 			loaded = tertiary_loaded
 
 // 		flipped_firing = 0
-
-// /obj/item/gun/projectile/ballistic/revolver/lemat/spin_cylinder()
-// 	set name = "Spin cylinder"
-// 	set desc = "Fun when you're bored out of your skull."
-// 	set category = VERB_CATEGORY_OBJECT
-
-// 	chamber_offset = 0
-// 	visible_message("<span class='warning'>\The [usr] spins the cylinder of \the [src]!</span>", \
-// 	"<span class='notice'>You hear something metallic spin and click.</span>")
-// 	playsound(src.loc, 'sound/weapons/revolver_spin.ogg', 100, 1)
-// 	if(!flipped_firing)
-// 		loaded = shuffle(loaded)
-// 		if(rand(1,max_shells) > loaded.len)
-// 			chamber_offset = rand(0,max_shells - loaded.len)
 
 // /obj/item/gun/projectile/ballistic/revolver/lemat/examine(mob/user, dist)
 // 	. = ..()
