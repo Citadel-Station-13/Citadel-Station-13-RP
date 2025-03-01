@@ -168,7 +168,6 @@
 	icon_state = "win1895"
 	slot_flags = SLOT_BACK
 	internal_magazine_preload_ammo = /obj/item/ammo_casing/a7_62mm
-	load_method = SINGLE_CASING|SPEEDLOADER
 	internal_magazine_size = 5
 	caliber = /datum/ammo_caliber/a7_62mm
 	chamber_manual_cycle_sound = 'sound/weapons/riflebolt.ogg'
