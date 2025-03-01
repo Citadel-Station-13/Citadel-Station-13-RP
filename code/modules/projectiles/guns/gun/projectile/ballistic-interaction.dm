@@ -1,6 +1,9 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
+/obj/item/gun/projectile/ballistic/should_unique_action_rack_chamber()
+	#warn impl
+
 /**
  * * The weird proc args is because this supports non-clickchain use.
  *
