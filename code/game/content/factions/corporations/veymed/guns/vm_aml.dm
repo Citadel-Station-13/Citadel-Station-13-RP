@@ -65,8 +65,8 @@
 	ammo_max = 6
 
 	segment_count = 6
-	x_start = -5
-	x_offset = 3
+	segment_x_start = -5
+	segment_x_offset = 3
 
 /obj/item/ammo_casing/microbattery/vm_aml
 	icon = 'icons/content/factions/corporations/veymed/items/guns/vm_aml.dmi'
