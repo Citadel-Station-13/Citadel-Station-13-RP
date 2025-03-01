@@ -54,7 +54,7 @@
 /obj/item/gun/projectile/ballistic/contender/tacticool
 	desc = "A modified replica of an ancient one-shot hand-cannon, reinvented with a tactical look. For when you really want to make a hole. This one has been modified to work almost like a bolt-action."
 	icon_state = "pockrifle_b"
-	icon_retracted = "pockrifle_b-empty"
+	// icon_retracted = "pockrifle_b-empty"
 
 /obj/item/gun/projectile/ballistic/contender/tacticool/a44
 	caliber = /datum/ammo_caliber/a44
@@ -68,7 +68,7 @@
 	name = "Divine Challenger"
 	desc = "A beautifully engraved pocket rifle with a silvered barrel made of incense wood.Sometimes one good hit is all you need to vanquish a great evil and these handcannons will deliver that one shot."
 	icon_state = "pockrifle_c"
-	icon_retracted = "pockrifle_c-empty"
+	// icon_retracted = "pockrifle_c-empty"
 	internal_magazine_preload_ammo = /obj/item/ammo_casing/a357/silver
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_OCCULT = 1)
 
@@ -84,7 +84,7 @@
 	name = "improvised pipe rifle"
 	desc = "A single shot, handmade pipe rifle. It almost functions like a bolt action. Accepts shotgun shells."
 	icon_state = "pipegun"
-	icon_retracted = "pipegun-empty"
+	// icon_retracted = "pipegun-empty"
 	item_state = "revolver"
 	caliber = /datum/ammo_caliber/a12g
 	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12g/improvised

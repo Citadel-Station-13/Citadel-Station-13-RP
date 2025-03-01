@@ -6,7 +6,7 @@
 
 /obj/item/storage/secure/briefcase/ml3m_pack_med/legacy_spawn_contents()
 	new /obj/item/gun/projectile/ballistic/microbattery/vm_aml(src)
-	new /obj/item/ammo_magazine/microbattery/medical(src)
+	new /obj/item/ammo_magazine/microbattery/vm_aml(src)
 	new /obj/item/ammo_casing/microbattery/vm_aml/brute(src)
 	new /obj/item/ammo_casing/microbattery/vm_aml/burn(src)
 	new /obj/item/ammo_casing/microbattery/vm_aml/stabilize(src)
@@ -18,8 +18,8 @@
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/storage/secure/briefcase/ml3m_pack_cmo/legacy_spawn_contents()
-	new /obj/item/gun/projectile/ballistic/microbattery/vm_aml/cmo(src)
-	new /obj/item/ammo_magazine/microbattery/medical(src)
+	new /obj/item/gun/projectile/ballistic/microbattery/vm_aml/advanced(src)
+	new /obj/item/ammo_magazine/microbattery/vm_aml/advanced(src)
 	new /obj/item/ammo_casing/microbattery/vm_aml/brute(src)
 	new /obj/item/ammo_casing/microbattery/vm_aml/burn(src)
 	new /obj/item/ammo_casing/microbattery/vm_aml/stabilize(src)

@@ -16,7 +16,7 @@
 
 	one_handed_penalty = 15
 	chamber_manual_cycle_sound = 'sound/weapons/shotgunpump.ogg'
-	load_sound = 'sound/weapons/guns/interaction/shotgun_insert.ogg'
+	single_load_sound = 'sound/weapons/guns/interaction/shotgun_insert.ogg'
 	var/empty_sprite = 0 //This is just a dirty var so it doesn't fudge up.
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/update_icon_state()

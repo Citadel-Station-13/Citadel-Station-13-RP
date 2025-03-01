@@ -6,7 +6,7 @@
 
 /obj/item/storage/secure/briefcase/nsfw_pack/legacy_spawn_contents()
 	new /obj/item/gun/projectile/ballistic/microbattery/nt_hydra(src)
-	new /obj/item/ammo_magazine/microbattery/nt_hydra(src)
+	new /obj/item/ammo_magazine/microbattery/nt_hydra/advanced(src)
 	for(var/path in subtypesof(/obj/item/ammo_casing/microbattery/combat))
 		new path(src)
 
@@ -18,7 +18,7 @@
 
 /obj/item/storage/secure/briefcase/nsfw_pack_hos/legacy_spawn_contents()
 	new /obj/item/gun/projectile/ballistic/microbattery/nt_hydra(src)
-	new /obj/item/ammo_magazine/microbattery/nt_hydra(src)
+	new /obj/item/ammo_magazine/microbattery/nt_hydra/advanced(src)
 	new /obj/item/ammo_casing/microbattery/combat/lethal(src)
 	new /obj/item/ammo_casing/microbattery/combat/lethal(src)
 	new /obj/item/ammo_casing/microbattery/combat/stun(src)

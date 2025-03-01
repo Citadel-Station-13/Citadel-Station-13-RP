@@ -3,13 +3,13 @@
 
 //* /obj/item/ammo_magazine - magazine_type *//
 
-/// normal magazines
-///
-/// * basically, straight or curved 'stick' magazines
+/// Handle loading as magazine.
 #define MAGAZINE_TYPE_NORMAL (1<<0)
-/// revolver-like speedloader
+/// Handle loading as speedloader.
+/// * Only usable on guns with internal magazines.
 #define MAGAZINE_TYPE_SPEEDLOADER (1<<1)
-/// stripper clip, or otherwise meant to load one at a time but very quickly
+/// Handle loading one at a time from this magazine.
+/// * Only usable on guns with internal magazines.
 #define MAGAZINE_TYPE_CLIP (1<<2)
 
 DEFINE_BITFIELD_NEW(ammo_magazine_types, list(
@@ -38,6 +38,12 @@ DEFINE_BITFIELD_NEW(ammo_magazine_types, list(
 /// renders as -mag-pouch
 /// * this is for any container that's considered loose (so no ammo feed belt)
 #define MAGAZINE_CLASS_POUCH (1<<4)
+/// renders as -mag-clip
+/// * this is for strippper clips that can be used as magazines directly.
+#define MAGAZINE_CLASS_CLIP (1<<5)
+/// renders as -mag-belt
+/// * reserved
+#define MAGAZINE_CLASS_BELT (1<<6)
 
 GLOBAL_REAL_LIST(magazine_class_bit_to_state) = list(
 	"mag",
@@ -45,6 +51,8 @@ GLOBAL_REAL_LIST(magazine_class_bit_to_state) = list(
 	"mag-ext",
 	"mag-box",
 	"mag-pouch",
+	"mag-clip",
+	"mag-belt",
 )
 
 DEFINE_BITFIELD_NEW(ammo_magazine_types, list(
@@ -57,6 +65,8 @@ DEFINE_BITFIELD_NEW(ammo_magazine_types, list(
 	BITFIELD_NEW("Extended", MAGAZINE_CLASS_EXTENDED),
 	BITFIELD_NEW("Box", MAGAZINE_CLASS_BOX),
 	BITFIELD_NEW("Pouch", MAGAZINE_CLASS_POUCH),
+	BITFIELD_NEW("Clip", MAGAZINE_CLASS_CLIP),
+	BITFIELD_NEW("Belt", MAGAZINE_CLASS_BELT),
 ))
 
 /// Fits in most guns

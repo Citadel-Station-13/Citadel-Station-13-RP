@@ -18,16 +18,23 @@
 	recoil = 0
 	projectile_type = /obj/projectile/bullet/pistol/strong	//Only used for chameleon guns
 
-	//* Ammunition *//
+	//* Actions *//
 
-	#warn hook everything
+	#warn this
+	/// If we're an internal mag gun, this is our chamber spin action.
+	var/datum/action/item_action/gun_spin_chamber/chamber_spin_action
+
+	//* Ammunition *//
 
 	/// Inserted magazine
 	/// * Ignored if [internal_magazine] is enabled.
 	var/obj/item/ammo_magazine/magazine
 	/// magazine types allowed for insertion
-	/// * This makes you able to let a gun use things like speedloaders
-	///   as magazines directly.
+	/// * You probably want [magazine_class]. This lets you override normal behavior
+	///   for what magazines receive the function calls for loading as magazines, and is
+	///   for advanced uses only.
+	var/magazine_type = MAGAZINE_TYPE_NORMAL
+	/// magazine classes allowed for insertion
 	var/magazine_class = MAGAZINE_CLASSES_DEFAULT_FIT
 	/// Magazine restrict; restricts inserted magazines to those that
 	/// match this.
@@ -154,6 +161,8 @@
 	var/interact_speed_reload_delay = 0.5 SECONDS
 	/// Tactical (swap mag) reload speed
 	var/interact_tactical_reload_delay = 1 SECONDS
+	/// Allow spinning the chamber if we're a revolver-like
+	var/interact_allow_chamber_spin = TRUE
 
 	//* Rendering *//
 	/// Render an overlay when magazine is in.
@@ -231,33 +240,6 @@
 /obj/item/gun/projectile/ballistic/proc/load_ammo(obj/item/A, mob/user)
 	if(istype(A, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/AM = A
-		if(AM.magazine_type & MAGAZINE_TYPE_NORMAL)
-			if(magazine)
-				if(user.a_intent == INTENT_HELP || user.a_intent == INTENT_DISARM)
-					return
-				else
-					if(user.a_intent == INTENT_GRAB) //Tactical reloading
-						if(!can_special_reload)
-							to_chat(user, SPAN_WARNING("You can't tactically reload this gun!"))
-							return
-						if(do_after(user, TACTICAL_RELOAD_SPEED, src))
-							if(!user.attempt_insert_item_for_installation(AM, src))
-								return
-							ammo_magazine.update_icon()
-							user.put_in_hands_or_drop(ammo_magazine)
-							user.visible_message(SPAN_WARNING("\The [user] reloads \the [src] with \the [AM]!"),
-													SPAN_WARNING("You tactically reload \the [src] with \the [AM]!"))
-					else //Speed reloading
-						if(!can_special_reload)
-							to_chat(user, SPAN_WARNING("You can't speed reload this gun!"))
-							return
-						if(do_after(user, SPEED_RELOAD_SPEED, src))
-							if(!user.attempt_insert_item_for_installation(AM, src))
-								return
-							ammo_magazine.update_icon()
-							ammo_magazine.dropInto(user.loc)
-							user.visible_message(SPAN_WARNING("\The [user] reloads \the [src] with \the [AM]!"),
-													SPAN_WARNING("You speed reload \the [src] with \the [AM]!"))
 		else if(AM.magazine_type & (MAGAZINE_TYPE_SPEEDLOADER | MAGAZINE_TYPE_CLIP))
 			if(loaded.len >= max_shells)
 				to_chat(user, "<span class='warning'>[src] is full!</span>")
@@ -290,39 +272,6 @@
 		loaded.Insert(1, C) //add to the head of the list
 		user.visible_message("[user] inserts \a [C] into [src].", "<span class='notice'>You insert \a [C] into [src].</span>")
 		playsound(src.loc, load_sound, 50, 1)
-
-/obj/item/gun/projectile/ballistic/attackby(var/obj/item/A as obj, mob/user as mob)
-	..()
-	load_ammo(A, user)
-
-	if(suppressible)
-		if(istype(A, /obj/item/silencer))
-			if(!user.is_holding(src))	//if we're not in his hands
-				to_chat(user, "<span class='notice'>You'll need [src] in your hands to do that.</span>")
-				return CLICKCHAIN_DO_NOT_PROPAGATE
-			if(!user.attempt_insert_item_for_installation(A, src))
-				return CLICKCHAIN_DO_NOT_PROPAGATE
-			to_chat(user, "<span class='notice'>You screw [A] onto [src].</span>")
-			silenced = TRUE
-			set_weight_class(WEIGHT_CLASS_NORMAL)
-			update_icon()
-			return CLICKCHAIN_DO_NOT_PROPAGATE
-		else if(istype(A, /obj/item/tool/wrench))
-			if(silenced)
-				var/obj/item/silencer/S = new (get_turf(user))
-				to_chat(user, "<span class='notice'>You unscrew [S]] from [src].</span>")
-				user.put_in_hands(S)
-				silenced = FALSE
-				set_weight_class(WEIGHT_CLASS_SMALL)
-				update_icon()
-
-/obj/item/gun/projectile/ballistic/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-	if(user.get_inactive_held_item() == src)
-		if(unload_ammo(user, allow_dump=0))
-		else
-			return ..()
-	else
-		return ..()
 
 /obj/item/gun/projectile/ballistic/examine(mob/user, dist)
 	. = ..()
@@ -369,9 +318,13 @@
  * * Caliber path
  * * Caliber instance
  *
+ * @params
+ * * caliberlike - caliber to test
+ * * for_magazine - are we testing for a magazine insertion?
+ *
  * @return TRUE / FALSE
  */
-/obj/item/gun/projectile/ballistic/proc/accepts_caliber(datum/ammo_caliber/caliberlike)
+/obj/item/gun/projectile/ballistic/proc/accepts_caliber(datum/ammo_caliber/caliberlike, for_magazine)
 	if(!caliber)
 		return TRUE
 	var/datum/ammo_caliber/ours = resolve_caliber(caliber)
@@ -389,7 +342,9 @@
 /obj/item/gun/projectile/ballistic/proc/accepts_magazine(obj/item/ammo_magazine/magazine)
 	if(!(magazine_class & magazine.magazine_class))
 		return FALSE
-	if(!accepts_caliber(magazine.ammo_caliber))
+	if(!(magazine_type & magazine.magazine_type))
+		return FALSE
+	if(!accepts_caliber(magazine.ammo_caliber, TRUE))
 		return FALSE
 	return magazine_restrict ? check_magazine_restrict(magazine_restrict, null, magazine.type) : TRUE
 

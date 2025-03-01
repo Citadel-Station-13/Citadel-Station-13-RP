@@ -2,11 +2,93 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /**
- * * The weird proc args is because this technically supports non-clickchain use.
+ * * The weird proc args is because this supports non-clickchain use.
  *
  * @return clickchain flags
  */
 /obj/item/gun/projectile/ballistic/proc/user_clickchain_apply_magazine(obj/item/ammo_magazine/magazine, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
+	if(internal_magazine)
+		// check for speedloader accept before overriding default behavior,
+		// unless default behavior allows speedloader-type'd magazines anyways
+		if(speedloader_allowed && (magazine.magazine_type & MAGAZINE_TYPE_SPEEDLOADER) && (accepts_speedloader(magazine) || !(magazine.magazine_type & magazine_type)))
+			return user_clickchain_speedload_from_magazine(magazine, actor, clickchain, no_sound, no_message)
+		// clip just always runs unless gun accepts it as magazine
+		else if((magazine.magazine_type & MAGAZINE_TYPE_CLIP) && !accepts_magazine(magazine))
+			return user_clickchain_load_from_magazine(magazine, actor, clickchain, no_sound, no_message)
+	if(magazine.magazine_type & magazine_type)
+		return user_clickchain_insert_magazine(magazine, actor, clickchain, no_sound, no_message)
+
+/obj/item/gun/projectile/ballistic/proc/user_clickchain_speedload_from_magazine(obj/item/ammo_magazine/magazine, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
+	if(!internal_magazine)
+		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+
+	if(!accepts_speedloader(magazine))
+		if(!no_message)
+			actor?.chat_feedback(
+				SPAN_WARNING("[magazine] doesn't fit [src] for speedloading."),
+				target = src,
+			)
+		return CLICKCHAIN_DID_SOMETHING
+
+	if(length(internal_magazine_vec) >= internal_magazine_size)
+		if(!no_message)
+			actor?.chat_feedback(
+				SPAN_WARNING("[src] is full!"),
+				target = src,
+			)
+		return CLICKCHAIN_DID_SOMETHING
+	if(!magazine.get_amount_remaining())
+		if(!no_message)
+			actor?.chat_feedback(
+				SPAN_WARNING("[magazine] is empty!"),
+				target = src,
+			)
+		return CLICKCHAIN_DID_SOMETHING
+
+	if(!do_after())
+		#warn doafter
+
+	var/loaded = 0
+
+	#warn impl
+
+/obj/item/gun/projectile/ballistic/proc/user_clickchain_load_from_magazine(obj/item/ammo_magazine/magazine, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
+	if(!internal_magazine)
+		return CLICKCHAIN_DID_SOMETHING
+
+	if(length(internal_magazine_vec) >= internal_magazine_size)
+		if(!no_message)
+			actor?.chat_feedback(
+				SPAN_WARNING("[src] is full!"),
+				target = src,
+			)
+		return CLICKCHAIN_DID_SOMETHING
+	if(!magazine.get_amount_remaining())
+		if(!no_message)
+			actor?.chat_feedback(
+				SPAN_WARNING("[magazine] is empty!"),
+				target = src,
+			)
+		return CLICKCHAIN_DID_SOMETHING
+
+	var/loaded = 0
+	do
+		if(!do_after(actor.performer, single_load_delay, src, mobility_flags = MOBILITY_CAN_USE))
+			break
+		var/obj/item/ammo_casing/peeking = magazine.peek()
+		if(!peeking || !accepts_casing(peeking))
+			break
+		if(insert_casing(peeking, no_sound))
+			ASSERT(magazine.pop() == peeking)
+			loaded++
+	while(TRUE)
+
+	if(!no_message)
+		#warn tell them / people around how much they inserted
+
+	return CLICKCHAIN_DID_SOMETHING
+
+/obj/item/gun/projectile/ballistic/proc/user_clickchain_insert_magazine(obj/item/ammo_magazine/magazine, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
 	if(internal_magazine)
 		if(!no_message)
 			actor?.chat_feedback(
@@ -21,13 +103,23 @@
 				target = src,
 			)
 		return CLICKCHAIN_DID_SOMETHING
+	var/obj/item/ammo_magazine/put_back_in_hand
+	var/tactical_reload_append
 	if(magazine)
-		if(interact_allow_tactical_reload)
+		if(interact_allow_tactical_reload && actor)
 			switch(clickchain.using_intent)
 				if(INTENT_GRAB)
-					#warn handle tac reload
+					if(do_after(actor.performer, interact_tactical_reload_delay, src, mobility_flags = MOBILITY_CAN_USE))
+						put_back_in_hand = remove_magazine(silent = TRUE)
+						tactical_reload_append = ", swapping out the old magazine in the process"
+					else
+						return CLICKCHAIN_DID_SOMETHING
 				if(INTENT_HARM)
-					#warn handle tac reload
+					if(do_after(actor.performer, interact_tactical_reload_delay, src, mobility_flags = MOBILITY_CAN_USE))
+						remove_magazine(drop_location(), silent = TRUE)
+						tactical_reload_append = ", dropping the old magazine in the process"
+					else
+						return CLICKCHAIN_DID_SOMETHING
 		if(!magazine)
 			if(!no_message)
 				actor?.chat_feedback(
@@ -45,21 +137,32 @@
 		actor?.visible_feedback(
 			target = src,
 			range = MESSAGE_RANGE_INVENTORY_SOFT,
-			visible = "[actor.performer] inserts [magazine] into [src].",
-			otherwise_self = SPAN_NOTICE("You insert [magazine] into [src]."),
+			visible = "[actor.performer] inserts [magazine] into [src][tactical_reload_append].",
+			otherwise_self = SPAN_NOTICE("You insert [magazine] into [src][tactical_reload_append]."),
 		)
+	if(put_back_in_hand)
+		if(actor)
+			actor.performer.put_in_hands_or_drop(put_back_in_hand)
+		else
+			put_back_in_hand.forceMove(drop_location())
 	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
 /**
- * * The weird proc args is because this technically supports non-clickchain use.
+ * * The weird proc args is because this supports non-clickchain use.
  *
  * @return clickchain flags
  */
 /obj/item/gun/projectile/ballistic/proc/user_clickchain_apply_casing(obj/item/ammo_casing/casing, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
 	#warn impl
 
+	if(clickchain)
+		if(!clickchain.performer.attempt_insert_item_for_installation(magazine, src))
+			return CLICKCHAIN_DID_SOMETHING
+
+	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+
 /**
- * * The weird proc args is because this technically supports non-clickchain use.
+ * * The weird proc args is because this supports non-clickchain use.
  *
  * @return clickchain flags
  */
@@ -69,7 +172,7 @@
 	return user_clickchain_unload_ammo(actor, clickchain, no_sound, no_message)
 
 /**
- * * The weird proc args is because this technically supports non-clickchain use.
+ * * The weird proc args is because this supports non-clickchain use.
  *
  * @return clickchain flags
  */
@@ -91,7 +194,7 @@
 	return CLICKCHAIN_DID_SOMETHING
 
 /**
- * * The weird proc args is because this technically supports non-clickchain use.
+ * * The weird proc args is because this supports non-clickchain use.
  *
  * @return clickchain flags
  */
@@ -113,7 +216,7 @@
 	return CLICKCHAIN_DID_SOMETHING
 
 /**
- * * The weird proc args is because this technically supports non-clickchain use.
+ * * The weird proc args is because this supports non-clickchain use.
  *
  * @return clickchain flags
  */
@@ -132,4 +235,16 @@
 			visible = "[actor.performer] removes [unloaded] from [src].",
 			otherwise_self = SPAN_NOTICE("You remove [unloaded] from [src]."),
 		)
+	return CLICKCHAIN_DID_SOMETHING
+
+/**
+ * * The weird proc args is because this supports non-clickchain use
+ *
+ * @return clickchain flags
+ */
+/obj/item/gun/projectile/ballistic/proc/user_clickchain_spin_chamber(datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
+	if(!internal_magazine || !internal_magazine_is_revolver)
+		return NONE
+	unsafe_spin_chamber_to_index(rand(1, length(internal_magazine_vec)))
+	#warn impl
 	return CLICKCHAIN_DID_SOMETHING

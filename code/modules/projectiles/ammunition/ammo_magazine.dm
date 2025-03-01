@@ -24,15 +24,16 @@
 	preserve_item = 1
 
 	//* dynamic config; can be changed at runtime freely *//
-	/// what types of magazines are we?
+	/// what types of magazines are we for logic handling
 	///
 	/// * this is a bitfield
 	/// * this determines how we act when used on / with / by a gun
+	/// * this is a strict functional switch; guns cannot be told to accept non-normal magazines
+	///   as inserted magazines.
 	var/magazine_type = MAGAZINE_TYPE_NORMAL
-	/// the class we ask the gun to render us as
+	/// what types of magazines are we for determining if things fit / can be rendered
 	///
 	/// * uses MAGAZINE_CLASS_* flags
-	/// * while quirky, guns do reserve the right to filter magazines by class.
 	/// * if our requested class isn't on a gun, the gun reserves the right to render us as the default class ('-mag')
 	var/magazine_class = MAGAZINE_CLASS_GENERIC
 
@@ -453,6 +454,13 @@
 	if(index > length(ammo_internal))
 		return (index - length(ammo_internal)) >= ammo_current ? ammo_preload : null
 	return ammo_internal[length(ammo_internal) - index]?.type
+
+/**
+ * Returns a direct reference to our loaded list.
+ * * You shouldn't be using this, more or less.
+ */
+/obj/item/ammo_magazine/proc/unsafe_get_ammo_internal_ref()
+	return ammo_internal
 
 //* Caliber *//
 
