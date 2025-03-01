@@ -58,6 +58,15 @@
 	/// Magazine auto-eject sound
 	/// * Played additionally to [magazine_remove_sound]
 	var/magazine_auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
+	/// Magazine insertion delay
+	/// * Added to the magazine's inherent delay.
+	//  todo: impl
+	var/magazine_delay = 0
+	/// Magazine removal delay
+	/// * Defaults to [magazine_delay], overrides it if non-null
+	/// * Added to the magazine's inherent delay.
+	//  todo: impl
+	var/magazine_remove_delay
 
 	/// Allow speedloaders
 	/// * [internal_magazine] is required to use speedloaders.
@@ -540,12 +549,19 @@
 
 /**
  * Switches to a certain index in our internal magazine
- * * Crashes if we don't use internal magazine that's a revolver-like magazine
+ * * Crashes if we don't use a revolver-like internal magazine.
  */
 /obj/item/gun/projectile/ballistic/proc/unsafe_spin_chamber_to_index(index)
 	if(!internal_magazine || !internal_magazine_is_revolver)
 		CRASH("attempted to swap chamber index on a gun that doesn't use an internal revolver-like datastructure")
 	#warn impl
+
+/**
+ * Switches to a random index in our internal magazine.
+ * * Crashes if we don't use a revolver-like internal magazine.
+ */
+/obj/item/gun/projectile/ballistic/proc/unsafe_spin_chamber_to_random()
+	unsafe_spin_chamber_to_index(rand(1, length(internal_magazine_vec)))
 
 //* Rendering *//
 

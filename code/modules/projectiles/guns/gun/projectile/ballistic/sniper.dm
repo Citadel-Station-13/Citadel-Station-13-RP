@@ -13,13 +13,11 @@
 	origin_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 2, TECH_ILLEGAL = 8)
 	caliber = /datum/ammo_caliber/a12_7mm
 	recoil = 5 //extra kickback
+	internal_magazine = TRUE
+	internal_magazine_size = 1
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12_7mm
 	chamber_cycle_after_fire = FALSE
-	handle_casings = HOLD_CASINGS
-	load_method = SINGLE_CASING
-	max_shells = 1
-	ammo_type = /obj/item/ammo_casing/a12_7mm
-
-	load_sound = 'sound/weapons/guns/interaction/rifle_load.ogg'
+	single_load_sound = 'sound/weapons/guns/interaction/rifle_load.ogg'
 	accuracy = -45
 	scoped_accuracy = 95
 	one_handed_penalty = 90

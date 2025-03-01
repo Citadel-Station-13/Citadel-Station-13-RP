@@ -84,7 +84,10 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidear
 	rendering_static_overlay = "smg-stripe"
 	magazine_type = MAGAZINE_TYPE_NORMAL
 	ammo_max = 20
-	#warn materials
+	materials_base = list(
+		/datum/prototype/material/steel::id = 500,
+		/datum/prototype/material/glass::id = 235,
+	)
 
 //* Projectiles *//
 
@@ -130,6 +133,18 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidear
 	internal_magazine_size = /obj/item/ammo_magazine/nt_expedition/heavy_sidearm/speedloader::ammo_max
 	icon_state = "revolver"
 
+/datum/firemode/nt_expedition_heavy_smg
+	abstract_type = /datum/firemode/nt_expedition_heavy_smg
+
+/datum/firemode/nt_expedition_heavy_smg/semi_auto
+	name = "semi-auto"
+
+/datum/firemode/nt_expedition_heavy_smg/three_burst
+	name = "3-burst"
+	burst_amount = 3
+	burst_delay = 1.5
+	projectile_base_dispersion = 7.5
+
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/smg, /nt_expedition/heavy_smg, "nt-expeditionary-heavy_smg")
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/smg
 	name = "submachine gun"
@@ -145,5 +160,15 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/nt_expediti
 	icon_state = "smg-map"
 	base_icon_state = "smg"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
-	#warn materials
-	#warn firemodes
+	materials_base = list(
+		/datum/prototype/material/steel::id = 3200,
+		/datum/prototype/material/glass::id = 1450,
+		/datum/prototype/material/gold::id = 350,
+		/datum/prototype/material/silver::id = 850,
+		/datum/prototype/material/lead::id = 1000,
+		/datum/prototype/material/copper::id = 500,
+	)
+	firemodes = list(
+		/datum/firemode/nt_expedition_heavy_smg/semi_auto,
+		/datum/firemode/nt_expedition_heavy_smg/three_burst,
+	)

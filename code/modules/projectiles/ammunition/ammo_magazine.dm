@@ -41,10 +41,13 @@
 	/// magazine restrict - must match gun's to be fitted into it, if gun's is.
 	//  todo: implement when we need multi-restrictions, single-typepath-and-subtypes works for now; maybe rename to magazine_tags or magazine_allow?
 	// var/magazine_restrict
-	/// Inherent insertion delay
-	var/magazine_insert_delay = 0
+	/// Inherent insert / remove delay
+	//  todo: impl
+	var/magazine_delay = 0
 	/// Inherent removal delay
-	var/magazine_remove_delay = 0
+	/// * Defaults to [magazine_delay], overrides it if non-null
+	//  todo: impl
+	var/magazine_remove_delay
 
 	//* for speedloaders *//
 	/// speedloader type - must match gun's to fit ammo in, if gun's is set

@@ -102,7 +102,10 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/light_sidear
 	rendering_count = 1
 	rendering_static_overlay = "smg-stripe"
 	ammo_max = 28
-	#warn materials
+	materials_base = list(
+		/datum/prototype/material/steel::id = 325,
+		/datum/prototype/material/glass::id = 125,
+	)
 
 //* Projectiles *//
 
@@ -137,6 +140,18 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/light_sidear
 
 //* SMG *//
 
+/datum/firemode/nt_expedition_light_Smg
+	abstract_type = /datum/firemode/nt_expedition_light_Smg
+
+/datum/firemode/nt_expedition_light_Smg/semi_auto
+	name = "semi-auto"
+
+/datum/firemode/nt_expedition_light_Smg/two_burst
+	name = "2-burst"
+	burst_amount = 2
+	burst_delay = 1.5
+	projectile_base_dispersion = 5.75
+
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm/smg, /nt_expedition/light_smg, "nt-expeditionary-light_smg")
 /obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm/smg
 	name = "machine pistol"
@@ -151,5 +166,15 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/nt_expediti
 	icon_state = "smg-map"
 	base_icon_state = "smg"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC | MAGAZINE_CLASS_EXTENDED
-	#warn materials
-	#warn firemodes
+	materials_base = list(
+		/datum/prototype/material/steel::id = 2500,
+		/datum/prototype/material/glass::id = 1250,
+		/datum/prototype/material/gold::id = 250,
+		/datum/prototype/material/silver::id = 750,
+		/datum/prototype/material/lead::id = 700,
+		/datum/prototype/material/copper::id = 400,
+	)
+	firemodes = list(
+		/datum/firemode/nt_expedition_light_Smg/semi_auto,
+		/datum/firemode/nt_expedition_light_Smg/two_burst,
+	)

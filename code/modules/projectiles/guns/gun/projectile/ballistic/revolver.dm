@@ -16,20 +16,7 @@
 
 /obj/item/gun/projectile/ballistic/revolver/holy
 	name = "blessed revolver"
-	ammo_type = /obj/item/ammo_casing/a357/silver
-
-/obj/item/gun/projectile/ballistic/revolver/verb/spin_cylinder()
-	set name = "Spin cylinder"
-	set desc = "Fun when you're bored out of your skull."
-	set category = VERB_CATEGORY_OBJECT
-
-	chamber_offset = 0
-	visible_message("<span class='warning'>\The [usr] spins the cylinder of \the [src]!</span>", \
-	"<span class='notice'>You hear something metallic spin and click.</span>")
-	playsound(src.loc, 'sound/weapons/revolver_spin.ogg', 100, 1)
-	loaded = shuffle(loaded)
-	if(rand(1,max_shells) > loaded.len)
-		chamber_offset = rand(0,max_shells - loaded.len)
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a357/silver
 
 /obj/item/gun/projectile/ballistic/revolver/mateba
 	name = "mateba"

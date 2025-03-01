@@ -4,6 +4,13 @@
 /**
  * * The weird proc args is because this supports non-clickchain use.
  *
+ * @params
+ * * magazine - the magazine
+ * * actor - actor data
+ * * clickchain - (optional) clickchain did, if from clickchain
+ * * no_sound - suppress default sounds
+ * * no_message - suppress default messages
+ *
  * @return clickchain flags
  */
 /obj/item/gun/projectile/ballistic/proc/user_clickchain_apply_magazine(obj/item/ammo_magazine/magazine, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
@@ -24,7 +31,7 @@
 
 	if(!accepts_speedloader(magazine))
 		if(!no_message)
-			actor?.chat_feedback(
+			actor.chat_feedback(
 				SPAN_WARNING("[magazine] doesn't fit [src] for speedloading."),
 				target = src,
 			)
@@ -45,10 +52,10 @@
 			)
 		return CLICKCHAIN_DID_SOMETHING
 
-	if(!do_after())
-		#warn doafter
+	if(!do_after(actor.performer, speedloader_delay + magazine.speedloader_delay, src, mobility_flags = MOBILITY_CAN_USE))
+		return CLICKCHAIN_DID_SOMETHING
 
-	var/loaded = 0
+	var/loaded = insert_speedloader(magazine, no_sound)
 
 	#warn impl
 
@@ -58,14 +65,14 @@
 
 	if(length(internal_magazine_vec) >= internal_magazine_size)
 		if(!no_message)
-			actor?.chat_feedback(
+			actor.chat_feedback(
 				SPAN_WARNING("[src] is full!"),
 				target = src,
 			)
 		return CLICKCHAIN_DID_SOMETHING
 	if(!magazine.get_amount_remaining())
 		if(!no_message)
-			actor?.chat_feedback(
+			actor.chat_feedback(
 				SPAN_WARNING("[magazine] is empty!"),
 				target = src,
 			)
@@ -91,14 +98,14 @@
 /obj/item/gun/projectile/ballistic/proc/user_clickchain_insert_magazine(obj/item/ammo_magazine/magazine, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
 	if(internal_magazine)
 		if(!no_message)
-			actor?.chat_feedback(
+			actor.chat_feedback(
 				SPAN_WARNING("[src] doesn't accept magazines."),
 				target = src,
 			)
 		return CLICKCHAIN_DID_SOMETHING
 	if(!accepts_magazine(magazine))
 		if(!no_message)
-			actor?.chat_feedback(
+			actor.chat_feedback(
 				SPAN_WARNING("[magazine] cannot fit in [src]."),
 				target = src,
 			)
@@ -122,7 +129,7 @@
 						return CLICKCHAIN_DID_SOMETHING
 		if(!magazine)
 			if(!no_message)
-				actor?.chat_feedback(
+				actor.chat_feedback(
 					SPAN_WARNING("[src] already has a magazine inserted."),
 					target = src,
 				)
@@ -134,7 +141,7 @@
 		magazine.forceMove(drop_location())
 		CRASH("failed to insert magazine after point of no return in clickchain interaction")
 	if(!no_message)
-		actor?.visible_feedback(
+		actor.visible_feedback(
 			target = src,
 			range = MESSAGE_RANGE_INVENTORY_SOFT,
 			visible = "[actor.performer] inserts [magazine] into [src][tactical_reload_append].",
@@ -185,7 +192,7 @@
 	else
 		unloaded.forceMove(drop_location())
 	if(!no_message)
-		actor?.visible_feedback(
+		actor.visible_feedback(
 			target = src,
 			range = MESSAGE_RANGE_INVENTORY_SOFT,
 			visible = "[actor.performer] removes [unloaded] from [src].",
@@ -207,7 +214,7 @@
 	else
 		unloaded.forceMove(drop_location())
 	if(!no_message)
-		actor?.visible_feedback(
+		actor.visible_feedback(
 			target = src,
 			range = MESSAGE_RANGE_INVENTORY_SOFT,
 			visible = "[actor.performer] removes [unloaded] from [src].",
@@ -229,7 +236,7 @@
 	else
 		unloaded.forceMove(drop_location())
 	if(!no_message)
-		actor?.visible_feedback(
+		actor.visible_feedback(
 			target = src,
 			range = MESSAGE_RANGE_INVENTORY_SOFT,
 			visible = "[actor.performer] removes [unloaded] from [src].",
@@ -245,6 +252,15 @@
 /obj/item/gun/projectile/ballistic/proc/user_clickchain_spin_chamber(datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
 	if(!internal_magazine || !internal_magazine_is_revolver)
 		return NONE
-	unsafe_spin_chamber_to_index(rand(1, length(internal_magazine_vec)))
-	#warn impl
+	unsafe_spin_chamber_to_random()
+	if(!no_message)
+		actor.visible_feedback(
+			target = src,
+			visible = SPAN_WARNING("[actor.performer] spins the chamber of \the [src]!"),
+			audible = SPAN_WARNING("You hear something metallic spin and click."),
+			otherwise_self = SPAN_WARNING("You spin [src]'s chamber."),
+		)
+	if(!no_sound)
+		// todo: variable for this somewhere
+		playsound(src, 'sound/weapons/revolver_spin.ogg', 75, TRUE)
 	return CLICKCHAIN_DID_SOMETHING
