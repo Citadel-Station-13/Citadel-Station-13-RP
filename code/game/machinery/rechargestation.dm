@@ -266,7 +266,7 @@
 		R.update_perspective()
 		occupant = R
 		update_icon()
-		return 1
+		return TRUE
 
 	else if(istype(L,  /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = L
@@ -276,7 +276,16 @@
 			H.update_perspective()
 			occupant = H
 			update_appearance()
-			return 1
+			return TRUE
+	else if(is_holosphere_shell(L))
+		var/mob/living/simple_mob/holosphere_shell/shell = L
+		var/mob/living/carbon/human/H = shell.hologram
+		add_fingerprint(H)
+		shell.forceMove(src)
+		shell.update_perspective()
+		occupant = shell
+		update_appearance()
+		return TRUE
 	else
 		return
 
