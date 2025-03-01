@@ -333,6 +333,9 @@
 	MA = render_apply_overlays(MA, bodytype, inhands, slot_meta, icon_used)
 	MA = render_apply_blood(MA, bodytype, inhands, slot_meta, icon_used)
 	MA = render_apply_custom(M, MA, bodytype, inhands, slot_meta, icon_used, align_y)
+
+	#warn we need some kind of component signal for rendering hooks here
+
 	return length(additional)? (additional + MA) : MA
 
 /**

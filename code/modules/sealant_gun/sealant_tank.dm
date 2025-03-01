@@ -3,7 +3,7 @@
 
 /obj/item/sealant_tank
 	#warn name/desc
-	icon = 'icons/items/misc/sealant_tank.dmi'
+	icon = 'icons/modules/sealant_gun/sealant_tank.dmi'
 
 #warn impl
 
