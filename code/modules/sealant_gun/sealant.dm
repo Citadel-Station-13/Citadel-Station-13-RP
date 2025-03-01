@@ -18,9 +18,20 @@
 		/datum/inventory_slot/inventory/suit::id,
 	)
 
+	impact_ground_on_expiry = TRUE
+
+/obj/projectile/sealant/clone()
+	var/obj/projectile/cloning = ..()
+	// todo: impl
+	return cloning
+
 #warn impl
 
 /obj/projectile/sealant/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 
 	// todo: use /obj/effect/temp_visual/sealant_splat
+
+/obj/projectile/sealant/proc/apply_sealant_to_mob(mob/target, target_zone)
+
+/obj/projectile/sealant/proc/apply_sealant_to_inventory(datum/inventory/inventory, slot_id)

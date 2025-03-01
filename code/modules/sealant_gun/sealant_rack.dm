@@ -19,6 +19,8 @@
 
 /obj/structure/sealant_rack/Initialize()
 	. = ..()
+	if(initial_gun_path)
+		stored_gun = new initial_gun_path(src)
 
 /obj/structure/sealant_rack/Destroy()
 	QDEL_LIST(stored_tanks)
@@ -28,7 +30,7 @@
 /obj/structure/sealant_rack/update_icon()
 	cut_overlays()
 	. = ..()
-	for(var/i in 1 to min(5, get_tank_count()))
+	for(var/i in 1 to min(5, ceil(5 * (get_tank_count() / max_stored_tanks))))
 		var/image/tank_overlay = image(icon, "[base_icon_state]-tank")
 		tank_overlay.pixel_x = (i - 1) * 5
 		add_overlay(tank_overlay)
@@ -47,10 +49,20 @@
 /obj/structure/sealant_rack/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 
+/obj/structure/sealant_rack/proc/get_tank_count()
+	return length(stored_tanks) + (isnull(stored_tanks_lazy_init) ? initial_stored_tanks : stored_tanks_lazy_init)
+
 /obj/structure/sealant_rack/proc/user_retrieve_gun(datum/event_args/actor/actor, no_sound, no_message)
 
 /obj/structure/sealant_rack/proc/retrieve_gun(atom/new_loc, silent) as /obj/item/gun/projectile/sealant_gun
 	RETURN_TYPE(/obj/item/gun/projectile/sealant_gun)
+
+	if(!stored_gun)
+		return
+	. = stored_gun
+	if(new_loc)
+		stored_gun.forceMove(new_loc)
+	stored_gun = null
 
 /obj/structure/sealant_rack/proc/user_retrieve_tank(datum/event_args/actor/actor, no_sound, no_message)
 

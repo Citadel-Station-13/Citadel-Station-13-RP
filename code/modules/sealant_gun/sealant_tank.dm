@@ -15,6 +15,10 @@
 	var/volume_current = 0
 	var/volume_capacity = 360
 
+/obj/item/sealant_tank/Initialize()
+	. = ..()
+	update_icon()
+
 /obj/item/sealant_tank/update_icon()
 	cut_overlays()
 	. = ..()
@@ -31,15 +35,16 @@
 	volume_current -= volume
 	update_icon()
 
-/obj/item/sealant_tank/proc/push_default_sealant_volume(volume)
+/obj/item/sealant_tank/proc/push_default_sealant_volume(volume, force)
 	if(!force)
 		. = min(volume, volume_capacity - volume_current)
 		volume_current += .
 	else
 		. = volume
 		volume_current += volume
+	update_icon()
 
 // todo: on destruction, explode and release reagent contents.
 
 /obj/item/sealant_tank/loaded
-	volume_currente = /obj/item/sealant_tank::volume_capacity
+	volume_current = /obj/item/sealant_tank::volume_capacity
