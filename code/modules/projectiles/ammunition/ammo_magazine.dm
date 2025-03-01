@@ -455,6 +455,13 @@
 		return (index - length(ammo_internal)) >= ammo_current ? ammo_preload : null
 	return ammo_internal[length(ammo_internal) - index]?.type
 
+/**
+ * Returns a direct reference to our loaded list.
+ * * You shouldn't be using this, more or less.
+ */
+/obj/item/ammo_magazine/proc/unsafe_get_ammo_internal_ref()
+	return ammo_internal
+
 //* Caliber *//
 
 /obj/item/ammo_magazine/proc/loads_caliber(datum/ammo_caliber/caliberlike)

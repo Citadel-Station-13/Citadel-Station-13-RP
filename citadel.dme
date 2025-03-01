@@ -4646,7 +4646,6 @@
 #include "code\modules\projectiles\guns\gun\projectile\ballistic\dartgun.dm"
 #include "code\modules\projectiles\guns\gun\projectile\ballistic\magnetic.dm"
 #include "code\modules\projectiles\guns\gun\projectile\ballistic\microbattery-interaction.dm"
-#include "code\modules\projectiles\guns\gun\projectile\ballistic\microbattery-legayc.dm"
 #include "code\modules\projectiles\guns\gun\projectile\ballistic\microbattery.dm"
 #include "code\modules\projectiles\guns\gun\projectile\ballistic\musket.dm"
 #include "code\modules\projectiles\guns\gun\projectile\ballistic\pistol.dm"
