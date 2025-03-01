@@ -23,14 +23,13 @@
 		high-end emergency responders an option to use if triage is needed at a distance.
 	"}
 	item_renderer = /datum/gun_item_renderer/segments{
-		independent_colored_firemode = TRUE;
 		count = 5;
 		offset_x = 1;
 		use_color = TRUE;
+		independent_colored_firemode = TRUE;
 	}
 	magazine_restrict = /obj/item/ammo_magazine/microbattery/vm_aml
 	no_pin_required = TRUE
-	#warn renderer
 
 /obj/item/gun/projectile/ballistic/microbattery/vm_aml/advanced
 	name = "advanced cell-loaded medigun"

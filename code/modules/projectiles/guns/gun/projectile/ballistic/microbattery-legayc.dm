@@ -1,21 +1,5 @@
-// todo: rework all of this shit, jfc
+#warn purge
 /obj/item/gun/projectile/ballistic/microbattery
-	name = "multipurpose cell-loaded revolver"
-	desc = "Variety is the spice of life! This weapon is a hybrid of the NT-102b 'Nanotech Selectable-Fire Weapon' and the Vey-Med ML-3 'Medigun', dubbed the 'NSFW-ML3M'. \
-	It can fire both harmful and healing cells with an internal nanite fabricator and energy weapon cell loader. Up to three combinations of \
-	energy beams can be configured at once. Ammo not included."
-	//catalogue_data = list(/datum/category_item/catalogue/information/organization/nanotrasen)
-
-	icon = 'icons/vore/custom_guns_vr.dmi'
-	icon_state = "nsfw"
-
-	icon_override = 'icons/vore/custom_guns_vr.dmi'
-	item_state = "gun"
-
-	origin_tech = list(TECH_COMBAT = 7, TECH_MATERIAL = 6, TECH_MAGNETS = 4)
-
-	caliber = /datum/ammo_caliber/microbattery
-	handle_casings = HOLD_CASINGS //Don't eject batteries!
 	var/charge_left = 0
 	var/max_charge = 0
 

@@ -23,14 +23,13 @@
 		many personnel, and is occasionally seen in circulation amongst officers of the ISD.
 	"}
 	item_renderer = /datum/gun_item_renderer/segments{
-		independent_colored_firemode = TRUE;
 		count = 5;
 		offset_x = 1;
 		use_color = TRUE;
+		independent_colored_firemode = TRUE;
 	}
 	magazine_restrict = /obj/item/ammo_magazine/microbattery/nt_hydra
 	origin_tech = list(TECH_COMBAT = 7, TECH_MATERIAL = 4, TECH_MAGNETS = 3)
-	#warn renderer
 
 /obj/item/gun/projectile/ballistic/microbattery/nt_hydra/sidearm/prototype
 	name = "prototype cell-loaded revolver"
