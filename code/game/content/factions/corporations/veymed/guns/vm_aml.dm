@@ -80,7 +80,7 @@
 	. = ..()
 	update_icon()
 
-/obj/item/ammo_casing/microbattery/update_icon()
+/obj/item/ammo_casing/microbattery/vm_aml/update_icon()
 	cut_overlays()
 	. = ..()
 	var/image/stripe = image(icon, "[base_icon_state]-stripe")

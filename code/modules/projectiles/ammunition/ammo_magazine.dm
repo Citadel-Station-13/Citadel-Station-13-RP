@@ -37,8 +37,6 @@
 	/// * if our requested class isn't on a gun, the gun reserves the right to render us as the default class ('-mag')
 	var/magazine_class = MAGAZINE_CLASS_GENERIC
 
-	#warn hook everything
-
 	//* for magazines *//
 	/// magazine restrict - must match gun's to be fitted into it, if gun's is.
 	//  todo: implement when we need multi-restrictions, single-typepath-and-subtypes works for now; maybe rename to magazine_tags or magazine_allow?
