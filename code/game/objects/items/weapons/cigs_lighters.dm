@@ -191,7 +191,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 				to_chat(M, "<span class='notice'>Your [name] goes out.</span>")
 			if(ishuman(M))
 				var/mob/living/carbon/human/H=M
-				if(H.a_intent!=INTENT_HARM && !H.incapacitated())
+				if(H.a_intent==INTENT_HELP && !H.incapacitated())
 					H.put_in_hands(butt)
 		qdel(src)
 	else
