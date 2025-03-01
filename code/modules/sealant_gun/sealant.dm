@@ -7,6 +7,17 @@
 	icon = 'icons/modules/sealant_gun/sealant_glob.dmi'
 	icon_state = "projectile"
 
+	/**
+	 * Sprites exist for these slots, as well as hands.
+	 */
+	var/const/list/allowed_slot_ids = list(
+		/datum/inventory_slot/abstract/put_in_hands::id,
+		/datum/inventory_slot/inventory/head::id,
+		/datum/inventory_slot/inventory/mask::id,
+		/datum/inventory_slot/inventory/shoes::id,
+		/datum/inventory_slot/inventory/suit::id,
+	)
+
 #warn impl
 
 /obj/projectile/sealant/on_impact(atom/target, impact_flags, def_zone, efficiency)

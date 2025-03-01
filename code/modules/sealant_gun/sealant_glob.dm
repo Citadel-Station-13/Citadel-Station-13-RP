@@ -1,27 +1,18 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
+/**
+ * This is just a thing to allow sealant components a way to attach
+ * to an inventory slot that doesn't have anything on it.
+ */
 /obj/item/sealant_glob
 	name = "sealant glob"
 	desc = "A glob of foaming sealant. This is usually used for hull breaches, \
 		but today, you are the breach."
-	icon = 'icons/modules/sealant_gun/sealant_glob.dmi'
-	icon_state = "glob"
 
-	worn_render_flags = NONE
 
-	encumbrance = ITEM_ENCUMBRANCE_SEALANT_GLOB
+#warn probably don't even need below procs, component should just destroy this on remove
 
-	/**
-	 * Sprites exist for these slots, as well as hands.
-	 */
-	var/const/list/allowed_slot_ids = list(
-		/datum/inventory_slot/abstract/put_in_hands::id,
-		/datum/inventory_slot/inventory/head::id,
-		/datum/inventory_slot/inventory/mask::id,
-		/datum/inventory_slot/inventory/shoes::id,
-		/datum/inventory_slot/inventory/suit::id,
-	)
 
 /obj/item/sealant_glob/can_equip(mob/M, slot, mob/user, flags)
 	. = ..()
