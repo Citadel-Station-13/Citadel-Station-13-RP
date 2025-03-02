@@ -2071,7 +2071,7 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/security/range)
 "btC" = (
-/obj/structure/reagent_dispensers/cookingoil,
+/obj/structure/reagent_dispensers/oil,
 /turf/simulated/floor/plating,
 /area/maintenance/central)
 "bul" = (

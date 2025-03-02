@@ -5,7 +5,7 @@
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	volume = 30
 	center_of_mass = list("x"=15, "y"=13)
-	start_reagent = /datum/reagent/drink/glue
+	start_with_single_reagent = /datum/reagent/drink/glue
 
 /obj/item/reagent_containers/food/drinks/glue/on_reagent_change()
 	..()

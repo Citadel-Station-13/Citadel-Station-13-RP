@@ -47,81 +47,81 @@
 //* subtypes - regular
 
 /obj/item/reagent_containers/glass/hypovial/bicaridine
-	start_reagent = /datum/reagent/bicaridine
+	start_with_single_reagent = /datum/reagent/bicaridine
 
 /obj/item/reagent_containers/glass/hypovial/kelotane
-	start_reagent = /datum/reagent/kelotane
+	start_with_single_reagent = /datum/reagent/kelotane
 
 /obj/item/reagent_containers/glass/hypovial/dylovene
-	start_reagent = /datum/reagent/dylovene
+	start_with_single_reagent = /datum/reagent/dylovene
 
 /obj/item/reagent_containers/glass/hypovial/dexalin
-	start_reagent = /datum/reagent/dexalin
+	start_with_single_reagent = /datum/reagent/dexalin
 
 /obj/item/reagent_containers/glass/hypovial/tricordrazine
-	start_reagent = /datum/reagent/tricordrazine
+	start_with_single_reagent = /datum/reagent/tricordrazine
 
 /obj/item/reagent_containers/glass/hypovial/peridaxon
-	start_reagent = /datum/reagent/peridaxon
+	start_with_single_reagent = /datum/reagent/peridaxon
 
 /obj/item/reagent_containers/glass/hypovial/tramadol
-	start_reagent = /datum/reagent/tramadol
+	start_with_single_reagent = /datum/reagent/tramadol
 
 /obj/item/reagent_containers/glass/hypovial/inaprovaline
-	start_reagent = /datum/reagent/inaprovaline
+	start_with_single_reagent = /datum/reagent/inaprovaline
 
 /obj/item/reagent_containers/glass/hypovial/imidalky
-	start_with = list(
+	start_with_reagents = list(
 		/datum/reagent/imidazoline = 30,
 		/datum/reagent/alkysine = 30,
 	)
 
 /obj/item/reagent_containers/glass/hypovial/arithrazine
-	start_reagent = /datum/reagent/arithrazine
+	start_with_single_reagent = /datum/reagent/arithrazine
 
 /obj/item/reagent_containers/glass/hypovial/spaceacillin
-	start_reagent = /datum/reagent/spaceacillin
+	start_with_single_reagent = /datum/reagent/spaceacillin
 
 /obj/item/reagent_containers/glass/hypovial/dexalin_plus
-	start_reagent = /datum/reagent/dexalinp
+	start_with_single_reagent = /datum/reagent/dexalinp
 
 //* subtypes - large
 
 /obj/item/reagent_containers/glass/hypovial/large/bicaridine
-	start_reagent = /datum/reagent/bicaridine
+	start_with_single_reagent = /datum/reagent/bicaridine
 
 /obj/item/reagent_containers/glass/hypovial/large/kelotane
-	start_reagent = /datum/reagent/kelotane
+	start_with_single_reagent = /datum/reagent/kelotane
 
 /obj/item/reagent_containers/glass/hypovial/large/dylovene
-	start_reagent = /datum/reagent/dylovene
+	start_with_single_reagent = /datum/reagent/dylovene
 
 /obj/item/reagent_containers/glass/hypovial/large/dexalin
-	start_reagent = /datum/reagent/dexalin
+	start_with_single_reagent = /datum/reagent/dexalin
 
 /obj/item/reagent_containers/glass/hypovial/large/tricordrazine
-	start_reagent = /datum/reagent/tricordrazine
+	start_with_single_reagent = /datum/reagent/tricordrazine
 
 /obj/item/reagent_containers/glass/hypovial/large/peridaxon
-	start_reagent = /datum/reagent/peridaxon
+	start_with_single_reagent = /datum/reagent/peridaxon
 
 /obj/item/reagent_containers/glass/hypovial/large/tramadol
-	start_reagent = /datum/reagent/tramadol
+	start_with_single_reagent = /datum/reagent/tramadol
 
 /obj/item/reagent_containers/glass/hypovial/large/inaprovaline
-	start_reagent = /datum/reagent/inaprovaline
+	start_with_single_reagent = /datum/reagent/inaprovaline
 
 /obj/item/reagent_containers/glass/hypovial/large/imidalky
-	start_with = list(
+	start_with_reagents = list(
 		/datum/reagent/imidazoline = 30,
 		/datum/reagent/alkysine = 30,
 	)
 
 /obj/item/reagent_containers/glass/hypovial/large/arithrazine
-	start_reagent = /datum/reagent/arithrazine
+	start_with_single_reagent = /datum/reagent/arithrazine
 
 /obj/item/reagent_containers/glass/hypovial/large/spaceacillin
-	start_reagent = /datum/reagent/spaceacillin
+	start_with_single_reagent = /datum/reagent/spaceacillin
 
 /obj/item/reagent_containers/glass/hypovial/large/dexalin_plus
-	start_reagent = /datum/reagent/dexalinp
+	start_with_single_reagent = /datum/reagent/dexalinp

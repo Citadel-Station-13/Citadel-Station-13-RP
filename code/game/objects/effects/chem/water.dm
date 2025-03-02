@@ -4,11 +4,17 @@
 	icon_state = "extinguish"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GRILLE | ATOM_PASS_BLOB
-	var/list/touched
+
+	var/list/reagents_reapplication_injection
 
 /obj/effect/water/Initialize(mapload)
 	. = ..()
+	reagents_reapplication_injection = list()
 	QDEL_IN(src, 15 SECONDS)
+
+/obj/effect/water/Destroy()
+	reagents_reapplication_injection = null
+	return ..()
 
 /obj/effect/water/proc/set_color() // Call it after you move reagents to it
 	icon += reagents.get_color()
@@ -16,34 +22,17 @@
 /obj/effect/water/proc/set_up(var/turf/target, var/step_count = 5, var/delay = 5)
 	if(!target)
 		return
-	touched = list()
 	QDEL_IN(src, step_count * delay + 10)
 	for(var/i = 1 to step_count)
 		if(!loc)
 			return
 		step_towards(src, target)
-		var/turf/T = get_turf(src)
-		if(T && reagents)
-			if(!(T in touched))
-				touched |= T
-				reagents.touch_turf(T)
-			for(var/atom/movable/AM in T)
-				if(!isobj(AM) && !ismob(AM))
-					continue
-				if(AM in touched)
-					continue
-				touched |= AM
-				reagents.touch(AM, reagents.total_volume)
+		reagents?.perform_uniform_contact(get_turf(src), 1, null, reagents_reapplication_injection)
 		sleep(delay)
 
 /obj/effect/water/Crossed(atom/movable/AM, oldloc)
-	. = ..()
-	if(!isobj(AM) && !ismob(AM))
-		return
-	if(AM in touched)
-		return
-	touched |= AM
-	reagents?.touch(AM, reagents.total_volume)
+	..()
+	reagents?.perform_uniform_contact(AM, 1, null, reagents_reapplication_injection)
 
 //Used by spraybottles.
 /obj/effect/water/chempuff

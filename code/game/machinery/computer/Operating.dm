@@ -113,10 +113,10 @@
 		occupantData["btCelsius"] = occupant.bodytemperature - T0C
 		occupantData["btFaren"] = ((occupant.bodytemperature - T0C) * (9.0/5.0))+ 32
 
-		if(ishuman(occupant) && !(NO_BLOOD in occupant.species.species_flags) && occupant.vessel)
+		if(ishuman(occupant) && !(NO_BLOOD in occupant.species.species_flags) && occupant.blood_holder)
 			occupantData["pulse"] = occupant.get_pulse(GETPULSE_TOOL)
 			occupantData["hasBlood"] = 1
-			var/blood_volume = round(occupant.vessel.get_reagent_amount("blood"))
+			var/blood_volume = round(occupant.blood_holder.get_total_volume())
 			occupantData["bloodLevel"] = blood_volume
 			occupantData["bloodMax"] = occupant.species.blood_volume
 			occupantData["bloodPercent"] = round(100*(blood_volume/occupant.species.blood_volume), 0.01) //copy pasta ends here

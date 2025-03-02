@@ -196,13 +196,7 @@
 			busy = TRUE
 			if(do_atom(src, L, extra_checks=CALLBACK(L, TYPE_PROC_REF(/mob/living, can_inject),null,0,BP_TORSO,bypass),uninterruptible = bypass))
 				var/mob/living/carbon/LB = L
-				var/datum/reagent/B
-				B = LB.take_blood(src, tramount)
-				if(B)
-					reagents.reagent_list += B
-					reagents.update_total()
-					AM.on_reagent_change()
-					reagents.reconsider_reactions()
+				if(LB.take_blood_legacy(src, tramount) > 0)
 					L.visible_message("<span class='danger'>[acting_object] takes a blood sample from [L]!</span>", \
 					"<span class='userdanger'>[acting_object] takes a blood sample from you!</span>")
 				else
@@ -569,7 +563,7 @@
 	var/obj/item/I = get_pin_data_as_type(IC_INPUT, 1, /obj/item)
 	if(istype(I) && (I.reagents?.total_volume) && check_target(I))
 		var/list/reagent_names_list = list()
-		for(var/datum/reagent/R in reagents?.reagent_list)
+		for(var/datum/reagent/R in reagents?.get_reagent_datums())
 			reagent_names_list.Add(R.name)
 		var/atom/AM = get_object()
 		AM.investigate_log("ground reagents: [jointext(reagent_names_list, ", ")] with [src].", INVESTIGATE_CIRCUIT)
@@ -595,7 +589,7 @@
 
 /obj/item/integrated_circuit/reagent/storage/scan/do_work()
 	var/cont[0]
-	for(var/datum/reagent/RE in reagents.reagent_list)
+	for(var/datum/reagent/RE in reagents.get_reagent_datums())
 		cont += RE.id
 	set_pin_data(IC_OUTPUT, 3, cont)
 	push_data()
@@ -656,13 +650,11 @@
 		return
 	if(target.reagents.maximum_volume - target.reagents.total_volume <= 0)
 		return
-	for(var/datum/reagent/G in source.reagents?.reagent_list)
-		if (!direc)
-			if(G.id in demand)
-				source.reagents.trans_id_to(target, G.id, transfer_amount)
-		else
-			if(!(G.id in demand))
-				source.reagents.trans_id_to(target, G.id, transfer_amount)
+	source.reagents.transfer_to_holder(
+		target,
+		direc ? source.reagents.reagent_volumes - demand : demand,
+		transfer_amount,
+	)
 	activate_pin(2)
 	push_data()
 
