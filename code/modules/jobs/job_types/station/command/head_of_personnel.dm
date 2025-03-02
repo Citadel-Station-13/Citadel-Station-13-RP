@@ -2,7 +2,6 @@
 	id = JOB_ID_HEAD_OF_PERSONNEL
 	title = "Head of Personnel"
 	flag = HOP
-	economy_payscale = ECONOMY_PAYSCALE_JOB_COMMAND
 	departments = list(
 		DEPARTMENT_COMMAND,
 		DEPARTMENT_CIVILIAN,

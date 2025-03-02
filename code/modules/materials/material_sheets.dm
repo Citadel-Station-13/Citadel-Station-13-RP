@@ -128,6 +128,11 @@
 		return
 	return ..()
 
+//* Supply *//
+
+/obj/item/stack/material/supply_export_enumerate(datum/supply_export/export)
+	export.entities_material_stack += src
+
 // todo: we need a better way of doing this, holy shit
 
 /obj/item/stack/material/iron
