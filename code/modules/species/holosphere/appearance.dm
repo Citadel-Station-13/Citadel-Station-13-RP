@@ -53,7 +53,8 @@
 	equip_loadout(source, loadout)
 
 // essentially a copy of the normal loadout behaviour and we then apply it to the chameleon outfit
-/datum/species/holosphere/proc/equip_loadout(mob/living/carbon/human/H, list/datum/loadout_entry/loadout)
+/datum/species/holosphere/proc/equip_loadout(mob/living/carbon/human/H, list/datum/loadout_entry/loadout, ignore_unused_slots = TRUE)
+	slots_used = list()
 	for(var/datum/loadout_entry/entry as anything in loadout)
 		var/use_slot = entry.slot
 		if(isnull(use_slot))
@@ -89,16 +90,13 @@
 		slots_used += use_slot
 		loadout -= entry
 
-	// no loadout items in that slot, hide the items icon
-	for(var/slot in equipped_chameleon_gear)
-		if(!(slot in slots_used))
-			var/obj/item/chameleon_item = equipped_chameleon_gear[slot]
-			chameleon_item.icon = initial(chameleon_item.icon)
-			chameleon_item.icon_state = CLOTHING_BLANK_ICON_STATE
-			var/obj/item/clothing/under/chameleon_uniform = chameleon_item
-			if(istype(chameleon_uniform))
-				chameleon_uniform.snowflake_worn_state = CLOTHING_BLANK_ICON_STATE
-			chameleon_item.update_worn_icon()
+	if(!ignore_unused_slots)
+		// no loadout items in that slot, hide the items icon
+		for(var/slot in equipped_chameleon_gear)
+			if(!(slot in slots_used))
+				var/obj/item/chameleon_item = equipped_chameleon_gear[slot]
+				chameleon_item.disguise_blank()
+				chameleon_item.update_worn_icon()
 
 /datum/species/holosphere/handle_species_job_outfit(mob/living/carbon/human/H, datum/outfit/outfit)
 	handle_specific_job_clothing(H, outfit.uniform, SLOT_ID_UNIFORM)
@@ -134,7 +132,7 @@
 	var/loadout_option = tgui_input_list(usr, "Choose Loadout", "Loadout", loadout_options)
 	var/loadout_slot = loadout_options[loadout_option]
 	var/list/datum/loadout_entry/loadout_entries = client.prefs.generate_loadout_entry_list(holosphere_species.cached_loadout_flags, holosphere_species.cached_loadout_role, loadout_slot)
-	holosphere_species.equip_loadout(src, loadout_entries)
+	holosphere_species.equip_loadout(src, loadout_entries, FALSE)
 
 /datum/species/holosphere/proc/get_alpha_from_key(var/mob/living/carbon/human/H, var/key)
 	switch(key)
