@@ -1,4 +1,5 @@
 /datum/ammo_caliber/a9_5mm
+	id = "a9_5mm"
 	caliber = "9.5x40mm"
 	diameter = 9.5
 	length = 40

@@ -238,8 +238,6 @@
 
 /proc/_has_trait(datum/thing,trait)
 	return HAS_TRAIT(thing,trait)
-/proc/_instantiate_at(thing, location)
-	new thing(location)
 
 /// Locating turfs
 /proc/_turf_in_offset(s = usr, x = 0, y = 0, z = 0)

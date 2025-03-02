@@ -1,4 +1,5 @@
 /datum/ammo_caliber/biomatter
+	id = "biomatter"
 	caliber = "biomatter"
 
 /obj/item/ammo_casing/biomatter

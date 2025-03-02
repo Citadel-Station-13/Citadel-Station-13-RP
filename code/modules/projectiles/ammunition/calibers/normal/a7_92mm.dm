@@ -1,4 +1,5 @@
 /datum/ammo_caliber/a7_92mm
+	id = "a7_92mm"
 	caliber = "7.92x33mm"
 
 /obj/item/ammo_magazine/a7_92mm

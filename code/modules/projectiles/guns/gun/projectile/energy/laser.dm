@@ -133,11 +133,10 @@
 	item_state = "caplaser"
 	desc = "A rare weapon, handcrafted by a now defunct specialty manufacturer on Luna for a small fortune. It's certainly aged well."
 	damage_force = 5
-	slot_flags = SLOT_BELT
+	slot_flags = SLOT_BELT | SLOT_HOLSTER
 	w_class = WEIGHT_CLASS_NORMAL
 	projectile_type = /obj/projectile/beam
-	origin_tech = null
-	charge_cost = 480	//to compensate a bit for self-recharging
+	charge_cost = /obj/item/cell/device/weapon/recharge/captain::maxcharge / 5
 	cell_type = /obj/item/cell/device/weapon/recharge/captain
 	legacy_battery_lock = 1
 

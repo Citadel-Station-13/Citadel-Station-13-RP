@@ -57,7 +57,6 @@
 	damage_force = 5
 	damage_tier = MELEE_TIER_MEDIUM
 	preserve_item = 1
-	origin_tech = list(TECH_COMBAT = 1)
 	attack_verb = list("struck", "hit", "bashed")
 	zoomdevicename = "scope"
 	inhand_default_type = INHAND_DEFAULT_ICON_GUNS
@@ -145,8 +144,6 @@
 	// todo: purge with fire
 	// todo: do not use this var, use firemodes on /energy
 	var/projectile_type = /obj/projectile	//On ballistics, only used to check for the cham gun
-	// todo: this should be on /ballistic, and be `internal_chambered`.
-	var/obj/item/ammo_casing/chambered = null
 
 	var/wielded_item_state
 	var/one_handed_penalty = 0 // Penalty applied if someone fires a two-handed gun with one hand.
@@ -479,14 +476,14 @@
 
 /obj/item/gun/using_item_on(obj/item/using, datum/event_args/actor/clickchain/e_args, clickchain_flags, datum/callback/reachability_check)
 	. = ..()
-	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
 	if(istype(using, /obj/item/gun_attachment))
 		user_install_attachment(using, e_args)
-		return CLICKCHAIN_DO_NOT_PROPAGATE
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	if(istype(using, /obj/item/gun_component))
 		user_install_modular_component(using, e_args)
-		return CLICKCHAIN_DO_NOT_PROPAGATE
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 
 /obj/item/gun/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(I.is_multitool())
@@ -658,6 +655,18 @@
  * @return number as 0 to 1, inclusive
  */
 /obj/item/gun/proc/get_ammo_ratio(rounded)
+	return 0
+
+/**
+ * Gets approximate ammo left.
+ *
+ * * Used by examine
+ * * Do not return under 0
+ * * Round this yourself if you want.
+ *
+ * @return number
+ */
+/obj/item/gun/proc/get_ammo_remaining()
 	return 0
 
 //* Cell System *//

@@ -1,4 +1,5 @@
 /datum/ammo_caliber/pellet
+	id = "pellet"
 	caliber = "pellet"
 
 //* Ammunition *//
@@ -29,7 +30,7 @@
 
 	ammo_caliber = /datum/ammo_caliber/pellet
 	ammo_preload = /obj/item/ammo_casing/p_pellet
-	magazine_type = MAGAZINE_TYPE_BOX
+	magazine_class = MAGAZINE_CLASS_POUCH
 	materials_base = list(
 		/datum/prototype/material/steel::id = 100,
 	)

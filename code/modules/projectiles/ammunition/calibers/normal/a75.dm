@@ -2,6 +2,7 @@
  * oh god oh fuck-
  */
 /datum/ammo_caliber/a75
+	id = "a75"
 	caliber = ".75"
 
 /obj/item/ammo_casing/a75

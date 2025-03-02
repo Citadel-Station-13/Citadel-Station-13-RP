@@ -56,7 +56,7 @@
 	cut_overlays()
 	. = ..()
 	var/list/overlays_to_add = list()
-	for(var/i in 1 to min(5, amount_remaining()))
+	for(var/i in 1 to min(5, get_amount_remaining()))
 		var/obj/item/ammo_casing/nt_expedition/antimaterial/casted_path_of_potential = peek_path_of_position(i)
 		var/append = "basic"
 		if(ispath(casted_path_of_potential, /obj/item/ammo_casing/nt_expedition/antimaterial))
@@ -95,4 +95,3 @@
 	"} + "<br>"
 	icon_state = "rifle"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
-	load_method = SINGLE_CASING | MAGAZINE

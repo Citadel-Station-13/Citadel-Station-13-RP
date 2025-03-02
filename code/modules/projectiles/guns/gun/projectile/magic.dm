@@ -53,7 +53,8 @@
 /obj/item/gun/projectile/magic/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	if(charges <= 0)
 		return null
-	return chambered?.get_projectile()
+	--charges
+	return new projectile_type
 
 /obj/item/gun/projectile/magic/default_click_empty(datum/gun_firing_cycle/cycle)
 	// if this runtimes, too fucking bad!

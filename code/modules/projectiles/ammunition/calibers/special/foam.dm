@@ -1,5 +1,6 @@
 /datum/ammo_caliber/foam
-	caliber = "donksoft"
+	id = "foam"
+	caliber = "foam"
 
 //* Ammunition *//
 

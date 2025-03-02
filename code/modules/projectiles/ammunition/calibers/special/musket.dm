@@ -1,4 +1,5 @@
 /datum/ammo_caliber/musket
+	id = "musket"
 	caliber = "musket"
 
 /obj/item/ammo_casing/musket

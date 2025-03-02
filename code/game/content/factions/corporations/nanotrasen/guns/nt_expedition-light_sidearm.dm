@@ -4,6 +4,7 @@
 //* Caliber *//
 
 /datum/ammo_caliber/nt_expedition/light_sidearm
+	name = "NT-9"
 	caliber = "nt-light-sidearm"
 	diameter = 9
 	length = 29
@@ -13,22 +14,38 @@
 /obj/item/ammo_casing/nt_expedition/light_sidearm
 	name = "ammo casing (NT-9)"
 	desc = "A standardized 9mm cartridge for NT Expeditionary kinetics. This one seems to be for lightweight pistols and sidearms."
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/sidearm-light-ammo.dmi'
+	icon_state = "basic"
+	icon_spent = TRUE
 	caliber = /datum/ammo_caliber/nt_expedition/light_sidearm
 	projectile_type = /obj/projectile/bullet/nt_expedition/light_sidearm
 
+	materials_base = list(
+		/datum/prototype/material/steel::id = 75,
+	)
+
 	/// specifically for /obj/item/ammo_magazine/nt_expedition/light_sidearm's
 	var/speedloader_state = "basic"
+
+// todo: implement projectile + magazine
+// /obj/item/ammo_casing/nt_expedition/light_sidearm/piercing
+// 	icon_state = "piercing"
+// 	speedloader_state = "piercing"
+
+// todo: implement projectile + magazine
+// /obj/item/ammo_casing/nt_expedition/light_sidearm/rubber
+// 	icon_state = "rubber"
+// 	speedloader_state = "rubber"
 
 //* Magazines *//
 
 /obj/item/ammo_magazine/nt_expedition/light_sidearm
 	name = "ammo magazine (NT-9)"
-	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-heavy-ammo.dmi'
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/sidearm-light-ammo.dmi'
 	icon_state = "magazine"
 	base_icon_state = "magazine"
 	rendering_system = GUN_RENDERING_DISABLED
 	ammo_caliber = /datum/ammo_caliber/nt_expedition/light_sidearm
-	ammo_max = 5
 	ammo_preload = /obj/item/ammo_casing/nt_expedition/light_sidearm
 
 /obj/item/ammo_magazine/nt_expedition/light_sidearm/speedloader
@@ -57,7 +74,7 @@
 		-4,
 		-5,
 	)
-	for(var/i in 1 to min(6, amount_remaining()))
+	for(var/i in 1 to min(6, get_amount_remaining()))
 		var/obj/item/ammo_casing/nt_expedition/light_sidearm/predicted_path = peek_path_of_position(i)
 		var/append = "basic"
 		if(ispath(predicted_path, /obj/item/ammo_casing/nt_expedition/light_sidearm))
@@ -75,21 +92,26 @@
 	rendering_system = GUN_RENDERING_STATES
 	rendering_count = 5
 	rendering_static_overlay = "pistol-stripe"
-	ammo_max = 8
+	ammo_max = 14
 
+GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/light_sidearm/smg, /nt_expedition_ammo/light_sidearm/smg, "nt-ammo-9mm-smg");
 /obj/item/ammo_magazine/nt_expedition/light_sidearm/smg
 	icon_state = "smg-1"
 	base_icon_state = "smg"
 	rendering_system = GUN_RENDERING_STATES
 	rendering_count = 1
 	rendering_static_overlay = "smg-stripe"
-	ammo_max = 24
+	ammo_max = 28
+	materials_base = list(
+		/datum/prototype/material/steel::id = 325,
+		/datum/prototype/material/glass::id = 125,
+	)
 
 //* Projectiles *//
 
 /obj/projectile/bullet/nt_expedition/light_sidearm
 	name = "bullet"
-	damage_force = 35
+	damage_force = 30
 	damage_tier = LERP(BULLET_TIER_LOW, BULLET_TIER_MEDIUM, 0.25)
 	armor_penetration = 10
 
@@ -112,13 +134,25 @@
 		A small compensator and internal recoil dampeners make the increase in felt recoil negligible,
 		while its magazine gives it enough ammunition for those in a pinch to take chance shots.
 	"} + "<br>"
-	load_method = SINGLE_CASING | MAGAZINE
 	icon_state = "pistol-map"
 	base_icon_state = "pistol"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 
 //* SMG *//
 
+/datum/firemode/nt_expedition_light_Smg
+	abstract_type = /datum/firemode/nt_expedition_light_Smg
+
+/datum/firemode/nt_expedition_light_Smg/semi_auto
+	name = "semi-auto"
+
+/datum/firemode/nt_expedition_light_Smg/two_burst
+	name = "2-burst"
+	burst_amount = 2
+	burst_delay = 1.5
+	projectile_base_dispersion = 5.75
+
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm/smg, /nt_expedition/light_smg, "nt-expeditionary-light_smg")
 /obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm/smg
 	name = "machine pistol"
 	desc = "The XNMP Mk.3 \"Buzzer\" machine pistol; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
@@ -129,7 +163,18 @@
 		combat weapon, but it will certainly raise the alarm when its shrill report sounds in
 		the dead of night.
 	"} + "<br>"
-	load_method = SINGLE_CASING | MAGAZINE
 	icon_state = "smg-map"
 	base_icon_state = "smg"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC | MAGAZINE_CLASS_EXTENDED
+	materials_base = list(
+		/datum/prototype/material/steel::id = 2500,
+		/datum/prototype/material/glass::id = 1250,
+		/datum/prototype/material/gold::id = 250,
+		/datum/prototype/material/silver::id = 750,
+		/datum/prototype/material/lead::id = 700,
+		/datum/prototype/material/copper::id = 400,
+	)
+	firemodes = list(
+		/datum/firemode/nt_expedition_light_Smg/semi_auto,
+		/datum/firemode/nt_expedition_light_Smg/two_burst,
+	)

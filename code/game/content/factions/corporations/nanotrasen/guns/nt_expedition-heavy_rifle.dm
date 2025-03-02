@@ -4,6 +4,7 @@
 //* Caliber *//
 
 /datum/ammo_caliber/nt_expedition/heavy_rifle
+	name = "NT-7.5-LR"
 	caliber = "nt-heavy-rifle"
 	diameter = 7.5
 	length = 54
@@ -51,7 +52,7 @@
 	cut_overlays()
 	. = ..()
 	var/list/overlays_to_add = list()
-	for(var/i in 1 to min(5, amount_remaining()))
+	for(var/i in 1 to min(5, get_amount_remaining()))
 		var/obj/item/ammo_casing/nt_expedition/heavy_rifle/casted_path_of_potential = peek_path_of_position(i)
 		var/append = "basic"
 		if(ispath(casted_path_of_potential, /obj/item/ammo_casing/nt_expedition/heavy_rifle))
@@ -108,7 +109,8 @@
 	icon_state = "single"
 	base_icon_state = "single"
 	item_renderer = /datum/gun_item_renderer/empty_state
-	load_method = SINGLE_CASING | SPEEDLOADER
+	internal_magazine = TRUE
+	internal_magazine_size = 1
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/semirifle
 	name = "heavy rifle"
@@ -124,7 +126,6 @@
 	icon_state = "semi"
 	base_icon_state = "semi"
 	item_renderer = /datum/gun_item_renderer/empty_state
-	load_method = MAGAZINE | SINGLE_CASING
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/autorifle
 	name = "heavy automatic rifle"
@@ -140,7 +141,6 @@
 	icon_state = "auto-map"
 	base_icon_state = "auto"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
-	load_method = MAGAZINE | SINGLE_CASING
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/lmg
 	name = "light machine gun"
@@ -155,7 +155,6 @@
 		force makes this weapon's name a logical choice.
 	"} + "<br>"
 	icon_state = "lmg"
-	load_method = MAGAZINE | SINGLE_CASING
 
 	// todo: rendering; how are we going to render both unloaded and open?
 	// todo: rendering; maybe expand the render additional to allow for generation of a list?
