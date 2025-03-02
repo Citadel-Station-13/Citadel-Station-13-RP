@@ -294,17 +294,7 @@
 			return TRUE
 
 /obj/item/gun/projectile/ballistic/consume_next_projectile(datum/gun_firing_cycle/cycle)
-	var/obj/item/ammo_casing/priming
-	if(internal_magazine_revolver_mode && internal_magazine)
-		priming = internal_magazine_vec[internal_magazine_revolver_offset]
-	else if(!chamber_magazine_separation)
-		if(internal_magazine)
-			if(length(internal_magazine))
-				priming = internal_magazine[length(internal_magazine)]
-		else
-			priming = magazine.peek()
-	else
-		priming = chamber
+	var/obj/item/ammo_casing/priming = ready_chambered()
 	return priming ? prime_casing(cycle, priming, CASING_PRIMER_CHEMICAL) : GUN_FIRED_FAIL_EMPTY
 
 /obj/item/gun/projectile/ballistic/post_fire(datum/gun_firing_cycle/cycle)
@@ -542,11 +532,19 @@
 //* Chamber *//
 
 /**
+ * A wrapper to get_chambered() used when priming the chambered casing.
+ *
+ * @return the casing that's in our chamber (or considered to be as such)
+ */
+/obj/item/gun/projectile/ballistic/proc/ready_chambered() as /obj/item/ammo_casing
+	RETURN_TYPE(/obj/item/ammo_casing)
+	return get_chambered()
+
+/**
  * Get currently chambered projectile
  */
 /obj/item/gun/projectile/ballistic/proc/get_chambered() as /obj/item/ammo_casing
 	RETURN_TYPE(/obj/item/ammo_casing)
-
 	. = chamber
 	if(.)
 		return

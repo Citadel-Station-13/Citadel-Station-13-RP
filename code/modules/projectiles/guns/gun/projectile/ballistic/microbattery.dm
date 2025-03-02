@@ -35,6 +35,35 @@
 /obj/item/gun/projectile/ballistic/microbattery/get_ammo_remaining()
 	return cached_group_remaining
 
+/obj/item/gun/projectile/ballistic/microbattery/ready_chambered()
+	var/obj/item/ammo_casing/microbattery/maybe_microbattery_in_chamber = ..()
+	if(!istype(maybe_microbattery_in_chamber))
+		return maybe_microbattery_in_chamber
+	// if it's empty, advance if needed and try to re-fetch
+	if(!maybe_microbattery_in_chamber.shots_remaining)
+		advance_within_microbattery_group()
+	return ..()
+
+/obj/item/gun/projectile/ballistic/microbattery/prime_casing(datum/gun_firing_cycle/cycle, obj/item/ammo_casing/casing, casing_primer)
+	var/obj/projectile/proj = ..()
+	if(!istype(casing, /obj/item/ammo_casing/microbattery))
+		return proj
+	var/obj/item/ammo_casing/microbattery/microbattery_casing = casing
+	if(microbattery_casing.microbattery_group_key == cached_group_key)
+		--cached_group_remaining
+	else
+		scan_microbattery_group()
+		if(cached_group_remaining)
+			--cached_group_remaining
+	return proj
+
+/**
+ * Used to switch ammo casings when the last one is empty if there's another one adjacent
+ * to it.
+ */
+/obj/item/gun/projectile/ballistic/microbattery/proc/advance_within_microbattery_group()
+	#warn impl
+
 /**
  * * This returns TRUE if handled, not necessarily implying that ammo actually changed.
  *
