@@ -201,6 +201,7 @@
 
 /datum/blood_mixture/preset/single/setup()
 	..()
+	LAZYINITLIST(fragment_ratios)
 	fragment_ratios[create_preset_fragment()] = 1
 
 /datum/blood_mixture/preset/single/proc/create_preset_fragment()

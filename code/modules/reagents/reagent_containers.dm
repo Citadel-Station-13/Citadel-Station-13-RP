@@ -42,6 +42,9 @@
 	if(start_with_reagents)
 		for(var/id in start_with_reagents)
 			reagents.add_reagent(id, start_with_reagents[id], start_with_reagents_data_initializers?[id])
+		start_with_reagents = null
+		if(start_with_reagents_data_initializers)
+			start_with_reagents_data_initializers = null
 	// else use single if provided
 	else if(start_with_single_reagent)
 		reagents.add_reagent(start_with_single_reagent, isnull(start_with_single_volume)? volume : start_with_single_volume, start_with_single_data_initializer)
