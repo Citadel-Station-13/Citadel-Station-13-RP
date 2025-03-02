@@ -1,5 +1,3 @@
-////////////// PTR-7 Anti-Materiel Rifle //////////////
-
 /obj/item/gun/projectile/ballistic/heavysniper
 	name = "anti-materiel rifle"
 	desc = "A portable anti-armour rifle fitted with a scope, the HI PTR-7 Rifle was originally designed to used against armoured exosuits. It is capable of punching through windows and non-reinforced walls with ease. Fires armor piercing 12.7mm shells."
@@ -36,8 +34,6 @@
 	set popup_menu = 1
 
 	toggle_scope(2.0)
-
-////////////// Dragunov Sniper Rifle //////////////
 
 /obj/item/gun/projectile/ballistic/SVD
 	name = "\improper Dragunov"

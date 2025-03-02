@@ -250,7 +250,7 @@
  * @return clickchain flags
  */
 /obj/item/gun/projectile/ballistic/proc/user_clickchain_spin_chamber(datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
-	if(!internal_magazine || !internal_magazine_is_revolver)
+	if(!internal_magazine || !internal_magazine_revolver_mode)
 		return NONE
 	unsafe_spin_chamber_to_random()
 	if(!no_message)

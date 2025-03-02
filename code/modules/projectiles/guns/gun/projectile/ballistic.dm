@@ -110,21 +110,19 @@
 	/// * The top round is the bottom of the list, ergo last element.
 	///   This makes insertion and removal very fast.
 	var/list/obj/item/ammo_casing/internal_magazine_vec
-	/// The current position in [internal_magazine_vec] we are at.
-	/// * This position in the list will be put into chambered and nulled out, as it's technically
-	///   the chambered round.
-	/// * This is to avoid duplicate references, as those are pretty much asking for trouble.
-	/// * This is only used if [internal_magazine_is_revolver] is enabled.
-	var/internal_magazine_borrowed_offset
 	/// Preloads internal magazine with this ammo type
 	var/internal_magazine_preload_ammo
 	/// The internal magazine should act like a looping list
 	/// rather than being a stack.
 	/// * Changing this post-Initialize() is considered undefined behavior.
 	/// * Basically, makes this act like a revolver. Round ejection still works.
-	/// * [internal_magazine_borrowed_offset] will be put into the chamber, and nulled.
-	///   Anything reading internal_magazine_vec should know how to handle this.
-	var/internal_magazine_is_revolver = FALSE
+	var/internal_magazine_revolver_mode = FALSE
+	/// The current position in [internal_magazine_vec] we are at.
+	/// * This position in the list will be put into chambered and nulled out, as it's technically
+	///   the chambered round.
+	/// * This is to avoid duplicate references, as those are pretty much asking for trouble.
+	/// * This is only used if [internal_magazine_revolver_mode] is enabled.
+	var/internal_magazine_revolver_offset
 
 	//* Bolt *//
 
@@ -156,8 +154,21 @@
 	var/bolt_close_sound = 'sound/weapons/guns/interaction/rifle_boltforward.ogg'
 
 	//* Chamber *//
+
 	/// Chambered round
 	/// * This is considered an internal variable; use getters / setters to manipulate it.
+	/// How this works:
+	/// * This is filled on cycle if it's an external magazine and chamber is separated from magazine.
+	/// * Ditto for internal magazine, if chamber is separated.
+	/// * If [chamber_magazine_separation] is off, this variable will never be filled.
+	///   get_chambered(), eject_chamber(), etc, will all return the first in magazine.
+	/// * If [internal_magazine] and [internal_magazine_revolver_mode] are both on, this variable will never be filled.
+	///   get_chambered(), eject_chamber(), etc, will all return the current revolver offset.
+	/// Caveats
+	/// * Internally, if this variable is filled, it'll be returned.
+	///   Even if it should be using something else. This is so things don't runtime when there's
+	///   invalid behavior, instead just acting weirdly. You can technically use this to
+	///   make custom behaviors, but it's not recommended.
 	VAR_PROTECTED/obj/item/ammo_casing/chamber
 	/// Eject rounds after firing and chamber the next one
 	var/chamber_cycle_after_fire = TRUE
@@ -170,11 +181,11 @@
 	/// * not played on an automatic cycle (from live / inert fire)
 	var/chamber_manual_cycle_sound = /datum/soundbyte/guns/ballistic/rack_chamber/generic_1
 	/// Spin the internal magazine after a live firing
-	/// * Has no effect if [internal_magazine_is_revolver] is off.
+	/// * Has no effect if [internal_magazine_revolver_mode] is off.
 	/// * If you don't want the casing to drop, you need to remove [chamber_cycle_after_fire]
 	var/chamber_spin_after_fire = TRUE
 	/// Spin the internal magazine after an inert fire
-	/// * Has no effect if [internal_magazine_is_revolver] is off.
+	/// * Has no effect if [internal_magazine_revolver_mode] is off.
 	/// * If you don't want the casing to drop, you need to remove [chamber_cycle_after_fire]
 	/// * There's no manual spin button at time of writing; this should generally be enabled.
 	var/chamber_spin_after_inert = TRUE
@@ -234,8 +245,25 @@
 	. = ..()
 	update_icon()
 
-	#warn preload ammo / internal mag as needed
-
+	if(internal_magazine)
+		// fast insert, does not call the insert proc for casings or anything hooked to it
+		internal_magazine_vec = list()
+		if(internal_magazine_preload_ammo)
+			for(var/i in 1 to internal_magazine_size)
+				internal_magazine_vec += new internal_magazine_preload_ammo(src)
+		if(internal_magazine_revolver_mode)
+			// ensure it's the right size, even if we didn't fill it the full way
+			internal_magazine_vec.len = internal_magazine_size
+			internal_magazine_revolver_offset = 1
+		else
+			// chamber the gun
+			load_chamber()
+	else
+		if(magazine_preload)
+			// fast insert, does not call the insert proc or anything hooked to it
+			magazine = new magazine_preload
+			// chamber the gun
+			load_chamber()
 
 /obj/item/gun/projectile/ballistic/update_icon_state()
 	. = ..()
@@ -327,8 +355,8 @@
 /obj/item/gun/projectile/ballistic/get_ammo_ratio(rounded)
 	if(internal_magazine)
 		var/remaining
-		if(internal_magazine_is_revolver)
-			for(var/i in 1 to length(internal_magazine_is_revolver))
+		if(internal_magazine_revolver_mode)
+			for(var/i in 1 to length(internal_magazine_revolver_mode))
 				if(internal_magazine_vec[i])
 					remaining += 1
 		else
@@ -341,8 +369,8 @@
 
 /obj/item/gun/projectile/ballistic/get_ammo_remaining()
 	if(internal_magazine)
-		if(internal_magazine_is_revolver)
-			for(var/i in 1 to length(internal_magazine_is_revolver))
+		if(internal_magazine_revolver_mode)
+			for(var/i in 1 to length(internal_magazine_revolver_mode))
 				if(internal_magazine_vec[i])
 					. += 1
 		else
@@ -423,7 +451,7 @@
 /obj/item/gun/projectile/ballistic/proc/insert_casing(obj/item/ammo_casing/casing, silent)
 	if(internal_magazine)
 		// insert into internal magazine
-		if(internal_magazine_is_revolver)
+		if(internal_magazine_revolver_mode)
 			#warn impl; insert one after current pos, wrapping if needed
 		else
 			if(length(internal_magazine_vec) < internal_magazine_size)
@@ -511,7 +539,7 @@
 	//           otherwise remove top or bottom based on params
 	if(internal_magazine)
 		#warn impl these
-		if(internal_magazine && internal_magazine_is_revolver)
+		if(internal_magazine && internal_magazine_revolver_mode)
 		if(use_top_for_internal)
 	// external: eject chamber only
 	else if(chamber)
@@ -529,7 +557,7 @@
 
 // todo: impl for advanced revolver shenanigans
 /obj/item/gun/projectile/ballistic/proc/remove_casing_from_revolver_index(atom/new_loc, silent, force_index)
-	if(!internal_magazine || !internal_magazine_is_revolver)
+	if(!internal_magazine || !internal_magazine_revolver_mode)
 		CRASH("attempted to call 'remove_casing_from_revolver_index' on a non-internal-revolver-like gun.")
 	CRASH("unimplemented proc")
 
@@ -540,14 +568,49 @@
  */
 /obj/item/gun/projectile/ballistic/proc/get_chambered() as /obj/item/ammo_casing
 	RETURN_TYPE(/obj/item/ammo_casing)
-	return chamber
+
+	. = chamber
+	if(.)
+		return
+	if(internal_magazine_revolver_mode && internal_magazine)
+		return internal_magazine_vec[internal_magazine_revolver_offset]
+	if(!chamber_magazine_separation)
+		if(internal_magazine)
+			return internal_magazine[length(internal_magazine)]
+		else
+			return magazine?.peek()
 
 /**
  * Cycles the chamber
  */
 /obj/item/gun/projectile/ballistic/proc/cycle_chamber(silent, from_fire)
 	eject_chamber(silent, from_fire, drop_location())
-	#warn impl
+	load_chamber()
+	if(!silent)
+		if(!from_fire)
+			playsound(src, chamber_manual_cycle_sound, 75, TRUE)
+
+/**
+ * Loads the chamber from magazine immediately, if it is separated
+ * from the magazine.
+ */
+/obj/item/gun/projectile/ballistic/proc/load_chamber()
+	if(chamber)
+		return FALSE
+	if(internal_magazine_revoler_mode && internal_magazine)
+		return FALSE
+	if(!chamber_magazine_separation)
+		return FALSE
+	if(internal_magazine)
+		if(length(internal_magazine_vec))
+			chamber = internal_magazine_vec[length(internal_magazine_vec)]
+			--internal_magazine_vec.len
+			return TRUE
+		else
+			return FALSE
+	else
+		chamber = magazine?.pop()
+		return chamber ? TRUE : FALSE
 
 /**
  * Ejects a chambered casing
@@ -568,7 +631,7 @@
 	// todo: soundbyte this
 	if(!silent)
 		playsound(src, "casing", 50, TRUE)
-	#warn impl
+	#warn impl and handle internal / revolver / non-separated mags
 
 /**
  * Primes the casing being fired, and expends it.
@@ -584,9 +647,9 @@
  * * Crashes if we don't use a revolver-like internal magazine.
  */
 /obj/item/gun/projectile/ballistic/proc/unsafe_spin_chamber_to_index(index)
-	if(!internal_magazine || !internal_magazine_is_revolver)
+	if(!internal_magazine || !internal_magazine_revolver_mode)
 		CRASH("attempted to swap chamber index on a gun that doesn't use an internal revolver-like datastructure")
-	#warn impl
+	internal_magazine_revolver_offset = clamp(index, 1, length(internal_magazine_vec))
 
 /**
  * Switches to a random index in our internal magazine.
@@ -615,7 +678,8 @@
 		return ..()
 	. = ..()
 	// todo: render_break_overlay
-	// todo: render_bolt_overlay
+	if(render_bolt_overlay)
+		#warn bolt overlay
 	if(render_magazine_overlay)
 		if(magazine)
 			var/overlay = get_magazine_overlay_for(magazine)

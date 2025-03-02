@@ -8,7 +8,7 @@
 	chamber_spin_after_fire = TRUE
 	internal_magazine = TRUE
 	internal_magazine_size = 6
-	internal_magazine_is_revolver = TRUE
+	internal_magazine_revolver_mode = TRUE
 	internal_magazine_preload_ammo = /obj/item/ammo_casing/a357
 
 	magazine_insert_sound = 'sound/weapons/guns/interaction/rev_magin.ogg'

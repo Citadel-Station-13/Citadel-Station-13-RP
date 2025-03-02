@@ -250,7 +250,7 @@
 	icon_state = "axeshotgun"
 	item_state = "axeshotgun"
 	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12g/silver
-	internal_magazine_is_revolver = TRUE
+	internal_magazine_revolver_mode = TRUE
 	internal_magazine_size = 1
 	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 25

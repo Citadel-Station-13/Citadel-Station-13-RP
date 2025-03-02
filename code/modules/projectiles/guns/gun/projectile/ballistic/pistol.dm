@@ -236,7 +236,7 @@
 	chamber_cycle_after_fire = FALSE
 	chamber_spin_after_fire = TRUE
 	internal_magazine = TRUE
-	internal_magazine_is_revolver = TRUE
+	internal_magazine_revolver_mode = TRUE
 	internal_magazine_size = 2
 	internal_magazine_preload_ammo = /obj/item/ammo_casing/a357
 	caliber = /datum/ammo_caliber/a357
@@ -464,7 +464,7 @@
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
 	recoil = 3
 	internal_magazine_size = 3
-	internal_magazine_is_revolver = TRUE
+	internal_magazine_revolver_mode = TRUE
 	chamber_spin_after_fire = TRUE
 
 //Donksoft Weapons

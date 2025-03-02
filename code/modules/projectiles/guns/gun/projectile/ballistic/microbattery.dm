@@ -53,7 +53,7 @@
 	if(internal_magazine)
 		if(length(internal_magazine_vec) <= 1)
 			return TRUE
-		if(!internal_magazine_is_revolver)
+		if(!internal_magazine_revolver_mode)
 			return TRUE
 		var/obj/item/ammo_casing/microbattery/current_casing = internal_magazine_vec[internal_magazine_borrowed_offset]
 		var/current_group_key = current_casing?.microbattery_group_key
