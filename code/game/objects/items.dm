@@ -126,9 +126,8 @@
 	var/min_pressure_protection
 
 	//* Carry Weight *//
-	/// encumberance.
-	/// calculated as max() of all encumbrance
-	/// result is calculated into slowdown value
+	/// encumberance. tallied across all items with encumbrance in inventory.
+	/// result is calculated into slowdown value,
 	/// and then max()'d with carry weight for the final slowdown used.
 	var/encumbrance = ITEM_ENCUMBRANCE_BASELINE
 	/// registered encumbrance - null if not in inventory
