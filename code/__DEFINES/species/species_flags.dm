@@ -30,8 +30,6 @@
 #define NO_IGNITE (1<<13)
 /// Cannot get nutrition from food
 #define NO_NUTRITION_GAIN (1<<14)
-/// Can use a recharge station to regain nutrition
-#define CAN_USE_RECHARGE_STATION (1<<15)
 
 DEFINE_BITFIELD(species_flags, list(
 	BITFIELD(NO_MINOR_CUT),
@@ -47,8 +45,7 @@ DEFINE_BITFIELD(species_flags, list(
 	BITFIELD(NO_INFECT),
 	BITFIELD(NO_DEFIB),
 	BITFIELD(CONTAMINATION_IMMUNE),
-	BITFIELD(NO_NUTRITION_GAIN),
-	BITFIELD(CAN_USE_RECHARGE_STATION)
+	BITFIELD(NO_NUTRITION_GAIN)
 ))
 
 //! species_fluff_flags
