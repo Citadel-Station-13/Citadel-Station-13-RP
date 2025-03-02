@@ -121,10 +121,10 @@
 	else
 		icon_state = "deckard-empty"
 
-/obj/item/gun/projectile/ballistic/revolver/deckard/load_ammo(var/obj/item/A, mob/user)
-	if(istype(A, /obj/item/ammo_magazine))
-		flick("deckard-reload",src)
-	..()
+// /obj/item/gun/projectile/ballistic/revolver/deckard/load_ammo(var/obj/item/A, mob/user)
+// 	if(istype(A, /obj/item/ammo_magazine))
+// 		flick("deckard-reload",src)
+// 	..()
 
 /obj/item/gun/projectile/ballistic/revolver/capgun
 	name = "cap gun"

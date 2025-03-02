@@ -203,8 +203,6 @@
  * instantiate the entire internal ammo list
  *
  * * DO NOT USE UNLESS YOU KNOW WHAT YOU ARE DOING.
- *	caliber = "nsfw"
-
  * @return rounds created
  */
 /obj/item/ammo_magazine/proc/instantiate_internal_list()

@@ -98,6 +98,8 @@
 	/// If set, we use an internal magazine.
 	/// * Changing this post-Initialize() is considered undefined behavior.
 	/// * Only internal magazine guns work with speedloaders.
+	//  todo: evaluate if internal magazines should just be a special magazine object
+	//        as the current way of doing it leads to a lot of unnecessary logic
 	var/internal_magazine = FALSE
 	/// Sets our internal magazine size.
 	/// * Changing this post-Initialize() is considered undefined behavior.
@@ -292,8 +294,18 @@
 			return TRUE
 
 /obj/item/gun/projectile/ballistic/consume_next_projectile(datum/gun_firing_cycle/cycle)
-	#warn handle internal magazine and magazine chamber separation
-	return chamber ? prime_casing(cycle, chamber, CASING_PRIMER_CHEMICAL) : GUN_FIRED_FAIL_EMPTY
+	var/obj/item/ammo_casing/priming
+	if(internal_magazine_revolver_mode && internal_magazine)
+		priming = internal_magazine_vec[internal_magazine_revolver_offset]
+	else if(!chamber_magazine_separation)
+		if(internal_magazine)
+			if(length(internal_magazine))
+				priming = internal_magazine[length(internal_magazine)]
+		else
+			priming = magazine.peek()
+	else
+		priming = chamber
+	return priming ? prime_casing(cycle, priming, CASING_PRIMER_CHEMICAL) : GUN_FIRED_FAIL_EMPTY
 
 /obj/item/gun/projectile/ballistic/post_fire(datum/gun_firing_cycle/cycle)
 	. = ..()
@@ -304,48 +316,14 @@
 				remove_magazine(null, null, TRUE)
 		if(GUN_FIRED_FAIL_INERT)
 		if(GUN_FIRED_FAIL_EMPTY)
-		#warn handle all
-
-/obj/item/gun/projectile/ballistic/proc/load_ammo(obj/item/A, mob/user)
-	if(istype(A, /obj/item/ammo_magazine))
-		var/obj/item/ammo_magazine/AM = A
-		else if(AM.magazine_type & (MAGAZINE_TYPE_SPEEDLOADER | MAGAZINE_TYPE_CLIP))
-			if(loaded.len >= max_shells)
-				to_chat(user, "<span class='warning'>[src] is full!</span>")
-				return
-			var/count = 0
-			while(length(loaded) < max_shells)
-				var/obj/item/ammo_casing/inserting = AM.peek()
-				if(!inserting)
-					break
-				if(!accepts_casing(inserting))
-					break
-				inserting = AM.pop(src)
-				if(inserting.loc != src)
-					inserting.forceMove(src)
-				loaded += inserting
-				count++
-			if(count)
-				user.visible_message("[user] reloads [src].", "<span class='notice'>You load [count] round\s into [src].</span>")
-				playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1) //Kind of the opposite of empty but the "click" sound fits a speedloader nicely.
-		AM.update_icon()
-	else if(istype(A, /obj/item/ammo_casing))
-		var/obj/item/ammo_casing/C = A
-		if(!(load_method & SINGLE_CASING) || !accepts_caliber(C.caliber))
-			return //incompatible
-		if(loaded.len >= max_shells)
-			to_chat(user, "<span class='warning'>[src] is full.</span>")
-			return
-		if(!user.attempt_insert_item_for_installation(C, src))
-			return
-		loaded.Insert(1, C) //add to the head of the list
-		user.visible_message("[user] inserts \a [C] into [src].", "<span class='notice'>You insert \a [C] into [src].</span>")
-		playsound(src.loc, load_sound, 50, 1)
+			#warn handle all
 
 /obj/item/gun/projectile/ballistic/examine(mob/user, dist)
 	. = ..()
 	if(interact_show_caliber_on_examine)
-		#warn show_caliber_on_examine
+		var/datum/ammo_caliber/our_caliber = resolve_caliber(caliber)
+		if(our_caliber)
+			. += "It uses [our_caliber.caliber][our_caliber.name ? " ([our_caliber.name])" : ""] caliber ammunition."
 	if(magazine)
 		. += "It has \a [magazine] loaded."
 	. += "Has [get_ammo_remaining()] round\s remaining."
@@ -597,7 +575,7 @@
 /obj/item/gun/projectile/ballistic/proc/load_chamber()
 	if(chamber)
 		return FALSE
-	if(internal_magazine_revoler_mode && internal_magazine)
+	if(internal_magazine_revolver_mode && internal_magazine)
 		return FALSE
 	if(!chamber_magazine_separation)
 		return FALSE

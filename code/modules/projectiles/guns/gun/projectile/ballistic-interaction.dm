@@ -60,7 +60,21 @@
 
 	var/loaded = insert_speedloader(magazine, no_sound)
 
-	#warn impl
+	if(!no_message)
+		if(loaded)
+			actor.visible_feedback(
+				target = src,
+				range = MESSAGE_RANGE_INVENTORY_SOFT,
+				visible = SPAN_NOTICE("[actor.performer] reloads [src] with [magazine]."),
+				otherwise_self = SPAN_NOTICE("You load [loaded] rounds from [magazine] into [src]."),
+			)
+		else
+			actor.chat_feedback(
+				SPAN_WARNING("You fail to load any rounds from [magazine] into [src]."),
+				target = src,
+			)
+
+	return CLICKCHAIN_DID_SOMETHING
 
 /obj/item/gun/projectile/ballistic/proc/user_clickchain_load_from_magazine(obj/item/ammo_magazine/magazine, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
 	if(!internal_magazine)
@@ -94,7 +108,18 @@
 	while(TRUE)
 
 	if(!no_message)
-		#warn tell them / people around how much they inserted
+		if(loaded)
+			actor.visible_feedback(
+				target = src,
+				range = MESSAGE_RANGE_INVENTORY_SOFT,
+				visible = SPAN_NOTICE("[actor.performer] loads some rounds into [src] with [magazine]."),
+				otherwise_self = SPAN_NOTICE("You load [loaded] rounds from [magazine] into [src]."),
+			)
+		else
+			actor.chat_feedback(
+				SPAN_WARNING("You fail to load any rounds from [magazine] into [src]."),
+				target = src,
+			)
 
 	return CLICKCHAIN_DID_SOMETHING
 

@@ -35,8 +35,6 @@
 /obj/item/gun/projectile/ballistic/microbattery/get_ammo_remaining()
 	return cached_group_remaining
 
-#warn impl all
-
 /**
  * * This returns TRUE if handled, not necessarily implying that ammo actually changed.
  *
@@ -55,16 +53,16 @@
 			return TRUE
 		if(!internal_magazine_revolver_mode)
 			return TRUE
-		var/obj/item/ammo_casing/microbattery/current_casing = internal_magazine_vec[internal_magazine_borrowed_offset]
+		var/obj/item/ammo_casing/microbattery/current_casing = internal_magazine_vec[internal_magazine_revolver_offset]
 		var/current_group_key = current_casing?.microbattery_group_key
-		for(var/i in internal_magazine_borrowed_offset + 1 to length(internal_magazine_vec))
+		for(var/i in internal_magazine_revolver_offset + 1 to length(internal_magazine_vec))
 			var/obj/item/ammo_casing/microbattery/at_index = internal_magazine_vec[i]
-			if(at_index.microbattery_group_key != current_group_key)
+			if(isnull(current_group_key) || at_index.microbattery_group_key != current_group_key)
 				unsafe_spin_chamber_to_index(i)
 				return TRUE
-		for(var/i in 1 to internal_magazine_borrowed_offset - 1)
+		for(var/i in 1 to internal_magazine_revolver_offset - 1)
 			var/obj/item/ammo_casing/microbattery/at_index = internal_magazine_vec[i]
-			if(at_index.microbattery_group_key != current_group_key)
+			if(isnull(current_group_key) || at_index.microbattery_group_key != current_group_key)
 				unsafe_spin_chamber_to_index(i)
 				return TRUE
 		return TRUE
