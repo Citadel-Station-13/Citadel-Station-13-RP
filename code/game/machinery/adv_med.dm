@@ -270,7 +270,7 @@
 			update_icon() // Update health display for consoles with light and such.
 			var/mob/living/carbon/human/H = scanner.occupant
 			occupantData["name"] = H.name
-			occupantData["stat"] = H.stat
+			occupantData["stbat"] = H.stat
 			occupantData["health"] = H.health
 			occupantData["maxHealth"] = H.getMaxHealth()
 
@@ -292,7 +292,7 @@
 			occupantData["hasBorer"] = H.has_brain_worms()
 
 			var/bloodData[0]
-			if(H.blood_holder)
+			if(H.blood_holder && H.species.blood_volume)
 				var/blood_volume = round(H.blood_holder.get_total_volume())
 				var/blood_max = H.species.blood_volume
 				bloodData["volume"] = blood_volume

@@ -185,7 +185,8 @@
 	var/current = reagent_volumes?[id]
 	if(!current)
 		return
-	if(amount >= current)
+
+	if(amount >= FLOOR(current, REAGENT_HOLDER_VOLUME_PRECISION))
 		reagent_volumes -= id
 		if(reagent_datas)
 			reagent_datas -= id
@@ -195,9 +196,11 @@
 		reagent_volumes[id] -= amount
 		total_volume -= amount
 		. = amount
+
 	// -- deal with floating point inaccuracy incase we went below 0 --
 	if(total_volume < REAGENT_HOLDER_VOLUME_PRECISION) clear_reagents()
-	// -- end
+	// -- end --
+
 	if(!skip_reactions)
 		try_reactions_for_reagent_change(id)
 	//! LEGACY

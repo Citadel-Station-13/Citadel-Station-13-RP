@@ -184,7 +184,7 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 /mob/living/carbon/proc/take_blood_legacy(obj/item/reagent_containers/container, amount)
 	ASSERT(container.reagents)
 
-	var/wanted = max(0, container.reagents.maximum_volume - container.reagents.total_volume)
+	var/wanted = clamp(container.reagents.maximum_volume - container.reagents.total_volume, 0, amount)
 	if(!wanted)
 		return 0
 
