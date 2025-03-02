@@ -103,7 +103,7 @@
 
 /obj/item/material/shard/Crossed(atom/movable/AM as mob|obj)
 	..()
-	if(AM.is_incorporeal())
+	if(AM.is_incorporeal() || AM.is_avoiding_ground())
 		return
 	if(isliving(AM))
 		var/mob/M = AM
