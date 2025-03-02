@@ -16,7 +16,6 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	materials_base = list(MAT_STEEL = 1000)
 	recoil = 0
-	projectile_type = /obj/projectile/bullet/pistol/strong	//Only used for chameleon guns
 
 	//* Actions *//
 
@@ -224,6 +223,7 @@
 	/// * This uses MAGAZINE_CLASS_* defines
 	/// * We'll look for a matching class that we support to render
 	/// * If we can't find one, we'll use any class that we have on ourselves
+	/// * This is separate from normal item rendering. This adds an overlay directly. See MAGAZINE_CLASS_* enums.
 	var/render_magazine_overlay = NONE
 	/// Render the chamber state.
 	///
