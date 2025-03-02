@@ -27,6 +27,12 @@
 	var/tmp/cached_group_capacity
 	var/tmp/cached_group_remaining
 
+/obj/item/gun/projectile/ballistic/microbattery/Initialize(mapload)
+	if(internal_magazine_revolver_mode)
+		stack_trace("revolver-mode internal magazine is not supported on microbattery guns.")
+		internal_magazine_revolver_mode = FALSE
+	return ..()
+
 /obj/item/gun/projectile/ballistic/microbattery/get_ammo_ratio(rounded)
 	if(!cached_group_remaining)
 		return 0
@@ -62,7 +68,37 @@
  * to it.
  */
 /obj/item/gun/projectile/ballistic/microbattery/proc/advance_within_microbattery_group()
-	#warn impl
+	if(internal_magazine)
+		if(length(internal_magazine_vec) <= 1)
+			return TRUE
+		var/obj/item/ammo_casing/microbattery/current_maybe_microbattery = internal_magazine_vec[length(internal_magazine_vec)]
+		var/current_group = istype(current_maybe_microbattery) ? current_maybe_microbattery.microbattery_group_key : null
+		if(isnull(current_group))
+			return TRUE
+
+		// found_index is the first index below the top of the magazine
+		// that's within the same contiguous group-segment, and currently has a charge;
+		// nothing in between the index and current will have a different group.
+		var/found_index
+		for(var/i in length(internal_magazine_vec) - 1 to 1 step -1)
+			var/obj/item/ammo_casing/microbattery/maybe_microbattery = internal_magazine_vec[i]
+			if(!istype(maybe_microbattery))
+				break
+			if(maybe_microbattery.microbattery_group_key != current_group)
+				break
+			if(!maybe_microbattery.shots_remaining)
+				continue
+			found_index = i
+			break
+		if(!found_index)
+			return TRUE
+
+		internal_magazine_vec = internal_magazine_vec.Copy(found_index + 2) + internal_magazine_vec.Copy(1, found_index + 1)
+		return TRUE
+
+	else
+		var/obj/item/ammo_magazine/microbattery/maybe_microbattery_magazine = magazine
+		return istype(maybe_microbattery_magazine) ? maybe_microbattery_magazine.advance_within_ammo_group() : FALSE
 
 /**
  * * This returns TRUE if handled, not necessarily implying that ammo actually changed.
@@ -80,20 +116,26 @@
 	if(internal_magazine)
 		if(length(internal_magazine_vec) <= 1)
 			return TRUE
-		if(!internal_magazine_revolver_mode)
+		var/obj/item/ammo_casing/microbattery/current_maybe_microbattery = internal_magazine_vec[length(internal_magazine_vec)]
+		var/current_group = istype(current_maybe_microbattery) ? current_maybe_microbattery.microbattery_group_key : null
+
+		// found_index is the first index below the top of the magazine
+		// that's on a different group.
+		var/found_index
+		if(isnull(current_group))
+			found_index = length(internal_magazine_vec) - 1
+		else
+			for(var/i in length(internal_magazine_vec) - 1 to 1 step -1)
+				var/obj/item/ammo_casing/microbattery/maybe_microbattery = internal_magazine_vec[i]
+				if(!istype(maybe_microbattery))
+					found_index = i
+					break
+				if(maybe_microbattery.microbattery_group_key != current_group)
+					found_index = i
+					break
+		if(!internal_magazine_vec)
 			return TRUE
-		var/obj/item/ammo_casing/microbattery/current_casing = internal_magazine_vec[internal_magazine_revolver_offset]
-		var/current_group_key = current_casing?.microbattery_group_key
-		for(var/i in internal_magazine_revolver_offset + 1 to length(internal_magazine_vec))
-			var/obj/item/ammo_casing/microbattery/at_index = internal_magazine_vec[i]
-			if(isnull(current_group_key) || at_index.microbattery_group_key != current_group_key)
-				unsafe_spin_chamber_to_index(i)
-				return TRUE
-		for(var/i in 1 to internal_magazine_revolver_offset - 1)
-			var/obj/item/ammo_casing/microbattery/at_index = internal_magazine_vec[i]
-			if(isnull(current_group_key) || at_index.microbattery_group_key != current_group_key)
-				unsafe_spin_chamber_to_index(i)
-				return TRUE
+		internal_magazine_vec = internal_magazine_vec.Copy(internal_magazine_vec + 2) + internal_magazine_vec.Copy(1, found_index + 1)
 		return TRUE
 	else if(istype(magazine, /obj/item/ammo_magazine/microbattery))
 		var/obj/item/ammo_magazine/microbattery/supported_magazine = magazine
