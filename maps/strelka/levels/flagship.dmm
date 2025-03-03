@@ -227,8 +227,6 @@
 /obj/item/clothing/accessory/storage/black_drop_pouches,
 /obj/item/clothing/accessory/storage/black_drop_pouches,
 /obj/item/clothing/accessory/storage/black_drop_pouches,
-/obj/item/gun/energy/gun/martin,
-/obj/item/gun/energy/gun/martin,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -599,15 +597,6 @@
 	},
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
-"ch" = (
-/obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/gun/energy/lasercannon,
-/obj/item/gun/energy/lasercannon,
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/security)
 "ci" = (
 /obj/effect/floor_decal/corner/grey/diagonal{
 	dir = 4
@@ -1221,10 +1210,6 @@
 /obj/item/ammo_magazine/a5_7mm/harpy_smg/ap,
 /obj/item/ammo_magazine/a5_7mm/harpy_smg/ap,
 /obj/item/ammo_magazine/a5_7mm/harpy_smg/ap,
-/obj/item/gun/ballistic/automatic/combat,
-/obj/item/gun/ballistic/automatic/combat,
-/obj/item/gun/ballistic/automatic/combat,
-/obj/item/gun/ballistic/automatic/combat,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -1318,8 +1303,8 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/gun/energy/ionrifle/pistol,
-/obj/item/gun/energy/ionrifle/pistol,
+/obj/item/gun/projectile/ballistic/ax59,
+/obj/item/gun/projectile/ballistic/ax59,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -1784,18 +1769,6 @@
 	layer = 1
 	},
 /area/centcom/security)
-"fN" = (
-/obj/structure/table/rack,
-/obj/item/gun/ballistic/automatic/battlerifle,
-/obj/item/gun/ballistic/automatic/battlerifle,
-/obj/item/gun/ballistic/automatic/battlerifle,
-/obj/item/gun/ballistic/automatic/battlerifle,
-/obj/item/gun/ballistic/automatic/battlerifle,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/security)
 "fO" = (
 /obj/machinery/power/thermoregulator,
 /turf/unsimulated/floor{
@@ -1986,15 +1959,6 @@
 	layer = 1
 	},
 /area/centcom/main_hall)
-"gn" = (
-/obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/gun/energy/sniperrifle,
-/obj/item/gun/energy/sniperrifle,
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/security)
 "gp" = (
 /obj/structure/table/standard,
 /obj/machinery/light,
@@ -2313,7 +2277,6 @@
 /obj/item/clothing/accessory/holster/hip,
 /obj/item/ammo_magazine/a44/speedloader,
 /obj/item/ammo_magazine/a44/speedloader,
-/obj/item/gun/ballistic/revolver/combat,
 /obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor/wood,
 /area/centcom/specops)
@@ -2441,15 +2404,6 @@
 	layer = 1
 	},
 /area/shuttle/specops/general)
-"hO" = (
-/obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/gun/ballistic/automatic/z8,
-/obj/item/gun/ballistic/automatic/z8,
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/security)
 "hP" = (
 /obj/structure/closet/wardrobe/orange,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -2490,7 +2444,6 @@
 /area/centcom/bathroom)
 "hV" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/gun/energy/netgun,
 /turf/unsimulated/floor/wood,
 /area/centcom/specops)
 "ia" = (
@@ -2795,10 +2748,8 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/gun/energy/gun/combat,
-/obj/item/gun/energy/gun/combat,
-/obj/item/gun/energy/gun/combat,
-/obj/item/gun/energy/gun/combat,
+/obj/item/gun/projectile/energy/nt_isd/lance,
+/obj/item/gun/projectile/energy/nt_isd/lance,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -2997,18 +2948,6 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/living)
-"jH" = (
-/obj/structure/table/rack,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/security)
 "jJ" = (
 /obj/structure/table/standard,
 /obj/item/reagent_containers/syringe/inaprovaline,
@@ -3229,10 +3168,8 @@
 	},
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/gun/energy/taser,
-/obj/item/gun/energy/taser,
-/obj/item/gun/energy/taser,
-/obj/item/gun/energy/taser,
+/obj/item/gun/projectile/energy/nt_isd/multiphase,
+/obj/item/gun/projectile/energy/nt_isd/multiphase,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -3263,7 +3200,6 @@
 	},
 /area/centcom/medical)
 "kt" = (
-/obj/item/gun/energy/stripper,
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 8
 	},
@@ -4576,8 +4512,6 @@
 /obj/item/ammo_magazine/a5_56mm,
 /obj/item/ammo_magazine/a5_56mm,
 /obj/item/ammo_magazine/a5_56mm,
-/obj/item/gun/ballistic/automatic/sts35,
-/obj/item/gun/ballistic/automatic/sts35,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -4963,7 +4897,6 @@
 /area/centcom/specops)
 "pc" = (
 /obj/structure/table/reinforced,
-/obj/item/gun/energy/taser,
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 4;
 	pixel_y = 26
@@ -5552,8 +5485,10 @@
 "rh" = (
 /obj/structure/table/rack,
 /obj/structure/window/reinforced,
-/obj/item/gun/ballistic/shotgun/pump/combat,
-/obj/item/gun/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -5679,12 +5614,6 @@
 /area/centcom/command)
 "rG" = (
 /obj/structure/table/rack,
-/obj/item/gun/energy/nt_pulse/rifle,
-/obj/item/gun/energy/nt_pulse/rifle,
-/obj/item/gun/energy/nt_pulse/rifle,
-/obj/item/gun/energy/nt_pulse/rifle,
-/obj/item/gun/energy/nt_pulse/rifle,
-/obj/item/gun/energy/nt_pulse/rifle,
 /obj/item/storage/secure/briefcase/nsfw_pack,
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -5702,7 +5631,6 @@
 "rJ" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/table/rack,
-/obj/item/gun/energy/gun/nuclear,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -6281,14 +6209,6 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/living)
-"th" = (
-/obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/gun/ballistic/heavysniper,
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/security)
 "ti" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -6300,18 +6220,6 @@
 /obj/item/storage/box/ids,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
-"tk" = (
-/obj/structure/table/rack,
-/obj/item/gun/ballistic/shotgun/pump/combat,
-/obj/item/gun/ballistic/shotgun/pump/combat,
-/obj/item/gun/ballistic/shotgun/pump/combat,
-/obj/item/gun/ballistic/shotgun/pump/combat,
-/obj/item/gun/ballistic/shotgun/pump/combat,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/security)
 "tl" = (
 /obj/spawner/window/low_wall/reinforced/full,
 /obj/effect/paint/black,
@@ -6896,18 +6804,6 @@
 	},
 /turf/simulated/floor,
 /area/shuttle/escape)
-"ve" = (
-/obj/structure/table/rack,
-/obj/item/gun/ballistic/automatic/bullpup,
-/obj/item/gun/ballistic/automatic/bullpup,
-/obj/item/gun/ballistic/automatic/bullpup,
-/obj/item/gun/ballistic/automatic/bullpup,
-/obj/item/gun/ballistic/automatic/bullpup,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/security)
 "vf" = (
 /obj/machinery/newscaster{
 	pixel_x = -27
@@ -6929,7 +6825,6 @@
 /obj/item/flash,
 /obj/item/melee/baton/loaded,
 /obj/item/storage/belt/security/tactical,
-/obj/item/gun/energy/stunrevolver,
 /obj/item/clothing/glasses/sunglasses/sechud/tactical,
 /obj/item/material/knife/tacknife/combatknife,
 /obj/structure/table/steel_reinforced,
@@ -7540,8 +7435,8 @@
 /obj/item/ammo_magazine/a5_56mm,
 /obj/item/ammo_magazine/a5_56mm,
 /obj/item/ammo_magazine/a5_56mm,
-/obj/item/gun/ballistic/automatic/sts35,
-/obj/item/gun/ballistic/automatic/sts35,
+/obj/item/gun/projectile/ballistic/automatic/sts35,
+/obj/item/gun/projectile/ballistic/automatic/sts35,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -7608,7 +7503,6 @@
 /obj/effect/floor_decal/corner/blue/border,
 /obj/structure/closet/secure_closet/nanotrasen_security,
 /obj/item/storage/box/handcuffs,
-/obj/item/gun/energy/gun,
 /obj/item/shield/riot,
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -7888,15 +7782,6 @@
 	icon_state = "white"
 	},
 /area/centcom/control)
-"xX" = (
-/obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/gun/energy/gun/burst,
-/obj/item/gun/energy/gun/burst,
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/security)
 "xY" = (
 /obj/effect/blocker,
 /turf/simulated/floor/tiled/white,
@@ -8155,11 +8040,6 @@
 /area/centcom/security)
 "yK" = (
 /obj/structure/table/rack,
-/obj/item/gun/ballistic/automatic/wt550/lethal,
-/obj/item/gun/ballistic/automatic/wt550/lethal,
-/obj/item/gun/ballistic/automatic/wt550/lethal,
-/obj/item/gun/ballistic/automatic/wt550/lethal,
-/obj/item/gun/ballistic/automatic/wt550/lethal,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor{
@@ -8577,7 +8457,6 @@
 /obj/structure/table/reinforced,
 /obj/item/melee/baton/loaded,
 /obj/item/melee/baton/loaded,
-/obj/item/gun/energy/taser,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -8897,18 +8776,6 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
-"AO" = (
-/obj/structure/table/rack,
-/obj/item/gun/ballistic/automatic/p90,
-/obj/item/gun/ballistic/automatic/p90,
-/obj/item/gun/ballistic/automatic/p90,
-/obj/item/gun/ballistic/automatic/p90,
-/obj/item/gun/ballistic/automatic/p90,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/security)
 "AS" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/blue/border,
@@ -9162,7 +9029,6 @@
 "BB" = (
 /obj/structure/table/reinforced,
 /obj/item/book/manual/security_space_law,
-/obj/item/gun/energy/taser,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/blue/border,
 /turf/unsimulated/floor/steel,
@@ -10323,18 +10189,6 @@
 	layer = 1
 	},
 /area/centcom/main_hall)
-"Fa" = (
-/obj/structure/table/rack,
-/obj/item/gun/ballistic/shotgun/pump,
-/obj/item/gun/ballistic/shotgun/pump,
-/obj/item/gun/ballistic/shotgun/pump,
-/obj/item/gun/ballistic/shotgun/pump,
-/obj/item/gun/ballistic/shotgun/pump,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/security)
 "Fc" = (
 /obj/machinery/holopad,
 /turf/unsimulated/floor/steel,
@@ -10797,7 +10651,6 @@
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
 "Gp" = (
-/obj/item/gun/energy/gun/nuclear,
 /obj/item/hand_tele,
 /obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor/wood,
@@ -11604,7 +11457,6 @@
 /obj/item/clothing/shoes/brown,
 /obj/item/clothing/suit/armor/vest,
 /obj/item/clothing/head/helmet/swat,
-/obj/item/gun/energy/laser,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -11621,10 +11473,8 @@
 	},
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/gun/energy/combat,
-/obj/item/gun/energy/combat,
-/obj/item/gun/energy/combat,
-/obj/item/gun/energy/combat,
+/obj/item/gun/projectile/energy/nt_isd/carbine,
+/obj/item/gun/projectile/energy/nt_isd/carbine,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -11651,8 +11501,6 @@
 /obj/item/clothing/accessory/storage/brown_drop_pouches,
 /obj/item/clothing/accessory/storage/brown_drop_pouches,
 /obj/item/clothing/accessory/storage/brown_drop_pouches,
-/obj/item/gun/energy/gun/martin,
-/obj/item/gun/energy/gun/martin,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -11912,15 +11760,6 @@
 	layer = 1
 	},
 /area/centcom/specops)
-"Js" = (
-/obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/gun/energy/ionrifle/pistol,
-/obj/item/gun/energy/ionrifle/pistol,
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/security)
 "Jt" = (
 /obj/structure/table/glass,
 /obj/item/paper_bin{
@@ -12223,8 +12062,9 @@
 	dir = 1
 	},
 /obj/structure/table/rack,
-/obj/item/gun/energy/netgun,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/gun/projectile/ballistic/automatic/as24,
+/obj/item/gun/projectile/ballistic/automatic/as24,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -13254,10 +13094,6 @@
 /obj/item/ammo_magazine/a44/speedloader,
 /obj/item/ammo_magazine/a44/speedloader,
 /obj/item/ammo_magazine/a44/speedloader,
-/obj/item/gun/ballistic/revolver/combat,
-/obj/item/gun/ballistic/revolver/combat,
-/obj/item/gun/ballistic/revolver/combat,
-/obj/item/gun/ballistic/revolver/combat,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -13281,9 +13117,9 @@
 	dir = 1
 	},
 /obj/structure/table/rack,
-/obj/item/gun/energy/ionrifle,
-/obj/item/gun/energy/ionrifle,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/gun/projectile/ballistic/automatic/p90,
+/obj/item/gun/projectile/ballistic/automatic/p90,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -13486,12 +13322,6 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
-"NN" = (
-/obj/item/gun/energy/sizegun,
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/control)
 "NO" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -13844,8 +13674,8 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/gun/energy/sniperrifle,
-/obj/item/gun/energy/sniperrifle,
+/obj/item/gun/projectile/ballistic/nt_expedition/antimaterial/singleshot,
+/obj/item/gun/projectile/ballistic/nt_expedition/antimaterial/singleshot,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -13898,18 +13728,6 @@
 	layer = 1
 	},
 /area/shuttle/specops/general)
-"Ps" = (
-/obj/structure/table/rack,
-/obj/item/gun/ballistic/automatic/pdw,
-/obj/item/gun/ballistic/automatic/pdw,
-/obj/item/gun/ballistic/automatic/pdw,
-/obj/item/gun/ballistic/automatic/pdw,
-/obj/item/gun/ballistic/automatic/pdw,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/security)
 "Pt" = (
 /obj/effect/floor_decal/carpet{
 	dir = 4
@@ -13978,7 +13796,6 @@
 	},
 /obj/structure/closet/secure_closet/nanotrasen_security,
 /obj/item/storage/box/handcuffs,
-/obj/item/gun/energy/gun,
 /obj/item/shield/riot,
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -14332,15 +14149,6 @@
 	icon_state = "steel"
 	},
 /area/centcom/command)
-"QM" = (
-/obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/gun/energy/netgun,
-/obj/item/gun/energy/netgun,
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/security)
 "QN" = (
 /obj/structure/table/standard,
 /obj/machinery/recharger,
@@ -14462,10 +14270,10 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/gun/energy/stunrevolver,
-/obj/item/gun/energy/stunrevolver,
-/obj/item/gun/energy/stunrevolver,
-/obj/item/gun/energy/stunrevolver,
+/obj/item/gun/projectile/energy/nt_isd/sidearm/with_light,
+/obj/item/gun/projectile/energy/nt_isd/sidearm/with_light,
+/obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/pdw,
+/obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/pdw,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -15302,9 +15110,6 @@
 	pixel_y = 30
 	},
 /obj/structure/table/reinforced,
-/obj/item/gun/ballistic/shotgun/pump/combat{
-	name = "Discipline"
-	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
@@ -16309,7 +16114,6 @@
 /obj/item/clothing/shoes/brown,
 /obj/item/clothing/suit/armor/vest,
 /obj/item/clothing/head/helmet/swat,
-/obj/item/gun/energy/laser,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -16333,16 +16137,6 @@
 /obj/map_helper/access_helper/airlock/station/centcom,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
-"Wp" = (
-/obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/security)
 "Wq" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-10"
@@ -16363,19 +16157,6 @@
 	icon_state = "freezerfloor"
 	},
 /area/centcom/bathroom)
-"Ws" = (
-/obj/structure/table/rack,
-/obj/item/gun/energy/ionrifle,
-/obj/item/gun/energy/ionrifle,
-/obj/item/gun/energy/ionrifle,
-/obj/item/gun/energy/ionrifle,
-/obj/item/gun/energy/ionrifle,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/camera/network/crescent,
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/security)
 "Wt" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -16962,8 +16743,6 @@
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
-/obj/item/gun/ballistic/rocket,
-/obj/item/gun/ballistic/rocket,
 /obj/item/ammo_magazine/a5_56mm/saw,
 /obj/item/ammo_magazine/a5_56mm/saw,
 /obj/item/ammo_magazine/a5_56mm/saw,
@@ -17090,14 +16869,6 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
-"YJ" = (
-/obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/gun/energy/xray,
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/security)
 "YK" = (
 /obj/machinery/disease2/incubator,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -47039,7 +46810,7 @@ BT
 Ti
 Ti
 ba
-NN
+LF
 YG
 ZS
 Yv
@@ -47832,9 +47603,9 @@ LF
 Oc
 ta
 rP
-th
+ta
 rP
-hO
+ta
 Oc
 rP
 rP
@@ -48419,10 +48190,10 @@ rP
 rP
 Oc
 ta
-Fa
+ta
 rP
-ve
-fN
+ta
+ta
 yi
 Hb
 Hb
@@ -48612,7 +48383,7 @@ sk
 rP
 rP
 Oc
-tk
+ta
 rP
 rP
 rP
@@ -49388,8 +49159,8 @@ FV
 rP
 rJ
 Oc
-AO
-Ps
+ta
+ta
 rP
 QN
 QF
@@ -49578,7 +49349,7 @@ ov
 Oc
 ke
 rP
-QM
+ta
 rP
 rJ
 Oc
@@ -50740,7 +50511,7 @@ ba
 ba
 ba
 Oc
-Ws
+yK
 rP
 rP
 rP
@@ -50934,7 +50705,7 @@ Bs
 Bs
 Bs
 Oc
-jH
+ta
 rP
 rP
 rP
@@ -51128,11 +50899,11 @@ Bs
 Oc
 Oc
 Oc
-xX
+ta
 rP
 Ql
 rP
-Wp
+ta
 Oc
 Oc
 Oc
@@ -51326,7 +51097,7 @@ rP
 rP
 Ql
 rP
-Wp
+ta
 Oc
 DG
 Qo
@@ -51516,7 +51287,7 @@ ba
 Oc
 Oc
 Oc
-ch
+ta
 rP
 Ql
 rP
@@ -51710,7 +51481,7 @@ Zd
 ar
 gp
 Oc
-gn
+ta
 rP
 rP
 rP
@@ -51904,7 +51675,7 @@ qV
 Li
 Rj
 Oc
-YJ
+ta
 rP
 rP
 rP
@@ -52098,7 +51869,7 @@ qV
 pT
 yY
 Oc
-Js
+ta
 rP
 BD
 rP
