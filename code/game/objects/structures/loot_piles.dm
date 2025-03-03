@@ -250,7 +250,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/trash/tray,
 		/obj/item/trash/unajerky,
 		/obj/item/trash/waffles,
-		/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
+		/obj/item/reagent_containers/food/snacks/ingredient/xenomeat/spidermeat,
 		/obj/item/reagent_containers/food/snacks/mysterysoup,
 		/obj/item/reagent_containers/food/snacks/hotdog,
 		/obj/item/pizzabox,

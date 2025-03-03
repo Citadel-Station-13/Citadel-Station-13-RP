@@ -353,11 +353,11 @@
 	pixel_x = 30
 	},
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "belter_docking";
 	name = "Belting Dock Controller";
 	pixel_x = 24;
 	pixel_y = 30;
+	frequency = 1380;
+	id_tag = "belter_docking";
 	req_one_access = list(13,31)
 	},
 /turf/simulated/floor/tiled,
@@ -419,8 +419,8 @@
 /area/crew_quarters/freezer)
 "bi" = (
 /obj/machinery/air_alarm{
-	frequency = 1441;
-	pixel_y = 22
+	pixel_y = 22;
+	frequency = 1441
 	},
 /obj/machinery/vending/fitness,
 /turf/simulated/floor/wood,
@@ -433,8 +433,8 @@
 	dir = 4
 	},
 /obj/item/radio/intercom{
-	dir = 1;
 	name = "Station Intercom (General)";
+	dir = 1;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
@@ -442,17 +442,17 @@
 "bk" = (
 /obj/machinery/atmospherics/component/binary/passive_gate/on{
 	dir = 8;
-	pressure_resistance = 750;
-	target_pressure = 750
+	target_pressure = 750;
+	pressure_resistance = 750
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "bl" = (
 /obj/machinery/button/remote/airlock{
-	id = "dorm6";
 	name = "Room 6 Lock";
 	pixel_x = -26;
 	pixel_y = -4;
+	id = "dorm6";
 	specialfunctions = 4
 	},
 /obj/structure/closet/crate/bin{
@@ -542,7 +542,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/toilet)
 "bv" = (
-/obj/machinery/appliance/cooker/grill,
+/obj/machinery/cooking,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "bw" = (
@@ -738,10 +738,10 @@
 /obj/structure/table/woodentable,
 /obj/structure/flora/pottedplant/decorative,
 /obj/machinery/button/remote/airlock{
-	id = "dorm2";
 	name = "Room 2 Lock";
 	pixel_x = -26;
 	pixel_y = -4;
+	id = "dorm2";
 	specialfunctions = 4
 	},
 /turf/simulated/floor/wood,
@@ -862,6 +862,9 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
+/obj/item/reagent_containers/glass/food_holder/skillet,
+/obj/item/reagent_containers/glass/food_holder/pot,
+/obj/item/reagent_containers/glass/food_holder/pan,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "cx" = (
@@ -1045,8 +1048,8 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock{
-	id_tag = "dorm10";
-	name = "Dorm 1"
+	name = "Dorm 1";
+	id_tag = "dorm10"
 	},
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -1077,9 +1080,9 @@
 /obj/structure/table/marble,
 /obj/item/storage/box/wings,
 /obj/machinery/door/blast/shutters{
+	name = "Bar Shutters";
 	dir = 4;
-	id = "bar";
-	name = "Bar Shutters"
+	id = "bar"
 	},
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -1127,8 +1130,8 @@
 	dir = 1
 	},
 /obj/structure/closet/crate/hydroponics{
-	desc = "All you need to start your own honey farm.";
-	name = "beekeeping crate"
+	name = "beekeeping crate";
+	desc = "All you need to start your own honey farm."
 	},
 /obj/item/honey_frame,
 /obj/item/honey_frame,
@@ -1188,10 +1191,10 @@
 /area/crew_quarters/bar)
 "dt" = (
 /obj/structure/sign/securearea{
+	name = "EXTERNAL AIRLOCK";
 	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
 	icon_state = "space";
-	layer = 4;
-	name = "EXTERNAL AIRLOCK"
+	layer = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint_stripe/beastybrown,
@@ -1288,12 +1291,10 @@
 /turf/simulated/floor/tiled,
 /area/vacant/vacant_shop)
 "dM" = (
-/obj/structure/sink/kitchen{
-	dir = 8;
-	name = "sink";
-	pixel_x = 13
-	},
 /obj/machinery/fire_alarm/east_mount,
+/obj/item/reagent_containers/glass/food_holder/fryer_basket,
+/obj/item/reagent_containers/glass/food_holder/fryer_basket,
+/obj/machinery/cooking/fryer,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "dO" = (
@@ -1317,8 +1318,8 @@
 	dir = 2
 	},
 /obj/item/radio/intercom{
-	dir = 1;
 	name = "Station Intercom (General)";
+	dir = 1;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -1348,8 +1349,8 @@
 /area/hallway/primary/starboard)
 "dU" = (
 /obj/machinery/air_alarm{
-	frequency = 1441;
-	pixel_y = 22
+	pixel_y = 22;
+	frequency = 1441
 	},
 /obj/structure/table/marble,
 /turf/simulated/floor/carpet/bcarpet,
@@ -1589,8 +1590,8 @@
 	id = "QMLoad2"
 	},
 /obj/machinery/status_display/supply_display{
-	mode = 99;
-	pixel_y = 32
+	pixel_y = 32;
+	mode = 99
 	},
 /obj/machinery/light{
 	dir = 1
@@ -1664,10 +1665,10 @@
 /area/triumph/surfacebase/bar_backroom)
 "eV" = (
 /obj/machinery/button/remote/airlock{
-	id = "dorm9";
 	name = "Room 9 Lock";
 	pixel_x = 26;
 	pixel_y = -4;
+	id = "dorm9";
 	specialfunctions = 4
 	},
 /obj/structure/closet/crate/bin{
@@ -1769,8 +1770,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/glass/mining{
-	id_tag = "cargodoor";
 	name = "Cargo Office";
+	id_tag = "cargodoor";
 	req_one_access = list()
 	},
 /obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
@@ -1893,9 +1894,9 @@
 /obj/machinery/door/firedoor,
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
+	pixel_x = 26;
 	frequency = 1380;
-	master_tag = "triumph_annex_dock";
-	pixel_x = 26
+	master_tag = "triumph_annex_dock"
 	},
 /obj/machinery/door/airlock/glass_external{
 	name = "Bar Internal Access";
@@ -1922,8 +1923,8 @@
 	icon_state = "1-4"
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
@@ -2009,8 +2010,8 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock{
-	id_tag = "dorm8";
-	name = "Dorm 8"
+	name = "Dorm 8";
+	id_tag = "dorm8"
 	},
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -2048,8 +2049,8 @@
 /area/crew_quarters/barrestroom)
 "gb" = (
 /obj/machinery/airlock_sensor{
-	id_tag = "mining_fore_sensor";
-	pixel_y = 26
+	pixel_y = 26;
+	id_tag = "mining_fore_sensor"
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1379;
@@ -2139,11 +2140,11 @@
 	dir = 4
 	},
 /obj/effect/shuttle_landmark{
+	name = "NSV Triumph - Belter Shuttle";
+	landmark_tag = "belter_station";
 	base_area = /area/space;
 	base_turf = /turf/space;
-	docking_controller = "belter_docking";
-	landmark_tag = "belter_station";
-	name = "NSV Triumph - Belter Shuttle"
+	docking_controller = "belter_docking"
 	},
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/belter)
@@ -2398,8 +2399,8 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock{
-	id_tag = "dorm9";
-	name = "Dorm 9"
+	name = "Dorm 9";
+	id_tag = "dorm9"
 	},
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -2488,8 +2489,8 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock{
-	id_tag = "dorm5";
-	name = "Dorm 5"
+	name = "Dorm 5";
+	id_tag = "dorm5"
 	},
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -2675,8 +2676,8 @@
 "id" = (
 /obj/structure/closet/emcloset,
 /obj/item/radio/intercom{
-	dir = 1;
 	name = "Station Intercom (General)";
+	dir = 1;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
@@ -2892,8 +2893,8 @@
 /area/crew_quarters/bar)
 "iJ" = (
 /obj/machinery/status_display/supply_display{
-	mode = 99;
-	pixel_y = -32
+	pixel_y = -32;
+	mode = 99
 	},
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled,
@@ -2932,8 +2933,8 @@
 /area/shuttle/belter)
 "iQ" = (
 /mob/living/simple_mob/animal/goat{
-	desc = "Ah, it's Pete. They're not known for their pleasant disposition and now they're gonna eat all your plants.";
-	name = "Pete"
+	name = "Pete";
+	desc = "Ah, it's Pete. They're not known for their pleasant disposition and now they're gonna eat all your plants."
 	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
@@ -3096,10 +3097,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/button/remote/airlock{
-	id = "dorm4";
 	name = "Room 4 Lock";
 	pixel_x = -26;
 	pixel_y = -4;
+	id = "dorm4";
 	specialfunctions = 4
 	},
 /turf/simulated/floor/wood,
@@ -3138,9 +3139,9 @@
 "ju" = (
 /obj/structure/table/marble,
 /obj/machinery/door/blast/shutters{
+	name = "Kitchen Service Shutters";
 	dir = 8;
-	id = "kitchen-c";
-	name = "Kitchen Service Shutters"
+	id = "kitchen-c"
 	},
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -3282,18 +3283,18 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/airlock_sensor{
-	id_tag = "solar_sensor";
 	pixel_x = 28;
-	pixel_y = -1
+	pixel_y = -1;
+	id_tag = "solar_sensor"
 	},
 /obj/machinery/meter{
+	name = "Distribution Loop";
 	frequency = 1443;
-	id = "dist_aux_meter";
-	name = "Distribution Loop"
+	id = "dist_aux_meter"
 	},
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
-	id_tag = "solar_dock";
-	pixel_x = -24
+	pixel_x = -24;
+	id_tag = "solar_dock"
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/dark,
@@ -3357,22 +3358,22 @@
 /area/hallway/primary/port)
 "kd" = (
 /obj/machinery/access_button{
-	command = "cycle_ext";
-	frequency = 1379;
-	master_tag = "mining_fore_airlock";
 	name = "exterior access button";
 	pixel_y = -23;
+	frequency = 1379;
+	command = "cycle_ext";
+	master_tag = "mining_fore_airlock";
 	req_one_access = list(48)
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/glass_external{
-	frequency = 1379;
+	name = "Engineering Fore External Access";
 	icon_state = "door_locked";
+	frequency = 1379;
 	id_tag = "mining_fore_outer";
 	locked = 1;
-	name = "Engineering Fore External Access";
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/external_airlock,
@@ -3508,8 +3509,8 @@
 /area/maintenance/dormitory)
 "kC" = (
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 1
 	},
 /obj/machinery/fire_alarm/south_mount{
 	pixel_y = -25
@@ -3784,9 +3785,9 @@
 	dir = 4
 	},
 /obj/item/gps/internal/base{
+	name = "belter beacon";
 	desc = "A tracking beacon embedded in the belter shuttle systems, to help miners find where they left their shuttle.";
-	gps_tag = "BELTER";
-	name = "belter beacon"
+	gps_tag = "BELTER"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
@@ -3938,8 +3939,8 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Deck 2 Grid";
-	cur_coils = 3
+	cur_coils = 3;
+	RCon_tag = "Deck 2 Grid"
 	},
 /obj/structure/cable,
 /turf/simulated/floor/plating,
@@ -4235,7 +4236,10 @@
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "nd" = (
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
+/obj/item/reagent_containers/glass/food_holder/oventray,
+/obj/item/reagent_containers/glass/food_holder/oventray,
+/obj/item/reagent_containers/glass/food_holder/oventray,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "ne" = (
@@ -4486,16 +4490,16 @@
 /turf/simulated/wall/prepainted,
 /area/station/stairs_two)
 "nZ" = (
+/mob/living/simple_mob/animal/passive/penguin/emperor{
+	name = "Skipper";
+	desc = "There's a tag on this pengiun that says Skipper. You're not even sure where the chef found them."
+	},
 /obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
 /obj/machinery/camera/network/civilian{
 	dir = 4
-	},
-/mob/living/simple_mob/animal/passive/penguin/emperor{
-	desc = "There's a tag on this pengiun that says Skipper. You're not even sure where the chef found them.";
-	name = "Skipper"
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/freezer)
@@ -4521,9 +4525,9 @@
 /obj/machinery/shield_diffuser,
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
+	pixel_x = -24;
 	frequency = 1380;
-	master_tag = "triumph_annex_dock";
-	pixel_x = -24
+	master_tag = "triumph_annex_dock"
 	},
 /obj/machinery/door/airlock/glass_external{
 	name = "Bar Internal Access";
@@ -4592,8 +4596,8 @@
 	dir = 5
 	},
 /obj/item/radio/intercom{
-	dir = 1;
 	name = "Station Intercom (General)";
+	dir = 1;
 	pixel_y = 26
 	},
 /obj/machinery/light{
@@ -4620,11 +4624,11 @@
 /area/crew_quarters/fitness)
 "on" = (
 /obj/machinery/door/airlock/glass_external{
-	frequency = 1379;
+	name = "Engineering Fore External Access";
 	icon_state = "door_locked";
+	frequency = 1379;
 	id_tag = "mining_fore_outer";
 	locked = 1;
-	name = "Engineering Fore External Access";
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/external_airlock,
@@ -4803,8 +4807,8 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -4883,11 +4887,11 @@
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/port)
 "pd" = (
+/mob/living/simple_mob/animal/sif/fluffy,
 /obj/machinery/light_switch{
 	pixel_x = 25
 	},
 /obj/structure/dogbed,
-/mob/living/simple_mob/animal/sif/fluffy,
 /turf/simulated/floor/wood,
 /area/quartermaster/qm)
 "pf" = (
@@ -5030,10 +5034,10 @@
 "py" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/blast/shutters{
+	name = "Cafe Shutters";
 	dir = 2;
-	id = "cafe";
 	layer = 3.1;
-	name = "Cafe Shutters"
+	id = "cafe"
 	},
 /obj/structure/table/marble,
 /turf/simulated/floor/lino,
@@ -5055,8 +5059,8 @@
 /area/crew_quarters/bar)
 "pB" = (
 /obj/item/radio/intercom{
-	dir = 1;
 	name = "Station Intercom (General)";
+	dir = 1;
 	pixel_y = 21
 	},
 /obj/structure/bed/chair/comfy/blue{
@@ -5077,9 +5081,9 @@
 "pH" = (
 /obj/structure/table/marble,
 /obj/machinery/door/blast/shutters{
+	name = "Kitchen Service Shutters";
 	dir = 8;
-	id = "kitchen";
-	name = "Kitchen Service Shutters"
+	id = "kitchen"
 	},
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -5110,12 +5114,12 @@
 /area/station/stairs_two)
 "pN" = (
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
-	id_tag = "mining_fore_airlock";
 	pixel_y = -26;
+	tag_exterior_door = "mining_fore_outer";
+	tag_interior_door = "mining_fore_inner";
 	tag_airpump = "mining_fore_pump";
 	tag_chamber_sensor = "mining_fore_sensor";
-	tag_exterior_door = "mining_fore_outer";
-	tag_interior_door = "mining_fore_inner"
+	id_tag = "mining_fore_airlock"
 	},
 /obj/machinery/light,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
@@ -5136,9 +5140,9 @@
 "pQ" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/voidcraft{
+	name = "belter craft hatch";
 	frequency = 2020;
-	id_tag = "belt_shuttle_exterior";
-	name = "belter craft hatch"
+	id_tag = "belt_shuttle_exterior"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
@@ -5243,8 +5247,8 @@
 /area/quartermaster/office)
 "qd" = (
 /obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 8
 	},
 /obj/structure/window/basic{
 	dir = 1
@@ -5305,10 +5309,10 @@
 "ql" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/blast/shutters{
+	name = "Cafe Shutters";
 	dir = 2;
-	id = "cafe";
 	layer = 3.1;
-	name = "Cafe Shutters"
+	id = "cafe"
 	},
 /obj/structure/table/marble,
 /obj/item/storage/box/donut,
@@ -5338,9 +5342,9 @@
 "qr" = (
 /obj/structure/table/marble,
 /obj/machinery/door/blast/shutters{
+	name = "Kitchen Service Shutters";
 	dir = 2;
-	id = "kitchen-c";
-	name = "Kitchen Service Shutters"
+	id = "kitchen-c"
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/monotile,
@@ -5521,12 +5525,12 @@
 	icon_state = "2-8"
 	},
 /obj/machinery/access_button{
-	command = "cycle_int";
-	frequency = 1379;
-	master_tag = "solar_dock";
 	name = "interior access button";
 	pixel_x = -28;
-	pixel_y = -24
+	pixel_y = -24;
+	frequency = 1379;
+	command = "cycle_int";
+	master_tag = "solar_dock"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
@@ -5599,8 +5603,8 @@
 	icon_state = "1-4"
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
@@ -5609,9 +5613,9 @@
 /obj/item/storage/box/wings,
 /obj/machinery/door/firedoor,
 /obj/machinery/door/blast/shutters{
+	name = "Bar Shutters";
 	dir = 4;
-	id = "bar";
-	name = "Bar Shutters"
+	id = "bar"
 	},
 /obj/machinery/recharger,
 /turf/simulated/floor/tiled/dark,
@@ -5628,8 +5632,8 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 4;
-	name = "Airlock Gas Storage"
+	name = "Airlock Gas Storage";
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
@@ -5644,8 +5648,8 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -6066,10 +6070,10 @@
 	use_power = 0
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
-	frequency = 1380;
-	id_tag = "triumph_annex_dock";
 	pixel_x = 26;
-	pixel_y = -1
+	pixel_y = -1;
+	frequency = 1380;
+	id_tag = "triumph_annex_dock"
 	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -6278,11 +6282,11 @@
 /area/hallway/primary/port)
 "sX" = (
 /obj/machinery/door/airlock/glass_external{
-	frequency = 1379;
+	name = "Engineering Fore Internal Access";
 	icon_state = "door_locked";
+	frequency = 1379;
 	id_tag = "mining_fore_inner";
 	locked = 1;
-	name = "Engineering Fore Internal Access";
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/external_airlock,
@@ -6365,8 +6369,8 @@
 	dir = 5
 	},
 /obj/structure/sink/kitchen{
-	dir = 8;
 	name = "sink";
+	dir = 8;
 	pixel_x = 13
 	},
 /turf/simulated/floor/tiled,
@@ -6382,8 +6386,8 @@
 /area/hallway/primary/port)
 "tm" = (
 /obj/machinery/door/airlock/glass{
-	desc = "A room dedicated for the repairs and recharging of adherent.";
-	name = "Adherent Maintenance"
+	name = "Adherent Maintenance";
+	desc = "A room dedicated for the repairs and recharging of adherent."
 	},
 /turf/simulated/floor/crystal,
 /area/station/stairs_two)
@@ -6577,9 +6581,9 @@
 	dir = 8
 	},
 /obj/machinery/door/blast/shutters{
+	name = "Kitchen Service Shutters";
 	dir = 8;
-	id = "kitchen";
-	name = "Kitchen Service Shutters"
+	id = "kitchen"
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/kitchen)
@@ -6599,10 +6603,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
-"tW" = (
-/obj/machinery/appliance/mixer/cereal,
-/turf/simulated/floor/tiled/dark,
-/area/crew_quarters/kitchen)
 "tY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -7244,8 +7244,8 @@
 /area/triumph/surfacebase/mining_main/uxstorage)
 "vL" = (
 /obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
@@ -7319,8 +7319,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock{
-	id_tag = "restroom ad";
-	name = "Restroom"
+	name = "Restroom";
+	id_tag = "restroom ad"
 	},
 /turf/simulated/floor/tiled/white,
 /area/station/stairs_two)
@@ -7637,10 +7637,10 @@
 /area/crew_quarters/recreation_area_hallway)
 "wS" = (
 /obj/machinery/button/remote/airlock{
-	id = "dorm10";
 	name = "Room 10 Lock";
 	pixel_x = -26;
 	pixel_y = -4;
+	id = "dorm10";
 	specialfunctions = 4
 	},
 /turf/simulated/floor/wood,
@@ -7665,9 +7665,9 @@
 "wX" = (
 /obj/structure/table/marble,
 /obj/machinery/door/blast/shutters{
+	name = "Bar Shutters";
 	dir = 4;
-	id = "bar";
-	name = "Bar Shutters"
+	id = "bar"
 	},
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -7879,10 +7879,10 @@
 	dir = 10
 	},
 /obj/machinery/button/remote/airlock{
-	dir = 8;
-	id = "mine_black";
 	name = "Door Lock";
+	dir = 8;
 	pixel_x = 24;
+	id = "mine_black";
 	specialfunctions = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -7894,10 +7894,10 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/door/blast/shutters{
+	name = "Cafe Shutters";
 	dir = 2;
-	id = "cafe";
 	layer = 3.1;
-	name = "Cafe Shutters"
+	id = "cafe"
 	},
 /obj/structure/table/marble,
 /obj/item/storage/box/donut,
@@ -7920,16 +7920,16 @@
 /turf/simulated/floor/carpet/sblucarpet,
 /area/crew_quarters/sleep/Dorm_3)
 "xD" = (
+/mob/living/simple_mob/animal/passive/bird/ringneck_dove{
+	name = "Brewster";
+	desc = "The bartenders newest pet on the station. They seem like they want to help you out."
+	},
 /obj/structure/dogbed,
 /obj/machinery/camera/network/civilian,
 /obj/item/radio/intercom{
-	dir = 1;
 	name = "Station Intercom (General)";
+	dir = 1;
 	pixel_y = 26
-	},
-/mob/living/simple_mob/animal/passive/bird/ringneck_dove{
-	desc = "The bartenders newest pet on the station. They seem like they want to help you out.";
-	name = "Brewster"
 	},
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/bar_backroom)
@@ -8135,18 +8135,18 @@
 	pixel_y = -1
 	},
 /obj/machinery/button/remote/blast_door{
-	dir = 4;
-	id = "kitchen";
 	name = "Kitchen shutters";
+	dir = 4;
 	pixel_x = -24;
-	pixel_y = 8
+	pixel_y = 8;
+	id = "kitchen"
 	},
 /obj/machinery/button/remote/blast_door{
-	dir = 4;
-	id = "kitchen-c";
 	name = "Kitchen public counter shutters";
+	dir = 4;
 	pixel_x = -24;
-	pixel_y = -10
+	pixel_y = -10;
+	id = "kitchen-c"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
@@ -8302,8 +8302,8 @@
 	dir = 8
 	},
 /obj/machinery/door/window{
-	dir = 8;
 	name = "Cafe";
+	dir = 8;
 	req_one_access = list(25)
 	},
 /obj/structure/cable/green{
@@ -8445,8 +8445,8 @@
 "yW" = (
 /obj/machinery/airlock_sensor{
 	dir = 1;
-	id_tag = "triumph_annex_dock";
-	pixel_x = -22
+	pixel_x = -22;
+	id_tag = "triumph_annex_dock"
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1380;
@@ -8551,8 +8551,8 @@
 "zk" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/item/radio/intercom{
-	dir = 1;
 	name = "Station Intercom (General)";
+	dir = 1;
 	pixel_y = 26
 	},
 /obj/machinery/camera/network/civilian,
@@ -8645,8 +8645,8 @@
 "zz" = (
 /obj/machinery/power/apc/south_mount,
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 1
 	},
 /obj/structure/cable/green,
 /obj/machinery/vending/dinnerware,
@@ -8700,8 +8700,8 @@
 	dir = 1
 	},
 /obj/machinery/holosign/bar{
-	id = "barsign1";
-	pixel_y = 24
+	pixel_y = 24;
+	id = "barsign1"
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
@@ -8805,8 +8805,8 @@
 /area/hallway/primary/port)
 "Ab" = (
 /obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 2
 	},
 /obj/structure/cable/green{
 	icon_state = "2-8"
@@ -9362,6 +9362,12 @@
 /obj/item/packageWrap,
 /obj/item/packageWrap,
 /obj/machinery/camera/network/civilian,
+/obj/item/reagent_containers/glass/food_holder/pan,
+/obj/item/reagent_containers/glass/food_holder/pan,
+/obj/item/reagent_containers/glass/food_holder/pot,
+/obj/item/reagent_containers/glass/food_holder/pot,
+/obj/item/reagent_containers/glass/food_holder/skillet,
+/obj/item/reagent_containers/glass/food_holder/skillet,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "BS" = (
@@ -9528,8 +9534,8 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock{
-	id_tag = "dorm7";
-	name = "Dorm 7"
+	name = "Dorm 7";
+	id_tag = "dorm7"
 	},
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -9574,8 +9580,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock{
-	id_tag = "dorm4";
-	name = "Dorm 4"
+	name = "Dorm 4";
+	id_tag = "dorm4"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
@@ -9688,8 +9694,8 @@
 	dir = 1
 	},
 /obj/item/radio/intercom{
-	dir = 1;
 	name = "Station Intercom (General)";
+	dir = 1;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
@@ -9726,11 +9732,11 @@
 /area/triumph/surfacebase/mining_main/refinery)
 "Dd" = (
 /obj/machinery/button/remote/blast_door{
-	dir = 1;
-	id = "bar";
 	name = "Bar shutters";
+	dir = 1;
 	pixel_x = 8;
-	pixel_y = -28
+	pixel_y = -28;
+	id = "bar"
 	},
 /obj/machinery/light_switch{
 	dir = 1;
@@ -9738,9 +9744,9 @@
 	pixel_y = -28
 	},
 /obj/machinery/button/holosign{
-	id = "barsign1";
 	pixel_x = -10;
-	pixel_y = -28
+	pixel_y = -28;
+	id = "barsign1"
 	},
 /obj/machinery/camera/network/civilian{
 	dir = 1
@@ -10032,8 +10038,8 @@
 /area/maintenance/substation/civilian)
 "Ed" = (
 /obj/structure/sink/kitchen{
-	dir = 8;
 	name = "sink";
+	dir = 8;
 	pixel_x = 13
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -10096,7 +10102,7 @@
 /obj/machinery/air_alarm{
 	pixel_y = 22
 	},
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/lounge/kitchen_freezer)
@@ -10337,8 +10343,8 @@
 /area/quartermaster/qm)
 "Fb" = (
 /obj/item/radio/intercom{
-	dir = 1;
 	name = "Station Intercom (General)";
+	dir = 1;
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -10640,8 +10646,8 @@
 	},
 /obj/structure/catwalk,
 /obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
@@ -10765,10 +10771,10 @@
 /area/vacant/vacant_shop)
 "Gy" = (
 /obj/machinery/button/remote/airlock{
-	id = "dorm8";
 	name = "Room 8 Lock";
 	pixel_x = 24;
 	pixel_y = -4;
+	id = "dorm8";
 	specialfunctions = 4
 	},
 /obj/structure/closet/crate/bin{
@@ -10992,8 +10998,8 @@
 /area/crew_quarters/recreation_area)
 "Hh" = (
 /obj/machinery/status_display/supply_display{
-	mode = 99;
-	pixel_y = 32
+	pixel_y = 32;
+	mode = 99
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -11074,10 +11080,6 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
-"Ht" = (
-/obj/machinery/appliance/mixer/candy,
-/turf/simulated/floor/tiled/dark,
-/area/crew_quarters/kitchen)
 "Hu" = (
 /obj/structure/table/marble,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -11089,10 +11091,10 @@
 /obj/structure/coatrack,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/button/remote/airlock{
-	id = "Dressroom";
 	name = "Dressroom lock";
 	pixel_x = 26;
 	pixel_y = -4;
+	id = "Dressroom";
 	specialfunctions = 4
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -11199,10 +11201,10 @@
 	req_access = list(25)
 	},
 /obj/machinery/door/blast/shutters{
+	name = "Cafe Shutters";
 	dir = 2;
-	id = "cafe";
 	layer = 3.1;
-	name = "Cafe Shutters"
+	id = "cafe"
 	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
@@ -11394,8 +11396,8 @@
 "Ix" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass/mining{
-	id_tag = "cargodoor";
 	name = "Cargo Office";
+	id_tag = "cargodoor";
 	req_one_access = list()
 	},
 /obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
@@ -11512,8 +11514,8 @@
 	},
 /obj/structure/catwalk,
 /obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 2
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
@@ -11816,10 +11818,10 @@
 	dir = 8
 	},
 /obj/machinery/door/blast/shutters{
+	name = "Cafe Shutters";
 	dir = 2;
-	id = "cafe";
 	layer = 3.1;
-	name = "Cafe Shutters"
+	id = "cafe"
 	},
 /obj/structure/table/marble,
 /turf/simulated/floor/lino,
@@ -11894,8 +11896,8 @@
 	dir = 9
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 8
 	},
 /obj/machinery/light/small{
 	dir = 4
@@ -11952,6 +11954,14 @@
 /obj/item/paper_bin,
 /turf/simulated/floor/wood,
 /area/vacant/vacant_shop)
+"Kf" = (
+/obj/structure/sink/kitchen{
+	name = "sink";
+	dir = 8;
+	pixel_x = 12
+	},
+/turf/simulated/floor/tiled/dark,
+/area/crew_quarters/kitchen)
 "Kh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -11979,8 +11989,8 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock{
-	id_tag = "dorm11";
-	name = "Dorm 11"
+	name = "Dorm 11";
+	id_tag = "dorm11"
 	},
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -11998,8 +12008,8 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock{
-	id_tag = "dorm10";
-	name = "Dorm 10"
+	name = "Dorm 10";
+	id_tag = "dorm10"
 	},
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -12117,8 +12127,8 @@
 /obj/structure/ore_box,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/status_display/supply_display{
-	mode = 99;
-	pixel_y = -32
+	pixel_y = -32;
+	mode = 99
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
@@ -12221,8 +12231,8 @@
 /area/crew_quarters/sleep/Dorm_3)
 "KQ" = (
 /obj/item/radio/intercom{
-	dir = 1;
 	name = "Station Intercom (General)";
+	dir = 1;
 	pixel_y = 26
 	},
 /obj/machinery/vending/loadout/clothing,
@@ -12735,13 +12745,13 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/voidcraft{
+	name = "maintenance hatch";
 	frequency = 2020;
-	id_tag = "belt_shuttle_exterior";
-	name = "maintenance hatch"
+	id_tag = "belt_shuttle_exterior"
 	},
 /obj/machinery/atmospherics/component/binary/pump{
-	dir = 4;
-	name = "secondary fuel pump"
+	name = "secondary fuel pump";
+	dir = 4
 	},
 /turf/simulated/floor/airless,
 /area/shuttle/mining_ship/general)
@@ -12760,8 +12770,8 @@
 	},
 /obj/machinery/power/apc/north_mount,
 /obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
@@ -12932,11 +12942,11 @@
 /area/crew_quarters/recreation_area)
 "Nl" = (
 /obj/machinery/access_button{
-	command = "cycle_int";
-	frequency = 1379;
-	master_tag = "mining_fore_airlock";
 	name = "interior access button";
 	pixel_y = -23;
+	frequency = 1379;
+	command = "cycle_int";
+	master_tag = "mining_fore_airlock";
 	req_one_access = list(48)
 	},
 /obj/structure/cable/green{
@@ -12946,11 +12956,11 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/glass_external{
-	frequency = 1379;
+	name = "Engineering Fore Internal Access";
 	icon_state = "door_locked";
+	frequency = 1379;
 	id_tag = "mining_fore_inner";
 	locked = 1;
-	name = "Engineering Fore Internal Access";
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/external_airlock,
@@ -12968,8 +12978,8 @@
 	},
 /obj/machinery/disposal,
 /obj/item/radio/intercom{
-	dir = 1;
 	name = "Station Intercom (General)";
+	dir = 1;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/dark,
@@ -13011,9 +13021,9 @@
 	dir = 4
 	},
 /obj/item/gps/internal/base{
+	name = "shuttle beacon";
 	desc = "A tracking beacon embedded in the shuttle systems, to help explorers find where they landed.";
-	gps_tag = "SHUTTLE";
-	name = "shuttle beacon"
+	gps_tag = "SHUTTLE"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
@@ -13154,8 +13164,8 @@
 	dir = 1
 	},
 /obj/machinery/holosign/bar{
-	id = "cafesign1";
-	pixel_y = 38
+	pixel_y = 38;
+	id = "cafesign1"
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
@@ -13327,9 +13337,9 @@
 "Ov" = (
 /obj/structure/table/marble,
 /obj/machinery/door/blast/shutters{
+	name = "Bar Shutters";
 	dir = 4;
-	id = "bar";
-	name = "Bar Shutters"
+	id = "bar"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -13637,8 +13647,8 @@
 /area/quartermaster/foyer)
 "Pl" = (
 /obj/machinery/door/window/westright{
-	dir = 1;
 	name = "Bar";
+	dir = 1;
 	req_access = list(25);
 	req_one_access = list(25)
 	},
@@ -13686,8 +13696,8 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/maintenance{
-	id_tag = "Dressroom";
-	name = "Dressing Room"
+	name = "Dressing Room";
+	id_tag = "Dressroom"
 	},
 /turf/simulated/floor/wood,
 /area/vacant/vacant_shop)
@@ -13697,9 +13707,9 @@
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	dir = 4;
+	pixel_x = -26;
 	frequency = 1380;
 	id_tag = "triumph_space_mining_port";
-	pixel_x = -26;
 	req_one_access = list(13)
 	},
 /turf/simulated/floor/airless,
@@ -13737,12 +13747,12 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/access_button{
-	command = "cycle_ext";
-	frequency = 1379;
-	master_tag = "solar_dock";
 	name = "exterior access button";
 	pixel_x = -26;
-	pixel_y = 26
+	pixel_y = 26;
+	frequency = 1379;
+	command = "cycle_ext";
+	master_tag = "solar_dock"
 	},
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless,
@@ -13804,10 +13814,10 @@
 /area/station/stairs_two)
 "PG" = (
 /obj/machinery/button/remote/airlock{
-	id = "dorm5";
 	name = "Room 5 Lock";
 	pixel_x = 26;
 	pixel_y = -4;
+	id = "dorm5";
 	specialfunctions = 4
 	},
 /turf/simulated/floor/wood,
@@ -14063,8 +14073,8 @@
 /area/vacant/vacant_shop)
 "QJ" = (
 /obj/machinery/door/window/westright{
-	dir = 2;
 	name = "Bar";
+	dir = 2;
 	req_access = list(25);
 	req_one_access = list(25)
 	},
@@ -14087,10 +14097,10 @@
 	dir = 1
 	},
 /obj/machinery/button/remote/airlock{
-	id = "dorm3";
 	name = "Room 3 Lock";
 	pixel_x = 26;
 	pixel_y = -4;
+	id = "dorm3";
 	specialfunctions = 4
 	},
 /turf/simulated/floor/wood,
@@ -14262,9 +14272,9 @@
 	dir = 8
 	},
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
+	pixel_x = 28;
 	frequency = 1380;
-	id_tag = "cargo_bay";
-	pixel_x = 28
+	id_tag = "cargo_bay"
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
@@ -14414,10 +14424,10 @@
 /area/hallway/primary/starboard)
 "RG" = (
 /obj/machinery/button/remote/airlock{
-	id = "dorm1";
 	name = "Room 1 Lock";
 	pixel_x = -26;
 	pixel_y = -4;
+	id = "dorm1";
 	specialfunctions = 4
 	},
 /turf/simulated/floor/wood,
@@ -14479,8 +14489,8 @@
 /obj/item/storage/box/beanbags/large,
 /obj/item/clothing/accessory/permit/gun/bar,
 /obj/item/paper{
-	info = "This permit signifies that the Bartender is permitted to posess this firearm in the bar, and ONLY the bar. Failure to adhere to this permit will result in confiscation of the weapon and possibly arrest.";
-	name = "Shotgun permit"
+	name = "Shotgun permit";
+	info = "This permit signifies that the Bartender is permitted to posess this firearm in the bar, and ONLY the bar. Failure to adhere to this permit will result in confiscation of the weapon and possibly arrest."
 	},
 /obj/item/clothing/suit/armor/vest,
 /obj/machinery/light_switch{
@@ -14531,9 +14541,9 @@
 /area/triumph/surfacebase/mining_main/eva)
 "RU" = (
 /obj/machinery/meter{
+	name = "Distribution Loop";
 	frequency = 1443;
-	id = "dist_aux_meter";
-	name = "Distribution Loop"
+	id = "dist_aux_meter"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /obj/machinery/air_alarm{
@@ -14599,10 +14609,10 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/button/remote/airlock{
-	id = "dorm11";
 	name = "Room 11 Lock";
 	pixel_x = -26;
 	pixel_y = -4;
+	id = "dorm11";
 	specialfunctions = 4
 	},
 /turf/simulated/floor/wood,
@@ -15122,10 +15132,10 @@
 /area/vacant/vacant_shop)
 "TP" = (
 /obj/machinery/button/remote/airlock{
-	id = "dorm7";
 	name = "Room 7 Lock";
 	pixel_x = 26;
 	pixel_y = -4;
+	id = "dorm7";
 	specialfunctions = 4
 	},
 /obj/machinery/light_switch{
@@ -15312,8 +15322,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock{
-	id_tag = "dorm2";
-	name = "Dorm 2"
+	name = "Dorm 2";
+	id_tag = "dorm2"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_2)
@@ -15363,9 +15373,9 @@
 	},
 /obj/machinery/recharger,
 /obj/machinery/door/blast/shutters{
+	name = "Bar Shutters";
 	dir = 4;
-	id = "bar";
-	name = "Bar Shutters"
+	id = "bar"
 	},
 /obj/machinery/light{
 	dir = 1
@@ -15377,11 +15387,11 @@
 /area/crew_quarters/bar)
 "Uw" = (
 /obj/effect/shuttle_landmark{
+	name = "NSV Triumph Cargo Dock";
+	landmark_tag = "supply_dock";
 	base_area = /area/space;
 	base_turf = /turf/simulated/floor/airless/ceiling;
-	docking_controller = "cargo_bay";
-	landmark_tag = "supply_dock";
-	name = "NSV Triumph Cargo Dock"
+	docking_controller = "cargo_bay"
 	},
 /turf/simulated/floor/airless/ceiling,
 /area/space)
@@ -15620,8 +15630,8 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock{
-	id_tag = "dorm6";
-	name = "Dorm 6"
+	name = "Dorm 6";
+	id_tag = "dorm6"
 	},
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -15774,16 +15784,16 @@
 /area/quartermaster/storage)
 "VF" = (
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
-	cycle_to_external_air = 1;
-	frequency = 1380;
-	id_tag = "mining_docker";
 	pixel_y = 27;
+	frequency = 1380;
+	tag_exterior_door = "civvie_door_Ro";
+	tag_interior_door = "civvie_door_Ri";
 	tag_airpump = "civvie_vent";
 	tag_chamber_sensor = "civvie_sensor";
-	tag_exterior_door = "civvie_door_Ro";
 	tag_exterior_sensor = "civvie_exterior_sensor";
-	tag_interior_door = "civvie_door_Ri";
-	tag_interior_sensor = "civvie_exp_psg"
+	tag_interior_sensor = "civvie_exp_psg";
+	id_tag = "mining_docker";
+	cycle_to_external_air = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
@@ -15973,11 +15983,11 @@
 	dir = 4
 	},
 /obj/machinery/button/remote/blast_door{
-	desc = "A remote control-switch for shutters.";
-	id = "cafe";
 	name = "Cafe Shutters";
+	desc = "A remote control-switch for shutters.";
 	pixel_x = -10;
 	pixel_y = 26;
+	id = "cafe";
 	req_access = list();
 	req_one_access = list(25)
 	},
@@ -15993,8 +16003,8 @@
 	dir = 4
 	},
 /obj/machinery/button/holosign{
-	id = "cafesign1";
-	pixel_y = 28
+	pixel_y = 28;
+	id = "cafesign1"
 	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
@@ -16255,8 +16265,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock{
-	id_tag = "dorm3";
-	name = "Dorm 3"
+	name = "Dorm 3";
+	id_tag = "dorm3"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_3)
@@ -16266,8 +16276,8 @@
 /area/crew_quarters/kitchen)
 "Xd" = (
 /obj/item/radio/intercom{
-	dir = 1;
 	name = "Station Intercom (General)";
+	dir = 1;
 	pixel_y = 26
 	},
 /obj/machinery/light{
@@ -16311,9 +16321,9 @@
 /area/crew_quarters/bar)
 "Xi" = (
 /obj/machinery/conveyor_switch/oneway{
-	id = "mining_interior";
 	name = "refining conveyor";
-	pixel_y = 14
+	pixel_y = 14;
+	id = "mining_interior"
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
@@ -16851,8 +16861,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/portables_connector{
-	dir = 1;
-	name = "Engine Fuel Port"
+	name = "Engine Fuel Port";
+	dir = 1
 	},
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/steel,
@@ -17149,9 +17159,9 @@
 	dir = 1
 	},
 /obj/machinery/door/window{
+	name = "Electron Reservoir";
 	desc = "Electric Hazard Behind. Enter at own risk";
 	dir = 1;
-	name = "Electron Reservoir";
 	req_one_access = list()
 	},
 /turf/simulated/floor/crystal,
@@ -29868,7 +29878,7 @@ Cl
 gX
 kx
 oR
-Ht
+yx
 Jo
 Gp
 En
@@ -30062,7 +30072,7 @@ uq
 gX
 Xc
 Ag
-tW
+yx
 yz
 Xx
 UP
@@ -30642,7 +30652,7 @@ HY
 en
 UG
 yI
-yx
+Kf
 zj
 dM
 bv

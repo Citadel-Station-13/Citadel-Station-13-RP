@@ -1,5 +1,5 @@
 //Grown foods.
-/obj/item/reagent_containers/food/snacks/grown
+/obj/item/reagent_containers/food/snacks/ingredient/grown
 
 	name = "fruit"
 	icon = 'icons/obj/hydroponics_products.dmi'
@@ -14,7 +14,7 @@
 	var/datum/seed/seed
 	var/potency = -1
 
-/obj/item/reagent_containers/food/snacks/grown/Initialize(mapload, planttype)
+/obj/item/reagent_containers/food/snacks/ingredient/grown/Initialize(mapload, planttype, make_chems = TRUE)
 	. = ..()
 	if(!dried_type)
 		dried_type = type
@@ -43,25 +43,33 @@
 
 	potency = seed.get_trait(TRAIT_POTENCY)
 
-	for(var/rid in seed.chems)
-		var/list/reagent_data = seed.chems[rid]
-		if(reagent_data && reagent_data.len)
-			var/rtotal = reagent_data[1]
-			var/list/data = list()
-			if(reagent_data.len > 1 && potency > 0)
-				rtotal += round(potency/reagent_data[2])
-			if(rid == "nutriment")
-				data[seed.seed_name] = max(1,rtotal)
+	if(make_chems)
+		for(var/rid in seed.chems)
+			var/list/reagent_data = seed.chems[rid]
+			if(reagent_data && reagent_data.len)
+				var/rtotal = reagent_data[1]
+				var/list/data = list()
+				if(reagent_data.len > 1 && potency > 0)
+					rtotal += round(potency/reagent_data[2])
+				if(rid == "nutriment")
+					data[seed.seed_name] = max(1,rtotal)
 
-			reagents.add_reagent(rid,max(1,rtotal),data)
+				reagents.add_reagent(rid,max(1,rtotal),data)
+
 	update_desc()
 	if(reagents.total_volume > 0)
 		bitesize = 1+round(reagents.total_volume / 2, 1)
 	if(seed.get_trait(TRAIT_STINGS))
 		damage_force = 1
 	catalogue_data = seed.catalog_data_grown
+	if(islist(seed.food_info))
+		cookstage_information = seed.food_info
+	else //no csi, you become generic plant
+		cookstage_information = list(list(0, 1, "bland plant matter"), list(30 SECONDS, 1, "cooked plant matter"), list(40 SECONDS, 1, "wilting plamt matter"), list(60 SECONDS, 1, "a bland planty sludge"))
 
-/obj/item/reagent_containers/food/snacks/grown/update_desc()
+
+
+/obj/item/reagent_containers/food/snacks/ingredient/grown/update_desc()
 	. = ..()
 	if(!seed)
 		return
@@ -122,7 +130,7 @@
 		SSplants.product_descs["[seed.uid]"] = desc
 	desc += ". Delicious! Probably."
 
-/obj/item/reagent_containers/food/snacks/grown/update_icon()
+/obj/item/reagent_containers/food/snacks/ingredient/grown/update_icon()
 	if(!seed || !SSplants || !SSplants.plant_icon_cache)
 		return
 	cut_overlays()
@@ -142,7 +150,7 @@
 		SSplants.plant_icon_cache[icon_key] = plant_icon
 	add_overlay(plant_icon)
 
-/obj/item/reagent_containers/food/snacks/grown/Crossed(var/mob/living/M)
+/obj/item/reagent_containers/food/snacks/ingredient/grown/Crossed(var/mob/living/M)
 	. = ..()
 	if(M.is_incorporeal())
 		return
@@ -165,11 +173,11 @@
 			qdel(src)
 			return
 
-/obj/item/reagent_containers/food/snacks/grown/throw_impact(atom/hit_atom)
+/obj/item/reagent_containers/food/snacks/ingredient/grown/throw_impact(atom/hit_atom)
 	if(seed) seed.thrown_at(src,hit_atom)
 	..()
 
-/obj/item/reagent_containers/food/snacks/grown/attackby(var/obj/item/W, var/mob/living/user)
+/obj/item/reagent_containers/food/snacks/ingredient/grown/attackby(var/obj/item/W, var/mob/living/user)
 
 	if(seed)
 		if(seed.get_trait(TRAIT_PRODUCES_POWER) && istype(W, /obj/item/stack/cable_coil))
@@ -210,7 +218,7 @@
 					return
 				else if(!isnull(seed.chems["potato"]))
 					to_chat(user, "You slice \the [src] into sticks.")
-					new /obj/item/reagent_containers/food/snacks/rawsticks(get_turf(src))
+					new /obj/item/reagent_containers/food/snacks/ingredient/rawsticks(get_turf(src))
 					qdel(src)
 					return
 				else if(!isnull(seed.chems["carrotjuice"]))
@@ -240,7 +248,7 @@
 					return
 	..()
 
-/obj/item/reagent_containers/food/snacks/grown/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/reagent_containers/food/snacks/ingredient/grown/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 	var/mob/living/L = target
 	if(!istype(L))
@@ -258,7 +266,7 @@
 				to_chat(user, "<span class='danger'>\The [src] has fallen to bits.</span>")
 				qdel(src)
 
-/obj/item/reagent_containers/food/snacks/grown/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/reagent_containers/food/snacks/ingredient/grown/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -310,7 +318,7 @@
 				return
 	*/
 
-/obj/item/reagent_containers/food/snacks/grown/pickup(mob/user, flags, atom/oldLoc)
+/obj/item/reagent_containers/food/snacks/ingredient/grown/pickup(mob/user, flags, atom/oldLoc)
 	..()
 	if(!seed)
 		return
@@ -326,11 +334,43 @@
 		seed.do_sting(H,src,affected)
 
 // Predefined types for placing on the map.
+/obj/item/reagent_containers/food/snacks/ingredient/grown/AltClick(mob/user)
+	if(!isliving(user))
+		return ..()
+	if(food_weight < 1)
+		to_chat(user, SPAN_WARNING("There's not enough of [src] to split off!"))
+		return
+	var/amount = input("How much to split?", "Split ingredient") as null|num
+	amount = round(amount) //0.6 >> 1
+	if(amount && amount < food_weight)
+		var/final_ratio = amount/food_weight
+		food_weight -= amount
+		update_icon()
+		var/obj/item/reagent_containers/food/snacks/ingredient/grown/split_ingredient = new /obj/item/reagent_containers/food/snacks/ingredient/grown(src, seed.name, FALSE) //dont make chems, we will fill it with chems
+		split_ingredient.cookstage = cookstage
+		split_ingredient.accumulated_time_cooked = accumulated_time_cooked
+		split_ingredient.reagents.clear_reagents() //so we aren't making it taste raw on init
+		split_ingredient.reagents.trans_to_holder(reagents, reagents.total_volume * final_ratio, 1, TRUE)
+		split_ingredient.food_weight = amount
+		split_ingredient.update_icon()
+		split_ingredient.update_desc()
+		user.put_in_hands_or_drop(split_ingredient)
+		to_chat(user, SPAN_NOTICE("You split off [src]."))
+	else
+		to_chat(user, SPAN_WARNING("There's not enough serves in the [src]!"))
 
-/obj/item/reagent_containers/food/snacks/grown/mushroom/libertycap
+/obj/item/reagent_containers/food/snacks/ingredient/grown/check_merge(obj/item/reagent_containers/food/snacks/ingredient/add_ingredient, mob/user)
+	var/obj/item/reagent_containers/food/snacks/ingredient/grown/grown_add = add_ingredient
+	if(grown_add.plantname != src.plantname)
+		to_chat(user, SPAN_NOTICE("You can't mix different types of growns."))
+		return FALSE
+	return ..()
+
+
+/obj/item/reagent_containers/food/snacks/ingredient/grown/mushroom/libertycap
 	plantname = "libertycap"
 
-/obj/item/reagent_containers/food/snacks/grown/ambrosiavulgaris
+/obj/item/reagent_containers/food/snacks/ingredient/grown/ambrosiavulgaris
 	plantname = "ambrosia"
 
 /obj/item/reagent_containers/food/snacks/fruit_slice
@@ -368,3 +408,5 @@ var/list/fruit_icon_cache = list()
 	overlays_to_add += fruit_icon_cache["slice-[rind_colour]"]
 
 	add_overlay(overlays_to_add)
+
+

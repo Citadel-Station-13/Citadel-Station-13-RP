@@ -53,10 +53,10 @@
 	max_items = 12
 	max_combined_volume = 12 * WEIGHT_VOLUME_SMALL
 	insertion_whitelist = list(
-		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/reagent_containers/food/snacks/ingredient/egg,
 		/obj/item/reagent_containers/food/snacks/boiledegg
 		)
-	starts_with = list(/obj/item/reagent_containers/food/snacks/egg = 12)
+	starts_with = list(/obj/item/reagent_containers/food/snacks/ingredient/egg = 12)
 
 /*
  * Candle Boxes

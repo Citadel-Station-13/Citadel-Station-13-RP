@@ -1,6 +1,7 @@
 
 /obj/machinery/microwave
 	name = "Microwave"
+	desc = "So much more than just a microwave. The Multipurpose Irradiative Cooking/Reconstitution Operation Worker mark 4 Version 3 is capable of only two things: turning a messy pile of raw ingredients into perfectly cooked meals, and heating up donkpockets."
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "mw"
 	layer = 2.9
@@ -16,11 +17,8 @@
 	var/operating = 0 // Is it on?
 	var/dirty = 0 // = {0..100} Does it need cleaning?
 	var/broken = 0 // ={0,1,2} How broken is it???
-	var/global/list/datum/recipe/available_recipes // List of the recipes you can use
-	var/global/list/acceptable_items // List of the items you can put in
-	var/global/list/acceptable_reagents // List of the reagents you can put in
-	var/global/max_n_of_items = 20
-	var/appliancetype = MICROWAVE
+	var/max_n_of_items = 20
+	var/appliancetype = METHOD_MICROWAVE
 
 // see code/modules/food/recipes_microwave.dm for recipes
 
@@ -30,28 +28,8 @@
 
 /obj/machinery/microwave/Initialize(mapload)
 	. = ..()
-	reagents = new/datum/reagent_holder(100)
+	reagents = new/datum/reagent_holder(120)
 	reagents.my_atom = src
-	if (!available_recipes)
-		available_recipes = new
-		for (var/type in (typesof(/datum/recipe)-/datum/recipe))
-			var/datum/recipe/test = new type
-			if ((test.appliance & appliancetype))
-				available_recipes += test
-			else
-				qdel(test)
-		acceptable_items = new
-		acceptable_reagents = new
-		for (var/datum/recipe/recipe in available_recipes)
-			for (var/item in recipe.items)
-				acceptable_items |= item
-			for (var/reagent in recipe.reagents)
-				acceptable_reagents |= reagent
-		// This will do until I can think of a fun recipe to use dionaea in -
-		// will also allow anything using the holder item to be microwaved into
-		// impure carbon. ~Z
-		acceptable_items |= /obj/item/holder
-		acceptable_items |= /obj/item/reagent_containers/food/snacks/grown
 
 /*******************
 *   Item Adding
@@ -105,35 +83,12 @@
 		else //Otherwise bad luck!!
 			to_chat(user, "<span class='warning'>It's dirty!</span>")
 			return 1
-	else if(is_type_in_list(O,acceptable_items))
-		if (contents.len>=max_n_of_items)
-			to_chat(user, "<span class='warning'>This [src] is full of ingredients, you cannot put more.</span>")
-			return 1
-		if(istype(O, /obj/item/stack) && O:get_amount() > 1) // This is bad, but I can't think of how to change it
-			var/obj/item/stack/S = O
-			new O.type (src)
-			S.use(1)
-			user.visible_message( \
-				"<span class='notice'>\The [user] has added one of [O] to \the [src].</span>", \
-				"<span class='notice'>You add one of [O] to \the [src].</span>")
-			return
-		else
-			if(!user.attempt_insert_item_for_installation(O, src))
-				return
-			user.visible_message( \
-				"<span class='notice'>\The [user] has added \the [O] to \the [src].</span>", \
-				"<span class='notice'>You add \the [O] to \the [src].</span>")
-			return
 	else if(istype(O,/obj/item/reagent_containers/glass) || \
 	        istype(O,/obj/item/reagent_containers/food/drinks) || \
 	        istype(O,/obj/item/reagent_containers/food/condiment) \
 		)
 		if (!O.reagents)
 			return 1
-		for (var/datum/reagent/R in O.reagents.reagent_list)
-			if (!(R.id in acceptable_reagents))
-				to_chat(user, "<span class='warning'>Your [O] contains components unsuitable for cookery.</span>")
-				return 1
 		return
 	else if(istype(O,/obj/item/grab))
 		var/obj/item/grab/G = O
@@ -153,8 +108,24 @@
 		else
 			to_chat(user, "<span class='notice'>You decide not to do that.</span>")
 	else
-
-		to_chat(user, "<span class='warning'>You have no idea what you can cook with this [O].</span>")
+		if (contents.len>=max_n_of_items)
+			to_chat(user, "<span class='warning'>This [src] is full of ingredients, you cannot put more.</span>")
+			return 1
+		if(istype(O, /obj/item/stack) && O:get_amount() > 1) // This is bad, but I can't think of how to change it
+			var/obj/item/stack/S = O
+			new O.type (src)
+			S.use(1)
+			user.visible_message( \
+				"<span class='notice'>\The [user] has added one of [O] to \the [src].</span>", \
+				"<span class='notice'>You add one of [O] to \the [src].</span>")
+			return
+		else
+			if(!user.attempt_insert_item_for_installation(O, src))
+				return
+			user.visible_message( \
+				"<span class='notice'>\The [user] has added \the [O] to \the [src].</span>", \
+				"<span class='notice'>You add \the [O] to \the [src].</span>")
+			return
 	..()
 	src.updateUsrDialog()
 
@@ -184,20 +155,20 @@
 		var/list/items_measures_p = new
 		for (var/obj/O in contents)
 			var/display_name = O.name
-			if (istype(O,/obj/item/reagent_containers/food/snacks/egg))
+			if (istype(O,/obj/item/reagent_containers/food/snacks/ingredient/egg))
 				items_measures[display_name] = "egg"
 				items_measures_p[display_name] = "eggs"
-			if (istype(O,/obj/item/reagent_containers/food/snacks/tofu))
+			if (istype(O,/obj/item/reagent_containers/food/snacks/ingredient/tofu))
 				items_measures[display_name] = "tofu chunk"
 				items_measures_p[display_name] = "tofu chunks"
-			if (istype(O,/obj/item/reagent_containers/food/snacks/meat)) //any meat
+			if (istype(O,/obj/item/reagent_containers/food/snacks/ingredient/meat)) //any meat
 				items_measures[display_name] = "slab of meat"
 				items_measures_p[display_name] = "slabs of meat"
 			if (istype(O,/obj/item/reagent_containers/food/snacks/donkpocket))
 				display_name = "Turnovers"
 				items_measures[display_name] = "turnover"
 				items_measures_p[display_name] = "turnovers"
-			if (istype(O,/obj/item/reagent_containers/food/snacks/carpmeat))
+			if (istype(O,/obj/item/reagent_containers/food/snacks/ingredient/carp))
 				items_measures[display_name] = "fillet of meat"
 				items_measures_p[display_name] = "fillets of meat"
 			items_counts[display_name]++
@@ -251,7 +222,7 @@
 		stop()
 		return
 
-	var/datum/recipe/recipe = select_recipe(available_recipes,src)
+	var/datum/cooking_recipe/recipe = select_recipe(GLOB.cooking_recipes,src, available_method = METHOD_MICROWAVE)
 	var/obj/cooked
 	if (!recipe)
 		dirty += 1
@@ -282,7 +253,10 @@
 			cooked.forceMove(src.loc)
 			return
 	else
-		var/halftime = round((recipe.time*4)/10/2)
+		var/microwave_time = 50
+		if(recipe.time > 0)
+			microwave_time = recipe.time
+		var/halftime = round((microwave_time)/10/2)
 		if (!wzhzhzh(halftime))
 			abort()
 			return
@@ -297,6 +271,7 @@
 		var/result = recipe.result
 		var/valid = 1
 		var/list/cooked_items = list()
+
 		var/obj/temp = new /obj(src) //To prevent infinite loops, all results will be moved into a temporary location so they're not considered as inputs for other recipes
 		while(valid)
 			var/list/things = list()
@@ -307,7 +282,7 @@
 				AM.forceMove(temp)
 
 			valid = 0
-			recipe = select_recipe(available_recipes,src)
+			recipe = select_recipe(GLOB.cooking_recipes,src, available_method = METHOD_MICROWAVE)
 			if (recipe && recipe.result == result)
 				sleep(2)
 				valid = 1
@@ -315,8 +290,6 @@
 		for (var/r in cooked_items)
 			var/atom/movable/R = r
 			R.forceMove(src) //Move everything from the buffer back to the container
-
-		QDEL_NULL(temp)//Delete buffer object
 
 		//Any leftover reagents are divided amongst the foods
 		var/total = reagents.total_volume
@@ -336,7 +309,7 @@
 		if (machine_stat & (NOPOWER|BROKEN))
 			return 0
 		use_power(active_power_usage)
-		sleep(10)
+		sleep(1 SECOND)
 	return 1
 
 /obj/machinery/microwave/proc/has_extra_item()

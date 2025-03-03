@@ -151,7 +151,7 @@
 				if(owner.meat_type)
 					meat_type = owner.meat_type
 				else
-					meat_type = /obj/item/reagent_containers/food/snacks/meat
+					meat_type = /obj/item/reagent_containers/food/snacks/ingredient/meat
 
 	handle_organ_mod_special()
 
@@ -720,7 +720,7 @@
 
 	var/obj/item/newmeat = new meat_type(newtarget)
 
-	if(istype(newmeat, /obj/item/reagent_containers/food/snacks/meat))
+	if(istype(newmeat, /obj/item/reagent_containers/food/snacks/ingredient/meat))
 		newmeat.name = "[src.name] [newmeat.name]"	// "liver meat" "heart meat", etc.
 
 	qdel(src)

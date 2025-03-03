@@ -11299,7 +11299,7 @@
 /turf/simulated/floor/wood/broken,
 /area/ship/ghostship/cabin6)
 "UV" = (
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/reinforced,
 /area/ship/ghostship/hangar)

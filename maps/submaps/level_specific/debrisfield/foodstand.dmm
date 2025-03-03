@@ -13,16 +13,16 @@
 /area/space/debrisfield/foodstand)
 "e" = (
 /obj/structure/closet/secure_closet/freezer/meat,
-/obj/item/reagent_containers/food/snacks/carpmeat,
-/obj/item/reagent_containers/food/snacks/carpmeat,
-/obj/item/reagent_containers/food/snacks/carpmeat,
-/obj/item/reagent_containers/food/snacks/carpmeat,
-/obj/item/reagent_containers/food/snacks/carpmeat,
-/obj/item/reagent_containers/food/snacks/carpmeat,
-/obj/item/reagent_containers/food/snacks/carpmeat,
-/obj/item/reagent_containers/food/snacks/carpmeat,
-/obj/item/reagent_containers/food/snacks/carpmeat,
-/obj/item/reagent_containers/food/snacks/carpmeat,
+/obj/item/reagent_containers/food/snacks/ingredient/carp,
+/obj/item/reagent_containers/food/snacks/ingredient/carp,
+/obj/item/reagent_containers/food/snacks/ingredient/carp,
+/obj/item/reagent_containers/food/snacks/ingredient/carp,
+/obj/item/reagent_containers/food/snacks/ingredient/carp,
+/obj/item/reagent_containers/food/snacks/ingredient/carp,
+/obj/item/reagent_containers/food/snacks/ingredient/carp,
+/obj/item/reagent_containers/food/snacks/ingredient/carp,
+/obj/item/reagent_containers/food/snacks/ingredient/carp,
+/obj/item/reagent_containers/food/snacks/ingredient/carp,
 /turf/simulated/floor/airless,
 /area/space/debrisfield/foodstand)
 "f" = (
