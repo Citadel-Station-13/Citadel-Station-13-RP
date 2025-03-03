@@ -174,14 +174,14 @@
 
 /obj/random/multiple/underdark/mechtool/item_to_spawn()
 	return pick(
-				prob(12);list(/obj/item/mecha_parts/mecha_equipment/tool/drill),
-				prob(10);list(/obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp),
-				prob(8);list(/obj/item/mecha_parts/mecha_equipment/generator),
-				// prob(7);list(/obj/item/mecha_parts/mecha_equipment/ballistic/scattershot/rigged),
-				prob(6);list(/obj/item/mecha_parts/mecha_equipment/repair_droid),
-				prob(3);list(/obj/item/mecha_parts/mecha_equipment/gravcatapult),
-				// prob(2);list(/obj/item/mecha_parts/mecha_equipment/energy/riggedlaser),
-				// prob(2);list(/obj/item/mecha_parts/mecha_equipment/energy/flamer/rigged),
-				prob(1);list(/obj/item/mecha_parts/mecha_equipment/tool/drill/diamonddrill),
+				prob(12);list(/obj/item/vehicle_module/tool/drill),
+				prob(10);list(/obj/item/vehicle_module/tool/hydraulic_clamp),
+				prob(8);list(/obj/item/vehicle_module/generator),
+				// prob(7);list(/obj/item/vehicle_module/ballistic/scattershot/rigged),
+				prob(6);list(/obj/item/vehicle_module/repair_droid),
+				prob(3);list(/obj/item/vehicle_module/gravcatapult),
+				// prob(2);list(/obj/item/vehicle_module/energy/riggedlaser),
+				// prob(2);list(/obj/item/vehicle_module/energy/flamer/rigged),
+				prob(1);list(/obj/item/vehicle_module/tool/drill/diamonddrill),
 				)
 

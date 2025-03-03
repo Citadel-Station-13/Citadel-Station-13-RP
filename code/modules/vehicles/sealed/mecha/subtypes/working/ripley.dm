@@ -17,31 +17,29 @@
 	encumbrance_gap = 2
 
 	starting_components = list(
-		/obj/item/mecha_parts/component/hull/durable,
-		/obj/item/mecha_parts/component/actuator,
-		/obj/item/mecha_parts/component/armor/mining,
-		/obj/item/mecha_parts/component/gas,
-		/obj/item/mecha_parts/component/electrical
+		/obj/item/vehicle_component/hull/durable,
+		/obj/item/vehicle_component/actuator,
+		/obj/item/vehicle_component/armor/mining,
+		/obj/item/vehicle_component/gas,
+		/obj/item/vehicle_component/electrical
 		)
 
 	icon_scale_x = 1.2
 	icon_scale_y = 1.2
 
-/obj/vehicle/sealed/mecha/working/ripley/firefighter
-	desc = "Standard APLU chassis was refitted with additional thermal protection and cistern."
-	name = "APLU \"Firefighter\""
-	icon_state = "firefighter"
-	initial_icon = "firefighter"
-	max_temperature = 65000
-	integrity = 250
-	lights_power = 8
-	damage_absorption = list("fire"=0.5,"bullet"=0.8,"bomb"=0.5)
-	wreckage = /obj/effect/decal/mecha_wreckage/ripley/firefighter
-	max_hull_equip = 2
-	max_weapon_equip = 0
-	max_utility_equip = 2
-	max_universal_equip = 1
-	max_special_equip = 1
+/obj/vehicle/sealed/mecha/working/ripley/Initialize(mapload)
+	. = ..()
+	orescanner = new /obj/item/mining_scanner
+
+/obj/vehicle/sealed/mecha/working/ripley/verb/detect_ore()
+	set category = "Exosuit Interface"
+	set name = "Detect Ores"
+	set src = usr.loc
+	set popup_menu = 0
+
+	orescanner.attack_self(usr)
+
+//! misc subtypes !//
 
 /obj/vehicle/sealed/mecha/working/ripley/deathripley
 	desc = "OH SHIT IT'S THE DEATHSQUAD WE'RE ALL GONNA DIE"
@@ -61,7 +59,7 @@
 
 /obj/vehicle/sealed/mecha/working/ripley/deathripley/Initialize(mapload)
 	. = ..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp/safety
+	var/obj/item/vehicle_module/ME = new /obj/item/vehicle_module/tool/hydraulic_clamp/safety
 	ME.attach(src)
 	return
 
@@ -73,49 +71,17 @@
 	. = ..()
 	//Attach drill
 	if(prob(25)) //Possible diamond drill... Feeling lucky?
-		var/obj/item/mecha_parts/mecha_equipment/tool/drill/diamonddrill/D = new /obj/item/mecha_parts/mecha_equipment/tool/drill/diamonddrill
+		var/obj/item/vehicle_module/tool/drill/diamonddrill/D = new /obj/item/vehicle_module/tool/drill/diamonddrill
 		D.attach(src)
 	else
-		var/obj/item/mecha_parts/mecha_equipment/tool/drill/D = new /obj/item/mecha_parts/mecha_equipment/tool/drill
+		var/obj/item/vehicle_module/tool/drill/D = new /obj/item/vehicle_module/tool/drill
 		D.attach(src)
 
 	//Attach hydrolic clamp
-	var/obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp/HC = new /obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp
+	var/obj/item/vehicle_module/tool/hydraulic_clamp/HC = new /obj/item/vehicle_module/tool/hydraulic_clamp
 	HC.attach(src)
-	for(var/obj/item/mecha_parts/mecha_tracking/B in src.contents)//Deletes the beacon so it can't be found easily
+	for(var/obj/item/vehicle_tracking_beacon/B in src.contents)//Deletes the beacon so it can't be found easily
 		qdel (B)
-
-/obj/vehicle/sealed/mecha/working/ripley/geiger
-	name = "APLU \"Geiger\""
-	desc = "You can't beat the classics."
-	icon_state = "ripley-old"
-	initial_icon = "ripley-old"
-	max_temperature = 5000
-	integrity = 150
-	integrity_max = 150
-	internal_damage_threshold = 50
-	step_energy_drain = 3
-
-	show_pilot = TRUE
-	pilot_lift = 5
-
-	max_utility_equip = 1
-	max_universal_equip = 3
-
-	icon_scale_x = 1
-	icon_scale_y = 1
-
-/obj/vehicle/sealed/mecha/working/ripley/Initialize(mapload)
-	. = ..()
-	orescanner = new /obj/item/mining_scanner
-
-/obj/vehicle/sealed/mecha/working/ripley/verb/detect_ore()
-	set category = "Exosuit Interface"
-	set name = "Detect Ores"
-	set src = usr.loc
-	set popup_menu = 0
-
-	orescanner.attack_self(usr)
 
 //Meant for random spawns.
 /obj/vehicle/sealed/mecha/working/ripley/mining/old
@@ -131,5 +97,5 @@
 //Mechbay
 /obj/vehicle/sealed/mecha/working/ripley/abandoned/Initialize(mapload)
 	. = ..()
-	for(var/obj/item/mecha_parts/mecha_tracking/B in src.contents)	//Deletes the beacon so it can't be found easily
+	for(var/obj/item/vehicle_tracking_beacon/B in src.contents)	//Deletes the beacon so it can't be found easily
 		qdel(B)

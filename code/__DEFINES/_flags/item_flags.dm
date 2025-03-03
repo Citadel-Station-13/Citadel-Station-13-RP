@@ -14,7 +14,7 @@
 #define ITEM_THROW_UNCATCHABLE	(1<<5)
 /// we cannot be used a tool on click, no matter what
 #define ITEM_NO_TOOL_ATTACK		(1<<6)
-/// we're dual wielded - multi-wielding coming later tm
+/// we're wielded, usually via /datum/component/wielding
 #define ITEM_MULTIHAND_WIELDED	(1<<7)
 /// don't allow help intent attacking
 #define ITEM_CAREFUL_BLUDGEON	(1<<8)
@@ -76,6 +76,8 @@ DEFINE_BITFIELD(item_flags, list(
 /// Allows special survival food items to be eaten through it
 // todo: audit
 #define ALLOW_SURVIVALFOOD		(1<<11)
+/// stops unequipping
+#define NO_UNEQUIP				(1<<12)
 
 DEFINE_BITFIELD(clothing_flags, list(
 	BITFIELD(BLOCK_GAS_SMOKE_EFFECT),
@@ -88,6 +90,7 @@ DEFINE_BITFIELD(clothing_flags, list(
 	BITFIELD(CLOTHING_IGNORE_DELIMB),
 	BITFIELD(CLOTHING_IGNORE_BELTLINK),
 	BITFIELD(CLOTHING_ALLOW_SINGLE_LIMB),
+	BITFIELD(NO_UNEQUIP)
 ))
 
 //!# bitflags for the /obj/item/var/inv_hide_flags variable. These determine when a piece of clothing hides another, i.e. a helmet hiding glasses.

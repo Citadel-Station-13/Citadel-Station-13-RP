@@ -131,13 +131,14 @@
 	interface_name = "mounted laser cannon"
 	interface_desc = "A shoulder-mounted cell-powered laser cannon."
 
-	var/gun_type = /obj/item/gun/energy/lasercannon/mounted
+	var/gun_type = /obj/item/gun/projectile/energy/lasercannon/mounted
 	var/obj/item/gun/gun
 
 /obj/item/hardsuit_module/mounted/Initialize(mapload)
 	. = ..()
 	gun = new gun_type(src)
 	gun.safety_state = GUN_SAFETY_OFF
+	gun.one_handed_penalty = 0
 
 /obj/item/hardsuit_module/mounted/engage(atom/target)
 
@@ -145,10 +146,10 @@
 		return 0
 
 	if(!target)
-		gun.attack_self(holder.wearer)
-		return
+		gun.user_switch_firemodes(new /datum/event_args/actor(holder.wearer))
+		return 1
 
-	gun.Fire(target,holder.wearer)
+	gun.start_firing_cycle_async(holder.wearer, get_centered_entity_tile_angle(holder.wearer, target), NONE, null, target, new /datum/event_args/actor(holder.wearer))
 	return 1
 
 /obj/item/hardsuit_module/mounted/egun
@@ -160,7 +161,7 @@
 	interface_name = "mounted energy gun"
 	interface_desc = "A forearm-mounted suit-powered energy gun."
 
-	gun_type = /obj/item/gun/energy/gun/mounted
+	gun_type = /obj/item/gun/projectile/energy/gun/mounted
 
 /obj/item/hardsuit_module/mounted/taser
 
@@ -176,7 +177,7 @@
 	interface_name = "mounted taser"
 	interface_desc = "A shoulder-mounted cell-powered taser."
 
-	gun_type = /obj/item/gun/energy/taser/mounted
+	gun_type = /obj/item/gun/projectile/energy/taser/mounted
 
 /obj/item/hardsuit_module/mounted/energy_blade
 
@@ -197,7 +198,7 @@
 	active_power_cost = 10
 	passive_power_cost = 0
 
-	gun_type = /obj/item/gun/energy/crossbow/ninja
+	gun_type = /obj/item/gun/projectile/energy/crossbow/ninja
 
 /obj/item/hardsuit_module/mounted/energy_blade/process(delta_time)
 

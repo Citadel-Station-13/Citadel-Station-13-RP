@@ -172,7 +172,7 @@ export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenPr
                       </Table.Cell>
                       {[0, 1, 2].map((i) => {
                         let bind: string | null
-                          = boundKeys.at(i) || null;
+                          = boundKeys[i] || null;
                         return (
                           <Table.Cell width="20%" key={i}
                             height={KEYBIND_ROW_HEIGHT_I_FUCKING_HATE_TABLES_WEBVIEW_WHEN}

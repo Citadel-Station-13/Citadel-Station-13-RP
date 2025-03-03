@@ -3,7 +3,7 @@
 	name = "lasertag turret"
 	turret_type = "normal"
 	req_one_access = list()
-	installation = /obj/item/gun/energy/lasertag/omni
+	installation = /obj/item/gun/projectile/energy/lasertag/omni
 
 	locked = FALSE
 	enabled = FALSE
@@ -76,10 +76,10 @@
 
 /obj/machinery/porta_turret/lasertag/red
 	turret_type = "red"
-	installation = /obj/item/gun/energy/lasertag/red
+	installation = /obj/item/gun/projectile/energy/lasertag/red
 	check_weapons = TRUE // Used to target blue players
 
 /obj/machinery/porta_turret/lasertag/blue
 	turret_type = "blue"
-	installation = /obj/item/gun/energy/lasertag/blue
+	installation = /obj/item/gun/projectile/energy/lasertag/blue
 	check_synth = TRUE // Used to target red players

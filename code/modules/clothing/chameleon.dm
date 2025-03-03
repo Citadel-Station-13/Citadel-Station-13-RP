@@ -3,6 +3,9 @@
 //*****************
 
 /obj/item/proc/disguise(var/newtype, var/mob/user)
+	if(isnull(newtype))
+		disguise_blank()
+		return
 	//this is necessary, unfortunately, as initial() does not play well with list vars
 	var/obj/item/copy = new newtype(null) //so that it is GCed once we exit
 	desc = copy.desc
@@ -11,6 +14,13 @@
 	icon_override = copy.icon_override
 	default_worn_icon = copy.default_worn_icon
 	icon_state = copy.icon_state
+	worn_render_flags = copy.worn_render_flags
+
+	var/obj/item/clothing/under/uniform_copy = copy
+	if(istype(uniform_copy))
+		var/obj/item/clothing/under/uniform_self = src
+		uniform_self.snowflake_worn_state = uniform_copy.snowflake_worn_state
+
 	color = copy.color
 	item_state = copy.item_state
 	set_body_cover_flags(copy.body_cover_flags)
@@ -28,6 +38,21 @@
 	qdel(copy)
 
 	return copy
+
+/obj/item/proc/disguise_blank()
+	desc = ""
+	name = "nothing"
+	icon = null
+	icon_override = null
+	default_worn_icon = null
+	icon_state = null
+	worn_render_flags = null
+	color = null
+	item_state = null
+	inv_hide_flags = null
+	item_icons = null
+	item_state_slots = null
+	sprite_sheets = null
 
 // Subtypes shall override this, not /disguise()
 /obj/item/proc/OnDisguise(var/obj/item/copy, var/mob/user)
@@ -58,6 +83,8 @@
 		.[name] = path
  	tim_sort(., GLOBAL_PROC_REF(cmp_text_asc))
 
+ 	. = list("None") + .
+
 /obj/item/clothing/under/chameleon
 //starts off as black
 	name = "black jumpsuit"
@@ -79,11 +106,20 @@
 	set category = "Chameleon Items"
 	set src in usr
 
-	if(!ispath(GLOB.clothing_under[picked]))
+	if(picked != "None" && !ispath(GLOB.clothing_under[picked]))
 		return
 
 	disguise(GLOB.clothing_under[picked])
 	update_worn_icon()	//so our overlays update.
+
+/obj/item/clothing/under/chameleon/holosphere
+	name = "holographic jumpsuit"
+	desc = "A holographic jumpsuit."
+	clothing_flags = NO_UNEQUIP
+	origin_tech = list()
+
+/obj/item/clothing/under/chameleon/holosphere/emp_act(severity)
+	return ..()
 
 //*****************
 //**Chameleon Hat**
@@ -108,11 +144,20 @@
 	set category = "Chameleon Items"
 	set src in usr
 
-	if(!ispath(GLOB.clothing_head[picked]))
+	if(picked != "None" && !ispath(GLOB.clothing_head[picked]))
 		return
 
 	disguise(GLOB.clothing_head[picked])
 	update_worn_icon()	//so our overlays update.
+
+/obj/item/clothing/head/chameleon/holosphere
+	name = "holographic hat"
+	desc = "A holographic hat."
+	clothing_flags = NO_UNEQUIP
+	origin_tech = list()
+
+/obj/item/clothing/head/chameleon/holosphere/emp_act(severity)
+	return ..()
 
 //******************
 //**Chameleon Suit**
@@ -136,11 +181,20 @@
 	set category = "Chameleon Items"
 	set src in usr
 
-	if(!ispath(GLOB.clothing_suit[picked]))
+	if(picked != "None" && !ispath(GLOB.clothing_suit[picked]))
 		return
 
 	disguise(GLOB.clothing_suit[picked])
 	update_worn_icon()	//so our overlays update.
+
+/obj/item/clothing/suit/chameleon/holosphere
+	name = "holographic suit"
+	desc = "A holographic suit."
+	clothing_flags = NO_UNEQUIP
+	origin_tech = list()
+
+/obj/item/clothing/suit/chameleon/holosphere/emp_act(severity)
+	return ..()
 
 //*******************
 //**Chameleon Shoes**
@@ -163,11 +217,20 @@
 	set category = "Chameleon Items"
 	set src in usr
 
-	if(!ispath(GLOB.clothing_shoes[picked]))
+	if(picked != "None" && !ispath(GLOB.clothing_shoes[picked]))
 		return
 
 	disguise(GLOB.clothing_shoes[picked])
 	update_worn_icon()	//so our overlays update.
+
+/obj/item/clothing/shoes/chameleon/holosphere
+	name = "holographic shoes"
+	desc = "A holographic shoes."
+	clothing_flags = NO_UNEQUIP
+	origin_tech = list()
+
+/obj/item/clothing/shoes/chameleon/holosphere/emp_act(severity)
+	return ..()
 
 //**********************
 //**Chameleon Backpack**
@@ -192,7 +255,7 @@
 	set category = "Chameleon Items"
 	set src in usr
 
-	if(!ispath(GLOB.clothing_backpack[picked]))
+	if(picked != "None" && !ispath(GLOB.clothing_backpack[picked]))
 		return
 
 	disguise(GLOB.clothing_backpack[picked])
@@ -224,11 +287,20 @@
 	set category = "Chameleon Items"
 	set src in usr
 
-	if(!ispath(GLOB.clothing_gloves[picked]))
+	if(picked != "None" && !ispath(GLOB.clothing_gloves[picked]))
 		return
 
 	disguise(GLOB.clothing_gloves[picked])
 	update_worn_icon()	//so our overlays update.
+
+/obj/item/clothing/gloves/chameleon/holosphere
+	name = "holographic gloves"
+	desc = "A holographic gloves."
+	clothing_flags = NO_UNEQUIP
+	origin_tech = list()
+
+/obj/item/clothing/gloves/chameleon/holosphere/emp_act(severity)
+	return ..()
 
 //******************
 //**Chameleon Mask**
@@ -252,11 +324,20 @@
 	set category = "Chameleon Items"
 	set src in usr
 
-	if(!ispath(GLOB.clothing_mask[picked]))
+	if(picked != "None" && !ispath(GLOB.clothing_mask[picked]))
 		return
 
 	disguise(GLOB.clothing_mask[picked])
 	update_worn_icon()	//so our overlays update.
+
+/obj/item/clothing/mask/chameleon/holosphere
+	name = "holographic mask"
+	desc = "A holographic mask."
+	clothing_flags = NO_UNEQUIP
+	origin_tech = list()
+
+/obj/item/clothing/mask/chameleon/holosphere/emp_act(severity)
+	return ..()
 
 //*********************
 //**Chameleon Glasses**
@@ -281,11 +362,20 @@
 	set category = "Chameleon Items"
 	set src in usr
 
-	if(!ispath(GLOB.clothing_glasses[picked]))
+	if(picked != "None" && !ispath(GLOB.clothing_glasses[picked]))
 		return
 
 	disguise(GLOB.clothing_glasses[picked])
 	update_worn_icon()	//so our overlays update.
+
+/obj/item/clothing/glasses/chameleon/holosphere
+	name = "holographic glasses"
+	desc = "A holographic glasses."
+	clothing_flags = NO_UNEQUIP
+	origin_tech = list()
+
+/obj/item/clothing/glasses/chameleon/holosphere/emp_act(severity)
+	return ..()
 
 //******************
 //**Chameleon Belt**
@@ -312,7 +402,7 @@
 	set category = "Chameleon Items"
 	set src in usr
 
-	if(!ispath(GLOB.clothing_belt[picked]))
+	if(!picked != "None" && ispath(GLOB.clothing_belt[picked]))
 		return
 
 	disguise(GLOB.clothing_belt[picked])
@@ -344,7 +434,7 @@
 	set category = "Chameleon Items"
 	set src in usr
 
-	if(!ispath(GLOB.clothing_accessory[picked]))
+	if(picked != "None" && !ispath(GLOB.clothing_accessory[picked]))
 		return
 
 	disguise(GLOB.clothing_accessory[picked])
@@ -353,7 +443,7 @@
 //*****************
 //**Chameleon Gun**
 //*****************
-/obj/item/gun/energy/chameleon
+/obj/item/gun/projectile/energy/chameleon
 	name = "desert eagle"
 	desc = "A hologram projector in the shape of a gun. There is a dial on the side to change the gun's disguise."
 	icon = 'icons/obj/gun/holographic.dmi'
@@ -366,12 +456,12 @@
 	projectile_type = /obj/projectile/chameleon
 	charge_meter = 0
 	charge_cost = 48 //uses next to no power, since it's just holograms
-	battery_lock = 1
+	legacy_battery_lock = 1
 
 	var/obj/projectile/copy_projectile
 	var/global/list/gun_choices
 
-/obj/item/gun/energy/chameleon/Initialize(mapload)
+/obj/item/gun/projectile/energy/chameleon/Initialize(mapload)
 	. = ..()
 
 	if(!gun_choices)
@@ -380,9 +470,9 @@
 			var/obj/item/gun/G = gun_type
 			src.gun_choices[initial(G.name)] = gun_type
 
-/obj/item/gun/energy/chameleon/consume_next_projectile()
+/obj/item/gun/projectile/energy/chameleon/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	var/obj/projectile/P = ..()
-	if(P && ispath(copy_projectile))
+	if(istype(P) && ispath(copy_projectile))
 		P.name = initial(copy_projectile.name)
 		P.icon = initial(copy_projectile.icon)
 		P.icon_state = initial(copy_projectile.icon_state)
@@ -390,19 +480,19 @@
 		P.fire_sound = initial(copy_projectile.fire_sound)
 		P.hitscan = initial(copy_projectile.hitscan)
 		P.speed = initial(copy_projectile.speed)
-		P.muzzle_type = initial(copy_projectile.muzzle_type)
-		P.tracer_type = initial(copy_projectile.tracer_type)
-		P.impact_type = initial(copy_projectile.impact_type)
+		P.legacy_muzzle_type = initial(copy_projectile.legacy_muzzle_type)
+		P.legacy_tracer_type = initial(copy_projectile.legacy_tracer_type)
+		P.legacy_impact_type = initial(copy_projectile.legacy_impact_type)
 	return P
 
-/obj/item/gun/energy/chameleon/emp_act(severity)
+/obj/item/gun/projectile/energy/chameleon/emp_act(severity)
 	name = "desert eagle"
 	desc = "It's a desert eagle."
 	icon_state = "deagle"
 	update_icon()
 	update_worn_icon()
 
-/obj/item/gun/energy/chameleon/disguise(var/newtype)
+/obj/item/gun/projectile/energy/chameleon/disguise(var/newtype)
 	var/obj/item/gun/copy = ..()
 
 	modifystate = copy.icon_state
@@ -422,7 +512,7 @@
 		copy_projectile = null
 		//charge_meter = 0
 
-/obj/item/gun/energy/chameleon/verb/change(picked in gun_choices)
+/obj/item/gun/projectile/energy/chameleon/verb/change(picked in gun_choices)
 	set name = "Change Gun Appearance"
 	set category = "Chameleon Items"
 	set src in usr

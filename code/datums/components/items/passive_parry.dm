@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) Citadel Station Developers                *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
  * Shieldcall used as a listener for [/datum/component/passive_parry]
@@ -76,8 +76,8 @@
 	RegisterSignal(parent, COMSIG_ITEM_DROPPED, PROC_REF(on_dropped))
 	if(!hooked)
 		var/obj/item/item = parent
-		if(item.worn_mob())
-			on_equipped(item, item.worn_mob(), item.worn_slot)
+		if(item.get_worn_mob())
+			on_equipped(item, item.get_worn_mob(), item.worn_slot)
 
 /datum/component/passive_parry/UnregisterFromParent()
 	. = ..()

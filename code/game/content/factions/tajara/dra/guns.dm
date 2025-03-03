@@ -12,7 +12,7 @@ be a coup de'tat. Aesthetically they share a lot with the 20th century latin Ame
 //One Handed
 ///////////////////
 
-/obj/item/gun/ballistic/automatic/mini_uzi/taj
+/obj/item/gun/projectile/ballistic/automatic/mini_uzi/taj
 	name = "\improper Adhomai Uzi"
 	desc = "The Hotak's Arms machine pistol has developed a fierce reputation for its use by guerillas of the Democratic Republic of Adhomai. \
 	Its top loading magazine allows one to go completely prone in the deep snow banks of Adhomai while maintaining good weapon stability."
@@ -26,7 +26,7 @@ be a coup de'tat. Aesthetically they share a lot with the 20th century latin Ame
 //Two Handed
 ///////////////////
 
-/obj/item/gun/ballistic/SVD/taj
+/obj/item/gun/projectile/ballistic/SVD/taj
 	name = "Adhomai sniper rifle"
 	desc = "The Hotaki Marksman rifle, in stark contrast to the usual products of Hotak's arms, is an elegant and precise rifle that has taken the lives of \
 	many high value targets in the name of defending the Democratic Republic of Adhomai."
@@ -35,10 +35,10 @@ be a coup de'tat. Aesthetically they share a lot with the 20th century latin Ame
 	wielded_item_state = "SVD-wielded"
 	render_use_legacy_by_default = FALSE
 
-/obj/item/gun/ballistic/SVD/taj/scope()
+/obj/item/gun/projectile/ballistic/SVD/taj/scope()
 	toggle_scope(2.0)
 
-/obj/item/gun/ballistic/automatic/fal/taj
+/obj/item/gun/projectile/ballistic/automatic/fal/taj
 	name = "Adhomai battle rifle"
 	desc = "When faced with creating a modern battle rifle for the Democratic Republic of Adhomai, Hotak's Arms simply scaled up their machine pistol design \
 	to a rifle capable of chambering 7.62mm a round already in use by DRA marksmen. The new rifle proved itself a match for its peers and DRA propaganda recieved \
