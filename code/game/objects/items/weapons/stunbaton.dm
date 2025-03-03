@@ -25,7 +25,7 @@
 	/// Electrocute act flags
 	var/stun_electrocute_flags = ELECTROCUTE_ACT_FLAG_DO_NOT_STUN
 	/// Sound for the stun
-	var/stun_soud = 'sound/weapons/Egloves.ogg'
+	var/stun_sound = 'sound/weapons/Egloves.ogg'
 
 	/// Charge cost per hit in cell units
 	var/charge_cost = 240
@@ -107,11 +107,17 @@
 /**
  * Does not affect the normal hit, this only performs the stun.
  *
+ * @params
+ * * target - what to hit
+ * * attacker - (optional) attacking user
+ * * clickchain - (optional) clickchain data
+ * * use_target_zone - (optional) target that zone
+ *
  * @return TRUE if handled, FALSE otherwise
  */
 /obj/item/melee/baton/proc/powered_melee_impact(atom/target, mob/attacker, datum/event_args/actor/clickchain/clickchain, use_target_zone)
 	playsound(src, stun_sound, 75, TRUE)
-	target.electrocute(computed_kilojoules, 0, stun_power, stun_electrocute_flags, use_target_zone || BP_TORSO, src)
+	target.electrocute(DYNAMIC_CELL_UNITS_TO_KJ(charge_cost), 0, stun_power, stun_electrocute_flags, use_target_zone || BP_TORSO, src)
 	#warn impl
 
 
@@ -160,15 +166,6 @@
 
 #warn much like bottles we need a way to override melee
 
-/obj/item/melee/baton/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	if(status && (MUTATION_CLUMSY in user.mutations) && prob(50))
-		to_chat(user, "<span class='danger'>You accidentally hit yourself with the [src]!</span>")
-		user.afflict_paralyze(20 * 30)
-		deductcharge(charge_cost)
-		return
-	deductcharge(charge_cost)
-	return ..()
-
 /obj/item/melee/baton/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/L = target
 	if(!istype(L))
@@ -210,7 +207,7 @@
 //secborg stun baton module
 /obj/item/melee/baton/robot
 	charge_cost = 500
-	use_external_power = TRUE
+	legacy_use_external_power = TRUE
 
 //Makeshift stun baton. Replacement for stun gloves.
 /obj/item/melee/baton/cattleprod
@@ -220,7 +217,6 @@
 	item_state = "prod"
 	damage_force = 3
 	throw_force = 5
-	stunforce = 0
 	stun_power = 60	//same force as a stunbaton, but uses way more charge.
 	charge_cost = 2500
 	attack_verb = list("poked")
@@ -245,7 +241,6 @@
 	item_state = "prod"
 	damage_force = 3
 	throw_force = 5
-	stunforce = 0
 	stun_power = 60	//same force as a stunbaton, but uses way more charge.
 	charge_cost = 2500
 	attack_verb = list("poked")
@@ -303,11 +298,11 @@
 	item_state = "mini_baton"
 	w_class = WEIGHT_CLASS_SMALL
 	damage_force = 5
-	stunforce = 5
 	throw_force = 2
-	stun_power = 120	//one-hit
+	stun_power = 120
+	stun_electrocute_flags = NONE
 	charge_cost = 1150
-	stun_soud = 'sound/effects/lightningshock.ogg'
+	stun_sound = 'sound/effects/lightningshock.ogg'
 
 /obj/item/melee/baton/loaded/mini/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot)
 	return FALSE

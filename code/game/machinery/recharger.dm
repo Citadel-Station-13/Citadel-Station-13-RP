@@ -28,7 +28,7 @@
 
 /obj/machinery/recharger/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
-	if(. & CLICKCHAIN_FLAGS_USAGE_ABORT)
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
 
 	var/obj/item/G = using

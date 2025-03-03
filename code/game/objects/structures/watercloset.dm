@@ -429,22 +429,15 @@
 
 	else if (istype(O, /obj/item/melee/baton))
 		var/obj/item/melee/baton/B = O
-		if(B.bcell)
-			if(B.bcell.charge > 0 && B.status == 1)
-				flick("baton_active", src)
-				user.afflict_stun(20 * 10)
-				user.stuttering = 10
-				user.afflict_paralyze(20 * 10)
-				if(isrobot(user))
-					var/mob/living/silicon/robot/R = user
-					R.cell.charge -= 20
-				else
-					B.deductcharge(B.hitcost)
-				var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-				user.visible_message( \
-					"<span class='danger'>[user] was stunned by [TU.his] wet [O]!</span>", \
-					"<span class='userdanger'>[user] was stunned by [TU.his] wet [O]!</span>")
-				return 1
+		if(B.active)
+			flick("baton_active", src)
+			B.use_charge(B.charge_cost)
+			B.powered_melee_impact(user, user)
+			var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
+			user.visible_message( \
+				"<span class='danger'>[user] was stunned by [TU.his] wet [O]!</span>", \
+				"<span class='userdanger'>[user] was stunned by [TU.his] wet [O]!</span>")
+			return 1
 	else if(istype (O, /obj/item/stack/hairlesshide))
 		var/obj/item/stack/hairlesshide/HH = O
 		usr.visible_message("<span class='notice'>\The [usr] starts soaking \the [HH]</span>", "<span class='notice'>You start soaking \the [HH]</span>", "You hear the sound of something being submerged")
