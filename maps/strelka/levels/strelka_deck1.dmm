@@ -3665,7 +3665,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/item/vehicle_module/weapon/energy/phase,
+/obj/item/vehicle_module/weapon/energy/laser/heavy,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/armory2)
 "vG" = (
@@ -4640,9 +4640,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/item/gun/projectile/energy/gun,
-/obj/item/gun/projectile/energy/gun,
-/obj/item/gun/projectile/energy/gun,
+/obj/item/gun/projectile/energy/gun/fluff,
+/obj/item/gun/projectile/energy/gun/fluff,
+/obj/item/gun/projectile/energy/gun/fluff,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/armory2)
 "Ct" = (
