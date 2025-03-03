@@ -83,8 +83,8 @@
 
 	var/username = FindNameFromID(H) || "Unknown"
 	var/message = "[username] has overridden [A] (airlock) in \the [get_area(A)] at [A.x],[A.y],[A.z] with \the [src]."
-	GLOB.global_announcer.autosay(message, "Security Subsystem", "Command")
-	GLOB.global_announcer.autosay(message, "Security Subsystem", "Security")
+	GLOB.global_announcer.autosay(message, "Security Subsystem", "Command", GetConnectedZlevels(get_z(src)))
+	GLOB.global_announcer.autosay(message, "Security Subsystem", "Security", GetConnectedZlevels(get_z(src)))
 	return 1
 
 /obj/item/hardsuit_module/rescue_pharm

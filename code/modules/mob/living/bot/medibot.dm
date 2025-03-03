@@ -181,7 +181,7 @@
 	visible_message(SPAN_WARNING("[src] is trying to inject [victim]!"))
 	if(declare_treatment)
 		var/area/location = get_area(src)
-		GLOB.global_announcer.autosay("[src] is treating <b>[victim]</b> in <b>[location]</b>", "[src]", "Medical")
+		GLOB.global_announcer.autosay("[src] is treating <b>[victim]</b> in <b>[location]</b>", "[src]", "Medical", GetConnectedZlevels(get_z(src)))
 	busy = TRUE
 	update_appearance()
 	if(do_mob(src, victim, 30))
@@ -478,7 +478,7 @@
 				"Nooo!" = 'sound/voice/medibot/nooo.ogg',
 			)
 		if(MEDIBOT_PANIC_END)
-			GLOB.global_announcer.autosay("PSYCH ALERT: Crewmember [tipper_name] recorded displaying antisocial tendencies torturing bots in [get_area(src)]. Please schedule psych evaluation.", "[src]", "Medical")
+			GLOB.global_announcer.autosay("PSYCH ALERT: Crewmember [tipper_name] recorded displaying antisocial tendencies torturing bots in [get_area(src)]. Please schedule psych evaluation.", "[src]", "Medical", GetConnectedZlevels(get_z(src)))
 			set_right() // Strong independent Medibot don't need no crew!
 
 	// if(prob(tipped_status)) // Commented out pending introduction of jitter stuff from /tg/

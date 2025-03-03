@@ -140,7 +140,11 @@
 	if (SSticker.current_state == GAME_STATE_PLAYING)
 		if(character.mind.role_alt_title)
 			rank = character.mind.role_alt_title
-		AnnounceArrivalSimple(character.real_name, rank, join_message)
+		AnnounceArrivalSimple(character.real_name, rank, join_message, get_z(character))
 
-/proc/AnnounceArrivalSimple(name, rank = "visitor", join_message = "will arrive at the station shortly")
-	GLOB.global_announcer.autosay(join_message, "Arrivals Announcement Computer")
+/proc/AnnounceArrivalSimple(name, rank = "visitor", join_message = "will arrive at the station shortly", z_level)
+	if(z_level)
+		GLOB.global_announcer.autosay(join_message, "Arrivals Announcement Computer", zlevels = GetConnectedZlevels(z_level))
+	else
+		GLOB.global_announcer.autosay(join_message, "Arrivals Announcement Computer")
+

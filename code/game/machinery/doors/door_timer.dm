@@ -114,7 +114,7 @@
 		return FALSE
 
 	if(!forced)
-		GLOB.global_announcer.autosay("Timer has expired. Releasing prisoner.", "[src.name]", "Security")
+		GLOB.global_announcer.autosay("Timer has expired. Releasing prisoner.", "[src.name]", "Security", GetConnectedZlevels(get_z(src)))
 
 	timing = FALSE
 	activation_time = null

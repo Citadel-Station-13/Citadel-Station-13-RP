@@ -220,11 +220,11 @@
 	else
 		alert_msg = null
 	if(alert_msg)
-		GLOB.global_announcer.autosay(alert_msg, "Supermatter Monitor", "Engineering")
+		GLOB.global_announcer.autosay(alert_msg, "Supermatter Monitor", "Engineering", zlevels = GetConnectedZlevels(get_z(src)))
 		investigate_log("Emergency engineering announcement. Power:[power], Oxygen:[oxygen], Damage:[damage], Integrity:[get_integrity()]", INVESTIGATE_SUPERMATTER)
 		//Public alerts
 		if((damage > emergency_point) && !public_alert)
-			GLOB.global_announcer.autosay("WARNING: SUPERMATTER CRYSTAL DELAMINATION IMMINENT!", "Supermatter Monitor")
+			GLOB.global_announcer.autosay("WARNING: SUPERMATTER CRYSTAL DELAMINATION IMMINENT!", "Supermatter Monitor", zlevels = GetConnectedZlevels(get_z(src)))
 			for(var/mob/M in GLOB.player_list)
 				if(!istype(M,/mob/new_player) && !isdeaf(M))
 					SEND_SOUND(M, message_sound)
@@ -232,12 +232,12 @@
 			public_alert = 1
 			investigate_log("Emergency PUBLIC announcement. Power:[power], Oxygen:[oxygen], Damage:[damage], Integrity:[get_integrity()]", INVESTIGATE_SUPERMATTER)
 		else if((damage > emergency_point) && public_alert)
-			GLOB.global_announcer.autosay("DANGER: SUPERMATTER CRYSTAL DEGRADATION IN PROGRESS! INTEGRITY AT [integrity]%", "Supermatter Monitor")
+			GLOB.global_announcer.autosay("DANGER: SUPERMATTER CRYSTAL DEGRADATION IN PROGRESS! INTEGRITY AT [integrity]%", "Supermatter Monitor", zlevels = GetConnectedZlevels(get_z(src)))
 			for(var/mob/M in GLOB.player_list)
 				if(!istype(M,/mob/new_player) && !isdeaf(M))
 					SEND_SOUND(M, sound('sound/ambience/engine_alert2.ogg'))
 		else if(safe_warned && public_alert)
-			GLOB.global_announcer.autosay(alert_msg, "Supermatter Monitor")
+			GLOB.global_announcer.autosay(alert_msg, "Supermatter Monitor", zlevels = GetConnectedZlevels(get_z(src)))
 			public_alert = 0
 
 /obj/machinery/power/supermatter/process(delta_time)
