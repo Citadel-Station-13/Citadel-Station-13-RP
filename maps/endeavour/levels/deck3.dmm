@@ -2894,18 +2894,6 @@
 /obj/overmap/entity/visitable/ship/landable/mining/endeavour,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
-"cfM" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/security/nuke_storage)
 "cfS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -3676,12 +3664,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/sleep/Dorm_4)
 "cMX" = (
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
+/obj/machinery/camera/network/command{
+	dir = 4
 	},
-/obj/structure/cable/green{
-	icon_state = "0-4"
-	},
+/obj/structure/table/rack,
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "cNr" = (
@@ -5157,7 +5143,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/kitchen)
 "dMH" = (
-/turf/space/basic,
+/turf/simulated/floor/tiled,
 /area/maintenance/cargo)
 "dMY" = (
 /obj/structure/cable/green{
@@ -6790,19 +6776,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/hanger)
-"eVB" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
-	},
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/security/nuke_storage)
 "eVN" = (
 /turf/simulated/wall/prepainted,
 /area/crew_quarters/recreation_area)
@@ -7070,12 +7043,6 @@
 "feQ" = (
 /turf/simulated/wall/prepainted/security,
 /area/endeavour/hallway/d3portforhall)
-"ffu" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
-	},
-/turf/simulated/floor/tiled/dark,
-/area/security/nuke_storage)
 "ffP" = (
 /obj/structure/table/steel,
 /obj/item/clothing/gloves/black,
@@ -8500,7 +8467,6 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3aftmaint)
 "gnO" = (
-/obj/machinery/air_alarm/north_mount,
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -11102,8 +11068,9 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3aftmaint)
 "irw" = (
-/obj/machinery/camera/network/command{
-	dir = 4
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/power/apc/west_mount{
+	cell_type = /obj/item/cell/super
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
@@ -12321,9 +12288,6 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "jtk" = (
@@ -12636,9 +12600,18 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "jDO" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/cable/green{
-	icon_state = "4-8"
+/obj/machinery/button/remote/blast_door{
+	id = "VaultAc";
+	name = "Vault Blast Door";
+	req_access = list(53);
+	req_one_access = list(53);
+	pixel_x = 32
+	},
+/obj/machinery/button/remote/airlock{
+	id = "vault";
+	name = "Vault Door Lockdown";
+	specialfunctions = 4;
+	pixel_x = -27
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
@@ -12794,9 +12767,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/security/hallway)
-"jKE" = (
-/turf/space/basic,
-/area/crew_quarters/sleep/Dorm_3)
 "jKI" = (
 /obj/machinery/door/airlock/glass,
 /obj/machinery/door/firedoor{
@@ -13329,8 +13299,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/brig)
 "kfo" = (
-/turf/space/basic,
-/area/tether/surfacebase/entertainment)
+/obj/machinery/button/remote/airlock{
+	id = "vault";
+	name = "Vault Door Lockdown";
+	specialfunctions = 4;
+	pixel_x = -30
+	},
+/turf/simulated/floor/tiled,
+/area/maintenance/cargo)
 "kfw" = (
 /obj/structure/cable/green{
 	icon_state = "2-8"
@@ -13438,9 +13414,6 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/monotile,
 /area/prison/cell_block)
-"kiY" = (
-/turf/space/basic,
-/area/maintenance/dormitory)
 "kjU" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/structure/cable/green{
@@ -15770,15 +15743,9 @@
 /turf/simulated/floor/tiled/monodark,
 /area/quartermaster/foyer)
 "mhK" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/security/nuke_storage)
+/obj/machinery/air_alarm/north_mount,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d3portamidhall)
 "mhO" = (
 /obj/machinery/shield_diffuser,
 /obj/machinery/door/airlock/glass_external{
@@ -22344,30 +22311,8 @@
 /turf/space/basic,
 /area/security/hanger)
 "riL" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/button/remote/blast_door{
-	id = "VaultAc";
-	name = "Vault Blast Door";
-	pixel_y = 32;
-	req_access = list(53);
-	req_one_access = list(53)
-	},
-/obj/machinery/button/remote/airlock{
-	id = "vault";
-	name = "Vault Door Lockdown";
-	pixel_y = -32;
-	specialfunctions = 4
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/security/nuke_storage)
+/turf/simulated/wall/r_wall/prepainted/command,
+/area/maintenance/cargo)
 "rjO" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -22499,9 +22444,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/security/lobby)
-"rqN" = (
-/turf/space/basic,
-/area/endeavour/hallway/d3portforhall)
 "rrf" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
@@ -24758,11 +24700,15 @@
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/maintenance/substation/cargo)
 "sVr" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
+/obj/machinery/button/remote/blast_door{
+	id = "VaultAc";
+	name = "Vault Blast Door";
+	pixel_y = 32;
+	req_access = list(53);
+	req_one_access = list(53)
 	},
-/turf/simulated/floor/tiled/dark,
-/area/security/nuke_storage)
+/turf/simulated/floor/tiled,
+/area/maintenance/cargo)
 "sVD" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -25959,7 +25905,7 @@
 /turf/simulated/floor/tiled,
 /area/space)
 "tMK" = (
-/turf/space/basic,
+/turf/simulated/floor/plating,
 /area/endeavour/hallway/d3portamidhall)
 "tMP" = (
 /obj/machinery/light{
@@ -27036,9 +26982,6 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "uDB" = (
@@ -27145,12 +27088,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/kitchen)
-"uJk" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
-	},
-/turf/simulated/floor/tiled/dark,
-/area/security/nuke_storage)
 "uJr" = (
 /turf/simulated/floor/wood,
 /area/maintenance/cargo)
@@ -27212,22 +27149,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/prison/cell_block)
 "uLy" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
-/obj/structure/cable/green{
-	icon_state = "2-8"
-	},
-/obj/machinery/button/remote/blast_door{
-	id = "VaultAc";
-	name = "Vault Blast Door";
-	pixel_y = 32;
-	req_access = list(53);
-	req_one_access = list(53)
-	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3portamidhall)
 "uMe" = (
@@ -27270,6 +27191,8 @@
 /obj/machinery/fire_alarm/west_mount{
 	pixel_x = -26
 	},
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/table/rack,
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "uMR" = (
@@ -27741,9 +27664,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/endeavour/surfacebase/bar_backroom)
-"vgb" = (
-/turf/space/basic,
-/area/crew_quarters/sleep/bedrooms)
 "vge" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -29233,11 +29153,6 @@
 /obj/machinery/reagentgrinder,
 /turf/simulated/floor/wood,
 /area/maintenance/dormitory)
-"wlu" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/table/rack,
-/turf/simulated/floor/tiled/dark,
-/area/security/nuke_storage)
 "wlC" = (
 /obj/machinery/camera/network/command{
 	dir = 9
@@ -30002,12 +29917,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
 	icon_state = "1-2"
-	},
-/obj/machinery/button/remote/airlock{
-	id = "vault";
-	name = "Vault Door Lockdown";
-	specialfunctions = 4;
-	pixel_x = -30
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -54132,8 +54041,8 @@ vRl
 vRl
 vRl
 rBG
-dMH
-dMH
+fju
+fju
 rBG
 jid
 jid
@@ -54326,13 +54235,13 @@ vRl
 vRl
 vRl
 vRl
-dMH
-dMH
-dMH
+fju
+fju
+fju
 tMK
 tMK
 tMK
-kiY
+tOV
 hLd
 uSC
 orP
@@ -54520,13 +54429,13 @@ uMF
 auM
 vRl
 vRl
-dMH
-dMH
-dMH
+fju
+fju
+fju
 tMK
 tMK
 tMK
-jKE
+fZj
 wki
 fZj
 auQ
@@ -54709,18 +54618,18 @@ vRl
 fHp
 cnB
 hJR
-jDO
+hJR
 cnB
 lTY
 vRl
 ncY
-dMH
-dMH
-dMH
+fju
+fju
+fju
 tMK
 tMK
 tMK
-jKE
+fZj
 wki
 fZj
 auQ
@@ -54908,13 +54817,13 @@ cnB
 hMc
 vRl
 vRl
-dMH
-dMH
-dMH
+fju
+fju
+fju
 tMK
 tMK
 tMK
-jKE
+fZj
 wki
 mrw
 auQ
@@ -55097,18 +55006,18 @@ vRl
 oFg
 cnB
 hJR
-mhK
-ffu
+hJR
+cnB
 xwh
 vRl
 vRl
-dMH
-dMH
-dMH
+riL
+fju
+fju
 tMK
 tMK
 tMK
-jKE
+fZj
 wki
 wFj
 auQ
@@ -55292,17 +55201,17 @@ rzc
 cnB
 hJR
 jsR
-sVr
+cnB
 fBD
 vRl
 vRl
-dMH
-dMH
-dMH
+riL
+rBG
+rBG
 tMK
 tMK
 tMK
-jKE
+fZj
 wki
 wki
 auQ
@@ -55485,18 +55394,18 @@ vRl
 tix
 cnB
 hJR
-eVB
-uJk
-wlu
-vRl
-vRl
+hJR
+cnB
+cnB
+jDO
+fxS
+kfo
 dMH
-dMH
-dMH
+rBG
 tMK
 tMK
 tMK
-vgb
+rks
 rks
 eMa
 fla
@@ -55679,18 +55588,18 @@ vRl
 oSY
 cnB
 cnB
-cfM
+cnB
 wlC
-wlu
+cnB
 vRl
-ncY
+vRl
+sVr
 dMH
-dMH
-dMH
+rBG
 tMK
 tMK
 tMK
-vgb
+rks
 rks
 eMa
 fla
@@ -55873,18 +55782,18 @@ vRl
 vRl
 vRl
 vRl
-riL
 vRl
 vRl
 vRl
 vRl
+ncY
 dMH
 dMH
-dMH
+rBG
+mhK
 tMK
 tMK
-tMK
-vgb
+rks
 gnO
 eMa
 fla
@@ -56067,18 +55976,18 @@ vRl
 vRl
 vRl
 vRl
-fxS
+vRl
 vRl
 lNv
 vRl
 vRl
 dMH
 dMH
-dMH
-tMK
-tMK
-tMK
-vgb
+rBG
+jid
+jid
+jid
+fla
 fla
 lub
 fla
@@ -56263,13 +56172,13 @@ tMK
 tMK
 tMK
 tMK
-tMK
-tMK
 jid
 jid
 jid
 uLy
 wOl
+uLy
+uLy
 ukT
 ukT
 awN
@@ -56457,13 +56366,13 @@ tMK
 tMK
 tMK
 tMK
-tMK
-tMK
 rWm
 jid
 jid
 rWA
 eWb
+uLy
+uLy
 gDD
 eWb
 tGl
@@ -56648,16 +56557,16 @@ jYr
 bHq
 ibA
 ibA
-kfo
-kfo
-kfo
-kfo
-kfo
-kfo
-kfo
-kfo
-kfo
-tMK
+eNA
+eNA
+eNA
+eNA
+eNA
+tlS
+tlS
+tlS
+tlS
+jid
 jid
 ygj
 fla
@@ -56842,15 +56751,15 @@ jGe
 jYr
 pRW
 ibA
-kfo
-kfo
-kfo
-kfo
-kfo
-kfo
-kfo
-kfo
-kfo
+eNA
+eNA
+eNA
+eNA
+eNA
+eNA
+tlS
+eNA
+eNA
 tMK
 jid
 srX
@@ -57037,10 +56946,10 @@ pRW
 pRW
 ibA
 tlS
-dJG
-kUO
-tHs
-ozu
+tlS
+tlS
+tlS
+tlS
 tlS
 eNA
 xIv
@@ -57231,11 +57140,11 @@ pRW
 pRW
 tUu
 tlS
-soe
-cHf
-eNA
-eNA
-jPh
+dJG
+kUO
+tHs
+ozu
+tlS
 eNA
 eNA
 eNA
@@ -57425,11 +57334,11 @@ pRW
 pRW
 pRW
 tlS
-ybd
-djn
-lzC
-fUO
-tlS
+soe
+cHf
+eNA
+eNA
+jPh
 nMU
 eNA
 eNA
@@ -57619,20 +57528,20 @@ pRW
 pRW
 pRW
 tlS
-kfo
-kfo
-kfo
-kfo
-kfo
-kfo
-kfo
-kfo
-rqN
-rqN
-rqN
-dgK
-dgK
-dgK
+ybd
+djn
+lzC
+fUO
+tlS
+eNA
+eNA
+eNA
+sTd
+sTd
+sTd
+lTw
+lTw
+lTw
 mMr
 pHB
 ecv
@@ -57813,20 +57722,20 @@ pRW
 pRW
 pRW
 tlS
-kfo
-kfo
-kfo
-kfo
-kfo
-kfo
-kfo
-kfo
-rqN
-rqN
-rqN
-dgK
-dgK
-dgK
+eNA
+eNA
+eNA
+eNA
+eNA
+eNA
+eNA
+eNA
+sTd
+sTd
+sTd
+lTw
+lTw
+lTw
 mMr
 pHB
 ecv
@@ -58007,10 +57916,10 @@ pRW
 pRW
 pRW
 tlS
-kfo
-kfo
-kfo
-kfo
+eNA
+eNA
+eNA
+eNA
 tlS
 tlS
 tlS
@@ -58201,10 +58110,10 @@ pRW
 pRW
 pRW
 tlS
-kfo
-kfo
-kfo
-kfo
+eNA
+eNA
+eNA
+eNA
 tlS
 fPA
 tZY
@@ -58396,9 +58305,9 @@ pRW
 pRW
 tlS
 tlS
-kfo
-kfo
-kfo
+eNA
+eNA
+eNA
 tlS
 aWf
 nue
@@ -58590,9 +58499,9 @@ pRW
 pRW
 pRW
 tlS
-kfo
-kfo
-kfo
+eNA
+eNA
+eNA
 tlS
 jmv
 oUd
@@ -58784,9 +58693,9 @@ pRW
 pRW
 pRW
 tlS
-kfo
-kfo
-kfo
+eNA
+eNA
+eNA
 tlS
 yil
 uwR
@@ -58978,9 +58887,9 @@ pRW
 jGe
 jGe
 tlS
-kfo
-kfo
-kfo
+eNA
+eNA
+eNA
 tlS
 tlS
 tlS
@@ -59172,12 +59081,12 @@ pRW
 jYr
 jGe
 mMr
-dgK
-dgK
-dgK
-dgK
-dgK
-dgK
+lTw
+lTw
+lTw
+lTw
+lTw
+lTw
 mMr
 sTd
 sTd

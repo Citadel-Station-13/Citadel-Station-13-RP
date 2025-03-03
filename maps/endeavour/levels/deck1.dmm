@@ -2201,6 +2201,10 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/endeavour/surfacebase/sauna)
+"bGA" = (
+/obj/machinery/door/airlock/glass,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d1afthall)
 "bHf" = (
 /obj/machinery/disperser/middle{
 	dir = 4
@@ -2322,6 +2326,9 @@
 	dir = 4
 	},
 /area/hallway/secondary/docking_hallway2)
+"bJn" = (
+/turf/simulated/wall/r_wall/prepainted/science,
+/area/endeavour/hallway/d1afthall)
 "bJN" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/cryopod/robot/door/shuttle,
@@ -5199,6 +5206,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/exploration/hallway_aft)
+"dQk" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/landmark/spawnpoint/overflow/station,
+/turf/simulated/floor/tiled/techfloor,
+/area/endeavour/hallway/d1afthall)
 "dQJ" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -5435,6 +5447,16 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/steel,
 /area/space)
+"dZJ" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 4
+	},
+/obj/landmark/spawnpoint/overflow/station,
+/turf/simulated/floor/tiled/techfloor,
+/area/endeavour/hallway/d1afthall)
 "dZQ" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
@@ -7981,6 +8003,13 @@
 "fFn" = (
 /turf/space,
 /area/crew_quarters/captain)
+"fFx" = (
+/obj/landmark/spawnpoint/overflow/station,
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/endeavour/hallway/d1afthall)
 "fFJ" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
@@ -10205,6 +10234,13 @@
 /obj/machinery/appliance/cooker/oven,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/lounge/kitchen_freezer)
+"hpD" = (
+/obj/machinery/cryopod/robot/door/gateway,
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/endeavour/hallway/d1afthall)
 "hpL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -11607,6 +11643,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
+"ipu" = (
+/obj/machinery/cryopod/robot/door/gateway,
+/turf/simulated/floor/tiled/techfloor,
+/area/endeavour/hallway/d1afthall)
 "ipC" = (
 /turf/simulated/wall/r_wall/prepainted/exploration,
 /area/exploration/pilot_prep)
@@ -11885,6 +11925,19 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/exploration/hallway_fore)
+"iyS" = (
+/obj/effect/floor_decal/techfloor/orange,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/obj/landmark/spawnpoint/overflow/station,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/computer/cryopod{
+	name = "asset retention console";
+	pixel_y = -30
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/endeavour/hallway/d1afthall)
 "izk" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/porta_turret/stationary{
@@ -18350,6 +18403,13 @@
 /obj/map_helper/access_helper/airlock/station/science/toxins,
 /turf/simulated/floor/plating,
 /area/rnd/misc_lab)
+"mSB" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/obj/landmark/spawnpoint/overflow/station,
+/turf/simulated/floor/tiled/techfloor,
+/area/endeavour/hallway/d1afthall)
 "mTa" = (
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
@@ -23457,6 +23517,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hydroponics/garden)
+"qAM" = (
+/obj/effect/floor_decal/techfloor/orange,
+/obj/landmark/spawnpoint/overflow/station,
+/turf/simulated/floor/tiled/techfloor,
+/area/endeavour/hallway/d1afthall)
 "qBg" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -24819,6 +24884,11 @@
 "rCH" = (
 /turf/simulated/wall/prepainted/command,
 /area/lawoffice)
+"rCP" = (
+/obj/landmark/spawnpoint/overflow/station,
+/obj/machinery/power/apc/west_mount,
+/turf/simulated/floor/tiled/techfloor,
+/area/endeavour/hallway/d1afthall)
 "rCU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -26760,6 +26830,16 @@
 /obj/structure/ship_munition/disperser_charge/emp,
 /turf/simulated/floor/tiled/dark,
 /area/endeavour/surfacebase/tram)
+"tav" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/obj/landmark/spawnpoint/overflow/station,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/endeavour/hallway/d1afthall)
 "tby" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -26798,6 +26878,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d1afthall)
+"tdm" = (
+/obj/landmark/spawnpoint/overflow/station,
+/turf/simulated/floor/tiled/techfloor,
 /area/endeavour/hallway/d1afthall)
 "tdE" = (
 /obj/machinery/light/small,
@@ -27487,6 +27571,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/space)
+"tzK" = (
+/obj/effect/floor_decal/techfloor/orange,
+/obj/landmark/spawnpoint/overflow/station,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/endeavour/hallway/d1afthall)
 "tAk" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/secondary/docking_hallway)
@@ -45383,12 +45475,12 @@ kHh
 kHh
 kHh
 kQd
-tsT
-tsT
-tsT
-tsT
-tsT
-tsT
+dZJ
+tdm
+rCP
+tdm
+tzK
+kQd
 tsT
 tsT
 iQS
@@ -45577,12 +45669,12 @@ kHh
 kHh
 kHh
 kQd
-tsT
-tsT
-tsT
-tsT
-tsT
-tsT
+tav
+ipu
+fFx
+hpD
+qAM
+kQd
 tsT
 tsT
 tsT
@@ -45771,12 +45863,12 @@ kHh
 kHh
 kHh
 kQd
-tsT
-tsT
-tsT
-tsT
-tsT
-tsT
+mSB
+tdm
+tdm
+dQk
+iyS
+kQd
 tsT
 tsT
 tsT
@@ -45965,12 +46057,12 @@ kHh
 kHh
 kHh
 kQd
-tsT
-tsT
-tsT
-tsT
-tsT
-tsT
+bJn
+bGA
+bGA
+bGA
+kQd
+kQd
 tsT
 tsT
 tsT
