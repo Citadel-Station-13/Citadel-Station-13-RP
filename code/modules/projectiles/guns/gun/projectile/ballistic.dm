@@ -296,9 +296,20 @@
 			legacy_emit_chambered_residue()
 			if(magazine_auto_eject && !magazine.get_amount_remaining())
 				remove_magazine(null, null, TRUE)
+			if(chamber_cycle_after_fire)
+				cycle_chamber(FALSE, TRUE)
+			if(chamber_spin_after_fire && internal_magazine_revolver_mode && internal_magazine)
+				unsafe_spin_chamber_to_next()
 		if(GUN_FIRED_FAIL_INERT)
+			if(chamber_cycle_after_inert)
+				cycle_chamber(FALSE, TRUE)
+			if(chamber_spin_after_inert && internal_magazine_revolver_mode && internal_magazine)
+				unsafe_spin_chamber_to_next()
 		if(GUN_FIRED_FAIL_EMPTY)
-			#warn handle all
+			if(chamber_cycle_after_inert)
+				cycle_chamber(FALSE, TRUE)
+			if(chamber_spin_after_inert && internal_magazine_revolver_mode && internal_magazine)
+				unsafe_spin_chamber_to_next()
 
 /obj/item/gun/projectile/ballistic/examine(mob/user, dist)
 	. = ..()
@@ -717,6 +728,14 @@
  */
 /obj/item/gun/projectile/ballistic/proc/unsafe_spin_chamber_to_random()
 	unsafe_spin_chamber_to_index(rand(1, length(internal_magazine_vec)))
+
+/**
+ * Switches to the next index in our internal magazine.
+ * * Crashes if we don't use a revolver-like internal magazine.
+ */
+/obj/item/gun/projectile/ballistic/proc/unsafe_spin_chamber_to_next()
+	var/next_index = internal_magazine_revolver_offset >= length(internal_magazine_vec) ? 1 : internal_magazine_revolver_offset + 1
+	unsafe_spin_chamber_to_index(next_index)
 
 //* Rendering *//
 
