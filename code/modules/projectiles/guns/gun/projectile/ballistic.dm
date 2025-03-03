@@ -131,6 +131,7 @@
 
 	#warn implement this
 	/// Perform simplified bolt simulation on the gun.
+	/// * [chamber_simulation] is required for this to do anything.
 	///
 	/// Bolt simulated guns do the following:
 	/// * The bolt must be closed to fire.
@@ -158,12 +159,15 @@
 
 	//* Chamber *//
 
+	/// If this is off, we draw casings from the magazine directly,
+	/// and do not allow charging the chamber.
+	var/chamber_simulation = TRUE
 	/// Chambered round
 	/// * This is considered an internal variable; use getters / setters to manipulate it.
 	/// How this works:
 	/// * This is filled on cycle if it's an external magazine and chamber is separated from magazine.
 	/// * Ditto for internal magazine, if chamber is separated.
-	/// * If [chamber_magazine_separation] is off, this variable will never be filled.
+	/// * If [chamber_simulation] is off, this variable will never be filled.
 	///   get_chambered(), eject_chamber(), etc, will all return the first in magazine.
 	/// * If [internal_magazine] and [internal_magazine_revolver_mode] are both on, this variable will never be filled.
 	///   get_chambered(), eject_chamber(), etc, will all return the current revolver offset.
@@ -173,35 +177,21 @@
 	///   invalid behavior, instead just acting weirdly. You can technically use this to
 	///   make custom behaviors, but it's not recommended.
 	VAR_PROTECTED/obj/item/ammo_casing/chamber
-	/// Eject rounds after firing and chamber the next one
+	/// Cycle the chamber on a successful live fire.
 	var/chamber_cycle_after_fire = TRUE
-	/// chamber will still clear a shot even if it doesn't fire
-	/// * basically means a gun will automatically un-jam itself
-	/// * you're a coward if you turn this on
-	/// * this does not affect cycling chambers like revolvers! duh.
+	/// Cycle the chamber on an unsuccessful inert fire.
 	var/chamber_cycle_after_inert = FALSE
 	/// chamber manual cycle sound
 	/// * not played on an automatic cycle (from live / inert fire)
 	var/chamber_manual_cycle_sound = /datum/soundbyte/guns/ballistic/rack_chamber/generic_1
-	/// Spin the internal magazine after a live firing
-	/// * Has no effect if [internal_magazine_revolver_mode] is off.
-	/// * If you don't want the casing to drop, you need to remove [chamber_cycle_after_fire]
+	/// Spin the internal magazine after a live-fire.
+	/// * Only has an effect on revolver-like internal magazines.
+	/// * Cycling the chamber will eject the round. Turn off 'cycle after fire' if you don't want this.
 	var/chamber_spin_after_fire = TRUE
-	/// Spin the internal magazine after an inert fire
-	/// * Has no effect if [internal_magazine_revolver_mode] is off.
-	/// * If you don't want the casing to drop, you need to remove [chamber_cycle_after_fire]
-	/// * There's no manual spin button at time of writing; this should generally be enabled.
+	/// Spin the internal magazine after an inert-fire.
+	/// * Only has an effect on revolver-like internal magazines.
+	/// * Cycling the chamber will eject the round. Turn off 'cycle after inert' if you don't want this.
 	var/chamber_spin_after_inert = TRUE
-	/// A loaded magazine will leave a bullet in the chamber
-	/// once removed.
-	/// * If this is TRUE, the chamber **immediately** takes a bullet from the
-	///   magazine once it's inserted.
-	/// * If this is FALSE, the chamber does not take the bullet until it's being
-	///   fired, and the chamber will never hold a bullet if a magazine isn't inserted.
-	/// * This must be TRUE to allow manual loading without a magazine.
-	/// * This only affects external magazines. Internal magazines have special
-	///   handling that entirely ignores this.
-	var/chamber_magazine_separation = TRUE
 
 	//* Configuration *//
 	/// If set, accepts ammo and magazines of this caliber.
@@ -427,19 +417,19 @@
  * * This also means this'll let you insert into chamber even with a magazine
  *   inserted or with an internal magazine, if the chamber is empty.
  * * Inserts into first open position after currently chambered if it's a revolver-like structure,
- *   unless doing from top, in which case this is reversed to be first position behind current going
+ *   unless doing `reverse_order`, in which case this is reversed to be first position behind current going
  *   backwards.
  * * Inserts into bottom of internal magazine if it's not a revolver-like structure, then chambered.
- *   If `from_top_if_internal` is on, insert into chambered, then to top of magazine instead.
+ *   If `reverse_order` is on, insert into chambered, then to top of magazine instead.
  *
  * @return TRUE / FALSE success / fail
  */
-/obj/item/gun/projectile/ballistic/proc/insert_casing(obj/item/ammo_casing/casing, silent, from_top_if_internal)
+/obj/item/gun/projectile/ballistic/proc/insert_casing(obj/item/ammo_casing/casing, silent, reverse_order)
 	if(internal_magazine)
 		// insert into internal magazine
 		if(internal_magazine_revolver_mode)
 			var/success
-			if(from_top_if_internal)
+			if(reverse_order)
 				for(var/i in internal_magazine_revolver_offset to length(internal_magazine_vec))
 					if(!internal_magazine_vec[i])
 						success = TRUE
@@ -468,8 +458,8 @@
 							casing.forceMove(src)
 							break
 		else
-			if(from_top_if_internal)
-				if(!chambered)
+			if(reverse_order)
+				if(!chamber)
 					chamber = casing
 					casing.forceMove(src)
 				else if(length(internal_magazine_vec) < internal_magazine_size)
@@ -495,10 +485,13 @@
  *
  * @return amount loaded
  */
-/obj/item/gun/projectile/ballistic/proc/insert_speedloader(obj/item/ammo_magazine/speedloader, silent)
+/obj/item/gun/projectile/ballistic/proc/insert_speedloader(obj/item/ammo_magazine/speedloader, silent, reverse_order)
 	// only works with internal magazines
 	if(!internal_magazine)
 		return 0
+	if(internal_magazine_revolver_mode)
+	else
+		var/wanted = max(0, internal_magazine_size - length(internal_magazine_vec))
 	#warn impl
 
 /**
@@ -550,12 +543,12 @@
  * @params
  * * new_loc - where to put the casing
  * * silent - don't make a noise
- * * from_top_if_internal - remove from chambered, then top of magazine first,
+ * * reverse_order - remove from chambered, then top of magazine first,
  *                          rather than bottom to top then chambered.
  *                          for revolvers, this will go from the current bullet forwards,
  *                          rather than the position before the current bullet backwards.
  */
-/obj/item/gun/projectile/ballistic/proc/remove_casing(atom/new_loc, silent, from_top_if_internal) as /obj/item/ammo_casing
+/obj/item/gun/projectile/ballistic/proc/remove_casing(atom/new_loc, silent, reverse_order) as /obj/item/ammo_casing
 	RETURN_TYPE(/obj/item/ammo_casing)
 	var/obj/item/ammo_casing/ejecting
 
@@ -564,7 +557,7 @@
 	if(internal_magazine)
 		#warn impl these
 		if(internal_magazine_revolver_mode)
-			if(from_top_if_internal)
+			if(reverse_order)
 				for(var/i in internal_magazine_revolver_offset to length(internal_magazine_vec))
 					ejecting = internal_magazine_vec[i]
 					if(ejecting)
@@ -585,7 +578,7 @@
 						if(ejecting)
 							break
 		else
-			if(from_top_if_internal)
+			if(reverse_order)
 				if(chamber)
 					ejecting = chamber
 					chamber = null
@@ -641,7 +634,7 @@
 		return
 	if(internal_magazine_revolver_mode && internal_magazine)
 		return internal_magazine_vec[internal_magazine_revolver_offset]
-	if(!chamber_magazine_separation)
+	if(!chamber_simulation)
 		if(internal_magazine)
 			return internal_magazine[length(internal_magazine)]
 		else
@@ -666,7 +659,7 @@
 		return FALSE
 	if(internal_magazine_revolver_mode && internal_magazine)
 		return FALSE
-	if(!chamber_magazine_separation)
+	if(!chamber_simulation)
 		return FALSE
 	if(internal_magazine)
 		if(length(internal_magazine_vec))
@@ -745,8 +738,20 @@
 		return ..()
 	. = ..()
 	// todo: render_break_overlay
+	// todo: base state handling? what if we want to change base state on parent handling?
 	if(render_bolt_overlay)
-		#warn bolt overlay
+		switch(render_bolt_overlay)
+			if(BALLISTIC_RENDER_BOLT_BOTH)
+				if(bolt_closed)
+					add_overlay("[base_icon_state]-bolt-close")
+				else
+					add_overlay("[base_icon_state]-bolt-open")
+			if(BALLISTIC_RENDER_BOLT_CLOSE)
+				if(bolt_closed)
+					add_overlay("[base_icon_state]-bolt")
+			if(BALLISTIC_RENDER_BOLT_OPEN)
+				if(!bolt_closed)
+					add_overlay("[base_icon_state]-bolt")
 	if(render_magazine_overlay)
 		if(magazine)
 			var/overlay = get_magazine_overlay_for(magazine)

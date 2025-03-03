@@ -2,6 +2,20 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /obj/item/gun/projectile/ballistic/should_unique_action_rack_chamber()
+	return chamber_simulation
+
+/**
+ * * The weird proc args is because this supports non-clickchain use.
+ *
+ * @params
+ * * actor - actor data
+ * * clickchain - (optional) clickchain did, if from clickchain
+ * * no_sound - suppress default sounds
+ * * no_message - suppress default messages
+ *
+ * @return clickchain flags
+ */
+/obj/item/gun/projectile/ballistic/proc/user_clickchain_cycle_chamber(datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
 	#warn impl
 
 /**
