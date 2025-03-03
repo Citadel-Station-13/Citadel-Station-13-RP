@@ -1,6 +1,9 @@
 
 GLOBAL_LIST_EMPTY(connected_z_cache)
 
+/proc/GetStationZlevels()
+	return (LEGACY_MAP_DATUM).station_levels
+
 // todo: legacy code
 /proc/GetConnectedZlevels(z)
 	return SSmapping.get_z_stack(z)

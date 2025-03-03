@@ -499,7 +499,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 		if(character.mind.role_alt_title)
 			rank = character.mind.role_alt_title
 		// can't use their name here, since cyborg namepicking is done post-spawn, so we'll just say "A new Cyborg has arrived"/"A new Android has arrived"/etc.
-		GLOB.global_announcer.autosay("A new [rank] has arrived on the station.", "Arrivals Announcement Computer")
+		GLOB.global_announcer.autosay("A new [rank] has arrived on the station.", "Arrivals Announcement Computer", GetConnectedZlevels(get_z(character)))
 
 
 /mob/new_player/proc/create_character(var/turf/T)
