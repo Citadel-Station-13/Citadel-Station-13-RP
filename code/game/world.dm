@@ -200,6 +200,8 @@ GLOBAL_LIST(topic_status_cache)
 	// log which is ultimately public.
 	log_runtime(GLOB.revdata.get_log_message())
 
+	global.event_logger.setup_logger(GLOB.log_directory)
+
 /world/proc/_setup_logs_boilerplate()
 
 /world/Topic(T, addr, master, key)
@@ -505,6 +507,8 @@ GLOBAL_LIST(topic_status_cache)
 	// update
 	for(var/datum/controller/subsystem/subsystem in Master.subsystems)
 		subsystem.on_ticklag_changed(old, ticklag)
+	for(var/mob/mob in GLOB.mob_list)
+		mob.update_movespeed()
 
 //* Log Shunter *//
 

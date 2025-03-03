@@ -374,7 +374,7 @@
 		G = new(src)
 	G.master = src
 	// for the love of god macro this when we get runechat
-	G.maptext = "<center><span style=\"font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; color: white; line-height: 1.1;\">[text]</span></center>"
+	G.maptext = MAPTEXT("<center><span style=\"font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; color: white; line-height: 1.1;\">[text]</span></center>")
 	G.maptext_height = 256
 	G.maptext_width = 256
 	G.maptext_x = -128 + (world.icon_size * 0.5)
@@ -397,9 +397,6 @@
 		master = null
 	return ..()
 
-/atom/movable/proc/get_bullet_impact_effect_type()
-	return BULLET_IMPACT_NONE
-
 // todo: we should probably have a way to just copy an appearance clone or something without render-targeting
 
 /**
@@ -415,10 +412,9 @@
  *
  * @params
  * * location - where to clone us
- * * include_contents - include semantic contents; ergo 'what we are hosting' vs 'what we are'
  */
-/atom/movable/clone(atom/location, include_contents)
-	return ..(include_contents)
+/atom/movable/clone(atom/location)
+	return ..()
 
 //? Perspectives
 /**

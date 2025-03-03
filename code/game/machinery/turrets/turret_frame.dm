@@ -76,12 +76,12 @@
 					return
 
 		if(3)
-			if(istype(I, /obj/item/gun/energy)) //the gun installation part
+			if(istype(I, /obj/item/gun/projectile/energy)) //the gun installation part
 				if(!user.attempt_insert_item_for_installation(I, src))
 					return
-				var/obj/item/gun/energy/E = I //typecasts the item to an energy gun
+				var/obj/item/gun/projectile/energy/E = I //typecasts the item to an energy gun
 				installation = I.type //installation becomes I.type
-				gun_charge = E.power_supply.charge //the gun's charge is stored in gun_charge
+				gun_charge = E.obj_cell_slot.cell.charge //the gun's charge is stored in gun_charge
 				to_chat(user, "<span class='notice'>You add [I] to the turret.</span>")
 				target_type = /obj/machinery/porta_turret
 
@@ -180,8 +180,8 @@
 				return
 			build_step = 3
 
-			var/obj/item/gun/energy/Gun = new installation(loc)
-			Gun.power_supply.charge = gun_charge
+			var/obj/item/gun/projectile/energy/Gun = new installation(loc)
+			Gun.obj_cell_slot.cell.charge = gun_charge
 			Gun.update_icon()
 			installation = null
 			gun_charge = 0

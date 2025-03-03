@@ -101,7 +101,7 @@
 	for(var/atom/movable/screen/ability/ability in ability_objects)
 		ability.update_icon(forced)
 		ability.index = i
-		ability.maptext = "[ability.index]" // Slot number
+		ability.maptext = MAPTEXT("[ability.index]") // Slot number
 		i++
 
 // todo: what the fuck?

@@ -31,6 +31,7 @@
 	/// the class we ask the gun to render us as
 	///
 	/// * uses MAGAZINE_CLASS_* flags
+	/// * while quirky, guns do reserve the right to filter magazines by class.
 	/// * if our requested class isn't on a gun, the gun reserves the right to render us as the default class ('-mag')
 	var/magazine_class = MAGAZINE_CLASS_GENERIC
 
@@ -39,9 +40,6 @@
 	/// setting this to a gun's typepath is allowed, this is an arbitrary field.
 	//  todo: impl
 	var/magazine_restrict
-	/// considered an extended magazine for guns that support rendering extended magazines?
-	//  todo: impl
-	var/magazine_extended = FALSE
 	// todo: magazine_insert_delay
 	// todo: magazine_remove_delay
 
@@ -91,9 +89,11 @@
 	/// * ammo by default has their typepath as the restrict value
 	/// * ammo can set strings / enums to this too; make sure to #define them.
 	var/ammo_restrict
-	/// if set, doesn't allow subtypes
+	/// if set and ammo_restrict uses typepaths, doesn't allow subtypes
 	var/ammo_restrict_no_subtypes = FALSE
 	/// init all contents on initialize instead of lazy-drawing
+	///
+	/// todo: kill this with fire
 	///
 	/// * used for things like microbatteries / legacy content
 	var/ammo_legacy_init_everything = FALSE
@@ -315,7 +315,7 @@
 	for(var/obj/item/ammo_casing/casing in where)
 		if(. > needed)
 			break
-		if(!casing.loaded())
+		if(!casing.is_loaded())
 			continue
 		if(!isnull(why_cant_load_casing(casing)))
 			continue
@@ -419,7 +419,7 @@
 	// try to resupply
 	for(var/i in length(ammo_internal) to 1 step -1)
 		var/obj/item/ammo_casing/loaded = ammo_internal[i]
-		if(loaded.loaded())
+		if(loaded.is_loaded())
 			continue
 		loaded.forceMove(transfer_old_to || drop_location())
 		ammo_internal[i] = casing
@@ -441,7 +441,7 @@
 		return ammo_current + length(ammo_internal)
 	. = ammo_current
 	for(var/obj/item/ammo_casing/casing as anything in ammo_internal)
-		if(casing.loaded())
+		if(casing.is_loaded())
 			.++
 
 /obj/item/ammo_magazine/proc/amount_missing(live_only)

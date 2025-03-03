@@ -382,7 +382,7 @@
 /turf/simulated/floor/tiled,
 /area/awaymission)
 "bn" = (
-/obj/item/mecha_parts/mecha_equipment/tool/drill,
+/obj/item/vehicle_module/tool/drill,
 /obj/item/storage/toolbox/mechanical,
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled,
@@ -460,7 +460,7 @@
 /area/awaymission)
 "bz" = (
 /obj/structure/closet/crate/secure/weapon,
-/obj/item/gun/ballistic/shotgun/pump/rifle,
+/obj/item/gun/projectile/ballistic/shotgun/pump/rifle,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission)

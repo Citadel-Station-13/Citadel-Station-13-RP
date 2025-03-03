@@ -100,7 +100,7 @@
 	if(accessory_host)
 		return FALSE
 	// either attack_hand_auto_unequip off, not being worn
-	var/equipped_by_performer = actor.performer == worn_mob()
+	var/equipped_by_performer = actor.performer == get_worn_mob()
 	. = ..() && (attack_hand_auto_unequip || !equipped_by_performer)
 	if(!.)
 		return
@@ -296,3 +296,8 @@
 		return
 
 	style_repick_open(usr)
+
+/obj/item/clothing/can_unequip(mob/M, slot, mob/user, flags)
+	if(clothing_flags & NO_UNEQUIP)
+		return FALSE
+	return ..()

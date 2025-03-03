@@ -29,6 +29,8 @@
 	var/list/excludes
 	/// A list of species that CAN take this trait, use this if only a few species can use it. -shark
 	var/list/allowed_species
+	/// A list of species that CANNOT take this trait
+	var/list/excluded_species
 	/// Trait only available for custom species.
 	var/custom_only = TRUE
 
