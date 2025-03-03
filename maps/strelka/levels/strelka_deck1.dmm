@@ -1744,6 +1744,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat/warden,
+/obj/item/gun/projectile/energy/gun,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck1/warden)
 "jW" = (
