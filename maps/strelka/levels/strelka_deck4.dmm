@@ -69,6 +69,9 @@
 /area/strelka/shipbase/deck4/bridge)
 "am" = (
 /obj/structure/closet/coffin/comfy,
+/obj/effect/floor_decal/industrial/warning/cee{
+	dir = 8
+	},
 /turf/simulated/floor/trap/dark,
 /area/strelka/shipbase/deck4/chapel/office)
 "ao" = (
@@ -1106,6 +1109,10 @@
 	},
 /obj/item/material/ashtray/glass,
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/blast/shutters{
+	id = "bar_shutters";
+	name = "Bar Shutters"
+	},
 /turf/simulated/floor/bmarble,
 /area/strelka/shipbase/deck4/bar)
 "fF" = (
@@ -1409,6 +1416,12 @@
 	dir = 4
 	},
 /obj/machinery/light/small/old,
+/obj/machinery/button/remote/blast_door{
+	id = "kitchen_shutters";
+	name = "Kitchen Shutter control";
+	pixel_y = -22;
+	dir = 1
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/kitchen)
 "hg" = (
@@ -1897,6 +1910,10 @@
 	pixel_y = 9
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/blast/shutters{
+	id = "bar_shutters";
+	name = "Bar Shutters"
+	},
 /turf/simulated/floor/bmarble,
 /area/strelka/shipbase/deck4/bar)
 "jz" = (
@@ -2110,6 +2127,14 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck4/bridge)
+"kD" = (
+/obj/structure/closet/coffin/comfy,
+/obj/effect/floor_decal/industrial/warning,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/trap/dark,
+/area/strelka/shipbase/deck4/chapel/office)
 "kF" = (
 /obj/machinery/washing_machine,
 /turf/simulated/floor/wood/broken,
@@ -2631,6 +2656,10 @@
 "mZ" = (
 /obj/structure/table/hardwoodtable,
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/blast/shutters{
+	id = "kitchen_shutters";
+	name = "Kitchen Shutters"
+	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/kitchen)
 "na" = (
@@ -3676,6 +3705,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/blast/shutters{
+	id = "bar_shutters";
+	name = "Bar Shutters"
+	},
 /turf/simulated/floor/bmarble,
 /area/strelka/shipbase/deck4/bar)
 "rX" = (
@@ -5366,6 +5399,17 @@
 "Ch" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck4/hallway)
+"Ci" = (
+/obj/machinery/door/blast/shutters{
+	dir = 8;
+	id = "bar_shutters";
+	name = "Bar Shutters"
+	},
+/turf/simulated/wall/wood/hardwood{
+	opacity = 0;
+	name = "Hollow hardwood"
+	},
+/area/strelka/shipbase/deck4/bar)
 "Cj" = (
 /obj/structure/cable/blue{
 	icon_state = "1-2"
@@ -5414,6 +5458,14 @@
 	layer = 3
 	},
 /obj/structure/table/hardwoodtable,
+/obj/machinery/button/remote/blast_door{
+	id = "bar_shutters";
+	name = "Bar Shutter control";
+	pixel_x = 8;
+	pixel_y = -23;
+	req_one_access = list(25);
+	dir = 1
+	},
 /turf/simulated/floor/bmarble,
 /area/strelka/shipbase/deck4/bar)
 "Cy" = (
@@ -5931,6 +5983,11 @@
 	},
 /obj/item/storage/box/wings,
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/blast/shutters{
+	dir = 8;
+	id = "bar_shutters";
+	name = "Bar Shutters"
+	},
 /turf/simulated/floor/bmarble,
 /area/strelka/shipbase/deck4/bar)
 "FJ" = (
@@ -6257,6 +6314,13 @@
 /obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/library)
+"HQ" = (
+/obj/structure/closet/coffin/comfy,
+/obj/effect/floor_decal/industrial/warning/cee{
+	dir = 4
+	},
+/turf/simulated/floor/trap/dark,
+/area/strelka/shipbase/deck4/chapel/office)
 "HU" = (
 /obj/structure/table/carbon/reinforced,
 /obj/machinery/librarycomp,
@@ -6656,6 +6720,11 @@
 	},
 /obj/item/paicard,
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/blast/shutters{
+	dir = 8;
+	id = "bar_shutters";
+	name = "Bar Shutters"
+	},
 /turf/simulated/floor/bmarble,
 /area/strelka/shipbase/deck4/bar)
 "JV" = (
@@ -8076,6 +8145,11 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/blast/shutters{
+	dir = 8;
+	id = "bar_shutters";
+	name = "Bar Shutters"
+	},
 /turf/simulated/floor/bmarble,
 /area/strelka/shipbase/deck4/bar)
 "SH" = (
@@ -9270,6 +9344,10 @@
 /obj/item/storage/box/wings,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/blast/shutters{
+	id = "bar_shutters";
+	name = "Bar Shutters"
+	},
 /turf/simulated/floor/bmarble,
 /area/strelka/shipbase/deck4/bar)
 "ZY" = (
@@ -27598,8 +27676,8 @@ VJ
 TE
 cZ
 Pj
-cZ
-cZ
+Ci
+Ci
 XO
 bB
 Lc
@@ -28010,7 +28088,7 @@ hC
 Gp
 KW
 NB
-am
+kD
 lb
 Vl
 jR
@@ -28204,7 +28282,7 @@ Zs
 Gp
 rD
 NB
-am
+HQ
 IW
 jR
 jR
