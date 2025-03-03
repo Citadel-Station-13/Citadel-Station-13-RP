@@ -117,10 +117,10 @@
 	/// rather than being a stack.
 	/// * Changing this post-Initialize() is considered undefined behavior.
 	/// * Basically, makes this act like a revolver. Round ejection still works.
+	/// * This forces the chamber to always be empty, and the 'chambered round' to always actually just
+	///   be the round at [internal_magazine_revolver_offset]
 	var/internal_magazine_revolver_mode = FALSE
 	/// The current position in [internal_magazine_vec] we are at.
-	/// * This position in the list will be put into chambered and nulled out, as it's technically
-	///   the chambered round.
 	/// * This is to avoid duplicate references, as those are pretty much asking for trouble.
 	/// * This is only used if [internal_magazine_revolver_mode] is enabled.
 	/// * This normally goes **forwards**. This means that it goes from say,
@@ -566,7 +566,6 @@
 	// internal: eject from bottom to top of mag then chambered,
 	//           or the other way around depending on vars
 	if(internal_magazine)
-		#warn impl these
 		if(internal_magazine_revolver_mode)
 			if(reverse_order)
 				for(var/i in internal_magazine_revolver_offset to length(internal_magazine_vec))
@@ -691,18 +690,35 @@
 /obj/item/gun/projectile/ballistic/proc/eject_chamber(silent, from_fire, atom/move_to) as /obj/item/ammo_casing
 	RETURN_TYPE(/obj/item/ammo_casing)
 
-	if(chamber.casing_flags & CASING_DELETE)
-		qdel(chamber)
+	var/obj/item/ammo_casing/ejecting
+
+	if(internal_magazine && internal_magazine_revolver_mode)
+		// override - revolver mode, always unsim'd
+		ejecting = internal_magazine_vec[internal_magazine_revolver_offset]
+		internal_magazine_vec[internal_magazine_revolver_offset] = null
+	else if(chamber_simulation)
+		// sim - chamber
+		ejecting = chamber
+		chamber = null
+	else if(internal_magazine)
+		// unsim'd internal mag
+		if(length(internal_magazine_vec))
+			ejecting = internal_magazine_vec[length(internal_magazine_vec)]
+			--internal_magazine_vec.len
+	else
+		// unsim'd external mag
+		ejecting = magazine?.pop()
+
+	if(ejecting.casing_flags & CASING_DELETE)
+		qdel(ejecting)
 		return
+	. = ejecting
 	if(move_to)
-		chamber.forceMove(move_to)
-	chamber.randomize_offsets_after_eject()
-	. = chamber
-	chamber = null
+		ejecting.forceMove(move_to)
+	ejecting.randomize_offsets_after_eject()
 	// todo: soundbyte this
 	if(!silent)
 		playsound(src, "casing", 50, TRUE)
-	#warn impl and handle internal / revolver / non-separated mags
 
 /**
  * Primes the casing being fired, and expends it.
