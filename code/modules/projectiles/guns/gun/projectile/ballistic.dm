@@ -123,6 +123,8 @@
 	///   the chambered round.
 	/// * This is to avoid duplicate references, as those are pretty much asking for trouble.
 	/// * This is only used if [internal_magazine_revolver_mode] is enabled.
+	/// * This normally goes **forwards**. This means that it goes from say,
+	///   1 to 10, then wraps back to 1.
 	var/internal_magazine_revolver_offset
 
 	//* Bolt *//
@@ -423,20 +425,58 @@
  *
  * * Has no sanity checks. Run [accepts_casing()] yourself.
  * * This also means this'll let you insert into chamber even with a magazine
- *   inserted if the chamber is empty.
- * * Inserts into first open position of internal magazine if it's a revolver-like structure.
- * * Inserts into top of internal magazine if it's not.
+ *   inserted or with an internal magazine, if the chamber is empty.
+ * * Inserts into first open position after currently chambered if it's a revolver-like structure,
+ *   unless doing from top, in which case this is reversed to be first position behind current going
+ *   backwards.
+ * * Inserts into bottom of internal magazine if it's not a revolver-like structure, then chambered.
+ *   If `from_top_if_internal` is on, insert into chambered, then to top of magazine instead.
  *
  * @return TRUE / FALSE success / fail
  */
-/obj/item/gun/projectile/ballistic/proc/insert_casing(obj/item/ammo_casing/casing, silent)
+/obj/item/gun/projectile/ballistic/proc/insert_casing(obj/item/ammo_casing/casing, silent, from_top_if_internal)
 	if(internal_magazine)
 		// insert into internal magazine
 		if(internal_magazine_revolver_mode)
-			#warn impl; insert one after current pos, wrapping if needed
+			var/success
+			if(from_top_if_internal)
+				for(var/i in internal_magazine_revolver_offset to length(internal_magazine_vec))
+					if(!internal_magazine_vec[i])
+						success = TRUE
+						internal_magazine_vec[i] = casing
+						casing.forceMove(src)
+						break
+				if(!success)
+					for(var/i in 1 to internal_magazine_revolver_mode - 1)
+						if(!internal_magazine_vec[i])
+							success = TRUE
+							internal_magazine_vec[i] = casing
+							casing.forceMove(src)
+							break
+			else
+				for(var/i in internal_magazine_revolver_offset - 1 to 1 step -1)
+					if(!internal_magazine_vec[i])
+						success = TRUE
+						internal_magazine_vec[i] = casing
+						casing.forceMove(src)
+						break
+				if(!success)
+					for(var/i in length(internal_magazine_vec) to internal_magazine_revolver_offset step -1)
+						if(!internal_magazine_vec[i])
+							success = TRUE
+							internal_magazine_vec[i] = casing
+							casing.forceMove(src)
+							break
 		else
-			if(length(internal_magazine_vec) < internal_magazine_size)
-				internal_magazine_vec += casing
+			if(from_top_if_internal)
+				if(!chambered)
+					chamber = casing
+					casing.forceMove(src)
+				else if(length(internal_magazine_vec) < internal_magazine_size)
+					internal_magazine_vec += casing
+					casing.forceMove(src)
+			else if(length(internal_magazine_vec) < internal_magazine_size)
+				internal_magazine_vec.Insert(1, casing)
 				casing.forceMove(src)
 	else
 		// insert into chamber
@@ -510,18 +550,56 @@
  * @params
  * * new_loc - where to put the casing
  * * silent - don't make a noise
- * * use_top_for_internal - remove from chambered, then top of magazine first.
+ * * from_top_if_internal - remove from chambered, then top of magazine first,
+ *                          rather than bottom to top then chambered.
+ *                          for revolvers, this will go from the current bullet forwards,
+ *                          rather than the position before the current bullet backwards.
  */
-/obj/item/gun/projectile/ballistic/proc/remove_casing(atom/new_loc, silent, use_top_for_internal) as /obj/item/ammo_casing
+/obj/item/gun/projectile/ballistic/proc/remove_casing(atom/new_loc, silent, from_top_if_internal) as /obj/item/ammo_casing
 	RETURN_TYPE(/obj/item/ammo_casing)
 	var/obj/item/ammo_casing/ejecting
 
-	// internal: eject requested index if is revolver and requested index,
-	//           otherwise remove top or bottom based on params
+	// internal: eject from bottom to top of mag then chambered,
+	//           or the other way around depending on vars
 	if(internal_magazine)
 		#warn impl these
-		if(internal_magazine && internal_magazine_revolver_mode)
-		if(use_top_for_internal)
+		if(internal_magazine_revolver_mode)
+			if(from_top_if_internal)
+				for(var/i in internal_magazine_revolver_offset to length(internal_magazine_vec))
+					ejecting = internal_magazine_vec[i]
+					if(ejecting)
+						break
+				if(!ejecting)
+					for(var/i in 1 to internal_magazine_revolver_offset - 1)
+						ejecting = internal_magazine_vec[i]
+						if(ejecting)
+							break
+			else
+				for(var/i in internal_magazine_revolver_offset - 1 to 1 step -1)
+					ejecting = internal_magazine_vec[i]
+					if(ejecting)
+						break
+				if(!ejecting)
+					for(var/i in length(internal_magazine_vec) to internal_magazine_revolver_offset step -1)
+						ejecting = internal_magazine_vec[i]
+						if(ejecting)
+							break
+		else
+			if(from_top_if_internal)
+				if(chamber)
+					ejecting = chamber
+					chamber = null
+				else if(length(internal_magazine_vec))
+					ejecting = internal_magazine_vec[length(internal_magazine_vec)]
+					--internal_magazine_vec.len
+			else
+				if(length(internal_magazine_vec))
+					ejecting = internal_magazine_vec[1]
+					internal_magazine_vec.Cut(1, 2)
+				else if(chamber)
+					ejecting = chamber
+					chamber = null
+
 	// external: eject chamber only
 	else if(chamber)
 		ejecting = eject_chamber(TRUE, FALSE, null)
