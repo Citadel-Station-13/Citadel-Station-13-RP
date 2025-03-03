@@ -4717,7 +4717,6 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/dormhallway/Dorm/Room3)
 "ys" = (
-/obj/item/gun/ballistic/shotgun/doublebarrel,
 /obj/item/storage/box/beanbags/large,
 /obj/item/storage/box/beanbags/large,
 /obj/item/clothing/accessory/permit/gun/bar,
@@ -4725,7 +4724,6 @@
 	info = "This permit signifies that the Bartender is permitted to posess this firearm in the bar, and ONLY the bar. Failure to adhere to this permit will result in confiscation of the weapon and possibly arrest.";
 	name = "Shotgun permit"
 	},
-/obj/item/gun/ballistic/shotgun/doublebarrel,
 /obj/item/clothing/suit/armor/vest/alt{
 	name = "armor vest"
 	},
@@ -4736,6 +4734,7 @@
 /obj/item/storage/fancy/candle_box,
 /obj/item/storage/fancy/whitecandle_box,
 /obj/item/storage/fancy/blackcandle_box,
+/obj/item/gun/projectile/ballistic/shotgun/doublebarrel/sawn,
 /turf/simulated/floor/lino,
 /area/strelka/shipbase/deck4/bar/back)
 "yu" = (

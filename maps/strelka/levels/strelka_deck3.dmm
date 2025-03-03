@@ -780,10 +780,6 @@
 /obj/item/clothing/accessory/permit/gun/planetside,
 /obj/item/clothing/accessory/permit/gun/planetside,
 /obj/structure/table/reinforced,
-/obj/item/gun/energy/kinetic_accelerator,
-/obj/item/gun/energy/kinetic_accelerator,
-/obj/item/gun/energy/kinetic_accelerator,
-/obj/item/gun/energy/kinetic_accelerator,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo/mining)
 "dB" = (
@@ -5279,6 +5275,7 @@
 /obj/machinery/camera/network/security{
 	dir = 8
 	},
+/obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo/mining)
 "us" = (
@@ -8970,11 +8967,11 @@
 "HI" = (
 /obj/structure/table/carbon/reinforced,
 /obj/item/slime_scanner,
-/obj/item/gun/energy/taser/xeno,
 /obj/item/melee/baton/slime/loaded,
 /obj/machinery/light/small/old{
 	dir = 4
 	},
+/obj/item/gun/projectile/energy/taser/xeno,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/xenobio)
 "HL" = (
@@ -10601,8 +10598,8 @@
 "Pi" = (
 /obj/structure/table/carbon/reinforced,
 /obj/item/slime_scanner,
-/obj/item/gun/energy/taser/xeno,
 /obj/item/melee/baton/slime/loaded,
+/obj/item/gun/projectile/energy/taser/xeno,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/xenobio)
 "Pj" = (
@@ -11207,8 +11204,8 @@
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/maintenance/cargo)
 "RS" = (
-/obj/item/gun/energy/hardlight_bow,
 /obj/structure/table/rack/shelf/steel,
+/obj/item/gun/projectile/energy/hardlight_bow,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3/science/secondary)
 "RU" = (
@@ -11604,10 +11601,8 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/roomhallway)
 "Tg" = (
-/obj/machinery/mineral/equipment_vendor{
-	pixel_y = -6
-	},
-/turf/simulated/wall/r_wall/prepainted/cargo,
+/obj/machinery/point_redemption_vendor/mining,
+/turf/simulated/wall/wood/hardwood,
 /area/strelka/shipbase/deck3/cargo/mining)
 "Ti" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -12931,7 +12926,6 @@
 	pixel_x = -11
 	},
 /obj/effect/floor_decal/industrial/warning/dust,
-/obj/machinery/air_alarm/west_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo/mining)
 "YL" = (

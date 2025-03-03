@@ -1238,7 +1238,7 @@
 /turf/simulated/floor/carpet/patterened,
 /area/strelka/shipbase/deck2/engineering)
 "ez" = (
-/obj/machinery/mineral/equipment_vendor/engineering,
+/obj/machinery/vending/engineering,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering)
 "eA" = (
@@ -6579,7 +6579,9 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/machinery/cryopod,
+/obj/machinery/cryopod{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/security/cell3)
 "wK" = (
@@ -9395,6 +9397,7 @@
 	dir = 9
 	},
 /obj/machinery/light/small/old,
+/obj/machinery/point_redemption_vendor/engineering,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering)
 "FZ" = (
@@ -15112,7 +15115,7 @@
 /obj/effect/floor_decal/borderfloorblack/cee,
 /obj/item/ammo_magazine/a44,
 /obj/item/ammo_magazine/a44,
-/obj/item/gun/ballistic/deagle/taj,
+/obj/item/gun/projectile/ballistic/deagle,
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck2/bridge/hos)
 
