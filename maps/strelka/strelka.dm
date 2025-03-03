@@ -1,14 +1,13 @@
-/datum/map/station/endeavour
-	id = "endeavour"
-	name = "World - Endeavour"
+/datum/map/station/strelka
+	id = "strelka"
+	name = "World - Strelka"
 	levels = list(
-		/datum/map_level/endeavour/ship/deck_four,
-		/datum/map_level/endeavour/ship/deck_three,
-		/datum/map_level/endeavour/ship/deck_two,
-		/datum/map_level/endeavour/ship/deck_one,
-		/datum/map_level/endeavour/misc,
-		/datum/map_level/endeavour/transit,
-		/datum/map_level/endeavour/flagship,
+		/datum/map_level/strelka/ship/deck_four,
+		/datum/map_level/strelka/ship/deck_three,
+		/datum/map_level/strelka/ship/deck_two,
+		/datum/map_level/strelka/ship/deck_one,
+		/datum/map_level/strelka/misc,
+		/datum/map_level/strelka/flagship,
 	)
 	width = 192
 	height = 192
@@ -32,17 +31,6 @@
 	allow_random_draw = FALSE
 
 	//* LEGACY BELOW *//
-
-	legacy_assert_shuttle_datums = list(
-		/datum/shuttle/autodock/overmap/excursion/endeavour,
-		/datum/shuttle/autodock/ferry/emergency/escape/endeavour,
-		/datum/shuttle/autodock/ferry/supply/cargo/endeavour,
-		/datum/shuttle/autodock/overmap/emt/endeavour,
-		/datum/shuttle/autodock/overmap/mining/endeavour,
-		/datum/shuttle/autodock/overmap/civvie/endeavour,
-		/datum/shuttle/autodock/overmap/courser/endeavour,
-		/datum/shuttle/autodock/ferry/belter,
-	)
 
 	full_name = "NSV Strelka"
 
@@ -121,103 +109,94 @@
 		/area/solar/)
 
 // For making the 4-in-1 holomap, we calculate some offsets
-/// Width and height of compiled in endeavour z levels.
-#define ENDEAVOUR_MAP_SIZE 192
+/// Width and height of compiled in strelka z levels.
+#define STRELKA_MAP_SIZE 192
 /// 40px central gutter between columns
-#define ENDEAVOUR_HOLOMAP_CENTER_GUTTER 20
+#define STRELKA_HOLOMAP_CENTER_GUTTER 20
 /// 100
-#define ENDEAVOUR_HOLOMAP_MARGIN_X ((HOLOMAP_ICON_SIZE - (2*ENDEAVOUR_MAP_SIZE) - ENDEAVOUR_HOLOMAP_CENTER_GUTTER) / 2)
+#define STRELKA_HOLOMAP_MARGIN_X ((HOLOMAP_ICON_SIZE - (2*STRELKA_MAP_SIZE) - STRELKA_HOLOMAP_CENTER_GUTTER) / 2)
 /// 60
-#define ENDEAVOUR_HOLOMAP_MARGIN_Y ((HOLOMAP_ICON_SIZE - (3*ENDEAVOUR_MAP_SIZE)) / 2)
+#define STRELKA_HOLOMAP_MARGIN_Y ((HOLOMAP_ICON_SIZE - (3*STRELKA_MAP_SIZE)) / 2)
 // We have a bunch of stuff common to the station z levels
 
-/datum/map_level/endeavour/ship
+/datum/map_level/strelka/ship
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	persistence_allowed = TRUE
 
-/datum/map_level/endeavour/ship/deck_one
-	id = "EndeavourDeck1"
-	name = "Endeavour - Deck 1"
-	display_id = "endeavour-deck-1"
-	display_name = "NSV Endeavour - Command Deck"
-	path = "maps/endeavour/levels/deck1.dmm"
+/datum/map_level/strelka/ship/deck_four
+	id = "StrelkaDeck1"
+	name = "strelka - Deck 4"
+	display_id = "strelka-deck-4"
+	display_name = "NSV strelka - Deck 4"
+	path = "maps/strelka/levels/strelka_deck4.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 	)
 	base_turf = /turf/space
-	link_below = /datum/map_level/endeavour/ship/deck_two
+	link_below = /datum/map_level/strelka/ship/deck_three
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
-/datum/map_level/endeavour/ship/deck_two
-	id = "EndeavourDeck2"
-	name = "Endeavour - Deck 2"
-	display_id = "endeavour-deck-2"
-	display_name = "NSV Endeavour - MedSci Deck"
-	path = "maps/endeavour/levels/deck2.dmm"
+/datum/map_level/strelka/ship/deck_three
+	id = "EndeavourDeck3"
+	name = "strelka - Deck 3"
+	display_id = "strelka-deck-3"
+	display_name = "NSV strelka - Deck 3"
+	path = "maps/strelka/levels/strelka_deck3.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 	)
 	base_turf = /turf/simulated/open
-	link_below = /datum/map_level/endeavour/ship/deck_three
-	link_above = /datum/map_level/endeavour/ship/deck_one
+	link_below = /datum/map_level/strelka/ship/deck_two
+	link_above = /datum/map_level/strelka/ship/deck_four
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
-/datum/map_level/endeavour/ship/deck_three
-	id = "EndeavourDeck3"
-	name = "Endeavour - Deck 3"
-	display_id = "endeavour-deck-3"
-	display_name = "NSV Endeavour - Service & Security Deck"
-	path = "maps/endeavour/levels/deck3.dmm"
+/datum/map_level/strelka/ship/deck_two
+	id = "EndeavourDeck2"
+	name = "strelka - Deck 2"
+	display_id = "strelka-deck-2"
+	display_name = "NSV strelka - Deck 2"
+	path = "maps/strelka/levels/strelka_deck2.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 		ZTRAIT_LEGACY_BELTER_DOCK,
 	)
 	base_turf = /turf/simulated/open
-	link_below = /datum/map_level/endeavour/ship/deck_four
-	link_above = /datum/map_level/endeavour/ship/deck_two
+	link_below = /datum/map_level/strelka/ship/deck_one
+	link_above = /datum/map_level/strelka/ship/deck_three
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
-/datum/map_level/endeavour/ship/deck_four
-	id = "EndeavourDeck4"
-	name = "Endeavour - Deck 4"
-	display_id = "endeavour-deck-4"
-	display_name = "NSV Endeavour - Engineering Deck"
-	path = "maps/endeavour/levels/deck4.dmm"
+/datum/map_level/strelka/ship/deck_one
+	id = "EndeavourDeck1"
+	name = "strelka - Deck 1"
+	display_id = "strelka-deck-1"
+	display_name = "NSV strelka - Deck 1"
+	path ="maps/strelka/levels/strelka_deck1.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 	)
 	base_turf = /turf/simulated/open
-	link_above = /datum/map_level/endeavour/ship/deck_three
+	link_above = /datum/map_level/strelka/ship/deck_two
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
-/datum/map_level/endeavour/flagship
+/datum/map_level/strelka/flagship
 	id = "EndeavourFlagship"
-	name = "Endeavour - Centcom / Flagship"
-	display_id = "endeavour-flagship"
-	display_name = "NSV Endeavour - Flagship Offboarding"
-	path = "maps/endeavour/levels/flagship.dmm"
+	name = "strelka - Centcom / Flagship"
+	display_id = "strelka-flagship"
+	display_name = "NSV strelka - Flagship Offboarding"
+	path = "maps/strelka/levels/flagship.dmm"
 	flags = LEGACY_LEVEL_ADMIN|LEGACY_LEVEL_CONTACT
 
-/datum/map_level/endeavour/transit
-	id = "EndeavourTransit"
-	name = "Endeavour - Ships / Static Transit"
-	path = "maps/endeavour/levels/transit.dmm"
-	traits = list(
-		ZTRAIT_LEGACY_BELTER_TRANSIT,
-	)
-	flags = LEGACY_LEVEL_ADMIN
-
-/datum/map_level/endeavour/misc
+/datum/map_level/strelka/misc
 	id = "EndeavourMisc"
-	name = "Endeavour - Misc"
-	path = "maps/endeavour/levels/misc.dmm"
+	name = "strelka - Misc"
+	path = "maps/strelka/levels/misc.dmm"
 	flags = LEGACY_LEVEL_ADMIN
 
-#undef ENDEAVOUR_MAP_SIZE
-#undef ENDEAVOUR_HOLOMAP_CENTER_GUTTER
-#undef ENDEAVOUR_HOLOMAP_MARGIN_X
-#undef ENDEAVOUR_HOLOMAP_MARGIN_Y
+#undef STRELKA_MAP_SIZE
+#undef STRELKA_HOLOMAP_CENTER_GUTTER
+#undef STRELKA_HOLOMAP_MARGIN_X
+#undef STRELKA_HOLOMAP_MARGIN_Y

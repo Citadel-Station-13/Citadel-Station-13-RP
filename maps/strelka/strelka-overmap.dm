@@ -2,6 +2,8 @@
 	name = "NSV Strelka"	// Name of the location on the overmap.
 	desc = "The Strelka is one of the many ships that is a part of the NDV Marksman's fleet in this sector"
 
+	color = "#2c7bac"
+
 	scanner_desc = @{"[i]Registration[/i]: NEV Strelka
 [i]Class[/i]: Exploration Vessel
 [i]Transponder[/i]: Transmitting (CIV), Nanotrasen IFF
