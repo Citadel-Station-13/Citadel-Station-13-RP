@@ -20,7 +20,9 @@
 	recoil = 0
 	magazine_restrict = /obj/item/ammo_magazine/microbattery
 
-	#warn handle this
+	/**
+	 * Microbattery swap action. Lazy-init'd.
+	 */
 	var/datum/action/item_action/gun_microbattery_swap/microbattery_swap_action
 
 	var/tmp/cached_group_key
@@ -161,3 +163,34 @@
 			continue
 		cached_group_capacity += maybe_relevant.shots_capacity
 		cached_group_remaining += maybe_relevant.shots_remaining
+
+//* Actions *//
+
+/obj/item/gun/projectile/ballistic/microbattery/register_item_actions(mob/user)
+	if(!microbattery_swap_action)
+		microbattery_swap_action = new(src)
+	. = ..()
+	microbattery_swap_action.grant(user.inventory.actions)
+
+/obj/item/gun/projectile/ballistic/microbattery/unregister_item_actions(mob/user)
+	. = ..()
+	microbattery_swap_action?.revoke(user.inventory.actions)
+
+//* Action Datums *//
+
+/datum/action/item_action/gun_microbattery_swap
+	name = "Cycle Microbattery Group"
+	desc = "Cycle to the next logical group of microbatteries in the magazine."
+	target_type = /obj/item/gun/projectile/ballistic/microbattery
+	check_mobility_flags = MOBILITY_CAN_USE
+
+/datum/action/item_action/gun_microbattery_swap/pre_render_hook()
+	. = ..()
+	var/image/item_overlay = button_additional_overlay
+	var/image/symbol_overlay = image('icons/screen/actions/generic-overlays.dmi', "swap")
+	symbol_overlay.color = "#ccaa00"
+	item_overlay.add_overlay(symbol_overlay)
+
+/datum/action/item_action/gun_microbattery_swap/invoke_target(obj/item/gun/projectile/ballistic/microbattery/target, datum/event_args/actor/actor)
+	. = ..()
+	target.user_switch_microbattery_group(actor)

@@ -19,8 +19,8 @@
 
 	//* Actions *//
 
-	#warn this
 	/// If we're an internal mag gun, this is our chamber spin action.
+	/// * Lazy-init'd
 	var/datum/action/item_action/gun_spin_chamber/chamber_spin_action
 
 	//* Ammunition *//
@@ -317,6 +317,19 @@
 	if(magazine)
 		. += "It has \a [magazine] loaded."
 	. += "Has [get_ammo_remaining()] round\s remaining."
+
+//* Actions *//
+
+/obj/item/gun/projectile/ballistic/register_item_actions(mob/user)
+	. = ..()
+	if(internal_magazine && internal_magazine_revolver_mode)
+		if(!chamber_spin_action)
+			chamber_spin_action = new(src)
+		chamber_spin_action.grant(user.inventory.actions)
+
+/obj/item/gun/projectile/ballistic/unregister_item_actions(mob/user)
+	. = ..()
+	chamber_spin_action?.revoke(user.inventory.actions)
 
 //* Ammo *//
 
@@ -661,3 +674,22 @@
 			var/overlay = get_magazine_overlay_for(magazine)
 			if(overlay)
 				add_overlay(overlay)
+
+//* Action Datums *//
+
+/datum/action/item_action/gun_spin_chamber
+	name = "Spin Chamber"
+	desc = "Spin the chmaber."
+	target_type = /obj/item/gun/projectile/ballistic
+	check_mobility_flags = MOBILITY_CAN_USE
+
+/datum/action/item_action/gun_spin_chamber/pre_render_hook()
+	. = ..()
+	var/image/item_overlay = button_additional_overlay
+	var/image/symbol_overlay = image('icons/screen/actions/generic-overlays.dmi', "swap")
+	symbol_overlay.color = "#ff1100"
+	item_overlay.add_overlay(symbol_overlay)
+
+/datum/action/item_action/gun_spin_chamber/invoke_target(obj/item/gun/projectile/ballistic/target, datum/event_args/actor/actor)
+	. = ..()
+	target.user_clickchain_spin_chamber(actor)
