@@ -9397,7 +9397,6 @@
 	dir = 9
 	},
 /obj/machinery/light/small/old,
-/obj/machinery/point_redemption_vendor/engineering,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering)
 "FZ" = (
