@@ -20,7 +20,8 @@
 	accuracy = -45
 	scoped_accuracy = 95
 	one_handed_penalty = 90
-	var/bolt_open = 0
+
+#warn test bolt
 
 /obj/item/gun/projectile/ballistic/heavysniper/update_icon()
 	if(bolt_closed)
