@@ -3170,6 +3170,8 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/item/gun/projectile/energy/nt_isd/multiphase,
 /obj/item/gun/projectile/energy/nt_isd/multiphase,
+/obj/item/gun/projectile/energy/stunrevolver,
+/obj/item/gun/projectile/energy/stunrevolver,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
