@@ -1456,6 +1456,10 @@
 	},
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck4/hallway/botany)
+"hj" = (
+/obj/structure/grille,
+/turf/simulated/shuttle/floor/glass,
+/area/space)
 "hk" = (
 /mob/living/simple_mob/animal/passive/cow{
 	name = "Betsy"
@@ -4622,10 +4626,6 @@
 	},
 /turf/simulated/open,
 /area/strelka/shipbase/deck4/hallway)
-"xe" = (
-/obj/effect/map_effect/interval/effect_emitter/smoke/mist,
-/turf/simulated/floor/water/deep/pool,
-/area/strelka/shipbase/deck4/dormhallway/pool)
 "xf" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck4/arrival)
@@ -5475,6 +5475,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck4/maintenance/library)
+"Cq" = (
+/turf/simulated/shuttle/floor/glass,
+/area/space)
 "Cu" = (
 /obj/structure/sink/kitchen{
 	dir = 4;
@@ -6292,14 +6295,6 @@
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/dormhallway/Dorm/Room2)
-"Hs" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 4
-	},
-/obj/effect/mist,
-/obj/effect/map_effect/interval/effect_emitter/smoke/mist,
-/turf/simulated/floor/water/pool,
-/area/strelka/shipbase/deck4/dormhallway/pool/sauna)
 "Hu" = (
 /obj/map_helper/access_helper/airlock/station/service/botany,
 /obj/machinery/door/window,
@@ -6713,14 +6708,6 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/library/room)
-"Jz" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 4
-	},
-/obj/effect/mist,
-/obj/effect/map_effect/interval/effect_emitter/smoke/mist,
-/turf/simulated/floor/water/pool,
-/area/strelka/shipbase/deck4/dormhallway/pool/sauna/room2)
 "JA" = (
 /obj/machinery/door/airlock/command{
 	name = "Bridge";
@@ -7673,10 +7660,6 @@
 /obj/spawner/window/low_wall/full/firelocks,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/shipbase/deck4/dormhallway/pool)
-"OX" = (
-/obj/effect/map_effect/interval/effect_emitter/smoke/mist,
-/turf/simulated/floor/water/pool,
-/area/strelka/shipbase/deck4/dormhallway/pool)
 "OZ" = (
 /obj/effect/floor_decal/spline/fancy/wood/corner,
 /obj/effect/floor_decal/spline/fancy/wood/corner{
@@ -8236,8 +8219,6 @@
 "SS" = (
 /obj/machinery/light/small,
 /obj/effect/mist,
-/obj/effect/map_effect/interval/effect_emitter/smoke/mist,
-/obj/effect/map_effect/interval/effect_emitter/smoke/mist,
 /turf/simulated/floor/water/pool,
 /area/strelka/shipbase/deck4/dormhallway/pool/sauna/room2)
 "ST" = (
@@ -8459,7 +8440,6 @@
 /area/strelka/shipbase/deck4/kitchen)
 "TR" = (
 /obj/effect/mist,
-/obj/effect/map_effect/interval/effect_emitter/smoke/mist,
 /turf/simulated/floor/water/pool,
 /area/strelka/shipbase/deck4/dormhallway/pool/sauna)
 "TS" = (
@@ -22309,14 +22289,14 @@ jR
 eh
 CU
 jP
-xe
+jP
 wz
 kK
 Qc
-Jz
+eW
 eW
 Qc
-Hs
+jz
 jz
 VM
 Bj
@@ -22497,10 +22477,10 @@ jR
 jR
 jR
 jR
-jR
-jR
-jR
-eh
+Cq
+Cq
+Cq
+hj
 CU
 jP
 jP
@@ -22688,17 +22668,17 @@ jR
 jR
 jR
 jR
-jR
-jR
-jR
-jR
-jR
-jR
-eh
+Cq
+Cq
+Cq
+Cq
+Cq
+Cq
+hj
 rA
 jP
 jP
-OX
+wz
 sL
 Qc
 yF
@@ -22881,14 +22861,14 @@ jR
 jR
 jR
 jR
-jR
-jR
-jR
-jR
-jR
-jR
-jR
-eh
+Cq
+Cq
+Cq
+Cq
+Cq
+Cq
+Cq
+hj
 CU
 wz
 wz
@@ -23075,13 +23055,13 @@ jR
 jR
 jR
 jR
-jR
-jR
-jR
-jR
-jR
-jR
-jR
+Cq
+Cq
+Cq
+Cq
+Cq
+Cq
+Cq
 Vl
 tC
 Wp
@@ -23269,13 +23249,13 @@ jR
 jR
 jR
 jR
-jR
-jR
-jR
-jR
-jR
-jR
-jR
+Cq
+Cq
+Cq
+Cq
+Cq
+Cq
+Cq
 Vl
 wM
 VZ
@@ -23463,13 +23443,13 @@ jR
 jR
 jR
 jR
-jR
-jR
-jR
-jR
-jR
-jR
-jR
+Cq
+Cq
+Cq
+Cq
+Cq
+Cq
+Cq
 Vl
 wM
 ZI
@@ -23657,14 +23637,14 @@ jR
 jR
 jR
 jR
-jR
-jR
-jR
-jR
-jR
-jR
-jR
-eh
+Cq
+Cq
+Cq
+Cq
+Cq
+Cq
+Cq
+hj
 wG
 gi
 lN
@@ -23852,13 +23832,13 @@ jR
 jR
 jR
 jR
-jR
-jR
-jR
-jR
-jR
-jR
-eh
+Cq
+Cq
+Cq
+Cq
+Cq
+Cq
+hj
 PH
 FJ
 lN
@@ -24046,13 +24026,13 @@ jR
 jR
 jR
 jR
-jR
-jR
-jR
-jR
-jR
-jR
-eh
+Cq
+Cq
+Cq
+Cq
+Cq
+Cq
+hj
 PH
 BZ
 xF
@@ -24241,11 +24221,11 @@ jR
 jR
 jR
 jR
-jR
-jR
-jR
-jR
-jR
+Cq
+Cq
+Cq
+Cq
+Cq
 Vl
 uy
 gv
@@ -24435,12 +24415,12 @@ jR
 jR
 jR
 jR
-jR
-jR
-jR
-jR
-jR
-eh
+Cq
+Cq
+Cq
+Cq
+Cq
+hj
 qG
 TU
 za
@@ -24630,11 +24610,11 @@ jR
 jR
 jR
 jR
-jR
-jR
-jR
-jR
-eh
+Cq
+Cq
+Cq
+Cq
+hj
 wV
 kL
 GH
@@ -24824,11 +24804,11 @@ jR
 jR
 jR
 jR
-jR
-jR
-jR
-jR
-eh
+Cq
+Cq
+Cq
+Cq
+hj
 wV
 zr
 bn
@@ -25019,9 +24999,9 @@ jR
 jR
 jR
 jR
-jR
-jR
-jR
+Cq
+Cq
+Cq
 Vl
 aM
 zM

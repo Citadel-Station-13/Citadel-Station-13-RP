@@ -11417,13 +11417,6 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/science/servers)
-"Sn" = (
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/open,
-/area/strelka/shipbase/deck3/bridge)
 "Sq" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -11908,12 +11901,14 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo/mining)
 "Uf" = (
-/obj/structure/stairs/spawner/east,
 /obj/structure/railing{
 	dir = 1
 	},
 /obj/structure/cable/yellow{
 	icon_state = "5-8"
+	},
+/obj/structure/stairs/bottom{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/bridge)
@@ -36699,7 +36694,7 @@ Sg
 yq
 ND
 YW
-Sn
+xl
 tW
 Co
 es

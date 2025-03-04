@@ -1185,7 +1185,9 @@
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/security/evidence)
 "ek" = (
-/obj/structure/stairs/spawner/north,
+/obj/structure/stairs/bottom{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/explo)
 "em" = (
@@ -2671,9 +2673,11 @@
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/engineering/nacelle2)
 "jT" = (
-/obj/structure/stairs/spawner/north,
 /obj/structure/window/phoronreinforced{
 	dir = 4
+	},
+/obj/structure/stairs/bottom{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck2)
@@ -5148,7 +5152,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck2/engineering/engine)
 "rL" = (
-/obj/structure/stairs/spawner/north,
+/obj/structure/stairs/bottom{
+	dir = 1
+	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/explo)
 "rM" = (
@@ -6804,6 +6810,18 @@
 	},
 /turf/simulated/floor/airless,
 /area/space)
+"xp" = (
+/obj/effect/floor_decal/borderfloorblack/corner{
+	alpha = 255
+	},
+/obj/effect/floor_decal/borderfloorblack/corner{
+	alpha = 255
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck2/security/storage)
 "xq" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -34670,7 +34688,7 @@ mx
 Ih
 Ih
 Ih
-YA
+xp
 Aj
 fR
 nE

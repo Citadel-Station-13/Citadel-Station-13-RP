@@ -40,10 +40,6 @@
 /obj/structure/flora/ausbushes/stalkybush,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/hangardeck)
-"an" = (
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/asteroid_steel,
-/area/strelka/shipbase/deck1/hangardeck)
 "au" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/strelka/shipbase/deck1/armory3)
@@ -199,15 +195,15 @@
 /obj/machinery/camera/network/security{
 	dir = 8
 	},
+/obj/effect/floor_decal/borderfloorblack{
+	alpha = 255;
+	dir = 4
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "bw" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
-	},
-/obj/effect/floor_decal/grass_edge{
-	layer = 2.5;
-	pixel_y = 31
 	},
 /obj/machinery/light/small/old{
 	dir = 8
@@ -322,11 +318,6 @@
 	name = "water grass edge"
 	},
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/effect/floor_decal/grass_edge{
-	dir = 1;
-	layer = 2.5;
-	pixel_y = -32
-	},
 /obj/structure/railing,
 /turf/simulated/floor/water/indoors,
 /area/strelka/shipbase/deck1/hangardeck)
@@ -450,10 +441,6 @@
 	name = "water grass edge"
 	},
 /obj/structure/flora/ausbushes,
-/obj/effect/floor_decal/grass_edge{
-	layer = 2.5;
-	pixel_y = 31
-	},
 /obj/structure/railing{
 	dir = 1
 	},
@@ -639,11 +626,6 @@
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/grass_edge,
 /obj/structure/flora/ausbushes/fernybush,
-/obj/effect/floor_decal/grass_edge{
-	dir = 1;
-	layer = 2.5;
-	pixel_y = -32
-	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "du" = (
@@ -690,16 +672,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
-"dI" = (
-/obj/effect/floor_decal/grass_edge{
-	layer = 2.5;
-	pixel_y = 31
-	},
-/turf/simulated/wall/r_wall/prepainted,
-/area/strelka/shipbase/deck1/hangardeck)
 "dJ" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/structure/flora/ausbushes/fullgrass,
+/obj/effect/floor_decal/borderfloorblack/corner{
+	dir = 1
+	},
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck1/hangardeck)
 "dK" = (
@@ -709,10 +687,6 @@
 	name = "water grass edge"
 	},
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/effect/floor_decal/grass_edge{
-	layer = 2.5;
-	pixel_y = 31
-	},
 /obj/structure/railing{
 	dir = 1
 	},
@@ -947,10 +921,6 @@
 	name = "water grass edge"
 	},
 /obj/structure/flora/ausbushes/leafybush,
-/obj/effect/floor_decal/grass_edge{
-	layer = 2.5;
-	pixel_y = 31
-	},
 /obj/structure/railing{
 	dir = 1
 	},
@@ -990,10 +960,6 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 5
 	},
-/obj/effect/floor_decal/grass_edge{
-	layer = 2.5;
-	pixel_y = 31
-	},
 /obj/structure/railing{
 	dir = 1
 	},
@@ -1011,11 +977,6 @@
 	name = "water grass edge"
 	},
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/effect/floor_decal/grass_edge{
-	dir = 1;
-	layer = 2.5;
-	pixel_y = -32
-	},
 /obj/structure/railing,
 /turf/simulated/floor/water/indoors,
 /area/strelka/shipbase/deck1/hangardeck)
@@ -1516,11 +1477,6 @@
 "iN" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/grass_edge,
-/obj/effect/floor_decal/grass_edge{
-	dir = 1;
-	layer = 2.5;
-	pixel_y = -32
-	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "iP" = (
@@ -1678,7 +1634,9 @@
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/hangardeck)
 "jB" = (
-/obj/structure/stairs/spawner/east,
+/obj/structure/stairs/bottom{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1)
 "jE" = (
@@ -1697,16 +1655,6 @@
 "jH" = (
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/armory2)
-"jK" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 8
-	},
-/obj/effect/floor_decal/grass_edge{
-	layer = 2.5;
-	pixel_y = 31
-	},
-/turf/simulated/floor/tiled/asteroid_steel,
-/area/strelka/shipbase/deck1/hangardeck)
 "jQ" = (
 /obj/structure/flora/fey/large/bush3{
 	pixel_x = 17
@@ -1980,11 +1928,6 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 1
 	},
-/obj/effect/floor_decal/grass_edge{
-	dir = 1;
-	layer = 2.5;
-	pixel_y = -32
-	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "lB" = (
@@ -2117,10 +2060,6 @@
 /area/strelka/shipbase/deck1/armory)
 "lT" = (
 /obj/structure/flora/tree/fey/large_tree/tree6,
-/obj/effect/floor_decal/grass_edge{
-	layer = 2.5;
-	pixel_y = 31
-	},
 /obj/structure/railing{
 	dir = 1
 	},
@@ -2156,10 +2095,6 @@
 	layer = 2.5
 	},
 /obj/structure/flora/fey/large/bush2,
-/obj/effect/floor_decal/grass_edge{
-	layer = 2.5;
-	pixel_y = 31
-	},
 /obj/structure/railing{
 	dir = 1
 	},
@@ -2223,7 +2158,9 @@
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/shipbase/deck1/fighterbaysec)
 "mn" = (
-/obj/structure/stairs/spawner/west,
+/obj/structure/stairs/bottom{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck1)
 "mo" = (
@@ -2293,10 +2230,6 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 6;
 	layer = 2.5
-	},
-/obj/effect/floor_decal/grass_edge{
-	layer = 2.5;
-	pixel_y = 31
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/hangardeck)
@@ -2537,10 +2470,6 @@
 /area/strelka/shipbase/deck1/bridge/balista)
 "nZ" = (
 /obj/structure/flora/tree/fey/small_tree/tree5,
-/obj/effect/floor_decal/grass_edge{
-	layer = 2.5;
-	pixel_y = 31
-	},
 /obj/structure/railing{
 	dir = 1
 	},
@@ -2709,6 +2638,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
+"po" = (
+/obj/effect/floor_decal/borderfloorblack/corner{
+	dir = 1
+	},
+/turf/simulated/floor/fey/forest_grass,
+/area/strelka/shipbase/deck1/hangardeck)
 "pr" = (
 /obj/structure/closet/secure_closet/pilot,
 /obj/effect/floor_decal/techfloor,
@@ -2829,15 +2764,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/strelka/shipbase/deck1/gateway)
 "qi" = (
-/obj/effect/floor_decal/grass_edge{
-	dir = 1;
-	layer = 2.5;
-	pixel_y = -32
-	},
-/obj/effect/floor_decal/grass_edge{
-	dir = 4;
-	pixel_x = -31
-	},
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -3097,10 +3023,6 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 1
 	},
-/obj/effect/floor_decal/grass_edge{
-	layer = 2.5;
-	pixel_y = 31
-	},
 /obj/structure/railing{
 	dir = 1
 	},
@@ -3124,10 +3046,6 @@
 	dir = 9;
 	layer = 2.5
 	},
-/obj/effect/floor_decal/grass_edge{
-	layer = 2.5;
-	pixel_y = 31
-	},
 /obj/structure/railing{
 	dir = 1
 	},
@@ -3138,10 +3056,6 @@
 	dir = 8
 	},
 /obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/floor_decal/grass_edge{
-	dir = 4;
-	pixel_x = -31
-	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "si" = (
@@ -3185,16 +3099,6 @@
 /obj/machinery/shipsensors,
 /turf/simulated/floor,
 /area/shuttle/civvie/strelka)
-"su" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 8
-	},
-/obj/effect/floor_decal/grass_edge{
-	dir = 4;
-	pixel_x = -31
-	},
-/turf/simulated/floor/tiled/asteroid_steel,
-/area/strelka/shipbase/deck1/hangardeck)
 "sB" = (
 /obj/machinery/door/airlock/glass/civilian,
 /obj/structure/cable/blue{
@@ -3397,11 +3301,6 @@
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/grass_edge,
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/effect/floor_decal/grass_edge{
-	dir = 1;
-	layer = 2.5;
-	pixel_y = -32
-	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "tA" = (
@@ -3632,11 +3531,6 @@
 /area/space)
 "vv" = (
 /obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/grass_edge{
-	dir = 1;
-	layer = 2.5;
-	pixel_y = -32
-	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "vz" = (
@@ -4076,9 +3970,8 @@
 /turf/simulated/floor/airless,
 /area/space)
 "yn" = (
-/obj/effect/floor_decal/grass_edge{
-	dir = 4;
-	pixel_x = -32
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
 	},
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck1/hangardeck)
@@ -4185,10 +4078,6 @@
 	dir = 2;
 	layer = 2.5;
 	name = "water grass edge"
-	},
-/obj/effect/floor_decal/grass_edge{
-	layer = 2.5;
-	pixel_y = 31
 	},
 /obj/structure/railing{
 	dir = 1
@@ -4611,10 +4500,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1/pilot/eva)
 "Co" = (
-/obj/effect/floor_decal/grass_edge{
-	layer = 2.5;
-	pixel_y = 31
-	},
 /obj/structure/railing{
 	dir = 1
 	},
@@ -4805,11 +4690,6 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 10;
 	layer = 2.5
-	},
-/obj/effect/floor_decal/grass_edge{
-	dir = 1;
-	layer = 2.5;
-	pixel_y = -32
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/hangardeck)
@@ -5435,10 +5315,6 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 1
 	},
-/obj/effect/floor_decal/grass_edge{
-	layer = 2.5;
-	pixel_y = 31
-	},
 /obj/structure/railing{
 	dir = 1
 	},
@@ -5477,13 +5353,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/armory)
-"GF" = (
-/obj/effect/floor_decal/grass_edge{
-	dir = 4;
-	pixel_x = -32
-	},
-/turf/simulated/floor/tiled/asteroid_steel,
-/area/strelka/shipbase/deck1/hangardeck)
 "GP" = (
 /obj/effect/paint/offwhite,
 /obj/effect/paint_stripe/green,
@@ -5594,10 +5463,6 @@
 	dir = 8
 	},
 /obj/structure/flora/ausbushes/brflowers,
-/obj/effect/floor_decal/grass_edge{
-	dir = 4;
-	pixel_x = -31
-	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "HT" = (
@@ -5687,11 +5552,13 @@
 /area/strelka/shipbase/deck1/warden)
 "In" = (
 /obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/grass_edge{
-	layer = 2.5;
-	pixel_y = 31
-	},
 /obj/machinery/light/small/old,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 9
+	},
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck1/hangardeck)
 "Ip" = (
@@ -6066,11 +5933,6 @@
 	dir = 9;
 	layer = 2.5
 	},
-/obj/effect/floor_decal/grass_edge{
-	dir = 1;
-	layer = 2.5;
-	pixel_y = -32
-	},
 /obj/structure/railing,
 /turf/simulated/floor/water/indoors,
 /area/strelka/shipbase/deck1/hangardeck)
@@ -6223,10 +6085,6 @@
 	name = "water grass edge"
 	},
 /obj/structure/flora/ausbushes/fernybush,
-/obj/effect/floor_decal/grass_edge{
-	layer = 2.5;
-	pixel_y = 31
-	},
 /obj/structure/railing{
 	dir = 1
 	},
@@ -6264,11 +6122,6 @@
 	layer = 2.5
 	},
 /obj/structure/flora/ausbushes,
-/obj/effect/floor_decal/grass_edge{
-	dir = 1;
-	layer = 2.5;
-	pixel_y = -32
-	},
 /obj/structure/railing,
 /turf/simulated/floor/water/indoors,
 /area/strelka/shipbase/deck1/hangardeck)
@@ -6351,13 +6204,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck1)
 "Mq" = (
-/obj/effect/floor_decal/grass_edge{
-	dir = 4;
-	pixel_x = -32
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
 	},
-/obj/effect/floor_decal/grass_edge{
-	layer = 2.5;
-	pixel_y = 31
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 9
 	},
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck1/hangardeck)
@@ -6381,15 +6232,6 @@
 	},
 /obj/effect/floor_decal/grass_edge{
 	dir = 10
-	},
-/obj/effect/floor_decal/grass_edge{
-	dir = 1;
-	layer = 2.5;
-	pixel_y = -32
-	},
-/obj/effect/floor_decal/grass_edge{
-	dir = 4;
-	pixel_x = -31
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
@@ -6860,10 +6702,6 @@
 	dir = 8
 	},
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/effect/floor_decal/grass_edge{
-	dir = 4;
-	pixel_x = -31
-	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "Py" = (
@@ -7027,13 +6865,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck1)
-"Qk" = (
-/obj/effect/floor_decal/grass_edge{
-	layer = 2.5;
-	pixel_y = 31
-	},
-/turf/simulated/floor/tiled/techfloor/monogrid,
-/area/strelka/shipbase/deck1/hangardeck)
 "Qu" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -7059,11 +6890,6 @@
 	dir = 6;
 	layer = 2.5;
 	name = "water grass edge"
-	},
-/obj/effect/floor_decal/grass_edge{
-	dir = 1;
-	layer = 2.5;
-	pixel_y = -32
 	},
 /obj/structure/railing,
 /turf/simulated/floor/water/indoors,
@@ -7482,11 +7308,6 @@
 /area/strelka/shipbase/deck1/checkpoint)
 "Tp" = (
 /obj/structure/flora/tree/fey/small_tree/tree7,
-/obj/effect/floor_decal/grass_edge{
-	dir = 1;
-	layer = 2.5;
-	pixel_y = -32
-	},
 /obj/structure/railing,
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck1/hangardeck)
@@ -7560,11 +7381,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck1/bridge/balista)
 "TK" = (
-/obj/effect/floor_decal/grass_edge{
-	dir = 4;
-	pixel_x = -32
-	},
 /obj/effect/floor_decal/grass_edge,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "TN" = (
@@ -7646,10 +7466,6 @@
 	layer = 2.5;
 	name = "water grass edge"
 	},
-/obj/effect/floor_decal/grass_edge{
-	layer = 2.5;
-	pixel_y = 31
-	},
 /obj/structure/railing{
 	dir = 1
 	},
@@ -7684,11 +7500,6 @@
 	dir = 2;
 	layer = 2.5;
 	name = "water grass edge"
-	},
-/obj/effect/floor_decal/grass_edge{
-	dir = 1;
-	layer = 2.5;
-	pixel_y = -32
 	},
 /obj/structure/railing,
 /turf/simulated/floor/water/indoors,
@@ -7870,10 +7681,6 @@
 	layer = 2.5;
 	name = "water grass edge"
 	},
-/obj/effect/floor_decal/grass_edge{
-	layer = 2.5;
-	pixel_y = 31
-	},
 /obj/structure/railing{
 	dir = 1
 	},
@@ -7898,21 +7705,6 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck1/warden)
-"Vj" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/grass_edge,
-/obj/effect/floor_decal/grass_edge{
-	dir = 1;
-	layer = 2.5;
-	pixel_y = -32
-	},
-/obj/effect/floor_decal/grass_edge{
-	dir = 1;
-	layer = 2.5;
-	pixel_y = -32
-	},
-/turf/simulated/floor/tiled/asteroid_steel,
-/area/strelka/shipbase/deck1/hangardeck)
 "Vm" = (
 /obj/structure/cable/blue{
 	icon_state = "4-8"
@@ -7980,10 +7772,6 @@
 	},
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/tree/fey/small_tree/tree5,
-/obj/effect/floor_decal/grass_edge{
-	layer = 2.5;
-	pixel_y = 31
-	},
 /obj/structure/railing{
 	dir = 1
 	},
@@ -8598,11 +8386,6 @@
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/grass_edge,
 /obj/structure/flora/ausbushes/brflowers,
-/obj/effect/floor_decal/grass_edge{
-	dir = 1;
-	layer = 2.5;
-	pixel_y = -32
-	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "Zh" = (
@@ -23769,15 +23552,15 @@ uX
 Gd
 Ko
 Pv
-su
-su
-su
+HC
+HC
+HC
 sg
-su
-su
-su
-su
-su
+HC
+HC
+HC
+HC
+HC
 HR
 Mt
 Nv
@@ -24920,8 +24703,8 @@ Nv
 Nv
 Nv
 Nv
-jK
-su
+HC
+HC
 qi
 Nv
 Nv
@@ -25114,7 +24897,7 @@ Nv
 Nv
 Nv
 Nv
-Qk
+zf
 zf
 vv
 Nv
@@ -25308,7 +25091,7 @@ Nv
 Nv
 Nv
 Nv
-dI
+qL
 zf
 BX
 HC
@@ -26495,7 +26278,7 @@ GP
 yA
 rL
 uG
-Vj
+iN
 Nv
 Nv
 Nv
@@ -26883,13 +26666,13 @@ HW
 ZW
 rL
 uG
-eq
-GF
+BX
+HC
 TK
 yn
 yn
 yn
-EQ
+po
 EQ
 wH
 Ie
@@ -27078,7 +26861,7 @@ ZW
 rL
 WX
 bv
-an
+RG
 xY
 fl
 pi
