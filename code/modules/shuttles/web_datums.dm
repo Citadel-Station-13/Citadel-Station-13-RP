@@ -121,7 +121,7 @@
 	if(!radio_announce)
 		command_announcement.Announce(get_departure_message(),(announcer ? announcer : "[(LEGACY_MAP_DATUM).boss_name]"))
 	else
-		GLOB.global_announcer.autosay(get_departure_message(),(announcer ? announcer : "[(LEGACY_MAP_DATUM).boss_name]"), zlevels = GetConnectedZlevels(get_z(src.my_landmark)))
+		GLOB.global_announcer.autosay(get_departure_message(),(announcer ? announcer : "[(LEGACY_MAP_DATUM).boss_name]"), zlevels = SSmapping.loaded_station.get_map_levels(get_z(src.my_landmark)))
 
 /datum/shuttle_destination/proc/get_arrival_message()
 	return null
@@ -133,7 +133,7 @@
 	if(!radio_announce)
 		command_announcement.Announce(get_arrival_message(),(announcer ? announcer : "[(LEGACY_MAP_DATUM).boss_name]"))
 	else
-		GLOB.global_announcer.autosay(get_arrival_message(),(announcer ? announcer : "[(LEGACY_MAP_DATUM).boss_name]"), zlevels = GetConnectedZlevels(get_z(src.my_landmark)))
+		GLOB.global_announcer.autosay(get_arrival_message(),(announcer ? announcer : "[(LEGACY_MAP_DATUM).boss_name]"), zlevels = SSmapping.loaded_station.get_map_levels(get_z(src.my_landmark)))
 
 /datum/shuttle_destination/proc/link_destinations(var/datum/shuttle_destination/other_place, var/interim_tag, var/travel_time = 0)
 	// First, check to make sure this doesn't cause a duplicate route.

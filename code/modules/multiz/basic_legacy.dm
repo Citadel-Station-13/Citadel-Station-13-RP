@@ -1,14 +1,8 @@
 
 GLOBAL_LIST_EMPTY(connected_z_cache)
 
-/proc/GetStationZlevels()
-	return (LEGACY_MAP_DATUM).station_levels
-
 // todo: legacy code
-/proc/GetConnectedZlevels(z)
-	return SSmapping.get_z_stack(z)
-
-// todo: legacy code
+// Only used in code\game\machinery\computer\robot.dm Line 47
 /proc/AreConnectedZLevels(zA, zB)
 	if (zA <= 0 || zB <= 0 || zA > world.maxz || zB > world.maxz)
 		return FALSE
@@ -16,7 +10,7 @@ GLOBAL_LIST_EMPTY(connected_z_cache)
 		return TRUE
 	if (length(GLOB.connected_z_cache) >= zA && length(GLOB.connected_z_cache[zA]) >= zB)
 		return GLOB.connected_z_cache[zA][zB]
-	var/list/levels = GetConnectedZlevels(zA)
+	var/list/levels = SSmapping.loaded_station.get_map_levels(zA)
 	var/list/new_entry = new(world.maxz)
 	for (var/entry in levels)
 		new_entry[entry] = TRUE

@@ -49,7 +49,7 @@
 				else
 					src.icon_state = "morgue3"
 					if(broadcast)
-						GLOB.global_announcer.autosay("[src] was able to establish a mental interface with occupant.", "[src]", "Medical", GetConnectedZlevels(get_z(src)))
+						GLOB.global_announcer.autosay("[src] was able to establish a mental interface with occupant.", "[src]", "Medical", SSmapping.loaded_station.get_map_levels(get_z(src)))
 		else
 			src.icon_state = "morgue1"
 	return

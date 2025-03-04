@@ -415,9 +415,9 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 		if(S)
 			levels = S.get_space_zlevels() //Just the spacey ones
 		else
-			levels = GetConnectedZlevels(my_z)
+			levels = SSmapping.loaded_station.get_map_levels(my_z)
 	else
-		levels = GetConnectedZlevels(my_z)
+		levels = SSmapping.loaded_station.get_map_levels(my_z)
 
 	for(var/z in levels)
 		if(!GLOB.gravity_generators["[z]"])

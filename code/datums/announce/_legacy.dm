@@ -144,7 +144,7 @@
 
 /proc/AnnounceArrivalSimple(name, rank = "visitor", join_message = "will arrive at the station shortly", z_level)
 	if(z_level)
-		GLOB.global_announcer.autosay(join_message, "Arrivals Announcement Computer", zlevels = GetConnectedZlevels(z_level))
+		GLOB.global_announcer.autosay(join_message, "Arrivals Announcement Computer", zlevels = SSmapping.loaded_station.get_map_levels(z_level))
 	else
 		GLOB.global_announcer.autosay(join_message, "Arrivals Announcement Computer")
 

@@ -1027,7 +1027,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		if(isAI(M))
 			var/mob/living/silicon/ai/ai = M
 			GLOB.empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(ai.loc)
-			GLOB.global_announcer.autosay("[ai] has been moved to intelligence storage.", "Artificial Intelligence Oversight", GetConnectedZlevels(get_z(ai)))
+			GLOB.global_announcer.autosay("[ai] has been moved to intelligence storage.", "Artificial Intelligence Oversight", SSmapping.loaded_station.get_map_levels(get_z(ai)))
 			ai.clear_client()
 			return
 		else
