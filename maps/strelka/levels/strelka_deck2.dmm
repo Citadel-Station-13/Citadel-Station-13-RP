@@ -456,6 +456,7 @@
 /obj/effect/floor_decal/carpet{
 	dir = 5
 	},
+/obj/landmark/spawnpoint/job/senior_engineer,
 /turf/simulated/floor/carpet/patterened,
 /area/strelka/shipbase/deck2/engineering)
 "bJ" = (
@@ -2132,6 +2133,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/security/cell3)
+"hJ" = (
+/obj/landmark/spawnpoint/job/chief_engineer,
+/turf/simulated/floor/wood,
+/area/strelka/shipbase/deck2/bridge/ce)
 "hK" = (
 /obj/structure/cable/blue{
 	dir = 8
@@ -3145,6 +3150,16 @@
 /obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering)
+"lI" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/landmark/spawnpoint/job/atmospheric_technician,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck2/engineering/storage)
 "lJ" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -3353,6 +3368,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/maintenance/eva)
+"mx" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/landmark/spawnpoint/job/security_officer,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck2/security/storage)
 "my" = (
 /obj/structure/table/carbon/reinforced,
 /obj/effect/floor_decal/borderfloorblack{
@@ -3470,6 +3495,19 @@
 /obj/machinery/atmospherics/pipe/simple/visible/purple,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/engine)
+"mS" = (
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/landmark/spawnpoint/job/station_engineer,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck2/engineering)
 "mT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -3943,6 +3981,8 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/landmark/spawnpoint/job/security_officer,
+/obj/landmark/spawnpoint/job/security_officer,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/security/reception)
 "ok" = (
@@ -4991,6 +5031,13 @@
 	},
 /turf/simulated/floor/reinforced/oxygen,
 /area/strelka/shipbase/deck2/engineering/engine)
+"ro" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4
+	},
+/obj/landmark/spawnpoint/job/security_officer,
+/turf/simulated/floor/wood/indoors,
+/area/strelka/shipbase/deck2/security/main)
 "rp" = (
 /obj/structure/cable/blue{
 	icon_state = "1-2"
@@ -6062,6 +6109,10 @@
 /obj/machinery/air_alarm/south_mount,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/engineering/nacelle2)
+"uV" = (
+/obj/landmark/spawnpoint/job/senior_engineer,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck2/engineering)
 "uW" = (
 /obj/machinery/suit_storage_unit/standard_unit,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -8108,6 +8159,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/landmark/spawnpoint/job/security_officer,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/security/reception)
 "BM" = (
@@ -8923,6 +8975,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2)
+"Eu" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/landmark/spawnpoint/job/atmospheric_technician,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck2/engineering/storage)
 "Ev" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -9369,7 +9427,7 @@
 "FT" = (
 /obj/machinery/porta_turret/stationary{
 	gl_uid = "exploration";
-	installation = /obj/item/gun/projectile/energy/phasegun;
+	installation = /obj/item/gun/energy/phasegun;
 	name = "exploration turret";
 	req_one_access = list(19,43,62,67);
 	uid = "exploration"
@@ -10289,6 +10347,10 @@
 /obj/structure/table/steel,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/security/interogation)
+"Jn" = (
+/obj/landmark/spawnpoint/job/head_of_security,
+/turf/simulated/floor/wood,
+/area/strelka/shipbase/deck2/bridge/hos)
 "Jp" = (
 /obj/machinery/atmospherics/component/unary/heater{
 	dir = 4;
@@ -12405,6 +12467,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
+/obj/landmark/spawnpoint/job/station_engineer,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering)
 "Rq" = (
@@ -12572,6 +12635,7 @@
 /obj/structure/cable/orange{
 	icon_state = "2-4"
 	},
+/obj/landmark/spawnpoint/job/station_engineer,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering)
 "RR" = (
@@ -13806,6 +13870,7 @@
 "We" = (
 /obj/effect/floor_decal/borderfloorblack/full,
 /obj/machinery/camera/network/security,
+/obj/landmark/spawnpoint/job/pathfinder,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/shipbase/deck2/explo/pathfy)
 "Wg" = (
@@ -14440,7 +14505,7 @@
 "XS" = (
 /obj/machinery/porta_turret/stationary{
 	gl_uid = "exploration";
-	installation = /obj/item/gun/projectile/energy/phasegun;
+	installation = /obj/item/gun/energy/phasegun;
 	name = "exploration turret";
 	req_one_access = list(19,43,62,67);
 	uid = "exploration"
@@ -14926,6 +14991,10 @@
 	},
 /turf/simulated/floor/reinforced/phoron,
 /area/strelka/shipbase/deck2/engineering/engine)
+"Zo" = (
+/obj/landmark/spawnpoint/job/atmospheric_technician,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck2/engineering/storage)
 "Zs" = (
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck2/bridge/hos)
@@ -28392,7 +28461,7 @@ AV
 nr
 FJ
 eB
-XO
+uV
 wx
 Rp
 FW
@@ -28782,7 +28851,7 @@ FJ
 sg
 Ja
 xG
-Xs
+mS
 RB
 nz
 dB
@@ -30337,7 +30406,7 @@ rM
 xX
 TL
 vP
-vP
+Eu
 gg
 vw
 xc
@@ -30726,7 +30795,7 @@ kw
 Mh
 Rs
 eR
-iN
+lI
 Tx
 cr
 Qt
@@ -31309,7 +31378,7 @@ ap
 Xj
 Ui
 yr
-Tx
+Zo
 Tx
 oo
 MS
@@ -31891,7 +31960,7 @@ Kn
 TS
 OB
 Tx
-Tx
+Zo
 Ke
 Qt
 rO
@@ -34597,7 +34666,7 @@ ot
 Ih
 kI
 Xi
-Ih
+mx
 Ih
 Ih
 Ih
@@ -36736,7 +36805,7 @@ IO
 Jm
 Hn
 gy
-jm
+ro
 Tl
 MB
 jM
@@ -39652,14 +39721,14 @@ lg
 QN
 Sa
 Sl
-Zs
+Jn
 Zs
 tI
 qf
 OZ
 Ec
 pw
-at
+hJ
 at
 Xx
 Bq

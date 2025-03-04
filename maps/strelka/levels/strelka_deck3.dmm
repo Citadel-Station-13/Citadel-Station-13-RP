@@ -325,6 +325,9 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/blast/shutters{
+	id = "robot"
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck3/science/robotics)
 "bz" = (
@@ -456,6 +459,7 @@
 	dir = 1
 	},
 /obj/machinery/holopad,
+/obj/landmark/spawnpoint/job/psychiatrist,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/medical/psy)
 "ca" = (
@@ -1025,6 +1029,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
+/obj/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "eS" = (
@@ -2106,6 +2111,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 4
 	},
+/obj/landmark/spawnpoint/job/explorer,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck3/science/secondary)
 "iy" = (
@@ -2747,6 +2753,9 @@
 	dir = 8
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/blast/shutters{
+	id = "robot"
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck3/science/robotics)
 "lh" = (
@@ -3468,6 +3477,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/landmark/spawnpoint/job/explorer,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck3/science/secondary)
 "nw" = (
@@ -3911,6 +3921,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/landmark/spawnpoint/job/cargo_technician,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo/reception)
 "pa" = (
@@ -4081,10 +4092,12 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 8
 	},
+/obj/landmark/spawnpoint/latejoin/station/cyborg,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck3/science/robotics)
 "pB" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/landmark/spawnpoint/job/explorer,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3/science/secondary)
 "pD" = (
@@ -4254,6 +4267,7 @@
 	dir = 4;
 	icon_state = "2-4"
 	},
+/obj/landmark/spawnpoint/job/roboticist,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/robotics)
 "qu" = (
@@ -4457,6 +4471,10 @@
 /obj/structure/closet/secure_closet/guncabinet/robotics,
 /obj/machinery/light/small/old{
 	dir = 8
+	},
+/obj/machinery/button/remote/blast_door{
+	pixel_y = 27;
+	id = "robot"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3/science/robotics)
@@ -4792,6 +4810,10 @@
 	},
 /turf/simulated/floor/reinforced/lythios43c,
 /area/strelka/shipbase/deck3/cargo/hangar)
+"sm" = (
+/obj/landmark/spawnpoint/job/chief_medical_officer,
+/turf/simulated/floor/carpet/blue,
+/area/strelka/shipbase/deck3/bridge/md)
 "sn" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/strelka/shipbase/deck3/bridge)
@@ -6024,6 +6046,7 @@
 /obj/machinery/status_display/supply_display{
 	pixel_y = 32
 	},
+/obj/landmark/spawnpoint/job/shaft_miner,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/cargo/mining)
 "xb" = (
@@ -6049,6 +6072,7 @@
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck3/bridge/rd)
 "xg" = (
+/obj/landmark/spawnpoint/job/paramedic,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/emtroom)
 "xh" = (
@@ -6401,6 +6425,12 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/light/fairy,
+/obj/machinery/button/remote/blast_door{
+	pixel_y = -23;
+	id = "robot";
+	dir = 1;
+	req_access = list(47)
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck3)
 "yo" = (
@@ -6598,6 +6628,7 @@
 "za" = (
 /obj/structure/cable/blue,
 /obj/machinery/power/apc/south_mount,
+/obj/landmark/spawnpoint/job/field_medic,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/emtroom)
 "zb" = (
@@ -6819,6 +6850,7 @@
 /obj/machinery/camera/network/security{
 	dir = 1
 	},
+/obj/landmark/spawnpoint/job/shaft_miner,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo/mining)
 "zM" = (
@@ -7271,6 +7303,7 @@
 /obj/structure/cable/blue{
 	icon_state = "2-4"
 	},
+/obj/landmark/spawnpoint/job/field_medic,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/emtroom)
 "Bx" = (
@@ -7338,8 +7371,19 @@
 /area/strelka/shipbase/deck3/science/xenobio)
 "BH" = (
 /obj/machinery/light/small/old,
+/obj/landmark/spawnpoint/job/blueshield,
 /turf/simulated/floor/carpet/blue,
 /area/strelka/shipbase/deck3/bridge/blueshield/room)
+"BM" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/landmark/spawnpoint/job/medical_doctor,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck3/medical/main)
 "BN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -7449,6 +7493,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/landmark/spawnpoint/job/cargo_technician,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo/reception)
 "Cj" = (
@@ -7617,6 +7662,7 @@
 /area/strelka/shipbase/deck3/medical/main)
 "CH" = (
 /obj/machinery/air_alarm/north_mount,
+/obj/landmark/spawnpoint/job/paramedic,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/emtroom)
 "CI" = (
@@ -7806,6 +7852,9 @@
 	dir = 5
 	},
 /obj/effect/floor_decal/corner/purple/border,
+/obj/machinery/computer/cryopod/robot{
+	pixel_y = 31
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/robotics)
 "Dp" = (
@@ -8884,10 +8933,12 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
+/obj/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/main)
 "Ho" = (
 /obj/machinery/holopad,
+/obj/landmark/spawnpoint/job/shaft_miner,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo/mining)
 "Hq" = (
@@ -10113,6 +10164,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/landmark/spawnpoint/job/cargo_technician,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo/reception)
 "MD" = (
@@ -10149,7 +10201,7 @@
 	alpha = 255;
 	dir = 4
 	},
-/obj/structure/closet/secure_closet/guncabinet/robotics,
+/obj/machinery/transhuman/synthprinter,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/robotics)
 "MT" = (
@@ -10968,6 +11020,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo/mining)
 "QQ" = (
+/obj/landmark/spawnpoint/job/explorer,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3/science/secondary)
 "QR" = (
@@ -11079,7 +11132,7 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/surgery)
 "Rs" = (
-/obj/machinery/transhuman/synthprinter,
+/obj/machinery/transhuman/resleever,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3/science/robotics)
 "Rt" = (
@@ -11105,6 +11158,10 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck3/science/robotics)
+"Rv" = (
+/obj/landmark/spawnpoint/job/research_director,
+/turf/simulated/floor/carpet/purcarpet,
+/area/strelka/shipbase/deck3/bridge/rd)
 "Ry" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -11525,6 +11582,7 @@
 	dir = 8
 	},
 /obj/machinery/air_alarm/north_mount,
+/obj/landmark/spawnpoint/job/blueshield,
 /turf/simulated/floor/carpet/blue,
 /area/strelka/shipbase/deck3/bridge/blueshield)
 "SN" = (
@@ -11729,7 +11787,6 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/machinery/transhuman/resleever,
 /obj/machinery/air_alarm/west_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/robotics)
@@ -11764,6 +11821,7 @@
 /obj/machinery/light/small/old{
 	dir = 8
 	},
+/obj/landmark/spawnpoint/job/quartermaster,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/cargo/qm)
 "TP" = (
@@ -12849,6 +12907,27 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3)
+"Yu" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/structure/cable/blue{
+	icon_state = "4-8"
+	},
+/obj/landmark/spawnpoint/job/head_nurse,
+/turf/simulated/floor/wood/indoors,
+/area/strelka/shipbase/deck3/medical/main)
 "Yv" = (
 /obj/machinery/suit_storage_unit/mining,
 /obj/machinery/light/small/old,
@@ -32339,7 +32418,7 @@ ic
 gP
 eQ
 IC
-so
+Yu
 po
 fN
 BY
@@ -32919,7 +32998,7 @@ uv
 zM
 HZ
 rh
-Ek
+BM
 qZ
 gs
 Pn
@@ -36415,7 +36494,7 @@ ae
 UW
 AN
 Gc
-dC
+sm
 sH
 bW
 da
@@ -36433,7 +36512,7 @@ Ai
 Xc
 ES
 jy
-nZ
+Rv
 xr
 bL
 UW

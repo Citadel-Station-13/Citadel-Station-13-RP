@@ -500,6 +500,7 @@
 /turf/simulated/floor/wood/sif,
 /area/strelka/shipbase/deck4/chapel)
 "cH" = (
+/obj/landmark/spawnpoint/latejoin/station/cryogenics,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/arrival)
 "cI" = (
@@ -545,6 +546,7 @@
 	icon_state = "2-8";
 	dir = 8
 	},
+/obj/landmark/spawnpoint/job/janitor,
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck4/janitor)
 "cO" = (
@@ -796,6 +798,13 @@
 	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/library)
+"ee" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/landmark/spawnpoint/job/assistant,
+/turf/simulated/floor/tiled/dark,
+/area/strelka/shipbase/deck4/arrival)
 "eh" = (
 /obj/structure/grille,
 /turf/simulated/floor/tiled/monodark,
@@ -823,6 +832,7 @@
 	dir = 8
 	},
 /obj/machinery/air_alarm/west_mount,
+/obj/landmark/spawnpoint/job/chef,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/kitchen)
 "es" = (
@@ -1636,6 +1646,9 @@
 	dir = 8
 	},
 /obj/machinery/vending/loadout/accessory,
+/obj/machinery/status_display{
+	pixel_y = -29
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/arrival)
 "if" = (
@@ -1963,6 +1976,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/landmark/spawnpoint/job/janitor,
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck4/janitor)
 "jI" = (
@@ -4246,6 +4260,7 @@
 	density = 0
 	},
 /obj/item/stool,
+/obj/landmark/spawnpoint/job/entertainer,
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/bar)
 "vf" = (
@@ -4338,6 +4353,10 @@
 /obj/effect/floor_decal/corner/navgold/border,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck4/bridge)
+"vz" = (
+/obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck4/arrival)
 "vA" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-2";
@@ -4375,6 +4394,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc/east_mount,
+/obj/landmark/spawnpoint/job/librarian,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/library/room)
 "vK" = (
@@ -4444,6 +4464,16 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/hallway)
+"wd" = (
+/obj/effect/floor_decal/spline/fancy/wood/cee{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/computer/cryopod/travel{
+	pixel_y = 31
+	},
+/turf/simulated/floor/wood/indoors,
+/area/strelka/shipbase/deck4/arrival)
 "wf" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
@@ -4524,6 +4554,11 @@
 	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck4/maintenance/library)
+"wv" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/landmark/spawnpoint/job/chef,
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/shipbase/deck4/kitchen)
 "wy" = (
 /turf/simulated/wall/wood/hardwood,
 /area/strelka/shipbase/deck4/chapel/morgue)
@@ -4651,6 +4686,10 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/dormhallway/pool)
+"xJ" = (
+/obj/landmark/spawnpoint/job/bartender,
+/turf/simulated/floor/lino,
+/area/strelka/shipbase/deck4/bar/back)
 "xL" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-2";
@@ -4712,6 +4751,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck4/hallway)
+"yq" = (
+/obj/landmark/spawnpoint/job/command_secretary,
+/turf/simulated/floor/tiled/techfloor,
+/area/strelka/shipbase/deck4/bridge)
 "yr" = (
 /obj/machinery/air_alarm/west_mount,
 /turf/simulated/floor/wood/indoors,
@@ -4771,6 +4814,10 @@
 "yF" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck4/dormhallway/pool/sauna/room2)
+"yG" = (
+/obj/landmark/spawnpoint/job/captain,
+/turf/simulated/floor/wood,
+/area/strelka/shipbase/deck4/bridge/captain/room)
 "yL" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -4983,6 +5030,7 @@
 /area/strelka/shipbase/deck4/arrival)
 "zW" = (
 /obj/machinery/air_alarm/north_mount,
+/obj/landmark/spawnpoint/latejoin/station/gateway,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/arrival)
 "Ae" = (
@@ -5003,6 +5051,7 @@
 	dir = 8
 	},
 /obj/machinery/air_alarm/west_mount,
+/obj/landmark/spawnpoint/latejoin/station/cryogenics,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/arrival)
 "Aj" = (
@@ -5902,6 +5951,7 @@
 /obj/machinery/requests_console/preset/bridge{
 	pixel_x = -30
 	},
+/obj/landmark/spawnpoint/job/command_secretary,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck4/bridge)
 "Fk" = (
@@ -6018,6 +6068,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/landmark/spawnpoint/latejoin/station/gateway,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/arrival)
 "FZ" = (
@@ -6172,6 +6223,7 @@
 /obj/machinery/light/small/old{
 	dir = 1
 	},
+/obj/landmark/spawnpoint/job/bartender,
 /turf/simulated/floor/lino,
 /area/strelka/shipbase/deck4/bar/back)
 "GZ" = (
@@ -6232,6 +6284,10 @@
 "Hm" = (
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/bar)
+"Ho" = (
+/obj/landmark/spawnpoint/job/chaplain,
+/turf/simulated/floor/carpet/bcarpet,
+/area/strelka/shipbase/deck4/chapel/morgue)
 "Hr" = (
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/wood/indoors,
@@ -6272,6 +6328,9 @@
 	dir = 8
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/computer/cryopod{
+	pixel_y = 32
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/hallway)
 "HF" = (
@@ -6311,6 +6370,7 @@
 /obj/structure/cable/cyan,
 /obj/machinery/light/small/old,
 /obj/machinery/power/apc/south_mount,
+/obj/landmark/spawnpoint/job/lawyer,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/library)
 "HQ" = (
@@ -7505,6 +7565,10 @@
 /obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/dormhallway/Dorm/Room3)
+"Oq" = (
+/obj/landmark/spawnpoint/job/botanist,
+/turf/simulated/floor/fey/forest_grass,
+/area/strelka/shipbase/deck4/hallway/botany)
 "Or" = (
 /obj/spawner/window/low_wall/full/firelocks,
 /obj/machinery/door/blast/regular/open{
@@ -7541,6 +7605,7 @@
 /obj/structure/cable/white{
 	icon_state = "1-2"
 	},
+/obj/landmark/spawnpoint/job/janitor,
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck4/janitor)
 "OG" = (
@@ -7749,6 +7814,7 @@
 /obj/machinery/light/small/old{
 	dir = 1
 	},
+/obj/landmark/spawnpoint/job/mime,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/fitness/mime)
 "PW" = (
@@ -8407,6 +8473,7 @@
 /obj/machinery/light/small/old{
 	dir = 1
 	},
+/obj/landmark/spawnpoint/job/clown,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/fitness/clown)
 "TU" = (
@@ -8720,6 +8787,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck4/bridge)
+"Wj" = (
+/obj/landmark/spawnpoint/job/head_of_personnel,
+/turf/simulated/floor/wood,
+/area/strelka/shipbase/deck4/bridge/hop/room)
 "Wk" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck4/dormhallway/Dorm/Room4)
@@ -9045,6 +9116,9 @@
 /area/strelka/shipbase/deck4/fitness)
 "Yd" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/obj/machinery/computer/cryopod/gateway{
+	pixel_y = 29
+	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/arrival)
 "Ye" = (
@@ -24190,9 +24264,9 @@ xf
 xf
 yC
 As
-Ye
-Ye
-Ye
+vz
+vz
+vz
 As
 Ne
 xf
@@ -24384,10 +24458,10 @@ zP
 hu
 rQ
 Xk
-Ye
-Ye
-Ye
-Xk
+vz
+vz
+vz
+ee
 ie
 xf
 Jn
@@ -24964,7 +25038,7 @@ Zu
 xf
 dU
 xf
-re
+wd
 hg
 zd
 ts
@@ -27306,7 +27380,7 @@ oY
 eT
 wy
 WF
-Zd
+Ho
 Zd
 Gp
 ld
@@ -27862,7 +27936,7 @@ eh
 HG
 qf
 Rp
-LD
+wv
 mZ
 wP
 VJ
@@ -27876,7 +27950,7 @@ UD
 Lc
 tB
 Kj
-pi
+Oq
 IS
 pi
 oV
@@ -29042,7 +29116,7 @@ kO
 ls
 pi
 hk
-pi
+Oq
 NS
 ke
 QM
@@ -30773,7 +30847,7 @@ eh
 nw
 nw
 MA
-Dv
+xJ
 Mf
 ph
 Tn
@@ -31943,7 +32017,7 @@ eh
 BN
 AT
 pV
-pV
+Wj
 lu
 VV
 fq
@@ -31959,7 +32033,7 @@ oT
 qC
 IN
 zf
-jN
+yG
 jN
 jN
 pe
@@ -33115,7 +33189,7 @@ ZY
 JA
 ot
 MV
-iZ
+yq
 SA
 vB
 fC

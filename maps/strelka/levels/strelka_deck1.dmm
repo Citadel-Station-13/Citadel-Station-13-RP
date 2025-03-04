@@ -732,6 +732,7 @@
 /obj/structure/bed/chair/comfy/brown{
 	dir = 4
 	},
+/obj/landmark/spawnpoint/job/pilot,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/strelka/shipbase/deck1/pilot)
 "dQ" = (
@@ -1445,6 +1446,7 @@
 	dir = 1
 	},
 /obj/structure/bed/chair/office/dark,
+/obj/landmark/spawnpoint/job/pilot,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/strelka/shipbase/deck1/pilot)
 "is" = (
@@ -2347,6 +2349,7 @@
 /obj/machinery/status_display{
 	pixel_y = 32
 	},
+/obj/landmark/spawnpoint/job/pilot,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/strelka/shipbase/deck1/pilot)
 "mT" = (
@@ -6275,6 +6278,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
+"LQ" = (
+/obj/landmark/spawnpoint/job/warden,
+/turf/simulated/floor/tiled/dark,
+/area/strelka/shipbase/deck1/warden)
 "LS" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -7197,6 +7204,7 @@
 /area/strelka/shipbase/deck1)
 "Rm" = (
 /obj/structure/bed/chair/sofa/brown/left,
+/obj/landmark/spawnpoint/job/pilot,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck1/pilot)
 "Rn" = (
@@ -7882,6 +7890,14 @@
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/toolstorage)
+"Vi" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/light/small/old{
+	dir = 4
+	},
+/turf/simulated/floor/wood/indoors,
+/area/strelka/shipbase/deck1/warden)
 "Vj" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/grass_edge,
@@ -8382,6 +8398,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
+	},
+/obj/machinery/light/small/old{
+	dir = 4
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck1/warden)
@@ -28781,7 +28800,7 @@ qs
 Ey
 dD
 VH
-vR
+LQ
 yi
 sF
 zE
@@ -28979,7 +28998,7 @@ vR
 CH
 xB
 pe
-Ff
+Vi
 Ff
 XI
 Pj
