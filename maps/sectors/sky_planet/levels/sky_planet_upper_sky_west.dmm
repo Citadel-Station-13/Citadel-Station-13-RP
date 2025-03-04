@@ -8060,8 +8060,6 @@
 /obj/structure/table/rack/shelf,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/steel,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/cannon/weak,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/cannon/weak,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port2)
 "Tv" = (
