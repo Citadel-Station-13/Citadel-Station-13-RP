@@ -43,21 +43,11 @@
 "fb" = (
 /turf/simulated/floor/tiled/dark,
 /area/submap/skyplanet/poi/mechbase)
-"ft" = (
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/microheavy,
-/obj/structure/table/rack/shelf/steel,
-/turf/simulated/floor/tiled/techfloor,
-/area/submap/skyplanet/poi/mechbase)
 "fS" = (
 /obj/machinery/mech_recharger,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor,
-/area/submap/skyplanet/poi/mechbase)
-"hj" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/mecha_parts/mecha_equipment/combat_shield,
-/turf/simulated/floor/tiled/techfloor/grid,
 /area/submap/skyplanet/poi/mechbase)
 "hL" = (
 /obj/effect/floor_decal/rust,
@@ -177,11 +167,6 @@
 "AD" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/submap/skyplanet/poi/mechbase)
-"BM" = (
-/obj/item/mecha_parts/mecha_equipment/tool/extinguisher,
-/obj/structure/table/rack/shelf/steel,
-/turf/simulated/floor/tiled/techfloor,
-/area/submap/skyplanet/poi/mechbase)
 "EC" = (
 /obj/structure/salvageable/server,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -258,8 +243,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/skyplanet/poi/mechbase)
 "Oq" = (
-/obj/item/mecha_parts/mecha_equipment/tool/sleeper,
 /obj/structure/table/rack/shelf/steel,
+/obj/random/multiple/mechtool,
+/obj/random/multiple/mechtool,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/skyplanet/poi/mechbase)
 "Ow" = (
@@ -285,10 +271,6 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/reinforced/outdoors,
 /area/submap/skyplanet/poi/mechbase)
-"PP" = (
-/obj/item/mecha_parts/chassis/geiger,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/submap/skyplanet/poi/mechbase)
 "Qe" = (
 /obj/structure/loot_pile/mecha/ripley,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -296,7 +278,6 @@
 /area/submap/skyplanet/poi/mechbase)
 "Qh" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/mecha_parts/component/hull/durable,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/submap/skyplanet/poi/mechbase)
 "Qq" = (
@@ -330,11 +311,6 @@
 	dir = 2;
 	id = "spine_outbound"
 	},
-/turf/simulated/floor/tiled/techfloor,
-/area/submap/skyplanet/poi/mechbase)
-"Vf" = (
-/obj/item/mecha_parts/mecha_equipment/tool/drill,
-/obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/skyplanet/poi/mechbase)
 "VP" = (
@@ -375,8 +351,8 @@
 /turf/simulated/floor/reinforced/outdoors,
 /area/submap/skyplanet/poi/mechbase)
 "Zk" = (
-/obj/item/mecha_parts/mecha_equipment/tool/jetpack,
 /obj/structure/table/rack/shelf/steel,
+/obj/random/multiple/mechtool,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/skyplanet/poi/mechbase)
 "Zm" = (
@@ -513,9 +489,9 @@ aU
 Qq
 Kp
 Rj
-Vf
-ft
-BM
+Oq
+Zk
+Zk
 Oq
 Zk
 Rj
@@ -661,7 +637,7 @@ ZQ
 "}
 (13,1,1) = {"
 Lr
-PP
+AD
 Xb
 vr
 AD
@@ -705,7 +681,7 @@ HO
 "}
 (15,1,1) = {"
 Lr
-PP
+AD
 AD
 GD
 AD
@@ -729,7 +705,7 @@ HO
 Lr
 AD
 AD
-hj
+Qh
 Xb
 AD
 Qq
@@ -749,7 +725,7 @@ HO
 "}
 (17,1,1) = {"
 Lr
-PP
+AD
 AD
 GT
 Xb
