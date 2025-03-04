@@ -9445,7 +9445,7 @@
 "FT" = (
 /obj/machinery/porta_turret/stationary{
 	gl_uid = "exploration";
-	installation = /obj/item/gun/energy/phasegun;
+	installation = /obj/item/gun/projectile/energy/phasegun;
 	name = "exploration turret";
 	req_one_access = list(19,43,62,67);
 	uid = "exploration"
@@ -14523,7 +14523,7 @@
 "XS" = (
 /obj/machinery/porta_turret/stationary{
 	gl_uid = "exploration";
-	installation = /obj/item/gun/energy/phasegun;
+	installation = /obj/item/gun/projectile/energy/phasegun;
 	name = "exploration turret";
 	req_one_access = list(19,43,62,67);
 	uid = "exploration"
