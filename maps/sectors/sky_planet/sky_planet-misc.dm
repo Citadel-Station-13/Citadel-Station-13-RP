@@ -47,8 +47,8 @@
 	icon_state = "sky"
 	initial_gas_mix = ATMOSPHERE_ID_SKYPLANET
 	color = "#ffeab0"
-	outdoors = 1
 	density = TRUE
+	is_plating = TRUE
 
 /turf/simulated/open/skyplanet/Initialize(mapload)
 	icon = 'icons/turf/sky.dmi'
