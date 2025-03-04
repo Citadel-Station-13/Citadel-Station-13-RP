@@ -145,18 +145,6 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/bridge)
-"aM" = (
-/obj/structure/flora/grass/event/full_grass1,
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/lightpost{
-	layer = 3.9;
-	density = 0;
-	light_color = "#f6a820"
-	},
-/turf/simulated/floor/fey/forest_grass,
-/area/strelka/shipbase/deck3)
 "aP" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
@@ -379,6 +367,15 @@
 /obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3/science/main)
+"bI" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/open,
+/area/strelka/shipbase/deck3)
 "bK" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -423,13 +420,6 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/science/secondary)
-"bR" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/machinery/appliance/cooker/grill/stand,
-/turf/simulated/floor/fey/forest_grass,
-/area/strelka/shipbase/deck3)
 "bT" = (
 /obj/structure/cable/orange{
 	icon_state = "4-8"
@@ -831,6 +821,27 @@
 /obj/structure/flora/grass/event/full_grass3,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3)
+"dP" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/light/fairy{
+	dir = 1
+	},
+/obj/effect/floor_decal/grass_edge/corner{
+	dir = 6
+	},
+/obj/effect/floor_decal/grass_edge/corner{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/dark,
+/area/strelka/shipbase/deck3)
 "dT" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -991,11 +1002,6 @@
 /obj/machinery/ai_slipper,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/bridge/upload)
-"eM" = (
-/obj/structure/flora/tree/fey/large_tree/tree5,
-/obj/structure/railing,
-/turf/simulated/floor/fey/forest_grass,
-/area/strelka/shipbase/deck3)
 "eO" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -1292,6 +1298,9 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/effect/floor_decal/grass_edge/corner{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck3)
 "fJ" = (
@@ -1433,13 +1442,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical)
-"gk" = (
-/obj/structure/flora/grass/event/lavender_grass1,
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/floor/fey/forest_grass,
-/area/strelka/shipbase/deck3)
 "go" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 9
@@ -2561,13 +2563,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/morgue)
-"kf" = (
-/obj/structure/flora/tree/fey/small_tree/tree3,
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/fey/forest_grass,
-/area/strelka/shipbase/deck3)
 "ki" = (
 /obj/effect/floor_decal/industrial/warning/cee,
 /obj/machinery/camera/network/security{
@@ -3356,6 +3351,11 @@
 	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/maintenance/cargo)
+"mZ" = (
+/obj/structure/flora/grass/event/full_grass3,
+/obj/structure/flora/tree/fey/large_tree/tree5,
+/turf/simulated/floor/fey/forest_grass,
+/area/strelka/shipbase/deck3)
 "na" = (
 /obj/structure/railing{
 	dir = 8
@@ -3384,17 +3384,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/bridge)
-"nd" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/lightpost{
-	layer = 3.9;
-	density = 0;
-	light_color = "#f6a820"
-	},
-/turf/simulated/floor/fey/forest_grass,
-/area/strelka/shipbase/deck3)
 "nj" = (
 /obj/machinery/washing_machine,
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -3660,6 +3649,12 @@
 /obj/machinery/camera/network/security,
 /obj/structure/sign/deck/third{
 	pixel_y = 33
+	},
+/obj/effect/floor_decal/grass_edge/corner{
+	dir = 10
+	},
+/obj/effect/floor_decal/grass_edge/corner{
+	dir = 6
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3)
@@ -3970,6 +3965,21 @@
 /obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/morgue)
+"pf" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/purple/border,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/light/fairy,
+/obj/effect/floor_decal/grass_edge/corner{
+	dir = 9
+	},
+/obj/effect/floor_decal/grass_edge/corner{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/strelka/shipbase/deck3)
 "ph" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -4177,6 +4187,9 @@
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/structure/cable{
 	icon_state = "1-8"
+	},
+/obj/effect/floor_decal/grass_edge/corner{
+	dir = 9
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3)
@@ -4746,6 +4759,9 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
+/obj/effect/floor_decal/grass_edge/corner{
+	dir = 6
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3)
 "rQ" = (
@@ -4810,6 +4826,16 @@
 	},
 /turf/simulated/floor/reinforced/lythios43c,
 /area/strelka/shipbase/deck3/cargo/hangar)
+"sj" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing,
+/turf/simulated/open,
+/area/strelka/shipbase/deck3)
 "sm" = (
 /obj/landmark/spawnpoint/job/chief_medical_officer,
 /turf/simulated/floor/carpet/blue,
@@ -4952,6 +4978,24 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/main)
+"sP" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/grass_edge/corner{
+	dir = 10
+	},
+/obj/effect/floor_decal/grass_edge/corner{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/dark,
+/area/strelka/shipbase/deck3)
 "sR" = (
 /obj/machinery/door/airlock/research{
 	id_tag = "researchdoor";
@@ -6319,9 +6363,6 @@
 /area/strelka/shipbase/deck3/maintenance/medical)
 "xY" = (
 /obj/structure/flora/grass/event/full_grass1,
-/obj/structure/railing{
-	dir = 4
-	},
 /obj/structure/flora/tree/fey/small_tree/tree6{
 	pixel_y = -35
 	},
@@ -7996,6 +8037,19 @@
 /obj/structure/simple_door/hardwood,
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck3/bridge/md)
+"DN" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/floor/wood/broken,
+/area/strelka/shipbase/deck3)
 "DO" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -8853,6 +8907,16 @@
 /obj/machinery/mineral/input,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo/mining)
+"Ha" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing,
+/turf/simulated/open,
+/area/strelka/shipbase/deck3)
 "Hb" = (
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -8981,6 +9045,9 @@
 /obj/structure/closet/firecloset/full,
 /obj/machinery/light/fairy{
 	dir = 4
+	},
+/obj/effect/floor_decal/grass_edge/corner{
+	dir = 9
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3)
@@ -9253,9 +9320,6 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/cargo/qm)
 "IH" = (
-/obj/effect/floor_decal/grass_edge{
-	dir = 1
-	},
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/purple/border,
 /obj/structure/cable{
@@ -9264,6 +9328,12 @@
 /obj/machinery/light/fairy,
 /obj/structure/sign/deck/third{
 	pixel_y = -30
+	},
+/obj/effect/floor_decal/grass_edge/corner{
+	dir = 5
+	},
+/obj/effect/floor_decal/grass_edge/corner{
+	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck3)
@@ -9675,6 +9745,18 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/medical/main)
+"Kn" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/open,
+/area/strelka/shipbase/deck3)
 "Ko" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck3/mininghangar)
@@ -9768,6 +9850,15 @@
 "KG" = (
 /turf/simulated/wall/wood/hardwood,
 /area/strelka/shipbase/deck3/medical/room2)
+"KH" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 8
+	},
+/obj/effect/floor_decal/grass_edge{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/shipbase/deck3)
 "KJ" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/firstaid/surgery,
@@ -9894,6 +9985,9 @@
 	},
 /obj/machinery/light/fairy{
 	dir = 1
+	},
+/obj/effect/floor_decal/grass_edge/corner{
+	dir = 10
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3)
@@ -10475,6 +10569,9 @@
 /obj/structure/sign/deck/third{
 	pixel_y = -30
 	},
+/obj/effect/floor_decal/grass_edge/corner{
+	dir = 9
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3)
 "Od" = (
@@ -10626,6 +10723,9 @@
 "Pf" = (
 /obj/structure/railing{
 	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
 	},
 /turf/simulated/open,
 /area/strelka/shipbase/deck3)
@@ -11284,13 +11384,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo)
-"RV" = (
-/obj/structure/flora/grass/event/full_grass3,
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/fey/forest_grass,
-/area/strelka/shipbase/deck3)
 "RW" = (
 /obj/structure/cable{
 	icon_state = "6-8";
@@ -11651,6 +11744,18 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/roomhallway)
+"Tf" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/open,
+/area/strelka/shipbase/deck3)
 "Tg" = (
 /obj/machinery/point_redemption_vendor/mining,
 /turf/simulated/wall/wood/hardwood,
@@ -11767,6 +11872,20 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3)
+"TB" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/grass_edge/corner{
+	dir = 5
+	},
+/obj/effect/floor_decal/grass_edge/corner{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/dark,
+/area/strelka/shipbase/deck3)
 "TC" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 10
@@ -11820,13 +11939,6 @@
 "TP" = (
 /obj/structure/flora/grass/event/full_grass1,
 /obj/structure/table/woodentable,
-/turf/simulated/floor/fey/forest_grass,
-/area/strelka/shipbase/deck3)
-"TQ" = (
-/obj/structure/flora/grass/event/full_grass1,
-/obj/structure/railing{
-	dir = 8
-	},
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck3)
 "TS" = (
@@ -11888,6 +12000,9 @@
 	},
 /obj/structure/cable{
 	icon_state = "2-8"
+	},
+/obj/effect/floor_decal/grass_edge/corner{
+	dir = 10
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3)
@@ -12061,6 +12176,22 @@
 /obj/machinery/air_alarm/north_mount,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/maintenance/medical)
+"US" = (
+/obj/effect/floor_decal/borderfloorblack{
+	alpha = 255;
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/grass_edge{
+	dir = 4
+	},
+/obj/effect/floor_decal/grass_edge/corner{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/strelka/shipbase/deck3)
 "UU" = (
 /obj/effect/floor_decal/spline/fancy/wood/corner,
 /obj/effect/floor_decal/spline/fancy/wood/corner{
@@ -12237,6 +12368,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/science/main)
+"Vw" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 8
+	},
+/obj/effect/floor_decal/grass_edge{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/strelka/shipbase/deck3)
 "Vx" = (
 /obj/structure/closet/walllocker{
 	pixel_y = 32
@@ -12646,6 +12786,18 @@
 /obj/machinery/air_alarm/north_mount,
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck3/bridge/rd)
+"Xd" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/wood/broken,
+/area/strelka/shipbase/deck3)
 "Xh" = (
 /obj/spawner/window/low_wall/full/firelocks,
 /turf/simulated/floor/tiled/monowhite,
@@ -12928,6 +13080,15 @@
 /obj/machinery/light/small/old,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo/mining)
+"Yw" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/turf/simulated/floor/wood/broken,
+/area/strelka/shipbase/deck3)
 "Yy" = (
 /turf/simulated/wall/r_wall/prepainted/cargo,
 /area/strelka/shipbase/deck3/cargo/mining)
@@ -29708,14 +29869,14 @@ kW
 kW
 nU
 ph
-ph
+Yw
 ph
 ph
 jn
 dW
 ie
 ie
-zZ
+US
 fI
 sU
 ix
@@ -30298,7 +30459,7 @@ gH
 Ec
 uZ
 Kr
-JW
+pf
 ZM
 RS
 iM
@@ -30678,12 +30839,12 @@ Dq
 Dq
 oR
 uZ
-gk
-nd
+yY
+rW
 gK
 CQ
 gH
-aM
+kC
 xY
 uZ
 nl
@@ -30870,16 +31031,16 @@ zJ
 VV
 xL
 KG
-jT
-nC
+dP
+KH
 Pf
-Pf
+Ha
 ZH
 CQ
 gH
+Tf
 Pf
-Pf
-xj
+Vw
 IH
 Mt
 ya
@@ -34168,17 +34329,17 @@ yX
 KV
 en
 Fa
-hN
-eM
-Zg
-Zg
+sP
+KH
+bI
+sj
 xh
 jM
 se
-Zg
-Zg
-xj
-lG
+Kn
+bI
+Vw
+TB
 gJ
 iw
 jY
@@ -34363,14 +34524,14 @@ Tr
 wi
 Fa
 hN
-Bb
-bR
-TQ
+mZ
+DD
+uZ
 ZA
-jM
+DN
 Cj
-RV
-kf
+Bb
+fu
 yY
 lG
 gJ
@@ -35341,7 +35502,7 @@ pD
 uS
 PV
 Si
-PV
+Xd
 pR
 AP
 op

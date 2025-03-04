@@ -37,7 +37,6 @@
 /datum/shuttle/autodock/overmap/excursion/strelka
 	name = "Excursion Javelot Shuttle"
 	warmup_time = 0
-	shuttle_area = list(/area/shuttle/excursion/strelka)
 	shuttle_area = list(/area/shuttle/excursion/cockpit, /area/shuttle/excursion/general)
 	current_location = "strelka_excursion_hangar"
 	docking_controller_tag = "expshuttle_docker"
@@ -80,7 +79,7 @@
 /datum/shuttle/autodock/overmap/emt/strelka
 	name = "Hammerdart Interception and Rescue Shuttle"
 	warmup_time = 0
-	shuttle_area = list(/area/shuttle/emt/strelka, /area/shuttle/emt/strelka/cockpit)
+	shuttle_area = list(/area/shuttle/emt/strelka/main, /area/shuttle/emt/strelka/cockpit)
 	current_location = "strelka_emt_hangar"
 	docking_controller_tag = "emt_docker"
 	move_time = 15
@@ -92,6 +91,11 @@
 
 /area/shuttle/emt/strelka/cockpit
 	name = "Hammerdart Interception and Rescue Shuttle cockpit"
+	icon_state = "shuttle"
+	requires_power = 1
+
+/area/shuttle/emt/strelka/main
+	name = "Hammerdart Interception and Rescue Shuttle main"
 	icon_state = "shuttle"
 	requires_power = 1
 
@@ -118,7 +122,7 @@
 /datum/shuttle/autodock/overmap/civvie/strelka
 	name = "Decades Old civilian Transport"
 	warmup_time = 11
-	shuttle_area = list(/area/shuttle/civvie/strelka)
+	shuttle_area = list(/area/shuttle/civvie/strelka/main, /area/shuttle/civvie/strelka/cockpit)
 	current_location = "strelka_civvie_home"
 	docking_controller_tag = "civvie_docker"
 	fuel_consumption = 12
@@ -126,6 +130,16 @@
 
 /area/shuttle/civvie/strelka
 	name = "Decades Old civilian Transport"
+	icon_state = "shuttle"
+	requires_power = 1
+
+/area/shuttle/civvie/strelka/main
+	name = "Decades Old civilian Transport Main"
+	icon_state = "shuttle"
+	requires_power = 1
+
+/area/shuttle/civvie/strelka/cockpit
+	name = "Decades Old civilian Transport Cockpit"
 	icon_state = "shuttle"
 	requires_power = 1
 

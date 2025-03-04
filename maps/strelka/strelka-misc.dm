@@ -12,12 +12,12 @@
 			if(M.density)
 				spawn(0)
 					M.open()
-					command_announcement.Announce("Vessel is now entering Blockade Runner Mode. Closing ship shutters.", new_sound = sound('sound/effects/meteor_strike.ogg', volume=15))
+					command_announcement.Announce("Vessel is now entering Blockade Runner Mode. Closing ship shutters.", "Blockade Runner mode", new_sound = sound('sound/effects/meteor_strike.ogg', volume=15))
 					return
 			else
 				spawn(0)
 					M.close()
-					command_announcement.Announce("Vessel is now exiting Blockade Runner Mode. Opening ship shutters.", new_sound = sound('sound/effects/meteor_strike.ogg', volume=15))
+					command_announcement.Announce("Vessel is now exiting Blockade Runner Mode. Opening ship shutters.", "Blockade Runner mode", new_sound = sound('sound/effects/meteor_strike.ogg', volume=15))
 					return
 
 /obj/machinery/button/remote/blast_door/strelka/balista
