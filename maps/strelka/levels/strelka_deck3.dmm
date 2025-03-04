@@ -13258,6 +13258,9 @@
 "ZQ" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/bag/circuits/basic,
+/obj/machinery/status_display{
+	pixel_y = -29
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3/science/main)
 "ZR" = (
