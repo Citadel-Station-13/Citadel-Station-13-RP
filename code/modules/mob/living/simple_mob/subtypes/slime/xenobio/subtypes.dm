@@ -143,7 +143,7 @@
 	..()
 	if(isliving(A))
 		var/mob/living/L = A
-		L.inflict_shock_damage(is_adult ? 10 : 5)
+		L.inflict_shock_damage_legacy(is_adult ? 10 : 5)
 		to_chat(src, SPAN_NOTICE("You shock \the [L]."))
 		to_chat(L, SPAN_DANGER("You've been shocked by \the [src]!"))
 

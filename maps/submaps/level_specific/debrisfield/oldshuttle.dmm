@@ -130,8 +130,8 @@
 "aw" = (
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/closet/crate/secure/weapon,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/phase,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/phase,
+/obj/item/vehicle_module/weapon/energy/phase,
+/obj/item/vehicle_module/weapon/energy/phase,
 /obj/random/ammo_all,
 /obj/random/ammo_all,
 /obj/random/janusmodule,

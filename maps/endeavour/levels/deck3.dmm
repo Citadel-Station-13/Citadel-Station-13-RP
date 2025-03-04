@@ -19472,7 +19472,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "mXi" = (
-/obj/machinery/mineral/equipment_vendor,
+/obj/machinery/point_redemption_vendor/mining,
 /obj/effect/floor_decal/corner/brown/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/quartermaster/belterdock/gear)
@@ -22419,9 +22419,9 @@
 "oOf" = (
 /obj/machinery/camera/network/prison,
 /obj/structure/table/reinforced,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/phase,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/phase,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/phase,
+/obj/item/vehicle_module/weapon/energy/phase,
+/obj/item/vehicle_module/weapon/energy/phase,
+/obj/item/vehicle_module/weapon/energy/phase,
 /obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor/tiled,
 /area/security/hanger)
@@ -32701,9 +32701,9 @@
 /area/endeavour/hallway/d3aftmaint)
 "vvV" = (
 /obj/structure/table/reinforced,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/microtaser,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/taser,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/taser,
+/obj/item/vehicle_module/weapon/energy/microtaser,
+/obj/item/vehicle_module/weapon/energy/taser,
+/obj/item/vehicle_module/weapon/energy/taser,
 /turf/simulated/floor/tiled,
 /area/security/hanger)
 "vvX" = (

@@ -10,7 +10,7 @@
 	. = ..()
 	var/turf/T = get_turf(src)
 	if(isPlayerLevel(T.z))
-		new /obj/item/mecha_parts/mecha_tracking(src)
+		new /obj/item/vehicle_tracking_beacon(src)
 
 /obj/vehicle/sealed/mecha/working/range_action(atom/target as obj|mob|turf)
 	return

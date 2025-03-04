@@ -514,6 +514,16 @@
 	//How quickly the species can fly up z-levels (0 is instant, 1 is 7 seconds, 0.5 is ~3.5 seconds)
 	var/flight_mod = 1
 
+	// Alpha values
+	var/minimum_hair_alpha = 255
+	var/maximum_hair_alpha = 255
+	var/minimum_body_alpha = 255
+	var/maximum_body_alpha = 255
+
+	// Actions to grant when species is applied / remove when species is removed
+	var/list/actions_to_apply = list()
+	var/list/actions_applied = list()
+
 /datum/species/New()
 	//! LEGACY
 	is_subspecies = id != uid
@@ -603,6 +613,11 @@
 	for(var/faction in iff_factions_inherent)
 		H.add_iff_faction(faction)
 
+	for(var/path in actions_to_apply)
+		var/datum/action/A = new path(H)
+		A.grant(H.actions_innate)
+		actions_applied += A
+
 /**
  * called when we are removed from a mob
  */
@@ -632,6 +647,9 @@
 
 	for(var/faction in iff_factions_inherent)
 		H.remove_iff_faction(faction)
+
+	for(var/datum/action/A in actions_applied)
+		A.revoke(H.actions_controlled)
 
 /datum/species/proc/sanitize_species_name(var/name)
 	return sanitizeName(name, MAX_NAME_LEN)
@@ -980,7 +998,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 /**
  * clones us into a new datum
  */
-/datum/species/clone(include_contents)
+/datum/species/clone()
 	var/datum/species/created = new type
 	created.copy_from(src)
 	return created
@@ -1034,7 +1052,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 			T.remove(src, H)
 		src.traits = traits
 
-		H.icon_state = lowertext(get_bodytype_legacy())
+		//H.icon_state = lowertext(get_bodytype_legacy())
 
 		if(holder_type)
 			H.holder_type = holder_type
@@ -1052,3 +1070,9 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 /datum/species/proc/assert_innate_vision()
 	if(ispath(vision_innate))
 		vision_innate = new vision_innate
+
+/**
+ * Handle specific job outfit stuff if applicable
+ */
+/datum/species/proc/handle_species_job_outfit(var/mob/living/carbon/human/H, var/datum/outfit/outfit)
+  return

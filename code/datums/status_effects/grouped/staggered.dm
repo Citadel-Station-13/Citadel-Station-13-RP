@@ -16,7 +16,7 @@
 		return
 	applied_highest = highest
 	owner.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/mob_staggered, params = list(
-		MOVESPEED_PARAM_DELAY_MOD = highest
+		MOVESPEED_PARAM_HYPERBOLIC_SLOWDOWN = highest
 	))
 
 /datum/status_effect/grouped/staggered/on_remove()

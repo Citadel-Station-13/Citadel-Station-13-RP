@@ -382,7 +382,7 @@
 /turf/simulated/floor/tiled,
 /area/awaymission)
 "bn" = (
-/obj/item/mecha_parts/mecha_equipment/tool/drill,
+/obj/item/vehicle_module/tool/drill,
 /obj/item/storage/toolbox/mechanical,
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled,

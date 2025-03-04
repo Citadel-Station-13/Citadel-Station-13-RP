@@ -120,21 +120,21 @@
 /datum/supply_pack/nanotrasen/munitions/mrifle
 	name = "Weapons - Magnetic Rifles"
 	contains = list(
-		/obj/item/gun/magnetic/railgun/heater = 2,
+		/obj/item/gun/projectile/magnetic/railgun/heater = 2,
 	)
 	container_name = "Magnetic weapon crate"
 
 /datum/supply_pack/nanotrasen/munitions/mpistol
 	name = "Weapons - Magnetic Pistols"
 	contains = list(
-		/obj/item/gun/magnetic/railgun/heater/pistol = 2,
+		/obj/item/gun/projectile/magnetic/railgun/heater/pistol = 2,
 	)
 	container_name = "Magnetic weapon crate"
 
 /datum/supply_pack/nanotrasen/munitions/mcarbine
 	name = "Weapons - Magnetic Carbines"
 	contains = list(
-		/obj/item/gun/magnetic/railgun/flechette/sif = 2,
+		/obj/item/gun/projectile/magnetic/railgun/flechette/sif = 2,
 	)
 	container_name = "Magnetic weapon crate"
 
