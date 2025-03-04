@@ -48,13 +48,14 @@
 	initial_gas_mix = ATMOSPHERE_ID_SKYPLANET
 	color = "#ffeab0"
 	density = TRUE
-	is_plating = TRUE
 
 /turf/simulated/open/skyplanet/Initialize(mapload)
 	icon = 'icons/turf/sky.dmi'
 	icon_state = "sky"
 	ASSERT(!isnull(below()))
 	outdoors = 1
+	ambient_light = COLOR_LUMINOL
+	ambient_light_multiplier = 1
 
 /turf/simulated/open/skyplanet/Entered(atom/movable/mover)
 	..()
@@ -66,7 +67,6 @@
 	. = ..()
 	if(AM.movement_type & MOVEMENT_GROUND)
 		AM.fall()
-
 
 //landmarks
 
