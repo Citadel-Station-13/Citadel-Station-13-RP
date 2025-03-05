@@ -20,6 +20,8 @@
 	/// * this should rarely be used; instability system is better and
 	///   more suited for compatibility with other sources of dispersion
 	var/projectile_base_dispersion = 0
+	/// passed to bullet in fire()
+	var/list/projectile_effects_add
 
 	//* rendering *//
 
@@ -41,11 +43,6 @@
 	///
 	/// this must be created in [make_radial_appearance()] as this cannot be set to image() or similar at compile time
 	var/radial_appearance
-
-	//* Projectile Effects *//
-
-	/// passed to bullet in fire()
-	var/list/add_projectile_effects
 
 	//* LEGACY *//
 

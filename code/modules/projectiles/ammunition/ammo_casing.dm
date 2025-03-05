@@ -37,7 +37,7 @@
 
 	//* Projectile Effects *//
 	/// passed to bullet in fire()
-	var/list/add_projectile_effects
+	var/list/projectile_effects_add
 
 	//* Icon *//
 	/// switch to "[initial(state)]-spent" after expenditure
@@ -172,7 +172,7 @@
 	if(istype(stored))
 		CRASH("double init?")
 	stored = new projectile_type(src)
-	stored.add_projectile_effects(add_projectile_effects)
+	stored.add_projectile_effects(projectile_effects_add)
 	return stored
 
 //* Render *//
