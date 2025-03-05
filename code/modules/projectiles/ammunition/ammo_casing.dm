@@ -33,7 +33,7 @@
 	/// projectile type
 	var/projectile_type
 	/// stored projectile - either null for un-init'd, FALSE for empty, or an instance
-	VAR_PROTECTED/obj/projectile/stored
+	VAR_PROTECTED/obj/projectile/projectile_stored
 
 	//* Projectile Effects *//
 	/// passed to bullet in fire()
@@ -55,8 +55,7 @@
 		pixel_y = rand(-10, 10)
 
 /obj/item/ammo_casing/Destroy()
-	if(stored)
-		QDEL_NULL(stored)
+	QDEL_NULL(projectile_stored)
 	return ..()
 
 /obj/item/ammo_casing/get_intrinsic_worth(flags)
@@ -64,19 +63,22 @@
 
 /obj/item/ammo_casing/screwdriver_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = TRUE
-	if(!stored)
+	if(projectile_stored == FALSE)
 		e_args.chat_feedback(SPAN_WARNING("There is no bullet in [src] to inscribe."), src)
 		return
-	var/label_text = input(e_args.initiator, "Inscribe some text into [initial(stored.name)]", "Inscription", stored.name)
+	var/label_text = input(e_args.initiator, "Inscribe some text into [initial(projectile_stored.name)]", "Inscription", projectile_stored.name)
 	if(!e_args.performer.Adjacent(src))
 		return
 	label_text = sanitize(label_text, MAX_NAME_LEN, extra = FALSE)
+	lazy_init_projectile()
+	if(!projectile_stored)
+		CRASH("projectile stored isn't instanced when it shoudl be")
 	if(!label_text)
-		e_args.chat_feedback(SPAN_NOTICE("You scratch the inscription off of [initial(stored.name)]."), src)
-		stored.name = initial(stored.name)
+		e_args.chat_feedback(SPAN_NOTICE("You scratch the inscription off of [initial(projectile_stored.name)]."), src)
+		projectile_stored.name = initial(projectile_stored.name)
 		return
-	e_args.chat_feedback(SPAN_NOTICE("You inscribe [label_text] into \the [initial(stored.name)]."), src)
-	stored.name = "[initial(stored.name)] (\"[label_text]\")"
+	e_args.chat_feedback(SPAN_NOTICE("You inscribe [label_text] into \the [initial(projectile_stored.name)]."), src)
+	projectile_stored.name = "[initial(projectile_stored.name)] (\"[label_text]\")"
 
 /obj/item/ammo_casing/dynamic_tool_query(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
 	. = list(
@@ -135,12 +137,12 @@
  * Uses the ammo casing, returning the projectile retrieved, updating icon, etc
  */
 /obj/item/ammo_casing/proc/expend()
-	if(isnull(stored))
+	if(isnull(projectile_stored))
 		. = init_projectile()
-	stored = FALSE
+	projectile_stored = FALSE
 	if(isnull(.))
 		return
-	stored = FALSE
+	projectile_stored = FALSE
 	setDir(pick(GLOB.cardinal)) //spin spent casings
 	update_icon()
 
@@ -150,18 +152,18 @@
  * sees if we're currently loaded
  */
 /obj/item/ammo_casing/proc/is_loaded()
-	return stored != FALSE
+	return projectile_stored != FALSE
 
 /**
  * grab projectile
  */
 /obj/item/ammo_casing/proc/get_projectile()
-	switch(stored)
+	switch(projectile_stored)
 		if(null)
 			return init_projectile()
 		if(FALSE)
 			return null
-	return stored
+	return projectile_stored
 
 //* Projectile *//
 
@@ -169,11 +171,11 @@
  * makes a new projectile
  */
 /obj/item/ammo_casing/proc/init_projectile()
-	if(istype(stored))
+	if(istype(projectile_stored))
 		CRASH("double init?")
-	stored = new projectile_type(src)
-	stored.add_projectile_effects(projectile_effects_add)
-	return stored
+	projectile_stored = new projectile_type(src)
+	projectile_stored.add_projectile_effects(projectile_effects_add)
+	return projectile_stored
 
 //* Render *//
 
@@ -188,4 +190,4 @@
 
 /obj/item/ammo_casing/spent
 	icon_state = /obj/item/ammo_casing::icon_state + "-spent"
-	stored = FALSE
+	projectile_stored = FALSE
