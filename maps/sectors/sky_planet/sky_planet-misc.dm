@@ -447,31 +447,14 @@
 /obj/item/paper/pamphlet/voidlinedebut
 	name = "Voidline shuttle race"
 	desc = "A letter describing the voidline race."
-	info = @{"2542-01-01
-Welcome to the Voildline Racing club, organisers of the Voidline shuttle race.
-This competition sees crews of 4 shuttles (or more) with the same specs fight for first place, in a systeme wide race.
-It is a competition that need skills and courage !
-Our 4 shuttles, the trusty Arrowhead, the Teshari made Red Comet, the skrell made Udang and the Bonnethead will only show their might with the help of their crews."}
+	info = "2542-01-01 Welcome to the Voildline Racing club, organisers of the Voidline shuttle race. This competition sees crews of 4 shuttles (or more) with the same specs fight for first place, in a systeme wide race. It is a competition that need skills and courage ! Our 4 shuttles, the trusty Arrowhead, the Teshari made Red Comet, the skrell made Udang and the Bonnethead will only show their might with the help of their crews."
 
 /obj/item/paper/pamphlet/voidlineend
 	name = "Voidline shuttle race cancelation - use of shuttle"
 	desc = "A letter describing the voidline race cancelations."
-	info = @{"2543-02-16
-The SDF ordered a blockade of the planet.
-While I started to love seeing the clouds and the first edition of the voidline race being sucess,
-I admit that I will defend the choice of the SDF : the pirates, mercs, and now the situation in Base Town Ltet'Datri,
-is making the place more and more like a Hellhole.
-The club will remain active, has a open organisation. The Shuttle are legaly still ours, but I will authorise their use for races, and emergencies.
-Ah. And since Nanotrasen, Occulum, Vey-med, Hephatus, the SDF sponsoried the canceled second edition, I guess they also have the right to use the shuttles too.
-
--Club Owner Flavio Cochran Briotar"}
+	info = "2543-02-16, The SDF ordered a blockade of the planet. While I started to love seeing the clouds and the first edition of the voidline race being sucess, I admit that I will defend the choice of the SDF : the pirates, mercs, and now the situation in Base Town Ltet'Datri, is making the place more and more like a Hellhole.The club will remain active, has a open organisation. The Shuttle are legaly still ours, but I will authorise their use for races, and emergencies.Ah. And since Nanotrasen, Occulum, Vey-med, Hephatus, the SDF sponsoried the canceled second edition, I guess they also have the right to use the shuttles too.-Club Owner Flavio Cochran Briotar"
 
 /obj/item/paper/pamphlet/arrowhead
 	name = "Arrowhead note"
 	desc = "A letter saying where the the 4th racing shuttle is."
-	info = @{"2543-02-20
-We had too sell the Arrowhead.
-Its win during the first edition made us secure a nice deal with the FTU,
-Enough offer us a good plan for the futur.
-I heard they would put the shuttle to rent, maybe for some VIPs.
-The rest of our shuttle will stay here. Legally, they can be freely used by wannabe racers."}
+	info = "2543-02-20, We had too sell the Arrowhead. Its win during the first edition made us secure a nice deal with the FTU, Enough offer us a good plan for the futur.I heard they would put the shuttle to rent, maybe for some VIPs.The rest of our shuttle will stay here. Legally, they can be freely used by wannabe racers."
