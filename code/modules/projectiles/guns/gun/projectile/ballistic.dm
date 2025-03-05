@@ -433,6 +433,8 @@
  * * Inserts into bottom of internal magazine if it's not a revolver-like structure, then chambered.
  *   If `reverse_order` is on, insert into chambered, then to top of magazine instead.
  *
+ * todo: this can directly fill the chamber. this is not amazing and shouldn't be the case, i think?
+ *
  * @return TRUE / FALSE success / fail
  */
 /obj/item/gun/projectile/ballistic/proc/insert_casing(obj/item/ammo_casing/casing, silent, reverse_order)
@@ -493,6 +495,10 @@
  *
  * * Has no sanity checks. Run [accepts_casing()] yourself.
  * * Doesn't check delay. That's your job.
+ * * Inserts into bottom of internal magazine if it's not a revolver-like structure, then chambered.
+ *   If `reverse_order` is on, insert into chambered, then to top of magazine instead.
+ *
+ * todo: this can directly fill the chamber. this is not amazing and shouldn't be the case, i think?
  *
  * @return amount loaded
  */
@@ -500,10 +506,100 @@
 	// only works with internal magazines
 	if(!internal_magazine)
 		return 0
+	. = insert_speedloader_internal(speedloader, reverse_order)
+	if(. && !silent)
+		pass()
+		// todo: sound
+
+/obj/item/gun/projectile/ballistic/proc/insert_speedloader_internal(obj/item/ammo_magazine/speedloader, reverse_order)
+	. = 0
 	if(internal_magazine_revolver_mode)
+		if(reverse_order)
+			for(var/i in internal_magazine_revolver_offset - 1 to 1)
+				if(internal_magazine_vec[i])
+					continue
+				var/obj/item/ammo_casing/casing = speedloader.peek()
+				if(!casing)
+					return
+				if(!accepts_casing(casing))
+					return
+				casing = speedloader.pop()
+				casing.forceMove(src)
+				internal_magazine_vec[i] = casing
+				++.
+			for(var/i in length(internal_magazine_vec) to internal_magazine_revolver_offset step -1)
+				if(internal_magazine_vec[i])
+					continue
+				var/obj/item/ammo_casing/casing = speedloader.peek()
+				if(!casing)
+					return
+				if(!accepts_casing(casing))
+					return
+				casing = speedloader.pop()
+				casing.forceMove(src)
+				internal_magazine_vec[i] = casing
+				++.
+		else
+			for(var/i in internal_magazine_revolver_offset to length(internal_magazine_vec))
+				if(internal_magazine_vec[i])
+					continue
+				var/obj/item/ammo_casing/casing = speedloader.peek()
+				if(!casing)
+					return
+				if(!accepts_casing(casing))
+					return
+				casing = speedloader.pop()
+				casing.forceMove(src)
+				internal_magazine_vec[i] = casing
+				++.
+			for(var/i in 1 to internal_magazine_revolver_offset - 1)
+				if(internal_magazine_vec[i])
+					continue
+				var/obj/item/ammo_casing/casing = speedloader.peek()
+				if(!casing)
+					return
+				if(!accepts_casing(casing))
+					return
+				casing = speedloader.pop()
+				casing.forceMove(src)
+				internal_magazine_vec[i] = casing
+				++.
 	else
 		var/wanted = max(0, internal_magazine_size - length(internal_magazine_vec))
-	#warn impl
+		if(!wanted)
+			return
+		var/list/inserting = list()
+		for(var/i in 1 to wanted)
+			var/obj/item/ammo_casing/casing = speedloader.peek()
+			if(!casing)
+				break
+			if(!accepts_casing(casing))
+				break
+			casing = speedloader.pop()
+			casing.forceMove(src)
+			inserting += casing
+			++.
+		if(!length(inserting))
+			return
+		if(reverse_order)
+			// pop chamber to end of mag
+			if(chamber)
+				internal_magazine_vec += chamber
+			// pop end of new segment to chamber
+			chamber = inserting[length(inserting)]
+			// insert rest of new segment to end of mag
+			--inserting.len
+			internal_magazine_vec += inserting
+		else
+			// reverse new segment so first inserted is last to match internal mag order
+			reverseRange(inserting)
+			// if chamber is empty and internal mag is empty
+			// insert into chamber first
+			if(!length(internal_magazine_vec) && !chamber)
+				chamber = inserting[length(inserting)]
+				--inserting.len
+			// insert rest into bottom of internal mag
+			internal_magazine_vec.Insert(1, inserting)
 
 /**
  * Load magazine
