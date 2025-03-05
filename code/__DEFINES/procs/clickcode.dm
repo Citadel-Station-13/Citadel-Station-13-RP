@@ -52,7 +52,7 @@
 #define CLICKCHAIN_FLAGS_UNCONDITIONAL_ABORT (CLICKCHAIN_DO_NOT_PROPAGATE)
 /// check these for 'abort attack'
 #define CLICKCHAIN_FLAGS_ATTACK_ABORT (CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_FULL_BLOCKED)
-/// check these for 'abort interaction'
+/// check these for 'abort further interactions'
 #define CLICKCHAIN_FLAGS_INTERACT_ABORT (CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING)
 
 //! Reachability Depths - checked from level of DirectAccess and turf adjacency.
