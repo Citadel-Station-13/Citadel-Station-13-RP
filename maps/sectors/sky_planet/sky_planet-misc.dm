@@ -5,7 +5,7 @@
 	desc = "A planet with harsh conditions and acid lakes and rain on the ground, but with condition in the sky that makes it livable."
 	scanner_desc =  @{"[i]Stellar Body[/i]: Lythios 43a - Sky planet
 [i]Class[/i]: P-Class Planet, with breathable air over cloud level.
-[i]Habitability[/i]: Weak : Ground level impossible. Setllement in high atltitude.
+[i]Habitability[/i]: Weak : Ground level impossible. Settlements in high atltitude, on Sky-Rigs
 [i]Population[/i]: 500
 [i]Controlling Goverment[/i]: Previously : Various small defunct corporations. Now : SDF (limited), Haddi's Folly goverment (Limited)
 [b]Relationship with NT[/b]: Nanotrasen Client Government, NT asset was authorised to land, Tajaran SDF outpost given to NT.
@@ -30,6 +30,7 @@
 		"sky_civvie2_dock",
 		"sky_civvie3_dock",
 		"sky_civvie4_dock",
+		"sky_hammerhead_dock",
 
 		)
 

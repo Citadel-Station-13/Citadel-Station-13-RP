@@ -1234,6 +1234,10 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/dock)
+"hK" = (
+/obj/effect/shuttle_landmark/skyplanet/ntoutpost/northrig2/hammerhead,
+/turf/simulated/open/skyplanet,
+/area/sector/sky_planet/sky)
 "hO" = (
 /obj/effect/floor_decal/corner/red/bordercorner{
 	dir = 8
@@ -2771,9 +2775,9 @@
 /obj/machinery/door/blast/regular{
 	id = "Redcomet Airlock"
 	},
-/obj/machinery/button/remote/airlock{
-	id = "Redcomet Airlock";
-	pixel_x = 25
+/obj/machinery/button/remote/blast_door{
+	pixel_x = 24;
+	id = "Redcomet Airlock"
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/shuttle/redcomet)
@@ -6383,9 +6387,9 @@
 /obj/machinery/door/blast/regular{
 	id = "Paripari Airlock"
 	},
-/obj/machinery/button/remote/airlock{
-	id = "Paripari Airlock";
-	pixel_x = 25
+/obj/machinery/button/remote/blast_door{
+	pixel_x = 24;
+	id = "Paripari Airlock"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/paripari)
@@ -9004,9 +9008,9 @@
 /obj/machinery/door/blast/regular{
 	id = "Bonnethead Airlock"
 	},
-/obj/machinery/button/remote/airlock{
-	id = "Bonnethead Airlock";
-	pixel_x = 25
+/obj/machinery/button/remote/blast_door{
+	pixel_x = 24;
+	id = "Bonnethead Airlock"
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
 /area/shuttle/bonnethead)
@@ -26357,7 +26361,7 @@ qr
 qr
 qr
 qr
-qr
+hK
 qr
 qr
 qr
