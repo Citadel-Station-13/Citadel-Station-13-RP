@@ -75,7 +75,7 @@
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/nt_hydra.dmi'
 	icon_state = "hydracell"
 	base_icon_state = "hydracell"
-	caliber = /datum/ammo_caliber/microbattery/nt_hydra
+	casing_caliber = /datum/ammo_caliber/microbattery/nt_hydra
 
 	var/stripe_color
 

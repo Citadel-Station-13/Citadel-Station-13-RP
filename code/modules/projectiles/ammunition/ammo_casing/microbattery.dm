@@ -10,7 +10,7 @@
 	slot_flags = SLOT_EARS | SLOT_POCKET | SLOT_BELT
 	w_class = WEIGHT_CLASS_TINY
 
-	caliber = /datum/ammo_caliber/microbattery
+	casing_caliber = /datum/ammo_caliber/microbattery
 	casing_primer = CASING_PRIMER_MICROBATTERY
 
 	// todo: residue vars are legacy

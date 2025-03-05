@@ -216,7 +216,7 @@
 	desc += " Uses [ammo_types[ammo_type]] rounds."
 
 	var/obj/item/ammo_casing/ammo = ammo_type
-	caliber = initial(ammo.caliber)
+	caliber = initial(ammo.casing_caliber)
 	return ..()
 
 /obj/item/gun/projectile/ballistic/pirate/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)

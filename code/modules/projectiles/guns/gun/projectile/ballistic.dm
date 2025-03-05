@@ -130,14 +130,12 @@
 
 	//* Bolt *//
 
-	#warn implement this
 	/// Perform simplified bolt simulation on the gun.
 	/// * [chamber_simulation] is required for this to do anything.
 	///
 	/// Bolt simulated guns do the following:
 	/// * The bolt must be closed to fire.
 	/// * By default, chambered round cannot be accessed while the bolt is closed
-	/// * By default, internal magazine cannot be accessed while the bolt is closed
 	/// * By default, the 'cycle chamber' interaction will instead close or open
 	///   the bolt. If the bolt is being closed, it will also cycle the chamber.
 	/// * Enable bolt-state rendering if [render_bolt_overlay] is on.
@@ -145,6 +143,10 @@
 	/// Is the bolt closed right now?
 	/// * No effect without [bolt_simulation]
 	var/bolt_closed = TRUE
+	/// Deny internal magazine access while bolt closed?
+	var/bolt_blocks_internal_magazine = FALSE
+	/// Eject round when opening bolt?
+	var/bolt_auto_eject_on_open = TRUE
 	/// Sound to manipulate the bolt.
 	/// * Played in lieu of chambering sound if that exists and this is a manual bolt
 	///   manipulation.
@@ -391,7 +393,7 @@
  * Can accept an ammo casing
  */
 /obj/item/gun/projectile/ballistic/proc/accepts_casing(obj/item/ammo_casing/casing)
-	if(!accepts_caliber(casing.caliber))
+	if(!accepts_caliber(casing.casing_caliber))
 		return FALSE
 	return TRUE
 
@@ -423,6 +425,21 @@
 	if(ispath(provided_path, requested))
 		return TRUE
 	return FALSE
+
+/**
+ * Checks if internal magazine is full.
+ * * If we don't have an internal magazine, this returns TRUE as 0 of 0 is true.
+ */
+/obj/item/gun/projectile/ballistic/proc/is_internal_magazine_full()
+	if(!internal_magazine)
+		return TRUE
+	if(internal_magazine_revolver_mode)
+		for(var/i in 1 to length(internal_magazine_vec))
+			if(!internal_magazine_vec[i])
+				return FALSE
+		return TRUE
+	else
+		return length(internal_magazine_vec) >= internal_magazine_size
 
 /**
  * Load casing.
@@ -473,23 +490,18 @@
 							internal_magazine_vec[i] = casing
 							casing.forceMove(src)
 							break
+			if(success)
+				. = TRUE
 		else
 			if(reverse_order)
-				if(!chamber)
-					chamber = casing
-					casing.forceMove(src)
-				else if(length(internal_magazine_vec) < internal_magazine_size)
+				if(length(internal_magazine_vec) < internal_magazine_size)
 					internal_magazine_vec += casing
 					casing.forceMove(src)
+					. = TRUE
 			else if(length(internal_magazine_vec) < internal_magazine_size)
 				internal_magazine_vec.Insert(1, casing)
 				casing.forceMove(src)
-	else
-		// insert into chamber
-		if(!chamber)
-			. = TRUE
-			casing.forceMove(src)
-			chamber = casing
+				. = TRUE
 	if(. && !silent)
 		playsound(src, single_load_sound, 50, TRUE)
 
@@ -647,14 +659,14 @@
  * Eject **a** casing.
  *
  * * This can make a sound if it's not using silent param.
- * * For guns with external magazines, this removes chambered and only chambered.
+ * * This will never remove chambered if chamber simulation is on.
  * * For guns with internal magazines, see params
  *
  * @params
  * * new_loc - where to put the casing
  * * silent - don't make a noise
  * * reverse_order - remove from chambered, then top of magazine first,
- *                   rather than bottom to top then chambered.
+ *                   rather than bottom to top.
  *                   for revolvers, this will go from the current bullet forwards,
  *                   rather than the position before the current bullet backwards.
  */
@@ -662,7 +674,7 @@
 	RETURN_TYPE(/obj/item/ammo_casing)
 	var/obj/item/ammo_casing/ejecting
 
-	// internal: eject from bottom to top of mag then chambered,
+	// internal: eject from bottom to top of mag,
 	//           or the other way around depending on vars
 	if(internal_magazine)
 		if(internal_magazine_revolver_mode)
@@ -688,24 +700,13 @@
 							break
 		else
 			if(reverse_order)
-				if(chamber)
-					ejecting = chamber
-					chamber = null
-				else if(length(internal_magazine_vec))
+				if(length(internal_magazine_vec))
 					ejecting = internal_magazine_vec[length(internal_magazine_vec)]
 					--internal_magazine_vec.len
 			else
 				if(length(internal_magazine_vec))
 					ejecting = internal_magazine_vec[1]
 					internal_magazine_vec.Cut(1, 2)
-				else if(chamber)
-					ejecting = chamber
-					chamber = null
-
-	// external: eject chamber only
-	else if(chamber)
-		ejecting = eject_chamber(TRUE, FALSE, null)
-
 	if(!ejecting)
 		return
 	if(!silent)
@@ -741,7 +742,7 @@
 	if(!silent)
 		if(!from_fire)
 			playsound(src, bolt_open_sound, 75, TRUE)
-	if(!no_auto_eject)
+	if(bolt_auto_eject_on_open && !no_auto_eject)
 		eject_chamber(FALSE, from_fire, drop_location())
 
 //* Chamber *//
@@ -770,6 +771,23 @@
 			return internal_magazine[length(internal_magazine)]
 		else
 			return magazine?.peek()
+
+/**
+ * Swaps chambered projectile.
+ * * Old casing will be nullspaced and returned.
+ * * New casing will be moved into us if not already inside us.
+ *
+ * @return old projectile, if any.
+ */
+/obj/item/gun/projectile/ballistic/proc/swap_chambered(obj/item/ammo_casing/new_casing) as /obj/item/ammo_casing
+	RETURN_TYPE(/obj/item/ammo_casing)
+	var/obj/item/ammo_casing/old_casing = chamber
+	chamber = new_casing
+	if(new_casing.loc != src)
+		new_casing.forceMove(src)
+	if(old_casing)
+		old_casing.moveToNullspace()
+		. = old_casing
 
 /**
  * Cycles the chamber

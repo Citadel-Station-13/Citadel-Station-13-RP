@@ -2,6 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /obj/item/ammo_casing/nt_protomag
+	abstract_type = /obj/item/ammo_casing/nt_protomag
 	name = "protomag casing"
 	desc = "An obnoxiously long casing for some kind of rifle."
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/protomag/ammo.dmi'
@@ -20,6 +21,7 @@
 	add_overlay(stripe_image, TRUE)
 
 /obj/item/ammo_casing/nt_protomag/magboosted
+	abstract_type = /obj/item/ammo_casing/nt_protomag/magboosted
 	name = "protomag round"
 	desc = "A slender bullet. It seems to have less propellant than usual."
 	casing_primer = CASING_PRIMER_MAGNETIC | CASING_PRIMER_CHEMICAL
@@ -83,6 +85,7 @@
 	)
 
 /obj/item/ammo_casing/nt_protomag/magnetic
+	abstract_type = /obj/item/ammo_casing/nt_protomag/magnetic
 	name = "protomag slug"
 	desc = "A slender ferromagnetic slug. A bullet without propellant, for whatever reason."
 	casing_primer = CASING_PRIMER_MAGNETIC

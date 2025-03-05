@@ -16,7 +16,35 @@
  * @return clickchain flags
  */
 /obj/item/gun/projectile/ballistic/proc/user_clickchain_cycle_chamber(datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
-	#warn impl
+	if(!chamber_simulation)
+		return NONE
+	if(bolt_simulation)
+		if(bolt_closed)
+			open_bolt()
+			if(!no_message)
+				actor.visible_feedback(
+					target = src,
+					visible = SPAN_WARNING("[actor.performer] slides [src]'s bolt back."),
+					otherwise_self = SPAN_WARNING("You slide [src]'s bolt back."),
+				)
+		else
+			close_bolt()
+			if(!no_message)
+				actor.visible_feedback(
+					target = src,
+					visible = SPAN_WARNING("[actor.performer] slides [src]'s bolt forwards."),
+					otherwise_self = SPAN_WARNING("You slide [src]'s bolt forwards."),
+				)
+		return CLICKCHAIN_DID_SOMETHING
+	else
+		cycle_chamber()
+		if(!no_message)
+			actor.visible_feedback(
+				target = src,
+				visible = SPAN_WARNING("[actor.performer] racks [src]'s slide."),
+				otherwise_self = SPAN_WARNING("You rack [src]'s slide."),
+			)
+		return CLICKCHAIN_DID_SOMETHING
 
 /**
  * * The weird proc args is because this supports non-clickchain use.
@@ -50,6 +78,14 @@
 		if(!no_message)
 			actor.chat_feedback(
 				SPAN_WARNING("[magazine] doesn't fit [src] for speedloading."),
+				target = src,
+			)
+		return CLICKCHAIN_DID_SOMETHING
+
+	if(bolt_simulation && bolt_closed && bolt_blocks_internal_magazine)
+		if(!no_message)
+			actor.chat_feedback(
+				SPAN_WARNING("[src]'s bolt must be open to access its internal magazine."),
 				target = src,
 			)
 		return CLICKCHAIN_DID_SOMETHING
@@ -94,6 +130,14 @@
 	if(!internal_magazine)
 		return CLICKCHAIN_DID_SOMETHING
 
+	if(bolt_simulation && bolt_closed && bolt_blocks_internal_magazine)
+		if(!no_message)
+			actor.chat_feedback(
+				SPAN_WARNING("[src]'s bolt must be open to access its internal magazine."),
+				target = src,
+			)
+		return CLICKCHAIN_DID_SOMETHING
+
 	if(length(internal_magazine_vec) >= internal_magazine_size)
 		if(!no_message)
 			actor.chat_feedback(
@@ -101,6 +145,7 @@
 				target = src,
 			)
 		return CLICKCHAIN_DID_SOMETHING
+
 	if(!magazine.get_amount_remaining())
 		if(!no_message)
 			actor.chat_feedback(
@@ -112,6 +157,13 @@
 	var/loaded = 0
 	do
 		if(!do_after(actor.performer, single_load_delay, src, mobility_flags = MOBILITY_CAN_USE))
+			break
+		if(bolt_simulation && bolt_closed && bolt_blocks_internal_magazine)
+			if(!no_message)
+				actor.chat_feedback(
+					SPAN_WARNING("[src]'s bolt must be open to access its internal magazine."),
+					target = src,
+				)
 			break
 		var/obj/item/ammo_casing/peeking = magazine.peek()
 		if(!peeking || !accepts_casing(peeking))
@@ -202,15 +254,77 @@
  * @return clickchain flags
  */
 /obj/item/gun/projectile/ballistic/proc/user_clickchain_apply_casing(obj/item/ammo_casing/casing, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
-	#warn impl
-	if(magazine)
+	if(internal_magazine)
+		return user_clickchain_apply_casing_to_internal_magazine(casing, actor, clickchain, no_sound, no_message)
+	else
+		return user_clickchain_apply_casing_to_chamber(casing, actor, clickchain, no_sound, no_message)
 
+/**
+ * * The weird proc args is because this supports non-clickchain use.
+ *
+ * @return clickchain flags
+ */
+/obj/item/gun/projectile/ballistic/proc/user_clickchain_apply_casing_to_internal_magazine(obj/item/ammo_casing/casing, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
+	if(!internal_magazine)
+		if(!no_message)
+			actor.chat_feedback(
+				SPAN_WARNING("[src] doesn't have an internal magazine."),
+				target = src,
+			)
 		return CLICKCHAIN_DID_SOMETHING
-
+	if(bolt_simulation && bolt_closed && bolt_blocks_internal_magazine)
+		if(!no_message)
+			actor.chat_feedback(
+				SPAN_WARNING("[src]'s bolt must be open to access its internal magazine."),
+				target = src,
+			)
+		return CLICKCHAIN_DID_SOMETHING
+	if(!accepts_casing(casing))
+		if(!no_message)
+			actor.chat_feedback(
+				SPAN_WARNING("[casing] doesn't fit into [src]."),
+				target = src,
+			)
+		return CLICKCHAIN_DID_SOMETHING
+	if(is_internal_magazine_full())
+		if(!no_message)
+			actor.chat_feedback(
+				SPAN_WARNING("[src]'s internal magazine is full."),
+				target = src,
+			)
+		return CLICKCHAIN_DID_SOMETHING
 	if(clickchain)
 		if(!clickchain.performer.attempt_insert_item_for_installation(magazine, src))
 			return CLICKCHAIN_DID_SOMETHING
+	if(!insert_casing(casing))
+		casing.forceMove(drop_location())
+		CRASH("failed to insert casing after point of no return in clickchain interaction")
+	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
+/**
+ * * The weird proc args is because this supports non-clickchain use.
+ *
+ * @return clickchain flags
+ */
+/obj/item/gun/projectile/ballistic/proc/user_clickchain_apply_casing_to_chamber(obj/item/ammo_casing/casing, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
+	if(chamber)
+		if(!no_message)
+			actor.chat_feedback(
+				SPAN_WARNING("[src]'s chamber is full."),
+				target = src,
+			)
+		return CLICKCHAIN_DID_SOMETHING
+	if(bolt_simulation && bolt_closed)
+		if(!no_message)
+			actor.chat_feedback(
+				SPAN_WARNING("[src]'s bolt must be open to access its chamber."),
+				target = src,
+			)
+		return CLICKCHAIN_DID_SOMETHING
+	if(clickchain)
+		if(!clickchain.performer.attempt_insert_item_for_installation(magazine, src))
+			return CLICKCHAIN_DID_SOMETHING
+	swap_chambered(casing)
 	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
 /**
@@ -221,16 +335,25 @@
 /obj/item/gun/projectile/ballistic/proc/user_clickchain_unload(datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
 	if(magazine)
 		return user_clickchain_unload_magazine(actor, clickchain, no_sound, no_message)
-	return user_clickchain_unload_ammo(actor, clickchain, no_sound, no_message)
+	return user_clickchain_unload_ammo(actor, clickchain, no_sound, no_message, TRUE)
 
 /**
  * * The weird proc args is because this supports non-clickchain use.
  *
  * @return clickchain flags
  */
-/obj/item/gun/projectile/ballistic/proc/user_clickchain_unload_ammo(datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
+/obj/item/gun/projectile/ballistic/proc/user_clickchain_unload_ammo(datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message, remove_chamber_if_empty)
+	if(bolt_simulation && bolt_closed && bolt_blocks_internal_magazine)
+		if(!no_message)
+			actor.chat_feedback(
+				SPAN_WARNING("[src]'s bolt must be open to access its internal magazine or chamber."),
+				target = src,
+			)
+		return CLICKCHAIN_DID_SOMETHING
 	var/obj/item/ammo_casing/unloaded = remove_casing(null, no_sound)
 	if(!unloaded)
+		if(remove_chamber_if_empty)
+			return user_clickchain_unload_chamber(actor, clickchain, no_sound, no_message)
 		return NONE
 	if(clickchain)
 		clickchain.performer.put_in_hands_or_drop(unloaded)
@@ -273,6 +396,13 @@
  * @return clickchain flags
  */
 /obj/item/gun/projectile/ballistic/proc/user_clickchain_unload_chamber(datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
+	if(bolt_simulation && bolt_closed)
+		if(!no_message)
+			actor.chat_feedback(
+				SPAN_WARNING("[src]'s bolt must be open to access its chamber."),
+				target = src,
+			)
+		return CLICKCHAIN_DID_SOMETHING
 	var/obj/item/ammo_casing/unloaded = eject_chamber(no_sound)
 	if(!unloaded)
 		return NONE

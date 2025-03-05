@@ -9,13 +9,14 @@
 //* Ammo Casings *//
 
 /obj/item/ammo_casing/nt_expedition
+	abstract_type = /obj/item/ammo_casing/nt_expedition
 	description_fluff = {"
 		A casing for the experimental lineage of chemical-primed kinetic weaponry developed as part of a joint effort
 		between Hephaestus Industries and the Nanotrasen Research Division. Created both to enhance compatibility as well
 		as well as to improve security on installations operated by the Triumvirate, the 'NT Expeditionary' line boasts an
 		above-average reliability rating, as well as being easy to restock out on the Frontier.
 	"}
-	caliber = /datum/ammo_caliber/nt_expedition
+	casing_caliber = /datum/ammo_caliber/nt_expedition
 
 //* Magazines *//
 

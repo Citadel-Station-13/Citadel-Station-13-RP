@@ -6,7 +6,7 @@
 
 /obj/item/ammo_casing/a5_56mm
 	desc = "A 5.56mm bullet casing."
-	caliber = /datum/ammo_caliber/a5_56mm
+	casing_caliber = /datum/ammo_caliber/a5_56mm
 	icon = 'icons/modules/projectiles/casings/slim.dmi'
 	icon_state = "large"
 	projectile_type = /obj/projectile/bullet/rifle/a556
