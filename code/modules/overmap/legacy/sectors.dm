@@ -88,7 +88,10 @@
 
 /obj/overmap/entity/visitable/proc/find_z_levels()
 	if(!LAZYLEN(map_z)) // If map_z is already populated use it as-is, otherwise start with connected z-levels.
-		map_z = SSmapping.loaded_station.get_map_levels(z)
+		if(is_main_station)
+			map_z = SSmapping.loaded_station.station_levels.Copy()
+		else
+			map_z = SSmapping.loaded_station.get_map_levels(z)
 	if(LAZYLEN(extra_z_levels))
 		for(var/thing in extra_z_levels)
 			var/datum/map_level/level

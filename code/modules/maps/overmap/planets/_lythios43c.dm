@@ -31,6 +31,7 @@
 		"NDV Quicksilver" = list("rift_specops_dock"),
 		"Pirate Skiff" = list("rift_pirate_dock"),
 		)
+	is_main_station = TRUE
 
 //Despite not being in the multi-z complex, these levels are part of the overmap sector
 /* This should be placed in the map's define files.
