@@ -8,7 +8,7 @@
 	icon_state = "globule"
 	color = "#E6E685"
 	projectile_type = /obj/projectile/bullet/organic/wax
-	caliber = /datum/ammo_caliber/biomatter/wax
+	casing_caliber = /datum/ammo_caliber/biomatter/wax
 	materials_base = list(
 		/datum/prototype/material/wax::id = 100,
 	)

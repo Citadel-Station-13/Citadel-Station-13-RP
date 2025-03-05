@@ -17,7 +17,7 @@
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-light-ammo.dmi'
 	icon_state = "basic"
 	icon_spent = TRUE
-	caliber = /datum/ammo_caliber/nt_expedition/light_rifle
+	casing_caliber = /datum/ammo_caliber/nt_expedition/light_rifle
 	projectile_type = /obj/projectile/bullet/nt_expedition/light_rifle
 
 	/// specifically for /obj/item/ammo_magazine/nt_expedition/light_rifle's

@@ -4,7 +4,7 @@
 
 /obj/item/ammo_casing/a38
 	desc = "A .38 bullet casing."
-	caliber = /datum/ammo_caliber/a38
+	casing_caliber = /datum/ammo_caliber/a38
 	icon = 'icons/modules/projectiles/casings/slim.dmi'
 	icon_state = "small"
 	projectile_type = /obj/projectile/bullet/pistol

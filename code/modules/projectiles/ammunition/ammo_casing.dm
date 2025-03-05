@@ -22,12 +22,12 @@
 	/// * may be typepath of caliber (recommended)
 	/// * may be instance of caliber (not recommended, but allowable for special cases)
 	/// * may NOT be string of caliber, currently
-	var/caliber
+	var/casing_caliber
 	/// Effective mass multiplier.
 	///
 	/// * This is used to calculate energy draw for magnetic weapons.
 	/// * Set this as a multiple of a parent type's multiplier.
-	var/effective_mass_multiplier = 1
+	var/casing_effective_mass_multiplier = 1
 
 	//* Projectile *//
 	/// projectile type
@@ -108,11 +108,11 @@
 //* Caliber *//
 
 /obj/item/ammo_casing/proc/get_caliber_string()
-	return resolve_caliber(caliber)?.caliber
+	return resolve_caliber(casing_caliber)?.caliber
 
 /obj/item/ammo_casing/proc/get_caliber()
 	RETURN_TYPE(/datum/ammo_caliber)
-	return resolve_caliber(caliber)
+	return resolve_caliber(casing_caliber)
 
 //* Firing *//
 

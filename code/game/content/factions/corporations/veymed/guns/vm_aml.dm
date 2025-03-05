@@ -72,7 +72,7 @@
 	icon = 'icons/content/factions/corporations/veymed/items/guns/vm_aml.dmi'
 	icon_state = "medicell"
 	base_icon_state = "medicell"
-	caliber = /datum/ammo_caliber/microbattery/vm_aml
+	casing_caliber = /datum/ammo_caliber/microbattery/vm_aml
 
 	var/stripe_color
 

@@ -48,7 +48,7 @@
 	icon = 'icons/content/factions/corporations/gorlex/items/guns/phoron_spitter.dmi'
 	icon_state = "shrapnel"
 
-	caliber = /datum/ammo_caliber/phoron_shrap
+	casing_caliber = /datum/ammo_caliber/phoron_shrap
 	projectile_type = /obj/projectile/bullet/incendiary/phoronshrap
 	casing_flags = CASING_DELETE
 

@@ -18,5 +18,5 @@
 /obj/item/ammo_casing/a792
 	desc = "A 7.92x33mm Kurz casing."
 	icon_state = "rifle-casing"
-	caliber = /datum/ammo_caliber/a7_92mm
+	casing_caliber = /datum/ammo_caliber/a7_92mm
 	projectile_type = /obj/projectile/bullet/rifle/a762

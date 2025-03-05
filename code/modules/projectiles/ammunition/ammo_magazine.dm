@@ -89,10 +89,10 @@
 	var/ammo_caliber
 	/// preloaded ammo type
 	var/ammo_preload
-	/// if set, only loads ammo matching this restrict value
+	/// if set, only loads ammo matching this typepath
+	/// * you generally shouldn't be using this
 	///
-	/// * ammo by default has their typepath as the restrict value
-	/// * ammo can set strings / enums to this too; make sure to #define them.
+	/// todo: add enum / string support to ammo restrictions
 	var/ammo_restrict
 	/// if set and ammo_restrict uses typepaths, doesn't allow subtypes
 	var/ammo_restrict_no_subtypes = FALSE
@@ -224,7 +224,7 @@
  * @return null for success, a string describing why not otherwise.
  */
 /obj/item/ammo_magazine/proc/why_cant_load_casing(obj/item/ammo_casing/casing)
-	if(!loads_caliber(casing.caliber))
+	if(!loads_caliber(casing.casing_caliber))
 		return "mismatched caliber"
 	if(ammo_restrict && (ammo_restrict_no_subtypes ? casing.type != ammo_restrict : !istype(casing, ammo_restrict)))
 		return "mismatched ammo"

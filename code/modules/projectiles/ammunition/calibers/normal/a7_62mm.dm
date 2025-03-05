@@ -6,7 +6,7 @@
 
 /obj/item/ammo_casing/a7_62mm
 	desc = "A 7.62mm bullet casing."
-	caliber = /datum/ammo_caliber/a7_62mm
+	casing_caliber = /datum/ammo_caliber/a7_62mm
 	icon = 'icons/modules/projectiles/casings/slim.dmi'
 	icon_state = "large"
 	projectile_type = /obj/projectile/bullet/rifle/a762

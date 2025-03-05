@@ -17,7 +17,7 @@
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-heavy-ammo.dmi'
 	icon_state = "basic"
 	icon_spent = TRUE
-	caliber = /datum/ammo_caliber/nt_expedition/heavy_rifle
+	casing_caliber = /datum/ammo_caliber/nt_expedition/heavy_rifle
 	projectile_type = /obj/projectile/bullet/nt_expedition/heavy_rifle
 
 	/// specifically for /obj/item/ammo_magazine/nt_expedition/heavy_rifle's

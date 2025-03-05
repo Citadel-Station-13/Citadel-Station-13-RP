@@ -8,7 +8,7 @@
 	name = "chemical dart"
 	desc = "A casing containing a small hardened, hollow dart."
 	icon_state = "dart"
-	caliber = /datum/ammo_caliber/dart
+	casing_caliber = /datum/ammo_caliber/dart
 	projectile_type = /obj/projectile/bullet/chemdart
 
 /obj/item/ammo_casing/dart/chemdart/small

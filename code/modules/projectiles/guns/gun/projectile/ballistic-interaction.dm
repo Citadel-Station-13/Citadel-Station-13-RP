@@ -203,6 +203,9 @@
  */
 /obj/item/gun/projectile/ballistic/proc/user_clickchain_apply_casing(obj/item/ammo_casing/casing, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
 	#warn impl
+	if(magazine)
+
+		return CLICKCHAIN_DID_SOMETHING
 
 	if(clickchain)
 		if(!clickchain.performer.attempt_insert_item_for_installation(magazine, src))

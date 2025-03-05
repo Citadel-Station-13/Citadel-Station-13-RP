@@ -15,7 +15,7 @@
 	/// Supports cycling
 	var/supports_cycling = TRUE
 
-/obj/item/ammo_magazine/microbattery/Initialize()
+/obj/item/ammo_magazine/microbattery/Initialize(mapload)
 	. = ..()
 	populate_datastructures()
 

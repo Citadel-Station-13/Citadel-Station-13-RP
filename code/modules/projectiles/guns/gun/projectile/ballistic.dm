@@ -118,7 +118,8 @@
 	/// * Changing this post-Initialize() is considered undefined behavior.
 	/// * Basically, makes this act like a revolver. Round ejection still works.
 	/// * This forces the chamber to always be empty, and the 'chambered round' to always actually just
-	///   be the round at [internal_magazine_revolver_offset]
+	///   be the round at [internal_magazine_revolver_offset].
+	///   Basically, [chamber_simulation] is disabled if this is on.
 	var/internal_magazine_revolver_mode = FALSE
 	/// The current position in [internal_magazine_vec] we are at.
 	/// * This is to avoid duplicate references, as those are pretty much asking for trouble.
@@ -135,12 +136,8 @@
 	///
 	/// Bolt simulated guns do the following:
 	/// * The bolt must be closed to fire.
-	/// * The bolt will close when cycling (charging) the chamber, whether
-	///   manually or automatically.
-	/// * The bolt will open after firing.
 	/// * By default, chambered round cannot be accessed while the bolt is closed
 	/// * By default, internal magazine cannot be accessed while the bolt is closed
-	/// * By default, external magazine cannot be inserted or removed while the bolt is closed
 	/// * By default, the 'cycle chamber' interaction will instead close or open
 	///   the bolt. If the bolt is being closed, it will also cycle the chamber.
 	/// * Enable bolt-state rendering if [render_bolt_overlay] is on.
@@ -258,6 +255,12 @@
 			magazine = new magazine_preload
 			// chamber the gun
 			load_chamber()
+
+/obj/item/gun/projectile/ballistic/Destroy()
+	QDEL_NULL(chamber)
+	QDEL_NULL(magazine)
+	QDEL_LIST_NULL(internal_magazine_vec)
+	return ..()
 
 /obj/item/gun/projectile/ballistic/update_icon_state()
 	. = ..()
@@ -651,9 +654,9 @@
  * * new_loc - where to put the casing
  * * silent - don't make a noise
  * * reverse_order - remove from chambered, then top of magazine first,
- *                          rather than bottom to top then chambered.
- *                          for revolvers, this will go from the current bullet forwards,
- *                          rather than the position before the current bullet backwards.
+ *                   rather than bottom to top then chambered.
+ *                   for revolvers, this will go from the current bullet forwards,
+ *                   rather than the position before the current bullet backwards.
  */
 /obj/item/gun/projectile/ballistic/proc/remove_casing(atom/new_loc, silent, reverse_order) as /obj/item/ammo_casing
 	RETURN_TYPE(/obj/item/ammo_casing)
@@ -718,6 +721,28 @@
 	if(!internal_magazine || !internal_magazine_revolver_mode)
 		CRASH("attempted to call 'remove_casing_from_revolver_index' on a non-internal-revolver-like gun.")
 	CRASH("unimplemented proc")
+
+//* Bolt *//
+
+/obj/item/gun/projectile/ballistic/proc/close_bolt(silent, from_fire, no_auto_chamber)
+	if(bolt_closed)
+		return
+	bolt_closed = TRUE
+	if(!silent)
+		if(!from_fire)
+			playsound(src, bolt_close_sound, 75, TRUE)
+	if(!no_auto_chamber)
+		load_chamber()
+
+/obj/item/gun/projectile/ballistic/proc/open_bolt(silent, from_fire, no_auto_eject)
+	if(!bolt_closed)
+		return
+	bolt_closed = FALSE
+	if(!silent)
+		if(!from_fire)
+			playsound(src, bolt_open_sound, 75, TRUE)
+	if(!no_auto_eject)
+		eject_chamber(FALSE, from_fire, drop_location())
 
 //* Chamber *//
 

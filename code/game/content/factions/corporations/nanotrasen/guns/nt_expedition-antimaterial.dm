@@ -16,7 +16,7 @@
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/antimaterial-ammo.dmi'
 	icon_state = "basic"
 	icon_spent = TRUE
-	caliber = /datum/ammo_caliber/nt_expedition/antimaterial
+	casing_caliber = /datum/ammo_caliber/nt_expedition/antimaterial
 	projectile_type = /obj/projectile/bullet/nt_expedition/antimaterial
 
 	/// specifically for /obj/item/ammo_magazine/nt_expedition/antimaterial's

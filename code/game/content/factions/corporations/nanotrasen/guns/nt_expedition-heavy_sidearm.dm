@@ -17,7 +17,7 @@
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/sidearm-heavy-ammo.dmi'
 	icon_state = "basic"
 	icon_spent = TRUE
-	caliber = /datum/ammo_caliber/nt_expedition/heavy_sidearm
+	casing_caliber = /datum/ammo_caliber/nt_expedition/heavy_sidearm
 	projectile_type = /obj/projectile/bullet/nt_expedition/heavy_sidearm
 
 	materials_base = list(

@@ -349,8 +349,6 @@
 	update_icon()
 
 /obj/item/gun/Destroy()
-	if(locate(/obj/projectile) in src)
-		stack_trace("found an /obj/projectile in ourselves. this is not only invalid state, but means someone probably caused a memory leak.")
 	QDEL_NULL(pin)
 	QDEL_LIST(attachments)
 	return ..()
