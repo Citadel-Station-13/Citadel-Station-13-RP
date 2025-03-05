@@ -4,6 +4,9 @@
 /obj/item/gun/projectile/ballistic/should_unique_action_rack_chamber()
 	return chamber_simulation
 
+/obj/item/gun/projectile/ballistic/auto_inhand_rack_chamber(datum/event_args/actor/e_args)
+	return user_clickchain_cycle_chamber(e_args, null, no_sound, no_message)
+
 /**
  * * The weird proc args is because this supports non-clickchain use.
  *
@@ -35,7 +38,6 @@
 					visible = SPAN_WARNING("[actor.performer] slides [src]'s bolt forwards."),
 					otherwise_self = SPAN_WARNING("You slide [src]'s bolt forwards."),
 				)
-		return CLICKCHAIN_DID_SOMETHING
 	else
 		cycle_chamber()
 		if(!no_message)
@@ -44,7 +46,8 @@
 				visible = SPAN_WARNING("[actor.performer] racks [src]'s slide."),
 				otherwise_self = SPAN_WARNING("You rack [src]'s slide."),
 			)
-		return CLICKCHAIN_DID_SOMETHING
+	update_icon()
+	return CLICKCHAIN_DID_SOMETHING
 
 /**
  * * The weird proc args is because this supports non-clickchain use.
@@ -207,7 +210,7 @@
 	var/obj/item/ammo_magazine/put_back_in_hand
 	var/tactical_reload_append
 	if(magazine)
-		if(interact_allow_tactical_reload && actor)
+		if(interact_allow_tactical_reload && clickchain)
 			switch(clickchain.using_intent)
 				if(INTENT_GRAB)
 					if(do_after(actor.performer, interact_tactical_reload_delay, src, mobility_flags = MOBILITY_CAN_USE))
@@ -228,9 +231,8 @@
 					target = src,
 				)
 			return CLICKCHAIN_DID_SOMETHING
-	if(clickchain)
-		if(!clickchain.performer.attempt_insert_item_for_installation(magazine, src))
-			return CLICKCHAIN_DID_SOMETHING
+	if(!actor.performer.attempt_insert_item_for_installation(magazine, src))
+		return CLICKCHAIN_DID_SOMETHING
 	if(!insert_magazine(magazine))
 		magazine.forceMove(drop_location())
 		CRASH("failed to insert magazine after point of no return in clickchain interaction")
@@ -293,9 +295,8 @@
 				target = src,
 			)
 		return CLICKCHAIN_DID_SOMETHING
-	if(clickchain)
-		if(!clickchain.performer.attempt_insert_item_for_installation(magazine, src))
-			return CLICKCHAIN_DID_SOMETHING
+	if(!actor.performer.attempt_insert_item_for_installation(magazine, src))
+		return CLICKCHAIN_DID_SOMETHING
 	if(!insert_casing(casing))
 		casing.forceMove(drop_location())
 		CRASH("failed to insert casing after point of no return in clickchain interaction")
@@ -321,9 +322,8 @@
 				target = src,
 			)
 		return CLICKCHAIN_DID_SOMETHING
-	if(clickchain)
-		if(!clickchain.performer.attempt_insert_item_for_installation(magazine, src))
-			return CLICKCHAIN_DID_SOMETHING
+	if(!actor.performer.attempt_insert_item_for_installation(magazine, src))
+		return CLICKCHAIN_DID_SOMETHING
 	swap_chambered(casing)
 	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
@@ -355,10 +355,7 @@
 		if(remove_chamber_if_empty)
 			return user_clickchain_unload_chamber(actor, clickchain, no_sound, no_message)
 		return NONE
-	if(clickchain)
-		clickchain.performer.put_in_hands_or_drop(unloaded)
-	else
-		unloaded.forceMove(drop_location())
+	actor.performer.put_in_hands_or_drop(unloaded)
 	if(!no_message)
 		actor.visible_feedback(
 			target = src,
@@ -377,10 +374,7 @@
 	var/obj/item/ammo_magazine/unloaded = remove_magazine(null, no_sound)
 	if(!unloaded)
 		return NONE
-	if(clickchain)
-		clickchain.performer.put_in_hands_or_drop(unloaded)
-	else
-		unloaded.forceMove(drop_location())
+	actor.performer.put_in_hands_or_drop(unloaded)
 	if(!no_message)
 		actor.visible_feedback(
 			target = src,
@@ -406,10 +400,7 @@
 	var/obj/item/ammo_casing/unloaded = eject_chamber(no_sound)
 	if(!unloaded)
 		return NONE
-	if(clickchain)
-		clickchain.performer.put_in_hands_or_drop(unloaded)
-	else
-		unloaded.forceMove(drop_location())
+	actor.performer.put_in_hands_or_drop(unloaded)
 	if(!no_message)
 		actor.visible_feedback(
 			target = src,

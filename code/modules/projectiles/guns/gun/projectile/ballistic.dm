@@ -221,7 +221,6 @@
 	/// Render the chamber state.
 	///
 	/// todo: mob renderer integration
-	/// todo: this is not supported yet
 	///
 	/// * uses BALLISTIC_RENDER_BOLT_* enums
 	var/render_bolt_overlay = BALLISTIC_RENDER_BOLT_NEVER
