@@ -8,14 +8,16 @@
 /area/sector/sky_planet/sky
 	name = "Lythios 43a Sky"
 	icon_state = "blue"
-	requires_power = 1
+	requires_power = 0
 	ambience = AMBIENCE_GENERIC
 	dynamic_lighting = 1
 	initial_gas_mix = ATMOSPHERE_ID_SKYPLANET
+	luminosity = 1
 
 /area/sector/sky_planet/ground
 	name = "Lythios 43a ground"
-	requires_power = 1
+	requires_power = 0
+	luminosity = 1
 	ambience = AMBIENCE_GENERIC
 	dynamic_lighting = 1
 	icon_state = "unexplored"
