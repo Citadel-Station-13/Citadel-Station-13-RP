@@ -34,8 +34,6 @@
 	var/projectile_type
 	/// stored projectile - either null for un-init'd, FALSE for empty, or an instance
 	VAR_PROTECTED/obj/projectile/projectile_stored
-
-	//* Projectile Effects *//
 	/// passed to bullet in fire()
 	var/list/projectile_effects_add
 
