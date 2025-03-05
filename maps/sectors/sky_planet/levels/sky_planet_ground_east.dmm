@@ -768,6 +768,10 @@
 /obj/structure/event/prop/excavation_drill,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/rock)
+"QJ" = (
+/obj/item/chainsaw/chainsword,
+/turf/simulated/floor/outdoors/rocks/caves,
+/area/sector/sky_planet/rock)
 "QS" = (
 /obj/random/multiple/large_corp_crate,
 /turf/simulated/floor/outdoors/rocks,
@@ -27598,7 +27602,7 @@ iV
 iq
 iq
 iq
-jG
+QJ
 IL
 dN
 jG

@@ -3,7 +3,10 @@
 /obj/structure/ladder/snake_eater/up,
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/steel_dirty/indoors,
-/area/sector/sky_planet/ground)
+/area/sector/sky_planet/outpost)
+"ax" = (
+/turf/simulated/floor/outdoors/rocks,
+/area/sector/sky_planet/outpost)
 "aZ" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -87,7 +90,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_dirty/indoors,
-/area/sector/sky_planet/ground)
+/area/sector/sky_planet/outpost)
 "mj" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/outdoors/ash_sand,
@@ -104,7 +107,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/indoors,
-/area/sector/sky_planet/ground)
+/area/sector/sky_planet/outpost)
 "sm" = (
 /turf/level_border,
 /area/sector/sky_planet/ground)
@@ -153,7 +156,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/indoors,
-/area/sector/sky_planet/ground)
+/area/sector/sky_planet/outpost)
 "Eo" = (
 /obj/structure/flora/rock/rock2,
 /turf/simulated/floor/outdoors/rocks,
@@ -201,7 +204,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel_dirty/indoors,
-/area/sector/sky_planet/ground)
+/area/sector/sky_planet/outpost)
 "NV" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -244,7 +247,7 @@
 "UW" = (
 /obj/effect/floor_decal/industrial/danger,
 /turf/simulated/floor/tiled/steel_dirty/indoors,
-/area/sector/sky_planet/ground)
+/area/sector/sky_planet/outpost)
 "VG" = (
 /turf/simulated/floor/cult,
 /area/sector/sky_planet/outpost)
@@ -31158,7 +31161,7 @@ gV
 gV
 gV
 gV
-Qm
+vG
 Qm
 Qm
 jr
@@ -31348,11 +31351,11 @@ Qm
 jr
 Qm
 jr
-Qm
+vG
 CR
 aq
 UW
-Qm
+vG
 jr
 jr
 jr
@@ -31542,11 +31545,11 @@ jr
 jr
 jr
 Qm
-Qm
+vG
 MO
 qY
 mf
-Qm
+vG
 jr
 jr
 jr
@@ -31736,11 +31739,11 @@ jr
 jr
 jr
 Qm
-Qm
-jr
-jr
-jr
-Qm
+vG
+ax
+ax
+ax
+vG
 jr
 jr
 jr

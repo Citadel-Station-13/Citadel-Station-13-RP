@@ -73,49 +73,42 @@
 /obj/effect/shuttle_landmark/skyplanet/ntoutpost/westrig1
 	name = "NT Outpost Hyades - West Rig 1"
 	landmark_tag = "sky_excursion_dock"
-	docking_controller = "westrig1_dock"
 	base_turf = /turf/simulated/open/skyplanet
 	base_area = /area/sector/sky_planet/sky
 
 /obj/effect/shuttle_landmark/skyplanet/ntoutpost/southrig1
 	name = "NT Outpost Hyades - South Rig 1"
 	landmark_tag = "sky_excursion2_dock"
-	docking_controller = "southrig1_dock"
 	base_turf = /turf/simulated/open/skyplanet
 	base_area = /area/sector/sky_planet/sky
 
 /obj/effect/shuttle_landmark/skyplanet/ntoutpost/westrig2
 	name = "NT Outpost Hyades - West Rig 2"
 	landmark_tag = "sky_excursion3_dock"
-	docking_controller = "westrig2_dock"
 	base_turf = /turf/simulated/open/skyplanet
 	base_area = /area/sector/sky_planet/sky
 
 /obj/effect/shuttle_landmark/skyplanet/ntoutpost/southrig3
 	name = "NT Outpost Hyades - South Rig 3"
 	landmark_tag = "sky_excursion4_dock"
-	docking_controller = "southrig3_dock"
 	base_turf = /turf/simulated/open/skyplanet
 	base_area = /area/sector/sky_planet/sky
 
 /obj/effect/shuttle_landmark/skyplanet/ntoutpost/northrig2
 	name = "NT Outpost Hyades - North Rig 2"
 	landmark_tag = "sky_civvie_dock"
-	docking_controller = "northrig2_dock"
 	base_turf = /turf/simulated/open/skyplanet
 	base_area = /area/sector/sky_planet/sky
 
 /obj/effect/shuttle_landmark/skyplanet/ntoutpost/northrig3
 	name = "NT Outpost Hyades - North Rig 3"
 	landmark_tag = "sky_civvie2_dock"
-	docking_controller = "northrig3_dock"
 	base_turf = /turf/simulated/open/skyplanet
 	base_area = /area/sector/sky_planet/sky
 
 /obj/effect/shuttle_landmark/skyplanet/ntoutpost/eastrig1
 	name = "NT Outpost Hyades - East Rig 1"
 	landmark_tag = "sky_civvie3_dock"
-	docking_controller = "eastrig1_dock"
 	base_turf = /turf/simulated/open/skyplanet
 	base_area = /area/sector/sky_planet/sky
 
@@ -123,13 +116,11 @@
 	name = "NT Outpost Hyades - East Rig 3"
 	landmark_tag = "sky_civvie4_dock"
 	docking_controller = "eastrig3_dock"
-	base_turf = /turf/simulated/open/skyplanet
 	base_area = /area/sector/sky_planet/sky
 
 /obj/effect/shuttle_landmark/skyplanet/ntoutpost/northrig2/hammerhead
 	name = "NT Outpost Hyades - North Rig 2 (Hammerhead)"
 	landmark_tag = "sky_hammerhead_dock"
-	docking_controller = "northrig2_dock"
 	base_turf = /turf/simulated/open/skyplanet
 	base_area = /area/sector/sky_planet/sky
 
@@ -356,6 +347,7 @@
 
 // Activate Noms!
 /datum/ai_holder/polaris/simple_mob/melee/dragoon/blue
+	hostile = TRUE
 	can_breakthrough = TRUE
 	violent_breakthrough = TRUE
 
@@ -404,6 +396,7 @@
 
 // Activate Noms!
 /datum/ai_holder/polaris/simple_mob/ranged/dragoon/yellow
+	hostile = TRUE
 	can_breakthrough = TRUE
 	violent_breakthrough = TRUE
 	pointblank = TRUE
