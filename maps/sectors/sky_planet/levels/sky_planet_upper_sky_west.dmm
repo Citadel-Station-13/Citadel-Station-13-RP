@@ -624,7 +624,6 @@
 /obj/item/clothing/head/helmet/space/void/refurb/officer{
 	name = "Bonnethead Racing helmet"
 	},
-/obj/item/gps,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/racing_station/dock)
 "dO" = (
@@ -633,13 +632,6 @@
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/reinforced,
-/area/sector/sky_planet/racing_station/dock2)
-"dR" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/obj/item/paper/pamphlet/voidlinedebut,
-/turf/simulated/floor/tiled/kafel_full/beige,
 /area/sector/sky_planet/racing_station/dock2)
 "dX" = (
 /turf/simulated/floor/tiled/monodark,
@@ -973,7 +965,6 @@
 	dir = 4
 	},
 /obj/machinery/air_alarm/alarms_hidden/north_mount,
-/obj/item/gps/computer,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/paripari)
 "fZ" = (
@@ -1207,14 +1198,6 @@
 /obj/structure/flora/fey/grass/grass4,
 /turf/simulated/floor/fey/forest_grass,
 /area/sector/sky_planet/station_city/street)
-"hB" = (
-/obj/effect/floor_decal/rust,
-/obj/machinery/button/remote/blast_door{
-	pixel_x = 22;
-	id = "voidline"
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/racing_station/dock2)
 "hD" = (
 /obj/structure/table/hardwoodtable,
 /turf/simulated/floor/carpet/patterened/brown,
@@ -1535,7 +1518,6 @@
 /obj/item/clothing/head/helmet/space/void/refurb/officer{
 	name = "Bonnethead Racing helmet"
 	},
-/obj/item/gps,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/racing_station/dock)
 "ji" = (
@@ -2180,14 +2162,6 @@
 /obj/item/clothing/suit/armor/pcarrier/green,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/security)
-"mR" = (
-/obj/effect/floor_decal/rust,
-/obj/machinery/button/remote/blast_door{
-	pixel_x = -27;
-	id = "voidline"
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/racing_station/dock2)
 "mS" = (
 /obj/item/stack/material/cardboard,
 /obj/effect/floor_decal/rust,
@@ -2850,18 +2824,6 @@
 /obj/machinery/light/poi,
 /turf/simulated/floor/wood/sif/indoors,
 /area/sector/sky_planet/racing_station/dock)
-"qx" = (
-/obj/machinery/door/blast/regular{
-	id = "voidline"
-	},
-/obj/machinery/door/blast/regular{
-	id = "voidline"
-	},
-/obj/structure/atmospheric_retention_field{
-	color = "#b88a3b"
-	},
-/turf/simulated/floor/reinforced,
-/area/sector/sky_planet/racing_station/dock2)
 "qz" = (
 /obj/structure/table/steel_reinforced,
 /obj/effect/floor_decal/spline/plain,
@@ -3128,7 +3090,6 @@
 /obj/item/clothing/head/helmet/space/void/refurb/pilot{
 	name = "Udang Pari-pari Racing Space bubble helmet"
 	},
-/obj/item/gps,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/racing_station/dock)
 "rZ" = (
@@ -3840,7 +3801,6 @@
 /obj/item/clothing/head/helmet/space/void/refurb/mercenary{
 	name = "Red Comet Racing Helmet"
 	},
-/obj/item/gps,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/racing_station/dock)
 "wd" = (
@@ -3957,12 +3917,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/shop)
-"wz" = (
-/obj/effect/floor_decal/techfloor/orange,
-/obj/effect/floor_decal/rust,
-/obj/item/paper/pamphlet/voidlinedebut,
-/turf/simulated/floor/tiled/kafel_full/beige,
-/area/sector/sky_planet/racing_station/dock2)
 "wB" = (
 /obj/structure/railing{
 	dir = 4
@@ -4304,7 +4258,6 @@
 /obj/item/clothing/head/helmet/space/void/refurb/pilot/alt{
 	name = "Arrowhead Racing Helmet"
 	},
-/obj/item/gps,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/racing_station/dock)
 "yK" = (
@@ -5435,11 +5388,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/sky_planet/station_city/offices)
-"ER" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/paper/pamphlet/arrowhead,
-/turf/simulated/floor/reinforced,
-/area/sector/sky_planet/racing_station/dock)
 "ES" = (
 /turf/simulated/floor/carpet/patterened,
 /area/sector/sky_planet/station_city/appartement)
@@ -6989,12 +6937,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/sky_planet/sky)
 "NA" = (
-/obj/machinery/door/blast/regular{
-	id = "voidline"
-	},
-/obj/structure/atmospheric_retention_field{
-	color = "#b88a3b"
-	},
+/obj/structure/atmospheric_retention_field,
+/obj/machinery/door/blast/regular,
 /turf/simulated/floor/reinforced,
 /area/sector/sky_planet/racing_station/dock2)
 "NB" = (
@@ -7441,17 +7385,6 @@
 /obj/structure/bed/chair/sofa/brown/right,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/sky_planet/racing_station/lounge)
-"PH" = (
-/obj/machinery/door/airlock/glass_external,
-/obj/map_helper/access_helper/airlock/station/external_airlock,
-/obj/map_helper/airlock/door/ext_door,
-/obj/machinery/access_button/airlock_exterior{
-	pixel_x = 8;
-	master_tag = "eastrig1_dock";
-	pixel_y = -23
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/sector/sky_planet/outpost/medical)
 "PI" = (
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 4
@@ -7755,7 +7688,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/item/paper/pamphlet/voidlineend,
 /turf/simulated/floor/tiled/kafel_full/beige,
 /area/sector/sky_planet/racing_station/dock2)
 "Rn" = (
@@ -7916,15 +7848,8 @@
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/station_city/shop)
 "Sq" = (
-/obj/machinery/door/blast/regular{
-	id = "voidline"
-	},
-/obj/structure/atmospheric_retention_field{
-	color = "#b88a3b"
-	},
-/obj/structure/atmospheric_retention_field{
-	color = "#b88a3b"
-	},
+/obj/machinery/door/blast/regular,
+/obj/structure/atmospheric_retention_field,
 /turf/simulated/floor/reinforced,
 /area/sector/sky_planet/racing_station/dock2)
 "Sr" = (
@@ -7993,7 +7918,6 @@
 /obj/item/clothing/head/helmet/space/void/refurb/pilot{
 	name = "Udang Pari-pari Racing Space bubble helmet"
 	},
-/obj/item/gps,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/racing_station/dock)
 "SF" = (
@@ -8066,7 +7990,6 @@
 /obj/item/clothing/head/helmet/space/void/refurb/pilot/alt{
 	name = "Arrowhead Racing Helmet"
 	},
-/obj/item/gps,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/racing_station/dock)
 "SV" = (
@@ -9024,7 +8947,6 @@
 /obj/item/clothing/head/helmet/space/void/refurb/mercenary{
 	name = "Red Comet Racing Helmet"
 	},
-/obj/item/gps,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/racing_station/dock)
 "XM" = (
@@ -9389,6 +9311,11 @@
 	id_tag = "eastrig1_dock_pump"
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/access_button/airlock_exterior{
+	pixel_x = 8;
+	master_tag = "eastrig1_dock";
+	pixel_y = -23
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/sky_planet/outpost/medical)
 "ZG" = (
@@ -21778,7 +21705,7 @@ qr
 qr
 Zg
 si
-PH
+si
 Zg
 qr
 qr
@@ -31227,7 +31154,7 @@ iS
 iS
 HL
 iS
-ER
+sD
 sD
 CY
 md
@@ -36679,7 +36606,7 @@ oA
 Rm
 oK
 AH
-mR
+NN
 ry
 Fz
 Jw
@@ -37653,7 +37580,7 @@ xQ
 Fk
 Fk
 Fk
-qx
+NA
 qr
 qr
 qr
@@ -37841,7 +37768,7 @@ es
 DS
 Xm
 zc
-wz
+Pu
 pM
 QX
 Fk
@@ -39389,7 +39316,7 @@ aR
 aR
 aR
 lv
-dR
+MS
 DS
 Xm
 zc
@@ -39399,7 +39326,7 @@ xQ
 Fk
 Fk
 Fk
-Sq
+NA
 qr
 qr
 qr
@@ -39980,7 +39907,7 @@ AH
 NN
 NN
 MN
-hB
+NN
 yF
 qr
 qr
