@@ -333,7 +333,7 @@
 		return CLICKCHAIN_DID_SOMETHING
 	if(!actor.performer.attempt_insert_item_for_installation(magazine, src))
 		return CLICKCHAIN_DID_SOMETHING
-	swap_chambered(casing)
+	swap_chambered(casing, TRUE)
 	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
 /**

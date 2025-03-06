@@ -5,6 +5,9 @@
  *
  * They have simulation / support for both direct-load / internal magazines, as well as
  * attached / inserted external magazines.
+ *
+ * todo: chamber handling is kind of a trainwreck and uses weird var-switched semantics. can we fix this?
+ * todo: internal magazines are kind of a trainwreck and should ideally just use ammo_magazine items. can we fix this?
  */
 /obj/item/gun/projectile/ballistic
 	desc = "A gun that fires bullets."
@@ -170,21 +173,26 @@
 
 	/// If this is off, we draw casings from the magazine directly,
 	/// and do not allow charging the chamber.
+	/// * This does not mean the chamber won't be filled; that's used internally because 'post_fire'
+	///   does not allow additional arguments to be fed into its call. This means that
+	///   we need the chamber variable to track what we just fired to process it after.
 	var/chamber_simulation = TRUE
 	/// Chambered round
 	/// * This is considered an internal variable; use getters / setters to manipulate it.
 	/// How this works:
 	/// * This is filled on cycle if it's an external magazine and chamber is separated from magazine.
 	/// * Ditto for internal magazine, if chamber is separated.
-	/// * If [chamber_simulation] is off, this variable will never be filled.
+	/// * If [chamber_simulation] is off, this variable will never be filled until firing.
 	///   get_chambered(), eject_chamber(), etc, will all return the first in magazine.
-	/// * If [internal_magazine] and [internal_magazine_revolver_mode] are both on, this variable will never be filled.
+	/// * If [internal_magazine] and [internal_magazine_revolver_mode] are both on, this variable will never be filled until firing.
 	///   get_chambered(), eject_chamber(), etc, will all return the current revolver offset.
 	/// Caveats
 	/// * Internally, if this variable is filled, it'll be returned.
 	///   Even if it should be using something else. This is so things don't runtime when there's
 	///   invalid behavior, instead just acting weirdly. You can technically use this to
 	///   make custom behaviors, but it's not recommended.
+	/// * Internally, this variable is filled during firing with chamber simulation off, as it's how we keep track
+	///   of what we're currently firing.
 	VAR_PROTECTED/obj/item/ammo_casing/chamber
 	/// Preload with this ammo casing type.
 	var/chamber_preload_ammo
@@ -192,6 +200,8 @@
 	var/chamber_cycle_after_fire = TRUE
 	/// Cycle the chamber on an unsuccessful inert fire.
 	var/chamber_cycle_after_inert = FALSE
+	/// allow chamber manual cycling
+	var/chamber_manual_cycle = TRUE
 	/// chamber manual cycle sound
 	/// * not played on an automatic cycle (from live / inert fire)
 	var/chamber_manual_cycle_sound = /datum/soundbyte/guns/ballistic/rack_chamber/generic_1
@@ -323,12 +333,16 @@
 			legacy_emit_chambered_residue()
 			if(magazine_auto_eject && !magazine.get_amount_remaining())
 				remove_magazine(null, null, TRUE)
-			if(chamber_cycle_after_fire)
+			if(!chamber_simulation)
+				eject_chamber(FALSE, TRUE, drop_location(), TRUE)
+			else if(chamber_cycle_after_fire)
 				cycle_chamber(FALSE, TRUE)
 			if(chamber_spin_after_fire && internal_magazine_revolver_mode && internal_magazine)
 				unsafe_spin_chamber_to_next()
 		if(GUN_FIRED_FAIL_INERT)
-			if(chamber_cycle_after_inert)
+			if(!chamber_simulation)
+				eject_chamber(FALSE, TRUE, drop_location(), TRUE)
+			else if(chamber_cycle_after_inert)
 				cycle_chamber(FALSE, TRUE)
 			if(chamber_spin_after_inert && internal_magazine_revolver_mode && internal_magazine)
 				unsafe_spin_chamber_to_next()
@@ -345,10 +359,9 @@
 		if(our_caliber)
 			. += SPAN_NOTICE("It uses [our_caliber.caliber][our_caliber.name ? " ([our_caliber.name])" : ""] caliber ammunition.")
 	if(magazine)
-		. += SPAN_NOTICE("It has \a [magazine] loaded.")
+		. += SPAN_NOTICE("It has \a [magazine] loaded, with [get_ammo_remaining(TRUE)] round\s remaining.")
 	if(chamber)
 		. += SPAN_NOTICE("It has a round chambered.")
-	. += SPAN_NOTICE("It has [get_ammo_remaining()] round\s remaining.")
 
 //* Actions *//
 
@@ -380,7 +393,7 @@
 			return 0
 		return min(1, magazine.get_amount_remaining() / magazine.ammo_max)
 
-/obj/item/gun/projectile/ballistic/get_ammo_remaining()
+/obj/item/gun/projectile/ballistic/get_ammo_remaining(ignore_chamber)
 	. = 0
 	if(internal_magazine)
 		if(internal_magazine_revolver_mode)
@@ -391,7 +404,7 @@
 			. = length(internal_magazine_vec)
 	else
 		. = magazine?.get_amount_remaining() || 0
-	if(chamber)
+	if(chamber && !ignore_chamber)
 		. += 1
 
 /**
@@ -739,7 +752,7 @@
 	. = ejecting
 	if(new_loc)
 		ejecting.forceMove(new_loc)
-	else if(ejecting.loc)
+	else if(ejecting.loc == src)
 		ejecting.moveToNullspace()
 
 // todo: impl for advanced revolver shenanigans
@@ -779,7 +792,9 @@
  */
 /obj/item/gun/projectile/ballistic/proc/ready_chambered() as /obj/item/ammo_casing
 	RETURN_TYPE(/obj/item/ammo_casing)
-	return get_chambered()
+	if(!chamber_simulation)
+		load_chamber(TRUE)
+	. = get_chambered()
 
 /**
  * Get currently chambered projectile
@@ -804,7 +819,7 @@
  *
  * @return old projectile, if any.
  */
-/obj/item/gun/projectile/ballistic/proc/swap_chambered(obj/item/ammo_casing/new_casing) as /obj/item/ammo_casing
+/obj/item/gun/projectile/ballistic/proc/swap_chambered(obj/item/ammo_casing/new_casing, manual_interaction, silent) as /obj/item/ammo_casing
 	RETURN_TYPE(/obj/item/ammo_casing)
 	var/obj/item/ammo_casing/old_casing = chamber
 	chamber = new_casing
@@ -813,6 +828,9 @@
 	if(old_casing)
 		old_casing.moveToNullspace()
 		. = old_casing
+	if(!silent)
+		if(manual_interaction)
+			playsound(src, single_load_sound, 75, TRUE)
 
 /**
  * Cycles the chamber
@@ -827,36 +845,54 @@
 /**
  * Loads the chamber from magazine immediately, if it is separated
  * from the magazine.
+ *
+ * @params
+ * * system - this is an internal system  call; load the chamber even if simulation is off,
+ *            and actively pull the round out of any internal datastructures
  */
-/obj/item/gun/projectile/ballistic/proc/load_chamber()
+/obj/item/gun/projectile/ballistic/proc/load_chamber(system)
 	if(chamber)
 		return FALSE
-	if(internal_magazine_revolver_mode && internal_magazine)
-		return FALSE
-	if(!chamber_simulation)
-		return FALSE
+	if(!system)
+		if(internal_magazine_revolver_mode && internal_magazine)
+			return FALSE
+		if(!chamber_simulation)
+			return FALSE
 	if(internal_magazine)
-		if(length(internal_magazine_vec))
-			chamber = internal_magazine_vec[length(internal_magazine_vec)]
-			--internal_magazine_vec.len
-			return TRUE
+		if(internal_magazine_revolver_mode)
+			if(internal_magazine_vec[internal_magazine_revolver_offset])
+				chamber = internal_magazine_vec[internal_magazine_revolver_offset]
+				internal_magazine_vec[internal_magazine_revolver_offset] = null
+				return TRUE
+			return FALSE
 		else
+			if(length(internal_magazine_vec))
+				chamber = internal_magazine_vec[length(internal_magazine_vec)]
+				--internal_magazine_vec.len
+				return TRUE
 			return FALSE
 	else
 		chamber = magazine?.pop()
-		return chamber ? TRUE : FALSE
+		if(!chamber)
+			return FALSE
+		chamber.forceMove(src)
+		return TRUE
 
 /**
  * Ejects a chambered casing
  *
  * @return casing, or null if it was deleted
  */
-/obj/item/gun/projectile/ballistic/proc/eject_chamber(silent, from_fire, atom/move_to) as /obj/item/ammo_casing
+/obj/item/gun/projectile/ballistic/proc/eject_chamber(silent, from_fire, atom/move_to, system) as /obj/item/ammo_casing
 	RETURN_TYPE(/obj/item/ammo_casing)
 
 	var/obj/item/ammo_casing/ejecting
 
-	if(internal_magazine && internal_magazine_revolver_mode)
+	if(system)
+		// override - system eject; access variable anyways
+		ejecting = chamber
+		chamber = null
+	else if(internal_magazine && internal_magazine_revolver_mode)
 		// override - revolver mode, always unsim'd
 		ejecting = internal_magazine_vec[internal_magazine_revolver_offset]
 		internal_magazine_vec[internal_magazine_revolver_offset] = null
@@ -881,8 +917,9 @@
 	. = ejecting
 	if(move_to)
 		ejecting.forceMove(move_to)
+	else if(ejecting.loc == src)
+		ejecting.moveToNullspace()
 	ejecting.randomize_offsets_after_eject()
-	// todo: soundbyte this
 	if(!silent)
 		if(!from_fire)
 			playsound(src, single_load_sound, 75, TRUE)
