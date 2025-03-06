@@ -1275,7 +1275,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 	implants += W
 	owner.embedded_flag = 1
 	add_verb(owner, /mob/proc/yank_out_object)
-	W.add_blood(owner)
+	if(!(owner.species.species_flags & NO_BLOOD))
+		W.add_blood(owner)
 	W.forceMove(owner)
 
 /obj/item/organ/external/removed(var/mob/living/user, var/ignore_children = 0)
