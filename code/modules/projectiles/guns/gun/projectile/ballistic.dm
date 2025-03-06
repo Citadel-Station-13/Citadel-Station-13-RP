@@ -348,15 +348,6 @@
 		. += "It has \a [magazine] loaded."
 	. += "Has [get_ammo_remaining()] round\s remaining."
 
-/obj/item/gun/projectile/ballistic/Exited(atom/movable/AM, atom/newLoc)
-	. = ..()
-	if(AM == chamber)
-		chamber = null
-	else if(AM == magazine)
-		magazine = null
-	else if(AM in internal_magazine_vec)
-		internal_magazine_vec -= AM
-
 //* Actions *//
 
 /obj/item/gun/projectile/ballistic/register_item_actions(mob/user)
