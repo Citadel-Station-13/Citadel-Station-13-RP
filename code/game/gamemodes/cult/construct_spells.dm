@@ -473,8 +473,8 @@
 		var/mob/living/carbon/human/H = owner
 		if(!H.should_have_organ(O_HEART))
 			return 1
-		if(H.vessel.remove_reagent("blood", amount))
-			return 1
+		if(H.erase_checked_blood(amount))
+			return TRUE
 	return 0
 
 /obj/item/spell/construct/afterattack(atom/target, mob/user, clickchain_flags, list/params)
