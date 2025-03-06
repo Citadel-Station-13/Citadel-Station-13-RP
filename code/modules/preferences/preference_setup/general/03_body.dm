@@ -46,6 +46,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	S["bgstate"]			>> pref.bgstate
 	S["body_descriptors"]	>> pref.body_descriptors
 	S["s_base"]				>> pref.s_base
+	S["body_alpha"]         >> pref.body_alpha
+	S["hair_alpha"]         >> pref.hair_alpha
 
 /datum/category_item/player_setup_item/general/body/save_character(var/savefile/S)
 	S["hair_red"]			<< pref.r_hair
@@ -82,6 +84,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	S["bgstate"]			<< pref.bgstate
 	S["body_descriptors"]	<< pref.body_descriptors
 	S["s_base"]				<< pref.s_base
+	S["body_alpha"]         << pref.body_alpha
+	S["hair_alpha"]         << pref.hair_alpha
 
 /datum/category_item/player_setup_item/general/body/sanitize_character(var/savefile/S)
 	pref.r_hair			= sanitize_integer(pref.r_hair, 0, 255, initial(pref.r_hair))
@@ -105,6 +109,9 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	pref.g_eyes			= sanitize_integer(pref.g_eyes, 0, 255, initial(pref.g_eyes))
 	pref.b_eyes			= sanitize_integer(pref.b_eyes, 0, 255, initial(pref.b_eyes))
 	pref.b_type			= sanitize_istext(pref.b_type, initial(pref.b_type))
+	var/datum/species/current_species = pref.character_species_datum()
+	pref.body_alpha = sanitize_integer(pref.body_alpha, current_species.minimum_body_alpha, current_species.maximum_body_alpha, initial(pref.body_alpha))
+	pref.hair_alpha = sanitize_integer(pref.hair_alpha, current_species.minimum_hair_alpha, current_species.maximum_hair_alpha, initial(pref.hair_alpha))
 	if(pref.mirror == null)
 		pref.mirror = TRUE
 	pref.disabilities	= sanitize_integer(pref.disabilities, 0, 65535, initial(pref.disabilities))
@@ -156,6 +163,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	character.b_synth			= pref.b_synth
 	character.synth_markings 	= pref.synth_markings
 	character.s_base			= pref.s_base
+	character.body_alpha        = pref.body_alpha
+	character.hair_alpha        = pref.hair_alpha
 
 	// Destroy/cyborgize organs and limbs.
 	character.synthetic = null
@@ -394,6 +403,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		. += "<a href='?src=\ref[src];facial_color=1'>Change Color</a> [color_square(pref.r_facial, pref.g_facial, pref.b_facial)] "
 	var/datum/sprite_accessory/current_face_hair = GLOB.sprite_accessory_facial_hair[pref.f_style_id]
 	. += " Style: <a href='?src=\ref[src];facial_style_left=1'><</a> <a href='?src=\ref[src];facial_style_right=1'>></a> <a href='?src=\ref[src];facial_style=1'>[current_face_hair.name]</a><br>" //Same as above with the extra > & < characters
+	if(has_flag(mob_species, HAS_HAIR_ALPHA))
+		. += "<a href='?src=\ref[src];hair_alpha=1'>Change Hair Alpha</a> [pref.hair_alpha]<br>"
 
 	if(has_flag(mob_species, HAS_EYE_COLOR))
 		. += "<br><b>Eyes</b><br>"
@@ -402,6 +413,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	if(has_flag(mob_species, HAS_SKIN_COLOR))
 		. += "<br><b>Body Color</b><br>"
 		. += "<a href='?src=\ref[src];skin_color=1'>Change Color</a> [color_square(pref.r_skin, pref.g_skin, pref.b_skin)]<br>"
+	if(has_flag(mob_species, HAS_BODY_ALPHA))
+		. += "<a href='?src=\ref[src];body_alpha=1'>Change Body Alpha</a> [pref.body_alpha]<br>"
 
 	. += "<br><a href='?src=\ref[src];marking_style=1'>Body Markings +</a><br>"
 	. += "<table>"
@@ -833,6 +846,16 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	else if(href_list["cycle_bg"])
 		pref.bgstate = next_list_item(pref.bgstate, pref.bgstate_options)
+		return PREFERENCES_REFRESH_UPDATE_PREVIEW
+
+	else if(href_list["body_alpha"])
+		var/new_body_alpha = input(user, "Choose your character's body alpha (Min [mob_species.minimum_body_alpha] - Max [mob_species.maximum_body_alpha])", "Character Preference", pref.body_alpha) as num|null
+		pref.body_alpha = min(max(round(new_body_alpha),mob_species.minimum_body_alpha),mob_species.maximum_body_alpha)
+		return PREFERENCES_REFRESH_UPDATE_PREVIEW
+
+	else if(href_list["hair_alpha"])
+		var/new_hair_alpha = input(user, "Choose your character's hair alpha (Min [mob_species.minimum_hair_alpha] - Max [mob_species.maximum_hair_alpha])", "Character Preference", pref.hair_alpha) as num|null
+		pref.hair_alpha = min(max(round(new_hair_alpha),mob_species.minimum_hair_alpha),mob_species.maximum_hair_alpha)
 		return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	return ..()

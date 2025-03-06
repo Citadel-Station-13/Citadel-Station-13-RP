@@ -131,7 +131,7 @@
 
 	//* Hostility settings *//
 	/// Is the mob weak to tasers?
-	var/taser_kill = 1
+	var/taser_kill = FALSE
 
 	//* Attack ranged settings *//
 	/// The projectiles I shoot.

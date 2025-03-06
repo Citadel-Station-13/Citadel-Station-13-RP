@@ -42,7 +42,7 @@
 /area/sector/miaphus/beach/desert/poi/piratehideout)
 "dC" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/zip,
+/obj/item/gun/projectile/energy/zip,
 /turf/simulated/floor/wood,
 /area/sector/miaphus/beach/desert/poi/piratehideout)
 "eA" = (

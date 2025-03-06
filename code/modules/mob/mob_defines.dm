@@ -71,7 +71,7 @@
 	/// List of movement speed modifiers ignored by this mob. List -> List (id) -> List (sources)
 	var/list/movespeed_mod_immunities			//Lazy list, see mob_movespeed.dm
 	/// The calculated mob speed slowdown based on the modifiers list
-	var/cached_multiplicative_slowdown
+	var/cached_hyperbolic_slowdown
 	/// cached legacy movespeed multiplier -_-
 	//  todo: remove
 	var/cached_movespeed_multiply

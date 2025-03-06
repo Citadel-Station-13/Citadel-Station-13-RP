@@ -174,7 +174,7 @@
 
 		if(!docile && ishuman(host) && chemicals < max_chemicals)
 			var/mob/living/carbon/human/H = host
-			H.vessel.remove_reagent("blood", 1)
+			H.take_blood_mixture(1)
 			if(!H.reagents.has_reagent("inaprovaline"))
 				H.reagents.add_reagent("inaprovaline", 1)
 			chemicals += 2

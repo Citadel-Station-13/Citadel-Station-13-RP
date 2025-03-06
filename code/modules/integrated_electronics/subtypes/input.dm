@@ -321,13 +321,13 @@
 			set_pin_data(IC_OUTPUT, 7, H.getToxLoss())
 			set_pin_data(IC_OUTPUT, 8, H.getOxyLoss())
 			set_pin_data(IC_OUTPUT, 9, H.getCloneLoss())
-			set_pin_data(IC_OUTPUT, 10, round((H.vessel.get_reagent_amount("blood") / H.species.blood_volume)*100))
+			set_pin_data(IC_OUTPUT, 10, round((H.blood_holder.get_total_volume() / H.species.blood_volume)*100))
 			set_pin_data(IC_OUTPUT, 11, H.traumatic_shock)
 			set_pin_data(IC_OUTPUT, 12, H.radiation)
 			set_pin_data(IC_OUTPUT, 13, H.nutrition)
 			var/cont[0]
 			var/amt[0]
-			for(var/datum/reagent/RE in H.reagents.reagent_list)
+			for(var/datum/reagent/RE in H.reagents.get_reagent_datums())
 				if(RE.scannable || advscan >= 3)
 					cont += RE.id
 					amt	+= round(H.reagents.get_reagent_amount(RE.id), 1)
@@ -369,7 +369,8 @@
 	desc = "This circuit will filter every object in assembly view."
 	extended_desc = "The first pin is ref to filter, to see avaliable filters go to Filter category. The output will contents everything with filtering type"
 	inputs = list(
-		"filter" = IC_PINTYPE_REF
+		"filter" = IC_PINTYPE_REF,
+		"radius" = IC_PINTYPE_NUMBER
 	)
 	outputs = list(
 		"objects" = IC_PINTYPE_LIST
@@ -377,12 +378,19 @@
 	activators = list("scan" = IC_PINTYPE_PULSE_IN, "on scanned" = IC_PINTYPE_PULSE_OUT)
 	spawn_flags = IC_SPAWN_RESEARCH
 	power_draw_per_use = 30
+	var/radius = 1
+
+/obj/item/integrated_circuit/input/view_filter/on_data_written()
+	var/rad = get_pin_data(IC_INPUT, 2)
+	if(isnum(rad))
+		rad = clamp(rad, 0, 8)
+		radius = rad
 
 /obj/item/integrated_circuit/input/view_filter/do_work(ord)
 	var/list/objects = list()
 	var/obj/item/integrated_circuit/filter/ref/filter = get_pin_data(IC_INPUT, 1)
 	if(istype(filter) && assembly && (filter in assembly.assembly_components))
-		for(var/atom/A in view(get_turf(assembly)))
+		for(var/atom/A in view(radius,get_turf(assembly)))
 			if(istype(A, filter.filter_type))
 				objects.Add(WEAKREF(A))
 		set_pin_data(IC_OUTPUT, 1, objects)
@@ -405,6 +413,9 @@
 		"genetic destability"	= IC_PINTYPE_NUMBER,
 		"slime core amount"		= IC_PINTYPE_NUMBER,
 		"Growth progress"		= IC_PINTYPE_NUMBER,
+		"rabid"					= IC_PINTYPE_BOOLEAN,
+		"disciplined"			= IC_PINTYPE_BOOLEAN,
+		"obedience"				= IC_PINTYPE_NUMBER
 	)
 	activators = list("scan" = IC_PINTYPE_PULSE_IN, "on scanned" = IC_PINTYPE_PULSE_OUT)
 	spawn_flags = IC_SPAWN_RESEARCH
@@ -426,6 +437,10 @@
 			set_pin_data(IC_OUTPUT, 7, T.mutation_chance)
 			set_pin_data(IC_OUTPUT, 8, T.cores)
 			set_pin_data(IC_OUTPUT, 9, T.amount_grown/1000)
+			var/datum/ai_holder/polaris/simple_mob/xenobio_slime/AI = T.ai_holder
+			set_pin_data(IC_OUTPUT, 10, AI.rabid)
+			set_pin_data(IC_OUTPUT, 11, AI.discipline)
+			set_pin_data(IC_OUTPUT, 12, AI.obedience)
 
 
 		push_data()
@@ -1793,3 +1808,118 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 			set_pin_data(IC_OUTPUT, 1, 0)
 		push_data()
 		activate_pin(2)
+
+/obj/item/integrated_circuit/input/plant_scanner
+	name = "integrated plant analyzer"
+	desc = "A very small version of the plant analyser. This allows the machine to know all valuable parameters of plants in trays. \
+			It can only scan plants, not seeds or fruits."
+	icon_state = "medscan_adv"
+	complexity = 12
+	inputs = list("target" = IC_PINTYPE_REF)
+	outputs = list(
+		"plant type"			= IC_PINTYPE_STRING,
+		"age"					= IC_PINTYPE_NUMBER,
+		"potency"				= IC_PINTYPE_NUMBER,
+		"yield"					= IC_PINTYPE_NUMBER,
+		"Maturation speed"		= IC_PINTYPE_NUMBER,
+		"Production speed"		= IC_PINTYPE_NUMBER,
+		"Endurance"				= IC_PINTYPE_NUMBER,
+		"Lifespan"				= IC_PINTYPE_NUMBER,
+		"Weed Resistance"		= IC_PINTYPE_NUMBER,
+		"Weed level"			= IC_PINTYPE_NUMBER,
+		"Pest level"			= IC_PINTYPE_NUMBER,
+		"Water level"			= IC_PINTYPE_NUMBER,
+		"Nutrition level"		= IC_PINTYPE_NUMBER,
+		"harvest"				= IC_PINTYPE_NUMBER,
+		"dead"					= IC_PINTYPE_NUMBER,
+		"plant health"			= IC_PINTYPE_NUMBER,
+	)
+	activators = list("scan" = IC_PINTYPE_PULSE_IN, "on scanned" = IC_PINTYPE_PULSE_OUT)
+	spawn_flags = IC_SPAWN_RESEARCH
+	power_draw_per_use = 10
+
+/obj/item/integrated_circuit/input/plant_scanner/do_work()
+	var/obj/machinery/portable_atmospherics/hydroponics/H = get_pin_data_as_type(IC_INPUT, 1, /obj/machinery/portable_atmospherics/hydroponics)
+	if(!istype(H)) //Invalid input
+		return
+	for(var/i=1, i<=outputs.len, i++)
+		set_pin_data(IC_OUTPUT, i, null)
+	if(H in view(get_turf(src))) // Like medbot's analyzer it can be used in range..
+		if(H.seed)
+			set_pin_data(IC_OUTPUT, 1, H.seed.seed_name)
+			set_pin_data(IC_OUTPUT, 2, H.age)
+			set_pin_data(IC_OUTPUT, 3, H.seed.get_trait(TRAIT_POTENCY))
+			set_pin_data(IC_OUTPUT, 4, H.seed.get_trait(TRAIT_YIELD))
+			set_pin_data(IC_OUTPUT, 5, H.seed.get_trait(TRAIT_MATURATION))
+			set_pin_data(IC_OUTPUT, 6, H.seed.get_trait(TRAIT_PRODUCTION))
+			set_pin_data(IC_OUTPUT, 7, H.seed.get_trait(TRAIT_ENDURANCE))
+			set_pin_data(IC_OUTPUT, 8, !!H.seed.get_trait(TRAIT_HARVEST_REPEAT))
+			set_pin_data(IC_OUTPUT, 9, H.seed.get_trait(TRAIT_WEED_TOLERANCE))
+		set_pin_data(IC_OUTPUT, 10, H.weedlevel)
+		set_pin_data(IC_OUTPUT, 11, H.pestlevel)
+		set_pin_data(IC_OUTPUT, 12, H.waterlevel)
+		set_pin_data(IC_OUTPUT, 13, H.nutrilevel)
+		set_pin_data(IC_OUTPUT, 14, H.harvest)
+		set_pin_data(IC_OUTPUT, 15, H.dead)
+		set_pin_data(IC_OUTPUT, 16, H.health)
+	push_data()
+	activate_pin(2)
+
+
+/obj/item/integrated_circuit/input/projectile_simulator
+	name = "projectile simulator"
+	desc = "An IR laser pointer with a camera. Aim at a target or location and get the output the final result. Aiming at coordinates will output a hit refrence. Aiming at a refrence will output a hit or not hit pulse."
+	icon_state = "medscan_adv"
+	complexity = 8
+	inputs = list(
+		"x" = IC_PINTYPE_NUMBER,
+		"y" = IC_PINTYPE_NUMBER,
+		"target ref" = IC_PINTYPE_REF
+	)
+	outputs = list(
+		"target hit"       = IC_PINTYPE_REF
+	)
+	activators = list(
+		"shoot cords" = IC_PINTYPE_PULSE_IN,
+		"shoot ref" = IC_PINTYPE_PULSE_IN,
+		"cords out" = IC_PINTYPE_PULSE_OUT,
+		"target hit" = IC_PINTYPE_PULSE_OUT,
+		"target missed" = IC_PINTYPE_PULSE_OUT
+		)
+	spawn_flags = IC_SPAWN_RESEARCH
+	origin_tech = list(TECH_ENGINEERING = 3, TECH_DATA = 3)
+	power_draw_per_use = 20
+
+/obj/item/integrated_circuit/input/projectile_simulator/do_work(ord)
+	switch(ord)
+		if(1)
+			var/list/hit_things
+			var/turf/T = get_turf(assembly)
+			var/target_x = get_pin_data(IC_INPUT, 1)
+			var/target_y = get_pin_data(IC_INPUT, 2)
+			var/turf/A = locate(clamp(target_x + T.x,0,world.maxx), clamp(target_y + T.y,0,world.maxy), T.z)
+			var/turf/starting = get_turf(src)
+			var/obj/projectile/trace/trace_projectile = new(starting)
+			trace_projectile.pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
+			trace_projectile.prepare_trace(A, TRUE)
+			trace_projectile.fire()
+			hit_things = trace_projectile.scanned_atoms
+			if(hit_things.len)
+				set_pin_data(IC_OUTPUT, 1, WEAKREF(hit_things[1]))
+				activate_pin(3)
+		if(2)
+			var/atom/target = get_pin_data(IC_INPUT, 3)
+			var/turf/starting = get_turf(src)
+			var/obj/projectile/trace/trace_projectile = new(starting)
+			trace_projectile.pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
+			trace_projectile.prepare_trace(target, TRUE)
+			trace_projectile.fire()
+			if(trace_projectile.could_hit_target)
+				activate_pin(4)
+				return
+			activate_pin(5)
+
+
+
+
+

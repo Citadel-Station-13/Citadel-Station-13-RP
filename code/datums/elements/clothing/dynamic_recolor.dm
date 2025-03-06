@@ -22,7 +22,7 @@
 	if(isnull(queried))
 		return
 
-	if(check_possession && gear.worn_mob() != user)
+	if(check_possession && gear.get_worn_mob() != user)
 		return
 
 	if(check_mobility && !CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
