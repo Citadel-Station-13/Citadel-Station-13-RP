@@ -306,6 +306,13 @@
 			return TRUE
 
 /obj/item/gun/projectile/ballistic/consume_next_projectile(datum/gun_firing_cycle/cycle)
+	if(bolt_simulation && !bolt_closed)
+		if(!(cycle.firing_flags & GUN_FIRING_NO_FEEDBACK))
+			cycle.firing_actor?.chat_feedback(
+				SPAN_WARNING("[src] clicks uselessly. Its bolt is open!"),
+				target = src,
+			)
+		return GUN_FIRED_FAIL_EMPTY
 	var/obj/item/ammo_casing/priming = ready_chambered()
 	return priming ? prime_casing(cycle, priming, CASING_PRIMER_CHEMICAL) : GUN_FIRED_FAIL_EMPTY
 
@@ -340,6 +347,15 @@
 	if(magazine)
 		. += "It has \a [magazine] loaded."
 	. += "Has [get_ammo_remaining()] round\s remaining."
+
+/obj/item/gun/projectile/ballistic/Exited(atom/movable/AM, atom/newLoc)
+	. = ..()
+	if(AM == chamber)
+		chamber = null
+	else if(AM == magazine)
+		magazine = null
+	else if(AM in internal_magazine_vec)
+		internal_magazine_vec -= AM
 
 //* Actions *//
 
@@ -381,7 +397,7 @@
 		else
 			. = length(internal_magazine_vec)
 	else
-		. = magazine?.get_amount_remaining()
+		. = magazine?.get_amount_remaining() || 0
 	if(chamber)
 		. += 1
 
@@ -866,7 +882,7 @@
 
 	if(!ejecting)
 		return
-	if(ejecting.casing_flags & CASING_DELETE)
+	if(!ejecting.is_loaded() && (ejecting.casing_flags & CASING_DELETE))
 		qdel(ejecting)
 		return
 	. = ejecting

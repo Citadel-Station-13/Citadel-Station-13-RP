@@ -53,7 +53,8 @@
 		pixel_y = rand(-10, 10)
 
 /obj/item/ammo_casing/Destroy()
-	QDEL_NULL(projectile_stored)
+	if(projectile_stored)
+		QDEL_NULL(projectile_stored)
 	return ..()
 
 /obj/item/ammo_casing/get_intrinsic_worth(flags)
