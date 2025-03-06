@@ -30,7 +30,7 @@
 				else
 					LEGACY_EX_ACT(A, 1, null)
 
-	var/list/relevant_z = GetConnectedZlevels(start.z)
+	var/list/relevant_z = SSmapping.loaded_station.get_map_levels(start.z)
 	for(var/mob/M in global.GLOB.player_list)
 		var/turf/T = get_turf(M)
 		if(!T || !(T.z in relevant_z))

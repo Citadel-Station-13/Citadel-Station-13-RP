@@ -25,3 +25,4 @@
 		"Mining Shuttle" = list("endeavour_mining_port"),
 		"NDV Quicksilver" = list("endeavour_specops_dock")
 		)
+	is_main_station = TRUE

@@ -153,7 +153,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 	var/list/contributers = list()
 	var/list/contributer_names = list()
 	var/turf/T = get_turf(user) || get_turf(target)
-	var/list/contributing_z = GetConnectedZlevels(T.z)
+	var/list/contributing_z = SSmapping.loaded_station.get_map_levels(T.z)
 	for(var/thing in GLOB.player_list)
 		var/mob/living/L = thing
 		if(L == user)

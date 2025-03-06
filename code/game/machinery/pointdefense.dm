@@ -58,7 +58,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 		if(PD.id_tag != id_tag)
 			return FALSE
 
-		if(!(get_z(PD) in GetConnectedZlevels(get_z(src))))
+		if(!(get_z(PD) in SSmapping.loaded_station.get_map_levels(get_z(src))))
 			to_chat(usr, "<span class='warning'>[PD] is not within control range.</span>")
 			return FALSE
 
@@ -71,7 +71,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	data["id"] = id_tag
 	var/list/turrets = list()
 	if(id_tag)
-		var/list/connected_z_levels = GetConnectedZlevels(get_z(src))
+		var/list/connected_z_levels = SSmapping.loaded_station.get_map_levels(get_z(src))
 		for(var/i = 1 to LAZYLEN(GLOB.pointdefense_turrets))
 			var/obj/machinery/power/pointdefense/PD = GLOB.pointdefense_turrets[i]
 			if(!(PD.id_tag == id_tag && (get_z(PD) in connected_z_levels)))
@@ -199,7 +199,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 /obj/machinery/power/pointdefense/proc/get_controller()
 	if(!id_tag)
 		return null
-	var/list/connected_z_levels = GetConnectedZlevels(get_z(src))
+	var/list/connected_z_levels = SSmapping.loaded_station.get_map_levels(get_z(src))
 	for(var/thing in GLOB.pointdefense_controllers)
 		var/obj/machinery/pointdefense_control/PDC = thing
 		if(PDC.id_tag == id_tag && (get_z(PDC) in connected_z_levels))
@@ -318,7 +318,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 
 /obj/machinery/power/pointdefense/proc/targeting_check(obj/effect/meteor/M)
 	// Target in range
-	var/list/connected_z_levels = GetConnectedZlevels(get_z(src))
+	var/list/connected_z_levels = SSmapping.loaded_station.get_map_levels(get_z(src))
 	if(!(M.z in connected_z_levels))
 		return FALSE
 	if(get_dist(M, src) > kill_range)

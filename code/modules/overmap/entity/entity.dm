@@ -46,6 +46,8 @@
 	///
 	/// todo: reevaluate if this is the right way to perform forced movements like wrapping.
 	var/tmp/is_forced_moving = FALSE
+	/// are we the main station
+	var/is_main_station = FALSE
 
 /obj/overmap/entity/New()
 	// assign id immediately
