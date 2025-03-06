@@ -5,7 +5,7 @@
 	return chamber_simulation
 
 /obj/item/gun/projectile/ballistic/auto_inhand_rack_chamber(datum/event_args/actor/e_args)
-	return user_clickchain_cycle_chamber(e_args, null, no_sound, no_message)
+	return user_clickchain_cycle_chamber(e_args)
 
 /**
  * * The weird proc args is because this supports non-clickchain use.

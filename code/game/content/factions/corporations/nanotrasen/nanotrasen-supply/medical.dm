@@ -376,7 +376,7 @@
 	name = "Cell-Loaded Medigun crate"
 	contains = list(
 		/obj/item/gun/projectile/ballistic/microbattery/vm_aml = 1,
-		/obj/item/ammo_magazine/microbattery/medical = 1,
+		/obj/item/ammo_magazine/microbattery/vm_aml = 1,
 	)
 	worth = 1500
 	container_type = /obj/structure/closet/crate/secure/corporate/veymed

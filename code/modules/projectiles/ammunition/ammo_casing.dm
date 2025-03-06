@@ -68,7 +68,7 @@
 	if(!e_args.performer.Adjacent(src))
 		return
 	label_text = sanitize(label_text, MAX_NAME_LEN, extra = FALSE)
-	lazy_init_projectile()
+	get_projectile()
 	if(!projectile_stored)
 		CRASH("projectile stored isn't instanced when it shoudl be")
 	if(!label_text)
@@ -136,7 +136,8 @@
  */
 /obj/item/ammo_casing/proc/expend()
 	if(isnull(projectile_stored))
-		. = init_projectile()
+		init_projectile()
+	. = projectile_stored
 	projectile_stored = FALSE
 	if(isnull(.))
 		return
@@ -153,7 +154,7 @@
 	return projectile_stored != FALSE
 
 /**
- * grab projectile
+ * grab projectile, initializing it if needed
  */
 /obj/item/ammo_casing/proc/get_projectile()
 	switch(projectile_stored)

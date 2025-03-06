@@ -13,7 +13,7 @@
 	// this is shit but whatever
 /datum/procedural_entity_descriptor/item/gun/ballistic/xenoarcheology_1/instantiate_single(atom/location, seed_unimplemented)
 	var/obj/item/gun/projectile/ballistic/created_gun = new /obj/item/gun/projectile/ballistic/revolver(location)
-	created_gun.icon = 'icons/obj/xenoarcheology.dmi'
+	created_gun.icon = 'icons/obj/xenoarchaeology.dmi'
 	created_gun.icon_state = "gun[rand(1,4)]"
 	created_gun.caliber = null
 	created_gun.internal_magazine = TRUE

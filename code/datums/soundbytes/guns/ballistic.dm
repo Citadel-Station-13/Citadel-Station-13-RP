@@ -67,15 +67,15 @@
 	name = "Load Casing - Generic"
 	id = "load_casing-generic"
 	path = list(
-		'sound/soundbytes/guns/ballistics/load-generic-1.ogg',
-		'sound/soundbytes/guns/ballistics/load-generic-2.ogg',
-		'sound/soundbytes/guns/ballistics/load-generic-3.ogg',
-		'sound/soundbytes/guns/ballistics/load-generic-4.ogg',
+		'sound/soundbytes/guns/ballistic/load-generic-1.ogg',
+		'sound/soundbytes/guns/ballistic/load-generic-2.ogg',
+		'sound/soundbytes/guns/ballistic/load-generic-3.ogg',
+		'sound/soundbytes/guns/ballistic/load-generic-4.ogg',
 	)
 
 /datum/soundbyte/guns/ballistic/load_casing/shotgun
 	name = "Load Casing - Shotgun"
 	id = "load_casing-shotgun"
 	path = list(
-		'sound/soundbytes/guns/ballistics/load-shotgun.ogg'
+		'sound/soundbytes/guns/ballistic/load-shotgun.ogg'
 	)

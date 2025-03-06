@@ -386,7 +386,7 @@
 	id = "nsfw_prototype"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 4, TECH_POWER = 4, TECH_COMBAT = 7)
 	materials_base = list(MAT_STEEL = 10000, MAT_GLASS = 6000, MAT_PHORON = 8000, MAT_URANIUM = 4000)
-	build_path = /obj/item/gun/projectile/ballistic/microbattery/nt_hydra/prototype
+	build_path = /obj/item/gun/projectile/ballistic/microbattery/nt_hydra/sidearm/prototype
 
 /datum/prototype/design/science/weapon/cell_based/prototype_nsfw_mag
 	design_name = "combat cell magazine"
@@ -394,7 +394,7 @@
 	subcategory = DESIGN_SUBCATEGORY_AMMO
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 4, TECH_POWER = 4, TECH_COMBAT = 7)
 	materials_base = list(MAT_STEEL = 8000, MAT_GLASS = 4000, MAT_PHORON = 4000)
-	build_path = /obj/item/ammo_magazine/microbattery/nt_hydra
+	build_path = /obj/item/ammo_magazine/microbattery/nt_hydra/prototype
 
 /datum/prototype/design/science/nsfw_cell
 	category = DESIGN_CATEGORY_MUNITIONS

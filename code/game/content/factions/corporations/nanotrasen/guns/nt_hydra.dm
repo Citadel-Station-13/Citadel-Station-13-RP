@@ -38,6 +38,7 @@
 	magazine_restrict = /obj/item/ammo_magazine/microbattery/nt_hydra/prototype
 
 /obj/item/ammo_magazine/microbattery/nt_hydra
+	name = "microbattery magazine (NT-Hydra)"
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/nt_hydra.dmi'
 	icon_state = "mag"
 	ammo_caliber = /datum/ammo_caliber/microbattery/nt_hydra
@@ -63,7 +64,11 @@
 		if(amount > segment_count)
 			break
 
+/obj/item/ammo_magazine/microbattery/nt_hydra/prototype
+	name = "prototype microbattery magazine (NT-Hydra)"
+
 /obj/item/ammo_magazine/microbattery/nt_hydra/advanced
+	name = "advanced microbattery magazine (NT-Hydra)"
 	icon_state = "mag_ext"
 	ammo_max = 4
 

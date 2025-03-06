@@ -44,5 +44,4 @@
 	if(shots_remaining <= 0)
 		return
 	--shots_remaining
-	. = stored
-	stored = null
+	return init_projectile()
