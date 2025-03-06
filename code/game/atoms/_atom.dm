@@ -95,6 +95,8 @@
 
 	//? Chemistry
 	// todo: properly finalize the semantics of this variable and what it's for.
+	// todo: should this variable even exist? most atoms don't need this, and we can easily have an APi
+	//       to fetch a relevant holder upon being inspected by an analyzer.
 	var/datum/reagent_holder/reagents = null
 
 	//? Detective Work
@@ -308,7 +310,6 @@
 		if(A.contents.len)
 			found += A.search_contents_for(path,filter_path)
 	return found
-
 
 // called by mobs when e.g. having the atom as their machine, pulledby, loc (AKA mob being inside the atom) or buckled var set.
 // see code/modules/mob/mob_movement.dm for more.
@@ -683,12 +684,13 @@
 
 /atom/proc/CheckParts(list/parts_list)
 	for(var/A in parts_list)
-		if(istype(A, /datum/reagent))
-			if(!reagents)
-				reagents = new()
-			reagents.reagent_list.Add(A)
-			reagents.conditional_update()
-		else if(ismovable(A))
+		// todo: i don't know why we do this in crafting but crafting needs fucking refactored lmao
+		// if(istype(A, /datum/reagent))
+		// 	if(!reagents)
+		// 		reagents = new()
+		// 	reagents.reagent_list.Add(A)
+		// 	reagents.conditional_update()
+		if(ismovable(A))
 			var/atom/movable/M = A
 			M.forceMove(src)
 
