@@ -298,12 +298,12 @@
 		return user_clickchain_apply_casing(using, e_args, e_args)
 
 /obj/item/gun/projectile/ballistic/on_attack_hand(datum/event_args/actor/clickchain/e_args)
-	. = ..()
-	if(.)
-		return
 	if(e_args.performer.is_holding_inactive(src))
 		if(user_clickchain_unload(e_args, e_args) & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 			return TRUE
+	. = ..()
+	if(.)
+		return
 
 /obj/item/gun/projectile/ballistic/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	if(bolt_simulation && !bolt_closed)
@@ -343,10 +343,12 @@
 	if(interact_show_caliber_on_examine)
 		var/datum/ammo_caliber/our_caliber = resolve_caliber(caliber)
 		if(our_caliber)
-			. += "It uses [our_caliber.caliber][our_caliber.name ? " ([our_caliber.name])" : ""] caliber ammunition."
+			. += SPAN_NOTICE("It uses [our_caliber.caliber][our_caliber.name ? " ([our_caliber.name])" : ""] caliber ammunition.")
 	if(magazine)
-		. += "It has \a [magazine] loaded."
-	. += "Has [get_ammo_remaining()] round\s remaining."
+		. += SPAN_NOTICE("It has \a [magazine] loaded.")
+	if(chamber)
+		. += SPAN_NOTICE("It has a round chambered.")
+	. += SPAN_NOTICE("It has [get_ammo_remaining()] round\s remaining.")
 
 //* Actions *//
 

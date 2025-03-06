@@ -353,12 +353,7 @@
  */
 /obj/item/gun/projectile/ballistic/proc/user_clickchain_unload_ammo(datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message, remove_chamber_if_empty)
 	if(bolt_simulation && bolt_closed && bolt_blocks_internal_magazine)
-		if(!no_message)
-			actor.chat_feedback(
-				SPAN_WARNING("[src]'s bolt must be open to access its internal magazine or chamber."),
-				target = src,
-			)
-		return CLICKCHAIN_DID_SOMETHING
+		return NONE
 	var/obj/item/ammo_casing/unloaded = remove_casing(null, no_sound)
 	if(!unloaded)
 		if(remove_chamber_if_empty)
@@ -399,13 +394,6 @@
  * @return clickchain flags
  */
 /obj/item/gun/projectile/ballistic/proc/user_clickchain_unload_chamber(datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
-	if(bolt_simulation && bolt_closed)
-		if(!no_message)
-			actor.chat_feedback(
-				SPAN_WARNING("[src]'s bolt must be open to access its chamber."),
-				target = src,
-			)
-		return CLICKCHAIN_DID_SOMETHING
 	var/obj/item/ammo_casing/unloaded = eject_chamber(no_sound)
 	if(!unloaded)
 		return NONE

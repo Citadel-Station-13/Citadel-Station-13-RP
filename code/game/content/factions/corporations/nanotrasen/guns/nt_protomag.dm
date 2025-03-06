@@ -17,6 +17,7 @@
 		a large amount of energy to discharge, in contrast to more normal hybrid rounds.
 	"}
 	caliber = /datum/ammo_caliber/nt_protomag
+	chamber_simulation = FALSE
 	modular_system = TRUE
 
 	var/legacy_discharged_fire_sound
