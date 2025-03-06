@@ -1,4 +1,6 @@
 /obj/item/gun/projectile/ballistic/proc/legacy_emit_chambered_residue()
+	if(!chamber)
+		return
 	if(chamber.leaves_residue)
 		var/mob/living/carbon/human/H = loc
 		if(istype(H))

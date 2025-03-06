@@ -17,11 +17,17 @@
 	materials_base = list(MAT_STEEL = 1000)
 	recoil = 0
 
+	COOLDOWN_DECLARE(CD_INDEX_GUN_RACK_CHAMBER)
+	COOLDOWN_DECLARE(CD_INDEX_GUN_SPIN_CHAMBER)
+	COOLDOWN_DECLARE(CD_INDEX_GUN_BOLT_ACTION)
+
 	//* Actions *//
 
 	/// If we're an internal mag gun, this is our chamber spin action.
 	/// * Lazy-init'd
 	var/datum/action/item_action/gun_spin_chamber/chamber_spin_action
+	/// Chamber spin cooldon
+	var/chamber_spin_cooldown = 1 SECONDS
 
 	//* Ammunition *//
 
@@ -155,6 +161,8 @@
 	/// * Played in lieu of chambering sound if that exists and this is a manual bolt
 	///   manipulation.
 	var/bolt_close_sound = 'sound/weapons/guns/interaction/rifle_boltforward.ogg'
+	/// bolt manipulation cooldown
+	var/bolt_cooldown = 0.15 SECONDS
 
 	//* Chamber *//
 
@@ -183,6 +191,8 @@
 	/// chamber manual cycle sound
 	/// * not played on an automatic cycle (from live / inert fire)
 	var/chamber_manual_cycle_sound = /datum/soundbyte/guns/ballistic/rack_chamber/generic_1
+	/// chamber manual cycle cooldown
+	var/chamber_manual_cycle_cooldown = 0.5 SECOND
 	/// Spin the internal magazine after a live-fire.
 	/// * Only has an effect on revolver-like internal magazines.
 	/// * Cycling the chamber will eject the round. Turn off 'cycle after fire' if you don't want this.
@@ -356,9 +366,10 @@
 		return min(1, magazine.get_amount_remaining() / magazine.ammo_max)
 
 /obj/item/gun/projectile/ballistic/get_ammo_remaining()
+	. = 0
 	if(internal_magazine)
 		if(internal_magazine_revolver_mode)
-			for(var/i in 1 to length(internal_magazine_revolver_mode))
+			for(var/i in 1 to length(internal_magazine_vec))
 				if(internal_magazine_vec[i])
 					. += 1
 		else
@@ -847,6 +858,8 @@
 		// unsim'd external mag
 		ejecting = magazine?.pop()
 
+	if(!ejecting)
+		return
 	if(ejecting.casing_flags & CASING_DELETE)
 		qdel(ejecting)
 		return

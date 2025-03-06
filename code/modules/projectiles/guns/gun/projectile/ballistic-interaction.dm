@@ -22,6 +22,9 @@
 	if(!chamber_simulation)
 		return NONE
 	if(bolt_simulation)
+		if(!COOLDOWN_FINISHED(src, CD_INDEX_GUN_BOLT_ACTION))
+			return CLICKCHAIN_DID_SOMETHING
+		COOLDOWN_START(src, CD_INDEX_GUN_BOLT_ACTION, bolt_cooldown)
 		if(bolt_closed)
 			open_bolt()
 			if(!no_message)
@@ -39,6 +42,9 @@
 					otherwise_self = SPAN_WARNING("You slide [src]'s bolt forwards."),
 				)
 	else
+		if(!COOLDOWN_FINISHED(src, CD_INDEX_GUN_RACK_CHAMBER))
+			return CLICKCHAIN_DID_SOMETHING
+		COOLDOWN_START(src, CD_INDEX_GUN_RACK_CHAMBER, chamber_manual_cycle_cooldown)
 		cycle_chamber()
 		if(!no_message)
 			actor.visible_feedback(
@@ -93,7 +99,7 @@
 			)
 		return CLICKCHAIN_DID_SOMETHING
 
-	if(length(internal_magazine_vec) >= internal_magazine_size)
+	if(is_internal_magazine_full())
 		if(!no_message)
 			actor?.chat_feedback(
 				SPAN_WARNING("[src] is full!"),
@@ -141,7 +147,7 @@
 			)
 		return CLICKCHAIN_DID_SOMETHING
 
-	if(length(internal_magazine_vec) >= internal_magazine_size)
+	if(is_internal_magazine_full())
 		if(!no_message)
 			actor.chat_feedback(
 				SPAN_WARNING("[src] is full!"),
@@ -418,6 +424,9 @@
 /obj/item/gun/projectile/ballistic/proc/user_clickchain_spin_chamber(datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
 	if(!internal_magazine || !internal_magazine_revolver_mode)
 		return NONE
+	if(!COOLDOWN_FINISHED(src, CD_INDEX_GUN_SPIN_CHAMBER))
+		return CLICKCHAIN_DID_SOMETHING
+	COOLDOWN_START(src, CD_INDEX_GUN_SPIN_CHAMBER, chamber_spin_cooldown)
 	unsafe_spin_chamber_to_random()
 	if(!no_message)
 		actor.visible_feedback(

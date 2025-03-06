@@ -12,7 +12,7 @@ GLOBAL_LIST_INIT(calibers, init_calibers())
 		var/datum/ammo_caliber/created = new path
 		.[created.type] = created
 		.[created.id] = created
-		if(created.caliber)
+		if(created.caliber && created.caliber != created.id)
 			if(.[created.caliber])
 				stack_trace("collision between [path] and [.[created.caliber]:type] for caliber [created.caliber]")
 			.[created.caliber] = created
