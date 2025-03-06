@@ -216,7 +216,11 @@
 	desc = "A common mass produced emergency flare gun capable of shooting a single flare great distances for signalling air and ground forces alike. As it loads 12g flare shells it can also function as improvised 12g shotgun. On it a description reads: 'Warning: Possession is prohibited outside of emergency situations'."
 	icon_state = "flareg"
 	item_state = "flareg"
-	internal_magazine_size = 1
+	chamber_simulation = TRUE
+	chamber_cycle_after_fire = FALSE
+	chamber_manual_cycle = FALSE
+	internal_magazine = TRUE
+	internal_magazine_size = 0
 	w_class = WEIGHT_CLASS_SMALL
 	damage_force = 5
 	slot_flags = SLOT_BELT

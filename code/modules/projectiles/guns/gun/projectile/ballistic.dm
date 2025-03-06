@@ -360,6 +360,11 @@
 			. += SPAN_NOTICE("It uses [our_caliber.caliber][our_caliber.name ? " ([our_caliber.name])" : ""] caliber ammunition.")
 	if(magazine)
 		. += SPAN_NOTICE("It has \a [magazine] loaded, with [get_ammo_remaining(TRUE)] round\s remaining.")
+	if(internal_magazine)
+		if(internal_magazine_revolver_mode)
+			. += SPAN_NOTICE("It has [get_ammo_remaining(TRUE)] round\s chambered.")
+		else
+			. += SPAN_NOTICE("It has [get_ammo_remaining(TRUE)] round\s remaining.")
 	if(chamber)
 		. += SPAN_NOTICE("It has a round chambered.")
 
@@ -808,7 +813,7 @@
 		return internal_magazine_vec[internal_magazine_revolver_offset]
 	if(!chamber_simulation)
 		if(internal_magazine)
-			return internal_magazine[length(internal_magazine)]
+			return internal_magazine_vec[length(internal_magazine)]
 		else
 			return magazine?.peek()
 
