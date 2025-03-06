@@ -58,18 +58,6 @@
 	if(istype(dart))
 		fill_dart(dart)
 
-/obj/item/gun/projectile/ballistic/dartgun/examine(mob/user, dist)
-	//update_icon()
-	//if (!..(user, 2))
-	//	return
-	. = ..()
-	if (beakers.len)
-		to_chat(user, "<font color=#4F49AF>[src] contains:</font>")
-		for(var/obj/item/reagent_containers/glass/beaker/B in beakers)
-			if(B.reagents && B.reagents.reagent_list.len)
-				for(var/datum/reagent/R in B.reagents.reagent_list)
-					. += "<font color=#4F49AF>[R.volume] units of [R.name]</font>"
-
 /obj/item/gun/projectile/ballistic/dartgun/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/reagent_containers/glass))
 		if(!istype(I, container_type))
@@ -105,9 +93,9 @@
 		var/i = 1
 		for(var/obj/item/reagent_containers/glass/beaker/B in beakers)
 			dat += "Beaker [i] contains: "
-			if(B.reagents && B.reagents.reagent_list.len)
-				for(var/datum/reagent/R in B.reagents.reagent_list)
-					dat += "<br>    [R.volume] units of [R.name], "
+			if(B.reagents?.total_volume)
+				for(var/datum/reagent/R in B.reagents.get_reagent_datums())
+					dat += "<br>    [B.reagents.reagent_volumes[R.id]] units of [R.name], "
 				if (check_beaker_mixing(B))
 					dat += "<A href='?src=\ref[src];stop_mix=[i]'><font color='green'>Mixing</font></A> "
 				else
