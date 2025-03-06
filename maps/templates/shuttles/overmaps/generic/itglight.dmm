@@ -2539,7 +2539,7 @@
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/portcargo)
 "rn" = (
-/obj/machinery/appliance/cooker/grill,
+/obj/machinery/cooking/grill,
 /turf/simulated/floor/tiled/eris/cafe,
 /area/itglight/kitchen)
 "rq" = (
@@ -7243,7 +7243,7 @@
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/afthall)
 "YC" = (
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooking/oven,
 /turf/simulated/floor/tiled/eris/cafe,
 /area/itglight/kitchen)
 "YD" = (

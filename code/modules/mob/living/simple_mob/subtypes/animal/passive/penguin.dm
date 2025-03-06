@@ -33,7 +33,7 @@
 	has_langs = list("Bird")
 
 	meat_amount = 2
-	meat_type = /obj/item/reagent_containers/food/snacks/meat/chicken/penguin
+	meat_type = /obj/item/reagent_containers/food/snacks/ingredient/meat/chicken/penguin
 	bone_amount = 1
 
 /mob/living/simple_mob/animal/passive/penguin/tux

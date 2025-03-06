@@ -11,7 +11,7 @@
 	in_space = 1
 	initial_generic_waypoints = list("triumph_excursion_debrisfield")
 
-////Holy shit spagetti pain. TODO fix this debrifield/debrifield_vr bullshit - Bloop///
+////Holy shit spaghetti pain. TODO fix this debrifield/debrifield_vr bullshit - Bloop///
 
 
 /obj/overmap/entity/visitable/sector/debrisfield_vr

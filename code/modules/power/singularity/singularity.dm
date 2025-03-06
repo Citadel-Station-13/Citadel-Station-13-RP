@@ -88,6 +88,13 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 /obj/singularity/attack_ai() //To prevent ais from gibbing themselves when they click on one.
 	return
 
+/obj/singularity/attackby(obj/item/W, mob/living/user)
+	if(QDELETED(W))
+		return
+
+	visible_message("<span class=\"warning\">\The [src] sucks up [W] from [user]'s hands!/span>")
+	consume(W)
+
 /obj/singularity/proc/admin_investigate_setup()
 	last_warning = world.time
 	var/count = locate(/obj/machinery/containment_field) in orange(30, src)

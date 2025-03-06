@@ -42,7 +42,7 @@
 	emote_see = list("runs in a circle", "shakes", "scritches at something")
 
 	holder_type = /obj/item/holder/mouse
-	meat_type = /obj/item/reagent_containers/food/snacks/meat
+	meat_type = /obj/item/reagent_containers/food/snacks/ingredient/meat
 
 	var/body_color //brown, gray and white, leave blank for random
 
