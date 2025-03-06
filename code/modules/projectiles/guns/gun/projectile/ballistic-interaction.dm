@@ -21,6 +21,8 @@
 /obj/item/gun/projectile/ballistic/proc/user_clickchain_cycle_chamber(datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
 	if(!chamber_simulation)
 		return NONE
+	if(!chamber_manual_cycle)
+		return NONE
 	if(bolt_simulation)
 		if(!COOLDOWN_FINISHED(src, CD_INDEX_GUN_BOLT_ACTION))
 			return CLICKCHAIN_DID_SOMETHING

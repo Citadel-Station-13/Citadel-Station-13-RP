@@ -217,6 +217,7 @@
 	icon_state = "flareg"
 	item_state = "flareg"
 	chamber_simulation = TRUE
+	chamber_preload_ammo = /obj/item/ammo_casing/a12g/flare
 	chamber_cycle_after_fire = FALSE
 	chamber_manual_cycle = FALSE
 	internal_magazine = TRUE
@@ -226,7 +227,6 @@
 	slot_flags = SLOT_BELT
 	caliber = /datum/ammo_caliber/a12g
 	accuracy = -15 //Its a flaregun and you expected accuracy?
-	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12g/flare
 
 	one_handed_penalty = 0
 	worth_intrinsic = 150
@@ -235,7 +235,6 @@
 	name = "Paramedic Flare Gun"
 	desc = "A common mass produced emergency flare gun capable of shooting a single flare great distances for signalling air and ground forces alike. As it loads 12g flare shells it can also function as improvised 12g shotgun. On it a description reads: 'For use by emergency medical services only.'"
 	icon_state = "flareg-para"
-
 
 /obj/item/gun/projectile/ballistic/shotgun/flare/explo
 	name = "Exploration Flare Gun"
