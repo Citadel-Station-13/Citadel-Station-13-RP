@@ -875,7 +875,10 @@
 	ejecting.randomize_offsets_after_eject()
 	// todo: soundbyte this
 	if(!silent)
-		playsound(src, "casing", 50, TRUE)
+		if(!from_fire)
+			playsound(src, single_load_sound, 75, TRUE)
+		else
+			ejecting.play_drop_sound()
 
 /**
  * Primes the casing being fired, and expends it.

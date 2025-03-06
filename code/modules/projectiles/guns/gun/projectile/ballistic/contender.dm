@@ -8,7 +8,7 @@
 	internal_magazine = TRUE
 	chamber_preload_ammo = /obj/item/ammo_casing/a357
 	chamber_simulation = TRUE
-	chamber_cycle_after_fire = TRUE
+	chamber_cycle_after_fire = FALSE
 	bolt_simulation = TRUE
 	bolt_auto_eject_on_open = FALSE
 

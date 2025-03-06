@@ -105,6 +105,10 @@
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
+/obj/item/ammo_casing/throw_land(atom/A, datum/thrownthing/TT)
+	. = ..()
+	play_drop_sound()
+
 //* Caliber *//
 
 /obj/item/ammo_casing/proc/get_caliber_string()
@@ -144,6 +148,12 @@
 	projectile_stored = FALSE
 	setDir(pick(GLOB.cardinal)) //spin spent casings
 	update_icon()
+
+/**
+ * Play sound when dropped
+ */
+/obj/item/ammo_casing/proc/play_drop_sound()
+	playsound(src, pick(fall_sounds), 50, TRUE)
 
 //* Getters *//
 
