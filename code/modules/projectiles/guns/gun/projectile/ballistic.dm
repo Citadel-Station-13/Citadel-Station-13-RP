@@ -109,6 +109,8 @@
 	var/internal_magazine = FALSE
 	/// Sets our internal magazine size.
 	/// * Changing this post-Initialize() is considered undefined behavior.
+	/// * Size 0 internal magazines are used for single shot guns, if they use chamber sim,
+	///   as the chamber is technically the first / only slot for a casing.
 	var/internal_magazine_size = 0
 	/// Internal magazine list
 	/// * This is an indexed list. Non-revolverlikes will trim the list as
@@ -184,6 +186,8 @@
 	///   invalid behavior, instead just acting weirdly. You can technically use this to
 	///   make custom behaviors, but it's not recommended.
 	VAR_PROTECTED/obj/item/ammo_casing/chamber
+	/// Preload with this ammo casing type.
+	var/chamber_preload_ammo
 	/// Cycle the chamber on a successful live fire.
 	var/chamber_cycle_after_fire = TRUE
 	/// Cycle the chamber on an unsuccessful inert fire.
@@ -247,6 +251,8 @@
 	. = ..()
 	update_icon()
 
+	if(chamber_simulation && chamber_preload_ammo)
+		chamber = new chamber_preload_ammo(src)
 	if(internal_magazine)
 		// fast insert, does not call the insert proc for casings or anything hooked to it
 		internal_magazine_vec = list()
@@ -359,7 +365,7 @@
 					remaining += 1
 		else
 			remaining = length(internal_magazine_vec)
-		return min(1, remaining / internal_magazine_size)
+		return min(1, remaining / max(1, internal_magazine_size))
 	else
 		if(!magazine)
 			return 0

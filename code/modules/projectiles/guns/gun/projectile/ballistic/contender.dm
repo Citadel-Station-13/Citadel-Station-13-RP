@@ -3,18 +3,18 @@
 	desc = "A perfect, pristine replica of an ancient one-shot hand-cannon. For when you really want to make a hole. This one has been modified to work almost like a bolt-action."
 	icon_state = "pockrifle"
 	item_state = "revolver"
+	// single shot, chamber only
 	caliber = /datum/ammo_caliber/a357
 	internal_magazine = TRUE
-	internal_magazine_preload_ammo = /obj/item/ammo_casing/a357
-	internal_magazine_size = 1
-	bolt_simulation = TRUE
+	chamber_preload_ammo = /obj/item/ammo_casing/a357
+	chamber_simulation = TRUE
 	chamber_cycle_after_fire = TRUE
+	bolt_simulation = TRUE
+	bolt_auto_eject_on_open = FALSE
 
 	heavy = TRUE
 
 	var/icon_retracted = "pockrifle-empty"
-
-#warn test bolt
 
 // todo: new rendering system
 /obj/item/gun/projectile/ballistic/contender/update_icon_state()

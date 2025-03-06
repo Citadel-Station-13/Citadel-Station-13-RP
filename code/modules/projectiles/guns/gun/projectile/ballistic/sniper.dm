@@ -11,17 +11,15 @@
 	origin_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 2, TECH_ILLEGAL = 8)
 	caliber = /datum/ammo_caliber/a12_7mm
 	recoil = 5 //extra kickback
+	chamber_preload_ammo = /obj/item/ammo_casing/a12_7mm
 	internal_magazine = TRUE
-	internal_magazine_size = 1
-	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12_7mm
 	bolt_simulation = TRUE
+	bolt_auto_eject_on_open = FALSE
 	chamber_cycle_after_fire = FALSE
 	single_load_sound = 'sound/weapons/guns/interaction/rifle_load.ogg'
 	accuracy = -45
 	scoped_accuracy = 95
 	one_handed_penalty = 90
-
-#warn test bolt
 
 /obj/item/gun/projectile/ballistic/heavysniper/update_icon()
 	if(bolt_closed)
