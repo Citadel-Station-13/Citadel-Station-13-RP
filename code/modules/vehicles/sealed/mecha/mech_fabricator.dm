@@ -179,8 +179,8 @@
 			else
 				sub_category += "All Cyborgs"
 		//Else check if this design builds a piece of exosuit equipment.
-		else if(built_item in typesof(/obj/item/mecha_parts/mecha_equipment))
-			var/obj/item/mecha_parts/mecha_equipment/E = built_item
+		else if(built_item in typesof(/obj/item/vehicle_module))
+			var/obj/item/vehicle_module/E = built_item
 			var/mech_types = initial(E.mech_flags)
 			sub_category = "Equipment"
 			if(mech_types)

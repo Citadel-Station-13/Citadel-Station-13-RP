@@ -78,8 +78,11 @@
 		O_BRAIN =    /obj/item/organ/internal/brain/xenochimera,
 		O_EYES =     /obj/item/organ/internal/eyes/xenochimera,
 		O_STOMACH =		/obj/item/organ/internal/stomach/xenochimera,
-		O_INTESTINE =	/obj/item/organ/internal/intestine/xenochimera
+		O_INTESTINE =	/obj/item/organ/internal/intestine/xenochimera,
+		O_WEAVER = 		/obj/item/organ/internal/weaver/weak/xenochimera
 		)
+
+
 
 	unarmed_types = list(
 		/datum/unarmed_attack/stomp,
@@ -127,6 +130,11 @@
 		/mob/living/carbon/human/proc/shapeshifter_select_ears,
 		/mob/living/carbon/human/proc/shapeshifter_select_horns,
 		/mob/living/carbon/human/proc/shapeshifter_select_shape,
+		/mob/living/carbon/human/proc/check_silk_amount,
+		/mob/living/carbon/human/proc/toggle_silk_production,
+		/mob/living/carbon/human/proc/weave_structure,
+		/mob/living/carbon/human/proc/weave_item,
+		/mob/living/carbon/human/proc/set_silk_color,
 	)
 
 	var/has_feral_abilities = FALSE

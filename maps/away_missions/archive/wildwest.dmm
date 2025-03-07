@@ -273,7 +273,7 @@
 /area/awaymission/wwmines)
 "bC" = (
 /obj/structure/table/woodentable,
-/obj/item/gun/ballistic,
+/obj/item/gun/projectile/ballistic,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "bD" = (
@@ -463,7 +463,7 @@
 /area/awaymission/wwmines)
 "ch" = (
 /obj/structure/table/woodentable,
-/obj/item/gun/ballistic,
+/obj/item/gun/projectile/ballistic,
 /turf/simulated/floor{
 	dir = 5
 	},
@@ -893,7 +893,7 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/wwmines)
 "eq" = (
-/obj/item/gun/ballistic/shotgun,
+/obj/item/gun/projectile/ballistic/shotgun,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "er" = (
@@ -936,7 +936,7 @@
 /area/awaymission/wwmines)
 "eE" = (
 /obj/item/bedsheet/blue,
-/obj/item/gun/ballistic,
+/obj/item/gun/projectile/ballistic,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "eF" = (
@@ -1079,7 +1079,7 @@
 /turf/simulated/mineral{
 	icon_state = "sandstone0";
 	mineral = "sandstone";
-	
+
 	},
 /area/awaymission/wwmines)
 "fo" = (
@@ -1199,7 +1199,7 @@
 /area/awaymission/wwmines)
 "fS" = (
 /obj/structure/table/woodentable,
-/obj/item/gun/ballistic/shotgun,
+/obj/item/gun/projectile/ballistic/shotgun,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "fU" = (
@@ -1273,7 +1273,7 @@
 /area/awaymission/wwmines)
 "gg" = (
 /obj/structure/table/woodentable,
-/obj/item/gun/ballistic/revolver,
+/obj/item/gun/projectile/ballistic/revolver,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "gi" = (
@@ -1293,7 +1293,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "gm" = (
-/obj/item/gun/ballistic,
+/obj/item/gun/projectile/ballistic,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "gn" = (
@@ -1326,11 +1326,11 @@
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "gw" = (
-/obj/item/gun/ballistic/silenced,
+/obj/item/gun/projectile/ballistic/silenced,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "gx" = (
-/obj/item/gun/ballistic/shotgun,
+/obj/item/gun/projectile/ballistic/shotgun,
 /turf/simulated/floor/plating,
 /area/awaymission/wwmines)
 "gy" = (

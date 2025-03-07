@@ -172,6 +172,9 @@
 				else if(affected.robotic >= ORGAN_ROBOT)
 					to_chat(user, "<span class='danger'>You cannot inject a robotic limb.</span>")
 					return
+				else if(affected.behaviour_flags & BODYPART_NO_INJECT)
+					to_chat(user, "<span class='danger'>You cannot inject this limb.</span>")
+					return
 
 			var/cycle_time = injtime*0.33 //33% of the time slept between 5u doses
 			var/warmup_time = 0	//0 for containers

@@ -13,7 +13,7 @@
 	result = /obj/item/reagent_containers/food/snacks/donkpocket //SPECIAL
 
 /datum/cooking_recipe/donkpocket/proc/warm_up(obj/item/reagent_containers/food/snacks/donkpocket/being_cooked)
-		being_cooked.heat()
+	being_cooked.heat()
 
 /datum/cooking_recipe/donkpocket/make_food(obj/container)
 	. = ..(container)

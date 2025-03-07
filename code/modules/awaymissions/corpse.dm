@@ -605,6 +605,37 @@
 	corpsehelmet = /obj/item/clothing/head/pirate
 */
 
+//////////////////////////
+//		Tajara Bodies
+//////////////////////////
+
+/obj/spawner/corpse/tajara
+	species = /datum/species/tajaran
+
+/obj/spawner/corpse/tajara/nka_soldier
+	name = "Tajara Brigand"
+	corpseuniform = /obj/item/clothing/under/tajaran/nka_uniform
+	corpsesuit = /obj/item/clothing/suit/armor/tajaran/cuirass
+	corpseshoes = /obj/item/clothing/shoes/tajara/armored
+	corpsegloves = /obj/item/clothing/gloves/tajaran_gauntlets
+	corpsehelmet = /obj/item/clothing/head/helmet/tajaran/kettle
+
+/obj/spawner/corpse/tajara/pra_soldier
+	name = "Tajara Insurgent"
+	corpseuniform = /obj/item/clothing/under/tajaran/dpra
+	corpsesuit = /obj/item/clothing/suit/armor/bulletproof
+	corpseshoes = /obj/item/clothing/shoes/tajara/workboots/dark
+	corpsegloves = /obj/item/clothing/gloves/black/tajara/smithgloves
+	corpsemask = /obj/item/clothing/mask/bandana/red
+	corpsehelmet = /obj/item/clothing/head/beret/tajaran/pvsm
+
+/obj/spawner/corpse/tajara/dra_soldier
+	name = "Tajara Guerilla"
+	corpseuniform = /obj/item/clothing/under/tajaran/pra_uniform
+	corpsesuit = /obj/item/clothing/suit/storage/vest/heavy/merc
+	corpseshoes = /obj/item/clothing/shoes/boots/swat
+	corpsegloves = /obj/item/clothing/gloves/combat
+	corpsehelmet = /obj/item/clothing/head/beret/tajaran
 
 //////////////////////////
 //		Other Bodies

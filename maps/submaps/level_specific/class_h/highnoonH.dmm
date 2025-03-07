@@ -108,7 +108,7 @@
 /area/class_h/POIs/WW_Town)
 "rR" = (
 /obj/structure/table/rack/shelf,
-/obj/item/gun/ballistic/shotgun/pump/rifle,
+/obj/item/gun/projectile/ballistic/shotgun/pump/rifle,
 /turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "tN" = (
@@ -291,7 +291,7 @@
 /area/class_h/POIs/WW_Town)
 "TN" = (
 /obj/structure/table/woodentable,
-/obj/item/gun/ballistic/revolver/detective45,
+/obj/item/gun/projectile/ballistic/revolver/detective45,
 /obj/machinery/light/small{
 	dir = 4
 	},

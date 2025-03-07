@@ -12,6 +12,8 @@
 	if(render_item_as_button && isnull(button_icon_state))
 		button_additional_only = TRUE
 		var/image/generated = new
+		var/obj/item/item_target = target
+		item_target.compile_overlays()
 		generated.appearance = target
 		// i hope you are not doing custom layers and planes for icons, right gamers??
 		generated.layer = FLOAT_LAYER
@@ -20,6 +22,8 @@
 	return ..()
 
 /datum/action/item_action/calculate_availability()
+	if(!check_mobility_flags)
+		return 1
 	var/obj/item/item = target
-	var/mob/worn = item.worn_mob()
+	var/mob/worn = item.get_worn_mob()
 	return worn? (worn.mobility_flags & check_mobility_flags? 1 : 0) : 1

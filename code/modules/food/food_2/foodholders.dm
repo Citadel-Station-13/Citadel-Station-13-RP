@@ -3,6 +3,7 @@
 	desc = "A fryer basket. It holds things, to be fried."
 	icon_state = "basket"
 	cooker_overlay = "basket"
+	volume = 120
 
 
 /obj/item/reagent_containers/glass/food_holder/pot
@@ -30,3 +31,4 @@
 	desc = "Big and flat."
 	icon_state = "ovendish"
 	cooker_overlay = "ovendish"
+	volume = 120
