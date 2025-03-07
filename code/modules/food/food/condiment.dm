@@ -57,8 +57,8 @@
 	to_chat(user, "<span class='notice'>You swallow some of contents of \the [src].</span>")
 
 /obj/item/reagent_containers/food/condiment/on_reagent_change()
-	if(reagents.reagent_list.len > 0)
-		switch(reagents.get_master_reagent_id())
+	if(reagents.total_volume)
+		switch(reagents.get_majority_reagent_id())
 			if("ketchup")
 				name = "Ketchup"
 				desc = "You feel more American already."
@@ -117,10 +117,10 @@
 				center_of_mass = list("x"=16, "y"=6) // END CITADEL CHANGE - AURORA KITCHEN PORT
 			else
 				name = "Misc Condiment Bottle"
-				if (reagents.reagent_list.len==1)
-					desc = "Looks like it is [reagents.get_master_reagent_name()], but you are not sure."
+				if (length(reagents.reagent_volumes) > 1)
+					desc = "Looks like it is [reagents.get_majority_reagent_name()], but you are not sure."
 				else
-					desc = "A mixture of various condiments. [reagents.get_master_reagent_name()] is one of them."
+					desc = "A mixture of various condiments. [reagents.get_majority_reagent_name()] is one of them."
 				icon_state = "mixedcondiments"
 				center_of_mass = list("x"=16, "y"=6)
 	else
