@@ -11262,6 +11262,9 @@
 /obj/landmark/spawnpoint/job/research_director,
 /turf/simulated/floor/carpet/purcarpet,
 /area/strelka/shipbase/deck3/bridge/rd)
+"Rw" = (
+/turf/simulated/floor/tiled/dark,
+/area/strelka/shipbase/deck3/science/secondary)
 "Ry" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -11702,6 +11705,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/main)
+"SX" = (
+/obj/structure/window/phoronreinforced{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/strelka/shipbase/deck3/science/secondary)
 "Ta" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -29500,9 +29509,9 @@ rQ
 rQ
 rQ
 rQ
+rQ
 CS
 hB
-VA
 VA
 VA
 zq
@@ -29689,6 +29698,7 @@ nv
 rg
 Sr
 OI
+OI
 rQ
 jd
 uA
@@ -29696,7 +29706,6 @@ eO
 Hh
 Br
 hB
-VA
 VA
 VA
 zq
@@ -29882,6 +29891,7 @@ sU
 ix
 VR
 BA
+OI
 or
 rQ
 od
@@ -29890,7 +29900,6 @@ Dk
 LZ
 uB
 hB
-VA
 VA
 VA
 zq
@@ -30076,6 +30085,7 @@ XH
 Ml
 pB
 Cl
+SX
 Ml
 rQ
 Av
@@ -30084,7 +30094,6 @@ Sm
 lE
 dB
 hB
-PS
 zq
 zq
 EP
@@ -30270,6 +30279,7 @@ Mt
 Xx
 QQ
 NC
+Rw
 Xx
 CS
 rQ
@@ -30278,7 +30288,6 @@ rQ
 rQ
 rQ
 hB
-PS
 zq
 EP
 EP
