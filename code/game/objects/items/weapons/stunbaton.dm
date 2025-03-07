@@ -123,34 +123,29 @@
 
 /obj/item/melee/baton/update_icon()
 	. = ..()
-	if(status)
+	if(active)
 		icon_state = "[initial(icon_state)]_active"
-	else if(!bcell)
+	else if(!obj_cell_slot?.cell)
 		icon_state = "[initial(icon_state)]_nocell"
 	else
 		icon_state = "[initial(icon_state)]"
 
 	if(icon_state == "[initial(icon_state)]_active")
-		set_light(2, 1, lightcolor)
+		set_light(2, 1, active_color)
 	else
 		set_light(0)
 
 /obj/item/melee/baton/examine(mob/user, dist)
 	. = ..()
-	if(bcell)
-		. += "<span class='notice'>The [src] is [round(bcell.percent())]% charged.</span>"
-	if(!bcell)
-		. += "<span class='warning'>The [src] does not have a power source installed.</span>"
+	if(obj_cell_slot?.cell)
+		. += SPAN_NOTICE("[src] is [obj_cell_slot.cell.percent()]% charged.")
+	else
+		. += SPAN_NOTICE("[src] does not have a power source installed.")
 
 /obj/item/melee/baton/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
-	if(use_external_power)
-		//try to find our power cell
-		var/mob/living/silicon/robot/R = loc
-		if (istype(R))
-			bcell = R.cell
 	if(bcell && bcell.charge > charge_cost)
 		status = !status
 		to_chat(user, "<span class='notice'>[src] is now [status ? "on" : "off"].</span>")
@@ -267,12 +262,12 @@
 	if(!isliving(target))
 		return
 	var/mob/living/L = target
-	if(status && L.has_polaris_AI())
-		L.taunt(user)
+	if(active && L.has_polaris_AI())
+		L.taunt(attacker)
 
 // Borg version, for the lost module.
 /obj/item/melee/baton/shocker/robot
-	use_external_power = TRUE
+	legacy_use_external_power = TRUE
 
 /obj/item/melee/baton/stunsword
 	name = "stunsword"

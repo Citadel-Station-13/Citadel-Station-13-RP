@@ -18,6 +18,55 @@
 	if(material_trait_flags & MATERIAL_TRAIT_SHIELD)
 		init_shieldcall(should_shield_inventory)
 
+//* Basic procs; handled by add/remove abstraction API *//
+
+/**
+ * called when we're added to something
+ *
+ * use this to set up scratch list & effects
+ *
+ * @params
+ * * host - the thing that has a material with us as a trait
+ * * existing_data - the data of this trait already on the thing
+ * * our_data - the data we're associated to on the material
+ *
+ * @return changed data, that isn't null.
+ */
+/datum/prototype/material_trait/proc/on_add(atom/host, existing_data, our_data)
+	// by default, just track how many copies we're on something
+	return existing_data + 1
+
+/**
+ * called when we're removed from something
+ *
+ * use this to tear down scratch list & effects
+ *
+ * @params
+ * * host - the thing that has a material with us as a trait
+ * * existing_data - the data of this trait already on the thing
+ * * our_data - the data we're associated to on the material
+ * * destroying - called if this is during qdel; in that case, our_data is null.
+ *
+ * If it is mid-destroy, it is **not** necessary to clean up ticking, because the Destroy() proc will do it for us.appearance
+ *
+ * @return changed data, or null to fully remove.
+ */
+/datum/prototype/material_trait/proc/on_remove(atom/host, existing_data, our_data, destroying)
+	if(destroying)
+		return
+	// by default, just track how many copies we're on something
+	return (existing_data - 1) || null
+
+/datum/prototype/material_trait/proc/start_ticking_on(atom/target)
+	if(!target.material_ticking_counter)
+		START_TICKING_MATERIALS(target)
+	++target.material_ticking_counter
+
+/datum/prototype/material_trait/proc/stop_ticking_on(atom/target)
+	--target.material_ticking_counter
+	if(!target.material_ticking_counter)
+		STOP_TICKING_MATERIALS(target)
+
 /**
  * creates a shieldcall datum that redirects to us
  */
@@ -92,53 +141,6 @@
  */
 /datum/prototype/material_trait/proc/tick(atom/host, data, dt)
 	return
-
-/**
- * called when we're added to something
- *
- * use this to set up scratch list & effects
- *
- * @params
- * * host - the thing that has a material with us as a trait
- * * existing_data - the data of this trait already on the thing
- * * our_data - the data we're associated to on the material
- *
- * @return changed data, that isn't null.
- */
-/datum/prototype/material_trait/proc/on_add(atom/host, existing_data, our_data)
-	// by default, just track how many copies we're on something
-	return existing_data + 1
-
-/**
- * called when we're removed from something
- *
- * use this to tear down scratch list & effects
- *
- * @params
- * * host - the thing that has a material with us as a trait
- * * existing_data - the data of this trait already on the thing
- * * our_data - the data we're associated to on the material
- * * destroying - called if this is during qdel; in that case, our_data is null.
- *
- * If it is mid-destroy, it is **not** necessary to clean up ticking, because the Destroy() proc will do it for us.appearance
- *
- * @return changed data, or null to fully remove.
- */
-/datum/prototype/material_trait/proc/on_remove(atom/host, existing_data, our_data, destroying)
-	if(destroying)
-		return
-	// by default, just track how many copies we're on something
-	return (existing_data - 1) || null
-
-/datum/prototype/material_trait/proc/start_ticking_on(atom/target)
-	if(!target.material_ticking_counter)
-		START_TICKING_MATERIALS(target)
-	++target.material_ticking_counter
-
-/datum/prototype/material_trait/proc/stop_ticking_on(atom/target)
-	--target.material_ticking_counter
-	if(!target.material_ticking_counter)
-		STOP_TICKING_MATERIALS(target)
 
 /**
  * material trait shieldcalls

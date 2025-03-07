@@ -118,7 +118,8 @@
 	/// Shows up under a UV light.
 	var/fluorescent
 
-	//? Materials
+	//* Materials *//
+
 	/// combined material trait flags
 	/// this list is at /atom level but are only used/implemented on /obj generically; anything else, e.g. walls, should implement manually for efficiency.
 	/// * this variable is a cache variable and is generated from the materials on an entity.
@@ -135,7 +136,6 @@
 	var/tmp/material_traits_data
 	/// 'stacks' of ticking
 	/// this synchronizes the system so removing one ticking material trait doesn't fully de-tick the entity
-	//! DO NOT FUCK WITH THIS UNLESS YOU KNOW WHAT YOU ARE DOING
 	/// * this variable is a cache variable and is generated from the materials on an entity.
 	/// * this variable is not visible and should not be edited in the map editor.
 	var/tmp/material_ticking_counter = 0
