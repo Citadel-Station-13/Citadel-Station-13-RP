@@ -6204,8 +6204,8 @@
 /obj/structure/closet/crate/secure/weapon{
 	req_one_access = list(108)
 	},
-/obj/item/storage/secure/briefcase/nsfw_pack_hybrid,
-/obj/item/storage/secure/briefcase/nsfw_pack_hybrid_combat,
+/obj/item/storage/secure/briefcase/nsfw_pack,
+/obj/item/storage/secure/briefcase/nsfw_pack_hos,
 /obj/item/gun/projectile/energy/ionrifle/pistol,
 /obj/item/gun/projectile/energy/ionrifle/pistol,
 /obj/item/gun/projectile/energy/ionrifle,
