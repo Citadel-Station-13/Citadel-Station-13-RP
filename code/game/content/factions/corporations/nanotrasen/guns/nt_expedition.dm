@@ -41,6 +41,7 @@
 	subcategory = DESIGN_SUBCATEGORY_BALLISTIC
 
 /datum/prototype/design/generated/nt_expedition_ammo
+	abstract_type = /datum/prototype/design/generated/nt_expedition_ammo
 	category = DESIGN_CATEGORY_MUNITIONS
 	subcategory = DESIGN_SUBCATEGORY_AMMO
 

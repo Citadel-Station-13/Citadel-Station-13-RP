@@ -9,6 +9,11 @@
 	diameter = 9
 	length = 29
 
+//* Designs *//
+
+/datum/prototype/design/generated/nt_expedition_ammo/light_sidearm
+	abstract_type = /datum/prototype/design/generated/nt_expedition_ammo/light_sidearm
+
 //* Ammo Casings *//
 
 /obj/item/ammo_casing/nt_expedition/light_sidearm

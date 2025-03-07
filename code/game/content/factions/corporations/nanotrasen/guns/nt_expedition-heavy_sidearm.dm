@@ -9,6 +9,11 @@
 	diameter = 9
 	length = 34
 
+//* Designs *//
+
+/datum/prototype/design/generated/nt_expedition_ammo/heavy_sidearm
+	abstract_type = /datum/prototype/design/generated/nt_expedition_ammo/heavy_sidearm
+
 //* Ammo Casings *//
 
 /obj/item/ammo_casing/nt_expedition/heavy_sidearm
