@@ -48,16 +48,46 @@
 /obj/item/gun/projectile/ballistic/microbattery/get_firemode_color()
 	return cached_group_color
 
+/obj/item/gun/projectile/ballistic/microbattery/insert_magazine(obj/item/ammo_magazine/magazine, silent)
+	. = ..()
+	if(!.)
+		return
+	scan_microbattery_group()
+	update_icon()
+
+/obj/item/gun/projectile/ballistic/microbattery/remove_magazine(atom/new_loc, silent, auto_eject)
+	. = ..()
+	if(!.)
+		return
+	scan_microbattery_group()
+	update_icon()
+
+/obj/item/gun/projectile/ballistic/microbattery/insert_casing(obj/item/ammo_casing/casing, silent, reverse_order)
+	. = ..()
+	if(!.)
+		return
+	scan_microbattery_group()
+	update_icon()
+
+/obj/item/gun/projectile/ballistic/microbattery/remove_casing(atom/new_loc, silent, reverse_order)
+	. = ..()
+	if(!.)
+		return
+	scan_microbattery_group()
+	update_icon()
+
 // todo: i'm crying please refactor internal magazines and chamber handling
 /obj/item/gun/projectile/ballistic/microbattery/really_snowflake_chamber_ejection_check(obj/item/ammo_casing/casing, from_fire)
 	return (!from_fire || !istype(get_chambered(), /obj/item/ammo_casing/microbattery)) && ..()
 
 /obj/item/gun/projectile/ballistic/microbattery/ready_chambered()
-	var/obj/item/ammo_casing/microbattery/maybe_microbattery_in_chamber = ..()
-	if(!istype(maybe_microbattery_in_chamber))
-		return maybe_microbattery_in_chamber
-	// if it's empty, advance if needed and try to re-fetch
-	if(!maybe_microbattery_in_chamber.shots_remaining)
+	var/obj/item/ammo_casing/microbattery/maybe_top_microbattery
+	if(internal_magazine)
+		if(length(internal_magazine_vec))
+			maybe_top_microbattery = internal_magazine_vec[length(internal_magazine_vec)]
+	else
+		maybe_top_microbattery = magazine?.peek()
+	if(maybe_top_microbattery && !maybe_top_microbattery.is_loaded())
 		advance_within_microbattery_group()
 	return ..()
 
@@ -166,8 +196,6 @@
 		return
 	cached_group_key = current.microbattery_group_key
 	cached_group_color = current.microbattery_mode_color
-	cached_group_capacity += current.shots_capacity
-	cached_group_remaining += isnull(current.shots_remaining) ? current.shots_capacity : current.shots_remaining
 
 	for(var/obj/item/ammo_casing/microbattery/maybe_relevant in internal_magazine ? internal_magazine_vec : magazine?.unsafe_get_ammo_internal_ref())
 		if(maybe_relevant.microbattery_group_key != cached_group_key)

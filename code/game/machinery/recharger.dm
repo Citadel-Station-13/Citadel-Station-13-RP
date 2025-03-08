@@ -24,7 +24,8 @@
 	. += "<span class = 'notice'>[charging ? "[charging]" : "Nothing"] is in [src].</span>"
 	if(charging)
 		var/obj/item/cell/C = charging.get_cell()
-		. += "<span class = 'notice'>Current charge: [C.charge] / [C.maxcharge]</span>"
+		if(C)
+			. += "<span class = 'notice'>Current charge: [C.charge] / [C.maxcharge]</span>"
 
 /obj/machinery/recharger/attackby(obj/item/G, mob/user)
 	var/allowed = FALSE
