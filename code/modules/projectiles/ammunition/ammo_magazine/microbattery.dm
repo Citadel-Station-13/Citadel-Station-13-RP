@@ -55,7 +55,7 @@
 			break
 		if(maybe_microbattery.microbattery_group_key != current_group)
 			break
-		if(!maybe_microbattery.shots_remaining)
+		if(!maybe_microbattery.get_shots_remaining())
 			continue
 		found_index = i
 		break
