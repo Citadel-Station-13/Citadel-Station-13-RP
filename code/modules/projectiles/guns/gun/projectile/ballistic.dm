@@ -347,7 +347,9 @@
 			if(chamber_spin_after_inert && internal_magazine_revolver_mode && internal_magazine)
 				unsafe_spin_chamber_to_next()
 		if(GUN_FIRED_FAIL_EMPTY)
-			if(chamber_cycle_after_inert)
+			if(!chamber_simulation)
+				eject_chamber(FALSE, TRUE, drop_location(), TRUE)
+			else if(chamber_cycle_after_inert)
 				cycle_chamber(FALSE, TRUE)
 			if(chamber_spin_after_inert && internal_magazine_revolver_mode && internal_magazine)
 				unsafe_spin_chamber_to_next()
@@ -927,7 +929,8 @@
 			if(internal_magazine)
 				internal_magazine_vec += ejecting
 			else
-				magazine.push(ejecting)
+				magazine.push(ejecting, force = TRUE)
+			chamber = null
 		return
 	// we don't immediately null out chamber above
 	// this is because guns without chamber simulation are currently coded in

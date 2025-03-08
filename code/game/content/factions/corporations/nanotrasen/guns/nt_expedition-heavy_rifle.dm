@@ -5,6 +5,7 @@
 
 /datum/ammo_caliber/nt_expedition/heavy_rifle
 	name = "NT-7.5-LR"
+	id = "nt-heavy-rifle"
 	caliber = "nt-heavy-rifle"
 	diameter = 7.5
 	length = 54

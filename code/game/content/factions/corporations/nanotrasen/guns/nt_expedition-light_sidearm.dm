@@ -5,6 +5,7 @@
 
 /datum/ammo_caliber/nt_expedition/light_sidearm
 	name = "NT-9"
+	id = "nt-light-sidearm"
 	caliber = "nt-light-sidearm"
 	diameter = 9
 	length = 29
@@ -101,6 +102,7 @@
 
 GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/light_sidearm/smg, /nt_expedition_ammo/light_sidearm/smg, "nt-ammo-9mm-smg");
 /obj/item/ammo_magazine/nt_expedition/light_sidearm/smg
+	name = "smg magazine (NT-9)"
 	icon_state = "smg-1"
 	base_icon_state = "smg"
 	rendering_system = GUN_RENDERING_STATES
@@ -145,13 +147,13 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/light_sidear
 
 //* SMG *//
 
-/datum/firemode/nt_expedition_light_Smg
-	abstract_type = /datum/firemode/nt_expedition_light_Smg
+/datum/firemode/nt_expedition_light_smg
+	abstract_type = /datum/firemode/nt_expedition_light_smg
 
-/datum/firemode/nt_expedition_light_Smg/semi_auto
+/datum/firemode/nt_expedition_light_smg/semi_auto
 	name = "semi-auto"
 
-/datum/firemode/nt_expedition_light_Smg/two_burst
+/datum/firemode/nt_expedition_light_smg/two_burst
 	name = "2-burst"
 	burst_amount = 2
 	burst_delay = 1.5
@@ -180,6 +182,6 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/nt_expediti
 		/datum/prototype/material/copper::id = 400,
 	)
 	firemodes = list(
-		/datum/firemode/nt_expedition_light_Smg/semi_auto,
-		/datum/firemode/nt_expedition_light_Smg/two_burst,
+		/datum/firemode/nt_expedition_light_smg/semi_auto,
+		/datum/firemode/nt_expedition_light_smg/two_burst,
 	)

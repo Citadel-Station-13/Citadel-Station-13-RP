@@ -4,6 +4,8 @@
 //* Caliber *//
 
 /datum/ammo_caliber/nt_expedition/antimaterial
+	name = "NT-12-AM"
+	id = "nt-antimaterial"
 	caliber = "nt-antimaterial"
 	diameter = 12
 	length = 92

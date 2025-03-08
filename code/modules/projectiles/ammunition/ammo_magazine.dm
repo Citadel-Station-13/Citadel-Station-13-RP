@@ -404,8 +404,8 @@
  *
  * @return TRUE/FALSE on success/failure
  */
-/obj/item/ammo_magazine/proc/push(obj/item/ammo_casing/casing, no_update)
-	if(get_amount_remaining() >= ammo_max)
+/obj/item/ammo_magazine/proc/push(obj/item/ammo_casing/casing, no_update, force)
+	if(get_amount_remaining() >= ammo_max && !force)
 		return FALSE
 	LAZYADD(ammo_internal, casing)
 	if(casing.loc != src)

@@ -37,6 +37,7 @@
 //* Caliber *//
 
 /datum/ammo_caliber/phoron_shrap
+	id = "phoron-shrap"
 	caliber = "phoron-shrapnel"
 
 //* Ammunition *//
