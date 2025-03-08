@@ -48,6 +48,11 @@
 /obj/item/gun/projectile/ballistic/microbattery/get_firemode_color()
 	return cached_group_color
 
+/obj/item/gun/projectile/ballistic/microbattery/eject_chamber(silent, from_fire, atom/move_to, system)
+	if(from_fire && istype(get_chambered(), /obj/item/ammo_casing/microbattery))
+		return
+	return ..()
+
 /obj/item/gun/projectile/ballistic/microbattery/ready_chambered()
 	var/obj/item/ammo_casing/microbattery/maybe_microbattery_in_chamber = ..()
 	if(!istype(maybe_microbattery_in_chamber))
