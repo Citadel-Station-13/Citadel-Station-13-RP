@@ -319,6 +319,8 @@
  * @return clickchain flags
  */
 /obj/item/gun/projectile/ballistic/proc/user_clickchain_apply_casing_to_chamber(obj/item/ammo_casing/casing, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
+	if(!chamber_simulation)
+		return NONE
 	if(chamber)
 		if(!no_message)
 			actor.chat_feedback(

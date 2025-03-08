@@ -45,3 +45,6 @@
 		return
 	--shots_remaining
 	return init_projectile()
+
+/obj/item/ammo_casing/microbattery/is_loaded()
+	return isnull(shots_remaining) ? shots_capacity : shots_remaining

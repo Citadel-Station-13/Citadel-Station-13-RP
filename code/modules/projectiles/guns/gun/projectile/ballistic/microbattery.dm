@@ -116,6 +116,7 @@
 	. = cycle_microbattery_group_impl()
 	if(.)
 		scan_microbattery_group()
+		update_icon()
 
 /obj/item/gun/projectile/ballistic/microbattery/proc/cycle_microbattery_group_impl()
 	PRIVATE_PROC(TRUE)
@@ -162,13 +163,13 @@
 	cached_group_key = current.microbattery_group_key
 	cached_group_color = current.microbattery_mode_color
 	cached_group_capacity += current.shots_capacity
-	cached_group_remaining += current.shots_remaining
+	cached_group_remaining += isnull(current.shots_remaining) ? current.shots_capacity : current.shots_remaining
 
 	for(var/obj/item/ammo_casing/microbattery/maybe_relevant in internal_magazine ? internal_magazine_vec : magazine?.unsafe_get_ammo_internal_ref())
 		if(maybe_relevant.microbattery_group_key != cached_group_key)
 			continue
 		cached_group_capacity += maybe_relevant.shots_capacity
-		cached_group_remaining += maybe_relevant.shots_remaining
+		cached_group_remaining += isnull(maybe_relevant.shots_remaining) ? maybe_relevant.shots_capacity : maybe_relevant.shots_remaining
 
 //* Actions *//
 

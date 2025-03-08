@@ -916,7 +916,7 @@
 
 	if(!ejecting)
 		return
-	if(from_fire && !ejecting.is_loaded())
+	if(from_fire && ejecting.is_loaded())
 		return
 	if(!ejecting.is_loaded() && (ejecting.casing_flags & CASING_DELETE))
 		qdel(ejecting)
