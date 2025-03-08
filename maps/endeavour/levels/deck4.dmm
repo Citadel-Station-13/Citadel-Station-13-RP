@@ -3244,12 +3244,12 @@
 /turf/simulated/floor/tiled/white,
 /area/engineering/storage)
 "drD" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/table/rack/shelf/steel,
+/obj/item/storage/toolbox/emergency,
+/obj/item/storage/toolbox/emergency,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tcommsat/powercontrol)
 "drH" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
 /obj/machinery/atmospherics/pipe/manifold/visible/blue{
@@ -3416,6 +3416,10 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/endeavour/hallway/d4starboardhall)
 "dAM" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/tank/emergency/oxygen/double,
+/obj/item/tank/emergency/oxygen/engi,
+/obj/item/tank/emergency/oxygen/engi,
 /turf/simulated/floor/plating,
 /area/tcommsat/powercontrol)
 "dBH" = (
@@ -3449,10 +3453,9 @@
 /turf/space,
 /area/endeavour/hallway/d4fwdhall)
 "dDz" = (
-/obj/structure/reagent_dispensers/watertank,
-/obj/effect/floor_decal/rust,
+/obj/machinery/portable_atmospherics/powered/scrubber,
 /turf/simulated/floor/plating,
-/area/space)
+/area/endeavour/hallway/d4porthall)
 "dEd" = (
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/structure/cable{
@@ -3733,8 +3736,9 @@
 /turf/simulated/floor/reinforced,
 /area/endeavour/hallway/d4aftmaint)
 "dYW" = (
+/obj/machinery/floodlight,
 /turf/simulated/floor/plating,
-/area/space)
+/area/endeavour/hallway/d4porthall)
 "dZr" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -4037,9 +4041,9 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4aftmaint)
 "emb" = (
-/obj/machinery/portable_atmospherics/powered/scrubber,
+/obj/machinery/portable_atmospherics/powered/pump,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tcommsat/powercontrol)
 "eme" = (
 /obj/machinery/portable_atmospherics/powered/pump/filled,
 /turf/simulated/floor/plating,
@@ -4800,9 +4804,10 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/ai/foyer)
 "ffx" = (
-/obj/effect/floor_decal/rust,
+/obj/structure/table/rack/shelf/steel,
+/obj/item/storage/briefcase/inflatable,
 /turf/simulated/floor/plating,
-/area/space)
+/area/endeavour/hallway/d4porthall)
 "ffD" = (
 /obj/structure/sign/deck/fourth,
 /turf/simulated/wall/r_wall/prepainted/engineering,
@@ -7184,12 +7189,9 @@
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/shield_gen)
 "hBl" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/tank/emergency/oxygen/double,
-/obj/item/tank/emergency/oxygen/engi,
-/obj/item/tank/emergency/oxygen/engi,
+/obj/machinery/space_heater,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tcommsat/powercontrol)
 "hBu" = (
 /turf/simulated/floor/tiled/monofloor{
 	dir = 4
@@ -10670,9 +10672,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/space)
 "lnb" = (
-/obj/machinery/space_heater,
+/obj/structure/closet/emcloset,
 /turf/simulated/floor/plating,
-/area/space)
+/area/endeavour/hallway/d4porthall)
 "lqz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -11203,10 +11205,11 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_monitoring)
 "lTp" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/storage/briefcase/inflatable,
+/obj/machinery/light/small{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/endeavour/hallway/d4porthall)
 "lTq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -11966,10 +11969,6 @@
 /obj/item/tool/wrench,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/engineering/atmos/workshop)
-"mFR" = (
-/obj/machinery/portable_atmospherics/powered/pump,
-/turf/simulated/floor/plating,
-/area/space)
 "mGf" = (
 /obj/structure/sign/warning{
 	name = "\improper DANGER: ENGINE EXHAUST"
@@ -14872,10 +14871,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4aftmaint)
-"pVN" = (
-/obj/machinery/floodlight,
-/turf/simulated/floor/plating,
-/area/space)
 "pWy" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/starboardnacelle)
@@ -17602,13 +17597,6 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/ai)
-"tmx" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/storage/toolbox/emergency,
-/obj/item/storage/toolbox/emergency,
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor/plating,
-/area/space)
 "tmS" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/lightorange/border,
@@ -18072,9 +18060,10 @@
 /turf/simulated/floor,
 /area/endeavour/hallway/d4starboardhall)
 "tPk" = (
-/obj/structure/closet/emcloset,
+/obj/structure/reagent_dispensers/watertank,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tcommsat/powercontrol)
 "tRe" = (
 /turf/simulated/floor/tiled/steel,
 /area/tcommsat/computer)
@@ -38481,10 +38470,10 @@ cJz
 cJz
 wcA
 dAM
-dAM
-dAM
-dAM
-dAM
+drD
+tPk
+hBl
+emb
 cyY
 grZ
 grZ
@@ -38674,7 +38663,7 @@ nfV
 cJz
 cJz
 wcA
-xyv
+lTp
 xyv
 xyv
 xyv
@@ -38868,10 +38857,10 @@ fRo
 cJz
 cJz
 wcA
-xyv
-xyv
-xyv
-xyv
+ffx
+dYW
+dDz
+lnb
 xyv
 bGY
 xyv
@@ -41970,10 +41959,10 @@ jNg
 jNg
 jNg
 jNg
-jNg
-jNg
-jNg
-jNg
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -42164,10 +42153,10 @@ jNg
 jNg
 jNg
 jNg
-jNg
-jNg
-jNg
-jNg
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -42358,10 +42347,10 @@ jNg
 jNg
 jNg
 jNg
-jNg
-jNg
-jNg
-jNg
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -42552,10 +42541,10 @@ jNg
 jNg
 jNg
 jNg
-jNg
-jNg
-jNg
-jNg
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -42746,10 +42735,10 @@ jNg
 jNg
 jNg
 jNg
-jNg
-jNg
-jNg
-jNg
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -42940,9 +42929,9 @@ jNg
 jNg
 jNg
 jNg
-jNg
-jNg
-jNg
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -43132,10 +43121,10 @@ jNg
 jNg
 jNg
 jNg
-hBl
-tmx
-dDz
-lnb
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -43326,10 +43315,10 @@ jNg
 jNg
 jNg
 jNg
-drD
-ffx
-dYW
-lTp
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -43520,10 +43509,10 @@ jNg
 jNg
 jNg
 jNg
-dYW
-dYW
-dYW
-pVN
+xRj
+xRj
+xRj
+xRj
 xRj
 xRj
 xRj
@@ -43714,10 +43703,10 @@ jNg
 jNg
 jNg
 jNg
-dYW
-dYW
-dYW
-emb
+xRj
+xRj
+xRj
+xRj
 xRj
 xRj
 xRj
@@ -43908,10 +43897,10 @@ jNg
 jNg
 jNg
 jNg
-mFR
-dYW
-dYW
-tPk
+xRj
+xRj
+xRj
+xRj
 xRj
 xRj
 xRj
