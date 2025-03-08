@@ -97,3 +97,4 @@
 	"} + "<br>"
 	icon_state = "rifle"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
+	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/antimaterial

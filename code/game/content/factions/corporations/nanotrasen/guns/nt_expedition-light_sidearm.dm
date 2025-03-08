@@ -144,6 +144,7 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/light_sidear
 	icon_state = "pistol-map"
 	base_icon_state = "pistol"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
+	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_sidearm/pistol
 
 //* SMG *//
 
@@ -173,6 +174,7 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/nt_expediti
 	icon_state = "smg-map"
 	base_icon_state = "smg"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC | MAGAZINE_CLASS_EXTENDED
+	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_sidearm/smg
 	materials_base = list(
 		/datum/prototype/material/steel::id = 2500,
 		/datum/prototype/material/glass::id = 1250,
