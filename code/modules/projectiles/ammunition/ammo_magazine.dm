@@ -24,6 +24,7 @@
 	preserve_item = 1
 
 	//* dynamic config; can be changed at runtime freely *//
+
 	/// what types of magazines are we for logic handling
 	///
 	/// * this is a bitfield
@@ -38,6 +39,7 @@
 	var/magazine_class = MAGAZINE_CLASS_GENERIC
 
 	//* for magazines *//
+
 	/// magazine restrict - must match gun's to be fitted into it, if gun's is.
 	//  todo: implement when we need multi-restrictions, single-typepath-and-subtypes works for now; maybe rename to magazine_tags or magazine_allow?
 	// var/magazine_restrict
@@ -50,6 +52,7 @@
 	var/magazine_remove_delay
 
 	//* for speedloaders *//
+
 	/// speedloader type - must match gun's to fit ammo in, if gun's is set
 	//  todo: implement when we need multi-restrictions, single-typepath-and-subtypes works for now; maybe rename to magazine_tags or magazine_allow?
 	// var/speedloader_restrict
@@ -61,10 +64,14 @@
 	var/clip_delay = 0
 
 	//* loading *//
+
 	/// sound for loading a piece of ammo
 	var/load_sound = 'sound/weapons/flipblade.ogg'
+	/// should we auto-collect spent casings?
+	var/should_collect_spent = FALSE
 
 	//* Ammo *//
+
 	/// max ammo in us
 	var/ammo_max = 7
 	/// currently stored ammo; defaults to ammo_max if unset
@@ -98,6 +105,7 @@
 	var/ammo_restrict_no_subtypes = FALSE
 
 	//* Rendering *//
+
 	/// use default rendering system
 	/// in state mode, we will be "[base_icon_state]-[count]", from 0 to count (0 for empty)
 	/// in segments mode, we will repeatedly add "[base_icon_state]-ammo" with given offsets.
@@ -311,7 +319,7 @@
 	for(var/obj/item/ammo_casing/casing in where)
 		if(. > needed)
 			break
-		if(!casing.is_loaded())
+		if(!casing.is_loaded() && !should_collect_spent)
 			continue
 		if(!isnull(why_cant_load_casing(casing)))
 			continue

@@ -919,6 +919,15 @@
 	if(!ejecting)
 		return
 	if(from_fire && ejecting.is_loaded())
+		// i'm crying this is just to put stuff back in if chamber isn't sim'd
+		// please refactor ballistic chambers again later
+		if(internal_magazine && internal_magazine_revolver_mode)
+			internal_magazine_vec[internal_magazine_revolver_offset] = ejecting
+		else if(!chamber_simulation)
+			if(internal_magazine)
+				internal_magazine_vec += ejecting
+			else
+				magazine.push(ejecting)
 		return
 	// we don't immediately null out chamber above
 	// this is because guns without chamber simulation are currently coded in
@@ -929,7 +938,7 @@
 	if(chamber && chamber != ejecting)
 		if(move_to)
 			chamber.forceMove(move_to)
-		else if(chamber.loc = src)
+		else if(chamber.loc == src)
 			chamber.moveToNullspace()
 		chamber = null
 	if(!ejecting.is_loaded() && (ejecting.casing_flags & CASING_DELETE))

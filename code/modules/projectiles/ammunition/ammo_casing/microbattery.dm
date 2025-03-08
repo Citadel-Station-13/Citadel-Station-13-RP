@@ -39,12 +39,13 @@
 /obj/item/ammo_casing/microbattery/expend()
 	if(isnull(shots_remaining))
 		if(!shots_capacity)
-			return
+			return ..()
 		shots_remaining = shots_capacity
 	if(shots_remaining <= 0)
-		return
+		return ..()
 	--shots_remaining
-	return init_projectile()
+	projectile_stored = null
+	return ..()
 
 /obj/item/ammo_casing/microbattery/is_loaded()
 	return isnull(shots_remaining) ? shots_capacity : shots_remaining

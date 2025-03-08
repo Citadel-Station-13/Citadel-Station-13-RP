@@ -11,6 +11,7 @@
 /obj/item/ammo_magazine/microbattery
 	name = "microbattery magazine"
 	desc = "An experimental magazine for particle batteries used by hybrid energy weapons."
+	should_collect_spent = TRUE
 
 	/// Supports cycling
 	var/supports_cycling = TRUE
