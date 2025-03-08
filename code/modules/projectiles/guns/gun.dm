@@ -774,7 +774,6 @@
 	if(render_wielded && (item_flags & ITEM_MULTIHAND_WIELDED))
 		using_base_worn_state = "[using_base_worn_state]-wield"
 	var/using_ratio = get_ammo_ratio()
-	var/datum/firemode/using_firemode = firemode
 	var/using_color = get_firemode_color()
 	var/using_key = get_firemode_key()
 	var/list/overlays = mob_renderer?.render_overlays(src, using_base_worn_state, using_ratio, using_key, using_color)

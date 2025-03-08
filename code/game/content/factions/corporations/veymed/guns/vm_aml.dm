@@ -64,7 +64,7 @@
 		if(amount > segment_count)
 			break
 
-/obj/item/ammo_magazine/microbattery/vm_aml/advanced
+/obj/item/ammo_magazine/microbattery/vm_aml/sidearm/advanced
 	icon_state = "mag_ext"
 	ammo_max = 6
 
