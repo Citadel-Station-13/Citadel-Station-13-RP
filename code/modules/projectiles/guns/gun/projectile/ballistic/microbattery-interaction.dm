@@ -5,7 +5,7 @@
 	return TRUE
 
 /obj/item/gun/projectile/ballistic/microbattery/auto_inhand_switch_firemodes(datum/event_args/actor/e_args)
-	if(length(firemodes))
+	if(length(firemodes) > 1)
 		return ..()
 	return user_switch_microbattery_group(e_args)
 

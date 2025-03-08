@@ -61,7 +61,7 @@
 	if(!found_index)
 		return TRUE
 
-	ammo_internal = ammo_internal.Copy(found_index + 2) + ammo_internal.Copy(1, found_index + 1)
+	ammo_internal = ammo_internal.Copy(found_index + 1) + ammo_internal.Copy(1, found_index + 1)
 	return TRUE
 
 /**
@@ -97,5 +97,5 @@
 	if(!found_index)
 		return TRUE
 
-	ammo_internal = ammo_internal.Copy(found_index + 2) + ammo_internal.Copy(1, found_index + 1)
+	ammo_internal = ammo_internal.Copy(found_index + 1) + ammo_internal.Copy(1, found_index + 1)
 	return TRUE

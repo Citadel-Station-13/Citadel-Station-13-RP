@@ -52,10 +52,14 @@
 		return
 	var/amount = 0
 	for(var/obj/item/ammo_casing/microbattery/vm_aml/microbattery in ammo_internal)
-		var/image/segment = image('icons/content/factions/corporations/veymed/items/guns/vm_aml.dmi', "medicell-stripe")
+		var/image/segment = image('icons/content/factions/corporations/veymed/items/guns/vm_aml.dmi', "mag-cap")
 		segment.pixel_x = segment_x_start + segment_x_offset * amount
 		segment.color = microbattery.stripe_color || microbattery.microbattery_mode_color
 		add_overlay(segment)
+		var/image/segment_charge = image('icons/content/factions/corporations/veymed/items/guns/vm_aml.dmi', "mag-charge-[clamp(ceil(microbattery.shots_remaining / microbattery.shots_capacity), 0, 4) * 4]")
+		segment_charge.pixel_x = segment_x_start + segment_x_offset * amount
+		segment_charge.color = microbattery.stripe_color || microbattery.microbattery_mode_color
+		add_overlay(segment_charge)
 		++amount
 		if(amount > segment_count)
 			break

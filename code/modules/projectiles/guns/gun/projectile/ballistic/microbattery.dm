@@ -19,6 +19,7 @@
 /obj/item/gun/projectile/ballistic/microbattery
 	recoil = 0
 	magazine_restrict = /obj/item/ammo_magazine/microbattery
+	chamber_simulation = FALSE
 
 	/**
 	 * Microbattery swap action. Lazy-init'd.
@@ -28,6 +29,7 @@
 	var/tmp/cached_group_key
 	var/tmp/cached_group_capacity
 	var/tmp/cached_group_remaining
+	var/tmp/cached_group_color
 
 /obj/item/gun/projectile/ballistic/microbattery/Initialize(mapload)
 	if(internal_magazine_revolver_mode)
@@ -43,6 +45,9 @@
 /obj/item/gun/projectile/ballistic/microbattery/get_ammo_remaining()
 	return cached_group_remaining
 
+/obj/item/gun/projectile/ballistic/microbattery/get_firemode_color()
+	return cached_group_color
+
 /obj/item/gun/projectile/ballistic/microbattery/ready_chambered()
 	var/obj/item/ammo_casing/microbattery/maybe_microbattery_in_chamber = ..()
 	if(!istype(maybe_microbattery_in_chamber))
@@ -53,7 +58,7 @@
 	return ..()
 
 /obj/item/gun/projectile/ballistic/microbattery/prime_casing(datum/gun_firing_cycle/cycle, obj/item/ammo_casing/casing, casing_primer)
-	var/obj/projectile/proj = ..()
+	var/obj/projectile/proj = ..(cycle, casing, casing_primer | CASING_PRIMER_MICROBATTERY)
 	if(!istype(casing, /obj/item/ammo_casing/microbattery))
 		return proj
 	var/obj/item/ammo_casing/microbattery/microbattery_casing = casing
@@ -149,12 +154,13 @@
  * Retallies current group key / capacity / remaining
  */
 /obj/item/gun/projectile/ballistic/microbattery/proc/scan_microbattery_group()
-	cached_group_key = cached_group_capacity = cached_group_remaining = null
+	cached_group_key = cached_group_capacity = cached_group_remaining = cached_group_color = null
 
 	var/obj/item/ammo_casing/microbattery/current = get_chambered()
 	if(!istype(current))
 		return
 	cached_group_key = current.microbattery_group_key
+	cached_group_color = current.microbattery_mode_color
 	cached_group_capacity += current.shots_capacity
 	cached_group_remaining += current.shots_remaining
 

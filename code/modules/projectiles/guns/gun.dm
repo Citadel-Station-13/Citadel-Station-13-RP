@@ -760,9 +760,10 @@
 	var/using_ratio = get_ammo_ratio(TRUE)
 	var/datum/firemode/using_firemode = firemode
 	var/using_color = get_firemode_color()
+	var/using_key = get_firemode_key()
 
-	item_renderer?.render(src, using_base_icon_state, using_ratio, using_firemode?.render_key, using_color)
-	var/needs_worn_update = mob_renderer?.render(src, using_base_worn_state, using_ratio, using_firemode?.render_key, using_color)
+	item_renderer?.render(src, using_base_icon_state, using_ratio, using_key, using_color)
+	var/needs_worn_update = mob_renderer?.render(src, using_base_worn_state, using_ratio, using_key, using_color)
 
 	if(needs_worn_update)
 		update_worn_icon()
@@ -776,7 +777,8 @@
 	var/using_ratio = get_ammo_ratio()
 	var/datum/firemode/using_firemode = firemode
 	var/using_color = get_firemode_color()
-	var/list/overlays = mob_renderer?.render_overlays(src, using_base_worn_state, using_ratio, using_firemode?.render_key, using_color)
+	var/using_key = get_firemode_key()
+	var/list/overlays = mob_renderer?.render_overlays(src, using_base_worn_state, using_ratio, using_key, using_color)
 	if(length(overlays))
 		var/append = "_[slot_meta.render_key]"
 		for(var/i in 1 to length(overlays))
@@ -793,6 +795,12 @@
  */
 /obj/item/gun/proc/get_firemode_color()
 	return firemode?.render_color
+
+/**
+ * Gets the key our firemode renders as during rendering.
+ */
+/obj/item/gun/proc/get_firemode_key()
+	return firemode?.render_key
 
 //* Action Datums *//
 

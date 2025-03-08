@@ -56,10 +56,14 @@
 		return
 	var/amount = 0
 	for(var/obj/item/ammo_casing/microbattery/nt_hydra/microbattery in ammo_internal)
-		var/image/segment = image('icons/content/factions/corporations/nanotrasen/items/guns/nt_hydra.dmi', "hydracell-stripe")
+		var/image/segment = image('icons/content/factions/corporations/nanotrasen/items/guns/nt_hydra.dmi', "mag-cap")
 		segment.pixel_x = segment_x_start + segment_x_offset * amount
 		segment.color = microbattery.stripe_color || microbattery.microbattery_mode_color
 		add_overlay(segment)
+		var/image/segment_charge = image('icons/content/factions/corporations/nanotrasen/items/guns/nt_hydra.dmi', "mag-charge-[clamp(ceil(microbattery.shots_remaining / microbattery.shots_capacity), 0, 4) * 4]")
+		segment_charge.pixel_x = segment_x_start + segment_x_offset * amount
+		segment_charge.color = microbattery.stripe_color || microbattery.microbattery_mode_color
+		add_overlay(segment_charge)
 		++amount
 		if(amount > segment_count)
 			break
