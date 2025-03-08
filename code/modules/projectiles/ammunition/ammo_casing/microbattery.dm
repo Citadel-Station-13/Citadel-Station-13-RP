@@ -32,7 +32,7 @@
 	/// shots left; defaults to max
 	var/shots_remaining
 	/// shots max
-	var/shots_capacity = 0
+	var/shots_capacity = 1
 
 	// todo: charge costs should probably be a thing lmfao
 

@@ -758,7 +758,6 @@
 	if(render_wielded && (item_flags & ITEM_MULTIHAND_WIELDED))
 		using_base_worn_state = "[using_base_worn_state]-wield"
 	var/using_ratio = get_ammo_ratio(TRUE)
-	var/datum/firemode/using_firemode = firemode
 	var/using_color = get_firemode_color()
 	var/using_key = get_firemode_key()
 

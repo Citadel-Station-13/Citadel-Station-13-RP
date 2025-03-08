@@ -31,7 +31,7 @@
 	magazine_restrict = /obj/item/ammo_magazine/microbattery/vm_aml
 	no_pin_required = TRUE
 
-/obj/item/gun/projectile/ballistic/microbattery/vm_aml/advanced
+/obj/item/gun/projectile/ballistic/microbattery/vm_aml/sidearm/advanced
 	name = "advanced cell-loaded medigun"
 	desc = "An experimental medigun fueled by nanite microbatteries. This one is an upgraded design."
 
@@ -42,7 +42,7 @@
 	ammo_max = 3
 
 	var/segment_count = 3
-	var/segment_x_start = -5
+	var/segment_x_start = 0
 	var/segment_x_offset = 5
 
 /obj/item/ammo_magazine/microbattery/vm_aml/update_icon()
@@ -69,7 +69,7 @@
 	ammo_max = 6
 
 	segment_count = 6
-	segment_x_start = -5
+	segment_x_start = 0
 	segment_x_offset = 3
 
 /obj/item/ammo_casing/microbattery/vm_aml
@@ -77,6 +77,7 @@
 	icon_state = "medicell"
 	base_icon_state = "medicell"
 	casing_caliber = /datum/ammo_caliber/microbattery/vm_aml
+	shots_capacity = 4
 
 	var/stripe_color
 

@@ -331,12 +331,12 @@
 	switch(cycle.last_firing_result)
 		if(GUN_FIRED_SUCCESS)
 			legacy_emit_chambered_residue()
-			if(magazine_auto_eject && !magazine.get_amount_remaining())
-				remove_magazine(null, null, TRUE)
 			if(!chamber_simulation)
 				eject_chamber(FALSE, TRUE, drop_location(), TRUE)
 			else if(chamber_cycle_after_fire)
 				cycle_chamber(FALSE, TRUE)
+			if(magazine_auto_eject && !magazine.get_amount_remaining())
+				remove_magazine(null, null, TRUE)
 			if(chamber_spin_after_fire && internal_magazine_revolver_mode && internal_magazine)
 				unsafe_spin_chamber_to_next()
 		if(GUN_FIRED_FAIL_INERT)
@@ -915,6 +915,8 @@
 		ejecting = magazine?.pop()
 
 	if(!ejecting)
+		return
+	if(from_fire && !ejecting.is_loaded())
 		return
 	if(!ejecting.is_loaded() && (ejecting.casing_flags & CASING_DELETE))
 		qdel(ejecting)

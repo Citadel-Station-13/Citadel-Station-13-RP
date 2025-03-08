@@ -46,7 +46,7 @@
 	ammo_max = 2
 
 	var/segment_count = 2
-	var/segment_x_start = -5
+	var/segment_x_start = 0
 	var/segment_x_offset = 6
 
 /obj/item/ammo_magazine/microbattery/nt_hydra/update_icon()
@@ -77,7 +77,7 @@
 	ammo_max = 4
 
 	segment_count = 4
-	segment_x_start = -5
+	segment_x_start = 0
 	segment_x_offset = 4
 
 /obj/item/ammo_casing/microbattery/nt_hydra
@@ -85,6 +85,7 @@
 	icon_state = "hydracell"
 	base_icon_state = "hydracell"
 	casing_caliber = /datum/ammo_caliber/microbattery/nt_hydra
+	shots_capacity = 4
 
 	var/stripe_color
 
