@@ -10,6 +10,7 @@
 	slot_flags = SLOT_EARS | SLOT_POCKET | SLOT_BELT
 	w_class = WEIGHT_CLASS_TINY
 
+	icon_spent = FALSE
 	casing_caliber = /datum/ammo_caliber/microbattery
 	casing_primer = CASING_PRIMER_MICROBATTERY
 

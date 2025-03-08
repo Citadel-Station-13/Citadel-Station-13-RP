@@ -40,7 +40,7 @@
 /obj/item/gun/projectile/ballistic/microbattery/get_ammo_ratio(rounded)
 	if(!cached_group_remaining)
 		return 0
-	return cached_group_capacity / cached_group_remaining
+	return cached_group_remaining / cached_group_capacity
 
 /obj/item/gun/projectile/ballistic/microbattery/get_ammo_remaining()
 	return cached_group_remaining

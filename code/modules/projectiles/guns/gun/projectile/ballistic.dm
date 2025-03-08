@@ -935,11 +935,13 @@
 	// at some point we'll need to rework ballistics to use
 	// magazines as internal magazines and rethink how we do chamber
 	// simulation
-	if(chamber && chamber != ejecting)
-		if(move_to)
-			chamber.forceMove(move_to)
-		else if(chamber.loc == src)
-			chamber.moveToNullspace()
+	if(chamber)
+		if(chamber != ejecting)
+			stack_trace("chamber wasn't ejecting but still exists, wtf")
+			if(move_to)
+				chamber.forceMove(move_to)
+			else if(chamber.loc == src)
+				chamber.moveToNullspace()
 		chamber = null
 	if(!ejecting.is_loaded() && (ejecting.casing_flags & CASING_DELETE))
 		qdel(ejecting)
