@@ -89,7 +89,7 @@
 		return
 	if(metal)
 		return
-	if(slips && istype(AM, /mob/living))
+	if(slips && istype(AM, /mob/living) && !AM.is_avoiding_ground())
 		var/mob/living/M = AM
 		M.slip_act(SLIP_CLASS_FOAM, src, 5, 7.5)
 

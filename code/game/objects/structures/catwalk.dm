@@ -100,7 +100,7 @@
 
 /obj/structure/catwalk/Crossed()
 	. = ..()
-	if(isliving(usr) && !usr.is_incorporeal())
+	if(isliving(usr) && !usr.is_incorporeal() && !usr.is_avoiding_ground())
 		playsound(src, pick('sound/effects/footstep/catwalk1.ogg', 'sound/effects/footstep/catwalk2.ogg', 'sound/effects/footstep/catwalk3.ogg', 'sound/effects/footstep/catwalk4.ogg', 'sound/effects/footstep/catwalk5.ogg'), 25, 1)
 
 /obj/structure/catwalk/CheckExit(atom/movable/O, turf/target)
@@ -186,7 +186,7 @@
 
 /obj/structure/catwalk/plank/Crossed()
 	. = ..()
-	if(isliving(usr) && !usr.is_incorporeal())
+	if(isliving(usr) && !usr.is_incorporeal() && !usr.is_avoiding_ground())
 		switch(rand(1,100))
 			if(1 to 5)
 				qdel(src)

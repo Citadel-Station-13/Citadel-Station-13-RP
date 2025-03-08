@@ -431,7 +431,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/tiled/white)
 /turf/simulated/floor/bananium/Entered(atom/A)
 	if(isliving(A))
 		var/mob/living/L = A
-		if(L.hovering) // Flying things shouldn't make footprints.
+		if(L.is_avoiding_ground()) // Flying things shouldn't make footprints.
 			return ..()
 		playsound(src, 'sound/items/bikehorn.ogg', 75, 1)
 	..()

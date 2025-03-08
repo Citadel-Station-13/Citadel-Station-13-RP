@@ -1497,7 +1497,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 /obj/item/pda/clown/Crossed(atom/movable/AM as mob|obj) //Clown PDA is slippery.
 	. = ..()
-	if(AM.is_incorporeal())
+	if(AM.is_incorporeal() || AM.is_avoiding_ground())
 		return
 	if (istype(AM, /mob/living))
 		var/mob/living/M = AM

@@ -308,7 +308,7 @@
 	if(!isliving(victim))
 		return
 	var/mob/living/L = victim
-	if(L.hovering)
+	if(L.is_avoiding_ground())
 		return
 	awaken(L)
 
