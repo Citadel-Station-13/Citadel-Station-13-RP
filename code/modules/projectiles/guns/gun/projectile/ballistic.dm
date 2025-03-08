@@ -920,7 +920,7 @@
 
 	if(!ejecting)
 		return
-	if(from_fire && ejecting.is_loaded())
+	if(!really_snowflake_chamber_ejection_check(ejecting, from_fire))
 		// i'm crying this is just to put stuff back in if chamber isn't sim'd
 		// please refactor ballistic chambers again later
 		if(internal_magazine && internal_magazine_revolver_mode)
@@ -993,6 +993,10 @@
 /obj/item/gun/projectile/ballistic/proc/unsafe_spin_chamber_to_next()
 	var/next_index = internal_magazine_revolver_offset >= length(internal_magazine_vec) ? 1 : internal_magazine_revolver_offset + 1
 	unsafe_spin_chamber_to_index(next_index)
+
+// todo: i'm crying please refactor internal magazines and chamber handling
+/obj/item/gun/projectile/ballistic/proc/really_snowflake_chamber_ejection_check(obj/item/ammo_casing/casing, from_fire)
+	return !casing.is_loaded()
 
 //* Rendering *//
 
