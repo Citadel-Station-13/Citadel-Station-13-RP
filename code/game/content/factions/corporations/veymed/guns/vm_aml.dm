@@ -34,6 +34,8 @@
 /obj/item/gun/projectile/ballistic/microbattery/vm_aml/sidearm/advanced
 	name = "advanced cell-loaded medigun"
 	desc = "An experimental medigun fueled by nanite microbatteries. This one is an upgraded design."
+	icon_state = "sidearm_cmo"
+	base_icon_state = "sidearm_cmo"
 
 /obj/item/ammo_magazine/microbattery/vm_aml
 	icon = 'icons/content/factions/corporations/veymed/items/guns/vm_aml.dmi'
@@ -56,7 +58,7 @@
 		segment.pixel_x = segment_x_start + segment_x_offset * amount
 		segment.color = microbattery.stripe_color || microbattery.microbattery_mode_color
 		add_overlay(segment)
-		var/image/segment_charge = image('icons/content/factions/corporations/veymed/items/guns/vm_aml.dmi', "mag-charge-[clamp(ceil(microbattery.shots_remaining / microbattery.shots_capacity), 0, 4) * 4]")
+		var/image/segment_charge = image('icons/content/factions/corporations/veymed/items/guns/vm_aml.dmi', "mag-charge-[clamp(ceil(microbattery.get_remaining_ratio()), 0, 4) * 4]")
 		segment_charge.pixel_x = segment_x_start + segment_x_offset * amount
 		segment_charge.color = microbattery.stripe_color || microbattery.microbattery_mode_color
 		add_overlay(segment_charge)

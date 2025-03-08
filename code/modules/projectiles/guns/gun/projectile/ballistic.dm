@@ -896,7 +896,8 @@
 	if(system)
 		// override - system eject; access variable anyways
 		ejecting = chamber
-		chamber = null
+		// see below chamber nulling code for why this is commented out
+		// chamber = null
 	else if(internal_magazine && internal_magazine_revolver_mode)
 		// override - revolver mode, always unsim'd
 		ejecting = internal_magazine_vec[internal_magazine_revolver_offset]
@@ -904,7 +905,8 @@
 	else if(chamber_simulation)
 		// sim - chamber
 		ejecting = chamber
-		chamber = null
+		// see below chamber nulling code for why this is commented out
+		// chamber = null
 	else if(internal_magazine)
 		// unsim'd internal mag
 		if(length(internal_magazine_vec))
@@ -918,6 +920,18 @@
 		return
 	if(from_fire && ejecting.is_loaded())
 		return
+	// we don't immediately null out chamber above
+	// this is because guns without chamber simulation are currently coded in
+	// an absolutely atrocious way
+	// at some point we'll need to rework ballistics to use
+	// magazines as internal magazines and rethink how we do chamber
+	// simulation
+	if(chamber && chamber != ejecting)
+		if(move_to)
+			chamber.forceMove(move_to)
+		else if(chamber.loc = src)
+			chamber.moveToNullspace()
+		chamber = null
 	if(!ejecting.is_loaded() && (ejecting.casing_flags & CASING_DELETE))
 		qdel(ejecting)
 		return

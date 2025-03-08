@@ -48,3 +48,9 @@
 
 /obj/item/ammo_casing/microbattery/is_loaded()
 	return isnull(shots_remaining) ? shots_capacity : shots_remaining
+
+/obj/item/ammo_casing/microbattery/proc/get_shots_remaining()
+	return isnull(shots_remaining) ? shots_capacity : shots_remaining
+
+/obj/item/ammo_casing/microbattery/proc/get_remaining_ratio()
+	return (isnull(shots_remaining) ? shots_capacity : shots_remaining) / shots_capacity

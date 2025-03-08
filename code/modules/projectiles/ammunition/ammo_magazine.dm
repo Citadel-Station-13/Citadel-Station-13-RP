@@ -306,6 +306,7 @@
 	if((needed = get_amount_remaining()) >= ammo_max)
 		user?.action_feedback(SPAN_WARNING("[src] is full."), src)
 		return
+	needed = ammo_max - needed
 	// todo: de-instantiate unmodified rounds
 	for(var/obj/item/ammo_casing/casing in where)
 		if(. > needed)
