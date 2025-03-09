@@ -166,7 +166,10 @@
 		return CLICKCHAIN_DID_SOMETHING
 
 	var/loaded = 0
+	var/safety = 100
 	do
+		if(--safety < 0)
+			CRASH("ran out of safety on clip autoload")
 		if(!do_after(actor.performer, single_load_delay, src, mobility_flags = MOBILITY_CAN_USE))
 			break
 		if(bolt_simulation && bolt_closed && bolt_blocks_internal_magazine)
