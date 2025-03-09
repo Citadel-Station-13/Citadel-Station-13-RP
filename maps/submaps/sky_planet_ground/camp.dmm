@@ -1,0 +1,96 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"e" = (
+/obj/structure/table/bench/wooden,
+/obj/random/multiple/miningdrills,
+/turf/simulated/floor/outdoors/ash_sand,
+/area/template_noop)
+"o" = (
+/obj/structure/ore_box,
+/turf/simulated/floor/outdoors/ash_sand,
+/area/template_noop)
+"p" = (
+/turf/simulated/floor/outdoors/ash_sand,
+/area/template_noop)
+"u" = (
+/obj/structure/closet/crate/miningcar,
+/turf/simulated/floor/outdoors/ash_sand,
+/area/template_noop)
+"E" = (
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/outdoors/ash_sand,
+/area/template_noop)
+"I" = (
+/obj/random/multiple/corp_crate/no_weapons,
+/turf/simulated/floor/outdoors/ash_sand,
+/area/template_noop)
+"S" = (
+/obj/structure/event/prop/campfire,
+/turf/simulated/floor/outdoors/ash_sand,
+/area/template_noop)
+
+(1,1,1) = {"
+a
+a
+a
+u
+p
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+p
+e
+E
+a
+p
+"}
+(3,1,1) = {"
+a
+p
+p
+p
+p
+p
+p
+"}
+(4,1,1) = {"
+a
+E
+p
+S
+p
+o
+a
+"}
+(5,1,1) = {"
+p
+a
+p
+p
+p
+I
+a
+"}
+(6,1,1) = {"
+a
+a
+E
+E
+p
+a
+a
+"}
+(7,1,1) = {"
+a
+a
+a
+p
+a
+a
+a
+"}
