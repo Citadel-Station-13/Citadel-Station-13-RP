@@ -1127,7 +1127,7 @@
 "dX" = (
 /obj/effect/floor_decal/plaque{
 	pixel_y = 6;
-	desc = s
+	
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
