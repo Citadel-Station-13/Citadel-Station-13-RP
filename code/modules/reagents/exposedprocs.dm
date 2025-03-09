@@ -12,9 +12,8 @@
 			if(!src)
 				return
 			reagents.trans_to_obj(D, amount_per_transfer_from_this)
-			D.color = mix_color_from_reagents(D.reagents.reagent_list)
+			D.color = D.reagents.get_color()
 			D.set_up(my_target, spray_size, delay)
-	return
 
 /// Chem thrower style spray. If spray_size = null a random value from 6-8 will be chosen.
 /obj/item/proc/spray_at_wide(atom/A as mob|obj, var/amount_per_transfer_from_this = 10, var/spray_size = null, var/delay = 2)
@@ -34,10 +33,9 @@
 				return
 			playsound(src.loc, 'sound/effects/spray2.ogg', 50, 1, -6)
 			reagents.trans_to_obj(D, amount_per_transfer_from_this)
-			D.color = mix_color_from_reagents(D.reagents.reagent_list)
+			D.color = D.reagents.get_color()
 			spray_size ? null : (spray_size = rand(6, 8))
 			D.set_up(my_target, spray_size, delay)
-	return
 
 /// Extinguisher spray, intended for use with afterattack. See '/obj/effect/water/proc/set_up' for more details.
 /obj/item/proc/extinguish_spray(atom/A as mob|obj|turf, var/mob/living/user, var/amount_per_transfer_from_this = 10, var/spray_size = 3, var/delay = 10, var/spray_particles = 3)

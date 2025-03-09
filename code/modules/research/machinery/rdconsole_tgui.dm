@@ -85,11 +85,11 @@
 			data["info"]["linked_lathe"]["mats"] = materials
 
 			var/list/reagents = list()
-			for(var/datum/reagent/R in linked_lathe.reagents.reagent_list)
+			for(var/datum/reagent/R in linked_lathe.reagents.get_reagent_datums())
 				reagents.Add(list(list(
 					"name" = R.name,
 					"id" = R.id,
-					"volume" = R.volume,
+					"volume" = linked_lathe.reagents.reagent_volumes[R.id],
 				)))
 			data["info"]["linked_lathe"]["reagents"] = reagents
 
@@ -133,11 +133,11 @@
 			data["info"]["linked_imprinter"]["mats"] = materials
 
 			var/list/reagents = list()
-			for(var/datum/reagent/R in linked_imprinter.reagents.reagent_list)
+			for(var/datum/reagent/R in linked_imprinter.reagents.get_reagent_datums())
 				reagents.Add(list(list(
 					"name" = R.name,
 					"id" = R.id,
-					"volume" = R.volume,
+					"volume" = linked_imprinter.reagents.reagent_volumes[R.id],
 				)))
 			data["info"]["linked_imprinter"]["reagents"] = reagents
 

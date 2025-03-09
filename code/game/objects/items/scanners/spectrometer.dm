@@ -39,13 +39,13 @@
 		return
 	if(reagents.total_volume)
 		var/list/blood_traces = list()
-		for(var/datum/reagent/R in reagents.reagent_list)
-			if(R.id != "blood")
-				reagents.clear_reagents()
-				to_chat(user, "<span class='warning'>The sample was contaminated! Please insert another sample</span>")
-				return
+		for(var/id in reagents.reagent_volumes)
+			var/datum/reagent/R = SSchemistry.fetch_reagent(id)
+			if(R.type != /datum/reagent/blood)
+				continue
 			else
-				blood_traces = params2list(R.data["trace_chem"])
+				var/datum/blood_mixture/mixture = reagents.reagent_datas?[id]
+				blood_traces = params2list(mixture.legacy_trace_chem)
 				break
 		var/dat = "Trace Chemicals Found: "
 		for(var/R in blood_traces)
