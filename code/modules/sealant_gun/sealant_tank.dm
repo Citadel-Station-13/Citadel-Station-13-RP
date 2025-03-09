@@ -13,7 +13,7 @@
 	// todo: reagent system; for now, this is just flat numbers.
 
 	var/volume_current = 0
-	var/volume_capacity = 360
+	var/volume_capacity = 500
 
 /obj/item/sealant_tank/Initialize()
 	. = ..()

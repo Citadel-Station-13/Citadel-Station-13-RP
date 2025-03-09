@@ -95,11 +95,11 @@
 	var/datum/inventory/inv_inside
 	/// currently equipped slot id
 	///
-	/// todo: `worn_slot_or_index`
+	/// todo: use inv_slot_or_index instead
 	var/worn_slot
 	/// current hand index, if held in hand
 	///
-	/// todo: `worn_slot_or_index`
+	/// todo: use inv_slot_or_index instead
 	var/held_index
 	/**
 	 * current item we fitted over
@@ -236,6 +236,35 @@
 		M.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_DELETING)
 	return ..()
 
+// doMove hook to ensure proper functionality when inv procs aren't called
+/obj/item/doMove(atom/destination)
+	if(worn_slot && !worn_hook_suppressed)
+		// inventory handling
+		if(destination == worn_inside)
+			return ..()
+		var/mob/M = get_worn_mob()
+		if(!ismob(M))
+			worn_slot = null
+			worn_hook_suppressed = FALSE
+			stack_trace("item forcemove inv hook called without a mob as loc??")
+		M.temporarily_remove_from_inventory(src, INV_OP_FORCE)
+	return ..()
+
+// todo: this is fucking awful
+/obj/item/Move(atom/newloc, direct, glide_size_override)
+	if(!worn_slot)
+		return ..()
+	var/mob/M = get_worn_mob()
+	if(istype(M))
+		M.temporarily_remove_from_inventory(src, INV_OP_FORCE)
+	else
+		stack_trace("item Move inv hook called without a mob as loc??")
+		worn_slot = null
+	. = ..()
+	if(!. || (loc == M))
+		// kick them out
+		forceMove(M.drop_location())
+
 /// Check if target is reasonable for us to operate on.
 /obj/item/proc/check_allowed_items(atom/target, not_inside, target_self)
 	if(((src in target) && !target_self) || ((!istype(target.loc, /turf)) && (!istype(target, /turf)) && (not_inside)))
@@ -256,15 +285,7 @@
 			if (prob(5))
 				qdel(src)
 				return
-		else
-	return
 
-//user: The mob that is suiciding
-//damagetype: The type of damage the item will inflict on the user
-//BRUTELOSS = 1
-//FIRELOSS = 2
-//TOXLOSS = 4
-//OXYLOSS = 8
 ///Output a creative message and then return the damagetype done
 /obj/item/proc/suicide_act(mob/user)
 	return
