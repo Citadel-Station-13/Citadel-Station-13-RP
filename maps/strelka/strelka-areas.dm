@@ -25,31 +25,37 @@
 	name = "\improper Deck 4 Bridge"
 	icon_state = "bridge"
 	sound_env = STANDARD_STATION
+	ambience = AMBIENCE_STRELKA_BRIDGE
 
 /area/strelka/shipbase/deck4/bridge/captain
 	name = "\improper Deck 4 Captain Office"
 	icon_state = "captain"
 	sound_env = SMALL_ENCLOSED
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
 /area/strelka/shipbase/deck4/bridge/captain/room
 	name = "\improper Deck 4 Captain Room"
 	icon_state = "captain"
 	sound_env = SMALL_SOFTFLOOR
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
 /area/strelka/shipbase/deck4/bridge/hop
 	name = "\improper Deck 4 HoP Counter"
 	icon_state = "captain"
 	sound_env = SMALL_ENCLOSED
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
 /area/strelka/shipbase/deck4/bridge/hop/office
 	name = "\improper Deck 4 HoP Office"
 	icon_state = "captain"
 	sound_env = SMALL_ENCLOSED
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
 /area/strelka/shipbase/deck4/bridge/hop/room
 	name = "\improper Deck 4 Hop Room"
 	icon_state = "captain"
 	sound_env = SMALL_SOFTFLOOR
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
 //Deck 3
 //
@@ -77,26 +83,31 @@
 	name = "\improper Deck 3 Bridge"
 	icon_state = "bridge"
 	sound_env = SMALL_ENCLOSED
+	ambience = AMBIENCE_STRELKA_ROOM
 
 /area/strelka/shipbase/deck3/bridge/blueshield
 	name = "\improper Deck 3 Blueshield office"
 	icon_state = "bridge"
 	sound_env = SMALL_ENCLOSED
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
 /area/strelka/shipbase/deck3/bridge/blueshield/room
 	name = "\improper Deck 3 Blueshield Room"
 	icon_state = "bridge"
 	sound_env = SMALL_SOFTFLOOR
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
 /area/strelka/shipbase/deck3/bridge/rd
 	name = "\improper Deck 3 Chief Science Officer Quarters"
 	icon_state = "purple"
 	sound_env = SMALL_SOFTFLOOR
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
 /area/strelka/shipbase/deck3/bridge/md
 	name = "\improper Deck 3 Chief Medical Officer Quarters"
 	icon_state = "blue"
 	sound_env = SMALL_SOFTFLOOR
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
 //DECK2 BRIDGE
 
@@ -104,21 +115,25 @@
 	name = "\improper Deck 3 Head of security Quarters"
 	icon_state = "sec_hos"
 	sound_env = SMALL_SOFTFLOOR
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
 /area/strelka/shipbase/deck2/bridge/ce
 	name = "\improper Deck 3 Chief engineer Quarters"
 	icon_state = "yellow"
 	sound_env = SMALL_SOFTFLOOR
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
 /area/strelka/shipbase/deck2/bridge/iaa
 	name = "\improper Deck 3 IAA offices"
 	icon_state = "darkred"
 	sound_env = SMALL_SOFTFLOOR
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
 /area/strelka/shipbase/deck2/bridge/hallway
 	name = "\improper Deck 3 Bridge hallway"
 	icon_state = "darkred"
 	sound_env = SMALL_ENCLOSED
+	ambience = AMBIENCE_STRELKA_ROOM
 
 //DECK1 BRIDGE
 
@@ -126,8 +141,7 @@
 	name = "\improper Deck 1 Balista"
 	icon_state = "darkred"
 	sound_env = SMALL_ENCLOSED
-
-
+	ambience = AMBIENCE_STRELKA_BRIDGE
 
 // DECK 4 HALLWAY
 
@@ -135,6 +149,7 @@
 	name = "\improper Deck 4 Primary Hallway"
 	icon_state = "hallC1"
 	sound_env = LARGE_ENCLOSED
+	ambience = AMBIENCE_STRELKA_HALLWAY_UPPER
 
 //Civilian
 
@@ -148,21 +163,25 @@
 	name = "\improper Deck 4 Primary Hallway"
 	icon_state = "green"
 	sound_env = LARGE_SOFTFLOOR
+	ambience = AMBIENCE_STRELKA_BOTANY
 
 /area/strelka/shipbase/deck4/bar
 	name = "\improper Deck 4 Bar"
 	icon_state = "bar"
 	sound_env = LARGE_SOFTFLOOR
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
 /area/strelka/shipbase/deck4/bar/back
 	name = "\improper Deck 4 Bar backroom"
 	icon_state = "bar"
 	sound_env = SMALL_SOFTFLOOR
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
 /area/strelka/shipbase/deck4/kitchen
 	name = "\improper Deck 4 Kitchen"
 	icon_state = "kitchen"
 	sound_env = STANDARD_STATION
+	ambience = AMBIENCE_STRELKA_ROOM
 
 /area/strelka/shipbase/deck4/kitchen/freeze
 	name = "\improper Deck 4 Kitchen Freezer"
@@ -173,11 +192,13 @@
 	name = "\improper Deck 4 Dorm Hallway"
 	icon_state = "locker"
 	sound_env = LARGE_SOFTFLOOR
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
 /area/strelka/shipbase/deck4/dormhallway/Dorm
 	name = "\improper Deck 4 Dorm 1"
 	icon_state = "crew_quarters"
 	sound_env = SMALL_SOFTFLOOR
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
 /area/strelka/shipbase/deck4/dormhallway/Dorm/Room2
 	name = "\improper Deck 4 Dorm 2"
@@ -192,11 +213,13 @@
 	name = "\improper Deck 4 Pool"
 	icon_state = "green"
 	sound_env = STANDARD_STATION
+	ambience = AMBIENCE_STRELKA_POOL
 
 /area/strelka/shipbase/deck4/dormhallway/pool/sauna
 	name = "\improper Deck 4 Sauna 1"
 	icon_state = "green"
 	sound_env = SMALL_ENCLOSED
+	ambience = AMBIENCE_STRELKA_SAUNA
 
 /area/strelka/shipbase/deck4/dormhallway/pool/sauna/room2
 	name = "\improper Deck 4 Sauna 2"
@@ -205,6 +228,7 @@
 	name = "\improper Deck 4 Library"
 	icon_state = "library"
 	sound_env = MEDIUM_SOFTFLOOR
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
 /area/strelka/shipbase/deck4/library/room
 	name = "\improper Deck 4 Library Room"
@@ -215,11 +239,13 @@
 	name = "\improper Deck 4 Fitness room"
 	icon_state = "fitness"
 	sound_env = MEDIUM_SOFTFLOOR
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
 /area/strelka/shipbase/deck4/adherant
 	name = "\improper Deck 4 Adherant room"
 	icon_state = "fitness"
 	sound_env = SMALL_ENCLOSED
+	ambience = AMBIENCE_STRELKA_ROOM
 
 /area/strelka/shipbase/deck4/nanite
 	name = "\improper Deck 4 Nanite room"
@@ -231,11 +257,13 @@
 	name = "\improper Deck 4 Clown room"
 	icon_state = "clown"
 	sound_env = SMALL_SOFTFLOOR
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
 /area/strelka/shipbase/deck4/fitness/mime
 	name = "\improper Deck 4 Mime room"
 	icon_state = "mime"
 	sound_env = SMALL_SOFTFLOOR
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
 /area/strelka/shipbase/deck4/chapel
 	name = "\improper Deck 4 Chapel"
@@ -247,16 +275,19 @@
 	name = "\improper Deck 4 Chapel Morgue"
 	icon_state = "chapel_morgue"
 	sound_env = SMALL_ENCLOSED
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
 /area/strelka/shipbase/deck4/chapel/office
 	name = "\improper Deck 4 Chapel Office"
 	icon_state = "chapeloffice"
 	sound_env = SMALL_SOFTFLOOR
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
 /area/strelka/shipbase/deck4/janitor
 	name = "\improper Deck 4 janitorial office"
 	icon_state = "janitor"
 	sound_env = SMALL_ENCLOSED
+	ambience = AMBIENCE_STRELKA_ROOM
 
 /area/strelka/shipbase/deck4/maintenance
 	name = "\improper Deck 4 Maintenance and chute"
@@ -276,6 +307,7 @@
 	name = "\improper Deck 3 Primary Garden Way"
 	icon_state = "hallC"
 	sound_env = LARGE_ENCLOSED
+	ambience = AMBIENCE_STRELKA_HALLWAY
 
 //MEDICAL
 
@@ -283,6 +315,7 @@
 	name = "\improper Deck 3 Medical Waiting Lobby"
 	icon_state = "medbay"
 	sound_env = SMALL_ENCLOSED
+	ambience = AMBIENCE_STRELKA_MEDICAL
 
 /area/strelka/shipbase/deck3/medical/main
 	name = "\improper Deck 3 Medical Main room"
@@ -321,6 +354,7 @@
 /area/strelka/shipbase/deck3/medical/psy
 	name = "\improper Deck 3 Medical Psychiatry Room"
 	icon_state = "medbay"
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
 /area/strelka/shipbase/deck3/maintenance/medical
 	name = "\improper Deck 3 Medical Maintenance"
@@ -338,18 +372,21 @@
 
 /area/strelka/shipbase/deck3/cargo/reception
 	name = "\improper Deck 3 Cargo Reception"
+		ambience = AMBIENCE_STRELKA_ROOM
 
 /area/strelka/shipbase/deck3/cargo/hangar
 	name = "\improper Deck 3 Cargo Hangar"
 
 /area/strelka/shipbase/deck3/cargo/mining
 	name = "\improper Deck 3 Cargo Mining"
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
 /area/strelka/shipbase/deck3/mininghangar
 	name = "\improper Deck 3 Cargo Mining hangar"
 
 /area/strelka/shipbase/deck3/cargo/qm
 	name = "\improper Deck 3 Cargo QM office"
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
 /area/strelka/shipbase/deck3/cargo/portal
 	name = "\improper Deck 3 Cargo Portal room"
@@ -366,21 +403,25 @@
 	name = "\improper Deck 3 RnD Lobby"
 	icon_state = "research"
 	sound_env = SMALL_ENCLOSED
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
 /area/strelka/shipbase/deck3/science/main
 	name = "\improper Deck 3 RnD Main area"
 	icon_state = "research"
 	sound_env = STANDARD_STATION
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
 /area/strelka/shipbase/deck3/science/secondary
 	name = "\improper Deck 3 RnD Secondary area"
 	icon_state = "research"
 	sound_env = STANDARD_STATION
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
 /area/strelka/shipbase/deck3/science/robotics
 	name = "\improper Deck 3 RnD Robotics"
 	icon_state = "research"
 	sound_env = STANDARD_STATION
+	ambience = AMBIENCE_STRELKA_ROOM
 
 /area/strelka/shipbase/deck3/science/xenobio
 	name = "\improper Deck 3 RnD Xenobio area"
@@ -422,6 +463,7 @@
 	name = "\improper Deck 2 Primary Hallway"
 	icon_state = "hallC"
 	sound_env = LARGE_ENCLOSED
+	ambience = AMBIENCE_STRELKA_MUSEUM
 
 //SECURITY
 
@@ -429,6 +471,7 @@
 	name = "\improper Deck 2 Security Lobby"
 	icon_state = "security"
 	sound_env = SMALL_ENCLOSED
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
 /area/strelka/shipbase/deck2/security/reception
 	name = "\improper Deck 2 Security reception"
@@ -439,6 +482,7 @@
 /area/strelka/shipbase/deck2/security/storage
 	name = "\improper Deck 2 Security storage"
 	sound_env = STANDARD_STATION
+	ambience = AMBIENCE_STRELKA_ROOM
 
 /area/strelka/shipbase/deck2/security/cell1
 	name = "\improper Deck 2 Security Cell 1"
@@ -451,6 +495,7 @@
 
 /area/strelka/shipbase/deck2/security/evidence
 	name = "\improper Deck 2 Security Evidence storage"
+	ambience = AMBIENCE_STRELKA_ROOM
 
 /area/strelka/shipbase/deck2/security/interogation
 	name = "\improper Deck 2 Security Evidence storage"
@@ -479,6 +524,7 @@
 	name = "\improper Deck 2 Away team Pathfinder office"
 	icon_state = "hangar"
 	sound_env = SMALL_ENCLOSED
+	ambience = AMBIENCE_STRELKA_ROOM
 
 /area/strelka/shipbase/deck2/explo/emt
 	name = "\improper Deck 2 Security and EMT Hangar"
@@ -556,6 +602,7 @@
 	name = "\improper Deck 1 Security Warden office"
 	icon_state = "security_sub"
 	sound_env = SMALL_SOFTFLOOR
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
 /area/strelka/shipbase/deck1/armory
 	name = "\improper Deck 1 Security Armory section 1"
@@ -592,16 +639,19 @@
 	name = "\improper Deck 1 Pilot office"
 	icon_state = "bluenew"
 	sound_env = SMALL_SOFTFLOOR
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
 /area/strelka/shipbase/deck1/pilot/eva
 	name = "\improper Deck 1 Pilot prep room"
 	icon_state = "bluenew"
 	sound_env = SMALL_ENCLOSED
+	ambience = AMBIENCE_STRELKA_ROOM
 
 /area/strelka/shipbase/deck1/toolstorage
 	name = "\improper Deck 1 Tool Storage"
 	icon_state = "bluenew"
 	sound_env = SMALL_ENCLOSED
+	ambience = AMBIENCE_STRELKA_ROOM
 
 /area/strelka/shipbase/deck1/firingrange
 	name = "\improper Deck 1 Tool Firing range"
