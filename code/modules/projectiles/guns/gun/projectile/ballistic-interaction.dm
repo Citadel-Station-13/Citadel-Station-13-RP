@@ -311,6 +311,13 @@
 	if(!insert_casing(casing))
 		casing.forceMove(drop_location())
 		CRASH("failed to insert casing after point of no return in clickchain interaction")
+	if(!no_message)
+		actor.visible_feedback(
+			target = src,
+			range = MESSAGE_RANGE_COMBAT_SUBTLE,
+			visible = SPAN_NOTICE("[actor.performer] loads a round into [src]."),
+			otherwise_self = SPAN_NOTICE("You load [casing] into src."),
+		)
 	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
 /**
@@ -338,6 +345,13 @@
 	if(!actor.performer.attempt_insert_item_for_installation(magazine, src))
 		return CLICKCHAIN_DID_SOMETHING
 	swap_chambered(casing, TRUE)
+	if(!no_message)
+		actor.visible_feedback(
+			target = src,
+			range = MESSAGE_RANGE_COMBAT_SUBTLE,
+			visible = SPAN_NOTICE("[actor.performer] loads a round into [src]."),
+			otherwise_self = SPAN_NOTICE("You load [casing] into src."),
+		)
 	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
 /**
