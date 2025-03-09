@@ -4,7 +4,8 @@
 /turf/simulated/floor/fey/forest_grass,
 /area/submap/skyplanet/poi/bio)
 "an" = (
-/obj/machinery/door/airlock/hatch,
+/obj/machinery/door/airlock,
+/obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/submap/skyplanet/poi/bio)
 "aE" = (
@@ -111,10 +112,10 @@
 /turf/simulated/floor/tiled/monotechmaint,
 /area/submap/skyplanet/poi/bio)
 "ta" = (
-/obj/machinery/door/airlock/hatch,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
+/obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/submap/skyplanet/poi/bio)
 "tc" = (
@@ -157,6 +158,10 @@
 /area/submap/skyplanet/poi/bio)
 "yf" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"yM" = (
+/obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/submap/skyplanet/poi/bio)
 "zc" = (
@@ -221,8 +226,8 @@
 /turf/simulated/floor/tiled/monotechmaint,
 /area/submap/skyplanet/poi/bio)
 "KM" = (
-/obj/machinery/door/airlock/hatch,
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/submap/skyplanet/poi/bio)
 "Lt" = (
@@ -620,7 +625,7 @@ Az
 Az
 Az
 GM
-an
+yM
 yf
 an
 DN

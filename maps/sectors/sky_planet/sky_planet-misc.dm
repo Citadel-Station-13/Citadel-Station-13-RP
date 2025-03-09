@@ -48,75 +48,58 @@
 	icon_state = "sky"
 	initial_gas_mix = ATMOSPHERE_ID_SKYPLANET
 	color = "#ffeab0"
-	density = TRUE
-
-/turf/simulated/open/skyplanet/Initialize(mapload)
-	icon = 'icons/turf/sky.dmi'
-	icon_state = "sky"
-	ASSERT(!isnull(below()))
-
-/turf/simulated/open/skyplanet/Entered(atom/movable/mover)
-	..()
-	if(mover.movement_type & MOVEMENT_GROUND)
-		mover.fall()
-
-// Called when thrown object lands on this turf.
-/turf/simulated/open/skyplanet/throw_landed(atom/movable/AM, datum/thrownthing/TT)
-	. = ..()
-	if(AM.movement_type & MOVEMENT_GROUND)
-		AM.fall()
 
 //landmarks
 
-/obj/effect/shuttle_landmark/skyplanet/ntoutpost/westrig1
+/obj/effect/shuttle_landmark/skyplanet/westrig1
 	name = "NT Outpost Hyades - West Rig 1"
 	landmark_tag = "sky_excursion_dock"
 	base_turf = /turf/simulated/open/skyplanet
 	base_area = /area/sector/sky_planet/sky
 
-/obj/effect/shuttle_landmark/skyplanet/ntoutpost/southrig1
+/obj/effect/shuttle_landmark/skyplanet/southrig1
 	name = "NT Outpost Hyades - South Rig 1"
 	landmark_tag = "sky_excursion2_dock"
 	base_turf = /turf/simulated/open/skyplanet
 	base_area = /area/sector/sky_planet/sky
 
-/obj/effect/shuttle_landmark/skyplanet/ntoutpost/westrig2
+/obj/effect/shuttle_landmark/skyplanet/westrig2
 	name = "NT Outpost Hyades - West Rig 2"
 	landmark_tag = "sky_excursion3_dock"
 	base_turf = /turf/simulated/open/skyplanet
 	base_area = /area/sector/sky_planet/sky
 
-/obj/effect/shuttle_landmark/skyplanet/ntoutpost/southrig3
+/obj/effect/shuttle_landmark/skyplanet/southrig3
 	name = "NT Outpost Hyades - South Rig 3"
 	landmark_tag = "sky_excursion4_dock"
 	base_turf = /turf/simulated/open/skyplanet
 	base_area = /area/sector/sky_planet/sky
 
-/obj/effect/shuttle_landmark/skyplanet/ntoutpost/northrig2
+/obj/effect/shuttle_landmark/skyplanet/northrig2
 	name = "NT Outpost Hyades - North Rig 2"
 	landmark_tag = "sky_civvie_dock"
 	base_turf = /turf/simulated/open/skyplanet
 	base_area = /area/sector/sky_planet/sky
 
-/obj/effect/shuttle_landmark/skyplanet/ntoutpost/northrig3
+/obj/effect/shuttle_landmark/skyplanet/northrig3
 	name = "NT Outpost Hyades - North Rig 3"
 	landmark_tag = "sky_civvie2_dock"
 	base_turf = /turf/simulated/open/skyplanet
 	base_area = /area/sector/sky_planet/sky
 
-/obj/effect/shuttle_landmark/skyplanet/ntoutpost/eastrig1
+/obj/effect/shuttle_landmark/skyplanet/eastrig1
 	name = "NT Outpost Hyades - East Rig 1"
 	landmark_tag = "sky_civvie3_dock"
 	base_turf = /turf/simulated/open/skyplanet
 	base_area = /area/sector/sky_planet/sky
 
-/obj/effect/shuttle_landmark/skyplanet/ntoutpost/eastrig3
+/obj/effect/shuttle_landmark/skyplanet/eastrig3
 	name = "NT Outpost Hyades - East Rig 3"
 	landmark_tag = "sky_civvie4_dock"
 	docking_controller = "eastrig3_dock"
 	base_area = /area/sector/sky_planet/sky
 
-/obj/effect/shuttle_landmark/skyplanet/ntoutpost/northrig2/hammerhead
+/obj/effect/shuttle_landmark/skyplanet/northrig2/hammerhead
 	name = "NT Outpost Hyades - North Rig 2 (Hammerhead)"
 	landmark_tag = "sky_hammerhead_dock"
 	base_turf = /turf/simulated/open/skyplanet
