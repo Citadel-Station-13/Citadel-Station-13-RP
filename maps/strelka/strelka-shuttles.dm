@@ -72,7 +72,7 @@
 [i]Class[/i]: Javelot Exploration Shuttle
 [i]Transponder[/i]: Transmitting (CIV), Registered with NT.
 [b]Notice[/b]: The shuttle is assigned to the NEV Strelka. It is also a fighter carrier vessel."}
-	color = "#ffffff"
+	color = "#a890ac"
 
 // EMT - SEC Shuttle
 
@@ -81,7 +81,7 @@
 	warmup_time = 0
 	shuttle_area = list(/area/shuttle/emt/strelka/main, /area/shuttle/emt/strelka/cockpit)
 	current_location = "strelka_emt_hangar"
-	docking_controller_tag = "emt_docker"
+	docking_controller_tag = "emtshuttle_docker"
 	move_time = 15
 
 /area/shuttle/emt/strelka

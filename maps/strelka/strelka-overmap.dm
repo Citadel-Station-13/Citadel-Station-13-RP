@@ -15,8 +15,11 @@
 	fore_dir = EAST	// Which direction the ship/z-level is facing.  It will move dust particles from that direction when moving.
 	base = TRUE		// Honestly unsure what this does but it seems the main sector or "Map" we're at has this so here it stays
 	// The waypoints that are avaliable once you are at this Navpoint
-	initial_generic_waypoints = list("nav_capitalship_docking2",)
+	initial_generic_waypoints = list("strelka_excursion_hangar","strelka_emt_hangar","trelka_civvie_home","strelka_annex_dock")
 
 	initial_restricted_waypoints = list(
-		"Excursion Shuttle" = list("Strelka_excursion_hangar"),
+		"Excursion Javelot Shuttle" = list("strelka_excursion_hangar"),
+		"Hammerdart Interception and Rescue Shuttle" = list("strelka_emt_hangar"),
+		"Decades Old civilian Transport" = list("trelka_civvie_home"),
+		"Beruang Trade Ship" = list("strelka_annex_dock"),
 	)

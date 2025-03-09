@@ -37,6 +37,7 @@
 /obj/machinery/door/airlock/maintenance_hatch,
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/firedoor/glass,
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/science/anomaly)
 "ak" = (
@@ -193,10 +194,26 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2)
+"aH" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/machinery/light/small/old{
+	dir = 1
+	},
+/obj/machinery/atm{
+	pixel_y = 27
+	},
+/turf/simulated/floor/wood/indoors,
+/area/strelka/shipbase/deck2)
 "aI" = (
 /obj/machinery/telepad,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/science/tele)
+"aJ" = (
+/turf/simulated/open,
+/area/strelka/shipbase/deck2/explo/pathfy)
 "aL" = (
 /obj/structure/railing,
 /obj/structure/railing{
@@ -259,6 +276,7 @@
 /obj/machinery/light/small/old{
 	dir = 1
 	},
+/obj/machinery/portable_atmospherics/canister/phoron,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/maintenance/eva)
 "aW" = (
@@ -313,6 +331,10 @@
 /obj/machinery/camera/network/security{
 	dir = 1
 	},
+/obj/machinery/button/ignition{
+	id = "starboardnacelle_igniter";
+	pixel_y = -22
+	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/engineering/nacelle2)
 "be" = (
@@ -365,6 +387,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck2/bridge/ce)
 "bt" = (
@@ -387,7 +410,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2)
 "bv" = (
 /obj/effect/floor_decal/spline/fancy{
@@ -520,7 +543,7 @@
 	power_rating = 5000;
 	use_power = 1
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "bU" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -541,7 +564,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "bX" = (
 /obj/machinery/atmospherics/pipe/simple/visible/aux{
@@ -550,7 +573,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos/storage)
 "bZ" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -599,7 +622,7 @@
 /obj/machinery/door/airlock/glass/atmos,
 /obj/map_helper/access_helper/airlock/station/engineering/atmospherics,
 /obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos/storage)
 "ce" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
@@ -675,9 +698,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/storage)
 "cs" = (
-/obj/structure/railing{
-	dir = 8
-	},
 /turf/simulated/open,
 /area/strelka/shipbase/deck2/explo)
 "ct" = (
@@ -713,6 +733,15 @@
 /obj/structure/stairs/spawner/south,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2)
+"cz" = (
+/obj/machinery/door/airlock/voidcraft/vertical,
+/obj/map_helper/airlock/door/int_door,
+/obj/machinery/access_button/airlock_interior{
+	pixel_x = 21;
+	master_tag = "expshuttle_docker"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/excursion/strelka)
 "cA" = (
 /obj/machinery/atmospherics/pipe/tank/phoron,
 /turf/simulated/floor/reinforced,
@@ -770,13 +799,6 @@
 "cM" = (
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/strelka/shipbase/deck2)
-"cO" = (
-/obj/structure/cable/white{
-	icon_state = "2-8";
-	dir = 4
-	},
-/turf/simulated/floor/airless,
-/area/space)
 "cP" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -961,7 +983,7 @@
 	dir = 4
 	},
 /obj/machinery/light/small/old,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "dv" = (
 /obj/structure/table/carbon/reinforced,
@@ -974,7 +996,7 @@
 /obj/machinery/atmospherics/component/unary/freezer{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "dy" = (
 /obj/machinery/power/breakerbox/activated{
@@ -990,6 +1012,11 @@
 /area/strelka/shipbase/deck2/maintenance/sec)
 "dA" = (
 /obj/machinery/door/airlock/voidcraft/vertical,
+/obj/machinery/access_button/airlock_exterior{
+	pixel_x = 22;
+	master_tag = "emtshuttle_docker"
+	},
+/obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/emt/strelka)
 "dB" = (
@@ -1008,6 +1035,19 @@
 /obj/effect/paint_stripe/purple,
 /turf/simulated/wall/r_wall,
 /area/shuttle/excursion/strelka)
+"dI" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/machinery/light/small/old{
+	dir = 1
+	},
+/obj/machinery/computer/guestpass{
+	pixel_y = 26
+	},
+/turf/simulated/floor/wood/indoors,
+/area/strelka/shipbase/deck2)
 "dJ" = (
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2)
@@ -1082,12 +1122,12 @@
 /obj/machinery/status_display{
 	pixel_x = -32
 	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2)
 "dX" = (
 /obj/effect/floor_decal/plaque{
 	pixel_y = 6;
-	desc = "The Order of nature, a painting by a unknown painter. Still, transporting this painting was the first mission of this vessel, in 2458."
+	desc = s
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -1096,6 +1136,11 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/rust,
+/obj/structure/sign/kiddieplaque{
+	pixel_y = 7;
+	name = "\improper Strelka Gallery plaque";
+	desc = "The Order of nature, a painting by a unknown painter. Still, transporting this painting was the first mission of this vessel, in 2458."
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
 "ea" = (
@@ -1107,6 +1152,13 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/machinery/door/window/brigdoor/eastright{
+	dir = 8
+	},
+/obj/map_helper/access_helper/airlock/station/engineering/department,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2)
 "eb" = (
@@ -1145,6 +1197,16 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoor0";
+	id = "starboardnacelle_blastdoor";
+	opacity = 0
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/engineering/nacelle2)
@@ -1218,6 +1280,11 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck2)
+"er" = (
+/obj/machinery/door/airlock/voidcraft/vertical,
+/obj/map_helper/airlock/door/ext_door,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/excursion/strelka)
 "et" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -1235,7 +1302,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 10
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "ex" = (
 /obj/effect/floor_decal/carpet,
@@ -1371,6 +1438,7 @@
 /area/shuttle/excursion/strelka)
 "eX" = (
 /obj/machinery/air_alarm/north_mount,
+/obj/machinery/portable_atmospherics/canister/phoron,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/maintenance/eva)
 "eY" = (
@@ -1481,7 +1549,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "fw" = (
 /obj/structure/window/phoronreinforced/full{
@@ -1492,6 +1560,16 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/green,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoor0";
+	id = "portnacelle_blastdoor";
+	opacity = 0
+	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/engineering/nacelle)
 "fx" = (
@@ -1531,7 +1609,11 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 5
 	},
-/turf/simulated/floor/reinforced,
+/obj/machinery/sparker{
+	id = "portnacelle_igniter";
+	pixel_x = -9
+	},
+/turf/simulated/floor/reinforced/airless,
 /area/strelka/shipbase/deck2/engineering/nacelle)
 "fJ" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black{
@@ -1560,8 +1642,7 @@
 /area/strelka/shipbase/deck2/science/anomaly)
 "fN" = (
 /obj/structure/cable/white{
-	icon_state = "2-8";
-	dir = 8
+	icon_state = "1-8"
 	},
 /obj/structure/cable/white{
 	icon_state = "4-8"
@@ -1634,6 +1715,10 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/machinery/button/ignition{
+	id = "portnacelle_igniter";
+	pixel_y = 29
+	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/engineering/nacelle)
 "ga" = (
@@ -1679,7 +1764,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
 	dir = 4
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced/airless,
 /area/strelka/shipbase/deck2/engineering/nacelle2)
 "gg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1709,8 +1794,7 @@
 /area/strelka/shipbase/deck2/maintenance/bridge)
 "gj" = (
 /obj/structure/cable/white{
-	icon_state = "2-8";
-	dir = 4
+	icon_state = "2-4"
 	},
 /obj/structure/cable/white{
 	icon_state = "4-8"
@@ -1739,6 +1823,11 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/rust,
+/obj/structure/sign/kiddieplaque{
+	pixel_y = 7;
+	name = "\improper Strelka Gallery plaque";
+	desc = "Statue of AI Galaxy, the first AI installed on this ship. A bit limited at the time, he was programmed with a joyfull personality, and bad puns"
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
 "gm" = (
@@ -1818,6 +1907,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/structure/sign/kiddieplaque{
+	pixel_y = -12;
+	layer = 2.6;
+	name = "\improper Strelka Gallery plaque";
+	desc = "A photo album, representing all crew that came along and served on the ship, from the luxury days to today, passing by the blockade runner"
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
 "gA" = (
@@ -1848,6 +1943,7 @@
 /area/strelka/shipbase/deck2/engineering/nacelle2)
 "gI" = (
 /obj/machinery/door/airlock/voidcraft/vertical,
+/obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/strelka)
 "gL" = (
@@ -1964,7 +2060,7 @@
 /area/shuttle/emt/strelka)
 "ha" = (
 /obj/machinery/holopad,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos/storage)
 "hb" = (
 /obj/structure/table/carbon/reinforced,
@@ -1992,8 +2088,7 @@
 /area/strelka/shipbase/deck2/security/detective)
 "hf" = (
 /obj/structure/cable/white{
-	icon_state = "2-8";
-	dir = 4
+	icon_state = "2-4"
 	},
 /obj/structure/cable/white{
 	icon_state = "4-8"
@@ -2091,7 +2186,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos/storage)
 "hA" = (
 /obj/machinery/atmospherics/pipe/tank/air{
@@ -2115,7 +2210,7 @@
 	frequency = 2346;
 	id_tag = "portnacelle_sensor"
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced/airless,
 /area/strelka/shipbase/deck2/engineering/nacelle)
 "hD" = (
 /turf/simulated/wall/r_wall/prepainted,
@@ -2152,7 +2247,7 @@
 /area/strelka/shipbase/deck2/bridge/ce)
 "hK" = (
 /obj/structure/cable/blue{
-	dir = 8
+	icon_state = "0-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -2215,8 +2310,7 @@
 /area/strelka/shipbase/deck2/science/anomaly)
 "hW" = (
 /obj/structure/cable/white{
-	icon_state = "2-8";
-	dir = 8
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/airless,
 /area/space)
@@ -2251,7 +2345,7 @@
 	pump_direction = 0;
 	on = 1
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "hZ" = (
 /obj/structure/cable/blue{
@@ -2281,7 +2375,8 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/cyan,
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/machinery/meter,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "ii" = (
 /obj/structure/stasis_cage,
@@ -2321,8 +2416,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/cable/white{
-	icon_state = "2-8";
-	dir = 8
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/airless,
 /area/space)
@@ -2535,6 +2629,9 @@
 	dir = 1
 	},
 /obj/machinery/camera/network/security,
+/obj/machinery/computer/guestpass{
+	pixel_y = 26
+	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2)
 "jj" = (
@@ -2575,7 +2672,8 @@
 /area/strelka/shipbase/deck2/engineering/shield)
 "js" = (
 /obj/machinery/atmospherics/pipe/manifold4w/visible/yellow,
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/machinery/meter,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "jv" = (
 /obj/machinery/computer/ship/sensors{
@@ -2606,6 +2704,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/structure/sign/kiddieplaque{
+	pixel_y = -12;
+	layer = 2.6;
+	name = "\improper Strelka Gallery plaque";
+	desc = "Lythios 43a is the base of operation of the Voidline Shuttle Race. It stopped after one successfull edition, the planet being blockaded by the SDF for safety reasons. This suit was given by the Pilot, as a souvenir of the race."
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
 "jA" = (
@@ -2623,6 +2727,12 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
+	},
+/obj/structure/sign/kiddieplaque{
+	pixel_y = -12;
+	layer = 2.6;
+	name = "\improper Strelka Gallery plaque";
+	desc = "This is a Plushy modeled after Wingman, a carp that apparently followed the ship for 40 years. Scientist never knew why they werent hostile. Altho this plushy serving as a memory, it is possible that Wingman might still be alive."
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
@@ -2688,15 +2798,20 @@
 	icon_state = "phoronwindow0"
 	},
 /obj/structure/grille,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoor0";
+	id = "starboardnacelle_blastdoor";
+	opacity = 0
+	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/engineering/nacelle2)
 "jT" = (
 /obj/structure/window/phoronreinforced{
 	dir = 4
 	},
-/obj/structure/stairs/bottom{
-	dir = 1
-	},
+/obj/structure/stairs/spawner/north,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck2)
 "jW" = (
@@ -2809,15 +2924,11 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/security/detective)
 "ku" = (
-/obj/machinery/door/airlock/voidcraft/vertical{
-	icon_state = "door_locked";
-	id_tag = "expshuttle_door_L";
-	locked = 1
-	},
 /obj/structure/cable/pink{
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden,
+/obj/machinery/door/airlock/glass/exploration,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/excursion/strelka)
 "kw" = (
@@ -2858,7 +2969,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 6
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced/airless,
 /area/strelka/shipbase/deck2/engineering/nacelle2)
 "kD" = (
 /obj/effect/floor_decal/corner/red{
@@ -2966,6 +3077,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/shield)
 "kP" = (
@@ -3023,6 +3135,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/structure/sign/kiddieplaque{
+	pixel_y = 7;
+	name = "\improper Strelka Gallery plaque";
+	desc = "This Beepsky unit, called Commander Spout, arrested 23 clowns, Killed 242 Xenomorph, and might have boarded and destroyed 4 pirate cruisers."
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
 "lf" = (
@@ -3060,7 +3177,7 @@
 /obj/machinery/camera/network/security{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "lm" = (
 /obj/structure/cable/blue{
@@ -3118,6 +3235,19 @@
 	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/maintenance/eva)
+"lv" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/light/small/old,
+/obj/machinery/fire_alarm/south_mount,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck2/security/main)
 "lx" = (
 /obj/effect/floor_decal/corner/red{
 	dir = 6
@@ -3125,6 +3255,7 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 9
 	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck2/security/storage)
 "lA" = (
@@ -3428,6 +3559,9 @@
 /area/strelka/shipbase/deck2/explo)
 "mA" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/machinery/door/blast/regular/open{
+	id = "hammerdart1"
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/emt/strelka)
 "mB" = (
@@ -3441,7 +3575,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/borosillicate/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/engineering/engine)
 "mC" = (
@@ -3451,11 +3585,18 @@
 /obj/structure/cable/blue{
 	icon_state = "2-4"
 	},
-/obj/structure/cable/blue{
-	icon_state = "1-2"
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/computer/guestpass{
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/shipbase/deck2/explo)
 "mD" = (
@@ -3465,8 +3606,7 @@
 "mF" = (
 /obj/effect/floor_decal/spline/fancy,
 /obj/structure/cable/cyan{
-	icon_state = "1-8";
-	dir = 8
+	icon_state = "1-4"
 	},
 /obj/machinery/power/apc/south_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -3485,8 +3625,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/cable/white{
-	icon_state = "2-8";
-	dir = 4
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/airless,
 /area/space)
@@ -3498,6 +3637,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/rust,
+/obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/maintenance/sec)
 "mL" = (
@@ -3609,7 +3749,7 @@
 "nb" = (
 /obj/machinery/lathe/autolathe,
 /obj/structure/cable/blue{
-	dir = 8
+	icon_state = "0-4"
 	},
 /obj/machinery/power/terminal,
 /turf/simulated/floor/tiled/techfloor/monogrid,
@@ -3655,7 +3795,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "ni" = (
 /obj/structure/flora/pottedplant/stoutbush,
@@ -3843,8 +3983,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/cable/white{
-	icon_state = "2-8";
-	dir = 1
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/airless,
 /area/space)
@@ -3861,6 +4000,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
+	},
+/obj/structure/window/reinforced{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/strelka)
@@ -3956,7 +4098,7 @@
 	pump_direction = 0;
 	on = 1
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "oc" = (
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -4036,6 +4178,13 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 5
 	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoor0";
+	id = "portnacelle_blastdoor";
+	opacity = 0
+	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/engineering/nacelle)
 "om" = (
@@ -4043,6 +4192,11 @@
 	RCon_tag = "Engineering Substation Bypass"
 	},
 /obj/structure/cable/green,
+/obj/structure/window/reinforced,
+/obj/machinery/door/window/brigdoor/eastleft{
+	dir = 8
+	},
+/obj/map_helper/access_helper/airlock/station/engineering/department,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2)
 "oo" = (
@@ -4165,10 +4319,9 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/security/main)
 "ox" = (
-/obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 5
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/machinery/atmospherics/pipe/manifold/visible/cyan,
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "oy" = (
 /obj/effect/floor_decal/rust,
@@ -4195,7 +4348,7 @@
 /obj/machinery/atmospherics/portables_connector{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "oC" = (
 /obj/structure/cable/blue{
@@ -4239,7 +4392,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 10
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced/airless,
 /area/strelka/shipbase/deck2/engineering/nacelle)
 "oK" = (
 /obj/structure/cable/yellow{
@@ -4255,6 +4408,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/shipbase/deck2/explo)
 "oM" = (
@@ -4352,6 +4506,12 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
+	},
+/obj/structure/sign/kiddieplaque{
+	pixel_y = -12;
+	layer = 2.6;
+	name = "\improper Strelka Gallery plaque";
+	desc = "This Bible was a gift from a unknow passenger after the ships first blockade run away from a war zone. Its open on a passage that was highlight by said passenger, on Psalm 107. "
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
@@ -4474,7 +4634,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "pw" = (
 /turf/simulated/wall/wood/hardwood,
@@ -4493,7 +4653,7 @@
 /area/strelka/shipbase/deck2/engineering/engine)
 "py" = (
 /obj/machinery/atmospherics/component/binary/pump,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "pz" = (
 /obj/effect/floor_decal/borderfloorblack/full,
@@ -4588,7 +4748,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 10
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos/storage)
 "pN" = (
 /obj/structure/cable/orange{
@@ -4663,6 +4823,11 @@
 /obj/machinery/atmospherics/component/binary/pump{
 	dir = 8;
 	name = "Fuel Line to Thrusters"
+	},
+/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/button/remote/blast_door{
+	id = "portnacelle_blastdoor";
+	pixel_y = 24
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/engineering/nacelle)
@@ -4785,7 +4950,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/wood/indoors,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2)
 "qs" = (
 /turf/simulated/wall/wood/hardwood{
@@ -4844,10 +5009,19 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/structure/sign/kiddieplaque{
+	pixel_y = -12;
+	layer = 2.6;
+	name = "\improper Strelka Gallery plaque";
+	desc = "Baseball Bat used by Tajaran player Renruk'Kartro, founder of the first Tajaran baseball team, after our ship escorted his team after the Oricon Baseball Championship. They lost, but trully gave the public a good watch."
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
 "qD" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/machinery/door/blast/regular/open{
+	id = "hammerdart1"
+	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/emt/strelka)
 "qE" = (
@@ -4892,6 +5066,12 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/rust,
+/obj/structure/sign/kiddieplaque{
+	pixel_y = -12;
+	layer = 2.6;
+	name = "\improper Strelka Gallery plaque";
+	desc = "Items from Lythios 43b, also called Miaphus'Ira. For now its a Tajaran penal colony, but we wish them to rise beyond that status."
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
 "qM" = (
@@ -5021,6 +5201,14 @@
 /obj/structure/cable/blue{
 	icon_state = "1-2"
 	},
+/obj/machinery/access_button/airlock_interior{
+	pixel_x = -23;
+	master_tag = "emtshuttle_docker"
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "hammerdart2";
+	pixel_x = -32
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/emt/strelka)
 "rf" = (
@@ -5055,7 +5243,7 @@
 /obj/structure/cable/orange{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos/storage)
 "rk" = (
 /obj/machinery/atmospherics/pipe/vent/high_volume{
@@ -5063,6 +5251,14 @@
 	},
 /turf/simulated/floor/reinforced/oxygen,
 /area/strelka/shipbase/deck2/engineering/engine)
+"rl" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/machinery/computer/timeclock/premade/north,
+/turf/simulated/floor/wood/indoors,
+/area/strelka/shipbase/deck2)
 "ro" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -5077,6 +5273,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/air_alarm/west_mount,
+/obj/structure/railing{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/explo)
 "rq" = (
@@ -5095,6 +5294,9 @@
 "ru" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/railing{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/explo/emt)
 "rx" = (
@@ -5187,6 +5389,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck2/engineering/engine)
+"rK" = (
+/obj/machinery/atmospherics/component/unary/engine/bigger{
+	dir = 4
+	},
+/turf/space/basic,
+/area/space)
 "rL" = (
 /obj/structure/stairs/spawner/north,
 /turf/simulated/floor/reinforced,
@@ -5303,6 +5511,16 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/engineering/coms)
+"sl" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/light/small/old{
+	dir = 8
+	},
+/obj/machinery/computer/timeclock/premade/west,
+/turf/simulated/floor/tiled/dark,
+/area/strelka/shipbase/deck2)
 "sm" = (
 /obj/structure/cable/blue{
 	icon_state = "4-8"
@@ -5403,6 +5621,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/universal{
 	dir = 4
 	},
+/obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/engineering/nacelle2)
 "sI" = (
@@ -5488,6 +5707,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/structure/sign/kiddieplaque{
+	pixel_y = 7;
+	name = "\improper Strelka Gallery plaque";
+	desc = "The suite that Centcom Engineer O'ryan on board, was wearing during the ship's first marriage, in 2471"
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
 "sS" = (
@@ -5502,6 +5726,12 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/rust,
+/obj/structure/sign/kiddieplaque{
+	pixel_y = -12;
+	layer = 2.6;
+	name = "\improper Strelka Gallery plaque";
+	desc = "Why don't we have rats everywhere on the ships ? 1:Lack of maintenance Tunnels. 2: Cheese on mousetraps."
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
 "sT" = (
@@ -5522,7 +5752,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos/storage)
 "sX" = (
 /obj/machinery/suit_storage_unit/standard_unit,
@@ -5547,7 +5777,7 @@
 	pump_direction = 0;
 	on = 1
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "sZ" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -5594,6 +5824,10 @@
 /obj/structure/frame,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck2/science/tele)
+"th" = (
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/simulated/floor/plating,
+/area/strelka/shipbase/deck2/maintenance/eva)
 "ti" = (
 /obj/structure/cable/blue{
 	icon_state = "1-2"
@@ -5626,7 +5860,8 @@
 /obj/machinery/atmospherics/portables_connector{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/machinery/fire_alarm/east_mount,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "tq" = (
 /obj/structure/cable/blue{
@@ -5645,6 +5880,14 @@
 /obj/machinery/camera/network/security,
 /obj/machinery/camera/network/security,
 /obj/machinery/air_alarm/north_mount,
+/obj/machinery/computer/general_air_control/large_tank_control{
+	frequency = 2346;
+	input_tag = "portnacelle_in";
+	name = "Burn Chamber Air Control";
+	output_tag = "";
+	pressure_setting = 0;
+	sensors = list("portnacelle_sensor"="Burn Chamber")
+	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/engineering/nacelle)
 "tu" = (
@@ -5758,7 +6001,7 @@
 	output_tag = "nitrous_out";
 	sensors = list("nitrous_sensor"="Tank")
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "tG" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -5773,6 +6016,7 @@
 /obj/machinery/light/small/old{
 	dir = 8
 	},
+/obj/machinery/computer/timeclock/premade/west,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/security)
 "tH" = (
@@ -5809,7 +6053,7 @@
 /obj/machinery/camera/network/engineering{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "tR" = (
 /obj/machinery/atmospherics/component/binary/pump{
@@ -5829,7 +6073,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "tW" = (
 /obj/structure/cable/orange{
@@ -5883,7 +6127,7 @@
 "ue" = (
 /obj/machinery/atmospherics/component/binary/pump,
 /obj/machinery/air_alarm/west_mount,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "uh" = (
 /obj/effect/floor_decal/industrial/outline{
@@ -6131,8 +6375,13 @@
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/engine)
 "uP" = (
-/obj/machinery/atmospherics/pipe/manifold4w/visible/black,
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/machinery/atmospherics/component/quaternary/atmos_filter{
+	tag_west = 2;
+	tag_south = 6;
+	tag_north = 7;
+	tag_east = 1
+	},
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "uQ" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -6156,6 +6405,15 @@
 	dir = 8
 	},
 /obj/machinery/air_alarm/south_mount,
+/obj/machinery/computer/general_air_control/large_tank_control{
+	frequency = 2345;
+	input_tag = "starboardnacelle_in";
+	name = "Burn Chamber Air Control";
+	output_tag = "";
+	pressure_setting = 0;
+	sensors = list("starboardnacelle_sensor"="Burn Chamber");
+	dir = 1
+	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/engineering/nacelle2)
 "uV" = (
@@ -6234,7 +6492,7 @@
 /obj/structure/table/marble,
 /obj/structure/poster/preset/baystation/bay_22{
 	pixel_y = 14;
-	desc = "A rather nice painting, representing a lady with glasses... Seems familliar."
+	desc = "The Scientist is a painting drawn on this ship, by Skrell artist Skraa'tesl"
 	},
 /obj/structure/window/basic,
 /obj/structure/window/basic{
@@ -6280,13 +6538,13 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/shuttle/emt/strelka)
 "vq" = (
-/obj/spawner/window/low_wall/borosillicate/full/firelocks,
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
 	},
 /obj/machinery/door/blast/regular/open{
 	id = "blockade_runner"
 	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/engine)
 "vs" = (
@@ -6366,7 +6624,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 4
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced/airless,
 /area/strelka/shipbase/deck2/engineering/nacelle2)
 "vF" = (
 /turf/simulated/wall/r_wall/prepainted,
@@ -6389,6 +6647,12 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/rust,
+/obj/structure/sign/kiddieplaque{
+	pixel_y = -12;
+	layer = 2.6;
+	name = "\improper Strelka Gallery plaque";
+	desc = "This crudly made drone was made by a Junior Surveyor that went on Lythios 43d, a frozen world."
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
 "vJ" = (
@@ -6455,6 +6719,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/air_alarm/west_mount,
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/engineering/coms)
 "vU" = (
@@ -6487,7 +6752,8 @@
 /area/strelka/shipbase/deck2/explo)
 "vX" = (
 /obj/structure/cable/orange,
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/machinery/power/apc/west_mount,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos/storage)
 "vZ" = (
 /obj/effect/floor_decal/spline/plain{
@@ -6517,6 +6783,20 @@
 "wb" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/strelka)
+"wc" = (
+/obj/machinery/atmospherics/pipe/manifold/visible/cyan{
+	dir = 8
+	},
+/obj/machinery/computer/general_air_control/large_tank_control{
+	frequency = 1443;
+	input_tag = "air_in";
+	name = "Mixed Air Supply Control";
+	output_tag = "air_out";
+	pressure_setting = 2000;
+	sensors = list("air_sensor"="Tank")
+	},
+/turf/simulated/floor/plating,
+/area/strelka/shipbase/deck2/engineering/atmos)
 "wf" = (
 /obj/machinery/door/airlock/vault{
 	name = "REACTOR ROOM";
@@ -6576,6 +6856,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck2/security/storage)
 "wh" = (
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/engine)
 "wk" = (
@@ -6665,15 +6946,6 @@
 "wE" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck2/engineering/coms)
-"wG" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/open,
-/area/strelka/shipbase/deck2/explo/emt)
 "wH" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/structure/bed/chair/office/dark{
@@ -6731,7 +7003,8 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 9
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/machinery/meter,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "wR" = (
 /obj/structure/cable/blue{
@@ -6749,15 +7022,13 @@
 /area/strelka/shipbase/deck2/engineering/atmos)
 "wU" = (
 /obj/structure/cable/white{
-	icon_state = "2-8";
-	dir = 1
+	icon_state = "1-4"
 	},
 /obj/structure/cable/white{
 	icon_state = "1-2"
 	},
 /obj/structure/cable/white{
-	icon_state = "2-8";
-	dir = 4
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/airless,
 /area/space)
@@ -6835,6 +7106,7 @@
 /obj/machinery/light/small/old{
 	dir = 4
 	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/storage)
 "xl" = (
@@ -6857,8 +7129,7 @@
 /area/strelka/shipbase/deck2)
 "xn" = (
 /obj/structure/cable/white{
-	icon_state = "2-8";
-	dir = 4
+	icon_state = "2-4"
 	},
 /obj/structure/cable/white{
 	icon_state = "1-2"
@@ -6908,8 +7179,7 @@
 /area/strelka/shipbase/deck2/maintenance/sec)
 "xu" = (
 /obj/structure/cable/cyan{
-	icon_state = "1-8";
-	dir = 4
+	icon_state = "2-8"
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -7010,7 +7280,7 @@
 /area/strelka/shipbase/deck2/engineering/atmos/storage)
 "xJ" = (
 /obj/structure/cable/blue{
-	dir = 4
+	icon_state = "0-8"
 	},
 /obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/tiled/asteroid_steel,
@@ -7162,6 +7432,11 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/voidcraft/vertical,
+/obj/machinery/access_button/airlock_interior{
+	pixel_x = -23;
+	master_tag = "emtshuttle_docker"
+	},
+/obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/emt/strelka)
 "yk" = (
@@ -7258,7 +7533,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/cyan,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "yz" = (
 /obj/structure/table/marble,
@@ -7308,6 +7583,10 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/maintenance/eva)
 "yF" = (
+/obj/machinery/computer/guestpass{
+	dir = 8;
+	pixel_x = 30
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck2/bridge)
 "yG" = (
@@ -7357,15 +7636,22 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
 "yN" = (
-/obj/machinery/computer/guestpass{
-	dir = 4;
-	pixel_x = -28
-	},
+/obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck2/bridge/iaa)
 "yO" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck2/bridge/ce)
+"yQ" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/machinery/atm{
+	pixel_y = -32
+	},
+/turf/simulated/floor/wood/indoors,
+/area/strelka/shipbase/deck2)
 "yR" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow{
 	dir = 4
@@ -7415,6 +7701,9 @@
 /obj/structure/lattice,
 /obj/structure/catwalk,
 /obj/machinery/atmospheric_field_generator/perma,
+/obj/machinery/door/blast/regular/open{
+	id = "hammerdart2"
+	},
 /turf/simulated/floor/reinforced,
 /area/shuttle/emt/strelka)
 "yW" = (
@@ -7507,13 +7796,8 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
 	dir = 4
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced/airless,
 /area/strelka/shipbase/deck2/engineering/nacelle)
-"zo" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/plating,
-/area/strelka/shipbase/deck2/maintenance/sec)
 "zr" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 1
@@ -7670,6 +7954,15 @@
 /obj/structure/window/reinforced,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering)
+"zL" = (
+/obj/structure/cable/blue{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/computer/timeclock/premade/west,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck2/explo)
 "zN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 8
@@ -7680,7 +7973,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 5
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "zO" = (
 /obj/structure/cable/blue{
@@ -7707,13 +8000,13 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "zR" = (
 /obj/structure/window/phoronreinforced{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "zU" = (
 /obj/structure/bed/chair/office/dark{
@@ -7724,12 +8017,6 @@
 "zW" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck2/security/reception)
-"zX" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/open,
-/area/strelka/shipbase/deck2/explo/emt)
 "zY" = (
 /obj/landmark/spawnpoint/job/detective,
 /obj/effect/floor_decal/carpet{
@@ -7798,13 +8085,14 @@
 	power_rating = 5000;
 	use_power = 1
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "An" = (
 /obj/structure/cable{
 	icon_state = "4-10"
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/machinery/portable_atmospherics/canister/phoron,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/maintenance/eva)
 "As" = (
@@ -7828,9 +8116,14 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/engineering/coms)
+"Ay" = (
+/obj/machinery/light/small/old,
+/turf/simulated/open,
+/area/strelka/shipbase/deck2/explo/emt)
 "AA" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 8
+	dir = 8;
+	id_tag = "expshuttle_docker_pump"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/strelka)
@@ -8047,8 +8340,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable{
-	icon_state = "6-8";
-	dir = 1
+	icon_state = "4-9"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
@@ -8316,7 +8608,7 @@
 	dir = 4
 	},
 /obj/structure/closet/emcloset,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "Cg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -8491,7 +8783,8 @@
 /obj/machinery/camera/network/engineering{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/machinery/fire_alarm/east_mount,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "CN" = (
 /obj/structure/table/marble,
@@ -8539,13 +8832,16 @@
 "CR" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/offwhite,
+/obj/machinery/door/blast/regular/open{
+	id = "hammerdart1"
+	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/emt/strelka)
 "CT" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 6
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced/airless,
 /area/strelka/shipbase/deck2/engineering/nacelle)
 "CU" = (
 /obj/structure/table/carbon/reinforced,
@@ -8646,6 +8942,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/structure/sign/kiddieplaque{
+	pixel_y = 7;
+	name = "\improper Strelka Gallery plaque";
+	desc = "The dress that Keyka, botanist on board, was wearing during the ship's first marriage, in 2471"
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
 "Df" = (
@@ -8699,6 +9000,15 @@
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck2/bridge/ce)
+"Dt" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/plating,
+/area/strelka/shipbase/deck2)
 "Du" = (
 /obj/structure/table/carbon/reinforced,
 /obj/machinery/photocopier/faxmachine{
@@ -8871,6 +9181,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/universal{
 	dir = 4
 	},
+/obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/engineering/nacelle)
 "DU" = (
@@ -8893,8 +9204,7 @@
 	icon_state = "5-8"
 	},
 /obj/structure/cable{
-	icon_state = "1-4";
-	dir = 1
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/maintenance/eva)
@@ -8902,7 +9212,13 @@
 /obj/machinery/atmospherics/pipe/manifold/visible{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/machinery/computer/general_air_control/large_tank_control{
+	input_tag = "co2_in";
+	name = "Carbon Dioxide Supply Control";
+	output_tag = "co2_out";
+	sensors = list("co2_sensor"="Tank")
+	},
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "DX" = (
 /obj/effect/floor_decal/corner/navblue/border,
@@ -8925,12 +9241,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/shield)
 "DZ" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/railing{
-	dir = 1
-	},
 /obj/machinery/light/small/old{
 	dir = 1
 	},
@@ -8965,17 +9275,13 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/engine)
 "Ei" = (
-/obj/machinery/door/airlock/voidcraft/vertical{
-	icon_state = "door_locked";
-	id_tag = "expshuttle_door_L";
-	locked = 1
-	},
 /obj/structure/cable/pink{
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 8
 	},
+/obj/machinery/door/airlock/glass/exploration,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/strelka)
 "Ek" = (
@@ -9135,7 +9441,8 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/machinery/meter,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "EO" = (
 /obj/structure/closet/crate,
@@ -9240,12 +9547,14 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/outline/red,
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/engineering/nacelle2)
 "Fh" = (
 /obj/machinery/light/small/old{
 	dir = 8
 	},
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck2)
 "Fi" = (
@@ -9378,6 +9687,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/voidcraft/vertical,
+/obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/emt/strelka)
 "FB" = (
@@ -9461,7 +9771,7 @@
 /obj/machinery/door/airlock/glass/atmos,
 /obj/map_helper/access_helper/airlock/station/engineering/atmospherics,
 /obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "FN" = (
 /obj/structure/cable/yellow{
@@ -9556,7 +9866,7 @@
 /obj/structure/window/phoronreinforced{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "Gi" = (
 /turf/simulated/wall/r_wall/prepainted,
@@ -9584,7 +9894,13 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/blue{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/machinery/computer/general_air_control/large_tank_control{
+	input_tag = "o2_in";
+	name = "Oxygen Supply Control";
+	output_tag = "o2_out";
+	sensors = list("o2_sensor"="Tank")
+	},
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "Go" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -9627,8 +9943,7 @@
 /area/strelka/shipbase/deck2/engineering/nacelle)
 "Gy" = (
 /obj/structure/cable/white{
-	icon_state = "2-8";
-	dir = 8
+	icon_state = "1-8"
 	},
 /obj/structure/cable/white{
 	icon_state = "1-2"
@@ -9716,6 +10031,12 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/security/interogation)
+"GU" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/airlock/multi_tile/glass/medical,
+/turf/simulated/floor/plating,
+/area/strelka/shipbase/deck2/maintenance/sec)
 "GV" = (
 /obj/structure/cable/blue{
 	icon_state = "1-8"
@@ -9728,8 +10049,7 @@
 /area/strelka/shipbase/deck2/security/reception)
 "GW" = (
 /obj/structure/cable/white{
-	icon_state = "2-8";
-	dir = 1
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/airless,
 /area/space)
@@ -9742,6 +10062,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/railing{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/shipbase/deck2/explo)
 "GZ" = (
@@ -9827,7 +10150,7 @@
 "Hi" = (
 /obj/machinery/power/tracker,
 /obj/structure/cable/white{
-	dir = 1
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/airless,
 /area/space)
@@ -9841,13 +10164,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/gas)
 "Hl" = (
 /obj/machinery/atmospherics/component/binary/pump{
 	name = "Mix to Nacelles"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "Hn" = (
 /turf/simulated/wall/wood/hardwood,
@@ -9887,6 +10211,12 @@
 	dir = 8;
 	name = "Fuel Line to Thrusters"
 	},
+/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/button/remote/blast_door{
+	id = "starboardnacelle_blastdoor";
+	pixel_y = -22;
+	dir = 1
+	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/engineering/nacelle2)
 "Hz" = (
@@ -9915,6 +10245,9 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/security/main)
+"HD" = (
+/turf/simulated/floor/plating,
+/area/strelka/shipbase/deck2/engineering/atmos/storage)
 "HE" = (
 /obj/structure/table/carbon/reinforced,
 /obj/item/stack/material/plasteel{
@@ -10105,7 +10438,7 @@
 /obj/machinery/light/small/old{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "Ij" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -10250,7 +10583,7 @@
 	power_rating = 5000;
 	use_power = 1
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "IL" = (
 /obj/structure/cable/orange{
@@ -10258,6 +10591,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/board)
 "IN" = (
@@ -10283,7 +10617,13 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/red{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/machinery/computer/general_air_control/large_tank_control{
+	input_tag = "n2_in";
+	name = "Nitrogen Supply Control";
+	output_tag = "n2_out";
+	sensors = list("n2_sensor"="Tank")
+	},
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "IS" = (
 /obj/structure/shuttle/engine/heater{
@@ -10392,12 +10732,6 @@
 	},
 /turf/simulated/open,
 /area/strelka/shipbase/deck2/bridge)
-"Jj" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/open,
-/area/strelka/shipbase/deck2/explo/emt)
 "Jk" = (
 /obj/structure/cable/blue{
 	icon_state = "1-2"
@@ -10438,10 +10772,13 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/security/detective)
 "Js" = (
-/obj/machinery/power/solar_control,
 /obj/structure/cable/white{
 	icon_state = "2-8"
 	},
+/obj/structure/cable/white{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/solar_control/autostart,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/maintenance/eva)
 "Jt" = (
@@ -10473,7 +10810,7 @@
 	pump_direction = 0;
 	on = 1
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "Jy" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -10662,6 +10999,14 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/storage)
+"Ko" = (
+/obj/machinery/atmospherics/component/quaternary/atmos_filter{
+	tag_east = 1;
+	tag_west = 2;
+	tag_north = 5
+	},
+/turf/simulated/floor/plating,
+/area/strelka/shipbase/deck2/engineering/atmos)
 "Kp" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/machinery/light/small/old{
@@ -10686,7 +11031,7 @@
 	power_rating = 5000;
 	use_power = 1
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "Kv" = (
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -10719,7 +11064,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "KA" = (
 /obj/machinery/atmospherics/pipe/tank/phoron{
@@ -10768,7 +11113,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "KJ" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -10806,6 +11151,9 @@
 "KQ" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/offwhite,
+/obj/machinery/door/blast/regular/open{
+	id = "hammerdart1"
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/emt/strelka)
 "KR" = (
@@ -10864,7 +11212,8 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck2/engineering/nacelle)
 "KX" = (
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/machinery/fire_alarm/west_mount,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos/storage)
 "KZ" = (
 /obj/machinery/atmospherics/pipe/tank/phoron{
@@ -10913,10 +11262,6 @@
 	icon_state = "1-4";
 	dir = 4
 	},
-/obj/structure/cable/pink{
-	dir = 4
-	},
-/obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/excursion/strelka)
 "Lj" = (
@@ -11060,7 +11405,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos/storage)
 "LE" = (
 /obj/machinery/computer/secure_data,
@@ -11088,7 +11433,7 @@
 	power_rating = 5000;
 	use_power = 1
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "LN" = (
 /turf/simulated/wall/r_wall,
@@ -11146,6 +11491,10 @@
 /obj/machinery/portable_atmospherics/canister/methane,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/gas)
+"LZ" = (
+/obj/machinery/fire_alarm/east_mount,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck2/explo)
 "Ma" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 6
@@ -11356,8 +11705,7 @@
 /area/strelka/shipbase/deck2/security/main)
 "MJ" = (
 /obj/structure/cable/white{
-	icon_state = "2-8";
-	dir = 1
+	icon_state = "1-4"
 	},
 /obj/structure/cable/white{
 	icon_state = "1-2"
@@ -11421,7 +11769,7 @@
 	id = "starboardnacelle_in";
 	power_rating = 5000
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced/airless,
 /area/strelka/shipbase/deck2/engineering/nacelle2)
 "MS" = (
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -11456,6 +11804,7 @@
 /obj/machinery/light/small/old{
 	dir = 4
 	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/maintenance/eva)
 "Ne" = (
@@ -11465,7 +11814,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "Ng" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -11505,6 +11854,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/structure/sign/kiddieplaque{
+	pixel_y = 7;
+	name = "\improper Strelka Gallery plaque";
+	desc = "Poster for the Movie Wiz. The premier was show on board this vessel, in 2463"
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
 "Ns" = (
@@ -11512,6 +11866,7 @@
 	dir = 8
 	},
 /obj/machinery/light/small/old,
+/obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/maintenance/eva)
 "Nt" = (
@@ -11542,7 +11897,7 @@
 	id = "portnacelle_in";
 	power_rating = 5000
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced/airless,
 /area/strelka/shipbase/deck2/engineering/nacelle)
 "Ny" = (
 /obj/machinery/atmospherics/component/quaternary/mixer,
@@ -11560,6 +11915,11 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/rust,
+/obj/structure/sign/kiddieplaque{
+	pixel_y = 7;
+	name = "\improper Strelka Gallery plaque";
+	desc = "The first Canister used to launch this vessel for the first time."
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
 "NE" = (
@@ -11710,6 +12070,7 @@
 "Om" = (
 /obj/machinery/atmospherics/portables_connector,
 /obj/effect/floor_decal/industrial/outline/blue,
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/engineering/nacelle)
 "On" = (
@@ -11728,6 +12089,11 @@
 /obj/machinery/telecomms/relay/preset/strelka/deck_four,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/coms)
+"Op" = (
+/obj/machinery/door/airlock/voidcraft/vertical,
+/obj/map_helper/airlock/door/int_door,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/emt/strelka)
 "Oq" = (
 /obj/item/inducer,
 /obj/structure/closet/crate,
@@ -11760,15 +12126,6 @@
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /turf/simulated/wall/r_wall/prepainted,
 /area/shuttle/excursion/strelka)
-"Oy" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/open,
-/area/strelka/shipbase/deck2/explo)
 "Oz" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -11871,13 +12228,22 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/structure/sign/kiddieplaque{
+	pixel_y = 7;
+	name = "\improper Strelka Gallery plaque";
+	desc = "The Scientist is a painting drawn on this ship, by Skrell artist Skraa'tesl"
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
 "OP" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 5
 	},
-/turf/simulated/floor/reinforced,
+/obj/machinery/sparker{
+	id = "starboardnacelle_igniter";
+	pixel_x = -9
+	},
+/turf/simulated/floor/reinforced/airless,
 /area/strelka/shipbase/deck2/engineering/nacelle2)
 "OR" = (
 /obj/structure/closet/radiation,
@@ -11897,7 +12263,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/wood/indoors,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2)
 "OV" = (
 /obj/machinery/door/airlock/security,
@@ -11921,6 +12287,11 @@
 "OX" = (
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 4
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "hammerdart1";
+	pixel_x = 38;
+	pixel_y = 12
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/emt/strelka)
@@ -12004,6 +12375,10 @@
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/rust,
+/obj/machinery/computer/guestpass{
+	dir = 4;
+	pixel_x = -28
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
 "Pm" = (
@@ -12017,6 +12392,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/structure/sign/kiddieplaque{
+	pixel_y = -12;
+	layer = 2.6;
+	name = "\improper Strelka Gallery plaque";
+	desc = "A relic found on the ashes of KT934, Surt, by a mining team."
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
 "Pn" = (
@@ -12024,7 +12405,7 @@
 /obj/machinery/light/small/old{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos/storage)
 "Po" = (
 /obj/machinery/shieldgen,
@@ -12103,6 +12484,16 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/maintenance/eva)
+"PF" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/machinery/power/apc/north_mount,
+/obj/structure/cable/blue{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/strelka/shipbase/deck2/explo)
 "PI" = (
 /obj/machinery/atmospherics/pipe/vent/high_volume,
 /turf/simulated/floor/reinforced/phoron,
@@ -12117,6 +12508,12 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
+	},
+/obj/structure/sign/kiddieplaque{
+	pixel_y = -12;
+	layer = 2.6;
+	name = "\improper Strelka Gallery plaque";
+	desc = "Snow from Lythios43c. NT will soon have base here, if negociation of that base goes well."
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
@@ -12140,7 +12537,8 @@
 /area/strelka/shipbase/deck2/explo)
 "PO" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 1
+	dir = 1;
+	id_tag = "expshuttle_docker_pump"
 	},
 /obj/structure/cable/blue{
 	icon_state = "1-2"
@@ -12158,10 +12556,6 @@
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/maintenance/sec)
 "PR" = (
-/obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Bridge";
-	output_attempt = 0
-	},
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -12172,6 +12566,10 @@
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/machinery/door/window/brigdoor/eastright{
 	dir = 8
+	},
+/obj/machinery/power/smes/buildable{
+	RCon_tag = "Substation - Security / Exploration";
+	output_attempt = 0
 	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/maintenance/sec)
@@ -12197,7 +12595,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "PW" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black{
@@ -12216,7 +12614,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/wood/indoors,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2)
 "PX" = (
 /obj/structure/cable/orange{
@@ -12235,6 +12633,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/structure/sign/kiddieplaque{
+	pixel_y = 7;
+	name = "\improper Strelka Gallery plaque";
+	desc = "Cover of the album Gaze at the burning stars, that performed on board iin 2460"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
@@ -12327,8 +12730,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
-/obj/machinery/light/small/old,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/open,
 /area/strelka/shipbase/deck2/explo/emt)
 "QB" = (
 /obj/structure/cable/orange{
@@ -12408,6 +12810,15 @@
 /obj/structure/cable/blue{
 	icon_state = "4-8"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/obj/structure/cable/blue{
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/shipbase/deck2/explo)
 "QK" = (
@@ -12426,17 +12837,11 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos/storage)
 "QN" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck2/bridge/hos)
-"QR" = (
-/obj/machinery/atmospherics/component/unary/engine/biggest{
-	dir = 4
-	},
-/turf/space/basic,
-/area/space)
 "QU" = (
 /obj/structure/closet/walllocker_double/north,
 /obj/item/clothing/mask/gas,
@@ -12486,6 +12891,11 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/rust,
+/obj/structure/sign/kiddieplaque{
+	pixel_y = 7;
+	name = "\improper Strelka Gallery plaque";
+	desc = "The legend wants that this cookie fell from the sky."
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
 "Rf" = (
@@ -12588,6 +12998,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/structure/sign/kiddieplaque{
+	pixel_y = -12;
+	layer = 2.6;
+	name = "\improper Strelka Gallery plaque";
+	desc = "Admiral Nia, the first officer, and the first on board pet."
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
 "Rv" = (
@@ -12642,9 +13058,17 @@
 /obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering)
+"RC" = (
+/obj/structure/cable/blue{
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/rust,
+/obj/machinery/fire_alarm/east_mount,
+/turf/simulated/floor/plating,
+/area/strelka/shipbase/deck2/explo/emt)
 "RD" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "RF" = (
 /obj/structure/window/phoronreinforced,
@@ -12662,7 +13086,7 @@
 	pump_direction = 0;
 	on = 1
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "RG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
@@ -12683,7 +13107,8 @@
 /area/strelka/shipbase/deck2/explo)
 "RJ" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow,
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/machinery/meter,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "RL" = (
 /obj/effect/floor_decal/corner/lightorange/border{
@@ -12731,7 +13156,7 @@
 /obj/machinery/atmospherics/component/binary/pump{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "RY" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -12790,7 +13215,7 @@
 /area/strelka/shipbase/deck2/bridge/hos)
 "So" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "Ss" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -12817,6 +13242,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/machinery/computer/timeclock/premade/west,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
 "Sw" = (
@@ -12852,10 +13278,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/security)
-"Sz" = (
-/obj/machinery/atmospherics/pipe/simple/visible/universal,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/strelka/shipbase/deck2/engineering/atmos/storage)
 "SA" = (
 /obj/structure/table/rack{
 	dir = 8;
@@ -12950,12 +13372,6 @@
 /obj/machinery/atmospherics/pipe/simple/visible/universal,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos/storage)
-"SO" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/open,
-/area/strelka/shipbase/deck2/explo)
 "SP" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/effect/floor_decal/rust,
@@ -12994,6 +13410,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/voidcraft/vertical,
+/obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/emt/strelka)
 "SZ" = (
@@ -13028,6 +13445,9 @@
 "Te" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/offwhite,
+/obj/machinery/door/blast/regular/open{
+	id = "hammerdart1"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/emt/strelka)
 "Tf" = (
@@ -13035,7 +13455,10 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/excursion/strelka)
 "Tg" = (
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/machinery/atmospherics/pipe/tank/air{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "Ti" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
@@ -13133,11 +13556,12 @@
 	dir = 4;
 	name = "Airmix to Distro"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "TD" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 8
+	dir = 8;
+	id_tag = "expshuttle_docker_pump"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/emt/strelka)
@@ -13145,7 +13569,7 @@
 /obj/machinery/atmospherics/valve{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "TF" = (
 /turf/simulated/floor/reinforced,
@@ -13154,6 +13578,14 @@
 /obj/machinery/telecomms/server/presets/service/strelka,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/coms)
+"TH" = (
+/obj/machinery/atmospherics/pipe/simple/visible/black,
+/obj/machinery/atmospherics/portables_connector{
+	dir = 8
+	},
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/simulated/floor/plating,
+/area/strelka/shipbase/deck2/engineering/atmos)
 "TI" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/industrial/warning/dust,
@@ -13202,6 +13634,7 @@
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 8
 	},
+/obj/structure/railing,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/explo/emt)
 "TN" = (
@@ -13257,6 +13690,9 @@
 /obj/effect/floor_decal/borderfloor,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck2/explo/emt)
+"TV" = (
+/turf/simulated/floor/plating,
+/area/strelka/shipbase/deck2/engineering/atmos)
 "TX" = (
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -13315,6 +13751,12 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/rust,
+/obj/structure/sign/kiddieplaque{
+	pixel_y = -12;
+	layer = 2.6;
+	name = "\improper Strelka Gallery plaque";
+	desc = "A reward given for the service of this vessel."
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
 "Ue" = (
@@ -13351,6 +13793,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/structure/sign/kiddieplaque{
+	pixel_y = 7;
+	name = "\improper Strelka Gallery plaque";
+	desc = "Chief Engineer Amada was probably one of the most important figures. Indeed, she was in charge of massive refits, resulting of this luxury space liner becoming a blockade runner during the corporate wars."
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
 "Ui" = (
@@ -13366,7 +13813,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/component/binary/pump,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "Ul" = (
 /obj/machinery/power/solar,
@@ -13416,12 +13863,8 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
 "Ux" = (
-/obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Security / Exploration";
-	output_attempt = 0
-	},
 /obj/structure/cable/blue{
-	dir = 4
+	icon_state = "0-8"
 	},
 /obj/structure/cable/white{
 	icon_state = "0-4"
@@ -13432,6 +13875,10 @@
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/machinery/door/window/brigdoor/eastright{
 	dir = 1
+	},
+/obj/machinery/power/smes/buildable{
+	RCon_tag = "Substation - Bridge";
+	output_attempt = 0
 	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/maintenance/bridge)
@@ -13493,11 +13940,13 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/security/reception)
 "UK" = (
-/obj/machinery/door/airlock/multi_tile/glass/medical,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/railing{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
-/area/strelka/shipbase/deck2/maintenance/sec)
+/area/strelka/shipbase/deck2/explo/emt)
 "UL" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -13539,6 +13988,7 @@
 /obj/machinery/light/small/old{
 	dir = 4
 	},
+/obj/structure/railing,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/explo)
 "UU" = (
@@ -13640,6 +14090,9 @@
 /area/strelka/shipbase/deck2/security)
 "Vo" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/machinery/door/blast/regular/open{
+	id = "hammerdart1"
+	},
 /turf/simulated/floor/plating,
 /area/shuttle/emt/strelka)
 "Vp" = (
@@ -13659,7 +14112,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 10
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "Vs" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
@@ -13727,6 +14180,13 @@
 /obj/structure/grille,
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 6
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoor0";
+	id = "starboardnacelle_blastdoor";
+	opacity = 0
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/engineering/nacelle2)
@@ -13853,7 +14313,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/black,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "VW" = (
 /obj/structure/window/phoronreinforced{
@@ -13912,6 +14372,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
+/obj/structure/railing,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/explo/emt)
 "Wd" = (
@@ -13925,13 +14386,12 @@
 /area/strelka/shipbase/deck2/science/anomaly)
 "We" = (
 /obj/effect/floor_decal/borderfloorblack/full,
-/obj/machinery/camera/network/security,
 /obj/landmark/spawnpoint/job/pathfinder,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/shipbase/deck2/explo/pathfy)
 "Wg" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Solar Farm - SMES 1"
+	RCon_tag = "Solar Farm"
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -13957,6 +14417,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
+/obj/machinery/computer/timeclock/premade/east,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
 "Wn" = (
@@ -14047,6 +14508,14 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck2)
 "Wu" = (
+/obj/item/stock_parts/subspace/amplifier,
+/obj/item/stock_parts/subspace/analyzer,
+/obj/item/stock_parts/subspace/ansible,
+/obj/item/stock_parts/subspace/crystal,
+/obj/item/stock_parts/subspace/sub_filter,
+/obj/item/stock_parts/subspace/transmitter,
+/obj/item/stock_parts/subspace/treatment,
+/obj/structure/closet/walllocker_double/north,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
@@ -14078,10 +14547,10 @@
 /turf/space/basic,
 /area/space)
 "Wz" = (
-/obj/spawner/window/low_wall/borosillicate/full/firelocks,
 /obj/machinery/door/blast/regular/open{
 	id = "blockade_runner"
 	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/engine)
 "WA" = (
@@ -14253,9 +14722,37 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck2/engineering/atmos/storage)
+"WL" = (
+/obj/structure/cable/blue{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck2/explo)
 "WM" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck2/engineering/nacelle)
+"WO" = (
+/obj/effect/floor_decal/grass_edge,
+/obj/effect/floor_decal/plaque{
+	pixel_y = 6
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/sign/kiddieplaque{
+	pixel_y = 7;
+	name = "\improper Strelka Gallery plaque"
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/shipbase/deck2)
 "WP" = (
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/security/reception)
@@ -14265,6 +14762,7 @@
 /obj/machinery/camera/network/security{
 	dir = 8
 	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/science/tele)
 "WR" = (
@@ -14272,7 +14770,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "WT" = (
 /obj/structure/window/reinforced,
@@ -14287,7 +14785,6 @@
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
-/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/emt/strelka)
 "WV" = (
@@ -14306,7 +14803,7 @@
 	pump_direction = 0;
 	on = 1
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "WW" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -14354,7 +14851,7 @@
 	frequency = 2345;
 	id_tag = "starboardnacelle_sensor"
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced/airless,
 /area/strelka/shipbase/deck2/engineering/nacelle2)
 "Xe" = (
 /obj/structure/table/steel,
@@ -14453,6 +14950,7 @@
 /obj/machinery/light/small/old{
 	dir = 4
 	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/engineering)
 "Xn" = (
@@ -14512,6 +15010,15 @@
 "XA" = (
 /obj/effect/shuttle_landmark/strelka/deck2/excursion,
 /obj/overmap/entity/visitable/ship/landable/excursion/strelka,
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	pixel_x = 23;
+	id_tag = "expshuttle_docker"
+	},
+/obj/machinery/airlock_sensor{
+	pixel_x = 32;
+	id_tag = "expshuttle_docker"
+	},
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/strelka)
 "XB" = (
@@ -14540,6 +15047,13 @@
 	icon_state = "phoronwindow0"
 	},
 /obj/structure/grille,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoor0";
+	id = "portnacelle_blastdoor";
+	opacity = 0
+	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/engineering/nacelle)
 "XI" = (
@@ -14584,7 +15098,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/portables_connector,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "XW" = (
 /obj/effect/floor_decal/industrial/warning/corner,
@@ -14622,8 +15136,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/cable/white{
-	icon_state = "2-8";
-	dir = 4
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/airless,
 /area/space)
@@ -14800,7 +15313,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos/storage)
 "YM" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
@@ -14815,17 +15328,6 @@
 /obj/structure/table/carbon/reinforced,
 /turf/simulated/floor/carpet/oracarpet,
 /area/strelka/shipbase/deck2/bridge/ce)
-"YO" = (
-/obj/item/stock_parts/subspace/amplifier,
-/obj/item/stock_parts/subspace/analyzer,
-/obj/item/stock_parts/subspace/ansible,
-/obj/item/stock_parts/subspace/crystal,
-/obj/item/stock_parts/subspace/sub_filter,
-/obj/item/stock_parts/subspace/transmitter,
-/obj/item/stock_parts/subspace/treatment,
-/obj/structure/closet/walllocker_double/north,
-/turf/simulated/floor/reinforced,
-/area/space)
 "YP" = (
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/strelka/shipbase/deck2/engineering/gas)
@@ -15085,7 +15587,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 4
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced/airless,
 /area/strelka/shipbase/deck2/engineering/nacelle)
 "Zu" = (
 /obj/machinery/power/emitter{
@@ -15133,6 +15635,15 @@
 "ZB" = (
 /obj/effect/shuttle_landmark/strelka/deck2/emt,
 /obj/overmap/entity/visitable/ship/landable/emt/strelka,
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	pixel_x = 23;
+	id_tag = "emtshuttle_docker"
+	},
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/obj/machinery/airlock_sensor{
+	pixel_x = 32;
+	id_tag = "emtshuttle_docker"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/emt/strelka)
 "ZC" = (
@@ -15157,7 +15668,7 @@
 /area/strelka/shipbase/deck2/engineering/coms)
 "ZE" = (
 /obj/machinery/holopad,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "ZH" = (
 /obj/structure/bookcase/legal/sop,
@@ -15185,10 +15696,10 @@
 "ZL" = (
 /obj/machinery/atmospherics/component/quaternary/atmos_filter{
 	tag_east = 1;
-	tag_west = 2;
-	tag_north = 5
+	tag_north = 5;
+	tag_south = 2
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "ZM" = (
 /obj/structure/window/phoronreinforced,
@@ -15205,7 +15716,14 @@
 /area/strelka/shipbase/deck2/engineering/engine)
 "ZO" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/green,
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/machinery/computer/general_air_control/large_tank_control{
+	dir = 4;
+	input_tag = "tox_in";
+	name = "Phoron Supply Control";
+	output_tag = "tox_out";
+	sensors = list("tox_sensor"="Tank")
+	},
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "ZP" = (
 /obj/structure/table/carbon/reinforced,
@@ -15270,6 +15788,15 @@
 /obj/item/gun/projectile/ballistic/deagle,
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck2/bridge/hos)
+"ZZ" = (
+/obj/machinery/door/airlock/voidcraft/vertical,
+/obj/map_helper/airlock/door/ext_door,
+/obj/machinery/access_button/airlock_exterior{
+	pixel_x = 22;
+	master_tag = "expshuttle_docker"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/excursion/strelka)
 
 (1,1,1) = {"
 KT
@@ -26598,10 +27125,10 @@ KT
 KT
 KT
 KT
-QR
 KT
 KT
-QR
+KT
+KT
 KT
 vz
 Wy
@@ -26634,10 +27161,10 @@ Wy
 GL
 KT
 KT
-QR
 KT
 KT
-QR
+KT
+KT
 KT
 KT
 KT
@@ -26791,11 +27318,11 @@ KT
 KT
 KT
 KT
+rK
 KT
+rK
 KT
-KT
-KT
-KT
+rK
 KT
 YJ
 Wy
@@ -26827,11 +27354,11 @@ vz
 Wy
 vc
 KT
+rK
 KT
+rK
 KT
-KT
-KT
-KT
+rK
 KT
 KT
 KT
@@ -27366,7 +27893,7 @@ KT
 KT
 KT
 KT
-cO
+DR
 Yg
 ys
 wU
@@ -27558,7 +28085,7 @@ KT
 KT
 KT
 KT
-cO
+DR
 xn
 ip
 bO
@@ -27596,7 +28123,7 @@ co
 lf
 BB
 uK
-Tg
+TV
 oa
 tF
 ue
@@ -27751,7 +28278,7 @@ KT
 KT
 KT
 KT
-cO
+DR
 ip
 Ul
 Ul
@@ -27944,7 +28471,7 @@ KT
 KT
 KT
 KT
-FB
+DR
 ip
 Ul
 fo
@@ -27984,7 +28511,7 @@ Dh
 IW
 bn
 uK
-Tg
+TV
 WV
 DW
 Uj
@@ -28137,7 +28664,7 @@ KT
 KT
 KT
 KT
-cO
+DR
 ip
 Ul
 fo
@@ -28181,7 +28708,7 @@ uK
 Gf
 LL
 oA
-ZL
+Ko
 Kz
 eu
 py
@@ -28330,7 +28857,7 @@ KT
 KT
 KT
 KT
-cO
+DR
 ip
 Ul
 fo
@@ -28372,7 +28899,7 @@ vC
 wf
 AN
 uK
-Tg
+TV
 RF
 Gn
 Uj
@@ -28523,7 +29050,7 @@ KT
 KT
 KT
 KT
-cO
+DR
 ip
 Ul
 fo
@@ -28569,10 +29096,10 @@ uK
 Gf
 bT
 oA
-ZL
+Ko
 Kz
 ZE
-Tg
+TV
 Tg
 Na
 kE
@@ -28760,9 +29287,9 @@ lB
 NE
 uM
 uK
-Tg
+TV
 sY
-EM
+wc
 yy
 ie
 RD
@@ -28956,10 +29483,10 @@ oK
 uK
 Gf
 Kt
-oA
-ZL
+TH
+Ko
 Kz
-Tg
+TV
 KI
 TA
 Na
@@ -29120,7 +29647,7 @@ DV
 mw
 Mo
 rG
-Mo
+th
 WM
 fY
 NI
@@ -29148,7 +29675,7 @@ TX
 SC
 Fl
 uK
-Tg
+TV
 hY
 IQ
 Uj
@@ -29345,7 +29872,7 @@ uK
 Gf
 IK
 oA
-ZL
+Ko
 fv
 bV
 Vr
@@ -29904,7 +30431,7 @@ tY
 gV
 gw
 gw
-tY
+sl
 gc
 VG
 gV
@@ -30122,8 +30649,8 @@ fm
 RG
 RG
 PW
-XB
-XB
+Dt
+Dt
 qp
 OS
 zs
@@ -30527,7 +31054,7 @@ Dz
 vD
 JY
 JY
-cO
+DR
 hW
 KT
 KT
@@ -30704,7 +31231,7 @@ Sb
 eb
 OM
 hz
-KX
+HD
 ha
 LC
 pL
@@ -30901,7 +31428,7 @@ na
 jc
 SM
 bX
-Sz
+SM
 Jf
 pI
 rR
@@ -30914,7 +31441,7 @@ nO
 TP
 JY
 JY
-cO
+DR
 hW
 KT
 KT
@@ -31275,7 +31802,7 @@ BE
 sF
 ZJ
 kh
-HF
+yQ
 wE
 ws
 vK
@@ -31642,7 +32169,7 @@ yu
 WU
 Hw
 ZX
-dA
+Op
 TD
 ZB
 dA
@@ -33033,7 +33560,7 @@ Si
 Ho
 lJ
 TI
-gI
+er
 AA
 AA
 gI
@@ -33227,10 +33754,10 @@ Si
 YV
 lJ
 TI
-gI
+ZZ
 XA
 bM
-gI
+cz
 GS
 Pu
 Qo
@@ -33393,7 +33920,7 @@ VI
 qY
 XS
 Wc
-zX
+DK
 DK
 Sj
 qk
@@ -33423,7 +33950,7 @@ cc
 RH
 dH
 Lm
-Lm
+gI
 Lm
 dc
 wb
@@ -33587,8 +34114,8 @@ jv
 mA
 uA
 Wc
-wG
-Jj
+DK
+DK
 ZV
 qk
 UD
@@ -33782,7 +34309,7 @@ qY
 qY
 TM
 QA
-ZV
+Ay
 ZV
 ZV
 Sj
@@ -33824,7 +34351,7 @@ fN
 KT
 KT
 KT
-YO
+KT
 KT
 KT
 KT
@@ -33977,8 +34504,8 @@ Vo
 qV
 ru
 UK
+GU
 Cg
-zo
 IY
 LS
 kA
@@ -33991,7 +34518,7 @@ Ft
 xz
 ZJ
 eg
-HF
+yQ
 fQ
 fQ
 fQ
@@ -34013,7 +34540,7 @@ DX
 dH
 fG
 eV
-cO
+DR
 hW
 KT
 KT
@@ -34170,7 +34697,7 @@ Vo
 uA
 fV
 Ks
-Kw
+RC
 Kw
 Kw
 Un
@@ -34187,11 +34714,11 @@ kM
 LR
 mm
 ty
-ci
+zL
 ci
 IT
-ci
-ci
+WL
+WL
 rp
 qH
 wR
@@ -34381,11 +34908,11 @@ Ba
 vU
 HF
 tw
-fL
-fL
-US
+LZ
 UO
-Oy
+US
+cs
+cs
 cs
 Vk
 oM
@@ -34578,9 +35105,9 @@ Gi
 tm
 tm
 tm
-tm
+aJ
 DZ
-SO
+cs
 bZ
 kp
 xq
@@ -34594,7 +35121,7 @@ JG
 fK
 fG
 fG
-cO
+DR
 FB
 KT
 KT
@@ -34763,16 +35290,16 @@ As
 aB
 yH
 LB
-rO
+aH
 cT
 VQ
 QD
 jX
 Gi
-Rb
-dv
-sM
-Sw
+tm
+tm
+tm
+tm
 mC
 GX
 iA
@@ -34963,10 +35490,10 @@ VQ
 qI
 fs
 fd
-rN
-rN
-kd
-Wj
+Rb
+dv
+sM
+Sw
 QJ
 Wq
 Wq
@@ -35151,7 +35678,7 @@ tJ
 qo
 fl
 HB
-MS
+rl
 cT
 VQ
 tz
@@ -35159,9 +35686,9 @@ WW
 Gi
 We
 rN
-rN
-tm
-KJ
+kd
+Wj
+PF
 Wq
 Wq
 Zc
@@ -35355,7 +35882,7 @@ Us
 Cy
 rN
 tm
-oL
+KJ
 Wq
 Wq
 Zc
@@ -35368,8 +35895,8 @@ gt
 dH
 Xg
 fG
-kf
-cO
+fG
+DR
 hW
 KT
 KT
@@ -35539,7 +36066,7 @@ SK
 SK
 Qy
 cm
-rO
+dI
 cT
 VQ
 tz
@@ -36101,7 +36628,7 @@ KT
 KT
 KT
 RU
-GW
+MJ
 lg
 UB
 FK
@@ -36898,7 +37425,7 @@ BK
 ZP
 Lq
 Hv
-Ez
+WO
 kM
 gz
 Lo
@@ -36918,7 +37445,7 @@ fG
 NY
 xT
 xT
-cO
+DR
 hW
 KT
 KT
@@ -37091,7 +37618,7 @@ GV
 ky
 ZP
 zW
-rO
+dI
 Ph
 Ba
 zr
@@ -37279,7 +37806,7 @@ lT
 ad
 KV
 fR
-Ge
+lv
 jM
 jE
 WP
@@ -39042,7 +39569,7 @@ YN
 wH
 gm
 lO
-cO
+DR
 PS
 FB
 hW
@@ -40592,7 +41119,7 @@ dE
 Nw
 mf
 Rk
-cO
+DR
 hW
 KT
 KT
@@ -40785,7 +41312,7 @@ QE
 ut
 xH
 hk
-cO
+DR
 hW
 KT
 KT
@@ -41172,7 +41699,7 @@ pK
 BA
 oI
 hk
-cO
+DR
 hW
 KT
 KT
@@ -41559,7 +42086,7 @@ mf
 mf
 Rk
 Rk
-cO
+DR
 hW
 KT
 KT
@@ -41946,7 +42473,7 @@ hM
 hM
 hM
 UU
-cO
+DR
 hW
 KT
 KT
@@ -42139,7 +42666,7 @@ GW
 hM
 hM
 hM
-cO
+DR
 hW
 KT
 KT

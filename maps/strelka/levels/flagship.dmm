@@ -85,7 +85,7 @@
 	},
 /area/centcom/medical)
 "am" = (
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/main_hall)
 "ar" = (
 /obj/structure/table/standard,
@@ -265,7 +265,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "ba" = (
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/control)
 "bc" = (
 /obj/machinery/door_timer/cell_3{
@@ -676,7 +676,7 @@
 "cA" = (
 /obj/effect/paint/black,
 /obj/effect/paint_stripe/darkred,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/restaurant)
 "cB" = (
 /obj/effect/floor_decal/corner/grey/diagonal{
@@ -1525,7 +1525,7 @@
 	},
 /area/centcom/specops)
 "fd" = (
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/specops/dock)
 "fe" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
@@ -1533,7 +1533,7 @@
 /area/shuttle/specops/cockpit)
 "ff" = (
 /obj/effect/paint/black,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/medical)
 "fg" = (
 /obj/effect/floor_decal/corner/grey/diagonal{
@@ -1586,7 +1586,7 @@
 "fm" = (
 /obj/structure/sign/warning/nosmoking_2,
 /obj/effect/paint/black,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/terminal)
 "fn" = (
 /obj/machinery/access_button/airlock_interior{
@@ -2333,7 +2333,7 @@
 /obj/effect/paint/black,
 /obj/effect/paint_stripe/darkred,
 /obj/effect/paint_stripe/darkred,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/security)
 "hD" = (
 /obj/effect/floor_decal/industrial/outline,
@@ -3236,7 +3236,7 @@
 	},
 /area/centcom/main_hall)
 "ky" = (
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/command)
 "kz" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -3752,7 +3752,7 @@
 /obj/structure/sign/nanotrasen,
 /obj/effect/paint/black,
 /obj/effect/paint_stripe/darkred,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/control)
 "lY" = (
 /obj/structure/fans/tiny,
@@ -5730,7 +5730,7 @@
 	},
 /area/centcom/specops)
 "rY" = (
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/bathroom)
 "sa" = (
 /obj/machinery/vending/coffee,
@@ -5763,7 +5763,7 @@
 /area/shuttle/escape)
 "se" = (
 /obj/structure/sign/department/armory,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/security)
 "sf" = (
 /obj/structure/bed/chair,
@@ -6011,7 +6011,7 @@
 	},
 /area/centcom/security)
 "sC" = (
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/restaurant)
 "sD" = (
 /turf/unsimulated/floor{
@@ -6046,7 +6046,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
 "sH" = (
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/evac)
 "sI" = (
 /obj/spawner/window/low_wall/reinforced/full,
@@ -7154,7 +7154,7 @@
 	},
 /area/centcom/security)
 "wd" = (
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/specops)
 "we" = (
 /obj/machinery/computer/secure_data{
@@ -7206,7 +7206,7 @@
 /area/centcom/specops)
 "wl" = (
 /obj/structure/sign/warning/caution,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/evac)
 "wm" = (
 /obj/machinery/vending/security,
@@ -7551,7 +7551,7 @@
 /area/centcom/main_hall)
 "xk" = (
 /obj/structure/sign/science,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/control)
 "xm" = (
 /obj/machinery/cryopod/robot/door/dorms,
@@ -7612,7 +7612,7 @@
 /area/centcom/command)
 "xr" = (
 /obj/structure/sign/nanotrasen,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/command)
 "xu" = (
 /obj/structure/table/glass,
@@ -7756,7 +7756,7 @@
 /obj/structure/sign/nanotrasen,
 /obj/effect/paint/black,
 /obj/effect/paint_stripe/darkred,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/security)
 "xP" = (
 /obj/machinery/door/window/brigdoor/southleft{
@@ -8292,7 +8292,7 @@
 /area/centcom/medical)
 "zs" = (
 /obj/structure/sign/nanotrasen,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/control)
 "zt" = (
 /obj/machinery/door/airlock/medical{
@@ -8577,7 +8577,7 @@
 	},
 /area/centcom/main_hall)
 "Aj" = (
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/tdome/tdomeadmin)
 "Ak" = (
 /obj/structure/sign/directions/security{
@@ -8733,7 +8733,7 @@
 /area/centcom/security)
 "AC" = (
 /obj/structure/sign/nanotrasen,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/specops)
 "AD" = (
 /obj/machinery/door/firedoor,
@@ -9511,7 +9511,7 @@
 "De" = (
 /obj/effect/paint/black,
 /obj/effect/paint_stripe/darkred,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/medical)
 "Dg" = (
 /obj/structure/table/standard,
@@ -9570,11 +9570,11 @@
 	},
 /area/centcom/command)
 "Du" = (
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/bar)
 "Dv" = (
 /obj/structure/sign/double/barsign,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/restaurant)
 "Dw" = (
 /obj/machinery/door/airlock/highsecurity{
@@ -9889,7 +9889,7 @@
 "Es" = (
 /obj/effect/paint/black,
 /obj/effect/paint_stripe/darkred,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/security)
 "Eu" = (
 /obj/effect/floor_decal/corner/red/border{
@@ -10333,7 +10333,7 @@
 "Fu" = (
 /obj/effect/paint/black,
 /obj/effect/paint_stripe/darkred,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/main_hall)
 "Fv" = (
 /obj/machinery/camera/network/crescent,
@@ -11001,7 +11001,7 @@
 "Hg" = (
 /obj/effect/paint_stripe/darkred,
 /obj/effect/paint/black,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/command)
 "Hi" = (
 /obj/structure/closet{
@@ -11106,7 +11106,7 @@
 /area/centcom/control)
 "Hw" = (
 /obj/effect/paint_stripe/darkred,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/bathroom)
 "Hy" = (
 /obj/landmark{
@@ -11240,7 +11240,7 @@
 /area/centcom/medical)
 "HR" = (
 /obj/structure/sign/department/operational,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/medical)
 "HS" = (
 /turf/unsimulated/floor{
@@ -11337,7 +11337,7 @@
 /turf/unsimulated/floor/steel,
 /area/space)
 "Ij" = (
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/medical)
 "Il" = (
 /obj/structure/table/reinforced,
@@ -11829,7 +11829,7 @@
 	},
 /area/centcom/medical)
 "JD" = (
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/living)
 "JF" = (
 /obj/effect/floor_decal/corner_steel_grid{
@@ -11907,7 +11907,7 @@
 /obj/structure/sign/department/bar,
 /obj/effect/paint_stripe/darkred,
 /obj/effect/paint/black,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/restaurant)
 "JM" = (
 /obj/effect/floor_decal/derelict/d1,
@@ -12180,7 +12180,7 @@
 /area/centcom/restaurant)
 "Kv" = (
 /obj/effect/paint/black,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/security)
 "Kw" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -12593,7 +12593,7 @@
 "LH" = (
 /obj/effect/paint/black,
 /obj/effect/paint_stripe/darkred,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/command)
 "LI" = (
 /turf/unsimulated/floor/steel{
@@ -12603,7 +12603,7 @@
 /area/centcom/living)
 "LJ" = (
 /obj/structure/sign/department/eva,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/security)
 "LN" = (
 /obj/structure/closet/l3closet/virology,
@@ -13427,10 +13427,10 @@
 "Ob" = (
 /obj/effect/paint/black,
 /obj/effect/paint_stripe/darkred,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/terminal)
 "Oc" = (
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/security)
 "Od" = (
 /turf/unsimulated/floor{
@@ -13591,7 +13591,7 @@
 "OT" = (
 /obj/effect/paint/black,
 /obj/effect/paint_stripe/darkred,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/living)
 "OU" = (
 /obj/machinery/porta_turret/crescent{
@@ -13943,7 +13943,7 @@
 /area/centcom/control)
 "PZ" = (
 /obj/structure/sign/department/commander,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/security)
 "Qb" = (
 /obj/structure/flora/pottedplant{
@@ -14218,7 +14218,7 @@
 /obj/structure/sign/greencross,
 /obj/effect/paint/black,
 /obj/effect/paint_stripe/darkred,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/medical)
 "QU" = (
 /turf/unsimulated/floor{
@@ -14467,7 +14467,7 @@
 "RG" = (
 /obj/effect/paint/black,
 /obj/effect/paint_stripe/darkred,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/bar)
 "RH" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -14792,7 +14792,7 @@
 /area/centcom/security)
 "SG" = (
 /obj/structure/sign/securearea,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/control)
 "SI" = (
 /obj/structure/table/standard{
@@ -15033,7 +15033,7 @@
 	},
 /area/centcom/specops)
 "Tj" = (
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/space)
 "Tk" = (
 /obj/effect/floor_decal/borderfloor{
@@ -15186,7 +15186,7 @@
 "TE" = (
 /obj/effect/paint/black,
 /obj/effect/paint_stripe/darkred,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/control)
 "TF" = (
 /obj/effect/floor_decal/corner/grey/diagonal{
@@ -15533,7 +15533,7 @@
 /area/centcom/security)
 "Uv" = (
 /obj/structure/sign/department/prison,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/security)
 "Ux" = (
 /obj/structure/table/standard,
@@ -15565,11 +15565,11 @@
 /obj/machinery/door/blast/regular{
 	dir = 4
 	},
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/specops/dock)
 "UB" = (
 /obj/structure/sign/department/armory,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/control)
 "UC" = (
 /obj/machinery/vending/cola,
@@ -15583,7 +15583,7 @@
 /area/centcom/evac)
 "UF" = (
 /obj/effect/paint/black,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/living)
 "UG" = (
 /obj/effect/floor_decal/corner/grey/diagonal{
@@ -16379,7 +16379,7 @@
 /area/centcom/restaurant)
 "Xc" = (
 /obj/structure/sign/nosmoking_2,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/control)
 "Xd" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
@@ -16442,7 +16442,7 @@
 "Xo" = (
 /obj/effect/paint/black,
 /obj/effect/paint_stripe/darkred,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/bathroom)
 "Xp" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -16735,7 +16735,7 @@
 	},
 /obj/effect/paint/black,
 /obj/effect/paint_stripe/darkred,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/terminal)
 "Yl" = (
 /obj/structure/table/rack,
@@ -16837,7 +16837,7 @@
 /obj/structure/sign/warning/docking_area,
 /obj/effect/paint/black,
 /obj/effect/paint_stripe/darkred,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/terminal)
 "YE" = (
 /obj/machinery/door/firedoor,
@@ -16985,7 +16985,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/specops/engine)
 "YY" = (
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/holding)
 "Zb" = (
 /obj/machinery/door/airlock/centcom{
@@ -17156,7 +17156,7 @@
 /obj/structure/sign/nanotrasen,
 /obj/effect/paint/black,
 /obj/effect/paint_stripe/darkred,
-/turf/unsimulated/wall,
+/turf/simulated/wall/r_wall,
 /area/centcom/main_hall)
 "Zv" = (
 /obj/machinery/door/firedoor,
