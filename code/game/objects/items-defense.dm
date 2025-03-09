@@ -10,3 +10,15 @@
 	// use our own armor
 	var/datum/armor/our_armor = fetch_armor()
 	our_armor.handle_shieldcall(shieldcall_args, fake_attack)
+
+//* Shieldcall *//
+
+/obj/item/register_shieldcall(datum/shieldcall/delegate)
+	. = ..()
+	if(delegate.shields_in_inventory)
+		get_worn_mob()?.register_shieldcall(delegate)
+
+/obj/item/unregister_shieldcall(datum/shieldcall/delegate)
+	. = ..()
+	if(delegate.shields_in_inventory)
+		get_worn_mob()?.unregister_shieldcall(delegate)

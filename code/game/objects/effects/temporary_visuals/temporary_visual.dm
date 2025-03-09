@@ -5,7 +5,9 @@
 	anchored = TRUE
 	layer = ABOVE_MOB_LAYER
 	mouse_opacity = 0
-	var/duration = 10 //in deciseconds
+
+	/// In deciseconds.
+	var/duration = 1 SECONDS
 	var/randomdir = TRUE
 	var/timerid
 

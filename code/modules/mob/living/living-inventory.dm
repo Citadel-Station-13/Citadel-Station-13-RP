@@ -67,7 +67,7 @@
 	var/flat_encumbrance = 0
 	for(var/obj/item/I as anything in get_equipped_items())
 		tally_weight += (I.weight_registered = I.get_weight())
-		if(I.is_being_held())
+		if(I.inv_get_held_mob())
 			if(!(I.item_flags & ITEM_ENCUMBERS_WHILE_HELD))
 				I.encumbrance_registered = null
 				continue
