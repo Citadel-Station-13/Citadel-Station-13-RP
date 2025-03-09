@@ -372,7 +372,7 @@
 
 /area/strelka/shipbase/deck3/cargo/reception
 	name = "\improper Deck 3 Cargo Reception"
-		ambience = AMBIENCE_STRELKA_ROOM
+	ambience = AMBIENCE_STRELKA_ROOM
 
 /area/strelka/shipbase/deck3/cargo/hangar
 	name = "\improper Deck 3 Cargo Hangar"
