@@ -31,11 +31,10 @@
 
 /obj/item/melee/transforming/energy/sword/ionic_rapier/melee_finalize(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style, missed)
 	. = ..()
-
-
-
-/obj/item/melee/transforming/energy/sword/ionic_rapier/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	. = ..()
+	if(missed)
+		return
+	if(clickchain.attack_contact_multiplier <= 0)
+		return
 	var/mob/living/L = target
 	if(!istype(L))
 		return

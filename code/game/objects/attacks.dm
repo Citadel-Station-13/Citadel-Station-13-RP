@@ -22,7 +22,7 @@
 		//* if cleave() is ever refactored, make sure we're not calling melee_attack_chain *//
 		//* if we're being called *from* melee_attack_chain!                               *//
 		var/datum/event_args/actor/clickchain/created_clickchain = user.default_clickchain_event_args(target, FALSE)
-		created_clickchain.melee_damage_multiplier *= 0.5
+		created_clickchain.attack_melee_multiplier *= 0.5
 		melee_attack_chain(created_clickchain)
 		hit_mobs++
 

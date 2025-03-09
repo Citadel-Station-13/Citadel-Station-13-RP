@@ -81,7 +81,7 @@
 		var/nominal_damage = melee_style.get_unarmed_damage(src, A)
 		var/mult = nominal_damage? damage_to_do / nominal_damage : 0
 		var/datum/event_args/actor/clickchain/e_args = default_clickchain_event_args(A, TRUE)
-		e_args.melee_damage_multiplier = mult
+		e_args.attack_melee_multiplier = mult
 		melee_attack_chain(e_args)
 		return TRUE
 	return A.attack_generic(src, damage_to_do, pick(attacktext))

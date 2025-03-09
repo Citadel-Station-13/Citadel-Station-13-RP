@@ -85,17 +85,13 @@
 
 /obj/item/slime_crystal/melee_finalize(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style, missed)
 	. = ..()
-	#warn impl
-	
-/obj/item/slime_crystal/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	. = ..()
 	var/mob/living/L = target
 	if(!istype(L))
 		return
-	L.visible_message("<span class='warning'>\The [L] has been teleported with \the [src] by \the [user]!</span>")
+	L.visible_message("<span class='warning'>\The [L] has been teleported with \the [src] by \the [clickchain.performer]!</span>")
 	safe_blink(L, 14)
 	qdel(src)
-	return . | CLICKCHAIN_DO_NOT_PROPAGATE
+	. |= CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/slime_crystal/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()

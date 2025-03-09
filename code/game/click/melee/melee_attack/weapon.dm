@@ -21,7 +21,7 @@
 		// mob damage is not refactored properly yet
 		return
 	target.run_damage_instance(
-		weapon.damage_force * clickchain.melee_damage_multiplier,
+		weapon.damage_force * clickchain.attack_melee_multiplier,
 		weapon.damage_type,
 		weapon.damage_tier,
 		weapon.damage_flag,

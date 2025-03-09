@@ -64,12 +64,12 @@
  */
 /mob/proc/legacy_alter_melee_clickchain(datum/event_args/actor/clickchain/clickchain)
 	if(IS_PRONE(src))
-		clickchain.melee_damage_multiplier *= (2 / 3)
+		clickchain.attack_melee_multiplier *= (2 / 3)
 	if(MUTATION_HULK in mutations)
-		clickchain.melee_damage_multiplier *= 2
+		clickchain.attack_melee_multiplier *= 2
 
 /mob/living/legacy_alter_melee_clickchain(datum/event_args/actor/clickchain/clickchain)
 	..()
 	for(var/datum/modifier/mod in modifiers)
 		if(!isnull(mod.outgoing_melee_damage_percent))
-			clickchain.melee_damage_multiplier *= mod.outgoing_melee_damage_percent
+			clickchain.attack_melee_multiplier *= mod.outgoing_melee_damage_percent

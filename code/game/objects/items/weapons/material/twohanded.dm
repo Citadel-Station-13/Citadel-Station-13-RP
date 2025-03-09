@@ -44,7 +44,7 @@
 
 /obj/item/material/twohanded/melee_attack(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
 	if(!(item_flags & ITEM_MULTIHAND_WIELDED))
-		clickchain.melee_damage_multiplier *= unwielded_force_multiplier
+		clickchain.attack_melee_multiplier *= unwielded_force_multiplier
 	return ..()
 
 /obj/item/material/twohanded/update_icon()
@@ -82,9 +82,9 @@
 
 /obj/item/material/twohanded/fireaxe/melee_attack(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
 	if(istype(clickchain.target, /obj/structure/window))
-		clickchain.melee_damage_multiplier *= 2
+		clickchain.attack_melee_multiplier *= 2
 	else if(istype(clickchain.target, /obj/effect/plant))
-		clickchain.melee_damage_multiplier *= 2
+		clickchain.attack_melee_multiplier *= 2
 	return ..()
 
 /obj/item/material/twohanded/fireaxe/foam

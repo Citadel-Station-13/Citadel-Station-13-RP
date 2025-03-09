@@ -83,25 +83,13 @@
  * @params
  * * host - the atom attacking them that has us as a material
  * * data - metadata
- * * target - mob being hit
- * * zone - target zone
- * * weapon - what's damaging them. datatype semantics differs based on attack type
- * * attack_type - ATTACK_TYPE_* define
+ * * target - The target swung at; at this point it can't be redirected
+ * * clickchain - clickchain data
+ * * clickchain_flags - clickchain flags
+ * * attack_style - attack style used
+ * * missed - Did we miss? Do **not** use clickchain flags to infer this! It's specified explicitly for a reason.
  */
-/datum/prototype/material_trait/proc/on_mob_attack(atom/host, data, mob/target, zone, datum/weapon, attack_type)
-	return
-
-/**
- * called when something with this material attacks an atom that isn't a mob
- *
- * @params
- * * host - the atom attacking them that has us as a material
- * * data - metadata
- * * target - atom being hit
- * * weapon - what's damaging them. datatype semantics differs based on attack type
- * * attack_type - ATTACK_TYPE_* define
- */
-/datum/prototype/material_trait/proc/on_obj_attack(atom/host, data, atom/target, datum/weapon, attack_type)
+/datum/prototype/material_trait/proc/on_melee_finalize(atom/host, data, atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style, missed)
 	return
 
 /**

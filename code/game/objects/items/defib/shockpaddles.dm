@@ -162,24 +162,20 @@
 		busy = 0
 		update_icon()
 
-#warn impl
 /obj/item/shockpaddles/using_as_item(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
-
-
-//Since harm-intent now skips the delay for deliberate placement, you have to be able to hit them in combat in order to shock people.
-/obj/item/shockpaddles/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
 	var/mob/living/L = target
 	if(!istype(L))
 		return
-	if(ishuman(L) && can_use(user, L))
+	if(ishuman(L) && can_use(clickchain.performer, L))
 		busy = 1
 		update_icon()
-		do_electrocute(L, user, target_zone)
+		do_electrocute(L, clickchain.performer, clickchain.target_zone)
 		busy = 0
 		update_icon()
 		return NONE
-	return ..()
 
 // This proc is used so that we can return out of the revive process while ensuring that busy and update_icon() are handled
 /obj/item/shockpaddles/proc/do_revive(mob/living/carbon/human/H, mob/user)

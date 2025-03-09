@@ -67,7 +67,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 		// mob damage is not refactored properly yet
 		return
 	target.run_damage_instance(
-		get_unarmed_damage(attacker, target) * clickchain.melee_damage_multiplier,
+		get_unarmed_damage(attacker, target) * clickchain.attack_melee_multiplier,
 		damage_type,
 		damage_tier,
 		damage_flag,

@@ -60,10 +60,14 @@
 
 	/// Overall damage multiplier
 	///
-	/// todo: implement; needs slight clickchain/melee overhaul
+	/// * Allowed to be changed by shieldcalls and other intercepts
+	var/attack_melee_multiplier = 1
+	/// Overall impact multiplier
 	///
 	/// * Allowed to be changed by shieldcalls and other intercepts
-	var/melee_damage_multiplier = 1
+	/// * Unlike 'attack melee multiplier', this will block everything else too.
+	///   This is for shieldcalls to inject into to say 'hey, we blocked any contact, not just dampened damage'.
+	var/attack_contact_multiplier = 1
 
 	//* Resolved Data *//
 
@@ -104,7 +108,7 @@
 	cloning.click_cooldown_multiplier = click_cooldown_multiplier
 	cloning.target = target
 	cloning.target_zone = target_zone
-	cloning.melee_damage_multiplier = melee_damage_multiplier
+	cloning.attack_melee_multiplier = attack_melee_multiplier
 	return cloning
 
 /**
