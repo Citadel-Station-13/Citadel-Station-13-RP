@@ -75,3 +75,4 @@
 			SPAN_WARNING("[src] has no particle emitters installed, or all of them are disabled by safeties!"),
 			target = src,
 		)
+	playsound(src, selector_sound, 50, TRUE)

@@ -1,4 +1,5 @@
 /datum/ammo_caliber/a12g
+	id = "a12g"
 	caliber = "12g"
 	diameter = 18.53
 	length = 69.85
@@ -9,7 +10,7 @@
 	desc = "A 12 gauge slug."
 	icon = 'icons/modules/projectiles/casings/a12g.dmi'
 	icon_state = "grey"
-	caliber = /datum/ammo_caliber/a12g
+	casing_caliber = /datum/ammo_caliber/a12g
 	projectile_type = /obj/projectile/bullet/shotgun
 	materials_base = list(MAT_STEEL = 360)
 	fall_sounds = list('sound/weapons/guns/shotgun_fall.ogg')
@@ -219,7 +220,6 @@
 	base_icon_state = "a12-buck"
 	desc = "A color-coded metal clip for holding and quickly loading shotgun shells. This one is loaded with buckshot."
 	ammo_preload = /obj/item/ammo_casing/a12g/pellet
-	ammo_restrict = /obj/item/ammo_casing/a12g/pellet
 
 /obj/item/ammo_magazine/a12g/clip/beanbag
 	name = "ammo clip (12g beanbag)"
@@ -227,7 +227,6 @@
 	base_icon_state = "a12-bean"
 	desc = "A color-coded metal clip for holding and quickly loading shotgun shells. This one is loaded with beanbags."
 	ammo_preload = /obj/item/ammo_casing/a12g/beanbag
-	ammo_restrict = /obj/item/ammo_casing/a12g/beanbag
 
 /obj/item/ammo_magazine/a12g/clip/silver
 	name = "ammo clip (12g silver)"
@@ -235,7 +234,6 @@
 	base_icon_state = "a12-silver"
 	desc = "A color-coded metal clip for holding and quickly loading shotgun shells. This one is loaded with silver slugs."
 	ammo_preload = /obj/item/ammo_casing/a12g/silver
-	ammo_restrict = /obj/item/ammo_casing/a12g/silver
 
 /obj/item/ammo_magazine/a12g/clip/silvershot
 	name = "ammo clip (12g silvershot)"
@@ -243,7 +241,6 @@
 	base_icon_state = "a12-silver"
 	desc = "A color-coded metal clip for holding and quickly loading shotgun shells. This one is loaded with silver buckshot."
 	ammo_preload = /obj/item/ammo_casing/a12g/silvershot
-	ammo_restrict = /obj/item/ammo_casing/a12g/silvershot
 
 /obj/item/ammo_magazine/a12g/clip/stake
 	name = "ammo clip (12g stakes)"
@@ -251,7 +248,6 @@
 	base_icon_state = "a12-stake"
 	desc = "A color-coded metal clip for holding and quickly loading shotgun shells. This one is loaded with blessed iron nails."
 	ammo_preload = /obj/item/ammo_casing/a12g/stake
-	ammo_restrict = /obj/item/ammo_casing/a12g/stake
 
 //* Magazines - Pouches
 
@@ -263,7 +259,7 @@
 	base_icon_state = "shotgun-clip"
 	ammo_caliber = /datum/ammo_caliber/a12g
 	materials_base = list(MAT_STEEL = 1440)
-	magazine_type = MAGAZINE_TYPE_POUCH
+	magazine_type = NONE
 	ammo_preload = /obj/item/ammo_casing/a12g
 	ammo_current = 0
 	ammo_max = 4

@@ -9,19 +9,20 @@
 //* Ammo Casings *//
 
 /obj/item/ammo_casing/nt_expedition
+	abstract_type = /obj/item/ammo_casing/nt_expedition
 	description_fluff = {"
 		A casing for the experimental lineage of chemical-primed kinetic weaponry developed as part of a joint effort
 		between Hephaestus Industries and the Nanotrasen Research Division. Created both to enhance compatibility as well
 		as well as to improve security on installations operated by the Triumvirate, the 'NT Expeditionary' line boasts an
 		above-average reliability rating, as well as being easy to restock out on the Frontier.
 	"}
-	caliber = /datum/ammo_caliber/nt_expedition
+	casing_caliber = /datum/ammo_caliber/nt_expedition
 
 //* Magazines *//
 
 /obj/item/ammo_magazine/nt_expedition
 	description_fluff = {"
-		A casing for the experimental lineage of chemical-primed kinetic weaponry developed as part of a joint effort
+		A magazine for the experimental lineage of chemical-primed kinetic weaponry developed as part of a joint effort
 		between Hephaestus Industries and the Nanotrasen Research Division. Created both to enhance compatibility as well
 		as well as to improve security on installations operated by the Triumvirate, the 'NT Expeditionary' line boasts an
 		above-average reliability rating, as well as being easy to restock out on the Frontier.
@@ -31,6 +32,18 @@
 //* Projectiles *//
 
 /obj/projectile/bullet/nt_expedition
+
+//* Design Generation *//
+
+/datum/prototype/design/generated/nt_expedition
+	abstract_type = /datum/prototype/design/generated/nt_expedition
+	category = DESIGN_CATEGORY_MUNITIONS
+	subcategory = DESIGN_SUBCATEGORY_BALLISTIC
+
+/datum/prototype/design/generated/nt_expedition_ammo
+	abstract_type = /datum/prototype/design/generated/nt_expedition_ammo
+	category = DESIGN_CATEGORY_MUNITIONS
+	subcategory = DESIGN_SUBCATEGORY_AMMO
 
 //* Weapons *//
 
@@ -45,7 +58,8 @@
  */
 /obj/item/gun/projectile/ballistic/nt_expedition
 	description_fluff_categorizer = {"
-		This weapon is part of the experimental lineage of chemical-primed kinetic weaponry developed as part of a joint effort between Hephaestus Industries and the Nanotrasen Research Division. Created both to enhance compatibility as well as to improve security on installations operated by the Triumvirate, the 'NT Expeditionary' line boasts an above-average reliability rating
+		This weapon is part of the experimental lineage of chemical-primed kinetic weaponry developed as part of a joint effort between Hephaestus Industries and the Nanotrasen Research Division.
+		Created both to enhance compatibility as well as to improve security on installations operated by the Triumvirate, the 'NT Expeditionary' line boasts an above-average reliability rating
 		in addition to being rather simple to restock out on the Frontier.
 	"}
-	render_use_legacy_by_default = FALSE
+	item_renderer = /datum/gun_item_renderer/nothing

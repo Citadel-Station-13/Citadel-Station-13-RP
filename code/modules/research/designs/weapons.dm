@@ -70,33 +70,11 @@
 /datum/prototype/design/science/weapon/ballistic/generate_name(template)
 	return "Ballistic weapon prototype ([..()])"
 
-/datum/prototype/design/science/weapon/ballistic/advanced_smg
-	id = "smg"
-	desc = "An advanced 9mm SMG with a reflective laser optic."
-	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3)
-	materials_base = list(MAT_STEEL = 8000, MAT_SILVER = 2000, MAT_DIAMOND = 1000)
-	build_path = /obj/item/gun/projectile/ballistic/automatic/advanced_smg
-
-/datum/prototype/design/science/weapon/ballistic/p90
-	id = "p90"
-	desc = "The H90K is a compact, large capacity submachine gun produced by Hephaestus Industries. Despite its fierce reputation, it still manages to feel like a toy. Uses 9mm rounds."
-	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
-	materials_base = list(MAT_STEEL = 5000, MAT_PLASTIC = 5000, MAT_URANIUM = 1000)
-	build_path = /obj/item/gun/projectile/ballistic/automatic/p90
-
 /datum/prototype/design/science/weapon/ballistic/ammo
 	abstract_type = /datum/prototype/design/science/weapon/ballistic/ammo
 
 /datum/prototype/design/science/weapon/ballistic/ammo/generate_name(template)
 	return "Ballistic weapon ammo ([..()])"
-
-/datum/prototype/design/science/weapon/ballistic/ammo/ammo_9mmAdvanced
-	design_name = "9mm magazine"
-	id = "ammo_9mm"
-	desc = "A 21 round magazine for an advanced 9mm SMG."
-	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3)
-	materials_base = list(MAT_STEEL = 3750, MAT_SILVER = 100) // Requires silver for proprietary magazines! Or something.
-	build_path = /obj/item/ammo_magazine/a9mm/advanced_smg
 
 /datum/prototype/design/science/weapon/ballistic/ammo/techshell
 	design_name = "unloaded tech shell"
@@ -113,14 +91,6 @@
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3)
 	materials_base = list(MAT_STEEL = 360, MAT_GLASS = 720)
 	build_path = /obj/item/ammo_casing/a12g/stunshell
-
-/datum/prototype/design/science/weapon/ballistic/ammo/m57x28mmp90
-	design_name = "H90K magazine"
-	desc = "A large capacity top mounted magazine (5.7x28mm armor-piercing)."
-	id = "m57x28mmp90"
-	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
-	materials_base = list(MAT_STEEL = 2250, MAT_PLASTIC = 1500, MAT_COPPER = 1000)
-	build_path = /obj/item/ammo_magazine/a5_7mm/p90
 
 /datum/prototype/design/science/weapon/ballistic/ammo/m57x28mm
 	abstract_type = /datum/prototype/design/science/weapon/ballistic/ammo/m57x28mm
@@ -416,7 +386,7 @@
 	id = "nsfw_prototype"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 4, TECH_POWER = 4, TECH_COMBAT = 7)
 	materials_base = list(MAT_STEEL = 10000, MAT_GLASS = 6000, MAT_PHORON = 8000, MAT_URANIUM = 4000)
-	build_path = /obj/item/gun/projectile/ballistic/microbattery/combat/prototype
+	build_path = /obj/item/gun/projectile/ballistic/microbattery/nt_hydra/sidearm/prototype
 
 /datum/prototype/design/science/weapon/cell_based/prototype_nsfw_mag
 	design_name = "combat cell magazine"
@@ -424,7 +394,7 @@
 	subcategory = DESIGN_SUBCATEGORY_AMMO
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 4, TECH_POWER = 4, TECH_COMBAT = 7)
 	materials_base = list(MAT_STEEL = 8000, MAT_GLASS = 4000, MAT_PHORON = 4000)
-	build_path = /obj/item/ammo_magazine/microbattery/combat/prototype
+	build_path = /obj/item/ammo_magazine/microbattery/nt_hydra/prototype
 
 /datum/prototype/design/science/nsfw_cell
 	category = DESIGN_CATEGORY_MUNITIONS
@@ -441,49 +411,49 @@
 	id = "nsfw_cell_stun"
 	req_tech = list(TECH_MATERIAL = 4, TECH_MAGNET = 2, TECH_POWER = 3, TECH_COMBAT = 3)
 	materials_base = list(MAT_STEEL = 5000, MAT_GLASS = 5000)
-	build_path = /obj/item/ammo_casing/microbattery/combat/stun
+	build_path = /obj/item/ammo_casing/microbattery/nt_hydra/stun
 
 /datum/prototype/design/science/nsfw_cell/lethal
 	design_name = "LETHAL"
 	id = "nsfw_cell_lethal"
 	req_tech = list(TECH_MATERIAL = 4, TECH_MAGNET = 3, TECH_POWER = 3, TECH_COMBAT = 5)
 	materials_base = list(MAT_STEEL = 5000, MAT_GLASS = 5000, MAT_PHORON = 3000)
-	build_path = /obj/item/ammo_casing/microbattery/combat/lethal
+	build_path = /obj/item/ammo_casing/microbattery/nt_hydra/lethal
 
 /datum/prototype/design/science/nsfw_cell/net
 	design_name = "NET"
 	id = "nsfw_cell_net"
 	req_tech = list(TECH_MATERIAL = 4, TECH_MAGNET = 3, TECH_POWER = 3, TECH_COMBAT = 4)
 	materials_base = list(MAT_STEEL = 5000, MAT_GLASS = 5000, MAT_URANIUM = 3000)
-	build_path = /obj/item/ammo_casing/microbattery/combat/net
+	build_path = /obj/item/ammo_casing/microbattery/nt_hydra/net
 
 /datum/prototype/design/science/nsfw_cell/ion
 	design_name = "ION"
 	id = "nsfw_cell_ion"
 	req_tech = list(TECH_MATERIAL = 5, TECH_MAGNET = 3, TECH_POWER = 5, TECH_COMBAT = 5)
 	materials_base = list(MAT_STEEL = 5000, MAT_GLASS = 5000, MAT_SILVER = 3000)
-	build_path = /obj/item/ammo_casing/microbattery/combat/ion
+	build_path = /obj/item/ammo_casing/microbattery/nt_hydra/ion
 
 /datum/prototype/design/science/nsfw_cell/shotstun
 	design_name = "SCATTERSTUN"
 	id = "nsfw_cell_shotstun"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 3, TECH_POWER = 6, TECH_COMBAT = 6)
 	materials_base = list(MAT_STEEL = 5000, MAT_GLASS = 5000, MAT_SILVER = 2000, MAT_GOLD = 2000)
-	build_path = /obj/item/ammo_casing/microbattery/combat/shotstun
+	build_path = /obj/item/ammo_casing/microbattery/nt_hydra/shotstun
 
 /datum/prototype/design/science/nsfw_cell/xray
 	design_name = "XRAY"
 	id = "nsfw_cell_xray"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 4, TECH_POWER = 5, TECH_COMBAT = 7)
 	materials_base = list(MAT_STEEL = 5000, MAT_GLASS = 5000, MAT_SILVER = 1000, MAT_GOLD = 1000, MAT_URANIUM = 1000, MAT_PHORON = 1000)
-	build_path = /obj/item/ammo_casing/microbattery/combat/xray
+	build_path = /obj/item/ammo_casing/microbattery/nt_hydra/xray
 
 /datum/prototype/design/science/nsfw_cell/stripper
 	design_name = "STRIPPER"
 	id = "nsfw_cell_stripper"
 	req_tech = list(TECH_MATERIAL = 7, TECH_BIO = 4, TECH_POWER = 4, TECH_COMBAT = 4, TECH_ILLEGAL = 5)
 	materials_base = list(MAT_STEEL = 5000, MAT_GLASS = 5000, MAT_URANIUM = 2000, MAT_PHORON = 2000, MAT_DIAMOND = 500)
-	build_path = /obj/item/ammo_casing/microbattery/combat/stripper
+	build_path = /obj/item/ammo_casing/microbattery/nt_hydra/stripper
 
 /datum/prototype/design/science/pin
 	category = DESIGN_CATEGORY_MUNITIONS

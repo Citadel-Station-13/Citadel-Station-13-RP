@@ -1,11 +1,12 @@
 /datum/ammo_caliber/a45
+	id = "a45"
 	caliber = ".45"
 
 //* Casings
 
 /obj/item/ammo_casing/a45
 	desc = "A .45 bullet casing."
-	caliber = /datum/ammo_caliber/a45
+	casing_caliber = /datum/ammo_caliber/a45
 	icon = 'icons/modules/projectiles/casings/slim.dmi'
 	icon_state = "large"
 	projectile_type = /obj/projectile/bullet/pistol/medium

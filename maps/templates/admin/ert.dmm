@@ -5311,7 +5311,7 @@
 /area/ship/ert/engine)
 "NI" = (
 /obj/structure/table/rack,
-/obj/item/storage/secure/briefcase/nsfw_pack_hybrid,
+/obj/item/storage/secure/briefcase/nsfw_pack,
 /obj/item/storage/belt/security/tactical{
 	name = "ERT Commander's belt"
 	},

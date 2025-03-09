@@ -1,4 +1,5 @@
 /datum/ammo_caliber/a9_5mm
+	id = "a9_5mm"
 	caliber = "9.5x40mm"
 	diameter = 9.5
 	length = 40
@@ -8,7 +9,7 @@
 /obj/item/ammo_casing/a95
 	desc = "A 9.5x40mm bullet casing."
 	icon_state = "rifle-casing"
-	caliber = /datum/ammo_caliber/a9_5mm
+	casing_caliber = /datum/ammo_caliber/a9_5mm
 	projectile_type = /obj/projectile/bullet/rifle/a95
 
 //* Magazines *//

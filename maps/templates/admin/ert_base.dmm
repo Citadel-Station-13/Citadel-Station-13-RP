@@ -1618,7 +1618,7 @@
 	dir = 1
 	},
 /obj/structure/table/glass,
-/obj/item/storage/secure/briefcase/nsfw_pack_hybrid,
+/obj/item/storage/secure/briefcase/nsfw_pack,
 /obj/item/binoculars,
 /obj/item/survivalcapsule,
 /obj/item/survivalcapsule,

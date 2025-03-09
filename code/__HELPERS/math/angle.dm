@@ -62,6 +62,6 @@
  * @return angle between A and B, as degrees **clockwise from north**
  */
 /proc/get_centered_entity_tile_angle(atom/A, atom/B)
-	var/dy = B.x * WORLD_ICON_SIZE - A.x * WORLD_ICON_SIZE
-	var/dx = B.y * WORLD_ICON_SIZE - A.y * WORLD_ICON_SIZE
+	var/dx = B.x * WORLD_ICON_SIZE - A.x * WORLD_ICON_SIZE
+	var/dy = B.y * WORLD_ICON_SIZE - A.y * WORLD_ICON_SIZE
 	return arctan(dy, dx)

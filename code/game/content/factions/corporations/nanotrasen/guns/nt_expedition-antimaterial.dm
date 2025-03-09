@@ -4,6 +4,8 @@
 //* Caliber *//
 
 /datum/ammo_caliber/nt_expedition/antimaterial
+	name = "NT-12-AM"
+	id = "nt-antimaterial"
 	caliber = "nt-antimaterial"
 	diameter = 12
 	length = 92
@@ -16,7 +18,7 @@
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/antimaterial-ammo.dmi'
 	icon_state = "basic"
 	icon_spent = TRUE
-	caliber = /datum/ammo_caliber/nt_expedition/antimaterial
+	casing_caliber = /datum/ammo_caliber/nt_expedition/antimaterial
 	projectile_type = /obj/projectile/bullet/nt_expedition/antimaterial
 
 	/// specifically for /obj/item/ammo_magazine/nt_expedition/antimaterial's
@@ -56,7 +58,7 @@
 	cut_overlays()
 	. = ..()
 	var/list/overlays_to_add = list()
-	for(var/i in 1 to min(5, amount_remaining()))
+	for(var/i in 1 to min(5, get_amount_remaining()))
 		var/obj/item/ammo_casing/nt_expedition/antimaterial/casted_path_of_potential = peek_path_of_position(i)
 		var/append = "basic"
 		if(ispath(casted_path_of_potential, /obj/item/ammo_casing/nt_expedition/antimaterial))
@@ -95,4 +97,4 @@
 	"} + "<br>"
 	icon_state = "rifle"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
-	load_method = SINGLE_CASING | MAGAZINE
+	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/antimaterial

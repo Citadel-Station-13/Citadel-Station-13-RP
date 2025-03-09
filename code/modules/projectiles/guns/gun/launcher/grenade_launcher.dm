@@ -18,6 +18,9 @@
 	var/max_grenades = 5 //holds this + one in the chamber
 	materials_base = list(MAT_STEEL = 2000)
 
+	// todo: rework launchers to maaaybe have a similar chambering system to ballistics.....?
+	var/atom/movable/chambered
+
 //revolves the magazine, allowing players to choose between multiple grenade types
 /obj/item/gun/launcher/grenade/proc/pump(mob/M as mob)
 	playsound(M, 'sound/weapons/shotgunpump.ogg', 60, 1)
