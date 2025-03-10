@@ -33,11 +33,8 @@
 	if(istype(AM, /obj/effect/projectile))
 		return // ...neither should the effects be falling
 
-	var/mob/living/L
-	if(isliving(AM))
-		L = AM
-		if(L.is_floating || L.flying)
-			return //Flyers/nograv can ignore it
+	if(AM.is_avoiding_ground())
+		return //Either flying/hovering or buckled that at least has long legs. If that falls, they'll follow
 
 	do_fall(AM)
 
