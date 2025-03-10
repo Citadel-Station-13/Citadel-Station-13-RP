@@ -282,7 +282,7 @@
 						put_in_active_hand(O)
 						visible_message("<span class='warning'>[src] catches [O]!</span>")
 						throw_mode_off()
-						return
+						return COMPONENT_THROW_HIT_NEVERMIND
 
 		var/dtype = DAMAGE_TYPE_BRUTE
 		if(isitem(AM))

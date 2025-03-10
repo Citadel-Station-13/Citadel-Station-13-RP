@@ -17,6 +17,8 @@
 #define ELECTROCUTE_ACT_FLAG_SILENT (1<<4)
 /// Do not emit sparks, ignite things around the entity, etc
 #define ELECTROCUTE_ACT_FLAG_CONTAINED (1<<5)
+/// Do not apply default combat knockdown
+#define ELECTROCUTE_ACT_FLAG_DO_NOT_STUN (1<<6)
 
 //* Arg indices for /atom/proc/electrocute_act() return value list *//
 

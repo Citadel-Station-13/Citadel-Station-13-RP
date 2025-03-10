@@ -18,6 +18,8 @@
 	group_short_name = "Better"
 	sort_key = "4-Better"
 
+	excluded_species = list(SPECIES_HOLOSPHERE)
+
 /datum/trait/positive/endurance_high
 	name = "High Endurance"
 	desc = "125 hitpoints."
@@ -27,6 +29,8 @@
 	group = /datum/trait_group/health
 	group_short_name = "High"
 	sort_key = "5-High"
+
+	excluded_species = list(SPECIES_HOLOSPHERE)
 
 /datum/trait/positive/endurance_high/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)

@@ -2071,7 +2071,7 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/security/range)
 "btC" = (
-/obj/structure/reagent_dispensers/cookingoil,
+/obj/structure/reagent_dispensers/oil,
 /turf/simulated/floor/plating,
 /area/maintenance/central)
 "bul" = (
@@ -6420,9 +6420,9 @@
 /area/security/warden)
 "epK" = (
 /obj/structure/table/reinforced,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/microtaser,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/taser,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/taser,
+/obj/item/vehicle_module/weapon/energy/microtaser,
+/obj/item/vehicle_module/weapon/energy/taser,
+/obj/item/vehicle_module/weapon/energy/taser,
 /turf/simulated/floor/tiled,
 /area/security/eva)
 "eqO" = (
@@ -8184,7 +8184,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
 "fDv" = (
-/obj/machinery/mineral/equipment_vendor/survey,
+/obj/machinery/point_redemption_vendor/survey,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -14903,9 +14903,9 @@
 "kfc" = (
 /obj/machinery/camera/network/prison,
 /obj/structure/table/reinforced,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/phase,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/phase,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/phase,
+/obj/item/vehicle_module/weapon/energy/phase,
+/obj/item/vehicle_module/weapon/energy/phase,
+/obj/item/vehicle_module/weapon/energy/phase,
 /turf/simulated/floor/tiled,
 /area/security/eva)
 "kfh" = (

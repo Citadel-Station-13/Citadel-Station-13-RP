@@ -3,8 +3,8 @@
 
 /datum/chemical_reaction
 	abstract_type = /datum/chemical_reaction
-	//* core *//
 
+	//* core *//
 	/// id - must be unique and in CamelCase.
 	var/id
 	/// reagent reaction flags - see [code/__DEFINES/reagents/flags.dm]
@@ -16,7 +16,6 @@
 	var/___legacy_allow_collision_do_not_use = FALSE
 
 	//* identity *//
-
 	/// name; defaults to reagent produced's name.
 	/// if this is defaulted, it also defaults display name to that reagent if unset.
 	var/name
@@ -29,12 +28,10 @@
 	var/display_description
 
 	//* logging *//
-
 	/// we should care enough about this to log it specifically
 	var/important_for_logging = FALSE
 
 	//* reaction *//
-
 	/// required reagents as ratios. path or id is supported, prefer paths for compile time checking.
 	/// all of these will then make 1 unit of the reagent.
 	var/list/required_reagents = list()
@@ -120,8 +117,12 @@
 	/// todo: reactions being able to go in reverse once reaching equilibrium
 	var/equilibrium = INFINITY
 
-	//* Reaction - Feedback *//
+	/**
+	 * Perform data calculations. This is semi-expensive.
+	 */
+	var/has_data_semantics = FALSE
 
+	//* Reaction - Feedback *//
 	/// if set, everyone around sees this on react
 	var/reaction_message_instant = "The solution begins to bubble."
 	/// if set, everyone around hears this on react
@@ -129,7 +130,6 @@
 	// todo: soundloop support? maybe ambience subsystem for deduping..
 
 	//* guidebook *//
-
 	/// guidebook flags
 	var/reaction_guidebook_flags = NONE
 	/// guidebook category
@@ -199,12 +199,6 @@
 	required_reagents_unit_volume = 0
 	for(var/id in required_reagents)
 		required_reagents_unit_volume += required_reagents[id]
-
-//obtains any special data that will be provided to the reaction products
-//this is called just before reactants are removed.
-// todo: rework data system
-/datum/chemical_reaction/proc/send_data(datum/reagent_holder/holder, reaction_limit)
-	return null
 
 //* Guidebook *//
 
@@ -293,6 +287,20 @@
 	if(holder.temperature < temperature_low || holder.temperature > temperature_high)
 		return FALSE
 	return TRUE
+
+//* Data *//
+
+/**
+ * Performs data calculations for the data **initializer** to give to the result.
+ *
+ * * Only called if `has_data_semantics` is on.
+ *
+ * @params
+ * * holder - source holder
+ * * multiplier - reaction multiplier
+ */
+/datum/chemical_reaction/proc/compute_result_data_initializer(datum/reagent_holder/holder, multiplier)
+	return
 
 //* Queries *//
 
