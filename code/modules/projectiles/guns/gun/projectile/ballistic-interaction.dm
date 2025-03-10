@@ -182,9 +182,10 @@
 		var/obj/item/ammo_casing/peeking = magazine.peek()
 		if(!peeking || !accepts_casing(peeking))
 			break
-		if(insert_casing(peeking, no_sound))
-			ASSERT(magazine.pop() == peeking)
-			loaded++
+		if(!insert_casing(peeking, no_sound))
+			break
+		ASSERT(magazine.pop() == peeking)
+		loaded++
 	while(TRUE)
 
 	if(!no_message)
