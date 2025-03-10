@@ -147,24 +147,32 @@
 	desc = "A preppy blue skirt with a white blouse."
 	icon_state = "plaid_blue"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blue", SLOT_ID_LEFT_HAND = "blue")
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_ROLL
 
 /obj/item/clothing/under/skirt/outfit/plaid_red
 	name = "red plaid skirt"
 	desc = "A preppy red skirt with a white blouse."
 	icon_state = "plaid_red"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "red", SLOT_ID_LEFT_HAND = "red")
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_ROLL
 
 /obj/item/clothing/under/skirt/outfit/plaid_purple
 	name = "purple plaid skirt"
 	desc = "A preppy purple skirt with a white blouse."
 	icon_state = "plaid_purple"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "purple", SLOT_ID_LEFT_HAND = "purple")
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_ROLL
 
 /obj/item/clothing/under/skirt/outfit/plaid_green
 	name = "green plaid skirt"
 	desc = "A preppy purple skirt with a white blouse."
 	icon_state = "plaid_green"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "green", SLOT_ID_LEFT_HAND = "green")
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_ROLL
 
 /obj/item/clothing/under/rank/cargo/skirt
 	name = "quartermaster's jumpskirt"
