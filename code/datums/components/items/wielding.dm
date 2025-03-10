@@ -50,7 +50,7 @@
  */
 /datum/component/wielding/proc/auto_wield()
 	var/obj/item/our_item = parent
-	var/mob/holding = our_item.is_being_held()
+	var/mob/holding = our_item.inv_get_held_mob()
 	if(!holding || wielder)
 		unwield()
 	else
