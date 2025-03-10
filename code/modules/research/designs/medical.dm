@@ -134,7 +134,7 @@
 	id = "cell_medigun_mag_advanced"
 	req_tech = list(TECH_MATERIAL = 7, TECH_MAGNET = 6, TECH_POWER = 4, TECH_BIO = 7)
 	materials_base = list(MAT_STEEL = 5000, MAT_PLASTIC = 10000, MAT_GLASS = 5000, MAT_SILVER = 1500, MAT_GOLD = 1500, MAT_DIAMOND = 5000)
-	build_path = /obj/item/ammo_magazine/microbattery/medical/advanced
+	build_path = /obj/item/ammo_magazine/microbattery/vm_aml/sidearm/advanced
 
 /datum/prototype/design/science/medigun_cell
 	abstract_type = /datum/prototype/design/science/medigun_cell
@@ -149,21 +149,21 @@
 	id = "medigun_cell_toxin"
 	req_tech = list(TECH_MATERIAL = 3, TECH_MAGNET = 3, TECH_BIO = 4)
 	materials_base = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250)
-	build_path = /obj/item/ammo_casing/microbattery/medical/toxin
+	build_path = /obj/item/ammo_casing/microbattery/vm_aml/toxin
 
 /datum/prototype/design/science/medigun_cell/omni
 	design_name = "OMNI"
 	id = "medigun_cell_omni"
 	req_tech = list(TECH_MATERIAL = 3, TECH_MAGNET = 3, TECH_BIO = 4)
 	materials_base = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250)
-	build_path = /obj/item/ammo_casing/microbattery/medical/omni
+	build_path = /obj/item/ammo_casing/microbattery/vm_aml/omni
 
 /datum/prototype/design/science/medigun_cell/antirad
 	design_name = "ANTIRAD"
 	id = "medigun_cell_antirad"
 	req_tech = list(TECH_MATERIAL = 3, TECH_MAGNET = 3, TECH_BIO = 4)
 	materials_base = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250)
-	build_path = /obj/item/ammo_casing/microbattery/medical/antirad
+	build_path = /obj/item/ammo_casing/microbattery/vm_aml/antirad
 
 //Tier 2
 
@@ -172,28 +172,28 @@
 	id = "medigun_cell_brute2"
 	req_tech = list(TECH_MATERIAL = 5, TECH_MAGNET = 3, TECH_POWER = 2, TECH_BIO = 5)
 	materials_base = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_GOLD = 900)
-	build_path = /obj/item/ammo_casing/microbattery/medical/brute2
+	build_path = /obj/item/ammo_casing/microbattery/vm_aml/brute2
 
 /datum/prototype/design/science/medigun_cell/burn2
 	design_name = "BURN-II"
 	id = "medigun_cell_burn2"
 	req_tech = list(TECH_MATERIAL = 5, TECH_MAGNET = 3, TECH_POWER = 2, TECH_BIO = 5)
 	materials_base = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_GOLD = 900)
-	build_path = /obj/item/ammo_casing/microbattery/medical/burn2
+	build_path = /obj/item/ammo_casing/microbattery/vm_aml/burn2
 
 /datum/prototype/design/science/medigun_cell/stabilize2
 	design_name = "STABILIZE-II"
 	id = "medigun_cell_stabilize2"
 	req_tech = list(TECH_MATERIAL = 5, TECH_MAGNET = 3, TECH_POWER = 2, TECH_BIO = 5)
 	materials_base = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_SILVER = 900)
-	build_path = /obj/item/ammo_casing/microbattery/medical/stabilize2
+	build_path = /obj/item/ammo_casing/microbattery/vm_aml/stabilize2
 
 /datum/prototype/design/science/medigun_cell/omni2
 	design_name = "OMNI-II"
 	id = "medigun_cell_omni2"
 	req_tech = list(TECH_MATERIAL = 5, TECH_MAGNET = 3, TECH_POWER = 2, TECH_BIO = 5)
 	materials_base = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_URANIUM = 900)
-	build_path = /obj/item/ammo_casing/microbattery/medical/omni2
+	build_path = /obj/item/ammo_casing/microbattery/vm_aml/omni2
 
 //Tier 3
 
@@ -202,28 +202,28 @@
 	id = "medigun_cell_toxin2"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 3, TECH_POWER = 3, TECH_BIO = 6)
 	materials_base = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_URANIUM = 900, MAT_SILVER = 900, MAT_DIAMOND = 500)
-	build_path = /obj/item/ammo_casing/microbattery/medical/toxin2
+	build_path = /obj/item/ammo_casing/microbattery/vm_aml/toxin2
 
 /datum/prototype/design/science/medigun_cell/haste
 	design_name = "HASTE"
 	id = "medigun_cell_haste"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 3, TECH_POWER = 3, TECH_BIO = 6)
 	materials_base = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_GOLD = 900, MAT_SILVER = 900, MAT_DIAMOND = 900)
-	build_path = /obj/item/ammo_casing/microbattery/medical/haste
+	build_path = /obj/item/ammo_casing/microbattery/vm_aml/haste
 
 /datum/prototype/design/science/medigun_cell/resist
 	design_name = "RESIST"
 	id = "medigun_cell_resist"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 3, TECH_POWER = 3, TECH_BIO = 6)
 	materials_base = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_GOLD = 900, MAT_URANIUM = 900, MAT_DIAMOND = 900)
-	build_path = /obj/item/ammo_casing/microbattery/medical/resist
+	build_path = /obj/item/ammo_casing/microbattery/vm_aml/resist
 
 /datum/prototype/design/science/medigun_cell/corpse_mend
 	design_name = "CORPSE MEND"
 	id = "medigun_cell_corpse_mend"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 3, TECH_POWER = 3, TECH_BIO = 6)
 	materials_base = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_PHORON = 3000, MAT_DIAMOND = 3000)
-	build_path = /obj/item/ammo_casing/microbattery/medical/corpse_mend
+	build_path = /obj/item/ammo_casing/microbattery/vm_aml/corpse_mend
 
 //Tier 4
 
@@ -232,28 +232,28 @@
 	id = "medigun_cell_brute3"
 	req_tech = list(TECH_MATERIAL = 7, TECH_MAGNET = 6, TECH_POWER = 5, TECH_BIO = 7, TECH_PRECURSOR = 2)
 	materials_base = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_DIAMOND = 500, MAT_VERDANTIUM = 900)
-	build_path = /obj/item/ammo_casing/microbattery/medical/brute3
+	build_path = /obj/item/ammo_casing/microbattery/vm_aml/brute3
 
 /datum/prototype/design/science/medigun_cell/burn3
 	design_name = "BURN-III"
 	id = "medigun_cell_burn3"
 	req_tech = list(TECH_MATERIAL = 7, TECH_MAGNET = 6, TECH_POWER = 5, TECH_BIO = 7, TECH_PRECURSOR = 2)
 	materials_base = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_DIAMOND = 500, MAT_VERDANTIUM = 900)
-	build_path = /obj/item/ammo_casing/microbattery/medical/burn3
+	build_path = /obj/item/ammo_casing/microbattery/vm_aml/burn3
 
 /datum/prototype/design/science/medigun_cell/toxin3
 	design_name = "TOXIN-III"
 	id = "medigun_cell_toxin3"
 	req_tech = list(TECH_MATERIAL = 7, TECH_MAGNET = 6, TECH_POWER = 5, TECH_BIO = 7, TECH_ARCANE = 2)
 	materials_base = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_DIAMOND = 500, MAT_VERDANTIUM = 900)
-	build_path = /obj/item/ammo_casing/microbattery/medical/toxin3
+	build_path = /obj/item/ammo_casing/microbattery/vm_aml/toxin3
 
 /datum/prototype/design/science/medigun_cell/omni3
 	design_name = "OMNI-III"
 	id = "medigun_cell_omni3"
 	req_tech = list(TECH_MATERIAL = 7, TECH_MAGNET = 6, TECH_POWER = 5, TECH_BIO = 7, TECH_ARCANE = 2)
 	materials_base = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_DIAMOND = 500, MAT_VERDANTIUM = 900)
-	build_path = /obj/item/ammo_casing/microbattery/medical/omni3
+	build_path = /obj/item/ammo_casing/microbattery/vm_aml/omni3
 
 //Tierless
 
@@ -262,18 +262,18 @@
 	id = "medigun_cell_shrink"
 	req_tech = list(TECH_MATERIAL = 5, TECH_MAGNET = 3, TECH_BLUESPACE = 3, TECH_BIO = 5, TECH_ILLEGAL = 5)
 	materials_base = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_URANIUM = 1800)
-	build_path = /obj/item/ammo_casing/microbattery/medical/shrink
+	build_path = /obj/item/ammo_casing/microbattery/vm_aml/shrink
 
 /datum/prototype/design/science/medigun_cell/grow
 	design_name = "GROW"
 	id = "medigun_cell_grow"
 	req_tech = list(TECH_MATERIAL = 5, TECH_MAGNET = 3, TECH_BLUESPACE = 3, TECH_BIO = 5, TECH_ILLEGAL = 5)
 	materials_base = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_URANIUM = 1800)
-	build_path = /obj/item/ammo_casing/microbattery/medical/grow
+	build_path = /obj/item/ammo_casing/microbattery/vm_aml/grow
 
 /datum/prototype/design/science/medigun_cell/normalsize
 	design_name = "NORMALSIZE"
 	id = "medigun_cell_normalsize"
 	req_tech = list(TECH_MATERIAL = 5, TECH_MAGNET = 3, TECH_BLUESPACE = 3, TECH_BIO = 5, TECH_ILLEGAL = 5)
 	materials_base = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_URANIUM = 1800)
-	build_path = /obj/item/ammo_casing/microbattery/medical/normalsize
+	build_path = /obj/item/ammo_casing/microbattery/vm_aml/normalsize

@@ -177,6 +177,7 @@
 	our_cycle.original_tile_pixel_y = tile_pixel_y
 	our_cycle.original_target_zone = target_zone
 	our_cycle.cycle_cooldown = firemode.cycle_cooldown
+	our_cycle.base_dispersion_adjust = firemode.projectile_base_dispersion
 	// cycle notch
 	our_cycle.cycle_notch = ++firing_cycle_next
 	if(firing_cycle_next >= SHORT_REAL_LIMIT)

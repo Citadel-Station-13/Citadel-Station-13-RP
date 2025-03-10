@@ -199,8 +199,8 @@
 /obj/item/gun/projectile/energy/ionrifle,
 /obj/item/gun/projectile/energy/ionrifle/pistol,
 /obj/item/gun/projectile/energy/ionrifle/pistol,
-/obj/item/storage/secure/briefcase/nsfw_pack_hybrid_combat,
-/obj/item/storage/secure/briefcase/nsfw_pack_hybrid,
+/obj/item/storage/secure/briefcase/nsfw_pack_hos,
+/obj/item/storage/secure/briefcase/nsfw_pack,
 /obj/item/gun/launcher/grenade,
 /obj/item/gun/launcher/grenade,
 /obj/item/storage/box/flashbangs,
@@ -1175,10 +1175,10 @@
 /obj/item/cell/device/weapon/recharge/alien,
 /obj/item/cell/device/weapon/recharge/alien,
 /obj/item/cell/device/weapon/recharge/alien,
-/obj/item/storage/secure/briefcase/nsfw_pack_hybrid_combat,
-/obj/item/storage/secure/briefcase/nsfw_pack_hybrid,
-/obj/item/ammo_casing/microbattery/medical/corpse_mend,
-/obj/item/ammo_casing/microbattery/medical/corpse_mend,
+/obj/item/storage/secure/briefcase/nsfw_pack_hos,
+/obj/item/storage/secure/briefcase/nsfw_pack,
+/obj/item/ammo_casing/microbattery/vm_aml/corpse_mend,
+/obj/item/ammo_casing/microbattery/vm_aml/corpse_mend,
 /obj/item/cell/slime{
 	description_info = "This 'cell' holds a max charge of 20k and self recharges over time.";
 	icon_state = "icell";

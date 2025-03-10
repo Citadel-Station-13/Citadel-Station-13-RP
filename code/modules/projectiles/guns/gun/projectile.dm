@@ -66,7 +66,7 @@
 	effective_angle += rand(-effective_dispersion, effective_dispersion)
 
 	launching.forceMove(cycle.firing_atom.loc)
-	launching.add_projectile_effects(cycle.firemode.add_projectile_effects)
+	launching.add_projectile_effects(cycle.firemode.projectile_effects_add)
 	launching.fire(effective_angle, get_turf(cycle.original_target) == get_turf(src) ? cycle.original_target : null)
 
 /**

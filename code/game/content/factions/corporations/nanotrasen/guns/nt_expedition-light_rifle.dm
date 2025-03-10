@@ -4,6 +4,8 @@
 //* Caliber *//
 
 /datum/ammo_caliber/nt_expedition/light_rifle
+	name = "NT-7.5"
+	id = "nt-light-rifle"
 	caliber = "nt-light-rifle"
 	diameter = 7.5
 	length = 39
@@ -11,11 +13,13 @@
 //* Ammo Casings *//
 
 /obj/item/ammo_casing/nt_expedition/light_rifle
-	name = "ammo casing (NT-7.5-SR)"
+	name = "ammo casing (NT-7.5)"
 	desc = "A standardized 7.5x39mm cartridge for NT Expeditionary kinetics. This one seems to be for lightweight automatics."
-	caliber = /datum/ammo_caliber/nt_expedition/light_rifle
-	projectile_type = /obj/projectile/bullet/nt_expedition/light_rifle
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-light-ammo.dmi'
 	icon_state = "basic"
+	icon_spent = TRUE
+	casing_caliber = /datum/ammo_caliber/nt_expedition/light_rifle
+	projectile_type = /obj/projectile/bullet/nt_expedition/light_rifle
 
 	/// specifically for /obj/item/ammo_magazine/nt_expedition/light_rifle's
 	var/speedloader_state = "basic"
@@ -39,13 +43,13 @@
 	base_icon_state = "magazine"
 	rendering_system = GUN_RENDERING_DISABLED
 	ammo_caliber = /datum/ammo_caliber/nt_expedition/light_rifle
-	ammo_max = 5
 	ammo_preload = /obj/item/ammo_casing/nt_expedition/light_rifle
 
 /obj/item/ammo_magazine/nt_expedition/light_rifle/speedloader
 	name = "speedloader (NT-7.5)"
 	icon_state = "speedloader"
 	base_icon_state = "speedloader"
+	ammo_max = 6
 
 /obj/item/ammo_magazine/nt_expedition/light_rifle/speedloader/update_icon(updates)
 	cut_overlays()
@@ -67,7 +71,7 @@
 		-2,
 		-4
 	)
-	for(var/i in 1 to min(6, amount_remaining()))
+	for(var/i in 1 to min(6, get_amount_remaining()))
 		var/obj/item/ammo_casing/nt_expedition/light_rifle/predicted_path = peek_path_of_position(i)
 		var/append = "basic"
 		if(ispath(predicted_path, /obj/item/ammo_casing/nt_expedition/light_rifle))
@@ -130,7 +134,8 @@
 		Unfortunately, the downsides of using such a heavy caliber in a sidearm package limits its
 		practical use. This is nonetheless seen now and then in the hands of enthusiasts.
 	"} + "<br>"
-	load_method = SINGLE_CASING | SPEEDLOADER
+	internal_magazine = TRUE
+	internal_magazine_size = /obj/item/ammo_magazine/nt_expedition/light_rifle/speedloader::ammo_max
 	icon_state = "revolver"
 	base_icon_state = "revolver"
 	render_break_overlay = BALLISTIC_RENDER_BREAK_OPEN
@@ -146,10 +151,10 @@
 		relatively compact magazines. However, larger magazines will also work with this
 		workhorse of a weapon.
 	"} + "<br>"
-	load_method = SINGLE_CASING | MAGAZINE
 	icon_state = "semi-map"
 	base_icon_state = "semi"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
+	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_rifle/stick
 
 /obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/autorifle
 	name = "automatic rifle"
@@ -162,10 +167,10 @@
 		standard to the forward handguard. Issued with larger magazines to make better use of
 		the automatic fire this weapon is capable of.
 	"} + "<br>"
-	load_method = SINGLE_CASING | MAGAZINE
 	icon_state = "auto-map"
 	base_icon_state = "auto"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
+	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_rifle/stick
 
 /obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/pdw
 	name = "personal defense weapon"
@@ -178,10 +183,10 @@
 		this weapon's ability to fold away helps make it easy to package and
 		store inside cramped cockpits and into survival kits with its compact magazines.
 	"} + "<br>"
-	load_method = SINGLE_CASING | MAGAZINE
 	icon_state = "pdw-map"
 	base_icon_state = "pdw"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
+	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_rifle/stick
 
 /obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/lmg
 	name = "squad automatic weapon"
@@ -193,9 +198,9 @@
 		recon teams and security units while keeping a common set of parts
 		to reduce the complexities of servicing and maintaining the series as a whole.
 	"} + "<br>"
-	load_method = SINGLE_CASING | MAGAZINE
 	icon_state = "saw-map"
 	base_icon_state = "saw"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	render_bolt_overlay = BALLISTIC_RENDER_BOLT_CLOSE
 	render_break_overlay = BALLISTIC_RENDER_BREAK_BOTH
+	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_rifle/stick

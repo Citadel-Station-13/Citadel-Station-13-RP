@@ -69,7 +69,7 @@
 		SPAN_NOTICE("[src] is now set to [switch_to.name]."),
 		target = src,
 	)
-	playsound(src, selector_sound, 50, 1)
+	playsound(src, selector_sound, 50, TRUE)
 
 /obj/item/gun/proc/user_firemode_radial(datum/event_args/actor/actor)
 	var/atom/use_anchor = inv_inside ? inv_inside.owner : src

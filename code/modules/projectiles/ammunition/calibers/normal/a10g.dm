@@ -1,4 +1,5 @@
 /datum/ammo_caliber/a10g
+	id = "a10g"
 	caliber = "10g"
 
 /obj/item/ammo_casing/a10g
@@ -7,7 +8,7 @@
 	icon = 'icons/modules/projectiles/casings/a10g.dmi'
 	icon_state = "10ga_slug"
 	icon_spent = FALSE
-	caliber = /datum/ammo_caliber/a10g
+	casing_caliber = /datum/ammo_caliber/a10g
 	projectile_type = /obj/projectile/bullet/heavy_shotgun
 	materials_base = list(MAT_STEEL = 300, "brass" = 200)
 	fall_sounds = list('sound/weapons/guns/shotgun_fall.ogg')

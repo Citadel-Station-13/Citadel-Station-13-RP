@@ -11,15 +11,13 @@
 	origin_tech = list(TECH_COMBAT = 7, TECH_MATERIAL = 4)
 	slot_flags = null
 	fire_sound = 'sound/weapons/Gunshot_light.ogg'
-	load_method = MAGAZINE
 	damage_force = 3
 	recoil = 2
-	auto_eject = 1
-	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
+	magazine_auto_eject = TRUE
 	attack_sound = null
 	caliber = /datum/ammo_caliber/a7_62mm
-	magazine_type = /obj/item/ammo_magazine/a7_62mm
-	allowed_magazines = list(/obj/item/ammo_magazine/a7_62mm)
+	magazine_preload = /obj/item/ammo_magazine/a7_62mm
+	magazine_restrict = /obj/item/ammo_magazine/a7_62mm
 
 	firemodes = list(
 	list(mode_name="fold", icon_state="crestrose_fold",item_state = "laser",damage_force=3),

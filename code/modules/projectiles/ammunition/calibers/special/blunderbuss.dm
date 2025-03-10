@@ -1,4 +1,5 @@
 /datum/ammo_caliber/blunderbuss
+	id = "blunderbuss"
 	caliber = "blunderbuss"
 
 /obj/item/ammo_casing/blunderbuss
@@ -6,7 +7,7 @@
 	desc = "A bundle of lead balls and other assorted shrapnel."
 	icon = 'icons/modules/projectiles/casings/blunderbuss.dmi'
 	icon_state = "blunderbuss"
-	caliber = /datum/ammo_caliber/blunderbuss
+	casing_caliber = /datum/ammo_caliber/blunderbuss
 	projectile_type = /obj/projectile/bullet/pellet/blunderbuss
 	materials_base = list("lead" = 500)
 

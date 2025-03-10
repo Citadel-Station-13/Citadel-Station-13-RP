@@ -95,8 +95,8 @@
 				prob(1);/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/taj,
 				prob(1);/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/lever,
 				prob(1);/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/lever/win1895,
-				prob(1);/obj/item/gun/projectile/ballistic/caseless/phoron_spitter,
-				prob(1);/obj/item/gun/projectile/ballistic/caseless/wild_hunt,
+				prob(1);/obj/item/gun/projectile/ballistic/caseless/phoron_spitter/loaded,
+				prob(1);/obj/item/gun/projectile/ballistic/caseless/wild_hunt/loaded,
 				prob(2);/obj/item/gun/projectile/ballistic/silenced)
 
 /obj/random/projectile/sec
@@ -229,7 +229,7 @@
 				/obj/item/ammo_magazine/a45/uzi
 			),
 			prob(1);list(
-				/obj/item/gun/projectile/ballistic/caseless/phoron_spitter,
+				/obj/item/gun/projectile/ballistic/caseless/phoron_spitter/loaded,
 				/obj/item/ammo_magazine/phoron_shrap
 			)
 		)
@@ -275,7 +275,7 @@
 				/obj/item/ammo_magazine/a7_62mm/clip
 			),
 			prob(1);list(
-				/obj/item/gun/projectile/ballistic/caseless/wild_hunt,
+				/obj/item/gun/projectile/ballistic/caseless/wild_hunt/loaded,
 				/obj/item/ammo_magazine/a12_7mm/wild_hunt,
 				/obj/item/ammo_magazine/a12_7mm/wild_hunt
 			),

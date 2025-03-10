@@ -1,11 +1,12 @@
 /datum/ammo_caliber/arrow
+	id = "arrow"
 	caliber = "arrow"
 
 /obj/item/ammo_casing/arrow
 	name = "arrow of questionable material"
 	desc = "You shouldn't be seeing this arrow."
 	projectile_type = /obj/projectile/bullet/reusable/arrow
-	caliber = /datum/ammo_caliber/arrow
+	casing_caliber = /datum/ammo_caliber/arrow
 
 	icon = 'icons/modules/projectiles/casings/arrow.dmi'
 	icon_state = "arrow"

@@ -1,5 +1,6 @@
 /datum/ammo_caliber/foam
-	caliber = "donksoft"
+	id = "foam"
+	caliber = "foam"
 
 //* Ammunition *//
 
@@ -7,7 +8,7 @@
 	name = "foam dart"
 	desc = "A soft projectile made out of orange foam with a blue plastic tip."
 	projectile_type = /obj/projectile/bullet/reusable/foam
-	caliber = /datum/ammo_caliber/foam
+	casing_caliber = /datum/ammo_caliber/foam
 	icon = 'icons/modules/projectiles/casings/foam.dmi'
 	icon_state = "dart"
 	throw_force = 0

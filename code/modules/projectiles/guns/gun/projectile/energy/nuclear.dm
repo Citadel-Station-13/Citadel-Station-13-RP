@@ -94,21 +94,25 @@
 
 /datum/firemode/energy/mining_carbine/mine
 	name = "mine"
-	legacy_direct_varedits = list(projectile_type=/obj/projectile/beam/excavation, modifystate="fm-2tstun", charge_cost = 20)
+	projectile_type = /obj/projectile/beam/excavation
+	legacy_direct_varedits = list(modifystate="fm-2tstun", charge_cost = 20)
 
 /datum/firemode/energy/mining_carbine/mine_burst
 	name = "mine burst"
+	projectile_type = /obj/projectile/beam/excavation
 	burst_amount = 5
-	legacy_direct_varedits = list(burst_accuracy=list(65,65,65), dispersion=list(0.0, 0.2, 0.5), projectile_type=/obj/projectile/beam/excavation, modifystate="fm-2tstun")
+	legacy_direct_varedits = list(burst_accuracy=list(65,65,65), dispersion=list(0.0, 0.2, 0.5), modifystate="fm-2tstun")
 
 /datum/firemode/energy/mining_carbine/scatter
 	name = "scatter"
-	legacy_direct_varedits = list(projectile_type=/obj/projectile/scatter/excavation, modifystate="fm-2tkill", charge_cost = 40)
+	projectile_type = /obj/projectile/scatter/excavation
+	legacy_direct_varedits = list(modifystate="fm-2tkill", charge_cost = 40)
 
 /datum/firemode/energy/mining_carbine/scatter_burst
 	name = "scatter burst"
 	burst_amount = 5
-	legacy_direct_varedits = list(burst_accuracy=list(65,65,65), dispersion=list(0.0, 0.2, 0.5), projectile_type=/obj/projectile/scatter/excavation, modifystate="fm-2tkill")
+	projectile_type = /obj/projectile/scatter/excavation
+	legacy_direct_varedits = list(burst_accuracy=list(65,65,65), dispersion=list(0.0, 0.2, 0.5), modifystate="fm-2tkill")
 
 /obj/item/gun/projectile/energy/gun/miningcarbine
 	name = "mining carbine"
@@ -118,7 +122,6 @@
 	charge_cost = 20
 	damage_force = 8
 	w_class = WEIGHT_CLASS_BULKY
-	projectile_type = /obj/projectile/beam/excavation
 	origin_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 2, TECH_ILLEGAL = 2)
 	modifystate = "fm-2tstun"
 

@@ -221,3 +221,21 @@
 
 /datum/gun_item_renderer/empty_state/dedupe_key()
 	return "empty_state-[use_firemode]"
+
+/**
+ * just swaps icon state to base_icon_state
+ *
+ * * can optionally append a firemode key
+ */
+/datum/gun_item_renderer/nothing
+	/// additionally, add an "-[firemode]" state for our firemode's render_key
+	var/use_firemode
+
+/datum/gun_item_renderer/nothing/render(obj/item/gun/gun, base_icon_state, ammo_ratio, firemode_key, firemode_color)
+	if(gun.render_skip)
+		gun.icon_state = base_icon_state
+		return
+	gun.icon_state = "[base_icon_state][firemode_key && use_firemode ? "-[firemode_key]" : ""]"
+
+/datum/gun_item_renderer/nothing/dedupe_key()
+	return "nothing-[use_firemode]"
