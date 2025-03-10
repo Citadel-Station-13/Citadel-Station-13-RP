@@ -84,14 +84,12 @@ GLOBAL_LIST(topic_status_cache)
 	// shunt redirected world log from Master's init back into world log proper, now that logging has been set up.
 	shunt_redirected_log()
 
-	config_legacy.post_load()
-
 	if(config && config_legacy.server_name != null && config_legacy.server_suffix && world.port > 0)
 		// dumb and hardcoded but I don't care~
 		config_legacy.server_name += " #[(world.port % 1000) / 100]"
 
 	// TODO - Figure out what this is. Can you assign to world.log?
-	// if(config && config_legacy.log_runtime)
+	// if(config && Configuration.get_entry(/datum/toml_config_entry/backend/logging/toggles/runtime))
 	// 	log = file("data/logs/runtime/[time2text(world.realtime,"YYYY-MM-DD-(hh-mm-ss)")]-runtime.log")
 
 	GLOB.timezoneOffset = get_timezone_offset()
@@ -201,6 +199,8 @@ GLOBAL_LIST(topic_status_cache)
 	// but those are both private, so let's put the commit info in the runtime
 	// log which is ultimately public.
 	log_runtime(GLOB.revdata.get_log_message())
+
+	global.event_logger.setup_logger(GLOB.log_directory)
 
 /world/proc/_setup_logs_boilerplate()
 
@@ -507,6 +507,8 @@ GLOBAL_LIST(topic_status_cache)
 	// update
 	for(var/datum/controller/subsystem/subsystem in Master.subsystems)
 		subsystem.on_ticklag_changed(old, ticklag)
+	for(var/mob/mob in GLOB.mob_list)
+		mob.update_movespeed()
 
 //* Log Shunter *//
 

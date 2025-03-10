@@ -499,8 +499,9 @@ About the new airlock wires panel:
 		return 0
 
 
-/obj/machinery/door/airlock/update_icon(var/doorstate)
-	switch(doorstate)
+/obj/machinery/door/airlock/update_icon()
+	. = ..()
+	switch(state)
 		if(AIRLOCK_OPEN)
 			icon_state = "open"
 		if(AIRLOCK_CLOSED)
@@ -513,28 +514,43 @@ About the new airlock wires panel:
 /obj/machinery/door/airlock/custom_smooth()
 	return //we only custom smooth because we don't need to do anything else.
 
+// todo: Rework everything, fucks sakes
 /obj/machinery/door/airlock/do_animate(animation)
 	switch(animation)
 		if(DOOR_ANIMATION_OPEN)
 			set_airlock_overlays(AIRLOCK_OPENING)
 			flick("opening", src)//[stat ? "_stat":]
-			update_icon(AIRLOCK_OPEN)
+			state = AIRLOCK_OPENING
+			update_icon()
 		if(DOOR_ANIMATION_CLOSE)
 			set_airlock_overlays(AIRLOCK_CLOSING)
 			flick("closing", src)
-			update_icon(AIRLOCK_CLOSED)
+			state = AIRLOCK_CLOSING
+			update_icon()
 		if(DOOR_ANIMATION_DENY)
 			set_airlock_overlays(AIRLOCK_DENY)
 			if(density && arePowerSystemsOn())
 				flick("deny", src)
 				if(speaker)
 					playsound(loc, denied_sound, 50, 0)
-			update_icon(AIRLOCK_CLOSED)
+			var/old_state = state
+			state = AIRLOCK_DENY
+			update_icon()
+			state = old_state
+			spawn(3)
+				update_icon()
 		if(DOOR_ANIMATION_EMAG)
 			set_airlock_overlays(AIRLOCK_EMAG)
 			if(density && arePowerSystemsOn())
 				flick("deny", src)
+			var/old_state = state
+			state = AIRLOCK_EMAG
+			update_icon()
+			state = old_state
+			spawn(3)
+				update_icon()
 		else
+			state = AIRLOCK_EMAG
 			update_icon()
 
 /obj/machinery/door/airlock/attack_ai(mob/user as mob)
@@ -841,11 +857,6 @@ About the new airlock wires panel:
 			if(locked)
 				to_chat(user, "<span class='notice'>The airlock's bolts prevent it from being forced.</span>")
 			else if( !welded && !operating )
-				if(istype(C, /obj/item/material/twohanded/fireaxe)) // If this is a fireaxe, make sure it's held in two hands.
-					var/obj/item/material/twohanded/fireaxe/F = C
-					if(!F.wielded)
-						to_chat(user, "<span class='warning'>You need to be wielding \the [F] to do that.</span>")
-						return
 				// At this point, it's an armblade or a fireaxe that passed the wielded test, let's try to open it.
 				if(density)
 					spawn(0)
@@ -857,7 +868,6 @@ About the new airlock wires panel:
 			..()
 	else
 		..()
-	return
 
 /obj/machinery/door/airlock/phoron/attackby(C as obj, mob/user as mob)
 	if(C)
@@ -890,7 +900,11 @@ About the new airlock wires panel:
 
 	if(src.closeOther != null && istype(src.closeOther, /obj/machinery/door/airlock/) && !src.closeOther.density)
 		src.closeOther.close()
-	return ..()
+	. = ..()
+	if(!.)
+		return
+	state = AIRLOCK_OPEN
+	update_icon()
 
 /obj/machinery/door/airlock/close(var/forced=0)
 	if(!can_close(forced))
@@ -921,7 +935,11 @@ About the new airlock wires panel:
 		var/obj/structure/window/killthis = (locate(/obj/structure/window) in turf)
 		if(killthis)
 			LEGACY_EX_ACT(killthis, 2, null)//Smashin windows
-	return ..()
+	. = ..()
+	if(!.)
+		return
+	state = AIRLOCK_CLOSED
+	update_icon()
 
 /obj/machinery/door/airlock/set_opacity_on_close()
 	if(visible)

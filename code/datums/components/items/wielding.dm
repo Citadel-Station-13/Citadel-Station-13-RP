@@ -3,7 +3,7 @@
 	registered_type = /datum/component/wielding
 
 	/// hands needed
-	var/hands
+	var/hands = 2
 	/// lazylist
 	var/list/obj/item/offhand/wielding/offhands
 	/// wielded user
@@ -18,9 +18,12 @@
 		return COMPONENT_INCOMPATIBLE
 	if((. = ..()) == COMPONENT_INCOMPATIBLE)
 		return
-	src.hands = hands
-	src.on_wield = on_wield
-	src.on_unwield = on_unwield
+	if(hands)
+		src.hands = hands
+	if(on_wield)
+		src.on_wield = on_wield
+	if(on_unwield)
+		src.on_unwield = on_unwield
 
 /datum/component/wielding/RegisterWithParent()
 	. = ..()
@@ -37,11 +40,25 @@
 
 /datum/component/wielding/proc/signal_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
-	examine_list += SPAN_NOTICE("[parent] seems to be able to be used with [hands] hands. Press your \"Wield Item\" keybind to toggle wielding.")
+	examine_list += SPAN_NOTICE("[parent] seems to be able to be used with [hands] hands. Press your \"<b>Wield Item</b>\" keybind [user?.client?.print_keys_for_keybind_with_prefs_link(/datum/keybinding/mob/multihand_wield, " ")]to toggle wielding.")
 
 /datum/component/wielding/proc/signal_dropped(datum/source, mob/user, flags, atom/newloc)
 	unwield()
 
+/**
+ * todo: event_args/actor
+ */
+/datum/component/wielding/proc/auto_wield()
+	var/obj/item/our_item = parent
+	var/mob/holding = our_item.is_being_held()
+	if(!holding || wielder)
+		unwield()
+	else
+		wield(holding)
+
+/**
+ * todo: event_args/actor
+ */
 /datum/component/wielding/proc/wield(mob/wielder)
 	if(src.wielder)
 		return
@@ -58,23 +75,34 @@
 		creating.host = src
 		made += creating
 	offhands = made
+	var/obj/item/item_parent = parent
+	item_parent.item_flags |= ITEM_MULTIHAND_WIELDED
 	src.wielder = wielder
 	to_chat(src.wielder, SPAN_WARNING("You start wielding [parent] with [hands == 2? "both" : "[hands]"] hands."))
 	post_wield(src.wielder, hands)
 
+/**
+ * todo: event_args/actor
+ */
 /datum/component/wielding/proc/post_wield(mob/user, hands)
 	if(on_wield)
 		on_wield.Invoke(user, hands)
 	var/obj/item/I = parent
 	I.on_wield(user, hands)
 
+/**
+ * todo: event_args/actor
+ */
 /datum/component/wielding/proc/unwield(gcing)
 	if(!wielder)
 		return
 	if(offhands)
 		var/list/old = offhands
 		offhands = null
-		QDEL_LIST(old)
+		for(var/obj/item/offhand/offhand as anything in old)
+			// might already be qdeleting if we're unwield()ing due to a dropped()
+			if(!QDELETED(offhand))
+				qdel(offhand)
 	var/obj/item/I = parent
 	var/mob/unwielding = wielder
 	I.item_flags &= ~ITEM_MULTIHAND_WIELDED
@@ -83,6 +111,9 @@
 	wielder = null
 	post_unwield(unwielding, hands)
 
+/**
+ * todo: event_args/actor
+ */
 /datum/component/wielding/proc/post_unwield(mob/user, hands)
 	if(on_unwield)
 		on_unwield.Invoke(user, hands)
@@ -109,17 +140,34 @@
 //* Item Hooks *//
 
 /**
- * Called when wielded via wielding component.
- *
- * * This is a default hook that's always executed, even if there's a callback provided to the component.
+ * Call to attempt to wield/unwield with wield component.
  */
-/obj/item/proc/on_wield(mob/user, hands)
-	return
+/obj/item/proc/auto_wield(datum/event_args/actor/actor)
+	var/datum/component/wielding/wielding_component = GetComponent(/datum/component/wielding)
+	if(!wielding_component)
+		return
+	wielding_component.auto_wield(actor.performer)
 
 /**
  * Called when wielded via wielding component.
  *
+ * todo: /datum/event_args/actor
+ *
+ * * This is a default hook that's always executed, even if there's a callback provided to the component.
+ */
+/obj/item/proc/on_wield(mob/user, hands)
+	SHOULD_CALL_PARENT(TRUE)
+	update_icon()
+	update_worn_icon()
+
+/**
+ * Called when wielded via wielding component.
+ *
+ * todo: /datum/event_args/actor
+ *
  * * This is a default hook that's always executed, even if there's a callback provided to the component.
  */
 /obj/item/proc/on_unwield(mob/user, hands)
-	return
+	SHOULD_CALL_PARENT(TRUE)
+	update_icon()
+	update_worn_icon()

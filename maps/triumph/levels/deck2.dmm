@@ -2274,7 +2274,7 @@
 /turf/simulated/floor/tiled,
 /area/station/stairs_two)
 "gL" = (
-/obj/structure/reagent_dispensers/cookingoil,
+/obj/structure/reagent_dispensers/oil,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
@@ -8868,7 +8868,7 @@
 /obj/structure/closet/hydrant{
 	pixel_y = 30
 	},
-/obj/item/gun/ballistic/shotgun/flare,
+/obj/item/gun/projectile/ballistic/shotgun/flare,
 /obj/item/storage/box/flashshells,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
@@ -13436,7 +13436,7 @@
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/bar_backroom)
 "OH" = (
-/obj/machinery/mineral/equipment_vendor,
+/obj/machinery/point_redemption_vendor/mining,
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
 	},
@@ -14474,7 +14474,7 @@
 /area/crew_quarters/sleep/Dorm_5)
 "RQ" = (
 /obj/structure/closet/secure_closet/bar,
-/obj/item/gun/ballistic/shotgun/doublebarrel,
+/obj/item/gun/projectile/ballistic/shotgun/doublebarrel,
 /obj/item/storage/box/beanbags/large,
 /obj/item/storage/box/beanbags/large,
 /obj/item/clothing/accessory/permit/gun/bar,
@@ -14487,7 +14487,7 @@
 	dir = 4;
 	pixel_x = -24
 	},
-/obj/item/gun/ballistic/shotgun/doublebarrel,
+/obj/item/gun/projectile/ballistic/shotgun/doublebarrel,
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/bar_backroom)
 "RR" = (

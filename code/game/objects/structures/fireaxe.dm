@@ -62,9 +62,6 @@
 			if(!user.attempt_insert_item_for_installation(O, src))
 				return
 			fireaxe = O
-			if(fireaxe.wielded)
-				fireaxe.wielded = FALSE
-				fireaxe.update_icon()
 			to_chat(user, "<span class='notice'>You place the fire axe back in the [name].</span>")
 			update_icon()
 		else
@@ -180,6 +177,7 @@
 		return
 
 /obj/structure/fireaxecabinet/update_icon() //Template: fireaxe[has fireaxe][is opened][hits taken][is smashed]. If you want the opening or closing animations, add "opening" or "closing" right after the numbers
+	. = ..()
 	hasaxe = 0
 	if(fireaxe)
 		hasaxe = 1

@@ -27,11 +27,6 @@
 		"Philosopher" = /datum/prototype/struct/alt_title/librarian/philosopher
 	)
 
-/datum/prototype/struct/alt_title/librarian/librarian/reporter
-	title = "Reporter"
-	title_blurb = "Although Nanotrasen's official Press outlet is managed by Central Command, they often hire freelance journalists for local coverage."
-	title_outfit = /datum/outfit/job/station/librarian/reporter
-
 // Librarian Alt Titles
 /datum/prototype/struct/alt_title/librarian/journalist
 	title = "Journalist"
@@ -44,6 +39,7 @@
 /datum/prototype/struct/alt_title/librarian/reporter
 	title = "Reporter"
 	title_blurb = "The Reporter uses the Library as a base of operations, from which they can report the news and goings-on on the station with their camera."
+	title_outfit = /datum/outfit/job/station/librarian/reporter
 
 /datum/prototype/struct/alt_title/librarian/historian
 	title = "Historian"

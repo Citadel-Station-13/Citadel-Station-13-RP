@@ -2,7 +2,7 @@
 
 /obj/machinery/portable_atmospherics/canister
 	name = "canister"
-	icon = 'icons/obj/atmos.dmi'
+	icon = 'icons/modules/atmospherics/portable/canister.dmi'
 	icon_state = "yellow"
 	density = 1
 	interaction_flags_machine = INTERACT_MACHINE_OFFLINE
@@ -44,7 +44,6 @@
 	var/temperature_resistance = 1000 + T0C
 	volume = 1000
 	use_power = USE_POWER_OFF
-	var/update_flag = 0
 
 /obj/machinery/portable_atmospherics/canister/get_containing_worth(flags)
 	. = ..()
@@ -53,187 +52,37 @@
 		var/datum/gas/gas_datum = global.gas_data.gases[id]
 		. += gas_datum.worth * gas[id]
 
-/obj/machinery/portable_atmospherics/canister/nitrous_oxide
-	name = "Canister: \[N2O\]"
-	icon_state = "redws"
-	canister_color = "redws"
-	can_label = 0
+/obj/machinery/portable_atmospherics/canister/atom_break()
+	. = ..()
+	update_icon()
 
-/obj/machinery/portable_atmospherics/canister/nitrogen
-	name = "Canister: \[N2\]"
-	icon_state = "red"
-	canister_color = "red"
-	can_label = 0
-
-/obj/machinery/portable_atmospherics/canister/oxygen
-	name = "Canister: \[O2\]"
-	icon_state = "blue"
-	canister_color = "blue"
-	can_label = 0
-
-/obj/machinery/portable_atmospherics/canister/oxygen/prechilled
-	name = "Canister: \[O2 (Cryo)\]"
-
-/obj/machinery/portable_atmospherics/canister/phoron
-	name = "Canister \[Phoron\]"
-	icon_state = "orange"
-	canister_color = "orange"
-	can_label = 0
-
-/obj/machinery/portable_atmospherics/canister/carbon_dioxide
-	name = "Canister \[CO2\]"
-	icon_state = "black"
-	canister_color = "black"
-	can_label = 0
-
-/obj/machinery/portable_atmospherics/canister/air
-	name = "Canister \[Air\]"
-	icon_state = "grey"
-	canister_color = "grey"
-	can_label = 0
-
-/obj/machinery/portable_atmospherics/canister/air/airlock
-	start_pressure = 3 * ONE_ATMOSPHERE
-
-/obj/machinery/portable_atmospherics/canister/empty/
-	start_pressure = 0
-	can_label = 1
-
-/obj/machinery/portable_atmospherics/canister/empty/oxygen
-	name = "Canister: \[O2\]"
-	icon_state = "blue"
-	canister_color = "blue"
-/obj/machinery/portable_atmospherics/canister/empty/phoron
-	name = "Canister \[Phoron\]"
-	icon_state = "orange"
-	canister_color = "orange"
-/obj/machinery/portable_atmospherics/canister/empty/nitrogen
-	name = "Canister \[N2\]"
-	icon_state = "red"
-	canister_color = "red"
-/obj/machinery/portable_atmospherics/canister/empty/carbon_dioxide
-	name = "Canister \[CO2\]"
-	icon_state = "black"
-	canister_color = "black"
-/obj/machinery/portable_atmospherics/canister/empty/nitrous_oxide
-	name = "Canister \[N2O\]"
-	icon_state = "redws"
-	canister_color = "redws"
-
-/obj/machinery/portable_atmospherics/canister/helium
-	name = "Canister \[Helium\]"
-
-/obj/machinery/portable_atmospherics/canister/carbon_monoxide
-	name = "Canister \[Carbon Monoxide\]"
-
-/obj/machinery/portable_atmospherics/canister/methyl_bromide
-	name = "Canister \[Methyl Bromide\]"
-
-/obj/machinery/portable_atmospherics/canister/nitrodioxide
-	name = "Canister \[Nitrogen Dioxide\]"
-
-/obj/machinery/portable_atmospherics/canister/nitricoxide
-	name = "Canister \[Nitric Oxide\]"
-
-/obj/machinery/portable_atmospherics/canister/methane
-	name = "Canister \[Methane\]"
-
-/obj/machinery/portable_atmospherics/canister/argon
-	name = "Canister \[Argon\]"
-
-/obj/machinery/portable_atmospherics/canister/krypton
-	name = "Canister \[Krypton\]"
-
-/obj/machinery/portable_atmospherics/canister/neon
-	name = "Canister \[Neon\]"
-
-/obj/machinery/portable_atmospherics/canister/ammonia
-	name = "Canister \[Ammonia\]"
-
-/obj/machinery/portable_atmospherics/canister/xenon
-	name = "Canister \[Xenon\]"
-
-/obj/machinery/portable_atmospherics/canister/chlorine
-	name = "Canister \[Chlorine\]"
-
-/obj/machinery/portable_atmospherics/canister/sulfur_dioxide
-	name = "Canister \[Sulfur Dioxide\]"
-
-/obj/machinery/portable_atmospherics/canister/hydrogen
-	name = "Canister \[Hydrogen\]"
-
-/obj/machinery/portable_atmospherics/canister/tritium
-	name = "Canister \[Tritium\]"
-
-/obj/machinery/portable_atmospherics/canister/deuterium
-	name = "Canister \[Deuterium\]"
-
-
-
-/obj/machinery/portable_atmospherics/canister/proc/check_change()
-	var/old_flag = update_flag
-	update_flag = 0
-	if(holding)
-		update_flag |= 1
-	if(connected_port)
-		update_flag |= 2
-
-	var/tank_pressure = air_contents.return_pressure()
-	if(tank_pressure < 10)
-		update_flag |= 4
-	else if(tank_pressure < ONE_ATMOSPHERE)
-		update_flag |= 8
-	else if(tank_pressure < 15*ONE_ATMOSPHERE)
-		update_flag |= 16
-	else
-		update_flag |= 32
-
-	if(update_flag == old_flag)
-		return 1
-	else
-		return 0
+/obj/machinery/portable_atmospherics/canister/atom_fix()
+	. = ..()
+	update_icon()
 
 /obj/machinery/portable_atmospherics/canister/update_icon()
-/*
-update_flag
-1 = holding
-2 = connected_port
-4 = tank_pressure < 10
-8 = tank_pressure < ONE_ATMOS
-16 = tank_pressure < 15*ONE_ATMOS
-32 = tank_pressure go boom.
-*/
-
-	if (atom_flags & ATOM_BROKEN)
-		cut_overlays()
-		icon_state = "[canister_color]-1"
-		return
-
-	if(icon_state != "[canister_color]")
-		icon_state = "[canister_color]"
-
-	if(check_change()) //Returns 1 if no change needed to icons.
-		return
-
 	cut_overlays()
-	var/list/overlays_to_add = list()
+	icon_state = "[base_icon_state || initial(icon_state)][atom_flags & ATOM_BROKEN ? "-broken" : ""]"
+	. = ..()
+	if(atom_flags & ATOM_BROKEN)
+		return
 
-	if(update_flag & 1)
-		overlays_to_add += "can-open"
-	if(update_flag & 2)
-		overlays_to_add += "can-connector"
-	if(update_flag & 4)
-		overlays_to_add += "can-o0"
-	if(update_flag & 8)
-		overlays_to_add += "can-o1"
-	else if(update_flag & 16)
-		overlays_to_add += "can-o2"
-	else if(update_flag & 32)
-		overlays_to_add += "can-o3"
+	if(holding)
+		add_overlay("open")
+	if(connected_port)
+		add_overlay("connector")
 
-	add_overlay(overlays_to_add)
-
-	return
+	var/pressure = air_contents.return_pressure()
+	if(pressure < MINIMUM_MEANINGFUL_MOLES_DELTA)
+		// no overlay
+	else if(pressure < 10)
+		add_overlay("gauge-0")
+	else if(pressure < ONE_ATMOSPHERE)
+		add_overlay("gauge-1")
+	else if(pressure < 15 * ONE_ATMOSPHERE)
+		add_overlay("gauge-2")
+	else
+		add_overlay("gauge-3")
 
 // todo: generic fire
 /obj/machinery/portable_atmospherics/canister/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
@@ -379,6 +228,7 @@ update_flag
 				if(label)
 					canister_color = colors[label]
 					icon_state = colors[label]
+					base_icon_state = icon_state
 					name = "Canister: [label]"
 		if("pressure")
 			var/pressure = params["pressure"]
@@ -418,9 +268,125 @@ update_flag
 	update_appearance()
 
 /obj/machinery/portable_atmospherics/canister/on_eject(obj/item/tank/tank, mob/user)
-	user.action_feedback(SPAN_WARNING("[src]'s valve closes automatically as you yank \the [tank] out. That was close."), src)
+	if (valve_open)
+		user.action_feedback(SPAN_WARNING("[src]'s valve closes automatically as you yank \the [tank] out. That was close."), src)
 	valve_open = FALSE
 	return ..()
+
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide
+	name = "Canister: \[N2O\]"
+	icon_state = "redws"
+	canister_color = "redws"
+	can_label = 0
+
+/obj/machinery/portable_atmospherics/canister/nitrogen
+	name = "Canister: \[N2\]"
+	icon_state = "red"
+	canister_color = "red"
+	can_label = 0
+
+/obj/machinery/portable_atmospherics/canister/oxygen
+	name = "Canister: \[O2\]"
+	icon_state = "blue"
+	canister_color = "blue"
+	can_label = 0
+
+/obj/machinery/portable_atmospherics/canister/oxygen/prechilled
+	name = "Canister: \[O2 (Cryo)\]"
+
+/obj/machinery/portable_atmospherics/canister/phoron
+	name = "Canister \[Phoron\]"
+	icon_state = "orange"
+	canister_color = "orange"
+	can_label = 0
+
+/obj/machinery/portable_atmospherics/canister/carbon_dioxide
+	name = "Canister \[CO2\]"
+	icon_state = "black"
+	canister_color = "black"
+	can_label = 0
+
+/obj/machinery/portable_atmospherics/canister/air
+	name = "Canister \[Air\]"
+	icon_state = "grey"
+	canister_color = "grey"
+	can_label = 0
+
+/obj/machinery/portable_atmospherics/canister/air/airlock
+	start_pressure = 3 * ONE_ATMOSPHERE
+
+/obj/machinery/portable_atmospherics/canister/empty/
+	start_pressure = 0
+	can_label = 1
+
+/obj/machinery/portable_atmospherics/canister/empty/oxygen
+	name = "Canister: \[O2\]"
+	icon_state = "blue"
+	canister_color = "blue"
+/obj/machinery/portable_atmospherics/canister/empty/phoron
+	name = "Canister \[Phoron\]"
+	icon_state = "orange"
+	canister_color = "orange"
+/obj/machinery/portable_atmospherics/canister/empty/nitrogen
+	name = "Canister \[N2\]"
+	icon_state = "red"
+	canister_color = "red"
+/obj/machinery/portable_atmospherics/canister/empty/carbon_dioxide
+	name = "Canister \[CO2\]"
+	icon_state = "black"
+	canister_color = "black"
+/obj/machinery/portable_atmospherics/canister/empty/nitrous_oxide
+	name = "Canister \[N2O\]"
+	icon_state = "redws"
+	canister_color = "redws"
+
+/obj/machinery/portable_atmospherics/canister/helium
+	name = "Canister \[Helium\]"
+
+/obj/machinery/portable_atmospherics/canister/carbon_monoxide
+	name = "Canister \[Carbon Monoxide\]"
+
+/obj/machinery/portable_atmospherics/canister/methyl_bromide
+	name = "Canister \[Methyl Bromide\]"
+
+/obj/machinery/portable_atmospherics/canister/nitrodioxide
+	name = "Canister \[Nitrogen Dioxide\]"
+
+/obj/machinery/portable_atmospherics/canister/nitricoxide
+	name = "Canister \[Nitric Oxide\]"
+
+/obj/machinery/portable_atmospherics/canister/methane
+	name = "Canister \[Methane\]"
+
+/obj/machinery/portable_atmospherics/canister/argon
+	name = "Canister \[Argon\]"
+
+/obj/machinery/portable_atmospherics/canister/krypton
+	name = "Canister \[Krypton\]"
+
+/obj/machinery/portable_atmospherics/canister/neon
+	name = "Canister \[Neon\]"
+
+/obj/machinery/portable_atmospherics/canister/ammonia
+	name = "Canister \[Ammonia\]"
+
+/obj/machinery/portable_atmospherics/canister/xenon
+	name = "Canister \[Xenon\]"
+
+/obj/machinery/portable_atmospherics/canister/chlorine
+	name = "Canister \[Chlorine\]"
+
+/obj/machinery/portable_atmospherics/canister/sulfur_dioxide
+	name = "Canister \[Sulfur Dioxide\]"
+
+/obj/machinery/portable_atmospherics/canister/hydrogen
+	name = "Canister \[Hydrogen\]"
+
+/obj/machinery/portable_atmospherics/canister/tritium
+	name = "Canister \[Tritium\]"
+
+/obj/machinery/portable_atmospherics/canister/deuterium
+	name = "Canister \[Deuterium\]"
 
 /obj/machinery/portable_atmospherics/canister/phoron/Initialize(mapload)
 	. = ..()

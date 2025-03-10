@@ -22,12 +22,17 @@
 			using_stack = with_mat_stack
 		else
 			var/obj/item/stack/with_stack = with_item
-			possible = RSflooring.build_item_lookup[with_stack.type]
+			possible = RSflooring.build_item_lookup[with_stack.get_use_as_type()]
 			has_amount = with_stack.amount
 			using_stack = with_stack
-	if(!length(possible))
+	if(!possible)
 		return FALSE
-	var/datum/prototype/flooring/trying_to_make
+	var/datum/prototype/flooring/trying_to_make = possible
+	if(force_flooring && !(trying_to_make.id == force_flooring || trying_to_make.type == force_flooring))
+		return FALSE
+	// todo: multiple possible floorings are disabled for UI/UX reasons. put the selector on the stack
+	//       with client-local-state sometime, and re-enable it.
+	/*
 	if(force_flooring)
 		for(var/datum/prototype/flooring/potential as anything in possible)
 			if(potential.type == force_flooring || potential.id == force_flooring)
@@ -42,16 +47,24 @@
 			else
 				var/list/built_choices = list()
 				var/list/pick_choices = list()
+				var/matrix/three_fourths_size = matrix()
+				three_fourths_size.Scale(3 / 4, 3 / 4)
 				for(var/datum/prototype/flooring/potential as anything in possible)
 					built_choices[potential.name] = potential
 					var/image/preview = image(potential.icon, potential.icon_base)
+					preview.transform = three_fourths_size
 					preview.maptext = MAPTEXT_CENTER(potential.name)
 					preview.maptext_width = 64
-					pick_choices[potential.name] = preview
+					var/use_name = potential.name
+					var/notch = 1
+					while(pick_choices[use_name])
+						use_name = "[potential.name] ([notch++])"
+					pick_choices[use_name] = preview
 				var/choice_name = show_radial_menu(e_args.initiator, src, pick_choices)
 				trying_to_make = built_choices[choice_name]
 				if(!trying_to_make)
 					return FALSE
+	*/
 	if(trying_to_make.build_cost > has_amount)
 		e_args.chat_feedback(SPAN_WARNING("You require at least [trying_to_make.build_cost] [with_item.name] to lay down those [trying_to_make.descriptor]"))
 		return FALSE

@@ -375,8 +375,8 @@ default behaviour is:
 		adjustFireLoss(amount)
 
 // and one for electricity because why not
-/mob/living/proc/inflict_shock_damage(amount)
-	electrocute_act(amount, null, 1 - get_shock_protection(), pick(BP_HEAD, BP_TORSO, BP_GROIN))
+/mob/living/proc/inflict_shock_damage_legacy(amount)
+	electrocute(0, amount, 0, NONE, pick(BP_TORSO, BP_HEAD, BP_GROIN))
 
 // also one for water (most things resist it entirely, except for slimes)
 /mob/living/proc/inflict_water_damage(amount)
@@ -611,7 +611,7 @@ default behaviour is:
 	return applying
 
 /mob/living/apply_transform(matrix/to_apply)
-	animate(src, transform = to_apply, time = 1 SECONDS)
+	animate(src, transform = to_apply, time = 1 SECONDS, flags = ANIMATION_LINEAR_TRANSFORM | ANIMATION_PARALLEL)
 	update_ssd_overlay()
 
 // This handles setting the client's color variable, which makes everything look a specific color.

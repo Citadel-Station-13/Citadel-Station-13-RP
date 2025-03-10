@@ -56,7 +56,9 @@
 	var/tmp/list/desc_list = list()
 	var/tmp/list/damage_list = list()
 
-/datum/wound/New(damage)
+	var/can_infect = TRUE
+
+/datum/wound/New(damage, _can_infect = TRUE)
 
 	created = world.time
 
@@ -72,6 +74,8 @@
 	src.init_stage(damage)
 
 	bleed_timer += damage
+
+	can_infect = _can_infect
 
 // returns 1 if there's a next stage, 0 otherwise
 /datum/wound/proc/init_stage(initial_damage)
@@ -140,6 +144,8 @@
 // checks if wound is considered open for external infections
 // untreated cuts (and bleeding bruises) and burns are possibly infectable, chance higher if wound is bigger
 /datum/wound/proc/infection_check()
+	if(!can_infect)
+		return FALSE
 	if (disinfected)
 		if(germ_level > INFECTION_LEVEL_ONE)
 			germ_level = 0	//reset this, just in case

@@ -53,6 +53,9 @@
 			if(affecting.robotic >= ORGAN_ROBOT)
 				to_chat(user, SPAN_WARNING("\The [src] won't work on a robotic limb!"))
 				return
+			if(affecting.behaviour_flags & BODYPART_NO_PATCH)
+				to_chat(user, SPAN_WARNING("\The [src] won't work on this limb!"))
+				return
 
 			if(!H.can_inject(user, FALSE, L.zone_sel.selecting, pierce_material))
 				to_chat(user, SPAN_NOTICE("\The [src] can't be applied through such a thick material!"))

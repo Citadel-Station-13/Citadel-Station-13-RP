@@ -48,7 +48,7 @@
 /turf/simulated/floor/airless,
 /area/awaymission/challenge/start)
 "ap" = (
-/obj/item/gun/energy/retro,
+/obj/item/gun/projectile/energy/retro,
 /turf/simulated/floor/airless,
 /area/awaymission/challenge/start)
 "aq" = (
@@ -182,7 +182,7 @@
 /obj/machinery/porta_turret{
 	dir = 8;
 	emagged = 1;
-	installation = /obj/item/gun/energy/lasercannon
+	installation = /obj/item/gun/projectile/energy/lasercannon
 	},
 /area/awaymission/challenge/main)
 "aY" = (
@@ -337,7 +337,7 @@
 /obj/machinery/porta_turret{
 	dir = 8;
 	emagged = 1;
-	installation = /obj/item/gun/energy/lasercannon
+	installation = /obj/item/gun/projectile/energy/lasercannon
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/challenge/main)
@@ -616,7 +616,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/challenge/end)
 "ck" = (
-/obj/item/gun/ballistic/revolver/mateba,
+/obj/item/gun/projectile/ballistic/revolver/mateba,
 /turf/simulated/floor/wood,
 /area/awaymission/challenge/end)
 "cl" = (
@@ -667,11 +667,11 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/challenge/end)
 "ct" = (
-/obj/item/gun/ballistic/silenced,
+/obj/item/gun/projectile/ballistic/silenced,
 /turf/simulated/floor/wood,
 /area/awaymission/challenge/end)
 "cw" = (
-/obj/item/gun/ballistic/automatic/lmg,
+/obj/item/gun/projectile/ballistic/automatic/lmg,
 /turf/simulated/floor/wood,
 /area/awaymission/challenge/end)
 "cx" = (

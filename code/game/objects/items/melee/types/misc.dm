@@ -360,13 +360,13 @@
 
 	if(wielded || isliving(target))
 		if(prob(10))
-			G.electrocute_act(500, src, def_zone = BP_TORSO)
+			G.electrocute_act_parse_this(500, src, def_zone = BP_TORSO)
 			return
 		if(prob(10))
 			G.dust()
 			return
 		else
-			G.stun_effect_act(10 , 50, BP_TORSO, src)
+			G.stun_effect_act_parse_this(10 , 50, BP_TORSO, src)
 			G.take_random_targeted_damage(brute = 10)
 			G.afflict_unconscious(20 * 20)
 			playsound(src.loc, /datum/soundbyte/grouped/sparks, 50, 1)

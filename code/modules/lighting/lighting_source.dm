@@ -371,7 +371,10 @@ BLOCK_BYOND_BUG_2072419
 
 	var/should_do_wedge = light_angle && !facing_opaque
 
-	FOR_DVIEW(T, CEILING(actual_range, 1), source_turf, 0)
+	// citadel edit: subtract one; light range is tile from center of central point,
+	//               byond range is tiles radius **from** center,
+	//               so 1 light range is effectively 0.5 byond range (and since we round up.. yeah)
+	FOR_DVIEW(T, CEILING(actual_range, 1) - 1, source_turf, 0)
 		check_t:
 
 		if (should_do_wedge)	// Directional lighting coordinate filter.

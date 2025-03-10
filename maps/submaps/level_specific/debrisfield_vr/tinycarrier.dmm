@@ -548,8 +548,8 @@
 	anchored = 1;
 	starts_with = list()
 	},
-/obj/item/gun/ballistic/p92x/large,
-/obj/item/gun/ballistic/p92x/large,
+/obj/item/gun/projectile/ballistic/p92x/large,
+/obj/item/gun/projectile/ballistic/p92x/large,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},

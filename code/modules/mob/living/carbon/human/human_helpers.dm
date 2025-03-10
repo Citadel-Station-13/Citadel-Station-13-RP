@@ -95,6 +95,9 @@
 		synthetic = R
 		return synthetic
 
+	if(fast_is_species_type(src, /datum/species/holosphere))
+		return TRUE
+
 	return FALSE
 
 /**

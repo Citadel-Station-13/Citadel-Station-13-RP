@@ -109,11 +109,11 @@ var/list/channel_to_radio_key = new
 		verb = pick("yells","roars","hollers")
 		whispering = 0
 		. = 1
-	if(slurring)
+	if(get_effective_impairment_power_slurring())
 		message = slur(message)
 		verb = pick("slobbers","slurs")
 		. = 1
-	if(stuttering)
+	if(get_effective_impairment_power_stutter())
 		message = stutter(message)
 		verb = pick("stammers","stutters")
 		. = 1
@@ -218,7 +218,7 @@ var/list/channel_to_radio_key = new
 	message = trim_left(message)
 
 	//Autohiss handles auto-rolling tajaran R's and unathi S's/Z's
-	message = handle_autohiss(message, speaking)
+	message = handle_autohiss(message, speaking.name, speaking.language_flags)
 
 	//Whisper vars
 	var/w_scramble_range = 3	//The range at which you get ***as*th**wi****
@@ -236,9 +236,11 @@ var/list/channel_to_radio_key = new
 		verb = speaking.speech_verb
 		w_not_heard = "[speaking.speech_verb] something [w_adverb]"
 
-	var/list/message_args = list("message" = message, "whispering" = whispering, "cancelled" = FALSE, "message_mode" = message_mode)
+	var/list/message_args = list("message" = message, "whispering" = whispering, "cancelled" = FALSE, "message_mode" = message_mode, "language_name" = speaking.name, "language_flags" = speaking.language_flags)
 
 	SEND_SIGNAL(src, COMSIG_MOB_SAY, message_args)
+
+	message = message_args["message"]
 
 	if(HAS_TRAIT(src, TRAIT_MUTE))
 		to_chat(src, "<span class='danger'>You are not capable of speech!</span>")

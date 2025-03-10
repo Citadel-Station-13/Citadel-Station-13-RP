@@ -253,11 +253,11 @@
 					beaker.reagents,
 					min(
 						remaining_beaker_volume_for_dialysis * (3 / 4),
-						length(occupant.reagents.reagent_list) * 3,
+						length(occupant.reagents.reagent_volumes) * 3,
 					),
 					dialysis_reagent_filter_flags,
 				)
-				occupant.vessel.trans_to_holder(beaker.reagents, filtered_volume * (1 / 3))
+				occupant.take_blood_legacy(beaker, filtered_volume * (1 / 3))
 			else
 				toggle_filter()
 
@@ -268,15 +268,16 @@
 					beaker.reagents,
 					min(
 						beaker.reagents.maximum_volume - beaker.reagents.total_volume,
-						length(occupant.ingested.reagent_list) * 3,
+						length(occupant.ingested.reagent_volumes) * 3,
 					),
 					dialysis_reagent_filter_flags,
 				)
 			else
 				toggle_pump()
 
-/obj/machinery/sleeper/update_icon()
+/obj/machinery/sleeper/update_icon_state()
 	icon_state = "sleeper_[occupant ? TRUE : FALSE]"
+	return ..()
 
 /obj/machinery/sleeper/attackby(var/obj/item/I, var/mob/user)
 	if(istype(I, /obj/item/grab))

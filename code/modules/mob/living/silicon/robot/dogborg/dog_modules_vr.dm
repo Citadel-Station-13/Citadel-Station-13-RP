@@ -103,9 +103,9 @@
 		user.visible_message("<span class='notice'>[user] sniffs at \the [target.name].</span>", "<span class='notice'>You sniff \the [target.name]...</span>")
 		if(!isnull(target.reagents))
 			var/dat = ""
-			if(target.reagents.reagent_list.len > 0)
-				for (var/datum/reagent/R in target.reagents.reagent_list)
-					dat += "\n \t <span class='notice'>[R]</span>"
+			for(var/id in target.reagents.reagent_volumes)
+				var/datum/reagent/R = SSchemistry.fetch_reagent(id)
+				dat += "\n \t <span class='notice'>[R]</span>"
 			if(dat)
 				to_chat(user, "<span class='notice'>Your BOOP module indicates: [dat]</span>")
 			else
@@ -313,7 +313,7 @@
 		enabled = FALSE
 		icon_state = "scrub0"
 
-/obj/item/gun/energy/taser/mounted/cyborg/ertgun //Not a taser, but it's being used as a base so it takes energy and actually works.
+/obj/item/gun/projectile/energy/taser/mounted/cyborg/ertgun //Not a taser, but it's being used as a base so it takes energy and actually works.
 	name = "disabler"
 	desc = "A small and nonlethal gun produced by NT.."
 	icon = 'icons/mob/dogborg_vr.dmi'

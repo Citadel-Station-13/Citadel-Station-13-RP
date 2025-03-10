@@ -21,10 +21,10 @@
 		/obj/item/perfect_tele,
 		/obj/item/bluespace_harpoon,
 		/obj/item/clothing/glasses/thermal/syndi,
-		/obj/item/gun/energy/netgun,
-		/obj/item/gun/ballistic/pirate,
+		/obj/item/gun/projectile/energy/netgun,
+		/obj/item/gun/projectile/ballistic/pirate,
 		/obj/item/clothing/accessory/permit/gun,
-		/obj/item/gun/ballistic/dartgun
+		/obj/item/gun/projectile/ballistic/dartgun
 		)
 
 	var/global/list/allocated_gamma = list()
@@ -202,7 +202,7 @@
 					prob(1);/obj/item/clothing/shoes/syndigaloshes,
 					prob(1);/obj/item/clothing/suit/bio_suit/general,
 					prob(1);/obj/item/clothing/suit/space/emergency,
-					prob(1);/obj/item/clothing/under/harness,
+					prob(1);/obj/item/clothing/under/gear_harness,
 					prob(1);/obj/item/clothing/under/tactical,
 					prob(1);/obj/item/clothing/suit/armor/material/makeshift,
 					prob(1);/obj/item/flashlight/glowstick/orange,
@@ -216,7 +216,7 @@
 					prob(1);/obj/item/spacecash/c50,
 					prob(1);/obj/item/storage/backpack/dufflebag/syndie,
 					prob(1);/obj/item/storage/box/cups,
-					prob(1);/obj/item/gun/energy/stripper,
+					prob(1);/obj/item/gun/projectile/energy/stripper,
 					prob(1);/obj/item/pizzavoucher)
 
 	var/obj/item/I = new path()
@@ -226,8 +226,8 @@
 	var/path = pick(prob(6);/obj/item/storage/pill_bottle/tramadol,
 					prob(4);/obj/item/storage/pill_bottle/happy,
 					prob(4);/obj/item/storage/pill_bottle/zoom,
-					prob(4);/obj/item/gun/energy/sizegun,
-					prob(4);/obj/item/gun/energy/stripper,
+					prob(4);/obj/item/gun/projectile/energy/sizegun,
+					prob(4);/obj/item/gun/projectile/energy/stripper,
 					prob(3);/obj/item/material/butterfly,
 					prob(3);/obj/item/material/butterfly/switchblade,
 					prob(3);/obj/item/clothing/gloves/knuckledusters,

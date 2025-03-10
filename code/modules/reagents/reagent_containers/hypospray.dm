@@ -1,6 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 /// HYPOSPRAY
 ////////////////////////////////////////////////////////////////////////////////
+// todo: remove these, move behavior to /obj/item/autoinjector for autoinjectors
 
 /obj/item/reagent_containers/hypospray
 	name = "hypospray"
@@ -43,6 +44,9 @@
 			return
 		else if(affected.robotic >= ORGAN_ROBOT)
 			to_chat(user, "<span class='danger'>You cannot inject a robotic limb.</span>")
+			return
+		else if(affected.behaviour_flags & BODYPART_NO_INJECT)
+			to_chat(user, "<span class='danger'>You cannot inject this limb.</span>")
 			return
 
 		// Prototype Hypo functionality
@@ -176,7 +180,7 @@
 
 /obj/item/reagent_containers/hypospray/autoinjector/examine(mob/user, dist)
 	. = ..()
-	if(reagents && reagents.reagent_list.len)
+	if(reagents?.total_volume)
 		. += "<span class='notice'>It is currently loaded.</span>"
 	else
 		. += "<span class='notice'>It is spent.</span>"
@@ -439,7 +443,7 @@
 
 /obj/item/reagent_containers/hypospray/glukoz/examine(mob/user, dist)
 	. = ..()
-	if(reagents && reagents.reagent_list.len)
+	if(reagents?.total_volume)
 		. += "<span class='notice'>It is currently loaded.</span>"
 	else
 		. += "<span class='notice'>It is spent.</span>"

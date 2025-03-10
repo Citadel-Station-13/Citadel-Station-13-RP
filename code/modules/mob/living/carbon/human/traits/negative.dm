@@ -29,6 +29,8 @@
 	group_short_name = "Low"
 	sort_key = "2-Low"
 
+	excluded_species = list(SPECIES_HOLOSPHERE)
+
 /datum/trait/negative/endurance_low/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
 	H.setMaxHealth(S.total_health)
@@ -43,6 +45,8 @@
 	group = /datum/trait_group/health
 	group_short_name = "Extremely Low"
 	sort_key = "2-Extremely Low"
+
+	excluded_species = list(SPECIES_HOLOSPHERE)
 
 /datum/trait/negative/endurance_very_low/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)

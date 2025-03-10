@@ -6431,7 +6431,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
-/obj/machinery/mineral/equipment_vendor/engineering,
+/obj/machinery/point_redemption_vendor/engineering,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "vn" = (

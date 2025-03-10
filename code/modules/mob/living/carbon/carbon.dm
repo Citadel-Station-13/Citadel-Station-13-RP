@@ -14,9 +14,11 @@
  */
 /mob/living/carbon
 	//* Biologies *//
+
 	#warn impl
 
 	//* Organs *//
+
 	/// All /obj/item/organ/internal.
 	var/list/obj/item/organ/internal/internal_organs = list()
 	/// All /obj/item/organ/external.
@@ -49,6 +51,11 @@
 	var/list/legacy_organ_by_tag = list()
 	#warn impl; make sure organ_key gets put in here anyways
 
+	//* Reagents, *//
+
+	/// Our blood holder.
+	var/datum/blood_holder/blood_holder
+
 /mob/living/carbon/Initialize(mapload)
 	. = ..()
 	//setup reagent holders
@@ -70,6 +77,7 @@
 	//! END
 	QDEL_NULL(ingested)
 	QDEL_NULL(touching)
+	QDEL_NULL(blood_holder)
 	// We don't qdel(bloodstr) because it's the same as qdel(reagents)
 	for(var/food in stomach_contents)
 		qdel(food)

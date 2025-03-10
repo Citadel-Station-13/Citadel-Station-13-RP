@@ -153,11 +153,12 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	if(!id_tag)
 		. += "[desc_panel_image("multitool", user)]to set ident tag and connect to a mainframe."
 
-/obj/machinery/power/pointdefense/update_icon()
+/obj/machinery/power/pointdefense/update_icon_state()
 	if(!active || !id_tag || inoperable())
 		icon_state = "[initial(icon_state)]_off"
 	else
 		icon_state = initial(icon_state)
+	return ..()
 
 /obj/machinery/power/pointdefense/default_unfasten_wrench(var/mob/user, var/obj/item/W, var/time)
 	if((. = ..()))
@@ -262,7 +263,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	//We throw a laser but it doesnt have to hit for meteor to explode
 	var/obj/projectile/beam/pointdefense/beam = new(get_turf(src))
 	playsound(src, 'sound/weapons/mandalorian.ogg', 75, 1)
-	beam.launch_projectile(target = M.loc, user = src)
+	beam.launch_projectile_legacy(target = M.loc, user = src)
 
 /obj/machinery/power/pointdefense/process()
 	..()

@@ -31,7 +31,7 @@
 /obj/item/robot_module/robot/quad/stray/handle_special_module_init(mob/living/silicon/robot/R)
 	. = ..()
 	// Boof
-	src.emag 	 = new /obj/item/gun/energy/retro/mounted(src)
+	src.emag 	 = new /obj/item/gun/projectile/energy/retro/mounted(src)
 
 	var/obj/item/reagent_containers/borghypo/hound/lost/H = new /obj/item/reagent_containers/borghypo/hound/lost(src)
 	H.water = synths_by_kind[MATSYN_WATER]

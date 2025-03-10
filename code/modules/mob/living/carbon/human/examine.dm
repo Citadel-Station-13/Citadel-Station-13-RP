@@ -273,11 +273,12 @@
 
 	//Jitters
 	if(is_jittery)
-		if(jitteriness >= 300)
+		var/effective_jitteriness = get_effective_impairment_power_jitter()
+		if(effective_jitteriness >= 300)
 			. += SPAN_DANGER("[T.He] [T.is] convulsing violently!")
-		else if(jitteriness >= 200)
+		else if(effective_jitteriness >= 200)
 			. += SPAN_WARNING("[T.He] [T.is] extremely jittery.")
-		else if(jitteriness >= 100)
+		else if(effective_jitteriness >= 100)
 			. += SPAN_WARNING("[T.He] [T.is] twitching ever so slightly.")
 
 	//splints

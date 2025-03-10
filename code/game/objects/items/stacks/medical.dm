@@ -1,7 +1,9 @@
 /obj/item/stack/medical
 	name = "medical pack"
 	singular_name = "medical pack"
-	icon = 'icons/obj/stacks.dmi'
+	icon = 'icons/items/stacks/medical.dmi'
+	use_new_icon_update = TRUE
+	skip_legacy_icon_update = TRUE
 	amount = 10
 	max_amount = 10
 	w_class = WEIGHT_CLASS_SMALL
@@ -37,6 +39,10 @@
 
 		if(!affecting)
 			to_chat(user, "<span class='warning'>No body part there to work on!</span>")
+			return FALSE
+
+		if(affecting.behaviour_flags & BODYPART_NO_HEAL)
+			to_chat(user, "<span class='warning'>You aren't able to apply the [src] to [affecting]!")
 			return FALSE
 
 		if(affecting.organ_tag == BP_HEAD)
@@ -83,7 +89,9 @@
 	name = "crude bandage"
 	singular_name = "crude bandage length"
 	desc = "Some bandages to wrap around bloody stumps."
-	icon_state = "gauze"
+	icon_state = "bandage"
+	icon_state_count = 3
+	base_icon_state = "bandage"
 	origin_tech = list(TECH_BIO = 1)
 	no_variants = FALSE
 	apply_sounds = list('sound/effects/rip1.ogg','sound/effects/rip2.ogg')
@@ -146,8 +154,10 @@
 /obj/item/stack/medical/bruise_pack
 	name = "roll of gauze"
 	singular_name = "gauze length"
+	icon_state = "gauze"
+	icon_state_count = 3
+	base_icon_state = "gauze"
 	desc = "Some sterile gauze to wrap around bloody stumps."
-	icon_state = "brutepack"
 	origin_tech = list(TECH_BIO = 1)
 	no_variants = FALSE
 	apply_sounds = list('sound/effects/rip1.ogg','sound/effects/rip2.ogg')
@@ -216,6 +226,8 @@
 	gender = PLURAL
 	singular_name = "ointment"
 	icon_state = "ointment"
+	icon_state_count = 3
+	base_icon_state = "ointment"
 	heal_burn = 1
 	origin_tech = list(TECH_BIO = 1)
 	no_variants = FALSE
@@ -257,7 +269,9 @@
 	name = "advanced trauma kit"
 	singular_name = "advanced trauma kit"
 	desc = "An advanced trauma kit for severe injuries."
-	icon_state = "traumakit"
+	icon_state = "brute_adv"
+	icon_state_count = 6
+	base_icon_state = "brute_adv"
 	heal_brute = 7
 	origin_tech = list(TECH_BIO = 1)
 	apply_sounds = list('sound/effects/rip1.ogg','sound/effects/rip2.ogg','sound/effects/tape.ogg')
@@ -319,7 +333,9 @@
 	name = "advanced burn kit"
 	singular_name = "advanced burn kit"
 	desc = "An advanced treatment kit for severe burns."
-	icon_state = "burnkit"
+	icon_state = "burn_adv"
+	icon_state_count = 6
+	base_icon_state = "burn_adv"
 	heal_burn = 7
 	origin_tech = list(TECH_BIO = 1)
 	apply_sounds = list('sound/effects/ointment.ogg')
@@ -360,6 +376,7 @@
 	singular_name = "medical splint"
 	desc = "Modular splints capable of supporting and immobilizing bones in all areas of the body."
 	icon_state = "splint"
+	base_icon_state = "splint"
 	amount = 5
 	max_amount = 5
 	drop_sound = 'sound/items/drop/hat.ogg'
@@ -421,7 +438,8 @@
 	name = "makeshift splints"
 	singular_name = "makeshift splint"
 	desc = "For holding your limbs in place with duct tape and scrap metal."
-	icon_state = "tape-splint"
+	icon_state = "splint_tape"
+	base_icon_state = "splint_tape"
 	amount = 1
 	splintable_organs = list(BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG)
 
@@ -429,37 +447,18 @@
 	name = "primitive splints"
 	singular_name = "makeshift splint"
 	desc = "For holding your limbs in place with hide and sinew."
-	icon_state = "primitive-splint"
+	icon_state = "splint_primitive"
+	base_icon_state = "splint_primitive"
 	amount = 5
 
-// Begin Citadel Changes - New advanced kit sprites
-/obj/item/stack/medical/advanced/Initialize(mapload)
-	. = ..()
-	update_icon()
-
-/obj/item/stack/medical/advanced/update_icon()
-	switch(amount)
-		if(1 to 2)
-			icon_state = initial(icon_state)
-		if(3 to 4)
-			icon_state = "[initial(icon_state)]_4"
-		if(5 to 6)
-			icon_state = "[initial(icon_state)]_6"
-		if(7 to 8)
-			icon_state = "[initial(icon_state)]_8"
-		if(9)
-			icon_state = "[initial(icon_state)]_9"
-		else
-			icon_state = "[initial(icon_state)]_10"
-// End Citadel Changes
+// todo: kick ashlander crap to ashlander faction or something, why is this here?
 
 //Ashlander Poultices - They basically use the same stack system as ointment and bruise packs. Gotta dupe some of the code since bruise pack/ointment chat messages are too specific.
 /obj/item/stack/medical/poultice_brute
 	name = "poultice (juhtak)"
 	singular_name = "poultice (juhtak)"
 	desc = "A damp mush made from the pulp of a juhtak. It is used to treat flesh injuries."
-	icon_state = "poulticebrute"
-	no_variants = TRUE
+	icon_state = "brute_poultice"
 	apply_sounds = list('sound/effects/ointment.ogg')
 	drop_sound = 'sound/items/drop/herb.ogg'
 	pickup_sound = 'sound/items/pickup/herb.ogg'
@@ -525,7 +524,7 @@
 	desc = "A damp mush infused with pyrrhlea petals. It is used to treat burns."
 	gender = PLURAL
 	singular_name = "poultice (pyrrhlea)"
-	icon_state = "poulticeburn"
+	icon_state = "burn_poultice"
 	heal_burn = 1
 	no_variants = TRUE
 	apply_sounds = list('sound/effects/ointment.ogg')

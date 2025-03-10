@@ -75,8 +75,12 @@
 				revive_ready = REVIVING_READY //reset their cooldown
 
 /mob/living/carbon/human/proc/hasnutriment()
-	return (nutrition+ bloodstr.get_reagent("protein") * 10 + bloodstr.get_reagent("nutriment") * 5 + ingested.get_reagent("protein") * 5 + ingested.get_reagent("nutriment") * 2.5) > 425
-
+	. = nutrition
+	. += bloodstr.reagent_volumes[/datum/reagent/nutriment::id] * 5
+	. += bloodstr.reagent_volumes[/datum/reagent/nutriment/protein::id] * 10
+	. += ingested.reagent_volumes[/datum/reagent/nutriment::id] * 2.5
+	. += ingested.reagent_volumes[/datum/reagent/nutriment/protein::id] * 5
+	return . > 425
 
 /mob/living/carbon/human/proc/hatch()
 	set name = "Hatch"
@@ -867,3 +871,91 @@
 	set category = "Abilities"
 	pass_flags ^= ATOM_PASS_TABLE //I dunno what this fancy ^= is but Aronai gave it to me.
 	to_chat(src, "You [pass_flags&ATOM_PASS_TABLE ? "will" : "will NOT"] move over tables/railings/trays!")
+
+/mob/living/carbon/human/proc/water_stealth()
+	set name = "Dive under water / Resurface"
+	set desc = "Dive under water, allowing for you to be stealthy and move faster."
+	set category = "Abilities"
+
+	if(last_special > world.time)
+		return
+	last_special = world.time + 50 //No spamming!
+
+	if(has_modifier_of_type(/datum/modifier/trait/underwater_stealth))
+		to_chat(src, "You resurface!")
+		remove_modifiers_of_type(/datum/modifier/trait/underwater_stealth)
+		return
+
+	if(!isturf(loc)) //We have no turf.
+		to_chat(src, "There is no water for you to dive into!")
+		return
+
+	if(istype(src.loc, /turf/simulated/floor/water))
+		var/turf/simulated/floor/water/water_floor = src.loc
+		if(water_floor.depth >= 1) //Is it deep enough?
+			add_modifier(/datum/modifier/trait/underwater_stealth) //No duration. It'll remove itself when they exit the water!
+			to_chat(src, "You dive into the water!")
+			visible_message("[src] dives into the water!")
+		else
+			to_chat(src, "The water here is not deep enough to dive into!")
+			return
+
+	else
+		to_chat(src, "There is no water for you to dive into!")
+		return
+
+/mob/living/carbon/human/proc/underwater_devour()
+	set name = "Devour From Water"
+	set desc = "Grab something in the water with you and devour them with your selected stomach."
+	set category = "Abilities.Vore"
+
+	if(last_special > world.time)
+		return
+	last_special = world.time + 50 //No spamming!
+
+	if(stat == DEAD || !CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
+		to_chat(src, SPAN_NOTICE("You cannot do that while in your current state."))
+		return
+
+	if(!(src.vore_selected))
+		to_chat(src, SPAN_NOTICE("No selected belly found."))
+		return
+
+
+	if(!has_modifier_of_type(/datum/modifier/trait/underwater_stealth))
+		to_chat(src, "You must be underwater to do this!!")
+		return
+
+	var/list/targets = list() //Shameless copy and paste. If it ain't broke don't fix it!
+
+	for(var/turf/T in range(1, src))
+		if(istype(T, /turf/simulated/floor/water))
+			for(var/mob/living/L in T)
+				if(L == src) //no eating yourself. 1984.
+					continue
+				if(L.devourable && L.can_be_drop_prey)
+					targets += L
+
+	if(!(targets.len))
+		to_chat(src, SPAN_NOTICE("No eligible targets found."))
+		return
+
+	var/mob/living/target = tgui_input_list(src, "Please select a target.", "Victim", targets)
+
+	if(!target)
+		return
+
+	to_chat(target, SPAN_CRITICAL("Something begins to circle around you in the water!")) //Dun dun...
+	var/starting_loc = target.loc
+
+	if(do_after(src, 50))
+		if(target.loc != starting_loc)
+			to_chat(target, SPAN_WARNING("You got away from whatever that was..."))
+			to_chat(src, SPAN_NOTICE("They got away."))
+			return
+		if(target.buckled) //how are you buckled in the water?!
+			target.buckled.unbuckle_mob()
+		target.visible_message(SPAN_WARNING("\The [target] suddenly disappears, being dragged into the water!"),\
+			SPAN_DANGER("You are dragged below the water and feel yourself slipping directly into \the [src]'s [lowertext(vore_selected)]!"))
+		to_chat(src, SPAN_NOTICE("You successfully drag \the [target] into the water, slipping them into your [lowertext(vore_selected)]."))
+		target.forceMove(src.vore_selected)

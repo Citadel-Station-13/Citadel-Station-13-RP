@@ -33,7 +33,7 @@
 
 /mob/living/carbon/human/slip_act(slip_class, source, hard_strength, soft_strength, suppressed)
 	var/footcoverage_check = length(inventory.query_coverage(FEET))
-	var/obj/item/shoes = inventory.get_slot(/datum/inventory_slot/inventory/shoes)
+	var/obj/item/shoes = inventory.get_slot_single(/datum/inventory_slot/inventory/shoes)
 	if(((species.species_flags & NO_SLIP) && !footcoverage_check) || (shoes && (shoes.clothing_flags & NOSLIP))) //Footwear negates a species' natural traction.
 		return 0
 	return ..()

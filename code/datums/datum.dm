@@ -174,7 +174,7 @@
  *
  * Arguments:
  * * name - Filter name
- * * priority - Priority used when sorting the filter.
+ * * priority - Priority used when sorting the filter. Lower is applied first.
  * * params - Parameters of the filter.
  */
 /datum/proc/add_filter(name, priority, list/params)
@@ -295,11 +295,8 @@
 
 /**
  * makes a clone of this datum
- *
- * @params
- * * include_contents - include semantic contents; ergo 'what we are hosting' vs 'what we are'
  */
-/datum/proc/clone(include_contents)
+/datum/proc/clone()
 	return new type
 
 //* Serialization *//
