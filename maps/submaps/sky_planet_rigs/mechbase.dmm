@@ -1,0 +1,813 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aF" = (
+/obj/structure/closet/secure_closet/freezer/fridge,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"aU" = (
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "spine_inbound"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"dK" = (
+/mob/living/simple_mob/mechanical/mecha/ripley/pirate/last_stand_merc,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"eb" = (
+/obj/spawner/window/reinforced/full,
+/turf/simulated/floor/tiled/dark,
+/area/submap/skyplanet/poi/mechbase)
+"ei" = (
+/obj/structure/loot_pile/mecha/ripley,
+/turf/simulated/floor/tiled/dark,
+/area/submap/skyplanet/poi/mechbase)
+"eA" = (
+/obj/machinery/vending/tool,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"eS" = (
+/obj/structure/railing/grey,
+/obj/structure/metal_edge{
+	layer = 1
+	},
+/obj/structure/railing/grey{
+	dir = 1;
+	layer = 2.5
+	},
+/obj/structure/railing/grey{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"fb" = (
+/turf/simulated/floor/tiled/dark,
+/area/submap/skyplanet/poi/mechbase)
+"fS" = (
+/obj/machinery/mech_recharger,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"hL" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"kz" = (
+/obj/structure/loot_pile/mecha/ripley,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/mechbase)
+"kK" = (
+/obj/structure/metal_edge{
+	layer = 1
+	},
+/obj/structure/railing/grey{
+	dir = 1;
+	layer = 2.5
+	},
+/obj/structure/salvageable/data{
+	pixel_x = 5
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"ms" = (
+/obj/structure/table/standard,
+/obj/machinery/microwave,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"mE" = (
+/obj/effect/floor_decal/industrial/halfstair,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"pf" = (
+/obj/structure/bed/padded,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"pz" = (
+/obj/structure/bed/chair/bay/comfy/black{
+	dir = 4
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/dark,
+/area/submap/skyplanet/poi/mechbase)
+"qj" = (
+/obj/vehicle/sealed/mecha/working/ripley/abandoned,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/mechbase)
+"sf" = (
+/obj/item/storage/toolbox/mechanical,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"sx" = (
+/obj/machinery/mech_recharger,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/reinforced/outdoors,
+/area/submap/skyplanet/poi/mechbase)
+"sC" = (
+/obj/structure/salvageable/console_broken_os{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/submap/skyplanet/poi/mechbase)
+"tc" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"tw" = (
+/obj/structure/loot_pile/mecha/ripley/random_sprite,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/mechbase)
+"uG" = (
+/obj/structure/loot_pile/mecha/ripley/pirate,
+/turf/simulated/floor/tiled/dark,
+/area/submap/skyplanet/poi/mechbase)
+"uR" = (
+/obj/machinery/conveyor,
+/obj/structure/atmospheric_retention_field,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"uX" = (
+/obj/machinery/conveyor,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"vr" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/random/paintkit,
+/obj/random/paintkit,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/mechbase)
+"vK" = (
+/obj/structure/railing/grey,
+/obj/structure/metal_edge{
+	layer = 1
+	},
+/obj/structure/railing/grey{
+	dir = 1;
+	layer = 2.5
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"Ah" = (
+/obj/structure/metal_edge{
+	layer = 1
+	},
+/obj/structure/railing/grey{
+	dir = 4
+	},
+/obj/structure/salvageable/computer_os,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"Ay" = (
+/obj/structure/closet,
+/obj/item/clothing/under/color/blue,
+/obj/item/clothing/under/tajaran/database_freighter,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"AD" = (
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/mechbase)
+"EC" = (
+/obj/structure/salvageable/server,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/mechbase)
+"FO" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/obj/item/storage/toolbox/syndicate,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"Gu" = (
+/obj/structure/loot_pile/mecha/ripley/firefighter,
+/turf/simulated/floor/tiled/dark,
+/area/submap/skyplanet/poi/mechbase)
+"GD" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/random/paintkit/durand,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/mechbase)
+"GP" = (
+/obj/structure/closet,
+/obj/item/clothing/under/color/blue,
+/obj/effect/floor_decal/rust,
+/obj/item/clothing/under/tajaran/database_freighter,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"GT" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/random/paintkit/gygax,
+/obj/random/paintkit/gygax,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/mechbase)
+"Hc" = (
+/obj/structure/closet,
+/obj/item/clothing/under/color/blue,
+/obj/effect/floor_decal/rust,
+/obj/item/clothing/under/tajaran/database_freighter/captain,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"HO" = (
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/submap/skyplanet/poi/mechbase)
+"Io" = (
+/obj/structure/salvageable/console_broken_os{
+	dir = 8
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/dark,
+/area/submap/skyplanet/poi/mechbase)
+"JX" = (
+/obj/structure/salvageable/server_os,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/mechbase)
+"Kp" = (
+/obj/machinery/mech_recharger,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"Lr" = (
+/turf/simulated/wall/r_wall,
+/area/submap/skyplanet/poi/mechbase)
+"MB" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"MV" = (
+/obj/structure/metal_edge{
+	layer = 1
+	},
+/obj/structure/salvageable/machine_os,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"Oq" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/random/multiple/mechtool,
+/obj/random/multiple/mechtool,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"Ow" = (
+/obj/machinery/mecha_part_fabricator,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/mechbase)
+"OA" = (
+/obj/structure/table/standard,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"Po" = (
+/obj/structure/railing/grey{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"PA" = (
+/obj/machinery/door/airlock,
+/obj/structure/atmospheric_retention_field,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"PM" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/reinforced/outdoors,
+/area/submap/skyplanet/poi/mechbase)
+"Qe" = (
+/obj/structure/loot_pile/mecha/ripley,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/reinforced/outdoors,
+/area/submap/skyplanet/poi/mechbase)
+"Qh" = (
+/obj/structure/table/rack/shelf/steel,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/mechbase)
+"Qq" = (
+/obj/structure/metal_edge{
+	layer = 1
+	},
+/obj/structure/railing/grey{
+	dir = 1;
+	layer = 2.5
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"Rb" = (
+/obj/structure/bed/padded,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"Rj" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"Tj" = (
+/obj/structure/loot_pile/mecha/odysseus,
+/turf/simulated/floor/tiled/dark,
+/area/submap/skyplanet/poi/mechbase)
+"Up" = (
+/obj/item/storage/toolbox/syndicate,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/mechbase)
+"Ut" = (
+/obj/machinery/conveyor{
+	dir = 2;
+	id = "spine_outbound"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"VP" = (
+/obj/structure/bed/chair/bay/comfy/black{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/submap/skyplanet/poi/mechbase)
+"WH" = (
+/obj/structure/metal_edge{
+	layer = 1
+	},
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/obj/structure/railing/grey{
+	dir = 1;
+	layer = 2.5
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"Xb" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/mechbase)
+"Xn" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"XJ" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/dark,
+/area/submap/skyplanet/poi/mechbase)
+"XS" = (
+/turf/simulated/floor/reinforced/outdoors,
+/area/submap/skyplanet/poi/mechbase)
+"Zk" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/random/multiple/mechtool,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"Zm" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/obj/structure/railing/grey{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mechbase)
+"ZQ" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced/outdoors,
+/area/submap/skyplanet/poi/mechbase)
+
+(1,1,1) = {"
+Lr
+Lr
+Lr
+Lr
+Lr
+Lr
+Lr
+Lr
+Lr
+Lr
+Lr
+Lr
+Lr
+Lr
+Lr
+Lr
+Lr
+Lr
+Lr
+Lr
+"}
+(2,1,1) = {"
+Lr
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uR
+PM
+Qe
+Qe
+PM
+PM
+"}
+(3,1,1) = {"
+Lr
+aU
+WH
+Zm
+Zm
+Zm
+Zm
+Zm
+Zm
+Zm
+Zm
+Zm
+Zm
+Zm
+Lr
+PM
+PM
+PM
+PM
+PM
+"}
+(4,1,1) = {"
+Lr
+aU
+vK
+Ut
+Ut
+Ut
+Ut
+Ut
+Ut
+Ut
+uX
+uX
+uX
+uX
+uR
+PM
+PM
+PM
+PM
+PM
+"}
+(5,1,1) = {"
+Lr
+aU
+vK
+aU
+WH
+Xn
+Xn
+Xn
+Xn
+Xn
+FO
+MB
+Xn
+MB
+Lr
+XS
+XS
+XS
+XS
+XS
+"}
+(6,1,1) = {"
+Lr
+aU
+vK
+aU
+Qq
+Kp
+Rj
+Oq
+Zk
+Zk
+Oq
+Zk
+Rj
+Rj
+PA
+XS
+XS
+XS
+XS
+XS
+"}
+(7,1,1) = {"
+Lr
+aU
+vK
+aU
+Qq
+hL
+hL
+hL
+Rj
+Rj
+Rj
+Rj
+Rj
+hL
+Lr
+sx
+PM
+XS
+XS
+XS
+"}
+(8,1,1) = {"
+Lr
+aU
+vK
+aU
+Qq
+fS
+Rj
+Rj
+dK
+Rj
+Rj
+hL
+hL
+Rj
+Lr
+sx
+PM
+XS
+XS
+XS
+"}
+(9,1,1) = {"
+Lr
+aU
+vK
+aU
+MV
+hL
+Rj
+Rj
+hL
+hL
+hL
+hL
+hL
+hL
+Lr
+XS
+XS
+XS
+XS
+XS
+"}
+(10,1,1) = {"
+Lr
+aU
+eS
+aU
+Ah
+Po
+Rj
+Rj
+Rj
+Lr
+Lr
+Lr
+Lr
+tc
+Lr
+sx
+PM
+XS
+XS
+XS
+"}
+(11,1,1) = {"
+Lr
+AD
+AD
+AD
+AD
+tw
+Qq
+hL
+Rj
+Lr
+ms
+OA
+aF
+Rj
+Lr
+sx
+PM
+XS
+XS
+XS
+"}
+(12,1,1) = {"
+Lr
+AD
+Xb
+AD
+AD
+kz
+Qq
+hL
+Rj
+Lr
+OA
+Rj
+hL
+hL
+Lr
+ZQ
+ZQ
+XS
+ZQ
+ZQ
+"}
+(13,1,1) = {"
+Lr
+AD
+Xb
+vr
+AD
+kz
+Qq
+hL
+Rj
+Lr
+hL
+hL
+hL
+Rj
+Lr
+HO
+HO
+fb
+HO
+HO
+"}
+(14,1,1) = {"
+Lr
+Xb
+AD
+Qh
+AD
+qj
+Qq
+hL
+hL
+Lr
+Rj
+Ay
+GP
+Hc
+Lr
+HO
+Tj
+XJ
+ei
+HO
+"}
+(15,1,1) = {"
+Lr
+AD
+AD
+GD
+AD
+tw
+Qq
+hL
+hL
+Lr
+tc
+Lr
+Lr
+Lr
+Lr
+HO
+Gu
+XJ
+fb
+HO
+"}
+(16,1,1) = {"
+Lr
+AD
+AD
+Qh
+Xb
+AD
+Qq
+Rj
+hL
+Lr
+Rj
+Rb
+pf
+pf
+Lr
+HO
+fb
+XJ
+uG
+HO
+"}
+(17,1,1) = {"
+Lr
+AD
+AD
+GT
+Xb
+Xb
+kK
+Rj
+sf
+Lr
+hL
+hL
+hL
+Rj
+Lr
+HO
+HO
+fb
+HO
+HO
+"}
+(18,1,1) = {"
+Lr
+AD
+Up
+AD
+AD
+Xb
+mE
+hL
+hL
+Lr
+tc
+Lr
+tc
+Lr
+Lr
+HO
+VP
+XJ
+pz
+HO
+"}
+(19,1,1) = {"
+Lr
+EC
+JX
+Ow
+AD
+Xb
+mE
+Rj
+eA
+Lr
+hL
+Lr
+hL
+hL
+Lr
+HO
+Io
+sC
+sC
+HO
+"}
+(20,1,1) = {"
+Lr
+Lr
+Lr
+Lr
+Lr
+Lr
+Lr
+Lr
+Lr
+Lr
+Lr
+Lr
+Lr
+Lr
+Lr
+HO
+eb
+eb
+eb
+HO
+"}

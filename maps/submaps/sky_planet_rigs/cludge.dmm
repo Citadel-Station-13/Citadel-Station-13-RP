@@ -1,0 +1,665 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"b" = (
+/mob/living/simple_mob/animal/roach,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/cludge)
+"d" = (
+/turf/simulated/wall/r_wall,
+/area/submap/skyplanet/poi/cludge)
+"e" = (
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/cludge)
+"f" = (
+/obj/effect/floor_decal/industrial/warning,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister/phoron,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/cludge)
+"g" = (
+/obj/effect/floor_decal/industrial/warning,
+/obj/machinery/light/spot{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/tank/phoron{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/cludge)
+"h" = (
+/obj/effect/floor_decal/industrial/warning,
+/obj/structure/salvageable/autolathe,
+/obj/machinery/light/spot{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/cludge)
+"i" = (
+/obj/structure/bed/pod,
+/obj/item/storage/daki{
+	icon_state = "daki_Sue Bowchief"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/cludge)
+"j" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/cludge)
+"l" = (
+/mob/living/simple_mob/animal/roach,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/cludge)
+"m" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/storage/toolbox/syndicate/powertools,
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/cludge)
+"n" = (
+/obj/vehicle/sealed/mecha/combat/fighter/cludge,
+/obj/machinery/mech_recharger,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/cludge)
+"p" = (
+/obj/machinery/light/spot{
+	dir = 8
+	},
+/obj/structure/bed/chair/comfy/orange{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/cludge)
+"q" = (
+/obj/structure/table/carbon,
+/obj/item/modular_computer/laptop/preset/custom_loadout/elite,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/cludge)
+"t" = (
+/obj/effect/floor_decal/industrial/warning,
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister/phoron,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/cludge)
+"u" = (
+/obj/spawner/window/reinforced/full,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/cludge)
+"w" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/cludge)
+"x" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/canister/air,
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/cludge)
+"z" = (
+/mob/living/simple_mob/animal/roach/seuche,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/cludge)
+"A" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/storage/toolbox/mechanical,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/cludge)
+"B" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/obj/machinery/light/spot{
+	dir = 8
+	},
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/cludge)
+"C" = (
+/obj/structure/fans/tiny,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/cludge)
+"D" = (
+/obj/effect/floor_decal/industrial/warning,
+/mob/living/simple_mob/animal/roach/seuche,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/cludge)
+"F" = (
+/obj/machinery/light/spot{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/cludge)
+"H" = (
+/obj/effect/decal/mecha_wreckage/cludge,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/cludge)
+"J" = (
+/obj/structure/salvageable/autolathe,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/cludge)
+"K" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/cludge)
+"L" = (
+/turf/simulated/wall/r_wall,
+/area/template_noop)
+"M" = (
+/obj/effect/floor_decal/industrial/warning,
+/obj/machinery/atmospherics/portables_connector{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/cludge)
+"P" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/cludge)
+"R" = (
+/obj/effect/floor_decal/industrial/warning,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/cludge)
+"S" = (
+/obj/machinery/atmospherics/portables_connector,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/cludge)
+"T" = (
+/obj/effect/decal/mecha_wreckage/cludge,
+/obj/machinery/light/spot{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/cludge)
+"U" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/cludge)
+"V" = (
+/obj/machinery/mech_recharger,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/cludge)
+"W" = (
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/cludge)
+"X" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/cludge)
+"Z" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/cludge)
+
+(1,1,1) = {"
+L
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+L
+"}
+(2,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(3,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(4,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(5,1,1) = {"
+a
+a
+a
+a
+a
+a
+d
+d
+d
+d
+d
+d
+d
+d
+a
+a
+a
+a
+a
+a
+"}
+(6,1,1) = {"
+a
+a
+a
+a
+a
+d
+d
+d
+g
+V
+n
+W
+T
+d
+d
+a
+a
+a
+a
+a
+"}
+(7,1,1) = {"
+a
+a
+a
+a
+d
+d
+d
+d
+f
+W
+W
+W
+W
+X
+d
+d
+a
+a
+a
+a
+"}
+(8,1,1) = {"
+a
+a
+a
+a
+d
+q
+p
+d
+t
+W
+W
+W
+S
+x
+B
+d
+a
+a
+a
+a
+"}
+(9,1,1) = {"
+a
+a
+a
+a
+u
+K
+U
+d
+M
+W
+W
+W
+W
+l
+W
+C
+a
+a
+a
+a
+"}
+(10,1,1) = {"
+a
+a
+a
+a
+u
+U
+i
+d
+e
+H
+W
+W
+W
+W
+W
+C
+a
+a
+a
+a
+"}
+(11,1,1) = {"
+a
+a
+a
+a
+d
+P
+d
+d
+e
+W
+W
+W
+W
+W
+H
+C
+a
+a
+a
+a
+"}
+(12,1,1) = {"
+a
+a
+a
+a
+u
+K
+b
+U
+R
+W
+W
+l
+W
+z
+W
+C
+a
+a
+a
+a
+"}
+(13,1,1) = {"
+a
+a
+a
+a
+d
+A
+U
+K
+e
+W
+W
+W
+W
+w
+j
+d
+a
+a
+a
+a
+"}
+(14,1,1) = {"
+a
+a
+a
+a
+d
+d
+m
+K
+D
+W
+H
+W
+H
+Z
+d
+d
+a
+a
+a
+a
+"}
+(15,1,1) = {"
+a
+a
+a
+a
+a
+d
+d
+J
+h
+W
+W
+W
+F
+d
+d
+a
+a
+a
+a
+a
+"}
+(16,1,1) = {"
+a
+a
+a
+a
+a
+a
+d
+d
+d
+d
+d
+d
+d
+d
+a
+a
+a
+a
+a
+a
+"}
+(17,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(18,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(19,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(20,1,1) = {"
+L
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+L
+"}
