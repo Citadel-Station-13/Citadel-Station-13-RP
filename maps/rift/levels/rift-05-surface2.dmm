@@ -3416,7 +3416,7 @@
 /turf/simulated/wall/prepainted,
 /area/maintenance/lower/medsec_maintenance)
 "bXh" = (
-/obj/item/mecha_parts/part/durand_right_leg{
+/obj/item/vehicle_part/durand_right_leg{
 	name = "Priapic Monument"
 	},
 /turf/simulated/floor/tiled/techfloor,

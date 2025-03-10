@@ -306,3 +306,16 @@
 	if(ishuman(owner))
 		var/mob/living/carbon/human/H = owner
 		color = H.species.blood_color
+
+/obj/item/organ/internal/brain/holosphere
+	decays = FALSE
+
+/obj/item/organ/internal/brain/holosphere/take_damage(amount, var/silent=0)
+	return
+
+/obj/item/organ/internal/brain/holosphere/can_die()
+	return FALSE
+
+/obj/item/organ/internal/brain/holosphere/removed(var/mob/living/user)
+	. = ..()
+	QDEL_NULL(src)

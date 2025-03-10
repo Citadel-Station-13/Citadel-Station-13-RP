@@ -29,7 +29,7 @@
 	if(ismecha(AM))
 		var/obj/vehicle/sealed/mecha/M = AM
 		if(istype(M, /obj/vehicle/sealed/mecha/medical/odysseus))
-			for(var/obj/item/mecha_parts/mecha_equipment/tool/sleeper/S in M.equipment)
+			for(var/obj/item/vehicle_module/tool/sleeper/S in M.equipment)
 				if(S.occupant_legacy)
 					return FALSE
 		return TRUE

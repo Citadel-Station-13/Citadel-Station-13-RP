@@ -105,7 +105,7 @@
 			return FALSE
 		old = I.worn_slot
 		_unequip_slot(old, flags, I)
-		I.on_unequipped(src, old, flags)
+		I.on_inv_unequipped(src, inventory, old, flags)
 		I.unequipped(src, old, flags)
 		handle_item_denesting(I, old, flags, user)
 
@@ -258,7 +258,7 @@
 			unequip_hand_impl(I, get_held_index(I), flags)
 		else
 			_unequip_slot(old_slot, flags, I)
-		I.on_unequipped(src, old_slot, flags)
+		I.on_inv_unequipped(src, inventory, old_slot, flags)
 		I.unequipped(src, old_slot, flags)
 		// sigh
 		handle_item_denesting(I, old_slot, flags, user)
@@ -282,7 +282,7 @@
 		else
 			_unequip_slot(old_slot, flags, I)
 		I.unequipped(src, old_slot, flags)
-		I.on_unequipped(src, old_slot, flags)
+		I.on_inv_unequipped(src, inventory, old_slot, flags)
 		// TODO: HANDLE DELETIONS ON EQUIPPED PROPERLY
 		// sigh
 		_equip_slot(I, slot, flags)

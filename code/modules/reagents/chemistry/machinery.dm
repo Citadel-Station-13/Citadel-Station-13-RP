@@ -64,8 +64,8 @@
 	if(!(machine_stat & (NOPOWER|BROKEN)) && (!no_panel))
 		. += "<span class='notice'>The status display reads:</span>\n"
 		if(beaker)
-			for(var/datum/reagent/R in beaker.reagents.reagent_list)
-				. += "<span class='notice'>- [R.volume] units of [R.name].</span>"
+			for(var/datum/reagent/R in beaker.reagents.get_reagent_datums())
+				. += "<span class='notice'>- [beaker.reagents.get_reagent_amount(R)] units of [R.name].</span>"
 
 /obj/machinery/reagentgrinder/update_icon()
 	icon_state = "juicer"+num2text(!isnull(beaker))
@@ -325,12 +325,12 @@
 				I.identify(IDENTITY_FULL, user)
 
 		// Now tell us everything that is inside.
-		if(I.reagents && I.reagents.reagent_list.len)
+		if(length(I.reagents?.reagent_volumes))
 			to_chat(user, "<br>") // To add padding between regular chat and the output.
-			for(var/datum/reagent/R in I.reagents.reagent_list)
+			for(var/datum/reagent/R in I.reagents.get_reagent_datums())
 				if(!R.name)
 					continue
-				to_chat(user, SPAN_NOTICE("Contains [R.volume]u of <b>[R.name]</b>.<br>[R.description]<br>"))
+				to_chat(user, SPAN_NOTICE("Contains [I.reagents.get_reagent_amount(R)]u of <b>[R.name]</b>.<br>[R.description]<br>"))
 
 		// Last, unseal it if it's an autoinjector.
 		if(istype(I,/obj/item/reagent_containers/hypospray/autoinjector/biginjector) && !(I.atom_flags & OPENCONTAINER))

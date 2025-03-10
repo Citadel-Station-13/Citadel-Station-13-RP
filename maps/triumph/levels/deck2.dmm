@@ -2274,7 +2274,7 @@
 /turf/simulated/floor/tiled,
 /area/station/stairs_two)
 "gL" = (
-/obj/structure/reagent_dispensers/cookingoil,
+/obj/structure/reagent_dispensers/oil,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
@@ -13436,7 +13436,7 @@
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/bar_backroom)
 "OH" = (
-/obj/machinery/mineral/equipment_vendor,
+/obj/machinery/point_redemption_vendor/mining,
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
 	},

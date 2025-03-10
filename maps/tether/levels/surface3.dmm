@@ -33790,7 +33790,7 @@
 /area/hallway/lower/third_south)
 "ueV" = (
 /obj/structure/table/rack/steel,
-/obj/item/mecha_parts/part/durand_left_leg,
+/obj/item/vehicle_part/durand_left_leg,
 /obj/item/cane/crutch,
 /obj/item/pack/cardemon,
 /obj/item/soap/syndie,

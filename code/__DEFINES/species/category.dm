@@ -11,4 +11,4 @@
 #define SPECIES_CATEGORY_TAJARAN "Tajaran"
 #define SPECIES_CATEGORY_UNATHI "Unathi"
 #define SPECIES_CATEGORY_VOX "Vox"
-
+#define SPECIES_CAEGORY_HOLOSPHERE "Holosphere"
