@@ -120,7 +120,7 @@
 /obj/machinery/door/blast/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(istype(user, /mob/living/carbon/human))
 		var/mob/living/carbon/human/X = user
-		if(istype(X.species, /datum/species/xenos))
+		if(istype(X.species, /datum/species/xenomorph))
 			src.attack_alien(user)
 			return
 	..()
@@ -167,7 +167,7 @@
 /obj/machinery/door/blast/attack_alien(var/mob/user) //Familiar, right? Doors.
 	if(istype(user, /mob/living/carbon/human))
 		var/mob/living/carbon/human/X = user
-		if(istype(X.species, /datum/species/xenos))
+		if(istype(X.species, /datum/species/xenomorph))
 			if(src.density)
 				visible_message("<span class='green'>\The [user] begins forcing \the [src] open!</span>")
 				if(do_after(user, 15 SECONDS,src))

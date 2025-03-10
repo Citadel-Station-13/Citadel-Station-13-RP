@@ -52,10 +52,10 @@
 	var/mob/living/carbon/xenos = user
 	var/mob/living/carbon/victim = M
 
-	if(istype(victim) && locate(/obj/item/organ/internal/xenos/hivenode) in victim.internal_organs)
+	if(istype(victim) && victim.legacy_organ_by_type(/obj/item/organ/internal/xenomorph/hivenode))
 		return
 
-	if(istype(xenos) && !((locate(/obj/item/organ/internal/xenos/hivenode) in xenos.internal_organs)))
+	if(istype(xenos) && !((xenos.legacy_organ_by_type(/obj/item/organ/internal/xenomorph/hivenode))))
 		return
 
 	if(M == user)

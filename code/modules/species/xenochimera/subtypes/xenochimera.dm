@@ -1,15 +1,18 @@
+
 /datum/physiology_modifier/intrinsic/species/xenochimera
 	carry_strength_add = CARRY_STRENGTH_ADD_XENOCHIMERA
 	carry_strength_factor = CARRY_FACTOR_MOD_XENOCHIMERA
 
-/datum/species/shapeshifter/xenochimera //Scree's race.
+/datum/species/shapeshifter/xenochimera
 	uid = SPECIES_ID_XENOCHIMERA
 	id = SPECIES_ID_XENOCHIMERA
+
 	name = SPECIES_XENOCHIMERA
 	name_plural = "Xenochimeras"
+
+	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/xenochimera
 	base_species = SPECIES_XENOCHIMERA
 	category = "Special"
-	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/xenochimera
 
 	selects_bodytype = TRUE
 

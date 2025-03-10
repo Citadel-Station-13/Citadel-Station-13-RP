@@ -1,4 +1,103 @@
-//! *ALL DEFINES RELATED TO ORGANS GO HERE* !//
+//* Organ Flags *//
+
+/// This organ is abstract.
+///
+/// * Do not allow adding / removing by players.
+/// * Do not allow players to interact with it by any means, including by scanning it.
+#define ORGAN_FLAG_ABSTRACT (1<<0)
+#warn impl
+
+#warn DEFINE_BITFIELD
+
+//* Organ Discovery Flags *//
+
+/// Does not show up on simple scanners like cyborg analyzers.
+#define ORGAN_DISCOVERY_NO_SIMPLE_SCAN (1<<0)
+/// Does not show up on advanced imaging like body scanners.
+#define ORGAN_DISCOVERY_NO_ADVANCED_SCAN (1<<1)
+#warn impl
+
+#warn DEFINE_BITFIELD
+
+//*                                   Organ Keys                                      *//
+//* Organ keys are strings used to key the 'keyed_organs' list on carbons.            *//
+//*                                                                                   *//
+//* While usually arbitrary for an organ, they do have attached connotations of       *//
+//* what the organ will be casted to when fetched. As an example, ORGAN_KEY_BRAIN     *//
+//* will always be an organ of /obj/item/organ/internal/brain type.                   *//
+//*                                                                                   *//
+//* Organ keys should always be annotated in the below list with their expected type. *//
+
+//* Bodyparts *//
+
+#warn tag all the ext organs these describe!!!!
+/// External organ key for standard set.
+/// * Type: /obj/item/organ/external
+#define ORGAN_KEY_EXT_HEAD "head"
+/// External organ key for standard set.
+/// * Type: /obj/item/organ/external
+#define ORGAN_KEY_EXT_CHEST "chest"
+/// External organ key for standard set.
+/// * Type: /obj/item/organ/external
+#define ORGAN_KEY_EXT_LEFT_ARM "left_arm"
+/// External organ key for standard set.
+/// * Type: /obj/item/organ/external
+#define ORGAN_KEY_EXT_LEFT_HAND "left_hand"
+/// External organ key for standard set.
+/// * Type: /obj/item/organ/external
+#define ORGAN_KEY_EXT_RIGHT_ARM "right_arm"
+/// External organ key for standard set.
+/// * Type: /obj/item/organ/external
+#define ORGAN_KEY_EXT_RIGHT_HAND "right_hand"
+/// External organ key for standard set.
+/// * Type: /obj/item/organ/external
+#define ORGAN_KEY_EXT_GROIN "groin"
+/// External organ key for standard set.
+/// * Type: /obj/item/organ/external
+#define ORGAN_KEY_EXT_LEFT_LEG "left_leg"
+/// External organ key for standard set.
+/// * Type: /obj/item/organ/external
+#define ORGAN_KEY_EXT_LEFT_FOOT "left_foot"
+/// External organ key for standard set.
+/// * Type: /obj/item/organ/external
+#define ORGAN_KEY_EXT_RIGHT_LEG "right_leg"
+/// External organ key for standard set.
+/// * Type: /obj/item/organ/external
+#define ORGAN_KEY_EXT_RIGHT_FOOT "right_foot"
+
+//* Common *//
+
+/// The key for brain organs.
+/// * Type: /obj/item/organ/internal/brain
+#define ORGAN_KEY_BRAIN "brain"
+/// The key for lung organs.
+/// * Type: /obj/item/organ/internal/lungs
+#define ORGAN_KEY_LUNGS "lungs"
+/// The key for eye organs.
+/// * Type: /obj/item/organ/internal/eyes
+#define ORGAN_KEY_EYES "eyes"
+
+//* Species - Shadekin *//
+
+/// The key for shadekin dimensional nodes
+/// * Type: /obj/item/organ/internal/shadekin/dimensional_cluster
+#define ORGAN_KEY_SHADEKIN_DIMENSIONAL_CLUSTER "shadekin-dimensional-cluster"
+
+//* Species - Xenomorph *//
+
+/// The key for xenomorph plasma vessels.
+/// * Type: /obj/item/organ/internal/xenomorph/plasmavessel
+#define ORGAN_KEY_XENOMORPH_PLASMA_VESSEL "xeno-plasma-vessel"
+
+#warn hook / implement
+
+//*                     Organ Default Lists                         *//
+//* Used in lists to overrule a host biology's default organ lists. *//
+
+/// Omit this organ.
+#define ORGAN_DEFAULT_OMIT "omit"
+
+//! legacy below !//
 
 //These control the damage thresholds for the various ways of removing limbs
 #define DROPLIMB_THRESHOLD_EDGE 5

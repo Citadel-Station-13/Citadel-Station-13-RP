@@ -401,21 +401,21 @@ var/global/list/all_objectives = list()
 			return FALSE
 
 		var/mob/living/carbon/human/H = target.current
-		for(var/obj/item/organ/external/E in H.organs)
+		for(var/obj/item/organ/external/E as anything in H.external_organs)
 			if(E.status & ORGAN_BROKEN)
 				return TRUE
 		for(var/limb_tag in H.species.has_limbs) //todo check prefs for robotic limbs and amputations.
 			var/list/organ_data = H.species.has_limbs[limb_tag]
 			var/limb_type = organ_data["path"]
 			var/found
-			for(var/obj/item/organ/external/E in H.organs)
+			for(var/obj/item/organ/external/E as anything in H.external_organs)
 				if(limb_type == E.type)
 					found = 1
 					break
 			if(!found)
 				return TRUE
 
-		var/obj/item/organ/external/head/head = H.get_organ(BP_HEAD)
+		var/obj/item/organ/external/head/head = H.legacy_organ_by_zone(BP_HEAD)
 		if(head.disfigured)
 			return TRUE
 	return FALSE

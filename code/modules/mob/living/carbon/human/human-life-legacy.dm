@@ -67,10 +67,6 @@
 
 	voice = GetVoice()
 
-/mob/living/carbon/human/PhysicalLife(seconds, times_fired)
-	if((. = ..()))
-		return
-
 	fall() // Prevents people from floating
 
 /mob/living/carbon/human/BiologicalLife(seconds, times_fired)
@@ -204,7 +200,7 @@
 	..()
 
 	if(!HAS_TRAIT_FROM(src, TRAIT_BLIND, TRAIT_BLINDNESS_SPECIES))
-		var/obj/item/organ/vis = internal_organs_by_name[species.vision_organ]
+		var/obj/item/organ/vis = legacy_organ_by_tag[species.vision_organ]
 		if(!vis)
 			add_blindness_source( TRAIT_BLINDNESS_VIS_ORGAN_MISSING)
 		else if(HAS_TRAIT_FROM(src, TRAIT_BLIND, TRAIT_BLINDNESS_VIS_ORGAN_MISSING))

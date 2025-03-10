@@ -27,7 +27,7 @@
 		owner.adjust_nutrition(-maintenance_cost)
 		active = FALSE
 		to_chat(owner, SPAN_DANGER("Your [name] [gender == PLURAL ? "are" : "is"] out of power!"))
-		refresh_action_button()
+		update_action_buttons()
 
 /obj/item/organ/internal/powered/update_action_buttons()
 	if(istype(organ_actions, /datum/action))
@@ -48,8 +48,7 @@
 		else
 			active = !active
 			to_chat(owner, SPAN_NOTICE("You are [active ? "now" : "no longer"] using your [name] to [use_descriptor]."))
-		refresh_action_button()
-
+		update_action_buttons()
 
 /obj/item/organ/internal/powered/jets
 	name = "maneuvering jets"
