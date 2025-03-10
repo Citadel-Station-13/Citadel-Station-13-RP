@@ -89,9 +89,8 @@
 		for(var/mob/M in src)
 			if(M in stomach_contents)
 				stomach_contents.Remove(M)
-				M.loc = loc
+				M.forceMove(loc)
 		src.visible_message(SPAN_BOLDDANGER("[src] hurls out the contents of their stomach!"))
-	return
 
 /mob/living/carbon/human/proc/psychic_whisper(mob/M as mob in oview())
 	set name = "Psychic Whisper"
@@ -282,6 +281,7 @@
 			if(!E)
 				var/list/organ_data = src.species.has_limbs[limb_type]
 				var/limb_path = organ_data["path"]
+				#warn INSERT THIS PROPERLY
 				var/obj/item/organ/O = new limb_path(src)
 				organ_data["descriptor"] = O.name
 				to_chat(src, SPAN_NOTICE("You feel a slithering sensation as your [O.name] reform."))
@@ -292,6 +292,7 @@
 		for(var/organtype in species.has_organ) // Replace completely missing internal organs. -After- external ones, so they all should exist.
 			if(!src.internal_organs_by_name[organtype])
 				var/organpath = species.has_organ[organtype]
+				#warn INSERT THIS PROPERLY
 				var/obj/item/organ/Int = new organpath(src, TRUE)
 
 				Int.rejuvenate_legacy(TRUE)

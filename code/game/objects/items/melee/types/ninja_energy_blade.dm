@@ -52,10 +52,10 @@
 /obj/item/melee/ninja_energy_blade/process(delta_time)
 	if(!creator || loc != creator || !creator.is_holding(src))
 		// Tidy up a bit.
-		if(istype(loc,/mob/living))
-			var/mob/living/carbon/human/host = loc
+		if(istype(loc,/mob/living/carbon))
+			var/mob/living/carbon/host = loc
 			if(istype(host))
-				for(var/obj/item/organ/external/organ in host.organs)
+				for(var/obj/item/organ/external/organ in host.external_organs)
 					for(var/obj/item/O in organ.implants)
 						if(O == src)
 							organ.implants -= src

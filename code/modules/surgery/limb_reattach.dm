@@ -12,7 +12,7 @@
 	if(!..()) return FALSE
 	if (!hasorgans(target))
 		return 0
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	if (affected)
 		return 0
 	var/list/organ_data = target.species.has_limbs["[target_zone]"]
@@ -35,7 +35,7 @@
 		return 0
 	var/obj/item/organ/external/E = tool
 	var/obj/item/organ/external/P = target.organs_by_name[E.parent_organ]
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	if (affected)
 		to_chat(user, "<span class='warning'>Something is in the way! You can't attach [E] here!</span>")
 		return 0
@@ -92,16 +92,16 @@
 	max_duration = 120
 
 /datum/surgery_step/limb/connect/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/E = target.get_organ(target_zone)
+	var/obj/item/organ/external/E = target.legacy_organ_by_zone(target_zone)
 	return E && !E.is_stump() && (E.status & ORGAN_CUT_AWAY)
 
 /datum/surgery_step/limb/connect/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/E = target.get_organ(target_zone)
+	var/obj/item/organ/external/E = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("[user] starts connecting tendons and muscles in [target]'s [E.amputation_point] with [tool].", \
 	"You start connecting tendons and muscle in [target]'s [E.amputation_point].")
 
 /datum/surgery_step/limb/connect/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/E = target.get_organ(target_zone)
+	var/obj/item/organ/external/E = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("<span class='notice'>[user] has connected tendons and muscles in [target]'s [E.amputation_point] with [tool].</span>",	\
 	"<span class='notice'>You have connected tendons and muscles in [target]'s [E.amputation_point] with [tool].</span>")
 	E.status &= ~ORGAN_CUT_AWAY
@@ -133,7 +133,7 @@
 		if (p.part)
 			if (!(target_zone in p.part))
 				return 0
-		return isnull(target.get_organ(target_zone))
+		return isnull(target.legacy_organ_by_zone(target_zone))
 
 /datum/surgery_step/limb/mechanize/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	user.visible_message("[user] starts attaching \the [tool] to [target].", \
@@ -146,7 +146,7 @@
 
 	if(L.part)
 		for(var/part_name in L.part)
-			if(!isnull(target.get_organ(part_name)))
+			if(!isnull(target.legacy_organ_by_zone(part_name)))
 				continue
 			var/list/organ_data = target.species.has_limbs["[part_name]"]
 			if(!organ_data)

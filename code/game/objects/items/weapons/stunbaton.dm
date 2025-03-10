@@ -156,7 +156,7 @@
 	var/obj/item/organ/external/affecting = null
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
-		affecting = H.get_organ(target_zone)
+		affecting = H.legacy_organ_by_zone(target_zone)
 
 	if(user.a_intent == INTENT_HARM)
 		. = ..()

@@ -199,7 +199,7 @@
 
 /datum/trait/negative/hollow/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
-	for(var/obj/item/organ/external/O in H.organs)
+	for(var/obj/item/organ/external/O as anything in H.external_organs)
 		O.min_broken_damage *= 0.75
 		O.min_bruised_damage *= 0.75
 
@@ -215,7 +215,7 @@
 
 /datum/trait/negative/hollow_plus/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
-	for(var/obj/item/organ/external/O in H.organs)
+	for(var/obj/item/organ/external/O as anything in H.external_organs)
 		O.min_broken_damage *= 0.5
 		O.min_bruised_damage *= 0.5
 

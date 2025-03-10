@@ -83,7 +83,7 @@
 
 // does stuff to begin the step, usually just printing messages. Moved germs transfering and bloodying here too
 /datum/surgery_step/proc/begin_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	if (can_infect && affected)
 		spread_germs_to_organ(affected, user)
 	if (ishuman(user) && prob(60))
@@ -119,7 +119,7 @@
 	if(!ishuman(M))
 		return 1
 	var/mob/living/carbon/human/H = M
-	var/obj/item/organ/external/affected = H.get_organ(user.zone_sel.selecting)
+	var/obj/item/organ/external/affected = H.legacy_organ_by_zone(user.zone_sel.selecting)
 	if(affected)
 		for(var/datum/surgery_step/S in GLOB.surgery_steps)
 			if(!affected.open && S.req_open)
@@ -182,10 +182,11 @@
 		. += new path
 	tim_sort(., cmp = GLOBAL_PROC_REF(cmp_surgery_priority_asc))
 
-/datum/surgery_status/
+/datum/surgery_status
 	var/eyes	=	0
 	var/face	=	0
 	var/brainstem = 0
 	var/head_reattach = 0
 	var/current_organ = "organ"
+	var/obj/item/organ/current_organ_new
 	var/list/in_progress = list()
