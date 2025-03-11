@@ -161,23 +161,10 @@
 	if(categories)
 		//Handle some special cases to build up sub-categories for the fab interface.
 		//Start with checking if this design builds a cyborg module.
-		if(built_item in typesof(/obj/item/borg/upgrade))
-			var/obj/item/borg/upgrade/U = built_item
-			var/module_types = initial(U.module_flags)
+		if(built_item in typesof(/obj/item/robot_upgrade))
+			var/obj/item/robot_upgrade/U = built_item
 			sub_category = list()
-			if(module_types)
-				if(module_types & BORG_MODULE_SECURITY)
-					sub_category += "Security"
-				if(module_types & BORG_MODULE_MINER)
-					sub_category += "Mining"
-				if(module_types & BORG_MODULE_JANITOR)
-					sub_category += "Janitor"
-				if(module_types & BORG_MODULE_MEDICAL)
-					sub_category += "Medical"
-				if(module_types & BORG_MODULE_ENGINEERING)
-					sub_category += "Engineering"
-			else
-				sub_category += "All Cyborgs"
+			sub_category += "..."
 		//Else check if this design builds a piece of exosuit equipment.
 		else if(built_item in typesof(/obj/item/vehicle_module))
 			var/obj/item/vehicle_module/E = built_item

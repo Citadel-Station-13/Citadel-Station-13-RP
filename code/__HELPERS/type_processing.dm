@@ -36,6 +36,8 @@
 		/obj/effect = "//effect",
 		/turf/simulated/floor = "//floor",
 		/turf/simulated = "//simulated",
+		/mob/living/silicon/robot/module_preset = "//robot-preset",
+		/mob/living/silicon/robot = "//robot",
 		/mob/living/carbon = "//carbon",
 		/mob/living/simple_mob = "//simple",
 		/mob/living = "//living",
