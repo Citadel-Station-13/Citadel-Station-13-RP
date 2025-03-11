@@ -322,8 +322,10 @@
 			modular_component_slots = null
 
 	//* firemodes *//
-	if(!islist(firemodes))
+	if(!islist(firemodes) && firemodes)
 		firemodes = list(firemodes)
+	if(!length(firemodes))
+		firemodes = list(istype(src, /obj/item/gun/projectile/energy) ? /datum/firemode/energy : /datum/firemode)
 	for(var/i in 1 to firemodes.len)
 		var/key = firemodes[i]
 		if(islist(key))
