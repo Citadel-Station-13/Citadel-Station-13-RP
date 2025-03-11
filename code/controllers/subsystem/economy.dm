@@ -127,18 +127,24 @@ SUBSYSTEM_DEF(economy)
  * @params
  * * require_faction - require a specific faction type / path / instance / id
  * * require_personal - do not return department / system accounts
+ * * require_unlocked - do not return security locked ones
  */
-/datum/controller/subsystem/economy/proc/pull_account_lottery(require_faction, require_personal) as /datum/economy_account
+/datum/controller/subsystem/economy/proc/pull_account_lottery(require_faction, require_personal, require_unlocked) as /datum/economy_account
 	RETURN_TYPE(/datum/economy_account)
 	var/list/datum/economy_account/picking_from = list()
 	if(require_faction)
 		var/datum/economy_faction/restrict_to_faction = resolve_faction(require_faction)
 		for(var/datum/economy_account/account as anything in restrict_to_faction.accounts)
+			if(account.security_lock && require_unlocked)
+				continue
 	else
 		for(var/account_id in account_lookup)
 			var/datum/economy_account/account = account_lookup[account_id]
+			if(account.security_lock && require_unlocked)
+				continue
 
-	#warn impl
+	#warn impl, filter on faction / personal
+	return length(picking_from) ? pick(picking_from) : null
 
 //* Timestamping *//
 

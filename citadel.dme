@@ -1010,7 +1010,6 @@
 #include "code\datums\wires\apc.dm"
 #include "code\datums\wires\breaker.dm"
 #include "code\datums\wires\camera.dm"
-#include "code\datums\wires\coinbank.dm"
 #include "code\datums\wires\explosive.dm"
 #include "code\datums\wires\grid_checker.dm"
 #include "code\datums\wires\jukebox.dm"

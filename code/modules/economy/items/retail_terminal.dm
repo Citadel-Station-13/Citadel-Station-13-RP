@@ -36,9 +36,12 @@
 	/// stated current transaction purpose
 	/// * required for transaction to process
 	var/state_transaction_purpose
-	/// stated current transaction amount
-	/// * this is in additional to any scanned items
-	var/state_transaction_amount
+	/// Scanned items, weakrefs to amounts
+	var/list/state_transaction_scanned_weakrefs_to_amounts
+	/// Scanned items, text-desc to amounts
+	var/list/state_transaction_scanned_text_to_amounts
+	/// Additional entries for charges, text-desc to amounts
+	var/list/state_transaction_additional_text_to_amounts
 
 	/// retail scanner mode enabled
 	var/state_retail_mode = FALSE
@@ -78,16 +81,21 @@
 
 #warn always face user when put on a table
 
+// todo: allow unanchor
 /obj/item/retail_terminal/cash_register
 	name = "\improper EFTPOS Register"
 	desc = "A not-so-portable terminal used to make purchases. Now with cash storage."
 	#warn sprite
 
-	access_pin_allow_reset = FALSE
+	anchored = TRUE
 
 	//* storage *//
 
 	/// amount of Thaler stored
 	var/cash_stored = 0
+
+
+/obj/item/retail_terminal/cash_register/proc/can_access_cash_drawer_from(turf/tile)
+	return tile == loc || get_dir(src, tile) == dir
 
 #warn impl all

@@ -1,4 +1,4 @@
-// todo: combine with retail scanner
+#warn replace on maps
 /obj/item/eftpos
 	name = "\improper EFTPOS scanner"
 	desc = "Swipe your ID card to make purchases electronically."

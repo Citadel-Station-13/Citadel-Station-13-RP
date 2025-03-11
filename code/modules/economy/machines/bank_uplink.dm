@@ -133,11 +133,14 @@
 			ui_push_account_details(validated_target_account)
 			return TRUE
 		if("ejectCard")
+			#warn impl
 		if("insertCard")
+			#warn impl
 		if("fundAccount", "drainAccount")
 			var/fund_source_account_id
 			var/fund_amount
 			var/fund_reason
+			#warn impl
 		if("suspendAccount")
 			if(!validated_target_account)
 				return TRUE
