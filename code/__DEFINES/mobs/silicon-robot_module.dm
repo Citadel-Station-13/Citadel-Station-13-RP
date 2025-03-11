@@ -10,3 +10,5 @@
 //* /datum/prototype/robot_module selection groups *//
 
 #define ROBOT_MODULE_SELECTION_GROUP_NANOTRASEN "nanotrasen"
+
+#define ROBOT_MODULE_SELECTION_GROUP_LEGACY_RED_ALERT "legacy-red-alert"

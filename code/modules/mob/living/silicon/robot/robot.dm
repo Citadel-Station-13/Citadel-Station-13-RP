@@ -93,6 +93,10 @@
 	/// * Null = cannot pick anything, so, uh, don't fuck around with this.
 	/// todo: module based?
 	var/list/conf_module_pick_selection_groups
+	/// Disallowed selection groups for robot module picking
+	/// * Overrides pick_selection_groups and things like
+	///   red alert default groups
+	var/list/conf_module_pick_selection_groups_excluded
 	/// Initial default lawset
 	/// * An instance or a type is accepted
 	/// todo: module based?
@@ -139,8 +143,6 @@
 	var/used_power_this_tick = 0
 	var/sight_mode = 0
 	var/custom_name = ""
-	/// Due to all the sprites involved, a var for our custom borgs may be best.
-	var/custom_sprite = 0
 	/// The name of the borg, for the purposes of custom icon sprite indexing.
 	var/sprite_name = null
 	/// Admin-settable for combat module use.
@@ -206,17 +208,11 @@
 		/mob/living/silicon/robot/proc/robot_checklaws
 	)
 
-	var/sleeper_g
-	var/sleeper_r
 	var/leaping = 0
 	var/pounce_cooldown = 0
 	var/pounce_cooldown_time = 40
 	var/leap_at
-	var/dogborg = FALSE //Quadborg special features (overlays etc.)
 	var/scrubbing = FALSE //Floor cleaning enabled
-	var/datum/matter_synth/water_res = null
-	var/sitting = FALSE
-	var/bellyup = FALSE
 
 	var/shell = FALSE
 	var/deployed = FALSE
@@ -366,31 +362,6 @@
 	wires = null
 	return ..()
 
-/mob/living/silicon/robot/proc/pick_module()
-	if(module)
-		return
-	var/list/modules = list()
-	modules.Add(robot_module_types)
-	if(crisis || GLOB.security_level == SEC_LEVEL_RED || crisis_override)
-		to_chat(src, "<font color='red'>Crisis mode active. Combat module available.</font>")
-		modules+="Combat"
-		modules+="ERT"
-	modtype = input("Please, select a module!", "Robot module", null, null) as null|anything in modules
-
-	if(module)
-		return
-	if(!(modtype in GLOB.robot_modules))
-		return
-
-	var/module_type = GLOB.robot_modules[modtype]
-	transform_with_anim()
-	new module_type(src)
-
-	hands.icon_state = lowertext(modtype)
-	feedback_inc("cyborg_[lowertext(modtype)]",1)
-	updatename()
-	notify_ai(ROBOT_NOTIFICATION_NEW_MODULE, module.name)
-
 /mob/living/silicon/robot/proc/updatename(var/prefix as text)
 	if(prefix)
 		modtype = prefix
@@ -424,9 +395,6 @@
 	//We also need to update name of internal camera.
 	if (camera)
 		camera.c_tag = changed_name
-
-	if(!custom_sprite) //Check for custom sprite
-		set_custom_sprite()
 
 	//Flavour text.
 	if(client)

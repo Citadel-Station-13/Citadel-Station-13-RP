@@ -23,7 +23,8 @@
 			"name" = possible_module.get_display_name(),
 			"frames" = serialized_frames,
 		)
-		for(var/datum/robot_frame/possible_frame as anything in pickable_modules[possible_module])
+		var/list/datum/robot_frame/possible_frames = pickable_modules[possible_module]
+		for(var/datum/robot_frame/possible_frame as anything in possible_frames)
 			serialized_frames[++serialized_frames.len] = list()
 			#warn impl
 		serialized_modules[++serialized_modules.len] = serialized_module
@@ -47,7 +48,7 @@
 /datum/tgui_actor_modal/robot_module_picker/proc/assemble_modules(mob/living/silicon/robot/for_robot) as /list
 	. = list()
 
-	var/list/our_selection_groups = for_robot.conf_module_pick_selection_groups
+	var/list/our_selection_groups = for_robot.get_module_pick_groups()
 	for(var/datum/prototype/robot_module/module as anything in RSrobot_modules.fetch_multi(/datum/prototype/robot_module))
 		if(!length(module.selection_groups_all) && !length(module.selection_groups_any))
 			continue

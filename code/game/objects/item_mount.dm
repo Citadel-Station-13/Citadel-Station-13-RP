@@ -237,3 +237,29 @@
  */
 /datum/item_mount/proc/push_stack(path, amount, force)
 	return 0
+
+//* Misc *//
+
+/**
+ * Extinguisher get volume remaining
+ *
+ * @return volume remaining
+ */
+/datum/item_mount/proc/get_extinguisher_spray_volume(obj/item/extinguisher/extinguisher)
+	return 0
+
+/**
+ * Extinguisher has volume remaining
+ *
+ * @return TRUE / FALSE on if there's that much left
+ */
+/datum/item_mount/proc/has_extinguisher_spray_volume(obj/item/extinguisher/extinguisher, requested)
+	return get_extinguisher_spray_volume(extinguisher) >= requested
+
+/**
+ * Extinguisher pull volume into target reagents
+ *
+ * @return volume pulled
+ */
+/datum/item_mount/proc/pull_extinguisher_spray_volume(obj/item/extinguisher/extinguisher, requested, datum/reagent_holder/target_reagent_holder)
+	return 0

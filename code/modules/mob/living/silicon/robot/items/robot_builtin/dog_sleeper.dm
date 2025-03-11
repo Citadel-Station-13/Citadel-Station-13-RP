@@ -424,16 +424,16 @@
 	if(patient in contents)
 		if(patient_laststat != patient.stat)
 			if(cleaning)
-				hound.sleeper_r = TRUE
-				hound.sleeper_g = FALSE
+				// hound.sleeper_r = TRUE
+				// hound.sleeper_g = FALSE
 				patient_laststat = patient.stat
 			else if(patient.stat & DEAD)
-				hound.sleeper_r = TRUE
-				hound.sleeper_g = FALSE
+				// hound.sleeper_r = TRUE
+				// hound.sleeper_g = FALSE
 				patient_laststat = patient.stat
 			else
-				hound.sleeper_r = FALSE
-				hound.sleeper_g = TRUE
+				// hound.sleeper_r = FALSE
+				// hound.sleeper_g = TRUE
 				patient_laststat = patient.stat
 			//Update icon
 			hound.updateicon()
@@ -445,25 +445,25 @@
 		for(var/mob/living/carbon/human/C in contents)
 			patient = C
 			if(cleaning)
-				hound.sleeper_r = TRUE
-				hound.sleeper_g = FALSE
+				// hound.sleeper_r = TRUE
+				// hound.sleeper_g = FALSE
 				patient_laststat = patient.stat
 			else if(patient.stat & DEAD)
-				hound.sleeper_r = TRUE
-				hound.sleeper_g = FALSE
+				// hound.sleeper_r = TRUE
+				// hound.sleeper_g = FALSE
 				patient_laststat = patient.stat
 			else
-				hound.sleeper_r = FALSE
-				hound.sleeper_g = TRUE
+				// hound.sleeper_r = FALSE
+				// hound.sleeper_g = TRUE
 				patient_laststat = patient.stat
 			//Update icon and return new patient
 			hound.updateicon()
 			return(C)
 
 	//Couldn't find anyone, and not cleaning
-	if(!cleaning && !patient)
-		hound.sleeper_r = FALSE
-		hound.sleeper_g = FALSE
+	// if(!cleaning && !patient)
+	// 	hound.sleeper_r = FALSE
+	// 	hound.sleeper_g = FALSE
 
 	patient_laststat = null
 	patient = null
