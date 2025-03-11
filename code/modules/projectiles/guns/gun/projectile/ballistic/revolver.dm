@@ -5,41 +5,18 @@
 	item_state = "revolver"
 	caliber = /datum/ammo_caliber/a357
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
-	handle_casings = CYCLE_CASINGS
-	max_shells = 6
-	ammo_type = /obj/item/ammo_casing/a357
-	projectile_type = /obj/projectile/bullet/pistol/strong
-	mag_insert_sound = 'sound/weapons/guns/interaction/rev_magin.ogg'
-	mag_remove_sound = 'sound/weapons/guns/interaction/rev_magout.ogg'
-	var/chamber_offset = 0 //how many empty chambers in the cylinder until you hit a round
+	chamber_spin_after_fire = TRUE
+	internal_magazine = TRUE
+	internal_magazine_size = 6
+	internal_magazine_revolver_mode = TRUE
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a357
+
+	magazine_insert_sound = 'sound/weapons/guns/interaction/rev_magin.ogg'
+	magazine_remove_sound = 'sound/weapons/guns/interaction/rev_magout.ogg'
 
 /obj/item/gun/projectile/ballistic/revolver/holy
 	name = "blessed revolver"
-	ammo_type = /obj/item/ammo_casing/a357/silver
-
-/obj/item/gun/projectile/ballistic/revolver/verb/spin_cylinder()
-	set name = "Spin cylinder"
-	set desc = "Fun when you're bored out of your skull."
-	set category = VERB_CATEGORY_OBJECT
-
-	chamber_offset = 0
-	visible_message("<span class='warning'>\The [usr] spins the cylinder of \the [src]!</span>", \
-	"<span class='notice'>You hear something metallic spin and click.</span>")
-	playsound(src.loc, 'sound/weapons/revolver_spin.ogg', 100, 1)
-	loaded = shuffle(loaded)
-	if(rand(1,max_shells) > loaded.len)
-		chamber_offset = rand(0,max_shells - loaded.len)
-
-// todo: dumb
-/obj/item/gun/projectile/ballistic/revolver/consume_next_projectile(datum/gun_firing_cycle/cycle)
-	if(chamber_offset)
-		chamber_offset--
-		return
-	return ..()
-
-/obj/item/gun/projectile/ballistic/revolver/load_ammo(var/obj/item/A, mob/user)
-	chamber_offset = 0
-	return ..()
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a357/silver
 
 /obj/item/gun/projectile/ballistic/revolver/mateba
 	name = "mateba"
@@ -53,7 +30,7 @@
 	icon_state = "detective"
 	caliber = /datum/ammo_caliber/a38
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
-	ammo_type = /obj/item/ammo_casing/a38
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a38
 
 /obj/item/gun/projectile/ballistic/revolver/detective/verb/rename_gun()
 	set name = "Name Gun"
@@ -79,9 +56,8 @@
 	icon_state = "detective"
 	caliber = /datum/ammo_caliber/a45
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
-	ammo_type = /obj/item/ammo_casing/a45/rubber
-	max_shells = 7
-
+	internal_magazine_size = 7
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a45/rubber
 
 /obj/item/gun/projectile/ballistic/revolver/detective45/verb/rename_gun()
 	set name = "Name Gun"
@@ -133,23 +109,22 @@
 	icon_state = "deckard-empty"
 	caliber = /datum/ammo_caliber/a38
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
-	ammo_type = /obj/item/ammo_casing/a38
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a38
 
 /obj/item/gun/projectile/ballistic/revolver/deckard/emp
-	ammo_type = /obj/item/ammo_casing/a38/emp
-
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a38/emp
 
 /obj/item/gun/projectile/ballistic/revolver/deckard/update_icon_state()
 	. = ..()
-	if(loaded.len)
+	if(get_ammo_remaining())
 		icon_state = "deckard-loaded"
 	else
 		icon_state = "deckard-empty"
 
-/obj/item/gun/projectile/ballistic/revolver/deckard/load_ammo(var/obj/item/A, mob/user)
-	if(istype(A, /obj/item/ammo_magazine))
-		flick("deckard-reload",src)
-	..()
+// /obj/item/gun/projectile/ballistic/revolver/deckard/load_ammo(var/obj/item/A, mob/user)
+// 	if(istype(A, /obj/item/ammo_magazine))
+// 		flick("deckard-reload",src)
+// 	..()
 
 /obj/item/gun/projectile/ballistic/revolver/capgun
 	name = "cap gun"
@@ -158,117 +133,110 @@
 	item_state = "revolver"
 	caliber = /datum/ammo_caliber/cap_gun
 	origin_tech = list(TECH_COMBAT = 1, TECH_MATERIAL = 1)
-	handle_casings = CYCLE_CASINGS
-	max_shells = 7
-	ammo_type = /obj/item/ammo_casing/cap_gun
-	projectile_type = /obj/projectile/bullet/pistol/strong
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/cap_gun
+	internal_magazine_size = 7
 
 /obj/item/gun/projectile/ballistic/revolver/judge
 	name = "\"The Judge\""
 	desc = "A revolving hand-shotgun by Cybersun Industries that packs the power of a 12 guage in the palm of your hand (if you don't break your wrist). Uses 12g rounds."
 	icon_state = "judge"
 	caliber = /datum/ammo_caliber/a12g
+	internal_magazine_size = 2
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12g
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 4)
-	max_shells = 5
 	recoil = 2 // ow my fucking hand
 	accuracy = -15 // smooth bore + short barrel = shit accuracy
-	ammo_type = /obj/item/ammo_casing/a12g
-	projectile_type = /obj/projectile/bullet/shotgun
+
 	// ToDo: Remove accuracy debuf in exchange for slightly injuring your hand every time you fire it.
 
+// todo: secondary shotgun should be handled as an underbarrel attachment, CM style
 /obj/item/gun/projectile/ballistic/revolver/lemat
 	name = "LeMat Revolver"
-	desc = "The LeMat revolver is a 9-shot revolver with a secondar barrel for firing shotgun shells. Cybersun Industries still produces this iconic revolver in limited numbers, deliberately inflating the value of these collectible reproduction pistols. Uses .38 rounds and 12g shotgun shells."
+	desc = {"
+		A knockoff LeMat revolver that lacks a shotgun shell option.
+		Legends say the remnants of Cybersun will return the real thing sooner or later.
+	"}
+	// desc = {"
+	// 	The LeMat revolver is a 9-shot revolver with a secondary barrel for firing shotgun shells.
+	// 	Cybersun Industries still produces this iconic revolver in limited numbers,
+	// 	deliberately inflating the value of these collectible reproduction pistols.
+	// 	Uses .38 rounds and 12g shotgun shells.
+	// "}
 	icon_state = "lemat"
 	item_state = "revolver"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
-	handle_casings = CYCLE_CASINGS
-	max_shells = 9
+	internal_magazine_size = 9
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a38
 	caliber = /datum/ammo_caliber/a38
-	ammo_type = /obj/item/ammo_casing/a38
-	projectile_type = /obj/projectile/bullet/pistol
-	var/secondary_max_shells = 1
-	var/secondary_caliber = /datum/ammo_caliber/a12g
-	var/secondary_ammo_type = /obj/item/ammo_casing/a12g
-	var/flipped_firing = 0
-	var/list/secondary_loaded = list()
-	var/list/tertiary_loaded = list()
 
-/obj/item/gun/projectile/ballistic/revolver/lemat/Initialize(mapload)
-	for(var/i in 1 to secondary_max_shells)
-		secondary_loaded += new secondary_ammo_type(src)
-	return ..()
+// 	var/secondary_max_shells = 1
+// 	var/secondary_caliber = /datum/ammo_caliber/a12g
+// 	var/secondary_ammo_type = /obj/item/ammo_casing/a12g
+// 	var/flipped_firing = 0
+// 	var/list/secondary_loaded = list()
+// 	var/list/tertiary_loaded = list()
 
-/obj/item/gun/projectile/ballistic/revolver/lemat/verb/swap_firingmode()
-	set name = "Swap Firing Mode"
-	set category = VERB_CATEGORY_OBJECT
-	set desc = "Click to swap from one method of firing to another."
+// /obj/item/gun/projectile/ballistic/revolver/lemat/Initialize(mapload)
+// 	for(var/i in 1 to secondary_max_shells)
+// 		secondary_loaded += new secondary_ammo_type(src)
+// 	return ..()
 
-	var/mob/living/carbon/human/M = usr
-	if(!M.mind)
-		return 0
+// /obj/item/gun/projectile/ballistic/revolver/lemat/verb/swap_firingmode()
+// 	set name = "Swap Firing Mode"
+// 	set category = VERB_CATEGORY_OBJECT
+// 	set desc = "Click to swap from one method of firing to another."
 
-	to_chat(M, "<span class='notice'>You change the firing mode on \the [src].</span>")
-	if(!flipped_firing)
-		if(max_shells && secondary_max_shells)
-			max_shells = secondary_max_shells
+// 	var/mob/living/carbon/human/M = usr
+// 	if(!M.mind)
+// 		return 0
 
-		if(caliber && secondary_caliber)
-			caliber = secondary_caliber
+// 	to_chat(M, "<span class='notice'>You change the firing mode on \the [src].</span>")
+// 	if(!flipped_firing)
+// 		if(max_shells && secondary_max_shells)
+// 			max_shells = secondary_max_shells
 
-		if(ammo_type && secondary_ammo_type)
-			ammo_type = secondary_ammo_type
+// 		if(caliber && secondary_caliber)
+// 			caliber = secondary_caliber
 
-		if(secondary_loaded)
-			tertiary_loaded = loaded.Copy()
-			loaded = secondary_loaded
+// 		if(ammo_type && secondary_ammo_type)
+// 			ammo_type = secondary_ammo_type
 
-		flipped_firing = 1
+// 		if(secondary_loaded)
+// 			tertiary_loaded = loaded.Copy()
+// 			loaded = secondary_loaded
 
-	else
-		if(max_shells)
-			max_shells = initial(max_shells)
+// 		flipped_firing = 1
 
-		if(caliber && secondary_caliber)
-			caliber = initial(caliber)
+// 	else
+// 		if(max_shells)
+// 			max_shells = initial(max_shells)
 
-		if(ammo_type && secondary_ammo_type)
-			ammo_type = initial(ammo_type)
+// 		if(caliber && secondary_caliber)
+// 			caliber = initial(caliber)
 
-		if(tertiary_loaded)
-			secondary_loaded = loaded.Copy()
-			loaded = tertiary_loaded
+// 		if(ammo_type && secondary_ammo_type)
+// 			ammo_type = initial(ammo_type)
 
-		flipped_firing = 0
+// 		if(tertiary_loaded)
+// 			secondary_loaded = loaded.Copy()
+// 			loaded = tertiary_loaded
 
-/obj/item/gun/projectile/ballistic/revolver/lemat/spin_cylinder()
-	set name = "Spin cylinder"
-	set desc = "Fun when you're bored out of your skull."
-	set category = VERB_CATEGORY_OBJECT
+// 		flipped_firing = 0
 
-	chamber_offset = 0
-	visible_message("<span class='warning'>\The [usr] spins the cylinder of \the [src]!</span>", \
-	"<span class='notice'>You hear something metallic spin and click.</span>")
-	playsound(src.loc, 'sound/weapons/revolver_spin.ogg', 100, 1)
-	if(!flipped_firing)
-		loaded = shuffle(loaded)
-		if(rand(1,max_shells) > loaded.len)
-			chamber_offset = rand(0,max_shells - loaded.len)
-
-/obj/item/gun/projectile/ballistic/revolver/lemat/examine(mob/user, dist)
-	. = ..()
-	if(secondary_loaded)
-		var/to_print
-		for(var/round in secondary_loaded)
-			to_print += round
-		. += "\The [src] has a secondary barrel loaded with \a [to_print]"
-	else
-		. += "\The [src] has a secondary barrel that is empty."
+// /obj/item/gun/projectile/ballistic/revolver/lemat/examine(mob/user, dist)
+// 	. = ..()
+// 	if(secondary_loaded)
+// 		var/to_print
+// 		for(var/round in secondary_loaded)
+// 			to_print += round
+// 		. += "\The [src] has a secondary barrel loaded with \a [to_print]"
+// 	else
+// 		. += "\The [src] has a secondary barrel that is empty."
 
 /obj/item/gun/projectile/ballistic/revolver/lemat/holy
 	name = "Blessed LeMat Revolver"
-	ammo_type = /obj/item/ammo_casing/a38/silver
-	secondary_ammo_type = /obj/item/ammo_casing/a12g/silver
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a38/silver
+	// secondary_ammo_type = /obj/item/ammo_casing/a12g/silver
 
 //Ported from Bay
 /obj/item/gun/projectile/ballistic/revolver/webley
@@ -276,15 +244,14 @@
 	desc = "A rugged top break revolver based on the Webley Mk. VI model, with modern improvements. Uses .44 magnum rounds."
 	icon_state = "webley2"
 	item_state = "webley2"
-	caliber = /datum/ammo_caliber/a44
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
-	handle_casings = CYCLE_CASINGS
-	max_shells = 6
-	ammo_type = /obj/item/ammo_casing/a44
+	caliber = /datum/ammo_caliber/a44
+	internal_magazine_size = 6
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a44
 
 /obj/item/gun/projectile/ballistic/revolver/webley/holy
 	name = "blessed service revolver"
-	ammo_type = /obj/item/ammo_casing/a44/silver
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a44/silver
 
 /obj/item/gun/projectile/ballistic/revolver/webley/auto
 	name = "autorevolver"
@@ -304,13 +271,12 @@
 	caliber = /datum/ammo_caliber/a44
 	fire_sound = 'sound/weapons/Gunshot_deagle.ogg'
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
-	handle_casings = CYCLE_CASINGS
-	max_shells = 6
-	ammo_type = /obj/item/ammo_casing/a44
+	internal_magazine_size = 6
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a44
 
 /obj/item/gun/projectile/ballistic/revolver/dirty_harry/holy
 	name = "Blessed Model 29"
-	ammo_type = /obj/item/ammo_casing/a44/silver
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a44/silver
 
 //NT SpecOps Revolver
 /obj/item/gun/projectile/ballistic/revolver/combat
@@ -322,11 +288,11 @@
 		cycle_cooldown = 0.5 SECONDS;
 	}
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3)
-	ammo_type = /obj/item/ammo_casing/a44
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a44
 
 /obj/item/gun/projectile/ballistic/revolver/combat/update_icon_state()
 	. = ..()
-	if(loaded.len)
+	if(get_ammo_remaining())
 		icon_state = "combatrevolver"
 	else
 		icon_state = "combatrevolver-e"

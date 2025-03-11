@@ -1,11 +1,12 @@
 /datum/ammo_caliber/a44
+	id = "a44"
 	caliber = ".44"
 
 //* Casings
 
 /obj/item/ammo_casing/a44
 	desc = "A .44 bullet casing."
-	caliber = /datum/ammo_caliber/a44
+	casing_caliber = /datum/ammo_caliber/a44
 	icon = 'icons/modules/projectiles/casings/slim.dmi'
 	icon_state = "large"
 	projectile_type = /obj/projectile/bullet/pistol/strong
@@ -47,7 +48,6 @@
 	name = "magazine (.44 rubber)"
 	desc = "A magazine for .44 less-than-lethal ammo."
 	ammo_preload = /obj/item/ammo_casing/a44/rubber
-	ammo_restrict = /obj/item/ammo_casing/a44/rubber
 
 /obj/item/ammo_magazine/a44/silver
 	name = "magazine (.44 silver)"
