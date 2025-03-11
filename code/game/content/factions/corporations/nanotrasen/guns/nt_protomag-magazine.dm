@@ -27,8 +27,6 @@
 	weight_volume = WEIGHT_VOLUME_TINY
 	slot_flags = SLOT_POCKET
 
-	magazine_restrict = /obj/item/gun/projectile/ballistic/magnetic/nt_protomag/sidearm
-
 //* Rifle Magazines *//
 
 /obj/item/ammo_magazine/nt_protomag/rifle
@@ -45,8 +43,6 @@
 	w_class = WEIGHT_CLASS_NORMAL // no boxes
 	weight_volume = WEIGHT_VOLUME_SMALL
 	slot_flags = SLOT_POCKET
-
-	magazine_restrict = /obj/item/gun/projectile/ballistic/magnetic/nt_protomag/rifle
 
 //* Typegen *//
 
