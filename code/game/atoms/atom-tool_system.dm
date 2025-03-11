@@ -69,7 +69,7 @@
 	if(provided_item)
 		if(function)
 			// automation, just go
-			return _dynamic_tool_act(provided_item, e_args, function, TOOL_OP_AUTOPILOT | TOOL_OP_REAL, hint)
+			return dynamic_tool_act_entrypoint(provided_item, e_args, function, TOOL_OP_AUTOPILOT | TOOL_OP_REAL, hint)
 		// used in clickchain
 		// as of now, format is:
 		// function = hint OR list(hint, ...)
@@ -138,10 +138,10 @@
 		var/list/hints = possibilities[function]
 		if(!islist(hints))
 			// is a direct hint or null
-			return _dynamic_tool_act(provided_item, e_args, function, TOOL_OP_REAL, hints)
+			return dynamic_tool_act_entrypoint(provided_item, e_args, function, TOOL_OP_REAL, hints)
 		else if(length(hints) <= 1)
 			// no hint, or only one hint
-			return _dynamic_tool_act(provided_item, e_args, function, TOOL_OP_REAL, length(hints)? hints[1] : null)
+			return dynamic_tool_act_entrypoint(provided_item, e_args, function, TOOL_OP_REAL, length(hints)? hints[1] : null)
 		// we're about to sleep; if we're already breaking from this, maybe like, don't
 		if(INTERACTING_WITH_FOR(e_args.initiator, src, INTERACTING_FOR_DYNAMIC_TOOL))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -159,7 +159,7 @@
 		if(!hint || (reachability_check && !reachability_check.Invoke()))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		// use hint
-		return _dynamic_tool_act(provided_item, e_args, function, TOOL_OP_REAL, hint) | CLICKCHAIN_DO_NOT_PROPAGATE
+		return dynamic_tool_act_entrypoint(provided_item, e_args, function, TOOL_OP_REAL, hint) | CLICKCHAIN_DO_NOT_PROPAGATE
 	else
 		// in the future, we might have situations where clicking something with an empty hand
 		// yet having organs that server as built-in tools can do something with
@@ -267,7 +267,7 @@
 	. = list()
 	SEND_SIGNAL(src, COMSIG_ATOM_TOOL_QUERY, I, e_args, .)
 
-/atom/proc/_dynamic_tool_act(obj/item/I, datum/event_args/actor/clickchain/e_args, function, flags, hint)
+/atom/proc/dynamic_tool_act_entrypoint(obj/item/I, datum/event_args/actor/clickchain/e_args, function, flags, hint)
 	PRIVATE_PROC(TRUE)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	flags |= TOOL_OP_DYNAMIC

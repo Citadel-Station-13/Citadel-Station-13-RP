@@ -68,6 +68,10 @@
 	/// * Unlike 'attack melee multiplier', this will block everything else too.
 	///   This is for shieldcalls to inject into to say 'hey, we blocked any contact, not just dampened damage'.
 	var/attack_contact_multiplier = 1
+	/// arbitrary data list
+	/// * this is a lazy list
+	/// * this should be logged
+	var/list/attack_arbitrary_data
 
 	//* Resolved Data *//
 
@@ -76,11 +80,9 @@
 	var/tmp/resolved_angle_from_performer
 
 	//* Out Data *//
+
 	/// total damage inflicted; set by target
-	var/tmp/out_damage_inflicted = 0
-	/// log data list, if any; use this to add stuff like "x bone was broken"
-	/// * this is a lazy list
-	var/tmp/list/out_arbitrary_log_data
+	var/out_damage_inflicted = 0
 
 /datum/event_args/actor/clickchain/New(mob/performer, mob/initiator, atom/target, list/params, intent)
 	..()

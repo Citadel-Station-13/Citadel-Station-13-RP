@@ -438,7 +438,7 @@
 	. = shieldcall_returns
 	// todo: doesn't take into account any damage randomization
 	var/estimated_severity = clamp(weapon.damage_force * e_args.attack_melee_multiplier / 20 * 75, 0, 100)
-	var/contact_multiplier = clamp(1 - efficiency, 0, 1)
+	var/contact_penalty = clamp(1 - efficiency, 0, 1)
 	e_args.attack_melee_multiplier *= contact_penalty
 	e_args.attack_contact_multiplier *= contact_multiplier
 	. = perform_aftereffects(defending, ATTACK_TYPE_MELEE, efficiency, weapon, ., e_args)
@@ -460,7 +460,7 @@
 	. = shieldcall_returns
 	// todo: doesn't take into account any damage randomization
 	var/estimated_severity = clamp(style.damage * e_args.attack_melee_multiplier / 20 * 75, 0, 100)
-	var/contact_multiplier = clamp(1 - efficiency, 0, 1)
+	var/contact_penalty = clamp(1 - efficiency, 0, 1)
 	e_args.attack_melee_multiplier *= contact_penalty
 	e_args.attack_contact_multiplier *= contact_multiplier
 	. = perform_aftereffects(defending, ATTACK_TYPE_UNARMED, efficiency, style, ., e_args)
@@ -482,7 +482,7 @@
 	. = shieldcall_returns
 	// todo: doesn't take into account any damage randomization
 	var/estimated_severity = 50
-	var/contact_multiplier = clamp(1 - efficiency, 0, 1)
+	var/contact_penalty = clamp(1 - efficiency, 0, 1)
 	e_args.attack_melee_multiplier *= contact_penalty
 	e_args.attack_contact_multiplier *= contact_multiplier
 	. = perform_aftereffects(defending, ATTACK_TYPE_TOUCH, efficiency, null, ., e_args)

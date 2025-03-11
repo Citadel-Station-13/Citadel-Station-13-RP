@@ -196,8 +196,8 @@
 		return
 	if(!L.reagents)
 		return
-	if(L.can_inject(src, null, target_zone))
-		inject_poison(L, target_zone)
+	if(L.can_inject(src, null, clickchain.target_zone))
+		inject_poison(L, clickchain.target_zone)
 
  // Does actual poison injection, after all checks passed.
 /obj/item/melee/nanite_knife/proc/inject_poison(mob/living/M, target_zone)

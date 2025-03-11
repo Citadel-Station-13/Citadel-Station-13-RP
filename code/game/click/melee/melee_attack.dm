@@ -1,8 +1,21 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+GLOBAL_LIST_EMPTY(melee_attack_singletons)
+/proc/fetch_melee_attack_singleton(datum/melee_attack/specifier)
+	if(ispath(specifier))
+		if(!GLOB.melee_attack_singletons[specifier])
+			GLOB.melee_attack_singletons[specifier] = new specifier
+		return GLOB.melee_attack_singletons[specifier]
+	else if(istype(specifier))
+		return specifier
+	else
+		return GLOB.melee_attack_singletons[specifier]
+
 /**
  * A descriptor for a type of melee attack.
+ *
+ * todo: maybe /datum/prototype?
  *
  * * Everything is casted to /movable instead of /mob for attacker,
  *   to support things like circuit stabby-stabby's later and similarly
@@ -16,6 +29,7 @@
  * @return clickchain flags
  */
 /datum/melee_attack/proc/perform_attack_impact_entrypoint(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain)
+	SHOULD_NOT_SLEEP(TRUE)
 	CRASH("base of /datum/melee_attack attack entrypoint reached")
 
 /**

@@ -10,15 +10,11 @@
 	name = "proto-kinetic crusher"
 	desc = "An early design of the proto-kinetic accelerator, it is little more than an combination of various mining tools cobbled together, forming a high-tech club. \
 	While it is an effective mining tool, it did little to aid any but the most skilled and/or suicidal miners against local fauna."
-	damage_force = 0 //You can't hit stuff unless wielded
+	damage_force = 0
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BACK
 	throw_force = 5
 	throw_speed = 4
-/*
-	armour_penetration = 10
-	custom_materials = list(/datum/prototype/material/iron=1150, /datum/prototype/material/glass=2075)
-*/
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("smashed", "crushed", "cleaved", "chopped", "pulped")
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE

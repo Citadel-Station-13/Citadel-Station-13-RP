@@ -8,4 +8,4 @@ factions of space explorers.
 Maintainer approval should be sought before major upgrades, downgrades, and additions.
 
 Without sugarcoating it, this is, in-fact, the 'practically self-sufficient gamer tools for space explorers' folder.
-Because of that, we have very stringest standards for tweaks.
+Because of that, we have very stringent standards for tweaks.

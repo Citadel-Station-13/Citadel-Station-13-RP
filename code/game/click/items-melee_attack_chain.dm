@@ -73,12 +73,12 @@
 /obj/item/proc/melee_attack(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
 	SHOULD_NOT_SLEEP(TRUE)
 
-	//! Admin Proccall Support
+	// Admin Proccall Support
 	if(isatom(clickchain) && ismob(clickchain_flags))
 		var/mob/proccall_casted_mob = clickchain_flags
 		clickchain = proccall_casted_mob.default_clickchain_event_args(clickchain)
 		clickchain_flags = NONE
-	//! End
+	// End
 
 	//*                     -- intent checks --                       *//
 	//*          these should not be here, but the presence of        *//
@@ -96,7 +96,7 @@
 		)
 		return NONE
 
-	//! LEGACY !//
+	// LEGACY
 	clickchain.performer.break_cloak()
 	if(isliving(clickchain.target))
 		var/mob/living/living_target = clickchain.target
@@ -104,7 +104,7 @@
 		living_target.lastattacker = clickchain.performer
 	if(isnull(attack_style))
 		attack_style = new /datum/melee_attack/weapon
-	//! END !//
+	// END
 
 	/**
 	 * the tl;dr of how the chain of negotiations go here is;
@@ -112,35 +112,56 @@
 	 * 1. resolve if we should hit
 	 * 2. they react to the `_act()`
 	 * 3. we react to what they return, including calling their on_x_act()
+	 *
+	 * some of these are in melee_impact for overrides.
 	 */
 
 	// -- resolve our side --
 	var/missed = FALSE
 	clickchain.performer.legacy_alter_melee_clickchain(clickchain)
 
+	melee_impact(clickchain, clickchain_flags, attack_style, missed)
+
 	// -- call on them (if we didn't miss / get called off already) --
 	if(!missed)
 		. |= clickchain.target.item_melee_act(clickchain.performer, attack_style, clickchain.target_zone, clickchain)
 		missed = . & CLICKCHAIN_ATTACK_MISSED
 
-	// -- redirection can no longer happen --
-	var/atom/fixed_target = clickchain.target
-	var/mob/fixed_performer = clickchain.performer
-
 	// -- react to return --
-	attack_style.perform_attack_animation(fixed_performer, fixed_target, clickchain, missed)
-	attack_style.perform_attack_sound(fixed_performer, fixed_target, clickchain, missed)
-	attack_style.perform_attack_message(fixed_performer, fixed_target, clickchain, missed)
+	. |= melee_impact(clickchain.target, clickchain.performer, clickchain, clickchain_flags, attack_style, missed)
 
-	if(!missed)
-		fixed_target.animate_hit_by_weapon(fixed_performer, src)
-		. |= fixed_target.on_melee_act(fixed_performer, attack_style, clickchain)
-
+	// -- finalize --
 	if(!QDELETED(src))
 		. |= melee_finalize(fixed_target, clickchain, clickchain_flags, attack_style, missed)
 
 	// -- log --
 	log_weapon_melee(clickchain, attack_style, src)
+
+/**
+ * Version of [melee_attack] that can be overridden for impact effects.
+ *
+ * * Called before [melee_finalized]
+ * * Target / performer are fixed at this point and redirection can no longer happen.
+ *
+ * @params
+ * * target - (read-only) thing being hit
+ * * perform - (read-only) person doing the hitting
+ * * clickchain - (read-only) clickchain data
+ * * clickchain_flags - (read_only) clickchain flags
+ * * attack_style - attack style being used
+ *
+ * @return clickchain flags
+ */
+/obj/item/proc/melee_impact(atom/target, mob/performer, datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style, missed)
+	attack_style.perform_attack_animation(performer, target, clickchain, missed)
+	attack_style.perform_attack_sound(performer, target, clickchain, missed)
+	attack_style.perform_attack_message(performer, target, clickchain, missed)
+
+	if(missed)
+		return NONE
+
+	target.animate_hit_by_weapon(performer, src)
+	return target.on_melee_act(performer, attack_style, clickchain)
 
 #warn parse below
 

@@ -23,9 +23,13 @@
 		integrity_flags |= INTEGRITY_ACIDPROOF
 
 /obj/item/reagent_containers/food/drinks/bottle/Destroy()
+	QDEL_NULL(rag)
+	return ..()
+
+/obj/item/reagent_containers/food/drinks/bottle/drop_products(method, atom/where)
 	if(rag)
-		rag.forceMove(src.loc)
-	rag = null
+		drop_product(method, rag, where)
+		rag = null
 	return ..()
 
 //when thrown on impact, bottles smash and spill their contents
@@ -146,7 +150,7 @@
 	else
 		set_light(0)
 
-/obj/item/reagent_containers/food/drinks/bottles/
+/obj/item/reagent_containers/food/drinks/bottle
 #warn okay so we need a way to override the normal attack style / hit lol
 /obj/item/reagent_containers/food/drinks/bottle/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()

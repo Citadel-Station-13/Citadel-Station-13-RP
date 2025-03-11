@@ -48,7 +48,7 @@
 		// Make lesser robots really mad at us.
 		if(L.mob_class & MOB_CLASS_SYNTHETIC)
 			if(L.has_polaris_AI())
-				L.taunt(user)
+				L.taunt(clickchain.performer)
 			L.adjustFireLoss(damage_force * 6) // 30 Burn, for 50 total.
 
 /obj/item/melee/transforming/energy/sword/ionic_rapier/lance

@@ -70,8 +70,6 @@
 /atom/proc/unarmed_melee_act(mob/attacker, datum/melee_attack/unarmed/style, target_zone, datum/event_args/actor/clickchain/clickchain)
 	return CLICKCHAIN_DO_NOT_ATTACK
 
-//* External API / Damage Receiving - Projectiles *//
-
 /**
  * Called on a melee going through, whether or not it was blocked
  *
@@ -79,6 +77,8 @@
  */
 /atom/proc/on_melee_act(atom/movable/attacker, datum/melee_attack/attack_style, datum/event_args/actor/clickchain/clickchain)
 	return NONE
+
+//* External API / Damage Receiving - Projectiles *//
 
 /**
  * Because this is the proc that calls on_impact(), handling is necessarily

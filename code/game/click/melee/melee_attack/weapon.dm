@@ -5,6 +5,8 @@
  * A descriptor for a melee attack utilizing an item.
  */
 /datum/melee_attack/weapon
+	/// expected type of the weapon being used
+	var/expected_type = /obj/item
 
 /datum/melee_attack/weapon/perform_attack_impact_entrypoint(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain)
 	return perform_attack_impact(attacker, target, clickchain.using_item, clickchain)

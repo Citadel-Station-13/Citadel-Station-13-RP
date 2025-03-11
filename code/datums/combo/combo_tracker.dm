@@ -50,6 +50,8 @@
  * ## caveats
  *
  * * a shorter combo will always mask a longer one if it is present at any point in the longer one
+ *
+ * @return finished combo or null
  */
 /datum/combo_tracker/proc/process_inbound_via_tail_match(inbound, datum/combo_set/combo_set) as /datum/combo
 	SHOULD_NOT_SLEEP(TRUE)
