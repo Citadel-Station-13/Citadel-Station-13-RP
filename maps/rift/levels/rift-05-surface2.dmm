@@ -5899,7 +5899,7 @@
 /area/crew_quarters/pool)
 "dDP" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
-	id = "warden-office"s"
+	id = "warden-office"
 	},
 /obj/effect/paint/darkred,
 /obj/map_helper/electrochromatic_linker{
@@ -7015,7 +7015,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
-	id = "warden-office"s"
+	id = "warden-office"
 	},
 /obj/effect/paint/darkred,
 /obj/map_helper/electrochromatic_linker{
