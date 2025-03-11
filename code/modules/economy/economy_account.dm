@@ -89,3 +89,14 @@
  */
 /datum/economy_account/proc/set_security_level(level_enum)
 	security_level = level_enum
+
+/**
+ * Actor / clickchain access. This can sleep.
+ *
+ * @params
+ * * actor - actor data
+ * * clickchain - (optional) clickchain data if this is from a click
+ * * via_bridge - (optional) this is like the ID card that's being used or whatever
+ */
+/datum/economy_account/proc/user_clickchain_access(datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchian, datum/via_bridge)
+	#warn impl
