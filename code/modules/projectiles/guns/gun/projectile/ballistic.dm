@@ -362,12 +362,12 @@
 			. += SPAN_NOTICE("It uses [our_caliber.caliber][our_caliber.name ? " ([our_caliber.name])" : ""] caliber ammunition.")
 	if(magazine)
 		. += SPAN_NOTICE("It has \a [magazine] loaded, with [get_ammo_remaining(TRUE)] round\s remaining.")
-	if(internal_magazine)
+	if(internal_magazine && internal_magazine_size)
 		if(internal_magazine_revolver_mode)
 			. += SPAN_NOTICE("It has [get_ammo_remaining(TRUE)] round\s chambered.")
 		else
-			. += SPAN_NOTICE("It has [get_ammo_remaining(TRUE)] round\s remaining.")
-	if(chamber)
+			. += SPAN_NOTICE("It has [get_ammo_remaining(TRUE)] round\s remaining[chamber ? ", and a round in the chamber" : ""].")
+	else if(chamber)
 		. += SPAN_NOTICE("It has a round chambered.")
 
 //* Actions *//
@@ -996,7 +996,7 @@
 
 // todo: i'm crying please refactor internal magazines and chamber handling
 /obj/item/gun/projectile/ballistic/proc/really_snowflake_chamber_ejection_check(obj/item/ammo_casing/casing, from_fire)
-	return !casing.is_loaded()
+	return !from_fire || !casing.is_loaded()
 
 //* Rendering *//
 
