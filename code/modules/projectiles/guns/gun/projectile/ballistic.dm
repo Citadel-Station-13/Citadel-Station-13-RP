@@ -727,21 +727,25 @@
 				for(var/i in internal_magazine_revolver_offset to length(internal_magazine_vec))
 					ejecting = internal_magazine_vec[i]
 					if(ejecting)
+						internal_magazine_vec[i] = null
 						break
 				if(!ejecting)
 					for(var/i in 1 to internal_magazine_revolver_offset - 1)
 						ejecting = internal_magazine_vec[i]
 						if(ejecting)
+							internal_magazine_vec[i] = null
 							break
 			else
 				for(var/i in internal_magazine_revolver_offset - 1 to 1 step -1)
 					ejecting = internal_magazine_vec[i]
 					if(ejecting)
+						internal_magazine_vec[i] = null
 						break
 				if(!ejecting)
 					for(var/i in length(internal_magazine_vec) to internal_magazine_revolver_offset step -1)
 						ejecting = internal_magazine_vec[i]
 						if(ejecting)
+							internal_magazine_vec[i] = null
 							break
 		else
 			if(reverse_order)
