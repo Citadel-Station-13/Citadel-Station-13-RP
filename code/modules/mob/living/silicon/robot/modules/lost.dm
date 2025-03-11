@@ -39,5 +39,5 @@ GENERATE_ROBOT_MODULE_PRESET(/lost)
 		)
 	if(emag_out)
 		emag_out |= list(
-			/obj/item/gun/energy/retro/mounted,
+			/obj/item/gun/projectile/energy/retro/mounted,
 		)

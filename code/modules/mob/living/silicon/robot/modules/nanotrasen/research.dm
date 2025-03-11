@@ -56,7 +56,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/research)
 			/obj/item/storage/part_replacer,
 			/obj/item/shockpaddles/robot,
 			/obj/item/melee/baton/slime/robot,
-			/obj/item/gun/energy/taser/xeno/robot,
+			/obj/item/gun/projectile/energy/taser/xeno/robot,
 		)
 	if(emag_out)
 		emag_out |= list(

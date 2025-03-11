@@ -17,7 +17,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/combat)
 /datum/prototype/robot_module/nanotrasen/combat/create_mounted_item_descriptors(list/normal_out, list/emag_out)
 	if(normal_out)
 		normal_out |= list(
-			/obj/item/gun/energy/laser/mounted,
+			/obj/item/gun/projectile/energy/laser/mounted,
 			/obj/item/pickaxe/plasmacutter,
 			/obj/item/borg/combat/shield,
 			/obj/item/borg/combat/mobility,
@@ -27,6 +27,6 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/combat)
 		)
 	if(emag_out)
 		emag_out |= list(
-			/obj/item/gun/energy/lasercannon/mounted,
+			/obj/item/gun/projectile/energy/lasercannon/mounted,
 		)
 	return ..()

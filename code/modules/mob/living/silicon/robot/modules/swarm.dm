@@ -12,7 +12,7 @@
 			/obj/item/flash/robot,
 			/obj/item/handcuffs/cable/tape/cyborg,
 			/obj/item/melee/baton/robot,
-			/obj/item/gun/energy/taser/mounted/cyborg/swarm,
+			/obj/item/gun/projectile/energy/taser/mounted/cyborg/swarm,
 			/obj/item/matter_decompiler/swarm,
 		)
 
@@ -23,7 +23,7 @@
 	..()
 	if(normal_out)
 		normal_out |= list(
-			/obj/item/gun/energy/xray/swarm,
+			/obj/item/gun/projectile/energy/xray/swarm,
 		)
 
 /datum/prototype/robot_module/swarm/melee

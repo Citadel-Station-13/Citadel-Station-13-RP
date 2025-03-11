@@ -44,14 +44,14 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/security)
 		normal_out |= list(
 			/obj/item/handcuffs/cyborg,
 			/obj/item/melee/baton/robot,
-			/obj/item/gun/energy/taser/mounted/cyborg,
+			/obj/item/gun/projectile/energy/taser/mounted/cyborg,
 			/obj/item/barrier_tape_roll/police,
 			/obj/item/reagent_containers/spray/pepper,
 			/obj/item/gripper/security,
 		)
 	if(emag_out)
 		emag_out |= list(
-			/obj/item/gun/energy/laser/mounted,
+			/obj/item/gun/projectile/energy/laser/mounted,
 		)
 
 // todo: this is evil

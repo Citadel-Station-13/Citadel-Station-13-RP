@@ -52,8 +52,8 @@
 		user.visible_message("<span class='notice'>[user] sniffs at \the [target.name].</span>", "<span class='notice'>You sniff \the [target.name]...</span>")
 		if(!isnull(target.reagents))
 			var/dat = ""
-			if(target.reagents.reagent_list.len > 0)
-				for (var/datum/reagent/R in target.reagents.reagent_list)
+			if(target.reagents.total_volume > 0)
+				for (var/datum/reagent/R in target.reagents.get_reagent_datums())
 					dat += "\n \t <span class='notice'>[R]</span>"
 			if(dat)
 				to_chat(user, "<span class='notice'>Your BOOP module indicates: [dat]</span>")
