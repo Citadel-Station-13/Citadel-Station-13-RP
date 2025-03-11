@@ -240,13 +240,10 @@
 					return
 	..()
 
-
-/obj/item/reagent_containers/food/snacks/grown/melee_finalize(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style, missed)
+/obj/item/reagent_containers/food/snacks/grown/melee_finalize(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style, atom/target, missed)
 	. = ..()
-	#warn impl
-	
-/obj/item/reagent_containers/food/snacks/grown/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	. = ..()
+	if(. & CLICKCHAIN_FLAGS_UNCONDITIONAL_ABORT)
+		return
 	var/mob/living/L = target
 	if(!istype(L))
 		return
@@ -256,11 +253,13 @@
 		reagents.remove_any(rand(1,3))
 		seed.thrown_at(src, L)
 		if(QDELETED(src))
+			. |= CLICKCHAIN_DO_NOT_PROPAGATE
 			return
 		if(prob(35))
 			if(user)
-				to_chat(user, "<span class='danger'>\The [src] has fallen to bits.</span>")
+				to_chat(clickchain.performer, "<span class='danger'>\The [src] has fallen to bits.</span>")
 				qdel(src)
+				. |= CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/reagent_containers/food/snacks/grown/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()

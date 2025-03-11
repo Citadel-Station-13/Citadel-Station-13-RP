@@ -457,28 +457,19 @@
 		return handle_clickchain_fire(e_args, clickchain_flags)
 
 /obj/item/gun/melee_attack(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
-	#warn impl
-
-/obj/item/gun/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	var/mob/living/A = target
-	if(!istype(A))
+	if(clickchain.target_zone != INTENT_HARM)
 		return ..()
-	if(user.a_intent == INTENT_HARM) //point blank shooting
-		// todo: disabled for now
-		// if (A == user && user.zone_sel.selecting == O_MOUTH && !mouthshoot)
-		// 	handle_suicide(user)
-		// 	return
-		var/mob/living/L = user
-		if(user && user.client && istype(L) && L.aiming && L.aiming.active && L.aiming.aiming_at != A && A != user)
-			PreFire(A,user) //They're using the new gun system, locate what they're aiming at.
-			return
-		else
-			var/datum/event_args/actor/clickchain/e_args = new(user)
-			e_args.click_params = params
-			e_args.target = target
-			e_args.using_intent = user.a_intent
-			return handle_clickchain_fire(e_args, clickchain_flags)
-	return ..() //Pistolwhippin'
+	// point blank shooting
+
+	// legacy aiming code
+	var/mob/user = clickchain.performer
+	var/mob/living/L = user
+	if(user && user.client && istype(L) && L.aiming && L.aiming.active && L.aiming.aiming_at != A && A != user)
+		PreFire(A,user) //They're using the new gun system, locate what they're aiming at.
+		return CLICKCHAIN_DID_SOMETHING
+	// end
+
+	return handle_clickchain_fire(clickchain, clickchain_flags)
 
 /obj/item/gun/using_item_on(obj/item/using, datum/event_args/actor/clickchain/e_args, clickchain_flags, datum/callback/reachability_check)
 	. = ..()

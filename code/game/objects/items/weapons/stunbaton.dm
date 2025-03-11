@@ -71,8 +71,9 @@
  */
 /obj/item/melee/baton/proc/update_charge()
 	if(check_charge(charge_cost))
-		return
+		return TRUE
 	deactivate()
+	return FALSE
 
 /obj/item/melee/baton/proc/check_charge(amount)
 	if(legacy_use_external_power)
@@ -95,11 +96,46 @@
 		return robot.cell?.checked_use(amount)
 	return obj_cell_slot.cell?.checked_use(amount)
 
-/obj/item/melee/baton/proc/activate()
-	#warn impl
+/obj/item/melee/baton/proc/activate(silent, force)
+	if(active)
+		return TRUE
+	if(!force && !check_charge(charge_cost))
+		return FALSE
+	active = TRUE
+	if(!silent)
+		playsound(src, /datum/soundbyte/grouped/sparks, 75, TRUE)
+	update_icon()
+	return TRUE
 
-/obj/item/melee/baton/proc/deactivate()
-	#warn impl
+/obj/item/melee/baton/proc/deactivate(silent)
+	if(!active)
+		return TRUE
+	active = FALSE
+	if(!silent)
+		playsound(src, /datum/soundbyte/grouped/sparks, 75, TRUE)
+	update_icon()
+	return TRUE
+
+/obj/item/melee/baton/proc/user_clickchain_toggle_active(datum/event_args/actor/actor)
+	if(!update_charge())
+		actor.chat_feedback(
+			SPAN_WARNING("[src] is out of charge, or lacks a power source."),
+			target = src,
+		)
+		return TRUE
+	if(active)
+		if(activate())
+			actor.chat_feedback(
+				SPAN_WARNING("[src] is now on."),
+				target = src,
+			)
+	else
+		if(deactivate())
+			actor.chat_feedback(
+				SPAN_NOTICE("[src] is now off."),
+				target = src,
+			)
+	return TRUE
 
 /**
  * Basically [powered_melee_impact()] but checks for charge.
@@ -108,9 +144,10 @@
  */
 /obj/item/melee/baton/proc/attempt_powered_melee_impact(atom/target, mob/attacker, datum/event_args/actor/clickchain/clickchain, use_target_zone)
 	if(!use_charge(charge_cost))
+		update_charge()
 		return TRUE
 	powered_melee_impact(target, attacker, clickchain, use_target_zone)
-	check_charge(charge_cost)
+	update_charge()
 	return TRUE
 
 /**
@@ -128,7 +165,6 @@
 	playsound(src, stun_sound, 75, TRUE)
 	target.electrocute(DYNAMIC_CELL_UNITS_TO_KJ(charge_cost), 0, stun_power, stun_electrocute_flags, use_target_zone || BP_TORSO, src)
 	#warn impl
-
 
 /obj/item/melee/baton/update_icon()
 	. = ..()
@@ -155,35 +191,12 @@
 	. = ..()
 	if(.)
 		return
-	if(bcell && bcell.charge > charge_cost)
-		status = !status
-		to_chat(user, "<span class='notice'>[src] is now [status ? "on" : "off"].</span>")
-		playsound(loc, /datum/soundbyte/grouped/sparks, 75, 1, -1)
-		update_icon()
-	else
-		status = 0
-		if(!bcell)
-			to_chat(user, "<span class='warning'>[src] does not have a power source!</span>")
-		else
-			to_chat(user, "<span class='warning'>[src] is out of charge.</span>")
-	add_fingerprint(user)
+	if(user_clickchain_toggle_active(actor))
+		return CLICKCHAIN_DID_SOMETHING
 
 #warn much like bottles we need a way to override melee
 
 /obj/item/melee/baton/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	var/mob/living/L = target
-	if(!istype(L))
-		return
-	if(isrobot(L))
-		return ..()
-
-	var/agony = agonyforce
-	var/stun = stunforce
-	var/obj/item/organ/external/affecting = null
-	if(ishuman(L))
-		var/mob/living/carbon/human/H = L
-		affecting = H.get_organ(target_zone)
-
 	if(user.a_intent == INTENT_HARM)
 		. = ..()
 		//whacking someone causes a much poorer electrical contact than deliberately prodding them.
@@ -200,7 +213,6 @@
 		else
 			L.visible_message("<span class='danger'>[L] has been prodded with [src] by [user]!</span>")
 
-	//stun effects
 	if(status)
 		L.electrocute(0, 0, agony, NONE, target_zone, src)
 		msg_admin_attack("[key_name(user)] stunned [key_name(L)] with the [src].")

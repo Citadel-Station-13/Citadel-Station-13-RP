@@ -131,8 +131,8 @@
 	. |= melee_impact(clickchain.target, clickchain.performer, clickchain, clickchain_flags, attack_style, missed)
 
 	// -- finalize --
-	if(!QDELETED(src))
-		. |= melee_finalize(fixed_target, clickchain, clickchain_flags, attack_style, missed)
+	if(!(. & CLICKCHAIN_FLAGS_UNCONDITIONAL_ABORT))
+		. |= melee_finalize(clickchain, clickchain_flags, attack_style, fixed_target, missed)
 
 	// -- log --
 	log_weapon_melee(clickchain, attack_style, src)
@@ -193,13 +193,14 @@
  * * This does not run if we're qdel'd.
  *
  * @params
- * * target - The target swung at; at this point it can't be redirected
  * * clickchain - clickchain data
  * * clickchain_flags - clickchain flags
  * * attack_style - attack style used
+ * * target - The target swung at; at this point it can't be redirected
  * * missed - Did we miss? Do **not** use clickchain flags to infer this! It's specified explicitly for a reason.
  *
  * @return CLICKCHAIN_* flags
  */
-/obj/item/proc/melee_finalize(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style, missed)
+/obj/item/proc/melee_finalize(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style, atom/target, missed)
 	SHOULD_NOT_SLEEP(TRUE)
+	return NONE
