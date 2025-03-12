@@ -5256,10 +5256,7 @@
 /area/space)
 "gmL" = (
 /obj/structure/cable/orange{
-	icon_state = "1-2"
-	},
-/obj/structure/cable/orange{
-	icon_state = "1-8"
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/space)
@@ -7362,25 +7359,6 @@
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techmaint,
-/area/space)
-"iLg" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/lightorange/border{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
-	alpha = 255;
-	dir = 10
-	},
-/obj/effect/floor_decal/corner/lightorange/bordercorner2{
-	dir = 10
-	},
-/obj/structure/cable/orange{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/steel_ridged,
 /area/space)
 "iLH" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -32857,7 +32835,7 @@ mCr
 mCr
 mCr
 mEF
-iLg
+lsT
 gmL
 mLQ
 hSY
