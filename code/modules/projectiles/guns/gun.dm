@@ -464,8 +464,8 @@
 	// legacy aiming code
 	var/mob/user = clickchain.performer
 	var/mob/living/L = user
-	if(user && user.client && istype(L) && L.aiming && L.aiming.active && L.aiming.aiming_at != A && A != user)
-		PreFire(A,user) //They're using the new gun system, locate what they're aiming at.
+	if(user && user.client && istype(L) && L.aiming && L.aiming.active && L.aiming.aiming_at != clickchain.target && clickchaint.target != user)
+		PreFire(clickchain.target, user) //They're using the new gun system, locate what they're aiming at.
 		return CLICKCHAIN_DID_SOMETHING
 	// end
 
