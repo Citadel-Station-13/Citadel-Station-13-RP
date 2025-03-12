@@ -117,6 +117,9 @@ GLOBAL_LIST_EMPTY(cooking_recipes_tgui_guidebook_data)
 		var/datum/reagent/result_reag = SSchemistry.fetch_reagent(result_reagents[1])
 		out_item_name = result_reag.name
 
+	if(result_quantity > 1)
+		out_item_name = "[result_quantity]x " + out_item_name
+
 	return list(
 		"result" = out_item_name,
 		"result_reagents" = english_list(output_reagents),

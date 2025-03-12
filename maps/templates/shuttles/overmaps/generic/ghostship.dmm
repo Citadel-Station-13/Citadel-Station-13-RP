@@ -608,7 +608,7 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/gun/ballistic/musket/pistol,
+/obj/item/gun/projectile/ballistic/musket/pistol,
 /obj/item/reagent_containers/glass/powder_horn/filled,
 /obj/item/storage/box/munition_box,
 /turf/simulated/floor/wood/broken,
@@ -3271,11 +3271,11 @@
 /area/ship/ghostship/engines)
 "iE" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/ballistic/pirate/junker_pistol{
+/obj/item/gun/projectile/ballistic/pirate/junker_pistol{
 	pixel_y = -5
 	},
-/obj/item/gun/ballistic/pirate/junker_pistol,
-/obj/item/gun/ballistic/pirate/junker_pistol{
+/obj/item/gun/projectile/ballistic/pirate/junker_pistol,
+/obj/item/gun/projectile/ballistic/pirate/junker_pistol{
 	pixel_y = 5
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -3310,11 +3310,11 @@
 /area/ship/ghostship/armoury)
 "iH" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/ballistic/pirate{
+/obj/item/gun/projectile/ballistic/pirate{
 	pixel_y = -4
 	},
-/obj/item/gun/ballistic/pirate,
-/obj/item/gun/ballistic/pirate{
+/obj/item/gun/projectile/ballistic/pirate,
+/obj/item/gun/projectile/ballistic/pirate{
 	pixel_y = 4
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -3786,7 +3786,7 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/gun/ballistic/musket/pistol,
+/obj/item/gun/projectile/ballistic/musket/pistol,
 /obj/item/reagent_containers/glass/powder_horn/filled,
 /obj/item/storage/box/munition_box,
 /turf/simulated/floor/wood/broken,
@@ -3894,7 +3894,7 @@
 	id = "bridgeD";
 	name = "window shutters button"
 	},
-/obj/item/gun/energy/zip,
+/obj/item/gun/projectile/energy/zip,
 /turf/simulated/floor/tiled/steel_dirty/red,
 /area/ship/ghostship/bridge)
 "jR" = (
@@ -3981,11 +3981,11 @@
 /area/ship/ghostship/hangarcontrol)
 "kd" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/ballistic/pirate/junker_pistol{
+/obj/item/gun/projectile/ballistic/pirate/junker_pistol{
 	pixel_y = -5
 	},
-/obj/item/gun/ballistic/pirate/junker_pistol,
-/obj/item/gun/ballistic/pirate/junker_pistol{
+/obj/item/gun/projectile/ballistic/pirate/junker_pistol,
+/obj/item/gun/projectile/ballistic/pirate/junker_pistol{
 	pixel_y = 5
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -4596,11 +4596,11 @@
 /area/ship/ghostship/armoury)
 "lp" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/ballistic/pirate{
+/obj/item/gun/projectile/ballistic/pirate{
 	pixel_y = -4
 	},
-/obj/item/gun/ballistic/pirate,
-/obj/item/gun/ballistic/pirate{
+/obj/item/gun/projectile/ballistic/pirate,
+/obj/item/gun/projectile/ballistic/pirate{
 	pixel_y = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
@@ -7309,7 +7309,7 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/gun/ballistic/musket/pistol,
+/obj/item/gun/projectile/ballistic/musket/pistol,
 /obj/item/reagent_containers/glass/powder_horn/filled,
 /obj/item/storage/box/munition_box,
 /turf/simulated/floor/wood/broken,
@@ -9279,7 +9279,7 @@
 /obj/structure/table/woodentable,
 /obj/item/paper_bin,
 /obj/item/clothing/head/pirate,
-/obj/item/gun/ballistic/deagle/camo,
+/obj/item/gun/projectile/ballistic/deagle/camo,
 /obj/item/melee/transforming/energy/sword/cutlass,
 /obj/item/melee/transforming/energy/sword/cutlass,
 /turf/simulated/floor/wood/broken,
@@ -10344,7 +10344,7 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/gun/ballistic/musket/pistol,
+/obj/item/gun/projectile/ballistic/musket/pistol,
 /obj/item/reagent_containers/glass/powder_horn/filled,
 /obj/item/storage/box/munition_box,
 /turf/simulated/floor/wood/broken,
@@ -10387,7 +10387,7 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/gun/ballistic/musket/pistol,
+/obj/item/gun/projectile/ballistic/musket/pistol,
 /obj/item/reagent_containers/glass/powder_horn/filled,
 /obj/item/storage/box/munition_box,
 /turf/simulated/floor/wood/broken,
@@ -10477,8 +10477,8 @@
 /area/ship/ghostship/hangar)
 "Dr" = (
 /obj/structure/table/standard,
-/obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster,
-/obj/item/mecha_parts/mecha_equipment/anticcw_armor_booster,
+/obj/item/vehicle_module/antiproj_armor_booster,
+/obj/item/vehicle_module/anticcw_armor_booster,
 /turf/simulated/floor/reinforced,
 /area/ship/ghostship/porthangar)
 "Du" = (
@@ -10565,7 +10565,7 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/gun/ballistic/musket/pistol,
+/obj/item/gun/projectile/ballistic/musket/pistol,
 /obj/item/reagent_containers/glass/powder_horn/filled,
 /obj/item/storage/box/munition_box,
 /turf/simulated/floor/wood/broken,
@@ -10681,7 +10681,7 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/gun/ballistic/musket/pistol,
+/obj/item/gun/projectile/ballistic/musket/pistol,
 /obj/item/reagent_containers/glass/powder_horn/filled,
 /obj/item/storage/box/munition_box,
 /turf/simulated/floor/wood/broken,
@@ -10750,7 +10750,7 @@
 /area/ship/ghostship/cabin2)
 "IQ" = (
 /obj/structure/table/standard,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/grenade/clusterbang,
+/obj/item/vehicle_module/weapon/ballistic/missile_rack/grenade/clusterbang,
 /turf/simulated/floor/reinforced,
 /area/ship/ghostship/porthangar)
 "IS" = (
@@ -10770,7 +10770,7 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/gun/ballistic/musket/pistol,
+/obj/item/gun/projectile/ballistic/musket/pistol,
 /obj/item/reagent_containers/glass/powder_horn/filled,
 /obj/item/storage/box/munition_box,
 /turf/simulated/floor/wood/broken,
@@ -10877,7 +10877,7 @@
 /area/ship/ghostship/cabin5)
 "Lp" = (
 /obj/structure/table/standard,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg,
+/obj/item/vehicle_module/weapon/ballistic/lmg,
 /turf/simulated/floor/reinforced,
 /area/ship/ghostship/porthangar)
 "Md" = (
@@ -11010,8 +11010,8 @@
 /area/ship/ghostship/hangar)
 "Pi" = (
 /obj/structure/table/standard,
-/obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster,
-/obj/item/mecha_parts/mecha_equipment/anticcw_armor_booster,
+/obj/item/vehicle_module/antiproj_armor_booster,
+/obj/item/vehicle_module/anticcw_armor_booster,
 /turf/simulated/floor/reinforced,
 /area/ship/ghostship/starboardhangar)
 "Pt" = (
@@ -11055,7 +11055,7 @@
 /area/ship/ghostship/hangar)
 "Qg" = (
 /obj/structure/table/standard,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/grenade/clusterbang,
+/obj/item/vehicle_module/weapon/ballistic/missile_rack/grenade/clusterbang,
 /turf/simulated/floor/reinforced,
 /area/ship/ghostship/starboardhangar)
 "Qo" = (
@@ -11070,7 +11070,7 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/gun/ballistic/musket/pistol,
+/obj/item/gun/projectile/ballistic/musket/pistol,
 /obj/item/reagent_containers/glass/powder_horn/filled,
 /obj/item/storage/box/munition_box,
 /turf/simulated/floor/wood/broken,
@@ -11416,7 +11416,7 @@
 /area/ship/ghostship/hangar)
 "XG" = (
 /obj/structure/table/standard,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg,
+/obj/item/vehicle_module/weapon/ballistic/lmg,
 /turf/simulated/floor/reinforced,
 /area/ship/ghostship/starboardhangar)
 "XH" = (

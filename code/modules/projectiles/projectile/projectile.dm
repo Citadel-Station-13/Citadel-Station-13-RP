@@ -16,6 +16,7 @@
  * hence why projectiles can realistically path across corners based on their 'hitbox center'.
  */
 /obj/projectile
+	SET_APPEARANCE_FLAGS(NONE)
 	name = "projectile"
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "bullet"
@@ -27,18 +28,20 @@
 
 	//* Collision Handling *//
 
-	/** PROJECTILE PIERCING
-	  * WARNING:
-	  * Projectile piercing MUST be done using these variables.
-	  * Ordinary passflags will result in can_hit_target being false unless directly clicked on - similar to pass_flags_phase but without even going to process_hit.
-	  * The two flag variables below both use pass flags.
-	  * In the context of ATOM_PASS_THROWN, it means the projectile will ignore things that are currently "in the air" from a throw.
-	  *
-	  * Also, projectiles sense hits using Bump(), and then pierce them if necessary.
-	  * They simply do not follow conventional movement rules.
-	  * NEVER flag a projectile as PHASING movement type.
-	  * If you so badly need to make one go through *everything*, override check_pierce() for your projectile to always return PROJECTILE_PIERCE_PHASE/HIT.
-	  */
+	/**
+	 * PROJECTILE PIERCING
+	 * WARNING:
+	 * Projectile piercing MUST be done using these variables.
+	 * Ordinary passflags will result in can_hit_target being false unless directly clicked on - similar to pass_flags_phase but without even going to process_hit.
+	 * The two flag variables below both use pass flags.
+	 * In the context of ATOM_PASS_THROWN, it means the projectile will ignore things that are currently "in the air" from a throw.
+	 *
+	 * Also, projectiles sense hits using Bump(), and then pierce them if necessary.
+	 * They simply do not follow conventional movement rules.
+	 * NEVER flag a projectile as PHASING movement type.
+	 * If you so badly need to make one go through *everything*, override check_pierce() for your projectile to always return PROJECTILE_PIERCE_PHASE/HIT.
+	 */
+
 	/// The "usual" flags of pass_flags is used in that can_hit_target ignores these unless they're specifically targeted/clicked on. This behavior entirely bypasses process_hit if triggered, rather than phasing which uses prehit_pierce() to check.
 	pass_flags = ATOM_PASS_TABLE
 	/// we handle our own go through
@@ -70,7 +73,7 @@
 	var/accuracy_disabled = FALSE
 	/// perfect accuracy below this range (in pixels)
 	///
-	/// * this means the projectile doesn't enforce inaccuracy; not the target!
+	/// * this means the projectile doesn't enforce inaccuracy; not the target or gun!
 	/// * remember that even if a projectile clips a single pixel on a target turf, it hits.
 	/// * right now, accuracy is slightly more than it should be due to distance being ticked up post-impact.
 	var/accuracy_perfect_range = WORLD_ICON_SIZE * 7
@@ -95,6 +98,11 @@
 
 	//* Combat - Effects *//
 
+	/// multiplier to projectile effects
+	///
+	/// * Set when splitting into submunitions.
+	/// * It's the projectile effect datum's duty to read this.
+	var/projectile_effect_multiplier = 1
 	/// projectile effects
 	///
 	/// * this is a static typelist on this typepath
@@ -110,14 +118,12 @@
 	VAR_PROTECTED/list/additional_projectile_effects
 
 	//* Configuration *//
-
 	/// Projectile type bitfield; set all that is relevant
 	var/projectile_type = NONE
 	/// Impact ground on expiry (range, or lifetime)
 	var/impact_ground_on_expiry = FALSE
 
 	//* Physics - Configuration *//
-
 	/// speed, in pixels per second
 	var/speed = 25 * WORLD_ICON_SIZE
 	/// are we a hitscan projectile?
@@ -151,18 +157,14 @@
 	var/homing_offset_y = 0
 
 	//* Physics - Tracers *//
-
 	/// tracer /datum/point's
-	var/list/tracer_vertices
+	var/list/phys_tracer_vertices
 	/// first point is a muzzle effect
-	var/tracer_muzzle_flash
+	var/phys_tracer_do_muzzle
 	/// last point is an impact
-	var/tracer_impact_effect
-	/// default tracer duration
-	var/tracer_duration = 5
+	var/phys_tracer_do_impact
 
 	//* Physics - State *//
-
 	/// paused? if so, we completely get passed over during processing
 	var/paused = FALSE
 	/// currently hitscanning
@@ -221,10 +223,89 @@
 	//        optimally physics loop should handle tracking for stuff like animations, not require on hit processing to check turfs
 	var/turf/trajectory_moving_to
 
-	//* Targeting *//
+	//* Rendering *//
 
+	/// Emissive glow strength of tracer (muzzle + beam + impact), from 0 to 255
+	/// * This automatically makes the tracer emissive.
+	/// * Colored lighting is not currently natively supported
+	var/auto_emissive_strength = 0
+
+	/// Hitscan tracers - icon file
+	/// * Setting this to a file will enable new tracer rendering system.
+	var/tracer_icon
+	/// Tracer state
+	/// * We generate "-muzzle", "-beam", "-impact" from this state.
+	var/tracer_icon_state
+	/// Tracer has add state
+	/// * Will add overlays of "-muzzle-add", "-beam-add", "-impact-add".
+	var/tracer_add_state = FALSE
+	/// Alpha of tracer add state
+	var/tracer_add_state_alpha = 255
+	/// The beam part of the tracer should be tiled instead of stretched
+	/// * This is more expensive than stretching.
+	/// * This does not always work perfectly as we currently cannot
+	///   truncate a pixel overflow.
+	var/tracer_is_tiled = FALSE
+	/// Tile every n pixels
+	/// * This is just the Y height of your beam sprite file, usually
+	var/tracer_segment_length = 32
+	/// default tracer duration
+	var/tracer_lifetime = 5
+
+	//*                                          Submunitions                                                  *//
+	//* While projectile has procs to handle this, these vars are used automatically if 'submunitions' is set. *//
+	/// Submunitions to use by default on fire().
+	/// * Set to a number to split self into n **additional** fragments.
+	var/submunitions
+	/// Delete ourselves after splitting.
+	var/submunitions_only = FALSE
+	/// Typepath to use for submunitions. Defaults to self, if not specified.
+	var/submunition_type
+	/// Default submunition dispersion.
+	var/submunition_dispersion = 0
+	/// Default submunition dispersion gaussian mode off
+	var/submunition_uniform_disperson = FALSE
+	/// Default submunition linear spread
+	var/submunition_linear_spread = 0
+	/// Default submunition linear spread randomization off
+	var/submunition_uniform_linear_spread = FALSE
+	/// Default submunition distribution enabled? Distrbution means that our stats
+	/// are passed to our submunitions, potentially overwriting their own stats.
+	///
+	/// * This only really makes sense under [submunitions_only] mode as otherwise
+	///   the calculations will be all off / weird, as distribution won't actually affect our
+	///   own stats, resulting in effectively a multiplied effectiveness out of nowhere.
+	var/submunition_distribution = FALSE
+	/// Default submunition distribution multiplier. Higher than 1 will give 'unfair'
+	/// amounts of power to submunitions, below 1 dampens.
+	var/submunition_distribution_mod = 1
+	/// Overwrite target projectile instead of adding?
+	var/submunition_distribution_overwrite = TRUE
+
+	//* Targeting *//
 	/// Originally clicked target
 	var/atom/original_target
+
+	//* SFX / VFX *//
+	/**
+	 * Default fire sound
+	 *
+	 * * Gun has final say.
+	 *
+	 * Accepts:
+	 * * a file (not a string path to a file)
+	 * * a soundbyte path or id
+	 */
+	var/fire_sound = 'sound/weapons/Gunshot_old.ogg'
+	/**
+	 * Default impact sounds
+	 *
+	 * Accepts:
+	 * * Null - auto-detect
+	 * * List - list of files, or soundbyte path's or id's. It will be selected from at random
+	 * * Anything else - passed into get_sfx().
+	 */
+	var/list/impact_sound
 
 	//* legacy below *//
 
@@ -242,24 +323,23 @@
 	//Hitscan
 	/// do we have a tracer? if not we completely ignore hitscan logic
 	var/has_tracer = TRUE
-	var/tracer_type
-	var/muzzle_type
-	var/impact_type
+	var/legacy_tracer_type
+	var/legacy_muzzle_type
+	var/legacy_impact_type
 
 	var/miss_sounds
 	var/ricochet_sounds
-	var/list/impact_sounds	//for different categories, IMPACT_MEAT etc
 
 	//Fancy hitscan lighting effects!
-	var/hitscan_light_intensity = 1.5
-	var/hitscan_light_range = 0.75
-	var/hitscan_light_color_override
-	var/muzzle_flash_intensity = 3
-	var/muzzle_flash_range = 1.5
-	var/muzzle_flash_color_override
-	var/impact_light_intensity = 3
-	var/impact_light_range = 2
-	var/impact_light_color_override
+	var/legacy_hitscan_light_intensity = 1.5
+	var/legacy_hitscan_light_range = 0.75
+	var/legacy_hitscan_light_color_override
+	var/legacy_muzzle_flash_intensity = 3
+	var/legacy_muzzle_flash_range = 1.5
+	var/legacy_muzzle_flash_color_override
+	var/legacy_impact_light_intensity = 3
+	var/legacy_impact_light_range = 2
+	var/legacy_impact_light_color_override
 
 	//Targetting
 	var/yo = null
@@ -275,22 +355,10 @@
 
 	var/dispersion = 0.0
 
-	// Sub-munitions. Basically, multi-projectile shotgun, rather than pellets.
-	var/use_submunitions = FALSE
-	var/only_submunitions = FALSE // Will the projectile delete itself after firing the submunitions?
-	var/list/submunitions = list() // Assoc list of the paths of any submunitions, and how many they are. [projectilepath] = [projectilecount].
-	var/submunition_spread_max = 30 // Divided by 10 to get the percentile dispersion.
-	var/submunition_spread_min = 5 // Above.
-	/// randomize spread? if so, evenly space between 0 and max on each side.
-	var/submunition_constant_spread = FALSE
-	var/force_max_submunition_spread = FALSE // Do we just force the maximum?
-	var/spread_submunition_damage = FALSE // Do we assign damage to our sub projectiles based on our main projectile damage?
-
-	//? Damage - default handling
 	/// damage amount
-	var/damage_force = 10
-	/// damage tier - goes hand in hand with [damage_armor]
-	var/damage_tier = BULLET_TIER_DEFAULT
+	var/damage_force = 0
+	/// damage tier - goes hand in hand with [damage_mode]
+	var/damage_tier = ARMOR_TIER_DEFAULT
 	/// damage type - DAMAGE_TYPE_* define
 	var/damage_type = DAMAGE_TYPE_BRUTE
 	/// armor flag for damage - goes hand in hand with [damage_tier]
@@ -301,7 +369,6 @@
 	var/SA_bonus_damage = 0 // Some bullets inflict extra damage on simple animals.
 	var/SA_vulnerability = null // What kind of simple animal the above bonus damage should be applied to. Set to null to apply to all SAs.
 	var/nodamage = 0 //Determines if the projectile will skip any damage inflictions
-	var/taser_effect = 0 //If set then the projectile will apply it's agony damage using stun_effect_act() to mobs it hits, and other damage will be ignored
 	var/legacy_penetrating = 0 //If greater than zero, the projectile will pass through dense objects as specified by on_penetrate()
 		//Effects
 	var/incendiary = 0 //1 for ignite on hit, 2 for trail of fire. 3 maybe later for burst of fire around the impact point. - Mech
@@ -332,8 +399,6 @@
 
 	var/embed_chance = 0	//Base chance for a projectile to embed
 
-	var/fire_sound = 'sound/weapons/Gunshot_old.ogg' // Can be overriden in gun.dm's fire_sound var. It can also be null but I don't know why you'd ever want to do that. -Ace
-
 	// todo: currently unimplemneted
 	var/vacuum_traversal = TRUE //Determines if the projectile can exist in vacuum, if false, the projectile will be deleted if it enters vacuum.
 
@@ -357,6 +422,13 @@
 					stack_trace("tried to make a projectile with an invalid effect in base_projectile_effects")
 				base_projectile_effects[i] = effectlike
 			base_projectile_effects = typelist(NAMEOF(src, base_projectile_effects), base_projectile_effects)
+	if(auto_emissive_strength && !hitscan)
+		appearance_flags |= KEEP_TOGETHER
+		var/image/emissive_image = new /image/projectile/projectile_tracer_emissive(icon, icon_state)
+		emissive_image.layer = MANGLE_PLANE_AND_LAYER(plane, layer)
+		emissive_image.alpha = auto_emissive_strength
+		emissive_image.color = GLOB.emissive_color
+		add_overlay(emissive_image)
 	return ..()
 
 /obj/projectile/Destroy()
@@ -384,12 +456,56 @@
 
 	expire()
 
-/obj/projectile/proc/fire(set_angle_to, atom/direct_target, no_source_check)
-	if(only_submunitions)	// refactor projectiles whwen holy shit this is awful lmao
-		// todo: this should make a muzzle flash
-		qdel(src)
+/**
+ * Adds projectile effects.
+ */
+/obj/projectile/proc/add_projectile_effects(list/datum/projectile_effect/effects)
+	if(!length(effects))
 		return
+	if(additional_projectile_effects)
+		additional_projectile_effects += effects
+	else
+		additional_projectile_effects = effects.Copy()
 
+/**
+ * Fires a projectile.
+ *
+ * todo: reverify no_source_check; it probably shouldn't be in here. maybe have a proc
+ *       for giving the firer immunity?
+ *
+ * @params
+ * * set_angle_to - if set, overrides our angle to this angle
+ * * direct_target - just hit this target and return
+ * * no_source_check - allow hitting the firer
+ * * on_submunition_ready - (optional) callback to execute when a submunition is readied, right before it's fire()'d.
+ */
+/obj/projectile/proc/fire(set_angle_to, atom/direct_target, no_source_check, datum/callback/on_submunition_ready)
+	SHOULD_CALL_PARENT(TRUE)
+
+	ASSERT(!fired)
+	fired = TRUE
+
+	//! legacy
+	// todo: caller should do this; we should check that we're on a turf
+	forceMove(get_turf(src))
+	//! end
+
+	// set angle if needed
+	if(isnum(set_angle_to))
+		set_angle(set_angle_to)
+	// handle submunitions - this can qdelete ourselves!
+	var/list/obj/projectile/fired_submunitions = submunitions ? split_into_default_submunitions(TRUE) : null
+	if(!QDELETED(src))
+		launch(direct_target, no_source_check)
+	for(var/obj/projectile/submunition as anything in fired_submunitions)
+		submunition.launch(direct_target, no_source_check)
+
+/**
+ * Handles actually launching a projectile.
+ */
+/obj/projectile/proc/launch(atom/direct_target, no_source_check)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	PRIVATE_PROC(TRUE)
 	// setup impact checking
 	impacted = list()
 	// handle direct hit
@@ -413,13 +529,10 @@
 					buckle_iterating = cast_for_next.buckled
 				else
 					break
-	// set angle if needed
-	if(isnum(set_angle_to))
-		set_angle(set_angle_to)
 	// setup physics
 	setup_physics()
 
-	// legacy below
+	//! legacy below
 	var/turf/starting = get_turf(src)
 	if(isnull(angle))	//Try to resolve through offsets if there's no angle set.
 		if(isnull(xo) || isnull(yo))
@@ -431,9 +544,7 @@
 	if(dispersion)
 		set_angle(angle + rand(-dispersion, dispersion))
 	original_angle = angle
-	forceMove(starting)
-	fired = TRUE
-	// legacy aboev
+	//! legacy above
 
 	// start physics & kickstart movement
 	if(hitscan)
@@ -443,6 +554,7 @@
 		physics_iteration(WORLD_ICON_SIZE, SSprojectiles.wait)
 
 //Spread is FORCED!
+// todo: obliterate
 /obj/projectile/proc/preparePixelProjectile(atom/target, atom/source, params, spread = 0)
 	var/turf/curloc = get_turf(source)
 	var/turf/targloc = get_turf(target)
@@ -478,6 +590,7 @@
 		stack_trace("WARNING: Projectile [type] fired without either mouse parameters, or a target atom to aim at!")
 		qdel(src)
 
+// todo: obliterate
 /proc/calculate_projectile_angle_and_pixel_offsets(mob/user, params)
 	var/list/mouse_control = params2list(params)
 	var/p_x = 0
@@ -538,82 +651,17 @@
 	return 0
 
 /**
- * i hate everything
- *
- * todo: refactor guns
- * projectiles
- * and everything else
- *
- * i am losing my fucking mind
- * this shouldn't have to fucking exist because the ammo casing and/or gun should be doing it
- * and submunitions SHOULDNT BE HANDLED HERE!!
+ * todo: annihilate this
  */
-/obj/projectile/proc/launch_projectile_common(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
+/obj/projectile/proc/launch_projectile_legacy(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
+	var/direct_target
+	if(get_turf(target) == get_turf(src))
+		direct_target = target
+
+	preparePixelProjectile(target, user? user : get_turf(src), params, forced_spread)
 	original_target = target
 	def_zone = check_zone(target_zone)
 	firer = user
-
-	if(use_submunitions && submunitions.len)
-		var/temp_min_spread = 0
-		if(force_max_submunition_spread)
-			temp_min_spread = submunition_spread_max
-		else
-			temp_min_spread = submunition_spread_min
-
-		var/damage_override = null
-
-		if(spread_submunition_damage)
-			damage_override = damage_force
-			if(nodamage)
-				damage_override = 0
-
-			var/projectile_count = 0
-
-			for(var/proj in submunitions)
-				projectile_count += submunitions[proj]
-
-			damage_override = round(damage_override / max(1, projectile_count))
-
-		for(var/path in submunitions)
-			var/amt = submunitions[path]
-			for(var/count in 1 to amt)
-				var/obj/projectile/SM = new path(get_turf(loc))
-				SM.shot_from = shot_from
-				SM.silenced = silenced
-				if(!isnull(damage_override))
-					SM.damage_force = damage_override
-				if(submunition_constant_spread)
-					SM.dispersion = 0
-					var/calculated = angle + round((count / amt - 0.5) * submunition_spread_max, 1)
-					SM.launch_projectile(target, target_zone, user, params, calculated)
-				else
-					SM.dispersion = rand(temp_min_spread, submunition_spread_max) / 10
-					SM.launch_projectile(target, target_zone, user, params, angle_override)
-
-/obj/projectile/proc/launch_projectile(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
-	var/direct_target
-	if(get_turf(target) == get_turf(src))
-		direct_target = target
-
-	preparePixelProjectile(target, user? user : get_turf(src), params, forced_spread)
-	launch_projectile_common(target, target_zone, user, params, angle_override, forced_spread)
-	return fire(angle_override, direct_target)
-
-//called to launch a projectile from a gun
-/obj/projectile/proc/launch_from_gun(atom/target, target_zone, mob/user, params, angle_override, forced_spread, obj/item/gun/launcher)
-
-	shot_from = launcher.name
-	silenced = launcher.silenced
-
-	return launch_projectile(target, target_zone, user, params, angle_override, forced_spread)
-
-/obj/projectile/proc/launch_projectile_from_turf(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
-	var/direct_target
-	if(get_turf(target) == get_turf(src))
-		direct_target = target
-
-	preparePixelProjectile(target, user? user : get_turf(src), params, forced_spread)
-	launch_projectile_common(target, target_zone, user, params, angle_override, forced_spread)
 	return fire(angle_override, direct_target)
 
 /**
@@ -695,6 +743,9 @@
 		return
 	// not even fired yet
 	if(!fired)
+		return
+	// no loc?
+	if(!loc)
 		return
 	// scan the turf for anything we need to hit
 	scan_moved_turf(loc)
@@ -1129,19 +1180,9 @@
 			proj_sharp = 0
 			proj_edge = 0
 
-		var/list/impact_sounds = islist(src.impact_sounds)? LAZYACCESS(src.impact_sounds, L.get_bullet_impact_effect_type(hit_zone)) : src.impact_sounds
-		if(length(impact_sounds))
-			playsound(L, pick(impact_sounds), 75)
-		else if(!isnull(impact_sounds))
-			playsound(L, impact_sounds, 75)
-
-		//Stun Beams
-		if(src.taser_effect)
-			L.stun_effect_act(0, src.agony, hit_zone, src)
-			to_chat(L, "<font color='red'>You have been hit by [src]!</font>")
-			if(!src.nodamage)
-				L.apply_damage(final_damage, src.damage_type, hit_zone, absorb, soaked, 0, src, sharp=proj_sharp, edge=proj_edge)
-			return
+		var/resolved_impact_sound = resolve_impact_sfx(L.get_combat_fx_classifier(ATTACK_TYPE_PROJECTILE, src, hit_zone), L)
+		if(resolved_impact_sound)
+			playsound(L, resolved_impact_sound, 75, TRUE)
 
 		if(!src.nodamage)
 			L.apply_damage(final_damage, src.damage_type, hit_zone, absorb, soaked, 0, src, sharp=proj_sharp, edge=proj_edge)
@@ -1169,12 +1210,135 @@
  * * entity - thing hit
  * * force - nominal force to resist the damping; generally, projectiles at this lose a moderate chunk of energy, while 2x loses minimal, 0.5x loses a lot.
  * * tier - effective armor tier of object; modulates actual energy lost
+ *
+ * todo: redo this proc / calculations
  */
 /obj/projectile/proc/dampen_on_pierce_experimental(atom/entity, force, tier)
+	if(!force || !damage_force)
+		return
 	var/tdiff = damage_tier - tier
 	var/dmult = src.damage_force / force
-	var/malus = dmult >= 1 ? ((1 / dmult) ** tdiff * 10) : (10 * ((1 / dmult) / (1 + tdiff)))
+	var/malus = dmult >= 1 ? ((1 / dmult) ** tdiff * 10) : (10 * ((1 / dmult) / max(1, 1 + tdiff)))
 	src.damage_force = clamp(src.damage_force - malus, src.damage_force * 0.5, src.damage_force)
+
+//* Submunitions *//
+
+/**
+ * This can qdel() ourselves!
+ */
+/obj/projectile/proc/split_into_default_submunitions(fire_immediately, datum/callback/on_submunition_ready)
+	. = split_into_submunitions(
+		submunitions,
+		submunition_type || type,
+		submunition_dispersion,
+		submunition_uniform_disperson,
+		submunition_linear_spread,
+		submunition_uniform_linear_spread,
+		submunition_distribution,
+		submunition_distribution_mod,
+		submunition_distribution_overwrite,
+		fire_immediately,
+		on_submunition_ready,
+	)
+	if(submunitions_only)
+		qdel(src)
+
+/**
+ * @params
+ * * amount - amount to use
+ * * path - typepath to use
+ * * angular_spread - angular dispersion
+ * * uniform_angular_spread - use deterministic angular spread
+ * * linear_spread - spread apart this many pixels over every projectile, perpendicular to the path of travel
+ * * uniform_linear_spread - use deterministic linear spread
+ * * distribute - distribute our stats across submunitions?
+ * * distribute_mod - 2 = each pellet is 2x stronger than it should be in a fair divide, 0.5 = 50% as strong, etc.
+ * * distribute_overwrite - overwrite stats of the split submunitions instead of adding.
+ * * fire_immediately - fire the split shots.
+ * * on_submunition_ready - (optional) callback to execute when a submunition is readied, right before it's fire()'d.
+ *                          The callback is executed asynchronously.
+ *
+ * @return list() of submunitions
+ */
+/obj/projectile/proc/split_into_submunitions(amount, path, angular_spread, uniform_angular_spread, linear_spread, uniform_linear_spread, distribute, distribute_mod, distribute_overwrite, fire_immediately, datum/callback/on_submunition_ready)
+	// we must be fired; otherwise, things don't work right.
+	ASSERT(fired)
+	. = list()
+	// linear / angular spread;
+	// halve it as we go in both directions
+	linear_spread *= 0.5
+	angular_spread *= 0.5
+	// if not uniform, multiply by 100 to be divided out as rand() only works with whole numbers.
+	if(!uniform_linear_spread)
+		linear_spread *= 100
+	if(!uniform_angular_spread)
+		angular_spread *= 100
+	var/perpendicular_angle = angle + 90
+	var/px_perpendicular = sin(perpendicular_angle)
+	var/py_perpendicular = cos(perpendicular_angle)
+	for(var/iter in 1 to amount)
+		var/obj/projectile/split = new path(loc)
+		split.imprint_from_supermunition(src, amount, distribute, distribute_mod, distribute_overwrite)
+		var/our_linear_spread = 0
+		if(amount > 1)
+			our_linear_spread = uniform_linear_spread ? -linear_spread + ((iter - 1) / (amount - 1)) * linear_spread * 2 : rand(-linear_spread, linear_spread) * 0.01
+		var/our_angle_mod = 0
+		if(amount > 1)
+			our_angle_mod = uniform_angular_spread ? -angular_spread + ((iter - 1) / (amount - 1)) * angular_spread * 2: rand(-angular_spread, angular_spread) * 0.01
+		split.pixel_x = pixel_x + px_perpendicular * our_linear_spread
+		split.pixel_y = pixel_y + py_perpendicular * our_linear_spread
+		split.set_angle(angle + our_angle_mod)
+		on_submunition_ready?.InvokeAsync(split)
+		if(fire_immediately)
+			split.fire()
+		. += split
+
+/**
+ * @params
+ * * parent - what we're splitting from
+ * * split_count - the number of projectiles being split into. we are 1 of this.
+ * * distribute - distribute parent's stats on ourselves?
+ * * distribute_mod - 2 = each pellet is 2x stronger than it should be in a fair divide, 0.5 = 50% as strong, etc.
+ *                    This will never make a submunition more powerful than if the overall divisor was 1.
+ * * distribute_overwrite - overwrite stats of the split submunitions instead of adding.
+ */
+/obj/projectile/proc/imprint_from_supermunition(obj/projectile/parent, split_count, distribute, distribute_mod, distribute_overwrite)
+	SHOULD_CALL_PARENT(TRUE)
+
+	//! legacy - clone variables
+	shot_from = parent.shot_from
+	silenced = parent.silenced
+	firer = parent.firer
+	original_angle = parent.original_angle
+	//! end
+
+	// share targeting data
+	original_target = parent.original_target
+	// share impacted data
+	impacted = parent.impacted?.Copy()
+	// distrbute if needed
+	if(distribute && distribute_mod)
+		var/effective_multiplier = 1 / (split_count / min(distribute_mod, split_count))
+		// todo: how to handle split damagetypes?
+		if(distribute_overwrite)
+			damage_type = parent.damage_type
+			damage_force = parent.damage_force * effective_multiplier
+			damage_flag = parent.damage_flag
+			damage_tier = parent.damage_tier
+			projectile_effect_multiplier = parent.projectile_effect_multiplier * effective_multiplier
+			base_projectile_effects = parent.base_projectile_effects
+			additional_projectile_effects = parent.additional_projectile_effects
+		else
+			damage_force += parent.damage_force * effective_multiplier
+			damage_tier = max(damage_tier, parent.damage_tier)
+			// todo: proper collation for effects, not just an add and multiplier, maybe?
+			projectile_effect_multiplier = max(projectile_effect_multiplier, parent.projectile_effect_multiplier * effective_multiplier)
+			if(parent.base_projectile_effects)
+				LAZYINITLIST(base_projectile_effects)
+				base_projectile_effects += parent.base_projectile_effects
+			if(parent.additional_projectile_effects)
+				LAZYINITLIST(additional_projectile_effects)
+				additional_projectile_effects += parent.additional_projectile_effects
 
 //* Targeting *//
 
@@ -1190,3 +1354,35 @@
 	else if(isturf(target))
 		return target.density
 	return FALSE
+
+//* SFX / VFX *//
+
+/**
+ * Resolve SFX to pass into playsound, if defaulting to us
+ */
+/obj/projectile/proc/resolve_fire_sfx()
+	return get_sfx(fire_sound)
+
+/**
+ * Resolve impact SFX
+ *
+ * @params
+ * * fx_classifier - (optional) COMBAT_IMPACT_FX_* enum
+ * * impacting - (optional) the thing we're hitting
+ */
+/obj/projectile/proc/resolve_impact_sfx(fx_classifier = COMBAT_IMPACT_FX_GENERIC, atom/impacting)
+	// 1. impact sound is null
+	if(isnull(impact_sound))
+		return
+	// 2. impact sound is a list
+	if(islist(impact_sound) && length(impact_sound))
+		return get_sfx(pick(impact_sound))
+	// 3. impact sound is a single thing
+	// 3a. lookup from globals (handle enums)
+	var/resolved = GLOB.projectile_impact_sfx_lut[fx_classifier][impact_sound]
+	if(resolved)
+		if(islist(resolved))
+			return length(resolved) ? get_sfx(pick(resolved)) : null
+		return get_sfx(resolved)
+	// 3b. just resolve as sfx
+	return get_sfx(impact_sound)

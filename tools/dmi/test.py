@@ -1,7 +1,7 @@
 import os
 import sys
-from dmi import *
 
+from tools.dmi import *
 
 def _self_test():
     # test: can we load every DMI in the tree

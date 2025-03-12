@@ -55,7 +55,7 @@
 			if(issmall(M))
 				removed *= 2 // Small bodymass, more effect from lower volume.
 	M.heal_organ_damage(0.5 * removed, 0)
-	if(!M.species.is_vampire) // If this is set to 0, they don't get nutrition from food.
+	if(!M.species.is_vampire && !(M.species.species_flags & NO_NUTRITION_GAIN)) // If this is set to 0, they don't get nutrition from food.
 		M.nutrition += nutriment_factor * removed // For hunger and fatness
 	M.adjust_hydration(hydration_factor * removed)
 	M.add_chemical_effect(CE_BLOODRESTORE, 4 * removed)

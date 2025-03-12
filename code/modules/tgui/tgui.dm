@@ -412,7 +412,7 @@
 					window = window,
 					src_object = src_object)
 				process_status()
-				if(src_object.ui_act(action, payload, src))
+				if(src_object.ui_act(action, payload, src, new /datum/event_args/actor(usr)))
 					SStgui.update_uis(src_object)
 				return FALSE
 			if("mod/")	// module act
@@ -559,3 +559,8 @@
  */
 /datum/tgui/proc/still_interactive()
 	return status == UI_INTERACTIVE
+
+//* Setters *//
+
+/datum/tgui/proc/set_title(string)
+	title = string

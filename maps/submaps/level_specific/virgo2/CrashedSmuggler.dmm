@@ -287,7 +287,7 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 4
 	},
-/obj/item/gun/ballistic/revolver/mateba,
+/obj/item/gun/projectile/ballistic/revolver/mateba,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "BR" = (

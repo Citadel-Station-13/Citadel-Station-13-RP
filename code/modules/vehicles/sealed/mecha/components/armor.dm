@@ -1,5 +1,5 @@
 
-/obj/item/mecha_parts/component/armor
+/obj/item/vehicle_component/armor
 	name = "mecha plating"
 	icon = 'icons/mecha/mech_component.dmi'
 	icon_state = "armor"
@@ -38,7 +38,7 @@
 	var/minimum_penetration = 0
 	var/fail_penetration_value = 0.66
 
-/obj/item/mecha_parts/component/armor/mining
+/obj/item/vehicle_component/armor/mining
 	name = "blast-resistant mecha plating"
 
 	step_delay = 2
@@ -55,7 +55,7 @@
 									"rad"=1
 									)
 
-/obj/item/mecha_parts/component/armor/lightweight
+/obj/item/vehicle_component/armor/lightweight
 	name = "lightweight mecha plating"
 
 	integrity_max = 50
@@ -72,7 +72,7 @@
 									"rad"=1
 									)
 
-/obj/item/mecha_parts/component/armor/reinforced
+/obj/item/vehicle_component/armor/reinforced
 	name = "reinforced mecha plating"
 
 	step_delay = 4
@@ -90,7 +90,7 @@
 		"bomb"=0.8
 		)
 
-/obj/item/mecha_parts/component/armor/military
+/obj/item/vehicle_component/armor/military
 	name = "military grade mecha plating"
 
 	step_delay = 4
@@ -113,7 +113,7 @@
 		"bomb"=0.8
 		)
 
-/obj/item/mecha_parts/component/armor/military/attach(var/obj/vehicle/sealed/mecha/target, var/mob/living/user)
+/obj/item/vehicle_component/armor/military/attach(var/obj/vehicle/sealed/mecha/target, var/mob/living/user)
 	. = ..()
 	if(.)
 		var/typepass = FALSE
@@ -126,7 +126,7 @@
 		else
 			step_delay = initial(step_delay)
 
-/obj/item/mecha_parts/component/armor/marshal
+/obj/item/vehicle_component/armor/marshal
 	name = "marshal mecha plating"
 
 	step_delay = 3
@@ -150,7 +150,7 @@
 		"bomb"=1
 		)
 
-/obj/item/mecha_parts/component/armor/marshal/attach(var/obj/vehicle/sealed/mecha/target, var/mob/living/user)
+/obj/item/vehicle_component/armor/marshal/attach(var/obj/vehicle/sealed/mecha/target, var/mob/living/user)
 	. = ..()
 	if(.)
 		var/typepass = FALSE
@@ -163,7 +163,7 @@
 		else
 			step_delay = initial(step_delay)
 
-/obj/item/mecha_parts/component/armor/marshal/reinforced
+/obj/item/vehicle_component/armor/marshal/reinforced
 	name = "blackops mecha plating"
 
 	step_delay = 5
@@ -177,7 +177,7 @@
 		"bomb"=0.8
 		)
 
-/obj/item/mecha_parts/component/armor/military/marauder
+/obj/item/vehicle_component/armor/military/marauder
 	name = "cutting edge mecha plating"
 
 	step_delay = 4
@@ -201,7 +201,7 @@
 		"bomb"=0.7
 		)
 
-/obj/item/mecha_parts/component/armor/military/marauder/attach(var/obj/vehicle/sealed/mecha/target, var/mob/living/user)
+/obj/item/vehicle_component/armor/military/marauder/attach(var/obj/vehicle/sealed/mecha/target, var/mob/living/user)
 	. = ..()
 	if(.)
 		var/typepass = FALSE
@@ -214,7 +214,7 @@
 		else
 			step_delay = initial(step_delay)
 
-/obj/item/mecha_parts/component/armor/alien
+/obj/item/vehicle_component/armor/alien
 	name = "strange mecha plating"
 	step_delay = 2
 	damage_absorption = list(
@@ -226,7 +226,7 @@
 		"bomb"=0.7
 		)
 
-/obj/item/mecha_parts/component/armor/alien/attach(var/obj/vehicle/sealed/mecha/target, var/mob/living/user)
+/obj/item/vehicle_component/armor/alien/attach(var/obj/vehicle/sealed/mecha/target, var/mob/living/user)
 	. = ..()
 	if(.)
 		if(istype(target, /obj/vehicle/sealed/mecha/combat/phazon/janus))

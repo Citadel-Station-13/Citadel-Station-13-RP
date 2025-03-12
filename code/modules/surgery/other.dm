@@ -22,6 +22,7 @@
 	max_duration = 90
 
 /datum/surgery_step/fix_vein/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
+	if(!..()) return FALSE
 	if(!hasorgans(target))
 		return 0
 

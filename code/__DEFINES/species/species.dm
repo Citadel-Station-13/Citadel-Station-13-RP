@@ -74,6 +74,7 @@
 #define SPECIES_ID_ZORREN "zorren"
 	#define SPECIES_ID_ZORREN_HIGH "zorren_high"
 	#define SPECIES_ID_ZORREN_FLAT "zorren_flat"
+#define SPECIES_ID_HOLOSPHERE "holosphere"
 
 /**
  * !It is important to note that these are not only used for the name of the species.
@@ -152,6 +153,7 @@
 #define SPECIES_ZADDAT "Zaddat"
 #define SPECIES_ZORREN_FLAT "Flatland Zorren"
 #define SPECIES_ZORREN_HIGH "Highlander Zorren"
+#define SPECIES_HOLOSPHERE "Holosphere"
 
 
 

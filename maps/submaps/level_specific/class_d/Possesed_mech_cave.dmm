@@ -95,7 +95,7 @@
 /turf/simulated/floor/classd/indoors,
 /area/class_d/explored/underground)
 "tb" = (
-/obj/item/mecha_parts/mecha_equipment/tool/drill/diamonddrill,
+/obj/item/vehicle_module/tool/drill/diamonddrill,
 /obj/structure/table/rack,
 /obj/item/gps/survival/on,
 /turf/simulated/floor/classd/indoors,
@@ -170,7 +170,7 @@
 /obj/item/ammo_casing/a12g/flare,
 /obj/item/ammo_casing/a12g/flare,
 /obj/item/ammo_casing/a12g/flare,
-/obj/item/gun/ballistic/shotgun/flare,
+/obj/item/gun/projectile/ballistic/shotgun/flare,
 /turf/simulated/floor/classd/indoors,
 /area/class_d/explored/underground)
 "GP" = (

@@ -283,8 +283,8 @@
 	desc = "A small robotic unit with a humanoid form. It carries gold markings on its head and face plate, along with shouldering some sort of alien energy weapon."
 	icon_living = "trooper"
 	icon_state = "trooper"
-	maxHealth = 250
-	health = 250
+	maxHealth = 200
+	health = 200
 	armor_legacy_mob = list(
 				"melee"		= 0,
 				"bullet"	= 0,
@@ -299,7 +299,7 @@
 	legacy_melee_damage_upper = 5
 	movement_cooldown = 2
 	movement_sound = 'sound/enigma/enigma_move.ogg'
-	ai_holder_type = /datum/ai_holder/polaris/simple_mob/hivebot
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged
 	projectiletype = /obj/projectile/beam/weak
 
 /mob/living/simple_mob/mechanical/hivebot/enigma/trooper/marksman
@@ -308,13 +308,13 @@
 	desc = "A slightly taller robotic unit with a humanoid form. It has dark green markings on its faceplate, and seems to carry some sort of advanced energy sniper."
 	icon_state = "marksman"
 	icon_living = "marksman"
-	maxHealth = 200
-	health = 200
+	maxHealth = 190
+	health = 190
 	armor_legacy_mob = list(
 				"melee"		= 0,
 				"bullet"	= 0,
-				"laser"		= 50,
-				"energy"	= 50,
+				"laser"		= 40,
+				"energy"	= 40,
 				"bomb"		= 0,
 				"bio"		= 100,
 				"rad"		= 100
@@ -322,7 +322,8 @@
 
 	legacy_melee_damage_lower = 5
 	legacy_melee_damage_upper = 5
-	movement_cooldown = 4
+	base_attack_cooldown = 25
+	movement_cooldown = 3
 	movement_sound = 'sound/enigma/enigma_move.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/sniper
 	projectiletype = /obj/projectile/beam/xray
@@ -333,8 +334,8 @@
 	desc = "Another mechanical construct, this one looks more advanced than the others. Equipped with a extensively modified Ion weapon sporting abductor technology, better steer any machinery clear of this. It sports blue markings."
 	icon_state = "magnetic"
 	icon_living = "magnetic"
-	maxHealth = 300
-	health = 300
+	maxHealth = 230
+	health = 230
 	armor_legacy_mob = list(
 				"melee"		= 0,
 				"bullet"	= 20,
@@ -345,8 +346,8 @@
 				"rad"		= 100
 				)
 
-	legacy_melee_damage_lower = 0
-	legacy_melee_damage_upper = 0
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 5
 	movement_cooldown = 2
 	movement_sound = 'sound/enigma/enigma_move.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
@@ -361,8 +362,8 @@
 	desc = "A sleek, black bipedal combat unit with an unsettling, advanced nanotech design. Its chassis being an amalgamation of various prosthetic and synthetic components or at least mimicking such. The unit is constantly shifting and is surrounded by a thin trail of metallic dust as it moves. Spines emitting an antigrav field protrude from its arms, shoulders, and back, while its featureless faceplate displays an alien magenta glow under constant shifting and warping. The unit shudders and vibrates with uncanny precision. It wields a modified particle weapon vaguely resembling a Hephaestus G40. A capital Sigma symbol is etched on its chest, and a circular power pack on its back hums with gravity-defying particles."
 	icon_living = "wraith"
 	icon_state = "wraith"
-	maxHealth = 200 //More armored but less max HP and also has a shield
-	health = 200
+	maxHealth = 250
+	health = 250
 	evasion = 15 //Superior reflexes due to nanotech and being build for combat
 	armor_legacy_mob = list(
 				"melee"		= 5,
@@ -375,7 +376,7 @@
 				)
 
 	legacy_melee_damage_lower = 18
-	legacy_melee_damage_upper = 18 //It hits you with a hardened nanite fist. Thats supposed to hurt  
+	legacy_melee_damage_upper = 18 //It hits you with a hardened nanite fist. Thats supposed to hurt
 	movement_cooldown = 1 //again faster than standard grunts
 	movement_sound = 'sound/enigma/enigma_move.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting //Made to draw fire hence kiting
@@ -384,17 +385,17 @@
 
 /mob/living/simple_mob/mechanical/hivebot/enigma/P4/Wraith/Initialize(mapload) //Gives the unit a weak overshield since it would be very unfun to fight kiting AI with actual proper health regen as initially intended
 	var/shield_type = /obj/item/shield_projector/rectangle{
-		shield_health = 50;
-		max_shield_health = 50;
-		shield_regen_delay = 10 SECONDS;
-		shield_regen_amount = 10;
+		shield_health = 100;
+		max_shield_health = 100;
+		shield_regen_delay = 5 SECONDS;
+		shield_regen_amount = 30;
 		size_x = 1;
 		size_y = 1;
 		always_on = TRUE;
 	}
 	var/obj/item/shield_projector/shield_projector = new shield_type(src)
 	shield_projector.create_shields()
-	return ..()	
+	return ..()
 
 /mob/living/simple_mob/mechanical/hivebot/enigma/P4/Banshee
 	name = "banshee"
@@ -402,8 +403,8 @@
 	desc = "A horrific inorganic nanite abomination. This unit possess a jet black nanite frame with typical abductor technology augmentation. Armed with two strange humming blades it is well capable of both lethal takedowns and less lethal takedowns. The head tendrilled monstrosity is lightning fast and to make matters worse has some sort of short range teleportation pack installed on its back allowing it to effectively 'blink' out if needed to disengage. Additionally the entire body is covered in thin, purple colored phase coils allowing it to effectively leap. A capital greek Sigma is etched onto its nanite chest. Embedded in its right armblade is some sort of injector loaded with strange bits of electronics. The entire thing screams in agony in an ultrasonic frequency only audible to synthetics as it constantly shifts in and out of phase."
 	icon_living = "banshee"
 	icon_state = "banshee"
-	maxHealth = 100 //Glass Cannon
-	health = 100
+	maxHealth = 200
+	health = 200
 	evasion = 50 //Phase coils and bluespace blink device. Hard to hit. Trash hitpoints and armor
 	armor_legacy_mob = list(
 				"melee"		= 5,
@@ -415,7 +416,7 @@
 				"rad"		= 100
 				)
 
-	legacy_melee_damage_lower = 35 //armed with two arm mounted phase blades 
+	legacy_melee_damage_lower = 35 //armed with two arm mounted phase blades
 	legacy_melee_damage_upper = 35 //I hate damage variance
 	attack_armor_pen = 25
 	base_attack_cooldown = 7 //1.3 attacks per second
@@ -435,7 +436,7 @@
 	special_attack_cooldown = 15 SECONDS //Phase coils are not trivial to miniaturize
 
 	var/leap_warmup = 1 SECOND // How long the leap telegraphing is.
-	var/leap_sound = 'sound/weapons/Phasecoilengage.ogg' 
+	var/leap_sound = 'sound/weapons/Phasecoilengage.ogg'
 
 // Multiplies damage if the victim is stunned in some form, including a successful leap.
 /mob/living/simple_mob/mechanical/hivebot/enigma/P4/Banshee/apply_bonus_melee_damage(atom/A, damage_amount)
@@ -489,8 +490,8 @@
 		to_chat(victim, SPAN_CRITICAL("\The [src] disengages its phase coils right ontop you and knocks you to the ground!"))
 		. = TRUE
 
-	set_AI_busy(FALSE)	
-	
+	set_AI_busy(FALSE)
+
 // Boss
 
 
@@ -588,7 +589,7 @@
 					continue
 				if(L.stat)
 					continue // Otherwise it can get pretty laggy if there's loads of corpses around.
-				L.inflict_shock_damage(i * 2)
+				L.inflict_shock_damage_legacy(i * 2)
 				if(L && L.has_polaris_AI()) // Some mobs delete themselves when dying.
 					L.ai_holder.react_to_attack_polaris(src)
 

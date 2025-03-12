@@ -22,7 +22,6 @@
 /obj/item/ammo_casing/a7_62mm/practice
 	desc = "A 7.62mm practice bullet casing."
 	icon_state = "large-white"
-	icon_state = "rifle-casing" // Need to make an icon for these
 	projectile_type = /obj/projectile/bullet/practice
 	materials_base = list(MAT_STEEL = 90)
 	worth_intrinsic = 1.5

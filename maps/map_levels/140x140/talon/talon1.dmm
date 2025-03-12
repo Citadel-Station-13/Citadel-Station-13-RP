@@ -849,7 +849,7 @@
 /obj/structure/table/rack/steel,
 /obj/item/spaceflare,
 /obj/item/storage/box/flashshells/large,
-/obj/item/gun/ballistic/shotgun/flare,
+/obj/item/gun/projectile/ballistic/shotgun/flare,
 /obj/machinery/air_alarm/talon{
 	dir = 1;
 	pixel_y = -22
@@ -1929,17 +1929,17 @@
 /area/talon/maintenance/deckone_port)
 "qR" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/frontier/locked/holdout{
+/obj/item/gun/projectile/energy/frontier/locked/holdout{
 	desc = "A minaturized weapon designed for the purpose of expeditionary support to defend themselves on the field. Includes a built-in crank charger for recharging away from civilization.";
 	pin = /obj/item/firing_pin
 	},
-/obj/item/gun/energy/frontier/locked/holdout{
+/obj/item/gun/projectile/energy/frontier/locked/holdout{
 	desc = "A minaturized weapon designed for the purpose of expeditionary support to defend themselves on the field. Includes a built-in crank charger for recharging away from civilization.";
 	pin = /obj/item/firing_pin
 	},
-/obj/item/gun/energy/frontier,
-/obj/item/gun/energy/frontier,
-/obj/item/gun/energy/frontier,
+/obj/item/gun/projectile/energy/frontier,
+/obj/item/gun/projectile/energy/frontier,
+/obj/item/gun/projectile/energy/frontier,
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
 "qY" = (
@@ -5851,7 +5851,7 @@
 	pixel_y = 1
 	},
 /obj/item/cell/device/weapon,
-/obj/item/gun/energy/netgun,
+/obj/item/gun/projectile/energy/netgun,
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
 "WQ" = (
