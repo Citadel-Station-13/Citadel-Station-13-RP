@@ -601,7 +601,7 @@ var/list/wrapped_species_by_ref = list()
 			our_organ.sync_colour_to_human(src)
 
 	//for xenochim and prommies only
-	if(target.species && istype(target.species, /datum/species) && (wrapped_species_by_ref["\ref[src]"] != target.species) )
+	if(target.species && istype(target.species, /datum/species))
 		wrapped_species_by_ref["\ref[src]"] = target.species.name
 		regenerate_icons()
 
