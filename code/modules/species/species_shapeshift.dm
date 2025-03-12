@@ -556,8 +556,8 @@ var/list/wrapped_species_by_ref = list()
 	..()
 
 
-/mob/living/carbon/human/proc/copy_appearance()
-	set name = "Mimic Appearance" 
+/mob/living/carbon/human/proc/shapeshifter_copy_appearance()
+	set name = "Mimic Appearance"
 	set category = "Abilities"
 
 	if(stat || world.time < last_special)
@@ -569,7 +569,7 @@ var/list/wrapped_species_by_ref = list()
 
 	for(var/mob/living/carbon/human/M in oview(7))
 		valid_moblist |= M
-	
+
 	var/mob/living/carbon/human/target = input(src,"Who do you wish to target?","Mimic Target") as null|anything in valid_moblist
 
 	if(!istype(target))
@@ -598,7 +598,7 @@ var/list/wrapped_species_by_ref = list()
 		change_skin_color(target.r_skin, target.g_skin, target.b_skin)
 	if(target.species.species_appearance_flags & HAS_SKIN_TONE)
 		change_skin_tone(target.s_tone)
-	
+
 	//why are these eploded instead of using the individual colour/style change calls?
 	//so we only have to do the render call once (per accessory). they're way more expensive than hair
 	ear_style = target.ear_style
@@ -612,7 +612,7 @@ var/list/wrapped_species_by_ref = list()
 	g_ears3 = target.g_ears3
 	b_ears3 = target.b_ears3
 	render_spriteacc_ears()
-	
+
 	r_horn = target.r_horn
 	g_horn = target.g_horn
 	b_horn = target.b_horn
