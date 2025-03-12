@@ -409,7 +409,7 @@
 	if(stat || world.time < last_special)
 		return
 
-	last_special = world.time + 1 MINUTE
+	last_special = world.time + 20 SECONDS
 
 	visible_message("<span class='warning'>[src] deforms and contorts strangely...</span>")
 	
@@ -435,14 +435,10 @@
 		var/status = pref.organ_data[name]
 		var/obj/item/organ/external/O = src.organs_by_name[name]
 		if(O)
-			if(status == "amputated")
-				O.remove_rejuv()
-			else if(status == "cyborg")
-				if(pref.rlimb_data[name])
-					// use force to override prior robotizations oh god THIS IS BAD
-					O.robotize(pref.rlimb_data[name], null, null, TRUE)
-				else
-					O.robotize()
+			if(pref.rlimb_data[name])
+				O.robotize(pref.rlimb_data[name])
+			else
+				O.robotize()
 
 //protean
 	impersonate_bodytype_legacy = null
