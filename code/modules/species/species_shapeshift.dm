@@ -636,7 +636,7 @@ var/list/wrapped_species_by_ref = list()
 	render_spriteacc_tail()
 
 	wing_style = target.wing_style
-	wing_gradstyle = target.grad_wingstyle
+	grad_wingstyle = target.grad_wingstyle
 
 	r_gradwing = target.r_gradwing
 	g_gradwing = target.g_gradwing
@@ -662,8 +662,6 @@ var/list/wrapped_species_by_ref = list()
 		var/obj/item/organ/external/their_organ = target.organs_by_name[BP]
 		var/obj/item/organ/external/our_organ = organs_by_name[BP]
 		if(their_organ && our_organ)
-			if((their_bp.robotic >= ORGAN_ROBOT))
-				our_organ.robotize(their_organ.model)
 			our_organ.markings = their_organ.markings
 
 /* for xenochim and prommies only
