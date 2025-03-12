@@ -157,6 +157,12 @@
 		return H.impersonate_bodytype_legacy || ..()
 	return ..()
 
+/datum/species/protean/get_icobase(mob/living/carbon/human/H, get_deform)
+	if(H)
+		return impersonate_species_for_iconbase.get_icobase(H, get_deform)
+	return ..()
+
+
 /datum/species/protean/get_worn_legacy_bodytype(mob/living/carbon/human/H)
 	return H?.impersonate_bodytype_legacy || ..()
 

@@ -214,6 +214,7 @@ var/list/wrapped_species_by_ref = list()
 		g_facial = g_skin
 		b_facial = b_skin
 
+
 	for(var/obj/item/organ/external/E in organs)
 		E.sync_colour_to_human(src)
 
@@ -556,8 +557,8 @@ var/list/wrapped_species_by_ref = list()
 	..()
 
 
-/mob/living/carbon/human/proc/copy_appearance()
-	set name = "Mimic Appearance" 
+/mob/living/carbon/human/proc/shapeshifter_copy_appearance()
+	set name = "Mimic Appearance"
 	set category = "Abilities"
 
 	if(stat || world.time < last_special)
@@ -569,21 +570,39 @@ var/list/wrapped_species_by_ref = list()
 
 	for(var/mob/living/carbon/human/M in oview(7))
 		valid_moblist |= M
-	
+
 	var/mob/living/carbon/human/target = input(src,"Who do you wish to target?","Mimic Target") as null|anything in valid_moblist
 
 	if(!istype(target))
 		return FALSE
 
-	if(get_dist(src,target) > 7)
+	if(get_dist(src,target) > 3)
 		to_chat(src,"<span class='warning'>There's nobody nearby to use this on.</span>")
 		return FALSE
 
 	visible_message("<span class='warning'>[src] deforms and contorts strangely...</span>")
-	if(!do_after(src, 5, target)) //.5 seconds
+	if(!do_after(src, 50, target)) //5 seconds
 		return FALSE
 
+	shapeshifter_copy_core_and_accessories(target)
+	//markings and limbs time.
 
+	//copies all of the target's markings.
+	for(var/BP in target.organs_by_name)
+		var/obj/item/organ/external/their_organ = target.organs_by_name[BP]
+		var/obj/item/organ/external/our_organ = organs_by_name[BP]
+		if(their_organ && our_organ)
+			our_organ.markings = their_organ.markings
+		if(our_organ)
+			our_organ.sync_colour_to_human(src)
+
+	// for xenochim only
+	if(target.species && istype(target.species, /datum/species) && (wrapped_species_by_ref["\ref[src]"] != target.species) )
+		wrapped_species_by_ref["\ref[src]"] = target.species.name
+		regenerate_icons()
+
+
+/mob/living/carbon/human/proc/shapeshifter_copy_core_and_accessories(var/mob/living/carbon/human/target)
 	change_gender(target.gender)
 	change_gender_identity(target.identifying_gender)
 	change_hair(target.h_style)
@@ -596,9 +615,12 @@ var/list/wrapped_species_by_ref = list()
 
 	if(target.species.species_appearance_flags & HAS_SKIN_COLOR)
 		change_skin_color(target.r_skin, target.g_skin, target.b_skin)
+		r_synth = r_skin
+		g_synth = g_skin
+		b_synth = b_skin
 	if(target.species.species_appearance_flags & HAS_SKIN_TONE)
 		change_skin_tone(target.s_tone)
-	
+
 	//why are these eploded instead of using the individual colour/style change calls?
 	//so we only have to do the render call once (per accessory). they're way more expensive than hair
 	ear_style = target.ear_style
@@ -612,7 +634,8 @@ var/list/wrapped_species_by_ref = list()
 	g_ears3 = target.g_ears3
 	b_ears3 = target.b_ears3
 	render_spriteacc_ears()
-	
+
+	horn_style = target.horn_style
 	r_horn = target.r_horn
 	g_horn = target.g_horn
 	b_horn = target.b_horn
@@ -624,6 +647,7 @@ var/list/wrapped_species_by_ref = list()
 	b_horn3 = target.b_horn3
 	render_spriteacc_horns()
 
+	tail_style = target.tail_style
 	r_tail = target.r_tail
 	g_tail = target.g_tail
 	b_tail = target.b_tail
@@ -651,27 +675,3 @@ var/list/wrapped_species_by_ref = list()
 	g_wing3 = target.g_wing3
 	b_wing3 = target.b_wing3
 	render_spriteacc_wings()
-
-
-	//markings and limbs time.
-	//ensure we get synthlimb markings if target has them
-	synth_markings = target.synth_markings
-
-	//copies all of the target's markings.
-	for(var/BP in target.organs_by_name)
-		var/obj/item/organ/external/their_organ = target.organs_by_name[BP]
-		var/obj/item/organ/external/our_organ = organs_by_name[BP]
-		if(their_organ && our_organ)
-			our_organ.markings = their_organ.markings
-
-/* for xenochim and prommies only
-	if(target.species && istype(target.species, /datum/species) && (wrapped_species_by_ref["\ref[src]"] != target.species) )
-		wrapped_species_by_ref["\ref[src]"] = target.species
-		regenerate_icons()
-	*/
-
-	/*if(target.species)
-		impersonate_bodytype_legacy = target.species.get_bodytype_legacy()
-		impersonate_bodytype = target.species.default_bodytype
-		regenerate_icons() //Expensive, but we need to recrunch all the icons we're wearing
-		*/
