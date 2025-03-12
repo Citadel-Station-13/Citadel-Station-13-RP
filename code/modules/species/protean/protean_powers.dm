@@ -388,6 +388,7 @@
 		if(their_organ && our_organ)
 			if((their_organ.robotic >= ORGAN_ROBOT))
 				our_organ.robotize(their_organ.model)
+			our_organ.s_col_blend = their_organ.s_col_blend
 			our_organ.markings = their_organ.markings
 		if(our_organ)
 			our_organ.sync_colour_to_human(src)
@@ -396,7 +397,7 @@
 		impersonate_bodytype_legacy = target.species.get_bodytype_legacy()
 		impersonate_bodytype = target.species.default_bodytype
 		impersonate_species_for_iconbase = target.species
-		regenerate_icons() //Expensive, but we need to recrunch all the icons we're wearing
+	regenerate_icons() //Expensive, but we need to recrunch all the icons we're wearing
 
 	visible_message("<span class='warning'>[src] transforms into a near-perfect visual copy of [target]!</span>") //you can clearly SEE them transform, so
 

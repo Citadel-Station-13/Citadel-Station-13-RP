@@ -596,6 +596,7 @@ var/list/wrapped_species_by_ref = list()
 		var/obj/item/organ/external/their_organ = target.organs_by_name[BP]
 		var/obj/item/organ/external/our_organ = organs_by_name[BP]
 		if(their_organ && our_organ)
+			our_organ.s_col_blend = their_organ.s_col_blend
 			our_organ.markings = their_organ.markings
 		if(our_organ)
 			our_organ.sync_colour_to_human(src)
@@ -603,7 +604,7 @@ var/list/wrapped_species_by_ref = list()
 	//for xenochim and prommies only
 	if(target.species && istype(target.species, /datum/species))
 		wrapped_species_by_ref["\ref[src]"] = target.species.name
-		regenerate_icons()
+	regenerate_icons()
 
 
 
