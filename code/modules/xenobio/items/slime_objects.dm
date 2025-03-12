@@ -83,7 +83,7 @@
 	origin_tech = list(TECH_MAGNET = 6, TECH_BLUESPACE = 3)
 	damage_force = 1 //Needs a token damage_force to ensure you can attack because for some reason you can't attack with 0 damage_force things
 
-/obj/item/slime_crystal/melee_finalize(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style, atom/target, missed)
+/obj/item/slime_crystal/melee_finalize(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style, atom/fixed_target, mob/fixed_performer, fixed_missed)
 	. = ..()
 	var/mob/living/L = target
 	if(!istype(L))

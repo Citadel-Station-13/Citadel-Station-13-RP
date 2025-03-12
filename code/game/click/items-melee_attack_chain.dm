@@ -120,48 +120,77 @@
 	var/missed = FALSE
 	clickchain.performer.legacy_alter_melee_clickchain(clickchain)
 
-	melee_impact(clickchain, clickchain_flags, attack_style, missed)
-
 	// -- call on them (if we didn't miss / get called off already) --
-	if(!missed)
-		. |= clickchain.target.item_melee_act(clickchain.performer, attack_style, clickchain.target_zone, clickchain)
-		missed = . & CLICKCHAIN_ATTACK_MISSED
+	. |= clickchain.target.item_melee_act(clickchain.performer, attack_style, clickchain.target_zone, clickchain)
+	missed = . & CLICKCHAIN_ATTACK_MISSED
 
-	// -- react to return --
-	. |= melee_impact(clickchain.target, clickchain.performer, clickchain, clickchain_flags, attack_style, missed)
+	// -- call override --
+	var/overridden = melee_override(clickchain.target, clickchain.performer, clickchain.using_intent, clickchain.attack_contact_multiplier, clickchain)
+
+	// -- execute attack if override didn't run --
+	if(!overridden && !(. & CLICKCHAIN_FLAGS_ATTACK_ABORT))
+		. |= melee_impact(clickchain, clickchain_flags, attack_style, clickchain.target, clickchain.performer, missed)
 
 	// -- finalize --
 	if(!(. & CLICKCHAIN_FLAGS_UNCONDITIONAL_ABORT))
-		. |= melee_finalize(clickchain, clickchain_flags, attack_style, fixed_target, missed)
+		. |= melee_finalize(clickchain, clickchain_flags, attack_style, clickchain.target, clickchain.performer, missed)
 
 	// -- log --
 	log_weapon_melee(clickchain, attack_style, src)
 
 /**
- * Version of [melee_attack] that can be overridden for impact effects.
+ * Override hook for melee attacks.
  *
- * * Called before [melee_finalized]
- * * Target / performer are fixed at this point and redirection can no longer happen.
+ * * This is the simplified version of [melee_impact], and is useful for one-off interactions with items and whatnot
+ *   that don't need complex clickchain interactions.
+ * * This is only called if the hit doesn't miss.
+ * * Called from [melee_attack]
+ * * Called before [melee_finalize]
+ *
+ * Notes:
+ * * Do not `to_chat(user, ...)`. Use `actor.chat_feedback()`.
+ * * Please respect `efficiency`, or your item will bypass shields.
  *
  * @params
- * * target - (read-only) thing being hit
- * * perform - (read-only) person doing the hitting
- * * clickchain - (read-only) clickchain data
- * * clickchain_flags - (read_only) clickchain flags
+ * * target - target being hit
+ * * user - person doing the hitting
+ * * intent - intent the item is being used in.
+ * * efficiency - 1 is a full pass, 0 is a full block.
+ * * actor - actor data
+ *
+ * @return TRUE if handled to abort normal handling.
+ */
+/obj/item/proc/melee_override(atom/target, mob/user, intent, efficiency, datum/event_args/actor/actor)
+	return FALSE
+
+/**
+ * Performs impact effects of a melee attack.
+ *
+ * * Do not edit clickchain target / performer at this point; there can be no more redirections.
+ * * Missing is the failure to make contact entirely. If it makes contact and is blocked by shieldcall,
+ *   that's a different deal.
+ * * This does not run if we're qdel'd or the clickchain is terminated early.
+ *
+ * @params
+ * * clickchain - clickchain data
+ * * clickchain_flags - clickchain flags
  * * attack_style - attack style being used
+ * * fixed_target - The target swung at; at this point it can't be changed.
+ * * fixed_performer - The user doing the swinging; at this point it can't be changed.
+ * * fixed_missed - Did we miss? Do **not** use clickchain flags to infer this! It's specified explicitly for a reason.
  *
  * @return clickchain flags
  */
-/obj/item/proc/melee_impact(atom/target, mob/performer, datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style, missed)
-	attack_style.perform_attack_animation(performer, target, clickchain, missed)
-	attack_style.perform_attack_sound(performer, target, clickchain, missed)
-	attack_style.perform_attack_message(performer, target, clickchain, missed)
+/obj/item/proc/melee_impact(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style, atom/fixed_target, mob/fixed_performer, fixed_missed)
+	attack_style.perform_attack_animation(fixed_performer, fixed_target, clickchain, fixed_missed)
+	attack_style.perform_attack_sound(fixed_performer, fixed_target, clickchain, fixed_missed)
+	attack_style.perform_attack_message(fixed_performer, fixed_target, clickchain, fixed_missed)
 
-	if(missed)
+	if(fixed_missed)
 		return NONE
 
-	target.animate_hit_by_weapon(performer, src)
-	return target.on_melee_act(performer, attack_style, clickchain)
+	fixed_target.animate_hit_by_weapon(fixed_performer, src)
+	return fixed_target.on_melee_act(fixed_performer, attack_style, clickchain)
 
 #warn parse below
 
@@ -188,19 +217,21 @@
 /**
  * Called after we hit something in melee, **whether or not we hit.**
  *
+ * * Do not edit clickchain target / performer at this point; there can be no more redirections.
  * * Missing is the failure to make contact entirely. If it makes contact and is blocked by shieldcall,
  *   that's a different deal.
- * * This does not run if we're qdel'd.
+ * * This does not run if we're qdel'd or the clickchain is terminated early.
  *
  * @params
  * * clickchain - clickchain data
  * * clickchain_flags - clickchain flags
  * * attack_style - attack style used
- * * target - The target swung at; at this point it can't be redirected
- * * missed - Did we miss? Do **not** use clickchain flags to infer this! It's specified explicitly for a reason.
+ * * fixed_target - The target swung at; at this point it can't be changed.
+ * * fixed_performer - The user doing the swinging; at this point it can't be changed.
+ * * fixed_missed - Did we miss? Do **not** use clickchain flags to infer this! It's specified explicitly for a reason.
  *
  * @return CLICKCHAIN_* flags
  */
-/obj/item/proc/melee_finalize(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style, atom/target, missed)
+/obj/item/proc/melee_finalize(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style, atom/fixed_target, mob/fixed_performer, fixed_missed)
 	SHOULD_NOT_SLEEP(TRUE)
 	return NONE

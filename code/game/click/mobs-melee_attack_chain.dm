@@ -98,5 +98,5 @@
  *
  * @return CLICKCHAIN_* flags
  */
-/mob/proc/melee_finalize(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style, atom/target, missed)
+/mob/proc/melee_finalize(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style, atom/fixed_target, mob/fixed_performer, fixed_missed)
 	SHOULD_NOT_SLEEP(TRUE)

@@ -185,7 +185,7 @@
 	var/poison_amount = 5
 	var/poison_type = "shredding_nanites"
 
-/obj/item/melee/nanite_knife/melee_finalize(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style, atom/target, missed)
+/obj/item/melee/nanite_knife/melee_finalize(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style, atom/fixed_target, mob/fixed_performer, fixed_missed)
 	. = ..()
 	if(missed)
 		return

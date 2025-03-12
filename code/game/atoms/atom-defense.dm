@@ -43,6 +43,9 @@
  * * check CLICKCHAIN_FLAGS_* as needed, especially UNCONDITIONAL_ABORT and ATTACK_ABORT
  * * clickchain flags are sent down through parent calls.
  *
+ * todo: this needs melee_attack style arg
+ * todo: reorganize params
+ *
  * @params
  * * user - person attacking
  * * weapon - weapon used
@@ -59,6 +62,8 @@
  *
  * * At this point, the item is processing a hit on us.
  *
+ * todo: reorganize params
+ *
  * @params
  * * user - person attacking
  * * style - unarmed attack datum
@@ -72,6 +77,8 @@
 
 /**
  * Called on a melee going through, whether or not it was blocked
+ *
+ * todo: should this keep being a thing?? why can't the caller just invoke entrypoint directly?
  *
  * @return clickchain flags to append
  */
