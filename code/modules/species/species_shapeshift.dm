@@ -580,7 +580,7 @@ var/list/wrapped_species_by_ref = list()
 		return FALSE
 
 	visible_message("<span class='warning'>[src] deforms and contorts strangely...</span>")
-	if(!do_after(src, 50, target)) //5 seconds
+	if(!do_after(src, 50)) //5 seconds
 		return FALSE
 
 
@@ -679,3 +679,133 @@ var/list/wrapped_species_by_ref = list()
 	g_wing3 = target.g_wing3
 	b_wing3 = target.b_wing3
 	render_spriteacc_wings()
+
+/mob/living/carbon/human/proc/shapeshifter_reset_to_slot()
+	set name = "Reset Appearance to Slot"
+	set category = "Abilities"
+	set desc = "Resets your character's appearance to the CURRENTLY-SELECTED slot."
+
+	if(stat || world.time < last_special)
+		return
+
+	last_special = world.time + 1 MINUTE
+
+	visible_message("<span class='warning'>[src] deforms and contorts strangely...</span>")
+
+	if(!do_after(src, 50)) //5 seconds
+		return FALSE
+
+	shapeshifter_reset_to_slot_core(src)
+
+
+
+	//sigh
+	if(istype(src.species, /datum/species/shapeshifter))
+		var/datum/species/shapeshifter/SS = src.species
+		wrapped_species_by_ref["\ref[src]"] = SS.default_form
+
+	regenerate_icons()
+
+//i cant wait for characters v2
+/mob/living/carbon/human/proc/shapeshifter_reset_to_slot_core(var/mob/living/carbon/human/character)
+
+	var/datum/preferences/pref = character.client.prefs
+
+	character.gender = pref.biological_gender
+	character.identifying_gender = pref.identifying_gender
+
+	character.r_eyes			= pref.r_eyes
+	character.g_eyes			= pref.g_eyes
+	character.b_eyes			= pref.b_eyes
+	character.r_hair			= pref.r_hair
+	character.g_hair			= pref.g_hair
+	character.b_hair			= pref.b_hair
+	character.r_grad			= pref.r_grad
+	character.g_grad			= pref.g_grad
+	character.b_grad			= pref.b_grad
+	character.r_facial			= pref.r_facial
+	character.g_facial			= pref.g_facial
+	character.b_facial			= pref.b_facial
+	character.r_skin			= pref.r_skin
+	character.g_skin			= pref.g_skin
+	character.b_skin			= pref.b_skin
+	character.s_tone			= pref.s_tone
+	var/datum/sprite_accessory/S = GLOB.sprite_accessory_hair[pref.h_style_id]
+	character.h_style = S.name
+	S = GLOB.sprite_accessory_facial_hair[pref.f_style_id]
+	character.f_style = S.name
+	character.grad_style		= pref.grad_style
+	character.b_type			= pref.b_type
+	character.synth_color 		= pref.synth_color
+	character.r_synth			= pref.r_synth
+	character.g_synth			= pref.g_synth
+	character.b_synth			= pref.b_synth
+	character.synth_markings 	= pref.synth_markings
+	character.s_base			= pref.s_base
+	character.body_alpha        = pref.body_alpha
+	character.hair_alpha        = pref.hair_alpha
+
+	character.ear_style = GLOB.sprite_accessory_ears[pref.ear_style_id]
+	character.tail_style = GLOB.sprite_accessory_tails[pref.tail_style_id]
+	character.wing_style = GLOB.sprite_accessory_wings[pref.wing_style_id]
+	character.horn_style = GLOB.sprite_accessory_ears[pref.horn_style_id]
+
+	character.r_ears			= pref.r_ears
+	character.b_ears			= pref.b_ears
+	character.g_ears			= pref.g_ears
+	character.r_ears2			= pref.r_ears2
+	character.b_ears2			= pref.b_ears2
+	character.g_ears2			= pref.g_ears2
+	character.r_ears3			= pref.r_ears3
+	character.b_ears3			= pref.b_ears3
+	character.g_ears3			= pref.g_ears3
+
+	character.r_horn			= pref.r_horn
+	character.b_horn			= pref.b_horn
+	character.g_horn			= pref.g_horn
+	character.r_horn2			= pref.r_horn2
+	character.b_horn2			= pref.b_horn2
+	character.g_horn2			= pref.g_horn2
+	character.r_horn3			= pref.r_horn3
+	character.b_horn3			= pref.b_horn3
+	character.g_horn3			= pref.g_horn3
+
+	character.r_tail			= pref.r_tail
+	character.b_tail			= pref.b_tail
+	character.g_tail			= pref.g_tail
+	character.r_tail2			= pref.r_tail2
+	character.b_tail2			= pref.b_tail2
+	character.g_tail2			= pref.g_tail2
+	character.r_tail3			= pref.r_tail3
+	character.b_tail3			= pref.b_tail3
+	character.g_tail3			= pref.g_tail3
+
+	character.r_wing			= pref.r_wing
+	character.b_wing			= pref.b_wing
+	character.g_wing			= pref.g_wing
+	character.r_wing2			= pref.r_wing2
+	character.b_wing2			= pref.b_wing2
+	character.g_wing2			= pref.g_wing2
+	character.r_wing3			= pref.r_wing3
+	character.b_wing3			= pref.b_wing3
+	character.g_wing3			= pref.g_wing3
+	character.r_gradwing		= pref.r_gradwing
+	character.g_gradwing		= pref.g_gradwing
+	character.b_gradwing		= pref.b_gradwing
+
+
+	for(var/N in character.organs_by_name)
+		var/obj/item/organ/external/O = character.organs_by_name[N]
+		if(!istype(O))
+			continue
+		O.markings.Cut()
+		O.sync_colour_to_human(character)
+
+	for(var/id in pref.body_marking_ids)
+		var/datum/sprite_accessory/marking/mark_datum = GLOB.sprite_accessory_markings[id]
+		var/mark_color = "[pref.body_marking_ids[id]]"
+
+		for(var/BP in mark_datum.body_parts)
+			var/obj/item/organ/external/O = character.organs_by_name[BP]
+			if(O)
+				O.markings[id] = list("color" = mark_color, "datum" = mark_datum)

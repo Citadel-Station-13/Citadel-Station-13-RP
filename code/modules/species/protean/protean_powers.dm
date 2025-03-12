@@ -371,7 +371,7 @@
 		return FALSE
 
 	visible_message("<span class='warning'>[src] deforms and contorts strangely...</span>")
-	if(!do_after(src, 5, target)) //.5 seconds
+	if(!do_after(src, 5)) //.5 seconds
 		return FALSE
 
 	shapeshifter_copy_core_features(target)
@@ -400,6 +400,55 @@
 	regenerate_icons() //Expensive, but we need to recrunch all the icons we're wearing
 
 	visible_message("<span class='warning'>[src] transforms into a near-perfect visual copy of [target]!</span>") //you can clearly SEE them transform, so
+
+/mob/living/carbon/human/proc/nano_reset_to_slot()
+	set name = "Reset Appearance to Slot"
+	set category = "Abilities"
+	set desc = "Resets your character's appearance to the CURRENTLY-SELECTED slot."
+
+	if(stat || world.time < last_special)
+		return
+
+	last_special = world.time + 1 MINUTE
+
+	visible_message("<span class='warning'>[src] deforms and contorts strangely...</span>")
+	
+	if(!do_after(src, 50)) //5 seconds
+		return FALSE
+
+	shapeshifter_reset_to_slot_core(src)
+
+	var/datum/preferences/pref = src.client.prefs
+	for(var/name in list(
+		BP_TORSO,
+		BP_GROIN,
+		BP_HEAD,
+		BP_L_ARM,
+		BP_L_HAND,
+		BP_R_ARM,
+		BP_R_HAND,
+		BP_L_LEG,
+		BP_L_FOOT,
+		BP_R_LEG,
+		BP_R_FOOT
+	))
+		var/status = pref.organ_data[name]
+		var/obj/item/organ/external/O = src.organs_by_name[name]
+		if(O)
+			if(status == "amputated")
+				O.remove_rejuv()
+			else if(status == "cyborg")
+				if(pref.rlimb_data[name])
+					// use force to override prior robotizations oh god THIS IS BAD
+					O.robotize(pref.rlimb_data[name], null, null, TRUE)
+				else
+					O.robotize()
+
+//protean
+	impersonate_bodytype_legacy = null
+	impersonate_bodytype = null
+
+	regenerate_icons()
 
 /// /// /// A helper to reuse
 /mob/living/proc/nano_get_refactory(obj/item/organ/internal/nano/refactory/R)
