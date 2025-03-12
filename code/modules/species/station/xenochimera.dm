@@ -130,7 +130,6 @@
 		/mob/living/carbon/human/proc/shapeshifter_select_ears,
 		/mob/living/carbon/human/proc/shapeshifter_select_horns,
 		/mob/living/carbon/human/proc/shapeshifter_select_shape,
-		/mob/living/carbon/human/proc/shapeshifter_copy_appearance,
 		/mob/living/carbon/human/proc/check_silk_amount,
 		/mob/living/carbon/human/proc/toggle_silk_production,
 		/mob/living/carbon/human/proc/weave_structure,
