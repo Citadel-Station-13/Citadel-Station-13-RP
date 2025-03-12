@@ -554,3 +554,126 @@ var/list/wrapped_species_by_ref = list()
 			H.nutrition -= (2 * nutrition_cost) //Costs Nutrition when damage is being repaired, corresponding to the amount of damage being repaired.
 			H.nutrition = max(0, H.nutrition) //Ensure it's not below 0.
 	..()
+
+
+/mob/living/carbon/human/proc/copy_appearance()
+	set name = "Mimic Appearance" 
+	set category = "Abilities"
+
+	if(stat || world.time < last_special)
+		return
+
+	last_special = world.time + 50 //eh, i'll just leave it as an additional cooldown
+
+	var/list/valid_moblist = list()
+
+	for(var/mob/living/carbon/human/M in oview(7))
+		valid_moblist |= M
+	
+	var/mob/living/carbon/human/target = input(src,"Who do you wish to target?","Mimic Target") as null|anything in valid_moblist
+
+	if(!istype(target))
+		return FALSE
+
+	if(get_dist(src,target) > 7)
+		to_chat(src,"<span class='warning'>There's nobody nearby to use this on.</span>")
+		return FALSE
+
+	visible_message("<span class='warning'>[src] deforms and contorts strangely...</span>")
+	if(!do_after(src, 5, target)) //.5 seconds
+		return FALSE
+
+
+	change_gender(target.gender)
+	change_gender_identity(target.identifying_gender)
+	change_hair(target.h_style)
+	change_hair_gradient(target.grad_style)
+	change_facial_hair(target.f_style)
+	change_hair_color(target.r_hair, target.g_hair, target.b_hair)
+	change_grad_color(target.r_grad, target.g_grad, target.b_grad)
+	change_facial_hair_color(target.r_facial, target.g_facial, target.b_facial)
+	change_eye_color(target.r_eyes, target.g_eyes, target.b_eyes)
+
+	if(target.species.species_appearance_flags & HAS_SKIN_COLOR)
+		change_skin_color(target.r_skin, target.g_skin, target.b_skin)
+	if(target.species.species_appearance_flags & HAS_SKIN_TONE)
+		change_skin_tone(target.s_tone)
+	
+	//why are these eploded instead of using the individual colour/style change calls?
+	//so we only have to do the render call once (per accessory). they're way more expensive than hair
+	ear_style = target.ear_style
+	r_ears = target.r_ears
+	g_ears = target.g_ears
+	b_ears = target.b_ears
+	r_ears2 = target.r_ears2
+	g_ears2 = target.g_ears2
+	b_ears2 = target.b_ears2
+	r_ears3 = target.r_ears3
+	g_ears3 = target.g_ears3
+	b_ears3 = target.b_ears3
+	render_spriteacc_ears()
+	
+	r_horn = target.r_horn
+	g_horn = target.g_horn
+	b_horn = target.b_horn
+	r_horn2 = target.r_horn2
+	g_horn2 = target.g_horn2
+	b_horn2 = target.b_horn2
+	r_horn3 = target.r_horn3
+	g_horn3 = target.g_horn3
+	b_horn3 = target.b_horn3
+	render_spriteacc_horns()
+
+	r_tail = target.r_tail
+	g_tail = target.g_tail
+	b_tail = target.b_tail
+	r_tail2 = target.r_tail2
+	g_tail2 = target.g_tail2
+	b_tail2 = target.b_tail2
+	r_tail3 = target.r_tail3
+	g_tail3 = target.g_tail3
+	b_tail3 = target.b_tail3
+	render_spriteacc_tail()
+
+	wing_style = target.wing_style
+	wing_gradstyle = target.grad_wingstyle
+
+	r_gradwing = target.r_gradwing
+	g_gradwing = target.g_gradwing
+	b_gradwing = target.b_gradwing
+	r_wing = target.r_wing
+	g_wing = target.g_wing
+	b_wing = target.b_wing
+	r_wing2 = target.r_wing2
+	g_wing2 = target.g_wing2
+	b_wing2 = target.b_wing2
+	r_wing3 = target.r_wing3
+	g_wing3 = target.g_wing3
+	b_wing3 = target.b_wing3
+	render_spriteacc_wings()
+
+
+	//markings and limbs time.
+	//ensure we get synthlimb markings if target has them
+	synth_markings = target.synth_markings
+
+	//copies all of the target's markings.
+	for(var/BP in target.organs_by_name)
+		var/obj/item/organ/external/their_organ = target.organs_by_name[BP]
+		var/obj/item/organ/external/our_organ = organs_by_name[BP]
+		if(their_organ && our_organ)
+			if((their_bp.robotic >= ORGAN_ROBOT))
+				our_organ.robotize(their_organ.model)
+			our_organ.markings = their_organ.markings
+
+/* for xenochim and prommies only
+	if(target.species && istype(target.species, /datum/species) && (wrapped_species_by_ref["\ref[src]"] != target.species) )
+		wrapped_species_by_ref["\ref[src]"] = target.species
+		regenerate_icons()
+	*/
+
+	/*if(target.species)
+		impersonate_bodytype_legacy = target.species.get_bodytype_legacy()
+		impersonate_bodytype = target.species.default_bodytype
+		regenerate_icons() //Expensive, but we need to recrunch all the icons we're wearing
+		*/
