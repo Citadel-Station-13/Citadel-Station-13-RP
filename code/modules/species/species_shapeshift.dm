@@ -10,6 +10,7 @@ var/list/wrapped_species_by_ref = list()
 		/mob/living/carbon/human/proc/shapeshifter_select_shape,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair,
 		/mob/living/carbon/human/proc/shapeshifter_select_gender,
+		/mob/living/carbon/human/proc/shapeshifter_copy_appearance,
 	)
 
 	var/list/valid_transform_species = list()
