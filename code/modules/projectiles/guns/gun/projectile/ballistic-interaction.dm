@@ -270,7 +270,7 @@
 /obj/item/gun/projectile/ballistic/proc/user_clickchain_apply_casing(obj/item/ammo_casing/casing, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
 	if(internal_magazine)
 		// todo: better way to handle one-shot guns and internal mags..
-		if(!length(internal_magazine_vec))
+		if(!internal_magazine_size)
 			return user_clickchain_apply_casing_to_chamber(casing, actor, clickchain, no_sound, no_message)
 		return user_clickchain_apply_casing_to_internal_magazine(casing, actor, clickchain, no_sound, no_message)
 	else
@@ -320,7 +320,7 @@
 			target = src,
 			range = MESSAGE_RANGE_COMBAT_SUBTLE,
 			visible = SPAN_NOTICE("[actor.performer] loads a round into [src]."),
-			otherwise_self = SPAN_NOTICE("You load [casing] into src."),
+			otherwise_self = SPAN_NOTICE("You load [casing] ."),
 		)
 	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
@@ -354,7 +354,7 @@
 			target = src,
 			range = MESSAGE_RANGE_COMBAT_SUBTLE,
 			visible = SPAN_NOTICE("[actor.performer] loads a round into [src]."),
-			otherwise_self = SPAN_NOTICE("You load [casing] into src."),
+			otherwise_self = SPAN_NOTICE("You load [casing] into [src]."),
 		)
 	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
