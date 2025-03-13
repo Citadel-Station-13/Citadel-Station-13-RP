@@ -159,6 +159,17 @@
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/dock)
+"ba" = (
+/obj/machinery/door/airlock/glass_external/public,
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/obj/map_helper/airlock/door/ext_door,
+/obj/machinery/access_button/airlock_exterior{
+	master_tag = "northrig2_dock";
+	pixel_y = -2;
+	pixel_x = 22
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost/docking_port1)
 "bb" = (
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/station_city/street)
@@ -321,6 +332,16 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost/docking_port1)
+"ca" = (
+/obj/machinery/door/airlock/glass_external/public,
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/obj/map_helper/airlock/door/ext_door,
+/obj/machinery/access_button/airlock_exterior{
+	master_tag = "southrig3_dock";
+	pixel_x = -23
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
 "cc" = (
@@ -1243,11 +1264,6 @@
 	id_tag = "southrig3_dock"
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
-/obj/machinery/access_button/airlock_exterior{
-	master_tag = "southrig3_dock";
-	pixel_y = -12;
-	pixel_x = -23
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
 "hI" = (
@@ -1620,6 +1636,17 @@
 /obj/machinery/telecomms/relay/preset/telecomms,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/paripari)
+"jF" = (
+/obj/machinery/door/airlock/glass_external/public,
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/obj/map_helper/airlock/door/ext_door,
+/obj/machinery/access_button/airlock_exterior{
+	master_tag = "northrig3_dock";
+	pixel_y = 3;
+	pixel_x = 22
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost/docking_port1)
 "jG" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -6784,11 +6811,6 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
 	},
-/obj/machinery/access_button/airlock_exterior{
-	master_tag = "eastrig3_dock";
-	pixel_y = 32;
-	pixel_x = 22
-	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
 	id_tag = "eastrig3_dock";
@@ -7577,6 +7599,17 @@
 "Qp" = (
 /turf/simulated/floor/reinforced/outdoors,
 /area/sector/sky_planet/sky)
+"Qv" = (
+/obj/machinery/door/airlock/glass_external/public,
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/obj/map_helper/airlock/door/ext_door,
+/obj/machinery/access_button/airlock_exterior{
+	master_tag = "eastrig3_dock";
+	pixel_y = 32;
+	pixel_x = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost/docking_port1)
 "Qw" = (
 /obj/item/stack/cable_coil{
 	amount = 5
@@ -8483,11 +8516,6 @@
 	id_tag = "northrig2_dock";
 	pixel_x = 26
 	},
-/obj/machinery/access_button/airlock_exterior{
-	master_tag = "northrig2_dock";
-	pixel_y = 32;
-	pixel_x = 22
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
 "Ve" = (
@@ -8713,11 +8741,6 @@
 	frequency = 1380;
 	id_tag = "northrig3_dock";
 	pixel_x = 26
-	},
-/obj/machinery/access_button/airlock_exterior{
-	master_tag = "northrig3_dock";
-	pixel_y = 32;
-	pixel_x = 22
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
@@ -19066,7 +19089,7 @@ Qp
 Qp
 Qp
 Qp
-yg
+ba
 Vd
 tN
 nK
@@ -23346,7 +23369,7 @@ zt
 ED
 FD
 hF
-yg
+ca
 Qp
 Fx
 Qp
@@ -23529,7 +23552,7 @@ Qp
 Qp
 Qp
 Qp
-yg
+jF
 Wd
 DV
 Sv
@@ -24504,7 +24527,7 @@ qr
 qr
 qr
 iz
-yg
+Qv
 yg
 iz
 qr
