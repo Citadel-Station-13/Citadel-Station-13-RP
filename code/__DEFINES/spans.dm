@@ -135,7 +135,6 @@
 #define SPAN_SMALLNOTICEITAL(str) ("<span class='smallnoticeital'>[str]</span>")
 #define SPAN_SOGHUN(str) ("<span class='soghun'>[str]</span>")
 #define SPAN_SPIDER(str) ("<span class='spider'>[str]</span>")
-#define SPAN_SUICIDE(str) ("<span class='suicide'>[str]</span>")
 #define SPAN_SUPPRADIO(str) ("<span class='suppradio'>[str]</span>")
 #define SPAN_SYNDRADIO(str) ("<span class='syndradio'>[str]</span>")
 #define SPAN_TAPE_RECORDER(str) ("<span class='tape_recorder'>[str]</span>")
