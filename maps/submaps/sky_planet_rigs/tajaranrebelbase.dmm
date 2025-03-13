@@ -190,7 +190,9 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/submap/skyplanet/poi/tajaranreb)
 "CY" = (
-/obj/structure/fake_stairs/west/bottom,
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/submap/skyplanet/poi/tajaranreb)
 "Dm" = (
@@ -224,10 +226,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/submap/skyplanet/poi/tajaranreb)
-"LC" = (
-/obj/structure/fake_stairs/east/bottom,
-/turf/simulated/floor/tiled/techmaint,
 /area/submap/skyplanet/poi/tajaranreb)
 "Mh" = (
 /obj/structure/table/rack/shelf/steel,
@@ -269,6 +267,12 @@
 "OR" = (
 /obj/structure/table/steel_reinforced,
 /obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"TE" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/submap/skyplanet/poi/tajaranreb)
 "TK" = (
@@ -461,7 +465,7 @@ pC
 pC
 pC
 cT
-CS
+CY
 cT
 kb
 tZ
@@ -571,7 +575,7 @@ pC
 pC
 pC
 cT
-CS
+TE
 cT
 kb
 tZ
@@ -593,7 +597,7 @@ vp
 vp
 vp
 cT
-LC
+TE
 cT
 kb
 tZ

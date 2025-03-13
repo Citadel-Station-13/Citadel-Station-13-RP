@@ -677,7 +677,7 @@
 /turf/simulated/floor/reinforced,
 /area/sector/sky_planet/racing_station/dock)
 "ej" = (
-/turf/simulated/mineral,
+/turf/simulated/mineral/cave,
 /area/sector/sky_planet/sky)
 "ek" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -1184,6 +1184,13 @@
 /obj/item/reagent_containers/food/drinks/cans/sodawater,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/shop)
+"ho" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/catwalk,
+/obj/machinery/door/airlock/multi_tile/glass,
+/obj/structure/fans/tiny,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost/docking_port1)
 "hv" = (
 /obj/effect/floor_decal/corner/yellow/full{
 	dir = 1
@@ -1378,8 +1385,8 @@
 /turf/simulated/floor/lino,
 /area/sector/sky_planet/outpost/office)
 "il" = (
-/obj/structure/ladder/snake_eater,
 /obj/effect/floor_decal/industrial/outline/red,
+/obj/structure/ladder,
 /turf/simulated/floor/plating,
 /area/sector/sky_planet/racing_station/dock2)
 "im" = (
@@ -1812,7 +1819,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/security)
 "kS" = (
-/turf/simulated/mineral,
+/turf/simulated/mineral/cave,
 /area/sector/sky_planet/station_city/street)
 "kW" = (
 /obj/structure/bed/chair/comfy/brown{
@@ -2912,6 +2919,16 @@
 /obj/item/barrier_tape_roll/police,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/police)
+"qN" = (
+/obj/machinery/door/airlock/glass_external,
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/obj/map_helper/airlock/door/ext_door,
+/obj/machinery/access_button/airlock_exterior{
+	master_tag = "westrig1_dock";
+	pixel_y = -23
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/sector/sky_planet/outpost/office)
 "qO" = (
 /obj/machinery/light/poi,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -3171,20 +3188,6 @@
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran,
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/station_city/offices)
-"sk" = (
-/obj/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/access_button/airlock_interior{
-	master_tag = "westrig1_dock";
-	pixel_x = 10;
-	pixel_y = -22
-	},
-/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
-	frequency = 1379;
-	dir = 1;
-	id_tag = "westrig1_dock_pump"
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/sector/sky_planet/outpost/office)
 "sp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/red{
 	dir = 9
@@ -3544,7 +3547,7 @@
 /turf/simulated/floor/reinforced,
 /area/sector/sky_planet/racing_station/dock)
 "uk" = (
-/turf/simulated/mineral,
+/turf/simulated/mineral/cave,
 /area/sector/sky_planet/rock)
 "um" = (
 /turf/simulated/floor/tiled/techfloor,
@@ -4994,6 +4997,7 @@
 /area/sector/sky_planet/racing_station/lounge)
 "Cs" = (
 /obj/machinery/door/airlock/multi_tile/glass,
+/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/sky_planet/outpost/docking_port1)
 "Cu" = (
@@ -5140,11 +5144,6 @@
 /area/sector/sky_planet/outpost/office)
 "Dz" = (
 /obj/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/access_button/airlock_exterior{
-	pixel_x = -24;
-	master_tag = "westrig1_dock";
-	pixel_y = -23
-	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1379;
 	dir = 1;
@@ -6353,7 +6352,7 @@
 /area/sector/sky_planet/outpost/office)
 "JT" = (
 /obj/overmap/entity/visitable/sector/skyplanet,
-/turf/simulated/mineral,
+/turf/simulated/mineral/cave,
 /area/sector/sky_planet/rock)
 "JU" = (
 /obj/effect/floor_decal/corner/red/bordercorner,
@@ -7126,6 +7125,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/sky_planet/outpost/docking_port1)
 "Og" = (
@@ -7799,7 +7799,7 @@
 	},
 /area/sector/sky_planet/sky)
 "Ry" = (
-/turf/simulated/mineral,
+/turf/simulated/mineral/cave,
 /area/sector/sky_planet/station_city/dock)
 "RA" = (
 /obj/effect/floor_decal/rust,
@@ -7879,6 +7879,16 @@
 "RW" = (
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/sector/sky_planet/station_city/police)
+"RX" = (
+/obj/machinery/door/airlock/glass_external,
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/obj/map_helper/airlock/door/int_door,
+/obj/machinery/access_button/airlock_interior{
+	master_tag = "westrig1_dock";
+	pixel_y = -22
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/sector/sky_planet/outpost/office)
 "Sc" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor,
@@ -9082,6 +9092,17 @@
 /obj/random/unidentified_medicine/drug_den,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/police)
+"Yc" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/rust,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/fans/tiny,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost/docking_port1)
 "Ye" = (
 /obj/effect/floor_decal/techfloor,
 /obj/structure/railing,
@@ -15976,8 +15997,8 @@ qr
 eP
 os
 Qp
-Qp
 WX
+Qp
 Qp
 Qp
 Qp
@@ -16365,7 +16386,7 @@ eP
 oe
 oe
 Dw
-Dw
+qN
 oe
 qr
 qr
@@ -16753,7 +16774,7 @@ vL
 vL
 on
 fZ
-sk
+Dz
 oe
 cL
 cL
@@ -16947,7 +16968,7 @@ vL
 vL
 oe
 Fu
-Fu
+RX
 oe
 ck
 uI
@@ -18864,9 +18885,9 @@ DP
 DP
 sQ
 mj
-ah
-ah
-ah
+iz
+iz
+mj
 ah
 ah
 ah
@@ -19058,9 +19079,9 @@ xy
 xy
 vx
 Cs
-wP
-mY
-mY
+xy
+vx
+ho
 mY
 mY
 wP
@@ -19252,9 +19273,9 @@ bW
 nG
 bW
 Oe
-xZ
-xZ
-fR
+nG
+nG
+Yc
 fR
 xZ
 xZ
@@ -19448,7 +19469,7 @@ xy
 mj
 Yr
 Yr
-iz
+mj
 ln
 ln
 ln
@@ -20294,7 +20315,7 @@ qr
 qr
 qr
 qr
-qr
+jd
 qr
 qr
 qr
@@ -20701,7 +20722,7 @@ qr
 qr
 qr
 qr
-qr
+jd
 qr
 qr
 qr
@@ -24643,7 +24664,6 @@ qr
 qr
 qr
 qr
-qr
 os
 Qp
 Qp
@@ -24670,8 +24690,9 @@ Qp
 Qp
 Qp
 Qp
+Qp
+Qp
 os
-qr
 qr
 qr
 qr
@@ -24837,15 +24858,17 @@ qr
 qr
 qr
 qr
-qr
-qr
 os
 Qp
 Qp
 Qp
 Qp
 Qp
-tv
+Qp
+Qp
+Qp
+Qp
+Qp
 Qp
 Qp
 Qp
@@ -24864,8 +24887,6 @@ Qp
 Qp
 Qp
 os
-qr
-qr
 qr
 qr
 os
@@ -25031,35 +25052,35 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
 os
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
 os
-os
-os
-os
-os
-os
-os
-os
-os
-os
-os
-os
-os
-os
-os
-os
-os
-os
-os
-os
-os
-os
-eP
-eP
-eP
 eP
 os
 Qp
@@ -25225,35 +25246,35 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
+os
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+os
 os
 Qp
 Qp
@@ -25419,35 +25440,35 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
+os
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+os
 os
 Qp
 Qp
@@ -25613,35 +25634,35 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
+os
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+os
 os
 Qp
 Qp
@@ -25808,33 +25829,33 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
+os
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+os
 qr
 os
 Qp
@@ -26003,31 +26024,31 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
+os
+Qp
+Qp
+Qp
+Qp
+Qp
+tv
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+os
 qr
 qr
 os
@@ -26198,32 +26219,32 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
+os
+os
+os
+os
+os
+os
+os
+os
+os
+os
+os
+os
+os
+os
+os
+os
+os
+os
+os
+os
+os
+os
+os
+eP
+eP
+eP
 os
 Qp
 Qp
@@ -30139,7 +30160,7 @@ qr
 qr
 qr
 qr
-qr
+jd
 qr
 qr
 qr
@@ -31222,7 +31243,7 @@ qr
 qr
 qr
 qr
-qr
+jd
 qr
 qr
 qr

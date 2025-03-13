@@ -1,11 +1,11 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aq" = (
-/obj/structure/ladder/snake_eater/up,
 /obj/effect/floor_decal/industrial/outline/red,
+/obj/structure/ladder/up,
 /turf/simulated/floor/tiled/steel_dirty/indoors,
 /area/sector/sky_planet/outpost)
 "ax" = (
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/outpost)
 "aZ" = (
 /obj/structure/railing/grey{
@@ -14,7 +14,7 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/ash_sand,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
 "br" = (
 /turf/simulated/floor/water/acid/outdoors,
@@ -24,8 +24,17 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
+/obj/structure/event/prop/excavation_drill,
 /turf/simulated/floor/cult,
 /area/sector/sky_planet/outpost)
+"ei" = (
+/obj/structure/event/prop/white_barrel,
+/obj/structure/event/prop/white_barrel{
+	pixel_y = 23;
+	pixel_x = -13
+	},
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
+/area/sector/sky_planet/ground)
 "eX" = (
 /obj/structure/stairs/spawner/west,
 /turf/simulated/floor/cult,
@@ -33,10 +42,14 @@
 "fe" = (
 /turf/simulated/wall/solidrock,
 /area/sector/sky_planet/rock)
+"fi" = (
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
+/area/sector/sky_planet/ground)
 "fn" = (
 /obj/structure/catwalk,
 /obj/structure/stairs/spawner/north,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
 "fu" = (
 /obj/structure/railing/grey{
@@ -45,17 +58,25 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
+/area/sector/sky_planet/ground)
+"gi" = (
+/obj/structure/flora/rock/rock2,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
 "gN" = (
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/ash_sand,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
 "gV" = (
 /turf/simulated/wall/r_wall,
 /area/sector/sky_planet/outpost)
+"hm" = (
+/obj/item/ammo_casing/a5_56mm,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
+/area/sector/sky_planet/ground)
 "hn" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -63,7 +84,11 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
+/area/sector/sky_planet/ground)
+"hp" = (
+/obj/structure/event/prop/tractor,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
 "hx" = (
 /obj/structure/railing/grey{
@@ -72,19 +97,46 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/ash_sand,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
+/area/sector/sky_planet/ground)
+"hy" = (
+/obj/spawner/corpse/tajara/dra_soldier,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
+/area/sector/sky_planet/ground)
+"hG" = (
+/obj/structure/closet/crate/corporate/nanotrasen,
+/obj/random/multiple/mechtool,
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/sky_planet/rock)
+"hP" = (
+/obj/machinery/floodlight{
+	on = 1
+	},
+/turf/simulated/floor/outdoors/rocks/outdoors,
+/area/sector/sky_planet/ground)
+"iB" = (
+/obj/item/ammo_casing/a5_56mm,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
 "iJ" = (
 /obj/effect/floor_decal/industrial/halfstair,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
 "jr" = (
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
 "jR" = (
 /obj/structure/flora/rock/rock1,
-/turf/simulated/floor/outdoors/ash_sand,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
+"lu" = (
+/mob/living/simple_mob/aggressive/dragoon/blue,
+/turf/simulated/floor/outdoors/rocks/outdoors,
+/area/sector/sky_planet/ground)
+"mc" = (
+/obj/structure/event/prop/excavation_drill,
+/turf/simulated/floor/cult,
+/area/sector/sky_planet/outpost)
 "mf" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 6
@@ -93,14 +145,52 @@
 /area/sector/sky_planet/outpost)
 "mj" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/outdoors/ash_sand,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
+/area/sector/sky_planet/outpost)
+"mT" = (
+/obj/structure/table/steel,
+/obj/item/reagent_containers/food/snacks/ribplate,
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/sky_planet/rock)
+"od" = (
+/obj/structure/ore_box,
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/sky_planet/rock)
+"oG" = (
+/obj/machinery/door/airlock/multi_tile{
+	dir = 4
+	},
+/turf/simulated/floor/cult,
 /area/sector/sky_planet/outpost)
 "pg" = (
-/turf/simulated/mineral,
+/turf/simulated/mineral/cave,
 /area/sector/sky_planet/ground)
+"px" = (
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran,
+/turf/simulated/floor/cult,
+/area/sector/sky_planet/outpost)
+"pW" = (
+/obj/structure/sandbag,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
+/area/sector/sky_planet/ground)
+"pX" = (
+/obj/structure/flora/rock/rock1,
+/mob/living/simple_mob/aggressive/dragoon/blue,
+/turf/simulated/floor/outdoors/rocks/outdoors,
+/area/sector/sky_planet/ground)
+"qc" = (
+/obj/structure/closet/crate/corporate/nanotrasen,
+/obj/item/clothing/under/overalls,
+/obj/item/clothing/under/overalls,
+/obj/item/clothing/under/overalls,
+/obj/item/clothing/under/overalls,
+/obj/item/clothing/under/overalls_fem,
+/obj/item/clothing/under/overalls_fem,
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/sky_planet/rock)
 "qh" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
 "qY" = (
 /obj/effect/floor_decal/industrial/danger{
@@ -108,29 +198,58 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/indoors,
 /area/sector/sky_planet/outpost)
+"rn" = (
+/obj/structure/sandbag,
+/turf/simulated/floor/outdoors/rocks/outdoors,
+/area/sector/sky_planet/ground)
 "sm" = (
 /turf/level_border,
+/area/sector/sky_planet/ground)
+"sS" = (
+/obj/structure/event/prop/survey,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
 "ty" = (
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
 "uT" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/outpost)
+"vi" = (
+/obj/machinery/mining/brace{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
+/area/sector/sky_planet/ground)
 "vl" = (
 /mob/living/simple_mob/mechanical/viscerator/station,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
 "vG" = (
-/turf/simulated/floor/outdoors/ash_sand,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/outpost)
 "xU" = (
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground/unexplored)
+"xV" = (
+/obj/structure/table/steel,
+/obj/item/reagent_containers/food/drinks/cans/waterbottle{
+	pixel_y = 9
+	},
+/obj/item/reagent_containers/food/drinks/cans/waterbottle{
+	pixel_y = 15;
+	pixel_x = -5
+	},
+/obj/item/reagent_containers/food/drinks/cans/waterbottle{
+	pixel_y = 15;
+	pixel_x = 6
+	},
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/sky_planet/rock)
 "yf" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/cult,
@@ -139,11 +258,25 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
+"zm" = (
+/obj/structure/closet/crate/corporate/nanotrasen,
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/sky_planet/rock)
 "zq" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/water/acid/outdoors,
+/area/sector/sky_planet/ground)
+"Au" = (
+/obj/machinery/floodlight{
+	on = 1
+	},
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
+/area/sector/sky_planet/ground)
+"AS" = (
+/obj/structure/flora/rock/alternative_1,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
 "BX" = (
 /obj/effect/floor_decal/industrial/halfstair{
@@ -151,6 +284,22 @@
 	},
 /turf/simulated/floor/cult,
 /area/sector/sky_planet/outpost)
+"Cb" = (
+/obj/structure/table/steel,
+/obj/random/drinkbottle,
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/sky_planet/rock)
+"Ch" = (
+/obj/structure/closet/crate/corporate/nanotrasen,
+/obj/item/pickaxe/drill,
+/obj/item/pickaxe/drill,
+/obj/random/multiple/miningdrills,
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/sky_planet/rock)
+"CB" = (
+/obj/structure/event/prop/survey,
+/turf/simulated/floor/outdoors/rocks/outdoors,
+/area/sector/sky_planet/ground)
 "CR" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1
@@ -159,45 +308,98 @@
 /area/sector/sky_planet/outpost)
 "Eo" = (
 /obj/structure/flora/rock/rock2,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground/unexplored)
+"Es" = (
+/obj/structure/table/bench/steel,
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/sky_planet/rock)
 "EK" = (
-/turf/simulated/mineral,
+/turf/simulated/mineral/cave,
 /area/sector/sky_planet/rock)
 "Fg" = (
 /obj/structure/railing/grey,
+/obj/structure/event/prop/excavation_drill,
 /turf/simulated/floor/cult,
 /area/sector/sky_planet/outpost)
 "Fu" = (
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/ash_sand,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
 "GK" = (
 /obj/structure/flora/rock/rock1,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground/unexplored)
+"GR" = (
+/obj/structure/inflatable/door,
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/sky_planet/rock)
 "Hm" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/outdoors/ash_sand,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
+"HS" = (
+/obj/structure/closet/crate/corporate/nanotrasen,
+/obj/random/ore_bag,
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/sky_planet/rock)
+"IW" = (
+/obj/structure/ore_box,
+/turf/simulated/floor/cult,
+/area/sector/sky_planet/outpost)
+"Jf" = (
+/obj/structure/table/steel,
+/obj/item/trash/plate,
+/obj/item/trash/plate{
+	pixel_y = 2;
+	pixel_x = -1
+	},
+/obj/item/trash/plate{
+	pixel_y = 4
+	},
+/obj/item/trash/plate{
+	pixel_y = 6;
+	pixel_x = 2
+	},
+/obj/item/trash/plate{
+	pixel_y = 8
+	},
+/obj/item/trash/plate{
+	pixel_y = 10
+	},
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/sky_planet/rock)
 "JE" = (
 /turf/simulated/wall/r_wall,
 /area/sector/sky_planet/ground)
+"JU" = (
+/obj/structure/table/steel,
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/sky_planet/rock)
+"KI" = (
+/obj/structure/closet/crate/corporate/nanotrasen,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/sky_planet/rock)
 "KP" = (
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
 "LY" = (
 /obj/effect/floor_decal/industrial/halfstair,
-/turf/simulated/floor/outdoors/ash_sand,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
 "Mw" = (
 /obj/structure/flora/rock/rock2,
-/turf/simulated/floor/outdoors/ash_sand,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
 "MO" = (
 /obj/effect/floor_decal/industrial/danger{
@@ -205,58 +407,130 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/indoors,
 /area/sector/sky_planet/outpost)
+"No" = (
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran,
+/turf/simulated/floor/outdoors/rocks/outdoors,
+/area/sector/sky_planet/ground)
+"Nr" = (
+/obj/machinery/mining/drill,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
+/area/sector/sky_planet/ground)
 "NV" = (
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/ash_sand,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
+"OA" = (
+/obj/structure/table/steel,
+/obj/structure/table/steel,
+/obj/item/reagent_containers/food/drinks/cans/sodawater{
+	pixel_y = 12;
+	pixel_x = -2
+	},
+/obj/item/reagent_containers/food/drinks/cans/sodawater{
+	pixel_y = 7;
+	pixel_x = 1
+	},
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/sky_planet/rock)
 "OB" = (
 /obj/structure/catwalk,
 /obj/structure/catwalk,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
 "Pu" = (
 /obj/structure/flora/rock/rock2,
-/turf/simulated/floor/outdoors/rocks,
+/obj/item/ammo_casing/a5_56mm,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
 "Qm" = (
-/turf/simulated/floor/outdoors/ash_sand,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
 "QG" = (
 /turf/simulated/floor/water/acid/outdoors,
 /area/sector/sky_planet/ground)
+"Rh" = (
+/obj/machinery/floodlight{
+	on = 1
+	},
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/sky_planet/rock)
+"Rn" = (
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/sky_planet/rock)
 "Rq" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/ash_sand,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
+/area/sector/sky_planet/ground)
+"Su" = (
+/obj/structure/event/prop/yellow_barrel{
+	pixel_x = 9
+	},
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
 "TB" = (
 /obj/structure/loot_pile/mecha/ripley,
-/turf/simulated/floor/outdoors/ash_sand,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
 "TK" = (
 /obj/structure/flora/rock/rock1,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
 "UE" = (
 /mob/living/simple_mob/mechanical/viscerator/station,
-/turf/simulated/floor/outdoors/ash_sand,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
 "UW" = (
 /obj/effect/floor_decal/industrial/danger,
 /turf/simulated/floor/tiled/steel_dirty/indoors,
 /area/sector/sky_planet/outpost)
+"Vz" = (
+/obj/structure/closet/crate/miningcar,
+/obj/random/multiple/miningdrills,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
+/area/sector/sky_planet/ground)
 "VG" = (
+/turf/simulated/floor/cult,
+/area/sector/sky_planet/outpost)
+"Wc" = (
+/obj/machinery/mining/brace{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
+/area/sector/sky_planet/ground)
+"WE" = (
+/obj/structure/closet/crate/corporate/nanotrasen,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/sky_planet/rock)
+"Xh" = (
+/obj/structure/fans/tiny,
 /turf/simulated/floor/cult,
 /area/sector/sky_planet/outpost)
 "Xi" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
+"Xx" = (
+/obj/structure/event/prop/mining_truck,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
+/area/sector/sky_planet/ground)
+"Yu" = (
+/obj/spawner/corpse/tajara/dra_soldier,
+/turf/simulated/floor/outdoors/rocks/outdoors,
+/area/sector/sky_planet/ground)
+"Zw" = (
+/obj/structure/bed/padded,
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/sky_planet/rock)
 
 (1,1,1) = {"
 fe
@@ -3215,7 +3489,7 @@ jr
 jr
 jr
 jr
-jr
+AS
 jr
 jr
 jr
@@ -3802,7 +4076,7 @@ jr
 jr
 jr
 jr
-jr
+gi
 jr
 jr
 jr
@@ -3971,11 +4245,11 @@ EK
 EK
 EK
 EK
+Rn
+Rn
+Rn
 EK
-EK
-EK
-EK
-EK
+Rn
 EK
 EK
 EK
@@ -4163,13 +4437,13 @@ EK
 EK
 EK
 EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
+od
+od
+Rh
+Rn
+Rn
+Rn
+Rn
 EK
 EK
 EK
@@ -4352,18 +4626,18 @@ EK
 EK
 EK
 EK
+Rh
+Rn
 EK
 EK
 EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
+od
+od
+Rn
+Rn
+Rn
+Rn
+Rn
 EK
 EK
 EK
@@ -4542,23 +4816,23 @@ EK
 EK
 EK
 EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
+Rh
+Rn
+Rn
+Rn
+Rn
+Rn
+GR
+Rn
+GR
+Rn
+Rn
+Es
+Es
+Rn
+Es
+Es
+Rn
 EK
 EK
 EK
@@ -4734,25 +5008,25 @@ EK
 EK
 EK
 EK
+Rn
+Rn
+Rn
+Rn
 EK
 EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
+Rn
+Rn
+GR
+Rn
+GR
+Rn
+Rn
+JU
+JU
+Rn
+JU
+JU
+Rn
 EK
 EK
 EK
@@ -4926,6 +5200,10 @@ EK
 EK
 EK
 EK
+Rn
+Rn
+Rn
+Rn
 EK
 EK
 EK
@@ -4935,19 +5213,15 @@ EK
 EK
 EK
 EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
+Rn
+Rn
+Es
+Es
+Rn
+Es
+Es
+Rn
+Rn
 EK
 EK
 EK
@@ -4961,7 +5235,7 @@ jr
 jr
 jr
 jr
-jr
+gi
 jr
 jr
 jr
@@ -5119,6 +5393,10 @@ EK
 EK
 EK
 EK
+Rn
+Rn
+Rn
+Rh
 EK
 EK
 EK
@@ -5129,19 +5407,15 @@ EK
 EK
 EK
 EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
 EK
 EK
 EK
@@ -5314,6 +5588,7 @@ EK
 EK
 EK
 EK
+Rn
 EK
 EK
 EK
@@ -5326,17 +5601,16 @@ EK
 EK
 EK
 EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
+Ch
+Rn
+Rn
+Rn
+Rn
+Es
+Es
+Rn
+Rn
+hG
 EK
 EK
 EK
@@ -5521,16 +5795,16 @@ EK
 EK
 EK
 EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
+xV
+Rn
+JU
+Es
+Rn
+JU
+JU
+Rn
+Rn
+WE
 EK
 EK
 EK
@@ -5545,7 +5819,7 @@ jr
 jr
 jr
 jr
-jr
+lu
 jr
 jr
 jr
@@ -5715,16 +5989,16 @@ EK
 EK
 EK
 EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
+Jf
+Rn
+JU
+Es
+Rn
+Es
+Es
+Rn
+Rn
+HS
 EK
 EK
 jr
@@ -5909,12 +6183,12 @@ EK
 EK
 EK
 EK
-EK
-EK
-EK
-EK
-EK
-EK
+mT
+Rn
+JU
+Es
+Rn
+Rn
 EK
 EK
 EK
@@ -6103,16 +6377,16 @@ EK
 EK
 EK
 EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
+OA
+Rn
+JU
+Es
+Rn
+Rn
+GR
+Rn
+GR
+Rn
 jr
 jr
 jr
@@ -6127,7 +6401,7 @@ jr
 jr
 jr
 jr
-jr
+AS
 jr
 jr
 jr
@@ -6297,17 +6571,17 @@ EK
 EK
 EK
 EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-jr
+Cb
+Rn
+JU
+Es
+Rn
+Rn
+GR
+Rn
+GR
+Rn
+Qm
 jr
 jr
 jr
@@ -6494,15 +6768,15 @@ EK
 EK
 EK
 EK
+Rn
+Rh
+Rn
 EK
 EK
 EK
-EK
-EK
-EK
-jr
-jr
-jr
+Qm
+Qm
+Qm
 jr
 jr
 jr
@@ -6688,17 +6962,17 @@ EK
 EK
 EK
 EK
-EK
-EK
-EK
+Rn
+Rn
+Rn
 EK
 EK
 EK
 jr
-jr
-jr
-jr
-jr
+Qm
+Qm
+Qm
+Qm
 jr
 jr
 jr
@@ -6883,18 +7157,18 @@ EK
 EK
 EK
 EK
+Rn
 EK
 EK
 EK
 EK
-EK
 jr
 jr
 jr
-jr
-jr
-jr
-jr
+Qm
+Qm
+Qm
+Qm
 jr
 jr
 jr
@@ -7071,13 +7345,13 @@ EK
 EK
 EK
 EK
+qc
+KI
 EK
 EK
 EK
 EK
-EK
-EK
-EK
+Rn
 EK
 EK
 EK
@@ -7088,8 +7362,8 @@ jr
 jr
 jr
 jr
-jr
-jr
+Qm
+Qm
 jr
 jr
 jr
@@ -7264,14 +7538,14 @@ EK
 EK
 EK
 EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
+zm
+Rn
+Rn
+Zw
+Rn
+Zw
+Rn
+Rn
 EK
 EK
 EK
@@ -7283,9 +7557,9 @@ jr
 jr
 jr
 jr
-jr
-jr
-jr
+Qm
+Qm
+Qm
 jr
 jr
 jr
@@ -7458,17 +7732,31 @@ EK
 EK
 EK
 EK
+zm
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
 EK
 EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
+jr
+jr
+jr
+jr
+jr
+jr
+jr
+jr
+jr
+jr
+Qm
+Qm
+Qm
+Qm
 jr
 jr
 jr
@@ -7507,21 +7795,7 @@ jr
 jr
 jr
 jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
+Qm
 jr
 jr
 jr
@@ -7653,16 +7927,16 @@ EK
 EK
 EK
 EK
+Rh
+Zw
+Rn
+Zw
+Rn
+Zw
+Rn
 EK
 EK
 EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
 jr
 jr
 jr
@@ -7675,10 +7949,10 @@ jr
 jr
 jr
 jr
-jr
-jr
-jr
-jr
+Qm
+Qm
+Qm
+Qm
 jr
 jr
 jr
@@ -7710,14 +7984,14 @@ jr
 jr
 jr
 jr
+Qm
+Qm
+vi
 jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
+Qm
+Qm
+vi
+Qm
 jr
 jr
 jr
@@ -7867,14 +8141,14 @@ jr
 jr
 jr
 jr
+hP
 jr
 jr
+Qm
 jr
-jr
-jr
-jr
-jr
-jr
+Qm
+Qm
+Qm
 jr
 jr
 jr
@@ -7904,14 +8178,14 @@ jr
 jr
 jr
 jr
+Qm
 jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
+Nr
+Qm
+Qm
+Qm
+Nr
+Qm
 jr
 jr
 jr
@@ -8065,12 +8339,12 @@ jr
 jr
 jr
 jr
-jr
-jr
-jr
-jr
-jr
-jr
+Qm
+Qm
+Qm
+Qm
+Qm
+Qm
 jr
 jr
 jr
@@ -8098,15 +8372,15 @@ jr
 jr
 Qm
 Qm
-jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
+Qm
+Qm
+Qm
+Qm
+Qm
+Qm
+Wc
+Qm
+Qm
 jr
 jr
 jr
@@ -8262,11 +8536,11 @@ jr
 jr
 jr
 jr
+Qm
+Qm
 jr
-jr
-jr
-jr
-jr
+Qm
+Qm
 jr
 jr
 jr
@@ -8292,14 +8566,14 @@ Qm
 Qm
 Qm
 Qm
-jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
+Qm
+Qm
+Qm
+Qm
+Qm
+Qm
+vi
+Qm
 jr
 jr
 jr
@@ -8446,6 +8720,7 @@ jr
 jr
 jr
 jr
+TK
 jr
 jr
 jr
@@ -8456,13 +8731,12 @@ jr
 jr
 jr
 jr
+Qm
+Qm
 jr
-jr
-jr
-jr
-jr
-jr
-jr
+Qm
+Qm
+Qm
 jr
 jr
 jr
@@ -8487,18 +8761,18 @@ UE
 Qm
 Qm
 jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
+Qm
+Nr
+Qm
+Qm
+Qm
+Nr
 Qm
 Qm
 jr
+Qm
+Qm
+Qm
 Qm
 Qm
 Qm
@@ -8648,7 +8922,7 @@ jr
 jr
 jr
 jr
-Pu
+gi
 jr
 jr
 jr
@@ -8656,9 +8930,9 @@ jr
 jr
 jr
 jr
-jr
-jr
-jr
+Qm
+Qm
+Qm
 jr
 jr
 jr
@@ -8682,17 +8956,17 @@ jr
 jr
 Qm
 Qm
-jr
-jr
-jr
-jr
-jr
-jr
-jr
+Wc
+Qm
+Qm
+Qm
+Qm
+Qm
+Qm
 Mw
 Qm
-jr
-jr
+Qm
+Qm
 jr
 Qm
 Qm
@@ -8851,10 +9125,10 @@ jr
 jr
 jr
 jr
-jr
-jr
-jr
-jr
+Qm
+Qm
+Qm
+Qm
 jr
 jr
 jr
@@ -8872,6 +9146,7 @@ qh
 Hm
 aZ
 Qm
+Au
 Qm
 Qm
 Qm
@@ -8879,12 +9154,11 @@ Qm
 Qm
 Qm
 Qm
-jr
-jr
 Qm
 Qm
-jr
-jr
+Qm
+Qm
+Qm
 jr
 jr
 Qm
@@ -9047,8 +9321,8 @@ jr
 jr
 jr
 jr
-jr
-jr
+Qm
+Qm
 Qm
 Qm
 jr
@@ -9076,8 +9350,8 @@ Qm
 Qm
 Qm
 Qm
-jr
-jr
+Qm
+Qm
 jr
 jr
 jr
@@ -9240,9 +9514,9 @@ jr
 jr
 jr
 jr
+Qm
 jr
-jr
-jr
+Qm
 Qm
 Qm
 Qm
@@ -9261,15 +9535,15 @@ qh
 Hm
 Hm
 aZ
-Qm
+Vz
 Qm
 Qm
 Qm
 Qm
 jr
 jr
-jr
-jr
+Qm
+Qm
 jr
 jr
 jr
@@ -9433,11 +9707,11 @@ jr
 jr
 jr
 jr
+hP
 jr
-jr
-jr
-jr
-jr
+Qm
+Qm
+Qm
 Qm
 Qm
 Qm
@@ -9461,8 +9735,8 @@ Qm
 jr
 Qm
 Qm
-jr
-jr
+Qm
+Qm
 jr
 jr
 jr
@@ -9631,8 +9905,8 @@ jr
 jr
 jr
 jr
-jr
-jr
+Qm
+Qm
 Qm
 Qm
 Qm
@@ -9655,7 +9929,7 @@ Qm
 Qm
 jr
 Qm
-jr
+Qm
 jr
 jr
 jr
@@ -9697,8 +9971,8 @@ jr
 jr
 jr
 jr
-TK
-jr
+pX
+lu
 jr
 jr
 Qm
@@ -9827,7 +10101,7 @@ jr
 jr
 jr
 Qm
-jr
+Qm
 Qm
 Qm
 Qm
@@ -10047,7 +10321,7 @@ jr
 jr
 jr
 jr
-jr
+lu
 jr
 jr
 Qm
@@ -10188,7 +10462,7 @@ jr
 jr
 jr
 jr
-jr
+TK
 jr
 jr
 jr
@@ -10382,6 +10656,7 @@ jr
 jr
 jr
 jr
+AS
 jr
 jr
 jr
@@ -10392,8 +10667,7 @@ jr
 jr
 jr
 jr
-jr
-jr
+AS
 jr
 jr
 jr
@@ -10430,10 +10704,10 @@ Qm
 Qm
 jr
 Qm
+Qm
+Su
 jr
-jr
-jr
-jr
+CB
 jr
 jr
 jr
@@ -10625,7 +10899,7 @@ jr
 jr
 Qm
 jr
-jr
+ei
 jr
 jr
 jr
@@ -10819,8 +11093,8 @@ Qm
 jr
 Qm
 jr
-jr
-jr
+Qm
+Qm
 jr
 jr
 jr
@@ -10975,7 +11249,7 @@ jr
 jr
 jr
 jr
-Pu
+gi
 jr
 jr
 jr
@@ -11007,14 +11281,14 @@ Hm
 hx
 Qm
 Qm
-Qm
+sS
 Qm
 Qm
 Qm
 Qm
 jr
 jr
-jr
+Qm
 jr
 jr
 jr
@@ -11203,13 +11477,13 @@ Qm
 Qm
 Qm
 Qm
+Qm
+Qm
 jr
-jr
-jr
-jr
-jr
-jr
-jr
+Qm
+Qm
+Qm
+Qm
 jr
 jr
 jr
@@ -11381,7 +11655,7 @@ jr
 jr
 jr
 jr
-jr
+hP
 jr
 jr
 jr
@@ -11397,13 +11671,13 @@ vl
 Qm
 Qm
 jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
+Qm
+Xx
+Qm
+Xx
+Qm
+hp
+Qm
 jr
 jr
 jr
@@ -11591,13 +11865,13 @@ Qm
 Qm
 Qm
 Qm
-jr
-jr
-jr
-jr
-jr
-jr
-Pu
+Qm
+Qm
+Qm
+Qm
+Qm
+Qm
+Mw
 jr
 jr
 jr
@@ -11785,13 +12059,13 @@ Qm
 Qm
 Qm
 Qm
-jr
-jr
-jr
-jr
-jr
-jr
-jr
+Qm
+Qm
+Qm
+Qm
+Qm
+Qm
+Qm
 jr
 jr
 jr
@@ -11979,11 +12253,11 @@ jr
 Qm
 Qm
 Qm
-jr
-jr
-jr
-jr
-jr
+Qm
+Qm
+Qm
+Qm
+Qm
 jr
 jr
 jr
@@ -12161,7 +12435,7 @@ jr
 jr
 jr
 jr
-Pu
+gi
 jr
 jr
 jr
@@ -12173,10 +12447,10 @@ jr
 Qm
 Qm
 Qm
-jr
-jr
-jr
-jr
+Qm
+Qm
+Qm
+Qm
 jr
 jr
 jr
@@ -12349,7 +12623,7 @@ xU
 jr
 jr
 jr
-jr
+lu
 jr
 jr
 jr
@@ -17294,14 +17568,14 @@ jr
 jr
 jr
 jr
+iB
 jr
 jr
 jr
 jr
 jr
-jr
-jr
-jr
+iB
+iB
 jr
 jr
 jr
@@ -17488,7 +17762,7 @@ jr
 jr
 jr
 jr
-jr
+iB
 jr
 jr
 jr
@@ -17684,10 +17958,10 @@ jr
 jr
 jr
 jr
-jr
-jr
-jr
-jr
+Qm
+Qm
+Qm
+iB
 jr
 jr
 jr
@@ -17872,21 +18146,21 @@ jr
 Qm
 jr
 jr
+iB
 jr
 jr
 jr
+iB
 jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
+pW
 Qm
+Qm
+Qm
+jr
+jr
+iB
+jr
+hm
 Qm
 Qm
 jr
@@ -18071,14 +18345,14 @@ jr
 jr
 jr
 jr
+Qm
+pW
+jr
+Qm
+Qm
 jr
 jr
-jr
-jr
-jr
-jr
-jr
-jr
+iB
 jr
 Qm
 Qm
@@ -18259,17 +18533,17 @@ jr
 jr
 jr
 Qm
+hm
+jr
+jr
+jr
+jr
 Qm
-jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
+hy
+pW
+Qm
+Qm
+Qm
 jr
 Qm
 Qm
@@ -18460,11 +18734,11 @@ jr
 jr
 jr
 jr
+pW
+Qm
+Qm
 jr
-jr
-jr
-jr
-jr
+iB
 jr
 Qm
 Qm
@@ -18645,23 +18919,23 @@ jr
 jr
 jr
 jr
-jr
+iB
 jr
 jR
 Qm
 Qm
 Qm
+iB
+jr
+jr
+pW
 jr
 jr
 jr
 jr
 jr
 jr
-jr
-jr
-jr
-jr
-Qm
+hm
 Qm
 gV
 gV
@@ -18840,21 +19114,21 @@ jr
 jr
 jr
 jr
+Yu
 jr
-jr
-jr
+rn
 Qm
 Qm
 Qm
+rn
+rn
+rn
 jr
 jr
+iB
 jr
 jr
-jr
-jr
-jr
-jr
-Qm
+fi
 Qm
 Qm
 gV
@@ -19032,17 +19306,17 @@ jr
 jr
 jr
 jr
-jr
-jr
-jr
-jr
-jr
-jr
+iB
+rn
+rn
+rn
+rn
 jr
 Qm
 Qm
 Qm
 Qm
+hm
 jr
 jr
 Qm
@@ -19230,20 +19504,20 @@ jr
 jr
 jr
 jr
-jr
-jr
+Qm
+Qm
+hm
+Qm
+Qm
+hm
+hm
 jr
 jr
 Qm
-Qm
-Qm
-jr
 jr
 Qm
-jr
-Qm
-Qm
-Qm
+hy
+hm
 Qm
 gV
 gV
@@ -19416,16 +19690,10 @@ jr
 jr
 jr
 jr
+iB
 jr
 jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
+rn
 jr
 jr
 jr
@@ -19433,8 +19701,14 @@ jr
 Qm
 Qm
 Qm
+Qm
+fi
 jr
+Qm
+hm
+Qm
 jr
+rn
 jr
 jr
 Qm
@@ -19612,15 +19886,8 @@ jr
 jr
 jr
 jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
+iB
+rn
 jr
 jr
 jr
@@ -19629,10 +19896,17 @@ Qm
 Qm
 Qm
 Qm
-jr
-jr
 Qm
 Qm
+jr
+pW
+Qm
+Qm
+pW
+rn
+rn
+pW
+pW
 gV
 gV
 gV
@@ -19807,19 +20081,19 @@ jr
 jr
 jr
 jr
-jr
+rn
 jr
 Pu
 jr
 jr
 jr
+fi
+hm
+Qm
 jr
-jr
-jr
-jr
-jr
-jr
-jr
+Qm
+Qm
+rn
 Qm
 Qm
 Qm
@@ -20001,26 +20275,26 @@ jr
 jr
 jr
 jr
+rn
 jr
 jr
 jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
-jr
+iB
 jr
 Qm
 Qm
+rn
+rn
+rn
+rn
+rn
+jr
+hm
+Qm
 Qm
 jr
 jr
-Qm
+hm
 gV
 gV
 gV
@@ -20192,16 +20466,16 @@ jr
 jr
 jr
 jr
+iB
+iB
+jr
+rn
 jr
 jr
 jr
 jr
 jr
-jr
-jr
-jr
-jr
-jr
+Qm
 jr
 jr
 jr
@@ -20389,12 +20663,12 @@ jr
 jr
 jr
 jr
+rn
 jr
 jr
 jr
-jr
-jr
-jr
+iB
+iB
 jr
 jr
 jr
@@ -20406,7 +20680,7 @@ jr
 jr
 Qm
 Qm
-jr
+No
 jr
 Qm
 jr
@@ -20580,10 +20854,10 @@ Qm
 jr
 jr
 jr
-jr
-jr
-jr
-jr
+rn
+rn
+rn
+rn
 jr
 jr
 jr
@@ -20603,7 +20877,7 @@ Qm
 jr
 jr
 Qm
-Qm
+hm
 jr
 Qm
 Qm
@@ -21950,9 +22224,9 @@ QG
 QG
 jr
 jr
+rn
 jr
-jr
-jr
+iB
 jr
 jr
 jr
@@ -22144,10 +22418,10 @@ jr
 jr
 jr
 jr
+rn
 jr
-jr
-jr
-jr
+iB
+iB
 jr
 jr
 Qm
@@ -22338,15 +22612,15 @@ jr
 jr
 jr
 jr
+rn
 jr
 jr
 jr
-jr
-jr
+Yu
+pW
 Qm
 Qm
-Qm
-jr
+iB
 jr
 jr
 jr
@@ -22532,16 +22806,16 @@ jr
 jr
 jr
 jr
+rn
+rn
+rn
+rn
+pW
+pW
+hm
 jr
 jr
-jr
-jr
-Qm
-Qm
-Qm
-jr
-jr
-jr
+iB
 jr
 jr
 jr
@@ -22732,11 +23006,11 @@ Qm
 Qm
 Qm
 Qm
-Qm
+hm
 jr
 Qm
 jr
-jr
+rn
 jr
 jr
 jr
@@ -22927,10 +23201,10 @@ jr
 Qm
 Qm
 Qm
-Qm
-Qm
-Qm
-Qm
+pW
+pW
+pW
+pW
 Qm
 jr
 jr
@@ -23315,7 +23589,7 @@ jr
 gV
 gV
 VG
-VG
+oG
 gV
 gV
 gV
@@ -23508,8 +23782,8 @@ Qm
 gV
 gV
 gV
-VG
-VG
+Xh
+Xh
 gV
 gV
 gV
@@ -23704,8 +23978,8 @@ gV
 VG
 VG
 VG
-VG
-VG
+IW
+IW
 gV
 gV
 gV
@@ -23894,13 +24168,13 @@ Qm
 Qm
 gV
 gV
+mc
 VG
+px
 VG
-VG
-VG
-VG
-VG
-VG
+IW
+IW
+IW
 gV
 gV
 Qm
@@ -24088,7 +24362,7 @@ jr
 Qm
 gV
 gV
-VG
+mc
 VG
 VG
 VG
@@ -24282,8 +24556,8 @@ Qm
 Qm
 gV
 gV
-VG
-VG
+mc
+px
 VG
 VG
 Fg
@@ -24476,7 +24750,7 @@ Qm
 Qm
 gV
 gV
-VG
+mc
 VG
 VG
 VG
@@ -24670,7 +24944,7 @@ Qm
 Qm
 vG
 gV
-VG
+mc
 VG
 VG
 BX
@@ -25779,7 +26053,7 @@ jr
 jr
 jr
 jr
-jr
+lu
 jr
 jr
 jr
@@ -26391,7 +26665,7 @@ jr
 jr
 jr
 jr
-Pu
+gi
 jr
 jr
 jr
@@ -26752,7 +27026,7 @@ jr
 jr
 jr
 jr
-Pu
+gi
 jr
 jr
 jr
@@ -27685,7 +27959,7 @@ jr
 jr
 jr
 jr
-jr
+lu
 jr
 jr
 QG
@@ -31373,7 +31647,7 @@ jr
 jr
 jr
 jr
-jr
+lu
 jr
 jr
 jr
@@ -32509,7 +32783,7 @@ jr
 jr
 jr
 jr
-jr
+lu
 jr
 jr
 jr

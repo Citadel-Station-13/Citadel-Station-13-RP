@@ -1,18 +1,30 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aQ" = (
 /obj/spawner/corpse/pirate/ranged_laser,
+/obj/structure/alien/weeds,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/sector/sky_planet/rock)
 "bl" = (
 /obj/spawner/corpse/pirate/mate/rifle,
+/obj/structure/alien/weeds,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/sky_planet/rock)
+"bW" = (
+/obj/machinery/light/small/emergency,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/sky_planet/rock)
 "cb" = (
 /obj/effect/floor_decal/industrial/halfstair,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/sector/sky_planet/rock)
+"cT" = (
+/mob/living/simple_mob/animal/space/xenomorph/drone,
+/obj/structure/alien/weeds,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/sky_planet/rock)
 "fr" = (
 /obj/vehicle/sealed/mecha/working/ripley/abandoned,
+/obj/structure/alien/weeds,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/sector/sky_planet/rock)
 "fP" = (
@@ -21,16 +33,24 @@
 /area/sector/sky_planet/rock)
 "fS" = (
 /obj/structure/event/prop/broken_pod,
+/obj/structure/alien/weeds,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/sector/sky_planet/rock)
 "ge" = (
 /obj/structure/event/prop/active_pod2,
+/obj/structure/alien/weeds,
+/obj/machinery/light/small/emergency,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/sector/sky_planet/rock)
 "hj" = (
 /obj/structure/catwalk,
 /obj/structure/stairs/spawner/west,
 /turf/simulated/open,
+/area/sector/sky_planet/rock)
+"ir" = (
+/obj/effect/debris/cleanable/blood/gibs/xeno,
+/obj/structure/alien/weeds,
+/turf/simulated/floor/holofloor/tiled/dark,
 /area/sector/sky_planet/rock)
 "jd" = (
 /turf/simulated/wall/r_wall,
@@ -44,6 +64,10 @@
 /obj/effect/debris/cleanable/blood/gibs/xeno,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/sector/sky_planet/rock)
+"kJ" = (
+/mob/living/simple_mob/aggressive/dragoon/blue,
+/turf/simulated/open,
+/area/sector/sky_planet/ground/sky)
 "mz" = (
 /obj/structure/bed,
 /obj/random/weapon,
@@ -55,6 +79,11 @@
 /area/sector/sky_planet/rock)
 "ny" = (
 /obj/random/multiple/gun/projectile/rifle,
+/obj/structure/alien/weeds,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/sector/sky_planet/rock)
+"od" = (
+/obj/structure/alien/weeds,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/sector/sky_planet/rock)
 "pe" = (
@@ -67,8 +96,13 @@
 "rt" = (
 /turf/simulated/open,
 /area/sector/sky_planet/rock)
+"rA" = (
+/mob/living/simple_mob/aggressive/dragoon/yellow,
+/turf/simulated/open,
+/area/sector/sky_planet/ground/sky)
 "rC" = (
 /obj/random/multiple/gun/projectile/smg,
+/obj/structure/alien/weeds,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/sector/sky_planet/rock)
 "sc" = (
@@ -83,6 +117,13 @@
 /obj/effect/blocker,
 /turf/simulated/open,
 /area/sector/sky_planet/ground/sky)
+"tS" = (
+/obj/structure/alien/weeds,
+/obj/machinery/light/small/emergency{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/sky_planet/rock)
 "ua" = (
 /obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/old_tile,
@@ -93,6 +134,12 @@
 	dir = 4
 	},
 /turf/simulated/open,
+/area/sector/sky_planet/rock)
+"vA" = (
+/obj/machinery/light/small/emergency{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty,
 /area/sector/sky_planet/rock)
 "vR" = (
 /obj/structure/catwalk,
@@ -114,18 +161,35 @@
 /obj/structure/event/prop/broken_pod,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/sector/sky_planet/rock)
+"yX" = (
+/obj/structure/alien/weeds,
+/obj/machinery/light/small/emergency{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/sky_planet/rock)
 "zp" = (
 /obj/random/multiple/large_corp_crate/no_weapons,
+/obj/structure/alien/weeds,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/sky_planet/rock)
 "zs" = (
-/turf/simulated/mineral,
+/turf/simulated/mineral/cave,
 /area/sector/sky_planet/rock)
 "zw" = (
 /turf/simulated/open,
 /area/sector/sky_planet/ground/sky)
+"zV" = (
+/obj/structure/alien/weeds,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/sky_planet/rock)
+"Aj" = (
+/mob/living/simple_mob/aggressive/dragoon/red,
+/turf/simulated/open,
+/area/sector/sky_planet/ground/sky)
 "Am" = (
 /obj/machinery/appliance/cooker/oven,
+/obj/structure/alien/weeds,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/sky_planet/rock)
 "As" = (
@@ -160,6 +224,13 @@
 "Fh" = (
 /turf/simulated/wall/solidrock,
 /area/sector/sky_planet/rock)
+"Fs" = (
+/obj/structure/alien/weeds,
+/obj/machinery/light/small/emergency{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/sky_planet/rock)
 "FO" = (
 /obj/structure/railing/grey{
 	dir = 8
@@ -168,10 +239,12 @@
 /area/sector/sky_planet/rock)
 "Gv" = (
 /obj/spawner/corpse/syndicatecommando,
+/obj/structure/alien/weeds,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/sector/sky_planet/rock)
 "GR" = (
 /obj/structure/table/reinforced,
+/obj/structure/alien/weeds,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/sky_planet/rock)
 "Hb" = (
@@ -190,10 +263,18 @@
 /area/sector/sky_planet/rock)
 "Ix" = (
 /mob/living/simple_mob/animal/space/xenomorph/drone,
+/obj/structure/alien/weeds,
 /turf/simulated/floor/holofloor/tiled/dark,
+/area/sector/sky_planet/rock)
+"IT" = (
+/obj/machinery/light/small/emergency{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty,
 /area/sector/sky_planet/rock)
 "Js" = (
 /obj/random/trash_pile,
+/obj/structure/alien/weeds,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/sky_planet/rock)
 "Ku" = (
@@ -204,11 +285,41 @@
 /obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/sky_planet/rock)
+"Lb" = (
+/obj/structure/event/prop/broken_pod,
+/obj/structure/alien/weeds,
+/obj/machinery/light/small/emergency,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/sector/sky_planet/rock)
 "LH" = (
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/sector/sky_planet/rock)
 "My" = (
 /obj/random/multiple/large_corp_crate,
+/obj/structure/alien/weeds,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/sky_planet/rock)
+"MQ" = (
+/mob/living/simple_mob/animal/space/xenomorph/acid_spitter,
+/obj/structure/alien/weeds,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/sky_planet/rock)
+"MV" = (
+/obj/machinery/door/airlock,
+/obj/structure/alien/weeds,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/sky_planet/rock)
+"Nh" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/obj/structure/alien/weeds,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/sky_planet/rock)
+"NC" = (
+/obj/machinery/light/small/emergency{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/sky_planet/rock)
 "NY" = (
@@ -217,6 +328,12 @@
 /area/sector/sky_planet/rock)
 "Pj" = (
 /obj/structure/closet/secure_closet/freezer/kitchen,
+/obj/structure/alien/weeds,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/sky_planet/rock)
+"Rq" = (
+/obj/effect/debris/cleanable/blood/gibs/xeno,
+/obj/structure/alien/weeds,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/sky_planet/rock)
 "Sf" = (
@@ -230,9 +347,25 @@
 	},
 /turf/simulated/floor/tiled/old_tile,
 /area/sector/sky_planet/rock)
+"Ve" = (
+/obj/structure/alien/weeds,
+/obj/machinery/light/small/emergency,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/sky_planet/rock)
 "Vf" = (
 /obj/structure/table/wooden_reinforced,
 /turf/simulated/floor/holofloor/lino,
+/area/sector/sky_planet/rock)
+"XW" = (
+/obj/machinery/light/small/emergency{
+	dir = 8
+	},
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/sector/sky_planet/rock)
+"ZF" = (
+/obj/structure/railing/grey,
+/obj/structure/alien/weeds,
+/turf/simulated/floor/tiled/steel_dirty,
 /area/sector/sky_planet/rock)
 
 (1,1,1) = {"
@@ -1641,7 +1774,7 @@ zw
 zw
 zw
 zw
-zw
+kJ
 zw
 zw
 zw
@@ -2668,7 +2801,7 @@ zw
 zw
 zw
 zw
-zw
+kJ
 zw
 zw
 zw
@@ -3025,7 +3158,7 @@ zw
 zw
 zw
 zw
-zw
+rA
 zw
 zw
 zw
@@ -5210,7 +5343,7 @@ zw
 zw
 zw
 zw
-zw
+rA
 zw
 zw
 zw
@@ -6856,7 +6989,7 @@ zw
 zw
 zw
 zw
-zw
+kJ
 zw
 zw
 zw
@@ -7497,7 +7630,7 @@ zw
 zw
 zw
 zw
-zw
+rA
 zw
 zw
 zw
@@ -9795,7 +9928,7 @@ zw
 zw
 zw
 zw
-zw
+rA
 zw
 zw
 zw
@@ -12044,7 +12177,7 @@ zw
 zw
 zw
 zw
-zw
+Aj
 zw
 zw
 zw
@@ -17796,7 +17929,7 @@ zw
 zw
 zw
 zw
-zw
+rA
 zw
 zw
 zw
@@ -19212,7 +19345,7 @@ zw
 zw
 zw
 zw
-zw
+Aj
 zw
 zw
 zw
@@ -19679,10 +19812,10 @@ zs
 zs
 Hb
 My
-HU
-HU
+zV
+zV
 Js
-HU
+zV
 As
 zw
 zw
@@ -19840,11 +19973,11 @@ zs
 zs
 zs
 Hb
-HU
+IT
 HU
 cb
 LH
-LH
+XW
 LH
 LH
 Ku
@@ -19872,11 +20005,11 @@ zs
 zs
 zs
 Hb
-HU
-EU
-HU
-HU
-HU
+zV
+Rq
+zV
+zV
+zV
 Hb
 Hb
 zw
@@ -20035,7 +20168,7 @@ zs
 zs
 Hb
 HU
-HU
+zV
 cb
 LH
 LH
@@ -20066,12 +20199,12 @@ zs
 zs
 zs
 Hb
-HU
-HU
-HU
-HU
-HU
-HU
+tS
+zV
+zV
+zV
+zV
+zV
 As
 zw
 zw
@@ -20228,8 +20361,8 @@ zs
 zs
 zs
 Hb
-qT
-xc
+MQ
+ZF
 yT
 fP
 LH
@@ -20247,9 +20380,9 @@ zs
 zs
 Hb
 HU
+IT
 HU
-HU
-HU
+IT
 HU
 Hb
 zs
@@ -20260,12 +20393,12 @@ zs
 zs
 zs
 Hb
-HU
+zV
 My
-HU
-NY
-HU
-HU
+zV
+cT
+zV
+Ve
 Hb
 Sf
 Sf
@@ -20422,14 +20555,14 @@ zs
 zs
 zs
 Hb
-HU
-xc
+zV
+ZF
 wl
 LH
-LH
-LH
-LH
-LH
+od
+od
+od
+od
 Hb
 zs
 zs
@@ -20441,9 +20574,9 @@ zs
 zs
 Hb
 HU
-HU
-HU
-HU
+zV
+zV
+zV
 HU
 Hb
 zs
@@ -20455,11 +20588,11 @@ zs
 zs
 Hb
 Js
-HU
-HU
-HU
-HU
-HU
+zV
+zV
+zV
+zV
+zV
 Hb
 Cd
 Cd
@@ -20616,13 +20749,13 @@ zs
 zs
 zs
 Hb
-HU
-xc
+tS
+ZF
 yT
 LH
-LH
+od
 aQ
-LH
+od
 ge
 Hb
 zs
@@ -20648,13 +20781,13 @@ Hb
 Hb
 Hb
 Hb
-HU
-HU
-HU
-HU
-HU
-HU
-Ky
+zV
+zV
+zV
+zV
+zV
+zV
+MV
 Cd
 Cd
 Cd
@@ -20810,14 +20943,14 @@ zs
 zs
 zs
 Hb
-HU
-xc
+zV
+ZF
 wl
 LH
 Ix
-LH
-LH
-LH
+od
+od
+od
 Hb
 zs
 zs
@@ -20826,28 +20959,28 @@ zs
 zs
 Hb
 Pj
+Fs
 HU
-HU
-HU
-EU
+zV
+Rq
 bl
+Fs
 HU
-HU
-HU
-HU
-HU
-HU
-HU
-HU
-HU
-HU
+zV
+zV
+Fs
+zV
+zV
+zV
+Fs
+zV
 Hb
-HU
-HU
-HU
-HU
-HU
-HU
+zV
+zV
+zV
+zV
+zV
+zV
 Hb
 Cd
 Cd
@@ -21004,13 +21137,13 @@ zs
 zs
 zs
 Hb
-HU
+zV
 xc
 yT
 LH
-LH
-LH
-LH
+od
+od
+od
 fS
 Hb
 zs
@@ -21020,28 +21153,28 @@ zs
 zs
 Hb
 GR
+zV
 HU
+zV
+zV
+zV
+zV
 HU
-HU
-HU
-HU
-HU
-HU
-HU
-HU
-HU
-NY
-EU
-HU
+zV
+zV
+zV
+cT
+Rq
+zV
 bl
-HU
+zV
 Ky
-HU
-HU
-HU
+zV
+zV
+zV
 Js
-HU
-HU
+zV
+Ve
 Hb
 Sf
 Sf
@@ -21198,14 +21331,14 @@ zs
 zs
 zs
 Hb
-HU
+zV
 xc
 wl
 LH
-LH
-km
-LH
-LH
+od
+ir
+od
+od
 Hb
 zs
 zs
@@ -21214,28 +21347,28 @@ zs
 zs
 Hb
 GR
-HU
+zV
 qT
 Il
 Il
 Bm
 Il
 Il
-HU
-HU
-HU
-HU
-HU
-HU
-HU
-HU
+zV
+zV
+zV
+zV
+zV
+zV
+zV
+zV
 Hb
-HU
-NY
-HU
-HU
-HU
-HU
+zV
+cT
+zV
+zV
+zV
+zV
 As
 zw
 zw
@@ -21392,13 +21525,13 @@ zs
 zs
 zs
 Hb
-HU
+zV
 xc
 yT
 LH
-LH
-LH
-LH
+od
+od
+od
 fS
 Hb
 zs
@@ -21408,7 +21541,7 @@ zs
 zs
 Hb
 GR
-HU
+zV
 HU
 Vf
 Vf
@@ -21424,11 +21557,11 @@ Hb
 Hb
 Hb
 Hb
-HU
-HU
-HU
-HU
-HU
+zV
+zV
+zV
+zV
+zV
 Hb
 Hb
 zw
@@ -21586,14 +21719,14 @@ zs
 zs
 zs
 Hb
-HU
+zV
 xc
 wl
 LH
 fr
 rC
-LH
-LH
+od
+od
 Hb
 zs
 zs
@@ -21602,7 +21735,7 @@ zs
 zs
 Hb
 Am
-HU
+zV
 HU
 Il
 Il
@@ -21619,10 +21752,10 @@ zs
 zs
 Hb
 zp
-HU
-HU
-HU
-EU
+zV
+zV
+zV
+Rq
 Hb
 zw
 zw
@@ -21780,14 +21913,14 @@ zs
 zs
 zs
 Hb
-HU
+tS
 xc
 yT
 LH
-LH
+od
 Gv
 ny
-fS
+Lb
 Hb
 zs
 zs
@@ -21795,8 +21928,8 @@ zs
 zs
 zs
 Hb
-HU
-HU
+zV
+zV
 HU
 Bm
 Bm
@@ -21812,11 +21945,11 @@ zs
 zs
 zs
 Hb
-HU
-HU
-HU
-HU
-HU
+tS
+zV
+zV
+zV
+zV
 As
 zw
 zw
@@ -21974,7 +22107,7 @@ zs
 zs
 zs
 Hb
-HU
+zV
 xc
 wl
 LH
@@ -21989,15 +22122,15 @@ Hb
 Hb
 Hb
 Hb
-HU
-HU
+zV
+zV
 HU
 Il
 Il
 sc
 Il
 Il
-HU
+zV
 Hb
 zs
 zs
@@ -22006,11 +22139,11 @@ zs
 zs
 zs
 Hb
-HU
-HU
+zV
+zV
 zp
-HU
-HU
+zV
+zV
 Hb
 zw
 zw
@@ -22168,7 +22301,7 @@ zs
 zs
 zs
 Hb
-HU
+zV
 xc
 wl
 LH
@@ -22178,11 +22311,11 @@ LH
 LH
 Hb
 HU
-EU
-HU
-HU
-HU
-HU
+Rq
+zV
+zV
+zV
+zV
 HU
 HU
 HU
@@ -22191,7 +22324,7 @@ Vf
 Bm
 Vf
 Vf
-HU
+zV
 Hb
 zs
 zs
@@ -22363,20 +22496,20 @@ zs
 zs
 Hb
 NY
-HU
-FO
-FO
-FO
-FO
-FO
+zV
+Nh
+Nh
+Nh
+Nh
+Nh
 FO
 Ky
 HU
-HU
-HU
+zV
+zV
 bl
-NY
-HU
+cT
+zV
 HU
 EU
 HU
@@ -22385,7 +22518,7 @@ Il
 Bm
 Il
 Il
-HU
+zV
 Hb
 zs
 zs
@@ -22556,30 +22689,30 @@ zs
 zs
 zs
 Hb
-HU
-HU
-HU
-HU
-HU
-HU
-HU
+vA
+zV
+zV
+zV
+yX
+zV
+zV
 HU
 Ky
 HU
+yX
+zV
+zV
+zV
+zV
 HU
+yX
+zV
+zV
+zV
+zV
+yX
 HU
-HU
-HU
-HU
-HU
-HU
-HU
-HU
-HU
-HU
-HU
-HU
-HU
+zV
 Hb
 zs
 zs
@@ -22907,7 +23040,7 @@ zw
 zw
 zw
 zw
-zw
+Aj
 zw
 zw
 zw
@@ -23349,11 +23482,11 @@ zs
 zs
 Hb
 mY
-HU
+bW
 Hb
 NY
 Hb
-HU
+NC
 HU
 mY
 Hb
@@ -23739,7 +23872,7 @@ Hb
 mY
 HU
 Ky
-HU
+vA
 Ky
 HU
 HU
@@ -25159,6 +25292,7 @@ zw
 zw
 zw
 zw
+rA
 zw
 zw
 zw
@@ -25199,8 +25333,7 @@ zw
 zw
 zw
 zw
-zw
-zw
+rA
 zw
 zw
 zw
@@ -29399,7 +29532,7 @@ zw
 zw
 zw
 zw
-zw
+rA
 zw
 zw
 zw
@@ -33178,7 +33311,7 @@ zw
 zw
 zw
 zw
-zw
+rA
 zw
 zw
 zw
@@ -33830,7 +33963,7 @@ zw
 zw
 zw
 zw
-zw
+rA
 zw
 zw
 zw
@@ -34693,7 +34826,7 @@ zw
 zw
 zw
 zw
-zw
+rA
 zw
 zw
 zw

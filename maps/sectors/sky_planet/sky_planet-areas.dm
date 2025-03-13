@@ -101,6 +101,7 @@
 /area/sector/sky_planet/station_city
 	name = "Hadiis Folly station city"
 	icon_state = "red"
+	initial_gas_mix = ATMOSPHERE_ID_SKYPLANET
 
 /area/sector/sky_planet/station_city/dock
 	name = "Hadiis Folly station city"

@@ -30,7 +30,7 @@
 /turf/simulated/open,
 /area/sector/sky_planet/rock)
 "dq" = (
-/turf/simulated/mineral,
+/turf/simulated/mineral/cave,
 /area/sector/sky_planet/rock)
 "du" = (
 /obj/item/digestion_remains/ribcage,
@@ -75,7 +75,7 @@
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/sector/sky_planet/rock)
 "lQ" = (
-/turf/simulated/mineral,
+/turf/simulated/mineral/cave,
 /area/sector/sky_planet/sky)
 "mD" = (
 /obj/structure/railing/grey{

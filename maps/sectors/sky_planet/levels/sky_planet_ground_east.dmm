@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aw" = (
-/turf/simulated/mineral,
+/turf/simulated/mineral/cave,
 /area/sector/sky_planet/ground/unexplored)
 "az" = (
 /obj/effect/floor_decal/rust,
@@ -24,7 +24,7 @@
 /obj/structure/shuttle/engine/propulsion{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/ash_sand,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
 "bz" = (
 /obj/structure/salvageable/console_broken_os{
@@ -58,6 +58,10 @@
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/sector/sky_planet/poi)
+"ds" = (
+/mob/living/simple_mob/aggressive/dragoon/blue,
+/turf/simulated/floor/outdoors/rocks/outdoors,
+/area/sector/sky_planet/ground)
 "dN" = (
 /obj/item/stack/medical/crude_pack,
 /turf/simulated/floor/outdoors/rocks/caves,
@@ -80,7 +84,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/rock)
 "fk" = (
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/rock)
 "ft" = (
 /obj/structure/grille/broken,
@@ -121,7 +125,7 @@
 /turf/simulated/floor/plating,
 /area/sector/sky_planet/poi)
 "iq" = (
-/turf/simulated/mineral,
+/turf/simulated/mineral/cave,
 /area/sector/sky_planet/rock)
 "iC" = (
 /obj/structure/railing/grey,
@@ -132,7 +136,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/rock)
 "iV" = (
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
 "iZ" = (
 /obj/machinery/door/airlock/external,
@@ -160,7 +164,7 @@
 "jC" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/pickaxe/excavationdrill,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/rock)
 "jG" = (
 /turf/simulated/floor/outdoors/rocks/caves,
@@ -204,7 +208,7 @@
 /area/sector/sky_planet/rock)
 "kT" = (
 /obj/structure/table/steel_reinforced,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/rock)
 "lf" = (
 /obj/effect/floor_decal/rust,
@@ -227,6 +231,10 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/sector/sky_planet/poi)
+"na" = (
+/mob/living/simple_mob/aggressive/dragoon/red,
+/turf/simulated/floor/outdoors/rocks/outdoors,
+/area/sector/sky_planet/ground)
 "ne" = (
 /obj/effect/blocker,
 /turf/simulated/floor/water/acid/outdoors,
@@ -234,7 +242,7 @@
 "nL" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/multiple/miningdrills,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/rock)
 "nV" = (
 /turf/simulated/floor/holofloor/reinforced,
@@ -289,7 +297,7 @@
 /area/sector/sky_planet/rock)
 "qy" = (
 /mob/living/simple_mob/mechanical/hivebot/miner,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/rock)
 "qM" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -353,7 +361,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/sector/sky_planet/poi)
 "rX" = (
-/turf/simulated/floor/outdoors/ash_sand,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
 "sa" = (
 /obj/effect/floor_decal/industrial/warning,
@@ -362,9 +370,13 @@
 "st" = (
 /turf/simulated/floor/water/acid/outdoors,
 /area/sector/sky_planet/ground/unexplored)
+"sy" = (
+/mob/living/simple_mob/aggressive/dragoon/yellow,
+/turf/simulated/floor/outdoors/rocks/outdoors,
+/area/sector/sky_planet/ground)
 "tZ" = (
 /mob/living/simple_mob/mechanical/hivebot/ranged_damage/backline,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/rock)
 "uc" = (
 /obj/effect/decal/remains,
@@ -418,7 +430,7 @@
 /obj/machinery/floodlight{
 	on = 1
 	},
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/rock)
 "xe" = (
 /obj/effect/floor_decal/rust,
@@ -434,15 +446,15 @@
 /obj/item/flashlight/glowstick/red{
 	on = 1
 	},
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
 "yJ" = (
 /mob/living/simple_mob/mechanical/hivebot/surveyor,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/rock)
 "yP" = (
 /mob/living/simple_mob/mechanical/hivebot/ranged_damage/sniper,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/rock)
 "zb" = (
 /turf/simulated/floor/holofloor/reinforced{
@@ -454,7 +466,7 @@
 /area/sector/sky_planet/ground)
 "zm" = (
 /obj/effect/debris/cleanable/blood,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
 "zQ" = (
 /obj/effect/floor_decal/corner/navblue/diagonal,
@@ -467,7 +479,7 @@
 /area/sector/sky_planet/rock)
 "zS" = (
 /mob/living/simple_mob/mechanical/hivebot/support/commander,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/rock)
 "AN" = (
 /obj/effect/floor_decal/corner/navblue/diagonal,
@@ -481,11 +493,11 @@
 /turf/simulated/floor/plating,
 /area/sector/sky_planet/ground)
 "Bv" = (
-/turf/simulated/floor/outdoors/ash_sand,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground/unexplored)
 "BB" = (
 /obj/effect/blocker,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
 "Ci" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -569,7 +581,7 @@
 /area/sector/sky_planet/poi)
 "Fl" = (
 /obj/effect/debris/cleanable/vomit,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
 "FS" = (
 /obj/machinery/light/small/emergency/flicker{
@@ -593,7 +605,7 @@
 /area/sector/sky_planet/poi)
 "GL" = (
 /obj/random/crystal,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/rock)
 "GX" = (
 /obj/machinery/sleeper/survival_pod,
@@ -603,6 +615,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/poi)
+"Hg" = (
+/mob/living/simple_mob/aggressive/dragoon/yellow,
+/turf/simulated/floor/outdoors/rocks/outdoors,
+/area/sector/sky_planet/ground/unexplored)
 "Hl" = (
 /obj/structure/fans,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -645,11 +661,11 @@
 /area/sector/sky_planet/poi)
 "Jo" = (
 /mob/living/simple_mob/mechanical/hivebot/swarm,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/rock)
 "JY" = (
 /obj/random/roguemineloot,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/rock)
 "KB" = (
 /obj/structure/bed/pod,
@@ -686,7 +702,7 @@
 /area/sector/sky_planet/rock)
 "Mb" = (
 /obj/effect/debris/cleanable/blood/drip,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
 "Mi" = (
 /obj/effect/floor_decal/rust,
@@ -699,7 +715,7 @@
 /area/sector/sky_planet/poi)
 "Mz" = (
 /obj/machinery/giga_drill,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/rock)
 "MA" = (
 /obj/structure/closet,
@@ -713,7 +729,7 @@
 "NH" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/tool/alien,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/rock)
 "Ot" = (
 /obj/effect/floor_decal/corner/navblue/border{
@@ -774,7 +790,7 @@
 /area/sector/sky_planet/rock)
 "QS" = (
 /obj/random/multiple/large_corp_crate,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/rock)
 "Rn" = (
 /obj/effect/floor_decal/corner/navblue/border{
@@ -818,7 +834,7 @@
 /area/sector/sky_planet/rock)
 "SE" = (
 /obj/effect/debris/cleanable/blood/drip,
-/turf/simulated/floor/outdoors/ash_sand,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
 "SX" = (
 /obj/effect/floor_decal/corner/navblue/border{
@@ -827,13 +843,13 @@
 /turf/simulated/floor/tiled/freezer,
 /area/sector/sky_planet/poi)
 "TU" = (
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground/unexplored)
 "Ul" = (
 /obj/item/flashlight/glowstick/red{
 	on = 1
 	},
-/turf/simulated/floor/outdoors/ash_sand,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
 "Un" = (
 /obj/effect/floor_decal/rust,
@@ -873,7 +889,7 @@
 "Vj" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/multiple/gun/projectile/shotgun,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/rock)
 "Vz" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -887,13 +903,13 @@
 "Wi" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/junk,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/rock)
 "XI" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
 "XL" = (
 /turf/simulated/floor/tiled/techfloor,
@@ -2908,7 +2924,7 @@ iV
 iV
 iV
 iV
-iV
+sy
 iV
 iV
 iV
@@ -3725,7 +3741,7 @@ iV
 iV
 iV
 iV
-iV
+ds
 iV
 iV
 iV
@@ -6036,7 +6052,7 @@ iV
 iV
 iV
 iV
-iV
+ds
 iV
 iV
 iV
@@ -8323,7 +8339,7 @@ iV
 iV
 iV
 iV
-iV
+sy
 iV
 iV
 iV
@@ -8721,7 +8737,7 @@ iV
 iV
 iV
 iV
-iV
+sy
 iV
 iV
 iV
@@ -10921,7 +10937,7 @@ iV
 iV
 iV
 iV
-iV
+sy
 iV
 iV
 iV
@@ -12321,7 +12337,7 @@ iV
 iV
 iV
 iV
-iV
+sy
 iV
 iV
 iV
@@ -13294,7 +13310,7 @@ iV
 iV
 iV
 iV
-iV
+na
 iV
 iV
 iV
@@ -13312,7 +13328,7 @@ iV
 iV
 iV
 iV
-iV
+sy
 iV
 iV
 iV
@@ -17496,7 +17512,7 @@ rX
 iV
 iV
 iV
-iV
+sy
 iV
 iV
 iV
@@ -19123,7 +19139,7 @@ TU
 TU
 TU
 TU
-TU
+Hg
 TU
 TU
 TU
@@ -22910,7 +22926,7 @@ iV
 iV
 iV
 iV
-iV
+sy
 iV
 iV
 iV
@@ -24310,7 +24326,7 @@ iV
 iV
 iV
 iV
-iV
+sy
 iV
 iV
 iV
@@ -24743,7 +24759,7 @@ je
 je
 iV
 iV
-iV
+na
 iV
 iV
 iV
@@ -30095,7 +30111,7 @@ TU
 iV
 iV
 iV
-iV
+sy
 iV
 iV
 iV
@@ -31027,7 +31043,7 @@ iV
 iV
 iV
 iV
-iV
+na
 iV
 iV
 iV
@@ -32508,7 +32524,7 @@ iV
 iV
 iV
 iV
-iV
+sy
 iV
 iV
 zh
@@ -33624,7 +33640,7 @@ iV
 iV
 iV
 iV
-iV
+sy
 zh
 zh
 iV
@@ -37257,7 +37273,7 @@ iV
 iV
 iV
 iV
-iV
+na
 iV
 iV
 iV
