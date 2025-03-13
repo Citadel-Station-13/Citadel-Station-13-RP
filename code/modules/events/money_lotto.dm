@@ -5,22 +5,15 @@
 
 /datum/event/money_lotto/start()
 	winner_sum = pick(5000, 10000, 50000, 100000, 500000, 1000000, 1500000)
-	if(GLOB.all_money_accounts.len)
-		var/datum/money_account/D = pick(GLOB.all_money_accounts)
-		winner_name = D.owner_name
-		if(!D.suspended)
-			D.money += winner_sum
-
-			var/datum/transaction/T = new()
-			T.target_name = "The [(LEGACY_MAP_DATUM).starsys_name] Times Grand Slam -Stellar- Lottery"
-			T.purpose = "Winner!"
-			T.amount = winner_sum
-			T.date = GLOB.current_date_string
-			T.time = stationtime2text()
-			T.source_terminal = "Sif TCD Terminal #[rand(111,333)]"
-			D.transaction_log.Add(T)
-
-			deposit_success = 1
+	var/datum/economy_account/picked = SSeconomy.pull_account_lottery(require_personal = TRUE, require_unlocked = TRUE)
+	if(!picked)
+		return
+	var/datum/economy_transaction/transaction = new(winner_sum)
+	transaction.audit_terminal_as_unsafe_html = ECONOMY_GENERATE_EPHEMERAL_SYSTEM_TERMINAL
+	transaction.audit_purpose_as_unsafe_html = "Winner!"
+	transaction.audit_peer_name_as_unsafe_html = "The [(LEGACY_MAP_DATUM).starsys_name] Times Grand Slam -Stellar- Lottery"
+	transaction.execute_system_transaction(picked)
+	deposit_success = 1
 
 /datum/event/money_lotto/announce()
 	var/author = "[(LEGACY_MAP_DATUM).company_name] Editor"
