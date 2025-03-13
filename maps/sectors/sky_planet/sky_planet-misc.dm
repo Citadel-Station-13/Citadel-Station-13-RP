@@ -52,7 +52,7 @@
 	turf_path_danger = TURF_PATH_DANGER_FALL
 	can_build_into_floor = TRUE
 	allow_gas_overlays = FALSE
-	mz_flags = MZ_MIMIC_DEFAULTS | MZ_OPEN_BOTH
+	mz_flags = MZ_OPEN_BOTH
 	initial_gas_mix = ATMOSPHERE_ID_SKYPLANET
 
 /turf/simulated/open/skyplanet/Initialize(mapload)
