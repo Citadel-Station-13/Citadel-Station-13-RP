@@ -51,7 +51,7 @@
 		return
 
 	if(istype(M, /mob/living/))
-		if(!M.hovering)
+		if(!M.is_avoiding_ground())
 			explode(M)
 
 /obj/effect/mine/attackby(obj/item/W as obj, mob/living/user as mob)
@@ -302,6 +302,6 @@
 
 // This tells AI mobs to not be dumb and step on mines willingly.
 /obj/item/mine/is_safe_to_step(mob/living/L)
-	if(!L.hovering)
+	if(!L.is_avoiding_ground())
 		return FALSE
 	return ..()

@@ -141,7 +141,7 @@
 	deployed = FALSE
 
 /obj/item/beartrap/Crossed(atom/movable/AM as mob|obj)
-	if(AM.is_incorporeal())
+	if(AM.is_incorporeal() || AM.is_avoiding_ground())
 		return
 	if(deployed && isliving(AM))
 		var/mob/living/L = AM
