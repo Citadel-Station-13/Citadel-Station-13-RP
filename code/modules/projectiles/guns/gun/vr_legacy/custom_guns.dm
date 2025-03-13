@@ -8,13 +8,11 @@
 	item_icons = null
 	w_class = WEIGHT_CLASS_BULKY
 	recoil = 1.5 // The battlerifle was known for its nasty recoil.
-	max_shells = 36
 	caliber = /datum/ammo_caliber/a9_5mm
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
-	magazine_type = /obj/item/ammo_magazine/m95
-	allowed_magazines = list(/obj/item/ammo_magazine/m95)
+	magazine_preload = /obj/item/ammo_magazine/m95
+	magazine_restrict = /obj/item/ammo_magazine/m95
 	fire_sound = 'sound/weapons/battlerifle.ogg'
-	load_method = MAGAZINE
 	slot_flags = SLOT_BACK
 	one_handed_penalty = 60 // The weapon itself is heavy
 
@@ -22,12 +20,10 @@
 	. = ..()
 	update_worn_icon()
 
+// todo: new render system
 /obj/item/gun/projectile/ballistic/automatic/battlerifle/update_icon_state()
 	. = ..()
-	if(istype(ammo_magazine,/obj/item/ammo_magazine/m95))
-		icon_state = "battlerifle"
-	else
-		icon_state = (ammo_magazine)? "battlerifle" : "battlerifle_empty"
+	icon_state = magazine? "battlerifle" : "battlerifle_empty"
 
 // For general use
 /obj/item/gun/projectile/ballistic/shotgun/pump/JSDF
@@ -37,8 +33,8 @@
 	icon_override = 'icons/obj/gun/ballistic.dmi'
 	item_state = "haloshotgun_i"
 	item_icons = null
-	ammo_type = /obj/item/ammo_casing/a12g
-	max_shells = 12
+	internal_magazine_size = 12
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12g
 
 // For general use
 /obj/item/gun/projectile/ballistic/automatic/pdw
@@ -50,9 +46,8 @@
 	caliber = /datum/ammo_caliber/a9mm
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT
-	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/a9mm/large
-	allowed_magazines = list(/obj/item/ammo_magazine/a9mm, /obj/item/ammo_magazine/a9mm/large)
+	magazine_preload = /obj/item/ammo_magazine/a9mm/large
+	magazine_restrict = /obj/item/ammo_magazine/a9mm
 
 	firemodes = list(
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
@@ -65,10 +60,10 @@
 
 /obj/item/gun/projectile/ballistic/automatic/pdw/update_icon_state()
 	. = ..()
-	if(istype(ammo_magazine,/obj/item/ammo_magazine/a9mm))
+	if(istype(magazine, /obj/item/ammo_magazine/a9mm))
 		icon_state = "pdw-short"
 	else
-		icon_state = (ammo_magazine)? "pdw" : "pdw-empty"
+		icon_state = magazine? "pdw" : "pdw-empty"
 
 // For general use
 /obj/item/gun/projectile/energy/imperial
@@ -93,12 +88,10 @@
 	icon_state = "stg60"
 	item_state = "arifle"
 	w_class = WEIGHT_CLASS_BULKY
-	max_shells = 30
 	caliber = /datum/ammo_caliber/a7_92mm
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2, TECH_ILLEGAL = 6)
-	magazine_type = /obj/item/ammo_magazine/a7_92mm
-	allowed_magazines = list(/obj/item/ammo_magazine/a7_92mm)
-	load_method = MAGAZINE
+	magazine_preload = /obj/item/ammo_magazine/a7_92mm
+	magazine_restrict = /obj/item/ammo_magazine/a7_92mm
 
 /obj/item/gun/projectile/ballistic/automatic/stg/update_icon()
 	. = ..()
@@ -106,8 +99,8 @@
 
 /obj/item/gun/projectile/ballistic/automatic/stg/update_icon_state()
 	. = ..()
-	icon_state = (ammo_magazine)? "stg60" : "stg60-e"
-	item_state = (ammo_magazine)? "arifle" : "arifle-e"
+	icon_state = magazine? "stg60" : "stg60-e"
+	item_state = magazine? "arifle" : "arifle-e"
 
 /datum/firemode/energy/eluger
 	cycle_cooldown = 0.4 SECONDS
@@ -141,16 +134,15 @@
 	desc = "The FS HG .380 \"Giskard\" can even fit into the pocket! Uses .380 rounds."
 	icon_state = "giskardcivil"
 	caliber = /datum/ammo_caliber/a38
-	magazine_type = /obj/item/ammo_magazine/a38
-	allowed_magazines = list(/obj/item/ammo_magazine/a38)
-	load_method = MAGAZINE
+	magazine_preload = /obj/item/ammo_magazine/a38
+	magazine_restrict = /obj/item/ammo_magazine/a38
 	w_class = WEIGHT_CLASS_SMALL
 	fire_sound = 'sound/weapons/gunshot_pathetic.ogg'
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 3)
 
 /obj/item/gun/projectile/ballistic/giskard/update_icon_state()
 	. = ..()
-	if(ammo_magazine && ammo_magazine.amount_remaining())
+	if(magazine && magazine.get_amount_remaining())
 		icon_state = "giskardcivil"
 	else
 		icon_state = "giskardcivil_empty"
@@ -167,7 +159,7 @@
 
 /obj/item/gun/projectile/ballistic/giskard/olivaw/update_icon_state()
 	. = ..()
-	if(ammo_magazine && ammo_magazine.amount_remaining())
+	if(magazine && magazine.get_amount_remaining())
 		icon_state = "olivawcivil"
 	else
 		icon_state = "olivawcivil_empty"
@@ -179,13 +171,12 @@
 	icon_state = "inspector"
 	item_state = "revolver"
 	caliber = /datum/ammo_caliber/a44
-	ammo_type = /obj/item/ammo_casing/a44/rubber
-	handle_casings = CYCLE_CASINGS
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a44/rubber
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3)
 
 /obj/item/gun/projectile/ballistic/revolver/consul/update_overlays()
 	. = ..()
-	if(loaded.len==0)
+	if(get_ammo_remaining())
 		. += "inspector_off"
 	else
 		. += "inspector_on"
@@ -211,9 +202,8 @@
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BELT
 	caliber = /datum/ammo_caliber/a9mm
-	magazine_type = /obj/item/ammo_magazine/a9mm
-	allowed_magazines = list(/obj/item/ammo_magazine/a9mm)
-	load_method = MAGAZINE
+	magazine_preload = /obj/item/ammo_magazine/a9mm
+	magazine_restrict = /obj/item/ammo_magazine/a9mm
 	multi_aim = 1
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
 	firemodes = list(
@@ -224,16 +214,16 @@
 	dispersion=list(0.0, 0.6, 1.0)
 
 /obj/item/gun/projectile/ballistic/automatic/sol/proc/update_charge()
-	if(!ammo_magazine)
+	if(!magazine)
 		return
-	var/ratio = ammo_magazine.amount_remaining() / ammo_magazine.ammo_max
+	var/ratio = magazine.get_amount_remaining() / magazine.ammo_max
 	if(ratio < 0.25 && ratio != 0)
 		ratio = 0.25
 	ratio = round(ratio, 0.25) * 100
 	add_overlay("smg_[ratio]")
 
 /obj/item/gun/projectile/ballistic/automatic/sol/update_icon()
-	icon_state = (ammo_magazine)? "SMG-IS" : "SMG-IS-empty"
+	icon_state = magazine? "SMG-IS" : "SMG-IS-empty"
 	cut_overlay()
 	update_charge()
 
