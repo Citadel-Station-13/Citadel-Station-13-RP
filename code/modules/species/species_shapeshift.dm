@@ -576,6 +576,10 @@ var/list/wrapped_species_by_ref = list()
 	if(!istype(target))
 		return FALSE
 
+	if(target.client.prefs.resleeve_lock)
+		to_chat(src,"<span class='warning'>This person has enabled Prevent Body Impersonation, you cannot copy them!</span>")
+		return FALSE
+
 	if(get_dist(src,target) > 3)
 		to_chat(src,"<span class='warning'>There's nobody nearby to use this on.</span>")
 		return FALSE
