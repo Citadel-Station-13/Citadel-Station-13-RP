@@ -388,6 +388,8 @@
 		LAZYINITLIST(item_state_slots)
 		item_state_slots[SLOT_ID_LEFT_HAND] = wielded_item_state
 		item_state_slots[SLOT_ID_RIGHT_HAND] = wielded_item_state
+		update_icon()
+		update_worn_icon()
 
 /obj/item/gun/on_unwield(mob/user, hands)
 	. = ..()
@@ -396,6 +398,8 @@
 		LAZYINITLIST(item_state_slots)
 		item_state_slots[SLOT_ID_LEFT_HAND] = initial(item_state)
 		item_state_slots[SLOT_ID_RIGHT_HAND] = initial(item_state)
+		update_icon()
+		update_worn_icon()
 
 //Checks whether a given mob can use the gun
 //Any checks that shouldn't result in handle_click_empty() being called if they fail should go here.
