@@ -317,6 +317,8 @@
     if (type === 'css') {
       var node = document.createElement('link');
       node.type = 'text/css';
+      // yes, this is affected by cors
+      node.crossOrigin = 'anonymous';
       node.rel = 'stylesheet';
       node.href = url;
       // Temporarily set media to something inapplicable
