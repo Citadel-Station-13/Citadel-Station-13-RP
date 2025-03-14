@@ -331,7 +331,7 @@
 
 /obj/item/toy/snappop/Crossed(atom/movable/H as mob|obj)
 	. = ..()
-	if(H.is_incorporeal())
+	if(H.is_incorporeal() || H.is_avoiding_ground())
 		return
 	if((ishuman(H))) //i guess carp and shit shouldn't set them off
 		var/mob/living/carbon/M = H

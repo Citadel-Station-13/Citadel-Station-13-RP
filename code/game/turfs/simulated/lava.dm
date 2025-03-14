@@ -91,7 +91,7 @@
 
 // Tells AI mobs to not suicide by pathing into lava if it would hurt them.
 /turf/simulated/lava/is_safe_to_enter(mob/living/L)
-	if(!is_safe() && !L.hovering)
+	if(!is_safe() && !L.is_avoiding_ground())
 		return FALSE
 	return ..()
 
