@@ -3024,10 +3024,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/space)
-"dAg" = (
-/obj/machinery/mineral/equipment_vendor/engineering,
-/turf/simulated/floor/tiled/techmaint,
-/area/space)
 "dAM" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/tank/emergency/oxygen/double,
@@ -19885,7 +19881,6 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 10
 	},
-/obj/machinery/vending/engivend,
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
 "yky" = (
@@ -35346,7 +35341,7 @@ mCr
 cin
 gkC
 dbu
-dAg
+kuh
 jUK
 mTY
 mel
