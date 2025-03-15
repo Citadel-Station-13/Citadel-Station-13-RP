@@ -24,12 +24,6 @@
 	tool_speed = 1
 	var/random_color = TRUE
 
-/obj/item/tool/screwdriver/suicide_act(mob/user)
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	user.visible_message(pick("<span class='danger'>\The [user] is stabbing the [src.name] into [TU.his] temple! It looks like [TU.hes] trying to commit suicide.</span>", \
-						"<span class='danger'>\The [user] is stabbing the [src.name] into [TU.his] heart! It looks like [TU.hes] trying to commit suicide.</span>"))
-	return(BRUTELOSS)
-
 /obj/item/tool/screwdriver/Initialize(mapload)
 	if(random_color)
 		switch(pick("red","blue","purple","brown","green","cyan","yellow"))

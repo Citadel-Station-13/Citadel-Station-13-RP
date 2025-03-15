@@ -1,5 +1,3 @@
-////////////// PTR-7 Anti-Materiel Rifle //////////////
-
 /obj/item/gun/projectile/ballistic/heavysniper
 	name = "anti-materiel rifle"
 	desc = "A portable anti-armour rifle fitted with a scope, the HI PTR-7 Rifle was originally designed to used against armoured exosuits. It is capable of punching through windows and non-reinforced walls with ease. Fires armor piercing 12.7mm shells."
@@ -13,60 +11,21 @@
 	origin_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 2, TECH_ILLEGAL = 8)
 	caliber = /datum/ammo_caliber/a12_7mm
 	recoil = 5 //extra kickback
-	handle_casings = HOLD_CASINGS
-	load_method = SINGLE_CASING
-	max_shells = 1
-	ammo_type = /obj/item/ammo_casing/a12_7mm
-	projectile_type = /obj/projectile/bullet/rifle/a12_7mm
-	load_sound = 'sound/weapons/guns/interaction/rifle_load.ogg'
+	chamber_preload_ammo = /obj/item/ammo_casing/a12_7mm
+	internal_magazine = TRUE
+	bolt_simulation = TRUE
+	bolt_auto_eject_on_open = FALSE
+	chamber_cycle_after_fire = FALSE
+	single_load_sound = 'sound/weapons/guns/interaction/rifle_load.ogg'
 	accuracy = -45
 	scoped_accuracy = 95
 	one_handed_penalty = 90
-	var/bolt_open = 0
 
 /obj/item/gun/projectile/ballistic/heavysniper/update_icon()
-	if(bolt_open)
-		icon_state = "heavysniper-open"
-	else
+	if(bolt_closed)
 		icon_state = "heavysniper"
-
-/obj/item/gun/projectile/ballistic/heavysniper/attack_self(mob/user, datum/event_args/actor/actor)
-	. = ..()
-	if(.)
-		return
-	playsound(src.loc, 'sound/weapons/flipblade.ogg', 50, 1)
-	bolt_open = !bolt_open
-	if(bolt_open)
-		if(chambered)
-			to_chat(user, "<span class='notice'>You work the bolt open, ejecting [chambered]!</span>")
-			chambered.loc = get_turf(src)
-			loaded -= chambered
-			chambered = null
-		else
-			to_chat(user, "<span class='notice'>You work the bolt open.</span>")
-		playsound(src.loc, 'sound/weapons/guns/interaction/rifle_boltback.ogg', 50, 1)
 	else
-		to_chat(user, "<span class='notice'>You work the bolt closed.</span>")
-		playsound(src.loc, 'sound/weapons/guns/interaction/rifle_boltforward.ogg', 50, 1)
-		bolt_open = 0
-	add_fingerprint(user)
-	update_icon()
-
-/obj/item/gun/projectile/ballistic/heavysniper/special_check(mob/user)
-	if(bolt_open)
-		to_chat(user, "<span class='warning'>You can't fire [src] while the bolt is open!</span>")
-		return 0
-	return ..()
-
-/obj/item/gun/projectile/ballistic/heavysniper/load_ammo(var/obj/item/A, mob/user)
-	if(!bolt_open)
-		return
-	..()
-
-/obj/item/gun/projectile/ballistic/heavysniper/unload_ammo(mob/user, var/allow_dump=1)
-	if(!bolt_open)
-		return
-	..()
+		icon_state = "heavysniper-open"
 
 /obj/item/gun/projectile/ballistic/heavysniper/verb/scope()
 	set category = VERB_CATEGORY_OBJECT
@@ -74,8 +33,6 @@
 	set popup_menu = 1
 
 	toggle_scope(2.0)
-
-////////////// Dragunov Sniper Rifle //////////////
 
 /obj/item/gun/projectile/ballistic/SVD
 	name = "\improper Dragunov"
@@ -87,19 +44,18 @@
 	slot_flags = SLOT_BACK // Needs a sprite.
 	origin_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 2, TECH_ILLEGAL = 8)
 	caliber = /datum/ammo_caliber/a7_62mm
-	load_method = MAGAZINE
 	accuracy = -45 //shooting at the hip
 	scoped_accuracy = 95
 	heavy = TRUE
 //	requires_two_hands = 1
 	one_handed_penalty = 60 // The weapon itself is heavy, and the long barrel makes it hard to hold steady with just one hand.
 	fire_sound = 'sound/weapons/Gunshot_SVD.ogg' // Has a very unique sound.
-	magazine_type = /obj/item/ammo_magazine/a7_62mm/svd
-	allowed_magazines = list(/obj/item/ammo_magazine/a7_62mm/svd)
+	magazine_preload = /obj/item/ammo_magazine/a7_62mm/svd
+	magazine_restrict = /obj/item/ammo_magazine/a7_62mm/svd
 
 /obj/item/gun/projectile/ballistic/SVD/update_icon_state()
 	. = ..()
-	if(ammo_magazine)
+	if(magazine)
 		icon_state = "SVD"
 	else
 		icon_state = "SVD-empty"

@@ -61,11 +61,6 @@
 /obj/item/melee/baton/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot)
 	return ..() && !legacy_use_external_power
 
-/obj/item/melee/baton/suicide_act(mob/user)
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	user.visible_message("<span class='suicide'>\The [user] is putting the live [name] in [TU.his] mouth! It looks like [TU.he] [TU.is] trying to commit suicide.</span>")
-	return (FIRELOSS)
-
 /**
  * Turn off if we're out of charge
  */

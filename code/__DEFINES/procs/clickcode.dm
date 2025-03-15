@@ -48,7 +48,8 @@
 /// stop the click chain from proceeding past this point; usually used if we're deleting or being inserted
 ///
 /// * This is an unconditional abort.
-/// * DO NOT ABUSE THIS PROC TO INTERRUPT AFTERATTACKS WITHOUT CARE; this is NOT what this is here for!
+/// * This should be used if an item will no longer be held by the user after the end of the proc.
+///   This can happen from inserting something, deleting something, exploding something, etc.
 #define CLICKCHAIN_DO_NOT_PROPAGATE			(1<<0)
 /// person can reach us normally
 #define CLICKCHAIN_HAS_PROXIMITY			(1<<1)

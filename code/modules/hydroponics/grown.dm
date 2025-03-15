@@ -144,7 +144,7 @@
 
 /obj/item/reagent_containers/food/snacks/grown/Crossed(var/mob/living/M)
 	. = ..()
-	if(M.is_incorporeal())
+	if(M.is_incorporeal() || M.is_avoiding_ground())
 		return
 	if(seed && seed.get_trait(TRAIT_JUICY) == 2)
 		if(istype(M))

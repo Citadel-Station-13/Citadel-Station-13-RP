@@ -10,7 +10,7 @@
 	if(user.stat)
 		return
 
-	if(chambered)
+	if(get_chambered())
 		to_chat(user, "<span class='warning'>You need to empty the rifle to break it down.</span>")
 	else
 		collapse_rifle(user)
@@ -173,7 +173,7 @@
 
 /obj/item/gun/projectile/ballistic/heavysniper/update_icon_state()
 	. = ..()
-	if(bolt_open)
-		icon_state = "heavysniper-open"
-	else
+	if(bolt_closed)
 		icon_state = "heavysniper"
+	else
+		icon_state = "heavysniper-open"

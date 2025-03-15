@@ -4,30 +4,44 @@
 //* Caliber *//
 
 /datum/ammo_caliber/nt_expedition/heavy_sidearm
+	name = "NT-9-LR"
+	id = "nt-heavy-sidearm"
 	caliber = "nt-heavy-sidearm"
 	diameter = 9
 	length = 34
 
+//* Designs *//
+
+/datum/prototype/design/generated/nt_expedition_ammo/heavy_sidearm
+	abstract_type = /datum/prototype/design/generated/nt_expedition_ammo/heavy_sidearm
+
 //* Ammo Casings *//
 
 /obj/item/ammo_casing/nt_expedition/heavy_sidearm
-	name = "ammo casing (NT-9-magnum)"
+	name = "ammo casing (NT-9-LR)"
 	desc = "A standardized 9mm cartridge for NT Expeditionary kinetics. This one seems to be for heavy-duty sidearms."
-	caliber = /datum/ammo_caliber/nt_expedition/heavy_sidearm
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/sidearm-heavy-ammo.dmi'
+	icon_state = "basic"
+	icon_spent = TRUE
+	casing_caliber = /datum/ammo_caliber/nt_expedition/heavy_sidearm
 	projectile_type = /obj/projectile/bullet/nt_expedition/heavy_sidearm
+
+	materials_base = list(
+		/datum/prototype/material/steel::id = 85,
+	)
 
 	/// specifically for /obj/item/ammo_magazine/nt_expedition/heavy_rifle's
 	var/speedloader_state = "basic"
 
-/obj/item/ammo_casing/nt_expedition/heavy_sidearm/piercing
-	icon_state = "piercing"
-	speedloader_state = "piercing"
-	// todo: implement casing + magazine
+// todo: implement projectile + magazine
+// /obj/item/ammo_casing/nt_expedition/heavy_sidearm/piercing
+// 	icon_state = "piercing"
+// 	speedloader_state = "piercing"
 
-/obj/item/ammo_casing/nt_expedition/heavy_sidearm/rubber
-	icon_state = "rubber"
-	speedloader_state = "rubber"
-	// todo: implement casing + magazine
+// todo: implement projectile + magazine
+// /obj/item/ammo_casing/nt_expedition/heavy_sidearm/rubber
+// 	icon_state = "rubber"
+// 	speedloader_state = "rubber"
 
 //* Magazines *//
 
@@ -36,7 +50,6 @@
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/sidearm-heavy-ammo.dmi'
 	rendering_system = GUN_RENDERING_DISABLED
 	ammo_caliber = /datum/ammo_caliber/nt_expedition/heavy_sidearm
-	ammo_max = 5
 	ammo_preload = /obj/item/ammo_casing/nt_expedition/heavy_sidearm
 
 /obj/item/ammo_magazine/nt_expedition/heavy_sidearm/speedloader
@@ -44,12 +57,13 @@
 	icon_state = "speedloader"
 	base_icon_state = "speedloader"
 	magazine_type = MAGAZINE_TYPE_SPEEDLOADER
+	ammo_max = 6
 
 /obj/item/ammo_magazine/nt_expedition/heavy_sidearm/speedloader/update_icon(updates)
 	cut_overlays()
 	. = ..()
 	var/list/overlays_to_add = list()
-	for(var/i in 1 to min(4, amount_remaining()))
+	for(var/i in 1 to min(4, get_amount_remaining()))
 		var/obj/item/ammo_casing/nt_expedition/heavy_sidearm/predicted_path = peek_path_of_position(i)
 		var/append = "basic"
 		if(ispath(predicted_path, /obj/item/ammo_casing/nt_expedition/heavy_sidearm))
@@ -66,13 +80,20 @@
 	base_icon_state = "magazine"
 	rendering_static_overlay = "magazine-stripe"
 	magazine_type = MAGAZINE_TYPE_NORMAL
+	ammo_max = 10
 
+GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidearm/smg, /nt_expedition_ammo/heavy_sidearm/smg, "nt-ammo-9mmLR-smg");
 /obj/item/ammo_magazine/nt_expedition/heavy_sidearm/smg
 	name = "smg magazine (NT-9-LR)"
 	icon_state = "smg-1"
 	base_icon_state = "smg"
 	rendering_static_overlay = "smg-stripe"
 	magazine_type = MAGAZINE_TYPE_NORMAL
+	ammo_max = 20
+	materials_base = list(
+		/datum/prototype/material/steel::id = 500,
+		/datum/prototype/material/glass::id = 235,
+	)
 
 //* Projectiles *//
 
@@ -100,10 +121,10 @@
 		Feeding from medium-sized magazines, this full-sized service pistol is seen when
 		fighting is expected and not simply a possibility.
 	"} + "<br>"
-	load_method = SINGLE_CASING | MAGAZINE
 	icon_state = "pistol-map"
 	base_icon_state = "pistol"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
+	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_sidearm/pistol
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/revolver
 	name = "heavy revolver"
@@ -115,9 +136,23 @@
 		this weapon is seen in the hands of those who prefer style over functionality or want
 		the fine trigger control a triple-action revolver provides.
 	"} + "<br>"
-	load_method = SINGLE_CASING | SPEEDLOADER
+	internal_magazine = TRUE
+	internal_magazine_size = /obj/item/ammo_magazine/nt_expedition/heavy_sidearm/speedloader::ammo_max
 	icon_state = "revolver"
 
+/datum/firemode/nt_expedition_heavy_smg
+	abstract_type = /datum/firemode/nt_expedition_heavy_smg
+
+/datum/firemode/nt_expedition_heavy_smg/semi_auto
+	name = "semi-auto"
+
+/datum/firemode/nt_expedition_heavy_smg/three_burst
+	name = "3-burst"
+	burst_amount = 3
+	burst_delay = 1.5
+	projectile_base_dispersion = 7.5
+
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/smg, /nt_expedition/heavy_smg, "nt-expeditionary-heavy_smg")
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/smg
 	name = "submachine gun"
 	desc = "The XNMP Mk.8 \"Buzzsaw\" submachine gun; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
@@ -129,7 +164,19 @@
 		in dense jungle foliage, where the high-velocity rounds batter aside light cover
 		with relative ease.
 	"} + "<br>"
-	load_method = SINGLE_CASING | MAGAZINE
 	icon_state = "smg-map"
 	base_icon_state = "smg"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
+	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_sidearm/smg
+	materials_base = list(
+		/datum/prototype/material/steel::id = 3200,
+		/datum/prototype/material/glass::id = 1450,
+		/datum/prototype/material/gold::id = 350,
+		/datum/prototype/material/silver::id = 850,
+		/datum/prototype/material/lead::id = 1000,
+		/datum/prototype/material/copper::id = 500,
+	)
+	firemodes = list(
+		/datum/firemode/nt_expedition_heavy_smg/semi_auto,
+		/datum/firemode/nt_expedition_heavy_smg/three_burst,
+	)

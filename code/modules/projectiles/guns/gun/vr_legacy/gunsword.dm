@@ -110,12 +110,5 @@
 	add_fingerprint(user)
 	return
 
-/obj/item/cell/device/weapon/gunsword/suicide_act(mob/user)
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	if(active)
-		user.visible_message(pick("<span class='danger'>\The [user] is slitting [TU.his] stomach open with \the [src]! It looks like [TU.he] [TU.is] trying to commit seppuku.</span>",\
-			"<span class='danger'>\The [user] is falling on \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>"))
-		return (BRUTELOSS|FIRELOSS)
-
 /obj/item/cell/device/weapon/gunsword/update_icon()
 	cut_overlay()
