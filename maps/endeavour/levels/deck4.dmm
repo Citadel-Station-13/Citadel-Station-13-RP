@@ -16815,24 +16815,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/space)
-"uIr" = (
-/obj/structure/sign/directions/security{
-	dir = 8
-	},
-/obj/structure/sign/directions/medical{
-	pixel_y = -6;
-	dir = 8
-	},
-/obj/structure/sign/directions/elevator{
-	dir = 1;
-	pixel_y = 6
-	},
-/obj/structure/sign/directions/bridge{
-	dir = 1;
-	pixel_y = 12
-	},
-/turf/simulated/wall/prepainted,
-/area/space)
 "uIx" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black,
 /obj/structure/disposalpipe/segment{
@@ -19795,10 +19777,6 @@
 	},
 /obj/structure/bed/chair/bay/comfy,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
-"ydX" = (
-/obj/structure/reagent_dispensers/he3,
-/turf/simulated/floor/plating,
 /area/space)
 "ydZ" = (
 /turf/simulated/wall/r_wall/prepainted/civilian,
@@ -23686,8 +23664,8 @@ jNg
 jNg
 jNg
 jNg
-jNg
-jNg
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -23880,8 +23858,8 @@ jNg
 jNg
 jNg
 jNg
-uIr
-jNg
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -24074,8 +24052,8 @@ jNg
 jNg
 jNg
 jNg
-jNg
-jNg
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -27006,7 +26984,7 @@ nBz
 rhM
 kqL
 kNH
-ydX
+xKs
 mPc
 xKs
 xKs
@@ -30547,7 +30525,6 @@ jNg
 jNg
 jNg
 jNg
-jNg
 xRj
 xRj
 xRj
@@ -30556,8 +30533,9 @@ xRj
 xRj
 xRj
 xRj
-jNg
-jNg
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -30741,17 +30719,17 @@ jNg
 jNg
 jNg
 jNg
-jNg
-kNH
-kNH
-kNH
-kNH
-kNH
-kNH
-kNH
-kNH
-jNg
-jNg
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg

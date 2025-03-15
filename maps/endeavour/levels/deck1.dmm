@@ -1732,9 +1732,6 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/hallway/d1portamidhall)
 "bsC" = (
@@ -5917,9 +5914,6 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/main)
 "fef" = (
@@ -8609,9 +8603,6 @@
 /obj/machinery/door/airlock/maintenance,
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/machinery/door/firedoor/glass,
-/obj/structure/cable/orange{
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/dock)
 "hws" = (
@@ -18067,9 +18058,6 @@
 	dir = 8
 	},
 /obj/map_helper/access_helper/airlock/station/head_office/pathfinder,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/machinery/door/airlock/glass/exploration{
 	name = "Pathfinder's Office"
 	},
@@ -20514,9 +20502,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 2;
 	icon_state = "pipe-c"
-	},
-/obj/structure/cable/green{
-	icon_state = "2-4"
 	},
 /obj/structure/cable/green{
 	icon_state = "2-8"
