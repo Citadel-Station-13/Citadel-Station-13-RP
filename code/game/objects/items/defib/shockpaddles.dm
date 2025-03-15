@@ -172,7 +172,8 @@
 	if(ishuman(L) && can_use(clickchain.performer, L))
 		busy = 1
 		update_icon()
-		do_electrocute(L, clickchain.performer, clickchain.target_zone)
+		do_electrocute(L, clickchain.performer, clickchain.target_zone
+		git )
 		busy = 0
 		update_icon()
 		return NONE

@@ -240,11 +240,11 @@
 					return
 	..()
 
-/obj/item/reagent_containers/food/snacks/grown/melee_finalize(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style, atom/fixed_target, mob/fixed_performer, fixed_missed)
+/obj/item/reagent_containers/food/snacks/grown/melee_finalize(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
 	. = ..()
-	if(. & CLICKCHAIN_FLAGS_UNCONDITIONAL_ABORT)
+	if(. & (CLICKCHAIN_FLAGS_UNCONDITIONAL_ABORT | CLICKCHAIN_ATTACK_MISSED))
 		return
-	var/mob/living/L = fixed_target
+	var/mob/living/L = clickchain.target
 	if(!istype(L))
 		return
 	if(seed && seed.get_trait(TRAIT_STINGS))
@@ -256,7 +256,7 @@
 			. |= CLICKCHAIN_DO_NOT_PROPAGATE
 			return
 		if(prob(35))
-			if(fixed_performer)
+			if(clickchain.performer)
 				to_chat(clickchain.performer, "<span class='danger'>\The [src] has fallen to bits.</span>")
 				qdel(src)
 				. |= CLICKCHAIN_DO_NOT_PROPAGATE

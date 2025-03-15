@@ -117,23 +117,21 @@
 	 */
 
 	// -- resolve our side --
-	var/missed = FALSE
 	clickchain.performer.legacy_alter_melee_clickchain(clickchain)
 
 	// -- call on them (if we didn't miss / get called off already) --
 	. |= clickchain.target.item_melee_act(clickchain.performer, attack_style, clickchain.target_zone, clickchain)
-	missed = . & CLICKCHAIN_ATTACK_MISSED
 
 	// -- call override --
 	var/overridden = melee_override(clickchain.target, clickchain.performer, clickchain.using_intent, clickchain.attack_contact_multiplier, clickchain)
 
 	// -- execute attack if override didn't run --
 	if(!overridden && !(. & CLICKCHAIN_FLAGS_ATTACK_ABORT))
-		. |= melee_impact(clickchain, clickchain_flags, attack_style, clickchain.target, clickchain.performer, missed)
+		. |= melee_impact(clickchain, clickchain_flags, attack_style)
 
 	// -- finalize --
 	if(!(. & CLICKCHAIN_FLAGS_UNCONDITIONAL_ABORT))
-		. |= melee_finalize(clickchain, clickchain_flags, attack_style, clickchain.target, clickchain.performer, missed)
+		. |= melee_finalize(clickchain, clickchain_flags, attack_style)
 
 	// -- log --
 	log_weapon_melee(clickchain, attack_style, src)
@@ -175,22 +173,23 @@
  * * clickchain - clickchain data
  * * clickchain_flags - clickchain flags
  * * attack_style - attack style being used
- * * fixed_target - The target swung at; at this point it can't be changed.
- * * fixed_performer - The user doing the swinging; at this point it can't be changed.
- * * fixed_missed - Did we miss? Do **not** use clickchain flags to infer this! It's specified explicitly for a reason.
  *
  * @return clickchain flags
  */
-/obj/item/proc/melee_impact(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style, atom/fixed_target, mob/fixed_performer, fixed_missed)
-	attack_style.perform_attack_animation(fixed_performer, fixed_target, clickchain, fixed_missed)
-	attack_style.perform_attack_sound(fixed_performer, fixed_target, clickchain, fixed_missed)
-	attack_style.perform_attack_message(fixed_performer, fixed_target, clickchain, fixed_missed)
+/obj/item/proc/melee_impact(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
+	var/atom/fixed_target = clickchain.target
+	var/mob/fixed_performer = clickchain.performer
+	var/missed = clickchain_flags & CLICKCHAIN_ATTACK_MISSED
 
-	if(fixed_missed)
-		return NONE
+	attack_style.perform_attack_animation(fixed_performer, fixed_target, clickchain, missed)
+	attack_style.perform_attack_sound(fixed_performer, fixed_target, clickchain, missed)
+	attack_style.perform_attack_message(fixed_performer, fixed_target, clickchain, missed)
+
+	if(missed)
+		return clickchain_flags
 
 	fixed_target.animate_hit_by_weapon(fixed_performer, src)
-	return fixed_target.on_melee_act(fixed_performer, attack_style, clickchain)
+	return clickchain_flags | fixed_target.on_melee_act(fixed_performer, attack_style, clickchain)
 
 #warn parse below
 
@@ -226,12 +225,9 @@
  * * clickchain - clickchain data
  * * clickchain_flags - clickchain flags
  * * attack_style - attack style used
- * * fixed_target - The target swung at; at this point it can't be changed.
- * * fixed_performer - The user doing the swinging; at this point it can't be changed.
- * * fixed_missed - Did we miss? Do **not** use clickchain flags to infer this! It's specified explicitly for a reason.
  *
  * @return CLICKCHAIN_* flags
  */
-/obj/item/proc/melee_finalize(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style, atom/fixed_target, mob/fixed_performer, fixed_missed)
+/obj/item/proc/melee_finalize(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
 	SHOULD_NOT_SLEEP(TRUE)
-	return NONE
+	return clickchain_flags

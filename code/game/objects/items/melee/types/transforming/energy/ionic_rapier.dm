@@ -29,13 +29,13 @@
 		user.setClickCooldownLegacy(user.get_attack_speed_legacy(src)) // A lot of objects don't set click delay.
 	return ..()
 
-/obj/item/melee/transforming/energy/sword/ionic_rapier/melee_finalize(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style, atom/fixed_target, mob/fixed_performer, fixed_missed)
+/obj/item/melee/transforming/energy/sword/ionic_rapier/melee_finalize(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
 	. = ..()
-	if(fixed_missed)
+	if(. & (CLICKCHAIN_ATTACK_MISSED | CLICKCHAIN_FLAGS_UNCONDITIONAL_ABORT))
 		return
 	if(clickchain.attack_contact_multiplier <= 0)
 		return
-	var/mob/living/L = fixed_target
+	var/mob/living/L = clickchain.target
 	if(!istype(L))
 		return
 	if(L.isSynthetic() && active)

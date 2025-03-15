@@ -79,7 +79,9 @@
 		fixed_target.animate_hit_by_attack(attack_style.animation_type)
 		. |= fixed_target.on_melee_act(src, attack_style, clickchain)
 
-	. |= melee_finalize(fixed_target, clickchain, clickchain_flags, attack_style, missed)
+	// todo: melee_override and melee_impact, much like on items
+
+	. |= melee_finalize(clickchain, clickchain_flags, attack_style)
 
 	// -- log --
 	log_unarmed_melee(clickchain, attack_style)
@@ -90,13 +92,11 @@
  * * Missing is defined as a failure to make contact. Being fully blocked/negated is still a hit.
  *
  * @params
- * * target - The target swung at; at this point it can't be redirected
  * * clickchain - clickchain data
  * * clickchain_flags - clickchain flags
  * * attack_style - unarmed attack style used
- * * missed - did we miss?
  *
  * @return CLICKCHAIN_* flags
  */
-/mob/proc/melee_finalize(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style, atom/fixed_target, mob/fixed_performer, fixed_missed)
+/mob/proc/melee_finalize(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
 	SHOULD_NOT_SLEEP(TRUE)

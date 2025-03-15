@@ -83,13 +83,11 @@
  * @params
  * * host - the atom attacking them that has us as a material
  * * data - metadata
- * * target - The target swung at; at this point it can't be redirected
  * * clickchain - clickchain data
  * * clickchain_flags - clickchain flags
  * * attack_style - attack style used
- * * missed - Did we miss? Do **not** use clickchain flags to infer this! It's specified explicitly for a reason.
  */
-/datum/prototype/material_trait/proc/on_melee_finalize(atom/host, data, atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style, missed)
+/datum/prototype/material_trait/proc/on_melee_finalize(atom/host, data, datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
 	return
 
 /**

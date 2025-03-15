@@ -83,9 +83,11 @@
 	origin_tech = list(TECH_MAGNET = 6, TECH_BLUESPACE = 3)
 	damage_force = 1 //Needs a token damage_force to ensure you can attack because for some reason you can't attack with 0 damage_force things
 
-/obj/item/slime_crystal/melee_finalize(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style, atom/fixed_target, mob/fixed_performer, fixed_missed)
+/obj/item/slime_crystal/melee_finalize(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
 	. = ..()
-	var/mob/living/L = fixed_target
+	if(. & CLICKCHAIN_ATTACK_MISSED)
+		return
+	var/mob/living/L = clickchain.target
 	if(!istype(L))
 		return
 	L.visible_message("<span class='warning'>\The [L] has been teleported with \the [src] by \the [clickchain.performer]!</span>")
