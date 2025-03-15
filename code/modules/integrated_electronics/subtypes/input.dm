@@ -321,13 +321,13 @@
 			set_pin_data(IC_OUTPUT, 7, H.getToxLoss())
 			set_pin_data(IC_OUTPUT, 8, H.getOxyLoss())
 			set_pin_data(IC_OUTPUT, 9, H.getCloneLoss())
-			set_pin_data(IC_OUTPUT, 10, round((H.vessel.get_reagent_amount("blood") / H.species.blood_volume)*100))
+			set_pin_data(IC_OUTPUT, 10, round((H.blood_holder.get_total_volume() / H.species.blood_volume)*100))
 			set_pin_data(IC_OUTPUT, 11, H.traumatic_shock)
 			set_pin_data(IC_OUTPUT, 12, H.radiation)
 			set_pin_data(IC_OUTPUT, 13, H.nutrition)
 			var/cont[0]
 			var/amt[0]
-			for(var/datum/reagent/RE in H.reagents.reagent_list)
+			for(var/datum/reagent/RE in H.reagents.get_reagent_datums())
 				if(RE.scannable || advscan >= 3)
 					cont += RE.id
 					amt	+= round(H.reagents.get_reagent_amount(RE.id), 1)
@@ -439,8 +439,8 @@
 			set_pin_data(IC_OUTPUT, 9, T.amount_grown/1000)
 			var/datum/ai_holder/polaris/simple_mob/xenobio_slime/AI = T.ai_holder
 			set_pin_data(IC_OUTPUT, 10, AI.rabid)
-			set_pin_data(IC_OUTPUT, 11, AI.obedience)
-			set_pin_data(IC_OUTPUT, 12, AI.discipline)
+			set_pin_data(IC_OUTPUT, 11, AI.discipline)
+			set_pin_data(IC_OUTPUT, 12, AI.obedience)
 
 
 		push_data()
@@ -1898,7 +1898,8 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 			var/target_x = get_pin_data(IC_INPUT, 1)
 			var/target_y = get_pin_data(IC_INPUT, 2)
 			var/turf/A = locate(clamp(target_x + T.x,0,world.maxx), clamp(target_y + T.y,0,world.maxy), T.z)
-			var/obj/projectile/trace/trace_projectile = new(assembly.loc)
+			var/turf/starting = get_turf(src)
+			var/obj/projectile/trace/trace_projectile = new(starting)
 			trace_projectile.pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
 			trace_projectile.prepare_trace(A, TRUE)
 			trace_projectile.fire()
@@ -1908,7 +1909,8 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 				activate_pin(3)
 		if(2)
 			var/atom/target = get_pin_data(IC_INPUT, 3)
-			var/obj/projectile/trace/trace_projectile = new(assembly.loc)
+			var/turf/starting = get_turf(src)
+			var/obj/projectile/trace/trace_projectile = new(starting)
 			trace_projectile.pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
 			trace_projectile.prepare_trace(target, TRUE)
 			trace_projectile.fire()

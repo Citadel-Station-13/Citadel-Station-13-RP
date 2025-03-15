@@ -4343,9 +4343,6 @@
 "dKV" = (
 /obj/machinery/camera/network/prison,
 /obj/structure/table/reinforced,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/phase,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/phase,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/phase,
 /obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor/tiled,
 /area/space)
@@ -5594,11 +5591,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/space)
-"ePI" = (
-/obj/machinery/mineral/equipment_vendor,
-/obj/effect/floor_decal/corner/brown/diagonal,
-/turf/simulated/floor/tiled/white,
 /area/space)
 "eQM" = (
 /obj/effect/floor_decal/corner/red{
@@ -14077,20 +14069,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/space)
-"mXi" = (
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 2;
-	icon_state = "shutter0";
-	id = "cargo_line_shutter";
-	name = "Cargo Line shutter";
-	opacity = 0
-	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/beastybrown,
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/plating,
-/area/space)
 "mXn" = (
 /obj/machinery/computer/security{
 	dir = 1
@@ -16199,13 +16177,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/space)
-"oOf" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 4
-	},
-/obj/landmark/spawnpoint/job/janitor,
-/turf/simulated/floor/tiled/dark,
-/area/space)
 "oOo" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -16701,9 +16672,6 @@
 /area/space)
 "pkU" = (
 /obj/structure/table/reinforced,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/microtaser,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/taser,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/taser,
 /turf/simulated/floor/tiled,
 /area/space)
 "pkW" = (
@@ -23718,18 +23686,6 @@
 	pixel_y = 9
 	},
 /turf/simulated/floor/tiled/dark,
-/area/space)
-"vvP" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	icon_state = "1-8"
-	},
-/turf/simulated/floor/tiled/old_cargo/gray,
 /area/space)
 "vwh" = (
 /obj/machinery/light/small{
@@ -35596,7 +35552,7 @@ nhl
 wbn
 aZK
 egw
-oOf
+dKV
 uVc
 wbn
 fbB
@@ -40459,7 +40415,7 @@ bhf
 gos
 qJY
 mIP
-vvP
+hYL
 xwZ
 sNE
 mwA
@@ -41394,7 +41350,7 @@ qzI
 pJe
 itn
 rxD
-ePI
+vVH
 vVH
 uwg
 aYi
@@ -41801,7 +41757,7 @@ lpr
 onq
 dBy
 uHC
-mXi
+vVH
 xvg
 bhf
 bhf

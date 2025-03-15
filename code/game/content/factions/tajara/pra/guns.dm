@@ -43,7 +43,6 @@ are heavily influenced by Soviet futurism and other depictions of future soviet/
 	icon = 'icons/content/factions/tajara/items/guns/taj_automat.dmi'
 	inhand_icon = 'icons/content/factions/tajara/items/guns/taj_automat.dmi'
 	wielded_item_state = "automat-wielded"
-	fire_anim = ""
 	render_use_legacy_by_default = FALSE
 
 /obj/item/gun/projectile/ballistic/automatic/k25/taj

@@ -19740,14 +19740,9 @@
 /turf/simulated/floor/tiled,
 /area/space)
 "ycn" = (
-/obj/machinery/light,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/corner/lightorange/border,
-/turf/simulated/floor/tiled/steel,
-/area/space)
+/obj/machinery/point_redemption_vendor/engineering,
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/storage)
 "ycr" = (
 /obj/machinery/status_display{
 	pixel_y = 30

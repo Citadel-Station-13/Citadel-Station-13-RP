@@ -138,6 +138,7 @@
 	. = ..()
 	gun = new gun_type(src)
 	gun.safety_state = GUN_SAFETY_OFF
+	gun.one_handed_penalty = 0
 
 /obj/item/hardsuit_module/mounted/engage(atom/target)
 
@@ -145,10 +146,10 @@
 		return 0
 
 	if(!target)
-		gun.attack_self(holder.wearer)
-		return
+		gun.user_switch_firemodes(new /datum/event_args/actor(holder.wearer))
+		return 1
 
-	gun.Fire(target,holder.wearer)
+	gun.start_firing_cycle_async(holder.wearer, get_centered_entity_tile_angle(holder.wearer, target), NONE, null, target, new /datum/event_args/actor(holder.wearer))
 	return 1
 
 /obj/item/hardsuit_module/mounted/egun

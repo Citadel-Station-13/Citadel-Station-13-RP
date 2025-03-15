@@ -6561,7 +6561,7 @@
 /turf/simulated/wall/prepainted/command,
 /area/station/stairs_one)
 "fDv" = (
-/obj/machinery/mineral/equipment_vendor/survey,
+/obj/machinery/point_redemption_vendor/survey,
 /obj/machinery/light{
 	dir = 8
 	},

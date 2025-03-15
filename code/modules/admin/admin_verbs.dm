@@ -236,7 +236,6 @@ var/list/admin_verbs_debug = list(
 	/datum/admins/proc/change_time,
 	/client/proc/admin_give_modifier,
 	/client/proc/fucky_wucky,
-	/client/proc/simple_DPS,
 	/datum/admins/proc/fishing_calculator,
 	)
 
@@ -320,7 +319,6 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/kill_airgroup,
 	/client/proc/debug_controller,
 	/client/proc/startSinglo,
-	/client/proc/simple_DPS,
 	/client/proc/cmd_debug_mob_lists,
 	/client/proc/cmd_debug_del_all,
 	/client/proc/cmd_admin_clear_mobs,

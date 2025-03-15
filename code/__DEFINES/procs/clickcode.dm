@@ -18,10 +18,11 @@
  * These are also not used for attack_self, as that isn't even a true clickcode proc.
  */
 
-/// stop the click chain from proceeding past this point; usually used if we're deleting or being inserted
+/// Unconditionally abort the chain of click handling procs past this point.
 ///
 /// * This is an unconditional abort.
-/// * DO NOT ABUSE THIS PROC TO INTERRUPT AFTERATTACKS WITHOUT CARE; this is NOT what this is here for!
+/// * This should be used if an item will no longer be held by the user after the end of the proc.
+///   This can happen from inserting something, deleting something, exploding something, etc.
 #define CLICKCHAIN_DO_NOT_PROPAGATE			(1<<0)
 /// person can reach us normally
 #define CLICKCHAIN_HAS_PROXIMITY			(1<<1)
@@ -51,6 +52,8 @@
 #define CLICKCHAIN_FLAGS_UNCONDITIONAL_ABORT (CLICKCHAIN_DO_NOT_PROPAGATE)
 /// check these for 'abort attack'
 #define CLICKCHAIN_FLAGS_ATTACK_ABORT (CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_FULL_BLOCKED)
+/// check these for 'abort further interactions'
+#define CLICKCHAIN_FLAGS_INTERACT_ABORT (CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING)
 
 //! Reachability Depths - checked from level of DirectAccess and turf adjacency.
 /// default reachability depth

@@ -107,7 +107,7 @@
 	armor_penetration = 30
 
 	silenced = 1 //embedding messages are still produced so it's kind of weird when enabled.
-	muzzle_type = null
+	legacy_muzzle_type = null
 
 /obj/projectile/bullet/pellet/fragment/strong
 	damage_force = 15
@@ -136,7 +136,7 @@
 	armor_penetration = 20
 
 	silenced = 1
-	muzzle_type = null
+	legacy_muzzle_type = null
 	pellets = 3
 
 /obj/projectile/bullet/pellet/fragment/tank/small

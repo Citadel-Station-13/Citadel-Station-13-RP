@@ -128,25 +128,11 @@
 
 // Checks if the specified amount can be provided. If it can, it removes the amount
 // from the cell and returns 1. Otherwise does nothing and returns 0.
-/obj/item/cell/proc/checked_use(var/amount)
-	if(!check_charge(amount))
+/obj/item/cell/proc/checked_use(amount, reserve)
+	if(!check_charge(amount + reserve))
 		return 0
 	use(amount)
 	return 1
-
-/**
- * use x cell units, affected by GLOB.cellefficiency
- */
-/obj/item/cell/proc/use_scaled(amount)
-	return use(amount / GLOB.cellefficiency) * GLOB.cellefficiency
-
-/**
- * uses x cell units but only if we have enough, affected by GLOB.cellefficiency
- *
- * returns TRUE/FALSE
- */
-/obj/item/cell/proc/checked_use_scaled(amount)
-	return checked_use(amount / GLOB.cellefficiency)
 
 // recharge the cell
 /obj/item/cell/proc/give(var/amount)
@@ -270,7 +256,9 @@
 	else
 		return 0
 
-/obj/item/cell/suicide_act(mob/user)
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	user.visible_message("<span class='danger'>\The [user] is licking the electrodes of \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>")
-	return (FIRELOSS)
+//* Setters *//
+
+/obj/item/cell/proc/set_charge(amount, update)
+	charge = clamp(amount, 0, maxcharge)
+	if(update)
+		update_icon()

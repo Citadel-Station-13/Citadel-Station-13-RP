@@ -155,9 +155,6 @@
 /proc/_roll(dice)
 	return roll(dice)
 
-/proc/_round(A, B = 1)
-	return round(A, B)
-
 /proc/_sin(X)
 	return sin(X)
 
@@ -241,8 +238,6 @@
 
 /proc/_has_trait(datum/thing,trait)
 	return HAS_TRAIT(thing,trait)
-/proc/_instantiate_at(thing, location)
-	new thing(location)
 
 /// Locating turfs
 /proc/_turf_in_offset(s = usr, x = 0, y = 0, z = 0)
