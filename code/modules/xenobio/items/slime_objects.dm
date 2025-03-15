@@ -85,7 +85,7 @@
 
 /obj/item/slime_crystal/melee_finalize(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style, atom/fixed_target, mob/fixed_performer, fixed_missed)
 	. = ..()
-	var/mob/living/L = target
+	var/mob/living/L = fixed_target
 	if(!istype(L))
 		return
 	L.visible_message("<span class='warning'>\The [L] has been teleported with \the [src] by \the [clickchain.performer]!</span>")

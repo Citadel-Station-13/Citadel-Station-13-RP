@@ -31,11 +31,11 @@
 
 /obj/item/melee/transforming/energy/sword/ionic_rapier/melee_finalize(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style, atom/fixed_target, mob/fixed_performer, fixed_missed)
 	. = ..()
-	if(missed)
+	if(fixed_missed)
 		return
 	if(clickchain.attack_contact_multiplier <= 0)
 		return
-	var/mob/living/L = target
+	var/mob/living/L = fixed_target
 	if(!istype(L))
 		return
 	if(L.isSynthetic() && active)

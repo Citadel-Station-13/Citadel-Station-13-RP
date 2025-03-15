@@ -244,7 +244,7 @@
 	. = ..()
 	if(. & CLICKCHAIN_FLAGS_UNCONDITIONAL_ABORT)
 		return
-	var/mob/living/L = target
+	var/mob/living/L = fixed_target
 	if(!istype(L))
 		return
 	if(seed && seed.get_trait(TRAIT_STINGS))
@@ -256,7 +256,7 @@
 			. |= CLICKCHAIN_DO_NOT_PROPAGATE
 			return
 		if(prob(35))
-			if(user)
+			if(fixed_performer)
 				to_chat(clickchain.performer, "<span class='danger'>\The [src] has fallen to bits.</span>")
 				qdel(src)
 				. |= CLICKCHAIN_DO_NOT_PROPAGATE
