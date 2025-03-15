@@ -3958,6 +3958,24 @@
 /obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled,
 /area/space)
+"dbI" = (
+/obj/structure/sign/directions/security{
+	dir = 8
+	},
+/obj/structure/sign/directions/medical{
+	pixel_y = -6;
+	dir = 8
+	},
+/obj/structure/sign/directions/elevator{
+	dir = 1;
+	pixel_y = 6
+	},
+/obj/structure/sign/directions/bridge{
+	dir = 1;
+	pixel_y = 12
+	},
+/turf/simulated/wall/prepainted,
+/area/space)
 "ddj" = (
 /obj/structure/cable/green{
 	icon_state = "2-8"
@@ -33947,7 +33965,7 @@ qPO
 vTU
 vTU
 vTU
-ecV
+dbI
 mDp
 mDp
 mDp
@@ -50799,7 +50817,7 @@ wzf
 azK
 aUR
 qjz
-qjz
+kiA
 ruN
 aUR
 qjz
@@ -50992,8 +51010,8 @@ bDe
 lRT
 hVQ
 aUR
-qjz
-qjz
+sAZ
+tYf
 ruN
 aUR
 qjz
@@ -51186,8 +51204,8 @@ rHQ
 wGY
 txt
 aUR
-qjz
-qjz
+ruN
+iHO
 ruN
 aUR
 qjz
@@ -60502,8 +60520,8 @@ pRW
 pRW
 pRW
 pRW
-qjz
-kiA
+pRW
+pRW
 mDp
 pRW
 pRW
@@ -60696,8 +60714,8 @@ pRW
 pRW
 pRW
 pRW
-sAZ
-tYf
+pRW
+pRW
 mDp
 pRW
 pRW
@@ -60890,8 +60908,8 @@ pRW
 pRW
 pRW
 pRW
-ruN
-iHO
+pRW
+pRW
 mDp
 pRW
 pRW
