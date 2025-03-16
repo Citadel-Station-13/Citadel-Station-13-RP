@@ -1283,7 +1283,7 @@
 	faction = "neutral"
 	},
 /turf/simulated/floor/airless/ceiling,
-/area/space)
+/area/endeavour/command/turrets)
 "aZF" = (
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -24042,7 +24042,7 @@
 "usG" = (
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless/ceiling,
-/area/space)
+/area/endeavour/command/turrets)
 "usL" = (
 /obj/machinery/space_heater,
 /turf/simulated/floor/plating,
@@ -24096,7 +24096,7 @@
 "utU" = (
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless,
-/area/space)
+/area/endeavour/command/turrets)
 "uua" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -24736,7 +24736,7 @@
 /turf/simulated/floor/plating{
 	initial_gas_mix = "TEMP=2.7"
 	},
-/area/space)
+/area/endeavour/command/turrets)
 "uVw" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
@@ -26621,7 +26621,7 @@
 /turf/simulated/floor/plating{
 	initial_gas_mix = "TEMP=2.7"
 	},
-/area/space)
+/area/endeavour/command/turrets)
 "wBb" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"

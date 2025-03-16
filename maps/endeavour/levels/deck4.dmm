@@ -51,7 +51,7 @@
 	},
 /obj/machinery/air_alarm/north_mount,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "add" = (
 /obj/machinery/door/airlock/hatch{
 	req_one_access = null
@@ -354,7 +354,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "aws" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /obj/structure/window/reinforced{
@@ -1019,7 +1019,7 @@
 	faction = "neutral"
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/endeavour/command/turrets)
 "bmK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -1131,7 +1131,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "bua" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/lightorange/border,
@@ -1417,7 +1417,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "bPS" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -1669,7 +1669,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "cgT" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -1924,7 +1924,7 @@
 	pixel_y = 28
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "csN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 9
@@ -2107,7 +2107,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "cBS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 5
@@ -2437,7 +2437,7 @@
 	},
 /obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "cQu" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/lightorange/border,
@@ -2772,7 +2772,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/endeavour/command/turrets)
 "dlT" = (
 /obj/structure/table/rack{
 	dir = 8;
@@ -3054,7 +3054,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/endeavour/command/turrets)
 "dEd" = (
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/structure/cable{
@@ -3486,6 +3486,9 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/space)
+"ekG" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/endeavour/command/turrets)
 "ekS" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/black{
 	dir = 4
@@ -3685,7 +3688,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "eyD" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
 	dir = 1
@@ -4055,6 +4058,9 @@
 /obj/machinery/computer/telecomms/server,
 /turf/simulated/floor/tiled/steel,
 /area/space)
+"eRS" = (
+/turf/simulated/wall/r_wall/prepainted/command,
+/area/endeavour/command/turrets)
 "eSf" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
@@ -4148,7 +4154,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/endeavour/command/turrets)
 "eZL" = (
 /obj/structure/table/rack,
 /obj/item/clothing/mask/gas,
@@ -4279,7 +4285,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "fiC" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 10
@@ -4294,7 +4300,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "fjk" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -5387,7 +5393,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "gtE" = (
 /obj/machinery/space_heater,
 /obj/effect/floor_decal/industrial/warning,
@@ -5679,7 +5685,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/endeavour/command/turrets)
 "gOm" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -6013,7 +6019,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "hhc" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -6151,7 +6157,7 @@
 	},
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "hnd" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -6274,7 +6280,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "htI" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -6607,11 +6613,11 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "hKh" = (
 /obj/machinery/light/no_nightshift,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "hKP" = (
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
 /obj/machinery/appliance/mixer/cereal,
@@ -7174,7 +7180,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "iFc" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 6
@@ -7687,7 +7693,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "jgS" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/blast/regular{
@@ -7745,13 +7751,13 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "jiL" = (
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/endeavour/command/turrets)
 "jiQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -7763,7 +7769,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "jjz" = (
 /obj/machinery/atmospherics/pipe/manifold/visible{
 	dir = 8
@@ -9152,7 +9158,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "kRo" = (
 /obj/structure/table/marble,
 /turf/simulated/floor/carpet/bcarpet,
@@ -9794,7 +9800,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "lDT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/structure/cable{
@@ -10126,7 +10132,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "maS" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -10899,7 +10905,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "mTY" = (
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -10944,7 +10950,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/space)
+/area/endeavour/command/turrets)
 "mWZ" = (
 /obj/structure/icecream_cart,
 /turf/simulated/floor/tiled/freezer,
@@ -10989,7 +10995,7 @@
 "naO" = (
 /obj/effect/floor_decal/corner/navgold/full,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "nby" = (
 /obj/machinery/camera/network/tcomms,
 /obj/machinery/light/small{
@@ -11164,7 +11170,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "nmL" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
@@ -11720,7 +11726,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "nNv" = (
 /obj/machinery/power/smes/buildable/engine/rust,
 /obj/structure/cable/cyan{
@@ -11770,7 +11776,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "nRE" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -12040,7 +12046,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "oie" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -12241,7 +12247,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "oyr" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/structure/disposalpipe/segment,
@@ -12435,7 +12441,7 @@
 	faction = "neutral"
 	},
 /turf/simulated/floor/airless/ceiling,
-/area/space)
+/area/endeavour/command/turrets)
 "oRx" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -12592,7 +12598,7 @@
 "pdB" = (
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "pdK" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -14212,7 +14218,7 @@
 	},
 /obj/map_helper/access_helper/airlock/station/command/bridge,
 /turf/simulated/floor/plating,
-/area/space)
+/area/endeavour/command/turrets)
 "rfg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/visible/aux{
@@ -14543,7 +14549,7 @@
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "rAt" = (
 /obj/effect/floor_decal/borderfloorblack/corner,
 /obj/effect/floor_decal/corner/lightorange/bordercorner,
@@ -14691,7 +14697,7 @@
 	pixel_y = 33
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "rQt" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -15126,7 +15132,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "suV" = (
 /obj/machinery/atmospherics/pipe/vent{
 	dir = 1
@@ -15156,7 +15162,7 @@
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/endeavour/command/turrets)
 "szp" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
 /obj/machinery/atmospherics/pipe/simple/visible/blue{
@@ -15497,7 +15503,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "sRs" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/storage/toolbox/emergency,
@@ -15785,7 +15791,7 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "tsN" = (
 /obj/machinery/light{
 	dir = 4
@@ -16944,7 +16950,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "uXD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -17081,7 +17087,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "vdL" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
 	dir = 4
@@ -17555,7 +17561,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "vDT" = (
 /obj/structure/table/rack{
 	dir = 8;
@@ -17763,7 +17769,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/endeavour/command/turrets)
 "vMN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -17940,7 +17946,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "vWy" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -18038,7 +18044,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "wbp" = (
 /obj/structure/closet/chefcloset,
 /obj/item/glass_jar,
@@ -18324,7 +18330,7 @@
 	},
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "wqa" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
 /obj/structure/cable/orange{
@@ -18764,7 +18770,7 @@
 	},
 /obj/effect/floor_decal/corner/yellow,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "wSS" = (
 /obj/machinery/light{
 	dir = 4
@@ -19578,7 +19584,7 @@
 	},
 /obj/effect/floor_decal/corner/paleblue,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "xKs" = (
 /turf/simulated/floor/plating,
 /area/space)
@@ -19736,9 +19742,9 @@
 /turf/simulated/floor/tiled,
 /area/space)
 "ycn" = (
-/obj/machinery/point_redemption_vendor/engineering,
-/turf/simulated/floor/tiled/techmaint,
-/area/engineering/storage)
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless/ceiling,
+/area/endeavour/command/turrets)
 "ycr" = (
 /obj/machinery/status_display{
 	pixel_y = 30
@@ -19753,7 +19759,7 @@
 	},
 /obj/machinery/air_alarm/north_mount,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "ycR" = (
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/machinery/door/firedoor/glass{
@@ -19768,7 +19774,7 @@
 	},
 /obj/structure/bed/chair/bay/comfy,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/endeavour/command/turrets)
 "ydZ" = (
 /turf/simulated/wall/r_wall/prepainted/civilian,
 /area/space)
@@ -21144,7 +21150,7 @@ jNg
 jNg
 jNg
 jNg
-usG
+ycn
 jNg
 jNg
 jNg
@@ -21155,18 +21161,7 @@ jNg
 jNg
 jNg
 jNg
-usG
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
+ycn
 jNg
 jNg
 jNg
@@ -21187,7 +21182,6 @@ jNg
 jNg
 jNg
 jNg
-usG
 jNg
 jNg
 jNg
@@ -21198,7 +21192,19 @@ jNg
 jNg
 jNg
 jNg
-usG
+jNg
+ycn
+jNg
+jNg
+jNg
+jNg
+jNg
+jNg
+jNg
+jNg
+jNg
+jNg
+ycn
 jNg
 jNg
 jNg
@@ -21337,9 +21343,9 @@ jNg
 jNg
 jNg
 jNg
-usG
+ycn
 oRc
-usG
+ycn
 jNg
 jNg
 jNg
@@ -21348,9 +21354,9 @@ jNg
 jNg
 jNg
 jNg
-usG
+ycn
 oRc
-usG
+ycn
 jNg
 jNg
 jNg
@@ -21380,9 +21386,9 @@ jNg
 jNg
 jNg
 jNg
-usG
+ycn
 oRc
-usG
+ycn
 jNg
 jNg
 jNg
@@ -21391,9 +21397,9 @@ jNg
 jNg
 jNg
 jNg
-usG
+ycn
 oRc
-usG
+ycn
 jNg
 jNg
 jNg
@@ -23301,7 +23307,7 @@ jNg
 jNg
 jNg
 jNg
-usG
+ycn
 jNg
 jNg
 jNg
@@ -23309,7 +23315,7 @@ jNg
 jNg
 jNg
 jNg
-usG
+ycn
 jNg
 jNg
 jNg
@@ -23494,17 +23500,17 @@ jNg
 vTv
 jNg
 jNg
-usG
+ycn
 oRc
-usG
+ycn
 jNg
 jNg
 jNg
 jNg
 jNg
-usG
+ycn
 oRc
-usG
+ycn
 jNg
 jNg
 jNg
@@ -23664,7 +23670,7 @@ jNg
 jNg
 jNg
 jNg
-usG
+ycn
 kNH
 kNH
 kNH
@@ -23722,7 +23728,7 @@ kNH
 kNH
 kNH
 kNH
-usG
+ycn
 jNg
 jNg
 jNg
@@ -23857,7 +23863,7 @@ jNg
 jNg
 jNg
 jNg
-usG
+ycn
 oRc
 kNH
 kNH
@@ -23917,7 +23923,7 @@ kNH
 kNH
 kNH
 oRc
-usG
+ycn
 jNg
 jNg
 jNg
@@ -24052,7 +24058,7 @@ jNg
 jNg
 jNg
 jNg
-usG
+ycn
 kNH
 kNH
 kNH
@@ -24110,7 +24116,7 @@ kNH
 kNH
 kNH
 kNH
-usG
+ycn
 jNg
 jNg
 jNg
@@ -26769,7 +26775,7 @@ jNg
 jNg
 jNg
 jNg
-usG
+ycn
 kNH
 kNH
 kqL
@@ -26825,7 +26831,7 @@ cce
 kqL
 kNH
 kNH
-usG
+ycn
 jNg
 jNg
 jNg
@@ -26962,7 +26968,7 @@ jNg
 jNg
 jNg
 jNg
-usG
+ycn
 oRc
 kNH
 kNH
@@ -27020,7 +27026,7 @@ kqL
 kNH
 kNH
 oRc
-usG
+ycn
 jNg
 jNg
 jNg
@@ -27157,7 +27163,7 @@ jNg
 jNg
 jNg
 jNg
-usG
+ycn
 kNH
 kNH
 kqL
@@ -27213,7 +27219,7 @@ rhM
 kqL
 kNH
 kNH
-usG
+ycn
 jNg
 jNg
 jNg
@@ -29734,7 +29740,7 @@ xKs
 pJW
 xKs
 kNH
-usG
+ycn
 jNg
 jNg
 jNg
@@ -29929,7 +29935,7 @@ oDq
 xKs
 kNH
 bkY
-usG
+ycn
 jNg
 xRj
 xRj
@@ -30122,7 +30128,7 @@ kGP
 pJW
 xKs
 kNH
-usG
+ycn
 jNg
 jNg
 jNg
@@ -31484,7 +31490,7 @@ kNH
 jNg
 jNg
 jNg
-usG
+ycn
 jNg
 jNg
 jNg
@@ -31677,9 +31683,9 @@ kNH
 kNH
 kNH
 kNH
-usG
+ycn
 oRc
-usG
+ycn
 jNg
 jNg
 jNg
@@ -31805,7 +31811,7 @@ jNg
 jNg
 jNg
 jNg
-usG
+ycn
 jNg
 jNg
 kNH
@@ -31998,9 +32004,9 @@ jNg
 jNg
 jNg
 jNg
-usG
+ycn
 oRc
-usG
+ycn
 kNH
 kNH
 cDX
@@ -32653,7 +32659,7 @@ pcf
 pbv
 kNH
 kNH
-usG
+ycn
 jNg
 jNg
 jNg
@@ -32848,7 +32854,7 @@ vsf
 vsf
 vsf
 oRc
-usG
+ycn
 jNg
 jNg
 jNg
@@ -33041,7 +33047,7 @@ vWo
 wGk
 ezz
 vsf
-usG
+ycn
 jNg
 jNg
 jNg
@@ -34130,7 +34136,7 @@ xRj
 jNg
 jNg
 jNg
-usG
+ycn
 kNH
 kNH
 kNH
@@ -34323,7 +34329,7 @@ xRj
 xRj
 jNg
 jNg
-usG
+ycn
 oRc
 kNH
 jUK
@@ -34518,7 +34524,7 @@ xRj
 jNg
 jNg
 jNg
-usG
+ycn
 kNH
 aqr
 cJd
@@ -37062,13 +37068,13 @@ nmL
 xKs
 can
 kNH
-wiw
-wiw
-wiw
-wiw
+eRS
+eRS
+eRS
+eRS
 gsS
-wiw
-wiw
+eRS
+eRS
 swz
 swz
 epT
@@ -37252,17 +37258,17 @@ nQj
 xKs
 nmL
 xKs
-wiw
-wiw
-wiw
-wiw
-wiw
-wiw
+eRS
+eRS
+eRS
+eRS
+eRS
+eRS
 acg
 jio
 fiC
-wiw
-wiw
+eRS
+eRS
 swz
 swz
 swz
@@ -37310,7 +37316,7 @@ nsO
 vsf
 vsf
 oRc
-usG
+ycn
 jNg
 jNg
 jNg
@@ -37446,7 +37452,7 @@ lHm
 nmL
 nmL
 xKs
-wiw
+eRS
 szc
 eYL
 jiL
@@ -37455,8 +37461,8 @@ reV
 iDM
 kRf
 nRc
-wiw
-wiw
+eRS
+eRS
 swz
 swz
 iFl
@@ -37503,7 +37509,7 @@ rlQ
 xDH
 vsf
 vsf
-usG
+ycn
 jNg
 jNg
 jNg
@@ -37640,7 +37646,7 @@ nQj
 nQj
 nQj
 can
-wiw
+eRS
 vMK
 dlD
 dlD
@@ -37649,8 +37655,8 @@ dCl
 waS
 cBj
 btv
-wiw
-wiw
+eRS
+eRS
 swz
 swz
 swz
@@ -37834,17 +37840,17 @@ xKs
 xKs
 nQj
 nQj
-wiw
-wiw
-wiw
-wiw
-wiw
-wiw
-wiw
+eRS
+eRS
+eRS
+eRS
+eRS
+eRS
+eRS
 cgn
-wiw
-wiw
-wiw
+eRS
+eRS
+eRS
 swz
 iFT
 swz
@@ -38031,14 +38037,14 @@ nmL
 nmL
 nmL
 nat
-wiw
-wiw
-wiw
-wiw
+eRS
+eRS
+eRS
+eRS
 mVD
-wiw
-wiw
-wiw
+eRS
+eRS
+eRS
 swz
 swz
 swz
@@ -38083,7 +38089,7 @@ mtv
 jNg
 jNg
 oRc
-usG
+ycn
 jNg
 jNg
 jNg
@@ -38210,9 +38216,9 @@ jNg
 jNg
 jNg
 jNg
-usG
+ycn
 oRc
-usG
+ycn
 xRj
 suy
 xRj
@@ -38225,14 +38231,14 @@ xKs
 xKs
 nmL
 wsk
-wiw
-wiw
+eRS
+eRS
 lDz
 vdK
 cgn
 vWu
 eyl
-wiw
+eRS
 swz
 swz
 swz
@@ -38276,7 +38282,7 @@ jNg
 jNg
 jNg
 jNg
-usG
+ycn
 jNg
 jNg
 jNg
@@ -38405,7 +38411,7 @@ jNg
 jNg
 jNg
 jNg
-usG
+ycn
 jNg
 xRj
 xRj
@@ -38419,14 +38425,14 @@ xKs
 xKs
 nmL
 xKs
-wiw
-wiw
+eRS
+eRS
 rAa
 vDs
 jiQ
 bPr
 htc
-wiw
+eRS
 swz
 bei
 bZe
@@ -38613,14 +38619,14 @@ xKs
 xKs
 nmL
 xKs
-wiw
-wiw
+eRS
+eRS
 ycz
-riW
+ekG
 pdB
-riW
+ekG
 hmV
-wiw
+eRS
 swz
 swz
 kTM
@@ -38807,14 +38813,14 @@ lTp
 xKs
 nmL
 xKs
-wiw
-wiw
+eRS
+eRS
 uXA
 wRC
-riW
+ekG
 nmx
 mTR
-wiw
+eRS
 swz
 swz
 pWV
@@ -38993,7 +38999,7 @@ jNg
 jNg
 jNg
 jNg
-usG
+ycn
 oRc
 nQj
 nQj
@@ -39001,14 +39007,14 @@ xKs
 xKs
 nmL
 xKs
-wiw
-wiw
+eRS
+eRS
 cQn
 hJX
-riW
+ekG
 ydy
 tqM
-wiw
+eRS
 swz
 swz
 gzp
@@ -39188,21 +39194,21 @@ jNg
 jNg
 jNg
 jNg
-usG
+ycn
 xRj
 nQj
 dah
 xKs
 nmL
 xKs
-wiw
-wiw
+eRS
+eRS
 crZ
 suN
-riW
+ekG
 xKd
 oyc
-wiw
+eRS
 swz
 drW
 aoU
@@ -39389,14 +39395,14 @@ nQj
 nQj
 xsH
 nQj
-wiw
-wiw
+eRS
+eRS
 ohC
 nNh
-riW
-riW
+ekG
+ekG
 hKh
-wiw
+eRS
 swz
 uvD
 vHf
@@ -39583,14 +39589,14 @@ nQj
 dhh
 nmL
 xKs
-wiw
+eRS
 wpK
 maG
 maG
 maG
 fih
 naO
-wiw
+eRS
 swz
 crd
 dzC
@@ -39625,7 +39631,7 @@ ahp
 vsf
 vsf
 oRc
-usG
+ycn
 jNg
 jNg
 jNg
@@ -39777,14 +39783,14 @@ nQj
 nat
 nmL
 nmL
-wiw
+eRS
 rOi
-riW
+ekG
 hhb
 sRr
 jgJ
 avD
-wiw
+eRS
 pSY
 kBP
 cEa
@@ -39818,7 +39824,7 @@ wuR
 kOp
 vsf
 vsf
-usG
+ycn
 jNg
 jNg
 jNg
@@ -39971,14 +39977,14 @@ nQj
 nQj
 xKs
 nmL
-wiw
-wiw
-wiw
-wiw
-wiw
-wiw
-wiw
-wiw
+eRS
+eRS
+eRS
+eRS
+eRS
+eRS
+eRS
+eRS
 swz
 nGv
 nGv
@@ -40166,12 +40172,12 @@ nQj
 xKs
 nmL
 eme
-wiw
-wiw
-wiw
-wiw
-wiw
-wiw
+eRS
+eRS
+eRS
+eRS
+eRS
+eRS
 ulP
 swz
 nGv
@@ -40550,7 +40556,7 @@ jNg
 jNg
 jNg
 jNg
-usG
+ycn
 nQj
 nmL
 nmL
@@ -40743,7 +40749,7 @@ jNg
 jNg
 jNg
 jNg
-usG
+ycn
 oRc
 nQj
 nQj
@@ -40938,7 +40944,7 @@ jNg
 jNg
 jNg
 jNg
-usG
+ycn
 nQj
 nQj
 nQj
@@ -41172,7 +41178,7 @@ iTc
 ulP
 oso
 nQj
-usG
+ycn
 jNg
 jNg
 jNg
@@ -41367,7 +41373,7 @@ mcc
 xKs
 nQj
 oRc
-usG
+ycn
 jNg
 jNg
 jNg
@@ -41560,7 +41566,7 @@ xKs
 pTp
 nQj
 nQj
-usG
+ycn
 jNg
 jNg
 jNg
@@ -42106,7 +42112,7 @@ xRj
 jNg
 jNg
 jNg
-usG
+ycn
 oRc
 nQj
 nQj
@@ -42301,7 +42307,7 @@ jNg
 jNg
 jNg
 jNg
-usG
+ycn
 jNg
 nQj
 nQj
@@ -42526,7 +42532,7 @@ wsk
 nQj
 nQj
 oRc
-usG
+ycn
 xRj
 jNg
 xRj
@@ -42719,7 +42725,7 @@ swz
 xKs
 xKs
 nQj
-usG
+ycn
 jNg
 jNg
 jNg
@@ -44050,7 +44056,7 @@ xRj
 jNg
 jNg
 jNg
-usG
+ycn
 nQj
 ios
 onY
@@ -44077,7 +44083,7 @@ xKs
 nmL
 eme
 nQj
-usG
+ycn
 jNg
 jNg
 xRj
@@ -44243,7 +44249,7 @@ jNg
 jNg
 jNg
 jNg
-usG
+ycn
 oRc
 nQj
 mcc
@@ -44272,7 +44278,7 @@ pku
 xKs
 nQj
 oRc
-usG
+ycn
 jNg
 xRj
 xRj
@@ -44438,7 +44444,7 @@ jNg
 jNg
 jNg
 jNg
-usG
+ycn
 nQj
 nQj
 aSY
@@ -44465,7 +44471,7 @@ xKs
 nmL
 sRs
 nQj
-usG
+ycn
 jNg
 jNg
 xRj
@@ -46377,8 +46383,8 @@ xRj
 xRj
 xRj
 xRj
-xRj
 jNg
+ycn
 nQj
 xKs
 nmL
@@ -46571,8 +46577,8 @@ xRj
 xRj
 xRj
 xRj
-xRj
-jNg
+ycn
+oRc
 nQj
 xKs
 nmL
@@ -46599,7 +46605,7 @@ xKs
 nmL
 xKs
 nQj
-usG
+ycn
 jNg
 xRj
 xRj
@@ -46766,7 +46772,7 @@ jNg
 jNg
 jNg
 jNg
-jNg
+ycn
 nQj
 dYW
 xNM
@@ -46794,7 +46800,7 @@ xKs
 dYW
 nQj
 oRc
-usG
+ycn
 jNg
 xRj
 xRj
@@ -46959,8 +46965,8 @@ jNg
 jNg
 jNg
 jNg
-jNg
-usG
+xRj
+xRj
 nQj
 xKs
 nmL
@@ -46987,7 +46993,7 @@ xKs
 xKs
 nQj
 nQj
-usG
+ycn
 jNg
 jNg
 xRj
@@ -47153,8 +47159,8 @@ jNg
 xRj
 jNg
 jNg
-usG
-oRc
+xRj
+xRj
 fwR
 wYt
 ciZ
@@ -47347,8 +47353,8 @@ jNg
 xRj
 jNg
 jNg
-jNg
-usG
+xRj
+xRj
 fwR
 wYt
 ciZ
@@ -47756,7 +47762,7 @@ iAV
 tdV
 cSy
 cGj
-ycn
+bVL
 nQj
 lTp
 gRl
@@ -48318,7 +48324,7 @@ xRj
 jNg
 jNg
 jNg
-jNg
+ycn
 nQj
 eEF
 fLS
@@ -48511,8 +48517,8 @@ jNg
 xRj
 jNg
 jNg
-jNg
-jNg
+ycn
+oRc
 nQj
 wYs
 nQj
@@ -48538,7 +48544,7 @@ xKs
 nQj
 wYs
 nQj
-jNg
+ycn
 jNg
 jNg
 jNg
@@ -48706,7 +48712,7 @@ xRj
 jNg
 jNg
 jNg
-jNg
+ycn
 nQj
 kfj
 nQj
@@ -48732,8 +48738,8 @@ uND
 nQj
 kfj
 nQj
-usG
-jNg
+oRc
+ycn
 jNg
 jNg
 jNg
@@ -48926,8 +48932,8 @@ nQj
 nQj
 usG
 nQj
-oRc
-jNg
+ycn
+xRj
 jNg
 jNg
 jNg
@@ -49097,7 +49103,7 @@ jNg
 jNg
 mtv
 jNg
-usG
+ycn
 oRc
 nQj
 nQj
@@ -49120,7 +49126,7 @@ nQj
 jNg
 jNg
 mtv
-usG
+xRj
 jNg
 jNg
 jNg
@@ -49292,7 +49298,7 @@ jNg
 jNg
 jNg
 jNg
-usG
+ycn
 xKs
 nQj
 wSS
@@ -49311,7 +49317,7 @@ wSS
 nQj
 nQj
 oRc
-usG
+ycn
 jNg
 jNg
 jNg
@@ -49482,7 +49488,7 @@ jNg
 jNg
 jNg
 jNg
-usG
+xRj
 xRj
 xRj
 xRj
@@ -49504,7 +49510,7 @@ nQj
 nQj
 nQj
 jNg
-usG
+ycn
 jNg
 jNg
 jNg
@@ -49676,7 +49682,7 @@ jNg
 jNg
 jNg
 jNg
-oRc
+xRj
 xRj
 xRj
 xRj
@@ -49703,7 +49709,7 @@ xRj
 xRj
 xRj
 jNg
-usG
+xRj
 jNg
 jNg
 jNg
@@ -49870,16 +49876,16 @@ jNg
 jNg
 jNg
 jNg
-usG
+xRj
 jNg
 jNg
 jNg
 jNg
 jNg
 jNg
-usG
+ycn
 oRc
-usG
+ycn
 nQj
 nQj
 jgS
@@ -49887,9 +49893,9 @@ jgS
 jgS
 nQj
 nQj
-usG
+ycn
 oRc
-usG
+ycn
 jNg
 xRj
 xRj
@@ -50072,7 +50078,7 @@ jNg
 jNg
 jNg
 jNg
-usG
+ycn
 jNg
 jNg
 nQj
@@ -50082,7 +50088,7 @@ usG
 nQj
 jNg
 jNg
-usG
+ycn
 jNg
 jNg
 jNg
@@ -50645,7 +50651,7 @@ jNg
 jNg
 jNg
 jNg
-usG
+xRj
 jNg
 xRj
 xRj
