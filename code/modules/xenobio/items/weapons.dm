@@ -15,8 +15,8 @@
 	var/extra_slime_stun_power = 40
 	var/extra_slime_stun_flags = ELECTROCUTE_ACT_FLAG_SILENT | ELECTROCUTE_ACT_FLAG_DISTRIBUTE
 
-/obj/item/melee/baton/slime/powered_melee_impact(atom/target, mob/attacker, datum/event_args/actor/clickchain/clickchain, use_target_zone)
-	. = ..()
+/obj/item/melee/baton/slime/apply_powered_melee_impact(atom/target, mob/attacker, datum/event_args/actor/actor, use_target_zone, efficiency)
+	..()
 	if(istype(target, /mob/living))
 		var/mob/living/living_target = target
 		var/mob/living/carbon/human/maybe_human = target
