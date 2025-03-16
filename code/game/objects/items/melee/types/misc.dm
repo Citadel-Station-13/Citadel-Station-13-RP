@@ -10,11 +10,6 @@
 	origin_tech = list(TECH_COMBAT = 4)
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined")
 
-/obj/item/melee/chainofcommand/suicide_act(mob/user)
-	var/datum/gender/T = GLOB.gender_datums[user.get_visible_gender()]
-	user.visible_message(SPAN_DANGER("\The [user] [T.is] strangling [T.himself] with \the [src]! It looks like [T.he] [T.is] trying to commit suicide."), SPAN_DANGER("You start to strangle yourself with \the [src]!"), SPAN_DANGER("You hear the sound of someone choking!"))
-	return (OXYLOSS)
-
 /obj/item/melee/umbrella
 	name = "umbrella"
 	desc = "To keep the rain off you. Use with caution on windy days."
@@ -200,15 +195,6 @@
 	if(prob(poison_chance))
 		to_chat(M, "<span class='warning'>You feel nanites digging into your skin!</span>")
 		M.reagents.add_reagent(poison_type, poison_amount)
-
-/obj/item/melee/nanite_knife/suicide_act(mob/user)
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	user.visible_message(pick("<span class='danger'>\The [user] is shoving \the [src] into [TU.is] chest! It looks like [TU.he] [TU.is] trying to commit suicide.</span>",\
-		"<span class='danger'>\The [user] is stabbing themselves with \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>"))
-	var/turf/T = get_turf(src)
-	user.gib()
-	new /mob/living/simple_mob/mechanical/cyber_horror(T)
-	return
 
 //Interestingly, a magic flame sword has a lot in common with the thermal cutter Tech and I made for Goblins. So I decided it should share some of that code.
 /obj/item/melee/ashlander

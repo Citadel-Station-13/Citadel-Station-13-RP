@@ -555,14 +555,6 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	uses_charge = 1
 	charge_costs = list(1)
 
-/obj/item/stack/cable_coil/suicide_act(mob/user)
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	if(locate(/obj/item/stool) in user.loc)
-		user.visible_message("<span class='suicide'>[user] is making a noose with the [src.name]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>")
-	else
-		user.visible_message("<span class='suicide'>[user] is strangling [TU.himself] with the [src.name]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>")
-	return(OXYLOSS)
-
 /obj/item/stack/cable_coil/Initialize(mapload, new_amount = MAXCOIL, merge, param_color)
 	. = ..()
 	if (param_color) // It should be red by default, so only recolor it if parameter was specified.

@@ -38,12 +38,6 @@
 		desc = "material [material.id] shard - which shouldn't exist. contact a coder."
 		gender = NEUTER
 
-/obj/item/material/shard/suicide_act(mob/user)
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	viewers(user) << pick("<span class='danger'>\The [user] is slitting [TU.his] wrists with \the [src]! It looks like [TU.hes] trying to commit suicide.</span>",
-	                      "<span class='danger'>\The [user] is slitting [TU.his] throat with \the [src]! It looks like [TU.hes] trying to commit suicide.</span>")
-	return (BRUTELOSS)
-
 /obj/item/material/shard/attackby(obj/item/W as obj, mob/user as mob)
 	var/datum/prototype/material/material = get_material_part(MATERIAL_PART_DEFAULT)
 	if(istype(W, /obj/item/weldingtool) && material.shard_can_repair)
