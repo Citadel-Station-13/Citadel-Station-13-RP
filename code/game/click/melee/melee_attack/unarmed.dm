@@ -66,8 +66,10 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	if(ismob(target))
 		// mob damage is not refactored properly yet
 		return
+	var/damage_force = get_unarmed_damage(attacker, target) * clickchain.attack_melee_multiplier
+	clickchain.data[ACTOR_DATA_UNARMED_LOG] = "[damage_force]-[damage_type]-[damage_flag]@[damage_tier]m[damage_mode]"
 	target.run_damage_instance(
-		get_unarmed_damage(attacker, target) * clickchain.attack_melee_multiplier,
+		damage_force,
 		damage_type,
 		damage_tier,
 		damage_flag,

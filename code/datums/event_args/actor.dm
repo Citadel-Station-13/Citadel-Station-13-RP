@@ -7,6 +7,10 @@
  * used to hold semantic data about an action being done by an actor vs initiator (controller)
  */
 /datum/event_args/actor
+	/// arbitrary data list
+	/// * this is a lazy list
+	/// * this will be logged, don't be too verbose
+	var/list/data = list()
 	/// Is this a simulated event?
 	/// * This is used for logging.
 	/// * This should be set to TRUE if this didn't originate from a player's client.
@@ -30,6 +34,8 @@
 
 /datum/event_args/actor/proc/actor_log_string()
 	return performer == initiator ? key_name(performer) : "[key_name(performer)] (via [key_name(initiator)])"
+
+//* Feedback (//)
 
 // todo: reowrk these awful ass feedback/message procs wtf
 

@@ -68,10 +68,6 @@
 	/// * Unlike 'attack melee multiplier', this will block everything else too.
 	///   This is for shieldcalls to inject into to say 'hey, we blocked any contact, not just dampened damage'.
 	var/attack_contact_multiplier = 1
-	/// arbitrary data list
-	/// * this is a lazy list
-	/// * this should be logged
-	var/list/attack_arbitrary_data
 
 	//* Resolved Data *//
 

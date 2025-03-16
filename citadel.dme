@@ -233,6 +233,7 @@
 #include "code\__DEFINES\economy\payment.dm"
 #include "code\__DEFINES\economy\payscale.dm"
 #include "code\__DEFINES\economy\worth.dm"
+#include "code\__DEFINES\event_args\actor.dm"
 #include "code\__DEFINES\fishing\aquarium.dm"
 #include "code\__DEFINES\fishing\fish.dm"
 #include "code\__DEFINES\fishing\fishing.dm"

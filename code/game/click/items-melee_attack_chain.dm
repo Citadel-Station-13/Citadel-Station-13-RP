@@ -123,11 +123,14 @@
 	. |= clickchain.target.item_melee_act(clickchain.performer, attack_style, clickchain.target_zone, clickchain)
 
 	// -- call override --
-	var/overridden = melee_override(clickchain.target, clickchain.performer, clickchain.using_intent, clickchain.attack_contact_multiplier, clickchain)
+	var/overridden = melee_override(clickchain.target, clickchain.performer, clickchain.using_intent, clickchain.target_zone, clickchain.attack_contact_multiplier, clickchain)
 
 	// -- execute attack if override didn't run --
-	if(!overridden && !(. & CLICKCHAIN_FLAGS_ATTACK_ABORT))
-		. |= melee_impact(clickchain, clickchain_flags, attack_style)
+	if(!overridden)
+		if(!(. & CLICKCHAIN_FLAGS_ATTACK_ABORT))
+			. |= melee_impact(clickchain, clickchain_flags, attack_style)
+	else
+		attack_style.perform_attack_animation(clickchain.performer, clickchain.target, clickchain, clickchain_flags & CLICKCHAIN_ATTACK_MISSED, src)
 
 	// -- finalize --
 	if(!(. & CLICKCHAIN_FLAGS_UNCONDITIONAL_ABORT))
@@ -148,17 +151,20 @@
  * Notes:
  * * Do not `to_chat(user, ...)`. Use `actor.chat_feedback()`.
  * * Please respect `efficiency`, or your item will bypass shields.
+ * * The attack animation of the current attack style will be played automatically
+ *   upon returning TRUE, with no sound or message to accompany it.
  *
  * @params
  * * target - target being hit
  * * user - person doing the hitting
  * * intent - intent the item is being used in.
+ * * zone - target zone being hit
  * * efficiency - 1 is a full pass, 0 is a full block.
  * * actor - actor data
  *
  * @return TRUE if handled to abort normal handling.
  */
-/obj/item/proc/melee_override(atom/target, mob/user, intent, efficiency, datum/event_args/actor/actor)
+/obj/item/proc/melee_override(atom/target, mob/user, intent, zone, efficiency, datum/event_args/actor/actor)
 	return FALSE
 
 /**
@@ -181,14 +187,12 @@
 	var/mob/fixed_performer = clickchain.performer
 	var/missed = clickchain_flags & CLICKCHAIN_ATTACK_MISSED
 
-	attack_style.perform_attack_animation(fixed_performer, fixed_target, clickchain, missed)
-	attack_style.perform_attack_sound(fixed_performer, fixed_target, clickchain, missed)
-	attack_style.perform_attack_message(fixed_performer, fixed_target, clickchain, missed)
+	attack_style.perform_attack_animation(fixed_performer, fixed_target, clickchain, missed, src)
+	attack_style.perform_attack_sound(fixed_performer, fixed_target, clickchain, missed, src)
+	attack_style.perform_attack_message(fixed_performer, fixed_target, clickchain, missed, src)
 
 	if(missed)
 		return clickchain_flags
-
-	fixed_target.animate_hit_by_weapon(fixed_performer, src)
 	return clickchain_flags | fixed_target.on_melee_act(fixed_performer, attack_style, clickchain)
 
 #warn parse below

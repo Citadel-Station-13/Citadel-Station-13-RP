@@ -38,6 +38,8 @@
 	return NONE
 
 /datum/melee_attack/weapon/perform_attack_animation(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain, missed, obj/item/weapon)
+	if(!missed)
+		target.animate_hit_by_weapon(attacker, src)
 	return ..()
 
 /datum/melee_attack/weapon/perform_attack_sound(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain, missed, obj/item/weapon)

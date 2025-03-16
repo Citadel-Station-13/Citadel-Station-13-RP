@@ -91,6 +91,13 @@
 		return robot.cell?.checked_use(amount)
 	return obj_cell_slot.cell?.checked_use(amount)
 
+/obj/item/melee/baton/attack_self(mob/user, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+	if(user_clickchain_toggle_active(actor))
+		return CLICKCHAIN_DID_SOMETHING
+
 /obj/item/melee/baton/proc/activate(silent, force)
 	if(active)
 		return TRUE
@@ -132,34 +139,79 @@
 			)
 	return TRUE
 
+/obj/item/melee/baton/melee_override(atom/target, mob/user, intent, zone, efficiency, datum/event_args/actor/actor)
+	var/harm_penalty = intent == INTENT_HARM ? 0.5 : 1
+	attempt_powered_melee_impact(target, user, actor, zone, harm_penalty)
+	if(intent != INTENT_HARM)
+		return TRUE
+	return ..()
+
 /**
  * Basically [powered_melee_impact()] but checks for charge.
  *
  * @return TRUE if handled, FALSE otherwise
  */
-/obj/item/melee/baton/proc/attempt_powered_melee_impact(atom/target, mob/attacker, datum/event_args/actor/clickchain/clickchain, use_target_zone)
-	if(!use_charge(charge_cost))
+/obj/item/melee/baton/proc/attempt_powered_melee_impact(atom/target, mob/attacker, datum/event_args/actor/actor, use_target_zone, efficiency = 1)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	if(!active || !use_charge(charge_cost))
 		update_charge()
+		var/obj/item/organ/external/affecting
+		if(iscarbon(target))
+			var/mob/living/carbon/carbon_target = target
+			affecting = carbon_target.get_bodypart_for_zone(use_target_zone)
+		attacker?.visible_message(
+			SPAN_WARNING("[target] has been prodded [affecting ? "in \the [affecting]" : ""] with [src] by [attacker]. Luckily it was off."),
+		)
 		return TRUE
-	powered_melee_impact(target, attacker, clickchain, use_target_zone)
+	powered_melee_impact(target, attacker, actor, use_target_zone)
 	update_charge()
 	return TRUE
 
 /**
  * Does not affect the normal hit, this only performs the stun.
  *
+ * Calls [apply_powered_melee_impact()]. That's the one you can override.
+ *
  * @params
  * * target - what to hit
  * * attacker - (optional) attacking user
  * * clickchain - (optional) clickchain data
  * * use_target_zone - (optional) target that zone
- *
- * @return TRUE if handled, FALSE otherwise
  */
-/obj/item/melee/baton/proc/powered_melee_impact(atom/target, mob/attacker, datum/event_args/actor/clickchain/clickchain, use_target_zone)
+/obj/item/melee/baton/proc/powered_melee_impact(atom/target, mob/attacker, datum/event_args/actor/actor, use_target_zone, efficiency = 1)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	actor?.data[ACTOR_DATA_STUNBATON_LOG] = "[efficiency]x[stun_power] f-[stun_electrocute_flags] z-[use_target_zone]"
+	apply_powered_melee_impact(target, attacker, actor, use_target_zone, efficiency)
+
+/**
+ * Does not affect the normal hit, this only performs the stun.
+ *
+ * Should be only called from [powered_melee_impact()]
+ *
+ * @params
+ * * target - what to hit
+ * * attacker - (optional) attacking user
+ * * clickchain - (optional) clickchain data
+ * * use_target_zone - (optional) target that zone
+ */
+/obj/item/melee/baton/proc/apply_powered_melee_impact(atom/target, mob/attacker, datum/event_args/actor/actor, use_target_zone, efficiency)
+	PROTECTED_PROC(TRUE)
+	var/obj/item/organ/external/affecting
+	if(iscarbon(target))
+		var/mob/living/carbon/carbon_target = target
+		affecting = carbon_target.get_bodypart_for_zone(use_target_zone)
+	attacker?.visible_message(
+		SPAN_DANGER("[target] has been prodded [affecting ? "in \the [affecting]" : ""] with [src] by [attacker]."),
+	)
 	playsound(src, stun_sound, 75, TRUE)
-	target.electrocute(DYNAMIC_CELL_UNITS_TO_KJ(charge_cost), 0, stun_power, stun_electrocute_flags, use_target_zone || BP_TORSO, src)
-	#warn impl
+	target.electrocute(
+		DYNAMIC_CELL_UNITS_TO_KJ(charge_cost) * efficiency,
+		0,
+		stun_power * efficiency,
+		stun_electrocute_flags,
+		use_target_zone || BP_TORSO,
+		src,
+	)
 
 /obj/item/melee/baton/update_icon()
 	. = ..()
@@ -181,36 +233,6 @@
 		. += SPAN_NOTICE("[src] is [obj_cell_slot.cell.percent()]% charged.")
 	else
 		. += SPAN_NOTICE("[src] does not have a power source installed.")
-
-/obj/item/melee/baton/attack_self(mob/user, datum/event_args/actor/actor)
-	. = ..()
-	if(.)
-		return
-	if(user_clickchain_toggle_active(actor))
-		return CLICKCHAIN_DID_SOMETHING
-
-#warn much like bottles we need a way to override melee
-
-/obj/item/melee/baton/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	if(user.a_intent == INTENT_HARM)
-		. = ..()
-		//whacking someone causes a much poorer electrical contact than deliberately prodding them.
-		agony *= 0.5
-		stun *= 0.5
-	else if(!status)
-		if(affecting)
-			L.visible_message("<span class='warning'>[L] has been prodded in the [affecting.name] with [src] by [user]. Luckily it was off.</span>")
-		else
-			L.visible_message("<span class='warning'>[L] has been prodded with [src] by [user]. Luckily it was off.</span>")
-	else
-		if(affecting)
-			L.visible_message("<span class='danger'>[L] has been prodded in the [affecting.name] with [src] by [user]!</span>")
-		else
-			L.visible_message("<span class='danger'>[L] has been prodded with [src] by [user]!</span>")
-
-	if(status)
-		L.electrocute(0, 0, agony, NONE, target_zone, src)
-		msg_admin_attack("[key_name(user)] stunned [key_name(L)] with the [src].")
 
 /obj/item/melee/baton/loaded
 	cell_type = /obj/item/cell/device/weapon
@@ -257,8 +279,8 @@
 	attack_verb = list("poked")
 	slot_flags = null
 
-/obj/item/melee/baton/cattleprod/teleprod/powered_melee_impact(atom/target, mob/attacker, datum/event_args/actor/clickchain/clickchain, use_target_zone)
-	. = ..()
+/obj/item/melee/baton/cattleprod/teleprod/apply_powered_melee_impact(atom/target, mob/attacker, datum/event_args/actor/actor, use_target_zone, efficiency)
+	..()
 	do_teleport(target, get_turf(target), 15)
 
 // Rare version of a baton that causes lesser lifeforms to really hate the user and attack them.
@@ -273,8 +295,8 @@
 	stun_power = 40
 	attack_verb = list("poked")
 
-/obj/item/melee/baton/shocker/powered_melee_impact(atom/target, mob/attacker, datum/event_args/actor/clickchain/clickchain, use_target_zone)
-	. = ..()
+/obj/item/melee/baton/shocker/apply_powered_melee_impact(atom/target, mob/attacker, datum/event_args/actor/actor, use_target_zone, efficiency)
+	..()
 	if(!isliving(target))
 		return
 	var/mob/living/L = target
