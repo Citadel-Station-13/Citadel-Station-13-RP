@@ -195,28 +195,6 @@
 		return clickchain_flags
 	return clickchain_flags | fixed_target.on_melee_act(fixed_performer, attack_style, clickchain)
 
-#warn parse below
-
-/obj/item/proc/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
-	SHOULD_NOT_OVERRIDE(TRUE)
-	var/mob/living/L = target
-	// resolve accuracy
-	var/hit_zone = L.resolve_item_attack(src, user, target_zone)
-	if(!hit_zone)
-		// missed
-		// log
-		add_attack_logs(user, L, "missed with [src] DT [damage_type] F [damage_force] I [user.a_intent]")
-		return melee_mob_miss(L, user, clickchain_flags, params, mult, target_zone, intent)
-	// log
-	add_attack_logs(user, L, "attacked with [src] DT [damage_type] F [damage_force] I [user.a_intent]")
-	// hit
-	return melee_mob_hit(L, user, clickchain_flags, params, mult, target_zone, intent)
-
-/obj/item/proc/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
-	SHOULD_NOT_OVERRIDE(TRUE)
-
-#warn above
-
 /**
  * Called after we hit something in melee, **whether or not we hit.**
  *

@@ -154,6 +154,7 @@
 
 	apply_damage(damage, damage_type, def_zone, absorb, soaked)
 
+#warn how do we handle this? check overrides and hook into new code
 /mob/living/proc/resolve_item_attack(obj/item/I, mob/living/user, var/target_zone)
 	SEND_SIGNAL(src, COMSIG_MOB_LEGACY_RESOLVE_ITEM_ATTACK, I, user, target_zone)
 

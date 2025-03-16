@@ -1,8 +1,22 @@
 //Called when the mob is hit with an item in combat.
+#warn handle this
 /mob/living/carbon/resolve_item_attack(obj/item/I, mob/living/user, var/effective_force, var/hit_zone)
 	if(check_neckgrab_attack(I, user, hit_zone))
 		return null
 	..()
+
+// Attacking someone with a weapon while they are neck-grabbed
+/mob/living/carbon/proc/check_neckgrab_attack(obj/item/W, mob/user, var/hit_zone)
+	if(user.a_intent == INTENT_HARM)
+		for(var/obj/item/grab/G in src.grabbed_by)
+			if(G.assailant == user)
+				if(G.state >= GRAB_AGGRESSIVE)
+					if(hit_zone == BP_TORSO && shank_attack(W, G, user))
+						return 1
+				if(G.state >= GRAB_NECK)
+					if(hit_zone == BP_HEAD && attack_throat(W, G, user, hit_zone))
+						return 1
+	return 0
 
 /mob/living/carbon/emp_act(severity)
 	. = ..()
@@ -43,19 +57,6 @@
 			src.embed(I, hit_zone)
 
 	return 1
-
-// Attacking someone with a weapon while they are neck-grabbed
-/mob/living/carbon/proc/check_neckgrab_attack(obj/item/W, mob/user, var/hit_zone)
-	if(user.a_intent == INTENT_HARM)
-		for(var/obj/item/grab/G in src.grabbed_by)
-			if(G.assailant == user)
-				if(G.state >= GRAB_AGGRESSIVE)
-					if(hit_zone == BP_TORSO && shank_attack(W, G, user))
-						return 1
-				if(G.state >= GRAB_NECK)
-					if(hit_zone == BP_HEAD && attack_throat(W, G, user, hit_zone))
-						return 1
-	return 0
 
 // Knifing
 /mob/living/carbon/proc/attack_throat(obj/item/W, obj/item/grab/G, mob/user)
