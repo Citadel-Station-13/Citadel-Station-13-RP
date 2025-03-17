@@ -99,7 +99,7 @@
 	if(!T)
 		return 0
 
-	if(T.slowdown)
+	if(T.slowdown && (T.turf_flags & TURF_SLOWDOWN_INCLUDE_FLYING || !is_avoiding_ground())) //Has a slowdown, and it affects anyone, or we aren't touching the tile.
 		var/turf_move_cost = T.slowdown
 		if(istype(T, /turf/simulated/floor/water))
 			if(species.water_movement)

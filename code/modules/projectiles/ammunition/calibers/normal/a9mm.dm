@@ -1,11 +1,12 @@
 /datum/ammo_caliber/a9mm
+	id = "a9mm"
 	caliber = "9mm"
 
 /obj/item/ammo_casing/a9mm
 	desc = "A 9mm bullet casing."
 	icon = 'icons/modules/projectiles/casings/slim.dmi'
 	icon_state = "small"
-	caliber = /datum/ammo_caliber/a9mm
+	casing_caliber = /datum/ammo_caliber/a9mm
 	projectile_type = /obj/projectile/bullet/pistol
 	materials_base = list(MAT_STEEL = 60)
 

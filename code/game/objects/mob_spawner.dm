@@ -118,7 +118,7 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	icon_state = "tunnel_hole"
 	spawn_delay = 20 MINUTES
 	simultaneous_spawns = 1
-	mob_faction = "lavaland"
+	mob_faction = MOB_IFF_FACTION_BIND_TO_MAP
 	total_spawns = 6
 	integrity_flags = NONE
 	anchored = 1
@@ -133,7 +133,7 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	icon_state = "eggy_tunnel"
 	spawn_delay = 10 MINUTES
 	simultaneous_spawns = 3
-	mob_faction = "lavaland"
+	mob_faction = MOB_IFF_FACTION_BIND_TO_MAP
 	total_spawns = 12
 	anchored = 1
 	integrity_flags = NONE
@@ -148,7 +148,7 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	icon_state = "punch"
 	spawn_delay = 10 MINUTES
 	simultaneous_spawns = 6
-	mob_faction = "lavaland"
+	mob_faction = MOB_IFF_FACTION_BIND_TO_MAP
 	total_spawns = 12
 	anchored = 1
 	integrity_flags = NONE

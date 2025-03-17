@@ -1,4 +1,5 @@
 /datum/ammo_caliber/a5_7mm
+	id = "a5_7mm"
 	caliber = "5.7x28mm"
 
 //* Casings
@@ -7,7 +8,7 @@
 	icon = 'icons/modules/projectiles/casings/slim.dmi'
 	icon_state = "small"
 	desc = "A 5.7x28mm bullet casing."
-	caliber = /datum/ammo_caliber/a5_7mm
+	casing_caliber = /datum/ammo_caliber/a5_7mm
 	projectile_type = /obj/projectile/bullet/pistol/lap
 	materials_base = list(MAT_STEEL = 30, MAT_COPPER = 30)
 
