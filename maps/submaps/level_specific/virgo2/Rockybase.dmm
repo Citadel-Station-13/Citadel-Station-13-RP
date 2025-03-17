@@ -253,7 +253,7 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "aU" = (
-/obj/item/mecha_parts/part/gygax_left_leg,
+/obj/item/vehicle_part/gygax_left_leg,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "aV" = (
@@ -376,7 +376,7 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "bs" = (
-/obj/item/mecha_parts/part/gygax_right_arm,
+/obj/item/vehicle_part/gygax_right_arm,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "bt" = (
@@ -480,7 +480,7 @@
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/Rockybase)
 "bK" = (
-/obj/item/mecha_parts/part/gygax_torso,
+/obj/item/vehicle_part/gygax_torso,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "bL" = (
@@ -575,7 +575,7 @@
 /area/submap/virgo2/Rockybase)
 "cc" = (
 /obj/structure/table/standard,
-/obj/item/mecha_parts/mecha_equipment/repair_droid,
+/obj/item/vehicle_module/repair_droid,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "cd" = (
@@ -624,7 +624,7 @@
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/Rockybase)
 "cl" = (
-/obj/item/mecha_parts/part/gygax_armour,
+/obj/item/vehicle_part/gygax_armour,
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/Rockybase)
 "cm" = (
@@ -634,7 +634,7 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "cn" = (
-/obj/item/mecha_parts/chassis/gygax,
+/obj/item/vehicle_chassis/gygax,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "cp" = (
@@ -687,7 +687,7 @@
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/Rockybase)
 "cu" = (
-/obj/item/mecha_parts/part/gygax_right_leg,
+/obj/item/vehicle_part/gygax_right_leg,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "cv" = (
@@ -695,7 +695,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/item/mecha_parts/part/gygax_left_arm,
+/obj/item/vehicle_part/gygax_left_arm,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "cw" = (
@@ -741,7 +741,7 @@
 /area/submap/virgo2/Rockybase)
 "cF" = (
 /obj/structure/table/standard,
-/obj/item/mecha_parts/part/gygax_head,
+/obj/item/vehicle_part/gygax_head,
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/Rockybase)
 "cG" = (

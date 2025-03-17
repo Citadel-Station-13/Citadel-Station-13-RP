@@ -7764,7 +7764,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hop)
 "fDv" = (
-/obj/machinery/mineral/equipment_vendor/survey,
+/obj/machinery/point_redemption_vendor/survey,
 /obj/machinery/light{
 	dir = 8
 	},

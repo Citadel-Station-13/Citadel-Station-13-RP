@@ -143,11 +143,10 @@ export const directlyRouteComponent = (name: string) => {
   if (!esModule) {
     return routingNotFound;
   }
-
-  let lastSlashPos = name.lastIndexOf('/');
-  const resolvedComponent = lastSlashPos === -1 ? name : name.substring(lastSlashPos + 1);
-
-  const Component = esModule[resolvedComponent];
+  // pull out any /'s as the interface is often a path, not just the interface export
+  const nameHasABackslash = name.lastIndexOf("/");
+  const realName = nameHasABackslash === -1 ? name : name.substring(nameHasABackslash + 1);
+  const Component = esModule[realName];
   if (!Component) {
     return (props, context) => {
       props.exportName = resolvedComponent;

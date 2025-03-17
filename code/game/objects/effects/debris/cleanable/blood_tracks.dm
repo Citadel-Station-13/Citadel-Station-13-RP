@@ -197,3 +197,12 @@
 	gender = PLURAL
 	random_icon_states = null
 	amount = 0
+
+/obj/effect/debris/cleanable/blood/tracks/flying
+	name = "wet drips"
+	dryname = "dried drips"
+	desc = "They look like still wet drops left by someone not touching the ground."
+	drydesc = "They look like dried tracks left by someone not touching the ground."
+	coming_state = "flier1"
+	going_state  = "flier2"
+	amount = 0

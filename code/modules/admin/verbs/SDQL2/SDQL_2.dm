@@ -1045,42 +1045,6 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 				v = Failsafe
 			if("CFG")
 				v = config
-/*
-			//Subsystem switches
-			if("SSgarbage")
-				v = SSgarbage
-			if("SSmachines")
-				v = SSmachines
-			if("SSobj")
-				v = SSobj
-			if("SSresearch")
-				v = SSresearch
-			if("SSprojectiles")
-				v = SSprojectiles
-			if("SSprocess_5fps")
-				v = SSprocess_5fps
-			if("SSticker")
-				v = SSticker
-			if("SStimer")
-				v = SStimer
-			if("SSradiation")
-				v = SSradiation
-			if("SSnpcpool")
-				v = SSnpcpool
-			if("SSmobs")
-				v = SSmobs
-			if("SSquirks")
-				v = SSquirks
-			if("SSwet_floors")
-				v = SSwet_floors
-			if("SSshuttle")
-				v = SSshuttle
-			if("SSmapping")
-				v = SSmapping
-			if("SSevents")
-				v = SSevents
-			//End
-*/
 			else
 				return null
 	else if(object == GLOB) // Shitty ass hack kill me.

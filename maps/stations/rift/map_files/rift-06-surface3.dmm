@@ -16385,7 +16385,7 @@
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = -32
 	},
-/obj/machinery/mineral/equipment_vendor/survey,
+/obj/machinery/point_redemption_vendor/survey,
 /obj/machinery/light{
 	dir = 4
 	},

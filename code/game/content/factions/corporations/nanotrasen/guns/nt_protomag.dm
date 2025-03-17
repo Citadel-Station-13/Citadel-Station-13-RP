@@ -17,6 +17,7 @@
 		a large amount of energy to discharge, in contrast to more normal hybrid rounds.
 	"}
 	caliber = /datum/ammo_caliber/nt_protomag
+	chamber_simulation = FALSE
 	modular_system = TRUE
 
 	var/legacy_discharged_fire_sound
@@ -56,8 +57,10 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/magnetic/nt
 	worn_render_flags = NONE
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	render_battery_overlay = MAGNETIC_RENDER_BATTERY_IN
+	magazine_restrict = /obj/item/ammo_magazine/nt_protomag/sidearm
 	fire_sound = /datum/soundbyte/guns/magnetic/magnetic_1/pistol
-	base_charge_cost = /obj/item/cell/device/weapon::maxcharge * (1 / (/obj/item/ammo_magazine/nt_protomag/sidearm::ammo_max * 4))
+	// todo: boost this again maybe when weapon cells aren't tiny
+	base_charge_cost = /obj/item/cell/device/weapon::maxcharge * (1 / (/obj/item/ammo_magazine/nt_protomag/sidearm::ammo_max * 2))
 
 	modular_component_slots = list(
 		GUN_COMPONENT_ACTIVE_COOLER = 1,
@@ -101,8 +104,10 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/magnetic/nt
 	render_wielded = TRUE
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	render_battery_overlay = MAGNETIC_RENDER_BATTERY_IN
+	magazine_restrict = /obj/item/ammo_magazine/nt_protomag/rifle
 	fire_sound = /datum/soundbyte/guns/magnetic/magnetic_1/rifle
-	base_charge_cost = /obj/item/cell/device/weapon::maxcharge * (1 / (/obj/item/ammo_magazine/nt_protomag/rifle::ammo_max * 4))
+	// todo: boost this again maybe when weapon cells aren't tiny
+	base_charge_cost = /obj/item/cell/device/weapon::maxcharge * (1 / (/obj/item/ammo_magazine/nt_protomag/rifle::ammo_max * 2))
 
 	modular_component_slots = list(
 		GUN_COMPONENT_ACTIVE_COOLER = 1,

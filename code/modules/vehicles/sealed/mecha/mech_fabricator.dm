@@ -179,8 +179,8 @@
 			else
 				sub_category += "All Cyborgs"
 		//Else check if this design builds a piece of exosuit equipment.
-		else if(built_item in typesof(/obj/item/mecha_parts/mecha_equipment))
-			var/obj/item/mecha_parts/mecha_equipment/E = built_item
+		else if(built_item in typesof(/obj/item/vehicle_module))
+			var/obj/item/vehicle_module/E = built_item
 			var/mech_types = initial(E.mech_flags)
 			sub_category = "Equipment"
 			if(mech_types)
@@ -709,7 +709,7 @@
 		return
 	var/datum/prototype/material/M = get_material_by_name(matstring)
 
-	var/obj/item/stack/material/S = M.place_sheet(get_turf(src))
+	var/obj/item/stack/material/S = M.place_sheet()
 	if(amount <= 0)
 		amount = S.max_amount
 	var/ejected = min(round(contains / S.perunit), amount)
@@ -717,6 +717,7 @@
 	if(S.amount <= 0)
 		qdel(S)
 		return
+	S.forceMove(drop_location())
 	stored_materials[matstring] -= ejected * S.perunit
 	if(recursive && contains >= S.perunit)
 		eject_materials(matstring, -1)

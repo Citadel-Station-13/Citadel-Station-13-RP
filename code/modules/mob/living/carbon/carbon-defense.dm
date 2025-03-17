@@ -48,7 +48,7 @@
 			apply_damage(damage, DAMAGE_TYPE_BURN, hit_zone, used_weapon = "electrical burns")
 	if(stun_power)
 		adjustHalLoss(stun_power)
-		if(stun_power > 20 && prob(stun_power))
+		if(!(flags & ELECTROCUTE_ACT_FLAG_DO_NOT_STUN) && stun_power > 20 && prob(stun_power))
 			default_combat_knockdown(stun_power)
 		apply_effect(STUTTER, sqrt(stun_power))
 		apply_effect(EYE_BLUR, sqrt(stun_power) * 0.5)
