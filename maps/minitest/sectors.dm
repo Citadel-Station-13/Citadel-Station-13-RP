@@ -3,7 +3,6 @@
 /obj/overmap/entity/visitable/sector/citadel_minitest/station
 	name = "Minitest Station"	// Name of the location on the overmap.
 	desc = "The Citadel Minitest Station.  A small base useful for testing and loading quickly!"	// The description of the location on the overmap.
-	base = 1		// Honestly unsure what this does but it seems the main sector or "Map" we're at has this so here it stays
 	start_x = 10	// The X Value of where the Navpoint is on the Overmap
 	start_y = 10	// The Y Value of where the Navpoint is on the Overmap
 	// The waypoints that are avaliable once you are at this Navpoint

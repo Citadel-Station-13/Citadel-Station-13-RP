@@ -2,9 +2,6 @@
 	////////////
 	//SECURITY//
 	////////////
-///Could probably do with being lower.
-///Restricts client uploads to the server to 1MB
-#define UPLOAD_LIMIT		1048576
 
 #define LIMITER_SIZE	5
 #define CURRENT_SECOND	1
@@ -150,14 +147,6 @@
 	..()	//redirect to hsrc.Topic()
 
 
-//This stops files larger than UPLOAD_LIMIT being sent from client to server via input(), client.Import() etc.
-/client/AllowUpload(filename, filelength)
-	if(filelength > UPLOAD_LIMIT)
-		to_chat(src, "<font color='red'>Error: AllowUpload(): File Upload too large. Upload Limit: [UPLOAD_LIMIT/1024]KiB.</font>")
-		return 0
-	return 1
-
-
 	///////////
 	//CONNECT//
 	///////////
@@ -242,13 +231,6 @@
 	//Admin Authorisation
 	holder = admin_datums[ckey]
 	var/debug_tools_allowed = FALSE
-	if(holder)
-		GLOB.admins |= src
-		holder.owner = src
-		// connecting_admin = TRUE
-		//if(check_rights_for(src, R_DEBUG))
-		if(R_DEBUG & holder?.rights) //same wiht this, check_rights when?
-			debug_tools_allowed = TRUE
 	/*
 	else if(GLOB.deadmins[ckey])
 		add_verb(src, /client/proc/readmin)
@@ -257,9 +239,6 @@
 	// if(CONFIG_GET(flag/enable_localhost_rank) && !connecting_admin)
 	if(is_localhost() && CONFIG_GET(flag/enable_localhost_rank))
 		holder = new /datum/admins("!localhost!", ALL, ckey)
-		holder.owner = src
-		GLOB.admins |= src
-		//admins |= src // this makes them not have admin. what the fuck??
 		// holder.associate(ckey)
 		// connecting_admin = TRUE
 	//CITADEL EDIT
@@ -268,6 +247,7 @@
 		debug_tools_allowed = TRUE
 	if(!debug_tools_allowed)
 		world.SetConfig("APP/admin", ckey, null)
+	holder?.associate(src)
 	//END CITADEL EDIT
 	// todo: refactor and hoist
 	//preferences datum - also holds some persistent data for the client (because we may as well keep these datums to a minimum)
@@ -322,7 +302,6 @@
 		winset(src, null, "command=\".configure graphics-hwmode on\"")
 
 	if(holder)
-		add_admin_verbs()
 		admin_memo_show()
 		// to_chat(src, get_message_output("memo"))
 		// adminGreet()
@@ -485,8 +464,6 @@
 	qdel(query_get_notes)
 	create_message("note", key, system_ckey, message, null, null, 0, 0, null, 0, 0)
 */
-
-#undef UPLOAD_LIMIT
 
 //checks if a client is afk
 //3000 frames = 5 minutes

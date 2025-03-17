@@ -9,19 +9,15 @@
  * use of variables at this level
  */
 /datum
-	/**
-	 * Tick count time when this object was destroyed.
-	 *
-	 * If this is non zero then the object has been garbage collected and is awaiting either
-	 * a hard del by the GC subsystme, or to be autocollected (if it has no references)
-	 */
-	var/gc_destroyed
-
-	/// Active timers with this datum as the target
-	var/list/active_timers
+	//* Data *//
 	/// Status traits attached to this datum. associative list of the form: list(trait name (string) = list(source1, source2, source3,...))
 	var/list/status_traits
+	/// Datum level flags
+	var/datum_flags = NONE
+	/// A weak reference to another datum
+	var/datum/weakref/weak_reference
 
+	//* Datum Component System *//
 	/**
 	 * Components attached to this datum
 	 * Lazy assoclist of type -> component reference or list of component references
@@ -35,13 +31,10 @@
 	var/list/comp_lookup
 	/// Lazy associated list in the structure of `signals:proctype` that are run when the datum receives that signal
 	var/list/list/datum/callback/signal_procs
-
 	/// Is this datum capable of sending signals?
 	var/signal_enabled = FALSE
-	/// Datum level flags
-	var/datum_flags = NONE
-	/// A weak reference to another datum
-	var/datum/weakref/weak_reference
+
+	//* Cooldown System *//
 
 	/*
 	* Lazy associative list of currently active cooldowns.
@@ -51,9 +44,26 @@
 	*/
 	var/list/cooldowns
 
+	//* Subsystem - Garbage *//
+	/**
+	 * Tick count time when this object was destroyed.
+	 *
+	 * If this is non zero then the object has been garbage collected and is awaiting either
+	 * a hard del by the GC subsystme, or to be autocollected (if it has no references)
+	 */
+	var/gc_destroyed
+
+	//* Subsystem - Timer *//
+	/// Active timers with this datum as the target
+	var/list/active_timers
+
+	//* misc - filters *//
 	/// List for handling persistent filters.
+	///
+	/// * This is on /datum so it can be used on /image. This is pretty horrible. How do we fix this?
 	var/list/filter_data
 
+	//* misc - reftracking *//
 #ifdef REFERENCE_TRACKING
 	var/running_find_references
 	var/last_find_references = 0

@@ -373,6 +373,7 @@
 
 /**
   * Adds from a specially formatted gas string, taking on its gas values as our own as well as their temperature.
+  * todo: handle no-temperature?
   */
 /datum/gas_mixture/proc/merge_gas_string(gas_string)
 	var/datum/gas_mixture/temp = new(volume)

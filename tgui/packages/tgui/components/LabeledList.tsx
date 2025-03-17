@@ -9,6 +9,7 @@ import { InfernoNode } from 'inferno';
 import { Box, BoxStringProp, unit } from './Box';
 import { ComponentProps } from './Component';
 import { Divider } from './Divider';
+import { Tooltip } from './Tooltip';
 
 interface LabeledListProps extends ComponentProps {
 
@@ -25,10 +26,11 @@ export const LabeledList = (props: LabeledListProps) => {
 
 LabeledList.defaultHooks = pureComponentHooks;
 
-type LabeledListItemProps = {
+type LabeledListItemProps = ComponentProps & {
   readonly className?: string | BooleanLike;
   readonly label?: string | InfernoNode | BooleanLike;
   readonly labelColor?: BoxStringProp;
+  readonly labelDesc?: InfernoNode;
   readonly color?: BoxStringProp;
   readonly textAlign?: BoxStringProp;
   readonly buttons?: InfernoNode,
@@ -50,22 +52,29 @@ const LabeledListItem = (props: LabeledListItemProps) => {
     children,
     verticalAlign = "baseline",
   } = props;
+  const renderedLabel = (
+    <Box
+      as="td"
+      color={labelColor}
+      className={classes([
+        'LabeledList__cell',
+        'LabeledList__label',
+      ])}
+      verticalAlign={verticalAlign}>
+      {label ? typeof(label) === "string" ? label + ':' : label : null}
+    </Box>
+  );
   return (
     <tr
       className={classes([
         'LabeledList__row',
         className,
       ])}>
-      <Box
-        as="td"
-        color={labelColor}
-        className={classes([
-          'LabeledList__cell',
-          'LabeledList__label',
-        ])}
-        verticalAlign={verticalAlign}>
-        {label ? typeof(label) === "string" ? label + ':' : label : null}
-      </Box>
+      {props.labelDesc ? (
+        <Tooltip content={props.labelDesc}>
+          {renderedLabel}
+        </Tooltip>
+      ) : (renderedLabel)}
       <Box
         as="td"
         color={color}
