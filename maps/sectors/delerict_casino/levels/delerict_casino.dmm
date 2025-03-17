@@ -442,7 +442,9 @@
 	},
 /area/sector/delerictcasino/ringforrest)
 "bZ" = (
-/mob/living/simple_mob/animal/passive/bird/ringneck_dove,
+/mob/living/simple_mob/animal/passive/bird/ringneck_dove{
+	iff_factions = "!bind-map"
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "cc" = (
@@ -1346,6 +1348,15 @@
 /area/sector/delerictcasino/restaurant)
 "gn" = (
 /obj/effect/floor_decal/carpet{
+	dir = 4
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 1
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 5
+	},
+/obj/effect/floor_decal/carpet{
 	dir = 5
 	},
 /turf/simulated/floor/carpet,
@@ -1419,7 +1430,9 @@
 /turf/simulated/floor/tiled/old_tile/red,
 /area/sector/delerictcasino/vault)
 "gA" = (
-/mob/living/simple_mob/animal/passive/bird/ringneck_dove,
+/mob/living/simple_mob/animal/passive/bird/ringneck_dove{
+	iff_factions = "!bind-map"
+	},
 /turf/simulated/floor/preset/linoleum/indoors{
 	outdoors = 1
 	},
@@ -1658,8 +1671,12 @@
 /obj/structure/flora/grass/event/full_grass2{
 	color = "#ed983d"
 	},
-/mob/living/simple_mob/animal/passive/bird/black_bird,
-/mob/living/simple_mob/animal/passive/bird/black_bird,
+/mob/living/simple_mob/animal/passive/bird/black_bird{
+	iff_factions = "!bind-map"
+	},
+/mob/living/simple_mob/animal/passive/bird/black_bird{
+	iff_factions = "!bind-map"
+	},
 /turf/simulated/floor/fey/forest_grass{
 	outdoors = 1
 	},
@@ -2269,7 +2286,9 @@
 	},
 /area/sector/delerictcasino/engineering)
 "kt" = (
-/mob/living/simple_mob/animal/passive/bird/ringneck_dove,
+/mob/living/simple_mob/animal/passive/bird/ringneck_dove{
+	iff_factions = "!bind-map"
+	},
 /obj/structure/flora/grass/event/full_grass1,
 /turf/simulated/floor/fey/forest_grass{
 	outdoors = 1
@@ -2485,7 +2504,9 @@
 /turf/simulated/floor/tiled/white,
 /area/sector/delerictcasino/room/room1)
 "lu" = (
-/mob/living/simple_mob/animal/passive/bird/black_bird,
+/mob/living/simple_mob/animal/passive/bird/black_bird{
+	iff_factions = "!bind-map"
+	},
 /turf/simulated/floor/fey/forest_grass{
 	outdoors = 1
 	},
@@ -2536,7 +2557,9 @@
 	light_color = "#ed983d";
 	dir = 4
 	},
-/mob/living/simple_mob/animal/space/bear/brown/casino,
+/mob/living/simple_mob/animal/space/bear/brown/casino{
+	iff_factions = "!bind-map"
+	},
 /turf/simulated/floor/fey/forest_grass{
 	outdoors = 1
 	},
@@ -2731,7 +2754,9 @@
 	},
 /area/sector/delerictcasino/ringforrest)
 "mP" = (
-/mob/living/simple_mob/animal/passive/bird,
+/mob/living/simple_mob/animal/passive/bird{
+	iff_factions = "!bind-map"
+	},
 /turf/simulated/floor/fey/forest_grass{
 	outdoors = 1
 	},
@@ -2746,7 +2771,9 @@
 	light_color = "#ed983d";
 	dir = 4
 	},
-/mob/living/simple_mob/animal/space/bear/brown/casino,
+/mob/living/simple_mob/animal/space/bear/brown/casino{
+	iff_factions = "!bind-map"
+	},
 /turf/simulated/floor/preset/linoleum/indoors{
 	outdoors = 1
 	},
@@ -2954,7 +2981,9 @@
 /area/sector/delerictcasino/restaurant)
 "nQ" = (
 /obj/structure/flora/grass/event/full_grass1,
-/mob/living/simple_mob/animal/space/bear/brown/casino,
+/mob/living/simple_mob/animal/space/bear/brown/casino{
+	iff_factions = "!bind-map"
+	},
 /turf/simulated/floor/fey/forest_grass{
 	outdoors = 1
 	},
@@ -3030,7 +3059,9 @@
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/exterior)
 "oh" = (
-/mob/living/simple_mob/animal/passive/bird/ringneck_dove,
+/mob/living/simple_mob/animal/passive/bird/ringneck_dove{
+	iff_factions = "!bind-map"
+	},
 /turf/simulated/floor/fey/forest_grass{
 	outdoors = 1
 	},
@@ -3300,7 +3331,9 @@
 /area/sector/delerictcasino/ringforrest)
 "pm" = (
 /obj/effect/floor_decal/rust,
-/mob/living/simple_mob/animal/passive/bird/european_robin,
+/mob/living/simple_mob/animal/passive/bird/european_robin{
+	iff_factions = "!bind-map"
+	},
 /turf/simulated/floor/tiled/steel_dirty/dark{
 	outdoors = 1
 	},
@@ -3476,7 +3509,9 @@
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
 "pT" = (
-/mob/living/simple_mob/animal/passive/bird/european_robin,
+/mob/living/simple_mob/animal/passive/bird/european_robin{
+	iff_factions = "!bind-map"
+	},
 /turf/simulated/floor/tiled/steel_dirty/dark{
 	outdoors = 1
 	},
@@ -4035,6 +4070,10 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "sV" = (
+/obj/effect/floor_decal/carpet{
+	dir = 8
+	},
+/obj/effect/floor_decal/carpet,
 /obj/effect/floor_decal/carpet{
 	dir = 10
 	},
@@ -4914,6 +4953,12 @@
 /area/sector/delerictcasino/ringforrest)
 "xo" = (
 /obj/effect/floor_decal/carpet{
+	dir = 8
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 1
+	},
+/obj/effect/floor_decal/carpet{
 	dir = 9
 	},
 /turf/simulated/floor/carpet,
@@ -5792,6 +5837,15 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"Bi" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/red,
+/area/sector/delerictcasino/dock)
 "Bj" = (
 /obj/structure/flora/tree/fey/small_tree/tree3{
 	color = "#ed983d"
@@ -7136,7 +7190,9 @@
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/delerictcasino/room/room3)
 "Ii" = (
-/mob/living/simple_mob/animal/passive/bird/european_robin,
+/mob/living/simple_mob/animal/passive/bird/european_robin{
+	iff_factions = "!bind-map"
+	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "Ij" = (
@@ -7716,9 +7772,6 @@
 /obj/structure/statue/marble/male{
 	pixel_y = 14
 	},
-/obj/structure/statue/marble/male{
-	pixel_y = 14
-	},
 /obj/structure/table/hardwoodtable,
 /turf/simulated/floor/preset/linoleum/indoors{
 	outdoors = 1
@@ -7781,6 +7834,14 @@
 	outdoors = 0
 	},
 /area/sector/delerictcasino/engineering)
+"Lf" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/dock)
 "Li" = (
 /obj/machinery/power/apc/east_mount{
 	pixel_x = 32;
@@ -8172,7 +8233,9 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/mob/living/simple_mob/animal/space/bear/brown/casino,
+/mob/living/simple_mob/animal/space/bear/brown/casino{
+	iff_factions = "!bind-map"
+	},
 /turf/simulated/floor/fey/forest_grass{
 	outdoors = 1
 	},
@@ -8192,7 +8255,20 @@
 	color = "#677246"
 	},
 /area/sector/delerictcasino/ringforrest)
+"Ny" = (
+/mob/living/simple_mob/animal/passive/bird/black_bird{
+	iff_factions = "!bind-map"
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/sector/delerictcasino/spine)
 "NB" = (
+/obj/effect/floor_decal/carpet{
+	dir = 4
+	},
+/obj/effect/floor_decal/carpet,
+/obj/effect/floor_decal/carpet{
+	dir = 6
+	},
 /obj/effect/floor_decal/carpet{
 	dir = 6
 	},
@@ -8721,7 +8797,9 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/mob/living/simple_mob/animal/passive/bird/european_robin,
+/mob/living/simple_mob/animal/passive/bird/european_robin{
+	iff_factions = "!bind-map"
+	},
 /turf/simulated/floor/fey/forest_grass{
 	outdoors = 1
 	},
@@ -10185,7 +10263,9 @@
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/delerictcasino/vault)
 "Xk" = (
-/mob/living/simple_mob/animal/passive/bird/european_robin,
+/mob/living/simple_mob/animal/passive/bird/european_robin{
+	iff_factions = "!bind-map"
+	},
 /turf/simulated/floor/fey/forest_grass{
 	outdoors = 1
 	},
@@ -10414,6 +10494,12 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
 /area/sector/delerictcasino/maintenance)
+"Yl" = (
+/mob/living/simple_mob/animal/passive/bird/black_bird{
+	iff_factions = "!bind-map"
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/sector/delerictcasino/ringforrest)
 "Yn" = (
 /turf/simulated/wall/r_wall/prepainted/medical,
 /area/sector/delerictcasino/medical/public)
@@ -10622,7 +10708,9 @@
 	},
 /area/sector/delerictcasino/maintenance)
 "Zq" = (
-/mob/living/simple_mob/animal/space/bear/brown/casino,
+/mob/living/simple_mob/animal/space/bear/brown/casino{
+	iff_factions = "!bind-map"
+	},
 /turf/simulated/floor/fey/forest_grass{
 	outdoors = 1
 	},
@@ -29521,7 +29609,7 @@ IU
 IU
 Zx
 IU
-IU
+Ny
 IU
 IU
 IU
@@ -31634,7 +31722,7 @@ Cc
 kJ
 Qr
 Rx
-Rx
+Yl
 Rx
 Qr
 pi
@@ -32473,7 +32561,7 @@ ct
 ct
 ct
 bM
-IA
+Bi
 IA
 AC
 GH
@@ -33055,7 +33143,7 @@ ct
 ct
 ct
 bM
-VI
+Lf
 VI
 Qh
 GH
@@ -33442,7 +33530,7 @@ ct
 ct
 ct
 ct
-Am
+bM
 VI
 VI
 Qh
@@ -33636,8 +33724,8 @@ ct
 ct
 ct
 ct
-Am
-VI
+bM
+Lf
 VI
 Qh
 GH
@@ -33830,7 +33918,7 @@ ct
 ct
 ct
 ct
-bM
+Am
 VI
 VI
 Qh
@@ -34024,7 +34112,7 @@ ct
 ct
 ct
 ct
-bM
+Am
 VI
 VI
 Qh
@@ -34218,8 +34306,8 @@ ct
 ct
 ct
 ct
-Am
-VI
+bM
+Lf
 VI
 Qh
 GH
@@ -34412,7 +34500,7 @@ ct
 ct
 ct
 ct
-Am
+bM
 VI
 VI
 Qh
@@ -34606,7 +34694,7 @@ ct
 ct
 ct
 ct
-bM
+Am
 VI
 VI
 Qh
@@ -34800,7 +34888,7 @@ ct
 ct
 ct
 ct
-bM
+Am
 VI
 VI
 Qh
@@ -34994,7 +35082,7 @@ ct
 ct
 ct
 ct
-Am
+bM
 VI
 VI
 Qh
@@ -35188,8 +35276,8 @@ ct
 ct
 ct
 ct
-Am
-VI
+bM
+Lf
 VI
 Qh
 GH
@@ -35770,8 +35858,8 @@ ct
 ct
 ct
 ct
-Am
-VI
+bM
+Lf
 VI
 Qh
 bM
@@ -35964,7 +36052,7 @@ ct
 ct
 ct
 ct
-Am
+bM
 Od
 VI
 Qh
