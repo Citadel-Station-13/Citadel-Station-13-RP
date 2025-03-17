@@ -82,7 +82,17 @@
  *
  * @return clickchain flags to append
  */
-/atom/proc/on_melee_act(atom/movable/attacker, datum/melee_attack/attack_style, datum/event_args/actor/clickchain/clickchain)
+/atom/proc/on_item_melee_act(mob/attacker, datum/melee_attack/attack_style, datum/event_args/actor/clickchain/clickchain)
+	return NONE
+
+/**
+ * Called on a melee going through, whether or not it was blocked
+ *
+ * todo: should this keep being a thing?? why can't the caller just invoke entrypoint directly?
+ *
+ * @return clickchain flags to append
+ */
+/atom/proc/on_unarmed_melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/attack_style, datum/event_args/actor/clickchain/clickchain)
 	return NONE
 
 //* External API / Damage Receiving - Projectiles *//

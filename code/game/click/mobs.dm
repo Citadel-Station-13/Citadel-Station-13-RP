@@ -46,7 +46,7 @@
  *
  * todo: this is semi-legacy
  */
-/mob/proc/default_clickchain_event_args(atom/target, unarmed = FALSE)
+/mob/proc/default_clickchain_event_args(atom/target)
 	var/datum/event_args/actor/clickchain/constructed = new
 	constructed.initiator = src
 	constructed.performer = src
@@ -54,8 +54,6 @@
 	constructed.click_params = list()
 	constructed.using_intent = a_intent
 	constructed.using_hand_index = active_hand
-	if(!unarmed)
-		constructed.using_item = get_active_held_item()
 	return constructed
 
 /**

@@ -77,14 +77,14 @@
 
 	if(!missed)
 		fixed_target.animate_hit_by_attack(attack_style.animation_type)
-		. |= fixed_target.on_melee_act(src, attack_style, clickchain)
+		. |= fixed_target.on_unarmed_melee_act(src, attack_style, clickchain)
 
 	// todo: melee_override and melee_impact, much like on items
 
 	. |= melee_finalize(clickchain, clickchain_flags, attack_style)
 
 	// -- log --
-	log_unarmed_melee(clickchain, attack_style)
+	log_unarmed_melee(clickchain, clickchain_flags, attack_style)
 
 /**
  * Called after a melee attack is executed, regardless of if it hit.

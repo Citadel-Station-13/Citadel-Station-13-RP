@@ -8,15 +8,15 @@
 	/// expected type of the weapon being used
 	var/expected_type = /obj/item
 
-/datum/melee_attack/weapon/perform_attack_impact_entrypoint(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain)
-	return perform_attack_impact(attacker, target, clickchain.using_item, clickchain)
+/datum/melee_attack/weapon/perform_attack_impact_entrypoint(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain, obj/item/weapon)
+	return perform_attack_impact(attacker, target, clickchain, weapon)
 
 /**
  * Called to perform standard attack effects on a target.
  *
  * @return clickchain flags
  */
-/datum/melee_attack/weapon/proc/perform_attack_impact(atom/movable/attacker, atom/target, obj/item/weapon, datum/event_args/actor/clickchain/clickchain)
+/datum/melee_attack/weapon/proc/perform_attack_impact(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain, obj/item/weapon)
 	PROTECTED_PROC(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 	if(ismob(target))

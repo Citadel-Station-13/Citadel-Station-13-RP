@@ -23,10 +23,6 @@
 	/// (optional) hand index
 	var/using_hand_index
 
-	/// with item, if any
-	/// * must be set in a weapon attack
-	var/obj/item/using_item
-
 	//* Click Data *//
 
 	/// optional: click params
@@ -100,7 +96,6 @@
 	var/datum/event_args/actor/clickchain/cloning = ..()
 	cloning.using_intent = using_intent
 	cloning.using_hand_index = using_hand_index
-	cloning.using_item = using_item
 	cloning.click_params = click_params
 	cloning.click_cooldown_base = click_cooldown_base
 	cloning.click_cooldown_multiplier = click_cooldown_multiplier

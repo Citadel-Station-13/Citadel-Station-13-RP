@@ -137,7 +137,7 @@
 		. |= melee_finalize(clickchain, clickchain_flags, attack_style)
 
 	// -- log --
-	log_weapon_melee(clickchain, attack_style, src)
+	log_weapon_melee(clickchain, clickchain_flags, attack_style, src)
 
 /**
  * Override hook for melee attacks.
@@ -193,7 +193,7 @@
 
 	if(missed)
 		return clickchain_flags
-	return clickchain_flags | fixed_target.on_melee_act(fixed_performer, attack_style, clickchain)
+	return clickchain_flags | fixed_target.on_item_melee_act(fixed_performer, src, attack_style, clickchain)
 
 /**
  * Called after we hit something in melee, **whether or not we hit.**

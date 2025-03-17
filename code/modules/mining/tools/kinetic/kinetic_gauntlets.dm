@@ -28,6 +28,12 @@
 	var/charge_delay_multiplier_combo_success = (2 / 3)
 
 	/// our combo tracker
+	///
+	/// * WARNING, WARNING *
+	///   DO NOT COPYPASTE THIS CODE ELSEWHERE
+	///   IF YOU NEED MELEE COMBOS, FIGURE OUT A GENERIC WAY TO ATTACH THEM
+	///   TO ITEMS. DO NOT COPYPASTE THIS CODE AROUND, THE HOOKING CODE
+	///   IS COMPLEX AND SHOULD NOT BE UNNECESSARILY DUPLICATED.
 	var/datum/combo_tracker/melee/combo_tracker
 	/// only reapplied on un-equip/re-equip right now!
 	var/combo_continuation_timeout = 3 SECONDS
@@ -122,5 +128,9 @@
 	if(worn_slot != /datum/inventory_slot/inventory/gloves::id)
 		cancel_recharge()
 		return
+
+/obj/item/kinetic_gauntlets/melee_impact(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
+
+
 
 #warn impl all

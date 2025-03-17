@@ -7,3 +7,5 @@
 #define ACTOR_DATA_UNARMED_LOG "unarmed-log"
 /// logging only
 #define ACTOR_DATA_STUNBATON_LOG "stunbaton-log"
+/// logging
+#define ACTOR_DATA_COMBO_LOG "combo-log"

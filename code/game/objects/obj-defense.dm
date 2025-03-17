@@ -28,7 +28,10 @@
 		return CLICKCHAIN_FULL_BLOCKED
 	return NONE
 
-/obj/on_melee_act(atom/movable/attacker, datum/melee_attack/attack_style, datum/event_args/actor/clickchain/clickchain)
+/obj/on_item_melee_act(atom/movable/attacker, obj/item/weapon, datum/melee_attack/attack_style, datum/event_args/actor/clickchain/clickchain)
+	return attack_style.perform_attack_impact_entrypoint(attacker, src, clickchain, weapon)
+
+/obj/on_unarmed_melee_act(atom/movable/attacker, datum/melee_attack/attack_style, datum/event_args/actor/clickchain/clickchain)
 	return attack_style.perform_attack_impact_entrypoint(attacker, src, clickchain)
 
 /obj/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
