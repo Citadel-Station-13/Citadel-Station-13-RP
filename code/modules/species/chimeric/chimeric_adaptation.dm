@@ -25,6 +25,12 @@
 	 */
 	var/ui_interface
 
+	/**
+	 * Requires ticking.
+	 * * We have no control over our tick interval.
+	 */
+	var/requires_ticking = FALSE
+
 #warn todo: base-level examine api, impl for all adaptations
 
 /datum/chimeric_adaptation/proc/on_register(obj/item/organ/internal/chimeric_core/core)

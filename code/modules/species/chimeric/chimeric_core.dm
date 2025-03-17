@@ -16,13 +16,41 @@
 	 */
 	var/list/datum/chimeric_adaptation/adaptations
 
-/obj/item/organ/internal/chimeric_core/Initialize(mapload)
+	/**
+	 * Core variable - Agitation
+	 */
+	var/c_agitation = 0
+	/**
+	 * Core variable - Attrition
+	 */
+	var/c_attrition = 0
 
+	/**
+	 * Suppression descriptors
+	 * * Chimeras are immune to a source if the ID isn't in here
+	 */
+	var/list/suppression_descriptors
+	/**
+	 * Suppression amounts
+	 */
+	var/list/suppression_amounts
+
+
+/obj/item/organ/internal/chimeric_core/Initialize(mapload)
+	initialize_suppression_tracking()
 	return ..()
 
 /obj/item/organ/internal/chimeric_core/Destroy()
-
+	QDEL_LIST_ASSOC_VAL(suppression_descriptors)
+	suppression_amounts?.len = 0
 	return ..()
+
+/obj/item/organ/internal/chimeric_core/proc/initialize_suppression_tracking()
+	suppression_amounts = list()
+	suppression_descriptors = list()
+
+	for(var/datum/chimeric_suppression/suppression_path as anything in subtypesof(/datum/chimeric_suppression))
+		suppression_descriptors[suppression_path.id] = new suppression_path
 
 /obj/item/organ/internal/chimeric_core/on_insert(mob/living/carbon/target, from_init)
 	. = ..()
@@ -32,7 +60,34 @@
 
 #warn examine hook
 
-/obj/item/organ/internal/chimeric_core
 
 
 #warn impl ?
+
+//* Abilities *//
+
+/**
+ * @params
+ * * dt - time elapsed in seconds
+ */
+/obj/item/organ/internal/chimeric_core/proc/tick_abilities(dt)
+
+//* Adaptations *//
+
+/**
+ * @params
+ * * dt - time elapsed in seconds
+ */
+/obj/item/organ/internal/chimeric_core/proc/tick_adaptations(dt)
+
+//* Suppression *//
+
+/obj/item/organ/internal/chimeric_core/proc/inflict_suppression(id, power)
+
+/obj/item/organ/internal/chimeric_core/proc/get_suppression(id)
+
+/**
+ * @params
+ * * dt - time elapsed in seconds.
+ */
+/obj/item/organ/internal/chimeric_core/proc/tick_suppression(dt)
