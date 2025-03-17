@@ -230,6 +230,9 @@
 /area/endeavour/exploration/hallway_aft
 	name = "\improper Exploration Aft Hallway"
 
+/area/endeavour/exploration/aux_hanger
+	name = "\improper Exploration Auxilliary Hanger"
+
 /** Medical
  */
 
