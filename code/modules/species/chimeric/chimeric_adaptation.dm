@@ -18,7 +18,7 @@
 	/**
 	 * The core we belong to
 	 */
-	var/obj/item/organ/internal/brain/chimeric_core/host_core
+	var/obj/item/organ/internal/chimeric_core/host_core
 
 	/**
 	 * Our TGUI interface key
@@ -27,9 +27,9 @@
 
 #warn todo: base-level examine api, impl for all adaptations
 
-/datum/chimeric_adaptation/proc/on_register(obj/item/organ/internal/brain/chimeric_core/core)
+/datum/chimeric_adaptation/proc/on_register(obj/item/organ/internal/chimeric_core/core)
 
-/datum/chimeric_adaptation/proc/on_unregister(obj/item/organ/internal/brain/chimeric_core/core)
+/datum/chimeric_adaptation/proc/on_unregister(obj/item/organ/internal/chimeric_core/core)
 
 /datum/chimeric_adaptation/proc/on_mob_associate(mob/living/carbon/person)
 

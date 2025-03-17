@@ -3,12 +3,8 @@
 
 /**
  * The core organ of a chimeric complex-type mob
- *
- * * As of right now, also serves as their consciousness. This is because
- *   'debraining' a chimera generally doesn't mean anything canonically as
- *   they aren't a centralized lifeform.
  */
-/obj/item/organ/internal/brain/chimeric_core
+/obj/item/organ/internal/chimeric_core
 	name = "chimeric core"
 	desc = {"
 		The abstraction representation of a chimera's internal structure.
@@ -20,23 +16,23 @@
 	 */
 	var/list/datum/chimeric_adaptation/adaptations
 
-/obj/item/organ/internal/brain/chimeric_core/Initialize(mapload)
+/obj/item/organ/internal/chimeric_core/Initialize(mapload)
 
 	return ..()
 
-/obj/item/organ/internal/brain/chimeric_core/Destroy()
+/obj/item/organ/internal/chimeric_core/Destroy()
 
 	return ..()
 
-/obj/item/organ/internal/brain/chimeric_core/on_insert(mob/living/carbon/target, from_init)
+/obj/item/organ/internal/chimeric_core/on_insert(mob/living/carbon/target, from_init)
 	. = ..()
 
-/obj/item/organ/internal/brain/chimeric_core/on_remove(mob/living/carbon/target, from_qdel)
+/obj/item/organ/internal/chimeric_core/on_remove(mob/living/carbon/target, from_qdel)
 	. = ..()
 
 #warn examine hook
 
-/obj/item/organ/internal/brain/chimeric_core
+/obj/item/organ/internal/chimeric_core
 
 
 #warn impl ?
