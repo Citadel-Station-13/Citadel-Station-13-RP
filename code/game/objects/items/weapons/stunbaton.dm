@@ -1,5 +1,3 @@
-/datum/melee_attack/weapon/stun_baton
-
 // todo: /obj/item/stun_baton
 /obj/item/melee/baton
 	name = "stunbaton"
@@ -36,13 +34,6 @@
 	var/active = FALSE
 	/// Glow color when on
 	var/active_color = "#FF6A00"
-
-	#warn hm
-	/// because there's such a thing as helpful batonning
-	/// * used on melee if actor intent is non-harm
-	var/datum/melee_attack/weapon/help_baton_style
-	/// * used on melee if actor intent is harm
-	var/datum/melee_attack/weapon/harm_baton_style
 
 	// todo: use item mounts
 	var/legacy_use_external_power = FALSE

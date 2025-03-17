@@ -96,7 +96,6 @@
 	. = ..()
 	if(.)
 		return
-	SEND_SIGNAL(src, COMSIG_MOB_LEGACY_ATTACK_HAND_INTERCEPT, user, e_args)
 	var/mob/living/L = user
 	if(!istype(L))
 		return
@@ -153,17 +152,6 @@
 	var/absorb = run_armor_check(def_zone, armor_check, armor_pen)
 
 	apply_damage(damage, damage_type, def_zone, absorb, soaked)
-
-#warn how do we handle this? check overrides and hook into new code
-/mob/living/proc/resolve_item_attack(obj/item/I, mob/living/user, var/target_zone)
-	SEND_SIGNAL(src, COMSIG_MOB_LEGACY_RESOLVE_ITEM_ATTACK, I, user, target_zone)
-
-	var/shieldcall_results = atom_shieldcall_handle_item_melee(I, new /datum/event_args/actor/clickchain(user), FALSE, NONE)
-	// todo: clickchain should be checked for damage mult
-	if(shieldcall_results & SHIELDCALL_FLAGS_BLOCK_ATTACK)
-		return
-
-	return target_zone
 
 //Called when the mob is hit with an item in combat. Returns the blocked result
 /mob/living/proc/hit_with_weapon(obj/item/I, mob/living/user, var/effective_force, var/hit_zone)

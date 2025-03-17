@@ -41,4 +41,4 @@ GLOBAL_DATUM_INIT(kinetic_gauntlet_melee_combo, /datum/combo_set/melee, new /dat
 		INTENT_HARM,
 	)
 
-#warn melee injection hooks
+#warn melee stats and attacks for these

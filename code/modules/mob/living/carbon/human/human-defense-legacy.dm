@@ -129,8 +129,8 @@
 			return gear
 	return null
 
+#warn deal with this
 /mob/living/carbon/human/resolve_item_attack(obj/item/I, mob/living/user, var/target_zone)
-	SEND_SIGNAL(src, COMSIG_MOB_LEGACY_RESOLVE_ITEM_ATTACK, I, user, target_zone)
 	if(check_neckgrab_attack(I, user, target_zone))
 		return null
 
