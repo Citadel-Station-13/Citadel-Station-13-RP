@@ -11,7 +11,7 @@
 	supervisors = "your Laws"
 	req_admin_notify = 1
 	minimal_player_age = 7
-	account_allowed = 0
+	economy_create_account = FALSE
 	pto_type = PTO_CIVILIAN
 	has_headset = FALSE
 	assignable = FALSE

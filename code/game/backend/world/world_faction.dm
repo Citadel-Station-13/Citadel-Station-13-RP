@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
 /**
  * a faction in the in-game universe
@@ -25,6 +25,8 @@
 	// todo: supply faction
 	/// supply faction path to init, if any
 	// var/datum/supply_faction/supply_faction
+	/// economy faction to init, if any
+	var/datum/economy_faction/economy_faction = /datum/economy_faction
 
 	//* world simulation *//
 
@@ -41,4 +43,13 @@
  * called if we're on the active map so we create all our datums
  */
 /datum/world_faction/proc/prime()
-	return
+	economy_faction = create_economy_faction()
+
+/datum/world_faction/proc/create_economy_faction() as /datum/economy_faction
+	RETURN_TYPE(/datum/economy_faction)
+	if(!economy_faction)
+		return
+	var/datum/economy_faction/creating = new economy_faction
+	creating.id = id
+	creating.abbreviation = abbreviation
+	return creating
