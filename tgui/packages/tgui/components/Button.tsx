@@ -7,7 +7,7 @@
 import { Placement } from '@popperjs/core';
 import { KEY_ENTER, KEY_ESCAPE, KEY_SPACE } from 'common/keycodes';
 import { BooleanLike, classes, pureComponentHooks, StrictlyStringLike } from 'common/react';
-import { Component, createRef } from 'inferno';
+import { ChangeEvent, Component, createRef } from 'inferno';
 import { createLogger } from '../logging';
 import { Box, BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 import { Icon } from './Icon';
@@ -354,3 +354,40 @@ export class ButtonInput<T extends ButtonInputProps> extends Component<T, {}> {
 }
 
 Button.Input = ButtonInput;
+
+type FileProps = {
+  accept: string;
+  multiple?: boolean;
+  onSelectFiles: (files: FileList) => void;
+} & ButtonProps;
+
+/**  Accepts file input */
+function ButtonFile(props: FileProps) {
+  const { accept, multiple, onSelectFiles, ...rest } = props;
+
+  const inputRef = createRef<HTMLInputElement>();
+
+  async function handleChange(event: ChangeEvent<HTMLInputElement>) {
+    const files = event.target.files;
+    if (files?.length) {
+      onSelectFiles(files);
+      event.target.value = '';
+    }
+  }
+
+  return (
+    <>
+      <Button onClick={() => inputRef.current?.click()} {...rest} />
+      <input
+        hidden
+        type="file"
+        ref={inputRef}
+        accept={accept}
+        multiple={multiple}
+        onChange={handleChange}
+      />
+    </>
+  );
+}
+
+Button.File = ButtonFile;
