@@ -1,0 +1,70 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
+
+/**
+ * * These are instanced, not shared singletons.
+ */
+/datum/chimeric_ability
+	/**
+	 * Our name
+	 */
+	var/name = "Unknown Ability"
+	/**
+	 * Our name as presented to players
+	 * * If not set, defaults to name.
+	 */
+	var/display_name
+
+#warn what are we doing here?
+
+// 	/**
+// 	 * The core we belong to
+// 	 */
+// 	var/obj/item/organ/internal/brain/chimeric_core/host_core
+
+// 	/**
+// 	 * Our TGUI interface key
+// 	 */
+// 	var/ui_interface
+
+// #warn todo: base-level examine api, impl for all abilitys
+
+// /datum/chimeric_ability/proc/on_register(obj/item/organ/internal/brain/chimeric_core/core)
+
+// /datum/chimeric_ability/proc/on_unregister(obj/item/organ/internal/brain/chimeric_core/core)
+
+// /datum/chimeric_ability/proc/on_mob_associate(mob/living/carbon/person)
+
+// /datum/chimeric_ability/proc/on_mob_deassociate(mob/living/carbon/person)
+
+// /datum/chimeric_ability/proc/on_organ_associate(obj/item/organ/organ)
+// 	if(istype(organ, /obj/item/organ/internal))
+// 		on_internal_organ_associate(organ)
+// 	else if(istype(organ, /obj/item/organ/external))
+// 		on_external_organ_associate(organ)
+
+// /datum/chimeric_ability/proc/on_organ_deassociate(obj/item/organ/organ)
+// 	if(istype(organ, /obj/item/organ/internal))
+// 		on_internal_organ_deassociate(organ)
+// 	else if(istype(organ, /obj/item/organ/external))
+// 		on_external_organ_deassociate(organ)
+
+// /datum/chimeric_ability/proc/on_internal_organ_associate(obj/item/organ/internal/organ)
+
+// /datum/chimeric_ability/proc/on_internal_organ_deassociate(obj/item/organ/internal/organ)
+
+// /datum/chimeric_ability/proc/on_external_organ_associate(obj/item/organ/external/organ)
+
+// /datum/chimeric_ability/proc/on_external_organ_deassociate(obj/item/organ/external/organ)
+
+// #warn impl
+
+// /datum/chimeric_ability/proc/panel_push_data(list/data)
+
+// /datum/chimeric_ability/proc/panel_get_static_data()
+
+// /datum/chimeric_ability/proc/panel_get_data()
+
+// /datum/chimeric_ability/proc/panel_on_act(action, list/params)
+// 	#warn wip
+
