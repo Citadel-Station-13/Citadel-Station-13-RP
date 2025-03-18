@@ -14,7 +14,11 @@
 	/**
 	 * Adaptation datums
 	 */
-	var/list/datum/chimeric_adaptation/adaptations
+	var/list/datum/chimeric_subsystem/adaptation/adaptations
+	/**
+	 * Ability datums
+	 */
+	var/list/datum/chimeric_subsystem/ability/abilities
 
 	/**
 	 * Core variable - Agitation
@@ -71,6 +75,10 @@
  * * dt - time elapsed in seconds
  */
 /obj/item/organ/internal/chimeric_core/proc/tick_abilities(dt)
+	for(var/datum/chimeric_subsystem/ability as anything in abilities)
+		if(!ability.requires_ticking)
+			continue
+		ability.on_chimeric_tick(dt)
 
 //* Adaptations *//
 
@@ -79,6 +87,10 @@
  * * dt - time elapsed in seconds
  */
 /obj/item/organ/internal/chimeric_core/proc/tick_adaptations(dt)
+	for(var/datum/chimeric_subsystem/adaptation as anything in adaptations)
+		if(!adaptation.requires_ticking)
+			continue
+		adaptation.on_chimeric_tick(dt)
 
 //* Suppression *//
 
