@@ -123,7 +123,9 @@
 	. |= clickchain.target.item_melee_act(clickchain.performer, attack_style, clickchain.target_zone, clickchain)
 
 	// -- call override --
-	var/overridden = melee_override(clickchain.target, clickchain.performer, clickchain.using_intent, clickchain.target_zone, clickchain.attack_contact_multiplier, clickchain)
+	var/overridden
+	if(!(. & CLICKCHAIN_ATTACK_MISSED))
+		overridden = melee_override(clickchain.target, clickchain.performer, clickchain.using_intent, clickchain.target_zone, clickchain.attack_contact_multiplier, clickchain)
 
 	// -- execute attack if override didn't run --
 	if(!overridden)

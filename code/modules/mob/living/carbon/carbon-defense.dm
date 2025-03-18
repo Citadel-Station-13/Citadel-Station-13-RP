@@ -1,6 +1,10 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+/mob/living/carbon/item_melee_act(mob/user, obj/item/weapon, target_zone, datum/event_args/actor/clickchain/clickchain)
+	#warn impl
+	return ..()
+
 //* FX *//
 
 /mob/living/carbon/get_combat_fx_classifier(attack_type, datum/weapon, target_zone)
