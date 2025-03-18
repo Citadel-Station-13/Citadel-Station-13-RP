@@ -62,17 +62,17 @@
 	options["Herder"] = list(/obj/item/tool/wirecutters/clippers/trimmers, /obj/item/reagent_containers/glass/bucket/wood, /obj/item/bo_staff,
 	/obj/item/material/butterfly/butterfly_wooden, /obj/item/reagent_containers/food/drinks/cans/empty, /obj/item/reagent_containers/food/drinks/cans/empty,
 	/obj/item/reagent_containers/food/drinks/cans/empty, /obj/item/reagent_containers/food/drinks/cans/empty, /obj/item/reagent_containers/food/drinks/cans/empty,
-	/obj/item/reagent_containers/food/drinks/cans/empty, /obj/item/clothing/suit/storage/hooded/tajaran/cloak/gruff)
+	/obj/item/reagent_containers/food/drinks/cans/empty, /obj/item/clothing/suit/storage/hooded/tajaran/cloak/gruff, /obj/item/stack/medical/crude_pack)
 	options["Hunter"] = list(/obj/item/gun/projectile/ballistic/musket/taj, /obj/item/storage/box/munition_box, /obj/item/storage/box/munition_box,
 	/obj/item/reagent_containers/glass/powder_horn/filled, /obj/item/material/knife/hook, /obj/item/beartrap, /obj/item/clothing/suit/storage/tajaran/coat,
-	/obj/item/clothing/head/tajaran/fur, /obj/item/clothing/accessory/permit/gun/nka)
+	/obj/item/clothing/head/tajaran/fur, /obj/item/clothing/accessory/permit/gun/nka, /obj/item/stack/medical/crude_pack)
 	options["Lumberjack"] = list(/obj/item/material/knife/machete/hatchet, /obj/item/material/twohanded/fireaxe/iron,  /obj/item/clothing/shoes/tajara/workboots,
-	/obj/item/clothing/head/tajaran/fur, /obj/item/clothing/suit/storage/hooded/tajaran/cloak/gruff)
+	/obj/item/clothing/head/tajaran/fur, /obj/item/clothing/suit/storage/hooded/tajaran/cloak/gruff, /obj/item/stack/medical/crude_pack)
 	options["Prospector"] = list(/obj/item/pickaxe/icepick, /obj/item/storage/bag/ore, /obj/item/flashlight/lantern, /obj/item/clothing/head/hardhat/orange,
-	/obj/item/clothing/suit/storage/hooded/tajaran/cloak/gruff, /obj/item/clothing/shoes/tajara/workboots)
+	/obj/item/clothing/suit/storage/hooded/tajaran/cloak/gruff, /obj/item/clothing/shoes/tajara/workboots, /obj/item/stack/medical/crude_pack)
 	options["Scavenger"] = list(/obj/item/storage/belt/utility/full, /obj/item/clothing/head/hardhat, /obj/item/clothing/suit/storage/hooded/tajaran/cloak/gruff,
 	/obj/item/clothing/shoes/tajara/workboots/dark, /obj/item/clothing/under/tajaran/mechanic, /obj/item/clothing/gloves/black/tajara/smithgloves,
-	/obj/item/reagent_containers/pill/hyronalin, /obj/item/reagent_containers/pill/hyronalin)
+	/obj/item/reagent_containers/pill/hyronalin, /obj/item/reagent_containers/pill/hyronalin, /obj/item/stack/medical/crude_pack)
 	var/choice = input(user,"What is your profession?") as null|anything in options
 	if(src && choice)
 		var/list/things_to_spawn = options[choice]
