@@ -41,19 +41,13 @@
 	var/list/datum/action/actions
 
 	/**
-	 * Our action button, if any
-	 * * Set to FALSE to not create one, set to TRUE to create one.
+	 * Generalized suppression sources.
+	 * * get_generalized_suppression() will return from all of these sources.
+	 * * Use generalized suppression if it makes sense to. If it doesn't,
+	 *   make additional suppression sources as variables.
+	 * * DO NOT hardcode suppression IDs or typepaths, everything must be variables.
 	 */
-	VAR_PROTECTED/datum/action/action_button = FALSE
-	/**
-	 * Our action button icon, if any
-	 */
-	var/action_button_icon
-	/**
-	 * Our action button icon state, if any
-	 */
-	var/action_button_icon_state
-	#warn action button handling
+	var/list/generalized_suppression_source_ids
 
 #warn todo: base-level examine api, impl for all adaptations
 
@@ -130,3 +124,17 @@
 /datum/chimeric_subsystem/proc/on_external_organ_associate(obj/item/organ/external/organ)
 
 /datum/chimeric_subsystem/proc/on_external_organ_deassociate(obj/item/organ/external/organ)
+
+//* Suppression *//
+
+/**
+ * Get generalized suppression amount.
+ */
+/datum/chimeric_suppression/proc/get_generalized_suppression_via_add_tally()
+	#warn impl
+
+/**
+ * Get generalized suppression amount.
+ */
+/datum/chimeric_suppression/proc/get_generalized_suppression_via_max_tally()
+	#warn impl

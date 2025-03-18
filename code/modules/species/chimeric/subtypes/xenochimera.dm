@@ -5,7 +5,6 @@
 
 /datum/species/shapeshifter/xenochimera
 	uid = SPECIES_ID_XENOCHIMERA
-	id = SPECIES_ID_XENOCHIMERA
 
 	name = SPECIES_XENOCHIMERA
 	name_plural = "Xenochimeras"
