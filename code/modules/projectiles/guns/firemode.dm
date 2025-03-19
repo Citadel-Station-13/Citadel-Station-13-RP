@@ -6,6 +6,7 @@
 	var/name = "normal"
 
 	//* firing *//
+
 	/// number of shots in burst
 	var/burst_amount = 1
 	/// delay between burst shots
@@ -13,7 +14,17 @@
 	/// delay **after** the firing cycle which we cannot fire
 	var/cycle_cooldown = 0.4 SECONDS
 
+	//* projectile *//
+
+	/// impart base dispersion to every single projectile
+	/// * this should rarely be used; instability system is better and
+	///   more suited for compatibility with other sources of dispersion
+	var/projectile_base_dispersion = 0
+	/// passed to bullet in fire()
+	var/list/projectile_effects_add
+
 	//* rendering *//
+
 	/// modify the gun's base state when active
 	/// * very, very dangerous, know what you are doing.
 	var/override_icon_base
@@ -23,6 +34,7 @@
 	var/render_color
 
 	//* UI *//
+
 	/// appearance used for radial
 	///
 	/// supported values:
@@ -32,11 +44,8 @@
 	/// this must be created in [make_radial_appearance()] as this cannot be set to image() or similar at compile time
 	var/radial_appearance
 
-	//* Projectile Effects *//
-	/// passed to bullet in fire()
-	var/list/add_projectile_effects
-
 	//* LEGACY *//
+
 	/// direct vv edits to the gun applied when we're selected.
 	///
 	/// * this is shit, but it is what it is, for now. we're migrating things out of

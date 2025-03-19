@@ -184,6 +184,8 @@ Add those other swinging traps you mentioned above!
 
 	else if(istype(AM, /mob/living))
 		var/mob/living/M = AM
+		if(M.is_avoiding_ground())
+			return
 		var/damage = rand(min_damage, max_damage)
 		M.apply_damage(damage, DAMAGE_TYPE_BRUTE)
 		M.visible_message("<span class='danger'>[M] falls onto a punji stake!</span>", \
@@ -222,6 +224,9 @@ Add those other swinging traps you mentioned above!
 		return
 
 	else if(istype(AM, /mob/living))
+		var/mob/living/M = AM
+		if(M.is_avoiding_ground())
+			return
 		break_legs(AM)
 		AM.visible_message("<span class='danger'>[AM] falls into the path of the piston!</span>", \
 						"<span class='userdanger'>Your leg is crushed by the piston!</span>")
@@ -282,6 +287,8 @@ Add those other swinging traps you mentioned above!
 
 	else if(istype(AM, /mob/living))
 		var/mob/living/M = AM
+		if(M.is_avoiding_ground())
+			return
 		var/damage = rand(min_damage, max_damage)
 		M.apply_damage(damage, DAMAGE_TYPE_TOX)
 		M.set_stunned(20 * 15)

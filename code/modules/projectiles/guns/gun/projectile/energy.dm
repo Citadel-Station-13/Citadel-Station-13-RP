@@ -229,7 +229,7 @@
 		QDEL_NULL(modular_particle_array_swap_action)
 	else
 		if(!modular_particle_array_swap_action)
-			lethal_safety_action = new /datum/action/item_action/modular_energy_particle_array_swap(src)
+			lethal_safety_action = new /datum/action/item_action/gun_particle_array_swap(src)
 			if(inv_inside)
 				lethal_safety_action.grant(inv_inside.actions)
 
@@ -242,7 +242,7 @@
 		lethal_safety = FALSE
 	else
 		if(!lethal_safety_action)
-			lethal_safety_action = new /datum/action/item_action/modular_energy_particle_array_safety(src)
+			lethal_safety_action = new /datum/action/item_action/gun_particle_array_safety(src)
 			if(inv_inside)
 				lethal_safety_action.grant(inv_inside.actions)
 
@@ -340,30 +340,30 @@
 
 //* Action Datums *//
 
-/datum/action/item_action/modular_energy_particle_array_safety
+/datum/action/item_action/gun_particle_array_safety
 	name = "Toggle Lethal Arrays"
 	desc = "Toggle being able to swap to installed particle arrays that are considered lethal."
 	target_type = /obj/item/gun/projectile/energy
 	check_mobility_flags = MOBILITY_CAN_USE
 
-/datum/action/item_action/modular_energy_particle_array_safety/pre_render_hook()
+/datum/action/item_action/gun_particle_array_safety/pre_render_hook()
 	. = ..()
 	var/image/item_overlay = button_additional_overlay
 	var/image/symbol_overlay = image('icons/screen/actions/generic-overlays.dmi', "lock")
 	symbol_overlay.color = "#ccaa00"
 	item_overlay.add_overlay(symbol_overlay)
 
-/datum/action/item_action/modular_energy_particle_array_safety/invoke_target(obj/item/gun/projectile/energy/target, datum/event_args/actor/actor)
+/datum/action/item_action/gun_particle_array_safety/invoke_target(obj/item/gun/projectile/energy/target, datum/event_args/actor/actor)
 	. = ..()
 	target.user_swap_lethal_safety(actor)
 
-/datum/action/item_action/modular_energy_particle_array_swap
+/datum/action/item_action/gun_particle_array_swap
 	name = "Toggle Particle Array"
 	desc = "Toggle the active particle array being used."
 	target_type = /obj/item/gun/projectile/energy
 	check_mobility_flags = MOBILITY_CAN_USE
 
-/datum/action/item_action/modular_energy_particle_array_swap/pre_render_hook()
+/datum/action/item_action/gun_particle_array_swap/pre_render_hook()
 	. = ..()
 	var/image/item_overlay = button_additional_overlay
 	var/image/symbol_overlay = image('icons/modules/projectiles/components/particle_array.dmi', "stock")
@@ -372,6 +372,6 @@
 	item_overlay.add_overlay(symbol_overlay)
 	target_type = /obj/item/gun/projectile/energy
 
-/datum/action/item_action/modular_energy_particle_array_swap/invoke_target(obj/item/gun/projectile/energy/target, datum/event_args/actor/actor)
+/datum/action/item_action/gun_particle_array_swap/invoke_target(obj/item/gun/projectile/energy/target, datum/event_args/actor/actor)
 	. = ..()
 	target.user_swap_particle_array(actor)
