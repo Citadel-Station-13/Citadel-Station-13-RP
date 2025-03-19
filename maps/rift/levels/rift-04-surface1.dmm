@@ -10361,6 +10361,7 @@
 	dir = 8
 	},
 /obj/item/flashlight/lamp{
+	on = 0;
 	pixel_x = -4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -23138,7 +23139,9 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenoarch_storage)
 "ope" = (
-/obj/structure/curtain/black,
+/obj/structure/curtain/black{
+	anchored = 1
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
 "opn" = (
@@ -24980,7 +24983,9 @@
 "prs" = (
 /obj/structure/bed/pod,
 /obj/item/bedsheet,
-/obj/structure/curtain/black,
+/obj/structure/curtain/black{
+	anchored = 1
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/surface_south)
 "prz" = (
@@ -29221,7 +29226,9 @@
 "rNP" = (
 /obj/structure/bed/pod,
 /obj/item/bedsheet,
-/obj/structure/curtain/black,
+/obj/structure/curtain/black{
+	anchored = 1
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/surface_north)
 "rNV" = (
