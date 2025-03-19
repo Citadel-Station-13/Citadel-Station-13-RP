@@ -120,7 +120,6 @@
 		/mob/living/carbon/human/proc/resp_biomorph,
 		/mob/living/carbon/human/proc/biothermic_adapt,
 		/mob/living/carbon/human/proc/atmos_biomorph,
-		/mob/living/carbon/human/proc/shapeshifter_copy_appearance,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair_colors,
 		/mob/living/carbon/human/proc/shapeshifter_select_colour,
