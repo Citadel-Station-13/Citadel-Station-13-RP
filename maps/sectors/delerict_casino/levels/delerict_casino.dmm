@@ -10504,7 +10504,14 @@
 /turf/simulated/wall/r_wall/prepainted/medical,
 /area/sector/delerictcasino/medical/public)
 "Yv" = (
-/obj/structure/displaycase,
+/obj/structure/table/hardwoodtable,
+/obj/structure/window/basic{
+	dir = 8
+	},
+/obj/structure/window/basic{
+	dir = 1
+	},
+/obj/item/gun/projectile/ballistic/pistol/foam/blue,
 /turf/simulated/floor/wood/indoors,
 /area/sector/delerictcasino/reception)
 "Yw" = (
