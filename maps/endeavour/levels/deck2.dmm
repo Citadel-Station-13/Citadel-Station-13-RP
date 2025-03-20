@@ -938,7 +938,6 @@
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "aQK" = (
 /obj/structure/catwalk,
-/obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/space)
@@ -1499,10 +1498,9 @@
 /turf/simulated/floor/plating,
 /area/space)
 "bxp" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
+/obj/machinery/door/firedoor{
+	dir = 1
 	},
-/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/space)
 "bxy" = (
@@ -2940,10 +2938,6 @@
 /turf/simulated/floor/plating,
 /area/space)
 "cBK" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/structure/catwalk,
 /obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
@@ -20499,11 +20493,8 @@
 /turf/simulated/floor/tiled/white,
 /area/space)
 "sKw" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
+/obj/machinery/door/firedoor,
 /obj/structure/catwalk,
-/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/plating,
 /area/space)
 "sLb" = (
@@ -23743,11 +23734,8 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
 "vEe" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/structure/catwalk,
-/obj/machinery/light/small{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -26776,7 +26764,6 @@
 /obj/machinery/door/firedoor{
 	dir = 1
 	},
-/obj/machinery/door/airlock/maintenance/common,
 /obj/structure/catwalk,
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -42304,9 +42291,9 @@ pRW
 eWn
 vPR
 qhg
-qjz
+qhg
 mwO
-qjz
+qhg
 rvw
 bMs
 afc
@@ -43661,7 +43648,7 @@ pRW
 pRW
 pRW
 qhg
-rOO
+qjz
 qjz
 ruN
 rvw
@@ -43855,7 +43842,7 @@ pRW
 pRW
 gCJ
 qhg
-qjz
+sAZ
 qjz
 ruN
 rvw
@@ -45414,7 +45401,7 @@ qjz
 qjz
 ruN
 ruN
-dtX
+vEe
 ruN
 ruN
 ruN
@@ -46972,14 +46959,14 @@ qhg
 qhg
 qhg
 qhg
-bwt
+tOZ
 qhg
 ccN
 ffe
 ffe
 qhg
 qhg
-bwt
+tOZ
 ffe
 cZD
 cZD
@@ -47558,7 +47545,7 @@ qhg
 qhg
 qhg
 ruN
-bwt
+tOZ
 ruN
 ruN
 ruN
@@ -48725,7 +48712,7 @@ eWn
 qhg
 qhg
 qhg
-bwt
+bxp
 sNS
 ivj
 uiz
@@ -49509,7 +49496,7 @@ xOV
 aPX
 wNs
 sNS
-vEe
+pZh
 qjz
 qjz
 sAZ
@@ -49703,7 +49690,7 @@ grF
 grF
 cLW
 sNS
-sKw
+elh
 qjz
 qjz
 qjz
@@ -49897,7 +49884,7 @@ qjz
 qjz
 qjz
 qhg
-bxp
+qjz
 sAZ
 qjz
 fyx
@@ -50091,7 +50078,7 @@ qjz
 qjz
 qjz
 qhg
-bxp
+qjz
 qjz
 qjz
 qjz
@@ -50479,7 +50466,7 @@ qhg
 qhg
 qhg
 qhg
-bxp
+qjz
 qjz
 qjz
 eow
@@ -50666,14 +50653,14 @@ qhg
 qjz
 aVd
 ruN
-bwt
+bxp
 ruN
 ruN
 ruN
 ruN
 cET
 ylH
-bxp
+ruN
 ruN
 ruN
 ruN
@@ -52222,7 +52209,7 @@ rOO
 rOO
 rOO
 rOO
-pFp
+sKw
 rOO
 rOO
 rOO
@@ -54158,7 +54145,7 @@ gCJ
 lad
 qjz
 ruN
-bwt
+tOZ
 ruN
 ruN
 ruN
@@ -54555,7 +54542,7 @@ ruN
 ruN
 ruN
 ruN
-bwt
+tOZ
 gsh
 rOO
 cEs

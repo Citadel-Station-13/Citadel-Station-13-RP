@@ -87,10 +87,6 @@
 	'sound/ambience/engineering/engineering3.ogg'\
 	)
 
-#define AMBIENCE_SUBSTATION list(\
-	'sound/ambience/engineering/engineering3.ogg'\
-)
-
 // Creepy AI/borg stuff.
 #define AMBIENCE_AI list(\
 	'sound/ambience/ai/ai1.ogg',\
