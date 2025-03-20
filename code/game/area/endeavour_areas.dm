@@ -277,7 +277,7 @@
 	ambience = AMBIENCE_SUBSTATION
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
-	/area/engineering/substation/deck2forward
+/area/engineering/substation/deck2forward
 	name = "\improper Deck 2 Foreward Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
