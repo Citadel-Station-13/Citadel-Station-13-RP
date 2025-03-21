@@ -157,6 +157,9 @@
 	name = "\improper Deck 2 Starboard Aft Hallway"
 	icon_state = "hallS"
 
+/area/endeavour/hallway/reservehanger
+	name = "\improper Reserve Forward Hanger"
+
 /** Deck 1
  */
 /area/endeavour/hallway/d1aftmaint

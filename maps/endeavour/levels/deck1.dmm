@@ -777,6 +777,10 @@
 /obj/item/radio/beacon,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
+"aGh" = (
+/obj/structure/sign/hangar/three,
+/turf/simulated/wall/r_wall/prepainted,
+/area/endeavour/hallway/d1afthall)
 "aGj" = (
 /turf/simulated/floor/carpet/tealcarpet,
 /area/endeavour/hallway/d1fwdmaint)
@@ -7012,6 +7016,10 @@
 /obj/structure/table/standard,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/endeavour/hallway/d1portamidhall)
+"fEv" = (
+/obj/structure/sign/hangar/one,
+/turf/simulated/wall/r_wall/prepainted/exploration,
+/area/crew_quarters/lounge)
 "fEx" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
@@ -14880,6 +14888,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck1aft)
+"lWO" = (
+/obj/structure/sign/hangar/two,
+/turf/simulated/wall/r_wall/prepainted,
+/area/exploration/pilot_Office)
 "lXo" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
@@ -18163,6 +18175,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway2)
+"ozv" = (
+/obj/structure/sign/hangar/one,
+/turf/simulated/wall/r_wall/prepainted/exploration,
+/area/endeavour/exploration/hallway_aft)
 "ozD" = (
 /obj/machinery/portable_atmospherics/powered/pump/filled,
 /obj/effect/floor_decal/rust,
@@ -37498,7 +37514,7 @@ fef
 fyb
 fyb
 fyb
-fyb
+lWO
 fyb
 mXH
 xAw
@@ -38061,7 +38077,7 @@ jsu
 mJc
 mFi
 lsW
-hgT
+ozv
 ixU
 mER
 mER
@@ -38259,7 +38275,7 @@ hgT
 amJ
 vIw
 jLq
-jLq
+fEv
 jLq
 bAu
 bAu
@@ -39459,7 +39475,7 @@ xOD
 mFk
 qdM
 ydR
-xOD
+aGh
 xOD
 xOD
 xOD
