@@ -1955,6 +1955,7 @@
 	dir = 9
 	},
 /obj/machinery/papershredder,
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/wood,
 /area/tether/station/public_meeting_room)
 "bAN" = (
@@ -3803,6 +3804,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
+"cPI" = (
+/obj/machinery/air_alarm{
+	pixel_y = 22
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "cPS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -6062,6 +6069,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
+"eyZ" = (
+/obj/machinery/air_alarm{
+	pixel_y = 22
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2fwdhall)
 "ezb" = (
 /obj/structure/bed/chair/sofa/black/right{
 	dir = 4
@@ -8206,6 +8219,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
+"ggt" = (
+/obj/machinery/air_alarm{
+	pixel_y = 22
+	},
+/turf/simulated/floor/glass/reinforced,
 /area/endeavour/hallway/d2afthall)
 "ggw" = (
 /obj/structure/railing,
@@ -10888,6 +10907,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
+"ipN" = (
+/obj/machinery/fire_alarm/north_mount,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "irg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -11787,6 +11810,10 @@
 "jbC" = (
 /turf/simulated/floor/wood,
 /area/tether/station/public_meeting_room)
+"jcd" = (
+/obj/machinery/fire_alarm/north_mount,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2fwdhall)
 "jce" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -21937,6 +21964,18 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
+"qVl" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/obj/machinery/air_alarm{
+	pixel_y = 22
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "qWb" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -23433,6 +23472,11 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/endeavour/hallway/reservehanger)
+"slP" = (
+/obj/structure/catwalk,
+/obj/machinery/fire_alarm/north_mount,
+/turf/simulated/floor/plating,
+/area/maintenance/medbay/aft)
 "smf" = (
 /obj/machinery/camera/network/medbay{
 	dir = 1;
@@ -37800,7 +37844,7 @@ gZv
 gZv
 dYE
 vLZ
-leR
+slP
 leR
 leR
 aIC
@@ -40132,7 +40176,7 @@ rfs
 rMF
 rMF
 xSp
-gsh
+cPI
 tLC
 hiV
 cjj
@@ -40908,7 +40952,7 @@ nEj
 ryg
 cse
 hNv
-gsh
+ipN
 tLC
 hiV
 oOa
@@ -44209,7 +44253,7 @@ rXh
 rXh
 rXh
 gDB
-gsh
+cPI
 lrJ
 gBR
 aCi
@@ -46343,7 +46387,7 @@ gPQ
 gPQ
 kCt
 kCt
-pZE
+qVl
 rNO
 nMP
 ykt
@@ -48283,7 +48327,7 @@ ovE
 ovE
 nys
 jFo
-gsh
+ipN
 lrJ
 bTF
 esO
@@ -49447,7 +49491,7 @@ xvK
 jyA
 whs
 jFo
-tzi
+ggt
 iVA
 mqU
 viJ
@@ -51581,7 +51625,7 @@ obl
 obl
 obl
 obl
-nkN
+jcd
 cAA
 rqx
 idr
@@ -51775,7 +51819,7 @@ dMJ
 wiW
 tpz
 obl
-nkN
+eyZ
 blI
 czY
 idr
@@ -54491,7 +54535,7 @@ qjz
 qjz
 qjz
 grY
-nkN
+jcd
 cAA
 rqx
 pLA
@@ -56049,7 +56093,7 @@ iur
 rOO
 rOO
 rOO
-nkN
+jcd
 nkN
 eID
 ces
