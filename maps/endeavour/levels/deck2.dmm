@@ -202,6 +202,12 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/dark,
 /area/station/stairs_two)
+"agQ" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rnd/research/researchdivision)
 "agS" = (
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/structure/bed/roller,
@@ -516,6 +522,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
+"atE" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/holoposter{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "atV" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
@@ -1630,6 +1645,12 @@
 "bmb" = (
 /obj/structure/table/woodentable,
 /obj/item/material/ashtray/glass,
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/tether/station/public_meeting_room)
 "bmd" = (
@@ -1871,6 +1892,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
+"byD" = (
+/obj/machinery/holoposter{
+	pixel_y = 32
+	},
+/turf/simulated/floor/glass/reinforced,
+/area/endeavour/hallway/d2afthall)
 "byK" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/corner/green{
@@ -1950,12 +1977,17 @@
 /obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/anomaly_lab)
+"bAA" = (
+/obj/machinery/light,
+/obj/machinery/vending/fitness,
+/turf/simulated/floor/tiled/dark,
+/area/station/stairs_two)
 "bAJ" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 9
-	},
 /obj/machinery/papershredder,
 /obj/machinery/fire_alarm/north_mount,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
 /turf/simulated/floor/wood,
 /area/tether/station/public_meeting_room)
 "bAN" = (
@@ -1968,6 +2000,23 @@
 /obj/effect/floor_decal/corner/green/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/medical/virology_fore_access)
+"bBl" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/closet/hydrant{
+	pixel_x = 32
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2fwdhall)
+"bBo" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12;
+	name = "long range light fixture";
+	desc = "A lighting fixture. This one seem to toss its light further than standard light fixtures."
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/endeavour/hallway/reservehanger)
 "bBJ" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -2171,6 +2220,9 @@
 	},
 /obj/effect/floor_decal/corner/paleblue/bordercorner{
 	dir = 4
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
@@ -2720,12 +2772,23 @@
 /turf/simulated/floor/wood,
 /area/tether/station/public_meeting_room)
 "bYu" = (
-/obj/machinery/camera/network/civilian,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
-/area/maintenance/fpmaint2)
+/area/endeavour/hallway/d2fwdhall)
 "bYw" = (
 /obj/structure/bed/chair,
 /turf/simulated/floor/wood/sif/indoors,
@@ -2874,6 +2937,12 @@
 "ces" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/endeavour/hallway/reservehanger)
+"cev" = (
+/obj/machinery/holoposter{
+	pixel_x = 32
+	},
+/turf/simulated/floor/tiled/dark,
+/area/station/stairs_two)
 "ceM" = (
 /obj/structure/bed/roller,
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -4132,6 +4201,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
+"dcF" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 10
+	},
+/turf/simulated/floor/wood,
+/area/tether/station/public_meeting_room)
 "dcZ" = (
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
@@ -4321,6 +4399,12 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/testingroom)
+"dkL" = (
+/obj/structure/closet/hydrant{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "dlc" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -4420,7 +4504,10 @@
 /area/assembly/chargebay)
 "doi" = (
 /obj/machinery/light{
-	dir = 1
+	dir = 1;
+	light_range = 12;
+	name = "long range light fixture";
+	desc = "A lighting fixture. This one seem to toss its light further than standard light fixtures."
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/endeavour/hallway/reservehanger)
@@ -4495,6 +4582,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/exam_room/exam_2)
+"dro" = (
+/obj/machinery/newscaster{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "drR" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/firstaid/adv,
@@ -4755,6 +4848,13 @@
 "dyU" = (
 /turf/simulated/wall/r_wall/prepainted/medical,
 /area/medical/virology_fore_access)
+"dzq" = (
+/obj/structure/bed/chair/comfy/beige,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/tether/station/public_meeting_room)
 "dzH" = (
 /obj/structure/closet/secure_closet/scientist,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -4892,6 +4992,16 @@
 /obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
+"dER" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/machinery/station_map{
+	pixel_y = -32
+	},
+/turf/simulated/floor/wood,
+/area/tether/station/public_meeting_room)
 "dEY" = (
 /obj/machinery/door/firedoor{
 	dir = 1
@@ -5568,12 +5678,12 @@
 /turf/simulated/wall/prepainted/medical,
 /area/space)
 "ecY" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
 /obj/structure/table/woodentable,
 /obj/machinery/photocopier/faxmachine{
 	department = "Public Meeting Room"
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 5
 	},
 /turf/simulated/floor/wood,
 /area/tether/station/public_meeting_room)
@@ -5931,6 +6041,21 @@
 	},
 /turf/simulated/floor/grass/indoors,
 /area/tether/station/public_meeting_room)
+"eqB" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/air_alarm/west_mount,
+/turf/simulated/floor/tiled,
+/area/rnd/research/researchdivision)
 "eqL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -5997,6 +6122,12 @@
 /obj/item/stool/padded,
 /turf/simulated/floor/carpet/bcarpet,
 /area/endeavour/hallway/d2afthall)
+"evH" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/fpmaint2)
 "ewY" = (
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 6
@@ -6092,6 +6223,9 @@
 "ezL" = (
 /obj/structure/cable{
 	icon_state = "1-8"
+	},
+/obj/machinery/light{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2afthall)
@@ -6339,6 +6473,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
+"eJQ" = (
+/obj/machinery/air_alarm/west_mount,
+/turf/simulated/floor/tiled,
+/area/rnd/research/researchdivision)
 "eKi" = (
 /obj/machinery/papershredder,
 /obj/machinery/fire_alarm/south_mount,
@@ -6411,6 +6549,13 @@
 /obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
+"eMG" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/holoposter{
+	pixel_x = 32
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2fwdhall)
 "eMZ" = (
 /obj/structure/disposalpipe/up,
 /obj/effect/floor_decal/industrial/warning/full,
@@ -6811,9 +6956,20 @@
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
 "fcM" = (
-/obj/machinery/camera/network/civilian,
-/turf/simulated/wall/prepainted,
-/area/station/stairs_two)
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2fwdhall)
 "fcN" = (
 /obj/machinery/air_alarm{
 	frequency = 1441;
@@ -7401,6 +7557,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck2amidships)
+"fxj" = (
+/obj/machinery/vending/cigarette,
+/turf/simulated/floor/tiled/dark,
+/area/maintenance/fpmaint2)
 "fxr" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -7721,6 +7881,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/robotics)
+"fLU" = (
+/obj/machinery/camera/network/civilian,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2fwdhall)
 "fLZ" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
@@ -8014,6 +8178,22 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/medical/virology_fore_access)
+"fXG" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2fwdhall)
 "fZo" = (
 /obj/effect/floor_decal/borderfloorwhite/corner{
 	dir = 4
@@ -8267,6 +8447,16 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
+"giK" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 1
+	},
+/obj/machinery/air_alarm/north_mount,
+/turf/simulated/floor/tiled,
+/area/rnd/research_foyer)
 "giU" = (
 /obj/fiftyspawner/steel,
 /obj/structure/table/rack,
@@ -8595,6 +8785,9 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 8
+	},
+/obj/item/radio/intercom{
+	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/dark,
 /area/endeavour/hallway/d2fwdhall)
@@ -8938,7 +9131,9 @@
 "gNW" = (
 /obj/machinery/light{
 	dir = 8;
-	light_range = 12
+	light_range = 12;
+	name = "long range light fixture";
+	desc = "A lighting fixture. This one seem to toss its light further than standard light fixtures."
 	},
 /obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/tiled/dark,
@@ -9037,9 +9232,9 @@
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
 "gQJ" = (
-/obj/machinery/door/airlock/glass,
-/turf/simulated/floor/carpet/bcarpet,
-/area/endeavour/hallway/d2afthall)
+/obj/machinery/camera/network/research,
+/turf/simulated/floor/tiled/dark,
+/area/rnd/research/researchdivision)
 "gQO" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint/babyblue,
@@ -9708,6 +9903,13 @@
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/rnd/breakroom)
+"hpC" = (
+/obj/machinery/camera/network/civilian,
+/obj/machinery/station_map{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "hpE" = (
 /obj/machinery/fire_alarm/east_mount,
 /obj/machinery/disease2/diseaseanalyser,
@@ -10055,6 +10257,15 @@
 "hDT" = (
 /turf/simulated/floor/carpet,
 /area/maintenance/fpmaint2)
+"hDY" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "hEw" = (
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/maintenance/research/xenobio)
@@ -10517,6 +10728,16 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/black,
 /turf/simulated/floor/tiled,
 /area/medical/virology_aft_access)
+"ibr" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "ibB" = (
 /obj/machinery/button/crematorium{
 	pixel_x = 26;
@@ -10679,6 +10900,12 @@
 /area/rnd/research/researchdivision)
 "ieC" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
+"ifg" = (
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2afthall)
 "ifs" = (
@@ -10941,6 +11168,17 @@
 "irB" = (
 /turf/simulated/floor/carpet/sblucarpet,
 /area/medical/medbay4)
+"isC" = (
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "isT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -11356,6 +11594,17 @@
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
+"iGu" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/light,
+/obj/machinery/computer/timeclock/premade/south,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "iGC" = (
 /obj/structure/disposalpipe/sortjunction{
 	dir = 8;
@@ -11613,6 +11862,12 @@
 /obj/structure/symbol/es,
 /turf/simulated/floor/tiled,
 /area/rnd/storage)
+"iSQ" = (
+/obj/machinery/atm{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2fwdhall)
 "iST" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -11653,6 +11908,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virology_fore_access)
+"iUy" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/air_alarm/west_mount,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/endeavour/hallway/reservehanger)
 "iVb" = (
 /obj/structure/bed/chair/office/dark,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -12487,7 +12747,9 @@
 /obj/item/bedsheet/medical,
 /obj/machinery/light{
 	dir = 8;
-	light_range = 12
+	light_range = 12;
+	name = "long range light fixture";
+	desc = "A lighting fixture. This one seem to toss its light further than standard light fixtures."
 	},
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_x = -32
@@ -12509,6 +12771,12 @@
 /area/medical/virology_aft_access)
 "jEK" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/machinery/light{
+	dir = 1;
+	light_range = 12;
+	name = "long range light fixture";
+	desc = "A lighting fixture. This one seem to toss its light further than standard light fixtures."
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/endeavour/hallway/reservehanger)
 "jFo" = (
@@ -13061,9 +13329,6 @@
 /obj/machinery/light,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
-/obj/structure/extinguisher_cabinet{
-	pixel_y = -31
-	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "kfH" = (
@@ -13422,6 +13687,15 @@
 	},
 /turf/simulated/floor/wood,
 /area/medical/psych/psych_2)
+"ksR" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 8
+	},
+/turf/simulated/floor/grass/indoors,
+/area/tether/station/public_meeting_room)
 "ktj" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
@@ -13642,6 +13916,12 @@
 	},
 /turf/simulated/floor/carpet/blucarpet,
 /area/crew_quarters/medbreak)
+"kFb" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/research_foyer)
 "kFp" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
@@ -13690,6 +13970,19 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+"kGP" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2fwdhall)
 "kHl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -13831,6 +14124,12 @@
 /obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/grass,
 /area/medical/psych_ward)
+"kNI" = (
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled/dark,
+/area/station/stairs_two)
 "kNM" = (
 /obj/structure/reagent_dispensers/fueltank,
 /obj/machinery/air_alarm{
@@ -13898,7 +14197,10 @@
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "kPA" = (
 /obj/machinery/light{
-	dir = 1
+	dir = 1;
+	light_range = 12;
+	name = "long range light fixture";
+	desc = "A lighting fixture. This one seem to toss its light further than standard light fixtures."
 	},
 /obj/structure/cable/green{
 	icon_state = "2-4"
@@ -14233,6 +14535,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/camera/network/civilian,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2afthall)
 "laO" = (
@@ -14365,6 +14668,25 @@
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d2fwdmaint)
+"lhj" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/light,
+/obj/machinery/station_map{
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "liB" = (
 /obj/machinery/air_alarm/monitor/isolation{
 	alarm_id = "isolation_one";
@@ -14549,6 +14871,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
+"lpm" = (
+/obj/machinery/light,
+/turf/simulated/floor/tiled/dark,
+/area/station/stairs_two)
 "lpx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -14575,6 +14901,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/machinery/computer/timeclock/premade/south,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2fwdhall)
 "lqw" = (
@@ -14666,6 +14993,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/light,
 /turf/simulated/floor/wood,
 /area/tether/station/public_meeting_room)
 "luF" = (
@@ -14790,7 +15118,9 @@
 	},
 /obj/machinery/light{
 	dir = 8;
-	light_range = 12
+	light_range = 12;
+	name = "long range light fixture";
+	desc = "A lighting fixture. This one seem to toss its light further than standard light fixtures."
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
@@ -14816,7 +15146,9 @@
 "lzL" = (
 /obj/machinery/light{
 	dir = 8;
-	light_range = 12
+	light_range = 12;
+	name = "long range light fixture";
+	desc = "A lighting fixture. This one seem to toss its light further than standard light fixtures."
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4
@@ -14952,6 +15284,15 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
+"lCU" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "lDm" = (
 /turf/simulated/open,
 /area/endeavour/hallway/d2afthall)
@@ -15154,6 +15495,10 @@
 /obj/effect/floor_decal/corner/green/border,
 /turf/simulated/floor/tiled/white,
 /area/medical/virology_aft_access)
+"lMa" = (
+/obj/machinery/vending/cigarette,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "lMw" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -15256,6 +15601,9 @@
 /area/endeavour/hallway/d2fwdmaint)
 "lRu" = (
 /obj/structure/bed/chair/sofa/black/corner,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/wood/sif/indoors,
 /area/endeavour/hallway/d2afthall)
 "lRS" = (
@@ -15423,6 +15771,12 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
+"lUN" = (
+/obj/machinery/vending/weeb{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2fwdhall)
 "lVD" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -15489,6 +15843,12 @@
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/medical/exam_room/exam_1)
+"lYn" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/endeavour/hallway/d2fwdhall)
 "lYU" = (
 /obj/structure/cable/orange{
 	icon_state = "1-8"
@@ -15699,6 +16059,18 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/robotics)
+"miF" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/rnd/xenobiology)
 "miO" = (
 /obj/structure/sign/directions/medical{
 	pixel_y = 7
@@ -16039,6 +16411,19 @@
 /obj/effect/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/medbay4)
+"mwy" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 4
+	},
+/obj/machinery/camera/network/research{
+	dir = 8;
+	network = list("Research","Toxins  Test  Area")
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/research_foyer)
 "mwF" = (
 /obj/machinery/r_n_d/server/core,
 /obj/structure/window/reinforced{
@@ -16266,7 +16651,9 @@
 "mEE" = (
 /obj/machinery/light{
 	dir = 8;
-	light_range = 12
+	light_range = 12;
+	name = "long range light fixture";
+	desc = "A lighting fixture. This one seem to toss its light further than standard light fixtures."
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
@@ -16582,12 +16969,14 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/robotics)
 "mOz" = (
-/obj/effect/floor_decal/spline/fancy/wood,
 /obj/machinery/disposal{
 	pixel_y = -2
 	},
 /obj/structure/disposalpipe/trunk{
 	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 6
 	},
 /turf/simulated/floor/wood,
 /area/tether/station/public_meeting_room)
@@ -16801,6 +17190,19 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/medbay4)
+"mYY" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2fwdhall)
 "mZc" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
@@ -16920,6 +17322,21 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
+"nfb" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 9
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/air_alarm/west_mount,
+/turf/simulated/floor/tiled,
+/area/rnd/research/researchdivision)
 "nfD" = (
 /obj/structure/closet/firecloset/full,
 /turf/simulated/floor/tiled,
@@ -17294,6 +17711,22 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck2aft)
+"nzw" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2fwdhall)
 "nzQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -17360,6 +17793,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2afthall)
 "nBn" = (
@@ -17642,6 +18076,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/machinery/air_alarm/west_mount,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/researchdivision)
 "nMP" = (
@@ -17701,6 +18136,15 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/holodeck_control)
+"nQu" = (
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12;
+	name = "long range light fixture";
+	desc = "A lighting fixture. This one seem to toss its light further than standard light fixtures."
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/endeavour/hallway/reservehanger)
 "nQX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -17915,6 +18359,19 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
+"nZd" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "nZn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -18034,10 +18491,18 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
+"oft" = (
+/obj/machinery/atm{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "ofu" = (
 /obj/machinery/light{
 	dir = 8;
-	light_range = 12
+	light_range = 12;
+	name = "long range light fixture";
+	desc = "A lighting fixture. This one seem to toss its light further than standard light fixtures."
 	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -18168,6 +18633,17 @@
 /obj/machinery/vending/snack,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+"okQ" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/computer/timeclock/premade/south,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "okS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -18416,12 +18892,10 @@
 /obj/item/folder/red,
 /obj/item/folder/yellow,
 /obj/item/folder/white,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 10
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/wood,
 /area/tether/station/public_meeting_room)
 "owP" = (
@@ -18430,6 +18904,18 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
+"oxl" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "oyK" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -19431,6 +19917,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/workshop)
+"piK" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/tether/station/public_meeting_room)
 "piT" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
@@ -19569,6 +20064,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
+"pmW" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2fwdhall)
 "pnt" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -19592,6 +20093,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
+"pnG" = (
+/obj/machinery/air_alarm/west_mount,
+/turf/simulated/floor/tiled/dark,
+/area/station/stairs_two)
 "poq" = (
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lamp/green{
@@ -19603,6 +20108,19 @@
 	},
 /turf/simulated/floor/wood,
 /area/medical/medbay4)
+"poS" = (
+/obj/structure/table/woodentable,
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12;
+	name = "long range light fixture";
+	desc = "A lighting fixture. This one seem to toss its light further than standard light fixtures."
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/tether/station/public_meeting_room)
 "poV" = (
 /obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 1;
@@ -19797,6 +20315,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
+"puI" = (
+/obj/machinery/light{
+	dir = 4;
+	light_range = 12;
+	name = "long range light fixture";
+	desc = "A lighting fixture. This one seem to toss its light further than standard light fixtures."
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/endeavour/hallway/reservehanger)
 "puN" = (
 /obj/structure/table/standard,
 /obj/item/radio/electropack,
@@ -19942,6 +20469,24 @@
 /obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/grass/indoors,
 /area/tether/station/public_meeting_room)
+"pzO" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2fwdhall)
 "pBY" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
@@ -20385,6 +20930,11 @@
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
+"pNG" = (
+/obj/machinery/air_alarm/west_mount,
+/obj/machinery/vending/coffee,
+/turf/simulated/floor/tiled/dark,
+/area/station/stairs_two)
 "pNJ" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood,
@@ -20499,6 +21049,18 @@
 	},
 /turf/simulated/floor/wood,
 /area/medical/medbay4)
+"pRw" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/air_alarm/west_mount,
+/turf/simulated/floor/tiled,
+/area/rnd/research_foyer)
 "pRH" = (
 /obj/structure/cable/green{
 	icon_state = "2-4"
@@ -20865,6 +21427,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
+"pZY" = (
+/obj/machinery/air_alarm{
+	pixel_y = 22
+	},
+/obj/machinery/camera/network/civilian,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "qaw" = (
 /obj/structure/table/glass,
 /obj/machinery/computer/med_data/laptop,
@@ -20937,6 +21506,15 @@
 "qhg" = (
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/space)
+"qhm" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/endeavour/hallway/d2fwdhall)
 "qhH" = (
 /obj/machinery/door/firedoor{
 	dir = 1
@@ -20985,6 +21563,13 @@
 /obj/item/storage/box/firingpins,
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
+"qix" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "qiH" = (
 /obj/structure/closet/emcloset,
 /obj/machinery/camera/network/research{
@@ -21002,6 +21587,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
+"qje" = (
+/obj/machinery/camera/network/civilian,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "qjv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -21263,8 +21852,7 @@
 	},
 /obj/item/bedsheet/medical,
 /obj/machinery/light{
-	dir = 8;
-	light_range = 12
+	dir = 8
 	},
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_x = -32
@@ -21385,7 +21973,9 @@
 /obj/item/bedsheet/medical,
 /obj/machinery/light{
 	dir = 8;
-	light_range = 12
+	light_range = 12;
+	name = "long range light fixture";
+	desc = "A lighting fixture. This one seem to toss its light further than standard light fixtures."
 	},
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_x = -32
@@ -21518,7 +22108,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/dark,
 /area/maintenance/fpmaint2)
 "qDJ" = (
 /obj/machinery/embedded_controller/radio/airlock/access_controller{
@@ -21578,6 +22168,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
+"qGt" = (
+/obj/machinery/vending/fitness,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "qGu" = (
 /obj/machinery/camera/network/medbay{
 	dir = 1
@@ -22411,6 +23005,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2afthall)
+"rqq" = (
+/obj/structure/bed/chair/comfy/beige,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/tether/station/public_meeting_room)
 "rqx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -22524,6 +23125,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2afthall)
+"rvV" = (
+/obj/machinery/vending/cola,
+/turf/simulated/floor/tiled/dark,
+/area/station/stairs_two)
 "rwG" = (
 /turf/simulated/open,
 /area/station/stairs_two)
@@ -23329,6 +23934,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
+"shX" = (
+/obj/machinery/station_map{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2fwdhall)
 "sig" = (
 /obj/structure/closet/secure_closet/medical1,
 /obj/item/storage/box/pillbottles,
@@ -24020,6 +24631,15 @@
 	},
 /turf/simulated/wall/r_wall/prepainted/medical,
 /area/medical/virology)
+"sLX" = (
+/obj/machinery/camera/network/civilian{
+	dir = 1
+	},
+/obj/machinery/station_map{
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled/dark,
+/area/station/stairs_two)
 "sME" = (
 /obj/map_helper/access_helper/airlock/station/medical/department,
 /obj/effect/floor_decal/corner/paleblue{
@@ -24574,6 +25194,15 @@
 	},
 /turf/simulated/floor/wood,
 /area/medical/medbay4)
+"teY" = (
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/obj/machinery/newscaster{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2fwdhall)
 "tfh" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/westleft{
@@ -25658,6 +26287,10 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
+/obj/machinery/computer/guestpass{
+	dir = 1;
+	pixel_y = -23
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "tRy" = (
@@ -25810,6 +26443,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/camera/network/civilian,
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/fpmaint2)
 "tYf" = (
@@ -25843,6 +26477,14 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
+"tZp" = (
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "tZz" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -26266,6 +26908,9 @@
 /obj/structure/bed/chair/sofa/black/corner{
 	dir = 1
 	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/wood/sif/indoors,
 /area/endeavour/hallway/d2afthall)
 "uuc" = (
@@ -26377,6 +27022,10 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
+"uxc" = (
+/obj/machinery/computer/timeclock/premade/south,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2fwdhall)
 "uxu" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -26951,6 +27600,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
+"uTV" = (
+/obj/machinery/vending/weeb{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/maintenance/fpmaint2)
 "uUl" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
@@ -27508,6 +28163,12 @@
 "vuA" = (
 /turf/simulated/wall/prepainted/medical,
 /area/medical/virology_fore_access)
+"vuM" = (
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled/dark,
+/area/station/stairs_two)
 "vvh" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/structure/sink{
@@ -27591,6 +28252,17 @@
 /obj/map_helper/access_helper/airlock/station/science/xenoarcheology,
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab/containment_one)
+"vyd" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2fwdhall)
 "vze" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -28118,6 +28790,12 @@
 	},
 /turf/simulated/floor/carpet/tealcarpet,
 /area/medical/patient_b)
+"vSY" = (
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 28
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "vTa" = (
 /obj/structure/bed/chair/sofa/black/right,
 /turf/simulated/floor/wood,
@@ -28158,6 +28836,21 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/station/public_meeting_room)
+"vVt" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2fwdhall)
 "vVP" = (
 /obj/structure/noticeboard{
 	pixel_y = 32
@@ -28176,6 +28869,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
+"vWL" = (
+/obj/structure/closet/hydrant{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2fwdhall)
 "vWZ" = (
 /obj/structure/disposalpipe/trunk,
 /obj/structure/disposaloutlet{
@@ -28229,6 +28928,10 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/junction,
+/obj/machinery/camera/network/research{
+	dir = 8;
+	network = list("Research","Toxins  Test  Area")
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
 "vXI" = (
@@ -28375,7 +29078,9 @@
 /obj/effect/floor_decal/corner/paleblue/full,
 /obj/machinery/light{
 	dir = 8;
-	light_range = 12
+	light_range = 12;
+	name = "long range light fixture";
+	desc = "A lighting fixture. This one seem to toss its light further than standard light fixtures."
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
@@ -28580,6 +29285,19 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
+"wiD" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2fwdhall)
 "wiW" = (
 /obj/machinery/chemical_dispenser/full,
 /obj/effect/floor_decal/borderfloor{
@@ -28623,6 +29341,9 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "wky" = (
+/obj/machinery/atm{
+	pixel_y = 32
+	},
 /turf/simulated/floor/glass/reinforced,
 /area/endeavour/hallway/d2fwdhall)
 "wlM" = (
@@ -29799,6 +30520,13 @@
 /obj/structure/bed/chair/sofa/teal/right,
 /turf/simulated/floor/wood,
 /area/medical/medbay4)
+"xaW" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood,
+/turf/simulated/floor/wood,
+/area/tether/station/public_meeting_room)
 "xbd" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techfloor,
@@ -29865,6 +30593,28 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
+"xdR" = (
+/obj/structure/bed/chair/comfy/beige,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 9
+	},
+/turf/simulated/floor/wood,
+/area/tether/station/public_meeting_room)
+"xen" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "xeW" = (
 /obj/machinery/door/blast/regular{
 	id = "xenobiovs4";
@@ -30079,6 +30829,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
+"xld" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/glass/reinforced,
+/area/endeavour/hallway/d2fwdhall)
 "xlw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -30087,6 +30843,17 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
+"xlA" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/air_alarm/west_mount,
+/turf/simulated/floor/tiled,
+/area/rnd/research_foyer)
 "xlI" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
@@ -30543,7 +31310,9 @@
 	},
 /obj/machinery/light{
 	dir = 8;
-	light_range = 12
+	light_range = 12;
+	name = "long range light fixture";
+	desc = "A lighting fixture. This one seem to toss its light further than standard light fixtures."
 	},
 /obj/item/radio/intercom{
 	dir = 8;
@@ -30562,6 +31331,16 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/morgue)
+"xEN" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -32
+	},
+/turf/simulated/floor/wood,
+/area/tether/station/public_meeting_room)
 "xER" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -30595,6 +31374,7 @@
 /obj/machinery/door/firedoor{
 	dir = 1
 	},
+/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2afthall)
 "xHh" = (
@@ -30716,6 +31496,16 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/chemistry_lab)
+"xJH" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "xJN" = (
 /obj/structure/poster/nanotrasen{
 	pixel_x = 32
@@ -30755,10 +31545,19 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/light{
 	dir = 8;
-	light_range = 12
+	light_range = 12;
+	name = "long range light fixture";
+	desc = "A lighting fixture. This one seem to toss its light further than standard light fixtures."
 	},
 /turf/simulated/floor/tiled,
 /area/medical/resleeving)
+"xLl" = (
+/obj/machinery/camera/network/research{
+	dir = 8;
+	network = list("Research","Toxins  Test  Area")
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/research_foyer)
 "xLo" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
@@ -30881,6 +31680,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2afthall)
 "xQd" = (
@@ -36855,7 +37655,7 @@ pRW
 pRW
 pRW
 oNw
-aVO
+miF
 vMY
 aVO
 xpN
@@ -39012,7 +39812,7 @@ lzL
 rMF
 guA
 xSp
-gsh
+qGt
 gsh
 tLC
 npj
@@ -39206,7 +40006,7 @@ cPx
 rMF
 oGQ
 xSp
-gsh
+lMa
 lSK
 rvL
 npj
@@ -39594,7 +40394,7 @@ mrs
 qtF
 rwR
 xSp
-gsh
+atE
 iMx
 dDL
 sOA
@@ -39790,7 +40590,7 @@ arH
 xSp
 gsh
 ngN
-pGQ
+okQ
 cjj
 cjj
 cjj
@@ -39982,7 +40782,7 @@ oQz
 rMF
 rMF
 xSp
-gsh
+dro
 tLC
 hiV
 cjj
@@ -40178,7 +40978,7 @@ rMF
 xSp
 cPI
 tLC
-hiV
+xen
 cjj
 ivV
 ivV
@@ -40758,10 +41558,10 @@ xSp
 xSp
 xSp
 xSp
-gsh
+vSY
 tLC
 hiV
-oOa
+pnG
 oOa
 oOa
 qfF
@@ -40958,10 +41758,10 @@ hiV
 oOa
 oOa
 oOa
+cev
 oOa
 oOa
-oOa
-oOa
+bAA
 xEY
 rPX
 dVG
@@ -41146,10 +41946,10 @@ lAJ
 wHL
 cBb
 hNv
-gsh
+hpC
 iMx
 iTs
-fcM
+cUI
 gfI
 fiT
 cUI
@@ -41340,7 +42140,7 @@ nEj
 wSf
 wRr
 hNv
-gsh
+oft
 ngN
 pGQ
 pLA
@@ -41730,7 +42530,7 @@ sAo
 uBa
 gsh
 tLC
-hiV
+nZd
 cUI
 pLA
 pLA
@@ -41922,13 +42722,13 @@ nEj
 nEj
 wRr
 hNv
-gsh
+dro
 tLC
 dId
 pwt
 eRQ
 eRQ
-eRQ
+qix
 eRQ
 eRQ
 eRQ
@@ -42122,7 +42922,7 @@ grk
 tYS
 ghr
 ghr
-ghr
+hDY
 ghr
 ghr
 ghr
@@ -42310,7 +43110,7 @@ ihO
 ihO
 bZu
 hNv
-oGa
+isC
 oGa
 hMg
 wtE
@@ -42504,7 +43304,7 @@ xQA
 qog
 bXb
 hNv
-gsh
+dkL
 mAj
 mEb
 mDj
@@ -42698,7 +43498,7 @@ eFg
 vmv
 vmv
 eQu
-gsh
+ifg
 ieC
 tOZ
 ikR
@@ -42881,7 +43681,7 @@ sVW
 sVW
 sVW
 sVW
-mAR
+gQJ
 xwW
 nSn
 dyQ
@@ -43060,7 +43860,7 @@ aPL
 tVG
 goC
 kTP
-mFL
+nfb
 uMH
 uMH
 gRw
@@ -43075,7 +43875,7 @@ fxa
 sVW
 cOc
 sVW
-mAR
+agQ
 dJz
 lOE
 aFN
@@ -43095,7 +43895,7 @@ rZj
 rZj
 rZj
 pPZ
-gQJ
+rZj
 oAN
 oVq
 oVq
@@ -43282,7 +44082,7 @@ bOx
 rlO
 gsh
 gsh
-tks
+lhj
 cjj
 mDj
 mDj
@@ -44031,13 +44831,13 @@ lCp
 kWG
 gDB
 gDB
-gly
+eJQ
 gly
 xHh
 rKV
 mFL
 fxr
-uMH
+eqB
 mhn
 ujc
 uMH
@@ -44243,7 +45043,7 @@ dOv
 ygC
 gub
 bPH
-gly
+eJQ
 gly
 gly
 rXh
@@ -44253,7 +45053,7 @@ rXh
 rXh
 rXh
 gDB
-cPI
+pZY
 lrJ
 gBR
 aCi
@@ -44449,7 +45249,7 @@ rXh
 tdd
 gsh
 lrJ
-gBR
+iGu
 ihi
 oKz
 gkz
@@ -46572,7 +47372,7 @@ mEE
 bMP
 wsg
 uoQ
-nBw
+xlA
 nBw
 nBw
 eSQ
@@ -46581,9 +47381,9 @@ vrE
 gdh
 aiM
 cIi
-tLC
+lCU
 lrJ
-bTF
+oxl
 diN
 diN
 jWf
@@ -47553,7 +48353,7 @@ iTl
 hnd
 gsh
 lrJ
-bTF
+ibr
 diN
 pad
 fTU
@@ -47941,7 +48741,7 @@ uZg
 wSM
 gsh
 rPx
-nBj
+xJH
 esO
 suZ
 pYs
@@ -48311,7 +49111,7 @@ aZo
 fWy
 iab
 uPS
-uIS
+giK
 rPC
 ode
 cwy
@@ -48715,7 +49515,7 @@ ovE
 wQo
 tDA
 jFo
-gsh
+qje
 lrJ
 bTF
 esO
@@ -49879,7 +50679,7 @@ tvV
 ctj
 pUU
 xvT
-tzi
+byD
 iVA
 mqU
 miO
@@ -50054,7 +50854,7 @@ bIw
 bIw
 nKq
 dKG
-dKG
+mwy
 eiO
 iHA
 cZD
@@ -50073,7 +50873,7 @@ ctj
 ctj
 wbt
 xvT
-gsh
+tZp
 yfn
 myK
 geo
@@ -50267,7 +51067,7 @@ ctj
 ctj
 mJc
 xvT
-gsh
+dro
 tXk
 pfz
 pTX
@@ -50445,7 +51245,7 @@ jib
 lCp
 kWG
 ffe
-cZD
+kFb
 oIP
 kHl
 eWd
@@ -50461,7 +51261,7 @@ ctj
 ctj
 pUU
 xvT
-nkN
+pmW
 lMS
 lqa
 idr
@@ -51020,7 +51820,7 @@ jib
 kWG
 kWG
 jib
-uIS
+giK
 oNp
 xtD
 jib
@@ -51043,7 +51843,7 @@ xvT
 xvT
 xvT
 loI
-wky
+xld
 mPg
 jzj
 idr
@@ -51226,7 +52026,7 @@ xdJ
 wIw
 kmg
 bWU
-kmg
+pRw
 kmg
 kmg
 fWJ
@@ -51420,7 +52220,7 @@ cZD
 cZD
 cZD
 aux
-cZD
+xLl
 cZD
 cZD
 dKG
@@ -51627,7 +52427,7 @@ obl
 obl
 jcd
 cAA
-rqx
+kGP
 idr
 vAi
 idr
@@ -52015,7 +52815,7 @@ kfs
 dKD
 nkN
 tik
-qrw
+mYY
 idr
 kvC
 idr
@@ -52595,9 +53395,9 @@ xBr
 wDV
 wAD
 yax
-nkN
+pmW
 cAA
-rqx
+fcM
 idr
 kvC
 idr
@@ -52983,7 +53783,7 @@ xBr
 uMx
 etB
 yax
-nkN
+fLU
 cAA
 rqx
 idr
@@ -53373,7 +54173,7 @@ xhw
 yax
 nkN
 blI
-czY
+vyd
 idr
 idr
 idr
@@ -53565,15 +54365,15 @@ dvL
 nvG
 yax
 yax
-nkN
+eyZ
 tik
-qrw
+wiD
 cUI
 cUI
 cUI
 cUI
-oOa
-oOa
+pNG
+rvV
 jdR
 vHR
 feP
@@ -53961,7 +54761,7 @@ qqi
 vTh
 gfI
 oOa
-oOa
+vuM
 dyU
 kXu
 woC
@@ -54147,15 +54947,15 @@ qjz
 qjz
 qjz
 grY
-nkN
+pmW
 cAA
-rqx
+vVt
 cUI
 pLA
 pLA
 eIS
 oOa
-oOa
+lpm
 dyU
 pwh
 bAO
@@ -54325,7 +55125,7 @@ cBo
 ycR
 ruN
 grY
-qjz
+evH
 qjz
 qjz
 qjz
@@ -54349,7 +55149,7 @@ rwG
 rwG
 gfI
 oOa
-oOa
+sLX
 dyU
 pwh
 bAO
@@ -54543,7 +55343,7 @@ rwG
 rwG
 gfI
 oOa
-oOa
+kNI
 dyU
 pwh
 jNG
@@ -54729,7 +55529,7 @@ qjz
 qjz
 qjz
 grY
-nkN
+fLU
 blI
 czY
 fHJ
@@ -54931,7 +55731,7 @@ nkN
 nkN
 nkN
 nkN
-nkN
+uxc
 vuA
 eIV
 eYM
@@ -55311,11 +56111,11 @@ qjz
 qjz
 qjz
 grY
-nkN
+lUN
 nkN
 elX
-eFj
-eFj
+bBl
+eMG
 eFj
 eFj
 kop
@@ -55705,7 +56505,7 @@ ykB
 dTv
 rdl
 rOO
-nkN
+pmW
 nkN
 eID
 pvg
@@ -56101,14 +56901,14 @@ lJs
 vGV
 jLE
 jLE
+iUy
 jLE
-jLE
-jLE
+bBo
 jLE
 jLE
 jLE
 kfH
-yeN
+nQu
 yeN
 jRK
 fik
@@ -56481,7 +57281,7 @@ nPw
 rOO
 rOO
 rOO
-auJ
+teY
 auJ
 sud
 ces
@@ -56869,9 +57669,9 @@ qww
 rOO
 rOO
 rOO
-nkN
+pmW
 rkg
-bRz
+fXG
 clk
 yeN
 vDl
@@ -57257,7 +58057,7 @@ fNy
 fNy
 fZH
 rOO
-nkN
+vWL
 nkN
 eID
 sHp
@@ -57453,7 +58253,7 @@ anE
 rOO
 nkN
 nkN
-eID
+pzO
 ces
 pXJ
 vDl
@@ -57647,7 +58447,7 @@ fNy
 rOO
 nkN
 nkN
-eID
+nzw
 ces
 luU
 vDl
@@ -58033,7 +58833,7 @@ fNy
 fNy
 fZH
 rOO
-nkN
+iSQ
 nkN
 ftV
 aEp
@@ -58421,9 +59221,9 @@ fNy
 fNy
 fNy
 rOO
+shX
 nkN
-nkN
-eID
+bYu
 ces
 yeN
 vDl
@@ -59005,7 +59805,7 @@ fNy
 qcN
 nkN
 nkN
-eID
+nzw
 ces
 lJs
 cAm
@@ -59184,7 +59984,7 @@ pps
 ycR
 ezI
 egx
-bYu
+sNF
 vJM
 vJM
 tOU
@@ -59203,12 +60003,12 @@ pXQ
 ijZ
 wwB
 yeN
+puI
 yeN
 yeN
 yeN
 yeN
-yeN
-yeN
+puI
 yeN
 yeN
 ces
@@ -59379,8 +60179,8 @@ oIm
 egx
 egx
 sNF
-moe
-moe
+uTV
+fxj
 xVz
 jQR
 fLZ
@@ -59588,7 +60388,7 @@ vTh
 svB
 jSU
 mxS
-nNS
+qhm
 ePs
 qjz
 qjz
@@ -59780,7 +60580,7 @@ cUI
 pLA
 pLA
 jsT
-jSU
+lYn
 mxS
 cVq
 nSx
@@ -60160,7 +60960,7 @@ oLd
 xVz
 vqS
 wKr
-wKr
+ksR
 oFh
 pZN
 eSf
@@ -60547,13 +61347,13 @@ qjv
 pbT
 ofu
 ayB
-vHH
+xdR
 bmb
-xvF
+piK
 rzi
-vHH
-pNJ
-xvF
+dzq
+poS
+dcF
 pix
 gNW
 uTd
@@ -60741,13 +61541,13 @@ rym
 onD
 clx
 rdi
-vHH
+rqq
 eXe
 bkG
 gNr
 keN
 eXe
-xvF
+xaW
 aaK
 eUx
 muR
@@ -60935,13 +61735,13 @@ rym
 onD
 clx
 vcO
-vHH
+rqq
 knB
 xvF
 rym
 vHH
 kEQ
-xvF
+xaW
 iPr
 eUx
 muR
@@ -61140,7 +61940,7 @@ wCH
 pic
 oOE
 vFy
-vUJ
+dER
 nRB
 egx
 egx
@@ -61334,7 +62134,7 @@ dSt
 dSt
 aKR
 hUP
-vUJ
+xEN
 nRB
 vPR
 eWn
