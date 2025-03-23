@@ -382,7 +382,7 @@
 		to_chat(src,"<span class = 'Notice'>We begin modifying our internal structure.</span>")
 	else
 		target.visible_message("<span class = 'danger'>[src] begins to burrow their digits into [target], slithering down their throat!</span>", "<span class = 'warning'>You feel an extremely uncomfortable slithering sensation going through your throat and into your chest...</span>")
-	if(do_after(src,15 SECONDS))
+	if(do_after(src,15 SECONDS, flags = ((target == src)? NONE : DO_AFTER_IGNORE_MOVEMENT)))
 		switch(resp_biomorph)
 			if(GAS_ID_OXYGEN)
 				target.species.breath_type = GAS_ID_OXYGEN
@@ -440,7 +440,7 @@
 		to_chat(src, "<span class = 'Notice'>We begin modifying our internal biothermic structure.</span>")
 	else
 		target.visible_message("<span class = 'danger'>[src] has fleshy tendrils emerge and begin slither inside the veins of [target]!</span>", "<span class = 'warning'>You feel an extremely uncomfortable slithering sensation going through your skin, your veins suddenly feeling as if they have bugs crawling inside...</span>")
-	if(do_after(src,15 SECONDS))
+	if(do_after(src,15 SECONDS, flags = ((target == src)? NONE : DO_AFTER_IGNORE_MOVEMENT)))
 		switch(biothermic_adapt)
 			if("warm-blooded")	//reverts to default
 				if(target.species.cold_discomfort_level != -1) target.species.cold_discomfort_level = 285
@@ -543,7 +543,7 @@
 		to_chat(src, "<span class = 'Notice'>We begin modifying our skin...</span>")
 	else
 		target.visible_message("<span class = 'danger'>[src] has fleshy tendrils emerge and begin to merge and mold with [target]!</span>", "<span class = 'warning'>You feel an extremely uncomfortable slithering sensation going through your skin, it begins to feel foreign and dead, emanating from them...</span>")
-	if(do_after(src,15 SECONDS))
+	if(do_after(src,15 SECONDS, flags = ((target == src)? NONE : DO_AFTER_IGNORE_MOVEMENT)))
 		switch(atmos_biomorph)
 			if("flexible")
 				if(target.species.warning_low_pressure != -1) target.species.warning_low_pressure = WARNING_LOW_PRESSURE
