@@ -18,22 +18,22 @@
  * * target - target
  * * target_zone - (optional) target zone
  * * attacker - (optional) attacking mob
- * * actor - (optional) actor data for feedback
+ * * clickchain - (optional) clickchain data
  *
  * @return TRUE to override normal attack style / weapon damage (this is a request, the weapon/style can override this)
  */
 /datum/combo/melee/proc/inflict(atom/target, target_zone, mob/attacker, datum/event_args/actor/clickchain/clickchain)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
-	. = inflict_damage_instance(target, target_zone, attacker, actor)
-	actor.data[ACTOR_DATA_COMBO_LOG] = "[src]"
+	. = inflict_damage_instance(target, target_zone, attacker, clickchain)
+	clickchain.data[ACTOR_DATA_COMBO_LOG] = "[src]"
 
 /**
  * @params
  * * target - target
  * * target_zone - (optional) target zone
  * * attacker - (optional) attacking mob
- * * actor - (optional) actor data for feedback
+ * * clickchain - (optional) clickchain data
  *
  * @return TRUE to override normal attack style / weapon damage (this is a request, the weapon/style can override this)
  */
@@ -50,6 +50,7 @@
 			damage_mode,
 			ATTACK_TYPE_MELEE,
 			hit_zone = target_zone,
+			clickchain = clickchain,
 		)
 	return TRUE
 

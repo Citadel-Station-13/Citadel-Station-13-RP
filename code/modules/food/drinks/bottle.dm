@@ -151,19 +151,14 @@
 		set_light(0)
 
 /obj/item/reagent_containers/food/drinks/bottle/melee_override(atom/target, mob/user, intent, zone, efficiency, datum/event_args/actor/actor)
-	. = ..()
+	if(efficiency <= 0)
+		return ..()
+	if(!isliving(target))
+		return ..()
+	if(!smash_check(target))
+		return ..()
 
-#warn okay so we need a way to override the normal attack style / hit lol
-/obj/item/reagent_containers/food/drinks/bottle/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	. = ..()
 	var/mob/living/L = target
-	if(!istype(L))
-		return
-	if(user.a_intent != INTENT_HARM)
-		return
-	if(!smash_check(1))
-		return //won't always break on the first hit
-
 	// You are going to knock someone out for longer if they are not wearing a helmet.
 	var/weaken_duration = smash_duration + min(0, damage_force - L.legacy_mob_armor(target_zone, "melee") + 10)
 
@@ -182,6 +177,7 @@
 	//Finally, smash the bottle. This kills (qdel) the bottle.
 	var/obj/item/broken_bottle/B = smash(L.loc, L)
 	user.put_in_active_hand(B)
+	return TRUE
 
 //Keeping this here for now, I'll ask if I should keep it here.
 /obj/item/broken_bottle
