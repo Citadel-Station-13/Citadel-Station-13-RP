@@ -415,8 +415,6 @@
 
 	//Cleaning looks better with red on, even with nobody in it
 	if(cleaning || (length(contents) > 10) || (decompiler && (length(contents) > 5)) || (analyzer && (length(contents) > 1)))
-		hound.sleeper_r = TRUE
-		hound.sleeper_g = FALSE
 		hound.updateicon()
 		return
 
