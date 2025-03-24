@@ -65,6 +65,7 @@
 		clickchain.attack_melee_multiplier *= (2 / 3)
 	if(MUTATION_HULK in mutations)
 		clickchain.attack_melee_multiplier *= 2
+	clickchain.click_cooldown_base = clickchain.performer.get_attack_speed_legacy()
 
 /mob/living/legacy_alter_melee_clickchain(datum/event_args/actor/clickchain/clickchain)
 	..()

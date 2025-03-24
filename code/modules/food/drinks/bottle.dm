@@ -160,9 +160,9 @@
 
 	var/mob/living/L = target
 	// You are going to knock someone out for longer if they are not wearing a helmet.
-	var/weaken_duration = smash_duration + min(0, damage_force - L.legacy_mob_armor(target_zone, "melee") + 10)
+	var/weaken_duration = smash_duration + min(0, damage_force - L.legacy_mob_armor(zone, "melee") + 10)
 
-	if(target_zone == "head" && istype(L, /mob/living/carbon/))
+	if(zone == "head" && istype(L, /mob/living/carbon/))
 		user.visible_message("<span class='danger'>\The [user] smashes [src] over [L]'s head!</span>")
 		if(weaken_duration)
 			L.apply_effect(min(weaken_duration, 5), WEAKEN) // Never weaken more than a flash!

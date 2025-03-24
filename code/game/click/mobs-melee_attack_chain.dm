@@ -29,8 +29,7 @@
 		return clickchain_flags
 	. = clickchain_flags | melee_attack(clickchain, clickchain_flags, using_style)
 
-	#warn this should be modulated by clickchain
-	clickchain.performer.setClickCooldownLegacy(clickchain.performer.get_attack_speed_legacy())
+	clickchain.performer.setClickCooldownLegacy(clickchain.click_cooldown_base * clickchain.click_cooldown_multiplier)
 
 /**
  * @return CLICKCHAIN_* flags
