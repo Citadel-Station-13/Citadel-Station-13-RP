@@ -8,6 +8,7 @@
 	var/desc = "An attack of some kind."
 
 	var/damage_force = 0
+	var/damage_type = DAMAGE_TYPE_BRUTE
 	var/damage_tier = 0
 	var/damage_flag = ARMOR_MELEE
 	var/damage_mode = NONE
@@ -18,11 +19,14 @@
  * * target_zone - (optional) target zone
  * * attacker - (optional) attacking mob
  * * actor - (optional) actor data for feedback
+ *
+ * @return TRUE to override normal attack style / weapon damage (this is a request, the weapon/style can override this)
  */
-/datum/combo/melee/proc/inflict(atom/target, target_zone, mob/attacker, datum/event_args/actor/actor)
-	inflict_damage_instance(target, target_zone, attacker, actor)
-	actor.data[ACTOR_DATA_COMBO_LOG]
-	#warn impl
+/datum/combo/melee/proc/inflict(atom/target, target_zone, mob/attacker, datum/event_args/actor/clickchain/clickchain)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	. = inflict_damage_instance(target, target_zone, attacker, actor)
+	actor.data[ACTOR_DATA_COMBO_LOG] = "[src]"
 
 /**
  * @params
@@ -30,8 +34,23 @@
  * * target_zone - (optional) target zone
  * * attacker - (optional) attacking mob
  * * actor - (optional) actor data for feedback
+ *
+ * @return TRUE to override normal attack style / weapon damage (this is a request, the weapon/style can override this)
  */
-/datum/combo/melee/proc/inflict_damage_instance(atom/target, target_zone, mob/attacker, datum/event_args/actor/actor)
-	#warn impl
+/datum/combo/melee/proc/inflict_damage_instance(atom/target, target_zone, mob/attacker, datum/event_args/actor/clickchain/clickchain)
+	PROTECTED_PROC(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+
+	if(damage_force)
+		target.inflict_damage_instance(
+			damage_force,
+			damage_type,
+			damage_tier,
+			damage_flag,
+			damage_mode,
+			ATTACK_TYPE_MELEE,
+			hit_zone = target_zone,
+		)
+	return TRUE
 
 /datum/combo/melee/intent_based
