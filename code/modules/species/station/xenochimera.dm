@@ -120,6 +120,7 @@
 		/mob/living/carbon/human/proc/resp_biomorph,
 		/mob/living/carbon/human/proc/biothermic_adapt,
 		/mob/living/carbon/human/proc/atmos_biomorph,
+		/mob/living/carbon/human/proc/hemophagic_biomorph,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair_colors,
 		/mob/living/carbon/human/proc/shapeshifter_select_colour,
@@ -573,6 +574,25 @@
 				SPAN_DANGER("[src] pulls the tendrils out!"),
 				SPAN_WARNING("The sensation fades. You feel made anew."),
 			)
+
+/mob/living/carbon/human/proc/hemophagic_biomorph() //just toggle the is_vampire flag.
+	set name = "Hemophagic Biomorph"
+	set desc = "Changes our digestion focus between blood and general proteins."
+	set category = "Abilities"
+	//No option to change others as that probably would need to go through the whole vetalan infection thing, and a chimera could only mimic it
+	var/list/food_options = list("carnivorous","hemophagous")
+	var/selected_food
+	selected_food = input(src, "How should we modify our diet?") as null|anything in food_options
+	if(!selected_food)
+		return
+	to_chat(src, "<span class = 'Notice'>We begin refocusing our harvesting fronds...</span>") //Saying the intestines are getting modified.
+	if(do_after(src,10 SECONDS, flags = DO_AFTER_IGNORE_MOVEMENT))
+		switch(selected_food)
+			if("carnivorous")
+				src.species.is_vampire = 0
+			if("hemophagous")
+				src.species.is_vampire = 1
+		to_chat(src, "<span class = 'notice'>It is done.</span>")
 
 //? Abilities
 
