@@ -19,4 +19,14 @@
 	poison_per_bite = 2
 	poison_type = "psilocybin"
 
+	exotic_type = /obj/item/reagent_containers/glass/venomgland/spider/psilocybin
+
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/electric_spider
+
+/obj/item/reagent_containers/glass/venomgland/spider/psilocybin
+	name = "Trippy Venom Gland"
+	desc = "A sac full of venom. It makes you feel funny when you sniff it."
+
+/obj/item/reagent_containers/glass/venomgland/spider/psilocybin/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("psilocybin", 15)
