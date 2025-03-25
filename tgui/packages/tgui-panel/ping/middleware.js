@@ -26,7 +26,7 @@ export const pingMiddleware = store => {
     index = (index + 1) % PING_QUEUE_SIZE;
   };
 
-  return next => action => {
+  return (next) => (action) => {
     const { type, payload } = action;
 
     if (!initialized) {
