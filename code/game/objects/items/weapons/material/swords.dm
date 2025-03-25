@@ -16,6 +16,15 @@
 		parry_chance_projectile = 10;
 	}
 
+//check if held in passive_parry_intercept, if so, return ..(), else null
+/obj/item/material/sword/passive_parry_intercept()
+	var/mob/M = src.loc
+	if(M && ismob(M))
+		if(src in M.get_held_items()) //Holding it, so we can block
+			return ..()
+		else
+			return //Not held, no block
+
 /obj/item/material/sword/plasteel
 	material_parts = /datum/prototype/material/plasteel
 
