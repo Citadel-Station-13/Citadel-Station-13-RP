@@ -16,7 +16,6 @@
 		parry_chance_projectile = 10;
 	}
 
-
 /obj/item/material/sword/plasteel
 	material_parts = /datum/prototype/material/plasteel
 
