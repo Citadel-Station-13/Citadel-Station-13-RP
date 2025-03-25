@@ -14,6 +14,8 @@
 	var/damage_mode = NONE
 
 /**
+ * * Don't override this, override [inflict_on()]
+ *
  * @params
  * * target - target
  * * target_zone - (optional) target zone
@@ -23,12 +25,14 @@
  * @return TRUE to override normal attack style / weapon damage (this is a request, the weapon/style can override this)
  */
 /datum/combo/melee/proc/inflict(atom/target, target_zone, mob/attacker, datum/event_args/actor/clickchain/clickchain)
-	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
-	. = inflict_damage_instance(target, target_zone, attacker, clickchain)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	. = inflict_on(target, target_zone, attacker, clickchain)
 	clickchain.data[ACTOR_DATA_COMBO_LOG] = "[src]"
 
 /**
+ * * Override this, not [inflict()].
+ *
  * @params
  * * target - target
  * * target_zone - (optional) target zone
@@ -37,12 +41,12 @@
  *
  * @return TRUE to override normal attack style / weapon damage (this is a request, the weapon/style can override this)
  */
-/datum/combo/melee/proc/inflict_damage_instance(atom/target, target_zone, mob/attacker, datum/event_args/actor/clickchain/clickchain)
+/datum/combo/melee/proc/inflict_on(atom/target, target_zone, mob/attacker, datum/event_args/actor/clickchain/clickchain)
 	PROTECTED_PROC(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
 	if(damage_force)
-		target.inflict_damage_instance(
+		target.inflict_on(
 			damage_force,
 			damage_type,
 			damage_tier,

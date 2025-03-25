@@ -23,6 +23,11 @@ GLOBAL_DATUM_INIT(kinetic_gauntlet_melee_combo, /datum/combo_set/melee, new /dat
 		INTENT_HARM,
 	)
 
+/datum/combo/melee/intent_based/kinetic_gauntlets/slam/inflict_on(atom/target, target_zone, mob/attacker, datum/event_args/actor/clickchain/clickchain)
+	. = ..()
+	. = TRUE
+
+
 /datum/combo/melee/intent_based/kinetic_gauntlets/concuss
 	name = "concuss"
 	desc = "Disrupt a target, making it harder for them to move and react."
