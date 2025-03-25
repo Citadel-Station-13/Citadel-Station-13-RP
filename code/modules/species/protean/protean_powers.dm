@@ -389,7 +389,8 @@
 			if((their_organ.robotic >= ORGAN_ROBOT))
 				our_organ.robotize(their_organ.model)
 			our_organ.s_col_blend = their_organ.s_col_blend
-			our_organ.markings = their_organ.markings
+			var/list/markings_to_copy = their_organ.markings.Copy()
+			our_organ.markings = markings_to_copy
 		if(our_organ)
 			our_organ.sync_colour_to_human(src)
 

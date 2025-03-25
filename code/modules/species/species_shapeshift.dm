@@ -601,7 +601,8 @@ var/list/wrapped_species_by_ref = list()
 		var/obj/item/organ/external/our_organ = organs_by_name[BP]
 		if(their_organ && our_organ)
 			our_organ.s_col_blend = their_organ.s_col_blend
-			our_organ.markings = their_organ.markings
+			var/list/markings_to_copy = their_organ.markings.Copy()
+			our_organ.markings = markings_to_copy
 		if(our_organ)
 			our_organ.sync_colour_to_human(src)
 
