@@ -3,7 +3,7 @@
 	assigned_role = "Colonist"
 	desc = "You are a Tajara colonist from the New Kingdom of Adhomai, struggling to eek out a living on a distant planet."
 	spawntext = "You were selected by lottery, to settle a new colony on land leased from Nanotrasen, Na'sahira. In order to make this journey you had to swear \
-	fealty to the Baronness Anjarra Azorman, a small price to escape the proverty you faced on Adhomai. This planet is harsh and even here it is a struggle to survive. \
+	fealty to the Baronness Anjarra Azorman, a small price to escape the poverty you faced on Adhomai. This planet is harsh and even here it is a struggle to survive. \
 	Thankfully there is a Nanotrasen base nearby the ground around which are said to be rich in resources. Through the Baronness agreement with Nanotrasen you may \
 	harvest these resources and trade with the crew. Hopefully that makes the long walk here from Na'sahira worth it. Maybe this crew can even afford to pay in things \
 	beyond their useless Thalers."
