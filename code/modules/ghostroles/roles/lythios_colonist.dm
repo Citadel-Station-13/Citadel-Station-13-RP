@@ -43,7 +43,7 @@
 	created.mind.teach_crafting_recipe(lythios_colonist_crafting)
 
 /obj/structure/ghost_role_spawner/lythios_colonist
-	name = "maintnance hatch"
+	name = "maintenance hatch"
 	desc = "A old ladder connecting to the old People's Republic of Adhomai maintnance tunnels. A good way to get around Lythios."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "hatchdown"
