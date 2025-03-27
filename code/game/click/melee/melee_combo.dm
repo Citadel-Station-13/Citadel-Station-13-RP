@@ -13,6 +13,29 @@
 	var/damage_flag = ARMOR_MELEE
 	var/damage_mode = NONE
 
+	/// a single, or a list of get_sfx-resolveable sound effects to play by default
+	var/default_feedback_sfx
+	/// templateable message
+	///
+	/// accepted vars:
+	/// * ATTACKER - the person attacking
+	/// * TARGET - the target
+	var/default_feedback_message
+	/// templateable message
+	///
+	/// accepted vars:
+	/// * ATTACKER - the person attacking
+	/// * TARGET - the target
+	var/default_feedback_message_self
+	/// templateable message
+	///
+	/// accepted vars:
+	/// * ATTACKER - the person attacking
+	/// * TARGET - the target
+	var/default_feedback_message_audible
+
+	#warn impl templating
+
 /**
  * * Don't override this, override [inflict_on()]
  *
@@ -21,10 +44,11 @@
  * * target_zone - (optional) target zone
  * * attacker - (optional) attacking mob
  * * clickchain - (optional) clickchain data
+ * * skip_fx - do not do default sfx/message/vfx
  *
  * @return TRUE to override normal attack style / weapon damage (this is a request, the weapon/style can override this)
  */
-/datum/combo/melee/proc/inflict(atom/target, target_zone, mob/attacker, datum/event_args/actor/clickchain/clickchain)
+/datum/combo/melee/proc/inflict(atom/target, target_zone, mob/attacker, datum/event_args/actor/clickchain/clickchain, skip_fx)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	. = inflict_on(target, target_zone, attacker, clickchain)
@@ -46,7 +70,7 @@
 	SHOULD_NOT_SLEEP(TRUE)
 
 	if(damage_force)
-		target.inflict_on(
+		target.inflict_damage_instance(
 			damage_force,
 			damage_type,
 			damage_tier,
@@ -58,4 +82,7 @@
 		)
 	return TRUE
 
+/**
+ * Intent-based combos
+ */
 /datum/combo/melee/intent_based

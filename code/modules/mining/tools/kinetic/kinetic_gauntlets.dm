@@ -40,6 +40,12 @@
 	/// our combo is active; we won't go onto clickdelay until it falls off
 	var/combo_continuation_active = FALSE
 
+	var/charged_structure_damage = 30
+	var/charged_structure_damage_tier = MELEE_TIER_MEDIUM
+	var/charged_structure_damage_type = DAMAGE_TYPE_BRUTE
+	var/charged_structure_damage_flag = ARMOR_BOMB
+	var/charged_structure_damage_mode = DAMAGE_MODE_ABLATING
+
 /obj/item/kinetic_gauntlets/update_icon()
 	cut_overlays()
 	. = ..()
@@ -130,7 +136,16 @@
 		return
 
 /obj/item/kinetic_gauntlets/melee_impact(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
+	if(clickchain_flags & CLICKCHAIN_ATTACK_MISSED)
+		return ..()
+	var/atom/target = clickchain.target
+	if(!isturf(target))
+		#warn det
+		return clickchain_flags
+	var/mob/mob_target = target
+	var/datum/status_effect/grouped/proto_kinetic_mark/mark = mob_target.has_status_effect(/datum/status_effect/grouped/proto_kinetic_mark)
+	#warn handle mark?
 
-
+/obj/item/kinetic_gauntlets/proc/execute_combo(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/combo/melee/use_combo)
 
 #warn impl all

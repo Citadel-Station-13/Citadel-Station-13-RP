@@ -14,6 +14,12 @@ GLOBAL_DATUM_INIT(kinetic_gauntlet_melee_combo, /datum/combo_set/melee, new /dat
 /datum/combo/melee/intent_based/kinetic_gauntlets
 	abstract_type = /datum/combo/melee/intent_based/kinetic_gauntlets
 
+	damage_force = 20
+	damage_tier = MELEE_TIER_HEAVY
+	damage_mode = DAMAGE_MODE_ABLATING
+	damage_type = DAMAGE_TYPE_BRUTE
+	damage_flag = ARMOR_BOMB
+
 /datum/combo/melee/intent_based/kinetic_gauntlets/slam
 	name = "slam"
 	desc = "Slam a target away."
@@ -23,10 +29,23 @@ GLOBAL_DATUM_INIT(kinetic_gauntlet_melee_combo, /datum/combo_set/melee, new /dat
 		INTENT_HARM,
 	)
 
+	damage_force = 35
+
 /datum/combo/melee/intent_based/kinetic_gauntlets/slam/inflict_on(atom/target, target_zone, mob/attacker, datum/event_args/actor/clickchain/clickchain)
 	. = ..()
 	. = TRUE
 
+	if(!isliving(target))
+		return
+	var/mob/living/living_target = target
+
+	if(living_target.anchored)
+		return
+	// todo: a 'forcefully push' proc that respects move force, which does need to be reworked at some point
+	step_away(living_target, src)
+	living_target.afflict_knockdown(2 SECONDS)
+	living_target.afflict_root(0.2 SECONDS)
+	living_target.adjustHalLoss(40)
 
 /datum/combo/melee/intent_based/kinetic_gauntlets/concuss
 	name = "concuss"
@@ -37,6 +56,20 @@ GLOBAL_DATUM_INIT(kinetic_gauntlet_melee_combo, /datum/combo_set/melee, new /dat
 		INTENT_DISARM,
 	)
 
+	damage_force = 35
+
+/datum/combo/melee/intent_based/kinetic_gauntlets/concuss/inflict_on(atom/target, target_zone, mob/attacker, datum/event_args/actor/clickchain/clickchain)
+	. = ..()
+	. = TRUE
+
+	if(!isliving(target))
+		return
+	var/mob/living/living_target = target
+
+	living_target.afflict_stagger(4.5 SECONDS)
+	living_target.afflict_daze(0.75 SECONDS)
+	living_target.adjustHalLoss(40)
+
 /datum/combo/melee/intent_based/kinetic_gauntlets/detonate
 	name = "detonate"
 	desc = "Detonate a kinetic mark on a target with full intensity, in lieu of any special effects."
@@ -46,4 +79,4 @@ GLOBAL_DATUM_INIT(kinetic_gauntlet_melee_combo, /datum/combo_set/melee, new /dat
 		INTENT_HARM,
 	)
 
-#warn melee stats and attacks for these
+	damage_force = 60
