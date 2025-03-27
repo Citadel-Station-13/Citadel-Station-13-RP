@@ -8479,11 +8479,11 @@
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "hHe" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
+/obj/machinery/door/firedoor{
+	dir = 8
 	},
-/turf/simulated/floor/tiled/freezer,
-/area/crew_quarters/pool)
+/turf/simulated/floor/wood,
+/area/maintenance/pool)
 "hHQ" = (
 /obj/structure/coatrack,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
@@ -15685,7 +15685,7 @@
 /area/endeavour/hallway/d3aftmaint)
 "oHM" = (
 /obj/structure/disposalpipe/segment{
-	dir = 4;
+	dir = 1;
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -32359,7 +32359,7 @@ vrt
 vrt
 vrt
 vrt
-kfO
+hHe
 nTC
 nTC
 nTC
@@ -33539,9 +33539,9 @@ pTj
 gMQ
 gMQ
 wZY
-rdY
-rdY
-hHe
+aVW
+aVW
+aVW
 aVW
 aVW
 xZC
@@ -37414,7 +37414,7 @@ sDq
 gvl
 jER
 jER
-jER
+rcT
 jER
 skT
 skT
@@ -37802,7 +37802,7 @@ sDq
 gvl
 jER
 jER
-rcT
+jER
 jER
 skT
 rtd
