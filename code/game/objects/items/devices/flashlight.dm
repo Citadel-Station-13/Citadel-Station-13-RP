@@ -390,6 +390,7 @@
 	on = FALSE
 	src.damage_force = initial(src.damage_force)
 	src.damage_type = initial(src.damage_type)
+	set_light(FALSE)
 	update_appearance()
 
 /obj/item/flashlight/flare/attack_self(mob/user, datum/event_args/actor/actor)

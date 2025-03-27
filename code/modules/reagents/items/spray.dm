@@ -234,3 +234,18 @@
 /obj/item/reagent_containers/spray/windowsealant/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("silicate", 80)
+
+
+/obj/item/reagent_containers/spray/spider/pepper
+	name = "venom spray"
+	desc = "A spider's venom gland rigged with bones and sinew to discharge its contents in a spray."
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "spiderspray"
+	item_state = "pepperspray"
+	possible_transfer_amounts = null
+	volume = 15
+
+/obj/item/reagent_containers/spray/pestbgone/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("condensedcapsaicin_v", volume)
+

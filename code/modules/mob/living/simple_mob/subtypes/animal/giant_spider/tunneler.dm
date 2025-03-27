@@ -42,6 +42,8 @@
 	poison_per_bite = 3
 	poison_type = "serotrotium_v"
 
+	exotic_type = /obj/item/reagent_containers/glass/venomgland/spider/serotrotium
+
 //	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/tunneler
 
 	player_msg = "You <b>can perform a tunneling attack</b> by clicking on someone from a distance.<br>\
@@ -189,6 +191,15 @@
 
 /mob/living/simple_mob/animal/giant_spider/tunneler/proc/dig_under_floor(turf/T)
 	new /obj/item/stack/ore/glass(T) // This will be rather weird when on station but the alternative is too much work.
+
+/obj/item/reagent_containers/glass/venomgland/spider/serotrotium
+	name = "Dulling Venom Gland"
+	desc = "A sac of venom. Your thoughts drift a bit holding it."
+
+/obj/item/reagent_containers/glass/venomgland/spider/thermite/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("serotrotium_v", 15)
+
 
 /obj/effect/temporary_effect/tunneler_hole
 	name = "hole"
