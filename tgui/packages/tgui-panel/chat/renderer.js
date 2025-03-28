@@ -27,11 +27,11 @@ export const TGUI_CHAT_COMPONENTS = {
 // List of injectable attibute names mapped to their proper prop
 // We need this because attibutes don't support lowercase names
 export const TGUI_CHAT_ATTRIBUTES_TO_PROPS = {
-  "position": "position",
-  "content": "content",
+  position: 'position',
+  content: 'content',
 };
 
-const findNearestScrollableParent = startingNode => {
+const findNearestScrollableParent = (startingNode) => {
   const body = document.body;
   let node = startingNode;
   while (node && node !== body) {
@@ -66,10 +66,13 @@ const createReconnectedNode = () => {
   return node;
 };
 
-const handleImageError = e => {
+const handleImageError = (e) => {
   setTimeout(() => {
     /** @type {HTMLImageElement} */
     const node = e.target;
+    if (!node) {
+      return;
+    }
     const attempts = parseInt(node.getAttribute('data-reload-n'), 10) || 0;
     if (attempts >= IMAGE_RETRY_LIMIT) {
       logger.error(`failed to load an image after ${attempts} attempts`);
@@ -85,7 +88,7 @@ const handleImageError = e => {
 /**
  * Assigns a "times-repeated" badge to the message.
  */
-const updateMessageBadge = message => {
+const updateMessageBadge = (message) => {
   const { node, times } = message;
   if (!node || !times) {
     // Nothing to update
@@ -94,10 +97,7 @@ const updateMessageBadge = message => {
   const foundBadge = node.querySelector('.Chat__badge');
   const badge = foundBadge || document.createElement('div');
   badge.textContent = times;
-  badge.className = classes([
-    'Chat__badge',
-    'Chat__badge--animate',
-  ]);
+  badge.className = classes(['Chat__badge', 'Chat__badge--animate']);
   requestAnimationFrame(() => {
     badge.className = 'Chat__badge';
   });
@@ -121,13 +121,12 @@ class ChatRenderer {
     /** @type {HTMLElement} */
     this.scrollNode = null;
     this.scrollTracking = true;
-    this.handleScroll = type => {
+    this.handleScroll = (type) => {
       const node = this.scrollNode;
       const height = node.scrollHeight;
       const bottom = node.scrollTop + node.offsetHeight;
-      const scrollTracking = (
-        Math.abs(height - bottom) < SCROLL_TRACKING_TOLERANCE
-      );
+      const scrollTracking =
+        Math.abs(height - bottom) < SCROLL_TRACKING_TOLERANCE;
       if (scrollTracking !== this.scrollTracking) {
         this.scrollTracking = scrollTracking;
         this.events.emit('scrollTrackingChanged', scrollTracking);
@@ -159,7 +158,7 @@ class ChatRenderer {
     // Find scrollable parent
     this.scrollNode = findNearestScrollableParent(this.rootNode);
     this.scrollNode.addEventListener('scroll', this.handleScroll);
-    setImmediate(() => {
+    setTimeout(() => {
       this.scrollToBottom();
     });
     // Flush the queue
@@ -184,30 +183,91 @@ class ChatRenderer {
     }
   }
 
-  setHighlight(text, color, matchWord, matchCase) {
-    if (!text || !color) {
-      this.highlightRegex = null;
-      this.highlightColor = null;
+  setHighlight(highlightSettings, highlightSettingById) {
+    this.highlightParsers = null;
+    if (!highlightSettings) {
       return;
     }
-    const lines = String(text)
-      .split(',')
-      // eslint-disable-next-line no-useless-escape
-      .map(str => str.trim().replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'))
-      .filter(str => (
-        // Must be longer than one character
-        str && str.length > 1
-      ));
-    // Nothing to match, reset highlighting
-    if (lines.length === 0) {
-      this.highlightRegex = null;
-      this.highlightColor = null;
-      return;
-    }
-    const pattern = `${(matchWord ? '\\b' : '')}(${lines.join('|')})${(matchWord ? '\\b' : '')}`;
-    const flags = 'g' + (matchCase ? '' : 'i');
-    this.highlightRegex = new RegExp(pattern, flags);
-    this.highlightColor = color;
+    highlightSettings.map((id) => {
+      const setting = highlightSettingById[id];
+      const text = setting.highlightText;
+      const highlightColor = setting.highlightColor;
+      const highlightWholeMessage = setting.highlightWholeMessage;
+      const matchWord = setting.matchWord;
+      const matchCase = setting.matchCase;
+      const allowedRegex = /^[a-zа-яё0-9_\-$/^[\s\]\\]+$/gi;
+      const regexEscapeCharacters = /[!#$%^&*)(+=.<>{}[\]:;'"|~`_\-\\/]/g;
+      const lines = String(text)
+        .split(',')
+        .map((str) => str.trim())
+        .filter(
+          (str) =>
+            // Must be longer than one character
+            str &&
+            str.length > 1 &&
+            // Must be alphanumeric (with some punctuation)
+            (allowedRegex.test(str) ||
+              (str.charAt(0) === '/' && str.charAt(str.length - 1) === '/')) &&
+            // Reset lastIndex so it does not mess up the next word
+            ((allowedRegex.lastIndex = 0) || true),
+        );
+      let highlightWords;
+      let highlightRegex;
+      // Nothing to match, reset highlighting
+      if (lines.length === 0) {
+        return;
+      }
+      let regexExpressions = [];
+      // Organize each highlight entry into regex expressions and words
+      for (let line of lines) {
+        // Regex expression syntax is /[exp]/
+        if (line.charAt(0) === '/' && line.charAt(line.length - 1) === '/') {
+          const expr = line.substring(1, line.length - 1);
+          // Check if this is more than one character
+          if (/^(\[.*\]|\\.|.)$/.test(expr)) {
+            continue;
+          }
+          regexExpressions.push(expr);
+        } else {
+          // Lazy init
+          if (!highlightWords) {
+            highlightWords = [];
+          }
+          // We're not going to let regex characters fuck up our RegEx operation.
+          line = line.replace(regexEscapeCharacters, '\\$&');
+
+          highlightWords.push(line);
+        }
+      }
+      const regexStr = regexExpressions.join('|');
+      const flags = 'g' + (matchCase ? '' : 'i');
+      // We wrap this in a try-catch to ensure that broken regex doesn't break
+      // the entire chat.
+      try {
+        // setting regex overrides matchword
+        if (regexStr) {
+          highlightRegex = new RegExp('(' + regexStr + ')', flags);
+        } else {
+          const pattern = `${matchWord ? '\\b' : ''}(${highlightWords.join(
+            '|',
+          )})${matchWord ? '\\b' : ''}`;
+          highlightRegex = new RegExp(pattern, flags);
+        }
+      } catch {
+        // We just reset it if it's invalid.
+        highlightRegex = null;
+      }
+      // Lazy init
+      if (!this.highlightParsers) {
+        this.highlightParsers = [];
+      }
+      this.highlightParsers.push({
+        highlightWords,
+        highlightRegex,
+        highlightColor,
+        highlightWholeMessage,
+      });
+    });
   }
 
   scrollToBottom() {
@@ -265,17 +325,13 @@ class ChatRenderer {
   }
 
   processBatch(batch, options = {}) {
-    const {
-      prepend,
-      notifyListeners = true,
-    } = options;
+    const { prepend, notifyListeners = true } = options;
     const now = Date.now();
     // Queue up messages until chat is ready
     if (!this.isReady()) {
       if (prepend) {
         this.queue = [...batch, ...this.queue];
-      }
-      else {
+      } else {
         this.queue = [...this.queue, ...batch];
       }
       return;
@@ -311,15 +367,14 @@ class ChatRenderer {
         // Payload is HTML
         else if (message.html) {
           node.innerHTML = message.html;
-        }
-        else {
+        } else {
           logger.error('Error: message is missing text payload', message);
         }
         // Get all nodes in this message that want to be rendered like jsx
-        const nodes = node.querySelectorAll("[data-component]");
+        const nodes = node.querySelectorAll('[data-component]');
         for (let i = 0; i < nodes.length; i++) {
           const childNode = nodes[i];
-          const targetName = childNode.getAttribute("data-component");
+          const targetName = childNode.getAttribute('data-component');
           // Let's pull out the attibute info we need
           let outputProps = {};
           for (let j = 0; j < childNode.attributes.length; j++) {
@@ -328,20 +383,18 @@ class ChatRenderer {
             let working_value = attribute.nodeValue;
             // We can't do the "if it has no value it's truthy" trick
             // Because getAttribute returns "", not null. Hate IE
-            if (working_value === "$true") {
+            if (working_value === '$true') {
               working_value = true;
-            }
-            else if (working_value === "$false") {
+            } else if (working_value === '$false') {
               working_value = false;
-            }
-            else if (!isNaN(working_value)) {
+            } else if (!isNaN(working_value)) {
               const parsed_float = parseFloat(working_value);
               if (!isNaN(parsed_float)) {
                 working_value = parsed_float;
               }
             }
 
-            let canon_name = attribute.nodeName.replace("data-", "");
+            let canon_name = attribute.nodeName.replace('data-', '');
             // html attributes don't support upper case chars, so we need to map
             canon_name = TGUI_CHAT_ATTRIBUTES_TO_PROPS[canon_name];
             outputProps[canon_name] = working_value;
@@ -361,15 +414,18 @@ class ChatRenderer {
         }
 
         // Highlight text
-        if (!message.avoidHighlighting && this.highlightRegex) {
-          const highlighted = highlightNode(node,
-            this.highlightRegex,
-            text => (
-              createHighlightNode(text, this.highlightColor)
-            ));
-          if (highlighted) {
-            node.className += ' ChatMessage--highlighted';
-          }
+        if (!message.avoidHighlighting && this.highlightParsers) {
+          this.highlightParsers.map((parser) => {
+            const highlighted = highlightNode(
+              node,
+              parser.highlightRegex,
+              parser.highlightWords,
+              (text) => createHighlightNode(text, parser.highlightColor),
+            );
+            if (highlighted && parser.highlightWholeMessage) {
+              node.className += ' ChatMessage--highlighted';
+            }
+          });
         }
         // Linkify text
         const linkifyNodes = node.querySelectorAll('.linkify');
@@ -389,12 +445,9 @@ class ChatRenderer {
       message.node = node;
       // Query all possible selectors to find out the message type
       if (!message.type) {
-        // IE8: Does not support querySelector on elements that
-        // are not yet in the document.
-        const typeDef = !Byond.IS_LTE_IE8 && MESSAGE_TYPES
-          .find(typeDef => (
-            typeDef.selector && node.querySelector(typeDef.selector)
-          ));
+        const typeDef = MESSAGE_TYPES.find(
+          (typeDef) => typeDef.selector && node.querySelector(typeDef.selector),
+        );
         message.type = typeDef?.type || MESSAGE_TYPE_UNKNOWN;
       }
       updateMessageBadge(message);
@@ -413,12 +466,11 @@ class ChatRenderer {
       const firstChild = this.rootNode.childNodes[0];
       if (prepend && firstChild) {
         this.rootNode.insertBefore(fragment, firstChild);
-      }
-      else {
+      } else {
         this.rootNode.appendChild(fragment);
       }
       if (this.scrollTracking) {
-        setImmediate(() => this.scrollToBottom());
+        setTimeout(() => this.scrollToBottom());
       }
     }
     // Notify listeners that we have processed the batch
@@ -491,10 +543,6 @@ class ChatRenderer {
   }
 
   saveToDisk() {
-    // Allow only on IE11
-    if (Byond.IS_LTE_IE10) {
-      return;
-    }
     // Compile currently loaded stylesheets as CSS text
     let cssText = '';
     const styleSheets = document.styleSheets;
@@ -502,7 +550,9 @@ class ChatRenderer {
       const cssRules = styleSheets[i].cssRules;
       for (let i = 0; i < cssRules.length; i++) {
         const rule = cssRules[i];
-        cssText += rule.cssText + '\n';
+        if (rule && typeof rule.cssText === 'string') {
+          cssText += rule.cssText + '\n';
+        }
       }
     }
     cssText += 'body, html { background-color: #141414 }\n';
@@ -514,26 +564,30 @@ class ChatRenderer {
       }
     }
     // Create a page
-    const pageHtml = '<!doctype html>\n'
-      + '<html>\n'
-      + '<head>\n'
-      + '<title>SS13 Chat Log</title>\n'
-      + '<style>\n' + cssText + '</style>\n'
-      + '</head>\n'
-      + '<body>\n'
-      + '<div class="Chat">\n'
-      + messagesHtml
-      + '</div>\n'
-      + '</body>\n'
-      + '</html>\n';
+
+    const pageHtml =
+      '<!doctype html>\n' +
+      '<html>\n' +
+      '<head>\n' +
+      '<title>SS13 Chat Log</title>\n' +
+      '<style>\n' +
+      cssText +
+      '</style>\n' +
+      '</head>\n' +
+      '<body>\n' +
+      '<div class="Chat">\n' +
+      messagesHtml +
+      '</div>\n' +
+      '</body>\n' +
+      '</html>\n';
     // Create and send a nice blob
-    const blob = new Blob([pageHtml]);
+    const blob = new Blob([pageHtml], { type: 'text/plain' });
     const timestamp = new Date()
       .toISOString()
       .substring(0, 19)
       .replace(/[-:]/g, '')
       .replace('T', '-');
-    window.navigator.msSaveBlob(blob, `ss13-chatlog-${timestamp}.html`);
+    Byond.saveBlob(blob, `ss13-chatlog-${timestamp}.html`, '.html');
   }
 }
 

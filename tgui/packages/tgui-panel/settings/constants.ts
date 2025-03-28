@@ -10,6 +10,10 @@ export const SETTINGS_TABS = [
     name: 'General',
   },
   {
+    id: 'textHighlight',
+    name: 'Text Highlights',
+  },
+  {
     id: 'chatPage',
     name: 'Chat Tabs',
   },
@@ -31,3 +35,5 @@ export const FONTS = [
   'Courier New',
   'Lucida Console',
 ];
+
+export const WARN_AFTER_HIGHLIGHT_AMT = 10;
