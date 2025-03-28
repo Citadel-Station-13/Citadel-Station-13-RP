@@ -1313,4 +1313,4 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
  * Checks if we can avoid things like landmine, lava, etc, whether beneficial or harmful.
  */
 /mob/is_avoiding_ground()
-	return ..() || hovering || (buckled?.buckle_flags & BUCKLING_GROUND_HOIST)
+	return ..() || hovering || flying || (buckled?.buckle_flags & BUCKLING_GROUND_HOIST) || buckled?.is_avoiding_ground()

@@ -57,7 +57,6 @@
 	damage_force = 5
 	damage_tier = MELEE_TIER_MEDIUM
 	preserve_item = 1
-	origin_tech = list(TECH_COMBAT = 1)
 	attack_verb = list("struck", "hit", "bashed")
 	zoomdevicename = "scope"
 	inhand_default_type = INHAND_DEFAULT_ICON_GUNS
@@ -145,8 +144,6 @@
 	// todo: purge with fire
 	// todo: do not use this var, use firemodes on /energy
 	var/projectile_type = /obj/projectile	//On ballistics, only used to check for the cham gun
-	// todo: this should be on /ballistic, and be `internal_chambered`.
-	var/obj/item/ammo_casing/chambered = null
 
 	var/wielded_item_state
 	var/one_handed_penalty = 0 // Penalty applied if someone fires a two-handed gun with one hand.
@@ -325,8 +322,10 @@
 			modular_component_slots = null
 
 	//* firemodes *//
-	if(!islist(firemodes))
+	if(!islist(firemodes) && firemodes)
 		firemodes = list(firemodes)
+	if(!length(firemodes))
+		firemodes = list(istype(src, /obj/item/gun/projectile/energy) ? /datum/firemode/energy : /datum/firemode)
 	for(var/i in 1 to firemodes.len)
 		var/key = firemodes[i]
 		if(islist(key))
@@ -352,8 +351,6 @@
 	update_icon()
 
 /obj/item/gun/Destroy()
-	if(locate(/obj/projectile) in src)
-		stack_trace("found an /obj/projectile in ourselves. this is not only invalid state, but means someone probably caused a memory leak.")
 	QDEL_NULL(pin)
 	QDEL_LIST(attachments)
 	return ..()
@@ -391,6 +388,8 @@
 		LAZYINITLIST(item_state_slots)
 		item_state_slots[SLOT_ID_LEFT_HAND] = wielded_item_state
 		item_state_slots[SLOT_ID_RIGHT_HAND] = wielded_item_state
+		update_icon()
+		update_worn_icon()
 
 /obj/item/gun/on_unwield(mob/user, hands)
 	. = ..()
@@ -399,6 +398,8 @@
 		LAZYINITLIST(item_state_slots)
 		item_state_slots[SLOT_ID_LEFT_HAND] = initial(item_state)
 		item_state_slots[SLOT_ID_RIGHT_HAND] = initial(item_state)
+		update_icon()
+		update_worn_icon()
 
 //Checks whether a given mob can use the gun
 //Any checks that shouldn't result in handle_click_empty() being called if they fail should go here.
@@ -479,14 +480,14 @@
 
 /obj/item/gun/using_item_on(obj/item/using, datum/event_args/actor/clickchain/e_args, clickchain_flags, datum/callback/reachability_check)
 	. = ..()
-	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
 	if(istype(using, /obj/item/gun_attachment))
 		user_install_attachment(using, e_args)
-		return CLICKCHAIN_DO_NOT_PROPAGATE
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	if(istype(using, /obj/item/gun_component))
 		user_install_modular_component(using, e_args)
-		return CLICKCHAIN_DO_NOT_PROPAGATE
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 
 /obj/item/gun/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(I.is_multitool())
@@ -660,6 +661,18 @@
 /obj/item/gun/proc/get_ammo_ratio(rounded)
 	return 0
 
+/**
+ * Gets approximate ammo left.
+ *
+ * * Used by examine
+ * * Do not return under 0
+ * * Round this yourself if you want.
+ *
+ * @return number
+ */
+/obj/item/gun/proc/get_ammo_remaining()
+	return 0
+
 //* Cell System *//
 
 /obj/item/gun/object_cell_slot_inserted(obj/item/cell/cell, datum/object_system/cell_slot/slot)
@@ -751,11 +764,11 @@
 	if(render_wielded && (item_flags & ITEM_MULTIHAND_WIELDED))
 		using_base_worn_state = "[using_base_worn_state]-wield"
 	var/using_ratio = get_ammo_ratio(TRUE)
-	var/datum/firemode/using_firemode = firemode
 	var/using_color = get_firemode_color()
+	var/using_key = get_firemode_key()
 
-	item_renderer?.render(src, using_base_icon_state, using_ratio, using_firemode?.render_key, using_color)
-	var/needs_worn_update = mob_renderer?.render(src, using_base_worn_state, using_ratio, using_firemode?.render_key, using_color)
+	item_renderer?.render(src, using_base_icon_state, using_ratio, using_key, using_color)
+	var/needs_worn_update = mob_renderer?.render(src, using_base_worn_state, using_ratio, using_key, using_color)
 
 	if(needs_worn_update)
 		update_worn_icon()
@@ -767,9 +780,9 @@
 	if(render_wielded && (item_flags & ITEM_MULTIHAND_WIELDED))
 		using_base_worn_state = "[using_base_worn_state]-wield"
 	var/using_ratio = get_ammo_ratio()
-	var/datum/firemode/using_firemode = firemode
 	var/using_color = get_firemode_color()
-	var/list/overlays = mob_renderer?.render_overlays(src, using_base_worn_state, using_ratio, using_firemode?.render_key, using_color)
+	var/using_key = get_firemode_key()
+	var/list/overlays = mob_renderer?.render_overlays(src, using_base_worn_state, using_ratio, using_key, using_color)
 	if(length(overlays))
 		var/append = "_[slot_meta.render_key]"
 		for(var/i in 1 to length(overlays))
@@ -786,6 +799,12 @@
  */
 /obj/item/gun/proc/get_firemode_color()
 	return firemode?.render_color
+
+/**
+ * Gets the key our firemode renders as during rendering.
+ */
+/obj/item/gun/proc/get_firemode_key()
+	return firemode?.render_key
 
 //* Action Datums *//
 
