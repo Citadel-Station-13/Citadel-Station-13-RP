@@ -1826,7 +1826,7 @@
 /area/engineering/atmos)
 "dZ" = (
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "ea" = (
 /obj/effect/floor_decal/borderfloor{
@@ -3275,7 +3275,7 @@
 /obj/random/maintenance/engineering,
 /obj/random/maintenance/engineering,
 /obj/random/maintenance/engineering,
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "iO" = (
 /obj/machinery/atmospherics/component/unary/outlet_injector{
@@ -4275,7 +4275,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "mc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -5236,7 +5236,7 @@
 	},
 /obj/effect/floor_decal/rust,
 /obj/structure/boulder,
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "pf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/blue{
@@ -6066,7 +6066,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "rS" = (
 /obj/effect/floor_decal/industrial/warning,
@@ -6609,7 +6609,7 @@
 "tS" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/ghost_role_spawner/lythios_colonist,
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "tT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/blue{
@@ -6820,7 +6820,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "uM" = (
 /obj/machinery/atmospherics/pipe/simple/visible/blue{
@@ -8023,7 +8023,7 @@
 "yj" = (
 /obj/effect/floor_decal/rust,
 /obj/random/junk,
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "yk" = (
 /mob/living/simple_mob/animal/passive/woolie,
@@ -8217,6 +8217,9 @@
 /obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/concrete/rng/indoors,
 /area/rift/station/fighter_bay/transport_tunnel_garage)
+"yS" = (
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "yT" = (
 /turf/simulated/floor/plating,
 /area/rift/trade_shop)
@@ -9867,7 +9870,7 @@
 /obj/random/maintenance/cargo,
 /obj/random/maintenance/cargo,
 /obj/random/maintenance/cargo,
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "EJ" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -9929,7 +9932,7 @@
 "EV" = (
 /obj/effect/floor_decal/rust,
 /obj/item/barrier_tape_segment/engineering,
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "EW" = (
 /obj/structure/catwalk,
@@ -11526,7 +11529,7 @@
 	},
 /obj/effect/floor_decal/rust,
 /obj/random/junk,
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "JQ" = (
 /obj/machinery/light,
@@ -12094,7 +12097,7 @@
 /obj/random/maintenance,
 /obj/random/maintenance,
 /obj/random/maintenance,
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "Lu" = (
 /obj/item/digestion_remains/skull/tajaran,
@@ -12437,7 +12440,7 @@
 /obj/random/junk,
 /obj/random/junk,
 /obj/random/junk,
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "MF" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
@@ -13546,7 +13549,7 @@
 /area/engineering/atmos)
 "PT" = (
 /obj/machinery/door/airlock/multi_tile/metal/mait,
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "PU" = (
 /obj/effect/overlay/snow/floor/pointy,
@@ -13595,7 +13598,7 @@
 "Qf" = (
 /obj/effect/floor_decal/rust,
 /obj/random/trash_pile,
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "Qh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -14181,7 +14184,7 @@
 	},
 /obj/structure/boulder,
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "Sq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -16441,7 +16444,7 @@
 	},
 /obj/effect/floor_decal/rust,
 /obj/structure/boulder,
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "ZJ" = (
 /obj/structure/bed/chair/sofa/green/left,
@@ -19872,7 +19875,7 @@ Lh
 Lh
 rV
 WR
-Lh
+yS
 dZ
 dZ
 dZ

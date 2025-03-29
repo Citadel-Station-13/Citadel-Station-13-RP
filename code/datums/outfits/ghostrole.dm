@@ -96,6 +96,7 @@
 	back = /obj/item/storage/backpack/dufflebag
 	id_slot = SLOT_ID_WORN_ID
 	id_type = /obj/item/card/id/external/id_nka
+	r_hand = /obj/item/flame/lighter/zippo/taj
 	l_hand = /obj/item/gearbox/lythios_colonist
 	r_pocket = /obj/item/reagent_containers/food/drinks/flask/tajflask/v_gin
-	l_pocket = /obj/item/flame/lighter/zippo/taj
+	l_pocket = /obj/item/reagent_containers/food/snacks/taj_pemmican

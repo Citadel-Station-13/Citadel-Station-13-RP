@@ -67,7 +67,7 @@ or simply ideas that are simply outside of the traditional expertise of Nanotras
 	result = /obj/item/reagent_containers/hypospray/autoinjector/venominjector/stimm
 
 	tools = list(/obj/item/flame/lighter/zippo/taj)
-	reqs = list(/obj/item/reagent_containers/glass/venomgland/spider/stimm = 1,
+	reqs = list(/obj/item/stack/material/leather = 1,
 				/datum/reagent/toxin/stimm = 15,
 				/obj/item/stack/material/bone = 1)
 	time = 40
@@ -79,7 +79,7 @@ or simply ideas that are simply outside of the traditional expertise of Nanotras
 	result = /obj/item/reagent_containers/hypospray/autoinjector/venominjector/chloral
 
 	tools = list(/obj/item/flame/lighter/zippo/taj)
-	reqs = list(/obj/item/reagent_containers/glass/venomgland/spider/chloral = 1,
+	reqs = list(/obj/item/stack/material/leather = 1,
 				/datum/reagent/chloralhydrate= 15,
 				/obj/item/stack/material/bone = 1)
 	time = 40
@@ -91,7 +91,7 @@ or simply ideas that are simply outside of the traditional expertise of Nanotras
 	result = /obj/item/reagent_containers/hypospray/autoinjector/venominjector/psilocybin
 
 	tools = list(/obj/item/flame/lighter/zippo/taj)
-	reqs = list(/obj/item/reagent_containers/glass/venomgland/spider/psilocybin = 1,
+	reqs = list(/obj/item/stack/material/leather = 1,
 				/datum/reagent/psilocybin= 15,
 				/obj/item/stack/material/bone = 1)
 	time = 40
@@ -102,7 +102,7 @@ or simply ideas that are simply outside of the traditional expertise of Nanotras
 	name = "Make Spider Spray"
 	result = /obj/item/reagent_containers/spray/spider/pepper
 
-	reqs = list(/obj/item/reagent_containers/glass/venomgland/spider/capsaicin_v = 1,
+	reqs = list(/obj/item/stack/material/leather = 2,
 				/datum/reagent/condensedcapsaicin/venom = 15,
 				/obj/item/stack/material/bone = 3,
 				/obj/item/stack/sinew = 1)
@@ -115,7 +115,7 @@ or simply ideas that are simply outside of the traditional expertise of Nanotras
 	result = /obj/item/reagent_containers/food/drinks/cans/empty
 
 	tools = list(TOOL_WELDER, TOOL_SCREWDRIVER)
-	reqs = list(/obj/item/stack/material/steel)
+	reqs = list(/obj/item/stack/material/steel = 1)
 	time = 20
 	category = CAT_SPECIAL
 	always_available = FALSE
