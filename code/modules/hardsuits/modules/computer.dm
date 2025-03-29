@@ -119,7 +119,7 @@
 		return 1
 
 	// Okay, it wasn't a terminal being touched, check for all the simple insertions.
-	if(input_device.type in list(/obj/item/paicard, /obj/item/mmi, /obj/item/mmi/digital/posibrain))
+	if(input_device.type in list(/obj/item/paicard, /obj/item/mmi, /obj/item/mmi/digital/posibrain, /obj/item/holder/holosphere_shell))
 		if(integrated_ai)
 			integrated_ai.attackby(input_device,user)
 			// If the transfer was successful, we can clear out our vars.
@@ -128,11 +128,6 @@
 				eject_ai()
 		else
 			integrate_ai(input_device,user)
-		return 1
-
-	// Don't hijack holospheres, test if the slot is empty.
-	if(!integrated_ai && istype(input_device, /obj/item/holder/holosphere_shell))
-		integrate_ai(input_device,user)
 		return 1
 
 	return 0
