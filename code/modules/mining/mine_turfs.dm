@@ -354,10 +354,10 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 			if(sand_dug)
 				if(grave_digger)
 					var/grave_type = /obj/structure/closet/grave
-					do_after(user, 60)
-					to_chat(user, "<span class='warning'>You deepen the hole.</span>")
-					new grave_type(get_turf(src))
-					return
+					if(do_after(user, 60))
+						to_chat(user, "<span class='warning'>You deepen the hole.</span>")
+						new grave_type(get_turf(src))
+						return
 				else
 					to_chat(user, "<span class='warning'>This area has already been dug.</span>")
 					return
