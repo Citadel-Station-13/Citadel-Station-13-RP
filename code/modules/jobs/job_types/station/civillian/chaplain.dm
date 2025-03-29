@@ -19,18 +19,18 @@
 
 	outfit_type = /datum/outfit/job/station/chaplain
 	desc = "The Chaplain ministers to the spiritual needs of the crew."
+	// todo: split up these into numerous civ jobs? therapist should just be a separate job lol
+	//       and keep chaplain / whatever to itself
 	alt_titles = list(
-		"Religious Counselor" = /datum/prototype/struct/alt_title/chaplain/counselor,
-		"Religious Affairs Advisor" = /datum/prototype/struct/alt_title/chaplain/advisor
-		)
+		"Therapist" = /datum/prototype/struct/alt_title/chaplain/therapist,
+		"Counselor" = /datum/prototype/struct/alt_title/chaplain/counselor,
+	)
 
-// Chaplain Alt Titles
+/datum/prototype/struct/alt_title/chaplain/therapist
+	title = "Therapist"
+
 /datum/prototype/struct/alt_title/chaplain/counselor
-	title = "Religious Counselor"
-	title_blurb = "The Religious Counselor attends to the emotional needs of the crew, usually through the lens of a religion or spiritual ideology."
-
-/datum/prototype/struct/alt_title/chaplain/advisor
-	title = "Religious Affairs Advisor"
+	title = "Counselor"
 
 /datum/role/job/station/chaplain/equip(mob/living/carbon/human/H, src)
 	. = ..()
