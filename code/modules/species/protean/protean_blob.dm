@@ -549,7 +549,7 @@
 		return
 
 	var/list/choices = list()
-	for(var/mob/living/carbon/human/M in oviewers(1))
+	for(var/mob/living/carbon/human/M in oview(1))
 		choices += M
 
 	if(!choices.len)
