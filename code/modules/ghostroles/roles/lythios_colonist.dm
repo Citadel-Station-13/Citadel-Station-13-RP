@@ -70,7 +70,7 @@
 	/obj/item/clothing/head/tajaran/fur, /obj/item/clothing/suit/storage/hooded/tajaran/cloak/gruff, /obj/item/stack/medical/crude_pack)
 	options["Prospector"] = list(/obj/item/pickaxe/icepick, /obj/item/storage/bag/ore, /obj/item/flashlight/lantern, /obj/item/clothing/head/hardhat/orange,
 	/obj/item/clothing/suit/storage/hooded/tajaran/cloak/gruff, /obj/item/clothing/shoes/tajara/workboots, /obj/item/stack/medical/crude_pack)
-	options["Scavenger"] = list(/obj/item/storage/belt/utility/full, /obj/item/clothing/head/hardhat, /obj/item/clothing/suit/storage/hooded/tajaran/cloak/gruff,
+	options["Scavenger"] = list(/obj/item/storage/belt/utility/full, /obj/item/clothing/head/welding, /obj/item/clothing/suit/storage/hooded/tajaran/cloak/gruff,
 	/obj/item/clothing/shoes/tajara/workboots/dark, /obj/item/clothing/under/tajaran/mechanic, /obj/item/clothing/gloves/black/tajara/smithgloves,
 	/obj/item/reagent_containers/pill/hyronalin, /obj/item/reagent_containers/pill/hyronalin, /obj/item/stack/medical/crude_pack)
 	var/choice = input(user,"What is your profession?") as null|anything in options
