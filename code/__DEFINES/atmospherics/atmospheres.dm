@@ -18,6 +18,9 @@
 // Tethermap
 /// Virgo 2 planetary atmosphere ID
 #define ATMOSPHERE_ID_VIRGO2			/datum/atmosphere/planet/virgo2
+/// Sky planet atmosphere ID
+#define ATMOSPHERE_ID_SKYPLANET			/datum/atmosphere/planet/sky_planet
+#define ATMOSPHERE_ID_SKYPLANET_GROUND	/datum/atmosphere/planet/sky_planet/ground
 /// Virgo 3b (station) planetary atmosphere ID
 #define ATMOSPHERE_ID_VIRGO3B			/datum/atmosphere/planet/virgo3b
 /// Lythios4c (station) atmosphere ID
