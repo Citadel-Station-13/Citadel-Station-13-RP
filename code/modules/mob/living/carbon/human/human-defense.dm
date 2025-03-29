@@ -12,7 +12,7 @@
 		return
 
 	// todo: this shit shouldn't be here
-	var/obj/item/organ/external/organ = get_organ()
+	var/obj/item/organ/external/organ = legacy_organ_by_zone()
 
 	if(!proj.nodamage)
 		organ.add_autopsy_data("[proj.name]", proj.damage_force)

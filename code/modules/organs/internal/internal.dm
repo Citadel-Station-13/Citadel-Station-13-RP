@@ -2,20 +2,15 @@
 				INTERNAL ORGANS DEFINES
 ****************************************************/
 /obj/item/organ/internal
+	abstract_type = /obj/item/organ/internal
 	/// Icon to use when the organ has died.
 	var/dead_icon
 
-// Yep... That's it. - @Zandario
-
 /obj/item/organ/internal/Destroy()
 	if(owner)
-		owner.internal_organs.Remove(src)
-		owner.internal_organs_by_name[organ_tag] = null
-		owner.internal_organs_by_name -= organ_tag
-		while(null in owner.internal_organs)
-			owner.internal_organs -= null
 		var/obj/item/organ/external/E = owner.organs_by_name[parent_organ]
-		if(istype(E)) E.internal_organs -= src
+		if(istype(E))
+			E.internal_organs -= src
 	return ..()
 
 /obj/item/organ/internal/on_die()
@@ -27,17 +22,6 @@
 	. = ..()
 	if(dead_icon)
 		icon_state = initial(icon_state)
-
-/obj/item/organ/internal/remove_rejuv()
-	if(owner)
-		owner.internal_organs -= src
-		owner.internal_organs_by_name[organ_tag] = null
-		owner.internal_organs_by_name -= organ_tag
-		while(null in owner.internal_organs)
-			owner.internal_organs -= null
-		var/obj/item/organ/external/E = owner.organs_by_name[parent_organ]
-		if(istype(E)) E.internal_organs -= src
-	..()
 
 /obj/item/organ/internal/robotize()
 	..()
@@ -80,3 +64,22 @@
 			take_damage(rand(1, 4))
 		if (4)
 			take_damage(rand(0, 2))
+
+//* Insert / Remove *//
+
+/obj/item/organ/internal/register(mob/living/carbon/target)
+	target.internal_organs += src
+	if(organ_key)
+		target.keyed_organs[organ_key] = src
+		target.keyed_organs[organ_tag] = src
+	if(organ_tag)
+		target.legacy_organ_by_tag[organ_tag] = src
+
+/obj/item/organ/internal/unregister(mob/living/carbon/target)
+	target.internal_organs -= src
+	if(organ_key && target.keyed_organs[organ_key] == src)
+		target.keyed_organs -= organ_key
+	if(organ_key && target.legacy_organ_by_tag[organ_key] == src)
+		target.legacy_organ_by_tag -= organ_key
+	if(organ_tag && target.legacy_organ_by_tag[organ_tag] == src)
+		target.legacy_organ_by_tag -= organ_tag

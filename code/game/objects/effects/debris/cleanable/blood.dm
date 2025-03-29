@@ -92,8 +92,8 @@ var/global/list/image/splatter_cache=list()
 	if(amount < 1)
 		return
 
-	var/obj/item/organ/external/l_foot = perp.get_organ("l_foot")
-	var/obj/item/organ/external/r_foot = perp.get_organ("r_foot")
+	var/obj/item/organ/external/l_foot = perp.legacy_organ_by_zone("l_foot")
+	var/obj/item/organ/external/r_foot = perp.legacy_organ_by_zone("r_foot")
 	var/hasfeet = 1
 	if((!l_foot || l_foot.is_stump()) && (!r_foot || r_foot.is_stump()))
 		hasfeet = 0

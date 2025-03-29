@@ -22,7 +22,7 @@
 
 /datum/unarmed_attack/claws/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 	var/skill = user.skills["combat"]
-	var/obj/item/organ/external/affecting = target.get_organ(zone)
+	var/obj/item/organ/external/affecting = target.legacy_organ_by_zone(zone)
 	var/datum/gender/T = GLOB.gender_datums[user.get_visible_gender()]
 	var/datum/gender/TT = GLOB.gender_datums[target.get_visible_gender()]
 	if(!skill)	skill = 1
@@ -95,7 +95,7 @@
 	return damage
 
 /datum/unarmed_attack/stomp/weak/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
-	var/obj/item/organ/external/affecting = target.get_organ(zone)
+	var/obj/item/organ/external/affecting = target.legacy_organ_by_zone(zone)
 	user.visible_message("<span class='warning'>[user] jumped up and down on \the [target]'s [affecting.name]!</span>")
 	playsound(user.loc, attack_sound, 25, 1, -1)
 
@@ -106,7 +106,7 @@
 	damage_mode = DAMAGE_MODE_SHARP
 
 /datum/unarmed_attack/bite/sharp/numbing/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
-	var/obj/item/organ/external/affecting = target.get_organ(zone)
+	var/obj/item/organ/external/affecting = target.legacy_organ_by_zone(zone)
 
 	attack_damage = clamp(attack_damage, 1, 5)
 	if(target == user)

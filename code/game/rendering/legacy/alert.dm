@@ -524,8 +524,8 @@ so as to remain in compliance with the most up-to-date laws."
 	var/mob/living/L = owner
 	to_chat(usr, jointext(list(
 		"[usr == L? "You are" : "[L] is"] <b>[lowertext(name)]</b>.",
-		"Encumbrance: [L.cached_carry_encumbrance] / [L.physiology.carry_strength]",
-		"Weight: [L.cached_carry_weight] / [L.physiology.carry_strength]",
+		"Encumbrance: [L.cached_carry_encumbrance] / [L.global_physiology.carry_strength]",
+		"Weight: [L.cached_carry_weight] / [L.global_physiology.carry_strength]",
 	), "<br>"))
 
 /atom/movable/screen/alert/encumbered/minor
