@@ -1,34 +1,24 @@
 // Why? Because when you screw up too early in init, total runtimes won't be initialized. You can see why this can be a problem, right?
 GLOBAL_VAR_INIT(total_runtimes, GLOB.total_runtimes || 0)
 GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
-GLOBAL_VAR_INIT(total_runtimes_seen, 0)
+
 // to detect when someone fucks up royally and breaks error handling with preinit runtimes
 GLOBAL_REAL_VAR(runtime_skip_once) = FALSE
 GLOBAL_REAL_VAR(runtime_trap_triggered) = FALSE
 
 #ifdef USE_CUSTOM_ERROR_HANDLER
-
 #define ERROR_USEFUL_LEN 2
+
 /world/Error(exception/E, datum/e_src)
 
+// preinit runtimes on unit test
 #ifdef UNIT_TESTS
 	if(runtime_skip_once)
 		runtime_skip_once = FALSE
 		runtime_trap_triggered = TRUE
 		return
 #endif
-
-	++GLOB.total_runtimes
-
-	var/static/list/error_last_seen = list()
-	var/static/list/error_cooldown = list() /* Error_cooldown items will either be positive(cooldown time) or negative(silenced error)
-												If negative, starts at -1, and goes down by 1 each time that error gets skipped*/
-
-	if(!GLOB || !error_last_seen)
-		log_world("early runtime caught;")
-		return ..()
-
-	++GLOB.total_runtimes_seen
+	GLOB.total_runtimes++
 
 	if(!istype(E)) //Something threw an unusual exception
 		log_world("uncaught runtime error: [E]")
@@ -45,17 +35,28 @@ GLOBAL_REAL_VAR(runtime_trap_triggered) = FALSE
 		// this will never happen.
 		return
 
-	else if(copytext(E.name, 1, 18) == "Out of resources!")
-		log_world("BYOND out of memory. Restarting")
-		log_game("BYOND out of memory. Restarting")
+	else if(copytext(E.name, 1, 18) == "Out of resources!")//18 == length() of that string + 1
+		log_world("BYOND out of memory. Restarting ([E?.file]:[E?.line])")
 		TgsEndProcess()
+		. = ..()
 		Reboot(reason = 1)
+		return
+
+	var/static/regex/stack_workaround
+	if(isnull(stack_workaround))
+		stack_workaround = regex("[WORKAROUND_IDENTIFIER](.+?)[WORKAROUND_IDENTIFIER]")
+	var/static/list/error_last_seen = list()
+	var/static/list/error_cooldown = list() /* Error_cooldown items will either be positive(cooldown time) or negative(silenced error)
+												If negative, starts at -1, and goes down by 1 each time that error gets skipped*/
+
+	if(!error_last_seen) // A runtime is occurring too early in start-up initialization
 		return ..()
 
-	if (islist(stack_trace_storage))
-		for (var/line in splittext(E.desc, "\n"))
-			if (text2ascii(line) != 32)
-				stack_trace_storage += line
+	if(stack_workaround.Find(E.name))
+		var/list/data = json_decode(stack_workaround.group[1])
+		E.file = data[1]
+		E.line = data[2]
+		E.name = stack_workaround.Replace(E.name, "")
 
 	var/erroruid = "[E.file][E.line]"
 	var/last_seen = error_last_seen[erroruid]
@@ -69,7 +70,6 @@ GLOBAL_REAL_VAR(runtime_trap_triggered) = FALSE
 		error_cooldown[erroruid]-- //Used to keep track of skip count for this error
 		GLOB.total_runtimes_skipped++
 		return //Error is currently silenced, skip handling it
-
 	//Handle cooldowns and silencing spammy errors
 	var/silencing = FALSE
 
@@ -138,7 +138,7 @@ GLOBAL_REAL_VAR(runtime_trap_triggered) = FALSE
 				desclines += ("  " + line) // Pad any unpadded lines, so they look pretty
 			else
 				desclines += line
-	if(usrinfo) //If thi	s info isn't null, it hasn't been added yet
+	if(usrinfo) //If this info isn't null, it hasn't been added yet
 		desclines.Add(usrinfo)
 	if(silencing)
 		desclines += "  (This error will now be silenced for [DisplayTimeText(configured_error_silence_time)])"
@@ -156,5 +156,6 @@ GLOBAL_REAL_VAR(runtime_trap_triggered) = FALSE
 
 	// This writes the regular format (unwrapping newlines and inserting timestamps as needed).
 	log_runtime("runtime error: [E.name]\n[E.desc]")
-
 #endif
+
+#undef ERROR_USEFUL_LEN

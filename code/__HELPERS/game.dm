@@ -567,3 +567,23 @@
 
 	return hear
 
+///Get active players who are playing in the round
+/proc/get_active_player_count(alive_check = FALSE, afk_check = FALSE, human_check = FALSE)
+	var/active_players = 0
+	for(var/mob/player_mob as anything in GLOB.player_list)
+		if(!player_mob?.client)
+			continue
+		if(alive_check && player_mob.stat == DEAD)
+			continue
+		if(afk_check && player_mob.client.is_afk())
+			continue
+		if(human_check && !ishuman(player_mob))
+			continue
+		if(isnewplayer(player_mob)) // exclude people in the lobby
+			continue
+		if(isobserver(player_mob)) // Ghosts are fine if they were playing once (didn't start as observers)
+			// var/mob/dead/observer/ghost_player = player_mob
+			// if(ghost_player.started_as_observer) // Exclude people who started as observers
+			continue
+		active_players++
+	return active_players

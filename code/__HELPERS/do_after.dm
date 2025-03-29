@@ -19,7 +19,7 @@
 	. = TRUE
 	while (world.time < endtime)
 		stoplag(1)
-		if (progress)
+		if (progress && !QDELETED(progbar))
 			progbar.update(world.time - starttime)
 		if(!user || !target)
 			. = FALSE
@@ -52,7 +52,7 @@
 			break
 
 	if(!QDELETED(progbar))
-		qdel(progbar)
+		progbar.end_progress()
 
 	STOP_INTERACTING_WITH(user, target, INTERACTING_FOR_DO_AFTER)
 
@@ -172,7 +172,7 @@
 
 	//* end
 	if(!QDELETED(progress))
-		qdel(progress)
+		progress.end_progress()
 
 	if(!isnull(target))
 		STOP_INTERACTING_WITH(user, target, INTERACTING_FOR_DO_AFTER)
