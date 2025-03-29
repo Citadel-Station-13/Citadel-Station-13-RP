@@ -43,7 +43,7 @@
 	interface_desc = "A socket that supports a range of artificial intelligence systems."
 
 	var/mob/integrated_ai // Direct reference to the actual mob held in the suit.
-	var/obj/item/ai_card  // Reference to the MMI, posibrain, intellicard or pAI card previously holding the AI.
+	var/obj/item/ai_card  // Reference to the MMI, posibrain, intellicard, pAI card or holosphere previously holding the AI.
 	var/obj/item/ai_verbs/verb_holder
 
 /obj/item/hardsuit_module/ai_container/process(delta_time)
@@ -128,6 +128,11 @@
 				eject_ai()
 		else
 			integrate_ai(input_device,user)
+		return 1
+
+	// Don't hijack holospheres, test if the slot is empty.
+	if(!integrated_ai && istype(input_device, /obj/item/holder/holosphere_shell))
+		integrate_ai(input_device,user)
 		return 1
 
 	return 0
