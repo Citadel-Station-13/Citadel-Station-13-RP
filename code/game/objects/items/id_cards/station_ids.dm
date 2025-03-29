@@ -678,13 +678,6 @@
 	job_access_type = null
 	access = list(168)
 
-/obj/item/card/id/medical/sar
-	assignment = "Field Medic"
-	rank = "Field Medic"
-	primary_color = rgb(47,189,189)
-	secondary_color = rgb(127,223,223)
-	job_access_type = /datum/role/job/station/field_medic
-
 /obj/item/card/id/explorer
 	name = "identification card"
 	desc = "A card issued to station exploration staff."
