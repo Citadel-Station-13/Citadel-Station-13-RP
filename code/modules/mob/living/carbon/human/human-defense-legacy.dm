@@ -193,15 +193,18 @@
 	if(effective_force > 10 || effective_force >= 5 && prob(33))
 		forcesay(hit_appends)	//forcesay checks stat already
 
+	// you can't bleed, if you have no blood
+	var/can_bleed = !(species.species_flags & NO_BLOOD)
+
 	if(prob(25 + (effective_force * 2)))
 		if(!((I.damage_type == DAMAGE_TYPE_BRUTE) || (I.damage_type == DAMAGE_TYPE_HALLOSS)))
 			return
 
-		if(!(I.atom_flags & NOBLOODY))
+		if(!(I.atom_flags & NOBLOODY) && can_bleed)
 			I.add_blood(src)
 
 		var/bloody = 0
-		if(prob(33))
+		if(can_bleed && prob(33))
 			bloody = 1
 			var/turf/location = loc
 			if(istype(location, /turf/simulated))
