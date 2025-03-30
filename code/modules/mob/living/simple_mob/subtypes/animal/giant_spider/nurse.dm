@@ -61,7 +61,7 @@
 	..() // Inject the stoxin here.
 	if(ishuman(L) && prob(egg_inject_chance))
 		var/mob/living/carbon/human/H = L
-		var/obj/item/organ/external/O = H.get_organ(target_zone)
+		var/obj/item/organ/external/O = H.legacy_organ_by_zone(target_zone)
 		if(O)
 			var/eggcount = 0
 			for(var/obj/effect/spider/eggcluster/E in O.implants)

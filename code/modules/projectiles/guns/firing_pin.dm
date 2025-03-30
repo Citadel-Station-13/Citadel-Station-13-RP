@@ -104,7 +104,7 @@
 
 /obj/item/firing_pin/implant/pin_auth(mob/living/carbon/human/user)
 	if(user)
-		for(var/obj/item/organ/external/E in user.organs)
+		for(var/obj/item/organ/external/E as anything in user.external_organs)
 			for(var/obj/item/implant/I in E.implants)
 				if(I.implanted)
 					if(istype(I,req_implant))

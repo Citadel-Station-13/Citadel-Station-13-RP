@@ -46,7 +46,7 @@
 	if(target == L)
 		if(istype(target, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = target
-			var/obj/item/organ/external/affecting = H.get_organ(check_zone(L.zone_sel.selecting))
+			var/obj/item/organ/external/affecting = H.legacy_organ_by_zone(check_zone(L.zone_sel.selecting))
 			if(!affecting)
 				to_chat(user, SPAN_WARNING("The limb is missing!"))
 				return
@@ -84,7 +84,7 @@
 
 	else if(istype(target, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = target
-		var/obj/item/organ/external/affecting = H.get_organ(check_zone(L.zone_sel.selecting))
+		var/obj/item/organ/external/affecting = H.legacy_organ_by_zone(check_zone(L.zone_sel.selecting))
 		if(!affecting)
 			to_chat(user, SPAN_WARNING("The limb is missing!"))
 			return

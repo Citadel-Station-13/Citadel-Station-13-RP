@@ -157,7 +157,7 @@
 	var/nopain
 	if(ishuman(victim) && user.zone_sel.selecting != "groin" && user.zone_sel.selecting != "chest")
 		var/mob/living/carbon/human/H = victim
-		E = H.get_organ(user.zone_sel.selecting)
+		E = H.legacy_organ_by_zone(user.zone_sel.selecting)
 		if(!E || E.species.species_flags & NO_PAIN)
 			nopain = 2
 		else if(E.robotic >= ORGAN_ROBOT)

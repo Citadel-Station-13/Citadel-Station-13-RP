@@ -40,7 +40,7 @@
 	M.eye_blurry = min(M.eye_blurry + wound_heal, 250)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		for(var/obj/item/organ/external/O in H.bad_external_organs)//for-loop that covers all injured external organs
+		for(var/obj/item/organ/external/O in H.external_organs)//for-loop that covers all injured external organs
 			for(var/datum/wound/W as anything in O.wounds)//for-loop that covers all wounds in the organ we are currently looking at.
 				if(W.bleeding() || W.internal)//Checks if the wound is bleeding or internal
 					W.damage = max(W.damage - wound_heal, 0)//reduces the damage, and sets it to 0 if its lower than 0
@@ -216,7 +216,7 @@
 		M.remove_a_modifier_of_type(/datum/modifier/poisoned)//better chance to remove the poisoned effect
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/internal/liver/L = H.internal_organs_by_name[O_LIVER]
+		var/obj/item/organ/internal/liver/L = H.legacy_organ_by_type(/obj/item/organ/internal/liver)
 		if(istype(L))
 			if(L.robotic >= ORGAN_ROBOT)
 				return
@@ -656,7 +656,7 @@
 	M.eye_blurry = max(M.eye_blurry - 5, 0)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/internal/eyes/E = H.internal_organs_by_name[O_EYES]
+		var/obj/item/organ/internal/eyes/E = H.keyed_organs[ORGAN_KEY_EYES]
 		if(istype(E))
 			if(E.robotic >= ORGAN_ROBOT)
 				return
@@ -733,7 +733,7 @@
 	M.heal_organ_damage(3 * removed, 0)	//Gives the bones a chance to set properly even without other meds
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		for(var/obj/item/organ/external/O in H.bad_external_organs)
+		for(var/obj/item/organ/external/O in H.external_organs)
 			if(O.status & ORGAN_BROKEN)
 				O.mend_fracture()		//Only works if the bone won't rebreak, as usual
 				H.custom_pain("You feel a terrible agony tear through your bones!",60)
@@ -757,7 +757,7 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/wound_heal = removed * repair_strength
-		for(var/obj/item/organ/external/O in H.bad_external_organs)
+		for(var/obj/item/organ/external/O in H.external_organs)
 			for(var/datum/wound/W as anything in O.wounds)
 				if(W.bleeding())
 					W.damage = max(W.damage - wound_heal, 0)
@@ -928,9 +928,11 @@
 		if(alien != IS_DIONA)
 			H.adjustToxLoss((30 / strength_mod) * removed)
 
-		var/list/organtotal = list()
-		organtotal |= H.organs
-		organtotal |= H.internal_organs
+		var/list/obj/item/organ/organtotal = list()
+		for(var/obj/item/organ/organ as anything in H.get_organs())
+			if(organ.robotic >= ORGAN_ROBOT)
+				continue
+			organtotal += organ
 
 		for(var/obj/item/organ/I in organtotal)	// Don't mess with robot bits, they don't reject.
 			if(I.robotic >= ORGAN_ROBOT)
@@ -973,9 +975,12 @@
 		if(alien != IS_SKRELL)
 			H.adjustToxLoss(20 * removed)
 
-		var/list/organtotal = list()
-		organtotal |= H.organs
-		organtotal |= H.internal_organs
+
+		var/list/obj/item/organ/organtotal = list()
+		for(var/obj/item/organ/organ as anything in H.get_organs())
+			if(organ.robotic >= ORGAN_ROBOT)
+				continue
+			organtotal += organ
 
 		for(var/obj/item/organ/I in organtotal)	// Don't mess with robot bits, they don't reject.
 			if(I.robotic >= ORGAN_ROBOT)
@@ -1173,7 +1178,7 @@
 			M.adjustBrainLoss(2 * removed)
 			M.nutrition = max(H.nutrition - 20, 0)
 		if(M.bruteloss >= 60 && M.toxloss >= 60 && M.brainloss >= 30) //Total Structural Failure. Limbs start splattering.
-			var/obj/item/organ/external/O = pick(H.organs)
+			var/obj/item/organ/external/O = pick(H.external_organs)
 			if(prob(20) && !istype(O, /obj/item/organ/external/chest/unbreakable/slime) && !istype(O, /obj/item/organ/external/groin/unbreakable/slime))
 				to_chat(M, "<span class='critical'>You feel your [O] begin to dissolve, before it sloughs from your body.</span>")
 				O.droplimb() //Splat.
@@ -1191,7 +1196,7 @@
 
 	//One of the levofloxacin side effects is 'spontaneous tendon rupture', which I'll immitate here. 1:1000 chance, so, pretty darn rare.
 	if(ishuman(M) && rand(1,10000) == 1)
-		var/obj/item/organ/external/eo = pick(H.organs) //Misleading variable name, 'organs' is only external organs
+		var/obj/item/organ/external/eo = pick(H.external_organs) //Misleading variable name, 'organs' is only external organs
 		eo.fracture()
 
 /datum/reagent/spacomycaze
