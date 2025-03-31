@@ -10649,8 +10649,7 @@
 /area/security/detectives_office)
 "hQp" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Solar Farm - SMES 2";
-	dir = ss
+	RCon_tag = "Solar Farm - SMES 2"
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
