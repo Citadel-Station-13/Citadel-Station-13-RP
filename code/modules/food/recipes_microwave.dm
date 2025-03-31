@@ -1579,7 +1579,7 @@
 
 /datum/recipe/shrimpcocktail
 	fruit = list("tomato" = 2, "chili" = 2, "lemon" = 2)
-	reagents = list("water" = 5, "sodiumchloride" = 5, "pepper" = 5)
+	reagents = list("water" = 5, "sodiumchloride" = 5, "blackpepper" = 5)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/shrimp,
 		/obj/item/reagent_containers/food/snacks/shrimp,
