@@ -83,6 +83,36 @@
 	. = ..()
 	icon_state = "snowbush[rand(1, 6)]"
 
+/obj/structure/flora/snow_berry
+	name = "Ashomarr Tree"
+	desc = "Ashomarr or 'Adhomai Holly' is a berry bush know to thrive in extreme cold. Unlike earth holly, the berries are non-toxic."
+	icon = 'icons/obj/flora/snowflora.dmi'
+	icon_state = "holly"
+
+/obj/structure/flora/snow_berry/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+	var/harvest_amount = rand(1, 5)
+	visible_message("[user] begins to pick berries from the Bush.", "You begin picking the berries from the bush.")
+	if(do_after(user, 5 SECONDS))
+		for(var/i in 1 to harvest_amount)
+			new /obj/item/reagent_containers/food/snacks/ashomarr(src.loc)
+		visible_message("[user] harvests the berries from the Ashomarr Tree.", "You finish harvesting the berries from the tree.")
+	qdel(src)
+
+/obj/structure/flora/taj_tuber
+	name = "Guskaroot"
+	desc = "A tuber native to Adhomai known for its unnatural resillence to cold and its ability to grow in the wild."
+	icon = 'icons/obj/flora/snowflora.dmi'
+	icon_state = "tajtuber"
+
+/obj/structure/flora/taj_tuber/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+	var/harvest_amount = rand(1, 3)
+	visible_message("[user] begins to pull the tubers from the earth.", "You begin pulling up the tubers.")
+	if(do_after(user, 5 SECONDS))
+		for(var/i in 1 to harvest_amount)
+			new /obj/item/reagent_containers/food/snacks/guska(src.loc)
+		visible_message("[user] pull the tubers clean from the frozen earth", "You finish harvesting the tubers.")
+	qdel(src)
+
 /obj/structure/flora/pottedplant
 	name = "potted plant"
 	desc = "Really ties the room together."

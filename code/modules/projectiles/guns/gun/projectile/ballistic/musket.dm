@@ -8,9 +8,9 @@
 	item_state = "musket"
 	wielded_item_state = "musket-wielded"
 
-	load_method = SINGLE_CASING
-
-	max_shells = 1
+	internal_magazine = TRUE
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/musket
+	internal_magazine_size = 1
 	caliber = /datum/ammo_caliber/musket
 
 	slot_flags = SLOT_BACK
@@ -25,8 +25,6 @@
 	fire_sound = 'sound/weapons/gunshot/musket.ogg'
 	recoil = 4
 	no_pin_required = 1
-
-	ammo_type = /obj/item/ammo_casing/musket
 	safety_state = GUN_SAFETY_OFF
 
 	var/has_powder = FALSE
@@ -72,7 +70,7 @@
 	slot_flags = SLOT_BELT
 	amount_per_transfer_from_this = 5
 	possible_transfer_amounts = list(5)
-	volume = 30
+	volume = 60
 
 /obj/item/reagent_containers/glass/powder_horn/filled
 	name = "powder horn"
@@ -80,7 +78,7 @@
 
 /obj/item/reagent_containers/glass/powder_horn/filled/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("gunpowder", 30)
+	reagents.add_reagent("gunpowder", 60)
 
 /obj/item/reagent_containers/glass/powder_horn/tribal
 	name = "tribal powder horn"
@@ -93,7 +91,7 @@
 
 /obj/item/reagent_containers/glass/powder_horn/tribal/filled/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("gunpowder", 30)
+	reagents.add_reagent("gunpowder", 60)
 
 /obj/item/gun/projectile/ballistic/musket/tribal
 	name = "tribal musket"
@@ -124,12 +122,13 @@
 	desc = "A flintlock pistol cased in bone and sinew. It uses an obsidian striking mechanism, perhaps it should be called an obsidian-lock?"
 	icon_state = "flintlock-scor"
 
-/obj/item/gun/projectile/ballistic/musket/blunderbuss
+/obj/item/gun/projectile/ballistic/blunderbuss
 	name = "blunderbuss"
 	desc = "The precursor to the modern shotgun. It uses blackpowder to shoot a spread of shrapnel."
 	icon_state = "blunderbuss"
 	item_state = "blunderbuss"
 	wielded_item_state = "blunderbuss-wielded"
 	caliber = /datum/ammo_caliber/blunderbuss
-
-	ammo_type = /obj/item/ammo_casing/blunderbuss
+	internal_magazine = TRUE
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/blunderbuss
+	internal_magazine_size = 1

@@ -18,6 +18,8 @@
 #define GUN_FIRING_NO_CLICK_EMPTY (1<<4)
 /// suppressed shot
 #define GUN_FIRING_SUPPRESSED (1<<5)
+/// don't send back feedback to actor
+#define GUN_FIRING_NO_FEEDBACK (1<<6)
 
 //*            firing result from firing procs                 *//
 //* these are flags but should be returned only one at a time. *//

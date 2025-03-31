@@ -78,14 +78,6 @@
 	QDEL_NULL(spark_system)
 	QDEL_NULL(tool)
 	return ..()
-/*
-/obj/item/pipe_dispenser/suicide_act(mob/user)
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	user.visible_message(SPAN_SUICIDE("[user] points the end of the RPD down [TU.his] throat and presses a button! It looks like [TU.hes] trying to commit suicide..."))
-	playsound(src, 'sound/machines/click.ogg', 50, TRUE)
-	playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
-	return(BRUTELOSS)
-*/
 
 /obj/item/pipe_dispenser/examine(mob/user, dist)
 	. = ..()

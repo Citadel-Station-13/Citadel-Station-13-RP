@@ -3,11 +3,13 @@
 
 /datum/firemode/energy/taser/stun
 	name = "stun"
-	legacy_direct_varedits = list(projectile_type=/obj/projectile/energy/electrode, modifystate="taser", charge_cost = 240)
+	projectile_type = /obj/projectile/energy/electrode
+	legacy_direct_varedits = list(modifystate="taser", charge_cost = 240)
 
 /datum/firemode/energy/taser/disable
 	name = "disable"
-	legacy_direct_varedits = list(projectile_type=/obj/projectile/beam/disabler/weak, modifystate="taserblue", charge_cost = 160)
+	projectile_type = /obj/projectile/beam/disabler/weak
+	legacy_direct_varedits = list(modifystate="taserblue", charge_cost = 160)
 
 /obj/item/gun/projectile/energy/taser
 	name = "taser gun"
