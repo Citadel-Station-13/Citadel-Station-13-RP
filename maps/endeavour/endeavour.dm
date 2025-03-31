@@ -55,7 +55,7 @@
 
 	station_name	= "NSV Endeavour"
 	station_short	= "Endeavour"
-	dock_name		= "NLV Oracle"
+	dock_name		= "NCV Oracle"
 	dock_type		= "space"
 	boss_name		= "Central Command"
 	boss_short		= "CentCom"
