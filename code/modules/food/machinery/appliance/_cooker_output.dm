@@ -1,5 +1,6 @@
 // Wrapper obj for cooked food. Appearance is set in the cooking code, not on spawn.
 /obj/item/reagent_containers/food/snacks/variable
+
 	name = "cooked food"
 	icon = 'icons/obj/food_custom.dmi'
 	desc = "If you can see this description then something is wrong. Please report the bug on the tracker."
@@ -112,6 +113,13 @@
 	icon_state = "donut"
 	size = 8
 	w_class = 1
+
+/obj/item/reagent_containers/food/snacks/variable/pettreat
+	name = "pet treat"
+	desc = "TREAT?!!?!"
+	icon_state = "treat"
+	size = 6
+	w_class = 2 // weight class small
 
 /obj/item/reagent_containers/food/snacks/variable/jawbreaker
 	name = "flavored jawbreaker"
