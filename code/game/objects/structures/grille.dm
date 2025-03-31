@@ -103,7 +103,7 @@
 		return CLICKCHAIN_DO_NOT_ATTACK | CLICKCHAIN_DID_SOMETHING
 	return ..()
 
-/obj/structure/grille/item_melee_act(mob/user, obj/item/weapon, target_zone, datum/event_args/actor/clickchain/clickchain)
+/obj/structure/grille/item_melee_act(mob/user, obj/item/weapon, target_zone, datum/event_args/actor/clickchain/clickchain, datum/melee_attack/weapon/style)
 	if(shock(user, 70, weapon))
 		return CLICKCHAIN_DO_NOT_ATTACK | CLICKCHAIN_DID_SOMETHING
 	return ..()

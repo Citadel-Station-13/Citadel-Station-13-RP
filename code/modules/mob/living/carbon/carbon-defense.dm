@@ -1,8 +1,18 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/mob/living/carbon/item_melee_act(mob/user, obj/item/weapon, target_zone, datum/event_args/actor/clickchain/clickchain)
-	#warn impl
+/mob/living/carbon/item_melee_act(mob/user, obj/item/weapon, target_zone, datum/event_args/actor/clickchain/clickchain, datum/melee_attack/weapon/style)
+	if(check_neckgrab_attack(weapon, user, target_zone))
+		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_ATTACK
+	if(user != src)
+		var/hit_zone = get_zone_with_miss_chance(target_zone, src, user.get_accuracy_penalty())
+		if(!hit_zone)
+			return CLICKCHAIN_ATTACK_MISSED
+		clickchain.target_zone = target_zone = hit_zone
+	var/obj/item/organ/external/affecting = get_organ(target_zone)
+	if (!affecting || affecting.is_stump())
+		to_chat(user, "<span class='danger'>They are missing that limb!</span>")
+		return CLICKCHAIN_ATTACK_MISSED
 	return ..()
 
 //* FX *//

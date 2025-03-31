@@ -16,6 +16,7 @@
 	/// a single, or a list of get_sfx-resolveable sound effects to play by default
 	var/default_feedback_sfx
 	/// templateable message
+	/// * automatic message emit will not happen if this isn't set, even if self/audible are.
 	///
 	/// accepted vars:
 	/// * ATTACKER - the person attacking
@@ -34,8 +35,6 @@
 	/// * TARGET - the target
 	var/default_feedback_message_audible
 
-	#warn impl templating
-
 /**
  * * Don't override this, override [inflict_on()]
  *
@@ -51,8 +50,27 @@
 /datum/combo/melee/proc/inflict(atom/target, target_zone, mob/attacker, datum/event_args/actor/clickchain/clickchain, skip_fx)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	. = inflict_on(target, target_zone, attacker, clickchain)
+
 	clickchain.data[ACTOR_DATA_COMBO_LOG] = "[src]"
+	. = inflict_on(target, target_zone, attacker, clickchain)
+	if(!skip_fx)
+		var/list/fx_msg_args = list(
+			"ATTACKER" = "[attacker]",
+			"TARGET" = "[target]",
+		)
+		if(default_feedback_sfx)
+			playsound(
+				attacker,
+				islist(default_feedback_sfx) ? pick(default_feedback_sfx) : default_feedback_sfx,
+				75,
+				TRUE,
+			)
+		if(default_feedback_message)
+			attacker.visible_message(
+				fmttext(default_feedback_message, fx_msg_args),
+				fmttext(default_feedback_message_audible, fx_msg_args),
+				fmttext(default_feedback_message_self, fx_msg_args),
+			)
 
 /**
  * * Override this, not [inflict()].

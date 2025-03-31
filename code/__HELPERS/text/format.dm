@@ -10,6 +10,9 @@
  */
 /proc/fmttext(str, list/keys)
 	. = str
+	if(isnull(.))
+		// mimics byond behavior of returning null if input is null for <x>text() procs
+		return
+	// todo: optimize this if needed, maybe dynamic regex?
 	for(var/key in keys)
 		. = replacetext_char(., "$[key]", keys[key])
-

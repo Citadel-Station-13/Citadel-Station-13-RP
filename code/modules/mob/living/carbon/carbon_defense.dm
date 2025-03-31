@@ -1,10 +1,3 @@
-//Called when the mob is hit with an item in combat.
-#warn handle this
-/mob/living/carbon/resolve_item_attack(obj/item/I, mob/living/user, var/effective_force, var/hit_zone)
-	if(check_neckgrab_attack(I, user, hit_zone))
-		return null
-	..()
-
 // Attacking someone with a weapon while they are neck-grabbed
 /mob/living/carbon/proc/check_neckgrab_attack(obj/item/W, mob/user, var/hit_zone)
 	if(user.a_intent == INTENT_HARM)

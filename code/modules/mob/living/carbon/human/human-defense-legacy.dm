@@ -129,31 +129,7 @@
 			return gear
 	return null
 
-#warn deal with this
-/mob/living/carbon/human/resolve_item_attack(obj/item/I, mob/living/user, var/target_zone)
-	if(check_neckgrab_attack(I, user, target_zone))
-		return null
-
-	if(user == src) // Attacking yourself can't miss
-		return target_zone
-
-	var/hit_zone = get_zone_with_miss_chance(target_zone, src, user.get_accuracy_penalty())
-
-	if(!hit_zone)
-		return null
-
-	var/shieldcall_results = atom_shieldcall_handle_item_melee(I, new /datum/event_args/actor/clickchain(user), FALSE, NONE)
-	// todo: clickchain should be checked for damage mult
-	if(shieldcall_results & SHIELDCALL_FLAGS_BLOCK_ATTACK)
-		return
-
-	var/obj/item/organ/external/affecting = get_organ(hit_zone)
-	if (!affecting || affecting.is_stump())
-		to_chat(user, "<span class='danger'>They are missing that limb!</span>")
-		return null
-
-	return hit_zone
-
+#warn hit with weapon / standard hit effects?
 /mob/living/carbon/human/hit_with_weapon(obj/item/I, mob/living/user, var/effective_force, var/hit_zone)
 	var/obj/item/organ/external/affecting = get_organ(hit_zone)
 	if(!affecting)

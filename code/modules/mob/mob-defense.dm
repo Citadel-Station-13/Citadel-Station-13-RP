@@ -7,24 +7,6 @@
 		efficiency = 0
 	return ..()
 
-/mob/item_melee_act(mob/user, obj/item/weapon, target_zone, datum/event_args/actor/clickchain/clickchain)
-	var/shieldcall_returns = atom_shieldcall_handle_item_melee(weapon, clickchain, FALSE, NONE)
-	if(shieldcall_returns & SHIELDCALL_FLAGS_BLOCK_ATTACK)
-		return CLICKCHAIN_FULL_BLOCKED
-	return NONE
-
-/mob/unarmed_melee_act(mob/attacker, datum/melee_attack/unarmed/style, target_zone, datum/event_args/actor/clickchain/clickchain)
-	var/shieldcall_returns = atom_shieldcall_handle_unarmed_melee(style, clickchain, FALSE, NONE)
-	if(shieldcall_returns & SHIELDCALL_FLAGS_BLOCK_ATTACK)
-		return CLICKCHAIN_FULL_BLOCKED
-	return NONE
-
-/mob/on_item_melee_act(atom/movable/attacker, obj/item/weapon, datum/melee_attack/attack_style, datum/event_args/actor/clickchain/clickchain)
-	return attack_style.perform_attack_impact_entrypoint(attacker, src, clickchain, weapon)
-
-/mob/on_unarmed_melee_act(atom/movable/attacker, datum/melee_attack/attack_style, datum/event_args/actor/clickchain/clickchain)
-	return attack_style.perform_attack_impact_entrypoint(attacker, src, clickchain)
-
 //* Armor Handling *//
 
 /**

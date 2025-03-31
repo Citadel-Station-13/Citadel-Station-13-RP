@@ -23,24 +23,6 @@
 			. |= COMPONENT_THROW_HIT_PIERCE // :trol:
 		return
 
-/turf/simulated/wall/unarmed_melee_act(mob/attacker, datum/melee_attack/unarmed/style, target_zone, datum/event_args/actor/clickchain/clickchain)
-	var/shieldcall_returns = atom_shieldcall_handle_unarmed_melee(style, clickchain, FALSE, NONE)
-	if(shieldcall_returns & SHIELDCALL_FLAGS_BLOCK_ATTACK)
-		return CLICKCHAIN_FULL_BLOCKED
-	return NONE
-
-/turf/simulated/wall/item_melee_act(mob/user, obj/item/weapon, target_zone, datum/event_args/actor/clickchain/clickchain)
-	var/shieldcall_returns = atom_shieldcall_handle_item_melee(weapon, clickchain, FALSE, NONE)
-	if(shieldcall_returns & SHIELDCALL_FLAGS_BLOCK_ATTACK)
-		return CLICKCHAIN_FULL_BLOCKED
-	return NONE
-
-/turf/simulated/wall/on_item_melee_act(atom/movable/attacker, obj/item/weapon, datum/melee_attack/attack_style, datum/event_args/actor/clickchain/clickchain)
-	return attack_style.perform_attack_impact_entrypoint(attacker, src, clickchain, weapon)
-
-/turf/simulated/wall/on_unarmed_melee_act(atom/movable/attacker, datum/melee_attack/attack_style, datum/event_args/actor/clickchain/clickchain)
-	return attack_style.perform_attack_impact_entrypoint(attacker, src, clickchain)
-
 /turf/simulated/wall/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	// todo: this method of detecting destruction is shitcode but turf refs don't change so qdeleted() won't work
 	var/old_type = type

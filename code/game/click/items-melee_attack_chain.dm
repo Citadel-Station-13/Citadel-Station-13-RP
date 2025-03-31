@@ -122,7 +122,7 @@
 	. = clickchain_flags
 
 	// -- call on them (if we didn't miss / get called off already) --
-	. |= clickchain.target.item_melee_act(clickchain.performer, attack_style, clickchain.target_zone, clickchain)
+	. |= clickchain.target.item_melee_act(clickchain.performer, src, clickchain.target_zone, clickchain, attack_style)
 
 	// -- call override --
 	var/overridden

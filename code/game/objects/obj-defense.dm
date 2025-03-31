@@ -16,24 +16,6 @@
 	// no named arguments for speed reasons
 	run_damage_instance(global._legacy_ex_atom_damage[severity] * (0.01 * rand(80, 120)), DAMAGE_TYPE_BRUTE, null, ARMOR_BOMB)
 
-/obj/item_melee_act(mob/user, obj/item/weapon, target_zone, datum/event_args/actor/clickchain/clickchain)
-	var/shieldcall_returns = atom_shieldcall_handle_item_melee(weapon, clickchain, FALSE, NONE)
-	if(shieldcall_returns & SHIELDCALL_FLAGS_BLOCK_ATTACK)
-		return CLICKCHAIN_FULL_BLOCKED
-	return NONE
-
-/obj/unarmed_melee_act(mob/attacker, datum/melee_attack/unarmed/style, target_zone, datum/event_args/actor/clickchain/clickchain)
-	var/shieldcall_returns = atom_shieldcall_handle_unarmed_melee(style, clickchain, FALSE, NONE)
-	if(shieldcall_returns & SHIELDCALL_FLAGS_BLOCK_ATTACK)
-		return CLICKCHAIN_FULL_BLOCKED
-	return NONE
-
-/obj/on_item_melee_act(atom/movable/attacker, obj/item/weapon, datum/melee_attack/attack_style, datum/event_args/actor/clickchain/clickchain)
-	return attack_style.perform_attack_impact_entrypoint(attacker, src, clickchain, weapon)
-
-/obj/on_unarmed_melee_act(atom/movable/attacker, datum/melee_attack/attack_style, datum/event_args/actor/clickchain/clickchain)
-	return attack_style.perform_attack_impact_entrypoint(attacker, src, clickchain)
-
 /obj/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	if(!(impact_flags & (PROJECTILE_IMPACT_BLOCKED | PROJECTILE_IMPACT_SKIP_STANDARD_DAMAGE)))
 		// todo: maybe the projectile side should handle this?

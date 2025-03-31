@@ -51,11 +51,16 @@
  * * weapon - weapon used
  * * target_zone - zone targeted
  * * clickchain - (optional) clickchain provider
+ * * style - (optional) attack style
  *
  * @return clickchain flags to append
  */
-/atom/proc/item_melee_act(mob/user, obj/item/weapon, target_zone, datum/event_args/actor/clickchain/clickchain)
-	return CLICKCHAIN_DO_NOT_ATTACK
+/atom/proc/item_melee_act(mob/user, obj/item/weapon, target_zone, datum/event_args/actor/clickchain/clickchain, datum/melee_attack/weapon/style)
+	. = NONE
+	var/shieldcall_returns = atom_shieldcall_handle_item_melee(weapon, clickchain, FALSE, NONE)
+	if(shieldcall_returns & SHIELDCALL_FLAGS_BLOCK_ATTACK)
+		. |= CLICKCHAIN_FULL_BLOCKED
+	// todo: shieldcall being able to force a miss
 
 /**
  * called on incoming unarmed melee
@@ -73,7 +78,11 @@
  * @return clickchain flags to append
  */
 /atom/proc/unarmed_melee_act(mob/attacker, datum/melee_attack/unarmed/style, target_zone, datum/event_args/actor/clickchain/clickchain)
-	return CLICKCHAIN_DO_NOT_ATTACK
+	. = NONE
+	var/shieldcall_returns = atom_shieldcall_handle_unarmed_melee(style, clickchain, FALSE, NONE)
+	if(shieldcall_returns & SHIELDCALL_FLAGS_BLOCK_ATTACK)
+		. |= CLICKCHAIN_FULL_BLOCKED
+	// todo: shieldcall being able to force a miss
 
 /**
  * Called on a melee going through, whether or not it was blocked
@@ -82,8 +91,8 @@
  *
  * @return clickchain flags to append
  */
-/atom/proc/on_item_melee_act(mob/attacker, datum/melee_attack/attack_style, datum/event_args/actor/clickchain/clickchain)
-	return NONE
+/atom/proc/on_item_melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/attack_style, datum/event_args/actor/clickchain/clickchain)
+	return attack_style.perform_attack_impact_entrypoint(attacker, src, clickchain, weapon)
 
 /**
  * Called on a melee going through, whether or not it was blocked
@@ -92,8 +101,8 @@
  *
  * @return clickchain flags to append
  */
-/atom/proc/on_unarmed_melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/attack_style, datum/event_args/actor/clickchain/clickchain)
-	return NONE
+/atom/proc/on_unarmed_melee_act(mob/attacker, datum/melee_attack/attack_style, datum/event_args/actor/clickchain/clickchain)
+	return attack_style.perform_attack_impact_entrypoint(attacker, src, clickchain)
 
 //* External API / Damage Receiving - Projectiles *//
 
