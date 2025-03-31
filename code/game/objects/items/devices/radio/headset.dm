@@ -114,6 +114,10 @@
 	desc = "While being a normal headset, it was upgraded with a shortwave frenquency... Altho the upgrade was done with just duck taping circuits of a shortwave radio to the headset"
 	adhoc_fallback = TRUE
 
+/obj/item/radio/headset/trader/Initialize(mapload)
+	. = ..()
+	set_frequency(FREQ_ATC)
+
 /obj/item/radio/headset/headset_sec
 	name = "security radio headset"
 	desc = "This is used by your elite security force."

@@ -26,6 +26,8 @@ SUBSYSTEM_DEF(legacy_atc)
 	var/secchannel
 	var/sdfchannel
 
+	var/frequency = FREQ_ATC
+
 /datum/controller/subsystem/legacy_atc/Initialize()
 	//generate our static event frequencies for the shift. alternately they can be completely fixed, up in the core block
 	ertchannel = "[rand(700,749)].[rand(1,9)]"

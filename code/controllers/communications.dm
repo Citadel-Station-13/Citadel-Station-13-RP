@@ -99,6 +99,7 @@ On the map:
 
 var/list/radiochannels = list(
 	"Common"		= FREQ_COMMON,
+	"ATC"			= FREQ_ATC,
 	"Science"		= FREQ_SCIENCE,
 	"Command"		= FREQ_COMMAND,
 	"Medical"		= FREQ_MEDICAL,
@@ -130,6 +131,7 @@ var/list/DEPT_FREQS = list(FREQ_AI_PRIVATE, FREQ_COMMAND, FREQ_ENGINEERING, FREQ
 
 // TODO: move me to say or something
 GLOBAL_LIST_INIT(freqtospan, list(
+	"[FREQ_ATC]" = "atcradio",
 	"[FREQ_SCIENCE]" = "sciradio",
 	"[FREQ_EXPLORER]" = "expradio",
 	"[FREQ_MEDICAL]" = "medradio",

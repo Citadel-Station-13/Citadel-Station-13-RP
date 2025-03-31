@@ -168,7 +168,7 @@
 
 /obj/machinery/telecomms/server/presets/common
 	id = "Common Server"
-	freq_listening = list(FREQ_COMMON, FREQ_AI_PRIVATE, FREQ_ENTERTAINMENT) // AI Private and Common
+	freq_listening = list(FREQ_COMMON, FREQ_ATC, FREQ_AI_PRIVATE, FREQ_ENTERTAINMENT) // AI Private and Common
 	autolinkers = list("common")
 
 // "Unused" channels, AKA all others.
@@ -179,7 +179,7 @@
 
 /obj/machinery/telecomms/server/presets/unused/Initialize(mapload)
 	for(var/i = MIN_FREQ, i < MAX_FREQ, i += 2)
-		if(i == FREQ_AI_PRIVATE || i == FREQ_COMMON)
+		if(i == FREQ_AI_PRIVATE || i == FREQ_COMMON || i == FREQ_ATC)
 			continue
 		freq_listening |= i
 	return ..()

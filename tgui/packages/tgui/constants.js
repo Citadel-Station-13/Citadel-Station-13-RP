@@ -144,8 +144,13 @@ export const RADIO_CHANNELS = [
   },
   {
     name: 'Common',
-    freq: 1459,
+    freq: 1437,
     color: '#1ecc43',
+  },
+  {
+    name: 'ATC',
+    freq: 1459,
+    color: '#1008ff',
   },
 ];
 

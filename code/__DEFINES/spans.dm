@@ -17,6 +17,7 @@
 #define SPAN_ALIEN(str) ("<span class='alien'>[str]</span>")
 #define SPAN_ALLOY(str) ("<span class = 'alloy'>[str]</span>")
 #define SPAN_ALLOYH(str) ("<span class = 'heavy_alloy'>[str]</span>")
+#define SPAN_ATCRADIO(str) ("<span class='atcradio'>[str]</span>")
 #define SPAN_ANNOUNCE(str) ("<span class='announce'>[str]</span>")
 #define SPAN_BIG(str) ("<span class='big'>[str]</span>")
 #define SPAN_BIGICON(str) ("<span class='bigicon'>[str]</span>")
