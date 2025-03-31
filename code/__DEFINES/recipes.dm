@@ -30,6 +30,7 @@
 #define CAT_SEAFOOD    "Seafood"
 #define CAT_SOUP	"Soups"
 #define CAT_SPAGHETTI	"Spaghettis"
+#define CAT_SPECIAL  "Special Recipes"
 #define CAT_TOOL	"Tools & Storage"
 #define CAT_WEAPON	"Ranged Weapons"
 #define CAT_WEAPONRY	"Weaponry"

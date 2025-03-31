@@ -849,6 +849,18 @@
 	glass_name = "glass of earthen-root juice"
 	glass_desc = "Juice extracted from earthen-root, a plant native to Adhomai."
 
+/datum/reagent/drink/juice/kompot_taj
+	name = "Adhomai Kompot"
+	id = "kompot_taj"
+	description = "Also known as Ashomar'darr Adhomai, this traditional beverage made from boiling Adhomai Holly in water."
+	color = "#a51919"
+	taste_description = "a bitter sweet fruitiness"
+
+	glass_icon_state = "berryjuice"
+	glass_name = "glass of Adhomai Kompot"
+	glass_desc = "A beverage made by boiling berries native to Adhomai in water."
+
+
 // Everything else
 
 /datum/reagent/drink/milk
@@ -866,6 +878,21 @@
 	cup_icon_state = "cup_cream"
 	cup_name = "Cup of Milk"
 	cup_desc = "White and nutritious goodness!"
+
+/datum/reagent/drink/milk/evaporated
+	name = "Evaporated Milk"
+	id = "evapmilk"
+	description = "Milk with much of its water boiled away. Has far beter shelf life then regular milk."
+	taste_description = "milk"
+	color = "#f7f8d2"
+	nutrition=5
+
+	glass_name = "Evaporate Milk"
+	glass_desc = "Thick, Creamy, White, and nutritious goodness!"
+
+	cup_icon_state = "cup_cream"
+	cup_name = "Cup of Evaporated Milk"
+	cup_desc = "Thick, Creamy, White, and nutritious goodness!"
 
 /datum/reagent/drink/milk/chocolate
 	name =  "Chocolate Milk"
