@@ -52,7 +52,6 @@
 /area/maintenance/medbay/aft)
 "acs" = (
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology)
 "act" = (
@@ -3504,10 +3503,11 @@
 	pixel_y = 28;
 	req_access = list(55)
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/black{
-	dir = 4
-	},
 /obj/structure/plasticflaps/mining,
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "xenobiocoldroom"
+	},
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "cuL" = (
@@ -7740,9 +7740,6 @@
 	dir = 4;
 	id = "xenobiocoldroom"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/black{
-	dir = 4
-	},
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "frM" = (
@@ -9501,8 +9498,12 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
 "gHT" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/turf/simulated/floor/tiled,
+/obj/machinery/conveyor{
+	dir = 1;
+	id = "xenobiocoldroom"
+	},
+/obj/machinery/atmospherics/component/unary/outlet_injector,
+/turf/simulated/floor/bluegrid,
 /area/rnd/xenobiology)
 "gHX" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
@@ -12902,10 +12903,6 @@
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled,
 /area/medical/medbay_emt_bay)
-"jkp" = (
-/obj/machinery/atmospherics/pipe/vent/high_volume,
-/turf/simulated/floor/airless/ceiling,
-/area/space)
 "jkG" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -13559,12 +13556,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
-"jHx" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/purple{
-	dir = 6
-	},
-/turf/simulated/wall/r_wall/prepainted/science,
-/area/rnd/xenobiology)
 "jHE" = (
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
@@ -16937,6 +16928,10 @@
 	},
 /obj/machinery/light{
 	dir = 1
+	},
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "xenobiocoldroom"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/xenobiology)
@@ -21224,9 +21219,6 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d2fwdmaint)
 "ppR" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
-	dir = 9
-	},
 /obj/landmark{
 	name = "blobstart"
 	},
@@ -21743,9 +21735,6 @@
 /obj/machinery/conveyor_switch/oneway{
 	id = "xenobiocoldroom";
 	name = "XenoBio Cold Room"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
-	dir = 4
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
@@ -30068,19 +30057,6 @@
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_d)
-"vMY" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/industrial/danger{
-	dir = 8
-	},
-/obj/machinery/atmospherics/valve{
-	name = "EMERGENCY VENT TO SPACE";
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/rnd/xenobiology)
 "vNt" = (
 /obj/machinery/camera/network/outside{
 	dir = 1
@@ -38144,9 +38120,9 @@ eWn
 oNw
 avH
 qgi
-eLj
-oNw
-jHx
+gHT
+hZY
+xDG
 hZY
 xDG
 hZY
@@ -39307,7 +39283,7 @@ pRW
 pRW
 oNw
 miF
-vMY
+aVO
 aVO
 xpN
 ckH
@@ -39498,9 +39474,9 @@ pRW
 pRW
 pRW
 pRW
-jkp
+pRW
 acs
-gHT
+tws
 ppR
 tws
 rKu
