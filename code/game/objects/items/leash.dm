@@ -59,8 +59,7 @@
 	var/is_simple_animal = FALSE
 	var/mob/living/carbon/C = target
 	if(!istype(C))
-		var/mob/living/simple_mob/animal/passive/dog/doggy = target
-		if(istype(doggy))
+		if(isanimal(target))
 			is_simple_animal = TRUE
 		else
 			return
