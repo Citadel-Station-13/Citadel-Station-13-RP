@@ -165,7 +165,7 @@
 /obj/item/leash/proc/after_pet_move()
 	if(!leash_master || !leash_pet)
 		return
-	for(var/i in 3 to get_dist(leash_pet, leash_master)) // Move the pet to a minimum of 2 tiles away from the master, so the pet trails behind them.
+	for(var/i in (leash_length+1) to get_dist(leash_pet, leash_master)) // Move the pet to a minimum of the leashes length tiles away from the master, so the pet trails behind them.
 		step_towards(leash_pet, leash_master)
 
 /obj/item/leash/dropped(mob/user)
