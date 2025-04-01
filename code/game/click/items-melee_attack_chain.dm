@@ -121,8 +121,8 @@
 	// -- we now use '.' for clickchain flags as it'll be modified through calls --
 	. = clickchain_flags
 
-	// -- call on them (if we didn't miss / get called off already) --
-	. |= clickchain.target.item_melee_act(clickchain.performer, src, clickchain.target_zone, clickchain, attack_style)
+	// -- call on them --
+	. |= clickchain.target.item_melee_act(clickchain.performer, src, attack_style, clickchain.target_zone, clickchain, clickchain_flags)
 
 	// -- call override --
 	var/overridden
@@ -199,7 +199,7 @@
 
 	if(missed)
 		return clickchain_flags
-	return clickchain_flags | fixed_target.on_item_melee_act(fixed_performer, src, attack_style, clickchain)
+	return clickchain_flags | fixed_target.on_item_melee_act(fixed_performer, src, attack_style, clickchain, clickchain_flags)
 
 /**
  * Called after we hit something in melee, **whether or not we hit.**

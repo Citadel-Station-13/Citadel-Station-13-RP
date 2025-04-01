@@ -17,40 +17,6 @@
 	for(var/obj/item/organ/organ in organs | internal_organs)
 		organ.emp_act(severity)
 
-/mob/living/carbon/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/soaked, var/hit_zone)
-	if(!effective_force || blocked >= 100)
-		return 0
-
-	//If the armor soaks all of the damage, it just skips the rest of the checks
-	if(effective_force <= soaked)
-		return 0
-
-	//Apply weapon damage
-	var/weapon_sharp = is_sharp(I)
-	var/weapon_edge = has_edge(I)
-	var/hit_embed_chance = I.embed_chance
-	if(prob(legacy_mob_armor(hit_zone, "melee"))) //melee armour provides a chance to turn sharp/edge weapon attacks into blunt ones
-		weapon_sharp = 0
-		weapon_edge = 0
-		hit_embed_chance = I.damage_force/(I.w_class*3)
-
-	apply_damage(effective_force, I.damage_type, hit_zone, blocked, soaked, sharp=weapon_sharp, edge=weapon_edge, used_weapon=I)
-
-	//Melee weapon embedded object code.
-	if (I && I.damage_type == DAMAGE_TYPE_BRUTE && !I.anchored && !is_robot_module(I) && I.embed_chance > 0)
-		var/damage = effective_force
-		if (blocked)
-			damage *= (100 - blocked)/100
-			hit_embed_chance *= (100 - blocked)/100
-
-		//blunt objects should really not be embedding in things unless a huge amount of force is involved
-		var/embed_threshold = weapon_sharp? 5*I.w_class : 15*I.w_class
-
-		if(damage > embed_threshold && prob(hit_embed_chance))
-			src.embed(I, hit_zone)
-
-	return 1
-
 // Knifing
 /mob/living/carbon/proc/attack_throat(obj/item/W, obj/item/grab/G, mob/user)
 

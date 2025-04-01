@@ -173,6 +173,7 @@
 /mob/living/proc/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/soaked, var/hit_zone)
 	if(!effective_force || blocked >= 100)
 		return 0
+
 	//Apply weapon damage
 	var/weapon_sharp = is_sharp(I)
 	var/weapon_edge = has_edge(I)
@@ -186,6 +187,97 @@
 		weapon_edge = 0
 
 	apply_damage(effective_force, I.damage_type, hit_zone, blocked, soaked, sharp=weapon_sharp, edge=weapon_edge, used_weapon=I)
+
+	#warn embed here
+
+	return 1
+
+/mob/living/carbon/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/soaked, var/hit_zone)
+	//Apply weapon damage
+	var/hit_embed_chance = I.embed_chance
+	if(prob(legacy_mob_armor(hit_zone, "melee"))) //melee armour provides a chance to turn sharp/edge weapon attacks into blunt ones
+		weapon_sharp = 0
+		weapon_edge = 0
+		hit_embed_chance = I.damage_force/(I.w_class*3)
+
+	//Melee weapon embedded object code.
+	if (I && I.damage_type == DAMAGE_TYPE_BRUTE && !I.anchored && !is_robot_module(I) && I.embed_chance > 0)
+		var/damage = effective_force
+		if (blocked)
+			damage *= (100 - blocked)/100
+			hit_embed_chance *= (100 - blocked)/100
+
+		//blunt objects should really not be embedding in things unless a huge amount of force is involved
+		var/embed_threshold = weapon_sharp? 5*I.w_class : 15*I.w_class
+
+		if(damage > embed_threshold && prob(hit_embed_chance))
+			src.embed(I, hit_zone)
+
+	return 1
+
+/mob/living/carbon/human/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/soaked, var/hit_zone)
+	var/obj/item/organ/external/affecting = get_organ(hit_zone)
+	if(!affecting)
+		return 0
+
+	if(soaked >= round(effective_force*0.8))
+		effective_force -= round(effective_force*0.8)
+	// Handle striking to cripple.
+	if(user.a_intent == INTENT_DISARM)
+		effective_force *= 0.5 //reduced effective damage_force...
+		if(!..(I, user, effective_force, blocked, soaked, hit_zone))
+			return 0
+
+		//set the dislocate mult less than the effective force mult so that
+		//dislocating limbs on disarm is a bit easier than breaking limbs on harm
+		attack_joint(affecting, I, effective_force, 0.75, blocked, soaked) //...but can dislocate joints
+	else if(!..())
+		return 0
+
+	if(effective_force > 10 || effective_force >= 5 && prob(33))
+		forcesay(hit_appends)	//forcesay checks stat already
+
+	if(prob(25 + (effective_force * 2)))
+		if(!((I.damage_type == DAMAGE_TYPE_BRUTE) || (I.damage_type == DAMAGE_TYPE_HALLOSS)))
+			return
+
+		if(!(I.atom_flags & NOBLOODY))
+			I.add_blood(src)
+
+		var/bloody = 0
+		if(prob(33))
+			bloody = 1
+			var/turf/location = loc
+			if(istype(location, /turf/simulated))
+				location.add_blood(src)
+			if(ishuman(user))
+				var/mob/living/carbon/human/H = user
+				if(get_dist(H, src) <= 1) //people with MUTATION_TELEKINESIS won't get smeared with blood
+					H.bloody_body(src)
+					H.bloody_hands(src)
+
+		if(!stat)
+			switch(hit_zone)
+				if("head")//Harder to score a stun but if you do it lasts a bit longer
+					if(prob(effective_force))
+						apply_effect(20, PARALYZE, blocked, soaked)
+						visible_message("<span class='danger'>\The [src] has been knocked unconscious!</span>")
+					if(bloody)//Apply blood
+						if(wear_mask)
+							wear_mask.add_blood(src)
+							update_inv_wear_mask(0)
+						if(head)
+							head.add_blood(src)
+							update_inv_head(0)
+						if(glasses && prob(33))
+							glasses.add_blood(src)
+							update_inv_glasses(0)
+				if("chest")//Easier to score a stun but lasts less time
+					if(prob(effective_force + 10))
+						apply_effect(6, WEAKEN, blocked, soaked)
+						visible_message("<span class='danger'>\The [src] has been knocked down!</span>")
+					if(bloody)
+						bloody_body(src)
 
 	return 1
 

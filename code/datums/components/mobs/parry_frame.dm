@@ -424,7 +424,7 @@
 
 //* Bindings - Melee *//
 
-/datum/shieldcall/bound/parry_frame/handle_item_melee(atom/defending, shieldcall_returns, fake_attack, obj/item/weapon, datum/event_args/actor/clickchain/e_args)
+/datum/shieldcall/bound/parry_frame/handle_item_melee(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/weapon, datum/melee_attack/weapon/style)
 	var/datum/component/parry_frame/frame = bound
 	if(!(frame.active_parry.parry_attack_types & ATTACK_TYPE_MELEE))
 		return
@@ -446,7 +446,7 @@
 	if(parry_always_prevents_contact || (parry_can_prevent_contact && (efficiency >= parry_efficiency_blocked)))
 		. |= SHIELDCALL_FLAG_ATTACK_BLOCKED
 
-/datum/shieldcall/bound/parry_frame/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, datum/melee_attack/unarmed/style, datum/event_args/actor/clickchain/e_args)
+/datum/shieldcall/bound/parry_frame/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/unarmed/style)
 	var/datum/component/parry_frame/frame = bound
 	if(!(frame.active_parry.parry_attack_types & ATTACK_TYPE_UNARMED))
 		return
@@ -468,7 +468,7 @@
 	if(parry_always_prevents_contact || (parry_can_prevent_contact && (efficiency >= parry_efficiency_blocked)))
 		. |= SHIELDCALL_FLAG_ATTACK_BLOCKED
 
-/datum/shieldcall/bound/parry_frame/handle_touch(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/e_args, contact_flags, contact_specific)
+/datum/shieldcall/bound/parry_frame/handle_touch(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/clickchain, clickchain_flags, contact_flags, contact_specific)
 	var/datum/component/parry_frame/frame = bound
 	if(!(frame.active_parry.parry_attack_types & ATTACK_TYPE_TOUCH))
 		return

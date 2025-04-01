@@ -40,24 +40,22 @@
  * called on incoming item melee
  *
  * * At this point, the item is processing a hit on us.
- * * check CLICKCHAIN_FLAGS_* as needed, especially UNCONDITIONAL_ABORT and ATTACK_ABORT
- * * clickchain flags are sent down through parent calls.
- *
- * todo: this needs melee_attack style arg
- * todo: reorganize params
+ * * check CLICKCHAIN_FLAGS_* as needed, especially MISSED, UNCONDITIONAL_ABORT, and ATTACK_ABORT
+ * * clickchain flags are sent down through parent calls, so check `.` after `..()`
  *
  * @params
  * * user - person attacking
  * * weapon - weapon used
+ * * style - attack style
  * * target_zone - zone targeted
- * * clickchain - (optional) clickchain provider
- * * style - (optional) attack style
+ * * clickchain - (optional) clickchain used
+ * * clickchain_flags - (optional) clickchain flags used
  *
  * @return clickchain flags to append
  */
-/atom/proc/item_melee_act(mob/user, obj/item/weapon, target_zone, datum/event_args/actor/clickchain/clickchain, datum/melee_attack/weapon/style)
+/atom/proc/item_melee_act(mob/user, obj/item/weapon, datum/melee_attack/weapon/style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = NONE
-	var/shieldcall_returns = atom_shieldcall_handle_item_melee(weapon, clickchain, FALSE, NONE)
+	var/shieldcall_returns = atom_shieldcall_handle_item_melee(clickchain, clickchain_flags, weapon, style, FALSE, NONE)
 	if(shieldcall_returns & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 		. |= CLICKCHAIN_FULL_BLOCKED
 	// todo: shieldcall being able to force a miss
@@ -65,21 +63,23 @@
 /**
  * called on incoming unarmed melee
  *
- * * At this point, the item is processing a hit on us.
  *
- * todo: reorganize params
+ * * At this point, the item is processing a hit on us.
+ * * check CLICKCHAIN_FLAGS_* as needed, especially MISSED, UNCONDITIONAL_ABORT, and ATTACK_ABORT
+ * * clickchain flags are sent down through parent calls, so check `.` after `..()`
  *
  * @params
  * * user - person attacking
  * * style - unarmed attack datum
  * * target_zone - zone targeted
  * * clickchain - (optional) clickchain provider
+ * * clickchain_flags - (optional) clickchain flags used
  *
  * @return clickchain flags to append
  */
-/atom/proc/unarmed_melee_act(mob/attacker, datum/melee_attack/unarmed/style, target_zone, datum/event_args/actor/clickchain/clickchain)
+/atom/proc/unarmed_melee_act(mob/attacker, datum/melee_attack/unarmed/style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = NONE
-	var/shieldcall_returns = atom_shieldcall_handle_unarmed_melee(style, clickchain, FALSE, NONE)
+	var/shieldcall_returns = atom_shieldcall_handle_unarmed_melee(clickchain, clickchain_flags, style FALSE, NONE)
 	if(shieldcall_returns & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 		. |= CLICKCHAIN_FULL_BLOCKED
 	// todo: shieldcall being able to force a miss
@@ -91,7 +91,7 @@
  *
  * @return clickchain flags to append
  */
-/atom/proc/on_item_melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/attack_style, datum/event_args/actor/clickchain/clickchain)
+/atom/proc/on_item_melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/weapon/attack_style, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	return attack_style.perform_attack_impact_entrypoint(attacker, src, clickchain, weapon)
 
 /**
@@ -101,7 +101,7 @@
  *
  * @return clickchain flags to append
  */
-/atom/proc/on_unarmed_melee_act(mob/attacker, datum/melee_attack/attack_style, datum/event_args/actor/clickchain/clickchain)
+/atom/proc/on_unarmed_melee_act(mob/attacker, datum/melee_attack/unarmed/attack_style, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	return attack_style.perform_attack_impact_entrypoint(attacker, src, clickchain)
 
 //* External API / Damage Receiving - Projectiles *//
@@ -466,6 +466,7 @@
  */
 /atom/proc/run_armorcalls(list/shieldcall_args, fake_attack)
 	SHOULD_NOT_SLEEP(TRUE)
+	PROTECTED_PROC(TRUE)
 	SEND_SIGNAL(src, COMSIG_ATOM_ARMORCALL, shieldcall_args, fake_attack)
 	if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAG_TERMINATE)
 		return
@@ -547,10 +548,11 @@
 /**
  * Runs a damage instance against shieldcalls
  *
- * * This is a low level proc. Make sure you undersatnd how shieldcalls work [__DEFINES/combat/shieldcall.dm].
+ * * This is a low level proc. Make sure you understand how shieldcalls work [__DEFINES/combat/shieldcall.dm].
  */
 /atom/proc/run_shieldcalls(list/shieldcall_args, fake_attack)
 	SHOULD_NOT_SLEEP(TRUE)
+	PROTECTED_PROC(TRUE)
 	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL, shieldcall_args, fake_attack)
 	if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAG_TERMINATE)
 		return
@@ -578,16 +580,16 @@
  * * Use this instead of manually looping, as it fires a signal that makes things like /datum/passive_parry spin up.
  *
  * @params
- * * e_args (optional) the clickchain event, if any; **This is mutable.**
+ * * clickchain (optional) the clickchain event, if any; **This is mutable.**
+ * * clickchain_flags (optional) the clickchain flags being used
  * * contact_flags - SHIELDCALL_CONTACT_FLAG_*
  * * contact_specific - SHIELDCALL_CONTACT_SPECIFIC_*
  * * fake_attack - just checking!
  * * shieldcall_flags - shieldcall flags. [code/__DEFINES/combat/shieldcall.dm]
- * * clickchain_flags - clickchain flags. [code/__DEFINES/procs/clickcode.dm]
  *
  * @return SHIELDCALL_FLAG_* flags
  */
-/atom/proc/atom_shieldcall_handle_touch(datum/event_args/actor/clickchain/e_args, contact_flags, contact_specific, fake_attack, shieldcall_flags)
+/atom/proc/atom_shieldcall_handle_touch(datum/event_args/actor/clickchain/clickchain, clickchain_flags, contact_flags, contact_specific, fake_attack, shieldcall_flags)
 	SHOULD_NOT_SLEEP(TRUE)
 	// cannot parry yourself
 	if(e_args?.performer == src)
@@ -604,15 +606,15 @@
  * * Use this instead of manually looping, as it fires a signal that makes things like /datum/passive_parry spin up.
  *
  * @params
- * * style - the unarmed_attack datum being used
- * * e_args (optional) the clickchain event, if any; **This is mutable.**
+ * * clickchain (optional) the clickchain event, if any; **This is mutable.**
+ * * clickchain_flags (optional) the clickchain flags being used
+ * * style - the melee_attack/unarmed datum being used
  * * fake_attack - (optional) just checking!
  * * shieldcall_flags - (optional) shieldcall flags. [code/__DEFINES/combat/shieldcall.dm]
- * * clickchain_flags - (optional) clickchain flags. [code/__DEFINES/procs/clickcode.dm]
  *
  * @return SHIELDCALL_FLAG_* flags
  */
-/atom/proc/atom_shieldcall_handle_unarmed_melee(datum/melee_attack/unarmed/style, datum/event_args/actor/clickchain/e_args, fake_attack, shieldcall_flags, clickchain_flags)
+/atom/proc/atom_shieldcall_handle_unarmed_melee(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/unarmed/style, fake_attack, shieldcall_flags)
 	SHOULD_NOT_SLEEP(TRUE)
 	// cannot parry yourself
 	if(e_args.performer == src)
@@ -629,15 +631,16 @@
  * * Use this instead of manually looping, as it fires a signal that makes things like /datum/passive_parry spin up.
  *
  * @params
+ * * clickchain (optional) the clickchain event, if any; **This is mutable.**
+ * * clickchain_flags (optional) the clickchain flags being used
  * * weapon - the item being used to swing with
- * * e_args - (optional) the clickchain event, if any; **This is mutable.**
+ * * style - the melee_attack/weapon datum being used
  * * fake_attack - (optional) just checking!
  * * shieldcall_flags - (optional) shieldcall flags. [code/__DEFINES/combat/shieldcall.dm]
- * * clickchain_flags - (optional) clickchain flags. [code/__DEFINES/procs/clickcode.dm]
  *
  * @return SHIELDCALL_FLAG_* flags
  */
-/atom/proc/atom_shieldcall_handle_item_melee(obj/item/weapon, datum/event_args/actor/clickchain/e_args, fake_attack, shieldcall_flags, clickchain_flags)
+/atom/proc/atom_shieldcall_handle_item_melee(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/weapon, datum/melee_attack/weapon/style, fake_attack, shieldcall_flags)
 	SHOULD_NOT_SLEEP(TRUE)
 	// cannot parry yourself
 	if(e_args.performer == src)
@@ -655,7 +658,6 @@
  *
  * @params
  * * bullet_act_args - indexed list of bullet_act args.
- * * shieldcall_returns - existing returns from other shieldcalls
  * * fake_attack - just checking!
  * * shieldcall_flags - shieldcall flags. [code/__DEFINES/combat/shieldcall.dm]
  *

@@ -161,7 +161,7 @@
 
 //* Bindings - Melee *//
 
-/datum/shieldcall/bound/passive_parry/handle_item_melee(atom/defending, shieldcall_returns, fake_attack, obj/item/weapon, datum/event_args/actor/clickchain/e_args)
+/datum/shieldcall/bound/passive_parry/handle_item_melee(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/weapon, datum/melee_attack/weapon/style)
 	// todo: no support for fake attacks yet
 	if(fake_attack)
 		return
@@ -171,7 +171,7 @@
 	// do NOT try this at home.
 	return bound:handle_item_melee(arglist(args))
 
-/datum/component/passive_parry/proc/handle_item_melee(atom/defending, shieldcall_returns, fake_attack, obj/item/weapon, datum/event_args/actor/clickchain/e_args)
+/datum/component/passive_parry/proc/handle_item_melee(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/weapon, datum/melee_attack/weapon/style)
 	var/datum/passive_parry/data = parry_data
 	if(data.parry_frame_simulated)
 		return
@@ -184,7 +184,7 @@
 		return
 	return resolved.handle_item_melee(defending, shieldcall_returns | SHIELDCALL_FLAG_SINGLE_PARRY, fake_attack, data.parry_frame_efficiency, weapon, e_args, parent)
 
-/datum/shieldcall/bound/passive_parry/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, datum/melee_attack/unarmed/style, datum/event_args/actor/clickchain/e_args)
+/datum/shieldcall/bound/passive_parry/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/unarmed/style)
 	// todo: no support for fake attacks yet
 	if(fake_attack)
 		return
@@ -194,7 +194,7 @@
 	// do NOT try this at home.
 	return bound:handle_unarmed_melee(arglist(args))
 
-/datum/component/passive_parry/proc/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, datum/melee_attack/unarmed/style, datum/event_args/actor/clickchain/e_args)
+/datum/component/passive_parry/proc/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/unarmed/style)
 	var/datum/passive_parry/data = parry_data
 	if(data.parry_frame_simulated)
 		return
@@ -207,7 +207,7 @@
 		return
 	return resolved.handle_unarmed_melee(defending, shieldcall_returns | SHIELDCALL_FLAG_SINGLE_PARRY, fake_attack, data.parry_frame_efficiency, style, e_args, parent)
 
-/datum/shieldcall/bound/passive_parry/handle_touch(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/e_args, contact_flags, contact_specific)
+/datum/shieldcall/bound/passive_parry/handle_touch(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/clickchain, clickchain_flags, contact_flags, contact_specific)
 	// todo: no support for fake attacks yet
 	if(fake_attack)
 		return
@@ -217,7 +217,7 @@
 	// do NOT try this at home.
 	return bound:handle_touch(arglist(args))
 
-/datum/component/passive_parry/proc/handle_touch(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/e_args, contact_flags, contact_specific)
+/datum/component/passive_parry/proc/handle_touch(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/clickchain, clickchain_flags, contact_flags, contact_specific)
 	var/datum/passive_parry/data = parry_data
 	if(data.parry_frame_simulated)
 		return

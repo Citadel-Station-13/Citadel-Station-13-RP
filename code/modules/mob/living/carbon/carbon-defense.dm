@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/mob/living/carbon/item_melee_act(mob/user, obj/item/weapon, target_zone, datum/event_args/actor/clickchain/clickchain, datum/melee_attack/weapon/style)
+/mob/living/carbon/item_melee_act(mob/user, obj/item/weapon, datum/melee_attack/weapon/style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	if(check_neckgrab_attack(weapon, user, target_zone))
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_ATTACK
 	if(user != src)
