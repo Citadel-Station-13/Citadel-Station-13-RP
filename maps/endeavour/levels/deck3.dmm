@@ -20731,6 +20731,9 @@
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/security/armory,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "pDS" = (

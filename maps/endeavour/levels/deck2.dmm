@@ -20285,9 +20285,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/medical/psych/psych_2)
-"oJx" = (
-/turf/space/basic,
-/area/rnd/research/researchdivision)
 "oJy" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/effect/floor_decal/rust,
@@ -20423,7 +20420,7 @@
 /turf/simulated/floor/airless/ceiling,
 /area/space)
 "oOQ" = (
-/turf/space/basic,
+/turf/simulated/floor/tiled,
 /area/maintenance/research/port)
 "oOZ" = (
 /obj/structure/closet/crate,
@@ -46902,7 +46899,7 @@ nww
 kWG
 sun
 oOQ
-oJx
+gly
 hNW
 xQd
 gsB
