@@ -86,27 +86,31 @@ const setupApp = () => {
   });
 
   // Resize the panel to match the non-browser output
-  Byond.winget('output').then(output => {
+  Byond.winget('output').then((output: { size: string }) => {
     Byond.winset('browseroutput', {
-      'size': output.size,
+      size: output.size,
     });
   });
 
   // Enable hot module reloading
   if (module.hot) {
     setupHotReloading();
-    module.hot.accept([
-      './audio',
-      './chat',
-      './game',
-      './Notifications',
-      './Panel',
-      './ping',
-      './settings',
-      './telemetry',
-    ], () => {
-      renderApp();
-    });
+
+    module.hot.accept(
+      [
+        './audio',
+        './chat',
+        './game',
+        './Notifications',
+        './Panel',
+        './ping',
+        './settings',
+        './telemetry',
+      ],
+      () => {
+        renderApp();
+      },
+    );
   }
 };
 
