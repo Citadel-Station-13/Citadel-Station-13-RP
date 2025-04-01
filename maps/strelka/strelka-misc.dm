@@ -8,18 +8,21 @@
 	id = "blockade_runner"
 
 /obj/machinery/button/remote/blast_door/strelka/trigger()
-	for(var/obj/machinery/door/blast/M in GLOB.machines)
-		if(M.id == id)
-			if(M.density)
-				spawn(0)
-					command_announcement.Announce("Vessel is now entering Blockade Runner Mode. Closing ship shutters.", "Blockade Runner mode", new_sound = sound('sound/effects/meteor_strike.ogg', volume=15))
-					M.open()
-					return
-			else
-				spawn(0)
-					command_announcement.Announce("Vessel is now exiting Blockade Runner Mode. Opening ship shutters.", "Blockade Runner mode", new_sound = sound('sound/effects/meteor_strike.ogg', volume=15))
-					M.close()
-					return
+        should_be_open != should_be_open //Toggle the variable
+
+        if (should_be_open)//use the variable to make the announcment
+          command_announcement.Announce("Vessel is now entering Blockade Runner Mode. Closing ship shutters.", "Blockade Runner mode", new_sound = sound('sound/effects/meteor_strike.ogg', volume=15))
+        else
+          command_announcement.Announce("Vessel is now exiting Blockade Runner Mode. Opening ship shutters.", "Blockade Runner mode", new_sound = sound('sound/effects/meteor_strike.ogg', volume=15))
+
+    for(var/obj/machinery/door/blast/strelka/blockade/M in GLOB.machines)//Iterate over all blast doors and toggle them accordingly
+        if(M.id == id)
+            if(should_be_open)
+                spawn(0)
+                    M.open()
+            else
+                spawn(0)
+                    M.close()
 
 /obj/machinery/button/remote/blast_door/strelka/balista
 	icon = 'icons/obj/stationobjs.dmi'
