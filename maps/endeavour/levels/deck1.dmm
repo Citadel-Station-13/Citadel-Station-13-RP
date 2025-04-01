@@ -4513,10 +4513,11 @@
 	req_one_access = null;
 	secured_wires = 1
 	},
-/obj/map_helper/access_helper/airlock/station/maintenance,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/airlock/maintenance,
+/obj/map_helper/access_helper/airlock/station/engineering/department,
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck1forward)
 "dCe" = (
@@ -8412,9 +8413,8 @@
 /turf/simulated/wall/r_wall/prepainted/exploration,
 /area/endeavour/exploration/hallway_fore)
 "gud" = (
-/obj/machinery/door/firedoor,
-/turf/simulated/wall/r_wall/prepainted/exploration,
-/area/endeavour/exploration/aux_hanger)
+/turf/space/basic,
+/area/vacant/vacant_bar)
 "gug" = (
 /obj/structure/closet/hydrant{
 	pixel_x = 32
@@ -17484,7 +17484,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cargo)
 "nrx" = (
-/obj/map_helper/access_helper/airlock/station/maintenance,
+/obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/machinery/door/firedoor,
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -20056,6 +20056,7 @@
 "pmV" = (
 /obj/machinery/door/firedoor,
 /obj/structure/catwalk,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/chapel/main)
 "pmX" = (
@@ -22824,6 +22825,7 @@
 	dir = 4
 	},
 /obj/structure/catwalk,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/entertainment)
 "rxS" = (
@@ -28076,6 +28078,9 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/navblue/border{
+	dir = 1
+	},
+/obj/machinery/vending/nifsoft_shop{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_ridged,
@@ -33429,7 +33434,7 @@ xRj
 xRj
 xRj
 xRj
-amf
+xRj
 xRj
 xRj
 xRj
@@ -40413,7 +40418,7 @@ xRj
 xRj
 xRj
 xRj
-geQ
+amf
 xRj
 xRj
 xRj
@@ -44866,7 +44871,7 @@ lBc
 lBc
 lBc
 lBc
-lBc
+gud
 atX
 iDW
 lQq
@@ -45063,7 +45068,7 @@ ilO
 lBc
 ifD
 jFy
-ybw
+atX
 atX
 xwI
 lnl
@@ -45981,7 +45986,7 @@ rmZ
 rmZ
 rmZ
 eYH
-gud
+lyR
 vkr
 jMJ
 vDR

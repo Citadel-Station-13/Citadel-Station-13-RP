@@ -781,10 +781,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
 	},
-/obj/machinery/door/airlock/medical{
-	name = "Virology Labs";
-	req_one_access = null
-	},
+/obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/tiled/white,
 /area/endeavour/hallway/reservehanger)
 "aDi" = (
@@ -813,10 +810,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/obj/machinery/door/airlock/medical{
-	name = "Medical Response Shuttle Dock";
-	req_one_access = null
-	},
+/obj/machinery/door/airlock/glass/civilian,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -1748,6 +1742,12 @@
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "bmQ" = (
 /obj/structure/disposalpipe/segment,
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
 "bns" = (
@@ -5257,6 +5257,12 @@
 /obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
+"dEH" = (
+/obj/machinery/vending/nifsoft_shop{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/maintenance/fpmaint2)
 "dEY" = (
 /obj/machinery/door/firedoor{
 	dir = 1
@@ -6404,6 +6410,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "etE" = (
+/obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor/tiled,
 /area/medical/surgery2)
 "etH" = (
@@ -7283,6 +7290,9 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
 "fcw" = (
@@ -8033,6 +8043,7 @@
 /area/rnd/anomaly_lab/containment_one)
 "fBP" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/obj/structure/closet/secure_closet/personal/patient,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "fBT" = (
@@ -10033,6 +10044,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
+"hcm" = (
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/turf/space/basic,
+/area/space)
 "hdc" = (
 /obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled,
@@ -10246,6 +10263,8 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
+/obj/map_helper/access_helper/airlock/station/medical/department,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/medical/oncall_room)
 "hkY" = (
@@ -15554,6 +15573,9 @@
 "lkA" = (
 /obj/structure/catwalk,
 /obj/structure/disposalpipe/segment,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
 "lkB" = (
@@ -16770,6 +16792,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/maintenance,
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/plating,
 /area/medical/morgue)
 "mcM" = (
@@ -16978,9 +17001,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
 	icon_state = "1-2"
-	},
-/obj/machinery/air_alarm{
-	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery2)
@@ -18338,6 +18358,9 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/maintenance/common,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
 "njr" = (
@@ -20263,9 +20286,7 @@
 /turf/simulated/floor/wood,
 /area/medical/psych/psych_2)
 "oJx" = (
-/obj/map_helper/access_helper/airlock/station/science/department,
-/obj/machinery/door/airlock/maintenance/common,
-/turf/simulated/floor/tiled,
+/turf/space/basic,
 /area/rnd/research/researchdivision)
 "oJy" = (
 /obj/structure/reagent_dispensers/watertank,
@@ -20401,6 +20422,9 @@
 /obj/structure/grille,
 /turf/simulated/floor/airless/ceiling,
 /area/space)
+"oOQ" = (
+/turf/space/basic,
+/area/maintenance/research/port)
 "oOZ" = (
 /obj/structure/closet/crate,
 /obj/random/maintenance,
@@ -22228,6 +22252,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
+/obj/machinery/camera/network/medbay,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
 "pUo" = (
@@ -22691,6 +22716,9 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/navblue/border{
+	dir = 1
+	},
+/obj/machinery/vending/nifsoft_shop{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -23509,6 +23537,7 @@
 	},
 /obj/structure/catwalk,
 /obj/machinery/door/airlock/maintenance,
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/plating,
 /area/medical/medbay_emt_bay)
 "qLY" = (
@@ -24981,6 +25010,23 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
+"rYv" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/research/researchdivision)
 "rYU" = (
 /obj/machinery/light,
 /turf/simulated/floor/reinforced,
@@ -25480,9 +25526,10 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2fwdhall)
 "sun" = (
-/obj/effect/floor_decal/rust,
+/obj/map_helper/access_helper/airlock/station/science/department,
+/obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/tiled,
-/area/rnd/rdoffice)
+/area/maintenance/research/port)
 "suD" = (
 /obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -25843,6 +25890,10 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/power/apc/north_mount,
+/obj/structure/cable/green{
+	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology_aft_access)
@@ -26330,10 +26381,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/obj/machinery/door/airlock/medical{
-	name = "Medical Response Shuttle Dock";
-	req_one_access = null
-	},
+/obj/machinery/door/airlock/glass/civilian,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -26530,6 +26578,9 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
+	},
+/obj/machinery/camera/network/medbay{
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
@@ -26728,6 +26779,9 @@
 /area/assembly/robotics)
 "tne" = (
 /obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
 "tnh" = (
@@ -27678,6 +27732,7 @@
 	},
 /obj/structure/catwalk,
 /obj/machinery/door/airlock/maintenance,
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d2fwdmaint)
 "tUS" = (
@@ -29315,7 +29370,7 @@
 /obj/machinery/door/airlock/maintenance/engi{
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/maintenance,
+/obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck2forward)
@@ -30485,7 +30540,6 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/structure/closet/secure_closet/personal/patient,
 /obj/effect/floor_decal/corner/paleblue/full,
 /obj/machinery/light{
 	dir = 8;
@@ -31370,6 +31424,9 @@
 	dir = 10
 	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
 "wDV" = (
@@ -33406,6 +33463,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/maintenance,
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d2fwdmaint)
 "xXF" = (
@@ -38892,7 +38950,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+hcm
 oNw
 fry
 wzn
@@ -39086,7 +39144,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+hcm
 oNw
 cuK
 pFm
@@ -45489,7 +45547,7 @@ goC
 kTP
 nfb
 uMH
-uMH
+rYv
 gRw
 rKV
 ghJ
@@ -46452,9 +46510,9 @@ jib
 kWG
 dZX
 jib
-tQr
-tQr
 lCp
+tQr
+tQr
 kWG
 gDB
 gDB
@@ -46647,9 +46705,9 @@ kWG
 tQr
 jib
 tQr
-tQr
-tQr
 kWG
+qIL
+qIL
 gDB
 bNX
 qUX
@@ -46841,9 +46899,9 @@ kWG
 tQr
 jib
 nww
-kFp
 kWG
-kWG
+sun
+oOQ
 oJx
 hNW
 xQd
@@ -47035,9 +47093,9 @@ kWG
 tQr
 jib
 icg
-tQr
-kWG
 ebY
+qIL
+qIL
 gDB
 okS
 ttq
@@ -47435,7 +47493,7 @@ tQr
 rjm
 hqI
 sWB
-sun
+sjP
 hAq
 twx
 ahN
@@ -62001,7 +62059,7 @@ qjz
 egx
 tXO
 moe
-moe
+dEH
 xVz
 byX
 wGZ
