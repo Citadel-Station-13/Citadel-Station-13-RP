@@ -41,3 +41,12 @@
 
 /// Enable or disable the toast notification when the the instance finishes initializing.
 /datum/config_entry/flag/toast_notification_on_init
+
+/datum/config_entry/number/hard_deletes_overrun_threshold
+	integer = FALSE
+	min_val = 0
+	default = 0.5
+
+/datum/config_entry/number/hard_deletes_overrun_limit
+	default = 0
+	min_val = 0

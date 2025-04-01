@@ -28,6 +28,10 @@ var/list/blobs = list()
 		integrity = integrity_max
 	setDir(pick(GLOB.cardinal))
 	blobs += src
+	return INITIALIZE_HINT_LATELOAD
+
+// since this WILL cause qdels (on other atoms) to be invoked
+/obj/structure/blob/LateInitialize()
 	consume_tile()
 
 /obj/structure/blob/Destroy()
@@ -191,7 +195,7 @@ var/list/blobs = list()
 /obj/structure/blob/proc/consume_tile()
 	for(var/atom/A in loc)
 		A.blob_act(src)
-	if(loc && loc.density)
+	if(loc?.density)
 		loc.blob_act(src) //don't ask how a wall got on top of the core, just eat it
 
 /obj/structure/blob/proc/blob_glow_animation()
