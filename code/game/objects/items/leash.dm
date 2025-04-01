@@ -56,12 +56,12 @@
 //Called when someone is clicked with the leash
 /obj/item/leash/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	//mob/living/carbon/C, mob/living/user, attackchain_flags, damage_multiplier) //C is the target, user is the one with the leash
-	var/needs_clothing_collar = TRUE
+	var/is_simple_animal = FALSE
 	var/mob/living/carbon/C = target
 	if(!istype(C))
 		var/mob/living/simple_mob/animal/passive/dog/doggy = target
 		if(istype(doggy))
-			needs_clothing_collar = FALSE
+			is_simple_animal = TRUE
 		else
 			return
 	if(!user.IsAdvancedToolUser())
@@ -79,12 +79,12 @@
 		to_chat(user, "<span class='notice'>You cannot leash yourself!</span>")
 		return
 
-	if (needs_clothing_collar && !is_wearing_collar(C))
+	if (!is_simple_animal && !is_wearing_collar(C))
 		to_chat(user, "<span class='notice'>[C] needs a collar before you can attach a leash to it.</span>")
 		return
 
 	var/leashtime = 35
-	if(C.handcuffed)
+	if(!is_simple_animal && C.handcuffed)
 		leashtime = 5
 
 	C.visible_message("<span class='danger'>\The [user] is attempting to put the leash on \the [C]!</span>", "<span class='danger'>\The [user] tries to put a leash on you</span>")
