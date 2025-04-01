@@ -26,36 +26,74 @@ GLOBAL_LIST_EMPTY(melee_attack_singletons)
 /**
  * Called to perform standard attack effects on a target.
  *
+ * @params
+ * * attacker - thing doing the attacking
+ * * target - thing being attacked
+ * * missed - did the attack miss?
+ * * weapon - (optional) the weapon used; this can be null
+ * * clickchain - (optional) clickchain data
+ * * clickchain_flags - (optional) clickchain flags so far
+ *
  * @return clickchain flags
  */
-/datum/melee_attack/proc/perform_attack_impact_entrypoint(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain)
+/datum/melee_attack/proc/perform_attack_impact(atom/movable/attacker, atom/target, missed, obj/item/weapon, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	SHOULD_NOT_SLEEP(TRUE)
-	CRASH("base of /datum/melee_attack attack entrypoint reached")
+	return cickchain_flags
 
 /**
+ * @params
+ * * attacker - thing doing the attacking
+ * * target - thing being attacked
+ * * missed - did the attack miss?
+ * * weapon - (optional) the weapon used; this can be null
+ * * clickchain - (optional) clickchain data
+ * * clickchain_flags - (optional) clickchain flags so far
+ *
  * @return TRUE if handled
  */
-/datum/melee_attack/proc/perform_attack_animation(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain, missed)
+/datum/melee_attack/proc/perform_attack_animation(atom/movable/attacker, atom/target, missed, obj/item/weapon, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	SHOULD_NOT_SLEEP(TRUE)
 	attacker.animate_swing_at_target(target)
 	return TRUE
 
 /**
+ * @params
+ * * attacker - thing doing the attacking
+ * * target - thing being attacked
+ * * missed - did the attack miss?
+ * * weapon - (optional) the weapon used; this can be null
+ * * clickchain - (optional) clickchain data
+ * * clickchain_flags - (optional) clickchain flags so far
+ *
  * @return TRUE if handled
  */
-/datum/melee_attack/proc/perform_attack_sound(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain, missed)
+/datum/melee_attack/proc/perform_attack_sound(atom/movable/attacker, atom/target, missed, obj/item/weapon, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	SHOULD_NOT_SLEEP(TRUE)
 	if(missed)
 		playsound(attacker, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 		return TRUE
 	return FALSE
 
 /**
+ * @params
+ * * attacker - thing doing the attacking
+ * * target - thing being attacked
+ * * missed - did the attack miss?
+ * * weapon - (optional) the weapon used; this can be null
+ * * clickchain - (optional) clickchain data
+ * * clickchain_flags - (optional) clickchain flags so far
+ *
  * @return TRUE if handled
  */
-/datum/melee_attack/proc/perform_attack_message(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain, missed)
+/datum/melee_attack/proc/perform_attack_message(atom/movable/attacker, atom/target, missed, obj/item/weapon, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	SHOULD_NOT_SLEEP(TRUE)
 	if(missed)
 		attacker.visible_message(
-			SPAN_WARNING("[src] swings for [target], but misses!"),
+			SPAN_WARNING("[attacker] swings for [target], but misses!"),
 			range = MESSAGE_RANGE_COMBAT_LOUD,
 		)
 		return TRUE
 	return FALSE
+
+/datum/melee_attack/proc/estimate_damage(atom/movable/attacker, atom/target, obj/item/weapon)
+	return 0

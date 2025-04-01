@@ -8,20 +8,7 @@
 	/// expected type of the weapon being used
 	var/expected_type = /obj/item
 
-/datum/melee_attack/weapon/perform_attack_impact_entrypoint(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain, obj/item/weapon)
-	return perform_attack_impact(attacker, target, clickchain, weapon)
-
-/**
- * Called to perform standard attack effects on a target.
- *
- * @return clickchain flags
- */
-/datum/melee_attack/weapon/proc/perform_attack_impact(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain, obj/item/weapon)
-	PROTECTED_PROC(TRUE)
-	SHOULD_NOT_SLEEP(TRUE)
-	if(ismob(target))
-		// mob damage is not refactored properly yet
-		return
+/datum/melee_attack/weapon/perform_attack_impact(atom/movable/attacker, atom/target, missed, obj/item/weapon, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	target.run_damage_instance(
 		weapon.damage_force * clickchain.attack_melee_multiplier,
 		weapon.damage_type,
@@ -35,14 +22,14 @@
 		null,
 		clickchain,
 	)
-	return NONE
+	return clickchain_flags
 
-/datum/melee_attack/weapon/perform_attack_animation(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain, missed, obj/item/weapon)
+/datum/melee_attack/weapon/perform_attack_animation(atom/movable/attacker, atom/target, missed, obj/item/weapon, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	if(!missed)
-		target.animate_hit_by_weapon(attacker, src)
+		target.animate_hit_by_weapon(attacker, weapon)
 	return ..()
 
-/datum/melee_attack/weapon/perform_attack_sound(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain, missed, obj/item/weapon)
+/datum/melee_attack/weapon/perform_attack_sound(atom/movable/attacker, atom/target, missed, obj/item/weapon, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
 	if(.)
 		return
@@ -53,7 +40,7 @@
 		if(!isnull(resolved))
 			playsound(target, resolved, 50, TRUE)
 
-/datum/melee_attack/weapon/perform_attack_message(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain, missed, obj/item/weapon)
+/datum/melee_attack/weapon/perform_attack_message(atom/movable/attacker, atom/target, missed, obj/item/weapon, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
 	if(.)
 		return
@@ -71,3 +58,6 @@
 			range = MESSAGE_RANGE_COMBAT_LOUD,
 			visible = SPAN_DANGER("[target] has been [islist(weapon.attack_verb)? pick(weapon.attack_verb) : weapon.attack_verb] with [weapon] by [attacker]!")
 		)
+
+/datum/melee_attack/weapon/estimate_damage(atom/movable/attacker, atom/target, obj/item/weapon)
+	return weapon? weapon.damage_force : 0

@@ -83,10 +83,8 @@
 /// attacking weapon datum
 ///
 /// * /obj/projectile if projectile
-/// * /datum/melee_attack/unarmed if unarmed melee
-/// * /obj/item if item melee
+/// * /datum/event_args/actor/clickchain if melee
 /// * /datum/thrownthing if thrown
-/// * null if touch
 #define SHIELDCALL_ARG_WEAPON 7
 /// flags returned from other shieldcalls
 #define SHIELDCALL_ARG_FLAGS 8
@@ -94,10 +92,10 @@
 #define SHIELDCALL_ARG_HIT_ZONE 9
 /// additional list returns; usually empty, but may exist
 #define SHIELDCALL_ARG_ADDITIONAL 10
-/// the clickchain of a melee attack
+/// the clickchain that initiated the attack
 ///
 /// * this is passed in so you can grab data like who is doing it / who started the attack.
-/// * filled in sometimes but not always if unarmed or item melee.
+/// * filled in sometimes but not always if an interaction can be traced back to a clickchain
 #define SHIELDCALL_ARG_CLICKCHAIN 11
 
 /// A proc header with all the shieldcall args.

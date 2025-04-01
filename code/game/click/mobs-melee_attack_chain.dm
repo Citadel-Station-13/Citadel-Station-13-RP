@@ -63,7 +63,7 @@
 	. = clickchain_flags
 
 	// -- call on them (if we didn't miss / get called off already) --
-	. |= clickchain.target.unarmed_melee_act(src, attack_style, clickchain.target_zone, clickchain, clickchain_flags)
+	. |= clickchain.target.melee_act(src, attack_style, clickchain.target_zone, clickchain, clickchain_flags)
 
 	// -- call override --
 	var/overridden
@@ -84,7 +84,7 @@
 		. |= melee_finalize(clickchain, ., attack_style)
 
 	// -- log --
-	log_unarmed_melee(clickchain, clickchain_flags, attack_style)
+	log_melee(clickchain, clickchain_flags, attack_style)
 
 /**
  * Override hook for melee attacks.
@@ -133,14 +133,14 @@
 	var/mob/fixed_performer = clickchain.performer
 	var/missed = clickchain_flags & CLICKCHAIN_ATTACK_MISSED
 
-	attack_style.perform_attack_animation(fixed_performer, fixed_target, clickchain, missed, src)
-	attack_style.perform_attack_sound(fixed_performer, fixed_target, clickchain, missed, src)
-	attack_style.perform_attack_message(fixed_performer, fixed_target, clickchain, missed, src)
+	attack_style.perform_attack_animation(fixed_performer, fixed_target, missed, src, clickchain, clickchain_flags)
+	attack_style.perform_attack_sound(fixed_performer, fixed_target, missed, src, clickchain, clickchain_flags)
+	attack_style.perform_attack_message(fixed_performer, fixed_target, missed, src, clickchain, clickchain_flags)
 
 	if(missed)
 		return clickchain_flags
 	fixed_target.animate_hit_by_attack(attack_style.animation_type)
-	return clickchain_flags | fixed_target.on_unarmed_melee_act(src, attack_style, clickchain, clickchain_flags)
+	return clickchain_flags | fixed_target.on_melee_act(src, null, attack_style, clickchain.target_zone, clickchain, clickchain_flags)
 
 /**
  * Called after a melee attack is executed, regardless of if it hit.

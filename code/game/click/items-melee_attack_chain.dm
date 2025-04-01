@@ -122,7 +122,7 @@
 	. = clickchain_flags
 
 	// -- call on them --
-	. |= clickchain.target.item_melee_act(clickchain.performer, src, attack_style, clickchain.target_zone, clickchain, clickchain_flags)
+	. = clickchain.target.melee_act(clickchain.performer, src, attack_style, clickchain.target_zone, clickchain, clickchain_flags)
 
 	// -- call override --
 	var/overridden
@@ -134,16 +134,16 @@
 	// -- execute attack if override didn't run --
 	if(!overridden)
 		if(!(. & CLICKCHAIN_FLAGS_ATTACK_ABORT))
-			. |= melee_impact(clickchain, ., attack_style)
+			. = melee_impact(clickchain, ., attack_style)
 	else
 		attack_style.perform_attack_animation(clickchain.performer, clickchain.target, clickchain, . & CLICKCHAIN_ATTACK_MISSED, src)
 
 	// -- finalize --
 	if(!(. & CLICKCHAIN_FLAGS_UNCONDITIONAL_ABORT))
-		. |= melee_finalize(clickchain, ., attack_style)
+		. = melee_finalize(clickchain, ., attack_style)
 
 	// -- log --
-	log_weapon_melee(clickchain, ., attack_style, src)
+	log_melee(clickchain, ., attack_style, src)
 
 /**
  * Override hook for melee attacks.
@@ -193,13 +193,13 @@
 	var/mob/fixed_performer = clickchain.performer
 	var/missed = clickchain_flags & CLICKCHAIN_ATTACK_MISSED
 
-	attack_style.perform_attack_animation(fixed_performer, fixed_target, clickchain, missed, src)
-	attack_style.perform_attack_sound(fixed_performer, fixed_target, clickchain, missed, src)
-	attack_style.perform_attack_message(fixed_performer, fixed_target, clickchain, missed, src)
+	attack_style.perform_attack_animation(fixed_performer, fixed_target, missed, src, clickchain, clickchain_flags)
+	attack_style.perform_attack_sound(fixed_performer, fixed_target, missed, src, clickchain, clickchain_flags)
+	attack_style.perform_attack_message(fixed_performer, fixed_target, missed, src, clickchain, clickchain_flags)
 
 	if(missed)
 		return clickchain_flags
-	return clickchain_flags | fixed_target.on_item_melee_act(fixed_performer, src, attack_style, clickchain, clickchain_flags)
+	return fixed_target.on_melee_act(fixed_performer, src, attack_style, clickchain.target_zone, clickchain, clickchain_flags)
 
 /**
  * Called after we hit something in melee, **whether or not we hit.**

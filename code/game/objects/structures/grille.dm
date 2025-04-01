@@ -98,14 +98,9 @@
 				WD.update_appearance()
 	return ..()
 
-/obj/structure/grille/unarmed_melee_act(mob/attacker, datum/melee_attack/unarmed/style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-	if(shock(attacker, 70))
-		return CLICKCHAIN_DO_NOT_ATTACK | CLICKCHAIN_DID_SOMETHING
-	return ..()
-
-/obj/structure/grille/item_melee_act(mob/user, obj/item/weapon, datum/melee_attack/weapon/style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+/obj/structure/grille/on_melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/attack_style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	if(shock(user, 70, weapon))
-		return CLICKCHAIN_DO_NOT_ATTACK | CLICKCHAIN_DID_SOMETHING
+		return clickchain_flags | CLICKCHAIN_DO_NOT_ATTACK | CLICKCHAIN_DID_SOMETHING
 	return ..()
 
 /obj/structure/grille/drop_products(method, atom/where)

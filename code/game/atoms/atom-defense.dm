@@ -44,42 +44,18 @@
  * * clickchain flags are sent down through parent calls, so check `.` after `..()`
  *
  * @params
- * * user - person attacking
- * * weapon - weapon used
+ * * attacker - person attacking
+ * * weapon - weapon used, if any
  * * style - attack style
  * * target_zone - zone targeted
  * * clickchain - (optional) clickchain used
  * * clickchain_flags - (optional) clickchain flags used
  *
- * @return clickchain flags to append
+ * @return clickchain flags
  */
-/atom/proc/item_melee_act(mob/user, obj/item/weapon, datum/melee_attack/weapon/style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-	. = NONE
-	var/shieldcall_returns = atom_shieldcall_handle_item_melee(clickchain, clickchain_flags, weapon, style, FALSE, NONE)
-	if(shieldcall_returns & SHIELDCALL_FLAGS_BLOCK_ATTACK)
-		. |= CLICKCHAIN_FULL_BLOCKED
-	// todo: shieldcall being able to force a miss
-
-/**
- * called on incoming unarmed melee
- *
- *
- * * At this point, the item is processing a hit on us.
- * * check CLICKCHAIN_FLAGS_* as needed, especially MISSED, UNCONDITIONAL_ABORT, and ATTACK_ABORT
- * * clickchain flags are sent down through parent calls, so check `.` after `..()`
- *
- * @params
- * * user - person attacking
- * * style - unarmed attack datum
- * * target_zone - zone targeted
- * * clickchain - (optional) clickchain provider
- * * clickchain_flags - (optional) clickchain flags used
- *
- * @return clickchain flags to append
- */
-/atom/proc/unarmed_melee_act(mob/attacker, datum/melee_attack/unarmed/style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-	. = NONE
-	var/shieldcall_returns = atom_shieldcall_handle_unarmed_melee(clickchain, clickchain_flags, style FALSE, NONE)
+/atom/proc/melee_act(mob/user, obj/item/weapon, datum/melee_attack/weapon/style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = clickchain_flags
+	var/shieldcall_returns = atom_shieldcall_handle_melee(clickchain, ., weapon, style, FALSE, NONE)
 	if(shieldcall_returns & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 		. |= CLICKCHAIN_FULL_BLOCKED
 	// todo: shieldcall being able to force a miss
@@ -89,20 +65,10 @@
  *
  * todo: should this keep being a thing?? why can't the caller just invoke entrypoint directly?
  *
- * @return clickchain flags to append
+ * @return clickchain flags
  */
-/atom/proc/on_item_melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/weapon/attack_style, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-	return attack_style.perform_attack_impact_entrypoint(attacker, src, clickchain, weapon)
-
-/**
- * Called on a melee going through, whether or not it was blocked
- *
- * todo: should this keep being a thing?? why can't the caller just invoke entrypoint directly?
- *
- * @return clickchain flags to append
- */
-/atom/proc/on_unarmed_melee_act(mob/attacker, datum/melee_attack/unarmed/attack_style, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-	return attack_style.perform_attack_impact_entrypoint(attacker, src, clickchain)
+/atom/proc/on_melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/attack_style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	return attack_style.perform_attack_impact(attacker, src, clickchain_flags & CLICKCHAIN_ATTACK_MISSED, weapon, clickchain, clickchain_flags)
 
 //* External API / Damage Receiving - Projectiles *//
 
@@ -601,55 +567,30 @@
 		. |= shieldcall.handle_touch(src, ., fake_attack, clickchain, clickchain_flags, contact_flags, contact_specific)
 
 /**
- * Runs shieldcalls for handle_unarmed_melee
+ * Runs shieldcalls for handle_melee
  *
  * * Use this instead of manually looping, as it fires a signal that makes things like /datum/passive_parry spin up.
  *
  * @params
  * * clickchain (optional) the clickchain event, if any; **This is mutable.**
  * * clickchain_flags (optional) the clickchain flags being used
- * * style - the melee_attack/unarmed datum being used
- * * fake_attack - (optional) just checking!
- * * shieldcall_flags - (optional) shieldcall flags. [code/__DEFINES/combat/shieldcall.dm]
- *
- * @return SHIELDCALL_FLAG_* flags
- */
-/atom/proc/atom_shieldcall_handle_unarmed_melee(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/unarmed/style, fake_attack, shieldcall_flags)
-	SHOULD_NOT_SLEEP(TRUE)
-	// cannot parry yourself
-	if(clickchain.performer == src)
-		return shieldcall_flags
-	// send query signal
-	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL_ITERATION, ATOM_SHIELDCALL_ITERATING_UNARMED_MELEE)
-	. = shieldcall_flags
-	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
-		. |= shieldcall.handle_unarmed_melee(src, ., fake_attack, clickchain, clickchain_flags, style)
-
-/**
- * Runs shieldcalls for handle_item_melee
- *
- * * Use this instead of manually looping, as it fires a signal that makes things like /datum/passive_parry spin up.
- *
- * @params
- * * clickchain (optional) the clickchain event, if any; **This is mutable.**
- * * clickchain_flags (optional) the clickchain flags being used
- * * weapon - the item being used to swing with
+ * * weapon - (optional) the item being used to swing with
  * * style - the melee_attack/weapon datum being used
  * * fake_attack - (optional) just checking!
  * * shieldcall_flags - (optional) shieldcall flags. [code/__DEFINES/combat/shieldcall.dm]
  *
  * @return SHIELDCALL_FLAG_* flags
  */
-/atom/proc/atom_shieldcall_handle_item_melee(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/weapon, datum/melee_attack/weapon/style, fake_attack, shieldcall_flags)
+/atom/proc/atom_shieldcall_handle_melee(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/weapon, datum/melee_attack/weapon/style, fake_attack, shieldcall_flags)
 	SHOULD_NOT_SLEEP(TRUE)
 	// cannot parry yourself
 	if(clickchain.performer == src)
 		return shieldcall_flags
 	// send query signal
-	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL_ITERATION, ATOM_SHIELDCALL_ITERATING_ITEM_MELEE)
+	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL_ITERATION, ATOM_SHIELDCALL_ITERATING_MELEE)
 	. = shieldcall_flags
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
-		. |= shieldcall.handle_item_melee(src, ., fake_attack, clickchain, clickchain_flags, weapon, style)
+		. |= shieldcall.handle_melee(src, ., fake_attack, clickchain, clickchain_flags, weapon, style)
 
 /**
  * Runs shieldcalls for handle_bullet

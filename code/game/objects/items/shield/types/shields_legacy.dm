@@ -191,13 +191,13 @@
 
 /obj/item/shield/riot/foam/passive_parry_intercept(mob/defending, attack_type, datum/weapon, datum/passive_parry/parry_data)
 	var/allowed = FALSE
-	if(isobj(weapon))
-		var/obj/casted_object = weapon
-		if(istype(casted_object, /obj/projectile))
-			var/obj/projectile/casted_projectile = casted_object
-			if(istype(casted_projectile, /obj/projectile/bullet/reusable/foam))
-				allowed = TRUE
-		else if(casted_object.get_primary_material_id() == /datum/prototype/material/toy_foam::id)
+	if(istype(weapon, /obj/projectile))
+		var/obj/projectile/casted_projectile = weapon
+		if(istype(casted_projectile, /obj/projectile/bullet/reusable/foam))
+			allowed = TRUE
+	else if(istype(weapon, /datum/event_args/actor/clickchain))
+		var/datum/event_args/actor/clickchain/casted_clickchain = weapon
+		if(casted_clickchain.using_melee_weapon?.get_primary_material_id() == /datum/prototype/material/toy_foam::id)
 			allowed = TRUE
 	if(!allowed)
 		return

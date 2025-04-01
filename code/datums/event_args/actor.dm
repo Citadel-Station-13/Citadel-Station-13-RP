@@ -10,6 +10,7 @@
 	/// arbitrary data list
 	/// * this is a lazy list
 	/// * this will be logged, don't be too verbose
+	/// * only primitives (text / numbers / lists, no datums) are allowed in here, including inside nested lists.
 	var/list/data = list()
 	/// Is this a simulated event?
 	/// * This is used for logging.
@@ -28,6 +29,8 @@
 	var/datum/event_args/actor/cloning = new type
 	cloning.performer = performer
 	cloning.initiator = initiator
+	cloning.simulated = simulated
+	cloning.data = deep_copy_list(data)
 	return cloning
 
 //* Logging *//

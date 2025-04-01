@@ -153,13 +153,14 @@
 
 	apply_damage(damage, damage_type, def_zone, absorb, soaked)
 
+#warn deal wit hthis
 //Called when the mob is hit with an item in combat. Returns the blocked result
 /mob/living/proc/hit_with_weapon(obj/item/I, mob/living/user, var/effective_force, var/hit_zone)
 	if(ai_holder)
 		ai_holder.react_to_attack_polaris(user)
 
-	var/soaked = get_armor_soak(hit_zone, "melee")
-	var/blocked = run_armor_check(hit_zone, "melee")
+	var/soaked = get_armor_soak(hit_zone, "melee", I.armor_penetration)
+	var/blocked = run_armor_check(hit_zone, "melee", I.armor_penetration, "Your armor has protected your [affecting.name].", "Your armor has softened the blow to your [affecting.name].")
 
 	standard_weapon_hit_effects(I, user, effective_force, blocked, soaked, hit_zone)
 
@@ -169,20 +170,7 @@
 
 	return blocked
 
-#warn hit with weapon / standard hit effects?
-/mob/living/carbon/human/hit_with_weapon(obj/item/I, mob/living/user, var/effective_force, var/hit_zone)
-	var/obj/item/organ/external/affecting = get_organ(hit_zone)
-	if(!affecting)
-		return //should be prevented by attacked_with_item() but for sanity.
-
-	var/soaked = get_armor_soak(hit_zone, "melee", I.armor_penetration)
-
-	var/blocked = run_armor_check(hit_zone, "melee", I.armor_penetration, "Your armor has protected your [affecting.name].", "Your armor has softened the blow to your [affecting.name].")
-
-	standard_weapon_hit_effects(I, user, effective_force, blocked, soaked, hit_zone)
-
-	return blocked
-
+#warn deal wit hthis
 //returns 0 if the effects failed to apply for some reason, 1 otherwise.
 /mob/living/proc/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/soaked, var/hit_zone)
 	if(!effective_force || blocked >= 100)
@@ -206,6 +194,7 @@
 
 	return 1
 
+#warn deal wit hthis
 /mob/living/carbon/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/soaked, var/hit_zone)
 	//Apply weapon damage
 	var/hit_embed_chance = I.embed_chance
@@ -229,6 +218,7 @@
 
 	return 1
 
+#warn deal wit hthis
 /mob/living/carbon/human/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/soaked, var/hit_zone)
 	var/obj/item/organ/external/affecting = get_organ(hit_zone)
 	if(!affecting)

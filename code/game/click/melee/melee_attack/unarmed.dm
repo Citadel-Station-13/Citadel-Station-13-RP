@@ -52,20 +52,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	var/eye_attack_text
 	var/eye_attack_text_victim
 
-/datum/melee_attack/unarmed/perform_attack_impact_entrypoint(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain)
-	return perform_attack_impact(attacker, target, clickchain)
-
-/**
- * Called to perform standard attack effects on a target.
- *
- * @return clickchain flags
- */
-/datum/melee_attack/unarmed/proc/perform_attack_impact(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain)
-	PROTECTED_PROC(TRUE)
-	SHOULD_NOT_SLEEP(TRUE)
-	if(ismob(target))
-		// mob damage is not refactored properly yet
-		return
+/datum/melee_attack/unarmed/perform_attack_impact(atom/movable/attacker, atom/target, missed, obj/item/weapon, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	var/damage_force = get_unarmed_damage(attacker, target) * clickchain.attack_melee_multiplier
 	clickchain.data[ACTOR_DATA_UNARMED_LOG] = "[damage_force]-[damage_type]-[damage_flag]@[damage_tier]m[damage_mode]"
 	target.run_damage_instance(
@@ -81,12 +68,12 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 		null,
 		clickchain,
 	)
-	return NONE
+	return clickchain_flags
 
-/datum/melee_attack/unarmed/perform_attack_animation(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain, missed)
+/datum/melee_attack/unarmed/perform_attack_animation(atom/movable/attacker, atom/target, missed, obj/item/weapon, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	return ..()
 
-/datum/melee_attack/unarmed/perform_attack_message(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain, missed)
+/datum/melee_attack/unarmed/perform_attack_message(atom/movable/attacker, atom/target, missed, obj/item/weapon, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	if(missed)
 		return ..()
 	attacker.visible_message(
@@ -95,11 +82,14 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	)
 	return TRUE
 
-/datum/melee_attack/unarmed/perform_attack_sound(atom/movable/attacker, atom/target, datum/event_args/actor/clickchain/clickchain, missed)
+/datum/melee_attack/unarmed/perform_attack_sound(atom/movable/attacker, atom/target, missed, obj/item/weapon, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	if(missed)
 		return ..()
 	playsound(src, target.hitsound_unarmed(attacker, src), 50, TRUE, -1)
 	return TRUE
+
+/datum/melee_attack/unarmed/estimate_damage(atom/movable/attacker, atom/target, obj/item/weapon)
+	return damage_force
 
 /datum/melee_attack/unarmed/proc/operator""()
 	return pick(attack_verb_legacy)

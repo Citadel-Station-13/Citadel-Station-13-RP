@@ -122,12 +122,10 @@
 	. = ..()
 	break_cloak()
 
-/mob/living/simple_mob/animal/giant_spider/lurker/on_item_melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/weapon/attack_style, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+/mob/living/simple_mob/animal/giant_spider/lurker/on_melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/attack_style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
-	break_cloak()
-
-/mob/living/simple_mob/animal/giant_spider/lurker/on_unarmed_melee_act(mob/attacker, datum/melee_attack/unarmed/attack_style, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-	. = ..()
+	if(. & CLICKCHAIN_ATTACK_MISSED)
+		return
 	break_cloak()
 
 /obj/item/reagent_containers/glass/venomgland/spider/confusing

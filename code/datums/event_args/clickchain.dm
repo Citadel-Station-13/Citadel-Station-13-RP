@@ -23,6 +23,14 @@
 	/// (optional) hand index
 	var/using_hand_index
 
+	#warn hook both
+	/// (optional) using weapon
+	/// * not for tools; this is only for melee
+	var/obj/item/using_melee_weapon
+	/// (optional) using melee style
+	/// * not for tools; this is only for melee
+	var/datum/melee_attack/using_melee_attack
+
 	//* Click Data *//
 
 	/// optional: click params
@@ -96,12 +104,16 @@
 	var/datum/event_args/actor/clickchain/cloning = ..()
 	cloning.using_intent = using_intent
 	cloning.using_hand_index = using_hand_index
+	cloning.using_melee_attack = using_melee_attack
+	cloning.using_melee_weapon = using_melee_weapon
 	cloning.click_params = click_params
 	cloning.click_cooldown_base = click_cooldown_base
 	cloning.click_cooldown_multiplier = click_cooldown_multiplier
 	cloning.target = target
 	cloning.target_zone = target_zone
 	cloning.attack_melee_multiplier = attack_melee_multiplier
+	cloning.attack_contact_multiplier = attack_contact_multiplier
+	cloning.out_damage_inflicted = out_damage_inflicted
 	return cloning
 
 /**

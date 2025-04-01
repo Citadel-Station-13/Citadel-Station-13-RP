@@ -472,7 +472,7 @@
 		var/datum/ai_holder/turret/snowflake_ai_holder = ai_holder
 		snowflake_ai_holder.retaliate(proj.firer)
 
-/obj/machinery/porta_turret/item_melee_act(mob/user, obj/item/weapon, datum/melee_attack/weapon/style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+/obj/machinery/porta_turret/on_melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/attack_style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
 	if(. & CLICKCHAIN_FLAGS_ATTACK_ABORT)
 		return
