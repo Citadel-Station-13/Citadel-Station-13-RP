@@ -28,6 +28,7 @@
 		..()
 
 // Handles the actual harming by a melee weapon.
+#warn deal with this
 /mob/living/simple_mob/slime/xenobio/hit_with_weapon(obj/item/I, mob/living/user, effective_force, hit_zone)
 	..() // Apply damage and etc.
 	if(!stat && effective_force > 0)

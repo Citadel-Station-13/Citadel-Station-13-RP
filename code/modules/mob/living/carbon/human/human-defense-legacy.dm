@@ -129,20 +129,6 @@
 			return gear
 	return null
 
-#warn hit with weapon / standard hit effects?
-/mob/living/carbon/human/hit_with_weapon(obj/item/I, mob/living/user, var/effective_force, var/hit_zone)
-	var/obj/item/organ/external/affecting = get_organ(hit_zone)
-	if(!affecting)
-		return //should be prevented by attacked_with_item() but for sanity.
-
-	var/soaked = get_armor_soak(hit_zone, "melee", I.armor_penetration)
-
-	var/blocked = run_armor_check(hit_zone, "melee", I.armor_penetration, "Your armor has protected your [affecting.name].", "Your armor has softened the blow to your [affecting.name].")
-
-	standard_weapon_hit_effects(I, user, effective_force, blocked, soaked, hit_zone)
-
-	return blocked
-
 /mob/living/carbon/human/proc/attack_joint(var/obj/item/organ/external/organ, var/obj/item/W, var/effective_force, var/dislocate_mult, var/blocked, var/soaked)
 	if(!organ || (organ.dislocated == 2) || (organ.dislocated == -1) || blocked >= 100)
 		return 0

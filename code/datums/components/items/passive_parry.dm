@@ -177,12 +177,12 @@
 		return
 	if(!prob(isnull(data.parry_chance_melee) ? data.parry_chance_default : data.parry_chance_melee))
 		return
-	if(!check_defensive_arc_tile(defending, e_args.performer, data.parry_arc, !data.parry_arc_round_down))
+	if(!check_defensive_arc_tile(defending, clickchain.performer, data.parry_arc, !data.parry_arc_round_down))
 		return
 	var/datum/parry_frame/resolved = ignite(defending, ATTACK_TYPE_MELEE, weapon)
 	if(!resolved)
 		return
-	return resolved.handle_item_melee(defending, shieldcall_returns | SHIELDCALL_FLAG_SINGLE_PARRY, fake_attack, data.parry_frame_efficiency, weapon, e_args, parent)
+	return resolved.handle_item_melee(defending, shieldcall_returns | SHIELDCALL_FLAG_SINGLE_PARRY, fake_attack, data.parry_frame_efficiency, weapon, clickchain, parent)
 
 /datum/shieldcall/bound/passive_parry/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/unarmed/style)
 	// todo: no support for fake attacks yet
@@ -200,12 +200,12 @@
 		return
 	if(!prob(isnull(data.parry_chance_melee) ? data.parry_chance_default : data.parry_chance_melee))
 		return
-	if(!check_defensive_arc_tile(defending, e_args.performer, data.parry_arc, !data.parry_arc_round_down))
+	if(!check_defensive_arc_tile(defending, clickchain.performer, data.parry_arc, !data.parry_arc_round_down))
 		return
 	var/datum/parry_frame/resolved = ignite(defending, ATTACK_TYPE_UNARMED, style)
 	if(!resolved)
 		return
-	return resolved.handle_unarmed_melee(defending, shieldcall_returns | SHIELDCALL_FLAG_SINGLE_PARRY, fake_attack, data.parry_frame_efficiency, style, e_args, parent)
+	return resolved.handle_unarmed_melee(defending, shieldcall_returns | SHIELDCALL_FLAG_SINGLE_PARRY, fake_attack, data.parry_frame_efficiency, style, clickchain, parent)
 
 /datum/shieldcall/bound/passive_parry/handle_touch(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/clickchain, clickchain_flags, contact_flags, contact_specific)
 	// todo: no support for fake attacks yet
@@ -223,12 +223,12 @@
 		return
 	if(!prob(isnull(data.parry_chance_touch) ? data.parry_chance_default : data.parry_chance_touch))
 		return
-	if(!check_defensive_arc_tile(defending, e_args.performer, data.parry_arc, !data.parry_arc_round_down))
+	if(!check_defensive_arc_tile(defending, clickchain.performer, data.parry_arc, !data.parry_arc_round_down))
 		return
 	var/datum/parry_frame/resolved = ignite(defending, ATTACK_TYPE_TOUCH, null)
 	if(!resolved)
 		return
-	return resolved.handle_touch(defending, shieldcall_returns | SHIELDCALL_FLAG_SINGLE_PARRY, fake_attack, data.parry_frame_efficiency, e_args, contact_flags, contact_specific, parent)
+	return resolved.handle_touch(defending, shieldcall_returns | SHIELDCALL_FLAG_SINGLE_PARRY, fake_attack, data.parry_frame_efficiency, clickchain, contact_flags, contact_specific, parent)
 
 //* Bindings - Thrown *//
 

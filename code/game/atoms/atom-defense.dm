@@ -592,13 +592,13 @@
 /atom/proc/atom_shieldcall_handle_touch(datum/event_args/actor/clickchain/clickchain, clickchain_flags, contact_flags, contact_specific, fake_attack, shieldcall_flags)
 	SHOULD_NOT_SLEEP(TRUE)
 	// cannot parry yourself
-	if(e_args?.performer == src)
+	if(clickchain?.performer == src)
 		return shieldcall_flags
 	// send query signal
 	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL_ITERATION, ATOM_SHIELDCALL_ITERATING_TOUCH)
 	. = shieldcall_flags
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
-		. |= shieldcall.handle_touch(src, ., fake_attack, e_args, contact_flags, contact_specific)
+		. |= shieldcall.handle_touch(src, ., fake_attack, clickchain, clickchain_flags, contact_flags, contact_specific)
 
 /**
  * Runs shieldcalls for handle_unarmed_melee
@@ -617,13 +617,13 @@
 /atom/proc/atom_shieldcall_handle_unarmed_melee(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/unarmed/style, fake_attack, shieldcall_flags)
 	SHOULD_NOT_SLEEP(TRUE)
 	// cannot parry yourself
-	if(e_args.performer == src)
+	if(clickchain.performer == src)
 		return shieldcall_flags
 	// send query signal
 	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL_ITERATION, ATOM_SHIELDCALL_ITERATING_UNARMED_MELEE)
 	. = shieldcall_flags
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
-		. |= shieldcall.handle_unarmed_melee(src, ., fake_attack, style, e_args)
+		. |= shieldcall.handle_unarmed_melee(src, ., fake_attack, clickchain, clickchain_flags, style)
 
 /**
  * Runs shieldcalls for handle_item_melee
@@ -643,13 +643,13 @@
 /atom/proc/atom_shieldcall_handle_item_melee(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/weapon, datum/melee_attack/weapon/style, fake_attack, shieldcall_flags)
 	SHOULD_NOT_SLEEP(TRUE)
 	// cannot parry yourself
-	if(e_args.performer == src)
+	if(clickchain.performer == src)
 		return shieldcall_flags
 	// send query signal
 	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL_ITERATION, ATOM_SHIELDCALL_ITERATING_ITEM_MELEE)
 	. = shieldcall_flags
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
-		. |= shieldcall.handle_item_melee(src, ., fake_attack, weapon, e_args)
+		. |= shieldcall.handle_item_melee(src, ., fake_attack, clickchain, clickchain_flags, weapon, style)
 
 /**
  * Runs shieldcalls for handle_bullet

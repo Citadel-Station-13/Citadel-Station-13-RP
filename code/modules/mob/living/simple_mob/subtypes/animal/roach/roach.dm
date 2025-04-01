@@ -542,7 +542,11 @@
 	. = ..()
 	break_cloak()
 
-/mob/living/simple_mob/animal/roach/zeitraum/hit_with_weapon(obj/item/O, mob/living/user, effective_force, hit_zone)
+/mob/living/simple_mob/animal/roach/zeitraum/on_item_melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/weapon/attack_style, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	break_cloak()
+
+/mob/living/simple_mob/animal/roach/zeitraum/on_unarmed_melee_act(mob/attacker, datum/melee_attack/unarmed/attack_style, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
 	break_cloak()
 

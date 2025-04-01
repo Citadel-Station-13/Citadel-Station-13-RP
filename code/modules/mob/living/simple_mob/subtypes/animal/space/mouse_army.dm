@@ -417,17 +417,13 @@
 	unstealth()
 	..() // For the poison.
 
-// Force unstealthing if attacked.
-/mob/living/simple_mob/animal/space/mouse_army/stealth/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
-	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
-		return
-	break_cloak()
-
-/mob/living/simple_mob/animal/space/mouse_army/stealth/hit_with_weapon(obj/item/O, mob/living/user, effective_force, hit_zone)
+/mob/living/simple_mob/animal/space/mouse_army/stealth/on_item_melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/weapon/attack_style, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
 	break_cloak()
 
+/mob/living/simple_mob/animal/space/mouse_army/stealth/on_unarmed_melee_act(mob/attacker, datum/melee_attack/unarmed/attack_style, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	break_cloak()
 
 // Mouse noises
 /datum/say_list/mouse

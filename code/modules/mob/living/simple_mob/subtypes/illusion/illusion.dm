@@ -78,6 +78,7 @@
 				M.visible_message(SPAN_DANGER("\The [M] [response_harm] \the [src]"))
 				M.do_attack_animation(src)
 
+#warn deal with this
 /mob/living/simple_mob/illusion/hit_with_weapon(obj/item/I, mob/living/user, effective_force, hit_zone)
 	if(realistic)
 		return ..()

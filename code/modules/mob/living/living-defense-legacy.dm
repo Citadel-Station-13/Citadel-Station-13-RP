@@ -169,6 +169,20 @@
 
 	return blocked
 
+#warn hit with weapon / standard hit effects?
+/mob/living/carbon/human/hit_with_weapon(obj/item/I, mob/living/user, var/effective_force, var/hit_zone)
+	var/obj/item/organ/external/affecting = get_organ(hit_zone)
+	if(!affecting)
+		return //should be prevented by attacked_with_item() but for sanity.
+
+	var/soaked = get_armor_soak(hit_zone, "melee", I.armor_penetration)
+
+	var/blocked = run_armor_check(hit_zone, "melee", I.armor_penetration, "Your armor has protected your [affecting.name].", "Your armor has softened the blow to your [affecting.name].")
+
+	standard_weapon_hit_effects(I, user, effective_force, blocked, soaked, hit_zone)
+
+	return blocked
+
 //returns 0 if the effects failed to apply for some reason, 1 otherwise.
 /mob/living/proc/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/soaked, var/hit_zone)
 	if(!effective_force || blocked >= 100)

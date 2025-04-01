@@ -70,6 +70,7 @@
 
 
 // Handles the actual harming by a melee weapon.
+#warn dela with this
 /mob/living/simple_mob/hit_with_weapon(obj/item/O, mob/living/user, var/effective_force, var/hit_zone)
 	effective_force = O.damage_force
 
