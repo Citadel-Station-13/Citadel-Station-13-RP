@@ -56,9 +56,14 @@
 //Called when someone is clicked with the leash
 /obj/item/leash/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	//mob/living/carbon/C, mob/living/user, attackchain_flags, damage_multiplier) //C is the target, user is the one with the leash
+	var/needs_clothing_collar = TRUE
 	var/mob/living/carbon/C = target
 	if(!istype(C))
-		return
+		var/mob/living/simple_mob/animal/passive/dog/doggy = target
+		if(istype(doggy))
+			needs_clothing_collar = FALSE
+		else
+			return
 	if(!user.IsAdvancedToolUser())
 		return
 	if(C.alerts["leashed"]) //If the pet is already leashed, do not leash them. For the love of god.
@@ -74,7 +79,7 @@
 		to_chat(user, "<span class='notice'>You cannot leash yourself!</span>")
 		return
 
-	if (!is_wearing_collar(C))
+	if (needs_clothing_collar && !is_wearing_collar(C))
 		to_chat(user, "<span class='notice'>[C] needs a collar before you can attach a leash to it.</span>")
 		return
 
