@@ -79,7 +79,7 @@
 		to_chat(user, "<span class='notice'>You cannot leash yourself!</span>")
 		return
 
-	if (!is_simple_animal && !is_wearing_collar(C))
+	if (!is_wearing_collar(C))
 		to_chat(user, "<span class='notice'>[C] needs a collar before you can attach a leash to it.</span>")
 		return
 
@@ -218,6 +218,9 @@
 
 /obj/item/leash/proc/is_wearing_collar(var/mob/living/carbon/human/human)
 	if (!istype(human))
+		var/mob/living/simple_mob/animal/passive/dog/doggy = human
+		if(istype(doggy))
+			return TRUE
 		return FALSE
 	for (var/obj/item/clothing/worn in human._get_all_slots())
 		if (istype(worn, /obj/item/clothing/accessory/collar) || (locate(/obj/item/clothing/accessory/collar) in worn.accessories))
