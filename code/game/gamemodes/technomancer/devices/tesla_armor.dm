@@ -39,7 +39,7 @@
 /obj/item/clothing/suit/armor/tesla/proc/shieldcall(mob/user, list/shieldcall_args, fake_attack)
 	var/damage_source = shieldcall_args[SHIELDCALL_ARG_ATTACK_SOURCE]
 
-	var/datum/event_args/actor/clickchain/clickchain = shieldcall_args[SHIELDCALL_ARG_CLICKCHAIN]
+	var/datum/event_args/actor/clickchain/clickchain = istype(damage_source, /datum/event_args/actor/clickchain) ? damage_source : null
 	var/mob/attacker = clickchain?.performer
 
 	//First, some retaliation.

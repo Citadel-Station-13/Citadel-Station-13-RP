@@ -65,10 +65,10 @@
 /datum/component/passive_parry/proc/ignite(atom/defending, attack_type, datum/attack_source)
 	RETURN_TYPE(/datum/parry_frame)
 	if(parry_intercept)
-		return parry_intercept.invoke_no_sleep(parent, defending, attack_type, weapon, parry_data)
+		return parry_intercept.invoke_no_sleep(parent, defending, attack_type, attack_source, parry_data)
 	else
 		var/obj/item/item = parent
-		return item.passive_parry_intercept(defending, attack_type, weapon, parry_data)
+		return item.passive_parry_intercept(defending, attack_type, attack_source, parry_data)
 
 /datum/component/passive_parry/RegisterWithParent()
 	. = ..()

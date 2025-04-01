@@ -331,7 +331,7 @@
  * * defending - thing being defended against an attack
  * * attack_type - (optional) type of attack
  * * efficiency - (optional) parry efficiency
- * * weapon - (optional) incoming weapon, depends on ATTACK_TYPE
+ * * attack_source - (optional) incoming weapon, depends on ATTACK_TYPE
  * * shieldcall_flags - (optional) the attack's shieldcall flags
  *
  * @return SHIELDCALL_* flags; these override the caller's!
@@ -342,19 +342,19 @@
 	var/atom/movable/aggressor
 
 	// detect aggressor
-	if(istype(weapon, /obj/projectile))
-		var/obj/projectile/weapon_proj = weapon
+	if(istype(attack_source, /obj/projectile))
+		var/obj/projectile/weapon_proj = attack_source
 		aggressor = weapon_proj.firer
-	else if(istype(weapon, /datum/event_args/actor/clickchain))
-		var/datum/event_args/actor/clickchain/weapon_clickchain = weapon
+	else if(istype(attack_source, /datum/event_args/actor/clickchain))
+		var/datum/event_args/actor/clickchain/weapon_clickchain = attack_source
 		aggressor = weapon_clickchain.performer
-	else if(istype(weapon, /datum/thrownthing))
-		var/datum/thrownthing/weapon_thrown = weapon
+	else if(istype(attack_source, /datum/thrownthing))
+		var/datum/thrownthing/weapon_thrown = attack_source
 		aggressor = weapon_thrown.thrower
 
 	switch(attack_type)
 		if(ATTACK_TYPE_PROJECTILE)
-			var/obj/projectile/proj = weapon
+			var/obj/projectile/proj = attack_source
 			if((parry_redirect_attack_types & ATTACK_TYPE_PROJECTILE) && (efficiency >= parry_efficiency_redirection))
 				var/outgoing_angle
 				if(parry_redirect_return_to_sender && aggressor)

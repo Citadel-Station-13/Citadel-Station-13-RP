@@ -40,8 +40,8 @@
 	deactivation_sound = 'sound/weapons/saberoff.ogg'
 
 /obj/item/shield/transforming/energy/passive_parry_intercept(mob/defending, attack_type, datum/attack_source, datum/passive_parry/parry_data)
-	if(istype(weapon, /obj/projectile))
-		var/obj/projectile/casted_projectile = weapon
+	if(istype(attack_source, /obj/projectile))
+		var/obj/projectile/casted_projectile = attack_source
 		if(legacy_projectile_damage_drop)
 			if((is_sharp(casted_projectile) && casted_projectile.damage_force > 10) || (casted_projectile.projectile_type & PROJECTILE_TYPE_BEAM))
 				if(prob(casted_projectile.damage_force / legacy_projectile_damage_drop_divisor))

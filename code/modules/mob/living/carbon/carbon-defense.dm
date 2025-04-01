@@ -6,13 +6,13 @@
 		if(check_neckgrab_attack(weapon, attacker, target_zone))
 			return clickchain_flags | CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_ATTACK
 	if(attacker != src)
-		var/hit_zone = get_zone_with_miss_chance(target_zone, src, user.get_accuracy_penalty())
+		var/hit_zone = get_zone_with_miss_chance(target_zone, src, attacker.get_accuracy_penalty())
 		if(!hit_zone)
 			return CLICKCHAIN_ATTACK_MISSED
 		clickchain.target_zone = target_zone = hit_zone
 	var/obj/item/organ/external/affecting = get_organ(target_zone)
 	if (!affecting || affecting.is_stump())
-		to_chat(user, "<span class='danger'>They are missing that limb!</span>")
+		to_chat(attacker, "<span class='danger'>They are missing that limb!</span>")
 		return CLICKCHAIN_ATTACK_MISSED
 	return ..()
 

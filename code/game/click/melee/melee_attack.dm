@@ -38,7 +38,7 @@ GLOBAL_LIST_EMPTY(melee_attack_singletons)
  */
 /datum/melee_attack/proc/perform_attack_impact(atom/movable/attacker, atom/target, missed, obj/item/weapon, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	SHOULD_NOT_SLEEP(TRUE)
-	return cickchain_flags
+	return clickchain_flags
 
 /**
  * @params

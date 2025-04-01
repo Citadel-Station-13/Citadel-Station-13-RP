@@ -75,7 +75,7 @@
 		damage_mode,
 		hit_zone,
 		attack_type,
-		weapon,
+		attack_source,
 	)
 
 /**
