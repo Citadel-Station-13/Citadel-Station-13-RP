@@ -292,7 +292,7 @@
 
 
 /datum/crafting_recipe/leash
-	name = "cable leash"
+	name = "Cable Leash"
 	result = /obj/item/leash/cable
 	reqs = list(/obj/item/stack/cable_coil = 5) //1 for the handle/clip, 4 for the two tiles distance
 	time = 60
