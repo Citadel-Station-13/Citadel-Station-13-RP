@@ -86,9 +86,9 @@
 
 			shieldcall_args[SHIELDCALL_ARG_FLAGS] |= SHIELDCALL_FLAG_ATTACK_PASSTHROUGH | SHIELDCALL_FLAG_ATTACK_REDIRECT | SHIELDCALL_FLAG_ATTACK_BLOCKED | SHIELDCALL_FLAG_TERMINATE
 
-	else if(istype(damage_source, /obj/item))
-		var/obj/item/W = damage_source
-		var/datum/event_args/actor/clickchain/clickchain = shieldcall_args[SHIELDCALL_ARG_CLICKCHAIN]
+	else if(istype(damage_source, /datum/event_args/actor/clickchain))
+		var/datum/event_args/actor/clickchain/clickchain = damage_source
+		var/obj/item/W = clickchain.using_melee_weapon
 		attacker = clickchain.performer
 		if(attacker)
 			W.melee_interaction_chain(attacker, attacker)

@@ -16,8 +16,8 @@
 	var/cooldown = 0 //shield bash cooldown. based on world.time
 
 /obj/item/shield/riot/passive_parry_intercept(mob/defending, attack_type, datum/attack_source, datum/passive_parry/parry_data)
-	if(istype(weapon, /obj/projectile))
-		var/obj/projectile/proj = weapon
+	if(istype(attack_source, /obj/projectile))
+		var/obj/projectile/proj = attack_source
 		if(((is_sharp(proj) && proj.armor_penetration >= 10) || proj.damage_tier >= ARMOR_TIER_HIGH || istype(proj, /obj/projectile/beam)) && prob(50))
 			//If we're at this point, the bullet/beam is going to go through the shield, however it will hit for less damage.
 			//Bullets get slowed down, while beams are diffused as they hit the shield, so these shields are not /completely/
@@ -191,12 +191,12 @@
 
 /obj/item/shield/riot/foam/passive_parry_intercept(mob/defending, attack_type, datum/attack_source, datum/passive_parry/parry_data)
 	var/allowed = FALSE
-	if(istype(weapon, /obj/projectile))
-		var/obj/projectile/casted_projectile = weapon
+	if(istype(attack_source, /obj/projectile))
+		var/obj/projectile/casted_projectile = attack_source
 		if(istype(casted_projectile, /obj/projectile/bullet/reusable/foam))
 			allowed = TRUE
-	else if(istype(weapon, /datum/event_args/actor/clickchain))
-		var/datum/event_args/actor/clickchain/casted_clickchain = weapon
+	else if(istype(attack_source, /datum/event_args/actor/clickchain))
+		var/datum/event_args/actor/clickchain/casted_clickchain = attack_source
 		if(casted_clickchain.using_melee_weapon?.get_primary_material_id() == /datum/prototype/material/toy_foam::id)
 			allowed = TRUE
 	if(!allowed)

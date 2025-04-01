@@ -35,6 +35,8 @@
 	///   TO ITEMS. DO NOT COPYPASTE THIS CODE AROUND, THE HOOKING CODE
 	///   IS COMPLEX AND SHOULD NOT BE UNNECESSARILY DUPLICATED.
 	var/datum/combo_tracker/melee/combo_tracker
+	/// our combo set
+	var/datum/combo_set/melee/combo_set
 	/// only reapplied on un-equip/re-equip right now!
 	var/combo_continuation_timeout = 3 SECONDS
 	/// our combo is active; we won't go onto clickdelay until it falls off
@@ -45,6 +47,13 @@
 	var/charged_structure_damage_type = DAMAGE_TYPE_BRUTE
 	var/charged_structure_damage_flag = ARMOR_BOMB
 	var/charged_structure_damage_mode = DAMAGE_MODE_ABLATING
+
+/obj/item/kinetic_gauntlets/Initialize(mapload)
+	. = ..()
+	discharge()
+	if(!combo_set)
+		// TODO: global caching of combo sets
+		combo_set = new /datum/combo_set/melee/intent_based/kinetic_gauntlets
 
 /obj/item/kinetic_gauntlets/update_icon()
 	cut_overlays()
@@ -112,10 +121,10 @@
 /**
  * Aborts charge cycle if it exists, and starts a new one.
  */
-/obj/item/kinetic_gauntlets/proc/discharge(recharge_acceleration_multiplier = 1)
+/obj/item/kinetic_gauntlets/proc/discharge(recharge_delay_mod = 1)
 	charged = FALSE
 	cancel_recharge()
-	start_recharge(recharge_acceleration_multiplier)
+	start_recharge(recharge_delay_mod)
 	update_icon()
 
 /**
@@ -130,22 +139,46 @@
  * Will speed up current recharge cycle to be as fast as the requested
  * speed if it's not at least that fast.
  */
-/obj/item/kinetic_gauntlets/proc/start_recharge(acceleration_multiplier = 1)
+/obj/item/kinetic_gauntlets/proc/start_recharge(delay_mod = 1)
 	if(worn_slot != /datum/inventory_slot/inventory/gloves::id)
 		cancel_recharge()
 		return
+	#warn handle delay mod
 
-/obj/item/kinetic_gauntlets/melee_impact(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
+/obj/item/kinetic_gauntlets/proc/run_excavation_fx(turf/location)
+	#warn impl
+
+/obj/item/kinetic_gauntlets/proc/run_detonation_fx(turf/location, atom/target)
+	#warn impl
+
+#warn hook this? comsig maybe? how do we do overriding? check return values after, how do we return clickchain flags?
+/obj/item/kinetic_gauntlets/proc/on_user_melee_impact(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/attack_style)
 	if(clickchain_flags & CLICKCHAIN_ATTACK_MISSED)
-		return ..()
+		return
+	if(!charged)
+		return
 	var/atom/target = clickchain.target
 	if(!isturf(target))
-		#warn det
-		return clickchain_flags
+		// TODO: unified mining excavation API
+		if(istype(target, /turf/simulated/mineral))
+			var/turf/simulated/mineral/mineral_turf = target
+			mineral_turf.GetDrilled(TRUE)
+			run_detonation_fx(target)
+			discharge(charge_delay_multiplier_rock)
+			return
+		return
 	var/mob/mob_target = target
+	var/datum/combo/melee/valid_combo = combo_tracker?.process_inbound_via_tail_match(clickchain.using_intent, combo_set)
+	if(!valid_combo)
+		return
 	var/datum/status_effect/grouped/proto_kinetic_mark/mark = mob_target.has_status_effect(/datum/status_effect/grouped/proto_kinetic_mark)
-	#warn handle mark?
+	if(!mark)
+		return
+	QDEL_NULL(mark)
+	execute_combo(clickchain, clickchain_flags, valid_combo)
 
 /obj/item/kinetic_gauntlets/proc/execute_combo(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/combo/melee/use_combo)
-
-#warn impl all
+	var/atom/movable/target = clickchain.target
+	var/turf/target_turf = get_turf(target)
+	run_detonation_fx(target_turf, target)
+	use_combo.inflict(target, clickchain.target_zone, clickchain.performer, clickchain, FALSE)
