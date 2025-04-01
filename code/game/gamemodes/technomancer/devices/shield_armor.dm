@@ -50,7 +50,7 @@
 
 /obj/item/clothing/suit/armor/shield/proc/shieldcall(mob/user, list/shieldcall_args, fake_attack)
 	var/damage = shieldcall_args[SHIELDCALL_ARG_DAMAGE]
-	var/damage_source = shieldcall_args[SHIELDCALL_ARG_WEAPON]
+	var/damage_source = shieldcall_args[SHIELDCALL_ARG_ATTACK_SOURCE]
 
 	//Since this is a pierce of armor that is passive, we do not need to check if the user is incapacitated.
 	if(!active)

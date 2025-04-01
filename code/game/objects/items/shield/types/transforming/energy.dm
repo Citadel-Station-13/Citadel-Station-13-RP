@@ -39,7 +39,7 @@
 	activation_sound = 'sound/weapons/saberon.ogg'
 	deactivation_sound = 'sound/weapons/saberoff.ogg'
 
-/obj/item/shield/transforming/energy/passive_parry_intercept(mob/defending, attack_type, datum/weapon, datum/passive_parry/parry_data)
+/obj/item/shield/transforming/energy/passive_parry_intercept(mob/defending, attack_type, datum/attack_source, datum/passive_parry/parry_data)
 	if(istype(weapon, /obj/projectile))
 		var/obj/projectile/casted_projectile = weapon
 		if(legacy_projectile_damage_drop)

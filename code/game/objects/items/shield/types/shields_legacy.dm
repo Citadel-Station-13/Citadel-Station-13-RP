@@ -15,7 +15,7 @@
 	worth_intrinsic = 300
 	var/cooldown = 0 //shield bash cooldown. based on world.time
 
-/obj/item/shield/riot/passive_parry_intercept(mob/defending, attack_type, datum/weapon, datum/passive_parry/parry_data)
+/obj/item/shield/riot/passive_parry_intercept(mob/defending, attack_type, datum/attack_source, datum/passive_parry/parry_data)
 	if(istype(weapon, /obj/projectile))
 		var/obj/projectile/proj = weapon
 		if(((is_sharp(proj) && proj.armor_penetration >= 10) || proj.damage_tier >= ARMOR_TIER_HIGH || istype(proj, /obj/projectile/beam)) && prob(50))
@@ -61,13 +61,13 @@
 	. = embedded_flash.attack_self(user)
 	update_icon()
 
-/obj/item/shield/riot/flash/passive_parry_intercept(mob/defending, attack_type, datum/weapon, datum/passive_parry/parry_data)
+/obj/item/shield/riot/flash/passive_parry_intercept(mob/defending, attack_type, datum/attack_source, datum/passive_parry/parry_data)
 	. = ..()
 	if(!.)
 		return
 	if(embedded_flash.broken)
 		return
-	if(!(attack_type & (ATTACK_TYPE_MELEE | ATTACK_TYPE_UNARMED)))
+	if(!(attack_type & (ATTACK_TYPE_MELEE)))
 		return
 	// var/datum/event_args/actor/clickchain/clickchain = shieldcall_args[SHIELDCALL_ARG_CLICKCHAIN]
 	// var/mob/attacker = clickchain?.performer
@@ -189,7 +189,7 @@
 	throw_range = 6
 	materials_base = list(MAT_PLASTIC = 7500, "foam" = 1000)
 
-/obj/item/shield/riot/foam/passive_parry_intercept(mob/defending, attack_type, datum/weapon, datum/passive_parry/parry_data)
+/obj/item/shield/riot/foam/passive_parry_intercept(mob/defending, attack_type, datum/attack_source, datum/passive_parry/parry_data)
 	var/allowed = FALSE
 	if(istype(weapon, /obj/projectile))
 		var/obj/projectile/casted_projectile = weapon

@@ -61,12 +61,10 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 		damage_tier,
 		damage_flag,
 		damage_mode,
-		ATTACK_TYPE_UNARMED,
-		src,
+		ATTACK_TYPE_MELEE,
+		clickchain,
 		NONE,
 		clickchain.target_zone,
-		null,
-		clickchain,
 	)
 	return clickchain_flags
 
@@ -89,7 +87,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	return TRUE
 
 /datum/melee_attack/unarmed/estimate_damage(atom/movable/attacker, atom/target, obj/item/weapon)
-	return damage_force
+	return damage
 
 /datum/melee_attack/unarmed/proc/operator""()
 	return pick(attack_verb_legacy)

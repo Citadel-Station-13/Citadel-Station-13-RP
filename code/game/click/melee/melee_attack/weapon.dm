@@ -16,11 +16,9 @@
 		weapon.damage_flag,
 		weapon.damage_mode,
 		ATTACK_TYPE_MELEE,
-		weapon,
+		clickchain,
 		NONE,
 		clickchain.target_zone,
-		null,
-		clickchain,
 	)
 	return clickchain_flags
 

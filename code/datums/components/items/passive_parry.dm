@@ -24,7 +24,7 @@
 	/// * must return /datum/parry_frame or null.
 	/// * if it returns a parry frame, it'll override the frame provided by the passive parry datum
 	/// * if it returns null, it'll cancel the parry
-	/// * invoked, if existing, with (obj/item/parent, mob/defending, attack_type, datum/weapon, datum/passive_parry/parry_data)
+	/// * invoked, if existing, with (obj/item/parent, mob/defending, attack_type, datum/attack_source, datum/passive_parry/parry_data)
 	/// * this allows you to construct a custom parry frame
 	/// * this will be null'd, not qdel'd, when the component is qdel'd
 	var/datum/callback/parry_intercept
@@ -62,7 +62,7 @@
 /**
  * About to start a parry. Resolve parry_frame datum.
  */
-/datum/component/passive_parry/proc/ignite(atom/defending, attack_type, datum/weapon)
+/datum/component/passive_parry/proc/ignite(atom/defending, attack_type, datum/attack_source)
 	RETURN_TYPE(/datum/parry_frame)
 	if(parry_intercept)
 		return parry_intercept.invoke_no_sleep(parent, defending, attack_type, weapon, parry_data)
@@ -246,7 +246,7 @@
  *
  * @return parry frame datum to use, or null to cancel
  */
-/obj/item/proc/passive_parry_intercept(mob/defending, attack_type, datum/weapon, datum/passive_parry/parry_data)
+/obj/item/proc/passive_parry_intercept(mob/defending, attack_type, datum/attack_source, datum/passive_parry/parry_data)
 	return parry_data.parry_frame
 
 //* Data *//

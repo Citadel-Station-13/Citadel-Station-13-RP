@@ -38,8 +38,6 @@
 			proj,
 			NONE,
 			bullet_act_args[BULLET_ACT_ARG_ZONE],
-			null,
-			null,
 		)
 	// turf refs don't change so while QDELETED() doesn't work this is a close approximate
 	// until we have a better system or we decide to pay some overhead to track with a number or something

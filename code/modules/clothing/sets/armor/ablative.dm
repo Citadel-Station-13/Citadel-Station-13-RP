@@ -23,7 +23,7 @@
 	UnregisterSignal(user, COMSIG_ATOM_SHIELDCALL)
 
 /obj/item/clothing/suit/armor/laserproof/proc/shieldcall(mob/defending, list/shieldcall_args, fake_attack)
-	var/damage_source = shieldcall_args[SHIELDCALL_ARG_WEAPON]
+	var/damage_source = shieldcall_args[SHIELDCALL_ARG_ATTACK_SOURCE]
 	var/def_zone = shieldcall_args[SHIELDCALL_ARG_HIT_ZONE]
 	if(istype(damage_source, /obj/projectile/energy) || istype(damage_source, /obj/projectile/beam))
 		var/obj/projectile/P = damage_source

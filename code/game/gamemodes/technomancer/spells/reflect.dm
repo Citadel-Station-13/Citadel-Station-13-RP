@@ -50,7 +50,7 @@
 
 	var/mob/attacker
 	var/damage_to_energy_cost = (damage_to_energy_multiplier * shieldcall_args[SHIELDCALL_ARG_DAMAGE])
-	var/damage_source = shieldcall_args[SHIELDCALL_ARG_WEAPON]
+	var/damage_source = shieldcall_args[SHIELDCALL_ARG_ATTACK_SOURCE]
 
 	if(!pay_energy(damage_to_energy_cost))
 		to_chat(owner, "<span class='danger'>Your shield fades due to lack of energy!</span>")

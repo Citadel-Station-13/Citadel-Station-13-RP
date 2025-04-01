@@ -111,7 +111,7 @@
  *
  * @return raw damage taken
  */
-/atom/proc/inflict_atom_damage(damage, damage_type, damage_tier, damage_flag, damage_mode, hit_zone, attack_type, datum/weapon)
+/atom/proc/inflict_atom_damage(damage, damage_type, damage_tier, damage_flag, damage_mode, hit_zone, attack_type, datum/attack_source)
 	if(!integrity_enabled)
 		return 0
 	if(integrity_flags & INTEGRITY_INDESTRUCTIBLE)

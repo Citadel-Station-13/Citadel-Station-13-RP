@@ -3,8 +3,8 @@
 
 /mob/living/carbon/on_melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/attack_style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	if(weapon)
-		if(check_neckgrab_attack(weapon, user, target_zone))
-			return clickahin_flags | CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_ATTACK
+		if(check_neckgrab_attack(weapon, attacker, target_zone))
+			return clickchain_flags | CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_ATTACK
 	if(attacker != src)
 		var/hit_zone = get_zone_with_miss_chance(target_zone, src, user.get_accuracy_penalty())
 		if(!hit_zone)
@@ -18,7 +18,7 @@
 
 //* FX *//
 
-/mob/living/carbon/get_combat_fx_classifier(attack_type, datum/weapon, target_zone)
+/mob/living/carbon/get_combat_fx_classifier(attack_type, datum/attack_source, target_zone)
 	if(!target_zone)
 		return ..()
 	var/obj/item/organ/external/hit_bodypart = get_organ(target_zone)

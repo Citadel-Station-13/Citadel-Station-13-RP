@@ -7,10 +7,7 @@
 #define ATTACK_TYPE_PROJECTILE (1<<1)
 /// damage source is /datum/thrownthing
 #define ATTACK_TYPE_THROWN (1<<2)
-/// we're being contacted by something
-///
-/// * used internally by parry frames, mostly
-/// * damage source is null
+/// damage source is /datum/event_args/actor/clickchain
 #define ATTACK_TYPE_TOUCH (1<<4)
 /// a damage instance created by a block / parry frame transmuting damage and passing it to the user
 #define ATTACK_TYPE_DEFENSIVE_PASSTHROUGH (1<<5)

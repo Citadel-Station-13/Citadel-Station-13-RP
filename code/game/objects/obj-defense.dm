@@ -29,8 +29,6 @@
 			proj,
 			NONE,
 			bullet_act_args[BULLET_ACT_ARG_ZONE],
-			null,
-			null,
 		)
 	if(QDELETED(src))
 		impact_flags |= PROJECTILE_IMPACT_TARGET_DELETED

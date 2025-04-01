@@ -59,7 +59,7 @@
 	var/atom/movable/AM = parent
 	AM.unregister_shieldcall(shieldcall)
 
-/datum/component/parry_frame/proc/on_parry(attack_type, datum/weapon, shieldcall_returns, efficiency)
+/datum/component/parry_frame/proc/on_parry(attack_type, datum/attack_source, shieldcall_returns, efficiency)
 	++hit_count
 	// check drop
 	if(hit_count > active_parry.parry_drop_after_hits)
@@ -299,7 +299,7 @@
  * * attack_source_descriptor - (optional) text, or an entity to describe the attack. entities will be automatically handled.
  * * tool_text - (optional) text to describe the parry tool
  */
-/datum/parry_frame/proc/perform_audiovisuals(atom/defending, attack_type, efficiency, datum/weapon, shieldcall_flags, severity = 75, attack_source_descriptor, tool_text)
+/datum/parry_frame/proc/perform_audiovisuals(atom/defending, attack_type, efficiency, datum/attack_source, shieldcall_flags, severity = 75, attack_source_descriptor, tool_text)
 	playsound(defending, (islist(parry_sfx) && length(parry_sfx)) ? pick(parry_sfx) : parry_sfx , severity, TRUE)
 	new parry_vfx(null, defending, src, shieldcall_flags & SHIELDCALL_FLAG_SINGLE_PARRY)
 
@@ -336,7 +336,7 @@
  *
  * @return SHIELDCALL_* flags; these override the caller's!
  */
-/datum/parry_frame/proc/perform_aftereffects(atom/defending, attack_type, efficiency, datum/weapon, shieldcall_flags)
+/datum/parry_frame/proc/perform_aftereffects(atom/defending, attack_type, efficiency, datum/attack_source, shieldcall_flags)
 	. = shieldcall_flags
 
 	var/atom/movable/aggressor

@@ -99,7 +99,7 @@
 	return ..()
 
 /obj/structure/grille/on_melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/attack_style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-	if(shock(user, 70, weapon))
+	if(shock(attacker, 70, weapon))
 		return clickchain_flags | CLICKCHAIN_DO_NOT_ATTACK | CLICKCHAIN_DID_SOMETHING
 	return ..()
 

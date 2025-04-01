@@ -95,8 +95,8 @@
 			damage_flag,
 			damage_mode,
 			ATTACK_TYPE_MELEE,
+			clickchain,
 			hit_zone = target_zone,
-			clickchain = clickchain,
 		)
 	return TRUE
 

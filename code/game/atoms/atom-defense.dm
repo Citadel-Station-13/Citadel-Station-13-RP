@@ -262,7 +262,7 @@
  *
  * @return COMBAT_IMPACT_FX_* classifier
  */
-/atom/proc/get_combat_fx_classifier(attack_type, datum/weapon, target_zone)
+/atom/proc/get_combat_fx_classifier(attack_type, datum/attack_source, target_zone)
 	return COMBAT_IMPACT_FX_GENERIC
 
 //* Hitsound API *//
@@ -279,14 +279,14 @@
  * * attack_type - attack type enum like melee / projectile / thrown / unarmed / etc
  * * weapon - attacking /obj/item for melee / thrown, /obj/projectile for ranged, /mob for unarmed
  */
-/atom/proc/hitsound_override(damage_type, damage_mode, attack_type, datum/weapon)
+/atom/proc/hitsound_override(damage_type, damage_mode, attack_type, datum/attack_source)
 	return // default is null
 
 /atom/proc/hitsound_melee(obj/item/I)
 	. = I.attacksound_override(src, ATTACK_TYPE_MELEE)
 	if(!isnull(.))
 		return
-	. = hitsound_override(I.damage_type, I.damage_mode, ATTACK_TYPE_MELEE, I)
+	. = hitsound_override(I.damage_type, I.damage_mode, ATTACK_TYPE_MELEE)
 	if(.)
 		return
 	. = (I.damage_type == DAMAGE_TYPE_BURN? hit_sound_burn : hit_sound_brute) || I.attack_sound
@@ -327,7 +327,7 @@
 
 /atom/proc/hitsound_unarmed(mob/M, datum/melee_attack/unarmed/style)
 	//? todo: style gets final say
-	. = hitsound_override(M, style.damage_mode, ATTACK_TYPE_UNARMED, style)
+	. = hitsound_override(M, style.damage_mode, ATTACK_TYPE_MELEE)
 	if(.)
 		return
 	// todo: way to override this from style side? we don't just want hitsound brute/burn.
