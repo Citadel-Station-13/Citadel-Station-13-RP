@@ -24,6 +24,10 @@
 
 /obj/turbolift_map_holder/Initialize(mapload)
 	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+// since this WILL cause qdels (on other atoms) to be invoked
+/obj/turbolift_map_holder/LateInitialize()
 	// Create our system controller.
 	var/datum/turbolift/lift = new()
 
@@ -249,4 +253,3 @@
 			light2.setDir(NORTH)
 
 	lift.open_doors()
-	return INITIALIZE_HINT_QDEL
