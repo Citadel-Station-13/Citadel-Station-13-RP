@@ -2998,6 +2998,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/trusted-types@npm:^2.0.7":
+  version: 2.0.7
+  resolution: "@types/trusted-types@npm:2.0.7"
+  checksum: 10c0/4c4855f10de7c6c135e0d32ce462419d8abbbc33713b31d294596c0cc34ae1fa6112a2f9da729c8f7a20707782b0d69da3b1f8df6645b0366d08825ca1522e0c
+  languageName: node
+  linkType: hard
+
 "@types/webpack-env@npm:^1.18.5":
   version: 1.18.8
   resolution: "@types/webpack-env@npm:1.18.8"
@@ -5125,10 +5132,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dompurify@npm:^2.3.1":
-  version: 2.3.1
-  resolution: "dompurify@npm:2.3.1"
-  checksum: 10c0/cf82f83551ef8537a761e4f035cde712ef5ad55f2c632b9788266dceb74b8ac65d13e443772bf2f8b6ff98cc1bf41579bbf1622a1149be6fb484fd3e2d478b81
+"dompurify@npm:^3.2.4":
+  version: 3.2.4
+  resolution: "dompurify@npm:3.2.4"
+  dependencies:
+    "@types/trusted-types": "npm:^2.0.7"
+  dependenciesMeta:
+    "@types/trusted-types":
+      optional: true
+  checksum: 10c0/6be56810fb7ad2776155c8fc2967af5056783c030094362c7d0cf1ad13f2129cf922d8eefab528a34bdebfb98e2f44b306a983ab93aefb9d6f24c18a3d027a05
   languageName: node
   linkType: hard
 
@@ -11945,7 +11957,7 @@ __metadata:
   resolution: "tgui-panel@workspace:packages/tgui-panel"
   dependencies:
     common: "workspace:*"
-    dompurify: "npm:^2.3.1"
+    dompurify: "npm:^3.2.4"
     inferno: "npm:^7.4.8"
     tgui: "workspace:*"
     tgui-dev-server: "workspace:*"
@@ -12017,7 +12029,7 @@ __metadata:
     "@popperjs/core": "npm:^2.9.3"
     common: "workspace:*"
     dateformat: "npm:^4.5.1"
-    dompurify: "npm:^2.3.1"
+    dompurify: "npm:^3.2.4"
     inferno: "npm:^7.4.8"
     inferno-vnode-flags: "npm:^7.4.8"
     js-yaml: "npm:^4.1.0"
