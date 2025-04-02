@@ -367,7 +367,7 @@
 		return FALSE
 
 	if(get_dist(src,target) > 7)
-		to_chat(src,"<span class='warning'>There's nobody nearby to use this on.</span>")
+		to_chat(src,"<span class='warning'>That person is too far away.</span>")
 		return FALSE
 
 	visible_message("<span class='warning'>[src] deforms and contorts strangely...</span>")
@@ -433,7 +433,7 @@
 		BP_R_LEG,
 		BP_R_FOOT
 	))
-		var/status = pref.organ_data[name]
+
 		var/obj/item/organ/external/O = src.organs_by_name[name]
 		if(O)
 			if(pref.rlimb_data[name])

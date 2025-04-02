@@ -556,63 +556,6 @@ var/list/wrapped_species_by_ref = list()
 	..()
 
 
-/mob/living/carbon/human/proc/shapeshifter_copy_appearance()
-	set name = "Mimic Appearance"
-	set category = "Abilities"
-
-	if(stat || world.time < last_special)
-		return
-
-	last_special = world.time + 50 //eh, i'll just leave it as an additional cooldown
-
-	var/list/valid_moblist = list()
-
-	for(var/mob/living/carbon/human/M in oview(7))
-		valid_moblist |= M
-
-	var/mob/living/carbon/human/target = input(src,"Who do you wish to target?","Mimic Target") as null|anything in valid_moblist
-
-	if(!istype(target))
-		return FALSE
-
-	if(target.client.prefs.resleeve_lock)
-		to_chat(src,"<span class='warning'>This person has enabled Prevent Body Impersonation, you cannot copy them!</span>")
-		return FALSE
-
-	if(get_dist(src,target) > 3)
-		to_chat(src,"<span class='warning'>There's nobody nearby to use this on.</span>")
-		return FALSE
-
-	visible_message("<span class='warning'>[src] deforms and contorts strangely...</span>")
-	if(!do_after(src, 50)) //5 seconds
-		return FALSE
-
-
-	shapeshifter_copy_core_features(target)
-
-
-	//markings and limbs time.
-	//ensure we get synthlimb markings if target has them
-	synth_markings = target.synth_markings
-
-	//copies all of the target's markings.
-	for(var/BP in target.organs_by_name)
-		var/obj/item/organ/external/their_organ = target.organs_by_name[BP]
-		var/obj/item/organ/external/our_organ = organs_by_name[BP]
-		if(their_organ && our_organ)
-			our_organ.s_col_blend = their_organ.s_col_blend
-			var/list/markings_to_copy = their_organ.markings.Copy()
-			our_organ.markings = markings_to_copy
-		if(our_organ)
-			our_organ.sync_colour_to_human(src)
-
-	//for xenochim and prommies only
-	if(target.species && istype(target.species, /datum/species))
-		wrapped_species_by_ref["\ref[src]"] = target.species.name
-	regenerate_icons()
-
-
-
 
 /mob/living/carbon/human/proc/shapeshifter_copy_core_features(var/mob/living/carbon/human/target)
 	change_gender(target.gender)
