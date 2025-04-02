@@ -124,7 +124,6 @@
 
 /proc/resolve_shieldcall_weapon_descriptor(list/shieldcall_args)
 	switch(shieldcall_args[SHIELDCALL_ARG_ATTACK_TYPE])
-		#warn deal with this
 		if(ATTACK_TYPE_MELEE)
 			var/datum/event_args/actor/clickchain/clickchain = shieldcall_args[SHIELDCALL_ARG_ATTACK_SOURCE]
 			if(clickchain)

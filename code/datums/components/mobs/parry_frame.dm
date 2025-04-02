@@ -436,7 +436,6 @@
 
 // todo: reconcile with shieldcall args
 /datum/parry_frame/proc/handle_melee(atom/defending, shieldcall_returns, fake_attack, efficiency, datum/event_args/actor/clickchain/clickchain, datum/melee_attack/style, obj/item/weapon, tool_text)
-	#warn below
 	. = shieldcall_returns
 	// todo: doesn't take into account any damage randomization
 	var/estimated_damage = style.estimate_damage(weapon)
