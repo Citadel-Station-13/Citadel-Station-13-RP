@@ -27463,7 +27463,6 @@
 /obj/effect/floor_decal/spline/plain,
 /obj/structure/window/reinforced,
 /obj/structure/reagent_dispensers/water_cooler/full,
-/obj/item/reagent_containers/glass/cooler_bottle,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "vam" = (
