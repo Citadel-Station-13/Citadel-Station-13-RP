@@ -11321,9 +11321,6 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/showers)
 "irW" = (
-/obj/machinery/light{
-	dir = 8
-	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
 	},
@@ -14582,12 +14579,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/foyer)
-"kSm" = (
-/obj/effect/paint/palebottlegreen,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/plating,
-/area/hydroponics/garden)
 "kTd" = (
 /obj/structure/closet/secure_closet/security,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -24574,6 +24565,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
+/obj/machinery/light,
 /turf/simulated/floor/wood,
 /area/endeavour/hallway/d3fwdhall)
 "sjq" = (
@@ -26833,6 +26825,12 @@
 	},
 /obj/effect/floor_decal/corner/navgold/bordercorner2{
 	dir = 10
+	},
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12;
+	name = "long range light fixture";
+	desc = "A lighting fixture. This one seem to toss its light further than standard light fixtures."
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/recreation_area)
@@ -52410,7 +52408,7 @@ hmk
 iNE
 ciC
 twA
-kSm
+mch
 xqn
 qBQ
 iIc

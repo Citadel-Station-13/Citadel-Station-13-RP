@@ -5815,6 +5815,15 @@
 /obj/structure/dispenser/oxygen,
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
+"dWK" = (
+/obj/machinery/atmospherics/component/unary/freezer{
+	icon_state = "freezer_1";
+	power_setting = 20;
+	set_temperature = 73;
+	use_power = 1
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/research/port)
 "dWP" = (
 /obj/structure/table/standard,
 /obj/item/anodevice,
@@ -6819,15 +6828,9 @@
 /turf/simulated/floor/tiled/white,
 /area/holodeck_control)
 "eKw" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/effect/floor_decal/corner/navblue/bordercorner2{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/endeavour/hallway/d2afthall)
+/obj/machinery/atmospherics/pipe/manifold/hidden/purple,
+/turf/simulated/wall/r_wall/prepainted/science,
+/area/maintenance/research/port)
 "eKM" = (
 /obj/machinery/camera/network/outside{
 	dir = 5
@@ -8428,6 +8431,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2fwdhall)
+"fQV" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/purple{
+	dir = 4
+	},
+/turf/simulated/wall/r_wall/prepainted/science,
+/area/maintenance/research/port)
 "fSg" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
@@ -9216,12 +9225,16 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
 "guA" = (
-/obj/machinery/portable_atmospherics/canister/carbon_dioxide{
-	start_pressure = 8500
+/obj/machinery/atmospherics/pipe/simple/hidden/purple{
+	dir = 4
 	},
-/obj/effect/floor_decal/industrial/outline/red,
-/turf/simulated/floor/tiled,
-/area/rnd/research_foyer_auxiliary)
+/obj/machinery/computer/atmoscontrol/laptop{
+	monitored_alarm_ids = list("xenopenvent");
+	req_one_access = list(47,24,11)
+	},
+/obj/structure/table/glass,
+/turf/simulated/floor/reinforced,
+/area/rnd/xenobiology)
 "guQ" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -10063,11 +10076,9 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
 "hcm" = (
-/obj/structure/cable/green{
-	icon_state = "1-8"
-	},
-/turf/space/basic,
-/area/space)
+/obj/machinery/atmospherics/portables_connector,
+/turf/simulated/floor/tiled,
+/area/rnd/research_foyer_auxiliary)
 "hdc" = (
 /obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled,
@@ -16273,6 +16284,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
+"lHP" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/purple{
+	dir = 6
+	},
+/turf/simulated/wall/r_wall/prepainted/science,
+/area/rnd/xenobiology)
 "lHV" = (
 /obj/machinery/camera/network/research,
 /obj/effect/floor_decal/borderfloor{
@@ -17215,11 +17232,11 @@
 /area/medical/medbay3)
 "mrs" = (
 /obj/machinery/meter,
-/obj/machinery/atmospherics/pipe/manifold/visible/purple{
-	dir = 1
-	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/purple{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
@@ -19063,7 +19080,7 @@
 /area/maintenance/research/port)
 "nKo" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "AUX - DECK 2 AFT"
+	RCon_tag = "MAIN - DECK 2 AFT"
 	},
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck2aft)
@@ -19117,6 +19134,9 @@
 /area/endeavour/hallway/reservehanger)
 "nMd" = (
 /obj/machinery/recharge_station,
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/researchdivision)
 "nMh" = (
@@ -19140,9 +19160,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
 "nMK" = (
-/obj/machinery/light{
-	dir = 8
-	},
 /obj/machinery/air_alarm/west_mount,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/researchdivision)
@@ -20247,10 +20264,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "oGQ" = (
-/obj/machinery/portable_atmospherics/canister/carbon_dioxide{
-	start_pressure = 8500
-	},
-/obj/effect/floor_decal/industrial/outline/red,
 /obj/machinery/camera/network/research{
 	dir = 1
 	},
@@ -20651,6 +20664,12 @@
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
+"oXp" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/purple{
+	dir = 9
+	},
+/turf/simulated/wall/r_wall/prepainted/science,
+/area/maintenance/research/port)
 "oXH" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
@@ -23060,9 +23079,20 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_a)
 "qtF" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/purple,
-/turf/simulated/floor/tiled,
-/area/rnd/research_foyer_auxiliary)
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/purple{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/rnd/xenobiology)
 "qtU" = (
 /obj/structure/symbol/es,
 /turf/simulated/wall/prepainted/science,
@@ -24438,11 +24468,13 @@
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
 "rwR" = (
-/obj/machinery/atmospherics/component/unary/freezer{
-	dir = 1
+/obj/machinery/portable_atmospherics/canister/carbon_dioxide{
+	start_pressure = 8500
 	},
-/turf/simulated/floor/tiled,
-/area/rnd/research_foyer_auxiliary)
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/machinery/atmospherics/portables_connector,
+/turf/simulated/floor/plating,
+/area/maintenance/research/port)
 "rxC" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/storage/briefcase/inflatable,
@@ -24721,6 +24753,9 @@
 "rKu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/purple{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
@@ -28737,11 +28772,11 @@
 /area/rnd/research_foyer)
 "uGR" = (
 /obj/machinery/atmospherics/portables_connector,
-/obj/machinery/portable_atmospherics/canister/carbon_dioxide{
-	start_pressure = 8500
-	},
 /obj/machinery/air_alarm{
 	pixel_y = 22
+	},
+/obj/machinery/portable_atmospherics/canister/carbon_dioxide{
+	start_pressure = 8500
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
@@ -32764,9 +32799,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
 "xug" = (
-/obj/machinery/power/breakerbox/activated{
-	RCon_tag = "MAIN - DECK 2 AMIDSHIPS"
-	},
 /obj/machinery/power/breakerbox/activated{
 	RCon_tag = "MAIN - DECK 2 FORE"
 	},
@@ -38287,8 +38319,8 @@ oNw
 avH
 qgi
 gHT
-hZY
-xDG
+sUJ
+lHP
 hZY
 xDG
 hZY
@@ -38481,7 +38513,7 @@ oNw
 skr
 eLj
 eLj
-oNw
+vLZ
 vLZ
 pFL
 wwD
@@ -38675,7 +38707,7 @@ oNw
 skr
 eLj
 eLj
-oNw
+vLZ
 vLZ
 dsi
 ilx
@@ -38869,7 +38901,7 @@ oNw
 skr
 jpQ
 uEv
-oNw
+vLZ
 vLZ
 dsi
 ilx
@@ -39058,12 +39090,12 @@ pRW
 pRW
 pRW
 pRW
-hcm
+pRW
 oNw
 fry
 wzn
 aIM
-oNw
+vLZ
 vLZ
 uxu
 lTx
@@ -39252,12 +39284,12 @@ pRW
 pRW
 pRW
 pRW
-hcm
+pRW
 oNw
 cuK
 pFm
 aqz
-oNw
+guA
 vLZ
 jQD
 mKe
@@ -39451,7 +39483,7 @@ oNw
 miF
 aVO
 aVO
-xpN
+qtF
 ckH
 sni
 aVO
@@ -39839,7 +39871,7 @@ oNw
 oNw
 ubJ
 oNw
-oNw
+vLZ
 vLZ
 oNw
 oNw
@@ -40033,7 +40065,7 @@ jib
 eKk
 kWG
 tQr
-jib
+fQV
 vLZ
 fmI
 ilx
@@ -40226,8 +40258,8 @@ pRW
 jib
 odS
 kWG
-tQr
-jib
+dWK
+eKw
 ujt
 poV
 tgM
@@ -40420,8 +40452,8 @@ eWn
 jib
 uxS
 kWG
-tQr
-jib
+rwR
+eKw
 vLZ
 vWZ
 gZv
@@ -40614,8 +40646,8 @@ vPR
 jib
 lCp
 kWG
-tQr
-jib
+rwR
+oXp
 vLZ
 pdP
 pdP
@@ -41603,7 +41635,7 @@ uOW
 vLZ
 lzL
 rMF
-guA
+rMF
 xSp
 qGt
 wAu
@@ -42184,8 +42216,8 @@ oNw
 oNw
 oNw
 mrs
-qtF
-rwR
+rMF
+rMF
 xSp
 atE
 iMx
@@ -42573,7 +42605,7 @@ xSp
 uGR
 oQz
 rMF
-rMF
+hcm
 xSp
 dro
 tLC
@@ -48205,7 +48237,7 @@ eYr
 vKr
 bNQ
 wIK
-eKw
+npr
 cFq
 aCi
 nbH

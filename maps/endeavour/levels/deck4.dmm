@@ -5545,16 +5545,10 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4portafthall)
 "fzO" = (
-/obj/machinery/light{
-	dir = 4
-	},
 /obj/machinery/computer/security/telescreen{
 	pixel_x = 32
 	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/wood,
+/turf/simulated/wall/prepainted/civilian,
 /area/crew_quarters/bar)
 "fzP" = (
 /obj/structure/cable/green{
@@ -5867,6 +5861,16 @@
 	dir = 1
 	},
 /turf/simulated/floor/carpet/bcarpet,
+/area/crew_quarters/bar)
+"fOH" = (
+/obj/item/stool/padded,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "fOW" = (
 /turf/simulated/wall/prepainted/engineering,
@@ -7197,9 +7201,6 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/machinery/light{
-	dir = 1
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -7213,6 +7214,7 @@
 /obj/effect/floor_decal/corner/navblue/bordercorner2{
 	dir = 1
 	},
+/obj/machinery/camera/network/civilian,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4starboardamidhall)
 "hlM" = (
@@ -12461,6 +12463,21 @@
 /obj/item/tool/wrench,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/engineering/atmos/workshop)
+"mGg" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/endeavour/hallway/d4starboardamidhall)
 "mHU" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -19285,7 +19302,6 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/camera/network/civilian,
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4starboardamidhall)
 "utR" = (
@@ -41044,7 +41060,7 @@ eRS
 eRS
 iFT
 iFT
-iFT
+fzO
 evq
 kRo
 lAf
@@ -41252,7 +41268,7 @@ nih
 xjc
 cMR
 iFT
-eBL
+mGg
 tZq
 bNu
 gLy
@@ -42207,7 +42223,7 @@ ydy
 tqM
 eRS
 iFT
-iFT
+fzO
 gzp
 piY
 rqK
@@ -43572,8 +43588,8 @@ dzR
 dzR
 dzR
 gTC
-dzR
-fzO
+fOH
+mqE
 nRQ
 fTC
 rUb
