@@ -2291,9 +2291,6 @@
 	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
-	icon_state = "2-8"
-	},
-/obj/structure/cable/green{
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -13698,7 +13695,6 @@
 /obj/machinery/camera/network/command{
 	dir = 8
 	},
-/obj/structure/cable/green,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)
 "aQV" = (

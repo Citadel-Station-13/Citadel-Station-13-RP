@@ -5199,6 +5199,9 @@
 	name = "Virology Purge Chamber";
 	req_one_access = null
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/medical/virologymorgue)
 "dxC" = (
@@ -5297,6 +5300,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/dark,
 /area/medical/virologymorgue)
 "dBw" = (
@@ -13123,6 +13127,19 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/tankstorage)
+"itR" = (
+/obj/machinery/power/apc/south_mount,
+/obj/structure/cable/green,
+/obj/structure/table/standard,
+/obj/item/storage/box/bodybags,
+/obj/machinery/atmospherics/component/unary/outlet_injector{
+	dir = 8;
+	id = "violet_protocol";
+	use_power = 1;
+	volume_rate = 700
+	},
+/turf/simulated/floor/tiled/dark,
+/area/medical/virologymorgue)
 "itT" = (
 /obj/structure/table/hardwoodtable,
 /obj/machinery/light_construct/small{
@@ -17908,12 +17925,6 @@
 	},
 /turf/simulated/floor/wood/broken,
 /area/maintenance/maint_bar)
-"ljf" = (
-/obj/structure/table/standard,
-/obj/item/storage/firstaid/surgery,
-/obj/item/autopsy_scanner,
-/turf/simulated/floor/tiled/freezer,
-/area/medical/virologymorgue)
 "ljo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -18254,16 +18265,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "lvS" = (
-/obj/machinery/power/apc/south_mount,
-/obj/structure/cable/green,
-/obj/structure/table/standard,
-/obj/item/storage/box/bodybags,
-/obj/machinery/atmospherics/component/unary/outlet_injector{
-	dir = 8;
-	id = "violet_protocol";
-	use_power = 1;
-	volume_rate = 700
-	},
+/obj/machinery/atmospherics/pipe/simple/visible/green,
 /turf/simulated/floor/tiled/dark,
 /area/medical/virologymorgue)
 "lwi" = (
@@ -35563,19 +35565,6 @@
 /obj/structure/railing,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside1)
-"vfp" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 10
-	},
-/obj/machinery/air_alarm{
-	alarm_id = "anomaly_testing";
-	breach_detection = 0;
-	dir = 8;
-	pixel_x = 22;
-	report_danger_level = 0
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/medical/virologymorgue)
 "vfP" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint/purplegray,
@@ -35805,6 +35794,19 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+"vqz" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 10
+	},
+/obj/machinery/air_alarm{
+	alarm_id = "anomaly_testing";
+	breach_detection = 0;
+	dir = 8;
+	pixel_x = 22;
+	report_danger_level = 0
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/medical/virologymorgue)
 "vqP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -39467,6 +39469,12 @@
 	},
 /turf/simulated/floor/carpet/gaycarpet,
 /area/tether/surfacebase/funny/clownoffice)
+"xwY" = (
+/obj/structure/table/standard,
+/obj/item/storage/firstaid/surgery,
+/obj/item/autopsy_scanner,
+/turf/simulated/floor/tiled/freezer,
+/area/medical/virologymorgue)
 "xxc" = (
 /obj/structure/table/reinforced,
 /obj/machinery/button/remote/blast_door{
@@ -39969,10 +39977,6 @@
 /obj/structure/stairs/spawner/south,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/civilian_hallway_mid)
-"xOx" = (
-/obj/machinery/atmospherics/pipe/simple/visible/green,
-/turf/simulated/floor/tiled/dark,
-/area/medical/virologymorgue)
 "xOz" = (
 /obj/machinery/shower{
 	pixel_y = 17
@@ -62588,10 +62592,10 @@ qut
 sjM
 vtt
 epg
-ljf
+xwY
 nAP
 qqS
-lvS
+itR
 epg
 hgE
 hgE
@@ -62783,7 +62787,7 @@ sZt
 uYi
 epg
 iYu
-xOx
+lvS
 gWo
 ouJ
 epg
@@ -62977,7 +62981,7 @@ ssV
 vwU
 epg
 mrL
-vfp
+vqz
 dAY
 ouJ
 epg
