@@ -398,6 +398,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
+"aqa" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters/pool)
 "aqn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -6214,9 +6220,8 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
 	},
-/obj/machinery/status_display/supply_display{
-	mode = 99;
-	pixel_y = 32
+/obj/machinery/status_display{
+	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/foyer)
@@ -6836,11 +6841,8 @@
 /turf/simulated/floor/wood,
 /area/quartermaster/office)
 "fcJ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool/changing_room)
@@ -9881,18 +9883,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/starboardsolar)
 "hmW" = (
-/obj/machinery/camera/network/civilian{
-	dir = 8
-	},
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/effect/floor_decal/grass_edge{
-	dir = 4
-	},
-/obj/effect/floor_decal/grass_edge{
-	dir = 8
-	},
-/turf/simulated/floor/grass,
-/area/hydroponics/garden)
+/obj/machinery/recharge_station,
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters/pool/changing_room)
 "hnK" = (
 /obj/structure/bed/chair/wood{
 	dir = 4
@@ -15696,14 +15689,14 @@
 /turf/simulated/floor/tiled/monodark,
 /area/quartermaster/belterdock/refinery)
 "lRX" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
-	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area_hallway)
@@ -15725,6 +15718,9 @@
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
+	},
+/obj/machinery/status_display{
+	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/dark,
 /area/endeavour/hallway/d3fwdhall)
@@ -17356,6 +17352,7 @@
 /obj/item/radio/intercom{
 	pixel_y = -24
 	},
+/obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
 "neN" = (
@@ -18401,7 +18398,12 @@
 /turf/simulated/floor/reinforced,
 /area/quartermaster/warehouse)
 "nRw" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
 "nRx" = (
@@ -18467,6 +18469,9 @@
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
+	},
+/obj/machinery/status_display{
+	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/dark,
 /area/endeavour/hallway/d3fwdhall)
@@ -19473,6 +19478,9 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/effect/floor_decal/grass_edge{
 	dir = 5
+	},
+/obj/machinery/status_display{
+	pixel_y = 30
 	},
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
@@ -23114,8 +23122,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool/changing_room)
@@ -25379,6 +25387,12 @@
 "sRU" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
@@ -28495,6 +28509,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3fwdhall)
+"vjP" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/machinery/recharge_station,
+/turf/simulated/floor/tiled/dark,
+/area/endeavour/hallway/d3afthall)
 "vkh" = (
 /obj/structure/table/reinforced,
 /obj/item/forensics/sample_kit,
@@ -31328,6 +31349,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3portamidhall)
+"xdg" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/status_display{
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters/pool)
 "xdT" = (
 /obj/structure/railing,
 /obj/random/mouseremains,
@@ -31362,6 +31392,9 @@
 "xeB" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
+	},
+/obj/machinery/status_display{
+	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
@@ -31713,6 +31746,9 @@
 	},
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 9
+	},
+/obj/machinery/status_display{
+	pixel_y = 30
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3afthall)
@@ -32846,6 +32882,7 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3aftmaint)
 "ykp" = (
+/obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/white,
 /area/endeavour/hallway/d3fwdhall)
 "ykr" = (
@@ -38602,7 +38639,7 @@ lLG
 lLG
 lLG
 lLG
-jGZ
+xdg
 sci
 rfg
 rfg
@@ -39568,7 +39605,7 @@ sZl
 bFC
 qAc
 iac
-rdY
+aqa
 qnF
 fiv
 rdY
@@ -40926,8 +40963,8 @@ oBb
 wYW
 wbn
 dIR
-viU
 iiJ
+hmW
 fPF
 fPF
 dia
@@ -43454,7 +43491,7 @@ rDj
 rjl
 hXA
 gvl
-mKv
+vjP
 skT
 tXY
 riw
@@ -54899,7 +54936,7 @@ hJb
 vfr
 mBj
 efB
-hmW
+nkY
 bYk
 nkY
 owt
