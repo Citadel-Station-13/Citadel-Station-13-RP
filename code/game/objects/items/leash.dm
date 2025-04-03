@@ -186,11 +186,13 @@
 /obj/item/leash/proc/clear_leash()
 	leash_pet?.clear_alert("leashed")
 	leash_pet?.remove_a_modifier_of_type(/datum/modifier/leash)
-	UnregisterSignal(leash_pet, COMSIG_MOVABLE_MOVED)
+	if(leash_pet)
+		UnregisterSignal(leash_pet, COMSIG_MOVABLE_MOVED)
 	leash_pet = null
 
 	leash_master?.clear_alert("leash")
-	UnregisterSignal(leash_master, COMSIG_MOVABLE_MOVED)
+	if(leash_master)
+		UnregisterSignal(leash_master, COMSIG_MOVABLE_MOVED)
 	leash_master = null
 
 	STOP_PROCESSING(SSobj, src)
