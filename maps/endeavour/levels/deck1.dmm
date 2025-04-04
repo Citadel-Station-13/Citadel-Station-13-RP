@@ -4899,6 +4899,9 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
+"dNX" = (
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d1fwdhall)
 "dOJ" = (
 /obj/machinery/light{
 	dir = 8
@@ -5614,6 +5617,12 @@
 /obj/structure/table/rack/shelf,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1fwdmaint)
+"epS" = (
+/obj/structure/morgue/crematorium{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/chapel/main)
 "eqh" = (
 /obj/structure/table/rack,
 /obj/random/toy,
@@ -16928,6 +16937,8 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
+/obj/effect/floor_decal/borderfloorblack/corner2,
+/obj/effect/floor_decal/corner/navgold/bordercorner2,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1fwdhall)
 "mSi" = (
@@ -22586,6 +22597,12 @@
 "rfe" = (
 /turf/simulated/wall/prepainted/command,
 /area/crew_quarters/heads/blueshield)
+"rfm" = (
+/obj/machinery/camera/network/outside{
+	dir = 8
+	},
+/turf/simulated/floor/airless/ceiling,
+/area/space)
 "rfr" = (
 /turf/simulated/wall/r_wall/prepainted/exploration,
 /area/shuttle/courser/cockpit)
@@ -22692,6 +22709,12 @@
 	},
 /obj/effect/floor_decal/borderfloorblack/corner2,
 /obj/effect/floor_decal/corner/navgold/bordercorner2,
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/navgold/bordercorner2{
+	dir = 9
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1fwdhall)
 "rlA" = (
@@ -40251,19 +40274,19 @@ xRj
 xRj
 xRj
 xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
+hfY
+hfY
+hfY
+hfY
+hfY
+hfY
+hfY
+hfY
+hfY
+hfY
+hfY
+hfY
+hfY
 mJc
 lRr
 dsk
@@ -40445,19 +40468,19 @@ xRj
 xRj
 xRj
 xRj
-xRj
-xRj
-xRj
-xRj
-fZu
-xRj
-xRj
-xRj
-xRj
-xRj
-fZu
-xRj
-xRj
+hfY
+hfY
+hfY
+hfY
+rfm
+hfY
+hfY
+hfY
+hfY
+hfY
+rfm
+hfY
+hfY
 eLC
 usu
 eLC
@@ -53301,7 +53324,7 @@ ebJ
 fwP
 nCV
 pgA
-xzO
+epS
 xzO
 xzO
 mJy
@@ -54456,7 +54479,7 @@ nCE
 svt
 cuo
 anp
-pWz
+dNX
 dGT
 gnD
 gnD
@@ -54650,7 +54673,7 @@ wCh
 svt
 bSh
 ncC
-pWz
+dNX
 scN
 gnD
 gnD

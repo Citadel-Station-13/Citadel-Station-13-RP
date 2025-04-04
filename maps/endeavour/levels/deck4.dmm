@@ -1983,6 +1983,11 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/starboardnacelle)
+"cco" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/air_alarm/north_mount,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4fwdmaint)
 "cdS" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -3615,6 +3620,20 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
+"dAj" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/navgold/border,
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -31
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/endeavour/hallway/d4starboardforhall)
 "dAM" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/tank/emergency/oxygen/double,
@@ -5508,6 +5527,11 @@
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
+"fym" = (
+/obj/structure/bed/padded,
+/obj/machinery/air_alarm/north_mount,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4aftmaint)
 "fyE" = (
 /obj/machinery/telecomms/receiver/preset_right/endeavour,
 /turf/simulated/floor/tiled/dark{
@@ -6046,6 +6070,20 @@
 /obj/item/stool/padded,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/portnacelle)
+"fXq" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/navgold/border,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -31
+	},
+/turf/simulated/floor/tiled/steel_ridged,
+/area/endeavour/hallway/d4starboardhall)
 "fZf" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -6685,6 +6723,11 @@
 	},
 /turf/space,
 /area/space)
+"gHm" = (
+/obj/structure/closet,
+/obj/machinery/air_alarm/north_mount,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4fwdmaint)
 "gIB" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -10183,6 +10226,10 @@
 /obj/machinery/smartfridge,
 /turf/simulated/floor/plating,
 /area/hydroponics)
+"kgO" = (
+/obj/machinery/air_alarm/north_mount,
+/turf/simulated/floor/plating,
+/area/engineering/portnacelle)
 "kiv" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -13061,6 +13108,21 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
+"nmv" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/navgold/border,
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -31
+	},
+/turf/simulated/floor/tiled/steel_ridged,
+/area/endeavour/hallway/d4starboardamidhall)
 "nmx" = (
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 9
@@ -17188,6 +17250,10 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/steel,
 /area/engineering/atmos/eva)
+"rWi" = (
+/obj/machinery/air_alarm/north_mount,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4aftmaint)
 "rWu" = (
 /obj/structure/catwalk,
 /obj/structure/disposalpipe/segment{
@@ -21356,6 +21422,13 @@
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
+"wrC" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/machinery/air_alarm/north_mount,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4fwdmaint)
 "wrG" = (
 /obj/machinery/atmospherics/pipe/simple/visible/aux{
 	dir = 1
@@ -21688,6 +21761,7 @@
 /obj/structure/table/steel,
 /obj/random/tool,
 /obj/random/maintenance/medical,
+/obj/machinery/air_alarm/north_mount,
 /turf/simulated/floor,
 /area/endeavour/hallway/d4fwdmaint)
 "wJS" = (
@@ -22749,6 +22823,9 @@
 	},
 /obj/machinery/light{
 	dir = 4
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -31
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4portafthall)
@@ -30023,7 +30100,7 @@ fWh
 jNg
 oYG
 uUN
-kkQ
+rWi
 kkQ
 iXz
 hHV
@@ -30187,7 +30264,7 @@ iYp
 rhM
 hZt
 saA
-brM
+kgO
 mPc
 brM
 brM
@@ -31575,7 +31652,7 @@ uHx
 uHx
 uHx
 fpa
-kkQ
+rWi
 tIM
 kkQ
 kkQ
@@ -35265,7 +35342,7 @@ qzJ
 gMP
 lCS
 qzJ
-kkQ
+rWi
 vss
 kkQ
 kkQ
@@ -35859,7 +35936,7 @@ wyp
 cqe
 pcf
 uUN
-gqV
+fym
 cjh
 gqV
 pcf
@@ -37192,7 +37269,7 @@ fOW
 fOW
 fOW
 vra
-fvs
+fXq
 iZT
 bhF
 xCJ
@@ -39488,7 +39565,7 @@ uWc
 sQG
 rZh
 muZ
-lTp
+wrC
 kaY
 kaY
 kaY
@@ -39880,7 +39957,7 @@ muZ
 owo
 owo
 owo
-nmL
+crR
 bkM
 bfx
 bfx
@@ -41038,7 +41115,7 @@ cnc
 kAz
 rcZ
 owo
-kaY
+kmf
 xTZ
 kaY
 kaY
@@ -41628,7 +41705,7 @@ owo
 kaY
 kaY
 owo
-kaY
+kmf
 kaY
 bSj
 kaY
@@ -42434,7 +42511,7 @@ dTA
 iFT
 eBL
 tZq
-bNu
+nmv
 gLy
 kaY
 kaY
@@ -44933,7 +45010,7 @@ jNg
 jNg
 owo
 owo
-ulP
+gHm
 kaY
 kaY
 cSy
@@ -44961,7 +45038,7 @@ vHZ
 swz
 kaY
 owo
-kaY
+kmf
 bAF
 rkP
 xFU
@@ -46877,7 +46954,7 @@ jNg
 jNg
 jNg
 owo
-mcc
+cco
 onY
 wiw
 jNr
@@ -48835,7 +48912,7 @@ cSy
 gLy
 cjJ
 qfU
-kZE
+dAj
 mqs
 kaY
 kaY

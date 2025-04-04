@@ -638,6 +638,11 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "avH" = (
+/obj/machinery/air_sensor{
+	frequency = 2347;
+	id_tag = "killroom_sensor";
+	pixel_y = 24
+	},
 /obj/machinery/conveyor{
 	dir = 4;
 	id = "xenobiocoldroom"
@@ -3621,6 +3626,11 @@
 /obj/random/maintenance/security,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
+"czf" = (
+/obj/random/trash_pile,
+/obj/machinery/air_alarm/north_mount,
+/turf/simulated/floor/plating,
+/area/maintenance/research/port)
 "czJ" = (
 /obj/machinery/door/blast/shutters{
 	density = 0;
@@ -4808,6 +4818,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
+"dqO" = (
+/obj/machinery/air_alarm/north_mount,
+/turf/simulated/floor/plating,
+/area/maintenance/research/port)
 "drj" = (
 /obj/machinery/camera/network/medbay{
 	dir = 8
@@ -9228,11 +9242,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/purple{
 	dir = 4
 	},
-/obj/machinery/computer/atmoscontrol/laptop{
-	monitored_alarm_ids = list("xenopenvent");
-	req_one_access = list(47,24,11)
+/obj/machinery/computer/general_air_control/large_tank_control{
+	frequency = 2347;
+	input_tag = "killroom_in";
+	name = "Kill Room Air Control";
+	output_tag = "";
+	pressure_setting = 0;
+	sensors = list("killroom_sensor"="Xenobio Killroom");
+	dir = 4
 	},
-/obj/structure/table/glass,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "guQ" = (
@@ -9544,7 +9562,11 @@
 	dir = 1;
 	id = "xenobiocoldroom"
 	},
-/obj/machinery/atmospherics/component/unary/outlet_injector,
+/obj/machinery/atmospherics/component/unary/outlet_injector{
+	frequency = 2347;
+	id = "killroom_in";
+	power_rating = 5000
+	},
 /turf/simulated/floor/bluegrid,
 /area/rnd/xenobiology)
 "gHX" = (
@@ -19563,6 +19585,7 @@
 /obj/structure/table/rack,
 /obj/random/maintenance/engineering,
 /obj/random/maintenance/clean,
+/obj/machinery/air_alarm/north_mount,
 /turf/simulated/floor/plating,
 /area/maintenance/research/port)
 "oen" = (
@@ -23638,6 +23661,11 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
+"qLD" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/air_alarm/north_mount,
+/turf/simulated/floor/plating,
+/area/maintenance/research/port)
 "qLJ" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -42767,7 +42795,7 @@ mDp
 pRW
 fik
 jib
-tQr
+dqO
 kWG
 rtv
 rtv
@@ -43931,7 +43959,7 @@ pRW
 eWn
 vPR
 jib
-tQr
+dqO
 kWG
 rtv
 pal
@@ -46650,7 +46678,7 @@ jib
 kWG
 dZX
 jib
-lCp
+czf
 kWG
 qIL
 dSa
@@ -53261,7 +53289,7 @@ lya
 cZD
 xxq
 jib
-kFp
+qLD
 kWG
 ffe
 uIS
