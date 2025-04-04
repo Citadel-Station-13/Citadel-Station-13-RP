@@ -92,6 +92,12 @@
 
 /datum/component/passive_parry/proc/on_equipped(obj/item/source, mob/user, slot)
 	if(!check_slot(slot))
+		if(hooked)
+			ASSERT(user == hooked)
+			hooked = null
+			user.unregister_shieldcall(hooked_shieldcall)
+			QDEL_NULL(hooked_shieldcall)
+			UnregisterSignal(user, COMSIG_ATOM_SHIELDCALL_ITERATION, PROC_REF(shieldcall_iterating))
 		return
 	if(hooked)
 		return
