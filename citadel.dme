@@ -2694,6 +2694,7 @@
 #include "code\modules\clothing\spacesuits\void\station\exploration.dm"
 #include "code\modules\clothing\spacesuits\void\station\medical.dm"
 #include "code\modules\clothing\spacesuits\void\station\operations.dm"
+#include "code\modules\clothing\spacesuits\void\station\science.dm"
 #include "code\modules\clothing\spacesuits\void\station\security.dm"
 #include "code\modules\clothing\spacesuits\void\station\supply.dm"
 #include "code\modules\clothing\suits\_suit.dm"
