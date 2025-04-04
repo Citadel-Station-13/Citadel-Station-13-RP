@@ -16,6 +16,10 @@
 			return
 		S.try_transform()
 	else if(is_holosphere_shell(M))
+		//Are a sphere, being held in an inventory, and the inventory is the AI container, don't break it, by breaking out of that
+		if(istype(M.loc, /obj/item/holder/holosphere_shell) && istype(M.loc.loc, /obj/item/hardsuit_module/ai_container))
+			actor.chat_feedback(SPAN_WARNING("You are integrated with a hardsuit system, get disconnected first."))
+			return
 		var/mob/living/simple_mob/holosphere_shell/H = M
 		var/datum/species/holosphere/S = H.hologram.species
 		if(!istype(S))
