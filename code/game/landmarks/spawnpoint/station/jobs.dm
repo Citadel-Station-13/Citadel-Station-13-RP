@@ -209,10 +209,6 @@
 	name = "Explorer"
 	job_path = /datum/role/job/station/explorer
 
-/obj/landmark/spawnpoint/job/field_medic
-	name = "Field Medic"
-	job_path = /datum/role/job/station/field_medic
-
 /obj/landmark/spawnpoint/job/pathfinder
 	name = "Pathfinder"
 	job_path = /datum/role/job/station/pathfinder
