@@ -289,9 +289,9 @@
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
-"ni" = (
+"ne" = (
 /obj/machinery/computer/general_air_control/supermatter_core{
-	dir = 1;
+	dir = 4;
 	frequency = 1438;
 	input_tag = "cooling_in";
 	name = "Engine Cooling Control";
@@ -299,6 +299,9 @@
 	pressure_setting = 100;
 	sensors = list("engine_sensor"="Engine Core")
 	},
+/turf/template_noop,
+/area/template_noop)
+"ni" = (
 /obj/structure/sign/securearea{
 	pixel_x = 0;
 	pixel_y = -32;
@@ -1929,7 +1932,7 @@ DO
 Aj
 nL
 us
-fS
+ne
 fS
 fS
 fS
