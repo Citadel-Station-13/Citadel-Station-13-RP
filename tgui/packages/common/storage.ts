@@ -7,8 +7,13 @@
  */
 
 export const IMPL_MEMORY = 0;
-export const IMPL_LOCAL_STORAGE = 1;
+export const IMPL_HUB_STORAGE = 1;
 export const IMPL_INDEXED_DB = 2;
+
+type StorageImplementation =
+  | typeof IMPL_MEMORY
+  | typeof IMPL_HUB_STORAGE
+  | typeof IMPL_INDEXED_DB;
 
 const INDEXED_DB_VERSION = 3;
 const INDEXED_DB_NAME = 'tgui-citadel-rp';
@@ -17,7 +22,15 @@ const INDEXED_DB_STORE_NAME = 'tgui-storage';
 const READ_ONLY = 'readonly';
 const READ_WRITE = 'readwrite';
 
-const testGeneric = testFn => () => {
+type StorageBackend = {
+  impl: StorageImplementation;
+  get(key: string): Promise<any>;
+  set(key: string, value: any): Promise<void>;
+  remove(key: string): Promise<void>;
+  clear(): Promise<void>;
+};
+
+const testGeneric = (testFn: () => boolean) => () => {
   try {
     return Boolean(testFn());
   }
@@ -26,79 +39,90 @@ const testGeneric = testFn => () => {
   }
 };
 
-// Localstorage can sometimes throw an error, even if DOM storage is not
-// disabled in IE11 settings.
-// See: https://superuser.com/questions/1080011
-const testLocalStorage = testGeneric(() => (
-  window.localStorage && window.localStorage.getItem
-));
+const testHubStorage = testGeneric(
+  () => window.hubStorage && !!window.hubStorage.getItem,
+);
 
+// TODO: Remove with 516
+// prettier-ignore
 const testIndexedDb = testGeneric(() => (
   (window.indexedDB || window.msIndexedDB)
-  && (window.IDBTransaction || window.msIDBTransaction)
+  && !!(window.IDBTransaction || window.msIDBTransaction)
 ));
 
-class MemoryBackend {
+class MemoryBackend implements StorageBackend {
+  private store: Record<string, any>;
+  public impl: StorageImplementation;
+
   constructor() {
     this.impl = IMPL_MEMORY;
     this.store = {};
   }
 
-  get(key) {
+  async get(key: string) {
     return this.store[key];
   }
 
-  set(key, value) {
+  async set(key: string, value: any) {
     this.store[key] = value;
   }
 
-  remove(key) {
+  async remove(key: string) {
     this.store[key] = undefined;
   }
 
-  clear() {
+  async clear() {
     this.store = {};
   }
 }
 
-class LocalStorageBackend {
+class HubStorageBackend implements StorageBackend {
+  public impl: StorageImplementation;
+
   constructor() {
-    this.impl = IMPL_LOCAL_STORAGE;
+    this.impl = IMPL_HUB_STORAGE;
   }
 
-  get(key) {
-    const value = localStorage.getItem(key);
+  async get(key: string) {
+    const value = await window.hubStorage.getItem(key);
     if (typeof value === 'string') {
       return JSON.parse(value);
     }
+    return undefined;
   }
 
-  set(key, value) {
-    localStorage.setItem(key, JSON.stringify(value));
+  async set(key: string, value: any) {
+    window.hubStorage.setItem(key, JSON.stringify(value));
   }
 
-  remove(key) {
-    localStorage.removeItem(key);
+  async remove(key: string) {
+    window.hubStorage.removeItem(key);
   }
 
-  clear() {
-    localStorage.clear();
+  async clear() {
+    window.hubStorage.clear();
   }
 }
 
-class IndexedDbBackend {
+class IndexedDbBackend implements StorageBackend {
+  public impl: StorageImplementation;
+  public dbPromise: Promise<IDBDatabase>;
+
   constructor() {
     this.impl = IMPL_INDEXED_DB;
-    /** @type {Promise<IDBDatabase>} */
     this.dbPromise = new Promise((resolve, reject) => {
       const indexedDB = window.indexedDB || window.msIndexedDB;
       const req = indexedDB.open(INDEXED_DB_NAME, INDEXED_DB_VERSION);
       req.onupgradeneeded = () => {
         try {
           req.result.createObjectStore(INDEXED_DB_STORE_NAME);
-        }
-        catch (err) {
-          reject(new Error('Failed to upgrade IDB: ' + req.error));
+        } catch (err) {
+          reject(
+            new Error(
+              'Failed to upgrade IDB: ' +
+                (err instanceof Error ? err.message : String(err)),
+            ),
+          );
         }
       };
       req.onsuccess = () => resolve(req.result);
@@ -108,13 +132,14 @@ class IndexedDbBackend {
     });
   }
 
-  getStore(mode) {
-    return this.dbPromise.then(db => db
+  private async getStore(mode: IDBTransactionMode) {
+    const db = await this.dbPromise;
+    return db
       .transaction(INDEXED_DB_STORE_NAME, mode)
-      .objectStore(INDEXED_DB_STORE_NAME));
+      .objectStore(INDEXED_DB_STORE_NAME);
   }
 
-  async get(key) {
+  async get(key: string) {
     const store = await this.getStore(READ_ONLY);
     return new Promise((resolve, reject) => {
       const req = store.get(key);
@@ -123,20 +148,13 @@ class IndexedDbBackend {
     });
   }
 
-  async set(key, value) {
-    // The reason we don't _save_ null is because IE 10 does
-    // not support saving the `null` type in IndexedDB. How
-    // ironic, given the bug below!
-    // See: https://github.com/mozilla/localForage/issues/161
-    if (value === null) {
-      value = undefined;
-    }
+  async set(key: string, value: any) {
     // NOTE: We deliberately make this operation transactionless
     const store = await this.getStore(READ_WRITE);
     store.put(value, key);
   }
 
-  async remove(key) {
+  async remove(key: string) {
     // NOTE: We deliberately make this operation transactionless
     const store = await this.getStore(READ_WRITE);
     store.delete(key);
@@ -149,39 +167,46 @@ class IndexedDbBackend {
   }
 }
 
+
 /**
  * Web Storage Proxy object, which selects the best backend available
  * depending on the environment.
  */
-class StorageProxy {
+class StorageProxy implements StorageBackend {
+  private backendPromise: Promise<StorageBackend>;
+  public impl: StorageImplementation = IMPL_MEMORY;
+
   constructor() {
     this.backendPromise = (async () => {
+      if (!Byond.TRIDENT && testHubStorage()) {
+        return new HubStorageBackend();
+      }
+      // TODO: Remove with 516
       if (testIndexedDb()) {
         try {
           const backend = new IndexedDbBackend();
           await backend.dbPromise;
           return backend;
-        }
-        catch {}
+        } catch {}
       }
-      if (testLocalStorage()) {
-        return new LocalStorageBackend();
-      }
+      console.warn(
+        'No supported storage backend found. Using in-memory storage.',
+      );
       return new MemoryBackend();
     })();
   }
 
-  async get(key) {
+  async get(key: string) {
     const backend = await this.backendPromise;
     return backend.get(key);
   }
 
-  async set(key, value) {
+  async set(key: string, value: any) {
     const backend = await this.backendPromise;
     return backend.set(key, value);
   }
 
-  async remove(key) {
+  async remove(key: string) {
     const backend = await this.backendPromise;
     return backend.remove(key);
   }

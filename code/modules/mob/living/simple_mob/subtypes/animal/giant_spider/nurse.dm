@@ -40,6 +40,8 @@
 	poison_per_bite = 5
 	poison_type = "stoxin"
 
+	exotic_type = /obj/item/reagent_containers/glass/venomgland/spider/s_toxin
+
 	player_msg = "You can spin webs on an adjacent tile, or cocoon an object by clicking on it.<br>\
 	You can also cocoon a dying or dead entity by clicking on them, and you will gain charges for egg-laying.<br>\
 	To lay eggs, click a nearby tile. Laying eggs will deplete a charge."
@@ -211,6 +213,13 @@
 	laying_eggs = FALSE
 	return TRUE
 
+/obj/item/reagent_containers/glass/venomgland/spider/sophoric
+	name = "Drowsy Venom Gland"
+	desc = "A sac full of venom. It makes you feel drowsy."
+
+/obj/item/reagent_containers/glass/venomgland/spider/sophoric/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("stoxin", 15)
 
 // Variant that 'blocks' light (by being a negative light source).
 // This is done to make webbed rooms scary and allow for spiders on the other side of webs to see prey.
