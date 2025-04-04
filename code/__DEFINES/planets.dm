@@ -15,6 +15,8 @@
 #define WEATHER_PRE_ASH_STORM       "approaching ash storm"
 /// Ripped from TG, like the above. Less harmless.
 #define WEATHER_ASH_STORM			"ash storm"
+#define WEATHER_ACID_RAIN			"acid rain"
+#define WEATHER_PRE_ACID_RAIN		"approching acid rain"
 /// Modified emberfall, actually harmful. Admin only.
 #define WEATHER_FALLOUT				"fallout"
 #define WEATHER_SANDSTORM			"sandstorm"

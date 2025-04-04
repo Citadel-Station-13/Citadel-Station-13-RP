@@ -1,0 +1,86 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/machinery/atmospherics/component/unary/engine{
+	dir = 4
+	},
+/turf/template_noop,
+/area/template_noop)
+"j" = (
+/turf/simulated/shuttle/wall/voidcraft,
+/area/template_noop)
+"q" = (
+/turf/simulated/floor,
+/area/template_noop)
+"s" = (
+/obj/item/flame/lighter/random,
+/turf/simulated/floor,
+/area/template_noop)
+"B" = (
+/obj/structure/loot_pile/maint/trash,
+/obj/random/unidentified_medicine/combat_medicine,
+/turf/simulated/floor,
+/area/template_noop)
+"D" = (
+/obj/structure/loot_pile/maint/technical,
+/turf/simulated/floor,
+/area/template_noop)
+"F" = (
+/obj/machinery/atmospherics/component/unary/engine{
+	dir = 8
+	},
+/turf/template_noop,
+/area/template_noop)
+"I" = (
+/obj/machinery/atmospherics/component/unary/engine,
+/turf/template_noop,
+/area/template_noop)
+"S" = (
+/obj/machinery/atmospherics/component/unary/engine{
+	dir = 1
+	},
+/turf/template_noop,
+/area/template_noop)
+"W" = (
+/turf/template_noop,
+/area/template_noop)
+"Z" = (
+/obj/structure/loot_pile/maint/junk,
+/obj/random/carp_plushie,
+/turf/simulated/floor,
+/area/template_noop)
+
+(1,1,1) = {"
+W
+a
+j
+a
+W
+"}
+(2,1,1) = {"
+I
+j
+Z
+j
+S
+"}
+(3,1,1) = {"
+j
+D
+s
+q
+q
+"}
+(4,1,1) = {"
+I
+j
+B
+j
+S
+"}
+(5,1,1) = {"
+W
+F
+j
+F
+W
+"}
