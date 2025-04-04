@@ -6,12 +6,6 @@
 /proc/___rethrow_exception(exception/E)
 	throw E
 
-/// Gives us the stack trace from CRASH() without ending the current proc.
-/// Unlike STACK_TRACE, this will:
-/// * call a new proc so the originating trace isn't from the original file anymore
-/// * put the stack trace in stack trace storage
-#define stack_trace(message) _stack_trace(message, __FILE__, __LINE__)
-
 /// get variable if not null or
 #define VALUE_OR_DEFAULT(VAL, DEFAULT) (isnull(VAL)? (DEFAULT) : (VAL))
 
