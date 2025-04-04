@@ -7594,9 +7594,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
 	dir = 4
 	},
-/obj/structure/cable/green{
-	icon_state = "2-4"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/xenobiology/xenoflora)
 "fmm" = (
@@ -10438,9 +10435,6 @@
 /obj/effect/floor_decal/corner/green/full{
 	dir = 4
 	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/xenobiology/xenoflora)
 "hnK" = (
@@ -11428,19 +11422,6 @@
 /obj/structure/loot_pile/maint/technical,
 /turf/simulated/floor/plating,
 /area/maintenance/research/port)
-"icI" = (
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/green/border{
-	dir = 4
-	},
-/obj/machinery/power/apc/east_mount,
-/obj/structure/cable/green{
-	icon_state = "0-8"
-	},
-/turf/simulated/floor/tiled/white,
-/area/medical/virology_aft_access)
 "icZ" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -16859,9 +16840,6 @@
 "mba" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
 	},
@@ -18161,20 +18139,6 @@
 /obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled,
 /area/rnd/breakroom)
-"mXg" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/green/border{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/white,
-/area/medical/virology_aft_access)
 "mXk" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/catwalk,
@@ -18187,20 +18151,6 @@
 /obj/machinery/camera/network/outside,
 /turf/space,
 /area/space)
-"mXu" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/green/border{
-	dir = 8
-	},
-/obj/structure/cable/green{
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/tiled/white,
-/area/medical/virology_aft_access)
 "mXO" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -20102,9 +20052,6 @@
 "oBF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
 	},
@@ -22725,9 +22672,6 @@
 /turf/simulated/wall/prepainted/medical,
 /area/medical/medbay4)
 "qgp" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
@@ -25481,7 +25425,8 @@
 "slz" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor,
-/turf/space/basic,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
 "slJ" = (
 /obj/machinery/fire_alarm/north_mount,
@@ -26144,9 +26089,6 @@
 	dir = 4
 	},
 /obj/machinery/holopad,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
@@ -28895,9 +28837,6 @@
 /turf/simulated/floor/tiled,
 /area/medical/virology)
 "uMx" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -29205,10 +29144,6 @@
 /obj/effect/paint/purplegray,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
-/area/rnd/xenobiology/xenoflora)
-"uVX" = (
-/obj/structure/closet/l3closet/scientist/double,
-/turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "uVY" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -29987,9 +29922,6 @@
 "vEK" = (
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/mauve/bordercorner,
-/obj/structure/cable/green{
-	icon_state = "1-8"
-	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "vEU" = (
@@ -30173,6 +30105,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 4
 	},
+/obj/structure/closet/l3closet/scientist/double,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "vKr" = (
@@ -30728,9 +30661,6 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
@@ -31129,9 +31059,6 @@
 	dir = 4
 	},
 /obj/machinery/power/apc/south_mount,
-/obj/structure/cable/green{
-	icon_state = "0-4"
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "wpm" = (
@@ -31840,9 +31767,6 @@
 "wNs" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
@@ -38591,8 +38515,8 @@ sUD
 fik
 fik
 fik
-pRW
-pRW
+fik
+fik
 pRW
 pRW
 pRW
@@ -38785,8 +38709,8 @@ sUD
 fik
 fik
 fik
-pRW
-pRW
+fik
+fik
 pRW
 pRW
 mDp
@@ -38979,8 +38903,8 @@ sUD
 fik
 fik
 fik
-pRW
-pRW
+fik
+fik
 pRW
 pRW
 mDp
@@ -39173,8 +39097,8 @@ sUD
 fik
 fik
 fik
-pRW
-pRW
+fik
+fik
 pRW
 mDp
 mDp
@@ -39367,8 +39291,8 @@ dAa
 fik
 fik
 fik
-pRW
-pRW
+fik
+fik
 pRW
 mDp
 mDp
@@ -39561,8 +39485,8 @@ dAa
 fik
 fik
 fik
-pRW
-pRW
+fik
+fik
 pRW
 mDp
 mDp
@@ -39755,8 +39679,8 @@ dAa
 fik
 fik
 fik
-pRW
-pRW
+fik
+fik
 pRW
 mDp
 mDp
@@ -39949,8 +39873,8 @@ dAa
 fik
 fik
 fik
-pRW
-pRW
+fik
+fik
 pRW
 mDp
 mDp
@@ -40143,8 +40067,8 @@ sUD
 eWn
 xRY
 fik
-pRW
-pRW
+fik
+fik
 pRW
 pRW
 pRW
@@ -40337,8 +40261,8 @@ sUD
 vPR
 eWn
 fik
-pRW
-pRW
+fik
+fik
 pRW
 pRW
 pRW
@@ -40531,8 +40455,8 @@ sUD
 eWn
 xRY
 fik
-pRW
-pRW
+fik
+fik
 pRW
 pRW
 pRW
@@ -40725,8 +40649,8 @@ sUD
 fPa
 fik
 fik
-pRW
-mDp
+fik
+fik
 mDp
 mDp
 mDp
@@ -40919,8 +40843,8 @@ mgH
 fik
 fik
 fik
-pRW
-mDp
+fik
+fik
 mDp
 mDp
 mDp
@@ -41113,8 +41037,8 @@ sUD
 fik
 fik
 fik
-pRW
-mDp
+fik
+fik
 mDp
 pRW
 pRW
@@ -41307,8 +41231,8 @@ sUD
 fPa
 fik
 fik
-pRW
-mDp
+fik
+fik
 mDp
 mDp
 mDp
@@ -41502,7 +41426,7 @@ fik
 fik
 fik
 fik
-mDp
+fik
 mDp
 mDp
 mDp
@@ -52732,8 +52656,8 @@ myK
 geo
 oBF
 mba
-mXg
-mXu
+dly
+dly
 dly
 dly
 geo
@@ -52927,7 +52851,7 @@ pTX
 wtw
 hCz
 hCz
-icI
+hCz
 hCz
 uQE
 pIM
@@ -56017,7 +55941,7 @@ sNS
 sNS
 yax
 gYz
-uVX
+nDW
 uor
 fmk
 hnB
