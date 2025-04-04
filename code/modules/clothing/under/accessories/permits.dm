@@ -35,6 +35,12 @@
 	desc = "A card indicating that the owner is allowed to carry a weapon."
 	icon_state = "permit-security"
 
+/obj/item/clothing/accessory/permit/gun/nka
+	name = "New Kingdom Hunter's Permit"
+	desc = "A card issued by the New Kingdom of Adhomai indicating that the owner is allowed to carry a \
+	firearm for the purpose of hunting. This license could be revoked if the hunter is caught doing illegal activities."
+	icon_state = "permit-nka"
+
 /obj/item/clothing/accessory/permit/gun/bar
 	name = "bar shotgun permit"
 	desc = "A card indicating that the owner is allowed to carry a shotgun in the bar."

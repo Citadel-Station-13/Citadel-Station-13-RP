@@ -313,6 +313,16 @@
 		if(!transfer_item_to_loc(r_ear, blob, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT))
 			blob.mob_radio = null
 
+	
+
+	for(var/obj/item/pda/P in contents)
+		if(P.id)
+			var/obj/item/card/id/PID = P.id
+			blob.access_card.access += PID.access
+
+	for(var/obj/item/card/id/I in contents)
+		blob.access_card.access += I.access
+
 	//Size update
 	blob.transform = matrix()*size_multiplier
 	blob.size_multiplier = size_multiplier
