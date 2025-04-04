@@ -21,7 +21,7 @@ const COLOR_WHITE_BG = "#F0F0F0";
 const COLOR_WHITE_DARKBG = "#E6E6E6";
 const COLOR_WHITE_TEXT = "#000000";
 
-let setClientThemeTimer = null;
+let setClientThemeTimer: NodeJS.Timeout;
 
 /**
  * Darkmode preference, originally by Kmc2000.
