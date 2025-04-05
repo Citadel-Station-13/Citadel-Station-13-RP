@@ -8,6 +8,7 @@
 	max_heat_protection_temperature = 5000
 	min_pressure_protection = 0 * ONE_ATMOSPHERE
 	max_pressure_protection = 20* ONE_ATMOSPHERE
+	integrity_flags = INTEGRITY_ACIDPROOF
 
 /obj/item/clothing/suit/space/void/science
 	name = "hazard bypass voidsuit"
@@ -20,6 +21,7 @@
 	max_heat_protection_temperature = 5000
 	min_pressure_protection = 0 * ONE_ATMOSPHERE
 	max_pressure_protection = 20* ONE_ATMOSPHERE
+	integrity_flags = INTEGRITY_ACIDPROOF
 	encumbrance = 60
 	helmet_type = /obj/item/clothing/head/helmet/space/void/science
 
