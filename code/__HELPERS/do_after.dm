@@ -19,7 +19,7 @@
 	. = TRUE
 	while (world.time < endtime)
 		stoplag(1)
-		if (progress)
+		if (progress && !QDELETED(progbar))
 			progbar.update(world.time - starttime)
 		if(!user || !target)
 			. = FALSE
@@ -52,7 +52,7 @@
 			break
 
 	if(!QDELETED(progbar))
-		qdel(progbar)
+		progbar.end_progress()
 
 	STOP_INTERACTING_WITH(user, target, INTERACTING_FOR_DO_AFTER)
 
@@ -71,7 +71,7 @@
  * * progress_instance - override progressbar instance
  */
 /proc/do_after(mob/user, delay, atom/target, flags, mobility_flags = MOBILITY_CAN_USE, max_distance, datum/callback/additional_checks, atom/progress_anchor, datum/progressbar/progress_instance)
-	if(isnull(user))
+	if(isnull(user) || QDELETED(user))
 		return FALSE
 	if(!delay)
 		return \
@@ -111,7 +111,8 @@
 	while(world.time < (start_time + delay))
 		stoplag(1)
 
-		progress?.update((world.time - start_time) * delay_factor)
+		if (progress && !QDELETED(progress))
+			progress.update((world.time - start_time) * delay_factor)
 
 		// check if deleted
 		if(QDELETED(user))
@@ -172,7 +173,7 @@
 
 	//* end
 	if(!QDELETED(progress))
-		qdel(progress)
+		progress.end_progress()
 
 	if(!isnull(target))
 		STOP_INTERACTING_WITH(user, target, INTERACTING_FOR_DO_AFTER)
