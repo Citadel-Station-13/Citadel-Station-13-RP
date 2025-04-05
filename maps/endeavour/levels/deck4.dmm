@@ -2958,10 +2958,8 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/cyan,
-/obj/machinery/atmospherics/pipe/simple/visible/aux{
-	dir = 1
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled/steel,
 /area/engineering/atmos/eva)
 "cRn" = (
@@ -4922,10 +4920,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/cyan,
-/obj/machinery/atmospherics/pipe/simple/visible/aux{
-	dir = 1
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled/steel,
 /area/engineering/atmos/eva)
 "eQK" = (
@@ -7127,7 +7123,7 @@
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 6
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/aux{
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel,
@@ -7339,9 +7335,7 @@
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/aux{
-	dir = 1
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled/steel,
 /area/engineering/atmos/eva)
 "hle" = (
@@ -9677,10 +9671,8 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/cyan,
-/obj/machinery/atmospherics/pipe/simple/visible/aux{
-	dir = 1
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled/steel,
 /area/engineering/atmos/eva)
 "jxY" = (
@@ -10308,8 +10300,8 @@
 /obj/effect/floor_decal/corner/lightorange/bordercorner2{
 	dir = 5
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/cyan,
-/obj/machinery/atmospherics/pipe/simple/visible/aux{
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel,
@@ -11420,7 +11412,7 @@
 /turf/simulated/floor/plating,
 /area/storage/tech)
 "lrz" = (
-/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel,
@@ -13366,9 +13358,7 @@
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/aux{
-	dir = 1
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
@@ -14445,9 +14435,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/aux{
-	dir = 1
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled/steel,
 /area/engineering/atmos/eva)
 "ouR" = (
@@ -17048,9 +17036,7 @@
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/aux{
-	dir = 1
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled/steel,
 /area/engineering/atmos/eva)
 "rxO" = (
@@ -17176,12 +17162,10 @@
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 9
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/aux{
-	dir = 1
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled/steel,
 /area/engineering/atmos/eva)
 "rEl" = (
@@ -17337,10 +17321,8 @@
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/cyan,
-/obj/machinery/atmospherics/pipe/simple/visible/aux{
-	dir = 1
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled/steel,
 /area/engineering/atmos/eva)
 "rQW" = (
@@ -19096,7 +19078,7 @@
 "tRm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -19788,9 +19770,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/aux{
-	dir = 1
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled/steel,
 /area/engineering/atmos/eva)
 "uDT" = (
@@ -22863,8 +22843,8 @@
 	alpha = 255
 	},
 /obj/effect/floor_decal/corner/lightorange/bordercorner2,
-/obj/machinery/atmospherics/pipe/simple/visible/aux{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
 /area/engineering/atmos/eva)
