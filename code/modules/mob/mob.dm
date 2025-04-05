@@ -796,6 +796,8 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	var/list/visible_implants = list()
 	return visible_implants
 
+// TODO: rework and readd embeds
+
 // /mob/proc/yank_out_object()
 // 	set category = VERB_CATEGORY_OBJECT
 // 	set name = "Yank out object"

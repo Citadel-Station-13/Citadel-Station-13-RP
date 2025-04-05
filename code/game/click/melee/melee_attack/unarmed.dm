@@ -55,7 +55,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 /datum/melee_attack/unarmed/perform_attack_impact(atom/movable/attacker, atom/target, missed, obj/item/weapon, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	var/damage_force = get_unarmed_damage(attacker, target) * clickchain.attack_melee_multiplier
 	clickchain.data[ACTOR_DATA_UNARMED_LOG] = "[damage_force]-[damage_type]-[damage_flag]@[damage_tier]m[damage_mode]"
-	target.run_damage_instance(
+	var/list/results = target.run_damage_instance(
 		damage_force,
 		damage_type,
 		damage_tier,
@@ -66,6 +66,8 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 		NONE,
 		clickchain.target_zone,
 	)
+	clickchain.data[ACTOR_DATA_MELEE_DAMAGE_INSTANCE_RESULTS] = results
+	target.on_melee_impact(attacker, weapon, src, clickchain.target_zone, clickchain, clickchain_flags, results)
 	return clickchain_flags
 
 /datum/melee_attack/unarmed/perform_attack_animation(atom/movable/attacker, atom/target, missed, obj/item/weapon, datum/event_args/actor/clickchain/clickchain, clickchain_flags)

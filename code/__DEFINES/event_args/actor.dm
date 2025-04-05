@@ -7,5 +7,8 @@
 #define ACTOR_DATA_UNARMED_LOG "unarmed-log"
 /// logging only
 #define ACTOR_DATA_STUNBATON_LOG "stunbaton-log"
-/// logging
+/// logging only
 #define ACTOR_DATA_COMBO_LOG "combo-log"
+
+/// upon melee impact
+#define ACTOR_DATA_MELEE_DAMAGE_INSTANCE_RESULTS "melee-damage-instance-results"

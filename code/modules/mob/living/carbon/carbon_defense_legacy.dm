@@ -1,3 +1,26 @@
+
+// TODO: generic embedding handling; current is too shitcode so it was commented out entirely
+// /mob/living/carbon/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/soaked, var/hit_zone)
+// 	//Apply weapon damage
+// 	var/hit_embed_chance = I.embed_chance
+// 	if(prob(legacy_mob_armor(hit_zone, "melee"))) //melee armour provides a chance to turn sharp/edge weapon attacks into blunt ones
+// 		weapon_sharp = 0
+// 		weapon_edge = 0
+// 		hit_embed_chance = I.damage_force/(I.w_class*3)
+
+// 	//Melee weapon embedded object code.
+// 	if (I && I.damage_type == DAMAGE_TYPE_BRUTE && !I.anchored && !is_robot_module(I) && I.embed_chance > 0)
+// 		var/damage = effective_force
+// 		if (blocked)
+// 			damage *= (100 - blocked)/100
+// 			hit_embed_chance *= (100 - blocked)/100
+
+// 		//blunt objects should really not be embedding in things unless a huge amount of force is involved
+// 		var/embed_threshold = weapon_sharp? 5*I.w_class : 15*I.w_class
+
+// 		if(damage > embed_threshold && prob(hit_embed_chance))
+// 			src.embed(I, hit_zone)
+
 // Attacking someone with a weapon while they are neck-grabbed
 /mob/living/carbon/proc/check_neckgrab_attack(obj/item/W, mob/user, var/hit_zone)
 	if(user.a_intent == INTENT_HARM)

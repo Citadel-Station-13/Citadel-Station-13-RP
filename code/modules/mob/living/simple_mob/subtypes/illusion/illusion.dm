@@ -77,12 +77,12 @@
 				M.visible_message(SPAN_DANGER("\The [M] [response_harm] \the [src]"))
 				M.do_attack_animation(src)
 
-/mob/living/simple_mob/illusion/melee_act(mob/user, obj/item/weapon, datum/melee_attack/weapon/style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+/mob/living/simple_mob/illusion/melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/weapon/style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	if(realistic)
 		return ..()
 	// TODO: proper feedback procs
-	user?.visible_message(
-		SPAN_WARNING("[user]'s [weapon] passes right through [src]!"),
+	attacker?.visible_message(
+		SPAN_WARNING("[attacker]'s [weapon] passes right through [src]!"),
 	)
 	return clickchain_flags | CLICKCHAIN_ATTACK_MISSED
 

@@ -13,12 +13,11 @@
 
 //* Melee Handling *//
 
-/mob/living/melee_act(mob/user, obj/item/weapon, datum/melee_attack/weapon/style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+/mob/living/melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/weapon/style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
 	if(. & CLICKCHAIN_FLAGS_ATTACK_ABORT)
 		return
-
-	ai_holder?.react_to_attack_polaris(user)
+	ai_holder?.react_to_attack_polaris(attacker)
 
 //* Projectile Handling *//
 

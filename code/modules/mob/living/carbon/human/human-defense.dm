@@ -23,10 +23,9 @@
 		if(!prob(armor/2))		//Even if the armor doesn't stop the bullet from hurting you, it might stop it from embedding.
 			var/hit_embed_chance = proj.embed_chance + (proj.damage_force - armor)	//More damage equals more chance to embed
 			if(prob(max(hit_embed_chance, 0)))
-				var/obj/item/material/shard/shrapnel/SP = new()
+				var/obj/item/material/shard/shrapnel/SP = new(organ)
 				SP.name = (proj.name != "shrapnel")? "[proj.name] shrapnel" : "shrapnel"
 				SP.desc = "[SP.desc] It looks like it was fired from [proj.shot_from]."
-				SP.loc = organ
 				organ.embed(SP)
 
 //* Misc Effects *//

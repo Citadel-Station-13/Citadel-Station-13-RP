@@ -9,7 +9,7 @@
 	var/expected_type = /obj/item
 
 /datum/melee_attack/weapon/perform_attack_impact(atom/movable/attacker, atom/target, missed, obj/item/weapon, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-	target.run_damage_instance(
+	var/list/results = target.run_damage_instance(
 		weapon.damage_force * clickchain.attack_melee_multiplier,
 		weapon.damage_type,
 		weapon.damage_tier,
@@ -20,6 +20,8 @@
 		NONE,
 		clickchain.target_zone,
 	)
+	clickchain.data[ACTOR_DATA_MELEE_DAMAGE_INSTANCE_RESULTS] = results
+	target.on_melee_impact(attacker, weapon, src, clickchain.target_zone, clickchain, clickchain_flags, results)
 	return clickchain_flags
 
 /datum/melee_attack/weapon/perform_attack_animation(atom/movable/attacker, atom/target, missed, obj/item/weapon, datum/event_args/actor/clickchain/clickchain, clickchain_flags)

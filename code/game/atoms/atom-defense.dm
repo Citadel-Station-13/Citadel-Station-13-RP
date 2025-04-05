@@ -53,7 +53,7 @@
  *
  * @return clickchain flags
  */
-/atom/proc/melee_act(mob/user, obj/item/weapon, datum/melee_attack/weapon/style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+/atom/proc/melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/weapon/style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = clickchain_flags
 	var/shieldcall_returns = atom_shieldcall_handle_melee(clickchain, ., weapon, style, FALSE, NONE)
 	if(shieldcall_returns & SHIELDCALL_FLAGS_BLOCK_ATTACK)
@@ -63,12 +63,36 @@
 /**
  * Called on a melee going through, whether or not it was blocked
  *
- * todo: should this keep being a thing?? why can't the caller just invoke entrypoint directly?
+ * @params
+ * * attacker - person attacking
+ * * weapon - weapon used, if any
+ * * style - attack style
+ * * target_zone - zone targeted
+ * * clickchain - (optional) clickchain used
+ * * clickchain_flags - (optional) clickchain flags used
  *
  * @return clickchain flags
  */
 /atom/proc/on_melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/attack_style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-	return attack_style.perform_attack_impact(attacker, src, clickchain_flags & CLICKCHAIN_ATTACK_MISSED, weapon, clickchain, clickchain_flags)
+	. = attack_style.perform_attack_impact(attacker, src, clickchain_flags & CLICKCHAIN_ATTACK_MISSED, weapon, clickchain, clickchain_flags)
+
+/**
+ * Called to react to a melee damage instance.
+ *
+ * * Treated as an optional call; legacy code will generally not call this.
+ * * Normally called from attack_style's standard damage instance handling
+ *
+ * @params
+ * * attacker - person attacking
+ * * weapon - weapon used, if any
+ * * style - attack style
+ * * target_zone - zone targeted
+ * * clickchain - (optional) clickchain used
+ * * clickchain_flags - (optional) clickchain flags used
+ * * damage_instance_results - (optional) SHIELDCALL_ARG_* indexed arg returns from the damage instance resolving
+ */
+/atom/proc/on_melee_impact(mob/attacker, obj/item/weapon, datum/melee_attack/attack_style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags, list/damage_instance_results)
+	return
 
 //* External API / Damage Receiving - Projectiles *//
 
