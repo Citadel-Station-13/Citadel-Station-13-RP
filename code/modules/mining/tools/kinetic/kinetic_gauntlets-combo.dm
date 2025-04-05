@@ -32,7 +32,7 @@ GLOBAL_DATUM_INIT(kinetic_gauntlet_melee_combo, /datum/combo_set/melee, new /dat
 		INTENT_HARM,
 	)
 
-	damage_force = 35
+	damage_force = 36
 
 /datum/combo/melee/intent_based/kinetic_gauntlets/slam/inflict_on(atom/target, target_zone, mob/attacker, datum/event_args/actor/clickchain/clickchain)
 	. = ..()
@@ -59,7 +59,7 @@ GLOBAL_DATUM_INIT(kinetic_gauntlet_melee_combo, /datum/combo_set/melee, new /dat
 		INTENT_DISARM,
 	)
 
-	damage_force = 35
+	damage_force = 36
 
 /datum/combo/melee/intent_based/kinetic_gauntlets/concuss/inflict_on(atom/target, target_zone, mob/attacker, datum/event_args/actor/clickchain/clickchain)
 	. = ..()
@@ -82,4 +82,4 @@ GLOBAL_DATUM_INIT(kinetic_gauntlet_melee_combo, /datum/combo_set/melee, new /dat
 		INTENT_HARM,
 	)
 
-	damage_force = 60
+	damage_force = 72

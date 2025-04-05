@@ -172,11 +172,12 @@
 			return
 		return
 	var/mob/mob_target = target
-	var/datum/combo/melee/valid_combo = combo_tracker?.process_inbound_via_tail_match(clickchain.using_intent, combo_set)
-	if(!valid_combo)
-		return
+	// requires mark to be using combo, otherwise you can hit it twice and mark it then hit again
 	var/datum/status_effect/grouped/proto_kinetic_mark/mark = mob_target.has_status_effect(/datum/status_effect/grouped/proto_kinetic_mark)
 	if(!mark)
+		return
+	var/datum/combo/melee/valid_combo = combo_tracker?.process_inbound_via_tail_match(clickchain.using_intent, combo_set)
+	if(!valid_combo)
 		return
 	QDEL_NULL(mark)
 	execute_combo(clickchain, clickchain_flags, valid_combo)
