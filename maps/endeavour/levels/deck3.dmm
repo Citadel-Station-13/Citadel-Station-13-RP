@@ -27446,6 +27446,12 @@
 /obj/machinery/light,
 /turf/simulated/wall/prepainted,
 /area/engineering/substation/deck3amidships)
+"uoa" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/security/port)
 "uor" = (
 /obj/item/gps,
 /obj/structure/table/rack/shelf/steel,
@@ -47857,7 +47863,7 @@ qfY
 aSN
 nzu
 iBG
-cJI
+uoa
 fzN
 fzN
 iBG
