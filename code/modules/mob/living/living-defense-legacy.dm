@@ -93,6 +93,9 @@
 
 // Clicking with an empty hand
 /mob/living/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+	// melee attack entrypoint
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	. = ..()
 	if(.)
 		return
@@ -252,16 +255,18 @@
 				if(soaked >= round(throw_damage*0.8))
 					return
 
+				// TODO: rework embeds
 				//Handles embedding for non-humans and simple_mobs.
-				embed(O)
+				// embed(O)
 
 				var/turf/T = near_wall(dir,2)
 
-				if(T)
-					src.forceMove(T)
-					visible_message("<span class='warning'>[src] is pinned to the wall by [O]!</span>","<span class='warning'>You are pinned to the wall by [O]!</span>")
-					src.anchored = 1
-					src.pinned += O
+				// TODO: rework pinned
+				// if(T)
+				// 	src.forceMove(T)
+				// 	visible_message("<span class='warning'>[src] is pinned to the wall by [O]!</span>","<span class='warning'>You are pinned to the wall by [O]!</span>")
+				// 	src.anchored = 1
+				// 	src.pinned += O
 
 		return force_pierce? COMPONENT_THROW_HIT_PIERCE | COMPONENT_THROW_HIT_NEVERMIND : NONE
 
