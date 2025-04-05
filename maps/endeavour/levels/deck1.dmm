@@ -2645,6 +2645,18 @@
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/maintenance/library)
+"cef" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d1fwdhall)
 "ceM" = (
 /turf/simulated/wall/prepainted,
 /area/exploration/pilot_Office)
@@ -5649,6 +5661,9 @@
 	},
 /obj/machinery/status_display{
 	pixel_x = -32
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardamidhall)
@@ -15043,6 +15058,9 @@
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 4
 	},
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardamidhall)
 "lvV" = (
@@ -19493,9 +19511,6 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/navblue/border{
-	dir = 8
-	},
-/obj/machinery/light{
 	dir = 8
 	},
 /obj/machinery/door/firedoor{
@@ -24849,6 +24864,9 @@
 "sWK" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardamidhall)
@@ -53313,7 +53331,7 @@ thT
 mrC
 cvv
 cvv
-cvv
+cef
 oRd
 ffW
 vqA
