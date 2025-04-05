@@ -10,6 +10,20 @@ TYPE_REGISTER_SPATIAL_GRID(/mob/living, SSspatial_grids.living)
 
 	selected_image = image(icon = 'icons/mob/screen1.dmi', loc = src, icon_state = "centermarker")
 
+	//* ~~~~~~~VORE~~~~~~~ *//
+	add_verb(src, /mob/living/proc/escapeOOC)
+	add_verb(src, /mob/living/proc/lick)
+	add_verb(src, /mob/living/proc/smell)
+	add_verb(src, /mob/living/proc/switch_scaling)
+	if(src.no_vore) //If the mob isn't supposed to have a stomach, let's not give it an insidepanel so it can make one for itself, or a stomach.
+		return TRUE
+	add_verb(src, /mob/living/proc/insidePanel)
+	//Tries to load prefs if a client is present otherwise gives freebie stomach
+	spawn(2 SECONDS)
+		if(src)
+			src.init_vore()
+	//*        END         *//
+
 /mob/living/Destroy()
 	if(nest) //Ew.
 		if(istype(nest, /obj/structure/prop/nest))

@@ -407,7 +407,6 @@
 	if(to_despawn.mind && ishuman(to_despawn))
 		var/mob/living/carbon/human/H = to_despawn
 		SStranscore.m_backup(H.mind, H.nif, TRUE)
-	hook_vr("despawn", list(to_despawn, src))
 	if(isliving(to_despawn))
 		var/mob/living/L = to_despawn
 		for(var/belly in L.vore_organs)
