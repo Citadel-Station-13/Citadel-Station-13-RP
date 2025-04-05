@@ -146,10 +146,14 @@
 	#warn handle delay mod
 
 /obj/item/kinetic_gauntlets/proc/run_excavation_fx(turf/location)
-	#warn impl
+	new /obj/effect/temp_visual/kinetic_blast(location)
+	playsound(location, 'sound/weapons/resonator_blast.ogg', 65, TRUE)
 
+/**
+ * This is only to run special FX. The normal FX is ran by the combo already.
+ */
 /obj/item/kinetic_gauntlets/proc/run_detonation_fx(turf/location, atom/target)
-	#warn impl
+	return
 
 #warn hook this? comsig maybe? how do we do overriding? check return values after, how do we return clickchain flags?
 /obj/item/kinetic_gauntlets/proc/on_user_melee_impact(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/attack_style)

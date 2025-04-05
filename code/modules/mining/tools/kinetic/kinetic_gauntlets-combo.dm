@@ -20,6 +20,9 @@ GLOBAL_DATUM_INIT(kinetic_gauntlet_melee_combo, /datum/combo_set/melee, new /dat
 	damage_type = DAMAGE_TYPE_BRUTE
 	damage_flag = ARMOR_BOMB
 
+	default_feedback_sfx = 'sound/weapons/kenetic_accel.ogg'
+	default_feedback_vfx = /obj/effect/temp_visual/kinetic_blast
+
 /datum/combo/melee/intent_based/kinetic_gauntlets/slam
 	name = "slam"
 	desc = "Slam a target away."

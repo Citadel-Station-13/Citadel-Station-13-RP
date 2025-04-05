@@ -13,6 +13,11 @@
 	var/damage_flag = ARMOR_MELEE
 	var/damage_mode = NONE
 
+	/// a single, or a list of valid VFX to render by default
+	///
+	/// Supported VFX types:
+	/// * a /obj/effect/temp_visual path
+	var/default_feedback_vfx
 	/// a single, or a list of get_sfx-resolveable sound effects to play by default
 	var/default_feedback_sfx
 	/// templateable message
@@ -34,6 +39,16 @@
 	/// * ATTACKER - the person attacking
 	/// * TARGET - the target
 	var/default_feedback_message_audible
+
+/datum/combo/melee/New()
+	// validate vfx
+	if(default_feedback_vfx)
+		for(var/validating_vfx in islist(default_feedback_vfx) ? default_feedback_vfx : list(default_feedback_vfx))
+			if(ispath(validating_vfx, /obj/effect/temp_visual))
+			else
+				stack_trace("invalid vfx [validating_vfx] on [src] ([type]), vfx cleared")
+				default_feedback_vfx = null
+				break
 
 /**
  * * Don't override this, override [inflict_on()]
@@ -71,6 +86,10 @@
 				fmttext(default_feedback_message_audible, fx_msg_args),
 				fmttext(default_feedback_message_self, fx_msg_args),
 			)
+		if(default_feedback_vfx)
+			var/picked_vfx = islist(default_feedback_vfx) ? pick(default_feedback_vfx) : default_feedback_vfx
+			if(ispath(picked_vfx, /obj/effect/temp_visual))
+				new picked_vfx(target.loc)
 
 /**
  * * Override this, not [inflict()].
