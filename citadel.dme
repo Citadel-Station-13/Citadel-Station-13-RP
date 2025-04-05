@@ -1659,7 +1659,7 @@
 #include "code\game\objects\effects\spawners\gibspawner.dm"
 #include "code\game\objects\effects\temporary_visuals\miscellaneous.dm"
 #include "code\game\objects\effects\temporary_visuals\point.dm"
-#include "code\game\objects\effects\temporary_visuals\temporary_visual.dm"
+#include "code\game\objects\effects\temporary_visuals\temp_visual.dm"
 #include "code\game\objects\effects\temporary_visuals\projectiles\impact.dm"
 #include "code\game\objects\effects\temporary_visuals\projectiles\muzzle.dm"
 #include "code\game\objects\effects\temporary_visuals\projectiles\projectile_effects.dm"
