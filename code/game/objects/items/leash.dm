@@ -65,6 +65,9 @@
 			return
 	if(!user.IsAdvancedToolUser())
 		return
+	if (!is_wearing_collar(C))
+		to_chat(user, "<span class='notice'>[C] needs a collar before you can attach a leash to it.</span>")
+		return
 	if(C.alerts["leashed"]) //If the pet is already leashed, do not leash them. For the love of god.
 		// If they re-click, remove the leash
 		if (C == leash_pet && user == leash_master)
@@ -76,10 +79,6 @@
 
 	if (C == user)
 		to_chat(user, "<span class='notice'>You cannot leash yourself!</span>")
-		return
-
-	if (!is_wearing_collar(C))
-		to_chat(user, "<span class='notice'>[C] needs a collar before you can attach a leash to it.</span>")
 		return
 
 	var/leashtime = 35
