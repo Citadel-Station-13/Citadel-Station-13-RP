@@ -12,7 +12,7 @@
 		return
 
 	// todo: this shit shouldn't be here
-	var/obj/item/organ/external/organ = get_organ()
+	var/obj/item/organ/external/organ = get_organ(bullet_act_args[BULLET_ACT_ARG_ZONE])
 
 	if(!proj.nodamage)
 		organ.add_autopsy_data("[proj.name]", proj.damage_force)

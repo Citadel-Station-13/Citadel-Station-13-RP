@@ -68,25 +68,6 @@
 
 	return ..()
 
-
-// Handles the actual harming by a melee weapon.
-#warn dela with this
-/mob/living/simple_mob/hit_with_weapon(obj/item/O, mob/living/user, var/effective_force, var/hit_zone)
-	effective_force = O.damage_force
-
-	//Animals can't be stunned(?)
-	if(O.damage_type == DAMAGE_TYPE_HALLOSS)
-		effective_force = 0
-	if(supernatural && istype(O,/obj/item/nullrod))
-		effective_force *= 2
-		purge = 3
-	if(O.damage_force <= resistance)
-		to_chat(user,"<span class='danger'>This weapon is ineffective, it does no damage.</span>")
-		return 2 //???
-
-	. = ..()
-
-
 // Exploding.
 /mob/living/simple_mob/legacy_ex_act(severity)
 	if(!has_status_effect(/datum/status_effect/sight/blindness))

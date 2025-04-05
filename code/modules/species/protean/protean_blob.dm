@@ -313,7 +313,7 @@
 		if(!transfer_item_to_loc(r_ear, blob, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT))
 			blob.mob_radio = null
 
-	
+
 
 	for(var/obj/item/pda/P in contents)
 		if(P.id)
@@ -566,7 +566,7 @@
 
 	visible_message("<span class='warning'>[src] coils itself up like a spring, preparing to leap at [target]!</span>")
 	if(do_after(src, 1 SECOND, target)) //1 second
-		if(buckled || pinned.len)
+		if(buckled) // || pinned.len)
 			return
 
 		var/obj/item/holder/H = new holder_type(get_turf(src))

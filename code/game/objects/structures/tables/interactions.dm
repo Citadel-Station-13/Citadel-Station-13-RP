@@ -84,8 +84,8 @@
 								M.visible_message("<span class='danger'>\The [S] slices [M]'s face messily!</span>",
 												"<span class='danger'>\The [S] slices your face messily!</span>")
 								M.apply_damage(10, def_zone = BP_HEAD)
-								if(prob(2))
-									M.embed(S, def_zone = BP_HEAD)
+								// if(prob(2))
+								// 	M.embed(S, def_zone = BP_HEAD)
 
 				else
 					to_chat(user, "<span class='danger'>You need a better grip to do that!</span>")

@@ -209,8 +209,6 @@
 	//* Damage resistances *//
 	/// Chance for a grab attempt to fail. Note that this is not a true resist and is just a prob() of failure.
 	var/grab_resist = 0
-	/// Damage reduction for all types
-	var/resistance = 0
 	// Protection against heat/cold/electric/water effects.
 	// 0 is no protection, 1 is total protection. Negative numbers increase vulnerability.
 	var/heat_resist = 0.0

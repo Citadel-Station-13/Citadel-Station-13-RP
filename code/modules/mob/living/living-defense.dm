@@ -11,6 +11,15 @@
 		return COMBAT_IMPACT_FX_METAL
 	return COMBAT_IMPACT_FX_FLESH
 
+//* Melee Handling *//
+
+/mob/living/melee_act(mob/user, obj/item/weapon, datum/melee_attack/weapon/style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_ATTACK_ABORT)
+		return
+
+	ai_holder?.react_to_attack_polaris(user)
+
 //* Projectile Handling *//
 
 /mob/living/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)

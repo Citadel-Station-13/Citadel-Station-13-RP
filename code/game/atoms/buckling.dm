@@ -262,9 +262,9 @@
 	if((buckle_flags & BUCKLING_REQUIRES_RESTRAINTS) && !M.restrained())
 		to_chat(user, SPAN_WARNING("[M == user? "You need" : "[M] needs"] to be restrained to be buckled to [src]!"))
 		return FALSE
-	if(length(M.pinned))
-		to_chat(user, SPAN_WARNING("[M == user? "You are" : "[M] is"] pinned to something!"))
-		return FALSE
+	// if(length(M.pinned))
+	// 	to_chat(user, SPAN_WARNING("[M == user? "You are" : "[M] is"] pinned to something!"))
+	// 	return FALSE
 	return TRUE
 
 /**

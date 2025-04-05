@@ -243,10 +243,6 @@
 	/// Allows mobs to move through dense areas without restriction. For instance, in space or out of holder objects.
 	var/incorporeal_move = 0 //0 is off, 1 is normal, 2 is for ninjas.
 	var/unacidable = 0
-	/// List of things pinning this creature to walls. (see living_defense.dm)
-	var/list/pinned = list()
-	/// Embedded items, since simple mobs don't have organs.
-	var/list/embedded = list()
 	/// For speaking/listening.
 	var/list/languages = list()
 	/// For species who want reset to use a specified default.

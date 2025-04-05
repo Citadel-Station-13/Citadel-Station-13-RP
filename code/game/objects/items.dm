@@ -879,11 +879,11 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	var/datum/prototype/material/material = get_primary_material()
 	var/turf/T = get_turf(src)
 	T.visible_message("<span class='danger'>\The [src] [material.destruction_desc]!</span>")
-	if(istype(loc, /mob/living))
-		var/mob/living/M = loc
-		if(material.shard_type == SHARD_SHARD) // Wearing glass armor is a bad idea.
-			var/obj/item/material/shard/S = material.place_shard(T)
-			M.embed(S)
+	// if(istype(loc, /mob/living))
+	// 	var/mob/living/M = loc
+	// 	if(material.shard_type == SHARD_SHARD) // Wearing glass armor is a bad idea.
+	// 		var/obj/item/material/shard/S = material.place_shard(T)
+	// 		M.embed(S)
 
 	playsound(src, "shatter", 70, 1)
 	qdel(src)

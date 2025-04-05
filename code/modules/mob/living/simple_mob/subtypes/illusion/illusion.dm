@@ -4,7 +4,6 @@
 	name = "illusion"
 	desc = "If you can read me, the game broke. Please report this to a coder."
 
-	resistance = 1000 // Holograms are tough.
 	heat_resist = 1
 	cold_resist = 1
 	shock_resist = 1

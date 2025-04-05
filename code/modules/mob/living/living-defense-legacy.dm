@@ -153,70 +153,29 @@
 
 	apply_damage(damage, damage_type, def_zone, absorb, soaked)
 
-#warn deal wit hthis
-//Called when the mob is hit with an item in combat. Returns the blocked result
-/mob/living/proc/hit_with_weapon(obj/item/I, mob/living/user, var/effective_force, var/hit_zone)
-	if(ai_holder)
-		ai_holder.react_to_attack_polaris(user)
+// TODO: generic embedding handling; current is too shitcode so it was commented out entirely
+// /mob/living/carbon/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/soaked, var/hit_zone)
+// 	//Apply weapon damage
+// 	var/hit_embed_chance = I.embed_chance
+// 	if(prob(legacy_mob_armor(hit_zone, "melee"))) //melee armour provides a chance to turn sharp/edge weapon attacks into blunt ones
+// 		weapon_sharp = 0
+// 		weapon_edge = 0
+// 		hit_embed_chance = I.damage_force/(I.w_class*3)
 
-	var/soaked = get_armor_soak(hit_zone, "melee", I.armor_penetration)
-	var/blocked = run_armor_check(hit_zone, "melee", I.armor_penetration, "Your armor has protected your [affecting.name].", "Your armor has softened the blow to your [affecting.name].")
+// 	//Melee weapon embedded object code.
+// 	if (I && I.damage_type == DAMAGE_TYPE_BRUTE && !I.anchored && !is_robot_module(I) && I.embed_chance > 0)
+// 		var/damage = effective_force
+// 		if (blocked)
+// 			damage *= (100 - blocked)/100
+// 			hit_embed_chance *= (100 - blocked)/100
 
-	standard_weapon_hit_effects(I, user, effective_force, blocked, soaked, hit_zone)
+// 		//blunt objects should really not be embedding in things unless a huge amount of force is involved
+// 		var/embed_threshold = weapon_sharp? 5*I.w_class : 15*I.w_class
 
-	if(I.damage_type == DAMAGE_TYPE_BRUTE && prob(33)) // Added blood for whacking non-humans too
-		var/turf/simulated/location = get_turf(src)
-		if(istype(location)) location.add_blood_floor(src)
+// 		if(damage > embed_threshold && prob(hit_embed_chance))
+// 			src.embed(I, hit_zone)
 
-	return blocked
-
-#warn deal wit hthis
-//returns 0 if the effects failed to apply for some reason, 1 otherwise.
-/mob/living/proc/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/soaked, var/hit_zone)
-	if(!effective_force || blocked >= 100)
-		return 0
-
-	//Apply weapon damage
-	var/weapon_sharp = is_sharp(I)
-	var/weapon_edge = has_edge(I)
-
-	if(legacy_mob_soak(hit_zone, "melee",) - (I.armor_penetration/5) > round(effective_force*0.8)) //soaking a hit turns sharp attacks into blunt ones
-		weapon_sharp = 0
-		weapon_edge = 0
-
-	if(prob(max(legacy_mob_armor(hit_zone, "melee") - I.armor_penetration, 0))) //melee armour provides a chance to turn sharp/edge weapon attacks into blunt ones
-		weapon_sharp = 0
-		weapon_edge = 0
-
-	apply_damage(effective_force, I.damage_type, hit_zone, blocked, soaked, sharp=weapon_sharp, edge=weapon_edge, used_weapon=I)
-
-	#warn embed here
-
-	return 1
-
-#warn deal wit hthis
-/mob/living/carbon/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/soaked, var/hit_zone)
-	//Apply weapon damage
-	var/hit_embed_chance = I.embed_chance
-	if(prob(legacy_mob_armor(hit_zone, "melee"))) //melee armour provides a chance to turn sharp/edge weapon attacks into blunt ones
-		weapon_sharp = 0
-		weapon_edge = 0
-		hit_embed_chance = I.damage_force/(I.w_class*3)
-
-	//Melee weapon embedded object code.
-	if (I && I.damage_type == DAMAGE_TYPE_BRUTE && !I.anchored && !is_robot_module(I) && I.embed_chance > 0)
-		var/damage = effective_force
-		if (blocked)
-			damage *= (100 - blocked)/100
-			hit_embed_chance *= (100 - blocked)/100
-
-		//blunt objects should really not be embedding in things unless a huge amount of force is involved
-		var/embed_threshold = weapon_sharp? 5*I.w_class : 15*I.w_class
-
-		if(damage > embed_threshold && prob(hit_embed_chance))
-			src.embed(I, hit_zone)
-
-	return 1
+// 	return 1
 
 #warn deal wit hthis
 /mob/living/carbon/human/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/soaked, var/hit_zone)
@@ -224,8 +183,6 @@
 	if(!affecting)
 		return 0
 
-	if(soaked >= round(effective_force*0.8))
-		effective_force -= round(effective_force*0.8)
 	// Handle striking to cripple.
 	if(user.a_intent == INTENT_DISARM)
 		effective_force *= 0.5 //reduced effective damage_force...
@@ -237,9 +194,6 @@
 		attack_joint(affecting, I, effective_force, 0.75, blocked, soaked) //...but can dislocate joints
 	else if(!..())
 		return 0
-
-	if(effective_force > 10 || effective_force >= 5 && prob(33))
-		forcesay(hit_appends)	//forcesay checks stat already
 
 	// you can't bleed, if you have no blood
 	var/can_bleed = !(species.species_flags & NO_BLOOD)
@@ -380,10 +334,10 @@
 
 		return force_pierce? COMPONENT_THROW_HIT_PIERCE | COMPONENT_THROW_HIT_NEVERMIND : NONE
 
-/mob/living/proc/embed(var/obj/O, var/def_zone=null)
-	O.loc = src
-	src.embedded += O
-	add_verb(src, /mob/proc/yank_out_object)
+// /mob/living/proc/embed(var/obj/O, var/def_zone=null)
+// 	O.loc = src
+// 	src.embedded += O
+// 	add_verb(src, /mob/proc/yank_out_object)
 
 //This is called when the mob is thrown into a dense turf
 /mob/living/proc/turf_collision(var/turf/T, var/speed)

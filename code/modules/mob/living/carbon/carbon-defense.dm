@@ -1,10 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/mob/living/carbon/on_melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/attack_style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-	if(weapon)
-		if(check_neckgrab_attack(weapon, attacker, target_zone))
-			return clickchain_flags | CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_ATTACK
+/mob/living/carbon/melee_act(mob/user, obj/item/weapon, datum/melee_attack/weapon/style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	if(attacker != src)
 		var/hit_zone = get_zone_with_miss_chance(target_zone, src, attacker.get_accuracy_penalty())
 		if(!hit_zone)
@@ -14,6 +11,12 @@
 	if (!affecting || affecting.is_stump())
 		to_chat(attacker, "<span class='danger'>They are missing that limb!</span>")
 		return CLICKCHAIN_ATTACK_MISSED
+	return ..()
+
+/mob/living/carbon/on_melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/attack_style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	if(weapon)
+		if(check_neckgrab_attack(weapon, attacker, target_zone))
+			return clickchain_flags | CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_ATTACK
 	return ..()
 
 //* FX *//

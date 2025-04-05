@@ -108,8 +108,6 @@
 					for(var/obj/item/O in organ.implants)
 						if(O == src)
 							organ.implants -= src
-			host.pinned -= src
-			host.embedded -= src
 		qdel(src)
 
 /obj/item/melee/changeling/arm_blade

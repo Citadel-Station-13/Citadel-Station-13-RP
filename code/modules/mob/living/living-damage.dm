@@ -105,6 +105,8 @@
 
 //* Damage *//
 
+// todo: rethink how this works a bit, specific procs for damage types might be silly
+
 /**
  * @return amount healed
  */
@@ -218,3 +220,11 @@
 		take_targeted_damage(brute, burn, damage_mode, hit_zone, weapon_descriptor)
 	else
 		take_overall_damage(brute, burn, damage_mode, weapon_descriptor)
+
+	// TODO: better bleed sim
+	if(attack_type == ATTACK_TYPE_MELEE)
+		if(damage_type == DAMAGE_TYPE_BRUTE)
+			if(prob(33))
+				var/turf/simulated/our_turf = get_turf(src)
+				if(istype(our_turf))
+					our_turf.add_blood_floor(src)

@@ -269,15 +269,15 @@
 			visible_message("<font color='red'>[src] staggers under the impact!</font>","<font color='red'>You stagger under the impact!</font>")
 			src.throw_at_old(get_edge_target_turf(src,dir),1,momentum)
 
-			if(!O || !src) return
+			// if(!O || !src) return
 
-			if(O.loc == src && is_sharp(O)) //Projectile is embedded and suitable for pinning.
-				var/turf/T = near_wall(dir,2)
-				if(T)
-					forceMove(T)
-					visible_message("<span class='warning'>[src] is pinned to the wall by [O]!</span>","<span class='warning'>You are pinned to the wall by [O]!</span>")
-					anchored = TRUE
-					pinned += O
+			// if(O.loc == src && is_sharp(O)) //Projectile is embedded and suitable for pinning.
+			// 	var/turf/T = near_wall(dir,2)
+			// 	if(T)
+			// 		forceMove(T)
+			// 		visible_message("<span class='warning'>[src] is pinned to the wall by [O]!</span>","<span class='warning'>You are pinned to the wall by [O]!</span>")
+			// 		anchored = TRUE
+			// 		pinned += O
 
 		return force_pierce? COMPONENT_THROW_HIT_PIERCE | COMPONENT_THROW_HIT_NEVERMIND : NONE
 
@@ -309,13 +309,12 @@
 		return TRUE
 	return FALSE
 
-/mob/living/carbon/human/embed(var/obj/O, var/def_zone=null)
-	if(!def_zone) ..()
+// /mob/living/carbon/human/embed(var/obj/O, var/def_zone=null)
+// 	if(!def_zone) ..()
 
-	var/obj/item/organ/external/affecting = get_organ(def_zone)
-	if(affecting)
-		affecting.embed(O)
-
+// 	var/obj/item/organ/external/affecting = get_organ(def_zone)
+// 	if(affecting)
+// 		affecting.embed(O)
 
 /mob/living/carbon/human/proc/bloody_hands(var/mob/living/source, var/amount = 2)
 	if (gloves)
