@@ -5500,6 +5500,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/map_helper/access_helper/airlock/station/exploration/pilot,
 /turf/simulated/floor/tiled/dark,
 /area/exploration/pilot_Office)
 "emu" = (
@@ -20047,6 +20048,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/map_helper/access_helper/airlock/station/exploration/pilot,
 /turf/simulated/floor/tiled/dark,
 /area/exploration/pilot_Office)
 "pkq" = (
@@ -39741,8 +39743,8 @@ hVP
 keP
 oVo
 eyU
-kKK
 kMJ
+kKK
 ikk
 eVc
 eVc

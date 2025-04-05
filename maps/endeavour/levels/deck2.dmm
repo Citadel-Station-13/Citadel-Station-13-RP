@@ -524,16 +524,13 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
 "atE" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/machinery/holoposter{
-	pixel_y = 32
-	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/navblue/border{
+	dir = 1
+	},
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -1427,8 +1424,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research/port)
 "bch" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/floor_decal/borderfloorwhite/corner{
 	dir = 1
 	},
@@ -11512,12 +11507,13 @@
 /area/medical/patient_c)
 "iep" = (
 /obj/structure/catwalk,
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor{
+	dir = 1
+	},
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d2fwdmaint)
 "iez" = (
@@ -15709,12 +15705,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virology)
-"loI" = (
-/obj/structure/sign/directions/science{
-	dir = 1
-	},
-/turf/simulated/wall/prepainted/science,
-/area/assembly/chargebay)
 "loL" = (
 /obj/effect/floor_decal/industrial/loading{
 	dir = 8
@@ -21379,13 +21369,13 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
-	},
 /obj/machinery/holopad,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
 "pta" = (
@@ -22505,6 +22495,9 @@
 /obj/effect/floor_decal/corner/navgold/border{
 	dir = 6
 	},
+/obj/machinery/camera/network/civilian{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2fwdhall)
 "pXR" = (
@@ -22678,14 +22671,12 @@
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/space)
 "qhm" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8
+/obj/structure/sign/directions/science{
+	dir = 1;
+	pixel_y = 8
 	},
-/obj/machinery/camera/network/civilian{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/dark,
-/area/endeavour/hallway/d2fwdhall)
+/turf/simulated/wall/prepainted/science,
+/area/rnd/xenobiology/xenoflora)
 "qhH" = (
 /obj/machinery/door/firedoor{
 	dir = 1
@@ -24141,12 +24132,6 @@
 /turf/simulated/floor/carpet/sblucarpet,
 /area/medical/psych/psych_2)
 "rjB" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
 "rkd" = (
@@ -31053,7 +31038,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "wpm" = (
@@ -32204,12 +32188,6 @@
 	},
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
@@ -42162,7 +42140,7 @@ mrs
 rMF
 rMF
 xSp
-atE
+byD
 iMx
 dDL
 uZL
@@ -42356,7 +42334,7 @@ oQz
 rMF
 arH
 xSp
-wQI
+atE
 ngN
 okQ
 cjj
@@ -43558,7 +43536,7 @@ hfc
 mYG
 bEP
 qZv
-iep
+mwO
 rXP
 rXP
 rXP
@@ -50153,7 +50131,7 @@ pHH
 cAQ
 xEG
 aLi
-vzw
+iep
 qcD
 qcD
 viH
@@ -50544,7 +50522,7 @@ aLi
 adO
 pJM
 bzj
-bQY
+dPF
 rXP
 vPR
 eWn
@@ -52089,8 +52067,8 @@ hgB
 hgB
 hgB
 tVn
-rFw
 tVn
+rFw
 hgB
 hgB
 gnj
@@ -52281,7 +52259,7 @@ pbh
 bQY
 sAZ
 bQY
-bQY
+dPF
 sAZ
 fKy
 pJM
@@ -53610,7 +53588,7 @@ xvT
 xvT
 xvT
 xvT
-loI
+xvT
 pmW
 mPg
 aXH
@@ -54192,7 +54170,7 @@ obl
 obl
 obl
 obl
-obl
+qhm
 xKj
 cAA
 kGP
@@ -59635,7 +59613,7 @@ qxV
 qxV
 gaZ
 ces
-yeN
+doi
 vDl
 yeN
 yeN
@@ -59829,7 +59807,7 @@ vWL
 nkN
 eID
 sHp
-doi
+yeN
 vDl
 yeN
 yeN
@@ -62156,7 +62134,7 @@ vTh
 svB
 jSU
 mxS
-qhm
+nNS
 ePs
 qjz
 qjz
@@ -62344,10 +62322,10 @@ wGZ
 iRZ
 hGi
 vmL
-cUI
-pLA
-pLA
 jsT
+pLA
+pLA
+cUI
 lYn
 tKs
 cVq
