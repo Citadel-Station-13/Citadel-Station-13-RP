@@ -222,6 +222,7 @@
 	//* Create interface UI *//
 
 	if(byond_version >= 516)
+		// TODO: enable/disable devtools for admins only
 		winset(src, null, list("browser-options" = "find,refresh,byondstorage,devtools"))
 
 	// todo: move top level menu here, for now it has to be under prefs.
