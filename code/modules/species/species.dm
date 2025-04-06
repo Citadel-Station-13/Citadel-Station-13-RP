@@ -524,9 +524,6 @@
 	var/list/actions_to_apply = list()
 	var/list/actions_applied = list()
 
-	// How much hunger slows us down
-	var/hunger_slowdown_multiplier = 1
-
 /datum/species/New()
 	//! LEGACY
 	is_subspecies = id != uid
