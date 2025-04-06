@@ -1531,12 +1531,6 @@
 /obj/effect/floor_decal/borderfloor,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/undertwo)
-"gd" = (
-/obj/structure/table/steel_reinforced,
-/obj/item/storage/firstaid/toxin,
-/obj/item/storage/single_use/med_pouch/radiation,
-/turf/simulated/floor/tiled/monotile,
-/area/engineering/engine_monitoring)
 "ge" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/machinery/light,
@@ -10536,6 +10530,8 @@
 /obj/machinery/fire_alarm/north_mount{
 	pixel_y = 22
 	},
+/obj/item/storage/firstaid/toxin,
+/obj/item/storage/single_use/med_pouch/radiation,
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engine_monitoring)
 "Nk" = (
@@ -11859,13 +11855,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/engi_wash)
-"Su" = (
-/obj/machinery/airlock_sensor{
-	id_tag = "eng_al_c_snsr";
-	pixel_x = -25
-	},
-/turf/simulated/mineral/icerock/lythios43c,
-/area/rift/surfacebase/underground/under2)
 "Sw" = (
 /obj/structure/bed/chair/bay/chair/padded/yellow,
 /obj/machinery/fire_alarm/north_mount,
@@ -28078,7 +28067,7 @@ Nj
 zG
 zG
 zG
-gd
+zG
 zJ
 jB
 sx
@@ -37406,7 +37395,7 @@ aa
 aa
 aa
 aa
-Su
+aa
 aa
 aa
 aa
