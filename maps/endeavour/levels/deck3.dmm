@@ -3984,6 +3984,9 @@
 /obj/structure/bed/chair/sofa/brown/right{
 	dir = 4
 	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/endeavour/hallway/d3fwdhall)
 "cYG" = (
@@ -4767,7 +4770,13 @@
 "dBF" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock{
-	name = "Bar Lounge 1"
+	name = "Observation Lounge 1"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/endeavour/hallway/d3fwdhall)
@@ -6761,6 +6770,15 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/pool)
+"eXB" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/endeavour/hallway/d3fwdhall)
 "eXS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -9998,6 +10016,12 @@
 /obj/landmark{
 	name = "blobstart"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
 /turf/simulated/floor/wood,
 /area/endeavour/hallway/d3fwdhall)
 "hpc" = (
@@ -12797,6 +12821,9 @@
 	dir = 4
 	},
 /obj/structure/bed/chair/sofa/brown/left,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/endeavour/hallway/d3fwdhall)
 "jut" = (
@@ -13507,6 +13534,12 @@
 /obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/endeavour/hallway/d3fwdhall)
@@ -16621,6 +16654,7 @@
 /obj/structure/bed/chair/sofa/brown/left{
 	dir = 4
 	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/carpet/bcarpet,
 /area/endeavour/hallway/d3fwdhall)
 "mzq" = (
@@ -19676,6 +19710,12 @@
 /obj/structure/bed/chair/sofa/brown/corner{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/endeavour/hallway/d3fwdhall)
 "oMc" = (
@@ -20018,6 +20058,7 @@
 /obj/landmark{
 	name = "blobstart"
 	},
+/obj/item/stool/padded,
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
 "pae" = (
@@ -22292,6 +22333,13 @@
 "qDH" = (
 /turf/simulated/wall/r_wall,
 /area/space)
+"qDR" = (
+/obj/structure/table/standard,
+/obj/effect/overlay/palmtree_l{
+	pixel_y = 14
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters/pool)
 "qDS" = (
 /obj/item/banner/cargo,
 /turf/simulated/floor/tiled/dark,
@@ -23940,6 +23988,12 @@
 /obj/structure/bed/chair/sofa/brown/corner{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/endeavour/hallway/d3fwdhall)
 "rPU" = (
@@ -25062,8 +25116,12 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/sleep/Dorm_5)
 "sxT" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/endeavour/hallway/d3fwdhall)
 "sxY" = (
@@ -28161,7 +28219,13 @@
 "uOI" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock{
-	name = "Bar Lounge 2"
+	name = "Observation Lounge 2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/endeavour/hallway/d3fwdhall)
@@ -28635,7 +28699,7 @@
 /turf/simulated/floor/wood,
 /area/quartermaster/office)
 "viE" = (
-/obj/structure/table/standard,
+/obj/item/stool/padded,
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
 "viQ" = (
@@ -30173,6 +30237,13 @@
 /obj/structure/bed/chair/shuttle,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
+"wix" = (
+/obj/structure/table/standard,
+/obj/effect/overlay/palmtree_r{
+	pixel_y = 14
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters/pool)
 "wiJ" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -32100,6 +32171,9 @@
 /obj/structure/bed/chair/sofa/brown/right{
 	dir = 1
 	},
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/endeavour/hallway/d3fwdhall)
 "xyI" = (
@@ -32978,11 +33052,11 @@
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "yer" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/endeavour/hallway/d3fwdhall)
@@ -38292,7 +38366,7 @@ rfg
 rfg
 rfg
 aVW
-viE
+qDR
 aVW
 xsq
 eXa
@@ -38486,7 +38560,7 @@ rfg
 rfg
 rfg
 aVW
-aVW
+viE
 aVW
 jKI
 fro
@@ -39068,7 +39142,7 @@ ijN
 rfg
 rfg
 aVW
-aVW
+wix
 xZC
 swy
 vGH
@@ -39262,7 +39336,7 @@ oow
 ach
 ach
 aVW
-aVW
+viE
 aVW
 swy
 rvC
@@ -64090,7 +64164,7 @@ pVJ
 pVJ
 pVJ
 jrE
-nUj
+eXB
 pVJ
 jVH
 mLa

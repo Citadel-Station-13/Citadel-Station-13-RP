@@ -318,6 +318,10 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 5
 	},
+/obj/machinery/light{
+	dir = 4;
+	light_range = 12
+	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "amJ" = (
@@ -401,6 +405,9 @@
 "apK" = (
 /obj/structure/table/woodentable,
 /obj/item/paicard,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 5
+	},
 /turf/simulated/floor/wood,
 /area/library)
 "apW" = (
@@ -4957,9 +4964,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
 "dPQ" = (
-/obj/structure/sign/department/ass,
-/turf/simulated/wall/prepainted,
-/area/endeavour/hallway/d1fwdhall)
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/library)
 "dQg" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -5977,6 +5986,7 @@
 /obj/effect/floor_decal/corner/navblue/bordercorner2{
 	dir = 5
 	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1fwdhall)
 "eFE" = (
@@ -8668,6 +8678,7 @@
 /obj/machinery/light,
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
+/obj/structure/bed/roller,
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
@@ -9506,6 +9517,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1fwdmaint)
@@ -10579,9 +10593,7 @@
 /turf/simulated/floor/grass,
 /area/endeavour/exploration/hallway_aft)
 "ijf" = (
-/obj/machinery/light{
-	dir = 1
-	},
+/obj/machinery/light,
 /obj/machinery/sleeper{
 	dir = 8
 	},
@@ -14307,17 +14319,14 @@
 /turf/simulated/wall/prepainted/command,
 /area/lawoffice)
 "kPv" = (
-/obj/structure/bed/roller,
-/obj/machinery/vending/wallmed1{
-	name = "Emergency NanoMed";
-	pixel_x = 28
+/obj/structure/bed/chair/comfy/brown{
+	dir = 1
 	},
-/obj/effect/floor_decal/industrial/outline/red,
-/obj/structure/cable/green{
-	icon_state = "4-8"
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
 	},
-/turf/simulated/floor/tiled/white,
-/area/shuttle/emt/general)
+/turf/simulated/floor/wood,
+/area/library)
 "kPw" = (
 /obj/machinery/cryopod{
 	dir = 4
@@ -19055,7 +19064,6 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
-/obj/structure/bed/roller,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "ove" = (
@@ -21432,15 +21440,13 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
 "qqo" = (
-/obj/item/radio/intercom{
-	dir = 1;
-	name = "Station Intercom (General)";
-	pixel_y = 26
-	},
 /obj/structure/bookcase/legal/combo,
 /obj/item/book/manual/standard_operating_procedure,
 /obj/item/book/manual/security_space_law,
 /obj/item/book/manual/command_guide,
+/obj/machinery/light/small{
+	dir = 1
+	},
 /turf/simulated/floor/wood,
 /area/library)
 "qqq" = (
@@ -21904,6 +21910,8 @@
 /obj/structure/cable/green,
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/structure/bed/roller,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "qDW" = (
@@ -23468,6 +23476,11 @@
 	},
 /obj/item/book/manual/chef_recipes,
 /obj/item/book/manual/engineering_singularity_safety,
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
+	},
 /turf/simulated/floor/wood,
 /area/library)
 "rRP" = (
@@ -23820,6 +23833,11 @@
 /obj/random/medical/lite,
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
+/obj/machinery/vending/wallmed1{
+	name = "Emergency NanoMed";
+	pixel_y = -28;
+	dir = 1
+	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "seH" = (
@@ -24963,7 +24981,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock/glass{
+	name = "Tool Room"
+	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1fwdhall)
@@ -30575,7 +30595,9 @@
 /obj/effect/floor_decal/corner/navblue/bordercorner2{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/north_mount,
+/obj/structure/sign/department/ass{
+	pixel_x = 32
+	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1fwdhall)
 "xls" = (
@@ -30608,10 +30630,6 @@
 "xmL" = (
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 4
-	},
-/obj/machinery/light{
-	dir = 8;
-	light_range = 12
 	},
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -30869,7 +30887,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock{
-	name = "Public Heated Pool"
+	name = "Public Sauna"
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -36473,7 +36491,7 @@ qPy
 qPy
 qPy
 ylt
-kPv
+fPZ
 sei
 qPy
 eVc
@@ -48691,7 +48709,7 @@ rUZ
 int
 nCL
 qzE
-uYs
+dPQ
 uYs
 khr
 gAi
@@ -48886,7 +48904,7 @@ cfh
 lwk
 kzG
 apK
-yfW
+kPv
 kEM
 gAi
 jrd
@@ -53324,7 +53342,7 @@ uKO
 vgA
 phr
 jPj
-dPQ
+svt
 cPf
 lTA
 thT

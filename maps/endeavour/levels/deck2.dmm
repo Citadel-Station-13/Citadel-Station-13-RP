@@ -5036,13 +5036,7 @@
 "dwZ" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
-	icon_state = "2-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/port)
@@ -5604,6 +5598,7 @@
 	},
 /obj/machinery/door/airlock/research,
 /obj/map_helper/access_helper/airlock/station/science/department,
+/obj/structure/catwalk,
 /turf/simulated/floor/tiled,
 /area/rnd/breakroom)
 "dOf" = (
@@ -5918,8 +5913,13 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "eaQ" = (
+/obj/machinery/door/firedoor{
+	dir = 1
+	},
+/obj/structure/catwalk,
+/obj/machinery/door/airlock/maintenance,
 /obj/structure/cable/green{
-	icon_state = "1-2"
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/port)
@@ -6495,8 +6495,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical_science)
 "exx" = (
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
-	icon_state = "1-4"
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/port)
@@ -9901,12 +9904,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
-"gSR" = (
-/obj/structure/cable/green{
-	icon_state = "2-8"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/research/port)
 "gSU" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -10158,19 +10155,6 @@
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_a)
-"hfm" = (
-/obj/structure/catwalk,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/research/port)
 "hfZ" = (
 /obj/machinery/iv_drip,
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -15031,10 +15015,18 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "kPA" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/airlock/maintenance/common,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/endeavour/hallway/reservehanger)
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/research/port)
 "kRI" = (
 /obj/structure/table/rack/shelf,
 /obj/random/alcohol,
@@ -26967,24 +26959,6 @@
 /obj/effect/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/exam_room/exam_2)
-"tqN" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled,
-/area/rnd/research/researchdivision)
 "tra" = (
 /obj/item/clothing/gloves/boxing,
 /obj/item/clothing/gloves/boxing/yellow{
@@ -27536,15 +27510,16 @@
 /turf/simulated/floor/wood,
 /area/medical/oncall_room)
 "tLi" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
 /obj/structure/cable/green{
-	icon_state = "1-2"
+	icon_state = "2-4"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 8
-	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/research/port)
 "tLz" = (
@@ -27936,6 +27911,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/research/port)
 "uaG" = (
@@ -28699,6 +28675,9 @@
 /obj/structure/catwalk,
 /obj/structure/cable/green{
 	icon_state = "2-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/port)
@@ -29897,6 +29876,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/maintenance,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/port)
 "vEK" = (
@@ -30311,6 +30293,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/port)
@@ -31864,11 +31849,11 @@
 /area/medical/sleeper)
 "wQj" = (
 /obj/structure/catwalk,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/port)
 "wQo" = (
@@ -32352,11 +32337,18 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/robotics/morgue)
 "xiL" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 9
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
 	},
-/turf/simulated/floor/tiled,
-/area/rnd/research_foyer)
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/maintenance/research/port)
 "xiO" = (
 /obj/structure/closet{
 	name = "mechanical equipment"
@@ -33649,15 +33641,10 @@
 /turf/simulated/floor,
 /area/maintenance/research/port)
 "ybL" = (
+/obj/structure/catwalk,
 /obj/machinery/door/firedoor{
 	dir = 1
 	},
-/obj/structure/catwalk,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/research/port)
@@ -46776,10 +46763,10 @@ qUX
 obW
 ptB
 asw
-gly
 gzA
 gzA
-tqN
+gzA
+cct
 gzA
 gzA
 gzA
@@ -50081,7 +50068,7 @@ fiD
 tIh
 amq
 pEJ
-xiL
+lwv
 iGa
 tGv
 oVx
@@ -51038,10 +51025,10 @@ ooj
 wNz
 raK
 rvw
-kWG
-kWG
+dwZ
+ylH
 uFQ
-exx
+bNX
 tQr
 moK
 wMQ
@@ -51232,7 +51219,7 @@ dow
 wyT
 apg
 rvw
-kWG
+kxG
 tQr
 tQr
 tZz
@@ -51426,11 +51413,11 @@ nAM
 cRR
 ftU
 rvw
-dEY
+eaQ
 sor
 lCp
-gSR
-eaQ
+mgV
+pmN
 dNU
 gkq
 lFS
@@ -51611,7 +51598,7 @@ pRW
 eWn
 vPR
 jib
-hfm
+kWG
 tQr
 jib
 jib
@@ -51620,7 +51607,7 @@ tQr
 eoH
 lyl
 tQr
-kWG
+kxG
 sor
 sor
 gSU
@@ -51805,16 +51792,16 @@ pRW
 tjN
 eWn
 jib
-dwZ
-wQj
+kWG
+kWG
 ybL
-wQj
-wQj
+kWG
+kWG
 tLi
 crA
 lyl
 tQr
-kWG
+kxG
 tQr
 sor
 sor
@@ -52004,11 +51991,11 @@ tQr
 jib
 tQr
 tQr
-vTj
+xiL
 xdh
 qtU
 nWM
-kWG
+kxG
 tQr
 tQr
 tQr
@@ -52202,7 +52189,7 @@ vTj
 tQr
 qIL
 tCP
-kWG
+kxG
 tQr
 tQr
 lCp
@@ -52392,11 +52379,11 @@ jib
 jib
 tQr
 tQr
-clq
-pEG
+kPA
+exx
 vEe
-pEG
-pEG
+exx
+wQj
 pEG
 pEG
 dvw
@@ -58839,7 +58826,7 @@ eID
 ces
 jEK
 msJ
-kPA
+aFv
 aFv
 aFv
 aFv
