@@ -435,7 +435,7 @@
 
 /datum/crafting_recipe/soak_hide
 	name = "Soak Hairless Hide"
-	result = /obj/item/stack/wetleather
+	result = list(/obj/item/stack/wetleather = 1)
 	time = 10
 	reqs = list(/obj/item/stack/hairlesshide = 1,
 				/datum/reagent/water = 5)

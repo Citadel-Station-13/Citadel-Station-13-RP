@@ -5898,7 +5898,9 @@
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
 "dDP" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "warden-office"
+	},
 /obj/effect/paint/darkred,
 /obj/map_helper/electrochromatic_linker{
 	id = "warden-office"
@@ -7012,7 +7014,9 @@
 	name = "Warden's Office Shutters";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "warden-office"
+	},
 /obj/effect/paint/darkred,
 /obj/map_helper/electrochromatic_linker{
 	id = "warden-office"
@@ -14781,7 +14785,7 @@
 	},
 /obj/effect/paint/darkred,
 /obj/map_helper/electrochromatic_linker{
-	id = "warden-office"
+	id = "hos-office"
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hos)
@@ -17663,7 +17667,6 @@
 "kYo" = (
 /obj/structure/closet/secure_closet/security,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/holowarrant,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -19223,7 +19226,6 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/holowarrant,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "lUM" = (
@@ -20204,7 +20206,7 @@
 	dir = 8
 	},
 /obj/machinery/button/windowtint/multitint{
-	id = "sec_processing_r";
+	id = "sec-processing-r";
 	pixel_x = 24;
 	pixel_y = 26;
 	req_access = list(1)
@@ -20709,7 +20711,8 @@
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/foyer)
 "mJx" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/effect/paint/darkred,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/hallway)
@@ -23651,7 +23654,7 @@
 /obj/map_helper/access_helper/airlock/station/security/armory,
 /obj/machinery/door/airlock/glass/security/polarized{
 	id_tag = "warden_office";
-	id_tint = "warden_office";
+	id_tint = "warden-office";
 	name = "Warden";
 	req_one_access = null
 	},
@@ -24389,7 +24392,7 @@
 "oXc" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass/security/polarized{
-	id_tint = "seclocker";
+	id_tint = "sec-locker";
 	name = "Locker Room";
 	req_one_access = null
 	},
@@ -24760,23 +24763,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
-"piB" = (
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 2;
-	icon_state = "shutter0";
-	id = "warden";
-	layer = 3.1;
-	name = "Warden's Office Shutters";
-	opacity = 0
-	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/darkred,
-/obj/map_helper/electrochromatic_linker{
-	id = "hos-office"
-	},
-/turf/simulated/floor/plating,
-/area/security/warden)
 "pjd" = (
 /obj/item/radio/intercom/department/security{
 	dir = 8;
@@ -24893,6 +24879,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery)
+"plK" = (
+/obj/machinery/camera/network/security,
+/turf/simulated/floor/reinforced,
+/area/security/hammerhead_bay)
 "plW" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -27143,7 +27133,6 @@
 "qNS" = (
 /obj/structure/closet/secure_closet/security,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/holowarrant,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
@@ -29102,7 +29091,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/glass/security/polarized{
-	id_tint = "seclocker";
+	id_tint = "sec-locker";
 	name = "Locker Room";
 	req_one_access = null
 	},
@@ -29460,7 +29449,6 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/holowarrant,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "ske" = (
@@ -32765,22 +32753,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "uDC" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 2;
-	icon_state = "shutter0";
-	id = "hos";
-	layer = 3.1;
-	name = "Head of Security's Office Shutters";
-	opacity = 0
-	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint/darkred,
-/obj/map_helper/electrochromatic_linker{
-	id = "hos-office"
-	},
 /turf/simulated/floor/plating,
-/area/crew_quarters/heads/hos)
+/area/security/security_processing)
 "uEt" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/babyblue,
@@ -34495,22 +34471,13 @@
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "vzm" = (
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 2;
-	icon_state = "shutter0";
-	id = "warden";
-	layer = 3.1;
-	name = "Warden's Office Shutters";
-	opacity = 0
-	},
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/darkred,
 /obj/map_helper/electrochromatic_linker{
-	id = "sec-locker"
+	id = "sec-processing-r"
 	},
 /turf/simulated/floor/plating,
-/area/security/warden)
+/area/security/security_processing)
 "vzn" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 1
@@ -34783,7 +34750,9 @@
 	name = "Warden's Office Shutters";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "warden-office"
+	},
 /obj/effect/paint/darkred,
 /obj/map_helper/electrochromatic_linker{
 	id = "warden-office"
@@ -36280,13 +36249,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/sleep/Dorm_6)
 "wQz" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/darkred,
 /obj/map_helper/electrochromatic_linker{
-	id = "warden-office"
+	id = "hos-office"
 	},
-/turf/simulated/floor/plating,
-/area/security/security_lockerroom)
+/turf/simulated/floor/carpet/blue,
+/area/security/breakroom)
 "wQJ" = (
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/table/rack/shelf/steel,
@@ -53507,7 +53474,7 @@ enB
 pBj
 pBj
 uAn
-swv
+plK
 qly
 qly
 qly
@@ -54671,7 +54638,7 @@ bRx
 bRx
 bRx
 kvr
-swv
+plK
 qly
 qly
 oOw
@@ -56469,7 +56436,7 @@ ryQ
 ryQ
 ryQ
 mWB
-wQz
+eke
 rNb
 rVb
 rNb
@@ -57444,7 +57411,7 @@ vKj
 tiu
 bhS
 tyF
-keC
+uDC
 vNc
 wCk
 bHa
@@ -57634,7 +57601,7 @@ uKa
 bFQ
 oeO
 wsa
-vzm
+vKj
 tiu
 bhS
 kxd
@@ -57832,7 +57799,7 @@ ukp
 tiu
 bhS
 gjq
-keC
+uDC
 pvp
 oji
 tJz
@@ -58022,7 +57989,7 @@ rAw
 rdE
 kAI
 fxc
-piB
+vKj
 tiu
 bhS
 rrl
@@ -59190,7 +59157,7 @@ jmT
 tiu
 bhS
 nuH
-keC
+vzm
 rqf
 uIR
 bVn
@@ -59380,11 +59347,11 @@ guL
 tOd
 lDe
 jAc
-uDC
+jmT
 mve
 bhS
 nuH
-keC
+vzm
 hGI
 ijR
 eTG
@@ -59578,7 +59545,7 @@ iFX
 eCN
 ohv
 oQS
-keC
+vzm
 pUO
 mzx
 yaJ
@@ -59768,7 +59735,7 @@ suI
 wRc
 gFO
 eSN
-uDC
+jmT
 wXp
 ewu
 fgP
@@ -59962,7 +59929,7 @@ dwr
 gQH
 ioQ
 fSD
-uDC
+jmT
 tiu
 mgL
 ktw
@@ -61127,7 +61094,7 @@ bqU
 cBT
 lmf
 lmf
-rTn
+wQz
 iki
 kfW
 rjW

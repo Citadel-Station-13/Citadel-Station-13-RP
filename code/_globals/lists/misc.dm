@@ -9,3 +9,6 @@ GLOBAL_LIST_EMPTY(wire_color_directory) // This is an associative list with the 
 
 // Reference list for disposal sort junctions. Filled up by sorting junction's New()
 GLOBAL_LIST_EMPTY(tagger_locations)
+
+/// Cache of the width and height of icon files, to avoid repeating the same expensive operation
+GLOBAL_LIST_EMPTY(icon_dimensions)
