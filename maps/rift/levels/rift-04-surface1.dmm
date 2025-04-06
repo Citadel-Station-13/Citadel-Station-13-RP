@@ -17184,6 +17184,9 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/medical/virologypurge)
 "kMQ" = (
@@ -21804,6 +21807,9 @@
 /area/rift/station/public_garden)
 "nAP" = (
 /obj/machinery/optable,
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/freezer,
 /area/medical/virologymorgue)
 "nBa" = (
@@ -39473,6 +39479,7 @@
 /obj/structure/table/standard,
 /obj/item/storage/firstaid/surgery,
 /obj/item/autopsy_scanner,
+/obj/machinery/camera/network/medbay,
 /turf/simulated/floor/tiled/freezer,
 /area/medical/virologymorgue)
 "xxc" = (
