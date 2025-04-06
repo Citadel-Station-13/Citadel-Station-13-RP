@@ -61,9 +61,11 @@
  * if the preloader is being used and then call [InitAtom][/datum/controller/subsystem/atoms/proc/InitAtom] of which the ultimate
  * result is that the Initialize proc is called.
  *
+ * * Creating any other atoms in this call is explicitly disallowed.
  */
 /atom/New(loc, ...)
 	//atom creation method that preloads variables at creation
+	// TODO: do we need the target type verify? it seems unnecsesary if /New() isn't allowed to be overridden usually
 	if(global.dmm_preloader_active && global.dmm_preloader_target == type)//in case the instantiated atom is creating other atoms in New()
 		world.preloader_load(src)
 

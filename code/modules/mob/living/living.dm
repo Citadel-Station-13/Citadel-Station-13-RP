@@ -15,13 +15,11 @@ TYPE_REGISTER_SPATIAL_GRID(/mob/living, SSspatial_grids.living)
 	add_verb(src, /mob/living/proc/lick)
 	add_verb(src, /mob/living/proc/smell)
 	add_verb(src, /mob/living/proc/switch_scaling)
-	if(src.no_vore) //If the mob isn't supposed to have a stomach, let's not give it an insidepanel so it can make one for itself, or a stomach.
-		return TRUE
-	add_verb(src, /mob/living/proc/insidePanel)
-	//Tries to load prefs if a client is present otherwise gives freebie stomach
-	spawn(2 SECONDS)
-		if(src)
-			src.init_vore()
+	if(!no_vore) //If the mob isn't supposed to have a stomach, let's not give it an insidepanel so it can make one for itself, or a stomach.
+		add_verb(src, /mob/living/proc/insidePanel)
+		//Tries to load prefs if a client is present otherwise gives freebie stomach
+		spawn(2 SECONDS)
+			init_vore()
 	//*        END         *//
 
 /mob/living/Destroy()
