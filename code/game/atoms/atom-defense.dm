@@ -81,6 +81,7 @@
  *
  * * Treated as an optional call; legacy code will generally not call this.
  * * Normally called from attack_style's standard damage instance handling
+ * * This is called after the damage instance is applied; this means 'damage instance reuslts' are read only.
  *
  * @params
  * * attacker - person attacking
@@ -89,7 +90,7 @@
  * * target_zone - zone targeted
  * * clickchain - (optional) clickchain used
  * * clickchain_flags - (optional) clickchain flags used
- * * damage_instance_results - (optional) SHIELDCALL_ARG_* indexed arg returns from the damage instance resolving
+ * * damage_instance_results - (optional) (read-only) SHIELDCALL_ARG_* indexed arg returns from the damage instance resolving
  */
 /atom/proc/on_melee_impact(mob/attacker, obj/item/weapon, datum/melee_attack/attack_style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags, list/damage_instance_results)
 	return
