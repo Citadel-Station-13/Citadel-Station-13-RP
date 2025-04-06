@@ -3211,7 +3211,11 @@
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/rust,
-/obj/machinery/door/airlock/vault,
+/obj/map_helper/access_helper/airlock/station/command/ai_upload,
+/obj/machinery/door/airlock/vault{
+	name = "AI Upload";
+	req_one_access = null
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/bridge)
 "mo" = (
@@ -3938,7 +3942,10 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance_hatch{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/command/ai_core,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/bridge/ai)
 "oQ" = (
@@ -4765,7 +4772,11 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/vault,
+/obj/map_helper/access_helper/airlock/station/command/ai_upload,
+/obj/machinery/door/airlock/vault{
+	name = "AI Upload";
+	req_one_access = null
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/bridge/upload)
 "rF" = (
@@ -5346,8 +5357,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/multi_tile/glass/exploration,
-/obj/map_helper/access_helper/airlock/station/exploration/department,
 /obj/machinery/door/firedoor/glass,
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/secondary)
 "tS" = (
@@ -9187,6 +9198,7 @@
 	name = "AI Core";
 	req_access = list(16)
 	},
+/obj/map_helper/access_helper/airlock/station/command/ai_core,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/bridge/ai)
 "He" = (
@@ -9208,6 +9220,7 @@
 /obj/machinery/camera/network/security{
 	dir = 4
 	},
+/obj/machinery/message_server,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/bridge/upload)
 "Hh" = (
@@ -11299,10 +11312,10 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
 	},
-/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
 /obj/machinery/door/airlock/mining{
 	name = "Cargo Airlock";
-	req_one_access = null
+	req_one_access = null;
+	req_access = list(31,5)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -12813,7 +12826,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/map_helper/access_helper/airlock/station/command/ai_core,
+/obj/machinery/door/airlock/maintenance_hatch{
+	req_one_access = null
+	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/bridge/ai)
 "VA" = (
@@ -13645,7 +13661,7 @@
 /area/strelka/shipbase/deck3/medical/roomhallway)
 "YK" = (
 /obj/machinery/conveyor_switch/oneway{
-	id = "mining_interior";
+	id = "QMLoad";
 	name = "refining conveyor";
 	pixel_y = 2;
 	pixel_x = -11

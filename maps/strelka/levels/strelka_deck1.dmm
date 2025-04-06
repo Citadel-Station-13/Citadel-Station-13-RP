@@ -47,12 +47,6 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/machinery/light/small/old{
-	dir = 4
-	},
-/obj/machinery/light/small/old{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck1/bridge/balista)
 "aD" = (
@@ -64,7 +58,6 @@
 /obj/structure/cable/blue{
 	icon_state = "1-2"
 	},
-/obj/item/storage/box/practiceshells/large,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck1/firingrange)
 "aG" = (
@@ -341,6 +334,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor,
+/obj/map_helper/access_helper/airlock/station/exploration/pilot,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck1/pilot)
 "bQ" = (
@@ -584,15 +578,6 @@
 /obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
-"db" = (
-/obj/machinery/button/remote/blast_door{
-	id = "Secbaron2";
-	dir = 1;
-	req_access = list(3);
-	pixel_y = -22
-	},
-/turf/simulated/floor/tiled/techfloor/monogrid,
-/area/strelka/shipbase/deck1/fighterbaysec)
 "de" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 5;
@@ -711,6 +696,7 @@
 /obj/effect/floor_decal/rust,
 /obj/machinery/door/airlock/highsecurity,
 /obj/machinery/door/firedoor,
+/obj/map_helper/access_helper/airlock/station/command/bridge,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1/bridge/balista)
 "dt" = (
@@ -937,6 +923,13 @@
 "eL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/button/remote/blast_door{
+	id = "Secbaron2";
+	dir = 1;
+	req_access = list(3);
+	pixel_y = -22;
+	pixel_x = -24
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/fighterbaysec)
 "eM" = (
@@ -2654,6 +2647,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor,
+/obj/map_helper/access_helper/airlock/station/exploration/pilot,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1/pilot/eva)
 "ol" = (
@@ -3359,6 +3353,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
+/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/practice,
 /turf/simulated/floor/carpet/turcarpet,
 /area/shuttle/civvie/strelka)
 "sJ" = (
@@ -3397,7 +3392,7 @@
 	name = "Surface Checkpoint Shutter";
 	opacity = 0
 	},
-/turf/simulated/wall/r_wall/prepainted/security,
+/turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/checkpoint)
 "sW" = (
 /obj/effect/floor_decal/grass_edge{
@@ -4207,6 +4202,7 @@
 	},
 /obj/machinery/door/airlock/highsecurity,
 /obj/machinery/door/firedoor,
+/obj/map_helper/access_helper/airlock/station/command/bridge,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1/bridge/balista)
 "xY" = (
@@ -4271,11 +4267,6 @@
 /obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
-"yu" = (
-/obj/machinery/door/window/eastright,
-/obj/map_helper/access_helper/airlock/station/security/general,
-/turf/simulated/floor/tiled/techfloor/monogrid,
-/area/strelka/shipbase/deck1/fighterbaysec)
 "yw" = (
 /obj/effect/floor_decal/borderfloorblack/corner,
 /turf/simulated/floor/tiled/monodark,
@@ -4354,8 +4345,6 @@
 /obj/item/clothing/ears/earmuffs,
 /obj/item/gun/projectile/energy/laser/practice,
 /obj/item/gun/projectile/energy/laser/practice,
-/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/practice,
-/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/practice,
 /obj/item/clothing/ears/earmuffs,
 /obj/item/clothing/glasses/goggles,
 /turf/simulated/floor/tiled/old_tile/gray,
@@ -4445,8 +4434,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/highsecurity{
 	name = "Balista Airlock";
-	req_one_access = list(53,44)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/command/bridge,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1/bridge/balista)
 "zq" = (
@@ -4499,10 +4489,6 @@
 "zx" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/machinery/door/airlock/highsecurity{
-	name = "Balista Airlock";
-	req_one_access = list(53,44)
-	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck1/bridge/balista)
 "zz" = (
@@ -4601,13 +4587,6 @@
 /obj/machinery/suit_cycler/exploration,
 /turf/simulated/floor/tiled/techmaint,
 /area/strelka/shipbase/deck1/gateway)
-"Az" = (
-/obj/machinery/door/airlock/highsecurity{
-	name = "Balista Airlock";
-	req_one_access = list(53,44)
-	},
-/turf/simulated/floor/tiled/dark,
-/area/strelka/shipbase/deck1/bridge/balista)
 "AD" = (
 /obj/effect/floor_decal/borderfloorblack/full,
 /obj/machinery/door/blast/shutters{
@@ -4726,6 +4705,10 @@
 "Bw" = (
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck1)
+"Bz" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/turf/simulated/floor/tiled/dark,
+/area/strelka/shipbase/deck1/bridge/balista)
 "BB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/monodark,
@@ -4872,11 +4855,6 @@
 /obj/item/gun/projectile/energy/gun,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/armory2)
-"Ct" = (
-/obj/machinery/door/window/eastleft,
-/obj/map_helper/access_helper/airlock/station/security/general,
-/turf/simulated/floor/tiled/techfloor/monogrid,
-/area/strelka/shipbase/deck1/fighterbaysec)
 "Cu" = (
 /obj/effect/shuttle_landmark/automatic,
 /turf/space/basic,
@@ -5490,9 +5468,10 @@
 	},
 /obj/machinery/door/airlock/highsecurity{
 	name = "Balista Airlock";
-	req_one_access = list(53,44)
+	req_one_access = null
 	},
 /obj/machinery/door/firedoor,
+/obj/map_helper/access_helper/airlock/station/command/bridge,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck1/bridge/balista)
 "Fj" = (
@@ -6303,6 +6282,10 @@
 /obj/structure/lattice,
 /turf/space/basic,
 /area/space)
+"Ke" = (
+/obj/machinery/light/small/old,
+/turf/simulated/floor/airless,
+/area/strelka/shipbase/deck1/bridge/balista)
 "Kf" = (
 /obj/structure/railing{
 	dir = 8
@@ -7588,6 +7571,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor,
+/obj/map_helper/access_helper/airlock/station/exploration/pilot,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck1/pilot)
 "Rv" = (
@@ -7792,9 +7776,10 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/door/airlock/highsecurity{
 	name = "Balista Airlock";
-	req_one_access = list(53,44)
+	req_one_access = null
 	},
 /obj/machinery/door/firedoor,
+/obj/map_helper/access_helper/airlock/station/command/bridge,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck1/bridge/balista)
 "SR" = (
@@ -8354,6 +8339,9 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1)
+"VX" = (
+/turf/simulated/floor/airless,
+/area/strelka/shipbase/deck1/bridge/balista)
 "Wl" = (
 /obj/machinery/air_alarm{
 	dir = 8;
@@ -8864,6 +8852,10 @@
 /obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
+"Yp" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/turf/simulated/floor/airless,
+/area/strelka/shipbase/deck1/bridge/balista)
 "Yq" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -27462,8 +27454,8 @@ hO
 MR
 zm
 qs
-Ct
-yu
+vL
+vL
 qs
 Qh
 lv
@@ -27657,7 +27649,7 @@ qs
 qs
 qs
 vL
-db
+vL
 yL
 yL
 yL
@@ -34266,7 +34258,7 @@ sc
 RS
 XS
 Sm
-Az
+QU
 ay
 Yk
 Me
@@ -34460,9 +34452,9 @@ fA
 RS
 Qc
 Qc
-RS
-RS
-RS
+Yp
+Yp
+Bz
 DW
 Vb
 Md
@@ -34655,7 +34647,7 @@ hT
 hT
 hT
 VC
-RS
+Ke
 RS
 RS
 RS
@@ -34849,7 +34841,7 @@ RS
 RS
 RS
 Ws
-RS
+VX
 RS
 RS
 RS

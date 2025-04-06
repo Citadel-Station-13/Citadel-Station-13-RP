@@ -1126,8 +1126,7 @@
 /area/strelka/shipbase/deck2)
 "dX" = (
 /obj/effect/floor_decal/plaque{
-	pixel_y = 6;
-	
+	pixel_y = 6
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -2132,12 +2131,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/security/storage)
-"hr" = (
-/obj/machinery/door/window/brigdoor/southleft,
-/obj/map_helper/access_helper/airlock/station/science/department,
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/strelka/shipbase/deck2/explo)
 "ht" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/offwhite,
@@ -5578,7 +5571,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/map_helper/access_helper/airlock/station/head_office/chief_engineer,
-/obj/machinery/door/airlock/glass/command/polarized,
+/obj/machinery/door/airlock/glass/command/polarized{
+	req_one_access = null
+	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck2/bridge/ce)
@@ -6585,6 +6580,8 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
+/obj/map_helper/access_helper/airlock/station/science/department,
+/obj/machinery/door/window/brigdoor/northleft,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2)
 "vz" = (
@@ -8493,8 +8490,11 @@
 /obj/structure/cable/white{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance_hatch{
+	req_one_access = null
+	},
 /obj/machinery/door/firedoor/glass,
+/obj/map_helper/access_helper/airlock/station/head_office/chief_engineer,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/bridge/ce)
 "BJ" = (
@@ -8962,6 +8962,8 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/engine)
 "Di" = (
+/obj/map_helper/access_helper/airlock/station/science/department,
+/obj/machinery/door/window/brigdoor/northright,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck2/explo)
 "Dl" = (
@@ -8990,6 +8992,8 @@
 	dir = 8
 	},
 /obj/machinery/air_alarm/west_mount,
+/obj/map_helper/access_helper/airlock/station/science/department,
+/obj/machinery/door/window/brigdoor/northleft,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck2/explo)
 "Dr" = (
@@ -13035,12 +13039,6 @@
 "Ry" = (
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2)
-"Rz" = (
-/obj/machinery/door/window/brigdoor/southright,
-/obj/map_helper/access_helper/airlock/station/science/department,
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/strelka/shipbase/deck2/explo)
 "RA" = (
 /obj/structure/table/steel,
 /obj/item/integrated_electronics/debugger{
@@ -14319,8 +14317,6 @@
 /obj/structure/window/phoronreinforced{
 	dir = 4
 	},
-/obj/machinery/door/window/brigdoor/southleft,
-/obj/map_helper/access_helper/airlock/station/science/department,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck2)
@@ -15385,7 +15381,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/map_helper/access_helper/airlock/station/head_office/head_of_security,
-/obj/machinery/door/airlock/glass/command/polarized,
+/obj/machinery/door/airlock/glass/command/polarized{
+	req_one_access = null
+	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck2/bridge/hos)
@@ -32005,7 +32003,7 @@ vK
 LT
 wE
 rL
-hr
+tw
 Do
 sT
 vW
@@ -32199,7 +32197,7 @@ vK
 LT
 wE
 ek
-Rz
+tw
 Di
 Ym
 DP
