@@ -43,7 +43,7 @@
 /area/engineering/engine_room)
 "bZ" = (
 /obj/machinery/computer/general_air_control/supermatter_core{
-	dir = 1;
+	dir = 4;
 	frequency = 1438;
 	input_tag = "cooling_in";
 	name = "Engine Pressure Control";
@@ -1797,7 +1797,7 @@ Zn
 WA
 kh
 It
-Zn
+bZ
 Zn
 Zn
 Zn
@@ -1822,7 +1822,7 @@ Zn
 Zn
 Zn
 Zn
-bZ
+Zn
 Zn
 Zn
 Zn
