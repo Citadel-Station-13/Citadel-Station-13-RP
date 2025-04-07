@@ -1664,6 +1664,7 @@
 #include "code\game\objects\items\inducer.dm"
 #include "code\game\objects\items\inflatables.dm"
 #include "code\game\objects\items\latexballoon.dm"
+#include "code\game\objects\items\leash.dm"
 #include "code\game\objects\items\offhand.dm"
 #include "code\game\objects\items\paintkit.dm"
 #include "code\game\objects\items\pizza_voucher.dm"
