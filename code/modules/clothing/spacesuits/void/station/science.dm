@@ -8,6 +8,7 @@
 	max_heat_protection_temperature = 10000
 	min_pressure_protection = 0 * ONE_ATMOSPHERE
 	max_pressure_protection = 20* ONE_ATMOSPHERE
+	worth_intrinsic = 159
 	integrity_flags = INTEGRITY_ACIDPROOF
 
 /obj/item/clothing/suit/space/void/science
@@ -22,5 +23,6 @@
 	min_pressure_protection = 0 * ONE_ATMOSPHERE
 	max_pressure_protection = 20* ONE_ATMOSPHERE
 	integrity_flags = INTEGRITY_ACIDPROOF
-	encumbrance = 60
+	encumbrance = 55
+	worth_intrinsic = 350
 	helmet_type = /obj/item/clothing/head/helmet/space/void/science
