@@ -72,14 +72,10 @@
  */
 /proc/do_after(mob/user, delay, atom/target, flags, mobility_flags = MOBILITY_CAN_USE, max_distance, datum/callback/additional_checks, atom/progress_anchor, datum/progressbar/progress_instance)
 	if(isnull(user) || QDELETED(user))
-		if(progress_instance)
-			// does not check for double qdel; don't pass in qdel'd progress bars.
-			qdel(progress_instance)
+		progress_instance?.end_progress()
 		return FALSE
 	if(!delay)
-		if(progress_instance)
-			// does not check for double qdel; don't pass in qdel'd progress bars.
-			qdel(progress_instance)
+		progress_instance?.end_progress()
 		return \
 		(isnull(additional_checks) || additional_checks.Invoke(args)) && \
 		(isnull(max_distance) || get_dist(user, target) <= max_distance) && \
