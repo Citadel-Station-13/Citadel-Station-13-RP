@@ -68,12 +68,18 @@
  * * max_distance - if not null, the user is required to be get_dist() <= max_distance from target.
  * * additional_checks - a callback that allows for custom checks. this is invoked with our args directly, allowing us to modify delay.
  * * progress_anchor - override progressbar anchor location
- * * progress_instance - override progressbar instance
+ * * progress_instance - override progressbar instance; this progressbar instance will be **deleted** when we are finished
  */
 /proc/do_after(mob/user, delay, atom/target, flags, mobility_flags = MOBILITY_CAN_USE, max_distance, datum/callback/additional_checks, atom/progress_anchor, datum/progressbar/progress_instance)
 	if(isnull(user) || QDELETED(user))
+		if(progress_instance)
+			// does not check for double qdel; don't pass in qdel'd progress bars.
+			qdel(progress_instance)
 		return FALSE
 	if(!delay)
+		if(progress_instance)
+			// does not check for double qdel; don't pass in qdel'd progress bars.
+			qdel(progress_instance)
 		return \
 		(isnull(additional_checks) || additional_checks.Invoke(args)) && \
 		(isnull(max_distance) || get_dist(user, target) <= max_distance) && \
