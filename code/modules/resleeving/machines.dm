@@ -451,7 +451,7 @@
 	dat +="<B>Current occupant:</B> [src.occupant ? "<BR>Name: [src.occupant]<BR>Health: [health_text]<BR>" : "<FONT color=red>None</FONT>"]<BR>"
 	dat +="<B>Mind status:</B> [mind_text]<BR>"
 	user.set_machine(src)
-	user << browse(dat, "window=resleever")
+	user << browse(HTML_SKELETON(dat), "window=resleever")
 	onclose(user, "resleever")
 
 /obj/machinery/transhuman/resleever/attackby(obj/item/W, mob/user)

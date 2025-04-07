@@ -79,7 +79,7 @@
 		dat += locked ? "<br>" : "<a href='?src=\ref[src];choice=reset_log'>Reset Log</a><br>"
 		dat += "<br>"
 	dat += "<i>Device ID:</i> [machine_id]"
-	user << browse(dat, "window=retail;size=350x500")
+	user << browse(HTML_SKELETON(dat), "window=retail;size=350x500")
 	onclose(user, "retail")
 
 
