@@ -1538,7 +1538,7 @@
 /area/security/lobby)
 "bcw" = (
 /obj/machinery/door/window/brigdoor/eastleft{
-	dir = 8;
+	dir = 1;
 	name = "Warden's Desk"
 	},
 /obj/structure/table/steel_reinforced,
@@ -1553,7 +1553,7 @@
 	opacity = 0
 	},
 /obj/machinery/door/window/brigdoor/westleft{
-	dir = 4;
+	dir = 2;
 	name = "Warden's Desk";
 	req_access = list(3)
 	},
@@ -2051,19 +2051,19 @@
 	pixel_x = -24;
 	pixel_y = 6
 	},
-/obj/machinery/button/remote/blast_door{
-	id = "armoryriot";
-	name = "Emergency Armory Access";
-	pixel_x = -25;
-	pixel_y = -6;
-	req_access = list(3)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
 /obj/structure/cable/green{
 	icon_state = "2-4"
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "armorytactical";
+	name = "Tactical Armory Access";
+	pixel_x = -25;
+	pixel_y = -6;
+	req_access = list(3)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
@@ -3618,13 +3618,6 @@
 	},
 /obj/machinery/fire_alarm/east_mount{
 	pixel_y = 8
-	},
-/obj/machinery/button/remote/blast_door{
-	id = "armorytactical";
-	name = "Tactical Armory Access";
-	pixel_x = 25;
-	pixel_y = -6;
-	req_access = list(3)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
@@ -7528,15 +7521,15 @@
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "fEj" = (
+/obj/effect/floor_decal/corner/blue{
+	dir = 9
+	},
 /obj/machinery/button/remote/blast_door{
 	id = "armoryriot";
 	name = "Emergency Armory Access";
 	pixel_x = -25;
 	pixel_y = -6;
 	req_access = list(3)
-	},
-/obj/effect/floor_decal/corner/blue{
-	dir = 9
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
@@ -9525,6 +9518,22 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/starboardsolar)
+"gZX" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/hallway)
 "haB" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -12690,7 +12699,7 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
-/obj/machinery/door/airlock/maintenance/sec,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3aftmaint)
 "jpo" = (
@@ -19811,7 +19820,7 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
-/obj/machinery/door/airlock/maintenance/sec,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_shop)
 "oOG" = (
@@ -21070,7 +21079,7 @@
 	pixel_x = -6;
 	pixel_y = 9
 	},
-/obj/structure/table/fancyblack,
+/obj/structure/table/borosilicate,
 /turf/simulated/floor/plating,
 /area/quartermaster/storage)
 "pPi" = (
@@ -23905,7 +23914,7 @@
 /turf/simulated/floor/plating,
 /area/quartermaster/foyer)
 "rMY" = (
-/obj/structure/table/fancyblack,
+/obj/structure/table/borosilicate,
 /obj/item/kit/paint/ripley/arnold,
 /obj/item/kit/paint/ripley/flames_red,
 /obj/item/kit/paint/ripley/flames_blue,
@@ -26421,6 +26430,13 @@
 "tsH" = (
 /obj/effect/floor_decal/corner/red{
 	dir = 6
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "armoryriot";
+	name = "Emergency Armory Access";
+	pixel_x = 25;
+	pixel_y = -6;
+	req_access = list(3)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
@@ -31095,7 +31111,9 @@
 /area/maintenance/pool)
 "wKK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
 /obj/machinery/camera/network/security{
 	dir = 4
 	},
@@ -33178,7 +33196,7 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
-/obj/machinery/door/airlock/maintenance/sec,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3aftmaint)
 "ykp" = (
@@ -50779,7 +50797,7 @@ pqO
 sNp
 wLe
 wKK
-sNp
+gZX
 gGm
 iYC
 qRW
@@ -59532,7 +59550,7 @@ fgl
 jqk
 pRW
 pRW
-pRW
+luP
 mDp
 mDp
 aDe
@@ -60114,7 +60132,7 @@ npi
 jqk
 kfD
 jYr
-fkV
+mDp
 lIp
 mDp
 mDp
@@ -64938,13 +64956,13 @@ mDp
 mDp
 mDp
 mDp
-nNX
+mDp
 iHD
 iHD
 iHD
 iHD
 iHD
-mXs
+mDp
 mDp
 mDp
 mDp
