@@ -2291,9 +2291,6 @@
 	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
-	icon_state = "2-8"
-	},
-/obj/structure/cable/green{
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -13698,7 +13695,6 @@
 /obj/machinery/camera/network/command{
 	dir = 8
 	},
-/obj/structure/cable/green,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)
 "aQV" = (
@@ -20294,13 +20290,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/bar)
-"hoq" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/structure/cable/green{
-	icon_state = "2-8"
-	},
-/turf/simulated/floor/tiled/white,
-/area/shuttle/emt/general)
 "hoH" = (
 /obj/machinery/door/airlock/exploration{
 	locked = 1;
@@ -27474,7 +27463,6 @@
 /obj/effect/floor_decal/spline/plain,
 /obj/structure/window/reinforced,
 /obj/structure/reagent_dispensers/water_cooler/full,
-/obj/item/reagent_containers/glass/cooler_bottle,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "vam" = (
@@ -28991,12 +28979,6 @@
 /obj/machinery/holopad/ship,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
-"xmt" = (
-/obj/structure/bed/chair/sofa/black/left{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "xmB" = (
 /obj/structure/cable/pink{
 	icon_state = "1-8"
@@ -39607,7 +39589,7 @@ aOi
 aOi
 acH
 acH
-xmt
+acH
 aOi
 aOi
 aOi
@@ -48308,7 +48290,7 @@ uOx
 cxo
 boG
 aIw
-hoq
+ymh
 evu
 pOS
 rRF

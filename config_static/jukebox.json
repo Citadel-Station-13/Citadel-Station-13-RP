@@ -10299,5 +10299,415 @@
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
+},
+{
+"url": "https://files.catbox.moe/nz7v1u.mp3",
+"title": "Bella Ciao",
+"duration": 2950,
+"artist": "La casa de papel",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Sol Common Precursors"
+},
+{
+"url": "https://files.catbox.moe/7o87jc.mp3",
+"title": "Lazarus",
+"duration": 2480,
+"artist": "David Bowie",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
+},
+{
+"url": "https://files.catbox.moe/yrsh98.mp3",
+"title": "Heroes",
+"duration": 2080,
+"artist": "David Bowie",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
+},
+{
+"url": "https://files.catbox.moe/31i8o1.mp3",
+"title": "Paper Planes",
+"duration": 2050,
+"artist": "M.I.A",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
+},
+{
+"url": "https://files.catbox.moe/emb3ll.mp3",
+"title": "September Kids",
+"duration": 2480,
+"artist": "William Maranci Mashups",
+"secret": true,
+"lobby": false,
+"jukebox": true,
+"genre": "Pop"
+},
+{
+"url": "https://files.catbox.moe/z0oyhw.mp3",
+"title": "Goofy Goober Rock",
+"duration": 1740,
+"artist": "Tom Rothrock with Jim Wise",
+"secret": true,
+"lobby": false,
+"jukebox": true,
+"genre": "Metal"
+},
+{
+"url": "https://files.catbox.moe/wy6jb1.mp3",
+"title": "The Unkillable Soldier",
+"duration": 2510,
+"artist": "SABATON",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Metal"
+},
+{
+"url": "https://files.catbox.moe/ab5yuf.mp3",
+"title": "Stormtroopers",
+"duration": 2360,
+"artist": "SABATON",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Metal"
+},
+{
+"url": "https://files.catbox.moe/y5art4.mp3",
+"title": "The Attack of the Dead Men",
+"duration": 2360,
+"artist": "SABATON",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Metal"
+},
+{
+"url": "https://files.catbox.moe/a4oxi0.mp3",
+"title": "Heavy Metal Never Dies",
+"duration": 2510,
+"artist": "Iron Savior",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Metal"
+},
+{
+"url": "https://files.catbox.moe/bpzfyg.mp3",
+"title": "Love Love Love",
+"duration": 2350,
+"artist": "Of Monsters And Men",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Folk and Indie"
+},
+{
+"url": "https://files.catbox.moe/nz61vt.mp3",
+"title": "Little Talks",
+"duration": 2630,
+"artist": "Of Monsters And Men",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Folk and Indie"
+},
+{
+"url": "https://files.catbox.moe/ijht8f.mp3",
+"title": "Empty Note (Acoustic)",
+"duration": 2350,
+"artist": "Ghostly Kisses",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Folk and Indie"
+},
+{
+"url": "https://files.catbox.moe/pw0ut4.mp3",
+"title": "Blackbirds",
+"duration": 3140,
+"artist": "Ghostly Kisses",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Folk and Indie"
+},
+{
+"url": "https://files.catbox.moe/3yagxj.mp3",
+"title": "The Poet and the Muse",
+"duration": 2570,
+"artist": "Old Gods of Asgard",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Folk and Indie"
+},
+{
+"url": "https://files.catbox.moe/f11b2y.mp3",
+"title": "Oats We Sow",
+"duration": 1780,
+"artist": "Gregory and the Hawk",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Folk and Indie"
+},
+{
+"url": "https://files.catbox.moe/8zjkx6.mp3",
+"title": "Boats and Birds",
+"duration": 1700,
+"artist": "Gregory and the Hawk",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Folk and Indie"
+},
+{
+"url": "https://files.catbox.moe/wv3dru.mp3",
+"title": "Bottom of the Pit",
+"duration": 2400,
+"artist": "The Living Tombstone",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Electronic"
+},
+{
+"url": "https://files.catbox.moe/vg0zrz.mp3",
+"title": "It's Late",
+"duration": 3650,
+"artist": "A Beacon School",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Electronic"
+},
+{
+"url": "https://files.catbox.moe/gwtokm.mp3",
+"title": "The Blaster's Free Bird",
+"duration": 3530,
+"artist": "Allen Collins, Ronnie Van Zant",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Country and Western"
+},
+{
+"url": "https://files.catbox.moe/57iydc.mp3",
+"title": "Hurt",
+"duration": 2280,
+"artist": "Johnny Cash",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Country and Western"
+},
+{
+"url": "https://files.catbox.moe/byiavb.mp3",
+"title": "The Flight of the Pigeon",
+"duration": 1010,
+"artist": "Johan Söderqvist",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Classical and Orchestral"
+},
+{
+"url": "https://files.catbox.moe/txjsse.mp3",
+"title": "This Place Was A Shelter",
+"duration": 2310,
+"artist": "Ólafur Arnalds",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Classical and Orchestral"
+},
+{
+"url": "https://files.catbox.moe/qpz9p1.mp3",
+"title": "Spring 0,1",
+"duration": 1910,
+"artist": "Max Richter",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Classical and Orchestral"
+},
+{
+"url": "https://files.catbox.moe/vbzh7p.mp3",
+"title": "On the Nature of Daylight (Entropy)",
+"duration": 4130,
+"artist": "Max Richter",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Classical and Orchestral"
+},
+{
+"url": "https://files.catbox.moe/nxw3q8.mp3",
+"title": "Soyuz",
+"duration": 1020,
+"artist": "Steven Price",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Classical and Orchestral"
+},
+{
+"url": "https://files.catbox.moe/wkzlga.mp3",
+"title": "Por una Cabeza",
+"duration": 1450,
+"artist": "Carlos Gardel",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Classical and Orchestral"
+},
+{
+"url": "https://files.catbox.moe/ber7cv.mp3",
+"title": "Nearer My God to Thee",
+"duration": 1610,
+"artist": "I Salonisti",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Classical and Orchestral"
+},
+{
+"url": "https://files.catbox.moe/yr6ib5.mp3",
+"title": "Weep",
+"duration": 2960,
+"artist": "Normad",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Classical and Orchestral"
+},
+{
+"url": "https://files.catbox.moe/3hs3xl.mp3",
+"title": "14. Mu",
+"duration": 1170,
+"artist": "heklAa",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Classical and Orchestral"
+},
+{
+"url": "https://files.catbox.moe/jp617k.mp3",
+"title": "Burning Pipers Hut",
+"duration": 2890,
+"artist": "Beltaine",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Classical and Orchestral"
+},
+{
+"url": "https://files.catbox.moe/1lbz6z.mp3",
+"title": "Beltaine",
+"duration": 3730,
+"artist": "Beltaine",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Classical and Orchestral"
+},
+{
+"url": "https://files.catbox.moe/0pwpwl.mp3",
+"title": " Cup of Liber-Tea (Pianistec Cover)",
+"duration": 3570,
+"artist": "Pianistec",
+"secret": true,
+"lobby": false,
+"jukebox": true,
+"genre": "Arcade"
+},
+{
+"url": "https://files.catbox.moe/nyyb9j.mp3",
+"title": "If I were a Core (Instrumental)",
+"duration": 2580,
+"artist": "Harry101UK",
+"secret": true,
+"lobby": false,
+"jukebox": true,
+"genre": "Arcade"
+},
+{
+"url": "https://files.catbox.moe/kglawh.mp3",
+"title": "Blue Room (feat. LudoWic)",
+"duration": 1750,
+"artist": "Tunç Çakır",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Arcade"
+},
+{
+"url": "https://files.catbox.moe/xiep26.mp3",
+"title": "Coasting (Hummed)",
+"duration": 2110,
+"artist": "Darren Korb,  Ashley Barrett",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Arcade"
+},
+{
+"url": "https://files.catbox.moe/ssrn48.mp3",
+"title": "Sandbox (Hummed)",
+"duration": 2050,
+"artist": "Darren Korb,  Ashley Barrett",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Arcade"
+},
+{
+"url": "https://files.catbox.moe/cv2q0i.mp3",
+"title": "Paper Boats",
+"duration": 2700,
+"artist": "Darren Korb,  Ashley Barrett",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Arcade"
+},
+{
+"url": "https://files.catbox.moe/4748n9.mp3",
+"title": "[Er___r] _n C_rcl_s",
+"duration": 2070,
+"artist": "Darren Korb,  Ashley Barrett",
+"secret": true,
+"lobby": false,
+"jukebox": true,
+"genre": "Arcade"
+},
+{
+"url": "https://files.catbox.moe/6ktpel.mp3",
+"title": "Decadance",
+"duration": 3200,
+"artist": "Misha Mishenko",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Arcade"
+},
+{
+"url": "https://files.catbox.moe/icxz1q.mp3",
+"title": "For River (Johnny's Version)",
+"duration": 990,
+"artist": "Kan Gao",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Arcade"
 }
 ]

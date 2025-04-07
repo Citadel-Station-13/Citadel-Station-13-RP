@@ -9,12 +9,15 @@
 	var/fleshcolor //Used for gibbed humans.
 	var/bloodcolor //Used for gibbed humans.
 
-/obj/effect/gibspawner/New(location, datum/dna/MobDNA, fleshcolor, bloodcolor)
+/obj/effect/gibspawner/Initialize(mapload, datum/dna/MobDNA, fleshcolor, bloodcolor)
 	..()
 
-	if(fleshcolor) src.fleshcolor = fleshcolor
-	if(bloodcolor) src.bloodcolor = bloodcolor
+	if(fleshcolor)
+		src.fleshcolor = fleshcolor
+	if(bloodcolor)
+		src.bloodcolor = bloodcolor
 	Gib(loc,MobDNA)
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/gibspawner/proc/Gib(atom/location, datum/dna/MobDNA = null)
 	if(gibtypes.len != gibamounts.len || gibamounts.len != gibdirections.len)

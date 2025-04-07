@@ -22,7 +22,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/item/eftpos/LateInitialize()
-	. = ..()
 	print_reference()
 
 	//create a short manual as well
@@ -111,7 +110,7 @@
 			dat += "<a href='?src=\ref[src];choice=change_code'>Change access code</a><br>"
 			dat += "<a href='?src=\ref[src];choice=change_id'>Change EFTPOS ID</a><br>"
 			dat += "Scan card to reset access code <a href='?src=\ref[src];choice=reset'>\[------\]</a>"
-		user << browse(dat,"window=eftpos")
+		user << browse(HTML_SKELETON(dat),"window=eftpos")
 	else
 		user << browse(null,"window=eftpos")
 
