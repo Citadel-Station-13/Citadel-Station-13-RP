@@ -5572,6 +5572,7 @@
 	icon_state = "4-8"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/sun,
 /turf/simulated/floor,
 /area/maintenance/substation/engineering)
 "tB" = (
@@ -9179,6 +9180,7 @@
 /area/engineering/workshop)
 "HY" = (
 /obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/effect/paint/sun,
 /turf/simulated/floor/plating,
 /area/engineering/workshop)
 "Ia" = (
