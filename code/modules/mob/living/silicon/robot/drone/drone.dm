@@ -56,6 +56,10 @@
 
 /mob/living/silicon/robot/drone/ghost()
 	. = ..()
+	if(istype(loc, /obj/machinery/cryopod/robot))
+		var/obj/machinery/cryopod/robot/cryo = loc
+		cryo.despawn_occupant(src)
+		return
 	if (!ckey)
 		death()
 
