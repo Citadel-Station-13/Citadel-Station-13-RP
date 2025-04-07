@@ -36,26 +36,6 @@
 	/// Following the above - allow stripper gun on us?
 	var/permit_stripped
 
-//
-// Hook for generic creation of stuff on new creatures
-//
-/hook/living_new/proc/vore_setup(mob/living/M)
-	add_verb(M, /mob/living/proc/escapeOOC)
-	add_verb(M, /mob/living/proc/lick)
-	add_verb(M, /mob/living/proc/smell)
-	add_verb(M, /mob/living/proc/switch_scaling)
-	if(M.no_vore) //If the mob isn't supposed to have a stomach, let's not give it an insidepanel so it can make one for itself, or a stomach.
-		return TRUE
-	add_verb(M, /mob/living/proc/insidePanel)
-
-	//Tries to load prefs if a client is present otherwise gives freebie stomach
-	spawn(2 SECONDS)
-		if(M)
-			M.init_vore()
-
-	//return TRUE to hook-caller
-	return TRUE
-
 /mob/living/proc/init_vore()
 	//Something else made organs, meanwhile.
 	if(LAZYLEN(vore_organs))
