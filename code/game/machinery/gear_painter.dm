@@ -302,10 +302,10 @@
 		// A predefined number of them must pass to be considered valid
 		var/passed = 0
 #define COLORTEST(thestring, thematrix) passed += (rgb2hsv(RGBMatrixTransform(thestring, thematrix))[3] >= minimum_matrix_lightness)
-		COLORTEST("FF0000", cm)
-		COLORTEST("00FF00", cm)
-		COLORTEST("0000FF", cm)
-		COLORTEST("FFFFFF", cm)
+		COLORTEST("#FF0000", cm)
+		COLORTEST("#00FF00", cm)
+		COLORTEST("#0000FF", cm)
+		COLORTEST("#FFFFFF", cm)
 		pass() // macro used immediately before being undefined; BYOND bug 2072419
 #undef COLORTEST
 		if(passed < minimum_matrix_tests)
