@@ -38,6 +38,8 @@
 		/obj/item/toy
 	)
 
+	var/snowflake_last_ui_expensive_update
+
 /obj/machinery/gear_painter/Initialize(mapload)
 	. = ..()
 	color_matrix_last = list(
@@ -162,6 +164,10 @@
 	.["buildval"] = build_val
 	if(temp)
 		.["temp"] = temp
+	// TODO: use byondmap, don't use this shitty unresponsive throttling
+	if(snowflake_last_ui_expensive_update + 0.15 SECONDS > world.time)
+		return
+	snowflake_last_ui_expensive_update = world.time
 	if(inserted)
 		.["item"] = list()
 		.["item"]["name"] = inserted.name
