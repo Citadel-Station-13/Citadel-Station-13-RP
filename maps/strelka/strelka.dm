@@ -32,23 +32,14 @@
 
 	//* LEGACY BELOW *//
 
-	legacy_assert_shuttle_datums = list(
-		/datum/shuttle/autodock/overmap/excursion/strelka,
-		/datum/shuttle/autodock/ferry/emergency/escape/strelka,
-		/datum/shuttle/autodock/ferry/supply/cargo/strelka,
-		/datum/shuttle/autodock/overmap/emt/strelka,
-		/datum/shuttle/autodock/overmap/civvie/strelka,
-		/datum/shuttle/autodock/ferry/belter,
-	)
-
-	full_name = "NEV Strelka"
+	full_name = "NSV Strelka"
 
 	use_overmap = TRUE
 	overmap_size = 60
 	overmap_event_areas = 50
 	usable_email_tlds = list("strelka.nt")
 
-	station_name	= "NEV Strelka"
+	station_name	= "NSV Strelka"
 	station_short	= "Strelka"
 	dock_name		= "NDV Marksman"
 	dock_type		= "space"
