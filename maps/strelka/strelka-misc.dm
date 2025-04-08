@@ -1,11 +1,14 @@
 /*
 	Blast door remote control
 */
-/obj/machinery/button/remote/blast_door/strelka
+/obj/machinery/button/remote/blast_door/strelka/blockade
 	icon = 'icons/obj/stationobjs.dmi'
 	name = "Blockade Runner mode button"
 	desc = "Makes the ship enter a mode that closes all external windows of the shuttles. Can add a small level of protection."
 	id = "blockade_runner"
+	var/sealed = FALSE
+	var/last_used = 0
+
 
 /obj/machinery/door/blast/strelka/blockade
 	name = "Heavy duty blast door"
@@ -15,44 +18,41 @@
 	icon_state_opening = "old_pdoorc0"
 	icon_state_closed = "old_pdoor1"
 	icon_state_closing = "old_pdoorc1"
+	icon_state = "old_pdoor0"
+	density = 0
+	opacity = 1
+	integrity = 500
+	integrity_max = 500
 
-/obj/machinery/button/remote/blast_door/strelka/trigger()
-	for(var/obj/machinery/door/blast/M in GLOB.machines)
+/obj/machinery/door/blast/strelka/blockade/Initialize(mapload)
+	. = ..()
+	opacity = 0
+
+
+/obj/machinery/button/remote/blast_door/strelka/blockade/trigger()
+	if(last_used > (world.time - 1 MINUTES))
+		src.visible_message("[src] beeps as the capacitors to move the blast doors are still recharging.", "[src] beeps as the capacitors to move the blast doors are still recharging.", "[src] beeps as the capacitors to move the blast doors are still recharging.")
+		return
+	last_used = world.time
+	sealed = !sealed
+	if(sealed)
+		command_announcement.Announce("Vessel is now entering Blockade Runner Mode. Closing ship shutters.", "Blockade Runner mode", new_sound = sound('sound/effects/meteor_strike.ogg', volume=15))
+	else
+		command_announcement.Announce("Vessel is now exiting Blockade Runner Mode. Opening ship shutters.", "Blockade Runner mode", new_sound = sound('sound/effects/meteor_strike.ogg', volume=15))
+	switch_blastdoors()
+
+/obj/machinery/button/remote/blast_door/strelka/blockade/proc/switch_blastdoors()
+	for(var/obj/machinery/door/blast/strelka/blockade/M in GLOB.machines)
 		if(M.id == id)
-			if(M.density)
+			if(sealed)
 				spawn(0)
-					command_announcement.Announce("Vessel is now entering Blockade Runner Mode. Closing ship shutters.", "Blockade Runner mode", new_sound = sound('sound/effects/meteor_strike.ogg', volume=15))
-					M.open()
-					return
+					M.force_close()
 			else
 				spawn(0)
-					command_announcement.Announce("Vessel is now exiting Blockade Runner Mode. Opening ship shutters.", "Blockade Runner mode", new_sound = sound('sound/effects/meteor_strike.ogg', volume=15))
-					M.close()
-					return
-
-/obj/machinery/button/remote/blast_door/strelka/balista
-	icon = 'icons/obj/stationobjs.dmi'
-	name = "Balista activation button"
-	desc = "Opens the Ballista blastdoors."
-	id = "ballista"
-
-/obj/machinery/button/remote/blast_door/strelka/balista/trigger()
-	for(var/obj/machinery/door/blast/M in GLOB.machines)
-		if(M.id == id)
-			if(M.density)
-				spawn(0)
-					M.open()
-					command_announcement.Announce("The Obstruction removal Ballista is now online. Openning barrel blastdoors", new_sound = sound('sound/effects/meteor_strike.ogg', volume=15))
-					return
-			else
-				spawn(0)
-					M.close()
-					command_announcement.Announce("The Obstruction removal Ballista is now offline. Closing barrel blastdoors", new_sound = sound('sound/effects/meteor_strike.ogg', volume=15))
-					return
+					M.force_open()
 
 // Cargo shuttle Pilot
 // Yep, the strelka is a biiiiiiiiiiiiiiiiiiiit old in some aspect..
-
 /mob/living/simple_mob/animal/passive/maint_drone
 	name = "Cargo shuttle Pilot Galaxy III"
 	desc = "A small, normal-looking drone. It pilots the Cargo Supply shuttle... Yep, no MK2 pilot here..."

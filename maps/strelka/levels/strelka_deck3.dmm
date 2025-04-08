@@ -87,7 +87,6 @@
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck3/bridge/md)
 "au" = (
-/obj/structure/railing,
 /obj/structure/sign/deck/third{
 	pixel_x = 30
 	},
@@ -308,15 +307,15 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3)
 "bt" = (
-/obj/structure/railing{
-	dir = 1
-	},
 /obj/effect/floor_decal/grass_edge{
 	dir = 9
 	},
 /obj/structure/closet/emcloset,
 /obj/machinery/light/fairy{
 	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3)
@@ -406,9 +405,7 @@
 /area/strelka/shipbase/deck3/cargo)
 "bL" = (
 /obj/spawner/window/low_wall/full/firelocks,
-/obj/machinery/door/blast/regular/open{
-	id = "blockade_runner"
-	},
+/obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/bridge/rd)
 "bN" = (
@@ -1031,7 +1028,6 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3)
 "eB" = (
-/obj/machinery/door/blast/regular,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/mininghangar)
 "eE" = (
@@ -1102,7 +1098,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3/bridge/md)
 "eW" = (
-/obj/structure/railing,
 /obj/effect/floor_decal/grass_edge{
 	dir = 10
 	},
@@ -1110,6 +1105,7 @@
 	dir = 4
 	},
 /obj/machinery/computer/timeclock/premade/east,
+/obj/structure/railing,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3)
 "eX" = (
@@ -2493,11 +2489,20 @@
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck3/bridge/rd)
 "jC" = (
-/obj/effect/floor_decal/grass_edge{
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/railing,
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3)
 "jE" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -3282,6 +3287,7 @@
 /area/strelka/shipbase/deck3)
 "mv" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/steel/airless,
 /area/strelka/shipbase/deck3/mininghangar)
 "mw" = (
@@ -4191,9 +4197,7 @@
 /area/strelka/shipbase/deck3/cargo/hangar)
 "pz" = (
 /obj/spawner/window/low_wall/full/firelocks,
-/obj/machinery/door/blast/regular/open{
-	id = "blockade_runner"
-	},
+/obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "pA" = (
@@ -5627,6 +5631,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/main)
+"uL" = (
+/obj/spawner/window/low_wall/full/firelocks,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck3/cargo/mining)
 "uM" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck3/bridge/ai)
@@ -5752,9 +5760,7 @@
 /area/strelka/shipbase/deck3/medical)
 "vh" = (
 /obj/spawner/window/low_wall/full/firelocks,
-/obj/machinery/door/blast/regular/open{
-	id = "blockade_runner"
-	},
+/obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo/hangar)
 "vm" = (
@@ -5768,13 +5774,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3)
-"vv" = (
-/obj/spawner/window/low_wall/full/firelocks,
-/obj/machinery/door/blast/regular/open{
-	id = "blockade_runner"
-	},
-/turf/space/basic,
-/area/strelka/shipbase/deck3/cargo/mining)
 "vw" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil,
 /turf/simulated/floor/fey/forest_grass,
@@ -6163,9 +6162,7 @@
 /area/strelka/shipbase/deck3/medical/room2)
 "wR" = (
 /obj/spawner/window/low_wall/full/firelocks,
-/obj/machinery/door/blast/regular/open{
-	id = "blockade_runner"
-	},
+/obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/robotics)
 "wT" = (
@@ -7361,9 +7358,7 @@
 /area/strelka/shipbase/deck3/maintenance/medical)
 "AN" = (
 /obj/spawner/window/low_wall/full/firelocks,
-/obj/machinery/door/blast/regular/open{
-	id = "blockade_runner"
-	},
+/obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/bridge/md)
 "AP" = (
@@ -7616,9 +7611,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-1"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck3/bridge/rd)
@@ -8111,9 +8104,6 @@
 "CW" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 4
-	},
-/obj/structure/railing{
-	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3)
@@ -9193,9 +9183,7 @@
 /area/strelka/shipbase/deck3/medical/surgery)
 "GX" = (
 /obj/spawner/window/low_wall/full/firelocks,
-/obj/machinery/door/blast/regular/open{
-	id = "blockade_runner"
-	},
+/obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo/mining)
 "GY" = (
@@ -9404,13 +9392,7 @@
 /turf/simulated/wall/r_wall/prepainted/cargo,
 /area/strelka/shipbase/deck3/cargo/mining)
 "HL" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/sign/deck/third{
-	pixel_x = 30
-	},
-/turf/simulated/open,
+/turf/simulated/wall/prepainted,
 /area/strelka/shipbase/deck3)
 "HM" = (
 /obj/effect/floor_decal/corner/paleblue/bordercorner{
@@ -9442,9 +9424,7 @@
 /area/strelka/shipbase/deck3/medical/psy)
 "HY" = (
 /obj/spawner/window/low_wall/full/firelocks,
-/obj/machinery/door/blast/regular/open{
-	id = "blockade_runner"
-	},
+/obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/main)
 "HZ" = (
@@ -9674,9 +9654,7 @@
 /area/strelka/shipbase/deck3/bridge)
 "IJ" = (
 /obj/spawner/window/low_wall/full/firelocks,
-/obj/machinery/door/blast/regular/open{
-	id = "blockade_runner"
-	},
+/obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/monowhite,
 /area/strelka/shipbase/deck3/medical/psy)
 "IK" = (
@@ -11464,13 +11442,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/bridge/upload)
-"Qp" = (
-/obj/spawner/window/low_wall/full/firelocks,
-/obj/machinery/door/blast/regular/open{
-	id = "blockade_runner"
-	},
-/turf/simulated/floor/wood/indoors,
-/area/strelka/shipbase/deck3/cargo/mining)
 "Qq" = (
 /obj/machinery/transhuman/resleever,
 /obj/effect/floor_decal/borderfloorblack{
@@ -11848,8 +11819,7 @@
 /area/strelka/shipbase/deck3/cargo)
 "RW" = (
 /obj/structure/cable{
-	icon_state = "6-8";
-	dir = 2
+	icon_state = "6-8"
 	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/maintenance/medical)
@@ -12761,10 +12731,6 @@
 /obj/structure/cable/orange{
 	icon_state = "4-9"
 	},
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3)
 "Vh" = (
@@ -13418,7 +13384,6 @@
 	},
 /obj/structure/table/carbon/reinforced,
 /obj/item/flashlight/lamp{
-	on = 0;
 	pixel_x = -4
 	},
 /obj/item/stamp/qm,
@@ -25377,11 +25342,11 @@ bo
 bo
 BW
 mO
-kR
-kR
-kR
+nA
+nA
+nA
 eB
-kR
+nA
 ae
 ae
 ae
@@ -25758,8 +25723,8 @@ ae
 EP
 EP
 nN
-vv
-Qp
+GX
+GX
 OU
 Ez
 mt
@@ -26340,7 +26305,7 @@ uY
 uY
 uY
 EN
-GX
+uL
 gq
 Js
 Eu
@@ -26728,7 +26693,7 @@ uY
 uY
 uY
 uY
-GX
+uL
 xk
 vm
 YK
@@ -27116,7 +27081,7 @@ uY
 uY
 uY
 uY
-GX
+uL
 GZ
 HJ
 yH
@@ -27504,7 +27469,7 @@ ON
 uY
 uY
 Gf
-GX
+uL
 nn
 Wv
 tu
@@ -29836,10 +29801,10 @@ iy
 bk
 lA
 Wt
-jC
-kb
+CW
+HL
 Ve
-kb
+HL
 CW
 qw
 Ql
@@ -36434,9 +36399,9 @@ Nb
 eW
 au
 Mr
-ov
+jC
 Mr
-HL
+au
 bt
 Hw
 Kj

@@ -241,8 +241,8 @@
 	sound_env = MEDIUM_SOFTFLOOR
 	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 
-/area/strelka/shipbase/deck4/adherant
-	name = "\improper Deck 4 Adherant room"
+/area/strelka/shipbase/deck4/adherent
+	name = "\improper Deck 4 Adherent room"
 	icon_state = "fitness"
 	sound_env = SMALL_ENCLOSED
 	ambience = AMBIENCE_STRELKA_ROOM

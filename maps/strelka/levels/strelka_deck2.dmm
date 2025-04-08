@@ -1695,6 +1695,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "fK" = (
@@ -1925,9 +1926,7 @@
 /area/strelka/shipbase/deck2/engineering/shield)
 "gr" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/machinery/door/blast/regular/open{
-	id = "blockade_runner"
-	},
+/obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/bridge/ce)
 "gs" = (
@@ -2196,9 +2195,7 @@
 /area/strelka/shipbase/deck2/bridge/ce)
 "hk" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/machinery/door/blast/regular/open{
-	id = "blockade_runner"
-	},
+/obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck2/bridge/iaa)
 "hl" = (
@@ -3628,8 +3625,8 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/excursion/strelka)
 "mq" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/turf/simulated/floor/plating,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/security)
 "ms" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -3705,6 +3702,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/engineering/engine)
 "mC" = (
@@ -6531,9 +6529,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/airlock/glass{
-	name = "Security Lobby"
-	},
+/obj/machinery/door/airlock/multi_tile/glass,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/security)
 "uy" = (
@@ -6803,10 +6799,8 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
 	},
-/obj/machinery/door/blast/regular/open{
-	id = "blockade_runner"
-	},
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/engine)
 "vs" = (
@@ -7762,6 +7756,7 @@
 /area/strelka/shipbase/deck2/engineering/storage)
 "yp" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/bridge/hos)
 "yq" = (
@@ -15056,10 +15051,8 @@
 /turf/space/basic,
 /area/space)
 "Wz" = (
-/obj/machinery/door/blast/regular/open{
-	id = "blockade_runner"
-	},
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/engine)
 "WA" = (

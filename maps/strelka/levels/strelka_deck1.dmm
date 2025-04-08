@@ -291,6 +291,7 @@
 	pixel_x = 21;
 	master_tag = "strelka_north_docking"
 	},
+/obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "bI" = (
@@ -1118,9 +1119,7 @@
 /area/strelka/shipbase/deck1/fighterbaysec)
 "fQ" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/machinery/door/blast/regular/open{
-	id = "blockade_runner"
-	},
+/obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/shipbase/deck1/hangardeck)
 "fV" = (
@@ -2337,10 +2336,8 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1)
 "mE" = (
-/obj/machinery/door/blast/regular{
-	dir = 2;
-	id = "ballista_front";
-	name = "Balista Front Blast Door"
+/obj/machinery/button/remote/blast_door{
+	id = "ballista"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck1/bridge/balista)
@@ -3591,6 +3588,7 @@
 	pixel_x = 21;
 	master_tag = "strelka_trade_beruang_docking"
 	},
+/obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/shipbase/deck1/hangardeck)
 "tL" = (
@@ -3905,6 +3903,7 @@
 	req_one_access = null
 	},
 /obj/map_helper/airlock/door/ext_door,
+/obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "vY" = (
@@ -4561,7 +4560,6 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc/north_mount,
-/obj/machinery/button/remote/blast_door,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck1/bridge/balista)
 "zt" = (
@@ -5214,7 +5212,7 @@
 /obj/machinery/light/small/old{
 	dir = 4
 	},
-/obj/machinery/button/remote/blast_door/strelka/balista,
+/obj/machinery/computer/security,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1/bridge/balista)
 "Eb" = (
@@ -5520,11 +5518,7 @@
 /area/strelka/shipbase/deck1/hangardeck)
 "EV" = (
 /obj/machinery/atmospheric_field_generator/perma,
-/obj/machinery/door/blast/regular{
-	dir = 2;
-	id = "ballista_front";
-	name = "Balista Front Blast Door"
-	},
+/obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck1/bridge/balista)
 "EX" = (
@@ -7147,9 +7141,7 @@
 /area/strelka/shipbase/deck1/armory3)
 "Ot" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/machinery/door/blast/regular/open{
-	id = "blockade_runner"
-	},
+/obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1/pilot/eva)
 "Ov" = (
@@ -7246,6 +7238,7 @@
 	},
 /obj/map_helper/access_helper/airlock/station/external_airlock,
 /obj/map_helper/airlock/door/ext_door,
+/obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/shipbase/deck1/hangardeck)
 "Pr" = (
@@ -7829,11 +7822,6 @@
 /area/strelka/shipbase/deck1/fighterbaysec)
 "Sm" = (
 /obj/effect/floor_decal/rust,
-/obj/machinery/door/blast/regular{
-	dir = 4;
-	id = "ballista";
-	name = "Balista Loading Blast Door"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck1/bridge/balista)
 "So" = (
@@ -8063,7 +8051,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/button/remote/blast_door,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck1/bridge/balista)
 "TK" = (
@@ -8370,10 +8357,9 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/strelka/shipbase/deck1/gateway)
 "Vb" = (
-/obj/structure/table/carbon/reinforced,
-/obj/machinery/computer/security{
-	dir = 8;
-	network = list("Balista")
+/obj/machinery/button/remote/blast_door{
+	id = "ballista";
+	pixel_x = 24
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1/bridge/balista)
