@@ -20,7 +20,7 @@
 	initial_restricted_waypoints = list(
 		"Excursion Javelot Shuttle" = list("strelka_excursion_hangar"),
 		"Hammerdart Interception and Rescue Shuttle" = list("strelka_emt_hangar"),
-		"Decades Old civilian Transport" = list("trelka_civvie_home"),
+		"Decades Old civilian Transport" = list("strelka_civvie_home"),
 		"Beruang Trade Ship" = list("strelka_annex_dock"),
 	)
 
