@@ -1337,6 +1337,9 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "hK" = (
@@ -2779,6 +2782,9 @@
 /obj/effect/floor_decal/borderfloorblack/corner{
 	dir = 1
 	},
+/obj/effect/floor_decal/industrial/danger/corner{
+	dir = 8
+	},
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck1/hangardeck)
 "pr" = (
@@ -2917,6 +2923,13 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
 	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/danger,
+/obj/effect/floor_decal/industrial/danger{
+	dir = 10
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "ql" = (
@@ -2953,6 +2966,9 @@
 	},
 /obj/structure/sign/deck/first{
 	pixel_x = 30
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
@@ -3232,6 +3248,9 @@
 	dir = 8
 	},
 /obj/structure/flora/ausbushes/ywflowers,
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "si" = (
@@ -3763,6 +3782,7 @@
 /area/space)
 "vv" = (
 /obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/industrial/danger,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "vz" = (
@@ -4060,6 +4080,15 @@
 "xa" = (
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/shipbase/deck1)
+"xi" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/shipbase/deck1/hangardeck)
 "xp" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techfloor/monogrid,
@@ -4252,6 +4281,9 @@
 /area/space)
 "yn" = (
 /obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/danger{
 	dir = 8
 	},
 /turf/simulated/floor/fey/forest_grass,
@@ -4774,6 +4806,9 @@
 /obj/effect/floor_decal/borderfloorblack/corner{
 	dir = 8
 	},
+/obj/effect/floor_decal/industrial/danger/corner{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "BY" = (
@@ -4997,6 +5032,9 @@
 	},
 /obj/machinery/camera/network/security{
 	dir = 8
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
@@ -5869,6 +5907,9 @@
 	dir = 8
 	},
 /obj/structure/flora/ausbushes/brflowers,
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "HT" = (
@@ -6677,6 +6718,15 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 9
 	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 9
+	},
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck1/hangardeck)
 "Ms" = (
@@ -7197,6 +7247,9 @@
 	dir = 8
 	},
 /obj/structure/flora/ausbushes/fullgrass,
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "Py" = (
@@ -7923,6 +7976,9 @@
 "TK" = (
 /obj/effect/floor_decal/grass_edge,
 /obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/danger{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
@@ -24188,15 +24244,15 @@ uX
 Gd
 Ko
 Pv
-HC
-HC
-HC
+xi
+xi
+xi
 sg
-HC
-HC
-HC
-HC
-HC
+xi
+xi
+xi
+xi
+xi
 HR
 Mt
 qL
@@ -25340,7 +25396,7 @@ Nv
 Nv
 Nv
 hC
-HC
+xi
 qi
 Nv
 Nv
@@ -25730,10 +25786,10 @@ Nv
 qL
 zf
 BX
-HC
-HC
-HC
-HC
+xi
+xi
+xi
+xi
 Ko
 NU
 pl
@@ -26118,10 +26174,10 @@ Nv
 Gs
 zf
 Da
-xY
-xY
-xY
-xY
+Bg
+Bg
+Bg
+Bg
 qt
 CE
 zf
