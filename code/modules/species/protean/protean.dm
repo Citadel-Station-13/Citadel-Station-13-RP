@@ -88,7 +88,7 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/unbreakable/nano)
 		)
 
-	//These verbs are hidden, for hotkey use only
+	//Some of these verbs are hidden, for hotkey use only
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/nano_regenerate, //These verbs are hidden so you can macro them,
 		/mob/living/carbon/human/proc/nano_partswap,
@@ -96,6 +96,7 @@
 		/mob/living/carbon/human/proc/nano_blobform,
 		/mob/living/carbon/human/proc/nano_set_size,
 		/mob/living/carbon/human/proc/nano_change_fitting, //These verbs are displayed normally,
+		/mob/living/carbon/human/proc/nano_copy_appearance,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair_colors,
 		/mob/living/carbon/human/proc/shapeshifter_select_colour,
@@ -105,6 +106,7 @@
 		/mob/living/carbon/human/proc/shapeshifter_select_tail,
 		/mob/living/carbon/human/proc/shapeshifter_select_ears,
 		/mob/living/carbon/human/proc/shapeshifter_select_horns,
+		/mob/living/carbon/human/proc/nano_reset_to_slot,
 		/mob/living/proc/eat_trash,
 		/mob/living/carbon/human/proc/succubus_drain,
 		/mob/living/carbon/human/proc/succubus_drain_finalize,
@@ -158,6 +160,11 @@
 
 /datum/species/protean/get_worn_legacy_bodytype(mob/living/carbon/human/H)
 	return H?.impersonate_bodytype_legacy || ..()
+
+/datum/species/protean/get_icobase(mob/living/carbon/human/H, get_deform)
+	if(H && !isnull(H.impersonate_species_for_iconbase))
+		return H.impersonate_species_for_iconbase.get_icobase(H, get_deform)
+	return ..()
 
 /datum/species/protean/create_organs(mob/living/carbon/human/H)
 	H.synth_color = TRUE
