@@ -7,6 +7,15 @@
 	desc = "Makes the ship enter a mode that closes all external windows of the shuttles. Can add a small level of protection."
 	id = "blockade_runner"
 
+/obj/machinery/door/blast/strelka/blockade
+	name = "Heavy duty blast door"
+	desc = "An old blastdoor, designed for handleing one or two hits of anti ship weaponry."
+	id = "blockade_runner"
+	icon_state_open = "old_pdoor0"
+	icon_state_opening = "old_pdoorc0"
+	icon_state_closed = "old_pdoor1"
+	icon_state_closing = "old_pdoorc1"
+
 /obj/machinery/button/remote/blast_door/strelka/trigger()
 	for(var/obj/machinery/door/blast/M in GLOB.machines)
 		if(M.id == id)
