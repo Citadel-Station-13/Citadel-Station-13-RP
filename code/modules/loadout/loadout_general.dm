@@ -141,3 +141,8 @@
 	name = "Customizable Permit"
 	description = "A customizable permit you can use for... just about anything! Be sure to customize the name and description. It is meant to represent generic driver's or pilot's licenses, and similar fluff items. It includes an irremovable disclaimer and may be freely confiscated or revoked at the discretion of Security and/or Command if you attempt to abuse it!"
 	path = /obj/item/card_fluff
+
+/datum/loadout_entry/leash
+	name = "Normal Leash"
+	path = /obj/item/leash
+	description = "A simple tether that can easily be hooked onto a collar. Usually used to keep pets nearby."

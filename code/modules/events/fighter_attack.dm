@@ -35,8 +35,7 @@
 	// for(var/areapath in typesof(spawn_area_type))
 
 	// if(piratestring == "bandits")
-		// bandits_spawn = list(/mob/living/simple_mob/mechanical/mecha/fighter/duke/manned,
-		// /mob/living/simple_mob/mechanical/mecha/fighter/baron/manned)
-
+	// 	bandits_spawn = list(/mob/living/simple_mob/mechanical/mecha/fighter/duke/manned,
+	// 	/mob/living/simple_mob/mechanical/mecha/fighter/baron/manned)
 
 #undef	LOC_SPACE
