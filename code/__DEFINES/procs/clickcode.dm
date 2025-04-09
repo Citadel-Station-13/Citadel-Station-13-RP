@@ -75,12 +75,22 @@
 /// put this in if we should entirely abort the attack
 #define CLICKCHAIN_FULL_BLOCKED				(1<<10)
 
+/// Override handled, abort all further propagation 
+///
+
 /// check these for 'unconditional abort'
 #define CLICKCHAIN_FLAGS_UNCONDITIONAL_ABORT (CLICKCHAIN_DO_NOT_PROPAGATE)
 /// check these for 'abort attack'
 #define CLICKCHAIN_FLAGS_ATTACK_ABORT (CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_FULL_BLOCKED | CLICKCHAIN_DO_NOT_ATTACK)
 /// check these for 'abort further interactions'
 #define CLICKCHAIN_FLAGS_INTERACT_ABORT (CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_FULL_BLOCKED | CLICKCHAIN_DID_SOMETHING)
+
+//*   Clickchain - melee_attack() args   *//
+//* These are used for comsig overrides. *//
+
+#define CLICKCHAIN_MELEE_ARG_CLICKCHAIN 1
+#define CLICKCHAIN_MELEE_ARG_CLICKCHAIN_FLAGS 2
+#define CLICKCHAIN_MELEE_ARG_STYLE 3
 
 //* Reachability Depths *//
 

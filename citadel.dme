@@ -224,6 +224,7 @@
 #include "code\__DEFINES\dcs\signals\signals_item\signals_item_inventory.dm"
 #include "code\__DEFINES\dcs\signals\signals_item\signals_item_mouse.dm"
 #include "code\__DEFINES\dcs\signals\signals_item\signals_item_storage.dm"
+#include "code\__DEFINES\dcs\signals\signals_mob\signals_mob-clickchain.dm"
 #include "code\__DEFINES\dcs\signals\signals_mob\signals_mob-inventory.dm"
 #include "code\__DEFINES\dcs\signals\signals_mob\signals_mob-perspective.dm"
 #include "code\__DEFINES\dcs\signals\signals_mob\signals_mob_combat.dm"

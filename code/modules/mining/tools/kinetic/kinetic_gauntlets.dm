@@ -116,6 +116,7 @@
 /obj/item/kinetic_gauntlets/proc/recharge()
 	charged = TRUE
 	charge_timerid = null
+	#warn play charge sound
 	update_icon()
 
 /**
@@ -143,7 +144,13 @@
 	if(worn_slot != /datum/inventory_slot/inventory/gloves::id)
 		cancel_recharge()
 		return
-	#warn handle delay mod
+	var/charge_time = charge_delay * delay_mod
+	if(charge_timerid)
+		var/charge_timeleft = timeleft(charge_timerid)
+		if(charge_timeleft >= charge_time)
+			return
+		deltimer(charge_timerid)
+	charge_timerid = addtimer(CALLBACK(src, PROC_REF(recharge)), charge_time, TIMER_STOPPABLE)
 
 /obj/item/kinetic_gauntlets/proc/run_excavation_fx(turf/location)
 	new /obj/effect/temp_visual/kinetic_blast(location)
