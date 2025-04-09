@@ -7,3 +7,4 @@
 	max_charge = POWER_CELL_CAPACITY_BASE * POWER_CELL_CAPACITY_MULTIPLIER_MEDIUM
 	rendering_system = TRUE
 	indicator_count = 4
+ 

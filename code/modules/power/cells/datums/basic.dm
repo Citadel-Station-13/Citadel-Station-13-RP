@@ -13,15 +13,27 @@ POWER_CELL_GENERATE_TYPES(/datum/power_cell/basic/tier_1, /basic/tier_1, "basic-
 
 POWER_CELL_GENERATE_TYPES(/datum/power_cell/basic/tier_2, /basic/tier_2, "basic-t2")
 /datum/power_cell/basic/tier_2
-	cell_name = "upgraded"
+	cell_name = "improved"
 	cell_desc = "Tier 2: This one utilizes more advanced materials in its electrolytes, allowing it to store a sizeable chunk more power than a basic cell."
-	typegen_capacity_multiplier = /datum/power_cell/basic::typegen_capacity_multiplier * 1.2
+	typegen_capacity_multiplier = /datum/power_cell/basic::typegen_capacity_multiplier * 1.25
 
 POWER_CELL_GENERATE_TYPES(/datum/power_cell/basic/tier_3, /basic/tier_3, "basic-t3")
 /datum/power_cell/basic/tier_3
 	cell_name = "advanced"
 	cell_desc = "Tier 3: This one is even more overtuned than an upgraded cell, utilizing novel crystalline lattices to improve energy densities."
-	typegen_capacity_multiplier = /datum/power_cell/basic::typegen_capacity_multiplier * 1.4
+	typegen_capacity_multiplier = /datum/power_cell/basic::typegen_capacity_multiplier * 1.5
+
+POWER_CELL_GENERATE_TYPES(/datum/power_cell/basic/tier_4, /basic/tier_4, "basic-t4")
+/datum/power_cell/basic/tier_4
+	cell_name = "superdense"
+	cell_desc = "Tier 4:  ."
+	typegen_capacity_multiplier = /datum/power_cell/basic::typegen_capacity_multiplier * 2.0
+
+POWER_CELL_GENERATE_TYPES(/datum/power_cell/basic/tier_5, /basic/tier_5, "basic-t5")
+/datum/power_cell/basic/tier_5
+	cell_name = "ultratech"
+	cell_desc = "Tier 5: This indecipherable cell crams ."
+	typegen_capacity_multiplier = /datum/power_cell/basic::typegen_capacity_multiplier * 3.0
 
 #warn new way
 
