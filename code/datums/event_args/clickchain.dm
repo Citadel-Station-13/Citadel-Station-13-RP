@@ -23,7 +23,6 @@
 	/// (optional) hand index
 	var/using_hand_index
 
-	#warn hook both
 	/// (optional) using weapon
 	/// * not for tools; this is only for melee
 	var/obj/item/using_melee_weapon

@@ -158,21 +158,22 @@
 
 // 	return 1
 
-#warn deal wit hthis
-/mob/living/carbon/human/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/soaked, var/hit_zone)
-	var/obj/item/organ/external/affecting = get_organ(hit_zone)
-	if(!affecting)
-		return 0
+// TODO: return this, but we don't want this on a human-level switch
+// #warn deal wit hthis
+// /mob/living/carbon/human/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/soaked, var/hit_zone)
+// 	var/obj/item/organ/external/affecting = get_organ(hit_zone)
+// 	if(!affecting)
+// 		return 0
 
-	// Handle striking to cripple.
-	if(user.a_intent == INTENT_DISARM)
-		effective_force *= 0.5 //reduced effective damage_force...
-		if(!..(I, user, effective_force, blocked, soaked, hit_zone))
-			return 0
+// 	// Handle striking to cripple.
+// 	if(user.a_intent == INTENT_DISARM)
+// 		effective_force *= 0.5 //reduced effective damage_force...
+// 		if(!..(I, user, effective_force, blocked, soaked, hit_zone))
+// 			return 0
 
-		//set the dislocate mult less than the effective force mult so that
-		//dislocating limbs on disarm is a bit easier than breaking limbs on harm
-		attack_joint(affecting, I, effective_force, 0.75, blocked, soaked) //...but can dislocate joints
+// 		//set the dislocate mult less than the effective force mult so that
+// 		//dislocating limbs on disarm is a bit easier than breaking limbs on harm
+// 		attack_joint(affecting, I, effective_force, 0.75, blocked, soaked) //...but can dislocate joints
 
 //this proc handles being hit by a thrown atom
 /mob/living/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
