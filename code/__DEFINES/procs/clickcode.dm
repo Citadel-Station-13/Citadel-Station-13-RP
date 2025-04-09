@@ -67,6 +67,7 @@
 /// completely block attacking (notably, attack_mob, attack_obj) from happening by halting standard_melee_attack.
 #define CLICKCHAIN_DO_NOT_ATTACK			(1<<7)
 /// intercepted by component
+// TODO: get rid of this and use something like MELEE_ATTACK_HOOK style arg modification
 #define CLICKCHAIN_COMPONENT_SIGNAL_HANDLED	(1<<8)
 /// this is a reflex counterattack by something
 ///
@@ -75,8 +76,8 @@
 /// put this in if we should entirely abort the attack
 #define CLICKCHAIN_FULL_BLOCKED				(1<<10)
 
-/// Override handled, abort all further propagation 
-///
+/// Signal wishes to capture the event and tell other handlers to back off.
+#define CLICKCHAIN_FLAG_SIGNAL_BACKOFF		(1<<23)
 
 /// check these for 'unconditional abort'
 #define CLICKCHAIN_FLAGS_UNCONDITIONAL_ABORT (CLICKCHAIN_DO_NOT_PROPAGATE)

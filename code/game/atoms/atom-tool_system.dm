@@ -170,6 +170,7 @@
 /atom/proc/_tool_act(obj/item/I, datum/event_args/actor/clickchain/e_args, function, flags, hint)
 	PRIVATE_PROC(TRUE)
 	SHOULD_NOT_OVERRIDE(TRUE)
+	// TODO: get rid of this and use something like MELEE_ATTACK_HOOK style arg modification
 	if((. = SEND_SIGNAL(src, COMSIG_ATOM_TOOL_ACT, I, e_args, function, flags, hint)) & CLICKCHAIN_COMPONENT_SIGNAL_HANDLED)
 		return . & ~(CLICKCHAIN_COMPONENT_SIGNAL_HANDLED)
 	return tool_act(I, e_args, function, flags, hint)

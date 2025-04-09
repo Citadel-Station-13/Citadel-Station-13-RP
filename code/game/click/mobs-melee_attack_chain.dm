@@ -57,34 +57,34 @@
 	 * 3. we react to what they return, including calling their on_x_act()
 	 */
 
-	// -- resolve our side --
+	// -- call on ourselves --
 	legacy_alter_melee_clickchain(clickchain)
-	// -- we now use '.' for clickchain flags as it'll be modified through calls --
-	. = clickchain_flags
 
 	// -- call on them (if we didn't miss / get called off already) --
-	. |= clickchain.target.melee_act(src, attack_style, clickchain.target_zone, clickchain, clickchain_flags)
+	clickchain_flags |= clickchain.target.melee_act(src, attack_style, clickchain.target_zone, clickchain, clickchain_flags)
 
 	// -- call override --
 	var/overridden
-	if(!(. & CLICKCHAIN_ATTACK_MISSED))
+	if(!(clickchain_flags & CLICKCHAIN_ATTACK_MISSED))
 		overridden = melee_override(clickchain.target, clickchain.using_intent, clickchain.target_zone, clickchain.attack_contact_multiplier, clickchain)
 		if(QDELETED(src))
-			. |= CLICKCHAIN_DO_NOT_PROPAGATE
+			clickchain_flags |= CLICKCHAIN_DO_NOT_PROPAGATE
 
 	// -- execute attack if override didn't run --
 	if(!overridden)
-		if(!(. & CLICKCHAIN_FLAGS_ATTACK_ABORT))
-			. |= melee_impact(clickchain, ., attack_style)
+		if(!(clickchain_flags & CLICKCHAIN_FLAGS_ATTACK_ABORT))
+			clickchain_flags |= melee_impact(clickchain, clickchain_flags, attack_style)
 	else
-		attack_style.perform_attack_animation(clickchain.performer, clickchain.target, clickchain, . & CLICKCHAIN_ATTACK_MISSED)
+		attack_style.perform_attack_animation(clickchain.performer, clickchain.target, clickchain, clickchain_flags & CLICKCHAIN_ATTACK_MISSED)
 
 	// -- finalize --
-	if(!(. & CLICKCHAIN_FLAGS_UNCONDITIONAL_ABORT))
-		. |= melee_finalize(clickchain, ., attack_style)
+	if(!(clickchain_flags & CLICKCHAIN_FLAGS_UNCONDITIONAL_ABORT))
+		clickchain_flags |= melee_finalize(clickchain, clickchain_flags, attack_style)
 
 	// -- log --
 	log_melee(clickchain, clickchain_flags, attack_style)
+
+	return clickchain_flags
 
 /**
  * Override hook for melee attacks.
@@ -129,6 +129,9 @@
  * @return clickchain flags
  */
 /mob/proc/melee_impact(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/unarmed/attack_style)
+	if(SEND_SIGNAL(src, COMSIG_MOB_MELEE_IMPACT_HOOK, args) & RAISE_MOB_MELEE_SKIP)
+		return clickchain_flags
+
 	var/atom/fixed_target = clickchain.target
 	var/mob/fixed_performer = clickchain.performer
 	var/missed = clickchain_flags & CLICKCHAIN_ATTACK_MISSED
