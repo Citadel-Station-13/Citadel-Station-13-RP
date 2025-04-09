@@ -334,6 +334,6 @@
 //* Setters *//
 
 /obj/item/cell/proc/set_charge(amount, update)
-	charge = clamp(amount, 0, maxcharge)
+	charge = clamp(amount, 0, max_charge)
 	if(update)
 		update_icon()

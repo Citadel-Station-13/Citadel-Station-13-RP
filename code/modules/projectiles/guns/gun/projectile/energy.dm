@@ -102,14 +102,14 @@
 /obj/item/gun/projectile/energy/process(delta_time)
 	if(self_recharge) //Every [recharge_time] ticks, recharge a shot for the battery
 		if(world.time > last_fire + charge_delay)	//Doesn't work if you've fired recently
-			if(!obj_cell_slot.cell || obj_cell_slot.cell.charge >= obj_cell_slot.cell.maxcharge)
+			if(!obj_cell_slot.cell || obj_cell_slot.cell.charge >= obj_cell_slot.cell.max_charge)
 				return 0 // check if we actually need to recharge
 
 			charge_tick++
 			if(charge_tick < recharge_time) return 0
 			charge_tick = 0
 
-			var/rechargeamt = obj_cell_slot.cell.maxcharge*0.2
+			var/rechargeamt = obj_cell_slot.cell.max_charge*0.2
 
 			if(use_external_power)
 				var/obj/item/cell/external = get_external_power_supply()
@@ -256,11 +256,11 @@
 	if(!estimated_cost)
 		return 1
 	if(rounded)
-		var/full_shots = floor(cell.maxcharge / estimated_cost)
+		var/full_shots = floor(cell.max_charge / estimated_cost)
 		if(!full_shots)
 			return 0
 		return min(1, floor(cell.charge / estimated_cost) / full_shots)
-	return min(1, cell.maxcharge ? cell.charge / cell.maxcharge : 0)
+	return min(1, cell.max_charge ? cell.charge / cell.max_charge : 0)
 
 /**
  * Estimates how many shots the gun's power supply has charge for
@@ -303,7 +303,7 @@
 	var/estimated_cost = get_estimated_charge_cost()
 	if(!estimated_cost)
 		return INFINITY
-	return floor(cell.maxcharge / estimated_cost)
+	return floor(cell.max_charge / estimated_cost)
 
 //* Power *//
 
