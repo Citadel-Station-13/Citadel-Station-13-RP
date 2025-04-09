@@ -9,10 +9,13 @@
 			stack_trace("we just kicked a client due to prefs not loading; something is horribly wrong!")
 			qdel(src)
 	return ..()
+
 /**
  * Game preferences
  *
  * Game prefs don't need an init order because unlike character setup, there's no dependencies, in theory.
+ *
+ * todo: rework this a bit, the way i did tgui is pretty atrocious;
  */
 /datum/game_preferences
 	//* Loading *//
@@ -27,7 +30,7 @@
 	// todo: move menu options in here and not from /datum/preferences
 
 	//* Middleware - Keybindings *//
-	/// keybindings - key to list of keybinds
+	/// keybindings - key to list of keybind ids
 	var/list/keybindings
 
 	//* Middleware - Toggles *//
@@ -369,7 +372,7 @@
 	usr = null
 
 	var/datum/db_query/query = SSdbcore.NewQuery(
-		"SELECT `toggles`, `entries`, `misc`, `keybinds`, `version` FROM [format_table_name("game_preferences")] \
+		"SELECT `toggles`, `entries`, `misc`, `keybinds`, `version` FROM [DB_PREFIX_TABLE_NAME("game_preferences")] \
 		WHERE `player` = :player",
 		list(
 			"player" = authoritative_player_id,
@@ -413,7 +416,7 @@
 	usr = null
 
 	var/datum/db_query/query = SSdbcore.NewQuery(
-		"INSERT INTO [format_table_name("game_preferences")] \
+		"INSERT INTO [DB_PREFIX_TABLE_NAME("game_preferences")] \
 		(`player`, `toggles`, `entries`, `misc`, `keybinds`, `version`, `modified`) VALUES \
 		(:player, :toggles, :entries, :misc, :keybinds, :version, Now()) ON DUPLICATE KEY UPDATE \
 		`player` = VALUES(player), `toggles` = VALUES(toggles), `entries` = VALUES(entries), `misc` = VALUES(misc), \

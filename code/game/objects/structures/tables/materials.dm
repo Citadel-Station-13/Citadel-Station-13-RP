@@ -13,7 +13,7 @@
 		(reinforcing) = MATERIAL_SIGNIFICANCE_TABLE_REINFORCEMENT,
 	)))
 	// sigh
-	if(SSatoms.initialized == INITIALIZATION_INNEW_REGULAR)
+	if(SSatoms.atom_init_status == ATOM_INIT_IN_NEW_REGULAR)
 		update_connections(TRUE)
 		update_appearance()
 

@@ -74,6 +74,8 @@
 	..(user)
 
 /obj/item/clothing/accessory/holster/attackby(obj/item/W as obj, mob/user as mob)
+	if(!user.is_holding(W))
+		return
 	holster(W, user)
 
 /obj/item/clothing/accessory/holster/emp_act(severity)
@@ -180,7 +182,7 @@
 /obj/item/clothing/accessory/holster/waist/kinetic_accelerator
 	name = "KA holster"
 	desc = "A specialized holster, made specifically for kinetic accelerators."
-	can_hold = list(/obj/item/gun/energy/kinetic_accelerator)
+	can_hold = list(/obj/item/gun/projectile/energy/kinetic_accelerator)
 
 /obj/item/clothing/accessory/holster/holy
 	name = "holy weapon scabbard"

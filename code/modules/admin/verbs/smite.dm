@@ -88,7 +88,8 @@
 		if(SMITE_LIGHTNINGBOLT)
 			var/turf/T = get_step(get_step(target, NORTH), NORTH)
 			T.Beam(target, icon_state="lightning[rand(1,12)]", time = 5)
-			target.electrocute_act(75,def_zone = BP_HEAD)
+			// a gigajoule lmfao
+			target.electrocute(1000000, 75, 50, ELECTROCUTE_ACT_FLAG_DISTRIBUTE, BP_HEAD)
 			target.visible_message("<span class='danger'>[target] is struck by lightning!</span>")
 		if(SMITE_AUTOSAVE)
 			var/time_to_stun = tgui_input_number(src, "How long would you like the saving to take? (in seconds)", "Autosave Time", 10, min_value = 1)
@@ -132,8 +133,10 @@
 
 	var/turf/simulated/floor/T = get_turf(target)
 	if(istype(T))
-		if(prob(80))	T.break_tile_to_plating()
-		else			T.break_tile()
+		if(prob(80))
+			T.break_tile_to_plating()
+		else
+			T.break_tile()
 
 	if(target.health == 1)
 		target.gib()

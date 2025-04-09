@@ -252,14 +252,23 @@ GLOBAL_LIST_EMPTY(radial_menus)
 				//! perform fixup
 				I.plane = FLOAT_PLANE
 				I.layer = FLOAT_LAYER
+				I.maptext = MAPTEXT(I.maptext)
+				I.maptext_width = 64
+				I.maptext_height = 32
+				I.maptext_y = 32
 				//! end
 				choices_icons[id] = I
+		else
+			choices_icons[id] = extract_image(E)
 	setup_menu(use_tooltips)
 
 /datum/radial_menu/proc/extract_image(E)
+	if(!isimage(E) && !isatom(E) && !ismutableappearance(E) && !IS_APPEARANCE(E))
+		return null
 	var/mutable_appearance/MA = new /mutable_appearance(E)
 	if(MA)
 		MA.layer = HUD_LAYER_ABOVE
+		MA.plane = ABOVE_HUD_PLANE
 		MA.appearance_flags |= RESET_TRANSFORM
 	return MA
 

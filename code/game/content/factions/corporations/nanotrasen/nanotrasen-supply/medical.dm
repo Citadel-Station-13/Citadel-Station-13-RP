@@ -117,7 +117,7 @@
 		/obj/item/storage/belt/medical,
 		/obj/item/radio/headset/heads/cmo,
 		/obj/item/clothing/under/rank/chief_medical_officer,
-		/obj/item/storage/hypokit/advanced/cmo,
+		/obj/item/storage/hypokit/advanced/cmo/full/loaded,
 		/obj/item/clothing/accessory/stethoscope,
 		/obj/item/clothing/glasses/hud/health,
 		/obj/item/clothing/suit/storage/toggle/labcoat/cmo,
@@ -175,7 +175,7 @@
 		/obj/item/healthanalyzer,
 		/obj/item/storage/box/pillbottles,
 		/obj/item/storage/box/syringes,
-		/obj/item/storage/hypokit,
+		/obj/item/storage/hypokit/full/loaded,
 	)
 	worth = 450
 	container_type = /obj/structure/closet/crate/corporate/nanomed
@@ -201,7 +201,7 @@
 		/obj/item/cartridge/medical,
 		/obj/item/flashlight/pen,
 		/obj/item/clothing/accessory/storage/white_vest,
-		/obj/item/storage/hypokit,
+		/obj/item/storage/hypokit/full/loaded,
 	)
 	worth = 450
 	container_type = /obj/structure/closet/crate/secure/corporate/nanomed
@@ -375,8 +375,8 @@
 /datum/supply_pack/nanotrasen/medical/medigun
 	name = "Cell-Loaded Medigun crate"
 	contains = list(
-		/obj/item/gun/ballistic/microbattery/medical = 1,
-		/obj/item/ammo_magazine/microbattery/medical = 1,
+		/obj/item/gun/projectile/ballistic/microbattery/vm_aml = 1,
+		/obj/item/ammo_magazine/microbattery/vm_aml = 1,
 	)
 	worth = 1500
 	container_type = /obj/structure/closet/crate/secure/corporate/veymed
@@ -385,9 +385,9 @@
 /datum/supply_pack/nanotrasen/medical/medigun_cells
 	name = "Cell-Loaded Medigun Cell Pack crate"
 	contains = list(
-		/obj/item/ammo_casing/microbattery/medical/brute = 3,
-		/obj/item/ammo_casing/microbattery/medical/burn = 3,
-		/obj/item/ammo_casing/microbattery/medical/stabilize = 3,
+		/obj/item/ammo_casing/microbattery/vm_aml/brute = 3,
+		/obj/item/ammo_casing/microbattery/vm_aml/burn = 3,
+		/obj/item/ammo_casing/microbattery/vm_aml/stabilize = 3,
 	)
 	worth = 1000
 	container_type = /obj/structure/closet/crate/secure/corporate/veymed

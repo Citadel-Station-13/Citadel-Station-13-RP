@@ -71,7 +71,7 @@
 /obj/machinery/power/geothermal_collector{
 	dir = 10
 	},
-/turf/simulated/floor/outdoors/lava/indoors/geothermal,
+/turf/simulated/lava/indoors/geothermal,
 /area/rift/geothermal)
 "aV" = (
 /obj/effect/floor_decal/techfloor/orange,
@@ -233,7 +233,7 @@
 /area/rnd/outpost/maintenance)
 "cR" = (
 /obj/machinery/power/geothermal_collector/manifold,
-/turf/simulated/floor/outdoors/lava/indoors/geothermal,
+/turf/simulated/lava/indoors/geothermal,
 /area/rift/geothermal)
 "cU" = (
 /turf/simulated/mineral/ignore_cavegen/geothermal,
@@ -642,7 +642,7 @@
 /obj/machinery/power/geothermal_collector{
 	dir = 6
 	},
-/turf/simulated/floor/outdoors/lava/indoors/geothermal,
+/turf/simulated/lava/indoors/geothermal,
 /area/rift/geothermal)
 "hn" = (
 /obj/effect/floor_decal/borderfloor,
@@ -809,7 +809,7 @@
 /obj/machinery/power/geothermal_collector{
 	dir = 9
 	},
-/turf/simulated/floor/outdoors/lava/indoors/geothermal,
+/turf/simulated/lava/indoors/geothermal,
 /area/rift/geothermal)
 "jd" = (
 /obj/structure/toilet{
@@ -1297,7 +1297,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/underground)
 "pt" = (
-/turf/simulated/floor/outdoors/lava/indoors/geothermal,
+/turf/simulated/lava/indoors/geothermal,
 /area/rift/geothermal)
 "pA" = (
 /obj/structure/catwalk/plank,
@@ -1682,7 +1682,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/machinery/mineral/equipment_vendor,
+/obj/machinery/point_redemption_vendor/mining,
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost/storage)
 "tH" = (
@@ -1815,7 +1815,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance)
 "vv" = (
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark";
 	name = "glacier wall"
@@ -1909,7 +1909,7 @@
 /obj/machinery/power/geothermal_collector{
 	dir = 5
 	},
-/turf/simulated/floor/outdoors/lava/indoors/geothermal,
+/turf/simulated/lava/indoors/geothermal,
 /area/rift/geothermal)
 "wA" = (
 /obj/structure/railing{
@@ -2824,7 +2824,7 @@
 /obj/machinery/power/geothermal_collector/manifold{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/lava/indoors/geothermal,
+/turf/simulated/lava/indoors/geothermal,
 /area/rift/geothermal)
 "Gm" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
@@ -3458,7 +3458,7 @@
 /obj/machinery/power/geothermal_collector/manifold{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/lava/indoors/geothermal,
+/turf/simulated/lava/indoors/geothermal,
 /area/rift/geothermal)
 "OY" = (
 /obj/structure/transit_tube/high_velocity{
@@ -4029,7 +4029,7 @@
 /obj/machinery/power/geothermal_collector{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/lava/indoors/geothermal,
+/turf/simulated/lava/indoors/geothermal,
 /area/rift/geothermal)
 "Vp" = (
 /obj/structure/railing{
@@ -4097,7 +4097,7 @@
 /area/rnd/outpost/maintenance)
 "VU" = (
 /obj/machinery/power/geothermal_collector/fourway,
-/turf/simulated/floor/outdoors/lava/indoors/geothermal,
+/turf/simulated/lava/indoors/geothermal,
 /area/rift/geothermal)
 "VW" = (
 /obj/machinery/door/firedoor/glass,
@@ -4479,10 +4479,10 @@
 /obj/machinery/power/geothermal_collector/manifold{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/lava/indoors/geothermal,
+/turf/simulated/lava/indoors/geothermal,
 /area/rift/geothermal)
 "ZT" = (
-/turf/unsimulated/mineral/lythios43c,
+/turf/unsimulated/wall/mineral/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "ZV" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{

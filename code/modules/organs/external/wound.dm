@@ -12,13 +12,14 @@
 	var/local_damage = brute_dam + burn_dam + damage
 	if((damage > 15) && (type != WOUND_TYPE_BURN) && (local_damage > 30) && prob(damage) && (robotic < ORGAN_ROBOT) && !(species.species_flags & NO_BLOOD))
 		create_specific_wound(/datum/wound/internal_bleeding, min(damage - 15, 15))
-		owner.custom_pain("You feel something rip in your [name]!", 50)
+		if(!(behaviour_flags & BODYPART_SILENT_WOUNDS))
+			owner.custom_pain("You feel something rip in your [name]!", 50)
 
 //Burn damage can cause fluid loss due to blistering and cook-off
 
 	if((damage > 5 || damage + burn_dam >= 15) && type == WOUND_TYPE_BURN && (robotic < ORGAN_ROBOT) && !(species.species_flags & NO_BLOOD))
-		var/fluid_loss = 0.4 * (damage/(owner.getMaxHealth() - config_legacy.health_threshold_dead)) * owner.species.blood_volume*(1 - owner.species.blood_level_fatal)
-		owner.remove_blood(fluid_loss)
+		var/fluid_loss = 0.4 * (damage/(owner.getMaxHealth() - owner.getMinHealth())) * owner.species.blood_volume*(1 - owner.species.blood_level_fatal)
+		owner.erase_blood(fluid_loss)
 
 	// first check whether we can widen an existing wound
 	if(length(wounds) > 0 && prob(max(50+(wound_tally-1)*10,90)))
@@ -32,7 +33,7 @@
 			if(compatible_wounds.len)
 				var/datum/wound/W = pick(compatible_wounds)
 				W.open_wound(damage)
-				if(prob(25))
+				if(!(behaviour_flags & BODYPART_SILENT_WOUNDS) && prob(25))
 					if(robotic >= ORGAN_ROBOT)
 						owner.visible_message("<span class='danger'>The damage to [owner.name]'s [name] worsens.</span>",\
 						"<span class='danger'>The damage to your [name] worsens.</span>",\
@@ -47,7 +48,7 @@
 	var/wound_type = get_wound_type(type, damage)
 
 	if(wound_type)
-		var/datum/wound/W = new wound_type(damage)
+		var/datum/wound/W = new wound_type(damage, behaviour_flags & BODYPART_NO_INFECTION)
 
 		//Check whether we can add the wound to an existing wound
 		for(var/datum/wound/other as anything in wounds)
@@ -78,7 +79,7 @@
 /obj/item/organ/external/proc/create_specific_wound(path, damage, updating = TRUE)
 	ASSERT(ispath(path, /datum/wound))
 
-	var/datum/wound/creating = new path(damage)
+	var/datum/wound/creating = new path(damage, behaviour_flags & BODYPART_NO_INFECTION)
 	var/datum/wound/merged
 
 	for(var/datum/wound/other as anything in wounds)
@@ -202,7 +203,9 @@
 	var/tmp/list/desc_list = list()
 	var/tmp/list/damage_list = list()
 
-/datum/wound/New(damage)
+	var/can_infect = TRUE
+
+/datum/wound/New(damage, _can_infect = TRUE)
 
 	created = world.time
 
@@ -218,6 +221,8 @@
 	src.init_stage(damage)
 
 	bleed_timer += damage
+
+	can_infect = _can_infect
 
 // returns 1 if there's a next stage, 0 otherwise
 /datum/wound/proc/init_stage(initial_damage)
@@ -286,6 +291,8 @@
 // checks if wound is considered open for external infections
 // untreated cuts (and bleeding bruises) and burns are possibly infectable, chance higher if wound is bigger
 /datum/wound/proc/infection_check()
+	if(!can_infect)
+		return FALSE
 	if (disinfected)
 		if(germ_level > INFECTION_LEVEL_ONE)
 			germ_level = 0	//reset this, just in case

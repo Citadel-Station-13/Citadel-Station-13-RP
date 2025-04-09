@@ -153,7 +153,9 @@ var/datum/species/shapeshifter/promethean/prometheans
 	..()
 	prometheans = src
 
-/datum/species/shapeshifter/promethean/equip_survival_gear(mob/living/carbon/human/H)
+/datum/species/shapeshifter/promethean/apply_survival_gear(mob/living/carbon/for_target, list/into_box, list/into_inv)
+	. = ..()
+
 	var/boxtype = pick(list(
 		/obj/item/storage/toolbox/lunchbox,
 		/obj/item/storage/toolbox/lunchbox/heart,
@@ -165,13 +167,9 @@ var/datum/species/shapeshifter/promethean/prometheans
 		/obj/item/storage/toolbox/lunchbox/syndicate
 	))	//Only pick the empty types
 
-	var/obj/item/storage/toolbox/lunchbox/L = new boxtype(get_turf(H))
+	var/obj/item/storage/toolbox/lunchbox/L = new boxtype
 	new /obj/item/reagent_containers/food/snacks/wrapped/proteinbar(L)
-	new /obj/item/tool/prybar/red(L)
-	if(H.backbag == 1)
-		H.equip_to_slot_or_del(L, /datum/inventory_slot/abstract/hand/right)
-	else
-		H.equip_to_slot_or_del(L, /datum/inventory_slot/abstract/put_in_backpack)
+	into_inv += L
 
 /datum/species/shapeshifter/promethean/hug(mob/living/carbon/human/H, mob/living/target)
 
@@ -197,11 +195,9 @@ var/datum/species/shapeshifter/promethean/prometheans
 		SPAN_NOTICE("You glomp [target] to make [t_him] feel better!"),
 	)
 
-	H.apply_stored_shock_to(target)
-
 /datum/species/shapeshifter/promethean/handle_death(mob/living/carbon/human/H)
 	spawn(1)
-		if(H)
+		if(!QDELETED(H))
 			H.gib()
 
 /datum/species/shapeshifter/promethean/get_blood_colour(mob/living/carbon/human/H)
@@ -210,30 +206,30 @@ var/datum/species/shapeshifter/promethean/prometheans
 /datum/species/shapeshifter/promethean/get_flesh_colour(mob/living/carbon/human/H)
 	return (H ? rgb(H.r_skin, H.g_skin, H.b_skin) : ..())
 
-/datum/species/shapeshifter/promethean/get_additional_examine_text(mob/living/carbon/human/H)
+// /datum/species/shapeshifter/promethean/get_additional_examine_text(mob/living/carbon/human/H)
 
-	if(!stored_shock_by_ref["\ref[H]"])
-		return
+// 	if(!stored_shock_by_ref["\ref[H]"])
+// 		return
 
-	var/t_she = "She is"
-	if(H.identifying_gender == MALE)
-		t_she = "He is"
-	else if(H.identifying_gender == PLURAL)
-		t_she = "They are"
-	else if(H.identifying_gender == NEUTER)
-		t_she = "It is"
-	else if(H.identifying_gender == HERM)
-		t_she = "Shi is"
+// 	var/t_she = "She is"
+// 	if(H.identifying_gender == MALE)
+// 		t_she = "He is"
+// 	else if(H.identifying_gender == PLURAL)
+// 		t_she = "They are"
+// 	else if(H.identifying_gender == NEUTER)
+// 		t_she = "It is"
+// 	else if(H.identifying_gender == HERM)
+// 		t_she = "Shi is"
 
-	switch(stored_shock_by_ref["\ref[H]"])
-		if(1 to 10)
-			return SPAN_NOTICE("[t_she] flickering gently with a little electrical activity.")
-		if(11 to 20)
-			return SPAN_NOTICE("[t_she] glowing gently with moderate levels of electrical activity.\n")
-		if(21 to 35)
-			return SPAN_WARNING("[t_she] glowing brightly with high levels of electrical activity.")
-		if(35 to INFINITY)
-			return SPAN_DANGER("[t_she] radiating massive levels of electrical activity!")
+// 	switch(stored_shock_by_ref["\ref[H]"])
+// 		if(1 to 10)
+// 			return SPAN_NOTICE("[t_she] flickering gently with a little electrical activity.")
+// 		if(11 to 20)
+// 			return SPAN_NOTICE("[t_she] glowing gently with moderate levels of electrical activity.\n")
+// 		if(21 to 35)
+// 			return SPAN_WARNING("[t_she] glowing brightly with high levels of electrical activity.")
+// 		if(35 to INFINITY)
+// 			return SPAN_DANGER("[t_she] radiating massive levels of electrical activity!")
 
 /mob/living/carbon/human/proc/prommie_blobform()
 	set name = "Toggle Blobform"

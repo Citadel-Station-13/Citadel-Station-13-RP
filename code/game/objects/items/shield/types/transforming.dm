@@ -81,8 +81,6 @@
  * actor can be /datum/event_args/actor or a single mob.
  */
 /obj/item/shield/transforming/proc/on_activate(datum/event_args/actor/actor, silent)
-	E_ARGS_WRAP_USER_TO_ACTOR(actor)
-
 	damage_force = VALUE_OR_DEFAULT(active_damage_force, initial(damage_force))
 
 	set_weight_class(VALUE_OR_DEFAULT(active_weight_class, initial(w_class)))
@@ -97,8 +95,6 @@
  * actor can be /datum/event_args/actor or a single mob.
  */
 /obj/item/shield/transforming/proc/on_deactivate(datum/event_args/actor/actor, silent)
-	E_ARGS_WRAP_USER_TO_ACTOR(actor)
-
 	damage_force = VALUE_OR_DEFAULT(inactive_damage_force, initial(damage_force))
 
 	set_weight_class(VALUE_OR_DEFAULT(inactive_weight_class, initial(w_class)))

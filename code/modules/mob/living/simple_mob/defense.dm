@@ -30,7 +30,6 @@
 
 			L.put_in_active_hand(G)
 
-			G.synch()
 			G.affecting = src
 			LAssailant = L
 
@@ -146,49 +145,6 @@
 	. = 1 - .
 	. = min(., 1.0)
 
-// Electricity
-/mob/living/simple_mob/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null)
-	shock_damage *= siemens_coeff
-	if(shock_damage < 1)
-		return 0
-
-	apply_damage(damage = shock_damage, damagetype = DAMAGE_TYPE_BURN, def_zone = null, blocked = null, blocked = resistance, used_weapon = null, sharp = FALSE, edge = FALSE)
-	playsound(loc, /datum/soundbyte/grouped/sparks, 50, 1, -1)
-
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-	s.set_up(5, 1, loc)
-	s.start()
-
-/mob/living/simple_mob/get_shock_protection()
-	. = shock_resist
-	. = 1 - . // Invert from 1 = immunity to 0 = immunity.
-
-	// Doing it this way makes multiplicative stacking not get out of hand, so two modifiers that give 0.5 protection will be combined to 0.75 in the end.
-	for(var/thing in modifiers)
-		var/datum/modifier/M = thing
-		if(!isnull(M.siemens_coefficient))
-			. *= M.siemens_coefficient
-
-	// Code that calls this expects 1 = immunity so we need to invert again.
-	. = 1 - .
-	. = min(., 1.0)
-
-// Shot with taser/stunvolver
-/mob/living/simple_mob/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone, var/used_weapon=null)
-	if(taser_kill)
-		var/stunDam = 0
-		var/agonyDam = 0
-		var/armor = run_armor_check(def_zone = null, attack_flag = "energy")
-
-		if(stun_amount)
-			stunDam += stun_amount * 0.5
-			apply_damage(damage = stunDam, damagetype = DAMAGE_TYPE_BURN, def_zone = null, blocked = armor, blocked = resistance, used_weapon = used_weapon, sharp = FALSE, edge = FALSE)
-
-		if(agony_amount)
-			agonyDam += agony_amount * 0.5
-			apply_damage(damage = agonyDam, damagetype = DAMAGE_TYPE_BURN, def_zone = null, blocked = armor, blocked = resistance, used_weapon = used_weapon, sharp = FALSE, edge = FALSE)
-
-
 // Electromagnetism
 /mob/living/simple_mob/emp_act(severity)
 	..() // To emp_act() its contents.
@@ -237,7 +193,7 @@
 	// If a non-player simple_mob was struck, inflict huge damage.
 	// If the damage is fatal, it is turned to ash.
 	if(!client)
-		inflict_shock_damage(200) // Mobs that are very beefy or resistant to shock may survive getting struck.
+		inflict_shock_damage_legacy(200) // Mobs that are very beefy or resistant to shock may survive getting struck.
 		update_health()
 		if(health <= 0)
 			visible_message(SPAN_CRITICAL("\The [src] disintegrates into ash!"))

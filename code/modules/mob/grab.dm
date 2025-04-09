@@ -7,6 +7,7 @@
 	for(var/obj/item/grab/G in get_held_items())
 		.[G.affecting] = G.state
 
+
 /**
  * returns everyone we're grabbing that are at least the given grab state
  */
@@ -62,10 +63,11 @@
 /**
  * are we being grabbed
  *
- * @return TRUE / FALSE
+ * @return null, or highest state
  */
 /mob/proc/is_grabbed()
-	return length(grabbed_by)
+	for(var/mob/M as anything in grabbed_by)
+		. = max(., M.check_grab(src))
 
 /**
  * are we being grabbed by someone
@@ -89,7 +91,7 @@
 			L.resist() //shortcut for resisting grabs
 
 		//if we are grabbing someone
-		for(var/obj/item/grab/G in list(L.l_hand, L.r_hand))
+		for(var/obj/item/grab/G in L.get_held_items_of_type(/obj/item/grab))
 			G.reset_kill_state() //no wandering across the station/asteroid while choking someone
 
 /obj/item/grab
@@ -137,6 +139,7 @@
 	icon_state = "grabbed"
 	hud.name = "reinforce grab"
 	hud.master = src
+	vis_contents += hud
 
 	//check if assailant is grabbed by victim as well
 	if(assailant.grabbed_by)
@@ -151,16 +154,6 @@
 		assailant.stop_pulling()
 
 	adjust_position()
-
-//This makes sure that the grab screen object is displayed in the correct hand.
-/obj/item/grab/proc/synch() //why is this needed?
-	if(QDELETED(src))
-		return
-	if(affecting)
-		if(assailant.r_hand == src)
-			hud.screen_loc = ui_rhand
-		else
-			hud.screen_loc = ui_lhand
 
 /obj/item/grab/process(delta_time)
 	if(QDELETED(src)) // GC is trying to delete us, we'll kill our processing so we can cleanly GC
@@ -178,14 +171,8 @@
 	if(state <= GRAB_AGGRESSIVE)
 		allow_upgrade = 1
 		//disallow upgrading if we're grabbing more than one person
-		if((assailant.l_hand && assailant.l_hand != src && istype(assailant.l_hand, /obj/item/grab)))
-			var/obj/item/grab/G = assailant.l_hand
-			if(G.affecting != affecting)
-				allow_upgrade = 0
-		if((assailant.r_hand && assailant.r_hand != src && istype(assailant.r_hand, /obj/item/grab)))
-			var/obj/item/grab/G = assailant.r_hand
-			if(G.affecting != affecting)
-				allow_upgrade = 0
+		if(length(assailant.get_grabbing()) > 1)
+			allow_upgrade = 0
 
 		//disallow upgrading past aggressive if we're being grabbed aggressively
 		for(var/obj/item/grab/G in affecting.grabbed_by)
@@ -202,7 +189,7 @@
 			hud.icon_state = "!reinforce"
 
 	if(state >= GRAB_AGGRESSIVE)
-		affecting.drop_all_held_items()
+		affecting.drop_held_items()
 
 		if(iscarbon(affecting))
 			handle_eye_mouth_covering(affecting, assailant, assailant.zone_sel.selecting)
@@ -211,7 +198,9 @@
 			if(affecting.loc != assailant.loc || size_difference(affecting, assailant) > 0)
 				force_down = 0
 			else
-				affecting.afflict_paralyze(20 * 2)
+				affecting.afflict_knockdown(3 SECONDS)
+				affecting.afflict_root(3 SECONDS)
+				affecting.afflict_daze(3 SECONDS)
 
 	if(state >= GRAB_NECK)
 		affecting.afflict_stun(20 * 3)
@@ -663,7 +652,9 @@
 
 /obj/item/grab/proc/apply_pinning(mob/target, mob/attacker)
 	force_down = 1
-	target.afflict_paralyze(20 * 3)
+	target.afflict_knockdown(4 SECONDS)
+	target.afflict_root(4 SECONDS)
+	target.afflict_daze(4 SECONDS)
 	step_to(attacker, target)
 	attacker.setDir(EAST) //face the victim
 	target.setDir(SOUTH) //face up

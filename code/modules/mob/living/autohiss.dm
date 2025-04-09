@@ -1,17 +1,17 @@
-/mob/living/proc/handle_autohiss(message, datum/language/L)
+/mob/living/proc/handle_autohiss(message, language_name, language_flags, ignore_client = FALSE)
 	return message // no autohiss at this level
 
-/mob/living/carbon/human/handle_autohiss(message, datum/language/L)
-	if(!client || autohiss_mode == AUTOHISS_OFF || autohiss_type == AUTOHISS_TYPE_NONE) // no need to process if there's no client or they have autohiss off
+/mob/living/carbon/human/handle_autohiss(message, language_name, language_flags, ignore_client = FALSE)
+	if((!client && !ignore_client) || autohiss_mode == AUTOHISS_OFF || autohiss_type == AUTOHISS_TYPE_NONE) // no need to process if there's no client or they have autohiss off
 		return message
 
 	var/datum/autohiss_maps/maps = autohiss_type_to_datum(autohiss_type)
 
 	if(!maps.basic)
 		return message
-	if(L.language_flags & LANGUAGE_NO_STUTTER)		// Currently prevents EAL, Sign language, and emotes from autohissing
+	if(language_flags & LANGUAGE_NO_STUTTER)		// Currently prevents EAL, Sign language, and emotes from autohissing
 		return message
-	if(maps.exempt && (L.name in maps.exempt))
+	if(maps.exempt && (language_name in maps.exempt))
 		return message
 
 	var/map = maps.basic.Copy()

@@ -1531,12 +1531,6 @@
 /obj/effect/floor_decal/borderfloor,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/undertwo)
-"gd" = (
-/obj/structure/table/steel_reinforced,
-/obj/item/storage/firstaid/toxin,
-/obj/item/storage/single_use/med_pouch/radiation,
-/turf/simulated/floor/tiled/monotile,
-/area/engineering/engine_monitoring)
 "ge" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/machinery/light,
@@ -5786,7 +5780,7 @@
 /turf/simulated/wall/prepainted/engineering,
 /area/engineering/locker_room)
 "ut" = (
-/obj/machinery/mineral/equipment_vendor/engineering,
+/obj/machinery/point_redemption_vendor/engineering,
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "uv" = (
@@ -6450,7 +6444,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/maintenance/cargo,
-/obj/map_helper/access_helper/airlock/station/supply/department,
+/obj/map_helper/access_helper/airlock/station/mining_operations,
 /turf/simulated/floor/plating,
 /area/quartermaster/miningdock)
 "wV" = (
@@ -7465,7 +7459,7 @@
 /area/quartermaster/miningdock)
 "AW" = (
 /obj/effect/blocker,
-/turf/simulated/floor/sky/depths/lythios43c,
+/turf/simulated/sky/depths/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "AX" = (
 /turf/simulated/wall/prepainted/cargo,
@@ -8593,7 +8587,7 @@
 /turf/simulated/floor/lino,
 /area/chapel/office)
 "Fr" = (
-/obj/machinery/mineral/equipment_vendor,
+/obj/machinery/point_redemption_vendor/mining,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/quartermaster/belterdock/refinery)
 "Fv" = (
@@ -8758,7 +8752,7 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/maintenance/cargo,
-/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
+/obj/map_helper/access_helper/airlock/station/supply/department,
 /turf/simulated/floor/tiled,
 /area/quartermaster/miningdock)
 "Gn" = (
@@ -8784,7 +8778,7 @@
 	name = "Mining Operations";
 	req_one_access = list()
 	},
-/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
+/obj/map_helper/access_helper/airlock/station/supply/mining,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "Gs" = (
@@ -10020,7 +10014,6 @@
 	name = "Mining Operations";
 	req_one_access = list(47,48)
 	},
-/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
 /turf/simulated/floor/tiled,
 /area/quartermaster/miningdock)
 "Lp" = (
@@ -10335,7 +10328,7 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/maintenance/cargo,
-/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
+/obj/map_helper/access_helper/airlock/station/supply/department,
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/refinery)
 "MC" = (
@@ -10537,6 +10530,8 @@
 /obj/machinery/fire_alarm/north_mount{
 	pixel_y = 22
 	},
+/obj/item/storage/firstaid/toxin,
+/obj/item/storage/single_use/med_pouch/radiation,
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engine_monitoring)
 "Nk" = (
@@ -10588,7 +10583,7 @@
 	name = "Mining Operations";
 	req_one_access = list()
 	},
-/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
+/obj/map_helper/access_helper/airlock/station/supply/mining,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "Nt" = (
@@ -11841,7 +11836,7 @@
 	name = "Mining Operations";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
+/obj/map_helper/access_helper/airlock/station/supply/department,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/belterdock/refinery)
 "Ss" = (
@@ -11860,13 +11855,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/engi_wash)
-"Su" = (
-/obj/machinery/airlock_sensor{
-	id_tag = "eng_al_c_snsr";
-	pixel_x = -25
-	},
-/turf/simulated/mineral/icerock/lythios43c,
-/area/rift/surfacebase/underground/under2)
 "Sw" = (
 /obj/structure/bed/chair/bay/chair/padded/yellow,
 /obj/machinery/fire_alarm/north_mount,
@@ -12526,7 +12514,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
 "UV" = (
-/turf/simulated/floor/outdoors/lava/indoors/geothermal,
+/turf/simulated/lava/indoors/geothermal,
 /area/rift/surfacebase/underground/under2)
 "UW" = (
 /obj/structure/table/reinforced,
@@ -12606,7 +12594,7 @@
 	name = "Mining Operations";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
+/obj/map_helper/access_helper/airlock/station/supply/department,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/belterdock/refinery)
 "Vd" = (
@@ -12724,7 +12712,7 @@
 "VC" = (
 /obj/machinery/door/airlock/maintenance/cargo,
 /obj/machinery/door/firedoor/glass,
-/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
+/obj/map_helper/access_helper/airlock/station/supply/mining,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "VD" = (
@@ -13034,7 +13022,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "WA" = (
-/turf/simulated/floor/sky/depths/lythios43c,
+/turf/simulated/sky/depths/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "WC" = (
 /obj/effect/floor_decal/borderfloor{
@@ -13176,7 +13164,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_airlock)
 "Xh" = (
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark"
 	},
@@ -28079,7 +28067,7 @@ Nj
 zG
 zG
 zG
-gd
+zG
 zJ
 jB
 sx
@@ -37407,7 +37395,7 @@ aa
 aa
 aa
 aa
-Su
+aa
 aa
 aa
 aa

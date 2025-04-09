@@ -35,7 +35,7 @@
 				S.diffuse(20)
 		// Legacy shield support
 		for(var/obj/effect/energy_field/S in shielded_tile)
-			if(istype(S) && cell.use(CELL_COST_SHIELD_DIFFUSION))
+			if(istype(S) && cell.checked_use(CELL_COST_SHIELD_DIFFUSION))
 				qdel(S)
 
 /obj/item/shield_diffuser/update_icon()

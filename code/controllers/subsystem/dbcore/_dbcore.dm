@@ -3,6 +3,7 @@ SUBSYSTEM_DEF(dbcore)
 	subsystem_flags = SS_BACKGROUND
 	wait = 1 MINUTES
 	init_order = INIT_ORDER_DBCORE
+	init_stage = INIT_STAGE_BACKEND
 	var/failed_connection_timeout = 0
 
 	var/schema_mismatch = 0
@@ -26,7 +27,7 @@ SUBSYSTEM_DEF(dbcore)
 		if(2)
 			message_admins("Could not get schema version from database")
 
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/dbcore/fire()
 	for(var/I in active_queries)
@@ -45,7 +46,7 @@ SUBSYSTEM_DEF(dbcore)
 	//This is as close as we can get to the true round end before Disconnect() without changing where it's called, defeating the reason this is a subsystem
 	if(SSdbcore.Connect())
 		var/datum/db_query/query_round_shutdown = SSdbcore.NewQuery(
-			"UPDATE [format_table_name("round")] SET shutdown_datetime = Now() WHERE id = :round_id",
+			"UPDATE [DB_PREFIX_TABLE_NAME("round")] SET shutdown_datetime = Now() WHERE id = :round_id",
 			list("round_id" = GLOB.round_id)
 		)
 		query_round_shutdown.Execute()
@@ -113,7 +114,7 @@ SUBSYSTEM_DEF(dbcore)
 	if(CONFIG_GET(flag/sql_enabled))
 		if(Connect())
 			log_world("Database connection established.")
-			var/datum/db_query/query_db_version = NewQuery("SELECT major, minor FROM [format_table_name("schema_revision")] ORDER BY date DESC LIMIT 1")
+			var/datum/db_query/query_db_version = NewQuery("SELECT major, minor FROM [DB_PREFIX_TABLE_NAME("schema_revision")] ORDER BY date DESC LIMIT 1")
 			query_db_version.Execute()
 			if(query_db_version.NextRow())
 				db_major = text2num(query_db_version.item[1])
@@ -134,7 +135,7 @@ SUBSYSTEM_DEF(dbcore)
 	if(!Connect())
 		return
 	var/datum/db_query/query_round_initialize = SSdbcore.NewQuery(
-		"INSERT INTO [format_table_name("round")] (initialize_datetime, server_ip, server_port) VALUES (Now(), INET_ATON(:internet_address), :port)",
+		"INSERT INTO [DB_PREFIX_TABLE_NAME("round")] (initialize_datetime, server_ip, server_port) VALUES (Now(), INET_ATON(:internet_address), :port)",
 		list("internet_address" = world.internet_address || "0", "port" = "[world.port]")
 	)
 	query_round_initialize.Execute(async = FALSE)
@@ -146,7 +147,7 @@ SUBSYSTEM_DEF(dbcore)
 	if(!Connect())
 		return
 	var/datum/db_query/query_round_start = SSdbcore.NewQuery(
-		"UPDATE [format_table_name("round")] SET start_datetime = Now() WHERE id = :round_id",
+		"UPDATE [DB_PREFIX_TABLE_NAME("round")] SET start_datetime = Now() WHERE id = :round_id",
 		list("round_id" = GLOB.round_id)
 	)
 	query_round_start.Execute()
@@ -156,7 +157,7 @@ SUBSYSTEM_DEF(dbcore)
 	if(!Connect())
 		return
 	var/datum/db_query/query_round_end = SSdbcore.NewQuery(
-		"UPDATE [format_table_name("round")] SET end_datetime = Now() WHERE id = :round_id",
+		"UPDATE [DB_PREFIX_TABLE_NAME("round")] SET end_datetime = Now() WHERE id = :round_id",
 		list("round_id" = GLOB.round_id)
 	)
 	query_round_end.Execute()

@@ -4,6 +4,7 @@
 REPOSITORY_DEF(designs)
 	name = "Repository - Designs"
 	expected_type = /datum/prototype/design
+	database_key = "design"
 
 	//* caches *//
 
@@ -12,7 +13,7 @@ REPOSITORY_DEF(designs)
 	/// cached medical mini autolathe desgin ids
 	var/tmp/list/medical_mini_design_ids
 
-/datum/controller/repository/designs/Initialize()
+/datum/controller/repository/designs/Create()
 	autolathe_design_ids = list()
 	medical_mini_design_ids = list()
 	return ..()

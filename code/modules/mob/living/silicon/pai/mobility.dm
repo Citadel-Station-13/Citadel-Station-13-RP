@@ -34,7 +34,7 @@
 		forceMove(get_turf(src))
 
 	/// Move us into the shell and move the shell to the ground.
-	transform_component.put_in_object()
+	transform_component.transform()
 
 	update_perspective()
 	set_resting(FALSE)
@@ -83,7 +83,7 @@
 		holder.pai = null
 
 	/// Handle the actual object stuffing via the component, essentially swapping their loc's around
-	transform_component.put_in_mob()
+	transform_component.untransform()
 
 	update_perspective()
 
@@ -109,8 +109,7 @@
 		return
 
 	H.icon_state = "[chassis]"
-	grabber.update_inv_l_hand()
-	grabber.update_inv_r_hand()
+	H.update_worn_icon()
 	return H
 
 /// Handle movement speed
@@ -150,24 +149,21 @@
 		return FALSE
 	return TRUE
 
-/mob/living/silicon/pai/update_transform(animate = TRUE)
-	. = ..()
-	var/matrix/M = matrix()
-	var/desired_scale_x = size_multiplier * icon_scale_x
-	var/desired_scale_y = size_multiplier * icon_scale_y
-	M.Scale(desired_scale_x, desired_scale_y)
-	M.Translate(0, 16*(desired_scale_y-1))
+/mob/living/silicon/pai/base_transform(matrix/applying)
+	var/matrix/to_apply = ..()
+
 	/// No chassis means pAI is using a hologram
 	var/turning_value_to_use = 0
 	if(!chassis)
 		turning_value_to_use = lying
 	/// Handle turning
-	M.Turn(turning_value_to_use)
+	to_apply.Turn(turning_value_to_use)
+
 	/// Extremely lazy heuristic to see if we should shift down to appear to be, well, down.
 	if(turning_value_to_use < -45 || turning_value_to_use > 45)
-		M.Translate(1,-6)
+		to_apply.Translate(1,-6)
 
-	if(animate)
-		animate(src, transform = M, time = 1, flags = ANIMATION_PARALLEL)
-	else
-		transform = M
+	return to_apply
+
+/mob/living/silicon/pai/apply_transform(matrix/to_apply)
+	animate(src, transform = to_apply, time = 1 SECONDS, flags = ANIMATION_PARALLEL)

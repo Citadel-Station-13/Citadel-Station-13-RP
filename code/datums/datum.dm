@@ -55,13 +55,21 @@
 	var/list/filter_data
 
 #ifdef REFERENCE_TRACKING
-	var/running_find_references
+	/// When was this datum last touched by a reftracker?
+	/// If this value doesn't match with the start of the search
+	/// We know this datum has never been seen before, and we should check it
 	var/last_find_references = 0
+	/// How many references we're trying to find when searching
+	var/references_to_clear = 0
 	#ifdef REFERENCE_TRACKING_DEBUG
 	///Stores info about where refs are found, used for sanity checks and testing
 	var/list/found_refs
 	#endif
 #endif
+
+	// If we have called dump_harddel_info already. Used to avoid duped calls (since we call it immediately in some cases on failure to process)
+	// Create and destroy is weird and I wanna cover my bases
+	var/harddel_deets_dumped = FALSE
 
 /**
  * Default implementation of clean-up code.
@@ -79,7 +87,7 @@
  *
  * Returns [QDEL_HINT_QUEUE]
  */
-/datum/proc/Destroy(force=FALSE, ...)
+/datum/proc/Destroy(force=FALSE)
 	SHOULD_CALL_PARENT(TRUE)
 	//SHOULD_NOT_SLEEP(TRUE)
 	tag = null
@@ -101,18 +109,21 @@
 	#endif
 
 	//BEGIN: ECS SHIT
-	if(!isnull(datum_components))
-		var/list/dc = datum_components
-		for(var/path in dc)
-			var/list/what = dc[path]
-			if(length(what))
-				for(var/thing in what)
-					qdel(thing, FALSE, TRUE)
+	var/list/dc = datum_components
+	if(dc)
+		for(var/component_key in dc)
+			var/component_or_list = dc[component_key]
+			if(islist(component_or_list))
+				for(var/datum/component/component as anything in component_or_list)
+					qdel(component, FALSE)
 			else
-				qdel(what)
-		datum_components = null
+				var/datum/component/C = component_or_list
+				qdel(C, FALSE)
+		dc.Cut()
+
 	clear_signal_refs()
 	//END: ECS SHIT
+
 	return QDEL_HINT_QUEUE
 
 ///Only override this if you know what you're doing. You do not know what you're doing
@@ -174,7 +185,7 @@
  *
  * Arguments:
  * * name - Filter name
- * * priority - Priority used when sorting the filter.
+ * * priority - Priority used when sorting the filter. Lower is applied first.
  * * params - Parameters of the filter.
  */
 /datum/proc/add_filter(name, priority, list/params)
@@ -295,11 +306,8 @@
 
 /**
  * makes a clone of this datum
- *
- * @params
- * * include_contents - include semantic contents; ergo 'what we are hosting' vs 'what we are'
  */
-/datum/proc/clone(include_contents)
+/datum/proc/clone()
 	return new type
 
 //* Serialization *//
@@ -324,3 +332,16 @@
  */
 /datum/proc/deserialize(list/data)
 	return TRUE
+
+/// Return text from this proc to provide extra context to hard deletes that happen to it
+/// Optional, you should use this for cases where replication is difficult and extra context is required
+/// Can be called more then once per object, use harddel_deets_dumped to avoid duplicate calls (I am so sorry)
+/datum/proc/dump_harddel_info()
+	return
+
+///images are pretty generic, this should help a bit with tracking harddels related to them
+/image/dump_harddel_info()
+	if(harddel_deets_dumped)
+		return
+	harddel_deets_dumped = TRUE
+	return "Image icon: [icon] - icon_state: [icon_state] [loc ? "loc: [loc] ([loc.x],[loc.y],[loc.z])" : ""]"

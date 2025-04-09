@@ -99,7 +99,7 @@
 	var/controllock = FALSE
 
 	/// The type of weapon installed.
-	var/installation = /obj/item/gun/energy/gun
+	var/installation = /obj/item/gun/projectile/energy/gun
 	/// The charge of the gun inserted.
 	var/gun_charge = 0
 	/// Holder for bullettype.
@@ -190,6 +190,7 @@
 	return ..()
 
 /obj/machinery/porta_turret/update_icon()
+	. = ..()
 	if(machine_stat & BROKEN) // Turret is dead.
 		icon_state = "destroyed_target_prism_[turret_type]"
 
@@ -212,9 +213,16 @@
 
 
 /obj/machinery/porta_turret/proc/setup()
-	var/obj/item/gun/energy/E = installation	//All energy-based weapons are applicable
-	var/obj/projectile/P = initial(E.projectile_type)
-	//var/obj/item/ammo_casing/shottype = E.projectile_type
+	// TEMPORARY: shitty autodetection code, turrets should just fire with the actual gun
+	//            by proccing async_firing_cycle at some point but for now this is how it is
+	var/const/default_path = /obj/item/gun/projectile/energy/laser
+	var/const/default_projectile = /obj/projectile/beam/midlaser
+
+	var/obj/item/gun/projectile/energy/autodetect = installation || default_path
+	if(ispath(autodetect))
+		autodetect = new autodetect
+	var/datum/firemode/energy/autodetect_firemode = autodetect.firemode
+	var/obj/projectile/P = autodetect_firemode?.projectile_type || default_projectile
 
 	projectile = P
 	lethal_projectile = projectile
@@ -242,30 +250,30 @@
 
 /obj/machinery/porta_turret/proc/weapon_setup(guntype)
 	switch(guntype)
-		if(/obj/item/gun/energy/gun/burst)
+		if(/obj/item/gun/projectile/energy/gun/burst)
 			lethal_icon_color = "red"
 			lethal_projectile = /obj/projectile/beam/burstlaser
 			lethal_shot_sound = 'sound/weapons/Laser.ogg'
 			fire_burst = 3
 			fire_burst_spacing = 1.5
 
-		if(/obj/item/gun/energy/phasegun)
+		if(/obj/item/gun/projectile/energy/phasegun)
 			icon_color = "orange"
 			lethal_icon_color = "orange"
 			lethal_projectile = /obj/projectile/energy/phase/heavy
 			fire_delay = 1 SECOND
 
-		if(/obj/item/gun/energy/gun)
+		if(/obj/item/gun/projectile/energy/gun)
 			lethal_icon_color = "red"
 			lethal_projectile = /obj/projectile/beam	//If it has, going to kill mode
 			lethal_shot_sound = 'sound/weapons/Laser.ogg'
 
-		if(/obj/item/gun/energy/gun/nuclear)
+		if(/obj/item/gun/projectile/energy/gun/nuclear)
 			lethal_icon_color = "red"
 			lethal_projectile = /obj/projectile/beam	//If it has, going to kill mode
 			lethal_shot_sound = 'sound/weapons/Laser.ogg'
 
-		if(/obj/item/gun/energy/xray)
+		if(/obj/item/gun/projectile/energy/xray)
 			lethal_icon_color = "green"
 			lethal_projectile = /obj/projectile/beam/xray
 			projectile = /obj/projectile/beam/stun // Otherwise we fire xrays on both modes.
@@ -390,8 +398,8 @@
 				if(can_salvage && prob(70))
 					to_chat(user, "<span class='notice'>You remove the turret and salvage some components.</span>")
 					if(installation)
-						var/obj/item/gun/energy/Gun = new installation(loc)
-						Gun.power_supply.charge = gun_charge
+						var/obj/item/gun/projectile/energy/Gun = new installation(loc)
+						Gun.obj_cell_slot.cell.charge = gun_charge
 						Gun.update_icon()
 					if(prob(50))
 						new /obj/item/stack/material/steel(loc, rand(1,4))

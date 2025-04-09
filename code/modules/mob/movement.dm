@@ -2,7 +2,7 @@
 //See code/modules/movespeed/movespeed_modifier.dm
 /mob/proc/movement_delay()	//update /living/movement_delay() if you change this
 	SHOULD_CALL_PARENT(TRUE)
-	return cached_multiplicative_slowdown
+	return cached_hyperbolic_slowdown
 
 /mob/proc/applyMoveCooldown(amount)
 	move_delay = max(move_delay, world.time + amount)
@@ -12,16 +12,6 @@
 
 /client/proc/client_dir(input, direction=-1)
 	return turn(input, direction*dir2angle(dir))
-
-/client/verb/swap_hand()
-	set hidden = 1
-	if(istype(mob, /mob/living))
-		var/mob/living/L = mob
-		L.swap_hand()
-	if(istype(mob,/mob/living/silicon/robot))
-		var/mob/living/silicon/robot/R = mob
-		R.cycle_modules()
-	return
 
 /client/verb/drop_item()
 	set hidden = 1
@@ -140,7 +130,7 @@
 		return
 	// nonliving get handled differently
 	if(!isliving(mob))
-		mob.move_delay = world.time + mob.cached_multiplicative_slowdown
+		mob.move_delay = world.time + mob.cached_hyperbolic_slowdown
 		return mob.Move(n, direct)
 	// autoghost if needed
 	if((mob.stat == DEAD) && isliving(mob) && !mob.forbid_seeing_deadchat)
@@ -244,7 +234,7 @@
 	//? NOW we try to move.
 
 	// get additional delay from this move
-	var/add_delay = mob.movement_delay()
+	var/add_delay = max(world.tick_lag, mob.movement_delay())
 	//! TODO: REMOVE ; COMPATABILITY LAYER TO USE NEW MOVESPEED.
 	add_delay = min(10 / ((10 / add_delay) * (1 * mob.cached_movespeed_multiply)), 10 / MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND)
 	//! END

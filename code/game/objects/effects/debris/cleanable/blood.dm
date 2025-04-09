@@ -68,9 +68,10 @@ var/global/list/image/splatter_cache=list()
 	addtimer(CALLBACK(src, PROC_REF(dry)), BLOOD_DRYING_TIME * (amount + 1))
 
 /obj/effect/debris/cleanable/blood/update_icon()
+	. = ..()
 	if(basecolor == "rainbow")
 		basecolor = "#[get_random_colour(1)]"
-	add_atom_colour(basecolor, FIXED_COLOUR_PRIORITY)
+	add_atom_color(basecolor)
 
 	if(basecolor == SYNTH_BLOOD_COLOUR)
 		name = "oil"
@@ -84,7 +85,7 @@ var/global/list/image/splatter_cache=list()
 
 /obj/effect/debris/cleanable/blood/Crossed(mob/living/carbon/human/perp)
 	. = ..()
-	if(perp.is_incorporeal())
+	if(perp.is_incorporeal() || perp.is_avoiding_ground())
 		return
 	if (!istype(perp))
 		return
@@ -129,7 +130,7 @@ var/global/list/image/splatter_cache=list()
 	name = dryname
 	desc = drydesc
 	var/newcolor = adjust_brightness(color, -50)
-	add_atom_colour(newcolor, FIXED_COLOUR_PRIORITY)
+	add_atom_color(newcolor)
 	amount = 0
 
 /obj/effect/debris/cleanable/blood/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
@@ -206,6 +207,8 @@ var/global/list/image/splatter_cache=list()
 	var/fleshcolor = "#FFFFFF"
 
 /obj/effect/debris/cleanable/blood/gibs/update_icon()
+	cut_overlays()
+	. = ..()
 
 	var/image/giblets = new(base_icon, "[icon_state]_flesh", dir)
 	if(!fleshcolor || fleshcolor == "rainbow")
@@ -217,7 +220,6 @@ var/global/list/image/splatter_cache=list()
 	blood.Blend(basecolor,ICON_MULTIPLY)
 
 	icon = blood
-	cut_overlays()
 	add_overlay(giblets)
 
 /obj/effect/debris/cleanable/blood/gibs/up

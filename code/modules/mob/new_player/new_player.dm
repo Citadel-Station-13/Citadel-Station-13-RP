@@ -58,7 +58,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 			if(src.client && src.client.holder)
 				isadmin = 1
 			var/datum/db_query/query = SSdbcore.ExecuteQuery(
-				"SELECT id FROM [format_table_name("poll_question")] WHERE [isadmin? "" : "adminonly = false AND"] Now() BETWEEN starttime AND endtime AND id NOT IN (SELECT pollid FROM [format_table_name("poll_vote")] WHERE ckey = :ckey) AND id NOT IN (SELECT pollid FROM [format_table_name("poll_textreply")] WHERE ckey = :ckey)",
+				"SELECT id FROM [DB_PREFIX_TABLE_NAME("poll_question")] WHERE [isadmin? "" : "adminonly = false AND"] Now() BETWEEN starttime AND endtime AND id NOT IN (SELECT pollid FROM [DB_PREFIX_TABLE_NAME("poll_vote")] WHERE ckey = :ckey) AND id NOT IN (SELECT pollid FROM [DB_PREFIX_TABLE_NAME("poll_textreply")] WHERE ckey = :ckey)",
 				list("ckey" = ckey)
 			)
 			var/newpoll = 0
@@ -83,8 +83,6 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 	panel.set_window_options("can_close=0")
 	panel.set_content(output)
 	panel.open()
-	return
-
 
 /mob/new_player/statpanel_data(client/C)
 	. = ..()
@@ -253,7 +251,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 
 		//First check if the person has not voted yet.
 		var/datum/db_query/query = SSdbcore.NewQuery(
-			"SELECT * FROM [format_table_name("privacy")] WHERE ckey = :ckey",
+			"SELECT * FROM [DB_PREFIX_TABLE_NAME("privacy")] WHERE ckey = :ckey",
 			list("ckey" = ckey)
 		)
 		query.Execute()
@@ -282,7 +280,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 
 		if(!voted)
 			SSdbcore.RunQuery(
-				"INSERT INTO [format_table_name("privacy")] VALUES (null, NOW(), :ckey, :option)",
+				"INSERT INTO [DB_PREFIX_TABLE_NAME("privacy")] VALUES (null, NOW(), :ckey, :option)",
 				list(
 					"ckey" = ckey,
 					"option" = option
@@ -625,7 +623,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 	return ready && ..()
 
 // Prevents lobby players from seeing say, even with ghostears
-/mob/new_player/hear_say(var/message, var/verb = "says", var/datum/language/language = null, var/alt_name = "",var/italics = 0, var/mob/speaker = null)
+/mob/new_player/hear_say(var/message, var/verb = "says", var/datum/prototype/language/language = null, var/alt_name = "",var/italics = 0, var/mob/speaker = null)
 	return
 
 // Prevents lobby players from seeing emotes, even with ghosteyes

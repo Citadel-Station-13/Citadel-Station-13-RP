@@ -29,6 +29,17 @@
 	poison_per_bite = 5
 	poison_type = "condensedcapsaicin_v"
 
+	exotic_type = /obj/item/reagent_containers/glass/venomgland/spider/capsaicin_v
+
 /mob/living/simple_mob/animal/giant_spider/pepper/Initialize(mapload)
 	adjust_scale(1.1)
 	return ..()
+
+/obj/item/reagent_containers/glass/venomgland/spider/capsaicin_v
+	name = "Irritating Venom Gland"
+	desc = "A sac full of venom. The mere touch stings."
+
+/obj/item/reagent_containers/glass/venomgland/spider/capsaicin_v/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("condensedcapsaicin_v", 15)
+

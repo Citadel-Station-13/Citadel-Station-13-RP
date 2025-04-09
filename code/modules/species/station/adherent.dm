@@ -75,7 +75,6 @@
 
 	vision_innate = /datum/vision/baseline/species_tier_2
 
-	hud_type = /datum/hud_data/adherent
 /*
 	available_cultural_info = list(
 		TAG_CULTURE = list(
@@ -134,8 +133,29 @@
 
 	wikilink = "N/A"
 
-/datum/species/adherent/equip_survival_gear(mob/living/carbon/human/H, extendedtank = FALSE, comprehensive = FALSE)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/crystal, /datum/inventory_slot/abstract/put_in_backpack)
+	//* Inventory *//
+
+	inventory_slots = list(
+		/datum/inventory_slot/inventory/back::id,
+		/datum/inventory_slot/inventory/ears/left::id = list(
+			INVENTORY_SLOT_REMAP_NAME = "Aux Port (1)",
+			INVENTORY_SLOT_REMAP_MAIN_AXIS = 1,
+			INVENTORY_SLOT_REMAP_CROSS_AXIS = 0,
+		),
+		/datum/inventory_slot/inventory/ears/right::id = list(
+			INVENTORY_SLOT_REMAP_NAME = "Aux Port (2)",
+			INVENTORY_SLOT_REMAP_MAIN_AXIS = 2,
+			INVENTORY_SLOT_REMAP_CROSS_AXIS = 0,
+		),
+		/datum/inventory_slot/inventory/belt::id,
+		/datum/inventory_slot/inventory/id::id,
+	)
+
+/datum/species/adherent/apply_racial_gear(mob/living/carbon/for_target, list/into_box, list/into_inv)
+	var/obj/item/storage/belt/utility/crystal/give_them_the_toolbelt = new
+	if(!for_target?.inventory?.equip_to_slot_if_possible(give_them_the_toolbelt, /datum/inventory_slot/inventory/belt))
+		into_inv += give_them_the_toolbelt
+	return ..()
 
 /datum/species/adherent/New()
 	/*equip_adjust = list(
@@ -168,6 +188,8 @@
 */
 /datum/species/adherent/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	for(var/key in H.standing_overlays)
+		if(key == HUMAN_OVERLAY_BODY)
+			continue
 		H.cut_overlay(H.standing_overlays[key])
 	//Todo: find a better way to adjust clothing, than to wipe all overlays
 
@@ -197,16 +219,6 @@
 /datum/species/adherent/get_additional_examine_text(mob/living/carbon/human/H)
 	if(can_overcome_gravity(H))
 		return "They are floating on a cloud of shimmering distortion."
-
-/datum/hud_data/adherent
-	has_internals = FALSE
-	gear = list(
-		SLOT_ID_LEFT_EAR = list("loc" = ui_iclothing, "name" = "Aux Port", "slot" = SLOT_ID_LEFT_EAR, "state" = "ears", "toggle" = 1),
-		SLOT_ID_HEAD     = list("loc" = ui_glasses,   "name" = "Hat",      "slot" = SLOT_ID_HEAD,     "state" = "hair", "toggle" = 1),
-		SLOT_ID_BACK     = list("loc" = ui_back,      "name" = "Back",     "slot" = SLOT_ID_BACK,     "state" = "back"),
-		SLOT_ID_WORN_ID  = list("loc" = ui_id,        "name" = "ID",       "slot" = SLOT_ID_WORN_ID,  "state" = "id"),
-		SLOT_ID_BELT     = list("loc" = ui_belt,      "name" = "Belt",     "slot" = SLOT_ID_BELT,     "state" = "belt"),
-	)
 
 /datum/species/adherent/post_organ_rejuvenate(obj/item/organ/org, mob/living/carbon/human/H)
 	org.robotic = ORGAN_CRYSTAL

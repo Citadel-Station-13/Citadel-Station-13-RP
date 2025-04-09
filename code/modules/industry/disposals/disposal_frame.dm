@@ -282,7 +282,7 @@
 
 			anchored = 1
 			if(ispipe)
-				set_hides_underfloor(OBJ_UNDERFLOOR_ALWAYS)
+				set_hides_underfloor(OBJ_UNDERFLOOR_ACTIVE)
 				density = 0
 			else
 				density = 1 // We don't want disposal bins or outlets to go density 0

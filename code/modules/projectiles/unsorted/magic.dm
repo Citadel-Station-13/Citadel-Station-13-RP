@@ -283,7 +283,7 @@
 				S.icon_state = P.icon_state
 				S.copy_overlays(P, TRUE)
 				S.color = P.color
-				S.atom_colours = P.atom_colours.Copy()
+				S.atom_colors = P.atom_colors.Copy()
 				if(L.mind)
 					L.mind.transfer(S)
 					if(owner)
@@ -332,7 +332,7 @@
 	nodamage = 0
 	armor_penetration = 0
 	magic = TRUE
-	impact_sounds = 'sound/weapons/barragespellhit.ogg'
+	impact_sound = 'sound/weapons/barragespellhit.ogg'
 
 /obj/projectile/magic/arcane_barrage/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()

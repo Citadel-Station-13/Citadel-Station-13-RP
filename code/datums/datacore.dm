@@ -536,8 +536,8 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 
 /proc/GetAssignment(var/mob/living/carbon/human/H)
 	. = "Unassigned"
-	var/faction = H.mind?.original_background_faction()?.id
-	if((faction && !(faction == "nanotrasen")) || !H.mind.role_alt_title)
+	// var/faction = H.mind?.original_background_faction()?.id
+	if(!H.mind.role_alt_title)
 		. = H.mind.assigned_role
 	else if(H.mind.role_alt_title)
 		. = H.mind.role_alt_title

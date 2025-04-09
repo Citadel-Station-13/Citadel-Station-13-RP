@@ -16,11 +16,11 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/ranch)
 "g" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/ranch)
 "i" = (
 /mob/living/simple_mob/animal/passive/chicken,
@@ -36,7 +36,7 @@
 /area/class_h/POIs/ranch)
 "m" = (
 /obj/structure/simple_door/wood,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/ranch)
 "n" = (
 /obj/structure/closet/crate/freezer,
@@ -44,18 +44,18 @@
 /obj/item/storage/fancy/egg_box,
 /obj/item/storage/fancy/egg_box,
 /obj/item/storage/fancy/egg_box,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/turf/simulated/floor/outdoors/beach/sand/dirt,
 /area/class_h/POIs/ranch)
 "o" = (
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/ranch)
 "p" = (
 /obj/structure/flora/ausbushes/grassybush,
 /turf/simulated/floor/outdoors/grass,
 /area/class_h/POIs/ranch)
 "v" = (
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/turf/simulated/floor/outdoors/beach/sand/dirt,
 /area/class_h/POIs/ranch)
 "w" = (
 /mob/living/simple_mob/animal/passive/chicken,
@@ -85,7 +85,7 @@
 /obj/item/reagent_containers/food/drinks/milk,
 /obj/item/reagent_containers/food/drinks/milk,
 /obj/item/reagent_containers/food/drinks/milk,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/turf/simulated/floor/outdoors/beach/sand/dirt,
 /area/class_h/POIs/ranch)
 "I" = (
 /mob/living/simple_mob/animal/passive/cow,
@@ -102,7 +102,7 @@
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/class_h/POIs/ranch)
 "M" = (
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/ranch)
 "N" = (
 /obj/structure/table/rack/shelf,
@@ -115,7 +115,7 @@
 /obj/random/mre,
 /obj/random/mre,
 /obj/random/mre,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/ranch)
 "P" = (
 /obj/structure/flora/ausbushes/fernybush,
@@ -123,7 +123,7 @@
 /area/class_h/POIs/ranch)
 "Q" = (
 /obj/structure/closet/cabinet,
-/obj/item/gun/ballistic/shotgun/pump/rifle/lever/vintage,
+/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/lever/vintage,
 /obj/item/ammo_casing/a44,
 /obj/item/ammo_casing/a44,
 /obj/item/ammo_casing/a44,
@@ -143,20 +143,20 @@
 /obj/item/clothing/head/cowboy_hat/wide,
 /obj/item/clothing/head/cowboy_hat/wide,
 /obj/item/clothing/head/cowboy_hat/wide,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/ranch)
 "R" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/ranch)
 "S" = (
 /obj/structure/railing,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/class_h/POIs/ranch)
 "T" = (
-/turf/simulated/wall/sandstone/classh,
+/turf/simulated/wall/sandstone,
 /area/class_h/POIs/ranch)
 "U" = (
 /obj/structure/flora/ausbushes/sparsegrass,

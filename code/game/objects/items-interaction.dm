@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 //* ----- Click Triggers ----- */
 
@@ -51,15 +51,16 @@
 		user.action_feedback(SPAN_WARNING("You can't do that right now."), src)
 		return
 
-	// todo: rewrite this part iin hand rewrite
 	if (hasorgans(user))
 		var/mob/living/carbon/human/H = user
-		var/obj/item/organ/external/temp = H.organs_by_name[H.hand? "l_hand" : "r_hand"]
+		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
+		if (H.active_hand % 2)
+			temp = H.organs_by_name["l_hand"]
+		if(temp && !temp.is_usable())
+			to_chat(user, "<span class='notice'>You try to move your [temp.name], but cannot!</span>")
+			return
 		if(!temp)
 			to_chat(user, "<span class='notice'>You try to use your hand, but realize it is no longer attached!</span>")
-			return
-		if(!temp.is_usable())
-			to_chat(user, "<span class='notice'>You try to move your [temp.name], but cannot!</span>")
 			return
 
 	var/old_loc = src.loc
@@ -88,7 +89,7 @@
 	if(isnull(actually_picked_up))
 		to_chat(user, SPAN_WARNING("[src] somehow slips through your grasp. What just happened?"))
 		return
-	if(!user.put_in_hands(actually_picked_up))
+	if(!user.put_in_hands(actually_picked_up, INV_OP_NO_MERGE_STACKS, user.active_hand))
 		if(has_to_drop_to_ground_on_fail)
 			actually_picked_up.forceMove(user.drop_location())
 		return
@@ -107,19 +108,20 @@
 	if(user.restrained())
 		return	// don't.
 		// todo: restraint levels, e.g. handcuffs vs straightjacket
+	// todo: this needs to check for user / actor indirection bullshit (e.g. someone does the clickdragging while controlling another mob)
 	if(!user.is_in_inventory(src))
 		// not being held
 		if(!isturf(loc))	// yea nah
 			return ..()
 		if(user.Adjacent(src))
 			// check for equip
-			if(istype(over, /atom/movable/screen/inventory/hand))
-				var/atom/movable/screen/inventory/hand/H = over
-				user.put_in_hand(src, H.index)
+			if(istype(over, /atom/movable/screen/actor_hud/inventory/plate/hand))
+				var/atom/movable/screen/actor_hud/inventory/plate/hand/H = over
+				user.put_in_hand(src, H.hand_index)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
-			else if(istype(over, /atom/movable/screen/inventory/slot))
-				var/atom/movable/screen/inventory/slot/S = over
-				user.equip_to_slot_if_possible(src, S.slot_id)
+			else if(istype(over, /atom/movable/screen/actor_hud/inventory/plate/slot))
+				var/atom/movable/screen/actor_hud/inventory/plate/slot/S = over
+				user.equip_to_slot_if_possible(src, S.inventory_slot_id)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 		// check for slide
 		if(Adjacent(over) && user.CanSlideItem(src, over) && (istype(over, /obj/structure/table/rack) || istype(over, /obj/structure/table) || istype(over, /turf)))
@@ -137,13 +139,13 @@
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 	else
 		// being held, check for attempt unequip
-		if(istype(over, /atom/movable/screen/inventory/hand))
-			var/atom/movable/screen/inventory/hand/H = over
-			user.put_in_hand(src, H.index)
+		if(istype(over, /atom/movable/screen/actor_hud/inventory/plate/hand))
+			var/atom/movable/screen/actor_hud/inventory/plate/hand/H = over
+			user.put_in_hand(src, H.hand_index)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
-		else if(istype(over, /atom/movable/screen/inventory/slot))
-			var/atom/movable/screen/inventory/slot/S = over
-			user.equip_to_slot_if_possible(src, S.slot_id)
+		else if(istype(over, /atom/movable/screen/actor_hud/inventory/plate/slot))
+			var/atom/movable/screen/actor_hud/inventory/plate/slot/S = over
+			user.equip_to_slot_if_possible(src, S.inventory_slot_id)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		else if(istype(over, /turf))
 			user.drop_item_to_ground(src)
@@ -185,7 +187,11 @@
 /obj/item/proc/attack_self(mob/user, datum/event_args/actor/actor)
 	// todo: this should realistically be SHOULD_NOT_OVERRIDE but there's a massive number of overrides (some unnecessary), so this is for a later date
 	// SHOULD_NOT_OVERRIDE(TRUE) // may be re-evaluated later
-	SEND_SIGNAL(src, COMSIG_ITEM_ACTIVATE_INHAND, actor)
+	if(isnull(actor))
+		actor = new /datum/event_args/actor(user)
+	var/signal_return = SEND_SIGNAL(src, COMSIG_ITEM_ACTIVATE_INHAND, actor)
+	if(signal_return & RAISE_ITEM_ACTIVATE_INHAND_HANDLED)
+		return TRUE
 	if(on_attack_self(actor))
 		return TRUE
 	if(interaction_flags_item & INTERACT_ITEM_ATTACK_SELF)
@@ -232,7 +238,9 @@
 	SHOULD_NOT_OVERRIDE(TRUE) // may be re-evaluated later
 	if(ismob(actor))
 		actor = new /datum/event_args/actor(actor)
-	SEND_SIGNAL(src, COMSIG_ITEM_UNIQUE_ACTION, actor)
+	var/signal_return = SEND_SIGNAL(src, COMSIG_ITEM_UNIQUE_ACTION, actor)
+	if(signal_return & RAISE_ITEM_UNIQUE_ACTION_HANDLED)
+		return TRUE
 	if(on_unique_action(actor))
 		return TRUE
 
@@ -258,7 +266,9 @@
 	SHOULD_NOT_OVERRIDE(TRUE) // may be re-evaluated later
 	if(ismob(actor))
 		actor = new /datum/event_args/actor(actor)
-	SEND_SIGNAL(src, COMSIG_ITEM_DEFENSIVE_TOGGLE, actor)
+	var/signal_return = SEND_SIGNAL(src, COMSIG_ITEM_DEFENSIVE_TOGGLE, actor)
+	if(signal_return & RAISE_ITEM_DEFENSIVE_TOGGLE_HANDLED)
+		return TRUE
 	if(on_defensive_toggle(actor))
 		return TRUE
 
@@ -284,7 +294,9 @@
 	SHOULD_NOT_OVERRIDE(TRUE) // may be re-evaluated later
 	if(ismob(actor))
 		actor = new /datum/event_args/actor(actor)
-	SEND_SIGNAL(src, COMSIG_ITEM_DEFENSIVE_TRIGGER, actor)
+	var/signal_return = SEND_SIGNAL(src, COMSIG_ITEM_DEFENSIVE_TRIGGER, actor)
+	if(signal_return & RAISE_ITEM_DEFENSIVE_TRIGGER_HANDLED)
+		return TRUE
 	if(on_defensive_trigger(actor))
 		return TRUE
 

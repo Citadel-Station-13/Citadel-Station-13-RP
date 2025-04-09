@@ -6,6 +6,10 @@
 	organ_tag = "limb"
 	decays = FALSE
 
+	//* Behaviour *//
+	/// this covers things like 'can this limb be injected' or 'can this limb be healed'
+	var/behaviour_flags = NONE
+
 	//* Coverage *//
 	/// body_cover_flags that count as covering us
 	var/body_part_flags = NONE
@@ -547,14 +551,8 @@
 		return FALSE
 
 	if(user == src.owner)
-		var/grasp
-		if(user.l_hand == tool && (src.body_part_flags & (ARM_LEFT|HAND_LEFT)))
-			grasp = BP_L_HAND
-		else if(user.r_hand == tool && (src.body_part_flags & (ARM_RIGHT|HAND_RIGHT)))
-			grasp = BP_R_HAND
-
-		if(grasp)
-			to_chat(user, SPAN_WARNING("You can't reach your [src.name] while holding [tool] in your [owner.get_bodypart_name(grasp)]."))
+		if(owner.get_hand_organ(owner.get_held_index(tool)) == src)
+			to_chat(user, SPAN_WARNING("You can't reach your [src] while holding [tool] in the same hand!"))
 			return FALSE
 
 	user.setClickCooldown(user.get_attack_speed(tool))
@@ -807,7 +805,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			if(!(W.can_autoheal() || (bicardose && inaprovaline) || myeldose))	//bicaridine and inaprovaline stop internal wounds from growing bigger with time, unless it is so small that it is already healing
 				W.open_wound(0.1)
 
-			owner.vessel.remove_reagent("blood", W.damage/40) //line should possibly be moved to handle_blood, so all the bleeding stuff is in one place.
+			owner.erase_blood(W.damage / 40)
 			if(prob(1))
 				owner.custom_pain("You feel a stabbing pain in your [name]!", 50)
 
@@ -1022,13 +1020,6 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 			qdel(src)
 
-	if(victim.l_hand)
-		if(istype(victim.l_hand,/obj/item/material/twohanded)) //if they're holding a two-handed weapon, drop it now they've lost a hand
-			victim.l_hand.update_held_icon()
-	if(victim.r_hand)
-		if(istype(victim.r_hand,/obj/item/material/twohanded))
-			victim.r_hand.update_held_icon()
-
 /****************************************************
 			   HELPERS
 ****************************************************/
@@ -1179,7 +1170,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 	if(company)
 		model = company
-		var/datum/robolimb/R = GLOB.all_robolimbs[company]
+		var/datum/robolimb/R = GLOB.all_robolimbs[isnum(company) ? GLOB.all_robolimbs[company] : company]
 		if(!R || (species && (species.name in R.species_cannot_use)))
 			R = GLOB.basic_robolimb
 		if(R)
@@ -1284,7 +1275,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 	implants += W
 	owner.embedded_flag = 1
 	add_verb(owner, /mob/proc/yank_out_object)
-	W.add_blood(owner)
+	if(!(owner.species.species_flags & NO_BLOOD))
+		W.add_blood(owner)
 	W.forceMove(owner)
 
 /obj/item/organ/external/removed(var/mob/living/user, var/ignore_children = 0)
@@ -1508,6 +1500,12 @@ Note that amputating the affected organ does in fact remove the infection from t
 		for(var/obj/item/I in L.implants)
 			if(!istype(I,/obj/item/implant) && !istype(I,/obj/item/nif))
 				return TRUE
+
+//* Hand Integration *//
+
+// todo: some kind of API for querying what hands this organ provides
+//       this will require organs be composition instead of inheritance,
+//       as defining this on every left / right hand would be satanic.
 
 //* Environmentals *//
 

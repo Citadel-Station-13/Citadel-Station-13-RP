@@ -109,11 +109,11 @@ var/list/channel_to_radio_key = new
 		verb = pick("yells","roars","hollers")
 		whispering = 0
 		. = 1
-	if(slurring)
+	if(get_effective_impairment_power_slurring())
 		message = slur(message)
 		verb = pick("slobbers","slurs")
 		. = 1
-	if(stuttering)
+	if(get_effective_impairment_power_stutter())
 		message = stutter(message)
 		verb = pick("stammers","stutters")
 		. = 1
@@ -146,7 +146,7 @@ var/list/channel_to_radio_key = new
 		return "asks"
 	return verb
 
-/mob/living/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
+/mob/living/say(var/message, var/datum/prototype/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	//If you're muted for IC chat
 	if(client)
 		if(message)
@@ -194,7 +194,7 @@ var/list/channel_to_radio_key = new
 		speaking = get_default_language()
 
 	if(!can_speak(speaking))
-		speaking = SScharacters.resolve_language_name(LANGUAGE_GIBBERISH)
+		speaking = RSlanguages.legacy_resolve_language_name(LANGUAGE_GIBBERISH)
 		var/babble_key = ",r"
 		message = babble_key + message
 
@@ -206,7 +206,7 @@ var/list/channel_to_radio_key = new
 	while(speaking && is_language_prefix(copytext_char(message, 1, 2)))
 		message = copytext_char(message,2+length_char(speaking.key))
 
-	if(speaking && speaking == SScharacters.resolve_language_name("Noise"))
+	if(speaking && speaking == RSlanguages.legacy_resolve_language_name("Noise"))
 		message = copytext_char(message,2)
 
 	//LANGUAGE_HIVEMIND languages always send to all people with that language
@@ -218,7 +218,7 @@ var/list/channel_to_radio_key = new
 	message = trim_left(message)
 
 	//Autohiss handles auto-rolling tajaran R's and unathi S's/Z's
-	message = handle_autohiss(message, speaking)
+	message = handle_autohiss(message, speaking.name, speaking.language_flags)
 
 	//Whisper vars
 	var/w_scramble_range = 3	//The range at which you get ***as*th**wi****
@@ -236,9 +236,11 @@ var/list/channel_to_radio_key = new
 		verb = speaking.speech_verb
 		w_not_heard = "[speaking.speech_verb] something [w_adverb]"
 
-	var/list/message_args = list("message" = message, "whispering" = whispering, "cancelled" = FALSE, "message_mode" = message_mode)
+	var/list/message_args = list("message" = message, "whispering" = whispering, "cancelled" = FALSE, "message_mode" = message_mode, "language_name" = speaking.name, "language_flags" = speaking.language_flags)
 
 	SEND_SIGNAL(src, COMSIG_MOB_SAY, message_args)
+
+	message = message_args["message"]
 
 	if(HAS_TRAIT(src, TRAIT_MUTE))
 		to_chat(src, "<span class='danger'>You are not capable of speech!</span>")
@@ -446,7 +448,7 @@ var/list/channel_to_radio_key = new
 		log_say(message, src)
 	return 1
 
-/mob/living/proc/say_signlang(var/message, var/verb="gestures", var/datum/language/language)
+/mob/living/proc/say_signlang(var/message, var/verb="gestures", var/datum/prototype/language/language)
 	var/turf/T = get_turf(src)
 	//We're in something, gesture to people inside the same thing
 	if(loc != T)

@@ -117,7 +117,7 @@
 	if(allow_items)
 		dat += "<a href='?src=\ref[src];view=1'>View objects</a>.<br>"
 
-	user << browse(dat, "window=cryopod_console")
+	user << browse(HTML_SKELETON(dat), "window=cryopod_console")
 	onclose(user, "cryopod_console")
 
 /obj/machinery/computer/cryopod/Topic(href, href_list)
@@ -134,7 +134,7 @@
 			dat += "[person]<br/>"
 		dat += "<hr/>"
 
-		user << browse(dat, "window=cryolog")
+		user << browse(HTML_SKELETON(dat), "window=cryolog")
 
 	if(href_list["view"])
 		if(!allow_items) return
@@ -144,7 +144,7 @@
 			dat += "[I]<br/>"
 		dat += "<hr/>"
 
-		user << browse(dat, "window=cryoitems")
+		user << browse(HTML_SKELETON(dat), "window=cryoitems")
 
 	else if(href_list["item"])
 		if(!allow_items) return
@@ -407,7 +407,6 @@
 	if(to_despawn.mind && ishuman(to_despawn))
 		var/mob/living/carbon/human/H = to_despawn
 		SStranscore.m_backup(H.mind, H.nif, TRUE)
-	hook_vr("despawn", list(to_despawn, src))
 	if(isliving(to_despawn))
 		var/mob/living/L = to_despawn
 		for(var/belly in L.vore_organs)
@@ -737,6 +736,7 @@
 
 /obj/machinery/cryopod/robot/door/gateway/update_icon()
 	cut_overlays()
+	. = ..()
 	if(occupant)
 		var/image/I = image(icon, src, "[base_icon_state]_active_overlay")
 		I.plane = ABOVE_LIGHTING_PLANE

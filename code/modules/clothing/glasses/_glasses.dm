@@ -53,7 +53,7 @@ BLIND     // can't see anything
 	if(.)
 		return
 	if(toggleable)
-		var/mob/wearer = worn_mob()
+		var/mob/wearer = get_worn_mob()
 		if(active)
 			active = 0
 			icon_state = inactive_icon_state
@@ -453,14 +453,14 @@ BLIND     // can't see anything
 	if(src.up)
 		src.up = !src.up
 		inv_hide_flags |= HIDEEYES
-		body_cover_flags |= EYES
+		set_body_cover_flags(body_cover_flags | EYES)
 		flash_protection = initial(flash_protection)
 		tint = initial(tint)
 		to_chat(usr, "You flip \the [src] down to protect your eyes.")
 	else
 		src.up = !src.up
 		inv_hide_flags &= ~HIDEEYES
-		body_cover_flags &= ~EYES
+		set_body_cover_flags(body_cover_flags & ~EYES)
 		flash_protection = FLASH_PROTECTION_NONE
 		tint = TINT_NONE
 		to_chat(usr, "You push \the [src] up out of your face.")
@@ -585,11 +585,12 @@ BLIND     // can't see anything
 		update_worn_icon()
 		update_action_buttons()
 
-/obj/item/clothing/glasses/sunglasses/sechud/aviator/update_icon()
+/obj/item/clothing/glasses/sunglasses/sechud/aviator/update_icon_state()
 	if(on)
 		icon_state = initial(icon_state)
 	else
 		icon_state = inactive_icon_state
+	return ..()
 
 /obj/item/clothing/glasses/sunglasses/sechud/aviator/prescription
 	name = "prescription security HUD aviators"
@@ -697,13 +698,13 @@ BLIND     // can't see anything
 		if(src.up)
 			src.up = !src.up
 			inv_hide_flags |= HIDEEYES
-			body_cover_flags |= EYES
+			set_body_cover_flags(body_cover_flags | EYES)
 			icon_state = initial(icon_state)
 			to_chat(usr, "You flip \the [src] down to protect your eyes.")
 		else
 			src.up = !src.up
 			inv_hide_flags &= ~HIDEEYES
-			body_cover_flags &= ~EYES
+			set_body_cover_flags(body_cover_flags & ~EYES)
 			icon_state = "[initial(icon_state)]up"
 			to_chat(usr, "You push \the [src] up from in front of your eyes.")
 		update_worn_icon()

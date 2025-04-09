@@ -204,10 +204,10 @@
 	product_ads = "Stunning!;Take justice in your own hands!;LEADearship!"
 	icon_state = "weapon"
 	products = list(/obj/item/flash = 6,
-/obj/item/reagent_containers/spray/pepper = 6, /obj/item/gun/ballistic/olivaw = 5, /obj/item/gun/ballistic/giskard = 5, /obj/item/ammo_magazine/mg/cl32/rubber = 20)
+/obj/item/reagent_containers/spray/pepper = 6, /obj/item/gun/projectile/ballistic/olivaw = 5, /obj/item/gun/projectile/ballistic/giskard = 5, /obj/item/ammo_magazine/mg/cl32/rubber = 20)
 	contraband = list(/obj/item/reagent_containers/food/snacks/syndicake = 6)
 	prices = list(/obj/item/flash = 600,
-/obj/item/reagent_containers/spray/pepper = 800,  /obj/item/gun/ballistic/olivaw = 1600, /obj/item/gun/ballistic/giskard = 1200, /obj/item/ammo_magazine/mg/cl32/rubber = 200)
+/obj/item/reagent_containers/spray/pepper = 800,  /obj/item/gun/projectile/ballistic/olivaw = 1600, /obj/item/gun/projectile/ballistic/giskard = 1200, /obj/item/ammo_magazine/mg/cl32/rubber = 200)
 */
 
 /obj/machinery/vending/glukoz
@@ -269,4 +269,214 @@
 	prices = list(
 		/obj/item/card/id/external/gaia = 150,
 		/obj/item/card/id/external/gaia/vip = 250,
+	)
+
+/obj/machinery/vending/farmer
+	name = "Miaphus Farm vendor"
+	desc = "A vending machine put here by some farmers from Miaphus."
+	icon = 'icons/obj/vending.dmi'
+	icon_state = "generic"
+	icon_deny = "generic-deny"
+	icon_vend = "generic-vend"
+	product_slogans = "Its always fresh when it comes out from the ground !"
+	product_ads = "Buy my fruits and Vegetable !; Milk, eggs, You should totaly buy some !; Buy or else ill get mad !; No negociations !"
+
+	products = list(
+		/obj/item/reagent_containers/food/condiment/flour = 10,
+		/obj/item/reagent_containers/food/drinks/bottle/milk = 10,
+		/obj/item/storage/fancy/egg_box = 10,
+		/obj/item/reagent_containers/food/drinks/bottle/tomatojuice = 5,
+		/obj/item/reagent_containers/food/snacks/tomatomeat = 15,
+		/obj/item/reagent_containers/food/condiment/enzyme = 10,
+		/obj/item/farmbot_arm_assembly = 1,
+		/obj/item/seeds/tomatoseed = 10,
+		/obj/item/seeds/potatoseed = 15,
+		/obj/item/seeds/wheatseed = 15,
+	)
+
+	contraband = list(
+		/obj/item/gun/projectile/ballistic/shotgun/doublebarrel = 2,
+		/obj/item/storage/box/shotgunshells = 2,
+	)
+
+	prices = list(
+	/obj/item/reagent_containers/food/condiment/flour = 5,
+		/obj/item/reagent_containers/food/drinks/bottle/milk = 5,
+		/obj/item/storage/fancy/egg_box = 5,
+		/obj/item/reagent_containers/food/drinks/bottle/tomatojuice = 4,
+		/obj/item/reagent_containers/food/snacks/tomatomeat = 3,
+		/obj/item/reagent_containers/food/condiment/enzyme = 8,
+		/obj/item/farmbot_arm_assembly = 50,
+		/obj/item/seeds/tomatoseed = 2,
+		/obj/item/seeds/potatoseed = 1,
+		/obj/item/seeds/wheatseed = 1,
+	)
+
+/obj/machinery/vending/voidsuit
+	name = "Spacesuit Vendor"
+	desc = "A vending machine selling spacesuits."
+	icon = 'icons/obj/vending.dmi'
+	icon_state = "generic"
+	icon_deny = "generic-deny"
+	icon_vend = "generic-vend"
+	product_slogans = "My suits will protect you from space !"
+	product_ads = "Please buy my suits !; I just wanted this orange one, but I had to buy the full bundle ! Help me !; Look ! Those voidsuit are Fleeexible !"
+
+	products = list(
+		/obj/item/clothing/suit/space/emergency = 5,
+		/obj/item/clothing/head/helmet/space/emergency = 5,
+		/obj/item/clothing/suit/space/syndicate = 2,
+		/obj/item/clothing/suit/space/syndicate/blue = 2,
+		/obj/item/clothing/suit/space/syndicate/green/dark = 2,
+		/obj/item/clothing/suit/space/syndicate/green = 2,
+		/obj/item/clothing/suit/space/syndicate/black = 2,
+		/obj/item/clothing/head/helmet/space/syndicate = 2,
+		/obj/item/clothing/head/helmet/space/syndicate/blue = 2,
+		/obj/item/clothing/head/helmet/space/syndicate/green/dark = 2,
+		/obj/item/clothing/head/helmet/space/syndicate/green = 2,
+		/obj/item/clothing/head/helmet/space/syndicate/black = 2,
+		/obj/item/clothing/head/helmet/space/void/explorer = 3,
+		/obj/item/clothing/suit/space/void/explorer = 3,
+		/obj/item/tank/emergency/oxygen = 10,
+		/obj/item/tank/emergency/oxygen/double = 2,
+		/obj/item/clothing/mask/gas/clear = 10,
+	)
+
+	prices = list(
+		/obj/item/clothing/suit/space/emergency = 10,
+		/obj/item/clothing/head/helmet/space/emergency = 10,
+		/obj/item/clothing/suit/space/syndicate = 15,
+		/obj/item/clothing/suit/space/syndicate/blue = 15,
+		/obj/item/clothing/suit/space/syndicate/green/dark = 15,
+		/obj/item/clothing/suit/space/syndicate/green = 15,
+		/obj/item/clothing/suit/space/syndicate/black = 15,
+		/obj/item/clothing/head/helmet/space/syndicate = 15,
+		/obj/item/clothing/head/helmet/space/syndicate/blue = 15,
+		/obj/item/clothing/head/helmet/space/syndicate/green/dark = 15,
+		/obj/item/clothing/head/helmet/space/syndicate/green = 15,
+		/obj/item/clothing/head/helmet/space/syndicate/black = 15,
+		/obj/item/clothing/head/helmet/space/void/explorer = 20,
+		/obj/item/clothing/suit/space/void/explorer = 20,
+		/obj/item/tank/emergency/oxygen = 5,
+		/obj/item/tank/emergency/oxygen/double = 30,
+		/obj/item/clothing/mask/gas/clear = 5,
+	)
+
+/obj/machinery/vending/winter
+	name = "Wintergear Vendor"
+	desc = "A vending machine selling coats and winter gear."
+	icon = 'icons/obj/vending.dmi'
+	icon_state = "generic"
+	icon_deny = "generic-deny"
+	icon_vend = "generic-vend"
+	product_slogans = "snif... Lots of... Place here are ... Freezing... This will heat you up..."
+	product_ads = "2 ... Cold worlds here.; ATCHOOO !; ATCHOOO- snif; Snif-..."
+
+	products = list(
+		/obj/item/clothing/mask/warmer = 10,
+		/obj/item/clothing/suit/storage/hooded/wintercoat = 10,
+		/obj/item/clothing/shoes/boots/winter = 10,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/olive = 5,
+		/obj/machinery/space_heater = 4
+	)
+
+	prices = list(
+		/obj/item/clothing/mask/warmer = 10,
+		/obj/item/clothing/suit/storage/hooded/wintercoat = 15,
+		/obj/item/clothing/shoes/boots/winter = 10,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/olive = 15,
+		/obj/machinery/space_heater = 90,
+	)
+
+/obj/machinery/vending/survivalist
+	name = "SDF Surplus Gear Vendor"
+	desc = "A vending machine put here by the System Defence Force, because of the rising ammount of pirates and danger in the sector."
+	icon = 'icons/obj/vending.dmi'
+	icon_state = "generic"
+	icon_deny = "generic-deny"
+	icon_vend = "generic-vend"
+	product_slogans = "Barely used only for 40 years !"
+	product_ads = "The SDF needs more funds !; By buying here you defend the system !; Better than a donation !;20 years of services..."
+
+	products = list(
+		/obj/item/storage/box/survival_knife = 6,
+		/obj/item/storage/toolbox/lunchbox/survival = 4,
+		/obj/item/survivalcapsule = 2,
+		/obj/item/gps/survival = 10,
+		/obj/item/gun/projectile/ballistic/shotgun/flare = 8,
+		/obj/item/clothing/accessory/holster/machete/occupied = 2,
+		/obj/item/clothing/accessory/holster/machete/occupied/deluxe = 1,
+		/obj/item/material/knife/machete/hatchet = 4,
+		/obj/item/gun/projectile/ballistic/pistol = 4,
+		/obj/item/storage/box/flare = 10,
+		/obj/item/storage/box/handcuffs = 5,
+		/obj/item/storage/box/beanbags = 6,
+		/obj/item/storage/box/flashshells = 10,
+		/obj/item/storage/box/stunshells = 6,
+		/obj/item/storage/box/shotgunshells = 5,
+		/obj/item/ammo_magazine/a9mm/compact/rubber = 15,
+		/obj/item/ammo_magazine/a9mm/compact = 10,
+		/obj/item/storage/single_use/mre/random = 15,
+		/obj/item/clothing/suit/storage/vest/heavy = 1,
+		/obj/item/clothing/suit/storage/vest/press = 2,
+		/obj/item/clothing/suit/armor/vest = 4,
+	)
+
+	prices = list(
+		/obj/item/storage/box/survival_knife = 80,
+		/obj/item/storage/toolbox/lunchbox/survival = 5,
+		/obj/item/survivalcapsule = 100,
+		/obj/item/gps/survival = 10,
+		/obj/item/gun/projectile/ballistic/shotgun/flare = 100,
+		/obj/item/clothing/accessory/holster/machete/occupied = 100,
+		/obj/item/clothing/accessory/holster/machete/occupied/deluxe = 150,
+		/obj/item/material/knife/machete/hatchet = 120,
+		/obj/item/gun/projectile/ballistic/pistol = 300,
+		/obj/item/storage/box/flare = 50,
+		/obj/item/storage/box/handcuffs = 80,
+		/obj/item/storage/box/beanbags = 80,
+		/obj/item/storage/box/flashshells = 60,
+		/obj/item/storage/box/stunshells = 100,
+		/obj/item/storage/box/shotgunshells = 100,
+		/obj/item/ammo_magazine/a9mm/compact/rubber = 90,
+		/obj/item/ammo_magazine/a9mm/compact = 100,
+		/obj/item/storage/single_use/mre/random = 40,
+		/obj/item/clothing/suit/storage/vest/heavy = 350,
+		/obj/item/clothing/suit/storage/vest/press = 150,
+		/obj/item/clothing/suit/armor/vest = 150,
+	)
+
+/obj/machinery/vending/motel
+	name = "Nebula Motel Vendor"
+	desc = "A vending machine selling the Keycards to the rooms on Nebula."
+	icon = 'icons/obj/vending.dmi'
+	icon_state = "laptop"
+	icon_deny = "laptop-deny"
+	icon_vend = "laptop-vend"
+	product_slogans = "A place to rest after a long journey !"
+	product_ads = "The VIP Room has a cool shuttle bundled in !; You can maybe see the zoo with Room 5 to 8 !; We clean regulary !; Pretty cheap !"
+
+	products = list(
+		/obj/item/card/id/external/nebula/room1 = 1,
+		/obj/item/card/id/external/nebula/room2 = 1,
+		/obj/item/card/id/external/nebula/room3 = 1,
+		/obj/item/card/id/external/nebula/room4 = 1,
+		/obj/item/card/id/external/nebula/room5 = 1,
+		/obj/item/card/id/external/nebula/room6 = 1,
+		/obj/item/card/id/external/nebula/room7 = 1,
+		/obj/item/card/id/external/nebula/room8 = 1,
+		/obj/item/card/id/external/nebula/room9 = 1,
+
+	)
+
+	prices = list(
+		/obj/item/card/id/external/nebula/room1 = 30,
+		/obj/item/card/id/external/nebula/room2 = 30,
+		/obj/item/card/id/external/nebula/room3 = 30,
+		/obj/item/card/id/external/nebula/room4 = 30,
+		/obj/item/card/id/external/nebula/room5 = 15,
+		/obj/item/card/id/external/nebula/room6 = 15,
+		/obj/item/card/id/external/nebula/room7 = 15,
+		/obj/item/card/id/external/nebula/room8 = 15,
+		/obj/item/card/id/external/nebula/room9 = 80,
 	)

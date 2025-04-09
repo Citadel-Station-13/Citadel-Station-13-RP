@@ -25,6 +25,9 @@
 	return ..()
 
 /obj/item/grenade/chem_grenade/attack_self(mob/user, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
 	if(!stage || stage==1)
 		if(detonator)
 //				detonator.loc=src.loc
@@ -167,9 +170,8 @@
 		steam.attach(src)
 		steam.start()
 
-		for(var/atom/A in view(affected_area, src.loc))
-			if( A == src ) continue
-			src.reagents.touch(A)
+		for(var/turf/spraying_turf in view(affected_area, get_turf(src)))
+			reagents.perform_uniform_contact(spraying_turf, 1)
 
 	if(istype(loc, /mob/living/carbon))		//drop dat grenade if it goes off in your hand
 		var/mob/living/carbon/C = loc
@@ -379,6 +381,56 @@
 	B1.reagents.add_reagent("chlorine", 80)
 	B2.reagents.add_reagent("potassium", 40)
 	B2.reagents.add_reagent("sugar", 40)
+
+	detonator = new/obj/item/assembly_holder/timer_igniter(src)
+
+	beakers += B1
+	beakers += B2
+	icon_state = initial(icon_state) +"_locked"
+
+
+
+//Nanite Cloud Warcrimes!!!
+
+/obj/item/grenade/chem_grenade/nanite_shredder
+	name = "shredder nanite grenade"
+	desc = "Weaponized nanites are banned by all galactic major powers. On the frontier however there is little authority to stop wannabee \
+	Oppenheimers from making weapons such as this."
+	stage = 2
+	path = 1
+
+/obj/item/grenade/chem_grenade/nanite_shredder/Initialize(mapload)
+	. = ..()
+	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
+	var/obj/item/reagent_containers/glass/beaker/B2 = new(src)
+
+	B1.reagents.add_reagent(/datum/reagent/phosphorus, 30)
+	B1.reagents.add_reagent(/datum/reagent/nanite/shredding, 30)
+	B2.reagents.add_reagent(/datum/reagent/potassium, 30)
+	B2.reagents.add_reagent(/datum/reagent/sugar, 30)
+
+	detonator = new/obj/item/assembly_holder/timer_igniter(src)
+
+	beakers += B1
+	beakers += B2
+	icon_state = initial(icon_state) +"_locked"
+
+/obj/item/grenade/chem_grenade/nanite_neurophage
+	name = "neurophage nanite grenade"
+	desc = "Weaponized nanites are banned by all galactic major powers. On the frontier however there is little authority to stop wannabee \
+	Oppenheimers and other mad scientists from making weapons such as this."
+	stage = 2
+	path = 1
+
+/obj/item/grenade/chem_grenade/nanite_neurophage/Initialize(mapload)
+	. = ..()
+	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
+	var/obj/item/reagent_containers/glass/beaker/B2 = new(src)
+
+	B1.reagents.add_reagent(/datum/reagent/phosphorus, 30)
+	B1.reagents.add_reagent(/datum/reagent/nanite/neurophage, 30)
+	B2.reagents.add_reagent(/datum/reagent/potassium, 30)
+	B2.reagents.add_reagent(/datum/reagent/sugar, 30)
 
 	detonator = new/obj/item/assembly_holder/timer_igniter(src)
 

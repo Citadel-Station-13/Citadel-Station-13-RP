@@ -2,7 +2,7 @@
 /obj/machinery/porta_turret/stationary
 	ailock = TRUE
 	lethal = TRUE
-	installation = /obj/item/gun/energy/laser
+	installation = /obj/item/gun/projectile/energy/laser
 
 /obj/machinery/porta_turret/stationary/syndie // Generic turrets for POIs that need to not shoot their buddies.
 	req_one_access = list(ACCESS_FACTION_SYNDICATE)
@@ -14,7 +14,7 @@
 	name = "defense turret"
 	desc = "This variant appears to be much more durable."
 	req_one_access = list(ACCESS_SPECIAL_SILICONS) // Just in case.
-	installation = /obj/item/gun/energy/xray // For the armor pen.
+	installation = /obj/item/gun/projectile/energy/xray // For the armor pen.
 	integrity = 250 // Since lasers do 40 each.
 	integrity_max = 250
 
@@ -41,7 +41,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_turret)
 	icon_state = "turret_cover_alien"
 	req_one_access = list(ACCESS_FACTION_ALIEN)
-	installation = /obj/item/gun/energy/alien
+	installation = /obj/item/gun/projectile/energy/alien
 	enabled = TRUE
 	lethal = TRUE
 	ailock = TRUE
@@ -70,7 +70,7 @@
 	desc = "This variant appears to be much more rugged."
 	req_one_access = list(ACCESS_COMMAND_BRIDGE)
 	icon_state = "turret_cover_industrial"
-	installation = /obj/item/gun/energy/phasegun
+	installation = /obj/item/gun/projectile/energy/phasegun
 	integrity = 200
 	integrity_max = 200
 	turret_type = "industrial"
@@ -91,7 +91,7 @@
 	name = "defense turret"
 	desc = "This variant appears to be much more durable, with a rugged outer coating."
 	req_one_access = list(ACCESS_COMMAND_BRIDGE)
-	installation = /obj/item/gun/energy/gun/burst
+	installation = /obj/item/gun/projectile/energy/gun/burst
 	integrity = 250
 	integrity_max = 250
 

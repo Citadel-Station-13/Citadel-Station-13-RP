@@ -24,9 +24,10 @@
 		/datum/map/sector/gaia_192,
 		/datum/map/sector/frozen_192,
 		/datum/map/sector/wasteland_192,
-		/datum/map/sector/tradeport_192,
-		/datum/map/sector/lavaland_192,
-		/datum/map/sector/miaphus_192,
+		/datum/map/sector/nebula_tradeport,
+		/datum/map/sector/delerict_casino,
+		/datum/map/sector/surt,
+		/datum/map/sector/miaphus,
 		/datum/map/sector/roguemining_192/one,
 	)
 	full_name = "NSV Euthenia"
@@ -172,7 +173,7 @@
 	name = "Euthenia - Deck 4"
 	display_id = "euthenia-4"
 	display_name = "NSV Euthenia Deck 4"
-	absolute_path = "maps/euthenia/levels/deck4.dmm"
+	path = "maps/euthenia/levels/deck4.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -187,7 +188,7 @@
 	name = "Euthenia - Deck 3"
 	display_id = "euthenia-3"
 	display_name = "NSV Euthenia Deck 3"
-	absolute_path = "maps/euthenia/levels/deck3.dmm"
+	path = "maps/euthenia/levels/deck3.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -203,7 +204,7 @@
 	name = "Euthenia - Deck 2"
 	display_id = "euthenia-2"
 	display_name = "NSV Euthenia Deck 2"
-	absolute_path = "maps/euthenia/levels/deck2.dmm"
+	path = "maps/euthenia/levels/deck2.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -218,7 +219,7 @@
 	name = "Euthenia - Deck 1"
 	display_id = "euthenia-1"
 	display_name = "NSV Euthenia Deck 1"
-	absolute_path = "maps/euthenia/levels/deck1.dmm"
+	path = "maps/euthenia/levels/deck1.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -233,7 +234,7 @@
 	name = "Euthenia - Flight Deck"
 	display_id = "euthenia-0"
 	display_name = "NSV Euthenia Flight Deck"
-	absolute_path = "maps/euthenia/levels/deck0.dmm"
+	path = "maps/euthenia/levels/deck0.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -247,7 +248,7 @@
 	name = "Euthenia - Misc"
 	display_id = "euthenia-command"
 	display_name = "NSV Euthenia Command Relay"
-	absolute_path = "maps/euthenia/levels/misc.dmm"
+	path = "maps/euthenia/levels/misc.dmm"
 	traits = list()
 	base_turf = /turf/space
 	flags = LEGACY_LEVEL_CONTACT | LEGACY_LEVEL_PLAYER | LEGACY_LEVEL_CONSOLES

@@ -156,8 +156,8 @@
 
 // Checks if the specified amount can be provided. If it can, it removes the amount
 // from the cell and returns 1. Otherwise does nothing and returns 0.
-/obj/item/cell/proc/checked_use(var/amount)
-	if(!check_charge(amount))
+/obj/item/cell/proc/checked_use(amount, reserve)
+	if(!check_charge(amount + reserve))
 		return 0
 	use(amount)
 	return 1
@@ -330,3 +330,10 @@
 			add_overlay(overlay_half_state)
 		//! END !//
 	return ..()
+
+//* Setters *//
+
+/obj/item/cell/proc/set_charge(amount, update)
+	charge = clamp(amount, 0, maxcharge)
+	if(update)
+		update_icon()

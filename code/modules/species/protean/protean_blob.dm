@@ -52,8 +52,7 @@
 	var/obj/item/organ/internal/nano/refactory/refactory
 	var/datum/modifier/healing
 
-	var/datum/weakref/prev_left_hand
-	var/datum/weakref/prev_right_hand
+	var/list/datum/weakref/previously_held
 
 	player_msg = "In this form, you can move a little faster and your health will regenerate as long as you have metal in you!"
 	holder_type = /obj/item/holder/protoblob
@@ -143,9 +142,6 @@
 				healths.icon_state = "health7"
 	else
 		..()
-
-/mob/living/simple_mob/protean_blob/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone, var/used_weapon=null)
-	return FALSE //ok so tasers hurt protean blobs what the fuck
 
 /mob/living/simple_mob/protean_blob/adjustBruteLoss(var/amount,var/include_robo)
 	return humanform? humanform.take_targeted_damage(brute = amount, body_zone = BP_TORSO) : ..()
@@ -317,17 +313,22 @@
 		if(!transfer_item_to_loc(r_ear, blob, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT))
 			blob.mob_radio = null
 
+	
+
+	for(var/obj/item/pda/P in contents)
+		if(P.id)
+			var/obj/item/card/id/PID = P.id
+			blob.access_card.access += PID.access
+
+	for(var/obj/item/card/id/I in contents)
+		blob.access_card.access += I.access
+
 	//Size update
 	blob.transform = matrix()*size_multiplier
 	blob.size_multiplier = size_multiplier
-
-	if(l_hand)
-		blob.prev_left_hand = WEAKREF(l_hand) //Won't save them if dropped above, but necessary if handdrop is disabled.
-	if(r_hand)
-		blob.prev_right_hand = WEAKREF(r_hand)
-
+	blob.previously_held = inventory?.get_held_items_as_weakrefs()
 	//languages!!
-	for(var/datum/language/L in languages)
+	for(var/datum/prototype/language/L in languages)
 		blob.add_language(L.name)
 	//Put our owner in it (don't transfer var/mind)
 	transfer_client_to(blob)
@@ -485,10 +486,12 @@
 		B.forceMove(src)
 		B.owner = src
 
-	if(blob.prev_left_hand)
-		put_in_left_hand(blob.prev_left_hand.resolve()) //The restore for when reforming.
-	if(blob.prev_right_hand)
-		put_in_right_hand(blob.prev_right_hand.resolve())
+	for(var/i in 1 to length(blob.previously_held))
+		var/datum/weakref/ref = blob.previously_held[i]
+		var/obj/item/resolved = ref?.resolve()
+		if(isnull(resolved))
+			continue
+		put_in_hands_or_drop(resolved, specific_index = i)
 
 	if(!isnull(blob.mob_radio))
 		if(!equip_to_slots_if_possible(blob.mob_radio, list(
@@ -546,7 +549,7 @@
 		return
 
 	var/list/choices = list()
-	for(var/mob/living/carbon/human/M in oviewers(1))
+	for(var/mob/living/carbon/human/M in oview(1))
 		choices += M
 
 	if(!choices.len)

@@ -94,7 +94,7 @@
 	else if(ranged_generics_allowed)
 		//? attempt ranged attack chain
 		if(I)
-			I.ranged_interaction_chain(A, src, NONE, params)
+			I.ranged_interaction_chain(A, src, NONE, unpacked_params)
 		else
 			ranged_interaction_chain(A, NONE, unpacked_params)
 		// todo: refactor aiming

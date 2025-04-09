@@ -3,7 +3,7 @@
 /turf/space,
 /area)
 "ab" = (
-/turf/simulated/mineral/triumph,
+/turf/simulated/mineral,
 /area/awaymission)
 "ac" = (
 /turf/simulated/floor/airless,
@@ -43,7 +43,7 @@
 /obj/machinery/porta_turret{
 	dir = 8;
 	emagged = 1;
-	installation = /obj/item/gun/energy/lasercannon
+	installation = /obj/item/gun/projectile/energy/lasercannon
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/awaymission/BMPship3)
@@ -2064,7 +2064,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/BMPship3)
 "iG" = (
-/obj/item/contraband/poster,
+/obj/item/poster,
 /turf/simulated/floor/plating,
 /area/awaymission/BMPship3)
 "iK" = (

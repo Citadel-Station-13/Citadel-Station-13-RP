@@ -1,6 +1,6 @@
 // todo: dynamic language creation system we shouldn't have this
 //For your event purposes.
-/datum/language/occursus
+/datum/prototype/language/occursus
 	id = LANGUAGE_ID_EVENT_1
 	name = LANGUAGE_EVENT1
 	desc = "The Powers That Be have seen it fit to grace you with a special language that sounds like... something. This description should be overridden by the time you see this."
@@ -13,7 +13,7 @@
 	syllables = list("chan","ange","thi","se")
 
 //for your antag purposes.
-/datum/language/minbus
+/datum/prototype/language/minbus
 	id = LANGUAGE_ID_EVENT_2
 	name = LANGUAGE_MINBUS
 	desc = "The Powers That Be have seen it fit to grace you with a special language that sounds like Russian for some reason."

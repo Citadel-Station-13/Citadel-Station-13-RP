@@ -29,6 +29,12 @@
 	/// id usually identical to uid, if we are a subspecies we use the parent species id/uid here
 	var/id
 	// TODO: ref species by id in code, so we can rename as needed
+	/// is a subspecies?
+	//  todo: this is autodetected, and only here for legacy support
+	var/is_subspecies
+	/// our superspecies id if we are a subspecies
+	//  todo: this is autodetected, and only here for legacy support
+	var/superspecies_id
 
 	/// Species real name.
 	// TODO: STOP USING THIS. This is being phased out for species IDs.
@@ -110,6 +116,29 @@
 	var/pixel_offset_x = 0
 	/// Used for offsetting large icons.
 	var/pixel_offset_y = 0
+
+	//* Inventory *//
+
+	/// Available inventory slots IDs
+	///
+	/// * associate to list for remapping; use INVENTORY_SLOT_REMAP_* keys
+	var/list/inventory_slots = list(
+		/datum/inventory_slot/inventory/back::id,
+		/datum/inventory_slot/inventory/suit::id,
+		/datum/inventory_slot/inventory/suit_storage::id,
+		/datum/inventory_slot/inventory/uniform::id,
+		/datum/inventory_slot/inventory/ears/left::id,
+		/datum/inventory_slot/inventory/ears/right::id,
+		/datum/inventory_slot/inventory/glasses::id,
+		/datum/inventory_slot/inventory/gloves::id,
+		/datum/inventory_slot/inventory/mask::id,
+		/datum/inventory_slot/inventory/shoes::id,
+		/datum/inventory_slot/inventory/pocket/left::id,
+		/datum/inventory_slot/inventory/pocket/right::id,
+		/datum/inventory_slot/inventory/belt::id,
+		/datum/inventory_slot/inventory/id::id,
+		/datum/inventory_slot/inventory/head::id,
+	)
 
 	//? Overlays
 	/// Used by changelings. Should also be used for icon previews.
@@ -241,8 +270,14 @@
 	var/pass_flags = 0
 
 	//? Stats
-	/// Point at which the mob will enter crit.
+	/// Total health the mob has
 	var/total_health = 100
+	/// Point at which the mob will die
+	var/death_health = MOB_MINIMUM_HEALTH
+	/// Point at which the mob will enter crit
+	var/crit_health = MOB_CRITICAL_HEALTH
+	/// Point at which the mob will enter soft crit
+	var/soft_crit_health = MOB_SOFT_CRITICAL_HEALTH
 	/// Physical damage multiplier.
 	var/brute_mod = 1
 	/// Burn damage multiplier.
@@ -479,7 +514,28 @@
 	//How quickly the species can fly up z-levels (0 is instant, 1 is 7 seconds, 0.5 is ~3.5 seconds)
 	var/flight_mod = 1
 
+	// Alpha values
+	var/minimum_hair_alpha = 255
+	var/maximum_hair_alpha = 255
+	var/minimum_body_alpha = 255
+	var/maximum_body_alpha = 255
+
+	// Actions to grant when species is applied / remove when species is removed
+	var/list/actions_to_apply = list()
+	var/list/actions_applied = list()
+
+	// How much hunger slows us down
+	var/hunger_slowdown_multiplier = 1
+
 /datum/species/New()
+	//! LEGACY
+	is_subspecies = id != uid
+	superspecies_id = id
+	if(!id)
+		id = uid
+	if(!uid)
+		uid = id
+
 	if(hud_type)
 		hud = new hud_type()
 	else
@@ -502,6 +558,8 @@
 		if(!inherent_verbs)
 			inherent_verbs = list()
 		inherent_verbs |= /mob/living/carbon/human/proc/regurgitate
+
+	//! END
 
 	if(abilities)
 		var/list/built = list()
@@ -536,6 +594,9 @@
 		H.gender = genders[1]
 
 	H.maxHealth = total_health
+	H.minHealth = death_health
+	H.critHealth = crit_health
+	H.softCritHealth = soft_crit_health
 
 	if(!isnull(mob_physiology_modifier))
 		H.add_physiology_modifier(mob_physiology_modifier)
@@ -554,6 +615,11 @@
 
 	for(var/faction in iff_factions_inherent)
 		H.add_iff_faction(faction)
+
+	for(var/path in actions_to_apply)
+		var/datum/action/A = new path(H)
+		A.grant(H.actions_innate)
+		actions_applied += A
 
 /**
  * called when we are removed from a mob
@@ -585,6 +651,9 @@
 	for(var/faction in iff_factions_inherent)
 		H.remove_iff_faction(faction)
 
+	for(var/datum/action/A in actions_applied)
+		A.revoke(H.actions_controlled)
+
 /datum/species/proc/sanitize_species_name(var/name)
 	return sanitizeName(name, MAX_NAME_LEN)
 
@@ -595,50 +664,81 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	GAS_ID_CARBON_DIOXIDE = /obj/item/tank/emergency/carbon_dioxide
 ))
 
-/datum/species/proc/equip_survival_gear(var/mob/living/carbon/human/H,var/extendedtank = 0,var/comprehensive = 0)
-	var/boxtype = /obj/item/storage/box/survival //Default survival box
+/**
+ * Injects spawn descriptors into `into_box` and `into_inv` lists. Both must be provided.
+ *
+ * Descriptors can be;
+ * * a typepath
+ * * an anonymous type
+ *
+ * Notes:
+ * * The `into_box` and `into_inv` lists should always be added to via `?.Add()`, incase they are null.
+ * * Returned lists **must** be handled. If you aren't equipping anything, properly qdel() any spawned items, or
+ *   a memory leak will result.
+ *
+ * @params
+ * * for_target - (optional) person who is getting survival gear. if this is not provided, default
+ *                survival gear that would go on them through inventory calls should be put into `into_inv`.
+ * * into_box - things to put into their survival kit. do not put anything large in here.
+ * * into_inv - things to make sure they have somewhere on, or near them. anything large can be put in here.
+ *              things will not necessarily be put in their backpack, as an example a wheelchair would be put under them.
+ */
+/datum/species/proc/apply_racial_gear(mob/living/carbon/for_target, list/into_box, list/into_inv)
+	return
 
-	var/synth = H.isSynthetic()
+/**
+ * Injects spawn descriptors into `into_box` and `into_inv` lists. Both must be provided.
+ *
+ * Descriptors can be;
+ * * a typepath
+ * * an anonymous type
+ *
+ * Notes:
+ * * The `into_box` and `into_inv` lists should always be added to via `?.Add()`, incase they are null.
+ * * Returned lists **must** be handled. If you aren't equipping anything, properly qdel() any spawned items, or
+ *   a memory leak will result.
+ *
+ * @params
+ * * for_target - (optional) person who is getting survival gear. if this is not provided, default
+ *                survival gear that would go on them through inventory calls should be put into `into_inv`.
+ * * into_box - things to put into their survival kit. do not put anything large in here.
+ * * into_inv - things to make sure they have somewhere on, or near them. anything large can be put in here.
+ *              things will not necessarily be put in their backpack, as an example a wheelchair would be put under them.
+ */
+/datum/species/proc/apply_survival_gear(mob/living/carbon/for_target, list/into_box, list/into_inv)
+	into_box?.Add(/obj/item/tool/prybar/red)
 
-	//Empty box for synths
-	if(synth)
-		boxtype = /obj/item/storage/box/survival/synth
+	// todo: crank flashlight + prybar combo?
+	into_box?.Add(/obj/item/flashlight/flare/survival)
 
-	//Special box with extra equipment
-	else if(comprehensive)
-		boxtype = /obj/item/storage/box/survival/comp
+	if(for_target.isSynthetic())
+		into_box?.Add(/obj/item/fbp_backup_cell)
+	else
+		into_box?.Add(
+			/obj/item/clothing/mask/breath,
+			/obj/item/stack/medical/bruise_pack,
+			/obj/item/reagent_containers/hypospray/autoinjector,
+			/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,
+			/obj/item/clothing/glasses/goggles,
+		)
 
-	//Create the box
-	var/obj/item/storage/box/box = new boxtype(H)
+		if(breath_type)
+			var/given_path = GLOB.species_oxygen_tank_by_gas[breath_type]
+			var/tankpath
 
-	//If not synth, they get an air tank (if they breathe)
-	if(!synth && breath_type)
-		//Create a tank (if such a thing exists for this species)
-		var/given_path = GLOB.species_oxygen_tank_by_gas[breath_type]
-		var/tankpath
-		if(extendedtank)
+			// always extended now!
+			// if(extendedtank)
 			tankpath = text2path("[given_path]" + "/engi")
 			if(!tankpath) //Is it just that there's no /engi?
 				tankpath = text2path("[given_path]" + "/double")
 
-		if(!tankpath)
-			tankpath = given_path
+			if(!tankpath)
+				tankpath = given_path
 
-		if(tankpath)
-			new tankpath(box)
-		else
-			stack_trace("Could not find a tank path for breath type [breath_type], given path was [given_path].")
-
-	//If they are synth, they get a smol battery
-	else if(synth)
-		new /obj/item/fbp_backup_cell(box)
-
-	box.obj_storage.fit_to_contents(no_shrink = TRUE)
-
-	if(H.backbag == 1)
-		H.equip_to_slot_or_del(box, /datum/inventory_slot/abstract/hand/right, INV_OP_SILENT | INV_OP_FLUFFLESS)
-	else
-		H.equip_to_slot_or_del(box, /datum/inventory_slot/abstract/put_in_backpack, INV_OP_FORCE | INV_OP_SILENT)
+			if(tankpath)
+				into_box?.Add(tankpath)
+			else
+				stack_trace("Could not find a tank path for breath type [breath_type], given path was [given_path].")
 
 /**
  * called to ensure organs are consistent with our species's
@@ -717,14 +817,9 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
  * this is a destructive proc and will erase incompatible blood.
  */
 /datum/species/proc/create_blood(mob/living/carbon/human/H)
-	H.make_blood()
-	if(H.vessel.total_volume < blood_volume)
-		H.vessel.maximum_volume = blood_volume
-		H.vessel.add_reagent("blood", blood_volume - H.vessel.total_volume)
-	else if(H.vessel.total_volume > blood_volume)
-		H.vessel.remove_reagent("blood", H.vessel.total_volume - blood_volume)
-		H.vessel.maximum_volume = blood_volume
-	H.fixblood()
+	if(species_flags & NO_BLOOD)
+	else
+		H.create_blood()
 
 /datum/species/proc/hug(var/mob/living/carbon/human/H, var/mob/living/target)
 
@@ -836,6 +931,8 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 
 // Impliments different trails for species depending on if they're wearing shoes.
 /datum/species/proc/get_move_trail(var/mob/living/carbon/human/H)
+	if( H.is_avoiding_ground() )
+		return /obj/effect/debris/cleanable/blood/tracks/flying
 	if( H.shoes || ( H.wear_suit && (H.wear_suit.body_cover_flags & FEET) ) )
 		return /obj/effect/debris/cleanable/blood/tracks/footprints
 	else
@@ -883,10 +980,25 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 /datum/species/proc/handle_falling(mob/living/carbon/human/H, atom/hit_atom, damage_min, damage_max, silent, planetary)
 	return FALSE
 
+/datum/species/proc/get_default_origin_id()
+	return SScharacters.resolve_origin(default_origin).id
+
+/datum/species/proc/get_default_citizenship_id()
+	return SScharacters.resolve_citizenship(default_citizenship).id
+
+/datum/species/proc/get_default_faction_id()
+	return SScharacters.resolve_faction(default_faction).id
+
+/datum/species/proc/get_default_religion_id()
+	return SScharacters.resolve_religion(default_religion).id
+
+/datum/species/proc/get_default_culture_id()
+	return SScharacters.resolve_culture(default_culture).id
+
 /**
  * clones us into a new datum
  */
-/datum/species/clone(include_contents)
+/datum/species/clone()
 	var/datum/species/created = new type
 	created.copy_from(src)
 	return created
@@ -940,7 +1052,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 			T.remove(src, H)
 		src.traits = traits
 
-		H.icon_state = lowertext(get_bodytype_legacy())
+		//H.icon_state = lowertext(get_bodytype_legacy())
 
 		if(holder_type)
 			H.holder_type = holder_type
@@ -958,3 +1070,9 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 /datum/species/proc/assert_innate_vision()
 	if(ispath(vision_innate))
 		vision_innate = new vision_innate
+
+/**
+ * Handle specific job outfit stuff if applicable
+ */
+/datum/species/proc/handle_species_job_outfit(var/mob/living/carbon/human/H, var/datum/outfit/outfit)
+  return

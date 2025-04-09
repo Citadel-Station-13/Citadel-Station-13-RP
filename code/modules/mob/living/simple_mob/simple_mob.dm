@@ -16,13 +16,17 @@
 
 	iff_factions = MOB_IFF_FACTION_BIND_AUTO
 
-	//? Attacks - Basic
+	//* Attacks - Basic *//
 	/// melee style
 	var/datum/unarmed_attack/melee_style
 
 	//? Darksight
 	/// our innate darksight
 	var/datum/vision/baseline/vision_innate = /datum/vision/baseline/default
+
+	//* Inventory *//
+	/// how many hands we have
+	var/hand_count = 0
 
 	///Tooltip description
 	var/tt_desc = null
@@ -38,10 +42,6 @@
 	var/list/hud_gears
 	/// Icon file path to use for the HUD, otherwise generic icons are used
 	var/ui_icons
-	/// If they have hands, they could use some icons.
-	var/r_hand_sprite
-	/// If they have hands, they could use some icons.
-	var/l_hand_sprite
 	/// Message to print to players about 'how' to play this mob on login.
 	var/player_msg
 
@@ -131,7 +131,7 @@
 
 	//* Hostility settings *//
 	/// Is the mob weak to tasers?
-	var/taser_kill = 1
+	var/taser_kill = FALSE
 
 	//* Attack ranged settings *//
 	/// The projectiles I shoot.
@@ -261,7 +261,7 @@
 	randomize()
 
 	for(var/L in has_langs)
-		languages |= SScharacters.resolve_language_name(L)
+		languages |= RSlanguages.legacy_resolve_language_name(L)
 	if(languages.len)
 		default_language = languages[1]
 
@@ -357,7 +357,7 @@
 
 	// Turf related slowdown
 	var/turf/T = get_turf(src)
-	if(T && T.slowdown && !hovering) // Flying mobs ignore turf-based slowdown. Aquatic mobs ignore water slowdown, and can gain bonus speed in it.
+	if(T && T.slowdown && !is_avoiding_ground()) // Flying mobs ignore turf-based slowdown. Aquatic mobs ignore water slowdown, and can gain bonus speed in it.
 		if(istype(T,/turf/simulated/floor/water) && aquatic_movement)
 			tally -= aquatic_movement - 1
 		else
@@ -387,7 +387,7 @@
 		icon_state = icon_living
 	update_icon()
 
-/mob/living/simple_mob/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
+/mob/living/simple_mob/say(var/message, var/datum/prototype/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	verb = "says"
 	if(speak_emote.len)
 		verb = pick(speak_emote)
@@ -403,10 +403,10 @@
 //TODO: This needs to be phased out for a newer butchering system. Though I am too scared to undo all our custom stuff. -Zandario
 // Harvest an animal's delicious byproducts
 /mob/living/simple_mob/harvest(mob/user)
-	var/actual_meat_amount = pick(0, meat_amount)
-	var/actual_bone_amount = pick(0, bone_amount)
-	var/actual_hide_amount = pick(0, hide_amount)
-	var/actual_exotic_amount = pick(0, exotic_amount)
+	var/actual_meat_amount = rand(0, meat_amount)
+	var/actual_bone_amount = rand(0, bone_amount)
+	var/actual_hide_amount = rand(0, hide_amount)
+	var/actual_exotic_amount = rand(0, exotic_amount)
 	if(stat != DEAD)
 		return
 	if(meat_type)
@@ -457,3 +457,13 @@
 	. = ..()
 	if(. && (!is_sharp(I) || !has_edge(I)))
 		return FALSE
+
+//* Inventory *//
+
+/mob/living/simple_mob/get_usable_hand_count()
+	return hand_count
+
+/mob/living/simple_mob/get_usable_hand_indices()
+	. = list()
+	for(var/i in 1 to hand_count)
+		. += i

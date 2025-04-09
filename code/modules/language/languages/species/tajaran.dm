@@ -1,4 +1,4 @@
-/datum/language/tajaran
+/datum/prototype/language/tajaran
 	id = LANGUAGE_ID_TAJARAN
 	name = LANGUAGE_SIIK
 	translation_class = TRANSLATION_CLASS_DEFAULT_CORE_RACE
@@ -14,7 +14,7 @@
 	"hal","ket","jurl","mah","tul","cresh","azu","ragh","mro","mra","mrro","mrra")
 	shorthand = "MAAS"
 
-/datum/language/tajaran/get_random_name(var/gender)
+/datum/prototype/language/tajaran/get_random_name(var/gender)
 	var/new_name = ..(gender,1)
 	if(prob(50))
 		new_name += " [pick(list("Hadii","Kaytam","Nazkiin","Zhan-Khazan","Hharar","Njarir'Akhan","Faaira'Nrezi","Rhezar","Mi'dynh","Rrhazkal","Bayan","Al'Manq","Mi'jri","Chur'eech","Sanu'dra","Ii'rka"))]"
@@ -22,7 +22,7 @@
 		new_name += " [..(gender,1)]"
 	return new_name
 
-/datum/language/tajaranakhani
+/datum/prototype/language/tajaranakhani
 	id = LANGUAGE_ID_TAJARAN_ALT
 	name = LANGUAGE_AKHANI
 	translation_class = TRANSLATION_CLASS_DEFAULT_CORE_RACE
@@ -32,14 +32,13 @@
 	exclaim_verb = "wails"
 	colour = "akhani"
 	key = "h"
-	language_flags = LANGUAGE_WHITELISTED
 	syllables = list("mrr","rr","marr","tar","ahk","ket","hal","kah","dra","nal","kra","vah","dar","hrar", "eh",
 	"ara","ka","zar","mah","ner","zir","mur","hai","raz","ni","ri","nar","njar","jir","ri","ahn","kha","sir",
 	"kar","yar","kzar","rha","hrar","err","fer","rir","rar","yarr","arr","ii'r","jar","kur","ran","rii","ii",
 	"nai","ou","kah","oa","ama","uuk","bel","chi","ayt","kay","kas","akor","tam","yir","enai")
 	shorthand = "AKH"
 
-/datum/language/tajsign
+/datum/prototype/language/tajsign
 	id = LANGUAGE_ID_TAJARAN_SIGN
 	name = LANGUAGE_SIIK_TAJR
 	translation_class = TRANSLATION_CLASS_DEFAULT_CORE_RACE
@@ -47,10 +46,10 @@
 	signlang_verb = list("gestures with their hands", "gestures with their ears and tail", "gestures with their ears, tail and hands")
 	colour = "tajaran"
 	key = "l"
-	language_flags = LANGUAGE_WHITELISTED | LANGUAGE_SIGNLANG | LANGUAGE_NO_STUTTER | LANGUAGE_NONVERBAL
+	language_flags = LANGUAGE_SIGNLANG | LANGUAGE_NO_STUTTER | LANGUAGE_NONVERBAL
 	shorthand = "TAJR"
 
-/datum/language/tajsign/can_speak_special(var/mob/speaker)	// TODO: If ever we make external organs assist languages, convert this over to the new format
+/datum/prototype/language/tajsign/can_speak_special(var/mob/speaker)	// TODO: If ever we make external organs assist languages, convert this over to the new format
 	var/list/allowed_species = list(SPECIES_TAJ, SPECIES_TESHARI)	// Need a tail and ears and such to use this.
 	if(iscarbon(speaker))
 		var/obj/item/organ/external/hand/hands = locate() in speaker //you can't sign without hands

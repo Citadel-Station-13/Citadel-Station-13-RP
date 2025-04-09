@@ -1,5 +1,3 @@
-#define NOGRAV_FIGHTER_DAMAGE 20
-
 /obj/vehicle/sealed/mecha/combat/fighter
 	name = "Delete me, nerd!!"
 	desc = "The base type of fightercraft. Don't spawn this one!"
@@ -39,12 +37,14 @@
 	max_special_equip = 1
 
 	starting_components = list(
-		/obj/item/mecha_parts/component/hull/lightweight,
-		/obj/item/mecha_parts/component/actuator,
-		/obj/item/mecha_parts/component/armor,
-		/obj/item/mecha_parts/component/gas,
-		/obj/item/mecha_parts/component/electrical
+		/obj/item/vehicle_component/hull/lightweight,
+		/obj/item/vehicle_component/actuator,
+		/obj/item/vehicle_component/armor,
+		/obj/item/vehicle_component/gas,
+		/obj/item/vehicle_component/electrical
 		)
+
+	var/in_gravity_damage = 20
 
 /obj/vehicle/sealed/mecha/combat/fighter/Initialize(mapload)
 	. = ..()
@@ -118,7 +118,7 @@
 		stop_hover()
 	else if(moved && gravity && !ground_capable)
 		occupant_message("Collision alert! Vehicle not rated for use in gravity!")
-		take_damage_legacy(NOGRAV_FIGHTER_DAMAGE, "brute")
+		take_damage_legacy(in_gravity_damage, "brute")
 		playsound(src, 'sound/effects/grillehit.ogg', 50, 1)
 
 /obj/vehicle/sealed/mecha/combat/fighter/get_step_delay()
@@ -205,9 +205,9 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/gunpod/loaded/Initialize(mapload) //Loaded version with guns
 	. = ..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
+	var/obj/item/vehicle_module/ME = new /obj/item/vehicle_module/weapon/energy/laser
 	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/explosive
+	ME = new /obj/item/vehicle_module/weapon/ballistic/missile_rack/explosive
 	ME.attach(src)
 
 /obj/vehicle/sealed/mecha/combat/fighter/gunpod/recon
@@ -216,9 +216,9 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/gunpod/recon/Initialize(mapload) //Blinky
 	. = ..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/teleporter(src)
+	var/obj/item/vehicle_module/ME = new /obj/item/vehicle_module/teleporter(src)
 	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/tesla_energy_relay(src)
+	ME = new /obj/item/vehicle_module/tesla_energy_relay(src)
 	ME.attach(src)
 
 /obj/vehicle/sealed/mecha/combat/fighter/gunpod/update_icon()
@@ -263,314 +263,3 @@
 	and sometimes one or two passengers, with the right modifications made. \
 	Typically used as small fighter craft, the gunpod can't carry much of a payload, though it's still capable of holding it's own."
 	value = CATALOGUER_REWARD_MEDIUM
-
-
-////////////// Baron //////////////
-
-/obj/vehicle/sealed/mecha/combat/fighter/baron
-	name = "\improper Baron"
-	desc = "A conventional space superiority fighter, one-seater. Not capable of ground operations."
-	icon = 'icons/mecha/fighters64x64.dmi'
-	icon_state = "baron"
-	initial_icon = "baron"
-
-	integrity = 600
-	integrity_max = 600
-
-	catalogue_data = list(/datum/category_item/catalogue/technology/baron)
-	wreckage = /obj/effect/decal/mecha_wreckage/baron
-
-	ground_capable = FALSE
-
-/obj/vehicle/sealed/mecha/combat/fighter/baron/loaded/Initialize(mapload) //Loaded version with guns
-	. = ..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
-	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/omni_shield
-	ME.attach(src)
-
-/obj/effect/decal/mecha_wreckage/baron
-	name = "Baron wreckage"
-	desc = "Remains of some unfortunate fighter. Completely unrepairable."
-	icon = 'icons/mecha/fighters64x64.dmi'
-	icon_state = "baron-broken"
-	bound_width = 64
-	bound_height = 64
-
-/obj/vehicle/sealed/mecha/combat/fighter/baron/sec
-	name = "\improper Baron-SV"
-	desc = "A conventional space superiority fighter, one-seater. Not capable of ground operations. The Baron-SV (Security Variant) is frequently used by NT Security forces during EVA patrols."
-
-/obj/vehicle/sealed/mecha/combat/fighter/baron/sec/loaded/Initialize(mapload) //Loaded version with guns
-	. = ..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
-	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/phase
-	ME.attach(src)
-
-/datum/category_item/catalogue/technology/baron
-	name = "Voidcraft - Baron"
-	desc = "This is a small space fightercraft that has an arrowhead design. Can hold up to one pilot. \
-	Unlike some fighters, this one is not designed for atmospheric operation, and is only capable of performing \
-	maneuvers in the vacuum of space. Attempting flight while in an atmosphere is not recommended."
-	value = CATALOGUER_REWARD_MEDIUM
-
-
-////////////// Duke //////////////
-
-/obj/vehicle/sealed/mecha/combat/fighter/duke
-	name = "\improper Duke"
-	desc = "The Duke Heavy Fighter is designed and manufactured by Hephaestus Industries as a bulky craft built to punch above its weight. This one comes painted in Nanotrasen's blue white and black color scheme straight out of the fabricator, catering to security team's need for friendly identification. It makes up for the minimal hull upgrade space with a stronger chassis, and multiple mounting points for missiles, bombs, and lasers. It's incapable of Atmospheric flight."
-	icon = 'icons/mecha/fighters64x64.dmi'
-	icon_state = "duke"
-	initial_icon = "duke"
-
-	step_in = 3 //slightly slower than a baron (this shit doesnt actually work atm, likely due to the whole equipment weight nonsense)
-
-	integrity = 1200
-	integrity_max = 1200 //double baron HP, only room for one defensive upgrade. No specials(cloaking, speed, ect) or universals.
-
-	max_hull_equip = 1
-	max_weapon_equip = 4
-	max_utility_equip = 2
-	max_universal_equip = 0
-	max_special_equip = 0
-
-	catalogue_data = list(/datum/category_item/catalogue/technology/duke)
-	wreckage = /obj/effect/decal/mecha_wreckage/duke
-
-	ground_capable = FALSE
-
-/obj/vehicle/sealed/mecha/combat/fighter/duke/loaded/Initialize(mapload) //Loaded version with guns
-	. = ..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
-	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/explosive
-	ME.attach(src)
-
-/obj/vehicle/sealed/mecha/combat/fighter/duke/db
-	name = "\improper Duke \"Deep Blue\""
-	desc = "A Duke heavy fighter decorated with the common 'Deep Blue' customization kit, both designed and sold by Hephaestus Industries. This paint scheme pays homage to one of the first supercomputing systems that dared to push the boundaries of what it meant to think. Think 40 steps ahead of your enemy with these colorations, just as Deep Blue did so many years ago."
-	icon_state = "duke_db"
-	initial_icon = "duke_db"
-	wreckage = /obj/effect/decal/mecha_wreckage/duke/db
-
-/obj/vehicle/sealed/mecha/combat/fighter/duke/db/loaded/Initialize(mapload) //Loaded version with guns
-	. = ..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
-	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/explosive
-	ME.attach(src)
-
-/obj/vehicle/sealed/mecha/combat/fighter/duke/cw
-	name = "\improper Duke \"Clockwork\""
-	desc = "A Duke heavy fighter decorated with the rare 'Clockwork' customization kit, both designed and sold by Hephaestus Industries. Textured paint with accurate colorations and reflectiveness to brass makes this Duke Heavy Fighter stand out amongst the competition in any conflict."
-	icon_state = "duke_cw"
-	initial_icon = "duke_cw"
-	wreckage = /obj/effect/decal/mecha_wreckage/duke/cw
-
-/obj/vehicle/sealed/mecha/combat/fighter/duke/cw/loaded/Initialize(mapload) //Loaded version with guns
-	. = ..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
-	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/explosive
-	ME.attach(src)
-
-/obj/effect/decal/mecha_wreckage/duke
-	name = "Duke wreckage"
-	desc = "Remains of some unfortunate fighter. Completely unrepairable."
-	icon = 'icons/mecha/fighters64x64.dmi'
-	icon_state = "duke-broken"
-	bound_width = 64
-	bound_height = 64
-
-/obj/effect/decal/mecha_wreckage/duke/db
-	name = "Duke wreckage"
-	desc = "Remains of some unfortunate fighter. Completely unrepairable."
-	icon = 'icons/mecha/fighters64x64.dmi'
-	icon_state = "duke_db-broken"
-	bound_width = 64
-	bound_height = 64
-
-/obj/effect/decal/mecha_wreckage/duke/cw
-	name = "Duke wreckage"
-	desc = "Remains of some unfortunate fighter. Completely unrepairable."
-	icon = 'icons/mecha/fighters64x64.dmi'
-	icon_state = "duke_cw-broken"
-	bound_width = 64
-	bound_height = 64
-
-/datum/category_item/catalogue/technology/duke
-	name = "Voidcraft - Duke"
-	desc = "The Duke Heavy Fighter is designed and manufactured by Hephaestus Industries as a bulky craft built to punch above its weight. Primarily armed with missiles, bombs, or similar large payloads, this fighter packs a punch against most at the cost of room for minimul hull modifications, which is almost always reserved for much-needed armor inserts instead of a shield. It's incapable of atmospheric flight."
-	value = CATALOGUER_REWARD_MEDIUM
-
-
-////////////// Scoralis //////////////
-
-/obj/vehicle/sealed/mecha/combat/fighter/scoralis
-	name = "\improper Scoralis"
-	desc = "An imported space fighter with integral cloaking device. Beware the power consumption, though. Not capable of ground operations."
-	icon = 'icons/mecha/fighters64x64.dmi'
-	icon_state = "scoralis"
-	initial_icon = "scoralis"
-
-	catalogue_data = list(/datum/category_item/catalogue/technology/scoralis)
-	wreckage = /obj/effect/decal/mecha_wreckage/scoralis
-
-	ground_capable = FALSE
-
-/obj/vehicle/sealed/mecha/combat/fighter/scoralis/loaded/Initialize(mapload) //Loaded version with guns
-	. = ..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg
-	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/cloak
-	ME.attach(src)
-
-/obj/effect/decal/mecha_wreckage/scoralis
-	name = "scoralis wreckage"
-	desc = "Remains of some unfortunate fighter. Completely unrepairable."
-	icon = 'icons/mecha/fighters64x64.dmi'
-	icon_state = "scoralis-broken"
-	bound_width = 64
-	bound_height = 64
-
-/datum/category_item/catalogue/technology/scoralis
-	name = "Voidcraft - Scoralis"
-	desc = "An import model fightercraft, this one contains an integral cloaking device that renders the fighter invisible \
-	to the naked eye. Still detectable on thermal sensors, the craft can maneuver in close to ill-equipped foes and strike unseen. \
-	Not rated for atmospheric travel, this craft excels at hit and run tactics, as it will likely need to recharge batteries between each 'hit'."
-	value = CATALOGUER_REWARD_MEDIUM
-
-////////////// Allure //////////////
-
-/obj/vehicle/sealed/mecha/combat/fighter/allure
-	name = "\improper Allure"
-	desc = "A fighter of Skrellian design. Its angular shape and wide overhead cross-section is made up for by it's stout armor and carefully crafted hull paint."
-	icon = 'icons/mecha/fighters64x64.dmi'
-	icon_state = "allure"
-	initial_icon = "allure"
-
-	catalogue_data = list(/datum/category_item/catalogue/technology/allure)
-	wreckage = /obj/effect/decal/mecha_wreckage/allure
-
-	ground_capable = FALSE
-
-	integrity = 500
-	integrity_max = 500
-
-/obj/vehicle/sealed/mecha/combat/fighter/allure/loaded/Initialize(mapload) //Loaded version with guns
-	. = ..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/cloak
-	ME.attach(src)
-
-/obj/vehicle/sealed/mecha/combat/fighter/allure/royalty
-	name = "\improper Allure \"Royalty\""
-	desc = "A limited edition purple design with gold inlay that embodies the same colorations and pattern designs of royalty skrellian during the time of the Allure's initial release."
-	icon_state = "allure_royalty"
-	initial_icon = "allure_royalty"
-	wreckage = /obj/effect/decal/mecha_wreckage/allure/royalty
-
-/obj/vehicle/sealed/mecha/combat/fighter/allure/royalty/loaded/Initialize(mapload) //Loaded version with guns
-	. = ..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/cloak
-	ME.attach(src)
-
-/obj/effect/decal/mecha_wreckage/allure
-	name = "allure wreckage"
-	desc = "Remains of some unfortunate fighter. Completely unrepairable."
-	icon = 'icons/mecha/fighters64x64.dmi'
-	icon_state = "allure-broken"
-	bound_width = 64
-	bound_height = 64
-
-/obj/effect/decal/mecha_wreckage/allure/royalty
-	icon_state = "allure_royalty-broken"
-
-/datum/category_item/catalogue/technology/allure
-	name = "Voidcraft - Allure"
-	desc = "A space superiority fighter of Skrellian design. Its angular shape and wide overhead cross-section is made up for by it's stout armor and carefully crafted hull paint. \
-	Import craft like this one often ship with no weapons, though the Skrell saw fit to integrate a cloaking device."
-	value = CATALOGUER_REWARD_MEDIUM
-
-////////////// Pinnace //////////////
-
-/obj/vehicle/sealed/mecha/combat/fighter/pinnace
-	name = "\improper Pinnace"
-	desc = "A cramped ship's boat, capable of atmospheric and space flight. Not capable of mounting traditional weapons. Capable of fitting one pilot and one passenger."
-	icon = 'icons/mecha/fighters64x64.dmi'
-	icon_state = "pinnace"
-	initial_icon = "pinnace"
-
-	max_hull_equip = 1
-	max_weapon_equip = 0
-	max_utility_equip = 1
-	max_universal_equip = 0
-	max_special_equip = 1
-
-	catalogue_data = list(/datum/category_item/catalogue/technology/pinnace)
-	wreckage = /obj/effect/decal/mecha_wreckage/pinnace
-
-	ground_capable = TRUE
-
-/obj/vehicle/sealed/mecha/combat/fighter/pinnace/loaded/Initialize(mapload) //Loaded version with guns
-	. = ..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/tool/passenger
-	ME.attach(src)
-
-/obj/effect/decal/mecha_wreckage/pinnace
-	name = "pinnace wreckage"
-	desc = "Remains of some unfortunate ship's boat. Completely unrepairable."
-	icon = 'icons/mecha/fighters64x64.dmi'
-	icon_state = "pinnace-broken"
-	bound_width = 64
-	bound_height = 64
-
-/datum/category_item/catalogue/technology/pinnace
-	name = "Voidcraft - Pinnace"
-	desc = "A very small boat, usually used as a tender at very close ranges. The lack of a bluespace \
-	drive means that it can't get too far from it's parent ship. Though the pinnace is typically unarmed, \
-	it is capable of atmospheric flight and escaping most pursuing fighters by diving into the atmosphere of \
-	nearby planets to seek cover."
-	value = CATALOGUER_REWARD_MEDIUM
-
-
-////////////// Cludge //////////////
-
-/obj/vehicle/sealed/mecha/combat/fighter/cludge
-	name = "\improper Cludge"
-	desc = "A heater, nozzle, and fuel tank strapped together. There are exposed wires strewn about it."
-	icon = 'icons/mecha/fighters64x64.dmi'
-	icon_state = "cludge"
-	initial_icon = "cludge"
-
-	integrity = 100
-	integrity_max = 100
-
-	max_hull_equip = 0
-	max_weapon_equip = 0
-	max_utility_equip = 0
-	max_universal_equip = 0
-	max_special_equip = 0
-
-	catalogue_data = list(/datum/category_item/catalogue/technology/cludge)
-	wreckage = /obj/effect/decal/mecha_wreckage/cludge
-
-	ground_capable = TRUE
-
-/obj/effect/decal/mecha_wreckage/cludge
-	name = "Cludge wreckage"
-	desc = "It doesn't look much different than it normally does. Completely unrepairable."
-	icon = 'icons/mecha/fighters64x64.dmi'
-	icon_state = "cludge-broken"
-	bound_width = 64
-	bound_height = 64
-
-/datum/category_item/catalogue/technology/cludge
-	name = "Voidcraft - Cludge"
-	desc = "A collection of parts strapped together in an attempt to make a flying vessel. Such vessels are fragile, unstable \
-	and very easily break apart, due to their roughshod engineering. These vessels commonly are built without critical components \
-	such as life support, or armor plating."
-	value = CATALOGUER_REWARD_MEDIUM
-
-#undef NOGRAV_FIGHTER_DAMAGE

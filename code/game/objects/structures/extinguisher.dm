@@ -48,16 +48,10 @@
 /obj/structure/extinguisher_cabinet/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(isrobot(user))
 		return
-	if (ishuman(user))
-		var/mob/living/carbon/human/H = user
-		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
-		if (H.hand)
-			temp = H.organs_by_name["l_hand"]
-		if(temp && !temp.is_usable())
-			to_chat(user, "<span class='notice'>You try to move your [temp.name], but cannot!</span>")
-			return
+	if(!user.standard_hand_usability_check(src, e_args.using_hand_index, HAND_MANIPULATION_GENERAL))
+		return
 	if(has_extinguisher)
-		user.put_in_hands(has_extinguisher)
+		user.put_in_hands_or_drop(has_extinguisher)
 		to_chat(user, "<span class='notice'>You take [has_extinguisher] from [src].</span>")
 		has_extinguisher = null
 		opened = 1

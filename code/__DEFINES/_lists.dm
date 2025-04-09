@@ -25,13 +25,28 @@
 #define LAZYLEN(L) length(L)
 ///Sets a list to null
 #define LAZYNULL(L) L = null
-/// Null-safe L.Cut()
+///Adds to the item K the value V, if the list is null it will initialize it
+#define LAZYADDASSOC(L, K, V) if(!L) { L = list(); } L[K] += V;
+///This is used to add onto lazy assoc list when the value you're adding is a /list/. This one has extra safety over lazyaddassoc because the value could be null (and thus cant be used to += objects)
+#define LAZYADDASSOCLIST(L, K, V) if(!L) { L = list(); } L[K] += list(V);
+///Removes the value V from the item K, if the item K is empty will remove it from the list, if the list is empty will set the list to null
+#define LAZYREMOVEASSOC(L, K, V) if(L) { if(L[K]) { L[K] -= V; if(!length(L[K])) L -= K; } if(!length(L)) L = null; }
+///Accesses an associative list, returns null if nothing is found
+#define LAZYACCESSASSOC(L, I, K) L ? L[I] ? L[I][K] ? L[I][K] : null : null : null
+//These methods don't null the list
+///Use LAZYLISTDUPLICATE instead if you want it to null with no entries
+#define LAZYCOPY(L) (L ? L.Copy() : list() )
+/// Consider LAZYNULL instead
 #define LAZYCLEARLIST(L) if(L) L.Cut()
-/// Null-safe L.Copy()
-#define LAZYCOPY(L) (L? L.Copy() : null)
-/// Reads L or an empty list if L is not a list.  Note: Does NOT assign, L may be an expression.
+///Returns the list if it's actually a valid list, otherwise will initialize it
 #define SANITIZE_LIST(L) ( islist(L) ? L : list() )
 #define SANITIZE_TO_LIST(L) ( islist(L) ? L : list(L) )
+/// Performs an insertion on the given lazy list with the given key and value. If the value already exists, a new one will not be made.
+#define LAZYORASSOCLIST(lazy_list, key, value) \
+	LAZYINITLIST(lazy_list); \
+	LAZYINITLIST(lazy_list[key]); \
+	lazy_list[key] |= value;
+
 #define reverseList(L) reverseRange(L.Copy())
 
 #define SAFEPICK(L) (length(L)? pick(L) : null)
@@ -55,12 +70,12 @@
 	* Binary search sorted insert
 	* Sorts low to high.
 	*
-	* INPUT: Object to be inserted
-	* LIST: List to insert object into
-	* TYPECONT: The typepath of the contents of the list
-	* COMPARE: The object to compare against, usualy the same as INPUT
-	* COMPARISON: The variable on the objects to compare
-	* COMPTYPE: How should the values be compared? Either COMPARE_KEY or COMPARE_VALUE.
+	* * INPUT: Object to be inserted
+	* * LIST: List to insert object into
+	* * TYPECONT: The typepath of the contents of the list
+	* * COMPARE: The object to compare against, usualy the same as INPUT
+	* * COMPARISON: The variable on the objects to compare
+	* * COMPTYPE: How should the values be compared? Either COMPARE_KEY or COMPARE_VALUE.
 	*/
 #define BINARY_INSERT(INPUT, LIST, TYPECONT, COMPARE, COMPARISON, COMPTYPE) \
 	do {\

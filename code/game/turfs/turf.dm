@@ -1,11 +1,16 @@
 /// Any floor or wall. What makes up the station and the rest of the map.
 /turf
 	abstract_type = /turf
-
 	icon = 'icons/turf/floors.dmi'
+	luminosity = 1
+
+	//* Default turf inbuilts *//
+
 	layer = TURF_LAYER
 	plane = TURF_PLANE
-	luminosity = 1
+	opacity = FALSE
+	density = FALSE
+	alpha = 255
 
 	//* Atmospherics
 	/**
@@ -72,7 +77,7 @@
 	 * FALSE - as it implies
 	 * null - use area default
 	 */
-	var/outdoors = FALSE
+	var/outdoors = null
 
 	//* Radiation
 	/// cached rad insulation of contents
@@ -157,7 +162,7 @@
 
 	//atom color stuff
 	if(color)
-		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
+		add_atom_color(color)
 
 	// todo: uh oh.
 	// TODO: what would tg do (but maybe not that much component signal abuse?)
@@ -298,32 +303,33 @@
 	return ..()
 
 // Hits a mob on the tile.
-/turf/proc/attack_tile(obj/item/W, mob/living/user)
-	if(!istype(W))
-		return FALSE
+// todo: redo this
+// /turf/proc/attack_tile(obj/item/W, mob/living/user)
+// 	if(!istype(W))
+// 		return FALSE
 
-	var/list/viable_targets = list()
-	var/success = FALSE	// Hitting something makes this true. If its still false, the miss sound is played.
+// 	var/list/viable_targets = list()
+// 	var/success = FALSE	// Hitting something makes this true. If its still false, the miss sound is played.
 
-	for(var/mob/living/L in contents)
-		if(L == user)	// Don't hit ourselves.
-			continue
-		viable_targets += L
+// 	for(var/mob/living/L in contents)
+// 		if(L == user)	// Don't hit ourselves.
+// 			continue
+// 		viable_targets += L
 
-	if(!viable_targets.len)	// No valid targets on this tile.
-		if(W.can_cleave)
-			success = W.cleave(user, src)
-	else
-		var/mob/living/victim = pick(viable_targets)
-		success = W.resolve_attackby(victim, user)
+// 	if(!viable_targets.len)	// No valid targets on this tile.
+// 		if(W.can_cleave)
+// 			success = W.cleave(user, src)
+// 	else
+// 		var/mob/living/victim = pick(viable_targets)
+// 		success = W.resolve_attackby(victim, user)
 
-	user.setClickCooldown(user.get_attack_speed(W))
-	user.do_attack_animation(src, no_attack_icons = TRUE)
+// 	user.setClickCooldown(user.get_attack_speed(W))
+// 	user.do_attack_animation(src, no_attack_icons = TRUE)
 
-	if(!success)	// Nothing got hit.
-		user.visible_message("<span class='warning'>\The [user] swipes \the [W] over \the [src].</span>")
-		playsound(src, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-	return success
+// 	if(!success)	// Nothing got hit.
+// 		user.visible_message("<span class='warning'>\The [user] swipes \the [W] over \the [src].</span>")
+// 		playsound(src, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
+// 	return success
 
 /turf/MouseDroppedOnLegacy(atom/movable/O as mob|obj, mob/user as mob)
 	var/turf/T = get_turf(user)
@@ -578,19 +584,19 @@
 
 //* Atom Color - we don't use the expensive system. *//
 
-/turf/get_atom_colour()
+/turf/get_atom_color()
 	return color
 
-/turf/add_atom_colour(coloration, colour_priority)
+/turf/add_atom_color(coloration, colour_priority)
 	color = coloration
 
-/turf/remove_atom_colour(colour_priority, coloration)
+/turf/remove_atom_color(colour_priority, coloration)
 	color = null
 
-/turf/update_atom_colour()
+/turf/update_atom_color()
 	return
 
-/turf/copy_atom_colour(atom/other, colour_priority)
+/turf/copy_atom_color(atom/other, colour_priority)
 	if(isnull(other.color))
 		return
 	color = other.color
@@ -609,6 +615,12 @@
 
 //* Multiz *//
 
+/**
+ * Update multiz linkage. This is done when a zlevel rebuilds its multiz state.
+ *
+ * todo: maybe include params for 'z_offset_up', 'z_offset_down'? manuallly fetching on
+ *       every turf is slow as balls.
+ */
 /turf/proc/update_multiz()
 	return
 
@@ -666,8 +678,13 @@
 /turf/proc/update_underfloor_objects()
 	var/we_should_cover = hides_underfloor_objects()
 	for(var/obj/thing in contents)
-		if(thing.hides_underfloor == OBJ_UNDERFLOOR_DISABLED)
+		if(thing.hides_underfloor == OBJ_UNDERFLOOR_UNSUPPORTED)
 			continue
 		thing.update_hiding_underfloor(
 			(thing.hides_underfloor != OBJ_UNDERFLOOR_NEVER) && we_should_cover,
 		)
+
+//* VV *//
+
+/turf/vv_delete()
+	ScrapeAway()

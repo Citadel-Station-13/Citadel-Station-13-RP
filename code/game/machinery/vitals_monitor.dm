@@ -86,6 +86,7 @@
 
 /obj/machinery/vitals_monitor/update_icon()
 	cut_overlays()
+	. = ..()
 	if(machine_stat & NOPOWER)
 		return
 	add_overlay("screen")

@@ -1,5 +1,5 @@
 /**
  * species/racial language
  */
-/datum/language/species
-	abstract_type = /datum/language/species
+/datum/prototype/language/species
+	abstract_type = /datum/prototype/language/species

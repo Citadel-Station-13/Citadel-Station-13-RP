@@ -42,7 +42,7 @@
 /obj/structure/sign/department/armory{
 	pixel_x = 32
 	},
-/obj/item/gun/ballistic/automatic/z8,
+/obj/item/gun/projectile/ballistic/automatic/z8,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "abg" = (
@@ -3064,7 +3064,7 @@
 /obj/structure/table/bench/steel{
 	pixel_y = 22
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = 32
 	},
 /obj/structure/flora/pottedplant/shoot{
@@ -3416,7 +3416,7 @@
 /turf/simulated/wall/prepainted,
 /area/maintenance/lower/medsec_maintenance)
 "bXh" = (
-/obj/item/mecha_parts/part/durand_right_leg{
+/obj/item/vehicle_part/durand_right_leg{
 	name = "Priapic Monument"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -3451,8 +3451,8 @@
 /area/medical/medbay_primary_storage)
 "bYv" = (
 /obj/structure/table/steel,
-/obj/item/gun/energy/laser/practice,
-/obj/item/gun/energy/laser/practice,
+/obj/item/gun/projectile/energy/laser/practice,
+/obj/item/gun/projectile/energy/laser/practice,
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 4;
 	pixel_y = -28
@@ -5898,7 +5898,9 @@
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
 "dDP" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "warden-office"
+	},
 /obj/effect/paint/darkred,
 /obj/map_helper/electrochromatic_linker{
 	id = "warden-office"
@@ -6069,7 +6071,7 @@
 	dir = 4;
 	pixel_x = 22
 	},
-/obj/item/defib_kit/jumper_kit/loaded,
+/obj/item/defib_kit/loaded,
 /obj/item/storage/box/masks,
 /obj/item/storage/box/gloves{
 	pixel_x = 2;
@@ -7012,7 +7014,9 @@
 	name = "Warden's Office Shutters";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "warden-office"
+	},
 /obj/effect/paint/darkred,
 /obj/map_helper/electrochromatic_linker{
 	id = "warden-office"
@@ -7120,7 +7124,7 @@
 /obj/structure/table/hardwoodtable{
 	density = 0
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_y = -32
 	},
 /obj/item/deck/tarot,
@@ -7520,10 +7524,10 @@
 /area/crew_quarters/sleep/Dorm_2)
 "eIB" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/gun/projectile/energy/gun,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/camera/network/security,
 /obj/machinery/air_alarm{
@@ -8373,10 +8377,10 @@
 /area/maintenance/substation/surface_two)
 "fmV" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/ionrifle{
+/obj/item/gun/projectile/energy/ionrifle{
 	pixel_y = 5
 	},
-/obj/item/gun/energy/ionrifle,
+/obj/item/gun/projectile/energy/ionrifle,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
@@ -9969,26 +9973,26 @@
 	desc = null;
 	pixel_y = 24
 	},
-/obj/item/storage/hypokit{
+/obj/item/storage/hypokit/full/loaded{
 	pixel_x = -8;
 	pixel_y = -8
 	},
-/obj/item/storage/hypokit{
+/obj/item/storage/hypokit/full/loaded{
 	pixel_x = -8
 	},
-/obj/item/storage/hypokit{
+/obj/item/storage/hypokit/full/loaded{
 	pixel_x = -8;
 	pixel_y = 8
 	},
-/obj/item/storage/hypokit{
+/obj/item/storage/hypokit/full/loaded{
 	pixel_x = 8;
 	pixel_y = 8
 	},
-/obj/item/storage/hypokit{
+/obj/item/storage/hypokit/full/loaded{
 	pixel_x = 8;
 	pixel_y = -8
 	},
-/obj/item/storage/hypokit{
+/obj/item/storage/hypokit/full/loaded{
 	pixel_x = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -12763,9 +12767,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/robotics)
 "hYt" = (
-/obj/structure/curtain/open/shower{
-	anchored = 1
-	},
+/obj/structure/curtain/open/shower,
 /obj/machinery/door/airlock{
 	name = "Sauna"
 	},
@@ -13898,7 +13900,7 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "iMz" = (
-/obj/structure/sign/poster,
+/obj/structure/poster,
 /turf/simulated/wall/prepainted/security,
 /area/security/briefing_room)
 "iMB" = (
@@ -14783,7 +14785,7 @@
 	},
 /obj/effect/paint/darkred,
 /obj/map_helper/electrochromatic_linker{
-	id = "warden-office"
+	id = "hos-office"
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hos)
@@ -14875,10 +14877,10 @@
 "jqk" = (
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/phasegun/rifle{
+/obj/item/gun/projectile/energy/phasegun/rifle{
 	pixel_y = 4
 	},
-/obj/item/gun/energy/phasegun/rifle{
+/obj/item/gun/projectile/energy/phasegun/rifle{
 	pixel_y = -4
 	},
 /obj/structure/cable/green{
@@ -16523,8 +16525,8 @@
 /area/crew_quarters/heads/hor)
 "kre" = (
 /obj/structure/table/steel,
-/obj/item/gun/ballistic/shotgun/pump/rifle/practice,
-/obj/item/gun/ballistic/shotgun/pump/rifle/practice,
+/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/practice,
+/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/practice,
 /obj/item/ammo_magazine/a7_62mm/clip/practice,
 /obj/item/ammo_magazine/a7_62mm/clip/practice,
 /obj/item/ammo_magazine/a7_62mm/clip/practice,
@@ -17665,7 +17667,6 @@
 "kYo" = (
 /obj/structure/closet/secure_closet/security,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/holowarrant,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -18119,16 +18120,16 @@
 "llD" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/item/gun/energy/secutor{
+/obj/item/gun/projectile/energy/secutor{
 	pixel_y = -5
 	},
-/obj/item/gun/energy/secutor{
+/obj/item/gun/projectile/energy/secutor{
 	pixel_y = -3
 	},
-/obj/item/gun/energy/secutor{
+/obj/item/gun/projectile/energy/secutor{
 	pixel_y = -1
 	},
-/obj/item/gun/energy/secutor{
+/obj/item/gun/projectile/energy/secutor{
 	pixel_y = 1
 	},
 /turf/simulated/floor/tiled/dark,
@@ -19225,7 +19226,6 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/holowarrant,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "lUM" = (
@@ -19245,11 +19245,11 @@
 "lVi" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/effect/floor_decal/industrial/outline/red,
-/obj/item/gun/ballistic/automatic/wt550{
+/obj/item/gun/projectile/ballistic/automatic/wt550{
 	pixel_y = -7
 	},
-/obj/item/gun/ballistic/automatic/wt550,
-/obj/item/gun/ballistic/automatic/wt550{
+/obj/item/gun/projectile/ballistic/automatic/wt550,
+/obj/item/gun/projectile/ballistic/automatic/wt550{
 	pixel_y = 7
 	},
 /turf/simulated/floor/tiled/dark,
@@ -20206,7 +20206,7 @@
 	dir = 8
 	},
 /obj/machinery/button/windowtint/multitint{
-	id = "sec_processing_r";
+	id = "sec-processing-r";
 	pixel_x = 24;
 	pixel_y = 26;
 	req_access = list(1)
@@ -20711,7 +20711,8 @@
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/foyer)
 "mJx" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/effect/paint/darkred,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/hallway)
@@ -21094,7 +21095,7 @@
 /obj/effect/floor_decal/borderfloorblack/cee,
 /obj/item/ammo_magazine/a44,
 /obj/item/ammo_magazine/a44,
-/obj/item/gun/ballistic/deagle/taj,
+/obj/item/gun/projectile/ballistic/deagle/taj,
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "mVF" = (
@@ -22580,7 +22581,7 @@
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_x = -32
 	},
 /obj/machinery/camera/network/civilian{
@@ -23653,7 +23654,7 @@
 /obj/map_helper/access_helper/airlock/station/security/armory,
 /obj/machinery/door/airlock/glass/security/polarized{
 	id_tag = "warden_office";
-	id_tint = "warden_office";
+	id_tint = "warden-office";
 	name = "Warden";
 	req_one_access = null
 	},
@@ -24391,7 +24392,7 @@
 "oXc" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass/security/polarized{
-	id_tint = "seclocker";
+	id_tint = "sec-locker";
 	name = "Locker Room";
 	req_one_access = null
 	},
@@ -24762,23 +24763,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
-"piB" = (
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 2;
-	icon_state = "shutter0";
-	id = "warden";
-	layer = 3.1;
-	name = "Warden's Office Shutters";
-	opacity = 0
-	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/darkred,
-/obj/map_helper/electrochromatic_linker{
-	id = "hos-office"
-	},
-/turf/simulated/floor/plating,
-/area/security/warden)
 "pjd" = (
 /obj/item/radio/intercom/department/security{
 	dir = 8;
@@ -24895,6 +24879,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery)
+"plK" = (
+/obj/machinery/camera/network/security,
+/turf/simulated/floor/reinforced,
+/area/security/hammerhead_bay)
 "plW" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -25645,7 +25633,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research/rnd)
 "pTn" = (
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark"
 	},
@@ -27145,7 +27133,6 @@
 "qNS" = (
 /obj/structure/closet/secure_closet/security,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/holowarrant,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
@@ -27490,28 +27477,28 @@
 /obj/structure/sign/department/armory{
 	pixel_y = 32
 	},
-/obj/item/gun/ballistic/shotgun/pump/combat{
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat{
 	pixel_y = 7
 	},
-/obj/item/gun/ballistic/shotgun/pump/combat{
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat{
 	pixel_y = 7
 	},
-/obj/item/gun/ballistic/shotgun/pump/combat{
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat{
 	pixel_y = 7
 	},
-/obj/item/gun/ballistic/shotgun/pump/combat{
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat{
 	pixel_y = 7
 	},
-/obj/item/gun/energy/laser{
+/obj/item/gun/projectile/energy/laser{
 	pixel_y = -8
 	},
-/obj/item/gun/energy/laser{
+/obj/item/gun/projectile/energy/laser{
 	pixel_y = -8
 	},
-/obj/item/gun/energy/laser{
+/obj/item/gun/projectile/energy/laser{
 	pixel_y = -8
 	},
-/obj/item/gun/energy/laser{
+/obj/item/gun/projectile/energy/laser{
 	pixel_y = -8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -28913,7 +28900,7 @@
 	},
 /obj/effect/paint/babyblue,
 /obj/map_helper/electrochromatic_linker{
-	id = "operating-theatre-2"
+	id = "operating_theatre_1"
 	},
 /turf/simulated/floor/plating,
 /area/medical/surgery)
@@ -29104,7 +29091,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/glass/security/polarized{
-	id_tint = "seclocker";
+	id_tint = "sec-locker";
 	name = "Locker Room";
 	req_one_access = null
 	},
@@ -29462,7 +29449,6 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/holowarrant,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "ske" = (
@@ -29593,7 +29579,7 @@
 	},
 /obj/effect/paint/babyblue,
 /obj/map_helper/electrochromatic_linker{
-	id = "operating-theatre-2"
+	id = "operating_theatre_2"
 	},
 /turf/simulated/floor/plating,
 /area/medical/surgery2)
@@ -29871,14 +29857,14 @@
 "syF" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/item/gun/energy/taser{
+/obj/item/gun/projectile/energy/taser{
 	pixel_y = -4
 	},
-/obj/item/gun/energy/taser{
+/obj/item/gun/projectile/energy/taser{
 	pixel_y = -2
 	},
-/obj/item/gun/energy/taser,
-/obj/item/gun/energy/taser{
+/obj/item/gun/projectile/energy/taser,
+/obj/item/gun/projectile/energy/taser{
 	pixel_y = 2
 	},
 /turf/simulated/floor/tiled/dark,
@@ -31983,7 +31969,6 @@
 /turf/simulated/floor/water/pool,
 /area/crew_quarters/pool)
 "uaM" = (
-/obj/item/material/ashtray/glass,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
 /obj/machinery/light,
@@ -32768,22 +32753,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "uDC" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 2;
-	icon_state = "shutter0";
-	id = "hos";
-	layer = 3.1;
-	name = "Head of Security's Office Shutters";
-	opacity = 0
-	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint/darkred,
-/obj/map_helper/electrochromatic_linker{
-	id = "hos-office"
-	},
 /turf/simulated/floor/plating,
-/area/crew_quarters/heads/hos)
+/area/security/security_processing)
 "uEt" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/babyblue,
@@ -34498,22 +34471,13 @@
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "vzm" = (
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 2;
-	icon_state = "shutter0";
-	id = "warden";
-	layer = 3.1;
-	name = "Warden's Office Shutters";
-	opacity = 0
-	},
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/darkred,
 /obj/map_helper/electrochromatic_linker{
-	id = "sec-locker"
+	id = "sec-processing-r"
 	},
 /turf/simulated/floor/plating,
-/area/security/warden)
+/area/security/security_processing)
 "vzn" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 1
@@ -34786,7 +34750,9 @@
 	name = "Warden's Office Shutters";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "warden-office"
+	},
 /obj/effect/paint/darkred,
 /obj/map_helper/electrochromatic_linker{
 	id = "warden-office"
@@ -36283,19 +36249,17 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/sleep/Dorm_6)
 "wQz" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/darkred,
 /obj/map_helper/electrochromatic_linker{
-	id = "warden-office"
+	id = "hos-office"
 	},
-/turf/simulated/floor/plating,
-/area/security/security_lockerroom)
+/turf/simulated/floor/carpet/blue,
+/area/security/breakroom)
 "wQJ" = (
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/ballistic/fiveseven,
-/obj/item/gun/ballistic/fiveseven,
-/obj/item/gun/ballistic/fiveseven,
+/obj/item/gun/projectile/ballistic/fiveseven,
+/obj/item/gun/projectile/ballistic/fiveseven,
+/obj/item/gun/projectile/ballistic/fiveseven,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "wRc" = (
@@ -53510,7 +53474,7 @@ enB
 pBj
 pBj
 uAn
-swv
+plK
 qly
 qly
 qly
@@ -54674,7 +54638,7 @@ bRx
 bRx
 bRx
 kvr
-swv
+plK
 qly
 qly
 oOw
@@ -56472,7 +56436,7 @@ ryQ
 ryQ
 ryQ
 mWB
-wQz
+eke
 rNb
 rVb
 rNb
@@ -57447,7 +57411,7 @@ vKj
 tiu
 bhS
 tyF
-keC
+uDC
 vNc
 wCk
 bHa
@@ -57637,7 +57601,7 @@ uKa
 bFQ
 oeO
 wsa
-vzm
+vKj
 tiu
 bhS
 kxd
@@ -57835,7 +57799,7 @@ ukp
 tiu
 bhS
 gjq
-keC
+uDC
 pvp
 oji
 tJz
@@ -58025,7 +57989,7 @@ rAw
 rdE
 kAI
 fxc
-piB
+vKj
 tiu
 bhS
 rrl
@@ -59193,7 +59157,7 @@ jmT
 tiu
 bhS
 nuH
-keC
+vzm
 rqf
 uIR
 bVn
@@ -59383,11 +59347,11 @@ guL
 tOd
 lDe
 jAc
-uDC
+jmT
 mve
 bhS
 nuH
-keC
+vzm
 hGI
 ijR
 eTG
@@ -59581,7 +59545,7 @@ iFX
 eCN
 ohv
 oQS
-keC
+vzm
 pUO
 mzx
 yaJ
@@ -59771,7 +59735,7 @@ suI
 wRc
 gFO
 eSN
-uDC
+jmT
 wXp
 ewu
 fgP
@@ -59965,7 +59929,7 @@ dwr
 gQH
 ioQ
 fSD
-uDC
+jmT
 tiu
 mgL
 ktw
@@ -61130,7 +61094,7 @@ bqU
 cBT
 lmf
 lmf
-rTn
+wQz
 iki
 kfW
 rjW

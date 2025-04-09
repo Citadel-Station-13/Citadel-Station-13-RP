@@ -66,7 +66,7 @@
 	. = ..()
 	. |= list(
 		/obj/item/shield_projector/rectangle/weak,
-		/obj/item/gun/energy/dakkalaser,
+		/obj/item/gun/projectile/energy/dakkalaser,
 		/obj/item/handcuffs/cyborg,
 		/obj/item/melee/baton/robot
 	)
@@ -94,7 +94,7 @@
 
 		// FBP repair.
 		/obj/item/robotanalyzer,
-		/obj/item/shockpaddles/robot/jumper,
+		/obj/item/shockpaddles/robot,
 		/obj/item/gripper/no_use/organ/robotics,
 
 		// Hacking other things.

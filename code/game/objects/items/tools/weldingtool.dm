@@ -80,6 +80,15 @@
 		if(S.robo_repair(15, DAMAGE_TYPE_BRUTE, "some dents", src, user))
 			remove_fuel(1, user)
 		return NONE
+	if(is_holosphere_shell(target) && user.a_intent == INTENT_HELP)
+		if(!welding)
+			to_chat(user, "<span class='warning'>You'll need to turn [src] on to patch the damage on [target]!</span>")
+			return NONE
+		var/mob/living/simple_mob/holosphere_shell/shell = target
+		shell.shell_repair(10, DAMAGE_TYPE_BRUTE, "some dents", src, user)
+		remove_fuel(1, user)
+		return NONE
+
 	return ..()
 
 /obj/item/weldingtool/attackby(obj/item/W as obj, mob/living/user as mob)
@@ -232,11 +241,7 @@
 	else
 		set_light(0)
 
-//	icon_state = welding ? "[icon_state]1" : "[initial(icon_state)]"
-	var/mob/M = loc
-	if(istype(M))
-		M.update_inv_l_hand()
-		M.update_inv_r_hand()
+	update_worn_icon()
 
 //Sets the welding state of the welding tool. If you see W.welding = 1 anywhere, please change it to W.setWelding(1)
 //so that the welding tool updates accordingly
@@ -708,7 +713,7 @@
 	desc = "If you're seeing this, someone did a dum-dum."
 
 /obj/item/weldingtool/electric/mounted/exosuit
-	var/obj/item/mecha_parts/mecha_equipment/equip_mount = null
+	var/obj/item/vehicle_module/equip_mount = null
 	flame_intensity = 1
 	eye_safety_modifier = 2
 	always_process = TRUE
@@ -716,7 +721,7 @@
 /obj/item/weldingtool/electric/mounted/exosuit/Initialize(mapload)
 	. = ..()
 
-	if(istype(loc, /obj/item/mecha_parts/mecha_equipment))
+	if(istype(loc, /obj/item/vehicle_module))
 		equip_mount = loc
 
 /obj/item/weldingtool/electric/mounted/exosuit/process()
@@ -747,12 +752,10 @@
 	return
 
 /obj/item/weldingtool/electric/crystal/update_icon()
+	. = ..()
 	icon_state = welding ? "crystal_welder_on" : "crystal_welder"
 	item_state = welding ? "crystal_tool_lit"  : "crystal_tool"
-	var/mob/M = loc
-	if(istype(M))
-		M.update_inv_l_hand()
-		M.update_inv_r_hand()
+	update_worn_icon()
 
 /obj/item/weldingtool/electric/crystal/attack_self(mob/user, datum/event_args/actor/actor)
 	var/mob/living/carbon/human/H = user

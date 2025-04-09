@@ -586,7 +586,7 @@
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
 "cE" = (
-/obj/item/mecha_parts/mecha_equipment/tool/drill/diamonddrill,
+/obj/item/vehicle_module/tool/drill/diamonddrill,
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
 "cG" = (
@@ -980,8 +980,8 @@
 /area/awaymission/snow_outpost/powered)
 "ed" = (
 /obj/structure/table/steel,
-/obj/item/gun/ballistic/automatic/wt550,
-/obj/item/gun/ballistic/automatic/p90,
+/obj/item/gun/projectile/ballistic/automatic/wt550,
+/obj/item/gun/projectile/ballistic/automatic/p90,
 /turf/simulated/floor/tiled/steel_grid,
 /area/awaymission/snow_outpost/powered)
 "ee" = (
@@ -1482,7 +1482,7 @@
 /area/awaymission/snow_outpost/powered)
 "fJ" = (
 /obj/structure/table/steel,
-/obj/item/gun/ballistic/pistol,
+/obj/item/gun/projectile/ballistic/pistol,
 /obj/machinery/light/small{
 	dir = 4;
 	pixel_y = 0
@@ -1925,7 +1925,7 @@
 /area/awaymission/snow_outpost/dark)
 "hm" = (
 /obj/structure/closet/cabinet,
-/obj/item/contraband/poster,
+/obj/item/poster,
 /turf/simulated/floor/carpet,
 /area/awaymission/snow_outpost/dark)
 "hn" = (
@@ -2098,7 +2098,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/awaymission/snow_outpost/dark)
 "hV" = (
-/obj/item/mecha_parts/mecha_equipment/tool/drill/diamonddrill,
+/obj/item/vehicle_module/tool/drill/diamonddrill,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/awaymission/snow_outpost/dark)
 "hW" = (
@@ -2187,7 +2187,7 @@
 /turf/simulated/shuttle/wall,
 /area/awaymission/snow_outpost/outside)
 "in" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/awaymission/snow_outpost/outside)
 "io" = (
 /obj/structure/flora/grass/brown,
@@ -2357,7 +2357,7 @@
 /area/awaymission/snow_outpost/dark)
 "jb" = (
 /obj/structure/flora/tree/sif,
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/awaymission/snow_outpost/outside)
 "jo" = (
 /turf/simulated/mineral/floor/ignore_mapgen,
@@ -2399,7 +2399,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "pV" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/awaymission/snow_outpost/outside/nospawn)
 "qL" = (
 /obj/random/landmine,
@@ -2672,7 +2672,7 @@
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
 "Rs" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/awaymission/snow_outpost/dark)
 "RF" = (
 /turf/simulated/mineral/ignore_mapgen,

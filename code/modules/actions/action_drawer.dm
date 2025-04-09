@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
  * the actual action handler at /client,
@@ -166,7 +166,7 @@
  * generates screen location for a button at a specific index
  */
 /datum/action_drawer/proc/screen_loc_for_index(index)
-	var/row = (ceil((index + 1) / ACTION_DRAWER_MAX_COLUMNS)) - 1
+	var/row = (ceil(index / ACTION_DRAWER_MAX_COLUMNS)) - 1
 	var/column = ((index % ACTION_DRAWER_MAX_COLUMNS) || ACTION_DRAWER_MAX_COLUMNS) - 1
 
 	return "LEFT+[column]:[ACTION_DRAWER_WEST_OFFSET + (column) * ACTION_DRAWER_COLUMN_SPACING]\

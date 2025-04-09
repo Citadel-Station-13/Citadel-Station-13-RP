@@ -49,7 +49,7 @@
 		dat += {"<A href='byond://?src=\ref[src];choice=Summon'>Summon Shade</A>"}
 		dat += "<br>"
 		dat += {"<a href='byond://?src=\ref[src];choice=Close'> Close</a>"}
-	user << browse(dat, "window=aicard")
+	user << browse(HTML_SKELETON(dat), "window=aicard")
 	onclose(user, "aicard")
 	return
 
@@ -108,7 +108,7 @@
 	if(src.imprinted != "empty")
 		to_chat(U, "<span class='danger'>Capture failed!</span>: The soul stone has already been imprinted with [src.imprinted]'s mind!")
 		return
-	if ((T.health + T.halloss) > config_legacy.health_threshold_crit && T.stat != DEAD)
+	if ((T.health + T.halloss) > T.getCritHealth() && T.stat != DEAD)
 		to_chat(U, "<span class='danger'>Capture failed!</span>: Kill or maim the victim first!")
 		return
 	if(T.client == null)

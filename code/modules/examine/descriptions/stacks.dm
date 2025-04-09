@@ -19,6 +19,3 @@
 /obj/item/stack/material/cyborg/steel
 	description_info = "Use in your hand to bring up the recipe menu.  If you have enough sheets, click on something on the list to build it.<br>\
 	You can replenish your supply of metal as a synthetic by recharging."
-
-/obj/item/stack/material
-	description_info = "Use in your hand to bring up the recipe menu.  If you have enough sheets, click on something on the list to build it."

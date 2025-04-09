@@ -91,7 +91,7 @@
 		/obj/item/lipstick/random,
 		/obj/item/grenade/smokebomb,
 		/obj/item/corncob,
-		/obj/item/contraband/poster,
+		/obj/item/poster,
 		/obj/item/book/manual/barman_recipes,
 		/obj/item/book/manual/chef_recipes,
 		/obj/item/bikehorn,
@@ -100,7 +100,7 @@
 		/obj/item/toy/balloon,
 		/obj/item/toy/blink,
 		/obj/item/toy/crossbow,
-		/obj/item/gun/ballistic/revolver/capgun,
+		/obj/item/gun/projectile/ballistic/revolver/capgun,
 		/obj/item/toy/katana,
 		/obj/item/toy/prize/deathripley,
 		/obj/item/toy/prize/durand,
@@ -206,7 +206,7 @@
 		/obj/item/storage/backpack/holding,
 		/obj/item/grenade/smokebomb,
 		/obj/item/toy/crossbow,
-		/obj/item/gun/ballistic/revolver/capgun,
+		/obj/item/gun/projectile/ballistic/revolver/capgun,
 		/obj/item/toy/katana,
 		/obj/item/toy/sword,
 		/obj/item/storage/belt/utility/full)
@@ -276,7 +276,7 @@
 		return
 	var/mob/living/carbon/human/H = target
 
-	if (istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket) || H.stat)
+	if (istype(H.inventory.get_slot_single(/datum/inventory_slot/inventory/suit), /obj/item/clothing/suit/straight_jacket) || H.stat)
 		if (src.amount > 2)
 			var/obj/effect/spresent/present = new /obj/effect/spresent (H.loc)
 			src.amount -= 2

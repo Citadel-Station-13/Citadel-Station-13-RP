@@ -89,6 +89,20 @@
 	filter_type = /obj/structure
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
+/obj/item/integrated_circuit/filter/ref/object/ore
+	name = "ore filter"
+	desc = "Only allow refs of ores through."
+	icon_state = "filter_structure"
+	filter_type = /obj/item/stack/ore
+	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
+
+/obj/item/integrated_circuit/filter/ref/object/produce
+	name = "produce filter"
+	desc = "Only allow refs of grown produce through, such as apples and wheat."
+	icon_state = "filter_structure"
+	filter_type = /obj/item/reagent_containers/food/snacks/grown
+	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
+
 /obj/item/integrated_circuit/filter/ref/custom
 	name = "custom filter"
 	desc = "Allows custom filtering.  It will match type against a stored reference; it will also take a type string."

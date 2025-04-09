@@ -48,13 +48,12 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	desc = "A flexible superconducting cable for heavy-duty power transfer."
 	icon = 'icons/obj/power_cond_white.dmi'
 	icon_state = "0-1"
-	atom_colouration_system = FALSE
 
 	plane = TURF_PLANE
 	layer = EXPOSED_WIRE_LAYER
 	color = COLOR_RED
 
-	hides_underfloor = OBJ_UNDERFLOOR_ALWAYS
+	hides_underfloor = OBJ_UNDERFLOOR_ACTIVE
 	anchored =1
 	rad_flags = RAD_BLOCK_CONTENTS | RAD_NO_CONTAMINATE
 
@@ -76,7 +75,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	. = ..()
 
 	if(_color)
-		add_atom_colour(GLOB.possible_cable_coil_colours[_color] || COLOR_RED, FIXED_COLOUR_PRIORITY)
+		add_atom_color(GLOB.possible_cable_coil_colours[_color] || COLOR_RED)
 
 	if(_d1 || _d2)
 		d1 = _d1
@@ -543,9 +542,10 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	slot_flags = SLOT_BELT
 	item_state = "coil"
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
-	stacktype = /obj/item/stack/cable_coil
+	stacktype_legacy = /obj/item/stack/cable_coil
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
+	stack_type = /obj/item/stack/cable_coil
 
 /obj/item/stack/cable_coil/cyborg
 	name = "cable coil synthesizer"
@@ -555,18 +555,10 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	uses_charge = 1
 	charge_costs = list(1)
 
-/obj/item/stack/cable_coil/suicide_act(mob/user)
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	if(locate(/obj/item/stool) in user.loc)
-		user.visible_message("<span class='suicide'>[user] is making a noose with the [src.name]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>")
-	else
-		user.visible_message("<span class='suicide'>[user] is strangling [TU.himself] with the [src.name]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>")
-	return(OXYLOSS)
-
 /obj/item/stack/cable_coil/Initialize(mapload, new_amount = MAXCOIL, merge, param_color)
 	. = ..()
 	if (param_color) // It should be red by default, so only recolor it if parameter was specified.
-		add_atom_colour(param_color, FIXED_COLOUR_PRIORITY)
+		add_atom_color(param_color)
 	pixel_x = rand(-2,2)
 	pixel_y = rand(-2,2)
 	update_icon()
@@ -589,6 +581,13 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		var/use_amt = min(src.amount, CEILING(S.burn_dam / 20, 1), 5)
 		if(can_use(use_amt))
 			if(S.robo_repair(5*use_amt, DAMAGE_TYPE_BURN, "some damaged wiring", src, user))
+				use(use_amt)
+		return
+	if(is_holosphere_shell(target) && user.a_intent == INTENT_HELP)
+		var/mob/living/simple_mob/holosphere_shell/shell = target
+		var/use_amt = min(src.amount, CEILING(shell.fireloss / 20, 1), 5)
+		if(can_use(use_amt))
+			if(shell.shell_repair(5*use_amt, DAMAGE_TYPE_BURN, "some damaged wiring", src, user))
 				use(use_amt)
 		return
 	return ..()
@@ -857,85 +856,85 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	update_wclass()
 
 /obj/item/stack/cable_coil/yellow
-	stacktype = /obj/item/stack/cable_coil
+	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_YELLOW
 
 /obj/item/stack/cable_coil/blue
-	stacktype = /obj/item/stack/cable_coil
+	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_BLUE
 
 /obj/item/stack/cable_coil/green
-	stacktype = /obj/item/stack/cable_coil
+	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_LIME
 
 /obj/item/stack/cable_coil/pink
-	stacktype = /obj/item/stack/cable_coil
+	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_PINK
 
 /obj/item/stack/cable_coil/orange
-	stacktype = /obj/item/stack/cable_coil
+	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_ORANGE
 
 /obj/item/stack/cable_coil/cyan
-	stacktype = /obj/item/stack/cable_coil
+	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_CYAN
 
 /obj/item/stack/cable_coil/white
-	stacktype = /obj/item/stack/cable_coil
+	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_WHITE
 
 /obj/item/stack/cable_coil/silver
-	stacktype = /obj/item/stack/cable_coil
+	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_SILVER
 
 /obj/item/stack/cable_coil/gray
-	stacktype = /obj/item/stack/cable_coil
+	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_GRAY
 
 /obj/item/stack/cable_coil/black
-	stacktype = /obj/item/stack/cable_coil
+	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_BLACK
 
 /obj/item/stack/cable_coil/maroon
-	stacktype = /obj/item/stack/cable_coil
+	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_MAROON
 
 /obj/item/stack/cable_coil/olive
-	stacktype = /obj/item/stack/cable_coil
+	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_OLIVE
 
 /obj/item/stack/cable_coil/lime
-	stacktype = /obj/item/stack/cable_coil
+	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_LIME
 
 /obj/item/stack/cable_coil/teal
-	stacktype = /obj/item/stack/cable_coil
+	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_TEAL
 
 /obj/item/stack/cable_coil/navy
-	stacktype = /obj/item/stack/cable_coil
+	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_NAVY
 
 /obj/item/stack/cable_coil/purple
-	stacktype = /obj/item/stack/cable_coil
+	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_PURPLE
 
 /obj/item/stack/cable_coil/beige
-	stacktype = /obj/item/stack/cable_coil
+	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_BEIGE
 
 /obj/item/stack/cable_coil/brown
-	stacktype = /obj/item/stack/cable_coil
+	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_BROWN
 
 /obj/item/stack/cable_coil/random/Initialize(mapload, new_amount, merge)
 	. = ..()
-	stacktype = /obj/item/stack/cable_coil
+	stacktype_legacy = /obj/item/stack/cable_coil
 	color = pick(COLOR_RED, COLOR_BLUE, COLOR_LIME, COLOR_WHITE, COLOR_PINK, COLOR_YELLOW, COLOR_CYAN, COLOR_SILVER, COLOR_GRAY, COLOR_BLACK, COLOR_MAROON, COLOR_OLIVE, COLOR_LIME, COLOR_TEAL, COLOR_NAVY, COLOR_PURPLE, COLOR_BEIGE, COLOR_BROWN)
 
 /obj/item/stack/cable_coil/random_belt/Initialize(mapload, new_amount, merge)
 	. = ..()
-	stacktype = /obj/item/stack/cable_coil
+	stacktype_legacy = /obj/item/stack/cable_coil
 	color = pick(COLOR_RED, COLOR_YELLOW, COLOR_ORANGE)
 	amount = 30
 
@@ -973,7 +972,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	materials_base = list(MAT_STEEL = 50, MAT_GLASS = 20)
 	slot_flags = SLOT_BELT
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
-	stacktype = null
+	stacktype_legacy = null
 	split_type = /obj/item/stack/cable_coil
 	tool_speed = 0.25
 

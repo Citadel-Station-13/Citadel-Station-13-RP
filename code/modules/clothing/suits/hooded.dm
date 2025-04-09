@@ -63,7 +63,7 @@
 				else
 					hood.atom_flags &= ~PHORONGUARD
 				hood.set_armor(fetch_armor())
-				hood.copy_atom_colour(src)
+				hood.copy_atom_color(src)
 				// equip after armor / color changes
 				H.equip_to_slot_if_possible(hood, SLOT_ID_HEAD)
 				hood_up = TRUE
@@ -158,8 +158,8 @@
 	armor_type = /datum/armor/security/light_formalwear
 	hoodtype = /obj/item/clothing/head/hood/winter/captain
 	allowed =  list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
-	/obj/item/reagent_containers/spray/pepper,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/projectile/energy,
+	/obj/item/reagent_containers/spray/pepper,/obj/item/gun/projectile/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,
 	/obj/item/handcuffs,/obj/item/clothing/head/helmet)
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/captain/hop
@@ -177,8 +177,8 @@
 	armor_type = /datum/armor/security/light_formalwear
 	hoodtype = /obj/item/clothing/head/hood/winter/security
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
-	/obj/item/reagent_containers/spray/pepper,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/projectile/energy,
+	/obj/item/reagent_containers/spray/pepper,/obj/item/gun/projectile/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,
 	/obj/item/handcuffs,/obj/item/clothing/head/helmet)
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/security/hos
@@ -446,7 +446,7 @@
 		/obj/item/tank,
 		/obj/item/radio,
 		/obj/item/pickaxe,
-		/obj/item/gun/ballistic/sec/flash
+		/obj/item/gun/projectile/ballistic/sec/flash
 		)
 
 /obj/item/clothing/suit/storage/hooded/miner
@@ -470,11 +470,11 @@
 		/obj/item/radio,
 		/obj/item/suit_cooling_unit,
 		/obj/item/pickaxe,
-		/obj/item/gun/energy/kinetic_accelerator,
+		/obj/item/gun/projectile/energy/kinetic_accelerator,
 		/obj/item/kinetic_crusher,
 		/obj/item/resonator,
-		/obj/item/gun/energy/gun/miningcarbine,
-		/obj/item/gun/magnetic/matfed
+		/obj/item/gun/projectile/energy/gun/miningcarbine,
+		/obj/item/gun/projectile/magnetic/matfed
 		)
 
 // Eldritch suit
@@ -503,7 +503,7 @@
 	allowed = list(
 		/obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/pickaxe, /obj/item/material/twohanded/spear, /obj/item/material/twohanded/spear/bone,
 		/obj/item/material/knife/tacknife/combatknife/bone, /obj/item/material/knife/tacknife/survival/bone, /obj/item/material/knife/tacknife/survival/bone, /obj/item/melee/ashlander,
-		/obj/item/gun/ballistic/musket/pistol
+		/obj/item/gun/projectile/ballistic/musket/pistol
 		)
 	armor_type = /datum/armor/lavaland/goliath
 	hoodtype = /obj/item/clothing/head/hood/goliath
@@ -514,7 +514,7 @@
 	name = "drake armour"
 	icon_state = "dragon"
 	desc = "A suit of armour fashioned from the remains of an ash drake."
-	allowed = list(/obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/resonator, /obj/item/mining_scanner, /obj/item/mining_scanner/advanced, /obj/item/gun/energy/kinetic_accelerator, /obj/item/pickaxe, /obj/item/material/twohanded/spear)
+	allowed = list(/obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/resonator, /obj/item/mining_scanner, /obj/item/mining_scanner/advanced, /obj/item/gun/projectile/energy/kinetic_accelerator, /obj/item/pickaxe, /obj/item/material/twohanded/spear)
 	armor_type = /datum/armor/lavaland/drake
 	hoodtype = /obj/item/clothing/head/hood/drake
 	heat_protection_cover = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
@@ -594,8 +594,8 @@
 		)
 	blood_overlay_type = "armor"
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
-	/obj/item/gun/ballistic, /obj/item/ammo_magazine, /obj/item/melee/baton)
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/projectile/energy,
+	/obj/item/gun/projectile/ballistic, /obj/item/ammo_magazine, /obj/item/melee/baton)
 	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/heavy, /obj/item/clothing/accessory/storage/pouches)
 
 /obj/item/clothing/suit/storage/hooded/covertcarrier/can_equip(mob/M, slot, mob/user, flags)

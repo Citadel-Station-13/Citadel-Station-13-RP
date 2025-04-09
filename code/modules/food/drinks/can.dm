@@ -1,4 +1,7 @@
 /obj/item/reagent_containers/food/drinks/cans
+	name = "empty can"
+	desc = "You feel like there should be something to drink in here."
+	icon_state = "empty"
 	volume = 40 //just over one and a half cups
 	amount_per_transfer_from_this = 5
 	atom_flags = NONE //starts closed
@@ -14,6 +17,10 @@
 			var/turf/T = get_turf(src)
 			new modified_type(T)
 			qdel(src)
+
+/obj/item/reagent_containers/food/drinks/cans/empty
+	name = "sealable can"
+	desc = "A special can that can be filled then sealed. For when you want to make your own canned drinks."
 
 //DRINKS
 
@@ -346,3 +353,32 @@
 	. = ..()
 	reagents.add_reagent("diethylamine", 20)
 	reagents.add_reagent("water", 10)
+
+//Tajara Drinks
+/obj/item/reagent_containers/food/drinks/cans/evapmilk
+	name = "Evaporated Milk"
+	desc = "Milk that has been boiled to make it more shelf stable. A common practice among poorer and less advanced regions of space."
+	icon_state = "evapmilk"
+
+/obj/item/reagent_containers/food/drinks/cans/evapmilk/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("evapmilk", 30)
+
+/obj/item/reagent_containers/food/drinks/cans/kompot_taj
+	name = "Ashomarr'darr"
+	desc = "A traditional Tajara beverage similar to Kompot. It is made by boiling Ashomarr berries in water."
+	icon_state = "kompot_taj"
+
+/obj/item/reagent_containers/food/drinks/cans/kompot_taj/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("kompot_taj", 30)
+
+/obj/item/reagent_containers/food/drinks/cans/watercan
+	name = "Can of Water"
+	desc = "Probably contains less microplastics then bottled water."
+	icon_state = "watercan"
+
+/obj/item/reagent_containers/food/drinks/cans/watercan/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("water", 40) //Important for Crafting Recipes Also means Colonists don't need station/hotsprings for water.
+

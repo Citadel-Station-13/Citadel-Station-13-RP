@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(status_effects)
 	wait = 0.5
-	subsystem_flags = NONE
+	subsystem_flags = SS_NO_INIT
 	name = "Status Effects"
 
 	/// ticking effects
@@ -15,26 +15,22 @@ SUBSYSTEM_DEF(status_effects)
 			src.ticking += eff
 	return ..()
 
-/datum/controller/subsystem/status_effects/proc/register(datum/status_effect/effect)
-	ticking += effect
-
-/datum/controller/subsystem/status_effects/proc/unregister(datum/status_effect/effect)
-	ticking -= effect
-	currentrun -= effect
-
 /datum/controller/subsystem/status_effects/fire(resumed)
 	if(!resumed)
 		currentrun = ticking.Copy()
-	if(!length(currentrun))
+	// cache for speed
+	var/list/datum/status_effect/to_tick = currentrun
+	if(!length(to_tick))
 		return
 	var/i
 	var/datum/status_effect/effect
-	for(i in 1 to length(currentrun))
-		effect = currentrun[i]
+	// todo: this is mildly inefficient when there's a lot of slow-ticking status effects
+	for(i in 1 to length(to_tick))
+		effect = to_tick[i]
 		if(effect.tick_next > world.time)
 			continue
-		effect.tick(effect.tick_interval)
+		effect.tick(effect.tick_interval * 0.1)
 		effect.tick_next = world.time + effect.tick_interval
 		if(MC_TICK_CHECK_USAGE) // effect.tick() is SHOULD NOT SLEEP.
 			return
-	currentrun.Cut(1, i + 1)
+	to_tick.Cut(1, i + 1)

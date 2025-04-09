@@ -165,7 +165,7 @@
 	log_game("SMES FAILURE: <b>[src.x]X [src.y]Y [src.z]Z</b> User: [usr.ckey], Intensity: [intensity]/100")
 	message_admins("SMES FAILURE: <b>[src.x]X [src.y]Y [src.z]Z</b> User: [usr.ckey], Intensity: [intensity]/100 - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>")
 
-	var/used_hand = h_user.hand? BP_L_HAND : BP_R_HAND
+	var/used_hand = h_user.get_active_hand_organ()?.organ_tag
 
 	switch (intensity)
 		if (0 to 15)
@@ -214,7 +214,7 @@
 				h_user.afflict_paralyze(20 * 8)
 			else
 				to_chat(h_user, "A strong electrical arc sparks between you and [src], knocking you out for a while!")
-				h_user.electrocute_act(rand(35,75), src, def_zone = BP_TORSO)
+				h_user.electrocute(0, rand(35, 75), 0, NONE, BP_TORSO, src)
 			spawn()
 				empulse(get_turf(src), 6, 8, 12, 16)
 			apcs_overload(1, 10)
@@ -226,7 +226,7 @@
 			s.set_up(10,1,src)
 			to_chat(h_user, "A massive electrical arc sparks between you and [src]. The last thing you can think about is \"Oh shit...\"")
 			// Remember, we have few gigajoules of electricity here.. Turn them into crispy toast.
-			h_user.electrocute_act(rand(150,195), src, def_zone = BP_TORSO)
+			h_user.electrocute(0, rand(150, 195), 0, NONE, BP_TORSO, src)
 			spawn()
 				empulse(get_turf(src), 32, 64)
 			apcs_overload(5, 25)

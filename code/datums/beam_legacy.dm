@@ -224,7 +224,7 @@
 /obj/effect/ebeam/reactive/electric/on_contact(atom/movable/AM)
 	if(isliving(AM))
 		var/mob/living/L = AM
-		L.inflict_shock_damage(shock_amount)
+		L.inflict_shock_damage_legacy(shock_amount)
 
 /**
  * This is what you use to start a beam. Example: origin.Beam(target, args). **Store the return of this proc if you don't set maxdist or time, you need it to delete the beam.**

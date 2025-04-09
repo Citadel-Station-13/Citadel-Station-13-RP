@@ -1,4 +1,4 @@
-/datum/language/human/monkey
+/datum/prototype/language/human/monkey
 	id = LANGUAGE_ID_CHIMPANZEE
 	key = null
 	name = "Chimpanzee"
@@ -11,7 +11,7 @@
 	language_flags = LANGUAGE_RESTRICTED
 	shorthand = "MONK"
 
-/datum/language/skrell/monkey
+/datum/prototype/language/skrell/monkey
 	id = LANGUAGE_ID_NEAERA
 	key = null
 	name = SPECIES_MONKEY_SKRELL
@@ -21,7 +21,7 @@
 	language_flags = LANGUAGE_RESTRICTED
 	shorthand = "NEA"
 
-/datum/language/unathi/monkey
+/datum/prototype/language/unathi/monkey
 	id = LANGUAGE_ID_STOK
 	key = null
 	name = SPECIES_MONKEY_UNATHI
@@ -31,7 +31,7 @@
 	language_flags = LANGUAGE_RESTRICTED
 	shorthand = "STOK"
 
-/datum/language/tajaran/monkey
+/datum/prototype/language/tajaran/monkey
 	id = LANGUAGE_ID_FARWA
 	key = null
 	name = SPECIES_MONKEY_TAJ

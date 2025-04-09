@@ -724,12 +724,6 @@
 	icon_state = "cuttop_red"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "red", SLOT_ID_LEFT_HAND = "red")
 
-/obj/item/clothing/under/harness
-	name = "gear harness"
-	desc = "How... minimalist."
-	icon_state = "gear_harness"
-	body_cover_flags = 0
-
 /obj/item/clothing/under/dress/white
 	name = "white wedding dress"
 	desc = "A fancy white dress with a blue underdress."
@@ -2415,6 +2409,16 @@
 	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most."
 	icon = 'icons/clothing/uniform/misc/replika.dmi'
 	icon_state = "lstr"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/replika/sakr
+	name = "medical replikant bodysuit"
+	desc = "A skin-tight bodysuit designed for 2nd generation biosynthetics of the medical variety. Comes with default interfacing ports and a conspicuous lack of leg coverage."
+	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most."
+	icon = 'icons/clothing/uniform/misc/replika.dmi'
+	icon_state = "sakr"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL

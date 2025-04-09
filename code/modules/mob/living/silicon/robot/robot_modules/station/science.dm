@@ -45,9 +45,9 @@
 		/obj/item/reagent_containers/syringe,
 		/obj/item/reagent_containers/glass/beaker/large,
 		/obj/item/storage/part_replacer,
-		/obj/item/shockpaddles/robot/jumper,
+		/obj/item/shockpaddles/robot,
 		/obj/item/melee/baton/slime/robot,
-		/obj/item/gun/energy/taser/xeno/robot
+		/obj/item/gun/projectile/energy/taser/xeno/robot
 	)
 
 /obj/item/robot_module/robot/research/handle_special_module_init(mob/living/silicon/robot/R)
@@ -105,10 +105,10 @@
 		/obj/item/reagent_containers/syringe,
 		/obj/item/storage/part_replacer,
 		/obj/item/card/robot,
-		/obj/item/shockpaddles/robot/jumper,
+		/obj/item/shockpaddles/robot,
 		/obj/item/tool/wirecutters/cyborg,
 		/obj/item/melee/baton/slime/robot,
-		/obj/item/gun/energy/taser/xeno/robot,
+		/obj/item/gun/projectile/energy/taser/xeno/robot,
 		/obj/item/surgical/scalpel/cyborg,
 		/obj/item/surgical/circular_saw/cyborg
 	)

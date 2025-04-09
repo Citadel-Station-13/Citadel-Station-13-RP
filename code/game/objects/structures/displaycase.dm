@@ -25,7 +25,7 @@
 
 /obj/structure/displaycase/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if((atom_flags & ATOM_BROKEN) && occupied)
-		new /obj/item/gun/energy/captain( src.loc )
+		new /obj/item/gun/projectile/energy/captain( src.loc )
 		to_chat(user, "<span class='notice'>You deactivate the hover field built into the case.</span>")
 		src.occupied = 0
 		src.add_fingerprint(user)

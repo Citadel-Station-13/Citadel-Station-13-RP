@@ -96,7 +96,7 @@
 
 //? Styles
 
-/obj/item/clothing/under/available_styles(mob/user)
+/obj/item/clothing/under/style_repick_query(mob/user)
 	. = list()
 	var/old_roll = worn_rolled_down
 	var/old_sleeves = worn_rolled_sleeves
@@ -114,7 +114,7 @@
 	worn_rolled_down = old_roll
 	worn_rolled_sleeves = old_sleeves
 
-/obj/item/clothing/under/set_style(style, mob/user)
+/obj/item/clothing/under/style_repick_set(style, mob/user)
 	. = ..()
 	if(.)
 		return
@@ -122,21 +122,21 @@
 		if("normal")
 			worn_rolled_down = UNIFORM_ROLL_FALSE
 			worn_rolled_sleeves = UNIFORM_ROLL_FALSE
-			body_cover_flags = initial(body_cover_flags)
+			set_body_cover_flags(initial(body_cover_flags))
 			update_worn_icon()
 			to_chat(user, SPAN_NOTICE("You roll [src] back to normal."))
 			return TRUE
 		if("rolled down")
 			worn_rolled_down = UNIFORM_ROLL_TRUE
 			worn_rolled_sleeves = UNIFORM_ROLL_FALSE
-			body_cover_flags = (initial(body_cover_flags) & ~(UPPER_TORSO | ARMS | HANDS))
+			set_body_cover_flags(initial(body_cover_flags) & ~(UPPER_TORSO | ARMS | HANDS))
 			update_worn_icon()
 			to_chat(user, SPAN_NOTICE("You roll [src] down."))
 			return TRUE
 		if("rolled sleeves")
 			worn_rolled_down = UNIFORM_ROLL_FALSE
 			worn_rolled_sleeves = UNIFORM_ROLL_TRUE
-			body_cover_flags = (initial(body_cover_flags) & ~(ARMS | HANDS))
+			set_body_cover_flags(initial(body_cover_flags) & ~(ARMS | HANDS))
 			update_worn_icon()
 			to_chat(user, SPAN_NOTICE("You roll [src]'s sleeves."))
 			return TRUE
@@ -170,7 +170,7 @@
 /obj/item/clothing/under/proc/update_rolldown(updating)
 	var/has_roll
 	var/detected_bodytype = BODYTYPE_DEFAULT
-	var/mob/living/carbon/human/H = worn_mob()
+	var/mob/living/carbon/human/H = get_worn_mob()
 	if(istype(H))
 		detected_bodytype = H.species.get_effective_bodytype(H, src, worn_slot)
 	switch(worn_has_rolldown)
@@ -192,7 +192,7 @@
 /obj/item/clothing/under/proc/update_rollsleeve(updating)
 	var/has_sleeves
 	var/detected_bodytype = BODYTYPE_DEFAULT
-	var/mob/living/carbon/human/H = worn_mob()
+	var/mob/living/carbon/human/H = get_worn_mob()
 	if(istype(H))
 		detected_bodytype = H.species.get_effective_bodytype(H, src, worn_slot)
 	switch(worn_has_rollsleeve)
@@ -286,11 +286,11 @@
 				SPAN_WARNING("[user] is trying to set \the [src]'s sensors!"),
 				SPAN_WARNING("[user] is trying to set your sensors!")
 			)
-			var/mob/M = worn_mob()
+			var/mob/M = get_worn_mob()
 			if(do_after(user, HUMAN_STRIP_DELAY, M, DO_AFTER_IGNORE_ACTIVE_ITEM))
 				. = strip_menu_sensor_interact(user, M)
 
-/obj/item/clothing/under/proc/strip_menu_sensor_interact(mob/user, mob/wearer = worn_mob())
+/obj/item/clothing/under/proc/strip_menu_sensor_interact(mob/user, mob/wearer = get_worn_mob())
 	add_attack_logs(user, wearer, "Adjusted suit sensor level")
 	set_sensors(user)
 

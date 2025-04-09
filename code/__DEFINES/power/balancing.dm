@@ -3,8 +3,22 @@
 //* Cells
 
 #define CELLRATE_DEFAULT 0.5
+
+/**
+ * current calculations
+ * cellrate 0.5 = 0.5 kj/unit
+ * for 10k cell, 5000kj
+ * 1 Wh = 60J-S*60s/m = 3600J = 3.6kJ
+ * 10k cell --> 1388.89 Wh
+ * damn, future cells be pogging
+ *
+ * * Funnily enough, this puts our cells at just about ~10x the capacity of modern day cells.
+ *   That's pretty reasonable given they're meant to power energy weapons and hilariously
+ *   sci-fi technologies.
+ */
+
 /// the closest thing we'll get to a cvar - cellrate is kJ per cell unit. kJ to avoid float precision loss.
-GLOBAL_VAR_INIT(cellrate, CELLRATE_DEFAULT)
+GLOBAL_VAR_INIT(cellrate, 0.5)
 
 #define POWER_CELL_CAPACITY_BASE 1000
 

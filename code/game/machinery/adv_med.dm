@@ -270,7 +270,7 @@
 			update_icon() // Update health display for consoles with light and such.
 			var/mob/living/carbon/human/H = scanner.occupant
 			occupantData["name"] = H.name
-			occupantData["stat"] = H.stat
+			occupantData["stbat"] = H.stat
 			occupantData["health"] = H.health
 			occupantData["maxHealth"] = H.getMaxHealth()
 
@@ -292,8 +292,8 @@
 			occupantData["hasBorer"] = H.has_brain_worms()
 
 			var/bloodData[0]
-			if(H.vessel)
-				var/blood_volume = round(H.vessel.get_reagent_amount("blood"))
+			if(H.blood_holder && H.species.blood_volume)
+				var/blood_volume = round(H.blood_holder.get_total_volume())
 				var/blood_max = H.species.blood_volume
 				bloodData["volume"] = blood_volume
 				bloodData["percent"] = round(((blood_volume / blood_max)*100))
@@ -301,18 +301,22 @@
 			occupantData["blood"] = bloodData
 
 			var/reagentData[0]
-			if(H.reagents.reagent_list.len >= 1)
-				for(var/datum/reagent/R in H.reagents.reagent_list)
-					reagentData[++reagentData.len] = list("name" = R.name, "amount" = R.volume)
+			if(length(H.reagents.reagent_volumes))
+				for(var/id in H.reagents?.reagent_volumes)
+					var/datum/reagent/R = SSchemistry.fetch_reagent(id)
+					var/volume = H.reagents.reagent_volumes[id]
+					reagentData[++reagentData.len] = list("name" = R.name, "amount" = volume)
 			else
 				reagentData = null
 
 			occupantData["reagents"] = reagentData
 
 			var/ingestedData[0]
-			if(H.ingested.reagent_list.len >= 1)
-				for(var/datum/reagent/R in H.ingested.reagent_list)
-					ingestedData[++ingestedData.len] = list("name" = R.name, "amount" = R.volume)
+			if(length(H.ingested.reagent_volumes))
+				for(var/id in H.ingested?.reagent_volumes)
+					var/datum/reagent/R = SSchemistry.fetch_reagent(id)
+					var/volume = H.ingested.reagent_volumes[id]
+					ingestedData[++ingestedData.len] = list("name" = R.name, "amount" = volume)
 			else
 				ingestedData = null
 
@@ -479,8 +483,8 @@
 			if(occupant.has_brain_worms())
 				dat += "Large growth detected in frontal lobe, possibly cancerous. Surgical removal is recommended.<br>"
 
-			if(occupant.vessel)
-				var/blood_volume = round(occupant.vessel.get_reagent_amount("blood"))
+			if(occupant.blood_holder)
+				var/blood_volume = round(occupant.blood_holder.get_total_volume())
 				var/blood_max = occupant.species.blood_volume
 				var/blood_percent =  blood_volume / blood_max
 				blood_percent *= 100
@@ -488,13 +492,15 @@
 				extra_font = "<font color=[blood_volume > 448 ? "blue" : "red"]>"
 				dat += "[extra_font]\tBlood Level %: [blood_percent] ([blood_volume] units)</font><br>"
 
-			if(occupant.reagents)
-				for(var/datum/reagent/R in occupant.reagents.reagent_list)
-					dat += "Reagent: [R.name], Amount: [R.volume]<br>"
+			for(var/id in occupant.reagents?.reagent_volumes)
+				var/datum/reagent/R = SSchemistry.fetch_reagent(id)
+				var/volume = occupant.reagents.reagent_volumes[id]
+				dat += "Reagent: [R.name], Amount: [volume]<br>"
 
-			if(occupant.ingested)
-				for(var/datum/reagent/R in occupant.ingested.reagent_list)
-					dat += "Stomach: [R.name], Amount: [R.volume]<br>"
+			for(var/id in occupant.ingested?.reagent_volumes)
+				var/datum/reagent/R = SSchemistry.fetch_reagent(id)
+				var/volume = occupant.ingested.reagent_volumes[id]
+				dat += "Stomach: [R.name], Amount: [volume]<br>"
 
 			dat += "<hr><table border='1'>"
 			dat += "<tr>"
@@ -630,6 +636,7 @@
 	return incoming
 
 /obj/machinery/bodyscanner/update_icon()
+	. = ..()
 	if(machine_stat & (NOPOWER|BROKEN))
 		icon_state = "scanner_off"
 		set_light(0)
@@ -657,6 +664,7 @@
 			console.update_icon(h_ratio)
 
 /obj/machinery/body_scanconsole/update_icon(var/h_ratio)
+	. = ..()
 	if(machine_stat & (NOPOWER|BROKEN))
 		icon_state = "scanner_terminal_off"
 		set_light(0)

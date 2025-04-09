@@ -1122,6 +1122,12 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west)
+"fi" = (
+/obj/effect/shuttle_landmark/automatic{
+	base_turf = /turf/simulated/floor/outdoors/snow/lythios43c
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "fj" = (
 /obj/machinery/power/apc/alarms_hidden/north_mount{
 	cell_type = null;
@@ -2116,6 +2122,7 @@
 	pixel_x = 28;
 	pixel_y = 6
 	},
+/obj/map_helper/access_helper/airlock/station/science/external_airlock,
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1379;
 	icon_state = "door_locked";
@@ -2123,7 +2130,6 @@
 	locked = 1;
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/science/external_airlock,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/airlock)
 "jv" = (
@@ -3618,6 +3624,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/surface)
 "qK" = (
+/obj/map_helper/access_helper/airlock/station/science/external_airlock,
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1379;
 	icon_state = "door_locked";
@@ -3625,7 +3632,6 @@
 	locked = 1;
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/science/external_airlock,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/airlock)
 "qL" = (
@@ -4948,6 +4954,10 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass{
+	req_one_access = list(18,47)
+	},
+/obj/map_helper/access_helper/airlock/station/science/external_airlock,
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1379;
 	icon_state = "door_locked";
@@ -4955,10 +4965,6 @@
 	locked = 1;
 	req_one_access = null
 	},
-/obj/machinery/door/firedoor/glass{
-	req_one_access = list(18,47)
-	},
-/obj/map_helper/access_helper/airlock/station/science/external_airlock,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/airlock)
 "wK" = (
@@ -5098,7 +5104,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 5
 	},
-/obj/structure/sign/department/toxins,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/airlock)
 "xo" = (
@@ -7096,6 +7101,10 @@
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/storage)
+"Hf" = (
+/obj/tether_away_spawner/lythios_animals,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/exterior/bunker)
 "Hg" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "0-8"
@@ -7162,7 +7171,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost/airlock/one)
 "HC" = (
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark";
 	name = "glacier wall"
@@ -7459,7 +7468,7 @@
 /turf/simulated/open/lythios43c,
 /area/turbolift/rwest_mining/surface)
 "IY" = (
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark";
 	name = "glacier wall"
@@ -9042,6 +9051,7 @@
 /obj/machinery/door/firedoor/glass{
 	req_one_access = list(18,47)
 	},
+/obj/map_helper/access_helper/airlock/station/science/external_airlock,
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1379;
 	icon_state = "door_locked";
@@ -9049,7 +9059,6 @@
 	locked = 1;
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/science/external_airlock,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/airlock)
 "Qu" = (
@@ -19002,7 +19011,7 @@ PP
 PP
 PP
 sv
-sv
+cL
 sv
 sv
 sv
@@ -20167,7 +20176,7 @@ PP
 PP
 PP
 sv
-cL
+sv
 sv
 sv
 sv
@@ -20559,7 +20568,7 @@ sv
 sv
 sv
 sv
-sv
+fi
 sv
 sv
 sv
@@ -22121,7 +22130,7 @@ sv
 sv
 sv
 sv
-sv
+fi
 sv
 sv
 sv
@@ -22296,7 +22305,7 @@ PP
 sv
 sv
 sv
-sv
+cL
 sv
 sv
 sv
@@ -23474,7 +23483,7 @@ sv
 sv
 sv
 sv
-cL
+sv
 sv
 sv
 sv
@@ -26180,7 +26189,7 @@ nz
 nz
 nz
 nz
-nz
+Hf
 nz
 YE
 sv
@@ -26188,7 +26197,7 @@ sv
 sv
 sv
 sv
-sv
+fi
 sv
 sv
 sv
@@ -29094,7 +29103,7 @@ sv
 sv
 sv
 sv
-sv
+cL
 sv
 sv
 sv

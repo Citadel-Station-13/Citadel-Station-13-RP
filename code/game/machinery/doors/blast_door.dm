@@ -57,6 +57,7 @@
 // Parameters: None
 // Description: Updates icon of this object. Uses icon state variables.
 /obj/machinery/door/blast/update_icon()
+	. = ..()
 	if(density)
 		icon_state = icon_state_closed
 	else
@@ -135,12 +136,6 @@
 	src.add_fingerprint(user, 0, I)
 	if(istype(I, /obj/item)) // For reasons unknown, sometimes C is actually not what it is advertised as, like a mob.
 		if(I.pry == 1 && (user.a_intent != INTENT_HARM || (machine_stat & BROKEN))) // Can we pry it open with something, like a crowbar/fireaxe/lingblade?
-			if(istype(I,/obj/item/material/twohanded/fireaxe)) // Fireaxes need to be in both hands to pry.
-				var/obj/item/material/twohanded/fireaxe/F = I
-				if(!F.wielded)
-					to_chat(user, "<span class='warning'>You need to be wielding \the [F] to do that.</span>")
-					return
-
 			// If we're at this point, it's a fireaxe in both hands or something else that doesn't care for twohanding.
 			if(((machine_stat & NOPOWER) || (machine_stat & BROKEN)) && !( src.operating ))
 				force_toggle(1, user)

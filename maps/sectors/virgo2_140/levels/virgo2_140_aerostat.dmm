@@ -156,7 +156,7 @@
 /turf/simulated/floor/plating/virgo2,
 /area/tether_away/aerostat/solars)
 "aw" = (
-/turf/simulated/floor/sky/virgo2_sky,
+/turf/simulated/sky/virgo2_sky,
 /area/tether_away/aerostat)
 "ax" = (
 /obj/machinery/power/solar,
@@ -800,11 +800,11 @@
 "cv" = (
 /obj/effect/shuttle_landmark{
 	base_area = /area/tether_away/aerostat;
-	base_turf = /turf/simulated/floor/sky/virgo2_sky;
+	base_turf = /turf/simulated/sky/virgo2_sky;
 	landmark_tag = "aerostat_west";
 	name = "Virgo 2 Aerostat (W)"
 	},
-/turf/simulated/floor/sky/virgo2_sky,
+/turf/simulated/sky/virgo2_sky,
 /area/tether_away/aerostat)
 "cw" = (
 /obj/effect/floor_decal/rust,
@@ -1194,7 +1194,7 @@
 /area/tether_away/aerostat/solars)
 "dw" = (
 /obj/structure/metal_edge,
-/turf/simulated/floor/sky/virgo2_sky,
+/turf/simulated/sky/virgo2_sky,
 /area/tether_away/aerostat/solars)
 "dx" = (
 /obj/structure/cable/yellow{
@@ -1515,11 +1515,11 @@
 "kD" = (
 /obj/effect/shuttle_landmark{
 	base_area = /area/tether_away/aerostat;
-	base_turf = /turf/simulated/floor/sky/virgo2_sky;
+	base_turf = /turf/simulated/sky/virgo2_sky;
 	landmark_tag = "aerostat_northwest";
 	name = "Virgo 2 Aerostat (NW)"
 	},
-/turf/simulated/floor/sky/virgo2_sky,
+/turf/simulated/sky/virgo2_sky,
 /area/tether_away/aerostat)
 "kF" = (
 /obj/random/action_figure,
@@ -1537,7 +1537,7 @@
 /area/tether_away/aerostat/inside)
 "uU" = (
 /obj/structure/table/standard,
-/obj/item/gun/energy/taser/xeno,
+/obj/item/gun/projectile/energy/taser/xeno,
 /obj/random/cigarettes,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/tether_away/aerostat/inside)
@@ -1552,11 +1552,11 @@
 "zX" = (
 /obj/effect/shuttle_landmark{
 	base_area = /area/tether_away/aerostat;
-	base_turf = /turf/simulated/floor/sky/virgo2_sky;
+	base_turf = /turf/simulated/sky/virgo2_sky;
 	landmark_tag = "aerostat_south";
 	name = "Virgo 2 Aerostat (S)"
 	},
-/turf/simulated/floor/sky/virgo2_sky,
+/turf/simulated/sky/virgo2_sky,
 /area/tether_away/aerostat)
 "AS" = (
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -1568,11 +1568,11 @@
 "Dt" = (
 /obj/effect/shuttle_landmark{
 	base_area = /area/tether_away/aerostat;
-	base_turf = /turf/simulated/floor/sky/virgo2_sky;
+	base_turf = /turf/simulated/sky/virgo2_sky;
 	landmark_tag = "aerostat_northeast";
 	name = "Virgo 2 Aerostat (NE)"
 	},
-/turf/simulated/floor/sky/virgo2_sky,
+/turf/simulated/sky/virgo2_sky,
 /area/tether_away/aerostat)
 "Du" = (
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -1604,7 +1604,7 @@
 /area/tether_away/aerostat/inside)
 "JG" = (
 /obj/structure/metal_edge,
-/turf/simulated/floor/sky/virgo2_sky,
+/turf/simulated/sky/virgo2_sky,
 /area/tether_away/aerostat)
 "Lw" = (
 /obj/structure/table/standard,
@@ -1637,7 +1637,7 @@
 /area/tether_away/aerostat/inside)
 "Tq" = (
 /obj/overmap/entity/visitable/sector/virgo2,
-/turf/simulated/floor/sky/virgo2_sky,
+/turf/simulated/sky/virgo2_sky,
 /area/tether_away/aerostat)
 "TR" = (
 /obj/structure/salvageable/computer,
@@ -1662,7 +1662,7 @@
 /area/tether_away/aerostat)
 "Ym" = (
 /obj/structure/table/standard,
-/obj/item/gun/energy/taser/xeno,
+/obj/item/gun/projectile/energy/taser/xeno,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/tether_away/aerostat/inside)
 "ZK" = (

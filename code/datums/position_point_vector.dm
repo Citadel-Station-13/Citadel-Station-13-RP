@@ -56,16 +56,22 @@
 /datum/position/proc/return_point()
 	return new /datum/point(src)
 
+// todo: shouldn't be global scope
 /proc/point_midpoint_points(datum/point/a, datum/point/b)	//Obviously will not support multiZ calculations! Same for the two below.
-	var/datum/point/P = new
-	P.x = a.x + (b.x - a.x) / 2
-	P.y = a.y + (b.y - a.y) / 2
-	P.z = a.z
-	return P
+	var/datum/point/created = new
+	created.x = a.x + (b.x - a.x) / 2
+	created.y = a.y + (b.y - a.y) / 2
+	created.z = a.z
+	return created
 
+// todo: shouldn't be global scope
 /proc/pixel_length_between_points(datum/point/a, datum/point/b)
 	return sqrt(((b.x - a.x) ** 2) + ((b.y - a.y) ** 2))
 
+// todo: shouldn't be global scope
+/**
+ * @return angle between A and B, as degrees **clockwise from north**
+ */
 /proc/angle_between_points(datum/point/a, datum/point/b)
 	return arctan((b.y - a.y), (b.x - a.x))
 
@@ -88,6 +94,7 @@
 	p.z = z
 	return p
 
+// todo: get first of first argument wrapping, use to_point() on /datum/position and from_atom() / from_position() on /datum/point
 /datum/point/New(_x, _y, _z, _pixel_x = 0, _pixel_y = 0)	//first argument can also be a /datum/position or /atom.
 	if(istype(_x, /datum/position))
 		var/datum/position/P = _x
@@ -152,8 +159,8 @@
 	// we start at 16, 16
 	. = x % WORLD_ICON_SIZE
 	if(!.)
-		return 16
-	. -= 16
+		return WORLD_ICON_SIZE * 0.5
+	. -= WORLD_ICON_SIZE * 0.5
 
 /**
  * return rounded pixel y
@@ -164,8 +171,8 @@
 	// we start at 16, 16
 	. = y % WORLD_ICON_SIZE
 	if(!.)
-		return 16
-	. -= 16
+		return WORLD_ICON_SIZE * 0.5
+	. -= WORLD_ICON_SIZE * 0.5
 
 /**
  * return  turf

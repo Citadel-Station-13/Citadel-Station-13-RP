@@ -5,7 +5,7 @@
 	blood_level = 1
 
 /datum/surgery_step/internal/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-
+	if(!..()) return FALSE
 	if (!hasorgans(target))
 		return 0
 
@@ -58,6 +58,8 @@
 //				CHEST INTERNAL ORGAN SURGERY					//
 //////////////////////////////////////////////////////////////////
 /datum/surgery_step/internal/fix_organ
+	step_name = "Fix organs"
+
 	allowed_tools = list(
 	/obj/item/stack/medical/advanced/bruise_pack= 100,		\
 	/obj/item/stack/medical/bruise_pack = 20
@@ -145,9 +147,11 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/internal/detatch_organ/
+	step_name = "Detatch organ"
 
 	allowed_tools = list(
 	/obj/item/surgical/scalpel = 100,		\
+	/obj/item/surgical/scalpel_bronze = 90,	\
 	/obj/item/surgical/scalpel_primitive = 80,	\
 	/obj/item/material/knife = 75,	\
 	/obj/item/material/shard = 50, 		\
@@ -208,6 +212,7 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/internal/remove_organ
+	step_name = "Extract organ"
 
 	allowed_tools = list(
 	/obj/item/surgical/hemostat = 100,	\
@@ -267,6 +272,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/internal/replace_organ
+	step_name = "Insert organ"
+
 	allowed_tools = list(
 	/obj/item/organ = 100
 	)
@@ -346,6 +353,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/internal/attach_organ
+	step_name = "Attach organ"
+
 	allowed_tools = list(
 	/obj/item/surgical/FixOVein = 100, \
 	/obj/item/stack/cable_coil = 75
@@ -398,6 +407,7 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/internal/rip_organ
+	step_name = "Rip organ"
 
 	allowed_tools = list(
 	/obj/item/surgical/scalpel/ripper = 100

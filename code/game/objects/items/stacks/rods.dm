@@ -13,18 +13,20 @@
 	materials_base = list(MAT_STEEL = SHEET_MATERIAL_AMOUNT / 2)
 	max_amount = 60
 	attack_verb = list("hit", "bludgeoned", "whacked")
+	skip_legacy_icon_update = TRUE
 
 /obj/item/stack/rods/generate_explicit_recipes()
 	. = list()
 	. += create_stack_recipe_datum(name = "grille", product = /obj/structure/grille, cost = 2, time = 1 SECONDS)
 	. += create_stack_recipe_datum(name = "catwalk", product = /obj/structure/catwalk, cost = 2, time = 1 SECONDS)
 
-/obj/item/stack/rods/update_icon()
+/obj/item/stack/rods/update_icon_state()
 	var/amount = get_amount()
 	if((amount <= 5) && (amount > 0))
 		icon_state = "rods-[amount]"
 	else
 		icon_state = "rods"
+	return ..()
 
 /obj/item/stack/rods/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/weldingtool))
@@ -64,5 +66,6 @@
 	gender = NEUTER
 	uses_charge = 1
 	charge_costs = list(500)
-	stacktype = /obj/item/stack/rods
+	stack_type = /obj/item/stack/rods
+	stacktype_legacy = /obj/item/stack/rods
 	no_variants = TRUE

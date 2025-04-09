@@ -345,12 +345,6 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 			"You try to pry \the [src] [density ? "open" : "closed"], but it is welded in place!",\
 			"You hear someone struggle and metal straining.")
 			return
-
-		if(istype(C,/obj/item/material/twohanded/fireaxe))
-			var/obj/item/material/twohanded/fireaxe/F = C
-			if(!F.wielded)
-				return
-
 		if(prying)
 			to_chat(user, "<span class='notice'>Someone's already prying that [density ? "open" : "closed"].</span>")
 			return
@@ -475,9 +469,11 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 
 
 /obj/machinery/door/firedoor/update_icon()
-	var/image/lights_overlay
 	cut_overlays()
+	. = ..()
+
 	set_light(0)
+	var/image/lights_overlay
 	var/do_set_light = FALSE
 
 	if(density)
@@ -504,8 +500,6 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 
 	if(do_set_light)
 		set_light(2, 0.25, COLOR_SUN)
-
-	return
 
 /obj/machinery/door/firedoor/border_only
 /*

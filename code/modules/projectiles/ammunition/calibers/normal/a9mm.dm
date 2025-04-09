@@ -1,11 +1,12 @@
 /datum/ammo_caliber/a9mm
+	id = "a9mm"
 	caliber = "9mm"
 
 /obj/item/ammo_casing/a9mm
 	desc = "A 9mm bullet casing."
 	icon = 'icons/modules/projectiles/casings/slim.dmi'
 	icon_state = "small"
-	caliber = /datum/ammo_caliber/a9mm
+	casing_caliber = /datum/ammo_caliber/a9mm
 	projectile_type = /obj/projectile/bullet/pistol
 	materials_base = list(MAT_STEEL = 60)
 
@@ -57,12 +58,12 @@
 	rendering_count = 1
 	materials_base = list(MAT_STEEL = 600)
 	ammo_preload = /obj/item/ammo_casing/a9mm
-	ammo_max = 10
+	ammo_max = 15
 
 /obj/item/ammo_magazine/a9mm/large
 	icon_state = "9x19-ext-1"
 	base_icon_state = "9x19-ext"
-	ammo_max = 17
+	ammo_max = 21
 
 /obj/item/ammo_magazine/a9mm/large/ap
 	name = "magazine (9mm armor-piercing)"

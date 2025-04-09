@@ -608,7 +608,7 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/gun/ballistic/musket/pistol,
+/obj/item/gun/projectile/ballistic/musket/pistol,
 /obj/item/reagent_containers/glass/powder_horn/filled,
 /obj/item/storage/box/munition_box,
 /turf/simulated/floor/wood/broken,
@@ -714,7 +714,7 @@
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/ship/ghostship/hangarcontrol)
 "dv" = (
-/obj/structure/sign/poster/nanotrasen,
+/obj/structure/poster/nanotrasen,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/corridor1)
 "dw" = (
@@ -1026,7 +1026,7 @@
 /turf/simulated/floor,
 /area/ship/ghostship/engines2)
 "ei" = (
-/obj/structure/sign/poster/nanotrasen,
+/obj/structure/poster/nanotrasen,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/hangarcontrol)
 "ej" = (
@@ -1301,7 +1301,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/maintenance1)
 "eS" = (
-/obj/structure/sign/poster/nanotrasen,
+/obj/structure/poster/nanotrasen,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/maintenance1)
 "eT" = (
@@ -2637,7 +2637,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/secmain)
 "hG" = (
-/obj/structure/sign/poster/nanotrasen,
+/obj/structure/poster/nanotrasen,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/secmain)
 "hH" = (
@@ -3146,7 +3146,7 @@
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/ship/ghostship/corridor6)
 "iq" = (
-/obj/structure/sign/poster/nanotrasen,
+/obj/structure/poster/nanotrasen,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/bridge)
 "ir" = (
@@ -3271,11 +3271,11 @@
 /area/ship/ghostship/engines)
 "iE" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/ballistic/pirate/junker_pistol{
+/obj/item/gun/projectile/ballistic/pirate/junker_pistol{
 	pixel_y = -5
 	},
-/obj/item/gun/ballistic/pirate/junker_pistol,
-/obj/item/gun/ballistic/pirate/junker_pistol{
+/obj/item/gun/projectile/ballistic/pirate/junker_pistol,
+/obj/item/gun/projectile/ballistic/pirate/junker_pistol{
 	pixel_y = 5
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -3310,11 +3310,11 @@
 /area/ship/ghostship/armoury)
 "iH" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/ballistic/pirate{
+/obj/item/gun/projectile/ballistic/pirate{
 	pixel_y = -4
 	},
-/obj/item/gun/ballistic/pirate,
-/obj/item/gun/ballistic/pirate{
+/obj/item/gun/projectile/ballistic/pirate,
+/obj/item/gun/projectile/ballistic/pirate{
 	pixel_y = 4
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -3786,7 +3786,7 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/gun/ballistic/musket/pistol,
+/obj/item/gun/projectile/ballistic/musket/pistol,
 /obj/item/reagent_containers/glass/powder_horn/filled,
 /obj/item/storage/box/munition_box,
 /turf/simulated/floor/wood/broken,
@@ -3894,7 +3894,7 @@
 	id = "bridgeD";
 	name = "window shutters button"
 	},
-/obj/item/gun/energy/zip,
+/obj/item/gun/projectile/energy/zip,
 /turf/simulated/floor/tiled/steel_dirty/red,
 /area/ship/ghostship/bridge)
 "jR" = (
@@ -3981,11 +3981,11 @@
 /area/ship/ghostship/hangarcontrol)
 "kd" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/ballistic/pirate/junker_pistol{
+/obj/item/gun/projectile/ballistic/pirate/junker_pistol{
 	pixel_y = -5
 	},
-/obj/item/gun/ballistic/pirate/junker_pistol,
-/obj/item/gun/ballistic/pirate/junker_pistol{
+/obj/item/gun/projectile/ballistic/pirate/junker_pistol,
+/obj/item/gun/projectile/ballistic/pirate/junker_pistol{
 	pixel_y = 5
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -4596,11 +4596,11 @@
 /area/ship/ghostship/armoury)
 "lp" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/ballistic/pirate{
+/obj/item/gun/projectile/ballistic/pirate{
 	pixel_y = -4
 	},
-/obj/item/gun/ballistic/pirate,
-/obj/item/gun/ballistic/pirate{
+/obj/item/gun/projectile/ballistic/pirate,
+/obj/item/gun/projectile/ballistic/pirate{
 	pixel_y = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
@@ -5893,7 +5893,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/seclobby2)
 "nM" = (
-/obj/structure/sign/poster/nanotrasen,
+/obj/structure/poster/nanotrasen,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/seclobby2)
 "nN" = (
@@ -7309,7 +7309,7 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/gun/ballistic/musket/pistol,
+/obj/item/gun/projectile/ballistic/musket/pistol,
 /obj/item/reagent_containers/glass/powder_horn/filled,
 /obj/item/storage/box/munition_box,
 /turf/simulated/floor/wood/broken,
@@ -7322,7 +7322,7 @@
 /turf/simulated/floor/flesh,
 /area/ship/ghostship/sm)
 "qI" = (
-/obj/structure/sign/poster/nanotrasen,
+/obj/structure/poster/nanotrasen,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/captqua)
 "qJ" = (
@@ -8428,7 +8428,7 @@
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/ship/ghostship/seccells)
 "ty" = (
-/obj/structure/sign/poster/nanotrasen,
+/obj/structure/poster/nanotrasen,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/seccells)
 "tz" = (
@@ -8448,7 +8448,7 @@
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/ship/ghostship/sechall)
 "tA" = (
-/obj/structure/sign/poster/nanotrasen,
+/obj/structure/poster/nanotrasen,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/seclobby)
 "tB" = (
@@ -8872,7 +8872,7 @@
 /turf/simulated/floor/reinforced,
 /area/ship/ghostship/starboardhangar)
 "uv" = (
-/obj/structure/sign/poster/nanotrasen,
+/obj/structure/poster/nanotrasen,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/expedition)
 "uw" = (
@@ -9279,7 +9279,7 @@
 /obj/structure/table/woodentable,
 /obj/item/paper_bin,
 /obj/item/clothing/head/pirate,
-/obj/item/gun/ballistic/deagle/camo,
+/obj/item/gun/projectile/ballistic/deagle/camo,
 /obj/item/melee/transforming/energy/sword/cutlass,
 /obj/item/melee/transforming/energy/sword/cutlass,
 /turf/simulated/floor/wood/broken,
@@ -9317,7 +9317,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/corridor2)
 "vD" = (
-/obj/structure/sign/poster/nanotrasen,
+/obj/structure/poster/nanotrasen,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/corridor2)
 "vE" = (
@@ -9402,7 +9402,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/maintenance2)
 "vS" = (
-/obj/structure/sign/poster/nanotrasen,
+/obj/structure/poster/nanotrasen,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/maintenance2)
 "vT" = (
@@ -9963,11 +9963,11 @@
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/ship/ghostship/maintenancerim)
 "xm" = (
-/obj/structure/sign/poster/nanotrasen,
+/obj/structure/poster/nanotrasen,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/northairlock)
 "xn" = (
-/obj/structure/sign/poster/nanotrasen,
+/obj/structure/poster/nanotrasen,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/maintenancerim)
 "xo" = (
@@ -10073,7 +10073,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ghostship/southairlock)
 "xT" = (
-/obj/structure/sign/poster,
+/obj/structure/poster,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/maintenancerim)
 "xU" = (
@@ -10344,7 +10344,7 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/gun/ballistic/musket/pistol,
+/obj/item/gun/projectile/ballistic/musket/pistol,
 /obj/item/reagent_containers/glass/powder_horn/filled,
 /obj/item/storage/box/munition_box,
 /turf/simulated/floor/wood/broken,
@@ -10387,7 +10387,7 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/gun/ballistic/musket/pistol,
+/obj/item/gun/projectile/ballistic/musket/pistol,
 /obj/item/reagent_containers/glass/powder_horn/filled,
 /obj/item/storage/box/munition_box,
 /turf/simulated/floor/wood/broken,
@@ -10477,8 +10477,8 @@
 /area/ship/ghostship/hangar)
 "Dr" = (
 /obj/structure/table/standard,
-/obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster,
-/obj/item/mecha_parts/mecha_equipment/anticcw_armor_booster,
+/obj/item/vehicle_module/antiproj_armor_booster,
+/obj/item/vehicle_module/anticcw_armor_booster,
 /turf/simulated/floor/reinforced,
 /area/ship/ghostship/porthangar)
 "Du" = (
@@ -10565,13 +10565,13 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/gun/ballistic/musket/pistol,
+/obj/item/gun/projectile/ballistic/musket/pistol,
 /obj/item/reagent_containers/glass/powder_horn/filled,
 /obj/item/storage/box/munition_box,
 /turf/simulated/floor/wood/broken,
 /area/ship/ghostship/cabin7)
 "FH" = (
-/obj/structure/sign/poster/nanotrasen,
+/obj/structure/poster/nanotrasen,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/medical)
 "FN" = (
@@ -10681,7 +10681,7 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/gun/ballistic/musket/pistol,
+/obj/item/gun/projectile/ballistic/musket/pistol,
 /obj/item/reagent_containers/glass/powder_horn/filled,
 /obj/item/storage/box/munition_box,
 /turf/simulated/floor/wood/broken,
@@ -10750,7 +10750,7 @@
 /area/ship/ghostship/cabin2)
 "IQ" = (
 /obj/structure/table/standard,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/grenade/clusterbang,
+/obj/item/vehicle_module/weapon/ballistic/missile_rack/grenade/clusterbang,
 /turf/simulated/floor/reinforced,
 /area/ship/ghostship/porthangar)
 "IS" = (
@@ -10770,7 +10770,7 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/gun/ballistic/musket/pistol,
+/obj/item/gun/projectile/ballistic/musket/pistol,
 /obj/item/reagent_containers/glass/powder_horn/filled,
 /obj/item/storage/box/munition_box,
 /turf/simulated/floor/wood/broken,
@@ -10877,7 +10877,7 @@
 /area/ship/ghostship/cabin5)
 "Lp" = (
 /obj/structure/table/standard,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg,
+/obj/item/vehicle_module/weapon/ballistic/lmg,
 /turf/simulated/floor/reinforced,
 /area/ship/ghostship/porthangar)
 "Md" = (
@@ -10929,7 +10929,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ghostship/engineeringstorage)
 "NF" = (
-/obj/structure/sign/poster,
+/obj/structure/poster,
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/maintenance1)
 "NW" = (
@@ -11010,8 +11010,8 @@
 /area/ship/ghostship/hangar)
 "Pi" = (
 /obj/structure/table/standard,
-/obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster,
-/obj/item/mecha_parts/mecha_equipment/anticcw_armor_booster,
+/obj/item/vehicle_module/antiproj_armor_booster,
+/obj/item/vehicle_module/anticcw_armor_booster,
 /turf/simulated/floor/reinforced,
 /area/ship/ghostship/starboardhangar)
 "Pt" = (
@@ -11055,7 +11055,7 @@
 /area/ship/ghostship/hangar)
 "Qg" = (
 /obj/structure/table/standard,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/grenade/clusterbang,
+/obj/item/vehicle_module/weapon/ballistic/missile_rack/grenade/clusterbang,
 /turf/simulated/floor/reinforced,
 /area/ship/ghostship/starboardhangar)
 "Qo" = (
@@ -11070,7 +11070,7 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/gun/ballistic/musket/pistol,
+/obj/item/gun/projectile/ballistic/musket/pistol,
 /obj/item/reagent_containers/glass/powder_horn/filled,
 /obj/item/storage/box/munition_box,
 /turf/simulated/floor/wood/broken,
@@ -11416,7 +11416,7 @@
 /area/ship/ghostship/hangar)
 "XG" = (
 /obj/structure/table/standard,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg,
+/obj/item/vehicle_module/weapon/ballistic/lmg,
 /turf/simulated/floor/reinforced,
 /area/ship/ghostship/starboardhangar)
 "XH" = (

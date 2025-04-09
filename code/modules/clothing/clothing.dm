@@ -100,7 +100,7 @@
 	if(accessory_host)
 		return FALSE
 	// either attack_hand_auto_unequip off, not being worn
-	var/equipped_by_performer = actor.performer == worn_mob()
+	var/equipped_by_performer = actor.performer == get_worn_mob()
 	. = ..() && (attack_hand_auto_unequip || !equipped_by_performer)
 	if(!.)
 		return
@@ -231,25 +231,29 @@
 	else
 		icon = initial(icon)
 
-//? styles
+//* Style Repicking *//
 
 /**
  * returns available styles as name = state or image or mutable_appearance
  */
-/obj/item/clothing/proc/available_styles(mob/user)
+/obj/item/clothing/proc/style_repick_query(mob/user)
+	SHOULD_NOT_SLEEP(TRUE)
 	. = list()
 
 /**
  * sets us to a specific style
+ *
+ * * do not update_icon() or update_worn_icon() in here, we do that automatically.
  */
-/obj/item/clothing/proc/set_style(style, mob/user)
+/obj/item/clothing/proc/style_repick_set(style, mob/user)
+	SHOULD_NOT_SLEEP(TRUE)
 	return FALSE
 
 /**
  * prompts a user to pick style
  */
-/obj/item/clothing/proc/pick_style(mob/user)
-	var/list/available = available_styles(user)
+/obj/item/clothing/proc/style_repick_open(mob/user)
+	var/list/available = style_repick_query(user)
 	var/list/assembled = list()
 	for(var/name in available)
 		var/using = available[name]
@@ -269,12 +273,19 @@
 	if(!length(available))
 		to_chat(user, SPAN_WARNING("[src] can only be worn one way."))
 		return
-	var/choice = show_radial_menu(user, src, assembled, radius = 48)
+	var/choice = show_radial_menu(user, loc == user ? user : src, assembled, radius = 48)
 	if(isnull(choice))
 		return
-	set_style(choice, user)
+	if(!style_repick_set(choice, user))
+		return
+	// todo: logging API
+	to_chat(user, SPAN_NOTICE("You set [src]'s style to [choice]."))
+	log_game("[key_name(user)] set [src]'s style to [choice]")
+	update_icon()
+	update_worn_icon()
 
-/obj/item/clothing/verb/pick_style_verb()
+// todo: context menu this instead
+/obj/item/clothing/verb/style_repick_verb()
 	set name = "Set Worn Style"
 	set category = VERB_CATEGORY_IC
 	set desc = "Wear this piece of clothing in a different style."
@@ -284,4 +295,9 @@
 		usr.action_feedback(SPAN_WARNING("You can't do that right now!"), src)
 		return
 
-	pick_style(usr)
+	style_repick_open(usr)
+
+/obj/item/clothing/can_unequip(mob/M, slot, mob/user, flags)
+	if(clothing_flags & NO_UNEQUIP)
+		return FALSE
+	return ..()

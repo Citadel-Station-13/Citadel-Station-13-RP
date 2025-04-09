@@ -4,7 +4,7 @@
 	materials_base = list(MAT_STEEL = 500)
 
 /datum/prototype/design/science/gps/generate_name(template)
-	return "Triangulating device design ([..()])"
+	return "Triangulating device (GPS) design ([..()])"
 
 /datum/prototype/design/science/gps/generic
 	design_name = "GEN"

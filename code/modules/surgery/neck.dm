@@ -9,6 +9,8 @@
 	can_infect = 1
 
 /datum/surgery_step/brainstem/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
+	if(!..()) return FALSE
+
 	if (!hasorgans(target))
 		return 0
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
@@ -21,6 +23,8 @@
 /////////////////////////////
 
 /datum/surgery_step/brainstem/mend_vessels
+	step_name = "Mend vessels"
+
 	priority = 1
 	allowed_tools = list(
 		/obj/item/surgical/FixOVein = 100,
@@ -56,6 +60,8 @@
 /////////////////////////////
 
 /datum/surgery_step/brainstem/drill_vertebrae
+	step_name = "Drill vertebrae"
+
 	priority = 3 //Do this instead of expanding the skull cavity
 	allowed_tools = list(
 		/obj/item/surgical/surgicaldrill = 100,
@@ -99,6 +105,8 @@
 /////////////////////////////
 
 /datum/surgery_step/brainstem/clean_chips
+	step_name = "Clear bone chips"
+
 	priority = 3 //Do this instead of picking around for implants.
 	allowed_tools = list(
 		/obj/item/surgical/hemostat = 100,
@@ -139,6 +147,8 @@
 /////////////////////////////
 
 /datum/surgery_step/brainstem/mend_cord
+	step_name = "Mend spinal cord"
+
 	priority = 1 //Do this after IB.
 	allowed_tools = list(
 		/obj/item/surgical/FixOVein = 100,
@@ -179,6 +189,8 @@
 /////////////////////////////
 
 /datum/surgery_step/brainstem/mend_vertebrae
+	step_name = "Mend vertebrae"
+
 	priority = 3 //Do this instead of fixing bones.
 	allowed_tools = list(
 		/obj/item/surgical/bonegel = 100,
@@ -217,6 +229,8 @@
 /////////////////////////////
 
 /datum/surgery_step/brainstem/realign_tissue
+	step_name = "Realign tissue"
+
 	priority = 3 //Do this instead of searching for objects in the skull.
 	allowed_tools = list(
 		/obj/item/surgical/hemostat = 100,

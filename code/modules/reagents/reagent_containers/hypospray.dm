@@ -1,6 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 /// HYPOSPRAY
 ////////////////////////////////////////////////////////////////////////////////
+// todo: remove these, move behavior to /obj/item/autoinjector for autoinjectors
 
 /obj/item/reagent_containers/hypospray
 	name = "hypospray"
@@ -43,6 +44,9 @@
 			return
 		else if(affected.robotic >= ORGAN_ROBOT)
 			to_chat(user, "<span class='danger'>You cannot inject a robotic limb.</span>")
+			return
+		else if(affected.behaviour_flags & BODYPART_NO_INJECT)
+			to_chat(user, "<span class='danger'>You cannot inject this limb.</span>")
 			return
 
 		// Prototype Hypo functionality
@@ -176,7 +180,7 @@
 
 /obj/item/reagent_containers/hypospray/autoinjector/examine(mob/user, dist)
 	. = ..()
-	if(reagents && reagents.reagent_list.len)
+	if(reagents?.total_volume)
 		. += "<span class='notice'>It is currently loaded.</span>"
 	else
 		. += "<span class='notice'>It is spent.</span>"
@@ -185,6 +189,31 @@
 	name = "autoinjector (antitox)"
 	icon_state = "green"
 	filled_reagents = list("anti_toxin" = 5)
+
+/obj/item/reagent_containers/hypospray/autoinjector/venominjector
+	name = "spiderbite injector"
+	desc = "A homemade leather injector with a bone needle allowing it to inject its contents into be injected into the bloodstream directly."
+	icon_state = "spiderinjector"
+	filled_reagents = list("spidertoxin" = 5)
+
+/obj/item/reagent_containers/hypospray/autoinjector/venominjector/stimm
+	name = "energizing spiderbite"
+	desc = "A homemade leather injector with a bone needle allowing it to inject its contents into be injected into the bloodstream directly. \
+	This one is filled with a stimulant toxic in large amounts. For when you need to give yourself a little boost."
+	filled_reagents = list("stimm" = 5)
+
+/obj/item/reagent_containers/hypospray/autoinjector/venominjector/chloral
+	name = "sophoric spiderbite"
+	desc = "A homemade leather injector with a bone needle allowing it to inject its contents into be injected into the bloodstream directly. \
+	This one is filled with a power sleeping toxin. Excellent for putting unsuspecting to a quick sleep."
+	filled_reagents = list("chloralhydrate" = 5)
+
+
+/obj/item/reagent_containers/hypospray/autoinjector/venominjector/psilocybin
+	name = "trippy spiderbite"
+	desc = "A homemade leather injector with a bone needle allowing it to inject its contents into be injected into the bloodstream directly. \
+	This one is filled with hallucinogens for recreational use."
+	filled_reagents = list("psilocybin" = 5)
 
 // These have a 15u capacity, somewhat higher tech level, and generally more useful chems, but are otherwise the same as the regular autoinjectors.
 /obj/item/reagent_containers/hypospray/autoinjector/biginjector
@@ -439,7 +468,7 @@
 
 /obj/item/reagent_containers/hypospray/glukoz/examine(mob/user, dist)
 	. = ..()
-	if(reagents && reagents.reagent_list.len)
+	if(reagents?.total_volume)
 		. += "<span class='notice'>It is currently loaded.</span>"
 	else
 		. += "<span class='notice'>It is spent.</span>"

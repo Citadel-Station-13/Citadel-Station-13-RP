@@ -16,7 +16,7 @@
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/virgo2/DoomP)
 "af" = (
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/virgo2/DoomP)
 "ah" = (
 /obj/random/landmine,
@@ -347,7 +347,7 @@
 /area/submap/virgo2/DoomP)
 "bs" = (
 /obj/structure/table/rack,
-/obj/item/gun/ballistic/contender,
+/obj/item/gun/projectile/ballistic/contender,
 /obj/item/ammo_magazine/a357/speedloader,
 /obj/item/ammo_magazine/a357/speedloader,
 /turf/simulated/floor/tiled/techfloor,

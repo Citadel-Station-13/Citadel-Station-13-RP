@@ -8,6 +8,7 @@
 	priority = 1
 
 /datum/surgery_step/cavity/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
+	if(!..()) return FALSE
 	if(!hasorgans(target))
 		return 0
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
@@ -44,6 +45,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/cavity/make_space
+	step_name = "Prepare cavity"
+
 	allowed_tools = list(
 		/obj/item/surgical/surgicaldrill = 100,
 		/obj/item/pen = 75,
@@ -76,6 +79,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/cavity/close_space
+	step_name = "Seal cavity"
+
 	priority = 2
 	allowed_tools = list(
 		/obj/item/surgical/cautery = 100,
@@ -111,6 +116,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/cavity/place_item
+	step_name = "Implant item"
+
 	priority = 0
 	allowed_tools = list(/obj/item = 100)
 
@@ -122,6 +129,8 @@
 		var/obj/item/organ/external/affected = target.get_organ(target_zone)
 		//if(istype(user,/mob/living/silicon/robot))
 			//return
+		if(tool == null)
+			return 0
 		if(affected && affected.cavity)
 			var/total_volume = tool.w_class
 			for(var/obj/item/I in affected.implants)
@@ -168,6 +177,8 @@
 	update_icon()
 
 /datum/surgery_step/cavity/implant_removal
+	step_name = "Remove implant"
+
 	allowed_tools = list(
 		/obj/item/surgical/hemostat = 100,	\
 		/obj/item/surgical/hemostat_primitive = 50, \

@@ -1,4 +1,6 @@
 /datum/prototype/design/science/xenobio
+	category = DESIGN_CATEGORY_SCIENCE
+	subcategory = DESIGN_SUBCATEGORY_XENOBIOLOGY
 	abstract_type = /datum/prototype/design/science/xenobio
 
 /datum/prototype/design/science/xenobio/generate_name(template)
@@ -14,7 +16,7 @@
 	id = "slimetaser"
 	req_tech = list(TECH_MATERIAL = 3, TECH_BIO = 3, TECH_POWER = 4, TECH_COMBAT = 4)
 	materials_base = list(MAT_STEEL = 5000)
-	build_path = /obj/item/gun/energy/taser/xeno
+	build_path = /obj/item/gun/projectile/energy/taser/xeno
 
 /datum/prototype/design/science/xenobio/slime_scanner
 	design_name = "slime scanner"

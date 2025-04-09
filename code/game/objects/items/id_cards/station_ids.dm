@@ -37,9 +37,11 @@
 	var/assignment = null	//can be alt title or the actual job
 	var/rank = null			//actual job
 
-	var/mining_points = 0	// For redeeming at mining equipment vendors
-	var/survey_points = 0	// For redeeming at explorer equipment vendors.
-	var/engineer_points = 0	// For redeeming at engineering equipment vendors
+	//* Point Redemption *//
+
+	/// stored POINT_REDEMPTION_TYPE_* points; enum associated to number
+	/// * lazy list
+	var/list/stored_redemption_points
 
 /obj/item/card/id/Initialize(mapload)
 	. = ..()
@@ -76,8 +78,11 @@
 	. = ..()
 	if(.)
 		. += "<br>"
-	if(mining_points)
-		. += "There's [mining_points] mining equipment redemption point\s loaded onto this card."
+	for(var/key in stored_redemption_points)
+		var/amount = stored_redemption_points[key]
+		if(!amount)
+			continue
+		. += "There's [amount] [key] equipment redemption point[amount > 1 ? "s" : ""] loaded on this card."
 
 /obj/item/card/id/update_name()
 	name = "[registered_name? "[registered_name]'s " : ""]ID Card [assignment? "([assignment])" : ""]"
@@ -215,6 +220,27 @@
 	if(href_list[VV_HK_ID_MOD])
 		var/datum/tgui_module/card_mod/admin/card_vv/mod = new(src)
 		mod.ui_interact(usr)
+
+//* Point Redemption *//
+
+/obj/item/card/id/proc/get_redemption_points(point_type)
+	return stored_redemption_points?[point_type] || 0
+
+/obj/item/card/id/proc/set_redemption_points(point_type, amount)
+	LAZYSET(stored_redemption_points, point_type, amount)
+
+/obj/item/card/id/proc/adjust_redemption_points(point_type, amount)
+	LAZYINITLIST(stored_redemption_points)
+	stored_redemption_points[point_type] = max(0, stored_redemption_points[point_type] + amount)
+
+/**
+ * @return TRUE / FALSE on success / fail
+ */
+/obj/item/card/id/proc/use_redemption_points(point_type, amount)
+	if(stored_redemption_points?[point_type] < amount)
+		return FALSE
+	stored_redemption_points[point_type] -= amount
+	return TRUE
 
 /obj/item/card/id/silver
 	name = "command identification card"
@@ -705,3 +731,73 @@
 	desc = "Issued to staff of the Happy Trails Company."
 	icon_state = "gaia_staff"
 	access = list(250,251,252)
+
+/obj/item/card/id/external/nebula/room1
+	name = "Card to Room 1"
+	desc = "A card that grants usage of Room 1 of the Nebula Motel"
+	icon_state = "guest"
+	job_access_type = null
+	access = list(161)
+
+/obj/item/card/id/external/nebula/room2
+	name = "Card to Room 2"
+	desc = "A card that grants usage of Room 2 of the Nebula Motel"
+	icon_state = "guest"
+	job_access_type = null
+	access = list(162)
+
+/obj/item/card/id/external/nebula/room3
+	name = "Card to Room 3"
+	desc = "A card that grants usage of Room 3 of the Nebula Motel"
+	icon_state = "guest"
+	job_access_type = null
+	access = list(163)
+
+/obj/item/card/id/external/nebula/room4
+	name = "Card to Room 4"
+	desc = "A card that grants usage of Room 4 of the Nebula Motel"
+	icon_state = "guest"
+	job_access_type = null
+	access = list(164)
+
+/obj/item/card/id/external/nebula/room5
+	name = "Card to Room 5"
+	desc = "A card that grants usage of Room 5 of the Nebula Motel"
+	icon_state = "guest"
+	job_access_type = null
+	access = list(165)
+
+/obj/item/card/id/external/nebula/room6
+	name = "Card to Room 6"
+	desc = "A card that grants usage of Room 6 of the Nebula Motel"
+	icon_state = "guest"
+	job_access_type = null
+	access = list(166)
+
+/obj/item/card/id/external/nebula/room7
+	name = "Card to Room 7"
+	desc = "A card that grants usage of Room 7 of the Nebula Motel"
+	icon_state = "guest"
+	job_access_type = null
+	access = list(167)
+
+/obj/item/card/id/external/nebula/room8
+	name = "Card to Room 8"
+	desc = "A card that grants usage of Room 8 of the Nebula Motel"
+	icon_state = "guest"
+	job_access_type = null
+	access = list(169)
+
+/obj/item/card/id/external/nebula/room9
+	name = "Card to the VIP Suit"
+	color = "#ffbd17"
+	desc = "A card that grants usage to the VIP suite of the Nebula Motel, and its Arrowhead shuttle."
+	icon_state = "guest"
+	job_access_type = null
+	access = list(170)
+
+/obj/item/card/id/external/id_nka
+	name = "New Kingdom of Adhomai Commoner's ID"
+	desc = "An ID issued to the non-noble commoners of the New Kingdom of Adhomai. In some regions, adults must legally carry it on their person at all times."
+	icon_state = "nka"
+	job_access_type = null

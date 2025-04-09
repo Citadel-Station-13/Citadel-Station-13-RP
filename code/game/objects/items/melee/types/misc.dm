@@ -10,11 +10,6 @@
 	origin_tech = list(TECH_COMBAT = 4)
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined")
 
-/obj/item/melee/chainofcommand/suicide_act(mob/user)
-	var/datum/gender/T = GLOB.gender_datums[user.get_visible_gender()]
-	user.visible_message(SPAN_DANGER("\The [user] [T.is] strangling [T.himself] with \the [src]! It looks like [T.he] [T.is] trying to commit suicide."), SPAN_DANGER("You start to strangle yourself with \the [src]!"), SPAN_DANGER("You hear the sound of someone choking!"))
-	return (OXYLOSS)
-
 /obj/item/melee/umbrella
 	name = "umbrella"
 	desc = "To keep the rain off you. Use with caution on windy days."
@@ -43,14 +38,11 @@
 	addblends = icon_state + "_a"
 	item_state = icon_state
 	update_icon()
-	if(ishuman(src.loc))
-		var/mob/living/carbon/human/H = src.loc
-		H.update_inv_l_hand(0)
-		H.update_inv_r_hand()
+	update_worn_icon()
 
 // Randomizes color
 /obj/item/melee/umbrella/random/Initialize(mapload)
-	add_atom_colour("#"+get_random_colour(), FIXED_COLOUR_PRIORITY)
+	add_atom_color("#"+get_random_colour())
 	return ..()
 
 /obj/item/melee/cursedblade
@@ -204,15 +196,6 @@
 		to_chat(M, "<span class='warning'>You feel nanites digging into your skin!</span>")
 		M.reagents.add_reagent(poison_type, poison_amount)
 
-/obj/item/melee/nanite_knife/suicide_act(mob/user)
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	user.visible_message(pick("<span class='danger'>\The [user] is shoving \the [src] into [TU.is] chest! It looks like [TU.he] [TU.is] trying to commit suicide.</span>",\
-		"<span class='danger'>\The [user] is stabbing themselves with \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>"))
-	var/turf/T = get_turf(src)
-	user.gib()
-	new /mob/living/simple_mob/mechanical/cyber_horror(T)
-	return
-
 //Interestingly, a magic flame sword has a lot in common with the thermal cutter Tech and I made for Goblins. So I decided it should share some of that code.
 /obj/item/melee/ashlander
 	name = "bone sword"
@@ -268,10 +251,7 @@
 	else
 		set_light(0)
 
-	var/mob/M = loc
-	if(istype(M))
-		M.update_inv_l_hand()
-		M.update_inv_r_hand()
+	update_worn_icon()
 
 /obj/item/melee/ashlander/elder/proc/activate(mob/living/user)
 	to_chat(user, "<span class='notice'>You ignite the [src]'s sacred flame.</span>")
@@ -366,13 +346,13 @@
 
 	if(wielded || isliving(target))
 		if(prob(10))
-			G.electrocute_act(500, src, def_zone = BP_TORSO)
+			G.electrocute_act_parse_this(500, src, def_zone = BP_TORSO)
 			return
 		if(prob(10))
 			G.dust()
 			return
 		else
-			G.stun_effect_act(10 , 50, BP_TORSO, src)
+			G.stun_effect_act_parse_this(10 , 50, BP_TORSO, src)
 			G.take_random_targeted_damage(brute = 10)
 			G.afflict_unconscious(20 * 20)
 			playsound(src.loc, /datum/soundbyte/grouped/sparks, 50, 1)
@@ -506,10 +486,7 @@
 	else
 		set_light(0)
 
-	var/mob/M = loc
-	if(istype(M))
-		M.update_inv_l_hand()
-		M.update_inv_r_hand()
+	update_worn_icon()
 
 /obj/item/melee/thermalcutter/proc/activate(var/mob/M)
 	var/turf/T = get_turf(src)

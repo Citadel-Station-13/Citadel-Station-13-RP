@@ -93,7 +93,7 @@
 	if(!istype(H))
 		return .
 
-	if(istype(L.buckled, /obj/vehicle_old) || L.hovering) // Ignore people hovering or on boats.
+	if(istype(L.buckled, /obj/vehicle_old) || L.is_avoiding_ground()) // Ignore people hovering or on boats.
 		return TRUE
 
 	if(!.)
@@ -174,7 +174,7 @@
 
 		if(!docile && ishuman(host) && chemicals < max_chemicals)
 			var/mob/living/carbon/human/H = host
-			H.vessel.remove_reagent("blood", 1)
+			H.take_blood_mixture(1)
 			if(!H.reagents.has_reagent("inaprovaline"))
 				H.reagents.add_reagent("inaprovaline", 1)
 			chemicals += 2

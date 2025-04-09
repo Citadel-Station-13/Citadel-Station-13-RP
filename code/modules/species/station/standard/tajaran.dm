@@ -21,22 +21,22 @@
 	)
 
 	max_additional_languages = 3
-	name_language = /datum/language/tajaran
-	intrinsic_languages = /datum/language/tajaran
+	name_language = /datum/prototype/language/tajaran
+	intrinsic_languages = /datum/prototype/language/tajaran
 	whitelist_languages = list(
-		/datum/language/tajaran,
-		/datum/language/tajaranakhani,
-		/datum/language/tajsign
+		/datum/prototype/language/tajaran,
+		/datum/prototype/language/tajaranakhani,
+		/datum/prototype/language/tajsign
 	)
 
 	vision_innate = /datum/vision/baseline/species_tier_2
 	vision_organ = O_EYES
 
-	slowdown  = -0.5
+	slowdown  = 0
 	snow_movement = -1 //Ignores half of light snow
 
-	brute_mod = 1.15
-	burn_mod  = 1.15
+	brute_mod = 1.1
+	burn_mod  = 1.1
 	flash_mod = 1.1
 
 	metabolic_rate = 1.1
@@ -127,6 +127,12 @@
 		/mob/living/carbon/human/proc/hide_tail,
 	)
 
-/datum/species/tajaran/equip_survival_gear(mob/living/carbon/human/H)
-	. = ..()
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal(H), SLOT_ID_SHOES)
+/datum/species/tajaran/apply_racial_gear(mob/living/carbon/for_target, list/into_box, list/into_inv)
+	var/footwear_type = /obj/item/clothing/shoes/sandal
+	if(for_target && !for_target.inventory?.get_slot_single(/datum/inventory_slot/inventory/shoes))
+		var/obj/item/footwear_instance = new footwear_type
+		if(!for_target.inventory.equip_to_slot_if_possible(footwear_instance, /datum/inventory_slot/inventory/shoes))
+			into_inv += footwear_instance
+	else
+		into_inv += footwear_type
+	return ..()

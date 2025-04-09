@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 //* pre_impact(), impact(), bullet_act(), on_impact() impact_flags           *//
 /// pre_impact, bullet_act, on_impact are called in that order               ///
@@ -112,6 +112,13 @@ DEFINE_BITFIELD_NEW(projectile_types, list(
 	BITFIELD_NEW("Flag - Photonic Energy", PROJECTILE_TYPE_PHOTONIC),
 	BITFIELD_NEW("Flag - Exotic Energy / Matter", PROJECTILE_TYPE_EXOTIC),
 ))
+
+//* /obj/projectile impact_sound *//
+
+/// lasers, etc
+#define PROJECTILE_IMPACT_SOUNDS_ENERGY "ablate"
+/// bullets, etc
+#define PROJECTILE_IMPACT_SOUNDS_KINETIC "kinetic"
 
 //* helpers *//
 

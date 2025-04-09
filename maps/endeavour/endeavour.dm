@@ -21,10 +21,12 @@
 		/datum/map/sector/gaia_192,
 		/datum/map/sector/frozen_192,
 		/datum/map/sector/wasteland_192,
-		/datum/map/sector/tradeport_192,
-		/datum/map/sector/lavaland_192,
-		/datum/map/sector/miaphus_192,
+		/datum/map/sector/nebula_tradeport,
+		/datum/map/sector/delerict_casino,
+		/datum/map/sector/surt,
+		/datum/map/sector/miaphus,
 		/datum/map/sector/roguemining_192/one,
+		/datum/map/sector/sky_planet,
 	)
 
 	// todo: remove after dev is done
@@ -104,7 +106,7 @@
 
 	bot_patrolling = FALSE
 
-	allowed_spawns = list(LATEJOIN_METHOD_ARRIVALS_SHUTTLE,LATEJOIN_METHOD_GATEWAY,LATEJOIN_METHOD_CRYOGENIC_STORAGE,LATEJOIN_METHOD_ROBOT_STORAGE,"Beruang Trading Corp Cryo")
+	allowed_spawns = list(LATEJOIN_METHOD_ARRIVALS_SHUTTLE,LATEJOIN_METHOD_GATEWAY,LATEJOIN_METHOD_CRYOGENIC_STORAGE,LATEJOIN_METHOD_ROBOT_STORAGE,"Beruang Trading Corp Cryo","Nebula Visitor Arrival")
 	spawnpoint_died = /datum/spawnpoint/arrivals
 	spawnpoint_left = /datum/spawnpoint/arrivals
 	spawnpoint_stayed = /datum/spawnpoint/cryo
@@ -141,7 +143,7 @@
 	name = "Endeavour - Deck 1"
 	display_id = "endeavour-deck-1"
 	display_name = "NSV Endeavour - Command Deck"
-	absolute_path = "maps/endeavour/levels/deck1.dmm"
+	path = "maps/endeavour/levels/deck1.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -155,11 +157,10 @@
 	name = "Endeavour - Deck 2"
 	display_id = "endeavour-deck-2"
 	display_name = "NSV Endeavour - MedSci Deck"
-	absolute_path = "maps/endeavour/levels/deck2.dmm"
+	path = "maps/endeavour/levels/deck2.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
-		ZTRAIT_LEGACY_BELTER_DOCK,
 	)
 	base_turf = /turf/simulated/open
 	link_below = /datum/map_level/endeavour/ship/deck_three
@@ -171,10 +172,11 @@
 	name = "Endeavour - Deck 3"
 	display_id = "endeavour-deck-3"
 	display_name = "NSV Endeavour - Service & Security Deck"
-	absolute_path = "maps/endeavour/levels/deck3.dmm"
+	path = "maps/endeavour/levels/deck3.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
+		ZTRAIT_LEGACY_BELTER_DOCK,
 	)
 	base_turf = /turf/simulated/open
 	link_below = /datum/map_level/endeavour/ship/deck_four
@@ -186,7 +188,7 @@
 	name = "Endeavour - Deck 4"
 	display_id = "endeavour-deck-4"
 	display_name = "NSV Endeavour - Engineering Deck"
-	absolute_path = "maps/endeavour/levels/deck4.dmm"
+	path = "maps/endeavour/levels/deck4.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -200,13 +202,13 @@
 	name = "Endeavour - Centcom / Flagship"
 	display_id = "endeavour-flagship"
 	display_name = "NSV Endeavour - Flagship Offboarding"
-	absolute_path = "maps/endeavour/levels/flagship.dmm"
+	path = "maps/endeavour/levels/flagship.dmm"
 	flags = LEGACY_LEVEL_ADMIN|LEGACY_LEVEL_CONTACT
 
 /datum/map_level/endeavour/transit
 	id = "EndeavourTransit"
 	name = "Endeavour - Ships / Static Transit"
-	absolute_path = "maps/endeavour/levels/transit.dmm"
+	path = "maps/endeavour/levels/transit.dmm"
 	traits = list(
 		ZTRAIT_LEGACY_BELTER_TRANSIT,
 	)
@@ -215,7 +217,7 @@
 /datum/map_level/endeavour/misc
 	id = "EndeavourMisc"
 	name = "Endeavour - Misc"
-	absolute_path = "maps/endeavour/levels/misc.dmm"
+	path = "maps/endeavour/levels/misc.dmm"
 	flags = LEGACY_LEVEL_ADMIN
 
 #undef ENDEAVOUR_MAP_SIZE

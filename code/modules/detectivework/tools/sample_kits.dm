@@ -69,8 +69,9 @@
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/H = user
-	if(H.gloves)
-		to_chat(user, "<span class='warning'>Take \the [H.gloves] off first.</span>")
+	var/obj/item/wearing_gloves = H.inventory.get_slot_single(/datum/inventory_slot/inventory/gloves::id)
+	if(wearing_gloves)
+		to_chat(user, "<span class='warning'>Take \the [wearing_gloves] off first.</span>")
 		return
 
 	to_chat(user, "<span class='notice'>You firmly press your fingertips onto the card.</span>")

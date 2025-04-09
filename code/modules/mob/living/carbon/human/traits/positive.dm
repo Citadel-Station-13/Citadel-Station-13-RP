@@ -18,6 +18,8 @@
 	group_short_name = "Better"
 	sort_key = "4-Better"
 
+	excluded_species = list(SPECIES_HOLOSPHERE)
+
 /datum/trait/positive/endurance_high
 	name = "High Endurance"
 	desc = "125 hitpoints."
@@ -27,6 +29,8 @@
 	group = /datum/trait_group/health
 	group_short_name = "High"
 	sort_key = "5-High"
+
+	excluded_species = list(SPECIES_HOLOSPHERE)
 
 /datum/trait/positive/endurance_high/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
@@ -271,3 +275,16 @@
 	var/obj/item/organ/internal/weaver/weak/silk = new(H)
 	H.internal_organs += silk
 	H.internal_organs_by_name[O_WEAVER] = silk
+
+/datum/trait/positive/aquatic
+	name = "Aquatic"
+	desc = "You can breathe under water and can traverse water more efficiently. Additionally, you can eat others in the water."
+	cost = 1
+	sort_key = "10-Aquatic"
+
+/datum/trait/positive/aquatic/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+	ADD_TRAIT(H, TRAIT_MOB_WATER_BREATHER, LOADOUT_TRAIT)
+	add_verb(H, /mob/living/carbon/human/proc/underwater_devour)
+	add_verb(H, /mob/living/carbon/human/proc/water_stealth)
+	S.water_movement = min(-4, S.water_movement)
+	..()

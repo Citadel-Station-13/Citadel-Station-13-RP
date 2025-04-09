@@ -26,13 +26,17 @@
 	var/require_comms_key = FALSE
 
 /datum/world_topic/proc/TryRun(list/input)
-	key_valid = config && config_legacy.comms_key == input["key"] && (config_legacy.comms_key != initial(config_legacy.comms_key))		//no fucking defaults allowed.
-	//key_valid = config && (CONFIG_GET(string/comms_key) == input["key"])
-	if(require_comms_key && !key_valid)
-		return "Bad Key"
+	key_valid = (config_legacy.comms_key == input["key"]) && (config_legacy.comms_key != initial(config_legacy.comms_key)) && config_legacy.comms_key && input["key"]	//no fucking defaults allowed.
 	input -= "key"
-	. = Run(input)
-	if(islist(.))
+	if(require_comms_key && !key_valid)
+		. = "Bad Key"
+		if (input["format"] == "json")
+			. = list("error" = .)
+	else
+		. = Run(input)
+	if (input["format"] == "json")
+		. = json_encode(.)
+	else if(islist(.))
 		. = list2params(.)
 
 /datum/world_topic/proc/Run(list/input)
@@ -54,7 +58,7 @@
 	log = FALSE
 
 /datum/world_topic/playing/Run(list/input)
-	return length(GLOB.player_list)
+	return GLOB.player_list.len
 
 /datum/world_topic/pr_announce
 	keyword = "announce"
@@ -71,7 +75,7 @@
 		if(PRcounts[id] > PR_ANNOUNCEMENTS_PER_ROUND)
 			return
 
-	var/final_composed = "<span class='announce'>PR: [input[keyword]]</span>"
+	var/final_composed = SPAN_ANNOUNCE("PR: [input[keyword]]")
 	for(var/client/C in GLOB.clients)
 		C.AnnouncePR(final_composed)
 
@@ -232,31 +236,28 @@
 	.["enter"] = config_legacy.enter_allowed
 	.["vote"] = config_legacy.allow_vote_mode
 	.["ai"] = config_legacy.allow_ai
-	.["host"] = host || null
+	.["host"] = world.host ? world.host : null
 	.["round_id"] = GLOB.round_id
 	.["players"] = GLOB.clients.len
 	.["revision"] = GLOB.revdata.commit
 	.["revision_date"] = GLOB.revdata.date
+	.["hub"] = GLOB.hub_visibility
 
 	var/list/adm = get_admin_counts()
 	var/list/presentmins = adm["present"]
 	var/list/afkmins = adm["afk"]
 	.["admins"] = presentmins.len + afkmins.len //equivalent to the info gotten from adminwho
-	//.["gamestate"] = SSticker.current_state
+	.["gamestate"] = SSticker.current_state
 
-	//.["map_name"] = SSmapping.config?.map_name || "Loading..."
+	.["map_name"] = (LEGACY_MAP_DATUM)?.name || "Loading..."
 
-	//if(key_valid)
-		//.["active_players"] = get_active_player_count()
-		/*
-		if(SSticker.HasRoundStarted())
-			.["real_mode"] = SSticker.mode.name
-			// Key-authed callers may know the truth behind the "secret"
-		*/
+	if(key_valid)
+		.["active_players"] = get_active_player_count()
 
 	.["security_level"] = get_security_level()
-//	.["round_duration"] = SSticker ? round((world.time-SSticker.SSticker.round_start_time)/10) : 0
-//	// Amount of world's ticks in seconds, useful for calculating round duration
+	.["round_duration"] = SSticker ? round((world.time-SSticker.round_start_time)/10) : 0
+	// Amount of world's ticks in seconds, useful for calculating round duration
+
 	.["stationtime"] = stationtime2text()
 	.["roundduration"] = roundduration2text()
 

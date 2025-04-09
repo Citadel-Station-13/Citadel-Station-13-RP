@@ -50,12 +50,15 @@
 	volume = vol
 	gas = list()
 
-/datum/gas_mixture/clone(include_contents)
+/datum/gas_mixture/clone()
 	var/datum/gas_mixture/mixture = new(volume)
 	mixture.gas = gas.Copy()
 	mixture.temperature = temperature
 	mixture.group_multiplier = group_multiplier
 	mixture.total_moles = total_moles
+#ifdef CF_ATMOS_XGM_UPDATE_VALUES_ASSERTIONS
+	mixture.update_values()
+#endif
 
 //Takes a gas string and the amount of moles to adjust by.  Calls update_values() if update isn't 0.
 /datum/gas_mixture/proc/adjust_gas(gasid, moles, update = 1)
@@ -250,6 +253,8 @@
 			gasmix.gas = combined.gas.Copy()
 			gasmix.temperature = combined.temperature
 			gasmix.multiply(gasmix.volume)
+			// todo: is this needed? even if not, it should be compiled in if we're under update values debug assertions
+			gasmix.update_values()
 
 	return 1
 
@@ -309,6 +314,9 @@
 	gas.len = 0
 	total_moles = 0
 	temperature = TCMB
+#ifdef CF_ATMOS_XGM_UPDATE_VALUES_ASSERTIONS
+	debug_gas_archive = list()
+#endif
 
 /**
  * get mass in kilograms
