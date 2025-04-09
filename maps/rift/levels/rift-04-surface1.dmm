@@ -14283,6 +14283,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
 	},
+/obj/effect/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/virologymorgue)
 "jaY" = (
@@ -14913,6 +14914,7 @@
 "jAs" = (
 /obj/machinery/atmospherics/component/binary/pump/high_power/on,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/virologypurge)
 "jAJ" = (
@@ -19316,6 +19318,7 @@
 "mex" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/virologypurge)
 "mfm" = (
@@ -19482,6 +19485,7 @@
 /area/rift/surfacebase/outside/outside1)
 "mkq" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/virologypurge)
 "mkE" = (
@@ -38916,6 +38920,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
+/obj/effect/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/virologyisolation)
 "xgU" = (
