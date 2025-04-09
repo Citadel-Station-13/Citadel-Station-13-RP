@@ -15,7 +15,7 @@
 #define COMSIG_MOVABLE_PROTO_KINETIC_SCAN "movable-kinetic_weapoon_invocation"
 	/// This must be returned to signal something happened; it is undefined behavior
 	/// to modify the input list without returning this!
-	#define SIGNAL_RAISE_PROTO_KINETIC_SCAN_HANDLED (1<<0)
+	#define RAISE_PROTO_KINETIC_SCAN_HANDLED (1<<0)
 
 /**
  * On successful kinetic weapon detonation.

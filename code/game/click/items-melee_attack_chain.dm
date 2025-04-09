@@ -106,6 +106,13 @@
 		attack_style = new /datum/melee_attack/weapon
 	// END
 
+	// -- write clickchain data --
+	if((clickchain.using_melee_attack && clickchain.using_melee_attack != attack_style) || \
+		(clickchain.using_melee_weapon && clickchain.using_melee_weapon != src))
+		CRASH("clickchain melee vars were already set + to different values; this shouldn't happen")
+	clickchain.using_melee_attack = attack_style
+	clickchain.using_melee_weapon = src
+
 	/**
 	 * the tl;dr of how the chain of negotiations go here is;
 	 *

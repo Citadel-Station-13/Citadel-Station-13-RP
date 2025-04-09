@@ -173,8 +173,6 @@
 		//set the dislocate mult less than the effective force mult so that
 		//dislocating limbs on disarm is a bit easier than breaking limbs on harm
 		attack_joint(affecting, I, effective_force, 0.75, blocked, soaked) //...but can dislocate joints
-	else if(!..())
-		return 0
 
 //this proc handles being hit by a thrown atom
 /mob/living/throw_impacted(atom/movable/AM, datum/thrownthing/TT)

@@ -19,6 +19,7 @@
 	var/charged = FALSE
 	var/charge_delay = 3 SECONDS
 	var/charge_timerid
+	var/charge_sound = 'sound/weapons/kenetic_reload.ogg'
 
 	/// recharge speed mult when breaking rock
 	var/charge_delay_multiplier_rock = (1 / 3)
@@ -98,11 +99,13 @@
 			combo_tracker = new(combo_continuation_timeout)
 			combo_tracker.on_continuation_begin = CALLBACK(src, PROC_REF(on_continuation_begin))
 			combo_tracker.on_continuation_end = CALLBACK(src, PROC_REF(on_continuation_end))
+	RegisterSignal(wearer, COMSIG_MOB_MELEE_IMPACT_HOOK, PROC_REF(on_user_melee_impact))
 
 /obj/item/kinetic_gauntlets/on_inv_unequipped(mob/wearer, datum/inventory/inventory, slot_id_or_index, inv_op_flags, datum/event_args/actor/actor)
 	. = ..()
 	discharge()
 	QDEL_NULL(combo_tracker)
+	UnregisterSignal(wearer, COMSIG_MOB_MELEE_IMPACT_HOOK)
 
 /obj/item/kinetic_gauntlets/proc/on_continuation_begin()
 	SHOULD_NOT_SLEEP(TRUE)
@@ -116,7 +119,7 @@
 /obj/item/kinetic_gauntlets/proc/recharge()
 	charged = TRUE
 	charge_timerid = null
-	#warn play charge sound
+	playsound(src, charge_sound, 50, TRUE)
 	update_icon()
 
 /**
@@ -162,12 +165,12 @@
 /obj/item/kinetic_gauntlets/proc/run_detonation_fx(turf/location, atom/target)
 	return
 
-#warn hook this? comsig maybe? how do we do overriding? check return values after, how do we return clickchain flags?
-/obj/item/kinetic_gauntlets/proc/on_user_melee_impact(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/attack_style)
+/obj/item/kinetic_gauntlets/proc/on_user_melee_impact(datum/source, datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/attack_style)
+	SIGNAL_HANDLER
 	if(clickchain_flags & CLICKCHAIN_ATTACK_MISSED)
-		return
+		return NONE
 	if(!charged)
-		return
+		return NONE
 	var/atom/target = clickchain.target
 	if(!isturf(target))
 		// TODO: unified mining excavation API
@@ -176,18 +179,19 @@
 			mineral_turf.GetDrilled(TRUE)
 			run_detonation_fx(target)
 			discharge(charge_delay_multiplier_rock)
-			return
-		return
+			return NONE
+		return NONE
 	var/mob/mob_target = target
 	// requires mark to be using combo, otherwise you can hit it twice and mark it then hit again
 	var/datum/status_effect/grouped/proto_kinetic_mark/mark = mob_target.has_status_effect(/datum/status_effect/grouped/proto_kinetic_mark)
 	if(!mark)
-		return
+		return NONE
 	var/datum/combo/melee/valid_combo = combo_tracker?.process_inbound_via_tail_match(clickchain.using_intent, combo_set)
 	if(!valid_combo)
-		return
+		return NONE
 	QDEL_NULL(mark)
 	execute_combo(clickchain, clickchain_flags, valid_combo)
+	return RAISE_ITEM_MELEE_SKIP
 
 /obj/item/kinetic_gauntlets/proc/execute_combo(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/combo/melee/use_combo)
 	var/atom/movable/target = clickchain.target

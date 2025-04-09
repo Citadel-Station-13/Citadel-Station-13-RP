@@ -49,6 +49,12 @@
 		attack_style = default_unarmed_attack_style()
 	//! End
 
+	// -- write clickchain data --
+	if((clickchain.using_melee_attack && clickchain.using_melee_attack != attack_style) || \
+		clickchain.using_melee_weapon)
+		CRASH("clickchain melee vars were already set + to different values; this shouldn't happen")
+	clickchain.using_melee_attack = attack_style
+
 	/**
 	 * the tl;dr of how the chain of negotiations go here is;
 	 *
