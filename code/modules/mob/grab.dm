@@ -249,8 +249,7 @@
 /obj/item/grab/throw_resolve_override(atom/movable/resolved, mob/user)
 	return TRUE
 
-#warn use this instead
-#warn test this
+// TODO: should this maybe use melee_attack/melee_impact?
 /obj/item/grab/using_as_item(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
 	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
