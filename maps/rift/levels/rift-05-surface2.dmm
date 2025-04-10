@@ -34433,6 +34433,7 @@
 /obj/map_helper/electrochromatic_linker{
 	id = "research-inner"
 	},
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/research)
 "vyj" = (
