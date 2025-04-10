@@ -21,8 +21,10 @@
 /mob/living/carbon/on_melee_impact(mob/attacker, obj/item/weapon, datum/melee_attack/attack_style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags, list/damage_instance_results)
 	..()
 	var/resultant_damage = damage_instance_results[SHIELDCALL_ARG_DAMAGE]
+	if(!resultant_damage)
+		return
 	var/resultant_damage_type = damage_instance_results[SHIELDCALL_ARG_DAMAGE_TYPE]
-	if(!(damage_instance_results[SHIELDCALL_ARG_DAMAGE_MODE] & (DAMAGE_MODE_GRADUAL)) && (resultant_damage_type == DAMAGE_TYPE_BRUTE))
+	if(!(damage_instance_results[SHIELDCALL_ARG_DAMAGE_MODE] & (DAMAGE_MODE_GRADUAL)) && (resultant_damage_type == DAMAGE_TYPE_BRUTE) && resultant_damage > 1)
 		// bloody / knockout / knockdown requires non-gradual kinetic force
 		var/no_bleed = (species.species_flags & NO_BLOOD)
 		// old calculation here for probability
