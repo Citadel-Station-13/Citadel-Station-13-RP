@@ -34,7 +34,9 @@
 
 	// todo: set this on item maybe?
 	var/datum/melee_attack/weapon/attack_style = new
-	return melee_attack(clickchain, clickchain_flags, attack_style)
+	. = melee_attack(clickchain, clickchain_flags, attack_style)
+
+	clickchain.performer.setClickCooldownLegacy(clickchain.click_cooldown_base * clickchain.click_cooldown_multiplier)
 
 /obj/item/proc/legacy_mob_melee_hook_wrapper(atom/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	PRIVATE_PROC(TRUE)

@@ -25,7 +25,7 @@
 	if(istype(G) && G.Touch(A,1))
 		return
 
-	A.attack_hand(src, new /datum/event_args/actor/clickchain(src))
+	A.attack_hand(src, default_clickchain_event_args(A))
 
 /// Return TRUE to cancel other attack hand effects that respect it.
 //  todo: better desc

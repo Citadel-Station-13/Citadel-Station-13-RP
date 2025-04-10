@@ -27,7 +27,7 @@
 	var/datum/melee_attack/unarmed/using_style = default_unarmed_attack_style()
 	if(!using_style)
 		return clickchain_flags
-	. = clickchain_flags | melee_attack(clickchain, clickchain_flags, using_style)
+	. = melee_attack(clickchain, clickchain_flags, using_style)
 
 	clickchain.performer.setClickCooldownLegacy(clickchain.click_cooldown_base * clickchain.click_cooldown_multiplier)
 
