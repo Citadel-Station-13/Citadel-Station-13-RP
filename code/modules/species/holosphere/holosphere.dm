@@ -103,6 +103,8 @@
 		/datum/action/holosphere/change_loadout
 	)
 
+	hunger_slowdown_multiplier = 0.5 // they can't eat and hitting 0 hunger makes them absolutely defenceless, no need to punish them much for this
+
 	var/list/chameleon_gear = list(
 		SLOT_ID_UNIFORM = /obj/item/clothing/under/chameleon/holosphere,
 		SLOT_ID_SUIT    = /obj/item/clothing/suit/chameleon/holosphere,
