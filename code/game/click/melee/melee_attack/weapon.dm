@@ -34,7 +34,7 @@
 	if(.)
 		return
 	if(!weapon.damage_force)
-		playsound(target, 'sound/weapon/tap.ogg', 50, TRUE, -1)
+		playsound(target, 'sound/weapons/tap.ogg', 50, TRUE, -1)
 	else
 		var/resolved = target.hitsound_melee(weapon)
 		if(!isnull(resolved))

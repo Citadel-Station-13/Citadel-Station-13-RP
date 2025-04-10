@@ -4,7 +4,7 @@
 GLOBAL_DATUM_INIT(kinetic_gauntlet_melee_combo, /datum/combo_set/melee, new /datum/combo_set/melee/intent_based/kinetic_gauntlets)
 
 /datum/combo_set/melee/intent_based/kinetic_gauntlets
-	expected_combo_type = /datum/combo/melee/kinetic_gauntlets
+	expected_combo_type = /datum/combo/melee/intent_based/kinetic_gauntlets
 	combos = list(
 		/datum/combo/melee/intent_based/kinetic_gauntlets/slam,
 		/datum/combo/melee/intent_based/kinetic_gauntlets/concuss,

@@ -258,7 +258,7 @@
 				//Handles embedding for non-humans and simple_mobs.
 				// embed(O)
 
-				var/turf/T = near_wall(dir,2)
+				// var/turf/T = near_wall(dir,2)
 
 				// TODO: rework pinned
 				// if(T)
@@ -425,7 +425,7 @@
 
 // todo: rework
 // Returns a number to determine if something is harder or easier to hit than normal.
-/mob/get_evasion()
+/mob/proc/get_evasion()
 	return 0
 /mob/living/get_evasion()
 	var/result = evasion // First we get the 'base' evasion.  Generally this is zero.
