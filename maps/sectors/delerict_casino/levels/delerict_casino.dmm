@@ -6318,8 +6318,23 @@
 /turf/simulated/floor,
 /area/sector/delerictcasino/engineering)
 "DG" = (
-/turf/simulated/wall/r_wall/prepainted/cargo,
-/area/sector/delerictcasino/medical/public)
+/obj/structure/railing/grey{
+	dir = 4
+	},
+/obj/machinery/light/fairy{
+	coloration = "#ed983d";
+	color = "#ed983d";
+	light_color = "#ed983d";
+	dir = 4
+	},
+/obj/structure/flora/tree/jungle_small{
+	color = "#ed983d"
+	},
+/turf/simulated/floor/water/river{
+	name = "still water";
+	color = "#677246"
+	},
+/area/sector/delerictcasino/ringforrest)
 "DI" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /turf/simulated/floor/tiled/steel_dirty/dark{
@@ -23552,7 +23567,7 @@ zO
 Yn
 iW
 Ne
-kl
+Yn
 Yn
 Yn
 iv
@@ -25104,7 +25119,7 @@ lX
 Yn
 Yn
 Yn
-DG
+Yn
 FD
 NR
 lX
@@ -36717,7 +36732,7 @@ Cc
 OL
 ar
 ar
-ar
+DG
 Jh
 tm
 OL
