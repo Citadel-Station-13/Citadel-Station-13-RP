@@ -14283,6 +14283,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
 	},
+/obj/effect/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/virologymorgue)
 "jaY" = (
@@ -14913,6 +14914,7 @@
 "jAs" = (
 /obj/machinery/atmospherics/component/binary/pump/high_power/on,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/virologypurge)
 "jAJ" = (
@@ -17184,6 +17186,9 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/medical/virologypurge)
 "kMQ" = (
@@ -19313,6 +19318,7 @@
 "mex" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/virologypurge)
 "mfm" = (
@@ -19479,6 +19485,7 @@
 /area/rift/surfacebase/outside/outside1)
 "mkq" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/virologypurge)
 "mkE" = (
@@ -21804,6 +21811,9 @@
 /area/rift/station/public_garden)
 "nAP" = (
 /obj/machinery/optable,
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/freezer,
 /area/medical/virologymorgue)
 "nBa" = (
@@ -38910,6 +38920,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
+/obj/effect/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/virologyisolation)
 "xgU" = (
@@ -39473,6 +39484,7 @@
 /obj/structure/table/standard,
 /obj/item/storage/firstaid/surgery,
 /obj/item/autopsy_scanner,
+/obj/machinery/camera/network/medbay,
 /turf/simulated/floor/tiled/freezer,
 /area/medical/virologymorgue)
 "xxc" = (
