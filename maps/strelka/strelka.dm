@@ -48,7 +48,6 @@
 	overmap_event_areas = 50
 	usable_email_tlds = list("strelka.nt")
 	titlescreens = list(
-		/datum/cutscene/browser/simple/strelka_title1 = 20,
 		list(
 			'icons/misc/title_vr.dmi',
 			"strelka",
