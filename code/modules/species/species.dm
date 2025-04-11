@@ -524,6 +524,9 @@
 	var/list/actions_to_apply = list()
 	var/list/actions_applied = list()
 
+	// How much hunger slows us down
+	var/hunger_slowdown_multiplier = 1
+
 /datum/species/New()
 	//! LEGACY
 	is_subspecies = id != uid
@@ -928,6 +931,8 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 
 // Impliments different trails for species depending on if they're wearing shoes.
 /datum/species/proc/get_move_trail(var/mob/living/carbon/human/H)
+	if( H.is_avoiding_ground() )
+		return /obj/effect/debris/cleanable/blood/tracks/flying
 	if( H.shoes || ( H.wear_suit && (H.wear_suit.body_cover_flags & FEET) ) )
 		return /obj/effect/debris/cleanable/blood/tracks/footprints
 	else

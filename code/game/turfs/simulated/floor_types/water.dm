@@ -51,7 +51,7 @@
 	else return ..()
 
 /turf/simulated/floor/water/return_air_for_internal_lifeform(var/mob/living/L)
-	if(L && L.lying)
+	if(L && L.lying && !L.is_avoiding_ground())
 		if(L.can_breathe_water()) // For squid.
 			var/datum/gas_mixture/water_breath = new()
 			var/datum/gas_mixture/above_air = return_air()
@@ -137,7 +137,7 @@
 /mob/living/proc/check_submerged()
 	if(buckled)
 		return 0
-	if(hovering)
+	if(is_avoiding_ground())
 		return 0
 	if(locate(/obj/structure/catwalk) in loc)
 		return 0
@@ -275,14 +275,14 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/water/acid)
 
 		else if(isliving(thing))
 			var/mob/living/L = thing
-			if(L.hovering || L.throwing)
+			if(L.is_avoiding_ground() || L.throwing)
 				continue
 			. = TRUE
 			L.acid_act()
 
 // Tells AI mobs to not suicide by pathing into acid if it would hurt them.
 /turf/simulated/floor/water/acid/is_safe_to_enter(mob/living/L)
-	if(!L.hovering)
+	if(!L.is_avoiding_ground())
 		return FALSE
 	return ..()
 
@@ -357,7 +357,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/water/acid/deep)
 
 // Tells AI mobs to not suicide by pathing into lava if it would hurt them.
 /turf/simulated/floor/water/blood/is_safe_to_enter(mob/living/L)
-	if(!L.hovering)
+	if(!L.is_avoiding_ground())
 		return FALSE
 	return ..()
 

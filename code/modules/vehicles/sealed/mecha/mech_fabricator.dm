@@ -696,7 +696,7 @@
 		return
 	var/datum/prototype/material/M = get_material_by_name(matstring)
 
-	var/obj/item/stack/material/S = M.place_sheet(get_turf(src))
+	var/obj/item/stack/material/S = M.place_sheet()
 	if(amount <= 0)
 		amount = S.max_amount
 	var/ejected = min(round(contains / S.perunit), amount)
@@ -704,6 +704,7 @@
 	if(S.amount <= 0)
 		qdel(S)
 		return
+	S.forceMove(drop_location())
 	stored_materials[matstring] -= ejected * S.perunit
 	if(recursive && contains >= S.perunit)
 		eject_materials(matstring, -1)

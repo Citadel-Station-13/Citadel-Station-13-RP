@@ -7058,3 +7058,38 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/macaron/green
 	desc = "A small sugary treat. This one is green!"
 	icon_state = "macaron_green"
+
+///Because Scale Creep is a Thing
+
+/obj/item/reagent_containers/food/snacks/ashomarr
+	name = "Ashomarr Berries"
+	desc = "Native to Adhomai, this sweet berry that thrives in the cold. It has many uses in traditional Tajaran cuisine, medicine, and crafts as a dye."
+	icon_state = "holly"
+	nutriment_amt = 2
+	nutriment_desc = list("sweetness" = 1, "bitterness" = 1)
+
+/obj/item/reagent_containers/food/snacks/guska
+	name = "Guskaroot"
+	desc = "A cold resilent and infamously unappetizing tuber native to Adhomai. Its ability to thrive in cold has made it a staple crop for Adhomai's poorest peasants."
+	icon_state = "tajtuber"
+	nutriment_amt = 3
+	nutriment_desc = list("nutritious dirt" = 1)
+
+/obj/item/reagent_containers/food/snacks/guskacake
+	name = "Guskacake"
+	desc = "A traditional Adhomai peasant's dish, guskaroot mashed and garnished with Ashomarr Jam to mask the Guskaroot's earthy flavor."
+	icon_state = "tajtubercake"
+	nutriment_amt = 10
+	nutriment_desc = list("flavored dirt" = 1)
+
+/obj/item/reagent_containers/food/snacks/taj_pemmican
+	name = "Adhomai Pemmican"
+	desc = "Dried meat and beries mixed together for travel and shelf life. This particular mix is from Adhomai."
+	icon_state = "taj_pemmican"
+	nutriment_amt = 4
+	nutriment_desc = list("dry meat" = 1, "berry" = 1)
+
+/obj/item/reagent_containers/food/snacks/taj_pemmican/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 3)
+	reagents.add_reagent("triglyceride", 1)

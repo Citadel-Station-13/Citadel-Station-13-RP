@@ -7,6 +7,7 @@
 		// Check init_start_time to not worry about atoms created before the atoms SS that are cleaned up before this
 		if (A.gc_destroyed > init_start_time)
 			BadInitializeCalls[the_type] |= BAD_INIT_QDEL_BEFORE
+			stack_trace("[A] ([A.type]) qdel'd during init without using hint.")
 		return TRUE
 
 	// This is handled and battle tested by dreamchecker. Limit to UNIT_TESTS just in case that ever fails.
@@ -19,6 +20,7 @@
 	#ifdef UNIT_TESTS
 	if(start_tick != world.time)
 		BadInitializeCalls[the_type] |= BAD_INIT_SLEPT
+		stack_trace("[A] ([A.type]) slept during init.")
 	#endif
 
 	var/qdeleted = FALSE
@@ -35,11 +37,13 @@
 			qdel(A)
 			qdeleted = TRUE
 		else
+			stack_trace("[A] ([A.type]) didn't return a hint.")
 			BadInitializeCalls[the_type] |= BAD_INIT_NO_HINT
 
 	if(!A) //possible harddel
 		qdeleted = TRUE
 	else if(!(A.atom_flags & ATOM_INITIALIZED))
+		stack_trace("[A] ([A.type]) didn't init.")
 		BadInitializeCalls[the_type] |= BAD_INIT_DIDNT_INIT
 	else
 		SEND_SIGNAL(A, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZE)
@@ -61,9 +65,11 @@
  * if the preloader is being used and then call [InitAtom][/datum/controller/subsystem/atoms/proc/InitAtom] of which the ultimate
  * result is that the Initialize proc is called.
  *
+ * * Creating any other atoms in this call is explicitly disallowed.
  */
 /atom/New(loc, ...)
 	//atom creation method that preloads variables at creation
+	// TODO: do we need the target type verify? it seems unnecsesary if /New() isn't allowed to be overridden usually
 	if(global.dmm_preloader_active && global.dmm_preloader_target == type)//in case the instantiated atom is creating other atoms in New()
 		world.preloader_load(src)
 

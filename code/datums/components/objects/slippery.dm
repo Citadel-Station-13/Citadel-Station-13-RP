@@ -64,7 +64,7 @@
 		return
 	if(living_entering.resting)
 		return
-	if(!(living_entering.movement_type & MOVEMENT_GROUND))
+	if(!(living_entering.movement_type & MOVEMENT_GROUND) || living_entering.is_avoiding_ground())
 		return
 	// end
 

@@ -24,8 +24,8 @@
 	if(!istype(P))
 		return //default behaviour only applies to true projectiles
 
-	var/acc_mod = burst_accuracy[min(burst, burst_accuracy.len)]
-	var/disp_mod = dispersion[min(burst, dispersion.len)]
+	var/acc_mod = burst_accuracy?[min(burst, burst_accuracy.len)] || 0
+	var/disp_mod = dispersion?[min(burst, dispersion.len)] || 0
 
 	if(one_handed_penalty)
 		if(!held_twohanded)

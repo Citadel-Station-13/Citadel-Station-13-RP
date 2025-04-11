@@ -4,8 +4,8 @@
 	description_info = "The dart gun is capable of storing three beakers. In order to use the dart gun, you must first use it in-hand to open its mixing UI. The dart-gun will only draw from beakers with mixing enabled. If multiple are enabled, the gun will draw from them in equal amounts."
 	description_antag = "The dart gun is silenced, but cannot pierce thick clothing such as armor or space-suits, and thus is better for use against soft targets, or commonly exposed areas of the body."
 	icon_state = "dartgun-empty"
+	base_icon_state = "dartgun"
 	item_state = null
-	var/base_state = "dartgun"
 	origin_tech = list(TECH_COMBAT = 7, TECH_MATERIAL = 6, TECH_BIO = 5, TECH_MAGNET = 2, TECH_ILLEGAL = 3)
 
 	caliber = /datum/ammo_caliber/dart
@@ -13,12 +13,11 @@
 	fire_sound_text = "a metallic click"
 	recoil = 0
 	silenced = 1
-	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/chemdart
-	allowed_magazines = list(/obj/item/ammo_magazine/chemdart)
+	magazine_preload = /obj/item/ammo_magazine/chemdart
+	magazine_restrict = /obj/item/ammo_magazine/chemdart
+	magazine_auto_eject = FALSE
 	var/default_magazine_casing_count = 5
 	var/track_magazine = 1
-	auto_eject = 0
 
 	var/list/beakers = list() //All containers inside the gun.
 	var/list/mixing = list() //Containers being used for mixing.
@@ -38,19 +37,19 @@
 
 /obj/item/gun/projectile/ballistic/dartgun/update_icon_state()
 	. = ..()
-	if(!ammo_magazine)
-		icon_state = "[base_state]-empty"
+	if(!magazine)
+		icon_state = "[base_icon_state]-empty"
 		return 1
 	if(track_magazine)
-		if(ammo_magazine.amount_remaining() == 0)
-			icon_state = "[base_state]-0"
-		else if(ammo_magazine.amount_remaining() > default_magazine_casing_count)
-			icon_state = "[base_state]-[default_magazine_casing_count]"
+		if(magazine.get_amount_remaining() == 0)
+			icon_state = "[base_icon_state]-0"
+		else if(magazine.get_amount_remaining() > default_magazine_casing_count)
+			icon_state = "[base_icon_state]-[default_magazine_casing_count]"
 		else
-			icon_state = "[base_state]-[ammo_magazine.amount_remaining()]"
+			icon_state = "[base_icon_state]-[magazine.get_amount_remaining()]"
 		return 1
 	else
-		icon_state = "[base_state]"
+		icon_state = "[base_icon_state]"
 
 /obj/item/gun/projectile/ballistic/dartgun/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	. = ..()
@@ -107,14 +106,14 @@
 	else
 		dat += "There are no beakers inserted!<br><br>"
 
-	if(ammo_magazine)
-		if(ammo_magazine.amount_remaining())
-			dat += "The dart cartridge has [ammo_magazine.amount_remaining()] shots remaining."
+	if(magazine)
+		if(magazine.get_amount_remaining())
+			dat += "The dart cartridge has [magazine.get_amount_remaining()] shots remaining."
 		else
 			dat += "<font color='red'>The dart cartridge is empty!</font>"
 		dat += " \[<A href='?src=\ref[src];eject_cart=1'>Eject</A>\]"
 
-	user << browse(dat, "window=dartgun")
+	user << browse(HTML_SKELETON(dat), "window=dartgun")
 	onclose(user, "dartgun", src)
 
 /obj/item/gun/projectile/ballistic/dartgun/proc/check_beaker_mixing(var/obj/item/B)
@@ -149,7 +148,8 @@
 				beakers -= B
 				B.loc = get_turf(src)
 	else if (href_list["eject_cart"])
-		unload_ammo(usr)
+		var/datum/event_args/actor/actor = new(usr)
+		user_clickchain_unload(actor)
 	src.updateUsrDialog()
 	return
 
@@ -160,9 +160,9 @@
 	desc = "Zeng-Hu Pharmaceutical's entry into the arms market, the Z-H P Artemis is a gas-powered dart gun capable of delivering chemical cocktails swiftly across short distances. This one seems to be an early model with an NT stamp."
 	description_info = "The dart gun is capable of storing two beakers. In order to use the dart gun, you must first use it in-hand to open its mixing UI. The dart-gun will only draw from beakers with mixing enabled. If multiple are enabled, the gun will draw from them in equal amounts."
 	icon_state = "dartgun_sci-empty"
-	base_state = "dartgun_sci"
-	magazine_type = /obj/item/ammo_magazine/chemdart/small
-	allowed_magazines = list(/obj/item/ammo_magazine/chemdart)
+	base_icon_state = "dartgun_sci"
+	magazine_preload = /obj/item/ammo_magazine/chemdart/small
+	magazine_restrict = /obj/item/ammo_magazine/chemdart
 	default_magazine_casing_count = 3
 	max_beakers = 2
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 4, TECH_BIO = 4, TECH_MAGNET = 2, TECH_ILLEGAL = 1)
@@ -178,7 +178,6 @@
 	fire_sound_text = "a metallic click"
 	recoil = 0
 	silenced = 1
-	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/chemdart
-	allowed_magazines = list(/obj/item/ammo_magazine/chemdart)
-	auto_eject = 0
+	magazine_preload = /obj/item/ammo_magazine/chemdart
+	magazine_restrict = /obj/item/ammo_magazine/chemdart
+	magazine_auto_eject = FALSE

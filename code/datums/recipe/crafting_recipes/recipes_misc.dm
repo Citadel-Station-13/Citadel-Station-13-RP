@@ -371,8 +371,9 @@
 				/obj/item/stack/rods = 1,
 				/obj/item/weldingtool/mini = 1)
 	time = 40
-	category = CAT_TOOL
-	subcategory = CAT_MISCELLANEOUS
+	subcategory = CAT_TOOL
+	category = CAT_MISCELLANEOUS
+
 
 /* Not gonna code this right now. This is bound to be nuts.
 /datum/crafting_recipe/rcl
@@ -429,6 +430,18 @@
 	category = CAT_MISCELLANEOUS
 	always_available = FALSE
 */
+
+//This Recipe is so you can soak hide without a sink.
+
+/datum/crafting_recipe/soak_hide
+	name = "Soak Hairless Hide"
+	result = list(/obj/item/stack/wetleather = 1)
+	time = 10
+	reqs = list(/obj/item/stack/hairlesshide = 1,
+				/datum/reagent/water = 5)
+	subcategory = CAT_TOOL
+	category = CAT_MISCELLANEOUS
+
 
 ////////////
 //Vehicles//

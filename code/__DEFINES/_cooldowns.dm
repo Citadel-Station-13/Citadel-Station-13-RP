@@ -64,6 +64,10 @@
 
 // INDEXES FOR VAR COOLDOWNS - DO NOT USE UPPERCASE, DO NOT USE cooldown_, APPENDS ADDED AUTOMATICALLY
 
+#define CD_INDEX_GUN_RACK_CHAMBER rack_chamber
+#define CD_INDEX_GUN_SPIN_CHAMBER spin_chamber
+#define CD_INDEX_GUN_BOLT_ACTION bolt_action
+
 // INDEXES FOR TIMER COOLDOWNS - Must be unique!
 
 //? General
@@ -72,7 +76,8 @@
 #define CD_INDEX_SONAR_NOISE				"sonar_noise"
 #define CD_INDEX_POWER_DRAIN_WARNING		"power_drain_warning"
 
-//? Items
+//? Items ?//
+
 //* /obj/item/tape_recorder
 #define CD_INDEX_TAPE_TRANSLATION			"tape_translation"
 #define CD_INDEX_TAPE_PRINT					"tape_print"
@@ -91,5 +96,6 @@
 // admin verb cooldowns
 #define CD_INTERNET_SOUND "internet_sound"
 
-//* /mob
+//? Mobs ?//
+
 #define CD_INDEX_MOB_VERB_INVERT_SELF "mob-verb-invert-self"
