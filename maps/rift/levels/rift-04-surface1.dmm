@@ -2454,9 +2454,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/delivery)
-"bKN" = (
-/turf/simulated/wall/prepainted,
-/area/crew_quarters/medbreak)
 "bLe" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -27718,6 +27715,7 @@
 /area/rift/surfacebase/outside/outside1)
 "qRr" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/crew_quarters/medbreak)
 "qRt" = (
@@ -55271,7 +55269,7 @@ rrk
 mUU
 qRr
 qRr
-bKN
+mUU
 oOT
 tDL
 mUU
