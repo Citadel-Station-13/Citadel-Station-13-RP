@@ -724,6 +724,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 10
 	},
+/obj/machinery/camera/network/engineering,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "rM" = (
@@ -814,6 +815,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_room)
+"uR" = (
+/obj/structure/closet/radiation,
+/obj/machinery/camera/network/engineering,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "vh" = (
@@ -1170,6 +1176,20 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
+/obj/machinery/camera/network/engineering{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_room)
+"JI" = (
+/obj/machinery/atmospherics/pipe/simple/visible/green{
+	dir = 4
+	},
+/obj/machinery/camera/network/engineering,
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
+"JN" = (
+/obj/machinery/camera/network/engineering,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "JP" = (
@@ -1493,6 +1513,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
+"Vh" = (
+/obj/machinery/camera/network/engineering{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_room)
 "VD" = (
 /obj/structure/closet/radiation,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -1695,7 +1721,7 @@ JD
 Ye
 Ye
 Ye
-Ye
+Vh
 GE
 Ye
 aP
@@ -1745,7 +1771,7 @@ Ye
 Ye
 "}
 (8,1,1) = {"
-pp
+JI
 dB
 fN
 dB
@@ -1849,7 +1875,7 @@ Qv
 Ye
 tl
 jf
-VD
+uR
 EH
 VX
 Th
@@ -2023,7 +2049,7 @@ Sg
 NY
 Qv
 jf
-Ye
+JN
 Kb
 Ye
 Ye
