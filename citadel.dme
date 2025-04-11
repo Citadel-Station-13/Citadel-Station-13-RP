@@ -5605,6 +5605,7 @@
 #include "maps\strelka\strelka-shuttles.dm"
 #include "maps\strelka\strelka-papers.dm"
 #include "maps\strelka\strelka-misc.dm"
+#include "maps\strelka\titlescreens.dm"
 #include "maps\strelka\strelka.dm"
 #include "maps\strelka\telecomms.dm"
 #include "maps\sectors\sky_planet\sky_planet-areas.dm"
