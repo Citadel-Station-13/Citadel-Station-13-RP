@@ -176,3 +176,44 @@
 #define AMBIENCE_LYTHIOS list(\
 	'sound/ambience/lythios/lythios_ambience.ogg'\
 	)
+
+// Ambience for Strelka areas
+#define AMBIENCE_STRELKA_BRIDGE list(\
+	'sound/ambience/strelka/bridge_ambiance.ogg'\
+	)
+
+#define AMBIENCE_STRELKA_HALLWAY_UPPER list(\
+	'sound/ambience/strelka/hallway_ambiance_over.ogg'\
+	)
+
+#define AMBIENCE_STRELKA_HALLWAY list(\
+	'sound/ambience/strelka/hallway_ambiance_under.ogg'\
+	)
+
+#define AMBIENCE_STRELKA_MEDICAL list(\
+	'sound/ambience/strelka/medical_room.ogg'\
+	)
+
+#define AMBIENCE_STRELKA_MUSEUM list(\
+	'sound/ambience/strelka/museum_strelka.ogg'\
+	)
+
+#define AMBIENCE_STRELKA_ROOM list(\
+	'sound/ambience/strelka/small_room.ogg'\
+	)
+
+#define AMBIENCE_STRELKA_ROOM_WOOD list(\
+	'sound/ambience/strelka/small_wood_room.ogg'\
+	)
+
+#define AMBIENCE_STRELKA_POOL list(\
+	'sound/ambience/strelka/pool_ambiance.ogg'\
+	)
+
+#define AMBIENCE_STRELKA_SAUNA list(\
+	'sound/ambience/strelka/sauna_ambiance.ogg'\
+	)
+
+#define AMBIENCE_STRELKA_BOTANY list(\
+	'sound/ambience/strelka/botany_ambiance.ogg'\
+	)
