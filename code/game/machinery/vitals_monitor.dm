@@ -5,7 +5,6 @@
 	origin_tech = list(TECH_DATA = 3, TECH_BIO = 4, TECH_ENGINEERING = 2)
 	req_components = list(
 		/obj/item/stock_parts/console_screen = 1,
-		/obj/item/cell/high = 1
 	)
 
 /obj/machinery/vitals_monitor

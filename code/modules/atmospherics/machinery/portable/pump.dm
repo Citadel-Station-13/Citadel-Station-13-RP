@@ -133,7 +133,7 @@
 
 	data["powerDraw"] = round(last_power_draw_legacy)
 	data["cellCharge"] = cell ? cell.charge : 0
-	data["cellMaxCharge"] = cell ? cell.maxcharge : 1
+	data["cellMaxCharge"] = cell ? cell.max_charge : 1
 
 	if(holding)
 		data["holding"] = list()

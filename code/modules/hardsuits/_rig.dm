@@ -733,8 +733,8 @@
 	data["chest"] =     (chest ?  "[chest.name]" :  "None.")
 
 	data["charge"] =       cell ? round(cell.charge,1) : 0
-	data["maxcharge"] =    cell ? cell.maxcharge : 0
-	data["chargestatus"] = cell ? FLOOR((cell.charge/cell.maxcharge)*50, 1) : 0
+	data["max_charge"] =    cell ? cell.max_charge : 0
+	data["chargestatus"] = cell ? FLOOR((cell.charge/cell.max_charge)*50, 1) : 0
 
 	data["emagged"] =       subverted
 	data["coverlock"] =     locked

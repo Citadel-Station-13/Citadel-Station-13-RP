@@ -190,8 +190,8 @@
 		if(temp_apc)
 			temp_apc.emp_act(3) // Such power surges are not good for APC electronics
 			if(temp_apc.cell)
-				temp_apc.cell.maxcharge -= between(0, (temp_apc.cell.maxcharge/2) + 500, temp_apc.cell.maxcharge)
-				if(temp_apc.cell.maxcharge < 100) // That's it, you busted the APC cell completely. Break the APC and completely destroy the cell.
+				temp_apc.cell.max_charge -= between(0, (temp_apc.cell.max_charge/2) + 500, temp_apc.cell.max_charge)
+				if(temp_apc.cell.max_charge < 100) // That's it, you busted the APC cell completely. Break the APC and completely destroy the cell.
 					qdel(temp_apc.cell)
 					temp_apc.set_broken()
 

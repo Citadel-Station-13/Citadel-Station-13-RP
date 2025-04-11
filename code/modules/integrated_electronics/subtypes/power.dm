@@ -71,7 +71,7 @@
 			AM.update_icon()
 
 			set_pin_data(IC_OUTPUT, 1, cell.charge)
-			set_pin_data(IC_OUTPUT, 2, cell.maxcharge)
+			set_pin_data(IC_OUTPUT, 2, cell.max_charge)
 			set_pin_data(IC_OUTPUT, 3, cell.percent())
 			activate_pin(2)
 			push_data()
