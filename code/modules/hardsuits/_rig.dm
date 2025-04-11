@@ -842,11 +842,11 @@
 		return 0
 
 	if(href_list["toggle_piece"])
-		if(ishuman(usr) && !CHECK_MOBILITY(usr, MOBILITY_CAN_STORAGE))
+		if(ishuman(wearer) && !CHECK_MOBILITY(usr, MOBILITY_CAN_STORAGE))
 			return 0
-		toggle_piece(href_list["toggle_piece"], usr)
+		toggle_piece(href_list["toggle_piece"], wearer)
 	else if(href_list["toggle_seals"])
-		toggle_seals(usr)
+		toggle_seals(wearer)
 	else if(href_list["interact_module"])
 
 		var/module_index = text2num(href_list["interact_module"])
