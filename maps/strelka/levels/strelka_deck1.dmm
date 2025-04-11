@@ -12,6 +12,15 @@
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/strelka/shipbase/deck1/firingrange)
+"ad" = (
+/obj/structure/fuel_port{
+	pixel_x = 30
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
+	},
+/turf/simulated/floor,
+/area/shuttle/civvie/strelka)
 "ae" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -84,6 +93,16 @@
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1/pilot/eva)
+"aQ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/structure/window/reinforced/tinted{
+	dir = 4
+	},
+/obj/structure/window/reinforced/tinted,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/civvie/strelka)
 "aU" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -98,15 +117,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
-"aW" = (
-/obj/structure/fuel_port{
-	pixel_x = 30
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/turf/simulated/floor,
-/area/shuttle/civvie/strelka)
 "aY" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -148,6 +158,12 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/bridge/balista)
+"be" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 1
+	},
+/turf/simulated/wall/r_wall/prepainted/civilian,
+/area/shuttle/civvie/strelka)
 "bh" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -431,12 +447,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck1)
-"cq" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 4
-	},
-/turf/simulated/wall/r_wall/prepainted/civilian,
-/area/shuttle/civvie/strelka)
 "cs" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/effect/floor_decal/industrial/outline/red,
@@ -629,19 +639,13 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1)
 "dk" = (
-/obj/machinery/door/airlock/voidcraft/vertical,
 /obj/structure/cable/blue{
 	icon_state = "4-8"
 	},
-/obj/machinery/access_button{
-	command = "cycle_int";
-	frequency = 1380;
-	master_tag = "civvie_docker";
-	pixel_x = 5;
-	pixel_y = 25
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
 	},
-/obj/map_helper/airlock/door/int_door,
-/turf/simulated/floor/tiled/techfloor,
+/turf/simulated/floor,
 /area/shuttle/civvie/strelka)
 "dp" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
@@ -708,7 +712,9 @@
 /obj/effect/floor_decal/rust,
 /obj/machinery/door/airlock/highsecurity,
 /obj/machinery/door/firedoor,
-/obj/map_helper/access_helper/airlock/station/command/bridge,
+/obj/map_helper/access_helper/airlock/station/command/bridge{
+	req_access = list(19,44)
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1/bridge/balista)
 "dt" = (
@@ -1046,7 +1052,7 @@
 	dir = 4
 	},
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
@@ -1290,6 +1296,8 @@
 	opacity = 0
 	},
 /obj/structure/table/carbon/reinforced,
+/obj/item/paper/pamphlet/strelka,
+/obj/item/paper/pamphlet/strelka,
 /turf/simulated/floor/tiled/steel,
 /area/strelka/shipbase/deck1/checkpoint)
 "ho" = (
@@ -2010,6 +2018,15 @@
 /area/strelka/shipbase/deck1/warden)
 "lj" = (
 /obj/structure/table/carbon/reinforced,
+/obj/item/paper/strelkashuttles,
+/obj/item/paper_bin{
+	pixel_y = 9;
+	pixel_x = -5
+	},
+/obj/item/pen{
+	pixel_x = -6;
+	pixel_y = 8
+	},
 /turf/simulated/floor/carpet/patterened/blue,
 /area/strelka/shipbase/deck1/pilot)
 "ls" = (
@@ -2347,24 +2364,21 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
 "mH" = (
+/obj/machinery/door/airlock/voidcraft/vertical,
 /obj/structure/cable/blue{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	id_tag = "civvie_docker_pump"
-	},
-/obj/effect/shuttle_landmark/strelka/deck1/civi,
-/obj/overmap/entity/visitable/ship/landable/civvie/strelka,
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
+/obj/machinery/access_button{
+	command = "cycle_int";
 	frequency = 1380;
-	id_tag = "civvie_docker";
-	pixel_y = 32
+	master_tag = "civvie_docker";
+	pixel_x = 5;
+	pixel_y = 25
 	},
-/obj/machinery/airlock_sensor{
-	id_tag = "civvie_docker";
-	pixel_y = -24
+/obj/map_helper/airlock/door/int_door,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
 	},
-/obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
 "mI" = (
@@ -3410,7 +3424,6 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
-/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/practice,
 /turf/simulated/floor/carpet/turcarpet,
 /area/shuttle/civvie/strelka)
 "sJ" = (
@@ -3884,6 +3897,10 @@
 /obj/structure/flora/ausbushes/pointybush,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
+"vO" = (
+/obj/machinery/light/small/old,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/civvie/strelka)
 "vQ" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -4003,9 +4020,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck1/bridge/balista)
 "wG" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 9
-	},
 /turf/simulated/wall/r_wall,
 /area/shuttle/civvie/strelka)
 "wH" = (
@@ -4253,9 +4267,12 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "xN" = (
-/obj/effect/paint/palebottlegreen,
-/obj/structure/window/reinforced/polarized/full{
+/obj/structure/window/reinforced/polarized{
+	dir = 4;
 	id = "Centuries_old_shuttle_cockpit"
+	},
+/obj/structure/bed/chair/shuttle{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
@@ -4289,7 +4306,9 @@
 	},
 /obj/machinery/door/airlock/highsecurity,
 /obj/machinery/door/firedoor,
-/obj/map_helper/access_helper/airlock/station/command/bridge,
+/obj/map_helper/access_helper/airlock/station/command/bridge{
+	req_access = list(19,44)
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1/bridge/balista)
 "xY" = (
@@ -4459,18 +4478,8 @@
 /area/strelka/shipbase/deck1)
 "ze" = (
 /obj/machinery/holopad/ship,
-/obj/machinery/button/windowtint{
-	pixel_x = 23;
-	id = "Centuries_old_shuttle_cockpit"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
-	},
-/obj/machinery/light/small/old{
-	dir = 4
-	},
-/obj/machinery/light/small/old{
-	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
@@ -4525,7 +4534,9 @@
 	name = "Balista Airlock";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/command/bridge,
+/obj/map_helper/access_helper/airlock/station/command/bridge{
+	req_access = list(19,44)
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1/bridge/balista)
 "zq" = (
@@ -4720,6 +4731,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/fighterbay)
+"Bf" = (
+/obj/machinery/air_alarm/east_mount,
+/turf/simulated/floor,
+/area/shuttle/civvie/strelka)
 "Bg" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -4750,7 +4765,7 @@
 /area/strelka/shipbase/deck1)
 "Bp" = (
 /obj/machinery/atmospherics/pipe/tank/air{
-	dir = 4
+	dir = 1
 	},
 /turf/simulated/floor,
 /area/shuttle/civvie/strelka)
@@ -4968,7 +4983,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
-/obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor,
 /area/shuttle/civvie/strelka)
 "CE" = (
@@ -5557,7 +5571,9 @@
 	req_one_access = null
 	},
 /obj/machinery/door/firedoor,
-/obj/map_helper/access_helper/airlock/station/command/bridge,
+/obj/map_helper/access_helper/airlock/station/command/bridge{
+	req_access = list(19,44)
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck1/bridge/balista)
 "Fj" = (
@@ -5984,11 +6000,11 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/armory2)
 "HW" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
-	},
 /obj/structure/shuttle/engine/heater{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
 	},
 /turf/simulated/wall/r_wall/prepainted/civilian,
 /area/shuttle/civvie/strelka)
@@ -6647,6 +6663,11 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 8
 	},
+/obj/machinery/button/windowtint{
+	pixel_x = 23;
+	id = "Centuries_old_shuttle_cockpit";
+	pixel_y = 23
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
 "LQ" = (
@@ -6668,20 +6689,27 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1/bridge/balista)
 "Mf" = (
-/obj/machinery/door/airlock/voidcraft/vertical,
 /obj/structure/cable/blue{
 	icon_state = "4-8"
+	},
+/obj/effect/shuttle_landmark/strelka/deck1/civi,
+/obj/overmap/entity/visitable/ship/landable/civvie/strelka,
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	frequency = 1380;
+	id_tag = "civvie_docker";
+	pixel_y = 32
+	},
+/obj/machinery/airlock_sensor{
+	id_tag = "civvie_docker";
+	pixel_y = -24
+	},
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 1
 	},
-/obj/machinery/access_button{
-	command = "cycle_ext";
-	frequency = 1380;
-	master_tag = "civvie_docker";
-	pixel_y = -21
-	},
-/obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
 "Mh" = (
@@ -7919,7 +7947,9 @@
 	req_one_access = null
 	},
 /obj/machinery/door/firedoor,
-/obj/map_helper/access_helper/airlock/station/command/bridge,
+/obj/map_helper/access_helper/airlock/station/command/bridge{
+	req_access = list(19,44)
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck1/bridge/balista)
 "SM" = (
@@ -8404,10 +8434,21 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck1/warden)
 "Vm" = (
+/obj/machinery/door/airlock/voidcraft/vertical,
 /obj/structure/cable/blue{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/reinforced,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 1
+	},
+/obj/machinery/access_button{
+	command = "cycle_ext";
+	frequency = 1380;
+	master_tag = "civvie_docker";
+	pixel_y = -21
+	},
+/obj/map_helper/airlock/door/ext_door,
+/turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck1/civhangar)
 "Vw" = (
 /turf/simulated/wall/r_wall/prepainted,
@@ -8649,7 +8690,6 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor,
-/obj/map_helper/access_helper/airlock/station/security/general,
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/strelka/shipbase/deck1/firingrange)
 "WT" = (
@@ -25500,7 +25540,7 @@ fx
 LN
 ul
 ze
-Py
+vO
 GP
 PC
 Sf
@@ -25693,7 +25733,7 @@ GP
 on
 xN
 xN
-wp
+aQ
 cV
 GP
 PC
@@ -26857,7 +26897,7 @@ GP
 Eb
 CC
 Hd
-aW
+RD
 fb
 GP
 IP
@@ -27049,9 +27089,9 @@ rL
 FK
 GP
 RD
-on
+Bf
 dk
-wp
+ad
 Bp
 GP
 yA
@@ -27245,7 +27285,7 @@ GP
 Mx
 on
 mH
-cq
+on
 wG
 GP
 ZW
@@ -27437,9 +27477,9 @@ rL
 ZW
 Mv
 dT
-he
+be
 Mf
-he
+be
 he
 HW
 ZW
@@ -27631,9 +27671,9 @@ rL
 ZW
 UM
 UM
-UM
+on
 Vm
-UM
+on
 UM
 UM
 ZW

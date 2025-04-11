@@ -910,10 +910,6 @@
 /obj/structure/cable/pink{
 	icon_state = "4-8"
 	},
-/obj/structure/cable/pink{
-	dir = 4
-	},
-/obj/machinery/power/apc/north_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
@@ -1032,6 +1028,22 @@
 /obj/effect/floor_decal/borderfloorblack/full,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/air_alarm/west_mount,
+/obj/item/paper/strelkashuttles,
+/obj/item/paper/strelkacommand{
+	pixel_x = -3
+	},
+/obj/item/paper/strelkacommand/pathfinder{
+	pixel_x = -6
+	},
+/obj/structure/flora/pottedplant/shoot{
+	pixel_y = 20;
+	pixel_x = 7
+	},
+/obj/item/paper_bin{
+	pixel_y = 9;
+	pixel_x = -5
+	},
+/obj/item/pen,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/shipbase/deck2/explo/pathfy)
 "dw" = (
@@ -1570,6 +1582,10 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
+	},
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -13
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/security/cell2)
@@ -2706,6 +2722,7 @@
 /area/strelka/shipbase/deck2/engineering/atmos/storage)
 "je" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/structure/curtain/open/shower/engineering,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck2/bridge/ce)
 "jf" = (
@@ -3439,6 +3456,10 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
+	},
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -13
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/security/cell1)
@@ -4400,7 +4421,9 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/map_helper/access_helper/airlock/station/command/bridge,
+/obj/map_helper/access_helper/airlock/station/command/bridge{
+	req_access = list(19,44)
+	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck2/bridge)
@@ -5614,6 +5637,10 @@
 /obj/machinery/light/small/old{
 	dir = 8
 	},
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -13
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/storage)
 "rN" = (
@@ -6533,10 +6560,8 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/security)
 "uy" = (
-/obj/machinery/atmospherics/pipe/manifold/visible/cyan{
-	dir = 4
-	},
 /obj/machinery/meter,
+/obj/machinery/atmospherics/pipe/manifold/visible/cyan,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/engine)
 "uz" = (
@@ -8775,6 +8800,9 @@
 /area/strelka/shipbase/deck2/engineering/engine)
 "BC" = (
 /obj/structure/closet/secure_closet/hos,
+/obj/structure/curtain/open/shower/security{
+	pixel_y = -32
+	},
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck2/bridge/hos)
 "BE" = (
@@ -9313,9 +9341,6 @@
 "Dn" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
 	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 5
 	},
 /turf/simulated/wall/r_wall,
 /area/strelka/shipbase/deck2/engineering/engine)
@@ -10536,6 +10561,9 @@
 	dir = 1
 	},
 /obj/structure/table/marble,
+/obj/item/paper/pamphlet/strelka,
+/obj/item/paper/pamphlet/strelka,
+/obj/item/paper/pamphlet/strelka,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2)
 "Hw" = (
@@ -12582,12 +12610,10 @@
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 10
-	},
 /obj/machinery/camera/network/engineering{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/visible/cyan,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/engine)
 "OK" = (
@@ -15620,6 +15646,9 @@
 /obj/effect/floor_decal/industrial/warning/corner,
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/engine)
@@ -40291,7 +40320,7 @@ KT
 KT
 KT
 KT
-FB
+bO
 yp
 qA
 sK
@@ -40485,7 +40514,7 @@ KT
 KT
 KT
 KT
-FB
+bO
 QN
 QN
 Sl

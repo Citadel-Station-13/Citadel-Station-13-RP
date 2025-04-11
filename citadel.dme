@@ -5603,6 +5603,7 @@
 #include "maps\strelka\strelka-overmap.dm"
 #include "maps\strelka\strelka-sectors.dm"
 #include "maps\strelka\strelka-shuttles.dm"
+#include "maps\strelka\strelka-papers.dm"
 #include "maps\strelka\strelka-misc.dm"
 #include "maps\strelka\strelka.dm"
 #include "maps\strelka\telecomms.dm"

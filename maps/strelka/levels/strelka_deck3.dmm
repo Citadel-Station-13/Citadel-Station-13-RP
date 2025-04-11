@@ -1618,7 +1618,9 @@
 	name = "Bridge";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/command/bridge,
+/obj/map_helper/access_helper/airlock/station/command/bridge{
+	req_access = list(19,44)
+	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/bridge/blueshield)
@@ -2453,6 +2455,10 @@
 	dir = 4
 	},
 /obj/machinery/holopad,
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 12
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/secondary)
 "js" = (
@@ -5407,6 +5413,7 @@
 /area/strelka/shipbase/deck3/science/xenobio)
 "tU" = (
 /obj/spawner/window/low_wall/full/firelocks,
+/obj/structure/curtain/open/bed,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3/bridge/rd)
 "tW" = (
@@ -5528,6 +5535,7 @@
 /obj/item/deskbell{
 	pixel_x = 10
 	},
+/obj/item/paper/pamphlet/strelka,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3/cargo/reception)
 "uA" = (
@@ -5734,6 +5742,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
+	},
+/obj/structure/sink{
+	pixel_y = 23
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/xenobotany)
@@ -7168,6 +7179,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck3)
+"Aa" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -13
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck3/medical/main)
 "Ag" = (
 /obj/machinery/light/small/old{
 	dir = 8
@@ -7449,6 +7467,10 @@
 /obj/effect/floor_decal/corner/purple/border,
 /obj/structure/cable/green{
 	icon_state = "1-8"
+	},
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science)
@@ -8844,6 +8866,7 @@
 /area/strelka/shipbase/deck3/science/main)
 "FI" = (
 /obj/spawner/window/low_wall/full/firelocks,
+/obj/structure/curtain/open/bed,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3/bridge/md)
 "FL" = (
@@ -9905,6 +9928,10 @@
 /area/strelka/shipbase/deck3)
 "JK" = (
 /obj/machinery/fire_alarm/west_mount,
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -13
+	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/medical/surgery)
 "JL" = (
@@ -10806,6 +10833,10 @@
 	dir = 4
 	},
 /obj/machinery/iv_drip,
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -13
+	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/medical/room)
 "NC" = (
@@ -12350,6 +12381,10 @@
 	dir = 1
 	},
 /obj/machinery/air_alarm/west_mount,
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -13
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/robotics)
 "TG" = (
@@ -12960,6 +12995,10 @@
 	dir = 4
 	},
 /obj/machinery/iv_drip,
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -13
+	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/medical/room2)
 "VW" = (
@@ -13061,7 +13100,9 @@
 	name = "Server Room";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/command/bridge,
+/obj/map_helper/access_helper/airlock/station/command/bridge{
+	req_access = list(19,44)
+	},
 /obj/map_helper/access_helper/airlock/station/head_office/research_director,
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -13535,6 +13576,17 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical)
+"XX" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/purple{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/purple/border,
+/obj/structure/sink{
+	pixel_y = 23
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck3/science/main)
 "Ya" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -33302,7 +33354,7 @@ WK
 cO
 Fy
 JC
-lN
+XX
 lR
 Sh
 Uv
@@ -33667,7 +33719,7 @@ zq
 UG
 KB
 uv
-zM
+Aa
 HZ
 rh
 BM

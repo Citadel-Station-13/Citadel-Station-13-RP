@@ -204,6 +204,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
+/obj/item/folder/white_cmo,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck4/bridge)
 "aU" = (
@@ -1603,6 +1604,24 @@
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/dormhallway/Dorm)
+"ho" = (
+/obj/structure/bed/chair/bay/comfy/blue{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck4/bridge)
 "hp" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -1708,6 +1727,18 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/hallway)
+"hR" = (
+/obj/structure/table/carbon/reinforced,
+/obj/machinery/computer/ship/disperser{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navblue/border,
+/obj/structure/window/reinforced/survival_pod,
+/obj/effect/floor_decal/spline/plain{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/strelka/shipbase/deck4/bridge)
 "hW" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -1741,6 +1772,9 @@
 	pixel_y = -29
 	},
 /obj/machinery/light,
+/obj/item/paper/pamphlet/strelka{
+	pixel_x = 16
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/arrival)
 "if" = (
@@ -1823,6 +1857,9 @@
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = 56;
 	pixel_x = -34
+	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck4/bridge)
@@ -2006,12 +2043,13 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/hallway)
 "jt" = (
-/obj/structure/table/woodentable,
-/obj/item/flashlight/lamp/green/on,
 /obj/machinery/light/small/old{
 	dir = 8
 	},
-/turf/simulated/floor/wood/indoors,
+/obj/structure/bed/chair/sofa/brown{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/library)
 "ju" = (
 /obj/structure/railing{
@@ -2184,6 +2222,22 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/dormhallway/Dorm/Room2)
+"ko" = (
+/obj/effect/floor_decal/corner/navblue/border,
+/obj/machinery/computer/med_data{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/wood/cee,
+/obj/structure/table/carbon/reinforced,
+/obj/item/folder/blue,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck4/bridge)
 "kr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -2197,6 +2251,9 @@
 	dir = 8
 	},
 /obj/structure/railing,
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck4/bridge)
 "ku" = (
@@ -2350,6 +2407,17 @@
 	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/library)
+"lh" = (
+/obj/structure/table/carbon/reinforced,
+/obj/item/paper/strelkacommand,
+/obj/item/paper/strelkashuttles{
+	pixel_x = -5
+	},
+/obj/item/paper/strelkacommand/pathfinder{
+	pixel_x = -10
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/strelka/shipbase/deck4/bridge)
 "li" = (
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -3079,6 +3147,11 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/fitness)
+"om" = (
+/obj/spawner/window/low_wall/full/firelocks,
+/obj/machinery/door/blast/strelka/blockade,
+/turf/simulated/floor/tiled/monodark,
+/area/strelka/shipbase/deck4/bridge)
 "op" = (
 /obj/machinery/light/small/old{
 	dir = 1
@@ -3400,6 +3473,25 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/hallway)
+"pA" = (
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/wood/cee{
+	dir = 1
+	},
+/obj/structure/table/carbon/reinforced,
+/obj/machinery/computer/skills{
+	icon_state = "computer"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck4/bridge)
 "pD" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 8
@@ -3883,6 +3975,9 @@
 	dir = 8
 	},
 /obj/machinery/gear_painter,
+/obj/item/paper/pamphlet/strelka{
+	pixel_x = 16
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/arrival)
 "rU" = (
@@ -3896,6 +3991,9 @@
 	id = "bar_shutters";
 	name = "Bar Shutters"
 	},
+/obj/item/paper/pamphlet/strelka,
+/obj/item/paper/pamphlet/strelka,
+/obj/item/paper/pamphlet/strelka,
 /turf/simulated/floor/bmarble,
 /area/strelka/shipbase/deck4/bar)
 "rW" = (
@@ -4296,10 +4394,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck4/hallway)
-"uj" = (
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled/dark,
-/area/strelka/shipbase/deck4/library)
 "um" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 6
@@ -4533,6 +4627,10 @@
 	},
 /turf/simulated/floor/carpet/patterened/blue/alt,
 /area/strelka/shipbase/deck4/bridge/hop/office)
+"vt" = (
+/obj/effect/floor_decal/spline/plain,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/strelka/shipbase/deck4/bridge)
 "vu" = (
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/chapel)
@@ -4636,6 +4734,7 @@
 	dir = 1
 	},
 /obj/machinery/camera/network/security,
+/obj/item/folder/red_hos,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck4/bridge)
 "vZ" = (
@@ -4807,6 +4906,16 @@
 /obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/strelka/shipbase/deck4/dormhallway/Dorm/Room4)
+"wI" = (
+/obj/structure/table/carbon/reinforced,
+/obj/item/paper_bin{
+	pixel_x = -7;
+	pixel_y = 7
+	},
+/obj/item/pen,
+/obj/item/folder/white,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/strelka/shipbase/deck4/bridge)
 "wM" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/strelka/shipbase/deck4/dormhallway/Dorm/Room4)
@@ -4842,10 +4951,6 @@
 /obj/structure/simple_door/hardwood,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/bridge/hop/room)
-"xh" = (
-/obj/structure/curtain/open/black,
-/turf/simulated/floor/wood/indoors,
-/area/strelka/shipbase/deck4/library)
 "xm" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -4940,6 +5045,16 @@
 /obj/machinery/camera/network/security,
 /turf/simulated/floor/trap/dark,
 /area/strelka/shipbase/deck4/chapel/office)
+"xX" = (
+/obj/structure/bed/chair/bay/comfy/blue{
+	dir = 4
+	},
+/obj/landmark/spawnpoint/job/command_secretary,
+/obj/effect/floor_decal/spline/plain{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/strelka/shipbase/deck4/bridge)
 "xY" = (
 /obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -4954,6 +5069,12 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/strelka/shipbase/deck4/bar)
+"yd" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/strelka/shipbase/deck4/bridge)
 "yf" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/shower{
@@ -5072,6 +5193,10 @@
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck4/bridge/captain/room)
+"yP" = (
+/obj/spawner/window/low_wall/full/firelocks,
+/turf/simulated/floor/tiled/monodark,
+/area/strelka/shipbase/deck4/bridge)
 "yU" = (
 /obj/structure/table/standard,
 /obj/machinery/microwave{
@@ -5477,11 +5602,16 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/dormhallway/Dorm/Room4)
 "AQ" = (
-/obj/structure/table/carbon/reinforced,
-/obj/machinery/computer/ship/disperser{
+/obj/effect/floor_decal/corner/navblue/border,
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 10
+	},
+/obj/machinery/computer/ship/engines/adv{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/navblue/border,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck4/bridge)
 "AS" = (
@@ -5654,6 +5784,16 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/hallway)
+"BW" = (
+/obj/structure/bed/chair/bay/comfy/blue{
+	dir = 4
+	},
+/obj/landmark/spawnpoint/job/command_secretary,
+/obj/effect/floor_decal/spline/plain{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/strelka/shipbase/deck4/bridge)
 "BX" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -5836,6 +5976,13 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/bridge/captain/room)
+"CM" = (
+/obj/structure/bed/chair/sofa/brown/left,
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/turcarpet,
+/area/strelka/shipbase/deck4/library)
 "CN" = (
 /obj/spawner/window/low_wall/full/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
@@ -5865,10 +6012,9 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/library)
 "Da" = (
-/obj/structure/bed/chair/bay/comfy/blue{
+/obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/obj/landmark/spawnpoint/job/command_secretary,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck4/bridge)
 "Di" = (
@@ -5903,6 +6049,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck4/hallway)
+"Dl" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/obj/structure/window/reinforced/survival_pod{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/strelka/shipbase/deck4/bridge)
 "Dt" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -6095,6 +6250,13 @@
 	},
 /turf/simulated/floor/carpet/patterened,
 /area/strelka/shipbase/deck4/dormhallway)
+"Eq" = (
+/obj/structure/table/bench/wooden,
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/turcarpet,
+/area/strelka/shipbase/deck4/library)
 "Et" = (
 /obj/item/instrument/guitar,
 /obj/structure/table/hardwoodtable{
@@ -6139,6 +6301,13 @@
 	},
 /turf/simulated/floor/carpet/patterened,
 /area/strelka/shipbase/deck4/dormhallway)
+"EH" = (
+/obj/effect/floor_decal/spline/plain,
+/obj/structure/window/reinforced/survival_pod{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/strelka/shipbase/deck4/bridge)
 "EK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -6176,6 +6345,7 @@
 /obj/effect/floor_decal/corner/navgold/border{
 	dir = 1
 	},
+/obj/item/folder/blue_captain,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck4/bridge)
 "ER" = (
@@ -6314,12 +6484,6 @@
 	},
 /turf/simulated/floor/carpet/patterened/blue/alt,
 /area/strelka/shipbase/deck4/bridge/hop/office)
-"FE" = (
-/obj/structure/bed/chair/bay/comfy/blue{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/strelka/shipbase/deck4/bridge)
 "FI" = (
 /obj/structure/table/hardwoodtable,
 /obj/machinery/light/fairy{
@@ -6523,6 +6687,9 @@
 /area/strelka/shipbase/deck4/fitness)
 "GN" = (
 /obj/machinery/vending/loadout/loadout_misc,
+/obj/item/paper/pamphlet/strelka{
+	pixel_x = 16
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/arrival)
 "GQ" = (
@@ -6536,6 +6703,16 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/hallway)
+"Ha" = (
+/obj/structure/table/carbon/reinforced,
+/obj/item/paper_bin{
+	pixel_x = -7;
+	pixel_y = 7
+	},
+/obj/item/pen,
+/obj/item/folder/blue,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/strelka/shipbase/deck4/bridge)
 "Hb" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -7224,6 +7401,9 @@
 	control_area = "\improper turret point defense";
 	uid = "pointdefence"
 	},
+/obj/structure/window/reinforced/survival_pod{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck4/bridge)
 "Km" = (
@@ -7277,9 +7457,6 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/hallway)
-"Ku" = (
-/turf/simulated/floor/tiled/dark,
-/area/strelka/shipbase/deck4/library)
 "Kv" = (
 /obj/structure/cable/orange{
 	icon_state = "1-2"
@@ -7523,7 +7700,15 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/bar)
 "LJ" = (
-/obj/machinery/holopad,
+/obj/structure/bed/chair/bay/comfy/blue{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck4/bridge)
 "LK" = (
@@ -7648,7 +7833,9 @@
 	name = "Bridge";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/command/bridge,
+/obj/map_helper/access_helper/airlock/station/command/bridge{
+	req_access = list(19,44)
+	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -7785,7 +7972,8 @@
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#B95A00"
 	},
-/turf/simulated/wall/r_wall/prepainted,
+/obj/spawner/window/low_wall/full/firelocks,
+/turf/simulated/floor/tiled/monodark,
 /area/strelka/shipbase/deck4/bridge)
 "Ne" = (
 /obj/structure/sign/deck/fourth{
@@ -7854,12 +8042,18 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/bridge/captain/room)
-"Ns" = (
+"Nt" = (
+/obj/machinery/computer/ship/navigation,
 /obj/structure/table/carbon/reinforced,
-/obj/machinery/computer/med_data/laptop{
+/obj/effect/floor_decal/corner/navblue/border{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/navblue/border,
+/obj/structure/window/reinforced/survival_pod{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck4/bridge)
 "Nv" = (
@@ -7991,10 +8185,10 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/bar)
 "Oi" = (
-/obj/structure/bed/chair/comfy/brown{
-	dir = 1
+/obj/structure/bed/chair/sofa/brown/right{
+	dir = 4
 	},
-/turf/simulated/floor/wood/indoors,
+/turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/library)
 "Ol" = (
 /obj/machinery/light/small/old{
@@ -8187,14 +8381,6 @@
 	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/fitness)
-"Po" = (
-/obj/structure/table/carbon/reinforced,
-/obj/machinery/computer/skills,
-/obj/effect/floor_decal/corner/navblue/border{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/strelka/shipbase/deck4/bridge)
 "Pr" = (
 /obj/machinery/door/window/eastleft{
 	name = "Janitorial Desk";
@@ -8727,11 +8913,16 @@
 /turf/simulated/floor/bmarble,
 /area/strelka/shipbase/deck4/bar)
 "SH" = (
-/obj/machinery/computer/ship/navigation,
-/obj/structure/table/carbon/reinforced,
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 1
 	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 9
+	},
+/obj/machinery/computer/ship/sensors/adv,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck4/bridge)
 "SK" = (
@@ -8795,8 +8986,12 @@
 /turf/simulated/floor/carpet/patterened/blue/alt,
 /area/strelka/shipbase/deck4/bridge/hop/office)
 "Tc" = (
-/obj/structure/table/woodentable,
-/turf/simulated/floor/wood/indoors,
+/obj/item/flashlight/lamp/green/on,
+/obj/structure/table/bench/wooden,
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/library)
 "Te" = (
 /obj/structure/adherent_bath,
@@ -9205,6 +9400,9 @@
 /obj/machinery/camera/network/security{
 	dir = 1
 	},
+/obj/item/paper/pamphlet/strelka{
+	pixel_x = 16
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/arrival)
 "VE" = (
@@ -9297,6 +9495,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
+/obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck4/bridge)
 "Wj" = (
@@ -9345,8 +9544,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck4/bridge)
 "Wt" = (
-/obj/structure/bed/chair/comfy/brown,
-/turf/simulated/floor/wood/indoors,
+/obj/structure/bed/chair/sofa/brown/corner{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/library)
 "Wv" = (
 /obj/structure/bed/chair/sofa/brown/right{
@@ -9386,6 +9587,7 @@
 /obj/machinery/status_display{
 	pixel_y = -32
 	},
+/obj/item/folder/yellow_ce,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck4/bridge)
 "WF" = (
@@ -9437,6 +9639,7 @@
 	pixel_y = -64;
 	pixel_x = -33
 	},
+/obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck4/bridge)
 "WZ" = (
@@ -9848,6 +10051,13 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/hallway)
+"Zh" = (
+/obj/machinery/holopad,
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/strelka/shipbase/deck4/bridge)
 "Zk" = (
 /obj/structure/table/carbon/reinforced,
 /obj/machinery/photocopier/faxmachine{
@@ -9942,7 +10152,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
-/area/strelka/shipbase/deck4/library)
+/area/strelka/shipbase/deck4/hallway)
 "ZF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -9981,6 +10191,9 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 1
 	},
+/obj/structure/window/reinforced/survival_pod{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck4/bridge)
 "ZV" = (
@@ -9995,6 +10208,7 @@
 "ZW" = (
 /obj/structure/table/carbon/reinforced,
 /obj/effect/floor_decal/spline/fancy/wood,
+/obj/item/folder/white_rd,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck4/bridge)
 "ZX" = (
@@ -24866,11 +25080,11 @@ nl
 YB
 BS
 OC
-Ku
-Ku
-Ku
+OC
+OC
+OC
 ZD
-uj
+JN
 kN
 lB
 lB
@@ -25449,9 +25663,9 @@ DI
 MX
 iU
 Ik
-Wt
+CM
 Tc
-Oi
+Eq
 Ce
 Bf
 Nc
@@ -25643,9 +25857,9 @@ DI
 Rv
 sb
 aP
-xh
-xh
-xh
+jU
+jU
+jU
 Ce
 Fy
 Jm
@@ -34358,7 +34572,7 @@ uq
 vP
 iZ
 ni
-al
+lh
 DF
 al
 AL
@@ -34938,13 +35152,13 @@ CA
 qI
 cU
 iP
-Rf
+yd
 uD
 vx
 Bm
 EO
 Ll
-Rf
+vt
 yz
 cU
 qI
@@ -35326,13 +35540,13 @@ jR
 qI
 ot
 Kl
+Dl
 Rf
+pA
+ho
+ko
 Rf
-Rf
-Rf
-Rf
-Rf
-Rf
+EH
 ZU
 ot
 qI
@@ -35519,15 +35733,15 @@ jR
 jR
 jR
 CP
-CP
 eB
+BW
 Da
-Po
-FE
-Ns
 Da
+Da
+Da
+Da
+xX
 rg
-CP
 CP
 jR
 jR
@@ -35713,15 +35927,15 @@ jR
 jR
 jR
 CP
-CP
 ot
 Jv
+Ha
 SH
 LJ
 AQ
+wI
 Ie
 ot
-CP
 CP
 jR
 jR
@@ -35907,15 +36121,15 @@ jR
 jR
 jR
 jR
-CP
-ot
-ot
-CP
-CP
-CP
-ot
-ot
-CP
+om
+yP
+yP
+Nt
+Zh
+hR
+yP
+yP
+om
 jR
 jR
 jR
@@ -36107,7 +36321,7 @@ Nd
 CP
 CP
 CP
-cU
+yP
 Jq
 AM
 jR
@@ -36298,9 +36512,9 @@ jR
 jR
 Gk
 UC
-qI
-qI
-UC
+CP
+CP
+CP
 UC
 CA
 jR
