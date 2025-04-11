@@ -7,7 +7,7 @@
 /atom/movable/screen/actor_hud
 
 	/// our owning actor hud
-	var/datum/actor_hud/inventory/hud
+	var/datum/actor_hud/hud
 
 /atom/movable/screen/actor_hud/Initialize(mapload, datum/actor_hud/inventory/hud)
 	. = ..()

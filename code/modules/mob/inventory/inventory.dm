@@ -9,7 +9,10 @@
  */
 /datum/inventory
 	//* Basics *//
-	/// owning mob, if any
+
+	/// owning mob
+	/// * This must be set, it doens't make sense to have an inventory
+	///   that doesn't have an owner.
 	var/mob/owner
 
 	//* Actions *//
