@@ -542,12 +542,12 @@
 /obj/item/clothing/accessory/sweater/cropped
 	name = "Cropped Sweater Male"
 	desc = "A comfy, warm sweater that has been slashed at the midriff, making it hardly warm or comfy, but quite rousing."
-	icon_state = "sweater_cropped_f"
+	icon_state = "sweater_cropped_m"
 
 /obj/item/clothing/accessory/sweater/cropped/female
 	name = "Cropped Sweater Female"
 	desc = "A comfy, warm sweater that has been slashed at the midriff, making it hardly warm or comfy, but quite rousing. Comes with extra chest space."
-	icon_state = "sweater_cropped_m"
+	icon_state = "sweater_cropped_f"
 
 /obj/item/clothing/accessory/sweater/star
 	name = "Star Sweater"
