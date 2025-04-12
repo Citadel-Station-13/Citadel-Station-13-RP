@@ -87,3 +87,16 @@
 	belt = /obj/item/gun/projectile/energy/zip
 	r_pocket = /obj/item/melee/transforming/energy/sword/cutlass
 	r_hand = /obj/item/shield/makeshift
+
+//Lythios Colonist
+/datum/outfit/lythios_colonist
+	name = "Lythios Colonist"
+	uniform = /obj/item/clothing/under/tajaran
+	shoes = /obj/item/clothing/shoes/tajara/footwraps
+	back = /obj/item/storage/backpack/dufflebag
+	id_slot = SLOT_ID_WORN_ID
+	id_type = /obj/item/card/id/external/id_nka
+	r_hand = /obj/item/flame/lighter/zippo/taj
+	l_hand = /obj/item/gearbox/lythios_colonist
+	r_pocket = /obj/item/reagent_containers/food/drinks/flask/tajflask/v_gin
+	l_pocket = /obj/item/reagent_containers/food/snacks/taj_pemmican

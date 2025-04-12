@@ -31,6 +31,9 @@
 	legacy_melee_damage_upper = 15
 	poison_per_bite = 2
 	poison_type = "psilocybin"
+
+	exotic_type = /obj/item/reagent_containers/glass/venomgland/spider/psilocybin
+
 	player_msg = "You can fire a ranged attack by clicking on an enemy or tile at a distance."
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged
 

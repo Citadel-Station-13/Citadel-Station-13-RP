@@ -70,7 +70,7 @@
 	slot_flags = SLOT_BELT
 	amount_per_transfer_from_this = 5
 	possible_transfer_amounts = list(5)
-	volume = 30
+	volume = 60
 
 /obj/item/reagent_containers/glass/powder_horn/filled
 	name = "powder horn"
@@ -78,7 +78,7 @@
 
 /obj/item/reagent_containers/glass/powder_horn/filled/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("gunpowder", 30)
+	reagents.add_reagent("gunpowder", 60)
 
 /obj/item/reagent_containers/glass/powder_horn/tribal
 	name = "tribal powder horn"
@@ -91,7 +91,7 @@
 
 /obj/item/reagent_containers/glass/powder_horn/tribal/filled/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("gunpowder", 30)
+	reagents.add_reagent("gunpowder", 60)
 
 /obj/item/gun/projectile/ballistic/musket/tribal
 	name = "tribal musket"

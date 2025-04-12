@@ -206,13 +206,11 @@
 	// log to player lookup
 	update_lookup_in_db()
 
-	//* Resolve storage datums
-	// resolve persistent data
+	//* Resolve storage datums *//
+
 	persistent = resolve_client_data(ckey, key)
-	//* Resolve database data
 	player = resolve_player_data(ckey, key)
 	player.log_connect()
-	//* Resolve preferences
 	preferences = SSpreferences.resolve_game_preferences(key, ckey)
 	//? WARNING: SHITCODE ALERT ?//
 	// we wait until it inits to do this
@@ -222,6 +220,11 @@
 	//? END ?//
 
 	//* Create interface UI *//
+
+	if(byond_version >= 516)
+		// TODO: enable/disable devtools for admins only
+		winset(src, null, list("browser-options" = "find,refresh,byondstorage,devtools"))
+
 	// todo: move top level menu here, for now it has to be under prefs.
 	tgui_stat = new(src, SKIN_BROWSER_ID_STAT)
 	tgui_panel = new(src, SKIN_BROWSER_ID_CHAT)

@@ -234,3 +234,18 @@
 /obj/item/reagent_containers/spray/windowsealant/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("silicate", 80)
+
+
+/obj/item/reagent_containers/spray/spider/pepper
+	name = "venom spray"
+	desc = "A leather sack filled with venom and rigged  with bones to turn its contents in a spray."
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "spiderspray"
+	item_state = "pepperspray"
+	possible_transfer_amounts = null
+	volume = 15
+
+/obj/item/reagent_containers/spray/spider/pepper/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("condensedcapsaicin_v", volume)
+

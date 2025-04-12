@@ -33,6 +33,7 @@
 					CAT_FURNITURE,
 				),
 				CAT_PRIMAL = CAT_NONE,
+				CAT_SPECIAL = CAT_NONE,
 				CAT_FOOD = list(
 					CAT_BREAD,
 					CAT_BURGER,
