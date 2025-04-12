@@ -14,7 +14,7 @@
 	var/relevant_plane_path
 	/// for overriding base screen loc. do "FULLSCREEN" for fullscreen.
 	//  todo: fullscreens are not yet supported on secondary maps
-	var/base_screen_loc = "CENTER"
+	var/base_screen_loc = "BOTTOMLEFT"
 
 //? darkvision relays
 
@@ -23,28 +23,24 @@
 	layer = LIGHTMASK_LAYER_MAIN
 	render_source = LIGHTING_RENDER_TARGET
 	relevant_plane_path = /atom/movable/screen/plane_master/lightmask
-	base_screen_loc = "BOTTOMLEFT"
 
 /atom/movable/screen/plane_render/darkvision_turfs
 	plane = DARKVISION_PLANE
 	layer = DARKVISION_LAYER_TURFS
 	render_source = TURF_PLANE_RENDER_TARGET
 	relevant_plane_path = /atom/movable/screen/plane_master/darkvision
-	base_screen_loc = "BOTTOMLEFT"
 
 /atom/movable/screen/plane_render/darkvision_objs
 	plane = DARKVISION_PLANE
 	layer = DARKVISION_LAYER_OBJS
 	render_source = OBJ_PLANE_RENDER_TARGET
 	relevant_plane_path = /atom/movable/screen/plane_master/darkvision
-	base_screen_loc = "BOTTOMLEFT"
 
 /atom/movable/screen/plane_render/darkvision_mobs
 	plane = DARKVISION_PLANE
 	layer = DARKVISION_LAYER_MOBS
 	render_source = MOB_PLANE_RENDER_TARGET
 	relevant_plane_path = /atom/movable/screen/plane_master/darkvision
-	base_screen_loc = "BOTTOMLEFT"
 
 /atom/movable/screen/plane_render/darkvision_grain
 	plane = DARKVISION_PLANE
