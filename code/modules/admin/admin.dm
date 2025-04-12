@@ -270,7 +270,7 @@ var/global/floorIsLava = 0
 			if(index == page)
 				dat += "</b>"
 
-	usr << browse(dat, "window=player_notes;size=400x400")
+	usr << browse(HTML_SKELETON(dat), "window=player_notes;size=400x400")
 
 
 /datum/admins/proc/player_has_info(var/key as text)
@@ -326,7 +326,7 @@ var/global/floorIsLava = 0
 	dat += "<A href='?src=\ref[src];add_player_info=[key]'>Add Comment</A><br>"
 
 	dat += "</body></html>"
-	usr << browse(dat, "window=adminplayerinfo;size=480x480")
+	usr << browse(HTML_SKELETON(dat), "window=adminplayerinfo;size=480x480")
 
 
 
@@ -586,7 +586,7 @@ var/global/floorIsLava = 0
 			r = copytext( r, 1, findtext(r,"##") )//removes the description
 		dat += "<tr><td>[t] (<A href='?src=\ref[src];removejobban=[r]'>unban</A>)</td></tr>"
 	dat += "</table>"
-	usr << browse(dat, "window=ban;size=400x400")
+	usr << browse(HTML_SKELETON(dat), "window=ban;size=400x400")
 
 /datum/admins/proc/Game()
 	if(!check_rights(0))	return
@@ -607,7 +607,7 @@ var/global/floorIsLava = 0
 		<br><A href='?src=\ref[src];atmos_vsc=1'>Modify Atmospherics Properties</A><br>
 		"}
 
-	usr << browse(dat, "window=admin2;size=210x280")
+	usr << browse(HTML_SKELETON(dat), "window=admin2;size=210x280")
 	return
 
 /datum/admins/proc/Secrets(var/datum/admin_secret_category/active_category = null)

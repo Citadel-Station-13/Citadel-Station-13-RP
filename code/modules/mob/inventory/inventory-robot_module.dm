@@ -79,14 +79,25 @@
 /**
  * Registers an item as a robot module.
  *
+ * * Item must not be in an inventory, even ourselves.
+ * * The item will be moved into our owner.
+ *
  * @return TRUE success, FALSE fail
  */
 /datum/inventory/proc/robot_module_register(obj/item/item)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
-	#warn impl
+	if(robot_module_is_registered(item))
+		return TRUE
+	if(item.inv_inside)
+		return FALSE
+
+	item.forceMove(owner)
+
+	LAZYADD(robot_modules, item)
 	on_robot_module_register(item)
+	return TRUE
 
 /datum/inventory/proc/on_robot_module_register(obj/item/item)
 	PROTECTED_PROC(TRUE)
@@ -102,7 +113,7 @@
 	if(!robot_module_is_registered(item))
 		return
 
-	#warn impl
+	LAZYREMOVE(robot_modules, item)
 	on_robot_module_unregister(item)
 
 /datum/inventory/proc/on_robot_module_unregister(obj/item/item)

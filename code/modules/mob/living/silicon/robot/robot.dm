@@ -788,7 +788,7 @@
 				bolt.malfunction = MALFUNCTION_PERMANENT
 
 /mob/living/silicon/robot/proc/module_reset()
-	notify_ai(ROBOT_NOTIFICATION_MODULE_RESET, module.name)
+	notify_ai(ROBOT_NOTIFICATION_MODULE_RESET, module_new.name)
 	updatename("Default")
 
 /mob/living/silicon/robot/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
@@ -1118,21 +1118,6 @@
 	if (stat != CONSCIOUS)
 		return
 	return feed_grabbed_to_self(src,T)
-
-/mob/living/silicon/robot/proc/rest_style()
-	set name = "Switch Rest Style"
-	set category = VERB_CATEGORY_IC
-	set desc = "Select your resting pose."
-	sitting = FALSE
-	bellyup = FALSE
-	var/choice = alert(src, "Select resting pose", "", "Resting", "Sitting", "Belly up")
-	switch(choice)
-		if("Resting")
-			return 0
-		if("Sitting")
-			sitting = TRUE
-		if("Belly up")
-			bellyup = TRUE
 
 /mob/living/silicon/robot/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
 	if(lockcharge)

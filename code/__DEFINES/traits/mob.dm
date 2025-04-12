@@ -52,6 +52,13 @@ DATUM_TRAIT(/mob, TRAIT_MOB_SLEEPING)
 #define TRAIT_MOB_FORCED_STANDING "mob_forced_standing"
 DATUM_TRAIT(/mob, TRAIT_MOB_FORCED_STANDING)
 
+//* UI *//
+
+/// actor modal open of type with ourselves as the initiator
+#define TRAIT_MOB_ACTOR_MODAL_INITIATOR
+#warn ughh
+DATUM_TRAIT(/mob, TRAIT_MOB_ACTOR_MODAL_INITIATOR)
+
 //? misc
 
 /// Tracks whether you're a mime or not.

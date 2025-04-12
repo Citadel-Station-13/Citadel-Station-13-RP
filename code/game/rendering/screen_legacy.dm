@@ -262,7 +262,11 @@
 		if("module")
 			if(isrobot(usr))
 				var/mob/living/silicon/robot/R = usr
-				R.pick_module()
+				open_tgui_actor_modal(
+					/datum/tgui_actor_modal,
+					new /datum/event_args/actor(R),
+					modal_target = R,
+				)
 
 		if("radio")
 			if(issilicon(usr))

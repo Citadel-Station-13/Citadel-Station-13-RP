@@ -7085,7 +7085,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/taj_pemmican
 	name = "Adhomai Pemmican"
 	desc = "Dried meat and beries mixed together for travel and shelf life. This particular mix is from Adhomai."
-	icon_state = "tajt_pemmican"
+	icon_state = "taj_pemmican"
 	nutriment_amt = 4
 	nutriment_desc = list("dry meat" = 1, "berry" = 1)
 
