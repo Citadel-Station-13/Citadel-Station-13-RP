@@ -212,6 +212,13 @@
 	name = "\improper Deck 1 Starboard Aft Hallway"
 	icon_state = "hallS"
 
+/area/endeavour/cryo
+	name = "\improper Cryogenic Storage"
+	icon_state = "crew_quarters"
+
+/area/crew_quarters/cryo/recovery
+	name = "\improper Cryogenics Recovery"
+
 /** Command
  */
 /area/endeavour/command/turrets

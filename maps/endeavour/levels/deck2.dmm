@@ -16220,15 +16220,13 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/virology_aft_access)
 "lMa" = (
-/obj/machinery/vending/cigarette,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/structure/closet/firecloset/full,
+/obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/navblue/border{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/endeavour/hallway/d2afthall)
+/obj/effect/floor_decal/industrial/outline/red,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/maintenance/fpmaint2)
 "lMw" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -17972,6 +17970,12 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
+/area/maintenance/fpmaint2)
+"mXr" = (
+/obj/structure/sign/directions/science{
+	dir = 8
+	},
+/turf/simulated/wall/prepainted,
 /area/maintenance/fpmaint2)
 "mXs" = (
 /obj/machinery/camera/network/outside,
@@ -21792,7 +21796,7 @@
 /area/maintenance/fpmaint2)
 "pNG" = (
 /obj/machinery/air_alarm/west_mount,
-/obj/machinery/vending/coffee,
+/obj/machinery/vending/snack,
 /turf/simulated/floor/tiled/dark,
 /area/station/stairs_two)
 "pOf" = (
@@ -23107,7 +23111,6 @@
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 9
 	},
-/obj/machinery/vending/cola,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2afthall)
 "qGu" = (
@@ -33066,10 +33069,12 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "xYn" = (
-/obj/structure/sign/directions/science{
-	dir = 8
+/obj/structure/closet/emcloset,
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
 	},
-/turf/simulated/wall/r_wall/prepainted/science,
+/obj/effect/floor_decal/industrial/outline/blue,
+/turf/simulated/floor/holofloor/tiled/dark,
 /area/maintenance/fpmaint2)
 "xYq" = (
 /obj/structure/cable/green{
@@ -41254,7 +41259,7 @@ cPx
 rMF
 oGQ
 xSp
-lMa
+wQI
 lSK
 rvL
 npj
@@ -55999,8 +56004,8 @@ vJM
 ikD
 fGD
 qjz
-qjz
-grY
+vJM
+vJM
 mSv
 cAA
 rqx
@@ -56193,8 +56198,8 @@ vJM
 qjz
 qjz
 qjz
-qjz
-grY
+vJM
+lMa
 xYL
 cAA
 vVt
@@ -56387,7 +56392,7 @@ vJM
 qjz
 qjz
 qjz
-qjz
+vJM
 xYn
 fZd
 cAA
@@ -56581,8 +56586,8 @@ vJM
 ecl
 qjz
 qjz
-qjz
-grY
+vJM
+vJM
 xKj
 cAA
 rqx
@@ -56776,7 +56781,7 @@ coC
 qjz
 qjz
 qjz
-grY
+mXr
 fLU
 blI
 czY
@@ -57164,7 +57169,7 @@ hdu
 hdu
 hyc
 qjz
-grY
+vJM
 fQT
 mwD
 rkl
@@ -57358,7 +57363,7 @@ qjz
 hAW
 qjz
 qjz
-grY
+vJM
 lUN
 hyd
 elX
