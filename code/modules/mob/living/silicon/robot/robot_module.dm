@@ -20,8 +20,8 @@
 	//  todo: replace with selection class / groups / something to that effect
 	var/selectable = FALSE
 
-	/// /obj/item/robot_module typepath
-	var/use_robot_module_path = /obj/item/robot_module/robot
+	/// /obj/item/robot_module_legacy typepath
+	var/use_robot_module_path = /obj/item/robot_module_legacy/robot
 
 	/// Allowed robot frames.
 	/// * set to list of typepaths/anonymous types to init

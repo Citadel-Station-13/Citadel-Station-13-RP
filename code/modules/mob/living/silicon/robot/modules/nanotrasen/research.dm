@@ -1,7 +1,7 @@
 GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/research)
 /datum/prototype/robot_module/nanotrasen/research
 	id = "nt-research"
-	use_robot_module_path = /obj/item/robot_module/robot/
+	use_robot_module_path = /obj/item/robot_module_legacy/robot/
 	light_color = "#CC60FF"
 	iconsets = list(
 		/datum/prototype/robot_iconset/dog_otie/science,
@@ -75,5 +75,5 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/research)
 			syringe.update_icon()
 
 // todo: legacy
-/obj/item/robot_module/robot/research
+/obj/item/robot_module_legacy/robot/research
 	channels = list("Science" = 1)

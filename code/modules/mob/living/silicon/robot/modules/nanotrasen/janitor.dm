@@ -1,7 +1,7 @@
 GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/janitor)
 /datum/prototype/robot_module/nanotrasen/janitor
 	id = "nt-janitor"
-	use_robot_module_path = /obj/item/robot_module/robot/janitor
+	use_robot_module_path = /obj/item/robot_module_legacy/robot/janitor
 	light_color = "#CC60FF"
 	iconsets = list(
 		/datum/prototype/robot_iconset/baseline_toiletbot/janitor,
@@ -70,5 +70,5 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/janitor)
 		maybe_evil_lube_spray.reagents?.add_reagent(/datum/reagent/lube::id, 2 * dt)
 
 // todo: legacy
-/obj/item/robot_module/robot/janitor
+/obj/item/robot_module_legacy/robot/janitor
 	channels = list("Service" = 1)

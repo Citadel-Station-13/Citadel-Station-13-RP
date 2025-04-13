@@ -23,13 +23,34 @@
 	var/display_name
 
 /datum/ai_lawset/proc/append_ion_law(datum/ai_law/law_datum_or_text)
-	#warn impl
+	var/next_index = length(ion_laws) + 1
+	if(!istype(law_datum_or_text))
+		law_datum_or_text = new /datum/ai_law(law_datum_or_text)
+	law_datum_or_text.index = next_index
+	if(law_datum_or_text in ion_laws)
+		return FALSE
+	ion_laws += law_datum_or_text
+	return TRUE
 
 /datum/ai_lawset/proc/append_inherent_law(datum/ai_law/law_datum_or_text)
-	#warn impl
+	var/next_index = length(inherent_laws) + 1
+	if(!istype(law_datum_or_text))
+		law_datum_or_text = new /datum/ai_law(law_datum_or_text)
+	law_datum_or_text.index = next_index
+	if(law_datum_or_text in inherent_laws)
+		return FALSE
+	inherent_laws += law_datum_or_text
+	return TRUE
 
 /datum/ai_lawset/proc/append_supplied_law(datum/ai_law/law_datum_or_text)
-	#warn impl
+	var/next_index = length(supplied_laws) + 1
+	if(!istype(law_datum_or_text))
+		law_datum_or_text = new /datum/ai_law(law_datum_or_text)
+	law_datum_or_text.index = next_index
+	if(law_datum_or_text in supplied_laws)
+		return FALSE
+	supplied_laws += law_datum_or_text
+	return TRUE
 
 //! legacy below
 /datum/ai_lawset
@@ -37,9 +58,9 @@
 	var/selectable = 0
 	var/datum/ai_law/zero/zeroth_law = null
 	var/datum/ai_law/zero/zeroth_law_borg = null
+	var/list/datum/ai_law/ion_laws = list()
 	var/list/datum/ai_law/inherent_laws = list()
 	var/list/datum/ai_law/supplied_laws = list()
-	var/list/datum/ai_law/ion/ion_laws = list()
 	var/list/datum/ai_law/sorted_laws = list()
 
 	var/state_zeroth = 0

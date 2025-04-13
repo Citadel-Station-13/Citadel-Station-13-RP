@@ -1,6 +1,6 @@
 /datum/prototype/robot_module/drone
 	id = "drone"
-	use_robot_module_path = /obj/item/robot_module/robot/drone
+	use_robot_module_path = /obj/item/robot_module_legacy/robot/drone
 	iconsets = list(
 		/datum/prototype/robot_iconset/baseline_drone/construction,
 	)
@@ -87,8 +87,8 @@ GENERATE_ROBOT_MODULE_PRESET(/drone/mining)
 		)
 
 // todo: legacy crap
-/obj/item/robot_module/drone
+/obj/item/robot_module_legacy/drone
 	channels = list("Engineering" = 1, "Supply" = 1)
 	networks = list(NETWORK_ENGINEERING, NETWORK_MINE)
 
-/obj/item/robot_module/drone/construction/matriarch
+/obj/item/robot_module_legacy/drone/construction/matriarch

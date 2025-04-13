@@ -30,7 +30,7 @@
 /datum/ai_law/supplied/get_state_law(var/datum/ai_lawset/laws)
 	return laws.get_state_internal(laws.supplied_laws, laws.state_supplied, src)
 
-/datum/ai_law/proc/set_state_law(var/datum/ai_law/law, var/state)
+/datum/ai_law/proc/set_state_law(var/datum/ai_lawset/law, var/state)
 
 /datum/ai_law/zero/set_state_law(var/datum/ai_lawset/laws, var/state)
 	if(src == laws.zeroth_law)

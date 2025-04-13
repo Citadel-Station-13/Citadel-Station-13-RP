@@ -1,7 +1,7 @@
 GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/service)
 /datum/prototype/robot_module/nanotrasen/service
 	id = "nt-service"
-	use_robot_module_path = /obj/item/robot_module/robot/clerical
+	use_robot_module_path = /obj/item/robot_module_legacy/robot/clerical
 	light_color = "#6AED63"
 	iconsets = list(
 		/datum/prototype/robot_iconset/baseline_standard/service,
@@ -80,7 +80,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/service)
 	E.reagents.add_reagent("enzyme", 2 * multiplier * dt)
 
 // todo: legacy
-/obj/item/robot_module/robot/clerical
+/obj/item/robot_module_legacy/robot/clerical
 	name = "service robot module"
 	channels = list("Service" = 1)
 	languages = list(

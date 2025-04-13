@@ -1,7 +1,7 @@
 GENERATE_ROBOT_MODULE_PRESET(/gravekeeper)
 /datum/prototype/robot_module/gravekeeper
 	id = "gravekeeper"
-	use_robot_module_path = /obj/item/robot_module/robot/
+	use_robot_module_path = /obj/item/robot_module_legacy/robot/
 	light_color = "#AAAA00"
 	iconsets = list(
 		/datum/prototype/robot_iconset/biped_sleek/gravekeeper,

@@ -1,7 +1,7 @@
 GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/medical)
 /datum/prototype/robot_module/nanotrasen/medical
 	id = "nt-medical"
-	use_robot_module_path = /obj/item/robot_module/robot/medical
+	use_robot_module_path = /obj/item/robot_module_legacy/robot/medical
 	light_color = "#0099FF"
 	iconsets = list(
 		/datum/prototype/robot_iconset/baseline_toiletbot/medical,
@@ -89,7 +89,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/medical)
 		maybe_evil_acid_spray.reagents?.add_reagent(/datum/reagent/acid/polyacid::id, 2 * dt)
 
 // todo: legacy
-/obj/item/robot_module/robot/medical
+/obj/item/robot_module_legacy/robot/medical
 	channels = list("Medical" = 1)
 	networks = list(NETWORK_MEDICAL)
 	subsystems = list(/mob/living/silicon/proc/subsystem_crew_monitor)

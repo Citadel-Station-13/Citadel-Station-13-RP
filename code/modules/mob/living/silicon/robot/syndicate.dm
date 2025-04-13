@@ -18,7 +18,7 @@
 	laws = new /datum/ai_lawset/syndicate
 	cut_overlays()
 	init_id()
-	new /obj/item/robot_module/robot/syndicate(src)
+	new /obj/item/robot_module_legacy/robot/syndicate(src)
 
 	radio.keyslot = new /obj/item/encryptionkey/syndicate(radio)
 	radio.recalculateChannels()

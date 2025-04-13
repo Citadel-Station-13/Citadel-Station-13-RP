@@ -1,7 +1,7 @@
 GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/logistics)
 /datum/prototype/robot_module/nanotrasen/logistics
 	id = "nt-logistics"
-	use_robot_module_path = /obj/item/robot_module/robot/logistics
+	use_robot_module_path = /obj/item/robot_module_legacy/robot/logistics
 	light_color = "#FBE281"
 	iconsets = list(
 		/datum/prototype/robot_iconset/dog_k9/logistics,
@@ -47,6 +47,6 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/logistics)
 	return ..()
 
 // todo: legacy
-/obj/item/robot_module/robot/logistics
+/obj/item/robot_module_legacy/robot/logistics
 	channels = list("Supply" = 1)
 	networks = list(NETWORK_MINE)

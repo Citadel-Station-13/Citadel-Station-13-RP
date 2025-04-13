@@ -175,7 +175,7 @@
 
 /obj/item/robot_builtin/dog_sleeper/proc/drain(var/amt = 3) //Slightly reduced cost (before, it was always injecting inaprov)
 	hound = src.loc
-	if(istype(hound,/obj/item/robot_module))
+	if(istype(hound,/obj/item/robot_module_legacy))
 		hound = hound.loc
 	hound.cell.charge = hound.cell.charge - amt
 

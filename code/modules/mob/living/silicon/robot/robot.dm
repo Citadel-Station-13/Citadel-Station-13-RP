@@ -83,7 +83,7 @@
 	var/datum/prototype/robot_module/module_new
 
 	/// all installed upgrades
-	/// * some upgrades are consumed on install.
+	/// * some upgrades are consumed on install, and therefore won't be in here
 	#warn impl
 	var/list/obj/item/robot_upgrade/upgrades
 
@@ -118,8 +118,10 @@
 	#warn make on new
 	var/datum/robot_resource_store/resources
 	/// Module items - normal
+	/// * These are provisioned from the module we are.
 	var/list/obj/item/module_items_normal
 	/// Module items - emag
+	/// * These are provisioned from the module we are.
 	var/list/obj/item/module_items_emag
 
 	//* State *//
@@ -156,7 +158,7 @@
 	var/atom/movable/screen/cells = null
 
 	//?3 Modules can be activated at any one time.
-	var/obj/item/robot_module/module_legacy = null
+	var/obj/item/robot_module_legacy/module_legacy = null
 
 	var/obj/item/radio/borg/radio = null
 	var/obj/item/communicator/integrated/communicator = null
@@ -340,7 +342,7 @@
 		var/turf/T = get_turf(loc)//To hopefully prevent run time errors.
 		if(T)	mmi.loc = T
 		if(mmi.brainmob)
-			var/obj/item/robot_module/M = locate() in contents
+			var/obj/item/robot_module_legacy/M = locate() in contents
 			if(M)
 				mmi.brainmob.languages = M.original_languages
 			else

@@ -1,7 +1,7 @@
 GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/engineering)
 /datum/prototype/robot_module/nanotrasen/engineering
 	id = "nt-engineering"
-	use_robot_module_path = /obj/item/robot_module/robot/engineering
+	use_robot_module_path = /obj/item/robot_module_legacy/robot/engineering
 	light_color = "#FDD800"
 	iconsets = list(
 		/datum/prototype/robot_iconset/dog_borgi/engineering,
@@ -89,7 +89,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/engineering)
 		)
 
 // todo: legacy
-/obj/item/robot_module/robot/engineering
+/obj/item/robot_module_legacy/robot/engineering
 	channels = list("Engineering" = 1)
 	networks = list(NETWORK_ENGINEERING)
 	subsystems = list(/mob/living/silicon/proc/subsystem_power_monitor)

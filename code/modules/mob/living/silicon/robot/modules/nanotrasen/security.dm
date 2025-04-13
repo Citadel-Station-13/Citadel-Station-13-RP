@@ -1,7 +1,7 @@
 GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/security)
 /datum/prototype/robot_module/nanotrasen/security
 	id = "nt-security"
-	use_robot_module_path = /obj/item/robot_module/robot/security
+	use_robot_module_path = /obj/item/robot_module_legacy/robot/security
 	light_color = "#FF0000"
 	iconsets = list(
 		/datum/prototype/robot_iconset/baseline_standard/security,
@@ -65,7 +65,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/security)
 			flash.icon_state = "flash"
 
 // todo: legacy
-/obj/item/robot_module/robot/security
+/obj/item/robot_module_legacy/robot/security
 	channels = list("Security" = 1)
 	networks = list(NETWORK_SECURITY)
 	subsystems = list(/mob/living/silicon/proc/subsystem_crew_monitor)

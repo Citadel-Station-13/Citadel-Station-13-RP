@@ -1,7 +1,7 @@
 GENERATE_ROBOT_MODULE_PRESET(/cybersun/assault)
 /datum/prototype/robot_module/cybersun/assault
 	id = "cybersun-assault"
-	use_robot_module_path = /obj/item/robot_module/robot/syndicate
+	use_robot_module_path = /obj/item/robot_module_legacy/robot/syndicate
 	light_color = "#FF0000"
 	iconsets = list(
 		/datum/prototype/robot_iconset/grounded_landmate/security_cybersun,
@@ -25,7 +25,7 @@ GENERATE_ROBOT_MODULE_PRESET(/cybersun/assault)
 
 #warn translate chassis below
 
-/obj/item/robot_module/robot/syndicate
+/obj/item/robot_module_legacy/robot/syndicate
 	name = "illegal robot module"
 	languages = list(
 		LANGUAGE_SOL_COMMON = 1,
@@ -44,7 +44,7 @@ GENERATE_ROBOT_MODULE_PRESET(/cybersun/assault)
 		LANGUAGE_ZADDAT = 0
 	)
 
-/obj/item/robot_module/robot/syndicate/protector
+/obj/item/robot_module_legacy/robot/syndicate/protector
 	name = "protector robot module"
 	sprites = list(
 		"Ares" = "squats",

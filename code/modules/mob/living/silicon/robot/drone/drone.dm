@@ -44,7 +44,7 @@
 	var/mail_destination = ""
 	var/obj/machinery/drone_fabricator/master_fabricator
 	var/law_type = /datum/ai_lawset/drone
-	var/module_type = /obj/item/robot_module/drone
+	var/module_type = /obj/item/robot_module_legacy/drone
 	var/obj/item/hat
 	var/hat_x_offset = 0
 	var/hat_y_offset = -13
@@ -81,7 +81,7 @@
 	name = "construction drone"
 	icon_state = "constructiondrone"
 	law_type = /datum/ai_lawset/drone/construction
-	module_type = /obj/item/robot_module/drone/construction
+	module_type = /obj/item/robot_module_legacy/drone/construction
 	hat_x_offset = 1
 	hat_y_offset = -12
 	can_pull_mobs = MOB_PULL_SAME
@@ -89,7 +89,7 @@
 	//holder_type = /obj/item/holder/drone/heavy
 /mob/living/silicon/robot/drone/matriarch
 	name = "matriarch drone"
-	module_type = /obj/item/robot_module/drone/construction/matriarch
+	module_type = /obj/item/robot_module_legacy/drone/construction/matriarch
 	law_type = /datum/ai_lawset/drone/matriarch
 	maxHealth = 50
 	health = 50
@@ -101,7 +101,7 @@
 	icon_state = "miningdrone"
 	item_state = "constructiondrone"
 	law_type = /datum/ai_lawset/drone/mining
-	module_type = /obj/item/robot_module/drone/mining
+	module_type = /obj/item/robot_module_legacy/drone/mining
 	hat_x_offset = 1
 	hat_y_offset = -12
 	can_pull_mobs = MOB_PULL_SAME
