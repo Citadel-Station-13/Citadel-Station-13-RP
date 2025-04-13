@@ -219,6 +219,12 @@
 /area/crew_quarters/cryo/recovery
 	name = "\improper Cryogenics Recovery"
 
+/** Civillian
+ */
+/area/endeavour/civillian/evastorage
+	name = "\improper Public EVA Storage"
+	icon_state = "purple"
+
 /** Command
  */
 /area/endeavour/command/turrets
