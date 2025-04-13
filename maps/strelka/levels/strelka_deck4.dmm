@@ -40,6 +40,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
 	},
+/obj/landmark/spawnpoint/overflow/station,
 /turf/simulated/floor/carpet/bcarpet,
 /area/strelka/shipbase/deck4/bar)
 "ak" = (
@@ -1965,6 +1966,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
 	},
+/obj/landmark/spawnpoint/overflow/station,
 /turf/simulated/floor/carpet/bcarpet,
 /area/strelka/shipbase/deck4/bar)
 "iZ" = (
@@ -3166,6 +3168,7 @@
 /obj/structure/bed/chair/comfy/brown{
 	dir = 4
 	},
+/obj/landmark/spawnpoint/overflow/station,
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/bar)
 "ot" = (
@@ -3561,6 +3564,7 @@
 /obj/machinery/light/small/old{
 	dir = 8
 	},
+/obj/landmark/spawnpoint/overflow/station,
 /turf/simulated/floor/carpet/bcarpet,
 /area/strelka/shipbase/deck4/bar)
 "pU" = (
@@ -5067,6 +5071,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 6
 	},
+/obj/landmark/spawnpoint/overflow/station,
 /turf/simulated/floor/carpet/bcarpet,
 /area/strelka/shipbase/deck4/bar)
 "yd" = (
@@ -5949,6 +5954,7 @@
 /obj/machinery/camera/network/security{
 	dir = 1
 	},
+/obj/landmark/spawnpoint/overflow/station,
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/bar)
 "CH" = (
@@ -6443,6 +6449,7 @@
 /obj/structure/bed/chair/sofa/brown/left{
 	dir = 4
 	},
+/obj/landmark/spawnpoint/overflow/station,
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/bar)
 "Fu" = (
@@ -6568,6 +6575,7 @@
 /obj/structure/bed/chair/sofa/brown/corner{
 	dir = 4
 	},
+/obj/landmark/spawnpoint/overflow/station,
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/bar)
 "Gk" = (
@@ -7129,6 +7137,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
 	},
+/obj/landmark/spawnpoint/overflow/station,
 /turf/simulated/floor/carpet/bcarpet,
 /area/strelka/shipbase/deck4/bar)
 "IV" = (
@@ -7697,6 +7706,7 @@
 /obj/structure/bed/chair/sofa/brown/right{
 	dir = 1
 	},
+/obj/landmark/spawnpoint/overflow/station,
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/bar)
 "LJ" = (
@@ -8815,6 +8825,7 @@
 /obj/machinery/light/small/old{
 	dir = 4
 	},
+/obj/landmark/spawnpoint/overflow/station,
 /turf/simulated/floor/carpet/bcarpet,
 /area/strelka/shipbase/deck4/bar)
 "Sn" = (
@@ -9216,6 +9227,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/landmark/spawnpoint/overflow/station,
 /turf/simulated/floor/carpet/bcarpet,
 /area/strelka/shipbase/deck4/bar)
 "Ug" = (
@@ -9705,6 +9717,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
+/obj/landmark/spawnpoint/overflow/station,
 /turf/simulated/floor/carpet/bcarpet,
 /area/strelka/shipbase/deck4/bar)
 "XA" = (
