@@ -22,8 +22,4 @@
 	bio = 1.0
 	rad = 0.95
 	fire = 0.95
-<<<<<<< HEAD
 	acid = 0.75
-=======
-	acid = 0.75
->>>>>>> 79eb113fa483ad51b06ac271fe037bad778aa2eb
