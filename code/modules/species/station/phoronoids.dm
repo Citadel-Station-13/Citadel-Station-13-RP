@@ -18,7 +18,7 @@
 	blurb = {"
 	Phoronoids are a race rarely seen by most, tending to keep to themselves throughout known space.
 	These curious skeleton-folk react violently with oxygen, catching alight in the normal concentration needed for humans.
-	Luckily, with the help of NT, they come equipped with specialised suits, keeping oxygen out and phoron in.
+	Luckily, they come equipped with specialised suits, keeping oxygen out and phoron in.
 	"}
 
 	max_age = 180
@@ -26,7 +26,7 @@
 	//rarity_value = 5
 	blood_color = "#FC2BC5"
 
-	species_flags = NO_SCAN | NO_MINOR_CUT | CONTAMINATION_IMMUNE
+	species_flags = NO_SCAN | NO_PAIN | NO_MINOR_CUT | CONTAMINATION_IMMUNE
 	species_spawn_flags = SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_EYE_COLOR
 
@@ -78,6 +78,8 @@
 	heat_level_2 = 500
 	heat_level_3 = 800
 
+	minimum_breath_pressure = 12
+
 	body_temperature = T20C
 
 /datum/species/phoronoid/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
@@ -87,11 +89,15 @@
 	/// In case they're ever set on fire while wearing a spacesuit, we don't want the message that they're reacting with the atmosphere.
 	var/enviroment_bad = FALSE
 
-	if(environment.gas[GAS_ID_OXYGEN] > 0.5)
+	if( (environment.gas[GAS_ID_OXYGEN] / environment.total_moles) > 0.1) //greater than 10% oxygen
 		// Now any airtight spessuit works for them. Which means exploration voidsuits work. :O
-		if(H.wear_suit && istype(H.wear_suit,/obj/item/clothing/suit/space) && H.head && istype(H.head,/obj/item/clothing/head/helmet/space))
-			return
-		H.adjust_fire_stacks(2)
+		if(istype(H.wear_suit, /obj/item/clothing) && istype(H.head,/obj/item/clothing))
+			var/obj/item/clothing/suit = H.wear_suit
+			var/obj/item/clothing/head = H.head
+			if(head.min_pressure_protection == 0 && suit.min_pressure_protection == 0)
+				return
+
+		H.adjust_fire_stacks(3)
 		enviroment_bad = TRUE
 		if(!H.on_fire && enviroment_bad)
 			H.visible_message(
@@ -109,11 +115,13 @@
 		var/obj/item/existing_mask = for_target.inventory.get_slot_single(/datum/inventory_slot/inventory/mask)
 		if(existing_mask?.clothing_flags & ALLOWINTERNALS)
 		else
-			into_inv?.Add(existing_mask)
+			if(!isnull(existing_mask))
+				into_inv += (existing_mask)
 			for_target.temporarily_remove_from_inventory(existing_mask, INV_OP_FORCE)
 			for_target.equip_to_slot_or_del(new mask_type(for_target), /datum/inventory_slot/inventory/mask, INV_OP_SILENT | INV_OP_FLUFFLESS)
 	else
-		into_inv?.Add(mask_type)
+		if(!isnull(mask_type))
+			into_inv += (mask_type)
 
 	var/suit_path = /obj/item/clothing/suit/space/plasman
 	var/helm_path = /obj/item/clothing/head/helmet/space/plasman
@@ -136,7 +144,7 @@
 			suit_path = /obj/item/clothing/suit/space/plasman/sec/hos
 			helm_path = /obj/item/clothing/head/helmet/space/plasman/sec/hos
 
-		if("Facility Director")
+		if("Facility Director", "Captain")
 			suit_path = /obj/item/clothing/suit/space/plasman/sec/captain
 			helm_path = /obj/item/clothing/head/helmet/space/plasman/sec/captain
 
@@ -232,22 +240,28 @@
 		var/obj/item/creating_head_slot = new helm_path
 		var/obj/item/creating_suit_slot = new suit_path
 		if(existing_head_slot)
-			if(for_target.temporarily_remove_from_inventory(existing_head_slot, INV_OP_FORCE | INV_OP_SILENT))
-				into_inv?.Add(existing_head_slot)
-				if(!for_target.inventory.equip_to_slot_if_possible(creating_head_slot, /datum/inventory_slot/inventory/head, INV_OP_FORCE | INV_OP_SILENT))
-					into_inv?.Add(creating_head_slot)
+			if(for_target.temporarily_remove_from_inventory(existing_head_slot, INV_OP_FORCE | INV_OP_SILENT | INV_OP_FLUFFLESS))
+				into_inv += (existing_head_slot)
+				if(!for_target.inventory.equip_to_slot_if_possible(creating_head_slot, /datum/inventory_slot/inventory/head, INV_OP_FORCE | INV_OP_SILENT | INV_OP_FLUFFLESS))
+					into_inv += (creating_head_slot)
 			else
-				into_inv?.Add(creating_head_slot)
+				into_inv += (creating_head_slot)
+		else
+			if(!for_target.inventory.equip_to_slot_if_possible(creating_head_slot, /datum/inventory_slot/inventory/head, INV_OP_FORCE | INV_OP_SILENT | INV_OP_FLUFFLESS))
+				into_inv += (creating_head_slot)
 		if(existing_suit_slot)
-			if(for_target.temporarily_remove_from_inventory(existing_suit_slot, INV_OP_FORCE | INV_OP_SILENT))
-				into_inv?.Add(existing_suit_slot)
-				if(!for_target.inventory.equip_to_slot_if_possible(creating_suit_slot, /datum/inventory_slot/inventory/suit, INV_OP_FORCE | INV_OP_SILENT))
-					into_inv?.Add(creating_suit_slot)
+			if(for_target.temporarily_remove_from_inventory(existing_suit_slot, INV_OP_FORCE | INV_OP_SILENT | INV_OP_FLUFFLESS))
+				into_inv += (existing_suit_slot)
+				if(!for_target.inventory.equip_to_slot_if_possible(creating_suit_slot, /datum/inventory_slot/inventory/suit, INV_OP_FORCE | INV_OP_SILENT | INV_OP_FLUFFLESS))
+					into_inv += (creating_suit_slot)
 			else
-				into_inv?.Add(creating_suit_slot)
+				into_inv += (creating_suit_slot)
+		else
+			if(!for_target.inventory.equip_to_slot_if_possible(creating_suit_slot, /datum/inventory_slot/inventory/suit, INV_OP_FORCE | INV_OP_SILENT | INV_OP_FLUFFLESS))
+				into_inv += (creating_suit_slot)
 	else
-		into_inv?.Add(helm_path)
-		into_inv?.Add(suit_path)
+		into_inv += (helm_path)
+		into_inv += (suit_path)
 
 	//! legacy: just in case
 	for_target.ExtinguishMob()
@@ -268,8 +282,8 @@
 			for_target.internal = equipping_tank
 			for_target.internals.icon_state = "internal1"
 		else
-			into_inv?.Add(tank_type)
+			into_inv += (tank_type)
 	else
-		into_inv?.Add(tank_type)
+		into_inv += (tank_type)
 
 	return ..()
