@@ -9824,6 +9824,7 @@
 /area/maintenance/library)
 "gCZ" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/tether/station/public_meeting_room)
 "gDe" = (
@@ -17363,6 +17364,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/testingroom)
 "kTI" = (
@@ -20165,6 +20167,7 @@
 	name = "Testing Chamber Blast Door"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/testingroom)
 "mCV" = (
@@ -28350,6 +28353,7 @@
 /area/medical/psych)
 "rmE" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/chemistry_lab)
 "rmO" = (
@@ -29969,6 +29973,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/outpost/xenobiology/outpost_stairs)
 "shL" = (

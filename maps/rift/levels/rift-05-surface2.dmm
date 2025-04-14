@@ -6371,6 +6371,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "dQE" = (
@@ -14584,6 +14585,7 @@
 /area/crew_quarters/pool)
 "jfl" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/storage)
 "jgg" = (
@@ -15627,10 +15629,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/range)
-"jQZ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/rnd/telescience_lab/foyer)
 "jRK" = (
 /obj/structure/closet/hydrant{
 	pixel_x = -32
@@ -17878,6 +17876,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "lcJ" = (
@@ -19667,6 +19666,7 @@
 /area/medical/sleeper)
 "miH" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab/foyer)
 "mjr" = (
@@ -44061,7 +44061,7 @@ ddZ
 tex
 tex
 tex
-jQZ
+vvP
 kCB
 xFv
 hmz
@@ -44255,7 +44255,7 @@ gzd
 xax
 oDC
 tex
-jQZ
+vvP
 kCB
 qcg
 hmz
@@ -44643,7 +44643,7 @@ tVG
 aal
 srw
 tex
-jQZ
+vvP
 iTw
 iTw
 hmz
@@ -44837,7 +44837,7 @@ iPh
 aal
 srw
 tex
-jQZ
+vvP
 iTw
 iTw
 hmz
@@ -45031,7 +45031,7 @@ aYt
 uIZ
 srw
 tex
-jQZ
+vvP
 iTw
 iTw
 hmz
@@ -45226,8 +45226,8 @@ uIZ
 srw
 tex
 hmz
-jQZ
-jQZ
+vvP
+vvP
 hmz
 fnX
 wTh

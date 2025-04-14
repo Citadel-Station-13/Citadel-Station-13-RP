@@ -8178,6 +8178,7 @@
 /area/engineering/engine_waste)
 "DI" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/secure_storage/lower)
 "DK" = (
