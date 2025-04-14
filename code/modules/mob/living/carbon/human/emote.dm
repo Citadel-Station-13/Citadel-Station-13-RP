@@ -1386,6 +1386,53 @@
 				spam_flag = TRUE
 				addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
 			m_type = 2
+		if ("ycackle")
+			message = "cackles maniacally!"
+			m_type = 2
+			playsound(loc, pick(list('sound/voice/YeenCackle.ogg','sound/voice/YeenCackle2.ogg','sound/voice/YeenCackle3.ogg')), 50, 1, -1)
+		if ("growl")
+			message = "growls!"
+			m_type = 2
+			playsound(loc, pick(list('sound/voice/growl1.ogg','sound/voice/growl2.ogg','sound/voice/growl3.ogg')), 10, 1, -1)
+		if ("howl")
+			message = "howls!"
+			m_type = 2
+			playsound(loc, pick(list('sound/voice/howl1.ogg','sound/voice/howl2.ogg','sound/voice/howl3.ogg')), 30, 1, -1)
+			spam_flag = TRUE
+			addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
+		if ("echoping")
+			message = "emits a strange noise that echos throughout the place..."
+			m_type = 2
+			playsound(loc, pick(list('sound/voice/echoping1.ogg','sound/voice/echoping2.ogg','sound/voice/echoping3.ogg')), 40, 1, -1)
+			spam_flag = TRUE
+			addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
+		if ("airhorn")
+			var/obj/item/organ/o = internal_organs_by_name[O_VOICE]
+			if(!isSynthetic() && (!o || !(o.robotic >= ORGAN_ASSISTED)))
+				to_chat(src, "<span class='warning'>You are not a synthetic.</span>")
+				return
+			message = "blares a horn!"
+			m_type = 2
+			playsound(loc, 'sound/items/airhorn2.ogg', 20, 1, 1)
+			spam_flag = TRUE
+			addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
+		if ("steam")
+			var/obj/item/organ/o = internal_organs_by_name[O_VOICE]
+			if(!isSynthetic() && (!o || !(o.robotic >= ORGAN_ASSISTED)))
+				to_chat(src, "<span class='warning'>You are not a synthetic.</span>")
+				return
+			message = "lets off some steam."
+			m_type = 2
+			playsound(loc, 'sound/machines/clockcult/steam_whoosh.ogg', 30, 1, 1)
+			spam_flag = TRUE
+			addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
+		if ("reverb")
+			message = "regrets using this emote."
+			m_type = 2
+			playsound(loc, 'sound/voice/reverb.ogg', 50, 1, 1)
+			spam_flag = TRUE
+			addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
+		
 	if (message)
 		custom_emote(m_type,message)
 		return 1
