@@ -23,10 +23,12 @@
 
 	/// recharge speed mult when breaking rock
 	var/charge_delay_multiplier_rock = (1 / 3)
-	/// recharge speed mult on failed combo
-	var/charge_delay_multiplier_combo_fail = 1
+	/// recharge speed mult when breaking structures
+	var/charge_delay_multiplier_structure = (1 / 3)
+	/// recharge speed mult on basic non-combo attack
+	var/charge_delay_multiplier_basic = 1
 	/// recharge speed mult on successful combo
-	var/charge_delay_multiplier_combo_success = (2 / 3)
+	var/charge_delay_multiplier_combo = (2 / 3)
 
 	/// our combo tracker
 	///
@@ -42,12 +44,22 @@
 	var/combo_continuation_timeout = 3 SECONDS
 	/// our combo is active; we won't go onto clickdelay until it falls off
 	var/combo_continuation_active = FALSE
+	/// sound to play on combo continuation
+	var/combo_continuation_sfx =  'sound/weapons/resonator_blast.ogg'
 
 	var/charged_structure_damage = 30
 	var/charged_structure_damage_tier = MELEE_TIER_MEDIUM
 	var/charged_structure_damage_type = DAMAGE_TYPE_BRUTE
 	var/charged_structure_damage_flag = ARMOR_BOMB
 	var/charged_structure_damage_mode = DAMAGE_MODE_ABLATING
+	var/charged_structure_sfx = 'sound/weapons/kenetic_accel.ogg'
+
+	var/charged_mob_damage = 12
+	var/charged_mob_damage_tier = MELEE_TIER_MEDIUM
+	var/charged_mob_damage_type = DAMAGE_TYPE_BRUTE
+	var/charged_mob_damage_flag = ARMOR_BOMB
+	var/charged_mob_damage_mode = DAMAGE_MODE_ABLATING
+	var/charged_mob_sfx = 'sound/weapons/resonator_blast.ogg'
 
 /obj/item/kinetic_gauntlets/Initialize(mapload)
 	. = ..()
@@ -165,22 +177,37 @@
 /obj/item/kinetic_gauntlets/proc/run_detonation_fx(turf/location, atom/target)
 	return
 
-/obj/item/kinetic_gauntlets/proc/on_user_melee_impact(datum/source, datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/attack_style)
+/obj/item/kinetic_gauntlets/proc/on_user_melee_impact(datum/source, list/melee_args)
 	SIGNAL_HANDLER
+	var/datum/event_args/actor/clickchain/clickchain = melee_args[CLICKCHAIN_MELEE_ARG_CLICKCHAIN]
+	var/clickchain_flags = melee_args[CLICKCHAIN_MELEE_ARG_CLICKCHAIN_FLAGS]
 	if(clickchain_flags & CLICKCHAIN_ATTACK_MISSED)
 		return NONE
 	if(!charged)
 		return NONE
 	var/atom/target = clickchain.target
-	if(!isturf(target))
-		// TODO: unified mining excavation API
-		if(istype(target, /turf/simulated/mineral))
-			var/turf/simulated/mineral/mineral_turf = target
-			mineral_turf.GetDrilled(TRUE)
-			run_detonation_fx(target)
-			discharge(charge_delay_multiplier_rock)
-			return NONE
-		return NONE
+	// TODO: unified mining excavation API
+	if(istype(target, /turf/simulated/mineral))
+		var/turf/simulated/mineral/mineral_target = target
+		mineral_target.GetDrilled(TRUE)
+		run_detonation_fx(target)
+		discharge(charge_delay_multiplier_rock)
+		return RAISE_ITEM_MELEE_SKIP
+	if(!ismob(target))
+		var/atom/atom_target = target
+		atom_target.inflict_damage_instance(
+			charged_structure_damage,
+			charged_structure_damage_type,
+			charged_structure_damage_tier,
+			charged_structure_damage_flag,
+			charged_structure_damage_mode,
+			attack_type = ATTACK_TYPE_MELEE,
+			attack_source = clickchain,
+			hit_zone = clickchain.target_zone,
+		)
+		run_detonation_fx(target)
+		discharge(charge_delay_multiplier_structure)
+		return RAISE_ITEM_MELEE_SKIP
 	var/mob/mob_target = target
 	// requires mark to be using combo, otherwise you can hit it twice and mark it then hit again
 	var/datum/status_effect/grouped/proto_kinetic_mark/mark = mob_target.has_status_effect(/datum/status_effect/grouped/proto_kinetic_mark)
@@ -191,6 +218,7 @@
 		return NONE
 	QDEL_NULL(mark)
 	execute_combo(clickchain, clickchain_flags, valid_combo)
+	discharge(charge_delay_multiplier_combo)
 	return RAISE_ITEM_MELEE_SKIP
 
 /obj/item/kinetic_gauntlets/proc/execute_combo(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/combo/melee/use_combo)

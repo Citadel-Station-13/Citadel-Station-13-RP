@@ -1,7 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-//* Deconstruction *//
-
-/turf/simulated/wall/break_apart(method)
-	dismantle_wall() // this handles deletion too
+/turf/simulated/mineral/is_melee_targetable(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	return TRUE

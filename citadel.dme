@@ -3647,6 +3647,7 @@
 #include "code\modules\metrics\api\string_set.dm"
 #include "code\modules\metrics\api\time_series.dm"
 #include "code\modules\metrics\metrics\controllers.dm"
+#include "code\modules\mining\mine_turfs-defense.dm"
 #include "code\modules\mining\mine_turfs.dm"
 #include "code\modules\mining\drilling\drill.dm"
 #include "code\modules\mining\drilling\scanner.dm"

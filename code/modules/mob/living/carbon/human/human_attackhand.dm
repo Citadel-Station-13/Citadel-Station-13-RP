@@ -112,11 +112,6 @@
 					to_chat(L, "<span class='warning'>\The [G] is already primed! Run!</span>")
 				return
 
-			if(!istype(H))
-				attack_generic(H,rand(1,3),"punched")
-				return
-
-			// var/rand_damage = rand(1, 5)
 			var/rand_damage = 0
 			var/block = 0
 			var/accurate = 0
@@ -137,10 +132,6 @@
 					if(CHECK_MOBILITY(src, MOBILITY_CAN_MOVE) && src!=H && prob(20))
 						block = 1
 
-			// if (L.grabbed_by.len)
-				// Someone got a good grip on them, they won't be able to do much damage
-				// rand_damage = max(1, rand_damage - 2)
-
 			if(src.grabbed_by.len || src.buckled || !CHECK_MOBILITY(src, MOBILITY_CAN_MOVE) || src==H)
 				accurate = 1 // certain circumstances make it impossible for us to evade punches
 
@@ -148,30 +139,6 @@
 			var/miss_type = 0
 			var/attack_message
 			if(!accurate)
-				/* ~Hubblenaut
-					This place is kind of convoluted and will need some explaining.
-					ran_zone() will pick out of 11 zones, thus the chance for hitting
-					our target where we want to hit them is circa 9.1%.
-
-					Now since we want to statistically hit our target organ a bit more
-					often than other organs, we add a base chance of 20% for hitting it.
-
-					This leaves us with the following chances:
-
-					If aiming for chest:
-						27.3% chance you hit your target organ
-						70.5% chance you hit a random other organ
-						 2.2% chance you miss
-
-					If aiming for something else:
-						23.2% chance you hit your target organ
-						56.8% chance you hit a random other organ
-						15.0% chance you miss
-
-					Note: We don't use get_zone_with_miss_chance() here since the chances
-						  were made for projectiles.
-					TODO: proc for melee combat miss chances depending on organ?
-				*/
 
 				if(!hit_zone)
 					attack_message = "[H] attempted to strike [src], but missed!"
@@ -228,7 +195,6 @@
 				if(istype(H.gloves, /obj/item/clothing/gloves))
 					var/obj/item/clothing/gloves/G = H.gloves
 					real_damage += G.punch_force
-					hit_dam_type = G.punch_damtype
 					if(H.pulling_punches && !(attack.damage_mode & (DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP)))	//SO IT IS DECREED: PULLING PUNCHES WILL PREVENT THE ACTUAL DAMAGE FROM RINGS AND KNUCKLES, BUT NOT THE ADDED PAIN, BUT YOU CAN'T "PULL" A KNIFE
 						hit_dam_type = AGONY
 			real_damage *= damage_multiplier

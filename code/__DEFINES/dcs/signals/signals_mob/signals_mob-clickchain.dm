@@ -1,6 +1,12 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+/**
+ * Fired with (clickchain, intent)
+ */
+#define COMSIG_
+	#define
+
 //* COMSIG_MOB_MELEE_*_HOOK's *//
 
 /**

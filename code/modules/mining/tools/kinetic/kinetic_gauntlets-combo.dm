@@ -60,6 +60,7 @@ GLOBAL_DATUM_INIT(kinetic_gauntlet_melee_combo, /datum/combo_set/melee, new /dat
 	)
 
 	damage_force = 36
+	default_feedback_sfx = 'sound/weapons/resonator_blast.ogg'
 
 /datum/combo/melee/intent_based/kinetic_gauntlets/concuss/inflict_on(atom/target, target_zone, mob/attacker, datum/event_args/actor/clickchain/clickchain)
 	. = ..()
