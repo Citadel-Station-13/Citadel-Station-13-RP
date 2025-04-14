@@ -3108,6 +3108,10 @@
 "mH" = (
 /turf/simulated/floor/concrete/tile/outdoors,
 /area/class_m/outside/desert)
+"mJ" = (
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/wood,
+/area/class_m/inside/main)
 "mL" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil,
 /turf/simulated/floor/outdoors/dirt/outdoors,
@@ -9860,6 +9864,10 @@
 	},
 /turf/simulated/floor/water/river/west/outdoors,
 /area/class_m/outside)
+"PX" = (
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/tiled/dark,
+/area/class_m/inside/main)
 "PZ" = (
 /obj/effect/overlay/coconut,
 /turf/simulated/floor/outdoors/beach/sand/desert{
@@ -29338,10 +29346,10 @@ qk
 qk
 qk
 pI
-Zc
-Zc
-Zc
-Zc
+mJ
+mJ
+mJ
+mJ
 pI
 HZ
 lC
@@ -29351,10 +29359,10 @@ bg
 lC
 Dx
 pI
-Zc
-Zc
-Zc
-Zc
+PX
+PX
+PX
+PX
 pI
 pI
 pI
@@ -31098,7 +31106,7 @@ Bc
 Bc
 Bc
 Hw
-Zc
+mJ
 IN
 IN
 IN
@@ -32265,7 +32273,7 @@ hK
 pI
 pI
 Hl
-Zc
+mJ
 Kp
 pI
 pI
@@ -33999,7 +34007,7 @@ EQ
 sG
 mk
 GD
-Zc
+mJ
 Ja
 Hw
 bC
@@ -34193,18 +34201,18 @@ KV
 yw
 Rs
 bF
-Zc
-Zc
+mJ
+mJ
 bV
-Zc
-Zc
-Zc
-Zc
+mJ
+mJ
+mJ
+mJ
 pI
-Zc
-Zc
-Zc
-Zc
+mJ
+mJ
+mJ
+mJ
 pI
 MT
 vA
