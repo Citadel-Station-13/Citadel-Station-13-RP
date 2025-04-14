@@ -205,7 +205,7 @@
 
 /obj/effect/shuttle_landmark/strelka/deck1/civi
 	name = "NEV strelka - Civilian Private Dock"
-	landmark_tag = "trelka_civvie_home"
+	landmark_tag = "strelka_civvie_home"
 	docking_controller = "civvie_dock"
 	base_turf = /turf/simulated/floor/reinforced
 	base_area = /area/strelka/shipbase/deck1/civhangar

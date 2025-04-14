@@ -6,7 +6,6 @@
 		/datum/map_level/strelka/ship/deck_three,
 		/datum/map_level/strelka/ship/deck_two,
 		/datum/map_level/strelka/ship/deck_one,
-		/datum/map_level/strelka/misc,
 		/datum/map_level/strelka/flagship,
 	)
 	width = 192
@@ -204,12 +203,6 @@
 	display_name = "NSV strelka - Flagship Offboarding"
 	path = "maps/strelka/levels/flagship.dmm"
 	flags = LEGACY_LEVEL_ADMIN|LEGACY_LEVEL_CONTACT
-
-/datum/map_level/strelka/misc
-	id = "EndeavourMisc"
-	name = "strelka - Misc"
-	path = "maps/strelka/levels/misc.dmm"
-	flags = LEGACY_LEVEL_ADMIN
 
 #undef STRELKA_MAP_SIZE
 #undef STRELKA_HOLOMAP_CENTER_GUTTER
