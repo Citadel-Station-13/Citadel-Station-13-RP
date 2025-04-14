@@ -569,11 +569,11 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/workshop)
 "aDl" = (
-/obj/machinery/conveyor_switch/oneway{
-	tag = "mailroom";
-	id = "port_battery"
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "starboard_battery"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor,
 /area/endeavour/hallway/d4fwdmaint)
 "aDm" = (
 /turf/simulated/floor/tiled/monowhite,
@@ -2952,12 +2952,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload_foyer)
 "cRV" = (
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "starboard_battery"
-	},
-/turf/simulated/floor/plating,
-/area/endeavour/hallway/d4fwdmaint)
+/turf/space/basic,
+/area/endeavour/command/turrets)
 "cSj" = (
 /obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 8;
@@ -3669,10 +3665,8 @@
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "dFF" = (
-/obj/machinery/door/airlock/maintenance{
-	name = "Starboard Mass Driver Access"
-	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
 "dFG" = (
@@ -3984,6 +3978,15 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/engineering/atmos/eva)
+"eaj" = (
+/obj/machinery/disperser/front{
+	dir = 4;
+	name = "Mass Driver Barrel";
+	desc = "The business end of a mass driver, the magnetic coils in this tube accelerate things shoved into it when power is applied."
+	},
+/obj/machinery/atmospheric_field_generator/perma,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4fwdmaint)
 "eao" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
@@ -5764,9 +5767,6 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/machinery/light/small{
-	dir = 4
-	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
 "fLU" = (
@@ -5804,12 +5804,7 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4starboardforhall)
 "fMI" = (
-/obj/machinery/door/airlock/maintenance{
-	name = "Port Mass Driver Access"
-	},
-/obj/machinery/door/firedoor,
-/obj/structure/catwalk,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/techfloor,
 /area/endeavour/hallway/d4fwdmaint)
 "fNj" = (
 /obj/structure/table/steel,
@@ -7686,6 +7681,10 @@
 "hHi" = (
 /turf/simulated/floor/wood,
 /area/endeavour/surfacebase/bar_backroom)
+"hHv" = (
+/obj/structure/table/rack/shelf/steel,
+/turf/simulated/floor/tiled/techfloor,
+/area/endeavour/hallway/d4fwdmaint)
 "hHC" = (
 /obj/structure/window/basic{
 	dir = 1
@@ -10153,7 +10152,7 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4aftmaint)
 "kfj" = (
-/obj/machinery/door/blast/regular,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
 "kgD" = (
@@ -13740,10 +13739,8 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "nRW" = (
-/obj/machinery/computer/ship/navigation/telescreen{
-	pixel_y = 28
-	},
-/turf/simulated/floor/plating,
+/obj/structure/catwalk,
+/turf/simulated/floor/tiled/techfloor,
 /area/endeavour/hallway/d4fwdmaint)
 "nRY" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -14135,6 +14132,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/storage/tech)
+"osb" = (
+/turf/space/basic,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4fwdmaint)
 "oso" = (
 /obj/machinery/fitness/punching_bag/clown,
 /turf/simulated/floor/plating,
@@ -14220,8 +14221,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/command/turrets)
 "oyr" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/turf/simulated/floor/plating,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
 /area/endeavour/hallway/d4fwdmaint)
 "oyv" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
@@ -15614,6 +15617,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4portafthall)
+"qmL" = (
+/obj/machinery/door/blast/regular,
+/obj/machinery/atmospheric_field_generator/perma,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4fwdmaint)
 "qmW" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock{
@@ -16435,8 +16443,11 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "rfo" = (
-/obj/machinery/fire_alarm/east_mount,
-/turf/simulated/floor/plating,
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "port_battery"
+	},
+/turf/simulated/floor/tiled/techfloor,
 /area/endeavour/hallway/d4fwdmaint)
 "rga" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/universal{
@@ -21793,19 +21804,14 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
 "wYs" = (
-/obj/machinery/disperser/front{
-	dir = 4;
-	name = "Mass Driver Barrel";
-	desc = "The business end of a mass driver, the magnetic coils in this tube accelerate things shoved into it when power is applied."
-	},
-/obj/structure/plasticflaps/mining,
-/turf/simulated/floor/plating,
-/area/endeavour/hallway/d4fwdmaint)
-"wYt" = (
-/obj/machinery/conveyor{
-	dir = 4;
+/obj/machinery/conveyor_switch/oneway{
+	tag = "mailroom";
 	id = "port_battery"
 	},
+/turf/simulated/floor/tiled/techfloor,
+/area/endeavour/hallway/d4fwdmaint)
+"wYt" = (
+/turf/simulated/floor/plating,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
 "wYE" = (
@@ -50013,13 +50019,13 @@ xRj
 owo
 kaY
 nmL
-kaY
 owo
-kaY
-kaY
-kaY
-kaY
-kaY
+fMI
+fMI
+fMI
+fMI
+fMI
+owo
 kaY
 kaY
 kaY
@@ -50205,15 +50211,15 @@ jNg
 xRj
 xRj
 fwR
-wYt
+osb
 ciZ
-aDl
 owo
-kaY
-kaY
-nmL
-nmL
-nmL
+fMI
+fMI
+fMI
+nRW
+nRW
+crR
 nmL
 nmL
 nmL
@@ -50227,7 +50233,7 @@ kZE
 owo
 gqI
 gRl
-cRV
+kaY
 fwR
 jNg
 xRj
@@ -50401,12 +50407,12 @@ xRj
 fwR
 wYt
 ciZ
-kaY
-owo
-kaY
-kaY
-nmL
-kaY
+kfj
+fMI
+fMI
+fMI
+nRW
+fMI
 vqC
 vqC
 vqC
@@ -50421,7 +50427,7 @@ jej
 owo
 kmf
 gRl
-cRV
+kaY
 fwR
 jNg
 xRj
@@ -50595,12 +50601,12 @@ jNg
 fwR
 wYt
 ciZ
-kaY
 owo
-kaY
-kaY
-nmL
-kaY
+fMI
+wYs
+fMI
+nRW
+fMI
 vqC
 gZz
 avq
@@ -50615,7 +50621,7 @@ lDl
 owo
 kaY
 gRl
-cRV
+kaY
 fwR
 jNg
 xRj
@@ -50787,14 +50793,14 @@ jNg
 jNg
 rME
 owo
-jUm
+wYt
 ciZ
-uwZ
 owo
-kaY
-kaY
-nmL
-kaY
+fMI
+nRW
+fMI
+nRW
+fMI
 iAV
 cpG
 cPq
@@ -50809,7 +50815,7 @@ jiY
 owo
 lTp
 gRl
-jUm
+kaY
 owo
 jNg
 jNg
@@ -50981,14 +50987,14 @@ jNg
 jNg
 jNg
 owo
-hTL
+wYt
 ciZ
-kaY
 owo
-kaY
-kaY
-nmL
-nmL
+fMI
+nRW
+fMI
+nRW
+nRW
 iAV
 lwu
 sfK
@@ -51003,7 +51009,7 @@ ehk
 dFF
 nmL
 nmL
-hTL
+kaY
 owo
 jNg
 jNg
@@ -51175,14 +51181,14 @@ jNg
 jNg
 jNg
 owo
-eEF
+wYt
 ciZ
-nmL
+owo
 fMI
-nmL
-nmL
-nmL
-kaY
+nRW
+fMI
+nRW
+oyr
 vqC
 rni
 tnA
@@ -51197,7 +51203,7 @@ rBG
 owo
 kaY
 nmL
-eEF
+kaY
 owo
 jNg
 jNg
@@ -51369,14 +51375,14 @@ jNg
 jNg
 ycn
 owo
-eEF
+wYt
 fLS
-kaY
 owo
-owo
-kaY
-kaY
-kaY
+fMI
+rfo
+fMI
+aDl
+oyr
 vqC
 rHl
 vzY
@@ -51391,7 +51397,7 @@ mIL
 owo
 kaY
 owo
-eEF
+kaY
 owo
 jNg
 jNg
@@ -51563,14 +51569,14 @@ jNg
 ycn
 oRc
 owo
-wYs
+wYt
 owo
-kaY
-kaY
 owo
-kmf
-kaY
-kaY
+fMI
+rfo
+fMI
+aDl
+oyr
 wkE
 aLa
 inf
@@ -51585,7 +51591,7 @@ mIL
 kaY
 kaY
 owo
-wYs
+kaY
 owo
 ycn
 jNg
@@ -51757,13 +51763,13 @@ jNg
 jNg
 ycn
 owo
-kfj
+wYt
 owo
-uND
-uND
-owo
-nRW
-kaY
+hHv
+hHv
+rfo
+fMI
+aDl
 oyr
 uAo
 eLR
@@ -51779,7 +51785,7 @@ mIL
 uND
 uND
 owo
-kfj
+kaY
 owo
 oRc
 ycn
@@ -51951,14 +51957,14 @@ jNg
 jNg
 jNg
 owo
-pzA
 owo
 owo
 owo
 owo
-kaY
-kaY
-kaY
+jUm
+fMI
+jUm
+owo
 owo
 owo
 doA
@@ -52144,15 +52150,15 @@ jNg
 jNg
 jNg
 jNg
-wBv
-usG
-ycn
-oRc
 nQj
+nQj
+nQj
+nQj
+nQj
+hTL
+fMI
+hTL
 owo
-kaY
-kaY
-kaY
 kaY
 owo
 nQw
@@ -52338,15 +52344,15 @@ jNg
 jNg
 jNg
 jNg
-jNg
-jNg
-jNg
-ycn
-xKs
+xRj
+nQj
+nQj
+nQj
+nQj
+eEF
+fMI
+eEF
 owo
-kaY
-rfo
-kaY
 kaY
 owo
 inf
@@ -52533,13 +52539,13 @@ jNg
 jNg
 xRj
 xRj
-xRj
-xRj
-xRj
-xRj
-owo
-owo
-owo
+ycn
+oRc
+nQj
+nQj
+eEF
+fMI
+eEF
 owo
 owo
 owo
@@ -52727,16 +52733,16 @@ jNg
 jNg
 xRj
 xRj
-xRj
-xRj
-xRj
-xRj
 jNg
+ycn
 nQj
 nQj
-nQj
-nQj
-nQj
+eaj
+owo
+eaj
+owo
+owo
+owo
 vWK
 mES
 vWK
@@ -52921,24 +52927,24 @@ jNg
 jNg
 xRj
 jNg
+xRj
+xRj
 jNg
-jNg
-jNg
-jNg
-jNg
-ycn
+nQj
+qmL
+owo
+qmL
+owo
+owo
+owo
+jgS
+jgS
+jgS
+nQj
+nQj
 oRc
 ycn
-nQj
-nQj
-jgS
-jgS
-jgS
-nQj
-nQj
-ycn
-oRc
-ycn
+cRV
 jNg
 xRj
 xRj
@@ -53114,25 +53120,25 @@ jNg
 jNg
 jNg
 jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-ycn
-jNg
+xRj
+xRj
+xRj
 jNg
 nQj
+pzA
+owo
+pzA
+owo
+owo
+owo
 nJx
 nJx
 nJx
 nQj
 jNg
-jNg
-ycn
-jNg
+usG
+wvR
+xRj
 jNg
 jNg
 jNg

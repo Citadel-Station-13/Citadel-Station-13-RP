@@ -696,6 +696,9 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 9
+	},
 /turf/simulated/floor/wood,
 /area/tether/station/public_meeting_room)
 "ayF" = (
@@ -4354,6 +4357,12 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 10
 	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
+	dir = 9
+	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/chemistry_lab)
 "cZD" = (
@@ -6134,6 +6143,21 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
+"ejK" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
+	dir = 5
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/research_foyer)
 "ekm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/purple{
 	dir = 4
@@ -6313,6 +6337,18 @@
 /obj/item/clothing/mask/breath,
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
+"eqs" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/mauve/border,
+/obj/effect/floor_decal/borderfloor/corner2,
+/turf/simulated/floor/tiled,
+/area/rnd/research_foyer)
 "eqt" = (
 /obj/fiftyspawner/glass,
 /obj/structure/table/rack,
@@ -8789,6 +8825,9 @@
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 4
 	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
 "gdh" = (
@@ -9253,11 +9292,11 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
 "gxc" = (
-/obj/effect/floor_decal/borderfloor/corner{
-	dir = 1
-	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/babyblue,
+/obj/effect/paint/babyblue,
 /turf/simulated/floor/tiled,
-/area/rnd/research_foyer)
+/area/endeavour/hallway/d2afthall)
 "gxk" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
@@ -12662,6 +12701,12 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
 "jcP" = (
@@ -12698,6 +12743,20 @@
 /obj/structure/bed/chair/comfy/black,
 /turf/simulated/floor/wood/sif/indoors,
 /area/medical/reception)
+"jdN" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/mauve/border,
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 9
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/research_foyer)
 "jdR" = (
 /turf/simulated/wall/r_wall/prepainted/medical,
 /area/medical/virology)
@@ -13149,6 +13208,9 @@
 /area/holodeck_control)
 "jwY" = (
 /obj/effect/floor_decal/borderfloor/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -13925,6 +13987,7 @@
 /area/rnd/anomaly_lab/containment_one)
 "keN" = (
 /obj/spawner/window/low_wall/full/firelocks,
+/obj/effect/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d2afthall)
 "kff" = (
@@ -14422,6 +14485,9 @@
 /area/rnd/breakroom)
 "kzf" = (
 /obj/machinery/recharge_station,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
 /turf/simulated/floor/wood,
 /area/tether/station/public_meeting_room)
 "kzp" = (
@@ -16205,9 +16271,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/robotics)
 "lOB" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 4
-	},
 /obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
 	dir = 2;
@@ -16219,6 +16282,9 @@
 	},
 /obj/machinery/light{
 	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 5
 	},
 /turf/simulated/floor/wood,
 /area/tether/station/public_meeting_room)
@@ -16568,9 +16634,6 @@
 "lZx" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
-	},
-/obj/effect/floor_decal/spline/fancy/wood/corner{
-	dir = 4
 	},
 /obj/landmark{
 	name = "blobstart"
@@ -17421,6 +17484,7 @@
 /area/maintenance/substation/medical_science)
 "mDj" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/babyblue,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2afthall)
 "mDp" = (
@@ -17646,6 +17710,12 @@
 	dir = 1
 	},
 /obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -18846,6 +18916,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/effect/floor_decal/borderfloor/corner,
+/obj/effect/floor_decal/corner/mauve/bordercorner,
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
 "nKH" = (
@@ -19865,6 +19936,25 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/workshop)
+"oCV" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
+	dir = 5
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/research/researchdivision)
 "oDj" = (
 /obj/structure/table/woodentable,
 /obj/item/paper_bin{
@@ -19951,6 +20041,25 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
+"oGu" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
+	dir = 6
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/research/researchdivision)
 "oGF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -20142,14 +20251,20 @@
 /turf/simulated/floor/tiled/dark,
 /area/station/stairs_two)
 "oOE" = (
-/obj/effect/floor_decal/spline/fancy/wood/corner{
+/obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 4
 	},
-/turf/simulated/floor/wood,
-/area/tether/station/public_meeting_room)
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
+	dir = 6
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/research/researchdivision)
 "oOF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
@@ -20927,6 +21042,21 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2afthall)
+"pof" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
+	dir = 5
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/research/researchdivision)
 "poq" = (
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lamp/green{
@@ -22287,6 +22417,21 @@
 /obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical_science)
+"qes" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 9
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/research_foyer)
 "qfo" = (
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -22295,12 +22440,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
 	icon_state = "4-8"
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
@@ -23663,6 +23802,9 @@
 /obj/structure/table/woodentable,
 /obj/machinery/camera/network/civilian,
 /obj/item/paicard,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
 /turf/simulated/floor/wood,
 /area/tether/station/public_meeting_room)
 "rdl" = (
@@ -23749,6 +23891,9 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -27047,6 +27192,15 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/rnd/storage)
+"tHV" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/tether/station/public_meeting_room)
 "tHW" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 1
@@ -28775,6 +28929,9 @@
 /obj/machinery/newscaster{
 	pixel_y = 32
 	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
 /turf/simulated/floor/wood,
 /area/tether/station/public_meeting_room)
 "vcY" = (
@@ -29953,6 +30110,12 @@
 /obj/machinery/camera/network/research{
 	dir = 8;
 	network = list("Research","Toxins  Test  Area")
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
+	dir = 6
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
@@ -31680,6 +31843,9 @@
 	},
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lamp/green,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/tether/station/public_meeting_room)
 "xen" = (
@@ -32703,6 +32869,12 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 4
 	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
+	dir = 6
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
 "xLo" = (
@@ -33232,12 +33404,6 @@
 /obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
@@ -44295,7 +44461,7 @@ mDj
 mDj
 cjj
 mDj
-mDj
+gxc
 cjj
 oAN
 oAN
@@ -46209,9 +46375,9 @@ ptB
 asw
 gzA
 gzA
-gzA
+pof
 cct
-gzA
+oOE
 gzA
 gzA
 gzA
@@ -46801,15 +46967,15 @@ jNo
 hqI
 hFc
 gzA
-gzA
+pof
 czU
 vXA
 dNv
 gbB
 ghr
-ghr
+oCV
 ftX
-ghr
+oGu
 ghr
 hTw
 bZy
@@ -48543,7 +48709,7 @@ ije
 ije
 cYX
 fJj
-lwv
+qes
 bMP
 mEE
 bMP
@@ -48931,7 +49097,7 @@ urd
 hXW
 hCA
 riZ
-uIS
+gdf
 mXO
 mFr
 xzy
@@ -51646,7 +51812,7 @@ bMP
 bMP
 bMP
 bBJ
-gxc
+qKA
 oIP
 kHl
 eWd
@@ -52424,7 +52590,7 @@ kWG
 ffe
 kFb
 oIP
-kHl
+jdN
 eWd
 jam
 rIw
@@ -52812,7 +52978,7 @@ kWG
 ffe
 uIS
 oIP
-cGe
+eqs
 eWd
 cKy
 ptj
@@ -53395,7 +53561,7 @@ ffe
 gjc
 dKG
 dKG
-dKG
+ejK
 aux
 xLl
 dKG
@@ -63115,7 +63281,7 @@ jbC
 eTd
 wCH
 pic
-oOE
+muR
 vFy
 vUJ
 nRB
@@ -63299,7 +63465,7 @@ nNg
 kJE
 kJE
 onD
-wpu
+tHV
 lZx
 wpu
 ijd
