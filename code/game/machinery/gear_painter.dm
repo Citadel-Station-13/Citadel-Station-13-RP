@@ -23,7 +23,7 @@
 	/// Minimum lightness for normal mode
 	var/minimum_normal_lightness = 50
 	/// Minimum lightness for matrix mode, tested using 4 test colors of full red, green, blue, white.
-	var/minimum_matrix_lightness = 75
+	var/minimum_matrix_lightness = 10
 	/// Minimum matrix tests that must pass for something to be considered a valid color (see above)
 	var/minimum_matrix_tests = 2
 	/// Temporary messages
