@@ -196,7 +196,10 @@
 			if(!attack)
 				return FALSE
 
-			var/shieldcall_results = atom_shieldcall_handle_melee(attack, new /datum/event_args/actor/clickchain(user))
+			var/shieldcall_results = atom_shieldcall_handle_melee(
+				new /datum/event_args/actor/clickchain(user),
+				style = attack,
+			)
 			if(shieldcall_results & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 				H.do_attack_animation(src)
 				return FALSE

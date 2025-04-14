@@ -67,7 +67,7 @@
 	legacy_alter_melee_clickchain(clickchain)
 
 	// -- call on them (if we didn't miss / get called off already) --
-	clickchain_flags |= clickchain.target.melee_act(src, attack_style, clickchain.target_zone, clickchain, clickchain_flags)
+	clickchain_flags |= clickchain.target.melee_act(src, src, attack_style, clickchain.target_zone, clickchain, clickchain_flags)
 
 	// -- call override --
 	var/overridden

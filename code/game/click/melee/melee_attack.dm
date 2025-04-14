@@ -70,7 +70,7 @@ GLOBAL_LIST_EMPTY(melee_attack_singletons)
 /datum/melee_attack/proc/perform_attack_sound(atom/movable/attacker, atom/target, missed, obj/item/weapon, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	SHOULD_NOT_SLEEP(TRUE)
 	if(missed)
-		playsound(attacker, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
+		playsound(target, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 		return TRUE
 	return FALSE
 

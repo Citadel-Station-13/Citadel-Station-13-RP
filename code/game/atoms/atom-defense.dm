@@ -36,6 +36,8 @@
 	SEND_SIGNAL(src, COMSIG_ATOM_EX_ACT, power, dir, E)
 	return power
 
+//* External API / Damage Receiving - Melee *//
+
 /**
  * called on incoming item melee
  *
@@ -63,6 +65,8 @@
 /**
  * Called on a melee going through, whether or not it was blocked
  *
+ * * This is in charge of calling the actual attack impact.
+ *
  * @params
  * * attacker - person attacking
  * * weapon - weapon used, if any
@@ -85,7 +89,7 @@
  *
  * @params
  * * attacker - person attacking
- * * weapon - weapon used, if any
+ * * weapon - (optional) weapon used, if any
  * * style - attack style
  * * target_zone - zone targeted
  * * clickchain - (optional) clickchain used

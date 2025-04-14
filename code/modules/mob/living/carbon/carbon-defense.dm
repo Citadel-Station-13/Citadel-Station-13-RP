@@ -29,7 +29,7 @@
 		var/no_bleed = (species.species_flags & NO_BLOOD)
 		// old calculation here for probability
 		if(prob(25 + (resultant_damage * 2)))
-			if(!(weapon.atom_flags & NOBLOODY))
+			if(weapon && !(weapon.atom_flags & NOBLOODY))
 				weapon.add_blood(src)
 		// TODO: bleeding / blood backsplash frmo melee should be handled at /living level
 		//       with a new proc for doing all this logic

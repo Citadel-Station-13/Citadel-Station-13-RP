@@ -85,7 +85,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 /datum/melee_attack/unarmed/perform_attack_sound(atom/movable/attacker, atom/target, missed, obj/item/weapon, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	if(missed)
 		return ..()
-	playsound(src, target.hitsound_unarmed(attacker, src), 50, TRUE, -1)
+	playsound(target, target.hitsound_unarmed(attacker, src), 50, TRUE, -1)
 	return TRUE
 
 /datum/melee_attack/unarmed/estimate_damage(atom/movable/attacker, atom/target, obj/item/weapon)
