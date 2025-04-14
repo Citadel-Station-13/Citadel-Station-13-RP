@@ -37665,9 +37665,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
-"xKD" = (
-/turf/simulated/wall/r_wall/prepainted,
-/area/rnd/outpost/xenobiology/outpost_slimepens)
 "xLb" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
@@ -45433,15 +45430,15 @@ fSq
 rhH
 kpD
 xYc
-xKD
+fSq
 kSM
 qat
 obw
-xKD
+fSq
 sDP
 pUL
 lxO
-xKD
+fSq
 kgd
 wLS
 lYG
@@ -46597,15 +46594,15 @@ fSq
 dQq
 pfn
 lcl
-xKD
+fSq
 iMv
 icn
 pLA
-xKD
+fSq
 xRi
 tGA
 eBD
-xKD
+fSq
 bBi
 qtI
 jRQ
