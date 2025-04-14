@@ -103,6 +103,7 @@
 #define WOOD_COLOR_BLACK       "#332521"
 #define WOOD_COLOR_CHOCOLATE   "#543c30"
 #define WOOD_COLOR_YELLOW      "#e3994e"
+#define WOOD_COLOR_HARDWOOD	   "#42291a"
 
 // Color defines used by the assembly detailer.
 #define COLOR_ASSEMBLY_BLACK			"#545454"

@@ -8323,6 +8323,7 @@
 	name = "Warehouse Shutters"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
 "fxS" = (
@@ -8414,6 +8415,7 @@
 /area/maintenance/starboard)
 "fAI" = (
 /obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/effect/paint/hardwood,
 /turf/simulated/floor/plating,
 /area/library)
 "fBk" = (
@@ -30688,6 +30690,7 @@
 /area/rnd/outpost/xenobiology/outpost_breakroom)
 "sxf" = (
 /obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/effect/paint/hardwood,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/entertainment)
 "sxj" = (
@@ -31013,6 +31016,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/effect/paint/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
 "sHX" = (
