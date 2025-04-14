@@ -170,8 +170,8 @@
 			switch(alert_result)
 				if("Default Language")
 					if(isliving(src))
-						var/mob/living/caller = src
-						return RSlanguages.legacy_resolve_language_name(caller.default_language)
+						var/mob/living/living_src = src
+						return RSlanguages.legacy_resolve_language_name(living_src.default_language)
 				if("Gibberish")
 					return RSlanguages.legacy_resolve_language_name(LANGUAGE_GIBBERISH)
 				if("Whoops I made a typo!")
