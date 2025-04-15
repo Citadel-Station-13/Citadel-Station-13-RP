@@ -20207,10 +20207,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/library)
-"mEV" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/medical/psych)
 "mEY" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -58934,7 +58930,7 @@ sDY
 kEZ
 oiO
 fKW
-mEV
+mNL
 jDX
 jDX
 rRV
@@ -59322,7 +59318,7 @@ sDY
 sBy
 gIg
 xse
-mEV
+mNL
 jeG
 oPs
 hQy
