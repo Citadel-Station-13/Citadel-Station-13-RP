@@ -106,6 +106,8 @@
 /datum/blood_holder/proc/erase(amount)
 	var/total = host_blood_volume + cached_guest_blood_volume
 	. = min(amount, total)
+	if(total==0) //No divide by zero, return value's set already
+		return
 	var/multiplier = max(0, 1 - (. / total))
 
 	host_blood_volume *= multiplier
