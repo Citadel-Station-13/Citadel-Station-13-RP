@@ -2,7 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
- * Fired with (clickchain, intent)
+ * Fired with (clickchain, clickchain_flags, intent)
  */
 #define COMSIG_
 	#define
