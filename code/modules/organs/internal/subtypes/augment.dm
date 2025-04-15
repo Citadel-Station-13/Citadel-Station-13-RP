@@ -177,7 +177,7 @@
 
 	var/list/present_augs = list()
 
-	for(var/obj/item/organ/internal/augment/Aug in organs)
+	for(var/obj/item/organ/internal/augment/Aug in internal_organs)
 		if(Aug.my_radial_icon && !Aug.is_broken() && Aug.check_verb_compatability())
 			present_augs[Aug.radial_name] = Aug
 
