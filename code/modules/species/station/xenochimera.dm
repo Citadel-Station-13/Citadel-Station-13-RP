@@ -668,10 +668,27 @@
 		return
 	var/mob/living/carbon/human/H = owner
 	H.restore_blood()
-	H.species.create_organs(H, TRUE)
-	H.restore_all_organs()
-	H.adjustBruteLoss(-healing_amount)
-	H.adjustFireLoss(-healing_amount)
+	//Go through all the organs and limbs we should have, if one's missing, grow it.
+	for(var/organ_tag in H.species.has_organ)
+		var/obj/item/organ/I = H.internal_organs_by_name[name]
+		if(!I)
+			var/organ_type = H.species.has_organ[organ_tag]
+			var/obj/item/organ/O = new organ_type(H,1)
+			if(organ_tag != O.organ_tag)
+				warning("[O.type] has a default organ tag \"[O.organ_tag]\" that differs from the species' organ tag \"[organ_tag]\". Updating organ_tag to match.")
+				O.organ_tag = organ_tag
+			H.internal_organs_by_name[organ_tag] = O
+	for(var/limb_type in H.species.has_limbs)
+		var/obj/item/organ/I = H.organs_by_name[limb_type]
+		if(!I)
+			var/list/organ_data = H.species.has_limbs[limb_type]
+			var/limb_path = organ_data["path"]
+			var/obj/item/organ/O = new limb_path(H)
+			organ_data["descriptor"] = O.name
+			if(O.parent_organ)
+				organ_data = H.species.has_limbs[O.parent_organ]
+				organ_data["has_children"] = organ_data["has_children"]+1
+	H.restore_all_organs(ignore_prosthetic_prefs=TRUE) //A chimera couldn't make a limb robotic by this, should remove robotic parts, though.
 	H.adjustOxyLoss(-healing_amount)
 	H.adjustCloneLoss(-healing_amount)
 	H.adjustBrainLoss(-healing_amount)
