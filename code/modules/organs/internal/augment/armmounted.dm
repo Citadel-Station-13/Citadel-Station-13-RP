@@ -219,6 +219,8 @@
 			choice = key
 	else
 		choice = show_radial_menu(owner, owner, options)
+	if(!choice)
+		return
 	register_item(integrated_tools_by_name[choice])
 
 	..()
