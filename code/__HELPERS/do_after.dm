@@ -19,7 +19,7 @@
 	. = TRUE
 	while (world.time < endtime)
 		stoplag(1)
-		if (progress)
+		if (progress && !QDELETED(progbar))
 			progbar.update(world.time - starttime)
 		if(!user || !target)
 			. = FALSE
@@ -52,12 +52,14 @@
 			break
 
 	if(!QDELETED(progbar))
-		qdel(progbar)
+		progbar.end_progress()
 
 	STOP_INTERACTING_WITH(user, target, INTERACTING_FOR_DO_AFTER)
 
 /**
  * Does an action after a delay.
+ *
+ * TODO: set progressbar delay to target delay or otherwise be able to reuse progressbar?
  *
  * @params
  * * user - acting mob
@@ -68,12 +70,15 @@
  * * max_distance - if not null, the user is required to be get_dist() <= max_distance from target.
  * * additional_checks - a callback that allows for custom checks. this is invoked with our args directly, allowing us to modify delay.
  * * progress_anchor - override progressbar anchor location
- * * progress_instance - override progressbar instance
+ * * progress_instance - override progressbar instance; this progressbar instance will be **deleted** when we are finished,
+ *                       and should have a goal number equal to the delay.
  */
 /proc/do_after(mob/user, delay, atom/target, flags, mobility_flags = MOBILITY_CAN_USE, max_distance, datum/callback/additional_checks, atom/progress_anchor, datum/progressbar/progress_instance)
-	if(isnull(user))
+	if(isnull(user) || QDELETED(user))
+		progress_instance?.end_progress()
 		return FALSE
 	if(!delay)
+		progress_instance?.end_progress()
 		return \
 		(isnull(additional_checks) || additional_checks.Invoke(args)) && \
 		(isnull(max_distance) || get_dist(user, target) <= max_distance) && \
@@ -111,7 +116,8 @@
 	while(world.time < (start_time + delay))
 		stoplag(1)
 
-		progress?.update((world.time - start_time) * delay_factor)
+		if (progress && !QDELETED(progress))
+			progress.update((world.time - start_time) * delay_factor)
 
 		// check if deleted
 		if(QDELETED(user))
@@ -172,7 +178,7 @@
 
 	//* end
 	if(!QDELETED(progress))
-		qdel(progress)
+		progress.end_progress()
 
 	if(!isnull(target))
 		STOP_INTERACTING_WITH(user, target, INTERACTING_FOR_DO_AFTER)
