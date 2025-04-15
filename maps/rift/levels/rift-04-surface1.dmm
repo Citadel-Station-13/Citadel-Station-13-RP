@@ -20464,8 +20464,10 @@
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "mNL" = (
-/turf/simulated/wall/prepainted,
-/area/medical/psych_ward)
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/babyblue,
+/turf/simulated/floor/plating,
+/area/medical/psych)
 "mNV" = (
 /obj/structure/table/standard,
 /obj/item/flashlight/pen,
@@ -55043,12 +55045,12 @@ hgE
 hgE
 hgE
 hgE
-mNL
+hIo
 pVo
 slX
 bGX
 mrV
-mNL
+hIo
 hFH
 uFD
 tyv
@@ -55237,7 +55239,7 @@ hgE
 hgE
 hgE
 hgE
-mNL
+hIo
 nLD
 ivG
 lzE
@@ -55431,7 +55433,7 @@ hgE
 hgE
 hgE
 hgE
-mNL
+hIo
 utG
 aEQ
 aYK
@@ -55625,12 +55627,12 @@ hgE
 hgE
 hgE
 hgE
-mNL
+hIo
 pVo
 cGp
 mis
 wfK
-mNL
+hIo
 gWw
 jXM
 iNX
@@ -55819,8 +55821,8 @@ hgE
 hgE
 hgE
 hgE
-mNL
-mNL
+hIo
+hIo
 twG
 twG
 twG
@@ -56601,9 +56603,9 @@ twG
 twG
 twG
 wVZ
-mEV
+mNL
 duU
-mEV
+mNL
 sDY
 jyG
 hwX
