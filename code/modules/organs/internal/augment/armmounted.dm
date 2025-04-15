@@ -177,7 +177,6 @@
 			if(!integrated_tools[path])
 				integrated_tools[path] = new path(src)
 			var/obj/item/I = integrated_tools[path]
-			ADD_TRAIT(I, TRAIT_ITEM_NODROP, AUGMENT_TRAIT)
 			I.tool_speed = tool_speed
 			I.name = "integrated [I.name]"
 
@@ -210,13 +209,17 @@
 		options[Iname] = integrated_tool_images[Iname]
 
 	var/list/choice = list()
+	if(owner.is_in_inventory(integrated_object))
+		// retracting
+		integrated_object.forceMove(src)
+		owner.visible_message(SPAN_NOTICE("[integrated_object] snaps back into [src]."))
+		return
 	if(length(options) == 1)
 		for(var/key in options)
 			choice = key
 	else
 		choice = show_radial_menu(owner, owner, options)
-
-	integrated_object = integrated_tools_by_name[choice]
+	register_item(integrated_tools_by_name[choice])
 
 	..()
 
