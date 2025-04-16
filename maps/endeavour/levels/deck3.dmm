@@ -5114,6 +5114,9 @@
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 1
 	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 27
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3portamidhall)
 "dSI" = (
@@ -14247,18 +14250,6 @@
 	},
 /turf/simulated/floor/carpet/sblucarpet,
 /area/crew_quarters/sleep/Dorm_7)
-"kMg" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/computer/ship/navigation/telescreen{
-	pixel_y = 27
-	},
-/turf/simulated/floor/wood,
-/area/hydroponics/garden)
 "kNh" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -17305,6 +17296,10 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 8
 	},
+/obj/item/radio/intercom{
+	dir = 4;
+	pixel_x = 24
+	},
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "nlw" = (
@@ -18950,10 +18945,6 @@
 	pixel_x = 32
 	},
 /obj/structure/flora/ausbushes/ppflowers,
-/obj/item/radio/intercom{
-	dir = 4;
-	pixel_x = 24
-	},
 /obj/effect/floor_decal/grass_edge/corner,
 /obj/structure/lightpost/urban,
 /turf/simulated/floor/grass,
@@ -50699,7 +50690,7 @@ cqZ
 cqZ
 und
 hJb
-kMg
+gJI
 cJi
 eTr
 bFo

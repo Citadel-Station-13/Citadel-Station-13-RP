@@ -715,7 +715,6 @@
 /obj/effect/floor_decal/corner/lightgrey/bordercorner2{
 	dir = 4
 	},
-/obj/machinery/suit_storage_unit/exploration,
 /turf/simulated/floor/tiled,
 /area/exploration/pilot_prep)
 "azC" = (
@@ -1113,12 +1112,10 @@
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "aPQ" = (
-/obj/landmark/spawnpoint/job/pilot,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/suit_storage_unit/exploration,
-/turf/simulated/floor/tiled,
+/obj/machinery/suit_cycler/pilot{
+	pixel_y = -32
+	},
+/turf/simulated/wall/prepainted/exploration,
 /area/exploration/pilot_prep)
 "aRk" = (
 /obj/structure/cable/green{
@@ -16715,7 +16712,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/camera/network/civilian,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1starboardamidhall)
 "mMu" = (
@@ -18566,10 +18562,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1aftmaint)
-"odj" = (
-/obj/machinery/suit_cycler/pilot,
-/turf/simulated/floor/tiled,
-/area/exploration/pilot_prep)
 "odU" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -31454,10 +31446,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/hallway)
-"xRc" = (
-/obj/machinery/suit_storage_unit/exploration,
-/turf/simulated/floor/tiled,
-/area/exploration/pilot_prep)
 "xRj" = (
 /turf/space/basic,
 /area/space)
@@ -40276,8 +40264,8 @@ dpf
 hgT
 sFB
 gwz
-uWb
-odj
+aPQ
+lUl
 lUl
 fSO
 iZR
@@ -40470,8 +40458,8 @@ dpf
 hgT
 rUz
 vvR
-uWb
 aPQ
+fSO
 lUl
 lUl
 yfy
@@ -40664,8 +40652,8 @@ dpf
 hgT
 tnB
 xoY
-uWb
-xRc
+aPQ
+lUl
 lUl
 lUl
 lUl
@@ -40858,7 +40846,7 @@ dpf
 hgT
 jGs
 ihi
-uWb
+aPQ
 ayS
 bPB
 qxF

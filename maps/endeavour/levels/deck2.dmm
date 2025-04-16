@@ -24530,6 +24530,10 @@
 /obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
+"rLe" = (
+/obj/machinery/camera/network/research,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/endeavour/hallway/d2afthall)
 "rLn" = (
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /obj/machinery/scale,
@@ -45267,7 +45271,7 @@ dyQ
 lDm
 lDm
 dyQ
-sdA
+rLe
 sdA
 sdA
 sdA
