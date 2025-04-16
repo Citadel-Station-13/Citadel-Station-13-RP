@@ -691,7 +691,6 @@
 	H.restore_all_organs(ignore_prosthetic_prefs=TRUE) //A chimera couldn't make a limb robotic by this, should remove robotic parts, though.
 	H.adjustOxyLoss(-healing_amount)
 	H.adjustCloneLoss(-healing_amount)
-	H.adjustBrainLoss(-healing_amount)
 	H.remove_status_effect(/datum/status_effect/sight/blindness)
 	H.eye_blurry = FALSE
 	H.ear_deaf = FALSE
