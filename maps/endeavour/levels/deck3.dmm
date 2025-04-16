@@ -2858,6 +2858,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
 "ceU" = (
@@ -5419,6 +5420,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/item/radio/beacon,
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
 "ecO" = (
@@ -5660,6 +5662,7 @@
 /turf/simulated/floor,
 /area/maintenance/security/port)
 "emK" = (
+/obj/machinery/door/firedoor,
 /turf/simulated/open,
 /area/hydroponics/garden)
 "emP" = (
@@ -5747,9 +5750,6 @@
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "eqo" = (
-/obj/machinery/light{
-	dir = 1
-	},
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 32
 	},
@@ -7515,7 +7515,6 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3aftmaint)
 "fLD" = (
-/obj/item/material/ashtray/bronze,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -10393,6 +10392,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
+"hLM" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/wall/prepainted,
+/area/endeavour/hallway/d3fwdmaint)
 "hMc" = (
 /obj/structure/safe,
 /obj/item/clothing/under/color/yellow,
@@ -11477,6 +11482,7 @@
 	},
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/navblue/border,
+/obj/item/radio/beacon,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3fwdhall)
 "iAo" = (
@@ -12105,6 +12111,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/dark,
 /area/hydroponics/garden)
 "jby" = (
@@ -14653,6 +14660,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3fwdmaint)
+"lhK" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/item/radio/beacon,
+/turf/simulated/floor/tiled/dark,
+/area/endeavour/hallway/d3afthall)
 "lif" = (
 /obj/random/junk,
 /obj/random/maintenance,
@@ -16681,6 +16698,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/dark,
 /area/hydroponics/garden)
 "mTI" = (
@@ -16689,9 +16707,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/multi_tile/glass/civilian{
-	name = "Annex Airlock"
-	},
+/obj/machinery/door/airlock/multi_tile/metal,
 /obj/machinery/door/firedoor,
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -17547,6 +17563,16 @@
 /obj/machinery/washing_machine,
 /turf/simulated/floor/plating,
 /area/maintenance/pool)
+"nxj" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/item/radio/beacon,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d3fwdhall)
 "nxT" = (
 /obj/structure/bed/padded,
 /turf/simulated/floor/tiled/freezer,
@@ -18861,6 +18887,7 @@
 	dir = 8
 	},
 /obj/machinery/door/firedoor,
+/obj/item/radio/beacon,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3fwdhall)
 "ouS" = (
@@ -19446,6 +19473,7 @@
 /area/maintenance/substation/security)
 "oSF" = (
 /obj/machinery/door/airlock/glass,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/dark,
 /area/hydroponics/garden)
 "oSY" = (
@@ -20196,6 +20224,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/dark,
 /area/hydroponics/garden)
 "ptR" = (
@@ -20586,6 +20615,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/recreation_area)
+"pLl" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/item/radio/beacon,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d3portamidhall)
 "pLy" = (
 /obj/structure/table/woodentable,
 /obj/machinery/microwave,
@@ -22837,6 +22873,9 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/dark,
 /area/vacant/vacant_shop)
 "rvL" = (
@@ -24449,6 +24488,7 @@
 /area/maintenance/dormitory)
 "sqO" = (
 /obj/machinery/door/airlock,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
 "sqV" = (
@@ -25420,6 +25460,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/dark,
 /area/hydroponics/garden)
 "tdj" = (
@@ -27577,6 +27618,9 @@
 /obj/structure/flora/ausbushes/genericbush,
 /obj/effect/floor_decal/grass_edge{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
@@ -43484,7 +43528,7 @@ jXZ
 mKv
 skT
 mIg
-usf
+lhK
 qGX
 qGX
 lwL
@@ -46776,7 +46820,7 @@ oGr
 hFQ
 hPM
 peU
-woX
+pLl
 lYC
 glG
 bcj
@@ -49880,7 +49924,7 @@ uni
 jYc
 hJb
 dSn
-woX
+pLl
 gPr
 mwA
 mwA
@@ -57844,7 +57888,7 @@ hKY
 aQM
 qlU
 nIM
-avK
+hLM
 liT
 avK
 pty
@@ -59781,7 +59825,7 @@ oms
 rSp
 avK
 isS
-aQM
+nxj
 qlU
 nRR
 wex

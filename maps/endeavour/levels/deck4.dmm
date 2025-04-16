@@ -3044,6 +3044,13 @@
 /obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
+"ddd" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/item/radio/beacon,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d4starboardforhall)
 "ddh" = (
 /obj/machinery/door/airlock/hatch{
 	req_one_access = null
@@ -5130,6 +5137,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck4aft)
+"fem" = (
+/obj/structure/catwalk,
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/obj/machinery/door/airlock/maintenance,
+/obj/map_helper/access_helper/airlock/station/hangar,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4fwdmaint)
 "fgn" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -5761,6 +5777,7 @@
 /obj/effect/floor_decal/borderfloorblack/corner2{
 	dir = 10
 	},
+/obj/item/radio/beacon,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4portafthall)
 "fLS" = (
@@ -9333,10 +9350,22 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "jpG" = (
-/obj/machinery/door/blast/regular,
-/obj/machinery/atmospheric_field_generator/perma,
-/turf/simulated/floor/plating,
-/area/space)
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 8
+	},
+/obj/item/radio/beacon,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d4porthall)
 "jpU" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
 	dir = 5
@@ -10153,6 +10182,7 @@
 /area/endeavour/hallway/d4aftmaint)
 "kfj" = (
 /obj/machinery/door/airlock/maintenance,
+/obj/map_helper/access_helper/airlock/station/hangar,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
 "kgD" = (
@@ -14180,6 +14210,15 @@
 "owo" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/endeavour/hallway/d4fwdmaint)
+"owT" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/endeavour/hallway/d4portafthall)
 "oxm" = (
 /obj/effect/floor_decal/techfloor/orange/corner{
 	dir = 4
@@ -14601,7 +14640,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4portafthall)
 "pec" = (
 /obj/machinery/computer/security/engineering,
@@ -17067,9 +17106,9 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "rVY" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/crew_quarters/kitchen)
+/obj/item/radio/beacon,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d4starboardamidhall)
 "rWd" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -18824,7 +18863,7 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4porthall)
 "tWf" = (
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4portafthall)
 "tWt" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -19404,11 +19443,12 @@
 /turf/simulated/floor/tiled/steel,
 /area/engineering/atmos/eva)
 "uEx" = (
-/obj/structure/catwalk,
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/maintenance,
-/turf/simulated/floor/plating,
-/area/crew_quarters/kitchen)
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/item/radio/beacon,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d4starboardamidhall)
 "uEC" = (
 /obj/structure/table/marble,
 /obj/machinery/reagentgrinder,
@@ -20984,7 +21024,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 10
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4portafthall)
 "wfG" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -22023,7 +22063,8 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/monotile,
+/obj/item/radio/beacon,
+/turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4portafthall)
 "xlT" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
@@ -29444,7 +29485,7 @@ fAH
 tDI
 bnV
 mJU
-hZt
+cjZ
 cjZ
 saA
 krH
@@ -35278,7 +35319,7 @@ sWB
 xbk
 gww
 tWf
-xlL
+owT
 nGj
 vRB
 boY
@@ -39551,7 +39592,7 @@ kVG
 mCr
 caq
 nrj
-vmG
+jpG
 dve
 lOK
 mfq
@@ -42857,7 +42898,7 @@ swV
 fCN
 iFT
 vsA
-cuh
+rVY
 hfK
 gLy
 kaY
@@ -46148,7 +46189,7 @@ kaa
 kaa
 kaa
 eYk
-rZp
+uEx
 iiJ
 swz
 occ
@@ -46333,14 +46374,14 @@ jNg
 owo
 iCe
 flu
-rVY
-rVY
-rVY
-rVY
-rVY
-rVY
-rVY
-uEx
+nmL
+nmL
+nmL
+nmL
+nmL
+nmL
+nmL
+axf
 cuh
 rZp
 mOH
@@ -48847,10 +48888,10 @@ jNg
 jNg
 jNg
 xRj
-jpG
-jpG
-jpG
-jpG
+xRj
+xRj
+xRj
+xRj
 jNg
 owo
 kmf
@@ -50219,7 +50260,7 @@ fMI
 fMI
 nRW
 nRW
-crR
+fem
 nmL
 nmL
 nmL
@@ -50228,7 +50269,7 @@ kaY
 gLy
 nny
 kHY
-qfU
+ddd
 kZE
 owo
 gqI
@@ -51397,7 +51438,7 @@ mIL
 owo
 kaY
 owo
-kaY
+owo
 owo
 jNg
 jNg
@@ -51569,7 +51610,7 @@ jNg
 ycn
 oRc
 owo
-wYt
+owo
 owo
 owo
 fMI
@@ -51591,7 +51632,7 @@ mIL
 kaY
 kaY
 owo
-kaY
+owo
 owo
 ycn
 jNg
@@ -51763,7 +51804,7 @@ jNg
 jNg
 ycn
 owo
-wYt
+owo
 owo
 hHv
 hHv
@@ -51785,7 +51826,7 @@ mIL
 uND
 uND
 owo
-kaY
+owo
 owo
 oRc
 ycn
@@ -51979,7 +52020,7 @@ nQj
 owo
 owo
 owo
-pzA
+owo
 owo
 ycn
 xRj
@@ -52173,7 +52214,7 @@ aiw
 nQj
 nQj
 usG
-usG
+hfY
 wBv
 xRj
 jNg

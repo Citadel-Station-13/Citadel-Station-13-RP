@@ -641,6 +641,13 @@
 /obj/map_helper/access_helper/airlock/station/exploration/department,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/endeavour/civillian/evastorage)
+"axs" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/item/radio/beacon,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d1fwdhall)
 "axC" = (
 /obj/machinery/vending/tool,
 /turf/simulated/floor/tiled,
@@ -1835,6 +1842,12 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/navgold/border{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
 "bsC" = (
@@ -4952,6 +4965,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/item/radio/beacon,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
 "dMG" = (
@@ -10502,6 +10516,10 @@
 /obj/machinery/meter,
 /turf/simulated/floor,
 /area/shuttle/emt/general)
+"icN" = (
+/obj/item/radio/beacon,
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d1portamidhall)
 "icQ" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -14468,6 +14486,7 @@
 	dir = 4;
 	icon_state = "pipe-j2"
 	},
+/obj/item/radio/beacon,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1fwdhall)
 "kWj" = (
@@ -15170,12 +15189,6 @@
 	},
 /obj/effect/floor_decal/corner/navgold/border{
 	dir = 4
-	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
-	dir = 6
-	},
-/obj/effect/floor_decal/corner/navgold/bordercorner2{
-	dir = 6
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
@@ -18261,6 +18274,22 @@
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1fwdmaint)
+"nRn" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/navgold/border{
+	dir = 8
+	},
+/obj/machinery/status_display{
+	pixel_x = -32
+	},
+/obj/item/radio/beacon,
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d1afthall)
 "nRC" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/navgold/border,
@@ -18703,6 +18732,19 @@
 /obj/machinery/computer/timeclock/premade/north,
 /turf/simulated/floor/tiled,
 /area/exploration)
+"oiy" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/item/radio/beacon,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d1fwdhall)
 "oiA" = (
 /turf/simulated/wall/r_wall/prepainted/exploration,
 /area/shuttle/courser/general)
@@ -18924,25 +18966,15 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/office)
 "opY" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/navgold/border{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/navgold/bordercorner2{
-	dir = 5
-	},
-/turf/simulated/floor/tiled/steel,
-/area/endeavour/hallway/d1afthall)
+/obj/item/radio/beacon,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d1starboardamidhall)
 "oqw" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/red,
 /turf/simulated/floor/tiled,
@@ -23910,6 +23942,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/cryo/recovery)
 "sly" = (
@@ -25499,6 +25534,16 @@
 	},
 /turf/simulated/floor/carpet/blucarpet,
 /area/lawoffice)
+"txH" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/item/radio/beacon,
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d1fwdhall)
 "txV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -41626,7 +41671,7 @@ wjQ
 qzv
 jGC
 cWL
-opY
+cmr
 bsq
 lzN
 upY
@@ -42588,7 +42633,7 @@ bQL
 dYa
 sjP
 vJw
-bQL
+nRn
 sjP
 lHa
 nmG
@@ -44896,7 +44941,7 @@ ffi
 xec
 sDJ
 wRs
-dWV
+icN
 uwW
 sDJ
 bIw
@@ -47612,7 +47657,7 @@ ffi
 ffi
 sDJ
 hZG
-dWV
+icN
 gVL
 dcc
 eZh
@@ -50140,7 +50185,7 @@ hyg
 dFa
 kAg
 fpc
-lgr
+opY
 ntG
 oFO
 qqo
@@ -53429,7 +53474,7 @@ gJc
 dct
 mPC
 sZS
-wSw
+txH
 xrO
 tqm
 tLq
@@ -56154,7 +56199,7 @@ rnc
 pvq
 svt
 jHK
-anp
+oiy
 jEr
 kEB
 cvc
@@ -58870,7 +58915,7 @@ pgF
 pgF
 pgF
 ojQ
-qbK
+axs
 vEe
 jOr
 iPF
