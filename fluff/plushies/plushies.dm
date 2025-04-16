@@ -72,3 +72,17 @@
 	icon_state = "tesh"
 	pokephrase = "Prbt!"
 	player_name = "Leas"
+
+/obj/item/toy/plushie/snowflake/trenton
+	name = "catboy medic plushie"
+	desc = "A catboy plushie. Smells strongly of bilk, ambrosia vulgaris, and cigarettes. Ugh."
+	icon_state = "trent"
+	pokephrase = "STOP TOUCHING ME, FUCKER!!"
+	player_name = "Trent"
+
+/obj/item/toy/plushie/snowflake/almerai
+	name = "Almerai Plushie"
+	desc = "It appears to be a large stuffed doll depicting an Almerai clutching a stylistic heart. A pitiful attempt at salvaging the tarnished reputation of the fabled 'space gnolls' of the frontier."
+	icon_state = "gnoll"
+	pokephrase = "Yahahahaha!"
+	player_name = "Almerai"
