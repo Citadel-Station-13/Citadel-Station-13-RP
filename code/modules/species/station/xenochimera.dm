@@ -688,7 +688,7 @@
 			if(O.parent_organ)
 				organ_data = H.species.has_limbs[O.parent_organ]
 				organ_data["has_children"] = organ_data["has_children"]+1
-	H.restore_all_organs(ignore_prosthetic_prefs=TRUE) //A chimera couldn't make a limb robotic by this, should remove robotic parts, though.
+	H.restore_all_organs(ignore_prosthetic_prefs=TRUE) //A chimera couldn't make a limb robotic by this, shouldn't remove robotic parts, though.
 	H.adjustOxyLoss(-healing_amount)
 	H.adjustCloneLoss(-healing_amount)
 	H.remove_status_effect(/datum/status_effect/sight/blindness)
