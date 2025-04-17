@@ -6,9 +6,10 @@
 	if(Configuration.get_entry(/datum/toml_config_entry/backend/logging/toggles/attack))
 		var/str = "MELEE: [clickchain.actor_log_string()] --> [clickchain.target] via [weapon ? "([weapon]) ([weapon.type])" : "() ()"] ([style ? style.type : ""]) \
 		[clickchain_flags & CLICKCHAIN_ATTACK_MISSED ? "(MISSED) " : ""]\
-		[weapon ? "DMG [weapon.damage_force]-[weapon.damage_type]-[weapon.damage_flag] @ [weapon.damage_tier]m[weapon.damage_mode]" : ""]\
 		I [clickchain.using_intent] \
 		TZ [clickchain.target_zone] \
 		MUL [clickchain.attack_melee_multiplier] \
 		[length(clickchain.data) ? "DATA [json_encode(clickchain.data)]" : ""]"
 		WRITE_LOG(GLOB.world_attack_log, str)
+
+#warn audit log
