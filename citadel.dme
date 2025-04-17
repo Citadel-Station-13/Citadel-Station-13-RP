@@ -3818,6 +3818,7 @@
 #include "code\modules\mob\living\carbon\carbon-damage.dm"
 #include "code\modules\mob\living\carbon\carbon-defense.dm"
 #include "code\modules\mob\living\carbon\carbon-hands.dm"
+#include "code\modules\mob\living\carbon\carbon-interaction.dm"
 #include "code\modules\mob\living\carbon\carbon.dm"
 #include "code\modules\mob\living\carbon\carbon_defense_legacy.dm"
 #include "code\modules\mob\living\carbon\carbon_defines.dm"

@@ -19,6 +19,8 @@
 #define COMSIG_MOB_MELEE_INTENTFUL_HOOK "mob-melee-hook"
 	/// skip default action
 	#define RAISE_MOB_MELEE_INTENTFUL_SKIP (1<<0)
+	/// did something
+	#define RAISE_MOB_MELEE_INTENTFUL_ACTION (1<<1)
 
 //* melee_attack_chain() *//
 

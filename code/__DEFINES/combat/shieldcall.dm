@@ -159,6 +159,8 @@
 #define SHIELDCALL_CONTACT_SPECIFIC_SYRINGE_INJECTION "inject"
 /// trying to shake someone up
 #define SHIELDCALL_CONTACT_SPECIFIC_SHAKE_UP "help"
+/// being disarmed
+#define SHIELDCALL_CONTACT_SPECIFIC_DISARM "disarm"
 /// trying to drag someone
 #define SHIELDCALL_CONTACT_SPECIFIC_PULL "pull"
 /// trying to grab someone, **or** intensify a grab

@@ -53,6 +53,7 @@
 				N.show_message("<font color='red'><B>[M] bursts out of [src]!</B></font>", 2)
 	..()
 
+#warn deal with this
 /mob/living/carbon/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	var/mob/living/carbon/M = user
 	if(!istype(M))
