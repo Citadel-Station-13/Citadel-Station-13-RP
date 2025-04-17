@@ -69,13 +69,6 @@
 		return
 
 	switch(L.a_intent)
-		if(INTENT_HELP)
-			if(iscarbon(L) && attempt_cpr_interaction(L))
-				return TRUE
-			else if(!(L == src && apply_pressure(L, L.zone_sel.selecting)))
-				help_shake_act(L)
-			return TRUE
-
 		if(INTENT_GRAB)
 			if(L == src || anchored)
 				return 0
@@ -269,10 +262,6 @@
 
 			playsound(src, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 			visible_message("<font color='red'> <B>[L] attempted to disarm [src]!</B></font>")
-	return
-
-/mob/living/carbon/human/proc/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	return
 
 //can move this to a different .dm if needed
 /mob/living/carbon/human/AltClick(mob/user)

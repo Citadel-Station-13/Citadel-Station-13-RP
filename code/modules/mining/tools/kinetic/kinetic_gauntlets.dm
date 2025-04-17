@@ -192,7 +192,7 @@
 		mineral_target.GetDrilled(TRUE)
 		run_detonation_fx(target)
 		discharge(charge_delay_multiplier_rock)
-		return RAISE_ITEM_MELEE_SKIP
+		return RAISE_MOB_MELEE_IMPACT_SKIP
 	if(!ismob(target))
 		var/atom/atom_target = target
 		atom_target.inflict_damage_instance(
@@ -207,7 +207,7 @@
 		)
 		run_detonation_fx(target)
 		discharge(charge_delay_multiplier_structure)
-		return RAISE_ITEM_MELEE_SKIP
+		return RAISE_MOB_MELEE_IMPACT_SKIP
 	var/mob/mob_target = target
 	// requires mark to be using combo, otherwise you can hit it twice and mark it then hit again
 	var/datum/status_effect/grouped/proto_kinetic_mark/mark = mob_target.has_status_effect(/datum/status_effect/grouped/proto_kinetic_mark)
@@ -219,7 +219,7 @@
 	QDEL_NULL(mark)
 	execute_combo(clickchain, clickchain_flags, valid_combo)
 	discharge(charge_delay_multiplier_combo)
-	return RAISE_ITEM_MELEE_SKIP
+	return RAISE_MOB_MELEE_IMPACT_SKIP
 
 /obj/item/kinetic_gauntlets/proc/execute_combo(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/combo/melee/use_combo)
 	var/atom/movable/target = clickchain.target

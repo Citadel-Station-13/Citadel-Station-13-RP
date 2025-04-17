@@ -36,3 +36,6 @@
  */
 /mob/proc/clickchain_harm_interaction(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	return NONE
+
+
+#warn hook these in
