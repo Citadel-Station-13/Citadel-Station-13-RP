@@ -182,10 +182,8 @@
 /mob/living/UnarmedAttack(var/atom/A, var/proximity_flag)
 	if(is_incorporeal())
 		return 0
-
 	if(stat)
 		return 0
-
 	return 1
 
 /*

@@ -198,7 +198,7 @@
  * @return clickchain flags
  */
 /obj/item/proc/melee_impact(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
-	if(SEND_SIGNAL(src, COMSIG_MOB_MELEE_IMPACT_HOOK, args) & RAISE_MOB_MELEE_SKIP)
+	if(SEND_SIGNAL(src, COMSIG_ITEM_MELEE_IMPACT_HOOK, args) & RAISE_ITEM_MELEE_IMPACT_SKIP)
 		return clickchain_flags
 
 	var/atom/fixed_target = clickchain.target

@@ -1,6 +1,7 @@
 /mob/living/carbon/human/proc/get_unarmed_attack(var/mob/living/carbon/human/target, var/hit_zone)
 
-	if(nif && nif.flag_check(NIF_C_HARDCLAWS,NIF_FLAGS_COMBAT)){return unarmed_hardclaws}
+	if(nif && nif.flag_check(NIF_C_HARDCLAWS,NIF_FLAGS_COMBAT))
+		return unarmed_hardclaws
 	if(src.default_attack && src.default_attack.is_usable(src, target, hit_zone))
 		if(pulling_punches)
 			var/datum/melee_attack/unarmed/soft_type = src.default_attack.get_sparring_variant()
@@ -57,7 +58,7 @@
 			var/shieldcall_results = atom_shieldcall_handle_touch(new /datum/event_args/actor/clickchain(user))
 			if(shieldcall_results & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 				H.do_attack_animation(src)
-				return FALSE
+				return FALL_CUSHIONED_IMPACTED
 
 	if(istype(user,/mob/living/carbon))
 		var/mob/living/carbon/C = user

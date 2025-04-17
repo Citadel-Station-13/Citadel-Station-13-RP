@@ -179,8 +179,8 @@
 
 /obj/item/kinetic_gauntlets/proc/on_user_melee_impact(datum/source, list/melee_args)
 	SIGNAL_HANDLER
-	var/datum/event_args/actor/clickchain/clickchain = melee_args[CLICKCHAIN_MELEE_ARG_CLICKCHAIN]
-	var/clickchain_flags = melee_args[CLICKCHAIN_MELEE_ARG_CLICKCHAIN_FLAGS]
+	var/datum/event_args/actor/clickchain/clickchain = melee_args[CLICKCHAIN_MELEE_ATTACK_ARG_CLICKCHAIN]
+	var/clickchain_flags = melee_args[CLICKCHAIN_MELEE_ATTACK_ARG_CLICKCHAIN_FLAGS]
 	if(clickchain_flags & CLICKCHAIN_ATTACK_MISSED)
 		return NONE
 	if(!charged)

@@ -19,6 +19,8 @@
 /mob/proc/melee_attack_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	SHOULD_NOT_SLEEP(TRUE)
 
+	//* TODO: this hook should be somewhere at base of melee interaction chain
+
 	if(clickchain_flags & CLICKCHAIN_DO_NOT_ATTACK)
 		return clickchain_flags
 	if(!clickchain.target.is_melee_targetable(clickchain, clickchain_flags))
@@ -135,7 +137,7 @@
  * @return clickchain flags
  */
 /mob/proc/melee_impact(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/unarmed/attack_style)
-	if(SEND_SIGNAL(src, COMSIG_MOB_MELEE_IMPACT_HOOK, args) & RAISE_MOB_MELEE_SKIP)
+	if(SEND_SIGNAL(src, COMSIG_MOB_MELEE_IMPACT_HOOK, args) & RAISE_MOB_MELEE_IMPACT_SKIP)
 		return clickchain_flags
 
 	var/atom/fixed_target = clickchain.target

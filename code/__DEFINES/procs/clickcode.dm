@@ -67,7 +67,7 @@
 /// completely block attacking (notably, attack_mob, attack_obj) from happening by halting standard_melee_attack.
 #define CLICKCHAIN_DO_NOT_ATTACK			(1<<7)
 /// intercepted by component
-// TODO: get rid of this and use something like MELEE_ATTACK_HOOK style arg modification
+// TODO: get rid of this and audit where it's used
 #define CLICKCHAIN_COMPONENT_SIGNAL_HANDLED	(1<<8)
 /// this is a reflex counterattack by something
 ///
@@ -76,9 +76,6 @@
 /// put this in if we should entirely abort the attack
 #define CLICKCHAIN_FULL_BLOCKED				(1<<10)
 
-/// Signal wishes to capture the event and tell other handlers to back off.
-#define CLICKCHAIN_FLAG_SIGNAL_BACKOFF		(1<<23)
-
 /// check these for 'unconditional abort'
 #define CLICKCHAIN_FLAGS_UNCONDITIONAL_ABORT (CLICKCHAIN_DO_NOT_PROPAGATE)
 /// check these for 'abort attack'
@@ -86,12 +83,14 @@
 /// check these for 'abort further interactions'
 #define CLICKCHAIN_FLAGS_INTERACT_ABORT (CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_FULL_BLOCKED | CLICKCHAIN_DID_SOMETHING)
 
-//*   Clickchain - melee_attack() args   *//
-//* These are used for comsig overrides. *//
+//*   Clickchain - melee_attack_chain() args                *//
+//* These are used for comsig overrides.                    *//
+//* These hold true for melee_attack_chain's                *//
+//* sub-calls, including melee_attack() and melee_impact(). *//
 
-#define CLICKCHAIN_MELEE_ARG_CLICKCHAIN 1
-#define CLICKCHAIN_MELEE_ARG_CLICKCHAIN_FLAGS 2
-#define CLICKCHAIN_MELEE_ARG_STYLE 3
+#define CLICKCHAIN_MELEE_ATTACK_ARG_CLICKCHAIN 1
+#define CLICKCHAIN_MELEE_ATTACK_ARG_CLICKCHAIN_FLAGS 2
+#define CLICKCHAIN_MELEE_ATTACK_ARG_STYLE 3
 
 //* Reachability Depths *//
 

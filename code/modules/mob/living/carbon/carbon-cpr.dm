@@ -1,10 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
-
-// someday, we'll combine /carbon and /human to /complex
-// let me believe.......
-
-//! CPR code
+//* Copyright (c) 2023 Citadel Station Developers           *//
 
 /**
  * call to automatically attepmt a CPR interaction
@@ -63,19 +58,19 @@
 
 	cpr_act(actor)
 
-/mob/living/carbon/proc/__cpr_ventilation_end()
+/mob/living/carbon/proc/cpr_invoke_ventilation_end()
 	REMOVE_TRAIT(src, TRAIT_MECHANICAL_VENTILATION, CPR_TRAIT)
 
-/mob/living/carbon/proc/__cpr_organ_stasis_end()
+/mob/living/carbon/proc/cpr_invoke_organ_stasis_end()
 	REMOVE_TRAIT(src, TRAIT_PRESERVE_ALL_ORGANS, CPR_TRAIT)
 
-/mob/living/carbon/proc/__cpr_off_cooldown()
+/mob/living/carbon/proc/cpr_invoke_off_cooldown()
 	REMOVE_TRAIT(src, TRAIT_CPR_COOLDOWN, CPR_TRAIT)
 
-/mob/living/carbon/proc/__cpr_circulation_end()
+/mob/living/carbon/proc/cpr_invoke_circulation_end()
 	REMOVE_TRAIT(src, TRAIT_MECHANICAL_CIRCULATION, CPR_TRAIT)
 
-/mob/living/carbon/proc/__cpr_forced_metabolism(strength = 1)
+/mob/living/carbon/proc/cpr_invoke_forced_metabolism(strength = 1)
 	if(stat != DEAD)
 		// nah we're still breathin'
 		return
@@ -93,7 +88,7 @@
 	ADD_TRAIT(src, TRAIT_MECHANICAL_VENTILATION, CPR_TRAIT)
 	ADD_TRAIT(src, TRAIT_MECHANICAL_CIRCULATION, CPR_TRAIT)
 
-	__cpr_forced_metabolism(clipping? CPR_FORCED_METABOLISM_STRENGTH_CLIPPED : CPR_FORCED_METABOLISM_STRENGTH_NOMINAL)
+	cpr_invoke_forced_metabolism(clipping? CPR_FORCED_METABOLISM_STRENGTH_CLIPPED : CPR_FORCED_METABOLISM_STRENGTH_NOMINAL)
 
 	if(!IS_DEAD(src))
 		to_chat(src, SPAN_NOTICE("You feel a breath of fresh air enter your lungs. It feels good."))
@@ -101,7 +96,7 @@
 	if(clipping)
 		to_chat(actor, SPAN_WARNING("Too fast! Wait [(CPR_NOMINAL_COOLDOWN - CPR_ACTION_TIME) * 0.1] seconds after finishing a set of compressions to start another!"))
 
-	addtimer(CALLBACK(src, PROC_REF(__cpr_ventilation_end)), CPR_VENTILATION_TIME, TIMER_OVERRIDE | TIMER_UNIQUE)
-	addtimer(CALLBACK(src, PROC_REF(__cpr_off_cooldown)), CPR_NOMINAL_COOLDOWN, TIMER_OVERRIDE | TIMER_UNIQUE)
-	addtimer(CALLBACK(src, PROC_REF(__cpr_organ_stasis_end)), CPR_BRAIN_STASIS_TIME, TIMER_OVERRIDE | TIMER_UNIQUE)
-	addtimer(CALLBACK(src, PROC_REF(__cpr_circulation_end)), CPR_CIRCULATION_TIME, TIMER_OVERRIDE | TIMER_UNIQUE)
+	addtimer(CALLBACK(src, PROC_REF(cpr_invoke_ventilation_end)), CPR_VENTILATION_TIME, TIMER_OVERRIDE | TIMER_UNIQUE)
+	addtimer(CALLBACK(src, PROC_REF(cpr_invoke_off_cooldown)), CPR_NOMINAL_COOLDOWN, TIMER_OVERRIDE | TIMER_UNIQUE)
+	addtimer(CALLBACK(src, PROC_REF(cpr_invoke_organ_stasis_end)), CPR_BRAIN_STASIS_TIME, TIMER_OVERRIDE | TIMER_UNIQUE)
+	addtimer(CALLBACK(src, PROC_REF(cpr_invoke_circulation_end)), CPR_CIRCULATION_TIME, TIMER_OVERRIDE | TIMER_UNIQUE)
