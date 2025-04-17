@@ -19,24 +19,12 @@
  * which contains public APIs to request creation / destruction / archiving of levels.
  */
 /datum/map_struct
-	//* Core *//
-	/// our id
-	///
-	/// * must be globally (persistence-compatible) unique
-	/// * if not provided, will be randomly generated.
-	var/id
 
 	//* Simulation *//
 	/// default ceiling height
 	var/ceiling_height_default = 5
 
 	//* State *//
-	/// are we built / created and ready for operation?
-	var/tmp/constructed = FALSE
-	/// the map_level datums in us
-	///
-	/// * this is an ordered list
-	var/tmp/list/datum/map_level/levels
 	/// the real zlevel indices
 	///
 	/// * this is an ordered list, with indices the same as [levels]
