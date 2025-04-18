@@ -680,6 +680,9 @@
 			H.internal_organs_by_name[organ_tag] = O
 	for(var/limb_type in H.species.has_limbs)
 		var/obj/item/organ/I = H.organs_by_name[limb_type]
+		if(istype(I, /obj/item/organ/external/stump))
+			I.removed(null, TRUE)//Shouldn't have a vital stump that can be removed, but no need to kill if that somehow is the case, as it'll be replaced.
+			I = null
 		if(!I)
 			var/list/organ_data = H.species.has_limbs[limb_type]
 			var/limb_path = organ_data["path"]
