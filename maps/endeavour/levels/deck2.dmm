@@ -1999,14 +1999,12 @@
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
 "bzV" = (
-/obj/machinery/light/small{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
-/obj/structure/table/rack/shelf,
-/obj/random/tool,
-/obj/random/toolbox,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
-/area/maintenance/research/port)
+/area/tether/station/public_meeting_room)
 "bzY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
@@ -3148,17 +3146,10 @@
 /turf/simulated/floor/plating,
 /area/rnd/research/researchdivision)
 "cja" = (
-/obj/machinery/atmospherics/portables_connector{
-	dir = 1
-	},
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/mauve/border,
-/obj/machinery/camera/network/research{
-	dir = 1
-	},
-/obj/machinery/light,
-/turf/simulated/floor/tiled,
-/area/rnd/xenobiology/xenoflora/lab_atmos)
+/obj/structure/reagent_dispensers/watertank,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/maintenance/fpmaint2)
 "cje" = (
 /obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
@@ -4002,6 +3993,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/medbay_emt_bay)
+"cKd" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/endeavour/hallway/d2afthall)
 "cKy" = (
 /turf/simulated/floor/tiled/dark,
 /area/assembly/robotics/surgery)
@@ -5293,6 +5290,16 @@
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
+"dFj" = (
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
+/obj/structure/catwalk,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/research/port)
 "dFm" = (
 /obj/structure/table/standard,
 /obj/item/storage/box/gloves{
@@ -5892,10 +5899,6 @@
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8
 	},
-/obj/machinery/camera/network/research{
-	dir = 4;
-	network = list("Xenobiology")
-	},
 /obj/machinery/light{
 	dir = 8
 	},
@@ -6292,6 +6295,9 @@
 	name = "biohazard bin"
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology_aft_access)
 "eoH" = (
@@ -6861,12 +6867,12 @@
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/maintenance/research/port)
 "eKM" = (
-/obj/machinery/camera/network/outside{
-	dir = 5
+/obj/machinery/light/small{
+	dir = 4
 	},
-/obj/spawner/window/borosillicate/reinforced/full/firelocks,
-/turf/simulated/floor/airless/ceiling,
-/area/tether/station/public_meeting_room)
+/obj/machinery/floodlight,
+/turf/simulated/floor/plating,
+/area/maintenance/fpmaint2)
 "eLb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -7128,7 +7134,7 @@
 	name = "Xenoflora Research";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/science/xenobiology,
+/obj/map_helper/access_helper/airlock/station/science/department,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -7843,6 +7849,17 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2afthall)
+"fth" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/green/border{
+	dir = 1
+	},
+/obj/structure/bed/chair,
+/obj/machinery/camera/network/medbay,
+/turf/simulated/floor/tiled/white,
+/area/medical/virology_fore_access)
 "ftJ" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint/purplegray,
@@ -8755,6 +8772,13 @@
 /obj/effect/floor_decal/corner/navgold/border,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2fwdhall)
+"gbx" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/storage/toolbox/emergency,
+/obj/item/storage/toolbox/emergency,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/maintenance/fpmaint2)
 "gbB" = (
 /obj/structure/cable/green{
 	icon_state = "2-8"
@@ -12893,6 +12917,16 @@
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/medical/exam_room/exam_2)
+"jlA" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/tether/station/public_meeting_room)
 "jlG" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -16894,12 +16928,14 @@
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
 "mmt" = (
-/obj/machinery/computer/arcade/clawmachine,
-/obj/machinery/light/small{
-	dir = 1
+/obj/machinery/air_alarm{
+	frequency = 1441;
+	pixel_y = 22
 	},
-/turf/simulated/floor/carpet/bcarpet,
-/area/endeavour/hallway/d2afthall)
+/obj/item/clothing/head/hardhat/red,
+/obj/structure/table/rack,
+/turf/simulated/floor/plating,
+/area/maintenance/fpmaint2)
 "mmy" = (
 /turf/simulated/floor/plating,
 /area/medical/medbay4)
@@ -18425,6 +18461,13 @@
 /obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/wood,
 /area/medical/medbay4)
+"nrv" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/random/trash_pile,
+/turf/simulated/floor/plating,
+/area/maintenance/fpmaint2)
 "nsd" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -19154,10 +19197,6 @@
 	},
 /obj/effect/floor_decal/corner/mauve/bordercorner2{
 	dir = 8
-	},
-/obj/machinery/camera/network/research{
-	dir = 4;
-	network = list("Xenobiology")
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
@@ -21968,11 +22007,10 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "pPZ" = (
-/obj/machinery/light/small{
-	dir = 4
-	},
-/turf/simulated/floor/carpet/bcarpet,
-/area/endeavour/hallway/d2afthall)
+/obj/machinery/portable_atmospherics/powered/scrubber,
+/obj/machinery/fire_alarm/east_mount,
+/turf/simulated/floor/plating,
+/area/maintenance/fpmaint2)
 "pQr" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 10
@@ -23852,9 +23890,6 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d2fwdmaint)
 "reX" = (
-/obj/machinery/camera/network/civilian{
-	dir = 1
-	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
 	},
@@ -23898,6 +23933,11 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
+"riM" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/space_heater,
+/turf/simulated/floor/plating,
+/area/maintenance/fpmaint2)
 "riZ" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint/purplegray,
@@ -25632,6 +25672,9 @@
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
+/obj/machinery/camera/network/research{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "sFi" = (
@@ -26441,7 +26484,6 @@
 /turf/simulated/wall/r_wall/prepainted/medical,
 /area/medical/virology_aft_access)
 "tga" = (
-/obj/machinery/camera/network/medbay,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -30333,6 +30375,11 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical_science)
+"wcV" = (
+/obj/item/storage/briefcase/inflatable,
+/obj/structure/table/rack/shelf/steel,
+/turf/simulated/floor/plating,
+/area/maintenance/fpmaint2)
 "wdf" = (
 /obj/structure/bed/chair/modern_chair{
 	dir = 8
@@ -30792,17 +30839,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/morgue)
 "wsg" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 8
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/rnd/research_foyer)
+/obj/structure/closet/emcloset,
+/turf/simulated/floor/plating,
+/area/maintenance/fpmaint2)
 "wsh" = (
 /obj/structure/cable/green{
 	icon_state = "2-8"
@@ -31809,7 +31848,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "xaR" = (
-/obj/machinery/camera/network/medbay,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -33244,10 +33282,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/medical/surgeryobs)
 "xYz" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/railing,
+/obj/structure/table/rack/shelf/steel,
+/obj/item/tank/emergency/oxygen/double,
+/obj/item/tank/emergency/oxygen/engi,
+/obj/item/tank/emergency/oxygen/engi,
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
 "xYH" = (
@@ -33447,7 +33485,6 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -45279,11 +45316,11 @@ wQI
 gsh
 tks
 mDj
-mmt
+bFI
 rZj
 rZj
+cKd
 rZj
-pPZ
 rZj
 oAN
 gAn
@@ -47187,7 +47224,7 @@ jib
 jib
 xcm
 pmN
-bNX
+dFj
 hKO
 qIL
 lCp
@@ -47963,7 +48000,7 @@ tQr
 jib
 kRI
 kRI
-bzV
+jNv
 jNv
 qIL
 hCq
@@ -48759,7 +48796,7 @@ qes
 bMP
 mEE
 bMP
-wsg
+bMP
 uoQ
 xlA
 nBw
@@ -52492,7 +52529,7 @@ luj
 vPR
 eWn
 fik
-lIp
+pRW
 pRW
 pRW
 pRW
@@ -54968,7 +55005,7 @@ xkX
 iKc
 wIa
 rvs
-cja
+jPY
 yax
 eWi
 nDW
@@ -56540,7 +56577,7 @@ gfI
 oOa
 sLX
 dyU
-pwh
+fth
 bAO
 oRR
 dyU
@@ -61779,14 +61816,14 @@ jSU
 mxS
 nNS
 ePs
+eKM
 qjz
 qjz
 qjz
 qjz
-qjz
-qjz
-qjz
-ruN
+wcV
+wsg
+pPZ
 ces
 ces
 lIp
@@ -61977,8 +62014,8 @@ qjz
 qjz
 dOE
 pmG
-xYz
-nNg
+qjz
+qjz
 egx
 egx
 ces
@@ -62172,7 +62209,7 @@ qjz
 pXE
 naZ
 aoi
-ycR
+riM
 egx
 vPR
 eWn
@@ -62364,12 +62401,12 @@ coa
 qjz
 qjz
 qjz
-qjz
+cja
 egx
 egx
 egx
 ogd
-tjN
+pRW
 pRW
 pRW
 pRW
@@ -62555,10 +62592,10 @@ aLB
 vRE
 hxy
 nRB
+mmt
 qjz
 qjz
-qjz
-qjz
+gbx
 egx
 pRW
 pRW
@@ -62748,11 +62785,11 @@ gNW
 uTd
 sjN
 reX
-nRB
-uZe
+bzV
 qjz
 qjz
 qjz
+xYz
 egx
 lIp
 pRW
@@ -62941,7 +62978,7 @@ aaK
 eUx
 muR
 ltG
-xEN
+jlA
 nRB
 qjz
 egx
@@ -63137,7 +63174,7 @@ muR
 vFy
 pqU
 nRB
-qjz
+nrv
 egx
 eTf
 pRW
@@ -64111,9 +64148,9 @@ eWn
 eWn
 pRW
 pRW
-mDp
-mDp
-mDp
+pRW
+pRW
+pRW
 pRW
 pRW
 pRW
@@ -64676,7 +64713,7 @@ eWn
 vPR
 eWn
 xRY
-eKM
+tid
 tid
 tid
 tid
@@ -65064,7 +65101,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+bfE
 tUr
 tUr
 tUr

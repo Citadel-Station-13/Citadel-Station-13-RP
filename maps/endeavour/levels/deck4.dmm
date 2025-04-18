@@ -343,8 +343,8 @@
 /turf/simulated/floor/tiled/monodark,
 /area/engineering/drone_fabrication)
 "aqG" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 5
+/obj/machinery/light{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai/foyer)
@@ -574,6 +574,12 @@
 "aCV" = (
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/kitchen)
+"aDa" = (
+/obj/machinery/blackbox_recorder,
+/turf/simulated/floor/tiled/dark{
+	initial_gas_mix = "n2=100;TEMP=80"
+	},
+/area/tcommsat/chamber)
 "aDe" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -1636,6 +1642,7 @@
 	name = "Powernet Sensor - Master Grid";
 	name_tag = "Master"
 	},
+/obj/machinery/camera/network/engineering,
 /turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "bLm" = (
@@ -4016,7 +4023,9 @@
 	name = "Mass Driver Barrel";
 	desc = "The business end of a mass driver, the magnetic coils in this tube accelerate things shoved into it when power is applied."
 	},
-/obj/machinery/atmospheric_field_generator/perma,
+/obj/machinery/atmospheric_field_generator/perma{
+	color = "#FF0000"
+	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
 "eao" = (
@@ -5166,11 +5175,11 @@
 /area/engineering/substation/deck4aft)
 "fem" = (
 /obj/structure/catwalk,
+/obj/structure/catwalk,
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/machinery/door/airlock/maintenance,
-/obj/map_helper/access_helper/airlock/station/hangar,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
 "fgn" = (
@@ -5512,7 +5521,7 @@
 /area/engineering/shield_gen)
 "fyk" = (
 /obj/machinery/telecomms/server/presets/supply,
-/obj/machinery/light/small{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark{
@@ -6103,10 +6112,6 @@
 	name = "Shotgun permit"
 	},
 /obj/item/clothing/suit/armor/vest,
-/obj/machinery/light_switch{
-	dir = 4;
-	pixel_x = -24
-	},
 /obj/item/gun/projectile/ballistic/shotgun/doublebarrel,
 /turf/simulated/floor/wood,
 /area/endeavour/surfacebase/bar_backroom)
@@ -6913,12 +6918,13 @@
 /turf/simulated/floor/tiled/steel,
 /area/engineering/atmos/eva)
 "gSX" = (
-/obj/machinery/light{
+/obj/structure/closet/secure_closet/engineering_welding,
+/obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner_oldtile/white/diagonal,
-/turf/simulated/floor/tiled/dark,
-/area/crew_quarters/bar)
+/obj/machinery/camera/network/engineering,
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/locker_room)
 "gSY" = (
 /obj/machinery/air_sensor{
 	frequency = 1441;
@@ -7034,6 +7040,9 @@
 /area/crew_quarters/kitchen)
 "gZz" = (
 /obj/machinery/lathe/autolathe,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/robotics/smallcraft)
 "gZD" = (
@@ -7384,6 +7393,7 @@
 /area/tcommsat/computer)
 "hrt" = (
 /obj/machinery/holopad,
+/obj/machinery/camera/network/tcomms,
 /turf/simulated/floor/tiled/dark{
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
@@ -7915,11 +7925,13 @@
 /turf/simulated/floor/tiled/steel,
 /area/tcommsat/computer)
 "hPQ" = (
-/obj/machinery/camera/network/civilian{
-	dir = 1
+/obj/map_helper/access_helper/airlock/station/hangar,
+/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/firedoor{
+	dir = 8
 	},
-/turf/simulated/wall/prepainted/civilian,
-/area/crew_quarters/kitchen)
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4fwdmaint)
 "hPS" = (
 /obj/machinery/computer/atmos_alert{
 	dir = 1
@@ -8427,7 +8439,7 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4starboardforhall)
 "irv" = (
-/obj/machinery/light/small,
+/obj/machinery/light,
 /turf/simulated/floor/tiled/dark{
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
@@ -8555,6 +8567,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/command/turrets)
+"iDP" = (
+/obj/effect/floor_decal/techfloor/orange,
+/obj/machinery/camera/network/engineering{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/locker_room)
 "iFc" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 6
@@ -9924,9 +9943,6 @@
 /area/engineering/atmos/workshop)
 "jLs" = (
 /obj/machinery/holopad,
-/obj/machinery/light{
-	dir = 8
-	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/kitchen)
 "jLt" = (
@@ -10262,10 +10278,16 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4aftmaint)
 "kfj" = (
-/obj/machinery/door/airlock/maintenance,
-/obj/map_helper/access_helper/airlock/station/hangar,
+/obj/machinery/door/blast/regular{
+	dir = 2;
+	id = "hangar_pad";
+	name = "Hangar Bay Blast Door"
+	},
+/obj/machinery/atmospheric_field_generator/perma{
+	color = "#00000ff"
+	},
 /turf/simulated/floor/plating,
-/area/endeavour/hallway/d4fwdmaint)
+/area/rnd/robotics/smallcraft)
 "kgD" = (
 /obj/machinery/smartfridge,
 /turf/simulated/floor/plating,
@@ -12048,6 +12070,9 @@
 /area/endeavour/hallway/d4porthall)
 "mdX" = (
 /obj/machinery/recharge_station,
+/obj/machinery/camera/network/command{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload_foyer)
 "mel" = (
@@ -12972,8 +12997,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/command/turrets)
 "nby" = (
-/obj/machinery/camera/network/tcomms,
-/obj/machinery/light/small{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/bluegrid{
@@ -13526,9 +13550,6 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/engineering/atmos/eva)
 "nAP" = (
-/obj/machinery/camera/network/command{
-	dir = 4
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -14696,6 +14717,14 @@
 /obj/item/pickaxe/tyrmalin,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4aftmaint)
+"pbK" = (
+/obj/effect/floor_decal/corner_oldtile/white/diagonal,
+/obj/machinery/light/flamp/noshade{
+	pixel_x = -16;
+	pixel_y = -3
+	},
+/turf/simulated/floor/tiled/dark,
+/area/crew_quarters/bar)
 "pbP" = (
 /obj/machinery/light/small/flicker{
 	dir = 1
@@ -15769,7 +15798,9 @@
 /area/endeavour/hallway/d4portafthall)
 "qmL" = (
 /obj/machinery/door/blast/regular,
-/obj/machinery/atmospheric_field_generator/perma,
+/obj/machinery/atmospheric_field_generator/perma{
+	color = "#FF0000"
+	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
 "qmW" = (
@@ -16931,14 +16962,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "rzv" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/structure/closet/secure_closet/freezer/meat{
-	anchored = 1
-	},
-/turf/simulated/floor/tiled/freezer,
-/area/crew_quarters/kitchen)
+/turf/simulated/wall/r_wall,
+/area/engineering/engine_room)
 "rAa" = (
 /obj/structure/closet/firecloset,
 /obj/machinery/power/apc/north_mount,
@@ -18448,6 +18473,9 @@
 /obj/machinery/computer/rdconsole/robotics{
 	dir = 4
 	},
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/robotics/smallcraft)
 "tqM" = (
@@ -18601,6 +18629,14 @@
 "tBV" = (
 /turf/simulated/floor/tiled,
 /area/endeavour/station/stairs_four)
+"tBY" = (
+/obj/effect/floor_decal/corner_oldtile/white/diagonal,
+/obj/machinery/light/flamp/noshade{
+	pixel_y = -3;
+	pixel_x = 16
+	},
+/turf/simulated/floor/tiled/dark,
+/area/crew_quarters/bar)
 "tDo" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /obj/effect/floor_decal/techfloor/orange{
@@ -19343,7 +19379,7 @@
 /turf/simulated/floor/carpet/oracarpet,
 /area/engineering/engineering_monitoring)
 "usD" = (
-/obj/machinery/light/small{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/bluegrid{
@@ -20129,10 +20165,10 @@
 	pixel_y = 24;
 	specialfunctions = 4
 	},
-/obj/machinery/light/small,
-/obj/structure/toilet{
-	dir = 4
+/obj/machinery/light/small{
+	dir = 1
 	},
+/obj/structure/toilet,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/engi_wash)
 "vip" = (
@@ -22531,6 +22567,9 @@
 	dir = 9
 	},
 /obj/machinery/vending/tool,
+/obj/machinery/camera/network/engineering{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "xCJ" = (
@@ -22717,8 +22756,14 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/command/turrets)
 "xKs" = (
-/turf/simulated/floor/plating,
-/area/space)
+/obj/effect/floor_decal/techfloor{
+	dir = 9
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/ai/foyer)
 "xKI" = (
 /turf/simulated/wall/r_wall/prepainted/engineering/atmos,
 /area/engineering/atmos/eva)
@@ -30032,15 +30077,15 @@ iPU
 iPU
 fWh
 jNg
-kNH
-kNH
-kNH
-kNH
-jfz
-kNH
-kNH
-kNH
-kNH
+fpa
+fpa
+fpa
+fpa
+rzv
+fpa
+fpa
+fpa
+fpa
 mhf
 tTf
 iPU
@@ -30226,15 +30271,15 @@ fvC
 jNg
 xbR
 jNg
-kNH
-xKs
-xKs
-xKs
-xKs
-xKs
-xKs
-xKs
-kNH
+fpa
+uHx
+uHx
+uHx
+uHx
+uHx
+uHx
+uHx
+fpa
 nRY
 uhm
 iPU
@@ -30420,15 +30465,15 @@ uSQ
 jNg
 uSQ
 bXA
-kNH
-xKs
-xKs
-xKs
-xKs
-xKs
-xKs
-xKs
-kNH
+fpa
+uHx
+uHx
+uHx
+uHx
+uHx
+uHx
+uHx
+fpa
 jNg
 psc
 jNg
@@ -35831,7 +35876,7 @@ uuN
 ovJ
 nby
 nuF
-eTB
+aDa
 coP
 tzp
 qzy
@@ -38559,7 +38604,7 @@ etS
 eIN
 dRg
 rvq
-dsn
+gSX
 hrB
 aws
 jnl
@@ -38950,7 +38995,7 @@ qyK
 grk
 hrB
 ryp
-nqw
+iDP
 rvq
 pec
 ehz
@@ -39374,7 +39419,7 @@ gPo
 xjs
 sgO
 bBE
-bxh
+vvT
 pfc
 sgO
 bxh
@@ -40150,7 +40195,7 @@ gPo
 xjs
 fHc
 xrs
-vvT
+bxh
 lEE
 sFd
 bLG
@@ -42256,7 +42301,7 @@ rqK
 nmp
 uXQ
 pXf
-uXQ
+pbK
 iHT
 lkR
 azA
@@ -42450,7 +42495,7 @@ bne
 uEC
 kdD
 hst
-gSX
+uXQ
 pXp
 vvk
 nAK
@@ -42644,7 +42689,7 @@ bne
 jDI
 rMf
 nbW
-gSX
+uXQ
 rgn
 gTq
 oxG
@@ -42838,7 +42883,7 @@ rqK
 wOb
 uXQ
 pXf
-uXQ
+tBY
 oDa
 wKD
 wrI
@@ -44576,7 +44621,7 @@ dah
 kaY
 iJZ
 sNE
-hPQ
+kaa
 wqM
 jDa
 hKP
@@ -46132,7 +46177,7 @@ flu
 kaa
 gYp
 wRx
-rzv
+wRx
 kye
 qyh
 kav
@@ -46519,10 +46564,10 @@ iCe
 flu
 wiw
 qga
-sul
+aqG
 eTz
 wiw
-qga
+xKs
 eTz
 wiw
 eYk
@@ -46910,7 +46955,7 @@ jNr
 cuA
 rcy
 wiw
-aqG
+jNr
 rcy
 wiw
 lad
@@ -50203,12 +50248,12 @@ xRj
 owo
 kaY
 nmL
-owo
-fMI
-fMI
-fMI
-fMI
-fMI
+crR
+nmL
+nmL
+nmL
+nmL
+nmL
 owo
 kaY
 kaY
@@ -50398,11 +50443,11 @@ fwR
 osb
 ciZ
 owo
-qQH
-fMI
-fMI
-nRW
-nRW
+ikC
+kaY
+kaY
+kaY
+nmL
 fem
 nmL
 nmL
@@ -50591,12 +50636,12 @@ xRj
 fwR
 wYt
 ciZ
-kfj
-fMI
-fMI
-fMI
-nRW
-toV
+owo
+owo
+owo
+owo
+owo
+owo
 vqC
 vqC
 vqC
@@ -50785,12 +50830,12 @@ jNg
 fwR
 wYt
 ciZ
-owo
+hPQ
 fMI
 wYs
 fMI
 nRW
-fMI
+toV
 vqC
 gZz
 avq
@@ -53121,7 +53166,7 @@ qmL
 owo
 owo
 owo
-jgS
+kfj
 jgS
 jgS
 nQj
