@@ -91,9 +91,6 @@
 /datum/melee_attack/unarmed/stomp/weak
 	attack_verb_legacy = list("jumped on")
 
-/datum/melee_attack/unarmed/stomp/weak/get_unarmed_damage()
-	return damage
-
 /datum/melee_attack/unarmed/stomp/weak/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 	var/obj/item/organ/external/affecting = target.get_organ(zone)
 	user.visible_message("<span class='warning'>[user] jumped up and down on \the [target]'s [affecting.name]!</span>")

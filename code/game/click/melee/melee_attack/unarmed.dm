@@ -54,6 +54,21 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 
 /datum/melee_attack/unarmed/perform_attack_impact(atom/movable/attacker, atom/target, missed, obj/item/weapon, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	var/damage_force = get_unarmed_damage(attacker, target) * clickchain.attack_melee_multiplier
+
+	// TODO: should this all be here?
+	//         (no it shouldn't)
+	if(isobj(target))
+		damage_force += damage_structural_add
+	damage_force = max(0, damage_force + rand(damage_add_low, damage_add_high))
+	if(ishuman(attacker))
+		var/mob/living/carbon/human/H = attacker
+		if(MUTATION_HULK in H.mutations)
+			real_damage *= 2 // Hulks do twice the damage
+			rand_damage *= 2
+		if(istype(H.gloves, /obj/item/clothing/gloves))
+			var/obj/item/clothing/gloves/G = H.gloves
+			damage_force += G.punch_force
+
 	clickchain.data[ACTOR_DATA_UNARMED_LOG] = "[damage_force]-[damage_type]-[damage_flag]@[damage_tier]m[damage_mode]"
 	var/list/results = target.run_damage_instance(
 		damage_force,
@@ -68,6 +83,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	)
 	clickchain.data[ACTOR_DATA_MELEE_DAMAGE_INSTANCE_RESULTS] = results
 	target.on_melee_impact(attacker, weapon, src, clickchain.target_zone, clickchain, clickchain_flags, results)
+	#warn apply effects call
 	return clickchain_flags
 
 /datum/melee_attack/unarmed/perform_attack_animation(atom/movable/attacker, atom/target, missed, obj/item/weapon, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
@@ -85,6 +101,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 /datum/melee_attack/unarmed/perform_attack_sound(atom/movable/attacker, atom/target, missed, obj/item/weapon, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	if(missed)
 		return ..()
+	#warn show attack
 	playsound(target, target.hitsound_unarmed(attacker, src), 50, TRUE, -1)
 	return TRUE
 
@@ -113,10 +130,6 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 		return TRUE
 
 	return FALSE
-
-/datum/melee_attack/unarmed/proc/get_unarmed_damage(mob/attacker, atom/defender)
-	// todo: damage_structural_add is awful and shouldn't be kept in the future
-	return damage + rand(damage_add_low, damage_add_high) + (ismob(defender)? 0 : damage_structural_add)
 
 /datum/melee_attack/unarmed/proc/apply_effects(var/mob/living/carbon/human/user,var/mob/living/carbon/human/target,var/armour,var/attack_damage,var/zone)
 
@@ -199,9 +212,6 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 		to_chat(target, "<span class='danger'>You experience[(eye_pain) ? "" : " immense pain as you feel" ] [eye_attack_text_victim] being pressed into your [eyes.name][(eye_pain)? "." : "!"]</span>")
 		return
 	user.visible_message("<span class='danger'>[user] attempts to press [TU.his] [eye_attack_text] into [target]'s eyes, but [TT.he] [TT.does]n't have any!</span>")
-
-/datum/melee_attack/unarmed/proc/unarmed_override(var/mob/living/carbon/human/user,var/mob/living/carbon/human/target,var/zone)
-	return FALSE //return true if the unarmed override prevents further attacks
 
 /datum/melee_attack/unarmed/bite
 	verb_past_participle = list("bitten")
@@ -299,12 +309,6 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 
 	return FALSE
 
-/datum/melee_attack/unarmed/kick/get_unarmed_damage(var/mob/living/carbon/human/user)
-	var/obj/item/clothing/shoes = user.shoes
-	if(!istype(shoes))
-		return damage
-	return damage + max(0, shoes ? shoes.damage_force - 5 : 0)
-
 /datum/melee_attack/unarmed/kick/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 	var/obj/item/organ/external/affecting = target.get_organ(zone)
 	var/datum/gender/TT = GLOB.gender_datums[target.get_visible_gender()]
@@ -345,10 +349,6 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 			return TRUE
 
 		return FALSE
-
-/datum/melee_attack/unarmed/stomp/get_unarmed_damage(var/mob/living/carbon/human/user)
-	var/obj/item/clothing/shoes = user.shoes
-	return damage + max(0, shoes ? shoes.damage_force - 5 : 0)
 
 /datum/melee_attack/unarmed/stomp/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 	var/obj/item/organ/external/affecting = target.get_organ(zone)

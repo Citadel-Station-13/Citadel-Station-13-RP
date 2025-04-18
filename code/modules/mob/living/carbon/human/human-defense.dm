@@ -1,5 +1,12 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 Citadel Station developers.          *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
+
+//* Melee Handling *//
+
+/mob/living/carbon/human/on_melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/attack_style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	// TODO: sparring / blocking
+	return ..()
 
 //* Projectile Handling *//
 

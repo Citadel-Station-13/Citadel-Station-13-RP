@@ -45,14 +45,6 @@
 	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
 
-/mob/living/carbon/human/on_clickchain_harm_interaction(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-	. = ..()
-	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
-		return
-	. |= attempt_clickchain_harm(clickchain, clickchain_flags)
-	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
-		return
-
 // TODO: rework this to an unified melee accuracy handler?
 /mob/living/carbon/human/proc/legacy_unarmed_miss_hook(mob/living/carbon/human/H)
 	// Should this all be in Touch()?
@@ -165,7 +157,7 @@
 		return NONE
 	if(legacy_unarmed_miss_hook(H))
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_ATTACK_MISSED
-	var/datum/gender/TT = GLOB.gender_datums[user.get_visible_gender()]
+	var/datum/gender/TT = GLOB.gender_datums[H.get_visible_gender()]
 	var/mob/living/L = H
 	#warn log
 	if(L == src || anchored)
@@ -193,16 +185,16 @@
 	return CLICKCHAIN_DID_SOMETHING
 
 /**
- *
  * @return clickchain flags
  */
-/mob/living/carbon/human/proc/attempt_clickchain_harm(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+/mob/living/carbon/human/attempt_clickchain_harm(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	// mostly legacy code
 	var/mob/living/carbon/human/H = clickchain.performer
 	if(!istype(H))
 		return NONE
 	if(legacy_unarmed_miss_hook(H))
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_ATTACK_MISSED
+	var/datum/gender/TT = GLOB.gender_datums[H.get_visible_gender()]
 	var/mob/living/L = H
 
 	if(L.zone_sel.selecting == "mouth" && wear_mask && istype(wear_mask, /obj/item/grenade))
@@ -213,107 +205,5 @@
 			update_inv_wear_mask()
 		else
 			to_chat(L, "<span class='warning'>\The [G] is already primed! Run!</span>")
-		return
-
-	var/rand_damage = 0
-	var/block = 0
-	var/accurate = 0
-	var/hit_zone = H.zone_sel.selecting
-	var/obj/item/organ/external/affecting = get_organ(hit_zone)
-
-	if(!affecting || affecting.is_stump())
-		to_chat(L, "<span class='danger'>They are missing that limb!</span>")
-		return NONE
-
-	switch(src.a_intent)
-		if(INTENT_HELP)
-			// We didn't see this coming, so we get the full blow
-			// rand_damage = 5
-			accurate = 1
-		if(INTENT_HARM, INTENT_GRAB)
-			// We're in a fighting stance, there's a chance we block
-			if(CHECK_MOBILITY(src, MOBILITY_CAN_MOVE) && src!=H && prob(20))
-				block = 1
-
-	if(src.grabbed_by.len || src.buckled || !CHECK_MOBILITY(src, MOBILITY_CAN_MOVE) || src==H)
-		accurate = 1 // certain circumstances make it impossible for us to evade punches
-
-	// Process evasion and blocking
-	var/miss_type = 0
-	var/attack_message
-	if(!accurate)
-
-		if(!hit_zone)
-			attack_message = "[H] attempted to strike [src], but missed!"
-			miss_type = 1
-
-		if(prob(80))
-			hit_zone = ran_zone(hit_zone, 70) //70% chance to hit what you're aiming at seems fair?
-		if(prob(15) && hit_zone != BP_TORSO) // Missed!
-			if(!src.lying)
-				attack_message = "[H] attempted to strike [src], but missed!"
-			else
-				attack_message = "[H] attempted to strike [src], but [TT.he] rolled out of the way!"
-				src.setDir(pick(GLOB.cardinal))
-			miss_type = 1
-
-	if(!miss_type && block)
-		attack_message = "[H] went for [src]'s [affecting.name] but was blocked!"
-		miss_type = 2
-
-	// See what attack they use
-	var/datum/melee_attack/unarmed/attack = H.get_unarmed_attack(src, hit_zone)
-	if(!attack)
-		return FALSE
-
-	var/shieldcall_results = atom_shieldcall_handle_melee(
-		clickchain,
-		clickchain_flags,
-		null,
-		attack,
-	)
-	if(shieldcall_results & SHIELDCALL_FLAGS_BLOCK_ATTACK)
-		H.do_attack_animation(src)
-		return CLICKCHAIN_FULL_BLOCKED | CLICKCHAIN_DID_SOMETHING
-
-	if(attack.unarmed_override(H, src, hit_zone))
 		return CLICKCHAIN_DID_SOMETHING
-
-	H.animate_swing_at_target(src)
-	animate_hit_by_attack(attack.animation_type)
-	if(!attack_message)
-		attack.show_attack(H, src, hit_zone, rand_damage)
-	else
-		H.visible_message("<span class='danger'>[attack_message]</span>")
-
-	playsound(loc, ((miss_type) ? (miss_type == 1 ? attack.miss_sound : 'sound/weapons/thudswoosh.ogg') : attack.attack_sound), 25, 1, -1)
-
-	add_attack_logs(H,src,"Melee attacked with fists (miss/block)")
-
-	if(miss_type)
-		return CLICKCHAIN_DID_SOMETHING
-
-	var/real_damage = rand_damage
-	var/hit_dam_type = attack.damage_type
-	real_damage += attack.get_unarmed_damage(H)
-	if(H.gloves)
-		if(istype(H.gloves, /obj/item/clothing/gloves))
-			var/obj/item/clothing/gloves/G = H.gloves
-			real_damage += G.punch_force
-			if(H.pulling_punches && !(attack.damage_mode & (DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP)))	//SO IT IS DECREED: PULLING PUNCHES WILL PREVENT THE ACTUAL DAMAGE FROM RINGS AND KNUCKLES, BUT NOT THE ADDED PAIN, BUT YOU CAN'T "PULL" A KNIFE
-				hit_dam_type = AGONY
-	real_damage *= damage_multiplier
-	rand_damage *= damage_multiplier
-	if(MUTATION_HULK in H.mutations)
-		real_damage *= 2 // Hulks do twice the damage
-		rand_damage *= 2
-	real_damage = max(1, real_damage)
-
-	var/armour = run_armor_check(hit_zone, "melee")
-	var/soaked = get_armor_soak(hit_zone, "melee")
-	// Apply additional unarmed effects.
-	attack.apply_effects(H, src, armour, rand_damage, hit_zone)
-
-	// Finally, apply damage to target
-	apply_damage(real_damage, hit_dam_type, hit_zone, armour, soaked, sharp = attack.damage_mode & DAMAGE_MODE_SHARP, edge = attack.damage_mode & DAMAGE_MODE_EDGE)
-	return CLICKCHAIN_DID_SOMETHING
+	return ..()
