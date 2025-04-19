@@ -107,6 +107,8 @@
 	var/total = host_blood_volume + cached_guest_blood_volume
 	if(total <= 0) return 0
 	. = min(amount, total)
+	if(total==0) //No divide by zero, return value's set already
+		return
 	var/multiplier = max(0, 1 - (. / total))
 
 	host_blood_volume *= multiplier
