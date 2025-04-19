@@ -22047,7 +22047,7 @@
 	name = "Refinery";
 	dir = 8
 	},
-/obj/map_helper/access_helper/airlock/station/supply/mining,
+/obj/map_helper/access_helper/airlock/station/mining_operations,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -27870,7 +27870,7 @@
 	name = "Mining Prep Room";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/supply/mining,
+/obj/map_helper/access_helper/airlock/station/mining_operations,
 /obj/machinery/door/firedoor,
 /obj/structure/cable/green{
 	icon_state = "1-2"
