@@ -3,7 +3,7 @@ GENERATE_ROBOT_MODULE_PRESET(/cybersun/sapper)
 	id = "cybersun-sapper"
 	use_robot_module_path = /obj/item/robot_module_legacy/robot/
 	light_color = "#FF0000"
-	iconsets = list(
+	auto_iconsets = list(
 		/datum/prototype/robot_iconset/grounded_landmate/engineering_cybersun,
 		/datum/prototype/robot_iconset/grounded_spider/combat,
 		/datum/prototype/robot_iconset/raptor/syndicate_machinist,

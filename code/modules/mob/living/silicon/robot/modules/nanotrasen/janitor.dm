@@ -3,7 +3,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/janitor)
 	id = "nt-janitor"
 	use_robot_module_path = /obj/item/robot_module_legacy/robot/janitor
 	light_color = "#CC60FF"
-	iconsets = list(
+	auto_iconsets = list(
 		/datum/prototype/robot_iconset/baseline_toiletbot/janitor,
 		/datum/prototype/robot_iconset/hover_eyebot/janitor,
 		/datum/prototype/robot_iconset/biped_marina/janitor,

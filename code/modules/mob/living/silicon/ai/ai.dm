@@ -276,24 +276,6 @@ var/list/ai_verbs_default = list(
 
 
 /mob/living/silicon/ai/proc/setup_icon()
-	var/file = file2text("config/custom_sprites.txt")
-	var/lines = splittext(file, "\n")
-
-	for(var/line in lines)
-	// split & clean up
-		var/list/Entry = splittext(line, ":")
-		for(var/i = 1 to Entry.len)
-			Entry[i] = trim(Entry[i])
-
-		if(Entry.len < 2)
-			continue;
-
-		if(Entry[1] == src.ckey && Entry[2] == src.real_name)
-			icon = CUSTOM_ITEM_SYNTH
-			custom_sprite = 1
-			selected_sprite = new/datum/ai_icon("Custom", "[src.ckey]-ai", "4", "[ckey]-ai-crash", "#FFFFFF", "#FFFFFF", "#FFFFFF")
-		else
-			selected_sprite = default_ai_icon
 	updateicon()
 
 /mob/living/silicon/ai/pointed(atom/A as mob|obj|turf in view())

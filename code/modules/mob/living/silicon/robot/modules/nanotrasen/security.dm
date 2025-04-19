@@ -3,7 +3,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/security)
 	id = "nt-security"
 	use_robot_module_path = /obj/item/robot_module_legacy/robot/security
 	light_color = "#FF0000"
-	iconsets = list(
+	auto_iconsets = list(
 		/datum/prototype/robot_iconset/baseline_standard/security,
 		/datum/prototype/robot_iconset/hover_eyebot/security,
 		/datum/prototype/robot_iconset/grounded_landmate/security,

@@ -3,7 +3,7 @@
 
 /datum/prototype/robot_iconset/biped_maid
 	abstract_type = /datum/prototype/robot_iconset/biped_maid
-	chassis = /datum/prototype/robot_chassis/biped
+	auto_chassis = /datum/prototype/robot_chassis/biped
 	icon = 'icons/mob/robot/iconset/biped_maid.dmi'
 	icon_state = "maid"
 	icon_state_cover = "panel"

@@ -4,7 +4,7 @@
 /datum/prototype/robot_iconset/baseline_toiletbot
 	display_name = "Telemachus"
 	abstract_type = /datum/prototype/robot_iconset/baseline_toiletbot
-	chassis = /datum/prototype/robot_chassis/baseline
+	auto_chassis = /datum/prototype/robot_chassis/baseline
 	icon = 'icons/mob/robot/iconset/baseline_toiletbot.dmi'
 	icon_state_cover = "panel"
 	icon_state_indicator = "indicator-lighting-utility"

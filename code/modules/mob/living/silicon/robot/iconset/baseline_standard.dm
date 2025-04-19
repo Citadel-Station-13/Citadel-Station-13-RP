@@ -4,7 +4,7 @@
 /datum/prototype/robot_iconset/baseline_standard
 	display_name = "M-USE"
 	abstract_type = /datum/prototype/robot_iconset/baseline_standard
-	chassis = /datum/prototype/robot_chassis/baseline
+	auto_chassis = /datum/prototype/robot_chassis/baseline
 	icon = 'icons/mob/robot/iconset/baseline_standard.dmi'
 	icon_state_cover = "panel"
 	icon_state_indicator = "indicator-lights"

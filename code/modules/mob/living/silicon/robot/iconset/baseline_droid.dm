@@ -4,7 +4,7 @@
 /datum/prototype/robot_iconset/baseline_droid
 	display_name = "Droid"
 	abstract_type = /datum/prototype/robot_iconset/baseline_droid
-	chassis = /datum/prototype/robot_chassis/baseline
+	auto_chassis = /datum/prototype/robot_chassis/baseline
 	icon = 'icons/mob/robot/iconset/baseline_droid.dmi'
 	icon_state_cover = "panel"
 

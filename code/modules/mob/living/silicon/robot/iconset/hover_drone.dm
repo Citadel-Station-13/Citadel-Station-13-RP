@@ -4,7 +4,7 @@
 /datum/prototype/robot_iconset/hover_drone
 	display_name = "Drone"
 	abstract_type = /datum/prototype/robot_iconset/hover_drone
-	chassis = /datum/prototype/robot_chassis/hover
+	auto_chassis = /datum/prototype/robot_chassis/hover
 	icon = 'icons/mob/robot/iconset/hover_drone.dmi'
 	icon_state_cover = "panel"
 

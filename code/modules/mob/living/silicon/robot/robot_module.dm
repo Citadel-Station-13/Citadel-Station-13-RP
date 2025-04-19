@@ -26,10 +26,11 @@
 	/// Allowed robot frames.
 	/// * set to list of typepaths/anonymous types to init
 	var/list/datum/robot_frame/frames = list()
+
 	/// Generate robot frames from iconsets.
 	/// * set to list of `/datum/prototype/robot_iconset` ids or paths
 	/// * the iconset must have `chassis` set, or this will runtime.
-	var/list/iconsets = list()
+	var/list/auto_iconsets = list()
 
 	/// Required selection groups
 	/// * If both this and `selection_groups_any` are null, this can't be picked.

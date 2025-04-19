@@ -3,7 +3,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/combat)
 	id = "nt-combat"
 	use_robot_module_path = /obj/item/robot_module_legacy/robot/combat
 	light_color = "#FF0000"
-	iconsets = list(
+	auto_iconsets = list(
 		/datum/prototype/robot_iconset/hover_eyebot/combat,
 		/datum/prototype/robot_iconset/biped_insekt/combat,
 		/datum/prototype/robot_iconset/grounded_zoomba/combat,

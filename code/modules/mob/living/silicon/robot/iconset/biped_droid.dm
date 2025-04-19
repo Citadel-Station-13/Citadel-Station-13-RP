@@ -2,9 +2,9 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/prototype/robot_iconset/biped_droid
-	
+
 	abstract_type = /datum/prototype/robot_iconset/biped_droid
-	chassis = /datum/prototype/robot_chassis/biped
+	auto_chassis = /datum/prototype/robot_chassis/biped
 	icon = 'icons/mob/robot/iconset/biped_droid.dmi'
 	icon_state_cover = "panel"
 	indicator_lighting_coloration_mode = COLORATION_MODE_MULTIPLY

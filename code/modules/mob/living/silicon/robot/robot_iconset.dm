@@ -19,10 +19,10 @@
 	/// * this is player facing!
 	/// * defaults to [name]
 	var/display_name
+
 	/// the path, id, or instance of robot chassis we are supposed to be
 	/// * this is not enforced, this is used for auto-gen
-	/// * this is required if [module_ids] is specified
-	var/chassis
+	var/autogen_chassis
 
 	/// icon
 	var/icon

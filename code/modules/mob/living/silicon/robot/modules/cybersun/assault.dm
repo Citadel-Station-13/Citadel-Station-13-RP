@@ -3,7 +3,7 @@ GENERATE_ROBOT_MODULE_PRESET(/cybersun/assault)
 	id = "cybersun-assault"
 	use_robot_module_path = /obj/item/robot_module_legacy/robot/syndicate
 	light_color = "#FF0000"
-	iconsets = list(
+	auto_iconsets = list(
 		/datum/prototype/robot_iconset/grounded_landmate/security_cybersun,
 		/datum/prototype/robot_iconset/grounded_landmate/security_cybersun_tread,
 		/datum/prototype/robot_iconset/raptor/syndicate_medical,

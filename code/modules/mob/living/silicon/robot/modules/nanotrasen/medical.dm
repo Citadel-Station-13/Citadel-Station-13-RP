@@ -3,7 +3,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/medical)
 	id = "nt-medical"
 	use_robot_module_path = /obj/item/robot_module_legacy/robot/medical
 	light_color = "#0099FF"
-	iconsets = list(
+	auto_iconsets = list(
 		/datum/prototype/robot_iconset/baseline_toiletbot/medical,
 		/datum/prototype/robot_iconset/dog_borgi/medical,
 		/datum/prototype/robot_iconset/dog_k9/medical,

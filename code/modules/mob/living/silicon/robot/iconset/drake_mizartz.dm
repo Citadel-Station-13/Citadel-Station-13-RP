@@ -7,7 +7,7 @@
 /datum/prototype/robot_iconset/drake_mizartz
 	display_name = "Drake - Mizartz"
 	abstract_type = /datum/prototype/robot_iconset/drake_mizartz
-	chassis = /datum/prototype/robot_chassis/quadruped/draconic
+	auto_chassis = /datum/prototype/robot_chassis/quadruped/draconic
 
 	icon = 'icons/mob/robot/iconset/drake_mizartz.dmi'
 	icon_state_indicator = "indicator-lighting"

@@ -3,7 +3,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/logistics)
 	id = "nt-logistics"
 	use_robot_module_path = /obj/item/robot_module_legacy/robot/logistics
 	light_color = "#FBE281"
-	iconsets = list(
+	auto_iconsets = list(
 		/datum/prototype/robot_iconset/dog_k9/logistics,
 		/datum/prototype/robot_iconset/dog_k9/logistics_dark,
 		/datum/prototype/robot_iconset/dog_vale/mining,

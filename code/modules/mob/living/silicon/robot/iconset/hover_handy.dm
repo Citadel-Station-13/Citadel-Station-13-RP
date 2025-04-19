@@ -4,7 +4,7 @@
 /datum/prototype/robot_iconset/hover_handy
 	display_name = "Handy"
 	abstract_type = /datum/prototype/robot_iconset/hover_handy
-	chassis = /datum/prototype/robot_chassis/hover
+	auto_chassis = /datum/prototype/robot_chassis/hover
 	icon = 'icons/mob/robot/iconset/hover_handy.dmi'
 	icon_state_cover = "panel"
 

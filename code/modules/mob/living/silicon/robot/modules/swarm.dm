@@ -1,3 +1,5 @@
+// TODO: readd this
+
 /datum/prototype/robot_module/swarm
 	id = "swarmer"
 	light_color = "#77FFFF"

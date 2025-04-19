@@ -4,7 +4,7 @@
 /datum/prototype/robot_iconset/dog_pupdozer
 	display_name = "Canine - Pupdozer"
 	abstract_type = /datum/prototype/robot_iconset/dog_pupdozer
-	chassis = /datum/prototype/robot_chassis/quadruped/canine
+	auto_chassis = /datum/prototype/robot_chassis/quadruped/canine
 	icon = 'icons/mob/robot/iconset/dog_pupdozer.dmi'
 	icon_state_cover = "panel"
 	icon_state_indicator = "indicator"

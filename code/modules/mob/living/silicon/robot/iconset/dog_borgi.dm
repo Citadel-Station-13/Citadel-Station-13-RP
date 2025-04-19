@@ -4,7 +4,7 @@
 /datum/prototype/robot_iconset/dog_borgi
 	display_name = "Canine - Borgi"
 	abstract_type = /datum/prototype/robot_iconset/dog_borgi
-	chassis = /datum/prototype/robot_chassis/quadruped/canine
+	auto_chassis = /datum/prototype/robot_chassis/quadruped/canine
 	icon = 'icons/mob/robot/iconset/dog_borgi.dmi'
 	icon_state_cover = "panel"
 	icon_state_indicator = "indicator"

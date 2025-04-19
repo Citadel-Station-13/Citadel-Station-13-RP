@@ -4,7 +4,7 @@
 /datum/prototype/robot_iconset/cat_feli
 	display_name = "Feline - F3-LINE"
 	abstract_type = /datum/prototype/robot_iconset/cat_feli
-	chassis = /datum/prototype/robot_chassis/quadruped/feline
+	auto_chassis = /datum/prototype/robot_chassis/quadruped/feline
 	icon = 'icons/mob/robot/iconset/cat_feli.dmi'
 	icon_state_cover = "panel"
 

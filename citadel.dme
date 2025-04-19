@@ -4095,7 +4095,6 @@
 #include "code\modules\mob\living\silicon\robot\modules\gravekeeper.dm"
 #include "code\modules\mob\living\silicon\robot\modules\lost.dm"
 #include "code\modules\mob\living\silicon\robot\modules\nanotrasen.dm"
-#include "code\modules\mob\living\silicon\robot\modules\swarm.dm"
 #include "code\modules\mob\living\silicon\robot\modules\cybersun\assault.dm"
 #include "code\modules\mob\living\silicon\robot\modules\cybersun\sapper.dm"
 #include "code\modules\mob\living\silicon\robot\modules\cybersun\triage.dm"

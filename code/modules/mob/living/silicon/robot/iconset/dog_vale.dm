@@ -4,7 +4,7 @@
 /datum/prototype/robot_iconset/dog_vale
 	display_name = "Canine - Vale"
 	abstract_type = /datum/prototype/robot_iconset/dog_vale
-	chassis = /datum/prototype/robot_chassis/quadruped/canine
+	auto_chassis = /datum/prototype/robot_chassis/quadruped/canine
 	icon = 'icons/mob/robot/iconset/dog_vale.dmi'
 	icon_state_cover = "panel"
 

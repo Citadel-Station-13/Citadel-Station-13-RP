@@ -346,11 +346,11 @@
 	attempt_split_stack(user)
 
 /obj/item/stack/proc/attempt_split_stack(mob/living/user)
-	#warn zero amount was here; check this proc for zero-validity / gc safety
 	//get amount from user
 	var/max = get_amount()
-	// var/stackmaterial = round(input(user,"How many sheets do you wish to take out of this stack? (Maximum  [max])") as null|num)
 	var/stackmaterial = tgui_input_number(user, "How many sheets do you wish to take out of this stack?", "Stack", max, max, 1, round_value=TRUE)
+	if(QDELETED(src))
+		return
 	max = get_amount() // Not sure why this is done twice but whatever.
 	stackmaterial = min(max, stackmaterial)
 	if(stackmaterial == null || stackmaterial <= 0 || !in_range(user, src) || !CHECK_MOBILITY(user, MOBILITY_CAN_PICKUP))
@@ -362,10 +362,11 @@
 
 // todo: refactor and combine with /split
 /obj/item/stack/proc/change_stack(mob/user, amount)
+	var/atom/our_current_location = drop_location()
 	if(!use(amount, TRUE, FALSE))
 		return FALSE
 	var/make_type = isnull(split_type)? type : split_type
-	var/obj/item/stack/F = new make_type(user? user : drop_location(), amount, FALSE)
+	var/obj/item/stack/F = new make_type(user? user : our_current_location, amount, FALSE)
 	. = F
 	F.copy_evidences(src)
 	if(user)
@@ -373,7 +374,6 @@
 			F.forceMove(user.drop_location())
 		add_fingerprint(user)
 		F.add_fingerprint(user)
-	#warn zero amount was here; check this proc for zero-validity / gc safety
 
 /obj/item/stack/proc/copy_evidences(obj/item/stack/from)
 	if(from.blood_DNA)

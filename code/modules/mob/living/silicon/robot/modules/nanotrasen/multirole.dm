@@ -3,7 +3,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/multirole)
 	id = "nt-multirole"
 	use_robot_module_path = /obj/item/robot_module_legacy/robot
 	light_color = "#FFFFFF"
-	iconsets = list(
+	auto_iconsets = list(
 		/datum/prototype/robot_iconset/biped_k4t,
 		/datum/prototype/robot_iconset/baseline_old/standard,
 		/datum/prototype/robot_iconset/hover_eyebot/standard,

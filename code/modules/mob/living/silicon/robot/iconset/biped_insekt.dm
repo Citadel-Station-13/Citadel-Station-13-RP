@@ -4,7 +4,7 @@
 /datum/prototype/robot_iconset/biped_insekt
 	display_name = "Insekt"
 	abstract_type = /datum/prototype/robot_iconset/biped_insekt
-	chassis = /datum/prototype/robot_chassis/biped
+	auto_chassis = /datum/prototype/robot_chassis/biped
 	icon = 'icons/mob/robot/iconset/biped_insekt.dmi'
 	icon_state_cover = "panel"
 

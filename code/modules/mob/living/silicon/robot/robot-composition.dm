@@ -10,7 +10,7 @@
 	// todo: wipe whatever state is left
 	set_chassis(chassis)
 	set_iconset(iconset)
-	set_module(module)
+	set_module(module_new)
 
 /**
  * Annihilate composition

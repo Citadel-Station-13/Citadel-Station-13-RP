@@ -4,7 +4,7 @@
 /datum/prototype/robot_iconset/biped_miss
 	display_name = "Miss M"
 	abstract_type = /datum/prototype/robot_iconset/biped_miss
-	chassis = /datum/prototype/robot_chassis/biped
+	auto_chassis = /datum/prototype/robot_chassis/biped
 	icon = 'icons/mob/robot/iconset/biped_miss.dmi'
 	icon_state_cover = "panel"
 

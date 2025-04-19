@@ -3,7 +3,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/research)
 	id = "nt-research"
 	use_robot_module_path = /obj/item/robot_module_legacy/robot/
 	light_color = "#CC60FF"
-	iconsets = list(
+	auto_iconsets = list(
 		/datum/prototype/robot_iconset/dog_otie/science,
 		/datum/prototype/robot_iconset/hover_eyebot/science,
 		/datum/prototype/robot_iconset/biped_marina/service,
