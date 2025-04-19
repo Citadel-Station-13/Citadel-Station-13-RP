@@ -374,6 +374,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3afthall)
+"aov" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/navgold/border,
+/obj/item/radio/intercom{
+	name = "Station Intercom (General)";
+	pixel_y = -26
+	},
+/turf/simulated/floor/tiled,
+/area/crew_quarters/recreation_area)
 "aoO" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/storage/briefcase/inflatable,
@@ -1019,6 +1028,11 @@
 	},
 /obj/machinery/camera/network/cargo{
 	dir = 8
+	},
+/obj/item/radio/intercom{
+	dir = 4;
+	name = "Station Intercom (General)";
+	pixel_x = 23
 	},
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/foyer)
@@ -1807,6 +1821,7 @@
 	name = "Security"
 	},
 /obj/map_helper/access_helper/airlock/station/security/general,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "bmF" = (
@@ -4193,20 +4208,23 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/security/range)
 "dhG" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/floor_decal/borderfloorblack{
-	dir = 8
+	dir = 4
 	},
 /obj/effect/floor_decal/corner/red/border{
-	dir = 8
+	dir = 4
 	},
-/obj/machinery/light{
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/fire_alarm/west_mount{
+	pixel_x = 26;
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
-/area/security/hallway)
+/area/security/range)
 "dhI" = (
 /obj/structure/fitness/weightlifter,
 /turf/simulated/floor/tiled/dark,
@@ -5172,6 +5190,19 @@
 "dTV" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/endeavour/hallway/d3fwdmaint)
+"dTX" = (
+/obj/structure/bed/chair/wood{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/item/radio/intercom{
+	name = "Station Intercom (General)";
+	pixel_y = -26
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/crew_quarters/game_room)
 "dTZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -6709,6 +6740,9 @@
 	},
 /obj/effect/floor_decal/corner/red{
 	dir = 8
+	},
+/obj/machinery/newscaster/security_unit{
+	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
@@ -8949,7 +8983,7 @@
 /obj/spawner/window/reinforced/full/firelocks,
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/plating,
-/area/space)
+/area/maintenance/pool)
 "gMQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -11053,6 +11087,12 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
+/obj/item/radio/intercom/department/security{
+	pixel_y = -35
 	},
 /turf/simulated/floor/tiled,
 /area/security/lobby)
@@ -14053,6 +14093,10 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/item/radio/intercom{
+	dir = 1;
+	pixel_y = 24
+	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool/changing_room)
 "kCu" = (
@@ -15835,8 +15879,11 @@
 /obj/machinery/computer/prisoner{
 	dir = 1
 	},
-/obj/machinery/newscaster/security_unit{
-	pixel_y = -32
+/obj/item/radio/intercom/department/security{
+	pixel_y = -35
+	},
+/obj/item/radio/intercom{
+	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
@@ -16334,6 +16381,20 @@
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
+"mzU" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/hallway)
 "mAt" = (
 /turf/simulated/wall/prepainted,
 /area/crew_quarters/game_room)
@@ -17277,6 +17338,11 @@
 /obj/structure/bed/chair/sofa/black/right{
 	dir = 8
 	},
+/obj/item/radio/intercom{
+	dir = 4;
+	name = "Station Intercom (General)";
+	pixel_x = 23
+	},
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/foyer)
 "nkL" = (
@@ -17587,6 +17653,12 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/wall/r_wall/prepainted/cargo,
 /area/quartermaster/delivery)
+"nyr" = (
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled/dark,
+/area/endeavour/station/stairs_three)
 "nyw" = (
 /obj/machinery/light_switch{
 	pixel_y = -23
@@ -17686,6 +17758,11 @@
 	},
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 8
+	},
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = -28;
+	req_access = list()
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3fwdhall)
@@ -18940,6 +19017,15 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 8
 	},
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = -24
+	},
+/obj/item/radio/intercom/department/security{
+	dir = 8;
+	pixel_x = -34;
+	pixel_y = 7
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "ovP" = (
@@ -19759,9 +19845,15 @@
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/starboardsolar)
 "pdy" = (
-/obj/item/radio/intercom/department/security,
-/turf/simulated/wall/prepainted/security,
-/area/security/security_processing)
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled/dark,
+/area/security/hallway)
 "pdC" = (
 /turf/simulated/floor/wood,
 /area/endeavour/surfacebase/mining_main/break_room)
@@ -21429,17 +21521,15 @@
 /turf/simulated/floor/wood,
 /area/endeavour/hallway/d3fwdhall)
 "qnp" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/light_switch{
-	dir = 4;
-	pixel_x = -28
-	},
+/obj/structure/disposalpipe/segment,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/red/border{
 	dir = 8
+	},
+/obj/machinery/fire_alarm/west_mount{
+	pixel_x = -26
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
@@ -21767,6 +21857,11 @@
 	},
 /obj/effect/floor_decal/corner/navgold/border{
 	dir = 8
+	},
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = -28;
+	req_access = list()
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/recreation_area)
@@ -22943,7 +23038,7 @@
 /area/crew_quarters/recreation_area)
 "rxD" = (
 /turf/simulated/wall/r_wall/prepainted/cargo,
-/area/space)
+/area/maintenance/pool)
 "ryd" = (
 /obj/machinery/light_switch{
 	pixel_y = -26
@@ -23426,6 +23521,16 @@
 /obj/item/storage/box/donut,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
+"rOI" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
+	},
+/obj/machinery/air_alarm/east_mount,
+/turf/simulated/floor/tiled/dark,
+/area/security/hallway)
 "rOM" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
@@ -25729,6 +25834,10 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
+	},
+/obj/machinery/light_switch{
+	dir = 4;
+	pixel_x = -28
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/evidence_storage)
@@ -28194,6 +28303,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/security)
+"vjd" = (
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = -28;
+	req_access = list()
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/quartermaster/delivery)
 "vjg" = (
 /obj/structure/lattice,
 /obj/structure/grille,
@@ -29801,6 +29918,9 @@
 	pixel_y = -24
 	},
 /obj/machinery/photocopier,
+/obj/item/radio/intercom/department/security{
+	pixel_y = -35
+	},
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/security/security_processing)
 "wmv" = (
@@ -38467,7 +38587,7 @@ pRW
 pRW
 pRW
 tUu
-eAp
+kdY
 sZl
 sZl
 vrt
@@ -39049,7 +39169,7 @@ pRW
 pRW
 pRW
 pRW
-eAp
+kdY
 vNv
 sZl
 vrt
@@ -43348,7 +43468,7 @@ qGX
 qGX
 qGX
 qGX
-qGX
+nyr
 wMT
 hLo
 sZz
@@ -44906,7 +45026,7 @@ ovN
 vZG
 snW
 adB
-adB
+qnp
 adB
 jHe
 adB
@@ -45095,7 +45215,7 @@ bYY
 bYY
 gVo
 iyK
-dIB
+rOI
 dIB
 vLB
 bYY
@@ -45104,7 +45224,7 @@ dIB
 dIB
 dIB
 dIB
-dIB
+pdy
 uvh
 bHF
 kHK
@@ -45870,7 +45990,7 @@ qYn
 hxO
 rKm
 inR
-pdy
+lzh
 aHA
 jEn
 wqi
@@ -47795,7 +47915,7 @@ oit
 aWe
 elJ
 aWe
-aWe
+vjd
 ohi
 xhH
 xqk
@@ -48610,7 +48730,7 @@ piQ
 aaS
 rFP
 jxV
-uKW
+dhG
 uKW
 wXu
 dBi
@@ -50138,9 +50258,9 @@ gZX
 gGm
 iYC
 qRW
-dhG
-qnp
+phI
 rFS
+mzU
 rFS
 nKM
 rFS
@@ -53828,7 +53948,7 @@ iAO
 feX
 czc
 bUI
-kXm
+dTX
 xps
 puw
 mYK
@@ -56544,7 +56664,7 @@ wMT
 wMT
 hhx
 hiP
-obj
+aov
 agy
 cRS
 frY

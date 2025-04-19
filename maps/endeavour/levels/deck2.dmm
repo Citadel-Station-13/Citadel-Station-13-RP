@@ -5706,12 +5706,15 @@
 /area/medical/medbay_emt_bay)
 "dSa" = (
 /obj/machinery/camera/network/research,
-/obj/machinery/suit_storage_unit,
 /obj/item/clothing/head/helmet/space/void/science,
 /obj/item/clothing/suit/space/void/science,
 /obj/item/clothing/shoes/magboots,
+/obj/structure/closet{
+	name = "Hazard Bypass Suit Locker";
+	desc = "When you absolutely, positively, need to get that science."
+	},
 /turf/simulated/floor/tiled,
-/area/maintenance/research/port)
+/area/rnd/research/researchdivision)
 "dSj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
@@ -8802,6 +8805,10 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 1
 	},
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = -24
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
 "gcJ" = (
@@ -9865,10 +9872,13 @@
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck2forward)
 "gSb" = (
-/obj/machinery/suit_storage_unit,
 /obj/item/clothing/head/helmet/space/void/science,
 /obj/item/clothing/suit/space/void/science,
 /obj/item/clothing/shoes/magboots,
+/obj/structure/closet{
+	name = "Hazard Bypass Suit Locker";
+	desc = "When you absolutely, positively, need to get that science."
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
 "gSU" = (
@@ -16927,6 +16937,26 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
+"mme" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/navgold/border,
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2fwdhall)
 "mmt" = (
 /obj/machinery/air_alarm{
 	frequency = 1441;
@@ -20305,6 +20335,14 @@
 "oOa" = (
 /turf/simulated/floor/tiled/dark,
 /area/station/stairs_two)
+"oOo" = (
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/endeavour/hallway/reservehanger)
 "oOE" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -20346,8 +20384,9 @@
 /turf/simulated/floor/airless/ceiling,
 /area/space)
 "oOQ" = (
+/obj/structure/closet/walllocker_double,
 /turf/simulated/floor/tiled,
-/area/maintenance/research/port)
+/area/rnd/research/researchdivision)
 "oOZ" = (
 /obj/structure/closet/crate,
 /obj/random/maintenance,
@@ -22224,6 +22263,28 @@
 /obj/machinery/cell_charger,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
+"pWa" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 1
+	},
+/obj/item/radio/intercom{
+	dir = 1;
+	pixel_y = 24
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/medbay4)
 "pWg" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/wall/prepainted/medical,
@@ -25447,7 +25508,7 @@
 /obj/map_helper/access_helper/airlock/station/science/department,
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/tiled,
-/area/maintenance/research/port)
+/area/rnd/research/researchdivision)
 "suD" = (
 /obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -26674,6 +26735,19 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
+"tkV" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 1
+	},
+/obj/item/radio/intercom{
+	dir = 1;
+	pixel_y = 24
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/research/researchdivision)
 "tkZ" = (
 /obj/structure/frame{
 	anchored = 1
@@ -28566,7 +28640,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/maintenance/research/port)
+/area/rnd/research/researchdivision)
 "uJM" = (
 /obj/machinery/door/window/brigdoor/westright{
 	name = "Firing Range Door";
@@ -29233,6 +29307,10 @@
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 5
+	},
+/obj/item/radio/intercom{
+	dir = 1;
+	pixel_y = 24
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
@@ -29933,6 +30011,13 @@
 	},
 /turf/simulated/floor/airless/ceiling,
 /area/space)
+"vOd" = (
+/obj/item/radio/intercom{
+	dir = 4;
+	pixel_x = 24
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/endeavour/hallway/d2afthall)
 "vOA" = (
 /obj/machinery/air_alarm/west_mount,
 /turf/simulated/floor/tiled,
@@ -30199,6 +30284,10 @@
 	},
 /obj/effect/floor_decal/corner/mauve/bordercorner2{
 	dir = 6
+	},
+/obj/item/radio/intercom{
+	dir = 4;
+	pixel_x = 24
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
@@ -32753,8 +32842,8 @@
 /obj/machinery/door/firedoor{
 	dir = 1
 	},
-/obj/machinery/door/airlock/glass,
-/turf/simulated/floor/tiled,
+/obj/machinery/door/airlock,
+/turf/simulated/floor/carpet/bcarpet,
 /area/endeavour/hallway/d2afthall)
 "xHh" = (
 /obj/structure/cable/green{
@@ -40082,7 +40171,7 @@ cHF
 qzJ
 dcZ
 qgj
-gOV
+pWa
 vzv
 buM
 ggR
@@ -42199,7 +42288,7 @@ ezO
 dHV
 eRP
 oNw
-wEJ
+tkV
 lWC
 eSM
 xSp
@@ -45318,7 +45407,7 @@ tks
 mDj
 bFI
 rZj
-rZj
+vOd
 cKd
 rZj
 rZj
@@ -46059,12 +46148,12 @@ tQr
 jib
 afb
 kWG
-qIL
-qIL
-qIL
 gDB
 gDB
-gly
+gDB
+gDB
+gDB
+oOQ
 pjR
 gDB
 gDB
@@ -46253,7 +46342,7 @@ dZX
 jib
 czf
 kWG
-qIL
+gDB
 dSa
 gSb
 vZi
@@ -46447,7 +46536,7 @@ tQr
 jib
 vAB
 kWG
-qIL
+gDB
 uJJ
 gly
 gly
@@ -46642,7 +46731,7 @@ jib
 nww
 kWG
 sun
-oOQ
+gly
 xQd
 hNW
 gDB
@@ -46835,7 +46924,7 @@ tQr
 jib
 icg
 ebY
-qIL
+gDB
 uJJ
 gly
 gly
@@ -47029,8 +47118,8 @@ kWG
 jib
 cje
 bNX
-qIL
-qIL
+gDB
+gDB
 gDB
 gDB
 gDB
@@ -58321,7 +58410,7 @@ rOO
 rOO
 jcd
 nkN
-eID
+mme
 ces
 lJs
 vGV
@@ -58711,7 +58800,7 @@ teY
 auJ
 sud
 ces
-yeN
+oOo
 vDl
 yeN
 yeN

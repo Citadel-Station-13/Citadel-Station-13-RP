@@ -1077,6 +1077,7 @@
 "aMu" = (
 /obj/structure/table/woodentable,
 /obj/machinery/microwave,
+/obj/machinery/air_alarm/west_mount,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_3)
 "aMR" = (
@@ -1360,7 +1361,6 @@
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
-/obj/machinery/mech_recharger,
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
 "aXR" = (
@@ -1369,6 +1369,12 @@
 	name = "Gateway Blast Doors";
 	dir = 8;
 	pixel_x = 24;
+	req_one_access = list(19,44)
+	},
+/obj/machinery/turretid/lethal{
+	control_area = "\improper Gateway";
+	pixel_y = 26;
+	req_access = null;
 	req_one_access = list(19,44)
 	},
 /turf/simulated/floor/tiled/dark,
@@ -2620,6 +2626,19 @@
 "bZe" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/endeavour/civillian/evastorage)
+"bZh" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 1
+	},
+/obj/item/radio/intercom{
+	dir = 1;
+	pixel_y = 24
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/research/testingrange)
 "bZN" = (
 /obj/structure/bookcase{
 	name = "bookcase (Religious)"
@@ -3924,6 +3943,10 @@
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
+	},
+/obj/item/radio/intercom{
+	dir = 1;
+	pixel_y = 24
 	},
 /turf/simulated/floor/tiled,
 /area/exploration)
@@ -10835,6 +10858,9 @@
 /area/rnd/research/testingrange)
 "ipu" = (
 /obj/machinery/cryopod/robot/door/gateway,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/teleporter/departing)
 "ipM" = (
@@ -11884,7 +11910,6 @@
 /obj/structure/cable/cyan{
 	icon_state = "2-8"
 	},
-/obj/machinery/mech_recharger,
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
 "jlq" = (
@@ -13405,10 +13430,10 @@
 /area/vacant/vacant_bar)
 "khD" = (
 /obj/effect/floor_decal/borderfloor{
-	dir = 8
+	dir = 9
 	},
 /obj/effect/floor_decal/corner/mauve/border{
-	dir = 8
+	dir = 9
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/exploration/hallway_fore)
@@ -13690,6 +13715,9 @@
 /obj/landmark/spawnpoint/overflow/station,
 /obj/structure/cable/green{
 	icon_state = "1-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/teleporter/departing)
@@ -14627,6 +14655,11 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = -28;
+	req_access = list()
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
 "ldS" = (
@@ -15403,6 +15436,9 @@
 	req_access = null
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/endeavour/civillian/evastorage)
 "lID" = (
@@ -16805,12 +16841,20 @@
 /obj/effect/floor_decal/corner/navgold/bordercorner2{
 	dir = 10
 	},
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardamidhall)
 "mNK" = (
 /obj/machinery/door/airlock/glass,
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/teleporter/departing)
@@ -16864,12 +16908,6 @@
 /area/maintenance/tool_storage)
 "mPX" = (
 /obj/machinery/mech_recharger,
-/obj/machinery/turretid/lethal{
-	control_area = "\improper Gateway";
-	pixel_y = 26;
-	req_access = null;
-	req_one_access = list(19,44)
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
 	},
@@ -17551,6 +17589,13 @@
 /obj/item/material/knife/butch,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/lounge/kitchen_freezer)
+"nrz" = (
+/obj/landmark/spawnpoint/overflow/station,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/teleporter/departing)
 "nsf" = (
 /obj/machinery/floodlight,
 /turf/simulated/floor/plating,
@@ -17630,6 +17675,11 @@
 /obj/item/roller,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/item/storage/firstaid/regular,
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 21
+	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/docking_hallway2)
 "nup" = (
@@ -17811,6 +17861,7 @@
 "nAf" = (
 /obj/structure/table/woodentable,
 /obj/machinery/microwave,
+/obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_1)
 "nAm" = (
@@ -17969,6 +18020,7 @@
 "nFg" = (
 /obj/structure/table/woodentable,
 /obj/machinery/microwave,
+/obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_2)
 "nFp" = (
@@ -20300,6 +20352,14 @@
 /obj/machinery/vending/mre,
 /turf/simulated/floor/tiled,
 /area/exploration)
+"prq" = (
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 21
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/secondary/docking_hallway2)
 "prD" = (
 /obj/structure/catwalk,
 /obj/structure/disposalpipe/segment{
@@ -20398,7 +20458,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/bedrooms)
 "pvj" = (
@@ -20875,6 +20934,7 @@
 "pRw" = (
 /obj/structure/table/woodentable,
 /obj/machinery/microwave,
+/obj/machinery/air_alarm/west_mount,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
 "pRD" = (
@@ -21218,6 +21278,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/exploration/hallway_fore)
+"qfK" = (
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
+	},
+/turf/simulated/floor/tiled,
+/area/exploration/pilot_prep)
 "qfY" = (
 /obj/machinery/air_alarm{
 	frequency = 1441;
@@ -22437,6 +22505,10 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "2-4"
+	},
+/obj/item/radio/intercom{
+	dir = 1;
+	pixel_y = 24
 	},
 /turf/simulated/floor/tiled,
 /area/exploration)
@@ -25426,7 +25498,9 @@
 /area/endeavour/exploration/hallway_fore)
 "tsH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
@@ -26305,7 +26379,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/air_alarm/west_mount,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/bedrooms)
 "tXo" = (
@@ -30481,14 +30554,19 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portamidhall)
 "xgM" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	icon_state = "1-2"
+/obj/structure/dispenser/oxygen,
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
 	},
-/obj/machinery/air_alarm/east_mount,
-/turf/simulated/floor/wood,
-/area/crew_quarters/sleep/bedrooms)
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 1
+	},
+/obj/item/radio/intercom{
+	dir = 1;
+	pixel_y = 24
+	},
+/turf/simulated/floor/tiled,
+/area/gateway/prep_room)
 "xhP" = (
 /obj/structure/grille,
 /turf/space,
@@ -40299,7 +40377,7 @@ hgT
 sFB
 gwz
 uWb
-lUl
+qfK
 lUl
 fSO
 iZR
@@ -41063,7 +41141,7 @@ yme
 xvH
 yme
 ngf
-gZf
+bZh
 igX
 ulS
 jGj
@@ -43609,7 +43687,7 @@ dWV
 hJA
 mEr
 mSB
-tdm
+nrz
 tdm
 dQk
 iyS
@@ -43644,7 +43722,7 @@ eYG
 hqK
 udY
 hPu
-blm
+prq
 nqN
 tVX
 etm
@@ -45123,12 +45201,12 @@ xRj
 usG
 fLR
 fLR
+dmO
+dmO
+dmO
+dmO
+dmO
 tsv
-dmO
-dmO
-dmO
-dmO
-dmO
 fLR
 khD
 iJn
@@ -46109,7 +46187,7 @@ lyR
 vkr
 jMJ
 vDR
-dRO
+xgM
 hUo
 tzx
 rFF
@@ -49843,7 +49921,7 @@ sPy
 mMu
 uqY
 avP
-xgM
+eUP
 puT
 voN
 ehf
