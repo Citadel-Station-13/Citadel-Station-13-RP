@@ -790,7 +790,7 @@
 				bolt.malfunction = MALFUNCTION_PERMANENT
 
 /mob/living/silicon/robot/proc/module_reset()
-	notify_ai(ROBOT_NOTIFICATION_MODULE_RESET, module_new.name)
+	notify_ai(ROBOT_NOTIFICATION_MODULE_RESET, module_new.get_display_name())
 	updatename("Default")
 
 /mob/living/silicon/robot/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)

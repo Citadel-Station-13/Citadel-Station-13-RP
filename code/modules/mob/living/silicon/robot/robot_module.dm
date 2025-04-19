@@ -49,8 +49,9 @@
 
 	//* Identity *//
 	/// Our display name
-	#warn set on all modules
 	var/display_name = "???"
+	/// Our examine name, defaulting to display name
+	var/visible_name
 
 	//* Mounted Item Descriptor - Injectors *//
 	/// items to inject into normal out
@@ -116,6 +117,12 @@
  */
 /datum/prototype/robot_module/proc/get_display_name()
 	return display_name
+
+/**
+ * Get visible name on examine
+ */
+/datum/prototype/robot_module/proc/get_visible_name()
+	return visible_name || display_name
 
 //* Application *//
 

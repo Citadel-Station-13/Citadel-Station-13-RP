@@ -10,6 +10,8 @@
 	icon_state_cover = "panel"
 	icon_state_indicator = "indicator"
 
+	auto_chassis = /datum/prototype/robot_chassis/biped
+
 	variations = list(
 		/datum/robot_iconset_variation/bellyup,
 		/datum/robot_iconset_variation/dead,

@@ -4,6 +4,9 @@
 /datum/prototype/robot_iconset/dog_k9
 	display_name = "Canine - K9"
 	abstract_type = /datum/prototype/robot_iconset/dog_k9
+
+	auto_chassis = /datum/prototype/robot_chassis/quadruped/canine
+
 	icon = 'icons/mob/robot/iconset/dog_k9.dmi'
 	icon_state_cover = "panel"
 	variations = list(

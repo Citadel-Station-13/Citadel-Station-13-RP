@@ -22,7 +22,7 @@
 
 	/// the path, id, or instance of robot chassis we are supposed to be
 	/// * this is not enforced, this is used for auto-gen
-	var/autogen_chassis
+	var/auto_chassis
 
 	/// icon
 	var/icon

@@ -5,6 +5,8 @@
 	display_name = "W02M"
 	abstract_type = /datum/prototype/robot_iconset/grounded_worm
 
+	auto_chassis = /datum/prototype/robot_chassis/grounded
+
 	icon = 'icons/mob/robot/iconset/worm.dmi'
 	icon_state_indicator = "indicator-lighting"
 	icon_state_cover = "open"

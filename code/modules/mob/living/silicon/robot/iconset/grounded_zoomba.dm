@@ -5,6 +5,8 @@
 	display_name = "ZOOM-BA"
 	abstract_type = /datum/prototype/robot_iconset/grounded_zoomba
 
+	auto_chassis = /datum/prototype/robot_chassis/grounded
+
 	icon = 'icons/mob/robot/iconset/zoomba.dmi'
 	icon_state_indicator = "indicator-lighting"
 	icon_state_cover = "cover"

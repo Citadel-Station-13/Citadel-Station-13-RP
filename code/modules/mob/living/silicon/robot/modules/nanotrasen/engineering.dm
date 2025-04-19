@@ -1,6 +1,7 @@
 GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/engineering)
 /datum/prototype/robot_module/nanotrasen/engineering
 	id = "nt-engineering"
+	display_name = "NT-Engineering"
 	use_robot_module_path = /obj/item/robot_module_legacy/robot/engineering
 	light_color = "#FDD800"
 	auto_iconsets = list(

@@ -1,5 +1,6 @@
 /datum/prototype/robot_module/drone
 	id = "drone"
+	display_name = "NT Drone"
 	use_robot_module_path = /obj/item/robot_module_legacy/robot/drone
 	auto_iconsets = list(
 		/datum/prototype/robot_iconset/baseline_drone/construction,
@@ -53,6 +54,7 @@
 GENERATE_ROBOT_MODULE_PRESET(/drone/construction)
 /datum/prototype/robot_module/drone/construction
 	id = "drone-construction"
+	display_name = "NT Construction Drone"
 	auto_iconsets = list(
 		/datum/prototype/robot_iconset/baseline_drone/construction,
 	)
@@ -67,6 +69,7 @@ GENERATE_ROBOT_MODULE_PRESET(/drone/construction)
 GENERATE_ROBOT_MODULE_PRESET(/drone/mining)
 /datum/prototype/robot_module/drone/mining
 	id = "drone-mining"
+	display_name = "NT Mining Drone"
 	auto_iconsets = list(
 		/datum/prototype/robot_iconset/baseline_drone/mining,
 	)

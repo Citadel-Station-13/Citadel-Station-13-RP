@@ -46,8 +46,8 @@
  * @return volume
  */
 /obj/item/extinguisher/proc/available_spray_volume()
-	if(mount)
-		return mount.get_extinguisher_spray_volume(src)
+	if(item_mount)
+		return item_mount.get_extinguisher_spray_volume(src)
 	if(reagents)
 		return reagents.total_volume
 	return 0
@@ -56,8 +56,8 @@
  * @return amount pulled
  */
 /obj/item/extinguisher/proc/pull_spray_volume(datum/reagent_holder/target, amount)
-	if(mount)
-		return mount.pull_extinguisher_spray_volume(src, amount, target)
+	if(item_mount)
+		return item_mount.pull_extinguisher_spray_volume(src, amount, target)
 	if(reagents)
 		return reagents.transfer_to_holder(target, null, amount)
 	return 0

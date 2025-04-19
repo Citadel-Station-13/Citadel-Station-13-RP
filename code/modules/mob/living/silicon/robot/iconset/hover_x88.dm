@@ -4,6 +4,9 @@
 /datum/prototype/robot_iconset/hover_x88
 	display_name = "X-88"
 	abstract_type = /datum/prototype/robot_iconset/hover_x88
+
+	auto_chassis = /datum/prototype/robot_chassis/hover
+
 	icon = 'icons/mob/robot/iconset/hover_x88.dmi'
 	icon_state_cover = "panel"
 

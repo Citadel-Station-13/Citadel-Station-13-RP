@@ -1,6 +1,7 @@
 GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/multirole)
 /datum/prototype/robot_module/nanotrasen/multirole
 	id = "nt-multirole"
+	display_name = "NT-Multirole"
 	use_robot_module_path = /obj/item/robot_module_legacy/robot
 	light_color = "#FFFFFF"
 	auto_iconsets = list(

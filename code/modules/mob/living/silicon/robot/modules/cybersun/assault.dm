@@ -1,6 +1,7 @@
 GENERATE_ROBOT_MODULE_PRESET(/cybersun/assault)
 /datum/prototype/robot_module/cybersun/assault
 	id = "cybersun-assault"
+	display_name = "Cybersun Assault"
 	use_robot_module_path = /obj/item/robot_module_legacy/robot/syndicate
 	light_color = "#FF0000"
 	auto_iconsets = list(

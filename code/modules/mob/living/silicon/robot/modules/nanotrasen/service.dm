@@ -1,6 +1,7 @@
 GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/service)
 /datum/prototype/robot_module/nanotrasen/service
 	id = "nt-service"
+	display_name = "NT-Service"
 	use_robot_module_path = /obj/item/robot_module_legacy/robot/clerical
 	light_color = "#6AED63"
 	auto_iconsets = list(
