@@ -75,12 +75,14 @@
 	/// set to instance to init as that instance
 	#warn impl
 	var/datum/prototype/robot_chassis/chassis
+	var/datum/robot_provisioning/chassis_provisioning
 	/// set to instance to init as that instance
 	#warn impl
 	var/datum/prototype/robot_iconset/iconset
 	/// set to instance to init as that instance
 	#warn impl
 	var/datum/prototype/robot_module/module_new
+	var/datum/robot_provisioning/module_provisioning
 
 	/// all installed upgrades
 	/// * some upgrades are consumed on install, and therefore won't be in here
@@ -117,12 +119,6 @@
 	/// Resources store
 	#warn make on new
 	var/datum/robot_resource_store/resources
-	/// Module items - normal
-	/// * These are provisioned from the module we are.
-	var/list/obj/item/module_items_normal
-	/// Module items - emag
-	/// * These are provisioned from the module we are.
-	var/list/obj/item/module_items_emag
 
 	//* State *//
 
