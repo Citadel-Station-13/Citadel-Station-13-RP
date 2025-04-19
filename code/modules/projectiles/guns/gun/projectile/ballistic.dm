@@ -132,6 +132,8 @@
 	///   be the round at [internal_magazine_revolver_offset].
 	///   Basically, [chamber_simulation] is disabled if this is on.
 	var/internal_magazine_revolver_mode = FALSE
+	/// A flag to disable the spin, for multi-barreled weapons that fire in sequence
+	var/internal_magazine_revolver_spinnable = TRUE
 	/// The current position in [internal_magazine_vec] we are at.
 	/// * This is to avoid duplicate references, as those are pretty much asking for trouble.
 	/// * This is only used if [internal_magazine_revolver_mode] is enabled.
@@ -374,7 +376,7 @@
 
 /obj/item/gun/projectile/ballistic/register_item_actions(mob/user)
 	. = ..()
-	if(internal_magazine && internal_magazine_revolver_mode)
+	if(internal_magazine && internal_magazine_revolver_mode && internal_magazine_revolver_spinnable)
 		if(!chamber_spin_action)
 			chamber_spin_action = new(src)
 		chamber_spin_action.grant(user.inventory.actions)
