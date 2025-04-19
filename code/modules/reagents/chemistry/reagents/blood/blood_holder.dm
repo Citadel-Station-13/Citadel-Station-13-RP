@@ -105,7 +105,10 @@
  */
 /datum/blood_holder/proc/erase(amount)
 	var/total = host_blood_volume + cached_guest_blood_volume
+	if(total <= 0) return 0
 	. = min(amount, total)
+	if(total==0) //No divide by zero, return value's set already
+		return
 	var/multiplier = max(0, 1 - (. / total))
 
 	host_blood_volume *= multiplier
@@ -146,6 +149,7 @@
 /datum/blood_holder/proc/draw(amount, infinite) as /datum/blood_mixture
 	var/total = host_blood_volume + cached_guest_blood_volume
 	amount = min(amount, total)
+	if(amount <= 0) return null
 	var/multiplier = max(0, 1 - (amount / total))
 
 	var/datum/blood_mixture/creating = new
