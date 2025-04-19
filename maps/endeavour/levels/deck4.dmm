@@ -631,10 +631,25 @@
 /turf/simulated/floor/carpet/oracarpet,
 /area/crew_quarters/heads/chief)
 "aEm" = (
-/obj/effect/floor_decal/industrial/warning,
-/obj/machinery/light,
-/turf/simulated/floor/plating,
-/area/engineering/atmos)
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightorange/border{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/simulated/floor/tiled/steel,
+/area/engineering/atmos/eva)
 "aEW" = (
 /obj/structure/table/marble,
 /obj/structure/flora/pottedplant/small,
@@ -6006,6 +6021,20 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
+"fTF" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightorange/border{
+	dir = 1
+	},
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/engineering/atmos/eva)
 "fUv" = (
 /obj/item/stool/padded,
 /turf/simulated/floor/wood,
@@ -6847,6 +6876,9 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/item/radio/intercom{
+	pixel_y = -28
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4portafthall)
 "gPc" = (
@@ -6903,6 +6935,9 @@
 	name = "Nitrogen Supply Control";
 	output_tag = "n2_out";
 	sensors = list("n2_sensor"="Tank")
+	},
+/obj/machinery/light{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
@@ -7306,6 +7341,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/atmos)
+"hlV" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "hmG" = (
@@ -8524,10 +8566,6 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 5
 	},
-/obj/machinery/fire_alarm/east_mount{
-	dir = 4;
-	pixel_x = -21
-	},
 /obj/machinery/light{
 	dir = 8;
 	light_range = 12
@@ -8551,6 +8589,13 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/robotics/smallcraft)
+"iBS" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/tank/emergency/oxygen/engi,
+/obj/item/tank/emergency/oxygen/engi,
+/obj/item/tank/emergency/oxygen/double,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4fwdmaint)
 "iCe" = (
 /obj/structure/loot_pile/maint/technical,
 /turf/simulated/floor/plating,
@@ -9048,6 +9093,16 @@
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
+"jds" = (
+/obj/structure/window/basic{
+	dir = 1
+	},
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/crew_quarters/bar)
 "jdy" = (
 /obj/machinery/light{
 	dir = 4
@@ -11838,9 +11893,6 @@
 "lTK" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black,
 /obj/machinery/fire_alarm/east_mount,
-/obj/machinery/light{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
@@ -13334,6 +13386,7 @@
 /obj/machinery/disposal{
 	pixel_y = -2
 	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "nsF" = (
@@ -14691,6 +14744,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)
+"oYF" = (
+/obj/machinery/air_alarm{
+	dir = 1;
+	pixel_y = -25
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/atmos)
 "oYG" = (
 /obj/map_helper/engine_loader,
 /turf/space,
@@ -15757,6 +15817,9 @@
 "qll" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 4
+	},
+/obj/item/radio/intercom{
+	pixel_y = -28
 	},
 /turf/simulated/floor/tiled/dark,
 /area/endeavour/hallway/d4portafthall)
@@ -20142,6 +20205,10 @@
 /area/endeavour/hallway/d4starboardforhall)
 "vgF" = (
 /obj/machinery/atmospherics/valve/digital,
+/obj/machinery/fire_alarm/east_mount{
+	dir = 4;
+	pixel_x = -21
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "vha" = (
@@ -20251,6 +20318,10 @@
 	},
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 8
+	},
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = -24
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4porthall)
@@ -21470,6 +21541,9 @@
 /obj/effect/floor_decal/corner/navgold/border{
 	dir = 10
 	},
+/obj/item/radio/intercom{
+	pixel_y = -28
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4starboardhall)
 "wtT" = (
@@ -22539,10 +22613,6 @@
 /turf/simulated/floor/plating,
 /area/storage/tech)
 "xAr" = (
-/obj/machinery/air_alarm{
-	dir = 4;
-	pixel_x = -23
-	},
 /obj/machinery/light{
 	dir = 8;
 	light_range = 12
@@ -22693,6 +22763,9 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/item/radio/intercom{
+	pixel_y = -28
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4portafthall)
@@ -37875,7 +37948,7 @@ twD
 tem
 kuh
 kuh
-kuh
+oYF
 tqu
 tqu
 jNg
@@ -38653,7 +38726,7 @@ dGD
 wqb
 vMA
 heX
-aEm
+sJM
 ctk
 jNg
 jNg
@@ -39019,7 +39092,7 @@ nUo
 mqz
 vJG
 qGG
-wii
+fTF
 rWd
 nAO
 tqu
@@ -39623,7 +39696,7 @@ heX
 heX
 heX
 heX
-aEm
+sJM
 ctk
 jNg
 jNg
@@ -40204,7 +40277,7 @@ jse
 wrG
 tRp
 pwL
-vKu
+hlV
 tqu
 tqu
 jNg
@@ -40769,7 +40842,7 @@ xQN
 jLE
 uLe
 nMA
-nAf
+aEm
 sNg
 wVA
 xHG
@@ -41135,7 +41208,7 @@ fzO
 evq
 dhN
 lAf
-eXx
+jds
 fbo
 fOA
 dhN
@@ -41149,8 +41222,8 @@ vsA
 vjB
 emf
 gLy
-kaY
 iCe
+kaY
 qqz
 qqz
 qqz
@@ -41343,8 +41416,8 @@ vsA
 aKR
 bNu
 gLy
+iBS
 kaY
-dAM
 qqz
 cxT
 cxT

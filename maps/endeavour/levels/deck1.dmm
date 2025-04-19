@@ -1364,13 +1364,6 @@
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
 "aXR" = (
-/obj/machinery/button/remote/airlock{
-	id = "gateway";
-	name = "Gateway Blast Doors";
-	dir = 8;
-	pixel_x = 24;
-	req_one_access = list(19,44)
-	},
 /obj/machinery/turretid/lethal{
 	control_area = "\improper Gateway";
 	pixel_y = 26;
@@ -4095,6 +4088,17 @@
 /obj/item/tool/wrench,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint)
+"def" = (
+/obj/machinery/button/remote/blast_door{
+	id = "gateway_pad";
+	name = "Gateway Access Blast Door Control";
+	pixel_y = -38;
+	req_one_access = list(19,29,38,43,47,63,67);
+	pixel_x = 7;
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/gateway)
 "dep" = (
 /obj/structure/sign/directions/bridge{
 	dir = 4;
@@ -8207,7 +8211,9 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1fwdmaint)
 "geQ" = (
-/obj/effect/shuttle_landmark/automatic/station_dockpoint2,
+/obj/effect/shuttle_landmark/automatic/station_dockpoint2{
+	name = "Docking Arm 2"
+	},
 /turf/space/basic,
 /area/space)
 "geW" = (
@@ -11011,7 +11017,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "iwD" = (
-/obj/effect/shuttle_landmark/automatic/station_dockpoint1,
+/obj/effect/shuttle_landmark/automatic/station_dockpoint1{
+	name = "Docking Point 1"
+	},
 /turf/space/basic,
 /area/space)
 "iwR" = (
@@ -11965,6 +11973,11 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/hallway)
+"jnT" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/porta_turret/stationary,
+/turf/simulated/floor/tiled/dark,
+/area/gateway)
 "jnZ" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/carpet/bcarpet,
@@ -14569,7 +14582,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/hallway)
 "kYs" = (
-/obj/effect/shuttle_landmark/automatic,
+/obj/effect/shuttle_landmark/automatic{
+	name = "Exploration Aux Hanger"
+	},
 /turf/simulated/floor/reinforced,
 /area/endeavour/exploration/aux_hanger)
 "kYw" = (
@@ -16703,6 +16718,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/chapel/main)
+"mKc" = (
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled/dark,
+/area/gateway)
 "mKR" = (
 /turf/simulated/wall/r_wall/prepainted/exploration,
 /area/exploration/showers)
@@ -23910,10 +23930,10 @@
 /area/library)
 "sgr" = (
 /obj/machinery/door/blast/regular{
-	id = "gateway";
-	dir = 4
+	dir = 2;
+	id = "gateway_pad";
+	name = "Gateway Bay Blast Door"
 	},
-/obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
 "sgV" = (
@@ -27523,10 +27543,6 @@
 /area/endeavour/hallway/d1afthall)
 "uKO" = (
 /obj/structure/table/reinforced,
-/obj/fiftyspawner/glass,
-/obj/fiftyspawner/glass,
-/obj/fiftyspawner/glass,
-/obj/random/tech_supply,
 /obj/item/clothing/accessory/armor/helmetcamera/body,
 /obj/item/clothing/accessory/armor/helmetcamera/body,
 /obj/item/clothing/accessory/armor/helmetcamera/body,
@@ -28132,6 +28148,10 @@
 /obj/machinery/recharger,
 /obj/random/tech_supply,
 /obj/random/tech_supply,
+/obj/random/tech_supply,
+/obj/fiftyspawner/glass,
+/obj/fiftyspawner/glass,
+/obj/fiftyspawner/glass,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "vhq" = (
@@ -46584,7 +46604,7 @@ okP
 aXR
 wsZ
 jYZ
-wsZ
+def
 okP
 asR
 qTM
@@ -46776,7 +46796,7 @@ okP
 okP
 okP
 okP
-sgr
+okP
 sgr
 sgr
 okP
@@ -47167,7 +47187,7 @@ gyS
 wsZ
 wsZ
 wsZ
-aka
+mKc
 okP
 hFM
 dnd
@@ -47551,10 +47571,10 @@ okP
 okP
 okP
 okP
-okP
-okP
-okP
-okP
+mKc
+jnT
+mKc
+jnT
 okP
 okP
 cpU
@@ -47744,12 +47764,12 @@ ffi
 kPR
 kPR
 asR
-jVc
-knH
-ozD
-rrt
-bUQ
-ffi
+mmC
+mmC
+mmC
+mmC
+mmC
+mmC
 vjS
 qzh
 xkO
@@ -47938,11 +47958,11 @@ ffi
 ffi
 ffi
 asR
-ffi
-dMa
-dMa
-dMa
-dMa
+jVc
+knH
+ozD
+rrt
+bUQ
 ffi
 hFM
 srV
