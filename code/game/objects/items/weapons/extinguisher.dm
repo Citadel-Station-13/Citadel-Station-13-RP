@@ -24,24 +24,6 @@
 	var/safety = 1
 	var/sprite_name = "fire_extinguisher"
 
-/obj/item/extinguisher/mini
-	name = "fire extinguisher"
-	desc = "A light and compact fibreglass-framed model fire extinguisher."
-	icon_state = "miniFE0"
-	item_state = "miniFE"
-	attack_sound = null	//it is much lighter, after all.
-	throw_force = 2
-	w_class = WEIGHT_CLASS_SMALL
-	damage_force = 3.0
-	max_water = 150
-	spray_particles = 3
-	sprite_name = "miniFE"
-
-/obj/item/extinguisher/mini/plasman
-	name = "emergency phoronoid extinguisher"
-	desc = "A mini fire extinguisher for use by burning phoronoids. Let's just hope it works."
-	max_water = 300
-
 /obj/item/extinguisher/Initialize(mapload)
 	. = ..()
 	create_reagents(max_water)
@@ -59,6 +41,26 @@
 	icon_state = "[sprite_name][!safety]"
 	desc = "The safety is [safety ? "on" : "off"]."
 	to_chat(user, "The safety is [safety ? "on" : "off"].")
+
+/**
+ * @return volume
+ */
+/obj/item/extinguisher/proc/available_spray_volume()
+	if(mount)
+		return mount.get_extinguisher_spray_volume(src)
+	if(reagents)
+		return reagents.total_volume
+	return 0
+
+/**
+ * @return amount pulled
+ */
+/obj/item/extinguisher/proc/pull_spray_volume(datum/reagent_holder/target, amount)
+	if(mount)
+		return mount.pull_extinguisher_spray_volume(src, amount, target)
+	if(reagents)
+		return reagents.transfer_to_holder(target, null, amount)
+	return 0
 
 /obj/item/extinguisher/proc/propel_object(var/obj/O, mob/user, movementdirection)
 	if(O.anchored) return
@@ -88,47 +90,64 @@
 		playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
 		return
 
-	if (!safety)
-		if (src.reagents.total_volume < 1)
-			to_chat(usr, "<span class='notice'>\The [src] is empty.</span>")
-			return
-
-		if (world.time < src.last_use + 20)
-			return
-
-		src.last_use = world.time
-
-		playsound(src.loc, 'sound/effects/extinguish.ogg', 75, 1, -3)
-
-		var/direction = get_dir(src,target)
-
-		if(user.buckled && isobj(user.buckled))
-			spawn(0)
-				propel_object(user.buckled, user, turn(direction,180))
-
-		var/turf/T = get_turf(target)
-		var/turf/T1 = get_step(T,turn(direction, 90))
-		var/turf/T2 = get_step(T,turn(direction, -90))
-
-		var/list/the_targets = list(T,T1,T2)
-
-		for(var/a = 1 to spray_particles)
-			spawn(0)
-				if(!src || !reagents.total_volume) return
-
-				var/obj/effect/water/W = new /obj/effect/water(get_turf(src))
-				var/turf/my_target
-				if(a <= the_targets.len)
-					my_target = the_targets[a]
-				else
-					my_target = pick(the_targets)
-				W.create_reagents(spray_amount)
-				reagents.trans_to_obj(W, spray_amount)
-				W.set_color()
-				W.set_up(my_target)
-
-		if((istype(usr.loc, /turf/space)) || (usr.lastarea.has_gravity == 0))
-			user.newtonian_move(get_dir(target, user))
-	else
+	if(safety)
 		return ..()
-	return
+	if (!available_spray_volume())
+		to_chat(usr, "<span class='notice'>\The [src] is empty.</span>")
+		return
+
+	if (world.time < src.last_use + 20)
+		return
+
+	src.last_use = world.time
+
+	playsound(src.loc, 'sound/effects/extinguish.ogg', 75, 1, -3)
+
+	var/direction = get_dir(src,target)
+
+	if(user.buckled && isobj(user.buckled))
+		spawn(0)
+			propel_object(user.buckled, user, turn(direction,180))
+
+	var/turf/T = get_turf(target)
+	var/turf/T1 = get_step(T,turn(direction, 90))
+	var/turf/T2 = get_step(T,turn(direction, -90))
+
+	var/list/the_targets = list(T,T1,T2)
+
+	for(var/a = 1 to spray_particles)
+		spawn(0)
+			if(!available_spray_volume())
+				return
+
+			var/obj/effect/water/W = new /obj/effect/water(get_turf(src))
+			var/turf/my_target
+			if(a <= the_targets.len)
+				my_target = the_targets[a]
+			else
+				my_target = pick(the_targets)
+			W.create_reagents(spray_amount)
+			pull_spray_volume(W.reagents, spray_amount)
+			W.set_color()
+			W.set_up(my_target)
+
+	if((istype(usr.loc, /turf/space)) || (usr.lastarea.has_gravity == 0))
+		user.newtonian_move(get_dir(target, user))
+
+/obj/item/extinguisher/mini
+	name = "fire extinguisher"
+	desc = "A light and compact fibreglass-framed model fire extinguisher."
+	icon_state = "miniFE0"
+	item_state = "miniFE"
+	attack_sound = null	//it is much lighter, after all.
+	throw_force = 2
+	w_class = WEIGHT_CLASS_SMALL
+	damage_force = 3.0
+	max_water = 150
+	spray_particles = 3
+	sprite_name = "miniFE"
+
+/obj/item/extinguisher/mini/plasman
+	name = "emergency phoronoid extinguisher"
+	desc = "A mini fire extinguisher for use by burning phoronoids. Let's just hope it works."
+	max_water = 300
