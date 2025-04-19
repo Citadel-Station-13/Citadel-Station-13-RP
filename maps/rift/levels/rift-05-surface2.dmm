@@ -3833,9 +3833,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/lobby)
 "cky" = (
-/obj/structure/railing{
-	dir = 4
-	},
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/visible/supply{
 	dir = 6
@@ -4976,9 +4973,6 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/crew_quarters/bar/lounge)
 "daD" = (
-/obj/structure/railing{
-	dir = 4
-	},
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/visible/supply,
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
@@ -6832,7 +6826,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "ejt" = (
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/tiled/monotechmaint,
 /area/rift/station/public_garden/stairwell)
 "eju" = (
 /obj/spawner/window/low_wall/full/nogrille/firelocks,
@@ -9199,9 +9193,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/public_garden/stairwell)
 "fSh" = (
-/obj/structure/railing{
-	dir = 1
-	},
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
 	dir = 9
@@ -10154,9 +10145,6 @@
 	dir = 4
 	},
 /obj/structure/catwalk,
-/obj/structure/railing{
-	dir = 1
-	},
 /turf/simulated/floor/plating,
 /area/rift/station/public_garden/gantry)
 "guh" = (
@@ -16487,9 +16475,6 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/structure/railing{
-	dir = 4
-	},
 /turf/simulated/floor/plating,
 /area/rift/station/public_garden/gantry)
 "kqp" = (
@@ -20230,12 +20215,6 @@
 /turf/simulated/floor/tiled/white,
 /area/security/warden)
 "mzG" = (
-/obj/machinery/button/crematorium{
-	id = "medbay_crematorium";
-	pixel_x = 26;
-	pixel_y = 23;
-	req_access = list(5)
-	},
 /obj/structure/noticeboard{
 	pixel_y = 32
 	},
@@ -20247,6 +20226,12 @@
 	name = "note from CentCom";
 	pixel_x = -6;
 	pixel_y = -4
+	},
+/obj/machinery/button/crematorium{
+	id = "medbay_crematorium";
+	pixel_x = 26;
+	pixel_y = 23;
+	req_access = list(5)
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/morgue)
@@ -21055,9 +21040,6 @@
 	icon_state = "1-2"
 	},
 /obj/structure/catwalk,
-/obj/structure/railing{
-	dir = 4
-	},
 /turf/simulated/floor/plating,
 /area/rift/station/public_garden/gantry)
 "mVh" = (
@@ -21479,9 +21461,6 @@
 /obj/structure/catwalk,
 /obj/structure/cable/green{
 	icon_state = "4-8"
-	},
-/obj/structure/railing{
-	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/rift/station/public_garden/gantry)
@@ -26843,9 +26822,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/structure/railing{
-	dir = 4
-	},
 /turf/simulated/floor/plating,
 /area/rift/station/public_garden/gantry)
 "qEZ" = (
@@ -28735,16 +28711,15 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "rLi" = (
-/obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/visible/supply,
-/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Public Garden"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/monotechmaint,
 /area/rift/station/public_garden/stairwell)
 "rLk" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -32757,14 +32732,6 @@
 /obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/security_processing)
-"uEt" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/babyblue,
-/obj/map_helper/electrochromatic_linker{
-	id = "resleeving-tint"
-	},
-/turf/simulated/floor/plating,
-/area/medical/reception)
 "uEv" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -52953,7 +52920,7 @@ mGl
 aaA
 vwR
 vYO
-uEt
+mQt
 rYY
 jMc
 rRs

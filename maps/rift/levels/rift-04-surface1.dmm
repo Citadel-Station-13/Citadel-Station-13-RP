@@ -14226,13 +14226,13 @@
 /turf/simulated/floor/wood,
 /area/lawoffice)
 "iYu" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/button/crematorium{
-	id = "medbay_crematorium";
+	id = "virology_crematorium";
 	pixel_x = 26;
 	pixel_y = 23;
 	req_access = list(5)
 	},
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/dark,
 /area/medical/virologymorgue)
 "iZK" = (
@@ -17426,6 +17426,14 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
+	},
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_x = 1;
+	pixel_y = -1
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virology)
@@ -39493,6 +39501,10 @@
 /obj/item/storage/firstaid/surgery,
 /obj/item/autopsy_scanner,
 /obj/machinery/camera/network/medbay,
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_x = -2;
+	pixel_y = -2
+	},
 /turf/simulated/floor/tiled/freezer,
 /area/medical/virologymorgue)
 "xxc" = (
