@@ -9,33 +9,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
-"ad" = (
-/obj/machinery/camera/network/engine{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/engineering/engine_room)
-"af" = (
-/obj/machinery/computer/fusion_fuel_control{
-	id_tag = "engine-i"
-	},
-/turf/template_noop,
-/area/template_noop)
 "ah" = (
-/obj/machinery/atmospherics/component/unary/outlet_injector{
-	dir = 8;
-	frequency = 1438;
-	id = "cooling_in";
-	use_power = 1
-	},
-/turf/simulated/floor/greengrid/airless,
-/area/engineering/engine_room)
-"ai" = (
-/obj/machinery/light{
-	dir = 8;
-	light_range = 12
-	},
 /obj/machinery/atmospherics/pipe/simple/visible/red,
+/obj/machinery/meter,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "aj" = (
@@ -50,6 +26,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
+"ak" = (
+/obj/structure/cable/yellow{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/generator{
+	anchored = 1
+	},
+/turf/simulated/floor,
+/area/engineering/engine_room)
 "al" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red,
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
@@ -57,17 +42,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
-"am" = (
-/obj/machinery/atmospherics/component/binary/circulator{
-	anchored = 1;
-	dir = 8
+"ao" = (
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
 	},
-/turf/simulated/floor,
-/area/engineering/engine_room)
-"an" = (
-/obj/machinery/atmospherics/pipe/manifold/visible/red{
-	dir = 1
-	},
+/obj/machinery/atmospherics/pipe/simple/visible/red,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "ap" = (
@@ -92,12 +72,6 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
-"au" = (
-/obj/machinery/computer/fusion_core_control{
-	id_tag = "engine"
-	},
-/turf/template_noop,
-/area/template_noop)
 "av" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 9
@@ -117,26 +91,22 @@
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "ay" = (
-/turf/simulated/floor/reinforced/airless,
-/area/engineering/engine_room)
-"aB" = (
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
+	dir = 10
+	},
 /turf/template_noop,
-/area/template_noop)
-"aC" = (
-/obj/machinery/air_alarm/east_mount,
-/turf/simulated/floor/plating,
-/area/engineering/engine_room)
-"aD" = (
-/obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 9
+/area/space)
+"aB" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
 	},
-/turf/simulated/floor/reinforced/airless,
-/area/engineering/engine_room)
-"aE" = (
-/obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 8
+/obj/machinery/power/emitter/gyrotron/anchored{
+	dir = 1;
+	id_tag = "engine-g"
 	},
-/obj/machinery/camera/network/engine,
+/obj/structure/cable/cyan{
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "aF" = (
@@ -146,30 +116,12 @@
 /obj/machinery/light,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
-"aH" = (
-/obj/machinery/button/remote/blast_door{
-	pixel_x = 6;
-	pixel_y = 0;
-	id = "EngineRadiatorViewport"
-	},
-/obj/item/book/manual/rust_engine,
-/turf/template_noop,
-/area/template_noop)
 "aI" = (
-/obj/structure/cable/cyan{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 4
-	},
+/obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
-"aY" = (
-/obj/machinery/atmospherics/pipe/simple/visible/cyan,
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
+"aJ" = (
+/turf/simulated/floor/greengrid/airless,
 /area/engineering/engine_room)
 "ck" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
@@ -199,6 +151,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
+"ev" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/green,
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "eD" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1438;
@@ -208,16 +167,24 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
-"fm" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
+"fd" = (
+/obj/machinery/computer/gyrotron_control{
+	id_tag = "engine-g"
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/green,
-/turf/simulated/floor/plating,
+/turf/template_noop,
+/area/template_noop)
+"fm" = (
+/obj/machinery/atmospherics/component/unary/outlet_injector{
+	dir = 8;
+	frequency = 1438;
+	id = "cooling_in";
+	use_power = 1
+	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "fn" = (
-/obj/machinery/atmospherics/pipe/simple/visible/green{
-	dir = 5
+/obj/machinery/atmospherics/component/binary/pump{
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
@@ -228,16 +195,10 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "gr" = (
-/obj/machinery/air_alarm/south_mount,
-/turf/simulated/floor/plating,
-/area/engineering/engine_room)
-"gu" = (
-/obj/machinery/air_sensor{
-	frequency = 1438;
-	id_tag = "engine_sensor";
-	output = 63
+/obj/machinery/camera/network/engine{
+	dir = 1
 	},
-/turf/simulated/floor/reinforced/airless,
+/turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "hP" = (
 /obj/structure/cable/cyan{
@@ -251,47 +212,52 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
-"iE" = (
-/obj/machinery/atmospherics/pipe/simple/visible/green{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/visible/red,
+"ij" = (
+/obj/machinery/air_alarm/south_mount,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
-"jf" = (
-/turf/simulated/wall/r_wall/prepainted/engineering,
-/area/engineering/engine_room)
-"km" = (
-/obj/structure/cable/cyan{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/plating,
-/area/engineering/engine_room)
-"kt" = (
-/turf/simulated/floor/greengrid/airless,
-/area/engineering/engine_room)
-"kv" = (
-/obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 8
-	},
-/obj/machinery/meter,
-/turf/simulated/floor/plating,
-/area/engineering/engine_room)
-"kJ" = (
-/obj/structure/cable/cyan{
-	icon_state = "2-4"
-	},
-/obj/structure/cable/cyan{
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/plating,
-/area/engineering/engine_room)
-"kW" = (
+"iy" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/green,
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
+"jf" = (
+/turf/simulated/wall/r_wall/prepainted/engineering,
+/area/engineering/engine_room)
+"kB" = (
+/obj/machinery/atmospherics/pipe/simple/visible/green,
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
+"kF" = (
+/obj/machinery/atmospherics/pipe/simple/visible/cyan,
+/obj/machinery/atmospherics/pipe/simple/visible/yellow{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
+"kP" = (
+/turf/simulated/floor/reinforced/airless,
+/area/engineering/engine_room)
+"kR" = (
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 5
+	},
+/turf/simulated/floor/reinforced/airless,
+/area/engineering/engine_room)
+"kW" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/green,
 /turf/simulated/floor/plating,
@@ -303,11 +269,34 @@
 /obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
-"nf" = (
-/obj/machinery/atmospherics/pipe/manifold/visible/yellow{
-	dir = 8
+"mu" = (
+/obj/machinery/fusion_fuel_compressor,
+/obj/machinery/light,
+/turf/simulated/floor/bluegrid,
+/area/engineering/engine_room)
+"mF" = (
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
+	dir = 9
 	},
-/obj/machinery/meter,
+/turf/template_noop,
+/area/space)
+"mX" = (
+/obj/machinery/power/fusion_core{
+	id_tag = "engine";
+	anchored = 1
+	},
+/obj/structure/cable/cyan{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/greengrid/airless,
+/area/engineering/engine_room)
+"nf" = (
+/obj/structure/cable/cyan{
+	icon_state = "0-4"
+	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "nl" = (
@@ -319,23 +308,37 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
-"op" = (
+"nq" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
 /obj/machinery/atmospherics/pipe/simple/visible/red,
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
+"op" = (
+/obj/machinery/atmospherics/pipe/manifold/visible/yellow{
+	dir = 8
+	},
 /obj/machinery/meter,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "os" = (
-/obj/machinery/atmospherics/component/binary/circulator{
-	anchored = 1;
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 5
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "oN" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/green{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
+/area/engineering/engine_room)
+"oV" = (
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 9
+	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "pp" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
@@ -344,19 +347,22 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "qB" = (
-/obj/machinery/atmospherics/component/binary/pump{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/visible/green{
+	dir = 5
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
-"rM" = (
-/obj/fiftyspawner/tritium,
-/obj/fiftyspawner/tritium,
-/obj/structure/window/reinforced{
-	dir = 4
+"rl" = (
+/obj/machinery/computer/fusion_fuel_control{
+	id_tag = "engine-i"
 	},
-/obj/structure/table/reinforced,
-/turf/simulated/floor/bluegrid,
+/turf/template_noop,
+/area/template_noop)
+"rM" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "rX" = (
 /obj/structure/cable/yellow{
@@ -365,11 +371,11 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "ss" = (
-/obj/machinery/atmospherics/pipe/simple/visible/green,
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
+/obj/machinery/atmospherics/component/binary/circulator{
+	anchored = 1;
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor,
 /area/engineering/engine_room)
 "sH" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
@@ -385,12 +391,16 @@
 /obj/spawner/window/borosillicate/full,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
-"ue" = (
-/obj/machinery/atmospherics/pipe/simple/visible/green,
-/obj/machinery/atmospherics/pipe/simple/visible/red{
+"tl" = (
+/obj/spawner/window/borosillicate/full,
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
+"tn" = (
+/obj/machinery/atmospherics/component/binary/circulator{
+	anchored = 1;
 	dir = 8
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor,
 /area/engineering/engine_room)
 "uR" = (
 /obj/structure/cable/yellow{
@@ -408,6 +418,22 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
+"vm" = (
+/obj/machinery/button/remote/blast_door{
+	pixel_x = 6;
+	pixel_y = 0;
+	id = "EngineRadiatorViewport"
+	},
+/obj/item/book/manual/rust_engine,
+/turf/template_noop,
+/area/template_noop)
+"vS" = (
+/obj/machinery/atmospherics/pipe/simple/visible/green{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/red,
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "vV" = (
 /obj/machinery/light{
 	dir = 8;
@@ -420,12 +446,6 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/green,
-/turf/simulated/floor/plating,
-/area/engineering/engine_room)
-"wJ" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "wL" = (
@@ -443,22 +463,18 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
-"xg" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
+"xe" = (
+/obj/machinery/atmospherics/pipe/manifold/visible/red{
+	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/red,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "xH" = (
-/obj/machinery/atmospherics/component/unary/outlet_injector{
-	dir = 8;
-	frequency = 1438;
-	id = "cooling_in";
-	use_power = 1
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
+	dir = 4
 	},
-/turf/simulated/floor/reinforced/airless,
-/area/engineering/engine_room)
+/turf/template_noop,
+/area/space)
 "xM" = (
 /turf/template_noop,
 /area/space)
@@ -490,30 +506,33 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "Dw" = (
-/obj/structure/cable/cyan{
-	icon_state = "4-8"
+/obj/machinery/atmospherics/pipe/simple/visible/yellow{
+	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/red,
+/obj/spawner/window/borosillicate/full,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
-"DB" = (
-/obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 5
+"DF" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
 	},
-/turf/simulated/floor/reinforced/airless,
+/obj/machinery/atmospherics/pipe/simple/visible/yellow{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
 /area/engineering/engine_room)
-"EG" = (
-/obj/machinery/camera/network/engine{
+"Fk" = (
+/obj/fiftyspawner/deuterium,
+/obj/fiftyspawner/deuterium,
+/obj/fiftyspawner/deuterium,
+/obj/fiftyspawner/deuterium,
+/obj/fiftyspawner/deuterium,
+/obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/simulated/floor/plating,
+/obj/structure/table/reinforced,
+/turf/simulated/floor/bluegrid,
 /area/engineering/engine_room)
-"EH" = (
-/obj/machinery/computer/gyrotron_control{
-	id_tag = "engine-g"
-	},
-/turf/template_noop,
-/area/template_noop)
 "FL" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 9
@@ -521,19 +540,16 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "FN" = (
-/obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 10
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 8
 	},
+/obj/machinery/meter,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "Gf" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 10
 	},
-/turf/simulated/floor/plating,
-/area/engineering/engine_room)
-"Gq" = (
-/obj/spawner/window/borosillicate/full,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "GE" = (
@@ -548,16 +564,13 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "GQ" = (
-/obj/fiftyspawner/deuterium,
-/obj/fiftyspawner/deuterium,
-/obj/fiftyspawner/deuterium,
-/obj/fiftyspawner/deuterium,
-/obj/fiftyspawner/deuterium,
-/obj/structure/window/reinforced{
-	dir = 8
+/obj/machinery/atmospherics/component/unary/outlet_injector{
+	dir = 8;
+	frequency = 1438;
+	id = "cooling_in";
+	use_power = 1
 	},
-/obj/structure/table/reinforced,
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/greengrid/airless,
 /area/engineering/engine_room)
 "HO" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/red{
@@ -582,20 +595,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
-"Ip" = (
+"JN" = (
 /obj/structure/cable/cyan{
-	icon_state = "0-4"
+	icon_state = "1-2"
 	},
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/engineering/engine_room)
-"Jy" = (
-/obj/machinery/atmospherics/portables_connector{
-	dir = 8
-	},
-/obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "JP" = (
@@ -618,6 +621,12 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "Kt" = (
+/obj/machinery/computer/fusion_core_control{
+	id_tag = "engine"
+	},
+/turf/template_noop,
+/area/template_noop)
+"Ll" = (
 /obj/machinery/computer/general_air_control/supermatter_core{
 	dir = 1;
 	frequency = 1438;
@@ -629,26 +638,11 @@
 	},
 /turf/template_noop,
 /area/template_noop)
-"Ll" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 4
-	},
-/obj/spawner/window/borosillicate/full,
-/turf/simulated/floor/plating,
-/area/engineering/engine_room)
-"Ln" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/visible/green,
-/turf/simulated/floor/plating,
-/area/engineering/engine_room)
 "LQ" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 5
+/obj/machinery/air_sensor{
+	frequency = 1438;
+	id_tag = "engine_sensor";
+	output = 63
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
@@ -672,17 +666,18 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
-"NM" = (
-/obj/structure/cable/cyan{
-	icon_state = "4-8"
+"NE" = (
+/obj/machinery/atmospherics/pipe/simple/visible/green,
+/obj/machinery/atmospherics/pipe/simple/visible/yellow{
+	dir = 4
 	},
-/obj/machinery/power/emitter/gyrotron/anchored{
-	dir = 1;
-	id_tag = "engine-g"
-	},
-/obj/structure/cable/cyan{
-	icon_state = "0-4"
-	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
+"OJ" = (
+/turf/template_noop,
+/area/template_noop)
+"Pb" = (
+/obj/machinery/atmospherics/pipe/simple/visible/cyan,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "PT" = (
@@ -695,10 +690,18 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
-"Qk" = (
-/obj/machinery/fusion_fuel_compressor,
-/obj/machinery/light,
-/turf/simulated/floor/bluegrid,
+"PY" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/outline/blue,
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
+"Qo" = (
+/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+	dir = 10
+	},
+/turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "Qv" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
@@ -708,6 +711,15 @@
 	on = 1
 	},
 /turf/simulated/floor/greengrid/airless,
+/area/engineering/engine_room)
+"Rm" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/cyan{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "Ru" = (
 /obj/machinery/fire_alarm/west_mount,
@@ -721,12 +733,18 @@
 /area/engineering/engine_room)
 "Sg" = (
 /obj/structure/cable/cyan{
-	icon_state = "1-2"
+	icon_state = "2-4"
 	},
 /obj/structure/cable/cyan{
-	icon_state = "1-8"
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/plating,
+/area/engineering/engine_room)
+"SH" = (
+/obj/machinery/atmospherics/pipe/simple/visible/yellow{
+	dir = 5
+	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "SQ" = (
 /obj/structure/cable/cyan,
@@ -742,19 +760,16 @@
 /area/engineering/engine_room)
 "Ua" = (
 /obj/structure/cable/yellow{
-	icon_state = "0-4"
+	icon_state = "4-8"
 	},
-/obj/machinery/power/generator{
-	anchored = 1
-	},
-/turf/simulated/floor,
-/area/engineering/engine_room)
-"UA" = (
-/obj/machinery/atmospherics/component/binary/pump/high_power,
+/obj/machinery/atmospherics/pipe/simple/visible/red,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
+"UA" = (
+/turf/simulated/wall/r_wall/prepainted,
+/area/engineering/engine_room)
 "Vg" = (
-/obj/machinery/atmospherics/pipe/simple/visible/cyan,
+/obj/machinery/atmospherics/component/binary/pump/high_power,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "Vh" = (
@@ -766,14 +781,11 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "WF" = (
-/obj/machinery/power/fusion_core{
-	id_tag = "engine";
-	anchored = 1
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 8
 	},
-/obj/structure/cable/cyan{
-	icon_state = "0-4"
-	},
-/turf/simulated/floor/greengrid/airless,
+/obj/machinery/camera/network/engine,
+/turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "XM" = (
 /obj/structure/cable/cyan{
@@ -784,9 +796,18 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
+"Yd" = (
+/obj/fiftyspawner/tritium,
+/obj/fiftyspawner/tritium,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/table/reinforced,
+/turf/simulated/floor/bluegrid,
+/area/engineering/engine_room)
 "Ye" = (
-/obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 5
+/obj/machinery/camera/network/engine{
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
@@ -802,9 +823,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/engineering/engine_room)
-"Zi" = (
-/turf/simulated/wall/r_wall/prepainted,
 /area/engineering/engine_room)
 "ZF" = (
 /obj/structure/cable/cyan{
@@ -833,8 +851,8 @@ jf
 jf
 jf
 jf
-xM
-xM
+xH
+xH
 xM
 "}
 (2,1,1) = {"
@@ -846,19 +864,19 @@ xM
 xM
 jf
 ck
-Ye
+os
 Ru
 Ki
-fn
+qB
 vV
 ck
-Ye
+os
 dB
 Ki
-fn
+qB
 jf
-xM
-xM
+xH
+xH
 xM
 "}
 (3,1,1) = {"
@@ -869,25 +887,25 @@ xM
 xM
 xM
 jf
-aE
-os
-Ua
-am
+WF
+ss
+ak
+tn
 pp
 dB
 cx
-os
-Ua
-am
+ss
+ak
+tn
 pp
 jf
-xM
-xM
+ay
+mF
 xM
 "}
 (4,1,1) = {"
-aB
-aB
+OJ
+OJ
 Ie
 Ie
 Ie
@@ -895,13 +913,13 @@ jf
 jf
 cx
 as
-wJ
+rM
 fN
 pp
 dB
 cx
 as
-wJ
+rM
 fN
 pp
 jf
@@ -910,47 +928,47 @@ jf
 jf
 "}
 (5,1,1) = {"
-aB
-aB
+OJ
+OJ
 pp
 ck
 Ab
 GE
-ai
+ao
 ap
 al
-xg
+Ua
 Ab
-iE
-op
+vS
+ah
 ap
 al
-xg
+Ua
 Ab
-iE
+vS
 Vh
 GE
-Ye
+os
 Ru
 "}
 (6,1,1) = {"
-aB
-aB
+OJ
+OJ
 oN
-ue
+kB
 wb
 Nc
 Nc
 Nc
-ss
+NE
 Tf
-Ln
-CN
-fm
-fm
-PT
 kW
-Ln
+CN
+ev
+ev
+PT
+iy
+kW
 nl
 dV
 dB
@@ -958,8 +976,8 @@ cx
 dB
 "}
 (7,1,1) = {"
-aB
-aB
+OJ
+OJ
 lC
 cx
 fN
@@ -970,44 +988,44 @@ Mh
 aa
 Yy
 aa
-nf
+op
 aa
 FL
 dB
 fN
 dB
-wJ
+rM
 dB
 cx
 dB
 "}
 (8,1,1) = {"
-aH
-aB
+vm
+OJ
 pp
 cx
-FN
-UA
+Qo
 Vg
-Vg
-Vg
-Vg
+Pb
+Pb
+Pb
+Pb
 sH
-Vg
-aY
-Vg
-Vg
-Vg
+Pb
+kF
+Pb
+Pb
+Pb
 GL
 dB
-wJ
+rM
 dB
 cx
 dB
 "}
 (9,1,1) = {"
-af
-aB
+rl
+OJ
 pp
 cx
 dB
@@ -1015,239 +1033,239 @@ dB
 dB
 dB
 hP
-km
-km
-km
-aI
-km
+JN
+JN
+JN
+DF
+JN
 JP
 JP
 SQ
 dB
-wJ
+rM
 dB
 cx
 dB
 "}
 (10,1,1) = {"
-au
-aB
+Kt
+OJ
 pp
 cx
 dB
 dB
 dB
 dG
-Zi
-Gq
-Gq
-Gq
-Ll
-Gq
-Gq
-Gq
-Zi
-Ip
-wJ
+UA
+tl
+tl
+tl
+Dw
+tl
+tl
+tl
+UA
+nf
+rM
 dB
 cx
 dB
 "}
 (11,1,1) = {"
-EH
-aB
+fd
+OJ
 pp
-an
-Ye
+xe
+os
 dB
 dB
 RC
-Gq
-ay
-kt
+tl
+kP
+aJ
 at
 ax
-LQ
-kt
-ay
-Gq
+SH
+aJ
+kP
+tl
 RC
-wJ
+rM
 dB
 cx
 dB
 "}
 (12,1,1) = {"
-Kt
-aB
+Ll
+OJ
 pp
 YK
-qB
+fn
 dB
 ab
 aj
-Gq
-kt
-ay
-ah
-ay
-xH
-ay
-kt
-Gq
-NM
+tl
+aJ
+kP
+GQ
+kP
+fm
+kP
+aJ
+tl
+aB
 uR
 dB
 cx
 dB
 "}
 (13,1,1) = {"
-aB
-aB
+OJ
+OJ
 pp
 HR
 HR
 dB
 dB
 RC
-Gq
-ay
-ay
-ay
-ay
-ay
+tl
+kP
+kP
+kP
+kP
+kP
 Qv
-DB
-Gq
+kR
+tl
 RC
-wJ
+rM
 dB
-kv
+FN
 dB
 "}
 (14,1,1) = {"
-aB
-aB
+OJ
+OJ
 Gf
 wL
-fn
-dB
-dB
-RC
-Gq
-ay
-ay
-ay
-WF
-gu
-ay
-HO
-CC
-Dw
-xg
-ar
-av
-ad
-"}
-(15,1,1) = {"
-aB
-aB
-dB
-YK
 qB
 dB
 dB
 RC
-Gq
-ay
-kt
-ay
-MW
-ay
-eD
-aD
-Gq
-RC
-wJ
-dB
-dB
+tl
+kP
+kP
+kP
+mX
+LQ
+kP
+HO
+CC
+nq
+Ua
+ar
+av
 gr
 "}
-(16,1,1) = {"
-aB
-aB
+(15,1,1) = {"
+OJ
+OJ
 dB
-Jy
-Jy
+YK
+fn
+dB
+dB
+RC
+tl
+kP
+aJ
+kP
+MW
+kP
+eD
+oV
+tl
+RC
+rM
+dB
+dB
+ij
+"}
+(16,1,1) = {"
+OJ
+OJ
+dB
+PY
+PY
 dB
 ab
 aj
-Gq
-kt
-ay
-ay
+tl
+aJ
+kP
+kP
 MW
-kt
-ay
-kt
-Gq
-NM
+aJ
+kP
+aJ
+tl
+aB
 uR
 dB
 LT
-GQ
+Fk
 "}
 (17,1,1) = {"
-aB
-aB
+OJ
+OJ
 dB
 dB
 dB
 dB
 dB
 RC
-Gq
-ay
-kt
-ay
+tl
+kP
+aJ
+kP
 MW
-ay
-kt
-ay
-Gq
+kP
+aJ
+kP
+tl
 RC
-wJ
+rM
 dB
 LT
-Qk
+mu
 "}
 (18,1,1) = {"
-aB
-aB
+OJ
+OJ
 dB
 dB
 dB
 dB
 dB
 aF
-Zi
-Gq
-Gq
-Gq
+UA
+tl
+tl
+tl
 te
-Gq
-Gq
-Gq
-Zi
+tl
+tl
+tl
+UA
 wR
-wJ
+rM
 dB
 LT
-rM
+Yd
 "}
 (19,1,1) = {"
-aB
-aB
+OJ
+OJ
 dB
 dB
 dB
@@ -1264,45 +1282,45 @@ dB
 dB
 dB
 RC
-wJ
+rM
 dB
 dB
 dB
 "}
 (20,1,1) = {"
-aB
-aB
+OJ
+OJ
 dB
 dB
 dB
 dB
 dB
 ZF
-km
-km
-km
-kJ
+JN
+JN
+JN
 Sg
-km
-km
-km
-km
+Rm
+JN
+JN
+JN
+JN
 Kb
-wJ
+rM
 dB
 dB
 dB
 "}
 (21,1,1) = {"
-aB
-aB
+OJ
+OJ
 dB
 vj
 hZ
 dB
 dB
-EG
-aC
+Ye
+aI
 dB
 rX
 XM

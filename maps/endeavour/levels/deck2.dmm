@@ -1,7 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aad" = (
-/turf/space/basic,
-/area/medical/morgue)
 "aaK" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -50081,7 +50078,7 @@ gGu
 kHu
 kjr
 hqb
-aad
+gXV
 gXV
 vVP
 iKZ
