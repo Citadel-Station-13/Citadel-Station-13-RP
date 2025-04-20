@@ -13754,7 +13754,9 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/structure/closet/crate/bin,
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/rift/station/public_garden/gantry)
 "iIa" = (
