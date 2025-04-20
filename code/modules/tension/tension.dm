@@ -159,7 +159,7 @@
 			if(!attack)
 				damage_guess += 5
 
-			var/punch_damage = attack.get_unarmed_damage(H)
+			var/punch_damage = attack.damage
 			if(H.gloves)
 				if(istype(H.gloves, /obj/item/clothing/gloves))
 					var/obj/item/clothing/gloves/G = H.gloves

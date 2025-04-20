@@ -14,16 +14,16 @@
 	var/recharging = 0
 	var/phase_power = 150
 
-/obj/item/gun/projectile/energy/hardlight_bow/on_attack_hand(datum/event_args/actor/clickchain/e_args)
+/obj/item/gun/projectile/energy/hardlight_bow/on_attack_hand(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
-	if(.)
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
-	var/mob/user = e_args.performer
+	var/mob/user = clickchain.performer
 	if(!user.inventory.count_empty_hands())
 		return
 	if(recharging)
 		return
-	. = TRUE
+	. |= CLICKCHAIN_DID_SOMETHING
 	recharging = 1
 	user.visible_message("<span class='notice'>[user] begins to tighten \the [src]'s electric bowstring.</span>", \
 						"<span class='notice'>You begin to tighten \the [src]'s electric bowstring</span>")

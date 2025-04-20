@@ -307,12 +307,12 @@
 	else if(istype(using, /obj/item/ammo_casing))
 		return user_clickchain_apply_casing(using, e_args, e_args)
 
-/obj/item/gun/projectile/ballistic/on_attack_hand(datum/event_args/actor/clickchain/e_args)
-	if(e_args.performer.is_holding_inactive(src))
-		if(user_clickchain_unload(e_args, e_args) & CLICKCHAIN_FLAGS_INTERACT_ABORT)
-			return TRUE
+/obj/item/gun/projectile/ballistic/on_attack_hand(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	if(clickchain.performer.is_holding_inactive(src))
+		if(user_clickchain_unload(clickchain, clickchain) & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+			return CLICKCHAIN_DID_SOMETHING
 	. = ..()
-	if(.)
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
 
 /obj/item/gun/projectile/ballistic/consume_next_projectile(datum/gun_firing_cycle/cycle)

@@ -39,8 +39,18 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	var/animation_type = ATTACK_ANIMATION_PUNCH
 
 	//? Text
-	/// past tense, aka "[person] has [past] [target] in their [zone]"
+
+	/// past participle verb form describing the attack
+	/// * example: "[target] has been [past participle] in their [zone] by [attacker]!"
 	var/list/verb_past_participle = list("attacked")
+	//  TODO: do this
+	/// present tense third person verb form describing the attack
+	/// * example: "[attacker] [third person] [target] in their [zone]"
+	// var/list/verb_third_person
+	//  TODO: do this
+	/// present infinitive verb
+	/// * example: "[target] parries [attacker]'s [infinitive] with their [parry object]"
+	// var/list/verb_infinitive
 
 	//? legacy
 	var/attack_verb_legacy = list("attack")	// Empty hand hurt intent verb.
@@ -53,18 +63,15 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	var/eye_attack_text_victim
 
 /datum/melee_attack/unarmed/perform_attack_impact(atom/movable/attacker, atom/target, missed, obj/item/weapon, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-	var/damage_force = get_unarmed_damage(attacker, target) * clickchain.attack_melee_multiplier
+	var/damage_force = get_base_damage(attacker, target)
 
 	// TODO: should this all be here?
 	//         (no it shouldn't)
-	if(isobj(target))
-		damage_force += damage_structural_add
 	damage_force = max(0, damage_force + rand(damage_add_low, damage_add_high))
 	if(ishuman(attacker))
 		var/mob/living/carbon/human/H = attacker
 		if(MUTATION_HULK in H.mutations)
-			real_damage *= 2 // Hulks do twice the damage
-			rand_damage *= 2
+			damage_force *= 2 // Hulks do twice the damage
 		if(istype(H.gloves, /obj/item/clothing/gloves))
 			var/obj/item/clothing/gloves/G = H.gloves
 			damage_force += G.punch_force
@@ -92,8 +99,14 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 /datum/melee_attack/unarmed/perform_attack_message(atom/movable/attacker, atom/target, missed, obj/item/weapon, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	if(missed)
 		return ..()
+	var/where_phrase
+	if(iscarbon(target))
+		var/mob/living/carbon/carbon_target = target
+		var/obj/item/organ/where_hit = carbon_target.get_organ(clickchain.target_zone)
+		if(where_hit)
+			where_phrase = " in \the [where_hit]"
 	attacker.visible_message(
-		SPAN_DANGER("[target] has been [islist(verb_past_participle)? pick(verb_past_participle) : verb_past_participle] by [attacker]!"),
+		SPAN_DANGER("[target] has been [islist(verb_past_participle)? pick(verb_past_participle) : verb_past_participle][where_phrase] by [attacker]!"),
 		range = MESSAGE_RANGE_COMBAT_LOUD,
 	)
 	return TRUE
@@ -101,17 +114,22 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 /datum/melee_attack/unarmed/perform_attack_sound(atom/movable/attacker, atom/target, missed, obj/item/weapon, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	if(missed)
 		return ..()
-	#warn show attack
 	playsound(target, target.hitsound_unarmed(attacker, src), 50, TRUE, -1)
 	return TRUE
 
 /datum/melee_attack/unarmed/estimate_damage(atom/movable/attacker, atom/target, obj/item/weapon)
 	return damage
 
+// TODO: rid of this
 /datum/melee_attack/unarmed/proc/operator""()
 	return pick(attack_verb_legacy)
 
-//* Feedback
+/datum/melee_attack/unarmed/proc/get_base_damage(atom/movable/attacker, atom/target)
+	. = damage
+	if(isobj(target))
+		. += damage_structural_add
+
+//* Feedback *//
 
 /datum/melee_attack/unarmed/proc/get_sparring_variant()
 	return fetch_unarmed_style(sparring_variant_type)

@@ -1,15 +1,3 @@
-/*
-	run_armor_check(a,b)
-	args
-	a:def_zone		- What part is getting hit, if null will check entire body
-	b:attack_flag	- What type of attack, bullet, laser, energy, melee
-	c:armour_pen	- How much armor to ignore.
-	d:absorb_text	- Custom text to send to the player when the armor fully absorbs an attack.
-	e:soften_text	- Similar to absorb_text, custom text to send to the player when some damage is reduced.
-
-	Returns
-	A number between 0 and 100, with higher numbers resulting in less damage taken.
-*/
 /mob/living/proc/run_armor_check(var/def_zone = null, var/attack_flag = "melee", var/armour_pen = 0, var/absorb_text = null, var/soften_text = null)
 	if(GLOB.Debug2)
 		log_world("## DEBUG: legacy_mob_armor() was called.")
@@ -41,41 +29,6 @@
 			log_world("## DEBUG: Armor when [src] was attacked was [armor].")
 	return armor
 
-/*
-	//Old armor code here.
-	if(armour_pen >= 100)
-		return 0 //might as well just skip the processing
-
-	var/armor = legacy_mob_armor(def_zone, attack_flag)
-	var/absorb = 0
-
-	//Roll armour
-	if(prob(armor))
-		absorb += 1
-	if(prob(armor))
-		absorb += 1
-
-	//Roll penetration
-	if(prob(armour_pen))
-		absorb -= 1
-	if(prob(armour_pen))
-		absorb -= 1
-
-	if(absorb >= 2)
-		if(absorb_text)
-			show_message("[absorb_text]")
-		else
-			show_message("<span class='warning'>Your armor absorbs the blow!</span>")
-		return 2
-	if(absorb == 1)
-		if(absorb_text)
-			show_message("[soften_text]",4)
-		else
-			show_message("<span class='warning'>Your armor softens the blow!</span>")
-		return 1
-	return 0
-*/
-
 //Certain pieces of armor actually absorb flat amounts of damage from income attacks
 /mob/living/proc/get_armor_soak(var/def_zone = null, var/attack_flag = "melee", var/armour_pen = 0)
 	var/soaked = legacy_mob_soak(def_zone, attack_flag)
@@ -105,13 +58,6 @@
 	if(istype(L) && L.a_intent != INTENT_HELP)
 		if(ai_holder) // Using disarm, grab, or harm intent is considered a hostile action to the mob's AI.
 			ai_holder.react_to_attack_polaris(L)
-
-/mob/living/rad_act(strength, datum/radiation_wave/wave)
-	. = ..()
-	if(wave)
-		afflict_radiation(strength * RAD_MOB_ACT_COEFFICIENT - RAD_MOB_ACT_PROTECTION_PER_WAVE_SOURCE, TRUE)
-	else
-		afflict_radiation(strength * RAD_MOB_ACT_COEFFICIENT - RAD_MOB_ACT_PROTECTION_PER_WAVE_SOURCE, TRUE)
 
 /mob/living/emp_act(severity)
 	var/list/L = src.get_equipped_items(TRUE, TRUE)

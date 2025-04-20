@@ -1,5 +1,23 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station Developers           *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
+
+/mob/living/carbon/can_clickchain_unarmed_interact_with_mob(datum/event_args/actor/clickchain/clickchain, clickchain_flags, mob/target, silent)
+	if(clickchain)
+		if(clickchain.using_hand_index)
+			var/obj/item/organ/external/hand_organ = get_hand_organ(clickchain.using_hand_index)
+			if(!hand_organ)
+				if(!silent)
+					clickchain.chat_feedback(
+						SPAN_WARNING("You are missing that hand!"),
+					)
+				return FALSE
+			if(!hand_organ.is_usable())
+				if(!silent)
+					clickchain.chat_feedback(
+						SPAN_WARNING("You can't use your [hand_organ.name] right now!"),
+					)
+				return FALSE
+	return ..()
 
 /mob/living/carbon/on_clickchain_help_interaction(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()

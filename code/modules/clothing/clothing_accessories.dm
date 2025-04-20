@@ -29,14 +29,13 @@
 		return FALSE
 	return accessory.context_menu_act(e_args, split[3])
 
-/obj/item/clothing/on_attack_hand(datum/event_args/actor/clickchain/e_args)
+/obj/item/clothing/on_attack_hand(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
-	if(.)
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
 	for(var/obj/item/clothing/accessory as anything in accessories)
-		if(accessory.on_attack_hand(e_args))
-			return TRUE
-	return FALSE
+		if(accessory.on_attack_hand(clickchain, clickchain_flags))
+			return CLICKCHAIN_DID_SOMETHING
 
 /obj/item/clothing/get_worn_mob()
 	return isnull(accessory_host)? ..() : accessory_host.get_worn_mob()

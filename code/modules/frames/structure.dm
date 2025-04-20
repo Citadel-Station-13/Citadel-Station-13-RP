@@ -108,12 +108,12 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	return ..()
 
-/obj/structure/frame2/on_attack_hand(datum/event_args/actor/clickchain/e_args)
+/obj/structure/frame2/on_attack_hand(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
-	if(.)
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
-	if(frame.on_interact(src, e_args))
-		return TRUE
+	if(frame.on_interact(src, clickchain))
+		return CLICKCHAIN_DID_SOMETHING
 
 /obj/structure/frame2/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
 	if(user.a_intent == INTENT_HARM)

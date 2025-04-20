@@ -35,7 +35,7 @@
 	if(isnull(e_args))
 		e_args = user.default_clickchain_event_args(src, TRUE)
 	// end
-	if(on_attack_hand(e_args))
+	if(on_attack_hand(e_args, NONE))
 		return TRUE
 	if(user.a_intent == INTENT_HARM)
 		return user.melee_attack_chain(e_args)
@@ -45,13 +45,13 @@
  * Override this instead of attack_hand.
  * This happens before melee attack chain checks.
  *
- * Return TRUE to cancel other attack hand effects that respect it.
- *
  * @params
  * * e_args - click data
+ *
+ * @return clickchain flags
  */
-/atom/proc/on_attack_hand(datum/event_args/actor/clickchain/e_args)
-	return FALSE
+/atom/proc/on_attack_hand(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	return NONE
 
 //Return a non FALSE value to cancel whatever called this from propagating, if it respects it.
 /atom/proc/_try_interact(mob/user)

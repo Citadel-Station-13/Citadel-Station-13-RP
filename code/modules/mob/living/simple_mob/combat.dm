@@ -86,7 +86,7 @@
 // Override for doing special stuff with the direct result of the attack.
 /mob/living/simple_mob/proc/apply_attack(atom/A, damage_to_do)
 	if(!ismob(A))
-		var/nominal_damage = melee_style.get_unarmed_damage(src, A)
+		var/nominal_damage = melee_style.get_base_damage(src, A)
 		var/mult = nominal_damage? damage_to_do / nominal_damage : 0
 		var/datum/event_args/actor/clickchain/e_args = default_clickchain_event_args(A, TRUE)
 		e_args.attack_melee_multiplier = mult
