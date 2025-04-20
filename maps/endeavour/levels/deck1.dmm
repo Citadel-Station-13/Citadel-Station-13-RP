@@ -91,9 +91,6 @@
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/general)
 "acZ" = (
-/obj/structure/sign/deck/first{
-	pixel_x = 32
-	},
 /obj/spawner/window/low_wall/full/firelocks,
 /turf/simulated/floor/plating,
 /area/station/stairs_one)
@@ -5371,6 +5368,10 @@
 	},
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/navgold/border,
+/obj/structure/sign/deck/first{
+	pixel_x = 0;
+	pixel_y = -32
+	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
 "dZQ" = (
@@ -16550,8 +16551,17 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/hallway)
 "mAo" = (
-/obj/structure/sign/deck/first,
-/turf/simulated/wall/r_wall/prepainted/exploration,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 1
+	},
+/obj/structure/sign/deck/first{
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portamidhall)
 "mAC" = (
 /obj/random/trash_pile,
@@ -27243,6 +27253,10 @@
 	},
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 5
+	},
+/obj/structure/sign/deck/first{
+	pixel_x = 0;
+	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portamidhall)
@@ -43700,8 +43714,8 @@ dgm
 sYL
 sYL
 sYL
+sYL
 mAo
-vnQ
 pPy
 dWV
 hJA
@@ -44670,7 +44684,7 @@ jAa
 sYL
 sYL
 sYL
-mAo
+sYL
 uzj
 eLb
 dWV
