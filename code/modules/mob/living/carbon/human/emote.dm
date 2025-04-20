@@ -1131,11 +1131,11 @@
 				return
 
 		if ("help")
-			to_chat(src, "nyaha, ara, awoo, bark, bleat, blink, blink_r, blush, bow-(none)/mob, burp, chirp, choke, chuckle, clap, collapse, cough, cry, custom, deathgasp, drool, eyebrow, fastsway/qwag, \
-					flip, frown, gasp, giggle, glare-(none)/mob, grin, groan, grumble, handshake, hiss, hug-(none)/mob, laugh, look-(none)/mob, mar, merp, moan, mrrp, mumble, nod, nya, pale, peep, point-atom, prbt, \
+			to_chat(src, "ara, awoo, bark, bleat, blink, blink_r, blush, bow-(none)/mob, burp, chirp, choke, chuckle, clap, collapse, cough, cry, custom, deathgasp, drool, echoping, eyebrow, fastsway/qwag, \
+					flip, frown, gasp, giggle, glare-(none)/mob, grin, groan, grumble, growl, handshake, hiss, howl, hug-(none)/mob, laugh, look-(none)/mob, mar, merp, moan, mrrp, mumble, nod, nya, nyaha, pale, peep, point-atom, prbt, \
 					raise, roll, salute, fullsalute, scream, sneeze, shake, shiver, shrug, sigh, signal-#1-10, slap-(none)/mob, smile, sneeze, sniff, snore, stare-(none)/mob, stopsway/swag, squeak, sway/wag, swish, tremble, twitch, \
-					twitch_v, uwu, vomit, weh, whimper, wink, yawn. Moth: mchitter, mlaugh, mscream, msqueak. Synthetics: beep, buzz, buzz2, chime, die, dwoop, error, honk, no, ping, rcough, rsneeze, scary, \
-					shutdown, startup, warn, ye, yes. Vox: shriekshort, shriekloud")
+					twitch_v, uwu, vomit, weh, whimper, wink, yawn, ycackle. Moth: mchitter, mlaugh, mscream, msqueak. Synthetics: airhorn, beep, buzz, buzz2, chime, die, dwoop, error, honk, no, ping, rcough, rsneeze, scary, \
+					shutdown, startup, steam, warn, ye, yes. Vox: shriekshort, shriekloud")
 
 		else
 			to_chat(src, "<font color=#4F49AF>Unusable emote '[act]'. Say *help for a list.</font>")
@@ -1424,12 +1424,6 @@
 			message = "lets off some steam."
 			m_type = 2
 			playsound(loc, 'sound/machines/clockcult/steam_whoosh.ogg', 30, 1, 1)
-			spam_flag = TRUE
-			addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
-		if ("reverb")
-			message = "regrets using this emote."
-			m_type = 2
-			playsound(loc, 'sound/voice/reverb.ogg', 50, 1, 1)
 			spam_flag = TRUE
 			addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
 		
