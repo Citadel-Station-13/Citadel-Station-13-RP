@@ -113,6 +113,8 @@
 			combo_tracker.on_continuation_end = CALLBACK(src, PROC_REF(on_continuation_end))
 	RegisterSignal(wearer, COMSIG_MOB_MELEE_IMPACT_HOOK, PROC_REF(on_user_melee_impact))
 
+#warn FUCK FUCK FUCK FCUK FUCK FUCK FUCK
+
 /obj/item/kinetic_gauntlets/on_inv_unequipped(mob/wearer, datum/inventory/inventory, slot_id_or_index, inv_op_flags, datum/event_args/actor/actor)
 	. = ..()
 	discharge()

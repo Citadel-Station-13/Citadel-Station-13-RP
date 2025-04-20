@@ -94,6 +94,7 @@
 		for(var/obj/item/grab/G in L.get_held_items_of_type(/obj/item/grab))
 			G.reset_kill_state() //no wandering across the station/asteroid while choking someone
 
+// TODO: refactor this and perform logging in attackchain instead of here
 /obj/item/grab
 	name = "grab"
 	icon = 'icons/mob/screen1.dmi'
@@ -124,6 +125,7 @@
 	var/mob/user = loc
 	assailant = user
 	affecting = victim
+	add_attack_logs(assailant,affecting,"Grab Initialized")
 
 	if(affecting.anchored || !assailant.Adjacent(victim) || affecting.buckled)
 		affecting = null
@@ -365,6 +367,7 @@
 			apply_pinning(affecting, assailant)
 
 		state = GRAB_AGGRESSIVE
+		add_attack_logs(assailant,affecting,"Aggressively grabbed")
 		icon_state = "grabbed1"
 		hud.icon_state = "reinforce1"
 	else if(state < GRAB_NECK)

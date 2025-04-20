@@ -90,7 +90,16 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	)
 	clickchain.data[ACTOR_DATA_MELEE_DAMAGE_INSTANCE_RESULTS] = results
 	target.on_melee_impact(attacker, weapon, src, clickchain.target_zone, clickchain, clickchain_flags, results)
-	#warn apply effects call
+
+	var/list/additional_legacy_effects = apply_effects(
+		attacker,
+		target,
+		0, // NO ARMOR YOLOOOO
+		results[SHIELDCALL_ARG_DAMAGE],
+	)
+	if(length(additional_legacy_effects))
+		clickchain.data["legacy-punching-additional"] = additional_legacy_effects
+
 	return clickchain_flags
 
 /datum/melee_attack/unarmed/perform_attack_animation(atom/movable/attacker, atom/target, missed, obj/item/weapon, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
@@ -149,10 +158,12 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 
 	return FALSE
 
+// TODO: refactor this shit
 /datum/melee_attack/unarmed/proc/apply_effects(var/mob/living/carbon/human/user,var/mob/living/carbon/human/target,var/armour,var/attack_damage,var/zone)
 
 	var/stun_chance = rand(0, 100)
 	var/datum/gender/TT = GLOB.gender_datums[target.get_visible_gender()]
+	. = list()
 
 	if(attack_damage >= 5 && armour < 2 && !(target == user) && stun_chance <= attack_damage * 5) // 25% standard chance
 		switch(zone) // strong punches can have effects depending on where they hit
@@ -160,6 +171,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 				// Induce blurriness
 				target.visible_message("<span class='danger'>[target] looks momentarily disoriented.</span>", "<span class='danger'>You see stars.</span>")
 				target.apply_effect(attack_damage*2, EYE_BLUR, armour)
+				. +=  "disorient"
 			if(BP_L_ARM, BP_L_HAND)
 				var/obj/item/knocked_away = target.get_left_held_item()
 				if (knocked_away)
@@ -167,12 +179,14 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 					//Urist McAssistant dropped the macguffin with a scream just sounds odd.
 					target.visible_message("<span class='danger'>\The [knocked_away] was knocked right out of [target]'s grasp!</span>")
 					target.drop_item_to_ground(knocked_away)
+					. +=  "disarmed [knocked_away] left"
 			if(BP_R_ARM, BP_R_HAND)
 				var/obj/item/knocked_away = target.get_left_held_item()
 				if (knocked_away)
 					// Disarm right hand
 					target.visible_message("<span class='danger'>\The [knocked_away] was knocked right out of [target]'s grasp!</span>")
 					target.drop_item_to_ground(knocked_away)
+					. +=  "disarmed [knocked_away] right"
 			if(BP_TORSO)
 				if(!target.lying)
 					var/turf/T = get_step(get_turf(target), get_dir(get_turf(user), get_turf(target)))
@@ -184,20 +198,24 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 					if(prob(50))
 						target.setDir(global.reverse_dir[target.dir])
 					target.apply_effect(attack_damage * 0.3, WEAKEN, armour)
+					. +=  "flew backwards"
 			if(BP_GROIN)
 				if(!target.isSynthetic())
 					target.visible_message("<span class='warning'>[target] looks like [TT.he] [TT.is] in pain!</span>", "<span class='warning'>[(target.gender=="female") ? "Oh god that hurt!" : "Oh no, not your[pick("testicles", "crown jewels", "clockweights", "family jewels", "marbles", "bean bags", "teabags", "sweetmeats", "goolies")]!"]</span>") // """""""I see no easy way to fix this for non-organic or neuter characters.""""""" - original coder
 					target.apply_effects(stutter = attack_damage * 2, agony = attack_damage* 3, blocked = armour)
+					. +=  "dick punched"
 			if("l_leg", "l_foot", "r_leg", "r_foot")
 				if(!target.lying)
 					target.visible_message("<span class='warning'>[target] gives way slightly.</span>")
 					target.apply_effect(attack_damage * 3, AGONY, armour)
+					. +=  "shin kicked"
 	else if(attack_damage >= 5 && !(target == user) && (stun_chance + attack_damage * 5 >= 100) && armour < 2) // Chance to get the usual throwdown as well (25% standard chance)
 		if(!target.lying)
 			target.visible_message("<span class='danger'>[target] [pick("slumps", "falls", "drops")] down to the ground!</span>")
 		else
 			target.visible_message("<span class='danger'>[target] has been weakened!</span>")
 		target.apply_effect(3, WEAKEN, armour)
+		. +=  "knocked down"
 
 	if(user.species.infect_wounds)		//Creates a pre-damaged, pre-infected wound. As nasty as this code.
 		if(prob(infected_wound_probability))
@@ -213,6 +231,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 			W?.force_infect()
 
 			target.visible_message("<span class='danger'><i>[user] [attack_message]</i></span>")
+			. += "wound infected"
 
 /datum/melee_attack/unarmed/proc/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 	var/obj/item/organ/external/affecting = target.get_organ(zone)

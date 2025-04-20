@@ -138,6 +138,8 @@
 	return CLICKCHAIN_DID_SOMETHING
 
 /**
+ * TODO: log this, currently it's logged in /obj/item/grab
+ *
  * @return clickchain flags
  */
 /mob/living/carbon/human/proc/attempt_clickchain_grab(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
@@ -159,7 +161,6 @@
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_ATTACK_MISSED
 	var/datum/gender/TT = GLOB.gender_datums[H.get_visible_gender()]
 	var/mob/living/L = H
-	#warn log
 	if(L == src || anchored)
 		return NONE
 	for(var/obj/item/grab/G in src.grabbed_by)
