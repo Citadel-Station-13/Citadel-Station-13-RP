@@ -6,10 +6,12 @@
 /area/endeavour/hallway/d4aftmaint
 	name = "\improper Deck 4 Aft Maintenance"
 	icon_state = "amaint"
+	ambience = AMBIENCE_MAINTENANCE
 
 /area/endeavour/hallway/d4fwdmaint
 	name = "\improper Deck 4 Forward Maintenance"
 	icon_state = "fmaint"
+	ambience = AMBIENCE_MAINTENANCE
 
 /area/endeavour/hallway/d4fwdhall
 	name = "\improper Deck 4 Forward Hallway"
@@ -56,10 +58,12 @@
 /area/endeavour/hallway/d3aftmaint
 	name = "\improper Deck 3 Aft Maintenance"
 	icon_state = "amaint"
+	ambience = AMBIENCE_MAINTENANCE
 
 /area/endeavour/hallway/d3fwdmaint
 	name = "\improper Deck 3 Forward Maintenance"
 	icon_state = "fmaint"
+	ambience = AMBIENCE_MAINTENANCE
 
 /area/endeavour/hallway/d3fwdhall
 	name = "\improper Deck 3 Forward Hallway"
@@ -106,10 +110,12 @@
 /area/endeavour/hallway/d2aftmaint
 	name = "\improper Deck 2 Aft Maintenance"
 	icon_state = "amaint"
+	ambience = AMBIENCE_MAINTENANCE
 
 /area/endeavour/hallway/d2fwdmaint
 	name = "\improper Deck 2 Forward Maintenance"
 	icon_state = "fmaint"
+	ambience = AMBIENCE_MAINTENANCE
 
 /area/endeavour/hallway/d2fwdhall
 	name = "\improper Deck 2 Forward Hallway"
@@ -151,15 +157,20 @@
 	name = "\improper Deck 2 Starboard Aft Hallway"
 	icon_state = "hallS"
 
+/area/endeavour/hallway/reservehanger
+	name = "\improper Reserve Forward Hanger"
+
 /** Deck 1
  */
 /area/endeavour/hallway/d1aftmaint
 	name = "\improper Deck 1 Aft Maintenance"
 	icon_state = "amaint"
+	ambience = AMBIENCE_MAINTENANCE
 
 /area/endeavour/hallway/d1fwdmaint
 	name = "\improper Deck 1 Forward Maintenance"
 	icon_state = "fmaint"
+	ambience = AMBIENCE_MAINTENANCE
 
 /area/endeavour/hallway/d1fwdhall
 	name = "\improper Deck 1 Forward Hallway"
@@ -201,6 +212,19 @@
 	name = "\improper Deck 1 Starboard Aft Hallway"
 	icon_state = "hallS"
 
+/area/endeavour/cryo
+	name = "\improper Cryogenic Storage"
+	icon_state = "crew_quarters"
+
+/area/crew_quarters/cryo/recovery
+	name = "\improper Cryogenics Recovery"
+
+/** Civillian
+ */
+/area/endeavour/civillian/evastorage
+	name = "\improper Public EVA Storage"
+	icon_state = "purple"
+
 /** Command
  */
 /area/endeavour/command/turrets
@@ -230,6 +254,9 @@
 /area/endeavour/exploration/hallway_aft
 	name = "\improper Exploration Aft Hallway"
 
+/area/endeavour/exploration/aux_hanger
+	name = "\improper Exploration Auxilliary Hanger"
+
 /** Medical
  */
 
@@ -244,3 +271,78 @@
 /area/medical/oncall_room
 	name = "\improper On-Call Room"
 	icon_state = "medbay"
+
+/** Substations
+ */
+
+/area/engineering/substation/deck1forward
+	name = "\improper Deck 1 Foreward Substation"
+	icon_state = "engineering"
+	ambience = AMBIENCE_SUBSTATION
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
+
+/area/engineering/substation/deck1amidships
+	name = "\improper Deck 1 Amidships Substation"
+	icon_state = "engineering"
+	ambience = AMBIENCE_SUBSTATION
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
+
+/area/engineering/substation/deck1aft
+	name = "\improper Deck 1 Aft Substation"
+	icon_state = "engineering"
+	ambience = AMBIENCE_SUBSTATION
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
+
+/area/engineering/substation/deck2forward
+	name = "\improper Deck 2 Foreward Substation"
+	icon_state = "engineering"
+	ambience = AMBIENCE_SUBSTATION
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
+
+/area/engineering/substation/deck2amidships
+	name = "\improper Deck 2 Amidships Substation"
+	icon_state = "engineering"
+	ambience = AMBIENCE_SUBSTATION
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
+
+/area/engineering/substation/deck2aft
+	name = "\improper Deck 2 Aft Substation"
+	icon_state = "engineering"
+	ambience = AMBIENCE_SUBSTATION
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
+
+/area/engineering/substation/deck3forward
+	name = "\improper Deck 3 Foreward Substation"
+	icon_state = "engineering"
+	ambience = AMBIENCE_SUBSTATION
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
+
+/area/engineering/substation/deck3amidships
+	name = "\improper Deck 3 Amidships Substation"
+	icon_state = "engineering"
+	ambience = AMBIENCE_SUBSTATION
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
+
+/area/engineering/substation/deck3aft
+	name = "\improper Deck 3 Aft Substation"
+	icon_state = "engineering"
+	ambience = AMBIENCE_SUBSTATION
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
+
+/area/engineering/substation/deck4forward
+	name = "\improper Deck 4 Foreward Substation"
+	icon_state = "engineering"
+	ambience = 'sound/ambience/engineering/engineering3.ogg'
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
+
+/area/engineering/substation/deck4amidships
+	name = "\improper Deck 4 Amidships Substation"
+	icon_state = "engineering"
+	ambience = AMBIENCE_SUBSTATION
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
+
+/area/engineering/substation/deck4aft
+	name = "\improper Deck 4 Aft Substation"
+	icon_state = "engineering"
+	ambience = AMBIENCE_SUBSTATION
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
