@@ -75,8 +75,8 @@
 /obj/machinery/door/airlock/hatch{
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/machinery/door/firedoor,
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/engine_airlock)
 "adU" = (
@@ -871,13 +871,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
-"aMW" = (
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging,
-/obj/machinery/camera/network/outside{
-	dir = 8
-	},
-/turf/space,
-/area/space)
 "aOp" = (
 /obj/structure/table/steel,
 /obj/item/aicard,
@@ -1120,10 +1113,16 @@
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck4aft)
 "bdA" = (
-/obj/structure/catwalk,
-/obj/effect/floor_decal/corner/lightorange/bordercorner2,
-/turf/simulated/floor/plating,
-/area/maintenance/station/eng_lower)
+/obj/machinery/portable_atmospherics/canister/phoron/engine_setup,
+/obj/effect/floor_decal/industrial/outline{
+	color = "#ed983d"
+	},
+/obj/structure/sign/fire{
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/turf/simulated/floor/tiled/dark,
+/area/engineering/engine_gas)
 "bec" = (
 /obj/effect/floor_decal/corner/lightorange/diagonal,
 /obj/structure/cable/green{
@@ -1374,6 +1373,14 @@
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "boY" = (
+/obj/structure/statue/gold/ce{
+	name = "Bom Tombadil";
+	desc = "Hee-dol merry-dol my heartsies. Beware of Randolph P. Checkers."
+	},
+/obj/item/clothing/gloves/ring/material/gold{
+	name = "The None Ring";
+	desc = "This ring is awfully heavy. It has \"Clear out the tactical toilet.\" engraved inside."
+	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4portafthall)
 "bps" = (
@@ -2592,15 +2599,6 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/portnacelle)
-"cCP" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 8
-	},
-/obj/machinery/atmospherics/valve{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/engineering/atmos)
 "cDX" = (
 /turf/simulated/floor/carpet/oracarpet,
 /area/engineering/engineering_monitoring)
@@ -3093,25 +3091,6 @@
 /obj/item/radio/beacon,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4starboardforhall)
-"ddh" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/navblue/border{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/fuel,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/structure/sign/deck/fourth{
-	pixel_x = -32;
-	pixel_y = 1
-	},
-/turf/simulated/floor/tiled/steel,
-/area/endeavour/hallway/d4portafthall)
 "ddx" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -3722,6 +3701,25 @@
 /area/endeavour/hallway/d4fwdmaint)
 "dFG" = (
 /turf/simulated/floor/tiled/steel_ridged,
+/area/endeavour/hallway/d4portafthall)
+"dGD" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/structure/sign/deck/fourth{
+	pixel_x = -32;
+	pixel_y = 1
+	},
+/turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4portafthall)
 "dGJ" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
@@ -6307,13 +6305,6 @@
 /obj/item/clothing/gloves/black,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
-"gkL" = (
-/obj/structure/lattice,
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
-	dir = 5
-	},
-/turf/space,
-/area/space)
 "gkW" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -7712,7 +7703,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4portafthall)
 "hCB" = (
-/obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
@@ -7729,6 +7719,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/glass/engineering,
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/tiled/white,
 /area/engineering/engine_monitoring)
 "hDC" = (
@@ -8776,12 +8767,12 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
 "iKd" = (
-/obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/machinery/door/airlock/hatch{
 	req_one_access = null
 	},
 /obj/machinery/door/firedoor,
 /obj/structure/catwalk,
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "iKe" = (
@@ -10801,21 +10792,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
-"kJR" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/corner/navblue/border,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/sign/deck/fourth{
-	pixel_x = 0;
-	pixel_y = -32
-	},
-/turf/simulated/floor/tiled,
-/area/endeavour/hallway/d4portafthall)
 "kKx" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -12569,12 +12545,6 @@
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
-"mCV" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/engineering/engine_room)
 "mEo" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -12683,6 +12653,12 @@
 "mHV" = (
 /turf/space,
 /area/engineering/portnacelle)
+"mIg" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "mIG" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -15722,6 +15698,13 @@
 /obj/effect/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
+"qhx" = (
+/obj/structure/lattice,
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
+	dir = 5
+	},
+/turf/space,
+/area/space)
 "qhH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
@@ -16977,6 +16960,13 @@
 /obj/landmark/spawnpoint/job/station_engineer,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
+"ryU" = (
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging,
+/obj/machinery/camera/network/outside{
+	dir = 8
+	},
+/turf/space,
+/area/space)
 "ryY" = (
 /obj/machinery/light{
 	dir = 4
@@ -18407,6 +18397,21 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_ridged,
+/area/endeavour/hallway/d4portafthall)
+"tkJ" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/navblue/border,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/sign/deck/fourth{
+	pixel_x = 0;
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4portafthall)
 "tln" = (
 /obj/structure/cable/green{
@@ -20572,17 +20577,6 @@
 /obj/effect/floor_decal/corner/navgold/bordercorner2,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4starboardhall)
-"vzj" = (
-/obj/machinery/portable_atmospherics/canister/phoron/engine_setup,
-/obj/effect/floor_decal/industrial/outline{
-	color = "#ed983d"
-	},
-/obj/structure/sign/fire{
-	pixel_x = 32;
-	pixel_y = 0
-	},
-/turf/simulated/floor/tiled/dark,
-/area/engineering/engine_gas)
 "vzo" = (
 /obj/structure/table/rack{
 	dir = 8;
@@ -21481,6 +21475,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4aftmaint)
+"wqb" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/obj/machinery/atmospherics/valve{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/engineering/atmos)
 "wqd" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 8
@@ -22142,10 +22145,6 @@
 "xbk" = (
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/engineering/hallway/lower)
-"xbB" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/maintenance/station/eng_lower)
 "xbQ" = (
 /obj/structure/table/marble,
 /obj/machinery/door/blast/shutters{
@@ -22523,7 +22522,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 8
 	},
-/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4portafthall)
 "xwJ" = (
@@ -29980,8 +29978,8 @@ iPU
 iPU
 uhm
 iPU
-aMW
-gkL
+ryU
+qhx
 mhf
 jNg
 uUN
@@ -30565,7 +30563,7 @@ uHx
 fpa
 psc
 jNg
-uUN
+xRj
 uUN
 kkQ
 kkQ
@@ -32680,7 +32678,7 @@ lPj
 lPj
 lPj
 lPj
-mCV
+mIg
 uHx
 uHx
 uHx
@@ -33837,7 +33835,7 @@ wCh
 jyr
 kAO
 xwJ
-kJR
+tkJ
 aGv
 crO
 gnX
@@ -34035,7 +34033,7 @@ gOX
 aGv
 crO
 asr
-vzj
+bdA
 gnX
 lzV
 uHx
@@ -34426,7 +34424,7 @@ hBH
 sQl
 hBH
 viP
-ddh
+dGD
 qNx
 uvK
 fDG
@@ -37903,7 +37901,7 @@ gAz
 miH
 pTw
 oUS
-xbB
+xAC
 qrZ
 jCo
 gwX
@@ -38295,7 +38293,7 @@ huV
 huV
 huV
 huV
-bdA
+huV
 eGm
 dFG
 eIN
@@ -38486,7 +38484,7 @@ vjL
 iPa
 oUS
 vdH
-xAC
+vKO
 vKO
 akX
 kBs
@@ -38733,9 +38731,9 @@ uPX
 dNZ
 ico
 ghy
-cCP
-cCP
-cCP
+wqb
+wqb
+wqb
 vMA
 heX
 sJM

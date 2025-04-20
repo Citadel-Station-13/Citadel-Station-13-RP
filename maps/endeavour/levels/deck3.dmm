@@ -10053,6 +10053,12 @@
 	},
 /turf/simulated/floor/tiled/old_cargo/white,
 /area/security/forensics)
+"hxJ" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/pool)
 "hxO" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1
@@ -27376,6 +27382,15 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3aftmaint)
+"ust" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/pool)
 "usz" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -28916,6 +28931,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/foyer)
+"vCM" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/plating,
+/area/maintenance/pool)
 "vDo" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techmaint,
@@ -37229,9 +37251,9 @@ mDp
 nNX
 eAp
 eAp
+hxJ
 sZl
-sZl
-sZl
+hxJ
 sZl
 cVJ
 vrt
@@ -37423,9 +37445,9 @@ mDp
 mDp
 eAp
 eAp
+ust
 sZl
-sZl
-sZl
+vCM
 sZl
 kdY
 kdY

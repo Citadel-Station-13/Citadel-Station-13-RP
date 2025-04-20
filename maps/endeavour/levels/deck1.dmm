@@ -21908,6 +21908,10 @@
 /obj/item/gun/projectile/energy/civtas{
 	pixel_y = -12
 	},
+/obj/item/clothing/head/bearpelt{
+	name = "Donny's Pelt";
+	desc = "Worn by a baseball bat wielder with an enthusiasm for anti-fascism."
+	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1fwdmaint)
 "qCp" = (
