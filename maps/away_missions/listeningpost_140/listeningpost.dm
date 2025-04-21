@@ -1,4 +1,4 @@
-/datum/map/gateway/carpfarm_140
+/datum/map/gateway/listeningpost_140
 	id = "listeningpost_140"
 	name = "Gateway - Listeningpost"
 	width = 140

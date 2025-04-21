@@ -1,17 +1,17 @@
-/datum/map/gateway/zoo_140
-	id = "zoo_140"
+/datum/map/gateway/zoo_197x305
+	id = "zoo_197x305"
 	name = "Gateway - Zoo"
-	width = 140
-	height = 140
+	width = 197
+	height = 305
 	levels = list(
-		/datum/map_level/gateway/zoo_140,
+		/datum/map_level/gateway/zoo_197x305,
 	)
 
-/datum/map_level/gateway/zoo_140
-	id = "Zoo140"
+/datum/map_level/gateway/zoo_197x305
+	id = "Zoo197x305"
 	name = "Gateway - Zoo"
 	display_name = "Zoo"
-	path = "maps/away_missions/zoo_140/levels/zoo.dmm"
+	path = "maps/away_missions/zoo_197x305/levels/zoo.dmm"
 	base_turf = /turf/space
 	base_area = /area/space
 
