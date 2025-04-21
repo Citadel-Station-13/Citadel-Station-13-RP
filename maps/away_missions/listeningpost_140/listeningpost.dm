@@ -11,7 +11,7 @@
 	id = "Listeningpost140"
 	name = "Gateway - Listeningpost"
 	display_name = "Listening Post"
-	path = "maps/gateway_missions/listeningpost_140/levels/listeningpost.dmm"
+	path = "maps/away_missions/listeningpost_140/levels/listeningpost.dmm"
 	base_turf = /turf/space
 	base_area = /area/space
 

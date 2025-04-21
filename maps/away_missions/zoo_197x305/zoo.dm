@@ -13,7 +13,7 @@
 	id = "Zoo197x305"
 	name = "Gateway - Zoo"
 	display_name = "Zoo"
-	path = "maps/gateway_missions/zoo_197x305/levels/zoo.dmm"
+	path = "maps/away_missions/zoo_197x305/levels/zoo.dmm"
 	base_turf = /turf/space
 	base_area = /area/space
 
