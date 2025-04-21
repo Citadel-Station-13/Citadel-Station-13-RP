@@ -21,23 +21,23 @@
 				organ_tag = O_AUG_R_FOREARM
 				parent_organ = BP_R_ARM
 				target_slot = /datum/inventory_slot/abstract/hand/right
-			else if(O_AUG_R_FOREARM)
+			if(O_AUG_R_FOREARM)
 				organ_tag = O_AUG_L_FOREARM
 				parent_organ = BP_L_ARM
 				target_slot = /datum/inventory_slot/abstract/hand/left
-			else if(O_AUG_L_HAND)
+			if(O_AUG_L_HAND)
 				organ_tag = O_AUG_R_HAND
 				parent_organ = BP_R_HAND
 				target_slot = /datum/inventory_slot/abstract/hand/right
-			else if(O_AUG_R_HAND)
+			if(O_AUG_R_HAND)
 				organ_tag = O_AUG_L_HAND
 				parent_organ = BP_L_HAND
 				target_slot = /datum/inventory_slot/abstract/hand/left
-			else if(O_AUG_L_UPPERARM)
+			if(O_AUG_L_UPPERARM)
 				organ_tag = O_AUG_R_UPPERARM
 				parent_organ = BP_R_ARM
 				target_slot = /datum/inventory_slot/abstract/hand/right
-			else if(O_AUG_R_UPPERARM)
+			if(O_AUG_R_UPPERARM)
 				organ_tag = O_AUG_L_UPPERARM
 				parent_organ = BP_L_ARM
 				target_slot = /datum/inventory_slot/abstract/hand/left
