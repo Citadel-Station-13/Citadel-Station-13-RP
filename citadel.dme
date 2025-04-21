@@ -4849,6 +4849,7 @@
 #include "code\modules\reagents\machinery\reagent_dispenser\foam.dm"
 #include "code\modules\reagents\machinery\reagent_dispenser\fuel.dm"
 #include "code\modules\reagents\machinery\reagent_dispenser\helium.dm"
+#include "code\modules\reagents\machinery\reagent_dispenser\hydrogen.dm"
 #include "code\modules\reagents\machinery\reagent_dispenser\oil.dm"
 #include "code\modules\reagents\machinery\reagent_dispenser\pepper.dm"
 #include "code\modules\reagents\machinery\reagent_dispenser\virusfood.dm"

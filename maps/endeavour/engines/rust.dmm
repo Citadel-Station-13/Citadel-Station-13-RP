@@ -562,6 +562,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
+"CA" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/glass/beaker/large,
+/turf/simulated/floor/bluegrid,
+/area/engineering/engine_room)
 "CC" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red,
 /obj/spawner/window/borosillicate/full,
@@ -686,12 +694,13 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/engineering/engine_room)
 "JD" = (
-/obj/fiftyspawner/tritium,
-/obj/fiftyspawner/tritium,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /obj/structure/table/reinforced,
+/obj/fiftyspawner/tritium,
+/obj/fiftyspawner/tritium,
+/obj/structure/reagent_dispensers/h{
+	pixel_x = 0;
+	pixel_y = -32
+	},
 /turf/simulated/floor/bluegrid,
 /area/engineering/engine_room)
 "JN" = (
@@ -1404,8 +1413,8 @@ CW
 wo
 wJ
 dB
-dB
-dB
+LT
+CA
 "}
 (20,1,1) = {"
 DF
