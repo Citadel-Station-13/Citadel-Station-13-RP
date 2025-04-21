@@ -72,7 +72,7 @@
 
 /obj/item/organ/internal/augment/armmounted/hand/sword
 	name = "energy blade implant"
-	integrated_object_type = /obj/item/melee/transforming/energy/sword
+	integrated_object_type = /obj/item/melee/transforming/energy/sword/implant
 
 /*
  * Shoulder augment.
