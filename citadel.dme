@@ -5547,7 +5547,7 @@
 #include "maps\away_missions\listeningpost_140\listeningpost.dm"
 #include "maps\away_missions\snow_outpost_140\snow_outpost.dm"
 #include "maps\away_missions\snowfield_140\snowfield.dm"
-#include "maps\away_missions\zoo_140\zoo.dm"
+#include "maps\away_missions\zoo_197x305\zoo.dm"
 #include "maps\endeavour\endeavour-areas.dm"
 #include "maps\endeavour\endeavour-overmap.dm"
 #include "maps\endeavour\endeavour-papers.dm"
