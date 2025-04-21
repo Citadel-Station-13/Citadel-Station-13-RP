@@ -193,6 +193,14 @@
 	},
 /turf/simulated/floor/greengrid/airless,
 /area/engineering/engine_room)
+"dn" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "dB" = (
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
@@ -620,6 +628,18 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
+"EV" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "Fk" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
@@ -780,9 +800,11 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "Nf" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
+/obj/machinery/atmospherics/pipe/manifold/visible/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/visible/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
@@ -823,6 +845,9 @@
 "Qk" = (
 /obj/structure/cable/cyan{
 	icon_state = "2-4"
+	},
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
@@ -1395,10 +1420,10 @@ JD
 (19,1,1) = {"
 DF
 DF
-dB
-dB
-dB
-dB
+dn
+dn
+dn
+EV
 Qk
 At
 CW

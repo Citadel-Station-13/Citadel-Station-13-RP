@@ -266,6 +266,15 @@
 	},
 /turf/simulated/floor/airless/ceiling,
 /area/engineering/engine_room)
+"je" = (
+/obj/machinery/atmospherics/pipe/simple/visible/green{
+	dir = 4
+	},
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "jf" = (
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/engineering/engine_room)
@@ -273,6 +282,14 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 10
 	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
+"kc" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "kt" = (
@@ -616,6 +633,15 @@
 /area/engineering/engine_room)
 "yz" = (
 /obj/structure/cable/yellow,
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
+"yC" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "zj" = (
@@ -1217,6 +1243,15 @@
 /obj/structure/window/phoronreinforced,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
+"Vw" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/cyan{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "VD" = (
 /obj/machinery/button/remote/blast_door{
 	pixel_x = 6;
@@ -1323,6 +1358,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
+"YF" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/visible/supply,
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "YK" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 6
@@ -1341,6 +1384,12 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
+"ZY" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
@@ -1780,16 +1829,16 @@ zB
 (19,1,1) = {"
 Ll
 Ll
-dB
-dB
-dB
-dB
-dB
-vK
-dB
-HO
-pp
-RC
+kc
+kc
+kc
+kc
+kc
+YF
+ZY
+yC
+je
+Vw
 CO
 IZ
 fc
