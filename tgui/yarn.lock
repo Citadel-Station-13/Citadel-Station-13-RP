@@ -5164,6 +5164,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dompurify@npm:^3.2.5":
+  version: 3.2.5
+  resolution: "dompurify@npm:3.2.5"
+  dependencies:
+    "@types/trusted-types": "npm:^2.0.7"
+  dependenciesMeta:
+    "@types/trusted-types":
+      optional: true
+  checksum: 10c0/b564167cc588933ad2d25c185296716bdd7124e9d2a75dac76efea831bb22d1230ce5205a1ab6ce4c1010bb32ac35f7a5cb2dd16c78cbf382111f1228362aa59
+  languageName: node
+  linkType: hard
+
 "dot-case@npm:^3.0.4":
   version: 3.0.4
   resolution: "dot-case@npm:3.0.4"
@@ -8774,7 +8786,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest@npm:29.7.0":
+"jest@npm:29.7.0, jest@npm:^29.7.0":
   version: 29.7.0
   resolution: "jest@npm:29.7.0"
   dependencies:
@@ -11985,7 +11997,7 @@ __metadata:
   resolution: "tgui-panel@workspace:packages/tgui-panel"
   dependencies:
     common: "workspace:*"
-    dompurify: "npm:^3.2.4"
+    dompurify: "npm:^3.2.5"
     inferno: "npm:^7.4.8"
     tgui: "workspace:*"
     tgui-dev-server: "workspace:*"
@@ -12060,6 +12072,7 @@ __metadata:
     dompurify: "npm:^3.2.4"
     inferno: "npm:^7.4.8"
     inferno-vnode-flags: "npm:^7.4.8"
+    jest: "npm:^29.7.0"
     js-yaml: "npm:^4.1.0"
     marked: "npm:^4.0.10"
     tgui-dev-server: "workspace:*"
