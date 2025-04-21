@@ -1,3 +1,20 @@
+/datum/map/gateway/carpfarm_140
+	id = "carpfarm_140"
+	name = "Sector - Carp Farm"
+	width = 140
+	height = 140
+	levels = list(
+		/datum/map_level/gateway/carpfarm_140,
+	)
+
+/datum/map_level/gateway/carpfarm_140
+	id = "Carpfarm140"
+	name = "Gateway - Carp Farm"
+	display_name = "Carp Farm"
+	path = "maps/away_missions/carpfarm_140/levels/carpfarm.dmm"
+	base_turf = /turf/space
+	base_area = /area/space
+
 /obj/overmap/entity/visitable/sector/gateway/carpfarm
 	initial_generic_waypoints = list("carpfarm1", "carpfarm2")
 	scanner_name = "Carp-Infested Outpost"

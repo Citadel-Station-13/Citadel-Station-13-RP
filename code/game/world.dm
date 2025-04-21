@@ -110,7 +110,7 @@ GLOBAL_LIST(topic_status_cache)
 	populate_robolimb_list()
 
 	//Must be done now, otherwise ZAS zones and lighting overlays need to be recreated.
-	createRandomZlevel()
+	//createRandomZlevel()
 
 	if(fexists(RESTART_COUNTER_PATH))
 		GLOB.restart_counter = text2num(trim(file2text(RESTART_COUNTER_PATH)))
