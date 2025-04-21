@@ -11,7 +11,7 @@
 	id = "Carpfarm140"
 	name = "Gateway - Carp Farm"
 	display_name = "Carp Farm"
-	path = "maps/away_missions/carpfarm_140/levels/carpfarm.dmm"
+	path = "maps/gateway_missions/carpfarm_140/levels/carpfarm.dmm"
 	base_turf = /turf/space
 	base_area = /area/space
 

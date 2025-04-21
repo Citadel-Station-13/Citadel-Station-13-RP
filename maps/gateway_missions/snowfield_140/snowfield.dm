@@ -11,7 +11,7 @@
 	id = "Snowfield_140"
 	name = "Gateway - Snow Field"
 	display_name = "Snow Field"
-	path = "maps/away_missions/snowfield_140/levels/snowfield.dmm"
+	path = "maps/gateway_missions/snowfield_140/levels/snowfield.dmm"
 	base_turf = /turf/simulated/floor/outdoors/snow
 	base_area = /area/awaymission/snowfield/outside
 
