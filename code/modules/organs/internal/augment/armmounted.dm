@@ -20,11 +20,27 @@
 			if(O_AUG_L_FOREARM)
 				organ_tag = O_AUG_R_FOREARM
 				parent_organ = BP_R_ARM
-				target_slot = /datum/inventory_slot/abstract/hand/left
-			if(O_AUG_R_FOREARM)
+				target_slot = /datum/inventory_slot/abstract/hand/right
+			else if(O_AUG_R_FOREARM)
 				organ_tag = O_AUG_L_FOREARM
 				parent_organ = BP_L_ARM
+				target_slot = /datum/inventory_slot/abstract/hand/left
+			else if(O_AUG_L_HAND)
+				organ_tag = O_AUG_R_HAND
+				parent_organ = BP_R_HAND
 				target_slot = /datum/inventory_slot/abstract/hand/right
+			else if(O_AUG_R_HAND)
+				organ_tag = O_AUG_L_HAND
+				parent_organ = BP_L_HAND
+				target_slot = /datum/inventory_slot/abstract/hand/left
+			else if(O_AUG_L_UPPERARM)
+				organ_tag = O_AUG_R_UPPERARM
+				parent_organ = BP_R_ARM
+				target_slot = /datum/inventory_slot/abstract/hand/right
+			else if(O_AUG_R_UPPERARM)
+				organ_tag = O_AUG_L_UPPERARM
+				parent_organ = BP_L_ARM
+				target_slot = /datum/inventory_slot/abstract/hand/left
 		to_chat(user, "<span class='notice'>You swap \the [src]'s servos to install neatly into \the lower [parent_organ] mount.</span>")
 		return
 
@@ -51,22 +67,8 @@
 	icon_state = "augment_box"
 	w_class = WEIGHT_CLASS_SMALL
 	integrated_object_type = /obj/item/portable_scanner
-
-/obj/item/organ/internal/augment/armmounted/hand/attackby(obj/item/I as obj, mob/user as mob)
-	if(I.is_screwdriver())
-		switch(organ_tag)
-			if(O_AUG_L_HAND)
-				organ_tag = O_AUG_R_HAND
-				parent_organ = BP_R_HAND
-				target_slot = /datum/inventory_slot/abstract/hand/left
-			if(O_AUG_R_HAND)
-				organ_tag = O_AUG_L_HAND
-				parent_organ = BP_L_HAND
-				target_slot = /datum/inventory_slot/abstract/hand/right
-		to_chat(user, "<span class='notice'>You swap \the [src]'s servos to install neatly into \the upper [parent_organ] mount.</span>")
-		return
-
-	. = ..()
+	organ_tag = O_AUG_L_HAND
+	parent_organ = BP_L_HAND
 
 /obj/item/organ/internal/augment/armmounted/hand/sword
 	name = "energy blade implant"
@@ -83,22 +85,6 @@
 	organ_tag = O_AUG_L_UPPERARM
 	w_class = WEIGHT_CLASS_HUGE
 	integrated_object_type = null
-
-/obj/item/organ/internal/augment/armmounted/shoulder/attackby(obj/item/I as obj, mob/user as mob)
-	if(I.is_screwdriver())
-		switch(organ_tag)
-			if(O_AUG_L_UPPERARM)
-				organ_tag = O_AUG_R_UPPERARM
-				parent_organ = BP_R_ARM
-				target_slot = /datum/inventory_slot/abstract/hand/left
-			if(O_AUG_R_UPPERARM)
-				organ_tag = O_AUG_L_UPPERARM
-				parent_organ = BP_L_ARM
-				target_slot = /datum/inventory_slot/abstract/hand/right
-		to_chat(user, "<span class='notice'>You swap \the [src]'s servos to install neatly into \the upper [parent_organ] mount.</span>")
-		return
-
-	. = ..()
 
 /obj/item/organ/internal/augment/armmounted/shoulder/surge
 	name = "muscle overclocker"
