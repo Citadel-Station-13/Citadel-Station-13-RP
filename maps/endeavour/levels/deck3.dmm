@@ -209,7 +209,9 @@
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 1
 	},
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
 /obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3portamidhall)
@@ -1680,9 +1682,7 @@
 /area/endeavour/hallway/d3portamidhall)
 "bhh" = (
 /obj/machinery/fire_alarm/east_mount,
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/dark,
 /area/endeavour/station/stairs_three)
 "bhu" = (
@@ -2135,14 +2135,10 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3aftmaint)
 "bvx" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/commandblue,
-/obj/structure/wall_frame,
-/obj/structure/window/reinforced/polarized/full{
-	id = "hop_office2";
-	name = "HoP Office window"
+/obj/map_helper/electrochromatic_linker{
+	id = "hop_office2"
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
@@ -4564,7 +4560,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/endeavour/hallway/d3fwdhall)
 "dsm" = (
@@ -4615,7 +4613,9 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3fwdmaint)
 "dyO" = (
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/endeavour/hallway/d3fwdhall)
 "dyR" = (
@@ -4872,7 +4872,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -6334,7 +6336,9 @@
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 9
 	},
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3fwdhall)
 "eHQ" = (
@@ -7735,9 +7739,7 @@
 /obj/effect/floor_decal/corner/navgold/border{
 	dir = 4
 	},
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3fwdhall)
 "fOO" = (
@@ -8759,9 +8761,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
+/obj/machinery/door/firedoor,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
@@ -10963,7 +10963,9 @@
 /obj/effect/floor_decal/corner/navgold/border{
 	dir = 10
 	},
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3fwdhall)
 "ifE" = (
@@ -12486,15 +12488,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "jmv" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
 /obj/effect/paint/commandblue,
-/obj/structure/wall_frame,
-/obj/structure/window/reinforced/polarized/full{
-	id = "hop_office";
-	name = "HoP Office window"
+/obj/map_helper/electrochromatic_linker{
+	id = "hop_office"
 	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
 "jmL" = (
@@ -13332,7 +13330,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
@@ -13410,9 +13410,7 @@
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hop)
 "jXZ" = (
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3afthall)
 "jYc" = (
@@ -14046,9 +14044,7 @@
 /obj/effect/floor_decal/corner/navgold/border{
 	dir = 8
 	},
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3fwdhall)
 "kwP" = (
@@ -15601,7 +15597,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -16778,9 +16776,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/starboardsolar)
 "mSe" = (
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3fwdhall)
 "mSw" = (
@@ -19005,7 +19001,9 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
 /obj/item/radio/beacon,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3fwdhall)
@@ -19157,9 +19155,7 @@
 /obj/effect/floor_decal/corner/navblue/bordercorner2{
 	dir = 8
 	},
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3fwdhall)
 "ozn" = (
@@ -19193,7 +19189,9 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/maintenance/trash_pit)
 "oBD" = (
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -20087,9 +20085,7 @@
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 4
 	},
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d3fwdhall)
 "pjN" = (
@@ -23072,9 +23068,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
-"rxD" = (
-/turf/simulated/wall/r_wall/prepainted/cargo,
-/area/maintenance/pool)
 "ryd" = (
 /obj/machinery/light_switch{
 	pixel_y = -26
@@ -23177,9 +23170,7 @@
 /area/crew_quarters/heads/hop)
 "rDc" = (
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3fwdhall)
 "rDj" = (
@@ -25976,7 +25967,9 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3portamidhall)
 "tpp" = (
@@ -26986,7 +26979,9 @@
 "ueB" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/navgold/border,
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3portamidhall)
 "ueL" = (
@@ -32184,9 +32179,7 @@
 /obj/effect/floor_decal/corner/navgold/border{
 	dir = 8
 	},
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/recreation_area)
 "xLD" = (
@@ -32305,9 +32298,7 @@
 /obj/effect/floor_decal/corner/navgold/border{
 	dir = 4
 	},
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/recreation_area)
 "xQL" = (
@@ -39434,8 +39425,8 @@ pRW
 pRW
 pRW
 tUu
-rxD
-rxD
+kdY
+kdY
 vIV
 sZl
 nTC
@@ -39628,8 +39619,8 @@ pRW
 pRW
 pRW
 pRW
-rxD
-rxD
+kdY
+kdY
 vGx
 bXv
 nTC
@@ -43149,8 +43140,8 @@ bRs
 vTy
 buM
 wMT
-qyd
-qyd
+qXF
+qXF
 vtG
 sZz
 sZz
@@ -43926,7 +43917,7 @@ tXY
 riw
 egL
 qGX
-qXF
+qyd
 dnn
 dnn
 wMT
@@ -51079,7 +51070,7 @@ oFO
 oFO
 vZR
 oFO
-oiQ
+mNx
 eyy
 tBG
 hUv
@@ -51661,7 +51652,7 @@ csb
 csb
 csb
 csb
-mNx
+hDR
 nfp
 eyy
 aaH
@@ -51855,7 +51846,7 @@ csb
 csb
 csb
 csb
-mNx
+hDR
 nJE
 fGh
 rMi
@@ -52049,8 +52040,8 @@ csb
 csb
 csb
 csb
-mNx
-mNx
+hDR
+hDR
 hDR
 hDR
 hDR
@@ -55760,7 +55751,7 @@ tOP
 lMH
 vvo
 xbW
-qXF
+qyd
 qGX
 hoi
 wMT
@@ -55954,7 +55945,7 @@ hHe
 xqd
 mJg
 xbW
-qXF
+qyd
 qGX
 hoi
 wMT
@@ -56342,7 +56333,7 @@ ozQ
 wbW
 vvo
 xbW
-qXF
+qyd
 dnn
 dnn
 sDc
