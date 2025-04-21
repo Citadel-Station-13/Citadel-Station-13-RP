@@ -1,6 +1,6 @@
 /datum/map/gateway/carpfarm_140
 	id = "carpfarm_140"
-	name = "Sector - Carp Farm"
+	name = "Gateway - Carp Farm"
 	width = 140
 	height = 140
 	levels = list(

@@ -1,4 +1,4 @@
-/proc/createRandomZlevel()
+/proc/createRandomGatewayLevel()
 	if(awaydestinations.len) //crude, but it saves another var!
 		return
 #ifdef UNIT_TESTS
@@ -6,7 +6,6 @@
 #endif
 	//Test experiment
 	SSmapping.loaded_station.lateload += /datum/map/gateway/carpfarm_140
-	//SSmapping.load_map(/datum/map/gateway/carpfarm_140)
 
 	return
 
