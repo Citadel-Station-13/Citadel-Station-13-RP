@@ -15,11 +15,12 @@ const UnreadCountWidget = ({ value }) => (
     style={{
       'font-size': '0.7em',
       'border-radius': '0.25em',
-      'width': '1.7em',
+      width: '1.7em',
       'line-height': '1.55em',
       'background-color': 'crimson',
-      'color': '#fff',
-    }}>
+      color: '#fff',
+    }}
+  >
     {Math.min(value, 99)}
   </Box>
 );
@@ -36,19 +37,16 @@ export const ChatTabs = (props, context) => {
             <Tabs.Tab
               key={page.id}
               selected={page === currentPage}
-              rightSlot={
-                !page.hideUnreadCount &&
-                page.unreadCount > 0 && (
-                  <UnreadCountWidget value={page.unreadCount} />
-                )
-              }
               onClick={() =>
                 dispatch(
                   changeChatPage({
                     pageId: page.id,
-                  }),
+                  })
                 )
               }
+              rightSlot={!page.hideUnreadCount && page.unreadCount > 0 && (
+                <UnreadCountWidget value={page.unreadCount} />
+              )}
             >
               {page.name}
             </Tabs.Tab>
@@ -62,7 +60,8 @@ export const ChatTabs = (props, context) => {
           onClick={() => {
             dispatch(addChatPage());
             dispatch(openChatSettings());
-          }} />
+          }}
+        />
       </Flex.Item>
     </Flex>
   );

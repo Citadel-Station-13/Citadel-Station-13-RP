@@ -72,7 +72,7 @@ const regexParseNode = (params) => {
  * Replace text of a node with custom nades if they match
  * a regex expression or are in a word list
  */
-export const replaceInTextNode = (regex, words, createNode) => (node) => {
+export const replaceInTextNode = (regex: RegExp, words: string | null, createNode: (text: string) => Node) => (node) => {
   let nodes;
   let result;
   let n = 0;
@@ -130,7 +130,7 @@ export const replaceInTextNode = (regex, words, createNode) => (node) => {
 /**
  * Default highlight node.
  */
-const createHighlightNode = (text) => {
+const createHighlightNode = (text: string) => {
   const node = document.createElement('span');
   node.setAttribute('style', 'background-color:#fd4;color:#000');
   node.textContent = text;
@@ -139,18 +139,13 @@ const createHighlightNode = (text) => {
 
 /**
  * Highlights the text in the node based on the provided regular expression.
- *
- * @param {Node} node Node which you want to process
- * @param {RegExp} regex Regular expression to highlight
- * @param {(text: string) => Node} createNode Highlight node creator
- * @returns {number} Number of matches
  */
 export const highlightNode = (
-  node,
-  regex,
-  words,
-  createNode = createHighlightNode,
-) => {
+  node: Node,
+  regex: RegExp,
+  words: string | null,
+  createNode: (text: string) => Node = createHighlightNode,
+): number => {
   if (!createNode) {
     createNode = createHighlightNode;
   }
@@ -177,10 +172,10 @@ const URL_REGEX =
 /**
  * Highlights the text in the node based on the provided regular expression.
  *
- * @param {Node} node Node which you want to process
- * @returns {number} Number of matches
+ * @param node Node which you want to process
+ * @returns Number of matches
  */
-export const linkifyNode = (node) => {
+export const linkifyNode = (node: Node): number => {
   let n = 0;
   const childNodes = node.childNodes;
   for (let i = 0; i < childNodes.length; i++) {
