@@ -80,7 +80,7 @@
 	name = "shoulder augment"
 	desc = "A large implant that fits into a subject's arm. It looks kind of like a skeleton."
 	icon_state = "augment_armframe"
-	organ_tag = O_AUG_R_UPPERARM
+	organ_tag = O_AUG_L_UPPERARM
 	w_class = WEIGHT_CLASS_HUGE
 	integrated_object_type = null
 
@@ -126,8 +126,6 @@
 	desc = "A large implant that fits into a subject's arm. It deploys an array of tools by some painful means."
 
 	icon_state = "augment_toolkit"
-
-	organ_tag = O_AUG_R_UPPERARM
 
 	w_class = WEIGHT_CLASS_HUGE
 
