@@ -2768,6 +2768,7 @@
 #include "code\modules\clothing\under\xenos\tajaran.dm"
 #include "code\modules\clothing\under\xenos\teshari.dm"
 #include "code\modules\clothing\under\xenos\vox.dm"
+#include "code\modules\clothing\under_new\jobs\color_jumpsuit.dm"
 #include "code\modules\customitems\item_spawning.dm"
 #include "code\modules\detectivework\forensics.dm"
 #include "code\modules\detectivework\microscope\dnascanner.dm"
