@@ -12,8 +12,8 @@
 		/datum/map/gateway/listeningpost_140,
 		/datum/map/gateway/snowfield_140,
 		/datum/map/gateway/snow_outpost_140,
-		/datum/map/gateway/zoo_197x305,
 	)
+	//TODO: repair /datum/map/gateway/zoo_197x305
 
 	var/gateway_map = pick(potentialGatewayLevels)
 	log_world("Gateway mission picked: [gateway_map]")
