@@ -12092,12 +12092,6 @@
 /area/quartermaster/miningdock)
 "iWF" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
 /turf/simulated/floor/tiled/monodark,
 /area/quartermaster/foyer)
 "iYd" = (
@@ -12786,7 +12780,8 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/dark,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled/monodark,
 /area/quartermaster/foyer)
 "jzp" = (
 /obj/machinery/conveyor{
@@ -26438,7 +26433,6 @@
 /turf/simulated/floor/wood,
 /area/endeavour/hallway/d3fwdhall)
 "tJl" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/disposalpipe/segment{
 	dir = 8;
 	icon_state = "pipe-c"
@@ -26446,7 +26440,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/turf/simulated/floor/tiled/monodark,
+/turf/simulated/floor/tiled/dark,
 /area/quartermaster/foyer)
 "tJw" = (
 /obj/structure/closet/emcloset,
@@ -49908,7 +49902,7 @@ sUL
 sUL
 vwY
 qxI
-mtq
+iWF
 jzo
 swr
 jLP
@@ -50102,7 +50096,7 @@ hJR
 pmo
 bym
 mtq
-mtq
+iWF
 jzo
 vyv
 xBx
@@ -50296,9 +50290,9 @@ hJR
 pmo
 qmQ
 qwK
-mtq
-jzo
 iWF
+jzo
+vyv
 fjB
 goy
 lSG
