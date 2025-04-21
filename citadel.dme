@@ -3458,6 +3458,7 @@
 #include "code\modules\mapping\templates\engine.dm"
 #include "code\modules\mapping\utility\merge_conflict_marker.dm"
 #include "code\modules\maps\_shim\away_spawner.dm"
+#include "code\modules\maps\away_missions\ship_cave.dm"
 #include "code\modules\maps\misc_maps\geothermal_vent\geothermal_vent.dm"
 #include "code\modules\maps\misc_maps\lavaland\_lavaland.dm"
 #include "code\modules\maps\overmap\planets\_lythios43c.dm"
