@@ -839,6 +839,8 @@
 /obj/machinery/air_alarm{
 	pixel_y = 22
 	},
+/obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk,
 /turf/simulated/floor/tiled/white,
 /area/engineering/engine_monitoring)
 "aLA" = (
@@ -4131,10 +4133,6 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/lightorange,
-/obj/structure/disposalpipe/trunk{
-	dir = 1
-	},
-/obj/machinery/disposal,
 /turf/simulated/floor/tiled/white,
 /area/engineering/engine_monitoring)
 "eej" = (
@@ -6667,6 +6665,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
 /area/engineering/engine_monitoring)
@@ -17405,6 +17406,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/white,
 /area/engineering/engine_monitoring)
 "rZv" = (
@@ -21670,8 +21674,7 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
 /area/engineering/engine_monitoring)
@@ -21895,6 +21898,10 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/tiled/white,
 /area/engineering/engine_monitoring)
