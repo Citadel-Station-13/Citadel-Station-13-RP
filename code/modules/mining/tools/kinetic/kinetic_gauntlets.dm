@@ -180,22 +180,22 @@
 /obj/item/kinetic_gauntlets/proc/run_detonation_fx(turf/location, atom/target)
 	return
 
-/obj/item/kinetic_gauntlets/proc/on_user_melee_intent(datum/source, datum/event_args/clickchain/clickchain, clickchain_flags)
+/obj/item/kinetic_gauntlets/proc/on_user_melee_intent(datum/source, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	SIGNAL_HANDLER
 
 	if(!ismob(clickchain.target))
 		return NONE
-	var/mob/mob_target = target
+	var/mob/mob_target = clickchain.target
 	// requires mark to be using combo, otherwise you can hit it twice and mark it then hit again
 	var/datum/status_effect/grouped/proto_kinetic_mark/mark = mob_target.has_status_effect(/datum/status_effect/grouped/proto_kinetic_mark)
 	if(!mark)
 		return NONE
-	#warn SEC?
-	var/datum/combo/melee/valid_combo = combo_tracker?.process_inbound_via_tail_match(clickchain.using_intent, combo_set)
-	if(!valid_combo)
-		return NONE
+	var/datum/combo/melee/executing_combo = combo_tracker?.process_inbound(clickchain.using_intent, combo_set)
+	if(!executing_combo)
+		#warn intercept and do the slappy
+		return RAISE_MOB_MELEE_INTENTFUL_ACTION | RAISE_MOB_MELEE_INTENTFUL_SKIP
 	QDEL_NULL(mark)
-	execute_combo(clickchain, clickchain_flags, valid_combo)
+	execute_combo(clickchain, clickchain_flags, executing_combo)
 	discharge(charge_delay_multiplier_combo)
 	return RAISE_MOB_MELEE_INTENTFUL_ACTION | RAISE_MOB_MELEE_INTENTFUL_SKIP
 
@@ -227,11 +227,12 @@
 			attack_source = clickchain,
 			hit_zone = clickchain.target_zone,
 		)
-		run_detonation_fx(target)
+		run_detonation_fx(atom_target)
 		discharge(charge_delay_multiplier_structure)
 		return RAISE_MOB_MELEE_IMPACT_SKIP
 	else
-		clickchain.data[ACTOR_DATA_KINETIC_IMPACT_LOG] = atom_target.inflict_damage_instance(
+		var/mob/mob_target = target
+		clickchain.data[ACTOR_DATA_KINETIC_IMPACT_LOG] = mob_target.inflict_damage_instance(
 			charged_mob_damage,
 			charged_mob_damage_type,
 			charged_mob_damage_tier,
@@ -241,7 +242,7 @@
 			attack_source = clickchain,
 			hit_zone = clickchain.target_zone,
 		)
-		run_detonation_fx(target)
+		run_detonation_fx(mob_target)
 		discharge(charge_delay_multiplier_basic)
 	return RAISE_MOB_MELEE_IMPACT_SKIP
 
