@@ -6317,9 +6317,6 @@
 	},
 /turf/simulated/floor,
 /area/sector/delerictcasino/engineering)
-"DG" = (
-/turf/simulated/wall/r_wall/prepainted/cargo,
-/area/sector/delerictcasino/medical/public)
 "DI" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /turf/simulated/floor/tiled/steel_dirty/dark{
@@ -23552,7 +23549,7 @@ zO
 Yn
 iW
 Ne
-kl
+Yn
 Yn
 Yn
 iv
@@ -25104,7 +25101,7 @@ lX
 Yn
 Yn
 Yn
-DG
+Yn
 FD
 NR
 lX
