@@ -45,14 +45,10 @@
 		return
 	addtimer(CALLBACK(src, PROC_REF(check_continuation)), remaining_time)
 
-/datum/combo_tracker/melee/process_inbound_via_tail_match(inbound, datum/combo_set/combo_set)
+/datum/combo_tracker/melee/process_inbound(inbound, datum/combo_set/combo_set, tail_match)
 	begin_continuation()
-	return ..()
-
-/datum/combo_tracker/melee/process_inbound_via_stateful_exclusive_chain(inbound, datum/combo_set/combo_set)
-	begin_continuation()
-	var/list/out_data = ..()
-	if(continuation_terminate_on_fail && out_data[/datum/combo_tracker::SEC_OUT_IDX_POSITION] == null)
+	. = ..()
+	if(continuation_terminate_on_fail && position == null)
 		end_continuation(FALSE)
 
 /datum/combo_tracker/melee/intent_based

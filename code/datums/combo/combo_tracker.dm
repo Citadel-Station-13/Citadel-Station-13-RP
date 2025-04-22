@@ -95,8 +95,8 @@
 		running = position = remaining = null
 		return
 
-	var/datum/combo/one_left = length(sec_possible) == 1 ? sec_possible[1] : null
-	var/finished = one_left ? sec_position == length(one_left.keys) : FALSE
+	var/datum/combo/one_left = length(remaining) == 1 ? remaining[1] : null
+	var/finished = one_left ? position == length(one_left.keys) : FALSE
 
 	if(finished)
 		// if finished, wipe possible and it'll trigger a reset on next iteration
@@ -104,4 +104,4 @@
 		. = one_left
 	else
 		// advance position otherwise
-		++sec_position
+		++position

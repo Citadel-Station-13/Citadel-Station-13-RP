@@ -37,7 +37,7 @@
 	///   IF YOU NEED MELEE COMBOS, FIGURE OUT A GENERIC WAY TO ATTACH THEM
 	///   TO ITEMS. DO NOT COPYPASTE THIS CODE AROUND, THE HOOKING CODE
 	///   IS COMPLEX AND SHOULD NOT BE UNNECESSARILY DUPLICATED.
-	var/datum/combo_tracker/melee/combo_tracker
+	var/datum/combo_tracker/melee/intent_based/combo_tracker
 	/// our combo set
 	var/datum/combo_set/melee/combo_set
 	/// only reapplied on un-equip/re-equip right now!
