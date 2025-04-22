@@ -3640,6 +3640,7 @@
 "kx" = (
 /obj/spawner/window/low_wall/reinforced/full,
 /obj/effect/paint/black,
+/obj/effect/paint_stripe/darkred,
 /turf/unsimulated/floor{
 	name = "plating"
 	},
@@ -6746,6 +6747,7 @@
 "sI" = (
 /obj/spawner/window/low_wall/reinforced/full,
 /obj/effect/paint/black,
+/obj/effect/paint_stripe/darkred,
 /turf/unsimulated/floor{
 	name = "plating"
 	},
@@ -6943,6 +6945,7 @@
 "tl" = (
 /obj/spawner/window/low_wall/reinforced/full,
 /obj/effect/paint/black,
+/obj/effect/paint_stripe/darkred,
 /turf/unsimulated/floor{
 	name = "plating"
 	},
@@ -8387,6 +8390,7 @@
 "xe" = (
 /obj/spawner/window/low_wall/reinforced/full,
 /obj/effect/paint/black,
+/obj/effect/paint_stripe/darkred,
 /turf/unsimulated/floor{
 	name = "plating"
 	},
@@ -10506,6 +10510,7 @@
 "CD" = (
 /obj/spawner/window/low_wall/reinforced/full,
 /obj/effect/paint/black,
+/obj/effect/paint_stripe/darkred,
 /turf/unsimulated/floor{
 	name = "plating"
 	},
@@ -10896,6 +10901,12 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
+"DN" = (
+/obj/machinery/door/airlock/external,
+/turf/unsimulated/floor{
+	icon_state = "dark"
+	},
+/area/centcom/suppy)
 "DO" = (
 /obj/machinery/door/airlock/medical{
 	name = "Morgue";
@@ -13644,6 +13655,7 @@
 "Kt" = (
 /obj/spawner/window/low_wall/reinforced/full,
 /obj/effect/paint/black,
+/obj/effect/paint_stripe/darkred,
 /turf/unsimulated/floor{
 	name = "plating"
 	},
@@ -15211,6 +15223,13 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
+"OD" = (
+/obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/darkred,
+/turf/unsimulated/floor{
+	name = "plating"
+	},
+/area/centcom/restaurant)
 "OE" = (
 /obj/effect/floor_decal/corner/white/full,
 /obj/effect/floor_decal/corner/white{
@@ -40326,8 +40345,8 @@ qQ
 qQ
 qQ
 qQ
-AI
-AI
+DN
+DN
 qQ
 qQ
 qQ
@@ -46485,16 +46504,16 @@ cA
 cA
 cA
 cA
-Id
-Id
-Id
+OD
+OD
+OD
 cA
 cA
 JL
 il
 mm
-Id
-Id
+OD
+OD
 cA
 cA
 cA
@@ -47269,8 +47288,8 @@ Xo
 cA
 il
 mm
-Id
-Id
+OD
+OD
 cA
 cA
 Es
@@ -49392,21 +49411,21 @@ lp
 AD
 kc
 cA
-Id
-Id
-Id
+OD
+OD
+OD
 cA
 cA
 cA
-Id
-Id
-Id
+OD
+OD
+OD
 cA
 vu
 cA
-Id
-Id
-Id
+OD
+OD
+OD
 Es
 Yf
 Es

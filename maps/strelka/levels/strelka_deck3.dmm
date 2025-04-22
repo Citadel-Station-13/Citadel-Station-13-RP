@@ -577,6 +577,9 @@
 /area/strelka/shipbase/deck3)
 "cx" = (
 /obj/machinery/iv_drip,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/medical/surgery)
 "cy" = (
@@ -665,7 +668,7 @@
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "cS" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -961,7 +964,7 @@
 	dir = 4
 	},
 /obj/item/storage/belt/medical,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "eh" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -1151,7 +1154,7 @@
 /obj/structure/cable/blue{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/roomhallway)
 "fb" = (
 /obj/machinery/door/blast/regular{
@@ -1189,7 +1192,7 @@
 	icon_state = "2-4"
 	},
 /obj/machinery/air_alarm/north_mount,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/roomhallway)
 "fg" = (
 /obj/structure/closet/crate/freezer,
@@ -1438,9 +1441,6 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/medical/surgery)
 "fQ" = (
-/obj/machinery/light{
-	dir = 8
-	},
 /obj/machinery/oxygen_pump/anesthetic{
 	pixel_x = -28
 	},
@@ -1773,7 +1773,7 @@
 	amount = 30;
 	pixel_x = 8
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "gQ" = (
 /obj/structure/closet/secure_closet/miner,
@@ -2150,7 +2150,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "id" = (
 /obj/effect/floor_decal/grass_edge,
@@ -2567,7 +2567,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc/north_mount,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/roomhallway)
 "jF" = (
 /obj/machinery/door/firedoor/glass{
@@ -2773,7 +2773,7 @@
 /obj/machinery/light/small/old{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/roomhallway)
 "kA" = (
 /obj/structure/cable{
@@ -2961,7 +2961,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/wood/indoors,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "lp" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -2999,7 +2999,7 @@
 	},
 /obj/item/reagent_containers/glass/beaker/large,
 /obj/item/reagent_containers/dropper,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "lv" = (
 /obj/effect/floor_decal/rust,
@@ -4004,7 +4004,7 @@
 /area/strelka/shipbase/deck3/bridge)
 "oJ" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "oO" = (
 /obj/structure/sink/puddle{
@@ -4090,7 +4090,7 @@
 /obj/effect/floor_decal/spline/fancy/wood/cee{
 	dir = 4
 	},
-/turf/simulated/floor/wood/indoors,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "pc" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -4169,7 +4169,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 1
 	},
-/turf/simulated/floor/wood/indoors,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "pp" = (
 /obj/spawner/window/low_wall/full/firelocks,
@@ -4600,7 +4600,7 @@
 /obj/effect/floor_decal/spline/fancy/wood/cee{
 	dir = 8
 	},
-/turf/simulated/floor/wood/indoors,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "ra" = (
 /obj/landmark{
@@ -4654,7 +4654,7 @@
 /obj/structure/closet/secure_closet/medical3,
 /obj/structure/window/reinforced,
 /obj/item/storage/belt/medical,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "ri" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -4800,6 +4800,9 @@
 /obj/item/radio/intercom{
 	dir = 1;
 	pixel_y = 24
+	},
+/obj/machinery/light{
+	dir = 8
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/medical/surgery)
@@ -5117,7 +5120,7 @@
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "sP" = (
 /obj/effect/floor_decal/borderfloor{
@@ -5209,7 +5212,7 @@
 /obj/structure/cable/blue{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/resleeve)
 "ti" = (
 /obj/structure/flora/grass/event/generic_bush1,
@@ -5556,7 +5559,7 @@
 	},
 /obj/structure/closet/secure_closet/medical3,
 /obj/item/storage/belt/medical,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "ux" = (
 /obj/structure/table/carbon,
@@ -5766,7 +5769,7 @@
 /obj/structure/cable/blue{
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/roomhallway)
 "vd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -6044,7 +6047,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
 	},
-/turf/simulated/floor/wood/indoors,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "wq" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -6083,7 +6086,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "ww" = (
 /obj/spawner/window/low_wall/reinforced/full,
@@ -6233,7 +6236,7 @@
 	},
 /obj/machinery/camera/network/security,
 /obj/machinery/chemical_dispenser/full,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "wU" = (
 /obj/machinery/power/sensor{
@@ -6290,7 +6293,7 @@
 	},
 /obj/effect/floor_decal/corner/paleblue,
 /obj/machinery/chemical_dispenser/full,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "wY" = (
 /obj/structure/bed/chair/comfy/beige,
@@ -6663,7 +6666,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/roomhallway)
 "ym" = (
 /obj/effect/floor_decal/grass_edge{
@@ -6811,7 +6814,7 @@
 	pixel_y = 15;
 	pixel_x = -5
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "yA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -7076,9 +7079,6 @@
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/machinery/light{
-	dir = 4
-	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/medical/surgery)
 "zy" = (
@@ -7170,7 +7170,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo/mining)
 "zM" = (
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "zO" = (
 /obj/structure/closet/secure_closet/blueshield,
@@ -7238,7 +7238,7 @@
 	dir = 8;
 	pixel_x = -13
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "Ag" = (
 /obj/machinery/light/small/old{
@@ -7383,7 +7383,7 @@
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "AF" = (
 /obj/spawner/window/low_wall/full/firelocks,
@@ -7797,7 +7797,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 1
 	},
-/turf/simulated/floor/wood/indoors,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "BZ" = (
 /obj/effect/floor_decal/industrial/warning/dust,
@@ -7948,7 +7948,7 @@
 /obj/structure/closet/hydrant{
 	pixel_x = -25
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "Cu" = (
 /obj/machinery/disposal,
@@ -8075,7 +8075,7 @@
 /obj/structure/cable/blue{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/resleeve)
 "CM" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -8280,7 +8280,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "Dx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -8972,7 +8972,7 @@
 /obj/item/storage/hypokit/full/loaded,
 /obj/item/storage/hypokit/full/loaded,
 /obj/machinery/recharger,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "FU" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -9229,6 +9229,9 @@
 	pixel_x = -32
 	},
 /obj/structure/table/reinforced,
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/medical/surgery)
 "GX" = (
@@ -9424,7 +9427,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/resleeve)
 "HI" = (
 /obj/structure/table/carbon/reinforced,
@@ -9483,7 +9486,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "Ia" = (
 /obj/structure/cable{
@@ -9639,7 +9642,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 1
 	},
-/turf/simulated/floor/wood/indoors,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "ID" = (
 /obj/effect/floor_decal/grass_edge{
@@ -9853,7 +9856,7 @@
 /obj/item/defib_kit/loaded{
 	pixel_y = 3
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "Ju" = (
 /obj/effect/floor_decal/industrial/warning/dust,
@@ -9956,7 +9959,7 @@
 /obj/structure/cable/blue{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/resleeve)
 "JN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -9982,7 +9985,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/resleeve)
 "JR" = (
 /obj/machinery/atmospherics/portables_connector{
@@ -10069,7 +10072,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
 	},
-/turf/simulated/floor/wood/indoors,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "Kn" = (
 /obj/structure/railing{
@@ -10256,7 +10259,7 @@
 /obj/structure/cable/blue{
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/resleeve)
 "La" = (
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -10448,7 +10451,7 @@
 	pixel_x = 8;
 	pixel_y = 8
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "LT" = (
 /turf/simulated/wall/wood/hardwood,
@@ -10653,7 +10656,7 @@
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/resleeve)
 "MS" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -11011,7 +11014,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
 	},
-/turf/simulated/floor/wood/indoors,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "Ok" = (
 /obj/structure/morgue{
@@ -11070,7 +11073,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "OI" = (
 /turf/simulated/open,
@@ -11696,16 +11699,16 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/medical/room)
 "Rn" = (
-/obj/machinery/button/windowtint/multitint{
-	id = "operating_theatre_2";
-	pixel_x = -24;
-	pixel_y = -2
-	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 9
 	},
 /obj/structure/cable/blue{
 	icon_state = "1-2"
+	},
+/obj/machinery/button/windowtint/multitint{
+	id = "operating_theatre_2";
+	pixel_x = -24;
+	pixel_y = -2
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/surgery)
@@ -11780,7 +11783,7 @@
 /obj/machinery/light/small/old{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "RC" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -11899,7 +11902,7 @@
 /obj/structure/cable/blue{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "Sc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -11907,7 +11910,9 @@
 /obj/structure/cable/blue{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/glass/medical,
+/obj/machinery/door/airlock/glass/medical{
+	id_tint = "operating_theatre_2"
+	},
 /obj/structure/curtain/open/shower/medical,
 /obj/map_helper/access_helper/airlock/station/medical/surgery,
 /obj/machinery/door/firedoor/glass,
@@ -12119,7 +12124,7 @@
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "SI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -12217,7 +12222,7 @@
 	dir = 6
 	},
 /obj/machinery/chem_master,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "SX" = (
 /obj/structure/window/phoronreinforced{
@@ -12265,7 +12270,7 @@
 /obj/structure/cable/blue{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/roomhallway)
 "Tf" = (
 /obj/structure/railing{
@@ -12289,7 +12294,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/roomhallway)
 "Tk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -12348,7 +12353,7 @@
 /obj/item/stack/material/phoron,
 /obj/item/stack/material/phoron,
 /obj/machinery/reagentgrinder,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "Tt" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -13585,7 +13590,7 @@
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/roomhallway)
 "XU" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -13642,7 +13647,7 @@
 /obj/structure/cable/blue{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/resleeve)
 "Yg" = (
 /obj/effect/floor_decal/corner/brown/full{
@@ -13728,6 +13733,9 @@
 /obj/item/reagent_containers/blood/OMinus,
 /obj/item/reagent_containers/blood/OMinus,
 /obj/item/reagent_containers/blood/OMinus,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/medical/surgery)
 "YF" = (
@@ -13756,7 +13764,7 @@
 /obj/structure/cable/blue{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/roomhallway)
 "YK" = (
 /obj/machinery/conveyor_switch/oneway{
@@ -13832,7 +13840,7 @@
 	dir = 6
 	},
 /obj/machinery/chem_master,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "Zg" = (
 /obj/structure/railing{
@@ -13855,7 +13863,7 @@
 	dir = 4
 	},
 /obj/item/storage/belt/medical,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "Zi" = (
 /obj/structure/cable{
