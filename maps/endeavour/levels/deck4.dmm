@@ -5,6 +5,27 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4starboardforhall)
+"aav" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/navgold/border,
+/obj/structure/sign/electricshock{
+	pixel_x = 0;
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d4starboardhall)
 "aaR" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
@@ -1022,9 +1043,6 @@
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
-/obj/structure/cable/cyan{
-	icon_state = "0-4"
-	},
 /obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/plating,
 /area/engineering/engine_smes)
@@ -1088,6 +1106,8 @@
 	dir = 8
 	},
 /obj/structure/catwalk,
+/obj/machinery/door/airlock/engineering,
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "bab" = (
@@ -8078,7 +8098,7 @@
 /area/endeavour/hallway/d4portafthall)
 "hSz" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock/engineering,
 /obj/map_helper/access_helper/airlock/station/engineering,
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -11264,6 +11284,7 @@
 "leo" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint/sun,
+/obj/structure/cable,
 /turf/simulated/floor/plating,
 /area/engineering/storage)
 "leS" = (
@@ -11841,6 +11862,8 @@
 /obj/machinery/door/firedoor{
 	dir = 4
 	},
+/obj/machinery/door/airlock/engineering,
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "lOK" = (
@@ -12410,6 +12433,10 @@
 /obj/effect/floor_decal/corner/lightorange/bordercorner2,
 /turf/simulated/floor/tiled/steel,
 /area/engineering/atmos/eva)
+"moo" = (
+/obj/structure/sign/electricshock,
+/turf/simulated/wall/r_wall/prepainted/engineering,
+/area/engineering/storage)
 "moY" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/structure/cable{
@@ -13060,10 +13087,6 @@
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 4
-	},
-/obj/machinery/light{
-	dir = 8;
-	light_range = 12
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
@@ -14718,11 +14741,9 @@
 /turf/simulated/floor/tiled/white,
 /area/engineering/shield_gen)
 "oFZ" = (
-/obj/machinery/door/firedoor{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/engineering/engine_smes)
+/obj/structure/stairs/spawner/north,
+/turf/simulated/floor/tiled/dark,
+/area/endeavour/station/stairs_four)
 "oGk" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 6
@@ -17895,6 +17916,9 @@
 	},
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/navgold/border,
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4starboardhall)
 "spe" = (
@@ -19773,6 +19797,29 @@
 	},
 /turf/simulated/wall/r_wall/prepainted/engineering/atmos,
 /area/engineering/atmos)
+"uxK" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/navgold/border,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d4starboardhall)
 "uxQ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -22823,6 +22870,21 @@
 "xxu" = (
 /turf/simulated/wall/durasteel,
 /area/ai)
+"xyH" = (
+/obj/structure/closet/crate,
+/obj/item/circuitboard/smes,
+/obj/item/smes_coil,
+/obj/item/smes_coil,
+/obj/item/smes_coil/super_capacity,
+/obj/item/smes_coil/super_capacity,
+/obj/item/smes_coil/super_io,
+/obj/item/smes_coil/super_io,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/storage)
 "xzg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -34488,7 +34550,7 @@ fpa
 fpa
 fpa
 tFG
-oFZ
+tFG
 aZL
 lOy
 tFG
@@ -38761,7 +38823,7 @@ jLF
 oBa
 lOL
 lOL
-ili
+aav
 qGG
 qGG
 qGG
@@ -39149,7 +39211,7 @@ lam
 cin
 tsh
 lOL
-ili
+uxK
 leo
 wkt
 tMO
@@ -39343,13 +39405,13 @@ pmj
 cin
 tsh
 lOL
-ili
+uxK
 leo
 rRC
 tMO
 xFh
 qGG
-nUo
+xyH
 mqz
 vJG
 qGG
@@ -39538,7 +39600,7 @@ cin
 tsh
 lOL
 ili
-qGG
+moo
 dlT
 tMO
 shN
@@ -47102,8 +47164,8 @@ xdN
 heC
 jqK
 crB
-rsD
-tBV
+oFZ
+nLM
 yjd
 urP
 nLM
@@ -47296,8 +47358,8 @@ lad
 pPV
 yjv
 crB
-rsD
-tBV
+oFZ
+nLM
 ntt
 nLM
 nLM
@@ -52728,8 +52790,8 @@ nQw
 cNE
 fwT
 wfT
-rsD
-tBV
+oFZ
+nLM
 ntt
 nLM
 aiw
@@ -52922,8 +52984,8 @@ inf
 sfK
 aYc
 wfT
-rsD
-tBV
+oFZ
+nLM
 oTw
 wSS
 xsP

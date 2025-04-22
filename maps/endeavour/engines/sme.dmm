@@ -512,6 +512,13 @@
 	initial_gas_mix = "n2=82.1472;TEMP=293.15"
 	},
 /area/engineering/engine_room)
+"uM" = (
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 8
+	},
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "uR" = (
 /obj/structure/window/phoronreinforced{
 	dir = 8
@@ -679,6 +686,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 9
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/airless/ceiling,
 /area/engineering/engine_room)
 "Ab" = (
@@ -859,6 +867,13 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
+"Gf" = (
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 8
+	},
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "GE" = (
@@ -1450,7 +1465,7 @@ xM
 xM
 xM
 jf
-oV
+Gf
 Ua
 xg
 as
@@ -1474,7 +1489,7 @@ fd
 fd
 jf
 jf
-oV
+uM
 Ua
 ab
 xg
