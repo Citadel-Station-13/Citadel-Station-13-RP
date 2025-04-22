@@ -32,6 +32,12 @@
 	item_state = "gold_horn"
 	var/flip_cooldown = 0
 
+/obj/item/bikehorn/rubberducky
+	name = "rubber ducky"
+	desc = "Rubber ducky you're so fine, you make bathtime lots of fuuun. Rubber ducky I'm awfully fooooond of yooooouuuu~"	//thanks doohl
+	icon = 'icons/obj/watercloset.dmi'
+	icon_state = "rubberducky"
+
 /*
 /obj/item/bikehorn/golden/attack()
 	if(flip_cooldown < world.time)
