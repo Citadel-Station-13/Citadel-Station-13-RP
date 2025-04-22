@@ -13,6 +13,7 @@
 	colorable = TRUE
 	drop_sound = 'sound/items/drop/sword.ogg'
 	pickup_sound = 'sound/items/pickup/sword.ogg'
+	var/can_combine = TRUE
 
 	active_damage_force = 30
 	active_throw_force = 20
@@ -53,6 +54,10 @@
 		if(HAS_TRAIT(W, TRAIT_ITEM_NODROP) || HAS_TRAIT(src, TRAIT_ITEM_NODROP))
 			to_chat(user, "<span class='warning'>\the [HAS_TRAIT(src, TRAIT_ITEM_NODROP) ? src : W] is stuck to your hand, you can't attach it to \the [HAS_TRAIT(src, TRAIT_ITEM_NODROP) ? W : src]!</span>")
 			return
+		var/obj/item/melee/transforming/energy/sword/other_sword = W
+		if(!can_combine || !other_sword.can_combine)
+			to_chat(user,"<span class='warning'>At least one of theese blades can't be attached</span>")
+			return
 		if(istype(W, /obj/item/melee/transforming/energy/sword/charge))
 			to_chat(user,"<span class='warning'>These blades are incompatible, you can't attach them to each other!</span>")
 			return
@@ -63,6 +68,9 @@
 			qdel(src)
 	else
 		return ..()
+
+/obj/item/melee/transforming/energy/sword/implant
+	can_combine = FALSE
 
 /obj/item/melee/transforming/energy/sword/cutlass
 	name = "energy cutlass"
@@ -82,6 +90,7 @@
 	throw_speed = 3
 	armor_penetration = 35
 	colorable = TRUE
+	can_combine = FALSE
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	worn_render_flags = WORN_RENDER_SLOT_NO_RENDER | WORN_RENDER_INHAND_ONE_FOR_ALL
 
@@ -109,11 +118,17 @@
 		if(HAS_TRAIT(W, TRAIT_ITEM_NODROP) || HAS_TRAIT(src, TRAIT_ITEM_NODROP))
 			to_chat(user, "<span class='warning'>\the [HAS_TRAIT(src, TRAIT_ITEM_NODROP) ? src : W] is stuck to your hand, you can't attach it to \the [HAS_TRAIT(src, TRAIT_ITEM_NODROP) ? W : src]!</span>")
 			return
+		var/obj/item/melee/transforming/energy/sword/other_sword = W
+		if(!can_combine || !other_sword.can_combine)
+			to_chat(user,"<span class='warning'>At least one of theese blades can't be attached</span>")
+			return
 		else
 			to_chat(user, "<span class='notice'>You combine the two charge swords, making a single supermassive blade! You're cool.</span>")
 			new /obj/item/melee/transforming/energy/sword/charge/dualsaber(user.drop_location())
 			qdel(W)
 			qdel(src)
+	else if(istype(W, /obj/item/melee/transforming/energy/sword)) //Without this, parent will be called, and as the other blade isn't a charge one, it could combine
+		to_chat(user,"<span class='warning'>These blades are incompatible, you can't attach them to each other!</span>")
 	else
 		return ..()
 
@@ -129,7 +144,7 @@
 	armor_penetration = 30
 	colorable = TRUE
 	hitcost = 150
-
+	can_combine = FALSE
 	passive_parry = /datum/passive_parry{
 		parry_chance_default = 60;
 		parry_chance_projectile = 65;
