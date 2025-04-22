@@ -111,6 +111,7 @@
 			combo_tracker = new(combo_continuation_timeout)
 			combo_tracker.on_continuation_begin = CALLBACK(src, PROC_REF(on_continuation_begin))
 			combo_tracker.on_continuation_end = CALLBACK(src, PROC_REF(on_continuation_end))
+	RegisterSignal(wearer, COMSIG_MOB_MELEE_INTENTFUL_HOOK, PROC_REF(on_user_melee_intent))
 	RegisterSignal(wearer, COMSIG_MOB_MELEE_IMPACT_HOOK, PROC_REF(on_user_melee_impact))
 
 #warn FUCK FUCK FUCK FCUK FUCK FUCK FUCK
@@ -179,6 +180,25 @@
 /obj/item/kinetic_gauntlets/proc/run_detonation_fx(turf/location, atom/target)
 	return
 
+/obj/item/kinetic_gauntlets/proc/on_user_melee_intent(datum/source, datum/event_args/clickchain/clickchain, clickchain_flags)
+	SIGNAL_HANDLER
+
+	if(!ismob(clickchain.target))
+		return NONE
+	var/mob/mob_target = target
+	// requires mark to be using combo, otherwise you can hit it twice and mark it then hit again
+	var/datum/status_effect/grouped/proto_kinetic_mark/mark = mob_target.has_status_effect(/datum/status_effect/grouped/proto_kinetic_mark)
+	if(!mark)
+		return NONE
+	#warn SEC?
+	var/datum/combo/melee/valid_combo = combo_tracker?.process_inbound_via_tail_match(clickchain.using_intent, combo_set)
+	if(!valid_combo)
+		return NONE
+	QDEL_NULL(mark)
+	execute_combo(clickchain, clickchain_flags, valid_combo)
+	discharge(charge_delay_multiplier_combo)
+	return RAISE_MOB_MELEE_INTENTFUL_ACTION | RAISE_MOB_MELEE_INTENTFUL_SKIP
+
 /obj/item/kinetic_gauntlets/proc/on_user_melee_impact(datum/source, list/melee_args)
 	SIGNAL_HANDLER
 	var/datum/event_args/actor/clickchain/clickchain = melee_args[CLICKCHAIN_MELEE_ATTACK_ARG_CLICKCHAIN]
@@ -197,7 +217,7 @@
 		return RAISE_MOB_MELEE_IMPACT_SKIP
 	if(!ismob(target))
 		var/atom/atom_target = target
-		atom_target.inflict_damage_instance(
+		clickchain.data[ACTOR_DATA_KINETIC_IMPACT_LOG] = atom_target.inflict_damage_instance(
 			charged_structure_damage,
 			charged_structure_damage_type,
 			charged_structure_damage_tier,
@@ -210,17 +230,19 @@
 		run_detonation_fx(target)
 		discharge(charge_delay_multiplier_structure)
 		return RAISE_MOB_MELEE_IMPACT_SKIP
-	var/mob/mob_target = target
-	// requires mark to be using combo, otherwise you can hit it twice and mark it then hit again
-	var/datum/status_effect/grouped/proto_kinetic_mark/mark = mob_target.has_status_effect(/datum/status_effect/grouped/proto_kinetic_mark)
-	if(!mark)
-		return NONE
-	var/datum/combo/melee/valid_combo = combo_tracker?.process_inbound_via_tail_match(clickchain.using_intent, combo_set)
-	if(!valid_combo)
-		return NONE
-	QDEL_NULL(mark)
-	execute_combo(clickchain, clickchain_flags, valid_combo)
-	discharge(charge_delay_multiplier_combo)
+	else
+		clickchain.data[ACTOR_DATA_KINETIC_IMPACT_LOG] = atom_target.inflict_damage_instance(
+			charged_mob_damage,
+			charged_mob_damage_type,
+			charged_mob_damage_tier,
+			charged_mob_damage_flag,
+			charged_mob_damage_mode,
+			attack_type = ATTACK_TYPE_MELEE,
+			attack_source = clickchain,
+			hit_zone = clickchain.target_zone,
+		)
+		run_detonation_fx(target)
+		discharge(charge_delay_multiplier_basic)
 	return RAISE_MOB_MELEE_IMPACT_SKIP
 
 /obj/item/kinetic_gauntlets/proc/execute_combo(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/combo/melee/use_combo)

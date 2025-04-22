@@ -195,7 +195,6 @@
 		return NONE
 	if(legacy_unarmed_miss_hook(H))
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_ATTACK_MISSED
-	var/datum/gender/TT = GLOB.gender_datums[H.get_visible_gender()]
 	var/mob/living/L = H
 
 	if(L.zone_sel.selecting == "mouth" && wear_mask && istype(wear_mask, /obj/item/grenade))

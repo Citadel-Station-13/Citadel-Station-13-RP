@@ -46,3 +46,24 @@
 
 	for(var/datum/combo/combo as anything in combos)
 		computed_max_sequence_length = max(computed_max_sequence_length, combo.get_length())
+
+/**
+ * check tail match, where 1 to n is first to last of current combo;
+ * returns the first combo resolved from the current stored set
+ *
+ * @return /datum/combo instance or null
+ */
+/datum/combo_set/proc/simple_tail_match(list/keys_so_far)
+	var/stored_length = length(keys_so_far)
+	var/offset = min(0, stored_length - computed_max_sequence_length)
+	for(var/datum/combo/combo as anything in combos)
+		if(length(combo.keys) > stored_length)
+			continue
+		var/adjusted_offset = offset + (computed_max_sequence_length - length(combo.keys))
+		for(var/i in 1 to length(combo.keys))
+			if(combo.keys[i] != keys_so_far[adjusted_offset + i])
+				continue
+			. = combo
+			break
+		if(.)
+			break

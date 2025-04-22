@@ -40,7 +40,7 @@
 
 /datum/combo_tracker/melee/proc/check_continuation()
 	var/remaining_time = continuation_last - (world.time - continuation_timeout)
-	if(remaining_time < 0)
+	if(remaining_time <= 0)
 		end_continuation()
 		return
 	addtimer(CALLBACK(src, PROC_REF(check_continuation)), remaining_time)
