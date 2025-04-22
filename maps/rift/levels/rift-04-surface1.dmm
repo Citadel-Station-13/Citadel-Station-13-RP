@@ -2454,9 +2454,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/delivery)
-"bKN" = (
-/turf/simulated/wall/prepainted,
-/area/crew_quarters/medbreak)
 "bLe" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -5192,7 +5189,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/green{
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4
 	},
 /obj/machinery/door/airlock/medical{
@@ -5200,6 +5197,9 @@
 	req_one_access = null
 	},
 /obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -8326,6 +8326,7 @@
 	name = "Warehouse Shutters"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
 "fxS" = (
@@ -8417,6 +8418,7 @@
 /area/maintenance/starboard)
 "fAI" = (
 /obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/effect/paint/hardwood,
 /turf/simulated/floor/plating,
 /area/library)
 "fBk" = (
@@ -9825,6 +9827,7 @@
 /area/maintenance/library)
 "gCZ" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/tether/station/public_meeting_room)
 "gDe" = (
@@ -10518,7 +10521,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/green{
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/dark,
@@ -14223,13 +14226,13 @@
 /turf/simulated/floor/wood,
 /area/lawoffice)
 "iYu" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/button/crematorium{
-	id = "medbay_crematorium";
+	id = "virology_crematorium";
 	pixel_x = 26;
 	pixel_y = 23;
 	req_access = list(5)
 	},
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/dark,
 /area/medical/virologymorgue)
 "iZK" = (
@@ -14283,6 +14286,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
 	},
+/obj/effect/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/virologymorgue)
 "jaY" = (
@@ -14913,6 +14917,7 @@
 "jAs" = (
 /obj/machinery/atmospherics/component/binary/pump/high_power/on,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/virologypurge)
 "jAJ" = (
@@ -17184,6 +17189,9 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/medical/virologypurge)
 "kMQ" = (
@@ -17359,6 +17367,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/testingroom)
 "kTI" = (
@@ -17417,6 +17426,14 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
+	},
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_x = 1;
+	pixel_y = -1
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virology)
@@ -18265,7 +18282,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "lvS" = (
-/obj/machinery/atmospherics/pipe/simple/visible/green,
+/obj/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/simulated/floor/tiled/dark,
 /area/medical/virologymorgue)
 "lwi" = (
@@ -19313,6 +19330,7 @@
 "mex" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/virologypurge)
 "mfm" = (
@@ -19479,6 +19497,7 @@
 /area/rift/surfacebase/outside/outside1)
 "mkq" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/virologypurge)
 "mkE" = (
@@ -20159,6 +20178,7 @@
 	name = "Testing Chamber Blast Door"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/testingroom)
 "mCV" = (
@@ -20198,10 +20218,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/library)
-"mEV" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/medical/psych)
 "mEY" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -20455,8 +20471,10 @@
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "mNL" = (
-/turf/simulated/wall/prepainted,
-/area/medical/psych_ward)
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/babyblue,
+/turf/simulated/floor/plating,
+/area/medical/psych)
 "mNV" = (
 /obj/structure/table/standard,
 /obj/item/flashlight/pen,
@@ -21804,6 +21822,9 @@
 /area/rift/station/public_garden)
 "nAP" = (
 /obj/machinery/optable,
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/freezer,
 /area/medical/virologymorgue)
 "nBa" = (
@@ -26777,7 +26798,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/green{
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4
 	},
 /obj/structure/cable/green{
@@ -27708,6 +27729,7 @@
 /area/rift/surfacebase/outside/outside1)
 "qRr" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/crew_quarters/medbreak)
 "qRt" = (
@@ -28340,6 +28362,7 @@
 /area/medical/psych)
 "rmE" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/chemistry_lab)
 "rmO" = (
@@ -29959,6 +29982,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/outpost/xenobiology/outpost_stairs)
 "shL" = (
@@ -30680,6 +30704,7 @@
 /area/rnd/outpost/xenobiology/outpost_breakroom)
 "sxf" = (
 /obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/effect/paint/hardwood,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/entertainment)
 "sxj" = (
@@ -31005,6 +31030,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/effect/paint/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
 "sHX" = (
@@ -38910,6 +38936,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
+/obj/effect/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/virologyisolation)
 "xgU" = (
@@ -39473,6 +39500,11 @@
 /obj/structure/table/standard,
 /obj/item/storage/firstaid/surgery,
 /obj/item/autopsy_scanner,
+/obj/machinery/camera/network/medbay,
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_x = -2;
+	pixel_y = -2
+	},
 /turf/simulated/floor/tiled/freezer,
 /area/medical/virologymorgue)
 "xxc" = (
@@ -55024,12 +55056,12 @@ hgE
 hgE
 hgE
 hgE
-mNL
+hIo
 pVo
 slX
 bGX
 mrV
-mNL
+hIo
 hFH
 uFD
 tyv
@@ -55218,7 +55250,7 @@ hgE
 hgE
 hgE
 hgE
-mNL
+hIo
 nLD
 ivG
 lzE
@@ -55259,7 +55291,7 @@ rrk
 mUU
 qRr
 qRr
-bKN
+mUU
 oOT
 tDL
 mUU
@@ -55412,7 +55444,7 @@ hgE
 hgE
 hgE
 hgE
-mNL
+hIo
 utG
 aEQ
 aYK
@@ -55606,12 +55638,12 @@ hgE
 hgE
 hgE
 hgE
-mNL
+hIo
 pVo
 cGp
 mis
 wfK
-mNL
+hIo
 gWw
 jXM
 iNX
@@ -55800,8 +55832,8 @@ hgE
 hgE
 hgE
 hgE
-mNL
-mNL
+hIo
+hIo
 twG
 twG
 twG
@@ -56582,9 +56614,9 @@ twG
 twG
 twG
 wVZ
-mEV
+mNL
 duU
-mEV
+mNL
 sDY
 jyG
 hwX
@@ -58913,7 +58945,7 @@ sDY
 kEZ
 oiO
 fKW
-mEV
+mNL
 jDX
 jDX
 rRV
@@ -59301,7 +59333,7 @@ sDY
 sBy
 gIg
 xse
-mEV
+mNL
 jeG
 oPs
 hQy
