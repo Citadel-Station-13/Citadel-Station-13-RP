@@ -1,5 +1,4 @@
-//todo: toothbrushes, and some sort of "toilet-filthinator" for the hos
-
+#warn 1. split this file up 2. check clickdelay interaction with telegraphed do_afters here
 /obj/structure/toilet
 	name = "toilet"
 	desc = "The HT-451, a torque rotation-based, waste disposal unit for small matter. This one seems remarkably clean."
