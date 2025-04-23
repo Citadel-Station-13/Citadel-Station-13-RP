@@ -250,7 +250,7 @@
 		else
 			if(!for_target.inventory.equip_to_slot_if_possible(creating_suit_slot, /datum/inventory_slot/inventory/suit, INV_OP_FORCE | INV_OP_SILENT | INV_OP_FLUFFLESS))
 				into_inv += (creating_suit_slot)
-	elses
+	else
 		into_inv += (suit_path)
 
 	//! legacy: just in case

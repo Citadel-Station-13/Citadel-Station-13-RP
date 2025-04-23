@@ -50,7 +50,7 @@
 
 /obj/item/clothing/head/helmet/space/void/plasman/examine()
 	. = ..()
-	. + SPAN_NOTICE("<b>Alt-click</b> to enable the atmospheric analysis suite.")
+	. += SPAN_NOTICE("<b>Alt-click</b> to enable the atmospheric analysis suite.")
 
 /obj/item/clothing/head/helmet/space/void/plasman/AltClick(mob/user)
 	. = ..()
@@ -69,9 +69,9 @@
 	UnregisterSignal(user, COMSIG_MOB_EXAMINATE)
 
 
-/obj/item/clothing/head/helmet/space/void/plasman/proc/doGasAnalysis(atom/target)
-	if(istype(loc, /mob/living/carbon/human) && analyzing)
-		var/mob/living/carbon/human/H = loc
+/obj/item/clothing/head/helmet/space/void/plasman/proc/doGasAnalysis(mob/examiner, atom/target)
+	if(istype(examiner, /mob/living/carbon/human) && analyzing)
+		var/mob/living/carbon/human/H = examiner
 		if((H._item_by_slot(SLOT_ID_HEAD) == src))
 			analyze_gases(target, H, TRUE)
 //
