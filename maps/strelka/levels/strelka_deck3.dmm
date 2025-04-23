@@ -6358,11 +6358,6 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/medical/room)
-"xq" = (
-/obj/item/reagent_containers/glass/bucket/wood,
-/obj/machinery/portable_atmospherics/hydroponics/soil,
-/turf/simulated/floor/fey/forest_grass,
-/area/strelka/shipbase/deck3)
 "xr" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/rddouble,
@@ -7747,6 +7742,11 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/resleeve)
+"BO" = (
+/obj/structure/flora/grass/event/full_grass1,
+/obj/item/reagent_containers/glass/bucket/wood,
+/turf/simulated/floor/fey/forest_grass,
+/area/strelka/shipbase/deck3)
 "BP" = (
 /obj/effect/floor_decal/corner/brown{
 	dir = 9
@@ -33005,7 +33005,7 @@ WM
 CQ
 gH
 uZ
-xq
+vw
 Bb
 lG
 AF
@@ -33393,7 +33393,7 @@ gK
 CQ
 Nl
 oO
-WK
+BO
 cO
 Fy
 JC

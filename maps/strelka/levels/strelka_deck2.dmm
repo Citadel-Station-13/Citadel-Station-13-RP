@@ -1,4 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/simulated/floor/fey/forest_grass,
+/area/strelka/shipbase/deck2)
 "ad" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 4
@@ -199,19 +202,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
-	},
-/turf/simulated/floor/wood/indoors,
-/area/strelka/shipbase/deck2)
-"aH" = (
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/obj/machinery/light/small/old{
-	dir = 1
-	},
-/obj/machinery/atm{
-	pixel_y = 27
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2)
@@ -453,7 +443,7 @@
 	},
 /obj/structure/table/marble,
 /obj/structure/barricade/cutout/law{
-	pixel_y = 8;
+	pixel_y = 12;
 	fake_name = "Commander Spout";
 	construct_name = "Commander Spout";
 	name = "Commander Spout"
@@ -466,7 +456,7 @@
 	dir = 4
 	},
 /obj/item/clothing/head/caphat/formal{
-	pixel_y = 5
+	pixel_y = 12
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2)
@@ -755,7 +745,9 @@
 	dir = 1
 	},
 /obj/structure/table/marble,
-/obj/item/reagent_containers/food/snacks/cookie,
+/obj/item/reagent_containers/food/snacks/cookie{
+	pixel_y = 6
+	},
 /obj/structure/window/basic,
 /obj/structure/window/basic{
 	dir = 8
@@ -1136,17 +1128,18 @@
 /obj/effect/paint_stripe/purple,
 /turf/simulated/wall/r_wall,
 /area/shuttle/excursion/strelka)
-"dI" = (
-/obj/effect/floor_decal/spline/fancy/wood,
+"dJ" = (
+/turf/simulated/floor/wood/indoors,
+/area/strelka/shipbase/deck2)
+"dK" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
+/obj/effect/floor_decal/spline/fancy/wood,
 /obj/machinery/computer/guestpass{
-	pixel_y = 26
+	pixel_y = -24;
+	dir = 1
 	},
-/turf/simulated/floor/wood/indoors,
-/area/strelka/shipbase/deck2)
-"dJ" = (
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2)
 "dM" = (
@@ -1223,17 +1216,15 @@
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2)
 "dX" = (
-/obj/effect/floor_decal/plaque{
-	pixel_y = 6
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/rust,
 /obj/structure/sign/kiddieplaque{
-	pixel_y = 7;
+	pixel_y = 19;
 	name = "\improper Strelka Gallery plaque";
-	desc = "The Order of nature, a painting by a unknown painter. Still, transporting this painting was the first mission of this vessel, in 2458."
+	desc = "The Order of nature, a painting by a unknown painter. Still, transporting this painting was the first mission of this vessel, in 2458.";
+	layer = 3.5
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
@@ -1949,10 +1940,6 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck2)
 "gl" = (
-/obj/effect/floor_decal/plaque{
-	pixel_y = 6;
-	desc = "Statue of AI Galaxy, the first AI installed on this ship. A bit limited at the time, he was programmed with a joyfull personality, and bad puns"
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -1961,9 +1948,10 @@
 	},
 /obj/effect/floor_decal/rust,
 /obj/structure/sign/kiddieplaque{
-	pixel_y = 7;
+	pixel_y = 19;
 	name = "\improper Strelka Gallery plaque";
-	desc = "Statue of AI Galaxy, the first AI installed on this ship. A bit limited at the time, he was programmed with a joyfull personality, and bad puns"
+	desc = "Statue of AI Galaxy, the first AI installed on this ship. A bit limited at the time, he was programmed with a joyfull personality, and bad puns";
+	layer = 3.5
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
@@ -2029,10 +2017,6 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/security/main)
 "gz" = (
-/obj/effect/floor_decal/plaque{
-	pixel_y = -10;
-	desc = "A photo album, representing all crew that came along and served on the ship, from the luxury days to today, passing by the blockade runner"
-	},
 /obj/structure/cable/blue{
 	icon_state = "4-8"
 	},
@@ -2808,9 +2792,7 @@
 	dir = 1
 	},
 /obj/machinery/camera/network/security,
-/obj/machinery/light/small/old{
-	dir = 1
-	},
+/obj/machinery/computer/timeclock/premade/north,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2)
 "jj" = (
@@ -2873,10 +2855,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck2/explo)
 "jz" = (
-/obj/effect/floor_decal/plaque{
-	pixel_y = -10;
-	desc = "Lythios 43a is the base of operation of the Voidline Shuttle Race. It stopped after one successfull edition, the planet being blockaded by the SDF for safety reasons. This suit was given by the Pilot, as a souvenir of the race."
-	},
 /obj/structure/cable/blue{
 	icon_state = "4-8"
 	},
@@ -2900,10 +2878,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/engine)
 "jD" = (
-/obj/effect/floor_decal/plaque{
-	pixel_y = -10;
-	desc = "This is a Plushy modeled after Wingman, a carp that apparently followed the ship for 40 years. Scientist never knew why they werent hostile. Altho this plushy serving as a memory, it is possible that Wingman might still be alive."
-	},
 /obj/structure/sign/kiddieplaque{
 	pixel_y = -12;
 	layer = 2.6;
@@ -3012,6 +2986,7 @@
 	},
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/machinery/light/small/old,
+/obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2)
 "kc" = (
@@ -3342,17 +3317,14 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/gas)
 "ld" = (
-/obj/effect/floor_decal/plaque{
-	pixel_y = 6;
-	desc = "This Beepsky unit, called Commander Spout, arrested 23 clowns, Killed 242 Xenomorph, and might have boarded and destroyed 4 pirate cruisers."
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /obj/structure/sign/kiddieplaque{
-	pixel_y = 7;
+	pixel_y = 19;
 	name = "\improper Strelka Gallery plaque";
-	desc = "This Beepsky unit, called Commander Spout, arrested 23 clowns, Killed 242 Xenomorph, and might have boarded and destroyed 4 pirate cruisers."
+	desc = "This Beepsky unit, called Commander Spout, arrested 23 clowns, Killed 242 Xenomorph, and might have boarded and destroyed 4 pirate cruisers.";
+	layer = 3.5
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
@@ -4043,7 +4015,7 @@
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "ni" = (
-/obj/structure/flora/pottedplant/stoutbush,
+/obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/bridge/iaa)
 "nj" = (
@@ -4788,10 +4760,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/security/main)
 "pe" = (
-/obj/effect/floor_decal/plaque{
-	pixel_y = -10;
-	desc = "This Bible was a gift from a unknow passenger after the ships first blockade run away from a war zone. Its open on a passage that was highlight by said passenger, on Psalm 107. "
-	},
 /obj/structure/cable/blue{
 	icon_state = "4-8"
 	},
@@ -5303,10 +5271,6 @@
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck2/bridge/hos)
 "qC" = (
-/obj/effect/floor_decal/plaque{
-	pixel_y = -10;
-	desc = "Baseball Bat used by Tajaran player Renruk'Kartro, founder of the first Tajaran baseball team, after our ship escorted his team after the Oricon Baseball Championship. They lost, but trully gave the public a good watch."
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
@@ -5356,10 +5320,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/explo)
 "qI" = (
-/obj/effect/floor_decal/plaque{
-	pixel_y = -10;
-	desc = "Items from Lythios 43b, also called Miaphus'Ira. For now its a Tajaran penal colony, but we wish them to rise beyond that status."
-	},
 /obj/structure/cable/blue{
 	icon_state = "4-8"
 	},
@@ -5580,7 +5540,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/obj/machinery/computer/timeclock/premade/north,
+/obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2)
 "rm" = (
@@ -5776,6 +5736,7 @@
 /obj/machinery/light/small/old{
 	dir = 1
 	},
+/obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2)
 "rP" = (
@@ -6086,17 +6047,14 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
 "sQ" = (
-/obj/effect/floor_decal/plaque{
-	pixel_y = 6;
-	desc = "The suite that Centcom Engineer O'ryan on board, was wearing during the ship's first marriage, in 2471"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /obj/structure/sign/kiddieplaque{
-	pixel_y = 7;
+	pixel_y = 19;
 	name = "\improper Strelka Gallery plaque";
-	desc = "The suite that Centcom Engineer O'ryan on board, was wearing during the ship's first marriage, in 2471"
+	desc = "The suite that Centcom Engineer O'ryan on board, was wearing during the ship's first marriage, in 2471";
+	layer = 3.5
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -6104,10 +6062,6 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
 "sS" = (
-/obj/effect/floor_decal/plaque{
-	pixel_y = -10;
-	desc = "Why don't we have rats everywhere on the ships ? 1:Lack of maintenance Tunnels. 2: Cheese on mousetraps."
-	},
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
@@ -7047,10 +7001,6 @@
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck2/bridge/iaa)
 "vI" = (
-/obj/effect/floor_decal/plaque{
-	pixel_y = -10;
-	desc = "This crudly made drone was made by a Junior Surveyor that went on Lythios 43d, a frozen world."
-	},
 /obj/structure/cable/blue{
 	icon_state = "4-8"
 	},
@@ -7169,6 +7119,10 @@
 	pixel_y = -5
 	},
 /obj/structure/table/carbon/reinforced,
+/obj/structure/flora/pottedplant/tall{
+	pixel_y = 21;
+	pixel_x = 8
+	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck2/bridge/iaa)
 "wa" = (
@@ -7724,7 +7678,7 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/engineering)
 "xH" = (
-/obj/structure/flora/pottedplant/stoutbush,
+/obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck2/bridge/iaa)
 "xI" = (
@@ -7746,9 +7700,12 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/spline/fancy/wood,
-/obj/machinery/light/small/old,
 /obj/machinery/camera/network/security{
 	dir = 1
+	},
+/obj/machinery/computer/timeclock/premade/north{
+	dir = 1;
+	pixel_y = -25
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2)
@@ -8825,6 +8782,7 @@
 	dir = 1
 	},
 /obj/machinery/air_alarm/north_mount,
+/obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2)
 "Bb" = (
@@ -9513,17 +9471,14 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/board)
 "Dd" = (
-/obj/effect/floor_decal/plaque{
-	pixel_y = 6;
-	desc = "The dress that Keyka, botanist on board, was wearing during the ship's first marriage, in 2471"
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /obj/structure/sign/kiddieplaque{
-	pixel_y = 7;
+	pixel_y = 19;
 	name = "\improper Strelka Gallery plaque";
-	desc = "The dress that Keyka, botanist on board, was wearing during the ship's first marriage, in 2471"
+	desc = "The dress that Keyka, botanist on board, was wearing during the ship's first marriage, in 2471";
+	layer = 3.5
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
@@ -9939,19 +9894,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/security)
-"Ez" = (
-/obj/effect/floor_decal/plaque{
-	pixel_y = 6
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/effect/floor_decal/grass_edge,
-/turf/simulated/floor/tiled/asteroid_steel,
-/area/strelka/shipbase/deck2)
 "EB" = (
 /obj/structure/table/reinforced,
 /obj/machinery/microscope,
@@ -10808,9 +10750,15 @@
 	dir = 1
 	},
 /obj/structure/table/marble,
-/obj/item/paper/pamphlet/strelka,
-/obj/item/paper/pamphlet/strelka,
-/obj/item/paper/pamphlet/strelka,
+/obj/item/paper/pamphlet/strelka{
+	pixel_y = 5
+	},
+/obj/item/paper/pamphlet/strelka{
+	pixel_y = 5
+	},
+/obj/item/paper/pamphlet/strelka{
+	pixel_y = 5
+	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2)
 "Hw" = (
@@ -11307,6 +11255,14 @@
 /obj/structure/table/bench/steel,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/engineering)
+"Jb" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/structure/flora/pottedplant/hedge,
+/turf/simulated/floor/wood/indoors,
+/area/strelka/shipbase/deck2)
 "Jc" = (
 /obj/machinery/suit_storage_unit/standard_unit,
 /obj/structure/window/reinforced{
@@ -12523,10 +12479,6 @@
 /turf/simulated/wall/r_wall,
 /area/shuttle/excursion/strelka)
 "Nm" = (
-/obj/effect/floor_decal/plaque{
-	pixel_y = 6;
-	desc = "Poster for the Movie Wiz. The premier was show on board this vessel, in 2463"
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -12534,9 +12486,10 @@
 	dir = 4
 	},
 /obj/structure/sign/kiddieplaque{
-	pixel_y = 7;
+	pixel_y = 19;
 	name = "\improper Strelka Gallery plaque";
-	desc = "Poster for the Movie Wiz. The premier was show on board this vessel, in 2463"
+	desc = "Poster for the Movie Wiz. The premier was show on board this vessel, in 2463";
+	layer = 3.5
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
@@ -12588,10 +12541,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/engine)
 "NC" = (
-/obj/effect/floor_decal/plaque{
-	pixel_y = 6;
-	desc = "The first Canister used to launch this vessel for the first time."
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -12600,9 +12549,10 @@
 	},
 /obj/effect/floor_decal/rust,
 /obj/structure/sign/kiddieplaque{
-	pixel_y = 7;
+	pixel_y = 19;
 	name = "\improper Strelka Gallery plaque";
-	desc = "The first Canister used to launch this vessel for the first time."
+	desc = "The first Canister used to launch this vessel for the first time.";
+	layer = 3.5
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
@@ -12914,10 +12864,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/engine)
 "OO" = (
-/obj/effect/floor_decal/plaque{
-	pixel_y = 6;
-	desc = "The Scientist is a painting drawn on this ship, by Skrell artist Skraa'tesl"
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -12925,9 +12871,10 @@
 	dir = 4
 	},
 /obj/structure/sign/kiddieplaque{
-	pixel_y = 7;
+	pixel_y = 19;
 	name = "\improper Strelka Gallery plaque";
-	desc = "The Scientist is a painting drawn on this ship, by Skrell artist Skraa'tesl"
+	desc = "The Scientist is a painting drawn on this ship, by Skrell artist Skraa'tesl";
+	layer = 3.5
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
@@ -13078,10 +13025,6 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
 "Pm" = (
-/obj/effect/floor_decal/plaque{
-	pixel_y = -10;
-	desc = "A relic found on the ashes of KT934, Surt, by a mining team."
-	},
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
@@ -13196,10 +13139,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/engine)
 "PJ" = (
-/obj/effect/floor_decal/plaque{
-	pixel_y = -10;
-	desc = "Snow from Lythios43c. NT will soon have base here, if negociation of that base goes well."
-	},
 /obj/structure/cable/blue{
 	icon_state = "4-8"
 	},
@@ -13338,10 +13277,6 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/security/reception)
 "PZ" = (
-/obj/effect/floor_decal/plaque{
-	pixel_y = 6;
-	desc = "Cover of the album Gaze at the burning stars, that performed on board iin 2460"
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -13349,9 +13284,10 @@
 	dir = 4
 	},
 /obj/structure/sign/kiddieplaque{
-	pixel_y = 7;
+	pixel_y = 19;
 	name = "\improper Strelka Gallery plaque";
-	desc = "Cover of the album Gaze at the burning stars, that performed on board iin 2460"
+	desc = "Cover of the album Gaze at the burning stars, that performed on board iin 2460";
+	layer = 3.5
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
@@ -13540,6 +13476,10 @@
 	dir = 9
 	},
 /obj/structure/table/carbon/reinforced,
+/obj/structure/flora/pottedplant/tall{
+	pixel_y = 21;
+	pixel_x = 8
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/strelka/shipbase/deck2/bridge/iaa)
 "QJ" = (
@@ -13627,10 +13567,6 @@
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/shipbase/deck2/explo/pathfy)
 "Rd" = (
-/obj/effect/floor_decal/plaque{
-	pixel_y = 6;
-	desc = "The legend wants that this cookie fell from the sky."
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -13639,9 +13575,10 @@
 	},
 /obj/effect/floor_decal/rust,
 /obj/structure/sign/kiddieplaque{
-	pixel_y = 7;
+	pixel_y = 19;
 	name = "\improper Strelka Gallery plaque";
-	desc = "The legend wants that this cookie fell from the sky."
+	desc = "The legend wants that this cookie fell from the sky.";
+	layer = 3.5
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
@@ -13729,10 +13666,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/security)
 "Ru" = (
-/obj/effect/floor_decal/plaque{
-	pixel_y = -10;
-	desc = "Admiral Nia, the first officer, and the first on board pet."
-	},
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
@@ -14527,10 +14460,6 @@
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos/storage)
 "Ud" = (
-/obj/effect/floor_decal/plaque{
-	pixel_y = -10;
-	desc = "A reward given for the service of this vessel."
-	},
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
@@ -14572,10 +14501,6 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2)
 "Uh" = (
-/obj/effect/floor_decal/plaque{
-	pixel_y = 6;
-	desc = "Chief Engineer Amada was probably one of the most important figures. Indeed, she was in charge of massive refits, resulting of this luxury space liner becoming a blockade runner during the corporate wars."
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -14583,9 +14508,10 @@
 	dir = 4
 	},
 /obj/structure/sign/kiddieplaque{
-	pixel_y = 7;
+	pixel_y = 19;
 	name = "\improper Strelka Gallery plaque";
-	desc = "Chief Engineer Amada was probably one of the most important figures. Indeed, she was in charge of massive refits, resulting of this luxury space liner becoming a blockade runner during the corporate wars."
+	desc = "Chief Engineer Amada was probably one of the most important figures. Indeed, she was in charge of massive refits, resulting of this luxury space liner becoming a blockade runner during the corporate wars.";
+	layer = 3.5
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
@@ -15567,9 +15493,6 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck2/engineering/nacelle)
 "WO" = (
-/obj/effect/floor_decal/plaque{
-	pixel_y = 6
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -15577,8 +15500,9 @@
 	dir = 4
 	},
 /obj/structure/sign/kiddieplaque{
-	pixel_y = 7;
-	name = "\improper Strelka Gallery plaque"
+	pixel_y = 19;
+	name = "\improper Strelka Gallery plaque";
+	layer = 3.5
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
@@ -32933,7 +32857,7 @@ ok
 oo
 MS
 sF
-wA
+aa
 kh
 xK
 wE
@@ -33129,7 +33053,7 @@ BE
 cT
 mJ
 ye
-HF
+dK
 wE
 bE
 vK
@@ -35648,7 +35572,7 @@ dy
 da
 kZ
 MS
-Ez
+sF
 wA
 LR
 mm
@@ -36229,7 +36153,7 @@ As
 aB
 yH
 LB
-aH
+rO
 cT
 VQ
 QD
@@ -37005,7 +36929,7 @@ SK
 SK
 Qy
 cm
-dI
+rl
 cD
 TA
 tz
@@ -38173,7 +38097,7 @@ Ba
 sF
 wA
 rQ
-HF
+Jb
 JP
 Be
 kU

@@ -2409,10 +2409,13 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck4/chapel/office)
 "lc" = (
-/obj/structure/table/bench/marble,
-/obj/structure/flora/pottedplant/shoot{
-	pixel_y = 9;
-	pixel_x = 2
+/obj/structure/flora/pottedplant/hedge,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/machinery/light/fairy,
+/obj/machinery/light/fairy{
+	dir = 4
 	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/bar)
@@ -3125,11 +3128,21 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/table/bench/marble,
-/obj/structure/flora/pottedplant/stoutbush{
-	pixel_y = 12
+/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 8
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/flora/tree/fey/small_tree/tree6{
+	pixel_x = -31
+	},
+/turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck4/bar)
 "nV" = (
 /obj/structure/bed/padded,
@@ -4146,10 +4159,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/table/bench/marble,
-/obj/structure/flora/pottedplant/flower{
-	pixel_y = 10
-	},
+/obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/bar)
 "sC" = (
@@ -4424,11 +4434,11 @@
 	},
 /area/strelka/shipbase/deck4/hallway/botany)
 "tV" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /obj/structure/bed/chair/comfy/brown{
 	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4
 	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/bar)
@@ -6033,6 +6043,7 @@
 	dir = 1
 	},
 /obj/landmark/spawnpoint/overflow/station,
+/obj/machinery/light/fairy,
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/bar)
 "CH" = (
@@ -6531,6 +6542,9 @@
 	dir = 4
 	},
 /obj/landmark/spawnpoint/overflow/station,
+/obj/machinery/light/fairy{
+	dir = 8
+	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/bar)
 "Fu" = (
@@ -6657,6 +6671,10 @@
 	dir = 4
 	},
 /obj/landmark/spawnpoint/overflow/station,
+/obj/machinery/light/fairy,
+/obj/machinery/light/fairy{
+	dir = 8
+	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/bar)
 "Gk" = (
@@ -7829,6 +7847,7 @@
 	dir = 1
 	},
 /obj/landmark/spawnpoint/overflow/station,
+/obj/machinery/light/fairy,
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/bar)
 "LJ" = (
