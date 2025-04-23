@@ -2265,9 +2265,9 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/spline/fancy/wood/cee,
-/obj/structure/table/carbon/reinforced,
 /obj/item/folder/blue,
 /obj/structure/railing,
+/obj/structure/table/bench/steel,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck4/bridge)
 "kr" = (
@@ -2748,6 +2748,7 @@
 	id = "dorm2";
 	specialfunctions = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/dormhallway/Dorm/Room3)
 "mq" = (
@@ -3569,13 +3570,13 @@
 /obj/effect/floor_decal/spline/fancy/wood/cee{
 	dir = 1
 	},
-/obj/structure/table/carbon/reinforced,
 /obj/machinery/computer/skills{
 	icon_state = "computer"
 	},
 /obj/structure/railing{
 	dir = 1
 	},
+/obj/structure/table/bench/steel,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck4/bridge)
 "pD" = (
@@ -4835,6 +4836,9 @@
 	},
 /obj/machinery/camera/network/security,
 /obj/item/folder/red_hos,
+/obj/structure/panic_button{
+	pixel_y = 29
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck4/bridge)
 "vZ" = (

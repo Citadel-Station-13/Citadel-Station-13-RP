@@ -2366,9 +2366,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1)
 "mE" = (
-/obj/machinery/button/remote/blast_door{
-	id = "ballista"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck1/bridge/balista)
 "mF" = (

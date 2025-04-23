@@ -1,5 +1,12 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
+/obj/structure/table/bench/marble,
+/obj/structure/flora/pottedplant/minitree{
+	pixel_y = 13
+	},
+/obj/structure/flora/grass/event/bright_flowers1,
+/obj/structure/flora/grass/event/purple_flowers1,
+/obj/structure/flora/grass/event/yellow_flowers1,
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck2)
 "ad" = (
@@ -7317,6 +7324,9 @@
 	pixel_y = 13
 	},
 /obj/structure/table/bench/marble,
+/obj/structure/flora/grass/event/yellow_flowers1,
+/obj/structure/flora/grass/event/purple_flowers1,
+/obj/structure/flora/grass/event/bright_flowers1,
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck2)
 "wB" = (
@@ -15755,6 +15765,16 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/excursion/strelka)
+"Xv" = (
+/obj/structure/flora/pottedplant/minitree{
+	pixel_y = 13
+	},
+/obj/structure/table/bench/marble,
+/obj/structure/flora/grass/event/bright_flowers1,
+/obj/structure/flora/grass/event/purple_flowers1,
+/obj/structure/flora/grass/event/yellow_flowers1,
+/turf/simulated/floor/fey/forest_grass,
+/area/strelka/shipbase/deck2)
 "Xw" = (
 /obj/structure/table/rack/shelf,
 /obj/item/tank/oxygen,
@@ -38095,7 +38115,7 @@ pj
 zW
 Ba
 sF
-wA
+Xv
 rQ
 Jb
 JP
