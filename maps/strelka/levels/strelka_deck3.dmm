@@ -9350,6 +9350,11 @@
 /obj/machinery/computer/roguezones{
 	dir = 4
 	},
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	pixel_y = -27;
+	dir = 1;
+	id_tag = "belter_docking"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo/mining)
 "Hq" = (
