@@ -203,6 +203,9 @@
 	display_name = "NSV strelka - Flagship Offboarding"
 	path = "maps/strelka/levels/flagship.dmm"
 	flags = LEGACY_LEVEL_ADMIN|LEGACY_LEVEL_CONTACT
+	traits = list(
+		ZTRAIT_LEGACY_BELTER_TRANSIT,
+	)
 
 #undef STRELKA_MAP_SIZE
 #undef STRELKA_HOLOMAP_CENTER_GUTTER
