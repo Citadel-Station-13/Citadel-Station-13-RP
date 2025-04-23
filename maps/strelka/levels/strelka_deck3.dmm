@@ -7505,7 +7505,7 @@
 /obj/effect/shuttle_landmark{
 	base_area = /area/rift/surfacebase/outside/outside1;
 	base_turf = /turf/simulated/floor/reinforced/lythios43c;
-	docking_controller = "cargo_bay";
+	docking_controller = "supply_shuttle";
 	landmark_tag = "supply_dock";
 	name = "Strelka Cargo Dock"
 	},
@@ -11395,8 +11395,7 @@
 	},
 /obj/machinery/door/airlock/mining{
 	name = "Cargo Airlock";
-	req_one_access = null;
-	req_access = list(31,5)
+	req_one_access = null
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -12517,7 +12516,7 @@
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	dir = 8;
 	frequency = 1380;
-	id_tag = "cargo_bay";
+	id_tag = "supply_shuttle";
 	pixel_x = 24
 	},
 /turf/simulated/floor/reinforced/lythios43c,

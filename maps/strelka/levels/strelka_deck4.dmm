@@ -202,6 +202,9 @@
 /obj/effect/floor_decal/corner/navgold/bordercorner{
 	dir = 8
 	},
+/obj/structure/railing{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck4/bridge)
 "aT" = (
@@ -739,6 +742,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/hallway)
+"dk" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/strelka/shipbase/deck4/bridge)
 "ds" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -1195,12 +1205,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/hallway)
-"fz" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor/monogrid,
-/area/strelka/shipbase/deck4/bridge)
 "fC" = (
 /obj/machinery/door/airlock/command{
 	id_tag = "captaindoor";
@@ -2263,6 +2267,7 @@
 /obj/effect/floor_decal/spline/fancy/wood/cee,
 /obj/structure/table/carbon/reinforced,
 /obj/item/folder/blue,
+/obj/structure/railing,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck4/bridge)
 "kr" = (
@@ -3364,11 +3369,14 @@
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck4/bar)
 "oQ" = (
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck4/bridge)
@@ -3564,6 +3572,9 @@
 /obj/structure/table/carbon/reinforced,
 /obj/machinery/computer/skills{
 	icon_state = "computer"
+	},
+/obj/structure/railing{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck4/bridge)
@@ -4534,7 +4545,7 @@
 /area/strelka/shipbase/deck4/dormhallway)
 "uD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
+	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck4/bridge)
@@ -4734,6 +4745,9 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/navgold/border,
+/obj/structure/railing{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck4/bridge)
 "vz" = (
@@ -4769,6 +4783,7 @@
 /obj/effect/floor_decal/corner/navgold/bordercorner{
 	dir = 1
 	},
+/obj/structure/railing,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck4/bridge)
 "vF" = (
@@ -5053,6 +5068,13 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/hallway)
+"xw" = (
+/obj/effect/floor_decal/spline/plain,
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/strelka/shipbase/deck4/bridge)
 "xx" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
@@ -6144,15 +6166,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck4/hallway)
-"Dl" = (
-/obj/effect/floor_decal/spline/plain{
-	dir = 1
-	},
-/obj/structure/window/reinforced/survival_pod{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/monogrid,
-/area/strelka/shipbase/deck4/bridge)
 "Dt" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -6396,13 +6409,6 @@
 	},
 /turf/simulated/floor/carpet/patterened,
 /area/strelka/shipbase/deck4/dormhallway)
-"EH" = (
-/obj/effect/floor_decal/spline/plain,
-/obj/structure/window/reinforced/survival_pod{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/monogrid,
-/area/strelka/shipbase/deck4/bridge)
 "EK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -6441,6 +6447,7 @@
 	dir = 1
 	},
 /obj/item/folder/blue_captain,
+/obj/structure/railing,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck4/bridge)
 "ER" = (
@@ -7770,8 +7777,11 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck4/kitchen/freeze)
 "Ll" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
+	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck4/bridge)
@@ -8064,8 +8074,8 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck4/dormhallway/pool)
 "MU" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 8
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck4/bridge)
@@ -35358,13 +35368,13 @@ CA
 qI
 cU
 iP
-yd
+dk
 uD
 vx
 Bm
 EO
 Ll
-vt
+xw
 yz
 cU
 qI
@@ -35553,7 +35563,7 @@ qI
 CP
 Nm
 iC
-fz
+Rf
 aQ
 rH
 vC
@@ -35746,13 +35756,13 @@ jR
 qI
 ot
 Kl
-Dl
+yd
 Rf
 pA
 ho
 ko
-Rf
-EH
+MU
+vt
 ZU
 ot
 qI
