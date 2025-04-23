@@ -117,12 +117,12 @@
 		if(existing_mask?.clothing_flags & ALLOWINTERNALS)
 		else
 			if(!isnull(existing_mask))
-				into_inv += (existing_mask)
+				into_inv?.Add(existing_mask)
 			for_target.temporarily_remove_from_inventory(existing_mask, INV_OP_FORCE)
 			for_target.equip_to_slot_or_del(new mask_type(for_target), /datum/inventory_slot/inventory/mask, INV_OP_SILENT | INV_OP_FLUFFLESS)
 	else
 		if(!isnull(mask_type))
-			into_inv += (mask_type)
+			into_inv?.Add(mask_type)
 
 	var/suit_path = /obj/item/clothing/suit/space/void/plasman
 
@@ -231,7 +231,7 @@
 			suit_path = /obj/item/clothing/suit/space/void/plasman/mime
 
 
-	into_inv += /obj/item/extinguisher/mini/plasman
+	into_inv?.Add(/obj/item/extinguisher/mini/plasman)
 
 	if(for_target)
 		var/obj/item/existing_head_slot = for_target.inventory.get_slot_single(/datum/inventory_slot/inventory/head)
@@ -239,19 +239,19 @@
 		var/obj/item/creating_suit_slot = new suit_path
 		if(existing_head_slot)
 			if(for_target.temporarily_remove_from_inventory(existing_head_slot, INV_OP_FORCE | INV_OP_SILENT | INV_OP_FLUFFLESS))
-				into_inv += (existing_head_slot)
+				into_inv?.Add(existing_head_slot)
 		if(existing_suit_slot)
 			if(for_target.temporarily_remove_from_inventory(existing_suit_slot, INV_OP_FORCE | INV_OP_SILENT | INV_OP_FLUFFLESS))
-				into_inv += (existing_suit_slot)
+				into_inv?.Add(existing_suit_slot)
 				if(!for_target.inventory.equip_to_slot_if_possible(creating_suit_slot, /datum/inventory_slot/inventory/suit, INV_OP_FORCE | INV_OP_SILENT | INV_OP_FLUFFLESS))
-					into_inv += (creating_suit_slot)
+					into_inv?.Add(creating_suit_slot)
 			else
-				into_inv += (creating_suit_slot)
+				into_inv?.Add(creating_suit_slot)
 		else
 			if(!for_target.inventory.equip_to_slot_if_possible(creating_suit_slot, /datum/inventory_slot/inventory/suit, INV_OP_FORCE | INV_OP_SILENT | INV_OP_FLUFFLESS))
-				into_inv += (creating_suit_slot)
+				into_inv?.Add(creating_suit_slot)
 	else
-		into_inv += (suit_path)
+		into_inv?.Add(suit_path)
 
 	//! legacy: just in case
 	for_target.ExtinguishMob()
@@ -270,8 +270,8 @@
 			for_target.internal = equipping_tank
 			for_target.internals.icon_state = "internal1"
 		else
-			into_inv += (tank_type)
+			into_inv?.Add(tank_type)
 	else
-		into_inv += (tank_type)
+		into_inv?.Add(tank_type)
 
 	return ..()
