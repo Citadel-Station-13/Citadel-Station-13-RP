@@ -929,12 +929,6 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "aQr" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
@@ -2123,8 +2117,8 @@
 /area/endeavour/hallway/d4aftmaint)
 "cfg" = (
 /obj/machinery/power/sensor{
-	name = "Powernet Sensor - Engineering Subgrid";
-	name_tag = "Engineering Subgrid"
+	name = "Powernet Sensor - Deck 4 Aft Powergrid";
+	name_tag = "Deck 4 Aft"
 	},
 /obj/structure/cable/green{
 	icon_state = "0-8"
@@ -2730,8 +2724,8 @@
 /turf/simulated/floor/reinforced,
 /area/maintenance/security/lower)
 "cFY" = (
-/obj/effect/paint/sun,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/sun,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4portafthall)
 "cGc" = (
@@ -11483,8 +11477,6 @@
 "lsa" = (
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/floor_decal/corner/lightorange{
 	dir = 5
 	},
@@ -12123,6 +12115,12 @@
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/machinery/door/firedoor{
 	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4
@@ -12904,8 +12902,8 @@
 	icon_state = "1-4"
 	},
 /obj/machinery/power/sensor{
-	name = "Powernet Sensor - Deck 3 Fore Subgrid";
-	name_tag = "Deck 3 Fore Subgrid"
+	name = "Powernet Sensor - Deck 4 Amidship Subgrid";
+	name_tag = "Deck 4 Fore Amidship"
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -14650,9 +14648,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "oBa" = (
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
+/obj/machinery/door/firedoor,
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/machinery/door/airlock/glass/engineering{
 	name = "Monitoring Room";

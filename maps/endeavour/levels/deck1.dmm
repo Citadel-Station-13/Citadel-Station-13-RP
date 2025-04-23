@@ -730,15 +730,11 @@
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
 "aBi" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass{
-	name = "Chapel"
+/obj/machinery/door/firedoor{
+	dir = 8
 	},
+/obj/machinery/door/airlock/glass/civilian,
 /obj/structure/curtain/black,
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/map_helper/electrochromatic_linker{
-	id = "chapel"
-	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/main)
 "aBr" = (
@@ -2909,7 +2905,8 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock/maintenance/common,
+/obj/map_helper/access_helper/airlock/station/maintenance,
 /turf/simulated/floor/plating,
 /area/chapel/office)
 "coH" = (
@@ -6799,21 +6796,17 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass{
-	name = "Chapel"
+/obj/machinery/door/firedoor{
+	dir = 8
 	},
-/obj/structure/curtain/black,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/map_helper/electrochromatic_linker{
-	id = "chapel"
-	},
+/obj/machinery/door/airlock/glass/civilian,
+/obj/structure/curtain/black,
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/main)
 "fef" = (
@@ -7767,11 +7760,11 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/airlock/glass/civilian,
 /obj/map_helper/access_helper/airlock/station/service/chapel,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/airlock/civilian,
 /turf/simulated/floor/lino,
 /area/chapel/office)
 "fMf" = (
@@ -8856,7 +8849,7 @@
 "gEy" = (
 /obj/machinery/door/firedoor,
 /obj/structure/catwalk,
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock/maintenance/common,
 /obj/map_helper/access_helper/airlock/station/maintenance,
 /turf/simulated/floor/plating,
 /area/chapel/office)
@@ -14045,11 +14038,11 @@
 /turf/simulated/floor/tiled,
 /area/exploration)
 "kEB" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/commandblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "lawyer_blast"
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /turf/simulated/floor/plating,
 /area/lawoffice)
 "kED" = (
@@ -19618,6 +19611,14 @@
 /obj/item/book/manual/legal/sop_vol1,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
+"oRa" = (
+/obj/effect/paint/commandblue,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/map_helper/electrochromatic_linker{
+	id = "lawyer_blast"
+	},
+/turf/simulated/floor/plating,
+/area/lawoffice)
 "oRd" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -55771,7 +55772,7 @@ svt
 bmz
 vqA
 bxl
-kEB
+oRa
 bYt
 hYj
 hYj
@@ -56159,7 +56160,7 @@ svt
 mXd
 vqA
 fkZ
-kEB
+oRa
 udj
 hYj
 hYj
@@ -56353,7 +56354,7 @@ svt
 jHK
 oiy
 jEr
-kEB
+oRa
 cvc
 hYj
 ePR
@@ -56547,7 +56548,7 @@ svt
 nSn
 ncC
 jFm
-kEB
+oRa
 lbH
 hYj
 urL

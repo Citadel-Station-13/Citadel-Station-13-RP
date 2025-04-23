@@ -11997,10 +11997,10 @@
 /area/rnd/research_foyer)
 "iyL" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/effect/paint/babyblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "cmo_office"
 	},
-/obj/effect/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/cmo)
 "izJ" = (
@@ -12843,6 +12843,14 @@
 "jdR" = (
 /turf/simulated/wall/r_wall/prepainted/medical,
 /area/medical/virology)
+"jeY" = (
+/obj/effect/paint/babyblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "mh2"
+	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/turf/simulated/floor/plating,
+/area/medical/medbay4)
 "jfe" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -12898,9 +12906,6 @@
 /obj/spawner/window/low_wall/reinforced/full,
 /obj/structure/cable/green{
 	icon_state = "0-2"
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
 	},
 /obj/effect/paint/purplegray,
 /obj/structure/cable/green{
@@ -18091,11 +18096,11 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
 "mVR" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "mh1"
 	},
 /obj/effect/paint/babyblue,
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /turf/simulated/floor/plating,
 /area/medical/psych/psych_2)
 "mWV" = (
@@ -18340,11 +18345,11 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2afthall)
 "ngP" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "mh2"
 	},
 /obj/effect/paint/babyblue,
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /turf/simulated/floor/plating,
 /area/medical/medbay4)
 "nhd" = (
@@ -33579,9 +33584,6 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2afthall)
 "ydt" = (
-/obj/machinery/light{
-	dir = 4
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
 	},
@@ -38514,7 +38516,7 @@ teN
 nHz
 kXa
 unZ
-ngP
+jeY
 gOV
 vzv
 iJi
@@ -46835,7 +46837,7 @@ bBQ
 rYW
 hqI
 hqI
-bBQ
+cGO
 bBQ
 jhY
 hqI
@@ -53829,7 +53831,7 @@ xLl
 dKG
 dKG
 dKG
-dKG
+eiO
 ydt
 bZT
 pSD
