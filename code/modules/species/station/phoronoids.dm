@@ -10,7 +10,7 @@
 	preview_icon = 'icons/mob/species/phoronoid/preview.dmi'
 	husk_icon    = 'icons/mob/species/phoronoid/husk.dmi'
 
-	intrinsic_languages = LANGUAGE_ID_PHORONOID
+	intrinsic_languages = list(LANGUAGE_ID_PHORONOID, LANGUAGE_ID_PHORONOID_CONLANG)
 	max_additional_languages = 3
 	name_language = null // name randomisers are fucking weird
 
