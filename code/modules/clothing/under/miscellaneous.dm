@@ -380,28 +380,6 @@
 	desc = "Fancy dress for space bar singers."
 	icon_state = "red_evening_gown"
 
-/obj/item/clothing/under/dress/maid
-	name = "maid costume"
-	desc = "Maid in China."
-	icon_state = "maid"
-
-/obj/item/clothing/under/dress/maid/janitor
-	name = "maid uniform"
-	desc = "A simple maid uniform for housekeeping."
-	icon_state = "janimaid"
-
-/obj/item/clothing/under/dress/maid/sexy
-	name = "sexy maid costume"
-	desc = "You must be a bit risque teasing all of them in a maid uniform!"
-	icon_state = "sexymaid"
-
-/obj/item/clothing/under/dress/maid/neko
-	name = "neko maid uniform"
-	desc = "A tailored maid uniform that takes many cues from Old Earth Bavarian commonwear. It seems airy and breathable."
-	icon = 'icons/clothing/uniform/misc/neko.dmi'
-	icon_state = "neko"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-
 /obj/item/clothing/under/dress/dress_fire
 	name = "flame dress"
 	desc = "A small black dress with blue flames print on it."
@@ -2027,24 +2005,6 @@
 /obj/item/clothing/under/surplus/russoblue
 	icon_state = "bdu_russoblue"
 
-/obj/item/clothing/under/toga
-	name = "toga"
-	desc = "A length of white wool, wrapped carefully around the wearer. Sometimes bound by a belt or sash, in some cultures the way the toga was wrapped and worn denoted social status."
-	icon = 'icons/clothing/uniform/costume/toga.dmi'
-	icon_state = "toga"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/aquiline_enforcer
-	name = "aquiline enforcer uniform"
-	desc = "Prior to the Final War issues with law enforcement on Old Earth became so bad that in many countries the police became little more than roving executioners. Ornate uniforms such as this one purport to be based on accounts of those times."
-	icon = 'icons/clothing/uniform/costume/aquiline.dmi'
-	icon_state = "dredd"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
 /obj/item/clothing/under/countess
 	name = "countess dress"
 	desc = "This flowing dress radiates a dark authority. Its wide skirt and daring color palette bring to mind the feeling of movement in shadows, or a rush of blood."
@@ -2059,24 +2019,6 @@
 	desc = "With its imposing train and sanguine color palette, this dress aims to menace. Some day the designer sought to evoke the downfall of Vetala in its design."
 	icon = 'icons/clothing/uniform/misc/baroness.dmi'
 	icon_state = "baroness"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/yoko
-	name = "scavenging sniper set"
-	desc = "This outfit seems to favor tight materials and lots of open skin. It's likely that its previous owner hailed from an arid environment. It remains stylish, regardless of climate."
-	icon = 'icons/clothing/uniform/costume/spiral.dmi'
-	icon_state = "yoko"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/kamina
-	name = "spiral hero outfit"
-	desc = "An outfit that radiates pure authority. Yours is the drill that will pierce the heavens."
-	icon = 'icons/clothing/uniform/costume/spiral.dmi'
-	icon_state = "kamina"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
@@ -2345,13 +2287,6 @@
 	name = "ripped black shorts"
 	desc = "A pair of torn up black shorts, for those who know better."
 	icon_state = "black_shorts_ripped"
-
-/obj/item/clothing/under/darkcleric
-	name = "dark cleric armor"
-	desc = "A chainmail tunic layered with a leather cuirass and religious iconography. Worn in veneration of a forgotten god."
-	icon = 'icons/clothing/uniform/costume/darkcleric.dmi'
-	icon_state = "darkcleric"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/under/tourist
 	name = "tourist liesurewear"
