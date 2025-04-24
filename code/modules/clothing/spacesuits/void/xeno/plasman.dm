@@ -73,7 +73,7 @@
 	if(istype(examiner, /mob/living/carbon/human) && analyzing)
 		var/mob/living/carbon/human/H = examiner
 		if((H._item_by_slot(SLOT_ID_HEAD) == src))
-			analyze_gases(target, H, TRUE)
+			analyze_gases(target, H, TRUE, TRUE)
 //
 // SEC
 //

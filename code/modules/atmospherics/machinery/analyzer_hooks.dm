@@ -1,5 +1,5 @@
-/obj/proc/analyze_gases(var/atom/A, var/mob/user, var/remote=FALSE)
-	if(src != A)
+/obj/proc/analyze_gases(var/atom/A, var/mob/user, var/remote=FALSE, var/silent=FALSE)
+	if( (src != A) && (!silent) )
 		user.visible_message("<span class='notice'>\The [user] has analyzed \the [A] with \an [src].</span>")
 
 	if(!remote)

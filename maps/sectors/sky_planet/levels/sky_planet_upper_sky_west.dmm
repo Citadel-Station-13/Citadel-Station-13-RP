@@ -634,10 +634,10 @@
 /obj/item/tank/oxygen,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/mask/breath,
-/obj/item/clothing/suit/space/plasman{
+/obj/item/clothing/suit/space/void/plasman{
 	name = "Bonnethead Racing Space Suit"
 	},
-/obj/item/clothing/suit/space/plasman{
+/obj/item/clothing/suit/space/void/plasman{
 	name = "Bonnethead Racing Space Suit"
 	},
 /obj/item/clothing/head/helmet/space/void/refurb/officer{
@@ -1547,10 +1547,10 @@
 /obj/item/tank/oxygen,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/mask/breath,
-/obj/item/clothing/suit/space/plasman{
+/obj/item/clothing/suit/space/void/plasman{
 	name = "Bonnethead Racing Space Suit"
 	},
-/obj/item/clothing/suit/space/plasman{
+/obj/item/clothing/suit/space/void/plasman{
 	name = "Bonnethead Racing Space Suit"
 	},
 /obj/item/clothing/head/helmet/space/void/refurb/officer{
@@ -3150,10 +3150,10 @@
 /obj/item/tank/oxygen,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/mask/breath,
-/obj/item/clothing/suit/space/plasman/botanist{
+/obj/item/clothing/suit/space/void/plasman/botanist{
 	name = "Udang Pari-pari Racing Space suit"
 	},
-/obj/item/clothing/suit/space/plasman/botanist{
+/obj/item/clothing/suit/space/void/plasman/botanist{
 	name = "Udang Pari-pari Racing Space suit"
 	},
 /obj/item/clothing/head/helmet/space/void/refurb/pilot{
@@ -3848,10 +3848,10 @@
 /obj/item/tank/oxygen,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/mask/breath,
-/obj/item/clothing/suit/space/plasman/sec{
+/obj/item/clothing/suit/space/void/plasman/sec{
 	name = "Red Comet Racing Space Suit"
 	},
-/obj/item/clothing/suit/space/plasman/sec{
+/obj/item/clothing/suit/space/void/plasman/sec{
 	name = "Red Comet Racing Space Suit"
 	},
 /obj/item/clothing/head/helmet/space/void/refurb/mercenary{
@@ -4316,10 +4316,10 @@
 /obj/item/tank/oxygen,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/mask/breath,
-/obj/item/clothing/suit/space/plasman/assistant{
+/obj/item/clothing/suit/space/void/plasman/assistant{
 	name = "Arrowhead Racing Space suit"
 	},
-/obj/item/clothing/suit/space/plasman/assistant{
+/obj/item/clothing/suit/space/void/plasman/assistant{
 	name = "Arrowhead Racing Space suit"
 	},
 /obj/item/clothing/head/helmet/space/void/refurb/pilot/alt{
@@ -8030,10 +8030,10 @@
 /obj/item/tank/oxygen,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/mask/breath,
-/obj/item/clothing/suit/space/plasman/botanist{
+/obj/item/clothing/suit/space/void/plasman/botanist{
 	name = "Udang Pari-pari Racing Space suit"
 	},
-/obj/item/clothing/suit/space/plasman/botanist{
+/obj/item/clothing/suit/space/void/plasman/botanist{
 	name = "Udang Pari-pari Racing Space suit"
 	},
 /obj/item/clothing/head/helmet/space/void/refurb/pilot{
@@ -8103,10 +8103,10 @@
 /obj/item/tank/oxygen,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/mask/breath,
-/obj/item/clothing/suit/space/plasman/assistant{
+/obj/item/clothing/suit/space/void/plasman/assistant{
 	name = "Arrowhead Racing Space suit"
 	},
-/obj/item/clothing/suit/space/plasman/assistant{
+/obj/item/clothing/suit/space/void/plasman/assistant{
 	name = "Arrowhead Racing Space suit"
 	},
 /obj/item/clothing/head/helmet/space/void/refurb/pilot/alt{
@@ -9055,10 +9055,10 @@
 /obj/item/tank/oxygen,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/mask/breath,
-/obj/item/clothing/suit/space/plasman/sec{
+/obj/item/clothing/suit/space/void/plasman/sec{
 	name = "Red Comet Racing Space Suit"
 	},
-/obj/item/clothing/suit/space/plasman/sec{
+/obj/item/clothing/suit/space/void/plasman/sec{
 	name = "Red Comet Racing Space Suit"
 	},
 /obj/item/clothing/head/helmet/space/void/refurb/mercenary{
