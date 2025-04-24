@@ -519,7 +519,7 @@
 
 //Handle a mob struggling
 // Called from /mob/living/carbon/relaymove()
-/obj/belly/proc/relay_resist(var/mob/living/R)
+/obj/belly/contents_resist(var/mob/living/R)
 	if (!(R in contents))
 		return  // User is not in this belly
 
