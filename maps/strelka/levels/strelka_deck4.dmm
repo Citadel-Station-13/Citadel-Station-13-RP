@@ -1052,6 +1052,17 @@
 	},
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck4/bridge/hop/room)
+"eS" = (
+/obj/structure/window/reinforced,
+/obj/machinery/portable_atmospherics/hydroponics{
+	layer = 1
+	},
+/obj/machinery/light/fairy,
+/obj/structure/sign/hydro{
+	pixel_x = -29
+	},
+/turf/simulated/floor/fey/forest_grass,
+/area/strelka/shipbase/deck4/hallway/botany)
 "eT" = (
 /obj/structure/cable/orange{
 	icon_state = "4-8"
@@ -3116,6 +3127,21 @@
 /obj/machinery/air_alarm/north_mount,
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck4/bridge/hop/room)
+"nL" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/hydroponics{
+	layer = 1
+	},
+/obj/machinery/light/fairy{
+	dir = 1
+	},
+/obj/structure/sign/hydro{
+	pixel_x = 30
+	},
+/turf/simulated/floor/fey/forest_grass,
+/area/strelka/shipbase/deck4/hallway/botany)
 "nQ" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 4
@@ -3810,6 +3836,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/hallway)
+"qF" = (
+/obj/structure/sign/nanotrasen,
+/turf/simulated/floor/tiled/dark,
+/area/strelka/shipbase/deck4/arrival)
 "qG" = (
 /obj/spawner/window/low_wall/full/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
@@ -4009,7 +4039,8 @@
 	control_area = "\improper turret point defense";
 	uid = "pointdefence";
 	pixel_x = -2;
-	pixel_y = -1
+	pixel_y = -1;
+	req_access = list(19)
 	},
 /obj/machinery/button/remote/blast_door/strelka/blockade{
 	dir = 8;
@@ -4069,6 +4100,7 @@
 /obj/item/paper/pamphlet/strelka{
 	pixel_x = 16
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/arrival)
 "rU" = (
@@ -4367,6 +4399,13 @@
 	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/library)
+"tA" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/dark,
+/area/strelka/shipbase/deck4/arrival)
 "tB" = (
 /obj/structure/railing{
 	dir = 1
@@ -6779,6 +6818,9 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
+/obj/landmark{
+	name = "lightsout"
+	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/hallway)
 "GK" = (
@@ -6808,6 +6850,7 @@
 /obj/item/paper/pamphlet/strelka{
 	pixel_x = 16
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/arrival)
 "GQ" = (
@@ -7060,6 +7103,8 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/dormhallway)
 "Ii" = (
+/obj/structure/sign/nanotrasen,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/arrival)
 "Ik" = (
@@ -7189,6 +7234,9 @@
 /obj/machinery/computer/guestpass{
 	dir = 8;
 	pixel_x = 30
+	},
+/obj/landmark{
+	name = "lightsout"
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/hallway)
@@ -7456,6 +7504,12 @@
 	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/fitness)
+"JI" = (
+/obj/landmark{
+	name = "carpspawn"
+	},
+/turf/space/basic,
+/area/space)
 "JJ" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Substation - Crew Quarter";
@@ -7562,7 +7616,8 @@
 /obj/machinery/turretid/lethal{
 	pixel_y = 29;
 	control_area = "\improper turret point defense";
-	uid = "pointdefence"
+	uid = "pointdefence";
+	req_access = list(19)
 	},
 /obj/structure/window/reinforced/survival_pod{
 	dir = 4
@@ -7995,9 +8050,7 @@
 	name = "Bridge";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/command/bridge{
-	req_access = list(19,44)
-	},
+/obj/map_helper/access_helper/airlock/station/command/bridge/strelka,
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -8602,6 +8655,9 @@
 /area/strelka/shipbase/deck4/hallway)
 "PD" = (
 /obj/item/trash/cavemoss,
+/obj/landmark{
+	name = "maint_pred"
+	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck4/maintenance)
 "PH" = (
@@ -9514,6 +9570,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck4/arrival)
 "UY" = (
@@ -17305,6 +17362,7 @@ jR
 jR
 jR
 jR
+JI
 jR
 jR
 jR
@@ -17358,8 +17416,7 @@ jR
 jR
 jR
 jR
-jR
-jR
+JI
 jR
 jR
 jR
@@ -23107,7 +23164,7 @@ jR
 jR
 jR
 jR
-jR
+JI
 jR
 jR
 jR
@@ -25673,7 +25730,7 @@ zW
 FN
 hu
 GN
-Ii
+qF
 Ye
 li
 Ye
@@ -25871,7 +25928,7 @@ nc
 Yj
 Ye
 UW
-nc
+tA
 ZH
 hu
 Hx
@@ -28587,7 +28644,7 @@ ak
 mK
 pi
 LV
-jO
+eS
 ek
 ZV
 de
@@ -29796,7 +29853,7 @@ jR
 jR
 jR
 jR
-jR
+JI
 jR
 jR
 jR
@@ -30717,7 +30774,7 @@ XO
 OG
 Ke
 tB
-Kj
+nL
 pi
 Ae
 WN
@@ -32228,7 +32285,7 @@ jR
 jR
 jR
 jR
-jR
+JI
 jR
 jR
 jR
@@ -38315,7 +38372,7 @@ jR
 jR
 jR
 jR
-jR
+JI
 jR
 jR
 jR
@@ -38640,7 +38697,7 @@ jR
 jR
 jR
 jR
-jR
+JI
 jR
 jR
 jR
@@ -41000,7 +41057,7 @@ jR
 jR
 jR
 jR
-jR
+JI
 jR
 jR
 jR

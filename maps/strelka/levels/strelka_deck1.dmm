@@ -164,6 +164,13 @@
 	},
 /turf/simulated/wall/r_wall/prepainted/civilian,
 /area/shuttle/civvie/strelka)
+"bf" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/flora/pottedplant/hedge,
+/turf/simulated/floor/reinforced,
+/area/strelka/shipbase/deck1/hangardeck)
 "bh" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -711,9 +718,7 @@
 /obj/effect/floor_decal/rust,
 /obj/machinery/door/airlock/highsecurity,
 /obj/machinery/door/firedoor,
-/obj/map_helper/access_helper/airlock/station/command/bridge{
-	req_access = list(19,44)
-	},
+/obj/map_helper/access_helper/airlock/station/command/bridge/strelka,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1/bridge/balista)
 "dt" = (
@@ -769,6 +774,7 @@
 /obj/effect/floor_decal/borderfloorblack/corner{
 	dir = 1
 	},
+/obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck1/hangardeck)
 "dM" = (
@@ -1067,6 +1073,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
+/obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "fE" = (
@@ -2959,6 +2966,16 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/toolstorage)
+"qb" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 4
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/landmark{
+	name = "Response Team"
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/strelka/shipbase/deck1/hangardeck)
 "qc" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/tiled/techmaint,
@@ -3275,6 +3292,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
+/obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "sc" = (
@@ -3670,6 +3688,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "uq" = (
@@ -3892,6 +3911,7 @@
 	alpha = 255;
 	dir = 4
 	},
+/obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck1/hangardeck)
 "vK" = (
@@ -3934,6 +3954,20 @@
 /obj/machinery/door/blast/strelka/blockade,
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/shipbase/deck1/hangardeck)
+"vT" = (
+/obj/structure/flora/pottedplant/hedge,
+/turf/simulated/floor/fey/forest_grass,
+/area/strelka/shipbase/deck1/hangardeck)
+"vV" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/machinery/light/small/old{
+	dir = 1
+	},
+/obj/structure/flora/pottedplant/hedge,
+/turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck1/hangardeck)
 "vY" = (
 /obj/machinery/door/blast/shutters{
@@ -4130,6 +4164,7 @@
 	dir = 1
 	},
 /obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck1)
 "wY" = (
@@ -4335,9 +4370,7 @@
 	},
 /obj/machinery/door/airlock/highsecurity,
 /obj/machinery/door/firedoor,
-/obj/map_helper/access_helper/airlock/station/command/bridge{
-	req_access = list(19,44)
-	},
+/obj/map_helper/access_helper/airlock/station/command/bridge/strelka,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1/bridge/balista)
 "xY" = (
@@ -4376,6 +4409,12 @@
 "yi" = (
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/strelka/shipbase/deck1/warden)
+"yj" = (
+/obj/landmark{
+	name = "carpspawn"
+	},
+/turf/space/basic,
+/area/space)
 "ym" = (
 /turf/simulated/floor/airless,
 /area/space)
@@ -4570,9 +4609,7 @@
 	name = "Balista Airlock";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/command/bridge{
-	req_access = list(19,44)
-	},
+/obj/map_helper/access_helper/airlock/station/command/bridge/strelka,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1/bridge/balista)
 "zq" = (
@@ -4769,6 +4806,7 @@
 /area/strelka/shipbase/deck1/bridge/balista)
 "AZ" = (
 /obj/machinery/light,
+/obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/hangardeck)
 "Be" = (
@@ -4847,6 +4885,7 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/armory)
 "Bw" = (
+/obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck1)
 "Bz" = (
@@ -5150,6 +5189,9 @@
 /obj/structure/cable/blue,
 /obj/machinery/power/sensor{
 	name = "Powernet Sensor - Deck 4"
+	},
+/obj/landmark{
+	name = "blobstart"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1/maintenance/civ)
@@ -5602,9 +5644,7 @@
 	req_one_access = null
 	},
 /obj/machinery/door/firedoor,
-/obj/map_helper/access_helper/airlock/station/command/bridge{
-	req_access = list(19,44)
-	},
+/obj/map_helper/access_helper/airlock/station/command/bridge/strelka,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck1/bridge/balista)
 "Fj" = (
@@ -5804,6 +5844,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/rust,
+/obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "Gu" = (
@@ -6507,6 +6548,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/hangardeck)
 "KI" = (
@@ -6948,6 +6990,7 @@
 /obj/machinery/light/small/old{
 	dir = 1
 	},
+/obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck1/hangardeck)
 "MY" = (
@@ -7125,6 +7168,14 @@
 /obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck1/checkpoint)
+"Oj" = (
+/obj/effect/floor_decal/borderfloorblack{
+	alpha = 255;
+	dir = 5
+	},
+/obj/structure/flora/pottedplant/hedge,
+/turf/simulated/floor/fey/forest_grass,
+/area/strelka/shipbase/deck1/hangardeck)
 "On" = (
 /obj/structure/bed/chair/bay/chair/padded/black{
 	dir = 1
@@ -7213,6 +7264,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1/bridge/balista)
+"OP" = (
+/obj/structure/flora/pottedplant/hedge,
+/turf/simulated/floor/reinforced,
+/area/strelka/shipbase/deck1/hangardeck)
 "OV" = (
 /obj/effect/floor_decal/borderfloorblack/corner,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -7539,6 +7594,7 @@
 /obj/machinery/camera/network/security{
 	dir = 8
 	},
+/obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck1/hangardeck)
 "Qv" = (
@@ -7612,6 +7668,7 @@
 	dir = 1
 	},
 /obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck1)
 "QE" = (
@@ -7987,9 +8044,7 @@
 	req_one_access = null
 	},
 /obj/machinery/door/firedoor,
-/obj/map_helper/access_helper/airlock/station/command/bridge{
-	req_access = list(19,44)
-	},
+/obj/map_helper/access_helper/airlock/station/command/bridge/strelka,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck1/bridge/balista)
 "SM" = (
@@ -8396,6 +8451,7 @@
 /area/strelka/shipbase/deck1/pilot/eva)
 "UJ" = (
 /obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck1)
 "UK" = (
@@ -8588,6 +8644,13 @@
 "VX" = (
 /turf/simulated/floor/airless,
 /area/strelka/shipbase/deck1/bridge/balista)
+"Wc" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/flora/pottedplant/hedge,
+/turf/simulated/floor/reinforced,
+/area/strelka/shipbase/deck1/hangardeck)
 "Wl" = (
 /obj/machinery/air_alarm{
 	dir = 8;
@@ -15477,7 +15540,7 @@ vu
 vu
 vu
 vu
-vu
+yj
 vu
 vu
 vu
@@ -15695,7 +15758,7 @@ vu
 vu
 vu
 vu
-vu
+yj
 vu
 vu
 vu
@@ -18760,6 +18823,7 @@ vu
 vu
 vu
 vu
+yj
 vu
 vu
 vu
@@ -18838,8 +18902,7 @@ vu
 vu
 vu
 vu
-vu
-vu
+yj
 vu
 vu
 vu
@@ -22499,7 +22562,7 @@ Nv
 Nv
 Nv
 Nv
-Mh
+Wc
 Nv
 Nv
 Nv
@@ -22693,7 +22756,7 @@ Nv
 Nv
 Nv
 Nv
-rF
+bf
 Nv
 Nv
 Nv
@@ -22864,7 +22927,7 @@ Nv
 Nv
 Nv
 Nv
-Nv
+OP
 Nv
 Nv
 Nv
@@ -23067,7 +23130,7 @@ su
 Nv
 qL
 Gu
-HU
+qb
 UQ
 fE
 Nv
@@ -23252,7 +23315,7 @@ Nv
 Nv
 Nv
 Nv
-rF
+bf
 Nv
 Nv
 Nv
@@ -23640,7 +23703,7 @@ Nv
 Nv
 Nv
 Nv
-Mh
+Wc
 Nv
 Nv
 Nv
@@ -23995,7 +24058,7 @@ vu
 vu
 vu
 vu
-vu
+yj
 vu
 vu
 vu
@@ -24222,7 +24285,7 @@ Nv
 Nv
 Nv
 Nv
-rF
+bf
 Nv
 Nv
 Nv
@@ -24245,7 +24308,7 @@ Nv
 Nv
 Nv
 Nv
-Mh
+Wc
 rF
 Nv
 Nv
@@ -24610,7 +24673,7 @@ Nv
 Nv
 Nv
 Nv
-Mh
+Wc
 Nv
 Nv
 Nv
@@ -24634,7 +24697,7 @@ Ln
 Xe
 Sa
 iN
-Mh
+Wc
 Nv
 Nv
 Nv
@@ -24828,7 +24891,7 @@ jW
 rL
 ae
 tz
-rF
+bf
 Nv
 Nv
 Nv
@@ -25033,7 +25096,7 @@ Nv
 Nv
 su
 Nv
-Nv
+wS
 qL
 vu
 vu
@@ -25176,7 +25239,7 @@ vu
 qL
 qL
 hN
-EQ
+vT
 Nv
 Nv
 Nv
@@ -25192,7 +25255,7 @@ Nv
 Nv
 Nv
 Nv
-rF
+bf
 Nv
 Nv
 Nv
@@ -25370,7 +25433,7 @@ vu
 vu
 qL
 dZ
-EQ
+vT
 Nv
 Nv
 Nv
@@ -25758,7 +25821,7 @@ vu
 vu
 qL
 qL
-hN
+vV
 Nv
 Nv
 Nv
@@ -25798,7 +25861,7 @@ PC
 Sf
 MX
 lw
-Mh
+Wc
 Nv
 Nv
 Nv
@@ -25992,7 +26055,7 @@ kl
 Sf
 IX
 lw
-rF
+bf
 Nv
 Nv
 Nv
@@ -26146,7 +26209,7 @@ vu
 vu
 vu
 qL
-od
+Oj
 Yl
 Nv
 Nv
@@ -26962,7 +27025,7 @@ IP
 rL
 dB
 iN
-Mh
+Wc
 Nv
 Nv
 Nv
@@ -26986,7 +27049,7 @@ vu
 vu
 vu
 vu
-vu
+yj
 vu
 vu
 vu
@@ -27156,7 +27219,7 @@ yA
 rL
 uG
 iN
-rF
+bf
 Nv
 Nv
 Nv
@@ -31756,7 +31819,7 @@ vu
 vu
 vu
 vu
-vu
+yj
 vu
 vu
 vu
@@ -37248,7 +37311,7 @@ vu
 vu
 vu
 vu
-vu
+yj
 vu
 vu
 vu
@@ -37404,7 +37467,7 @@ vu
 vu
 vu
 vu
-vu
+yj
 vu
 vu
 vu

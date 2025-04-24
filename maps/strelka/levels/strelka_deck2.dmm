@@ -2727,6 +2727,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck2/explo)
+"iY" = (
+/obj/landmark{
+	name = "carpspawn"
+	},
+/turf/space/basic,
+/area/space)
 "ja" = (
 /obj/structure/closet/crate/medical,
 /obj/item/storage/firstaid/regular{
@@ -4509,9 +4515,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/map_helper/access_helper/airlock/station/command/bridge{
-	req_access = list(19,44)
-	},
+/obj/map_helper/access_helper/airlock/station/command/bridge/strelka,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck2/bridge)
@@ -7229,6 +7233,10 @@
 /obj/machinery/atmospherics/component/binary/pump,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/engine)
+"wl" = (
+/obj/machinery/suit_storage_closet,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck2/maintenance/eva)
 "wn" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
@@ -7351,6 +7359,15 @@
 "wE" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck2/engineering/coms)
+"wG" = (
+/obj/structure/cable/blue{
+	icon_state = "1-2"
+	},
+/obj/landmark{
+	name = "maint_pred"
+	},
+/turf/simulated/floor/plating,
+/area/strelka/shipbase/deck2/maintenance/sec)
 "wH" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/structure/bed/chair/office/dark{
@@ -9523,6 +9540,9 @@
 "Dl" = (
 /obj/structure/cable/white{
 	icon_state = "4-8"
+	},
+/obj/structure/sign/vacuum{
+	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/maintenance/eva)
@@ -24728,7 +24748,7 @@ KT
 KT
 KT
 KT
-KT
+iY
 KT
 KT
 KT
@@ -26636,7 +26656,7 @@ KT
 KT
 KT
 KT
-KT
+iY
 KT
 KT
 KT
@@ -28261,7 +28281,7 @@ KT
 KT
 KT
 KT
-KT
+iY
 KT
 KT
 KT
@@ -30142,7 +30162,7 @@ PB
 aU
 Wg
 rG
-rG
+wl
 WM
 DT
 sr
@@ -35359,7 +35379,7 @@ KT
 KT
 KT
 KT
-KT
+iY
 KT
 KT
 KT
@@ -35586,7 +35606,7 @@ Kw
 Un
 yT
 Un
-Un
+wG
 PR
 dy
 da
@@ -36602,7 +36622,7 @@ KT
 KT
 KT
 KT
-KT
+iY
 KT
 KT
 KT
@@ -43910,7 +43930,7 @@ KT
 KT
 KT
 KT
-KT
+iY
 KT
 KT
 KT
@@ -44353,7 +44373,7 @@ KT
 KT
 KT
 KT
-KT
+iY
 KT
 KT
 KT
@@ -48209,7 +48229,7 @@ KT
 KT
 KT
 KT
-KT
+iY
 KT
 KT
 KT

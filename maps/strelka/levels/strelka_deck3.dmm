@@ -705,6 +705,9 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
+/obj/landmark{
+	name = "maint_pred"
+	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/maintenance/science)
 "da" = (
@@ -831,6 +834,9 @@
 	icon_state = "5-8"
 	},
 /obj/machinery/air_alarm/south_mount,
+/obj/landmark{
+	name = "blobstart"
+	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/maintenance/science)
 "dJ" = (
@@ -997,6 +1003,12 @@
 /obj/effect/paint/navy,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/bridge/blueshield/room)
+"et" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/strelka/shipbase/deck3/science/main)
 "eu" = (
 /obj/structure/filingcabinet/chestdrawer{
 	name = "Medical Forms"
@@ -1468,6 +1480,9 @@
 /obj/effect/floor_decal/spline/fancy/wood/corner{
 	dir = 4
 	},
+/obj/structure/sign/periodic{
+	pixel_x = 30
+	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/science/secondary)
 "fY" = (
@@ -1532,6 +1547,9 @@
 	dir = 1
 	},
 /obj/structure/closet/crate/bin,
+/obj/structure/sign/redcross{
+	pixel_y = 29
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical)
 "gn" = (
@@ -1641,9 +1659,7 @@
 	name = "Bridge";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/command/bridge{
-	req_access = list(19,44)
-	},
+/obj/map_helper/access_helper/airlock/station/command/bridge/strelka,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/bridge/blueshield)
@@ -2999,6 +3015,9 @@
 	},
 /obj/item/reagent_containers/glass/beaker/large,
 /obj/item/reagent_containers/dropper,
+/obj/structure/sign/periodic{
+	pixel_y = 28
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "lv" = (
@@ -7235,6 +7254,10 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
+"Ad" = (
+/obj/structure/curtain/open,
+/turf/simulated/floor/plating,
+/area/strelka/shipbase/deck3/science/main)
 "Ag" = (
 /obj/machinery/light/small/old{
 	dir = 8
@@ -7481,6 +7504,12 @@
 /obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo)
+"AY" = (
+/obj/landmark{
+	name = "carpspawn"
+	},
+/turf/space/basic,
+/area/space)
 "Ba" = (
 /obj/machinery/lathe/autolathe,
 /obj/machinery/light{
@@ -7889,6 +7918,9 @@
 	},
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
+	},
+/obj/landmark{
+	name = "tripai"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/bridge)
@@ -9434,6 +9466,13 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/resleeve)
+"HG" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
+/obj/structure/curtain/open,
+/turf/simulated/floor/plating,
+/area/strelka/shipbase/deck3/science/main)
 "HI" = (
 /obj/structure/table/carbon/reinforced,
 /obj/item/slime_scanner,
@@ -11024,6 +11063,9 @@
 "Ok" = (
 /obj/structure/morgue{
 	dir = 1
+	},
+/obj/structure/window/reinforced/tinted{
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/science/main)
@@ -13105,6 +13147,9 @@
 	dir = 8
 	},
 /obj/structure/closet/crate/bin,
+/obj/structure/sign/science{
+	pixel_x = 31
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science)
 "Wh" = (
@@ -13137,9 +13182,7 @@
 	name = "Server Room";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/command/bridge{
-	req_access = list(19,44)
-	},
+/obj/map_helper/access_helper/airlock/station/command/bridge/strelka,
 /obj/map_helper/access_helper/airlock/station/head_office/research_director,
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -21579,7 +21622,7 @@ ae
 ae
 ae
 ae
-ae
+AY
 ae
 ae
 ae
@@ -23069,7 +23112,7 @@ ae
 ae
 ae
 ae
-ae
+AY
 ae
 ae
 ae
@@ -30040,7 +30083,7 @@ ae
 ae
 ae
 ae
-ae
+AY
 ae
 ae
 ae
@@ -32468,7 +32511,7 @@ ae
 ae
 ae
 ae
-ae
+AY
 ae
 ae
 ae
@@ -34573,8 +34616,8 @@ yQ
 VL
 JC
 fJ
-WT
-WT
+HG
+et
 Ok
 zV
 zq
@@ -34767,7 +34810,7 @@ iz
 OJ
 NY
 wo
-WT
+Ad
 WT
 Wy
 zV
@@ -36661,7 +36704,7 @@ ae
 ae
 ae
 ae
-ae
+AY
 ae
 ae
 ae
@@ -42145,7 +42188,7 @@ ae
 ae
 ae
 ae
-ae
+AY
 ae
 ae
 ae
@@ -44241,7 +44284,7 @@ ae
 ae
 ae
 ae
-ae
+AY
 ae
 ae
 ae
