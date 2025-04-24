@@ -518,10 +518,12 @@
 	return null
 
 //Handle a mob struggling
-// Called from /mob/living/carbon/relaymove()
+// Called from /mob/living/proc/process_resist()
 /obj/belly/contents_resist(var/mob/living/R)
+	SHOULD_NOT_SLEEP(FALSE) //Let it sleep to appease Linter
+	. = TRUE //Sure are doing something unless
 	if (!(R in contents))
-		return  // User is not in this belly
+		return FALSE // User is not in this belly
 
 	R.setClickCooldown(50)
 
