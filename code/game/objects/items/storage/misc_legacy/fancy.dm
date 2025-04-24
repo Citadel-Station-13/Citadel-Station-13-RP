@@ -129,6 +129,7 @@
 /obj/item/storage/fancy/crayons/update_icon()
 	cut_overlays()
 	. = ..()
+	icon_state = "crayonbox"
 	for(var/obj/item/pen/crayon/crayon in contents)
 		add_overlay(crayon.crayon_color_name)
 
@@ -170,6 +171,7 @@
 /obj/item/storage/fancy/markers/update_icon()
 	cut_overlays()
 	. = ..()
+	icon_state = "markerbox"
 	for(var/obj/item/pen/crayon/marker/marker in contents)
 		add_overlay("m[marker.crayon_color_name]")
 
@@ -208,6 +210,7 @@
 /obj/item/storage/fancy/chalk/update_icon()
 	cut_overlays()
 	. = ..()
+	icon_state = "chalkbox"
 	for(var/obj/item/pen/crayon/chalk/chalk in contents)
 		add_overlay("c[chalk.crayon_color_name]")
 
@@ -376,8 +379,8 @@
 	create_reagents(15 * max_items)
 
 /obj/item/storage/fancy/cigar/update_icon_state()
+	. = ..()
 	icon_state = "[initial(icon_state)][contents.len]"
-	return ..()
 
 /obj/item/storage/fancy/cigar/Exited(atom/movable/AM, atom/newLoc)
 	. = ..()
@@ -491,5 +494,5 @@
 	update_icon()
 
 /obj/item/storage/fancy/heartbox/update_icon_state()
-	icon_state = length(contents) ? "chocolate" : "heartbox_empty"
-	return ..()
+	. = ..()
+	icon_state = length(contents) ? "heartbox" : "heartbox_empty"
