@@ -35,7 +35,7 @@
 			. += SPAN_NOTICE("Free phoron depletion in surface tissues is currently [H.getOxyLoss()]%.")
 
 /obj/item/clothing/head/helmet/space/void/plasman
-	name = "Phoronoid containment helmet"
+	name = "phoronoid environmental protection helmet"
 	icon = 'icons/obj/plasmeme/hats.dmi'
 	icon_state = "plasmaman_helmet"
 	icon_override = 'icons/mob/plasmeme/helmet.dmi'
@@ -210,8 +210,18 @@
 	desc = "A lightweight voidsuit helmet designed to keep phoronoids from reacting with oxygenated environments. Contains a basic external sensor suite. This one is painted in science colors."
 	armor_type = /datum/armor/phoronoid/science
 
+/obj/item/clothing/head/helmet/space/void/plasman/science/alt
+	name = "phoronoid environmental protection bubble helmet"
+	icon_state = "plasmaman_helmet_scialt"
+	desc = "A lightweight voidsuit bubble helmet designed to keep phoronoids from reacting with oxygenated environments. Contains a basic external sensor suite. This one is painted in science colors."
+
 /obj/item/clothing/head/helmet/space/void/plasman/science/explorer
 	armor_type = /datum/armor/phoronoid/exploration
+
+/obj/item/clothing/head/helmet/space/void/plasman/science/explorer/alt
+	name = "phoronoid environmental protection bubble helmet"
+	icon_state = "plasmaman_helmet_scialt"
+	desc = "A lightweight voidsuit bubble helmet designed to keep phoronoids from reacting with oxygenated environments. Contains a basic external sensor suite. This one is painted in science colors."
 
 /obj/item/clothing/head/helmet/space/void/plasman/science/rd
 	icon_state = "plasmaman_helmetrd"
