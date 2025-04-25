@@ -351,43 +351,6 @@
 	desc = "A black corset and skirt for those fancy nights out."
 	icon_state = "black_corset"
 
-/*
- * wedding stuff
- */
-/obj/item/clothing/under/wedding
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS
-
-/obj/item/clothing/under/wedding/bride_orange
-	name = "orange wedding dress"
-	desc = "A big and puffy orange dress."
-	icon_state = "bride_orange"
-	inv_hide_flags = HIDESHOES
-
-/obj/item/clothing/under/wedding/bride_purple
-	name = "purple wedding dress"
-	desc = "A big and puffy purple dress."
-	icon_state = "bride_purple"
-	inv_hide_flags = HIDESHOES
-
-/obj/item/clothing/under/wedding/bride_blue
-	name = "blue wedding dress"
-	desc = "A big and puffy blue dress."
-	icon_state = "bride_blue"
-	inv_hide_flags = HIDESHOES
-
-/obj/item/clothing/under/wedding/bride_red
-	name = "red wedding dress"
-	desc = "A big and puffy red dress."
-	icon_state = "bride_red"
-	inv_hide_flags = HIDESHOES
-
-/obj/item/clothing/under/wedding/bride_white
-	name = "silky wedding dress"
-	desc = "A white wedding gown made from the finest silk."
-	icon_state = "bride_white"
-	inv_hide_flags = HIDESHOES
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-
 /obj/item/clothing/under/captainformal
 	name = "Facility Director's formal uniform"
 	desc = "A Facility Director's formal-wear, for special occasions."
@@ -477,52 +440,6 @@
 	desc = "The very image of a working man. Not that you're probably doing work."
 	icon_state = "mechanic"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "cargo", SLOT_ID_LEFT_HAND = "cargo")
-
-/obj/item/clothing/under/cheongsam
-	name = "white cheongsam"
-	desc = "It is a white cheongsam dress."
-	icon_state = "cheongsam-white"
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS
-
-/obj/item/clothing/under/cheongsam/red
-	name = "red cheongsam"
-	desc = "It is a red cheongsam dress."
-	icon_state = "cheongsam-red"
-
-/obj/item/clothing/under/cheongsam/blue
-	name = "blue cheongsam"
-	desc = "It is a blue cheongsam dress."
-	icon_state = "cheongsam-blue"
-
-/obj/item/clothing/under/cheongsam/black
-	name = "black cheongsam"
-	desc = "It is a black cheongsam dress."
-	icon_state = "cheongsam-black"
-
-/obj/item/clothing/under/cheongsam/darkred
-	name = "dark red cheongsam"
-	desc = "It is a dark red cheongsam dress."
-	icon_state = "cheongsam-darkred"
-
-/obj/item/clothing/under/cheongsam/darkgreen
-	name = "dark green cheongsam"
-	desc = "It is a dark green cheongsam dress."
-	icon_state = "cheongsam-darkgreen"
-
-/obj/item/clothing/under/cheongsam/green
-	name = "green cheongsam"
-	desc = "It is a green cheongsam dress."
-	icon_state = "cheongsam-green"
-
-/obj/item/clothing/under/cheongsam/purple
-	name = "purple cheongsam"
-	desc = "It is a purple cheongsam dress."
-	icon_state = "cheongsam-purple"
-
-/obj/item/clothing/under/cheongsam/darkblue
-	name = "dark blue cheongsam"
-	desc = "It is a dark blue cheongsam dress."
-	icon_state = "cheongsam-darkblue"
 
 /obj/item/clothing/under/blazer
 	name = "blue blazer"
@@ -1411,36 +1328,6 @@
 	name = "earth kimono"
 	icon_state = "kimono_earth"
 
-//Chinese Traditional
-/obj/item/clothing/under/qipao
-	name = "black qipao"
-	desc = "A popular dress from Old Earth China, commonly worn to festivals. Easily recognizable thanks to its intricate embroidery and bold side slits."
-	icon_state = "qipao"
-
-/obj/item/clothing/under/qipao/white
-	name = "white qipao"
-	desc = "A popular dress from Old Earth China, commonly worn to festivals. Easily recognizable thanks to its intricate embroidery and bold side slits."
-	icon_state = "qipao_white"
-
-/obj/item/clothing/under/qipao/red
-	name = "red qipao"
-	desc = "A popular dress from Old Earth China, commonly worn to festivals. Easily recognizable thanks to its intricate embroidery and bold side slits."
-	icon_state = "qipao_red"
-
-/obj/item/clothing/under/cheong
-	name = "black cheongsam"
-	desc = "Popular among the men of Old Earth China during festivals. Embroidered and crafted out of fine silk, this is suitable as formal or casual wear."
-	icon_state = "cheong"
-
-/obj/item/clothing/under/cheong/white
-	name = "white cheongsam"
-	desc = "Popular among the men of Old Earth China during festivals. Embroidered and crafted out of fine silk, this is suitable as formal or casual wear."
-	icon_state = "cheongw"
-
-/obj/item/clothing/under/cheong/red
-	name = "red cheongsam"
-	desc = "Popular among the men of Old Earth China during festivals. Embroidered and crafted out of fine silk, this is suitable as formal or casual wear."
-	icon_state = "cheongr"
 
 //Baggy Turtlenecks
 /obj/item/clothing/under/turtlebaggy
