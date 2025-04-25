@@ -7482,8 +7482,9 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	pixel_x = -25;
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	pixel_x = -28;
+	pixel_y = 3;
 	id_tag = "civvie_dock"
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
@@ -8569,7 +8570,7 @@
 	req_one_access = null
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/strelka/shipbase/deck1/civhangar)
+/area/shuttle/civvie/strelka)
 "Vw" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck1/checkpoint)

@@ -37,7 +37,7 @@
 /datum/shuttle/autodock/overmap/excursion/strelka
 	name = "Excursion Javelot Shuttle"
 	warmup_time = 0
-	shuttle_area = list(/area/shuttle/excursion/cockpit, /area/shuttle/excursion/general)
+	shuttle_area = list(/area/shuttle/excursion/strelka)
 	current_location = "strelka_excursion_hangar"
 	docking_controller_tag = "expshuttle_docker"
 	move_time = 15
@@ -122,7 +122,7 @@
 /datum/shuttle/autodock/overmap/civvie/strelka
 	name = "Decades Old civilian Transport"
 	warmup_time = 11
-	shuttle_area = list(/area/shuttle/civvie/strelka/main, /area/shuttle/civvie/strelka/cockpit)
+	shuttle_area = list(/area/shuttle/civvie/strelka)
 	current_location = "strelka_civvie_home"
 	docking_controller_tag = "civvie_docker"
 	fuel_consumption = 12

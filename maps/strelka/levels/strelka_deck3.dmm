@@ -246,7 +246,7 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/steel,
-/area/strelka/shipbase/deck3/mininghangar)
+/area/shuttle/belter)
 "bf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 1
@@ -1662,7 +1662,6 @@
 	req_one_access = null
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/map_helper/access_helper/airlock/station/command/strelka,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/bridge/blueshield)
 "gF" = (
@@ -2525,7 +2524,7 @@
 	pixel_y = 27
 	},
 /turf/simulated/floor/tiled/steel,
-/area/strelka/shipbase/deck3/mininghangar)
+/area/shuttle/belter)
 "jx" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -2927,7 +2926,7 @@
 	name = "belter beacon"
 	},
 /turf/simulated/floor/tiled/steel,
-/area/strelka/shipbase/deck3/mininghangar)
+/area/shuttle/belter)
 "le" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -3359,7 +3358,7 @@
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/steel/airless,
-/area/strelka/shipbase/deck3/mininghangar)
+/area/shuttle/belter)
 "mw" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloorblack,
@@ -4428,7 +4427,7 @@
 /obj/structure/ore_box,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/steel,
-/area/strelka/shipbase/deck3/mininghangar)
+/area/shuttle/belter)
 "qp" = (
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/cargo)
@@ -5288,7 +5287,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
-/area/strelka/shipbase/deck3/mininghangar)
+/area/shuttle/belter)
 "tt" = (
 /obj/structure/table/carbon/reinforced,
 /obj/machinery/recharger,
@@ -6234,7 +6233,7 @@
 	name = "Strelka - Belter Shuttle"
 	},
 /turf/simulated/shuttle/plating/airless/carry,
-/area/strelka/shipbase/deck3/mininghangar)
+/area/shuttle/belter)
 "wQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -7082,7 +7081,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
-/area/strelka/shipbase/deck3/mininghangar)
+/area/shuttle/belter)
 "zu" = (
 /obj/structure/lightpost{
 	layer = 3.9;
@@ -7888,7 +7887,7 @@
 	dir = 4
 	},
 /turf/simulated/shuttle/plating/airless/carry,
-/area/strelka/shipbase/deck3/mininghangar)
+/area/shuttle/belter)
 "Cf" = (
 /obj/machinery/mech_recharger,
 /obj/machinery/light/small/old{
@@ -8041,7 +8040,7 @@
 	old_wall = 1
 	},
 /turf/simulated/floor/tiled/steel,
-/area/strelka/shipbase/deck3/mininghangar)
+/area/shuttle/belter)
 "Cz" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -8867,7 +8866,7 @@
 /area/strelka/shipbase/deck3/bridge/upload)
 "Fo" = (
 /turf/simulated/wall/r_wall/prepainted/cargo,
-/area/strelka/shipbase/deck3/mininghangar)
+/area/shuttle/belter)
 "Fp" = (
 /obj/structure/table/carbon,
 /obj/machinery/door/window/southleft,
@@ -9467,7 +9466,7 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel,
-/area/strelka/shipbase/deck3/mininghangar)
+/area/shuttle/belter)
 "HA" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloorblack,
@@ -10478,7 +10477,7 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/steel,
-/area/strelka/shipbase/deck3/mininghangar)
+/area/shuttle/belter)
 "LI" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 6
@@ -10491,7 +10490,7 @@
 "LQ" = (
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/steel,
-/area/strelka/shipbase/deck3/mininghangar)
+/area/shuttle/belter)
 "LS" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 5
@@ -10679,7 +10678,7 @@
 /area/strelka/shipbase/deck3/maintenance/cargo)
 "Mx" = (
 /turf/simulated/floor/tiled/steel,
-/area/strelka/shipbase/deck3/mininghangar)
+/area/shuttle/belter)
 "MB" = (
 /obj/structure/table/bench/wooden,
 /obj/effect/floor_decal/corner/brown{
@@ -11553,7 +11552,7 @@
 	name = "belter craft hatch"
 	},
 /turf/simulated/floor/tiled/steel,
-/area/strelka/shipbase/deck3/mininghangar)
+/area/shuttle/belter)
 "Qe" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 6
@@ -12995,7 +12994,7 @@
 /obj/item/tank/emergency/oxygen/double,
 /obj/item/tank/emergency/oxygen/double,
 /turf/simulated/floor/tiled/steel,
-/area/strelka/shipbase/deck3/mininghangar)
+/area/shuttle/belter)
 "Vy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
