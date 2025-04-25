@@ -3225,6 +3225,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/sun,
 /turf/simulated/floor/plating,
 /area/engineering/foyer)
 "lW" = (
@@ -5572,6 +5573,7 @@
 	icon_state = "4-8"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/sun,
 /turf/simulated/floor,
 /area/maintenance/substation/engineering)
 "tB" = (
@@ -8176,6 +8178,7 @@
 /area/engineering/engine_waste)
 "DI" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/secure_storage/lower)
 "DK" = (
@@ -9179,6 +9182,7 @@
 /area/engineering/workshop)
 "HY" = (
 /obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/effect/paint/sun,
 /turf/simulated/floor/plating,
 /area/engineering/workshop)
 "Ia" = (
