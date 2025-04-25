@@ -2073,7 +2073,7 @@
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	dir = 1;
 	pixel_y = -24;
-	id_tag = "emtshuttle_dock"
+	id_tag = "emt_dock"
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck2/explo/emt)
