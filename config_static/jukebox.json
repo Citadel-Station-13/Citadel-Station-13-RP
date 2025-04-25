@@ -10739,5 +10739,15 @@
 "lobby": false,
 "jukebox": true,
 "genre": "Classical and Orchestral"
-}
+},
+{
+"url": "https://files.catbox.moe/obo63e.mp3",
+"title": "[7r$%3]Go Tell Aunt Rhody",
+"duration": 1750,
+"artist": "Jordan Reyne and Michael A. Levine",
+"secret": true,
+"lobby": false,
+"jukebox": true,
+"genre": "Folk and Indie"
+},
 ]
