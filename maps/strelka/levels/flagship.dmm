@@ -1868,7 +1868,6 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
 	name = "Ship Hatch";
 	req_one_access = null
 	},
@@ -2965,7 +2964,6 @@
 "is" = (
 /obj/machinery/door/window/holowindoor{
 	base_state = "right";
-	dir = 2;
 	icon_state = "right";
 	name = "Red Corner"
 	},
@@ -5708,8 +5706,8 @@
 /obj/effect/floor_decal/corner_kafel/yellow{
 	dir = 9
 	},
-/obj/effect/floor_decal/corner_kafel/yellow{
-	dir = 5
+/obj/structure/window/reinforced{
+	dir = 1
 	},
 /turf/unsimulated/floor/steel{
 	icon_state = "dark";
@@ -5796,6 +5794,10 @@
 /obj/effect/floor_decal/corner/blue/border,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
+"pA" = (
+/mob/living/simple_mob/animal/passive/maint_drone,
+/turf/simulated/wall/r_wall,
+/area/centcom/control)
 "pC" = (
 /obj/structure/shuttle/engine/heater,
 /obj/structure/window/reinforced{
@@ -6192,6 +6194,19 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
+"qE" = (
+/obj/effect/floor_decal/corner_kafel/yellow{
+	dir = 5
+	},
+/mob/living/simple_mob/animal/passive/maint_drone,
+/obj/structure/bed/chair/bay/comfy/black{
+	dir = 8
+	},
+/turf/unsimulated/floor/steel{
+	icon_state = "dark";
+	layer = 1
+	},
+/area/centcom/suppy)
 "qF" = (
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/closet/secure_closet/nanotrasen_warden,
@@ -9016,11 +9031,17 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
 "xV" = (
-/obj/effect/paint/black,
-/obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint/black,
-/obj/effect/paint_stripe/darkred,
-/turf/unsimulated/floor/techfloor_grid{
+/obj/effect/floor_decal/corner_kafel/yellow{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner_kafel/yellow{
+	dir = 6
+	},
+/obj/structure/salvageable/bliss{
+	name = "cargo terminal"
+	},
+/turf/unsimulated/floor/steel{
+	icon_state = "dark";
 	layer = 1
 	},
 /area/centcom/suppy)
@@ -12809,8 +12830,8 @@
 /obj/effect/floor_decal/corner_kafel/yellow{
 	dir = 6
 	},
-/obj/effect/floor_decal/corner_kafel/yellow{
-	dir = 5
+/obj/structure/window/reinforced{
+	dir = 1
 	},
 /turf/unsimulated/floor/steel{
 	icon_state = "dark";
@@ -12875,7 +12896,6 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
 	name = "Ship Hatch";
 	req_one_access = null
 	},
@@ -14117,8 +14137,8 @@
 /area/centcom/control)
 "KJ" = (
 /obj/structure/closet/crate,
-/obj/effect/floor_decal/corner_kafel/yellow{
-	dir = 5
+/obj/structure/window/reinforced{
+	dir = 1
 	},
 /turf/unsimulated/floor/steel{
 	icon_state = "dark";
@@ -14597,15 +14617,18 @@
 	},
 /area/tdome/tdome1)
 "LT" = (
-/obj/machinery/light{
-	dir = 8
+/obj/effect/floor_decal/corner_kafel/yellow{
+	dir = 5
 	},
-/obj/structure/bed/chair/bay/comfy{
+/obj/structure/bed/chair/bay/comfy/black{
 	dir = 4
 	},
 /mob/living/simple_mob/animal/passive/maint_drone,
-/turf/simulated/shuttle/floor/black,
-/area/shuttle/supply)
+/turf/unsimulated/floor/steel{
+	icon_state = "dark";
+	layer = 1
+	},
+/area/centcom/suppy)
 "LU" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -15333,10 +15356,19 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
 "NQ" = (
-/obj/machinery/status_display/supply_display,
-/obj/effect/paint/black,
-/obj/effect/paint_stripe/darkred,
-/turf/simulated/wall/r_wall,
+/obj/effect/floor_decal/corner_kafel/yellow{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner_kafel/yellow{
+	dir = 9
+	},
+/obj/structure/salvageable/console_os{
+	name = "pristine helm console"
+	},
+/turf/unsimulated/floor/steel{
+	icon_state = "dark";
+	layer = 1
+	},
 /area/centcom/suppy)
 "NR" = (
 /obj/effect/floor_decal/derelict/d8,
@@ -15557,6 +15589,10 @@
 	layer = 1
 	},
 /area/shuttle/specops/general)
+"Oy" = (
+/mob/living/simple_mob/animal/passive/maint_drone,
+/turf/simulated/wall/r_wall,
+/area/tdome/tdomeadmin)
 "OA" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
@@ -16484,6 +16520,15 @@
 /obj/machinery/vending/cola,
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/escape)
+"Rg" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/unsimulated/floor/steel{
+	icon_state = "dark";
+	layer = 1
+	},
+/area/centcom/suppy)
 "Rh" = (
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 4
@@ -18132,6 +18177,12 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
+"Vf" = (
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/darkred,
+/obj/machinery/status_display/supply_display,
+/turf/simulated/wall/r_wall,
+/area/centcom/suppy)
 "Vh" = (
 /obj/effect/floor_decal/corner_kafel/red{
 	dir = 9
@@ -38880,7 +38931,7 @@ Bs
 Bs
 Mm
 Eg
-LT
+ec
 iH
 iH
 iH
@@ -39652,7 +39703,7 @@ Tq
 KN
 nI
 kx
-nM
+Vf
 nM
 nM
 nM
@@ -40040,8 +40091,8 @@ Tq
 KN
 nI
 kx
-xV
-uX
+qE
+Rg
 iT
 iT
 iT
@@ -40234,7 +40285,7 @@ Tq
 KN
 jQ
 kx
-xV
+uX
 KJ
 zD
 iT
@@ -40428,8 +40479,8 @@ Tq
 KN
 jQ
 kx
-xV
-uX
+LT
+Rg
 iT
 iT
 iT
@@ -45244,7 +45295,7 @@ EW
 EW
 EW
 EW
-Aj
+Oy
 Aj
 Aj
 Tj
@@ -46414,7 +46465,7 @@ kf
 kf
 ba
 ba
-ba
+pA
 ba
 ba
 ba
