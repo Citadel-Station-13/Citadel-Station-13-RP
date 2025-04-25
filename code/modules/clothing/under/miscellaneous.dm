@@ -482,37 +482,6 @@
 	icon_state = "cuttop_red"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "red", SLOT_ID_LEFT_HAND = "red")
 
-/obj/item/clothing/under/dress/white
-	name = "white wedding dress"
-	desc = "A fancy white dress with a blue underdress."
-	icon_state = "whitedress1"
-	inv_hide_flags = HIDESHOES
-
-/obj/item/clothing/under/dress/white2
-	name = "long dress"
-	desc = "A long dress."
-	icon_state = "whitedress2"
-	addblends = "whitedress2_a"
-	inv_hide_flags = HIDESHOES
-
-/obj/item/clothing/under/dress/white3
-	name = "short dress"
-	desc = "A short, plain dress."
-	icon_state = "whitedress3"
-	addblends = "whitedress3_a"
-
-/obj/item/clothing/under/dress/white4
-	name = "long flared dress"
-	desc = "A long white dress that flares out at the bottom."
-	icon_state = "whitedress4"
-	addblends = "whitedress4_a"
-	inv_hide_flags = HIDESHOES
-
-/obj/item/clothing/under/dress/darkred
-	name = "fancy dark red dress"
-	desc = "A short, red dress with a black belt. Fancy."
-	icon_state = "darkreddress"
-
 /*
  * swimsuit
  */

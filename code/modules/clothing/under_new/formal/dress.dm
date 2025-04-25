@@ -146,3 +146,39 @@
 	icon = 'icons/clothing/uniform/formal/dress/pentagram.dmi'
 	icon_state = "pentagram"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
+
+/obj/item/clothing/under/dress/white
+	name = "white wedding dress"
+	desc = "A fancy white dress with a blue underdress."
+	icon = 'icons/clothing/uniform/formal/dress/whitedress1.dmi'
+	icon_state = "whitedress1"
+	inv_hide_flags = HIDESHOES
+
+/obj/item/clothing/under/dress/white2
+	name = "long dress"
+	desc = "A long dress."
+	icon = 'icons/clothing/uniform/formal/dress/whitedress2.dmi'
+	icon_state = "whitedress2"
+	addblends = "whitedress2_a"
+	inv_hide_flags = HIDESHOES
+
+/obj/item/clothing/under/dress/white3
+	name = "short dress"
+	desc = "A short, plain dress."
+	icon = 'icons/clothing/uniform/formal/dress/whitedress3.dmi'
+	icon_state = "whitedress3"
+	addblends = "whitedress3_a"
+
+/obj/item/clothing/under/dress/white4
+	name = "long flared dress"
+	desc = "A long white dress that flares out at the bottom."
+	icon = 'icons/clothing/uniform/formal/dress/whitedress4.dmi'
+	icon_state = "whitedress4"
+	addblends = "whitedress4_a"
+	inv_hide_flags = HIDESHOES
+
+/obj/item/clothing/under/dress/darkred
+	name = "fancy dark red dress"
+	desc = "A short, red dress with a black belt. Fancy."
+	icon = 'icons/clothing/uniform/formal/dress/darkreddress.dmi'
+	icon_state = "darkreddress"
