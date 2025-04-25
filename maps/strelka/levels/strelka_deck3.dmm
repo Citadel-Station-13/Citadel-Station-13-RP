@@ -7558,7 +7558,7 @@
 /area/strelka/shipbase/deck3)
 "Bd" = (
 /obj/effect/shuttle_landmark{
-	base_area = /area/rift/surfacebase/outside/outside1;
+	base_area = /area/strelka/shipbase/deck3/cargo/hangar;
 	base_turf = /turf/simulated/floor/reinforced/lythios43c;
 	docking_controller = "supply_shuttle";
 	landmark_tag = "supply_dock";
