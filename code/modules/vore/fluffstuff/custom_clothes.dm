@@ -548,18 +548,6 @@
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "loincloth"
 
-//KotetsuRedwood:Latex Maid Dresses, for everyone to 'enjoy'. :3c
-/obj/item/clothing/under/fluff/latexmaid
-	name = "latex maid dress"
-	desc = "Squeak! A shiny outfit for cleaning, made by people with dirty minds."
-
-	icon = 'icons/clothing/uniform/costume/maid.dmi'
-	icon_state = "latex"
-	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-
 //Aztectornado:Tron inspired Siren outfit
 /obj/item/clothing/under/fluff/siren
 	name = "Siren Jumpsuit"

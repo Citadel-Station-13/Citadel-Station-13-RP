@@ -20,3 +20,15 @@
 	icon = 'icons/clothing/uniform/costume/maid_neko.dmi'
 	icon_state = "neko"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+//KotetsuRedwood:Latex Maid Dresses, for everyone to 'enjoy'. :3c
+/obj/item/clothing/under/fluff/latexmaid
+	name = "latex maid dress"
+	desc = "Squeak! A shiny outfit for cleaning, made by people with dirty minds."
+
+	icon = 'icons/clothing/uniform/costume/maid_latex.dmi'
+	icon_state = "latex"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO
