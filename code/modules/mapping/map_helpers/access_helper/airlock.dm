@@ -550,7 +550,7 @@
 		ACCESS_COMMAND_BRIDGE,
 	)
 
-/obj/map_helper/access_helper/airlock/station/command/bridge/strelka
+/obj/map_helper/access_helper/airlock/station/command/strelka
 	req_one_access = list(
 		ACCESS_COMMAND_BRIDGE,
 		ACCESS_GENERAL_PATHFINDER,

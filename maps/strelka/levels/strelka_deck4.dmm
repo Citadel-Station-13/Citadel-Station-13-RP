@@ -1110,8 +1110,10 @@
 /turf/simulated/floor/wood/broken,
 /area/strelka/shipbase/deck4/bar)
 "fc" = (
-/obj/spawner/window/low_wall/full/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
+/obj/spawner/window/low_wall/reinforced/tinted/full/firelocks{
+	id = "hoptint"
+	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck4/bridge/hop/office)
 "fg" = (
@@ -3372,8 +3374,10 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/hallway)
 "oL" = (
-/obj/spawner/window/low_wall/full/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
+/obj/spawner/window/low_wall/reinforced/tinted/full/firelocks{
+	id = "captaintint"
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck4/bridge/captain)
 "oO" = (
@@ -4040,7 +4044,8 @@
 	uid = "pointdefence";
 	pixel_x = -2;
 	pixel_y = -1;
-	req_access = list(19)
+	req_access = list(19);
+	enabled = 0
 	},
 /obj/machinery/button/remote/blast_door/strelka/blockade{
 	dir = 8;
@@ -4175,8 +4180,10 @@
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck4/maintenance)
 "sk" = (
-/obj/spawner/window/low_wall/full/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
+/obj/spawner/window/low_wall/reinforced/tinted/full/firelocks{
+	id = "captaintint"
+	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck4/bridge/captain)
 "so" = (
@@ -7249,6 +7256,13 @@
 /obj/item/pen,
 /obj/item/pen/blue,
 /obj/item/pen/red,
+/obj/item/stamp/hop{
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/obj/item/stamp/denied{
+	pixel_x = 6
+	},
 /turf/simulated/floor/carpet/patterened/blue/alt,
 /area/strelka/shipbase/deck4/bridge/hop/office)
 "IL" = (
@@ -7300,8 +7314,10 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/strelka/shipbase/deck4/bar)
 "IV" = (
-/obj/spawner/window/low_wall/full/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
+/obj/spawner/window/low_wall/reinforced/tinted/full/firelocks{
+	id = "hoptint"
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck4/bridge/hop/office)
 "IW" = (
@@ -7617,7 +7633,8 @@
 	pixel_y = 29;
 	control_area = "\improper turret point defense";
 	uid = "pointdefence";
-	req_access = list(19)
+	req_access = list(19);
+	enabled = 0
 	},
 /obj/structure/window/reinforced/survival_pod{
 	dir = 4
@@ -8050,7 +8067,6 @@
 	name = "Bridge";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/command/bridge/strelka,
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -8061,6 +8077,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/map_helper/access_helper/airlock/station/command/strelka,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck4/bridge)
 "MJ" = (
@@ -8181,6 +8198,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor/glass,
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/fitness/clown)
 "Nd" = (
@@ -8525,12 +8545,19 @@
 	pixel_x = 3;
 	pixel_y = 16
 	},
+/obj/item/stamp/captain{
+	pixel_x = -3
+	},
+/obj/item/stamp/denied{
+	pixel_x = 6
+	},
+/obj/machinery/button/windowtint{
+	pixel_x = -7;
+	pixel_y = 16;
+	id = "captaintint"
+	},
 /turf/simulated/floor/carpet/patterened/blue,
 /area/strelka/shipbase/deck4/bridge/captain)
-"OP" = (
-/obj/structure/grille,
-/turf/simulated/floor/tiled/monodark,
-/area/strelka/shipbase/deck4/bridge)
 "OQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -9231,6 +9258,11 @@
 	pixel_y = 16
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/machinery/button/windowtint{
+	pixel_x = -7;
+	pixel_y = 16;
+	id = "hoptint"
+	},
 /turf/simulated/floor/carpet/patterened/blue/alt,
 /area/strelka/shipbase/deck4/bridge/hop/office)
 "Tc" = (
@@ -34648,7 +34680,7 @@ jR
 jR
 jR
 jR
-OP
+eh
 oq
 cU
 zs
@@ -34664,7 +34696,7 @@ ZW
 Jp
 cU
 oq
-OP
+eh
 jR
 jR
 jR
@@ -34843,7 +34875,7 @@ jR
 jR
 jR
 jR
-OP
+CA
 CP
 uq
 vP
@@ -34857,7 +34889,7 @@ iZ
 FM
 oa
 CP
-OP
+CA
 jR
 jR
 jR

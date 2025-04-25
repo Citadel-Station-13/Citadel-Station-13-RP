@@ -1435,7 +1435,7 @@
 	cur_coils = 3
 	},
 /obj/structure/cable/cyan{
-	icon_state = "0-8"
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/emt/strelka)
@@ -3299,7 +3299,8 @@
 	installation = /obj/item/gun/projectile/energy/phasegun;
 	name = "exploration turret";
 	req_one_access = list(19,43,62,67);
-	uid = "EMT"
+	uid = "EMT";
+	enabled = 0
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/emt/strelka)
@@ -3334,7 +3335,7 @@
 /obj/structure/sign/kiddieplaque{
 	pixel_y = 19;
 	name = "\improper Strelka Gallery plaque";
-	desc = "This Beepsky unit, called Commander Spout, arrested 23 clowns, Killed 242 Xenomorph, and might have boarded and destroyed 4 pirate cruisers.";
+	desc = "This Securitron unit, called Commander Spout, arrested 23 clowns, Killed 242 Xenomorph, and might have boarded and destroyed 4 pirate cruisers.";
 	layer = 3.5
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -3813,7 +3814,6 @@
 /obj/structure/cable/cyan{
 	icon_state = "1-4"
 	},
-/obj/machinery/power/apc/south_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
@@ -3966,10 +3966,10 @@
 /area/shuttle/emt/strelka)
 "na" = (
 /obj/machinery/atmospherics/component/quaternary/mixer{
-	tag_west = 1;
+	tag_west = 2;
 	tag_north_con = 0.21;
 	tag_north = 1;
-	tag_east = 2;
+	tag_east = 1;
 	tag_west_con = 0.79
 	},
 /turf/simulated/floor/plating,
@@ -4224,8 +4224,7 @@
 	dir = 8
 	},
 /obj/structure/cable/pink{
-	icon_state = "1-4";
-	dir = 8
+	icon_state = "2-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
@@ -4313,21 +4312,17 @@
 /area/space)
 "nX" = (
 /obj/machinery/holopad/ship,
-/obj/structure/cable/pink{
-	icon_state = "1-4";
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 8
+	},
+/obj/structure/cable/pink{
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/strelka)
 "nY" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
-	},
-/obj/structure/cable/cyan{
-	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/emt/strelka)
@@ -4513,8 +4508,8 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/map_helper/access_helper/airlock/station/command/bridge/strelka,
 /obj/machinery/door/firedoor/glass,
+/obj/map_helper/access_helper/airlock/station/command/strelka,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck2/bridge)
 "ov" = (
@@ -5429,8 +5424,7 @@
 /area/strelka/shipbase/deck2/engineering/engine)
 "qX" = (
 /obj/structure/cable/pink{
-	icon_state = "1-4";
-	dir = 8
+	icon_state = "2-4"
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -6777,6 +6771,18 @@
 /obj/machinery/photocopier/faxmachine{
 	department = "HOS's Office"
 	},
+/obj/item/paper_bin{
+	pixel_x = 8;
+	pixel_y = 7
+	},
+/obj/item/pen/blue{
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/obj/item/pen/red{
+	pixel_x = -1;
+	pixel_y = 3
+	},
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck2/bridge/hos)
 "uT" = (
@@ -7912,6 +7918,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/obj/structure/cable,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2)
 "yo" = (
@@ -9260,8 +9267,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/map_helper/access_helper/airlock/station/science/department,
 /obj/machinery/door/firedoor/glass,
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/science/tele)
 "CE" = (
@@ -9384,6 +9391,14 @@
 /obj/structure/flora/pottedplant/fern{
 	pixel_y = 28;
 	pixel_x = -4
+	},
+/obj/item/stamp/ce{
+	pixel_y = 9;
+	pixel_x = 8
+	},
+/obj/item/stamp/denied{
+	pixel_y = 3;
+	pixel_x = 8
 	},
 /turf/simulated/floor/carpet/oracarpet,
 /area/strelka/shipbase/deck2/bridge/ce)
@@ -9589,6 +9604,18 @@
 	department = "CE's Office"
 	},
 /obj/machinery/light/small/old,
+/obj/item/paper_bin{
+	pixel_x = 6;
+	pixel_y = 7
+	},
+/obj/item/pen/blue{
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/obj/item/pen/red{
+	pixel_x = -1;
+	pixel_y = 3
+	},
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck2/bridge/ce)
 "Dw" = (
@@ -10208,9 +10235,6 @@
 /obj/machinery/power/terminal{
 	dir = 1
 	},
-/obj/structure/cable/cyan{
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/emt/strelka)
 "Fz" = (
@@ -10344,7 +10368,8 @@
 	installation = /obj/item/gun/projectile/energy/phasegun;
 	name = "exploration turret";
 	req_one_access = list(19,43,62,67);
-	uid = "exploration"
+	uid = "exploration";
+	enabled = 0
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/excursion/strelka)
@@ -11107,9 +11132,6 @@
 "ID" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
-	},
-/obj/structure/cable/cyan{
-	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/emt/strelka)
@@ -11886,8 +11908,7 @@
 /area/strelka/shipbase/deck2/maintenance/eva)
 "Lh" = (
 /obj/structure/cable/pink{
-	icon_state = "1-4";
-	dir = 4
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/excursion/strelka)
@@ -12537,11 +12558,11 @@
 /area/strelka/shipbase/deck2/bridge/iaa)
 "Nv" = (
 /obj/effect/floor_decal/spline/fancy,
-/obj/machinery/door/window/brigdoor/southright,
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
+/obj/machinery/door/window/southright,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/emt/strelka)
 "Nw" = (
@@ -13617,6 +13638,12 @@
 /obj/machinery/portable_atmospherics/canister/phoron,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/gas)
+"Rg" = (
+/obj/structure/cable/cyan{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/emt/strelka)
 "Ri" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/wood,
@@ -14162,12 +14189,11 @@
 /area/strelka/shipbase/deck2/security/main)
 "Tb" = (
 /obj/effect/floor_decal/industrial/halfstair,
-/obj/structure/cable/pink{
-	icon_state = "1-4";
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
+	},
+/obj/structure/cable/pink{
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/strelka)
@@ -15061,6 +15087,10 @@
 /obj/machinery/photocopier{
 	pixel_y = -13
 	},
+/obj/item/stamp/denied,
+/obj/item/stamp/hos{
+	pixel_x = -7
+	},
 /turf/simulated/floor/carpet/patterened/red,
 /area/strelka/shipbase/deck2/bridge/hos)
 "VU" = (
@@ -15570,7 +15600,7 @@
 /area/shuttle/emt/strelka)
 "WU" = (
 /obj/structure/cable/cyan{
-	icon_state = "4-8"
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/emt/strelka)
@@ -15891,10 +15921,16 @@
 	installation = /obj/item/gun/projectile/energy/phasegun;
 	name = "exploration turret";
 	req_one_access = list(19,43,62,67);
-	uid = "exploration"
+	uid = "exploration";
+	enabled = 0
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/emt/strelka)
+"XT" = (
+/obj/effect/paint/offwhite,
+/obj/machinery/point_redemption_vendor/survey,
+/turf/simulated/wall/r_wall,
+/area/shuttle/excursion/strelka)
 "XU" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint/darkred,
@@ -33066,7 +33102,7 @@ mj
 mj
 uA
 yu
-yu
+Rg
 WU
 Hw
 ZX
@@ -34272,7 +34308,7 @@ xB
 Nk
 Ek
 ku
-Lm
+XT
 Vl
 Wi
 dH

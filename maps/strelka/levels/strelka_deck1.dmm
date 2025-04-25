@@ -718,7 +718,7 @@
 /obj/effect/floor_decal/rust,
 /obj/machinery/door/airlock/highsecurity,
 /obj/machinery/door/firedoor,
-/obj/map_helper/access_helper/airlock/station/command/bridge/strelka,
+/obj/map_helper/access_helper/airlock/station/command/strelka,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1/bridge/balista)
 "dt" = (
@@ -1265,6 +1265,12 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/civhangar)
+"gW" = (
+/obj/structure/lattice,
+/obj/structure/marker_beacon/green,
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless,
+/area/space)
 "gZ" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -3451,7 +3457,7 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/shuttle/civvie/strelka)
 "sJ" = (
-/obj/machinery/computer/ship/engines{
+/obj/machinery/computer/ship/sensors{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4370,7 +4376,7 @@
 	},
 /obj/machinery/door/airlock/highsecurity,
 /obj/machinery/door/firedoor,
-/obj/map_helper/access_helper/airlock/station/command/bridge/strelka,
+/obj/map_helper/access_helper/airlock/station/command/strelka,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1/bridge/balista)
 "xY" = (
@@ -4609,7 +4615,7 @@
 	name = "Balista Airlock";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/command/bridge/strelka,
+/obj/map_helper/access_helper/airlock/station/command/strelka,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1/bridge/balista)
 "zq" = (
@@ -5644,7 +5650,7 @@
 	req_one_access = null
 	},
 /obj/machinery/door/firedoor,
-/obj/map_helper/access_helper/airlock/station/command/bridge/strelka,
+/obj/map_helper/access_helper/airlock/station/command/strelka,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck1/bridge/balista)
 "Fj" = (
@@ -5809,9 +5815,6 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
 "Gp" = (
-/obj/machinery/camera/network/security{
-	dir = 6
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
 	},
@@ -5834,6 +5837,7 @@
 	icon_state = "2-4"
 	},
 /obj/machinery/air_alarm/north_mount,
+/obj/machinery/camera/network/security,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck1/checkpoint)
 "Gs" = (
@@ -6387,7 +6391,6 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 10
 	},
-/obj/machinery/power/apc/south_mount,
 /obj/machinery/button/remote/blast_door{
 	id = "sfc_check_shutter2";
 	name = "Surface checkpoint shutter control";
@@ -8044,7 +8047,7 @@
 	req_one_access = null
 	},
 /obj/machinery/door/firedoor,
-/obj/map_helper/access_helper/airlock/station/command/bridge/strelka,
+/obj/map_helper/access_helper/airlock/station/command/strelka,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck1/bridge/balista)
 "SM" = (
@@ -8084,6 +8087,11 @@
 /obj/machinery/light/small/old,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/hangardeck)
+"Te" = (
+/obj/structure/lattice,
+/obj/structure/marker_beacon/green,
+/turf/simulated/floor/airless,
+/area/space)
 "Tj" = (
 /obj/machinery/computer/security,
 /obj/effect/floor_decal/borderfloor{
@@ -8565,6 +8573,10 @@
 "Vw" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck1/checkpoint)
+"Vy" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless,
+/area/space)
 "VC" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -30286,14 +30298,14 @@ vu
 vu
 iw
 ph
-vu
-vu
-SW
-vu
-vu
-SW
-vu
-vu
+Vy
+Vy
+gW
+Vy
+Vy
+gW
+Vy
+Vy
 qs
 qs
 gk
@@ -30323,14 +30335,14 @@ lM
 cu
 vK
 is
-vu
-vu
-SW
-vu
-vu
-SW
-vu
-vu
+Vy
+Vy
+Te
+Vy
+Vy
+Te
+Vy
+Vy
 ph
 iw
 vu

@@ -747,7 +747,9 @@
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/cargo/hangar)
 "dj" = (
-/obj/machinery/vending/boozeomat,
+/obj/machinery/vending/boozeomat{
+	req_access = null
+	},
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck3/maintenance/cargo)
 "dk" = (
@@ -1659,8 +1661,8 @@
 	name = "Bridge";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/command/bridge/strelka,
 /obj/machinery/door/firedoor/glass,
+/obj/map_helper/access_helper/airlock/station/command/strelka,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/bridge/blueshield)
 "gF" = (
@@ -1940,9 +1942,8 @@
 "ht" = (
 /obj/machinery/door/airlock/mining{
 	name = "Cargo Airlock";
-	req_one_access = null
+	req_one_access = list(31,47)
 	},
-/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -3448,6 +3449,14 @@
 /obj/machinery/light/small/old{
 	dir = 4
 	},
+/obj/item/stamp/denied{
+	pixel_y = 11;
+	pixel_x = -13
+	},
+/obj/item/stamp/rd{
+	pixel_y = 6;
+	pixel_x = -13
+	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/strelka/shipbase/deck3/bridge/rd)
 "mO" = (
@@ -3742,6 +3751,9 @@
 	},
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/bridge)
@@ -5166,6 +5178,9 @@
 	},
 /obj/map_helper/access_helper/airlock/station/science/genetics,
 /obj/machinery/door/firedoor/glass,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/science/test)
 "sU" = (
@@ -6341,6 +6356,18 @@
 /obj/structure/table/carbon/reinforced,
 /obj/machinery/photocopier/faxmachine{
 	department = "Research Director's Office"
+	},
+/obj/item/paper_bin{
+	pixel_x = 6;
+	pixel_y = 7
+	},
+/obj/item/pen/blue{
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/obj/item/pen/red{
+	pixel_x = -1;
+	pixel_y = 3
 	},
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck3/bridge/rd)
@@ -10672,6 +10699,18 @@
 /obj/machinery/photocopier/faxmachine{
 	department = "CMO's Office"
 	},
+/obj/item/paper_bin{
+	pixel_x = 6;
+	pixel_y = 7
+	},
+/obj/item/pen/blue{
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/obj/item/pen/red{
+	pixel_x = -1;
+	pixel_y = 3
+	},
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck3/bridge/md)
 "MH" = (
@@ -12979,6 +13018,13 @@
 	dir = 8
 	},
 /obj/machinery/keycard_auth,
+/obj/item/stamp/cmo{
+	pixel_x = -6;
+	pixel_y = 11
+	},
+/obj/item/stamp/denied{
+	pixel_y = 11
+	},
 /turf/simulated/floor/carpet/blue,
 /area/strelka/shipbase/deck3/bridge/md)
 "VG" = (
@@ -13182,7 +13228,6 @@
 	name = "Server Room";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/command/bridge/strelka,
 /obj/map_helper/access_helper/airlock/station/head_office/research_director,
 /obj/structure/cable/green{
 	icon_state = "4-8"
