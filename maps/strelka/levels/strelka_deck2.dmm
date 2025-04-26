@@ -9312,12 +9312,6 @@
 "Ch" = (
 /turf/simulated/wall/r_wall/prepainted/engineering/atmos,
 /area/strelka/shipbase/deck2/science/anomaly)
-"Ci" = (
-/obj/machinery/atmospherics/component/unary/engine/biggest{
-	dir = 4
-	},
-/turf/space/basic,
-/area/strelka/shipbase/deck2/engineering/nacelle2)
 "Cl" = (
 /obj/structure/lattice,
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -11325,6 +11319,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/emt/strelka)
+"IE" = (
+/obj/machinery/atmospherics/component/unary/engine/bigger{
+	dir = 4
+	},
+/turf/space/basic,
+/area/strelka/shipbase/deck2/engineering/nacelle)
 "IF" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-2"
@@ -13819,6 +13819,12 @@
 "QN" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck2/bridge/hos)
+"QO" = (
+/obj/machinery/atmospherics/component/unary/engine/bigger{
+	dir = 4
+	},
+/turf/space/basic,
+/area/strelka/shipbase/deck2/engineering/nacelle2)
 "QU" = (
 /obj/structure/closet/walllocker_double/north,
 /obj/item/clothing/mask/gas,
@@ -13843,12 +13849,6 @@
 	},
 /turf/simulated/floor/tiled/old_cargo,
 /area/shuttle/emt/strelka)
-"QX" = (
-/obj/machinery/atmospherics/component/unary/engine/biggest{
-	dir = 4
-	},
-/turf/space/basic,
-/area/strelka/shipbase/deck2/engineering/nacelle)
 "QZ" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/strelka/shipbase/deck2/bridge/hos)
@@ -28349,10 +28349,10 @@ KT
 KT
 gT
 gT
-QX
 gT
 gT
-QX
+gT
+gT
 KT
 vz
 Wy
@@ -28385,10 +28385,10 @@ Wy
 GL
 ZS
 ZS
-Ci
 ZS
 ZS
-Ci
+ZS
+ZS
 KT
 KT
 KT
@@ -28542,11 +28542,11 @@ KT
 KT
 KT
 gT
+IE
 gT
+IE
 gT
-gT
-gT
-gT
+IE
 KT
 YJ
 Wy
@@ -28578,11 +28578,11 @@ vz
 Wy
 vc
 ZS
+QO
 ZS
+QO
 ZS
-ZS
-ZS
-ZS
+QO
 KT
 KT
 KT
