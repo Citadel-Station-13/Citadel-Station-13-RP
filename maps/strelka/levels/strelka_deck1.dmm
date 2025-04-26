@@ -917,6 +917,9 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/strelka/shipbase/deck1/gateway)
+"eE" = (
+/turf/space/basic,
+/area/strelka/shipbase/deck1/fighterbay)
 "eH" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -1155,6 +1158,9 @@
 	},
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 30
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck1/checkpoint)
@@ -1432,6 +1438,9 @@
 /area/strelka/shipbase/deck1/pilot)
 "hY" = (
 /obj/machinery/lapvend,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 30
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/toolstorage)
 "ia" = (
@@ -1689,8 +1698,6 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck1/warden)
 "jn" = (
-/obj/structure/lattice,
-/obj/machinery/shield_diffuser,
 /turf/space/basic,
 /area/strelka/shipbase/deck1/fighterbaysec)
 "jq" = (
@@ -2098,6 +2105,7 @@
 /area/strelka/shipbase/deck1/hangardeck)
 "lA" = (
 /obj/machinery/shield_diffuser,
+/obj/structure/lattice,
 /turf/space/basic,
 /area/strelka/shipbase/deck1/fighterbaysec)
 "lB" = (
@@ -2136,6 +2144,10 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced,
+/obj/machinery/door/window/brigdoor/westright{
+	dir = 4;
+	name = "Firing Range Door"
+	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/strelka/shipbase/deck1/firingrange)
 "lO" = (
@@ -4492,6 +4504,7 @@
 /obj/machinery/camera/network/security{
 	dir = 1
 	},
+/obj/structure/lattice,
 /turf/space/basic,
 /area/strelka/shipbase/deck1/fighterbaysec)
 "yH" = (
@@ -5740,6 +5753,7 @@
 /area/strelka/shipbase/deck1/armory3)
 "FF" = (
 /obj/machinery/shield_diffuser,
+/obj/structure/lattice,
 /turf/space/basic,
 /area/strelka/shipbase/deck1/fighterbay)
 "FI" = (
@@ -6222,6 +6236,7 @@
 "ID" = (
 /obj/machinery/shield_diffuser,
 /obj/machinery/camera/network/security,
+/obj/structure/lattice,
 /turf/space/basic,
 /area/strelka/shipbase/deck1/fighterbay)
 "IG" = (
@@ -6361,6 +6376,26 @@
 /obj/item/cell/high,
 /obj/machinery/status_display{
 	pixel_y = 32
+	},
+/obj/item/radio{
+	pixel_y = 13;
+	pixel_x = -7
+	},
+/obj/item/radio{
+	pixel_y = 13;
+	pixel_x = -3
+	},
+/obj/item/radio{
+	pixel_y = 13;
+	pixel_x = 2
+	},
+/obj/item/radio{
+	pixel_y = 13;
+	pixel_x = 6
+	},
+/obj/item/radio{
+	pixel_y = 13;
+	pixel_x = 10
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/toolstorage)
@@ -7305,11 +7340,29 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/strelka/shipbase/deck1/gateway)
 "OI" = (
-/obj/machinery/light/small/old{
-	dir = 1
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1/bridge/balista)
+"OJ" = (
+/obj/effect/floor_decal/corner_techfloor_grid{
+	dir = 5
+	},
+/obj/structure/cable/blue{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -30
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/strelka/shipbase/deck1)
 "OP" = (
 /obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/reinforced,
@@ -7973,7 +8026,8 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 4
+	dir = 4;
+	req_one_access = list(1,67)
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/fighterbaysec)
@@ -27258,7 +27312,7 @@ Nv
 Nv
 fz
 zf
-Tm
+ux
 fV
 yH
 ct
@@ -29765,14 +29819,14 @@ vu
 vu
 vu
 qs
-jn
-jn
+FI
+FI
 qs
-jn
-jn
+FI
+FI
 qs
-jn
-jn
+FI
+FI
 qs
 qs
 Ey
@@ -29996,14 +30050,14 @@ xF
 cu
 vK
 is
-Vn
-Vn
+eE
+eE
 is
-Vn
-Vn
+eE
+eE
 is
-Vn
-Vn
+eE
+eE
 is
 vu
 vu
@@ -30153,14 +30207,14 @@ vu
 vu
 vu
 qs
-lA
-lA
+jn
+jn
 qs
-lA
-lA
+jn
+jn
 qs
-lA
-lA
+jn
+jn
 qs
 qs
 Mk
@@ -30190,14 +30244,14 @@ lH
 cu
 vK
 is
-FF
-FF
+eE
+eE
 is
-FF
-FF
+eE
+eE
 is
-FF
-FF
+eE
+eE
 is
 vu
 vu
@@ -30347,14 +30401,14 @@ vu
 vu
 iw
 ph
-lA
-lA
+jn
+jn
 gW
-lA
-lA
+jn
+jn
 gW
-lA
-lA
+jn
+jn
 qs
 qs
 gk
@@ -30384,14 +30438,14 @@ lM
 cu
 vK
 is
-FF
-FF
+eE
+eE
 Te
-FF
-FF
+eE
+eE
 Te
-FF
-FF
+eE
+eE
 ph
 iw
 vu
@@ -30541,14 +30595,14 @@ vu
 vu
 vu
 iw
-lA
-lA
+jn
+jn
 FI
-lA
-lA
+jn
+jn
 FI
-lA
-lA
+jn
+jn
 qs
 qs
 gk
@@ -30578,14 +30632,14 @@ My
 cu
 vK
 is
-FF
-FF
+eE
+eE
 YQ
-FF
-FF
+eE
+eE
 YQ
-FF
-FF
+eE
+eE
 iw
 vu
 vu
@@ -30758,7 +30812,7 @@ Mk
 Mk
 cm
 VW
-vm
+OJ
 VN
 XX
 De

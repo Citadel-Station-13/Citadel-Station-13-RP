@@ -83,3 +83,10 @@
 	var/poison_type = "fuel"	// The reagent that gets injected when it attacks.
 	var/poison_chance = 35			// Chance for injection to occur.
 	var/poison_per_bite = 5			// Amount added per injection.
+
+/obj/structure/barricade/cutout/cargopilot
+	name = "Cargo shuttle Pilot Galaxy III"
+	desc = "A small, normal-looking drone. It pilots the Cargo Supply shuttle... Yep, no MK2 pilot here..."
+	icon = 'icons/mob/robots.dmi'
+	icon_state = "corrupt-repairbot"
+	icon_living = "corrupt-repairbot"

@@ -1,5 +1,5 @@
 /obj/overmap/entity/visitable/ship/strelka
-	name = "NSV Strelka"	// Name of the location on the overmap.
+	name = "NEV Strelka"	// Name of the location on the overmap.
 	desc = "The Strelka is one of the many ships that is a part of the NDV Marksman's fleet in this sector"
 
 	color = "#2c7bac"
@@ -33,7 +33,7 @@
 	announce_atc(AM,going = TRUE)
 
 /obj/overmap/entity/visitable/ship/strelka/proc/announce_atc(var/atom/movable/AM, var/going = FALSE)
-	var/message = "Sensor contact for vessel '[AM.name]' has [going ? "left" : "entered"] the strelka's operation area."
+	var/message = "Sensor contact for vessel '[AM.name]' has [going ? "left" : "entered"] the NEV Strelka's operation area."
 	//For landables, we need to see if their shuttle is cloaked
 	if(istype(AM, /obj/overmap/entity/visitable/ship/landable))
 		var/obj/overmap/entity/visitable/ship/landable/SL = AM //Phew

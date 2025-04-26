@@ -822,6 +822,7 @@
 	id = "dorm1";
 	specialfunctions = 4
 	},
+/obj/structure/curtain/open/bed,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/dormhallway/Dorm/Room4)
 "dJ" = (
@@ -855,6 +856,9 @@
 	},
 /obj/machinery/camera/network/security{
 	dir = 4
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = -30
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/strelka/shipbase/deck4/bar)
@@ -1002,6 +1006,9 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/hallway)
 "eG" = (
@@ -1105,6 +1112,7 @@
 	id = "dorm3";
 	specialfunctions = 4
 	},
+/obj/structure/curtain/open/black,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/dormhallway/Dorm/Room2)
 "fa" = (
@@ -1115,6 +1123,9 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = 31
+	},
 /turf/simulated/floor/wood/broken,
 /area/strelka/shipbase/deck4/bar)
 "fc" = (
@@ -1367,6 +1378,7 @@
 	id = "dorm4";
 	specialfunctions = 4
 	},
+/obj/structure/curtain/open/bed,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/dormhallway/Dorm)
 "ga" = (
@@ -1555,6 +1567,9 @@
 /obj/item/bedsheet/ian{
 	layer = 3.8
 	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = 30
+	},
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck4/bridge/hop/room)
 "gP" = (
@@ -1685,6 +1700,10 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/spline/fancy/wood,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = 1;
+	pixel_y = -30
+	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/dormhallway/Dorm)
 "ho" = (
@@ -2024,6 +2043,9 @@
 /area/strelka/shipbase/deck4/bridge)
 "ja" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = -31
+	},
 /turf/simulated/floor/lino,
 /area/strelka/shipbase/deck4/bar/back)
 "je" = (
@@ -2208,6 +2230,9 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = -30
+	},
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck4/bridge/captain)
 "jN" = (
@@ -2240,6 +2265,10 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/spline/fancy/wood,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = 1;
+	pixel_y = -30
+	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/dormhallway/Dorm/Room2)
 "jW" = (
@@ -2291,6 +2320,13 @@
 /obj/structure/table/bench/steel,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck4/bridge)
+"kp" = (
+/obj/structure/table/bench/wooden,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = 31
+	},
+/turf/simulated/floor/wood/indoors,
+/area/strelka/shipbase/deck4/fitness)
 "kr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -2770,6 +2806,7 @@
 	specialfunctions = 4
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/structure/curtain/open/bed,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/dormhallway/Dorm/Room3)
 "mq" = (
@@ -3152,6 +3189,18 @@
 	},
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck4/hallway/botany)
+"nN" = (
+/obj/structure/window/reinforced/survival_pod{
+	dir = 4
+	},
+/obj/machinery/light/fairy{
+	dir = 4
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = 31
+	},
+/turf/simulated/floor/wood/sif,
+/area/strelka/shipbase/deck4/chapel)
 "nQ" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 4
@@ -3497,6 +3546,7 @@
 "pe" = (
 /obj/spawner/window/low_wall/full/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
+/obj/structure/curtain/open/black,
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck4/bridge/captain/room)
 "pf" = (
@@ -3687,6 +3737,9 @@
 	dir = 8
 	},
 /obj/landmark/spawnpoint/overflow/station,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = -30
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/strelka/shipbase/deck4/bar)
 "pU" = (
@@ -3855,6 +3908,7 @@
 "qG" = (
 /obj/spawner/window/low_wall/full/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
+/obj/structure/curtain/open/black,
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/strelka/shipbase/deck4/dormhallway/Dorm/Room3)
 "qH" = (
@@ -3936,6 +3990,10 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/spline/fancy/wood,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = 1;
+	pixel_y = -30
+	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/dormhallway/Dorm/Room3)
 "rm" = (
@@ -3956,6 +4014,9 @@
 "rn" = (
 /obj/structure/bed/pod,
 /obj/item/bedsheet/captain,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = 30
+	},
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck4/bridge/captain/room)
 "rr" = (
@@ -4116,6 +4177,18 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/arrival)
+"rS" = (
+/obj/structure/bed/chair/sofa/brown/left{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 6
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = 33
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/strelka/shipbase/deck4/bar)
 "rU" = (
 /obj/structure/table/hardwoodtable,
 /obj/machinery/light/fairy{
@@ -4332,6 +4405,7 @@
 "sW" = (
 /obj/spawner/window/low_wall/full/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
+/obj/structure/curtain/open/black,
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/strelka/shipbase/deck4/dormhallway/Dorm/Room2)
 "sZ" = (
@@ -5062,6 +5136,7 @@
 "wG" = (
 /obj/spawner/window/low_wall/full/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
+/obj/structure/curtain/open/black,
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/strelka/shipbase/deck4/dormhallway/Dorm/Room4)
 "wI" = (
@@ -5083,6 +5158,7 @@
 "wV" = (
 /obj/spawner/window/low_wall/full/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
+/obj/structure/curtain/open/black,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck4/dormhallway/Dorm/Room3)
 "wW" = (
@@ -5123,6 +5199,9 @@
 /obj/machinery/camera/network/security,
 /obj/machinery/door/firedoor/glass{
 	dir = 4
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 21
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/hallway)
@@ -5838,6 +5917,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/fitness)
+"Bh" = (
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 21
+	},
+/turf/simulated/floor/wood/indoors,
+/area/strelka/shipbase/deck4/dormhallway)
 "Bj" = (
 /obj/structure/lattice,
 /turf/simulated/floor/holofloor/reinforced,
@@ -5930,6 +6015,7 @@
 "BN" = (
 /obj/spawner/window/low_wall/full/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
+/obj/structure/curtain/open/black,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck4/bridge/hop/room)
 "BO" = (
@@ -6068,6 +6154,10 @@
 	pixel_y = -23;
 	req_one_access = list(25);
 	dir = 1
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -30;
+	pixel_x = -12
 	},
 /turf/simulated/floor/bmarble,
 /area/strelka/shipbase/deck4/bar)
@@ -6402,6 +6492,9 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -31
+	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/library)
 "Ek" = (
@@ -6576,6 +6669,9 @@
 	},
 /obj/machinery/camera/network/security{
 	dir = 8
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = 31
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/bar)
@@ -7008,6 +7104,17 @@
 	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/fitness)
+"HK" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = -31
+	},
+/turf/simulated/floor/wood/indoors,
+/area/strelka/shipbase/deck4/bar)
 "HL" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -7270,6 +7377,9 @@
 	},
 /obj/item/stamp/denied{
 	pixel_x = 6
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = -30
 	},
 /turf/simulated/floor/carpet/patterened/blue/alt,
 /area/strelka/shipbase/deck4/bridge/hop/office)
@@ -7666,6 +7776,10 @@
 "Kp" = (
 /obj/structure/table/bench/wooden,
 /obj/effect/floor_decal/spline/fancy/wood,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = 1;
+	pixel_y = -30
+	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/dormhallway/Dorm/Room4)
 "Kq" = (
@@ -7869,6 +7983,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck4/bridge)
+"Lo" = (
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = 31
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/shipbase/deck4/dormhallway/pool)
 "Lq" = (
 /obj/machinery/power/apc/north_mount,
 /obj/structure/cable/orange{
@@ -8498,6 +8618,7 @@
 "Oz" = (
 /obj/spawner/window/low_wall/full/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
+/obj/structure/curtain/open/black,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck4/dormhallway/Dorm/Room2)
 "OA" = (
@@ -8709,6 +8830,7 @@
 "PH" = (
 /obj/spawner/window/low_wall/full/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
+/obj/structure/curtain/open/black,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck4/dormhallway/Dorm/Room4)
 "PN" = (
@@ -9108,6 +9230,9 @@
 	dir = 4
 	},
 /obj/landmark/spawnpoint/overflow/station,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = 31
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/strelka/shipbase/deck4/bar)
 "Sn" = (
@@ -9145,6 +9270,7 @@
 "Su" = (
 /obj/spawner/window/low_wall/full/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
+/obj/structure/curtain/open/black,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck4/dormhallway/Dorm)
 "Sw" = (
@@ -24215,7 +24341,7 @@ Cq
 Vl
 tC
 Wp
-kK
+Lo
 nV
 jl
 rd
@@ -25031,7 +25157,7 @@ JE
 LO
 jC
 QY
-tY
+kp
 Qx
 jR
 jR
@@ -26355,7 +26481,7 @@ mP
 rs
 go
 Ug
-Ue
+Bh
 Um
 Ue
 be
@@ -28681,7 +28807,7 @@ yW
 WM
 Al
 ri
-ri
+HK
 zc
 rX
 VU
@@ -31005,7 +31131,7 @@ jR
 eh
 oP
 LY
-kf
+rS
 gQ
 Sm
 yc
@@ -31033,7 +31159,7 @@ pj
 Ob
 dW
 Ob
-dW
+nN
 Ob
 dW
 WV
