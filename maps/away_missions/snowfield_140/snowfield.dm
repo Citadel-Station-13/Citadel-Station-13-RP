@@ -1,3 +1,20 @@
+/datum/map/gateway/snowfield_140
+	id = "snowfield_140"
+	name = "Gateway - Snow Field"
+	width = 140
+	height = 140
+	levels = list(
+		/datum/map_level/gateway/snowfield_140,
+	)
+
+/datum/map_level/gateway/snowfield_140
+	id = "Snowfield_140"
+	name = "Gateway - Snow Field"
+	display_name = "Snow Field"
+	path = "maps/away_missions/snowfield_140/levels/snowfield.dmm"
+	base_turf = /turf/simulated/floor/outdoors/snow
+	base_area = /area/awaymission/snowfield/outside
+
 /obj/overmap/entity/visitable/sector/gateway/snowfield
 	initial_generic_waypoints = list("tether_excursion_snowfield")
 	in_space = 0

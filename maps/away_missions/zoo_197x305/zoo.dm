@@ -1,3 +1,23 @@
+//TODO: This map is a relic of a bygone age (Vorecode). It has a few broken mobs and is too big for our current map system. But it'd be really cool to have.
+
+/datum/map/gateway/zoo_197x305
+	id = "zoo_197x305"
+	name = "Gateway - Zoo"
+	width = 197
+	height = 305
+	levels = list(
+		/datum/map_level/gateway/zoo_197x305,
+	)
+
+/datum/map_level/gateway/zoo_197x305
+	id = "Zoo197x305"
+	name = "Gateway - Zoo"
+	display_name = "Zoo"
+	path = "maps/away_missions/zoo_197x305/levels/zoo.dmm"
+	base_turf = /turf/space
+	base_area = /area/space
+
+
 // -- Areas -- //
 
 /area/awaymission/zoo
