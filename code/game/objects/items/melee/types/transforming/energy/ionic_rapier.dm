@@ -14,6 +14,7 @@
 	lrange = 2
 	lpower = 2
 	lcolor = "#0000FF"
+	can_combine = FALSE
 
 	passive_parry = /datum/passive_parry{
 		parry_chance_default = 60;
