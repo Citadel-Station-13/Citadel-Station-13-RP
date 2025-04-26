@@ -34,7 +34,10 @@
 
 /obj/item/gun/launcher/proc/launch_throwable(datum/gun_firing_cycle/cycle, atom/movable/launching)
 	update_release_force(launching)
-	launching.forceMove(cycle.firing_atom)
+	var/turf/T = cycle.firing_atom //Unlikely if there ever is a turf that could initiate the fire, but just to be sure
+	if (!istype(T))
+		T = get_turf(cycle.firing_atom)
+	launching.forceMove(T)
 	launching.throw_at_old(cycle.original_target, throw_distance, release_force, cycle.firing_actor?.performer)
 
 /**
