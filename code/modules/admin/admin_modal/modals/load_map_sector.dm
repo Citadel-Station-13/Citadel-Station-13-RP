@@ -129,7 +129,7 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 		if("mapOrientation")
 			if(!(params["setTo"] in GLOB.cardinal))
 				return
-			buffer.orientation = params["setTo"]
+			buffer.load_orientation = params["setTo"]
 			update_map_data()
 			. = TRUE
 		if("mapCenter")
@@ -244,7 +244,7 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 /datum/admin_modal/load_map_sector/proc/map_data()
 	return list(
 		"name" = buffer.name,
-		"orientation" = buffer.orientation,
+		"orientation" = buffer.load_orientation,
 		"center" = buffer.center,
 	)
 

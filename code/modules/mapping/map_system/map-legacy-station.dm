@@ -1,21 +1,27 @@
+//*****  HEY! LISTEN! *****//
+//* This file is mostly old code. It is **not** allowed to blindly copypaste these into the main map system.
+//* TODO's have been left to annotate what to do with the variables.
+
 /datum/map/station
 	//! legacy below
 
 	var/full_name = "Unnamed Map"
 
+	// TODO: these should all use traits
 	// Automatically populated lists made static for faster lookups
 	var/list/station_levels = list() // Z-levels the station exists on
 	var/list/admin_levels = list()   // Z-levels for admin functionality (Centcom, shuttle transit, etc)
 	var/list/contact_levels = list() // Z-levels that can be contacted from the station, for eg announcements
 	var/list/player_levels = list()  // Z-levels a character can typically reach
 	// End Static Lists
-
 	// Z-levels available to various consoles, such as the crew monitor. Defaults to station_levels if unset.
 	var/list/map_levels
 
+	// TODO: use world location instead or a station prefix
 	// E-mail TLDs to use for NTnet modular computer e-mail addresses
 	var/list/usable_email_tlds = list("freemail.nt")
 
+	// TODO: we don't want a flat list only, maybe
 	var/list/allowed_jobs = list()	// Job datums to use.
 									// Works a lot better so if we get to a point where three-ish maps are used
 									// We don't have to C&P ones that are only common between two of them
@@ -23,12 +29,16 @@
 									// Also including them lets us override already created jobs, letting us keep the datums to a minimum mostly.
 									// This is probably a lot longer explanation than it needs to be.
 
+	// TODO: re-evaluate holomap
 	var/list/holomap_offset_x = list()
 	var/list/holomap_offset_y = list()
 	var/list/holomap_legend_x = list()
 	var/list/holomap_legend_y = list()
+
+	// TODO: re-evaluate meteor strike
 	var/list/meteor_strike_areas		 // Areas meteor strikes may choose to hit.
 
+	// TODO: these should maybe all be structs (world location takes some of them other like command maps are different)
 	var/station_name  = "BAD Station"
 	var/station_short = "Baddy"
 	var/dock_name	  = "THE PirateBay"
@@ -49,18 +59,23 @@
 	var/emergency_shuttle_called_message
 	var/emergency_shuttle_recall_message
 
+	// TODO: eventually, camera networks will be dynamic
 	var/list/station_networks = list()		// Camera networks that will show up on the console.
 	var/list/secondary_networks = list()	// Camera networks that exist, but don't show on regular camera monitors.
 
+	// TODO: this should be dynamic
 	var/bot_patrolling = TRUE				// Determines if this map supports automated bot patrols
 
+	// TODO: this should use new spawnpoint system
 	var/allowed_spawns = list("Arrivals Shuttle","Gateway", "Cryogenic Storage", "Cyborg Storage")
 
 	// Persistence!
+	// TODO: get rid of this, no more persisting spawnpoints until characters v2
 	var/datum/spawnpoint/spawnpoint_died = /datum/spawnpoint/arrivals	// Used if you end the round dead.
 	var/datum/spawnpoint/spawnpoint_left = /datum/spawnpoint/arrivals	// Used of you end the round at centcom.
 	var/datum/spawnpoint/spawnpoint_stayed = /datum/spawnpoint/cryo		// Used if you end the round on the station.
 
+	// TODO: should be a datum or something
 	var/use_overmap = 0			// If overmap should be used (including overmap space travel override)
 	var/overmap_size = 20		// Dimensions of overmap zlevel if overmap is used.
 	var/overmap_event_areas = 0	// How many event "clouds" will be generated
@@ -105,17 +120,16 @@
 		),
 	)
 
-	// var/lobby_icon = 'icons/misc/title.dmi'			// The icon which contains the lobby image(s)
-	// var/list/lobby_screens = list("mockingjay00")	// The list of lobby screen to pick() from. If left unset the first icon state is always selected.
-
 	var/default_law_type = /datum/ai_laws/nanotrasen	// The default lawset use by synth units, if not overriden by their laws var.
 
+	// TODO: new map unit test system
 	// Some maps include areas for that map only and don't exist when not compiled, so Travis needs this to learn of new areas that are specific to a map.
 	var/list/unit_test_exempt_areas = list()
 	var/list/unit_test_exempt_from_atmos = list()
 	var/list/unit_test_exempt_from_apc = list()
 	var/list/unit_test_z_levels	// To test more than Z1, set your z-levels to test here.
 
+	// TODO: what is this?
 	var/list/empty_levels
 
 /datum/map/station/New()

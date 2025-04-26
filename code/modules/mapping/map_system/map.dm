@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
+
 /**
  * # /datum/map
  *
@@ -34,10 +37,6 @@
 	/// * a struct is required. if no struct is created, we must be a single-level, which will be auto-structed.
 	var/datum/overmap_initializer/overmap_initializer
 
-	//* Structs *//
-	/// automatically make a struct on load
-	var/create_struct = FALSE
-
 	/// override map id for persistence so two maps are considered the same
 	/// two maps should **never** be loaded at the same time with the same persistence ID!
 	var/persistence_id
@@ -46,29 +45,64 @@
 	/// in-code category
 	var/category = "Misc"
 	/// /datum/map_level datums. starts off as paths, inits later.
-	//  todo: for now, this must be in sequential order from bottom to top for multiz maps. this will be fixed when we rework our multiz stack system.
+	/// * This must be ordered in a way where a level above another level must never be below that level in order.
+	///   This means that you can go 1-1-1, 1-1-2, 1-2-1, 1-2-2, for a 1x2x2,
+	///   or 1-1-1, 1-2-1, 1-1-2, 1-2-2.
+	/// * It is recommended to order this based on stacks, so 1-1-1, 1-1-2, 1-2-1, 1-2-2.
+	/// * Automatic ordering will be enforced unless specifically overridden, but we still prefer you order it properly
+	///   for style / review reasons.
 	var/list/datum/map_level/levels
 	/// dependencies by id or path of other maps - these are critical maps to always load in
 	var/list/dependencies
 	/// lateload by id or path of other maps - these are non-critical maps to always load in
 	var/list/lateload
-	/// are we loaded in
-	var/tmp/loaded = FALSE
 	/// are we modified from our prototype?
 	var/tmp/modified = FALSE
 	/// declared width = must match all levels
 	var/width
 	/// declared height - must match all levels
 	var/height
-	/// crop if too big, instead of panic
-	var/crop = FALSE
-	/// center us if we're smaller than world size
-	var/center = TRUE
+
+	//* Load Options *//
 	/// orientation - defaults to south
-	var/orientation = SOUTH
+	var/load_orientation = SOUTH
+	/// crop if too big, instead of panic
+	var/load_auto_crop = FALSE
+	/// center us if we're smaller than world size
+	var/load_auto_center = TRUE
 	/// use map-wide area cache instead of individual level area caches; has no effect on submap loading, only level loading.
 	/// don't touch this unless you know what you're doing.
-	var/bundle_area_cache = TRUE
+	var/load_shared_area_cache = TRUE
+
+	//* World State *//
+	/// are we loaded in
+	/// * Once loaded in, we can never be unreferenced / deleted. SSmapping now owns the map permanently, even if unloaded again.
+	var/tmp/loaded = FALSE
+	/// Quick access - loaded indices
+	var/tmp/list/loaded_z_indices
+	/// list of stringified z coordinates to the level datum
+	///
+	/// * "x,y,z" is the format
+	var/tmp/list/loaded_z_grid
+	/// total width of all levels
+	///
+	/// * if a level is at 0,0,0 and another is at 5,0,0 with nothing in between, our width is 5
+	var/tmp/loaded_sparse_size_x
+	/// total height of all levels
+	///
+	/// * if a level is at 0,0,0 and another is at 0,5,0 with nothing in between, our height is 5
+	var/tmp/loaded_sparse_size_y
+	/// total depth of all levels
+	///
+	/// * if a level is at 0,0,0 and another is at 0,0,5 with nothing in between, our depth is 5
+	var/tmp/loaded_sparse_size_z
+
+	//* Bindings - Overmaps *//
+	/// the overmap location that is binding to us
+	///
+	/// * If this exists, it will be deleted if we are somehow deleted. This can result
+	///   in some very weird things.
+	var/datum/overmap_location/map/overmap_binding
 
 	//! legacy : spawn these shuttle datums on load
 	var/list/legacy_assert_shuttle_datums
@@ -113,10 +147,10 @@
 	.["lateload"] = lateload
 	.["width"] = width
 	.["height"] = height
-	.["crop"] = crop
-	.["center"] = center
-	.["orientation"] = orientation
-	.["bundle_area_cache"] = bundle_area_cache
+	.["load_auto_crop"] = load_auto_crop
+	.["load_auto_center"] = load_auto_center
+	.["load_orientation"] = load_orientation
+	.["load_shared_area_cache"] = load_shared_area_cache
 
 /datum/map/deserialize(list/data)
 	if(loaded)
@@ -141,35 +175,18 @@
 	lateload = data["lateload"]
 	width = data["width"]
 	height = data["height"]
-	if(!isnull(data["crop"]))
-		crop = data["crop"]
-	if(!isnull(data["center"]))
-		center = data["center"]
-	if(!isnull(data["orientation"]))
-		orientation = data["orientation"]
-	if(!isnull(data["bundle_area_cache"]))
-		bundle_area_cache = data["bundle_area_cache"]
+	if(!isnull(data["load_auto_crop"]))
+		load_auto_crop = data["load_auto_crop"]
+	if(!isnull(data["load_auto_center"]))
+		load_auto_center = data["load_auto_center"]
+	if(!isnull(data["load_orientation"]))
+		load_orientation = data["load_orientation"]
+	if(!isnull(data["load_shared_area_cache"]))
+		load_shared_area_cache = data["load_shared_area_cache"]
 
-/**
- * loads any lazyloaded stuff we need; called before we load in
- */
-/datum/map/proc/prime()
-	for(var/i in 1 to length(levels))
-		if(ispath(levels[i]))
-			var/datum/map_level/level_path = levels[i]
-			var/datum/map_level/level_instance = new level_path(src)
-			level_instance.hardcoded = TRUE // todo: map can just also not be hardcoded
-			levels[i] = level_instance
-			if(levels_match_mangling_id)
-				level_instance.mangling_id = mangling_id || id
-
-/**
- * Get levels sorted into z-loading order
- */
-/datum/map/proc/get_sorted_levels()
-	// this only works because tim_sort is stable;
-	// cmp_map_level_load_sequence doesn't touch order if structs aren't active.
-	return tim_sort(levels.Copy(), /proc/cmp_map_level_load_sequence)
+/datum/map/clone()
+	. = ..()
+	#warn impl
 
 /**
  * validates that everything works
@@ -233,50 +250,22 @@
 			out_errors?.Add("map: Index [level_idx] has id of '[level.id]' which is already taken by a currently loaded level.")
 
 /**
- * primary station map
- *
- * this is what's loaded at init. this determines what other maps initially load.
+ * loads any lazyloaded stuff we need; called before we load in
  */
-/datum/map/station
-	abstract_type = /datum/map/station
-	category = "Stations"
-
-	/// force world to be bigger width
-	var/world_width
-	/// force world to be bigger height
-	var/world_height
-
-	/// allow random picking if no map set
-	/// used to exclude indev maps
-	var/allow_random_draw = TRUE
-
-	//* Game World *//
-	/// world_location's this is considered
-	/// set to id, or typepath to parse into id in New()
-	///
-	/// * if null, the storyteller system will be inactive.
-	/// * if null, many game systems might be inoperational, including things like supply factions.
-	var/list/world_location_ids = list(
-		/datum/world_location/frontier::id,
-	)
-	/// world faction this is primarily under the control of
-	/// set to id, or typepath to parse into id in New()
-	/// this is considered the primary, player-facing faction of the round, with other factions being 'off'-maps.
-	///
-	/// * if null, the storyteller system will be inactive.
-	/// * seriously you don't want this to be null.
-	var/world_faction_id = /datum/world_faction/corporation/nanotrasen::id
+/datum/map/proc/prime()
+	for(var/i in 1 to length(levels))
+		if(ispath(levels[i]))
+			var/datum/map_level/level_path = levels[i]
+			var/datum/map_level/level_instance = new level_path(src)
+			level_instance.hardcoded = TRUE // todo: map can just also not be hardcoded
+			levels[i] = level_instance
+			if(levels_match_mangling_id)
+				level_instance.mangling_id = mangling_id || id
 
 /**
- * standard sector / planet maps
+ * Get levels sorted into z-loading order
  */
-/datum/map/sector
-	category = "Sectors"
-	abstract_type = /datum/map/sector
-
-/**
- * custom maps
- */
-/datum/map/custom
-	center = TRUE
-	orientation = SOUTH
+/datum/map/proc/get_sorted_levels()
+	// this only works because tim_sort is stable;
+	// cmp_map_level_load_sequence doesn't touch order if structs aren't active.
+	return tim_sort(levels.Copy(), /proc/cmp_map_level_load_sequence)

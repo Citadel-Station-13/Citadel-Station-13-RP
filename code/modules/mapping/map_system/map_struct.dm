@@ -24,54 +24,6 @@
 	/// default ceiling height
 	var/ceiling_height_default = 5
 
-	//* State *//
-	/// the real zlevel indices
-	///
-	/// * this is an ordered list, with indices the same as [levels]
-	var/tmp/list/z_indices
-
-	//* Generated Data *//
-	/// list of stringified z coordinates to the level datum
-	///
-	/// * "x,y,z" is the format
-	var/tmp/list/z_grid
-	/// total width of all levels
-	///
-	/// * if a level is at 0,0,0 and another is at 5,0,0 with nothing in between, our width is 5
-	var/tmp/sparse_size_x
-	/// total height of all levels
-	///
-	/// * if a level is at 0,0,0 and another is at 0,5,0 with nothing in between, our height is 5
-	var/tmp/sparse_size_y
-	/// total depth of all levels
-	///
-	/// * if a level is at 0,0,0 and another is at 0,0,5 with nothing in between, our depth is 5
-	var/tmp/sparse_size_z
-
-	//* Internal *//
-	/// Regex used to parse grid lists for `x,y,z` coord's
-	var/static/regex/grid_parser = new(@"(-?[\d]+),(-?[\d)]+),(-?[\d]+)", "g")
-
-	//* Bindings - Overmaps *//
-	/// the overmap location that is binding to us
-	///
-	/// * If this exists, it will be deleted if we are somehow deleted. This can result
-	///   in some very weird things.
-	var/datum/overmap_location/struct/overmap_binding
-
-/datum/map_struct/Destroy(force)
-	if(constructed)
-		. = QDEL_HINT_LETMELIVE
-		CRASH("Attempted to destroy a constructed map_struct.")
-	QDEL_NULL(overmap_binding)
-	return ..()
-
-/datum/map_struct/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
-	switch(var_name)
-		if(NAMEOF(src, grid_parser))
-			return FALSE
-	return ..()
-
 /**
  * validates our struct
  * * can be called before actually trying to construct
