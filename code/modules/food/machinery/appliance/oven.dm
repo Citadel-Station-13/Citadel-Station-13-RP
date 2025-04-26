@@ -34,7 +34,8 @@
 		"Kebab" = /obj/item/reagent_containers/food/snacks/variable/kebab,
 		"Waffles" = /obj/item/reagent_containers/food/snacks/variable/waffles,
 		"Cookie" = /obj/item/reagent_containers/food/snacks/variable/cookie,
-		"Donut" = /obj/item/reagent_containers/food/snacks/variable/donut
+		"Donut" = /obj/item/reagent_containers/food/snacks/variable/donut,
+		"Pet Treat" = /obj/item/reagent_containers/food/snacks/variable/pettreat
 	)
 
 	var/static/list/radial_menu = list(
@@ -47,7 +48,8 @@
 		"Kebab" = image(icon = 'icons/obj/food.dmi', icon_state = "kabob"),
 		"Waffles" = image(icon = 'icons/obj/food.dmi', icon_state = "waffles"),
 		"Cookie" = 	image(icon = 'icons/obj/food.dmi', icon_state = "COOKIE!!!"),
-		"Donut" = image(icon = 'icons/obj/food.dmi', icon_state = "donut1")
+		"Donut" = image(icon = 'icons/obj/food.dmi', icon_state = "donut1"),
+		"Pet Treat" = image(icon = 'icons/obj/food.dmi', icon_state = "TREAT!!!")
 	)
 
 /obj/machinery/appliance/cooker/oven/Initialize(mapload)

@@ -1,7 +1,7 @@
-/// Convert deciseconds to ticks
-#define DS2TICKS(DS) ((DS)/world.tick_lag)
-/// Convert ticks to deciseconds
-#define TICKS2DS(T) ((T) TICKS)
+#define MILLISECONDS *0.01
+
+#define DECISECONDS *1 //the base unit all of these defines are scaled by, because byond uses that as a unit of measurement for some fucking reason
+
 #define SECOND *10
 #define SECONDS *10
 
@@ -16,6 +16,13 @@
 
 #define TICK *world.tick_lag
 #define TICKS *world.tick_lag
+
+/// Convert deciseconds to ticks
+#define DS2TICKS(DS) ((DS)/world.tick_lag)
+/// Convert ticks to deciseconds
+#define TICKS2DS(T) ((T) TICKS)
+
+#define MS2DS(T) ((T) MILLISECONDS)
 
 #define GAMETIMESTAMP(format, wtime) time2text(wtime, format)
 #define WORLDTIME2TEXT(format) GAMETIMESTAMP(format, world.time)

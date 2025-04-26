@@ -103,6 +103,8 @@
 		/datum/action/holosphere/change_loadout
 	)
 
+	hunger_slowdown_multiplier = 0.5 // they can't eat and hitting 0 hunger makes them absolutely defenceless, no need to punish them much for this
+
 	var/list/chameleon_gear = list(
 		SLOT_ID_UNIFORM = /obj/item/clothing/under/chameleon/holosphere,
 		SLOT_ID_SUIT    = /obj/item/clothing/suit/chameleon/holosphere,
@@ -140,6 +142,7 @@
 	transform_component = H.AddComponent(/datum/component/custom_transform, holosphere_shell, null, null, FALSE)
 	holosphere_shell.transform_component = transform_component
 	holosphere_shell.hologram = H
+	holosphere_shell.copy_iff_factions(H)
 
 /datum/species/holosphere/on_remove(mob/living/carbon/human/H)
 	. = ..()

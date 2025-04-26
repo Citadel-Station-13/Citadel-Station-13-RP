@@ -56,7 +56,7 @@
 /obj/machinery/appliance/cooker/fryer/update_cooking_power()
 	..()//In addition to parent temperature calculation
 	//Fryer efficiency also drops when oil levels arent optimal
-	var/oil_level =  oil.reagent_volumes[/datum/reagent/nutriment/triglyceride/oil::id] || 0
+	var/oil_level =  oil.reagent_volumes["tallow"] || 0
 
 	var/oil_efficiency = 0
 	if (oil_level)

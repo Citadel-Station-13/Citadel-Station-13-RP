@@ -45,6 +45,10 @@ export const ICPrinter = (props, context) => {
 };
 
 const canBuild = (item, data) => {
+  if (!item) {
+    return false;
+  }
+
   if (!item.can_build) {
     return false;
   }

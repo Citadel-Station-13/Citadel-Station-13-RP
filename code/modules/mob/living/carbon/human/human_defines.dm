@@ -144,6 +144,8 @@
 	var/impersonate_bodytype_legacy
 	/// for impersonating a bodytype but actually.
 	var/impersonate_bodytype
+	/// for impersonating a species
+	var/datum/species/impersonate_species_for_iconbase
 	/// Shadekin abilities/potentially other species-based?
 	var/ability_flags = NONE
 	/// Suit sensor loadout pref.

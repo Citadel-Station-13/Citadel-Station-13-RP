@@ -1,0 +1,881 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ao" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/random/drinkbottle,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"aA" = (
+/obj/effect/floor_decal/industrial/loading{
+	dir = 1
+	},
+/obj/random/multiple/corp_crate,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"bq" = (
+/obj/spawner/corpse/pirate/ranged,
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"bW" = (
+/obj/structure/table/bench/standard,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"ck" = (
+/mob/living/simple_mob/humanoid/merc/ranged/deagle,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"dx" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"es" = (
+/obj/machinery/door/window/brigdoor/westleft,
+/obj/spawner/corpse/vox/boarder_m,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"gv" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/voidcraft,
+/area/submap/skyplanet/poi/mercbase)
+"gz" = (
+/mob/living/simple_mob/humanoid/merc/ranged/poi,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/mercbase)
+"hC" = (
+/obj/structure/bed,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"ir" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"iC" = (
+/obj/spawner/window/reinforced/full,
+/turf/simulated/shuttle/floor/voidcraft,
+/area/submap/skyplanet/poi/mercbase)
+"jj" = (
+/obj/effect/floor_decal/industrial/loading,
+/obj/random/multiple/corp_crate/no_weapons,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"jp" = (
+/obj/machinery/photocopier,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"kO" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/mercbase)
+"kS" = (
+/mob/living/simple_mob/humanoid/merc/ranged/smg/poi,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"kU" = (
+/obj/machinery/light,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"lj" = (
+/obj/structure/closet/crate,
+/obj/item/clothing/under/syndicate,
+/obj/item/clothing/under/syndicate/tacticool/skirt_pleated,
+/obj/item/clothing/under/tajaran/consular/dpra/female,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"lM" = (
+/obj/structure/bed/chair/bay/comfy/black{
+	dir = 8
+	},
+/obj/item/clothing/under/tajaran/cosmonaut/commissar,
+/turf/simulated/shuttle/floor/voidcraft,
+/area/submap/skyplanet/poi/mercbase)
+"lW" = (
+/obj/random/multiple/large_corp_crate/no_weapons,
+/obj/effect/floor_decal/industrial/loading{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"mo" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"nf" = (
+/mob/living/simple_mob/humanoid/merc/ranged/laser/poi,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"oz" = (
+/obj/effect/floor_decal/industrial/loading,
+/obj/structure/closet/largecardboard,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"py" = (
+/obj/structure/salvageable/data_os,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"qi" = (
+/obj/structure/poster/preset/baystation/bay_18{
+	pixel_x = -30
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"qJ" = (
+/obj/effect/floor_decal/industrial/loading{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"sj" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"sL" = (
+/mob/living/simple_mob/humanoid/merc/ranged/garand/sniper,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"tS" = (
+/obj/structure/salvageable/data{
+	pixel_x = 5
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"uz" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/mercbase)
+"uT" = (
+/obj/structure/poster/preset/baystation/bay_17{
+	pixel_x = -31
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"vN" = (
+/obj/machinery/door/airlock/multi_tile,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"vV" = (
+/obj/structure/poster/preset/baystation/bay_21{
+	pixel_x = -29
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"ww" = (
+/obj/machinery/light,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/mercbase)
+"wD" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/submap/skyplanet/poi/mercbase)
+"wM" = (
+/obj/effect/floor_decal/industrial/loading,
+/obj/item/stool,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"xl" = (
+/obj/structure/table/steel,
+/obj/machinery/light,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"xK" = (
+/obj/structure/window/reinforced/survival_pod,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"yj" = (
+/mob/living/simple_mob/humanoid/merc/melee/poi,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/mercbase)
+"ys" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"yx" = (
+/obj/structure/table/steel,
+/obj/structure/railing/grey{
+	dir = 1;
+	layer = 2.5
+	},
+/obj/item/storage/firstaid/regular,
+/obj/item/storage/firstaid/insiderepair,
+/obj/item/storage/firstaid/combat,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"zM" = (
+/obj/structure/table/bench/standard,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"zR" = (
+/obj/effect/floor_decal/industrial/loading,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"CE" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"Db" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"DZ" = (
+/obj/machinery/vending/cola,
+/obj/structure/railing/grey{
+	dir = 1;
+	layer = 2.5
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"Eo" = (
+/obj/structure/bed/chair/bay/comfy/black{
+	dir = 8
+	},
+/turf/simulated/shuttle/floor/voidcraft,
+/area/submap/skyplanet/poi/mercbase)
+"Ex" = (
+/obj/structure/salvageable/server_os,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"ES" = (
+/obj/machinery/vending/coffee,
+/obj/structure/railing/grey{
+	dir = 1;
+	layer = 2.5
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"GC" = (
+/obj/structure/closet/crate,
+/obj/item/clothing/under/syndicate,
+/obj/item/clothing/under/syndicate/tacticool/skirt_pleated,
+/obj/item/clothing/under/tajaran/consular/dpra,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"Hi" = (
+/obj/structure/salvageable/data{
+	pixel_x = 5
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"Ho" = (
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"Ih" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/mech_recharger,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/mercbase)
+"It" = (
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/mercbase)
+"Jo" = (
+/obj/structure/window/basic/full{
+	dir = 1
+	},
+/obj/machinery/door/window/brigdoor/westleft,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"Ke" = (
+/obj/structure/poster/preset/baystation/bay_4{
+	pixel_x = -30
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"Lj" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/random/multiple/gun/projectile/smg,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"Ln" = (
+/obj/structure/bed,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"Mi" = (
+/obj/structure/window/reinforced/survival_pod,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"Ms" = (
+/obj/structure/bed/chair/bay/comfy/black,
+/turf/simulated/shuttle/floor/voidcraft,
+/area/submap/skyplanet/poi/mercbase)
+"Mx" = (
+/mob/living/simple_mob/humanoid/merc/ranged/poi,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"NP" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"Oq" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/random/energy,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"OE" = (
+/turf/simulated/shuttle/floor/voidcraft,
+/area/submap/skyplanet/poi/mercbase)
+"Pq" = (
+/obj/structure/reagent_dispensers/water_cooler/full{
+	pixel_x = 7
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"Qo" = (
+/obj/machinery/vending/snack,
+/obj/structure/railing/grey{
+	dir = 1;
+	layer = 2.5
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"Qq" = (
+/obj/structure/table/rack/shelf/steel,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"Qv" = (
+/obj/structure/window/basic/full{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"Sm" = (
+/turf/simulated/wall/r_wall,
+/area/submap/skyplanet/poi/mercbase)
+"SF" = (
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"Ts" = (
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/submap/skyplanet/poi/mercbase)
+"UH" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/mercbase)
+"Vi" = (
+/obj/structure/closet/crate,
+/obj/item/clothing/under/syndicate,
+/obj/item/clothing/under/syndicate/tacticool/skirt_pleated,
+/obj/item/toy/syndicateballoon,
+/obj/item/clothing/under/tajaran/consular/dpra,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"Vo" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/random/powercell,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"XN" = (
+/obj/structure/salvageable/console_broken_os{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor/voidcraft,
+/area/submap/skyplanet/poi/mercbase)
+"YG" = (
+/obj/structure/railing/grey{
+	dir = 1;
+	layer = 2.5
+	},
+/obj/structure/table/steel,
+/obj/machinery/microwave{
+	pixel_y = 8;
+	layer = 3.1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"YH" = (
+/obj/structure/window/basic/full{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+"Zr" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/mercbase)
+"ZS" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/random/cigarettes,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/mercbase)
+
+(1,1,1) = {"
+Sm
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+Sm
+Sm
+Sm
+Sm
+Sm
+Sm
+Sm
+Sm
+Sm
+Sm
+"}
+(2,1,1) = {"
+Sm
+Zr
+Zr
+Zr
+Zr
+Zr
+Zr
+Zr
+Zr
+Zr
+Sm
+lW
+sj
+jj
+DZ
+ir
+ir
+bW
+zM
+Sm
+"}
+(3,1,1) = {"
+Sm
+kO
+It
+yj
+It
+It
+It
+It
+It
+ww
+Sm
+aA
+ir
+zR
+ES
+ir
+ir
+Ho
+xl
+Sm
+"}
+(4,1,1) = {"
+Sm
+It
+It
+It
+It
+It
+It
+It
+It
+It
+Sm
+qJ
+ir
+wM
+Qo
+ir
+ys
+zM
+zM
+Sm
+"}
+(5,1,1) = {"
+Sm
+It
+It
+It
+It
+It
+It
+It
+It
+It
+Sm
+qJ
+ir
+oz
+yx
+ir
+ys
+ir
+ir
+Sm
+"}
+(6,1,1) = {"
+Sm
+Ts
+iC
+iC
+Ts
+It
+It
+It
+It
+It
+Sm
+qJ
+ir
+wM
+YG
+ys
+ys
+zM
+zM
+Sm
+"}
+(7,1,1) = {"
+Sm
+Ts
+XN
+XN
+Ts
+It
+It
+gz
+It
+ww
+Sm
+CE
+ir
+dx
+ir
+ir
+ir
+Ho
+xl
+Sm
+"}
+(8,1,1) = {"
+Sm
+Ts
+lM
+Eo
+Ts
+It
+It
+It
+It
+It
+vN
+ir
+nf
+ys
+ir
+ir
+ir
+zM
+zM
+Sm
+"}
+(9,1,1) = {"
+Sm
+Ts
+gv
+OE
+Ts
+It
+It
+It
+It
+It
+ir
+ys
+ys
+ir
+ir
+Pq
+tS
+Hi
+tS
+Sm
+"}
+(10,1,1) = {"
+Sm
+Ts
+Ms
+OE
+OE
+It
+It
+It
+It
+It
+Sm
+ys
+ir
+Sm
+Sm
+Sm
+Sm
+Sm
+Sm
+Sm
+"}
+(11,1,1) = {"
+Sm
+Ts
+Ms
+OE
+OE
+It
+It
+It
+It
+ww
+Sm
+Db
+kU
+Sm
+py
+ck
+ir
+ir
+Mi
+Sm
+"}
+(12,1,1) = {"
+Sm
+Ts
+Ts
+Ts
+Ts
+UH
+UH
+It
+UH
+UH
+Sm
+ir
+ys
+NP
+ir
+ir
+Ho
+Ho
+xK
+Sm
+"}
+(13,1,1) = {"
+Sm
+uz
+uz
+uz
+uz
+Ih
+Ih
+It
+Ih
+Ih
+Sm
+ir
+ys
+Sm
+jp
+ir
+Ho
+Ho
+xK
+Sm
+"}
+(14,1,1) = {"
+Sm
+Sm
+Sm
+Sm
+Sm
+Sm
+Sm
+Sm
+Sm
+Sm
+Sm
+ir
+ys
+Sm
+Ex
+ys
+ys
+ys
+xK
+Sm
+"}
+(15,1,1) = {"
+Sm
+Sm
+Oq
+ir
+ir
+NP
+sj
+ir
+ir
+sj
+vN
+ir
+ys
+Sm
+Sm
+Sm
+Sm
+Sm
+Sm
+Sm
+"}
+(16,1,1) = {"
+Sm
+Sm
+Oq
+kS
+ao
+Sm
+ir
+ir
+ir
+ir
+ir
+ir
+ys
+Sm
+sj
+Ke
+vV
+qi
+uT
+Sm
+"}
+(17,1,1) = {"
+Sm
+Sm
+ZS
+ir
+Qq
+Sm
+YH
+es
+Jo
+YH
+Sm
+Db
+sL
+NP
+ir
+ir
+ir
+Mx
+ir
+Sm
+"}
+(18,1,1) = {"
+Sm
+Sm
+Vo
+mo
+Lj
+Sm
+SF
+ir
+Qv
+SF
+Sm
+ir
+ir
+Sm
+lj
+ir
+GC
+ir
+Vi
+Sm
+"}
+(19,1,1) = {"
+Sm
+Sm
+Sm
+Sm
+Sm
+Sm
+SF
+ir
+Qv
+bq
+Sm
+ir
+ir
+Sm
+hC
+ir
+Ln
+ir
+hC
+Sm
+"}
+(20,1,1) = {"
+Sm
+Sm
+Sm
+Sm
+Sm
+Sm
+Sm
+Sm
+Sm
+Sm
+Sm
+Sm
+Sm
+Sm
+Sm
+Sm
+Sm
+Sm
+Sm
+Sm
+"}

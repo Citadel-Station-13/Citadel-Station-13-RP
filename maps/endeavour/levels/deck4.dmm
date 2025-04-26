@@ -7681,6 +7681,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/break_room)
+"ixk" = (
+/obj/effect/floor_decal/spline/fancy{
+	dir = 5
+	},
+/obj/item/paper/crumpled{
+	name = "Hastily crumpled schematics";
+	info = "Right - the equipment's all set and ready to go - as long as you can keep the ship in the drydock for another few days, we can get in, get out, and be gone before we're missed. Map's attached. Burn this if you think you're about to get pinched-"
+	},
+/turf/simulated/floor/carpet/oracarpet,
+/area/engineering/engineering_monitoring)
 "ixG" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -9613,6 +9623,11 @@
 /obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_eva)
+"kDd" = (
+/obj/structure/catwalk,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4fwdmaint)
 "kDR" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -12065,7 +12080,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4starboardafthall)
 "nsO" = (
-/obj/map_helper/access_helper/airlock/station/engineering/department,
+/obj/map_helper/access_helper/airlock/station/engineering/atmospherics,
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
@@ -16561,6 +16576,14 @@
 /obj/machinery/air_alarm/north_mount,
 /turf/simulated/floor/tiled/steel,
 /area/tcommsat/computer)
+"sZO" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/catwalk,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4fwdmaint)
 "tax" = (
 /obj/structure/sign/fire,
 /turf/simulated/wall/r_wall/prepainted/engineering,
@@ -18354,7 +18377,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/storage/tech)
 "vkX" = (
-/obj/map_helper/access_helper/airlock/station/engineering/department,
+/obj/map_helper/access_helper/airlock/station/engineering/atmospherics,
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
@@ -18977,7 +19000,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/map_helper/access_helper/airlock/station/engineering/department,
+/obj/map_helper/access_helper/airlock/station/engineering/atmospherics,
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
@@ -20993,7 +21016,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "ycn" = (
-/obj/machinery/point_redemption_vendor/engineering,
+/obj/machinery/mineral/equipment_vendor/engineering,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "ycr" = (
@@ -21012,7 +21035,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/command/turrets)
 "ycR" = (
-/obj/map_helper/access_helper/airlock/station/engineering/department,
+/obj/map_helper/access_helper/airlock/station/engineering/atmospherics,
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
@@ -35087,7 +35110,7 @@ oCj
 bHY
 cQR
 bHY
-inf
+ixk
 lNQ
 jlM
 wpR
@@ -38745,10 +38768,10 @@ dvY
 xXL
 xXL
 xXL
-xXL
+kDd
 lHm
 xXL
-xXL
+kDd
 dvY
 wiw
 szc
@@ -39327,7 +39350,7 @@ qBz
 qBz
 qBz
 qBz
-pku
+sZO
 xXL
 xXL
 lHm
@@ -50421,7 +50444,7 @@ pbx
 pXA
 eDQ
 dvY
-xXL
+kDd
 xXL
 fwR
 jNg

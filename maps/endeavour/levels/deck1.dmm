@@ -2518,6 +2518,7 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/exploration/hallway_aft)
 "bTg" = (
+/obj/overmap/entity/visitable/ship/endeavour,
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 4
 	},
@@ -5595,9 +5596,6 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/south_mount{
-	pixel_y = -24
-	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/surfacebase/tram)
 "ejN" = (
@@ -5963,7 +5961,7 @@
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/porta_turret/stationary{
 	gl_uid = "exploration";
-	installation = /obj/item/gun/projectile/energy/phasegun;
+	installation = /obj/item/gun/energy/phasegun;
 	name = "exploration turret";
 	uid = "exploration"
 	},
@@ -7764,7 +7762,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hop)
 "fDv" = (
-/obj/machinery/point_redemption_vendor/survey,
+/obj/machinery/mineral/equipment_vendor/survey,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -11614,6 +11612,15 @@
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
+"iqq" = (
+/obj/machinery/door/airlock/maintenance/common{
+	id_tag = "maint_dorm"
+	},
+/obj/machinery/door/firedoor,
+/obj/structure/catwalk,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d1fwdmaint)
 "iqr" = (
 /obj/structure/table/standard,
 /obj/item/inflatable_duck,
@@ -12597,7 +12604,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardafthall)
 "jeQ" = (
-/obj/item/gun/projectile/energy/lasertag/blue,
+/obj/item/gun/energy/lasertag/blue,
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/endeavour/hallway/d1aftmaint)
@@ -16241,7 +16248,7 @@
 /turf/simulated/wall/prepainted,
 /area/endeavour/hallway/d1starboardafthall)
 "lIc" = (
-/obj/item/gun/projectile/energy/lasertag/red,
+/obj/item/gun/energy/lasertag/red,
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/endeavour/hallway/d1aftmaint)
@@ -18198,7 +18205,7 @@
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
 "mXt" = (
-/obj/item/gun/projectile/ballistic/shotgun/flare,
+/obj/item/gun/ballistic/shotgun/flare,
 /obj/item/storage/box/flashshells,
 /obj/item/duct_tape_roll,
 /obj/structure/closet/hydrant{
@@ -18537,7 +18544,7 @@
 	},
 /obj/machinery/porta_turret/stationary{
 	gl_uid = "exploration";
-	installation = /obj/item/gun/projectile/energy/phasegun;
+	installation = /obj/item/gun/energy/phasegun;
 	name = "exploration turret";
 	req_one_access = list(19,43,62,67);
 	uid = "exploration"
@@ -20276,6 +20283,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1aftmaint)
+"ozV" = (
+/obj/structure/bed/chair,
+/turf/simulated/floor/tiled,
+/area/endeavour/surfacebase/tram)
 "ozZ" = (
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
@@ -25781,7 +25792,7 @@
 "sQf" = (
 /obj/structure/table/standard,
 /obj/machinery/door/window/northleft,
-/obj/item/gun/projectile/energy/hardlight_bow,
+/obj/item/gun/energy/hardlight_bow,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
 /obj/structure/window/reinforced{
@@ -26781,7 +26792,7 @@
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/porta_turret/stationary{
 	gl_uid = "exploration";
-	installation = /obj/item/gun/projectile/energy/phasegun;
+	installation = /obj/item/gun/energy/phasegun;
 	name = "exploration turret";
 	uid = "exploration"
 	},
@@ -26960,6 +26971,9 @@
 /area/library)
 "tCP" = (
 /obj/machinery/light,
+/obj/machinery/fire_alarm/south_mount{
+	pixel_y = -24
+	},
 /obj/structure/bed/chair{
 	dir = 1
 	},
@@ -30796,7 +30810,7 @@
 /obj/structure/closet/hydrant{
 	pixel_x = -32
 	},
-/obj/item/gun/projectile/ballistic/shotgun/flare,
+/obj/item/gun/ballistic/shotgun/flare,
 /obj/item/storage/box/flashshells,
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/cockpit)
@@ -33261,7 +33275,7 @@
 /obj/effect/floor_decal/spline/fancy,
 /obj/machinery/porta_turret/stationary{
 	gl_uid = "exploration";
-	installation = /obj/item/gun/projectile/energy/phasegun;
+	installation = /obj/item/gun/energy/phasegun;
 	name = "exploration turret";
 	req_one_access = list(19,43,62,67);
 	uid = "exploration"
@@ -41831,7 +41845,7 @@ rTZ
 rTZ
 rTZ
 rTZ
-gjY
+ozV
 cMJ
 nTt
 tAk
@@ -42025,7 +42039,7 @@ eFW
 cMJ
 rTZ
 rTZ
-gjY
+ozV
 cMJ
 tAk
 tAk
@@ -42219,7 +42233,7 @@ eNz
 cMJ
 rTZ
 rTZ
-gjY
+ozV
 cMJ
 tAk
 tAk
@@ -61816,7 +61830,7 @@ wSl
 tHJ
 tHJ
 ivO
-uKO
+iqq
 byt
 byt
 ris

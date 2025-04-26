@@ -29,8 +29,6 @@
 	// atom HUDs
 	prepare_huds()
 	set_key_focus(src)
-	// todo: remove hooks
-	hook_vr("mob_new",list(src))
 	// signal
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOBAL_MOB_NEW, src)
 	// abilities
