@@ -520,6 +520,7 @@
 /obj/machinery/porta_turret/stationary{
 	uid = "gateway"
 	},
+/obj/structure/marker_beacon/green,
 /turf/simulated/floor/tiled/techmaint,
 /area/strelka/shipbase/deck1/gateway)
 "cD" = (
@@ -1270,7 +1271,12 @@
 /obj/structure/marker_beacon/green,
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless,
-/area/space)
+/area/strelka/shipbase/deck1/fighterbaysec)
+"gY" = (
+/obj/structure/lattice,
+/obj/structure/marker_beacon/green,
+/turf/space/basic,
+/area/strelka/shipbase/deck1/fighterbaysec)
 "gZ" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -1421,10 +1427,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/civhangar)
-"hT" = (
-/obj/machinery/conveyor,
-/turf/simulated/floor/reinforced,
-/area/strelka/shipbase/deck1/bridge/balista)
 "hV" = (
 /turf/simulated/floor/carpet/patterened/blue,
 /area/strelka/shipbase/deck1/pilot)
@@ -1686,6 +1688,11 @@
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck1/warden)
+"jn" = (
+/obj/structure/lattice,
+/obj/machinery/shield_diffuser,
+/turf/space/basic,
+/area/strelka/shipbase/deck1/fighterbaysec)
 "jq" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/structure/window/reinforced{
@@ -2089,6 +2096,10 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
+"lA" = (
+/obj/machinery/shield_diffuser,
+/turf/space/basic,
+/area/strelka/shipbase/deck1/fighterbaysec)
 "lB" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -3219,7 +3230,7 @@
 	id = "Pinance";
 	pixel_x = -22;
 	dir = 4;
-	req_access = list(3)
+	req_access = list(47)
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/fighterbay)
@@ -3698,8 +3709,10 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "uq" = (
-/obj/machinery/conveyor,
 /obj/machinery/door/firedoor,
+/obj/machinery/conveyor{
+	id = "courser_battery"
+	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/bridge/balista)
 "ur" = (
@@ -3784,6 +3797,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck1)
+"uO" = (
+/obj/structure/marker_beacon/green,
+/turf/simulated/floor/tiled/techmaint,
+/area/strelka/shipbase/deck1/gateway)
 "uQ" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/camera/network/security,
@@ -4470,6 +4487,13 @@
 /obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/fighterbay)
+"yF" = (
+/obj/machinery/shield_diffuser,
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
+/turf/space/basic,
+/area/strelka/shipbase/deck1/fighterbaysec)
 "yH" = (
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck1/checkpoint)
@@ -5268,6 +5292,11 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1/pilot/eva)
+"DM" = (
+/obj/structure/lattice,
+/obj/structure/marker_beacon/green,
+/turf/space/basic,
+/area/strelka/shipbase/deck1/fighterbay)
 "DQ" = (
 /obj/structure/table/carbon/reinforced,
 /obj/random/toolbox,
@@ -5709,6 +5738,14 @@
 /obj/item/gun/projectile/ballistic/automatic/z8,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/armory3)
+"FF" = (
+/obj/machinery/shield_diffuser,
+/turf/space/basic,
+/area/strelka/shipbase/deck1/fighterbay)
+"FI" = (
+/obj/structure/lattice,
+/turf/space/basic,
+/area/strelka/shipbase/deck1/fighterbaysec)
 "FJ" = (
 /obj/effect/shuttle_landmark{
 	base_area = /area/space;
@@ -6170,6 +6207,7 @@
 /obj/machinery/gateway{
 	dir = 8
 	},
+/obj/structure/marker_beacon/green,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/gateway)
 "IA" = (
@@ -6181,6 +6219,11 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
+"ID" = (
+/obj/machinery/shield_diffuser,
+/obj/machinery/camera/network/security,
+/turf/space/basic,
+/area/strelka/shipbase/deck1/fighterbay)
 "IG" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/effect/floor_decal/industrial/outline/red,
@@ -6675,7 +6718,7 @@
 	id = "Pinance";
 	pixel_x = -22;
 	dir = 4;
-	req_access = list(3)
+	req_access = list(47)
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
@@ -7482,9 +7525,8 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	pixel_x = -28;
-	pixel_y = 3;
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	pixel_x = -25;
 	id_tag = "civvie_dock"
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
@@ -8092,7 +8134,7 @@
 /obj/structure/lattice,
 /obj/structure/marker_beacon/green,
 /turf/simulated/floor/airless,
-/area/space)
+/area/strelka/shipbase/deck1/fighterbay)
 "Tj" = (
 /obj/machinery/computer/security,
 /obj/effect/floor_decal/borderfloor{
@@ -8286,6 +8328,7 @@
 /obj/machinery/camera/network/security{
 	dir = 6
 	},
+/obj/structure/marker_beacon/green,
 /turf/simulated/floor/tiled/techmaint,
 /area/strelka/shipbase/deck1/gateway)
 "Ue" = (
@@ -8570,14 +8613,15 @@
 	req_one_access = null
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/civvie/strelka)
+/area/strelka/shipbase/deck1/civhangar)
+"Vn" = (
+/obj/structure/lattice,
+/obj/machinery/shield_diffuser,
+/turf/space/basic,
+/area/strelka/shipbase/deck1/fighterbay)
 "Vw" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck1/checkpoint)
-"Vy" = (
-/obj/machinery/shield_diffuser,
-/turf/simulated/floor/airless,
-/area/space)
 "VC" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -9291,6 +9335,10 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/fighterbaysec)
+"YQ" = (
+/obj/structure/lattice,
+/turf/space/basic,
+/area/strelka/shipbase/deck1/fighterbay)
 "YR" = (
 /obj/structure/cable/blue{
 	icon_state = "1-2"
@@ -21399,7 +21447,7 @@ Uc
 RX
 Rw
 Wx
-aN
+uO
 QE
 QE
 QE
@@ -21783,11 +21831,11 @@ Bm
 aN
 aN
 lL
-aN
+uO
 HM
 wm
 qX
-aN
+uO
 qc
 Kj
 jR
@@ -29717,14 +29765,14 @@ vu
 vu
 vu
 qs
-Kb
-Kb
+jn
+jn
 qs
-Kb
-Kb
+jn
+jn
 qs
-Kb
-Kb
+jn
+jn
 qs
 qs
 Ey
@@ -29754,14 +29802,14 @@ lH
 cu
 vK
 is
-Kb
-Kb
+Vn
+Vn
 is
-Kb
-Kb
+Vn
+Vn
 is
-Kb
-Kb
+Vn
+Vn
 is
 vu
 vu
@@ -29911,14 +29959,14 @@ vu
 vu
 vu
 qs
-Kb
-Kb
+jn
+jn
 qs
-Kb
-Kb
+jn
+jn
 qs
-Kb
-Kb
+jn
+jn
 qs
 qs
 Ey
@@ -29948,14 +29996,14 @@ xF
 cu
 vK
 is
-Kb
-Kb
+Vn
+Vn
 is
-Kb
-Kb
+Vn
+Vn
 is
-Kb
-Kb
+Vn
+Vn
 is
 vu
 vu
@@ -30105,14 +30153,14 @@ vu
 vu
 vu
 qs
-vu
-vu
+lA
+lA
 qs
-vu
-vu
+lA
+lA
 qs
-vu
-vu
+lA
+lA
 qs
 qs
 Mk
@@ -30142,14 +30190,14 @@ lH
 cu
 vK
 is
-vu
-vu
+FF
+FF
 is
-vu
-vu
+FF
+FF
 is
-vu
-vu
+FF
+FF
 is
 vu
 vu
@@ -30299,14 +30347,14 @@ vu
 vu
 iw
 ph
-Vy
-Vy
+lA
+lA
 gW
-Vy
-Vy
+lA
+lA
 gW
-Vy
-Vy
+lA
+lA
 qs
 qs
 gk
@@ -30336,14 +30384,14 @@ lM
 cu
 vK
 is
-Vy
-Vy
+FF
+FF
 Te
-Vy
-Vy
+FF
+FF
 Te
-Vy
-Vy
+FF
+FF
 ph
 iw
 vu
@@ -30493,14 +30541,14 @@ vu
 vu
 vu
 iw
-vu
-vu
-Kb
-vu
-vu
-Kb
-vu
-vu
+lA
+lA
+FI
+lA
+lA
+FI
+lA
+lA
 qs
 qs
 gk
@@ -30530,14 +30578,14 @@ My
 cu
 vK
 is
-vu
-vu
-Kb
-vu
-vu
-Kb
-vu
-vu
+FF
+FF
+YQ
+FF
+FF
+YQ
+FF
+FF
 iw
 vu
 vu
@@ -30687,14 +30735,14 @@ vu
 vu
 vu
 SW
-vu
-vu
-SW
-vu
-vu
-SW
-vu
-vu
+lA
+lA
+gY
+lA
+lA
+gY
+lA
+yF
 qs
 qs
 gk
@@ -30724,14 +30772,14 @@ ZN
 cu
 vK
 is
-vu
-vu
-SW
-vu
-vu
-SW
-vu
-vu
+ID
+FF
+DM
+FF
+FF
+DM
+FF
+FF
 SW
 vu
 vu
@@ -34975,8 +35023,8 @@ vu
 RS
 QG
 uq
-hT
-hT
+QG
+QG
 VC
 Ke
 RS

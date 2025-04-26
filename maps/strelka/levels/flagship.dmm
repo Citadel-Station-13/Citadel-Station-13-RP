@@ -1,4 +1,11 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 4
+	},
+/turf/unsimulated/floor/steel,
+/area/centcom/main_hall)
 "ac" = (
 /obj/structure/sign/directions/security{
 	dir = 4;
@@ -91,6 +98,22 @@
 "am" = (
 /turf/simulated/wall/r_wall,
 /area/centcom/main_hall)
+"an" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/bed/chair/bay/comfy{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/supply)
 "ap" = (
 /obj/effect/overlay/palmtree_l,
 /obj/effect/overlay/coconut,
@@ -646,7 +669,7 @@
 /turf/unsimulated/floor/techfloor_grid{
 	layer = 1
 	},
-/area/space)
+/area/centcom/main_hall)
 "bZ" = (
 /obj/structure/window/reinforced/holowindow{
 	dir = 4
@@ -942,7 +965,7 @@
 /turf/unsimulated/floor/techfloor_grid{
 	layer = 1
 	},
-/area/space)
+/area/centcom/main_hall)
 "cU" = (
 /obj/effect/floor_decal/corner/red{
 	dir = 9
@@ -1040,7 +1063,7 @@
 "df" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/simulated/floor/outdoors/grass/heavy/indoors,
-/area/space)
+/area/centcom/main_hall)
 "dg" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -1116,7 +1139,7 @@
 /turf/unsimulated/floor/steel{
 	icon_state = "asteroidfloor"
 	},
-/area/space)
+/area/centcom/main_hall)
 "do" = (
 /obj/machinery/vending/boozeomat,
 /turf/unsimulated/floor/wood,
@@ -2290,7 +2313,7 @@
 /turf/unsimulated/floor/steel{
 	icon_state = "asteroidfloor"
 	},
-/area/space)
+/area/centcom/main_hall)
 "gu" = (
 /obj/structure/table/rack{
 	dir = 4
@@ -2580,6 +2603,10 @@
 /obj/structure/flora/tree/dead,
 /turf/simulated/floor/holofloor/snow,
 /area/holodeck/source_snowfield)
+"hi" = (
+/obj/machinery/door/firedoor,
+/turf/unsimulated/floor/steel,
+/area/centcom/main_hall)
 "hj" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -3610,7 +3637,7 @@
 /turf/unsimulated/floor/steel{
 	icon_state = "asteroidfloor"
 	},
-/area/space)
+/area/centcom/main_hall)
 "kh" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -4648,11 +4675,6 @@
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_emptycourt)
-"mO" = (
-/turf/unsimulated/floor/techfloor_grid{
-	layer = 1
-	},
-/area/space)
 "mP" = (
 /obj/item/stack/material/glass{
 	amount = 50
@@ -4981,7 +5003,7 @@
 /turf/unsimulated/floor/techfloor_grid{
 	layer = 1
 	},
-/area/space)
+/area/centcom/main_hall)
 "nu" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Teleporter";
@@ -5384,7 +5406,7 @@
 /area/centcom/specops)
 "op" = (
 /turf/simulated/floor/outdoors/grass/heavy/indoors,
-/area/space)
+/area/centcom/main_hall)
 "or" = (
 /obj/structure/table/rack,
 /obj/item/storage/box/seccarts{
@@ -5752,7 +5774,7 @@
 /turf/unsimulated/floor/techfloor_grid{
 	layer = 1
 	},
-/area/space)
+/area/centcom/main_hall)
 "pv" = (
 /obj/structure/table/rack,
 /obj/item/clothing/suit/armor/riot,
@@ -6408,7 +6430,7 @@
 /turf/unsimulated/floor/techfloor_grid{
 	layer = 1
 	},
-/area/space)
+/area/centcom/main_hall)
 "rl" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/centcom/specops/dock)
@@ -6537,7 +6559,7 @@
 /turf/unsimulated/floor/techfloor_grid{
 	layer = 1
 	},
-/area/space)
+/area/centcom/main_hall)
 "rC" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -8174,7 +8196,7 @@
 /obj/effect/paint/black,
 /obj/effect/paint_stripe/darkred,
 /turf/space/basic,
-/area/space)
+/area/centcom/main_hall)
 "vR" = (
 /obj/spawner/window/low_wall/reinforced/full,
 /turf/unsimulated/floor/steel{
@@ -8328,7 +8350,7 @@
 /turf/unsimulated/floor/techfloor_grid{
 	layer = 1
 	},
-/area/space)
+/area/centcom/main_hall)
 "wk" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/box/bodybags{
@@ -9104,7 +9126,7 @@
 "ye" = (
 /obj/structure/flora/ausbushes/brflowers,
 /turf/simulated/floor/outdoors/grass/heavy/indoors,
-/area/space)
+/area/centcom/main_hall)
 "yf" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -10136,11 +10158,6 @@
 	layer = 1
 	},
 /area/centcom/main_hall)
-"AE" = (
-/obj/effect/paint/black,
-/obj/effect/paint_stripe/darkred,
-/turf/simulated/wall/r_wall,
-/area/space)
 "AF" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/brigdoor{
@@ -10399,14 +10416,6 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
-"Bo" = (
-/obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint/black,
-/obj/effect/paint_stripe/darkred,
-/turf/unsimulated/floor{
-	name = "plating"
-	},
-/area/space)
 "Bp" = (
 /obj/structure/table/woodentable/holotable,
 /turf/simulated/floor/holofloor/wood,
@@ -10852,7 +10861,7 @@
 /turf/unsimulated/floor/steel{
 	icon_state = "asteroidfloor"
 	},
-/area/space)
+/area/centcom/main_hall)
 "Cz" = (
 /obj/effect/floor_decal/corner_steel_grid{
 	dir = 8
@@ -11048,7 +11057,7 @@
 "CY" = (
 /obj/structure/table/bench/wooden,
 /turf/unsimulated/floor/wood,
-/area/space)
+/area/centcom/main_hall)
 "CZ" = (
 /obj/structure/fake_stairs/south/top{
 	_stair_tag = "stairtest"
@@ -11060,7 +11069,7 @@
 /turf/unsimulated/floor/steel{
 	icon_state = "asteroidfloor"
 	},
-/area/space)
+/area/centcom/main_hall)
 "Dd" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 1
@@ -11107,7 +11116,7 @@
 	icon_state = "dark";
 	layer = 1
 	},
-/area/space)
+/area/centcom/main_hall)
 "Dm" = (
 /obj/structure/table/glass,
 /obj/machinery/computer/skills{
@@ -11624,7 +11633,7 @@
 	icon_state = "dark";
 	layer = 1
 	},
-/area/space)
+/area/centcom/main_hall)
 "EG" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -13532,7 +13541,7 @@
 /turf/unsimulated/floor/techfloor_grid{
 	layer = 1
 	},
-/area/space)
+/area/centcom/main_hall)
 "Jl" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/firstaid/o2{
@@ -13657,14 +13666,6 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
-"JB" = (
-/obj/machinery/camera/network/crescent{
-	dir = 4
-	},
-/turf/unsimulated/floor/techfloor_grid{
-	layer = 1
-	},
-/area/space)
 "JC" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
@@ -13762,7 +13763,7 @@
 /obj/effect/paint_stripe/darkred,
 /obj/effect/paint/black,
 /turf/simulated/wall/r_wall,
-/area/centcom/restaurant)
+/area/centcom/main_hall)
 "JM" = (
 /obj/effect/floor_decal/derelict/d1,
 /obj/effect/floor_decal/industrial/warning/dust,
@@ -13805,7 +13806,7 @@
 /obj/effect/paint_stripe/darkred,
 /obj/effect/paint/black,
 /turf/simulated/wall/r_wall,
-/area/space)
+/area/centcom/main_hall)
 "JS" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/effect/floor_decal/borderfloorblack{
@@ -14636,7 +14637,7 @@
 /turf/unsimulated/floor/techfloor_grid{
 	layer = 1
 	},
-/area/space)
+/area/centcom/main_hall)
 "LX" = (
 /obj/machinery/vending/cola,
 /obj/effect/floor_decal/corner/yellow/diagonal,
@@ -14760,7 +14761,7 @@
 /turf/unsimulated/floor/techfloor_grid{
 	layer = 1
 	},
-/area/space)
+/area/centcom/main_hall)
 "Mu" = (
 /obj/structure/table/reinforced,
 /obj/machinery/chemical_dispenser/catering/bar_soft,
@@ -14879,7 +14880,7 @@
 /turf/unsimulated/floor/techfloor_grid{
 	layer = 1
 	},
-/area/space)
+/area/centcom/main_hall)
 "MK" = (
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/turretid/lethal{
@@ -16036,7 +16037,7 @@
 /turf/unsimulated/floor/techfloor_grid{
 	layer = 1
 	},
-/area/space)
+/area/centcom/main_hall)
 "PQ" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/brigdoor{
@@ -16351,7 +16352,7 @@
 "QK" = (
 /obj/machinery/light/flamp/noshade,
 /turf/simulated/floor/outdoors/grass/heavy/indoors,
-/area/space)
+/area/centcom/main_hall)
 "QM" = (
 /obj/structure/holostool,
 /obj/effect/floor_decal/carpet{
@@ -16579,7 +16580,7 @@
 /turf/unsimulated/floor/techfloor_grid{
 	layer = 1
 	},
-/area/space)
+/area/centcom/main_hall)
 "Ro" = (
 /obj/structure/table/marble,
 /obj/machinery/chemical_dispenser/catering/bar_coffee,
@@ -17065,7 +17066,7 @@
 /turf/unsimulated/floor/techfloor_grid{
 	layer = 1
 	},
-/area/space)
+/area/centcom/main_hall)
 "Sv" = (
 /obj/spawner/window/low_wall/reinforced/full,
 /turf/unsimulated/floor{
@@ -17423,12 +17424,6 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
-"Tp" = (
-/obj/machinery/camera/network/crescent,
-/turf/unsimulated/floor/techfloor_grid{
-	layer = 1
-	},
-/area/space)
 "Tq" = (
 /obj/effect/floor_decal/corner_kafel/red{
 	dir = 5
@@ -17663,6 +17658,13 @@
 /obj/structure/flora/grass/brown,
 /turf/simulated/floor/holofloor/snow,
 /area/holodeck/holodorm/source_snow)
+"TS" = (
+/obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/darkred,
+/turf/unsimulated/floor{
+	name = "plating"
+	},
+/area/centcom/main_hall)
 "TT" = (
 /obj/effect/floor_decal/corner_kafel/yellow{
 	dir = 6
@@ -18800,14 +18802,14 @@
 /turf/unsimulated/floor/techfloor_grid{
 	layer = 1
 	},
-/area/space)
+/area/centcom/main_hall)
 "WK" = (
 /obj/structure/flora/grass/both,
 /turf/simulated/floor/holofloor/snow,
 /area/holodeck/holodorm/source_snow)
 "WL" = (
 /turf/unsimulated/floor/wood,
-/area/space)
+/area/centcom/main_hall)
 "WM" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/blue/border,
@@ -19252,7 +19254,7 @@
 /turf/unsimulated/floor/techfloor_grid{
 	layer = 1
 	},
-/area/space)
+/area/centcom/main_hall)
 "XV" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -19278,7 +19280,7 @@
 /obj/spawner/window/low_wall/reinforced/full,
 /obj/effect/paint/black,
 /turf/space/basic,
-/area/space)
+/area/centcom/main_hall)
 "XY" = (
 /obj/structure/catwalk,
 /obj/structure/bed/chair/sofa/black/left,
@@ -19507,7 +19509,7 @@
 /turf/unsimulated/floor/techfloor_grid{
 	layer = 1
 	},
-/area/space)
+/area/centcom/main_hall)
 "YE" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/multi_tile/glass,
@@ -19873,7 +19875,7 @@
 "Zx" = (
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/simulated/floor/outdoors/grass/heavy/indoors,
-/area/space)
+/area/centcom/main_hall)
 "Zy" = (
 /obj/item/radio/intercom{
 	dir = 1;
@@ -38151,12 +38153,12 @@ Tq
 kX
 am
 kx
-Rc
-Rc
-Rc
-Rc
-Rc
-Rc
+XI
+Qv
+Qv
+Qv
+yV
+XI
 Ob
 Bs
 Bs
@@ -38345,12 +38347,12 @@ Tq
 KN
 Pz
 kx
-XI
-Qv
-Qv
-Qv
-yV
-XI
+CD
+CD
+CD
+CD
+CD
+CD
 Ob
 ce
 ce
@@ -38539,13 +38541,13 @@ Tq
 KN
 nI
 kx
-CD
-CD
-CD
-CD
-CD
-CD
-Ob
+Xv
+Xv
+Xv
+Xv
+Xv
+Xv
+Xv
 Bs
 Bs
 Bs
@@ -38931,7 +38933,7 @@ Bs
 Bs
 Mm
 Eg
-ec
+an
 iH
 iH
 iH
@@ -39702,7 +39704,7 @@ Jq
 Tq
 KN
 nI
-kx
+Fu
 Vf
 nM
 nM
@@ -39896,7 +39898,7 @@ Jq
 Tq
 KN
 nI
-kx
+Fu
 NQ
 pm
 AB
@@ -44164,23 +44166,23 @@ Jq
 Tq
 KN
 nI
-cA
-cA
-cA
-cA
-OD
-OD
-OD
-cA
-cA
+Fu
+Fu
+Fu
+Fu
+TS
+TS
+TS
+Fu
+Fu
 JL
-il
-mm
-cA
-cA
-cA
-cA
-cA
+hi
+aa
+Fu
+Fu
+Fu
+Fu
+Fu
 cA
 cA
 cA
@@ -44358,23 +44360,23 @@ Jq
 Tq
 KN
 nI
-Bo
+kx
 Jk
-mO
-mO
+Km
+Km
 PP
 PP
 rB
 PP
-mO
-mO
-mO
-mO
+Km
+Km
+Km
+Km
 PP
 PP
-JB
+Xs
 XU
-AE
+Fu
 Tj
 Tj
 Tj
@@ -44552,7 +44554,7 @@ Jq
 Tq
 KN
 nI
-Bo
+kx
 Jk
 MI
 WJ
@@ -44567,8 +44569,8 @@ WJ
 WJ
 WJ
 YD
-mO
-AE
+Km
+Fu
 Tj
 Tj
 Tj
@@ -44746,7 +44748,7 @@ Jq
 Tq
 KN
 nI
-Bo
+kx
 Jk
 ns
 WL
@@ -44761,8 +44763,8 @@ WL
 WL
 WL
 pr
-mO
-AE
+Km
+Fu
 Tj
 Tj
 Tj
@@ -44940,8 +44942,8 @@ Jq
 Tq
 KN
 nI
-Bo
-Tp
+kx
+Uc
 ns
 WL
 QK
@@ -44955,8 +44957,8 @@ Zx
 QK
 WL
 pr
-mO
-AE
+Km
+Fu
 Tj
 Tj
 Tj
@@ -45135,7 +45137,7 @@ Tq
 KN
 nI
 EF
-mO
+Km
 ns
 WL
 ye
@@ -45149,8 +45151,8 @@ op
 ye
 WL
 pr
-mO
-AE
+Km
+Fu
 Tj
 Tj
 Tj
@@ -45329,7 +45331,7 @@ Tq
 KN
 nI
 Di
-mO
+Km
 ns
 CY
 ye
@@ -45344,7 +45346,7 @@ ye
 CY
 pr
 Ms
-AE
+Fu
 Tj
 Tj
 Tj
@@ -45522,7 +45524,7 @@ Jq
 Tq
 KN
 nI
-Bo
+kx
 Su
 ns
 WL
@@ -45538,7 +45540,7 @@ ye
 WL
 pr
 Ms
-AE
+Fu
 Tj
 Tj
 Tj
@@ -45716,7 +45718,7 @@ Jq
 Tq
 KN
 nI
-Bo
+kx
 cS
 ns
 WL
@@ -45732,7 +45734,7 @@ ye
 WL
 pr
 Ms
-AE
+Fu
 Tj
 Tj
 Tj
@@ -45911,7 +45913,7 @@ Tq
 KN
 nI
 EF
-mO
+Km
 ns
 CY
 ye
@@ -45926,7 +45928,7 @@ ye
 CY
 pr
 Ms
-AE
+Fu
 Tj
 Tj
 Tj
@@ -46105,7 +46107,7 @@ Tq
 KN
 nI
 Di
-mO
+Km
 ns
 WL
 ye
@@ -46119,8 +46121,8 @@ op
 ye
 WL
 pr
-mO
-AE
+Km
+Fu
 Tj
 Tj
 Tj
@@ -46298,8 +46300,8 @@ Jq
 Tq
 KN
 nI
-Bo
-Tp
+kx
+Uc
 ns
 WL
 QK
@@ -46313,8 +46315,8 @@ Zx
 QK
 WL
 pr
-mO
-AE
+Km
+Fu
 Tj
 Tj
 Tj
@@ -46492,7 +46494,7 @@ Jq
 Tq
 KN
 nI
-Bo
+kx
 Jk
 ns
 WL
@@ -46507,8 +46509,8 @@ WL
 WL
 WL
 pr
-mO
-AE
+Km
+Fu
 Tj
 Tj
 Tj
@@ -46686,7 +46688,7 @@ Jq
 Tq
 KN
 nI
-Bo
+kx
 Jk
 bY
 LU
@@ -46701,8 +46703,8 @@ LU
 LU
 LU
 rk
-mO
-AE
+Km
+Fu
 Tj
 Tj
 Tj
@@ -46880,23 +46882,23 @@ DP
 Tq
 KN
 nI
-Bo
+kx
 Jk
-mO
-mO
+Km
+Km
 wj
 wj
 wj
 wj
-mO
-mO
+Km
+Km
 wj
 wj
 wj
 wj
-mO
+Km
 XU
-AE
+Fu
 Es
 Es
 Es
@@ -47074,23 +47076,23 @@ gF
 Tq
 KN
 nI
-AE
-AE
-AE
-AE
-AE
+Fu
+Fu
+Fu
+Fu
+Fu
 vQ
 vQ
-AE
-mO
+Fu
+Km
 Rn
 JQ
 XX
 XX
 JQ
-AE
-AE
-AE
+Fu
+Fu
+Fu
 sN
 Yd
 fL

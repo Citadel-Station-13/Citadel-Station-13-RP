@@ -56,19 +56,6 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3)
-"am" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/obj/machinery/light/small/old{
-	dir = 8
-	},
-/turf/simulated/floor/wood,
-/area/strelka/shipbase/deck3/bridge/md)
 "an" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -99,15 +86,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/maintenance/medical)
-"ay" = (
-/obj/structure/flora/grass/event/purple_flowers1,
-/obj/structure/lightpost{
-	layer = 3.9;
-	density = 0;
-	light_color = "#f6a820"
-	},
-/turf/simulated/floor/fey/forest_grass,
-/area/strelka/shipbase/deck3)
 "aB" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
@@ -246,7 +224,7 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/steel,
-/area/shuttle/belter)
+/area/strelka/shipbase/deck3/mininghangar)
 "bf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 1
@@ -459,6 +437,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
+/obj/structure/table/rack/shelf,
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck3/bridge/md)
 "bZ" = (
@@ -744,6 +723,7 @@
 /obj/machinery/light/small/old{
 	dir = 1
 	},
+/obj/structure/marker_beacon/red,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/cargo/hangar)
 "dj" = (
@@ -868,6 +848,7 @@
 	dir = 1
 	},
 /obj/machinery/air_alarm/north_mount,
+/obj/structure/marker_beacon/red,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/cargo/hangar)
 "dN" = (
@@ -1662,6 +1643,7 @@
 	req_one_access = null
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/map_helper/access_helper/airlock/station/command/strelka,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/bridge/blueshield)
 "gF" = (
@@ -1812,7 +1794,7 @@
 /area/strelka/shipbase/deck3/cargo)
 "gT" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Medical Substation Bypass"
+	RCon_tag = "Deck 3 Bridge / AI Substation Bypass"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/bridge)
@@ -2428,6 +2410,9 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
+/obj/machinery/light/small/old{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck3/bridge/md)
 "ja" = (
@@ -2524,7 +2509,7 @@
 	pixel_y = 27
 	},
 /turf/simulated/floor/tiled/steel,
-/area/shuttle/belter)
+/area/strelka/shipbase/deck3/mininghangar)
 "jx" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -2926,7 +2911,7 @@
 	name = "belter beacon"
 	},
 /turf/simulated/floor/tiled/steel,
-/area/shuttle/belter)
+/area/strelka/shipbase/deck3/mininghangar)
 "le" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -3358,7 +3343,7 @@
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/steel/airless,
-/area/shuttle/belter)
+/area/strelka/shipbase/deck3/mininghangar)
 "mw" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloorblack,
@@ -3745,7 +3730,7 @@
 /area/strelka/shipbase/deck3)
 "nI" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Medical";
+	RCon_tag = "Substation - Deck 3 bridge / AI";
 	output_attempt = 0
 	},
 /obj/structure/cable/yellow{
@@ -4210,6 +4195,7 @@
 	dir = 6
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/marker_beacon/yellow,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/cargo)
 "ps" = (
@@ -4223,6 +4209,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
+/obj/structure/marker_beacon/yellow,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/cargo)
 "pt" = (
@@ -4427,7 +4414,7 @@
 /obj/structure/ore_box,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/steel,
-/area/shuttle/belter)
+/area/strelka/shipbase/deck3/mininghangar)
 "qp" = (
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/cargo)
@@ -4961,6 +4948,7 @@
 	dir = 9
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/marker_beacon/yellow,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/cargo)
 "rW" = (
@@ -5021,6 +5009,9 @@
 /area/strelka/shipbase/deck3)
 "sm" = (
 /obj/landmark/spawnpoint/job/chief_medical_officer,
+/obj/machinery/light/small/old{
+	dir = 4
+	},
 /turf/simulated/floor/carpet/blue,
 /area/strelka/shipbase/deck3/bridge/md)
 "sn" = (
@@ -5099,6 +5090,7 @@
 "sH" = (
 /obj/structure/table/rack/shelf,
 /obj/structure/window/reinforced,
+/obj/structure/curtain/open/black,
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck3/bridge/md)
 "sJ" = (
@@ -5287,7 +5279,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
-/area/shuttle/belter)
+/area/strelka/shipbase/deck3/mininghangar)
 "tt" = (
 /obj/structure/table/carbon/reinforced,
 /obj/machinery/recharger,
@@ -5851,6 +5843,9 @@
 /obj/structure/cable/orange{
 	icon_state = "6-9"
 	},
+/obj/machinery/light/small/old{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3)
 "vw" = (
@@ -5967,15 +5962,6 @@
 "vV" = (
 /turf/simulated/wall/wood/hardwood,
 /area/strelka/shipbase/deck3/science/test)
-"vW" = (
-/obj/structure/flora/grass/event/full_grass3,
-/obj/structure/lightpost{
-	layer = 3.9;
-	density = 0;
-	light_color = "#f6a820"
-	},
-/turf/simulated/floor/fey/forest_grass,
-/area/strelka/shipbase/deck3)
 "vZ" = (
 /obj/structure/table/woodentable,
 /obj/machinery/chemical_dispenser/catering/bar_coffee{
@@ -6233,7 +6219,7 @@
 	name = "Strelka - Belter Shuttle"
 	},
 /turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/belter)
+/area/strelka/shipbase/deck3/mininghangar)
 "wQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -6965,7 +6951,7 @@
 /area/strelka/shipbase/deck3/medical/emtroom)
 "zb" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Cargo";
+	RCon_tag = "Substation - Park";
 	output_attempt = 0
 	},
 /obj/structure/cable/green{
@@ -7081,7 +7067,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
-/area/shuttle/belter)
+/area/strelka/shipbase/deck3/mininghangar)
 "zu" = (
 /obj/structure/lightpost{
 	layer = 3.9;
@@ -7447,8 +7433,8 @@
 /obj/machinery/door/airlock/multi_tile/glass/exploration{
 	dir = 4
 	},
-/obj/map_helper/access_helper/airlock/station/exploration/department,
 /obj/machinery/door/firedoor/glass,
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/strelka/shipbase/deck3/science/secondary)
 "AI" = (
@@ -7887,7 +7873,7 @@
 	dir = 4
 	},
 /turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/belter)
+/area/strelka/shipbase/deck3/mininghangar)
 "Cf" = (
 /obj/machinery/mech_recharger,
 /obj/machinery/light/small/old{
@@ -8040,7 +8026,7 @@
 	old_wall = 1
 	},
 /turf/simulated/floor/tiled/steel,
-/area/shuttle/belter)
+/area/strelka/shipbase/deck3/mininghangar)
 "Cz" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -8706,6 +8692,7 @@
 	dir = 5
 	},
 /obj/machinery/light/small/old,
+/obj/structure/marker_beacon/red,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/cargo/hangar)
 "EO" = (
@@ -8866,7 +8853,7 @@
 /area/strelka/shipbase/deck3/bridge/upload)
 "Fo" = (
 /turf/simulated/wall/r_wall/prepainted/cargo,
-/area/shuttle/belter)
+/area/strelka/shipbase/deck3/mininghangar)
 "Fp" = (
 /obj/structure/table/carbon,
 /obj/machinery/door/window/southleft,
@@ -8972,6 +8959,12 @@
 /obj/effect/floor_decal/corner/purple/border,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3/science/main)
+"FF" = (
+/obj/machinery/light/small/old{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/strelka/shipbase/deck3)
 "FI" = (
 /obj/spawner/window/low_wall/full/firelocks,
 /obj/structure/curtain/open/bed,
@@ -9091,6 +9084,7 @@
 	dir = 9
 	},
 /obj/machinery/light/small/old,
+/obj/structure/marker_beacon/red,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/cargo/hangar)
 "Gi" = (
@@ -9466,7 +9460,7 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel,
-/area/shuttle/belter)
+/area/strelka/shipbase/deck3/mininghangar)
 "HA" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloorblack,
@@ -9721,6 +9715,19 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3)
+"IE" = (
+/obj/machinery/power/breakerbox/activated{
+	RCon_tag = "Park Substation Bypass"
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/door/window/brigdoor/northleft{
+	req_access = null;
+	req_one_access = list(10,24,11)
+	},
+/turf/simulated/floor/plating,
+/area/strelka/shipbase/deck3/maintenance/cargo)
 "IF" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -10098,6 +10105,10 @@
 /obj/machinery/light/fairy,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck3)
+"JY" = (
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/floor/plating,
+/area/strelka/shipbase/deck3/cargo)
 "Ke" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -10477,7 +10488,7 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/steel,
-/area/shuttle/belter)
+/area/strelka/shipbase/deck3/mininghangar)
 "LI" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 6
@@ -10490,7 +10501,7 @@
 "LQ" = (
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/steel,
-/area/shuttle/belter)
+/area/strelka/shipbase/deck3/mininghangar)
 "LS" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 5
@@ -10643,11 +10654,12 @@
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3/science/secondary)
 "Mq" = (
-/obj/structure/table/rack/shelf,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj/structure/closet/secure_closet/CMO,
+/obj/structure/curtain/open/black,
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck3/bridge/md)
 "Mr" = (
@@ -10678,7 +10690,7 @@
 /area/strelka/shipbase/deck3/maintenance/cargo)
 "Mx" = (
 /turf/simulated/floor/tiled/steel,
-/area/shuttle/belter)
+/area/strelka/shipbase/deck3/mininghangar)
 "MB" = (
 /obj/structure/table/bench/wooden,
 /obj/effect/floor_decal/corner/brown{
@@ -11523,6 +11535,17 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3)
+"PZ" = (
+/obj/structure/closet/secure_closet/cargotech,
+/obj/effect/floor_decal/corner/brown{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/brown{
+	dir = 6
+	},
+/obj/machinery/light/small/old,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck3/cargo/reception)
 "Qa" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -11552,7 +11575,7 @@
 	name = "belter craft hatch"
 	},
 /turf/simulated/floor/tiled/steel,
-/area/shuttle/belter)
+/area/strelka/shipbase/deck3/mininghangar)
 "Qe" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 6
@@ -11826,6 +11849,9 @@
 /area/strelka/shipbase/deck3/science/robotics)
 "Rv" = (
 /obj/landmark/spawnpoint/job/research_director,
+/obj/machinery/light/small/old{
+	dir = 4
+	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/strelka/shipbase/deck3/bridge/rd)
 "Rw" = (
@@ -12245,6 +12271,7 @@
 	dir = 10
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/marker_beacon/yellow,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/cargo)
 "SM" = (
@@ -12840,6 +12867,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj/structure/table/rack/shelf,
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck3/bridge/md)
 "UW" = (
@@ -12994,7 +13022,7 @@
 /obj/item/tank/emergency/oxygen/double,
 /obj/item/tank/emergency/oxygen/double,
 /turf/simulated/floor/tiled/steel,
-/area/shuttle/belter)
+/area/strelka/shipbase/deck3/mininghangar)
 "Vy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -13859,7 +13887,7 @@
 /area/strelka/shipbase/deck3/medical/roomhallway)
 "YK" = (
 /obj/machinery/conveyor_switch/oneway{
-	id = "QMLoad";
+	id = "mining_interior";
 	name = "refining conveyor";
 	pixel_y = 2;
 	pixel_x = -11
@@ -28030,7 +28058,7 @@ zA
 mP
 zf
 ca
-iR
+IE
 xH
 UX
 kq
@@ -28423,7 +28451,7 @@ xH
 Fx
 bm
 Ci
-As
+PZ
 OQ
 Ba
 zh
@@ -29019,7 +29047,7 @@ jp
 Wt
 st
 FN
-qp
+JY
 FN
 Jh
 Wt
@@ -29796,7 +29824,7 @@ qw
 Wt
 vr
 Gx
-Wt
+FF
 qw
 Ql
 Wt
@@ -36000,13 +36028,13 @@ Sg
 Vb
 IM
 uZ
-vW
-uZ
+Bb
+rW
 gK
 jM
 Nl
-WK
-ay
+kC
+cO
 uZ
 Of
 xQ
@@ -36965,7 +36993,7 @@ io
 io
 qE
 oS
-am
+xz
 iZ
 xz
 bf

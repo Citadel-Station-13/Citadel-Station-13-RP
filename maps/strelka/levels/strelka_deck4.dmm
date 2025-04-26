@@ -740,6 +740,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
+/obj/machinery/vending/cigarette,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/hallway)
 "dk" = (
@@ -864,6 +865,13 @@
 /obj/structure/grille,
 /turf/simulated/floor/tiled/monodark,
 /area/space)
+"dR" = (
+/obj/spawner/window/low_wall/full/firelocks{
+	layer = 2.9
+	},
+/obj/machinery/door/blast/strelka/blockade,
+/turf/simulated/floor/plating,
+/area/strelka/shipbase/deck4/kitchen)
 "dU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -1111,7 +1119,7 @@
 /area/strelka/shipbase/deck4/bar)
 "fc" = (
 /obj/machinery/door/blast/strelka/blockade,
-/obj/spawner/window/low_wall/reinforced/tinted/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
 	id = "hoptint"
 	},
 /turf/simulated/floor/plating,
@@ -2932,7 +2940,7 @@
 /area/strelka/shipbase/deck4/hallway)
 "mW" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Bridge";
+	RCon_tag = "Substation - Deck 4 Bridge";
 	output_attempt = 0
 	},
 /obj/structure/window/reinforced{
@@ -3375,7 +3383,7 @@
 /area/strelka/shipbase/deck4/hallway)
 "oL" = (
 /obj/machinery/door/blast/strelka/blockade,
-/obj/spawner/window/low_wall/reinforced/tinted/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
 	id = "captaintint"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4181,7 +4189,7 @@
 /area/strelka/shipbase/deck4/maintenance)
 "sk" = (
 /obj/machinery/door/blast/strelka/blockade,
-/obj/spawner/window/low_wall/reinforced/tinted/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
 	id = "captaintint"
 	},
 /turf/simulated/floor/plating,
@@ -6606,7 +6614,7 @@
 /area/strelka/shipbase/deck4/bar)
 "Fu" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Bridge Bypass"
+	RCon_tag = "Deck 4 Bridge Bypass"
 	},
 /obj/machinery/door/window/brigdoor/eastright{
 	req_one_access = list(10,24,11);
@@ -7315,7 +7323,7 @@
 /area/strelka/shipbase/deck4/bar)
 "IV" = (
 /obj/machinery/door/blast/strelka/blockade,
-/obj/spawner/window/low_wall/reinforced/tinted/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
 	id = "hoptint"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -8089,6 +8097,17 @@
 	pixel_x = -7;
 	pixel_y = 7
 	},
+/obj/item/reagent_containers/food/condiment/enzyme{
+	pixel_y = 19
+	},
+/obj/item/reagent_containers/food/condiment/enzyme{
+	pixel_y = 19;
+	pixel_x = 10
+	},
+/obj/item/reagent_containers/food/condiment/enzyme{
+	pixel_y = 19;
+	pixel_x = 5
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/kitchen)
 "MP" = (
@@ -8618,13 +8637,13 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/obj/structure/closet/crate/bin,
 /obj/machinery/status_display{
 	pixel_y = 32
 	},
 /obj/machinery/camera/network/security{
 	dir = 8
 	},
+/obj/machinery/vending/cigarette,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/bar)
 "Pm" = (
@@ -28850,7 +28869,7 @@ jR
 jR
 jR
 eh
-HG
+dR
 MJ
 QD
 pZ
