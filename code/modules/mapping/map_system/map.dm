@@ -79,6 +79,7 @@
 	/// * Once loaded in, we can never be unreferenced / deleted. SSmapping now owns the map permanently, even if unloaded again.
 	var/tmp/loaded = FALSE
 	/// Quick access - loaded indices
+	/// * This should be in the same order as [levels].
 	var/tmp/list/loaded_z_indices
 	/// list of stringified z coordinates to the level datum
 	///

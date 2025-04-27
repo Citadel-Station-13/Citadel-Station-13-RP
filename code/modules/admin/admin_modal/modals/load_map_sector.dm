@@ -256,7 +256,7 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 	)
 
 /datum/admin_modal/load_map_sector/proc/overmap_data()
-	if(!istype(buffer.overmap_initializer, /datum/overmap_initializer/struct))
+	if(!istype(buffer.overmap_initializer, /datum/overmap_initializer/map))
 		return list(
 			"x" = 0,
 			"y" = 0,

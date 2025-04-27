@@ -39,6 +39,7 @@
 
 	//! legacy: make a 1-z sector if we spawned on a level without an entity, and without a struct. !//
 	if(!overmap)
+		#warn deal with this, needs to bind to map instead
 		var/our_z = get_z(src)
 		if(our_z)
 			var/obj/overmap/entity/existing_entity = SSovermaps.get_enclosing_overmap_entity(our_z)

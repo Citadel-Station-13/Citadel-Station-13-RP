@@ -23,10 +23,10 @@
 	map = null
 
 /datum/overmap_location/map/get_z_indices()
-	return map.conmaped ? map.z_indices.Copy() : list()
+	return map.loaded ? map.loaded_z_indices.Copy() : list()
 
 /datum/overmap_location/map/get_owned_z_indices()
-	return map.conmaped ? map.z_indices.Copy() : list()
+	return map.loaded ? map.loaded_z_indices.Copy() : list()
 
 /datum/overmap_location/map/is_physically_level(z)
 	return (SSmapping.ordered_levels[z]?.map == map)
