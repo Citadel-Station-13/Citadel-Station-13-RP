@@ -106,4 +106,4 @@
 	if(comp.wielder)
 		comp.unwield()
 	else
-		comp.wield(user.mob)
+		comp.wield(src)

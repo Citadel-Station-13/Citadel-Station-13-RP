@@ -40,7 +40,7 @@
 
 /datum/component/wielding/proc/signal_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
-	examine_list += SPAN_NOTICE("[parent] seems to be able to be used with [hands] hands. Press your \"<b>Wield Item</b>\" keybind [user?.client?.print_keys_for_keybind_with_prefs_link(/datum/keybinding/mob/multihand_wield, " ")]to toggle wielding.")
+	examine_list += SPAN_NOTICE("[parent] seems to be able to be used with [hands] hands. Press your \"<b>Wield Item</b>\" keybind [user?.client?.print_keys_for_keybind_with_prefs_link(/datum/keybinding/item/multihand_wield, " ")]to toggle wielding.")
 
 /datum/component/wielding/proc/signal_dropped(datum/source, mob/user, flags, atom/newloc)
 	unwield()
@@ -138,7 +138,7 @@
 		host = null
 	return ..()
 
-/obj/item/offhand/wielding/proc/get_host_drop_descriptor()
+/obj/item/offhand/wielding/get_host_drop_descriptor()
 	return "stop wielding [host.parent]"
 
 //* Item Hooks *//
