@@ -44,8 +44,16 @@
 	var/combo_continuation_timeout = 3 SECONDS
 	/// our combo is active; we won't go onto clickdelay until it falls off
 	var/combo_continuation_active = FALSE
+	/// multiplier to clickdelay on successful continuation
+	var/combo_continuation_speedmod = 2 / 3
 	/// sound to play on combo continuation
 	var/combo_continuation_sfx =  'sound/weapons/resonator_blast.ogg'
+	var/combo_continuation_damage = 5
+	var/combo_continuation_damage_tier = MELEE_TIER_MEDIUM
+	var/combo_continuation_damage_type = DAMAGE_TYPE_BRUTE
+	var/combo_continuation_damage_flag = ARMOR_BOMB
+	var/combo_continuation_damage_mode = DAMAGE_MODE_ABLATING
+
 	/// sound to play on combo fail
 	var/combo_fail_sfx = /datum/soundbyte/sparks
 
@@ -116,12 +124,11 @@
 	RegisterSignal(wearer, COMSIG_MOB_MELEE_INTENTFUL_HOOK, PROC_REF(on_user_melee_intent))
 	RegisterSignal(wearer, COMSIG_MOB_MELEE_IMPACT_HOOK, PROC_REF(on_user_melee_impact))
 
-#warn FUCK FUCK FUCK FCUK FUCK FUCK FUCK
-
 /obj/item/kinetic_gauntlets/on_inv_unequipped(mob/wearer, datum/inventory/inventory, slot_id_or_index, inv_op_flags, datum/event_args/actor/actor)
 	. = ..()
 	discharge()
 	QDEL_NULL(combo_tracker)
+	UnregisterSignal(wearer, COMSIG_MOB_MELEE_INTENTFUL_HOOK)
 	UnregisterSignal(wearer, COMSIG_MOB_MELEE_IMPACT_HOOK)
 
 /obj/item/kinetic_gauntlets/proc/on_continuation_begin()
@@ -182,6 +189,8 @@
 /obj/item/kinetic_gauntlets/proc/run_detonation_fx(turf/location, atom/target)
 	return
 
+// TODO: this doesn't take into account missing as it's hooked in too high up on the clickchain.
+//       we need to investigate how to make a generic attack roll system at some point.
 /obj/item/kinetic_gauntlets/proc/on_user_melee_intent(datum/source, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	SIGNAL_HANDLER
 	if(!combo_tracker)
@@ -203,9 +212,10 @@
 		else
 			// currently continuing
 			execute_combo_step(clickchain, clickchain_flags, combo_tracker, inbound_key)
+			clickchain.click_cooldown_multiplier *= combo_continuation_speedmod
 		return RAISE_MOB_MELEE_INTENTFUL_ACTION | RAISE_MOB_MELEE_INTENTFUL_SKIP
-	QDEL_NULL(mark)
 	execute_combo(clickchain, clickchain_flags, executing_combo)
+	QDEL_NULL(mark)
 	discharge(charge_delay_multiplier_combo)
 	return RAISE_MOB_MELEE_INTENTFUL_ACTION | RAISE_MOB_MELEE_INTENTFUL_SKIP
 
@@ -263,7 +273,29 @@
 	use_combo.inflict(target, clickchain.target_zone, clickchain.performer, clickchain, FALSE)
 
 /obj/item/kinetic_gauntlets/proc/execute_combo_step(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/combo_tracker/tracker, inbound_key)
+	playsound(src, combo_continuation_sfx, 75, TRUE)
+	clickchain.visible_feedback(
+		target = clickchain.target,
+		range = MESSAGE_RANGE_COMBAT_LOUD,
+		visible = SPAN_WARNING("[clickchain.performer] strikes [clickchain.target] with a resonating blast!"),
+		audible = SPAN_WARNING("You hear a resonating crack of metal against some kind of energy field."),
+	)
+	clickchain.target?.inflict_damage_instance(
+		combo_continuation_damage,
+		combo_continuation_damage_type,
+		combo_continuation_damage_tier,
+		combo_continuation_damage_flag,
+		combo_continuation_damage_mode,
+		attack_type = ATTACK_TYPE_MELEE,
+		attack_source = clickchain,
+		hit_zone = clickchain.target_zone,
+	)
 
 /obj/item/kinetic_gauntlets/proc/execute_combo_fail(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/combo_tracker/tracker, inbound_key)
-
-#warn impl
+	playsound(src, combo_fail_sfx, 75, TRUE)
+	clickchain.visible_feedback(
+		target = clickchain.target,
+		range = MESSAGE_RANGE_COMBAT_LOUD,
+		visible = SPAN_WARNING("[clickchain.performer] clumsily slaps [clickchain.target], collapsing their kinetic resonance field!"),
+		audible = SPAN_WARNING("You hear an energy field fizzling out."),
+	)
