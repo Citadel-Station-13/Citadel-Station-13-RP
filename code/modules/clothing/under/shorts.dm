@@ -125,11 +125,6 @@
 	desc = "A skirt that is swept to one side."
 	icon_state = "skirt_swept"
 
-/obj/item/clothing/under/skirt/loincloth
-	name = "loincloth"
-	desc = "A piece of cloth wrapped around the waist."
-	icon_state = "loincloth"
-
 /obj/item/clothing/under/skirt/pleated
 	name = "pleated skirt"
 	desc = "A simple pleated skirt. It's like high school all over again."

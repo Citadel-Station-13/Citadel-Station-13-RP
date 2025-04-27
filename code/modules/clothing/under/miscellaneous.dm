@@ -1,25 +1,3 @@
-/obj/item/clothing/under/pj/red
-	name = "red pj's"
-	desc = "Sleepwear."
-	icon_state = "red_pyjamas"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "white", SLOT_ID_LEFT_HAND = "white")
-
-/obj/item/clothing/under/pj/red_fem
-	name = "red pj's"
-	desc = "Sleepwear."
-	icon_state = "red_pyjamas_fem"
-
-/obj/item/clothing/under/pj/blue
-	name = "blue pj's"
-	desc = "Sleepwear."
-	icon_state = "blue_pyjamas"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "white", SLOT_ID_LEFT_HAND = "white")
-
-/obj/item/clothing/under/pj/blue_fem
-	name = "blue pj's"
-	desc = "Sleepwear."
-	icon_state = "blue_pyjamas_fem"
-
 /obj/item/clothing/under/captain_fly
 	name = "rogue's uniform"
 	desc = "For the man who doesn't care because he's still free."
@@ -326,8 +304,6 @@
 	desc = "A gold-lined white robe. It gives off uncomfortable cult vibes, but fancy."
 	icon_state = "whitegoldrobe"
 
-
-
 /obj/item/clothing/under/dress/dress_cap
 	name = "Facility Director's dress uniform"
 	desc = "Feminine fashion for the style conscious Facility Director."
@@ -481,128 +457,6 @@
 	desc = "A red shirt that has had the top cut low."
 	icon_state = "cuttop_red"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "red", SLOT_ID_LEFT_HAND = "red")
-
-/*
- * swimsuit
- */
-/obj/item/clothing/under/swimsuit
-	name = "primitive swimsuit"
-	desc = "In all reality, this is just a simple loincloth."
-	icon_state = "loincloth"
-	siemens_coefficient = 1
-	body_cover_flags = 0
-
-/obj/item/clothing/under/swimsuit/black
-	name = "black swimsuit"
-	desc = "An oldfashioned black swimsuit."
-	icon_state = "swim_black"
-
-/obj/item/clothing/under/swimsuit/blue
-	name = "blue swimsuit"
-	desc = "An oldfashioned blue swimsuit."
-	icon_state = "swim_blue"
-
-/obj/item/clothing/under/swimsuit/purple
-	name = "purple swimsuit"
-	desc = "An oldfashioned purple swimsuit."
-	icon_state = "swim_purp"
-
-/obj/item/clothing/under/swimsuit/green
-	name = "green swimsuit"
-	desc = "An oldfashioned green swimsuit."
-	icon_state = "swim_green"
-
-/obj/item/clothing/under/swimsuit/red
-	name = "red swimsuit"
-	desc = "An oldfashioned red swimsuit."
-	icon_state = "swim_red"
-
-/obj/item/clothing/under/swimsuit/striped
-	name = "striped swimsuit"
-	desc = "A more revealing striped swimsuit."
-	icon_state = "swim_striped"
-
-/obj/item/clothing/under/swimsuit/white
-	name = "white swimsuit"
-	desc = "A classic one piece."
-	icon_state = "swim_white"
-
-/obj/item/clothing/under/swimsuit/earth
-	name = "earthen swimsuit"
-	desc = "A design more popular on Earth these days."
-	icon_state = "swim_earth"
-
-/obj/item/clothing/under/swimsuit/stripper/stripper_pink
-	name = "pink swimsuit"
-	desc = "A rather skimpy pink swimsuit."
-	icon_state = "stripper_p"
-
-/obj/item/clothing/under/swimsuit/stripper/stripper_green
-	name = "green swimsuit"
-	desc = "A rather skimpy green swimsuit."
-	icon_state = "stripper_g"
-
-/obj/item/clothing/under/swimsuit/stripper/mankini
-	name = "mankini"
-	desc = "No honest man would wear this abomination."
-	icon_state = "mankini"
-
-/obj/item/clothing/under/swimsuit/stripper/cowbikini
-	name = "cow print bikini"
-	desc = "A rather skimpy cow patterned swimsuit."
-	icon_state = "swim_cow"
-
-/obj/item/clothing/under/swimsuit/stripper/captain
-	name = "sexy captain swimsuit"
-	desc = "A revealing stripper's costume patterned after the Captain's uniform."
-	icon_state = "lewdcap"
-
-/obj/item/clothing/under/swimsuit/highclass
-	name = "high class swimsuit"
-	desc = "An elegant swimsuit with a white bikini top and black bikini bottom. Thin black silk drapes down the back and goes to the upper thighs, and authentic gold rings hold the top together at the bust and back."
-	icon_state = "swim_highclass"
-
-/obj/item/clothing/under/swimsuit/latex
-	name = "latex swimsuit"
-	desc = "A tight latex one piece. It clings tightly to the flesh, leaving very little to the imagination."
-	icon_state = "swim_latex"
-
-/obj/item/clothing/under/swimsuit/risque
-	name = "risque swimsuit"
-	desc = "This fits a bit too snug in all the right places. Comes with a collar, for inscrutable reasons."
-	icon_state = "swim_risque"
-
-/obj/item/clothing/under/swimsuit/streamlined
-	name = "streamlined swimsuit"
-	desc = "An all white one-piece that maintains modesty without sacrificing class."
-	icon_state = "swim_stream"
-
-/*
- * pyjamas
- */
-/obj/item/clothing/under/bluepyjamas
-	name = "blue pyjamas"
-	desc = "Slightly old-fashioned sleepwear."
-	icon_state = "blue_pyjamas"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blue", SLOT_ID_LEFT_HAND = "blue")
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-
-/obj/item/clothing/under/bluepyjamas_fem
-	name = "blue pyjamas"
-	desc = "Slightly old-fashioned sleepwear."
-	icon_state = "blue_pyjamas_fem"
-
-/obj/item/clothing/under/redpyjamas
-	name = "red pyjamas"
-	desc = "Slightly old-fashioned sleepwear."
-	icon_state = "red_pyjamas"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "red", SLOT_ID_LEFT_HAND = "red")
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-
-/obj/item/clothing/under/redpyjamas_fem
-	name = "red pyjamas"
-	desc = "Slightly old-fashioned sleepwear."
-	icon_state = "red_pyjamas_fem"
 
 /*
  *Misc Uniforms
@@ -820,16 +674,6 @@
 	desc = "A black halter top with denim jean shorts."
 	icon_state = "haltertop"
 
-/obj/item/clothing/under/festivedress
-	name = "festive dress"
-	desc = "A red dress with a fur-like white trim that is associated with the Christmas season."
-	icon_state = "festivedress"
-
-/obj/item/clothing/under/littleblackdress
-	name = "little black dress"
-	desc = "A small black dress with a red sash."
-	icon_state = "littleblackdress"
-
 /obj/item/clothing/under/bridgeofficer
 	name = "bridge officer uniform"
 	desc = "A jumpsuit for those ranked high enough to stand at the bridge, but not high enough to touch any buttons."
@@ -911,16 +755,6 @@
 	desc = "Have you ever thought about what it's like to be wanderers in the Fourth Dimension? Yes, I'm asking you."
 	icon_state = "victorianlightfire-fem"
 
-/obj/item/clothing/under/victorianreddress
-    name = "red victorian dress"
-    desc = "A little gratitude wouldn't irretrievably damage my ego."
-    icon_state = "victorianreddress"
-
-/obj/item/clothing/under/victorianblackdress
-    name = "black victorian dress"
-    desc = "What's the use of a good quotation if you can't change it?"
-    icon_state = "victorianblackdress"
-
 /obj/item/clothing/under/bridgeofficerskirt
 	name = "bridge officer skirt"
 	desc = "A jumpskirt for those ranked high enough to stand at the bridge, but not high enough to touch any buttons."
@@ -930,11 +764,6 @@
 	name = "fiendish suit"
 	desc = "A red and black suit befitting someone from the dark pits themselves....Or a thirteen year old."
 	icon_state = "fiendsuit"
-
-/obj/item/clothing/under/fienddress
-	name = "fiendish dress"
-	desc = "A red and black dress befitting someone from the dark pits themselves....Or a thirteen year old."
-	icon_state = "fienddress"
 
 /obj/item/clothing/under/leotard
 	name = "black leotard"
@@ -960,21 +789,6 @@
 	name = "bunny leotard (m)"
 	desc = "A black leotard, commonly used by casino workers to drive up tips. Bunny ears and tail sold separately."
 	icon_state = "bunny_m"
-
-/obj/item/clothing/under/tabard_w
-	name = "white tabard-dress"
-	desc = "A gold-trimmed white tabard-dress with a large V-shaped boob window. For when you want to show off your hips and look classy at the same time."
-	icon_state = "white_tabard"
-
-/obj/item/clothing/under/tabard_b
-	name = "black tabard-dress"
-	desc = "A gold-trimmed black tabard-dress with a large circular boob window. Useful for showing off your hips while your buddy puts something in the target's drink."
-	icon_state = "black_tabard"
-
-/obj/item/clothing/under/verglasdress
-    name = "verglas dress"
-    desc = "The modern twist on a forgotten pattern, the Verglas style utilizes comfortable velvet and silver white satin to create an otherworldly effect evocative of winter, or the void."
-    icon_state = "verglas_dress"
 
 /obj/item/clothing/under/fashionminiskirt
     name = "fashionable miniskirt"
@@ -1141,11 +955,6 @@
 	name = "Business Skirt"
 	desc = "A professional black jacket with a mundane brown skirt. Perfect for the office."
 	icon_state = "businessskirt_female"
-
-/obj/item/clothing/under/simpledress
-	name = "White Simple Dress"
-	desc = "A very short, plain white dress with a light blue sash."
-	icon_state = "simpledress"
 
 /obj/item/clothing/under/roman
 	name = "Roman Lorica"
@@ -1644,11 +1453,6 @@
 	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 	worn_bodytypes = BODYTYPE_DEFAULT
 
-/obj/item/clothing/under/chiming_dress
-    name = "chiming dress"
-    desc = "This stylish yet rugged dress is inspired by recovered depictions of ancient Surt's native inhabitants. Composed of many integrated panels, it allows for excellent breathability whilst also retaining a strong profile."
-    icon_state = "chiming_dress"
-
 //Antediluvian
 
 /obj/item/clothing/under/antediluvian
@@ -1724,38 +1528,11 @@
 /obj/item/clothing/under/surplus/russoblue
 	icon_state = "bdu_russoblue"
 
-/obj/item/clothing/under/countess
-	name = "countess dress"
-	desc = "This flowing dress radiates a dark authority. Its wide skirt and daring color palette bring to mind the feeling of movement in shadows, or a rush of blood."
-	icon = 'icons/clothing/uniform/misc/countess.dmi'
-	icon_state = "countess"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/baroness
-	name = "baroness dress"
-	desc = "With its imposing train and sanguine color palette, this dress aims to menace. Some day the designer sought to evoke the downfall of Vetala in its design."
-	icon = 'icons/clothing/uniform/misc/baroness.dmi'
-	icon_state = "baroness"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
 /obj/item/clothing/under/tape
 	name = "body tape wrapping"
 	desc = "Several layers of flexible body tape may be placed in a skintight arrangement that protects the user's modesty while still allowing them to dazzle. Odds of winning a Multipass increase when wearing this attire."
 	icon = 'icons/clothing/uniform/misc/tape.dmi'
 	icon_state = "tape"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/revealing
-	name = "revealing cocktail dress"
-	desc = "A dress this daring requires certain amounts of confidence that few possess. Show off what you've got without too much of a scandal."
-	icon = 'icons/clothing/uniform/misc/revealing.dmi'
-	icon_state = "revealingdress"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
@@ -1779,15 +1556,6 @@
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
-/obj/item/clothing/under/lilin
-	name = "Lilin sash dress"
-	desc = "An exotic shoulderless dress that plunges into an open-hipped sash-like silk skirt. Its fading dyework seems to evoke a sense of bleeding. A small tag marks it as belonging to the Lindenoak line."
-	icon = 'icons/clothing/uniform/misc/lindenoak.dmi'
-	icon_state = "lilin"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
 /obj/item/clothing/under/asmodai
 	name = "Asmodai laced blouse"
 	desc = "An open chest blouse held together by black lacing and coupled with a pair side pre-ripped jeans. It's an outfit that's as much comfortable as it is fashionable. A small tag marks it as belonging to the Lindenoak line."
@@ -1802,40 +1570,6 @@
 	desc = "A well tailored skirt matched with a form fitting blouse, perfect for all those paper pushing needs."
 	icon = 'icons/clothing/uniform/misc/lindenoak.dmi'
 	icon_state = "hueyskirt"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/dress/summer
-	name = "summer dress"
-	desc = "A light and breezy dress designed to keep its wearer comfortable on hot summer days."
-	icon = 'icons/clothing/uniform/misc/summer_dress.dmi'
-	icon_state = "summerdress"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/dress/summer/blue
-	name = "blue summer dress"
-	icon = 'icons/clothing/uniform/misc/summer_dress.dmi'
-	icon_state = "summerdress2"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/dress/summer/red
-	name = "red summer dress"
-	icon = 'icons/clothing/uniform/misc/summer_dress.dmi'
-	icon_state = "summerdress3"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/dress/summer/gold
-	name = "golden summer dress"
-	desc = "A light and breezy dress designed to keep its wearer comfortable on hot summer days. This one features an especially daring side cut."
-	icon = 'icons/clothing/uniform/misc/summer_dress.dmi'
-	icon_state = "summerdress_nt"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
