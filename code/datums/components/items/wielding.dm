@@ -128,6 +128,7 @@
 /obj/item/offhand/wielding
 	name = "wielding offhand"
 	desc = "You shouldn't be able to see this."
+	allow_item_pickup_replace = TRUE
 	/// host
 	var/datum/component/wielding/host
 
@@ -136,6 +137,9 @@
 		host.offhand_destroyed(src)
 		host = null
 	return ..()
+
+/obj/item/offhand/wielding/proc/get_host_drop_descriptor()
+	return "stop wielding [host.parent]"
 
 //* Item Hooks *//
 
