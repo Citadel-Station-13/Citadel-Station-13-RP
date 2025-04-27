@@ -54,7 +54,18 @@
 	full_name = "Toggle Gun Safety"
 	description = "Toggle the safety of a gun in your hand"
 
-/datum/keybinding/human/toggle_gun_safety/down(client/user)
+/datum/keybinding/item/toggle_gun_safety/down(client/user)
 	var/obj/item/gun/G = locate() in user.mob.get_held_items()
 	if(G)
 		G.toggle_safety(user)
+
+/datum/keybinding/item/multihand_wield
+	hotkey_keys = list("ShiftX")
+	classic_keys = list("ShiftX")
+	name = "multihand_wield"
+	full_name = "Wield Item"
+	description = "Wield an item with two, or more hands (if it's supported)."
+
+/datum/keybinding/item/multihand_wield/down(client/user)
+	user.mob.keybind_wield_inhand()
+	return TRUE
