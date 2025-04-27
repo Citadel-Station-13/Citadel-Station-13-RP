@@ -30,6 +30,7 @@
 			e_args.chat_feedback(SPAN_WARNING("You [get_host_drop_descriptor()] to pick up [target_item]."))
 			e_args.performer.drop_item_to_ground(src)
 			target_item.attempt_pickup(e_args.performer)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
 /obj/item/offhand/proc/get_host_drop_descriptor()
