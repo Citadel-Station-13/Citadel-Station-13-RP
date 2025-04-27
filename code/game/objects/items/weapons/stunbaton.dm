@@ -96,7 +96,7 @@
 		return FALSE
 	active = TRUE
 	if(!silent)
-		playsound(src, /datum/soundbyte/grouped/sparks, 75, TRUE)
+		playsound(src, /datum/soundbyte/sparks, 75, TRUE)
 	update_icon()
 	return TRUE
 
@@ -105,7 +105,7 @@
 		return TRUE
 	active = FALSE
 	if(!silent)
-		playsound(src, /datum/soundbyte/grouped/sparks, 75, TRUE)
+		playsound(src, /datum/soundbyte/sparks, 75, TRUE)
 	update_icon()
 	return TRUE
 

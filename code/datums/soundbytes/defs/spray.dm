@@ -1,11 +1,15 @@
-/datum/soundbyte/spray_air
-	name = "Spray (Air)"
+/datum/soundbyte/spray
+	abstract_type = /datum/soundbyte/spray
 	is_sfx = TRUE
+
+/datum/soundbyte/spray/air_1
+	name = "Spray (Air)"
+	id = "spray-air-1"
 	path = 'sound/soundbytes/effects/spray/spray_air_whoosh.ogg'
 
-/datum/soundbyte/grouped/spray_liquid
+/datum/soundbyte/spray/liquid_1
 	name = "Spray (Liquid)"
-	is_sfx = TRUE
+	id = "spray-liquid-1"
 	path = list(
 		'sound/soundbytes/effects/spray/spray_liquid_slower.ogg',
 		'sound/soundbytes/effects/spray/spray_liquid_faster.ogg',

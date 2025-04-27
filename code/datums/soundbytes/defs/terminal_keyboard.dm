@@ -1,5 +1,6 @@
-/datum/soundbyte/grouped/terminal_keyboard
+/datum/soundbyte/terminal_keyboard
 	name = "Terminal Click"
+	id = "terminal-1"
 	alias = SFX_ALIAS_TERMINAL
 	is_sfx = TRUE
 	length = 0.2 SECONDS

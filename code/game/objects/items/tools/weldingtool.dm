@@ -589,8 +589,8 @@
 	var/cell_type = /obj/item/cell/device
 	var/use_external_power = 0	//If in a borg or hardsuit, this needs to = 1
 	flame_color = "#00CCFF"  // Blue-ish, to set it apart from the gas flames.
-	acti_sound = /datum/soundbyte/grouped/sparks
-	deac_sound = /datum/soundbyte/grouped/sparks
+	acti_sound = /datum/soundbyte/sparks
+	deac_sound = /datum/soundbyte/sparks
 
 /obj/item/weldingtool/electric/unloaded
 	cell_type = null

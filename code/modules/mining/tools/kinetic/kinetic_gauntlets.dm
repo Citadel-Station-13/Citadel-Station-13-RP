@@ -46,6 +46,8 @@
 	var/combo_continuation_active = FALSE
 	/// sound to play on combo continuation
 	var/combo_continuation_sfx =  'sound/weapons/resonator_blast.ogg'
+	/// sound to play on combo fail
+	var/combo_fail_sfx = /datum/soundbyte/sparks
 
 	var/charged_structure_damage = 30
 	var/charged_structure_damage_tier = MELEE_TIER_MEDIUM
@@ -182,7 +184,8 @@
 
 /obj/item/kinetic_gauntlets/proc/on_user_melee_intent(datum/source, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	SIGNAL_HANDLER
-
+	if(!combo_tracker)
+		return NONE
 	if(!ismob(clickchain.target))
 		return NONE
 	var/mob/mob_target = clickchain.target
@@ -190,9 +193,16 @@
 	var/datum/status_effect/grouped/proto_kinetic_mark/mark = mob_target.has_status_effect(/datum/status_effect/grouped/proto_kinetic_mark)
 	if(!mark)
 		return NONE
-	var/datum/combo/melee/executing_combo = combo_tracker?.process_inbound(clickchain.using_intent, combo_set)
+	var/datum/combo/melee/executing_combo = combo_tracker.process_inbound(clickchain.using_intent, combo_set)
+	var/inbound_key = clickchain.using_intent
 	if(!executing_combo)
-		#warn intercept and do the slappy
+		if(!length(combo_tracker.combo_possible))
+			// failed
+			execute_combo_fail(clickchain, clickchain_flags, combo_tracker, inbound_key)
+			QDEL_NULL(mark)
+		else
+			// currently continuing
+			execute_combo_step(clickchain, clickchain_flags, combo_tracker, inbound_key)
 		return RAISE_MOB_MELEE_INTENTFUL_ACTION | RAISE_MOB_MELEE_INTENTFUL_SKIP
 	QDEL_NULL(mark)
 	execute_combo(clickchain, clickchain_flags, executing_combo)
@@ -251,3 +261,9 @@
 	var/turf/target_turf = get_turf(target)
 	run_detonation_fx(target_turf, target)
 	use_combo.inflict(target, clickchain.target_zone, clickchain.performer, clickchain, FALSE)
+
+/obj/item/kinetic_gauntlets/proc/execute_combo_step(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/combo_tracker/tracker, inbound_key)
+
+/obj/item/kinetic_gauntlets/proc/execute_combo_fail(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/combo_tracker/tracker, inbound_key)
+
+#warn impl

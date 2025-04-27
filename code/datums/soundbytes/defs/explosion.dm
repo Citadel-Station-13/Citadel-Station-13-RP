@@ -1,5 +1,6 @@
-/datum/soundbyte/grouped/explosion
-	name = "Explosion"
+/datum/soundbyte/explosion
+	name = "Explosion A"
+	id = "explosion-1"
 	alias = SFX_ALIAS_EXPLOSION
 	is_sfx = TRUE
 	path = list(

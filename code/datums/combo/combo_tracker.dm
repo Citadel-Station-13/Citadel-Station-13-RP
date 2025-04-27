@@ -12,21 +12,21 @@
 /datum/combo_tracker
 	/// current stored key sequence, first to last
 	/// * this is not a lazy list
-	var/list/stored = list()
+	var/list/stored_keys = list()
 	/// current comboset evaluating against
 	/// * while we can techncially not store this, as remaining combos list
 	///   is enough to run an existing combo chain, this is stored to more
 	///   easily detect errors
-	var/datum/combo_set/running
+	var/datum/combo_set/combo_active
 	/// current possible combos left
-	var/list/datum/combo/remaining
+	var/list/datum/combo/combo_possible
 	/// current position in a potential combo
-	var/position
+	var/combo_position
 
 /datum/combo_tracker/proc/reset()
 	// do not cut, make a new list; subtypes might be referencing this before reset!
-	stored = list()
-	running = remaining = position = null
+	stored_keys = list()
+	combo_active = combo_possible = combo_position = null
 
 /**
  * ## algorithm
@@ -63,45 +63,45 @@
 /datum/combo_tracker/proc/process_inbound(inbound, datum/combo_set/combo_set, tail_match)
 	SHOULD_NOT_SLEEP(TRUE)
 	// increment stored
-	stored += inbound
+	stored_keys += inbound
 	// if tail match requested, run tail match immediately and ask questions later
 	if(tail_match)
 		var/datum/combo/tail_matched = combo_set.simple_tail_match(stored)
 		if(tail_matched)
 			return tail_matched
 	// trim stored
-	if(length(stored) > combo_set.computed_max_sequence_length)
-		stored.len = combo_set.computed_max_sequence_length
+	if(length(stored_keys) > combo_set.computed_max_sequence_length)
+		stored_keys.len = combo_set.computed_max_sequence_length
 	// reset if we changed combos
-	if(combo_set != running)
-		running = combo_set
-		remaining = null
+	if(combo_set != combo_active)
+		combo_active = combo_set
+		combo_possible = null
 	// repopulate and reset if no current combo can still run empty
-	if(!length(remaining))
-		remaining = combo_set.combos.Copy()
-		position = 1
+	if(!length(combo_possible))
+		combo_possible = combo_set.combos.Copy()
+		combo_position = 1
 	// see what is still valid, eject invalid ones, etc
-	for(var/datum/combo/combo as anything in remaining)
-		// if position went past last, it's no longer valid
-		if(length(combo.keys) < position)
-			remaining -= combo
+	for(var/datum/combo/combo as anything in combo_possible)
+		// if combo_position went past last, it's no longer valid
+		if(length(combo.keys) < combo_position)
+			combo_possible -= combo
 			continue
-		// if current position in combo keys is not inbound key it's no longer valid
-		if(combo.keys[position] != inbound)
-			remaining -= combo
+		// if current combo_position in combo keys is not inbound key it's no longer valid
+		if(combo.keys[combo_position] != inbound)
+			combo_possible -= combo
 			continue
 	// if we're out of possible ones, reset and return
-	if(!length(remaining))
-		running = position = remaining = null
+	if(!length(combo_possible))
+		combo_active = combo_position = combo_possible = null
 		return
 
-	var/datum/combo/one_left = length(remaining) == 1 ? remaining[1] : null
-	var/finished = one_left ? position == length(one_left.keys) : FALSE
+	var/datum/combo/one_left = length(combo_possible) == 1 ? combo_possible[1] : null
+	var/finished = one_left ? combo_position == length(one_left.keys) : FALSE
 
 	if(finished)
 		// if finished, wipe possible and it'll trigger a reset on next iteration
-		running = position = remaining = null
+		combo_active = combo_position = combo_possible = null
 		. = one_left
 	else
-		// advance position otherwise
-		++position
+		// advance combo_position otherwise
+		++combo_position
