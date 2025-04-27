@@ -66,7 +66,7 @@
 	stored_keys += inbound
 	// if tail match requested, run tail match immediately and ask questions later
 	if(tail_match)
-		var/datum/combo/tail_matched = combo_set.simple_tail_match(stored)
+		var/datum/combo/tail_matched = combo_set.simple_tail_match(stored_keys)
 		if(tail_matched)
 			return tail_matched
 	// trim stored

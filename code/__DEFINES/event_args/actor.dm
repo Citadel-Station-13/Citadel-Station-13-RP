@@ -10,6 +10,8 @@
 /// logging only
 #define ACTOR_DATA_COMBO_LOG "combo-log"
 /// logging only
+#define ACTOR_DATA_COMBO_DAMAGE_LOG "combo-damage-log"
+/// logging only
 #define ACTOR_DATA_GRAB_LOG "grab-log"
 /// logging only
 /// * kinetic gauntlets

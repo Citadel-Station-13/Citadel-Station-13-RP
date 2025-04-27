@@ -31,7 +31,7 @@
 	addtimer(CALLBACK(src, PROC_REF(check_continuation)), continuation_timeout)
 
 /datum/combo_tracker/melee/proc/end_continuation(timed_out)
-	var/list/old_stored = stored
+	var/list/old_stored = stored_keys
 	reset()
 	on_continuation_end?.invoke_no_sleep(old_stored, timed_out)
 
@@ -48,7 +48,7 @@
 /datum/combo_tracker/melee/process_inbound(inbound, datum/combo_set/combo_set, tail_match)
 	begin_continuation()
 	. = ..()
-	if(continuation_terminate_on_fail && position == null)
+	if(continuation_terminate_on_fail && combo_position == null)
 		end_continuation(FALSE)
 
 /datum/combo_tracker/melee/intent_based

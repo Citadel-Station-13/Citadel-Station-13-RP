@@ -66,7 +66,7 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
-	clickchain.data[ACTOR_DATA_COMBO_LOG] = "[src]"
+	clickchain?.data[ACTOR_DATA_COMBO_LOG] = "[src]"
 	. = inflict_on(target, target_zone, attacker, clickchain)
 	if(!skip_fx)
 		var/list/fx_msg_args = list(
@@ -107,7 +107,7 @@
 	SHOULD_NOT_SLEEP(TRUE)
 
 	if(damage_force)
-		target.inflict_damage_instance(
+		clickchain?.data[ACTOR_DATA_COMBO_DAMAGE_LOG] = target.inflict_damage_instance(
 			damage_force,
 			damage_type,
 			damage_tier,
