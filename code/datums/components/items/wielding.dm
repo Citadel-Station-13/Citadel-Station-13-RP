@@ -70,6 +70,10 @@
 	for(var/i in 1 to wanted)
 		var/obj/item/offhand/wielding/creating = wielder.allocate_offhand(/obj/item/offhand/wielding)
 		if(!creating)
+			wielder.action_feedback(
+				SPAN_WARNING("You don't have a free hand to hold [parent] with."),
+				target = parent,
+			)
 			QDEL_LIST(made)
 			return
 		creating.host = src
