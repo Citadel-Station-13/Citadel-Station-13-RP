@@ -1,6 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+// todo: DECLARE_MOB_VERB(), managed verbs maybe
+
 /mob/verb/verb_activate_inhand()
 	set name = "Activate Held Object"
 	set category = VERB_CATEGORY_OBJECT
@@ -20,7 +22,7 @@
 	get_active_held_item()?.attack_self(src, actor)
 
 /mob/verb/verb_unique_inhand()
-	set name = "Unique Action"
+	set name = "Unique Held Action"
 	set category = VERB_CATEGORY_OBJECT
 	set src = usr
 
@@ -38,7 +40,7 @@
 	get_active_held_item()?.unique_action(actor)
 
 /mob/verb/verb_defensive_toggle()
-	set name = "Defend Using Inhand"
+	set name = "Defend Using Held"
 	set category = VERB_CATEGORY_OBJECT
 	set src = usr
 
@@ -56,7 +58,7 @@
 	get_active_held_item()?.defensive_toggle(actor)
 
 /mob/verb/verb_defensive_trigger()
-	set name = "Counter With Inhand"
+	set name = "Counter With Held"
 	set category = VERB_CATEGORY_OBJECT
 	set src = usr
 
@@ -74,7 +76,7 @@
 	get_active_held_item()?.defensive_trigger(actor)
 
 /mob/verb/verb_wield_inhand()
-	set name = "Wield Inhand Item"
+	set name = "Wield Held Item"
 	set category = VERB_CATEGORY_OBJECT
 	set src = usr
 

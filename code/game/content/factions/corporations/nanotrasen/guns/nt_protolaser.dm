@@ -62,7 +62,6 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_protolaser/
 		use_single = TRUE;
 		use_color = TRUE;
 	}
-	render_wielded = TRUE
 
 	modular_component_slots = list(
 		GUN_COMPONENT_ACTIVE_COOLER = 1,
