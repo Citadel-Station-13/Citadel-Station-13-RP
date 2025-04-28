@@ -2771,6 +2771,7 @@
 #include "code\modules\clothing\under_new\casual\sleepwear.dm"
 #include "code\modules\clothing\under_new\casual\swimwear.dm"
 #include "code\modules\clothing\under_new\formal\dress.dm"
+#include "code\modules\clothing\under_new\formal\suits.dm"
 #include "code\modules\customitems\item_spawning.dm"
 #include "code\modules\detectivework\forensics.dm"
 #include "code\modules\detectivework\microscope\dnascanner.dm"
