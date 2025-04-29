@@ -20,3 +20,15 @@
 		list(8, 6, 1, null)
 	)
 	rider_offset_format = CF_RIDING_OFFSETS_DIRECTIONAL
+
+/mob/living/silicon/robot/verb/toggle_rider_control()
+
+	set name = "Give Reins"
+	set desc = "Give or take the person riding on you control of your movement."
+	set category = VERB_CATEGORY_IC
+	var/datum/component/riding_handler/mob/robot/riding_handler = GetComponent(/datum/component/riding_handler/mob/robot)
+	if(!riding_handler)
+		to_chat(src, "<span class='notice'>No one is riding you.</span>")
+		return
+	riding_handler.riding_handler_flags ^= CF_RIDING_HANDLER_IS_CONTROLLABLE
+	to_chat(src, "<span class='notice'>You can [(riding_handler.riding_handler_flags & CF_RIDING_HANDLER_IS_CONTROLLABLE)? "now" : "no longer"] be controlled")

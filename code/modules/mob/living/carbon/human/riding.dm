@@ -49,6 +49,18 @@
 		return FALSE
 	return ..()
 
+/mob/living/carbon/human/verb/toggle_rider_control()
+
+	set name = "Give Reins"
+	set desc = "Give or take the person riding on you control of your movement."
+	set category = VERB_CATEGORY_IC
+	var/datum/component/riding_handler/mob/human/riding_handler = GetComponent(/datum/component/riding_handler/mob/human)
+	if(!riding_handler)
+		to_chat(src, "<span class='notice'>No one is riding you.</span>")
+		return
+	riding_handler.riding_handler_flags ^= CF_RIDING_HANDLER_IS_CONTROLLABLE
+	to_chat(src, "<span class='notice'>You can [(riding_handler.riding_handler_flags & CF_RIDING_HANDLER_IS_CONTROLLABLE)? "now" : "no longer"] be controlled")
+
 /mob/living/carbon/human/proc/carry_piggyback(mob/living/carbon/other, instant = FALSE, delay_mod = 1, loc_check = TRUE)
 	if(loc_check && !Adjacent(other))
 		return FALSE
