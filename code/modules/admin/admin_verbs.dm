@@ -102,6 +102,7 @@ var/list/admin_verbs_admin = list(
 	/client/proc/fixatmos,
 	/datum/admins/proc/quick_nif,
 	/datum/admins/proc/sendFax,
+	/datum/admins/proc/toggle_browser_inspect,
 	/client/proc/despawn_player,
 	/client/proc/addbunkerbypass,
 	/client/proc/revokebunkerbypass,
@@ -1087,4 +1088,3 @@ var/list/admin_verbs_event_manager = list(
 	var/datum/browser/popup = new(src, "event_volunteers", "Event Volunteers (In game)", 800, 1200)
 	popup.set_content(dat.Join(""))
 	popup.open()
-

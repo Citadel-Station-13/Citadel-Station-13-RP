@@ -831,3 +831,25 @@
 
 /proc/cmp_timer_data(list/a, list/b)
 	return b["count"] - a["count"]
+
+/datum/admins/proc/toggle_browser_inspect()
+	set category = "Debug"
+	set name = "Toggle Browser Inspect"
+
+	// Probably overkill, but whatever
+	if(!check_rights(R_DEBUG|R_ADMIN))
+		return
+
+	if(byond_version >= 516)
+		var/browser_options = winget(src, null, "browser-options")
+
+		if(findtext(browser_options, "devtools"))
+			// Disable the dev tools.
+			winset(src, null, list("browser-options" = "-devtools"))
+			message_admins("[key_name_admin(usr)] has disabled Browser Inspection.")
+		else
+			// Enable the dev tools.
+			winset(src, null, list("browser-options" = "+devtools"))
+			message_admins("[key_name_admin(usr)] has enabled Browser Inspection.")
+	else
+		alert("Browser Inspection is not supported in this version of BYOND, please update to 516 or later.")
