@@ -826,7 +826,7 @@
 
 	spk.set_up(5, 0, M)
 	spk.attach(M)
-	playsound(T, /datum/soundbyte/grouped/sparks, 50, 1)
+	playsound(T, /datum/soundbyte/sparks, 50, 1)
 	anim(T,M,'icons/mob/mob.dmi',,"phaseout",,M.dir)
 
 /obj/item/perfect_tele/proc/phase_in(var/mob/M,var/turf/T)
@@ -836,7 +836,7 @@
 
 	spk.start()
 	playsound(T, 'sound/effects/phasein.ogg', 25, 1)
-	playsound(T, /datum/soundbyte/grouped/sparks, 50, 1)
+	playsound(T, /datum/soundbyte/sparks, 50, 1)
 	anim(T,M,'icons/mob/mob.dmi',,"phasein",,M.dir)
 	spk.set_up(5, 0, src)
 	spk.attach(src)
