@@ -375,9 +375,9 @@
 		to_chat(src, SPAN_WARNING("Browser Inspection is not supported in this version of BYOND, please update to 516 or later."))
 		return
 
-	var/is_inspection_enabled = findtext(winget(src, null, "browser-options"), "devtools")
+	var/browser_options = winget(src, null, "browser-options")
 
-	if(is_inspection_enabled)
+	if(findtext(browser_options, "devtools"))
 		winset(src, null, list("browser-options" = "-devtools"))
 		to_chat(src, SPAN_NOTICE("You can now right click to use inspect on browsers."))
 	else
