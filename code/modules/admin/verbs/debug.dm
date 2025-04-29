@@ -840,7 +840,7 @@
 	if(!check_rights(R_DEBUG|R_ADMIN))
 		return
 
-	if(byond_version >= 516)
+	if(owner.byond_version >= 516)
 		var/browser_options = winget(src, null, "browser-options")
 
 		if(findtext(browser_options, "devtools"))
