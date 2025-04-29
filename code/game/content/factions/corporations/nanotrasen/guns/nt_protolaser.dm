@@ -32,7 +32,6 @@
 
 /datum/firemode/energy/nt_protolaser/sidearm
 
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_protolaser/sidearm, /nt_protolaser/sidearm, "nt-protolaser-sidearm")
 /obj/item/gun/projectile/energy/nt_protolaser/sidearm
 	name = "energy sidearm"
 	desc = "A versatile energy sidearm wielded by corporate expeditionary teams."
@@ -80,11 +79,14 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_protolaser/
 		/datum/prototype/material/copper::id = 500,
 	)
 
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_protolaser/sidearm/no_pin, /nt_protolaser/sidearm, "nt-protolaser-sidearm")
+/obj/item/gun/projectile/energy/nt_protolaser/sidearm/no_pin
+	pin = null
+
 //* Carbine *//
 
 /datum/firemode/energy/nt_protolaser/carbine
 
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_protolaser/carbine, /nt_protolaser/carbine, "nt-protolaser-carbine")
 /obj/item/gun/projectile/energy/nt_protolaser/carbine
 	name = "energy carbine"
 	desc = "A versatile energy carbine wielded by corporate expeditionary teams."
@@ -133,11 +135,14 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_protolaser/
 		/datum/prototype/material/copper::id = 500,
 	)
 
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_protolaser/carbine/no_pin, /nt_protolaser/carbine, "nt-protolaser-carbine")
+/obj/item/gun/projectile/energy/nt_protolaser/carbine/no_pin
+	pin = null
+
 //* Rifle *//
 
 /datum/firemode/energy/nt_protolaser/rifle
 
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_protolaser/rifle, /nt_protolaser/rifle, "nt-protolaser-rifle")
 /obj/item/gun/projectile/energy/nt_protolaser/rifle
 	name = "energy rifle"
 	desc = "A versatile energy rifle wielded by corporate expeditionary teams."
@@ -185,3 +190,7 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_protolaser/
 		/datum/prototype/material/gold::id = 750,
 		/datum/prototype/material/copper::id = 500,
 	)
+
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_protolaser/rifle/no_pin, /nt_protolaser/rifle, "nt-protolaser-rifle")
+/obj/item/gun/projectile/energy/nt_protolaser/rifle/no_pin
+	pin = null

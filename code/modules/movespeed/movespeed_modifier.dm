@@ -104,6 +104,7 @@ Key procs
 /datum/movespeed_modifier/proc/parse(list/params)
 	. = FALSE
 	var/static/list/valid_set = MOVESPEED_PARAM_VALID_SET
+	// this is vv-guarded by valid_set
 	for(var/key in params)
 		if(!valid_set[key])
 			continue
@@ -210,7 +211,12 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 		diff = var_value - cached_hyperbolic_slowdown
 	. = ..()
 	if(. && slowdown_edit && isnum(diff))
-		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/admin_varedit, params = list(MOVESPEED_PARAM_HYPERBOLIC_SLOWDOWN = diff))
+		add_or_update_variable_movespeed_modifier(
+			/datum/movespeed_modifier/admin_varedit,
+			params = list(
+				MOVESPEED_PARAM_MOD_HYPERBOLIC_SLOWDOWN = diff,
+			)
+		)
 
 ///Is there a movespeed modifier for this mob
 /mob/proc/has_movespeed_modifier(datum/movespeed_modifier/datum_type_id)

@@ -11,6 +11,7 @@ DEFINE_SHARED_BITFIELD(movespeed_modifier_flags, list(
 
 //* params for add_or_update_variable_movespeed_modifier *//
 
+// TODO: these shouldn't be nameof as if we change var names, persistence will break
 #define MOVESPEED_PARAM_MOD_HYPERBOLIC_SLOWDOWN NAMEOF_STATIC(/datum/movespeed_modifier, mod_hyperbolic_slowdown)
 #define MOVESPEED_PARAM_MOD_MULTIPLY_SPEED NAMEOF_STATIC(/datum/movespeed_modifier, mod_multiply_speed)
 #define MOVESPEED_PARAM_LIMIT_TPS_MAX NAMEOF_STATIC(/datum/movespeed_modifier, limit_tiles_per_second_max)
