@@ -237,7 +237,7 @@
 	name = "box of flashbangs (WARNING)"
 	desc = "<B>WARNING: These devices are extremely dangerous and can cause blindness or deafness in repeated use.</B>"
 	icon_state = "flashbang"
-	starts_with = list(/obj/item/grenade/flashbang = 7)
+	starts_with = list(/obj/item/grenade/simple/flashbang = 7)
 	drop_sound = 'sound/items/drop/ammobox.ogg'
 	pickup_sound = 'sound/items/pickup/ammobox.ogg'
 

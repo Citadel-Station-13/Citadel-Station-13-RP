@@ -90,8 +90,8 @@ var/global/list/datum/supply_drop_loot/supply_drop
 		/obj/item/grenade/simple/explosive/frag,
 		/obj/item/grenade/smokebomb,
 		/obj/item/grenade/smokebomb,
-		/obj/item/grenade/flashbang,
-		/obj/item/grenade/flashbang,
+		/obj/item/grenade/simple/flashbang,
+		/obj/item/grenade/simple/flashbang,
 		/obj/item/grenade/simple/emp,
 		/obj/item/grenade/simple/emp,
 		/obj/item/material/knife/tacknife/combatknife)

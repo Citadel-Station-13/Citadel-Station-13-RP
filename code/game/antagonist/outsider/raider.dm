@@ -293,7 +293,7 @@ var/datum/antagonist/raider/raiders
 		var/list/grenades = list(
 			/obj/item/grenade/simple/emp,
 			/obj/item/grenade/smokebomb,
-			/obj/item/grenade/flashbang
+			/obj/item/grenade/simple/flashbang
 			)
 		var/obj/item/storage/box/ammobox = new(get_turf(player.loc))
 		for(var/i in 1 to 7)

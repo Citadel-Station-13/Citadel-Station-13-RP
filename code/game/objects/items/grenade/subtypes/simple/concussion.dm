@@ -6,7 +6,7 @@
 
 	var/blast_radius = 5
 
-/obj/item/grenade/simple/concussion/on_detonate(turf/location)
+/obj/item/grenade/simple/concussion/on_detonate(turf/location, atom/grenade_location)
 	..()
 	SSspatial_effects.run_concussion_blast(location, blast_radius)
 
@@ -19,6 +19,6 @@
 	var/num_fragments = 40  //total number of fragments produced by the grenade
 	var/spread_range = 5 // for above and below, see code\game\objects\items\weapons\grenades\explosive.dm
 
-/obj/item/grenade/simple/concussion/frag/on_detonate(turf/location)
+/obj/item/grenade/simple/concussion/frag/on_detonate(turf/location, atom/grenade_location)
 	..()
 	shrapnel_explosion(num_fragments, spread_range, fragment_types)

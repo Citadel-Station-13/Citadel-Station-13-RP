@@ -513,7 +513,7 @@
 	loot_list = list() // oh, you killed him?
 	corpse = null // well, sorry, buddy, he doesn't drop shit
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/human/space/suppressor)
-// 	var/deathnade_path = /obj/item/grenade/flashbang/stingbang
+// 	var/deathnade_path = /obj/item/grenade/simple/flashbang/stingbang
 
 /* far too fun for the codebase at the moment
 /mob/living/simple_mob/humanoid/merc/ranged/space/suppressor/death()
@@ -535,7 +535,7 @@
 	projectiletype = /obj/projectile/bullet/pistol/medium/ap/suppressor/turbo // fuck it, fast bullets
 	grenade_type = /obj/item/grenade/shooter/rubber // don't group up
 	grenade_timer = 30 // well, look what you've done, you've grouped up
-// 	deathnade_path = /obj/item/grenade/flashbang/stingbang/shredbang // REALLY don't group up
+// 	deathnade_path = /obj/item/grenade/simple/flashbang/stingbang/shredbang // REALLY don't group up
 
 // being Actual Professionals, they have better (read: player-level) blocking chances
 /mob/living/simple_mob/humanoid/merc/ranged/space/suppressor/attackby(var/obj/item/O, var/mob/user)

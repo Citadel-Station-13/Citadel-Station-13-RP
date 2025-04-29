@@ -1272,7 +1272,7 @@
 "dc" = (
 /obj/structure/table/rack,
 /obj/item/grenade/simple/emp,
-/obj/item/grenade/flashbang,
+/obj/item/grenade/simple/flashbang,
 /obj/item/grenade/spawnergrenade/manhacks,
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/skipjack)

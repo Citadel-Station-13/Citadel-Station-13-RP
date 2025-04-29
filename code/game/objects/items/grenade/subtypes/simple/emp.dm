@@ -10,7 +10,7 @@
 	var/emp_light = 7
 	var/emp_long = 10
 
-/obj/item/grenade/simple/emp/on_detonate(turf/location)
+/obj/item/grenade/simple/emp/on_detonate(turf/location, atom/grenade_location)
 	..()
 	empulse(location, emp_heavy, emp_med, emp_light, emp_long)
 
