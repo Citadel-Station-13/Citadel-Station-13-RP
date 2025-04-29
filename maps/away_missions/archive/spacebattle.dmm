@@ -59,7 +59,7 @@
 /area/awaymission/spacebattle/syndicate2)
 "as" = (
 /obj/structure/table/reinforced,
-/obj/item/grenade/empgrenade,
+/obj/item/grenade/simple/emp,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate2)
 "au" = (

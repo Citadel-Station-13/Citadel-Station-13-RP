@@ -1,3 +1,9 @@
+/**
+ * A thing you can throw that goes boom. Simple, really, but not always.
+ *
+ * TODO: /datum/grenade_effect, much like reagent / projectile effects for composition-based
+ *       grenades
+ */
 /obj/item/grenade
 	name = "grenade"
 	desc = "A hand held grenade, with an adjustable timer."

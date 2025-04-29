@@ -42,7 +42,7 @@
 /datum/uplink_item/item/grenades/emp_singular
 	name = "1xEMP Grenade"
 	item_cost = 10
-	path = /obj/item/grenade/empgrenade
+	path = /obj/item/grenade/simple/emp
 
 /datum/uplink_item/item/grenades/frags
 	name = "7xFrag Grenades"
@@ -57,7 +57,7 @@
 /datum/uplink_item/item/grenades/frags_singular
 	name = "1x Frag Grenade"
 	item_cost = 15
-	path = /obj/item/grenade/explosive
+	path = /obj/item/grenade/simple/explosive
 
 /datum/uplink_item/item/grenades/flashbangs
 	name = "7xFlashbangs"

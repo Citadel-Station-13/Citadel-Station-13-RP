@@ -129,9 +129,9 @@
 "cx" = (
 /obj/structure/table/rack,
 /obj/effect/debris/cleanable/dirt,
-/obj/item/grenade/concussion/frag,
-/obj/item/grenade/concussion/frag,
-/obj/item/grenade/concussion/frag,
+/obj/item/grenade/simple/concussion/frag,
+/obj/item/grenade/simple/concussion/frag,
+/obj/item/grenade/simple/concussion/frag,
 /turf/simulated/floor/tiled/steel,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "cA" = (

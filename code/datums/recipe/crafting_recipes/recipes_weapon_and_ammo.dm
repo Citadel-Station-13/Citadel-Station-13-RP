@@ -290,7 +290,7 @@
 
 /datum/crafting_recipe/IED
 	name = "IED"
-	result = /obj/item/grenade/explosive/ied
+	result = /obj/item/grenade/simple/explosive/ied
 	reqs = list(/datum/reagent/fuel = 50,
 				/obj/item/stack/cable_coil = 1,
 				/obj/item/assembly/igniter = 1,

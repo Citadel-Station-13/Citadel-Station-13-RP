@@ -2493,7 +2493,7 @@
 /area/admin_planet/fey_forest/wilds)
 "Xu" = (
 /obj/effect/debris/cleanable/blood,
-/obj/item/grenade/concussion{
+/obj/item/grenade/simple/concussion{
 	pixel_x = 16;
 	pixel_y = 13
 	},

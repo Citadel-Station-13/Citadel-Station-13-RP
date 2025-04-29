@@ -42,7 +42,7 @@
 	name = "\improper SGL-9 grenade launcher"
 	desc = "A military-grade grenade launcher that fires disorienting concussion grenades."
 	icon_state = "mecha_grenadelnchr"
-	projectile = /obj/item/grenade/concussion
+	projectile = /obj/item/grenade/simple/concussion
 	missile_speed = 1
 	projectile_energy_cost = 900
 	equip_cooldown = 50
@@ -54,7 +54,7 @@
 	name = "\improper HEP-I 5 grenade launcher"
 	desc = "A military-grade grenade launcher that fires anti-personnel fragmentation grenades."
 	icon_state = "mecha_fraglnchr"
-	projectile = /obj/item/grenade/explosive
+	projectile = /obj/item/grenade/simple/explosive
 	projectiles = 4
 	missile_speed = 1
 
@@ -63,7 +63,7 @@
 /obj/item/vehicle_module/weapon/ballistic/missile_rack/grenade/frag/mini
 	name = "\improper HEP-MI 6 grenade launcher"
 	desc = "A military-grade grenade launcher that fires miniaturized anti-personnel fragmentation grenades."
-	projectile = /obj/item/grenade/explosive/mini
+	projectile = /obj/item/grenade/simple/explosive/mini
 	projectile_energy_cost = 500
 	equip_cooldown = 25
 

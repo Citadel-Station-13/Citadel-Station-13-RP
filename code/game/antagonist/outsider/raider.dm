@@ -291,7 +291,7 @@ var/datum/antagonist/raider/raiders
 		return
 	if(istype(gun, /obj/item/gun/launcher/grenade))
 		var/list/grenades = list(
-			/obj/item/grenade/empgrenade,
+			/obj/item/grenade/simple/emp,
 			/obj/item/grenade/smokebomb,
 			/obj/item/grenade/flashbang
 			)

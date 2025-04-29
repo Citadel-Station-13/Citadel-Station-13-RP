@@ -78,7 +78,7 @@
 	say_list_type = /datum/say_list/merc
 
 	// Grenade special attack vars
-	var/grenade_type = /obj/item/grenade/concussion
+	var/grenade_type = /obj/item/grenade/simple/concussion
 	var/grenade_timer = 50
 	special_attack_cooldown = 45 SECONDS
 	special_attack_min_range = 2
