@@ -143,9 +143,9 @@
 
 /datum/config_entry/number/vv_edit_var(var_name, var_value)
 	var/static/list/banned_edits = list(
-		NAMEOF_TYPE(/datum/config_entry, max_val),
-		NAMEOF_TYPE(/datum/config_entry, min_val),
-		NAMEOF_TYPE(/datum/config_entry, integer),
+		NAMEOF_TYPE(/datum/config_entry/number, max_val),
+		NAMEOF_TYPE(/datum/config_entry/number, min_val),
+		NAMEOF_TYPE(/datum/config_entry/number, integer),
 	)
 	return !(var_name in banned_edits) && ..()
 
