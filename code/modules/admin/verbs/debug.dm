@@ -364,19 +364,26 @@
 	"})
 	browser.open()
 
-/client/proc/allow_browser_inspect()
+/client/proc/toggle_browser_inspect()
 	set category = ADMIN_CATEGORY_DEBUG
-	set name = "Allow Browser Inspect"
-	set desc = "Allow browser debugging via inspect"
+	set name = "Toggle Browser Inspect"
+	set desc = "Toggle browser debugging via inspect"
 
 	if(!check_rights(R_DEBUG)) return
 
 	if(src.byond_version < 516)
-		to_chat(src, SPAN_WARNING("You can only use this on 516!"))
+		to_chat(src, SPAN_WARNING("Browser Inspection is not supported in this version of BYOND, please update to 516 or later."))
 		return
 
-	to_chat(src, SPAN_NOTICE("You can now right click to use inspect on browsers."))
-	winset(src, null, list("browser-options" = "+devtools"))
+	var/is_inspection_enabled = findtext(winget(src, null, "browser-options"), "devtools")
+
+	if(is_inspection_enabled)
+		winset(src, null, list("browser-options" = "-devtools"))
+		message_admins("[key_name_admin(usr)] has disabled Browser Inspection.")
+	else
+		winset(src, null, list("browser-options" = "+devtools"))
+		message_admins("[key_name_admin(usr)] has enabled Browser Inspection.")
+
 
 /client/proc/cmd_admin_clear_mobs()
 	set category = "Admin"
@@ -831,25 +838,3 @@
 
 /proc/cmp_timer_data(list/a, list/b)
 	return b["count"] - a["count"]
-
-/datum/admins/proc/toggle_browser_inspect()
-	set category = "Debug"
-	set name = "Toggle Browser Inspect"
-
-	// Probably overkill, but whatever
-	if(!check_rights(R_DEBUG|R_ADMIN))
-		return
-
-	if(owner.byond_version >= 516)
-		var/browser_options = winget(src, null, "browser-options")
-
-		if(findtext(browser_options, "devtools"))
-			// Disable the dev tools.
-			winset(src, null, list("browser-options" = "-devtools"))
-			message_admins("[key_name_admin(usr)] has disabled Browser Inspection.")
-		else
-			// Enable the dev tools.
-			winset(src, null, list("browser-options" = "+devtools"))
-			message_admins("[key_name_admin(usr)] has enabled Browser Inspection.")
-	else
-		alert("Browser Inspection is not supported in this version of BYOND, please update to 516 or later.")
