@@ -82,6 +82,7 @@
 	magazine_type = MAGAZINE_TYPE_NORMAL
 	ammo_max = 10
 
+GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidearm/smg, /nt_expedition_ammo/heavy_sidearm/smg, "nt-ammo-9mmLR-smg");
 /obj/item/ammo_magazine/nt_expedition/heavy_sidearm/smg
 	name = "smg magazine (NT-9-LR)"
 	icon_state = "smg-1"
@@ -93,10 +94,6 @@
 		/datum/prototype/material/steel::id = 500,
 		/datum/prototype/material/glass::id = 235,
 	)
-
-GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidearm/smg, /nt_expedition_ammo/heavy_sidearm/smg, "nt-ammo-9mmLR-smg");
-/obj/item/ammo_magazine/nt_expedition/heavy_sidearm/smg/no_pin
-	pin = null
 
 //* Projectiles *//
 
