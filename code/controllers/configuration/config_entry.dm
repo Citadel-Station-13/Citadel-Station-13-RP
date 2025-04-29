@@ -67,14 +67,14 @@
 
 /datum/config_entry/vv_edit_var(var_name, var_value)
 	var/static/list/banned_edits = list(
-		NAMEOF(src, name),
-		NAMEOF(src, vv_VAS),
-		NAMEOF(src, default),
-		NAMEOF(src, resident_file),
-		NAMEOF(src, protection),
-		NAMEOF(src, abstract_type),
-		NAMEOF(src, modified),
-		NAMEOF(src, dupes_allowed),
+		NAMEOF_STATIC(src, name),
+		NAMEOF_STATIC(src, vv_VAS),
+		NAMEOF_STATIC(src, default),
+		NAMEOF_STATIC(src, resident_file),
+		NAMEOF_STATIC(src, protection),
+		NAMEOF_STATIC(src, abstract_type),
+		NAMEOF_STATIC(src, modified),
+		NAMEOF_STATIC(src, dupes_allowed),
 	)
 
 	if(var_name == NAMEOF(src, config_entry_value))
@@ -143,9 +143,9 @@
 
 /datum/config_entry/number/vv_edit_var(var_name, var_value)
 	var/static/list/banned_edits = list(
-		NAMEOF(src, max_val),
-		NAMEOF(src, min_val),
-		NAMEOF(src, integer),
+		NAMEOF_STATIC(src, max_val),
+		NAMEOF_STATIC(src, min_val),
+		NAMEOF_STATIC(src, integer),
 	)
 	return !(var_name in banned_edits) && ..()
 

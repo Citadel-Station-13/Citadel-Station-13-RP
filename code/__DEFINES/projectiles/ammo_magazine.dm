@@ -14,7 +14,7 @@
 
 DEFINE_BITFIELD_NEW(ammo_magazine_types, list(
 	/obj/item/ammo_magazine = list(
-		NAMEOF_STATIC(/obj/item/ammo_magazine, magazine_type),
+		NAMEOF_TYPE(/obj/item/ammo_magazine, magazine_type),
 	),
 ), list(
 	BITFIELD_NEW("Normal", MAGAZINE_TYPE_NORMAL),
@@ -57,7 +57,7 @@ GLOBAL_REAL_LIST(magazine_class_bit_to_state) = list(
 
 DEFINE_BITFIELD_NEW(ammo_magazine_types, list(
 	/obj/item/ammo_magazine = list(
-		NAMEOF_STATIC(/obj/item/ammo_magazine, magazine_class),
+		NAMEOF_TYPE(/obj/item/ammo_magazine, magazine_class),
 	),
 ), list(
 	BITFIELD_NEW("Generic", MAGAZINE_CLASS_GENERIC),
