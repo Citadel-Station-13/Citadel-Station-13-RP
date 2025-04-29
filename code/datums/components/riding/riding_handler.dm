@@ -208,7 +208,7 @@
 					M.setDir(offsets[4])
 				M.reset_pixel_shifting()
 				M.set_base_layer(offsets[3] + AM.layer)
-				M.pixel_x = ppx + M.get_standard_pixel_x_offset() - M.get_centering_pixel_x_offset(dir) + offsets[1]
+				M.pixel_x = ppx + M.get_standard_pixel_x_offset() + M.get_centering_pixel_x_offset(dir) + offsets[1]
 				M.pixel_y = ppy + M.get_standard_pixel_y_offset() - M.get_centering_pixel_y_offset(dir) + offsets[2]
 		if(CF_RIDING_OFFSETS_DIRECTIONAL)
 			var/list/relevant
@@ -230,7 +230,7 @@
 					M.setDir(offsets[4])
 				M.reset_pixel_shifting()
 				M.set_base_layer(offsets[3] + AM.layer)
-				M.pixel_x = ppx + M.get_standard_pixel_x_offset() - M.get_centering_pixel_x_offset(dir) + offsets[1]
+				M.pixel_x = ppx + M.get_standard_pixel_x_offset() + M.get_centering_pixel_x_offset(dir) + offsets[1]
 				M.pixel_y = ppy + M.get_standard_pixel_y_offset() - M.get_centering_pixel_y_offset(dir) + offsets[2]
 		if(CF_RIDING_OFFSETS_ENUMERATED)
 			var/list/relevant
@@ -254,7 +254,7 @@
 					M.setDir(offsets[4])
 				M.reset_pixel_shifting()
 				M.set_base_layer(offsets[3] + AM.layer)
-				M.pixel_x = ppx + M.get_standard_pixel_x_offset() - M.get_centering_pixel_x_offset(dir) + offsets[1]
+				M.pixel_x = ppx + M.get_standard_pixel_x_offset() + M.get_centering_pixel_x_offset(dir) + offsets[1]
 				M.pixel_y = ppy + M.get_standard_pixel_y_offset() - M.get_centering_pixel_y_offset(dir) + offsets[2]
 
 /**

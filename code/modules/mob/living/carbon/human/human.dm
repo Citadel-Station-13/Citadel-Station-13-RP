@@ -1624,11 +1624,10 @@
 //! Pixel Offsets
 /mob/living/carbon/human/get_centering_pixel_x_offset(dir)
 	. = ..()
-	// uh oh stinky
 	if(!isTaurTail(tail_style) || !(dir & (EAST|WEST)))
 		return
-	// groan
-	. += ((size_multiplier * icon_scale_x) - 1) * ((dir & EAST)? -16 : 16)
+	//Didn't work well for smaller sizes, the cart (rider) getting put infront of the tiny horse(taur), so stay at their back.
+	. += max(((size_multiplier * icon_scale_x) - 1), 0) * ((dir & EAST)? -4 : 4)
 
 /mob/living/carbon/human/ClickOn(var/atom/A)
 	if(ab_handler?.process_click(src, A))
