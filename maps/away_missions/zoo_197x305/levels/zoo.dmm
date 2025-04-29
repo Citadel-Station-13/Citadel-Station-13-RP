@@ -48,34 +48,8 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "ai" = (
-/obj/structure/table/marble,
-/obj/structure/safe/floor,
-/obj/item/spacecash/c1000,
-/obj/item/spacecash/c1000,
-/obj/item/spacecash/c1000,
-/obj/item/spacecash/c1000,
-/obj/item/spacecash/c1000,
-/obj/item/spacecash/c1000,
-/obj/item/spacecash/c1000,
-/obj/item/spacecash/c1000,
-/obj/item/spacecash/c1000,
-/obj/item/spacecash/c1000,
-/obj/item/card/emag,
-/obj/item/beartrap,
-/obj/item/grenade/spawnergrenade/spesscarp,
-/obj/item/grenade/spawnergrenade/spesscarp,
-/obj/item/grenade/spawnergrenade/spesscarp,
-/obj/item/clothing/glasses/thermal/plain/monocle,
-/obj/item/stolenpackage,
-/obj/item/stolenpackage,
-/obj/item/stolenpackage,
-/obj/item/stolenpackage,
-/obj/item/stolenpackage,
-/obj/item/plastique,
-/obj/item/plastique,
-/obj/item/melee/transforming/energy/sword/cutlass,
-/turf/space,
-/area/awaymission/zoo)
+/turf/space/basic,
+/area/space)
 "aj" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -705,9 +679,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/zoo/pirateship)
 "cm" = (
-/obj/machinery/door/window{
-	dir = 2
-	},
+/obj/machinery/door/window,
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/zoo/pirateship)
@@ -4027,7 +3999,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/zoo)
 "ln" = (
-/obj/landmark/away,
+/obj/landmark/gateway_scatter,
 /turf/simulated/floor/wood,
 /area/awaymission/zoo)
 "lo" = (
@@ -4117,7 +4089,7 @@
 /obj/structure/toilet{
 	dir = 8
 	},
-/obj/landmark/away,
+/obj/landmark/gateway_scatter,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/zoo)
 "lC" = (
@@ -5066,9 +5038,7 @@
 	},
 /area/awaymission/zoo)
 "of" = (
-/mob/living/simple_mob/vore/aggressive/frog{
-	iff_factions = "!bind-map"
-	},
+/mob/living/simple_mob/vore/aggressive/frog,
 /turf/simulated/floor/holofloor/grass{
 	icon_state = "grass2"
 	},
@@ -5329,9 +5299,7 @@
 /turf/simulated/floor/lino,
 /area/awaymission/zoo)
 "oU" = (
-/mob/living/simple_mob/animal/space/bats{
-	iff_factions = "!bind-map"
-	},
+/mob/living/simple_mob/animal/space/bats,
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "oV" = (
@@ -5524,7 +5492,7 @@
 	},
 /area/awaymission/zoo)
 "pv" = (
-/obj/landmark/away,
+/obj/landmark/gateway_scatter,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass4"
 	},
@@ -6122,9 +6090,7 @@
 /turf/simulated/floor,
 /area/awaymission/zoo)
 "rf" = (
-/mob/living/simple_mob/animal/sif/diyaab{
-	iff_factions = "!bind-map"
-	},
+/mob/living/simple_mob/animal/sif/diyaab,
 /turf/simulated/floor/holofloor/snow,
 /area/awaymission/zoo)
 "rg" = (
@@ -6507,9 +6473,7 @@
 /area/awaymission/zoo)
 "se" = (
 /obj/effect/floor_decal/asteroid,
-/mob/living/simple_mob/animal/space/bear{
-	iff_factions = "!bind-map"
-	},
+/mob/living/simple_mob/animal/space/bear,
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "sf" = (
@@ -6736,7 +6700,7 @@
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "sG" = (
-/obj/landmark/away,
+/obj/landmark/gateway_scatter,
 /turf/simulated/floor/tiled/neutral,
 /area/awaymission/zoo)
 "sH" = (
@@ -6761,13 +6725,11 @@
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "sK" = (
-/obj/landmark/away,
+/obj/landmark/gateway_scatter,
 /turf/simulated/floor/outdoors/beach,
 /area/awaymission/zoo)
 "sL" = (
-/mob/living/simple_mob/animal/space/bear{
-	iff_factions = "!bind-map"
-	},
+/mob/living/simple_mob/animal/space/bear,
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "sN" = (
@@ -7131,9 +7093,7 @@
 /area/awaymission/zoo)
 "tO" = (
 /obj/effect/floor_decal/asteroid,
-/mob/living/simple_mob/vore/aggressive/dino{
-	iff_factions = "!bind-map"
-	},
+/mob/living/simple_mob/vore/aggressive/dino,
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "tP" = (
@@ -7219,9 +7179,7 @@
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "tX" = (
-/mob/living/simple_mob/vore/aggressive/dragon{
-	iff_factions = "!bind-map"
-	},
+/mob/living/simple_mob/vore/aggressive/dragon,
 /turf/simulated/floor/holofloor/desert{
 	icon_state = "asteroidplating";
 	name = "scorched sand"
@@ -7234,15 +7192,11 @@
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "tZ" = (
-/mob/living/simple_mob/tomato{
-	iff_factions = "!bind-map"
-	},
+/mob/living/simple_mob/tomato,
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "ua" = (
-/mob/living/simple_mob/animal/passive/fox{
-	iff_factions = "!bind-map"
-	},
+/mob/living/simple_mob/animal/passive/fox,
 /turf/simulated/floor/holofloor/snow,
 /area/awaymission/zoo)
 "ub" = (
@@ -7281,9 +7235,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "ue" = (
-/mob/living/simple_mob/animal/space/goose{
-	iff_factions = "!bind-map"
-	},
+/mob/living/simple_mob/animal/space/goose,
 /turf/simulated/floor/outdoors/beach,
 /area/awaymission/zoo)
 "uf" = (
@@ -7342,9 +7294,7 @@
 /area/awaymission/zoo)
 "uk" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/mob/living/simple_mob/vore/aggressive/dino{
-	iff_factions = "!bind-map"
-	},
+/mob/living/simple_mob/vore/aggressive/dino,
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "ul" = (
@@ -7355,22 +7305,16 @@
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "um" = (
-/obj/landmark/away,
-/mob/living/simple_mob/animal/space/goose{
-	iff_factions = "!bind-map"
-	},
+/mob/living/simple_mob/animal/space/goose,
+/obj/landmark/gateway_scatter,
 /turf/simulated/floor/wood,
 /area/awaymission/zoo)
 "un" = (
-/mob/living/simple_mob/animal/wolf{
-	iff_factions = "!bind-map"
-	},
+/mob/living/simple_mob/animal/wolf,
 /turf/simulated/floor/holofloor/snow,
 /area/awaymission/zoo)
 "uo" = (
-/mob/living/simple_mob/animal/space/goose{
-	iff_factions = "!bind-map"
-	},
+/mob/living/simple_mob/animal/space/goose,
 /turf/simulated/floor/wood,
 /area/awaymission/zoo)
 "up" = (
@@ -7457,9 +7401,7 @@
 	},
 /area/awaymission/zoo)
 "uA" = (
-/mob/living/simple_mob/animal/space/bear/brown{
-	iff_factions = "!bind-map"
-	},
+/mob/living/simple_mob/animal/space/bear/brown,
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "uB" = (
@@ -7543,9 +7485,7 @@
 /area/awaymission/zoo)
 "uN" = (
 /obj/structure/flora/ausbushes/genericbush,
-/mob/living/simple_mob/animal/space/bear/brown{
-	iff_factions = "!bind-map"
-	},
+/mob/living/simple_mob/animal/space/bear/brown,
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "uO" = (
@@ -7674,9 +7614,7 @@
 	},
 /area/awaymission/zoo)
 "vd" = (
-/mob/living/simple_mob/animal/passive/crab{
-	iff_factions = "!bind-map"
-	},
+/mob/living/simple_mob/animal/passive/crab,
 /turf/simulated/floor/holofloor/beach/sand,
 /area/awaymission/zoo)
 "ve" = (
@@ -7688,9 +7626,7 @@
 	},
 /area/awaymission/zoo)
 "vf" = (
-/mob/living/simple_mob/vore/aggressive/panther{
-	iff_factions = "!bind-map"
-	},
+/mob/living/simple_mob/vore/aggressive/panther,
 /turf/simulated/floor/holofloor/grass{
 	icon_state = "grass2"
 	},
@@ -7724,7 +7660,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "vi" = (
-/obj/landmark/away,
+/obj/landmark/gateway_scatter,
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "vj" = (
@@ -7757,7 +7693,6 @@
 /area/awaymission/zoo)
 "vl" = (
 /mob/living/simple_mob/animal/passive/crab{
-	iff_factions = "!bind-map";
 	icon_dead = "evilcrab_dead";
 	icon_living = "evilcrab";
 	icon_state = "evilcrab"
@@ -7772,9 +7707,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "vn" = (
-/mob/living/simple_mob/animal/sif/shantak{
-	iff_factions = "!bind-map"
-	},
+/mob/living/simple_mob/animal/sif/shantak,
 /turf/simulated/floor/holofloor/snow,
 /area/awaymission/zoo)
 "vo" = (
@@ -7788,7 +7721,6 @@
 "vp" = (
 /mob/living/simple_mob/animal/sif/shantak{
 	color = "";
-	iff_factions = "!bind-map";
 	health = 100;
 	maxHealth = 100;
 	name = "alpha shantak"
@@ -7803,9 +7735,7 @@
 /area/awaymission/zoo)
 "vr" = (
 /obj/structure/flora/bush,
-/mob/living/simple_mob/animal/sif/shantak{
-	iff_factions = "!bind-map"
-	},
+/mob/living/simple_mob/animal/sif/shantak,
 /turf/simulated/floor/holofloor/snow,
 /area/awaymission/zoo)
 "vs" = (
@@ -7860,13 +7790,11 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "vz" = (
-/mob/living/simple_mob/animal/space/bear/polar{
-	iff_factions = "!bind-map"
-	},
+/mob/living/simple_mob/animal/space/bear/polar,
 /turf/simulated/floor/outdoors/beach,
 /area/awaymission/zoo)
 "vA" = (
-/obj/landmark/away,
+/obj/landmark/gateway_scatter,
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "vB" = (
@@ -8214,7 +8142,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/zoo)
 "wC" = (
-/obj/landmark/away,
+/obj/landmark/gateway_scatter,
 /turf/simulated/floor/tiled/red,
 /area/awaymission/zoo)
 "wD" = (
@@ -8228,7 +8156,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/zoo)
 "wF" = (
-/obj/landmark/away,
+/obj/landmark/gateway_scatter,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/zoo)
 "wG" = (
@@ -8551,6 +8479,35 @@
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/zoo/solars)
+"RY" = (
+/obj/structure/table/marble,
+/obj/structure/safe/floor,
+/obj/item/spacecash/c1000,
+/obj/item/spacecash/c1000,
+/obj/item/spacecash/c1000,
+/obj/item/spacecash/c1000,
+/obj/item/spacecash/c1000,
+/obj/item/spacecash/c1000,
+/obj/item/spacecash/c1000,
+/obj/item/spacecash/c1000,
+/obj/item/spacecash/c1000,
+/obj/item/spacecash/c1000,
+/obj/item/card/emag,
+/obj/item/beartrap,
+/obj/item/grenade/spawnergrenade/spesscarp,
+/obj/item/grenade/spawnergrenade/spesscarp,
+/obj/item/grenade/spawnergrenade/spesscarp,
+/obj/item/clothing/glasses/thermal/plain/monocle,
+/obj/item/stolenpackage,
+/obj/item/stolenpackage,
+/obj/item/stolenpackage,
+/obj/item/stolenpackage,
+/obj/item/stolenpackage,
+/obj/item/plastique,
+/obj/item/plastique,
+/obj/item/melee/transforming/energy/sword/cutlass,
+/turf/simulated/floor/reinforced,
+/area/awaymission/zoo/pirateship)
 
 (1,1,1) = {"
 aa
@@ -22072,7 +22029,7 @@ ac
 aa
 aa
 ad
-ag
+RY
 ag
 an
 ad

@@ -1,3 +1,20 @@
+/datum/map/gateway/listeningpost_140
+	id = "listeningpost_140"
+	name = "Gateway - Listeningpost"
+	width = 140
+	height = 140
+	levels = list(
+		/datum/map_level/gateway/listeningpost_140,
+	)
+
+/datum/map_level/gateway/listeningpost_140
+	id = "Listeningpost140"
+	name = "Gateway - Listeningpost"
+	display_name = "Listening Post"
+	path = "maps/away_missions/listeningpost_140/levels/listeningpost.dmm"
+	base_turf = /turf/space
+	base_area = /area/space
+
 /obj/overmap/entity/visitable/sector/gateway/listeningpost
 	initial_generic_waypoints = list("tether_excursion_listeningpost")
 	scanner_name = "Strange Asteroid"

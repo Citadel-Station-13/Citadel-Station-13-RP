@@ -7,7 +7,6 @@
 /area/awaymission/listeningpost)
 "d" = (
 /obj/machinery/power/smes/buildable/point_of_interest{
-	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit.";
 	name = "power storage unit"
 	},
 /turf/simulated/floor,
@@ -226,14 +225,12 @@
 /area/awaymission/listeningpost)
 "I" = (
 /obj/machinery/shower{
-	icon_state = "shower";
 	dir = 8
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/awaymission/listeningpost)
 "J" = (
 /obj/structure/toilet{
-	icon_state = "toilet00";
 	dir = 8
 	},
 /turf/simulated/floor/tiled/freezer,
@@ -249,28 +246,24 @@
 /area/mine/explored)
 "N" = (
 /obj/machinery/gateway{
-	icon_state = "off";
 	dir = 9
 	},
 /turf/simulated/floor/greengrid,
 /area/mine/explored)
 "O" = (
 /obj/machinery/gateway{
-	icon_state = "off";
 	dir = 1
 	},
 /turf/simulated/floor/greengrid,
 /area/mine/explored)
 "P" = (
 /obj/machinery/gateway{
-	icon_state = "off";
 	dir = 5
 	},
 /turf/simulated/floor/greengrid,
 /area/mine/explored)
 "Q" = (
 /obj/machinery/gateway{
-	icon_state = "off";
 	dir = 8
 	},
 /turf/simulated/floor/greengrid,
@@ -281,14 +274,12 @@
 /area/mine/explored)
 "S" = (
 /obj/machinery/gateway{
-	icon_state = "off";
 	dir = 4
 	},
 /turf/simulated/floor/greengrid,
 /area/mine/explored)
 "T" = (
 /obj/machinery/gateway{
-	icon_state = "off";
 	dir = 10
 	},
 /turf/simulated/floor/greengrid,
@@ -299,7 +290,6 @@
 /area/mine/explored)
 "V" = (
 /obj/machinery/gateway{
-	icon_state = "off";
 	dir = 6
 	},
 /turf/simulated/floor/greengrid,
@@ -308,6 +298,10 @@
 /obj/overmap/entity/visitable/sector/gateway/listeningpost,
 /turf/space,
 /area/space)
+"X" = (
+/obj/landmark/gateway_scatter,
+/turf/simulated/mineral/floor,
+/area/mine/explored)
 "Y" = (
 /obj/effect/shuttle_landmark{
 	base_area = /area/space;
@@ -317,6 +311,10 @@
 	},
 /turf/space,
 /area/space)
+"Z" = (
+/obj/landmark/gateway_scatter,
+/turf/simulated/floor/greengrid,
+/area/mine/explored)
 
 (1,1,1) = {"
 a
@@ -7799,7 +7797,7 @@ L
 L
 h
 L
-M
+X
 M
 h
 h
@@ -7937,7 +7935,7 @@ h
 h
 K
 L
-L
+Z
 N
 Q
 T
@@ -8365,7 +8363,7 @@ h
 M
 L
 L
-L
+Z
 L
 L
 M
