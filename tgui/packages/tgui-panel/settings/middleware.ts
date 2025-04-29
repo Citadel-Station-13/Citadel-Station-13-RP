@@ -1,3 +1,4 @@
+
 /**
  * @file
  * @copyright 2020 Aleksej Komarov
@@ -5,10 +6,19 @@
  */
 
 import { storage } from 'common/storage';
+
 import { setClientTheme } from '../themes';
-import { addHighlightSetting, exportSettings, importSettings, loadSettings, removeHighlightSetting, updateHighlightSetting, updateSettings } from './actions';
-import { selectSettings } from './selectors';
+import {
+  addHighlightSetting,
+  exportSettings,
+  importSettings,
+  loadSettings,
+  removeHighlightSetting,
+  updateHighlightSetting,
+  updateSettings,
+} from './actions';
 import { FONTS_DISABLED } from './constants';
+import { selectSettings } from './selectors';
 import { exportChatSettings } from './settingsImExport';
 
 let statFontTimer: NodeJS.Timeout;
@@ -47,11 +57,28 @@ function setGlobalFontSize(
 ) {
   overrideFontSize = `${fontSize}px`;
 
-  // setfontsize removed, not implemented by statbrowser
+  // Used solution from theme.ts
+  clearInterval(statFontTimer);
+  Byond.command(
+    `.output statbrowser:set_font_size ${statLinked ? fontSize : statFontSize}px`,
+  );
+  statFontTimer = setTimeout(() => {
+    Byond.command(
+      `.output statbrowser:set_font_size ${statLinked ? fontSize : statFontSize}px`,
+    );
+  }, 1500);
 }
 
 function setGlobalFontFamily(fontFamily: string) {
   overrideFontFamily = fontFamily === FONTS_DISABLED ? undefined : fontFamily;
+}
+
+function setStatTabsStyle(style: string) {
+  clearInterval(statTabsTimer);
+  Byond.command(`.output statbrowser:set_tabs_style ${style}`);
+  statTabsTimer = setTimeout(() => {
+    Byond.command(`.output statbrowser:set_tabs_style ${style}`);
+  }, 1500);
 }
 
 export function settingsMiddleware(store) {
@@ -62,6 +89,7 @@ export function settingsMiddleware(store) {
 
     if (!initialized) {
       initialized = true;
+
       storage.get('panel-settings').then((settings) => {
         store.dispatch(loadSettings(settings));
       });
@@ -97,6 +125,9 @@ export function settingsMiddleware(store) {
     if (importSettings.type) {
       setClientTheme(settings.theme);
     }
+
+    // Update stat panel settings
+    setStatTabsStyle(settings.statTabsStyle);
 
     // Update global UI font size
     setGlobalFontSize(

@@ -61,7 +61,6 @@
 		use_single = TRUE;
 		use_color = TRUE;
 	}
-	render_wielded = TRUE
 
 	modular_component_slots = list(
 		GUN_COMPONENT_ACTIVE_COOLER = 1,
