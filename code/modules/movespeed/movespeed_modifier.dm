@@ -74,7 +74,7 @@ Key procs
   *
   * todo: unit test this
   */
-/datum/movespeed_modifier/proc/apply_multiplicative(existing, mob/target)
+/datum/movespeed_modifier/proc/apply_hyperbolic(existing, mob/target)
 	. = existing
 	if(mod_multiply_speed != /datum/movespeed_modifier::mod_multiply_speed)
 		. /= mod_multiply_speed
@@ -104,6 +104,7 @@ Key procs
 /datum/movespeed_modifier/proc/parse(list/params)
 	. = FALSE
 	var/static/list/valid_set = MOVESPEED_PARAM_VALID_SET
+	// this is vv-guarded by valid_set
 	for(var/key in params)
 		if(!valid_set[key])
 			continue
@@ -210,7 +211,12 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 		diff = var_value - cached_hyperbolic_slowdown
 	. = ..()
 	if(. && slowdown_edit && isnum(diff))
-		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/admin_varedit, params = list(MOVESPEED_PARAM_HYPERBOLIC_SLOWDOWN = diff))
+		add_or_update_variable_movespeed_modifier(
+			/datum/movespeed_modifier/admin_varedit,
+			params = list(
+				MOVESPEED_PARAM_MOD_HYPERBOLIC_SLOWDOWN = diff,
+			)
+		)
 
 ///Is there a movespeed modifier for this mob
 /mob/proc/has_movespeed_modifier(datum/movespeed_modifier/datum_type_id)
@@ -258,7 +264,7 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 		if((M.movespeed_modifier_flags & MOVESPEED_MODIFIER_REQUIRES_GRAVITY) && !in_gravity)
 			continue
 		//! END
-		. = M.apply_multiplicative(., src)
+		. = M.apply_hyperbolic(., src)
 	cached_hyperbolic_slowdown = min(., 10 / MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND)
 	if(!client)
 		return

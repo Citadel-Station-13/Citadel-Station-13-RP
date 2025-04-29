@@ -135,9 +135,9 @@
 
 /turf/vv_edit_var(var_name, new_value)
 	var/static/list/banned_edits = list(
-		NAMEOF_STATIC(src, x),
-		NAMEOF_STATIC(src, y),
-		NAMEOF_STATIC(src, z),
+		NAMEOF_TYPE(/turf, x),
+		NAMEOF_TYPE(/turf, y),
+		NAMEOF_TYPE(/turf, z),
 	)
 	if(var_name in banned_edits)
 		return FALSE
