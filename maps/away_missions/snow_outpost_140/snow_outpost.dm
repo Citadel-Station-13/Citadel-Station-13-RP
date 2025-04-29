@@ -1,3 +1,20 @@
+/datum/map/gateway/snow_outpost_140
+	id = "snow_outpost_140"
+	name = "Gateway - Snow Outpost"
+	width = 140
+	height = 140
+	levels = list(
+		/datum/map_level/gateway/snow_outpost_140,
+	)
+
+/datum/map_level/gateway/snow_outpost_140
+	id = "Snow_outpost140"
+	name = "Gateway - Snow Outpost"
+	display_name = "Snow Outpost"
+	path = "maps/away_missions/snow_outpost_140/levels/snow_outpost.dmm"
+	base_turf = /turf/simulated/floor/snow/snow2
+	base_area = /area/awaymission/snow_outpost/outside
+
 /obj/overmap/entity/visitable/sector/gateway/snowoutpost
 	initial_generic_waypoints = list("tether_excursion_snow_outpost")
 	in_space = 0

@@ -10,7 +10,7 @@
 	preview_icon = 'icons/mob/species/phoronoid/preview.dmi'
 	husk_icon    = 'icons/mob/species/phoronoid/husk.dmi'
 
-	intrinsic_languages = LANGUAGE_ID_PHORONOID
+	intrinsic_languages = list(LANGUAGE_ID_PHORONOID, LANGUAGE_ID_PHORONOID_CONLANG)
 	max_additional_languages = 3
 	name_language = null // name randomisers are fucking weird
 
@@ -18,7 +18,7 @@
 	blurb = {"
 	Phoronoids are a race rarely seen by most, tending to keep to themselves throughout known space.
 	These curious skeleton-folk react violently with oxygen, catching alight in the normal concentration needed for humans.
-	Luckily, with the help of NT, they come equipped with specialised suits, keeping oxygen out and phoron in.
+	Luckily, they come equipped with specialised suits, keeping oxygen out and phoron in.
 	"}
 
 	max_age = 180
@@ -26,7 +26,7 @@
 	//rarity_value = 5
 	blood_color = "#FC2BC5"
 
-	species_flags = NO_SCAN | NO_MINOR_CUT | CONTAMINATION_IMMUNE
+	species_flags = NO_SCAN | NO_PAIN | NO_MINOR_CUT | CONTAMINATION_IMMUNE
 	species_spawn_flags = SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_EYE_COLOR
 
@@ -78,6 +78,8 @@
 	heat_level_2 = 500
 	heat_level_3 = 800
 
+	minimum_breath_pressure = 12
+
 	body_temperature = T20C
 
 /datum/species/phoronoid/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
@@ -87,11 +89,15 @@
 	/// In case they're ever set on fire while wearing a spacesuit, we don't want the message that they're reacting with the atmosphere.
 	var/enviroment_bad = FALSE
 
-	if(environment.gas[GAS_ID_OXYGEN] > 0.5)
+	if( (environment.gas[GAS_ID_OXYGEN] / environment.total_moles) > 0.1) //greater than 10% oxygen
 		// Now any airtight spessuit works for them. Which means exploration voidsuits work. :O
-		if(H.wear_suit && istype(H.wear_suit,/obj/item/clothing/suit/space) && H.head && istype(H.head,/obj/item/clothing/head/helmet/space))
-			return
-		H.adjust_fire_stacks(2)
+		if(istype(H.wear_suit, /obj/item/clothing) && istype(H.head,/obj/item/clothing))
+			var/obj/item/clothing/suit = H.wear_suit
+			var/obj/item/clothing/head = H.head
+			if(head.min_pressure_protection == 0 && suit.min_pressure_protection == 0)
+				return
+
+		H.adjust_fire_stacks(3)
 		enviroment_bad = TRUE
 		if(!H.on_fire && enviroment_bad)
 			H.visible_message(
@@ -105,148 +111,146 @@
 /datum/species/phoronoid/apply_survival_gear(mob/living/carbon/for_target, list/into_box, list/into_inv)
 	// ensure they have a valid mask
 	var/mask_type = /obj/item/clothing/mask/breath
+
 	if(for_target)
 		var/obj/item/existing_mask = for_target.inventory.get_slot_single(/datum/inventory_slot/inventory/mask)
 		if(existing_mask?.clothing_flags & ALLOWINTERNALS)
 		else
-			into_inv?.Add(existing_mask)
+			if(!isnull(existing_mask))
+				into_inv?.Add(existing_mask)
 			for_target.temporarily_remove_from_inventory(existing_mask, INV_OP_FORCE)
 			for_target.equip_to_slot_or_del(new mask_type(for_target), /datum/inventory_slot/inventory/mask, INV_OP_SILENT | INV_OP_FLUFFLESS)
 	else
-		into_inv?.Add(mask_type)
+		if(!isnull(mask_type))
+			into_inv?.Add(mask_type)
 
-	var/suit_path = /obj/item/clothing/suit/space/plasman
-	var/helm_path = /obj/item/clothing/head/helmet/space/plasman
+	var/suit_path = /obj/item/clothing/suit/space/void/plasman
 
-	// todo: deal with this dumpster fire of a switch
+	//this switch IS really bad but it's probably the.. cleanest way to go about it, actually, seeing as assigned_job seems to be unused
 	switch(for_target.mind?.assigned_role)
 		if("Security Officer")
-			suit_path = /obj/item/clothing/suit/space/plasman/sec
-			helm_path = /obj/item/clothing/head/helmet/space/plasman/sec
+			suit_path = /obj/item/clothing/suit/space/void/plasman/sec
+
 
 		if("Detective")
-			suit_path = /obj/item/clothing/suit/space/plasman/sec/detective
-			helm_path = /obj/item/clothing/head/helmet/space/plasman/sec/detective
+			suit_path = /obj/item/clothing/suit/space/void/plasman/sec/detective
+
 
 		if("Warden")
-			suit_path = /obj/item/clothing/suit/space/plasman/sec/warden
-			helm_path = /obj/item/clothing/head/helmet/space/plasman/sec
+			suit_path = /obj/item/clothing/suit/space/void/plasman/sec/warden
+
 
 		if("Head of Security")
-			suit_path = /obj/item/clothing/suit/space/plasman/sec/hos
-			helm_path = /obj/item/clothing/head/helmet/space/plasman/sec/hos
+			suit_path = /obj/item/clothing/suit/space/void/plasman/sec/hos
 
-		if("Facility Director")
-			suit_path = /obj/item/clothing/suit/space/plasman/sec/captain
-			helm_path = /obj/item/clothing/head/helmet/space/plasman/sec/captain
+
+		if("Facility Director", "Captain")
+			suit_path = /obj/item/clothing/suit/space/void/plasman/sec/captain
+
 
 		if("Head of Personnel")
-			suit_path = /obj/item/clothing/suit/space/plasman/sec/hop
-			helm_path = /obj/item/clothing/head/helmet/space/plasman/sec/hop
+			suit_path = /obj/item/clothing/suit/space/void/plasman/sec/hop
+
 
 		if("Scientist","Roboticist","Xenobiologist")
-			suit_path = /obj/item/clothing/suit/space/plasman/science
-			helm_path = /obj/item/clothing/head/helmet/space/plasman/science
+			suit_path = /obj/item/clothing/suit/space/void/plasman/science
 
 		if("Explorer","Pilot","Pathfinder")
-			suit_path = /obj/item/clothing/suit/space/plasman/science/explorer
-			helm_path = /obj/item/clothing/head/helmet/space/plasman/science/explorer
+			suit_path = /obj/item/clothing/suit/space/void/plasman/science/explorer
+
 
 		if("Research Director")
-			suit_path = /obj/item/clothing/suit/space/plasman/science/rd
-			helm_path = /obj/item/clothing/head/helmet/space/plasman/science/rd
+			suit_path = /obj/item/clothing/suit/space/void/plasman/science/rd
+
 
 		if("Station Engineer")
-			suit_path = /obj/item/clothing/suit/space/plasman/engi/
-			helm_path = /obj/item/clothing/head/helmet/space/plasman/engi/
+			suit_path = /obj/item/clothing/suit/space/void/plasman/engi
+
 
 		if("Chief Engineer")
-			suit_path = /obj/item/clothing/suit/space/plasman/engi/ce
-			helm_path = /obj/item/clothing/head/helmet/space/plasman/engi/ce
+			suit_path = /obj/item/clothing/suit/space/void/plasman/engi/ce
+
 
 		if("Atmospheric Technician")
-			suit_path = /obj/item/clothing/suit/space/plasman/engi/atmos
-			helm_path = /obj/item/clothing/head/helmet/space/plasman/engi/atmos
+			suit_path = /obj/item/clothing/suit/space/void/plasman/engi/atmos
+
 
 		if("Medical Doctor","Paramedic","Psychiatrist")
-			suit_path = /obj/item/clothing/suit/space/plasman/med
-			helm_path = /obj/item/clothing/head/helmet/space/plasman/med
+			suit_path = /obj/item/clothing/suit/space/void/plasman/med
+
 
 		if("Field Medic")
-			suit_path = /obj/item/clothing/suit/space/plasman/med/rescue
-			helm_path = /obj/item/clothing/head/helmet/space/plasman/med/rescue
+			suit_path = /obj/item/clothing/suit/space/void/plasman/med/rescue
+
 
 		if("Chemist")
-			suit_path = /obj/item/clothing/suit/space/plasman/med/chemist
-			helm_path = /obj/item/clothing/head/helmet/space/plasman/med/chemist
+			suit_path = /obj/item/clothing/suit/space/void/plasman/med/chemist
+
 
 		if("Chief Medical Officer")
-			suit_path = /obj/item/clothing/suit/space/plasman/med/cmo
-			helm_path = /obj/item/clothing/head/helmet/space/plasman/med/cmo
+			suit_path = /obj/item/clothing/suit/space/void/plasman/med/cmo
+
 
 		if("Bartender","Chef")
-			suit_path = /obj/item/clothing/suit/space/plasman/service
-			helm_path = /obj/item/clothing/head/helmet/space/plasman/service
+			suit_path = /obj/item/clothing/suit/space/void/plasman/service
+
 
 		if("Cargo Technician","Quartermaster")
-			suit_path = /obj/item/clothing/suit/space/plasman/cargo
-			helm_path = /obj/item/clothing/head/helmet/space/plasman/cargo
+			suit_path = /obj/item/clothing/suit/space/void/plasman/cargo
+
 
 		if("Shaft Miner")
-			suit_path = /obj/item/clothing/suit/space/plasman/cargo/miner
-			helm_path = /obj/item/clothing/head/helmet/space/plasman/cargo/miner
+			suit_path = /obj/item/clothing/suit/space/void/plasman/cargo/miner
+
 
 		if("Botanist")
-			suit_path = /obj/item/clothing/suit/space/plasman/botanist
-			helm_path = /obj/item/clothing/head/helmet/space/plasman/botanist
+			suit_path = /obj/item/clothing/suit/space/void/plasman/botanist
+
 
 		if("Chaplain")
-			suit_path = /obj/item/clothing/suit/space/plasman/chaplain
-			helm_path = /obj/item/clothing/head/helmet/space/plasman/chaplain
+			suit_path = /obj/item/clothing/suit/space/void/plasman/chaplain
+
 
 		if("Janitor")
-			suit_path = /obj/item/clothing/suit/space/plasman/janitor
-			helm_path = /obj/item/clothing/head/helmet/space/plasman/janitor
+			suit_path = /obj/item/clothing/suit/space/void/plasman/janitor
+
 
 		if("Internal Affairs Agent","Command Secretary")
-			suit_path = /obj/item/clothing/suit/space/plasman/fancy
-			helm_path = /obj/item/clothing/head/helmet/space/plasman/fancy
+			suit_path = /obj/item/clothing/suit/space/void/plasman/fancy
+
 
 		if("Visitor")
-			suit_path = /obj/item/clothing/suit/space/plasman/assistant
-			helm_path = /obj/item/clothing/head/helmet/space/plasman/assistant
+			suit_path = /obj/item/clothing/suit/space/void/plasman/assistant
+
 
 		if("Clown")
-			suit_path = /obj/item/clothing/suit/space/plasman/clown
-			helm_path = /obj/item/clothing/head/helmet/space/plasman/clown
+			suit_path = /obj/item/clothing/suit/space/void/plasman/clown
+
 
 		if("Mime")
-			suit_path = /obj/item/clothing/suit/space/plasman/mime
-			helm_path = /obj/item/clothing/head/helmet/space/plasman/mime
+			suit_path = /obj/item/clothing/suit/space/void/plasman/mime
 
-	into_inv += /obj/item/extinguisher/mini/plasman
+
+	into_inv?.Add(/obj/item/extinguisher/mini/plasman)
 
 	if(for_target)
 		var/obj/item/existing_head_slot = for_target.inventory.get_slot_single(/datum/inventory_slot/inventory/head)
 		var/obj/item/existing_suit_slot = for_target.inventory.get_slot_single(/datum/inventory_slot/inventory/suit)
-		var/obj/item/creating_head_slot = new helm_path
 		var/obj/item/creating_suit_slot = new suit_path
 		if(existing_head_slot)
-			if(for_target.temporarily_remove_from_inventory(existing_head_slot, INV_OP_FORCE | INV_OP_SILENT))
+			if(for_target.temporarily_remove_from_inventory(existing_head_slot, INV_OP_FORCE | INV_OP_SILENT | INV_OP_FLUFFLESS))
 				into_inv?.Add(existing_head_slot)
-				if(!for_target.inventory.equip_to_slot_if_possible(creating_head_slot, /datum/inventory_slot/inventory/head, INV_OP_FORCE | INV_OP_SILENT))
-					into_inv?.Add(creating_head_slot)
-			else
-				into_inv?.Add(creating_head_slot)
 		if(existing_suit_slot)
-			if(for_target.temporarily_remove_from_inventory(existing_suit_slot, INV_OP_FORCE | INV_OP_SILENT))
+			if(for_target.temporarily_remove_from_inventory(existing_suit_slot, INV_OP_FORCE | INV_OP_SILENT | INV_OP_FLUFFLESS))
 				into_inv?.Add(existing_suit_slot)
-				if(!for_target.inventory.equip_to_slot_if_possible(creating_suit_slot, /datum/inventory_slot/inventory/suit, INV_OP_FORCE | INV_OP_SILENT))
+				if(!for_target.inventory.equip_to_slot_if_possible(creating_suit_slot, /datum/inventory_slot/inventory/suit, INV_OP_FORCE | INV_OP_SILENT | INV_OP_FLUFFLESS))
 					into_inv?.Add(creating_suit_slot)
 			else
 				into_inv?.Add(creating_suit_slot)
+		else
+			if(!for_target.inventory.equip_to_slot_if_possible(creating_suit_slot, /datum/inventory_slot/inventory/suit, INV_OP_FORCE | INV_OP_SILENT | INV_OP_FLUFFLESS))
+				into_inv?.Add(creating_suit_slot)
 	else
-		into_inv?.Add(helm_path)
 		into_inv?.Add(suit_path)
 
 	//! legacy: just in case
@@ -257,9 +261,7 @@
 	if(for_target)
 		var/obj/item/tank/equipping_tank = new tank_type
 		var/could_place = TRUE
-		if(for_target.inventory.equip_to_slot_if_possible(equipping_tank, /datum/inventory_slot/inventory/pocket/left))
-		else if(for_target.inventory.equip_to_slot_if_possible(equipping_tank, /datum/inventory_slot/inventory/pocket/right))
-		else if(for_target.inventory.equip_to_slot_if_possible(equipping_tank, /datum/inventory_slot/inventory/suit_storage))
+		if(for_target.inventory.equip_to_slot_if_possible(equipping_tank, /datum/inventory_slot/inventory/suit_storage))
 		else if(for_target.inventory.put_in_hands(equipping_tank))
 		else
 			could_place = FALSE
