@@ -225,7 +225,6 @@
 #include "code\__DEFINES\dcs\signals\signals_mob\signals_mob-perspective.dm"
 #include "code\__DEFINES\dcs\signals\signals_mob\signals_mob_appearance.dm"
 #include "code\__DEFINES\dcs\signals\signals_mob\signals_mob_combat.dm"
-#include "code\__DEFINES\dcs\signals\signals_mob\signals_mob_defense.dm"
 #include "code\__DEFINES\dcs\signals\signals_mob\signals_mob_legacy.dm"
 #include "code\__DEFINES\dcs\signals\signals_mob\signals_mob_main.dm"
 #include "code\__DEFINES\dcs\signals\signals_mob\signals_mob_mobility.dm"
