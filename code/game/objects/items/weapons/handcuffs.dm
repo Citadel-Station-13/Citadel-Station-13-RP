@@ -87,7 +87,7 @@
 	add_attack_logs(user,H,"Handcuffed (attempt)")
 	feedback_add_details("handcuffs","H")
 
-	user.setClickCooldownLegacy(user.get_attack_speed(src))
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 	user.do_attack_animation(H)
 
 	user.visible_message("<span class='danger'>\The [user] has put [cuff_type] on \the [H]!</span>")
@@ -283,7 +283,7 @@ var/last_chew = 0
 	add_attack_logs(user,H,"Legcuffed (attempt)")
 	feedback_add_details("legcuffs","H")
 
-	user.setClickCooldownLegacy(user.get_attack_speed(src))
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 	user.do_attack_animation(H)
 
 	user.visible_message("<span class='danger'>\The [user] has put [cuff_type] on \the [H]!</span>")

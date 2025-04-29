@@ -210,7 +210,7 @@
 	L.lastattacker = user
 	// click cooldown
 	// todo: clickcd rework
-	user.setClickCooldownLegacy(user.get_attack_speed(src))
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 	// animation
 	user.animate_swing_at_target(L)
 	// resolve accuracy
@@ -357,7 +357,7 @@
 	clickchain.melee_damage_multiplier *= mult
 	// click cooldown
 	// todo: clickcd rework
-	clickchain.performer.setClickCooldownLegacy(clickchain.performer.get_attack_speed(src))
+	clickchain.performer.setClickCooldownLegacy(clickchain.performer.get_attack_speed_legacy(src))
 	// animation
 	clickchain.performer.animate_swing_at_target(target)
 	// perform the hit

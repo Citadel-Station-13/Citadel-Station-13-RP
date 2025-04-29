@@ -162,7 +162,7 @@
 
 	add_attack_logs(user,M,"Flashed (attempt) with [src]")
 
-	user.setClickCooldownLegacy(user.get_attack_speed(src))
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 	user.do_attack_animation(M)
 
 	if(!clown_check(user))
@@ -247,7 +247,7 @@
 	if(!user || !clown_check(user))
 		return
 
-	user.setClickCooldownLegacy(user.get_attack_speed(src))
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 
 	if(broken)
 		user.show_message("<span class='warning'>The [src.name] is broken</span>", 2)
