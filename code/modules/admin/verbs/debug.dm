@@ -379,10 +379,10 @@
 
 	if(is_inspection_enabled)
 		winset(src, null, list("browser-options" = "-devtools"))
-		message_admins("[key_name_admin(usr)] has disabled Browser Inspection.")
+		to_chat(src, SPAN_NOTICE("You can now right click to use inspect on browsers."))
 	else
 		winset(src, null, list("browser-options" = "+devtools"))
-		message_admins("[key_name_admin(usr)] has enabled Browser Inspection.")
+		to_chat(src, SPAN_NOTICE("You can no longer right click to use inspect on browsers."))
 
 
 /client/proc/cmd_admin_clear_mobs()
