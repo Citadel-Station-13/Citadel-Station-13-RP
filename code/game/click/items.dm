@@ -144,7 +144,7 @@
 	if(isnull(intent))
 		intent = user.a_intent
 	// end
-	if(item_flags & ITEM_NOBLUDGEON)
+	if(item_flags & ITEM_NO_BLUDGEON)
 		return NONE
 	if(clickchain_flags & CLICKCHAIN_DO_NOT_ATTACK)
 		return NONE
