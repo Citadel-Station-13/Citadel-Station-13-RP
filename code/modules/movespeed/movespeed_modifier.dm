@@ -74,7 +74,7 @@ Key procs
   *
   * todo: unit test this
   */
-/datum/movespeed_modifier/proc/apply_multiplicative(existing, mob/target)
+/datum/movespeed_modifier/proc/apply_hyperbolic(existing, mob/target)
 	. = existing
 	if(mod_multiply_speed != /datum/movespeed_modifier::mod_multiply_speed)
 		. /= mod_multiply_speed
@@ -264,7 +264,7 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 		if((M.movespeed_modifier_flags & MOVESPEED_MODIFIER_REQUIRES_GRAVITY) && !in_gravity)
 			continue
 		//! END
-		. = M.apply_multiplicative(., src)
+		. = M.apply_hyperbolic(., src)
 	cached_hyperbolic_slowdown = min(., 10 / MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND)
 	if(!client)
 		return
