@@ -69,7 +69,7 @@
 	if(!istype(H) || !istype(user))
 		return FALSE
 
-	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+	user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN)
 	to_chat(user, SPAN_NOTICE("You inject \the [H] with \the [src]."))
 	H.custom_pain(SPAN_WARNING("You feel a tiny prick!"), 1, TRUE)
 
