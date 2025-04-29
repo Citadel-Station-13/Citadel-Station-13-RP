@@ -8129,7 +8129,7 @@
 	dir = 8
 	},
 /obj/structure/bed/chair/sofa/black/corner{
-	dir = 4
+	dir = 1
 	},
 /turf/simulated/floor/wood,
 /area/endeavour/surfacebase/mining_main/break_room)
@@ -19423,7 +19423,7 @@
 /area/crew_quarters/sleep/Dorm_10)
 "oLu" = (
 /obj/structure/bed/chair/sofa/brown/corner{
-	dir = 1
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -23599,7 +23599,7 @@
 /area/quartermaster/storage)
 "rPF" = (
 /obj/structure/bed/chair/sofa/brown/corner{
-	dir = 4
+	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
