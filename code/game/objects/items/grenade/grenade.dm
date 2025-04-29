@@ -20,17 +20,6 @@
 	var/loadable = TRUE
 	var/arm_sound = 'sound/weapons/armbomb.ogg'
 
-/obj/item/grenade/proc/clown_check(var/mob/living/user)
-	if((MUTATION_CLUMSY in user.mutations) && prob(50))
-		to_chat(user, "<span class='warning'>Huh? How does this thing work?</span>")
-
-		activate(user)
-		add_fingerprint(user)
-		spawn(5)
-			detonate()
-		return 0
-	return 1
-
 /obj/item/grenade/examine(mob/user, dist)
 	. = ..()
 	if(det_time > 1)
@@ -66,8 +55,6 @@
 
 	spawn(det_time)
 		detonate()
-		return
-
 
 /obj/item/grenade/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_screwdriver())
@@ -87,3 +74,7 @@
 		add_fingerprint(user)
 	..()
 	return
+
+/obj/item/grenade/proc/activate_inhand(datum/event_args/actor/actor)
+
+/obj/item/grenade/proc/on_activate_inhand(datum/event_args/actor/actor)

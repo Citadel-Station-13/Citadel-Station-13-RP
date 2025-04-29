@@ -5,6 +5,16 @@
  * That's it.
  */
 /obj/item/grenade/simple
+	/// you don't really have a reason to use this most of the time but it's here if you somehow do
+	var/delete_on_detonate = TRUE
+	/// has been activated
+	var/activated = FALSE
+
+/obj/item/grenade/simple/on_activate_inhand(datum/event_args/actor/actor)
+	..()
+	if(activated)
+		return
+	activated = TRUE
 
 /obj/item/grenade/simple/proc/detonate(do_not_delete)
 	SHOULD_NOT_OVERRIDE(TRUE)
@@ -14,7 +24,7 @@
 	if(location)
 		on_detonate(location, loc)
 
-	if(!do_not_delete)
+	if(delete_on_detonate && !do_not_delete)
 		qdel(src)
 
 /**
