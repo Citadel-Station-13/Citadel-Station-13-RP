@@ -1,0 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
+
+/datum/buildmode_spatial_effect
+	/// expected config type
+	var/config_type = /datum/buildmode_spatial_config
