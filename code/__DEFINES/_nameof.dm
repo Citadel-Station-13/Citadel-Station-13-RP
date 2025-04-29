@@ -12,10 +12,12 @@
 #define NAMEOF_PROC(datum, X) (#X || ##datum.##X())
 
 /**
- * NAMEOF that actually works in static definitions because src::type requires src to be defined
+ * NAMEOF that actually works in static definitions because src::type requires src to be defined.
+ *
+ * This accepts a type instead of a reference variable.
  */
 #if DM_VERSION >= 515
-#define NAMEOF_STATIC(datum, X) (nameof(##datum::##X))
+#define NAMEOF_STATIC(TYPE, X) (nameof(##TYPE::##X))
 #else
-#define NAMEOF_STATIC(datum, X) (#X || ##datum.##X)
+#define NAMEOF_STATIC(TYPE, X) (#X || ##TYPE.##X)
 #endif
