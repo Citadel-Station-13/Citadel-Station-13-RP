@@ -31,25 +31,6 @@
 		return 0
 	return 1
 
-
-/*/obj/item/grenade/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if (istype(target, /obj/item/storage)) return ..() // Trying to put it in a full container
-	if (istype(target, /obj/item/gun/grenadelauncher)) return ..()
-	if((user.get_active_held_item() == src) && (!active) && (clown_check(user)) && target.loc != src.loc)
-		to_chat(user, "<span class='warning'>You prime the [name]! [det_time/10] seconds!</span>")
-		active = 1
-		icon_state = initial(icon_state) + "_active"
-		playsound(loc, 'sound/weapons/armbomb.ogg', 75, 1, -3)
-		spawn(det_time)
-			detonate()
-			return
-		user.setDir(get_dir(user, target))
-		user.drop_item()
-		var/t = (isturf(target) ? target : target.loc)
-		walk_towards(src, t, 3)
-	return*/
-
-
 /obj/item/grenade/examine(mob/user, dist)
 	. = ..()
 	if(det_time > 1)
@@ -57,7 +38,6 @@
 		return
 	if(det_time == null)
 		. += "<span class = 'danger'>The [src] is set for instant detonation.</span>"
-
 
 /obj/item/grenade/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
@@ -72,8 +52,6 @@
 			if(iscarbon(user))
 				var/mob/living/carbon/C = user
 				C.throw_mode_on()
-	return
-
 
 /obj/item/grenade/proc/activate(mob/user as mob)
 	if(active)
@@ -89,13 +67,6 @@
 	spawn(det_time)
 		detonate()
 		return
-
-
-/obj/item/grenade/proc/detonate()
-//	playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
-	var/turf/T = get_turf(src)
-	if(T)
-		T.hotspot_expose(700,125)
 
 
 /obj/item/grenade/attackby(obj/item/W as obj, mob/user as mob)
@@ -114,10 +85,5 @@
 				det_time = 1
 				to_chat(user, "<span class='notice'>You set the [name] for instant detonation.</span>")
 		add_fingerprint(user)
-	..()
-	return
-
-/obj/item/grenade/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-	walk(src, null, null)
 	..()
 	return

@@ -32,7 +32,7 @@
 
 	charges = list(
 		list("flashbang",   "flashbang",   /obj/item/grenade/simple/flashbang,  3),
-		list("smoke bomb",  "smoke bomb",  /obj/item/grenade/smokebomb,  3),
+		list("smoke bomb",  "smoke bomb",  /obj/item/grenade/simple/smoke,  3),
 		list("EMP grenade", "EMP grenade", /obj/item/grenade/simple/emp, 3),
 		)
 
@@ -101,7 +101,7 @@
 	fire_force = 15
 
 	charges = list(
-		list("smoke bomb",  "smoke bomb",  /obj/item/grenade/smokebomb,  6)
+		list("smoke bomb",  "smoke bomb",  /obj/item/grenade/simple/smoke,  6)
 		)
 
 /obj/item/hardsuit_module/grenade_launcher/holy

@@ -5,7 +5,7 @@
 	suit = /obj/item/clothing/suit/armor/vest
 	l_hand = /obj/item/material/knife
 	r_hand = /obj/item/gun/projectile/energy/nt_pulse/rifle
-	r_pocket = /obj/item/grenade/smokebomb
+	r_pocket = /obj/item/grenade/simple/smoke
 	shoes = /obj/item/clothing/shoes/black
 
 /datum/outfit/tournament_gear/red

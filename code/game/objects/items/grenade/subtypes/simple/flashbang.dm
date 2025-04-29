@@ -96,6 +96,10 @@
 	walk(src, 0) // Because we might have called walk_away, we must stop the walk loop or BYOND keeps an internal reference to us forever.
 	return ..()
 
+/obj/item/grenade/simple/flashbang/on_inv_pickup(mob/wearer, datum/inventory/inventory, inv_op_flags, datum/event_args/actor/actor)
+	. = ..()
+	walk(src, NONE)
+
 /obj/item/grenade/simple/flashbang/stingbang
 	name = "stingbang"
 	desc = "A hand held grenade, with an adjustable timer, perfect for stopping riots and playing morally unthinkable pranks."

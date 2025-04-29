@@ -533,7 +533,7 @@
 	icon_living = "syndi-ranged-space-sup-elite"
 	armor_legacy_mob = list(melee = 80, bullet = 70, laser = 55, energy = 15, bomb = 80, bio = 100, rad = 100) // see code for military hardsuit
 	projectiletype = /obj/projectile/bullet/pistol/medium/ap/suppressor/turbo // fuck it, fast bullets
-	grenade_type = /obj/item/grenade/shooter/rubber // don't group up
+	grenade_type = /obj/item/grenade/simple/shooter/rubber // don't group up
 	grenade_timer = 30 // well, look what you've done, you've grouped up
 // 	deathnade_path = /obj/item/grenade/simple/flashbang/stingbang/shredbang // REALLY don't group up
 

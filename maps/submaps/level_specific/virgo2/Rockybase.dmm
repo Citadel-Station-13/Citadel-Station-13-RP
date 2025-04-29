@@ -434,7 +434,7 @@
 /area/submap/virgo2/Rockybase)
 "bB" = (
 /obj/structure/table/standard,
-/obj/item/grenade/spawnergrenade/manhacks,
+/obj/item/grenade/simple/spawner/manhacks,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "bC" = (

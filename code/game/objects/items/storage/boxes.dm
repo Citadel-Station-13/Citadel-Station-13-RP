@@ -261,7 +261,7 @@
 	name = "box of smoke bombs"
 	desc = "A box containing 7 smoke bombs."
 	icon_state = "flashbang"
-	starts_with = list(/obj/item/grenade/smokebomb = 7)
+	starts_with = list(/obj/item/grenade/simple/smoke = 7)
 	drop_sound = 'sound/items/drop/ammobox.ogg'
 	pickup_sound = 'sound/items/pickup/ammobox.ogg'
 

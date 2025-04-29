@@ -32,7 +32,7 @@
 /datum/uplink_item/item/grenades/smoke_singular
 	name = "1xSmoke Grenade"
 	item_cost = 2
-	path = /obj/item/grenade/smokebomb
+	path = /obj/item/grenade/simple/smoke
 
 /datum/uplink_item/item/grenades/emp
 	name = "7xEMP Grenades"

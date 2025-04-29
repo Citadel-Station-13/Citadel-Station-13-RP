@@ -292,7 +292,7 @@ var/datum/antagonist/raider/raiders
 	if(istype(gun, /obj/item/gun/launcher/grenade))
 		var/list/grenades = list(
 			/obj/item/grenade/simple/emp,
-			/obj/item/grenade/smokebomb,
+			/obj/item/grenade/simple/smoke,
 			/obj/item/grenade/simple/flashbang
 			)
 		var/obj/item/storage/box/ammobox = new(get_turf(player.loc))

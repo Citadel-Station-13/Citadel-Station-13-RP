@@ -23,4 +23,4 @@
  * * do not delete the grenade, detonate() handles this
  */
 /obj/item/grenade/simple/proc/on_detonate(turf/location, atom/grenade_location)
-	return
+	location.hotspot_expose(700,125)

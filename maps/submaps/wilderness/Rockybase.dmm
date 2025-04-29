@@ -630,7 +630,7 @@
 /area/submap/Rockybase)
 "ci" = (
 /obj/structure/table/standard,
-/obj/item/grenade/spawnergrenade/manhacks,
+/obj/item/grenade/simple/spawner/manhacks,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "cj" = (
