@@ -7,7 +7,7 @@
 import { classes } from 'common/react';
 import { createLogger } from 'tgui/logging';
 import { IMAGE_RETRY_DELAY, IMAGE_RETRY_LIMIT } from './constants';
-import { Tooltip } from "../../tgui/components";
+import { Tooltip } from 'tgui/components';
 import { ChatRenderer } from './ChatRenderer';
 
 export const logger = createLogger('chatRenderer');
