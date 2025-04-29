@@ -82,12 +82,16 @@
 	if(istype(O, /obj/item/saddle/horse) && !rideable)
 		to_chat(user, "<span class='danger'>You sling the [O] onto the [src]! It may now be ridden safely!</span>")
 		rideable = 1
-		AddComponent(/datum/component/riding_handler/horse)
+		var/datum/component/riding_filter/mob/animal/horse/filter_component = GetComponent(/datum/component/riding_filter/mob/animal/horse)
+		filter_component.handler_typepath = /datum/component/riding_handler/horse
+		DelComponent(/datum/component/riding_handler) //Delete to let it recreate as required
 		qdel(O)
-	if(istype(O, /obj/item/tool/wirecutters) && rideable)
+	if(O.is_wirecutter() && rideable)
 		to_chat(user, "<span class='danger'>You nip the straps of the [O]! It falls off of the [src].</span>")
 		rideable = 0
-		DelComponent(/datum/component/riding_handler, /datum/component/riding_handler/horse)
+		var/datum/component/riding_filter/mob/animal/horse/filter_component = GetComponent(/datum/component/riding_filter/mob/animal/horse)
+		filter_component.handler_typepath = initial(filter_component.handler_typepath)
+		DelComponent(/datum/component/riding_handler)
 		var/turf/T = get_turf(src)
 		new /obj/item/saddle/horse(T)
 	update_icon()
