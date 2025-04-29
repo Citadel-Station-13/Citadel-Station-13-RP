@@ -241,7 +241,7 @@
 
 /obj/item/robot_parts/chest/attackby(obj/item/W as obj, mob/user as mob)
 	..()
-	if(istype(W, /obj/item/cell))
+	if(istype(W, /obj/item/cell/large))
 		if(cell)
 			to_chat(user, "<span class='warning'>You have already inserted a cell!</span>")
 			return

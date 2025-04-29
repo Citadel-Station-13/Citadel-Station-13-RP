@@ -77,8 +77,8 @@
 		return ..()
 
 /obj/item/shield_diffuser/attackby(obj/item/W, mob/user as mob)
-	if(istype(W, /obj/item/cell))
-		if(istype(W, /obj/item/cell/device))
+	if(istype(W, /obj/item/cell/small))
+		if(istype(W, /obj/item/cell/small))
 			if(!cell)
 				if(!user.attempt_insert_item_for_installation(W, src))
 					return

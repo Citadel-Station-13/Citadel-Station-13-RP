@@ -75,7 +75,7 @@
 	if(W == paddles)
 		reattach_paddles(user)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
-	else if(istype(W, /obj/item/cell))
+	else if(istype(W, /obj/item/cell/medium))
 		if(bcell)
 			to_chat(user, "<span class='notice'>\the [src] already has a cell.</span>")
 			return CLICKCHAIN_DO_NOT_PROPAGATE

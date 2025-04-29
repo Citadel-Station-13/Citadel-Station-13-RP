@@ -89,7 +89,7 @@
 			update_icon()
 			return 1
 
-		else if(!cell && istype(W,/obj/item/cell))
+		else if(!cell && istype(W,/obj/item/cell/large))
 			if(!user.attempt_insert_item_for_installation(W, src))
 				return
 			to_chat(user, "You jack \the [W] into \the [src]'s battery mount.")

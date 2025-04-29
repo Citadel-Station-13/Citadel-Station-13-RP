@@ -672,7 +672,7 @@
 
 /obj/item/weldingtool/electric/attackby(obj/item/W, mob/user as mob)
 	if(istype(W, /obj/item/cell))
-		if(istype(W, /obj/item/cell/device))
+		if(istype(W, /obj/item/cell/small))
 			if(!power_supply)
 				if(!user.attempt_insert_item_for_installation(W, src))
 					return

@@ -214,7 +214,7 @@
 /obj/item/flashlight/attackby(obj/item/W, mob/user as mob)
 	if(power_use)
 		if(istype(W, /obj/item/cell))
-			if(istype(W, /obj/item/cell/device))
+			if(istype(W, /obj/item/cell/small))
 				if(!cell)
 					if(!user.attempt_insert_item_for_installation(W, src))
 						return

@@ -169,7 +169,7 @@
 				superheat_rod(user)
 			return
 
-	if(istype(W, /obj/item/cell))
+	if(istype(W, /obj/item/cell/medium))
 		if(!cell)
 			if(!user.attempt_insert_item_for_installation(W, src))
 				return

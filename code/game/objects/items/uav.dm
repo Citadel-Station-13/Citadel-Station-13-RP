@@ -115,7 +115,7 @@
 			cell.forceMove(get_turf(src))
 			cell = null
 
-	else if(istype(I, /obj/item/cell) && !cell)
+	else if(istype(I, /obj/item/cell/medium) && !cell)
 		if(do_after(user, 3 SECONDS, src))
 			to_chat(user, SPAN_NOTICE("You insert [I] into [nickname]."))
 			playsound(src, 'sound/items/deconstruct.ogg', 50, 1)

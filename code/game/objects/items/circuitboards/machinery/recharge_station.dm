@@ -8,7 +8,7 @@
 	board_type = new /datum/frame/frame_types/machine
 	origin_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 3)
 	req_components = list(
-		/obj/item/cell = 1,
+		/obj/item/cell/large = 1,
 		/obj/item/stack/cable_coil = 5,
 		/obj/item/stock_parts/capacitor = 2,
 		/obj/item/stock_parts/manipulator = 2,

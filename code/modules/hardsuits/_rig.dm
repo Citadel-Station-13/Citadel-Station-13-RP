@@ -60,7 +60,7 @@
 	var/helm_type =  /obj/item/clothing/head/helmet/space/hardsuit
 	var/boot_type =  /obj/item/clothing/shoes/magboots/hardsuit
 	var/glove_type = /obj/item/clothing/gloves/gauntlets/hardsuit
-	var/cell_type =  /obj/item/cell/high
+	var/cell_type =  /obj/item/cell/large
 	var/air_type =   /obj/item/tank/oxygen
 
 	var/unremovable_cell = FALSE

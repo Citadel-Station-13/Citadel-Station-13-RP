@@ -82,7 +82,7 @@
 	if(use_external_power)
 		return
 	if(istype(W, /obj/item/cell))
-		if(istype(W, /obj/item/cell/device))
+		if(istype(W, /obj/item/cell/weapon))
 			if(!bcell)
 				if(!user.attempt_insert_item_for_installation(W, src))
 					return
@@ -208,7 +208,7 @@
 	if(use_external_power)
 		return
 	if(istype(W, /obj/item/cell))
-		if(!istype(W, /obj/item/cell/device))
+		if(!istype(W, /obj/item/cell/weapon))
 			if(!bcell)
 				if(!user.attempt_insert_item_for_installation(W, src))
 					return

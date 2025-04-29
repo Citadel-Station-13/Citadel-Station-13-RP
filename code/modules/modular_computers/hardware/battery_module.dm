@@ -8,7 +8,7 @@
 	malfunction_probability = 1
 	origin_tech = list(TECH_POWER = 1, TECH_ENGINEERING = 1)
 	var/battery_rating = 750
-	var/obj/item/cell/battery = /obj/item/cell
+	var/obj/item/cell/battery = /obj/item/cell/small
 
 /obj/item/computer_hardware/battery_module/advanced
 	name = "advanced battery"

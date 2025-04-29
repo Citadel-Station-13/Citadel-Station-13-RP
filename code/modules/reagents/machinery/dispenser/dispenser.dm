@@ -4,7 +4,7 @@
 	req_components = list(
 		/obj/item/stock_parts/capacitor = 2,
 		/obj/item/stock_parts/manipulator = 1,
-		/obj/item/cell = 1,
+		/obj/item/cell/medium = 1,
 		/obj/item/stock_parts/console_screen = 1,
 	)
 
@@ -432,7 +432,7 @@
 			)
 			update_static_data()
 			return CLICKCHAIN_DO_NOT_PROPAGATE
-		if(istype(I, /obj/item/cell))
+		if(istype(I, /obj/item/cell/medium))
 			if(cell)
 				user.action_feedback(SPAN_WARNING("[src] already has a cell."), src)
 				return CLICKCHAIN_DO_NOT_PROPAGATE

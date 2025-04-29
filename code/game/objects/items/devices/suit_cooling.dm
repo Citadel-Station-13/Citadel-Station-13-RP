@@ -162,7 +162,7 @@
 		updateicon()
 		return
 
-	if (istype(W, /obj/item/cell))
+	if (istype(W, /obj/item/cell/medium))
 		if(cover_open)
 			if(cell)
 				to_chat(user, "There is a [cell] already installed here.")
@@ -211,7 +211,7 @@
 
 /obj/item/suit_cooling_unit/emergency
 	icon_state = "esuitcooler"
-	cell = /obj/item/cell
+	cell = /obj/item/cell/medium
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/suit_cooling_unit/emergency/updateicon()

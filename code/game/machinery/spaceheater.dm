@@ -49,7 +49,7 @@
 	..(severity)
 
 /obj/machinery/space_heater/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/cell))
+	if(istype(I, /obj/item/cell/medium))
 		if(panel_open)
 			if(cell)
 				to_chat(user, "There is already a power cell inside.")

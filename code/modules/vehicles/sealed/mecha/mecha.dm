@@ -1442,7 +1442,7 @@
 				src.log_message("Eject attempt made using maintenance controls - rejected.")
 		return
 
-	else if(istype(W, /obj/item/cell))
+	else if(istype(W, /obj/item/cell/large))
 		if(state==MECHA_CELL_OUT)
 			if(!src.cell)
 				if(!user.attempt_insert_item_for_installation(W, src))

@@ -2376,9 +2376,7 @@
 /obj/item/stack/material/glass{
 	amount = 15
 	},
-/obj/item/cell{
-	maxcharge = 15000
-	},
+/obj/item/cell/medium,
 /turf/simulated/shuttle/floor/darkred,
 /area/awaymission/zoo/syndieship)
 "hf" = (
