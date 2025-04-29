@@ -142,6 +142,7 @@
 	transform_component = H.AddComponent(/datum/component/custom_transform, holosphere_shell, null, null, FALSE)
 	holosphere_shell.transform_component = transform_component
 	holosphere_shell.hologram = H
+	holosphere_shell.copy_iff_factions(H)
 
 /datum/species/holosphere/on_remove(mob/living/carbon/human/H)
 	. = ..()

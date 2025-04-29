@@ -53,6 +53,9 @@
 /mob/living/carbon/human/can_use_hardsuit()
 	return 1
 
+/mob/living/simple_mob/holosphere_shell/can_use_hardsuit()
+	return 1
+
 /mob/living/carbon/brain/can_use_hardsuit()
 	return istype(loc, /obj/item/mmi)
 

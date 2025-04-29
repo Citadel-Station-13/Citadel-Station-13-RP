@@ -206,8 +206,7 @@
 /datum/supply_pack/nanotrasen/misc/phoronoid
 	name  = "Spare Phoronoid containment suits"
 	contains = list(
-		/obj/item/clothing/suit/space/plasman = 3,
-		/obj/item/clothing/head/helmet/space/plasman = 3,
+		/obj/item/clothing/suit/space/void/plasman = 3,
 		/obj/item/clothing/mask/breath = 3,
 		/obj/item/tank/vox = 3,
 	)

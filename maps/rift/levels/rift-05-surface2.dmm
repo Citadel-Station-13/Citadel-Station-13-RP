@@ -3833,9 +3833,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/lobby)
 "cky" = (
-/obj/structure/railing{
-	dir = 4
-	},
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/visible/supply{
 	dir = 6
@@ -4976,9 +4973,6 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/crew_quarters/bar/lounge)
 "daD" = (
-/obj/structure/railing{
-	dir = 4
-	},
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/visible/supply,
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
@@ -6371,6 +6365,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "dQE" = (
@@ -6831,7 +6826,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "ejt" = (
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/tiled/monotechmaint,
 /area/rift/station/public_garden/stairwell)
 "eju" = (
 /obj/spawner/window/low_wall/full/nogrille/firelocks,
@@ -9198,9 +9193,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/public_garden/stairwell)
 "fSh" = (
-/obj/structure/railing{
-	dir = 1
-	},
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
 	dir = 9
@@ -10153,9 +10145,6 @@
 	dir = 4
 	},
 /obj/structure/catwalk,
-/obj/structure/railing{
-	dir = 1
-	},
 /turf/simulated/floor/plating,
 /area/rift/station/public_garden/gantry)
 "guh" = (
@@ -13765,7 +13754,9 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/structure/closet/crate/bin,
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/rift/station/public_garden/gantry)
 "iIa" = (
@@ -14584,6 +14575,7 @@
 /area/crew_quarters/pool)
 "jfl" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/storage)
 "jgg" = (
@@ -15627,10 +15619,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/range)
-"jQZ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/rnd/telescience_lab/foyer)
 "jRK" = (
 /obj/structure/closet/hydrant{
 	pixel_x = -32
@@ -16488,9 +16476,6 @@
 	},
 /obj/machinery/light{
 	dir = 8
-	},
-/obj/structure/railing{
-	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/rift/station/public_garden/gantry)
@@ -17878,6 +17863,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "lcJ" = (
@@ -19667,6 +19653,7 @@
 /area/medical/sleeper)
 "miH" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab/foyer)
 "mjr" = (
@@ -20230,12 +20217,6 @@
 /turf/simulated/floor/tiled/white,
 /area/security/warden)
 "mzG" = (
-/obj/machinery/button/crematorium{
-	id = "medbay_crematorium";
-	pixel_x = 26;
-	pixel_y = 23;
-	req_access = list(5)
-	},
 /obj/structure/noticeboard{
 	pixel_y = 32
 	},
@@ -20247,6 +20228,12 @@
 	name = "note from CentCom";
 	pixel_x = -6;
 	pixel_y = -4
+	},
+/obj/machinery/button/crematorium{
+	id = "medbay_crematorium";
+	pixel_x = 26;
+	pixel_y = 23;
+	req_access = list(5)
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/morgue)
@@ -21055,9 +21042,6 @@
 	icon_state = "1-2"
 	},
 /obj/structure/catwalk,
-/obj/structure/railing{
-	dir = 4
-	},
 /turf/simulated/floor/plating,
 /area/rift/station/public_garden/gantry)
 "mVh" = (
@@ -21479,9 +21463,6 @@
 /obj/structure/catwalk,
 /obj/structure/cable/green{
 	icon_state = "4-8"
-	},
-/obj/structure/railing{
-	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/rift/station/public_garden/gantry)
@@ -26843,9 +26824,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/structure/railing{
-	dir = 4
-	},
 /turf/simulated/floor/plating,
 /area/rift/station/public_garden/gantry)
 "qEZ" = (
@@ -28735,16 +28713,15 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "rLi" = (
-/obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/visible/supply,
-/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Public Garden"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/monotechmaint,
 /area/rift/station/public_garden/stairwell)
 "rLk" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -32757,14 +32734,6 @@
 /obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/security_processing)
-"uEt" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/babyblue,
-/obj/map_helper/electrochromatic_linker{
-	id = "resleeving-tint"
-	},
-/turf/simulated/floor/plating,
-/area/medical/reception)
 "uEv" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -34433,6 +34402,7 @@
 /obj/map_helper/electrochromatic_linker{
 	id = "research-inner"
 	},
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/research)
 "vyj" = (
@@ -37664,9 +37634,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
-"xKD" = (
-/turf/simulated/wall/r_wall/prepainted,
-/area/rnd/outpost/xenobiology/outpost_slimepens)
 "xLb" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
@@ -44060,7 +44027,7 @@ ddZ
 tex
 tex
 tex
-jQZ
+vvP
 kCB
 xFv
 hmz
@@ -44254,7 +44221,7 @@ gzd
 xax
 oDC
 tex
-jQZ
+vvP
 kCB
 qcg
 hmz
@@ -44642,7 +44609,7 @@ tVG
 aal
 srw
 tex
-jQZ
+vvP
 iTw
 iTw
 hmz
@@ -44836,7 +44803,7 @@ iPh
 aal
 srw
 tex
-jQZ
+vvP
 iTw
 iTw
 hmz
@@ -45030,7 +44997,7 @@ aYt
 uIZ
 srw
 tex
-jQZ
+vvP
 iTw
 iTw
 hmz
@@ -45225,8 +45192,8 @@ uIZ
 srw
 tex
 hmz
-jQZ
-jQZ
+vvP
+vvP
 hmz
 fnX
 wTh
@@ -45432,15 +45399,15 @@ fSq
 rhH
 kpD
 xYc
-xKD
+fSq
 kSM
 qat
 obw
-xKD
+fSq
 sDP
 pUL
 lxO
-xKD
+fSq
 kgd
 wLS
 lYG
@@ -46596,15 +46563,15 @@ fSq
 dQq
 pfn
 lcl
-xKD
+fSq
 iMv
 icn
 pLA
-xKD
+fSq
 xRi
 tGA
 eBD
-xKD
+fSq
 bBi
 qtI
 jRQ
@@ -52955,7 +52922,7 @@ mGl
 aaA
 vwR
 vYO
-uEt
+mQt
 rYY
 jMc
 rRs

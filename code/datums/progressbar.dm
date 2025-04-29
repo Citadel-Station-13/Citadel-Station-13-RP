@@ -1,6 +1,9 @@
 #define PROGRESSBAR_HEIGHT 6
 #define PROGRESSBAR_ANIMATION_TIME 5
 
+/**
+ * Creates a progress bar for a /datum/event_args/actor arg.
+ */
 /proc/create_actor_progress_bar(datum/event_args/actor/e_args, goal_number, atom/target)
 	// todo: also show initiator the progress bar
 	return new /datum/progressbar(e_args.performer, goal_number, target)
@@ -144,6 +147,14 @@
 	animate(bar, alpha = 0, time = PROGRESSBAR_ANIMATION_TIME)
 
 	QDEL_IN(src, PROGRESSBAR_ANIMATION_TIME)
+
+///Progress bars are very generic, and what hangs a ref to them depends heavily on the context in which they're used
+///So let's make hunting harddels easier yeah?
+/datum/progressbar/dump_harddel_info()
+	if(harddel_deets_dumped)
+		return
+	harddel_deets_dumped = TRUE
+	return "Owner's type: [location_type]"
 
 #undef PROGRESSBAR_ANIMATION_TIME
 #undef PROGRESSBAR_HEIGHT

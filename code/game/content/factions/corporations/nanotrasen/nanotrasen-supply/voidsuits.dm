@@ -27,6 +27,7 @@
 	if(!initial(casted.starts_with_life_support) && automatically_include_life_support)
 		contains[initial(casted.tank_type)] = amount + contains[initial(casted.tank_type)]
 
+//Engineering
 /datum/supply_pack/nanotrasen/voidsuit/single/atmos
 	name = "Atmospherics voidsuits"
 	voidsuit_type = /obj/item/clothing/suit/space/void/atmos
@@ -69,6 +70,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/aether
 	container_name = "Reinforced Engineering voidsuit crate"
 
+//Medical
 /datum/supply_pack/nanotrasen/voidsuit/single/medical
 	name = "Medical voidsuits"
 	voidsuit_type = /obj/item/clothing/suit/space/void/medical
@@ -104,6 +106,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/veymed
 	container_name = "Vey-Med Medical voidsuit crate"
 
+//Security
 /datum/supply_pack/nanotrasen/voidsuit/single/security
 	name = "Security voidsuits"
 	voidsuit_type = /obj/item/clothing/suit/space/void/security
@@ -128,6 +131,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Security EVA Riot voidsuit crate"
 
+//Mining
 /datum/supply_pack/nanotrasen/voidsuit/single/supply
 	name = "Mining voidsuits"
 	voidsuit_type = /obj/item/clothing/suit/space/void/mining
@@ -149,6 +153,8 @@
 	name = "Mining voidsuits"
 	voidsuit_type = /obj/item/clothing/suit/space/void/mining
 	amount = 3
+
+//Exploration
 /datum/supply_pack/nanotrasen/voidsuit/single/explorer
 	name = "Exploration voidsuits"
 	voidsuit_type = /obj/item/clothing/suit/space/void/exploration
@@ -162,6 +168,14 @@
 	amount = 2
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Pilot voidsuit crate"
+
+//Science
+/datum/supply_pack/nanotrasen/voidsuit/single/phase
+	name = "Hazard Bypass voidsuits"
+	voidsuit_type = /obj/item/clothing/suit/space/void/science
+	amount = 2
+	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
+	container_name = "Nanotrasen Science Division voidsuit crate"
 
 //Cryosuits
 /datum/supply_pack/nanotrasen/voidsuit/single/cryosec

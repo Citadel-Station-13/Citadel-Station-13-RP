@@ -102,11 +102,11 @@ SUBSYSTEM_DEF(garbage)
 			if (I.hard_deletes_over_threshold)
 				dellog += "\tHard Deletes Over Threshold: [I.hard_deletes_over_threshold]"
 		if (I.slept_destroy)
-			dellog += "\tSleeps: [I.slept_destroy]"
+			dellog += "\tTotal Sleeps: [I.slept_destroy]"
 		if (I.no_respect_force)
 			dellog += "\tIgnored force: [I.no_respect_force] times"
 		if (I.no_hint)
-			dellog += "\tNo hint: [I.no_hint] times"
+			dellog += "\tTotal No hint: [I.no_hint] times"
 		if(LAZYLEN(I.extra_details))
 			dellog += "\tDeleted Metadata: [I.extra_details.Join("\n\t\t")]"
 
