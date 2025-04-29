@@ -30,6 +30,8 @@
 		to_chat(user, "<span class='notice'>You pick up the [src].</span>")
 
 /obj/item/paper_bin/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+	if(!user.is_holding_inactive(src) && !isturf(loc))
+		return ..()
 	if(!user.standard_hand_usability_check(src, e_args.using_hand_index, HAND_MANIPULATION_GENERAL))
 		return
 
