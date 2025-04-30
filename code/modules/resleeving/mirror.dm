@@ -11,7 +11,7 @@
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	var/stored_mind = null
 	var/tmp/mob/living/carbon/human/human
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 
 //holder to prevent having to find it each time
 /mob/living/carbon/human/var/obj/item/implant/mirror/mirror
@@ -112,7 +112,7 @@
 	throw_range = 10
 	materials_base = list(MAT_STEEL = 200)
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 
 /obj/item/mirrortool
 	name = "Mirror Installation Tool"
@@ -127,7 +127,7 @@
 	throw_range = 10
 	materials_base = list(MAT_STEEL = 200)
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	var/obj/item/implant/mirror/imp = null
 
 /obj/item/mirrortool/afterattack(atom/target, mob/user, clickchain_flags, list/params)

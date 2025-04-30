@@ -5,7 +5,7 @@
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "sleevemate" //Give this a fancier sprite later.
 	item_state = "healthanalyzer"
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	slot_flags = SLOT_BELT
 	w_class = WEIGHT_CLASS_SMALL
 	materials_base = list(MAT_STEEL = 200)
