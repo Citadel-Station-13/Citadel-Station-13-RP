@@ -3884,6 +3884,10 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/tank/jetpack/carbondioxide,
 /obj/item/tank/jetpack/carbondioxide,
+/obj/item/clothing/shoes/magboots,
+/obj/item/clothing/shoes/magboots,
+/obj/item/tank/oxygen,
+/obj/item/tank/oxygen,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/shipbase/deck1/fighterbaysec)
 "vr" = (
