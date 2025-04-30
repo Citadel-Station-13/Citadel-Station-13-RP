@@ -14,3 +14,9 @@
 
 /datum/buildmode_middleware/ai_holder/handle_topic(client/user, datum/admins/holder, datum/buildmode_state/state, action, list/params)
 	. = ..()
+
+#warn clickdrag? for simple 'move to' and 'attack target'
+
+/datum/buildmode_middleware/ai_holder/proc/order_ai_move_to(datum/ai_holder/holder, turf/location, linger_duration = 30 SECONDS, stay_there_forever)
+
+/datum/buildmode_middleware/ai_holder/proc/order_ai_attack(datum/ai_holder/holder, atom/target)

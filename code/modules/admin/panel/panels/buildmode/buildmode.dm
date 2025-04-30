@@ -24,6 +24,7 @@
 	stop_capturing_input()
 
 /datum/admin_panel/buildmode/proc/start_capturing_input()
+	#warn will also need to capture key input for complex buildmodes like ai buildmode
 
 /datum/admin_panel/buildmode/proc/stop_capturing_input()
 
