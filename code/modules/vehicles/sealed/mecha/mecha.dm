@@ -145,7 +145,7 @@
 	var/datum/events/events
 
 	/// outgoing melee damage (legacy var)
-	var/damtype
+	var/damtype = DAMAGE_TYPE_BRUTE
 
 //mechaequipt2 stuffs
 	var/list/hull_equipment = new

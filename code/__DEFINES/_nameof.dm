@@ -1,3 +1,5 @@
+//* by normal ref *//
+
 /**
  * NAMEOF: Compile time checked variable name to string conversion
  * evaluates to a string equal to "X", but compile errors if X isn't a var on datum.
@@ -11,11 +13,11 @@
  **/
 #define NAMEOF_PROC(datum, X) (#X || ##datum.##X())
 
+//* by type *//
+
 /**
- * NAMEOF that actually works in static definitions because src::type requires src to be defined
+ * NAMEOF that actually works in static definitions because src::type requires src to be defined.
+ *
+ * This accepts a type instead of a reference variable.
  */
-#if DM_VERSION >= 515
-#define NAMEOF_STATIC(datum, X) (nameof(type::##X))
-#else
-#define NAMEOF_STATIC(datum, X) (#X || ##datum.##X)
-#endif
+#define NAMEOF_TYPE(TYPE, X) (nameof(##TYPE::##X))

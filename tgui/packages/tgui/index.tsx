@@ -28,7 +28,7 @@ import { createRenderer } from './renderer';
 import { configureStore, StoreProvider } from './store';
 import { setupGlobalEvents } from './events';
 
-perf.mark('inception', window.performance?.timing?.navigationStart);
+perf.mark('inception', window.performance?.timeOrigin);
 perf.mark('init');
 
 const store = configureStore();
@@ -63,8 +63,12 @@ const setupApp = () => {
   // Enable hot module reloading
   if (module.hot) {
     setupHotReloading();
+    // prettier-ignore
     module.hot.accept([
-      '.',
+      './components',
+      './debug',
+      './layouts',
+      './routes',
     ], () => {
       renderApp();
     });

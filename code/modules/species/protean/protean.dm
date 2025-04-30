@@ -162,7 +162,8 @@
 	return H?.impersonate_bodytype_legacy || ..()
 
 /datum/species/protean/get_icobase(mob/living/carbon/human/H, get_deform)
-	if(H && !isnull(H.impersonate_species_for_iconbase))
+	// TODO: rework this entire thing in bodysets update this is godawful
+	if(H && !isnull(H.impersonate_species_for_iconbase) && !istype(H.impersonate_species_for_iconbase, /datum/species/protean))
 		return H.impersonate_species_for_iconbase.get_icobase(H, get_deform)
 	return ..()
 

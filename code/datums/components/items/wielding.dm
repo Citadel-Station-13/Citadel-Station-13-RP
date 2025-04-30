@@ -44,7 +44,7 @@
 
 /datum/component/wielding/proc/signal_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
-	examine_list += SPAN_NOTICE("[parent] seems to be able to be used with [hands] hands. Press your \"<b>Wield Item</b>\" keybind [user?.client?.print_keys_for_keybind_with_prefs_link(/datum/keybinding/mob/multihand_wield, " ")]to toggle wielding.")
+	examine_list += SPAN_NOTICE("[parent] seems to be able to be used with [hands] hands. Press your \"<b>Wield Item</b>\" keybind [user?.client?.print_keys_for_keybind_with_prefs_link(/datum/keybinding/item/multihand_wield, " ")]to toggle wielding.")
 
 /datum/component/wielding/proc/signal_dropped(datum/source, mob/user, flags, atom/newloc)
 	unwield()
@@ -74,6 +74,10 @@
 	for(var/i in 1 to wanted)
 		var/obj/item/offhand/wielding/creating = wielder.allocate_offhand(/obj/item/offhand/wielding)
 		if(!creating)
+			wielder.action_feedback(
+				SPAN_WARNING("You don't have a free hand to hold [parent] with."),
+				target = parent,
+			)
 			QDEL_LIST(made)
 			return
 		creating.host = src
@@ -132,6 +136,7 @@
 /obj/item/offhand/wielding
 	name = "wielding offhand"
 	desc = "You shouldn't be able to see this."
+	allow_item_pickup_replace = TRUE
 	/// host
 	var/datum/component/wielding/host
 
@@ -140,6 +145,9 @@
 		host.offhand_destroyed(src)
 		host = null
 	return ..()
+
+/obj/item/offhand/wielding/get_host_drop_descriptor()
+	return "stop wielding [host.parent]"
 
 //* Item Hooks *//
 

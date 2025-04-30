@@ -364,19 +364,26 @@
 	"})
 	browser.open()
 
-/client/proc/allow_browser_inspect()
+/client/proc/toggle_browser_inspect()
 	set category = ADMIN_CATEGORY_DEBUG
-	set name = "Allow Browser Inspect"
-	set desc = "Allow browser debugging via inspect"
+	set name = "Toggle Browser Inspect"
+	set desc = "Toggle browser debugging via inspect"
 
 	if(!check_rights(R_DEBUG)) return
 
 	if(src.byond_version < 516)
-		to_chat(src, SPAN_WARNING("You can only use this on 516!"))
+		to_chat(src, SPAN_WARNING("Browser Inspection is not supported in this version of BYOND, please update to 516 or later."))
 		return
 
-	to_chat(src, SPAN_NOTICE("You can now right click to use inspect on browsers."))
-	winset(src, null, list("browser-options" = "+devtools"))
+	var/browser_options = winget(src, null, "browser-options")
+
+	if(findtext(browser_options, "devtools"))
+		winset(src, null, list("browser-options" = "-devtools"))
+		to_chat(src, SPAN_NOTICE("You can now right click to use inspect on browsers."))
+	else
+		winset(src, null, list("browser-options" = "+devtools"))
+		to_chat(src, SPAN_NOTICE("You can no longer right click to use inspect on browsers."))
+
 
 /client/proc/cmd_admin_clear_mobs()
 	set category = "Admin"
