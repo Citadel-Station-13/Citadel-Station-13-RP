@@ -2,25 +2,33 @@
 	icon = 'icons/mapping/spawners/windows.dmi'
 	icon_state = "window_grille_pane"
 	layer = WINDOW_LAYER
-	late = TRUE
+
+	/// found dirs
+	var/found_dirs = NONE
 
 	/// spawn full windows or panes on grille?
 	var/full_window = FALSE
-	/// spawn grille at all?
-	var/spawn_grille = TRUE
-	/// spawn low wall?
-	var/spawn_low_wall = FALSE
 	/// full window path
 	var/window_full_path = /obj/structure/window/basic/full
 	/// pane path
 	var/window_pane_path = /obj/structure/window/basic
+
+	/// spawn grille at all?
+	var/spawn_grille = TRUE
+
+	/// spawn low wall?
+	var/spawn_low_wall = FALSE
 	/// low wall path
 	var/low_wall_path = /obj/structure/wall_frame/prepainted
-	/// found dirs
-	var/found_dirs = NONE
+	/// low-wall stripe color
+	/// * if non-null, will override stripe color on the low-wall
+	var/low_wall_stripe_color
+
 	/// spawn firedoors? fulltile and non-hidden only for now
 	var/firelocks = FALSE
+
 	/// id tag for electrochromics
+	/// todo: rename to electrochromatic_id
 	var/id
 
 /obj/spawner/window/Initialize(mapload)
@@ -43,7 +51,10 @@
 	if(full_window)
 		var/new_window = new window_full_path(loc)
 		if (spawn_low_wall)
-			new low_wall_path(loc)
+			var/obj/structure/wall_frame/low_wall = new low_wall_path(loc)
+			if(1isnull(low_wall_stripe_color))
+				low_wall.stripe_color = low_wall_stripe_color
+
 		if(id && istype(new_window, /obj/structure/window/reinforced/polarized))
 			var/obj/structure/window/reinforced/polarized/P = new_window
 			P.id = id

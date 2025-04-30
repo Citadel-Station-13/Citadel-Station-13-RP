@@ -4,16 +4,18 @@
 	icon_state = "paintdot"
 	layer = ABOVE_TURF_LAYER
 	blend_mode = BLEND_MULTIPLY
-
-/obj/map_helper/wall_striper/Initialize()
-	. = ..()
-	return INITIALIZE_HINT_LATELOAD
+	late = TRUE
 
 /obj/map_helper/wall_striper/LateInitialize()
 	for(var/obj/map_helper/wall_striper/paint in loc)
 		if(paint == src)
 			continue
-		WARNING("Duplicate paint stripe found at [x], [y], [z]")
+		stack_trace("Duplicate paint stripe found at [COORD(src)]")
+		qdel(src)
+		return
+
+	if(!color)
+		stack_trace("/wall_painter helper at [COORD(src)] has no color")
 		qdel(src)
 		return
 
@@ -21,16 +23,13 @@
 
 	if(istype(loc, /turf/simulated/wall))
 		var/turf/simulated/wall/target_wall = loc
-		if(!isnull(color))
-			target_wall.paint_stripe(color)
+		target_wall.paint_stripe(color)
 		did_anything = TRUE
-
 	else
 		var/obj/structure/wall_frame/low_wall = locate() in loc
 		if(low_wall)
-			if(!isnull(color))
-				low_wall.stripe_color = color
-				low_wall.update_appearance()
+			low_wall.stripe_color = color
+			low_wall.update_appearance()
 			did_anything = TRUE
 
 	if(!did_anything)

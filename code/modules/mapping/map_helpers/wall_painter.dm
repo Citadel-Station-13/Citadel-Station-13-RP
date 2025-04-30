@@ -8,10 +8,7 @@
 	icon_state = "wall_paint_effect"
 	layer = ABOVE_TURF_LAYER
 	blend_mode = BLEND_MULTIPLY
-
-/obj/map_helper/wall_painter/Initialize()
-	. = ..()
-	return INITIALIZE_HINT_LATELOAD
+	late = TRUE
 
 /obj/map_helper/wall_painter/LateInitialize()
 	for(var/obj/map_helper/wall_painter/paint in loc)
@@ -32,11 +29,9 @@
 		var/turf/simulated/wall/target_wall = loc
 		target_wall.paint_wall(color)
 		did_anything = TRUE
-
 	else
 		var/obj/structure/wall_frame/low_wall = locate() in loc
 		if(low_wall)
-			low_wall.paint_color = color
 			low_wall.stripe_color = color
 			low_wall.update_appearance()
 			did_anything = TRUE
