@@ -613,7 +613,7 @@
 /area/hydroponics)
 "bF" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/beastybrown,
+/obj/map_helper/wall_striper/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
 "bG" = (
@@ -1194,7 +1194,7 @@
 	name = "EXTERNAL AIRLOCK"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/beastybrown,
+/obj/map_helper/wall_striper/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
 "du" = (
@@ -1952,7 +1952,7 @@
 /area/station/stairs_two)
 "fM" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/beastybrown,
+/obj/map_helper/wall_striper/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/office)
 "fO" = (
@@ -2567,7 +2567,7 @@
 /area/crew_quarters/lounge/kitchen_freezer)
 "hI" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/beastybrown,
+/obj/map_helper/wall_striper/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/qm)
 "hL" = (
@@ -2613,7 +2613,7 @@
 "hS" = (
 /obj/spawner/window/low_wall/full/firelocks/nogrille,
 /obj/structure/curtain/black,
-/obj/effect/paint_stripe/palebottlegreen,
+/obj/map_helper/wall_striper/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/crew_quarters/coffee_shop)
 "hT" = (
@@ -4240,7 +4240,7 @@
 /area/crew_quarters/kitchen)
 "ne" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/beastybrown,
+/obj/map_helper/wall_striper/beastybrown,
 /turf/simulated/floor/plating,
 /area/triumph/surfacebase/mining_main/storage)
 "nf" = (
@@ -10589,7 +10589,7 @@
 "FS" = (
 /obj/spawner/window/low_wall/full/firelocks/nogrille,
 /obj/structure/curtain/black,
-/obj/effect/paint_stripe/palebottlegreen,
+/obj/map_helper/wall_striper/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_shop)
 "FV" = (
@@ -11434,7 +11434,7 @@
 /area/janitor)
 "IF" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/beastybrown,
+/obj/map_helper/wall_striper/beastybrown,
 /turf/simulated/floor/plating,
 /area/triumph/surfacebase/mining_main/refinery)
 "IG" = (
@@ -12882,7 +12882,7 @@
 /obj/structure/curtain/open/bed{
 	name = "curtain"
 	},
-/obj/effect/paint_stripe/palebottlegreen,
+/obj/map_helper/wall_striper/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "Nc" = (
@@ -15819,7 +15819,7 @@
 /area/crew_quarters/coffee_shop)
 "VL" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/palebottlegreen,
+/obj/map_helper/wall_striper/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/hydroponics)
 "VM" = (

@@ -2377,7 +2377,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 9
 	},
-/obj/effect/paint_stripe/sun,
+/obj/map_helper/wall_striper/sun,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/admin_planet/andromeda/engi_workroom)
 "hE" = (
@@ -4259,7 +4259,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/effect/paint_stripe/sun,
+/obj/map_helper/wall_striper/sun,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/admin_planet/andromeda/engi_workroom)
 "mN" = (
@@ -6032,7 +6032,7 @@
 	dir = 5
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/map_helper/wall_striper/sun,
 /turf/simulated/floor/tiled/steel,
 /area/admin_planet/andromeda/engi_workroom)
 "sr" = (
@@ -6381,7 +6381,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/map_helper/wall_striper/sun,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/admin_planet/andromeda/engi_workroom)
 "tz" = (
@@ -7056,7 +7056,7 @@
 	dir = 1
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/map_helper/wall_striper/sun,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/admin_planet/andromeda/engi_workroom)
 "vP" = (
@@ -9003,7 +9003,7 @@
 	dir = 6
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/map_helper/wall_striper/sun,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/admin_planet/andromeda/engi_workroom)
 "BP" = (
@@ -11249,7 +11249,7 @@
 "IT" = (
 /obj/machinery/atmospherics/pipe/manifold4w/visible/cyan,
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/map_helper/wall_striper/sun,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/admin_planet/andromeda/engi_workroom)
 "IU" = (
@@ -13927,7 +13927,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/map_helper/wall_striper/sun,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/admin_planet/andromeda/engi_workroom)
 "Rv" = (
@@ -13950,7 +13950,7 @@
 /area/admin_planet/andromeda/northern_lobby)
 "Rz" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/map_helper/wall_striper/sun,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/admin_planet/andromeda/engi_workroom)
 "RB" = (
@@ -15852,7 +15852,7 @@
 	dir = 5
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/map_helper/wall_striper/sun,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/admin_planet/andromeda/engi_workroom)
 "Xp" = (
@@ -16040,7 +16040,7 @@
 	dir = 6
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/map_helper/wall_striper/sun,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/admin_planet/andromeda/engi_workroom)
 "XW" = (

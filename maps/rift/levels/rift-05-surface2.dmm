@@ -2210,7 +2210,7 @@
 	name = "Robotics shutter";
 	opacity = 0
 	},
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /obj/map_helper/electrochromatic_linker{
 	id = "robotics-inner"
 	},
@@ -2820,7 +2820,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "bBF" = (
@@ -5557,7 +5557,7 @@
 /area/rnd/telescience_lab/foyer)
 "duY" = (
 /obj/spawner/window/low_wall/full/nogrille/firelocks,
-/obj/effect/paint/babyblue,
+/obj/map_helper/wall_painter/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/surgeryprep)
 "dvw" = (
@@ -5895,7 +5895,7 @@
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
 	id = "warden-office"
 	},
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /obj/map_helper/electrochromatic_linker{
 	id = "warden-office"
 	},
@@ -6266,7 +6266,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/lobby)
 "dNb" = (
@@ -6365,7 +6365,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "dQE" = (
@@ -6733,7 +6733,7 @@
 	name = "Chemistry Shutters"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/map_helper/wall_painter/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/chemistry)
 "egF" = (
@@ -6863,7 +6863,7 @@
 /area/crew_quarters/sleep)
 "eke" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /obj/map_helper/electrochromatic_linker{
 	id = "sec-locker"
 	},
@@ -7012,7 +7012,7 @@
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
 	id = "warden-office"
 	},
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /obj/map_helper/electrochromatic_linker{
 	id = "warden-office"
 	},
@@ -7308,7 +7308,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "eBG" = (
@@ -7558,7 +7558,7 @@
 /area/medical/surgery2)
 "eJW" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/lobby)
 "eKx" = (
@@ -9414,7 +9414,7 @@
 /area/medical/chemistry)
 "fZd" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -13285,7 +13285,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "inb" = (
-/obj/effect/paint/babyblue,
+/obj/map_helper/wall_painter/babyblue,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/medical/resleeving)
@@ -13295,7 +13295,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/map_helper/wall_painter/babyblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "medbay-outer"
 	},
@@ -13887,7 +13887,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "iMz" = (
@@ -14231,7 +14231,7 @@
 /area/medical/surgery)
 "iWQ" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /obj/structure/cable/green,
 /obj/map_helper/electrochromatic_linker{
 	id = "Interr"
@@ -14526,7 +14526,7 @@
 	name = "Chemistry Shutters"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/map_helper/wall_painter/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/chemistry)
 "jdp" = (
@@ -14575,7 +14575,7 @@
 /area/crew_quarters/pool)
 "jfl" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/storage)
 "jgg" = (
@@ -14775,7 +14775,7 @@
 	name = "Head of Security's Office Shutters";
 	opacity = 0
 	},
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /obj/map_helper/electrochromatic_linker{
 	id = "hos-office"
 	},
@@ -15028,7 +15028,7 @@
 /area/medical/sleeper)
 "juW" = (
 /obj/spawner/window/low_wall/full/nogrille/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/briefing_room)
 "juX" = (
@@ -15650,7 +15650,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "jSr" = (
@@ -16081,7 +16081,7 @@
 /area/maintenance/medbay)
 "keC" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /obj/map_helper/electrochromatic_linker{
 	id = "sec-processing-l"
 	},
@@ -16131,7 +16131,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "kgx" = (
@@ -17265,7 +17265,7 @@
 	name = "Research Director Office shutter";
 	opacity = 0
 	},
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /obj/map_helper/electrochromatic_linker{
 	id = "rd-office"
 	},
@@ -17375,7 +17375,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "kTd" = (
@@ -17562,7 +17562,7 @@
 /obj/machinery/atmospherics/pipe/zpipe/down/scrubbers,
 /obj/structure/lattice,
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /turf/simulated/open,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "kXq" = (
@@ -17863,7 +17863,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "lcJ" = (
@@ -18407,7 +18407,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "lxP" = (
@@ -18705,7 +18705,7 @@
 /area/medical/chemistry)
 "lDW" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "lEq" = (
@@ -18819,7 +18819,7 @@
 /area/maintenance/medbay)
 "lKj" = (
 /obj/spawner/window/low_wall/full/nogrille/firelocks,
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/workshop)
 "lKu" = (
@@ -19203,7 +19203,7 @@
 /area/hallway/primary/surfacetwo)
 "lUI" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/breakroom)
 "lUK" = (
@@ -19334,7 +19334,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "lYJ" = (
@@ -19653,7 +19653,7 @@
 /area/medical/sleeper)
 "miH" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab/foyer)
 "mjr" = (
@@ -20698,9 +20698,9 @@
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/foyer)
 "mJx" = (
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/hallway)
 "mKp" = (
@@ -20966,7 +20966,7 @@
 /area/security/tactical)
 "mQt" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/map_helper/wall_painter/babyblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "medbay-outer"
 	},
@@ -22899,7 +22899,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "obA" = (
@@ -23689,7 +23689,7 @@
 /area/crew_quarters/sleep/Dorm_4)
 "oFb" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/map_helper/wall_painter/babyblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "resleeving-tint"
 	},
@@ -24725,7 +24725,7 @@
 /area/hallway/primary/surfacetwo)
 "phz" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/map_helper/wall_painter/babyblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "medbay-outer"
 	},
@@ -25450,7 +25450,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "pMR" = (
@@ -25964,7 +25964,7 @@
 /area/rift/surfacebase/outside/outside2)
 "qgn" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -26943,7 +26943,7 @@
 /area/maintenance/lower/medsec_maintenance)
 "qJa" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "qJl" = (
@@ -27055,7 +27055,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/full/nogrille/firelocks,
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/lockers)
 "qLw" = (
@@ -27725,7 +27725,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "rhI" = (
@@ -28459,7 +28459,7 @@
 /area/turbolift/rsurface/level2)
 "rCu" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "rDz" = (
@@ -28657,7 +28657,7 @@
 	name = "Robotics shutter";
 	opacity = 0
 	},
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /obj/map_helper/electrochromatic_linker{
 	id = "robotics-outer"
 	},
@@ -28875,7 +28875,7 @@
 /obj/spawner/window/low_wall/reinforced/electrochromic/full{
 	spawn_grille = 0
 	},
-/obj/effect/paint/babyblue,
+/obj/map_helper/wall_painter/babyblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "operating_theatre_1"
 	},
@@ -29001,7 +29001,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/tiled/monotile,
 /area/security/hallway)
 "rTn" = (
@@ -29443,7 +29443,7 @@
 /area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "slq" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "sly" = (
@@ -29554,7 +29554,7 @@
 /obj/spawner/window/low_wall/reinforced/electrochromic/full{
 	spawn_grille = 0
 	},
-/obj/effect/paint/babyblue,
+/obj/map_helper/wall_painter/babyblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "operating_theatre_2"
 	},
@@ -29927,7 +29927,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "sEs" = (
@@ -31021,7 +31021,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "tsk" = (
@@ -32731,7 +32731,7 @@
 /area/security/hallway)
 "uDC" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/security_processing)
 "uEv" = (
@@ -34348,7 +34348,7 @@
 /area/holodeck_control)
 "vvP" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab/foyer)
 "vwR" = (
@@ -34402,7 +34402,7 @@
 /obj/map_helper/electrochromatic_linker{
 	id = "research-inner"
 	},
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/research)
 "vyj" = (
@@ -34442,7 +34442,7 @@
 /area/maintenance/dormitory)
 "vzm" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /obj/map_helper/electrochromatic_linker{
 	id = "sec-processing-r"
 	},
@@ -34723,7 +34723,7 @@
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
 	id = "warden-office"
 	},
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /obj/map_helper/electrochromatic_linker{
 	id = "warden-office"
 	},
@@ -35990,7 +35990,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "wFo" = (
@@ -37957,7 +37957,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "xRj" = (
@@ -38214,7 +38214,7 @@
 	name = "Research shutter";
 	opacity = 0
 	},
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /obj/map_helper/electrochromatic_linker{
 	id = "research-outer"
 	},
@@ -38238,7 +38238,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "xYV" = (
@@ -38542,7 +38542,7 @@
 	pixel_x = -32
 	},
 /obj/spawner/window/low_wall/full/nogrille/firelocks,
-/obj/effect/paint/babyblue,
+/obj/map_helper/wall_painter/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/sleeper)
 "yjq" = (

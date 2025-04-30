@@ -1899,7 +1899,7 @@
 /area/awaymission/shipcave/ship/morgue)
 "tb" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/full,
-/obj/effect/paint_stripe/commandblue,
+/obj/map_helper/wall_striper/commandblue,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/awaymission/shipcave/ship/bridge)
 "tg" = (
@@ -3309,7 +3309,7 @@
 /area/awaymission/shipcave/ship/central)
 "Hw" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/full,
-/obj/effect/paint_stripe/commandblue,
+/obj/map_helper/wall_striper/commandblue,
 /turf/simulated/floor/airless/ceiling,
 /area/awaymission/shipcave/ship/bridge)
 "Hy" = (
@@ -4481,7 +4481,7 @@
 /area/awaymission/shipcave/ship/vault)
 "Ux" = (
 /obj/spawner/window/low_wall/borosillicate/full,
-/obj/effect/paint_stripe/violet,
+/obj/map_helper/wall_striper/violet,
 /turf/simulated/floor/plating,
 /area/awaymission/shipcave/ship/hangar)
 "Uy" = (

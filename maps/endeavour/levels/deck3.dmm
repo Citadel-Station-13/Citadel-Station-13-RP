@@ -34,7 +34,7 @@
 /area/quartermaster/warehouse)
 "abl" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/beastybrown,
+/obj/map_helper/wall_painter/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock)
 "abB" = (
@@ -456,7 +456,7 @@
 /area/engineering/substation/deck3amidships)
 "aqN" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/security/brig)
 "arz" = (
@@ -464,7 +464,7 @@
 /obj/map_helper/electrochromatic_linker{
 	id = "vicDetOffice"
 	},
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/detectives_office)
 "asX" = (
@@ -1514,7 +1514,7 @@
 	icon_state = "2-4"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hos)
 "bbp" = (
@@ -1801,7 +1801,7 @@
 /area/quartermaster/storage)
 "blM" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/palebottlegreen,
+/obj/map_helper/wall_painter/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/hydroponics/garden)
 "bmB" = (
@@ -1981,7 +1981,7 @@
 /obj/structure/curtain/open/bed{
 	name = "curtain"
 	},
-/obj/effect/paint/palebottlegreen,
+/obj/map_helper/wall_painter/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/crew_quarters/pool)
 "bsF" = (
@@ -2136,7 +2136,7 @@
 /area/endeavour/hallway/d3aftmaint)
 "bvx" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/commandblue,
+/obj/map_helper/wall_painter/commandblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "hop_office2"
 	},
@@ -2655,7 +2655,7 @@
 	icon_state = "0-8"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hos)
 "bTA" = (
@@ -2759,7 +2759,7 @@
 /area/maintenance/pool)
 "bXD" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/palebottlegreen,
+/obj/map_helper/wall_painter/palebottlegreen,
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/plating,
 /area/hydroponics/garden)
@@ -3414,7 +3414,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/full,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor,
 /area/security/hanger)
 "cGh" = (
@@ -4507,7 +4507,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/paint/beastybrown,
+/obj/map_helper/wall_painter/beastybrown,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock)
@@ -4589,7 +4589,7 @@
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "dxf" = (
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -5688,7 +5688,7 @@
 	icon_state = "0-2"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hos)
 "ekc" = (
@@ -5726,7 +5726,7 @@
 /area/quartermaster/delivery)
 "elT" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/brig)
 "emn" = (
@@ -6465,7 +6465,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/lobby)
 "eOs" = (
@@ -6622,7 +6622,7 @@
 	icon_state = "1-8"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/security_processing)
 "eTv" = (
@@ -7134,7 +7134,7 @@
 /area/crew_quarters/showers)
 "flv" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/evidence_storage)
 "fml" = (
@@ -7144,7 +7144,7 @@
 "fmB" = (
 /obj/structure/cable/green,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/range)
 "fnF" = (
@@ -8247,7 +8247,7 @@
 /obj/structure/curtain/open/bed{
 	name = "curtain"
 	},
-/obj/effect/paint/palebottlegreen,
+/obj/map_helper/wall_painter/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/space)
 "ggC" = (
@@ -8309,7 +8309,7 @@
 /area/hydroponics/garden)
 "glG" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/lobby)
 "glV" = (
@@ -9262,7 +9262,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/lobby)
 "gVV" = (
@@ -9494,7 +9494,7 @@
 "hch" = (
 /obj/structure/cable/green,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/security_processing)
 "hcD" = (
@@ -10543,7 +10543,7 @@
 "hOL" = (
 /obj/structure/cable/green,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/prison/cell_block)
 "hOP" = (
@@ -11013,7 +11013,7 @@
 /area/maintenance/security/port)
 "ihQ" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /obj/structure/cable/green,
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -11328,7 +11328,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/brig)
 "isD" = (
@@ -11569,7 +11569,7 @@
 /obj/map_helper/electrochromatic_linker{
 	id = "vicDetOffice"
 	},
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
 "iAh" = (
@@ -11656,7 +11656,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor,
 /area/security/hallway)
 "iDb" = (
@@ -12410,7 +12410,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/cable/green,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor,
 /area/security/hallway)
 "jkq" = (
@@ -12482,7 +12482,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "jmv" = (
-/obj/effect/paint/commandblue,
+/obj/map_helper/wall_painter/commandblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "hop_office"
 	},
@@ -13434,7 +13434,7 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3afthall)
 "jZL" = (
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/armoury)
@@ -13767,7 +13767,7 @@
 /area/security/brig)
 "kke" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/beastybrown,
+/obj/map_helper/wall_painter/beastybrown,
 /turf/simulated/floor/plating,
 /area/hydroponics/garden)
 "kkt" = (
@@ -14418,7 +14418,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/structure/cable/green{
 	icon_state = "2-4"
@@ -14460,7 +14460,7 @@
 /area/security/security_lockerroom)
 "kTg" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/security_lockerroom)
 "kTr" = (
@@ -14617,7 +14617,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/full,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor,
 /area/security/hanger)
 "lci" = (
@@ -16864,7 +16864,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
 "mVH" = (
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
@@ -17607,7 +17607,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -17746,7 +17746,7 @@
 	icon_state = "1-4"
 	},
 /obj/structure/cable/green,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor,
 /area/security/hallway)
 "nzO" = (
@@ -18585,7 +18585,7 @@
 	icon_state = "0-2"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/security_processing)
 "odI" = (
@@ -18677,7 +18677,7 @@
 /area/endeavour/hallway/d3afthall)
 "ofl" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/beastybrown,
+/obj/map_helper/wall_painter/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
 "ofO" = (
@@ -19128,7 +19128,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/beastybrown,
+/obj/map_helper/wall_painter/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/delivery)
 "ozk" = (
@@ -19234,7 +19234,7 @@
 /obj/map_helper/electrochromatic_linker{
 	id = "vicDetOffice"
 	},
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/detectives_office)
 "oDl" = (
@@ -19336,7 +19336,7 @@
 /area/security/hallway)
 "oFO" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/beastybrown,
+/obj/map_helper/wall_painter/beastybrown,
 /turf/simulated/floor/airless/ceiling,
 /area/quartermaster/warehouse)
 "oGe" = (
@@ -20641,7 +20641,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/brig)
 "pEk" = (
@@ -21138,7 +21138,7 @@
 	icon_state = "0-2"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/brig)
 "pYU" = (
@@ -21524,7 +21524,7 @@
 /area/janitor)
 "qmQ" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/beastybrown,
+/obj/map_helper/wall_painter/beastybrown,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
@@ -21917,7 +21917,7 @@
 /turf/simulated/floor,
 /area/quartermaster/warehouse)
 "qAq" = (
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/warden)
@@ -22202,7 +22202,7 @@
 /obj/map_helper/electrochromatic_linker{
 	id = "qm_office"
 	},
-/obj/effect/paint/beastybrown,
+/obj/map_helper/wall_painter/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/qm)
 "qMf" = (
@@ -22254,7 +22254,7 @@
 /area/security/lobby)
 "qNM" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/beastybrown,
+/obj/map_helper/wall_painter/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/office)
 "qOr" = (
@@ -22319,7 +22319,7 @@
 	icon_state = "0-2"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/prison/cell_block)
 "qQb" = (
@@ -23216,7 +23216,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/brig)
 "rEX" = (
@@ -23474,7 +23474,7 @@
 /area/janitor)
 "rMg" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/palebottlegreen,
+/obj/map_helper/wall_painter/palebottlegreen,
 /obj/structure/curtain/open/black,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/plating,
@@ -23484,7 +23484,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/brig)
 "rMi" = (
@@ -23512,7 +23512,7 @@
 /area/janitor)
 "rMJ" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/beastybrown,
+/obj/map_helper/wall_painter/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/foyer)
 "rMY" = (
@@ -23745,7 +23745,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor,
 /area/security/hallway)
 "rTD" = (
@@ -23797,7 +23797,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor,
 /area/security/brig)
 "rUj" = (
@@ -25040,7 +25040,7 @@
 /area/quartermaster/cargo_shelter_dock)
 "sKL" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/beastybrown,
+/obj/map_helper/wall_painter/beastybrown,
 /turf/simulated/floor/tiled/steel/airless,
 /area/shuttle/mining_ship/general)
 "sKV" = (
@@ -27156,7 +27156,7 @@
 /area/endeavour/hallway/d3fwdhall)
 "ulx" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -28115,7 +28115,7 @@
 	name = "EXTERNAL AIRLOCK"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/beastybrown,
+/obj/map_helper/wall_painter/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
 "vbj" = (
@@ -28135,7 +28135,7 @@
 /area/crew_quarters/pool)
 "vbs" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/range)
 "vca" = (
@@ -28179,7 +28179,7 @@
 /area/hydroponics/garden)
 "vdD" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/palebottlegreen,
+/obj/map_helper/wall_painter/palebottlegreen,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -28233,7 +28233,7 @@
 	icon_state = "1-8"
 	},
 /obj/structure/cable/green,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor,
 /area/security/hallway)
 "vfd" = (
@@ -29337,7 +29337,7 @@
 /area/space)
 "vOF" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/breakroom)
 "vOR" = (
@@ -29363,7 +29363,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/lobby)
 "vPQ" = (
@@ -29488,7 +29488,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor,
 /area/security/hallway)
 "vUL" = (
@@ -29630,12 +29630,12 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/beastybrown,
+/obj/map_helper/wall_painter/beastybrown,
 /turf/simulated/floor/airless/ceiling,
 /area/quartermaster/warehouse)
 "vZZ" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/beastybrown,
+/obj/map_helper/wall_painter/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/gear)
 "wal" = (
@@ -31374,7 +31374,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/security_lockerroom)
 "xlj" = (
@@ -32258,7 +32258,7 @@
 /area/security/security_equiptment_storage)
 "xPT" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/beastybrown,
+/obj/map_helper/wall_painter/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/refinery)
 "xPU" = (
@@ -32591,7 +32591,7 @@
 /area/security/security_processing)
 "ydB" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/palebottlegreen,
+/obj/map_helper/wall_painter/palebottlegreen,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -32655,7 +32655,7 @@
 /area/shuttle/mining_ship/general)
 "yhi" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/beastybrown,
+/obj/map_helper/wall_painter/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/delivery)
 "yhp" = (
@@ -32740,7 +32740,7 @@
 /obj/map_helper/electrochromatic_linker{
 	id = "vicDetOffice"
 	},
-/obj/effect/paint/darkred,
+/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/detectives_office)
 "yls" = (

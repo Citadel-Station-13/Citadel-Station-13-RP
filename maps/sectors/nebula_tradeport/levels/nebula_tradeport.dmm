@@ -358,7 +358,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
-/obj/effect/paint/wallgunmetal,
+/obj/map_helper/wall_painter/wallgunmetal,
 /turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "abc" = (
@@ -1343,7 +1343,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/universal{
 	dir = 4
 	},
-/obj/effect/paint/wallgunmetal,
+/obj/map_helper/wall_painter/wallgunmetal,
 /turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "adS" = (
@@ -1591,7 +1591,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/effect/paint/wallgunmetal,
+/obj/map_helper/wall_painter/wallgunmetal,
 /turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "aew" = (
@@ -2238,7 +2238,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
-/obj/effect/paint/wallgunmetal,
+/obj/map_helper/wall_painter/wallgunmetal,
 /turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "agh" = (
@@ -4499,7 +4499,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
 	},
-/obj/effect/paint/wallgunmetal,
+/obj/map_helper/wall_painter/wallgunmetal,
 /turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "alO" = (
@@ -5078,7 +5078,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
 "anv" = (
-/obj/effect/paint/purple,
+/obj/map_helper/wall_painter/purple,
 /turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "anw" = (
@@ -5864,7 +5864,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
-/obj/effect/paint/wallgunmetal,
+/obj/map_helper/wall_painter/wallgunmetal,
 /turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "apF" = (
@@ -9007,7 +9007,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
-/obj/effect/paint/wallgunmetal,
+/obj/map_helper/wall_painter/wallgunmetal,
 /turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "axA" = (
@@ -10191,7 +10191,7 @@
 /area/shuttle/runabout)
 "aAB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/effect/paint/wallgunmetal,
+/obj/map_helper/wall_painter/wallgunmetal,
 /turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "aAC" = (
@@ -10586,7 +10586,7 @@
 /area/tradeport/safarizoo)
 "aBy" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
-/obj/effect/paint/wallgunmetal,
+/obj/map_helper/wall_painter/wallgunmetal,
 /turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "aBA" = (
@@ -10673,7 +10673,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/effect/paint/wallgunmetal,
+/obj/map_helper/wall_painter/wallgunmetal,
 /turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "aBM" = (
@@ -12607,7 +12607,7 @@
 /obj/machinery/holosign/bar{
 	id = "tradersign"
 	},
-/obj/effect/paint/wallgunmetal,
+/obj/map_helper/wall_painter/wallgunmetal,
 /turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "aGX" = (
@@ -13248,7 +13248,7 @@
 /turf/simulated/floor/carpet/patterened/blue/alt,
 /area/sector/nebula_tradeport/motel/vip)
 "aIM" = (
-/obj/effect/paint/wallgunmetal,
+/obj/map_helper/wall_painter/wallgunmetal,
 /turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "aIN" = (
@@ -18685,7 +18685,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/effect/paint/wallgunmetal,
+/obj/map_helper/wall_painter/wallgunmetal,
 /turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "aXz" = (
@@ -18870,7 +18870,7 @@
 /turf/simulated/floor/outdoors/grass/heavy,
 /area/tradeport/spine)
 "aYb" = (
-/obj/effect/paint/wallgunmetal,
+/obj/map_helper/wall_painter/wallgunmetal,
 /turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/cockpit)
 "aYc" = (
@@ -19233,7 +19233,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/paint/wallgunmetal,
+/obj/map_helper/wall_painter/wallgunmetal,
 /turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "aZb" = (
@@ -19579,7 +19579,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
 	},
-/obj/effect/paint/wallgunmetal,
+/obj/map_helper/wall_painter/wallgunmetal,
 /turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "aZX" = (

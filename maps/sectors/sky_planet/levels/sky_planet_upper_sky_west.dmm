@@ -390,8 +390,8 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/racing_station/dock)
 "cp" = (
-/obj/effect/paint/offwhite,
-/obj/effect/paint_stripe/cyanblue,
+/obj/map_helper/wall_painter/offwhite,
+/obj/map_helper/wall_striper/cyanblue,
 /turf/simulated/wall/r_wall,
 /area/sector/sky_planet/station_city/shop)
 "cr" = (
@@ -984,7 +984,7 @@
 /turf/simulated/floor/lino,
 /area/sector/sky_planet/outpost/office)
 "fX" = (
-/obj/effect/paint/offwhite,
+/obj/map_helper/wall_painter/offwhite,
 /turf/simulated/wall/r_wall,
 /area/sector/sky_planet/station_city/shop)
 "fY" = (
@@ -7941,8 +7941,8 @@
 /turf/simulated/floor/tiled/steel_dirty/yellow,
 /area/shuttle/bonnethead)
 "Si" = (
-/obj/effect/paint/sun,
-/obj/effect/paint_stripe/black,
+/obj/map_helper/wall_painter/sun,
+/obj/map_helper/wall_striper/black,
 /turf/simulated/wall/r_wall,
 /area/sector/sky_planet/station_city/shop)
 "Sj" = (

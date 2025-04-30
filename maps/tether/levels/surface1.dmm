@@ -189,7 +189,7 @@
 /area/engineering/atmos)
 "aga" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/purplegray,
+/obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor,
 /area/rnd/outpost/mixing)
 "agi" = (
@@ -432,7 +432,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/pipecyan,
+/obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/processing)
 "amv" = (
@@ -484,7 +484,7 @@
 "anu" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/purplegray,
+/obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor,
 /area/rnd/outpost/heating)
 "aob" = (
@@ -3500,7 +3500,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/pipecyan,
+/obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/processing)
 "bRr" = (
@@ -3644,7 +3644,7 @@
 	id = "psych_office_inside";
 	name = "Psych Office - Inside"
 	},
-/obj/effect/paint_stripe/babyblue,
+/obj/map_helper/wall_striper/babyblue,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/medical/mentalhealth)
 "bWA" = (
@@ -3850,7 +3850,7 @@
 /area/crew_quarters/sleep/Dorm_4)
 "cbm" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/purplegray,
+/obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/testingroom)
 "cbt" = (
@@ -5158,7 +5158,7 @@
 /area/maintenance/lower/trash_pit)
 "cHI" = (
 /obj/spawner/window/low_wall/full/firelocks/nogrille,
-/obj/effect/paint_stripe/babyblue,
+/obj/map_helper/wall_striper/babyblue,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/medical/mentalhealth)
 "cHP" = (
@@ -6995,7 +6995,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/pipecyan,
+/obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/processing)
 "dFS" = (
@@ -8891,7 +8891,7 @@
 	dir = 1
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/purplegray,
+/obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor,
 /area/rnd/outpost/mixing)
 "eMc" = (
@@ -8916,7 +8916,7 @@
 /area/tether/surfacebase/public_garden_one)
 "eMp" = (
 /obj/spawner/window/low_wall/full/firelocks,
-/obj/effect/paint_stripe/pipecyan,
+/obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "eMB" = (
@@ -11217,7 +11217,7 @@
 	dir = 9
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/purplegray,
+/obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor,
 /area/rnd/outpost/heating)
 "fTY" = (
@@ -12242,7 +12242,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/darkred,
+/obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/security/brig)
 "gsy" = (
@@ -12366,7 +12366,7 @@
 	dir = 9
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/purplegray,
+/obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor,
 /area/rnd/outpost/mixing)
 "gwy" = (
@@ -12681,7 +12681,7 @@
 	id = "psych_office";
 	name = "Psych Office"
 	},
-/obj/effect/paint_stripe/babyblue,
+/obj/map_helper/wall_striper/babyblue,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/medical/mentalhealth)
 "gEn" = (
@@ -12997,7 +12997,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/pipecyan,
+/obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/processing)
 "gLq" = (
@@ -13330,7 +13330,7 @@
 "gUt" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/purplegray,
+/obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/testing)
 "gVu" = (
@@ -13808,7 +13808,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/pipecyan,
+/obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/processing)
 "hna" = (
@@ -16238,7 +16238,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/pipecyan,
+/obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/processing)
 "izA" = (
@@ -17481,7 +17481,7 @@
 /area/maintenance/lowmedbaymaint)
 "jih" = (
 /obj/spawner/window/low_wall/full/firelocks,
-/obj/effect/paint_stripe/pipecyan,
+/obj/map_helper/wall_striper/pipecyan,
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
 	},
@@ -17543,7 +17543,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/purplegray,
+/obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/testingroom)
 "jmr" = (
@@ -20652,7 +20652,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/purplegray,
+/obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/testingroom)
 "kWC" = (
@@ -20777,7 +20777,7 @@
 /area/storage/primary)
 "kXZ" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/purplegray,
+/obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/analysis)
 "kYi" = (
@@ -21001,7 +21001,7 @@
 /area/engineering/atmos)
 "lea" = (
 /obj/spawner/window/low_wall/full/firelocks/nogrille,
-/obj/effect/paint_stripe/babyblue,
+/obj/map_helper/wall_striper/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/virology)
 "lfc" = (
@@ -22013,7 +22013,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/industrial/warning/corner,
 /obj/spawner/window/low_wall/full/firelocks,
-/obj/effect/paint_stripe/purplegray,
+/obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab)
 "lHE" = (
@@ -22821,7 +22821,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/purplegray,
+/obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor,
 /area/rnd/outpost/heating)
 "mfX" = (
@@ -23137,7 +23137,7 @@
 	icon_state = "0-8"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/darkred,
+/obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/security/brig)
 "mpa" = (
@@ -24283,7 +24283,7 @@
 	dir = 6
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/purplegray,
+/obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor,
 /area/rnd/outpost/heating)
 "mQq" = (
@@ -24404,7 +24404,7 @@
 /area/engineering/atmos/processing)
 "mUT" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/purplegray,
+/obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor,
 /area/rnd/outpost)
 "mVl" = (
@@ -25006,7 +25006,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/purplegray,
+/obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "nmF" = (
@@ -25161,7 +25161,7 @@
 	icon_state = "4-8"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/purplegray,
+/obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor,
 /area/maintenance/substation/outpost)
 "nsA" = (
@@ -25689,7 +25689,7 @@
 	icon_state = "1-2"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/purplegray,
+/obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/testing)
 "nIl" = (
@@ -29700,7 +29700,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/pipecyan,
+/obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/processing)
 "pXd" = (
@@ -29970,7 +29970,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/purplegray,
+/obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/testingroom)
 "qdD" = (
@@ -30972,7 +30972,7 @@
 /area/maintenance/lower/trash_pit)
 "qEE" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/purplegray,
+/obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor,
 /area/rnd/outpost/heating)
 "qEX" = (
@@ -31469,7 +31469,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/pipecyan,
+/obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/processing)
 "qRz" = (
@@ -32112,7 +32112,7 @@
 /area/holodeck_control)
 "rfX" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/purplegray,
+/obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/breakroom)
 "rga" = (
@@ -35107,7 +35107,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/pipecyan,
+/obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/processing)
 "sNn" = (
@@ -36978,7 +36978,7 @@
 /area/crew_quarters/sleep/maintDorm2)
 "tSO" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/purplegray,
+/obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/testing)
 "tTq" = (
@@ -37510,7 +37510,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/pipecyan,
+/obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/processing)
 "ugW" = (
@@ -40371,7 +40371,7 @@
 	open_layer = 1
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/babyblue,
+/obj/map_helper/wall_striper/babyblue,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/medical/paramed)
 "vJq" = (
@@ -40482,7 +40482,7 @@
 	icon_state = "4-8"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/purplegray,
+/obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor,
 /area/rnd/outpost/heating)
 "vMn" = (
@@ -42172,7 +42172,7 @@
 /area/maintenance/lower/mining_eva)
 "wFa" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/pipecyan,
+/obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/processing)
 "wFz" = (
@@ -44517,7 +44517,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/purplegray,
+/obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/testingroom)
 "xYJ" = (
@@ -44643,7 +44643,7 @@
 	icon_state = "4-8"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/pipecyan,
+/obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/processing)
 "yfm" = (

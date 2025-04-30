@@ -757,7 +757,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/map_helper/wall_striper/sun,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "bQ" = (
@@ -874,7 +874,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/map_helper/wall_striper/sun,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "cf" = (
@@ -959,7 +959,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/map_helper/wall_striper/sun,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "cq" = (
