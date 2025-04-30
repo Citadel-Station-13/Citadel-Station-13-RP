@@ -2727,7 +2727,6 @@
 #include "code\modules\clothing\under\misc.dm"
 #include "code\modules\clothing\under\miscellaneous.dm"
 #include "code\modules\clothing\under\nanotrasen_vr.dm"
-#include "code\modules\clothing\under\pants.dm"
 #include "code\modules\clothing\under\shiny_vr.dm"
 #include "code\modules\clothing\under\shorts.dm"
 #include "code\modules\clothing\under\accessories\accessory.dm"

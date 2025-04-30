@@ -21,3 +21,10 @@
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/onestar
+	name = "one star jumpsuit"
+	desc = "A jumpsuit in One Star colours."
+	icon = 'icons/clothing/uniform/costume/onestar.dmi'
+	icon_state = "os_jumpsuit"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
