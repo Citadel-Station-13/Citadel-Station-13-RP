@@ -21,7 +21,6 @@
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/navgold/border,
 /obj/structure/sign/electricshock{
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled,
@@ -1139,8 +1138,7 @@
 	color = "#ed983d"
 	},
 /obj/structure/sign/fire{
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_gas)
@@ -1197,8 +1195,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/sign/department/eng{
-	pixel_x = -32;
-	pixel_y = 0
+	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4portafthall)
@@ -1303,7 +1300,6 @@
 	dir = 1
 	},
 /obj/structure/sign/department/eng{
-	pixel_x = 0;
 	pixel_y = 33
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -4651,7 +4647,6 @@
 	dir = 1
 	},
 /obj/structure/sign/deck/fourth{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/steel,
@@ -12215,7 +12210,6 @@
 	dir = 4
 	},
 /obj/structure/sign/deck/fourth{
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -14412,7 +14406,6 @@
 	},
 /obj/effect/floor_decal/corner/navgold/border,
 /obj/structure/sign/deck/fourth{
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled,
@@ -14555,7 +14548,6 @@
 	dir = 4
 	},
 /obj/structure/sign/warning/radioactive{
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -17465,7 +17457,6 @@
 	dir = 1
 	},
 /obj/structure/sign/deck/fourth{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/steel_ridged,
@@ -17684,7 +17675,6 @@
 	dir = 8
 	},
 /obj/structure/sign/department/atmos{
-	pixel_x = 0;
 	pixel_y = -31
 	},
 /turf/simulated/floor/tiled/steel,
@@ -18530,8 +18520,7 @@
 	dir = 8
 	},
 /obj/structure/sign/department/atmos{
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/steel,
 /area/engineering/atmos/eva)
@@ -18663,7 +18652,6 @@
 	dir = 4
 	},
 /obj/structure/sign/deck/fourth{
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled,
@@ -19645,7 +19633,6 @@
 	dir = 9
 	},
 /obj/structure/sign/department/engine{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
@@ -19665,7 +19652,6 @@
 	dir = 1
 	},
 /obj/structure/sign/department/ai{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
@@ -20193,7 +20179,6 @@
 	dir = 9
 	},
 /obj/structure/sign/department/atmos{
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -20201,7 +20186,6 @@
 "uOW" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/structure/sign/deck/fourth{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/plating,
@@ -20539,7 +20523,6 @@
 /obj/machinery/button/remote/airlock{
 	id = "bathroomlock15";
 	name = "Bathroom Lock";
-	pixel_x = 0;
 	pixel_y = 32;
 	specialfunctions = 4
 	},
@@ -21746,8 +21729,7 @@
 "woW" = (
 /obj/machinery/vending/snack,
 /obj/structure/sign/department/eng{
-	pixel_x = -32;
-	pixel_y = 0
+	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/dark,
 /area/endeavour/hallway/d4portafthall)

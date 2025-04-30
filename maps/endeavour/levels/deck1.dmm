@@ -743,14 +743,14 @@
 	pixel_x = 25
 	},
 /obj/machinery/door/firedoor,
+/obj/structure/table/marble,
+/obj/item/storage/box/donut,
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "cafe";
 	layer = 3.1;
 	name = "Cafe Shutters"
 	},
-/obj/structure/table/marble,
-/obj/item/storage/box/donut,
 /turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
 "aCq" = (
@@ -3481,6 +3481,9 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
 "cEU" = (
@@ -5366,7 +5369,6 @@
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/navgold/border,
 /obj/structure/sign/deck/first{
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/steel,
@@ -9714,6 +9716,17 @@
 	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
+"hro" = (
+/obj/machinery/door/firedoor,
+/obj/structure/table/marble,
+/obj/machinery/door/blast/shutters{
+	dir = 2;
+	id = "cafe";
+	layer = 3.1;
+	name = "Cafe Shutters"
+	},
+/turf/simulated/floor/lino,
+/area/crew_quarters/coffee_shop)
 "hrr" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -9808,7 +9821,6 @@
 	dir = 1
 	},
 /obj/structure/sign/deck/first{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/steel,
@@ -9971,9 +9983,6 @@
 "hJV" = (
 /obj/machinery/power/apc/east_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/obj/machinery/light{
 	dir = 4
 	},
 /obj/structure/cable/cyan{
@@ -10534,6 +10543,7 @@
 /obj/structure/poster{
 	pixel_y = 32
 	},
+/obj/machinery/vending/cafe,
 /turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
 "icG" = (
@@ -16559,7 +16569,6 @@
 	dir = 1
 	},
 /obj/structure/sign/deck/first{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/steel,
@@ -19757,8 +19766,14 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
 "oWx" = (
-/turf/simulated/wall/prepainted/exploration,
-/area/endeavour/hallway/d1fwdmaint)
+/obj/machinery/atmospherics/pipe/tank/phoron{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/excursion/cargo)
 "oWB" = (
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
@@ -20620,9 +20635,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
 "pAM" = (
-/obj/machinery/vending/cafe,
-/turf/simulated/floor/wood,
-/area/crew_quarters/coffee_shop)
+/obj/machinery/light,
+/turf/simulated/floor/carpet/bcarpet,
+/area/chapel/main)
 "pAX" = (
 /obj/structure/table/standard,
 /obj/item/bodybag/cryobag,
@@ -22175,15 +22190,15 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
+/obj/structure/table/marble,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "cafe";
 	layer = 3.1;
 	name = "Cafe Shutters"
-	},
-/obj/structure/table/marble,
-/obj/structure/cable/green{
-	icon_state = "1-2"
 	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
@@ -22826,14 +22841,14 @@
 	dir = 4;
 	req_access = list(25)
 	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /obj/machinery/door/blast/shutters{
 	dir = 8;
 	id = "cafe";
 	layer = 3.1;
 	name = "Cafe Shutters"
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
 	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
@@ -24748,6 +24763,12 @@
 /obj/item/duct_tape_roll,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
+"sLb" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/chapel/main)
 "sLI" = (
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = -37
@@ -25055,7 +25076,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/civillian/evastorage)
 "sYL" = (
-/turf/simulated/wall/r_wall/prepainted/exploration,
+/turf/simulated/wall/r_wall/prepainted,
 /area/endeavour/hallway/d1portamidhall)
 "sZj" = (
 /turf/simulated/floor/tiled/steel,
@@ -26613,9 +26634,6 @@
 /turf/simulated/floor/tiled/monodark,
 /area/bridge)
 "ueV" = (
-/obj/machinery/light{
-	dir = 4
-	},
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/structure/table/bench/wooden,
 /obj/machinery/light_switch{
@@ -27260,7 +27278,6 @@
 	dir = 5
 	},
 /obj/structure/sign/deck/first{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/steel,
@@ -28552,9 +28569,6 @@
 	},
 /obj/structure/table/marble,
 /obj/machinery/chemical_dispenser/catering/bar_coffee,
-/obj/machinery/light{
-	dir = 1
-	},
 /obj/machinery/computer/security/telescreen{
 	pixel_y = 32
 	},
@@ -28563,6 +28577,37 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/item/reagent_containers/food/drinks/cup{
+	pixel_x = -4;
+	pixel_y = 12
+	},
+/obj/item/reagent_containers/food/drinks/cup{
+	pixel_x = -4;
+	pixel_y = 12
+	},
+/obj/item/reagent_containers/food/drinks/cup{
+	pixel_x = -4;
+	pixel_y = 12
+	},
+/obj/item/reagent_containers/food/drinks/cup{
+	pixel_x = -4;
+	pixel_y = 12
+	},
+/obj/item/reagent_containers/food/drinks/cup{
+	pixel_x = -9;
+	pixel_y = 12
+	},
+/obj/item/reagent_containers/food/drinks/cup{
+	pixel_y = 12
+	},
+/obj/item/reagent_containers/food/drinks/cup{
+	pixel_x = 4;
+	pixel_y = 12
+	},
+/obj/item/reagent_containers/food/drinks/cup{
+	pixel_x = 8;
+	pixel_y = 12
 	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
@@ -31398,9 +31443,6 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/bedrooms)
 "xGd" = (
-/obj/machinery/light{
-	dir = 8
-	},
 /obj/structure/table/bench/wooden,
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/structure/disposalpipe/segment,
@@ -39071,7 +39113,7 @@ dpf
 hgT
 nvS
 bdP
-xDl
+oWx
 xDl
 rNe
 ihi
@@ -44894,11 +44936,11 @@ dgm
 dgm
 dgm
 dgm
-oWx
-asR
-asR
-asR
-asR
+aJX
+aJX
+aJX
+aJX
+aJX
 xEH
 dWV
 kNE
@@ -50719,7 +50761,7 @@ nNH
 uaP
 vce
 mcN
-veS
+hro
 uRN
 wYg
 hbb
@@ -51885,7 +51927,7 @@ xSC
 gOB
 gOB
 ayy
-pAM
+wYg
 uaP
 uaP
 hJE
@@ -51916,7 +51958,7 @@ ooD
 wpZ
 xGd
 sNh
-khS
+pAM
 pgA
 yaO
 qQJ
@@ -53467,7 +53509,7 @@ gQH
 aeg
 gQH
 ueV
-khS
+sLb
 quB
 pgA
 hZn

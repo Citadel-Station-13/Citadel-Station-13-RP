@@ -20711,9 +20711,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/vacant/vacant_shop)
 "pKv" = (
-/obj/machinery/fire_alarm/south_mount{
-	pixel_y = -24
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
@@ -27493,9 +27490,9 @@
 /area/security/hallway)
 "uvj" = (
 /obj/machinery/door/airlock/maintenance{
-	name = "Kitchen Maintenance Access"
+	name = "Janitorial Maintenance Access"
 	},
-/obj/map_helper/access_helper/airlock/station/service/kitchen,
+/obj/map_helper/access_helper/airlock/station/service/janitor,
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
 "uvl" = (
@@ -41018,7 +41015,7 @@ feC
 feC
 ddh
 aiW
-gcQ
+lKR
 icx
 aGh
 jVN
@@ -41600,7 +41597,7 @@ feC
 rzR
 isg
 aiW
-lKR
+gcQ
 icx
 icx
 icx
