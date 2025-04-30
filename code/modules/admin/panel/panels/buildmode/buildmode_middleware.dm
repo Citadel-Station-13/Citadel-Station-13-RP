@@ -8,15 +8,21 @@ GLOBAL_PROTECT(admin_buildmode_middleware)
 	#warn impl
 
 /datum/buildmode_middleware
+	abstract_type = /datum/buildmode_middleware
+	/// must be unique
+	var/id
+	var/ui_key
+	var/ui_icon
+	#warn default icon
 	var/state_type = /datum/buildmode_state
 
 /**
  * * `state` can be safely casted to our `state_type`.
  */
-/datum/buildmode_middleware/proc/handle_topic(client/user, datum/admins/holder, datum/buildmmode_state/state, action, list/params)
+/datum/buildmode_middleware/proc/handle_topic(client/user, datum/admins/holder, datum/buildmode_state/state, action, list/params)
 
 /**
  * * `state` can be safely casted to our `state_type`.
  */
-/datum/buildmode_middleware/proc/handle_click(client/user, datum/admins/holder, datum/buildmmode_state/state, atom/click_target, list/click_params)
+/datum/buildmode_middleware/proc/handle_click(client/user, datum/admins/holder, datum/buildmode_state/state, atom/click_target, list/click_params)
 
