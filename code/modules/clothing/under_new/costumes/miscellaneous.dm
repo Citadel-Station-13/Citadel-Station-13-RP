@@ -1,8 +1,8 @@
-/*
-*	This file is for anything that does not fit elsewhere.
-*	If you add 3 or more of something that groups together remove it from here and put it
-*	in its own file.
-*/
+/**
+ * This file is for anything that does not fit elsewhere.
+ * If you add 3 or more of something that groups together remove it from here and put it
+ * in its own file.
+ */
 
 /obj/item/clothing/under/kamina
 	name = "spiral hero outfit"

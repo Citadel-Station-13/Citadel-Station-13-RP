@@ -1,4 +1,8 @@
-//these need item states -S2-
+/**
+ * Pants, Jeans, Long legged shorts
+ */
+
+
 /obj/item/clothing/under/pants
 	name = "jeans"
 	desc = "A nondescript pair of tough blue jeans."

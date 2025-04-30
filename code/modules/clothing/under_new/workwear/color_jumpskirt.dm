@@ -1,6 +1,6 @@
-/*
-*	Base file for non-department jumpskirts e.g gray, red, purple, etc
-*/
+/**
+ * Base file for non-department jumpskirts e.g gray, red, purple, etc
+ */
 
 /obj/item/clothing/under/color/black_skirt
 	name = "black pleated skirt"

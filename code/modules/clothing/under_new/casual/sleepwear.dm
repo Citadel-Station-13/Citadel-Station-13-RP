@@ -1,6 +1,6 @@
-/*
-*	Pajamas, sleepwear, etc
-*/
+/**
+ * Pajamas, sleepwear, etc
+ */
 
 /obj/item/clothing/under/pj/red
 	name = "red pajamas"

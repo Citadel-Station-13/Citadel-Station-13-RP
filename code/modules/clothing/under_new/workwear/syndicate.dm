@@ -1,6 +1,6 @@
-/*
-*	"Former" Syndicate workwear
-*/
+/**
+ * "Former" Syndicate workwear
+ */
 
 /obj/item/clothing/under/syndicate //Merc Tactleneck
 	name = "tactical turtleneck"

@@ -1,7 +1,6 @@
-/*
-* This file is for maid outfits that are costumes. Maid outfits that are uniforms go in workwear.
-*/
-
+/**
+ * This file is for maid outfits that are costumes. Maid outfits that are uniforms go in workwear.
+ */
 /obj/item/clothing/under/dress/maid
 	name = "maid costume"
 	desc = "Maid in China."

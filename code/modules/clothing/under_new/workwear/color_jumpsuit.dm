@@ -1,6 +1,6 @@
-/*
-*	Base file for non-department jumpsuits e.g gray, red, purple, etc
-*/
+/**
+ * Base file for non-department jumpsuits e.g gray, red, purple, etc
+ */
 
 /obj/item/clothing/under/color
 	name = "purple jumpsuit"

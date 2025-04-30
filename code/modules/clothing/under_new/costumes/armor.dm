@@ -1,6 +1,6 @@
-/*
-*	This file is for armor style costumes
-*/
+/**
+ * This file is for armor style costumes
+ */
 
 /obj/item/clothing/under/darkcleric
 	name = "dark cleric armor"

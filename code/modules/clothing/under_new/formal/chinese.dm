@@ -1,8 +1,8 @@
-/*
-*	Chinese Traditional
-*	Funfact: cheongsam and qipao are cantonese and mandarain for the same dress type
-*	cheong is korean for syrup
-*/
+/**
+ * Chinese Traditional
+ * Funfact: cheongsam and qipao are cantonese and mandarain for the same dress type
+ * cheong is korean for syrup
+ */
 
 /obj/item/clothing/under/cheongsam
 	name = "white cheongsam"

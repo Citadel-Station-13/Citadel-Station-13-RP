@@ -1,6 +1,6 @@
-/*
-* Workwear for the janitors
-*/
+/**
+ * Workwear for the janitors
+ */
 
 /obj/item/clothing/under/dress/maid/janitor
 	name = "maid uniform"

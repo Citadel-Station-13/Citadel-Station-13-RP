@@ -1,6 +1,6 @@
-/*
-*	Mens Suits, Women Suits, Skeleton Suits
-*/
+/**
+ * Mens Suits, Women Suits, Skeleton Suits
+ */
 
 /obj/item/clothing/under/scratch
 	name = "white suit"

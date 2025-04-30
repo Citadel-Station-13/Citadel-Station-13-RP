@@ -1,6 +1,6 @@
-/*
-*	This file is for historical costumes e.g togas, old-earth "police", etc.
-*/
+/**
+ * This file is for historical costumes e.g togas, old-earth "police", etc.
+ */
 
 /obj/item/clothing/under/aquiline_enforcer
 	name = "aquiline enforcer uniform"

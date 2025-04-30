@@ -1,6 +1,6 @@
-/*
-*	Swimwear, bikinis, swimsuits, waterwear
-*/
+/**
+ * Swimwear, bikinis, swimsuits, waterwear
+ */
 
 /obj/item/clothing/under/swimsuit
 	name = "primitive swimsuit"
