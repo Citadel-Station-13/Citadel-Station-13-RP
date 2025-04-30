@@ -201,37 +201,6 @@
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 	worn_has_rolldown = UNIFORM_HAS_ROLL
 
-/obj/item/clothing/under/rank/cargo/skirt
-	name = "quartermaster's jumpskirt"
-	desc = "It's a jumpskirt worn by the quartermaster. It's specially designed to prevent back injuries caused by pushing paper."
-	icon_state = "qmf"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "qm", SLOT_ID_LEFT_HAND = "qm")
-
-/obj/item/clothing/under/rank/cargotech/skirt
-	name = "cargo technician's jumpskirt"
-	desc = "Skirrrrrts! They're comfy and easy to wear!"
-	icon_state = "cargof"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "cargo", SLOT_ID_LEFT_HAND = "cargo")
-
-/obj/item/clothing/under/rank/engineer/skirt
-	desc = "It's an orange high visibility jumpskirt worn by engineers. It has minor radiation shielding."
-	name = "engineer's jumpskirt"
-	icon_state = "enginef"
-	armor_type = /datum/armor/engineering/jumpsuit
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "engine", SLOT_ID_LEFT_HAND = "engine")
-
-/obj/item/clothing/under/rank/chief_engineer/skirt
-	desc = "It's a high visibility jumpskirt given to those engineers insane enough to achieve the rank of \"Chief engineer\". It has minor radiation shielding."
-	name = "chief engineer's jumpskirt"
-	icon_state = "chieff"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "chiefengineer", SLOT_ID_LEFT_HAND = "chiefengineer")
-
-/obj/item/clothing/under/rank/atmospheric_technician/skirt
-	desc = "It's a jumpskirt worn by atmospheric technicians."
-	name = "atmospheric technician's jumpskirt"
-	icon_state = "atmosf"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "atmos", SLOT_ID_LEFT_HAND = "atmos")
-
 /obj/item/clothing/under/rank/roboticist/skirt
 	desc = "It's a slimming black jumpskirt with reinforced seams; great for industrial work."
 	name = "roboticist's jumpskirt"
