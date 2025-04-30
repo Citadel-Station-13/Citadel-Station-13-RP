@@ -49,6 +49,10 @@
 /obj/structure/flora/ausbushes/stalkybush,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/hangardeck)
+"ap" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/wall/r_wall/prepainted,
+/area/strelka/shipbase/deck1/fighterbaysec)
 "au" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/strelka/shipbase/deck1/armory3)
@@ -918,6 +922,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/strelka/shipbase/deck1/gateway)
 "eE" = (
+/obj/machinery/shield_diffuser,
 /turf/space/basic,
 /area/strelka/shipbase/deck1/fighterbay)
 "eH" = (
@@ -1698,6 +1703,7 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck1/warden)
 "jn" = (
+/obj/machinery/shield_diffuser,
 /turf/space/basic,
 /area/strelka/shipbase/deck1/fighterbaysec)
 "jq" = (
@@ -2352,6 +2358,9 @@
 	name = "RIG Storage";
 	req_access = list(1,2,18)
 	},
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/shipbase/deck1/fighterbaysec)
 "mo" = (
@@ -2714,6 +2723,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospheric_field_generator/perma,
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/fighterbaysec)
 "oh" = (
@@ -3312,6 +3322,7 @@
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/machinery/atmospheric_field_generator/perma,
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/fighterbaysec)
 "sb" = (
@@ -3880,6 +3891,11 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck1)
+"vn" = (
+/obj/structure/lattice,
+/obj/machinery/shield_diffuser,
+/turf/space/basic,
+/area/strelka/shipbase/deck1/fighterbaysec)
 "vq" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/tank/jetpack/carbondioxide,
@@ -4935,6 +4951,11 @@
 /obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck1)
+"Bx" = (
+/obj/structure/railing,
+/obj/machinery/camera/network/security,
+/turf/simulated/floor/tiled/monodark,
+/area/strelka/shipbase/deck1/fighterbaysec)
 "Bz" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/tiled/dark,
@@ -7253,6 +7274,13 @@
 /obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck1/checkpoint)
+"Oi" = (
+/obj/structure/lattice,
+/obj/structure/marker_beacon/green,
+/obj/machinery/shield_diffuser,
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless,
+/area/strelka/shipbase/deck1/fighterbaysec)
 "Oj" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -29046,7 +29074,7 @@ vu
 vu
 qs
 qs
-SC
+Bx
 SR
 xU
 fP
@@ -29634,7 +29662,7 @@ rU
 qs
 of
 rU
-qs
+ap
 of
 rU
 qs
@@ -29823,14 +29851,14 @@ vu
 vu
 vu
 qs
-FI
-FI
+vn
+vn
 qs
-FI
-FI
-qs
-FI
-FI
+vn
+vn
+ap
+vn
+vn
 qs
 qs
 Ey
@@ -30022,7 +30050,7 @@ jn
 qs
 jn
 jn
-qs
+ap
 jn
 jn
 qs
@@ -30216,7 +30244,7 @@ jn
 qs
 jn
 jn
-qs
+ap
 jn
 jn
 qs
@@ -30410,7 +30438,7 @@ jn
 gW
 jn
 jn
-gW
+Oi
 jn
 jn
 qs
@@ -30604,7 +30632,7 @@ jn
 FI
 jn
 jn
-FI
+vn
 jn
 jn
 qs
