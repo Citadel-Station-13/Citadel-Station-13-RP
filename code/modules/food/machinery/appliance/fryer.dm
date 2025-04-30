@@ -141,7 +141,7 @@
 	//If you can lure someone close to the fryer and grab them then you deserve success.
 	//And a delay on this kind of niche action just ensures it never happens
 	//Cooldown ensures it can't be spammed to instakill someone
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN*3)
+	user.setClickCooldownLegacy(DEFAULT_ATTACK_COOLDOWN*3)
 
 	if(!victim || !victim.Adjacent(user))
 		to_chat(user, "<span class='danger'>Your victim slipped free!</span>")

@@ -39,7 +39,7 @@
 
 	Spray_at(target, user, (clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 
-	user.setClickCooldown(4)
+	user.setClickCooldownLegacy(4)
 
 	if(reagents.has_reagent("sacid"))
 		message_admins("[key_name_admin(user)] fired sulphuric acid from \a [src].")

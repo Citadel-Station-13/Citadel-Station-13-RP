@@ -177,7 +177,7 @@
 		threat_guess += damage_guess
 
 	else
-		var/weapon_attack_speed = get_attack_speed(I) / (1 SECOND)
+		var/weapon_attack_speed = get_attack_speed_legacy(I) / (1 SECOND)
 		var/weapon_damage = I.damage_force
 
 		for(var/datum/modifier/M in modifiers)

@@ -79,7 +79,7 @@
 	if(.)
 		return
 	add_fingerprint(user)
-	user.setClickCooldown(user.get_attack_speed())
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy())
 	var/rotting = (locate(/obj/effect/overlay/wallrot) in src)
 	if(iscarbon(user))
 		var/mob/living/carbon/M = user
@@ -95,7 +95,7 @@
 		try_touch(user, rotting)
 
 /turf/simulated/wall/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
-	user.setClickCooldown(user.get_attack_speed(I))
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy(I))
 
 	if(I)
 		if(is_hot(I))

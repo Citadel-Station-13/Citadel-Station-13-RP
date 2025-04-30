@@ -66,7 +66,7 @@
 					to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
 					return
 
-			user.setClickCooldown(user.get_attack_speed(src)) //puts a limit on how fast people can eat/drink things
+			user.setClickCooldownLegacy(user.get_attack_speed_legacy(src)) //puts a limit on how fast people can eat/drink things
 			if (fullness <= 100)
 				to_chat(target, "<span class='danger'>You hungrily chew out a piece of [src] and gobble it!</span>")
 			if (fullness > 100 && fullness <= 300)
@@ -104,7 +104,7 @@
 					return
 
 			user.visible_message(SPAN_DANGER("[user] attempts to feed [target] [src]."))
-			user.setClickCooldown(user.get_attack_speed(src))
+			user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 			if(!do_mob(user, target, 3 SECONDS))
 				return
 			//Do we really care about this

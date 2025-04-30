@@ -18,7 +18,7 @@
 /obj/item/bodysnatcher/proc/attempt_swap(mob/living/M, mob/living/user)
 	if(!isliving(M) || !isliving(user))
 		return
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	user.setClickCooldownLegacy(DEFAULT_ATTACK_COOLDOWN)
 	if(ishuman(M) || issilicon(M)) //Allows body swapping with humans, synths, and pAI's/borgs since they all have a mind.
 		if(user == M)
 			to_chat(user,"<span class='warning'> A message pops up on the LED display, informing you that you that the mind transfer to yourself was successful... Wait, did that even do anything?</span>")
