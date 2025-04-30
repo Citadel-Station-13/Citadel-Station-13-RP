@@ -2949,10 +2949,6 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck3/science/robotics)
 "lh" = (
-/obj/structure/sink{
-	dir = 4;
-	pixel_x = 12
-	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/medical/surgery)
 "lj" = (
@@ -3203,7 +3199,6 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/machinery/suit_storage_unit/exploration,
 /obj/item/clothing/suit/space/void/refurb/research,
 /obj/item/clothing/head/helmet/space/void/refurb/research/alt,
 /obj/item/tank/oxygen,
@@ -3699,6 +3694,10 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/science/xenobio)
+"nA" = (
+/obj/machinery/smartfridge/secure/medbay,
+/turf/simulated/wall/r_wall/prepainted/medical,
+/area/strelka/shipbase/deck3/medical/surgery)
 "nB" = (
 /obj/machinery/recharge_station,
 /obj/machinery/air_alarm/west_mount,
@@ -5788,6 +5787,10 @@
 /obj/machinery/camera/network/security{
 	dir = 8
 	},
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 12
+	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/medical/surgery)
 "uX" = (
@@ -7158,6 +7161,10 @@
 	pixel_x = 2;
 	pixel_y = 2
 	},
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 12
+	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/medical/surgery)
 "zy" = (
@@ -7519,7 +7526,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/bridge/md)
 "AP" = (
-/obj/map_helper/access_helper/airlock/station/head_office/research_director,
 /obj/map_helper/access_helper/airlock/station/head_office/research_director,
 /obj/machinery/door/airlock/command{
 	name = "Bridge";
@@ -12334,9 +12340,6 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
 	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -14112,9 +14115,6 @@
 	dir = 6
 	},
 /obj/machinery/chem_master,
-/obj/machinery/smartfridge/secure/medbay{
-	pixel_x = -31
-	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "Zg" = (
@@ -32881,7 +32881,7 @@ VP
 Fz
 Fz
 Fz
-Fz
+nA
 Fz
 Fz
 qN

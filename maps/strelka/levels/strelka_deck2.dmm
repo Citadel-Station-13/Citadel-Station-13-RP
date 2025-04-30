@@ -134,8 +134,8 @@
 /obj/machinery/door/airlock/glass/security{
 	name = "Security Officer Locker Room"
 	},
-/obj/map_helper/access_helper/airlock/station/security/forensics,
 /obj/machinery/door/firedoor/glass,
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/security/storage)
 "at" = (
@@ -304,6 +304,12 @@
 	dir = 1
 	},
 /obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/door/window/southleft{
+	req_one_access = list(10,24,11)
+	},
+/obj/structure/window/basic{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/maintenance/eva)
 "aW" = (
@@ -1575,6 +1581,9 @@
 "eX" = (
 /obj/machinery/air_alarm/north_mount,
 /obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/door/window/southleft{
+	req_one_access = list(10,24,11)
+	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/maintenance/eva)
 "eY" = (
@@ -2055,11 +2064,11 @@
 	name = "High Security Lockup";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/security/forensics,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/security/evidence)
 "gw" = (
@@ -2762,7 +2771,7 @@
 /area/strelka/shipbase/deck2/explo/pathfy)
 "iL" = (
 /obj/machinery/door/airlock/multi_tile/glass,
-/obj/map_helper/access_helper/airlock/station/security/general,
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/security/main)
 "iN" = (
@@ -3274,7 +3283,6 @@
 /obj/machinery/door/airlock/security{
 	name = "Maintenance Airlock"
 	},
-/obj/map_helper/access_helper/airlock/station/security/general,
 /obj/structure/cable/blue{
 	icon_state = "4-8"
 	},
@@ -3285,6 +3293,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/security/main)
 "kH" = (
@@ -5963,7 +5972,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering)
 "si" = (
-/obj/map_helper/access_helper/airlock/station/security/general,
 /obj/machinery/door/airlock/security{
 	name = "Security Front Desk"
 	},
@@ -5971,6 +5979,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/security/reception)
 "sj" = (
@@ -6757,7 +6766,6 @@
 	dir = 4;
 	name = "Security Hallway"
 	},
-/obj/map_helper/access_helper/airlock/station/security/general,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
@@ -6766,6 +6774,7 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/firedoor/glass,
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/security)
 "ux" = (
@@ -8724,6 +8733,12 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/door/window/southleft{
+	req_one_access = list(10,24,11)
+	},
+/obj/structure/window/basic{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/maintenance/eva)
 "Ao" = (
@@ -13754,7 +13769,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/storage)
 "QH" = (
-/obj/map_helper/access_helper/airlock/station/security/forensics,
 /obj/machinery/door/airlock/glass/security{
 	name = "Evidence Storage"
 	},
@@ -13764,6 +13778,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/firedoor/glass,
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/security/evidence)
 "QI" = (
