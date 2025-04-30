@@ -222,8 +222,7 @@
 	//* Create interface UI *//
 
 	if(byond_version >= 516)
-		// TODO: enable/disable devtools for admins only
-		winset(src, null, list("browser-options" = "find,refresh,byondstorage,devtools"))
+		winset(src, null, list("browser-options" = "find,refresh,byondstorage"))
 
 	// todo: move top level menu here, for now it has to be under prefs.
 	tgui_stat = new(src, SKIN_BROWSER_ID_STAT)
@@ -603,4 +602,3 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 
 /client/proc/AnnouncePR(announcement)
 	to_chat(src, announcement)
-

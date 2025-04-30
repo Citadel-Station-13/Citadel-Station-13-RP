@@ -159,7 +159,7 @@
 		user.visible_message("*fizzle*", "<span class='danger'>*fizzle*</span>")
 	else
 		src.visible_message("*fizzle*")
-	playsound(src.loc, /datum/soundbyte/grouped/sparks, 100, 1)
+	playsound(src.loc, /datum/soundbyte/sparks, 100, 1)
 
 /*
 /obj/item/gun/projectile/energy/staff/animate

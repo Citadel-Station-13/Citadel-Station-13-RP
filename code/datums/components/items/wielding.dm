@@ -9,8 +9,12 @@
 	/// wielded user
 	var/mob/wielder
 	/// callback on wield
+	/// * this is called with (mob/user, hand_count)
+	/// * this is executed asynchronously
 	var/datum/callback/on_wield
 	/// callback on unwield
+	/// * this is called with (mob/user, hand_count)
+	/// * this is executed asynchronously
 	var/datum/callback/on_unwield
 
 /datum/component/wielding/Initialize(hands = 2, datum/callback/on_wield, datum/callback/on_unwield)
@@ -90,7 +94,7 @@
  */
 /datum/component/wielding/proc/post_wield(mob/user, hands)
 	if(on_wield)
-		on_wield.Invoke(user, hands)
+		on_wield.InvokeAsync(user, hands)
 	var/obj/item/I = parent
 	I.on_wield(user, hands)
 
@@ -120,7 +124,7 @@
  */
 /datum/component/wielding/proc/post_unwield(mob/user, hands)
 	if(on_unwield)
-		on_unwield.Invoke(user, hands)
+		on_unwield.InvokeAsync(user, hands)
 	var/obj/item/I = parent
 	I.on_unwield(user, hands)
 

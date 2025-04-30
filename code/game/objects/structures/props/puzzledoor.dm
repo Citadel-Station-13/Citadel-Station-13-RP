@@ -69,7 +69,7 @@
 
 		else if(src.density && (user.a_intent == INTENT_HARM))
 			var/obj/item/W = C
-			user.setClickCooldown(user.get_attack_speed(W))
+			user.setClickCooldownLegacy(user.get_attack_speed_legacy(W))
 			if(W.damage_type == DAMAGE_TYPE_BRUTE || W.damage_type == DAMAGE_TYPE_BURN)
 				user.do_attack_animation(src)
 				user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [W] with no visible effect.</span>")
