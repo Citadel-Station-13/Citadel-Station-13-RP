@@ -121,3 +121,9 @@
 	name = "OSS&NECRO Labcoat"
 	desc = "A flashy labcoat with cyan markings. This one is often provided to OSS&NECRO employees as standard equipement. Isn't it similar to the one that the Research Director has?"
 	icon_state = "labcoat_ossnecro"
+
+/obj/item/clothing/suit/storage/toggle/labcoat/pmd
+	name = "PMD labcoat"
+	desc = "A suit that protects against minor chemical hazards. This one has black trim and a PMD insignia on the back."
+	icon_state = "labcoat_pmd"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "pmd_labcoat", SLOT_ID_LEFT_HAND = "pmd_labcoat")

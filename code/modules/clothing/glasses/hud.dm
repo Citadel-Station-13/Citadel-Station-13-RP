@@ -338,7 +338,7 @@
 
 /obj/item/clothing/glasses/hud/para
 	name = "PARA HUD"
-	desc = "A heads-up display that scans humans in view as well as providing reagent data. Despite integrating many features of other HUD platforms, it's design pre-dates the M.A.W. and provides no protection against memetic hazards. "
+	desc = "A heads-up display that scans humans in view as well as providing reagent data. Despite integrating many features of other HUD platforms, it's design pre-dates the 'MAW' and provides no protection against memetic hazards. "
 	icon_state = "parahud"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "headset", SLOT_ID_LEFT_HAND = "headset")
 	body_cover_flags = 0
