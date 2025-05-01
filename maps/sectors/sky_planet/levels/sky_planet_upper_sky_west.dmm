@@ -960,7 +960,7 @@
 /area/sector/sky_planet/sky)
 "fS" = (
 /obj/structure/bed/chair/sofa/green/corner{
-	dir = 1
+	dir = 4
 	},
 /obj/effect/floor_decal/corner/green/diagonal,
 /obj/effect/floor_decal/rust,
@@ -3369,7 +3369,7 @@
 	layer = 1
 	},
 /obj/structure/bed/chair/sofa/brown/corner{
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/wood/sif/indoors,
 /area/sector/sky_planet/racing_station/dock)
@@ -7623,7 +7623,7 @@
 /area/shuttle/redcomet)
 "QA" = (
 /obj/structure/bed/chair/sofa/brown/corner{
-	dir = 4
+	dir = 1
 	},
 /turf/simulated/floor/wood/sif/indoors,
 /area/sector/sky_planet/racing_station/dock)
@@ -9036,7 +9036,7 @@
 /area/shuttle/bonnethead)
 "XH" = (
 /obj/structure/bed/chair/sofa/brown/corner{
-	dir = 1
+	dir = 4
 	},
 /obj/machinery/light/fairy{
 	dir = 8
