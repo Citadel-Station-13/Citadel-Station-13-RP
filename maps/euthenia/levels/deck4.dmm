@@ -2350,7 +2350,7 @@
 /area/main_map/hallway/deck4/fore)
 "im" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
-/obj/map_helper/wall_painter/purplegray,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab/chamber)
 "in" = (
@@ -6753,7 +6753,7 @@
 /area/rnd/xenobiology)
 "xj" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_painter/purplegray,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab)
 "xk" = (
@@ -7013,7 +7013,7 @@
 /area/rnd/xenobiology)
 "yd" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_painter/purplegray,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab/foyer)
 "yg" = (
@@ -7476,7 +7476,7 @@
 /area/rnd/xenobiology)
 "zD" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
-/obj/map_helper/wall_painter/purplegray,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab)
 "zE" = (
@@ -11659,7 +11659,7 @@
 /area/rnd/secure_storage/critical/records)
 "NS" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_painter/violet,
+/obj/map_helper/paint/violet,
 /turf/simulated/floor/plating,
 /area/exploration/explorer_prep)
 "NU" = (

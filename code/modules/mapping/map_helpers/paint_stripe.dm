@@ -1,15 +1,15 @@
 /**
  * Used to stripe structural tiles (walls, low-walls, etc) fully as needed.
  */
-/obj/map_helper/wall_striper
+/obj/map_helper/paint_stripe
 	name = "stripe of paint"
 	// TODO: resprite this and put it in helper icons folder
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "paintdot"
 	late = TRUE
 
-/obj/map_helper/wall_striper/LateInitialize()
-	for(var/obj/map_helper/wall_striper/paint in loc)
+/obj/map_helper/paint_stripe/LateInitialize()
+	for(var/obj/map_helper/paint_stripe/paint in loc)
 		if(paint == src)
 			continue
 		stack_trace("Duplicate paint stripe found at [audit_loc()]")
@@ -39,7 +39,7 @@
 
 	qdel(src)
 
-#define CREATE_PAINT_STRIPE(x, c)	/obj/map_helper/wall_striper/x/color=c
+#define CREATE_PAINT_STRIPE(x, c)	/obj/map_helper/paint_stripe/x/color=c
 
 CREATE_PAINT_STRIPE(beastybrown, COLOR_CARGO_BROWN)
 CREATE_PAINT_STRIPE(sun, COLOR_SUN)

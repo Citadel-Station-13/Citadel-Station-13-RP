@@ -1288,7 +1288,7 @@
 	name = "Secondary Command Office Blast Doors";
 	opacity = 0
 	},
-/obj/map_helper/wall_striper/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "secondary_bridge";
 	name = "Secondary Bridge"
@@ -1510,7 +1510,7 @@
 	name = "Secondary Command Office Blast Doors";
 	opacity = 0
 	},
-/obj/map_helper/wall_striper/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/blueshield)
 "da" = (
@@ -1744,7 +1744,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/pipecyan,
+/obj/map_helper/paint_stripe/pipecyan,
 /turf/simulated/floor,
 /area/engineering/atmos/backup)
 "ds" = (
@@ -2053,7 +2053,7 @@
 /area/engineering/engineering_monitoring)
 "dX" = (
 /obj/spawner/window/low_wall/firelocks,
-/obj/map_helper/wall_striper/violet,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/tether/exploration/crew)
 "dY" = (
@@ -2504,7 +2504,7 @@
 /area/ai_server_room)
 "eR" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/sun,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor/plating,
 /area/engineering/gravity_lobby)
 "eS" = (
@@ -3552,7 +3552,7 @@
 /area/engineering/shield_gen)
 "hj" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/sun,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/engineering/engineering_monitoring)
 "hk" = (
@@ -3648,7 +3648,7 @@
 /area/bridge/secondary)
 "hr" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/sun,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/engineering/engine_monitoring)
 "hs" = (
@@ -4550,7 +4550,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/borosillicate/firelocks,
-/obj/map_helper/wall_striper/sun,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/engineering/engine_monitoring)
 "js" = (
@@ -7486,7 +7486,7 @@
 	icon_state = "0-8"
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/bridge/secondary)
 "pm" = (
@@ -8579,7 +8579,7 @@
 	name = "Secondary Command Office Blast Doors";
 	opacity = 0
 	},
-/obj/map_helper/wall_striper/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/bridge/meeting_room)
 "rz" = (
@@ -9029,7 +9029,7 @@
 /area/engineering/engine_monitoring)
 "st" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/sun,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor/plating,
 /area/engineering/engine_airlock)
 "sv" = (
@@ -9907,7 +9907,7 @@
 /area/shuttle/securiship/general)
 "ut" = (
 /obj/spawner/window/low_wall/firelocks,
-/obj/map_helper/wall_striper/violet,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/tether/exploration/staircase)
 "uu" = (
@@ -10999,7 +10999,7 @@
 /area/shuttle/securiship/engines)
 "wM" = (
 /obj/spawner/window/low_wall/firelocks,
-/obj/map_helper/wall_striper/sun,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/engineering/shield_gen)
 "wN" = (
@@ -11366,7 +11366,7 @@
 /area/engineering/atmos/backup)
 "xy" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/sun,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/engineering/engine_eva)
 "xz" = (
@@ -12105,7 +12105,7 @@
 /area/engineering/atmos/backup)
 "yT" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/babyblue,
+/obj/map_helper/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/hallway/secondary/escape/medical_escape_pod_hallway)
 "yV" = (
@@ -12242,7 +12242,7 @@
 /area/ai_upload)
 "zl" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/sun,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/engineering/workshop)
 "zm" = (
@@ -12441,7 +12441,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/pipecyan,
+/obj/map_helper/paint_stripe/pipecyan,
 /turf/simulated/floor,
 /area/engineering/atmos/backup)
 "zG" = (
@@ -12843,7 +12843,7 @@
 /area/engineering/atmos/backup)
 "Aw" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/sun,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/engineering/engineering_airlock)
 "Ax" = (
@@ -12898,7 +12898,7 @@
 	id = "ce_office";
 	name = "CE Polarized"
 	},
-/obj/map_helper/wall_striper/sun,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/crew_quarters/heads/chief)
 "AF" = (
@@ -13977,7 +13977,7 @@
 	name = "Secondary Command Office Blast Doors";
 	opacity = 0
 	},
-/obj/map_helper/wall_striper/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "secondary_bridge";
 	name = "Secondary Bridge"
@@ -14462,7 +14462,7 @@
 	name = "Secondary Command Office Blast Doors";
 	opacity = 0
 	},
-/obj/map_helper/wall_striper/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "secondary_bridge";
 	name = "Secondary Bridge"
@@ -15044,7 +15044,7 @@
 	icon_state = "0-4"
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/bridge/secondary)
 "EL" = (
@@ -15355,7 +15355,7 @@
 /area/maintenance/station/eng_lower)
 "Fv" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/sun,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/engineering/foyer)
 "Fw" = (
@@ -15821,7 +15821,7 @@
 /area/engineering/engine_smes)
 "Gm" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/sun,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/engineering/break_room)
 "Gn" = (
@@ -16364,7 +16364,7 @@
 	name = "Engineering Lockdown";
 	opacity = 0
 	},
-/obj/map_helper/wall_striper/sun,
+/obj/map_helper/paint_stripe/sun,
 /obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor,
 /area/engineering/foyer)
@@ -17142,7 +17142,7 @@
 /area/hallway/secondary/escape/medical_escape_pod_hallway)
 "IY" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/violet,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/tether/exploration/hallway)
 "IZ" = (
@@ -17674,7 +17674,7 @@
 /area/engineering/storage)
 "Kc" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/violet,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/tether/exploration/staircase)
 "Kd" = (
@@ -18318,7 +18318,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
 "Lq" = (
-/obj/map_helper/wall_striper/darkred,
+/obj/map_helper/paint_stripe/darkred,
 /obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/plating,
 /area/security/checkpoint/science)
@@ -18756,7 +18756,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/borosillicate/firelocks,
-/obj/map_helper/wall_striper/sun,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/engineering/engine_monitoring)
 "Ms" = (
@@ -18822,7 +18822,7 @@
 /area/bridge/secondary/hallway)
 "My" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/bridge/secondary)
 "Mz" = (
@@ -18831,7 +18831,7 @@
 	id = "ce_office";
 	name = "CE Polarized"
 	},
-/obj/map_helper/wall_striper/sun,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/crew_quarters/heads/chief)
 "MA" = (
@@ -19004,7 +19004,7 @@
 /turf/simulated/floor/tiled/eris/dark/techfloor_grid,
 /area/shuttle/securiship/engines)
 "MV" = (
-/obj/map_helper/wall_striper/violet,
+/obj/map_helper/paint_stripe/violet,
 /obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/tether/exploration/hallway)
@@ -22201,7 +22201,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
 "Tz" = (
-/obj/map_helper/wall_striper/darkred,
+/obj/map_helper/paint_stripe/darkred,
 /obj/spawner/window/low_wall/firelocks,
 /obj/machinery/suit_storage_unit/medic,
 /turf/simulated/floor/plating,
@@ -23414,7 +23414,7 @@
 	name = "Engineering Lockdown";
 	opacity = 0
 	},
-/obj/map_helper/wall_striper/sun,
+/obj/map_helper/paint_stripe/sun,
 /obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/engineering/foyer)
@@ -25267,7 +25267,7 @@
 	name = "Secondary Command Office Blast Doors";
 	opacity = 0
 	},
-/obj/map_helper/wall_striper/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "secondary_bridge";
 	name = "Secondary Bridge"
@@ -25338,7 +25338,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/pipecyan,
+/obj/map_helper/paint_stripe/pipecyan,
 /turf/simulated/floor,
 /area/engineering/atmos/backup)
 "ZR" = (

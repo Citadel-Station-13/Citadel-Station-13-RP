@@ -243,7 +243,7 @@
 	id = "surfsurgery2";
 	name = "surfsurgery2"
 	},
-/obj/map_helper/wall_striper/babyblue,
+/obj/map_helper/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/medical/surgery2)
 "ael" = (
@@ -2721,7 +2721,7 @@
 "bua" = (
 /obj/structure/sign/department/bar,
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_striper/bottlegreen,
+/obj/map_helper/paint_stripe/bottlegreen,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "buF" = (
@@ -3487,7 +3487,7 @@
 	id = "Druma";
 	name = "Entertainment Shutters"
 	},
-/obj/map_helper/wall_striper/bottlegreen,
+/obj/map_helper/paint_stripe/bottlegreen,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/entertainment)
 "bRo" = (
@@ -4020,7 +4020,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_striper/bottlegreen,
+/obj/map_helper/paint_stripe/bottlegreen,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "chg" = (
@@ -4126,7 +4126,7 @@
 /area/tether/surfacebase/medical/lobby)
 "cjB" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/purplegray,
+/obj/map_helper/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/robotics)
 "ckf" = (
@@ -5033,7 +5033,7 @@
 /area/rnd/xenobiology/xenoflora_storage)
 "cKJ" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/purplegray,
+/obj/map_helper/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/outpost/xenobiology/outpost_office)
 "cLd" = (
@@ -5378,7 +5378,7 @@
 	icon_state = "1-2"
 	},
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_striper/babyblue,
+/obj/map_helper/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/medical/storage)
 "daa" = (
@@ -5424,7 +5424,7 @@
 /area/hallway/lower/third_south)
 "dbs" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_striper/babyblue,
+/obj/map_helper/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/medical/chemistry)
 "dbu" = (
@@ -6370,7 +6370,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_striper/bottlegreen,
+/obj/map_helper/paint_stripe/bottlegreen,
 /turf/simulated/floor/plating,
 /area/crew_quarters/freezer)
 "dEh" = (
@@ -7148,7 +7148,7 @@
 /turf/simulated/floor/tiled,
 /area/teleporter/departing)
 "eet" = (
-/obj/map_helper/wall_striper/babyblue,
+/obj/map_helper/paint_stripe/babyblue,
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/medical/storage)
@@ -7722,7 +7722,7 @@
 /area/crew_quarters/barrestroom)
 "evK" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/purplegray,
+/obj/map_helper/paint_stripe/purplegray,
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology/xenoflora_storage)
@@ -8280,7 +8280,7 @@
 /area/rnd/outpost/xenobiology/outpost_main)
 "eMY" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_striper/purplegray,
+/obj/map_helper/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology/xenoflora_storage)
 "eNU" = (
@@ -8609,7 +8609,7 @@
 	icon_state = "0-4"
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/bridge)
 "eVl" = (
@@ -9341,7 +9341,7 @@
 /area/tether/surfacebase/medical/admin)
 "fyE" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_striper/bottlegreen,
+/obj/map_helper/paint_stripe/bottlegreen,
 /turf/simulated/floor/plating,
 /area/library)
 "fyM" = (
@@ -9491,7 +9491,7 @@
 /area/crew_quarters/pool)
 "fDu" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/bottlegreen,
+/obj/map_helper/paint_stripe/bottlegreen,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/servicebackroom)
 "fDw" = (
@@ -11350,7 +11350,7 @@
 /area/rnd/outpost/xenobiology/outpost_office)
 "gGi" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/babyblue,
+/obj/map_helper/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/medical/uppernorthstairwell)
 "gGG" = (
@@ -12708,7 +12708,7 @@
 "hGm" = (
 /obj/structure/sign/botany,
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_striper/bottlegreen,
+/obj/map_helper/paint_stripe/bottlegreen,
 /turf/simulated/floor/plating,
 /area/hydroponics)
 "hGp" = (
@@ -13219,7 +13219,7 @@
 /area/hallway/primary/port)
 "hXb" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/purplegray,
+/obj/map_helper/paint_stripe/purplegray,
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology/xenoflora_storage)
@@ -13306,7 +13306,7 @@
 /area/crew_quarters/captain)
 "ibh" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_striper/bottlegreen,
+/obj/map_helper/paint_stripe/bottlegreen,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "ibj" = (
@@ -14182,7 +14182,7 @@
 /area/crew_quarters/heads/hop)
 "izr" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/purplegray,
+/obj/map_helper/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/outpost/xenobiology/outpost_storage)
 "iBt" = (
@@ -14355,7 +14355,7 @@
 /area/tether/surfacebase/surface_three_hall)
 "iFF" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/purplegray,
+/obj/map_helper/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/outpost/xenobiology/outpost_north_airlock)
 "iGh" = (
@@ -15043,7 +15043,7 @@
 	icon_state = "0-8"
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/bridge)
 "iWM" = (
@@ -15087,7 +15087,7 @@
 /area/crew_quarters/panic_shelter)
 "iXC" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/purplegray,
+/obj/map_helper/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/workshop)
 "iXH" = (
@@ -15196,7 +15196,7 @@
 /area/hydroponics)
 "jdA" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_striper/purplegray,
+/obj/map_helper/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology/xenoflora)
 "jdP" = (
@@ -16424,7 +16424,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/fore)
 "jQd" = (
-/obj/map_helper/wall_striper/bottlegreen,
+/obj/map_helper/paint_stripe/bottlegreen,
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/botanystorage)
@@ -17079,7 +17079,7 @@
 /area/tether/surfacebase/entertainment)
 "koV" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_striper/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/surface_three_hall)
 "kpb" = (
@@ -17223,7 +17223,7 @@
 	icon_state = "0-8"
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/bridge)
 "ksc" = (
@@ -18620,7 +18620,7 @@
 /area/tether/surfacebase/barbackmaintenance)
 "lqG" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/babyblue,
+/obj/map_helper/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/medical/storage)
 "lqQ" = (
@@ -18676,7 +18676,7 @@
 	open_layer = 1
 	},
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_striper/babyblue,
+/obj/map_helper/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/medical/lobby)
 "lsK" = (
@@ -19351,7 +19351,7 @@
 	name = "Colony Directo's Shutters"
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/crew_quarters/captain)
 "lMF" = (
@@ -19994,7 +19994,7 @@
 /area/tether/surfacebase/medical/lobby)
 "mit" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_striper/purplegray,
+/obj/map_helper/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/research/researchdivision)
 "miz" = (
@@ -20172,7 +20172,7 @@
 	id = "secreet";
 	name = "Game Room"
 	},
-/obj/map_helper/wall_striper/bottlegreen,
+/obj/map_helper/paint_stripe/bottlegreen,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/barbackmaintenance)
 "mnm" = (
@@ -20700,7 +20700,7 @@
 	name = "Colony Directo's Shutters"
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/crew_quarters/captain)
 "mFM" = (
@@ -20872,7 +20872,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/purplegray,
+/obj/map_helper/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/outpost/xenobiology/outpost_first_aid)
 "mKy" = (
@@ -21449,7 +21449,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/purplegray,
+/obj/map_helper/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/research)
 "nbe" = (
@@ -22064,7 +22064,7 @@
 /area/hydroponics)
 "nsR" = (
 /obj/spawner/window/low_wall/reinforced/tinted/firelocks,
-/obj/map_helper/wall_striper/bottlegreen,
+/obj/map_helper/paint_stripe/bottlegreen,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "ntb" = (
@@ -22249,7 +22249,7 @@
 /area/tether/surfacebase/medical/triage)
 "nyb" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_striper/bottlegreen,
+/obj/map_helper/paint_stripe/bottlegreen,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -22446,7 +22446,7 @@
 /area/tether/surfacebase/security/upperhall)
 "nDe" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_striper/bottlegreen,
+/obj/map_helper/paint_stripe/bottlegreen,
 /turf/simulated/floor/plating,
 /area/hydroponics)
 "nEA" = (
@@ -22550,7 +22550,7 @@
 /area/crew_quarters/kitchen)
 "nGW" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/purplegray,
+/obj/map_helper/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology/xenoflora)
 "nHh" = (
@@ -23895,7 +23895,7 @@
 /area/tether/surfacebase/entertainment/stage)
 "orl" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/purplegray,
+/obj/map_helper/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/outpost/xenobiology/outpost_breakroom)
 "orE" = (
@@ -25494,7 +25494,7 @@
 	icon_state = "1-4"
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/bridge)
 "pjN" = (
@@ -26050,7 +26050,7 @@
 	icon_state = "1-8"
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/crew_quarters/captain)
 "pAH" = (
@@ -26210,7 +26210,7 @@
 /area/tether/surfacebase/surface_three_hall)
 "pDC" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/purplegray,
+/obj/map_helper/paint_stripe/purplegray,
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 9
 	},
@@ -29075,7 +29075,7 @@
 	icon_state = "4-8"
 	},
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_striper/bottlegreen,
+/obj/map_helper/paint_stripe/bottlegreen,
 /turf/simulated/floor/plating,
 /area/hydroponics/cafegarden)
 "rtZ" = (
@@ -29850,7 +29850,7 @@
 /area/crew_quarters/bar)
 "rRU" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/purplegray,
+/obj/map_helper/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/research)
 "rRX" = (
@@ -31549,7 +31549,7 @@
 	id = "hop_office";
 	name = "hop_office"
 	},
-/obj/map_helper/wall_striper/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
 "sPw" = (
@@ -31638,7 +31638,7 @@
 	dir = 1
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/purplegray,
+/obj/map_helper/paint_stripe/purplegray,
 /turf/simulated/open,
 /area/rnd/outpost/xenobiology/outpost_stairs)
 "sQL" = (
@@ -32402,7 +32402,7 @@
 /area/crew_quarters/bar)
 "trH" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/purplegray,
+/obj/map_helper/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/outpost/xenobiology/outpost_main)
 "tst" = (
@@ -33116,7 +33116,7 @@
 /area/hydroponics)
 "tOO" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_striper/bottlegreen,
+/obj/map_helper/paint_stripe/bottlegreen,
 /turf/simulated/floor/plating,
 /area/crew_quarters/kitchen)
 "tOP" = (
@@ -33402,7 +33402,7 @@
 /area/tether/surfacebase/medical/surgery1)
 "tVj" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/purplegray,
+/obj/map_helper/paint_stripe/purplegray,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics/surgeryroom1)
 "tVF" = (
@@ -34104,7 +34104,7 @@
 /area/tether/surfacebase/medical/triage)
 "unp" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_striper/babyblue,
+/obj/map_helper/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/medical/storage)
 "unR" = (
@@ -34711,7 +34711,7 @@
 /area/rnd/robotics/mechbay)
 "uDV" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/bottlegreen,
+/obj/map_helper/paint_stripe/bottlegreen,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/botanystorage)
 "uDZ" = (
@@ -34888,7 +34888,7 @@
 	icon_state = "1-2"
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/purplegray,
+/obj/map_helper/paint_stripe/purplegray,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_south_airlock)
 "uKK" = (
@@ -36294,7 +36294,7 @@
 	pixel_y = 25
 	},
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_striper/purplegray,
+/obj/map_helper/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology/xenoflora_storage)
 "vFb" = (
@@ -36551,7 +36551,7 @@
 	open_layer = 1
 	},
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_striper/babyblue,
+/obj/map_helper/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/medical/triage)
 "vKk" = (
@@ -37671,7 +37671,7 @@
 /area/tether/surfacebase/cafeteria)
 "woS" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/purplegray,
+/obj/map_helper/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "woW" = (
@@ -37698,7 +37698,7 @@
 	id = "Druma";
 	name = "Entertainment Shutters"
 	},
-/obj/map_helper/wall_striper/bottlegreen,
+/obj/map_helper/paint_stripe/bottlegreen,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/entertainment)
 "wpq" = (
@@ -38333,7 +38333,7 @@
 /area/tether/surfacebase/cafeteria)
 "wEu" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/purplegray,
+/obj/map_helper/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology/xenoflora_storage)
 "wEA" = (
@@ -39068,7 +39068,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_striper/bottlegreen,
+/obj/map_helper/paint_stripe/bottlegreen,
 /turf/simulated/floor/plating,
 /area/crew_quarters/kitchen)
 "xiZ" = (
@@ -40175,7 +40175,7 @@
 /area/rnd/outpost/xenobiology/outpost_north_airlock)
 "xKF" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/bottlegreen,
+/obj/map_helper/paint_stripe/bottlegreen,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "xKJ" = (
@@ -40596,7 +40596,7 @@
 /area/tether/surfacebase/bar_backroom)
 "xWL" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/purplegray,
+/obj/map_helper/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/outpost/xenobiology/outpost_first_aid)
 "xWN" = (
@@ -40852,7 +40852,7 @@
 	id = "surfsurgery1";
 	name = "surfsurgery1"
 	},
-/obj/map_helper/wall_striper/babyblue,
+/obj/map_helper/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/medical/surgery1)
 "yeM" = (
@@ -40941,7 +40941,7 @@
 /area/tether/surfacebase/barbackmaintenance)
 "yjJ" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_striper/bottlegreen,
+/obj/map_helper/paint_stripe/bottlegreen,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/botanystorage)
 "ykw" = (

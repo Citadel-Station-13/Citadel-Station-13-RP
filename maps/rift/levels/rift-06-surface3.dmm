@@ -14465,7 +14465,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
-/obj/map_helper/wall_painter/black,
+/obj/map_helper/paint/black,
 /turf/simulated/wall/rshull,
 /area/shuttle/oldcentury)
 "aTd" = (
@@ -16848,7 +16848,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
 	},
-/obj/map_helper/wall_painter/black,
+/obj/map_helper/paint/black,
 /turf/simulated/wall/rshull,
 /area/shuttle/oldcentury)
 "bqs" = (
@@ -16885,7 +16885,7 @@
 	icon_state = "4-8"
 	},
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_painter/palebottlegreen,
+/obj/map_helper/paint/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "btC" = (
@@ -16944,7 +16944,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/violet,
+/obj/map_helper/paint_stripe/violet,
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
@@ -17056,8 +17056,8 @@
 /turf/simulated/floor/outdoors/snow/noblend/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "bKl" = (
-/obj/map_helper/wall_painter/black,
-/obj/map_helper/wall_striper/violet,
+/obj/map_helper/paint/black,
+/obj/map_helper/paint_stripe/violet,
 /obj/structure/disposalpipe/segment,
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -17469,7 +17469,7 @@
 /area/exploration/courser_dock)
 "csw" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_painter/commandblue,
+/obj/map_helper/paint/commandblue,
 /turf/simulated/floor/plating,
 /area/bridge/bridge_hallway)
 "ctl" = (
@@ -17685,7 +17685,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_painter/commandblue,
+/obj/map_helper/paint/commandblue,
 /turf/simulated/floor/plating,
 /area/bridge)
 "cRE" = (
@@ -17748,7 +17748,7 @@
 /area/bridge/bridge_hallway)
 "cZP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/map_helper/wall_painter/black,
+/obj/map_helper/paint/black,
 /turf/simulated/wall/rshull,
 /area/shuttle/oldcentury)
 "cZT" = (
@@ -17849,7 +17849,7 @@
 	name = "HoP Office Shutters";
 	opacity = 0
 	},
-/obj/map_helper/wall_painter/commandblue,
+/obj/map_helper/paint/commandblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "hop-office"
 	},
@@ -17951,8 +17951,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/barrestroom)
 "dxR" = (
-/obj/map_helper/wall_painter/black,
-/obj/map_helper/wall_striper/black,
+/obj/map_helper/paint/black,
+/obj/map_helper/paint_stripe/black,
 /turf/simulated/wall/rshull,
 /area/shuttle/oldcentury)
 "dxW" = (
@@ -18076,7 +18076,7 @@
 /area/crew_quarters/heads/blueshield)
 "dIa" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_painter/violet,
+/obj/map_helper/paint/violet,
 /turf/simulated/floor/plating,
 /area/exploration/explorer_prep)
 "dIm" = (
@@ -18169,7 +18169,7 @@
 /area)
 "dRg" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
-/obj/map_helper/wall_painter/commandblue,
+/obj/map_helper/paint/commandblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "blueshield-office"
 	},
@@ -18422,8 +18422,8 @@
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/ai)
 "eor" = (
-/obj/map_helper/wall_painter/black,
-/obj/map_helper/wall_striper/violet,
+/obj/map_helper/paint/black,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/wall/rshull,
 /area/shuttle/excursion/general)
 "eoD" = (
@@ -18529,7 +18529,7 @@
 /area/maintenance/commandmaint)
 "eyE" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_painter/palebottlegreen,
+/obj/map_helper/paint/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/crew_quarters/kitchen)
 "eyO" = (
@@ -18940,9 +18940,9 @@
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar_backroom)
 "eYG" = (
-/obj/map_helper/wall_painter/black,
-/obj/map_helper/wall_painter/silver,
-/obj/map_helper/wall_striper/black,
+/obj/map_helper/paint/black,
+/obj/map_helper/paint/silver,
+/obj/map_helper/paint_stripe/black,
 /turf/simulated/wall/rshull,
 /area/shuttle/oldcentury)
 "eZd" = (
@@ -18989,7 +18989,7 @@
 	id = "pilot_prep";
 	name = "Pilot Prep Window Shutters"
 	},
-/obj/map_helper/wall_painter/palebottlegreen,
+/obj/map_helper/paint/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/exploration/pilot_prep)
 "fbX" = (
@@ -19173,7 +19173,7 @@
 /area/crew_quarters/bar)
 "fsv" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_painter/violet,
+/obj/map_helper/paint/violet,
 /turf/simulated/floor/plating,
 /area/exploration/courser_dock)
 "ftd" = (
@@ -19243,7 +19243,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
-/obj/map_helper/wall_painter/silver,
+/obj/map_helper/paint/silver,
 /turf/simulated/wall/rshull,
 /area/shuttle/oldcentury)
 "fxP" = (
@@ -19282,7 +19282,7 @@
 	name = "Bridge Lockdown Shutters";
 	opacity = 0
 	},
-/obj/map_helper/wall_painter/commandblue,
+/obj/map_helper/paint/commandblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "bridge-tint"
 	},
@@ -19431,7 +19431,7 @@
 /obj/structure/cable/pink{
 	icon_state = "4-8"
 	},
-/obj/map_helper/wall_painter/violet,
+/obj/map_helper/paint/violet,
 /turf/simulated/floor/plating,
 /area/exploration/explorer_prep)
 "fOF" = (
@@ -19579,7 +19579,7 @@
 	id = "Pilot_office_Shutter";
 	name = "Pilot Office Window Shutters"
 	},
-/obj/map_helper/wall_painter/palebottlegreen,
+/obj/map_helper/paint/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/exploration/pilot_Office)
 "fYG" = (
@@ -19957,7 +19957,7 @@
 /turf/simulated/floor,
 /area/shuttle/oldcentury)
 "gzi" = (
-/obj/map_helper/wall_painter/silver,
+/obj/map_helper/paint/silver,
 /turf/simulated/wall/rshull,
 /area/shuttle/oldcentury)
 "gBE" = (
@@ -20128,7 +20128,7 @@
 /area/maintenance/bar/lower)
 "gQu" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
-/obj/map_helper/wall_painter/commandblue,
+/obj/map_helper/paint/commandblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "meeting-tint"
 	},
@@ -20341,7 +20341,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
-/obj/map_helper/wall_painter/black,
+/obj/map_helper/paint/black,
 /turf/simulated/wall/rshull,
 /area/shuttle/oldcentury)
 "hwA" = (
@@ -20512,7 +20512,7 @@
 	name = "Shuttle Blast Doors";
 	opacity = 0
 	},
-/obj/map_helper/wall_striper/violet,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/general)
 "hJp" = (
@@ -20720,7 +20720,7 @@
 /obj/structure/cable/pink{
 	icon_state = "1-2"
 	},
-/obj/map_helper/wall_painter/violet,
+/obj/map_helper/paint/violet,
 /turf/simulated/floor/plating,
 /area/exploration/explorer_prep)
 "hYK" = (
@@ -20762,8 +20762,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/map_helper/wall_painter/black,
-/obj/map_helper/wall_striper/black,
+/obj/map_helper/paint/black,
+/obj/map_helper/paint_stripe/black,
 /turf/simulated/wall/rshull,
 /area/shuttle/oldcentury)
 "icY" = (
@@ -20838,7 +20838,7 @@
 	name = "Bridge Lockdown Shutters";
 	opacity = 0
 	},
-/obj/map_helper/wall_painter/commandblue,
+/obj/map_helper/paint/commandblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "bridge-tint"
 	},
@@ -21080,7 +21080,7 @@
 /area/exploration)
 "iFT" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_painter/purplegray,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab)
 "iHi" = (
@@ -21154,7 +21154,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
-/obj/map_helper/wall_painter/silver,
+/obj/map_helper/paint/silver,
 /turf/simulated/wall/rshull,
 /area/shuttle/oldcentury)
 "iLp" = (
@@ -21167,7 +21167,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_painter/darkred,
+/obj/map_helper/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/checkpoint2)
 "iLC" = (
@@ -21196,7 +21196,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
-/obj/map_helper/wall_painter/black,
+/obj/map_helper/paint/black,
 /turf/simulated/wall/rshull,
 /area/shuttle/oldcentury)
 "iRd" = (
@@ -21223,7 +21223,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
 	},
-/obj/map_helper/wall_painter/black,
+/obj/map_helper/paint/black,
 /turf/simulated/wall/rshull,
 /area/shuttle/oldcentury)
 "iTu" = (
@@ -21250,8 +21250,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
-/obj/map_helper/wall_painter/black,
-/obj/map_helper/wall_striper/black,
+/obj/map_helper/paint/black,
+/obj/map_helper/paint_stripe/black,
 /turf/simulated/wall/rshull,
 /area/shuttle/oldcentury)
 "iZN" = (
@@ -21448,7 +21448,7 @@
 /area/hallway/primary/surfacethree)
 "jpO" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_painter/violet,
+/obj/map_helper/paint/violet,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -22029,7 +22029,7 @@
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "botany_hallway"
 	},
-/obj/map_helper/wall_painter/palebottlegreen,
+/obj/map_helper/paint/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/hydroponics)
 "kcm" = (
@@ -22267,7 +22267,7 @@
 /area/crew_quarters/heads/blueshield)
 "kBn" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/violet,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/general)
 "kGC" = (
@@ -22367,7 +22367,7 @@
 	icon_state = "4-8"
 	},
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_painter/palebottlegreen,
+/obj/map_helper/paint/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "kQV" = (
@@ -22691,8 +22691,8 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/bar)
 "lxt" = (
-/obj/map_helper/wall_painter/black,
-/obj/map_helper/wall_striper/violet,
+/obj/map_helper/paint/black,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/wall/rshull,
 /area/shuttle/excursion/cargo)
 "lzf" = (
@@ -22854,7 +22854,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/map_helper/wall_painter/black,
+/obj/map_helper/paint/black,
 /turf/simulated/wall/rshull,
 /area/shuttle/oldcentury)
 "lOq" = (
@@ -23145,7 +23145,7 @@
 /area/shuttle/emt/general)
 "mnJ" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_painter/purplegray,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
 "mpo" = (
@@ -23160,7 +23160,7 @@
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "hop_office"
 	},
-/obj/map_helper/wall_painter/commandblue,
+/obj/map_helper/paint/commandblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "hop-office"
 	},
@@ -23402,7 +23402,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/violet,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cargo)
 "mID" = (
@@ -23472,8 +23472,8 @@
 	dir = 4;
 	pixel_x = -32
 	},
-/obj/map_helper/wall_painter/black,
-/obj/map_helper/wall_striper/violet,
+/obj/map_helper/paint/black,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/wall/rshull,
 /area/shuttle/excursion/cargo)
 "mTQ" = (
@@ -23775,8 +23775,8 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/telescience_lab/chamber)
 "nqA" = (
-/obj/map_helper/wall_painter/silver,
-/obj/map_helper/wall_striper/black,
+/obj/map_helper/paint/silver,
+/obj/map_helper/paint_stripe/black,
 /obj/machinery/airlock_sensor{
 	dir = 4;
 	id_tag = "oldcentury_docker";
@@ -24100,7 +24100,7 @@
 /area/hallway/primary/surfacethree)
 "ocs" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/violet,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cockpit)
 "ocE" = (
@@ -24422,7 +24422,7 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/rift/turbolift/maint)
 "oCC" = (
-/obj/map_helper/wall_painter/black,
+/obj/map_helper/paint/black,
 /turf/simulated/wall/rshull,
 /area/shuttle/oldcentury)
 "oEM" = (
@@ -24473,8 +24473,8 @@
 /turf/simulated/wall/prepainted/command,
 /area/bridge/bridge_hallway)
 "oGm" = (
-/obj/map_helper/wall_painter/black,
-/obj/map_helper/wall_striper/violet,
+/obj/map_helper/paint/black,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/wall/rshull,
 /area/shuttle/excursion/cockpit)
 "oGH" = (
@@ -24834,7 +24834,7 @@
 	name = "Bunker Lockdown Shutters";
 	opacity = 0
 	},
-/obj/map_helper/wall_painter/commandblue,
+/obj/map_helper/paint/commandblue,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -24845,7 +24845,7 @@
 /area/bridge/bunker)
 "pxd" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
-/obj/map_helper/wall_painter/purplegray,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab/chamber)
 "pxw" = (
@@ -25043,8 +25043,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "pTC" = (
-/obj/map_helper/wall_painter/silver,
-/obj/map_helper/wall_striper/black,
+/obj/map_helper/paint/silver,
+/obj/map_helper/paint_stripe/black,
 /turf/simulated/wall/rshull,
 /area/shuttle/oldcentury)
 "pVV" = (
@@ -25283,8 +25283,8 @@
 /turf/simulated/floor,
 /area/shuttle/oldcentury)
 "qss" = (
-/obj/map_helper/wall_painter/black,
-/obj/map_helper/wall_striper/violet,
+/obj/map_helper/paint/black,
+/obj/map_helper/paint_stripe/violet,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -25633,7 +25633,7 @@
 /area/crew_quarters/barrestroom)
 "rgZ" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
-/obj/map_helper/wall_painter/purplegray,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab)
 "riD" = (
@@ -26001,7 +26001,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
-/obj/map_helper/wall_painter/black,
+/obj/map_helper/paint/black,
 /turf/simulated/wall/rshull,
 /area/shuttle/oldcentury)
 "rXm" = (
@@ -26123,7 +26123,7 @@
 /area/shuttle/emt/general)
 "siB" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
-/obj/map_helper/wall_painter/violet,
+/obj/map_helper/paint/violet,
 /obj/map_helper/electrochromatic_linker{
 	id = "pathfinder-office"
 	},
@@ -26163,8 +26163,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
-/obj/map_helper/wall_painter/black,
-/obj/map_helper/wall_striper/black,
+/obj/map_helper/paint/black,
+/obj/map_helper/paint_stripe/black,
 /turf/simulated/wall/rshull,
 /area/shuttle/oldcentury)
 "skM" = (
@@ -26295,8 +26295,8 @@
 	dir = 4;
 	pixel_x = -32
 	},
-/obj/map_helper/wall_painter/black,
-/obj/map_helper/wall_striper/violet,
+/obj/map_helper/paint/black,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/wall/rshull,
 /area/shuttle/excursion/general)
 "sGC" = (
@@ -26342,7 +26342,7 @@
 /area/shuttle/emt/general)
 "sON" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_painter/violet,
+/obj/map_helper/paint/violet,
 /turf/simulated/floor/plating,
 /area/exploration/meeting)
 "sOO" = (
@@ -26454,8 +26454,8 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
 	},
-/obj/map_helper/wall_painter/black,
-/obj/map_helper/wall_striper/violet,
+/obj/map_helper/paint/black,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/wall/rshull,
 /area/shuttle/excursion/general)
 "taq" = (
@@ -26484,7 +26484,7 @@
 /area/shuttle/emt/general)
 "tbF" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_painter/violet,
+/obj/map_helper/paint/violet,
 /turf/simulated/floor/plating,
 /area/exploration/excursion_dock)
 "tcQ" = (
@@ -26847,7 +26847,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_painter/darkred,
+/obj/map_helper/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/checkpoint2)
 "tLm" = (
@@ -26913,7 +26913,7 @@
 /area/hallway/secondary/docking_hallway)
 "tQO" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_painter/palebottlegreen,
+/obj/map_helper/paint/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "tSS" = (
@@ -26939,8 +26939,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "tXr" = (
-/obj/map_helper/wall_painter/silver,
-/obj/map_helper/wall_striper/black,
+/obj/map_helper/paint/silver,
+/obj/map_helper/paint_stripe/black,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 8
 	},
@@ -27089,15 +27089,15 @@
 /obj/machinery/atmospherics/pipe/simple/visible/fuel,
 /obj/machinery/atmospherics/pipe/simple/visible/aux,
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/violet,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/general)
 "uoo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
-/obj/map_helper/wall_painter/black,
-/obj/map_helper/wall_striper/black,
+/obj/map_helper/paint/black,
+/obj/map_helper/paint_stripe/black,
 /turf/simulated/wall/rshull,
 /area/shuttle/oldcentury)
 "uoG" = (
@@ -27208,8 +27208,8 @@
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
 	},
-/obj/map_helper/wall_painter/silver,
-/obj/map_helper/wall_striper/black,
+/obj/map_helper/paint/silver,
+/obj/map_helper/paint_stripe/black,
 /turf/simulated/wall/rshull,
 /area/shuttle/oldcentury)
 "uAA" = (
@@ -27334,8 +27334,8 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/map_helper/wall_painter/silver,
-/obj/map_helper/wall_striper/black,
+/obj/map_helper/paint/silver,
+/obj/map_helper/paint_stripe/black,
 /turf/simulated/wall/rshull,
 /area/shuttle/oldcentury)
 "uOE" = (
@@ -27376,7 +27376,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/violet,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/general)
 "uQX" = (
@@ -27652,7 +27652,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
-/obj/map_helper/wall_painter/commandblue,
+/obj/map_helper/paint/commandblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "bridge-tint"
 	},
@@ -27816,7 +27816,7 @@
 /area/exploration/explorer_prep)
 "vwG" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
-/obj/map_helper/wall_painter/commandblue,
+/obj/map_helper/paint/commandblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "meeting-tint"
 	},
@@ -28058,7 +28058,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_painter/darkred,
+/obj/map_helper/paint/darkred,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -28424,7 +28424,7 @@
 /area/security/checkpoint2)
 "wkX" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_painter/violet,
+/obj/map_helper/paint/violet,
 /turf/simulated/floor/plating,
 /area/exploration/medic_prep)
 "wlu" = (
@@ -28442,7 +28442,7 @@
 	name = "Bunker Lockdown Shutters";
 	opacity = 0
 	},
-/obj/map_helper/wall_painter/commandblue,
+/obj/map_helper/paint/commandblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "bunker-tint"
 	},
@@ -28638,8 +28638,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
-/obj/map_helper/wall_painter/black,
-/obj/map_helper/wall_striper/violet,
+/obj/map_helper/paint/black,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/wall/rshull,
 /area/shuttle/excursion/general)
 "wGH" = (
@@ -28686,7 +28686,7 @@
 /area/exploration/excursion_dock)
 "wJJ" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/violet,
+/obj/map_helper/paint_stripe/violet,
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
@@ -28770,7 +28770,7 @@
 /area/crew_quarters/bar)
 "wZh" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_painter/palebottlegreen,
+/obj/map_helper/paint/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "wZt" = (
@@ -29416,7 +29416,7 @@
 /area/bridge/bridge_hallway)
 "ybn" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_painter/palebottlegreen,
+/obj/map_helper/paint/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/hydroponics)
 "ybv" = (

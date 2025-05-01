@@ -73,7 +73,7 @@
 	name = "CE Office Blast Doors";
 	opacity = 0
 	},
-/obj/map_helper/wall_striper/sun,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/chief)
 "aeP" = (
@@ -8817,7 +8817,7 @@
 	icon_state = "0-8"
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_striper/sun,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/chief)
 "itw" = (
@@ -17971,7 +17971,7 @@
 	name = "CE Office Blast Doors";
 	opacity = 0
 	},
-/obj/map_helper/wall_striper/sun,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/chief)
 "qHJ" = (

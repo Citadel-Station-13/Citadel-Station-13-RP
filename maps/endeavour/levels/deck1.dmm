@@ -87,7 +87,7 @@
 	icon_state = "1-2"
 	},
 /obj/spawner/window/low_wall/borosillicate,
-/obj/map_helper/wall_striper/violet,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/general)
 "acZ" = (
@@ -1036,7 +1036,7 @@
 /area/bridge)
 "aKv" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/wall_striper/palebottlegreen,
+/obj/map_helper/paint_stripe/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1fwdhall)
 "aKB" = (
@@ -1345,7 +1345,7 @@
 /area/exploration/courser_dock)
 "aXm" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_painter/violet,
+/obj/map_helper/paint/violet,
 /turf/simulated/floor/plating,
 /area/exploration/explorer_prep)
 "aXD" = (
@@ -2051,7 +2051,7 @@
 /area/endeavour/cryo)
 "bAu" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
-/obj/map_helper/wall_painter/violet,
+/obj/map_helper/paint/violet,
 /turf/simulated/floor/plating,
 /area/exploration/pilot_Office)
 "bAB" = (
@@ -2308,7 +2308,7 @@
 /area/hallway/secondary/docking_hallway)
 "bOP" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
-/obj/map_helper/wall_painter/commandblue,
+/obj/map_helper/paint/commandblue,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/bridge/meeting_room)
 "bPw" = (
@@ -3132,7 +3132,7 @@
 "cut" = (
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced,
-/obj/map_helper/wall_painter/babyblue,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/shuttle/emt/general)
 "cuy" = (
@@ -5339,7 +5339,7 @@
 /area/crew_quarters/coffee_shop)
 "dZF" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_painter/palebottlegreen,
+/obj/map_helper/paint/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/library)
 "dZJ" = (
@@ -5936,7 +5936,7 @@
 /area/shuttle/courser/general)
 "eyo" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
-/obj/map_helper/wall_painter/violet,
+/obj/map_helper/paint/violet,
 /turf/simulated/floor/plating,
 /area/exploration/pilot_prep)
 "eyp" = (
@@ -6018,7 +6018,7 @@
 /area/shuttle/excursion/general)
 "eCj" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
-/obj/map_helper/wall_painter/violet,
+/obj/map_helper/paint/violet,
 /turf/simulated/floor/plating,
 /area/endeavour/exploration/hallway_aft)
 "eCo" = (
@@ -6670,7 +6670,7 @@
 	icon_state = "4-8"
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_painter/commandblue,
+/obj/map_helper/paint/commandblue,
 /turf/simulated/floor/plating,
 /area/bridge/hallway)
 "eYG" = (
@@ -6852,7 +6852,7 @@
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "pathfinder_office"
 	},
-/obj/map_helper/wall_painter/violet,
+/obj/map_helper/paint/violet,
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
@@ -6979,7 +6979,7 @@
 /turf/simulated/floor/tiled/monodark,
 /area/bridge)
 "fkm" = (
-/obj/map_helper/wall_painter/palebottlegreen,
+/obj/map_helper/paint/palebottlegreen,
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/structure/curtain/black,
 /obj/map_helper/electrochromatic_linker{
@@ -7326,7 +7326,7 @@
 /area/crew_quarters/lounge/kitchen_freezer)
 "ftn" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
-/obj/map_helper/wall_painter/commandblue,
+/obj/map_helper/paint/commandblue,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/bridge/office)
 "ftL" = (
@@ -7433,7 +7433,7 @@
 /turf/simulated/floor/tiled/white,
 /area/endeavour/surfacebase/sauna)
 "fvL" = (
-/obj/map_helper/wall_painter/palebottlegreen,
+/obj/map_helper/paint/palebottlegreen,
 /obj/spawner/window/reinforced/full/firelocks,
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/plating,
@@ -7597,7 +7597,7 @@
 /area/shuttle/civvie/general)
 "fEG" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_painter/violet,
+/obj/map_helper/paint/violet,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/exploration)
@@ -8100,7 +8100,7 @@
 /area/space)
 "fZE" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_painter/babyblue,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/hallway/secondary/docking_hallway2)
 "gag" = (
@@ -8682,7 +8682,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced,
-/obj/map_helper/wall_painter/babyblue,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/shuttle/emt/general)
 "gvS" = (
@@ -9779,7 +9779,7 @@
 /turf/simulated/floor/wood,
 /area/library)
 "hus" = (
-/obj/map_helper/wall_painter/commandblue,
+/obj/map_helper/paint/commandblue,
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/bridge/hallway)
@@ -11401,7 +11401,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/hallway)
 "iLP" = (
-/obj/map_helper/wall_painter/commandblue,
+/obj/map_helper/paint/commandblue,
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "library_study"
@@ -11505,7 +11505,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
 "iRz" = (
-/obj/map_helper/wall_painter/palebottlegreen,
+/obj/map_helper/paint/palebottlegreen,
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "chapelOffice"
@@ -12072,7 +12072,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced,
-/obj/map_helper/wall_painter/commandblue,
+/obj/map_helper/paint/commandblue,
 /turf/simulated/floor/plating,
 /area/bridge/office)
 "jqz" = (
@@ -13240,7 +13240,7 @@
 /area/bridge)
 "kaL" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_painter/violet,
+/obj/map_helper/paint/violet,
 /turf/simulated/floor/plating,
 /area/exploration/medical)
 "kaO" = (
@@ -14039,7 +14039,7 @@
 /area/exploration)
 "kEB" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
-/obj/map_helper/wall_painter/commandblue,
+/obj/map_helper/paint/commandblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "lawyer_blast"
 	},
@@ -14336,7 +14336,7 @@
 "kNK" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
 /obj/structure/curtain/black,
-/obj/map_helper/wall_striper/palebottlegreen,
+/obj/map_helper/paint_stripe/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1starboardamidhall)
 "kNR" = (
@@ -14929,7 +14929,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/borosillicate,
-/obj/map_helper/wall_striper/violet,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/endeavour/exploration/aux_hanger)
 "lnH" = (
@@ -15626,7 +15626,7 @@
 /area/shuttle/excursion/cargo)
 "lOX" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_painter/violet,
+/obj/map_helper/paint/violet,
 /turf/simulated/floor/plating,
 /area/exploration)
 "lPo" = (
@@ -16102,7 +16102,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_painter/commandblue,
+/obj/map_helper/paint/commandblue,
 /turf/simulated/floor/plating,
 /area/bridge/hallway)
 "mfu" = (
@@ -16716,7 +16716,7 @@
 /area/endeavour/exploration/hallway_aft)
 "mJc" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_painter/violet,
+/obj/map_helper/paint/violet,
 /turf/simulated/floor/plating,
 /area/exploration/meeting)
 "mJy" = (
@@ -18374,7 +18374,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "nQk" = (
-/obj/map_helper/wall_painter/palebottlegreen,
+/obj/map_helper/paint/palebottlegreen,
 /obj/structure/curtain/black,
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/electrochromatic_linker{
@@ -18640,7 +18640,7 @@
 	icon_state = "1-2"
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
-/obj/map_helper/wall_painter/violet,
+/obj/map_helper/paint/violet,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/endeavour/exploration/hallway_aft)
 "obn" = (
@@ -19612,7 +19612,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "oRa" = (
-/obj/map_helper/wall_painter/commandblue,
+/obj/map_helper/paint/commandblue,
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "lawyer_blast"
@@ -19902,7 +19902,7 @@
 /area/shuttle/civvie/general)
 "pcv" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
-/obj/map_helper/wall_painter/purplegray,
+/obj/map_helper/paint/purplegray,
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/rnd/test_area)
@@ -21111,7 +21111,7 @@
 /area/endeavour/hallway/d1afthall)
 "pWN" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_painter/commandblue,
+/obj/map_helper/paint/commandblue,
 /turf/simulated/floor/plating,
 /area/bridge/hallway)
 "pYp" = (
@@ -21455,7 +21455,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/borosillicate,
-/obj/map_helper/wall_striper/violet,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/cockpit)
 "qmr" = (
@@ -21476,7 +21476,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/borosillicate,
-/obj/map_helper/wall_striper/violet,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/general)
 "qnv" = (
@@ -22293,7 +22293,7 @@
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "pathfinder_office"
 	},
-/obj/map_helper/wall_painter/violet,
+/obj/map_helper/paint/violet,
 /turf/simulated/floor/plating,
 /area/exploration/pathfinder_office)
 "qQG" = (
@@ -24132,7 +24132,7 @@
 /area/shuttle/emt/general)
 "smH" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
-/obj/map_helper/wall_painter/commandblue,
+/obj/map_helper/paint/commandblue,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/bridge/hallway)
 "smS" = (
@@ -24879,7 +24879,7 @@
 /area/bridge/meeting_room)
 "sQR" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
-/obj/map_helper/wall_painter/violet,
+/obj/map_helper/paint/violet,
 /turf/simulated/floor/plating,
 /area/endeavour/civillian/evastorage)
 "sRK" = (
@@ -25458,7 +25458,7 @@
 /area/endeavour/hallway/d1starboardamidhall)
 "tog" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_painter/violet,
+/obj/map_helper/paint/violet,
 /turf/simulated/floor/plating,
 /area/endeavour/exploration/hallway_aft)
 "toF" = (
@@ -27956,7 +27956,7 @@
 /area/crew_quarters/cryo/recovery)
 "vaR" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
-/obj/map_helper/wall_painter/palebottlegreen,
+/obj/map_helper/paint/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/chapel/office)
 "vbb" = (
@@ -28618,7 +28618,7 @@
 /area/endeavour/hallway/d1starboardamidhall)
 "vwY" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_painter/violet,
+/obj/map_helper/paint/violet,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -29843,7 +29843,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck1forward)
 "wAt" = (
-/obj/map_helper/wall_painter/palebottlegreen,
+/obj/map_helper/paint/palebottlegreen,
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "chapel"
@@ -30318,7 +30318,7 @@
 "wVs" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
 /obj/spawner/window/low_wall/borosillicate,
-/obj/map_helper/wall_striper/violet,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/general)
 "wVF" = (
@@ -30575,7 +30575,7 @@
 	name = "Colony Director's Shutters"
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_painter/commandblue,
+/obj/map_helper/paint/commandblue,
 /turf/simulated/floor/plating,
 /area/bridge)
 "xfq" = (
