@@ -4,7 +4,7 @@
 /area/template_noop)
 "b" = (
 /obj/structure/bed/chair/sofa/blue/corner{
-	dir = 4
+	dir = 1
 	},
 /turf/simulated/floor/wood/indoors,
 /area/submap/skyplanet/poi/home)

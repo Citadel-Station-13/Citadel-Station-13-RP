@@ -3436,7 +3436,7 @@
 /area/awaymission/shipcave/ship/baptism)
 "IH" = (
 /obj/structure/bed/chair/sofa/beige/corner{
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/carpet,
 /area/awaymission/shipcave/ship)

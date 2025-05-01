@@ -7230,7 +7230,7 @@
 /area/main_map/maintenance/deck_four/aft)
 "yT" = (
 /obj/structure/bed/chair/sofa/brown/corner{
-	dir = 4
+	dir = 1
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck4/fore)
@@ -13664,7 +13664,7 @@
 /area/library)
 "UA" = (
 /obj/structure/bed/chair/sofa/brown/corner{
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck4/fore)

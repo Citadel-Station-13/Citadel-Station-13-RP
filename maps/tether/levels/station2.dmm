@@ -710,7 +710,7 @@
 	icon_state = "2-4"
 	},
 /obj/structure/bed/chair/sofa/brown/corner{
-	dir = 4
+	dir = 1
 	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
@@ -17962,7 +17962,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/bed/chair/sofa/brown/corner{
-	dir = 1
+	dir = 4
 	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
