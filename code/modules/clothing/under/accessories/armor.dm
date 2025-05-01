@@ -369,7 +369,7 @@
 
 /obj/item/clothing/accessory/armor/tag/pmd
 	name = "\improper PMD patch"
-	desc = "An embroidered patch bearing the PMD's half-lidded eye insignia."
+	desc = "An embroidered patch bearing the PMD's half-lidded eye Icon."
 	icon_state = "pmdtag"
 
 //Other

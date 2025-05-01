@@ -911,5 +911,5 @@
 
 /obj/item/clothing/accessory/pmdpin
 	name = "PMD lapel pin"
-	desc = "A monochrome enamel pin of the PMD's half-lidded eye insignia."
+	desc = "A monochrome enamel pin of the PMD's half-lidded eye Icon."
 	icon_state = "pmdpin"
