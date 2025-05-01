@@ -17,7 +17,7 @@
 		return
 
 	if(!color)
-		stack_trace("/wall_painter helper at [audit_loc()] has no color")
+		stack_trace("/paint helper at [audit_loc()] has no color")
 		qdel(src)
 		return
 

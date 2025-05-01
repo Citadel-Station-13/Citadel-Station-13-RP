@@ -1,15 +1,15 @@
 /**
  * Used to repaint structural tiles (walls, low-walls, etc) fully as needed.
  */
-/obj/map_helper/wall_painter
+/obj/map_helper/paint
 	name = "coat of paint"
 	// TODO: resprite this and put it in helper icons folder
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "wall_paint_effect"
 	late = TRUE
 
-/obj/map_helper/wall_painter/LateInitialize()
-	for(var/obj/map_helper/wall_painter/paint in loc)
+/obj/map_helper/paint/LateInitialize()
+	for(var/obj/map_helper/paint/paint in loc)
 		if(paint == src)
 			continue
 		stack_trace("Duplicate paint found at [audit_loc()]")
@@ -17,7 +17,7 @@
 		return
 
 	if(!color)
-		stack_trace("/wall_painter helper at [audit_loc()] has no color")
+		stack_trace("/paint helper at [audit_loc()] has no color")
 		qdel(src)
 		return
 
@@ -39,7 +39,7 @@
 
 	qdel(src)
 
-#define CREATE_WALL_PAINT(x, c)	/obj/map_helper/wall_painter/x/color=c
+#define CREATE_WALL_PAINT(x, c)	/obj/map_helper/paint/x/color=c
 
 CREATE_WALL_PAINT(beastybrown, COLOR_CARGO_BROWN)
 CREATE_WALL_PAINT(pipecyan, COLOR_ATMOSPHERICS_CYAN)
