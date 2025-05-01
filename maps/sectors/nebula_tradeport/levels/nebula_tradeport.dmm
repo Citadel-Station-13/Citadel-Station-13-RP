@@ -22064,10 +22064,6 @@
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room2)
 "huS" = (
-/obj/structure/window/reinforced/polarized{
-	dir = 1;
-	id = "scoophead_office"
-	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead/cockpit)
@@ -22733,10 +22729,6 @@
 /turf/simulated/floor/carpet/patterened/red,
 /area/shuttle/scoophead/cockpit)
 "jpc" = (
-/obj/structure/window/reinforced/polarized{
-	dir = 8;
-	id = "scoophead_room"
-	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead/cockpit)
