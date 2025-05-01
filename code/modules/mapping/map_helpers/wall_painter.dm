@@ -9,12 +9,12 @@
 	for(var/obj/map_helper/wall_painter/paint in loc)
 		if(paint == src)
 			continue
-		stack_trace("Duplicate paint found at [COORD(src)]")
+		stack_trace("Duplicate paint found at [audit_loc()]")
 		qdel(src)
 		return
 
 	if(!color)
-		stack_trace("/wall_painter helper at [COORD(src)] has no color")
+		stack_trace("/wall_painter helper at [audit_loc()] has no color")
 		qdel(src)
 		return
 
@@ -32,7 +32,7 @@
 			did_anything = TRUE
 
 	if(!did_anything)
-		WARNING("Redundant paint helper found at [x], [y], [z]")
+		WARNING("Redundant paint helper found at [audit_loc()]")
 
 	qdel(src)
 

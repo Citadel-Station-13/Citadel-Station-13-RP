@@ -47,15 +47,15 @@
 	// no more mercy, if you fuck up your spawner placement on purpose
 	// this will just tear a hole in your map so you notice faster
 	if(locate(/obj/structure/window) in loc)
-		CRASH("Window spawner at [COORD(src)] on turf with existing window.")
+		CRASH("Window spawner at [audit_loc()] on turf with existing window.")
 	if(spawn_grille)
 		if(locate(/obj/structure/grille) in loc)
-			CRASH("Window spawner at [COORD(src)] is set to spawn a grille, but found one already in it's loc.")
+			CRASH("Window spawner at [audit_loc()] is set to spawn a grille, but found one already in it's loc.")
 		new /obj/structure/grille(loc)
 	if(full_window)
 		if (spawn_low_wall)
 			if(locate(/obj/structure/wall_frame) in loc)
-				CRASH("Window spawner at [COORD(src)] is set to spawn low wall but found one already in turf")
+				CRASH("Window spawner at [audit_loc()] is set to spawn low wall but found one already in turf")
 			var/obj/structure/wall_frame/low_wall = new low_wall_path(loc)
 			if(isnull(low_wall_stripe_color))
 				low_wall.stripe_color = low_wall_stripe_color
@@ -73,7 +73,7 @@
 			W = new window_pane_path(loc, d)
 	if(firelocks)
 		if(locate(/obj/machinery/door/firedoor) in loc)
-			CRASH("Window spawner at X [COORD(src)] is set to spawn firelocks, but found one already in it's loc.")
+			CRASH("Window spawner at X [audit_loc()] is set to spawn firelocks, but found one already in it's loc.")
 		new /obj/machinery/door/firedoor(loc)
 
 /obj/spawner/window/firelocks
