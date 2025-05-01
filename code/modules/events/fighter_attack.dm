@@ -21,12 +21,6 @@
 		command_announcement.Announce("Attention, [station_name()], hostile fighters entered the area of operations", "GPS Displaying hostile signals", new_sound = sound('sound/effects/siren.ogg', volume=25))
 
 /datum/event/fighter/start()
-
-	var/list/possible_spawns = list()
-	for(var/obj/landmark/C in GLOB.landmarks_list)
-		if(C.name == "carpspawn")
-			possible_spawns.Add(C)
-
 	switch(rand(0,100))
 		if(1 to 100)
 			spawncount = rand(2 * severity * toughness, 4 * severity * toughness)
