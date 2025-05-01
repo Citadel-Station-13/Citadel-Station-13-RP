@@ -1423,7 +1423,7 @@
 	icon_state = "para_ert_uniform"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "black", SLOT_ID_LEFT_HAND = "black")
 
-/obj/item/clothing/under/para
+/obj/item/clothing/under/pmd
 	name = "PMD uniform"
 	desc = "A black uniform whose back is emblazoned with the Icon of the PMD. Close inspection of the silver embroidery reveals a complex web of glyphs written in an unknown language."
 	icon_state = "pmd_uniform"
