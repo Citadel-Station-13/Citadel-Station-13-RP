@@ -634,10 +634,10 @@
 /obj/item/tank/oxygen,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/mask/breath,
-/obj/item/clothing/suit/space/plasman{
+/obj/item/clothing/suit/space/void/plasman{
 	name = "Bonnethead Racing Space Suit"
 	},
-/obj/item/clothing/suit/space/plasman{
+/obj/item/clothing/suit/space/void/plasman{
 	name = "Bonnethead Racing Space Suit"
 	},
 /obj/item/clothing/head/helmet/space/void/refurb/officer{
@@ -960,7 +960,7 @@
 /area/sector/sky_planet/sky)
 "fS" = (
 /obj/structure/bed/chair/sofa/green/corner{
-	dir = 1
+	dir = 4
 	},
 /obj/effect/floor_decal/corner/green/diagonal,
 /obj/effect/floor_decal/rust,
@@ -1547,10 +1547,10 @@
 /obj/item/tank/oxygen,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/mask/breath,
-/obj/item/clothing/suit/space/plasman{
+/obj/item/clothing/suit/space/void/plasman{
 	name = "Bonnethead Racing Space Suit"
 	},
-/obj/item/clothing/suit/space/plasman{
+/obj/item/clothing/suit/space/void/plasman{
 	name = "Bonnethead Racing Space Suit"
 	},
 /obj/item/clothing/head/helmet/space/void/refurb/officer{
@@ -3150,10 +3150,10 @@
 /obj/item/tank/oxygen,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/mask/breath,
-/obj/item/clothing/suit/space/plasman/botanist{
+/obj/item/clothing/suit/space/void/plasman/botanist{
 	name = "Udang Pari-pari Racing Space suit"
 	},
-/obj/item/clothing/suit/space/plasman/botanist{
+/obj/item/clothing/suit/space/void/plasman/botanist{
 	name = "Udang Pari-pari Racing Space suit"
 	},
 /obj/item/clothing/head/helmet/space/void/refurb/pilot{
@@ -3369,7 +3369,7 @@
 	layer = 1
 	},
 /obj/structure/bed/chair/sofa/brown/corner{
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/wood/sif/indoors,
 /area/sector/sky_planet/racing_station/dock)
@@ -3848,10 +3848,10 @@
 /obj/item/tank/oxygen,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/mask/breath,
-/obj/item/clothing/suit/space/plasman/sec{
+/obj/item/clothing/suit/space/void/plasman/sec{
 	name = "Red Comet Racing Space Suit"
 	},
-/obj/item/clothing/suit/space/plasman/sec{
+/obj/item/clothing/suit/space/void/plasman/sec{
 	name = "Red Comet Racing Space Suit"
 	},
 /obj/item/clothing/head/helmet/space/void/refurb/mercenary{
@@ -4316,10 +4316,10 @@
 /obj/item/tank/oxygen,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/mask/breath,
-/obj/item/clothing/suit/space/plasman/assistant{
+/obj/item/clothing/suit/space/void/plasman/assistant{
 	name = "Arrowhead Racing Space suit"
 	},
-/obj/item/clothing/suit/space/plasman/assistant{
+/obj/item/clothing/suit/space/void/plasman/assistant{
 	name = "Arrowhead Racing Space suit"
 	},
 /obj/item/clothing/head/helmet/space/void/refurb/pilot/alt{
@@ -7623,7 +7623,7 @@
 /area/shuttle/redcomet)
 "QA" = (
 /obj/structure/bed/chair/sofa/brown/corner{
-	dir = 4
+	dir = 1
 	},
 /turf/simulated/floor/wood/sif/indoors,
 /area/sector/sky_planet/racing_station/dock)
@@ -8030,10 +8030,10 @@
 /obj/item/tank/oxygen,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/mask/breath,
-/obj/item/clothing/suit/space/plasman/botanist{
+/obj/item/clothing/suit/space/void/plasman/botanist{
 	name = "Udang Pari-pari Racing Space suit"
 	},
-/obj/item/clothing/suit/space/plasman/botanist{
+/obj/item/clothing/suit/space/void/plasman/botanist{
 	name = "Udang Pari-pari Racing Space suit"
 	},
 /obj/item/clothing/head/helmet/space/void/refurb/pilot{
@@ -8103,10 +8103,10 @@
 /obj/item/tank/oxygen,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/mask/breath,
-/obj/item/clothing/suit/space/plasman/assistant{
+/obj/item/clothing/suit/space/void/plasman/assistant{
 	name = "Arrowhead Racing Space suit"
 	},
-/obj/item/clothing/suit/space/plasman/assistant{
+/obj/item/clothing/suit/space/void/plasman/assistant{
 	name = "Arrowhead Racing Space suit"
 	},
 /obj/item/clothing/head/helmet/space/void/refurb/pilot/alt{
@@ -9036,7 +9036,7 @@
 /area/shuttle/bonnethead)
 "XH" = (
 /obj/structure/bed/chair/sofa/brown/corner{
-	dir = 1
+	dir = 4
 	},
 /obj/machinery/light/fairy{
 	dir = 8
@@ -9055,10 +9055,10 @@
 /obj/item/tank/oxygen,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/mask/breath,
-/obj/item/clothing/suit/space/plasman/sec{
+/obj/item/clothing/suit/space/void/plasman/sec{
 	name = "Red Comet Racing Space Suit"
 	},
-/obj/item/clothing/suit/space/plasman/sec{
+/obj/item/clothing/suit/space/void/plasman/sec{
 	name = "Red Comet Racing Space Suit"
 	},
 /obj/item/clothing/head/helmet/space/void/refurb/mercenary{

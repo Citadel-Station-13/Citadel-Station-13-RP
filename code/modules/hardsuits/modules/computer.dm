@@ -405,7 +405,7 @@
 	drain_loc = interfaced_with.loc
 
 	holder.spark_system.start()
-	playsound(H.loc, /datum/soundbyte/grouped/sparks, 50, 1)
+	playsound(H.loc, /datum/soundbyte/sparks, 50, 1)
 
 	return 1
 
@@ -429,7 +429,7 @@
 		return 0
 
 	holder.spark_system.start()
-	playsound(H, /datum/soundbyte/grouped/sparks, 50, 1)
+	playsound(H, /datum/soundbyte/sparks, 50, 1)
 
 	H.break_cloak()
 

@@ -157,7 +157,7 @@
 	SSnanoui.update_uis(src)
 
 /obj/machinery/computer/HolodeckControl/emag_act(var/remaining_charges, var/mob/user as mob)
-	playsound(src.loc, /datum/soundbyte/grouped/sparks, 75, 1)
+	playsound(src.loc, /datum/soundbyte/sparks, 75, 1)
 	last_to_emag = user //emag again to change the owner
 	if (!emagged)
 		emagged = 1

@@ -135,9 +135,9 @@
 
 /turf/vv_edit_var(var_name, new_value)
 	var/static/list/banned_edits = list(
-		NAMEOF_STATIC(src, x),
-		NAMEOF_STATIC(src, y),
-		NAMEOF_STATIC(src, z),
+		NAMEOF_TYPE(/turf, x),
+		NAMEOF_TYPE(/turf, y),
+		NAMEOF_TYPE(/turf, z),
 	)
 	if(var_name in banned_edits)
 		return FALSE
@@ -323,7 +323,7 @@
 // 		var/mob/living/victim = pick(viable_targets)
 // 		success = W.resolve_attackby(victim, user)
 
-// 	user.setClickCooldown(user.get_attack_speed(W))
+// 	user.setClickCooldownLegacy(user.get_attack_speed_legacy(W))
 // 	user.do_attack_animation(src, no_attack_icons = TRUE)
 
 // 	if(!success)	// Nothing got hit.

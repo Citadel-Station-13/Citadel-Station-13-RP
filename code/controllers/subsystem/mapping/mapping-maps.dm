@@ -231,6 +231,8 @@
 	// mark
 	world_is_loaded = TRUE
 	loaded_station = instance
+	// pick gateway level - this must happen after the station is picked as it's added to the lateload list
+	createRandomGatewayLevel()
 	// load
 	load_map(instance)
 	return TRUE

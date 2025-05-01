@@ -55,7 +55,7 @@
 	icon_state = "nose"
 	desc = "The BOOP module, a simple reagent and atmosphere sniffer."
 	damage_force = 0
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	throw_force = 0
 	attack_verb = list("nuzzled", "nosed", "booped")
 	w_class = WEIGHT_CLASS_TINY
@@ -72,7 +72,7 @@
 	var/pressure = environment.return_pressure()
 	var/total_moles = environment.total_moles
 
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	user.setClickCooldownLegacy(DEFAULT_ATTACK_COOLDOWN)
 	user.visible_message("<span class='notice'>[user] sniffs the air.</span>", "<span class='notice'>You sniff the air...</span>")
 
 	to_chat(user, "<span class='notice'><B>Smells like:</B></span>")
@@ -93,7 +93,7 @@
 	if(!istype(target) && !ismob(target))
 		return
 
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	user.setClickCooldownLegacy(DEFAULT_ATTACK_COOLDOWN)
 
 
 	if(ismob(target))
@@ -174,7 +174,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "synthtongue"
 	attack_sound = 'sound/effects/attackblob.ogg'
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	var/emagged = 0
 	var/datum/matter_synth/water = null
 
@@ -208,7 +208,7 @@
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	user.setClickCooldownLegacy(DEFAULT_ATTACK_COOLDOWN)
 	if(user.client && (target in user.client.screen))
 		to_chat(user, "<span class='warning'>You need to take [target] off before cleaning it!</span>")
 	if(istype(target, /obj/structure/sink) || istype(target, /obj/structure/toilet)) //Dog vibes.
@@ -296,7 +296,7 @@
 	desc = "Toggles floor scrubbing."
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "scrub0"
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	var/enabled = FALSE
 
 /obj/item/pupscrubber/attack_self(mob/user, datum/event_args/actor/actor)
@@ -374,7 +374,7 @@
 	icon_state = "pounce"
 	desc = "Leap at your target to momentarily stun them."
 	damage_force = 0
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	throw_force = 0
 
 /obj/item/dogborg/pounce/attack_self(mob/user, datum/event_args/actor/actor)
@@ -463,7 +463,7 @@
 			for(var/obj/item/implant/mirror/MI in I.contents)
 				if(imp == null)
 					H.visible_message("<span class='warning'>[user] is attempting remove [H]'s mirror!</span>")
-					user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+					user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN)
 					user.do_attack_animation(H)
 					var/turf/T1 = get_turf(H)
 					if (T1 && ((H == user) || do_after(user, 20)))
@@ -475,7 +475,7 @@
 	else if (target_zone == BP_TORSO && imp != null)
 		if (imp)
 			H.visible_message("<span class='warning'>[user] is attempting to implant [H] with a mirror.</span>")
-			user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+			user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN)
 			user.do_attack_animation(H)
 			var/turf/T1 = get_turf(H)
 			if (T1 && ((H == user) || do_after(user, 20)))

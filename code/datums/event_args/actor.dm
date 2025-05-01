@@ -7,6 +7,11 @@
  * used to hold semantic data about an action being done by an actor vs initiator (controller)
  */
 /datum/event_args/actor
+	/// arbitrary data list
+	/// * this is a lazy list
+	/// * this will be logged, don't be too verbose
+	/// * only primitives (text / numbers / lists, no datums) are allowed in here, including inside nested lists.
+	var/list/data = list()
 	/// Is this a simulated event?
 	/// * This is used for logging.
 	/// * This should be set to TRUE if this didn't originate from a player's client.
@@ -21,15 +26,19 @@
 	src.initiator = initiator || performer
 
 /datum/event_args/actor/clone()
-	var/datum/event_args/actor/cloning = new
+	var/datum/event_args/actor/cloning = new type
 	cloning.performer = performer
 	cloning.initiator = initiator
+	cloning.simulated = simulated
+	cloning.data = deep_copy_list(data)
 	return cloning
 
 //* Logging *//
 
 /datum/event_args/actor/proc/actor_log_string()
 	return performer == initiator ? key_name(performer) : "[key_name(performer)] (via [key_name(initiator)])"
+
+//* Feedback (//)
 
 // todo: reowrk these awful ass feedback/message procs wtf
 

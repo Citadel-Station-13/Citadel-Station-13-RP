@@ -194,7 +194,7 @@
 		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 		spark_system.set_up(5, 0, user.loc)
 		spark_system.start()
-		playsound(user.loc, /datum/soundbyte/grouped/sparks, 50, 1)
+		playsound(user.loc, /datum/soundbyte/sparks, 50, 1)
 		user.forceMove(picked)
 		shieldcall_args[SHIELDCALL_ARG_FLAGS] |= SHIELDCALL_FLAG_ATTACK_BLOCKED | SHIELDCALL_FLAG_ATTACK_PASSTHROUGH
 

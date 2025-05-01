@@ -136,7 +136,7 @@
 		return
 	for(var/mob/living/simple_mob/M in src.contents)
 		if((INTENT_HELP) && user.canClick())
-			user.setClickCooldown(user.get_attack_speed())
+			user.setClickCooldownLegacy(user.get_attack_speed_legacy())
 			user.visible_message("<span class='notice'>[user] [M.response_help] \the [M].</span>")
 
 /obj/item/holder/holosphere_shell/relaymove(var/mob/user, var/direction)
