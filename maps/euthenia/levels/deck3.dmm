@@ -64,7 +64,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 2;
@@ -8816,7 +8816,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/sun,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/chief)
@@ -17962,7 +17962,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 2;

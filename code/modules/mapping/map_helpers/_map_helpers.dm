@@ -12,6 +12,8 @@
 /obj/map_helper
 	icon = 'icons/mapping/helpers/mapping_helpers.dmi'
 	icon_state = ""
+	plane = DEBUG_PLANE
+	layer = DEBUG_LAYER_MAP_HELPERS
 
 	/// overrides [late]
 	/// makes us register as a map initialization hook, which fires before atom init.
@@ -31,6 +33,7 @@
 		hook_map_initializations(context)
 
 /obj/map_helper/Initialize(mapload)
+	SHOULD_CALL_PARENT(FALSE)
 	var/let_me_live = FALSE
 	if(!was_in_mapload)
 		message_admins("a datum with map initializations was created. if this was you, you are in charge of invoking map_initializations() on it. this is not called by default outside of mapload as many things using the hook are highly destructive.")

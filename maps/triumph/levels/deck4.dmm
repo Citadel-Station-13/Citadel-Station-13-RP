@@ -233,7 +233,7 @@
 "akO" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable/green,
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/prison/cell_block)
@@ -901,7 +901,7 @@
 	name = "Bridge Lockdown";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/commandblue,
 /turf/simulated/floor/plating,
 /area/bridge)
@@ -1237,7 +1237,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/spawner/window/low_wall/borosillicate/full,
+/obj/spawner/window/low_wall/borosillicate,
 /obj/map_helper/wall_striper/violet,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/general)
@@ -1314,7 +1314,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/spawner/window/low_wall/borosillicate/reinforced,
 /obj/structure/curtain/black{
 	anchored = 1
 	},
@@ -1969,7 +1969,7 @@
 /turf/simulated/floor/plating,
 /area/security/brig)
 "bph" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/machinery/door/firedoor/glass,
 /obj/structure/curtain/black{
 	anchored = 1
@@ -2381,7 +2381,7 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/security/range)
@@ -2504,7 +2504,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/security/forensics)
@@ -2520,7 +2520,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "bKp" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/security/hallway)
 "bKU" = (
@@ -2991,7 +2991,7 @@
 	name = "Bridge Lockdown";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/commandblue,
 /turf/simulated/floor/plating,
 /area/bridge)
@@ -3480,7 +3480,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/main)
 "ctB" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
@@ -5294,7 +5294,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/security/lobby)
@@ -6037,7 +6037,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/spawner/window/low_wall/borosillicate/reinforced,
 /obj/structure/curtain/black{
 	anchored = 1
 	},
@@ -6315,7 +6315,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "elR" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/spawner/window/low_wall/borosillicate/reinforced,
 /obj/map_helper/wall_striper/commandblue,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/bridge/meeting_room)
@@ -6414,7 +6414,7 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/security/warden)
@@ -6930,7 +6930,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/security/breakroom)
@@ -8023,7 +8023,7 @@
 /area/hallway/secondary/civilian_hallway_mid)
 "fvG" = (
 /obj/machinery/door/firedoor,
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/security/lobby)
@@ -8048,7 +8048,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/full/nogrille,
+/obj/spawner/window/low_wall/nogrille,
 /turf/simulated/floor/tiled,
 /area/hydroponics/garden)
 "fxj" = (
@@ -8271,7 +8271,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/security/lobby)
@@ -8987,7 +8987,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/security/security_lockerroom)
@@ -9053,7 +9053,7 @@
 	name = "Security Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/palebottlegreen,
 /turf/simulated/floor,
 /area/hallway/secondary/docking_hallway)
@@ -10146,7 +10146,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/prison/cell_block)
@@ -10209,7 +10209,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/security/forensics)
@@ -10942,7 +10942,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/prison/cell_block)
@@ -12471,7 +12471,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor,
 /area/security/hanger)
@@ -12594,7 +12594,7 @@
 /area/library)
 "iGx" = (
 /obj/machinery/door/firedoor/glass,
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/simulated/floor/plating,
 /area/exploration/excursion_dock)
 "iHc" = (
@@ -12724,7 +12724,7 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/security/range)
@@ -13053,7 +13053,7 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/simulated/floor/plating,
 /area/hallway/primary/aft)
 "iYa" = (
@@ -13293,7 +13293,7 @@
 /area/maintenance/security/starboard)
 "jdR" = (
 /obj/machinery/door/firedoor,
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/spawner/window/low_wall/borosillicate/reinforced,
 /obj/map_helper/wall_striper/commandblue,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/bridge)
@@ -13988,7 +13988,7 @@
 /turf/simulated/floor/tiled,
 /area/exploration/showers)
 "jBc" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/spawner/window/low_wall/borosillicate/reinforced,
 /obj/map_helper/wall_striper/commandblue,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/bridge/office)
@@ -14845,7 +14845,7 @@
 /obj/machinery/door/firedoor{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/security/hallway)
@@ -14996,7 +14996,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/full/nogrille,
+/obj/spawner/window/low_wall/nogrille,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
 "khT" = (
@@ -15076,7 +15076,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/security/brig)
@@ -15847,7 +15847,7 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/spawner/window/low_wall/borosillicate/reinforced,
 /obj/map_helper/wall_striper/commandblue,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/bridge/office)
@@ -15976,7 +15976,7 @@
 /area/library)
 "kNR" = (
 /obj/machinery/door/firedoor/glass,
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/simulated/floor,
 /area/maintenance/security/starboard)
 "kOi" = (
@@ -16093,7 +16093,7 @@
 /area/chapel/main)
 "kRj" = (
 /obj/machinery/door/firedoor/glass,
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "kRq" = (
@@ -16437,7 +16437,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/security/security_lockerroom)
@@ -16898,7 +16898,7 @@
 	name = "Security Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/security/lobby)
@@ -17040,7 +17040,7 @@
 /area/exploration)
 "lHp" = (
 /obj/machinery/door/firedoor,
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/security/brig)
@@ -17816,7 +17816,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/security/lobby)
@@ -18033,7 +18033,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/simulated/floor/plating,
 /area/hallway/secondary/docking_hallway)
 "muZ" = (
@@ -18254,7 +18254,7 @@
 	name = "Security Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/security/lobby)
@@ -18509,7 +18509,7 @@
 /area/security/hanger)
 "mLh" = (
 /obj/machinery/door/firedoor/glass,
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/violet,
 /turf/simulated/floor/plating,
 /area/exploration/meeting)
@@ -20426,7 +20426,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/security/forensics)
@@ -21094,7 +21094,7 @@
 	name = "Bridge Lockdown";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/spawner/window/low_wall/borosillicate/reinforced,
 /obj/map_helper/wall_striper/commandblue,
 /turf/simulated/floor/airless/ceiling,
 /area/bridge)
@@ -21338,7 +21338,7 @@
 	name = "Security Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/security/lobby)
@@ -21387,7 +21387,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/commandblue,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_four)
@@ -22308,7 +22308,7 @@
 	name = "Security Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/security/lobby)
@@ -22447,7 +22447,7 @@
 	name = "Security Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/prison/cell_block)
@@ -22928,7 +22928,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "pNt" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/spawner/window/low_wall/borosillicate/reinforced,
 /obj/map_helper/wall_striper/commandblue,
 /turf/simulated/floor/airless/ceiling,
 /area/bridge)
@@ -23342,7 +23342,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/security/prison)
@@ -23554,7 +23554,7 @@
 	name = "Cockpit Lockdown";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/borosillicate/full,
+/obj/spawner/window/low_wall/borosillicate,
 /obj/map_helper/wall_striper/violet,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/cockpit)
@@ -24078,7 +24078,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/security/breakroom)
@@ -24433,7 +24433,7 @@
 	name = "Shuttle Lockdown";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/borosillicate/full,
+/obj/spawner/window/low_wall/borosillicate,
 /obj/map_helper/wall_striper/violet,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/general)
@@ -25045,7 +25045,7 @@
 	name = "Bridge Lockdown";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/simulated/floor/plating,
 /area/bridge)
 "rqD" = (
@@ -25457,7 +25457,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/security/security_lockerroom)
@@ -25594,7 +25594,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/security/security_processing)
@@ -25714,7 +25714,7 @@
 	name = "Bridge Lockdown";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/spawner/window/low_wall/borosillicate/reinforced,
 /obj/map_helper/wall_striper/commandblue,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/bridge)
@@ -25770,7 +25770,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/courser_dock)
 "rUF" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/machinery/door/firedoor/glass,
 /obj/structure/curtain/black{
 	anchored = 1
@@ -26137,7 +26137,7 @@
 /area/library)
 "sgn" = (
 /obj/machinery/door/firedoor/glass,
-/obj/spawner/window/low_wall/full/nogrille,
+/obj/spawner/window/low_wall/nogrille,
 /turf/simulated/floor/tiled,
 /area/hydroponics/garden)
 "sgq" = (
@@ -26279,7 +26279,7 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/spawner/window/low_wall/borosillicate/reinforced,
 /obj/map_helper/wall_striper/commandblue,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/bridge/meeting_room)
@@ -26375,7 +26375,7 @@
 /area/exploration/explorer_prep)
 "snQ" = (
 /obj/machinery/door/firedoor/glass,
-/obj/spawner/window/low_wall/full/nogrille,
+/obj/spawner/window/low_wall/nogrille,
 /turf/simulated/floor,
 /area/maintenance/tool_storage)
 "spc" = (
@@ -27755,7 +27755,7 @@
 /area/hallway/primary/aft)
 "tuY" = (
 /obj/machinery/door/firedoor/glass,
-/obj/spawner/window/low_wall/full/nogrille,
+/obj/spawner/window/low_wall/nogrille,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
 "tva" = (
@@ -27818,7 +27818,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/borosillicate/full,
+/obj/spawner/window/low_wall/borosillicate,
 /obj/map_helper/wall_striper/violet,
 /turf/simulated/floor/plating,
 /area/crew_quarters/lounge)
@@ -28073,7 +28073,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/security/prison)
@@ -29087,7 +29087,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/spawner/window/low_wall/borosillicate/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor,
 /area/security/brig)
@@ -29554,7 +29554,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/security/brig)
@@ -30048,7 +30048,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/spawner/window/low_wall/borosillicate/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor,
 /area/security/brig)
@@ -30492,7 +30492,7 @@
 /area/triumph/surfacebase/sauna)
 "vkn" = (
 /obj/machinery/door/firedoor,
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/security/breakroom)
@@ -31099,7 +31099,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/spawner/window/low_wall/borosillicate/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor,
 /area/security/brig)
@@ -31744,7 +31744,7 @@
 	layer = 3.1;
 	name = "Colony Directo's Shutters"
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/commandblue,
 /turf/simulated/floor/plating,
 /area/crew_quarters/captain)
@@ -31843,7 +31843,7 @@
 	layer = 3.1;
 	name = "Colony Directo's Shutters"
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/commandblue,
 /turf/simulated/floor/plating,
 /area/crew_quarters/captain)
@@ -32223,7 +32223,7 @@
 	name = "Security Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor,
 /area/security/hanger)
@@ -32454,7 +32454,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/violet,
 /turf/simulated/floor/plating,
 /area/exploration/pilot_prep)
@@ -32760,7 +32760,7 @@
 /area/crew_quarters/sleep/HOP_quarters)
 "wVs" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
-/obj/spawner/window/low_wall/borosillicate/full,
+/obj/spawner/window/low_wall/borosillicate,
 /obj/map_helper/wall_striper/violet,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/general)
@@ -33008,7 +33008,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor,
 /area/security/hanger)
@@ -33242,7 +33242,7 @@
 "xjJ" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable/green,
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/security/security_processing)
@@ -33568,7 +33568,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/security/warden)
@@ -33671,7 +33671,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/full/nogrille,
+/obj/spawner/window/low_wall/nogrille,
 /turf/simulated/floor/plating,
 /area/crew_quarters/lounge)
 "xuR" = (
@@ -34842,7 +34842,7 @@
 /area/chapel/main)
 "yfo" = (
 /obj/machinery/door/firedoor,
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/simulated/floor/plating,
 /area/hallway/secondary/docking_hallway)
 "yfy" = (

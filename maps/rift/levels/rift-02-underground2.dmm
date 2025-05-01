@@ -116,7 +116,7 @@
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/crew_quarters/heads/chief)
 "aE" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /obj/map_helper/wall_painter/sun,
 /turf/simulated/floor/plating,
 /area/engineering/engine_airlock)
@@ -3224,7 +3224,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/sun,
 /turf/simulated/floor/plating,
 /area/engineering/foyer)
@@ -4311,7 +4311,7 @@
 	dir = 4;
 	id = "bunker"
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/public_bunker)
 "oW" = (
@@ -4357,7 +4357,7 @@
 	dir = 8;
 	id = "bunker"
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/public_bunker)
 "pb" = (
@@ -4869,7 +4869,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "qR" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/quartermaster/miningdock)
 "qS" = (
@@ -5310,7 +5310,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/engineering/atmos/locker_room)
 "sz" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/map_helper/wall_painter/sun,
 /turf/simulated/floor,
 /area/engineering/engine_airlock)
@@ -5572,7 +5572,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/sun,
 /turf/simulated/floor,
 /area/maintenance/substation/engineering)
@@ -6176,7 +6176,7 @@
 	dir = 2;
 	id = "bunker"
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/public_bunker)
 "vW" = (
@@ -7881,7 +7881,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "CH" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/wall_painter/sun,
 /obj/map_helper/electrochromatic_linker{
 	id = "ce_office"
@@ -8177,7 +8177,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/engine_waste)
 "DI" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/secure_storage/lower)
@@ -8479,7 +8479,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "ET" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/wall_painter/palebottlegreen,
 /obj/map_helper/electrochromatic_linker{
 	id = "chapel_office"
@@ -8959,7 +8959,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "Ha" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/wall_painter/palebottlegreen,
 /obj/map_helper/electrochromatic_linker{
 	id = "chapel_hall"
@@ -9181,7 +9181,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "HY" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /obj/map_helper/wall_painter/sun,
 /turf/simulated/floor/plating,
 /area/engineering/workshop)
@@ -10083,7 +10083,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
 "LD" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/map_helper/wall_painter/sun,
 /obj/machinery/door/blast/regular{
 	dir = 4;
@@ -10297,7 +10297,7 @@
 /area/maintenance/atmos)
 "Mu" = (
 /obj/map_helper/wall_striper/sun,
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	name = "Reactor Blast Door";
@@ -11238,7 +11238,7 @@
 /turf/simulated/floor/lino,
 /area/chapel/office)
 "PM" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/miningdock)
@@ -11341,7 +11341,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/belterdock/gear)
 "Qr" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/refinery)
 "Qt" = (
@@ -12812,7 +12812,7 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/underground/under2)
 "VV" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /obj/map_helper/wall_painter/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/miningdock)
@@ -13369,7 +13369,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "Yl" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /obj/map_helper/wall_painter/sun,
 /turf/simulated/floor/plating,
 /area/engineering/engine_monitoring)
@@ -13491,7 +13491,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "YJ" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /obj/map_helper/wall_painter/sun,
 /turf/simulated/floor/plating,
 /area/engineering/engineering_monitoring)

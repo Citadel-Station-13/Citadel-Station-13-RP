@@ -1166,7 +1166,7 @@
 /turf/simulated/floor/tiled/old_tile/red,
 /area/sector/delerictcasino/security)
 "fH" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/steel_dirty/dark{
 	outdoors = 1
 	},
@@ -2330,7 +2330,7 @@
 /turf/simulated/floor/tiled/old_tile/red,
 /area/sector/delerictcasino/security)
 "kG" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/steel_dirty/dark{
 	outdoors = 1
 	},
@@ -2361,7 +2361,7 @@
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/delerictcasino/room/room3)
 "kN" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "kQ" = (
@@ -2430,7 +2430,7 @@
 	},
 /area/sector/delerictcasino/ringforrest)
 "lc" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
 "ld" = (
@@ -3088,7 +3088,7 @@
 /turf/simulated/floor,
 /area/sector/delerictcasino/maintenance)
 "on" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/room/room3)
 "oo" = (
@@ -3370,7 +3370,7 @@
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/restaurant)
 "pw" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/room/room6)
 "pz" = (
@@ -3717,7 +3717,7 @@
 	},
 /area/sector/delerictcasino/ringforrest)
 "ri" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor,
 /area/sector/delerictcasino/ringforrest)
 "rk" = (
@@ -5131,7 +5131,7 @@
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "yf" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/room/room2)
 "yj" = (
@@ -5666,7 +5666,7 @@
 	},
 /area/sector/delerictcasino/ringforrest)
 "Am" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/steel_dirty/dark{
 	outdoors = 1
 	},
@@ -5738,7 +5738,7 @@
 /turf/simulated/floor/tiled/steel_dirty/red,
 /area/sector/delerictcasino/dock)
 "AD" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/sector/delerictcasino/dock)
 "AE" = (
@@ -6536,7 +6536,7 @@
 	},
 /area/sector/delerictcasino/ringforrest)
 "EW" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/fey/forest_grass{
 	outdoors = 1
 	},
@@ -7257,7 +7257,7 @@
 	},
 /area/sector/delerictcasino/ringforrest)
 "ID" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/steel_dirty/dark{
 	outdoors = 1
 	},
@@ -8401,7 +8401,7 @@
 	},
 /area/sector/delerictcasino/dock)
 "Oe" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/steel_dirty/dark{
 	outdoors = 1
 	},
@@ -8471,7 +8471,7 @@
 /area/sector/delerictcasino/ringforrest)
 "Oy" = (
 /obj/effect/floor_decal/rust,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "Oz" = (
@@ -9393,7 +9393,7 @@
 /turf/simulated/floor/tiled/steel_dirty/red,
 /area/sector/delerictcasino/dock)
 "Ta" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/room/room1)
 "Tb" = (
@@ -9711,7 +9711,7 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/spine)
 "Uw" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/steel_dirty/dark{
 	outdoors = 1
 	},
@@ -10233,7 +10233,7 @@
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
 "Xb" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/space/basic,
 /area/sector/delerictcasino/ringforrest)
 "Xc" = (
@@ -10583,7 +10583,7 @@
 	},
 /area/sector/delerictcasino/ringforrest)
 "YL" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/exterior)
 "YN" = (

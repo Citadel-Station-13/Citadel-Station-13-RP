@@ -12434,7 +12434,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/meeting_room)
 "aMM" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "aMN" = (
@@ -16884,7 +16884,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /obj/map_helper/wall_painter/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
@@ -16943,7 +16943,7 @@
 	name = "Shuttle Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/violet,
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -17468,7 +17468,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/courser_dock)
 "csw" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /obj/map_helper/wall_painter/commandblue,
 /turf/simulated/floor/plating,
 /area/bridge/bridge_hallway)
@@ -17684,7 +17684,7 @@
 	name = "Bridge Lockdown Shutters";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/commandblue,
 /turf/simulated/floor/plating,
 /area/bridge)
@@ -17840,7 +17840,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "dgZ" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 8;
@@ -17868,7 +17868,7 @@
 /turf/simulated/floor,
 /area/shuttle/emt/general)
 "din" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor,
 /area/shuttle/emt/cockpit)
 "diY" = (
@@ -17889,7 +17889,7 @@
 /turf/simulated/floor,
 /area/shuttle/oldcentury)
 "dpK" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/civvie/cockpit)
 "dpX" = (
@@ -18075,7 +18075,7 @@
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/crew_quarters/heads/blueshield)
 "dIa" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /obj/map_helper/wall_painter/violet,
 /turf/simulated/floor/plating,
 /area/exploration/explorer_prep)
@@ -18168,7 +18168,7 @@
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area)
 "dRg" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/wall_painter/commandblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "blueshield-office"
@@ -18528,7 +18528,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "eyE" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/crew_quarters/kitchen)
@@ -18986,7 +18986,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "fam" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/door/blast/shutters{
 	id = "pilot_prep";
 	name = "Pilot Prep Window Shutters"
@@ -19174,7 +19174,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "fsv" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/violet,
 /turf/simulated/floor/plating,
 /area/exploration/courser_dock)
@@ -19275,7 +19275,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "fyx" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	icon_state = "shutter0";
@@ -19429,7 +19429,7 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/teleporter/departing)
 "fOb" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /obj/structure/cable/pink{
 	icon_state = "4-8"
 	},
@@ -19576,7 +19576,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "fVL" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/door/blast/shutters{
 	id = "Pilot_office_Shutter";
 	name = "Pilot Office Window Shutters"
@@ -19880,7 +19880,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "guB" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
 "gvz" = (
@@ -20090,7 +20090,7 @@
 /turf/simulated/floor/plating,
 /area/bridge/bridge_hallway)
 "gOf" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/hallway/secondary/docking_hallway2)
 "gOH" = (
@@ -20129,7 +20129,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "gQu" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/wall_painter/commandblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "meeting-tint"
@@ -20505,7 +20505,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/teleporter)
 "hIO" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 2;
@@ -20718,7 +20718,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "hYC" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /obj/structure/cable/pink{
 	icon_state = "1-2"
 	},
@@ -20830,7 +20830,7 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/telescience_lab/chamber)
 "ihT" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 4;
@@ -21081,7 +21081,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
 "iFT" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab)
@@ -21168,7 +21168,7 @@
 	name = "Arrivals Checkpoint Shutter";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/checkpoint2)
@@ -21310,7 +21310,7 @@
 	pressure_resistance = 750;
 	target_pressure = 750
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab)
 "jbR" = (
@@ -21449,7 +21449,7 @@
 /turf/simulated/floor/glass/reinforced,
 /area/hallway/primary/surfacethree)
 "jpO" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /obj/map_helper/wall_painter/violet,
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -22028,7 +22028,7 @@
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/ai_upload_foyer)
 "kaE" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "botany_hallway"
 	},
 /obj/map_helper/wall_painter/palebottlegreen,
@@ -22268,7 +22268,7 @@
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/blueshield)
 "kBn" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/violet,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/general)
@@ -22310,7 +22310,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "kJm" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/teleporter/departing)
 "kKk" = (
@@ -22368,7 +22368,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /obj/map_helper/wall_painter/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
@@ -23146,7 +23146,7 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "mnJ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
@@ -23159,7 +23159,7 @@
 	name = "HoP Office Shutters";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "hop_office"
 	},
 /obj/map_helper/wall_painter/commandblue,
@@ -23403,7 +23403,7 @@
 	name = "Shuttle Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/violet,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cargo)
@@ -24080,7 +24080,7 @@
 	name = "Shuttle Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cargo)
 "nXs" = (
@@ -24091,7 +24091,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/exploration)
 "nYu" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/hallway/secondary/docking_hallway2)
 "nYS" = (
@@ -24106,7 +24106,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "ocs" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/violet,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cockpit)
@@ -24831,7 +24831,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/exploration/pilot_prep)
 "pul" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 2;
@@ -24851,7 +24851,7 @@
 /turf/simulated/floor/plating,
 /area/bridge/bunker)
 "pxd" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab/chamber)
@@ -24931,7 +24931,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "pFn" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/rift/surfacebase/outside/outside3)
 "pJa" = (
@@ -24949,7 +24949,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/checkpoint2)
@@ -25021,7 +25021,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/exploration/courser_dock)
 "pOJ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/hallway/secondary/docking_hallway)
 "pOS" = (
@@ -25071,7 +25071,7 @@
 /turf/simulated/wall/rshull,
 /area/shuttle/oldcentury)
 "pVV" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/civvie/general)
 "pXI" = (
@@ -25314,7 +25314,7 @@
 /turf/simulated/wall/rshull,
 /area/shuttle/excursion/cargo)
 "qsA" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/rift/trade_shop/landing_pad)
 "quu" = (
@@ -25356,7 +25356,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacethree)
 "qxq" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
 "qzK" = (
@@ -25655,7 +25655,7 @@
 /turf/simulated/wall/r_wall/prepainted/civilian,
 /area/crew_quarters/barrestroom)
 "rgZ" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab)
@@ -26145,7 +26145,7 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "siB" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/wall_painter/violet,
 /obj/map_helper/electrochromatic_linker{
 	id = "pathfinder-office"
@@ -26364,7 +26364,7 @@
 /turf/simulated/floor,
 /area/shuttle/emt/general)
 "sON" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /obj/map_helper/wall_painter/violet,
 /turf/simulated/floor/plating,
 /area/exploration/meeting)
@@ -26506,7 +26506,7 @@
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/emt/general)
 "tbF" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/violet,
 /turf/simulated/floor/plating,
 /area/exploration/excursion_dock)
@@ -26869,7 +26869,7 @@
 	name = "Arrivals Checkpoint Shutter";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/checkpoint2)
@@ -26935,7 +26935,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "tQO" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
@@ -27111,7 +27111,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/atmospherics/pipe/simple/visible/fuel,
 /obj/machinery/atmospherics/pipe/simple/visible/aux,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/violet,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/general)
@@ -27145,7 +27145,7 @@
 /turf/simulated/floor,
 /area/shuttle/oldcentury)
 "urI" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/emt/general)
 "use" = (
@@ -27262,7 +27262,7 @@
 	name = "Arrivals Hallway Shutter";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/locker/laundry_arrival)
 "uDh" = (
@@ -27398,7 +27398,7 @@
 	name = "Shuttle Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/violet,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/general)
@@ -27674,7 +27674,7 @@
 	name = "Bridge Lockdown Shutters";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/wall_painter/commandblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "bridge-tint"
@@ -27685,7 +27685,7 @@
 /turf/simulated/wall/prepainted/command,
 /area/bridge/bunker)
 "vlJ" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/rift/stairwell/primary/surfacethree)
 "vmn" = (
@@ -27838,7 +27838,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/exploration/explorer_prep)
 "vwG" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/wall_painter/commandblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "meeting-tint"
@@ -28033,7 +28033,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
 "vKy" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/monodark,
 /area/shuttle/oldcentury)
 "vLd" = (
@@ -28080,7 +28080,7 @@
 	name = "Arrivals Checkpoint Shutter";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/darkred,
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -28446,7 +28446,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/checkpoint2)
 "wkX" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /obj/map_helper/wall_painter/violet,
 /turf/simulated/floor/plating,
 /area/exploration/medic_prep)
@@ -28455,7 +28455,7 @@
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/bridge/office)
 "wlz" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 2;
@@ -28708,7 +28708,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/exploration/excursion_dock)
 "wJJ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/violet,
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -28792,7 +28792,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/bar)
 "wZh" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /obj/map_helper/wall_painter/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
@@ -29136,7 +29136,7 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/maintenance/bar)
 "xxs" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cargo)
 "xxH" = (
@@ -29438,7 +29438,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "ybn" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /obj/map_helper/wall_painter/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/hydroponics)

@@ -2349,7 +2349,7 @@
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck4/fore)
 "im" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab/chamber)
@@ -2729,7 +2729,7 @@
 	pressure_resistance = 750;
 	target_pressure = 750
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab)
 "jt" = (
@@ -6752,7 +6752,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "xj" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab)
@@ -7012,7 +7012,7 @@
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology)
 "yd" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab/foyer)
@@ -7475,7 +7475,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/xenobiology)
 "zD" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/map_helper/wall_painter/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab)
@@ -11051,7 +11051,7 @@
 /turf/simulated/floor/wood,
 /area/library)
 "LR" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/storage)
 "LT" = (
@@ -11658,7 +11658,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/secure_storage/critical/records)
 "NS" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /obj/map_helper/wall_painter/violet,
 /turf/simulated/floor/plating,
 /area/exploration/explorer_prep)

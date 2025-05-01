@@ -297,7 +297,7 @@
 	opacity = 0;
 	open_layer = 1
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "patient_room_c";
 	name = "Patient C"
 	},
@@ -554,7 +554,7 @@
 	name = "Pen 3 Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -1170,7 +1170,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/lower/south)
 "aUn" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/sun,
 /turf/simulated/floor/plating,
 /area/tcomfoyer)
@@ -1573,7 +1573,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/sun,
 /turf/simulated/floor/plating,
 /area/tcommsat/chamber)
@@ -2424,7 +2424,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/sun,
 /turf/simulated/floor/plating,
 /area/tcomsat)
@@ -2955,7 +2955,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "cgz" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -3706,7 +3706,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/bar)
 "cGM" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/reading_room)
@@ -4956,7 +4956,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 6
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/sun,
 /turf/simulated/floor/plating,
 /area/tcommsat/chamber)
@@ -5111,7 +5111,7 @@
 /area/maintenance/substation/research)
 "dOp" = (
 /obj/structure/cable/green,
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "rd_office";
 	name = "RD Office"
 	},
@@ -5221,7 +5221,7 @@
 	name = "Pen 10 Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -5715,7 +5715,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/armory)
 "ejq" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "meetingroom";
 	name = "Command Meeting"
 	},
@@ -6203,7 +6203,7 @@
 	opacity = 0;
 	open_layer = 1
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "patient_room_a";
 	name = "Patient A"
 	},
@@ -6579,7 +6579,7 @@
 /turf/simulated/mineral,
 /area/tether/surfacebase/reading_room)
 "eQV" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/readingrooms)
 "eQW" = (
@@ -6877,7 +6877,7 @@
 	name = "Pen 10 Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -7102,7 +7102,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 10
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/sun,
 /turf/simulated/floor/plating,
 /area/tcommsat/chamber)
@@ -7666,7 +7666,7 @@
 	opacity = 0;
 	open_layer = 1
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/babyblue,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/medical/centralhall)
@@ -7766,7 +7766,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/security/outfitting)
@@ -8910,7 +8910,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/south)
 "gvx" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "cmo_office";
 	name = "CMO office"
 	},
@@ -9238,7 +9238,7 @@
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/medical/cmo)
 "gCr" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/south)
 "gDl" = (
@@ -9699,7 +9699,7 @@
 	name = "Pen 9 Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -10153,7 +10153,7 @@
 	name = "Pen 1 Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -10210,7 +10210,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/interrogation)
 "hqD" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/lower/atmos_eva)
@@ -10421,7 +10421,7 @@
 	opacity = 0;
 	open_layer = 1
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "patient_room_b";
 	name = "Patient B"
 	},
@@ -12076,7 +12076,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/uppersouthstairwell)
 "iER" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
@@ -12398,7 +12398,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/tiled,
 /area/engineering/lower/breakroom)
@@ -12523,7 +12523,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "wardenwindows";
 	name = "Wardens Office"
 	},
@@ -13274,7 +13274,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -13418,7 +13418,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/patient_b)
 "jCm" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/monitoring)
@@ -13715,7 +13715,7 @@
 	opacity = 0;
 	open_layer = 1
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "surfresleeving";
 	name = "Resleeving"
 	},
@@ -13723,7 +13723,7 @@
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/medical/resleeving)
 "jQW" = (
-/obj/spawner/window/low_wall/full/firelocks/nogrille,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /obj/map_helper/wall_striper/babyblue,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/medical/uppersouthstairwell)
@@ -14507,7 +14507,7 @@
 /turf/simulated/floor/tiled,
 /area/janitor)
 "kxn" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -14932,7 +14932,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -15168,7 +15168,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/south)
 "lab" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/security/middlehall)
@@ -15460,7 +15460,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/engineering/lower/breakroom)
 "lmg" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "wardenwindows";
 	name = "Wardens Office"
 	},
@@ -16810,7 +16810,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/sun,
 /turf/simulated/floor/plating,
 /area/tcommsat/chamber)
@@ -17018,7 +17018,7 @@
 	name = "Pen 5 Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -17366,7 +17366,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -18201,7 +18201,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/middlehall)
 "nns" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "patient_room_c";
 	name = "Patient C"
 	},
@@ -18738,7 +18738,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/recoveryward)
 "nGx" = (
-/obj/spawner/window/low_wall/full/firelocks/nogrille,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /obj/map_helper/wall_striper/babyblue,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/medical/breakroom)
@@ -19047,7 +19047,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -19462,7 +19462,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/black,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/sun,
 /turf/simulated/floor/plating,
 /area/tcommsat/chamber)
@@ -20494,7 +20494,7 @@
 /turf/simulated/open,
 /area/engineering/atmos)
 "oXE" = (
-/obj/spawner/window/low_wall/borosillicate/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/firelocks,
 /obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -20912,7 +20912,7 @@
 	name = "Pen 6 Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -20961,7 +20961,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/outfitting)
 "pqX" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "exam_room";
 	name = "Exam Room Medical"
 	},
@@ -21204,7 +21204,7 @@
 	name = "Pen 2 Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -21251,7 +21251,7 @@
 /area/maintenance/substation/command)
 "pCi" = (
 /obj/structure/cable/green,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/sun,
 /turf/simulated/floor/plating,
 /area/tcomsat)
@@ -21287,7 +21287,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -21580,7 +21580,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "pQm" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/southhall)
@@ -21889,7 +21889,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/surface_two_hall)
 "qbU" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor,
 /area/tether/surfacebase/security/outfitting)
@@ -22060,7 +22060,7 @@
 	name = "Pen 8 Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -22834,7 +22834,7 @@
 	icon_state = "16-0"
 	},
 /obj/structure/disposalpipe/up,
-/obj/spawner/window/low_wall/borosillicate/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/firelocks,
 /obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -23145,7 +23145,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/south)
 "rcx" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/drone_fabrication)
@@ -23365,7 +23365,7 @@
 /turf/simulated/floor/carpet,
 /area/tether/surfacebase/security/detective/officeb)
 "rja" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/lower/breakroom)
@@ -24555,7 +24555,7 @@
 	name = "Pen 9 Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -24771,7 +24771,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -25749,7 +25749,7 @@
 /turf/simulated/wall/prepainted,
 /area/tether/surfacebase/public_garden_two)
 "sRE" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "cmo_office";
 	name = "CMO office"
 	},
@@ -26213,7 +26213,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "tlq" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "ward_tint";
 	name = "medical Ward"
 	},
@@ -26499,7 +26499,7 @@
 	opacity = 0;
 	open_layer = 1
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "cmo_office";
 	name = "CMO office"
 	},
@@ -26545,7 +26545,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -26674,7 +26674,7 @@
 	name = "Atmospherics Lockdown";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/lower/lobby)
@@ -26828,7 +26828,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -27005,8 +27005,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/outfitting/storage)
 "udd" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "udj" = (
@@ -27300,7 +27300,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "upb" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/bar)
 "upu" = (
@@ -27566,7 +27566,7 @@
 /turf/simulated/shuttle/floor/voidcraft,
 /area/tether/surfacebase/old_shelter)
 "uBL" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "uBU" = (
@@ -29677,7 +29677,7 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/tether/surfacebase/emergency_storage/atmos)
 "wbn" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "patient_room_a";
 	name = "Patient A"
 	},
@@ -30721,7 +30721,7 @@
 	name = "Pen 4 Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -31340,7 +31340,7 @@
 	name = "Pen 7 Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -31487,7 +31487,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "wardenwindows";
 	name = "Wardens Office"
 	},
@@ -31600,7 +31600,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/security/detective)
 "xtk" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/rdoffice)
@@ -31918,7 +31918,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tether/surfacebase/surface_two_hall)
 "xIu" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "surfresleeving";
 	name = "Resleeving"
 	},
@@ -32410,7 +32410,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/darkred,
 /turf/simulated/floor,
 /area/tether/surfacebase/security/detective)
@@ -32445,7 +32445,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
 "xZX" = (
-/obj/spawner/window/low_wall/full/firelocks/nogrille,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor,
 /area/maintenance/lower/south)
 "yam" = (
@@ -32457,7 +32457,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "yas" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "yat" = (
@@ -32514,7 +32514,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "ydd" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/lower/atmos_lockers)
@@ -32631,7 +32631,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "yge" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "patient_room_b";
 	name = "Patient B"
 	},
@@ -32722,7 +32722,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/surfacebase/medical/morgue)
 "ykZ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/lower/lobby)

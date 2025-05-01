@@ -230,7 +230,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/sun,
 /turf/simulated/floor/plating,
 /area/tcommsat/computer)
@@ -391,7 +391,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/map_helper/wall_striper/sun,
 /turf/simulated/floor/plating,
 /area/storage/tech)
@@ -650,7 +650,7 @@
 /turf/simulated/wall/r_wall/prepainted/engineering/atmos,
 /area/space)
 "bS" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
 	},
@@ -1008,7 +1008,7 @@
 /turf/space,
 /area/space)
 "df" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan,
 /obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
@@ -1088,7 +1088,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 2;
@@ -1680,7 +1680,7 @@
 /turf/simulated/floor/plating,
 /area/tcommsat/powercontrol)
 "ft" = (
-/obj/spawner/window/low_wall/borosillicate/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/firelocks,
 /obj/map_helper/wall_striper/sun,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/portnacelle)
@@ -1892,7 +1892,7 @@
 	},
 /area/tcommsat/chamber)
 "gh" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/visible/purple,
 /obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
@@ -1909,7 +1909,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/sun,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/chief)
@@ -2077,7 +2077,7 @@
 	icon_state = "0-2"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/monitoring)
@@ -2649,7 +2649,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/trash_pit)
 "iz" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/curtain/black,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
@@ -3558,7 +3558,7 @@
 	icon_state = "1-4"
 	},
 /obj/structure/cable/green,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/sun,
 /turf/simulated/floor/plating,
 /area/tcommsat/computer)
@@ -4138,7 +4138,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/hallway/lower)
 "nO" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/engineering/storage)
 "nQ" = (
@@ -4292,7 +4292,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/borosillicate/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/firelocks,
 /obj/map_helper/wall_striper/sun,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
@@ -4375,7 +4375,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway/lower)
 "oI" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
 	dir = 8
 	},
@@ -5582,12 +5582,12 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/engine_airlock)
 "sE" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor,
 /area/engineering/atmos/storage)
 "sF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/monitoring)
@@ -5737,7 +5737,7 @@
 /turf/space/basic,
 /area/space)
 "tc" = (
-/obj/spawner/window/low_wall/borosillicate/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/firelocks,
 /obj/map_helper/wall_striper/sun,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/starboardnacelle)
@@ -6069,7 +6069,7 @@
 	name = "Security Checkpoint Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/map_helper/wall_striper/sun,
 /turf/simulated/floor,
 /area/storage/tech)
@@ -6756,7 +6756,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "wu" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
 	},
@@ -7232,7 +7232,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_eva)
 "ya" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/monitoring)
@@ -7700,7 +7700,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engi_engine)
 "zJ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
@@ -7722,7 +7722,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
 "zP" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/visible/black,
 /obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
@@ -8471,12 +8471,12 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/map_helper/wall_striper/sun,
 /turf/simulated/floor/plating,
 /area/storage/tech)
 "Cn" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/station/stairs_one)
 "Co" = (
@@ -9144,7 +9144,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "Ey" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
 	},
@@ -9950,7 +9950,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "Hq" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
 /area/space)
@@ -10216,12 +10216,12 @@
 /area/engineering/hallway)
 "Ii" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/monitoring)
 "Ij" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/visible/blue,
 /obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
@@ -10237,7 +10237,7 @@
 	name = "Security Checkpoint Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/map_helper/wall_striper/sun,
 /turf/simulated/floor,
 /area/storage/tech)
@@ -10506,7 +10506,7 @@
 	name = "Security Checkpoint Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/map_helper/wall_striper/sun,
 /turf/simulated/floor,
 /area/storage/tech)
@@ -10728,7 +10728,7 @@
 	opacity = 0
 	},
 /obj/structure/cable,
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/map_helper/wall_striper/sun,
 /turf/simulated/floor/plating,
 /area/storage/tech)
@@ -11248,7 +11248,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 2;
@@ -11440,7 +11440,7 @@
 /turf/simulated/floor/tiled,
 /area/station/stairs_one)
 "Mc" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "Mh" = (
@@ -11519,7 +11519,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/borosillicate/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/firelocks,
 /obj/map_helper/wall_striper/sun,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
@@ -14093,7 +14093,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/hallway/lower)
 "UR" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 8
 	},
@@ -14643,7 +14643,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/hallway/lower)
 "WF" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
@@ -14749,7 +14749,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "Xc" = (
-/obj/spawner/window/low_wall/borosillicate/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/firelocks,
 /obj/map_helper/wall_striper/sun,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
@@ -15174,7 +15174,7 @@
 /turf/space/basic,
 /area/engineering/atmos/gas_storage)
 "Yr" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
 	},
@@ -15196,7 +15196,7 @@
 /turf/simulated/wall/prepainted/engineering/atmos,
 /area/engineering/atmos/storage)
 "Yu" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor,
 /area/maintenance/engineering)
 "Yv" = (
@@ -15295,7 +15295,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 1
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/pipecyan,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)

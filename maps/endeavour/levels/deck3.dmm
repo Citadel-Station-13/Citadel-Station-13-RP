@@ -33,7 +33,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/warehouse)
 "abl" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock)
@@ -455,12 +455,12 @@
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck3amidships)
 "aqN" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/darkred,
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/security/brig)
 "arz" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "vicDetOffice"
 	},
@@ -1513,7 +1513,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hos)
@@ -1800,7 +1800,7 @@
 /turf/simulated/floor/plating,
 /area/quartermaster/storage)
 "blM" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/hydroponics/garden)
@@ -1977,7 +1977,7 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3fwdmaint)
 "brs" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/curtain/open/bed{
 	name = "curtain"
 	},
@@ -2135,7 +2135,7 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3aftmaint)
 "bvx" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/wall_painter/commandblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "hop_office2"
@@ -2654,7 +2654,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hos)
@@ -2758,7 +2758,7 @@
 /turf/simulated/floor/wood/broken,
 /area/maintenance/pool)
 "bXD" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/palebottlegreen,
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/plating,
@@ -3413,7 +3413,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/spawner/window/low_wall/borosillicate/reinforced,
 /obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor,
 /area/security/hanger)
@@ -4508,7 +4508,7 @@
 	dir = 4
 	},
 /obj/map_helper/wall_painter/beastybrown,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock)
 "dqu" = (
@@ -4590,7 +4590,7 @@
 /area/crew_quarters/heads/hos)
 "dxf" = (
 /obj/map_helper/wall_painter/darkred,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -5687,7 +5687,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hos)
@@ -5725,7 +5725,7 @@
 /turf/simulated/floor/tiled/monodark,
 /area/quartermaster/delivery)
 "elT" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/brig)
@@ -6464,7 +6464,7 @@
 	name = "Security Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/lobby)
@@ -6621,7 +6621,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/security_processing)
@@ -7133,7 +7133,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/showers)
 "flv" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/evidence_storage)
@@ -7143,7 +7143,7 @@
 /area/quartermaster/warehouse)
 "fmB" = (
 /obj/structure/cable/green,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/range)
@@ -8243,7 +8243,7 @@
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hop)
 "ggB" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/curtain/open/bed{
 	name = "curtain"
 	},
@@ -8308,7 +8308,7 @@
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "glG" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/lobby)
@@ -9261,7 +9261,7 @@
 	name = "Security Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/lobby)
@@ -9493,7 +9493,7 @@
 /area/endeavour/hallway/d3afthall)
 "hch" = (
 /obj/structure/cable/green,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/security_processing)
@@ -10542,7 +10542,7 @@
 /area/crew_quarters/recreation_area)
 "hOL" = (
 /obj/structure/cable/green,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/prison/cell_block)
@@ -10938,7 +10938,7 @@
 /turf/simulated/floor/tiled,
 /area/security/range)
 "iet" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/endeavour/station/stairs_three)
 "iez" = (
@@ -11012,7 +11012,7 @@
 /turf/simulated/floor,
 /area/maintenance/security/port)
 "ihQ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/darkred,
 /obj/structure/cable/green,
 /obj/structure/cable/green{
@@ -11324,7 +11324,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -11565,7 +11565,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/warehouse)
 "izs" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "vicDetOffice"
 	},
@@ -11649,7 +11649,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/spawner/window/low_wall/borosillicate/reinforced,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -12405,7 +12405,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/spawner/window/low_wall/borosillicate/reinforced,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -12486,7 +12486,7 @@
 /obj/map_helper/electrochromatic_linker{
 	id = "hop_office"
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
 "jmL" = (
@@ -13435,7 +13435,7 @@
 /area/endeavour/hallway/d3afthall)
 "jZL" = (
 /obj/map_helper/wall_painter/darkred,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/security/armoury)
 "kad" = (
@@ -13766,7 +13766,7 @@
 /turf/simulated/floor/tiled,
 /area/security/brig)
 "kke" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/beastybrown,
 /turf/simulated/floor/plating,
 /area/hydroponics/garden)
@@ -14340,7 +14340,7 @@
 /turf/simulated/floor/carpet/sblucarpet,
 /area/crew_quarters/sleep/Dorm_7)
 "kNh" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
@@ -14419,7 +14419,7 @@
 	icon_state = "0-4"
 	},
 /obj/map_helper/wall_painter/darkred,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
@@ -14459,7 +14459,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "kTg" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/security_lockerroom)
@@ -14486,7 +14486,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "kTR" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3fwdhall)
 "kUz" = (
@@ -14616,7 +14616,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/spawner/window/low_wall/borosillicate/reinforced,
 /obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor,
 /area/security/hanger)
@@ -15759,7 +15759,7 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3portamidhall)
 "lYO" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/steel/airless,
 /area/shuttle/belter)
 "lZu" = (
@@ -16407,7 +16407,7 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3afthall)
 "mzK" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "mzU" = (
@@ -16865,7 +16865,7 @@
 /area/crew_quarters/pool)
 "mVH" = (
 /obj/map_helper/wall_painter/darkred,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/security/warden)
@@ -17606,7 +17606,7 @@
 	name = "Security Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/darkred,
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -17741,7 +17741,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/spawner/window/low_wall/borosillicate/reinforced,
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
@@ -18584,7 +18584,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/security_processing)
@@ -18676,7 +18676,7 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3afthall)
 "ofl" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
@@ -18767,7 +18767,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/starboardsolar)
 "oiQ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "ojx" = (
@@ -19127,7 +19127,7 @@
 	name = "Cargo Line shutter";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/delivery)
@@ -19230,7 +19230,7 @@
 	name = "Security Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "vicDetOffice"
 	},
@@ -19335,7 +19335,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "oFO" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/beastybrown,
 /turf/simulated/floor/airless/ceiling,
 /area/quartermaster/warehouse)
@@ -20637,7 +20637,7 @@
 /area/maintenance/dormitory)
 "pDX" = (
 /obj/machinery/door/firedoor,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -21137,7 +21137,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/brig)
@@ -21523,7 +21523,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
 "qmQ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/beastybrown,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
@@ -21918,7 +21918,7 @@
 /area/quartermaster/warehouse)
 "qAq" = (
 /obj/map_helper/wall_painter/darkred,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/security/warden)
 "qAH" = (
@@ -22198,7 +22198,7 @@
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/security/security_processing)
 "qKQ" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "qm_office"
 	},
@@ -22253,7 +22253,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/lobby)
 "qNM" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/office)
@@ -22318,7 +22318,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/prison/cell_block)
@@ -23209,7 +23209,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -23473,14 +23473,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
 "rMg" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/palebottlegreen,
 /obj/structure/curtain/open/black,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/plating,
 /area/hydroponics/garden)
 "rMh" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -23511,7 +23511,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
 "rMJ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/foyer)
@@ -23735,7 +23735,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/spawner/window/low_wall/borosillicate/reinforced,
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
@@ -23793,7 +23793,7 @@
 	name = "Security Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -24849,7 +24849,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/brig)
 "sDc" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/plating,
 /area/endeavour/station/stairs_three)
 "sDq" = (
@@ -25039,7 +25039,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/cargo_shelter_dock)
 "sKL" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/beastybrown,
 /turf/simulated/floor/tiled/steel/airless,
 /area/shuttle/mining_ship/general)
@@ -25401,7 +25401,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/prison/cell_block)
 "sXV" = (
@@ -27155,7 +27155,7 @@
 /turf/simulated/floor/crystal,
 /area/endeavour/hallway/d3fwdhall)
 "ulx" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/darkred,
 /obj/structure/cable/green{
 	icon_state = "0-8"
@@ -28114,7 +28114,7 @@
 	layer = 4;
 	name = "EXTERNAL AIRLOCK"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
@@ -28134,7 +28134,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
 "vbs" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/range)
@@ -28178,7 +28178,7 @@
 /turf/simulated/floor/water/deep/indoors,
 /area/hydroponics/garden)
 "vdD" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/palebottlegreen,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
@@ -28228,7 +28228,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/spawner/window/low_wall/borosillicate/reinforced,
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
@@ -29336,7 +29336,7 @@
 /turf/space,
 /area/space)
 "vOF" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/breakroom)
@@ -29362,7 +29362,7 @@
 	name = "Security Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/lobby)
@@ -29484,7 +29484,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/spawner/window/low_wall/borosillicate/reinforced,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -29629,12 +29629,12 @@
 /obj/effect/floor_decal/steeldecal/steel_decals_central6{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/beastybrown,
 /turf/simulated/floor/airless/ceiling,
 /area/quartermaster/warehouse)
 "vZZ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/gear)
@@ -30301,7 +30301,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "wxp" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/starboardsolar)
 "wxD" = (
@@ -31370,7 +31370,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "xkN" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -31552,7 +31552,7 @@
 /turf/simulated/wall/prepainted,
 /area/endeavour/hallway/d3afthall)
 "xsq" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_shop)
 "xtf" = (
@@ -32257,7 +32257,7 @@
 /turf/simulated/wall/prepainted/security,
 /area/security/security_equiptment_storage)
 "xPT" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/refinery)
@@ -32590,7 +32590,7 @@
 /turf/simulated/floor/tiled/old_cargo/red,
 /area/security/security_processing)
 "ydB" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/palebottlegreen,
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -32654,7 +32654,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
 "yhi" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_painter/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/delivery)
@@ -32736,7 +32736,7 @@
 	name = "Security Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "vicDetOffice"
 	},

@@ -157,7 +157,7 @@
 	name = "Blast Shutters";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/full/firelocks/nogrille,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/shuttle/plating,
 /area/shuttle/trade_ship/general)
 "aaB" = (
@@ -213,7 +213,7 @@
 	name = "Shop Shutters";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/full/firelocks/nogrille,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "aaJ" = (
@@ -305,7 +305,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
 "aaT" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
@@ -455,7 +455,7 @@
 /turf/simulated/floor/grass,
 /area/tradeport)
 "abr" = (
-/obj/spawner/window/low_wall/full/firelocks/nogrille,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel)
@@ -585,7 +585,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "abK" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/spine)
 "abL" = (
@@ -633,8 +633,8 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/dock2)
 "abS" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/tradeport/pads)
 "abU" = (
@@ -967,7 +967,7 @@
 	name = "Blast Shutters";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/shuttle/plating,
 /area/shuttle/trade_ship/general)
 "acR" = (
@@ -2362,7 +2362,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/comroom)
 "agt" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/sector/nebula_tradeport/engineering)
 "agu" = (
@@ -2790,7 +2790,7 @@
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport/commons)
 "ahy" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
@@ -2854,7 +2854,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/window/reinforced/polarized{
 	dir = 1;
 	id = "med_office"
@@ -3360,7 +3360,7 @@
 	name = "Blast Shutters";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/shuttle/plating,
 /area/shuttle/trade_ship/general)
 "aiO" = (
@@ -3532,7 +3532,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "ajk" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/airless,
 /area/sector/nebula_tradeport/engineering)
 "ajl" = (
@@ -4377,7 +4377,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/udang/main)
 "aly" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
 "alz" = (
@@ -5030,7 +5030,7 @@
 	name = "Blast Shutters";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/shuttle/plating,
 /area/shuttle/trade_ship/general)
 "ann" = (
@@ -5064,7 +5064,7 @@
 /turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "ans" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/tiled/dark,
 /area/sector/nebula_tradeport/motel/vip)
@@ -5583,7 +5583,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "aoN" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/dock2)
 "aoO" = (
@@ -6011,7 +6011,7 @@
 /turf/simulated/floor/wood,
 /area/shuttle/trade_ship/general)
 "aqc" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/tradeport/spine)
 "aqd" = (
@@ -8271,7 +8271,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/adventurer)
 "avO" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/tradeport/cafeteria)
 "avQ" = (
@@ -8370,7 +8370,7 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/tradeport/spine)
 "awe" = (
-/obj/spawner/window/low_wall/full/firelocks/nogrille,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /obj/structure/curtain/open/shower/engineering,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/comroom/holo1)
@@ -8651,7 +8651,7 @@
 	name = "Blast Shutters";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/shuttle/plating,
 /area/shuttle/trade_ship/general)
 "awG" = (
@@ -9106,7 +9106,7 @@
 	name = "Blast Shutters";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/shuttle/plating,
 /area/shuttle/trade_ship/general)
 "axM" = (
@@ -9220,7 +9220,7 @@
 /turf/simulated/floor/wood,
 /area/shuttle/trade_ship/general)
 "ayg" = (
-/obj/spawner/window/low_wall/full/firelocks/nogrille,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/tradeport/commons)
 "ayh" = (
@@ -10522,7 +10522,7 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/udang/cockpit)
 "aBq" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
@@ -10723,7 +10723,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "aBS" = (
-/obj/spawner/window/low_wall/full/firelocks/nogrille,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/tradeport/cafeteria)
 "aBT" = (
@@ -11000,7 +11000,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
 "aCC" = (
-/obj/spawner/window/low_wall/full/firelocks/nogrille,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /obj/structure/curtain/open/shower/engineering,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -11090,7 +11090,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
 "aCM" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/tradeport/commons)
 "aCP" = (
@@ -11252,7 +11252,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
 "aDk" = (
-/obj/spawner/window/low_wall/full/firelocks/nogrille,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /obj/structure/curtain/open/shower/engineering,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/comroom/holo3)
@@ -11460,7 +11460,7 @@
 /turf/simulated/floor/carpet/patterened/red,
 /area/sector/nebula_tradeport/motel/vip)
 "aDT" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/engineering)
 "aDU" = (
@@ -11874,7 +11874,7 @@
 /turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "aEY" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
@@ -11976,7 +11976,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/expansion)
 "aFi" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/udang/cockpit)
 "aFj" = (
@@ -12054,7 +12054,7 @@
 /turf/simulated/wall/sandstonediamond,
 /area/tradeport/cyndishow)
 "aFt" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/tug)
@@ -12298,7 +12298,7 @@
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/shuttle/udang/main)
 "aGa" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/tradeport/safarizoo)
 "aGb" = (
@@ -12690,7 +12690,7 @@
 /turf/simulated/floor/tiled/monotechmaint,
 /area/tradeport/spine)
 "aHi" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/utilitymicro)
 "aHj" = (
@@ -13159,7 +13159,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/dock2)
 "aIy" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/tradeport/spine)
 "aIz" = (
@@ -13639,7 +13639,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/engineering)
 "aJM" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
@@ -14284,7 +14284,7 @@
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
 "aLz" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/utilitymicro)
 "aLA" = (
@@ -14399,7 +14399,7 @@
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/tradeport/safari)
 "aLS" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/space,
 /area/sector/nebula_tradeport/motel/vip)
 "aLT" = (
@@ -15108,7 +15108,7 @@
 	name = "Blast Shutters";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/shuttle/plating,
 /area/shuttle/trade_ship/general)
 "aNK" = (
@@ -15157,7 +15157,7 @@
 	name = "Blast Shutters";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/shuttle/plating,
 /area/shuttle/trade_ship/general)
 "aNQ" = (
@@ -15235,7 +15235,7 @@
 /turf/simulated/floor/glass/reinforced,
 /area/sector/nebula_tradeport/engineering)
 "aOb" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/adventurer)
 "aOc" = (
@@ -15602,7 +15602,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/caravan)
 "aPk" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/tug)
 "aPl" = (
@@ -15708,7 +15708,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "aPx" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/shuttle/caravan)
 "aPy" = (
@@ -15794,7 +15794,7 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/adventurer)
 "aPK" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
@@ -16246,7 +16246,7 @@
 /turf/simulated/floor/tiled/old_tile/red,
 /area/sector/nebula_tradeport/security)
 "aQW" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/tradeport/facility)
 "aQX" = (
@@ -16894,7 +16894,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "aSQ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techmaint,
 /area/tradeport/facility)
 "aSR" = (
@@ -16984,7 +16984,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tradeport/engineering)
 "aTe" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 8
 	},
@@ -17071,7 +17071,7 @@
 /turf/simulated/wall/r_wall,
 /area/tradeport/commhall)
 "aTp" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/adventurer)
 "aTq" = (
@@ -18288,7 +18288,7 @@
 /turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "aWt" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/curtain/open/black,
 /turf/space/basic,
 /area/sector/nebula_tradeport/motel/vip)
@@ -18576,7 +18576,7 @@
 /turf/simulated/floor/carpet,
 /area/tradeport/commons)
 "aXk" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/glass/reinforced,
 /area/sector/nebula_tradeport/engineering)
 "aXl" = (
@@ -18660,7 +18660,7 @@
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/shuttle/caravan)
 "aXv" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/tradeport/engineering)
 "aXw" = (
@@ -18963,7 +18963,7 @@
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/tradeport/pads)
 "aYn" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/tradeport/pads)
 "aYp" = (
@@ -19226,7 +19226,7 @@
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/safari)
 "aYZ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/airless,
 /area/sector/nebula_tradeport/security)
 "aZa" = (
@@ -19756,7 +19756,7 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/tradeport/cafeteria)
 "brN" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/window/reinforced/polarized{
 	id = "scoophead_office"
 	},
@@ -20023,7 +20023,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/tradeport/commons)
 "cer" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/nebula_tradeport/motel/room4)
@@ -20153,7 +20153,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead/main)
 "cst" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/nebula_tradeport/motel/room8)
@@ -20190,13 +20190,13 @@
 /turf/simulated/floor/tiled/dark,
 /area/sector/nebula_tradeport/motel/vip)
 "czU" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead/engineering)
 "cAq" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
 	},
@@ -20259,7 +20259,7 @@
 /turf/simulated/floor/reinforced/airmix,
 /area/tradeport/atmospherics)
 "cJE" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/nebula_tradeport/motel/room2)
@@ -20596,7 +20596,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/commons)
 "dBY" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/window/reinforced/polarized{
 	dir = 1;
 	id = "scoophead_room"
@@ -20661,7 +20661,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/scoophead/cockpit)
 "dGF" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/curtain/black,
 /turf/simulated/floor/plating,
 /area/sector/nebula_tradeport/medical/public)
@@ -20785,7 +20785,7 @@
 /turf/simulated/floor/tiled/white,
 /area/sector/nebula_tradeport/medical/public)
 "dUe" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/steel_dirty/red,
 /area/shuttle/arrowhead)
 "dVq" = (
@@ -21255,7 +21255,7 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/sector/nebula_tradeport/motel)
 "eSH" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/window/reinforced/polarized{
 	dir = 1;
 	id = "med_office"
@@ -21334,7 +21334,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "fhh" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/window/reinforced/polarized{
 	dir = 1;
 	id = "scoophead_office"
@@ -21682,7 +21682,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/safarizoo)
 "gsa" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead/main)
 "gxH" = (
@@ -22106,7 +22106,7 @@
 	dir = 1;
 	id = "scoophead_office"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/window/reinforced/polarized{
 	dir = 1;
 	id = "scoophead_office"
@@ -22705,7 +22705,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/commons)
 "jjT" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/nebula_tradeport/motel/room7)
@@ -22779,7 +22779,7 @@
 	dir = 8;
 	id = "scoophead_room"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead/cockpit)
 "juq" = (
@@ -23165,7 +23165,7 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/sector/nebula_tradeport/motel)
 "kqb" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/udang/main)
 "ksu" = (
@@ -23587,7 +23587,7 @@
 /turf/simulated/floor/wood,
 /area/shuttle/scoophead/cockpit)
 "luQ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/nebula_tradeport/motel/room6)
@@ -24358,7 +24358,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/scoophead/main)
 "nBl" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/shuttle/arrowhead)
 "nFe" = (
@@ -24899,7 +24899,7 @@
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/nebula_tradeport/motel/room3)
 "piK" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/nebula_tradeport/motel/room3)
@@ -25030,7 +25030,7 @@
 /turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "pLj" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/carpet/patterened/blue/alt,
 /area/sector/nebula_tradeport/motel/vip)
@@ -25532,7 +25532,7 @@
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport/commons)
 "rdP" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -25778,7 +25778,7 @@
 /turf/simulated/wall/prepainted/command,
 /area/shuttle/scoophead/engineering)
 "rWc" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/nebula_tradeport/motel/room5)
@@ -25864,7 +25864,7 @@
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room8)
 "snu" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/tradeport/spine)
 "sqp" = (
@@ -26321,7 +26321,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/sector/nebula_tradeport/motel/room3)
 "tEO" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/nebula_tradeport/motel/arcade)
@@ -26837,7 +26837,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "vkf" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead/cockpit)
 "vld" = (
@@ -27030,7 +27030,7 @@
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/nebula_tradeport/motel/room4)
 "vSG" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/nebula_tradeport/motel/room1)

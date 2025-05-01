@@ -260,7 +260,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
 "aL" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/steel/airless,
 /area/shuttle/mining_ship/general)
 "aM" = (
@@ -552,7 +552,7 @@
 /turf/simulated/open,
 /area/station/stairs_two)
 "bx" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/curtain/black,
 /turf/simulated/floor/plating,
 /area/triumph/surfacebase/bar_backroom)
@@ -612,7 +612,7 @@
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "bF" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
@@ -680,7 +680,7 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/simulated/floor/plating,
 /area/triumph/surfacebase/mining_main/uxstorage)
 "bR" = (
@@ -1193,7 +1193,7 @@
 	layer = 4;
 	name = "EXTERNAL AIRLOCK"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
@@ -1635,7 +1635,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/spawner/window/low_wall/full/firelocks/nogrille,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
@@ -1797,7 +1797,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_9)
 "fp" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "fq" = (
@@ -1951,7 +1951,7 @@
 /turf/simulated/floor/tiled,
 /area/station/stairs_two)
 "fM" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/office)
@@ -2566,7 +2566,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/lounge/kitchen_freezer)
 "hI" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/qm)
@@ -2611,7 +2611,7 @@
 /turf/simulated/floor/plating,
 /area/vacant/vacant_office)
 "hS" = (
-/obj/spawner/window/low_wall/full/firelocks/nogrille,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /obj/structure/curtain/black,
 /obj/map_helper/wall_striper/palebottlegreen,
 /turf/simulated/floor/plating,
@@ -3132,7 +3132,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "js" = (
-/obj/spawner/window/low_wall/full/firelocks/nogrille,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_shop)
 "ju" = (
@@ -3430,7 +3430,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
 "ko" = (
-/obj/spawner/window/low_wall/full/firelocks/nogrille,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor/wood,
 /area/crew_quarters/fitness)
 "kr" = (
@@ -3704,7 +3704,7 @@
 /turf/simulated/floor/tiled,
 /area/station/stairs_two)
 "le" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/curtain/open/bed{
 	name = "curtain"
 	},
@@ -4239,7 +4239,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "ne" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/beastybrown,
 /turf/simulated/floor/plating,
 /area/triumph/surfacebase/mining_main/storage)
@@ -5402,7 +5402,7 @@
 /turf/simulated/floor/carpet/sblucarpet,
 /area/crew_quarters/sleep/Dorm_2)
 "qC" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/station/stairs_two)
 "qD" = (
@@ -6005,7 +6005,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
 "sn" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/steel/airless,
 /area/shuttle/belter)
 "so" = (
@@ -7278,7 +7278,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/office)
 "vR" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "vT" = (
@@ -8288,7 +8288,7 @@
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "yE" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "yF" = (
@@ -8351,7 +8351,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
 "yL" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/quartermaster/office)
 "yO" = (
@@ -9022,7 +9022,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "AD" = (
-/obj/spawner/window/low_wall/full/firelocks/nogrille,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/visitor_dining)
 "AE" = (
@@ -10587,7 +10587,7 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/coffee_shop)
 "FS" = (
-/obj/spawner/window/low_wall/full/firelocks/nogrille,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /obj/structure/curtain/black,
 /obj/map_helper/wall_striper/palebottlegreen,
 /turf/simulated/floor/plating,
@@ -11433,7 +11433,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
 "IF" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/beastybrown,
 /turf/simulated/floor/plating,
 /area/triumph/surfacebase/mining_main/refinery)
@@ -12878,7 +12878,7 @@
 /turf/simulated/floor/wood,
 /area/station/stairs_two)
 "Nb" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/curtain/open/bed{
 	name = "curtain"
 	},
@@ -13830,7 +13830,7 @@
 "PK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/station/stairs_two)
 "PL" = (
@@ -14158,7 +14158,7 @@
 /turf/simulated/wall/prepainted,
 /area/maintenance/substation/cargo)
 "QZ" = (
-/obj/spawner/window/low_wall/full/firelocks/nogrille,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/sleep/cryo)
 "Ra" = (
@@ -15818,7 +15818,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "VL" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/wall_striper/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/hydroponics)

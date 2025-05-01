@@ -1,13 +1,8 @@
-
-// todo: why tf isn't this a map helper
-// TODO: make this a map helper for my sanity. @Zandario
-
 /obj/map_helper/wall_painter
 	name = "coat of paint"
+	// TODO: resprite this and put it in helper icons folder
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "wall_paint_effect"
-	layer = ABOVE_TURF_LAYER
-	blend_mode = BLEND_MULTIPLY
 	late = TRUE
 
 /obj/map_helper/wall_painter/LateInitialize()
