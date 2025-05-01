@@ -175,8 +175,8 @@
 	glovecolor = "yellow"
 
 /obj/item/clothing/gloves/swat/para //Combined effect of SWAT gloves and insulated gloves
-	desc = "PARA gloves"
-	name = "PMD issued gloves, stamped with protective seals and spells."
+	name = "PARA gloves"
+	desc = "PMD issued gloves, stamped with protective seals and spells."
 	icon_state = "para_ert_gloves"
 	item_state = "para_ert_gloves"
 	item_action_name = "Enable Glove Sigils"
