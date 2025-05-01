@@ -1000,7 +1000,7 @@
 "es" = (
 /obj/spawner/window/low_wall/full/firelocks,
 /obj/structure/curtain/open/black,
-/obj/effect/paint/navy,
+/obj/effect/paint_stripe/navy,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/bridge/blueshield/room)
 "et" = (
@@ -1869,9 +1869,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3/science/main)
 "hj" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/morgue)
 "hn" = (
@@ -4270,7 +4267,7 @@
 "pz" = (
 /obj/spawner/window/low_wall/full/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
-/obj/effect/paint/navy,
+/obj/effect/paint_stripe/navy,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "pA" = (
@@ -5808,10 +5805,10 @@
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck3)
 "va" = (
-/obj/structure/closet/l3closet/medical,
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 9
 	},
+/obj/machinery/organ_printer,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/resleeve)
 "vc" = (
@@ -6286,7 +6283,7 @@
 "wR" = (
 /obj/spawner/window/low_wall/full/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
-/obj/effect/paint/navy,
+/obj/effect/paint_stripe/navy,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/robotics)
 "wT" = (
@@ -8103,13 +8100,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/main)
 "CB" = (
-/obj/structure/closet{
-	name = "spare clothes"
-	},
-/obj/item/clothing/under/color/grey,
-/obj/item/clothing/under/color/grey,
-/obj/item/clothing/shoes/black,
-/obj/item/clothing/shoes/black,
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
 	},
@@ -8118,6 +8108,7 @@
 	},
 /obj/machinery/fire_alarm/west_mount,
 /obj/structure/curtain/open/shower/medical,
+/obj/structure/closet/l3closet/medical,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/resleeve)
 "CD" = (
@@ -8342,6 +8333,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 8
 	},
+/obj/structure/closet/walllocker_double/medical/north,
+/obj/item/clothing/under/color/white,
+/obj/item/clothing/under/color/white,
+/obj/item/clothing/under/color/white,
+/obj/item/clothing/under/color/white,
+/obj/item/clothing/shoes/white,
+/obj/item/clothing/shoes/white,
+/obj/item/clothing/shoes/white,
+/obj/item/clothing/shoes/white,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/resleeve)
 "Dm" = (
@@ -9620,7 +9620,7 @@
 "HY" = (
 /obj/spawner/window/low_wall/full/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
-/obj/effect/paint/navy,
+/obj/effect/paint_stripe/navy,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/main)
 "HZ" = (
@@ -9848,7 +9848,7 @@
 "IJ" = (
 /obj/spawner/window/low_wall/full/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
-/obj/effect/paint/navy,
+/obj/effect/paint_stripe/navy,
 /turf/simulated/floor/tiled/monowhite,
 /area/strelka/shipbase/deck3/medical/psy)
 "IK" = (
@@ -10304,9 +10304,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3/science/robotics)
 "KA" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/morgue)
 "KB" = (
@@ -14071,7 +14069,7 @@
 "YW" = (
 /obj/spawner/window/low_wall/full/firelocks,
 /obj/structure/curtain/open/black,
-/obj/effect/paint/navy,
+/obj/effect/paint_stripe/navy,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/bridge/blueshield)
 "YX" = (

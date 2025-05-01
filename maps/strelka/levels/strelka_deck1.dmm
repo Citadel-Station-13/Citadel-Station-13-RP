@@ -3305,19 +3305,6 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
-"rQ" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/metal,
-/obj/machinery/door/blast/shutters{
-	id = "Secbaron2"
-	},
-/turf/simulated/floor/tiled/techfloor/monogrid,
-/area/strelka/shipbase/deck1)
 "rU" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/industrial/warning/dust,
@@ -7588,7 +7575,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/map_helper/access_helper/airlock/station/security/department,
+/obj/map_helper/access_helper/airlock/station/security/armory,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck1/warden)
 "PK" = (
@@ -7877,9 +7864,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/metal,
+/obj/machinery/door/airlock/multi_tile/glass,
 /obj/machinery/door/blast/shutters{
-	id = "Secbaron"
+	id = "Secbaron2"
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
@@ -28309,7 +28296,7 @@ rC
 WI
 KL
 eL
-rQ
+Rh
 Nr
 Sz
 TZ

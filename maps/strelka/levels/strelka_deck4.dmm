@@ -1190,6 +1190,14 @@
 /obj/machinery/smartfridge/food,
 /turf/simulated/wall/wood/hardwood,
 /area/strelka/shipbase/deck4/kitchen)
+"fp" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#B95A00"
+	},
+/obj/machinery/shield_diffuser,
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/tiled/monodark,
+/area/strelka/shipbase/pointdefense)
 "fq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -2020,6 +2028,21 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
+/obj/structure/closet/walllocker_double/kitchen/east,
+/obj/item/reagent_containers/food/condiment/small/peppermill,
+/obj/item/reagent_containers/food/condiment/small/peppermill,
+/obj/item/reagent_containers/food/condiment/small/saltshaker,
+/obj/item/reagent_containers/food/condiment/small/saltshaker,
+/obj/item/reagent_containers/food/condiment/ketchup,
+/obj/item/reagent_containers/food/condiment/ketchup,
+/obj/item/reagent_containers/food/condiment/hotsauce,
+/obj/item/reagent_containers/food/condiment/hotsauce,
+/obj/item/reagent_containers/food/condiment/cornoil,
+/obj/item/reagent_containers/food/condiment/cornoil,
+/obj/item/reagent_containers/food/condiment/small/packet/mayo,
+/obj/item/reagent_containers/food/condiment/small/packet/mayo,
+/obj/item/reagent_containers/food/condiment/sugar,
+/obj/item/reagent_containers/food/condiment/sugar,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck4/kitchen/freeze)
 "iU" = (
@@ -7531,6 +7554,15 @@
 	pixel_y = 17;
 	layer = 3.5
 	},
+/obj/item/reagent_containers/food/condiment/soysauce{
+	pixel_y = 21;
+	layer = 3.5
+	},
+/obj/item/reagent_containers/food/condiment/sugar{
+	pixel_y = 17;
+	pixel_x = -3;
+	layer = 3.5
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/kitchen)
 "Jm" = (
@@ -8227,6 +8259,18 @@
 /obj/item/reagent_containers/food/condiment/enzyme{
 	pixel_y = 19;
 	pixel_x = 5
+	},
+/obj/item/reagent_containers/food/condiment/small/saltshaker{
+	pixel_x = -6
+	},
+/obj/item/reagent_containers/food/condiment/small/peppermill,
+/obj/item/reagent_containers/food/condiment/spacespice{
+	pixel_y = 12;
+	pixel_x = 8
+	},
+/obj/item/reagent_containers/food/condiment/spacespice{
+	pixel_y = 9;
+	pixel_x = 10
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/kitchen)
@@ -9085,6 +9129,10 @@
 /obj/machinery/computer/skills,
 /turf/simulated/floor/carpet/patterened/blue/alt,
 /area/strelka/shipbase/deck4/bridge/hop/office)
+"Ri" = (
+/obj/machinery/shield_diffuser,
+/turf/space/basic,
+/area/space)
 "Rp" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/asteroid_steel,
@@ -9973,7 +10021,7 @@
 /area/strelka/shipbase/deck4/bridge)
 "Wt" = (
 /obj/structure/bed/chair/sofa/brown/corner{
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/library)
@@ -36963,15 +37011,15 @@ jR
 jR
 jR
 jR
-jR
-tZ
+Ri
+fp
 UC
 CP
 CP
 CP
 UC
 Zq
-jR
+Ri
 jR
 jR
 jR
@@ -37158,13 +37206,13 @@ jR
 jR
 jR
 jR
-jR
+Ri
 CA
 qI
 qI
 UC
 CA
-jR
+Ri
 jR
 jR
 jR
