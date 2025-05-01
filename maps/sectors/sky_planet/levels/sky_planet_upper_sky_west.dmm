@@ -1101,11 +1101,6 @@
 /obj/structure/table/hardwoodtable,
 /turf/simulated/floor/carpet/patterened/green,
 /area/sector/sky_planet/station_city/offices)
-"gF" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/turf/simulated/floor/tiled/techmaint,
-/area/shuttle/paripari)
 "gH" = (
 /obj/structure/table/steel_reinforced,
 /obj/effect/floor_decal/rust,
@@ -33799,7 +33794,7 @@ iS
 bL
 hZ
 Fg
-gF
+bL
 ET
 iS
 iS

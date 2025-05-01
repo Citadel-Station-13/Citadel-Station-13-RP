@@ -27,6 +27,8 @@
 
 	/// spawn firedoors? fulltile and non-hidden only for now
 	var/firelocks = FALSE
+	/// spawn glass firedoors?
+	var/firelocks_use_glass = FALSE
 
 	/// id tag for electrochromics
 	/// todo: rename to electrochromatic_id
@@ -66,11 +68,10 @@
 			P.id = id
 	else
 		// spawn in dirs not in found dirs
-		var/obj/structure/window/W
 		for(var/d in GLOB.cardinal)
 			if(found_dirs & d)
 				continue
-			W = new window_pane_path(loc, d)
+			new window_pane_path(loc, d)
 	if(firelocks)
 		if(locate(/obj/machinery/door/firedoor) in loc)
 			CRASH("Window spawner at X [audit_loc()] is set to spawn firelocks, but found one already in it's loc.")
@@ -78,6 +79,10 @@
 
 /obj/spawner/window/firelocks
 	icon_state = "window_grille_pane_fire"
+	firelocks = TRUE
+
+/obj/spawner/window/firelocks/transparent
+	firelocks_use_glass = TRUE
 
 /obj/spawner/window/full
 	full_window = TRUE
@@ -86,6 +91,9 @@
 /obj/spawner/window/full/firelocks
 	icon_state = "window_grille_full_fire"
 	firelocks = TRUE
+
+/obj/spawner/window/full/firelocks/transparent
+	firelocks_use_glass = TRUE
 
 /obj/spawner/window/reinforced
 	icon_state = "rwindow_grille_pane"
@@ -96,6 +104,9 @@
 	icon_state = "rwindow_grille_pane_fire"
 	firelocks = TRUE
 
+/obj/spawner/window/reinforced/firelocks/transparent
+	firelocks_use_glass = TRUE
+
 /obj/spawner/window/reinforced/full
 	icon_state = "rwindow_grille_full"
 	full_window = TRUE
@@ -103,6 +114,9 @@
 /obj/spawner/window/reinforced/full/firelocks
 	icon_state = "rwindow_grille_full_fire"
 	firelocks = TRUE
+
+/obj/spawner/window/reinforced/full/firelocks/transparent
+	firelocks_use_glass = TRUE
 
 /obj/spawner/window/reinforced/tinted
 	icon_state = "rwindow_grille_pane"
@@ -113,6 +127,9 @@
 	icon_state = "rwindow_grille_pane_fire"
 	firelocks = TRUE
 
+/obj/spawner/window/reinforced/tinted/firelocks/transparent
+	firelocks_use_glass = TRUE
+
 /obj/spawner/window/reinforced/tinted/full
 	icon_state = "rwindow_grille_full"
 	full_window = TRUE
@@ -121,6 +138,8 @@
 	icon_state = "rwindow_grille_full_fire"
 	firelocks = TRUE
 
+/obj/spawner/window/reinforced/tinted/full/firelocks/transparent
+	firelocks_use_glass = TRUE
 
 /obj/spawner/window/borosillicate
 	icon_state = "phoron_grille_pane"
@@ -131,13 +150,18 @@
 	icon_state = "phoron_grille_pane_fire"
 	firelocks = TRUE
 
+/obj/spawner/window/borosillicate/firelocks/transparent
+	firelocks_use_glass = TRUE
+
 /obj/spawner/window/borosillicate/full
 	icon_state = "phoron_grille_full"
 	full_window = TRUE
 
 /obj/spawner/window/borosillicate/full/firelocks
-	icon_state = "phoron_grille_full"
 	firelocks = TRUE
+
+/obj/spawner/window/borosillicate/full/firelocks/transparent
+	firelocks_use_glass = TRUE
 
 /obj/spawner/window/borosillicate/reinforced
 	icon_state = "rphoron_grille_pane"
@@ -148,6 +172,9 @@
 	icon_state = "rphoron_grille_pane_fire"
 	firelocks = TRUE
 
+/obj/spawner/window/borosillicate/reinforced/firelocks/transparent
+	firelocks_use_glass = TRUE
+
 /obj/spawner/window/borosillicate/reinforced/full
 	icon_state = "rphoron_grille_full"
 	full_window = TRUE
@@ -155,6 +182,9 @@
 /obj/spawner/window/borosillicate/reinforced/full/firelocks
 	icon_state = "rphoron_grille_full_fire"
 	firelocks = TRUE
+
+/obj/spawner/window/borosillicate/reinforced/full/firelocks/transparent
+	firelocks_use_glass = TRUE
 
 /**
  * * Implicitly full windows
@@ -165,40 +195,47 @@
 
 /obj/spawner/window/low_wall/borosillicate
 	icon_state = "phoron_grille_full"
-	window_pane_path = /obj/structure/window/phoronbasic
 	window_full_path = /obj/structure/window/phoronbasic/full
 
 /obj/spawner/window/low_wall/borosillicate/firelocks
-	icon_state = "phoron_grille_full"
 	firelocks = TRUE
+
+/obj/spawner/window/low_wall/borosillicate/firelocks/transparent
+	firelocks_use_glass = TRUE
 
 /obj/spawner/window/low_wall/borosillicate/reinforced
 	icon_state = "rphoron_grille_full"
-	window_pane_path = /obj/structure/window/phoronreinforced
 	window_full_path = /obj/structure/window/phoronreinforced/full
 
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks
 	icon_state = "rphoron_grille_full_fire"
 	firelocks = TRUE
 
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks/transparent
+	firelocks_use_glass = TRUE
+
 /obj/spawner/window/low_wall/reinforced
 	icon_state = "rwindow_grille_full"
-	window_pane_path = /obj/structure/window/reinforced
 	window_full_path = /obj/structure/window/reinforced/full
 
 /obj/spawner/window/low_wall/reinforced/firelocks
 	icon_state = "rwindow_grille_full_fire"
 	firelocks = TRUE
 
+/obj/spawner/window/low_wall/reinforced/firelocks/transparent
+	firelocks_use_glass = TRUE
+
 /obj/spawner/window/low_wall/reinforced/tinted
 	icon_state = "rwindow_grille_full"
 	full_window = TRUE
-	window_pane_path = /obj/structure/window/reinforced/tinted
 	window_full_path = /obj/structure/window/reinforced/tinted/full
 
 /obj/spawner/window/low_wall/reinforced/tinted/firelocks
 	icon_state = "rwindow_grille_full_fire"
 	firelocks = TRUE
+
+/obj/spawner/window/low_wall/reinforced/tinted/firelocks/transparent
+	firelocks_use_glass = TRUE
 
 /obj/spawner/window/low_wall/reinforced/electrochromic
 	icon_state = "rwindow_grille_full"
@@ -209,6 +246,9 @@
 	icon_state = "rwindow_grille_full_fire"
 	firelocks = TRUE
 
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks/transparent
+	firelocks_use_glass = TRUE
+
 /obj/spawner/window/low_wall
 	icon_state = "window_grille_full"
 
@@ -216,7 +256,13 @@
 	icon_state = "window_grille_full_fire"
 	firelocks = TRUE
 
+/obj/spawner/window/low_wall/firelocks/transparent
+	firelocks_use_glass = TRUE
+
 /obj/spawner/window/low_wall/nogrille/firelocks
 	icon_state = "window_grille_full"
 	spawn_grille = FALSE
 	firelocks = TRUE
+
+/obj/spawner/window/low_wall/nogrille/firelocks/transparent
+	firelocks_use_glass = TRUE

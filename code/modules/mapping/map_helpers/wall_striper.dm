@@ -1,3 +1,6 @@
+/**
+ * Used to stripe structural tiles (walls, low-walls, etc) fully as needed.
+ */
 /obj/map_helper/wall_striper
 	name = "stripe of paint"
 	// TODO: resprite this and put it in helper icons folder
@@ -32,7 +35,7 @@
 			did_anything = TRUE
 
 	if(!did_anything)
-		WARNING("Redundant paint helper found at [audit_loc()]")
+		stack_trace("Redundant paint helper found at [audit_loc()]")
 
 	qdel(src)
 

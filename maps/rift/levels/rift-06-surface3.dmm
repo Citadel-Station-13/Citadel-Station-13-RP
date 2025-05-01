@@ -18940,11 +18940,9 @@
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar_backroom)
 "eYG" = (
-/obj/structure/cable/cyan{
-	icon_state = "1-2"
-	},
 /obj/map_helper/wall_painter/black,
 /obj/map_helper/wall_painter/silver,
+/obj/map_helper/wall_striper/black,
 /turf/simulated/wall/rshull,
 /area/shuttle/oldcentury)
 "eZd" = (
@@ -23946,11 +23944,6 @@
 /obj/item/floor_painter,
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar_backroom)
-"nMn" = (
-/obj/map_helper/wall_painter/black,
-/obj/map_helper/wall_painter/silver,
-/turf/simulated/wall/rshull,
-/area/shuttle/oldcentury)
 "nMD" = (
 /obj/structure/closet/secure_closet/pilot,
 /obj/machinery/light,
@@ -24937,22 +24930,6 @@
 "pJa" = (
 /turf/simulated/wall/prepainted/civilian,
 /area/crew_quarters/barrestroom)
-"pJi" = (
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 8;
-	icon_state = "shutter0";
-	id = "arv_check_shutter";
-	name = "Arrivals Checkpoint Shutter";
-	opacity = 0
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_painter/darkred,
-/turf/simulated/floor/plating,
-/area/security/checkpoint2)
 "pKp" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
@@ -33901,7 +33878,7 @@ rjP
 hDB
 uyX
 fYJ
-nMn
+pTC
 kcm
 gaQ
 qcX
@@ -43867,7 +43844,7 @@ aEz
 aET
 iLp
 vLJ
-pJi
+iLp
 wuI
 wuI
 oqe

@@ -632,11 +632,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/dock2)
-"abS" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/turf/simulated/floor/plating,
-/area/tradeport/pads)
 "abU" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
@@ -2855,10 +2850,6 @@
 	icon_state = "1-2"
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/structure/window/reinforced/polarized{
-	dir = 1;
-	id = "med_office"
-	},
 /turf/simulated/floor/tiled/white,
 /area/sector/nebula_tradeport/medical/public)
 "ahH" = (
@@ -19755,13 +19746,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/tradeport/cafeteria)
-"brN" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/structure/window/reinforced/polarized{
-	id = "scoophead_office"
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/scoophead/cockpit)
 "bsc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -20192,7 +20176,6 @@
 "czU" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead/engineering)
 "cAq" = (
@@ -20200,7 +20183,6 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead/engineering)
 "cAr" = (
@@ -20595,14 +20577,6 @@
 /obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/plating,
 /area/tradeport/commons)
-"dBY" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/structure/window/reinforced/polarized{
-	dir = 1;
-	id = "scoophead_room"
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/scoophead/cockpit)
 "dCd" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
@@ -21256,10 +21230,6 @@
 /area/sector/nebula_tradeport/motel)
 "eSH" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/structure/window/reinforced/polarized{
-	dir = 1;
-	id = "med_office"
-	},
 /turf/simulated/floor/tiled/white,
 /area/sector/nebula_tradeport/medical/public)
 "eXQ" = (
@@ -21333,14 +21303,6 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
-"fhh" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/structure/window/reinforced/polarized{
-	dir = 1;
-	id = "scoophead_office"
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/scoophead/cockpit)
 "fir" = (
 /obj/machinery/computer/ship/sensors,
 /obj/effect/floor_decal/techfloor{
@@ -22107,10 +22069,6 @@
 	id = "scoophead_office"
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/structure/window/reinforced/polarized{
-	dir = 1;
-	id = "scoophead_office"
-	},
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead/cockpit)
 "hyI" = (
@@ -54828,7 +54786,7 @@ crT
 rai
 luK
 eDY
-dBY
+vkf
 aDh
 aDh
 awV
@@ -55022,7 +54980,7 @@ dze
 pfn
 veG
 tBc
-dBY
+vkf
 aDh
 aDh
 awV
@@ -55404,7 +55362,7 @@ aDh
 aDh
 aDh
 ygc
-brN
+vkf
 bEV
 bCt
 wux
@@ -55490,7 +55448,7 @@ ahH
 aHY
 aHY
 aEG
-abS
+aYn
 akf
 akf
 akf
@@ -55598,11 +55556,11 @@ aDh
 aDh
 aDh
 ygc
-brN
+vkf
 iPk
 uFC
 oBT
-fhh
+vkf
 ygc
 aDh
 aDh
@@ -55792,11 +55750,11 @@ aDh
 aDh
 aDh
 ygc
-brN
+vkf
 bEV
 whD
 joQ
-fhh
+vkf
 ygc
 aDh
 aDh

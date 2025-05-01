@@ -20700,7 +20700,6 @@
 "mJx" = (
 /obj/map_helper/wall_painter/darkred,
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/wall_painter/darkred,
 /turf/simulated/floor/plating,
 /area/security/hallway)
 "mKp" = (
