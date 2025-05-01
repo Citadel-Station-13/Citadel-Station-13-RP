@@ -8,6 +8,12 @@
 	icon = 'icons/clothing/uniform/workwear/jumpskirt/jumpskirt_black.dmi'
 	icon_state = "black_skirt"
 
+/obj/item/clothing/under/color/blackjumpskirt
+	name = "black jumpskirt"
+	desc = "A slimming black jumpskirt."
+	icon = 'icons/clothing/uniform/workwear/jumpskirt/blackjumpskirt.dmi'
+	icon_state = "blackjumpskirt"
+
 /obj/item/clothing/under/color/blue_skirt
 	name = "blue pleated skirt"
 	icon = 'icons/clothing/uniform/workwear/jumpskirt/jumpskirt_blue.dmi'

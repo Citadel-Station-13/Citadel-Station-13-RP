@@ -23,6 +23,12 @@
 	icon = 'icons/clothing/uniform/workwear/jumpsuit/jumpsuit_black.dmi'
 	icon_state = "black"
 
+/obj/item/clothing/under/color/blackf
+	name = "feminine black jumpsuit"
+	desc = "It's very smart and in a ladies size!"
+	icon = 'icons/clothing/uniform/workwear/jumpsuit/blackf.dmi'
+	icon_state = "blackf"
+
 /obj/item/clothing/under/color/blue
 	name = "blue jumpsuit"
 	icon = 'icons/clothing/uniform/workwear/jumpsuit/jumpsuit_blue.dmi'

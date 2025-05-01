@@ -21,3 +21,20 @@
 	desc = "A piece of cloth wrapped around the waist."
 	icon = 'icons/clothing/uniform/casual/loincloth.dmi'
 	icon_state = "loincloth"
+
+/obj/item/clothing/under/psyche
+	name = "psychedelic jumpsuit"
+	desc = "Groovy!"
+	icon = 'icons/clothing/uniform/casual/psyche.dmi'
+	icon_state = "psyche"
+
+/obj/item/clothing/under/color/rainbow
+	name = "rainbow jumpsuit"
+	desc = "A multi-colored jumpsuit."
+	icon = 'icons/clothing/uniform/casual/rainbow_jumpsuit.dmi'
+	icon_state = "rainbow"
+
+/obj/item/clothing/under/color/rainbow_skirt
+	name = "rainbow pleated skirt"
+	icon = 'icons/clothing/uniform/casual/rainbow_skirt.dmi'
+	icon_state = "rainbow_skirt"

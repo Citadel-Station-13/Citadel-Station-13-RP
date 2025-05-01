@@ -76,11 +76,6 @@
 	desc = "Johnny~~"
 	icon_state = "johnny"
 
-/obj/item/clothing/under/color/rainbow
-	name = "rainbow jumpsuit"
-	desc = "A multi-colored jumpsuit."
-	icon_state = "rainbow"
-
 /obj/item/clothing/under/psysuit
 	name = "dark undersuit"
 	desc = "A thick, layered grey undersuit lined with power cables. Feels a little like wearing an electrical storm."
