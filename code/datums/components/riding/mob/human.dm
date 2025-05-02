@@ -11,6 +11,12 @@
 /datum/component/riding_filter/mob/human/check_mount_attempt(mob/M, buckle_flags, mob/user, semantic)
 	if(!ishuman(M))
 		return FALSE		// nah
+	var/mob/living/carbon/human/H = parent
+	var/saddle = H.item_by_slot_id(SLOT_ID_BACK)
+	if(saddle && istype(saddle, /obj/item/storage/backpack/saddlebag_common))
+		rider_offhands_needed_piggyback = FALSE
+	else
+		rider_offhands_needed_piggyback = TRUE
 	return ..()
 
 /datum/component/riding_filter/mob/human/rider_offhands_needed(mob/rider, semantic)
