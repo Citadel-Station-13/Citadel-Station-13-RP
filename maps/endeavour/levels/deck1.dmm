@@ -12506,10 +12506,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/exploration/pilot_prep)
-"jag" = (
-/obj/landmark/spawnpoint/job/field_medic,
-/turf/simulated/floor/tiled/white,
-/area/exploration/medical)
 "jbd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -15922,7 +15918,6 @@
 /obj/structure/sink{
 	pixel_y = 22
 	},
-/obj/landmark/spawnpoint/job/field_medic,
 /turf/simulated/floor/tiled/white,
 /area/exploration/medical)
 "lth" = (
@@ -38302,7 +38297,7 @@ ePJ
 aHh
 aGL
 mEg
-jag
+mEg
 mEg
 lNd
 saq

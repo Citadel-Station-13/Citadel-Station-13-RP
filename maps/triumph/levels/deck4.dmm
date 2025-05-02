@@ -806,7 +806,6 @@
 	pixel_y = -37
 	},
 /obj/structure/table/bench/steel,
-/obj/landmark/spawnpoint/job/field_medic,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
@@ -9841,6 +9840,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
+/obj,
 /turf/simulated/floor/tiled,
 /area/exploration/pathfinder_office)
 "gLA" = (
@@ -24808,11 +24808,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/exploration/showers)
-"riK" = (
-/obj/structure/table/bench/steel,
-/obj/landmark/spawnpoint/job/field_medic,
-/turf/simulated/floor/tiled,
-/area/exploration/explorer_prep)
 "rju" = (
 /obj/machinery/camera/network/exploration{
 	dir = 4
@@ -49603,7 +49598,7 @@ nkp
 nwQ
 rdz
 ili
-riK
+mxK
 iPW
 rqs
 lEF
@@ -49991,7 +49986,7 @@ nkp
 gGO
 rdz
 ili
-riK
+mxK
 iPW
 wAB
 scN

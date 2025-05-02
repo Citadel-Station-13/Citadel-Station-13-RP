@@ -5869,7 +5869,6 @@
 /obj/machinery/light/no_nightshift{
 	dir = 4
 	},
-/obj/landmark/spawnpoint/job/field_medic,
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/explorer_prep)
 "un" = (
@@ -14049,16 +14048,6 @@
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck4)
-"VS" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/paleblue/border{
-	dir = 1
-	},
-/obj/landmark/spawnpoint/job/field_medic,
-/turf/simulated/floor/tiled/steel_grid,
-/area/exploration/explorer_prep)
 "VV" = (
 /obj/structure/girder/reinforced,
 /obj/item/barrier_tape_segment/engineering,
@@ -22218,7 +22207,7 @@ FE
 Xw
 gv
 dY
-VS
+nY
 Nh
 oK
 DE
@@ -22412,7 +22401,7 @@ gO
 xV
 gv
 AX
-VS
+nY
 IC
 ac
 lm

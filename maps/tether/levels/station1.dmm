@@ -10596,7 +10596,6 @@
 	pixel_y = -32
 	},
 /obj/machinery/light,
-/obj/landmark/spawnpoint/job/field_medic,
 /turf/simulated/floor/wood,
 /area/tether/exploration/crew)
 "vU" = (
@@ -14003,7 +14002,6 @@
 /area/shuttle/medivac/engines)
 "CL" = (
 /obj/item/stool/padded,
-/obj/landmark/spawnpoint/job/field_medic,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
 "CM" = (
@@ -15788,7 +15786,6 @@
 /area/maintenance/abandonedlibrary)
 "Gi" = (
 /obj/structure/table/bench/standard,
-/obj/landmark/spawnpoint/job/field_medic,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
 "Gk" = (
@@ -19365,7 +19362,6 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 4
 	},
-/obj/landmark/spawnpoint/job/field_medic,
 /turf/simulated/floor/wood,
 /area/tether/exploration/crew)
 "NM" = (
