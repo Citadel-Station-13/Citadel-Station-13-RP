@@ -12,7 +12,7 @@
 /datum/uplink_item/item/grenades/anti_photon_singular
 	name = "1xPhoton Disruption Grenade"
 	item_cost = 2
-	path = /obj/item/grenade/anti_photon
+	path = /obj/item/grenade/simple/antiphoton
 
 /datum/uplink_item/item/grenades/metalfoam
 	name = "7xMetal Foam Grenades"
@@ -22,7 +22,7 @@
 /datum/uplink_item/item/grenades/metalfoam_singular
 	name = "1xMetal Foam Grenade"
 	item_cost = 2
-	path = /obj/item/grenade/chem_grenade/metalfoam
+	path = /obj/item/grenade/simple/chemical/metalfoam
 
 /datum/uplink_item/item/grenades/smoke
 	name = "7xSmoke Grenades"

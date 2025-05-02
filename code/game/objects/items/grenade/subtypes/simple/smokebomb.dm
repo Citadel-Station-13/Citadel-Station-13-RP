@@ -24,9 +24,10 @@
 	..()
 	playsound(location, 'sound/effects/smoke.ogg', 50, 1, -3)
 	src.smoke.set_up(10, 0, location)
-	for(var/i = 1 to smoke_strength)
-		src.smoke.start(smoke_color)
-		sleep(10)
+	spawn()
+		for(var/i = 1 to smoke_strength)
+			src.smoke.start(smoke_color)
+			sleep(10)
 
 /obj/item/grenade/simple/smoke/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I,/obj/item/multitool))

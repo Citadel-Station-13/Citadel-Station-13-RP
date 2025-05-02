@@ -12,8 +12,8 @@
 	if(!..())
 		return FALSE
 
-	if(holder && istype(holder.loc,/obj/item/grenade/chem_grenade))
-		var/obj/item/grenade/chem_grenade/grenade = holder.loc
+	if(holder && istype(holder.loc,/obj/item/grenade/simple/chemical))
+		var/obj/item/grenade/simple/chemical/grenade = holder.loc
 		grenade.detonate()
 	else
 		var/turf/location = get_turf(loc)

@@ -192,9 +192,9 @@
 /area/submap/virgo2/Rockybase)
 "aM" = (
 /obj/structure/table/standard,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
+/obj/item/grenade/simple/chemical/cleaner,
+/obj/item/grenade/simple/chemical/cleaner,
+/obj/item/grenade/simple/chemical/cleaner,
 /obj/machinery/light{
 	dir = 4
 	},

@@ -481,7 +481,7 @@
 	var/fire_distance = 10
 
 	charges = list(
-		list("cleaner grenade",   "cleaner grenade",   /obj/item/grenade/chem_grenade/cleaner,  9),
+		list("cleaner grenade",   "cleaner grenade",   /obj/item/grenade/simple/chemical/cleaner,  9),
 		)
 
 /obj/item/hardsuit_module/cleaner_launcher/accepts_item(var/obj/item/input_device, var/mob/living/user)

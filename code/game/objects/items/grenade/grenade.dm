@@ -18,7 +18,6 @@
 	var/active = 0
 	var/det_time = 50
 	var/loadable = TRUE
-	var/arm_sound = 'sound/weapons/armbomb.ogg'
 
 /obj/item/grenade/examine(mob/user, dist)
 	. = ..()
@@ -28,33 +27,12 @@
 	if(det_time == null)
 		. += "<span class = 'danger'>The [src] is set for instant detonation.</span>"
 
-/obj/item/grenade/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/grenade/on_attack_self(datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return
-	if(!active)
-		if(clown_check(user))
-			to_chat(user, "<span class='warning'>You prime \the [name]! [det_time/10] seconds!</span>")
-
-			activate(user)
-			add_fingerprint(user)
-			if(iscarbon(user))
-				var/mob/living/carbon/C = user
-				C.throw_mode_on()
-
-/obj/item/grenade/proc/activate(mob/user as mob)
-	if(active)
-		return
-
-	if(user)
-		msg_admin_attack("[key_name_admin(user)] primed \a [src.name]")
-
-	icon_state = initial(icon_state) + "_active"
-	active = 1
-	playsound(loc, arm_sound, 75, 1, -3)
-
-	spawn(det_time)
-		detonate()
+	if(activate_inhand(e_args))
+		return CLICKCHAIN_DID_SOMETHING
 
 /obj/item/grenade/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_screwdriver())
@@ -73,8 +51,9 @@
 				to_chat(user, "<span class='notice'>You set the [name] for instant detonation.</span>")
 		add_fingerprint(user)
 	..()
-	return
 
 /obj/item/grenade/proc/activate_inhand(datum/event_args/actor/actor)
+	on_activate_inhand(actor)
 
 /obj/item/grenade/proc/on_activate_inhand(datum/event_args/actor/actor)
+	return

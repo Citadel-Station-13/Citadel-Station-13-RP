@@ -269,7 +269,7 @@
 	name = "box of anti-photon grenades"
 	desc = "A box containing 7 experimental photon disruption grenades."
 	icon_state = "flashbang"
-	starts_with = list(/obj/item/grenade/anti_photon = 7)
+	starts_with = list(/obj/item/grenade/simple/antiphoton = 7)
 	drop_sound = 'sound/items/drop/ammobox.ogg'
 	pickup_sound = 'sound/items/pickup/ammobox.ogg'
 
@@ -293,13 +293,13 @@
 	name = "box of metal foam grenades."
 	desc = "A box containing 7 metal foam grenades."
 	icon_state = "flashbang"
-	starts_with = list(/obj/item/grenade/chem_grenade/metalfoam = 7)
+	starts_with = list(/obj/item/grenade/simple/chemical/metalfoam = 7)
 
 /obj/item/storage/box/teargas
 	name = "box of teargas grenades"
 	desc = "A box containing 7 teargas grenades."
 	icon_state = "flashbang"
-	starts_with = list(/obj/item/grenade/chem_grenade/teargas = 7)
+	starts_with = list(/obj/item/grenade/simple/chemical/teargas = 7)
 
 /obj/item/storage/box/flare
 	name = "box of flares"

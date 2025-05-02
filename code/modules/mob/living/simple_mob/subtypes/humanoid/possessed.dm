@@ -53,13 +53,13 @@
 // Will eventually leave a full corpse with an activated RIG on it. But not yet.
 
 //Miasma Cloud "Item"
-/obj/item/grenade/chem_grenade/miasma
+/obj/item/grenade/simple/chemical/miasma
 	name = "Miasma Bomb"
 	desc = "You probably shouldn't be able to see this."
 	stage = 2
 	path = 1
 
-/obj/item/grenade/chem_grenade/miasma/Initialize(mapload)
+/obj/item/grenade/simple/chemical/miasma/Initialize(mapload)
 	. = ..()
 	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_containers/glass/beaker/B2 = new(src)
@@ -111,7 +111,7 @@
 	else
 		new rig2(droploc)
 	new /obj/effect/decal/remains/human(droploc)
-	new /obj/item/grenade/chem_grenade/miasma(droploc)
+	new /obj/item/grenade/simple/chemical/miasma(droploc)
 	/*Broken smoke spawn code. Above line is a bandaid.
 	var/datum/reagent_holder/R = new/datum/reagent_holder(30)
 	reagents.add_reagent("miasma", 30)

@@ -114,7 +114,7 @@
 	fire_force = 15
 
 	charges = list(
-		list("PARA disruptor grenade",  "PARA disruptor grenade",  /obj/item/grenade/chem_grenade/holy,  6)
+		list("PARA disruptor grenade",  "PARA disruptor grenade",  /obj/item/grenade/simple/chemical/holy,  6)
 		)
 
 /obj/item/hardsuit_module/mounted

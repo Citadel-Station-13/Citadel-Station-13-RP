@@ -1,6 +1,6 @@
 /datum/controller/subsystem/spatial_effects/proc/run_concussion_blast(turf/location, radius)
 	// -- book-keeping --
-	log_effect_invocation(THIS_PROC_TYPE, args)
+	log_effect_invocation(THIS_PROC_TYPE_STR, args)
 	// --     end      --
 
 	if(is_below_sound_pressure(location))

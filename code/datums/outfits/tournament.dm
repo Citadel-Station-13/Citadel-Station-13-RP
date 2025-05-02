@@ -40,8 +40,8 @@
 	back = /obj/item/storage/backpack
 	r_hand = /obj/item/mop
 	l_hand = /obj/item/reagent_containers/glass/bucket
-	l_pocket = /obj/item/grenade/chem_grenade/cleaner
-	r_pocket = /obj/item/grenade/chem_grenade/cleaner
+	l_pocket = /obj/item/grenade/simple/chemical/cleaner
+	r_pocket = /obj/item/grenade/simple/chemical/cleaner
 	backpack_contents = list(/obj/item/stack/tile/floor = 6)
 
 /datum/outfit/tournament_gear/janitor/post_equip(var/mob/living/carbon/human/H)

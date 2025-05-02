@@ -16,10 +16,10 @@
 	var/spread_range = 7
 	loadable = null
 
-/obj/item/grenade/simple/explosive/on_detonate(turf_location)
+/obj/item/grenade/simple/explosive/on_detonate(turf/location)
 	..()
 	shrapnel_explosion(num_fragments, spread_range, fragment_types)
-	explosion(location, ex_size_1, ex_size_2, ex_size_3, ex_size_4)
+	explosion(location, ex_size_1, ex_size_2, ex_size_3, ex_size_flash)
 
 // Waaaaay more pellets
 /obj/item/grenade/simple/explosive/frag
@@ -84,9 +84,7 @@
 	fragment_types = list(/obj/projectile/bullet/pellet/fragment/weak, /obj/projectile/bullet/pellet/fragment/weak, /obj/projectile/bullet/pellet/fragment/weak, /obj/projectile/bullet/pellet/fragment/strong, /obj/projectile/bullet/pellet/fragment/strong)
 	num_fragments = 30
 	spread_range = 5
-	explosion_size = 2
 	det_time = 20
-	range = 3
 
 //Ashlander Frag Grenade
 /obj/item/grenade/simple/explosive/ashlander
@@ -100,7 +98,6 @@
 	fragment_types = list(/obj/projectile/bullet/pellet/fragment/weak, /obj/projectile/bullet/pellet/fragment/weak, /obj/projectile/bullet/pellet/fragment/strong)
 	num_fragments = 5
 	spread_range = 3
-	explosion_size = 1
 	det_time = 40
 
 /obj/item/grenade/simple/explosive/ashlander/fragmentation
