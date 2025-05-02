@@ -13788,11 +13788,11 @@
 /obj/structure/window/reinforced/survival_pod{
 	dir = 8
 	},
-/obj/item/clothing/head/helmet/space/plasman/sec/hos/alt2{
+/obj/item/clothing/head/helmet/space/void/plasman/sec/hos/alt2{
 	name = "Harbinger Helmet";
 	desc = "A helmet of extremely odd design, it seems custom-made for a species you've never seen before."
 	},
-/obj/item/clothing/suit/space/plasman/sec/hos{
+/obj/item/clothing/suit/space/void/plasman/sec/hos{
 	name = "Harbingers Shield";
 	desc = "A unique suit designed specifically for one wearer. It looks highly ordained and armored."
 	},

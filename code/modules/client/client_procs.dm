@@ -206,13 +206,11 @@
 	// log to player lookup
 	update_lookup_in_db()
 
-	//* Resolve storage datums
-	// resolve persistent data
+	//* Resolve storage datums *//
+
 	persistent = resolve_client_data(ckey, key)
-	//* Resolve database data
 	player = resolve_player_data(ckey, key)
 	player.log_connect()
-	//* Resolve preferences
 	preferences = SSpreferences.resolve_game_preferences(key, ckey)
 	//? WARNING: SHITCODE ALERT ?//
 	// we wait until it inits to do this
@@ -222,6 +220,7 @@
 	//? END ?//
 
 	//* Create interface UI *//
+
 	if(byond_version >= 516)
 		winset(src, null, list("browser-options" = "find,refresh,byondstorage"))
 
@@ -603,4 +602,3 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 
 /client/proc/AnnouncePR(announcement)
 	to_chat(src, announcement)
-

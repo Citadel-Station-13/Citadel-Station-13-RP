@@ -10,7 +10,7 @@
 	#define COMPONENT_THROW_HIT_NEVERMIND				(1<<0)
 	/// pierce through.
 	#define COMPONENT_THROW_HIT_PIERCE					(1<<1)
-	/// completely terminate throw silently immediately. Use if you're deleting the atom.
+	/// completely terminate throw immediately and silently. Use if you're deleting the atom.
 	#define COMPONENT_THROW_HIT_TERMINATE				(1<<2)
 
 /// from /atom/movable/proc/_throw_finalize: (landed_on, thrownthing)
@@ -20,7 +20,7 @@
 // This set of returns can be for both of the above!
 	/// cancel further actions
 	#define COMPONENT_THROW_LANDING_NEVERMIND			(1<<0)
-	/// completely terminate throw silently immediately. Use if you're deleting the atom.
+	/// completely terminate throw immediately and silently. Use if you're deleting the atom.
 	#define COMPONENT_THROW_LANDING_TERMINATE			(1<<2)
 
 /// called in subsystem_throw and emulated_throw before the datum is created with (target, range, speed, flags, thrower, cb_on_hit, cb_on_land, emulated); you can stop the throw at this point.

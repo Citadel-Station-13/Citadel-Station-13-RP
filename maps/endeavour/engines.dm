@@ -8,13 +8,14 @@
 	desc = "R-UST Fusion Tokamak Engine"
 	suffix = "rust.dmm"
 	display_name = list("Budget Star", "Bane of Synthetics", "Glowy Field", "Funny Spinny EM Field", "Protean Rarity Enforcement")
-/*
+
 /datum/map_template/engine/endeavour/supermatter
 	name = "ProcEngine_Endeavour_SME"
 	desc = "Old Faithful Supermatter"
 	suffix = "sme.dmm"
-	display_name = list("Angry Rock", "The Forbidden Rock Candy", "Death Crystal", "Spicy Crystal")
+	display_name = list("Angry Rock", "The Forbidden Rock Candy", "Death Crystal", "Spicy Crystal", "Radioactive Spill")
 
+/*
 /datum/map_template/engine/endeavour/burnchamber
 	name = "ProcEngine_endeavour_Burn"
 	desc = "Burn Chamber Engine"

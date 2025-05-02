@@ -47,7 +47,6 @@
 	use_empty = TRUE
 	use_single = TRUE
 
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/magnetic/nt_protomag/sidearm, /nt_protomag/sidearm, "nt-magpistol")
 /obj/item/gun/projectile/ballistic/magnetic/nt_protomag/sidearm
 	name = "protomag sidearm"
 	icon_state = "pistol-map"
@@ -80,6 +79,10 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/magnetic/nt
 
 	legacy_discharged_fire_sound = 'sound/weapons/gunshot/gunshot_pistol.ogg'
 
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/magnetic/nt_protomag/sidearm/no_pin, /nt_protomag/sidearm, "nt-magpistol")
+/obj/item/gun/projectile/ballistic/magnetic/nt_protomag/sidearm/no_pin
+	pin = null
+
 //* Rifle *//
 
 /datum/gun_item_renderer/overlays/nt_protomag/rifle
@@ -92,7 +95,6 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/magnetic/nt
 	use_empty = TRUE
 	use_single = TRUE
 
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/magnetic/nt_protomag/rifle, /nt_protomag/rifle, "nt-magrifle")
 /obj/item/gun/projectile/ballistic/magnetic/nt_protomag/rifle
 	name = "protomag rifle"
 	icon_state = "rifle-map"
@@ -126,3 +128,7 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/magnetic/nt
 	)
 
 	legacy_discharged_fire_sound = 'sound/weapons/gunshot/gunshot_strong.ogg'
+
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/magnetic/nt_protomag/rifle, /nt_protomag/rifle, "nt-magrifle")
+/obj/item/gun/projectile/ballistic/magnetic/nt_protomag/rifle/no_pin
+	pin = null

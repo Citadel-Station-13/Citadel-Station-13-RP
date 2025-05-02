@@ -724,7 +724,7 @@
 			Tag:
 			<A href='?src=\ref[src];tag=1'>Set tag</A><BR>
 			</TT>"}
-	user << browse(dat, "window=radio")
+	user << browse(HTML_SKELETON(dat), "window=radio")
 	onclose(user, "radio")
 	return
 

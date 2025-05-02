@@ -291,7 +291,7 @@
 		if(!(L.language_flags & LANGUAGE_NONGLOBAL))
 			dat += "<b>[L.name] ([get_language_prefix()][L.key])</b><br/>[L.desc]<br/><br/>"
 
-	src << browse(dat, "window=checklanguage")
+	src << browse(HTML_SKELETON(dat), "window=checklanguage")
 	return
 
 /mob/living/check_languages()
@@ -309,7 +309,7 @@
 			else
 				dat += "<b>[L.name] ([get_language_prefix()][L.key])</b> - cannot speak!<br/>[L.desc]<br/><br/>"
 
-	src << browse(dat, "window=checklanguage")
+	src << browse(HTML_SKELETON(dat), "window=checklanguage")
 
 /mob/living/Topic(href, href_list)
 	if(href_list["default_lang"])

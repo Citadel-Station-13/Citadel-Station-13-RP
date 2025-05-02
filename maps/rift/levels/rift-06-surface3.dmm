@@ -2290,9 +2290,6 @@
 	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
-	icon_state = "2-8"
-	},
-/obj/structure/cable/green{
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -13697,7 +13694,6 @@
 /obj/machinery/camera/network/command{
 	dir = 8
 	},
-/obj/structure/cable/green,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)
 "aQV" = (
@@ -16878,6 +16874,7 @@
 	icon_state = "4-8"
 	},
 /obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/effect/paint/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "btC" = (
@@ -17423,12 +17420,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/secondary/docking_hallway)
 "cqj" = (
-/obj/effect/floor_decal/borderfloor/corner{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
@@ -17444,6 +17435,12 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 10
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
@@ -18468,8 +18465,6 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "evR" = (
-/obj/effect/floor_decal/borderfloor/corner,
-/obj/effect/floor_decal/corner/lightgrey/bordercorner,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -18481,6 +18476,14 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lightgrey/border,
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 9
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
@@ -18515,6 +18518,7 @@
 /area/maintenance/commandmaint)
 "eyE" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/crew_quarters/kitchen)
 "eyO" = (
@@ -19556,6 +19560,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/floor_decal/borderfloor/corner2,
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "fVL" = (
@@ -19854,6 +19860,12 @@
 "guk" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lime/border,
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/lime/bordercorner2{
+	dir = 9
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "guB" = (
@@ -20283,13 +20295,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/bar)
-"hoq" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/structure/cable/green{
-	icon_state = "2-8"
-	},
-/turf/simulated/floor/tiled/white,
-/area/shuttle/emt/general)
 "hoH" = (
 /obj/machinery/door/airlock/exploration{
 	locked = 1;
@@ -21712,12 +21717,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "jIg" = (
-/obj/effect/floor_decal/borderfloor/corner{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner{
-	dir = 1
-	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -21727,6 +21726,12 @@
 /obj/structure/disposalpipe/segment{
 	dir = 2;
 	icon_state = "pipe-c"
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
@@ -22353,6 +22358,7 @@
 	icon_state = "4-8"
 	},
 /obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/effect/paint/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "kQV" = (
@@ -24084,6 +24090,8 @@
 /obj/effect/floor_decal/corner/lime/border{
 	dir = 6
 	},
+/obj/effect/floor_decal/borderfloor/corner2,
+/obj/effect/floor_decal/corner/lime/bordercorner2,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "ocs" = (
@@ -25731,8 +25739,6 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/cockpit)
 "rtY" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/lightgrey/border,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -25962,10 +25968,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_three)
-"rOT" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
-/turf/simulated/floor/plating,
-/area/crew_quarters/bar)
 "rQR" = (
 /obj/structure/railing{
 	dir = 4
@@ -27463,7 +27465,6 @@
 /obj/effect/floor_decal/spline/plain,
 /obj/structure/window/reinforced,
 /obj/structure/reagent_dispensers/water_cooler/full,
-/obj/item/reagent_containers/glass/cooler_bottle,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "vam" = (
@@ -28980,12 +28981,6 @@
 /obj/machinery/holopad/ship,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
-"xmt" = (
-/obj/structure/bed/chair/sofa/black/left{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "xmB" = (
 /obj/structure/cable/pink{
 	icon_state = "1-8"
@@ -39596,7 +39591,7 @@ aOi
 aOi
 acH
 acH
-xmt
+acH
 aOi
 aOi
 aOi
@@ -42516,7 +42511,7 @@ vaJ
 wZh
 ocP
 hnU
-rOT
+wZh
 brP
 kQm
 exk
@@ -48297,7 +48292,7 @@ uOx
 cxo
 boG
 aIw
-hoq
+ymh
 evu
 pOS
 rRF

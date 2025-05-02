@@ -1,6 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+// todo: how to handle 'handled' state? we dont' want double-interactions if something 'consumes' the click.
+
 /// From base of obj/item/attack_self(): (/datum/event_args/actor/actor)
 #define COMSIG_ITEM_ACTIVATE_INHAND "item_activate_inhand"
 	#define RAISE_ITEM_ACTIVATE_INHAND_HANDLED (1<<0)

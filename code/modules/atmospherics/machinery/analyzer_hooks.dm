@@ -1,8 +1,9 @@
-/obj/proc/analyze_gases(var/atom/A, var/mob/user)
-	if(src != A)
-		user.visible_message("<span class='notice'>\The [user] has used \an [src] on \the [A]</span>")
+/obj/proc/analyze_gases(var/atom/A, var/mob/user, var/remote=FALSE, var/silent=FALSE)
+	if( (src != A) && (!silent) )
+		user.visible_message("<span class='notice'>\The [user] has analyzed \the [A] with \an [src].</span>")
 
-	A.add_fingerprint(user)
+	if(!remote)
+		A.add_fingerprint(user)
 	var/list/result = A.atmosanalyze(user)
 	if(result && result.len)
 		to_chat(user, "<span class='notice'>Results of the analysis[src == A ? "" : " of \the [A]"]</span>")
