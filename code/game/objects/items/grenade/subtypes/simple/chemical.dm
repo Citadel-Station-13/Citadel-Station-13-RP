@@ -241,7 +241,11 @@ S
 
 //* presets below *//
 
-/obj/item/grenade/simple/chemical/large
+/obj/item/grenade/simple/chemical/premade
+	secured = TRUE
+	wired = TRUE
+
+/obj/item/grenade/simple/chemical/premade/large
 	name = "large chem grenade"
 	desc = "An oversized grenade that affects a larger area."
 	icon_state = "large_grenade"
@@ -249,11 +253,9 @@ S
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3)
 	affected_area = 4
 
-/obj/item/grenade/simple/chemical/metalfoam
+/obj/item/grenade/simple/chemical/premade/metalfoam
 	name = "metal-foam grenade"
 	desc = "Used for emergency sealing of air breaches."
-	path = 1
-	stage = 2
 
 /obj/item/grenade/simple/chemical/metalfoam/Initialize(mapload)
 	. = ..()
@@ -270,11 +272,9 @@ S
 	beakers += B2
 	icon_state = initial(icon_state) +"_locked"
 
-/obj/item/grenade/simple/chemical/incendiary
+/obj/item/grenade/simple/chemical/premade/incendiary
 	name = "incendiary grenade"
 	desc = "Used for clearing rooms of living things."
-	path = 1
-	stage = 2
 	worth_intrinsic = 150
 
 /obj/item/grenade/simple/chemical/incendiary/Initialize(mapload)
@@ -294,11 +294,9 @@ S
 	beakers += B2
 	icon_state = initial(icon_state) +"_locked"
 
-/obj/item/grenade/simple/chemical/antiweed
+/obj/item/grenade/simple/chemical/premade/antiweed
 	name = "weedkiller grenade"
 	desc = "Used for purging large areas of invasive plant species. Contents under pressure. Do not directly inhale contents."
-	path = 1
-	stage = 2
 
 /obj/item/grenade/simple/chemical/antiweed/Initialize(mapload)
 	. = ..()
@@ -316,11 +314,9 @@ S
 	beakers += B2
 	icon_state = "grenade"
 
-/obj/item/grenade/simple/chemical/cleaner
+/obj/item/grenade/simple/chemical/premade/cleaner
 	name = "cleaner grenade"
 	desc = "BLAM!-brand foaming space cleaner. In a special applicator for rapid cleaning of wide areas."
-	stage = 2
-	path = 1
 
 /obj/item/grenade/simple/chemical/cleaner/Initialize(mapload)
 	. = ..()
@@ -337,11 +333,9 @@ S
 	beakers += B2
 	icon_state = initial(icon_state) +"_locked"
 
-/obj/item/grenade/simple/chemical/teargas
+/obj/item/grenade/simple/chemical/premade/teargas
 	name = "tear gas grenade"
 	desc = "Concentrated Capsaicin. Contents under pressure. Use with caution."
-	stage = 2
-	path = 1
 
 /obj/item/grenade/simple/chemical/teargas/Initialize(mapload)
 	. = ..()
@@ -360,11 +354,9 @@ S
 	beakers += B2
 	icon_state = initial(icon_state) +"_locked"
 
-/obj/item/grenade/simple/chemical/holy
+/obj/item/grenade/simple/chemical/premade/holy
 	name = "PARA disruptor grenade"
 	desc = "These modified PMD grenades utilize a similar formula to the standard cleaning grenade, with one important substitution: holy water."
-	stage = 2
-	path = 1
 
 /obj/item/grenade/simple/chemical/holy/Initialize(mapload)
 	. = ..()
@@ -382,11 +374,9 @@ S
 	beakers += B2
 	icon_state = initial(icon_state) +"_locked"
 
-/obj/item/grenade/simple/chemical/lube
+/obj/item/grenade/simple/chemical/premade/lube
 	name = "lubricant grenade"
 	desc = "Originally exported from Columbina, the popularity of this gag item quickly faded."
-	stage = 2
-	path = 1
 
 /obj/item/grenade/simple/chemical/lube/Initialize(mapload)
 	. = ..()
@@ -403,11 +393,9 @@ S
 	beakers += B2
 	icon_state = initial(icon_state) +"_locked"
 
-/obj/item/grenade/simple/chemical/lube_tactical
+/obj/item/grenade/simple/chemical/premade/lube_tactical
 	name = "tactical lubricant grenade"
 	desc = "Utilized by Cloumbina Commandos, this variant of the lubricant grenade delivers a more focused payload."
-	stage = 2
-	path = 1
 
 /obj/item/grenade/simple/chemical/lube_tactical/Initialize(mapload)
 	. = ..()
@@ -424,11 +412,9 @@ S
 	beakers += B2
 	icon_state = initial(icon_state) +"_locked"
 
-/obj/item/grenade/simple/chemical/chlorine_gas
+/obj/item/grenade/simple/chemical/premade/chlorine_gas
 	name = "chlorine gas grenade"
 	desc = "Chlorine is a powerful corrosive. When deployed in gas form it may often be used for area denial or clearing trenches."
-	stage = 2
-	path = 1
 
 /obj/item/grenade/simple/chemical/chlorine_gas/Initialize(mapload)
 	. = ..()
@@ -448,12 +434,10 @@ S
 
 //Nanite Cloud Warcrimes!!!
 
-/obj/item/grenade/simple/chemical/nanite_shredder
+/obj/item/grenade/simple/chemical/premade/nanite_shredder
 	name = "shredder nanite grenade"
 	desc = "Weaponized nanites are banned by all galactic major powers. On the frontier however there is little authority to stop wannabee \
 	Oppenheimers from making weapons such as this."
-	stage = 2
-	path = 1
 
 /obj/item/grenade/simple/chemical/nanite_shredder/Initialize(mapload)
 	. = ..()
@@ -471,12 +455,10 @@ S
 	beakers += B2
 	icon_state = initial(icon_state) +"_locked"
 
-/obj/item/grenade/simple/chemical/nanite_neurophage
+/obj/item/grenade/simple/chemical/premade/nanite_neurophage
 	name = "neurophage nanite grenade"
 	desc = "Weaponized nanites are banned by all galactic major powers. On the frontier however there is little authority to stop wannabee \
 	Oppenheimers and other mad scientists from making weapons such as this."
-	stage = 2
-	path = 1
 
 /obj/item/grenade/simple/chemical/nanite_neurophage/Initialize(mapload)
 	. = ..()
