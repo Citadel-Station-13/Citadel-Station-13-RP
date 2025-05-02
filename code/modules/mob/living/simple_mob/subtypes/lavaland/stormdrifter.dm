@@ -158,6 +158,7 @@
 			saddled = O
 			var/datum/component/riding_filter/mob/animal/filter_component = LoadComponent(/datum/component/riding_filter/mob/animal)
 			filter_component.handler_typepath = /datum/component/riding_handler/shank
+			buckle_allowed = TRUE
 			DelComponent(/datum/component/riding_handler) //Delete to let it recreate as required
 			saddled.forceMove(src)
 
@@ -166,6 +167,7 @@
 		var/datum/component/riding_filter/mob/animal/filter_component = LoadComponent(/datum/component/riding_filter/mob/animal)
 		filter_component.handler_typepath = initial(filter_component.handler_typepath)
 		DelComponent(/datum/component/riding_handler)
+		buckle_allowed = FALSE
 		var/turf/T = get_turf(src)
 		saddled.forceMove(T)
 		saddled = null
