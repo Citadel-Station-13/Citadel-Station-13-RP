@@ -39,16 +39,32 @@
 		list(8, 6, -1, null)
 	)
 	rider_offset_format = CF_RIDING_OFFSETS_DIRECTIONAL
+	var/taur_handling = FALSE
+
+/datum/component/riding_handler/mob/human/Initialize()
+	. = ..()
+	if(. == COMPONENT_INCOMPATIBLE)
+		return
+	var/mob/living/carbon/human/H = parent
+	taur_handling = isTaurTail(H.tail_style)
+
 
 /datum/component/riding_handler/mob/human/rider_offsets(mob/rider, pos, semantic, list/default, dir)
+	. = ..().Copy()
+	if(taur_handling)//Already centering on it
+		.[1] = 0
+		.[2] = 3 //Also don't climb too high
 	if(semantic == BUCKLE_SEMANTIC_HUMAN_FIREMAN)
-		. = default.Copy()
 		.[1] = -2
 		.[2] = 6
 		switch(dir)
 			if(NORTH)
 				.[3] = -1
-			else
+			if(EAST)
+				if(taur_handling)
+					.[1] = 6 //8 to remove the taur offset, the -2 of the fireman carry
+			if(SOUTH)
 				.[3] = 1
-	else
-		return ..()
+			if(WEST)
+				if(taur_handling)
+					.[1] = -10

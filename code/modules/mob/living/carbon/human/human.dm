@@ -1626,8 +1626,7 @@
 	. = ..()
 	if(!isTaurTail(tail_style) || !(dir & (EAST|WEST)))
 		return
-	//Didn't work well for smaller sizes, the cart (rider) getting put infront of the tiny horse(taur), so stay at their back.
-	. += max(((size_multiplier * icon_scale_x) - 1), 0) * ((dir & EAST)? -4 : 4)
+	. += (size_multiplier * icon_scale_x) * ((dir & EAST)? 8 : -8)
 
 /mob/living/carbon/human/ClickOn(var/atom/A)
 	if(ab_handler?.process_click(src, A))
