@@ -4,25 +4,39 @@
 	item_state = "grenade"
 	desc = "A hand made chemical grenade."
 	w_class = WEIGHT_CLASS_SMALL
-	damage_force = 2.0
-	det_time = 50
 
 	var/stage = 0
 	var/state = 0
 	var/path = 0
-	var/obj/item/assembly_holder/detonator = null
-	var/list/beakers = new/list()
-	var/list/allowed_containers = list(/obj/item/reagent_containers/glass/beaker, /obj/item/reagent_containers/glass/bottle)
+	var/obj/item/assembly_holder/detonator
+	var/list/beakers = list()
+	var/list/allowed_containers = list(
+		/obj/item/reagent_containers/glass/beaker,
+		/obj/item/reagent_containers/glass/bottle,
+	)
 	var/affected_area = 3
 
 /obj/item/grenade/simple/chemical/Initialize(mapload)
 	. = ..()
-	create_reagents(1000)
+	create_reagents(10000)
 
 /obj/item/grenade/simple/chemical/Destroy()
 	QDEL_NULL(detonator)
 	QDEL_LIST_NULL(beakers)
 	return ..()
+
+/obj/item/grenade/simple/chemical/on_activate_inhand(datum/event_args/actor/actor)
+	if(!is_ready_to_activate())
+		return FALSE
+	return ..()
+
+/obj/item/grenade/simple/chemical/activate(datum/event_args/actor/actor)
+	if(!is_ready_to_activate())
+		return FALSE
+	return ..()
+
+/obj/item/grenade/simple/chemica/proc/is_ready_to_activate()
+
 
 /obj/item/grenade/simple/chemical/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
@@ -124,7 +138,7 @@
 	if(detonator)
 		. += "With attached [detonator.name]"
 
-/obj/item/grenade/simple/chemical/activate(mob/user as mob)
+/obj/item/grenade/simple/chemical/handle_this_activate_proc(mob/user as mob)
 	. = ..()
 	if(detonator)
 		if(!isigniter(detonator.a_left))
@@ -133,7 +147,6 @@
 		if(!isigniter(detonator.a_right))
 			detonator.a_right.activate()
 			active = 1
-
 
 /obj/item/grenade/simple/chemical/proc/primed(var/primed = 1)
 	if(active)
@@ -180,7 +193,7 @@
 
 	invisibility = INVISIBILITY_MAXIMUM //Why am i doing this?
 	spawn(50)		   //To make sure all reagents can work
-		qdel(src)	   //correctly before deleting the grenade.
+		qdel(src)
 
 
 /obj/item/grenade/simple/chemical/large
@@ -387,8 +400,6 @@
 	beakers += B1
 	beakers += B2
 	icon_state = initial(icon_state) +"_locked"
-
-
 
 //Nanite Cloud Warcrimes!!!
 

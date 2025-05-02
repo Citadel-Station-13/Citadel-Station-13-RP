@@ -16,7 +16,7 @@
 /obj/item/grenade/simple/supermatter/on_detonate(turf/location)
 	..()
 	START_PROCESSING(SSobj, src)
-	addtimer(CALLBACK(src, PROC_REF(implode)) implosion_delay)
+	addtimer(CALLBACK(src, PROC_REF(implode)), implosion_delay)
 	imploding = TRUE
 	playsound(src, 'sound/weapons/wave.ogg', 100)
 	update_icon()

@@ -34,24 +34,6 @@
 	if(activate_inhand(e_args))
 		return CLICKCHAIN_DID_SOMETHING
 
-/obj/item/grenade/attackby(obj/item/W as obj, mob/user as mob)
-	if(W.is_screwdriver())
-		switch(det_time)
-			if (1)
-				det_time = 10
-				to_chat(user, "<span class='notice'>You set the [name] for 1 second detonation time.</span>")
-			if (10)
-				det_time = 30
-				to_chat(user, "<span class='notice'>You set the [name] for 3 second detonation time.</span>")
-			if (30)
-				det_time = 50
-				to_chat(user, "<span class='notice'>You set the [name] for 5 second detonation time.</span>")
-			if (50)
-				det_time = 1
-				to_chat(user, "<span class='notice'>You set the [name] for instant detonation.</span>")
-		add_fingerprint(user)
-	..()
-
 /obj/item/grenade/proc/activate_inhand(datum/event_args/actor/actor)
 	on_activate_inhand(actor)
 

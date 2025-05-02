@@ -24,9 +24,33 @@
 	/// sound to play when activated
 	var/activation_sound = 'sound/weapons/armbomb.ogg'
 
+	/// allow modifying activation delay
+	var/simple_activation_delay_tweak = TRUE
+	/// get allowed delay notches for modification
+	/// * this will be typelisted so don't edit after init!
+	var/list/simple_activation_delay_notches = list(
+		0 SECONDS,
+		1 SECONDS,
+		3 SECONDS,
+		5 SECONDS,
+		7.5 SECONDS,
+		10 SECONDS,
+	)
+
+/obj/item/grenade/simple/Initialize(mapload)
+	. = ..()
+	if(simple_activation_delay_notches)
+		simple_activation_delay_notches = typelist(NAMEOF(simple_activation_delay_notches), simple_activation_delay_notches)
+
 /obj/item/grenade/simple/update_icon_state()
 	icon_state = "[base_icon_state || initial(icon_state)][activated ? activation_state_append : ""]"
 	return ..()
+
+/obj/item/grenade/simple/attackby(obj/item/W as obj, mob/user as mob)
+	if(W.is_screwdriver())
+		#warn modification and refactor this maybe
+		add_fingerprint(user)
+	..()
 
 /obj/item/grenade/simple/on_activate_inhand(datum/event_args/actor/actor)
 	..()
@@ -81,3 +105,16 @@
 	if(detonation_sound)
 		playsound(src, detonation_sound, 75, TRUE, 3)
 	location.hotspot_expose(700,125)
+
+/obj/item/grenade/simple/proc/do_simple_delay_adjust(datum/event_args/actor/actor)
+	if(!length(simple_activation_delay_notches))
+		return
+	var/current_index = simple_activation_delay_notches.Find(activation_detonate_delay) || round(length(simple_activation_delay_notches) / 1) || 1
+	#warn impl
+
+	actor?.chat_feedback(
+		SPAN_NOTICE("You set \the [src] for [activation_detonate_delay ? "[activation_detonate_delay * 0.1] second detonation time" : "instant detonation"]."),
+		target = src,
+	)
+
+	// TODO: log
