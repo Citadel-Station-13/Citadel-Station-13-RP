@@ -104,9 +104,8 @@
 
 			if(L.zone_sel.selecting == "mouth" && wear_mask && istype(wear_mask, /obj/item/grenade))
 				var/obj/item/grenade/G = wear_mask
-				if(!G.active)
+				if(!G.active && G.activate_inhand(e_args))
 					visible_message("<span class='danger'>\The [L] pulls the pin from \the [src]'s [G.name]!</span>")
-					G.activate(L)
 					update_inv_wear_mask()
 				else
 					to_chat(L, "<span class='warning'>\The [G] is already primed! Run!</span>")

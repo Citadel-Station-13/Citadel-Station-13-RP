@@ -5,39 +5,84 @@
 	desc = "A hand made chemical grenade."
 	w_class = WEIGHT_CLASS_SMALL
 
-	var/stage = 0
-	var/state = 0
-	var/path = 0
+	detonation_sound = 'sound/effects/bamf.ogg'
+
+	/// secured?
+	/// * once secured, things cannot be put in / taken out
+	/// * must be secured to activate
+	var/secured = FALSE
+	/// wired?
+	/// * all grenades must be wired
+	/// * wired grenades can be readied without a detonator for default timing logic
+	var/wired = FALSE
+	/// reagent containers
+	/// * all of these will be mixed inside us; technically they don't have to be beakers.
+	var/list/atom/movable/beakers = list()
+
+	// todo: legacy, assembly holders need a refactor and are shitcode
 	var/obj/item/assembly_holder/detonator
-	var/list/beakers = list()
+	// todo: legacy, have a proper class system like magazines do
 	var/list/allowed_containers = list(
 		/obj/item/reagent_containers/glass/beaker,
 		/obj/item/reagent_containers/glass/bottle,
 	)
+	// todo: legacy, do it based on amount
 	var/affected_area = 3
 
-/obj/item/grenade/simple/chemical/Initialize(mapload)
-	. = ..()
-	create_reagents(10000)
-
 /obj/item/grenade/simple/chemical/Destroy()
-	QDEL_NULL(detonator)
+	QDEL_NULL(detonator_assembly)
 	QDEL_LIST_NULL(beakers)
+	return ..()
+
+/obj/item/grenade/simple/chemical/examine(mob/user, dist)
+	. = ..()
+	#warn impl - secured, wired, beakers, detonator
+
+/obj/item/grenade/simple/chemical/update_icon(updates)
+	#warn secured / unsecured; overlay?
 	return ..()
 
 /obj/item/grenade/simple/chemical/on_activate_inhand(datum/event_args/actor/actor)
 	if(!is_ready_to_activate())
 		return FALSE
+	if(!wired)
+		actor?.chat_feedback(
+			SPAN_WARNING("You press the activation mechanism of [src], but nothing happens."),
+			target = src,
+		)
+		return TRUE
 	return ..()
 
 /obj/item/grenade/simple/chemical/activate(datum/event_args/actor/actor)
 	if(!is_ready_to_activate())
 		return FALSE
+	if(!wired)
+		return FALSE
 	return ..()
 
-/obj/item/grenade/simple/chemica/proc/is_ready_to_activate()
+/obj/item/grenade/simple/chemical/proc/is_ready_to_activate()
+	return secured
 
+/obj/item/grenade/simple/chemical/on_attack_hand(datum/event_args/actor/clickchain/e_args)
+	if(secured)
+		return ..()
+	if(!e_args.performer.is_holding_inactive(src))
+		return ..()
+	#warn take shit out
 
+/obj/item/grenade/simple/chemical/using_item_on(obj/item/using, datum/event_args/actor/clickchain/e_args, clickchain_flags, datum/callback/reachability_check)
+	. = ..()
+	if(.)
+		return
+	if(istype(using, /obj/item/stack/cable_coil))
+	if(istype(using, /obj/item/assembly_holder))
+	if(is_type_in_list(using, allowed_containers))
+	#warn take shit out
+
+/obj/item/grenade/simple/chemical/screwdriver_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
+	. = ..()
+	#warn impl
+S
 /obj/item/grenade/simple/chemical/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
@@ -133,11 +178,6 @@
 			else
 				to_chat(user, "<span class='warning'>\The [W] is empty.</span>")
 
-/obj/item/grenade/simple/chemical/examine(mob/user, dist)
-	. = ..()
-	if(detonator)
-		. += "With attached [detonator.name]"
-
 /obj/item/grenade/simple/chemical/handle_this_activate_proc(mob/user as mob)
 	. = ..()
 	if(detonator)
@@ -152,12 +192,18 @@
 	if(active)
 		icon_state = initial(icon_state) + (primed?"_primed":"_active")
 
+/obj/item/grenade/simple/chemical/on_detonate(turf/location, atom/grenade_location)
+	..()
+
+
 /obj/item/grenade/simple/chemical/detonate()
-	if(!stage || stage<2) return
+	if(!stage || stage<2)
+		return
 
 	var/has_reagents = 0
 	for(var/obj/item/reagent_containers/glass/G in beakers)
-		if(G.reagents.total_volume) has_reagents = 1
+		if(G.reagents.total_volume)
+			has_reagents = 1
 
 	active = 0
 	if(!has_reagents)
@@ -171,8 +217,6 @@
 				var/obj/item/assembly/timer/T = detonator.a_right
 				det_time = 10*T.time
 		return
-
-	playsound(src.loc, 'sound/effects/bamf.ogg', 50, 1)
 
 	for(var/obj/item/reagent_containers/glass/G in beakers)
 		G.reagents.trans_to_obj(src, G.reagents.total_volume)
@@ -195,6 +239,7 @@
 	spawn(50)		   //To make sure all reagents can work
 		qdel(src)
 
+//* presets below *//
 
 /obj/item/grenade/simple/chemical/large
 	name = "large chem grenade"

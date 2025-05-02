@@ -164,7 +164,7 @@
 	if(istype(G))
 		G.throw_at_old(A, G.throw_range, G.throw_speed, src)
 		G.det_time = grenade_timer
-		G.activate(src)
+		G.activate_inhand(new /datum/event_args/actor(src))
 		special_attack_charges = max(special_attack_charges-1, 0)
 
 	set_AI_busy(FALSE)

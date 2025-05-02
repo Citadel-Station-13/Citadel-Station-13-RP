@@ -40,7 +40,7 @@
 /obj/item/grenade/simple/Initialize(mapload)
 	. = ..()
 	if(simple_activation_delay_notches)
-		simple_activation_delay_notches = typelist(NAMEOF(simple_activation_delay_notches), simple_activation_delay_notches)
+		simple_activation_delay_notches = typelist(NAMEOF(src, simple_activation_delay_notches), simple_activation_delay_notches)
 
 /obj/item/grenade/simple/update_icon_state()
 	icon_state = "[base_icon_state || initial(icon_state)][activated ? activation_state_append : ""]"
@@ -52,19 +52,14 @@
 		add_fingerprint(user)
 	..()
 
-/obj/item/grenade/simple/on_activate_inhand(datum/event_args/actor/actor)
-	..()
-	activate(actor)
-	return TRUE
-
-/obj/item/grenade/simple/proc/activate(datum/event_args/actor/actor)
+/obj/item/grenade/simple/activate(datum/event_args/actor/actor)
 	if(activated)
 		return
 	activated = TRUE
-	on_activate(actor)
+	return ..()
 
 /obj/item/grenade/simple/proc/on_activate(datum/event_args/actor/actor)
-	SHOULD_CALL_PARENT(TRUE)
+	..()
 	if(actor)
 		msg_admin_attack("[actor.performer] primed \a [src] ([type]).")
 	if(activation_detonate)

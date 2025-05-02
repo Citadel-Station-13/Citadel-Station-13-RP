@@ -8,5 +8,8 @@ SUBSYSTEM_DEF(spatial_effects)
 	name = "Spatial Effects"
 	subsystem_flags = SS_NO_FIRE | SS_NO_INIT
 
-/datum/controller/subsystem/spatial_effects/proc/log_effect_invocation(proc_type, list/proc_args)
+/**
+ * All procs should call this at the top.
+ */
+/datum/controller/subsystem/spatial_effects/proc/log_effect_invocation(effect_type, list/effect_params)
 	// TODO: logging
