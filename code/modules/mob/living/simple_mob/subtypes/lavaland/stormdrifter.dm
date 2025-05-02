@@ -139,13 +139,22 @@
 	can_flee = FALSE
 
 /mob/living/simple_mob/animal/stormdrifter/bull/attackby(var/obj/item/O as obj, var/mob/user as mob)
-	if(istype(O, /obj/item/tool/wirecutters) || is_sharp(O))
+	if(O.is_wirecutter() || is_sharp(O))
 		if(!neutered)
 			to_chat(user, "<span class='danger'>You amputate the [src]'s stingers! It may now be domesticated!</span>")
 			neutered = 1
 			legacy_melee_damage_lower = 5
 			legacy_melee_damage_upper = 10
 			ai_holder_type = /datum/ai_holder/polaris/simple_mob/stormdrifter/bull_neutered
+		else if(saddled)
+			to_chat(user, "<span class='danger'>You nip the straps of the [saddled]! It falls off of the [src].</span>")
+			var/datum/component/riding_filter/mob/animal/filter_component = LoadComponent(/datum/component/riding_filter/mob/animal)
+			filter_component.handler_typepath = initial(filter_component.handler_typepath)
+			DelComponent(/datum/component/riding_handler)
+			buckle_allowed = FALSE
+			var/turf/T = get_turf(src)
+			saddled.forceMove(T)
+			saddled = null
 		else
 			return ..()
 
@@ -162,15 +171,6 @@
 			DelComponent(/datum/component/riding_handler) //Delete to let it recreate as required
 			saddled.forceMove(src)
 
-	if((O.is_wirecutter() || is_sharp(O)) && saddled)
-		to_chat(user, "<span class='danger'>You nip the straps of the [saddled]! It falls off of the [src].</span>")
-		var/datum/component/riding_filter/mob/animal/filter_component = LoadComponent(/datum/component/riding_filter/mob/animal)
-		filter_component.handler_typepath = initial(filter_component.handler_typepath)
-		DelComponent(/datum/component/riding_handler)
-		buckle_allowed = FALSE
-		var/turf/T = get_turf(src)
-		saddled.forceMove(T)
-		saddled = null
 	if(istype(O, /obj/item/pen/charcoal) && saddled)
 		RenameMount()
 	update_icon()
