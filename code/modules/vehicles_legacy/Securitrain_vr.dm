@@ -4,7 +4,7 @@
 
 /obj/vehicle_old/train/security/engine
 	name = "Security Cart"
-	desc = "A ridable electric car designed for pulling trolleys as well as personal transport."
+	desc = "A rideable electric car designed for pulling trolleys as well as personal transport."
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "paddywagon"
 	on = 0
