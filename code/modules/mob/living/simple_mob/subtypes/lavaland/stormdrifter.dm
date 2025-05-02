@@ -156,14 +156,14 @@
 		else
 			to_chat(user, "<span class='danger'>You hang the [O] on the [src]! It may now be ridden safely!</span>")
 			saddled = O
-			var/datum/component/riding_filter/mob/animal/filter_component = GetComponent(/datum/component/riding_filter/mob/animal)
+			var/datum/component/riding_filter/mob/animal/filter_component = LoadComponent(/datum/component/riding_filter/mob/animal)
 			filter_component.handler_typepath = /datum/component/riding_handler/shank
 			DelComponent(/datum/component/riding_handler) //Delete to let it recreate as required
 			saddled.forceMove(src)
 
 	if((O.is_wirecutter() || is_sharp(O)) && saddled)
 		to_chat(user, "<span class='danger'>You nip the straps of the [saddled]! It falls off of the [src].</span>")
-		var/datum/component/riding_filter/mob/animal/filter_component = GetComponent(/datum/component/riding_filter/mob/animal)
+		var/datum/component/riding_filter/mob/animal/filter_component = LoadComponent(/datum/component/riding_filter/mob/animal)
 		filter_component.handler_typepath = initial(filter_component.handler_typepath)
 		DelComponent(/datum/component/riding_handler)
 		var/turf/T = get_turf(src)
