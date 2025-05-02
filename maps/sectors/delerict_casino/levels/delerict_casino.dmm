@@ -1696,7 +1696,7 @@
 /area/sector/delerictcasino/ringforrest)
 "hS" = (
 /obj/structure/bed/chair/sofa/blue/corner{
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/cyan,
 /area/sector/delerictcasino/dance)
@@ -4152,7 +4152,7 @@
 /area/sector/delerictcasino/ringforrest)
 "ti" = (
 /obj/structure/bed/chair/sofa/beige/corner{
-	dir = 4
+	dir = 1
 	},
 /obj/machinery/power/apc/west_mount,
 /obj/structure/cable{
@@ -7235,7 +7235,7 @@
 /area/sector/delerictcasino/ringforrest)
 "Iv" = (
 /obj/structure/bed/chair/sofa/blue/corner{
-	dir = 1
+	dir = 4
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/cyan,

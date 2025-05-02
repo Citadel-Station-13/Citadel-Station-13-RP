@@ -10677,7 +10677,7 @@
 /area/main_map/maintenance/deck_three/aft/starboard)
 "kck" = (
 /obj/structure/bed/chair/sofa/black/corner{
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/main_map/hanger_cafe)
@@ -25822,7 +25822,7 @@
 /area/main_map/Hangar_bay/deck2)
 "yjh" = (
 /obj/structure/bed/chair/sofa/black/corner{
-	dir = 4
+	dir = 1
 	},
 /turf/simulated/floor/wood,
 /area/medical/psych_ward)

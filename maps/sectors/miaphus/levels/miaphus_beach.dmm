@@ -4823,7 +4823,7 @@
 /area/sector/miaphus/beach/aa)
 "OJ" = (
 /obj/structure/bed/chair/sofa/black/corner{
-	dir = 4
+	dir = 1
 	},
 /turf/simulated/floor/wood/broken,
 /area/sector/miaphus/beach/desalinator)
