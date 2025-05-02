@@ -3212,7 +3212,6 @@
 #include "code\modules\jobs\job_types\station\engineering\senior_engineer.dm"
 #include "code\modules\jobs\job_types\station\engineering\station_engineer.dm"
 #include "code\modules\jobs\job_types\station\exploration\explorer.dm"
-#include "code\modules\jobs\job_types\station\exploration\field_medic.dm"
 #include "code\modules\jobs\job_types\station\exploration\pathfinder.dm"
 #include "code\modules\jobs\job_types\station\medical\chemist.dm"
 #include "code\modules\jobs\job_types\station\medical\chief_medical_officer.dm"

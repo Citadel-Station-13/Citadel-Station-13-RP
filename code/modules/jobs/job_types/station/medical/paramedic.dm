@@ -4,7 +4,7 @@
 	flag = PARAMEDIC
 	departments = list(DEPARTMENT_MEDICAL)
 	department_flag = MEDSCI
-	total_positions = 4
+	total_positions = 2
 	spawn_positions = 2
 	supervisors = "the Chief Medical Officer"
 	selection_color = "#013D3B"
@@ -54,12 +54,6 @@
 	title = "Flight Medic"
 	title_blurb = "A Flight Medic is an advanced medical practitioner tasked with operation of rapid response vehicles and assets while managing medical care with the complexity \
 					of transport. They may be expected to operate emergency shuttles with multiple casualties on-board."
-	title_outfit = /datum/outfit/job/station/paramedic/flight_medic
-
-/datum/prototype/struct/alt_title/field_trauma_surgeon
-	title = "Field Trauma Surgeon"
-	title_blurb = "A Field Trauma Surgeon is a fully-licensed medical physician intended to bring immense expertise to the exploration medical department. Although hierarchically low \
-					in the chain of command, their capabilities are unmatched by other first response peers and even other physicians."
 	title_outfit = /datum/outfit/job/station/paramedic/flight_medic
 
 /datum/outfit/job/station/paramedic
