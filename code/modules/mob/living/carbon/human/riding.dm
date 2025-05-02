@@ -68,6 +68,10 @@
 	set category = VERB_CATEGORY_IC
 	for(var/mob/M in buckled_mobs)
 		if(buckled_mobs[M] == BUCKLE_SEMANTIC_HUMAN_PIGGYBACK)
+			M.visible_message(
+				SPAN_NOTICE("[src] bucks and throws [M] of their back."),
+				SPAN_WARNING("[src] bucks and throws you of their back!")
+				)
 			unbuckle_mob(M, BUCKLE_OP_FORCE, src, buckled_mobs[M])
 
 /mob/living/carbon/human/proc/carry_piggyback(mob/living/carbon/other, instant = FALSE, delay_mod = 1, loc_check = TRUE)
