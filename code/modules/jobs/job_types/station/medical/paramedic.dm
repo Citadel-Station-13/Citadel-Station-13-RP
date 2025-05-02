@@ -35,7 +35,6 @@
 		"Emergency Medical Technician" = /datum/prototype/struct/alt_title/emt,
 		"Field Medic" = /datum/prototype/struct/alt_title/field_medic,
 		"Flight Medic" = /datum/prototype/struct/alt_title/flight_medic,
-		"Field Trauma Surgeon" = /datum/prototype/struct/alt_title/field_trauma_surgeon
 		)
 
 /datum/prototype/struct/alt_title/emt
@@ -109,27 +108,9 @@
 	r_pocket = /obj/item/flashlight/pen
 	pda_type = /obj/item/pda/sar
 	id_type = /obj/item/card/id/medical/sar
-	id_pda_assignment = "Field Medic"
+	id_pda_assignment = "Flight Medic"
 
 	backpack = /obj/item/storage/backpack/medic
 	satchel_one = /obj/item/storage/backpack/satchel/med
 	messenger_bag = /obj/item/storage/backpack/messenger/med
 	dufflebag = /obj/item/storage/backpack/dufflebag/med
-	
-/datum/outfit/job/station/paramedic/field_trauma_surgeon
-	name = OUTFIT_JOB_NAME("Field Trauma Surgeon")
-	uniform = /obj/item/clothing/under/rank/medical
-	suit = /obj/item/clothing/suit/storage/toggle/labcoat
-	l_hand = /obj/item/storage/firstaid/regular
-	r_pocket = /obj/item/flashlight/pen
-	id_type = /obj/item/card/id/medical
-	l_ear = /obj/item/radio/headset/headset_med
-	shoes = /obj/item/clothing/shoes/white
-
-	pda_type = /obj/item/pda/medical
-	backpack = /obj/item/storage/backpack/medic
-	satchel_one = /obj/item/storage/backpack/satchel/med
-	messenger_bag = /obj/item/storage/backpack/messenger/med
-	dufflebag = /obj/item/storage/backpack/dufflebag/med
-
-	flags = OUTFIT_HAS_BACKPACK|OUTFIT_EXTENDED_SURVIVAL|OUTFIT_COMPREHENSIVE_SURVIVAL

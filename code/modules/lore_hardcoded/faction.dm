@@ -88,7 +88,6 @@
 		/datum/role/job/station/mining::id,
 		// exploration - no pathfinder
 		/datum/role/job/station/explorer::id,
-		/datum/role/job/station/field_medic::id,
 		// ship staff
 		/datum/role/job/station/pilot::id,
 		// civ staff
