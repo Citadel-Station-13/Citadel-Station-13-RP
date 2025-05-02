@@ -126,7 +126,7 @@
 	buckle_flags = BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF|BUCKLING_GROUND_HOIST
 
 	var/neutered = 0
-	var/rideable = 0
+	var/obj/item/saddle/saddled = null
 
 /datum/ai_holder/polaris/simple_mob/stormdrifter/bull
 	hostile = TRUE
@@ -149,25 +149,27 @@
 		else
 			return ..()
 
-	if(istype(O, /obj/item/saddle/stormdrifter) && !rideable)
+	if(istype(O, /obj/item/saddle/stormdrifter) && !saddled)
 		if(!neutered)
 			to_chat(user, "<span class='danger'>You decide against approaching the [src] with the [O] while its stingers are intact!</span>")
 			return
 		else
 			to_chat(user, "<span class='danger'>You hang the [O] on the [src]! It may now be ridden safely!</span>")
-			rideable = 1
-			buckle_allowed = TRUE
-			AddComponent(/datum/component/riding_handler/stormdrifter_bull)
-			qdel(O)
+			saddled = O
+			var/datum/component/riding_filter/mob/animal/filter_component = GetComponent(/datum/component/riding_filter/mob/animal)
+			filter_component.handler_typepath = /datum/component/riding_handler/shank
+			DelComponent(/datum/component/riding_handler) //Delete to let it recreate as required
+			saddled.forceMove(src)
 
-	if(istype(O, /obj/item/tool/wirecutters || is_sharp(O)) && rideable)
-		to_chat(user, "<span class='danger'>You nip the straps of the [O]! It falls off of the [src].</span>")
-		rideable = 0
-		buckle_allowed = FALSE
-		DelComponent(/datum/component/riding_handler, /datum/component/riding_handler/stormdrifter_bull)
+	if((O.is_wirecutter() || is_sharp(O)) && saddled)
+		to_chat(user, "<span class='danger'>You nip the straps of the [saddled]! It falls off of the [src].</span>")
+		var/datum/component/riding_filter/mob/animal/filter_component = GetComponent(/datum/component/riding_filter/mob/animal)
+		filter_component.handler_typepath = initial(filter_component.handler_typepath)
+		DelComponent(/datum/component/riding_handler)
 		var/turf/T = get_turf(src)
-		new /obj/item/saddle/stormdrifter(T)
-	if(istype(O, /obj/item/pen/charcoal) && rideable)
+		saddled.forceMove(T)
+		saddled = null
+	if(istype(O, /obj/item/pen/charcoal) && saddled)
 		RenameMount()
 	update_icon()
 
@@ -208,11 +210,11 @@
 /mob/living/simple_mob/animal/stormdrifter/bull/update_icon()
 	if(neutered)
 		icon_state = "bulldrifter_neutered"
-	if(rideable)
+	if(saddled)
 		icon = 'icons/mob/lavaland/lavaland_mobs32x64.dmi'
 		icon_state = "bulldrifter_riding"
 		add_overlay("bulldrifter_saddled")
-	else if(!rideable)
+	else if(!saddled)
 		icon = 'icons/mob/lavaland/lavaland_mobs.dmi'
 		icon_state = "bulldrifter_neutered"
 		cut_overlays()
