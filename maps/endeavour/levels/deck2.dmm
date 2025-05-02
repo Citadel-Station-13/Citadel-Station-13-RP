@@ -18141,7 +18141,7 @@
 /area/rnd/research_foyer)
 "mXR" = (
 /obj/structure/bed/chair/sofa/black/corner{
-	dir = 4
+	dir = 1
 	},
 /turf/simulated/floor/wood/sif/indoors,
 /area/medical/reception)
