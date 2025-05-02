@@ -269,9 +269,10 @@
  * returns transformed rider offset list
  *
  * DO NOT CHANGE DEFAULT FOR THE LOVE OF GOD, COPY IT IF YOU ARE CHANGING IT!!
+ * You just need to call the parent to get it, even.
  */
 /datum/component/riding_handler/proc/rider_offsets(mob/rider, pos, semantic, list/default, dir)
-	return default
+	return default.Copy()
 
 /datum/component/riding_handler/proc/signal_hook_handle_relaymove(datum/source, mob/M, dir)
 	attempt_drive(M, dir)

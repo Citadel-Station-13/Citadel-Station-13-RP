@@ -56,7 +56,7 @@
 
 
 /datum/component/riding_handler/mob/human/rider_offsets(mob/rider, pos, semantic, list/default, dir)
-	. = ..().Copy()
+	. = ..()
 	if(taur_handling)//Already centering on it
 		.[1] = 0
 		.[2] = 3 //Also don't climb too high
