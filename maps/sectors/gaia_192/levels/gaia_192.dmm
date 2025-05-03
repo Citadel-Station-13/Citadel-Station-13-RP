@@ -5576,9 +5576,6 @@
 /area/class_m/outside)
 "xR" = (
 /obj/structure/curtain/open/bed,
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
 /obj/structure/fans/tiny,
 /obj/spawner/window/borosillicate/full,
 /turf/simulated/floor/wood,
@@ -11494,9 +11491,6 @@
 "Yz" = (
 /obj/structure/curtain/open/bed,
 /obj/spawner/window/borosillicate/full,
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/wood,
 /area/class_m/inside/vip_dorms)

@@ -77,7 +77,7 @@
 /turf/simulated/wall/r_wall,
 /area/template_noop)
 "Z" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/plating,
 /area/submap/skyplanet/poi/ruins2)
 

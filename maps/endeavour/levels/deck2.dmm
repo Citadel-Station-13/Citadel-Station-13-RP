@@ -52,9 +52,9 @@
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology)
 "act" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/item/paper_bin,
-/obj/effect/paint/babyblue,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "add" = (
@@ -633,8 +633,8 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "avH" = (
@@ -749,8 +749,8 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
 "aCi" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/reception)
 "aCR" = (
@@ -795,8 +795,8 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "aEl" = (
@@ -986,8 +986,8 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "aIK" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/babyblue,
 /obj/machinery/atmospherics/pipe/simple/hidden/red{
 	dir = 8
 	},
@@ -1609,8 +1609,8 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
 "bkF" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/maintenance/research/port)
 "bkG" = (
@@ -2026,8 +2026,8 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "bAe" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/anomaly_lab)
 "bAA" = (
@@ -2118,14 +2118,14 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/effect/paint/purplegray,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/rdoffice)
 "bCS" = (
@@ -2442,11 +2442,11 @@
 /turf/simulated/floor/tiled,
 /area/medical/virology)
 "bMn" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "robotics-inner"
 	},
-/obj/effect/paint/purplegray,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/assembly/robotics)
 "bMs" = (
@@ -2962,8 +2962,8 @@
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/anomaly_lab)
 "cat" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology)
 "caz" = (
@@ -3177,7 +3177,7 @@
 /turf/simulated/wall/prepainted/medical,
 /area/endeavour/hallway/d2afthall)
 "cjl" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -3186,7 +3186,7 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/effect/paint/purplegray,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "cjm" = (
@@ -3430,11 +3430,11 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "cqX" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "exam_1"
 	},
-/obj/effect/paint/babyblue,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/exam_room/exam_1)
 "crh" = (
@@ -3468,8 +3468,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
 "cst" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/medbay_emt_bay)
 "csx" = (
@@ -3481,8 +3481,8 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
 "csA" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/babyblue,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -3931,11 +3931,11 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/effect/paint/purplegray,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/rdoffice)
 "cGV" = (
@@ -3960,8 +3960,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/morgue)
 "cHC" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
+/obj/map_helper/paint/babyblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "mh2"
 	},
@@ -4045,8 +4045,8 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "cOc" = (
@@ -5138,8 +5138,8 @@
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "dAa" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/psych_ward)
 "dAn" = (
@@ -5494,8 +5494,8 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "dKD" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology/xenoflora)
 "dKE" = (
@@ -5877,8 +5877,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/anomaly_lab/containment_one)
 "dYX" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/babyblue,
 /obj/structure/disposalpipe/segment{
 	dir = 1
 	},
@@ -6189,8 +6189,8 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "ekq" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/babyblue,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -6682,8 +6682,8 @@
 	id = "test_chamber_blast";
 	name = "Testing Chamber Blast Door"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/testingroom)
 "eCJ" = (
@@ -6742,8 +6742,8 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "eEX" = (
@@ -7050,7 +7050,7 @@
 /turf/simulated/floor/wood,
 /area/tether/station/public_meeting_room)
 "eTf" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/space)
 "eTk" = (
@@ -7229,11 +7229,11 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/reception_desk)
 "eYE" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "ward_a"
 	},
-/obj/effect/paint/babyblue,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/patient_a)
 "eYM" = (
@@ -7653,8 +7653,8 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
 "fmC" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/virology)
 "fmI" = (
@@ -7724,8 +7724,8 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "fqm" = (
@@ -7875,8 +7875,8 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/virology_fore_access)
 "ftJ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/research_foyer)
 "ftM" = (
@@ -7927,12 +7927,12 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/reception_desk)
 "fuU" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/machinery/door/blast/shutters{
 	id = "rndshutters";
 	name = "Research Shutters"
 	},
-/obj/effect/paint/purplegray,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/reception_desk)
 "fwk" = (
@@ -8073,8 +8073,8 @@
 /area/maintenance/research/port)
 "fBJ" = (
 /obj/machinery/door/firedoor/glass,
-/obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/anomaly_lab/containment_one)
 "fBP" = (
@@ -9047,10 +9047,10 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
 "gjC" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/firelocks{
 	id = "or2obs"
 	},
-/obj/effect/paint/babyblue,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/surgeryobs)
 "gkq" = (
@@ -9356,9 +9356,9 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
 "gxc" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/babyblue,
-/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/babyblue,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2afthall)
 "gxk" = (
@@ -9784,13 +9784,13 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "gPQ" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/machinery/door/blast/shutters{
 	dir = 8;
 	id = "rndshutters";
 	name = "Research Shutters"
 	},
-/obj/effect/paint/purplegray,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/reception_desk)
 "gPU" = (
@@ -9852,8 +9852,8 @@
 /turf/simulated/floor/grass/indoors,
 /area/tether/station/public_meeting_room)
 "gQO" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "gRw" = (
@@ -10369,11 +10369,11 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2afthall)
 "hnd" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "robotics-outer"
 	},
-/obj/effect/paint/purplegray,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/assembly/robotics)
 "hnk" = (
@@ -10837,7 +10837,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_c)
 "hDL" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -10845,7 +10845,7 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/effect/paint/purplegray,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "hDT" = (
@@ -11262,9 +11262,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/chemistry_lab)
 "hZk" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/bed/chair/office/dark,
-/obj/effect/paint/babyblue,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "hZs" = (
@@ -11996,8 +11996,8 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
 "iyL" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
+/obj/map_helper/paint/babyblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "cmo_office"
 	},
@@ -12637,8 +12637,8 @@
 /area/medical/medbay3)
 "iWZ" = (
 /obj/machinery/door/firedoor,
-/obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/anomaly_lab/containment_one)
 "iXg" = (
@@ -12670,11 +12670,11 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2afthall)
 "iYh" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "ward_b"
 	},
-/obj/effect/paint/babyblue,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/patient_b)
 "iZN" = (
@@ -12844,11 +12844,11 @@
 /turf/simulated/wall/r_wall/prepainted/medical,
 /area/medical/virology)
 "jeY" = (
-/obj/effect/paint/babyblue,
+/obj/map_helper/paint/babyblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "mh2"
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /turf/simulated/floor/plating,
 /area/medical/medbay4)
 "jfe" = (
@@ -12903,11 +12903,11 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/effect/paint/purplegray,
+/obj/map_helper/paint/purplegray,
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
@@ -13565,11 +13565,11 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "robotics-inner"
 	},
-/obj/effect/paint/purplegray,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/assembly/robotics)
 "jHd" = (
@@ -13941,8 +13941,8 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "jWf" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/babyblue,
 /obj/machinery/door/blast/shutters{
 	dir = 8;
 	id = "chemshutter";
@@ -14079,13 +14079,13 @@
 "keM" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /obj/machinery/door/firedoor,
-/obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/anomaly_lab/containment_one)
 "keN" = (
-/obj/spawner/window/low_wall/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/firelocks,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d2afthall)
 "kff" = (
@@ -14749,8 +14749,8 @@
 /area/medical/exam_room/exam_2)
 "kGe" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow,
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology/xenoflora)
 "kGz" = (
@@ -16538,11 +16538,11 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
 "lSq" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "oncall"
 	},
-/obj/effect/paint/babyblue,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/oncall_room)
 "lSJ" = (
@@ -16868,8 +16868,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/research/port)
 "mgH" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/babyblue,
 /obj/structure/curtain/open/shower/medical{
 	name = "Privacy curtain"
 	},
@@ -16963,8 +16963,8 @@
 "mkl" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /obj/machinery/door/firedoor/glass,
-/obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/anomaly_lab/containment_one)
 "mlj" = (
@@ -17342,8 +17342,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research/port)
 "mwd" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/medbay4)
 "mwy" = (
@@ -17612,8 +17612,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical_science)
 "mDj" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2afthall)
 "mDp" = (
@@ -17692,8 +17692,8 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "mFC" = (
@@ -17760,8 +17760,8 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "mIe" = (
@@ -18096,11 +18096,11 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
 "mVR" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "mh1"
 	},
-/obj/effect/paint/babyblue,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/psych/psych_2)
 "mWV" = (
@@ -18290,8 +18290,8 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "neQ" = (
@@ -18345,11 +18345,11 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2afthall)
 "ngP" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "mh2"
 	},
-/obj/effect/paint/babyblue,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/medbay4)
 "nhd" = (
@@ -19546,8 +19546,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/research/port)
 "ofQ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/medbay_primary_storage)
 "ogd" = (
@@ -20265,7 +20265,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
 "oHp" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
 "oIm" = (
@@ -20328,8 +20328,8 @@
 /turf/simulated/floor/wood/sif/indoors,
 /area/medical/reception)
 "oKF" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/babyblue,
 /obj/machinery/door/blast/shutters{
 	id = "chemshutter";
 	name = "Chemistry Shutters"
@@ -20960,11 +20960,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/public_meeting_room)
 "piH" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "ward_a"
 	},
-/obj/effect/paint/babyblue,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/surgeryprep)
 "piI" = (
@@ -21737,8 +21737,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research/port)
 "pEJ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/breakroom)
 "pEU" = (
@@ -21982,7 +21982,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "pLA" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/plating,
 /area/station/stairs_two)
 "pLW" = (
@@ -22587,7 +22587,7 @@
 /turf/simulated/wall/prepainted,
 /area/endeavour/hallway/d2fwdmaint)
 "qcN" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/holodeck_control)
 "qea" = (
@@ -24024,10 +24024,10 @@
 /turf/simulated/floor/wood,
 /area/tether/station/public_meeting_room)
 "rfp" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/firelocks{
 	id = "or2"
 	},
-/obj/effect/paint/babyblue,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/surgeryobs)
 "rfs" = (
@@ -24064,8 +24064,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
 "riZ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/chemistry_lab)
 "rjg" = (
@@ -24848,7 +24848,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "rPS" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/firelocks{
 	id = "or2obs"
 	},
 /turf/simulated/floor/plating,
@@ -25410,8 +25410,8 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/xenobiology)
 "snl" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/virologyisolation)
 "snE" = (
@@ -25435,11 +25435,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/oncall_room)
 "snW" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "ward_c"
 	},
-/obj/effect/paint/babyblue,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/patient_c)
 "sof" = (
@@ -26120,8 +26120,8 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "sQP" = (
@@ -26223,8 +26223,8 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "sUD" = (
@@ -26346,7 +26346,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery2)
 "sWV" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -26354,7 +26354,7 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/effect/paint/purplegray,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "sXA" = (
@@ -26374,8 +26374,8 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/morgue)
 "sYk" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/sleeper)
 "sYJ" = (
@@ -26510,7 +26510,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "tem" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -26518,7 +26518,7 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/effect/paint/purplegray,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "teG" = (
@@ -26966,11 +26966,11 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/medical_restroom)
 "tqI" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "exam_2"
 	},
-/obj/effect/paint/babyblue,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/exam_room/exam_2)
 "tra" = (
@@ -27515,11 +27515,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/endeavour/hallway/d2fwdhall)
 "tKG" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "or1"
 	},
-/obj/effect/paint/babyblue,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/surgery)
 "tLb" = (
@@ -27625,8 +27625,8 @@
 	name = "Testing Chamber Blast Door"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/testingroom)
 "tOS" = (
@@ -27660,7 +27660,7 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2afthall)
 "tPb" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -27669,7 +27669,7 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/effect/paint/purplegray,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "tPs" = (
@@ -28472,8 +28472,8 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "uxB" = (
@@ -28862,8 +28862,8 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "uQE" = (
@@ -29035,8 +29035,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/medical/psych_ward)
 "uVS" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology/xenoflora)
@@ -29480,7 +29480,7 @@
 /turf/simulated/floor/grass/indoors,
 /area/tether/station/public_meeting_room)
 "vrg" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -29489,7 +29489,7 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/effect/paint/purplegray,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "vrn" = (
@@ -29731,9 +29731,9 @@
 /turf/simulated/floor,
 /area/maintenance/research/port)
 "vBU" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/breakroom)
 "vCa" = (
@@ -29801,8 +29801,8 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "vEU" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/babyblue,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -30002,8 +30002,8 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/reception_desk)
 "vLc" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/rnd/breakroom)
@@ -31859,11 +31859,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
 "wRU" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "medbreak"
 	},
-/obj/effect/paint/babyblue,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/crew_quarters/medbreak)
 "wSf" = (
@@ -31906,8 +31906,8 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "wUc" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/workshop)
 "wUw" = (
@@ -31934,11 +31934,11 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "wVd" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "or2"
 	},
-/obj/effect/paint/babyblue,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/surgery2)
 "wVB" = (
@@ -33379,7 +33379,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/robotics)
 "xVz" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/plating,
 /area/tether/station/public_meeting_room)
 "xWG" = (
