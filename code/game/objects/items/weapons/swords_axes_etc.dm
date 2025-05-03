@@ -314,6 +314,11 @@
 	var/defend_chance = 40
 	var/projectile_parry_chance = 0
 
+	item_icons = list(
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
+			)
+
 /obj/item/bo_staff/proc/jedi_spin(mob/living/user)
 	for(var/i in list(NORTH,SOUTH,EAST,WEST,EAST,SOUTH,NORTH,SOUTH,EAST,WEST,EAST,SOUTH))
 		user.setDir(i)

@@ -403,10 +403,10 @@
 //TODO: This needs to be phased out for a newer butchering system. Though I am too scared to undo all our custom stuff. -Zandario
 // Harvest an animal's delicious byproducts
 /mob/living/simple_mob/harvest(mob/user)
-	var/actual_meat_amount = pick(0, meat_amount)
-	var/actual_bone_amount = pick(0, bone_amount)
-	var/actual_hide_amount = pick(0, hide_amount)
-	var/actual_exotic_amount = pick(0, exotic_amount)
+	var/actual_meat_amount = rand(0, meat_amount)
+	var/actual_bone_amount = rand(0, bone_amount)
+	var/actual_hide_amount = rand(0, hide_amount)
+	var/actual_exotic_amount = rand(0, exotic_amount)
 	if(stat != DEAD)
 		return
 	if(meat_type)

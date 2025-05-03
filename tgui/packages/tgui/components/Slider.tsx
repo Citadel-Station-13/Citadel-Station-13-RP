@@ -21,7 +21,8 @@ interface SliderProps extends BoxProps {
   readonly ranges?: Record<string, [number, number]>;
   readonly step?: number;
   readonly stepPixelSize?: number;
-  readonly format?: (n: number) => number;
+  /** Format value using this function before displaying it. */
+  format?: (value: number) => string;
   readonly suppressFlicker?: number;
   readonly onChange?: Function;
   readonly onDrag?: Function;

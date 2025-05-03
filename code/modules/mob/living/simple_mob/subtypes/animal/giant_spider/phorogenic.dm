@@ -45,6 +45,8 @@
 	poison_per_bite = 0.5
 	poison_type = "phoron"
 
+	exotic_type = /obj/item/reagent_containers/glass/venomgland/spider/phoron
+
 	var/exploded = FALSE
 	var/explosion_dev_range		= 1
 	var/explosion_heavy_range	= 2
@@ -77,6 +79,14 @@
 			exploded = TRUE
 			explosion(src.loc, explosion_dev_range, explosion_heavy_range, explosion_light_range, explosion_flash_range)
 	return ..()
+
+/obj/item/reagent_containers/glass/venomgland/spider/phoron
+	name = "Phoronic Venom Gland"
+	desc = "A venom sac full of phoron. Maybe NT should have taken up spider ranching."
+
+/obj/item/reagent_containers/glass/venomgland/spider/phoron/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("phoron", 15)
 
 // Weakened version of Phoron spiders
 /mob/living/simple_mob/animal/giant_spider/phorogenic/weak

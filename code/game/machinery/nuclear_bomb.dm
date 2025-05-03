@@ -187,7 +187,7 @@ var/bomb_set
 			if(yes_code)
 				message = "*****"
 		dat += "<HR>\n>[message]<BR>\n<A href='?src=\ref[src];type=1'>1</A>-<A href='?src=\ref[src];type=2'>2</A>-<A href='?src=\ref[src];type=3'>3</A><BR>\n<A href='?src=\ref[src];type=4'>4</A>-<A href='?src=\ref[src];type=5'>5</A>-<A href='?src=\ref[src];type=6'>6</A><BR>\n<A href='?src=\ref[src];type=7'>7</A>-<A href='?src=\ref[src];type=8'>8</A>-<A href='?src=\ref[src];type=9'>9</A><BR>\n<A href='?src=\ref[src];type=R'>R</A>-<A href='?src=\ref[src];type=0'>0</A>-<A href='?src=\ref[src];type=E'>E</A><BR>\n</TT>"
-		user << browse(dat, "window=nuclearbomb;size=300x400")
+		user << browse(HTML_SKELETON(dat), "window=nuclearbomb;size=300x400")
 		onclose(user, "nuclearbomb")
 	else if(deployable)
 		if(removal_stage < 5)

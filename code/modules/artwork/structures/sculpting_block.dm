@@ -311,7 +311,7 @@
 
 	while(progress < finished_progress)
 		if(QDELETED(src))
-			QDEL_NULL(progressbar)
+			progressbar.end_progress()
 			return
 		if(!do_after(user, time_per_line, src, DO_AFTER_NO_PROGRESS))
 			break
@@ -331,7 +331,8 @@
 		last = world.time
 		progressbar.update(sculpting_line - should_be_at)
 
-	QDEL_NULL(progressbar)
+	if(!QDELETED(progressbar))
+		progressbar.end_progress()
 
 	lines = min(sculpting_line, progress / time_per_line)
 

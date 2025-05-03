@@ -31,6 +31,8 @@
 
 	movement_cooldown = 5
 
+	exotic_type = /obj/item/reagent_containers/glass/venomgland/spider/chloral
+
 	player_msg = "Upon dying, you will release a swarm of spiderlings or young hunter spiders.<br>\
 	If a spider emerges, you will be placed in control of it."
 
@@ -73,6 +75,14 @@
 			var/mob/living/simple_mob/animal/giant_spider/new_body = pick(new_spiders)
 			transfer_client_to(new_body)
 	return ..()
+
+/obj/item/reagent_containers/glass/venomgland/spider/chloral
+	name = "Sleepy Venom Gland"
+	desc = "A sac full of venom. The smell makes you feel lightheaded."
+
+/obj/item/reagent_containers/glass/venomgland/spider/chloral/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("chloralhydrate", 15)
 
 // Note that this isn't required for the 'scan all spiders' entry since its essentially a meme.
 /datum/category_item/catalogue/fauna/giant_spider/recursive_carrier_spider

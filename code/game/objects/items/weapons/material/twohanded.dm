@@ -111,6 +111,14 @@
 	base_icon = "bronze_axe"
 	material_color = FALSE
 
+/obj/item/material/twohanded/fireaxe/iron
+	name = "Woodcutter's Axe"
+	desc = "A simple iron axe for cutting down trees. Though not made of the sturdiest metal it will get the job done."
+	material_parts = /datum/prototype/material/iron
+	icon_state = "fireaxe_mask0"
+	base_icon = "fireaxe_mask"
+	material_color = TRUE
+
 /obj/item/material/twohanded/fireaxe/plasteel
 	material_parts = /datum/prototype/material/plasteel
 

@@ -41,6 +41,8 @@
 	poison_type = "cryptobiolin"
 	poison_per_bite = 1
 
+	exotic_type = /obj/item/reagent_containers/glass/venomgland/spider/confusing
+
 	player_msg = "You have an imperfect, but automatic stealth. If you attack something while 'hidden', then \
 	you will do bonus damage, stun the target, and unstealth for a period of time.<br>\
 	Getting attacked will also break your stealth."
@@ -123,3 +125,12 @@
 /mob/living/simple_mob/animal/giant_spider/lurker/hit_with_weapon(obj/item/O, mob/living/user, effective_force, hit_zone)
 	. = ..()
 	break_cloak()
+
+
+/obj/item/reagent_containers/glass/venomgland/spider/confusing
+	name = "Confusing Venom Gland"
+	desc = "A sac full of venom. You feel a bit dizzy holding it."
+
+/obj/item/reagent_containers/glass/venomgland/spider/confusing/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("cryptobiolin", 15)

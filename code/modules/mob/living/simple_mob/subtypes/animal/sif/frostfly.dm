@@ -91,7 +91,7 @@
 	say_escalate = list("Rszt!")
 
 	threaten_sound = 'sound/effects/refill.ogg'
-	stand_down_sound = /datum/soundbyte/grouped/sparks
+	stand_down_sound = /datum/soundbyte/sparks
 
 /mob/living/simple_mob/animal/sif/frostfly/handle_special()
 	..()

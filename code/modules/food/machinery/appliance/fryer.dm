@@ -56,7 +56,7 @@
 /obj/machinery/appliance/cooker/fryer/update_cooking_power()
 	..()//In addition to parent temperature calculation
 	//Fryer efficiency also drops when oil levels arent optimal
-	var/oil_level =  oil.reagent_volumes[/datum/reagent/nutriment/triglyceride/oil::id] || 0
+	var/oil_level =  oil.reagent_volumes["tallow"] || 0
 
 	var/oil_efficiency = 0
 	if (oil_level)
@@ -141,7 +141,7 @@
 	//If you can lure someone close to the fryer and grab them then you deserve success.
 	//And a delay on this kind of niche action just ensures it never happens
 	//Cooldown ensures it can't be spammed to instakill someone
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN*3)
+	user.setClickCooldownLegacy(DEFAULT_ATTACK_COOLDOWN*3)
 
 	if(!victim || !victim.Adjacent(user))
 		to_chat(user, "<span class='danger'>Your victim slipped free!</span>")

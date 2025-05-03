@@ -16497,7 +16497,7 @@
 	dir = 1
 	},
 /obj/structure/bed/chair/sofa/beige/corner{
-	dir = 1
+	dir = 4
 	},
 /obj/structure/poster{
 	pixel_x = -32
@@ -18411,7 +18411,7 @@
 	dir = 1
 	},
 /obj/structure/bed/chair/sofa/beige/corner{
-	dir = 1
+	dir = 4
 	},
 /obj/structure/window/reinforced/polarized{
 	dir = 8;
@@ -24733,7 +24733,7 @@
 /area/sector/nebula_tradeport/motel/room1)
 "oGt" = (
 /obj/structure/bed/chair/sofa/red/corner{
-	dir = 4
+	dir = 1
 	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
