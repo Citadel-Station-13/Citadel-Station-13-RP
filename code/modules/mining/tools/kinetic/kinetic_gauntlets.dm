@@ -17,18 +17,19 @@
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 	var/charged = FALSE
-	var/charge_delay = 3 SECONDS
+	// TODO: scale this by multiplying a define for 'standard melee attack speed'
+	var/charge_delay = 1.8 SECONDS
 	var/charge_timerid
 	var/charge_sound = 'sound/weapons/kenetic_reload.ogg'
 
 	/// recharge speed mult when breaking rock
-	var/charge_delay_multiplier_rock = (1 / 3)
+	var/charge_delay_multiplier_rock = (1 / 2)
 	/// recharge speed mult when breaking structures
 	var/charge_delay_multiplier_structure = 1
 	/// recharge speed mult on basic non-combo attack
 	var/charge_delay_multiplier_basic = 1
 	/// recharge speed mult on successful combo
-	var/charge_delay_multiplier_combo = (2 / 3)
+	var/charge_delay_multiplier_combo = (1 / 2)
 
 	/// our combo tracker
 	///
@@ -57,14 +58,14 @@
 	/// sound to play on combo fail
 	var/combo_fail_sfx = /datum/soundbyte/sparks
 
-	var/charged_structure_damage = 30
+	var/charged_structure_damage = 23.5
 	var/charged_structure_damage_tier = MELEE_TIER_MEDIUM
 	var/charged_structure_damage_type = DAMAGE_TYPE_BRUTE
 	var/charged_structure_damage_flag = ARMOR_BOMB
 	var/charged_structure_damage_mode = DAMAGE_MODE_ABLATING
 	var/charged_structure_sfx = 'sound/weapons/kenetic_accel.ogg'
 
-	var/charged_mob_damage = 12
+	var/charged_mob_damage = 13.5
 	var/charged_mob_damage_tier = MELEE_TIER_MEDIUM
 	var/charged_mob_damage_type = DAMAGE_TYPE_BRUTE
 	var/charged_mob_damage_flag = ARMOR_BOMB
