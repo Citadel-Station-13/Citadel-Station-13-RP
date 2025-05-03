@@ -80,7 +80,7 @@
 /turf/simulated/floor/tiled/monotechmaint,
 /area/submap/osiris_field/transport_shuttle1)
 "H" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/submap/osiris_field/transport_shuttle1)
 "I" = (

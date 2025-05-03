@@ -124,7 +124,7 @@
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/submap/osiris_field/cargo_shuttle3)
 "H" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/submap/osiris_field/cargo_shuttle3)
 "I" = (

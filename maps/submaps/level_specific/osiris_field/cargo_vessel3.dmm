@@ -160,7 +160,7 @@
 /turf/space/basic,
 /area/submap/osiris_field/cargo_vessel3)
 "qR" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/submap/osiris_field/cargo_vessel3)
 "rv" = (
@@ -307,7 +307,7 @@
 /turf/simulated/floor/tiled/kafel_full/yellow/virgo3b,
 /area/space)
 "EB" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/submap/osiris_field/cargo_vessel3)
 "FS" = (
@@ -333,7 +333,7 @@
 /turf/simulated/floor/carpet/patterened/red,
 /area/submap/osiris_field/cargo_vessel3)
 "Hv" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/submap/osiris_field/cargo_vessel3)
 "Hx" = (

@@ -228,7 +228,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/submap/osiris_field/cargo_shuttle_maglev)
 "WN" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/submap/osiris_field/cargo_shuttle_maglev)
 "Xb" = (

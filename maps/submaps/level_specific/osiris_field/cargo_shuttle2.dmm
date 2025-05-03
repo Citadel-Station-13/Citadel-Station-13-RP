@@ -114,7 +114,7 @@
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/submap/osiris_field/cargo_shuttle2)
 "W" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/submap/osiris_field/cargo_shuttle2)
 

@@ -199,7 +199,7 @@
 	base_turf = /turf/simulated/floor/reinforced
 	base_area = /area/sector/nebula_tradeport/dock2
 
-/obj/effect/shuttle_landmark/triumph/trade/udang
+/obj/effect/shuttle_landmark/triumph/trade/scavenger
 	name = "FTV Adala's dock"
 	landmark_tag = "tradeport_dock_scavenging"
 	docking_controller = "trade_docks3"

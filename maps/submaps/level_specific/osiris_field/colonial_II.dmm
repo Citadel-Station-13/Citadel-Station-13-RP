@@ -256,7 +256,7 @@
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/shuttle/osiris/colonial)
 "ho" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/osiris/colonial)
 "hD" = (
@@ -746,7 +746,7 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/osiris/colonial)
 "vf" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/shuttle/osiris/colonial)
 "vl" = (
@@ -1273,7 +1273,7 @@
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/osiris/colonial)
 "HZ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/osiris/colonial)
 "Ik" = (
@@ -1316,7 +1316,7 @@
 /turf/simulated/floor/carpet/patterened/blue,
 /area/shuttle/osiris/colonial)
 "Jn" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/osiris/colonial)
 "JB" = (
@@ -2930,7 +2930,7 @@ gb
 Lh
 Lh
 Lh
-ho
+YG
 WR
 pZ
 "}
@@ -2955,7 +2955,7 @@ ok
 gb
 gb
 Hh
-ho
+YG
 WR
 pZ
 "}

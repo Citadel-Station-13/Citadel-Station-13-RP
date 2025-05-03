@@ -7,7 +7,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "ag" = (
 /obj/machinery/air_alarm/alarms_hidden/north_mount{
 	req_one_access = null
@@ -17,7 +17,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "ah" = (
 /obj/machinery/light,
 /obj/structure/table/rack/shelf/steel,
@@ -27,10 +27,10 @@
 /obj/item/tank/emergency/oxygen/double,
 /obj/item/clothing/shoes/magboots/syndicate,
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "as" = (
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "aM" = (
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 4
@@ -41,7 +41,7 @@
 	old_wall = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "aZ" = (
 /obj/machinery/door/airlock,
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -51,7 +51,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "bp" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 9
@@ -61,26 +61,26 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "bq" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 10
 	},
 /obj/machinery/suit_cycler/vintage/omni,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "bs" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "bS" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/bed/pod,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "bZ" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/map_helper/airlock/door/int_door,
@@ -91,7 +91,7 @@
 	pixel_x = 22
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "ce" = (
 /obj/machinery/light,
 /obj/map_helper/airlock/atmos/chamber_pump,
@@ -101,27 +101,26 @@
 	id_tag = "scavenger_docker3"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "cA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
-/obj/effect/paint_stripe/amber,
 /turf/simulated/wall/r_wall/prepainted,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "cC" = (
 /obj/machinery/telecomms/relay/preset/telecomms,
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/scavengerutilitymicro)
 "cD" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "cI" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central2{
 	dir = 1
@@ -129,47 +128,41 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/closet/walllocker_double/east,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "cL" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/recharger,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "da" = (
 /obj/machinery/portable_atmospherics/canister/phoron,
 /obj/machinery/door/window/eastright,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
-"do" = (
-/obj/effect/paint_stripe/amber,
-/obj/effect/paint_stripe/amber,
-/turf/simulated/wall/r_wall/prepainted,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "dA" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
 	},
-/obj/effect/paint_stripe/amber,
 /turf/simulated/wall/r_wall/prepainted,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "dI" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "dO" = (
 /obj/machinery/holopad/ship/starts_inactive,
 /obj/machinery/holopad/ship/starts_inactive,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "dR" = (
 /obj/effect/floor_decal/techfloor,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "er" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 8
@@ -178,7 +171,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "eG" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -187,30 +180,27 @@
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "eH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "ff" = (
 /obj/effect/floor_decal/techfloor/orange,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "fD" = (
-/obj/machinery/air_alarm/alarms_hidden/north_mount{
-	req_one_access = null
-	},
 /obj/effect/floor_decal/steeldecal/steel_decals_central2,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "fE" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
@@ -225,7 +215,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "fT" = (
 /obj/effect/floor_decal/techfloor/corner{
 	dir = 1
@@ -237,11 +227,11 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "gb" = (
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "gd" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central2,
 /obj/machinery/light{
@@ -249,21 +239,21 @@
 	},
 /obj/structure/bed/pod,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "gh" = (
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "gk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "gq" = (
 /obj/effect/floor_decal/techfloor/orange,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "gF" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -272,14 +262,14 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/scavengerutilitymicro)
 "gG" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "gH" = (
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
@@ -294,7 +284,7 @@
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/scavengerutilitymicro)
 "gJ" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/light{
@@ -303,7 +293,7 @@
 	old_wall = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "gQ" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4
@@ -312,29 +302,28 @@
 	dir = 5
 	},
 /turf/simulated/wall/prepainted,
-/area/template_noop)
+/area/shuttle/scavengerutilitymicro)
 "gR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/effect/paint_stripe/amber,
 /turf/simulated/wall/r_wall/prepainted,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "gY" = (
 /obj/machinery/door/airlock,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "ho" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "hu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "hE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 8
@@ -346,31 +335,30 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "hH" = (
 /obj/effect/floor_decal/techfloor/orange,
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
 /turf/simulated/floor,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "hR" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor/lythios43c,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "hS" = (
 /obj/structure/closet/walllocker_double/east,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "hW" = (
-/obj/effect/paint_stripe/amber,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
 /turf/simulated/wall/r_wall/prepainted,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "hX" = (
 /obj/structure/bed/chair/bay/chair/padded/red{
 	dir = 4
@@ -382,7 +370,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "hY" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 8
@@ -394,20 +382,20 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "ie" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "iq" = (
 /obj/machinery/atmospherics/component/unary/engine/biggest{
 	dir = 4
 	},
-/turf/template_noop,
-/area/template_noop)
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/osiris/scavenger)
 "iv" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
@@ -416,7 +404,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "ix" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
@@ -425,7 +413,7 @@
 /obj/machinery/portable_atmospherics/canister/phoron,
 /obj/machinery/door/window/eastleft,
 /turf/simulated/floor,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "iz" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
@@ -437,7 +425,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "iG" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 8
@@ -446,7 +434,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "iH" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 6
@@ -456,7 +444,7 @@
 	old_wall = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "iT" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
@@ -469,7 +457,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "jc" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
@@ -483,7 +471,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "jq" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
@@ -493,12 +481,12 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "jA" = (
 /obj/machinery/portable_atmospherics/canister/air,
 /obj/machinery/door/window/eastleft,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "jL" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 8
@@ -511,7 +499,7 @@
 	pixel_x = -25
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "jZ" = (
 /obj/effect/floor_decal/techfloor/orange,
 /obj/effect/floor_decal/techfloor{
@@ -520,11 +508,11 @@
 /obj/machinery/door/window/eastright,
 /obj/machinery/portable_atmospherics/canister/phoron,
 /turf/simulated/floor,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "ka" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "kw" = (
 /obj/effect/floor_decal/techfloor/orange,
 /obj/effect/floor_decal/techfloor{
@@ -533,7 +521,7 @@
 /obj/machinery/light,
 /obj/machinery/portable_atmospherics/canister/phoron,
 /turf/simulated/floor,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "kC" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -543,7 +531,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "lc" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central2,
 /obj/structure/bed/pod,
@@ -551,13 +539,13 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "lk" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "lo" = (
 /obj/effect/floor_decal/techfloor/orange/corner{
 	dir = 8
@@ -566,26 +554,26 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "lv" = (
 /obj/structure/cryofeed{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "lM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor/lythios43c,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "lY" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor/orange,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "ma" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 9
@@ -594,13 +582,13 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "mg" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/scavengerutilitymicro)
 "mj" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 6
@@ -609,7 +597,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "mp" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
@@ -619,11 +607,11 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "mr" = (
 /obj/machinery/cryopod/robot/door/gateway,
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "my" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 8
@@ -638,13 +626,13 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/scavengerutilitymicro)
 "mD" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "mE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -653,7 +641,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor/lythios43c,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "mG" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/clothing/head/helmet/space/void/engineering/alt,
@@ -662,7 +650,7 @@
 /obj/item/tank/emergency/oxygen/double,
 /obj/item/clothing/shoes/magboots/syndicate,
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "mO" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 9
@@ -671,7 +659,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "mW" = (
 /obj/machinery/door/window/southright,
 /obj/structure/window/reinforced{
@@ -684,12 +672,12 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/scavengerutilitymicro)
 "nc" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/computer/ship/helm,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "nf" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 9
@@ -701,20 +689,20 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "nh" = (
 /obj/machinery/atmospherics/pipe/tank/phoron{
 	dir = 4;
 	volume = 15000
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/scavengerutilitymicro)
 "nr" = (
 /obj/structure/window/reinforced{
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "nu" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -726,7 +714,7 @@
 	id_tag = "scavenger_docker3"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "nw" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 10
@@ -738,13 +726,13 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "nC" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "nQ" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/map_helper/airlock/door/ext_door,
@@ -755,7 +743,7 @@
 	pixel_x = 25
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "nR" = (
 /obj/structure/table/steel_reinforced,
 /obj/effect/floor_decal/techfloor{
@@ -765,17 +753,17 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
-"oI" = (
-/obj/effect/paint_stripe/amber,
-/turf/simulated/wall/r_wall/prepainted,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "pj" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
+"pk" = (
+/obj/landmark/spawnpoint/job/outsider/scavenger,
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/shuttle/osiris/scavenger)
 "pr" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/map_helper/airlock/door/int_door,
@@ -786,7 +774,7 @@
 	pixel_x = 22
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "pw" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 8
@@ -795,21 +783,21 @@
 	dir = 4
 	},
 /turf/simulated/wall/r_wall/prepainted,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "pM" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "pR" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/tank/air,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "pU" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 10
@@ -819,13 +807,13 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "qh" = (
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/reinforced,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "qk" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 10
@@ -835,7 +823,7 @@
 	},
 /obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "ql" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
@@ -845,7 +833,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "qU" = (
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/atmospherics/portables_connector{
@@ -854,23 +842,26 @@
 /obj/machinery/portable_atmospherics/canister/phoron,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "rc" = (
 /turf/simulated/floor/reinforced,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "ro" = (
 /obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "rG" = (
 /obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
+"rQ" = (
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/scavengerutilitymicro)
 "rS" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "sx" = (
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	frequency = 1380;
@@ -878,7 +869,7 @@
 	pixel_x = 25
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "sA" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -893,7 +884,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "sI" = (
 /obj/effect/floor_decal/techfloor,
 /obj/effect/floor_decal/techfloor/orange{
@@ -901,15 +892,15 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "th" = (
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "tj" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central2,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "tm" = (
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/airlock_sensor{
@@ -918,7 +909,7 @@
 	pixel_x = 25
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "tq" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
@@ -927,7 +918,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "tJ" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 9
@@ -938,16 +929,16 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "ua" = (
 /obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/steel_dirty/indoors,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "ug" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/flashlight/lamp/on,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "uh" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 8
@@ -960,7 +951,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "uw" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 5
@@ -970,13 +961,23 @@
 	old_wall = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "uH" = (
 /obj/machinery/atmospherics/component/unary/engine{
 	dir = 8
 	},
 /turf/simulated/shuttle/plating/airless/carry,
-/area/template_noop)
+/area/shuttle/scavengerutilitymicro)
+"uU" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/landmark/spawnpoint/job/outsider/scavenger,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/scavenger)
+"uW" = (
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/osiris/scavenger)
 "vm" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 10
@@ -985,7 +986,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "vq" = (
 /obj/machinery/light,
 /obj/machinery/power/smes/buildable/offmap_spawn,
@@ -993,11 +994,11 @@
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "vv" = (
 /obj/structure/window/reinforced,
 /turf/simulated/floor/reinforced,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "we" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 10
@@ -1006,14 +1007,14 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "wr" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "wB" = (
 /obj/effect/floor_decal/techfloor/orange,
 /obj/effect/floor_decal/techfloor{
@@ -1021,7 +1022,7 @@
 	},
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "xq" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/map_helper/airlock/door/ext_door,
@@ -1032,43 +1033,42 @@
 	pixel_x = 25
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "xy" = (
 /obj/machinery/door/airlock,
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/steel_dirty/red,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "xI" = (
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "xO" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/amber,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "xP" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "xV" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "yv" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "yy" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
@@ -1082,32 +1082,30 @@
 	old_wall = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "yH" = (
 /obj/structure/closet/walllocker_double/west,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "yR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/effect/paint_stripe/amber,
 /turf/simulated/wall/prepainted/command,
-/area/template_noop)
+/area/shuttle/scavengerutilitymicro)
 "yT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/effect/paint_stripe/amber,
 /turf/simulated/wall/r_wall/prepainted,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "yW" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor/lythios43c,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "yY" = (
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
@@ -1116,7 +1114,7 @@
 	id_tag = "scavenger_docker2"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "zb" = (
 /obj/structure/table/steel_reinforced,
 /obj/effect/floor_decal/techfloor{
@@ -1124,27 +1122,26 @@
 	},
 /obj/machinery/computer/ship/sensors,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "zl" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/techfloor/lythios43c,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "zI" = (
-/obj/effect/paint_stripe/amber,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
 /turf/simulated/wall/r_wall/prepainted,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "zK" = (
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "zV" = (
 /obj/effect/floor_decal/techfloor/orange,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Ae" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
@@ -1153,7 +1150,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Aj" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 8
@@ -1166,7 +1163,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Ap" = (
 /obj/machinery/light{
 	dir = 1
@@ -1178,24 +1175,24 @@
 	id_tag = "scavenger_docker3"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Au" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Ay" = (
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "AF" = (
 /obj/structure/table/steel_reinforced,
 /obj/effect/floor_decal/steeldecal/steel_decals_central2{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Bb" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -1204,7 +1201,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/scavengerutilitymicro)
 "Bd" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 9
@@ -1223,7 +1220,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Bj" = (
 /obj/machinery/portable_atmospherics/canister/air/airlock,
 /obj/machinery/atmospherics/portables_connector{
@@ -1233,11 +1230,11 @@
 	pixel_x = -27
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/scavengerutilitymicro)
 "Bk" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/steel_dirty/red,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Bu" = (
 /obj/effect/floor_decal/techfloor,
 /obj/effect/floor_decal/techfloor/orange{
@@ -1248,7 +1245,7 @@
 	old_wall = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Bv" = (
 /obj/machinery/light{
 	dir = 1
@@ -1260,7 +1257,7 @@
 /obj/item/tank/emergency/oxygen/double,
 /obj/item/clothing/shoes/magboots/syndicate,
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "BA" = (
 /obj/machinery/computer/ship/helm{
 	dir = 4;
@@ -1275,33 +1272,32 @@
 	id_tag = "tradeport_utilitymicro_docker"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/scavengerutilitymicro)
 "BG" = (
 /obj/structure/bed/chair/bay/chair/padded/red,
 /obj/structure/window/reinforced/tinted{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "BI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
-/obj/effect/paint_stripe/amber,
 /turf/simulated/wall/r_wall/prepainted,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "BU" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/computer/shuttle_control/explore/scavenger{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "BY" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/computer/ship/helm,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Cq" = (
 /obj/machinery/washing_machine,
 /obj/structure/flora/pottedplant/stoutbush{
@@ -1313,14 +1309,14 @@
 	old_wall = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Cs" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
 /obj/machinery/shipsensors,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/scavengerutilitymicro)
 "CB" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 8
@@ -1335,7 +1331,7 @@
 /obj/item/storage/belt/utility/full,
 /obj/item/storage/belt/utility/full,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "CF" = (
 /obj/machinery/atmospherics/component/binary/pump/high_power/on{
 	dir = 8
@@ -1345,7 +1341,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "CJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 8
@@ -1354,14 +1350,14 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "CL" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/photocopier/faxmachine{
 	department = "Shield's Scavenge and Ship recovery"
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "CM" = (
 /obj/effect/floor_decal/techfloor/orange,
 /obj/effect/floor_decal/techfloor{
@@ -1369,7 +1365,7 @@
 	},
 /obj/machinery/portable_atmospherics/canister/phoron,
 /turf/simulated/floor,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "CZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
@@ -1378,26 +1374,26 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Dz" = (
 /obj/machinery/computer/ship/sensors{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "DB" = (
 /obj/machinery/shower{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/indoors,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "DP" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 5
 	},
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Ej" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
@@ -1405,7 +1401,7 @@
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/portable_atmospherics/canister/phoron,
 /turf/simulated/floor,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Er" = (
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	frequency = 1380;
@@ -1413,7 +1409,7 @@
 	pixel_x = 25
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Es" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
@@ -1425,24 +1421,24 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "EK" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central2,
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "EQ" = (
 /obj/machinery/portable_atmospherics/canister/phoron,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Fq" = (
 /obj/machinery/cryopod{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "FG" = (
 /obj/effect/floor_decal/techfloor/corner{
 	dir = 8
@@ -1454,7 +1450,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "FR" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
@@ -1464,7 +1460,7 @@
 	},
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Ge" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
@@ -1476,76 +1472,75 @@
 	pixel_x = -25
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Gg" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Gj" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/tank/phoron,
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Gr" = (
 /obj/structure/bed/pod,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Gz" = (
 /turf/simulated/floor/tiled/steel_dirty/indoors,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "GE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "GN" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Hg" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/computer/ship/engines{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Hy" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Hz" = (
 /obj/structure/window/reinforced{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "HC" = (
 /obj/structure/table/steel_reinforced,
 /obj/structure/flora/pottedplant/tall,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "HG" = (
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "HI" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor,
 /turf/simulated/floor,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "HR" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/amber,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Ib" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 8
@@ -1554,7 +1549,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "If" = (
 /obj/machinery/door/window,
 /obj/machinery/light{
@@ -1563,21 +1558,20 @@
 	old_wall = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/scavengerutilitymicro)
 "II" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/air_alarm/alarms_hidden/north_mount{
 	req_one_access = null
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Jb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 6
 	},
-/obj/effect/paint_stripe/amber,
 /turf/simulated/wall/prepainted/command,
-/area/template_noop)
+/area/shuttle/scavengerutilitymicro)
 "Jc" = (
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/atmospherics/portables_connector{
@@ -1588,19 +1582,19 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Jk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "JJ" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "JM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 9
@@ -1610,9 +1604,9 @@
 	},
 /obj/machinery/holopad/ship,
 /obj/overmap/entity/visitable/ship/landable/trade/scavengerutilitymicro,
-/obj/effect/shuttle_landmark/automatic,
+/obj/effect/shuttle_landmark/triumph/trade/scavengerutilitymicro,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/scavengerutilitymicro)
 "Kd" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 10
@@ -1624,7 +1618,11 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
+"Kj" = (
+/obj/landmark/spawnpoint/job/outsider/override/scavenger,
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/shuttle/osiris/scavenger)
 "Kr" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -1634,13 +1632,13 @@
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "La" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Ly" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
@@ -1649,14 +1647,14 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "LG" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central2{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "LM" = (
 /turf/template_noop,
 /area/template_noop)
@@ -1669,14 +1667,14 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/indoors,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Mj" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 10
 	},
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Mu" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -1685,13 +1683,13 @@
 	req_one_access = null
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Mv" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "MB" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 5
@@ -1700,7 +1698,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "MW" = (
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/airlock_sensor{
@@ -1709,7 +1707,7 @@
 	pixel_x = 25
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "MY" = (
 /obj/effect/floor_decal/techfloor,
 /obj/effect/floor_decal/techfloor/orange{
@@ -1722,25 +1720,25 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "MZ" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "NB" = (
 /obj/effect/floor_decal/techfloor/orange,
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "NC" = (
 /obj/machinery/door/airlock,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/red,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "NZ" = (
 /obj/machinery/computer/ship/engines,
 /obj/machinery/computer/ship/sensors{
@@ -1753,7 +1751,7 @@
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/scavengerutilitymicro)
 "Od" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -1761,7 +1759,7 @@
 /obj/effect/floor_decal/techfloor/orange,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Oo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/machinery/air_alarm/alarms_hidden/north_mount{
@@ -1772,7 +1770,7 @@
 	},
 /obj/machinery/computer/shuttle_control/explore/scavengerutilitymicro,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/scavengerutilitymicro)
 "Oq" = (
 /obj/structure/bed/chair/bay/chair/padded/red{
 	dir = 4
@@ -1781,16 +1779,16 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Ov" = (
 /obj/effect/shuttle_landmark/automatic,
 /turf/simulated/floor/reinforced,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "OE" = (
 /obj/machinery/door/blast/regular,
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/wall/r_wall/prepainted,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "OG" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/map_helper/airlock/door/ext_door,
@@ -1801,15 +1799,14 @@
 	pixel_y = 25
 	},
 /turf/simulated/floor/tiled/techfloor/lythios43c,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "OJ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/effect/paint_stripe/amber,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/scavengerutilitymicro)
 "OU" = (
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
@@ -1818,7 +1815,7 @@
 	id_tag = "scavenger_docker"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Pb" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
@@ -1832,19 +1829,19 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Ph" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Pu" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "PV" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
@@ -1853,7 +1850,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "PX" = (
 /obj/structure/bed/chair/bay/chair/padded/red{
 	dir = 4
@@ -1862,7 +1859,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Qa" = (
 /obj/machinery/power/smes/buildable{
 	charge = 15000;
@@ -1870,7 +1867,7 @@
 	},
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/scavengerutilitymicro)
 "Qe" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/structure/cable{
@@ -1878,7 +1875,7 @@
 	},
 /obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/techfloor/lythios43c,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Qy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 8
@@ -1887,39 +1884,46 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
+"Qz" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/landmark/spawnpoint/job/outsider/override/scavenger,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/scavenger)
 "QC" = (
 /obj/effect/floor_decal/techfloor/orange,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "QR" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Ra" = (
 /obj/machinery/shower{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/indoors,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Rh" = (
 /obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/structure/window/reinforced,
 /turf/simulated/floor/reinforced,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Rj" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Rk" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -1931,27 +1935,31 @@
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor/lythios43c,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Rw" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "RB" = (
 /obj/machinery/door/airlock,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/simulated/wall/r_wall/prepainted,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
+"RI" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/scavengerutilitymicro)
 "RT" = (
 /turf/simulated/wall/r_wall/prepainted,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Sb" = (
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Sd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -1960,7 +1968,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Sv" = (
 /obj/effect/floor_decal/techfloor/orange/corner{
 	dir = 1
@@ -1972,7 +1980,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "SA" = (
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/airlock_sensor{
@@ -1981,35 +1989,48 @@
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/techfloor/lythios43c,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "SY" = (
 /obj/machinery/shipsensors,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Tc" = (
 /obj/effect/floor_decal/techfloor,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
+"TB" = (
+/obj/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 8;
+	frequency = 1380;
+	id_tag = "scavenger_docker"
+	},
+/obj/overmap/entity/visitable/ship/landable/osiris/scavenger,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/scavenger)
 "TO" = (
 /turf/simulated/floor/tiled/techfloor/lythios43c,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Ud" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central2{
 	dir = 1
 	},
 /obj/structure/closet/walllocker_double/west,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
+"Uh" = (
+/obj/landmark/spawnpoint/job/outsider/override/scavenger,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/scavenger)
 "UL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 1
 	},
-/obj/effect/paint_stripe/amber,
 /turf/simulated/wall/r_wall/prepainted,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "UW" = (
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/atmospherics/portables_connector{
@@ -2017,13 +2038,13 @@
 	},
 /obj/machinery/portable_atmospherics/canister/phoron,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Va" = (
 /obj/structure/window/reinforced{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/scavengerutilitymicro)
 "Vp" = (
 /obj/machinery/light{
 	dir = 4;
@@ -2033,7 +2054,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/indoors,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Vq" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 8
@@ -2043,7 +2064,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "VU" = (
 /obj/effect/floor_decal/techfloor/orange,
 /obj/effect/floor_decal/techfloor{
@@ -2051,7 +2072,7 @@
 	},
 /obj/machinery/light,
 /turf/simulated/floor,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "VX" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -2063,13 +2084,13 @@
 	},
 /obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/techfloor/lythios43c,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "WA" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central2{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Xa" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/computer/ship/helm{
@@ -2077,22 +2098,21 @@
 	req_one_access = null
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "XJ" = (
 /obj/structure/marker_beacon/red,
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "XP" = (
 /obj/structure/table/rack/shelf,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Yq" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
 	},
-/obj/effect/paint_stripe/amber,
 /turf/simulated/wall/r_wall/prepainted,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Yv" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -2102,7 +2122,7 @@
 	},
 /obj/machinery/atmospherics/pipe/tank/air,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "YC" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
@@ -2114,7 +2134,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "YI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -2125,20 +2145,20 @@
 	pixel_y = 25
 	},
 /turf/simulated/floor/tiled/techfloor/lythios43c,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Zd" = (
 /obj/machinery/air_alarm/alarms_hidden/north_mount{
 	req_one_access = null
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals_central2,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Ze" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/techfloor/lythios43c,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "Zr" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 8
@@ -2153,17 +2173,16 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 "ZN" = (
-/obj/effect/paint_stripe/amber,
 /turf/simulated/wall/prepainted/command,
-/area/template_noop)
+/area/shuttle/scavengerutilitymicro)
 "ZX" = (
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
-/area/template_noop)
+/area/shuttle/osiris/scavenger)
 
 (1,1,1) = {"
 LM
@@ -4146,17 +4165,17 @@ LM
 LM
 LM
 LM
-oI
-oI
-oI
-oI
+RT
+RT
+RT
+RT
 OG
 Qe
 zl
-oI
-oI
-oI
-oI
+RT
+RT
+RT
+RT
 LM
 LM
 LM
@@ -4178,11 +4197,11 @@ LM
 LM
 RT
 RT
-oI
+RT
 TO
 hR
 TO
-oI
+RT
 RT
 RT
 LM
@@ -4198,8 +4217,8 @@ LM
 (71,1,1) = {"
 LM
 LM
-LM
-LM
+uW
+uW
 iq
 LM
 LM
@@ -4207,19 +4226,19 @@ LM
 LM
 LM
 RT
-oI
+RT
 SA
 hR
 TO
-oI
+RT
 RT
 LM
 LM
 LM
 LM
 LM
-LM
-LM
+uW
+uW
 iq
 LM
 LM
@@ -4227,49 +4246,19 @@ LM
 (72,1,1) = {"
 LM
 LM
+uW
+uW
+uW
 LM
 LM
 LM
 LM
 LM
 LM
-LM
-LM
-LM
-oI
+RT
 Ap
 nu
 ce
-oI
-LM
-LM
-LM
-LM
-LM
-LM
-LM
-LM
-LM
-LM
-LM
-"}
-(73,1,1) = {"
-LM
-LM
-LM
-LM
-LM
-LM
-LM
-LM
-LM
-LM
-LM
-oI
-YI
-yW
-lM
-oI
 RT
 LM
 LM
@@ -4277,8 +4266,38 @@ LM
 LM
 LM
 LM
+uW
+uW
+uW
 LM
 LM
+"}
+(73,1,1) = {"
+LM
+LM
+uW
+uW
+uW
+LM
+LM
+LM
+LM
+LM
+LM
+RT
+YI
+yW
+lM
+RT
+RT
+LM
+LM
+LM
+LM
+LM
+uW
+uW
+uW
 LM
 LM
 "}
@@ -4294,11 +4313,11 @@ LM
 LM
 LM
 LM
-oI
+RT
 TO
 mE
 TO
-oI
+RT
 RT
 RT
 LM
@@ -4313,7 +4332,7 @@ LM
 "}
 (75,1,1) = {"
 LM
-oI
+RT
 cA
 dA
 dA
@@ -4337,11 +4356,11 @@ gR
 dA
 dA
 BI
-oI
+RT
 LM
 "}
 (76,1,1) = {"
-oI
+RT
 RT
 RT
 RT
@@ -4356,21 +4375,21 @@ yT
 mO
 Es
 Mj
-oI
+RT
 Gj
 xV
 CF
 vq
-oI
+RT
 Ej
 EQ
 RT
 RT
 RT
-oI
+RT
 "}
 (77,1,1) = {"
-oI
+RT
 RT
 RT
 RT
@@ -4390,26 +4409,26 @@ Bd
 hY
 iT
 nw
-oI
+RT
 Ej
 EQ
 RT
 RT
 RT
-oI
+RT
 "}
 (78,1,1) = {"
-oI
+RT
 aM
 ZX
 RT
 jA
 jZ
 Hz
-HR
-HR
-HR
-HR
+RI
+RI
+RI
+RI
 vv
 Ph
 hE
@@ -4419,36 +4438,36 @@ sA
 er
 PV
 Jc
-oI
+RT
 ix
 da
-oI
+RT
 aM
 ZX
 RT
 "}
 (79,1,1) = {"
 Rj
-OU
+TB
 OU
 rS
 gh
 hH
 Hz
-HR
-gh
+RI
+rQ
 BA
 ZN
 rc
 Ph
 Ib
 zV
-oI
+RT
 Kr
 Qy
 yv
 UW
-oI
+RT
 HI
 gh
 rS
@@ -4477,7 +4496,7 @@ pR
 ie
 GE
 qU
-oI
+RT
 HI
 gh
 bZ
@@ -4486,10 +4505,10 @@ Er
 nQ
 "}
 (81,1,1) = {"
-oI
 RT
-oI
-oI
+RT
+RT
+RT
 pj
 VU
 Hz
@@ -4509,13 +4528,13 @@ Tc
 RB
 ql
 gh
-oI
 RT
-oI
-oI
+RT
+RT
+RT
 "}
 (82,1,1) = {"
-oI
+RT
 RT
 La
 HG
@@ -4523,32 +4542,32 @@ gh
 hH
 Hz
 yR
-HR
+RI
 OJ
 ZN
 rc
 Ph
 Ib
 zV
-oI
-oI
-oI
-oI
-oI
-oI
+RT
+RT
+RT
+RT
+RT
+RT
 Pb
 gh
 HG
 ka
 RT
-oI
+RT
 "}
 (83,1,1) = {"
-oI
+RT
 RT
 lv
 Fq
-gh
+Uh
 hH
 Hz
 Bj
@@ -4567,17 +4586,17 @@ bq
 Bk
 mp
 gh
-HG
+pk
 mr
 RT
-oI
+RT
 "}
 (84,1,1) = {"
-oI
+RT
 RT
 lv
 Fq
-Hy
+uU
 hH
 Hz
 nh
@@ -4588,25 +4607,25 @@ qh
 Ly
 CJ
 zV
-oI
+RT
 Mu
 Ay
 Ay
 ro
-oI
+RT
 Pb
 Hy
-HG
+Kj
 ka
 RT
-oI
+RT
 "}
 (85,1,1) = {"
-oI
+RT
 RT
 lv
 Fq
-eH
+Qz
 NB
 Hz
 Cs
@@ -4625,13 +4644,13 @@ lk
 rG
 jq
 eH
-HG
+pk
 mr
 RT
-oI
+RT
 "}
 (86,1,1) = {"
-oI
+RT
 RT
 La
 HG
@@ -4646,22 +4665,22 @@ vv
 FR
 gk
 gq
-oI
+RT
 Bv
 mG
 mG
 ah
-oI
+RT
 jc
 eH
 HG
 ka
 RT
-oI
+RT
 "}
 (87,1,1) = {"
-oI
-oI
+RT
+RT
 RT
 RT
 Kd
@@ -4675,23 +4694,23 @@ Rh
 DP
 Ae
 dI
-oI
-oI
-oI
-oI
-oI
-oI
+RT
+RT
+RT
+RT
+RT
+RT
 jq
 bp
 RT
 RT
-oI
-oI
+RT
+RT
 "}
 (88,1,1) = {"
 LM
-oI
-oI
+RT
+RT
 RT
 MY
 lo
@@ -4713,14 +4732,14 @@ yy
 Sv
 kC
 RT
-oI
-oI
+RT
+RT
 LM
 "}
 (89,1,1) = {"
 LM
 LM
-oI
+RT
 RT
 FG
 Vq
@@ -4742,20 +4761,20 @@ uh
 Aj
 fT
 RT
-oI
+RT
 LM
 LM
 "}
 (90,1,1) = {"
 LM
 LM
-oI
 RT
-oI
-oI
-oI
-oI
-oI
+RT
+RT
+RT
+RT
+RT
+RT
 dR
 Jk
 Pu
@@ -4765,26 +4784,26 @@ Ay
 ro
 Sd
 lY
-oI
-NC
-oI
-oI
-do
 RT
-oI
+NC
+RT
+RT
+RT
+RT
+RT
 LM
 LM
 "}
 (91,1,1) = {"
 LM
 LM
-oI
+RT
 RT
 gd
 yH
 Gr
 Ud
-oI
+RT
 Bu
 Jk
 Pu
@@ -4794,26 +4813,26 @@ gb
 ro
 Sd
 Od
-oI
+RT
 ag
 XP
 gJ
 AF
 RT
-oI
+RT
 LM
 LM
 "}
 (92,1,1) = {"
 LM
 LM
-oI
+RT
 RT
 Zd
 Ay
 Ay
 WA
-oI
+RT
 dR
 Jk
 Pu
@@ -4829,14 +4848,14 @@ hu
 Mv
 WA
 RT
-oI
+RT
 LM
 LM
 "}
 (93,1,1) = {"
 LM
 LM
-oI
+RT
 RT
 lc
 hS
@@ -4858,20 +4877,20 @@ Ay
 Ay
 WA
 RT
-oI
+RT
 LM
 LM
 "}
 (94,1,1) = {"
 LM
 LM
-oI
 RT
 RT
 RT
 RT
 RT
-oI
+RT
+RT
 Bu
 Jk
 Pu
@@ -4887,14 +4906,14 @@ XP
 Cq
 WA
 RT
-oI
+RT
 LM
 LM
 "}
 (95,1,1) = {"
 LM
 LM
-oI
+RT
 RT
 gd
 BG
@@ -4910,20 +4929,20 @@ gb
 ro
 Sd
 Od
-oI
-ua
-RT
 RT
 ua
 RT
-oI
+RT
+ua
+RT
+RT
 LM
 LM
 "}
 (96,1,1) = {"
 LM
 LM
-oI
+RT
 RT
 Zd
 cD
@@ -4939,21 +4958,21 @@ Ay
 ro
 Sd
 lY
-oI
+RT
 Gz
 RT
 Ra
 Gz
 RT
-oI
+RT
 LM
 LM
 "}
 (97,1,1) = {"
 LM
 LM
-oI
-oI
+RT
+RT
 EK
 Ay
 MZ
@@ -4968,13 +4987,13 @@ ho
 iH
 Sd
 lY
-oI
+RT
 LZ
 RT
 Vp
 DB
-oI
-oI
+RT
+RT
 LM
 LM
 "}
@@ -4982,27 +5001,27 @@ LM
 LM
 LM
 LM
-oI
-oI
-oI
-oI
-oI
-oI
-oI
+RT
+RT
+RT
+RT
+RT
+RT
+RT
 gY
-oI
-oI
-oI
-oI
-oI
+RT
+RT
+RT
+RT
+RT
 aZ
-oI
-oI
-oI
-oI
-oI
-oI
-oI
+RT
+RT
+RT
+RT
+RT
+RT
+RT
 LM
 LM
 LM
@@ -5013,9 +5032,9 @@ LM
 LM
 LM
 LM
-oI
+RT
 SY
-do
+RT
 II
 ma
 vm
@@ -5027,9 +5046,9 @@ qk
 nf
 we
 zK
-oI
+RT
 SY
-oI
+RT
 LM
 LM
 LM

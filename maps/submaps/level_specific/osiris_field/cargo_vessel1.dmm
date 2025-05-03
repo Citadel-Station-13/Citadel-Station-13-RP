@@ -288,7 +288,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/osiris_field/cargo_vessel1)
 "pY" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/wall/prepainted,
 /area/submap/osiris_field/cargo_vessel1)
 "qC" = (
@@ -839,7 +839,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/osiris_field/cargo_vessel1)
 "Wi" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/osiris_field/cargo_vessel1)
 "WJ" = (
@@ -874,7 +874,7 @@
 /turf/simulated/floor/wood,
 /area/submap/osiris_field/cargo_vessel1)
 "ZO" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/submap/osiris_field/cargo_vessel1)
 

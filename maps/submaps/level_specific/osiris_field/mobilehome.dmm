@@ -260,11 +260,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/template_noop)
 "xf" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/template_noop)
 "xJ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/template_noop)
 "zm" = (
@@ -385,7 +385,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/template_noop)
 "GP" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor,
 /area/template_noop)
 "GS" = (

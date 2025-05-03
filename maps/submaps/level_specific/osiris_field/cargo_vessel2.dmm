@@ -70,7 +70,7 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/submap/osiris_field/cargo_vessel2)
 "hG" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/osiris_field/cargo_vessel2)
 "hQ" = (

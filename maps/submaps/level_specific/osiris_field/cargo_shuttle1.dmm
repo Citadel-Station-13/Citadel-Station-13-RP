@@ -106,7 +106,7 @@
 /turf/simulated/wall/r_wall/prepainted/cargo,
 /area/submap/osiris_field/cargo_shuttle1)
 "X" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating/indoors,
 /area/submap/osiris_field/cargo_shuttle1)
 "Y" = (

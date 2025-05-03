@@ -489,7 +489,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/submap/osiris_field/pirate_wreck2)
 "uP" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/computer/secure_data,
 /turf/simulated/floor/plating,
 /area/submap/osiris_field/pirate_wreck2)
@@ -640,7 +640,7 @@
 /turf/space/basic,
 /area/space)
 "Ad" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/osiris_field/pirate_wreck2)
 "Az" = (
@@ -863,7 +863,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/submap/osiris_field/pirate_wreck2)
 "Qr" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/submap/osiris_field/pirate_wreck2)
 "QR" = (
@@ -895,7 +895,7 @@
 /obj/effect/floor_decal/corner_techfloor_grid/full{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/submap/osiris_field/pirate_wreck2)
 "Rs" = (

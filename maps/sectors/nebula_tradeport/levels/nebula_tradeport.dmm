@@ -22299,6 +22299,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/cafeteria)
+"keW" = (
+/obj/effect/shuttle_landmark/triumph/trade/scavenger,
+/turf/space/basic,
+/area/space)
 "kfI" = (
 /obj/structure/table/hardwoodtable,
 /obj/machinery/microwave{
@@ -56285,7 +56289,7 @@ cfn
 tZu
 qGo
 acd
-acd
+keW
 acd
 acd
 acd
