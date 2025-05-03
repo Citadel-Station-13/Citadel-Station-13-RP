@@ -196,16 +196,16 @@
 	icon_state = "littleblackdress"
 
 /obj/item/clothing/under/victorianreddress
-    name = "red victorian dress"
-    desc = "A little gratitude wouldn't irretrievably damage my ego."
+	name = "red victorian dress"
+	desc = "A little gratitude wouldn't irretrievably damage my ego."
 	icon = 'icons/clothing/uniform/formal/dress/victorianreddress.dmi'
-    icon_state = "victorianreddress"
+	icon_state = "victorianreddress"
 
 /obj/item/clothing/under/victorianblackdress
-    name = "black victorian dress"
-    desc = "What's the use of a good quotation if you can't change it?"
+	name = "black victorian dress"
+	desc = "What's the use of a good quotation if you can't change it?"
 	icon = 'icons/clothing/uniform/formal/dress/victorianblackdress.dmi'
-    icon_state = "victorianblackdress"
+	icon_state = "victorianblackdress"
 
 /obj/item/clothing/under/fienddress
 	name = "fiendish dress"
@@ -226,10 +226,10 @@
 	icon_state = "black_tabard"
 
 /obj/item/clothing/under/verglasdress
-    name = "verglas dress"
-    desc = "The modern twist on a forgotten pattern, the Verglas style utilizes comfortable velvet and silver white satin to create an otherworldly effect evocative of winter, or the void."
+	name = "verglas dress"
+	desc = "The modern twist on a forgotten pattern, the Verglas style utilizes comfortable velvet and silver white satin to create an otherworldly effect evocative of winter, or the void."
 	icon = 'icons/clothing/uniform/formal/dress/verglas_dress.dmi'
-    icon_state = "verglas_dress"
+	icon_state = "verglas_dress"
 
 /obj/item/clothing/under/simpledress
 	name = "White Simple Dress"
@@ -238,10 +238,10 @@
 	icon_state = "simpledress"
 
 /obj/item/clothing/under/chiming_dress
-    name = "chiming dress"
-    desc = "This stylish yet rugged dress is inspired by recovered depictions of ancient Surt's native inhabitants. Composed of many integrated panels, it allows for excellent breathability whilst also retaining a strong profile."
+	name = "chiming dress"
+	desc = "This stylish yet rugged dress is inspired by recovered depictions of ancient Surt's native inhabitants. Composed of many integrated panels, it allows for excellent breathability whilst also retaining a strong profile."
 	icon = 'icons/clothing/uniform/formal/dress/chiming_dress.dmi'
-    icon_state = "chiming_dress"
+	icon_state = "chiming_dress"
 
 /obj/item/clothing/under/countess
 	name = "countess dress"

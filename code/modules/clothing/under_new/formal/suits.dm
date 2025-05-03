@@ -148,10 +148,10 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 
 /obj/item/clothing/under/victorianblred
-    name = "red shirted victorian suit"
-    desc = "Don't you see? I have thirteen lives."
+	name = "red shirted victorian suit"
+	desc = "Don't you see? I have thirteen lives."
 	icon = 'icons/clothing/uniform/formal/suits/victorianblred.dmi'
-    icon_state = "victorianblred"
+	icon_state = "victorianblred"
 
 /obj/item/clothing/under/fem_victorianblred
 	name = "red shirted victorian suit"
@@ -160,10 +160,10 @@
 	icon_state = "victorianblred-fem"
 
 /obj/item/clothing/under/victorianredvest
-    name = "red vested victorian suit"
-    desc = "Why are we going to the back of the ship? Because the front crashes first. Think it through."
+	name = "red vested victorian suit"
+	desc = "Why are we going to the back of the ship? Because the front crashes first. Think it through."
 	icon = 'icons/clothing/uniform/formal/suits/victorianredvest.dmi'
-    icon_state = "victorianredvest"
+	icon_state = "victorianredvest"
 
 /obj/item/clothing/under/fem_victorianredvest
 	name = "red vested victorian suit"
@@ -172,10 +172,10 @@
 	icon_state = "victorianredvest-fem"
 
 /obj/item/clothing/under/victorianvest
-    name = "victorian suit"
-    desc = "Four minutes? That's ages. What if I get bored, or need a television, couple of books? Anyone for chess? Bring me knitting."
+	name = "victorian suit"
+	desc = "Four minutes? That's ages. What if I get bored, or need a television, couple of books? Anyone for chess? Bring me knitting."
 	icon = 'icons/clothing/uniform/formal/suits/victorianvest.dmi'
-    icon_state = "victorianvest"
+	icon_state = "victorianvest"
 
 /obj/item/clothing/under/fem_victorianvest
 	name = "victorian suit"
@@ -184,10 +184,10 @@
 	icon_state = "victorianvest-fem"
 
 /obj/item/clothing/under/victorianlightfire
-    name = "light blue shirted victorian suit"
-    desc = "Have you ever thought about what it's like to be wanderers in the Fourth Dimension? Yes, I'm asking you."
+	name = "light blue shirted victorian suit"
+	desc = "Have you ever thought about what it's like to be wanderers in the Fourth Dimension? Yes, I'm asking you."
 	icon = 'icons/clothing/uniform/formal/suits/victorianlightfire.dmi'
-    icon_state = "victorianlightfire"
+	icon_state = "victorianlightfire"
 
 /obj/item/clothing/under/fem_victorianlightfire
 	name = "light blue shirted victorian suit"
