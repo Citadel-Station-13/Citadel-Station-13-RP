@@ -978,7 +978,7 @@
 	activators = list("prime grenade" = IC_PINTYPE_PULSE_IN)
 	spawn_flags = IC_SPAWN_RESEARCH
 	origin_tech = list(TECH_ENGINEERING = 3, TECH_DATA = 3, TECH_COMBAT = 4)
-	var/obj/item/grenade/attached_grenade
+	var/obj/item/grenade/simple/attached_grenade
 	var/pre_attached_grenade_type
 
 /obj/item/integrated_circuit/manipulation/grenade/Initialize(mapload)
@@ -996,7 +996,7 @@
 		return FALSE
 	attackby_react(I, user, a_intent)
 
-/obj/item/integrated_circuit/manipulation/grenade/attackby_react(var/obj/item/grenade/G, var/mob/user)
+/obj/item/integrated_circuit/manipulation/grenade/attackby_react(var/obj/item/grenade/simple/G, var/mob/user)
 	if(istype(G))
 		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		if(attached_grenade)
@@ -1023,10 +1023,10 @@
 		return ..()
 
 /obj/item/integrated_circuit/manipulation/grenade/do_work()
-	if(attached_grenade && !attached_grenade.active)
+	if(attached_grenade && !attached_grenade.activated)
 		var/datum/integrated_io/detonation_time = inputs[1]
 		if(isnum(detonation_time.data) && detonation_time.data > 0)
-			attached_grenade.det_time = between(1, detonation_time.data, 12) SECONDS
+			attached_grenade.activation_detonate_delay = between(1, detonation_time.data, 12) SECONDS
 		attached_grenade.activate()
 		var/atom/holder = loc
 		log_and_message_admins("activated a grenade assembly.  Last touches: Assembly: [holder.fingerprintslast] Circuit: [fingerprintslast] Grenade: [attached_grenade.fingerprintslast]")
