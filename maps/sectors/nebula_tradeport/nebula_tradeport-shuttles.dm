@@ -311,7 +311,7 @@
 	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
 	sound_env = SMALL_ENCLOSED
 
-//Scavenger
+//Slavager
 
 /datum/shuttle/autodock/overmap/osiris/scavenger
 	name = "FTUGS Adala"
@@ -323,12 +323,12 @@
 
 /obj/overmap/entity/visitable/ship/landable/osiris/scavenger
 	name = "FTUGS Adala"
-	desc = "A legal Scavenger vessel."
+	desc = "A legal Slavager vessel."
 	scanner_name = "FTUGS Adala"
-	scanner_desc = @{"[i]Registration[/i]: Free Trade Union - Guardian Scavenger - Adala - FTUGS 003
-[i]Class[/i]: Mega-Tug + Scavenger trailer
-[i]Transponder[/i]: Transmitting (CIV), Free trade Union shuttle, Guardian Scavenger subsidiary.
-[b]Notice[/b]: A Guardian Scavenger company vessel, operated by the FTU. Able to carry small to big one decker vessels. Their scavenging permit as been confirm by CC and the local governement."}
+	scanner_desc = @{"[i]Registration[/i]: Free Trade Union - Guardian Slavager - Adala - FTUGS 003
+[i]Class[/i]: Mega-Tug + Slavager trailer
+[i]Transponder[/i]: Transmitting (CIV), Free trade Union shuttle, Guardian Slavager subsidiary.
+[b]Notice[/b]: A Guardian Slavager company vessel, operated by the FTU. Able to carry small to big one decker vessels. Their scavenging permit as been confirm by CC and the local governement."}
 	color = "#f8e300"
 	fore_dir = EAST
 	vessel_mass = 8000
