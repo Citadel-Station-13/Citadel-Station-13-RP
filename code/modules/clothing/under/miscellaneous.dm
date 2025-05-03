@@ -227,34 +227,10 @@
 	desc = "A gold-lined white robe. It gives off uncomfortable cult vibes, but fancy."
 	icon_state = "whitegoldrobe"
 
-/obj/item/clothing/under/dress/dress_cap
-	name = "Facility Director's dress uniform"
-	desc = "Feminine fashion for the style conscious Facility Director."
-	icon_state = "dress_cap"
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
-
-/obj/item/clothing/under/dress/dress_hop
-	name = "head of personnel dress uniform"
-	desc = "Feminine fashion for the style conscious HoP."
-	icon_state = "dress_hop"
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
-
-/obj/item/clothing/under/dress/dress_hr
-	name = "human resources director uniform"
-	desc = "Superior class for the nosy H.R. Director."
-	icon_state = "huresource"
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
-
 /obj/item/clothing/under/dress/black_corset
 	name = "black corset and skirt"
 	desc = "A black corset and skirt for those fancy nights out."
 	icon_state = "black_corset"
-
-/obj/item/clothing/under/captainformal
-	name = "Facility Director's formal uniform"
-	desc = "A Facility Director's formal-wear, for special occasions."
-	icon_state = "captain_formal"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "lawyer_blue", SLOT_ID_LEFT_HAND = "lawyer_blue")
 
 /obj/item/clothing/under/hosformalmale
 	name = "head of security's formal uniform"
@@ -854,76 +830,6 @@
 	desc = "Living telegram operators experience one of the largest on the job fatality rates of all courier-based occupations."
 	icon_state = "telegram"
 
-//Kimonos and Traditional Japanese
-/obj/item/clothing/under/kimono
-	name = "plain kimono"
-	desc = "The traditional dress of old Earth Japan, the kimono remains ubiquitous across the galaxy due to its comfort, simplicity, and versatility."
-	icon_state = "kimono"
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-
-/obj/item/clothing/under/kimono_black
-	name = "black kimono"
-	desc = "A more somber and reserved pattern of kimono. Wear this to a funeral, or to the climactic sword battle."
-	icon_state = "kimono_black"
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-
-/obj/item/clothing/under/kimono_sakura
-	name = "sakura pattern kimono"
-	desc = "The vibrant pink coloration and subtle flower pattern of this kimono represet the Sakura tree, which was saved from extinction during the Final War thanks to the efforts of conservationists on Luna."
-	icon_state = "kimono_sakura"
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-
-/obj/item/clothing/under/kimono_fancy
-	name = "festival kimono"
-	desc = "A blue kimono similar to those traditionally worn to festivals. Its intricate embroidery and fine coloring are not meant to face much wear and tear."
-	icon_state = "kimono_fancy"
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-
-/obj/item/clothing/under/kamishimo
-	name = "kamishimo"
-	desc = "Popular amongst samurai, these items of clothing are not frequently in vogue. However, their easily recognizable silhouette keeps them from falling into total obscurity."
-	icon_state = "kamishimo"
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-
-//Keek's Kimonos
-/obj/item/clothing/under/kimono/red
-	name = "red kimono"
-	desc = "The traditional dress of old Earth Japan, the kimono remains ubiquitous across the galaxy due to its comfort, simplicity, and versatility."
-	icon_state = "kimono_red"
-
-/obj/item/clothing/under/kimono/orange
-	name = "orange kimono"
-	icon_state = "kimono_orange"
-
-/obj/item/clothing/under/kimono/yellow
-	name = "yellow kimono"
-	icon_state = "kimono_yellow"
-
-/obj/item/clothing/under/kimono/green
-	name = "green kimono"
-	icon_state = "kimono_green"
-
-/obj/item/clothing/under/kimono/blue
-	name = "blue kimono"
-	icon_state = "kimono_blue"
-
-/obj/item/clothing/under/kimono/purple
-	name = "purple kimono"
-	icon_state = "kimono_purple"
-
-/obj/item/clothing/under/kimono/violet
-	name = "violet kimono"
-	icon_state = "kimono_violet"
-
-/obj/item/clothing/under/kimono/pink
-	name = "pink kimono"
-	icon_state = "kimono_pink"
-
-/obj/item/clothing/under/kimono/earth
-	name = "earth kimono"
-	icon_state = "kimono_earth"
-
-
 //Baggy Turtlenecks
 /obj/item/clothing/under/turtlebaggy
 	name = "baggy turtleneck (cream)"
@@ -1002,37 +908,6 @@
 	name = "formal red coat"
 	desc = "Raise the taxes on their tea. What can go wrong?"
 	icon_state = "redcoatformal"
-
-//Colored Clown Suits
-/obj/item/clothing/under/rank/clown/orange
-	name = "orange clown suit"
-	desc = "<i><font face='comic sans ms'>Honk!</i></font>"
-	icon_state = "orangeclown"
-
-/obj/item/clothing/under/rank/clown/yellow
-	name = "yellow clown suit"
-	desc = "<i><font face='comic sans ms'>Honk!</i></font>"
-	icon_state = "yellowclown"
-
-/obj/item/clothing/under/rank/clown/green
-	name = "green clown suit"
-	desc = "<i><font face='comic sans ms'>Honk!</i></font>"
-	icon_state = "greenclown"
-
-/obj/item/clothing/under/rank/clown/blue
-	name = "blue clown suit"
-	desc = "<i><font face='comic sans ms'>Honk!</i></font>"
-	icon_state = "blueclown"
-
-/obj/item/clothing/under/rank/clown/purple
-	name = "purple clown suit"
-	desc = "<i><font face='comic sans ms'>Honk!</i></font>"
-	icon_state = "purpleclown"
-
-/obj/item/clothing/under/rank/clown/rainbow
-	name = "rainbow clown suit"
-	desc = "<i><font face='comic sans ms'>Honk!</i></font>"
-	icon_state = "rainbowclown"
 
 /obj/item/clothing/under/tracksuit_blue
 	name = "blue tracksuit"

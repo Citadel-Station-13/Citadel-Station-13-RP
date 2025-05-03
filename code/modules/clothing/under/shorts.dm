@@ -1,15 +1,3 @@
-/obj/item/clothing/under/rank/roboticist/skirt
-	desc = "It's a slimming black jumpskirt with reinforced seams; great for industrial work."
-	name = "roboticist's jumpskirt"
-	icon_state = "roboticsf"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "robotics", SLOT_ID_LEFT_HAND = "robotics")
-
-/obj/item/clothing/under/rank/scientist/skirt
-	name = "scientist's jumpskirt"
-	icon_state = "sciencef"
-	permeability_coefficient = 0.50
-	armor_type = /datum/armor/science/jumpsuit
-
 /obj/item/clothing/under/rank/medical/skirt
 	name = "medical doctor's jumpskirt"
 	icon_state = "medicalf"

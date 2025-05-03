@@ -1,5 +1,6 @@
 /**
  * Medical department clothing
+ * Medsci is dead! Long live Medical!
  */
 
 /obj/item/clothing/under/sterile
