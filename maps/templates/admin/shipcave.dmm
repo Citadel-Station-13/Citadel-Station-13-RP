@@ -190,7 +190,7 @@
 /turf/simulated/floor/cult,
 /area/awaymission/shipcave/ship/brig)
 "bR" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/simulated/floor/plating,
 /area/awaymission/shipcave/ship/range)
 "bS" = (
@@ -526,7 +526,7 @@
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/awaymission/shipcave/ship/bridge)
 "fo" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/simulated/floor/plating,
 /area/awaymission/shipcave/ship)
 "fp" = (
@@ -1252,7 +1252,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/awaymission/shipcave/ship/canteen)
 "lu" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/simulated/floor/plating,
 /area/awaymission/shipcave/ship/guns)
 "lw" = (
@@ -1440,7 +1440,7 @@
 /turf/simulated/wall/thull,
 /area/awaymission/shipcave/ship/medical)
 "mZ" = (
-/obj/spawner/window/low_wall/full/nogrille,
+/obj/spawner/window/low_wall/nogrille,
 /turf/simulated/floor,
 /area/awaymission/shipcave)
 "nj" = (
@@ -1898,8 +1898,8 @@
 /turf/simulated/floor/plating,
 /area/awaymission/shipcave/ship/morgue)
 "tb" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
-/obj/effect/paint_stripe/commandblue,
+/obj/spawner/window/low_wall/borosillicate/reinforced,
+/obj/map_helper/paint_stripe/commandblue,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/awaymission/shipcave/ship/bridge)
 "tg" = (
@@ -1962,7 +1962,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/awaymission/shipcave/ship/hangar)
 "tY" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/simulated/floor/plating,
 /area/awaymission/shipcave)
 "tZ" = (
@@ -3063,7 +3063,7 @@
 /turf/simulated/shuttle/floor/alienplating,
 /area/awaymission/shipcave/ship/engines)
 "EJ" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/simulated/floor/plating,
 /area/awaymission/shipcave/ship/ammo)
 "EK" = (
@@ -3079,7 +3079,7 @@
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/awaymission/shipcave/temple)
 "ER" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/spawner/window/low_wall/borosillicate/reinforced,
 /turf/simulated/shuttle/floor/alienplating,
 /area/awaymission/shipcave/ship/engines)
 "ET" = (
@@ -3308,8 +3308,8 @@
 /turf/simulated/floor/cult,
 /area/awaymission/shipcave/ship/central)
 "Hw" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
-/obj/effect/paint_stripe/commandblue,
+/obj/spawner/window/low_wall/borosillicate/reinforced,
+/obj/map_helper/paint_stripe/commandblue,
 /turf/simulated/floor/airless/ceiling,
 /area/awaymission/shipcave/ship/bridge)
 "Hy" = (
@@ -3441,11 +3441,11 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/shipcave/ship)
 "II" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/simulated/floor/plating,
 /area/awaymission/shipcave/ship/armory)
 "IM" = (
-/obj/spawner/window/low_wall/full/nogrille,
+/obj/spawner/window/low_wall/nogrille,
 /turf/simulated/floor/plating,
 /area/awaymission/shipcave/ship/entertainment)
 "IO" = (
@@ -3883,7 +3883,7 @@
 /turf/simulated/floor/flesh,
 /area/awaymission/shipcave/ship/central)
 "Od" = (
-/obj/spawner/window/low_wall/full/nogrille,
+/obj/spawner/window/low_wall/nogrille,
 /turf/simulated/floor/flesh,
 /area/awaymission/shipcave/ship)
 "Og" = (
@@ -4301,7 +4301,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/shipcave/ship/bar)
 "SB" = (
-/obj/spawner/window/low_wall/full/nogrille,
+/obj/spawner/window/low_wall/nogrille,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/awaymission/shipcave/ship)
 "SD" = (
@@ -4480,8 +4480,8 @@
 /turf/simulated/floor/flesh,
 /area/awaymission/shipcave/ship/vault)
 "Ux" = (
-/obj/spawner/window/low_wall/borosillicate/full,
-/obj/effect/paint_stripe/violet,
+/obj/spawner/window/low_wall/borosillicate,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/awaymission/shipcave/ship/hangar)
 "Uy" = (

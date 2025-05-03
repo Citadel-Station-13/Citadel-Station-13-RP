@@ -193,7 +193,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/sky_planet/rock)
 "As" = (
-/obj/spawner/window/low_wall/reinforced/tinted/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/tinted/firelocks,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/sky_planet/rock)
 "AM" = (

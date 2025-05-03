@@ -785,8 +785,8 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "GN" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint/sun,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint/sun,
 /turf/simulated/floor/plating/lythios43c{
 	outdoors = 0
 	},
@@ -1232,8 +1232,8 @@
 /area/engineering/engine_room)
 "Zq" = (
 /obj/effect/floor_decal/rust,
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint/sun,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint/sun,
 /turf/simulated/floor/plating/lythios43c{
 	outdoors = 0
 	},

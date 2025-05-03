@@ -79,7 +79,7 @@
 /turf/simulated/floor/reinforced,
 /area/submap/skyplanet/poi/mining)
 "t" = (
-/obj/spawner/window/low_wall/reinforced/tinted/full,
+/obj/spawner/window/low_wall/reinforced/tinted,
 /turf/simulated/floor/preset/linoleum/indoors,
 /area/submap/skyplanet/poi/mining)
 "u" = (
@@ -208,7 +208,7 @@
 /turf/simulated/floor/preset/linoleum/indoors,
 /area/submap/skyplanet/poi/mining)
 "S" = (
-/obj/spawner/window/low_wall/reinforced/tinted/full,
+/obj/spawner/window/low_wall/reinforced/tinted,
 /turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
 /area/submap/skyplanet/poi/mining)
 "T" = (
