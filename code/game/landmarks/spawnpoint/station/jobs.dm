@@ -18,6 +18,16 @@
 	latejoin = TRUE
 	priority = 5
 
+/obj/landmark/spawnpoint/job/outsider/scavenger
+	name = "Traveler"
+	icon_state = "Assistant"
+	job_path = /datum/prototype/struct/alt_title/scavenger
+
+/obj/landmark/spawnpoint/job/outsider/override/scavenger
+	spawns_left = INFINITY
+	latejoin = TRUE
+	priority = 5
+
 /obj/landmark/spawnpoint/job/janitor
 	name = "Janitor"
 	icon_state = "Janitor"

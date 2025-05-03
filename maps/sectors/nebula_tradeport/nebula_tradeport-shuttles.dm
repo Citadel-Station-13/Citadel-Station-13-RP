@@ -310,3 +310,71 @@
 	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
 	sound_env = SMALL_ENCLOSED
+
+//Scavenger
+
+/datum/shuttle/autodock/overmap/osiris/scavenger
+	name = "FTUGS Adala"
+	warmup_time = 8
+	shuttle_area = list(/area/shuttle/osiris/scavenger)
+	docking_controller_tag = "scavenger_docker"
+	fuel_consumption = 3
+	move_time = 10
+
+/obj/overmap/entity/visitable/ship/landable/osiris/scavenger
+	name = "FTUGS Adala"
+	desc = "A legal Scavenger vessel."
+	scanner_name = "FTUGS Adala"
+	scanner_desc = @{"[i]Registration[/i]: Free Trade Union - Guardian Scavenger - Adala - FTUGS 003
+[i]Class[/i]: Mega-Tug + Scavenger trailer
+[i]Transponder[/i]: Transmitting (CIV), Free trade Union shuttle, Guardian Scavenger subsidiary.
+[b]Notice[/b]: A Guardian Scavenger company vessel, operated by the FTU. Able to carry small to big one decker vessels. Their scavenging permit as been confirm by CC and the local governement."}
+	color = "#f8e300"
+	fore_dir = EAST
+	vessel_mass = 8000
+	vessel_size = SHIP_SIZE_LARGE
+	shuttle = "FTUGS Adala"
+
+/obj/machinery/computer/shuttle_control/explore/scavenger
+	name = "short jump console"
+	shuttle_tag = "FTUGS Adala"
+
+/area/shuttle/osiris/scavenger
+	name = "FTUGS Adala"
+	requires_power = 1
+	icon_state = "shuttle2"
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
+	sound_env = SMALL_ENCLOSED
+
+//UMS
+
+/datum/shuttle/autodock/overmap/trade/scavengerutilitymicro
+	name = "Scavenging Utility Micro Shuttle"
+	warmup_time = 8
+	shuttle_area = list(/area/shuttle/scavengerutilitymicro)
+	current_location = "tradeport_scavengerutilitymicro"
+	docking_controller_tag = "tradeport_scavengerutilitymicro_docker"
+	fuel_consumption = 1
+	move_time = 10
+
+/obj/overmap/entity/visitable/ship/landable/trade/scavengerutilitymicro
+	name = "Scavenging Utility Micro Shuttle"
+	desc = "A Shuttle made to tug barge, offering a high ammount of cargo ."
+	color = "#ffee6e"
+	fore_dir = WEST
+	vessel_mass = 1000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Scavenging Utility Micro Shuttle"
+
+/obj/machinery/computer/shuttle_control/explore/scavengerutilitymicro
+	name = "short jump console"
+	shuttle_tag = "Scavenging Utility Micro Shuttle"
+
+/area/shuttle/scavengerutilitymicro
+	name = "SUMS"
+	requires_power = 1
+	icon_state = "shuttle2"
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
+	sound_env = SMALL_ENCLOSED
