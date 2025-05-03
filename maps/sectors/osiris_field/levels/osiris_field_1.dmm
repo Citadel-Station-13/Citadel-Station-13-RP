@@ -477,16 +477,6 @@
 /obj/structure/flora/grass/event/sparse_grass2,
 /turf/simulated/floor/fey/forest_grass,
 /area/space/osirisdebrisfield/memorial)
-"Cz" = (
-/obj/machinery/door/airlock/glass_external/public,
-/obj/map_helper/airlock/door/int_door,
-/obj/machinery/access_button/airlock_interior{
-	master_tag = s;
-	name = "internal access button";
-	pixel_y = -24
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
 "Da" = (
 /turf/simulated/floor,
 /area/space)
@@ -9994,7 +9984,7 @@ zZ
 zy
 jy
 rv
-Cz
+JK
 jy
 jy
 fv
