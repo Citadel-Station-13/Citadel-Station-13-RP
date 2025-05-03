@@ -2345,6 +2345,7 @@
 	density = 1;
 	faction = "neutral"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/plating,
 /area/endeavour/command/turrets)
 "bHF" = (
@@ -5729,6 +5730,16 @@
 /obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/brig)
+"emg" = (
+/obj/machinery/porta_turret/crescent{
+	density = 1;
+	faction = "neutral"
+	},
+/obj/machinery/shield_diffuser,
+/obj/machinery/shield_diffuser,
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless/ceiling,
+/area/endeavour/command/turrets)
 "emn" = (
 /turf/simulated/floor,
 /area/maintenance/security/port)
@@ -8771,8 +8782,10 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3afthall)
 "gBR" = (
-/obj/structure/lattice,
-/turf/space/basic,
+/obj/machinery/shield_diffuser,
+/obj/machinery/shield_diffuser,
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless/ceiling,
 /area/endeavour/command/turrets)
 "gBU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/universal{
@@ -21451,6 +21464,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/security_lockerroom)
 "qkI" = (
+/obj/machinery/porta_turret/crescent{
+	density = 1;
+	faction = "neutral"
+	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless/ceiling,
 /area/endeavour/command/turrets)
 "qlg" = (
@@ -29576,8 +29594,9 @@
 /turf/simulated/floor/tiled,
 /area/security/hanger)
 "vXk" = (
-/turf/space/basic,
-/area/endeavour/command/turrets)
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless/ceiling,
+/area/space)
 "vXB" = (
 /obj/machinery/status_display{
 	pixel_x = -32
@@ -36162,7 +36181,7 @@ pRW
 pRW
 pRW
 pRW
-jYr
+pRW
 pRW
 pRW
 pRW
@@ -36311,52 +36330,52 @@ pRW
 pRW
 pRW
 pRW
+pRW
+pRW
+mDp
+mDp
+mDp
+mDp
+pRW
+pRW
+pRW
+pRW
+mDp
+mDp
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
 jYr
-pRW
-mDp
-mDp
-mDp
-mDp
-pRW
-pRW
-jYr
-pRW
-mDp
-mDp
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-jYr
-pRW
-pRW
-pRW
-pRW
-jYr
-kfD
+qkI
 jYr
 pRW
 pRW
@@ -36505,7 +36524,7 @@ pRW
 pRW
 pRW
 jYr
-kfD
+qkI
 jYr
 mDp
 mDp
@@ -36513,7 +36532,7 @@ mDp
 mDp
 pRW
 jYr
-kfD
+qkI
 jYr
 mDp
 mDp
@@ -36544,7 +36563,7 @@ pRW
 mDp
 pRW
 jYr
-kfD
+qkI
 jYr
 pRW
 pRW
@@ -36906,7 +36925,7 @@ eAp
 pRW
 mDp
 pRW
-jYr
+pRW
 pRW
 pRW
 pRW
@@ -36947,8 +36966,8 @@ sDq
 hPM
 csb
 csb
-csb
-csb
+gBR
+emg
 pRW
 pRW
 pRW
@@ -37100,7 +37119,7 @@ eAp
 pRW
 pRW
 jYr
-kfD
+qkI
 jYr
 pRW
 xJG
@@ -37142,7 +37161,7 @@ hPM
 csb
 csb
 csb
-csb
+gBR
 pRW
 pRW
 pRW
@@ -37528,9 +37547,9 @@ sOD
 bfD
 hPM
 lqZ
-qkI
-jYr
-qkI
+csb
+csb
+csb
 pRW
 pRW
 pRW
@@ -37722,9 +37741,9 @@ sDq
 bfD
 hPM
 csb
-jYr
-kfD
-jYr
+csb
+csb
+csb
 pRW
 pRW
 pRW
@@ -38056,8 +38075,8 @@ pRW
 pRW
 pRW
 pRW
-jYr
-kfD
+pRW
+qkI
 eAp
 kdY
 sZl
@@ -39667,8 +39686,8 @@ wyr
 wyr
 wyr
 wyr
-kfD
-jYr
+qkI
+pRW
 pRW
 pRW
 pRW
@@ -39996,8 +40015,8 @@ pRW
 pRW
 pRW
 pRW
-jYr
-kfD
+pRW
+qkI
 kdY
 xEQ
 anU
@@ -40638,8 +40657,8 @@ tqQ
 oWd
 icx
 icx
-kfD
-jYr
+qkI
+pRW
 pRW
 pRW
 pRW
@@ -41612,7 +41631,7 @@ qCM
 pRW
 pRW
 pRW
-jYr
+pRW
 pRW
 pRW
 pRW
@@ -41806,7 +41825,7 @@ qCM
 pRW
 pRW
 jYr
-kfD
+qkI
 jYr
 pRW
 pRW
@@ -42700,8 +42719,8 @@ pRW
 pRW
 pRW
 pRW
-gBR
 jYr
+pRW
 xBj
 gDV
 xXl
@@ -42894,8 +42913,8 @@ pRW
 pRW
 pRW
 pRW
-jYr
 kfD
+pRW
 xBj
 msb
 eOZ
@@ -43088,8 +43107,8 @@ pRW
 pRW
 pRW
 pRW
-gBR
 jYr
+pRW
 xBj
 gDV
 eOZ
@@ -43943,8 +43962,8 @@ eEQ
 iBG
 iBG
 iBG
-kfD
-jYr
+qkI
+pRW
 pRW
 pRW
 pRW
@@ -45028,8 +45047,8 @@ pRW
 pRW
 pRW
 pRW
-gBR
 jYr
+pRW
 nOa
 nJF
 oMq
@@ -45110,7 +45129,7 @@ ovP
 iBG
 csb
 csb
-csb
+jYr
 pRW
 pRW
 pRW
@@ -45222,8 +45241,8 @@ pRW
 pRW
 pRW
 pRW
-jYr
 kfD
+pRW
 nOa
 oWf
 oMq
@@ -45304,7 +45323,7 @@ fzN
 iBG
 csb
 csb
-csb
+qkI
 pRW
 pRW
 pRW
@@ -45416,8 +45435,8 @@ pRW
 pRW
 pRW
 pRW
-gBR
 jYr
+pRW
 nOa
 wqT
 oMq
@@ -45498,7 +45517,7 @@ fzN
 iBG
 csb
 csb
-csb
+jYr
 pRW
 pRW
 pRW
@@ -46078,7 +46097,7 @@ nvM
 iBG
 iBG
 iBG
-jYr
+csb
 csb
 csb
 pRW
@@ -46272,8 +46291,8 @@ fzN
 vrM
 fdW
 iBG
-kfD
-jYr
+csb
+csb
 csb
 pRW
 pRW
@@ -46466,7 +46485,7 @@ fzN
 fXM
 vun
 iBG
-jYr
+csb
 csb
 csb
 pRW
@@ -47242,9 +47261,9 @@ fzN
 ihp
 lTX
 iBG
+csb
+csb
 jYr
-csb
-csb
 pRW
 pRW
 pRW
@@ -47436,9 +47455,9 @@ fzN
 fzN
 fXM
 iBG
-kfD
-jYr
 csb
+csb
+qkI
 pRW
 pRW
 pRW
@@ -47630,9 +47649,9 @@ uoa
 fzN
 fzN
 iBG
+csb
+csb
 jYr
-csb
-csb
 pRW
 pRW
 pRW
@@ -47744,8 +47763,8 @@ pRW
 pRW
 pRW
 pRW
-gBR
 jYr
+pRW
 noy
 uzS
 bhL
@@ -47938,8 +47957,8 @@ pRW
 pRW
 pRW
 pRW
-jYr
 kfD
+pRW
 noy
 nme
 bhL
@@ -48132,8 +48151,8 @@ pRW
 pRW
 pRW
 pRW
-gBR
 jYr
+pRW
 noy
 sjO
 ili
@@ -49570,9 +49589,9 @@ iBG
 iBG
 nvM
 iBG
+csb
+csb
 jYr
-csb
-csb
 pRW
 pRW
 pRW
@@ -49764,9 +49783,9 @@ fzN
 fzN
 fzN
 iBG
-kfD
-jYr
 csb
+csb
+qkI
 pRW
 pRW
 pRW
@@ -49958,9 +49977,9 @@ eiK
 xnW
 cJI
 iBG
+csb
+csb
 jYr
-csb
-csb
 pRW
 pRW
 pRW
@@ -50336,16 +50355,16 @@ wqq
 wqq
 nvM
 iBG
-jYr
-kfD
-jYr
+csb
+csb
+vXk
 csb
 csb
 kuM
 csb
-jYr
-kfD
-jYr
+csb
+csb
+csb
 csb
 csb
 csb
@@ -50531,14 +50550,14 @@ seq
 fzN
 iBG
 csb
-jYr
 csb
 csb
 csb
 csb
 csb
 csb
-jYr
+csb
+csb
 csb
 csb
 csb
@@ -54165,8 +54184,8 @@ pRW
 pRW
 pRW
 pRW
-jYr
-kfD
+pRW
+qkI
 hDR
 ozQ
 ozQ
@@ -54360,7 +54379,7 @@ pRW
 pRW
 pRW
 pRW
-vXk
+jYr
 oiQ
 hLw
 eyy
@@ -55329,8 +55348,8 @@ pRW
 pRW
 pRW
 pRW
-jYr
-kfD
+pRW
+qkI
 riL
 riL
 vxL
@@ -56687,8 +56706,8 @@ pRW
 pRW
 pRW
 pRW
-jYr
-kfD
+pRW
+qkI
 riL
 riL
 riL
@@ -57271,7 +57290,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+vXk
 eAp
 dTV
 pty
@@ -57661,7 +57680,7 @@ pRW
 pRW
 pRW
 jYr
-pRW
+vXk
 dTV
 pty
 pty
@@ -59641,8 +59660,8 @@ coF
 aNV
 npi
 jqk
-kfD
-jYr
+pRW
+pRW
 mDp
 lIp
 mDp
@@ -59835,7 +59854,7 @@ acd
 aNV
 tQR
 jqk
-jYr
+pRW
 pRW
 pRW
 pRW
@@ -59990,8 +60009,8 @@ pRW
 pRW
 pRW
 pRW
-jYr
-kfD
+pRW
+qkI
 avK
 pty
 pty
@@ -60223,8 +60242,8 @@ fgl
 fgl
 jqk
 jqk
-fDw
-fDw
+qkI
+jYr
 fDw
 fDw
 fDw
@@ -60417,8 +60436,8 @@ kjg
 oDl
 kLc
 fDw
-fDw
-fDw
+jYr
+pRW
 fDw
 fDw
 fDw
@@ -61383,7 +61402,7 @@ pty
 fLE
 dTV
 dTV
-kfD
+qkI
 jYr
 pRW
 mDp
@@ -61740,8 +61759,8 @@ pRW
 pRW
 pRW
 pRW
-jYr
-kfD
+pRW
+qkI
 dTV
 mSw
 pty
@@ -62931,8 +62950,8 @@ pVJ
 jUw
 aoO
 dTV
-kfD
-jYr
+qkI
+pRW
 mDp
 mDp
 mDp
@@ -63100,8 +63119,8 @@ pRW
 mDp
 pRW
 pRW
-jYr
-kfD
+pRW
+qkI
 eAp
 eAp
 dTV
@@ -63702,7 +63721,7 @@ pVJ
 pVJ
 pVJ
 jYr
-kfD
+qkI
 jYr
 pRW
 pRW
@@ -63880,7 +63899,7 @@ pRW
 pRW
 mDp
 pRW
-jYr
+pRW
 pRW
 fkV
 mDp
@@ -63896,7 +63915,7 @@ iHD
 mDp
 fkV
 pRW
-jYr
+pRW
 pRW
 pRW
 pRW

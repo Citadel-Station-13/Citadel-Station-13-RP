@@ -3050,6 +3050,11 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/courser_dock)
+"csB" = (
+/obj/machinery/shield_diffuser,
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless/ceiling,
+/area/endeavour/command/turrets)
 "csD" = (
 /obj/machinery/door/window{
 	dir = 8;
@@ -25222,6 +25227,16 @@
 	},
 /turf/simulated/floor/carpet/gaycarpet,
 /area/crew_quarters/clownoffice)
+"teh" = (
+/obj/machinery/porta_turret/crescent{
+	density = 1;
+	faction = "neutral"
+	},
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/plating{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/endeavour/command/turrets)
 "tep" = (
 /obj/machinery/computer/general_air_control/large_tank_control{
 	frequency = 1445;
@@ -27074,8 +27089,12 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/exploration/hallway_aft)
 "utU" = (
+/obj/machinery/porta_turret/crescent{
+	density = 1;
+	faction = "neutral"
+	},
 /obj/machinery/shield_diffuser,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/airless/ceiling,
 /area/endeavour/command/turrets)
 "uua" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -36193,7 +36212,7 @@ dkX
 dkX
 dkX
 xRj
-usG
+xRj
 xRj
 xRj
 xRj
@@ -36387,7 +36406,7 @@ dkX
 dkX
 dkX
 usG
-aZE
+utU
 usG
 xRj
 fZu
@@ -37740,8 +37759,8 @@ xRj
 xRj
 xRj
 xRj
-usG
-aZE
+xRj
+utU
 tvO
 vub
 mfS
@@ -41994,8 +42013,8 @@ xRj
 xRj
 xRj
 xRj
-usG
-aZE
+xRj
+utU
 ngf
 yme
 yme
@@ -43049,8 +43068,8 @@ xHD
 xVw
 qva
 hPu
-aZE
-usG
+utU
+xRj
 xRj
 xRj
 xRj
@@ -45099,7 +45118,7 @@ xRj
 xRj
 xRj
 xRj
-xRj
+usG
 vOo
 vOo
 vOo
@@ -45292,7 +45311,7 @@ xRj
 xRj
 xRj
 xRj
-xRj
+usG
 usG
 fLR
 fLR
@@ -45485,9 +45504,9 @@ xRj
 xRj
 xRj
 xRj
-xRj
 usG
-aZE
+usG
+utU
 fLR
 fLR
 bbP
@@ -45678,7 +45697,7 @@ xRj
 xRj
 xRj
 xRj
-usG
+xRj
 lyR
 lyR
 lyR
@@ -45765,8 +45784,8 @@ uTl
 kCB
 syO
 jJV
-aZE
-usG
+utU
+xRj
 xRj
 xRj
 xRj
@@ -48094,8 +48113,8 @@ oHo
 gjG
 xwO
 jJV
-aZE
-usG
+utU
+xRj
 xRj
 xRj
 xRj
@@ -48393,8 +48412,8 @@ xRj
 xRj
 xRj
 xRj
-usG
-aZE
+xRj
+utU
 lyR
 eGV
 eGV
@@ -50422,8 +50441,8 @@ kdL
 kdL
 kdL
 jJV
-aZE
-usG
+utU
+xRj
 xRj
 xRj
 xRj
@@ -51692,7 +51711,7 @@ xRj
 xRj
 xRj
 xRj
-xRj
+usG
 lyR
 ibU
 ibU
@@ -51887,19 +51906,19 @@ xRj
 xRj
 xRj
 usG
-wAS
-hfY
-hfY
-hfY
-hfY
-hfY
-hfY
-hfY
-hfY
-hfY
-hfY
+teh
 usG
-aZE
+hfY
+hfY
+hfY
+hfY
+hfY
+hfY
+hfY
+hfY
+hfY
+hfY
+hfY
 hfY
 hfY
 hfY
@@ -52081,8 +52100,8 @@ xRj
 xRj
 xRj
 xRj
+csB
 usG
-xRj
 xRj
 xRj
 xRj
@@ -52092,8 +52111,8 @@ xRj
 xRj
 xRj
 hfY
-usG
-usG
+hfY
+hfY
 hfY
 hfY
 hfY
@@ -52287,7 +52306,7 @@ xRj
 xRj
 xRj
 xRj
-usG
+hfY
 hfY
 hfY
 hfY
@@ -52480,8 +52499,8 @@ xRj
 xRj
 xRj
 xRj
-usG
-aZE
+xRj
+hfY
 hfY
 hfY
 hfY
@@ -52869,8 +52888,8 @@ xRj
 xRj
 xRj
 xRj
-hfY
-hfY
+utU
+usG
 hfY
 hfY
 aNV
@@ -54097,8 +54116,8 @@ kdL
 kdL
 kdL
 jJV
-aZE
-usG
+utU
+xRj
 xRj
 xRj
 xRj
@@ -56361,8 +56380,8 @@ xRj
 xRj
 xRj
 xRj
+xRj
 utU
-aZE
 xZn
 fKP
 gkR
@@ -57726,8 +57745,8 @@ xRj
 xRj
 xRj
 xRj
-usG
-aZE
+xRj
+utU
 sQl
 aJX
 ffi
@@ -58745,8 +58764,8 @@ qXx
 uPj
 aRu
 aJX
-aZE
-usG
+utU
+xRj
 xRj
 xRj
 xRj
@@ -61458,8 +61477,8 @@ oJK
 aJX
 aJX
 aJX
-aZE
-usG
+utU
+xRj
 xRj
 xRj
 xRj
@@ -62003,7 +62022,7 @@ xRj
 xRj
 xRj
 usG
-wAS
+teh
 gLE
 wyH
 myU
