@@ -15,8 +15,7 @@
 	throw_range = 20
 	slot_flags = SLOT_MASK|SLOT_BELT
 
-	var/active = 0
-	var/det_time = 50
+	// todo: legacy var
 	var/loadable = TRUE
 
 /obj/item/grenade/examine(mob/user, dist)

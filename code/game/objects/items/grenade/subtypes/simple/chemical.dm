@@ -15,6 +15,8 @@
 	/// * all grenades must be wired
 	/// * wired grenades can be readied without a detonator for default timing logic
 	var/wired = FALSE
+	/// allowed number of reagent containers
+	var/beakers_max = 2
 	/// reagent containers
 	/// * all of these will be mixed inside us; technically they don't have to be beakers.
 	var/list/atom/movable/beakers = list()
@@ -30,7 +32,7 @@
 	var/affected_area = 3
 
 /obj/item/grenade/simple/chemical/Destroy()
-	QDEL_NULL(detonator_assembly)
+	QDEL_NULL(detonator)
 	QDEL_LIST_NULL(beakers)
 	return ..()
 
@@ -38,13 +40,27 @@
 	. = ..()
 	#warn impl - secured, wired, beakers, detonator
 
-/obj/item/grenade/simple/chemical/update_icon(updates)
+/obj/item/grenade/simple/chemical/update_icon()
 	#warn secured / unsecured; overlay?
+	return ..()
+
+/obj/item/grenade/simple/chemical/update_name()
+	name = "[secured ? "" : "unsecured "]grenade"
+	return ..()
+
+
+
+/obj/item/grenade/simple/chemical/should_simple_delay_adjust(datum/event_args/actor/actor)
+	if(detonator)
+		return FALSE
 	return ..()
 
 /obj/item/grenade/simple/chemical/on_activate_inhand(datum/event_args/actor/actor)
 	if(!is_ready_to_activate())
 		return FALSE
+	if(detonator)
+		detonator.attack_self(actor.performer, actor)
+		return TRUE
 	if(!wired)
 		actor?.chat_feedback(
 			SPAN_WARNING("You press the activation mechanism of [src], but nothing happens."),
@@ -75,118 +91,135 @@
 	if(.)
 		return
 	if(istype(using, /obj/item/stack/cable_coil))
+		if(activated)
+			e_args.chat_feedback(
+				SPAN_WARNING("[src] is already primed! Are you crazy?"),
+				target = src,
+			)
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+		if(wired)
+			e_args.chat_feedback(
+				SPAN_WARNING("[src] is already wired."),
+				target = src,
+			)
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+		if(secured)
+			e_args.chat_feedback(
+				SPAN_WARNING("You can't do anything to [src] while it's secured."),
+				target = src,
+			)
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+		var/obj/item/stack/cable_coil/casted_coil = using
+		if(!casted_coil.use(5))
+			e_args.chat_feedback(
+				SPAN_WARNING("[casted_coil] doesn't have enough cable. (need 5)"),
+				target = src,
+			)
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+		wired = TRUE
+		e_args.chat_feedback(
+			SPAN_NOTICE("You wire [src]."),
+			target = src,
+		)
+		// TODO: logging
+		update_appearance()
+		return CLICKCHAIN_DID_SOMETHING
 	if(istype(using, /obj/item/assembly_holder))
+		if(activated)
+			e_args.chat_feedback(
+				SPAN_WARNING("[src] is already primed! Are you crazy?"),
+				target = src,
+			)
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+		if(detonator)
+			e_args.chat_feedback(
+				SPAN_WARNING("[src] already has a detonator assembly attached."),
+				target = src,
+			)
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+		if(secured)
+			e_args.chat_feedback(
+				SPAN_WARNING("You can't do anything to [src] while it's secured."),
+				target = src,
+			)
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+		var/obj/item/assembly_holder/casted_assembly_holder = using
+		if(!casted_assembly_holder.secured)
+			e_args.chat_feedback(
+				SPAN_WARNING("[assembly_holder] must be secured before insertion."),
+				target = src,
+			)
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+		if(!e_args.performer.attempt_insert_item_for_installation(using, src))
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+		detonator = using
+		e_args.visible_feedback(
+			target = src,
+			range = MESSAGE_RANGE_ITEM_SOFT,
+			visible = SPAN_WARNING("[e_args.performer] slots [using] into [src]'s casing, wiring it up to the detonation mechanism."),
+			audible = SPAN_WARNING("You hear something being slotted in."),
+			otherwise_self = SPAN_WARNING("You insert [using] into [src] and wire it into the detonation mechanism."),
+		)
+		playsound(src, 'sound/items/Screwdriver2.ogg', 25, TRUE, -3)
+		// TODO: logging
+		update_appearance()
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	if(is_type_in_list(using, allowed_containers))
-	#warn take shit out
+		if(activated)
+			e_args.chat_feedback(
+				SPAN_WARNING("[src] is already primed! Are you crazy?"),
+				target = src,
+			)
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+		if(secured)
+			e_args.chat_feedback(
+				SPAN_WARNING("You can't do anything to [src] while it's secured."),
+				target = src,
+			)
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+		if(length(beakers) > beakers_max)
+			e_args.chat_feedback(
+				SPAN_WARNING("[src] cannot hold more reagent containers."),
+				target = src,
+			)
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+		if(!e_args.performer.attempt_insert_item_for_installation(using, src))
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+		e_args.visible_feedback(
+			target = src,
+			range = MESSAGE_RANGE_ITEM_SOFT,
+			visible = SPAN_WARNING("[e_args.performer] inserts [using] into [src]."),
+			audible = SPAN_WARNING("You hear something being slotted in."),
+			otherwise_self = SPAN_WARNING("You insert [using] into [src]."),
+		)
+		beakers += using
+		playsound(src, 'sound/items/Screwdriver2.ogg', 25, TRUE, -3)
+		// TODO: logging
+		update_appearance()
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 
 /obj/item/grenade/simple/chemical/screwdriver_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = ..()
-	#warn impl
-S
-/obj/item/grenade/simple/chemical/attack_self(mob/user, datum/event_args/actor/actor)
-	. = ..()
 	if(.)
 		return
-	if(!stage || stage==1)
-		if(detonator)
-//				detonator.loc=src.loc
-			detonator.detached()
-			usr.put_in_hands_or_drop(detonator)
-			detonator=null
-			det_time = null
-			stage=0
-			icon_state = initial(icon_state)
-		else if(beakers.len)
-			for(var/obj/B in beakers)
-				if(istype(B))
-					beakers -= B
-					user.put_in_hands_or_drop(B)
-		name = "unsecured grenade with [beakers.len] containers[detonator?" and detonator":""]"
-	if(stage > 1 && !active && clown_check(user))
-		to_chat(user, "<span class='warning'>You prime \the [name]!</span>")
-
-		msg_admin_attack("[key_name_admin(user)] primed \a [src]")
-
-		activate()
-		add_fingerprint(user)
-		if(iscarbon(user))
-			var/mob/living/carbon/C = user
-			C.throw_mode_on()
-
-/obj/item/grenade/simple/chemical/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W,/obj/item/assembly_holder) && (!stage || stage==1) && path != 2)
-		var/obj/item/assembly_holder/det = W
-		if(istype(det.a_left,det.a_right.type) || (!isigniter(det.a_left) && !isigniter(det.a_right)))
-			to_chat(user, "<span class='warning'>Assembly must contain one igniter.</span>")
-			return
-		if(!det.secured)
-			to_chat(user, "<span class='warning'>Assembly must be secured with screwdriver.</span>")
-			return
-		if(!user.attempt_insert_item_for_installation(det, src))
-			return
-		path = 1
-		to_chat(user, "<span class='notice'>You add [W] to the metal casing.</span>")
-		playsound(src, 'sound/items/Screwdriver2.ogg', 25, -3)
-		detonator = det
-		if(istimer(detonator.a_left))
-			var/obj/item/assembly/timer/T = detonator.a_left
-			det_time = 10*T.time
-		if(istimer(detonator.a_right))
-			var/obj/item/assembly/timer/T = detonator.a_right
-			det_time = 10*T.time
-		icon_state = initial(icon_state) +"_ass"
-		name = "unsecured grenade with [beakers.len] containers[detonator?" and detonator":""]"
-		stage = 1
-	else if(W.is_screwdriver() && path != 2)
-		if(stage == 1)
-			path = 1
-			if(beakers.len)
-				to_chat(user, "<span class='notice'>You lock the assembly.</span>")
-				name = "grenade"
-			else
-//					to_chat(user, "<span class='warning'>You need to add at least one beaker before locking the assembly.</span>")
-				to_chat(user, "<span class='notice'>You lock the empty assembly.</span>")
-				name = "fake grenade"
-			playsound(src, W.tool_sound, 50, 1)
-			icon_state = initial(icon_state) +"_locked"
-			stage = 2
-		else if(stage == 2)
-			if(active && prob(95))
-				to_chat(user, "<span class='warning'>You trigger the assembly!</span>")
-				detonate()
-				return
-			else
-				to_chat(user, "<span class='notice'>You unlock the assembly.</span>")
-				playsound(src.loc, W.tool_sound, 50, -3)
-				name = "unsecured grenade with [beakers.len] containers[detonator?" and detonator":""]"
-				icon_state = initial(icon_state) + (detonator?"_ass":"")
-				stage = 1
-				active = 0
-	else if(is_type_in_list(W, allowed_containers) && (!stage || stage==1) && path != 2)
-		path = 1
-		if(beakers.len == 2)
-			to_chat(user, "<span class='warning'>The grenade can not hold more containers.</span>")
-			return
-		else
-			if(W.reagents.total_volume)
-				if(!user.attempt_insert_item_for_installation(W, src))
-					return
-				to_chat(user, "<span class='notice'>You add \the [W] to the assembly.</span>")
-				beakers += W
-				stage = 1
-				name = "unsecured grenade with [beakers.len] containers[detonator?" and detonator":""]"
-			else
-				to_chat(user, "<span class='warning'>\The [W] is empty.</span>")
-
-/obj/item/grenade/simple/chemical/handle_this_activate_proc(mob/user as mob)
-	. = ..()
-	if(detonator)
-		if(!isigniter(detonator.a_left))
-			detonator.a_left.activate()
-			active = 1
-		if(!isigniter(detonator.a_right))
-			detonator.a_right.activate()
-			active = 1
+	. = TRUE
+	if(activated)
+		e_args?.chat_feedback(
+			SPAN_WARNING("[src] is already primed! Are you crazy?"),
+			target = src,
+		)
+		return
+	if(!use_screwdriver(I, e_args, flags, 0))
+		return
+	secured = !secured
+	e_args?.visible_feedback(
+		target = src,
+		visible = SPAN_NOTICE("[e_args.performer] [secured ? "secures" : "unsecures"] the cover of [src]."),
+		otherwise_self = SPAN_NOTICE("You [secured ? "secure" : "unsecure"] [src]'s cover."),
+		audible = SPAN_NOTICE("You hear something being [secured ? "fastened" : "unfastened"]."),
+		range = MESSAGE_RANGE_ITEM_SOFT,
+	)
+	update_appearance()
 
 /obj/item/grenade/simple/chemical/proc/primed(var/primed = 1)
 	if(active)
@@ -195,6 +228,7 @@ S
 /obj/item/grenade/simple/chemical/on_detonate(turf/location, atom/grenade_location)
 	..()
 
+/obj/item/grenade/simple/chemical/proc/release_
 
 /obj/item/grenade/simple/chemical/detonate()
 	if(!stage || stage<2)
