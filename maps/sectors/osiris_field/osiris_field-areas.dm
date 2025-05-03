@@ -1,3 +1,8 @@
+/area/space/osirisdebrisfield
+	name = "Away Mission - Osiris Field"
+	icon = 'icons/turf/areas.dmi'
+	icon_state = "dark"
+
 /area/space/osirisdebrisfield/unexplored
 	icon_state = "debrisunexplored"
 
