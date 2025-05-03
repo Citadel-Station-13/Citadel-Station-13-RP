@@ -46,9 +46,6 @@
 
 // Clicking with an empty hand
 /mob/living/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-	// melee attack entrypoint
-	if(user.a_intent == INTENT_HARM)
-		return ..()
 	. = ..()
 	if(.)
 		return

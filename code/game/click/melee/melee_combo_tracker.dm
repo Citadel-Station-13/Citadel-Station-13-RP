@@ -2,7 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/combo_tracker/melee
-	/// if set, we automatically clear ourselves if nothing happens for this time
+	/// if set, we automatically clear ourselves if nothing happens for this time; 0 to disable.
 	var/continuation_timeout = 3 SECONDS
 	/// currently in continuation mode
 	var/tmp/continuation_active = FALSE
@@ -23,6 +23,8 @@
 		src.continuation_timeout = continuation_timeout
 
 /datum/combo_tracker/melee/proc/begin_continuation()
+	if(!continuation_timeout)
+		return
 	if(continuation_active)
 		refresh_continuation()
 		return
@@ -39,6 +41,8 @@
 	continuation_last = world.time
 
 /datum/combo_tracker/melee/proc/check_continuation()
+	if(!continuation_timeout)
+		return
 	var/remaining_time = continuation_last - (world.time - continuation_timeout)
 	if(remaining_time <= 0)
 		end_continuation()

@@ -109,11 +109,13 @@
 
 /obj/structure/grille/atom_break()
 	smoothing_flags = NONE
+	set_density(FALSE)
 	. = ..()
 	update_icon()
 
 /obj/structure/grille/atom_fix()
 	smoothing_flags = initial(smoothing_flags)
+	set_density(initial(density))
 	. = ..()
 	update_icon()
 

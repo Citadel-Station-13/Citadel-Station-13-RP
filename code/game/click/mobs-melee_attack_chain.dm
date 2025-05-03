@@ -92,7 +92,7 @@
 	// -- log --
 	log_melee(clickchain, clickchain_flags, attack_style)
 
-	return clickchain_flags
+	return clickchain_flags | CLICKCHAIN_DID_SOMETHING
 
 /**
  * Override hook for melee attacks.

@@ -4,7 +4,6 @@
 //* Melee Handling *//
 
 /mob/living/carbon/human/on_melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/attack_style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-	. = ..()
 	// TODO: sparring / blocking
 	return ..()
 

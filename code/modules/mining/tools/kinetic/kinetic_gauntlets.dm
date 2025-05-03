@@ -24,7 +24,7 @@
 	/// recharge speed mult when breaking rock
 	var/charge_delay_multiplier_rock = (1 / 3)
 	/// recharge speed mult when breaking structures
-	var/charge_delay_multiplier_structure = (1 / 3)
+	var/charge_delay_multiplier_structure = 1
 	/// recharge speed mult on basic non-combo attack
 	var/charge_delay_multiplier_basic = 1
 	/// recharge speed mult on successful combo
@@ -115,12 +115,13 @@
 
 /obj/item/kinetic_gauntlets/on_inv_equipped(mob/wearer, datum/inventory/inventory, slot_id_or_index, inv_op_flags, datum/event_args/actor/actor)
 	. = ..()
-	if(slot_id_or_index == /datum/inventory_slot/inventory/gloves::id)
-		start_recharge()
-		if(!combo_tracker)
-			combo_tracker = new(combo_continuation_timeout)
-			combo_tracker.on_continuation_begin = CALLBACK(src, PROC_REF(on_continuation_begin))
-			combo_tracker.on_continuation_end = CALLBACK(src, PROC_REF(on_continuation_end))
+	if(slot_id_or_index != /datum/inventory_slot/inventory/gloves::id)
+		return
+	start_recharge()
+	if(!combo_tracker)
+		combo_tracker = new(combo_continuation_timeout)
+		combo_tracker.on_continuation_begin = CALLBACK(src, PROC_REF(on_continuation_begin))
+		combo_tracker.on_continuation_end = CALLBACK(src, PROC_REF(on_continuation_end))
 	RegisterSignal(wearer, COMSIG_MOB_MELEE_INTENTFUL_HOOK, PROC_REF(on_user_melee_intent))
 	RegisterSignal(wearer, COMSIG_MOB_MELEE_IMPACT_HOOK, PROC_REF(on_user_melee_impact))
 
@@ -183,12 +184,6 @@
 	new /obj/effect/temp_visual/kinetic_blast(location)
 	playsound(location, 'sound/weapons/resonator_blast.ogg', 65, TRUE)
 
-/**
- * This is only to run special FX. The normal FX is ran by the combo already.
- */
-/obj/item/kinetic_gauntlets/proc/run_detonation_fx(turf/location, atom/target)
-	return
-
 // TODO: this doesn't take into account missing as it's hooked in too high up on the clickchain.
 //       we need to investigate how to make a generic attack roll system at some point.
 /obj/item/kinetic_gauntlets/proc/on_user_melee_intent(datum/source, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
@@ -202,8 +197,8 @@
 	var/datum/status_effect/grouped/proto_kinetic_mark/mark = mob_target.has_status_effect(/datum/status_effect/grouped/proto_kinetic_mark)
 	if(!mark)
 		return NONE
-	var/datum/combo/melee/executing_combo = combo_tracker.process_inbound(clickchain.using_intent, combo_set)
 	var/inbound_key = clickchain.using_intent
+	var/datum/combo/melee/executing_combo = combo_tracker.process_inbound(inbound_key, combo_set)
 	if(!executing_combo)
 		if(!length(combo_tracker.combo_possible))
 			// failed
@@ -228,12 +223,21 @@
 	if(!charged)
 		return NONE
 	var/atom/target = clickchain.target
-	// TODO: unified mining excavation API
+	clickchain.performer.animate_swing_at_target(clickchain.target)
+	clickchain.visible_feedback(
+		target = target,
+		range = MESSAGE_RANGE_COMBAT_LOUD,
+		visible = SPAN_WARNING("[clickchain.performer] slams [target] with a kinetic blow from their gauntlets."),
+		audible = SPAN_WARNING("You hear a detonation from a proto-kinetic impact."),
+	)
+	target.animate_hit_by_attack(ATTACK_ANIMATION_SMASH)
 	if(istype(target, /turf/simulated/mineral))
+		// TODO: unified mining excavation API
 		var/turf/simulated/mineral/mineral_target = target
 		mineral_target.GetDrilled(TRUE)
-		run_detonation_fx(target)
 		discharge(charge_delay_multiplier_rock)
+		if(charged_structure_sfx)
+			playsound(src, charged_structure_sfx, 60, TRUE)
 		return RAISE_MOB_MELEE_IMPACT_SKIP
 	if(!ismob(target))
 		var/atom/atom_target = target
@@ -247,9 +251,9 @@
 			attack_source = clickchain,
 			hit_zone = clickchain.target_zone,
 		)
-		run_detonation_fx(atom_target)
 		discharge(charge_delay_multiplier_structure)
-		return RAISE_MOB_MELEE_IMPACT_SKIP
+		if(charged_structure_sfx)
+			playsound(src, charged_structure_sfx, 60, TRUE)
 	else
 		var/mob/mob_target = target
 		clickchain.data[ACTOR_DATA_KINETIC_IMPACT_LOG] = mob_target.inflict_damage_instance(
@@ -262,14 +266,14 @@
 			attack_source = clickchain,
 			hit_zone = clickchain.target_zone,
 		)
-		run_detonation_fx(mob_target)
 		discharge(charge_delay_multiplier_basic)
+		if(charged_mob_sfx)
+			playsound(src, charged_mob_sfx, 60, TRUE)
 	return RAISE_MOB_MELEE_IMPACT_SKIP
 
 /obj/item/kinetic_gauntlets/proc/execute_combo(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/combo/melee/use_combo)
 	var/atom/movable/target = clickchain.target
 	var/turf/target_turf = get_turf(target)
-	run_detonation_fx(target_turf, target)
 	use_combo.inflict(target, clickchain.target_zone, clickchain.performer, clickchain, FALSE)
 
 /obj/item/kinetic_gauntlets/proc/execute_combo_step(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/combo_tracker/tracker, inbound_key)
@@ -280,6 +284,8 @@
 		visible = SPAN_WARNING("[clickchain.performer] strikes [clickchain.target] with a resonating blast!"),
 		audible = SPAN_WARNING("You hear a resonating crack of metal against some kind of energy field."),
 	)
+	clickchain.performer.animate_swing_at_target(clickchain.target)
+	clickchain.target?.animate_hit_by_attack(ATTACK_ANIMATION_DISARM)
 	clickchain.target?.inflict_damage_instance(
 		combo_continuation_damage,
 		combo_continuation_damage_type,
@@ -293,6 +299,8 @@
 
 /obj/item/kinetic_gauntlets/proc/execute_combo_fail(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/combo_tracker/tracker, inbound_key)
 	playsound(src, combo_fail_sfx, 75, TRUE)
+	clickchain.performer.animate_swing_at_target(clickchain.target)
+	clickchain.target?.animate_hit_by_attack(ATTACK_ANIMATION_DISARM)
 	clickchain.visible_feedback(
 		target = clickchain.target,
 		range = MESSAGE_RANGE_COMBAT_LOUD,

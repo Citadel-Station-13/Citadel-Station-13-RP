@@ -19,12 +19,12 @@
 				return FALSE
 	return ..()
 
-/mob/living/carbon/on_clickchain_help_interaction(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+/mob/living/carbon/handle_inbound_clickchain_help_interaction(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
 	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
 	if(iscarbon(clickchain.performer))
-		if(attempt_cpr_interaction(clickchain.performer))
+		if(on_receive_cpr_interaction(clickchain.performer))
 			return . | CLICKCHAIN_DID_SOMETHING
 
 /**
@@ -35,7 +35,7 @@
  *
  * return true to break the rest of the interaction chain (aka don't try to hug, etc)
  */
-/mob/living/carbon/proc/attempt_cpr_interaction(mob/user)
+/mob/living/carbon/proc/on_receive_cpr_interaction(mob/user)
 	. = TRUE
 	// must be in crit or dead
 	// crit isn't a stat value so..

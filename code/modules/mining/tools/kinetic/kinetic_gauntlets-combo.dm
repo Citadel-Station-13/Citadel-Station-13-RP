@@ -31,7 +31,7 @@ GLOBAL_DATUM_INIT(kinetic_gauntlet_melee_combo, /datum/combo_set/melee, new /dat
 		INTENT_DISARM,
 		INTENT_HARM,
 	)
-
+	default_feedback_message = SPAN_DANGER("$ATTACKER rapidly strikes $TARGET and sends them flying!")
 	damage_force = 36
 
 /datum/combo/melee/intent_based/kinetic_gauntlets/slam/inflict_on(atom/target, target_zone, mob/attacker, datum/event_args/actor/clickchain/clickchain)
@@ -45,7 +45,11 @@ GLOBAL_DATUM_INIT(kinetic_gauntlet_melee_combo, /datum/combo_set/melee, new /dat
 	if(living_target.anchored)
 		return
 	// todo: a 'forcefully push' proc that respects move force, which does need to be reworked at some point
-	step_away(living_target, src)
+	step_away(living_target, attacker)
+	if(prob(50))
+		step_away(living_target, attacker)
+		if(prob(35))
+			step_away(living_target, attacker)
 	living_target.afflict_knockdown(2 SECONDS)
 	living_target.afflict_root(0.2 SECONDS)
 	living_target.adjustHalLoss(40)
@@ -61,6 +65,7 @@ GLOBAL_DATUM_INIT(kinetic_gauntlet_melee_combo, /datum/combo_set/melee, new /dat
 
 	damage_force = 36
 	default_feedback_sfx = 'sound/weapons/resonator_blast.ogg'
+	default_feedback_message = SPAN_DANGER("$ATTACKER places three precision strikes $TARGET, causing their destabilization field to collapse into a concussive blast!")
 
 /datum/combo/melee/intent_based/kinetic_gauntlets/concuss/inflict_on(atom/target, target_zone, mob/attacker, datum/event_args/actor/clickchain/clickchain)
 	. = ..()
@@ -84,3 +89,4 @@ GLOBAL_DATUM_INIT(kinetic_gauntlet_melee_combo, /datum/combo_set/melee, new /dat
 	)
 
 	damage_force = 72
+	default_feedback_message = SPAN_DANGER("$ATTACKER slams $ATTACKER_P_THEIR gauntlet into $TARGET, violently detonating their destabilization field!")

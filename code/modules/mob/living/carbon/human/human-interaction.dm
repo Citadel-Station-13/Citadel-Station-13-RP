@@ -1,4 +1,4 @@
-/mob/living/carbon/human/on_clickchain_unarmed_interaction(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+/mob/living/carbon/human/handle_inbound_clickchain_unarmed_interaction(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	// TODO: only on successful touch & rework viro lol
 	if(istype(clickchain.performer,/mob/living/carbon))
 		var/mob/living/carbon/C = clickchain.performer
@@ -9,7 +9,7 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
-/mob/living/carbon/human/on_clickchain_help_interaction(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+/mob/living/carbon/human/handle_inbound_clickchain_help_interaction(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
 	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
@@ -29,19 +29,19 @@
 		help_shake_act(clickchain.performer)
 		return . | CLICKCHAIN_DID_SOMETHING
 
-/mob/living/carbon/human/on_clickchain_disarm_interaction(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+/mob/living/carbon/human/handle_inbound_clickchain_disarm_interaction(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
 	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
-	. |= attempt_clickchain_disarm(clickchain, clickchain_flags)
+	. |= handle_inbound_clickchain_disarm_interaction(clickchain, clickchain_flags)
 	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
 
-/mob/living/carbon/human/on_clickchain_grab_interaction(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+/mob/living/carbon/human/handle_inbound_clickchain_grab_interaction(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
 	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
-	. |= attempt_clickchain_grab(clickchain, clickchain_flags)
+	. |= handle_inbound_clickchain_grab_interaction(clickchain, clickchain_flags)
 	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
 
@@ -63,7 +63,7 @@
  *
  * @return clickchain flags
  */
-/mob/living/carbon/human/proc/attempt_clickchain_disarm(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+/mob/living/carbon/human/proc/handle_inbound_clickchain_disarm_interaction(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	var/shieldcall_results = atom_shieldcall_handle_touch(
 		clickchain,
 		clickchain_flags,
@@ -142,7 +142,7 @@
  *
  * @return clickchain flags
  */
-/mob/living/carbon/human/proc/attempt_clickchain_grab(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+/mob/living/carbon/human/proc/handle_inbound_clickchain_grab_interaction(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	var/shieldcall_results = atom_shieldcall_handle_touch(
 		clickchain,
 		clickchain_flags,
@@ -188,7 +188,7 @@
 /**
  * @return clickchain flags
  */
-/mob/living/carbon/human/attempt_clickchain_harm(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+/mob/living/carbon/human/on_receive_clickchain_unarmed_melee_interaction(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	// mostly legacy code
 	var/mob/living/carbon/human/H = clickchain.performer
 	if(!istype(H))

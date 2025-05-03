@@ -64,8 +64,8 @@
 				if(BODY_ZONE_TORSO)
 					// requires a slightly less significant hit
 					if(resultant_damage > 4 && prob(resultant_damage + 10))
-						// nerfed from 12 seconds to 5 baseline
-						afflict_paralyze(5 SECONDS * clickchain.attack_melee_multiplier)
+						// nerfed from 12 seconds to 2 baseline
+						afflict_paralyze(2 SECONDS * clickchain.attack_melee_multiplier)
 						visible_message(SPAN_DANGER("[src] has been brutally knocked down!"))
 					if(they_should_bleed)
 						// TODO: it should be obvious why this is bad

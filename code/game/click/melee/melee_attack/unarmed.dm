@@ -91,11 +91,12 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	clickchain.data[ACTOR_DATA_MELEE_DAMAGE_INSTANCE_RESULTS] = results
 	target.on_melee_impact(attacker, weapon, src, clickchain.target_zone, clickchain, clickchain_flags, results)
 
-	var/list/additional_legacy_effects = apply_effects(
+	var/list/additional_legacy_effects = ismob(target) && apply_effects(
 		attacker,
 		target,
 		0, // NO ARMOR YOLOOOO
 		results[SHIELDCALL_ARG_DAMAGE],
+		results[SHIELDCALL_ARG_HIT_ZONE],
 	)
 	if(length(additional_legacy_effects))
 		clickchain.data["legacy-punching-additional"] = additional_legacy_effects
@@ -165,7 +166,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	var/datum/gender/TT = GLOB.gender_datums[target.get_visible_gender()]
 	. = list()
 
-	if(attack_damage >= 5 && armour < 2 && !(target == user) && stun_chance <= attack_damage * 5) // 25% standard chance
+	if(attack_damage >= 5 && armour < 2 && !(target == user) && stun_chance <= attack_damage * 5)
 		switch(zone) // strong punches can have effects depending on where they hit
 			if(BP_HEAD, O_EYES, O_MOUTH)
 				// Induce blurriness
@@ -209,12 +210,12 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 					target.visible_message("<span class='warning'>[target] gives way slightly.</span>")
 					target.apply_effect(attack_damage * 3, AGONY, armour)
 					. +=  "shin kicked"
-	else if(attack_damage >= 5 && !(target == user) && (stun_chance + attack_damage * 5 >= 100) && armour < 2) // Chance to get the usual throwdown as well (25% standard chance)
+	else if(attack_damage >= 5 && !(target == user) && (stun_chance + attack_damage * 2 >= 100) && armour < 2)
 		if(!target.lying)
 			target.visible_message("<span class='danger'>[target] [pick("slumps", "falls", "drops")] down to the ground!</span>")
 		else
 			target.visible_message("<span class='danger'>[target] has been weakened!</span>")
-		target.apply_effect(3, WEAKEN, armour)
+		target.apply_effect(1, WEAKEN, armour)
 		. +=  "knocked down"
 
 	if(user.species.infect_wounds)		//Creates a pre-damaged, pre-infected wound. As nasty as this code.
