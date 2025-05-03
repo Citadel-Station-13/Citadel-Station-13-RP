@@ -3,7 +3,7 @@
 	name = "smoke bomb"
 	icon = 'icons/obj/grenade.dmi'
 	icon_state = "flashbang"
-	det_time = 20
+	activation_detonate_delay = 20
 	item_state = "flashbang"
 	slot_flags = SLOT_BELT
 	worth_intrinsic = 50

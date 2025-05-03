@@ -988,10 +988,8 @@
 		attach_grenade(grenade)
 
 /obj/item/integrated_circuit/manipulation/grenade/Destroy()
-	if(attached_grenade && !attached_grenade.active)
-		attached_grenade.dropInto(loc)
-	detach_grenade()
-	. =..()
+	QDEL_NULL(attached_grenade)
+	return ..()
 
 /obj/item/integrated_circuit/manipulation/grenade/proc/ask_for_input(mob/living/user, obj/item/I,  a_intent)
 	if(!isobj(I))

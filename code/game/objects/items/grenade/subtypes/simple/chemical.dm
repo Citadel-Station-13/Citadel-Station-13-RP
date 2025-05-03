@@ -146,7 +146,7 @@
 		var/obj/item/assembly_holder/casted_assembly_holder = using
 		if(!casted_assembly_holder.secured)
 			e_args.chat_feedback(
-				SPAN_WARNING("[assembly_holder] must be secured before insertion."),
+				SPAN_WARNING("[casted_assembly_holder] must be secured before insertion."),
 				target = src,
 			)
 			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
@@ -227,35 +227,8 @@
 
 /obj/item/grenade/simple/chemical/on_detonate(turf/location, atom/grenade_location)
 	..()
-
-/obj/item/grenade/simple/chemical/proc/release_
-
-/obj/item/grenade/simple/chemical/detonate()
-	if(!stage || stage<2)
-		return
-
-	var/has_reagents = 0
-	for(var/obj/item/reagent_containers/glass/G in beakers)
-		if(G.reagents.total_volume)
-			has_reagents = 1
-
-	active = 0
-	if(!has_reagents)
-		icon_state = initial(icon_state) +"_locked"
-		playsound(src.loc, 'sound/items/Screwdriver2.ogg', 50, 1)
-		spawn(0) //Otherwise det_time is erroneously set to 0 after this
-			if(istimer(detonator.a_left)) //Make sure description reflects that the timer has been reset
-				var/obj/item/assembly/timer/T = detonator.a_left
-				det_time = 10*T.time
-			if(istimer(detonator.a_right))
-				var/obj/item/assembly/timer/T = detonator.a_right
-				det_time = 10*T.time
-		return
-
-	for(var/obj/item/reagent_containers/glass/G in beakers)
-		G.reagents.trans_to_obj(src, G.reagents.total_volume)
-
-	if(src.reagents.total_volume) //The possible reactions didnt use up all reagents.
+	load_reaction_chamber_with_ratio_of_maximum(1)
+	if(reagents.total_volume)
 		var/datum/effect_system/steam_spread/steam = new /datum/effect_system/steam_spread()
 		steam.set_up(10, 0, get_turf(src))
 		steam.attach(src)
@@ -263,15 +236,15 @@
 
 		for(var/turf/spraying_turf in view(affected_area, get_turf(src)))
 			reagents.perform_uniform_contact(spraying_turf, 1)
-
-	if(istype(loc, /mob/living/carbon))		//drop dat grenade if it goes off in your hand
-		var/mob/living/carbon/C = loc
-		C.drop_item_to_ground(src, INV_OP_FORCE)
-		C.throw_mode_off()
-
-	invisibility = INVISIBILITY_MAXIMUM //Why am i doing this?
-	spawn(50)		   //To make sure all reagents can work
-		qdel(src)
+/**
+ * Ratio is of total beaker. 0.2 of a 100 unit will pull 20u of a total volume of 30,
+ * even if you'd expect it to pull 6.
+ */
+/obj/item/grenade/simple/chemical/proc/load_reaction_chamber_with_ratio_of_maximum(ratio)
+	for(var/atom/movable/pull_from as anything in beakers)
+		if(!pull_from.reagents)
+			continue
+		pull_from.reagents.transfer_to_holder(reagents, amount = pull_from.reagents.maximum_volume * ratio)
 
 //* presets below *//
 

@@ -48,15 +48,15 @@
 	ex_size_3 = 1
 	num_fragments = 20
 	spread_range = 3
-	det_time = 20
+	activation_detonate_delay = 20
 
 /obj/item/grenade/simple/explosive/ied/Initialize(mapload)
 	. = ..()
 	var/list/times = list("5" = 10, "-1" = 20, "[rand(30,80)]" = 50, "[rand(65,180)]" = 20)// "Premature, Dud, Short Fuse, Long Fuse"=[weighting value]
-	det_time = text2num(pickweight(times))
-	if(det_time < 0) //checking for 'duds'
+	activation_detonate_delay = text2num(pickweight(times))
+	if(activation_detonate_delay < 0) //checking for 'duds'
 		ex_size_3 = 1
-		det_time = rand(30,80)
+		activation_detonate_delay = rand(30,80)
 	else
 		ex_size_3 = pick(2,2,2,3,3,3,4)
 
@@ -70,7 +70,7 @@
 	fragment_types = list(/obj/projectile/bullet/pellet/fragment/weak, /obj/projectile/bullet/pellet/fragment/weak, /obj/projectile/bullet/pellet/fragment/strong)
 	num_fragments = 10
 	spread_range = 3
-	det_time = 20
+	activation_detonate_delay = 20
 	worth_intrinsic = 75
 
 /obj/item/grenade/simple/explosive/ied/tyrmalin/large
@@ -84,7 +84,7 @@
 	fragment_types = list(/obj/projectile/bullet/pellet/fragment/weak, /obj/projectile/bullet/pellet/fragment/weak, /obj/projectile/bullet/pellet/fragment/weak, /obj/projectile/bullet/pellet/fragment/strong, /obj/projectile/bullet/pellet/fragment/strong)
 	num_fragments = 30
 	spread_range = 5
-	det_time = 20
+	activation_detonate_delay = 20
 
 //Ashlander Frag Grenade
 /obj/item/grenade/simple/explosive/ashlander
@@ -98,7 +98,7 @@
 	fragment_types = list(/obj/projectile/bullet/pellet/fragment/weak, /obj/projectile/bullet/pellet/fragment/weak, /obj/projectile/bullet/pellet/fragment/strong)
 	num_fragments = 5
 	spread_range = 3
-	det_time = 40
+	activation_detonate_delay = 40
 
 /obj/item/grenade/simple/explosive/ashlander/fragmentation
 	name = "\improper heaven shaker (fragmentation)"

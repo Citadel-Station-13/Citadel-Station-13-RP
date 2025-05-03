@@ -19,9 +19,9 @@
 	det_time = 25
 
 /obj/item/vehicle_module/weapon/ballistic/missile_rack/grenade/Fire(atom/movable/AM, atom/target, turf/aimloc)
-	var/obj/item/grenade/G = AM
+	var/obj/item/grenade/simple/G = AM
 	if(istype(G))
-		G.det_time = det_time
+		G.activation_detonate_delay = det_time
 		G.activate(new /datum/event_args/actor(chassis.occupant_legacy))
 	AM.throw_at_old(target,missile_range, missile_speed, chassis)
 

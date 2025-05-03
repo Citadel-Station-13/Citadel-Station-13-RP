@@ -18,14 +18,6 @@
 	// todo: legacy var
 	var/loadable = TRUE
 
-/obj/item/grenade/examine(mob/user, dist)
-	. = ..()
-	if(det_time > 1)
-		. += "<span class = 'notice'>The timer is set to [det_time/10] seconds.</span>"
-		return
-	if(det_time == null)
-		. += "<span class = 'danger'>The [src] is set for instant detonation.</span>"
-
 /obj/item/grenade/on_attack_self(datum/event_args/actor/e_args)
 	. = ..()
 	if(.)

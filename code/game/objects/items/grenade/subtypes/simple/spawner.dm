@@ -54,8 +54,7 @@
 		var/turf/T = get_turf(src)
 		if(T.z in (LEGACY_MAP_DATUM).map_levels)
 			icon_state = initial(icon_state)
-			active = 0
-			return FALSE
+			return TRUE
 	return ..()
 
 /obj/item/grenade/simple/spawner/manhacks/station/locked/attackby(obj/item/I, mob/user)
