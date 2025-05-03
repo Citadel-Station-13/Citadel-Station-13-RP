@@ -40,7 +40,7 @@
 			if(!S.get_damage())
 				to_chat(user, "<span class='notice'>Nothing to fix here.</span>")
 			else if(can_use(1))
-				user.setClickCooldown(user.get_attack_speed(src))
+				user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 				if(S.open >= 2)
 					if(do_after(user,5 * tool_speed))
 						S.heal_damage(restoration_internal, restoration_internal, robo_repair = 1)

@@ -5988,7 +5988,7 @@
 /area/class_m/inside/vip_dorms)
 "zG" = (
 /obj/structure/bed/chair/sofa/black/corner{
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/class_m/inside/main)

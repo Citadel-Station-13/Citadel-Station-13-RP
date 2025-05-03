@@ -939,7 +939,7 @@
 /area/crew_quarters/sleep/Dorm_6)
 "aCp" = (
 /obj/structure/bed/chair/sofa/black/corner{
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar/lounge)
@@ -16404,7 +16404,7 @@
 /area/medical/surgery2)
 "kmZ" = (
 /obj/structure/bed/chair/sofa/black/corner{
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
@@ -29128,7 +29128,7 @@
 "rWQ" = (
 /obj/effect/floor_decal/corner/black/diagonal,
 /obj/structure/bed/chair/sofa/beige/corner{
-	dir = 1
+	dir = 4
 	},
 /obj/machinery/light{
 	dir = 8;
