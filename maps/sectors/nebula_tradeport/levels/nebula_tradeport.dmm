@@ -23821,10 +23821,6 @@
 	},
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/nebula_tradeport/motel/room2)
-"nVf" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/wall/r_wall,
-/area/tradeport/pads)
 "nXQ" = (
 /obj/machinery/atmospherics/pipe/tank/phoron{
 	volume = 20000;
@@ -25444,7 +25440,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
 "rZX" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor,
 /area/tradeport/pads)
 "sct" = (
@@ -56092,7 +56088,7 @@ aia
 aia
 aia
 aia
-nVf
+aia
 aia
 acd
 acd

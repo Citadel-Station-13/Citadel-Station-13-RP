@@ -317,6 +317,7 @@
 	name = "FTV Adala"
 	warmup_time = 8
 	shuttle_area = list(/area/shuttle/osiris/scavenger)
+	current_location = "tradeport_dock_scavenging"
 	docking_controller_tag = "scavenger_docker"
 	fuel_consumption = 3
 	move_time = 10
