@@ -53,7 +53,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/submap/skyplanet/poi/tajaranreb)
 "jc" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/spawner/window/low_wall/borosillicate/reinforced,
 /turf/simulated/floor/reinforced,
 /area/submap/skyplanet/poi/tajaranreb)
 "kb" = (
@@ -242,7 +242,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/submap/skyplanet/poi/tajaranreb)
 "Nh" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/spawner/window/low_wall/borosillicate/reinforced,
 /turf/simulated/floor/tiled/techmaint,
 /area/submap/skyplanet/poi/tajaranreb)
 "Os" = (
