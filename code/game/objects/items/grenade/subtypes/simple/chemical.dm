@@ -56,7 +56,7 @@
 	. += SPAN_NOTICE("It has [length(beakers)] containers inserted, with room for [beakers_max - length(beakers)] more.")
 
 /obj/item/grenade/simple/chemical/update_icon_state()
-	icon_state = "[base_icon_state || initial(icon_state)][wired ? (secured ? "-secured" : "-wired") : ""]"
+	icon_state = "[base_icon_state || initial(icon_state)][wired ? (secured ? "-locked" : "-wired") : ""]"
 	return ..()
 
 /obj/item/grenade/simple/chemical/update_name()
@@ -304,11 +304,8 @@
 	B2.reagents.add_reagent("foaming_agent", 10)
 	B2.reagents.add_reagent("pacid", 10)
 
-	detonator = new/obj/item/assembly_holder/timer_igniter(src)
-
 	beakers += B1
 	beakers += B2
-	icon_state = initial(icon_state) +"_locked"
 
 /obj/item/grenade/simple/chemical/premade/incendiary
 	name = "incendiary grenade"
@@ -326,11 +323,8 @@
 	B2.reagents.add_reagent("sacid", 15)
 	B1.reagents.add_reagent("fuel",20)
 
-	detonator = new/obj/item/assembly_holder/timer_igniter(src)
-
 	beakers += B1
 	beakers += B2
-	icon_state = initial(icon_state) +"_locked"
 
 /obj/item/grenade/simple/chemical/premade/antiweed
 	name = "weedkiller grenade"
@@ -345,8 +339,6 @@
 	B1.reagents.add_reagent("potassium", 25)
 	B2.reagents.add_reagent("phosphorus", 25)
 	B2.reagents.add_reagent("sugar", 25)
-
-	detonator = new/obj/item/assembly_holder/timer_igniter(src)
 
 	beakers += B1
 	beakers += B2
@@ -365,11 +357,8 @@
 	B2.reagents.add_reagent("water", 40)
 	B2.reagents.add_reagent("cleaner", 10)
 
-	detonator = new/obj/item/assembly_holder/timer_igniter(src)
-
 	beakers += B1
 	beakers += B2
-	icon_state = initial(icon_state) +"_locked"
 
 /obj/item/grenade/simple/chemical/premade/teargas
 	name = "tear gas grenade"
@@ -386,11 +375,8 @@
 	B2.reagents.add_reagent("sugar", 40)
 	B2.reagents.add_reagent("condensedcapsaicin", 80)
 
-	detonator = new/obj/item/assembly_holder/timer_igniter(src)
-
 	beakers += B1
 	beakers += B2
-	icon_state = initial(icon_state) +"_locked"
 
 /obj/item/grenade/simple/chemical/premade/holy
 	name = "PARA disruptor grenade"
@@ -406,11 +392,8 @@
 	B2.reagents.add_reagent("water", 30)
 	B2.reagents.add_reagent("holywater", 30)
 
-	detonator = new/obj/item/assembly_holder/timer_igniter(src)
-
 	beakers += B1
 	beakers += B2
-	icon_state = initial(icon_state) +"_locked"
 
 /obj/item/grenade/simple/chemical/premade/lube
 	name = "lubricant grenade"
@@ -425,11 +408,8 @@
 	B2.reagents.add_reagent("lube", 10)
 	B2.reagents.add_reagent("water", 40)
 
-	detonator = new/obj/item/assembly_holder/timer_igniter(src)
-
 	beakers += B1
 	beakers += B2
-	icon_state = initial(icon_state) +"_locked"
 
 /obj/item/grenade/simple/chemical/premade/lube_tactical
 	name = "tactical lubricant grenade"
@@ -444,11 +424,8 @@
 	B2.reagents.add_reagent("lube", 40)
 	B2.reagents.add_reagent("water", 10)
 
-	detonator = new/obj/item/assembly_holder/timer_igniter(src)
-
 	beakers += B1
 	beakers += B2
-	icon_state = initial(icon_state) +"_locked"
 
 /obj/item/grenade/simple/chemical/premade/chlorine_gas
 	name = "chlorine gas grenade"
@@ -464,11 +441,8 @@
 	B2.reagents.add_reagent("potassium", 40)
 	B2.reagents.add_reagent("sugar", 40)
 
-	detonator = new/obj/item/assembly_holder/timer_igniter(src)
-
 	beakers += B1
 	beakers += B2
-	icon_state = initial(icon_state) +"_locked"
 
 //Nanite Cloud Warcrimes!!!
 
@@ -487,11 +461,8 @@
 	B2.reagents.add_reagent(/datum/reagent/potassium, 30)
 	B2.reagents.add_reagent(/datum/reagent/sugar, 30)
 
-	detonator = new/obj/item/assembly_holder/timer_igniter(src)
-
 	beakers += B1
 	beakers += B2
-	icon_state = initial(icon_state) +"_locked"
 
 /obj/item/grenade/simple/chemical/premade/nanite_neurophage
 	name = "neurophage nanite grenade"
@@ -508,8 +479,5 @@
 	B2.reagents.add_reagent(/datum/reagent/potassium, 30)
 	B2.reagents.add_reagent(/datum/reagent/sugar, 30)
 
-	detonator = new/obj/item/assembly_holder/timer_igniter(src)
-
 	beakers += B1
 	beakers += B2
-	icon_state = initial(icon_state) +"_locked"
