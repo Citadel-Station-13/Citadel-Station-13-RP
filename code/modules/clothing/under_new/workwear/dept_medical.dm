@@ -336,3 +336,33 @@
 	desc = "A turqouise turtleneck and a pair of dark blue slacks, belonging to a psychologist."
 	icon = 'icons/clothing/uniform/workwear/dept_medical/psychturtle_fem.dmi'
 	icon_state = "psychturtle_fem"
+
+/**
+ * Paramedic
+ */
+
+/obj/item/clothing/under/paramedunidark
+	name = "Paramedic Uniform"
+	desc = "A dark jumpsuit for those brave souls who have to deal with a CMO who thinks they're the do everything person."
+	icon = 'icons/clothing/uniform/workwear/dept_medical/paramedic-dark.dmi'
+	icon_state = "paramedic-dark"
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+
+/obj/item/clothing/under/parameduniskirtdark
+	name = "Paramedic Uniskirt"
+	desc = "A dark jumpskirt for those brave souls who have to deal with a CMO who thinks they're the do everything person."
+	icon = 'icons/clothing/uniform/workwear/dept_medical/paramedic-dark_skirt.dmi'
+	icon_state = "paramedic-dark_skirt"
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
+
+/obj/item/clothing/under/paramedunilight
+	name = "\improper Paramedic Uniform"
+	desc = "A light jumpsuit for those brave souls who have to deal with a CMO who thinks they're the do everything person."
+	icon_state = "paramedic-light"
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+
+/obj/item/clothing/under/parameduniskirtlight
+	name = "\improper Paramedic Uniskirt"
+	desc = "A light jumpskirt for those brave souls who have to deal with a CMO who thinks they're the do everything person."
+	icon_state = "paramedic_skirt"
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS

@@ -219,3 +219,14 @@
 	icon = 'icons/clothing/uniform/formal/suits/hlsuit.dmi'
 	icon_state = "hlsuit"
 
+/obj/item/clothing/under/blazer
+	name = "blue blazer"
+	desc = "A bold but yet conservative outfit, red corduroys, navy blazer and a tie."
+	icon = 'icons/clothing/uniform/formal/suits/blue_blazer.dmi'
+	icon_state = "blue_blazer"
+
+/obj/item/clothing/under/blazer/skirt
+	name = "ladies blue blazer"
+	desc = "A bold but yet conservative outfit, a red pencil skirt and a navy blazer."
+	icon = 'icons/clothing/uniform/formal/suits/blue_blazer_skirt.dmi'
+	icon_state = "blue_blazer_skirt"

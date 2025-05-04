@@ -2,6 +2,10 @@
  * The captain and bridge crew. This is NOT for department heads put them in their own department file.
  */
 
+/**
+ * Captain uniforms
+ */
+
 /obj/item/clothing/under/rank/captain
 	desc = "It's a blue jumpsuit with some gold markings denoting the rank of \"Facility Director\"."
 	name = "Facility Director's jumpsuit"
@@ -37,3 +41,17 @@
 	icon = 'icons/clothing/uniform/workwear/dept_command/green_suit_skirt.dmi'
 	icon_state = "green_suit_skirt"
 
+/**
+ * Bridge Officer uniforms
+ */
+/obj/item/clothing/under/bridgeofficer
+	name = "bridge officer uniform"
+	desc = "A jumpsuit for those ranked high enough to stand at the bridge, but not high enough to touch any buttons."
+	icon = 'icons/clothing/uniform/workwear/dept_command/bridgeofficer.dmi'
+	icon_state = "bridgeofficer"
+
+/obj/item/clothing/under/bridgeofficerskirt
+	name = "bridge officer skirt"
+	desc = "A jumpskirt for those ranked high enough to stand at the bridge, but not high enough to touch any buttons."
+	icon = 'icons/clothing/uniform/workwear/dept_command/bridgeofficerskirt.dmi'
+	icon_state = "bridgeofficerskirt"
