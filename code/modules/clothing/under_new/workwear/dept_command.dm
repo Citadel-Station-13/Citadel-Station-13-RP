@@ -25,3 +25,15 @@
 	icon = 'icons/clothing/uniform/workwear/dept_command/dress_cap.dmi'
 	icon_state = "dress_cap"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
+
+/obj/item/clothing/under/gimmick/rank/captain/suit
+	name = "Facility Director's suit"
+	desc = "A green suit and yellow necktie. Exemplifies authority."
+	icon = 'icons/clothing/uniform/workwear/dept_command/green_suit.dmi'
+	icon_state = "green_suit"
+
+/obj/item/clothing/under/gimmick/rank/captain/suit/skirt
+	name = "Facility Director's skirt suit"
+	icon = 'icons/clothing/uniform/workwear/dept_command/green_suit_skirt.dmi'
+	icon_state = "green_suit_skirt"
+

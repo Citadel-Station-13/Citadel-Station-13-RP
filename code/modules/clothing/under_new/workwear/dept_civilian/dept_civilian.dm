@@ -35,6 +35,17 @@
 	icon_state = "huresource"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 
+/obj/item/clothing/under/gimmick/rank/head_of_personnel/suit
+	name = "head of personnel's suit"
+	desc = "A teal suit and yellow necktie. An authoritative yet tacky ensemble."
+	icon = 'icons/clothing/uniform/workwear/dept_civilian/teal_suit.dmi'
+	icon_state = "teal_suit"
+
+/obj/item/clothing/under/gimmick/rank/head_of_personnel/suit/skirt
+	name = "head of personnel's skirt suit"
+	icon = 'icons/clothing/uniform/workwear/dept_civilian/teal_suit_skirt.dmi'
+	icon_state = "teal_suit_skirt"
+
 //Pilots
 /obj/item/clothing/under/rank/pilot1
 	name = "\improper Nanotrasen flight suit"

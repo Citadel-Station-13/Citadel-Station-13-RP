@@ -83,26 +83,6 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "black", SLOT_ID_LEFT_HAND = "black")
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 
-/obj/item/clothing/under/gimmick/rank/captain/suit
-	name = "Facility Director's suit"
-	desc = "A green suit and yellow necktie. Exemplifies authority."
-	icon_state = "green_suit"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "centcom", SLOT_ID_LEFT_HAND = "centcom")
-
-/obj/item/clothing/under/gimmick/rank/captain/suit/skirt
-	name = "Facility Director's skirt suit"
-	icon_state = "green_suit_skirt"
-
-/obj/item/clothing/under/gimmick/rank/head_of_personnel/suit
-	name = "head of personnel's suit"
-	desc = "A teal suit and yellow necktie. An authoritative yet tacky ensemble."
-	icon_state = "teal_suit"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "green", SLOT_ID_LEFT_HAND = "green")
-
-/obj/item/clothing/under/gimmick/rank/head_of_personnel/suit/skirt
-	name = "head of personnel's skirt suit"
-	icon_state = "teal_suit_skirt"
-
 /obj/item/clothing/under/schoolgirl
 	name = "frilly blue skirt" //Citadel change REEEFETISHCONTENT
 	desc = "A clean white shirt with a blue collar and skirt. Looks like something out of an anime." //Citadel change REEEFETISHCONTENT
