@@ -484,5 +484,4 @@
 
 /datum/component/riding_handler/proc/process_spacemove()
 	var/atom/movable/AM = parent
-	// todo: process_spacemove() on atom movable instead of hasgrav.
-	return (riding_handler_flags & CF_RIDING_HANDLER_FORCED_SPACEMOVE) || AM.has_gravity()
+	return (riding_handler_flags & CF_RIDING_HANDLER_FORCED_SPACEMOVE) || AM.Process_Spacemove()
