@@ -114,7 +114,7 @@
 		e_args.chat_feedback(SPAN_NOTICE("You remove [removed] from [src]."), src)
 		return CLICKCHAIN_DID_SOMETHING
 	else
-		e_args.chat_feedback(SPAN_WARNING("[src] is empty."), target = rc)
+		e_args.chat_feedback(SPAN_WARNING("[src] is empty."), target = src)
 		return CLICKCHAIN_DID_SOMETHING
 
 /obj/item/grenade/simple/chemical/using_item_on(obj/item/using, datum/event_args/actor/clickchain/e_args, clickchain_flags, datum/callback/reachability_check)
