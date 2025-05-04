@@ -16,8 +16,7 @@
 		"Freelancer" = /datum/prototype/struct/alt_title/freelancer,
 		"Frontier Colonist" = /datum/prototype/struct/alt_title/colonist,
 		"Tourist" = /datum/prototype/struct/alt_title/tourist,
-		"Independant Reporter" = /datum/prototype/struct/alt_title/indyreport,
-		"Vessel Wreck Scavenger" = /datum/prototype/struct/alt_title/scavenger
+		"Independant Reporter" = /datum/prototype/struct/alt_title/indyreport
 	)
 
 /datum/outfit/job/station/outsider
