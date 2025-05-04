@@ -51,7 +51,7 @@
 /obj/item/grenade/simple/update_overlays()
 	. = ..()
 	if(activated && activation_state_append)
-		. += "[icon_state][activation_state_append]"
+		. += "[base_icon_state || initial(icon_state)][activation_state_append]"
 
 /obj/item/grenade/simple/atom_break()
 	..()

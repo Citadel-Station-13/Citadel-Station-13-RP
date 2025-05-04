@@ -254,6 +254,8 @@
 
 /obj/item/grenade/simple/chemical/on_detonate(turf/location, atom/grenade_location)
 	..()
+	// what could go wrong?
+	create_reagents(1000000)
 	load_reaction_chamber_with_ratio_of_maximum(1)
 	if(reagents.total_volume)
 		var/datum/effect_system/steam_spread/steam = new /datum/effect_system/steam_spread()
@@ -293,7 +295,7 @@
 	name = "metal-foam grenade"
 	desc = "Used for emergency sealing of air breaches."
 
-/obj/item/grenade/simple/chemical/metalfoam/Initialize(mapload)
+/obj/item/grenade/simple/chemical/premade/metalfoam/Initialize(mapload)
 	. = ..()
 	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_containers/glass/beaker/B2 = new(src)
@@ -313,7 +315,7 @@
 	desc = "Used for clearing rooms of living things."
 	worth_intrinsic = 150
 
-/obj/item/grenade/simple/chemical/incendiary/Initialize(mapload)
+/obj/item/grenade/simple/chemical/premade/incendiary/Initialize(mapload)
 	. = ..()
 	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_containers/glass/beaker/B2 = new(src)
@@ -334,7 +336,7 @@
 	name = "weedkiller grenade"
 	desc = "Used for purging large areas of invasive plant species. Contents under pressure. Do not directly inhale contents."
 
-/obj/item/grenade/simple/chemical/antiweed/Initialize(mapload)
+/obj/item/grenade/simple/chemical/premade/antiweed/Initialize(mapload)
 	. = ..()
 	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_containers/glass/beaker/B2 = new(src)
@@ -354,7 +356,7 @@
 	name = "cleaner grenade"
 	desc = "BLAM!-brand foaming space cleaner. In a special applicator for rapid cleaning of wide areas."
 
-/obj/item/grenade/simple/chemical/cleaner/Initialize(mapload)
+/obj/item/grenade/simple/chemical/premade/cleaner/Initialize(mapload)
 	. = ..()
 	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_containers/glass/beaker/B2 = new(src)
@@ -373,7 +375,7 @@
 	name = "tear gas grenade"
 	desc = "Concentrated Capsaicin. Contents under pressure. Use with caution."
 
-/obj/item/grenade/simple/chemical/teargas/Initialize(mapload)
+/obj/item/grenade/simple/chemical/premade/teargas/Initialize(mapload)
 	. = ..()
 	var/obj/item/reagent_containers/glass/beaker/large/B1 = new(src)
 	var/obj/item/reagent_containers/glass/beaker/large/B2 = new(src)
@@ -394,7 +396,7 @@
 	name = "PARA disruptor grenade"
 	desc = "These modified PMD grenades utilize a similar formula to the standard cleaning grenade, with one important substitution: holy water."
 
-/obj/item/grenade/simple/chemical/holy/Initialize(mapload)
+/obj/item/grenade/simple/chemical/premade/holy/Initialize(mapload)
 	. = ..()
 	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_containers/glass/beaker/B2 = new(src)
@@ -414,7 +416,7 @@
 	name = "lubricant grenade"
 	desc = "Originally exported from Columbina, the popularity of this gag item quickly faded."
 
-/obj/item/grenade/simple/chemical/lube/Initialize(mapload)
+/obj/item/grenade/simple/chemical/premade/lube/Initialize(mapload)
 	. = ..()
 	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_containers/glass/beaker/B2 = new(src)
@@ -433,7 +435,7 @@
 	name = "tactical lubricant grenade"
 	desc = "Utilized by Cloumbina Commandos, this variant of the lubricant grenade delivers a more focused payload."
 
-/obj/item/grenade/simple/chemical/lube_tactical/Initialize(mapload)
+/obj/item/grenade/simple/chemical/premade/lube_tactical/Initialize(mapload)
 	. = ..()
 	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_containers/glass/beaker/B2 = new(src)
@@ -452,7 +454,7 @@
 	name = "chlorine gas grenade"
 	desc = "Chlorine is a powerful corrosive. When deployed in gas form it may often be used for area denial or clearing trenches."
 
-/obj/item/grenade/simple/chemical/chlorine_gas/Initialize(mapload)
+/obj/item/grenade/simple/chemical/premade/chlorine_gas/Initialize(mapload)
 	. = ..()
 	var/obj/item/reagent_containers/glass/beaker/large/B1 = new(src)
 	var/obj/item/reagent_containers/glass/beaker/large/B2 = new(src)
@@ -475,7 +477,7 @@
 	desc = "Weaponized nanites are banned by all galactic major powers. On the frontier however there is little authority to stop wannabee \
 	Oppenheimers from making weapons such as this."
 
-/obj/item/grenade/simple/chemical/nanite_shredder/Initialize(mapload)
+/obj/item/grenade/simple/chemical/premade/nanite_shredder/Initialize(mapload)
 	. = ..()
 	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_containers/glass/beaker/B2 = new(src)
@@ -496,7 +498,7 @@
 	desc = "Weaponized nanites are banned by all galactic major powers. On the frontier however there is little authority to stop wannabee \
 	Oppenheimers and other mad scientists from making weapons such as this."
 
-/obj/item/grenade/simple/chemical/nanite_neurophage/Initialize(mapload)
+/obj/item/grenade/simple/chemical/premade/nanite_neurophage/Initialize(mapload)
 	. = ..()
 	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_containers/glass/beaker/B2 = new(src)
