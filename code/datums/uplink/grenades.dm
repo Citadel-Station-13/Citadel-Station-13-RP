@@ -22,7 +22,7 @@
 /datum/uplink_item/item/grenades/metalfoam_singular
 	name = "1xMetal Foam Grenade"
 	item_cost = 2
-	path = /obj/item/grenade/simple/chemical/metalfoam
+	path = /obj/item/grenade/simple/chemical/premade/metalfoam
 
 /datum/uplink_item/item/grenades/smoke
 	name = "7xSmoke Grenades"

@@ -46,7 +46,7 @@
 		/obj/item/reagent_containers/spray/cleaner,
 		/obj/item/reagent_containers/glass/rag,
 		/obj/item/reagent_containers/spray/pestbgone,
-		/obj/item/grenade/simple/chemical/cleaner = 3,
+		/obj/item/grenade/simple/chemical/premade/cleaner = 3,
 		/obj/structure/mopbucket,
 	)
 	worth = 350 // i like our service players and will not grief them with high prices

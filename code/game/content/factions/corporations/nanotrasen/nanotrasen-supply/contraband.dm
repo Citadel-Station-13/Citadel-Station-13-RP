@@ -31,7 +31,7 @@
 	contains = list(
 			/obj/item/storage/box/emps,
 			/obj/item/grenade/simple/smoke = 4,
-			/obj/item/grenade/simple/chemical/incendiary,
+			/obj/item/grenade/simple/chemical/premade/incendiary,
 			)
 	container_type = /obj/structure/closet/crate
 	container_name = "Special Ops crate"

@@ -108,7 +108,7 @@
 	say_list_type = /datum/say_list/clownop
 
 	// Grenade special attack vars
-	var/grenade_type = /obj/item/grenade/simple/chemical/lube_tactical
+	var/grenade_type = /obj/item/grenade/simple/chemical/premade/lube_tactical
 	var/grenade_timer = 50
 	special_attack_cooldown = 45 SECONDS
 	special_attack_min_range = 2

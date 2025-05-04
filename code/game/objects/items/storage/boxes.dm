@@ -293,13 +293,13 @@
 	name = "box of metal foam grenades."
 	desc = "A box containing 7 metal foam grenades."
 	icon_state = "flashbang"
-	starts_with = list(/obj/item/grenade/simple/chemical/metalfoam = 7)
+	starts_with = list(/obj/item/grenade/simple/chemical/premade/metalfoam = 7)
 
 /obj/item/storage/box/teargas
 	name = "box of teargas grenades"
 	desc = "A box containing 7 teargas grenades."
 	icon_state = "flashbang"
-	starts_with = list(/obj/item/grenade/simple/chemical/teargas = 7)
+	starts_with = list(/obj/item/grenade/simple/chemical/premade/teargas = 7)
 
 /obj/item/storage/box/flare
 	name = "box of flares"

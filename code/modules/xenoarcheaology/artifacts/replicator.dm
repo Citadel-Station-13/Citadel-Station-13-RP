@@ -62,8 +62,8 @@
 	/obj/item/tool/wirecutters,
 	/obj/item/tool/wrench,
 	/obj/item/tool/screwdriver,
-	/obj/item/grenade/simple/chemical/cleaner,
-	/obj/item/grenade/simple/chemical/metalfoam,
+	/obj/item/grenade/simple/chemical/premade/cleaner,
+	/obj/item/grenade/simple/chemical/premade/metalfoam,
 	/obj/structure/closet/crate/mimic/
 	)
 
