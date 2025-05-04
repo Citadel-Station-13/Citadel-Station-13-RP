@@ -64,9 +64,7 @@
 	return ..()
 
 /obj/item/grenade/simple/chemical/should_simple_delay_adjust(datum/event_args/actor/actor)
-	if(detonator)
-		return FALSE
-	return ..()
+	return FALSE
 
 /obj/item/grenade/simple/chemical/on_activate_inhand(datum/event_args/actor/actor)
 	if(!is_ready_to_activate())

@@ -31,11 +31,9 @@
 	return TRUE
 
 /obj/item/assembly/igniter/attack_self(mob/user, datum/event_args/actor/actor)
-	. = ..()
-	if(.)
-		return
 	activate()
 	add_fingerprint(user)
+	return TRUE
 
 /obj/item/assembly/igniter/is_hot()
 	return TRUE
