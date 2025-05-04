@@ -177,7 +177,6 @@
 	name = SPECIES_XENO_DRONE
 	caste_name = "drone"
 	weeds_plasma_rate = 15
-	slowdown = 1
 
 	sprite_accessory_defaults = list(
 		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/xenomorph/drone,
@@ -218,7 +217,6 @@
 	name = SPECIES_XENO_HUNTER
 	weeds_plasma_rate = 5
 	caste_name = "hunter"
-	slowdown = -2
 	total_health = 150
 
 	sprite_accessory_defaults = list(
@@ -252,7 +250,6 @@
 	name = SPECIES_XENO_SENTINEL
 	weeds_plasma_rate = 10
 	caste_name = "sentinel"
-	slowdown = 0
 	total_health = 200
 
 	sprite_accessory_defaults = list(
@@ -290,7 +287,6 @@
 	weeds_heal_rate = 5
 	weeds_plasma_rate = 20
 	caste_name = "queen"
-	slowdown = 4
 
 	sprite_accessory_defaults = list(
 		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/xenomorph/queen,

@@ -74,8 +74,6 @@
 	vision_innate = /datum/vision/baseline/species_tier_2
 	hunger_factor = 0.1 //In exchange, they get hungry a tad faster.
 
-	slowdown = -0.2//Speedboost Tesh have -0.5
-
 	warning_low_pressure = 30//lower than baseline
 	hazard_low_pressure = -1//Vacuum proof
 

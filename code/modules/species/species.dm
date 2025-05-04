@@ -24,8 +24,10 @@
 
 	//? Intrinsic Information
 
+	/// todo: rename to id to prep for /datum/prototype conversion
 	/// uid - **must be unique** - Identifies the exact species you are using
 	var/uid
+	/// todo: rename to id_group or sometihng
 	/// id usually identical to uid, if we are a subspecies we use the parent species id/uid here
 	var/id
 	// TODO: ref species by id in code, so we can rename as needed

@@ -98,7 +98,6 @@
 	toxins_mod = 1.5
 	total_health = 75
 	brute_mod = 1.2
-	slowdown = -0.2 //faster
 	max_additional_languages = 5
 
 	abilities = list(

@@ -30,8 +30,6 @@
 
 //	taste_sensitivity = TASTE_DULL
 
-	slowdown = -0.5
-
 	speech_sounds = list('sound/voice/shriek1.ogg')
 	speech_chance = 20
 

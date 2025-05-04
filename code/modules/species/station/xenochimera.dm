@@ -22,7 +22,6 @@
 
 	vision_innate = /datum/vision/baseline/species_tier_3
 	vision_organ = O_EYES
-	slowdown      = -0.2  //scuttly, but not as scuttly as a tajara or a teshari.
 	brute_mod     = 0.8   //About as tanky to brute as a Unathi. They'll probably snap and go feral when hurt though.
 	burn_mod      = 1.15  //As vulnerable to burn as a Tajara.
 	radiation_mod = 1.15  //To help simulate the volatility of a living 'viral' cluster.

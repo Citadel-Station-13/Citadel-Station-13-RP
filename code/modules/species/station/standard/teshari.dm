@@ -58,7 +58,6 @@
 	meat_type   = /obj/item/reagent_containers/food/snacks/meat/chicken/teshari
 	move_trail = /obj/effect/debris/cleanable/blood/tracks/paw
 
-	slowdown          = -0.5
 	snow_movement     = -1
 	item_slowdown_mod = 0.5
 

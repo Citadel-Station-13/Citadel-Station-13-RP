@@ -44,7 +44,6 @@
 
 	total_health = 125
 
-	slowdown  = 0.5
 	brute_mod = 0.8
 	flash_mod = 1.2
 
