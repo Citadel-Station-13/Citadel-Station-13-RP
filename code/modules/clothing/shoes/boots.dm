@@ -202,7 +202,7 @@
 
 /obj/item/clothing/shoes/boots/swat/para
 	name = "PARA boots"
-	desc = "PMD issued gloves, stamped with protective seals and spells."
+	desc = "PMD issued boots, stamped with protective seals and spells."
 	item_action_name = "Enable Boot Sigils"
 
 	var/blessed = FALSE
