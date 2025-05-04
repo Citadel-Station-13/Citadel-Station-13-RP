@@ -97,11 +97,11 @@
  * * id - reagent ID. Typepaths are allowed too.
  * * amount - amount to add.
  * * data_initializer - data_initializer passed to relevant /datum/reagent procs when initializing data.
- * * skip_reactions - don't do reaction checks or similar.
+ * * skip_updates - don't do reaction checks, quanitization, and similar.
  *
  * @return amount added
  */
-/datum/reagent_holder/proc/add_reagent(id, amount, data_initializer, skip_reactions)
+/datum/reagent_holder/proc/add_reagent(id, amount, data_initializer, skip_updates)
 	if(ispath(id))
 		var/datum/reagent/accessing = id
 		id = initial(accessing.id)
@@ -141,7 +141,7 @@
 
 	total_volume += amount
 
-	if(!skip_reactions)
+	if(!skip_updates)
 		try_reactions_for_reagent_change(id)
 
 	//! LEGACY
@@ -169,11 +169,11 @@
  * @params
  * * id - reagent ID. Typepaths are allowed too.
  * * amount - amount to add.
- * * skip_reactions - don't do reaction checks or similar.
+ * * skip_updates - don't do reaction checks or similar.
  *
  * @return amount removed
  */
-/datum/reagent_holder/proc/remove_reagent(id, amount, skip_reactions)
+/datum/reagent_holder/proc/remove_reagent(id, amount, skip_updates)
 	if(ispath(id))
 		var/datum/reagent/path = id
 		id = initial(path.id)
@@ -198,10 +198,11 @@
 		. = amount
 
 	// -- deal with floating point inaccuracy incase we went below 0 --
-	if(total_volume < REAGENT_HOLDER_VOLUME_PRECISION) clear_reagents()
+	if(total_volume < REAGENT_HOLDER_VOLUME_PRECISION)
+		clear_reagents()
 	// -- end --
 
-	if(!skip_reactions)
+	if(!skip_updates)
 		try_reactions_for_reagent_change(id)
 	//! LEGACY
 	if(my_atom)
@@ -213,11 +214,11 @@
  *
  * @params
  * * id - id or typepath.
- * * skip_reactions - do not reconsider relevant reactions.
+ * * skip_updates - do not reconsider relevant reactions.
  *
  * @return amount removed
  */
-/datum/reagent_holder/proc/del_reagent(id, skip_reactions)
+/datum/reagent_holder/proc/del_reagent(id, skip_updates)
 	if(ispath(id))
 		var/datum/reagent/path = id
 		id = initial(path.id)
@@ -226,10 +227,13 @@
 		return 0
 	reagent_volumes -= id
 	total_volume -= current
+
 	// -- deal with floating point inaccuracy incase we went below 0 --
-	if(total_volume < REAGENT_HOLDER_VOLUME_PRECISION) clear_reagents()
+	if(total_volume < REAGENT_HOLDER_VOLUME_PRECISION)
+		clear_reagents()
 	// -- end
-	if(!skip_reactions)
+
+	if(!skip_updates)
 		try_reactions_for_reagent_change(id)
 	//! LEGACY
 	if(my_atom)

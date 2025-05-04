@@ -98,11 +98,11 @@
 
 /obj/machinery/appliance/cooker/oven/AltClick(var/mob/user)
 	try_toggle_door(user)
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	user.setClickCooldownLegacy(DEFAULT_ATTACK_COOLDOWN)
 
 /obj/machinery/appliance/cooker/oven/CtrlClick(var/mob/user)
 	choose_output()
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	user.setClickCooldownLegacy(DEFAULT_ATTACK_COOLDOWN)
 
 /obj/machinery/appliance/cooker/oven/verb/toggle_door()
 	set src in oview(1)

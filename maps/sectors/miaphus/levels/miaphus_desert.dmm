@@ -231,7 +231,7 @@
 /turf/simulated/floor/wood,
 /area/sector/miaphus/beach/desert/explored)
 "Ar" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/simulated/floor/wood,
 /area/sector/miaphus/beach/desert/explored)
 "BS" = (

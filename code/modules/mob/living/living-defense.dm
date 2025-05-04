@@ -128,7 +128,7 @@
 	if(efficiency > 0)
 		inflict_electrocute_damage(damage * efficiency, stun_power * efficiency, flags, hit_zone)
 		if(!(flags & ELECTROCUTE_ACT_FLAG_SILENT))
-			playsound(src, /datum/soundbyte/grouped/sparks, 50, TRUE, -1)
+			playsound(src, /datum/soundbyte/sparks, 50, TRUE, -1)
 			if(damage * efficiency > 15)
 				visible_message(
 					SPAN_WARNING("[src] was electrocuted[source ? " by [source]" : ""]!"),

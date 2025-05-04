@@ -97,7 +97,7 @@
 		to_chat(user, SPAN_NOTICE("Nothing to fix!"))
 		return FALSE
 
-	user.setClickCooldown(user.get_attack_speed(tool))
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy(tool))
 
 	switch(damage_type)
 		if(DAMAGE_TYPE_BRUTE)

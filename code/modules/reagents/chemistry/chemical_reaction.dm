@@ -240,16 +240,16 @@
 	// check requirements, if it's whole numbers required we need atleast multiplier = 1
 	if(require_whole_numbers)
 		for(var/reagent in required_reagents)
-			if(holder.legacy_direct_access_reagent_amount(reagent) < required_reagents[reagent])
+			if(holder.reagent_volumes?[reagent] < required_reagents[reagent])
 				return FALSE
 	else
 		for(var/reagent in required_reagents)
-			if(holder.legacy_direct_access_reagent_amount(reagent) <= 0)
+			if(holder.reagent_volumes?[reagent] <= 0)
 				return FALSE
 
 	// ensure catalysts are there
 	for(var/reagent in catalysts)
-		var/catalyst_amount = holder.legacy_direct_access_reagent_amount(reagent)
+		var/catalyst_amount = holder.reagent_volumes?[reagent]
 		if(isnull(catalyst_amount) || (catalyst_amount < catalysts[reagent]))
 			return FALSE
 	// check for stuff that will halt it
@@ -258,7 +258,7 @@
 		// not a halting moderator
 		if(power < SHORT_REAL_LIMIT)
 			continue
-		var/moderator_amount = holder.legacy_direct_access_reagent_amount(reagent)
+		var/moderator_amount = holder.reagent_volumes?[reagent]
 		if(!isnull(moderator_amount))
 			return FALSE
 

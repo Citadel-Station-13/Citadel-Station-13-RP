@@ -144,7 +144,7 @@
 	if(isnull(intent))
 		intent = user.a_intent
 	// end
-	if(item_flags & ITEM_NOBLUDGEON)
+	if(item_flags & ITEM_NO_BLUDGEON)
 		return NONE
 	if(clickchain_flags & CLICKCHAIN_DO_NOT_ATTACK)
 		return NONE
@@ -210,7 +210,7 @@
 	L.lastattacker = user
 	// click cooldown
 	// todo: clickcd rework
-	user.setClickCooldown(user.get_attack_speed(src))
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 	// animation
 	user.animate_swing_at_target(L)
 	// resolve accuracy
@@ -357,7 +357,7 @@
 	clickchain.melee_damage_multiplier *= mult
 	// click cooldown
 	// todo: clickcd rework
-	clickchain.performer.setClickCooldown(clickchain.performer.get_attack_speed(src))
+	clickchain.performer.setClickCooldownLegacy(clickchain.performer.get_attack_speed_legacy(src))
 	// animation
 	clickchain.performer.animate_swing_at_target(target)
 	// perform the hit

@@ -26,7 +26,7 @@
 		if(!within_range(T))
 			return
 		//First, we handle who to teleport to.
-		user.setClickCooldown(5)
+		user.setClickCooldownLegacy(5)
 		var/mob/living/chosen_target = targeting_assist(T,5)		//The person who's about to get attacked.
 
 		if(!chosen_target)

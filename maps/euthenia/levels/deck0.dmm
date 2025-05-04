@@ -254,7 +254,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/tether/surfacebase/security/hallway)
 "jR" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/bridge)
 "jS" = (
@@ -856,7 +856,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "Hb" = (
-/obj/spawner/window/low_wall/borosillicate/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/firelocks,
 /turf/simulated/floor/plating,
 /area/main_map/hallway/deck0)
 "Hj" = (
@@ -1323,7 +1323,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge)
 "WW" = (
-/obj/spawner/window/low_wall/borosillicate/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/firelocks,
 /turf/simulated/floor/reinforced,
 /area/bridge)
 "Xi" = (
