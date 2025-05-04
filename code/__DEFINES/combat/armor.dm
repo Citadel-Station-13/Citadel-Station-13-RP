@@ -137,19 +137,3 @@ GLOBAL_REAL_LIST(armor_types) = list(
 #define LASER_TIER_EXTREME ARMOR_TIER_OVERWHELMING
 /// power transmission laser?
 #define LASER_TIER_RIDICULOUS ARMOR_TIER_RIDICULOUS
-
-//? --- armor calculations ---
-
-/// tierdiff is tier difference of armor against attack; positive = armor is higher tier.
-/// * see https://www.desmos.com/calculator/6uu1djsawl
-/// * armor at or below 0 (added damage) are passed back without change
-/proc/ARMOR_TIER_CALC(armor, tierdiff)
-	if(armor <= 0)
-		return 0
-	if(!tierdiff)
-		return armor
-	if(tierdiff > 0)
-		var/a = armor * (tierdiff + 1)
-		return max(a / sqrt(2 + a ** 2), armor)
-	else
-		return armor / (1 + (((-tierdiff) ** 17.5) / 1.75))
