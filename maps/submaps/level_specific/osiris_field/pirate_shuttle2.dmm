@@ -28,7 +28,7 @@
 /turf/simulated/floor/tiled/monotechmaint,
 /area/submap/osiris_field/pirate_wreck3)
 "bt" = (
-/obj/spawner/window/low_wall/full,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor,
 /area/submap/osiris_field/pirate_wreck3)
 "ch" = (
@@ -181,7 +181,7 @@
 /turf/simulated/floor/tiled/monotechmaint,
 /area/submap/osiris_field/pirate_wreck3)
 "ur" = (
-/obj/spawner/window/low_wall/full,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/osiris_field/pirate_wreck3)
 "vx" = (
