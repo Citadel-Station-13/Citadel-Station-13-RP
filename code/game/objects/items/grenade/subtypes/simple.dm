@@ -15,7 +15,7 @@
 	var/detonation_sound
 
 	/// automatic detonation handling; prime once activated for [activation_detonate_delay] then detonate()
-	var/activation_detonate = FALSE
+	var/activation_detonate = TRUE
 	/// time to detonate once activated
 	/// * 0 is instant
 	var/activation_detonate_delay = 5 SECONDS
@@ -51,7 +51,7 @@
 /obj/item/grenade/simple/update_overlays()
 	. = ..()
 	if(activated && activation_state_append)
-		. += activation_state_append
+		. += "[icon_state][activation_state_append]"
 
 /obj/item/grenade/simple/atom_break()
 	..()

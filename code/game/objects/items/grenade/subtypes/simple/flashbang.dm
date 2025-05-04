@@ -109,7 +109,7 @@
 	var/num_fragments = 45  //total number of fragments produced by the grenade
 	var/spread_range = 6 // for above and below, see code\game\objects\items\weapons\grenades\explosive.dm
 
-/obj/item/grenade/simple/flashbang/stingbang/on_detonate(turf/location)
+/obj/item/grenade/simple/flashbang/stingbang/on_detonate(turf/location, atom/grenade_location)
 	..()
 	shrapnel_explosion(num_fragments, spread_range, fragment_types)
 
