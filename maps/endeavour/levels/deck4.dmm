@@ -21,7 +21,6 @@
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/navgold/border,
 /obj/structure/sign/electricshock{
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled,
@@ -1139,8 +1138,7 @@
 	color = "#ed983d"
 	},
 /obj/structure/sign/fire{
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_gas)
@@ -1197,8 +1195,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/sign/department/eng{
-	pixel_x = -32;
-	pixel_y = 0
+	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4portafthall)
@@ -1303,7 +1300,6 @@
 	dir = 1
 	},
 /obj/structure/sign/department/eng{
-	pixel_x = 0;
 	pixel_y = 33
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -3060,7 +3056,12 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload_foyer)
 "cRV" = (
-/turf/space/basic,
+/obj/machinery/porta_turret/crescent{
+	density = 1;
+	faction = "neutral"
+	},
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless/ceiling,
 /area/endeavour/command/turrets)
 "cSj" = (
 /obj/machinery/atmospherics/component/unary/outlet_injector{
@@ -4651,7 +4652,6 @@
 	dir = 1
 	},
 /obj/structure/sign/deck/fourth{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/steel,
@@ -12215,7 +12215,6 @@
 	dir = 4
 	},
 /obj/structure/sign/deck/fourth{
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -14412,7 +14411,6 @@
 	},
 /obj/effect/floor_decal/corner/navgold/border,
 /obj/structure/sign/deck/fourth{
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled,
@@ -14555,7 +14553,6 @@
 	dir = 4
 	},
 /obj/structure/sign/warning/radioactive{
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -17465,7 +17462,6 @@
 	dir = 1
 	},
 /obj/structure/sign/deck/fourth{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/steel_ridged,
@@ -17504,8 +17500,9 @@
 /area/endeavour/hallway/d4aftmaint)
 "rTQ" = (
 /obj/machinery/camera/network/outside,
-/turf/space/basic,
-/area/space)
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless/ceiling,
+/area/endeavour/command/turrets)
 "rTZ" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -17684,7 +17681,6 @@
 	dir = 8
 	},
 /obj/structure/sign/department/atmos{
-	pixel_x = 0;
 	pixel_y = -31
 	},
 /turf/simulated/floor/tiled/steel,
@@ -18530,8 +18526,7 @@
 	dir = 8
 	},
 /obj/structure/sign/department/atmos{
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/steel,
 /area/engineering/atmos/eva)
@@ -18663,7 +18658,6 @@
 	dir = 4
 	},
 /obj/structure/sign/deck/fourth{
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled,
@@ -19645,7 +19639,6 @@
 	dir = 9
 	},
 /obj/structure/sign/department/engine{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
@@ -19665,7 +19658,6 @@
 	dir = 1
 	},
 /obj/structure/sign/department/ai{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
@@ -20193,7 +20185,6 @@
 	dir = 9
 	},
 /obj/structure/sign/department/atmos{
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -20201,7 +20192,6 @@
 "uOW" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/structure/sign/deck/fourth{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/plating,
@@ -20539,7 +20529,6 @@
 /obj/machinery/button/remote/airlock{
 	id = "bathroomlock15";
 	name = "Bathroom Lock";
-	pixel_x = 0;
 	pixel_y = 32;
 	specialfunctions = 4
 	},
@@ -21746,8 +21735,7 @@
 "woW" = (
 /obj/machinery/vending/snack,
 /obj/structure/sign/department/eng{
-	pixel_x = -32;
-	pixel_y = 0
+	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/dark,
 /area/endeavour/hallway/d4portafthall)
@@ -21907,7 +21895,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ai)
 "wvR" = (
-/turf/space,
+/turf/simulated/wall/r_wall/prepainted,
 /area/endeavour/command/turrets)
 "wvS" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
@@ -24820,7 +24808,7 @@ jNg
 jNg
 jNg
 jNg
-ycn
+xRj
 jNg
 jNg
 jNg
@@ -24831,18 +24819,7 @@ jNg
 jNg
 jNg
 jNg
-ycn
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
+xRj
 jNg
 jNg
 jNg
@@ -24863,7 +24840,6 @@ jNg
 jNg
 jNg
 jNg
-ycn
 jNg
 jNg
 jNg
@@ -24874,7 +24850,19 @@ jNg
 jNg
 jNg
 jNg
-ycn
+jNg
+xRj
+jNg
+jNg
+jNg
+jNg
+jNg
+jNg
+jNg
+jNg
+jNg
+jNg
+xRj
 jNg
 jNg
 jNg
@@ -25014,7 +25002,7 @@ jNg
 jNg
 jNg
 ycn
-oRc
+cRV
 ycn
 jNg
 jNg
@@ -25025,7 +25013,7 @@ jNg
 jNg
 jNg
 ycn
-oRc
+cRV
 ycn
 jNg
 jNg
@@ -25057,7 +25045,7 @@ jNg
 jNg
 jNg
 ycn
-oRc
+cRV
 ycn
 jNg
 jNg
@@ -25068,7 +25056,7 @@ jNg
 jNg
 jNg
 ycn
-oRc
+cRV
 ycn
 jNg
 jNg
@@ -26791,7 +26779,7 @@ jNg
 jNg
 jNg
 jNg
-jNg
+xRj
 jNg
 jNg
 jNg
@@ -26977,7 +26965,7 @@ jNg
 jNg
 jNg
 jNg
-ycn
+xRj
 jNg
 jNg
 jNg
@@ -26985,7 +26973,7 @@ jNg
 jNg
 jNg
 jNg
-ycn
+xRj
 jNg
 jNg
 jNg
@@ -27171,7 +27159,7 @@ vTv
 jNg
 jNg
 ycn
-oRc
+cRV
 ycn
 jNg
 jNg
@@ -27179,7 +27167,7 @@ jNg
 jNg
 jNg
 ycn
-oRc
+cRV
 ycn
 jNg
 jNg
@@ -27533,8 +27521,8 @@ jNg
 jNg
 jNg
 jNg
-ycn
-oRc
+xRj
+cRV
 saA
 saA
 saA
@@ -27593,7 +27581,7 @@ heJ
 heJ
 heJ
 oRc
-ycn
+xRj
 jNg
 jNg
 jNg
@@ -27727,7 +27715,7 @@ jNg
 jNg
 jNg
 jNg
-jNg
+xRj
 ycn
 saA
 saA
@@ -30444,7 +30432,7 @@ jNg
 jNg
 jNg
 jNg
-jNg
+xRj
 ycn
 saA
 saA
@@ -30638,8 +30626,8 @@ jNg
 jNg
 jNg
 jNg
-ycn
-oRc
+xRj
+cRV
 saA
 saA
 hZt
@@ -30696,7 +30684,7 @@ kqL
 heJ
 heJ
 oRc
-ycn
+xRj
 jNg
 jNg
 jNg
@@ -30832,7 +30820,7 @@ jNg
 jNg
 jNg
 jNg
-jNg
+xRj
 ycn
 saA
 saA
@@ -33605,7 +33593,7 @@ oDq
 kkQ
 uUN
 bkY
-ycn
+xRj
 jNg
 xRj
 xRj
@@ -35160,7 +35148,7 @@ kNH
 jNg
 jNg
 jNg
-ycn
+xRj
 jNg
 jNg
 jNg
@@ -35354,7 +35342,7 @@ kNH
 kNH
 kNH
 ycn
-oRc
+cRV
 ycn
 jNg
 jNg
@@ -35673,9 +35661,9 @@ jNg
 jNg
 jNg
 jNg
-wvR
-ycn
-wvR
+xRj
+xRj
+jNg
 jNg
 xRj
 uuN
@@ -35868,7 +35856,7 @@ jNg
 jNg
 jNg
 ycn
-oRc
+cRV
 ycn
 xRj
 xRj
@@ -36523,8 +36511,8 @@ tqu
 tqu
 tqu
 tqu
-oRc
-ycn
+cRV
+xRj
 jNg
 jNg
 jNg
@@ -37999,8 +37987,8 @@ xRj
 xRj
 jNg
 jNg
-ycn
-oRc
+xRj
+cRV
 bto
 jUK
 jUK
@@ -40792,7 +40780,7 @@ rfg
 ltz
 tqu
 tqu
-jNg
+ycn
 jNg
 jNg
 jNg
@@ -40985,7 +40973,7 @@ vUP
 nsO
 tqu
 tqu
-oRc
+cRV
 ycn
 jNg
 jNg
@@ -41757,8 +41745,8 @@ jNg
 jNg
 mtv
 jNg
-jNg
-oRc
+ycn
+cRV
 ycn
 jNg
 jNg
@@ -41887,7 +41875,7 @@ jNg
 jNg
 jNg
 ycn
-oRc
+cRV
 ycn
 xRj
 suy
@@ -41952,7 +41940,7 @@ jNg
 jNg
 jNg
 jNg
-ycn
+xRj
 jNg
 jNg
 jNg
@@ -42081,7 +42069,7 @@ jNg
 jNg
 jNg
 jNg
-ycn
+xRj
 jNg
 xRj
 xRj
@@ -42475,7 +42463,7 @@ jNg
 jNg
 jNg
 xRj
-xRj
+usG
 owo
 owo
 owo
@@ -42865,7 +42853,7 @@ jNg
 jNg
 jNg
 ycn
-xRj
+usG
 owo
 dah
 kaY
@@ -43107,7 +43095,7 @@ ahp
 xKI
 xKI
 xKI
-jNg
+ycn
 jNg
 jNg
 jNg
@@ -43300,7 +43288,7 @@ qjZ
 ahp
 xKI
 xKI
-oRc
+cRV
 ycn
 jNg
 jNg
@@ -44419,8 +44407,8 @@ jNg
 jNg
 jNg
 jNg
-ycn
-oRc
+xRj
+cRV
 owo
 owo
 lTp
@@ -45042,8 +45030,8 @@ kaY
 mcc
 kaY
 owo
-oRc
-ycn
+cRV
+xRj
 jNg
 jNg
 jNg
@@ -46007,7 +45995,7 @@ swz
 mcc
 owo
 owo
-nQj
+wvR
 rTQ
 xRj
 jNg
@@ -46201,7 +46189,7 @@ swz
 uwZ
 owo
 owo
-oRc
+cRV
 ycn
 xRj
 jNg
@@ -47919,8 +47907,8 @@ jNg
 jNg
 jNg
 jNg
-ycn
-oRc
+xRj
+cRV
 owo
 mcc
 onY
@@ -47947,8 +47935,8 @@ kaY
 nmL
 kaY
 owo
-oRc
-ycn
+cRV
+xRj
 jNg
 xRj
 xRj
@@ -50247,8 +50235,8 @@ xRj
 xRj
 xRj
 xRj
-ycn
-oRc
+xRj
+cRV
 owo
 kaY
 nmL
@@ -50469,8 +50457,8 @@ nmL
 nmL
 dYW
 owo
-oRc
-ycn
+cRV
+xRj
 jNg
 xRj
 xRj
@@ -52187,8 +52175,8 @@ jNg
 xRj
 jNg
 jNg
-ycn
-oRc
+jNg
+cRV
 owo
 owo
 owo
@@ -52408,8 +52396,8 @@ uND
 owo
 owo
 owo
-oRc
-ycn
+cRV
+xRj
 jNg
 jNg
 jNg
@@ -52793,7 +52781,7 @@ nLM
 aiw
 nQj
 nQj
-usG
+ycn
 hfY
 wBv
 xRj
@@ -52986,7 +52974,7 @@ oTw
 wSS
 xsP
 nQj
-oRc
+cRV
 ycn
 jNg
 jNg
@@ -53161,7 +53149,7 @@ jNg
 xRj
 xRj
 ycn
-oRc
+cRV
 nQj
 nQj
 eEF
@@ -53179,7 +53167,7 @@ nQj
 nQj
 nQj
 nQj
-jNg
+ycn
 ycn
 jNg
 jNg
@@ -53563,9 +53551,9 @@ jgS
 jgS
 nQj
 nQj
-oRc
-ycn
 cRV
+ycn
+xRj
 jNg
 xRj
 xRj
@@ -53756,9 +53744,9 @@ nJx
 nJx
 nJx
 nQj
+ycn
+ycn
 jNg
-usG
-wvR
 xRj
 jNg
 jNg
