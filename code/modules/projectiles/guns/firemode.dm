@@ -109,7 +109,8 @@
 			if("move_delay")
 			if("fire_delay")
 			else
-				gun.vars[varname] = legacy_direct_varedits[varname]
+				if(gun.vars.Find(varname))
+					gun.vars[varname] = legacy_direct_varedits[varname]
 
 /datum/firemode/proc/fetch_radial_appearance()
 	return radial_appearance || (radial_appearance = make_radial_appearance())
