@@ -1,11 +1,15 @@
 /obj/item/grenade/simple/chemical
 	name = "grenade casing"
-	icon_state = "chemg"
-	item_state = "grenade"
 	desc = "A hand made chemical grenade."
+	icon = 'icons/items/grenade/chemical.dmi'
+	icon_state = "grenade"
+	base_icon_state = "grenade"
+	inhand_state = "grenade"
+	worn_render_flags = NONE
 	w_class = WEIGHT_CLASS_SMALL
 
 	detonation_sound = 'sound/effects/bamf.ogg'
+	activation_state_append = "-primed"
 
 	/// secured?
 	/// * once secured, things cannot be put in / taken out
@@ -30,6 +34,8 @@
 	)
 	// todo: legacy, do it based on amount
 	var/affected_area = 3
+	// todo: need a starts with system as we don't want /chemical/large/premade vs /chemical/premade so
+	//       starting with beakers logic needs to be on base /chemical
 
 /obj/item/grenade/simple/chemical/Destroy()
 	QDEL_NULL(detonator)
@@ -40,15 +46,13 @@
 	. = ..()
 	#warn impl - secured, wired, beakers, detonator
 
-/obj/item/grenade/simple/chemical/update_icon()
-	#warn secured / unsecured; overlay?
+/obj/item/grenade/simple/chemical/update_icon_state()
+	icon_state = "[base_icon_state || initial(icon_state)][wired ? (secured ? "-secured" : "-wired") : ""]"
 	return ..()
 
 /obj/item/grenade/simple/chemical/update_name()
 	name = "[secured ? "" : "unsecured "]grenade"
 	return ..()
-
-
 
 /obj/item/grenade/simple/chemical/should_simple_delay_adjust(datum/event_args/actor/actor)
 	if(detonator)
@@ -221,10 +225,6 @@
 	)
 	update_appearance()
 
-/obj/item/grenade/simple/chemical/proc/primed(var/primed = 1)
-	if(active)
-		icon_state = initial(icon_state) + (primed?"_primed":"_active")
-
 /obj/item/grenade/simple/chemical/on_detonate(turf/location, atom/grenade_location)
 	..()
 	load_reaction_chamber_with_ratio_of_maximum(1)
@@ -246,19 +246,21 @@
 			continue
 		pull_from.reagents.transfer_to_holder(reagents, amount = pull_from.reagents.maximum_volume * ratio)
 
-//* presets below *//
-
-/obj/item/grenade/simple/chemical/premade
-	secured = TRUE
-	wired = TRUE
-
-/obj/item/grenade/simple/chemical/premade/large
+/obj/item/grenade/simple/chemical/large
 	name = "large chem grenade"
 	desc = "An oversized grenade that affects a larger area."
-	icon_state = "large_grenade"
+	icon_state = "grenade-large"
+	base_icon_state = "grenade-large"
 	allowed_containers = list(/obj/item/reagent_containers/glass)
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3)
 	affected_area = 4
+
+//* presets below *//
+
+/obj/item/grenade/simple/chemical/premade
+	icon_state = "grenade-locked"
+	secured = TRUE
+	wired = TRUE
 
 /obj/item/grenade/simple/chemical/premade/metalfoam
 	name = "metal-foam grenade"

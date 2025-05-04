@@ -20,7 +20,7 @@
 	/// * 0 is instant
 	var/activation_detonate_delay = 5 SECONDS
 	/// append state when active
-	var/activation_state_append = "_active"
+	var/activation_state_append = "-active"
 	/// sound to play when activated
 	var/activation_sound = 'sound/weapons/armbomb.ogg'
 
@@ -48,9 +48,10 @@
 	if(simple_activation_delay_notches)
 		simple_activation_delay_notches = typelist(NAMEOF(src, simple_activation_delay_notches), simple_activation_delay_notches)
 
-/obj/item/grenade/simple/update_icon_state()
-	icon_state = "[base_icon_state || initial(icon_state)][activated ? activation_state_append : ""]"
-	return ..()
+/obj/item/grenade/simple/update_overlays()
+	. = ..()
+	if(active)
+		. += "-active"
 
 /obj/item/grenade/simple/atom_break()
 	..()
