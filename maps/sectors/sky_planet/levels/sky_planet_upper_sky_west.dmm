@@ -94,7 +94,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/office)
 "ay" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/racing_station/dock)
 "aE" = (
@@ -309,7 +309,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/office)
 "bL" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/paripari)
 "bS" = (
@@ -390,8 +390,8 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/racing_station/dock)
 "cp" = (
-/obj/effect/paint/offwhite,
-/obj/effect/paint_stripe/cyanblue,
+/obj/map_helper/paint/offwhite,
+/obj/map_helper/paint_stripe/cyanblue,
 /turf/simulated/wall/r_wall,
 /area/sector/sky_planet/station_city/shop)
 "cr" = (
@@ -456,7 +456,7 @@
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
 "cL" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/office)
 "cN" = (
@@ -984,7 +984,7 @@
 /turf/simulated/floor/lino,
 /area/sector/sky_planet/outpost/office)
 "fX" = (
-/obj/effect/paint/offwhite,
+/obj/map_helper/paint/offwhite,
 /turf/simulated/wall/r_wall,
 /area/sector/sky_planet/station_city/shop)
 "fY" = (
@@ -1101,11 +1101,6 @@
 /obj/structure/table/hardwoodtable,
 /turf/simulated/floor/carpet/patterened/green,
 /area/sector/sky_planet/station_city/offices)
-"gF" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/tiled/techmaint,
-/area/shuttle/paripari)
 "gH" = (
 /obj/structure/table/steel_reinforced,
 /obj/effect/floor_decal/rust,
@@ -2429,7 +2424,7 @@
 /turf/simulated/floor/wood/sif/indoors,
 /area/sector/sky_planet/racing_station/lounge)
 "ob" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/racing_station/atc)
 "oe" = (
@@ -5289,7 +5284,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
 "DX" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/kafel_full/beige,
 /area/sector/sky_planet/racing_station/dock2)
 "DY" = (
@@ -6577,7 +6572,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/police)
 "Lb" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/shuttle/redcomet)
 "Lc" = (
@@ -6622,7 +6617,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/racing_station/dock)
 "Lt" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/reinforced,
 /area/sector/sky_planet/outpost/docking_port2)
 "Lu" = (
@@ -6843,7 +6838,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/racing_station/atc)
 "MR" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/racing_station/dock)
 "MS" = (
@@ -6878,7 +6873,7 @@
 /turf/simulated/floor/reinforced,
 /area/sector/sky_planet/racing_station/dock2)
 "Nb" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/kafel_full/beige,
 /area/sector/sky_planet/racing_station/lounge)
 "Nc" = (
@@ -7098,7 +7093,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/sky_planet/outpost/medical)
 "NP" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/outpost/office)
 "NS" = (
@@ -7941,8 +7936,8 @@
 /turf/simulated/floor/tiled/steel_dirty/yellow,
 /area/shuttle/bonnethead)
 "Si" = (
-/obj/effect/paint/sun,
-/obj/effect/paint_stripe/black,
+/obj/map_helper/paint/sun,
+/obj/map_helper/paint_stripe/black,
 /turf/simulated/wall/r_wall,
 /area/sector/sky_planet/station_city/shop)
 "Sj" = (
@@ -9158,7 +9153,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/dock)
 "Yn" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
 /area/shuttle/bonnethead)
 "Yo" = (
@@ -33799,7 +33794,7 @@ iS
 bL
 hZ
 Fg
-gF
+bL
 ET
 iS
 iS
