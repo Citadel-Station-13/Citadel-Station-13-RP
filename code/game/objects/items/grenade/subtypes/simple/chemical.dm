@@ -66,6 +66,26 @@
 /obj/item/grenade/simple/chemical/should_simple_delay_adjust(datum/event_args/actor/actor)
 	return FALSE
 
+/obj/item/grenade/simple/chemical/context_query(datum/event_args/actor/e_args)
+	. = ..()
+	if(!detonator && !activated)
+		.["adjust-fuse"] = atom_context_tuple(
+			name = "adjust fuse",
+			I = dyntool_image_neutral(TOOL_SCREWDRIVER),
+			mobility = MOBILITY_CAN_USE,
+		)
+
+/obj/item/grenade/simple/chemical/context_act(datum/event_args/actor/e_args, key)
+	. = ..()
+	if(.)
+		return
+	switch(key)
+		if("adjust-fuse")
+			if(activated)
+				return TRUE
+			do_simple_delay_adjust(e_args)
+			return TRUE
+
 /obj/item/grenade/simple/chemical/on_activate_inhand(datum/event_args/actor/actor)
 	if(!is_ready_to_activate())
 		return FALSE
