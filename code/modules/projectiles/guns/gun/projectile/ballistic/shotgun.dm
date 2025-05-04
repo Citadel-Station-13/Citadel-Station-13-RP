@@ -110,6 +110,10 @@
 	//SPEEDLOADER because rapid unloading.
 	//In principle someone could make a speedloader for it, so it makes sense.
 	internal_magazine_size = 2
+	internal_magazine = TRUE
+	internal_magazine_revolver_mode = TRUE
+	chamber_simulation = FALSE
+	internal_magazine_revolver_spinnable = FALSE
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	damage_force = 10

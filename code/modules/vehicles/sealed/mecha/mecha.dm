@@ -145,7 +145,7 @@
 	var/datum/events/events
 
 	/// outgoing melee damage (legacy var)
-	var/damtype
+	var/damtype = DAMAGE_TYPE_BRUTE
 
 //mechaequipt2 stuffs
 	var/list/hull_equipment = new
@@ -1014,7 +1014,7 @@
 		show_radial_occupant(user)
 		return
 
-	user.setClickCooldown(user.get_attack_speed())
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy())
 	src.log_message("Attack by hand/paw. Attacker - [user].",1)
 
 	var/obj/item/vehicle_component/armor/ArmC = internal_components[MECH_ARMOR]
@@ -1271,7 +1271,7 @@
 	return
 
 /obj/vehicle/sealed/mecha/proc/dynattackby(obj/item/W as obj, mob/user as mob)
-	user.setClickCooldown(user.get_attack_speed(W))
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy(W))
 	src.log_message("Attacked by [W]. Attacker - [user]")
 	var/pass_damage_reduc_mod			//Modifer for failing to bring AP.
 
@@ -2399,7 +2399,7 @@
 		temp_deflect_chance = round(ArmC.get_efficiency() * ArmC.deflect_chance + (defence_mode ? 25 : 0))
 		temp_damage_minimum = round(ArmC.get_efficiency() * ArmC.damage_minimum)
 
-	user.setClickCooldown(user.get_attack_speed())
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy())
 	if(!damage)
 		return 0
 

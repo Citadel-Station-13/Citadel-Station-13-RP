@@ -10,20 +10,22 @@ import './styles/themes/light.scss';
 
 import { perf } from 'common/perf';
 import { combineReducers } from 'common/redux';
-import { setupHotReloading } from 'tgui-dev-server/link/client.cjs';
-import { setupGlobalEvents } from 'tgui/events';
 import { captureExternalLinks } from 'tgui/links';
 import { createRenderer } from 'tgui/renderer';
 import { configureStore, StoreProvider } from 'tgui/store';
+import { setupGlobalEvents } from 'tgui/events';
+import { setupHotReloading } from 'tgui-dev-server/link/client.cjs';
+
 import { audioMiddleware, audioReducer } from './audio';
 import { chatMiddleware, chatReducer } from './chat';
 import { gameMiddleware, gameReducer } from './game';
+import { Panel } from './Panel';
 import { setupPanelFocusHacks } from './panelFocus';
 import { pingMiddleware, pingReducer } from './ping';
 import { settingsMiddleware, settingsReducer } from './settings';
 import { telemetryMiddleware } from './telemetry';
 
-perf.mark('inception', window.performance?.timing?.navigationStart);
+perf.mark('inception', window.performance?.timeOrigin);
 perf.mark('init');
 
 const store = configureStore({
@@ -47,7 +49,6 @@ const store = configureStore({
 });
 
 const renderApp = createRenderer(() => {
-  const { Panel } = require('./Panel');
   return (
     <StoreProvider store={store}>
       <Panel tgui_root={1} />
@@ -93,10 +94,10 @@ const setupApp = () => {
   });
 
   // Enable hot module reloading
-  if (module.hot) {
+  if (import.meta.webpackHot) {
     setupHotReloading();
 
-    module.hot.accept(
+    import.meta.webpackHot.accept(
       [
         './audio',
         './chat',

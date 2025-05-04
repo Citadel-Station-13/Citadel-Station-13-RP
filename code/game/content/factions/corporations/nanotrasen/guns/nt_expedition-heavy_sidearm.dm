@@ -152,7 +152,6 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidear
 	burst_delay = 1.5
 	projectile_base_dispersion = 7.5
 
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/smg, /nt_expedition/heavy_smg, "nt-expeditionary-heavy_smg")
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/smg
 	name = "submachine gun"
 	desc = "The XNMP Mk.8 \"Buzzsaw\" submachine gun; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
@@ -180,3 +179,7 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/nt_expediti
 		/datum/firemode/nt_expedition_heavy_smg/semi_auto,
 		/datum/firemode/nt_expedition_heavy_smg/three_burst,
 	)
+
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/smg, /nt_expedition/heavy_smg, "nt-expeditionary-heavy_smg")
+/obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/smg/no_pin
+	pin = null

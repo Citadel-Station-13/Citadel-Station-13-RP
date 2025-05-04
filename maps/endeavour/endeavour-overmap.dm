@@ -1,6 +1,6 @@
 /obj/overmap/entity/visitable/ship/endeavour
 	name = "NSV Endeavour"	// Name of the location on the overmap.
-	desc = "The Endeavour is one of the many ships that is a part of the NCV Oracle's fleet in this sector"
+	desc = "The Endeavour is one of the many ships that is a part of the NCV Oracle's operational group in this sector"
 
 	scanner_desc = @{"[i]Registration[/i]: NSV Endeavour
 [i]Class[/i]: Science Vessel

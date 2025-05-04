@@ -136,8 +136,16 @@
 		return
 	for(var/mob/living/simple_mob/M in src.contents)
 		if((INTENT_HELP) && user.canClick())
-			user.setClickCooldown(user.get_attack_speed())
+			user.setClickCooldownLegacy(user.get_attack_speed_legacy())
 			user.visible_message("<span class='notice'>[user] [M.response_help] \the [M].</span>")
+
+/obj/item/holder/holosphere_shell/relaymove(var/mob/user, var/direction)
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
+		return
+	var/obj/item/hardsuit/hardsuit = src.get_hardsuit()
+	if(istype(hardsuit))
+		hardsuit.forced_move(direction, user)
+
 
 /obj/item/holder/mouse
 	w_class = WEIGHT_CLASS_TINY

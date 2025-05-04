@@ -25,7 +25,7 @@
 		I = legcuffed
 
 	if(I)
-		setClickCooldown(100)
+		setClickCooldownLegacy(100)
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living/carbon, cuff_resist), I, cuff_break = can_break_cuffs())
 		return TRUE
 	return ..()

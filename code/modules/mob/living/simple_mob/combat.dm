@@ -16,7 +16,7 @@
 		handle_attack_delay(target, melee_attack_delay) // This will sleep this proc for a bit, which is why waitfor is false.
 
 	// Cooldown testing is done at click code (for players) and interface code (for AI).
-	setClickCooldown(get_attack_speed())
+	setClickCooldownLegacy(get_attack_speed_legacy())
 
 	var/result = do_attack(target, their_T)
 
@@ -97,7 +97,7 @@
 //The actual top-level ranged attack proc
 /mob/living/simple_mob/proc/shoot_target(atom/A)
 	set waitfor = FALSE
-	setClickCooldown(get_attack_speed())
+	setClickCooldownLegacy(get_attack_speed_legacy())
 
 	face_atom(A)
 
@@ -245,7 +245,7 @@
 		if(!isnull(M.attack_speed_percent))
 			true_attack_delay *= M.attack_speed_percent
 
-	setClickCooldown(true_attack_delay) // Insurance against a really long attack being longer than default click delay.
+	setClickCooldownLegacy(true_attack_delay) // Insurance against a really long attack being longer than default click delay.
 
 	sleep(true_attack_delay)
 

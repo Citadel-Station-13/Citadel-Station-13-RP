@@ -131,6 +131,7 @@
 		/mob/living/carbon/human/proc/shapeshifter_select_ears,
 		/mob/living/carbon/human/proc/shapeshifter_select_horns,
 		/mob/living/carbon/human/proc/shapeshifter_select_shape,
+		/mob/living/carbon/human/proc/shapeshifter_reset_to_slot,
 		/mob/living/carbon/human/proc/check_silk_amount,
 		/mob/living/carbon/human/proc/toggle_silk_production,
 		/mob/living/carbon/human/proc/weave_structure,
@@ -667,13 +668,32 @@
 		return
 	var/mob/living/carbon/human/H = owner
 	H.restore_blood()
-	H.species.create_organs(H, TRUE)
-	H.restore_all_organs()
-	H.adjustBruteLoss(-healing_amount)
-	H.adjustFireLoss(-healing_amount)
+	//Go through all the organs and limbs we should have, if one's missing, grow it.
+	for(var/organ_tag in H.species.has_organ)
+		var/obj/item/organ/I = H.internal_organs_by_name[name]
+		if(!I)
+			var/organ_type = H.species.has_organ[organ_tag]
+			var/obj/item/organ/O = new organ_type(H,1)
+			if(organ_tag != O.organ_tag)
+				warning("[O.type] has a default organ tag \"[O.organ_tag]\" that differs from the species' organ tag \"[organ_tag]\". Updating organ_tag to match.")
+				O.organ_tag = organ_tag
+			H.internal_organs_by_name[organ_tag] = O
+	for(var/limb_type in H.species.has_limbs)
+		var/obj/item/organ/I = H.organs_by_name[limb_type]
+		if(istype(I, /obj/item/organ/external/stump))
+			I.removed(null, TRUE)//Shouldn't have a vital stump that can be removed, but no need to kill if that somehow is the case, as it'll be replaced.
+			I = null
+		if(!I)
+			var/list/organ_data = H.species.has_limbs[limb_type]
+			var/limb_path = organ_data["path"]
+			var/obj/item/organ/O = new limb_path(H)
+			organ_data["descriptor"] = O.name
+			if(O.parent_organ)
+				organ_data = H.species.has_limbs[O.parent_organ]
+				organ_data["has_children"] = organ_data["has_children"]+1
+	H.restore_all_organs(ignore_prosthetic_prefs=TRUE) //A chimera couldn't make a limb robotic by this, shouldn't remove robotic parts, though.
 	H.adjustOxyLoss(-healing_amount)
 	H.adjustCloneLoss(-healing_amount)
-	H.adjustBrainLoss(-healing_amount)
 	H.remove_status_effect(/datum/status_effect/sight/blindness)
 	H.eye_blurry = FALSE
 	H.ear_deaf = FALSE
@@ -706,22 +726,25 @@
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/H = owner
-	toggle_sight(owner)
-	addtimer(CALLBACK(src, PROC_REF(toggle_sight),H), duration, TIMER_UNIQUE)
+	var/toggle = !H.species.has_glowing_eyes //Only toggle the eye glow if we aren't already glowing with them
+	toggle_sight(owner, toggle)
+	addtimer(CALLBACK(src, PROC_REF(toggle_sight), H, toggle), duration, TIMER_UNIQUE)
 
-/datum/ability/species/xenochimera/thermal_sight/proc/toggle_sight(mob/living/carbon/human/H)
+/datum/ability/species/xenochimera/thermal_sight/proc/toggle_sight(mob/living/carbon/human/H, toggle_eye_glow)
 	if(!active)
 		to_chat(H, "<span class='notice'>We focus outward, gaining a keen sense of all those around us.</span>")
 		H.species.vision_flags |= SEE_MOBS
 		H.species.vision_flags &= ~SEE_BLACKNESS
-		H.species.has_glowing_eyes = TRUE
+		if(toggle_eye_glow)
+			H.species.has_glowing_eyes = TRUE
 		H.add_vision_modifier(/datum/vision/augmenting/legacy_ghetto_nvgs)
 		active = TRUE
 	else
 		to_chat(H, "<span class='notice'>Our senses dull.</span>")
 		H.species.vision_flags &= ~SEE_MOBS
 		H.species.vision_flags |= SEE_BLACKNESS
-		H.species.has_glowing_eyes = FALSE
+		if(toggle_eye_glow)
+			H.species.has_glowing_eyes = FALSE
 		H.remove_vision_modifier(/datum/vision/augmenting/legacy_ghetto_nvgs)
 		active = FALSE
 	H.update_eyes()

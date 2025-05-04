@@ -781,6 +781,10 @@
 	name = "\improper Virology Isolation"
 	icon_state = "virology"
 
+/area/medical/virologymorgue
+	name = "\improper Virology Morgue"
+	icon_state = "virology"
+
 /area/medical/recoveryrestroom
 	name = "\improper Recovery Room Restroom"
 	icon_state = "virology"

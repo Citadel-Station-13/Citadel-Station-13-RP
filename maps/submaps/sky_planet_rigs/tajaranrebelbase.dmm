@@ -1,0 +1,736 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"cu" = (
+/obj/structure/bed,
+/obj/random/bedsheet,
+/obj/structure/curtain/open/privacy,
+/obj/item/clothing/under/tajaran/pvsm,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"cJ" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"cT" = (
+/turf/simulated/wall/r_wall,
+/area/submap/skyplanet/poi/tajaranreb)
+"fn" = (
+/obj/machinery/appliance/cooker/oven,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"fK" = (
+/obj/structure/table/steel_reinforced,
+/obj/structure/salvageable/personal,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"gW" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/machinery/light/spot{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"he" = (
+/obj/random/multiple/corp_crate,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"hm" = (
+/obj/structure/bed,
+/obj/random/bedsheet,
+/obj/structure/curtain/open/privacy,
+/obj/item/clothing/under/tajaran/pvsm/captain,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"hr" = (
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"hP" = (
+/obj/item/stool/padded,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"jc" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/tajaranreb)
+"kb" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/template_noop)
+"nV" = (
+/obj/structure/window/reinforced/survival_pod{
+	dir = 1
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"ot" = (
+/obj/machinery/light/spot{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/tajaranreb)
+"ou" = (
+/obj/structure/table/steel,
+/obj/machinery/light/spot{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"oT" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/machinery/shower{
+	dir = 4
+	},
+/obj/machinery/light/spot{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"pf" = (
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"pC" = (
+/obj/effect/floor_decal/industrial/outline,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/tajaranreb)
+"pH" = (
+/obj/structure/atmospheric_retention_field,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/tajaranreb)
+"rs" = (
+/obj/structure/bed,
+/obj/random/bedsheet,
+/obj/structure/curtain/open/privacy,
+/obj/item/clothing/under/tajaran/pra_uniform,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"tf" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"tZ" = (
+/turf/template_noop,
+/area/template_noop)
+"ur" = (
+/obj/effect/floor_decal/rust,
+/mob/living/simple_mob/humanoid/taj_guerilla/bandit/sword/revolver,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"uB" = (
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/tajaranreb)
+"uG" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/clothing/under/tajaran/nka_uniform,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"vp" = (
+/obj/machinery/mech_recharger,
+/obj/effect/floor_decal/industrial/outline,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/tajaranreb)
+"wj" = (
+/obj/random/multiple/large_corp_crate,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"wk" = (
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"xm" = (
+/obj/machinery/porta_turret/poi,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"ym" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/bandit/sword,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/tajaranreb)
+"BO" = (
+/obj/effect/floor_decal/rust,
+/mob/living/simple_mob/humanoid/taj_guerilla/bandit/rifle,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"Ce" = (
+/obj/machinery/light/spot{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"CA" = (
+/obj/structure/closet/secure_closet/freezer/kitchen,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"CD" = (
+/obj/structure/window/reinforced/survival_pod{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"CK" = (
+/turf/simulated/wall/r_wall,
+/area/template_noop)
+"CS" = (
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"CY" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"Dm" = (
+/obj/structure/table/standard,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"Ez" = (
+/obj/machinery/light/spot{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"Fk" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"FS" = (
+/obj/machinery/porta_turret/poi,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"Gg" = (
+/obj/machinery/light/spot{
+	dir = 4
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"Gk" = (
+/obj/machinery/light/spot{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/tajaranreb)
+"Mh" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/random/ammo_all,
+/obj/random/ammo_all,
+/obj/random/ammo_all,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"Ml" = (
+/obj/machinery/light/spot{
+	dir = 8
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"Nh" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"Os" = (
+/obj/random/multiple/corp_crate/no_weapons,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"Oz" = (
+/obj/structure/window/reinforced/survival_pod{
+	dir = 1
+	},
+/obj/effect/floor_decal/rust,
+/mob/living/simple_mob/humanoid/taj_guerilla/bandit/sword/revolver,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"OD" = (
+/obj/structure/table/standard,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"OR" = (
+/obj/structure/table/steel_reinforced,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"TE" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"TK" = (
+/obj/item/stool/padded,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"Ul" = (
+/obj/structure/table/rack/shelf/steel,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"Xh" = (
+/obj/structure/bed,
+/obj/random/bedsheet,
+/obj/structure/curtain/open/privacy,
+/obj/item/clothing/under/tajaran/psis,
+/turf/simulated/floor/tiled/techmaint,
+/area/submap/skyplanet/poi/tajaranreb)
+"Zj" = (
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/tajaranreb)
+
+(1,1,1) = {"
+CK
+tZ
+tZ
+tZ
+tZ
+tZ
+tZ
+tZ
+tZ
+tZ
+tZ
+tZ
+tZ
+tZ
+tZ
+tZ
+tZ
+tZ
+tZ
+CK
+"}
+(2,1,1) = {"
+tZ
+tZ
+cT
+cT
+cT
+cT
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+cT
+cT
+cT
+cT
+tZ
+tZ
+"}
+(3,1,1) = {"
+tZ
+cT
+cT
+cT
+cT
+cT
+cT
+cT
+Nh
+Nh
+Nh
+Nh
+cT
+cT
+cT
+Ml
+FS
+cT
+cT
+tZ
+"}
+(4,1,1) = {"
+tZ
+cT
+cT
+Mh
+gW
+Ul
+cT
+cT
+cJ
+BO
+cJ
+CS
+Ce
+CS
+Fk
+cJ
+cJ
+cJ
+cT
+tZ
+"}
+(5,1,1) = {"
+tZ
+cT
+cT
+cJ
+cJ
+cJ
+Fk
+CS
+cJ
+CS
+wj
+Os
+Os
+he
+cT
+cJ
+CS
+cJ
+cT
+tZ
+"}
+(6,1,1) = {"
+tZ
+cT
+cT
+cT
+cT
+cT
+cT
+cT
+cJ
+CS
+cT
+cT
+jc
+cT
+cT
+cT
+Fk
+cT
+cT
+tZ
+"}
+(7,1,1) = {"
+tZ
+kb
+cT
+cT
+cT
+cT
+cT
+cT
+cT
+Fk
+cT
+vp
+vp
+vp
+vp
+cT
+CY
+cT
+kb
+tZ
+"}
+(8,1,1) = {"
+tZ
+kb
+cT
+pf
+Xh
+cT
+cJ
+Ml
+cJ
+CS
+cT
+pC
+pC
+pC
+pC
+cT
+CY
+cT
+kb
+tZ
+"}
+(9,1,1) = {"
+tZ
+kb
+jc
+cJ
+cT
+cT
+Oz
+tf
+tf
+cJ
+cT
+uB
+Zj
+Zj
+ym
+Gk
+Zj
+pH
+kb
+tZ
+"}
+(10,1,1) = {"
+tZ
+kb
+jc
+cJ
+cu
+cT
+nV
+uG
+tf
+cJ
+jc
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+pH
+kb
+tZ
+"}
+(11,1,1) = {"
+tZ
+kb
+jc
+cJ
+cT
+cT
+nV
+tf
+tf
+cJ
+jc
+Zj
+ym
+Zj
+Zj
+Zj
+Zj
+pH
+kb
+tZ
+"}
+(12,1,1) = {"
+tZ
+kb
+jc
+cJ
+hm
+cT
+CD
+fK
+OR
+CS
+cT
+uB
+Zj
+Zj
+Zj
+ot
+Zj
+pH
+kb
+tZ
+"}
+(13,1,1) = {"
+tZ
+kb
+cT
+wk
+cT
+cT
+CS
+Ez
+cJ
+CS
+cT
+pC
+pC
+pC
+pC
+cT
+TE
+cT
+kb
+tZ
+"}
+(14,1,1) = {"
+tZ
+kb
+cT
+cJ
+rs
+cT
+cT
+cT
+cT
+Fk
+cT
+vp
+vp
+vp
+vp
+cT
+TE
+cT
+kb
+tZ
+"}
+(15,1,1) = {"
+tZ
+cT
+cT
+cJ
+cT
+cT
+TK
+hr
+TK
+CS
+cT
+cT
+jc
+cT
+cT
+cT
+Fk
+cT
+cT
+tZ
+"}
+(16,1,1) = {"
+tZ
+cT
+cT
+cJ
+cJ
+Fk
+ur
+cJ
+cJ
+BO
+fn
+OD
+Dm
+CA
+cT
+CS
+CS
+cJ
+cT
+tZ
+"}
+(17,1,1) = {"
+tZ
+cT
+cT
+Fk
+cT
+cT
+TK
+ou
+hP
+cJ
+CS
+cJ
+Gg
+cJ
+Fk
+CS
+cJ
+CS
+cT
+tZ
+"}
+(18,1,1) = {"
+tZ
+cT
+cT
+CS
+oT
+cT
+cT
+cT
+Nh
+Nh
+Nh
+Nh
+cT
+cT
+cT
+Ez
+xm
+cT
+cT
+tZ
+"}
+(19,1,1) = {"
+tZ
+tZ
+cT
+cT
+cT
+cT
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+cT
+cT
+cT
+cT
+tZ
+tZ
+"}
+(20,1,1) = {"
+CK
+tZ
+tZ
+tZ
+tZ
+tZ
+tZ
+tZ
+tZ
+tZ
+tZ
+tZ
+tZ
+tZ
+tZ
+tZ
+tZ
+tZ
+tZ
+CK
+"}
