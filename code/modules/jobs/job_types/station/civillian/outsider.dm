@@ -81,21 +81,3 @@
 							/obj/item/tape_recorder = 1,
 							/obj/item/camera_film = 1
 							)
-
-/datum/prototype/struct/alt_title/scavenger
-	title = "Vessel Wreck Scavenger"
-	title_blurb = "You are a legal ship scavenger. You scavenge and repair broken shuttles that you can then sell or use."
-	title_outfit = /datum/outfit/job/station/outsider/scavenger
-
-/datum/outfit/job/station/outsider/scavenger
-	name = OUTFIT_JOB_NAME("Scavenger")
-	uniform = /obj/item/clothing/under/color/black
-	suit = /obj/item/clothing/suit/storage/hazardvest
-	head = /obj/item/clothing/head/hardhat/orange
-	id_type = /obj/item/card/id/assistant
-	pda_type = /obj/item/pda/engineering
-	belt = /obj/item/storage/belt/utility/full
-	backpack_contents = list(/obj/item/gps/engineering = 1,
-							/obj/item/gun/projectile/energy/phasegun/pistol = 1,
-							/obj/item/camera = 1
-							)
