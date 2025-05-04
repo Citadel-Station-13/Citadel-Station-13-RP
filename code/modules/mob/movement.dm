@@ -62,6 +62,8 @@
 /mob/proc/toggle_move_intent(mob/user)
 	if(m_intent == MOVE_INTENT_RUN)
 		m_intent = MOVE_INTENT_WALK
+		#warn make this set_move_intent
+		#warn add overriding movespeed modifier to limit speed to config.walk_speed tps
 	else
 		m_intent = MOVE_INTENT_RUN
 /*

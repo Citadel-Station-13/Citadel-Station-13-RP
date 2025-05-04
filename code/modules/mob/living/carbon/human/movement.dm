@@ -3,10 +3,8 @@
 /mob/living/carbon/human/movement_delay(oldloc, direct)
 	. = ..()
 
+	#warn nightmare - yoshi-p
 	var/tally = 0
-
-	if(species.slowdown)
-		tally = species.slowdown
 
 	if (istype(loc, /turf/space))
 		return 1		//until tg movement slowdown + modifiers is a thing I guess ...
@@ -68,9 +66,6 @@
 
 	if(aiming && aiming.aiming_at)
 		tally += 5 // Iron sights make you slower, it's a well-known fact.
-
-	if(MUTATION_FAT in src.mutations)
-		tally += 1.5
 
 	if (bodytemperature < species.cold_level_1)
 		tally += (species.cold_level_1 - bodytemperature) / 10 * 1.75

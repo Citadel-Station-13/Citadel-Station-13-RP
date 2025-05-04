@@ -25,6 +25,7 @@
 		# base categories
 		human = 5
 		robot = 5
+		pai = 4
 		simple = 3
 
 		# override categories
