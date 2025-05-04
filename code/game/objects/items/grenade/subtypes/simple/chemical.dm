@@ -64,7 +64,7 @@
 	return ..()
 
 /obj/item/grenade/simple/chemical/should_simple_delay_adjust(datum/event_args/actor/actor)
-	return FALSE
+	return secured && ..()
 
 /obj/item/grenade/simple/chemical/context_query(datum/event_args/actor/e_args)
 	. = ..()
@@ -72,6 +72,15 @@
 		.["adjust-fuse"] = atom_context_tuple(
 			name = "adjust fuse",
 			I = dyntool_image_neutral(TOOL_SCREWDRIVER),
+			mobility = MOBILITY_CAN_USE,
+		)
+	if(secured)
+		.["unlock-assembly"] = atom_context_tuple(
+			name = "unlock grenade",
+			I = image(
+				/obj/item/tool/screwdriver::icon,
+				/obj/item/tool/screwdriver::icon_state,
+			),
 			mobility = MOBILITY_CAN_USE,
 		)
 
@@ -84,6 +93,25 @@
 			if(activated)
 				return TRUE
 			do_simple_delay_adjust(e_args)
+			return TRUE
+		if("unlock-assembly")
+			if(!secured)
+				return TRUE
+			if(!use_screwdriver(e_args.performer.get_active_held_item(), e_args, NONE, 0))
+				e_args?.chat_feedback(
+					SPAN_WARNING("You must be holding a screwdriver in your active hand to unsecure [src]."),
+					target = src,
+				)
+				return TRUE
+			secured = FALSE
+			e_args?.visible_feedback(
+				target = src,
+				visible = SPAN_NOTICE("[e_args.performer] [secured ? "secures" : "unsecures"] the cover of [src]."),
+				otherwise_self = SPAN_NOTICE("You [secured ? "secure" : "unsecure"] [src]'s cover."),
+				audible = SPAN_NOTICE("You hear something being [secured ? "fastened" : "unfastened"]."),
+				range = MESSAGE_RANGE_ITEM_SOFT,
+			)
+			update_appearance()
 			return TRUE
 
 /obj/item/grenade/simple/chemical/on_activate_inhand(datum/event_args/actor/actor)
