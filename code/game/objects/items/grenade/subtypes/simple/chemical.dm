@@ -44,7 +44,16 @@
 
 /obj/item/grenade/simple/chemical/examine(mob/user, dist)
 	. = ..()
-	#warn impl - secured, wired, beakers, detonator
+	if(detonator)
+		. += SPAN_NOTICE("It has a [detonator] attached to its assembly.")
+	if(secured)
+		. += SPAN_NOTICE("This one is secured. Open its panel with a screwdriver to access the internals.")
+		return
+	if(wired)
+		. += SPAN_NOTICE("It's wired and ready for assembly.")
+	else
+		. += SPAN_WARNING("It's missing a detonation mechanism. Use some wires to fix that.")
+	. += SPAN_NOTICE("It has [length(beakers)] containers inserted, with room for [beakers_max - length(beakers)] more.")
 
 /obj/item/grenade/simple/chemical/update_icon_state()
 	icon_state = "[base_icon_state || initial(icon_state)][wired ? (secured ? "-secured" : "-wired") : ""]"
@@ -88,7 +97,25 @@
 		return ..()
 	if(!e_args.performer.is_holding_inactive(src))
 		return ..()
-	#warn take shit out
+	if(detonator)
+		e_args.performer.grab_item_from_interacted_with(detonator, src)
+		e_args.chat_feedback(SPAN_NOTICE("You remove [detonator] from [src]."), src)
+		detonator = null
+		return CLICKCHAIN_DID_SOMETHING
+	else if(length(beakers))
+		var/obj/item/removed
+		for(var/obj/item/removable in beakers)
+			removed = removable
+			break
+		if(!removed)
+			e_args.chat_feedback(SPAN_WARNING("There's no removable reagent container in [src]."), target = src)
+			return CLICKCHAIN_DID_SOMETHING
+		e_args.performer.grab_item_from_interacted_with(removed, src)
+		e_args.chat_feedback(SPAN_NOTICE("You remove [removed] from [src]."), src)
+		return CLICKCHAIN_DID_SOMETHING
+	else
+		e_args.chat_feedback(SPAN_WARNING("[src] is empty."), target = rc)
+		return CLICKCHAIN_DID_SOMETHING
 
 /obj/item/grenade/simple/chemical/using_item_on(obj/item/using, datum/event_args/actor/clickchain/e_args, clickchain_flags, datum/callback/reachability_check)
 	. = ..()

@@ -50,8 +50,8 @@
 
 /obj/item/grenade/simple/update_overlays()
 	. = ..()
-	if(active)
-		. += "-active"
+	if(activated && activation_state_append)
+		. += activation_state_append
 
 /obj/item/grenade/simple/atom_break()
 	..()
