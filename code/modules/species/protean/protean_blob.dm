@@ -45,7 +45,7 @@
 	shock_resist = 0.9
 	poison_resist = 1
 
-	movement_cooldown = 0.5
+	movement_base_speed = 10 / 0.5
 	base_attack_cooldown = 10
 
 	var/mob/living/carbon/human/humanform
@@ -109,7 +109,7 @@
 		var/obj/item/organ/external/E = humanform.get_organ(BP_TORSO)
 		//Set us to their health, but, human health ignores robolimbs so we do it 'the hard way'
 		health = maxHealth - E.brute_dam - E.burn_dam
-		movement_cooldown = 0.5 + max(0, (maxHealth - health) - 100) / 50
+		movement_base_speed = 10 / 0.5 + max(0, (maxHealth - health) - 100) / 50
 
 		//Alive, becoming dead
 		if((stat < DEAD) && (health <= 0))
@@ -313,7 +313,7 @@
 		if(!transfer_item_to_loc(r_ear, blob, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT))
 			blob.mob_radio = null
 
-	
+
 
 	for(var/obj/item/pda/P in contents)
 		if(P.id)

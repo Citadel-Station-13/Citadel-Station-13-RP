@@ -27,7 +27,7 @@
 	maxHealth = 30
 	legacy_melee_damage_lower = 2
 	legacy_melee_damage_upper = 4
-	movement_cooldown = 0
+	movement_base_speed = 10 / 0
 	hovering = TRUE
 
 	attacktext = list("slams into")

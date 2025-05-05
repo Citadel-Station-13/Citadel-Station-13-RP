@@ -9,7 +9,7 @@
 	icon_state = "eva-rig"
 
 	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
-	movement_cooldown = 10
+	movement_base_speed = 10 / 10
 
 	health = 200
 	maxHealth = 200

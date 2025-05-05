@@ -15,7 +15,7 @@
 
 	maxHealth = 300
 	health = 300
-	movement_cooldown = 0
+	movement_base_speed = 10 / 0
 
 	vision_innate = /datum/vision/baseline/demon
 

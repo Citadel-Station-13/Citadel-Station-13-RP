@@ -56,7 +56,7 @@
 
 	mob_class = MOB_CLASS_ANIMAL
 	taser_kill = FALSE
-	movement_cooldown = 5
+	movement_base_speed = 10 / 5
 	legacy_melee_damage_lower = 8
 	legacy_melee_damage_upper = 12
 	attacktext = list ("lashed", "whipped", "stung")
@@ -110,7 +110,7 @@
 	maxHealth = 200
 	health = 200
 
-	movement_cooldown = 5
+	movement_base_speed = 10 / 5
 	legacy_melee_damage_lower = 10
 	legacy_melee_damage_upper = 15
 	attack_sound = 'sound/weapons/punch2.ogg'

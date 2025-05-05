@@ -161,7 +161,7 @@
 	maxHealth = 5
 	health = 5
 
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 
 	legacy_melee_damage_lower = 2
 	legacy_melee_damage_upper = 3
@@ -224,7 +224,7 @@
 
 	taser_kill = 0
 
-	movement_cooldown = 7
+	movement_base_speed = 10 / 7
 
 	armor_type = /datum/armor/physiology/roach/panzer
 
@@ -258,7 +258,7 @@
 	legacy_melee_damage_lower = 7
 	legacy_melee_damage_upper = 10
 
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 
 	armor_type = /datum/armor/physiology/roach/jaegar
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
@@ -383,7 +383,7 @@
 	maxHealth = 30
 	health = 30
 	taser_kill = 0
-	movement_cooldown = 8
+	movement_base_speed = 10 / 8
 
 	legacy_melee_damage_lower = 5
 	legacy_melee_damage_upper = 10
@@ -466,7 +466,7 @@
 	legacy_melee_damage_lower = 5
 	legacy_melee_damage_upper = 10
 
-	movement_cooldown = 3
+	movement_base_speed = 10 / 3
 
 	armor_type = /datum/armor/physiology/roach/zeitraum
 
@@ -581,6 +581,6 @@
 	legacy_melee_damage_lower = 10
 	legacy_melee_damage_upper = 20
 
-	movement_cooldown = 6
+	movement_base_speed = 10 / 6
 
 	armor_type = /datum/armor/physiology/roach/fuhrer

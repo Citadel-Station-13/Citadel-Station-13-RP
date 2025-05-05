@@ -31,7 +31,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/construct/juggernaut)
 
 
-	movement_cooldown = 6 //Not super fast, but it might catch up to someone in armor who got punched once or twice.
+	movement_base_speed = 10 / 6 //Not super fast, but it might catch up to someone in armor who got punched once or twice.
 
 //	environment_smash = 2	// Whatever this gets renamed to, Juggernauts need to break things
 

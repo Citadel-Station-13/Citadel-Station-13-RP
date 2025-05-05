@@ -310,7 +310,7 @@
 		health = round(health*mod)
 		legacy_melee_damage_lower = round(legacy_melee_damage_lower*mod)
 		legacy_melee_damage_upper = round(legacy_melee_damage_upper*mod)
-		movement_cooldown = round(movement_cooldown*mod)
+		movement_base_speed = 10 / round(movement_cooldown*mod)
 		meat_amount = round(meat_amount*mod)
 		update_icons()
 
