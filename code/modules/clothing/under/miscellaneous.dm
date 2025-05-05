@@ -1,19 +1,3 @@
-/obj/item/clothing/under/captain_fly
-	name = "rogue's uniform"
-	desc = "For the man who doesn't care because he's still free."
-	icon_state = "captain_fly"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "red", SLOT_ID_LEFT_HAND = "red")
-
-/obj/item/clothing/under/waiter
-	name = "waiter's outfit"
-	desc = "It's a very smart uniform with a special pocket for tips."
-	icon_state = "waiter"
-
-/obj/item/clothing/under/waiter_fem
-	name = "waiter's outfit"
-	desc = "It's a very smart uniform with a special pocket for tips."
-	icon_state = "waiter_fem"
-
 /obj/item/clothing/under/customs
 	name = "customs uniform"
 	desc = "A standard OriCon customs uniform.  Complete with epaulettes."
@@ -21,26 +5,6 @@
 
 /obj/item/clothing/under/customs/khaki
 	icon_state = "cu_suit_kh"
-
-/obj/item/clothing/under/rank/mailman
-	name = "mailman's jumpsuit"
-	desc = "<i>'Special delivery!'</i>"
-	icon_state = "mailman"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blue", SLOT_ID_LEFT_HAND = "blue")
-
-/obj/item/clothing/under/sexyclown
-	name = "sexy-clown suit"
-	desc = "It makes you look HONKable!"
-	icon_state = "sexyclown"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "clown", SLOT_ID_LEFT_HAND = "clown")
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL //Please never
-
-/obj/item/clothing/under/rank/vice
-	name = "vice officer's jumpsuit"
-	desc = "It's the standard issue pretty-boy outfit, as seen on Holo-Vision."
-	icon_state = "vice"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "grey", SLOT_ID_LEFT_HAND = "grey")
 
 /obj/item/clothing/under/space
 	name = "\improper NASA jumpsuit"
@@ -65,16 +29,6 @@
 	cold_protection_cover = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0
-
-/obj/item/clothing/under/owl
-	name = "owl uniform"
-	desc = "A jumpsuit with owl wings. Photorealistic owl feathers! Twooooo!"
-	icon_state = "owl"
-
-/obj/item/clothing/under/johnny
-	name = "johnny~~ jumpsuit"
-	desc = "Johnny~~"
-	icon_state = "johnny"
 
 /obj/item/clothing/under/psysuit
 	name = "dark undersuit"
@@ -144,30 +98,6 @@
 	icon_state = "pirate"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sl_suit", SLOT_ID_LEFT_HAND = "sl_suit")
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS
-
-/obj/item/clothing/under/sexymime
-	name = "sexy mime outfit"
-	desc = "The only time when you DON'T enjoy looking at someone's rack."
-	icon_state = "sexymime"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "mime", SLOT_ID_LEFT_HAND = "mime")
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL //Please never
-
-/obj/item/clothing/under/gladiator
-	name = "gladiator uniform"
-	desc = "Are you not entertained? Is that not why you are here?"
-	icon_state = "gladiator"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "yellow", SLOT_ID_LEFT_HAND = "yellow")
-	body_cover_flags = LOWER_TORSO
-
-//Obsolete, but retained for posterity.
-/*
-/obj/item/clothing/under/gladiator/ashlander
-	name = "ashlander panoply"
-	desc = "Hardy metal plates and firm red sinew comprise this scuffed and marred armor."
-	has_sensors = UNIFORM_HAS_NO_SENSORS
-	armor = list(melee = 5, bullet = 0, laser = 5,energy = 5, bomb = 0, bio = 0, rad = 0)
-*/
 
 /obj/item/clothing/under/moderncoat
 	name = "modern wrapped coat"
@@ -271,90 +201,11 @@
 	icon_state = "cuttop_red"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "red", SLOT_ID_LEFT_HAND = "red")
 
-/*
- *Misc Uniforms
- */
-
-/obj/item/clothing/under/brandjumpsuit/aether
-	name = "\improper Aether jumpsuit"
-	desc = "A jumpsuit belonging to Aether Atmospherics and Recycling, a Trans-Stellar that supplies recycling and atmospheric systems to colonies."
-	icon_state = "aether"
-	snowflake_worn_state = "aether"
-
-/obj/item/clothing/under/pcrc
-	name = "\improper PCRC uniform"
-	desc = "A uniform belonging to Proxima Centauri Risk Control, a private security firm."
-	icon_state = "pcrc"
-	item_state = "jensensuit"
-	snowflake_worn_state = "pcrc"
-
-/obj/item/clothing/under/pcrc_fem
-	name = "\improper PCRC uniform"
-	desc = "A uniform belonging to Proxima Centauri Risk Control, a private security firm."
-	icon_state = "pcrc_fem"
-	item_state = "jensensuit"
-	snowflake_worn_state = "pcrc"
-
-/obj/item/clothing/under/brandjumpsuit/grayson
-	name = "\improper Grayson overalls"
-	desc = "A set of overalls belonging to Grayson Manufactories, a mining Trans-Stellar."
-	icon_state = "mechanic"
-	snowflake_worn_state = "mechanic"
-
-/obj/item/clothing/under/brandjumpsuit/wardt
-	name = "\improper Ward-Takahashi jumpsuit"
-	desc = "A jumpsuit belonging to Ward-Takahashi, a Trans-Stellar in the consumer goods market."
-	icon_state = "robotics2"
-	snowflake_worn_state = "robotics2"
-
-/obj/item/clothing/under/brandjumpsuit/mbill
-	name = "\improper Major Bill's uniform"
-	desc = "A uniform belonging to Major Bill's Transportation, a shipping megacorporation."
-	icon_state = "mbill"
-	snowflake_worn_state = "mbill"
-	catalogue_data = list(/datum/category_item/catalogue/information/organization/major_bills)
-
-/obj/item/clothing/under/confederacy
-	name = "\improper Confederacy uniform"
-	desc = "A military uniform belonging to the Confederacy of Man, an independent human government." //Name pending review
-	icon_state = "confed"
-	snowflake_worn_state = "confed"
-
-/obj/item/clothing/under/saare
-	name = "SAARE uniform"
-	desc = "A dress uniform belonging to Stealth Assault Enterprises, a minor private military corporation." //Name pending review
-	icon_state = "saare"
-	snowflake_worn_state = "saare"
-
-/obj/item/clothing/under/saare_fem
-	name = "SAARE uniform"
-	desc = "A dress uniform belonging to Stealth Assault Enterprises, a minor private military corporation."
-	icon_state = "saare_fem"
-	snowflake_worn_state = "saare_fem"
-
 /obj/item/clothing/under/frontier
 	name = "frontier clothes"
 	desc = "A rugged flannel shirt and denim overalls. A popular style among frontier colonists."
 	icon_state = "frontier"
 	snowflake_worn_state = "frontier"
-
-/obj/item/clothing/under/brandjumpsuit/focal
-	name = "\improper Focal Point jumpsuit"
-	desc = "A jumpsuit belonging to Focal Point Energistics, an engineering megacorporation."
-	icon_state = "focal"
-	snowflake_worn_state = "focal"
-
-/obj/item/clothing/under/brandjumpsuit/hephaestus
-	name = "\improper Hephaestus jumpsuit"
-	desc = "A jumpsuit belonging to Hephaestus Industries, a Trans-Stellar best known for its arms production."
-	icon_state = "heph"
-	snowflake_worn_state = "heph"
-
-/obj/item/clothing/under/brandjumpsuit/hephaestus_fem
-	name = "\improper Hephaestus jumpsuit (female)"
-	desc = "A jumpsuit belonging to Hephaestus Industries, a Trans-Stellar best known for its arms production."
-	icon_state = "heph_fem"
-	snowflake_worn_state = "heph_fem"
 
 /obj/item/clothing/under/rank/psych/turtleneck/sweater
 	desc = "A warm looking sweater and a pair of dark blue slacks."
@@ -405,13 +256,6 @@
 	name = "Futuristic Red-Striped Jumpsuit"
 	desc = "Show your love for the fasion of today viewed through the lens of yesterday! All come in black, but this one has red stripes."
 	icon_state = "red"
-
-/obj/item/clothing/under/medigown
-	name = "medical gown"
-	desc = "A flimsy examination gown, the back ties never close."
-	icon_state = "medicalgown"
-	snowflake_worn_state = "medicalgown"
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 
 /obj/item/clothing/under/bathrobe
 	name = "bathrobe"
@@ -668,101 +512,10 @@
 	desc = "A medium length, grey skirt with a long-sleeve, black sweater on top."
 	icon_state = "greyskirt_female"
 
-/obj/item/clothing/under/highwayman_clothes
-	name = "Highwayman Clothes"
-	desc = "For the dungeon crawling, adventurous robber."
-	icon_state = "highwayman_clothes"
-
-/obj/item/clothing/under/highwayman_clothes_fem
-	name = "Highwayman Clothes"
-	desc = "For the dungeon crawling, adventurous robber."
-	icon_state = "highwayman_clothes_fem"
-
 /obj/item/clothing/under/businessskirt_female
 	name = "Business Skirt"
 	desc = "A professional black jacket with a mundane brown skirt. Perfect for the office."
 	icon_state = "businessskirt_female"
-
-/obj/item/clothing/under/roman
-	name = "Roman Lorica"
-	desc = "Replica lorica segmentata. It doesn't feel like it would actually afford much protection against modern weaponry."
-	icon_state = "roman"
-
-//Costumes - Bring all of them down here sometime to help build categories?
-/obj/item/clothing/under/lobster
-	name = "lobster costume"
-	desc = "If you can dance, you've got a career in Law ahead."
-	icon_state = "lobster"
-
-/obj/item/clothing/under/mummy
-	name = "mummy bandages"
-	desc = "This aged and dirty wrap bears the dust of countless aeons. Keep away from water."
-	icon_state = "mummy"
-
-/obj/item/clothing/under/skeleton
-	name = "skeleton costume"
-	desc = "Too spooky, too scary. Those who don this costume are haunted by xylophones."
-	icon_state = "skeleton"
-
-/obj/item/clothing/under/scarecrow
-	name = "scarecrow costume"
-	desc = "Ideal for stalking someone through a field of hay. This suit is less practical on a space station."
-	icon_state = "scarecrow"
-
-/obj/item/clothing/under/darkholme
-	name = "leather harness costume"
-	desc = "The outfit of a dungeon master, and we're not talking about tabletop."
-	icon_state = "darkholme"
-
-/obj/item/clothing/under/geisha
-	name = "geisha outfit"
-	desc = "These silk robes are commonly associated with Old World courtesans and radiate a delicate femininity."
-	icon_state = "geisha"
-
-/obj/item/clothing/under/drfreeze
-	name = "cryogenic scientist costume"
-	desc = "Themed puns aren't required, but they do make you seem cooler."
-	icon_state = "drfreeze"
-
-/obj/item/clothing/under/red_mech
-	name = "red plug suit"
-	desc = "The ideal outfit for a psychotic bitch. Knowledge of German not required."
-	icon_state = "red_mech_suit"
-
-/obj/item/clothing/under/white_mech
-	name = "white plug suit"
-	desc = "For pilots whose color palettes match their personalities."
-	icon_state = "white_mech_suit"
-
-/obj/item/clothing/under/blue_mech
-	name = "blue plug suit"
-	desc = "If you want to sit in your bedroom and cry, this is the suit to do it in."
-	icon_state = "blue_mech_suit"
-
-/obj/item/clothing/under/christmas
-	name = "holiday suit"
-	desc = "This costume hearkens back to Old Earth solstice traditions representing community interaction and an emphemeral concept known as 'holiday cheer'."
-	icon_state = "christmasmaler"
-
-/obj/item/clothing/under/christmas/green
-	name = "green holiday suit"
-	desc = "Commonly associated with faerie-like 'helpers', the color green represents vitality and the coming spring."
-	icon_state = "christmasmaleg"
-
-/obj/item/clothing/under/christmasfem
-	name = "sexy holiday suit"
-	desc = "Appreciation of more physical forms of comfort is important during the holidays. Even when it's cold out."
-	icon_state = "christmasfemaler"
-
-/obj/item/clothing/under/christmasfem/green
-	name = "sexy green holiday suit"
-	desc = "Something special for Santa's little helper."
-	icon_state = "christmasfemaleg"
-
-/obj/item/clothing/under/telegram
-	name = "singing courier"
-	desc = "Living telegram operators experience one of the largest on the job fatality rates of all courier-based occupations."
-	icon_state = "telegram"
 
 //Baggy Turtlenecks
 /obj/item/clothing/under/turtlebaggy
@@ -821,12 +574,6 @@
 	desc = "A hardy and practical uniform distributed to Nebula Gas employees, meant to provide protection and comfort in industrial environments."
 	icon_state = "mechanic"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "cargo", SLOT_ID_LEFT_HAND = "cargo")
-
-/obj/item/clothing/under/safari
-	name = "safari uniform"
-	desc = "A sturdy canvas button-up and shorts, designed to provide protection without retaining heat."
-	icon_state = "safari"
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 
 /obj/item/clothing/under/bsing
 	name = "blue performer's outfit"
@@ -962,11 +709,6 @@
 	icon_state = "laconic"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "grey", SLOT_ID_LEFT_HAND = "grey")
 
-/obj/item/clothing/under/bountyskin
-	name = "bounty hunter skinsuit"
-	desc = "A skintight bodysuit meant to be worn under powered armor. Popularized by a famous bounty hunter."
-	icon_state = "bountyskin"
-
 /obj/item/clothing/under/smooth_gray
 	name = "smooth gray jumpsuit"
 	desc = "An ironed version of the famous, bold, and bald apparel. As smooth as it looks, it does not guarantee being able to slip away."
@@ -981,54 +723,6 @@
 	worn_has_rolldown = UNIFORM_HAS_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 	worn_bodytypes = BODYTYPE_DEFAULT
-
-//Antediluvian
-
-/obj/item/clothing/under/antediluvian
-	name = "Antediluvian corset"
-	desc = "This metallic corset and sturdy cloth bustier provide very little coverage. A dismountable sheer bodystocking integrated into the clothing retains some modesty. It is unknown whether it serveed ceremonial or official purpose."
-	icon_state = "antediluvian"
-	item_state = "antediluvian"
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	//item_action_name = "Reconfigure Suit"
-
-/*
-/obj/item/clothing/under/antediluvian/verb/switchsprite()
-    set name = "Reconfigure Suit"
-    set category = VERB_CATEGORY_OBJECT
-    set src in usr
-    if(!istype(usr, /mob/living))
-        return
-    if(usr.stat)
-        return
-    to_chat(usr, "You rearrange the suit's configuration.")
-    if(snowflake_worn_state == "antediluvian_s")
-        snowflake_worn_state = "antediluvian_d_s"
-    if(snowflake_worn_state == "antediluvian_d_s")
-        snowflake_worn_state = "antediluvian_s"
-*/
-
-/obj/item/clothing/under/antediluvian/dress
-	name = "Antediluvian dress"
-	desc = "A metalic dress with inner padding, following a similar, scantily-clad fashion trend.  It is unknown whether it served ceremonial or official purpose."
-	icon_state = "ante"
-	icon = 'icons/clothing/suit/misc/ante.dmi'
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-
-/obj/item/clothing/under/antediluvian/dress/aziru
-	name = "Antediluvian Wrap"
-	desc = "A dress made out of an elegantly wrapped single piece of cloth, with golden embellishments of unknown origin. It seems to have purposefully exposed arms."
-	icon_state = "aziru_dress"
-	icon = 'icons/clothing/uniform/misc/ante_aziru.dmi'
-
-/obj/item/clothing/under/antediluvian/dress/ante_boobflap
-	name = "Antediluvian Chest Flaps"
-	desc = "A comfortable collar with two trailing flaps going down onto the chest area, meeting the bare minimum requirements for decency, should they stay in place in motion."
-	icon_state = "ante_boobflap"
-	icon = 'icons/clothing/uniform/misc/ante_boobflap.dmi'
 
 /obj/item/clothing/under/hasie
 	name = "Hasie skirt"
@@ -1056,15 +750,6 @@
 
 /obj/item/clothing/under/surplus/russoblue
 	icon_state = "bdu_russoblue"
-
-/obj/item/clothing/under/tape
-	name = "body tape wrapping"
-	desc = "Several layers of flexible body tape may be placed in a skintight arrangement that protects the user's modesty while still allowing them to dazzle. Odds of winning a Multipass increase when wearing this attire."
-	icon = 'icons/clothing/uniform/misc/tape.dmi'
-	icon_state = "tape"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 //Lindenoak Line
 /obj/item/clothing/under/sitri
@@ -1200,57 +885,6 @@
 	name = "bodysuit pants"
 	desc = "Following complaints that bodysuits were too tight to roll down to the waist, production of bodysuit pants as singular items grew in popularity."
 	icon_state = "altbodysuitfem_pants"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-//Historical Military Uniforms
-/obj/item/clothing/under/redcoat
-	name = "redcoat uniform"
-	desc = "Looks old."
-	icon = 'icons/clothing/uniform/misc/old_military.dmi'
-	icon_state = "redcoatformal"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "red", SLOT_ID_LEFT_HAND = "red")
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/general
-	name = "despotic general uniform"
-	desc = "Looks old."
-	icon = 'icons/clothing/uniform/misc/old_military.dmi'
-	icon_state = "general"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "grey", SLOT_ID_LEFT_HAND = "grey")
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/american
-	name = "post-revolutionary american uniform"
-	desc = "Looks old."
-	icon = 'icons/clothing/uniform/misc/old_military.dmi'
-	icon_state = "american"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blue", SLOT_ID_LEFT_HAND = "blue")
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/prussian
-	name = "prussian uniform"
-	desc = "Looks old."
-	icon = 'icons/clothing/uniform/misc/old_military.dmi'
-	icon_state = "prussian"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blue", SLOT_ID_LEFT_HAND = "blue")
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/soviet
-	name = "soviet uniform"
-	desc = "For the Motherland!"
-	icon = 'icons/clothing/uniform/misc/old_military.dmi'
-	icon_state = "soviet"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "grey", SLOT_ID_LEFT_HAND = "grey")
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL

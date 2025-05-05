@@ -1,0 +1,51 @@
+/**
+ * Ante stuff
+ */
+
+//Antediluvian
+
+/obj/item/clothing/under/antediluvian
+	name = "Antediluvian corset"
+	desc = "This metallic corset and sturdy cloth bustier provide very little coverage. A dismountable sheer bodystocking integrated into the clothing retains some modesty. It is unknown whether it serveed ceremonial or official purpose."
+	icon = 'icons/clothing/uniform/formal/antediluvian/antediluvian.dmi'
+	icon_state = "antediluvian"
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	//item_action_name = "Reconfigure Suit"
+
+/*
+/obj/item/clothing/under/antediluvian/verb/switchsprite()
+    set name = "Reconfigure Suit"
+    set category = VERB_CATEGORY_OBJECT
+    set src in usr
+    if(!istype(usr, /mob/living))
+        return
+    if(usr.stat)
+        return
+    to_chat(usr, "You rearrange the suit's configuration.")
+    if(snowflake_worn_state == "antediluvian_s")
+        snowflake_worn_state = "antediluvian_d_s"
+    if(snowflake_worn_state == "antediluvian_d_s")
+        snowflake_worn_state = "antediluvian_s"
+*/
+
+/obj/item/clothing/under/antediluvian/dress
+	name = "Antediluvian dress"
+	desc = "A metalic dress with inner padding, following a similar, scantily-clad fashion trend.  It is unknown whether it served ceremonial or official purpose."
+	icon = 'icons/clothing/uniform/formal/antediluvian/ante.dmi'
+	icon_state = "ante"
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/under/antediluvian/dress/aziru
+	name = "Antediluvian Wrap"
+	desc = "A dress made out of an elegantly wrapped single piece of cloth, with golden embellishments of unknown origin. It seems to have purposefully exposed arms."
+	icon = 'icons/clothing/uniform/formal/antediluvian/aziru_dress.dmi'
+	icon_state = "aziru_dress"
+
+/obj/item/clothing/under/antediluvian/dress/ante_boobflap
+	name = "Antediluvian Chest Flaps"
+	desc = "A comfortable collar with two trailing flaps going down onto the chest area, meeting the bare minimum requirements for decency, should they stay in place in motion."
+	icon = 'icons/clothing/uniform/formal/antediluvian/aziru_boobflap.dmi'
+	icon_state = "ante_boobflap"

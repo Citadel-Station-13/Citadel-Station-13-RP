@@ -11,6 +11,17 @@
 	permeability_coefficient = 0.50
 	armor_type = /datum/armor/medical/jumpsuit
 
+/obj/item/clothing/under/medigown
+	name = "medical gown"
+	desc = "A flimsy examination gown, the back ties never close."
+	icon = 'icons/clothing/uniform/workwear/dept_medical/medicalgown.dmi'
+	icon_state = "medicalgown"
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO
+
+/**
+ * Chemist
+ */
+
 /obj/item/clothing/under/rank/chemist
 	desc = "It's made of a special fiber that gives special protection against biohazards. It has a chemist rank stripe on it."
 	name = "chemist's jumpsuit"
@@ -53,6 +64,10 @@
 	permeability_coefficient = 0.50
 	armor_type = /datum/armor/medical/jumpsuit
 
+/**
+ * CMO
+ */
+
 /obj/item/clothing/under/rank/chief_medical_officer
 	desc = "It's a jumpsuit worn by those with the experience to be \"Chief Medical Officer\". It provides minor biological protection."
 	name = "chief medical officer's jumpsuit"
@@ -94,6 +109,10 @@
 	icon_state = "cmojf"
 	armor_type = /datum/armor/medical/jumpsuit
 
+/**
+ * Geneticist
+ */
+
 /obj/item/clothing/under/rank/geneticist
 	desc = "It's made of a special fiber that gives special protection against biohazards. It has a genetics rank stripe on it."
 	name = "geneticist's jumpsuit"
@@ -121,6 +140,10 @@
 	icon_state = "genetics_new"
 	permeability_coefficient = 0.50
 	armor_type = /datum/armor/medical/jumpsuit
+
+/**
+ * Virologist
+ */
 
 /obj/item/clothing/under/rank/virologist
 	desc = "It's made of a special fiber that gives special protection against biohazards. It has a virologist rank stripe on it."
@@ -164,6 +187,10 @@
 	permeability_coefficient = 0.50
 	armor_type = /datum/armor/medical/jumpsuit
 
+/**
+ * Nurse
+ */
+
 /obj/item/clothing/under/rank/nursesuit
 	desc = "It's a jumpsuit commonly worn by nursing staff in the medical department."
 	name = "nurse's suit"
@@ -192,6 +219,10 @@
 	icon_state = "orderly"
 	permeability_coefficient = 0.50
 	armor_type = /datum/armor/medical/jumpsuit
+
+/**
+ * Doctor
+ */
 
 /obj/item/clothing/under/rank/medical
 	desc = "It's made of a special fiber that provides minor protection against biohazards. It has a cross on the chest denoting that the wearer is trained medical personnel."
@@ -248,6 +279,10 @@
 	icon_state = "medical_short"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/**
+ * Scrubs
+ */
 
 /obj/item/clothing/under/rank/medical/scrubs
 	name = "blue scrubs"
@@ -318,6 +353,10 @@
 	icon = 'icons/clothing/uniform/workwear/dept_medical/scrubsnavyblue_fem.dmi'
 	icon_state = "scrubsnavyblue_fem"
 	armor_type = /datum/armor/medical/jumpsuit
+
+/**
+ * Psychiatrist
+ */
 
 /obj/item/clothing/under/rank/psych
 	desc = "A basic white jumpsuit. It has turqouise markings that denote the wearer as a psychiatrist."

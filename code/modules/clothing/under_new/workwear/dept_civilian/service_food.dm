@@ -46,4 +46,14 @@
 	icon = 'icons/clothing/uniform/workwear/service/hydroponics_skirt.dmi'
 	icon_state = "hydroponics_skirt"
 
+/obj/item/clothing/under/waiter
+	name = "waiter's outfit"
+	desc = "It's a very smart uniform with a special pocket for tips."
+	icon = 'icons/clothing/uniform/workwear/service/waiter.dmi'
+	icon_state = "waiter"
 
+/obj/item/clothing/under/waiter_fem
+	name = "waiter's outfit"
+	desc = "It's a very smart uniform with a special pocket for tips."
+	icon = 'icons/clothing/uniform/workwear/service/waiter_fem.dmi'
+	icon_state = "waiter_fem"
