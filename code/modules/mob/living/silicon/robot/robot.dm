@@ -173,6 +173,10 @@
 	var/sitting = FALSE
 	var/bellyup = FALSE
 
+	//* Movement *//
+	/// Base movement speed in tiles / second
+	var/movement_base_speed = 4
+
 /mob/living/silicon/robot/Initialize(mapload, unfinished = FALSE)
 	spark_system = new /datum/effect_system/spark_spread()
 	spark_system.set_up(5, 0, src)

@@ -1,0 +1,43 @@
+#warn deal with this
+
+// # human
+// # robot
+// # pai
+// # simple
+// # base categories
+// human = 5
+// robot = 5
+// pai = 4
+// simple = 3
+
+// # override categories
+// simple-animal = "inherit"
+// simple-mechanical = "inherit"
+
+// # specific categories
+// simple-animal-bear = 3
+// simple-animal-slime = 3.75
+// simple-animal-spider = 4
+// simple-mechanical-hivebot = 4
+
+// # human species - id groups
+// human-species-id_group-xenohybrid = 5.5 # egh...
+// human-species-id_group-shadekin = 6.66 # stupid vore race
+
+// # human species - id
+// human-species-id-adherent = 5.75
+// human-species-id-alraune = 4.5
+// human-species-id-apidaen = 5.25
+// human-species-id-auril_incan = 5.5
+// human-species-id-diona = 3
+// human-species-id-krisitik = 5.5
+// human-species-id-naramadi = 5.5
+// human-species-id-teshari = 6.66 # little devil buggers
+// human-species-id-unathi = 4.25
+// human-species-id-vasilissan = 5.5
+// human-species-id-xenochimera = 5.5 # egh...
+// human-species-id-xenomorph_hunter = 10
+// human-species-id-xenomorph_queen = 3
+// human-species-id-xenomorph_sentinel = 6.66
+// human-species-id-xenomorph_drone = 5.5
+// human-species-id-vox = 6.66 # kikiyaya

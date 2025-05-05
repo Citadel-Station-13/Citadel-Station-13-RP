@@ -4,9 +4,11 @@
 /**
  * Sets our base movespeed from a config lookup.
  */
-/mob/living/silicon/pai/get_movespeed_base()
-	return movement_base_speed
+/mob/living/carbon/get_movespeed_base()
+	#warn impl
 
-/mob/living/silicon/pai/get_movespeed_config_tags()
+/mob/living/carbon/get_movespeed_config_tags()
 	. = ..()
-	. += "pai"
+	. += "human"
+	. += "human-species-id-[species.uid]"
+	. += "human-species-id-[species.id]"

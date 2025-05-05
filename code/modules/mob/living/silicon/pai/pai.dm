@@ -129,6 +129,10 @@
 
 	var/list/active_holograms = list()
 
+	//* Movement *//
+	/// Base speed in tiles/second
+	var/movement_base_speed = 4
+
 /mob/living/silicon/pai/Initialize(mapload)
 	. = ..()
 	shell = loc

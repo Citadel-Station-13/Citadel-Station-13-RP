@@ -1,6 +1,12 @@
-// Reorganized and somewhat cleaned up.
-// AI code has been made into a datum, inside the AI module folder.
-
+/**
+ * Simple mobs.
+ *
+ * * Unlike /carbon's and /silicon's, these are slightly less
+ *   composition-based, with most of their properties in their
+ *   frankly ridiculous amount of variables.
+ * * These tend to not have detailed simulation like attack
+ *   zones and whatnot being handled.
+ */
 /mob/living/simple_mob
 	name = "animal"
 	desc = ""
@@ -71,9 +77,10 @@
 	/// Text name of their language if they speak something other than galcom. They speak the first one.
 	var/has_langs = list(LANGUAGE_GALCOM)
 
-	//* Movement things. *//
-	/// Lower is faster.
-	var/movement_cooldown = 5
+	//* Movement *//
+	/// Base movement speed in tiles per second
+	var/movement_base_speed = 2
+
 	/// If set, will play this sound when it moves on its own will.
 	var/movement_sound = null
 	/// If set, plays the sound when the mob's dir changes in most cases.

@@ -4,6 +4,16 @@
 	/// * lazy list
 	var/list/impairments_feigned
 
+	//* Movespeed *//
+	/// List of movement speed modifiers applying to this mob
+	/// * This is a lazy list.
+	var/list/movespeed_mod
+	/// List of movement speed modifiers ignored by this mob. List -> List (id) -> List (sources)
+	/// * This is a lazy list.
+	var/list/movespeed_mod_immunities
+	/// The calculated mob speed slowdown based on the modifiers list
+	var/movespeed_hyperbolic
+
 /**
  * Intialize a mob
  *

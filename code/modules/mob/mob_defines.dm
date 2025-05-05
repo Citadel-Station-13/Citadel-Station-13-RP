@@ -66,15 +66,6 @@
 	var/datum/object_system/storage/active_storage
 
 	//? Movespeed
-	/// List of movement speed modifiers applying to this mob
-	var/list/movespeed_modification				//Lazy list, see mob_movespeed.dm
-	/// List of movement speed modifiers ignored by this mob. List -> List (id) -> List (sources)
-	var/list/movespeed_mod_immunities			//Lazy list, see mob_movespeed.dm
-	/// The calculated mob speed slowdown based on the modifiers list
-	var/cached_hyperbolic_slowdown
-	/// cached legacy movespeed multiplier -_-
-	//  todo: remove
-	var/cached_movespeed_multiply
 	/// Next world.time we will be able to move.
 	var/move_delay = 0
 	/// Last world.time we finished a normal, non relay/intercepted move

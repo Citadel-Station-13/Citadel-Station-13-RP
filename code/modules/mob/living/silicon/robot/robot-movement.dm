@@ -4,7 +4,10 @@
 /**
  * Sets our base movespeed from a config lookup.
  */
-/mob/living/silicon/robot/update_movespeed_from_config()
+/mob/living/silicon/robot/get_movespeed_base()
+	return movement_base_speed
 
-#warn impl all, 'robot' category
-
+/mob/living/silicon/robot/get_movespeed_config_tags()
+	. = ..()
+	. += "robot"
+	// TODO: 'robot-module-[module id]'
