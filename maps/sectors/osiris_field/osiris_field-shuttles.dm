@@ -13,7 +13,7 @@
 
 /obj/overmap/entity/visitable/ship/landable/osiris/colonial
 	name = "Colonial Liner"
-	desc = "A Liner made to carry people.."
+	desc = "A Liner made to carry people."
 	scanner_name = "Colonial Liner"
 	scanner_desc = @{"[i]Registration[/i]: ---
 [i]Class[/i]: Colonial Liner XXIII
@@ -192,7 +192,7 @@
 	landmark_tag = "tradeport/scavenger_start"
 	shuttle_type = /datum/shuttle/autodock/overmap/osiris/scavenger
 
-/obj/effect/shuttle_landmark/shuttle_initializer/osiris/cargoravana/Initialize(mapload)
+/obj/effect/shuttle_landmark/shuttle_initializer/osiris/scavenger/Initialize(mapload)
 	var/obj/overmap/entity/visitable/O = get_overmap_sector(get_z(src)) //make this into general system some other time
 	LAZYINITLIST(O.initial_restricted_waypoints)
 	O.initial_restricted_waypoints["FTV Adala"] = list(landmark_tag)
@@ -229,3 +229,15 @@
 	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
 	sound_env = SMALL_ENCLOSED
+
+/obj/effect/shuttle_landmark/shuttle_initializer/osiris/scavengerutilitymicro
+	name = "Tradeport"
+	base_area = /area/space
+	base_turf = /turf/space
+	shuttle_type = /datum/shuttle/autodock/overmap/trade/scavengerutilitymicro
+
+/obj/effect/shuttle_landmark/shuttle_initializer/osiris/scavengerutilitymicro/Initialize(mapload)
+	var/obj/overmap/entity/visitable/O = get_overmap_sector(get_z(src)) //make this into general system some other time
+	LAZYINITLIST(O.initial_restricted_waypoints)
+	O.initial_restricted_waypoints[name = "Scavenging Utility Micro Shuttle"] = list(landmark_tag)
+	. = ..()
