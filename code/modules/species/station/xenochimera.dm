@@ -39,6 +39,7 @@
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_The_Xenochimera"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/xenochimera)
 
+	movement_base_speed = 5.5
 	hazard_low_pressure = -1 //Prevents them from dying normally in space. Special code handled below.
 
 	cold_level_1 = -1 // All cold debuffs are handled below in handle_environment_special

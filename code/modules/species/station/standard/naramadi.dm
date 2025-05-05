@@ -12,6 +12,7 @@
 		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/naramadi,
 	)
 
+	movement_base_speed = 5.5
 	snow_movement = -1 // Ignores light snow
 
 	hunger_factor = 0.1 // By math should be half of the Teshari Nutrition drain

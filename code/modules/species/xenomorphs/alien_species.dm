@@ -197,6 +197,8 @@
 		O_INTESTINE =	/obj/item/organ/internal/intestine/xeno
 		)
 
+	movement_base_speed = 5.5
+
 	inherent_verbs = list(
 		/mob/living/proc/ventcrawl,
 		/mob/living/carbon/human/proc/regurgitate,
@@ -225,6 +227,8 @@
 
 	icobase = 'icons/mob/species/xenomorph/hunter.dmi'
 	deform =  'icons/mob/species/xenomorph/hunter.dmi'
+
+	movement_base_speed = 10
 
 	has_organ = list(
 		O_HEART =    /obj/item/organ/internal/heart,
@@ -255,6 +259,8 @@
 	sprite_accessory_defaults = list(
 		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/xenomorph/sentinel,
 	)
+
+	movement_base_speed = 6.66
 
 	icobase = 'icons/mob/species/xenomorph/sentinel.dmi'
 	deform =  'icons/mob/species/xenomorph/sentinel.dmi'
@@ -291,6 +297,8 @@
 	sprite_accessory_defaults = list(
 		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/xenomorph/queen,
 	)
+
+	movement_base_speed = 3
 
 	icobase = 'icons/mob/species/xenomorph/queen.dmi'
 	deform =  'icons/mob/species/xenomorph/queen.dmi'

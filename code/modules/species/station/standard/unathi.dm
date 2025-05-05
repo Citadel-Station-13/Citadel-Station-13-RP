@@ -40,6 +40,7 @@
 	ambiguous_genders = TRUE
 	gluttonous = 1
 
+	movement_base_speed = 4.5
 	item_slowdown_mod = 0.25
 
 	total_health = 125

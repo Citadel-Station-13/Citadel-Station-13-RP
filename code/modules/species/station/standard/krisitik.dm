@@ -38,7 +38,6 @@
 	// wikilink = ""
 	catalogue_data = list(/datum/category_item/catalogue/fauna/krisitik)
 
-
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
@@ -50,6 +49,7 @@
 	flash_mod = 1.5 //Cave creatures don't like bright lights
 	radiation_mod = 0.75 //Hardened Genes
 
+	movement_base_speed = 5.5
 	gluttonous    = 1
 
 	max_age = 100
