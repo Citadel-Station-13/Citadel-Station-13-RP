@@ -82,3 +82,10 @@
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/pirate
+	name = "pirate outfit"
+	desc = "Yarr."
+	icon = 'icons/clothing/uniform/costume/historical/pirate.dmi'
+	icon_state = "pirate"
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS

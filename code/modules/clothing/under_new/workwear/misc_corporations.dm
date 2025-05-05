@@ -25,7 +25,6 @@
 	desc = "A set of overalls belonging to Grayson Manufactories, a mining Trans-Stellar."
 	icon = 'icons/clothing/uniform/workwear/misc_corporations/mechanic.dmi'
 	icon_state = "mechanic"
-	snowflake_worn_state = "mechanic"
 
 //Reuses spritesheet
 /obj/item/clothing/under/trader_coveralls

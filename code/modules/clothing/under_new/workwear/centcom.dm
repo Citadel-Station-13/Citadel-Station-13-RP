@@ -90,3 +90,17 @@
 	desc = "A neat proper uniform of someone on offical business. The top button is sewn shut."
 	icon = 'icons/clothing/uniform/workwear/centcom/greensuit_skirt.dmi'
 	icon_state = "greensuit_skirt"
+
+/**
+ * Customs
+ */
+
+/obj/item/clothing/under/customs
+	name = "customs uniform"
+	desc = "A standard OriCon customs uniform.  Complete with epaulettes."
+	icon = 'icons/clothing/uniform/workwear/centcom/cu_suit.dmi'
+	icon_state = "cu_suit"
+
+/obj/item/clothing/under/customs/khaki
+	icon = 'icons/clothing/uniform/workwear/centcom/cu_suit_kh.dmi'
+	icon_state = "cu_suit_kh"

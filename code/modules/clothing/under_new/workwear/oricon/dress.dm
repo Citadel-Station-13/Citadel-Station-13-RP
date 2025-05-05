@@ -1,6 +1,6 @@
 /obj/item/clothing/under/oricon/mildress
 	name = "dress uniform"
-	icon = 'icons/clothing/uniform/rank/dress.dmi'
+	icon = 'icons/clothing/uniform/workwear/oricon/dress/grey.dmi'
 	desc = "A dress uniform of some kind."
 	icon_state = "grey"
 	armor_type = /datum/armor/none
@@ -11,6 +11,7 @@
 /obj/item/clothing/under/oricon/mildress/sysguard
 	name = "explorer's dress uniform"
 	desc = "The dress uniform of the Society of Universal Cartographers in silver trim."
+	icon = 'icons/clothing/uniform/workwear/oricon/dress/grey.dmi'
 	icon_state = "grey"
 
 /obj/item/clothing/under/oricon/mildress/sysguard/command
@@ -40,6 +41,7 @@
 /obj/item/clothing/under/oricon/mildress/sysguard/officer
 	name = "explorer's command dress uniform"
 	desc = "The dress uniform of the Society of Universal Cartographers in gold trim."
+	icon = 'icons/clothing/uniform/workwear/oricon/dress/grey_command.dmi'
 	icon_state = "grey_command"
 
 /obj/item/clothing/under/oricon/mildress/sysguard/officer/command
@@ -69,11 +71,13 @@
 /obj/item/clothing/under/oricon/mildress/marine
 	name = "marine dress uniform"
 	desc = "The dress uniform of the JSDF Marine Corps, class given form."
+	icon = 'icons/clothing/uniform/workwear/oricon/dress/black.dmi'
 	icon_state = "black"
 	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
 /obj/item/clothing/under/oricon/mildress/marine/command
 	name = "marine command dress uniform"
 	desc = "The dress uniform of the JSDF Marine Corps, even classier in gold."
+	icon = 'icons/clothing/uniform/workwear/oricon/dress/black_command.dmi'
 	icon_state = "black_command"
 	worn_has_rollsleeve = UNIFORM_HAS_ROLL

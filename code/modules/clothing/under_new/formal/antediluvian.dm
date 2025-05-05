@@ -11,23 +11,6 @@
 	icon_state = "antediluvian"
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	//item_action_name = "Reconfigure Suit"
-
-/*
-/obj/item/clothing/under/antediluvian/verb/switchsprite()
-    set name = "Reconfigure Suit"
-    set category = VERB_CATEGORY_OBJECT
-    set src in usr
-    if(!istype(usr, /mob/living))
-        return
-    if(usr.stat)
-        return
-    to_chat(usr, "You rearrange the suit's configuration.")
-    if(snowflake_worn_state == "antediluvian_s")
-        snowflake_worn_state = "antediluvian_d_s"
-    if(snowflake_worn_state == "antediluvian_d_s")
-        snowflake_worn_state = "antediluvian_s"
-*/
 
 /obj/item/clothing/under/antediluvian/dress
 	name = "Antediluvian dress"

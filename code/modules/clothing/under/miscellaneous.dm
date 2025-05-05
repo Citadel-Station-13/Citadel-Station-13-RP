@@ -1,103 +1,9 @@
-/obj/item/clothing/under/customs
-	name = "customs uniform"
-	desc = "A standard OriCon customs uniform.  Complete with epaulettes."
-	icon_state = "cu_suit"
-
-/obj/item/clothing/under/customs/khaki
-	icon_state = "cu_suit_kh"
-
-/obj/item/clothing/under/space
-	name = "\improper NASA jumpsuit"
-	desc = "It has a NASA logo on it and is made of space-proofed materials."
-	icon_state = "black"
-	w_class = WEIGHT_CLASS_BULKY//bulky item
-	gas_transfer_coefficient = 0.01
-	permeability_coefficient = 0.02
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	cold_protection_cover = UPPER_TORSO | LOWER_TORSO | LEGS | ARMS //Needs gloves and shoes with cold protection to be fully protected.
-	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-
-/obj/item/clothing/under/acj
-	name = "administrative cybernetic jumpsuit"
-	icon_state = "syndicate"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "black", SLOT_ID_LEFT_HAND = "black")
-	desc = "it's a cybernetically enhanced jumpsuit used for administrative duties."
-	gas_transfer_coefficient = 0.01
-	permeability_coefficient = 0.01
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	armor_type = /datum/armor/invulnerable
-	cold_protection_cover = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
-	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	siemens_coefficient = 0
-
 /obj/item/clothing/under/psysuit
 	name = "dark undersuit"
 	desc = "A thick, layered grey undersuit lined with power cables. Feels a little like wearing an electrical storm."
 	icon_state = "psysuit"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "black", SLOT_ID_LEFT_HAND = "black")
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-
-/obj/item/clothing/under/schoolgirl
-	name = "frilly blue skirt" //Citadel change REEEFETISHCONTENT
-	desc = "A clean white shirt with a blue collar and skirt. Looks like something out of an anime." //Citadel change REEEFETISHCONTENT
-	icon_state = "schoolgirl"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blue", SLOT_ID_LEFT_HAND = "blue")
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-
-/obj/item/clothing/under/schoolgirl/red
-	name = "frilly red skirt" //Citadel change REEEFETISHCONTENT
-	desc = "A clean white shirt with a red collar and skirt. Looks like something out of an anime." //Citadel change REEEFETISHCONTENT
-	icon_state = "schoolgirlred"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "red", SLOT_ID_LEFT_HAND = "red")
-
-/obj/item/clothing/under/schoolgirl/green
-	name = "frilly green skirt" //Citadel change REEEFETISHCONTENT
-	desc = "A clean white shirt with a green collar and skirt. Looks like something out of an anime." //Citadel change REEEFETISHCONTENT
-	icon_state = "schoolgirlgreen"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "green", SLOT_ID_LEFT_HAND = "green")
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-
-/obj/item/clothing/under/schoolgirl/orange
-	name = "frilly orange skirt" //Citadel change REEEFETISHCONTENT
-	desc = "A clean white shirt with a orange collar and skirt. Looks like something out of an anime." //Citadel change REEEFETISHCONTENT
-	icon_state = "schoolgirlorange"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "orange", SLOT_ID_LEFT_HAND = "orange")
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-
-/obj/item/clothing/under/schoolgirl/pink
-	name = "frilly pink skirt" //Citadel change REEEFETISHCONTENT
-	desc = "A clean white shirt with a pink collar and skirt. Looks like something out of an anime." //Citadel change REEEFETISHCONTENT
-	icon_state = "schoolgirlpink"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "pink", SLOT_ID_LEFT_HAND = "pink")
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-
-/obj/item/clothing/under/overalls
-	name = "laborer's overalls"
-	desc = "A set of durable overalls for getting the job done."
-	icon_state = "overalls"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "cargo", SLOT_ID_LEFT_HAND = "cargo")
-
-/obj/item/clothing/under/overalls_fem
-	name = "laborer's overalls"
-	desc = "A set of durable overalls for getting the job done."
-	icon_state = "overalls_fem"
-
-/obj/item/clothing/under/overalls/sleek
-	name = "sleek overalls"
-	desc = "A set of modern pleather reinforced overalls."
-	icon_state = "overalls_sleek"
-
-/obj/item/clothing/under/overalls/sleek_fem
-	name = "sleek overalls"
-	desc = "A set of modern pleather reinforced overalls."
-	icon_state = "overalls_sleek_fem"
-
-/obj/item/clothing/under/pirate
-	name = "pirate outfit"
-	desc = "Yarr."
-	icon_state = "pirate"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sl_suit", SLOT_ID_LEFT_HAND = "sl_suit")
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS
 
 /obj/item/clothing/under/moderncoat
 	name = "modern wrapped coat"
@@ -110,12 +16,6 @@
 	name = "black corset and skirt"
 	desc = "A black corset and skirt for those fancy nights out."
 	icon_state = "black_corset"
-
-/obj/item/clothing/under/serviceoveralls
-	name = "workman outfit"
-	desc = "The very image of a working man. Not that you're probably doing work."
-	icon_state = "mechanic"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "cargo", SLOT_ID_LEFT_HAND = "cargo")
 
 /obj/item/clothing/under/croptop
 	name = "crop top"
@@ -146,12 +46,6 @@
 	desc = "A red shirt that has had the top cut low."
 	icon_state = "cuttop_red"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "red", SLOT_ID_LEFT_HAND = "red")
-
-/obj/item/clothing/under/frontier
-	name = "frontier clothes"
-	desc = "A rugged flannel shirt and denim overalls. A popular style among frontier colonists."
-	icon_state = "frontier"
-	snowflake_worn_state = "frontier"
 
 /obj/item/clothing/under/rank/psych/turtleneck/sweater
 	desc = "A warm looking sweater and a pair of dark blue slacks."
@@ -484,17 +378,6 @@
 
 /obj/item/clothing/var/hides_bulges = FALSE // OwO wats this?
 
-/obj/item/clothing/under/permit
-	name = "public nudity permit"
-	desc = "This permit entitles the bearer to conduct their duties without a uniform. Normally issued to furred crewmembers or those with nothing to hide."
-	icon = 'icons/obj/card_cit.dmi'
-	icon_state = "permit-civilian"
-	body_cover_flags = 0
-	equip_sound = null
-
-	item_state = "golem"  //This is dumb and hacky but was here when I got here.
-	snowflake_worn_state = "golem"  //It's basically just a coincidentally black iconstate in the file.
-
 /obj/item/clothing/under/bluespace
 	name = "bluespace jumpsuit"
 	icon_state = "lingchameleon"
@@ -610,11 +493,6 @@
 	name = "Hasie skirt"
 	desc = "A daring combination of dark charcoals and vibrant reds and whites, the Hasie skirt/vest combo knows what it's doing. Sporting a low cut charcoal miniskirt and matching midriff button-up, this ensemble wows with the incredible color contrast of its two-tone vest."
 	icon_state = "hasie"
-
-/obj/item/clothing/under/utility_fur_pants
-	name = "Utility Fur Pants"
-	desc = "A pair of pants designed to match the Utility Fur coat."
-	icon_state = "furup"
 
 /obj/item/clothing/under/half_moon
 	name = "Half Moon outfit"
