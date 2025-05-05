@@ -1,4 +1,3 @@
-#define HUMAN_LOWEST_SLOWDOWN -3
 
 /mob/living/carbon/human/movement_delay(oldloc, direct)
 	. = ..()
@@ -12,8 +11,6 @@
 	if(embedded_flag)
 		handle_embedded_objects() //Moving with objects stuck in you can cause bad times.
 
-	if(force_max_speed)
-		return HUMAN_LOWEST_SLOWDOWN
 
 	for(var/datum/modifier/M in modifiers)
 		if(!isnull(M.haste) && M.haste == TRUE)
@@ -137,7 +134,6 @@
 		else
 			mod = (lumcount * species.light_slowdown) + (LERP(species.dark_slowdown, 0, lumcount))
 		. += mod
-#undef HUMAN_LOWEST_SLOWDOWN
 
 /mob/living/carbon/human/Process_Spacemove(dir)
 	//Do we have a working jetpack?

@@ -125,8 +125,8 @@
 
 //Unrandom the pet...?
 /mob/living/simple_mob/animal/roach/Greta/Initialize(mapload)
-    . = ..()
-    size_multiplier = 1
+	. = ..()
+	size_multiplier = 1
 	// Change my name back, don't want to be named Tom (666)
 	name = initial(name)
 

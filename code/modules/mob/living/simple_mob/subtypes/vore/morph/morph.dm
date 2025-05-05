@@ -142,7 +142,7 @@
 	//Baseline stats
 	legacy_melee_damage_lower = initial(legacy_melee_damage_lower)
 	legacy_melee_damage_upper = initial(legacy_melee_damage_upper)
-	movement_base_speed = 10 / initial(movement_cooldown)
+	movement_base_speed = initial(movement_base_speed)
 
 	morph_time = world.time + MORPH_COOLDOWN
 

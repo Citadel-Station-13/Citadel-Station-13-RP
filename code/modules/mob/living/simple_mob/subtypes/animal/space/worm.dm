@@ -164,9 +164,10 @@
 	open_maw = state
 	if(open_maw)
 		time_maw_opened = world.time
-		movement_base_speed = 10 / initial(movement_cooldown) + 1.5
+		movement_base_speed = movement_base_speed - 1.5
 	else
-		movement_base_speed = 10 / initial(movement_cooldown)
+		movement_base_speed = initial(movement_base_speed)
+	update_movespeed_base()
 	update_icon()
 
 /mob/living/simple_mob/animal/space/space_worm/death()
