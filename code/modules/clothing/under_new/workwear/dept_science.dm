@@ -146,3 +146,7 @@
 	desc = "It's a slimming black pleated skirt with reinforced seams for a more active industrial workplace."
 	icon = 'icons/clothing/uniform/workwear/dept_science/robotics_skirt.dmi'
 	icon_state = "robotics_skirt"
+
+/**
+ * Explorer
+ */
