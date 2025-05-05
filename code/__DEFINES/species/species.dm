@@ -5,6 +5,7 @@
  *   species id mechanics tend to be awful, as species are a composition baseline template,
  *   not the composition itself on a human.
  */
+#define SPECIES_ID_ADHERENT "adherent"
 #define SPECIES_ID_AKULA "akula"
 #define SPECIES_ID_ALRAUNE "alraune"
 #define SPECIES_ID_APIDAEN "apidaen"

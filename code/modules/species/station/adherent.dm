@@ -1,6 +1,6 @@
 /datum/species/adherent
-	uid = "adherent"
-	id = "adherent"
+	uid = SPECIES_ID_ADHERENT
+	id = SPECIES_ID_ADHERENT
 
 	name = SPECIES_ADHERENT
 	name_plural = "Adherents"

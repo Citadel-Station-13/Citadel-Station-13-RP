@@ -127,16 +127,6 @@
 /mob/living/simple_mob/animal/roach/Greta/Initialize(mapload)
     . = ..()
     size_multiplier = 1
-    maxHealth = maxHealth
-    health = health
-    legacy_melee_damage_lower = legacy_melee_damage_lower
-    legacy_melee_damage_upper = legacy_melee_damage_upper
-    movement_cooldown = movement_cooldown
-    meat_amount = meat_amount
-    update_icons()
-
-/mob/living/simple_mob/animal/roach/Greta/Initialize(mapload)
-	. = ..()
 	// Change my name back, don't want to be named Tom (666)
 	name = initial(name)
 

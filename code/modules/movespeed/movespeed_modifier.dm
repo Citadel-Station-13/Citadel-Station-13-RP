@@ -38,9 +38,9 @@ Key procs
 
 	//* Filtering - Movetypes *//
 	/// Movetypes this applies to
-	var/required_movetypes = ALL
+	var/movetypes_required = ALL
 	/// Movetypes this never applies to
-	var/blacklisted_movetypes = NONE
+	var/movetypes_blacklisted = NONE
 
 	//* Caclulations *//
 	/// For: HYPERBOLIC - add this amount to hyperbolic value
@@ -55,11 +55,11 @@ Key procs
 
 	//* Calculations - Limits *//
 	/// do not allow boosting over this overall speed
-	var/limit_tiles_per_second_max = INFINITY
+	var/limit_tiles_per_second_max
 	/// do not allow boosting more than this in tiles per second
-	var/limit_tiles_per_second_add = INFINITY
+	var/limit_tiles_per_second_add
 	/// do not allow slowing under this speed
-	var/limit_tiles_per_second_min = 0
+	var/limit_tiles_per_second_min
 
 /datum/movespeed_modifier/New()
 	..()
@@ -85,15 +85,15 @@ Key procs
 	else
 		if(. > existing)
 			// . > existing: slower
-			if(limit_tiles_per_second_min != /datum/movespeed_modifier::limit_tiles_per_second_min)
+			if(!isnull(limit_tiles_per_second_min))
 				. = min(., 10 / limit_tiles_per_second_min)
 			// ensure calculations did not speed us up
 			. = max(existing, .)
 		else
 			// . < existing: faster
-			if(limit_tiles_per_second_add != /datum/movespeed_modifier::limit_tiles_per_second_add)
+			if(!isnull(limit_tiles_per_second_add))
 				. = max(., 10 / ((10 / existing) + limit_tiles_per_second_add))
-			if(limit_tiles_per_second_max != /datum/movespeed_modifier::limit_tiles_per_second_max)
+			if(!isnull(limit_tiles_per_second_max))
 				. = max(., 10 / limit_tiles_per_second_max)
 			// ensure calculations did not slow us up
 			. = min(existing, .)
@@ -134,14 +134,14 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 			type_or_datum = get_cached_movespeed_modifier(type_or_datum)
 		else
 			type_or_datum = new type_or_datum
-	var/datum/movespeed_modifier/existing = LAZYACCESS(movespeed_modification, type_or_datum.id)
+	var/datum/movespeed_modifier/existing = LAZYACCESS(movespeed_modifiers, type_or_datum.id)
 	if(existing)
 		if(existing == type_or_datum)		//same thing don't need to touch
 			return TRUE
 		remove_movespeed_modifier(existing, FALSE)
-	if(length(movespeed_modification))
-		BINARY_INSERT(type_or_datum.id, movespeed_modification, /datum/movespeed_modifier, type_or_datum, priority, COMPARE_VALUE)
-	LAZYSET(movespeed_modification, type_or_datum.id, type_or_datum)
+	if(length(movespeed_modifiers))
+		BINARY_INSERT(type_or_datum.id, movespeed_modifiers, /datum/movespeed_modifier, type_or_datum, priority, COMPARE_VALUE)
+	LAZYSET(movespeed_modifiers, type_or_datum.id, type_or_datum)
 	if(update)
 		update_movespeed()
 	return TRUE
@@ -155,9 +155,9 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 		key = type_id_datum.id
 	else								//assume it's an id
 		key = type_id_datum
-	if(!LAZYACCESS(movespeed_modification, key))
+	if(!LAZYACCESS(movespeed_modifiers, key))
 		return FALSE
-	LAZYREMOVE(movespeed_modification, key)
+	LAZYREMOVE(movespeed_modifiers, key)
 	if(update)
 		update_movespeed(FALSE)
 	return TRUE
@@ -176,13 +176,13 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 	var/inject = FALSE
 	var/datum/movespeed_modifier/applying
 	if(istext(type_id_datum))
-		applying = LAZYACCESS(movespeed_modification, type_id_datum)
+		applying = LAZYACCESS(movespeed_modifiers, type_id_datum)
 		if(!applying)
 			CRASH("Couldn't find existing modification when provided a text ID.")
 	else if(ispath(type_id_datum))
 		if(!initial(type_id_datum.variable))
 			CRASH("Not a variable modifier")
-		applying = LAZYACCESS(movespeed_modification, initial(type_id_datum.id) || "[type_id_datum]")
+		applying = LAZYACCESS(movespeed_modifiers, initial(type_id_datum.id) || "[type_id_datum]")
 		if(!applying)
 			applying = new type_id_datum
 			inject = TRUE
@@ -191,7 +191,7 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 		if(!initial(type_id_datum.variable))
 			CRASH("Not a variable modifier")
 		applying = type_id_datum
-		if(!LAZYACCESS(movespeed_modification, applying.id))
+		if(!LAZYACCESS(movespeed_modifiers, applying.id))
 			inject = TRUE
 			modified = TRUE
 	if(applying.parse(params))
@@ -227,7 +227,7 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 		key = datum_type_id
 	else
 		key = datum_type_id.id
-	return LAZYACCESS(movespeed_modification, key)
+	return LAZYACCESS(movespeed_modifiers, key)
 
 /// Set or update the global movespeed config on a mob
 /mob/proc/update_config_movespeed()
@@ -256,9 +256,9 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 	cached_movespeed_multiply = 1
 	//! END
 	for(var/datum/movespeed_modifier/M in get_movespeed_modifiers())
-		if(!(M.required_movetypes & movement_type)) // We don't affect any of these move types, skip
+		if(!(M.movetypes_required & movement_type)) // We don't affect any of these move types, skip
 			continue
-		if(M.blacklisted_movetypes & movement_type) // There's a movetype here that disables this modifier, skip
+		if(M.movetypes_blacklisted & movement_type) // There's a movetype here that disables this modifier, skip
 			continue
 		//! TODO: LEGACY - this should just check for floating
 		if((M.movespeed_modifier_flags & MOVESPEED_MODIFIER_REQUIRES_GRAVITY) && !in_gravity)
@@ -291,15 +291,15 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 /mob/proc/get_movespeed_modifiers()
 	RETURN_TYPE(/list)
 	. = list()
-	for(var/id in movespeed_modification)
-		if(id in movespeed_mod_immunities)
+	for(var/id in movespeed_modifiers)
+		if(id in movespeed_modifier_immunities)
 			continue
-		. += movespeed_modification[id]
+		. += movespeed_modifiers[id]
 
 /// Get the movespeed modifier ids on this mob
 /mob/proc/get_movespeed_modifier_ids()
-	. = LAZYCOPY(movespeed_modification)
-	for(var/id in movespeed_mod_immunities)
+	. = LAZYCOPY(movespeed_modifiers)
+	for(var/id in movespeed_modifier_immunities)
 		. -= id
 
 /**
@@ -307,4 +307,4 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
   * DANGER: IT IS UP TO THE PERSON USING THIS TO MAKE SURE THE MODIFIER IS NOT MODIFIED IF IT HAPPENS TO BE GLOBAL/CACHED.
   */
 /mob/proc/get_movespeed_modifier_datum(id)
-	return movespeed_modification[id]
+	return movespeed_modifiers[id]

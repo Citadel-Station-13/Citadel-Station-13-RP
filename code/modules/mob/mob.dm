@@ -7,10 +7,10 @@
 	//* Movespeed *//
 	/// List of movement speed modifiers applying to this mob
 	/// * This is a lazy list.
-	var/list/movespeed_mod
+	var/list/movespeed_modifiers
 	/// List of movement speed modifiers ignored by this mob. List -> List (id) -> List (sources)
 	/// * This is a lazy list.
-	var/list/movespeed_mod_immunities
+	var/list/movespeed_modifier_immunities
 	/// The calculated mob speed slowdown based on the modifiers list
 	var/movespeed_hyperbolic
 
