@@ -352,11 +352,6 @@
 	#warn deal with this nightmare
 	var/tally = 0 //Incase I need to add stuff other than "speed" later
 
-	tally = movement_cooldown
-
-	if(force_max_speed)
-		return -3
-
 	for(var/datum/modifier/M in modifiers)
 		if(!isnull(M.haste) && M.haste == TRUE)
 			return -3
@@ -376,7 +371,7 @@
 			tally = 1
 		tally *= purge
 
-	return . + tally + config_legacy.animal_delay
+	return . + tally
 
 
 /mob/living/simple_mob/statpanel_data(client/C)
