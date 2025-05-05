@@ -10,7 +10,7 @@
 /obj/item/clothing/under/dress/cropdress
 	name = "cropped dress"
 	desc = "A cropped dress to keep you cool, but fashionable."
-	icon = 'icons/clothing/uniform/formal/dress/cropped_dress.dmi'
+	icon = 'icons/clothing/uniform/formal/dress/cropdress.dmi'
 	icon_state = "cropdress"
 
 /obj/item/clothing/under/dress/twistdress

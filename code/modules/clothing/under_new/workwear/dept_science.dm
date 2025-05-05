@@ -2,6 +2,11 @@
  * Science department clothing
  * Medsci is dead! Long live Science!
  */
+
+/**
+ * Research Director
+ */
+
 /obj/item/clothing/under/rank/research_director
 	desc = "It's a jumpsuit worn by those with the know-how to achieve the position of \"Research Director\". Its fabric provides minor protection from biological contaminants."
 	name = "research director's jumpsuit"
@@ -49,6 +54,10 @@
 	name = "research director's turtleneck"
 	icon = 'icons/clothing/uniform/workwear/dept_science/rdturtle.dmi'
 	icon_state = "rdturtle"
+
+/**
+ * Scientist
+ */
 
 /obj/item/clothing/under/rank/scientist
 	desc = "It's made of a special fiber that provides minor protection against biohazards. It has markings that denote the wearer as a scientist."
@@ -109,6 +118,10 @@
 	icon = 'icons/clothing/uniform/workwear/dept_science/turtle_sci_fem.dmi'
 	icon_state = "turtle_sci_fem"
 	armor_type = /datum/armor/science/jumpsuit
+
+/**
+ * Roboticist
+ */
 
 /obj/item/clothing/under/rank/roboticist
 	desc = "It's a slimming black jumpsuit with reinforced seams; great for industrial work."

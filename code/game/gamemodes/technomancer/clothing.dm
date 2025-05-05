@@ -11,6 +11,7 @@
 	name = "initiate's jumpsuit"
 	desc = "It's a blue colored jumpsuit.  There appears to be light-weight armor padding underneath, providing some protection.  \
 	There is also a healthy amount of insulation underneath."
+	icon = 'icons/clothing/uniform/workwear/technomancer/initiate.dmi'
 	icon_state = "initiate"
 	armor_type = /datum/armor/technomancer/jumpsuit
 	siemens_coefficient = 0.3
@@ -19,12 +20,14 @@
 	name = "apprentice's jumpsuit"
 	desc = "It's a blue colored jumpsuit with some silver markings.  There appears to be light-weight armor padding \
 	underneath, providing some protection.  There is also a healthy amount of insulation underneath."
+	icon = 'icons/clothing/uniform/workwear/technomancer/apprentice.dmi'
 	icon_state = "apprentice"
 
 /obj/item/clothing/under/technomancer/master
 	name = "master's jumpsuit"
 	desc = "It's a blue colored jumpsuit with some gold markings.  There appears to be light-weight armor padding \
 	underneath, providing some protection.  There is also a healthy amount of insulation underneath."
+	icon = 'icons/clothing/uniform/workwear/technomancer/technomancer.dmi'
 	icon_state = "technomancer"
 
 /obj/item/clothing/head/technomancer

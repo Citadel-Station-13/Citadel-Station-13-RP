@@ -38,3 +38,21 @@
 	name = "rainbow pleated skirt"
 	icon = 'icons/clothing/uniform/casual/rainbow_skirt.dmi'
 	icon_state = "rainbow_skirt"
+
+/obj/item/clothing/under/ascetic
+	name = "plain ascetic garb"
+	desc = "Popular with freshly grown vatborn and new age cultists alike."
+	icon = 'icons/clothing/uniform/casual/ascetic.dmi'
+	icon_state = "ascetic"
+
+/obj/item/clothing/under/ascetic_fem
+	name = "plain ascetic garb"
+	desc = "Popular with freshly grown vatborn and new age cultists alike."
+	icon = 'icons/clothing/uniform/casual/ascetic_fem.dmi'
+	icon_state = "ascetic_fem"
+
+/obj/item/clothing/under/bathrobe
+	name = "bathrobe"
+	desc = "A fluffy robe to keep you from showing off to the world."
+	icon = 'icons/clothing/uniform/casual/bathrobe.dmi'
+	icon_state = "bathrobe"

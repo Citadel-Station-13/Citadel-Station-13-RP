@@ -106,64 +106,10 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "red", SLOT_ID_LEFT_HAND = "red")
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS
 
-/obj/item/clothing/under/ascetic
-	name = "plain ascetic garb"
-	desc = "Popular with freshly grown vatborn and new age cultists alike."
-	icon_state = "ascetic"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "white", SLOT_ID_LEFT_HAND = "white")
-
-/obj/item/clothing/under/ascetic_fem
-	name = "plain ascetic garb"
-	desc = "Popular with freshly grown vatborn and new age cultists alike."
-	icon_state = "ascetic_fem"
-
-/obj/item/clothing/under/robe
-	name = "black robe"
-	desc = "A black robe. It gives off uncomfortable cult vibes."
-	icon_state = "robe"
-
-/obj/item/clothing/under/whiterobe
-	name = "white robe"
-	desc = "A white robe. It gives off uncomfortable cult vibes."
-	icon_state = "whiterobe"
-
-/obj/item/clothing/under/goldrobe
-	name = "black gold-lined robe"
-	desc = "A gold-lined black robe. It gives off uncomfortable cult vibes, but fancy."
-	icon_state = "goldrobe"
-
-/obj/item/clothing/under/whitegoldrobe
-	name = "white gold-lined robe"
-	desc = "A gold-lined white robe. It gives off uncomfortable cult vibes, but fancy."
-	icon_state = "whitegoldrobe"
-
 /obj/item/clothing/under/dress/black_corset
 	name = "black corset and skirt"
 	desc = "A black corset and skirt for those fancy nights out."
 	icon_state = "black_corset"
-
-/obj/item/clothing/under/hosformalmale
-	name = "head of security's formal uniform"
-	desc = "A male head of security's formal-wear, for special occasions."
-	icon_state = "hos_formal_male"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "lawyer_red", SLOT_ID_LEFT_HAND = "lawyer_red")
-
-/obj/item/clothing/under/hosformalfem
-	name = "head of security's formal uniform"
-	desc = "A female head of security's formal-wear, for special occasions."
-	icon_state = "hos_formal_fem"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "lawyer_red", SLOT_ID_LEFT_HAND = "lawyer_red")
-
-/obj/item/clothing/under/assistantformal
-	name = "assistant's formal uniform"
-	desc = "An assistant's formal-wear. Why an assistant needs formal-wear is still unknown."
-	icon_state = "assistant_formal"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "lawyer_black", SLOT_ID_LEFT_HAND = "lawyer_black")
-
-/obj/item/clothing/under/assistantformal_fem
-	name = "assistant's formal uniform"
-	desc = "An assistant's formal-wear. Why an assistant needs formal-wear is still unknown."
-	icon_state = "assistant_formal_fem"
 
 /obj/item/clothing/under/serviceoveralls
 	name = "workman outfit"
@@ -256,12 +202,6 @@
 	name = "Futuristic Red-Striped Jumpsuit"
 	desc = "Show your love for the fasion of today viewed through the lens of yesterday! All come in black, but this one has red stripes."
 	icon_state = "red"
-
-/obj/item/clothing/under/bathrobe
-	name = "bathrobe"
-	desc = "A fluffy robe to keep you from showing off to the world."
-	icon_state = "bathrobe"
-	snowflake_worn_state = "bathrobe"
 
 /obj/item/clothing/under/explorer
 	desc = "A green uniform for operating in hazardous environments."
@@ -516,64 +456,6 @@
 	name = "Business Skirt"
 	desc = "A professional black jacket with a mundane brown skirt. Perfect for the office."
 	icon_state = "businessskirt_female"
-
-//Baggy Turtlenecks
-/obj/item/clothing/under/turtlebaggy
-	name = "baggy turtleneck (cream)"
-	desc = "A cozy knit turtleneck. It's too baggy and comfortable to be tactical."
-	icon_state = "bb_turtle"
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
-
-/obj/item/clothing/under/turtlebaggy/cream_fem
-	name = "baggy turtleneck (cream)(female)"
-	desc = "A cozy knit turtleneck. It's too baggy and comfortable to be tactical."
-	icon_state = "bb_turtle_fem"
-
-/obj/item/clothing/under/turtlebaggy/purple
-	name = "baggy turtleneck (purple)"
-	icon_state = "bb_turtlepur"
-
-/obj/item/clothing/under/turtlebaggy/purple_fem
-	name = "baggy turtleneck (purple)(female)"
-	icon_state = "bb_turtlepur_fem"
-
-/obj/item/clothing/under/turtlebaggy/red
-	name = "baggy turtleneck (red)"
-	icon_state = "bb_turtlered"
-
-/obj/item/clothing/under/turtlebaggy/red_fem
-	name = "baggy turtleneck (red)(female)"
-	icon_state = "bb_turtlered_fem"
-
-/obj/item/clothing/under/turtlebaggy/blue
-	name = "baggy turtleneck (blue)"
-	icon_state = "bb_turtleblu"
-
-/obj/item/clothing/under/turtlebaggy/blue_fem
-	name = "baggy turtleneck (blue)(female)"
-	icon_state = "bb_turtleblu_fem"
-
-/obj/item/clothing/under/turtlebaggy/green
-	name = "baggy turtleneck (green)"
-	icon_state = "bb_turtlegrn"
-
-/obj/item/clothing/under/turtlebaggy/green_fem
-	name = "baggy turtleneck (green)(female)"
-	icon_state = "bb_turtlegrn_fem"
-
-/obj/item/clothing/under/turtlebaggy/black
-	name = "baggy turtleneck (black)"
-	icon_state = "bb_turtleblk"
-
-/obj/item/clothing/under/turtlebaggy/black_fem
-	name = "baggy turtleneck (black)(female)"
-	icon_state = "bb_turtleblk_fem"
-
-/obj/item/clothing/under/trader_coveralls
-	name = "nebula gas outfit"
-	desc = "A hardy and practical uniform distributed to Nebula Gas employees, meant to provide protection and comfort in industrial environments."
-	icon_state = "mechanic"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "cargo", SLOT_ID_LEFT_HAND = "cargo")
 
 /obj/item/clothing/under/bsing
 	name = "blue performer's outfit"

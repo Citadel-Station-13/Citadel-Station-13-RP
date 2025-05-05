@@ -358,3 +358,15 @@
 	desc = "The insignia on this uniform tells you that this uniform belongs to the Head of Security."
 	icon = 'icons/clothing/uniform/workwear/dept_security/hosblueclothes_fem.dmi'
 	icon_state = "hosblueclothes_fem"
+
+/obj/item/clothing/under/hosformalmale
+	name = "head of security's formal uniform"
+	desc = "A male head of security's formal-wear, for special occasions."
+	icon = 'icons/clothing/uniform/workwear/dept_security/hos_formal_male.dmi'
+	icon_state = "hos_formal_male"
+
+/obj/item/clothing/under/hosformalfem
+	name = "head of security's formal uniform"
+	desc = "A female head of security's formal-wear, for special occasions."
+	icon = 'icons/clothing/uniform/workwear/dept_security/hos_formal_fem.dmi'
+	icon_state = "hos_formal_fem"

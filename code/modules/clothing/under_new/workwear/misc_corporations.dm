@@ -27,7 +27,14 @@
 	icon_state = "mechanic"
 	snowflake_worn_state = "mechanic"
 
-//Reusses spritesheet
+//Reuses spritesheet
+/obj/item/clothing/under/trader_coveralls
+	name = "nebula gas outfit"
+	desc = "A hardy and practical uniform distributed to Nebula Gas employees, meant to provide protection and comfort in industrial environments."
+	icon = 'icons/clothing/uniform/workwear/misc_corporations/mechanic.dmi'
+	icon_state = "mechanic"
+
+//Reuses spritesheet
 /obj/item/clothing/under/brandjumpsuit/wardt
 	name = "\improper Ward-Takahashi jumpsuit"
 	desc = "A jumpsuit belonging to Ward-Takahashi, a Trans-Stellar in the consumer goods market."
