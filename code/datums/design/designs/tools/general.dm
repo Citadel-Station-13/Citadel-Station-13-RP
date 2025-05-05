@@ -76,6 +76,10 @@
 	material_costs = list(
 		"tip" = 250
 	)
+	//TESTING
+	material_constraints = list(
+		"tip" = MATERIAL_CONSTRAINT_RIGID
+	)
 
 /datum/prototype/design/tool/prybar
 	id = "ToolPrybar"

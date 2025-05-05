@@ -48,7 +48,7 @@
 	var/work = 5 SECONDS
 
 	//? Build Costs
-	/// list of materials needed - typepath or id to amount. null to auto-detect from the object in question. list() for no cost (DANGEROUS).
+	/// list of specific materials needed - typepath or id to amount. null to auto-detect from the object in question. list() for no cost (DANGEROUS).
 	///
 	/// * This should always be using typepath instead of ID for hardcoded designs, as typepaths can be eagerly loaded before
 	///   the materials repository can initialize normally.
@@ -61,6 +61,9 @@
 	/// this should obviously match material_parts on the /obj in question.
 	/// todo: add optional parts and constraints
 	var/list/material_costs
+	/// for variable-material designs: assoc list of keys to constraints
+	/// this should obviously match material_parts on the /obj in question.
+	var/list/material_constraints
 	/// Items needed, as ingredients list - see [code/__HELPERS/datastructs/ingredients.dm]
 	///
 	/// * This should always be using typepath instead of ID where possible for hardcoded designs, as typepaths can be eagerly
