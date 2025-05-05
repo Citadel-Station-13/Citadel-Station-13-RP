@@ -80,6 +80,8 @@
 	warning_high_pressure = 325//Both baseline
 	hazard_high_pressure = 550
 
+	movement_base_speed = 5.5
+
 	//Doesnt work, defaults are set at checks
 	//breath_type = null	//they don't breathe
 	//poison_type = null

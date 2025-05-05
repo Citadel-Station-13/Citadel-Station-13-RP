@@ -25,6 +25,7 @@
 	max_additional_languages = 3
 	intrinsic_languages = LANGUAGE_ID_VERNAL
 
+	movement_base_speed = 4.5
 	snow_movement  = -1 // Alraune can still wear shoes. Combined with winter boots, negates light snow slowdown but still slowed on ice.
 	water_movement = -1 // Combined with swimming fins, negates shallow water slowdown.
 	total_health = 100 //standard

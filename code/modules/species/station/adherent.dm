@@ -72,7 +72,7 @@
 	flesh_color = "#90edeb"
 	base_color  = "#066000"
 
-	slowdown = -0.5
+	movement_base_speed = 6.25
 
 	vision_innate = /datum/vision/baseline/species_tier_2
 

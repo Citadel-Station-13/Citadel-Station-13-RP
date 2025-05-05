@@ -13,6 +13,8 @@
 		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/vasilissan,
 	)
 
+	movement_base_speed = 5.25
+
 	vision_innate = /datum/vision/baseline/species_tier_2
 	vision_organ = O_EYES
 	brute_mod = 0.8    // 20% brute damage reduction

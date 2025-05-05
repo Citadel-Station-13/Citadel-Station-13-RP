@@ -23,6 +23,8 @@
 	max_additional_languages = 2
 	intrinsic_languages = LANGUAGE_ID_VASILISSAN
 
+	movement_base_speed = 5.25
+
 	reagent_tag = IS_APIDAEN
 
 	max_age = 80

@@ -48,6 +48,7 @@
 	cold_level_2 = 50
 	cold_level_3 = 0
 
+	movement_base_speed = 6.66
 	gluttonous = 0
 
 	breath_type = GAS_ID_PHORON
