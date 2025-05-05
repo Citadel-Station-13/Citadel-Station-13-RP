@@ -3,16 +3,38 @@
 /turf/template_noop,
 /area/space)
 "b" = (
-/turf/simulated/mineral/vacuum,
+/turf/simulated/floor,
 /area/space)
 "c" = (
 /turf/template_noop,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "d" = (
-/turf/simulated/mineral/vacuum,
+/turf/simulated/floor,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "e" = (
 /obj/tether_away_spawner/debrisfield/carp,
+/turf/template_noop,
+/area/tether_away/debrisfield_vr/shuttle_buffer)
+"i" = (
+/obj/spawner/corpse/skeleton,
+/turf/simulated/floor,
+/area/tether_away/debrisfield_vr/shuttle_buffer)
+"j" = (
+/obj/random/junk,
+/turf/simulated/floor,
+/area/tether_away/debrisfield_vr/shuttle_buffer)
+"M" = (
+/turf/simulated/wall/r_wall,
+/area/tether_away/debrisfield_vr/shuttle_buffer)
+"N" = (
+/turf/simulated/wall/r_wall,
+/area/space)
+"O" = (
+/obj/machinery/atmospherics/component/unary/engine,
+/turf/template_noop,
+/area/space)
+"V" = (
+/obj/machinery/atmospherics/component/unary/engine,
 /turf/template_noop,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 
@@ -35,14 +57,14 @@ a
 (2,1,1) = {"
 a
 a
+O
+N
+N
 a
-a
-b
-a
-b
-b
-b
-b
+N
+N
+N
+N
 a
 a
 a
@@ -51,26 +73,26 @@ a
 (3,1,1) = {"
 a
 a
-c
+V
+M
 d
 d
 d
 d
 d
-d
-d
-d
+j
+i
 d
 b
 a
 "}
 (4,1,1) = {"
 a
-a
+O
+M
 d
-d
-d
-d
+j
+i
 d
 d
 d
@@ -104,7 +126,7 @@ d
 c
 c
 c
-d
+i
 d
 c
 c
@@ -165,7 +187,7 @@ a
 a
 d
 d
-d
+i
 c
 c
 c
@@ -178,10 +200,10 @@ a
 "}
 (11,1,1) = {"
 a
-a
+O
+M
 d
-d
-d
+j
 d
 c
 c
@@ -195,10 +217,10 @@ a
 (12,1,1) = {"
 a
 a
-c
+V
+M
 d
-d
-d
+M
 d
 c
 a
@@ -213,8 +235,8 @@ a
 a
 a
 a
-a
-b
+O
+N
 a
 a
 a

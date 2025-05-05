@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/simulated/mineral/vacuum,
+/turf/simulated/floor/event/derelict_plating,
 /area/space)
 "b" = (
 /turf/template_noop,
@@ -10,14 +10,26 @@
 /turf/template_noop,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "d" = (
-/turf/simulated/mineral/vacuum,
+/turf/simulated/floor/event/derelict_plating,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "e" = (
 /turf/template_noop,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
+"r" = (
+/turf/simulated/floor/event/derelict_wall_floor,
+/area/tether_away/debrisfield_vr/shuttle_buffer)
+"w" = (
+/turf/simulated/floor/event/derelict_light,
+/area/space)
+"I" = (
+/turf/simulated/wall/event/derelict_wall,
+/area/space)
+"Y" = (
+/turf/simulated/floor/event/derelict_light,
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 
 (1,1,1) = {"
-a
+I
 a
 b
 b
@@ -26,7 +38,7 @@ b
 b
 "}
 (2,1,1) = {"
-a
+I
 a
 a
 b
@@ -64,7 +76,7 @@ b
 (6,1,1) = {"
 b
 a
-d
+Y
 d
 d
 b
@@ -74,7 +86,7 @@ b
 b
 a
 d
-d
+r
 d
 b
 b
@@ -108,7 +120,7 @@ b
 "}
 (11,1,1) = {"
 b
-b
+I
 e
 e
 d
@@ -116,12 +128,12 @@ a
 b
 "}
 (12,1,1) = {"
+I
+I
+b
 b
 a
-b
-b
-a
-a
+w
 a
 "}
 (13,1,1) = {"
@@ -129,7 +141,7 @@ b
 b
 b
 b
-b
+a
 a
 b
 "}

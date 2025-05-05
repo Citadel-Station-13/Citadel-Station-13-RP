@@ -425,6 +425,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/shuttle/osiris/battlestar)
+"pZ" = (
+/obj/machinery/button/remote/blast_door{
+	pixel_y = 25;
+	id = "dedalios"
+	},
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
 "qc" = (
 /obj/machinery/conveyor{
 	id = "balsitwar";
@@ -695,8 +702,10 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/osiris/battlestar)
 "CU" = (
-/obj/machinery/door/blast/shutters,
 /obj/machinery/atmospheric_field_generator/perma,
+/obj/machinery/door/blast/regular{
+	id = "dedalios"
+	},
 /turf/simulated/floor/reinforced,
 /area/shuttle/osiris/battlestar)
 "CZ" = (
@@ -868,6 +877,7 @@
 	id_tag = "battlestar_docker";
 	pixel_x = -25
 	},
+/obj/effect/shuttle_landmark/shuttle_initializer/osiris/battlestar,
 /turf/simulated/floor,
 /area/shuttle/osiris/battlestar)
 "Jf" = (
@@ -2398,7 +2408,7 @@ QV
 Ez
 Ez
 Ez
-Tc
+pZ
 Sq
 Ez
 Ez

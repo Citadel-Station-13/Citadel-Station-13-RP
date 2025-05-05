@@ -11,8 +11,18 @@
 "d" = (
 /turf/template_noop,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
-"e" = (
-/obj/tether_away_spawner/debrisfield/carp/hard,
+"j" = (
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/tether_away/debrisfield_vr/shuttle_buffer)
+"v" = (
+/mob/living/simple_mob/mechanical/mecha/fighter/baron/manned,
+/turf/template_noop,
+/area/tether_away/debrisfield_vr/shuttle_buffer)
+"G" = (
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/space)
+"Y" = (
+/mob/living/simple_mob/mechanical/mecha/fighter/duke/manned,
 /turf/template_noop,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 
@@ -29,39 +39,39 @@ a
 (2,1,1) = {"
 a
 b
-b
+G
 b
 a
 b
-b
+G
 b
 "}
 (3,1,1) = {"
 b
-b
-c
-c
+G
+j
+j
 d
-c
-b
-b
+j
+G
+G
 "}
 (4,1,1) = {"
 b
-b
+G
 c
 d
+v
 d
-d
-b
-b
+G
+G
 "}
 (5,1,1) = {"
 a
 b
 d
 d
-e
+d
 d
 a
 a
@@ -69,7 +79,7 @@ a
 (6,1,1) = {"
 a
 a
-d
+Y
 d
 d
 d
@@ -79,8 +89,8 @@ a
 (7,1,1) = {"
 a
 a
-c
-c
+j
+j
 c
 d
 a
@@ -90,7 +100,7 @@ a
 a
 b
 c
-c
+j
 c
 c
 b
@@ -99,10 +109,10 @@ a
 (9,1,1) = {"
 a
 b
-c
-c
-c
-c
+j
+j
+j
+j
 b
 a
 "}

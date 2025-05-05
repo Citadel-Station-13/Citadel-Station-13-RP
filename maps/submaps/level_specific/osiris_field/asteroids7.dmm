@@ -3,14 +3,11 @@
 /turf/template_noop,
 /area/space)
 "b" = (
-/turf/simulated/mineral/vacuum,
+/turf/simulated/wall/r_wall/prepainted,
 /area/space)
-"c" = (
-/turf/template_noop,
-/area/tether_away/debrisfield_vr/shuttle_buffer)
-"d" = (
-/turf/simulated/mineral/vacuum,
-/area/tether_away/debrisfield_vr/shuttle_buffer)
+"p" = (
+/turf/simulated/wall/dshull,
+/area/space)
 
 (1,1,1) = {"
 a
@@ -43,42 +40,42 @@ a
 (3,1,1) = {"
 a
 a
-c
-d
-c
-c
-d
-d
-c
-c
+a
+b
+a
+a
+b
+b
+a
+a
 a
 a
 "}
 (4,1,1) = {"
 a
 a
-c
-d
-d
-c
-c
-c
-c
-c
+a
+p
+b
+a
+a
+a
+a
+a
 a
 a
 "}
 (5,1,1) = {"
 b
 b
-c
-d
-d
-c
-c
-c
-c
-d
+a
+p
+p
+a
+a
+a
+a
+p
 b
 a
 "}
@@ -92,8 +89,8 @@ a
 a
 a
 b
-b
-b
+p
+p
 b
 "}
 (7,1,1) = {"

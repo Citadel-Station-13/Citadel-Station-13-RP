@@ -32,4 +32,4 @@
 	icon_state = "sleeper"
 	anchored = TRUE
 	role_type = /datum/role/ghostrole/scavenger
-	role_spawns = 4
+	role_spawns = 1

@@ -12,9 +12,6 @@
 "d" = (
 /turf/simulated/wall/lead,
 /area/space)
-"e" = (
-/turf/simulated/mineral/vacuum,
-/area/space)
 "f" = (
 /obj/structure/closet/crate/radiation,
 /turf/simulated/floor/airless,
@@ -63,20 +60,20 @@ a
 b
 c
 h
-e
+d
 a
 "}
 (6,1,1) = {"
 a
 c
-e
-e
+d
+d
 a
 "}
 (7,1,1) = {"
 a
 b
-e
-e
+d
+d
 a
 "}

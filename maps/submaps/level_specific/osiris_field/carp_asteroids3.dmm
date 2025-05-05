@@ -2,18 +2,34 @@
 "a" = (
 /turf/template_noop,
 /area/space)
-"b" = (
-/turf/simulated/mineral/vacuum,
-/area/space)
 "c" = (
-/obj/tether_away_spawner/debrisfield/carp,
+/mob/living/simple_mob/mechanical/mecha/fighter/baron/manned,
 /turf/template_noop,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "d" = (
 /turf/template_noop,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "e" = (
-/turf/simulated/mineral/vacuum,
+/turf/simulated/floor,
+/area/tether_away/debrisfield_vr/shuttle_buffer)
+"m" = (
+/turf/simulated/floor,
+/area/space)
+"p" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/space)
+"w" = (
+/obj/structure/lattice,
+/mob/living/simple_mob/mechanical/mecha/fighter/baron/manned,
+/turf/template_noop,
+/area/space)
+"x" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/tether_away/debrisfield_vr/shuttle_buffer)
+"D" = (
+/turf/simulated/wall/r_wall/prepainted/civilian,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 
 (1,1,1) = {"
@@ -27,24 +43,24 @@ a
 a
 a
 a
-b
+m
 a
 a
 "}
 (2,1,1) = {"
 a
-c
+d
+w
+p
+p
+p
 a
-a
-a
-a
-a
-a
-b
-b
-b
-b
-a
+p
+m
+m
+m
+m
+m
 "}
 (3,1,1) = {"
 a
@@ -53,109 +69,107 @@ d
 e
 e
 e
-d
-d
+e
+x
 e
 e
 e
-b
-a
+m
+m
 "}
 (4,1,1) = {"
 a
-a
+m
 e
 e
 e
 e
 e
-d
-d
 e
 e
-a
+e
+e
+m
 a
 "}
 (5,1,1) = {"
 a
-b
-e
-e
-e
-e
-e
-e
-d
-d
-d
 a
-a
+D
+e
+e
+e
+e
+e
+e
+x
+x
+p
+p
 "}
 (6,1,1) = {"
 a
-b
-e
-e
-e
-e
-e
-e
-d
-d
-d
 a
+D
+e
+e
+e
+e
+e
+e
+x
+x
+m
 a
 "}
 (7,1,1) = {"
-b
-b
-e
-e
-e
-e
-e
-e
-d
-d
-d
 a
 a
+D
+e
+e
+e
+e
+e
+e
+x
+d
+m
+m
 "}
 (8,1,1) = {"
-b
-b
+a
+a
 e
 e
 e
+D
+D
 e
 e
-d
-d
-d
+x
 d
 a
-b
+m
 "}
 (9,1,1) = {"
 a
-b
-b
-b
-b
+a
+p
+p
+p
 a
 a
-a
+m
 a
 c
-a
-b
-b
+m
+m
+m
 "}
 (10,1,1) = {"
 a
 a
-b
-b
 a
 a
 a
@@ -163,6 +177,8 @@ a
 a
 a
 a
-b
-b
+a
+a
+m
+m
 "}

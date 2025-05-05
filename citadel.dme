@@ -3483,6 +3483,7 @@
 #include "code\modules\maps\overmap\space\alienship.dm"
 #include "code\modules\maps\overmap\space\centcom.dm"
 #include "code\modules\maps\overmap\space\debrisfield.dm"
+#include "code\modules\maps\overmap\space\osiris_debrisfield.dm"
 #include "code\modules\maps\overmap\space\fueldepot.dm"
 #include "code\modules\maps\overmap\space\pirate_base.dm"
 #include "code\modules\maps\overmap\space\talon\talon.dm"

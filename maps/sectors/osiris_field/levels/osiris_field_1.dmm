@@ -103,7 +103,7 @@
 /turf/simulated/floor/fey/forest_grass,
 /area/space/osirisdebrisfield/memorial)
 "fv" = (
-/obj/spawner/window/reinforced/tinted/full/firelocks,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/tiled/techfloor,
 /area/space/osirisdebrisfield/memorial)
 "fQ" = (
@@ -345,6 +345,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
 	},
+/obj/machinery/light/poi,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/space/osirisdebrisfield/memorial)
 "va" = (
@@ -368,7 +369,7 @@
 /turf/simulated/floor/bmarble,
 /area/space/osirisdebrisfield/memorial)
 "vL" = (
-/obj/spawner/window/reinforced/tinted/full/firelocks,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/space/osirisdebrisfield/memorial)
 "vM" = (
@@ -415,6 +416,9 @@
 "zj" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
+	},
+/obj/machinery/light/poi{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/space/osirisdebrisfield/memorial)
@@ -484,6 +488,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
+/obj/machinery/light/poi,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/space/osirisdebrisfield/memorial)
 "DO" = (
@@ -504,6 +509,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
 	},
+/obj/machinery/light/poi,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/space/osirisdebrisfield/memorial)
 "Fs" = (
@@ -574,6 +580,9 @@
 	pixel_x = 25;
 	pixel_y = 2
 	},
+/obj/machinery/light/poi{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/space/osirisdebrisfield/memorial)
 "Mq" = (
@@ -614,6 +623,10 @@
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/space/osirisdebrisfield/memorial)
+"NH" = (
+/obj/effect/shuttle_landmark/automatic,
+/turf/space/basic,
+/area/space/osirisdebrisfield/unexplored)
 "NZ" = (
 /obj/machinery/door/airlock/glass_external/public,
 /obj/map_helper/airlock/door/int_door,
@@ -624,6 +637,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/space/osirisdebrisfield/memorial)
+"OL" = (
+/obj/overmap/entity/visitable/sector/osiris_field,
+/turf/space/basic,
+/area/space)
 "OM" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/space/osirisdebrisfield/memorial)
@@ -712,6 +729,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
+/obj/machinery/light/poi,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/space/osirisdebrisfield/memorial)
 "Ud" = (
@@ -733,6 +751,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/space/osirisdebrisfield/memorial)
+"Ye" = (
+/obj/effect/shuttle_landmark/automatic,
+/turf/space/basic,
+/area/space)
 "Yn" = (
 /obj/structure/flora/grass/event/full_grass1,
 /obj/effect/floor_decal/grass_edge,
@@ -748,7 +770,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/space/osirisdebrisfield/memorial)
 "Zi" = (
-/obj/spawner/window/reinforced/tinted/full/firelocks,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/wall/r_wall,
 /area/space/osirisdebrisfield/memorial)
 "Zo" = (
@@ -1146,7 +1168,7 @@ yD
 yD
 yD
 yD
-yD
+OL
 yD
 "}
 (3,1,1) = {"
@@ -7932,7 +7954,7 @@ yD
 yD
 yD
 yD
-yD
+Ye
 yD
 yD
 yD
@@ -8431,7 +8453,7 @@ yD
 yD
 yD
 yD
-yD
+Ye
 yD
 yD
 yD
@@ -8482,7 +8504,7 @@ yD
 yD
 yD
 yD
-yD
+Ye
 yD
 yD
 yD
@@ -9588,7 +9610,7 @@ yD
 yD
 yD
 yD
-yD
+Ye
 yD
 Aa
 gA
@@ -9654,7 +9676,7 @@ RA
 am
 Aa
 yD
-yD
+Ye
 yD
 yD
 yD
@@ -9788,7 +9810,7 @@ kF
 gA
 LY
 ly
-OM
+tP
 ZH
 ZH
 tP
@@ -9842,7 +9864,7 @@ zL
 tP
 ZH
 ZH
-OM
+tP
 eu
 zj
 am
@@ -10686,7 +10708,7 @@ rM
 rM
 rM
 rM
-VL
+rM
 rM
 rM
 rM
@@ -10880,7 +10902,7 @@ rM
 rM
 rM
 rM
-VL
+rM
 rM
 rM
 rM
@@ -10954,7 +10976,7 @@ yD
 yD
 yD
 yD
-yD
+Ye
 yD
 yD
 yD
@@ -11005,7 +11027,7 @@ yD
 yD
 yD
 yD
-yD
+Ye
 yD
 yD
 yD
@@ -11072,11 +11094,11 @@ rM
 rM
 rM
 rM
-VL
-VL
-VL
-VL
-VL
+rM
+rM
+rM
+rM
+rM
 rM
 rM
 rM
@@ -11267,9 +11289,9 @@ rM
 rM
 rM
 rM
-bT
-bT
-VL
+rM
+rM
+rM
 rM
 rM
 rM
@@ -11461,8 +11483,8 @@ rM
 rM
 rM
 rM
-VL
-bT
+rM
+rM
 rM
 rM
 rM
@@ -11656,7 +11678,7 @@ rM
 rM
 rM
 rM
-bT
+rM
 rM
 rM
 rM
@@ -11850,7 +11872,7 @@ rM
 rM
 rM
 rM
-VL
+rM
 rM
 rM
 rM
@@ -12044,7 +12066,7 @@ rM
 rM
 rM
 rM
-VL
+rM
 rM
 rM
 rM
@@ -12238,7 +12260,7 @@ rM
 rM
 rM
 rM
-VL
+rM
 rM
 rM
 rM
@@ -16389,7 +16411,7 @@ rM
 rM
 rM
 rM
-bT
+rM
 rM
 rM
 rM
@@ -16583,8 +16605,8 @@ rM
 rM
 rM
 rM
-VL
-bT
+rM
+rM
 rM
 rM
 rM
@@ -16776,8 +16798,8 @@ rM
 rM
 rM
 rM
-bT
-bT
+rM
+rM
 rM
 rM
 rM
@@ -16970,7 +16992,6 @@ rM
 rM
 rM
 rM
-VL
 rM
 rM
 rM
@@ -17041,8 +17062,9 @@ rM
 rM
 rM
 rM
-bT
-bT
+rM
+rM
+rM
 rM
 rM
 rM
@@ -17164,7 +17186,6 @@ rM
 rM
 rM
 rM
-bT
 rM
 rM
 rM
@@ -17235,8 +17256,9 @@ rM
 rM
 rM
 rM
-bT
-VL
+rM
+rM
+rM
 rM
 rM
 rM
@@ -17428,9 +17450,9 @@ rM
 rM
 rM
 rM
-bT
-VL
-VL
+rM
+rM
+rM
 rM
 rM
 rM
@@ -22461,7 +22483,7 @@ rM
 rM
 rM
 rM
-rM
+NH
 rM
 rM
 rM
@@ -23062,7 +23084,7 @@ rM
 rM
 rM
 rM
-bT
+rM
 rM
 rM
 rM
@@ -23255,9 +23277,9 @@ rM
 rM
 rM
 rM
-VL
-bT
-VL
+rM
+rM
+rM
 rM
 rM
 rM
@@ -23449,9 +23471,9 @@ rM
 rM
 rM
 rM
-VL
-bT
-VL
+rM
+rM
+rM
 rM
 rM
 rM
@@ -23644,9 +23666,9 @@ rM
 rM
 rM
 rM
-VL
-bT
-VL
+rM
+rM
+rM
 rM
 rM
 rM
@@ -23838,10 +23860,10 @@ rM
 rM
 rM
 rM
-VL
-VL
-VL
-bT
+rM
+rM
+rM
+rM
 rM
 rM
 rM
@@ -24032,8 +24054,8 @@ rM
 rM
 rM
 rM
-VL
-bT
+rM
+rM
 rM
 rM
 rM
@@ -24227,7 +24249,7 @@ rM
 rM
 rM
 rM
-bT
+rM
 rM
 rM
 rM
@@ -24421,7 +24443,7 @@ rM
 rM
 rM
 rM
-bT
+rM
 rM
 rM
 rM
@@ -24615,7 +24637,7 @@ rM
 rM
 rM
 rM
-bT
+rM
 rM
 rM
 rM
@@ -27207,9 +27229,9 @@ rM
 rM
 rM
 rM
-VL
-bT
-VL
+rM
+rM
+rM
 rM
 rM
 rM
@@ -27401,9 +27423,9 @@ rM
 rM
 rM
 rM
-bT
-VL
-bT
+rM
+rM
+rM
 rM
 rM
 rM
@@ -27596,10 +27618,10 @@ rM
 rM
 rM
 rM
-VL
-bT
-bT
-bT
+rM
+rM
+rM
+rM
 rM
 rM
 rM
@@ -27790,8 +27812,8 @@ rM
 rM
 rM
 rM
-bT
-VL
+rM
+rM
 rM
 rM
 rM
@@ -27984,7 +28006,7 @@ rM
 rM
 rM
 rM
-bT
+rM
 rM
 rM
 rM
@@ -28178,7 +28200,7 @@ rM
 rM
 rM
 rM
-bT
+rM
 rM
 rM
 rM
@@ -28372,7 +28394,7 @@ rM
 rM
 rM
 rM
-bT
+rM
 rM
 rM
 rM
@@ -28912,7 +28934,7 @@ rM
 rM
 rM
 rM
-VL
+rM
 rM
 rM
 rM
@@ -29106,7 +29128,7 @@ rM
 rM
 rM
 rM
-bT
+rM
 rM
 rM
 rM
@@ -29300,8 +29322,8 @@ rM
 rM
 rM
 rM
-VL
-bT
+rM
+rM
 rM
 rM
 rM
@@ -29493,10 +29515,10 @@ rM
 rM
 rM
 rM
-VL
-VL
-VL
-VL
+rM
+rM
+rM
+rM
 rM
 rM
 rM
@@ -29687,11 +29709,6 @@ rM
 rM
 rM
 rM
-bT
-bT
-VL
-VL
-VL
 rM
 rM
 rM
@@ -29809,7 +29826,12 @@ rM
 rM
 rM
 rM
-VL
+rM
+rM
+rM
+rM
+rM
+rM
 rM
 rM
 rM
@@ -29882,10 +29904,7 @@ rM
 rM
 rM
 rM
-bT
-VL
 rM
-VL
 rM
 rM
 rM
@@ -30000,11 +30019,14 @@ rM
 rM
 rM
 rM
-VL
-bT
-bT
-bT
-VL
+rM
+rM
+rM
+rM
+rM
+rM
+rM
+rM
 rM
 rM
 rM
@@ -30077,7 +30099,6 @@ rM
 rM
 rM
 rM
-VL
 rM
 rM
 rM
@@ -30196,7 +30217,8 @@ rM
 rM
 rM
 rM
-bT
+rM
+rM
 rM
 rM
 rM
@@ -30390,7 +30412,7 @@ rM
 rM
 rM
 rM
-VL
+rM
 rM
 rM
 rM
@@ -30453,9 +30475,9 @@ rM
 rM
 rM
 rM
-bT
-VL
-VL
+rM
+rM
+rM
 rM
 rM
 rM
@@ -30647,14 +30669,14 @@ rM
 rM
 rM
 rM
-bT
-bT
-bT
 rM
 rM
 rM
-VL
-VL
+rM
+rM
+rM
+rM
+rM
 rM
 rM
 rM
@@ -30846,10 +30868,10 @@ rM
 rM
 rM
 rM
-bT
-bT
-bT
-VL
+rM
+rM
+rM
+rM
 rM
 rM
 rM
@@ -31040,8 +31062,8 @@ rM
 rM
 rM
 rM
-bT
-VL
+rM
+rM
 rM
 rM
 rM
@@ -31234,7 +31256,7 @@ rM
 rM
 rM
 rM
-VL
+rM
 rM
 rM
 rM
@@ -31428,11 +31450,11 @@ rM
 rM
 rM
 rM
-VL
 rM
 rM
 rM
-bT
+rM
+rM
 rM
 rM
 rM
@@ -31622,11 +31644,11 @@ rM
 rM
 rM
 rM
-bT
-bT
 rM
-bT
-VL
+rM
+rM
+rM
+rM
 rM
 rM
 rM
@@ -31815,11 +31837,11 @@ rM
 rM
 rM
 rM
-bT
-VL
-VL
-bT
-VL
+rM
+rM
+rM
+rM
+rM
 rM
 rM
 rM
@@ -32009,7 +32031,7 @@ rM
 rM
 rM
 rM
-VL
+rM
 rM
 rM
 rM
@@ -32203,7 +32225,7 @@ rM
 rM
 rM
 rM
-VL
+rM
 rM
 rM
 rM

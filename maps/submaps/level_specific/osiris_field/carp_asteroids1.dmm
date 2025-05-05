@@ -3,10 +3,10 @@
 /turf/template_noop,
 /area/space)
 "b" = (
-/turf/simulated/mineral/vacuum,
+/turf/simulated/wall/r_wall/prepainted/cargo,
 /area/space)
 "c" = (
-/turf/simulated/mineral/vacuum,
+/turf/simulated/floor/plating,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "d" = (
 /turf/template_noop,
@@ -15,6 +15,20 @@
 /obj/tether_away_spawner/debrisfield/carp,
 /turf/template_noop,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
+"g" = (
+/obj/effect/decal/mecha_wreckage/durand,
+/turf/simulated/floor/plating,
+/area/space)
+"m" = (
+/obj/effect/decal/mecha_wreckage/cludge,
+/turf/template_noop,
+/area/space)
+"I" = (
+/turf/simulated/wall/r_wall/prepainted/cargo,
+/area/tether_away/debrisfield_vr/shuttle_buffer)
+"X" = (
+/turf/simulated/floor/plating,
+/area/space)
 
 (1,1,1) = {"
 a
@@ -31,14 +45,14 @@ a
 "}
 (2,1,1) = {"
 a
-b
-b
-b
-b
+X
+X
+X
+X
 a
 a
 a
-b
+X
 b
 a
 "}
@@ -47,8 +61,8 @@ a
 a
 c
 c
-c
-c
+I
+I
 d
 d
 c
@@ -57,15 +71,15 @@ b
 "}
 (4,1,1) = {"
 a
-a
+m
+d
+I
+d
+d
 d
 c
-d
-d
-d
 c
-c
-b
+X
 b
 "}
 (5,1,1) = {"
@@ -78,25 +92,25 @@ d
 d
 c
 c
-b
-b
+X
+X
 "}
 (6,1,1) = {"
 a
 b
-c
+I
 d
 d
 e
 d
 c
 c
-b
-b
+g
+X
 "}
 (7,1,1) = {"
 b
-b
+X
 c
 c
 d
@@ -104,14 +118,14 @@ d
 d
 d
 c
-b
+X
 a
 "}
 (8,1,1) = {"
 b
-b
+X
 c
-c
+I
 d
 d
 d
@@ -122,8 +136,8 @@ a
 "}
 (9,1,1) = {"
 b
-b
-c
+X
+I
 d
 d
 c
@@ -138,9 +152,9 @@ b
 b
 a
 a
-b
-b
-b
+X
+X
+X
 a
 a
 a
@@ -151,8 +165,8 @@ a
 a
 a
 a
-b
-b
+X
+X
 b
 b
 a

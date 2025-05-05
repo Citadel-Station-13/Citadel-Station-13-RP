@@ -1,4 +1,4 @@
-/obj/overmap/entity/visitable/sector/debrisfield
+/obj/overmap/entity/visitable/sector/osiris_field
 	name = "Osiris Debris Field"
 	desc = "Space junk galore, but tragic."
 	scanner_desc = @{"[i]Information[/i]: 2568-08-17 :

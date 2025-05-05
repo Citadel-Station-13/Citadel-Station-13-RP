@@ -606,6 +606,7 @@
 	id_tag = "colonial_docker"
 	},
 /obj/overmap/entity/visitable/ship/landable/osiris/colonial,
+/obj/effect/shuttle_landmark/shuttle_initializer/osiris/colonial,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/osiris/colonial)
 "qA" = (

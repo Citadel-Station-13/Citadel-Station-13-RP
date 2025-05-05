@@ -143,6 +143,7 @@
 	pixel_x = -27
 	},
 /obj/overmap/entity/visitable/ship/landable/trade/cargoravana,
+/obj/effect/shuttle_landmark/shuttle_initializer/osiris/cargoravana,
 /turf/simulated/floor/tiled/techfloor,
 /area/template_noop)
 "nh" = (

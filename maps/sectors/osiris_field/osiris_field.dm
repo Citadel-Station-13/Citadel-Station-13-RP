@@ -5,6 +5,7 @@
 	height = 192
 	levels = list(
 		/datum/map_level/sector/osiris_field,
+		/datum/map_level/sector/osiris_field2,
 	)
 
 /datum/map_level/sector/osiris_field

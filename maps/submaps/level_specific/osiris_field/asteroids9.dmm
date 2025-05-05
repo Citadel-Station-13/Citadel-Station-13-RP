@@ -3,13 +3,27 @@
 /turf/template_noop,
 /area/space)
 "b" = (
-/turf/simulated/mineral/vacuum,
+/turf/simulated/wall/r_wall/prepainted/engineering,
 /area/space)
 "c" = (
 /turf/template_noop,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "d" = (
-/turf/simulated/mineral/vacuum,
+/turf/simulated/floor,
+/area/tether_away/debrisfield_vr/shuttle_buffer)
+"O" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/space)
+"P" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/tether_away/debrisfield_vr/shuttle_buffer)
+"R" = (
+/turf/simulated/floor,
+/area/space)
+"X" = (
+/turf/simulated/wall/r_wall/prepainted/engineering,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 
 (1,1,1) = {"
@@ -51,7 +65,7 @@ a
 (3,1,1) = {"
 a
 b
-a
+b
 a
 a
 a
@@ -68,34 +82,34 @@ a
 "}
 (4,1,1) = {"
 a
+O
 a
 a
 a
 a
 a
 a
+O
+O
+O
 a
-a
-a
-a
-a
-a
+O
 a
 a
 a
 "}
 (5,1,1) = {"
 a
+O
 a
 a
-a
 c
-d
-c
+X
 c
 c
-c
-c
+P
+P
+P
 b
 b
 a
@@ -104,18 +118,18 @@ a
 "}
 (6,1,1) = {"
 a
+O
 a
 a
-a
 c
-d
-d
-d
-c
-c
-c
+X
+X
+X
+P
+P
+P
 b
-b
+R
 b
 a
 a
@@ -124,16 +138,16 @@ a
 a
 b
 a
-a
+O
 c
+X
 d
 d
-d
-c
-c
-c
+P
+P
+P
 b
-b
+R
 b
 b
 a
@@ -142,15 +156,15 @@ a
 a
 b
 b
-a
+O
 c
+d
 c
+d
 c
-c
-c
-c
-c
-a
+P
+P
+O
 a
 b
 b
@@ -160,15 +174,15 @@ a
 a
 b
 a
-a
+O
+c
+d
 c
 c
 c
+P
 c
-c
-c
-c
-a
+O
 a
 a
 a
@@ -178,15 +192,15 @@ a
 a
 a
 a
-a
+O
 c
 c
 c
-d
+X
 c
-c
-c
-a
+P
+P
+R
 a
 a
 a
@@ -197,11 +211,11 @@ a
 a
 a
 b
+X
+X
+P
 d
 d
-c
-c
-c
 c
 d
 b
@@ -215,13 +229,13 @@ a
 a
 a
 a
-d
-d
-c
-c
-c
+X
+X
+P
 c
 d
+d
+X
 b
 b
 b
@@ -235,7 +249,7 @@ a
 a
 a
 a
-a
+O
 a
 b
 a
