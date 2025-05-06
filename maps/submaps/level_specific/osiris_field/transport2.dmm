@@ -13,10 +13,6 @@
 /obj/random/multiple/corp_crate/no_weapons,
 /turf/simulated/floor/tiled/dark,
 /area/submap/osiris_field/transport_shuttle2)
-"t" = (
-/obj/random/single,
-/turf/simulated/floor/tiled/monotechmaint,
-/area/submap/osiris_field/transport_shuttle2)
 "u" = (
 /turf/space/basic,
 /area/space)
@@ -40,26 +36,12 @@
 "A" = (
 /turf/simulated/wall/r_wall/prepainted/civilian,
 /area/submap/osiris_field/transport_shuttle2)
-"G" = (
-/obj/structure/bed/chair/comfy/green{
-	dir = 1
-	},
-/obj/random/single,
-/turf/simulated/floor/plating,
-/area/submap/osiris_field/transport_shuttle2)
 "I" = (
 /obj/random/cash,
 /turf/simulated/floor/tiled/dark,
 /area/submap/osiris_field/transport_shuttle2)
 "L" = (
 /obj/random/trash_pile,
-/turf/simulated/floor/plating,
-/area/submap/osiris_field/transport_shuttle2)
-"M" = (
-/obj/structure/bed/chair/comfy/green{
-	dir = 1
-	},
-/obj/random_multi/single_item,
 /turf/simulated/floor/plating,
 /area/submap/osiris_field/transport_shuttle2)
 "O" = (
@@ -114,7 +96,7 @@ x
 W
 W
 y
-t
+f
 y
 A
 e
@@ -171,7 +153,7 @@ W
 f
 y
 U
-M
+y
 A
 a
 T
@@ -181,7 +163,7 @@ O
 (7,1,1) = {"
 W
 f
-G
+y
 W
 P
 W

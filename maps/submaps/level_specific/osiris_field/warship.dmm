@@ -877,7 +877,7 @@
 	id_tag = "battlestar_docker";
 	pixel_x = -25
 	},
-/obj/effect/shuttle_landmark/shuttle_initializer/osiris/battlestar,
+/obj/effect/shuttle_landmark/shuttle_initializer/battlestar,
 /turf/simulated/floor,
 /area/shuttle/osiris/battlestar)
 "Jf" = (

@@ -4,7 +4,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/wall/prepainted,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "bl" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -16,7 +16,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/monotechmaint,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "bG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
@@ -25,10 +25,10 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/kafel_full/white,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "eZ" = (
 /turf/simulated/floor/tiled/techfloor,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "fj" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -37,20 +37,20 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/kafel_full/white,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "gl" = (
 /obj/machinery/door/airlock/hatch{
 	name = "Caravan Airtight Hatch";
 	req_one_access = null
 	},
 /turf/simulated/floor/wood,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "gp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
 	},
 /turf/simulated/wall/prepainted,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "hT" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/button/remote/blast_door{
@@ -73,14 +73,14 @@
 /obj/structure/fans/tiny,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/techfloor,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "ix" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
 /obj/machinery/shipsensors,
 /turf/simulated/floor/plating,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "iz" = (
 /obj/machinery/portable_atmospherics/canister/air/airlock,
 /obj/machinery/atmospherics/portables_connector,
@@ -91,25 +91,25 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "jZ" = (
 /obj/structure/closet/walllocker/emergsuit_wall{
 	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "kt" = (
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
 /turf/simulated/wall/prepainted,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "kD" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
 /turf/simulated/wall/prepainted,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "lI" = (
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = -33
@@ -118,7 +118,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monotechmaint,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "lS" = (
 /obj/structure/cable/green{
 	icon_state = "2-4"
@@ -127,7 +127,7 @@
 	dir = 9
 	},
 /turf/simulated/wall/prepainted,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "mi" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -137,15 +137,15 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/kafel_full/white,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "mQ" = (
 /obj/structure/fuel_port{
 	pixel_x = -27
 	},
 /obj/overmap/entity/visitable/ship/landable/trade/cargoravana,
-/obj/effect/shuttle_landmark/shuttle_initializer/osiris/cargoravana,
+/obj/effect/shuttle_landmark/shuttle_initializer/cargoravana,
 /turf/simulated/floor/tiled/techfloor,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "nh" = (
 /obj/item/reagent_containers/glass/beaker{
 	pixel_x = 5
@@ -155,13 +155,13 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "nG" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "ov" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
@@ -171,7 +171,7 @@
 	},
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/techfloor,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "oI" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -180,30 +180,30 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monotechmaint,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "pq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "qc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "qi" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/walllocker_double/east,
 /turf/simulated/floor/tiled/techfloor,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "sd" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
 	},
 /turf/simulated/wall/prepainted,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "tf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
@@ -218,13 +218,13 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_ridged,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "uj" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/kafel_full/white,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "vh" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -234,7 +234,7 @@
 	},
 /obj/machinery/holopad/ship,
 /turf/simulated/floor/tiled/monotechmaint,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "vN" = (
 /turf/template_noop,
 /area/template_noop)
@@ -246,28 +246,28 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_ridged,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "wN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
 /turf/simulated/wall/prepainted,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "wR" = (
 /obj/machinery/light_switch{
 	dir = 1;
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "xf" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/old_tile/beige,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "xJ" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/old_tile/blue,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "zm" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 8
@@ -276,23 +276,23 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "Aj" = (
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
 /turf/simulated/wall/prepainted,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "Cg" = (
 /obj/machinery/newscaster{
 	pixel_y = -28
 	},
 /obj/structure/table/bench/steel,
 /turf/simulated/floor/tiled/monotechmaint,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "Cu" = (
 /turf/simulated/wall/prepainted,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "Cz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
@@ -301,13 +301,13 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_ridged,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "CZ" = (
 /obj/machinery/atmospherics/component/unary/engine{
 	dir = 8
 	},
 /turf/simulated/shuttle/plating/airless/carry,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "Dn" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
@@ -317,25 +317,25 @@
 	},
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/techfloor,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "Ed" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/techfloor,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "Fq" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "FD" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/techfloor,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "FQ" = (
 /turf/simulated/floor/wood,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "Ge" = (
 /obj/structure/table/steel,
 /obj/structure/sink/kitchen,
@@ -343,7 +343,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "Gh" = (
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -360,13 +360,13 @@
 /obj/machinery/door/firedoor,
 /obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/old_tile/blue,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "Gr" = (
 /obj/structure/panic_button{
 	pixel_y = -28
 	},
 /turf/simulated/floor/tiled/monotechmaint,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "GB" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -378,24 +378,24 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/kafel_full/white,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "GL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "GP" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "GS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
 	},
 /obj/structure/table/wooden_reinforced,
 /turf/simulated/floor/tiled/kafel_full/white,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "GW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
@@ -404,7 +404,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/kafel_full/white,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "He" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
@@ -416,7 +416,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/kafel_full/white,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "HF" = (
 /obj/structure/cable/green,
 /obj/structure/table/steel_reinforced,
@@ -427,10 +427,10 @@
 	req_access = null
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "KA" = (
 /turf/simulated/floor/tiled/monotechmaint,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "LI" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
@@ -439,7 +439,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_ridged,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "LV" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -450,27 +450,27 @@
 /obj/effect/floor_decal/corner_techfloor_grid/full,
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/kafel_full/white,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "Ms" = (
 /obj/machinery/telecomms/relay/preset/telecomms,
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "Mt" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/kafel_full/white,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "Nf" = (
 /obj/structure/bed/pod,
 /obj/structure/bed/pod{
 	pixel_y = 16
 	},
 /turf/simulated/floor/wood,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "NG" = (
 /obj/structure/closet/secure_closet/freezer/meat,
 /obj/item/reagent_containers/food/drinks/soymilk,
@@ -499,7 +499,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/kafel_full/white,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "NK" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -511,21 +511,21 @@
 	dir = 4
 	},
 /turf/simulated/wall/prepainted,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "NL" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
 	},
 /obj/machinery/portable_atmospherics/canister/empty/phoron,
 /turf/simulated/floor/plating,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "OR" = (
 /turf/simulated/wall/prepainted/civilian,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "Pi" = (
 /obj/effect/floor_decal/corner_techfloor_grid/full,
 /turf/simulated/floor/tiled/steel_ridged,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "Pj" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4
@@ -534,11 +534,11 @@
 	dir = 4
 	},
 /turf/simulated/wall/prepainted,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "Pt" = (
 /obj/effect/floor_decal/corner_techfloor_grid/diagonal,
 /turf/simulated/floor/tiled/steel_ridged,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "PJ" = (
 /obj/machinery/computer/ship/engines{
 	dir = 1
@@ -546,25 +546,25 @@
 /obj/structure/table/steel_reinforced,
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/techfloor,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "Qo" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
 /obj/structure/table/bench/steel,
 /turf/simulated/floor/tiled/monotechmaint,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "QJ" = (
 /obj/structure/lattice,
 /turf/template_noop,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "Rf" = (
 /obj/machinery/portable_atmospherics/canister/phoron,
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "Rg" = (
 /obj/machinery/power/smes/buildable{
 	charge = 15000;
@@ -574,7 +574,7 @@
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "St" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -583,7 +583,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "SK" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -592,19 +592,19 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "ST" = (
 /obj/structure/cable/orange{
 	icon_state = "1-4"
 	},
 /turf/simulated/wall/prepainted,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "UC" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "UF" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/gps/internal/base{
@@ -616,7 +616,7 @@
 	},
 /obj/machinery/computer/shuttle_control/explore/cargoravana,
 /turf/simulated/floor/tiled/techfloor,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "Wb" = (
 /obj/structure/table/steel,
 /obj/machinery/microwave,
@@ -630,17 +630,17 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/kafel_full/white,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "WR" = (
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "Xg" = (
 /obj/structure/bed/chair/sofa/brown/left{
 	dir = 8
 	},
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/monotechmaint,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "XF" = (
 /obj/machinery/computer/ship/helm{
 	req_one_access = null
@@ -649,13 +649,13 @@
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	pixel_y = 30;
 	pixel_x = -6;
-	id_tag = "tradeport_caravan_docker"
+	id_tag = "tradeport_cargoravana_docker"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "Yo" = (
 /turf/simulated/floor/tiled/kafel_full/white,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "Zc" = (
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -677,7 +677,7 @@
 /obj/machinery/door/firedoor,
 /obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/old_tile/blue,
-/area/template_noop)
+/area/shuttle/cargoravana)
 "ZJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
@@ -687,7 +687,7 @@
 	req_one_access = null
 	},
 /turf/simulated/floor/tiled/old_tile/yellow,
-/area/template_noop)
+/area/shuttle/cargoravana)
 
 (1,1,1) = {"
 vN
@@ -775,8 +775,8 @@ vN
 "}
 (8,1,1) = {"
 vN
-vN
-vN
+QJ
+QJ
 QJ
 WR
 SK
@@ -787,7 +787,7 @@ OR
 "}
 (9,1,1) = {"
 vN
-vN
+QJ
 QJ
 pq
 GL

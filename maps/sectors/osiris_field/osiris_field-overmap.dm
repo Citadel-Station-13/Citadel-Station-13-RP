@@ -16,6 +16,7 @@
 	known = FALSE
 	in_space = 1
 
+
 /obj/effect/step_trigger/teleporter/osiris_field_loop/north/Initialize(mapload)
 	. = ..()
 	teleport_x = x
