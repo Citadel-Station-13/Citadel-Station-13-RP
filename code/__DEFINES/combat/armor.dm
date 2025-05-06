@@ -77,36 +77,92 @@ GLOBAL_REAL_LIST(armor_types) = list(
 	ARMOR_ACID,
 )
 
-//? --- armor tiers ---
+//?                              --- armor tiers ---
+//? These are defined values so if we want to scale them nonlinearly/whatever later,
+//? we don't need to replace everything.
 
-#define ARMOR_TIER_DEFAULT ARMOR_TIER_BASELINE
-
-#define ARMOR_TIER_LAUGHABLE -3
-#define ARMOR_TIER_LOW -2
-#define ARMOR_TIER_BELOW -1
 #define ARMOR_TIER_BASELINE 0
-#define ARMOR_TIER_ABOVE 1
-#define ARMOR_TIER_HIGH 2
-#define ARMOR_TIER_OVERWHELMING 3
-#define ARMOR_TIER_RIDICULOUS 4
 
-#define ARMOR_BARELY_BEATS(other) (other + 0.001)
+//?                              --- armor tier helpers ---
 
-//? melee
+/**
+ * Armor barely beats a given tier. Results in little to no values changes, but the checks for beating
+ * would pass.
+ */
+#define ARMOR_TIER_BARELY_BEATS(other) (other + 0.001)
+/**
+ * Linear tier scaling between A and B, by amount, where 1 is B, 0 is A, 0.5 is between.
+ */
+#define ARMOR_TIER_BETWEEN(TIER_A, TIER_B, AMOUNT) LERP(TIER_A, TIER_B, AMOUNT)
+/**
+ * Scale above a tier by an amount, where 1 is an additional tier up.
+ * * 1 tier up is a decent boost in damage and penetration from the last
+ * * 2 tiers up is a high boost in damage and can generally penetrate the first one semi-trivially.
+ */
+#define ARMOR_TIER_ABOVE(TIER, AMOUNT) (TIER + AMOUNT)
+/**
+ * Opposite of [ARMOR_TIER_BELOW]
+ */
+#define ARMOR_TIER_BELOW(TIER, AMOUNT) (TIER - AMOUNT)
+
+//?  -- armor tiers - melee --
 
 #define MELEE_TIER_DEFAULT MELEE_TIER_MEDIUM
 
-#define MELEE_TIER_UNARMED_DEFAULT ARMOR_TIER_LOW
-#define MELEE_TIER_UNARMED_FISTS ARMOR_TIER_LOW
-#define MELEE_TIER_UNARMED_CLAW ARMOR_TIER_BELOW
-#define MELEE_TIER_LIGHT ARMOR_TIER_BASELINE
-#define MELEE_TIER_MEDIUM ARMOR_TIER_ABOVE
-#define MELEE_TIER_HEAVY ARMOR_TIER_HIGH
-#define MELEE_TIER_EXTREME ARMOR_TIER_OVERWHELMING
+/**
+ * toys
+ */
+#define MELEE_TIER_USELESS ARMOR_TIER_0
+/**
+ * very light weapons that shouldn't be used as weapons really
+ */
+#define MELEE_TIER_LAUGHABLE ARMOR_TIER_1
+/**
+ * light weapons
+ */
+#define MELEE_TIER_LIGHT ARMOR_TIER_2
+/**
+ * toolboxes, batons, knives, hammers, etc
+ */
+#define MELEE_TIER_MEDIUM ARMOR_TIER_3
+/**
+ * heavy swords, sledgehammers, mech punches, etc
+ */
+#define MELEE_TIER_HEAVY ARMOR_TIER_4
+/**
+ * armor piercing / specialized tooling
+ */
+#define MELEE_TIER_EXTREME ARMOR_TIER_5
+/**
+ * even heavier armor piercing
+ */
+#define MELEE_TIER_UNSTOPPABLE ARMOR_TIER_6
 
-//? bullet
+//?  -- armor tiers - bullet --
 
 #define BULLET_TIER_DEFAULT BULLET_TIER_MEDIUM
+
+/**
+ * generally foam / nerf rounds
+ */
+#define BULLET_TIER_USELESS ARMOR_TIER_0
+/**
+ * slingshots
+ */
+#define BULLET_TIER_LAUGHABLE ARMOR_TIER_1
+/**
+ * improvised rounds, very low powered pistols, etc
+ */
+#define BULLET_TIER_LOW ARMOR_TIER_2
+/**
+ * most pistol rounds
+ */
+#define BULLET_TIER_PISTOL ARMOR_TIER_3
+/**
+ * some AP pistol rounds, some lighter rifle rounds
+ */
+#define BULLET_TIER_RIFLE ARMOR_TIER_4
+/** */
 
 /// super improvised rounds / pistols / whatever.
 #define BULLET_TIER_LAUGHABLE ARMOR_TIER_BELOW
@@ -121,7 +177,7 @@ GLOBAL_REAL_LIST(armor_types) = list(
 /// heavy mech weapons
 #define BULLET_TIER_RIDICULOUS ARMOR_TIER_RIDICULOUS
 
-//? laser
+//?  -- armor tiers - laser --
 
 #define LASER_TIER_DEFAULT LASER_TIER_MEDIUM
 

@@ -12,6 +12,8 @@
 	icon_state = "kinetic-add"
 	appearance_flags = KEEP_APART | RESET_COLOR
 
+#warn set damage tier on all projectiles
+#warn set damage tier on all melee items
 /obj/projectile/nt_protomag
 	abstract_type = /obj/projectile/nt_protomag
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/protomag/projectile.dmi'
@@ -86,7 +88,7 @@
 	name = "lightweight slug"
 	color = "#ffffff"
 	damage_force = 5
-	damage_tier = BULLET_TIER_LOW
+	damage_tier = ARMOR_BETWEEN_TIERS(BULLET_TIER_LOW, BULLET_TIER_MEDIUM, 0.5)
 
 // todo: i refuse to do this until i can make it pretty
 // /obj/projectile/nt_protomag/smoke
