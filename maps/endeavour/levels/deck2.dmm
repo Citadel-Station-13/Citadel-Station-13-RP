@@ -11182,7 +11182,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/rnd/research/researchdivision)
+/area/endeavour/hallway/d2afthall)
 "hUP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -18355,6 +18355,17 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
+"nhI" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/research/researchdivision)
 "njb" = (
 /obj/machinery/fire_alarm/east_mount,
 /obj/structure/catwalk,
@@ -18544,6 +18555,22 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
+"nsU" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 4
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/research/researchdivision)
 "ntf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -21967,7 +21994,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
-/area/rnd/research/researchdivision)
+/area/endeavour/hallway/d2afthall)
 "pKn" = (
 /obj/machinery/atmospherics/component/unary/heater{
 	dir = 8
@@ -25016,6 +25043,9 @@
 	},
 /obj/effect/floor_decal/corner/mauve/bordercorner2{
 	dir = 10
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
@@ -30112,12 +30142,11 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/medical/medbay_emt_bay)
 "vPR" = (
-/obj/machinery/porta_turret/crescent{
-	density = 1;
-	faction = "neutral"
+/obj/machinery/door/firedoor{
+	dir = 8
 	},
-/turf/simulated/floor/airless/ceiling,
-/area/endeavour/command/turrets)
+/turf/simulated/floor/tiled,
+/area/rnd/research/researchdivision)
 "vQc" = (
 /turf/simulated/wall/r_wall/prepainted/medical,
 /area/medical/resleeving)
@@ -37336,7 +37365,7 @@ pRW
 pRW
 pRW
 eWn
-vPR
+klv
 eWn
 pRW
 gYU
@@ -46462,7 +46491,7 @@ uUl
 uUl
 vBg
 njG
-gly
+gsh
 gsh
 lrJ
 ayF
@@ -46656,7 +46685,7 @@ bPH
 bPH
 bPH
 rXh
-gly
+gsh
 gsh
 lrJ
 gBR
@@ -46849,8 +46878,8 @@ gly
 dfD
 eZN
 gly
-gly
-gly
+vPR
+gsh
 gsh
 lrJ
 iGu
@@ -47043,7 +47072,7 @@ ycO
 xpK
 dkv
 ycO
-ycO
+nhI
 pJN
 ggj
 gIv
@@ -47237,7 +47266,7 @@ ghr
 oCV
 ftX
 oGu
-ghr
+nsU
 hTw
 bZy
 cYk

@@ -1367,6 +1367,13 @@
 	req_access = null;
 	req_one_access = list(19,44)
 	},
+/obj/machinery/button/remote/blast_door{
+	id = "gateway_pad";
+	name = "Gateway Access Blast Door Control";
+	req_one_access = list(19,44);
+	pixel_x = 27;
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
 "aZz" = (
@@ -1881,6 +1888,12 @@
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/wood,
 /area/crew_quarters/mimeoffice)
+"bvT" = (
+/obj/structure/sign/warning/lethal_turrets{
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled/dark,
+/area/gateway)
 "bwa" = (
 /obj/structure/table/woodentable,
 /obj/item/flame/candle/candelabra/everburn,
@@ -4097,13 +4110,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint)
 "def" = (
-/obj/machinery/button/remote/blast_door{
-	id = "gateway_pad";
-	name = "Gateway Access Blast Door Control";
-	pixel_y = -38;
-	req_one_access = list(19,29,38,43,47,63,67);
-	pixel_x = 7;
+/obj/machinery/camera/network/exploration{
 	dir = 1
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
@@ -7445,6 +7456,12 @@
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1fwdhall)
+"fwJ" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/vacant/vacant_bar)
 "fwP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -10821,9 +10838,11 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "ilO" = (
-/obj/structure/table/bench,
-/turf/simulated/floor/tiled/steel,
-/area/vacant/vacant_bar)
+/obj/structure/sign/warning/lethal_turrets{
+	pixel_x = 32
+	},
+/turf/simulated/floor/tiled/dark,
+/area/gateway)
 "imy" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
@@ -13227,6 +13246,9 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
 "jZp" = (
@@ -13505,6 +13527,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "kim" = (
@@ -13998,6 +14021,7 @@
 "kCI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "kDj" = (
@@ -14488,6 +14512,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
+	},
+/obj/structure/sign/warning/lethal_turrets{
+	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
@@ -15617,9 +15644,6 @@
 "lOs" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
-/obj/structure/sign/warning/lethal_turrets{
-	pixel_y = -32
-	},
 /obj/item/storage/firstaid/regular{
 	pixel_x = 2;
 	pixel_y = 2
@@ -15629,6 +15653,9 @@
 	pixel_y = -2
 	},
 /obj/structure/table/standard,
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "lOV" = (
@@ -16786,9 +16813,6 @@
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck1aft)
 "mLh" = (
-/obj/item/radio/intercom{
-	pixel_y = -24
-	},
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 9
 	},
@@ -16805,6 +16829,9 @@
 	},
 /obj/structure/table/standard,
 /obj/item/multitool/endeavour_buffered,
+/obj/structure/sign/warning/lethal_turrets{
+	pixel_y = -32
+	},
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "mLr" = (
@@ -20417,6 +20444,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/docking_hallway2)
+"prz" = (
+/obj/structure/sink/kitchen{
+	dir = 4;
+	pixel_x = -12
+	},
+/turf/simulated/floor/plating,
+/area/vacant/vacant_bar)
 "prD" = (
 /obj/structure/catwalk,
 /obj/structure/disposalpipe/segment{
@@ -20634,8 +20668,10 @@
 /area/crew_quarters/coffee_shop)
 "pzJ" = (
 /obj/machinery/light,
-/obj/machinery/camera/network/exploration{
-	dir = 1
+/obj/effect/floor_decal/plaque{
+	pixel_y = -33;
+	name = "A Cautionary Tale";
+	desc = "This gateway room has shown its efficient design by negating access from gateway AND access room successfully, by neutralizing three possible threats to the security of the ship within the span of a single shift. This incident did highlight an isue with general signage and button locations, and has thus since been revised."
 	},
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
@@ -23258,12 +23294,11 @@
 /turf/simulated/wall/r_wall/prepainted/exploration,
 /area/exploration/pilot_prep)
 "rEv" = (
-/obj/structure/sink/kitchen{
-	dir = 4;
-	pixel_x = -12
+/obj/effect/floor_decal/plaque{
+	pixel_y = -33
 	},
-/turf/simulated/floor/wood/broken,
-/area/vacant/vacant_bar)
+/turf/simulated/wall/prepainted,
+/area/endeavour/hallway/d1fwdmaint)
 "rEB" = (
 /obj/machinery/light{
 	dir = 8
@@ -31269,7 +31304,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 4
 	},
-/obj/machinery/suit_cycler/exploration,
+/obj/machinery/suit_cycler/pathfinder,
 /turf/simulated/floor/tiled,
 /area/exploration/pathfinder_office)
 "xzM" = (
@@ -31363,6 +31398,12 @@
 "xCr" = (
 /turf/simulated/wall/prepainted,
 /area/crew_quarters/sleep/Dorm_1)
+"xCP" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/vacant/vacant_bar)
 "xDb" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -45364,18 +45405,18 @@ vso
 vso
 lBc
 dLH
-dLH
+prz
 vpK
 oAT
 dLH
-dLH
+xCP
 dLH
 rFT
 uvS
 wxj
 dLH
 ojm
-ilO
+kQS
 lBc
 ifD
 jFy
@@ -45558,7 +45599,7 @@ kKK
 kKK
 lBc
 pFN
-rEv
+laK
 dLH
 oAT
 kQS
@@ -46310,7 +46351,7 @@ mRI
 lUh
 kTo
 oMt
-wsZ
+bvT
 okP
 ffi
 hFM
@@ -46533,7 +46574,7 @@ ojo
 ojo
 pod
 jNC
-dLH
+fwJ
 jzT
 ufQ
 fnF
@@ -46696,7 +46737,7 @@ hJO
 gRE
 okP
 aXR
-wsZ
+ilO
 jYZ
 def
 okP
@@ -48638,7 +48679,7 @@ wqg
 eYI
 wim
 eYI
-asR
+rEv
 ctt
 hVk
 asR
