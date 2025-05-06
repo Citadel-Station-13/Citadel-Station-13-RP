@@ -18610,13 +18610,6 @@
 "buR" = (
 /turf/simulated/floor/reinforced,
 /area/shuttle/osiris/scavenger)
-"bvf" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10
-	},
-/obj/machinery/shipsensors,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/scavengerutilitymicro)
 "bwj" = (
 /obj/structure/barricade,
 /turf/simulated/floor/wood,
@@ -19527,18 +19520,6 @@
 /obj/structure/reagent_dispensers/fueltank,
 /turf/simulated/floor/plating,
 /area/tradeport/commons)
-"dqO" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
-	dir = 9
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/holopad/ship,
-/obj/overmap/entity/visitable/ship/landable/trade/scavengerutilitymicro,
-/obj/effect/shuttle_landmark/triumph/trade/scavengerutilitymicro,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/scavengerutilitymicro)
 "drw" = (
 /obj/machinery/chem_master/condimaster,
 /obj/effect/floor_decal/spline/plain{
@@ -20260,13 +20241,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/utilitymicro)
-"eAx" = (
-/obj/machinery/atmospherics/pipe/tank/phoron{
-	dir = 4;
-	volume = 15000
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/scavengerutilitymicro)
 "eBc" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
@@ -21011,14 +20985,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tradeport/facility)
-"gdG" = (
-/obj/machinery/power/smes/buildable{
-	charge = 15000;
-	cur_coils = 3
-	},
-/obj/structure/cable/green,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/scavengerutilitymicro)
 "ggg" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
@@ -21134,15 +21100,12 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/sector/nebula_tradeport/motel/arcade)
 "gAm" = (
-/obj/machinery/portable_atmospherics/canister/air/airlock,
-/obj/machinery/atmospherics/portables_connector{
-	dir = 8
+/obj/structure/table/rack/shelf/steel,
+/obj/item/stack/material/glass{
+	amount = 50
 	},
-/obj/structure/fuel_port{
-	pixel_x = -27
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/scavengerutilitymicro)
+/turf/simulated/floor/reinforced,
+/area/shuttle/osiris/scavenger)
 "gAS" = (
 /obj/effect/floor_decal/techfloor/orange/corner{
 	dir = 8
@@ -22284,13 +22247,6 @@
 /obj/structure/bed/pod,
 /turf/simulated/floor/tiled/white,
 /area/sector/nebula_tradeport/medical/public)
-"iuS" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/stack/material/glass{
-	amount = 50
-	},
-/turf/simulated/floor/tiled/steel_dirty/dark,
-/area/shuttle/osiris/scavenger)
 "iuZ" = (
 /obj/structure/sink{
 	dir = 4;
@@ -22516,21 +22472,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/runabout)
-"jaA" = (
-/obj/structure/bed/chair/comfy/brown{
-	dir = 8
-	},
-/obj/structure/panic_button{
-	pixel_y = -28
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/scavengerutilitymicro)
 "jbe" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -22820,12 +22761,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/sector/nebula_tradeport/motel/vip)
-"jJU" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/simulated/wall/prepainted/command,
-/area/shuttle/scavengerutilitymicro)
 "jLa" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -23723,9 +23658,10 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "lkG" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/scavengerutilitymicro)
+/obj/structure/table/rack/shelf/steel,
+/obj/item/storage/briefcase/inflatable,
+/turf/simulated/floor/reinforced,
+/area/shuttle/osiris/scavenger)
 "llR" = (
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
@@ -24059,19 +23995,6 @@
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room1)
-"lQj" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
-	dir = 6
-	},
-/turf/simulated/wall/prepainted/command,
-/area/shuttle/scavengerutilitymicro)
-"lQk" = (
-/obj/machinery/telecomms/relay/preset/telecomms,
-/obj/structure/cable/green{
-	icon_state = "2-8"
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/scavengerutilitymicro)
 "lRy" = (
 /obj/structure/bed/chair/sofa/black,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -24733,17 +24656,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/scoophead/cockpit)
-"nhO" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 4
-	},
-/obj/effect/floor_decal/techfloor{
-	dir = 8
-	},
-/obj/structure/table/rack/shelf/steel,
-/obj/item/stack/cable_coil,
-/turf/simulated/floor/tiled/steel_dirty/dark,
-/area/shuttle/osiris/scavenger)
 "niD" = (
 /obj/effect/floor_decal/techfloor/orange,
 /obj/effect/floor_decal/techfloor{
@@ -24844,13 +24756,6 @@
 /obj/machinery/cryopod/robot/trade,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/commons)
-"nvh" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/scavengerutilitymicro)
 "nvl" = (
 /obj/machinery/atmospherics/component/unary/engine{
 	dir = 8
@@ -25099,20 +25004,9 @@
 /turf/simulated/shuttle/plating,
 /area/shuttle/trade_ship/general)
 "ois" = (
-/obj/machinery/computer/ship/helm{
-	dir = 4;
-	req_one_access = null
-	},
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 4
-	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	pixel_y = -27;
-	pixel_x = 4;
-	id_tag = "tradeport_utilitymicro_docker"
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/scavengerutilitymicro)
+/obj/structure/table/rack/shelf/steel,
+/turf/simulated/floor/reinforced,
+/area/shuttle/osiris/scavenger)
 "ojj" = (
 /obj/machinery/door/blast/regular{
 	id = "tugdoor1"
@@ -25383,8 +25277,12 @@
 /turf/simulated/floor/tiled/white,
 /area/sector/nebula_tradeport/medical/public)
 "oKG" = (
-/turf/simulated/wall/prepainted/command,
-/area/shuttle/scavengerutilitymicro)
+/obj/structure/table/rack/shelf/steel,
+/obj/item/circuitboard/helm,
+/obj/item/circuitboard/engine,
+/obj/item/circuitboard/sensors,
+/turf/simulated/floor/reinforced,
+/area/shuttle/osiris/scavenger)
 "oLV" = (
 /obj/structure/table/bench/wooden,
 /obj/effect/floor_decal/techfloor,
@@ -25503,6 +25401,13 @@
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/safarizoo)
+"oYB" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/table/rack/shelf/steel,
+/turf/simulated/floor/reinforced,
+/area/shuttle/osiris/scavenger)
 "oYQ" = (
 /obj/machinery/door/window/westleft{
 	req_one_access = list(160)
@@ -25807,6 +25712,14 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/tug)
+"pNp" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/table/rack/shelf/steel,
+/obj/item/stack/material/steel/full_stack,
+/turf/simulated/floor/reinforced,
+/area/shuttle/osiris/scavenger)
 "pOP" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central2,
 /obj/structure/bed/pod,
@@ -25956,12 +25869,6 @@
 	},
 /turf/simulated/floor/airless,
 /area/sector/nebula_tradeport/motel)
-"qfS" = (
-/obj/machinery/atmospherics/component/unary/engine{
-	dir = 8
-	},
-/turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/scavengerutilitymicro)
 "qgF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/map_helper/airlock/door/int_door,
@@ -26477,12 +26384,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/spine)
-"qTU" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/scavengerutilitymicro)
 "qUG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
@@ -27064,11 +26965,12 @@
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
 "rZg" = (
-/obj/structure/window/reinforced{
-	dir = 1
+/obj/structure/table/rack/shelf/steel,
+/obj/item/stack/material/glass/reinforced{
+	amount = 50
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/scavengerutilitymicro)
+/turf/simulated/floor/reinforced,
+/area/shuttle/osiris/scavenger)
 "rZH" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 5
@@ -27155,17 +27057,6 @@
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/nebula_tradeport/motel/arcade)
-"siR" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/obj/machinery/air_alarm/alarms_hidden/north_mount{
-	req_one_access = null
-	},
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/machinery/computer/shuttle_control/explore/scavengerutilitymicro,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/scavengerutilitymicro)
 "sjr" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
@@ -27182,8 +27073,12 @@
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead/main)
 "skr" = (
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/scavengerutilitymicro)
+/obj/structure/table/rack/shelf/steel,
+/obj/item/stack/cable_coil,
+/obj/item/stack/cable_coil,
+/obj/item/stack/cable_coil,
+/turf/simulated/floor/reinforced,
+/area/shuttle/osiris/scavenger)
 "skG" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
@@ -27194,11 +27089,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room8)
-"soo" = (
-/obj/machinery/light,
-/obj/structure/table/rack/shelf/steel,
-/turf/simulated/floor/tiled/steel_dirty/dark,
-/area/shuttle/osiris/scavenger)
 "soG" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -27344,12 +27234,6 @@
 /obj/item/bedsheet/double,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/nebula_tradeport/motel/room8)
-"sKL" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/storage/briefcase/inflatable,
-/obj/item/storage/briefcase/inflatable,
-/turf/simulated/floor/tiled/steel_dirty/dark,
-/area/shuttle/osiris/scavenger)
 "sLr" = (
 /obj/structure/bed/chair/sofa/brown/right{
 	dir = 8
@@ -27839,17 +27723,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/shuttle/osiris/scavenger)
-"tLh" = (
-/obj/machinery/light,
-/obj/structure/table/rack/shelf/steel,
-/obj/item/stack/material/glass/reinforced{
-	amount = 50
-	},
-/obj/item/stack/material/glass/phoronglass{
-	amount = 25
-	},
-/turf/simulated/floor/tiled/steel_dirty/dark,
-/area/shuttle/osiris/scavenger)
 "tNP" = (
 /obj/machinery/light{
 	dir = 1
@@ -27988,9 +27861,6 @@
 /area/tradeport/commons)
 "ubJ" = (
 /obj/machinery/light,
-/obj/structure/table/rack/shelf/steel,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/shuttle/osiris/scavenger)
 "uci" = (
@@ -28367,6 +28237,8 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+/obj/structure/table/rack/shelf/steel,
+/obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/reinforced,
 /area/shuttle/osiris/scavenger)
 "uMy" = (
@@ -28398,19 +28270,6 @@
 /obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead/main)
-"uRf" = (
-/obj/machinery/computer/ship/engines,
-/obj/machinery/computer/ship/sensors{
-	pixel_x = -27
-	},
-/obj/machinery/power/apc/alarms_hidden/north_mount{
-	req_access = null
-	},
-/obj/structure/cable/green{
-	icon_state = "0-2"
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/scavengerutilitymicro)
 "uRl" = (
 /obj/structure/fuel_port{
 	pixel_x = -26
@@ -29110,21 +28969,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
-"wra" = (
-/obj/machinery/door/firedoor{
-	req_one_access = list(160)
-	},
-/obj/machinery/door/blast/regular{
-	id = "scavmicroutility'"
-	},
-/obj/machinery/button/remote/blast_door{
-	id = "scavmicroutility'";
-	name = "Shuttle Utility Door";
-	pixel_x = 30
-	},
-/obj/structure/fans/tiny,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/scavengerutilitymicro)
 "wrI" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -29221,19 +29065,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tradeport/cafeteria)
-"wAU" = (
-/obj/machinery/door/window/southright,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/cable/orange{
-	dir = 1
-	},
-/obj/machinery/power/terminal{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/scavengerutilitymicro)
 "wBj" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -29375,15 +29206,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/scoophead/engineering)
-"wQz" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/scavengerutilitymicro)
 "wQT" = (
 /obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
@@ -29587,24 +29409,13 @@
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/nebula_tradeport/motel/room2)
-"xmY" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/scavengerutilitymicro)
 "xng" = (
-/obj/machinery/door/window,
-/obj/machinery/light{
-	dir = 8;
-	light_range = 12;
-	old_wall = 1
+/obj/structure/table/rack/shelf/steel,
+/obj/item/stack/material/glass/phoronglass{
+	amount = 25
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/scavengerutilitymicro)
+/turf/simulated/floor/reinforced,
+/area/shuttle/osiris/scavenger)
 "xoh" = (
 /obj/machinery/vending/loadout/loadout_misc,
 /turf/simulated/floor/tiled/steel,
@@ -29696,15 +29507,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel)
-"xzZ" = (
-/obj/structure/shuttle/engine/heater{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
-	},
-/turf/simulated/wall/prepainted,
-/area/shuttle/scavengerutilitymicro)
 "xAd" = (
 /obj/machinery/door/airlock/voidcraft/vertical,
 /obj/map_helper/airlock/door/ext_door,
@@ -58333,10 +58135,10 @@ bpN
 oZe
 bBf
 xTk
-lkG
-lkG
-lkG
-lkG
+buR
+buR
+buR
+buR
 tzE
 xor
 hVI
@@ -58721,10 +58523,10 @@ wxu
 yhW
 wvx
 xTk
-oKG
-uRf
-jaA
-oKG
+buR
+buR
+buR
+buR
 buR
 xor
 wmm
@@ -58915,10 +58717,10 @@ bpN
 ktJ
 sfC
 xTk
-lQj
-siR
-dqO
-wra
+buR
+buR
+buR
+buR
 buR
 xor
 wmm
@@ -59109,10 +58911,10 @@ uAp
 yhW
 wvx
 xTk
-jJU
-lkG
-nvh
-oKG
+buR
+buR
+buR
+buR
 buR
 xor
 wmm
@@ -59305,7 +59107,7 @@ wvx
 xTk
 gAm
 rZg
-qTU
+ois
 xng
 buR
 xor
@@ -59320,7 +59122,7 @@ tQN
 egO
 yhW
 qaF
-sKL
+lFP
 bpN
 bpN
 acd
@@ -59497,10 +59299,10 @@ yiW
 lHJ
 wvx
 xTk
-eAx
-wQz
-xmY
-wAU
+buR
+buR
+buR
+buR
 jvh
 fxa
 fyg
@@ -59514,7 +59316,7 @@ bpN
 vHM
 lHJ
 qaF
-tLh
+ubJ
 bpN
 bpN
 acd
@@ -59691,10 +59493,10 @@ uAp
 kZA
 rDm
 xTk
-bvf
-xzZ
-lQk
-gdG
+buR
+buR
+buR
+buR
 tzE
 wmf
 pus
@@ -59708,7 +59510,7 @@ jRX
 ivA
 kZA
 qaF
-iuS
+lFP
 bpN
 bpN
 acd
@@ -59886,7 +59688,7 @@ kZA
 qNx
 xTk
 buR
-qfS
+buR
 buR
 buR
 tzE
@@ -59902,7 +59704,7 @@ bpN
 eBc
 kZA
 qaF
-soo
+ubJ
 bpN
 bpN
 acd
@@ -60079,9 +59881,9 @@ vmf
 tiO
 rDm
 sfL
-uLH
-uLH
-uLH
+pNp
+pNp
+oYB
 uLH
 kCV
 nbv
@@ -60096,7 +59898,7 @@ bpN
 ivA
 eMO
 kru
-nhO
+kru
 bpN
 bpN
 acd
