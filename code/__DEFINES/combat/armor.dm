@@ -153,15 +153,15 @@ GLOBAL_REAL_LIST(armor_types) = list(
 /**
  * improvised rounds, very low powered pistols, etc
  */
-#define BULLET_TIER_LOW ARMOR_TIER_2
+#define BULLET_TIER_I ARMOR_TIER_2
 /**
  * most pistol rounds
  */
-#define BULLET_TIER_PISTOL ARMOR_TIER_3
+#define BULLET_TIER_II ARMOR_TIER_3
 /**
  * some AP pistol rounds, some lighter rifle rounds
  */
-#define BULLET_TIER_RIFLE ARMOR_TIER_4
+#define BULLET_TIER_ ARMOR_TIER_4
 /** */
 
 /// super improvised rounds / pistols / whatever.
