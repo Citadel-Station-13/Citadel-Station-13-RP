@@ -524,7 +524,7 @@ const LatheDesign = (props: LatheDesignProps, context) => {
                       setMats(newMats);
                     }}
                     options={
-                      Object.keys(data.materials).map((id) => data.materialsContext.materials[id].name)
+                      Object.keys(data.materials).map((id) => data.materialsContext.materials[id].name) //THIS is the line we need to touch for constraint showing.
                     } />
                 </Table.Cell>
                 <Table.Cell textAlign="center"

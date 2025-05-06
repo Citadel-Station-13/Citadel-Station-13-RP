@@ -45,8 +45,13 @@
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/light/bulb/fairy
 
-/datum/prototype/design/misc/glass_ashtray
-	id = "MiscGlassAshtray"
+/datum/prototype/design/misc/ashtray
+	id = "MiscAshtray"
+	build_name = "ashtray"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
-	build_path = /obj/item/material/ashtray/glass
+	materials_base = list()
+	material_costs = list(
+		"structure" = 4000,
+	)
+	build_path = /obj/item/material/ashtray
