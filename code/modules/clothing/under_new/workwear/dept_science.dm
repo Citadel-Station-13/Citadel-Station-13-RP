@@ -150,3 +150,15 @@
 /**
  * Explorer
  */
+
+/obj/item/clothing/under/explorer
+	desc = "A green uniform for operating in hazardous environments."
+	name = "explorer's jumpsuit"
+	icon = 'icons/clothing/uniform/workwear/dept_science/explorer.dmi'
+	icon_state = "explorer"
+
+/obj/item/clothing/under/explorer_fem
+	desc = "A green uniform for operating in hazardous environments."
+	name = "explorer's jumpsuit"
+	icon = 'icons/clothing/uniform/workwear/dept_science/explorer_fem.dmi'
+	icon_state = "explorer_fem"

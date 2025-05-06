@@ -77,6 +77,13 @@
 	desc = "A short-sleeved black uniform, paired with grey digital-camo cargo pants. It looks very tactical."
 	icon = 'icons/clothing/uniform/workwear/centcom/ert_uniform.dmi'
 	icon_state = "ert_uniform"
+	armor_type = /datum/armor/centcom/jumpsuit
+
+/obj/item/clothing/under/para
+	name = "PARA tactical uniform"
+	desc = "A standard grey jumpsuit, emblazoned with the Icon of the PMD. Close inspection of the embroidery reveals a complex web of glyphs written in an unknown language."
+	icon = 'icons/clothing/uniform/workwear/centcom/para_ert_uniform.dmi'
+	icon_state = "para_ert_uniform"
 
 /obj/item/clothing/under/gov
 	desc = "A neat proper uniform of someone on offical business. The collar is <i>immaculately</i> starched."

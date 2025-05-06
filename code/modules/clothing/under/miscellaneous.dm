@@ -97,16 +97,6 @@
 	desc = "Show your love for the fasion of today viewed through the lens of yesterday! All come in black, but this one has red stripes."
 	icon_state = "red"
 
-/obj/item/clothing/under/explorer
-	desc = "A green uniform for operating in hazardous environments."
-	name = "explorer's jumpsuit"
-	icon_state = "explorer"
-
-/obj/item/clothing/under/explorer_fem
-	desc = "A green uniform for operating in hazardous environments."
-	name = "explorer's jumpsuit"
-	icon_state = "explorer_fem"
-
 /obj/item/clothing/under/cohesion
 	name = "black cohesion suit"
 	desc = "A plain black cohesion suit intended to assist Prometheans in maintaining their form and prevent direct skin exposure."
@@ -165,11 +155,6 @@
 	desc = "A black halter top with denim jean shorts."
 	icon_state = "haltertop"
 
-/obj/item/clothing/under/btcbartender
-	name = "BTC Bartender"
-	desc = "For the classy bartender who converts their paychecks into Spesscoin."
-	icon_state = "btc_bartender"
-
 /obj/item/clothing/under/leotard
 	name = "black leotard"
 	desc = "A black leotard with a piece of semi-transparent cloth near the bust. Perfect for showing off cleavage. Bunny ears not included."
@@ -200,126 +185,6 @@
     desc = "An impractically short miniskirt allegedly making waves through the local fashion scene."
     icon_state = "miniskirt_fashion"
 
-/obj/item/clothing/under/bodysuit
-	name = "standard bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This basic version is a sleek onyx grey comes with the standard induction ports."
-	icon_state = "bodysuit"
-
-/obj/item/clothing/under/bodysuit_fem
-	name = "standard bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This basic version is a sleek onyx grey comes with the standard induction ports."
-	icon_state = "bodysuit_fem"
-
-/obj/item/clothing/under/bodysuit/bodysuiteva
-	name = "\improper EVA bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one has bright white plating for easy visibility and thick cuffs to lock into your thrust controls."
-	icon_state = "bodysuit_eva"
-
-/obj/item/clothing/under/bodysuit/bodysuiteva_fem
-	name = "\improper EVA bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one has bright white plating for easy visibility and thick cuffs to lock into your thrust controls."
-	icon_state = "bodysuit_eva_fem"
-
-/obj/item/clothing/under/bodysuit/bodysuitemt
-	name = "\improper EMT bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a deep blue base with white and blue coloration."
-	icon_state = "bodysuit_emt"
-
-/obj/item/clothing/under/bodysuit/bodysuitemt_fem
-	name = "\improper EMT bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a deep blue base with white and blue colouration."
-	icon_state = "bodysuit_emt_fem"
-
-/obj/item/clothing/under/bodysuit/bodysuithazard
-	name = "hazard bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a black base with striking orange plating and reflective stripes."
-	icon_state = "bodysuit_hazard"
-
-/obj/item/clothing/under/bodysuit/bodysuithazard_fem
-	name = "hazard bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a black base with striking orange plating and reflective stripes."
-	icon_state = "bodysuit_hazard_fem"
-
-/obj/item/clothing/under/bodysuit/bodysuitexplocom
-	name = "exploration command bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a black base with striking purple plating and eyecatching golden stripes."
-	icon_state = "bodysuit_pathfinder"
-
-/obj/item/clothing/under/bodysuit/bodysuitexplocom_fem
-	name = "exploration command bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a black base with striking purple plating and eyecatching golden stripes."
-	icon_state = "bodysuit_pathfinder_fem"
-
-/obj/item/clothing/under/bodysuit/bodysuitexplo
-	name = "exploration bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a black base with striking purple plating."
-	icon_state = "bodysuit_explo"
-
-/obj/item/clothing/under/bodysuit/bodysuitexplo_fem
-	name = "exploration bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a black base with striking purple plating."
-	icon_state = "bodysuit_explo_fem"
-
-/obj/item/clothing/under/bodysuit/bodysuitminer
-	name = "mining bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with tan and purple coloration."
-	icon_state = "bodysuit_miner"
-
-/obj/item/clothing/under/bodysuit/bodysuitminer_fem
-	name = "mining bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with tan and purple colouration."
-	icon_state = "bodysuit_miner_fem"
-
-/obj/item/clothing/under/bodysuit/bodysuitsec
-	name = "security bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with red and yellow coloration."
-	icon_state = "bodysuit_security"
-
-/obj/item/clothing/under/bodysuit/bodysuitsec_fem
-	name = "security bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with red and yellow colouration."
-	icon_state = "bodysuit_security_fem"
-
-/obj/item/clothing/under/bodysuit/bodysuitsecweewoo
-	name = "advanced security bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with red and yellow coloration. The flashing lights fill you with confidence."
-	icon_state = "bodysuit_secweewoo"
-
-/obj/item/clothing/under/bodysuit/bodysuitsecweewoo_fem
-	name = "advanced security bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with red and yellow colouration. The flashing lights fill you with confidence."
-	icon_state = "bodysuit_secweewoo_fem"
-
-/obj/item/clothing/under/bodysuit/bodysuitseccom
-	name = "security command bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with striking red plating and eyecatching golden stripes."
-	icon_state = "bodysuit_seccom"
-
-/obj/item/clothing/under/bodysuit/bodysuitseccom_fem
-	name = "security command bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with striking red plating and eyecatching golden stripes."
-	icon_state = "bodysuit_seccom_fem"
-
-/obj/item/clothing/under/bodysuit/bodysuitcommand
-	name = "command bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a flashy blue base with white plating and eyecatching golden stripes."
-	icon_state = "bodysuit_command"
-
-/obj/item/clothing/under/bodysuit/bodysuitcommand_fem
-	name = "command bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a flashy blue base with white plating and eyecatching golden stripes."
-	icon_state = "bodysuit_command_fem"
-
-/obj/item/clothing/under/bodysuit/bodysuitcentcom
-	name = "central command bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a sleek black base with an elegant golden trim and grey plating. It fits your corporate badges nicely."
-	icon_state = "bodysuit_centcom"
-
-/obj/item/clothing/under/bodysuit/bodysuitcentcom_fem
-	name = "central command bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a sleek black base with an elegant golden trim and grey plating. It fits your corporate badges nicely."
-	icon_state = "bodysuit_centcom"
-
 /obj/item/clothing/under/bodysuit/blueskirt
 	name = "blue skirt"
 	desc = "A comfy blue sweater paired with a stylish charcoal skirt!"
@@ -329,12 +194,6 @@
 	name = "red skirt"
 	desc = "A comfy red sweater paired with a stylish charcoal skirt!"
 	icon_state = "redskirt"
-
-/obj/item/clothing/under/para
-	name = "PARA tactical uniform"
-	desc = "A standard grey jumpsuit, emblazoned with the Icon of the PMD. Close inspection of the embroidery reveals a complex web of glyphs written in an unknown language."
-	icon_state = "para_ert_uniform"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "black", SLOT_ID_LEFT_HAND = "black")
 
 /obj/item/clothing/under/blueshortskirt
 	name = "Short Skirt"
@@ -375,10 +234,6 @@
 	name = "pleated skirt"
 	icon_state = "pleated"
 
-//Same as Nanotrasen Security Uniforms
-/obj/item/clothing/under/ert
-	armor_type = /datum/armor/centcom/jumpsuit
-
 /obj/item/clothing/under/laconic
 	name = "laconic field suit"
 	desc = "A lightweight black turtleneck with padded gray slacks. It seems comfortable, but practical."
@@ -389,16 +244,6 @@
 	name = "smooth gray jumpsuit"
 	desc = "An ironed version of the famous, bold, and bald apparel. As smooth as it looks, it does not guarantee being able to slip away."
 	icon_state = "gray_smooth_jumpsuit"
-
-/obj/item/clothing/under/navy_gray
-	name = "navy gray jumpsuit"
-	desc = "A light grey-blue jumpsuit resembling those worn in the Navy, without any of the traditional markings."
-	icon = 'icons/clothing/uniform/rank/utility.dmi'
-	icon_state = "lightnavy"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_ROLL
-	worn_bodytypes = BODYTYPE_DEFAULT
 
 /obj/item/clothing/under/hasie
 	name = "Hasie skirt"
@@ -447,107 +292,6 @@
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
-//Had to split these into two paths to avoid bloating the loadout.
-/obj/item/clothing/under/skinsuit
-	name = "skinsuit"
-	desc = "Similar to other form-fitting latex bodysuits in design and function, skinsuits typically feature integrated hardpoints around common wear areas."
-	icon = 'icons/clothing/uniform/misc/skinsuit.dmi'
-	icon_state = "skinsuit"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/skinsuit/gray
-	name = "gray skinsuit"
-	icon_state = "skinsuit_g"
-
-/obj/item/clothing/under/skinsuit/leotard
-	name = "leotard skinsuit"
-	desc = "The skinsuit's leotard variant has long since eclipsed its initial function as a breathable undersuit for submersible hardsuits. Although still utilized in this role, it has become rather fashionable to wear outside of deep water operations."
-	icon_state = "skinsuitleo"
-
-/obj/item/clothing/under/skinsuit/leotard/gray
-	name = "gray leotard skinsuit"
-	icon_state = "skinsuitleo_g"
-
-//As with the above.
-/obj/item/clothing/under/skinsuit_fem
-	name = "skinsuit"
-	desc = "Similar to other form-fitting latex bodysuits in design and function, skinsuits typically feature integrated hardpoints around common wear areas."
-	icon = 'icons/clothing/uniform/misc/skinsuit.dmi'
-	icon_state = "skinsuitfem"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/skinsuit_fem/gray
-	name = "gray skinsuit"
-	icon_state = "skinsuitfem_g"
-
-/obj/item/clothing/under/skinsuit_fem/leotard
-	name = "leotard skinsuit"
-	desc = "The skinsuit's leotard variant has long since eclipsed its initial function as a breathable undersuit for submersible hardsuits. Although still utilized in this role, it has become rather fashionable to wear outside of deep water operations."
-	icon_state = "skinsuitfemleo"
-
-/obj/item/clothing/under/skinsuit_fem/leotard/gray
-	name = "gray leotard skinsuit"
-	icon_state = "skinsuitfemleo_g"
-
-/obj/item/clothing/under/skinsuit_striped
-	name = "skinsuit striped"
-	desc = "A dark skinsuit with white stripe embellishments, covering the contours. The latest in the line of skintight outfits that this crew in particular greatly prefers, to the point they now take up 30% of the sector's demands among NT's facilities."
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	icon = 'icons/clothing/uniform/misc/skin_taped.dmi'
-	icon_state = "skinsuit_taped"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-//Alt Bodysuits
-/obj/item/clothing/under/bodysuit/alt
-	name = "alternate bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This basic version is a sleek onyx grey comes with the standard induction ports."
-	icon = 'icons/clothing/uniform/misc/bodysuit_alt.dmi'
-	icon_state = "altbodysuit"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/bodysuit/alt/sleeveless
-	name = "sleeveless alternate bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one is designed to stop at the mid-bicep, allowing total freedom to the wearer's forearms."
-	icon_state = "altbodysuit_sleeves"
-
-/obj/item/clothing/under/bodysuit/alt/pants
-	name = "alternate bodysuit pants"
-	desc = "Following complaints that bodysuits were too tight to roll down to the waist, production of bodysuit pants as singular items grew in popularity."
-	icon_state = "altbodysuit_pants"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/bodysuit/alt_fem
-	name = "alternate bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This basic version is a sleek onyx grey comes with the standard induction ports."
-	icon = 'icons/clothing/uniform/misc/bodysuit_alt.dmi'
-	icon_state = "altbodysuitfem"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/bodysuit/alt_fem/sleeveless
-	name = "sleeveless alternate bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one is designed to stop at the mid-bicep, allowing total freedom to the wearer's forearms."
-	icon_state = "altbodysuitfem_sleeves"
-
-/obj/item/clothing/under/bodysuit/alt_fem/pants
-	name = "bodysuit pants"
-	desc = "Following complaints that bodysuits were too tight to roll down to the waist, production of bodysuit pants as singular items grew in popularity."
-	icon_state = "altbodysuitfem_pants"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
 /obj/item/clothing/under/ballet
 	name = "\improper Antheia tutu"
 	desc = "A gossamer thin tutu from the boutique Antheia line. Famed for their flexibility and ease of motion, these outfits originate from Old Earth dance traditions."
@@ -569,130 +313,3 @@
 	icon = 'icons/clothing/uniform/misc/tourist.dmi'
 	icon_state = "tourist"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-
-/obj/item/clothing/under/replika/arar
-	name = "repair-worker replikant bodysuit"
-	desc = "A skin-tight bodysuit designed for 2nd generation biosynthetics of the engineering variety. Comes with multiple interfacing ports, arm protectors, and a conspicuous lack of leg coverage."
-	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most."
-	icon = 'icons/clothing/uniform/misc/replika.dmi'
-	icon_state = "arar"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/replika/lstr
-	name = "land-survey replikant bodysuit"
-	desc = "A skin-tight bodysuit designed for 2nd generation biosynthetics of the exploration variety. Comes with several interfacing ports and a conspicuous lack of leg coverage."
-	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most."
-	icon = 'icons/clothing/uniform/misc/replika.dmi'
-	icon_state = "lstr"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/replika/sakr
-	name = "medical replikant bodysuit"
-	desc = "A skin-tight bodysuit designed for 2nd generation biosynthetics of the medical variety. Comes with default interfacing ports and a conspicuous lack of leg coverage."
-	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most."
-	icon = 'icons/clothing/uniform/misc/replika.dmi'
-	icon_state = "sakr"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/replika/fklr
-	name = "command replikant bodysuit"
-	desc = "A skin-tight bodysuit designed for 2nd generation biosynthetics of the command variety. Comes with interfacing ports, an air of formality, and a conspicuous lack of leg coverage."
-	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most."
-	icon = 'icons/clothing/uniform/misc/replika.dmi'
-	icon_state = "fklr"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/replika/eulr
-	name = "general-purpose replikant bodysuit"
-	desc = "A skin-tight bodysuit designed for 2nd generation biosynthetics of multipurpose variety. Comes with default interfacing ports and a conspicuous lack of leg coverage."
-	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most."
-	icon = 'icons/clothing/uniform/misc/replika.dmi'
-	icon_state = "eulr"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/replika/klbr
-	name = "controller replikant bodysuit"
-	desc = "A skin-tight bodysuit designed for 2nd generation biosynthetics of the controller variety. Comes with several interfacing ports and a conspicuous lack of leg coverage."
-	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most."
-	icon = 'icons/clothing/uniform/misc/replika.dmi'
-	icon_state = "klbr"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/replika/stcr
-	name = "security-technician replikant bodysuit"
-	desc = "A skin-tight bodysuit designed for 2nd generation biosynthetics of the security variety. Comes with multiple interfacing ports and a conspicuous lack of leg coverage."
-	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most."
-	icon = 'icons/clothing/uniform/misc/replika.dmi'
-	icon_state = "stcr"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/replika/adlr
-	name = "administration replikant bodysuit"
-	desc = "A skin-tight bodysuit designed for 2nd generation biosynthetics of the administrative variety. Comes with several interfacing ports and a conspicuous lack of leg coverage."
-	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most."
-	icon = 'icons/clothing/uniform/misc/replika.dmi'
-	icon_state = "adlr"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/replika/lstr_alt
-	name = "combat-engineer replikant bodysuit"
-	desc = "A skin-tight bodysuit designed for 2nd generation biosynthetics of the exploration variety. Comes with extra interfacing ports, white armpads, and a familiar lack of leg coverage."
-	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most."
-	icon = 'icons/clothing/uniform/misc/replika.dmi'
-	icon_state = "lstr_alt"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/gestalt/sleek_skirt
-	name = "sleek crew skirt"
-	desc = "A tight-fitting black uniform with a narrow skirt and striking crimson trim."
-	icon = 'icons/clothing/uniform/misc/replika.dmi'
-	icon_state = "gestalt_skirt"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/gestalt/sleek
-	name = "sleek crew uniform"
-	desc = "A tight-fitting black uniform with striking crimson trim."
-	icon = 'icons/clothing/uniform/misc/replika.dmi'
-	icon_state = "gestalt"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/gestalt/sleek_fem
-	name = "sleek female crew uniform"
-	desc = "A tight-fitting black uniform with striking crimson trim."
-	icon = 'icons/clothing/uniform/misc/replika.dmi'
-	icon_state = "gestalt_fem"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-
-/obj/item/clothing/under/gestalt/sleeveless
-	name = "sleeveless sleek crew uniform"
-	desc = "A tight-fitting, sleeveless single-piece black uniform with striking crimson trim."
-	icon = 'icons/clothing/uniform/misc/replika.dmi'
-	icon_state = "gestalt_sleeveless"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL

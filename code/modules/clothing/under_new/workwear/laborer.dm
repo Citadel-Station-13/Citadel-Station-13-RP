@@ -45,3 +45,39 @@
 	icon = 'icons/clothing/uniform/workwear/misc_corporations/furup.dmi'
 	icon_state = "furup"
 
+//Reuses spritesheet
+/obj/item/clothing/under/utility
+	name = "utility uniform"
+	desc = "A comfortable turtleneck and black utility trousers."
+	icon = 'icons/clothing/uniform/workwear/oricon/utility/black.dmi'
+	icon_state = "black"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	armor_type = /datum/armor/none
+	siemens_coefficient = 0.9
+	worn_has_rolldown = UNIFORM_HAS_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL
+
+//Reuses spritesheet
+/obj/item/clothing/under/utility/blue
+	name = "utility uniform"
+	desc = "A comfortable blue utility jumpsuit."
+	icon = 'icons/clothing/uniform/workwear/oricon/utility/navy.dmi'
+	icon_state = "navy"
+
+//Reuses spritesheet
+/obj/item/clothing/under/utility/grey
+	name = "utility uniform"
+	desc = "A comfortable grey utility jumpsuit."
+	icon = 'icons/clothing/uniform/workwear/oricon/utility/grey.dmi'
+	icon_state = "grey"
+
+//Reuses spritesheet
+/obj/item/clothing/under/navy_gray
+	name = "navy gray jumpsuit"
+	desc = "A light grey-blue jumpsuit resembling those worn in the Navy, without any of the traditional markings."
+	icon = 'icons/clothing/uniform/workwear/oricon/utility/lightnavy.dmi'
+	icon_state = "lightnavy"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_has_rolldown = UNIFORM_HAS_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL
+	worn_bodytypes = BODYTYPE_DEFAULT

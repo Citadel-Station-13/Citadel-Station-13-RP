@@ -22,6 +22,12 @@
 	icon_state = "barman_skirt"
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
+/obj/item/clothing/under/btcbartender
+	name = "BTC Bartender"
+	desc = "For the classy bartender who converts their paychecks into Spesscoin."
+	icon = 'icons/clothing/uniform/workwear/service/btc_bartender.dmi'
+	icon_state = "btc_bartender"
+
 /obj/item/clothing/under/rank/chef
 	desc = "It's an apron which is given only to the most <b>hardcore</b> chefs in space."
 	name = "chef's uniform"
