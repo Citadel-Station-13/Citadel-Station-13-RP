@@ -10,6 +10,7 @@
 	docking_controller_tag = "colonial_docker"
 	fuel_consumption = 3
 	move_time = 10
+	current_location = "debris_field_colonial_start"
 
 /obj/overmap/entity/visitable/ship/landable/osiris/colonial
 	name = "Colonial Liner"
@@ -59,6 +60,7 @@
 	docking_controller_tag = "battlestar_docker"
 	fuel_consumption = 3
 	move_time = 10
+	current_location = "debris_field_osiris/battlestar_start"
 
 /obj/overmap/entity/visitable/ship/landable/osiris/battlestar
 	name = "Wrecked Mercenary Battlecruiser Dedalios"
@@ -105,7 +107,7 @@
 	name = "Spacena Cargoravana Shuttle"
 	warmup_time = 8
 	shuttle_area = list(/area/shuttle/cargoravana)
-	current_location = "tradeport_cargoravana"
+	current_location = "debris_field_osiris/cargoravana_start"
 	docking_controller_tag = "tradeport_cargoravana_docker"
 	fuel_consumption = 3
 	move_time = 10
@@ -149,45 +151,3 @@
 	O.initial_restricted_waypoints["Spacena Cargoravana Shuttle"] = list(landmark_tag)
 	. = ..()
 
-//Salvager
-
-/datum/shuttle/autodock/overmap/osiris/scavenger
-	name = "FTV Adala"
-	warmup_time = 8
-	shuttle_area = list(/area/shuttle/osiris/scavenger)
-	docking_controller_tag = "scavenger_docker"
-	fuel_consumption = 3
-	move_time = 10
-
-/obj/overmap/entity/visitable/ship/landable/osiris/scavenger
-	name = "FTV Adala"
-	desc = "A legal Salvager vessel."
-	scanner_name = "FTV Adala"
-	scanner_desc = @{"[i]Registration[/i]: Free Trade Union - Guardian Salvager - Adala - FTV 003
-[i]Class[/i]: Mega-Tug + Salvager trailer
-[i]Transponder[/i]: Transmitting (CIV), Free trade Union shuttle, Guardian Salvager subsidiary.
-[b]Notice[/b]: A Guardian Salvager company vessel, operated by the FTU. Able to carry small to big one decker vessels. Their scavenging permit as been confirm by CC and the local governement."}
-	color = "#f8e300"
-	fore_dir = EAST
-	vessel_mass = 8000
-	vessel_size = SHIP_SIZE_LARGE
-	shuttle = "FTV Adala"
-
-/obj/machinery/computer/shuttle_control/explore/scavenger
-	name = "short jump console"
-	shuttle_tag = "FTV Adala"
-
-/area/shuttle/osiris/scavenger
-	name = "FTV Adala"
-	requires_power = 1
-	icon_state = "shuttle2"
-	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
-	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
-	sound_env = SMALL_ENCLOSED
-
-/obj/effect/shuttle_landmark/shuttle_initializer/osiris/scavenger
-	name = "Tradeport"
-	base_area = /area/space
-	base_turf = /turf/space
-	landmark_tag = "tradeport/scavenger_start"
-	shuttle_type = /datum/shuttle/autodock/overmap/osiris/scavenger

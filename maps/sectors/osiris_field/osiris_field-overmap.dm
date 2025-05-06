@@ -15,3 +15,27 @@
 	color = "#765400"
 	known = FALSE
 	in_space = 1
+
+/obj/effect/step_trigger/teleporter/osiris_field_loop/north/Initialize(mapload)
+	. = ..()
+	teleport_x = x
+	teleport_y = 2
+	teleport_z = z
+
+/obj/effect/step_trigger/teleporter/osiris_field_loop/south/Initialize(mapload)
+	. = ..()
+	teleport_x = x
+	teleport_y = world.maxy - 1
+	teleport_z = z
+
+/obj/effect/step_trigger/teleporter/osiris_field_loop/west/Initialize(mapload)
+	. = ..()
+	teleport_x = world.maxx - 1
+	teleport_y = y
+	teleport_z = z
+
+/obj/effect/step_trigger/teleporter/osiris_field_loop/east/Initialize(mapload)
+	. = ..()
+	teleport_x = 2
+	teleport_y = y
+	teleport_z = z

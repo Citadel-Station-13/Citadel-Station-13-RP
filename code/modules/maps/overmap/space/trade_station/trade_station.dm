@@ -206,12 +206,6 @@
 	base_turf = /turf/space
 	base_area = /area/space
 
-/obj/effect/shuttle_landmark/triumph/trade/scavengerutilitymicro
-	name = "FTV Adala Internal Dock"
-	landmark_tag = "tradeport_scavengerutilitymicro"
-	base_turf = /turf/simulated/floor/reinforced
-	base_area = /area/sector/nebula_tradeport/dock2
-
 // Todo
 /*
 /obj/machinery/camera/network/trade
