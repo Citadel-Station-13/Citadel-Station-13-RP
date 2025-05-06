@@ -244,13 +244,13 @@
 	allow_duplicates = FALSE
 
 /datum/map_template/submap/level_specific/osirisfield/battlestar
-	name = "Wrecked Mercenary Battlecruiser Dedalios"
+	name = "Wrecked Mercenary Battlecruiser Andromeda"
 	suffix = "warship.dmm"
 	cost = -1
 	allow_duplicates = FALSE
 
 /datum/map_template/submap/level_specific/osirisfield/cargoravana
-	name = "Wrecked Mercenary Battlecruiser Dedalios"
+	name = "Spacena Cargoravana"
 	suffix = "mobilehome.dmm"
 	cost = -1
 	allow_duplicates = FALSE

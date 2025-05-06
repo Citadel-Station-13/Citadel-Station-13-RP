@@ -1,3 +1,22 @@
+/datum/map_template/shuttle/overmap/osiris/colonial
+	name = "Colonial Liner"
+	desc = "A luxury liner that got damaged in the osiris incident."
+	map_path = "maps/submaps/level_specific/osiris_field/mobilehome.dmm"
+	annihilate = TRUE
+
+/datum/map_template/shuttle/overmap/osiris/battlestar
+	name = "A mercenary battlecruiser that got damaged in the osiris incident."
+	desc = "A small light cargo transport shuttle, struck by... something. Ouch."
+	map_path = "maps/submaps/level_specific/osiris_field/warship.dmm"
+	annihilate = TRUE
+
+/datum/map_template/shuttle/overmap/osiris/cargoravana
+	name = "Spacena Cargoravana Shuttle"
+	desc = "A small light cargo transport shuttle that got damaged in the osiris incident."
+	map_path = "maps/submaps/level_specific/osiris_field/mobilehome.dmm"
+	annihilate = TRUE
+
+
 //
 // Hudge Vessel
 //
@@ -10,7 +29,7 @@
 	docking_controller_tag = "colonial_docker"
 	fuel_consumption = 3
 	move_time = 10
-	current_location = "debris_field_colonial_start"
+	current_location = "colonial_start"
 
 /obj/overmap/entity/visitable/ship/landable/osiris/colonial
 	name = "Colonial Liner"
@@ -38,36 +57,29 @@
 	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
 	sound_env = SMALL_ENCLOSED
 
-/obj/effect/shuttle_landmark/shuttle_initializer/osiris/colonial
+/obj/effect/shuttle_landmark/shuttle_initializer/colonial
 	name = "Debris Field"
 	base_area = /area/space
 	base_turf = /turf/space
-	landmark_tag = "debris_field_colonial_start"
+	landmark_tag = "colonial_start"
 	shuttle_type = /datum/shuttle/autodock/overmap/osiris/colonial
-
-/obj/effect/shuttle_landmark/shuttle_initializer/osiris/colonial/Initialize(mapload)
-	var/obj/overmap/entity/visitable/O = get_overmap_sector(get_z(src)) //make this into general system some other time
-	LAZYINITLIST(O.initial_restricted_waypoints)
-	O.initial_restricted_waypoints["Colonial Liner"] = list(landmark_tag)
-	. = ..()
-
 
 //Battlestar
 /datum/shuttle/autodock/overmap/osiris/battlestar
-	name = "Wrecked Mercenary Battlecruiser Dedalios"
+	name = "Wrecked Mercenary Battlecruiser Andromeda"
 	warmup_time = 8
 	shuttle_area = list(/area/shuttle/osiris/battlestar)
 	docking_controller_tag = "battlestar_docker"
 	fuel_consumption = 3
 	move_time = 10
-	current_location = "debris_field_osiris/battlestar_start"
+	current_location = "battlestar_start"
 
 /obj/overmap/entity/visitable/ship/landable/osiris/battlestar
-	name = "Wrecked Mercenary Battlecruiser Dedalios"
+	name = "Wrecked Mercenary Battlecruiser Andromeda"
 	desc = "A damaged military vessel."
-	scanner_name = "Wrecked Mercenary Battlecruiser Dedalios"
+	scanner_name = "Wrecked Mercenary Battlecruiser Andromeda"
 	scanner_desc = @{"[i]Registration[/i]: ---
-[i]Class[/i]: Dedalios BS2004
+[i]Class[/i]: Andromeda BS2004
 [i]Transponder[/i]: Transmitting (CIV), Originialy registered as a Wreck since the Osiris Incident.
 [b]Notice[/b]: It was destroyed in August 2568, when responding to a pirate incursion. It was operated by a small merc company, but they went out of business after the incident."}
 	color = "#646464"
@@ -78,28 +90,22 @@
 
 /obj/machinery/computer/shuttle_control/explore/battlestar
 	name = "short jump console"
-	shuttle_tag = "Wrecked Mercenary Battlecruiser Dedalios"
+	shuttle_tag = "Wrecked Mercenary Battlecruiser Andromeda"
 
 /area/shuttle/osiris/battlestar
-	name = "Wrecked Mercenary Battlecruiser Dedalios"
+	name = "Wrecked Mercenary Battlecruiser Andromeda"
 	requires_power = 1
 	icon_state = "shuttle2"
 	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
 	sound_env = SMALL_ENCLOSED
 
-/obj/effect/shuttle_landmark/shuttle_initializer/osiris/battlestar
+/obj/effect/shuttle_landmark/shuttle_initializer/battlestar
 	name = "Debris Field"
 	base_area = /area/space
 	base_turf = /turf/space
-	landmark_tag = "debris_field_osiris/battlestar_start"
+	landmark_tag = "battlestar_start"
 	shuttle_type = /datum/shuttle/autodock/overmap/osiris/battlestar
-
-/obj/effect/shuttle_landmark/shuttle_initializer/osiris/battlestar/Initialize(mapload)
-	var/obj/overmap/entity/visitable/O = get_overmap_sector(get_z(src)) //make this into general system some other time
-	LAZYINITLIST(O.initial_restricted_waypoints)
-	O.initial_restricted_waypoints["Wrecked Mercenary Battlecruiser Dedalios"] = list(landmark_tag)
-	. = ..()
 
 //Cargoravan
 
@@ -107,7 +113,7 @@
 	name = "Spacena Cargoravana Shuttle"
 	warmup_time = 8
 	shuttle_area = list(/area/shuttle/cargoravana)
-	current_location = "debris_field_osiris/cargoravana_start"
+	current_location = "cargoravana_start"
 	docking_controller_tag = "tradeport_cargoravana_docker"
 	fuel_consumption = 3
 	move_time = 10
@@ -138,16 +144,10 @@
 	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
 	sound_env = SMALL_ENCLOSED
 
-/obj/effect/shuttle_landmark/shuttle_initializer/osiris/cargoravana
+/obj/effect/shuttle_landmark/shuttle_initializer/cargoravana
 	name = "Debris Field"
 	base_area = /area/space
 	base_turf = /turf/space
-	landmark_tag = "debris_field_osiris/cargoravana_start"
+	landmark_tag = "cargoravana_start"
 	shuttle_type = /datum/shuttle/autodock/overmap/trade/cargoravana
-
-/obj/effect/shuttle_landmark/shuttle_initializer/osiris/cargoravana/Initialize(mapload)
-	var/obj/overmap/entity/visitable/O = get_overmap_sector(get_z(src)) //make this into general system some other time
-	LAZYINITLIST(O.initial_restricted_waypoints)
-	O.initial_restricted_waypoints["Spacena Cargoravana Shuttle"] = list(landmark_tag)
-	. = ..()
 
