@@ -14,4 +14,3 @@
 	desc = "An assistant's formal-wear. Why an assistant needs formal-wear is still unknown."
 	icon = 'icons/clothing/uniform/formal/assistant_formal_fem.dmi'
 	icon_state = "assistant_formal_fem"
-

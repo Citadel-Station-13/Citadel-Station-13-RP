@@ -198,3 +198,31 @@
 	desc = "Living telegram operators experience one of the largest on the job fatality rates of all courier-based occupations."
 	icon = 'icons/clothing/uniform/costume/telegram.dmi'
 	icon_state = "telegram"
+
+/obj/item/clothing/under/bsing
+	name = "blue performer's outfit"
+	desc = "A truly iconic outfit, still worn by enthusiasts and fans of Old Earth digital media."
+	icon = 'icons/clothing/uniform/costume/bsing.dmi'
+	icon_state = "bsing"
+
+/obj/item/clothing/under/ysing
+	name = "yellow performer's outfit"
+	desc = "Inspired by the original, this outfit is still stylish, although derivative."
+	icon = 'icons/clothing/uniform/costume/ysing.dmi'
+	icon_state = "ysing"
+
+/obj/item/clothing/under/psysuit
+	name = "dark undersuit"
+	desc = "A thick, layered grey undersuit lined with power cables. Feels a little like wearing an electrical storm."
+	icon = 'icons/clothing/uniform/costume/psysuit.dmi'
+	icon_state = "psysuit"
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+
+/obj/item/clothing/under/ballet
+	name = "\improper Antheia tutu"
+	desc = "A gossamer thin tutu from the boutique Antheia line. Famed for their flexibility and ease of motion, these outfits originate from Old Earth dance traditions."
+	icon = 'icons/clothing/uniform/misc/ballet.dmi'
+	icon_state = "tutu"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL

@@ -1,5 +1,5 @@
 /**
- * Shorts, Short legged pants, etc
+ * Shorts, Short legged pants, skirts etc
  */
 
 /obj/item/clothing/under/shorts
@@ -200,3 +200,69 @@
 	icon_state = "plaid_green"
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 	worn_has_rolldown = UNIFORM_HAS_ROLL
+
+/obj/item/clothing/under/blackshortsripped
+	name = "ripped black shorts"
+	desc = "A pair of torn up black shorts, for those who know better."
+	icon = 'icons/clothing/uniform/casual/shorts/black_shorts_ripped.dmi'
+	icon_state = "black_shorts_ripped"
+
+/obj/item/clothing/under/fashionminiskirt
+    name = "fashionable miniskirt"
+    desc = "An impractically short miniskirt allegedly making waves through the local fashion scene."
+    icon = 'icons/clothing/uniform/casual/shorts/miniskirt_fashion.dmi'
+	icon_state = "miniskirt_fashion"
+
+/obj/item/clothing/under/bodysuit/blueskirt
+	name = "blue skirt"
+	desc = "A comfy blue sweater paired with a stylish charcoal skirt!"
+	icon = 'icons/clothing/uniform/casual/shorts/blueskirt.dmi'
+	icon_state = "blueskirt"
+
+/obj/item/clothing/under/bodysuit/redskirt
+	name = "red skirt"
+	desc = "A comfy red sweater paired with a stylish charcoal skirt!"
+	icon = 'icons/clothing/uniform/casual/shorts/redskirt.dmi'
+	icon_state = "redskirt"
+
+/obj/item/clothing/under/blueshortskirt
+	name = "Short Skirt"
+	desc = "A light blue sweater with a black skirt."
+	icon = 'icons/clothing/uniform/casual/shorts/blueshortskirt_female.dmi'
+	icon_state = "blueshortskirt_female"
+
+/obj/item/clothing/under/greyskirt_female
+	name = "Grey Skirt"
+	desc = "A medium length, grey skirt with a long-sleeve, black sweater on top."
+	icon = 'icons/clothing/uniform/casual/shorts/greyskirt_female.dmi'
+	icon_state = "greyskirt_female"
+
+/obj/item/clothing/under/croptop
+	name = "crop top"
+	desc = "A shirt that has had the top cropped. This one is NT sponsored."
+	icon = 'icons/clothing/uniform/casual/shorts/croptop.dmi'
+	icon_state = "croptop"
+
+/obj/item/clothing/under/croptop/red
+	name = "red crop top"
+	desc = "A red shirt that has had the top cropped."
+	icon = 'icons/clothing/uniform/casual/shorts/croptop_red.dmi'
+	icon_state = "croptop_red"
+
+/obj/item/clothing/under/croptop/grey
+	name = "grey crop top"
+	desc = "A grey shirt that has had the top cropped."
+	icon = 'icons/clothing/uniform/casual/shorts/croptop_grey.dmi'
+	icon_state = "croptop_grey"
+
+/obj/item/clothing/under/cuttop
+	name = "grey cut top"
+	desc = "A grey shirt that has had the top cut low."
+	icon = 'icons/clothing/uniform/casual/shorts/cuttop.dmi'
+	icon_state = "cuttop"
+
+/obj/item/clothing/under/cuttop/red
+	name = "red cut top"
+	desc = "A red shirt that has had the top cut low."
+	icon = 'icons/clothing/uniform/casual/shorts/cuttop_red.dmi'
+	icon_state = "cuttop_red"

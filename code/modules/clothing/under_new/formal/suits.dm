@@ -230,3 +230,16 @@
 	desc = "A bold but yet conservative outfit, a red pencil skirt and a navy blazer."
 	icon = 'icons/clothing/uniform/formal/suits/blue_blazer_skirt.dmi'
 	icon_state = "blue_blazer_skirt"
+
+//Reuses spritesheet
+/obj/item/clothing/under/redcoatformal
+	name = "formal red coat"
+	desc = "Raise the taxes on their tea. What can go wrong?"
+	icon = 'icons/clothing/uniform/costume/historical/redcoatformal.dmi'
+	icon_state = "redcoatformal"
+
+/obj/item/clothing/under/businessskirt_female
+	name = "Business Skirt"
+	desc = "A professional black jacket with a mundane brown skirt. Perfect for the office."
+	icon = 'icons/clothing/uniform/formal/suits/businessskirt_female.dmi'
+	icon_state = "businessskirt_female"

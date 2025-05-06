@@ -58,7 +58,6 @@
 	name = "administrative cybernetic jumpsuit"
 	icon = 'icons/clothing/uniform/workwear/syndicate/syndicate.dmi'
 	icon_state = "syndicate"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "black", SLOT_ID_LEFT_HAND = "black")
 	desc = "it's a cybernetically enhanced jumpsuit used for administrative duties."
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
@@ -68,3 +67,14 @@
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0
 
+/obj/item/clothing/under/smooth_gray
+	name = "smooth gray jumpsuit"
+	desc = "An ironed version of the famous, bold, and bald apparel. As smooth as it looks, it does not guarantee being able to slip away."
+	icon = 'icons/clothing/uniform/workwear/gray_smooth_jumpsuit.dmi'
+	icon_state = "gray_smooth_jumpsuit"
+
+/obj/item/clothing/under/tracksuit_blue
+	name = "blue tracksuit"
+	desc = "A dark blue tracksuit. It calls to mind images of excercise, particularly squats."
+	icon = 'icons/clothing/uniform/workwear/tracksuit_blue.dmi'
+	icon_state = "tracksuit_blue"

@@ -56,3 +56,17 @@
 	desc = "A fluffy robe to keep you from showing off to the world."
 	icon = 'icons/clothing/uniform/casual/bathrobe.dmi'
 	icon_state = "bathrobe"
+
+/obj/item/clothing/under/tourist
+	name = "tourist liesurewear"
+	desc = "This loud shirt is made of mid-grade cashmere. This premier liesurewear pairs well with a nice pair of khaki shorts that stop uncomfortably above the knee."
+	icon = 'icons/clothing/uniform/casual/tourist.dmi'
+	icon_state = "tourist"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/under/moderncoat
+	name = "modern wrapped coat"
+	desc = "The cutting edge of fashion."
+	icon = 'icons/clothing/uniform/casual/moderncoat.dmi'
+	icon_state = "moderncoat"
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS

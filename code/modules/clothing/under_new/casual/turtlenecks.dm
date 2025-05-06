@@ -66,3 +66,21 @@
 	name = "baggy turtleneck (black)(female)"
 	icon = 'icons/clothing/uniform/casual/turtleneck/bb_turtleblk_fem.dmi'
 	icon_state = "bb_turtleblk_fem"
+
+/obj/item/clothing/under/rank/psych/turtleneck/sweater
+	desc = "A warm looking sweater and a pair of dark blue slacks."
+	name = "sweater"
+	icon = 'icons/clothing/uniform/casual/turtleneck/turtleneck.dmi'
+	icon_state = "turtleneck"
+
+/obj/item/clothing/under/rank/psych/turtleneck/sweater
+	desc = "A warm looking sweater and a pair of dark blue slacks."
+	name = "sweater"
+	icon = 'icons/clothing/uniform/casual/turtleneck/turtleneck_fem.dmi'
+	icon_state = "turtleneck_fem"
+
+/obj/item/clothing/under/laconic
+	name = "laconic field suit"
+	desc = "A lightweight black turtleneck with padded gray slacks. It seems comfortable, but practical."
+	icon = 'icons/clothing/uniform/casual/turtleneck/laconic.dmi'
+	icon_state = "laconic"
