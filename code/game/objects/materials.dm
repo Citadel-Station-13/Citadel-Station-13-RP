@@ -311,6 +311,9 @@
 	else if(part == MATERIAL_PART_DEFAULT)
 		old = material_parts
 		material_parts = material
+	else if(part == material_primary) //if we're not MATERIAL_PART_DEFAULT but our primary isn't MATERIAL_PART_DEFAULT, we need to check for that.
+		old = material_parts
+		material_parts = material
 	if(material != old)
 		if(part == material_primary)
 			unregister_material(old, TRUE)
