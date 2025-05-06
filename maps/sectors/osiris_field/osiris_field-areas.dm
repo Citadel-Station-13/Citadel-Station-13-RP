@@ -12,3 +12,13 @@
 	icon_state = "dark"
 	requires_power = FALSE
 	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/horror.ogg')
+
+/area/osirisdebrisfield
+	name = "\improper Osiris-field"
+
+/area/osirisdebrisfield/memorial
+	name = "Osiris Debrisfield Memorial"
+	icon = 'icons/turf/areas.dmi'
+	icon_state = "dark"
+	requires_power = FALSE
+	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/horror.ogg')

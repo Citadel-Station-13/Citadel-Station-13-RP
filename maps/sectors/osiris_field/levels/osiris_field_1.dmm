@@ -2,7 +2,7 @@
 "ab" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "ad" = (
 /obj/machinery/door/airlock/glass_external/public,
 /obj/map_helper/airlock/door/ext_door,
@@ -11,7 +11,7 @@
 	master_tag = "memorial_docks_4"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "am" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
@@ -19,24 +19,24 @@
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "aZ" = (
 /obj/structure/lattice,
 /obj/structure/marker_beacon/yellow,
 /turf/space/basic,
-/area/space/osirisdebrisfield/memorial)
+/area/space)
 "bo" = (
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "bH" = (
 /obj/machinery/light/poi{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "bT" = (
 /obj/structure/lattice,
 /turf/space/basic,
@@ -46,7 +46,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/bmarble,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "db" = (
 /obj/structure/lattice,
 /turf/space/basic,
@@ -57,23 +57,23 @@
 	},
 /obj/structure/lightpost,
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "dn" = (
 /obj/structure/flora/grass/event/grassy_bush1,
 /turf/simulated/floor/fey/forest_grass,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "dv" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "dA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
 /turf/simulated/wall/r_wall,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "eu" = (
 /obj/machinery/door/airlock/glass_external/public,
 /obj/map_helper/airlock/door/int_door,
@@ -83,11 +83,11 @@
 	pixel_x = 25
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "ey" = (
 /obj/structure/flora/grass/event/full_grass1,
 /turf/simulated/floor/fey/forest_grass,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "eJ" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
@@ -95,13 +95,14 @@
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "eQ" = (
 /obj/structure/memorial{
-	name = "Osiris incident Memorial Wall"
+	name = "Osiris incident Memorial Wall";
+	desc = "An obsidian memorial wall listing the names of missing and dead victims of the osiris incident."
 	},
 /turf/simulated/floor/fey/forest_grass,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "eV" = (
 /obj/effect/shuttle_landmark/automatic{
 	landmark_tag = "memorial_docks_4"
@@ -111,7 +112,7 @@
 "fv" = (
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "fQ" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
@@ -119,34 +120,34 @@
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "gj" = (
 /obj/structure/flora/tree/fey/small_tree/tree5,
 /turf/simulated/floor/fey/forest_grass,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "gA" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	id_tag = "memorial_docks_5"
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "gK" = (
 /turf/simulated/floor/bmarble,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "gV" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "hg" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 1
 	},
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "hE" = (
 /obj/structure/lattice,
 /obj/structure/lattice,
@@ -157,18 +158,15 @@
 	dir = 9
 	},
 /turf/simulated/floor/wood/indoors,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "il" = (
 /obj/structure/memorial{
-	name = "Osiris incident Memorial Wall"
-	},
-/obj/structure/flora/tree/fey/large_tree/tree1{
-	pixel_x = -75;
-	layer = 3;
-	pixel_y = -20
+	name = "Osiris incident Memorial Wall";
+	layer = 4;
+	desc = "An obsidian memorial wall listing the names of missing and dead victims of the osiris incident."
 	},
 /turf/simulated/floor/wood/indoors,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "jd" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
@@ -176,7 +174,7 @@
 	pixel_x = -25
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "jh" = (
 /obj/machinery/airlock_sensor{
 	pixel_x = -25;
@@ -184,7 +182,7 @@
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "jq" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
@@ -200,16 +198,16 @@
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "jy" = (
 /turf/simulated/wall/r_wall,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "kb" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 10
 	},
 /turf/simulated/floor/wood/indoors,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "kF" = (
 /obj/machinery/door/airlock/glass_external/public,
 /obj/map_helper/airlock/door/ext_door,
@@ -218,14 +216,14 @@
 	pixel_x = 22
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "kV" = (
 /obj/structure/flora/pottedplant/mysterious{
 	pixel_y = -6;
 	pixel_x = 13
 	},
 /turf/simulated/floor/fey/forest_grass,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "ly" = (
 /obj/machinery/door/airlock/glass_external/public,
 /obj/map_helper/airlock/door/int_door,
@@ -235,74 +233,78 @@
 	pixel_x = 25
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "lX" = (
 /obj/item/toy/bouquet,
 /turf/simulated/floor/fey/forest_grass,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "on" = (
 /obj/structure/memorial{
-	name = "Osiris incident Memorial Wall"
+	name = "Osiris incident Memorial Wall";
+	desc = "An obsidian memorial wall listing the names of missing and dead victims of the osiris incident."
 	},
 /obj/item/clothing/head/rose_crown{
 	pixel_y = 11
 	},
 /turf/simulated/floor/fey/forest_grass,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "oE" = (
 /obj/structure/flora/grass/event/bright_flowers1,
 /turf/simulated/floor/fey/forest_grass,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "oJ" = (
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "oM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/wall/r_wall,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "pn" = (
 /obj/structure/flora/grass/event/lavender_grass1,
 /turf/simulated/floor/fey/forest_grass,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "px" = (
 /obj/structure/flora/tree/fey/small_tree/tree2,
 /turf/simulated/floor/fey/forest_grass,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "qq" = (
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "qs" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "qX" = (
 /obj/structure/flora/tree/fey/small_tree/tree4,
 /turf/simulated/floor/fey/forest_grass,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "rn" = (
 /obj/structure/lightpost,
 /obj/effect/floor_decal/grass_edge{
 	dir = 8
 	},
+/obj/structure/flora/tree/fey/large_tree/tree1{
+	layer = 3
+	},
 /turf/simulated/floor/wood/indoors,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "ro" = (
 /obj/structure/flora/grass/event/purple_flowers1,
 /turf/simulated/floor/fey/forest_grass,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "rv" = (
 /obj/machinery/door/airlock/glass_external/public,
 /obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "rM" = (
 /turf/space/basic,
 /area/space/osirisdebrisfield/unexplored)
@@ -312,13 +314,13 @@
 	},
 /obj/structure/lightpost,
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "tP" = (
 /obj/machinery/light/poi{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "tS" = (
 /obj/structure/sign/kiddieplaque{
 	desc = "A plaque, with the following message on it : 2568-08-17, the Hell-Walker, a hudge military vessel hijacked by a Rogue AI called Osiris, exploded. The shockwave of this explosion spread in the entires Hadii's Folly sector. The shrapnel destroyed every ship and shuttle not protected by a shield. Many souls were lost. This zone is a graveyard, and this station, build by members of the Hadii's Folly governement, with the help of the NT Vessel Von Braun, was made to honor and remember the people that will be missed.";
@@ -326,17 +328,18 @@
 	pixel_x = -32
 	},
 /turf/simulated/floor/bmarble,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "ui" = (
 /obj/structure/memorial{
-	name = "Osiris incident Memorial Wall"
+	name = "Osiris incident Memorial Wall";
+	desc = "An obsidian memorial wall listing the names of missing and dead victims of the osiris incident."
 	},
 /obj/structure/flora/pottedplant/large{
 	pixel_y = 21;
 	pixel_x = -6
 	},
 /turf/simulated/floor/fey/forest_grass,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "ut" = (
 /obj/machinery/door/airlock/glass_external/public,
 /obj/map_helper/airlock/door/int_door,
@@ -346,14 +349,14 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "uS" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
 	},
 /obj/machinery/light/poi,
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "va" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
@@ -369,35 +372,35 @@
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "vI" = (
 /obj/machinery/door/airlock/multi_tile/glass,
 /turf/simulated/floor/bmarble,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "vL" = (
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "vM" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 8
 	},
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "ws" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "wI" = (
 /obj/structure/flora/pottedplant/stoutbush{
 	pixel_y = -4;
 	pixel_x = 18
 	},
 /turf/simulated/floor/fey/forest_grass,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "yp" = (
 /obj/effect/step_trigger/teleporter/osiris_field_loop/west,
 /turf/space/basic,
@@ -408,7 +411,7 @@
 	pixel_x = 8
 	},
 /turf/simulated/floor/fey/forest_grass,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "yB" = (
 /obj/effect/step_trigger/teleporter/osiris_field_loop/north,
 /turf/space/basic,
@@ -419,14 +422,10 @@
 "yR" = (
 /obj/structure/flora/grass/event/yellow_flowers1,
 /turf/simulated/floor/fey/forest_grass,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "zh" = (
-/obj/structure/flora/tree/fey/large_tree/tree3{
-	pixel_x = -22;
-	pixel_y = -21
-	},
 /turf/simulated/floor/wood/indoors,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "zj" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
@@ -435,17 +434,17 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "zy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
 /turf/simulated/wall/r_wall,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "zB" = (
 /obj/effect/floor_decal/grass_edge,
 /turf/simulated/floor/bmarble,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "zL" = (
 /obj/structure/sign/kiddieplaque{
 	desc = "A plaque, with the following message on it : 2568-08-17, the Hell-Walker, a hudge military vessel hijacked by a Rogue AI called Osiris, exploded. The shockwave of this explosion spread in the entires Hadii's Folly sector. The shrapnel destroyed every ship and shuttle not protected by a shield. Many souls were lost. This zone is a graveyard, and this station, build by members of the Hadii's Folly governement, with the help of the NT Vessel Von Braun, was made to honor and remember the people that will be missed.";
@@ -453,18 +452,18 @@
 	pixel_x = 32
 	},
 /turf/simulated/floor/bmarble,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "zZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
 /turf/simulated/wall/r_wall,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "Aa" = (
 /obj/machinery/door/airlock/glass_external/public,
 /obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "An" = (
 /obj/machinery/door/airlock/glass_external/public,
 /obj/map_helper/airlock/door/ext_door,
@@ -473,7 +472,7 @@
 	master_tag = "memorial_docks_3"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "AF" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	id_tag = "memorial_docks_6"
@@ -485,7 +484,7 @@
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "Ca" = (
 /obj/effect/shuttle_landmark/automatic{
 	landmark_tag = "memorial_docks_3"
@@ -496,11 +495,11 @@
 /obj/effect/floor_decal/grass_edge,
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "Cy" = (
 /obj/structure/flora/grass/event/sparse_grass2,
 /turf/simulated/floor/fey/forest_grass,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "CI" = (
 /obj/effect/shuttle_landmark/automatic{
 	landmark_tag = "memorial_docks_1"
@@ -520,35 +519,39 @@
 	},
 /obj/machinery/light/poi,
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "DO" = (
 /obj/structure/memorial{
-	name = "Osiris incident Memorial Wall"
+	name = "Osiris incident Memorial Wall";
+	desc = "An obsidian memorial wall listing the names of missing and dead victims of the osiris incident."
 	},
 /obj/structure/flora/pottedplant/fern{
 	pixel_y = 22;
 	pixel_x = 1
 	},
 /turf/simulated/floor/fey/forest_grass,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "EJ" = (
 /obj/structure/flora/grass/event/heavy_grass4,
 /turf/simulated/floor/fey/forest_grass,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "EV" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
 	},
 /obj/machinery/light/poi,
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "Fs" = (
 /obj/structure/lightpost,
 /obj/effect/floor_decal/grass_edge{
 	dir = 4
 	},
+/obj/structure/flora/tree/fey/large_tree/tree1{
+	layer = 3
+	},
 /turf/simulated/floor/wood/indoors,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "Gx" = (
 /obj/effect/step_trigger/teleporter/osiris_field_loop/south,
 /turf/space/basic,
@@ -561,7 +564,7 @@
 	master_tag = "memorial_docks_6"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "HB" = (
 /obj/effect/step_trigger/teleporter/osiris_field_loop/south,
 /turf/space/basic,
@@ -569,16 +572,17 @@
 "Im" = (
 /obj/effect/floor_decal/grass_edge,
 /turf/simulated/floor/wood/indoors,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "Jp" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 1
 	},
 /turf/simulated/floor/wood/indoors,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "Jq" = (
 /obj/structure/memorial{
-	name = "Osiris incident Memorial Wall"
+	name = "Osiris incident Memorial Wall";
+	desc = "An obsidian memorial wall listing the names of missing and dead victims of the osiris incident."
 	},
 /obj/structure/flora/pottedplant/small{
 	pixel_y = -10;
@@ -589,7 +593,7 @@
 	pixel_x = 4
 	},
 /turf/simulated/floor/fey/forest_grass,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "JK" = (
 /obj/machinery/door/airlock/glass_external/public,
 /obj/map_helper/airlock/door/int_door,
@@ -599,7 +603,7 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "Kj" = (
 /obj/effect/shuttle_landmark/automatic{
 	landmark_tag = "memorial_docks_6"
@@ -619,11 +623,11 @@
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "LJ" = (
 /obj/structure/flora/tree/fey/small_tree/tree6,
 /turf/simulated/floor/fey/forest_grass,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "LY" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /obj/machinery/airlock_sensor{
@@ -634,18 +638,18 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "Mq" = (
 /obj/machinery/atmospherics/pipe/tank/air,
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "MV" = (
 /obj/structure/flora/pottedplant/smallcactus{
 	pixel_y = 22;
 	pixel_x = 3
 	},
 /turf/simulated/floor/fey/forest_grass,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "Ny" = (
 /obj/machinery/airlock_sensor{
 	pixel_x = 36;
@@ -653,14 +657,14 @@
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "Nz" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 8
 	},
 /obj/structure/lightpost,
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "NE" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	id_tag = "memorial_docks_4"
@@ -672,7 +676,7 @@
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "NZ" = (
 /obj/machinery/door/airlock/glass_external/public,
 /obj/map_helper/airlock/door/int_door,
@@ -682,30 +686,30 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "OL" = (
 /obj/overmap/entity/visitable/sector/osiris_field,
 /turf/space/basic,
 /area/space)
 "OM" = (
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "OQ" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 4
 	},
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "OV" = (
 /obj/effect/floor_decal/grass_edge,
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "Pa" = (
 /obj/effect/floor_decal/grass_edge,
 /obj/structure/lightpost,
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "Pf" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
@@ -713,13 +717,13 @@
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "Pr" = (
 /turf/level_border,
 /area/space/osirisdebrisfield/unexplored)
 "Qd" = (
 /turf/simulated/floor/fey/forest_grass,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "Ry" = (
 /obj/machinery/door/airlock/glass_external/public,
 /obj/map_helper/airlock/door/ext_door,
@@ -728,7 +732,7 @@
 	master_tag = "memorial_docks_1"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "RA" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
@@ -743,44 +747,44 @@
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "RO" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "Sy" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 1
 	},
 /turf/simulated/floor/bmarble,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "Tr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
 /turf/simulated/wall/r_wall,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "TD" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 5
 	},
 /turf/simulated/floor/wood/indoors,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "TT" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "TZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
 /obj/machinery/light/poi,
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "Uc" = (
 /obj/effect/shuttle_landmark/automatic{
 	landmark_tag = "memorial_docks_2"
@@ -792,20 +796,20 @@
 	dir = 4
 	},
 /turf/simulated/floor/bmarble,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "VL" = (
 /turf/simulated/floor,
 /area/space/osirisdebrisfield/unexplored)
 "WS" = (
 /obj/structure/flora/grass/event/sparse_grass1,
 /turf/simulated/floor/fey/forest_grass,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "XQ" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "Ye" = (
 /obj/effect/shuttle_landmark/automatic,
 /turf/space/basic,
@@ -814,7 +818,7 @@
 /obj/structure/flora/grass/event/full_grass1,
 /obj/effect/floor_decal/grass_edge,
 /turf/simulated/floor/wood/indoors,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "Ze" = (
 /obj/machinery/door/airlock/glass_external/public,
 /obj/map_helper/airlock/door/ext_door,
@@ -823,20 +827,20 @@
 	pixel_x = 22
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "Zi" = (
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/wall/r_wall,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "Zo" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 6
 	},
 /turf/simulated/floor/wood/indoors,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 "ZH" = (
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/space/osirisdebrisfield/memorial)
+/area/osirisdebrisfield/memorial)
 
 (1,1,1) = {"
 rM
@@ -5812,19 +5816,19 @@ yD
 yD
 yD
 yD
-yD
-aZ
-db
-db
-db
-db
-db
-db
-db
-db
 db
 aZ
-yD
+db
+db
+db
+db
+db
+db
+db
+db
+db
+aZ
+db
 yD
 yD
 yD
@@ -6004,14 +6008,8 @@ yD
 yD
 yD
 yD
-yD
 db
 db
-yD
-yD
-yD
-yD
-yD
 db
 yD
 yD
@@ -6019,8 +6017,14 @@ yD
 yD
 yD
 db
-db
 yD
+yD
+yD
+yD
+yD
+db
+db
+db
 yD
 yD
 yD
@@ -6196,16 +6200,8 @@ yD
 yD
 yD
 yD
-yD
 db
 db
-yD
-yD
-yD
-yD
-yD
-yD
-yD
 db
 yD
 yD
@@ -6215,8 +6211,16 @@ yD
 yD
 yD
 db
-db
 yD
+yD
+yD
+yD
+yD
+yD
+yD
+db
+db
+db
 yD
 yD
 yD
@@ -6388,31 +6392,31 @@ yD
 yD
 yD
 yD
-yD
-aZ
-db
-yD
-yD
-yD
-yD
-yD
-yD
-yD
-yD
-yD
-db
-yD
-yD
-yD
-yD
-yD
-yD
-yD
-yD
-yD
 db
 aZ
+db
 yD
+yD
+yD
+yD
+yD
+yD
+yD
+yD
+yD
+db
+yD
+yD
+yD
+yD
+yD
+yD
+yD
+yD
+yD
+db
+aZ
+db
 yD
 yD
 yD
@@ -6580,20 +6584,8 @@ yD
 yD
 yD
 yD
-yD
 db
 db
-yD
-yD
-yD
-yD
-yD
-yD
-yD
-yD
-yD
-yD
-yD
 db
 yD
 yD
@@ -6607,8 +6599,20 @@ yD
 yD
 yD
 db
-db
 yD
+yD
+yD
+yD
+yD
+yD
+yD
+yD
+yD
+yD
+yD
+db
+db
+db
 yD
 yD
 yD
@@ -6772,22 +6776,8 @@ yD
 yD
 yD
 yD
-yD
 db
 db
-yD
-yD
-yD
-yD
-yD
-yD
-yD
-yD
-yD
-yD
-yD
-yD
-yD
 db
 yD
 yD
@@ -6803,8 +6793,22 @@ yD
 yD
 yD
 db
-db
 yD
+yD
+yD
+yD
+yD
+yD
+yD
+yD
+yD
+yD
+yD
+yD
+yD
+db
+db
+db
 yD
 yD
 yD
@@ -7159,7 +7163,7 @@ yD
 yD
 yD
 yD
-yD
+db
 db
 yD
 yD
@@ -7193,7 +7197,7 @@ yD
 yD
 yD
 db
-yD
+db
 yD
 yD
 yD
@@ -7546,7 +7550,7 @@ yD
 yD
 yD
 yD
-yD
+db
 db
 yD
 yD
@@ -7582,7 +7586,7 @@ yD
 yD
 yD
 db
-yD
+db
 yD
 yD
 yD
@@ -7933,7 +7937,7 @@ yD
 yD
 yD
 yD
-yD
+db
 db
 yD
 yD
@@ -7971,7 +7975,7 @@ yD
 yD
 yD
 db
-yD
+db
 yD
 yD
 yD
@@ -8320,7 +8324,7 @@ yD
 yD
 yD
 yD
-yD
+db
 db
 yD
 yD
@@ -8360,7 +8364,7 @@ yD
 yD
 yD
 db
-yD
+db
 yD
 yD
 yD
@@ -8707,7 +8711,7 @@ yD
 yD
 yD
 yD
-yD
+db
 db
 yD
 yD
@@ -8749,7 +8753,7 @@ yD
 yD
 yD
 hE
-yD
+db
 yD
 yD
 yD
@@ -10841,7 +10845,7 @@ yD
 yD
 yD
 yD
-yD
+db
 db
 yD
 yD
@@ -10883,7 +10887,7 @@ yD
 yD
 yD
 db
-yD
+db
 yD
 yD
 yD
@@ -11230,7 +11234,7 @@ yD
 yD
 yD
 yD
-yD
+db
 db
 yD
 yD
@@ -11270,7 +11274,7 @@ yD
 yD
 yD
 db
-yD
+db
 yD
 yD
 yD
@@ -11619,7 +11623,7 @@ yD
 yD
 yD
 yD
-yD
+db
 db
 yD
 yD
@@ -11657,7 +11661,7 @@ yD
 yD
 yD
 db
-yD
+db
 yD
 yD
 yD
@@ -12008,7 +12012,7 @@ yD
 yD
 yD
 yD
-yD
+db
 db
 yD
 yD
@@ -12044,7 +12048,7 @@ yD
 yD
 yD
 db
-yD
+db
 yD
 yD
 yD
@@ -12397,7 +12401,7 @@ yD
 yD
 yD
 yD
-yD
+db
 db
 yD
 yD
@@ -12431,7 +12435,7 @@ yD
 yD
 yD
 db
-yD
+db
 yD
 yD
 yD
@@ -12786,7 +12790,7 @@ yD
 yD
 yD
 yD
-yD
+db
 db
 hE
 yD
@@ -12818,7 +12822,7 @@ yD
 yD
 db
 db
-yD
+db
 yD
 yD
 yD
@@ -12982,20 +12986,8 @@ yD
 yD
 yD
 yD
-yD
 db
 db
-yD
-yD
-yD
-yD
-yD
-yD
-yD
-yD
-yD
-yD
-yD
 db
 yD
 yD
@@ -13009,8 +13001,20 @@ yD
 yD
 yD
 db
-db
 yD
+yD
+yD
+yD
+yD
+yD
+yD
+yD
+yD
+yD
+yD
+db
+db
+db
 yD
 yD
 yD
@@ -13178,31 +13182,31 @@ yD
 yD
 yD
 yD
-yD
-aZ
-db
-yD
-yD
-yD
-yD
-yD
-yD
-yD
-yD
-yD
-db
-yD
-yD
-yD
-yD
-yD
-yD
-yD
-yD
-yD
 db
 aZ
+db
 yD
+yD
+yD
+yD
+yD
+yD
+yD
+yD
+yD
+db
+yD
+yD
+yD
+yD
+yD
+yD
+yD
+yD
+yD
+db
+aZ
+db
 yD
 yD
 yD
@@ -13374,16 +13378,8 @@ yD
 yD
 yD
 yD
-yD
 db
 db
-yD
-yD
-yD
-yD
-yD
-yD
-yD
 db
 yD
 yD
@@ -13393,8 +13389,16 @@ yD
 yD
 yD
 db
-db
 yD
+yD
+yD
+yD
+yD
+yD
+yD
+db
+db
+db
 yD
 yD
 yD
@@ -13570,14 +13574,8 @@ yD
 yD
 yD
 yD
-yD
 db
 db
-yD
-yD
-yD
-yD
-yD
 db
 yD
 yD
@@ -13585,8 +13583,14 @@ yD
 yD
 yD
 db
-db
 yD
+yD
+yD
+yD
+yD
+db
+db
+db
 yD
 yD
 yD
@@ -13766,7 +13770,7 @@ yD
 yD
 yD
 yD
-yD
+db
 aZ
 db
 db
@@ -13778,7 +13782,7 @@ db
 db
 hE
 aZ
-yD
+db
 yD
 yD
 yD
