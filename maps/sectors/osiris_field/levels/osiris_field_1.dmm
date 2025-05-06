@@ -102,6 +102,12 @@
 	},
 /turf/simulated/floor/fey/forest_grass,
 /area/space/osirisdebrisfield/memorial)
+"eV" = (
+/obj/effect/shuttle_landmark/automatic{
+	landmark_tag = "memorial_docks_4"
+	},
+/turf/space/basic,
+/area/space)
 "fv" = (
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/tiled/techfloor,
@@ -472,6 +478,12 @@
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/space/osirisdebrisfield/memorial)
+"Ca" = (
+/obj/effect/shuttle_landmark/automatic{
+	landmark_tag = "memorial_docks_3"
+	},
+/turf/space/basic,
+/area/space)
 "Co" = (
 /obj/effect/floor_decal/grass_edge,
 /obj/structure/table/bench/wooden,
@@ -481,6 +493,12 @@
 /obj/structure/flora/grass/event/sparse_grass2,
 /turf/simulated/floor/fey/forest_grass,
 /area/space/osirisdebrisfield/memorial)
+"CI" = (
+/obj/effect/shuttle_landmark/automatic{
+	landmark_tag = "memorial_docks_1"
+	},
+/turf/space/basic,
+/area/space)
 "Da" = (
 /turf/simulated/floor,
 /area/space)
@@ -562,6 +580,18 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/space/osirisdebrisfield/memorial)
+"Kj" = (
+/obj/effect/shuttle_landmark/automatic{
+	landmark_tag = "memorial_docks_6"
+	},
+/turf/space/basic,
+/area/space)
+"Kw" = (
+/obj/effect/shuttle_landmark/automatic{
+	landmark_tag = "memorial_docks_5"
+	},
+/turf/space/basic,
+/area/space)
 "LF" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
@@ -623,10 +653,6 @@
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/space/osirisdebrisfield/memorial)
-"NH" = (
-/obj/effect/shuttle_landmark/automatic,
-/turf/space/basic,
-/area/space/osirisdebrisfield/unexplored)
 "NZ" = (
 /obj/machinery/door/airlock/glass_external/public,
 /obj/map_helper/airlock/door/int_door,
@@ -732,6 +758,12 @@
 /obj/machinery/light/poi,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/space/osirisdebrisfield/memorial)
+"Uc" = (
+/obj/effect/shuttle_landmark/automatic{
+	landmark_tag = "memorial_docks_2"
+	},
+/turf/space/basic,
+/area/space)
 "Ud" = (
 /obj/machinery/light/poi{
 	dir = 4
@@ -8453,7 +8485,7 @@ yD
 yD
 yD
 yD
-Ye
+eV
 yD
 yD
 yD
@@ -8504,7 +8536,7 @@ yD
 yD
 yD
 yD
-Ye
+CI
 yD
 yD
 yD
@@ -9610,7 +9642,7 @@ yD
 yD
 yD
 yD
-Ye
+Kw
 yD
 Aa
 gA
@@ -9676,7 +9708,7 @@ RA
 am
 Aa
 yD
-Ye
+Uc
 yD
 yD
 yD
@@ -10976,7 +11008,7 @@ yD
 yD
 yD
 yD
-Ye
+Kj
 yD
 yD
 yD
@@ -11027,7 +11059,7 @@ yD
 yD
 yD
 yD
-Ye
+Ca
 yD
 yD
 yD
@@ -22483,7 +22515,7 @@ rM
 rM
 rM
 rM
-NH
+rM
 rM
 rM
 rM

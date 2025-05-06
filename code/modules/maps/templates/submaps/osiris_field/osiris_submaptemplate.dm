@@ -171,32 +171,32 @@
 	allow_duplicates = FALSE
 
 datum/map_template/submap/level_specific/osirisfield/cargoshuttle2
-	name = "Cargo shuttle"
+	name = "Cargo shuttle2"
 	suffix = "cargo_shuttle2.dmm"
 	cost = 3
 	allow_duplicates = FALSE
 
 datum/map_template/submap/level_specific/osirisfield/cargoshuttle3
-	name = "Cargo shuttle"
-	suffix = "cargo_shuttle2.dmm"
+	name = "Cargo shuttle3"
+	suffix = "cargo_shuttle3.dmm"
 	cost = 3
 	allow_duplicates = FALSE
 
 /datum/map_template/submap/level_specific/osirisfield/cargovessel1
 	name = "Cargo vessel"
-	suffix = "cargo_shuttle1.dmm"
+	suffix = "cargo_vessel1.dmm"
 	cost = 3
 	allow_duplicates = FALSE
 
 datum/map_template/submap/level_specific/osirisfield/cargovessel2
-	name = "Cargo vessel"
-	suffix = "cargo_shuttle2.dmm"
+	name = "Cargo vessel2"
+	suffix = "cargo_vessel2.dmm"
 	cost = 3
 	allow_duplicates = FALSE
 
 datum/map_template/submap/level_specific/osirisfield/cargovessel3
-	name = "Cargo vessel"
-	suffix = "cargo_shuttle2.dmm"
+	name = "Cargo vessel3"
+	suffix = "cargo_vessel3.dmm"
 	cost = 3
 	allow_duplicates = FALSE
 
@@ -213,13 +213,13 @@ datum/map_template/submap/level_specific/osirisfield/pirate1
 	allow_duplicates = FALSE
 
 datum/map_template/submap/level_specific/osirisfield/pirate2
-	name = "Pirate Shuttle"
+	name = "Pirate Shuttle2"
 	suffix = "pirate_shuttle2.dmm"
 	cost = 3
 	allow_duplicates = FALSE
 
 datum/map_template/submap/level_specific/osirisfield/pirate3
-	name = "Pirate Shuttle"
+	name = "Pirate Shuttle3"
 	suffix = "pirate_shuttle3.dmm"
 	cost = 3
 	allow_duplicates = FALSE
@@ -230,7 +230,7 @@ datum/map_template/submap/level_specific/osirisfield/transport1
 	cost = 2
 
 datum/map_template/submap/level_specific/osirisfield/transport2
-	name = "Transport Shuttle"
+	name = "Transport Shuttle2"
 	suffix = "transport2.dmm"
 	cost = 2
 
