@@ -170,13 +170,13 @@
 	cost = 3
 	allow_duplicates = FALSE
 
-datum/map_template/submap/level_specific/osirisfield/cargoshuttle2
+/datum/map_template/submap/level_specific/osirisfield/cargoshuttle2
 	name = "Cargo shuttle2"
 	suffix = "cargo_shuttle2.dmm"
 	cost = 3
 	allow_duplicates = FALSE
 
-datum/map_template/submap/level_specific/osirisfield/cargoshuttle3
+/datum/map_template/submap/level_specific/osirisfield/cargoshuttle3
 	name = "Cargo shuttle3"
 	suffix = "cargo_shuttle3.dmm"
 	cost = 3
@@ -188,48 +188,48 @@ datum/map_template/submap/level_specific/osirisfield/cargoshuttle3
 	cost = 3
 	allow_duplicates = FALSE
 
-datum/map_template/submap/level_specific/osirisfield/cargovessel2
+/datum/map_template/submap/level_specific/osirisfield/cargovessel2
 	name = "Cargo vessel2"
 	suffix = "cargo_vessel2.dmm"
 	cost = 3
 	allow_duplicates = FALSE
 
-datum/map_template/submap/level_specific/osirisfield/cargovessel3
+/datum/map_template/submap/level_specific/osirisfield/cargovessel3
 	name = "Cargo vessel3"
 	suffix = "cargo_vessel3.dmm"
 	cost = 3
 	allow_duplicates = FALSE
 
-datum/map_template/submap/level_specific/osirisfield/maglev
+/datum/map_template/submap/level_specific/osirisfield/maglev
 	name = "Maglev shutle"
 	suffix = "maglev_shuttle.dmm"
 	cost = -1
 	allow_duplicates = FALSE
 
-datum/map_template/submap/level_specific/osirisfield/pirate1
+/datum/map_template/submap/level_specific/osirisfield/pirate1
 	name = "Pirate Shuttle"
 	suffix = "pirate_shuttle1.dmm"
 	cost = 3
 	allow_duplicates = FALSE
 
-datum/map_template/submap/level_specific/osirisfield/pirate2
+/datum/map_template/submap/level_specific/osirisfield/pirate2
 	name = "Pirate Shuttle2"
 	suffix = "pirate_shuttle2.dmm"
 	cost = 3
 	allow_duplicates = FALSE
 
-datum/map_template/submap/level_specific/osirisfield/pirate3
+/datum/map_template/submap/level_specific/osirisfield/pirate3
 	name = "Pirate Shuttle3"
 	suffix = "pirate_shuttle3.dmm"
 	cost = 3
 	allow_duplicates = FALSE
 
-datum/map_template/submap/level_specific/osirisfield/transport1
+/datum/map_template/submap/level_specific/osirisfield/transport1
 	name = "Transport Shuttle"
 	suffix = "transport1.dmm"
 	cost = 2
 
-datum/map_template/submap/level_specific/osirisfield/transport2
+/datum/map_template/submap/level_specific/osirisfield/transport2
 	name = "Transport Shuttle2"
 	suffix = "transport2.dmm"
 	cost = 2
