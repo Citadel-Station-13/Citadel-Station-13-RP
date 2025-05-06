@@ -17,7 +17,6 @@
 		/datum/shuttle/autodock/overmap/trade/utilitymicro,
 		/datum/shuttle/autodock/overmap/trade/runabout,
 		/datum/shuttle/autodock/overmap/osiris/scavenger,
-		/datum/shuttle/autodock/overmap/trade/scavengerutilitymicro,
 	)
 
 /datum/map_level/sector/nebula_tradeport
