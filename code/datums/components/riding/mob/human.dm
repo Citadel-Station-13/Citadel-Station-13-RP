@@ -74,3 +74,6 @@
 			if(WEST)
 				if(taur_handling)
 					.[1] = -10
+
+/datum/component/riding_handler/mob/human/controllable
+	riding_handler_flags = CF_RIDING_HANDLER_EPHEMERAL|CF_RIDING_HANDLER_IS_CONTROLLABLE

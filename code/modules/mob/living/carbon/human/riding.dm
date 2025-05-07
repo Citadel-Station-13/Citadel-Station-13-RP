@@ -54,12 +54,21 @@
 	set name = "Give Reins"
 	set desc = "Give or take the person riding on you control of your movement."
 	set category = VERB_CATEGORY_IC
+	var/datum/component/riding_filter/mob/human/riding_filter = GetComponent(/datum/component/riding_filter/mob/human)
+	if(!riding_filter)
+		to_chat(src, "<span class='warning'>Your form is incompatible with being ridden</warning>")
+		return
+	if(riding_filter.handler_typepath == /datum/component/riding_handler/mob/human)
+		riding_filter.handler_typepath = /datum/component/riding_handler/mob/human/controllable
+		to_chat(src, "<span class='notice'>You can now be controlled")
+	else
+		riding_filter.handler_typepath = /datum/component/riding_handler/mob/human
 	var/datum/component/riding_handler/mob/human/riding_handler = GetComponent(/datum/component/riding_handler/mob/human)
+	to_chat(src, "<span class='notice'>You can no longer be controlled")
 	if(!riding_handler)
-		to_chat(src, "<span class='notice'>No one is riding you.</span>")
+		//No need to update the handler if it doesn't exist.
 		return
 	riding_handler.riding_handler_flags ^= CF_RIDING_HANDLER_IS_CONTROLLABLE
-	to_chat(src, "<span class='notice'>You can [(riding_handler.riding_handler_flags & CF_RIDING_HANDLER_IS_CONTROLLABLE)? "now" : "no longer"] be controlled")
 
 /mob/living/carbon/human/verb/buck_rider()
 
