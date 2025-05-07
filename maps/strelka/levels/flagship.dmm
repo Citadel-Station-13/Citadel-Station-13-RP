@@ -1808,7 +1808,7 @@
 /turf/simulated/wall/r_wall,
 /area/centcom/specops/dock)
 "fe" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/specops/cockpit)
 "ff" = (
@@ -4293,7 +4293,7 @@
 /area/centcom/restaurant)
 "lP" = (
 /obj/structure/fans/tiny,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/reinforced/full/firelocks,
 /obj/machinery/door/blast/regular/open{
 	id = "emergency_shuttle_lockdown";
 	name = "Emergency Shuttle Blast Door"
@@ -7793,7 +7793,7 @@
 /turf/unsimulated/wall/planetary/facility_wall,
 /area/centcom/security)
 "uQ" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /turf/unsimulated/floor{
 	name = "plating"
 	},
@@ -18934,7 +18934,7 @@
 /turf/simulated/wall/r_wall,
 /area/centcom/control)
 "Xd" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/centcom/specops/dock)
 "Xe" = (
@@ -19997,8 +19997,8 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
 "ZK" = (
-/obj/spawner/window/low_wall/full/firelocks,
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /turf/unsimulated/floor{
 	name = "plating"
 	},

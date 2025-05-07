@@ -394,7 +394,7 @@
 /area/strelka/shipbase/deck3/cargo)
 "bL" = (
 /obj/machinery/door/blast/strelka/blockade,
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "rdtint"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -998,7 +998,7 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/bridge/md)
 "es" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /obj/structure/curtain/open/black,
 /obj/effect/paint_stripe/navy,
 /turf/simulated/floor/tiled/techfloor,
@@ -1869,7 +1869,7 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/medical/psy)
 "hi" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3/science/main)
 "hj" = (
@@ -2715,7 +2715,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo)
 "kb" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3)
 "kc" = (
@@ -2919,7 +2919,7 @@
 	id = "test_chamber_blast";
 	name = "Testing Chamber Blast Door"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/science/test)
 "lc" = (
@@ -3103,7 +3103,7 @@
 	},
 /area/strelka/shipbase/deck3/science/servers)
 "lF" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /obj/structure/curtain/open/shower/medical,
 /obj/effect/paint/babyblue,
 /turf/simulated/floor/wood/indoors,
@@ -3356,7 +3356,7 @@
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck3)
 "mv" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/steel/airless,
 /area/strelka/shipbase/deck3/mininghangar)
@@ -3508,7 +3508,7 @@
 /turf/simulated/floor/tiled/monotechmaint,
 /area/strelka/shipbase/deck3/science/xenobio)
 "mT" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /obj/machinery/vending/fishing,
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck3)
@@ -3934,7 +3934,7 @@
 /turf/simulated/open,
 /area/strelka/shipbase/deck3/science/secondary)
 "os" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo/mining)
 "ot" = (
@@ -4207,7 +4207,7 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "pp" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/event/grass/grass1,
 /area/strelka/shipbase/deck3)
 "pq" = (
@@ -4249,7 +4249,7 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck3/science/robotics)
 "pu" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3/cargo/reception)
 "pv" = (
@@ -4269,7 +4269,7 @@
 /turf/simulated/floor/reinforced/lythios43c,
 /area/strelka/shipbase/deck3/cargo/hangar)
 "pz" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
 /obj/effect/paint_stripe/navy,
 /turf/simulated/floor/tiled/asteroid_steel,
@@ -4939,7 +4939,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3/cargo/reception)
 "rO" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck3)
 "rP" = (
@@ -4993,7 +4993,7 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck3/science/xenobio)
 "sc" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo/qm)
 "sd" = (
@@ -5505,7 +5505,7 @@
 "tU" = (
 /obj/structure/curtain/open/bed,
 /obj/effect/paint/purplegray,
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "rdtint"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -5736,7 +5736,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/main)
 "uL" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo/mining)
 "uM" = (
@@ -5870,7 +5870,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical)
 "vh" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo/hangar)
@@ -6289,7 +6289,7 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/medical/room2)
 "wR" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
 /obj/effect/paint_stripe/navy,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -7258,7 +7258,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science)
 "zJ" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /obj/structure/curtain/open/shower/medical,
 /obj/effect/paint/babyblue,
 /turf/simulated/floor/wood/indoors,
@@ -7492,7 +7492,7 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "AF" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /obj/effect/paint/purplegray,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/main)
@@ -7536,7 +7536,7 @@
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/maintenance/medical)
 "AN" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/tiled/techfloor,
@@ -7660,7 +7660,7 @@
 /turf/simulated/floor,
 /area/strelka/shipbase/deck3/maintenance/medical)
 "Bh" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/science/xenobio)
@@ -7835,7 +7835,7 @@
 /turf/simulated/floor/carpet/blue,
 /area/strelka/shipbase/deck3/bridge/blueshield/room)
 "BI" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /obj/effect/paint/purplegray,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/secondary)
@@ -8763,7 +8763,7 @@
 	id = "test_chamber_blast";
 	name = "Testing Chamber Blast Door"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/science/test)
@@ -9058,7 +9058,7 @@
 "FI" = (
 /obj/structure/curtain/open/bed,
 /obj/effect/paint/babyblue,
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "cmotint"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -9383,7 +9383,7 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/medical/surgery)
 "GX" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo/mining)
@@ -9637,7 +9637,7 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/medical/psy)
 "HY" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
 /obj/effect/paint_stripe/navy,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -9834,7 +9834,7 @@
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck3/bridge/rd)
 "IG" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/strelka/shipbase/deck3/cargo/qm)
 "IH" = (
@@ -9865,7 +9865,7 @@
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/bridge)
 "IJ" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
 /obj/effect/paint_stripe/navy,
 /turf/simulated/floor/tiled/monowhite,
@@ -10562,7 +10562,7 @@
 /area/strelka/shipbase/deck3/science/main)
 "Ls" = (
 /obj/machinery/door/blast/strelka/blockade,
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "cmotint"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -11804,7 +11804,7 @@
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/science/xenobio)
 "Qv" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/strelka/shipbase/deck3)
 "Qw" = (
@@ -12920,7 +12920,7 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/strelka/shipbase/deck3/science/main)
 "Ux" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /obj/effect/paint/babyblue,
 /turf/simulated/floor/tiled/monowhite,
 /area/strelka/shipbase/deck3/medical/main)
@@ -13258,7 +13258,7 @@
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/science/xenobio)
 "VJ" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /obj/structure/table/carbon/reinforced,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/main)
@@ -13588,7 +13588,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/strelka/shipbase/deck3/science/test)
 "WG" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/strelka/shipbase/deck3/cargo/portal)
 "WJ" = (
@@ -13701,7 +13701,7 @@
 /turf/simulated/floor/wood/broken,
 /area/strelka/shipbase/deck3)
 "Xh" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/tiled/monowhite,
 /area/strelka/shipbase/deck3/medical/main)
 "Xk" = (
@@ -13851,7 +13851,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/xenobotany)
 "XH" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/secondary)
 "XO" = (
@@ -14114,7 +14114,7 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck3/science/robotics)
 "YW" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /obj/structure/curtain/open/black,
 /obj/effect/paint_stripe/navy,
 /turf/simulated/floor/tiled/techfloor,
@@ -14276,7 +14276,7 @@
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/maintenance/cargo)
 "ZF" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/tiled/techfloor,

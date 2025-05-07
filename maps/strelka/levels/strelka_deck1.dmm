@@ -659,7 +659,7 @@
 /turf/simulated/floor,
 /area/shuttle/civvie/strelka)
 "dp" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/effect/paint/offwhite,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
@@ -1016,7 +1016,7 @@
 "eW" = (
 /obj/structure/railing,
 /obj/structure/window/basic,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/effect/paint/palebottlegreen,
 /obj/structure/railing,
 /turf/simulated/wall/r_wall,
@@ -1148,7 +1148,7 @@
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/shipbase/deck1/fighterbaysec)
 "fQ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/shipbase/deck1/hangardeck)
@@ -1707,7 +1707,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1/bridge/balista)
 "ji" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck1/warden)
 "jn" = (
@@ -2083,7 +2083,7 @@
 /turf/simulated/floor/carpet/patterened/blue,
 /area/strelka/shipbase/deck1/pilot)
 "ls" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/effect/paint/darkred,
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -2352,7 +2352,7 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck1/firingrange)
 "ml" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1/pilot)
 "mm" = (
@@ -2397,7 +2397,7 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/armory2)
 "mu" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/railing,
 /obj/structure/window/basic,
 /obj/effect/paint/palebottlegreen,
@@ -2423,7 +2423,7 @@
 /area/strelka/shipbase/deck1/bridge/balista)
 "mF" = (
 /obj/effect/paint/palebottlegreen,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
 "mH" = (
@@ -2686,7 +2686,7 @@
 /turf/simulated/floor/tiled/monodark,
 /area/shuttle/civvie/strelka)
 "nR" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/effect/paint/darkred,
 /obj/machinery/door/blast/shutters{
 	density = 0;
@@ -3028,7 +3028,7 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/hangardeck)
 "qc" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techmaint,
 /area/strelka/shipbase/deck1/gateway)
 "qi" = (
@@ -3065,7 +3065,7 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck1/firingrange)
 "qp" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck1/firingrange)
@@ -4839,7 +4839,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/strelka/shipbase/deck1/gateway)
 "AD" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/machinery/door/blast/shutters{
 	id = "main_ext_shutter"
 	},
@@ -4859,7 +4859,7 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/armory3)
 "AS" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1)
 "AV" = (
@@ -4962,7 +4962,7 @@
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/shipbase/deck1/fighterbaysec)
 "Bz" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck1/bridge/balista)
 "BB" = (
@@ -5362,7 +5362,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1/bridge/balista)
 "DT" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/effect/paint/darkred,
 /obj/machinery/door/blast/shutters{
 	density = 0;
@@ -6515,7 +6515,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/shipbase/deck1/fighterbay)
 "JO" = (
@@ -7197,7 +7197,7 @@
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/fighterbay)
 "NN" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck1/warden)
 "NR" = (
@@ -7370,7 +7370,7 @@
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/shipbase/deck1/fighterbay)
 "Ot" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1/pilot/eva)
@@ -7480,7 +7480,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck1)
 "Pj" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/effect/paint/darkred,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck1/warden)
@@ -7680,7 +7680,7 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1)
 "Qc" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/bridge/balista)
 "Qe" = (
@@ -7846,7 +7846,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1/maintenance/civ)
 "QP" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/effect/paint/palebottlegreen,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
@@ -7876,7 +7876,7 @@
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/hangardeck)
 "Re" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck1/toolstorage)
 "Rh" = (
@@ -7902,7 +7902,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck1)
 "Rm" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck1/pilot)
 "Rn" = (
@@ -8033,14 +8033,14 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1/pilot/eva)
 "Se" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/cable/blue{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck1/maintenance/civ)
 "Sf" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/civhangar)
 "Sg" = (
@@ -8245,7 +8245,7 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck1/checkpoint)
 "Tm" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/checkpoint)
 "Tp" = (
@@ -9296,7 +9296,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck1)
 "Yk" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck1/bridge/balista)
 "Yl" = (
@@ -9315,7 +9315,7 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "Yp" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/airless,
 /area/strelka/shipbase/deck1/bridge/balista)
 "Yq" = (
@@ -9587,7 +9587,7 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck1/firingrange)
 "ZP" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/civhangar)
 "ZW" = (
