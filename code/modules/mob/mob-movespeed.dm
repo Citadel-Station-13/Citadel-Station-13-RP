@@ -27,28 +27,27 @@
 /**
  * Adds a movespeed modifier to a mob.
  *
+ * * Any existing ones will be overridden.
+ * * If a variable modifier's typepath is passed in, a new one will be made no matter what,
+ *   throwing out any old modifier.
+ *
  * @params
- * * modifier - typepath, or instance. text ID is only usable if its a hardcoded modifier.
+ * * modifier - typepath, or instance.
  * * skip_update - do not update movespeed immediately
  *
  * @return TRUE / FALSE on success / failure
  */
 /mob/proc/add_movespeed_modifier(datum/movespeed_modifier/modifier, skip_update)
-	if(ispath(type_or_datum))
-		if(!initial(type_or_datum.variable))
-			type_or_datum = get_cached_movespeed_modifier(type_or_datum)
-		else
-			type_or_datum = new type_or_datum
-	var/key = istext(modifier) ? modifier : modifier.id
-	#warn impl
-	var/datum/movespeed_modifier/existing = LAZYACCESS(movespeed_modifiers, key)
-	if(existing)
-		if(existing == type_or_datum)		//same thing don't need to touch
-			return TRUE
-		remove_movespeed_modifier(existing, TRUE)
+	var/datum/movespeed_modifier/resolved
+	if(modifier.variable)
+		resolved = ispath(modifier) ? new modifier : modifier
+	else
+		resolved = ispath(modifier) ? get_cached_movespeed_modifier(modifier) : modifier
+	if(movespeed_modifiers?[resolved.id])
+		remove_movespeed_modifier(resolved.id, TRUE)
 	if(length(movespeed_modifiers))
-		BINARY_INSERT(type_or_datum.id, movespeed_modifiers, /datum/movespeed_modifier, type_or_datum, priority, COMPARE_VALUE)
-	LAZYSET(movespeed_modifiers, type_or_datum.id, type_or_datum)
+		BINARY_INSERT(resolved.id, movespeed_modifiers, /datum/movespeed_modifier, resolved, priority, COMPARE_VALUE)
+	LAZYSET(movespeed_modifiers, resolved.id, resolved)
 	if(!skip_update)
 		update_movespeed()
 	return TRUE
@@ -72,6 +71,8 @@
 	return TRUE
 
 /**
+ * TODO: rewrite this comment
+ *
  * Used for variable slowdowns like hunger/health loss/etc, works somewhat like the old list-based modification adds. Returns the modifier datum if successful
  * How this SHOULD work is:
  * 1. Ensures type_id_datum one way or another refers to a /variable datum. This makes sure it can't be cached. This includes if it's already in the modification list.
@@ -79,37 +80,32 @@
  * 3. Add the datum if necessary using the regular add proc
  * 4. If any of the rest of the args are not null (see: multiplicative slowdown), modify the datum
  * 5. Update if necessary
+ *
+ * @params
+ * * modifier - typepath, instance, or id. if id, it must already exist on us. if instance, it'll be modified.
+ * * params - params to parse to modify the modifier.
+ * * skip_update - do not update movespeed immediately
+ *
+ * @return TRUE / FALSE on success / failure
  */
 /mob/proc/update_movespeed_modifier(datum/movespeed_modifier/modifier, list/params, skip_update)
+	var/datum/movespeed_modifier/editing
 	var/modified = FALSE
-	var/inject = FALSE
-	var/datum/movespeed_modifier/applying
-	if(istext(type_id_datum))
-		applying = LAZYACCESS(movespeed_modifiers, type_id_datum)
-		if(!applying)
-			CRASH("Couldn't find existing modification when provided a text ID.")
-	else if(ispath(type_id_datum))
-		if(!initial(type_id_datum.variable))
-			CRASH("Not a variable modifier")
-		applying = LAZYACCESS(movespeed_modifiers, initial(type_id_datum.id) || "[type_id_datum]")
-		if(!applying)
-			applying = new type_id_datum
-			inject = TRUE
+	if(modifier.variable)
+		editing = movespeed_modifiers?[istext(modifier) ? modifier : modifier.id]
+		if(!editing)
+			editing = ispath(modifier) ? new modifier : modifier
+			if(length(movespeed_modifiers))
+				BINARY_INSERT(editing.id, movespeed_modifiers, /datum/movespeed_modifier, editing, priority, COMPARE_VALUE)
+			LAZYSET(movespeed_modifiers, editing.id, editing)
 			modified = TRUE
 	else
-		if(!initial(type_id_datum.variable))
-			CRASH("Not a variable modifier")
-		applying = type_id_datum
-		if(!LAZYACCESS(movespeed_modifiers, applying.id))
-			inject = TRUE
-			modified = TRUE
-	if(applying.parse(params))
+		CRASH("attempted to update_movespeed_modifier on a non variable modifier.")
+	if(editing.parse(params))
 		modified = TRUE
-	if(inject)
-		add_movespeed_modifier(applying, FALSE)
-	if(update && modified)
+	if(!skip_update)
 		update_movespeed(TRUE)
-	return applying
+	return TRUE
 
 /**
  * @params
@@ -167,7 +163,7 @@
 		diff = var_value - movespeed_hyperbolic
 	. = ..()
 	if(. && slowdown_edit && isnum(diff))
-		add_or_update_variable_movespeed_modifier(
+		update_movespeed_modifier(
 			/datum/movespeed_modifier/admin_varedit,
 			params = list(
 				MOVESPEED_PARAM_MOD_HYPERBOLIC_SLOWDOWN = diff,

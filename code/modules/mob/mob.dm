@@ -1,4 +1,12 @@
 /mob
+	//* Actionspeed *//
+	/// List of action speed modifiers applying to this mob
+	/// * Lazy list, see mob_movespeed.dm
+	var/list/actionspeed_modifiers
+	/// List of action speed modifiers ignored by this mob. List -> List (id) -> List (sources)
+	/// * Lazy list, see mob_movespeed.dm
+	var/list/actionspeed_modifier_immunities
+
 	//* Impairments *//
 	/// active feign_impairment types
 	/// * lazy list
@@ -112,9 +120,9 @@
 	QDEL_NULL(physiology)
 	physiology_modifiers = null
 	// movespeed
-	movespeed_modification = null
+	movespeed_modifiers = null
 	// actionspeed
-	actionspeed_modification = null
+	actionspeed_modifiers = null
 	return QDEL_HINT_HARDDEL
 
 //* Mob List Registration *//

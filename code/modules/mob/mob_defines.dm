@@ -81,12 +81,6 @@
 	/// physiology modifiers - see physiology.dm; set to list of paths at init to initialize into instances.
 	var/list/datum/physiology_modifier/physiology_modifiers
 
-	//? Actionspeed
-	/// List of action speed modifiers applying to this mob
-	var/list/actionspeed_modification				//Lazy list, see mob_movespeed.dm
-	/// List of action speed modifiers ignored by this mob. List -> List (id) -> List (sources)
-	var/list/actionspeed_mod_immunities			//Lazy list, see mob_movespeed.dm
-
 	//? Pixel Offsets
 	/// are we shifted by the user?
 	var/shifted_pixels = FALSE

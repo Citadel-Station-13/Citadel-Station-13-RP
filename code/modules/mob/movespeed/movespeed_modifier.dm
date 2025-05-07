@@ -1,3 +1,18 @@
+
+GLOBAL_LIST_EMPTY(movespeed_modification_cache)
+
+/// Grabs a STATIC MODIFIER datum from cache. YOU MUST NEVER EDIT THESE DATUMS, OR IT WILL AFFECT ANYTHING ELSE USING IT TOO!
+/proc/get_cached_movespeed_modifier(modtype)
+	if(!ispath(modtype, /datum/movespeed_modifier))
+		CRASH("[modtype] is not a movespeed modification typepath.")
+	var/datum/movespeed_modifier/M = modtype
+	if(initial(M.variable))
+		CRASH("[modtype] is a variable modifier, and can never be cached.")
+	M = GLOB.movespeed_modification_cache[modtype]
+	if(!M)
+		M = GLOB.movespeed_modification_cache[modtype] = new modtype
+	return M
+
 /*! Movespeed modification datums.
 
 	How move speed for mobs works
@@ -54,6 +69,9 @@ Key procs
 	/// * Applies before [hyperbolic_slowdown]
 	/// * May not be 0.
 	var/mod_multiply_speed = 1
+	/// For: ADD - add this many tiles per second.
+	/// * Applies after [mod_hyperbolic_slowdown]
+	var/mod_tiles_per_second = 0
 
 	//* Calculations - Limits *//
 	/// do not allow boosting over this overall speed
@@ -64,8 +82,9 @@ Key procs
 	var/limit_tiles_per_second_min
 
 /datum/movespeed_modifier/New(id)
-	..()
-	if(!id)
+	if(!isnull(id))
+		src.id = id
+	if(!src.id)
 		CRASH("no id on movespeed modifier")
 
 /**
@@ -75,30 +94,35 @@ Key procs
   * This is so math doesn't break down when something attempts to break through the asymptote at 0 for move delay to speed.
   *
   * todo: unit test this
+  * todo: don't use `MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND` so much
   */
 /datum/movespeed_modifier/proc/apply_hyperbolic(existing, mob/target)
 	. = existing
-	if(mod_multiply_speed != /datum/movespeed_modifier::mod_multiply_speed)
-		. /= mod_multiply_speed
-	if(mod_hyperbolic_slowdown != /datum/movespeed_modifier::mod_hyperbolic_slowdown)
+	if(mod_multiply_speed != 1)
+		. = mod_multiply_speed ? . / mod_multiply_speed : MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND
+	if(mod_hyperbolic_slowdown != 0)
 		. += mod_hyperbolic_slowdown
+	if(mod_tiles_per_second != 0)
+		. = . ? 10 / max(((10 / .) + mod_tiles_per_second), MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND) : 10 / mod_tiles_per_second
 	if(. == existing)
 		return
 	else
 		if(. > existing)
 			// . > existing: slower
 			if(!isnull(limit_tiles_per_second_min))
-				. = min(., 10 / limit_tiles_per_second_min)
+				. = min(., 10 / max(limit_tiles_per_second_min, MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND))
 			// ensure calculations did not speed us up
-			. = max(existing, .)
+			if(. < existing)
+				CRASH("calculations somehow reversed")
 		else
 			// . < existing: faster
 			if(!isnull(limit_tiles_per_second_add))
-				. = max(., 10 / ((10 / existing) + limit_tiles_per_second_add))
+				. = max(., 10 / (((10 / existing) + limit_tiles_per_second_add) || MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND))
 			if(!isnull(limit_tiles_per_second_max))
-				. = max(., 10 / limit_tiles_per_second_max)
-			// ensure calculations did not slow us up
-			. = min(existing, .)
+				. = max(., 10 / max(limit_tiles_per_second_max, MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND))
+			// ensure calculations did not slow us down
+			if(. > existing)
+				CRASH("calculations somehow reversed")
 
 /**
  * applies from params
@@ -114,17 +138,3 @@ Key procs
 			continue
 		. = TRUE
 		vars[key] = params[key]
-
-GLOBAL_LIST_EMPTY(movespeed_modification_cache)
-
-/// Grabs a STATIC MODIFIER datum from cache. YOU MUST NEVER EDIT THESE DATUMS, OR IT WILL AFFECT ANYTHING ELSE USING IT TOO!
-/proc/get_cached_movespeed_modifier(modtype)
-	if(!ispath(modtype, /datum/movespeed_modifier))
-		CRASH("[modtype] is not a movespeed modification typepath.")
-	var/datum/movespeed_modifier/M = modtype
-	if(initial(M.variable))
-		CRASH("[modtype] is a variable modifier, and can never be cached.")
-	M = GLOB.movespeed_modification_cache[modtype]
-	if(!M)
-		M = GLOB.movespeed_modification_cache[modtype] = new modtype
-	return M
