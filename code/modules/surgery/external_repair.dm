@@ -16,7 +16,7 @@
 		return 0
 	if (!hasorgans(target))
 		return 0
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	if (affected == null)
 		return 0
 	if (affected.is_stump())
@@ -47,20 +47,20 @@
 
 /datum/surgery_step/repairflesh/scan_injury/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(..())
-		var/obj/item/organ/external/affected = target.get_organ(target_zone)
+		var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 		if(affected.burn_stage || affected.brute_stage)
 			return 0
 		return 1
 	return 0
 
 /datum/surgery_step/repairflesh/scan_injury/begin_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("<span class='notice'>[user] begins scanning [target]'s [affected] with \the [tool].</span>", \
 	"<span class='notice'>You begin scanning [target]'s [affected] with \the [tool].</span>")
 	..()
 
 /datum/surgery_step/repairflesh/scan_injury/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("<span class='notice'>[user] finishes scanning [target]'s [affected].</span>", \
 	"<span class='notice'>You finish scanning [target]'s [affected].</span>")
 	if(affected.brute_dam)
@@ -73,7 +73,7 @@
 		affected.burn_stage = max(1, affected.burn_stage)
 
 /datum/surgery_step/repairflesh/scan_injury/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("<span class='warning'>[user]'s hand slips, dropping \the [tool] onto [target]'s [affected]!</span>" , \
 	"<span class='warning'>Your hand slips, dropping \the [tool] onto [target]'s [affected]!</span>" )
 	affected.create_wound(WOUND_TYPE_BRUISE, 10)
@@ -100,14 +100,14 @@
 
 /datum/surgery_step/repairflesh/repair_burns/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(..())
-		var/obj/item/organ/external/affected = target.get_organ(target_zone)
+		var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 		if(affected.burn_stage < 1 || !(affected.burn_dam))
 			return 0
 		return 1
 	return 0
 
 /datum/surgery_step/repairflesh/repair_burns/begin_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	if(istype(tool, /obj/item/duct_tape_roll) || istype(tool, /obj/item/barrier_tape_roll))
 		user.visible_message("<span class='warning'>[user] begins taping up [target]'s [affected] with \the [tool].</span>", \
 	"<span class='notice'>You begin taping up [target]'s [affected] with \the [tool].</span>")
@@ -121,7 +121,7 @@
 	..()
 
 /datum/surgery_step/repairflesh/repair_burns/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	if(istype(tool, /obj/item/duct_tape_roll) || istype(tool, /obj/item/barrier_tape_roll))
 		user.visible_message("<span class='notice'>[user] finishes taping up [target]'s [affected] with \the [tool].</span>", \
 	"<span class='notice'>You finish taping up [target]'s [affected] with \the [tool].</span>")
@@ -135,7 +135,7 @@
 	..()
 
 /datum/surgery_step/repairflesh/repair_burns/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("<span class='danger'>[user]'s hand slips, tearing up [target]'s [affected] with \the [tool].</span>", \
 	"<span class='danger'>Your hand slips, tearing up [target]'s [affected] with \the [tool].</span>")
 	affected.create_wound(WOUND_TYPE_BRUISE, 10)
@@ -170,14 +170,14 @@
 
 /datum/surgery_step/repairflesh/repair_brute/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(..())
-		var/obj/item/organ/external/affected = target.get_organ(target_zone)
+		var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 		if(affected.brute_stage < 1 || !(affected.brute_dam))
 			return 0
 		return 1
 	return 0
 
 /datum/surgery_step/repairflesh/repair_brute/begin_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	if(istype(tool, /obj/item/duct_tape_roll) || istype(tool, /obj/item/barrier_tape_roll))
 		user.visible_message("<span class='warning'>[user] begins taping up [target]'s [affected] with \the [tool].</span>", \
 	"<span class='notice'>You begin taping up [target]'s [affected] with \the [tool].</span>")
@@ -191,7 +191,7 @@
 	..()
 
 /datum/surgery_step/repairflesh/repair_brute/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	if(istype(tool, /obj/item/duct_tape_roll) || istype(tool, /obj/item/barrier_tape_roll))
 		user.visible_message("<span class='notice'>[user] finishes taping up [target]'s [affected] with \the [tool].</span>", \
 	"<span class='notice'>You finish taping up [target]'s [affected] with \the [tool].</span>")
@@ -205,7 +205,7 @@
 	..()
 
 /datum/surgery_step/repairflesh/repair_brute/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("<span class='danger'>[user]'s hand slips, tearing up [target]'s [affected] with \the [tool].</span>", \
 	"<span class='danger'>Your hand slips, tearing up [target]'s [affected] with \the [tool].</span>")
 	affected.create_wound(WOUND_TYPE_BRUISE, 10)

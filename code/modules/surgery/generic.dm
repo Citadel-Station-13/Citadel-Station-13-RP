@@ -14,7 +14,7 @@
 		return 0
 	if (!hasorgans(target))
 		return 0
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	if (affected == null)
 		return 0
 	if (affected.is_stump())
@@ -44,18 +44,18 @@
 
 /datum/surgery_step/generic/cut_open/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(..())
-		var/obj/item/organ/external/affected = target.get_organ(target_zone)
+		var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 		return affected && affected.open == 0 && target_zone != O_MOUTH
 
 /datum/surgery_step/generic/cut_open/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("[user] starts the incision on [target]'s [affected.name] with \the [tool].", \
 	"You start the incision on [target]'s [affected.name] with \the [tool].")
 	target.custom_pain("You feel a horrible pain as if from a sharp knife in your [affected.name]!", 40)
 	..()
 
 /datum/surgery_step/generic/cut_open/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("<font color=#4F49AF>[user] has made an incision on [target]'s [affected.name] with \the [tool].</font>", \
 	"<font color=#4F49AF>You have made an incision on [target]'s [affected.name] with \the [tool].</font>",)
 	affected.open = 1
@@ -66,7 +66,7 @@
 	affected.create_wound(WOUND_TYPE_CUT, 1)
 
 /datum/surgery_step/generic/cut_open/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, slicing open [target]'s [affected.name] in the wrong place with \the [tool]!</font>", \
 	"<font color='red'>Your hand slips, slicing open [target]'s [affected.name] in the wrong place with \the [tool]!</font>")
 	affected.create_wound(WOUND_TYPE_CUT, 10)
@@ -91,18 +91,18 @@
 
 /datum/surgery_step/generic/cut_with_laser/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(..())
-		var/obj/item/organ/external/affected = target.get_organ(target_zone)
+		var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 		return affected && affected.open == 0 && target_zone != O_MOUTH
 
 /datum/surgery_step/generic/cut_with_laser/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("[user] starts the bloodless incision on [target]'s [affected.name] with \the [tool].", \
 	"You start the bloodless incision on [target]'s [affected.name] with \the [tool].")
 	target.custom_pain("You feel a horrible, searing pain in your [affected.name]!", 50)
 	..()
 
 /datum/surgery_step/generic/cut_with_laser/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("<font color=#4F49AF>[user] has made a bloodless incision on [target]'s [affected.name] with \the [tool].</font>", \
 	"<font color=#4F49AF>You have made a bloodless incision on [target]'s [affected.name] with \the [tool].</font>",)
 	//Could be cleaner ...
@@ -113,7 +113,7 @@
 	spread_germs_to_organ(affected, user)
 
 /datum/surgery_step/generic/cut_with_laser/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips as the blade sputters, searing a long gash in [target]'s [affected.name] with \the [tool]!</font>", \
 	"<font color='red'>Your hand slips as the blade sputters, searing a long gash in [target]'s [affected.name] with \the [tool]!</font>")
 	affected.create_wound(WOUND_TYPE_CUT, 7.5)
@@ -137,18 +137,18 @@
 
 /datum/surgery_step/generic/incision_manager/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(..())
-		var/obj/item/organ/external/affected = target.get_organ(target_zone)
+		var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 		return affected && affected.open == 0 && target_zone != O_MOUTH
 
 /datum/surgery_step/generic/incision_manager/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("[user] starts to construct a prepared incision on and within [target]'s [affected.name] with \the [tool].", \
 	"You start to construct a prepared incision on and within [target]'s [affected.name] with \the [tool].")
 	target.custom_pain("You feel a horrible, searing pain in your [affected.name] as it is pushed apart!", 50)
 	..()
 
 /datum/surgery_step/generic/incision_manager/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("<font color=#4F49AF>[user] has constructed a prepared incision on and within [target]'s [affected.name] with \the [tool].</font>", \
 	"<font color=#4F49AF>You have constructed a prepared incision on and within [target]'s [affected.name] with \the [tool].</font>",)
 	affected.open = 1
@@ -161,7 +161,7 @@
 	affected.open = 2
 
 /datum/surgery_step/generic/incision_manager/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand jolts as the system sparks, ripping a gruesome hole in [target]'s [affected.name] with \the [tool]!</font>", \
 	"<font color='red'>Your hand jolts as the system sparks, ripping a gruesome hole in [target]'s [affected.name] with \the [tool]!</font>")
 	affected.create_wound(WOUND_TYPE_CUT, 20)
@@ -186,25 +186,25 @@
 
 /datum/surgery_step/generic/clamp_bleeders/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(..())
-		var/obj/item/organ/external/affected = target.get_organ(target_zone)
+		var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 		return affected && affected.open && (affected.status & ORGAN_BLEEDING)
 
 /datum/surgery_step/generic/clamp_bleeders/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("[user] starts clamping bleeders in [target]'s [affected.name] with \the [tool].", \
 	"You start clamping bleeders in [target]'s [affected.name] with \the [tool].")
 	target.custom_pain("The pain in your [affected.name] is maddening!", 40)
 	..()
 
 /datum/surgery_step/generic/clamp_bleeders/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("<font color=#4F49AF>[user] clamps bleeders in [target]'s [affected.name] with \the [tool].</font>",	\
 	"<font color=#4F49AF>You clamp bleeders in [target]'s [affected.name] with \the [tool].</font>")
 	affected.organ_clamp()
 	spread_germs_to_organ(affected, user)
 
 /datum/surgery_step/generic/clamp_bleeders/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, tearing blood vessals and causing massive bleeding in [target]'s [affected.name] with \the [tool]!</font>",	\
 	"<font color='red'>Your hand slips, tearing blood vessels and causing massive bleeding in [target]'s [affected.name] with \the [tool]!</font>",)
 	affected.create_wound(WOUND_TYPE_CUT, 10)
@@ -229,11 +229,11 @@
 
 /datum/surgery_step/generic/retract_skin/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(..())
-		var/obj/item/organ/external/affected = target.get_organ(target_zone)
+		var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 		return affected && affected.open == 1 //&& !(affected.status & ORGAN_BLEEDING)
 
 /datum/surgery_step/generic/retract_skin/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	var/msg = "[user] starts to pry open the incision on [target]'s [affected.name] with \the [tool]."
 	var/self_msg = "You start to pry open the incision on [target]'s [affected.name] with \the [tool]."
 	if (target_zone == BP_TORSO)
@@ -247,7 +247,7 @@
 	..()
 
 /datum/surgery_step/generic/retract_skin/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	var/msg = "<font color=#4F49AF>[user] keeps the incision open on [target]'s [affected.name] with \the [tool].</font>"
 	var/self_msg = "<font color=#4F49AF>You keep the incision open on [target]'s [affected.name] with \the [tool].</font>"
 	if (target_zone == BP_TORSO)
@@ -260,7 +260,7 @@
 	affected.open = 2
 
 /datum/surgery_step/generic/retract_skin/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	var/msg = "<font color='red'>[user]'s hand slips, tearing the edges of the incision on [target]'s [affected.name] with \the [tool]!</font>"
 	var/self_msg = "<font color='red'>Your hand slips, tearing the edges of the incision on [target]'s [affected.name] with \the [tool]!</font>"
 	if (target_zone == BP_TORSO)
@@ -292,18 +292,18 @@
 
 /datum/surgery_step/generic/cauterize/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(..())
-		var/obj/item/organ/external/affected = target.get_organ(target_zone)
+		var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 		return affected && affected.open && target_zone != O_MOUTH
 
 /datum/surgery_step/generic/cauterize/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("[user] is beginning to cauterize the incision on [target]'s [affected.name] with \the [tool]." , \
 	"You are beginning to cauterize the incision on [target]'s [affected.name] with \the [tool].")
 	target.custom_pain("Your [affected.name] is being burned!", 40)
 	..()
 
 /datum/surgery_step/generic/cauterize/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("<font color=#4F49AF>[user] cauterizes the incision on [target]'s [affected.name] with \the [tool].</font>", \
 	"<font color=#4F49AF>You cauterize the incision on [target]'s [affected.name] with \the [tool].</font>")
 	affected.open = 0
@@ -311,7 +311,7 @@
 	affected.status &= ~ORGAN_BLEEDING
 
 /datum/surgery_step/generic/cauterize/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, leaving a small burn on [target]'s [affected.name] with \the [tool]!</font>", \
 	"<font color='red'>Your hand slips, leaving a small burn on [target]'s [affected.name] with \the [tool]!</font>")
 	target.apply_damage(3, DAMAGE_TYPE_BURN, affected)
@@ -339,26 +339,26 @@
 		return 0
 	if (!hasorgans(target))
 		return 0
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	if (affected == null)
 		return 0
 	return !affected.cannot_amputate
 
 /datum/surgery_step/generic/amputate/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("[user] is beginning to amputate [target]'s [affected.name] with \the [tool]." , \
 	"You are beginning to cut through [target]'s [affected.amputation_point] with \the [tool].")
 	target.custom_pain("Your [affected.amputation_point] is being ripped apart!", 100)
 	..()
 
 /datum/surgery_step/generic/amputate/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("<font color=#4F49AF>[user] amputates [target]'s [affected.name] at the [affected.amputation_point] with \the [tool].</font>", \
 	"<font color=#4F49AF>You amputate [target]'s [affected.name] with \the [tool].</font>")
 	affected.droplimb(1,DROPLIMB_EDGE)
 
 /datum/surgery_step/generic/amputate/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, sawing through the bone in [target]'s [affected.name] with \the [tool]!</font>", \
 	"<font color='red'>Your hand slips, sawwing through the bone in [target]'s [affected.name] with \the [tool]!</font>")
 	affected.create_wound(WOUND_TYPE_CUT, 30)

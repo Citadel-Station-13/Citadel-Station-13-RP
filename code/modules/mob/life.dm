@@ -16,11 +16,17 @@
 
 	. = SEND_SIGNAL(src, COMSIG_MOB_ON_LIFE, seconds, times_fired)
 
+	var/tick_types = LIFE_TICK_BIOLOGICAL | LIFE_TICK_PHYSICAL
+
 	if(!(. & COMPONENT_INTERRUPT_PHYSICAL_LIFE))
 		PhysicalLife(seconds, times_fired)
+		tick_types &= ~LIFE_TICK_PHYSICAL
 
 	if(!(. & COMPONENT_INTERRUPT_BIOLOGICAL_LIFE))
 		BiologicalLife(seconds, times_fired)
+		tick_types &= ~LIFE_TICK_BIOLOGICAL
+
+	on_life_tick(seconds, times_fired, tick_types)
 
 	handle_modifiers(.) // Needs to be done even if in nullspace.
 
@@ -32,8 +38,16 @@
 	ability_master?.update_abilities(0, src)
 
 /**
+ * Handles what should happen on a life tick.
+ */
+/mob/proc/on_life_tick(seconds, notch, tick_types)
+	return
+
+/**
  * processes physical life processes like being on fire
  * return TRUE if deleted
+ *
+ * todo: deprecate
  *
  * always call parent and check for ..() at start - if nonzero is returned, we should halt as we got deleted or killed
  */
@@ -44,6 +58,8 @@
 /**
  * processes biological life processes like metabolism
  * return TRUE if deleted
+ *
+ * todo: deprecate
  *
  * always call parent and check for ..() at start - if nonzero is returned, we should halt as we got deleted or killed
  */
