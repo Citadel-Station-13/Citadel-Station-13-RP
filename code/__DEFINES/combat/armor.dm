@@ -81,115 +81,50 @@ GLOBAL_REAL_LIST(armor_types) = list(
 //? These are defined values so if we want to scale them nonlinearly/whatever later,
 //? we don't need to replace everything.
 
-#define ARMOR_TIER_BASELINE 0
-
-//?                              --- armor tier helpers ---
-
-/**
- * Armor barely beats a given tier. Results in little to no values changes, but the checks for beating
- * would pass.
- */
-#define ARMOR_TIER_BARELY_BEATS(other) (other + 0.001)
-/**
- * Linear tier scaling between A and B, by amount, where 1 is B, 0 is A, 0.5 is between.
- */
-#define ARMOR_TIER_BETWEEN(TIER_A, TIER_B, AMOUNT) LERP(TIER_A, TIER_B, AMOUNT)
-/**
- * Scale above a tier by an amount, where 1 is an additional tier up.
- * * 1 tier up is a decent boost in damage and penetration from the last
- * * 2 tiers up is a high boost in damage and can generally penetrate the first one semi-trivially.
- */
-#define ARMOR_TIER_ABOVE(TIER, AMOUNT) (TIER + AMOUNT)
-/**
- * Opposite of [ARMOR_TIER_BELOW]
- */
-#define ARMOR_TIER_BELOW(TIER, AMOUNT) (TIER - AMOUNT)
+#define ARMOR_TIER_FLOOR 0
+#define ARMOR_TIER_DEFAULT 3
 
 //?  -- armor tiers - melee --
 
-#define MELEE_TIER_DEFAULT MELEE_TIER_MEDIUM
+/**
+ * 0: toys
+ * 1: very light weapons
+ * 2: light weapons
+ * 3: toolboxes, batons, knives, your usual
+ * 4: heavy swords, sledgehammers, mech punches, etc
+ * 5: armor piercing / specialized weapons / eswords / etc
+ * 6: idk you got crushed by a titanium rod or something
+ * 7: hydraulic press?
+ */
 
-/**
- * toys
- */
-#define MELEE_TIER_USELESS ARMOR_TIER_0
-/**
- * very light weapons that shouldn't be used as weapons really
- */
-#define MELEE_TIER_LAUGHABLE ARMOR_TIER_1
-/**
- * light weapons
- */
-#define MELEE_TIER_LIGHT ARMOR_TIER_2
-/**
- * toolboxes, batons, knives, hammers, etc
- */
-#define MELEE_TIER_MEDIUM ARMOR_TIER_3
-/**
- * heavy swords, sledgehammers, mech punches, etc
- */
-#define MELEE_TIER_HEAVY ARMOR_TIER_4
-/**
- * armor piercing / specialized tooling
- */
-#define MELEE_TIER_EXTREME ARMOR_TIER_5
-/**
- * even heavier armor piercing
- */
-#define MELEE_TIER_UNSTOPPABLE ARMOR_TIER_6
+#define MELEE_TIER_DEFAULT 3
 
 //?  -- armor tiers - bullet --
 
-#define BULLET_TIER_DEFAULT BULLET_TIER_MEDIUM
+/**
+ * 0: toys / nerf guns
+ * 1: slingshots, bb guns, etc
+ * 2: crappy improvised real rounds
+ * 3: most pistols and basic-er weapons are here
+ * 4: heavier pistols, lighter rifles
+ * 5: rifles
+ * 6: antimaterial rifles
+ * 7: idk you got hit by a tank round
+ */
 
-/**
- * generally foam / nerf rounds
- */
-#define BULLET_TIER_USELESS ARMOR_TIER_0
-/**
- * slingshots
- */
-#define BULLET_TIER_LAUGHABLE ARMOR_TIER_1
-/**
- * improvised rounds, very low powered pistols, etc
- */
-#define BULLET_TIER_I ARMOR_TIER_2
-/**
- * most pistol rounds
- */
-#define BULLET_TIER_II ARMOR_TIER_3
-/**
- * some AP pistol rounds, some lighter rifle rounds
- */
-#define BULLET_TIER_ ARMOR_TIER_4
-/** */
-
-/// super improvised rounds / pistols / whatever.
-#define BULLET_TIER_LAUGHABLE ARMOR_TIER_BELOW
-/// pistols
-#define BULLET_TIER_LOW ARMOR_TIER_BASELINE
-/// smgs
-#define BULLET_TIER_MEDIUM ARMOR_TIER_ABOVE
-/// rifles
-#define BULLET_TIER_HIGH ARMOR_TIER_HIGH
-/// hmgs, light mech weapons
-#define BULLET_TIER_EXTREME ARMOR_TIER_OVERWHELMING
-/// heavy mech weapons
-#define BULLET_TIER_RIDICULOUS ARMOR_TIER_RIDICULOUS
+#define BULLET_TIER_DEFAULT 3
 
 //?  -- armor tiers - laser --
 
-#define LASER_TIER_DEFAULT LASER_TIER_MEDIUM
+/**
+ * 0: i don't know why there are toys for this but i guess toy guns that do damage? sunburn?
+ * 1: improvised crappy laser diodes or smth
+ * 2: relatively unfocused weapons, low grade, etc
+ * 3: most laser weapons are here
+ * 4: heavier laser rifles
+ * 5: x-ray lasers, light mech / mounted weapons
+ * 6: heavier mech weapons, pulse weapons
+ * 7: you got hit by engineering's power transmission laser
+ */
 
-/// improvised laser focis / etc
-#define LASER_TIER_LAUGHABLE ARMOR_TIER_BELOW
-/// low tier lasers
-#define LASER_TIER_LOW ARMOR_TIER_BASELINE
-/// laser carbines, energy guns, etc
-#define LASER_TIER_MEDIUM ARMOR_TIER_ABOVE
-/// x-ray rifles, snipers
-#define LASER_TIER_HIGH ARMOR_TIER_HIGH
-/// mech weapons, usualy
-#define LASER_TIER_EXTREME ARMOR_TIER_OVERWHELMING
-/// power transmission laser?
-#define LASER_TIER_RIDICULOUS ARMOR_TIER_RIDICULOUS
+#define LASER_TIER_DEFAULT 3
