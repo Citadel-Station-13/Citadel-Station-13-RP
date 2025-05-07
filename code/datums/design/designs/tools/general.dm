@@ -81,6 +81,22 @@
 		"tip" = MATERIAL_CONSTRAINT_RIGID
 	)
 
+/datum/prototype/design/tool/matdriver
+	id = "ToolMatdriver"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/tool/screwdriver/material
+	materials_base = list(
+		/datum/prototype/material/steel = 50,
+	)
+	material_costs = list(
+		"tip" = 250
+	)
+	//TESTING
+	material_constraints = list(
+		"tip" = MATERIAL_CONSTRAINT_RIGID
+	)
+
 /datum/prototype/design/tool/prybar
 	id = "ToolPrybar"
 	lathe_type = LATHE_TYPE_AUTOLATHE

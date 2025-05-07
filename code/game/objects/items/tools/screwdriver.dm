@@ -85,6 +85,22 @@
 	tool_speed = 0.75
 	random_color = FALSE
 
+/obj/item/tool/screwdriver/material
+	name = "material screwdriver"
+	desc = "A screwdriver."
+	tool_speed = 1
+	materials_base = null
+	material_parts = MAT_STEEL
+	material_costs = 250
+	random_color = FALSE
+	material_primary = "tip"
+
+/obj/item/tool/screwdriver/material/update_material_single(datum/prototype/material/material)
+	name = "[material.display_name] screwdriver"
+	color = material.icon_colour
+	tool_speed = material.tool_stats(initial_toolspeed = 1)
+	desc = "A screwdriver made from [material.display_name]. It appears to be [(1-tool_speed)*100]% faster than a standard screwdriver. Fascinating!"
+
 /obj/item/tool/screwdriver/clockwork
 	name = "clockwork screwdriver"
 	desc = "An all-brass screwdriver with what looks to be an uncut driver. Despite that, it seems to fit any channel it is put in."
@@ -108,7 +124,7 @@
 	<br><br>\
 	The hard light tip is able to shift its shape to a degree when pressed into \
 	a solid receptacle. This allows it to be able to function on many kinds of \
-	fastener, which includes the screws."
+	fastener, which includes screws."
 	value = CATALOGUER_REWARD_EASY
 
 /obj/item/tool/screwdriver/alien
