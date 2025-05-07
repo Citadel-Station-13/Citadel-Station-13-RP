@@ -446,8 +446,6 @@
 /area/strelka/shipbase/deck2/bridge/ce)
 "br" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
-/obj/effect/paint_stripe/paleorange,
-/obj/effect/paint/amber,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/storage)
 "bt" = (
@@ -1169,8 +1167,6 @@
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck2/bridge/iaa)
 "dH" = (
-/obj/effect/paint/offwhite,
-/obj/effect/paint_stripe/purple,
 /turf/simulated/wall/r_wall,
 /area/shuttle/excursion/strelka)
 "dJ" = (
@@ -1619,7 +1615,6 @@
 /area/strelka/shipbase/deck2/engineering/engine)
 "fd" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/effect/paint/purple,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/explo/pathfy)
 "ff" = (
@@ -1811,15 +1806,6 @@
 /obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/atmos)
-"fK" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
-/obj/effect/paint_stripe/purple,
-/obj/effect/paint/offwhite,
-/obj/machinery/door/blast/regular/open{
-	id = "javelot"
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/excursion/strelka)
 "fL" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/explo)
@@ -2350,8 +2336,6 @@
 /area/strelka/shipbase/deck2/security/storage)
 "ht" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
-/obj/effect/paint/offwhite,
-/obj/effect/paint_stripe/purple,
 /obj/machinery/door/blast/regular/open{
 	id = "javelot"
 	},
@@ -2656,7 +2640,6 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
 "im" = (
-/obj/effect/paint_stripe/darkred,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
@@ -3028,7 +3011,6 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/security/reception)
 "jF" = (
-/obj/effect/paint_stripe/darkred,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
@@ -5592,7 +5574,6 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/excursion/strelka)
 "qY" = (
-/obj/effect/paint_stripe/darkred,
 /turf/simulated/wall/r_wall/prepainted/medical,
 /area/shuttle/emt/strelka/cockpit)
 "qZ" = (
@@ -6064,7 +6045,6 @@
 "sq" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/effect/paint/offwhite,
 /obj/machinery/door/blast/regular/open{
 	id = "javelot"
 	},
@@ -6914,7 +6894,6 @@
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/engine)
 "uO" = (
-/obj/effect/paint_stripe/darkred,
 /turf/simulated/wall/r_wall/prepainted/medical,
 /area/shuttle/emt/strelka/main)
 "uP" = (
@@ -7079,7 +7058,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering)
 "vo" = (
-/obj/effect/paint_stripe/darkred,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 8
 	},
@@ -7844,7 +7822,6 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
 "xB" = (
-/obj/effect/paint/offwhite,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
 	},
@@ -8136,10 +8113,6 @@
 "yt" = (
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/science/tele)
-"yu" = (
-/obj/effect/paint_stripe/darkred,
-/turf/simulated/wall/r_wall/prepainted,
-/area/shuttle/emt/strelka/main)
 "yv" = (
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
@@ -8837,8 +8810,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
-/obj/effect/paint/offwhite,
-/obj/effect/paint_stripe/purple,
 /turf/simulated/wall/r_wall,
 /area/shuttle/excursion/strelka)
 "AE" = (
@@ -9572,7 +9543,6 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2)
 "CP" = (
-/obj/effect/paint_stripe/darkred,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
@@ -9607,7 +9577,6 @@
 /area/strelka/shipbase/deck2/bridge/ce)
 "CR" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
-/obj/effect/paint/offwhite,
 /obj/machinery/door/blast/regular/open{
 	id = "hammerdart1"
 	},
@@ -9785,7 +9754,6 @@
 /area/strelka/shipbase/deck2/explo)
 "Dr" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/effect/paint/darkred,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/security/cell1)
 "Ds" = (
@@ -10090,7 +10058,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/strelka)
 "Ek" = (
-/obj/effect/paint/offwhite,
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/wall/r_wall,
 /area/shuttle/excursion/strelka)
@@ -10242,10 +10209,6 @@
 /obj/structure/marker_beacon/yellow,
 /turf/simulated/floor/airless,
 /area/space)
-"ER" = (
-/obj/effect/paint_stripe/paleorange,
-/turf/simulated/wall/wood/hardwood,
-/area/strelka/shipbase/deck2/engineering/storage)
 "EU" = (
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/reinforced,
@@ -10996,11 +10959,6 @@
 /obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/gas)
-"Hk" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
-/obj/effect/paint/amber,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/strelka/shipbase/deck2/engineering)
 "Hl" = (
 /obj/machinery/atmospherics/component/binary/pump{
 	name = "Mix to Nacelles"
@@ -11250,8 +11208,6 @@
 /area/shuttle/excursion/strelka)
 "If" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
-/obj/effect/paint/offwhite,
-/obj/effect/paint_stripe/purple,
 /obj/structure/cable/blue{
 	icon_state = "1-2"
 	},
@@ -11835,11 +11791,6 @@
 	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck2/bridge/iaa)
-"Kg" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/effect/paint/darkred,
-/turf/simulated/floor/wood/indoors,
-/area/strelka/shipbase/deck2/security/reception)
 "Kh" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -12063,7 +12014,6 @@
 /area/strelka/shipbase/deck2/science/tele)
 "KQ" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
-/obj/effect/paint/offwhite,
 /obj/machinery/door/blast/regular/open{
 	id = "hammerdart1"
 	},
@@ -12206,10 +12156,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/engineering/nacelle2)
-"Lm" = (
-/obj/effect/paint/offwhite,
-/turf/simulated/wall/r_wall,
-/area/shuttle/excursion/strelka)
 "Lo" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
@@ -12304,11 +12250,6 @@
 	color = "#CB9E04";
 	name = "bronze cup";
 	desc = "A bronze Cup"
-	},
-/obj/item/clothing/suit/space/plasman{
-	pixel_x = -4;
-	name = "Classic Bonnethead Racind suit";
-	desc = "A racing suit."
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2)
@@ -12655,7 +12596,6 @@
 /area/shuttle/emt/strelka/main)
 "MF" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/effect/paint/darkred,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/security/cell3)
 "MH" = (
@@ -12808,7 +12748,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck2)
 "Nk" = (
-/obj/effect/paint/offwhite,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
 	},
@@ -13725,11 +13664,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck2)
-"Qt" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
-/obj/effect/paint_stripe/paleorange,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/strelka/shipbase/deck2/engineering/storage)
 "Qu" = (
 /obj/machinery/telecomms/processor/preset_one,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -14524,7 +14458,6 @@
 /area/shuttle/excursion/strelka)
 "Te" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
-/obj/effect/paint/offwhite,
 /obj/machinery/door/blast/regular/open{
 	id = "hammerdart1"
 	},
@@ -14831,7 +14764,6 @@
 "Ub" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/paint_stripe/paleorange,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/storage)
 "Uc" = (
@@ -16286,7 +16218,6 @@
 /area/shuttle/emt/strelka/main)
 "XU" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/effect/paint/darkred,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/security/cell2)
 "XV" = (
@@ -16487,14 +16418,6 @@
 /obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
-"YE" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
-/obj/effect/paint/offwhite,
-/obj/machinery/door/blast/regular/open{
-	id = "javelot"
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/excursion/strelka)
 "YF" = (
 /obj/machinery/power/shield_generator,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -31545,8 +31468,8 @@ YS
 WM
 Bj
 kc
-Hk
-Hk
+Xf
+Xf
 Pp
 xw
 Pp
@@ -32131,10 +32054,10 @@ kg
 vw
 gs
 dh
-ER
+gs
 Ub
-Qt
-Qt
+br
+br
 gs
 xc
 UC
@@ -32698,7 +32621,7 @@ mj
 uA
 uA
 uA
-yu
+NO
 tR
 hA
 CP
@@ -33093,8 +33016,8 @@ im
 FA
 vo
 FA
-yu
-yu
+NO
+NO
 zf
 Li
 vF
@@ -33280,7 +33203,7 @@ do
 mj
 uA
 uA
-yu
+NO
 eC
 Fy
 re
@@ -33474,7 +33397,7 @@ do
 mj
 mj
 uA
-yu
+NO
 IX
 WU
 Hw
@@ -33668,15 +33591,15 @@ nJ
 do
 mj
 uA
-yu
+NO
 Tj
 Tz
 ZU
 mF
-yu
-yu
-yu
-yu
+NO
+NO
+NO
+NO
 dR
 KS
 Fq
@@ -33862,7 +33785,7 @@ Sx
 do
 mj
 uA
-yu
+NO
 lo
 UV
 Cz
@@ -33870,7 +33793,7 @@ yd
 ZC
 gZ
 NX
-yu
+NO
 dR
 KS
 sa
@@ -35259,9 +35182,9 @@ YV
 cc
 RH
 dH
-Lm
+dH
 gI
-Lm
+dH
 dc
 wb
 Uy
@@ -36228,13 +36151,13 @@ Vk
 oM
 Km
 PN
-fK
+ht
 nq
 eQ
 ur
 tD
 OD
-fK
+ht
 FT
 fG
 eV
@@ -36422,13 +36345,13 @@ bZ
 kp
 xq
 nB
-fK
+ht
 nq
 wY
 Wx
 Oz
 JG
-fK
+ht
 fG
 fG
 DR
@@ -36811,10 +36734,10 @@ tS
 jN
 rZ
 dH
-Lm
+dH
 Ei
-Lm
-Lm
+dH
+dH
 dH
 dH
 fG
@@ -37198,7 +37121,7 @@ tx
 Of
 jN
 rZ
-YE
+ht
 lQ
 Kl
 gt
@@ -37392,11 +37315,11 @@ tx
 Of
 jN
 rZ
-YE
+ht
 wu
 Oc
 Vu
-YE
+ht
 lt
 fG
 eV
@@ -37586,11 +37509,11 @@ it
 xZ
 mX
 rZ
-YE
-YE
-YE
-YE
-YE
+ht
+ht
+ht
+ht
+ht
 zy
 fG
 eV
@@ -39312,9 +39235,9 @@ mL
 KG
 uw
 sD
-Kg
+Lq
 xp
-Kg
+Lq
 sD
 aw
 fH

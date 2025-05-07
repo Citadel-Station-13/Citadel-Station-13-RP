@@ -658,11 +658,6 @@
 	},
 /turf/simulated/floor,
 /area/shuttle/civvie/strelka)
-"dp" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/effect/paint/offwhite,
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/civvie/strelka)
 "dr" = (
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/structure/table/rack/shelf/steel,
@@ -1017,7 +1012,6 @@
 /obj/structure/railing,
 /obj/structure/window/basic,
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/effect/paint/palebottlegreen,
 /obj/structure/railing,
 /turf/simulated/wall/r_wall,
 /area/shuttle/civvie/strelka)
@@ -2084,7 +2078,6 @@
 /area/strelka/shipbase/deck1/pilot)
 "ls" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/effect/paint/darkred,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -2400,7 +2393,6 @@
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/railing,
 /obj/structure/window/basic,
-/obj/effect/paint/palebottlegreen,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
 "mv" = (
@@ -2421,11 +2413,6 @@
 "mE" = (
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck1/bridge/balista)
-"mF" = (
-/obj/effect/paint/palebottlegreen,
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/civvie/strelka)
 "mH" = (
 /obj/structure/cable/blue{
 	icon_state = "4-8"
@@ -2687,7 +2674,6 @@
 /area/shuttle/civvie/strelka)
 "nR" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/effect/paint/darkred,
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 2;
@@ -3066,7 +3052,6 @@
 /area/strelka/shipbase/deck1/firingrange)
 "qp" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck1/firingrange)
 "qs" = (
@@ -5363,7 +5348,6 @@
 /area/strelka/shipbase/deck1/bridge/balista)
 "DT" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/effect/paint/darkred,
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 2;
@@ -5986,11 +5970,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/hangardeck)
-"GP" = (
-/obj/effect/paint/offwhite,
-/obj/effect/paint_stripe/green,
-/turf/simulated/wall/r_wall,
-/area/shuttle/civvie/strelka)
 "GQ" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -6172,10 +6151,6 @@
 	dir = 5
 	},
 /turf/simulated/wall/r_wall/prepainted/civilian,
-/area/shuttle/civvie/strelka)
-"HZ" = (
-/obj/effect/paint/palebottlegreen,
-/turf/simulated/wall/r_wall,
 /area/shuttle/civvie/strelka)
 "Id" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -7479,11 +7454,6 @@
 /obj/machinery/computer/timeclock/premade/north,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck1)
-"Pj" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/effect/paint/darkred,
-/turf/simulated/floor/wood/indoors,
-/area/strelka/shipbase/deck1/warden)
 "Pk" = (
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = null
@@ -7847,7 +7817,6 @@
 /area/strelka/shipbase/deck1/maintenance/civ)
 "QP" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/effect/paint/palebottlegreen,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
 "QR" = (
@@ -25429,11 +25398,11 @@ sN
 ZP
 Ju
 nQ
-dp
-dp
-dp
-dp
-dp
+QP
+QP
+QP
+QP
+QP
 mT
 PC
 Sf
@@ -25622,13 +25591,13 @@ HU
 UQ
 ZP
 hS
-GP
-dp
+wG
+QP
 sJ
 th
 As
-dp
-GP
+QP
+wG
 PC
 Sf
 uG
@@ -25816,13 +25785,13 @@ kb
 xM
 ZP
 ss
-GP
+wG
 fx
 LN
 ul
 ze
 vO
-GP
+wG
 PC
 Sf
 IA
@@ -26010,13 +25979,13 @@ rG
 TC
 ZP
 hS
-GP
+wG
 on
 xN
 xN
 aQ
 cV
-GP
+wG
 PC
 Sf
 MX
@@ -26404,7 +26373,7 @@ XD
 Um
 zL
 Py
-HZ
+wG
 ZW
 Sf
 CZ
@@ -26598,7 +26567,7 @@ Rz
 XD
 WQ
 Py
-mF
+QP
 mT
 Sf
 Cy
@@ -26786,13 +26755,13 @@ gN
 lO
 rL
 VL
-GP
+wG
 on
 on
 on
 wp
 cV
-GP
+wG
 IP
 rL
 eg
@@ -26980,13 +26949,13 @@ Jn
 iG
 rL
 VL
-GP
+wG
 Uz
 wh
 RL
 BZ
 qJ
-GP
+wG
 IP
 rL
 vB
@@ -27174,13 +27143,13 @@ LH
 ep
 rL
 VL
-GP
+wG
 Eb
 CC
 Hd
 RD
 fb
-GP
+wG
 IP
 rL
 dB
@@ -27368,13 +27337,13 @@ UJ
 sk
 rL
 FK
-GP
+wG
 RD
 Bf
 dk
 ad
 Bp
-GP
+wG
 yA
 rL
 uG
@@ -27562,13 +27531,13 @@ Bw
 ZX
 rL
 ZW
-GP
+wG
 Mx
 on
 mH
 on
 wG
-GP
+wG
 ZW
 rL
 uG
@@ -29690,7 +29659,7 @@ zE
 Cr
 PK
 jV
-Pj
+ji
 Ye
 VD
 Mz
@@ -29884,7 +29853,7 @@ pe
 Vi
 Ff
 XI
-Pj
+ji
 Kt
 FS
 lR
