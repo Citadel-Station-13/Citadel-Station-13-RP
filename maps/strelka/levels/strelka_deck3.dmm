@@ -1862,6 +1862,10 @@
 	dir = 1
 	},
 /obj/structure/bed/chair/comfy/brown,
+/obj/item/radio/intercom/department/medbay{
+	dir = 1;
+	pixel_y = 25
+	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/medical/psy)
 "hi" = (
@@ -5132,6 +5136,10 @@
 	set_temperature = 73;
 	use_power = 1
 	},
+/obj/item/radio/intercom/department/medbay{
+	dir = 1;
+	pixel_y = 25
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/resleeve)
 "sN" = (
@@ -6387,6 +6395,17 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/bridge)
+"xd" = (
+/obj/structure/bed/chair/office/light{
+	dir = 1
+	},
+/obj/item/radio/intercom/department/medbay{
+	dir = 8;
+	layer = 4;
+	pixel_x = -54
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/shipbase/deck3/medical/main)
 "xf" = (
 /obj/structure/table/carbon/reinforced,
 /obj/machinery/photocopier/faxmachine{
@@ -10388,6 +10407,11 @@
 	dir = 8
 	},
 /obj/machinery/vitals_monitor,
+/obj/item/radio/intercom/department/medbay{
+	dir = 8;
+	layer = 4;
+	pixel_x = -22
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/main)
 "KT" = (
@@ -10864,6 +10888,11 @@
 "MO" = (
 /obj/machinery/light/small/old{
 	dir = 8
+	},
+/obj/item/radio/intercom/department/medbay{
+	dir = 8;
+	layer = 4;
+	pixel_x = -22
 	},
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck3/bridge/md)
@@ -11803,6 +11832,11 @@
 	pixel_y = 2
 	},
 /obj/structure/table/standard,
+/obj/item/radio/intercom/department/medbay{
+	dir = 8;
+	layer = 4;
+	pixel_x = -22
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/emtroom)
 "QE" = (
@@ -12862,6 +12896,11 @@
 	},
 /obj/structure/filingcabinet/chestdrawer{
 	name = "Scan Records"
+	},
+/obj/item/radio/intercom/department/medbay{
+	dir = 8;
+	layer = 4;
+	pixel_x = -21
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/main)
@@ -14009,6 +14048,10 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/item/radio/intercom/department/medbay{
+	dir = 1;
+	pixel_y = 25
+	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/medical/surgery)
 "YF" = (
@@ -14036,6 +14079,10 @@
 	},
 /obj/structure/cable/blue{
 	icon_state = "2-4"
+	},
+/obj/item/radio/intercom/department/medbay{
+	dir = 1;
+	pixel_y = 25
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/roomhallway)
@@ -33265,7 +33312,7 @@ zq
 UG
 KB
 ls
-OB
+xd
 zM
 Jt
 wk

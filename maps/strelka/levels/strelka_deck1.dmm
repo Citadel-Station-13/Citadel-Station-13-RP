@@ -996,6 +996,10 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
+"eS" = (
+/obj/structure/sign/sec2,
+/turf/simulated/wall/r_wall/prepainted,
+/area/strelka/shipbase/deck1/hangardeck)
 "eU" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/industrial/warning/dust,
@@ -1245,6 +1249,10 @@
 "gz" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/strelka/shipbase/deck1/armory2)
+"gE" = (
+/obj/machinery/shield_diffuser,
+/turf/space/basic,
+/area/space)
 "gL" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/clothing/mask/gas/clear,
@@ -2575,6 +2583,10 @@
 /obj/structure/ship_munition/disperser_charge/fire,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck1/bridge/balista)
+"np" = (
+/obj/structure/sign/sec4,
+/turf/simulated/wall/r_wall/prepainted,
+/area/strelka/shipbase/deck1/hangardeck)
 "nv" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
@@ -3312,6 +3324,12 @@
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/fighterbaysec)
+"rY" = (
+/obj/structure/lattice,
+/obj/structure/marker_beacon/green,
+/obj/machinery/shield_diffuser,
+/turf/space/basic,
+/area/space)
 "sb" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 1
@@ -5538,6 +5556,10 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/armory2)
+"EK" = (
+/obj/structure/sign/sec3,
+/turf/simulated/wall/r_wall/prepainted,
+/area/strelka/shipbase/deck1/hangardeck)
 "EL" = (
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/structure/table/rack/shelf/steel,
@@ -7870,6 +7892,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
+"Rj" = (
+/obj/structure/sign/sec1,
+/turf/simulated/wall/r_wall/prepainted,
+/area/strelka/shipbase/deck1/hangardeck)
 "Rk" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/suit_cycler/security,
@@ -22866,7 +22892,7 @@ qL
 KF
 Nv
 AZ
-qL
+eS
 pw
 Bg
 Bg
@@ -23084,7 +23110,7 @@ Nv
 Nv
 Nv
 Nv
-qL
+EK
 Nv
 Nv
 su
@@ -23460,7 +23486,7 @@ za
 XT
 PW
 xl
-qL
+EK
 Nv
 Nv
 Nv
@@ -24248,7 +24274,7 @@ Nv
 Nv
 Nv
 Nv
-qL
+EK
 Nv
 Nv
 Nv
@@ -24637,7 +24663,7 @@ xi
 xi
 HR
 Mt
-qL
+np
 Nv
 Nv
 Nv
@@ -25584,7 +25610,7 @@ Nv
 Nv
 Nv
 qL
-qL
+Rj
 Nv
 Nv
 Nv
@@ -25977,7 +26003,7 @@ vv
 Nv
 Nv
 Nv
-qL
+Rj
 Vd
 XT
 rG
@@ -26165,7 +26191,7 @@ Nv
 Nv
 Nv
 Nv
-qL
+eS
 zf
 BX
 xi
@@ -27547,7 +27573,7 @@ ZW
 rL
 uG
 Zg
-qL
+np
 Nv
 Nv
 Nv
@@ -30417,7 +30443,7 @@ vu
 vu
 vu
 vu
-vu
+gE
 iw
 ph
 jn
@@ -30467,7 +30493,7 @@ eE
 eE
 ph
 iw
-vu
+gE
 vu
 vu
 vu
@@ -30612,7 +30638,7 @@ vu
 vu
 vu
 vu
-vu
+gE
 iw
 jn
 jn
@@ -30660,7 +30686,7 @@ YQ
 eE
 eE
 iw
-vu
+gE
 vu
 vu
 vu
@@ -30807,7 +30833,7 @@ vu
 vu
 vu
 vu
-SW
+rY
 lA
 lA
 gY
@@ -30853,7 +30879,7 @@ FF
 DM
 FF
 FF
-SW
+rY
 vu
 vu
 vu
@@ -31002,14 +31028,14 @@ vu
 vu
 vu
 Kb
+gE
+gE
 vu
+gE
+gE
 vu
-vu
-vu
-vu
-vu
-vu
-vu
+gE
+gE
 vu
 qs
 gk
@@ -31038,15 +31064,15 @@ vK
 vK
 cu
 vK
-vu
-vu
-vu
-vu
-vu
-vu
-vu
-vu
-vu
+gE
+gE
+gE
+gE
+gE
+gE
+gE
+gE
+gE
 Kb
 vu
 vu

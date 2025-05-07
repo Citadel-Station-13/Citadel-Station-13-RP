@@ -1796,7 +1796,7 @@
 /obj/structure/table/carbon/reinforced,
 /obj/effect/floor_decal/corner/paleblue/border,
 /obj/machinery/newscaster{
-	pixel_y = 32
+	pixel_y = 28
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck4/bridge)
@@ -1933,8 +1933,8 @@
 	dir = 1
 	},
 /obj/machinery/computer/ship/navigation/telescreen{
-	pixel_y = 56;
-	pixel_x = -34
+	pixel_y = 47;
+	pixel_x = -32
 	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -2178,6 +2178,14 @@
 	name = "Bar requests console";
 	pixel_x = -32
 	},
+/obj/item/deck/cards{
+	pixel_y = -3;
+	pixel_x = 13
+	},
+/obj/item/deck/cards{
+	pixel_y = -3;
+	pixel_x = 13
+	},
 /turf/simulated/floor/bmarble,
 /area/strelka/shipbase/deck4/bar)
 "jz" = (
@@ -2328,9 +2336,6 @@
 /area/strelka/shipbase/deck4/dormhallway/Dorm/Room2)
 "ko" = (
 /obj/effect/floor_decal/corner/navblue/border,
-/obj/machinery/computer/med_data{
-	dir = 1
-	},
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 8
 	},
@@ -2340,6 +2345,15 @@
 /obj/effect/floor_decal/spline/fancy/wood/cee,
 /obj/item/folder/blue,
 /obj/structure/railing,
+/obj/structure/table/bench/steel,
+/obj/machinery/computer/skills{
+	dir = 1;
+	pixel_x = -10
+	},
+/obj/machinery/computer/med_data/laptop{
+	dir = 1;
+	pixel_x = 7
+	},
 /obj/structure/table/bench/steel,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck4/bridge)
@@ -3681,13 +3695,11 @@
 /obj/effect/floor_decal/spline/fancy/wood/cee{
 	dir = 1
 	},
-/obj/machinery/computer/skills{
-	icon_state = "computer"
-	},
 /obj/structure/railing{
 	dir = 1
 	},
 /obj/structure/table/bench/steel,
+/obj/machinery/computer/ship/navigation,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck4/bridge)
 "pD" = (
@@ -4658,6 +4670,11 @@
 /obj/machinery/computer/transhuman/resleeving,
 /obj/structure/table/carbon/reinforced,
 /obj/effect/floor_decal/corner/paleblue/border,
+/obj/item/radio/intercom/department/medbay{
+	dir = 1;
+	pixel_y = 29;
+	pixel_x = -32
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck4/bridge)
 "uy" = (
@@ -4876,6 +4893,11 @@
 	pixel_y = -7;
 	pixel_x = -29
 	},
+/obj/item/radio/intercom/department{
+	dir = 8;
+	pixel_y = 15;
+	pixel_x = -21
+	},
 /turf/simulated/floor/carpet/patterened/blue/alt,
 /area/strelka/shipbase/deck4/bridge/hop/office)
 "vt" = (
@@ -4964,8 +4986,8 @@
 	dir = 1
 	},
 /obj/machinery/computer/ship/navigation/telescreen{
-	pixel_y = 56;
-	pixel_x = -34
+	pixel_y = 47;
+	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck4/bridge)
@@ -5769,6 +5791,10 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "1-8"
+	},
+/obj/item/radio/intercom/department{
+	pixel_x = -31;
+	pixel_y = -56
 	},
 /turf/simulated/floor/carpet/patterened/blue,
 /area/strelka/shipbase/deck4/bridge/captain)
@@ -6802,6 +6828,10 @@
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = -64;
 	pixel_x = -33
+	},
+/obj/item/radio/intercom/department{
+	pixel_x = 32;
+	pixel_y = -55
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck4/bridge)
@@ -8447,6 +8477,11 @@
 /obj/machinery/computer/prisoner,
 /obj/structure/table/carbon/reinforced,
 /obj/effect/floor_decal/corner/red/border,
+/obj/item/radio/intercom/department/security{
+	dir = 1;
+	pixel_y = 29;
+	pixel_x = -32
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck4/bridge)
 "No" = (
@@ -10112,10 +10147,14 @@
 "WY" = (
 /obj/structure/bed/chair/bay/comfy/blue,
 /obj/machinery/computer/ship/navigation/telescreen{
-	pixel_y = -64;
+	pixel_y = -68;
 	pixel_x = -33
 	},
 /obj/effect/floor_decal/spline/plain,
+/obj/item/radio/intercom/department{
+	pixel_x = 32;
+	pixel_y = -55
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck4/bridge)
 "WZ" = (
@@ -10523,6 +10562,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
 	icon_state = "1-2"
+	},
+/obj/item/radio/intercom/department{
+	dir = 8;
+	pixel_y = 32;
+	pixel_x = -21
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/bridge/hop/office)
@@ -33510,7 +33554,7 @@ jR
 jR
 jR
 jR
-jR
+Ri
 LX
 VV
 gO
@@ -33536,7 +33580,7 @@ dH
 rn
 IN
 XM
-jR
+Ri
 jR
 jR
 jR
@@ -33703,7 +33747,7 @@ jR
 jR
 jR
 jR
-jR
+Ri
 Zq
 YJ
 UE
@@ -33731,7 +33775,7 @@ bK
 bK
 YJ
 Zq
-jR
+Ri
 jR
 jR
 jR
@@ -33898,7 +33942,7 @@ jR
 jR
 jR
 jR
-jR
+Ri
 Zq
 IV
 fc
@@ -33924,7 +33968,7 @@ vB
 vB
 gd
 Zq
-jR
+Ri
 jR
 jR
 jR
@@ -34093,7 +34137,7 @@ jR
 jR
 jR
 jR
-jR
+Ri
 eh
 fc
 Rg
@@ -34117,7 +34161,7 @@ BC
 sk
 sk
 gd
-jR
+Ri
 jR
 jR
 jR
@@ -36816,7 +36860,7 @@ jR
 jR
 jR
 jR
-jR
+Ri
 SK
 oS
 Nd
@@ -36826,7 +36870,7 @@ CP
 om
 Jq
 AM
-jR
+Ri
 jR
 jR
 jR
@@ -37010,7 +37054,7 @@ jR
 jR
 jR
 jR
-jR
+Ri
 Ri
 fp
 UC
@@ -37020,7 +37064,7 @@ CP
 UC
 Zq
 Ri
-jR
+Ri
 jR
 jR
 jR
@@ -37205,7 +37249,7 @@ jR
 jR
 jR
 jR
-jR
+Ri
 Ri
 CA
 qI
@@ -37213,7 +37257,7 @@ qI
 UC
 CA
 Ri
-jR
+Ri
 jR
 jR
 jR

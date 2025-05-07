@@ -2081,6 +2081,10 @@
 "gy" = (
 /obj/machinery/computer/secure_data,
 /obj/machinery/camera/network/security,
+/obj/item/radio/intercom/department/security{
+	dir = 1;
+	pixel_y = 19
+	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/security/main)
 "gz" = (
@@ -2125,6 +2129,22 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/engineering/nacelle2)
+"gH" = (
+/obj/structure/cable/blue{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/radio/intercom/department/security{
+	dir = 1;
+	pixel_y = 19
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck2/security/main)
 "gI" = (
 /obj/machinery/door/airlock/voidcraft/vertical,
 /obj/map_helper/airlock/door/int_door,
@@ -3001,6 +3021,10 @@
 "jE" = (
 /obj/machinery/computer/security,
 /obj/machinery/air_alarm/north_mount,
+/obj/item/radio/intercom/department/security{
+	dir = 1;
+	pixel_y = 19
+	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/security/reception)
 "jF" = (
@@ -4320,6 +4344,10 @@
 	},
 /obj/machinery/camera/network/security,
 /obj/machinery/air_alarm/north_mount,
+/obj/item/radio/intercom/interrogation{
+	dir = 4;
+	pixel_x = 22
+	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/security/interogation)
 "nI" = (
@@ -12307,6 +12335,10 @@
 /area/strelka/shipbase/deck2/engineering/atmos/storage)
 "LE" = (
 /obj/machinery/computer/secure_data,
+/obj/item/radio/intercom/department/security{
+	dir = 1;
+	pixel_y = 19
+	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/security/main)
 "LF" = (
@@ -13416,6 +13448,10 @@
 	},
 /obj/item/storage/box/survival_knife,
 /obj/item/storage/box/survival_knife,
+/obj/item/radio/intercom/department/security{
+	dir = 1;
+	pixel_y = 19
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck2/security/storage)
 "Px" = (
@@ -16149,6 +16185,22 @@
 /obj/structure/marker_beacon/yellow,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/explo)
+"Xz" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/structure/cable/blue{
+	icon_state = "4-8"
+	},
+/obj/item/radio/intercom/department/security{
+	dir = 1;
+	pixel_y = 19
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck2/security/main)
 "XA" = (
 /obj/effect/shuttle_landmark/strelka/deck2/excursion,
 /obj/overmap/entity/visitable/ship/landable/excursion/strelka,
@@ -16958,6 +17010,10 @@
 	},
 /obj/machinery/light/small/old{
 	dir = 1
+	},
+/obj/item/radio/intercom/interrogation{
+	dir = 8;
+	pixel_x = -19
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/security/interogation)
@@ -36537,7 +36593,7 @@ Ih
 Ih
 YA
 Aj
-fR
+Xz
 nE
 MF
 As
@@ -37694,7 +37750,7 @@ UB
 UB
 gv
 UB
-ow
+gH
 Hn
 Hn
 Hn
