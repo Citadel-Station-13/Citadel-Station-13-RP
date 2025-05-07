@@ -39,7 +39,22 @@ export interface Material {
 }
 
 export interface DetailedMaterial extends Material {
+  relative_integrity: number;
+  hardness: number;
+  toughness: number;
+  refraction: number;
+  absorption: number;
+  nullification: number;
+  density: number;
+  weight_multiplier: number;
 
+  relative_conductivity: number;
+  relative_reactivity: number;
+  relative_permeability: number;
+
+  melting_point: number;
+  opacity: number;
+  constraints: number[];
 }
 
 interface MaterialStorageProps extends MaterialRenderProps {

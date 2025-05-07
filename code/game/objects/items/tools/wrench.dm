@@ -202,6 +202,9 @@
 /obj/item/tool/wrench/power/material/update_material_multi(list/parts, prevent_recursion=FALSE)
 	var/datum/prototype/material/tipmat = parts["tip"]
 	var/datum/prototype/material/wiremat = parts["wiring"]
+	if(!tipmat || !wiremat) //kevinz, why did you let null get passed to this function?
+		//why would you allow this to happen?
+		return
 	name = "[tipmat.display_name] hand drill"
 	color = tipmat.icon_colour
 	var/start_speed = (wiremat.relative_conductivity<2.5) ? 1 : initial(tool_speed)

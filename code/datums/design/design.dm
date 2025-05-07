@@ -143,6 +143,7 @@
 		"category" = category,
 		"materials" = length(materials_base)? materials_base : null,
 		"material_parts" = length(material_costs)? material_costs : null,
+		"material_constraints" = length(material_constraints)? material_constraints : null,
 		"reagents" = length(reagents)? reagents : null,
 		"ingredients" = length(ingredients)? ingredients : null,
 		"resultItem" = list(

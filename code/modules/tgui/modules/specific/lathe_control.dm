@@ -34,7 +34,7 @@
 		return
 	.["latheName"] = lathe.name
 	.["dynamicButtons"] = lathe.ui_custom_options()
-	.["materialsContext"] = SSmaterials.tgui_materials_context()
+	.["materialsContext"] = SSmaterials.tgui_materials_context(full=TRUE) //this is a full materials context now
 	.["speedMultiplier"] = lathe.speed_multiplier
 	.["efficiencyMultiplier"] = lathe.efficiency_multiplier
 	.["powerMultiplier"] = lathe.power_multiplier

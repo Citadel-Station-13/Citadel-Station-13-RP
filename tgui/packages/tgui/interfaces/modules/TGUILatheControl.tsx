@@ -13,7 +13,7 @@ import { Modular } from "../../layouts/Modular";
 import { WindowProps } from "../../layouts/Window";
 import { Design } from "../common/Design";
 import { IngredientsAvailable, IngredientsSelected } from "../common/Ingredients";
-import { MaterialRender, MaterialsContext, MaterialStorage, MATERIAL_STORAGE_UNIT_NAME, renderMaterialAmount } from "../common/Materials";
+import { MaterialRender, FullMaterialsContext, MaterialStorage, MATERIAL_STORAGE_UNIT_NAME, renderMaterialAmount } from "../common/Materials";
 import { ReagentContents, ReagentContentsData, REAGENT_STORAGE_UNIT_NAME } from "../common/Reagents";
 
 interface TGUILatheControlProps {
@@ -35,7 +35,7 @@ interface TGUILatheControlData extends ModuleData {
   dynamicButtons: Record<string, "off" | "on" | "disabled" | null>;
   efficiencyMultiplier: number;
   materials: Record<string, number>;
-  materialsContext: MaterialsContext;
+  materialsContext: FullMaterialsContext;
   reagents: ReagentContentsData;
   queueActive: BooleanLike;
   // current progress in deciseconds
@@ -523,8 +523,12 @@ const LatheDesign = (props: LatheDesignProps, context) => {
                       newMats[name] = val;
                       setMats(newMats);
                     }}
+                    // data.materialsContext.materials[id].constraints.includes(props.design.material_constraints[name]) ? data.materialsContext.materials[id].name : null
+                    // (id) => data.materialsContext.materials[id].name
+                    // props.design.material_constraints?.[name]
+                    // Object.keys(data.materials).map((id) => (data.materialsContext.materials[id].constraints.includes(((props.design.material_constraints === null) ? false : (name in props.design.material_constraints)) ? (((typeof props.design.material_constraints?.[name]) === 'number') ? props.design.material_constraints?.[name] : 16777218) : 16777218) ? data.materialsContext.materials[id].name : null))
                     options={
-                      Object.keys(data.materials).map((id) => data.materialsContext.materials[id].name) //THIS is the line we need to touch for constraint showing.
+                      Object.keys(data.materials).flatMap((id) => ( (props.design.material_constraints != null) ? (data.materialsContext.materials[id].constraints.includes((name in props.design.material_constraints) ? (((typeof props.design.material_constraints?.[name]) === 'number') ? props.design.material_constraints?.[name] : 16777218) : 16777218) ? [data.materialsContext.materials[id].name] : []) : [data.materialsContext.materials[id].name]) // THIS is the line we need to touch for constraint showing.
                     } />
                 </Table.Cell>
                 <Table.Cell textAlign="center"
