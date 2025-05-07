@@ -126,7 +126,7 @@
 		return
 	// nonliving get handled differently
 	if(!isliving(mob))
-		mob.move_delay = world.time + mob.cached_hyperbolic_slowdown
+		mob.move_delay = world.time + mob.movement_delay()
 		return mob.Move(n, direct)
 	// autoghost if needed
 	if((mob.stat == DEAD) && isliving(mob) && !mob.forbid_seeing_deadchat)
@@ -231,9 +231,6 @@
 
 	// get additional delay from this move
 	var/add_delay = max(world.tick_lag, mob.movement_delay())
-	//! TODO: REMOVE ; COMPATABILITY LAYER TO USE NEW MOVESPEED.
-	add_delay = min(10 / ((10 / add_delay) * (1 * mob.cached_movespeed_multiply)), 10 / MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND)
-	//! END
 	// for grabs (legacy code moment)
 	var/add_delay_grab = 0
 

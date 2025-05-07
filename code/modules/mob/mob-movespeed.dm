@@ -5,6 +5,8 @@
  * Updates our base move delay
  */
 /mob/proc/update_movespeed_base()
+	#warn impl
+	update_movespeed()
 
 /**
  * @return base movement speed in tiles per second
@@ -78,7 +80,7 @@
  * 4. If any of the rest of the args are not null (see: multiplicative slowdown), modify the datum
  * 5. Update if necessary
  */
-/mob/proc/add_or_update_variable_movespeed_modifier(datum/movespeed_modifier/type_id_datum, update = TRUE, list/params)
+/mob/proc/update_movespeed_modifier(datum/movespeed_modifier/modifier, list/params, skip_update)
 	var/modified = FALSE
 	var/inject = FALSE
 	var/datum/movespeed_modifier/applying
@@ -122,10 +124,12 @@
 /// Go through the list of movespeed modifiers and calculate a final movespeed. ANY ADD/REMOVE DONE IN UPDATE_MOVESPEED MUST HAVE THE UPDATE ARGUMENT SET AS FALSE!
 /mob/proc/update_movespeed()
 	. = 0
-	for(var/datum/movespeed_modifier/M in get_movespeed_modifiers())
-		if(!(M.movetypes_required & movement_type)) // We don't affect any of these move types, skip
+	for(var/datum/movespeed_modifier/M in movespeed_modifiers)
+		if(movespeed_modifier_immunities[M.id])
 			continue
-		if(M.movetypes_blacklisted & movement_type) // There's a movetype here that disables this modifier, skip
+		if(!(M.movetypes_allowed & movement_type)) // We don't affect any of these move types, skip
+			continue
+		if(M.movetypes_disallowed & movement_type) // There's a movetype here that disables this modifier, skip
 			continue
 		//! TODO: LEGACY - this should just check for floating
 		if((M.movespeed_modifier_flags & MOVESPEED_MODIFIER_REQUIRES_GRAVITY) && !in_gravity)

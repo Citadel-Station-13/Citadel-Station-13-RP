@@ -54,8 +54,7 @@
 	// update gravity
 	update_gravity()
 	// movespeed
-	update_movespeed(TRUE)
-	update_config_movespeed()
+	update_movespeed_base()
 	// actionspeed
 	initialize_actionspeed()
 	// ssd overlay

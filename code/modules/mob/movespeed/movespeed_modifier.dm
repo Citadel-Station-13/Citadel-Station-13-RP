@@ -40,9 +40,9 @@ Key procs
 
 	//* Filtering - Movetypes *//
 	/// Movetypes this applies to
-	var/movetypes_required = ALL
+	var/movetypes_allowed = ALL
 	/// Movetypes this never applies to
-	var/movetypes_blacklisted = NONE
+	var/movetypes_disallowed = NONE
 
 	//* Caclulations *//
 	/// For: HYPERBOLIC - add this amount to hyperbolic value
