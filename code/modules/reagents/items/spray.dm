@@ -4,7 +4,7 @@
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "cleaner"
 	item_state = "cleaner"
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	atom_flags = OPENCONTAINER
 	slot_flags = SLOT_BELT | SLOT_HOLSTER
 	throw_force = 3
@@ -39,7 +39,7 @@
 
 	Spray_at(target, user, (clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 
-	user.setClickCooldown(4)
+	user.setClickCooldownLegacy(4)
 
 	if(reagents.has_reagent("sacid"))
 		message_admins("[key_name_admin(user)] fired sulphuric acid from \a [src].")
@@ -234,3 +234,18 @@
 /obj/item/reagent_containers/spray/windowsealant/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("silicate", 80)
+
+
+/obj/item/reagent_containers/spray/spider/pepper
+	name = "venom spray"
+	desc = "A leather sack filled with venom and rigged  with bones to turn its contents in a spray."
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "spiderspray"
+	item_state = "pepperspray"
+	possible_transfer_amounts = null
+	volume = 15
+
+/obj/item/reagent_containers/spray/spider/pepper/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("condensedcapsaicin_v", volume)
+

@@ -17,7 +17,7 @@
 	damage_mode = DAMAGE_MODE_SHARP
 	integrity_flags = INTEGRITY_ACIDPROOF
 	rad_flags = RAD_NO_CONTAMINATE
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD | ITEM_EASY_LATHE_DECONSTRUCT
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD | ITEM_EASY_LATHE_DECONSTRUCT
 	var/mode = SYRINGE_DRAW
 	var/image/filling //holds a reference to the current filling overlay
 	var/visible_name = "a syringe"
@@ -197,7 +197,7 @@
 					user.visible_message("<span class='warning'>[user] begins hunting for an injection port on [target]'s suit!</span>","<span class='notice'>You begin hunting for an injection port on [target]'s suit!</span>")
 
 			//The warmup
-			user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+			user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN)
 			if(!do_after(user,warmup_time,target))
 				return
 

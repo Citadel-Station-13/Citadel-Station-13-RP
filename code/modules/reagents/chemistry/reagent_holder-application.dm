@@ -119,12 +119,15 @@
 				continue
 			if(reapplication_exclusion[AM])
 				continue
+			if(isobj(AM))
+				var/obj/O = AM
+				if(O.is_hidden_underfloor())
+					continue
 			reapplication_exclusion[AM] = TRUE
 			. += perform_entity_contact(AM, ratio, zone)
-	else
-		if(!reapplication_exclusion[target])
-			reapplication_exclusion[target] = TRUE
-			. += perform_entity_contact(target, ratio, zone)
+	if(!reapplication_exclusion[target])
+		reapplication_exclusion[target] = TRUE
+		. += perform_entity_contact(target, ratio, zone)
 
 //*          Splash          *//
 //* ... It's complicated.    *//

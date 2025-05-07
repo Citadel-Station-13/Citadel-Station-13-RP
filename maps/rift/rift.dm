@@ -28,6 +28,7 @@
 		/datum/map/sector/surt,
 		/datum/map/sector/miaphus,
 		/datum/map/sector/roguemining_192/one,
+		/datum/map/sector/sky_planet,
 	)
 
 	//* LEGACY BELOW *//

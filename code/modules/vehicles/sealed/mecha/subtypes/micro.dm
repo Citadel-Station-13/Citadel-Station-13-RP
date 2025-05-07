@@ -3,6 +3,7 @@
 	var/max_micro_weapon_equip = 0
 	var/list/micro_utility_equipment = new
 	var/list/micro_weapon_equipment = new
+	var/size_requirement = 0.5
 
 
 
@@ -125,7 +126,7 @@
 
 /obj/vehicle/sealed/mecha/micro/mob_can_enter(mob/entering, datum/event_args/actor/actor, silent, suppressed)
 	var/mob/living/carbon/C = entering
-	if (C.size_multiplier >= 0.5)
+	if (C.size_multiplier > size_requirement)
 		to_chat(C, "<span class='warning'>You can't fit in this suit!</span>")
 		return FALSE
 	else
@@ -133,7 +134,7 @@
 
 /obj/vehicle/sealed/mecha/micro/move_inside_passenger()
 	var/mob/living/carbon/C = usr
-	if (C.size_multiplier >= 0.5)
+	if (C.size_multiplier > size_requirement)
 		to_chat(C, "<span class='warning'>You can't fit in this suit!</span>")
 		return
 	else

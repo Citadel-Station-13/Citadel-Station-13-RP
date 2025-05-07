@@ -262,6 +262,7 @@
 		/obj/item/clothing/accessory/collar/pink = 5,
 		/obj/item/clothing/accessory/collar/holo = 5,
 		/obj/item/clothing/accessory/collar/shock = 5,
+		/obj/item/leash = 5,
 		/obj/item/clothing/accessory/cowledvest = 5,
 		/obj/item/storage/belt/fannypack = 1,
 		/obj/item/storage/belt/fannypack/white = 5,

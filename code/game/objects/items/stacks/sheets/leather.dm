@@ -1,6 +1,6 @@
 /obj/item/stack/animalhide
 	name = "animal hide"
-	desc = "Intact skin stripped off from a creature's body."
+	desc = "Intact skin stripped off from a creature's body. You should probably clean off the hair with a blade."
 	singular_name = "hide piece"
 	icon_state = "sheet-hide"
 	no_variants = FALSE
@@ -100,7 +100,7 @@
 
 /obj/item/stack/hairlesshide
 	name = "hairless hide"
-	desc = "This smooth hide needs tanning before it can become leather."
+	desc = "This smooth hide needs tanning before it can become leather. You should start with soaking it in water."
 	singular_name = "hairless hide piece"
 	icon_state = "sheet-hairlesshide"
 	no_variants = FALSE
@@ -168,7 +168,7 @@
 
 /obj/item/stack/wetleather
 	name = "wet leather"
-	desc = "This leather has been cleaned but still needs to be dried."
+	desc = "This leather has been cleaned but still needs to be dried. You can probably dry it on a wooden rack."
 	singular_name = "wet leather piece"
 	icon_state = "sheet-wetleather"
 	var/wetness = 30 //Reduced when exposed to high temperautres

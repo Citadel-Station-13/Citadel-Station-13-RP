@@ -114,7 +114,7 @@
 	return ..()
 
 /obj/machinery/button/doorbell/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	user.setClickCooldownLegacy(DEFAULT_ATTACK_COOLDOWN)
 	if(..())
 		return
 	use_power(5)

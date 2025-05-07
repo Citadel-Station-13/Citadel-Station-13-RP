@@ -795,3 +795,9 @@
 	icon_state = "guest"
 	job_access_type = null
 	access = list(170)
+
+/obj/item/card/id/external/id_nka
+	name = "New Kingdom of Adhomai Commoner's ID"
+	desc = "An ID issued to the non-noble commoners of the New Kingdom of Adhomai. In some regions, adults must legally carry it on their person at all times."
+	icon_state = "nka"
+	job_access_type = null

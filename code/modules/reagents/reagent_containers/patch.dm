@@ -102,7 +102,7 @@
 
 		user.visible_message(SPAN_WARNING("[user] attempts to place \the [src] onto [H]`s [affecting]."))
 
-		user.setClickCooldown(user.get_attack_speed(src))
+		user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 		if(!do_mob(user, target))
 			return
 

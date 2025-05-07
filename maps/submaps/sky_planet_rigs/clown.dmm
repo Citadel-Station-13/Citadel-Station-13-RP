@@ -1,0 +1,795 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"bq" = (
+/obj/machinery/appliance/cooker/oven,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/clown)
+"bJ" = (
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"bM" = (
+/obj/structure/table/hardwoodtable,
+/obj/machinery/chemical_dispenser/catering/bar_alc,
+/obj/machinery/light/fairy{
+	dir = 1
+	},
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"bR" = (
+/obj/structure/bed/padded,
+/obj/structure/bed/padded{
+	pixel_y = 14
+	},
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"cI" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"du" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/clown)
+"he" = (
+/obj/structure/table/marble,
+/obj/machinery/reagentgrinder,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/clown)
+"hS" = (
+/turf/simulated/floor/carpet/patterened/purple,
+/area/submap/skyplanet/poi/clown)
+"iq" = (
+/obj/structure/table/marble,
+/obj/item/material/knife/butch/plasteel,
+/obj/item/material/kitchen/rollingpin/durasteel,
+/obj/item/reagent_containers/food/condiment/enzyme,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/clown)
+"kU" = (
+/obj/structure/table/fancyblack,
+/obj/item/reagent_containers/food/snacks/clownburger,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"mg" = (
+/obj/structure/bookcase,
+/obj/item/reagent_containers/food/drinks/bottle/wine{
+	pixel_y = 27;
+	pixel_x = -9
+	},
+/obj/item/reagent_containers/food/drinks/bottle/specialwhiskey{
+	pixel_y = 29
+	},
+/obj/item/reagent_containers/food/drinks/bottle/sake{
+	pixel_y = 29;
+	pixel_x = 8
+	},
+/obj/item/reagent_containers/food/drinks/bottle/melonliquor{
+	pixel_y = 24;
+	pixel_x = -14
+	},
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"mD" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/clown)
+"mN" = (
+/mob/living/simple_mob/humanoid/clown/commando/melee/space,
+/turf/simulated/floor/carpet/patterened/purple,
+/area/submap/skyplanet/poi/clown)
+"mV" = (
+/obj/spawner/window/full,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/clown)
+"nd" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/random/handgun,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/clown)
+"pU" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/random/junk,
+/obj/random/energy,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/clown)
+"qT" = (
+/obj/effect/floor_decal/rust/mono_rusted3,
+/turf/simulated/floor/concrete,
+/area/submap/skyplanet/poi/clown)
+"rm" = (
+/mob/living/simple_mob/humanoid/clown/commando/ranged/space,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/clown)
+"rw" = (
+/mob/living/simple_mob/humanoid/clown/commando/melee,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"rX" = (
+/obj/structure/table/bench/glass,
+/obj/item/toy/figure/clown,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"ud" = (
+/turf/template_noop,
+/area/template_noop)
+"ul" = (
+/obj/structure/table/bench/glass,
+/obj/machinery/light/fairy{
+	dir = 8
+	},
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"uG" = (
+/obj/structure/plushie/beepsky,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"uI" = (
+/obj/random/multiple/gun/projectile/rifle,
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/under/rank/clown/purple,
+/obj/item/clothing/head/helmet/space/void/clownop,
+/obj/item/clothing/suit/space/void/clownop,
+/obj/item/clothing/shoes/clown_shoes,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/clown)
+"uS" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/toilet{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/clown)
+"wl" = (
+/obj/structure/bed/chair/sofa/left,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"xf" = (
+/obj/item/stool/padded,
+/turf/simulated/floor/carpet/patterened/purple,
+/area/submap/skyplanet/poi/clown)
+"xn" = (
+/turf/simulated/wall/r_wall,
+/area/template_noop)
+"zM" = (
+/turf/simulated/floor/concrete,
+/area/submap/skyplanet/poi/clown)
+"zZ" = (
+/obj/structure/table/fancyblack,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"BN" = (
+/obj/machinery/light/fairy,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"Cj" = (
+/obj/structure/table/fancyblack,
+/obj/item/storage/box/glasses/pint,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"Cx" = (
+/obj/structure/table/hardwoodtable,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
+/obj/machinery/light/fairy{
+	dir = 1
+	},
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"CN" = (
+/obj/effect/floor_decal/rust/mono_rusted3,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/clown)
+"Ep" = (
+/obj/structure/bed/chair/sofa/right,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"GR" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/floor_decal/rust/mono_rusted3,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/clown)
+"HL" = (
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/clown)
+"HQ" = (
+/obj/structure/table/fancyblack,
+/obj/machinery/light/fairy{
+	dir = 1
+	},
+/obj/item/clothing/mask/gas/bee,
+/obj/item/clothing/suit/storage/hooded/bee_costume,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"Ih" = (
+/obj/machinery/microwave,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/clown)
+"JC" = (
+/mob/living/simple_mob/humanoid/clown/commando/ranged,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"JS" = (
+/obj/structure/bookcase{
+	icon_state = "book-5"
+	},
+/obj/machinery/light/fairy{
+	dir = 1
+	},
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"Ks" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/clown)
+"Kw" = (
+/mob/living/bot/secbot,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"KE" = (
+/mob/living/simple_mob/humanoid/clown/commando/ranged,
+/obj/effect/floor_decal/rust/mono_rusted3,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/clown)
+"KU" = (
+/obj/structure/table/bench/glass,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"Ld" = (
+/obj/structure/bed/chair/sofa/right{
+	dir = 1
+	},
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"Mi" = (
+/obj/structure/table/hardwoodtable,
+/obj/machinery/chemical_dispenser/catering/bar_coffee,
+/obj/machinery/light/fairy{
+	dir = 1
+	},
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"Nh" = (
+/turf/simulated/wall/r_wall,
+/area/submap/skyplanet/poi/clown)
+"Oa" = (
+/obj/item/storage/backpack/dufflebag/clown,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"Oc" = (
+/obj/structure/table/fancyblack,
+/obj/machinery/light/fairy{
+	dir = 1
+	},
+/obj/item/storage/box/glasses/cocktail,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"OJ" = (
+/obj/machinery/light/fairy,
+/turf/simulated/floor/carpet/patterened/purple,
+/area/submap/skyplanet/poi/clown)
+"Pk" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/clown)
+"Qh" = (
+/obj/structure/table/fancyblack,
+/obj/item/storage/backpack/clown,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"Qk" = (
+/turf/simulated/floor/reinforced/outdoors,
+/area/template_noop)
+"Qp" = (
+/obj/structure/table/bench/glass,
+/obj/machinery/light/fairy{
+	dir = 4
+	},
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"Rl" = (
+/mob/living/simple_mob/humanoid/clown/commando/melee/space/alt,
+/turf/simulated/floor/carpet/patterened/purple,
+/area/submap/skyplanet/poi/clown)
+"Vu" = (
+/obj/structure/bookcase,
+/obj/item/reagent_containers/food/drinks/bottle/wine{
+	pixel_y = 27;
+	pixel_x = 5
+	},
+/obj/item/reagent_containers/food/drinks/bottle/redeemersbrew{
+	pixel_y = 25
+	},
+/obj/item/reagent_containers/food/drinks/bottle/rotgut{
+	pixel_y = 28;
+	pixel_x = -9
+	},
+/obj/item/reagent_containers/food/drinks/bottle/phobos{
+	pixel_y = 29;
+	pixel_x = 9
+	},
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"VX" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"Xi" = (
+/obj/machinery/door/airlock/multi_tile,
+/obj/structure/atmospheric_retention_field,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"Xn" = (
+/obj/structure/bed/chair/sofa/left{
+	dir = 1
+	},
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"Xu" = (
+/obj/structure/atmospheric_retention_field,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"Yo" = (
+/obj/machinery/beehive,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+"ZO" = (
+/obj/effect/floor_decal/rust/mono_rusted3,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/clown)
+"ZS" = (
+/obj/structure/table/fancyblack,
+/obj/item/storage/box/glasses/mug,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/clown)
+
+(1,1,1) = {"
+xn
+ud
+ud
+ud
+ud
+ud
+ud
+ud
+ud
+ud
+ud
+ud
+ud
+ud
+ud
+ud
+ud
+ud
+ud
+xn
+"}
+(2,1,1) = {"
+ud
+ud
+Nh
+Nh
+Nh
+Nh
+Nh
+Nh
+Nh
+Nh
+Nh
+Nh
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+ud
+ud
+"}
+(3,1,1) = {"
+ud
+Nh
+Nh
+bR
+VX
+bR
+Nh
+JS
+Ep
+ul
+Xn
+Nh
+Nh
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+ud
+"}
+(4,1,1) = {"
+ud
+Nh
+Nh
+bJ
+bJ
+Oa
+Nh
+JS
+wl
+KU
+Ld
+Yo
+Nh
+Nh
+zM
+Qk
+Qk
+Qk
+Qk
+ud
+"}
+(5,1,1) = {"
+ud
+Nh
+Nh
+Ks
+Nh
+Nh
+Nh
+JS
+bJ
+bJ
+bJ
+uG
+BN
+Nh
+qT
+Qk
+Qk
+Qk
+Qk
+ud
+"}
+(6,1,1) = {"
+ud
+Nh
+HL
+HL
+mD
+Pk
+HL
+cI
+JC
+bJ
+hS
+hS
+hS
+Xi
+qT
+Qk
+Qk
+Qk
+Qk
+ud
+"}
+(7,1,1) = {"
+ud
+Nh
+Ks
+Nh
+Nh
+Nh
+Nh
+Nh
+Oc
+ZS
+xf
+hS
+hS
+Xu
+qT
+Qk
+Qk
+Qk
+Qk
+ud
+"}
+(8,1,1) = {"
+ud
+Nh
+mD
+iq
+du
+he
+Nh
+mg
+bJ
+Cj
+xf
+hS
+OJ
+Nh
+qT
+Qk
+Qk
+Qk
+Qk
+ud
+"}
+(9,1,1) = {"
+ud
+Nh
+mD
+KE
+mD
+Ih
+Nh
+Cx
+bJ
+Qh
+xf
+hS
+hS
+mV
+qT
+Qk
+Qk
+Qk
+Qk
+ud
+"}
+(10,1,1) = {"
+ud
+Nh
+mD
+ZO
+CN
+bq
+Nh
+Mi
+bJ
+zZ
+xf
+mN
+hS
+mV
+zM
+Qk
+Qk
+Qk
+Qk
+ud
+"}
+(11,1,1) = {"
+ud
+Nh
+HL
+GR
+mD
+mD
+cI
+bJ
+bJ
+zZ
+xf
+hS
+hS
+mV
+zM
+Qk
+Qk
+Qk
+Qk
+ud
+"}
+(12,1,1) = {"
+ud
+Nh
+Ks
+Nh
+Nh
+Nh
+Nh
+bM
+bJ
+kU
+xf
+hS
+hS
+mV
+zM
+Qk
+Qk
+Qk
+Qk
+ud
+"}
+(13,1,1) = {"
+ud
+Nh
+mD
+Ks
+uS
+Nh
+Nh
+Vu
+bJ
+kU
+xf
+hS
+hS
+mV
+zM
+Qk
+Qk
+Qk
+Qk
+ud
+"}
+(14,1,1) = {"
+ud
+Nh
+Ks
+Nh
+Nh
+Nh
+Nh
+Nh
+HQ
+zZ
+xf
+hS
+Rl
+mV
+zM
+Qk
+Qk
+Qk
+Qk
+ud
+"}
+(15,1,1) = {"
+ud
+Nh
+HL
+du
+HL
+uI
+Nh
+JS
+bJ
+Kw
+hS
+hS
+hS
+mV
+qT
+Qk
+Qk
+Qk
+Qk
+ud
+"}
+(16,1,1) = {"
+ud
+Nh
+Nh
+mD
+rm
+pU
+Nh
+JS
+bJ
+rw
+bJ
+bJ
+BN
+Nh
+qT
+Qk
+Qk
+Qk
+Qk
+ud
+"}
+(17,1,1) = {"
+ud
+Nh
+Nh
+Nh
+mD
+nd
+Nh
+JS
+Ep
+rX
+Xn
+Yo
+Nh
+Nh
+zM
+Qk
+Qk
+Qk
+Qk
+ud
+"}
+(18,1,1) = {"
+ud
+Nh
+Nh
+Nh
+Nh
+Nh
+Nh
+JS
+wl
+Qp
+Ld
+Nh
+Nh
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+ud
+"}
+(19,1,1) = {"
+ud
+ud
+Nh
+Nh
+Nh
+Nh
+Nh
+Nh
+Nh
+Nh
+Nh
+Nh
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+ud
+ud
+"}
+(20,1,1) = {"
+xn
+ud
+ud
+ud
+ud
+ud
+ud
+ud
+ud
+ud
+ud
+ud
+ud
+ud
+ud
+ud
+ud
+ud
+ud
+xn
+"}

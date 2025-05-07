@@ -383,7 +383,7 @@
 		state = GRAB_KILL
 		assailant.visible_message("<span class='danger'>[assailant] has tightened [TU.his] grip on [affecting]'s neck!</span>")
 		add_attack_logs(assailant,affecting,"Strangled")
-		affecting.setClickCooldown(10)
+		affecting.setClickCooldownLegacy(10)
 		affecting.AdjustLosebreath(1)
 		affecting.setDir(WEST)
 	adjust_position()

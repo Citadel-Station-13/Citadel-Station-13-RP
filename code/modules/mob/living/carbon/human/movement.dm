@@ -34,7 +34,7 @@
 
 	var/hungry = (500 - nutrition)/5 // So overeat would be 100 and default level would be 80
 	if (m_intent == MOVE_INTENT_RUN && hungry >= 70)//You can walk while hungry, but you cant run so fast while hungry
-		tally += hungry/50
+		tally += (hungry/50)*species.hunger_slowdown_multiplier
 
 	if(reagents.has_reagent("numbenzyme"))
 		tally += 1.5 //A tad bit of slowdown.

@@ -160,7 +160,6 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/light_sidear
 	burst_delay = 1.5
 	projectile_base_dispersion = 5.75
 
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm/smg, /nt_expedition/light_smg, "nt-expeditionary-light_smg")
 /obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm/smg
 	name = "machine pistol"
 	desc = "The XNMP Mk.3 \"Buzzer\" machine pistol; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
@@ -187,3 +186,7 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/nt_expediti
 		/datum/firemode/nt_expedition_light_smg/semi_auto,
 		/datum/firemode/nt_expedition_light_smg/two_burst,
 	)
+
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm/smg/no_pin, /nt_expedition/light_smg, "nt-expeditionary-light_smg")
+/obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm/smg/no_pin
+	pin = null

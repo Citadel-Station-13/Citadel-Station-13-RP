@@ -102,6 +102,11 @@
 
 	set_AI_busy(FALSE)
 
+
+
+
+
+
 //		var/obj/item/grab/G = new(src, victim)
 //		put_in_active_hand(G)
 

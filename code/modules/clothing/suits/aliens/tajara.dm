@@ -148,6 +148,7 @@
 	icon_override = 'icons/mob/clothing/species/tajaran/coats.dmi'
 	icon_state = "hunter_coat"
 	item_state = "hunter_coat"
+	armor_type = /datum/armor/station/padded
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 
 /obj/item/clothing/suit/storage/tajaran/jacket/archeologist
