@@ -99,7 +99,7 @@ steam.start() -- spawns the effect
 
 /obj/effect/particle_effect/sparks/Initialize(mapload)
 	. = ..()
-	playsound(src, /datum/soundbyte/grouped/sparks, 100, 1)
+	playsound(src, /datum/soundbyte/sparks, 100, 1)
 	var/turf/T = src.loc
 	if (istype(T, /turf))
 		T.hotspot_expose(1000,100)

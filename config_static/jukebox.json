@@ -772,7 +772,7 @@
 {
 "url": "https://files.catbox.moe/gmcntz.mp3",
 "title": "Black Betty",
-"duration": 1900,
+"duration": 2080,
 "artist": "Spiderbait",
 "secret": false,
 "lobby": false,
@@ -10170,9 +10170,9 @@
 "genre": "Sol Common Precursors"
 },
 {
-"url": "https://files.catbox.moe/ljsknd.mp3",
+"url": "https://files.catbox.moe/pj6u4k.mp3",
 "title": "リサフランク420 / 現代のコンピュー (Modern Computer)",
-"duration": 2510,
+"duration": 4220,
 "artist": "Vektroid",
 "secret": false,
 "lobby": false,
@@ -10342,7 +10342,7 @@
 },
 {
 "url": "https://files.catbox.moe/emb3ll.mp3",
-"title": "September Kids",
+"title": "[9R^=#] September Kids",
 "duration": 2480,
 "artist": "William Maranci Mashups",
 "secret": true,
@@ -10352,7 +10352,7 @@
 },
 {
 "url": "https://files.catbox.moe/z0oyhw.mp3",
-"title": "Goofy Goober Rock",
+"title": "[Err$%] Goofy Goober Rock",
 "duration": 1740,
 "artist": "Tom Rothrock with Jim Wise",
 "secret": true,
@@ -10521,11 +10521,21 @@
 "genre": "Classical and Orchestral"
 },
 {
-"url": "https://files.catbox.moe/txjsse.mp3",
-"title": "This Place Was A Shelter",
-"duration": 2310,
+"url": "https://files.catbox.moe/1kcgs6.mp3",
+"title": "This Place Is A Shelter",
+"duration": 1390,
 "artist": "Ólafur Arnalds",
 "secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Classical and Orchestral"
+},
+{
+"url": "https://files.catbox.moe/txjsse.mp3",
+"title": "[ER*%] This Place Was A Shelter",
+"duration": 2310,
+"artist": "Ólafur Arnalds",
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Classical and Orchestral"
@@ -10622,7 +10632,7 @@
 },
 {
 "url": "https://files.catbox.moe/0pwpwl.mp3",
-"title": " Cup of Liber-Tea (Pianistec Cover)",
+"title": "[ER#$$] Cup of Liber-Tea (Pianistec Cover)",
 "duration": 3570,
 "artist": "Pianistec",
 "secret": true,
@@ -10632,7 +10642,7 @@
 },
 {
 "url": "https://files.catbox.moe/nyyb9j.mp3",
-"title": "If I were a Core (Instrumental)",
+"title": "[#R@4R] If I were a Core (Instrumental)",
 "duration": 2580,
 "artist": "Harry101UK",
 "secret": true,
@@ -10709,5 +10719,35 @@
 "lobby": false,
 "jukebox": true,
 "genre": "Arcade"
+},
+{
+"url": "https://files.catbox.moe/fnz3ko.mp3",
+"title": "'39",
+"duration": 2180,
+"artist": "Queen",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Folk and Indie"
+},
+{
+"url": "https://files.catbox.moe/wbd9kr.mp3",
+"title": "Całuski Pastora",
+"duration": 4050,
+"artist": "Beltaine",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Classical and Orchestral"
+},
+{
+"url": "https://files.catbox.moe/obo63e.mp3",
+"title": "[7r$%3]Go Tell Aunt Rhody",
+"duration": 1750,
+"artist": "Jordan Reyne and Michael A. Levine",
+"secret": true,
+"lobby": false,
+"jukebox": true,
+"genre": "Folk and Indie"
 }
 ]

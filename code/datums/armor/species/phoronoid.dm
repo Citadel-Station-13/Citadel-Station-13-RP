@@ -1,8 +1,8 @@
 /datum/armor/phoronoid
-	melee = 0.2
-	bullet = 0.05
-	laser = 0.1
-	energy = 0.1
+	melee = 0.4
+	bullet = 0.15
+	laser = 0.25
+	energy = 0.2
 	bomb = 0.4
 	bio = 1.0
 	rad = 1.0

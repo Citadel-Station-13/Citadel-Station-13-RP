@@ -30,7 +30,7 @@
 /turf/simulated/wall/r_wall,
 /area/submap/skyplanet/poi/shuttlecrash4)
 "q" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/submap/skyplanet/poi/shuttlecrash4)
 "s" = (
@@ -89,7 +89,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/submap/skyplanet/poi/shuttlecrash4)
 "Z" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /turf/template_noop,
 /area/submap/skyplanet/poi/shuttlecrash4)
 

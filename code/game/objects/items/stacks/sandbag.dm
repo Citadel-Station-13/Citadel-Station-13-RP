@@ -138,7 +138,7 @@
 	. = ..()
 
 /obj/structure/sandbag/attackby(obj/item/W as obj, mob/user as mob)
-	user.setClickCooldown(user.get_attack_speed(W))
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy(W))
 	if(istype(W, /obj/item/stack/sandbags))
 		var/obj/item/stack/sandbags/S = W
 		if(integrity < integrity_max)

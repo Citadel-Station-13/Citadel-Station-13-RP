@@ -355,7 +355,7 @@
 			G.stun_effect_act_parse_this(10 , 50, BP_TORSO, src)
 			G.take_random_targeted_damage(brute = 10)
 			G.afflict_unconscious(20 * 20)
-			playsound(src.loc, /datum/soundbyte/grouped/sparks, 50, 1)
+			playsound(src.loc, /datum/soundbyte/sparks, 50, 1)
 			return
 */
 
