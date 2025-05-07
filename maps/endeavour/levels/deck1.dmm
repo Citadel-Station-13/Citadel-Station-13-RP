@@ -2221,7 +2221,7 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = null;
 	name = "Docking Arm";
-	id_tag = "docking_arm"
+	id_tag = "dockingarm1"
 	},
 /obj/structure/sign/warning/evac{
 	pixel_x = -32
@@ -6946,7 +6946,7 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = null;
 	name = "Docking Arm";
-	id_tag = "docking_arm"
+	id_tag = "dockingarm1"
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/hallway/secondary/docking_hallway2)
@@ -6955,7 +6955,7 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = null;
 	name = "Docking Arm";
-	id_tag = "docking_arm"
+	id_tag = "dockingarm1"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -8388,7 +8388,7 @@
 /obj/item/pen,
 /obj/machinery/button/remote/airlock{
 	desc = "A remote control switch for the medbay recovery room door.";
-	id = "docking_arm";
+	id = "dockingarm1";
 	name = "Door Switch";
 	pixel_x = -13;
 	pixel_y = -23;
@@ -9539,7 +9539,7 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = null;
 	name = "Docking Arm";
-	id_tag = "docking_arm"
+	id_tag = "dockingarm1"
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/hallway/secondary/docking_hallway2)
