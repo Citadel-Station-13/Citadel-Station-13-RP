@@ -40,7 +40,6 @@
 
 	attack_sound = 'sound/weapons/heavysmash.ogg'
 	status_flags = 0
-	resistance = 10
 	construct_spells = list(/spell/aoe_turf/conjure/forcewall/lesser,
 							/spell/targeted/fortify,
 							/spell/targeted/construct_advanced/slam
@@ -119,7 +118,6 @@
 	attacktext = list("brutally crushed")
 	friendly = list("pokes") //Anything nice the Behemoth would do would still Kill the Human. Leave it at poke.
 	attack_sound = 'sound/weapons/heavysmash.ogg'
-	resistance = 10
 	icon_scale_x = 2
 	icon_scale_y = 2
 	var/energy = 0

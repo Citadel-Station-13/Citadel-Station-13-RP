@@ -142,7 +142,6 @@
 	goliath_sac.my_atom = src
 
 /mob/living/simple_mob/animal/goliath/attackby(obj/item/O, mob/user)
-	. = ..()
 	var/obj/item/reagent_containers/glass/G = O
 	if(stat == CONSCIOUS && istype(G) && G.is_open_container())
 		user.visible_message("<span class='notice'>[user] drains the sac of the [src] using \the [O].</span>")
