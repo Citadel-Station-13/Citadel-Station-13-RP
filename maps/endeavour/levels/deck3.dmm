@@ -25,6 +25,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
 /area/security/range)
 "aaY" = (
@@ -67,6 +68,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/item/book/manual/security_space_law,
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "adi" = (
@@ -301,6 +303,7 @@
 	pixel_x = 32;
 	pixel_y = 2
 	},
+/obj/item/storage/bag/trash,
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/security/range)
 "amd" = (
@@ -1721,6 +1724,9 @@
 "biZ" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/box/lights/mixed,
+/obj/machinery/camera/network/mining{
+	dir = 8
+	},
 /turf/simulated/floor/reinforced,
 /area/quartermaster/miningdock)
 "bje" = (
@@ -2020,9 +2026,6 @@
 	departmentType = 5;
 	name = "Head of Security RC";
 	pixel_x = -32
-	},
-/obj/machinery/computer/card{
-	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -6080,12 +6083,12 @@
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
 "eyh" = (
-/obj/structure/dogbed,
 /obj/machinery/power/apc/west_mount,
 /mob/living/simple_mob/animal/passive/dog/pug/SirPogsley,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/structure/dogbed,
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "eyn" = (
@@ -6721,6 +6724,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "eXx" = (
@@ -14676,6 +14680,18 @@
 /obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/warehouse)
+"leb" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters/pool)
 "lew" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
@@ -15723,12 +15739,10 @@
 /turf/simulated/floor/tiled/white,
 /area/maintenance/pool)
 "lXM" = (
-/obj/structure/bookcase,
-/obj/item/book/manual/security_space_law,
-/obj/item/book/manual/standard_operating_procedure,
-/obj/item/book/manual/command_guide,
-/obj/item/book/manual/standard_operating_procedure,
 /obj/machinery/air_alarm/south_mount,
+/obj/machinery/computer/card{
+	dir = 1
+	},
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "lYm" = (
@@ -16260,6 +16274,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "msG" = (
@@ -16296,6 +16311,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/security/security_lockerroom)
 "muC" = (
@@ -20038,6 +20054,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/security/security_lockerroom)
 "piX" = (
@@ -27034,6 +27051,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3fwdhall)
+"uhu" = (
+/obj/structure/bookcase,
+/obj/item/book/manual/standard_operating_procedure,
+/obj/item/book/manual/command_guide,
+/obj/item/book/manual/standard_operating_procedure,
+/turf/simulated/floor/carpet,
+/area/crew_quarters/heads/hos)
 "uhE" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/ore_box,
@@ -29028,6 +29052,13 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/water/deep/indoors,
 /area/hydroponics/garden)
+"vEP" = (
+/obj/machinery/camera/network/outside{
+	dir = 5
+	},
+/obj/structure/grille,
+/turf/simulated/floor/airless/ceiling,
+/area/space)
 "vFk" = (
 /obj/structure/catwalk,
 /obj/structure/cable{
@@ -29557,6 +29588,10 @@
 /obj/machinery/fitness/heavy/lifter,
 /turf/simulated/floor/tiled/dark,
 /area/security/brig)
+"vYe" = (
+/obj/structure/grille,
+/turf/simulated/floor/airless/ceiling,
+/area/space)
 "vYz" = (
 /turf/simulated/wall/prepainted/security,
 /area/security/forensics)
@@ -32336,6 +32371,7 @@
 /area/security/security_lockerroom)
 "xUg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/security/security_lockerroom)
 "xUN" = (
@@ -32393,8 +32429,9 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 5
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
+/obj/structure/disposalpipe/junction{
+	dir = 8;
+	icon_state = "pipe-j2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -32483,6 +32520,7 @@
 "xZp" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central5,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "xZs" = (
@@ -39794,7 +39832,7 @@ muX
 uCk
 suB
 pTj
-gMQ
+leb
 gMQ
 wZY
 sPi
@@ -45444,7 +45482,7 @@ nnu
 kHK
 goX
 eyh
-dZI
+uhu
 adf
 btn
 mXn
@@ -63848,8 +63886,8 @@ mDp
 pRW
 pRW
 pRW
-fkV
-mDp
+vEP
+csb
 iHD
 iHD
 myN
@@ -63859,8 +63897,8 @@ oLu
 cYs
 iHD
 iHD
-mDp
-fkV
+csb
+vEP
 pRW
 pRW
 pRW
@@ -64042,8 +64080,8 @@ pRW
 mDp
 mDp
 mDp
-mDp
-mDp
+fDw
+csb
 iHD
 iHD
 vZr
@@ -64053,8 +64091,8 @@ jua
 vZr
 iHD
 iHD
-pRW
-mDp
+csb
+fDw
 mDp
 mDp
 mDp
@@ -64236,9 +64274,9 @@ pRW
 mDp
 mDp
 mDp
-mDp
-mDp
-mDp
+vYe
+csb
+csb
 iHD
 iHD
 iHD
@@ -64246,9 +64284,9 @@ iHD
 iHD
 iHD
 iHD
-mDp
-mDp
-mDp
+csb
+csb
+vYe
 mDp
 mDp
 mDp
@@ -64430,19 +64468,19 @@ pRW
 mDp
 mDp
 mDp
-mDp
-mDp
-mDp
-mDp
+fDw
+fDw
+csb
+csb
 iHD
 iHD
 iHD
 iHD
 iHD
-mDp
-mDp
-mDp
-mDp
+csb
+csb
+fDw
+fDw
 mDp
 mDp
 mDp
@@ -64625,17 +64663,17 @@ pRW
 pRW
 pRW
 pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
+fDw
+vYe
+csb
+csb
+csb
+csb
+csb
+csb
+csb
+vYe
+fDw
 pRW
 pRW
 pRW
@@ -64819,17 +64857,17 @@ pRW
 pRW
 pRW
 pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
+fDw
+fDw
+fDw
+vYe
+fDw
+vYe
+fDw
+vYe
+fDw
+fDw
+fDw
 pRW
 pRW
 pRW

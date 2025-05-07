@@ -663,6 +663,10 @@
 /obj/structure/cable/green,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/bedrooms)
+"ayx" = (
+/obj/structure/grille,
+/turf/simulated/floor/airless/ceiling,
+/area/space)
 "ayy" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/drinks/cup{
@@ -1535,7 +1539,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway2)
 "bfO" = (
-/obj/machinery/camera/network/exploration,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -2216,7 +2219,9 @@
 "bIF" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_external{
-	req_one_access = null
+	req_one_access = null;
+	id = "docking_arm";
+	name = "Docking Arm"
 	},
 /obj/structure/sign/warning/evac{
 	pixel_x = -32
@@ -6939,14 +6944,18 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/glass_external{
-	req_one_access = null
+	req_one_access = null;
+	id = "docking_arm";
+	name = "Docking Arm"
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/hallway/secondary/docking_hallway2)
 "fiu" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_external{
-	req_one_access = null
+	req_one_access = null;
+	id = "docking_arm";
+	name = "Docking Arm"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -7773,6 +7782,7 @@
 	dir = 4
 	},
 /obj/structure/bed/chair/sofa/black/left,
+/obj/machinery/camera/network/civilian,
 /turf/simulated/floor/carpet,
 /area/crew_quarters/coffee_shop)
 "fLR" = (
@@ -8376,6 +8386,14 @@
 	pixel_x = 4
 	},
 /obj/item/pen,
+/obj/machinery/button/remote/airlock{
+	desc = "A remote control switch for the medbay recovery room door.";
+	id = "docking_arm";
+	name = "Door Switch";
+	pixel_x = -13;
+	pixel_y = -23;
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/docking_hallway2)
 "gjb" = (
@@ -9107,6 +9125,10 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/test_area)
+"gMZ" = (
+/obj/structure/lattice,
+/turf/space,
+/area/space)
 "gNs" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/maintenance/library)
@@ -9515,7 +9537,9 @@
 "hhy" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_external{
-	req_one_access = null
+	req_one_access = null;
+	id = "docking_arm";
+	name = "Docking Arm"
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/hallway/secondary/docking_hallway2)
@@ -10509,6 +10533,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/exploration)
+"iaL" = (
+/obj/structure/closet/crate/secure/weapon,
+/obj/machinery/air_alarm{
+	frequency = 1441;
+	pixel_y = 22
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/secondary/docking_hallway2)
 "ibq" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/structure/disposalpipe/segment{
@@ -21045,6 +21077,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1aftmaint)
+"pSi" = (
+/obj/machinery/door/airlock/security,
+/obj/map_helper/access_helper/airlock/station/security/general,
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled,
+/area/hallway/secondary/docking_hallway2)
 "pSA" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -21382,10 +21420,8 @@
 /turf/simulated/floor/tiled,
 /area/exploration/pilot_prep)
 "qfY" = (
-/obj/machinery/air_alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
+/obj/structure/closet/crate/secure/weapon,
+/obj/machinery/camera/network/exploration,
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/docking_hallway2)
 "qgv" = (
@@ -25376,6 +25412,10 @@
 /obj/machinery/body_scanconsole,
 /obj/effect/floor_decal/corner_steel_grid{
 	dir = 10
+	},
+/obj/machinery/camera/network/medbay{
+	dir = 8;
+	network = list("Psychiatric")
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/docking_hallway2)
@@ -29521,6 +29561,7 @@
 	dir = 5
 	},
 /obj/machinery/door/airlock/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
 "wjV" = (
@@ -42907,7 +42948,7 @@ lVU
 hqK
 udY
 etm
-wyc
+qfY
 blm
 cUt
 etm
@@ -43295,7 +43336,7 @@ lVU
 nNE
 udY
 etm
-wyc
+iaL
 hSU
 kvI
 etm
@@ -43682,8 +43723,8 @@ acQ
 eYG
 hqK
 udY
-etm
-qfY
+pSi
+blm
 nqN
 bnJ
 pbY
@@ -64015,8 +64056,8 @@ xRj
 xRj
 xRj
 jBC
-jNg
-jNg
+gMZ
+gMZ
 qBy
 qBy
 qBy
@@ -64024,8 +64065,8 @@ qBy
 qBy
 qBy
 qBy
-jNg
-jNg
+gMZ
+gMZ
 jBC
 xRj
 xRj
@@ -64209,17 +64250,17 @@ xRj
 xRj
 xRj
 xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
+ayx
+qqr
+qqr
+qqr
+qqr
+qqr
+qqr
+qqr
+qqr
+qqr
+ayx
 xRj
 xRj
 xRj
@@ -64405,13 +64446,13 @@ xRj
 xRj
 xRj
 xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
+ayx
+qqr
+ayx
+qqr
+ayx
+qqr
+ayx
 xRj
 xRj
 xRj
