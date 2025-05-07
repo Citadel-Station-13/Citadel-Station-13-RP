@@ -416,6 +416,7 @@
 /obj/machinery/door/blast/regular{
 	id = "fighterhandar3"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/fighterbaysec)
 "ce" = (
@@ -951,6 +952,7 @@
 /obj/machinery/door/blast/regular{
 	id = "fighterhandar2"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/fighterbaysec)
 "eN" = (
@@ -1204,6 +1206,7 @@
 /obj/machinery/door/blast/regular{
 	id = "fighterhandar1"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/fighterbaysec)
 "gk" = (
@@ -3907,6 +3910,7 @@
 /obj/machinery/door/blast/regular{
 	id = "fighterhandar2"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/fighterbaysec)
 "vu" = (
@@ -8331,6 +8335,7 @@
 /obj/machinery/door/blast/regular{
 	id = "fighterhandar3"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/fighterbaysec)
 "TU" = (
@@ -9175,6 +9180,7 @@
 /obj/machinery/door/blast/regular{
 	id = "fighterhandar1"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/fighterbaysec)
 "XD" = (

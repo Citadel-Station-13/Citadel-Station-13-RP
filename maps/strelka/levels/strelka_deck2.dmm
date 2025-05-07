@@ -2720,6 +2720,11 @@
 	},
 /turf/simulated/floor/carpet/oracarpet,
 /area/strelka/shipbase/deck2/bridge/ce)
+"iv" = (
+/obj/structure/stairs/spawner/south,
+/obj/machinery/light/small/old,
+/turf/simulated/floor/reinforced,
+/area/strelka/shipbase/deck2)
 "iz" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
@@ -3406,17 +3411,6 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/engineering/nacelle2)
-"kR" = (
-/obj/machinery/porta_turret/stationary{
-	gl_uid = "exploration";
-	installation = /obj/item/gun/projectile/energy/phasegun;
-	name = "exploration turret";
-	req_one_access = list(19,43,62,67);
-	uid = "EMT";
-	enabled = 0
-	},
-/turf/simulated/floor/tiled/techfloor/monogrid,
-/area/shuttle/emt/strelka)
 "kS" = (
 /obj/structure/window/phoronreinforced,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -3527,9 +3521,6 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
 "ls" = (
-/obj/structure/cable/white{
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/camera/network/security{
 	dir = 8
@@ -4362,9 +4353,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
-	},
-/obj/structure/window/reinforced{
-	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/strelka)
@@ -5411,9 +5399,6 @@
 	},
 /obj/item/hardsuit/hazard/equipped,
 /obj/structure/closet/walllocker_double/east,
-/obj/structure/cable/white{
-	icon_state = "2-8"
-	},
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck2/bridge/hos)
 "qC" = (
@@ -6165,9 +6150,6 @@
 	info = "In the event that more weapon permits are needed, please fax Central Command to request more. Please also include a reason for the request. Blank permits will be shipped to cargo for pickup. If long-term permits are desired, please contact your Nanotrasen Employee Representitive for more information.";
 	name = "note from CentCom about permits";
 	pixel_x = -4
-	},
-/obj/structure/cable/white{
-	icon_state = "1-2"
 	},
 /obj/structure/closet/walllocker_double/east,
 /turf/simulated/floor/wood,
@@ -7186,9 +7168,6 @@
 	},
 /area/strelka/shipbase/deck2/engineering/coms)
 "vL" = (
-/obj/structure/cable/white{
-	icon_state = "1-2"
-	},
 /obj/machinery/fire_alarm/east_mount,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/wood,
@@ -9032,12 +9011,6 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
-"Bh" = (
-/obj/machinery/light/small/old{
-	dir = 8
-	},
-/turf/simulated/floor/reinforced,
-/area/strelka/shipbase/deck2)
 "Bi" = (
 /obj/landmark/spawnpoint/job/lawyer,
 /obj/structure/bed/chair/office/dark{
@@ -9357,7 +9330,7 @@
 "Cp" = (
 /obj/machinery/shipsensors,
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/shuttle/emt/strelka)
+/area/shuttle/emt/strelka/main)
 "Cq" = (
 /obj/structure/cable/pink{
 	icon_state = "4-8"
@@ -10767,6 +10740,12 @@
 "GN" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/computer/ship/sensors,
+/obj/machinery/turretid{
+	control_area = "/area/shuttle/emt/strelka/main";
+	uid = "EMT";
+	req_access = list(19,43,62,67);
+	check_access = 0
+	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/emt/strelka/cockpit)
 "GP" = (
@@ -12088,6 +12067,13 @@
 /obj/machinery/light/small/old,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/engineering/nacelle)
+"La" = (
+/obj/structure/stairs/spawner/north,
+/obj/machinery/light/small/old{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/strelka/shipbase/deck2)
 "Lb" = (
 /obj/machinery/power/smes/buildable{
 	charge = 15000;
@@ -12131,7 +12117,9 @@
 /area/shuttle/excursion/strelka)
 "Li" = (
 /obj/effect/floor_decal/borderfloor,
-/obj/structure/window/reinforced,
+/obj/item/radio/intercom/department/medbay{
+	pixel_y = -24
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck2/explo/emt)
 "Lj" = (
@@ -12402,6 +12390,9 @@
 /obj/structure/table/carbon/reinforced,
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
+	},
+/obj/machinery/status_display{
+	pixel_x = 30
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/security)
@@ -13912,9 +13903,9 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck2/bridge/iaa)
 "Rl" = (
-/obj/machinery/power/apc/north_mount,
-/obj/structure/cable/white{
-	icon_state = "0-4"
+/obj/item/radio/intercom/department/security{
+	dir = 1;
+	pixel_y = 29
 	},
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck2/bridge/hos)
@@ -14330,6 +14321,10 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
+/obj/structure/cable/white{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck2/bridge/hos)
 "SH" = (
@@ -14405,9 +14400,6 @@
 /turf/simulated/floor/carpet,
 /area/strelka/shipbase/deck2/security/detective)
 "ST" = (
-/obj/machinery/light/small/old{
-	dir = 4
-	},
 /obj/machinery/air_alarm/west_mount,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2)
@@ -16005,12 +15997,12 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/excursion/strelka)
 "Xh" = (
-/obj/structure/cable/white{
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
+	},
+/obj/structure/cable/white{
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck2/bridge/hos)
@@ -16287,7 +16279,7 @@
 "Yi" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/turretid{
-	control_area = "/area/shuttle/emt/strelka";
+	control_area = "/area/shuttle/emt/strelka/main";
 	uid = "EMT";
 	req_access = list(19,43,62,67);
 	check_access = 0
@@ -33019,7 +33011,7 @@ FA
 NO
 NO
 zf
-Li
+KS
 vF
 Ol
 hL
@@ -34582,13 +34574,13 @@ qk
 jr
 qk
 WX
-UC
-Bh
+La
+vu
 CJ
 Qr
 io
 ST
-cx
+iv
 oF
 xD
 sj
@@ -35151,7 +35143,7 @@ xu
 gC
 VI
 qY
-kR
+jo
 Wc
 DK
 DK
@@ -37880,13 +37872,13 @@ jM
 jM
 jM
 cM
-UC
+La
 Mn
 Ii
 MC
 TO
 Bu
-cx
+iv
 oF
 tu
 SR

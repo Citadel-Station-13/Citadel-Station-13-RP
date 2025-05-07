@@ -4961,6 +4961,10 @@
 	},
 /turf/simulated/floor/wood/broken,
 /area/strelka/shipbase/deck3/science)
+"rT" = (
+/obj/machinery/shield_diffuser,
+/turf/space/basic,
+/area/space)
 "rV" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
@@ -25533,6 +25537,7 @@ ae
 ae
 ae
 ae
+rT
 ae
 ae
 ae
@@ -25546,8 +25551,7 @@ ae
 ae
 ae
 ae
-ae
-ae
+rT
 ae
 ae
 ae
@@ -25726,7 +25730,7 @@ ae
 ae
 ae
 ae
-ae
+rT
 Xb
 rc
 bo
@@ -25742,7 +25746,7 @@ eB
 kR
 rc
 Xb
-ae
+rT
 ae
 ae
 ae
@@ -25919,7 +25923,7 @@ ae
 ae
 ae
 ae
-ae
+rT
 Xb
 SF
 bo
@@ -25937,7 +25941,7 @@ Fo
 kR
 SF
 Xb
-ae
+rT
 ae
 ae
 ae
@@ -38917,7 +38921,7 @@ ae
 ae
 ae
 ae
-ae
+rT
 we
 we
 SB
@@ -38935,7 +38939,7 @@ NU
 JV
 Od
 Od
-ae
+rT
 ae
 ae
 ae
@@ -39305,7 +39309,7 @@ ae
 ae
 ae
 ae
-ae
+rT
 Xb
 uM
 uM
@@ -39323,7 +39327,7 @@ pM
 Od
 Od
 Xb
-ae
+rT
 ae
 ae
 ae
@@ -39500,8 +39504,8 @@ ae
 ae
 ae
 ae
-ae
-ae
+rT
+rT
 uM
 uM
 qG
@@ -39515,8 +39519,8 @@ SN
 qG
 qG
 uM
-ae
-ae
+rT
+rT
 ae
 ae
 ae
@@ -40668,7 +40672,7 @@ ae
 ae
 ae
 ae
-ae
+rT
 uM
 uM
 uM
@@ -40676,7 +40680,7 @@ uM
 uM
 uM
 uM
-ae
+rT
 ae
 ae
 ae
@@ -41056,7 +41060,7 @@ ae
 ae
 ae
 ae
-ae
+rT
 Xb
 uM
 uM
@@ -41064,7 +41068,7 @@ uM
 uM
 uM
 Xb
-ae
+rT
 ae
 ae
 ae
