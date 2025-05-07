@@ -85,22 +85,6 @@
 	tool_speed = 0.75
 	random_color = FALSE
 
-/obj/item/tool/screwdriver/material
-	name = "material screwdriver"
-	desc = "A screwdriver."
-	tool_speed = 1
-	materials_base = null
-	material_parts = MAT_STEEL
-	material_costs = 250
-	random_color = FALSE
-	material_primary = "tip"
-
-/obj/item/tool/screwdriver/material/update_material_single(datum/prototype/material/material)
-	name = "[material.display_name] screwdriver"
-	color = material.icon_colour
-	tool_speed = material.tool_stats(initial_toolspeed = 1)
-	desc = "A screwdriver made from [material.display_name]. It appears to be [(1-tool_speed)*100]% faster than a standard screwdriver. Fascinating!"
-
 /obj/item/tool/screwdriver/clockwork
 	name = "clockwork screwdriver"
 	desc = "An all-brass screwdriver with what looks to be an uncut driver. Despite that, it seems to fit any channel it is put in."
@@ -182,12 +166,12 @@
 	tool_sound = 'sound/items/drill_use.ogg'
 	tool_speed = 0.25
 	random_color = FALSE
-	var/obj/item/tool/wrench/power/counterpart = null
+	var/obj/item/tool/wrench/power/counterpart = /obj/item/tool/wrench/power
 
 /obj/item/tool/screwdriver/power/Initialize(mapload, no_counterpart = TRUE)
 	. = ..()
-	if(!counterpart && no_counterpart)
-		counterpart = new(src, FALSE)
+	if(!isobj(counterpart) && no_counterpart)
+		counterpart = new counterpart(src, FALSE)
 		counterpart.counterpart = src
 
 /obj/item/tool/screwdriver/power/Destroy()
@@ -221,3 +205,42 @@
 	. = ..()
 	icon_state = initial(icon_state)
 	item_state = initial(item_state)
+
+
+/obj/item/tool/screwdriver/material
+	name = "material screwdriver"
+	desc = "A screwdriver."
+	tool_speed = 1
+	materials_base = null
+	material_parts = MAT_STEEL
+	material_costs = 250
+	random_color = FALSE
+	material_primary = "tip"
+
+/obj/item/tool/screwdriver/material/update_material_single(datum/prototype/material/material)
+	name = "[material.display_name] screwdriver"
+	color = material.icon_colour
+	tool_speed = material.tool_stats(initial_toolspeed = 1)
+	desc = "A screwdriver made from [material.display_name]."
+
+
+/obj/item/tool/screwdriver/power/material
+	name = "material hand drill"
+	desc = "A simple powered hand drill. It's fitted with a screw bit."
+	materials_base = null
+	material_parts = list("tip" = MAT_STEEL, "wiring" = MAT_SILVER)
+	material_costs = list("tip" = 150, "wiring" = 50)
+	counterpart = /obj/item/tool/wrench/power/material
+
+
+/obj/item/tool/screwdriver/power/material/update_material_multi(list/parts, prevent_recursion=FALSE)
+	var/datum/prototype/material/tipmat = parts["tip"]
+	var/datum/prototype/material/wiremat = parts["wiring"]
+	name = "[tipmat.display_name] hand drill"
+	color = tipmat.icon_colour
+	var/start_speed = (wiremat.relative_conductivity<2.5) ? 1 : initial(tool_speed)
+	tool_speed = tipmat.tool_stats(initial_toolspeed = start_speed)
+	desc = "A simple powered hand drill. It's fitted with a [tipmat.display_name] screw-driving bit, and appears to have [wiremat.display_name] wiring[(start_speed == 1) ? ", which seems insufficiently conductive." : "." ]"
+	var/obj/item/tool/wrench/power/material/C = counterpart
+	if(C && !prevent_recursion)
+		C.update_material_multi(parts, prevent_recursion=TRUE)

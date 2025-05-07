@@ -150,13 +150,13 @@
 	throw_force = 8
 	attack_verb = list("drilled", "screwed", "jabbed")
 	tool_speed = 0.25
-	var/obj/item/tool/screwdriver/power/counterpart = null
+	var/obj/item/tool/screwdriver/power/counterpart = /obj/item/tool/screwdriver/power
 	random_color = FALSE
 
 /obj/item/tool/wrench/power/Initialize(mapload, no_counterpart = TRUE)
 	. = ..()
-	if(!counterpart && no_counterpart)
-		counterpart = new(src, FALSE)
+	if(!isobj(counterpart) && no_counterpart)
+		counterpart = new counterpart(src, FALSE)
 		counterpart.counterpart = src
 
 /obj/item/tool/wrench/power/Destroy()
@@ -189,3 +189,24 @@
 	. = ..()
 	icon_state = initial(icon_state)
 	item_state = initial(item_state)
+
+/obj/item/tool/wrench/power/material
+	name = "material hand drill"
+	desc = "A simple powered hand drill. It's fitted with a bolt driving bit."
+	materials_base = null
+	material_parts = list("tip" = MAT_STEEL, "wiring" = MAT_SILVER)
+	material_costs = list("tip" = 150, "wiring" = 50)
+	material_primary = "tip"
+	counterpart = /obj/item/tool/screwdriver/power/material
+
+/obj/item/tool/wrench/power/material/update_material_multi(list/parts, prevent_recursion=FALSE)
+	var/datum/prototype/material/tipmat = parts["tip"]
+	var/datum/prototype/material/wiremat = parts["wiring"]
+	name = "[tipmat.display_name] hand drill"
+	color = tipmat.icon_colour
+	var/start_speed = (wiremat.relative_conductivity<2.5) ? 1 : initial(tool_speed)
+	tool_speed = tipmat.tool_stats(initial_toolspeed = start_speed)
+	desc = "A simple powered hand drill. It's fitted with a [tipmat.display_name] bolt-driving bit, and appears to have [wiremat.display_name] wiring[(start_speed == 1) ? ", which seems insufficiently conductive." : "." ]"
+	var/obj/item/tool/screwdriver/power/material/C = counterpart
+	if(C && !prevent_recursion)
+		C.update_material_multi(parts, prevent_recursion=TRUE)
