@@ -169,10 +169,6 @@
 /obj/effect/floor_decal/corner_techfloor_grid/full{
 	dir = 1
 	},
-/obj/machinery/air_alarm{
-	dir = 8;
-	pixel_x = 24
-	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/submap/osiris_field/pirate_wreck2)
 "ix" = (
@@ -207,12 +203,6 @@
 	},
 /obj/structure/cable/orange{
 	icon_state = "1-2"
-	},
-/obj/machinery/button/remote/blast_door{
-	id = "hammerheadfsb";
-	name = "Fighter Tube Door";
-	pixel_x = -27;
-	pixel_y = -26
 	},
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 10
@@ -301,13 +291,6 @@
 	},
 /obj/effect/floor_decal/corner_techfloor_grid/full{
 	dir = 4
-	},
-/obj/machinery/button/remote/blast_door{
-	dir = 1;
-	id = "hammerfighterport";
-	name = "Port Fighter Bay";
-	pixel_x = 6;
-	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/submap/osiris_field/pirate_wreck2)
@@ -570,12 +553,6 @@
 /area/submap/osiris_field/pirate_wreck2)
 "xZ" = (
 /obj/effect/floor_decal/corner_techfloor_grid/diagonal,
-/obj/machinery/button/remote/blast_door{
-	id = "hammerheadtba";
-	name = "Fighter Tube Access";
-	pixel_x = -26;
-	pixel_y = 8
-	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
 	},
@@ -584,21 +561,6 @@
 "ye" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 6
-	},
-/turf/simulated/floor/tiled/steel_ridged,
-/area/submap/osiris_field/pirate_wreck2)
-"yq" = (
-/obj/machinery/button/remote/blast_door{
-	id = "hammerheadtba";
-	name = "Fighter Tube Access";
-	pixel_x = 8;
-	pixel_y = 26
-	},
-/obj/machinery/button/remote/blast_door{
-	id = "hammerheadfsb";
-	name = "Fighter Tube Door";
-	pixel_x = -8;
-	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/submap/osiris_field/pirate_wreck2)
@@ -785,10 +747,6 @@
 /obj/effect/floor_decal/corner_techfloor_grid/full{
 	dir = 8
 	},
-/obj/item/radio/intercom/department/security{
-	dir = 8;
-	pixel_x = -24
-	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/submap/osiris_field/pirate_wreck2)
 "LE" = (
@@ -807,15 +765,6 @@
 	req_one_access = list(2)
 	},
 /turf/simulated/floor/tiled/steel_ridged,
-/area/submap/osiris_field/pirate_wreck2)
-"LP" = (
-/obj/machinery/air_alarm{
-	dir = 8;
-	pixel_x = 22
-	},
-/obj/item/spacecash/c100,
-/obj/random/coin,
-/turf/simulated/floor/tiled/techfloor/monogrid,
 /area/submap/osiris_field/pirate_wreck2)
 "Nz" = (
 /turf/simulated/floor/plating,
@@ -904,14 +853,11 @@
 /turf/space/basic,
 /area/space)
 "RH" = (
-/obj/machinery/air_alarm{
-	dir = 4;
-	pixel_x = -24
-	},
 /obj/machinery/light/no_nightshift{
 	dir = 1;
 	old_wall = 1
 	},
+/obj/machinery/air_alarm/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/submap/osiris_field/pirate_wreck2)
 "RI" = (
@@ -974,9 +920,6 @@
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 6
 	},
-/obj/machinery/power/apc/east_mount{
-	old_wall = 1
-	},
 /obj/structure/cable/orange{
 	icon_state = "0-2"
 	},
@@ -1037,27 +980,6 @@
 "Zb" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/submap/osiris_field/pirate_wreck2)
-"Zq" = (
-/obj/structure/handrail{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner_techfloor_grid{
-	dir = 6
-	},
-/obj/machinery/button/remote/blast_door{
-	id = "hammerfighterport";
-	name = "Port Fighter Bay";
-	pixel_x = -4;
-	pixel_y = 33
-	},
-/obj/machinery/button/remote/blast_door{
-	id = "hammerfighterstarboard";
-	name = "Starboard Fighter Bay";
-	pixel_x = 4;
-	pixel_y = 33
-	},
-/turf/simulated/floor/tiled/steel_ridged,
 /area/submap/osiris_field/pirate_wreck2)
 "ZN" = (
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -1225,7 +1147,7 @@ NO
 gm
 Wz
 jN
-Zq
+wg
 TE
 NQ
 jx
@@ -1277,7 +1199,7 @@ Wz
 aA
 QU
 Wz
-yq
+Ds
 uU
 Wz
 Wz
@@ -1470,7 +1392,7 @@ gm
 gm
 Wz
 rX
-LP
+jJ
 Wz
 zO
 eP

@@ -444,6 +444,10 @@
 "VL" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/submap/osiris_field/pirate_wreck1)
+"VU" = (
+/obj/machinery/air_alarm/alarms_hidden/west_mount,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
 "VW" = (
 /mob/living/simple_mob/humanoid/pirate/ranged/armored,
 /turf/simulated/floor/reinforced,
@@ -1002,7 +1006,7 @@ Po
 XW
 an
 lP
-VL
+VU
 XM
 oG
 Vn

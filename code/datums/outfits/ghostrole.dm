@@ -108,10 +108,14 @@
 	uniform = /obj/item/clothing/under/color/black
 	suit = /obj/item/clothing/suit/storage/hazardvest
 	head = /obj/item/clothing/head/hardhat/orange
+	shoes = /obj/item/clothing/shoes/galoshes/black
+	back = /obj/item/storage/backpack/industrial
 	id_type = /obj/item/card/id/assistant
 	pda_type = /obj/item/pda/engineering
 	belt = /obj/item/storage/belt/utility/full
 	backpack_contents = list(/obj/item/gps/engineering = 1,
 							/obj/item/gun/projectile/energy/phasegun/pistol = 1,
-							/obj/item/camera = 1
+							/obj/item/camera = 1,
+							/obj/item/spacecash/c200 = 1,
+							/obj/item/spacecash/c100 = 1
 							)

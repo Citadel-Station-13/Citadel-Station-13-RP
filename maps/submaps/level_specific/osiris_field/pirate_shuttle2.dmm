@@ -126,6 +126,15 @@
 /obj/effect/decal/mecha_wreckage/cludge,
 /turf/simulated/floor/reinforced,
 /area/submap/osiris_field/pirate_wreck3)
+"gY" = (
+/obj/machinery/air_alarm/alarms_hidden/west_mount,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck3)
+"hh" = (
+/obj/machinery/portable_atmospherics/canister/empty/phoron,
+/obj/machinery/air_alarm/alarms_hidden/west_mount,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck3)
 "hm" = (
 /obj/structure/lattice,
 /turf/space/basic,
@@ -276,6 +285,11 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/submap/osiris_field/pirate_wreck3)
+"sP" = (
+/obj/structure/table/steel,
+/obj/machinery/air_alarm/alarms_hidden/west_mount,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck3)
 "sR" = (
 /mob/living/simple_mob/humanoid/pirate,
 /turf/simulated/floor/reinforced,
@@ -342,6 +356,13 @@
 /obj/machinery/door/airlock/multi_tile{
 	dir = 8
 	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/pirate_wreck3)
+"wZ" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/obj/machinery/air_alarm/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/submap/osiris_field/pirate_wreck3)
 "xY" = (
@@ -559,6 +580,11 @@
 /area/submap/osiris_field/pirate_wreck3)
 "Pl" = (
 /obj/machinery/door/airlock/hatch,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck3)
+"Ps" = (
+/obj/structure/bed,
+/obj/machinery/air_alarm/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/osiris_field/pirate_wreck3)
 "PL" = (
@@ -1364,7 +1390,7 @@ Rp
 JL
 Bt
 ig
-Ff
+gY
 xY
 YF
 ur
@@ -1645,7 +1671,7 @@ Wo
 Wo
 Wo
 Wo
-Wo
+wZ
 Wo
 Wo
 Wo
@@ -1656,7 +1682,7 @@ Wo
 VR
 Wo
 Wo
-Wo
+wZ
 ZM
 Bt
 Rp
@@ -2031,7 +2057,7 @@ PN
 Bt
 Ff
 qP
-CU
+hh
 CU
 Bt
 Ff
@@ -2044,7 +2070,7 @@ xY
 Ff
 Ff
 Ff
-Ff
+gY
 xY
 Ff
 Ff
@@ -2055,7 +2081,7 @@ Ff
 xY
 Ff
 CH
-Ff
+gY
 xY
 Ff
 UF
@@ -2176,7 +2202,7 @@ Bt
 XP
 Ff
 NH
-vi
+sP
 NH
 Bt
 Ff
@@ -2577,7 +2603,7 @@ cy
 oD
 cy
 Uc
-cy
+Ps
 Uc
 Bt
 Co
@@ -2728,7 +2754,7 @@ VR
 Wo
 Wo
 Wo
-Wo
+wZ
 sj
 Wo
 Wo
