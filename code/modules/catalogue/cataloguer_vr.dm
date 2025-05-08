@@ -10,6 +10,7 @@
 	snowflake_dont_update_icon_state = TRUE
 
 /obj/item/cataloguer/compact/update_icon_state()
+	. = ..()
 	var/base_state = base_icon_state || initial(icon_state)
 	if(!deployed)
 		icon_state = "[base_state]_closed"
@@ -17,7 +18,6 @@
 		icon_state = "[base_state]_s"
 	else
 		icon_state = base_state
-	return ..()
 
 /obj/item/cataloguer/compact/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	toggle()

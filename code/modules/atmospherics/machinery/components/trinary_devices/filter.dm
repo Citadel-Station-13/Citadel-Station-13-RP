@@ -32,6 +32,7 @@
 		filtering = initial(casted.id)
 
 /obj/machinery/atmospherics/component/trinary/filter/update_icon_state()
+	. = ..()
 	if(mirrored)
 		icon_state = "m"
 	else
@@ -42,7 +43,6 @@
 		icon_state += on ? "on" : "off"
 	else
 		icon_state += "off"
-	return ..()
 
 /obj/machinery/atmospherics/component/trinary/filter/process(delta_time)
 	..()

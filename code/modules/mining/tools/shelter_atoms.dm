@@ -166,9 +166,9 @@
 		icon_state = "table" //this table doesn't care about your material nonsense. just ignore the overlays.
 
 /obj/structure/table/survival_pod/update_icon_state()
+	. = ..()
 	if(!isnull(material_base))
 		icon_state = "table"
-	return ..()
 
 /obj/structure/table/survival_pod/Initialize(mapload)
 	remove_obj_verb(src, /obj/structure/table/verb/do_flip)

@@ -103,11 +103,11 @@
 	register_material(material, part == "base")
 
 /obj/structure/girder/update_icon_state()
+	. = ..()
 	if(anchored)
 		icon_state = initial(icon_state)
 	else
 		icon_state = "displaced"
-	return ..()
 
 /obj/structure/girder/displaced
 	icon_state = "displaced"

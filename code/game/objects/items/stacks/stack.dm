@@ -94,12 +94,12 @@
 	update_icon()
 
 /obj/item/stack/update_icon_state()
+	. = ..()
 	if(!use_new_icon_update)
 		return ..()
 	if(!icon_state_count)
 		return ..()
 	icon_state = "[base_icon_state || initial(icon_state)]-[get_amount_icon_notch(get_amount())]"
-	return ..()
 
 /obj/item/stack/update_icon()
 	. = ..()

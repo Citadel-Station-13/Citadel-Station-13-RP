@@ -34,8 +34,8 @@
 		playsound(user, 'sound/effects/alert.ogg', 50, 1)
 
 /obj/item/tank/jetpack/update_icon_state()
+	. = ..()
 	icon_state = "[base_icon_state || initial(icon_state)][on ? "-on" : ""]"
-	return ..()
 
 /obj/item/tank/jetpack/verb/toggle_rockets()
 	set name = "Toggle Jetpack Stabilization"

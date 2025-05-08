@@ -31,6 +31,7 @@
 	var/list/datum/point_redemption_item/prize_list = list()
 
 /obj/machinery/point_redemption_vendor/update_icon_state()
+	. = ..()
 	var/icon_base_state = base_icon_state || initial(icon_state)
 	var/is_broken = atom_flags & ATOM_BROKEN
 	if(is_broken && icon_state_append_broken)
@@ -41,7 +42,6 @@
 		icon_state = "[icon_base_state][icon_state_append_open]"
 	else
 		icon_state = icon_base_state
-	return ..()
 
 /obj/machinery/point_redemption_vendor/power_change()
 	var/old_stat = machine_stat

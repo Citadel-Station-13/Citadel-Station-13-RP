@@ -28,8 +28,8 @@
 	state = 1
 
 /obj/machinery/atmospherics/tvalve/update_icon_state()
+	. = ..()
 	icon_state = "tvalve[mirrored ? "m" : ""][state]"
-	return ..()
 
 /obj/machinery/atmospherics/tvalve/proc/animation()
 	flick("tvalve[mirrored ? "m" : ""][src.state][!src.state]",src)

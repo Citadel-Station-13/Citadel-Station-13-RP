@@ -33,8 +33,8 @@
 	return ..()
 
 /obj/item/shield/transforming/update_icon_state()
+	. = ..()
 	icon_state = "[initial(icon_state)][active && !active_via_overlay ? "-active" : ""]"
-	return ..()
 
 /obj/item/shield/transforming/update_overlays()
 	. = ..()

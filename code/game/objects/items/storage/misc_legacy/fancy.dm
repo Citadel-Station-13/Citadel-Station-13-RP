@@ -376,8 +376,8 @@
 	create_reagents(15 * max_items)
 
 /obj/item/storage/fancy/cigar/update_icon_state()
+	. = ..()
 	icon_state = "[initial(icon_state)][contents.len]"
-	return ..()
 
 /obj/item/storage/fancy/cigar/Exited(atom/movable/AM, atom/newLoc)
 	. = ..()
@@ -491,5 +491,5 @@
 	update_icon()
 
 /obj/item/storage/fancy/heartbox/update_icon_state()
+	. = ..()
 	icon_state = length(contents) ? "chocolate" : "heartbox_empty"
-	return ..()

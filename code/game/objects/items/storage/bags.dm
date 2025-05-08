@@ -85,6 +85,7 @@
 	obj_storage.update_icon_on_item_change = TRUE
 
 /obj/item/storage/bag/trash/update_icon_state()
+	. = ..()
 	switch(w_class)
 		if(3)
 			icon_state = "[initial(icon_state)]1"
@@ -94,7 +95,6 @@
 			icon_state = "[initial(icon_state)]3"
 		else
 			icon_state = "[initial(icon_state)]"
-	return ..()
 
 /obj/item/storage/bag/trash/bluespace
 	name = "trash bag of holding"

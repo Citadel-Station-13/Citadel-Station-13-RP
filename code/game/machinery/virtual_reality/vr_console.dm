@@ -51,8 +51,8 @@
 		go_out()
 
 /obj/machinery/vr_sleeper/update_icon_state()
+	. = ..()
 	icon_state = "[base_state][occupant ? "1" : "0"]"
-	return ..()
 
 /obj/machinery/vr_sleeper/Topic(href, href_list)
 	if(..())

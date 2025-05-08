@@ -49,8 +49,8 @@ var/list/marker_beacon_colors = list(
 	. += "<span class='notice'>Alt-click to select a color. Current color is [picked_color].</span>"
 
 /obj/item/stack/marker_beacon/update_icon_state()
+	. = ..()
 	icon_state = "[initial(icon_state)][lowertext(picked_color)]"
-	return ..()
 
 /obj/item/stack/marker_beacon/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()

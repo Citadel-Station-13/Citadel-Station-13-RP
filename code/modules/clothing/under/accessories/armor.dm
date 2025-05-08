@@ -99,8 +99,8 @@
 	)
 
 /obj/item/clothing/accessory/storage/shotgun_shell_holder/update_icon_state()
+	. = ..()
 	icon_state = "shotholder-[length(contents)]"
-	return ..()
 
 ////////////////
 //Armor plates

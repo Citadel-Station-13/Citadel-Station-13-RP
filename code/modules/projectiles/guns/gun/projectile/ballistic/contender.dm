@@ -18,8 +18,8 @@
 
 // todo: new rendering system
 /obj/item/gun/projectile/ballistic/contender/update_icon_state()
+	. = ..()
 	icon_state = bolt_closed ? initial(icon_state) : icon_retracted
-	return ..()
 
 /obj/item/gun/projectile/ballistic/contender/a44
 	caliber = /datum/ammo_caliber/a44

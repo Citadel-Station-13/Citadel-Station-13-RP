@@ -40,5 +40,5 @@
 		add_overlay(cap_image)
 
 /obj/item/pen/crayon/spraycan/update_icon_state()
+	. = ..()
 	icon_state = capped? "[initial(icon_state)]_cap" : "[initial(icon_state)]"
-	return ..()

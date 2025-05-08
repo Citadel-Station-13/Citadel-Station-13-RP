@@ -258,13 +258,13 @@ CREATE_WALL_MOUNTING_TYPES(/obj/machinery/camera)
 		P.SetSight(SEE_TURFS | SEE_MOBS | SEE_OBJS)
 
 /obj/machinery/camera/update_icon_state()
+	. = ..()
 	if (!status || (machine_stat & BROKEN))
 		icon_state = "[initial(icon_state)]1"
 	else if (machine_stat & EMPED)
 		icon_state = "[initial(icon_state)]emp"
 	else
 		icon_state = initial(icon_state)
-	return ..()
 
 /obj/machinery/camera/proc/triggerCameraAlarm(duration = 0)
 	alarm_on = 1

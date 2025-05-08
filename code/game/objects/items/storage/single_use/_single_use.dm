@@ -20,5 +20,5 @@
 	update_icon()
 
 /obj/item/storage/single_use/update_icon_state()
+	. = ..()
 	icon_state = "[base_icon_state || initial(icon_state)][torn_open]"
-	return ..()

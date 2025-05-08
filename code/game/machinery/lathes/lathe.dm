@@ -126,6 +126,7 @@
 	dump_storages()
 
 /obj/machinery/lathe/update_icon_state()
+	. = ..()
 	if(!isnull(active_icon_state) && queue_active)
 		icon_state = active_icon_state
 	else if(length(queue) && !isnull(paused_icon_state))
@@ -133,7 +134,6 @@
 	else
 		// todo: unified machinery base icon state
 		icon_state = base_icon_state
-	return ..()
 
 /obj/machinery/lathe/RefreshParts()
 	. = ..()
