@@ -2,6 +2,7 @@
  * Special. Uses `mod_hyperbolic_slowdown`, sets the current hyperbolic slowdown to that.
  */
 /datum/movespeed_modifier/base_movement_speed
+	id = "base-movement_speed"
 	variable = TRUE
 	priority = MOVESPEED_PRIORITY_BASE_MOVE_SPEED
 

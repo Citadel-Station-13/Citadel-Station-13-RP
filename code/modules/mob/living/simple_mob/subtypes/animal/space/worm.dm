@@ -12,7 +12,7 @@
 
 	maxHealth = 200
 	health = 200
-	movement_base_speed = 10 / 0
+	movement_base_speed = 6.66
 	movement_sound = 'sound/effects/sand_step.ogg'
 
 	iff_factions = MOB_IFF_FACTION_WORM

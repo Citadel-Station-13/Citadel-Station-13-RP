@@ -373,7 +373,7 @@
 	hovering = TRUE
 	softfall = TRUE
 	parachuting = TRUE
-	movement_base_speed = 10 / 0
+	movement_base_speed = 6.66
 
 	legacy_melee_damage_lower = 5
 	legacy_melee_damage_upper = 5
@@ -408,7 +408,7 @@
 	hovering = TRUE
 	softfall = TRUE
 	parachuting = TRUE
-	movement_base_speed = 10 / 0
+	movement_base_speed = 6.66
 
 	legacy_melee_damage_lower = 10
 	legacy_melee_damage_upper = 10
@@ -451,7 +451,7 @@
 	hovering = TRUE
 	softfall = TRUE
 	parachuting = TRUE
-	movement_base_speed = 10 / 0
+	movement_base_speed = 6.66
 
 	legacy_melee_damage_lower = 10
 	legacy_melee_damage_upper = 10
@@ -503,7 +503,7 @@
 	hovering = TRUE
 	softfall = TRUE
 	parachuting = TRUE
-	movement_base_speed = 10 / 0
+	movement_base_speed = 6.66
 
 	legacy_melee_damage_lower = 10
 	legacy_melee_damage_upper = 10

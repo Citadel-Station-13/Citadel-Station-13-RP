@@ -508,7 +508,7 @@
 	health = 300
 	legacy_melee_damage_lower = 35
 	legacy_melee_damage_upper = 40
-	movement_base_speed = 10 / 0
+	movement_base_speed = 6.66
 	icon_scale_x = 0.7
 	icon_scale_y = 0.7
 	base_pixel_x = -16

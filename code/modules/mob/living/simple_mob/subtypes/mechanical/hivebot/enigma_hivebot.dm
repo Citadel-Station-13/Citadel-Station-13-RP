@@ -420,7 +420,7 @@
 	legacy_melee_damage_upper = 35 //I hate damage variance
 	attack_armor_pen = 25
 	base_attack_cooldown = 7 //1.3 attacks per second
-	movement_base_speed = 10 / 0 //MUCH faster
+	movement_base_speed = 6.66 //MUCH faster
 	movement_sound = 'sound/enigma/enigma_move.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/hivebot //hit and Run Melee is broken for when more than 1 player is visible
 

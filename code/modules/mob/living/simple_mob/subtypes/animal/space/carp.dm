@@ -39,7 +39,7 @@
 	maxHealth = 25
 	health = 25
 	randomized = TRUE
-	movement_base_speed = 10 / 0 // Carp go fast
+	movement_base_speed = 6.66 // Carp go fast
 	hovering = TRUE
 
 	response_help = "pets the"

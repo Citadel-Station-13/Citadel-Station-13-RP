@@ -351,7 +351,7 @@
 	icon_living = "syndicatespace-melee"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/human/space)
 
-	movement_base_speed = 10 / 0
+	movement_base_speed = 6.66
 
 	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 30, energy = 15, bomb = 35, bio = 100, rad = 100)	// Same armor as their voidsuit
 
@@ -377,7 +377,7 @@
 	icon_state = "syndicatespace-ranged"
 	icon_living = "syndicatespceace-ranged"
 
-	movement_base_speed = 10 / 0
+	movement_base_speed = 6.66
 
 	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 30, energy = 15, bomb = 35, bio = 100, rad = 100)	// Same armor as their voidsuit. This should already have been here when polaris patched these guys in.
 

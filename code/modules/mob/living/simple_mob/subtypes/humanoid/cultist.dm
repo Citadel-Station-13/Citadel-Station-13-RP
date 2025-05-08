@@ -624,7 +624,7 @@
 	attacktext = list("slashed", "stabbed")
 	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 50, energy = 80, bomb = 30, bio = 100, rad = 100)	//Super Armor since Boss Mob
 	attack_sound = 'sound/weapons/bladeslice.ogg'
-	movement_base_speed = 10 / 0 //This is so he can't be kited well
+	movement_base_speed = 6.66 //This is so he can't be kited well
 
 	projectiletype = /obj/projectile/bullet/pellet/shotgun
 

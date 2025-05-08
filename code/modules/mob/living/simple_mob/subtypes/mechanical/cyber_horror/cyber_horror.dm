@@ -352,7 +352,7 @@
 
 	maxHealth = 40
 	health = 40
-	movement_base_speed = 10 / 0
+	movement_base_speed = 6.66
 	movement_sound = 'sound/effects/servostep.ogg'
 
 	pass_flags = ATOM_PASS_TABLE
