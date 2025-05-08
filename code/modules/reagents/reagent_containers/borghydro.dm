@@ -55,7 +55,7 @@
 
 	if(isrobot(loc))
 		var/mob/living/silicon/robot/R = loc
-		if(R && R.cell)
+		if(R && R.cell?.charge > 1000)
 			for(var/T in reagent_ids)
 				if(reagent_volumes[T] < volume)
 					R.cell.use(charge_cost)

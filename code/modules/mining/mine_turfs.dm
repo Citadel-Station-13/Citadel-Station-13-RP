@@ -181,15 +181,6 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 		QUEUE_SMOOTH_NEIGHBORS(src)
 	update_icon()
 
-/turf/simulated/mineral/Entered(atom/movable/M as mob|obj)
-	..()
-	if(istype(M,/mob/living/silicon/robot))
-		var/mob/living/silicon/robot/R = M
-		if(R.module)
-			for(var/obj/item/storage/bag/ore/O in list(R.module_state_1, R.module_state_2, R.module_state_3))
-				O.autoload(R)
-				return
-
 /turf/simulated/mineral/Initialize(mapload)
 	. = ..()
 	if(prob(20))
@@ -300,8 +291,9 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 
 	else if(istype(AM,/mob/living/silicon/robot))
 		var/mob/living/silicon/robot/R = AM
-		if(istype(R.module_active,/obj/item/pickaxe))
-			attackby(R.module_active,R)
+		var/obj/item/pickaxe/maybe_pickaxe = R.get_held_item_of_type(/obj/item/pickaxe)
+		if(maybe_pickaxe)
+			maybe_pickaxe.melee_interaction_chain(src, R)
 
 	else if(istype(AM,/obj/vehicle/sealed/mecha))
 		var/obj/vehicle/sealed/mecha/M = AM

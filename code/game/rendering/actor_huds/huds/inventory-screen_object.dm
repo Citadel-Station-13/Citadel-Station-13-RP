@@ -139,7 +139,8 @@
 	..()
 
 /atom/movable/screen/actor_hud/inventory/plate/hand/handle_inventory_click(mob/user, obj/item/with_item)
-	hud.owner.mob.swap_hand(hand_index)
+	var/datum/actor_hud/inventory/inventory_hud = hud
+	inventory_hud.owner.mob.swap_hand(hand_index)
 
 /atom/movable/screen/actor_hud/inventory/plate/hand/proc/sync_index(index = hand_index)
 	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_HAND(index)
@@ -167,7 +168,38 @@
 		add_overlay(active_image)
 
 /**
- * Button: 'swap hand'
+ * Backplate for robot modules inventory.
+ */
+#warn impl
+/atom/movable/screen/actor_hud/inventory/robot_drawer_backplate
+	icon = 'icons/screen/hud/styles/common/storage.dmi'
+	icon_state = "block"
+
+#warn impl
+
+
+/**
+ * Button: 'oepn robot modules'
+ */
+#warn impl
+/atom/movable/screen/actor_hud/inventory/robot_drawer
+	name = "module drawer"
+	icon_state = "robot-drawer"
+	#warn deal with screen loc
+	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_DRAWER
+
+/atom/movable/screen/actor_hud/inventory/robot_drawer/sync_style(datum/hud_style/style, style_alpha, style_color)
+	..()
+	icon = style.inventory_icons
+
+/atom/movable/screen/actor_hud/inventory/robot_drawer/on_click(mob/user, list/params)
+	// todo: remote control
+	var/datum/actor_hud/inventory/inventory_hud = hud
+	inventory_hud.toggle_robot_modules()
+	#warn this
+
+/**
+ * Button: 'open inventory slots'
  */
 /atom/movable/screen/actor_hud/inventory/drawer
 	name = "drawer"
@@ -180,10 +212,12 @@
 
 /atom/movable/screen/actor_hud/inventory/drawer/on_click(mob/user, list/params)
 	// todo: remote control
-	hud.toggle_hidden_class(INVENTORY_HUD_CLASS_DRAWER, INVENTORY_HUD_HIDE_SOURCE_DRAWER)
+	var/datum/actor_hud/inventory/inventory_hud = hud
+	inventory_hud.toggle_hidden_class(INVENTORY_HUD_CLASS_DRAWER, INVENTORY_HUD_HIDE_SOURCE_DRAWER)
 
 /atom/movable/screen/actor_hud/inventory/drawer/update_icon_state()
-	icon_state = "[(INVENTORY_HUD_CLASS_DRAWER in hud.hidden_classes) ? "drawer" : "drawer-active"]"
+	var/datum/actor_hud/inventory/inventory_hud = hud
+	icon_state = "[(INVENTORY_HUD_CLASS_DRAWER in inventory_hud.hidden_classes) ? "drawer" : "drawer-active"]"
 	return ..()
 
 /**

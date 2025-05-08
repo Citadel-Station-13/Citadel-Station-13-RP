@@ -48,8 +48,13 @@
 // Defines for the [gc_destroyed][/datum/var/gc_destroyed] var.
 #define GC_CURRENTLY_BEING_QDELETED -2
 
+/// qdel() has been called, at some point, on us, and it did not return LETMELIVE
 #define QDELING(X) (X.gc_destroyed)
+/// we are either
+/// * deleted / nulled already
+/// * qdel() has been called, at some point, on us, and it did not return LETMELIVE
 #define QDELETED(X) (!X || QDELING(X))
+/// we are currently in Destroy() logic
 #define QDESTROYING(X) (!X || X.gc_destroyed == GC_CURRENTLY_BEING_QDELETED)
 
 //* Qdel helper macros. *//

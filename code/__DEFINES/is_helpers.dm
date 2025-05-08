@@ -88,7 +88,7 @@
 
 #define isliving(A) istype(A, /mob/living)
 
-#define isMatriarchDrone(A) istype(A, /mob/living/silicon/robot/drone/construction/matriarch)
+#define isMatriarchDrone(A) istype(A, /mob/living/silicon/robot/drone/matriarch)
 
 #define ismouse(A) istype(A, /mob/living/simple_mob/animal/passive/mouse/)
 
