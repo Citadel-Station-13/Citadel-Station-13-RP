@@ -172,7 +172,7 @@
  */
 //#define DO_NOT_DEFER_ASSETS
 
-// ## AI Holders
+// ## AI Holders / AI System
 
 /**
  * Enables high-overhead debug assertions.
