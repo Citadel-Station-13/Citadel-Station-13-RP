@@ -46,6 +46,7 @@
 
 	var/reinforcing = 0
 
+	var/knocksound = 'sound/machines/doorknock.ogg'
 
 /obj/machinery/door/Initialize(mapload, newdir)
 	. = ..()
@@ -403,6 +404,34 @@
 			bound_height = width * world.icon_size
 
 	update_nearby_tiles()
+
+/obj/machinery/door/verb/knock()
+	set name = "Knock"
+	set category = VERB_CATEGORY_OBJECT
+	set src in view(1)
+	if(usr.stat != 0 || !usr.has_hands())
+		to_chat(usr, SPAN_WARNING("You can't do that right now."))
+		return
+	
+	//If someone can see both usr and the door, then they get a message saying usr knocks on the door.
+	//But if someone can only see the door and not usr (usually when they're on the opposite side of the door), they get a message saying they hear a knock on the door.
+	//If someone sees only the usr and not the door, nothing happens since you don't see anything outside your field of view
+	var/list/mobs_see_usr_and_door = viewers(src) & viewers(usr) - usr
+	var/list/mobs_see_only_door = viewers(src) - viewers(usr) - usr
+
+	for(var/mob/m in mobs_see_only_door)
+		if(m.is_blind())
+			m.show_message(SPAN_INFO("You hear a knocking sound nearby."), SAYCODE_TYPE_AUDIBLE)
+		else
+			m.show_message(SPAN_INFO("You hear a knock on \the [src]."), SAYCODE_TYPE_AUDIBLE)
+	for(var/mob/m in mobs_see_usr_and_door)
+		if(m.is_blind())
+			m.show_message(SPAN_INFO("You hear a knocking sound nearby."), SAYCODE_TYPE_AUDIBLE)
+		else
+			m.show_message(SPAN_INFO("\The [usr] knocks on \the [src]."), SAYCODE_TYPE_AUDIBLE)
+	to_chat(usr, SPAN_INFO("You knock on \the [src]."))
+
+	playsound(src, knocksound, 100, 1)
 
 /obj/machinery/door/morgue
 	icon = 'icons/obj/doors/doormorgue.dmi'
