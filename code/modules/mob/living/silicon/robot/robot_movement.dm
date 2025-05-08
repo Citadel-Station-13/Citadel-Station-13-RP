@@ -11,7 +11,7 @@
 					return TRUE
 	return ..()
 
-/mob/living/silicon/robot/movement_delay()
+/mob/living/silicon/robot/legacy_movement_delay()
 	. = ..()
 	if(module_active && istype(module_active,/obj/item/borg/combat/mobility))
 		. -= 2

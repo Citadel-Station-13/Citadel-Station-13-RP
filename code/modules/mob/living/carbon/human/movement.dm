@@ -1,8 +1,7 @@
 
-/mob/living/carbon/human/movement_delay(oldloc, direct)
+/mob/living/carbon/human/legacy_movement_delay()
 	. = ..()
 
-	#warn nightmare - yoshi-p
 	var/tally = 0
 
 	if (istype(loc, /turf/space))
@@ -14,7 +13,7 @@
 
 	for(var/datum/modifier/M in modifiers)
 		if(!isnull(M.haste) && M.haste == TRUE)
-			return HUMAN_LOWEST_SLOWDOWN // Returning -1 will actually result in a slowdown for Teshari.
+			return -3
 		if(!isnull(M.slowdown))
 			tally += M.slowdown
 
@@ -35,7 +34,9 @@
 		tally += 1.5 //A tad bit of slowdown.
 
 	if (feral >= 10) //crazy feral animals give less and less of a shit about pain and hunger as they get crazier
-		tally = max(species.slowdown, species.slowdown+((tally-species.slowdown)/(feral/10))) // As feral scales to damage, this amounts to an effective +1 slowdown cap
+		// As feral scales to damage, this amounts to an effective +1 slowdown cap
+		// TODO: uhh deal with this
+		// tally = max(species.slowdown, species.slowdown+((tally-species.slowdown)/(feral/10)))
 		if(shock_stage >= 10)
 			tally -= 1.5 //this gets a +3 later, feral critters take reduced penalty
 
@@ -84,7 +85,7 @@
 			tally = (tally + tally/4) //Add a quarter of penalties on top.
 		tally += chem_effects[CE_SLOWDOWN]
 
-	. = max(HUMAN_LOWEST_SLOWDOWN, tally + . + config_legacy.human_delay)	// Minimum return should be the same as force_max_speed
+	. += tally
 
 // Similar to above, but for turf slowdown.
 /mob/living/carbon/human/proc/calculate_turf_slowdown(turf/T, direct)
@@ -95,20 +96,20 @@
 		var/turf_move_cost = T.slowdown
 		if(istype(T, /turf/simulated/floor/water))
 			if(species.water_movement)
-				turf_move_cost = clamp(HUMAN_LOWEST_SLOWDOWN, turf_move_cost + species.water_movement, 15)
+				turf_move_cost = turf_move_cost + species.water_movement
 			if(shoes)
 				var/obj/item/clothing/shoes/feet = shoes
 				if(feet.water_speed)
-					turf_move_cost = clamp(HUMAN_LOWEST_SLOWDOWN, turf_move_cost + feet.water_speed, 15)
+					turf_move_cost = turf_move_cost + feet.water_speed
 			. += turf_move_cost
 
 		if(istype(T, /turf/simulated/floor/outdoors/snow))
 			if(species.snow_movement)
-				turf_move_cost = clamp(HUMAN_LOWEST_SLOWDOWN, turf_move_cost + species.snow_movement, 15)
+				turf_move_cost = turf_move_cost + species.snow_movement
 			if(shoes)
 				var/obj/item/clothing/shoes/feet = shoes
 				if(feet.snow_speed)
-					turf_move_cost = clamp(HUMAN_LOWEST_SLOWDOWN, turf_move_cost + feet.snow_speed, 15)
+					turf_move_cost = turf_move_cost + feet.snow_speed
 			. += turf_move_cost
 
 	// Wind makes it easier or harder to move, depending on if you're with or against the wind.

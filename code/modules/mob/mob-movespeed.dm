@@ -5,7 +5,7 @@
  * Updates our base move delay
  */
 /mob/proc/update_movespeed_base()
-	#warn impl
+	update_movespeed_modifier(/datum/movespeed_modifier/base_movement_speed, list(MOVESPEED_PARAM_MOD_HYPERBOLIC_SLOWDOWN = get_movespeed_base()), TRUE)
 	update_movespeed()
 
 /**
@@ -21,8 +21,6 @@
  */
 /mob/proc/get_movespeed_config_tags()
 	. = list("type-[replacetext("[type]", "/", "-")]")
-
-#warn impl all
 
 /**
  * Adds a movespeed modifier to a mob.

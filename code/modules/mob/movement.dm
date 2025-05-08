@@ -49,26 +49,6 @@
 	return !mover.density && !mover.throwing && !istype(mover, /obj/projectile)
 
 /**
-  * Toggle the move intent of the mob
-  *
-  * triggers an update the move intent hud as well
-  */
-/mob/proc/toggle_move_intent(mob/user)
-	if(m_intent == MOVE_INTENT_RUN)
-		m_intent = MOVE_INTENT_WALK
-		#warn make this set_move_intent
-		#warn add overriding movespeed modifier to limit speed to config.walk_speed tps
-	else
-		m_intent = MOVE_INTENT_RUN
-/*
-	if(hud_used && hud_used.static_inventory)
-		for(var/atom/movable/screen/mov_intent/selector in hud_used.static_inventory)
-			selector.update_icon()
-*/
-	// nah, vorecode bad.
-	hud_used?.move_intent?.icon_state = (m_intent == MOVE_INTENT_RUN)? "running" : "walking"
-
-/**
   * Move a client in a direction
   *
   * Huge proc, has a lot of functionality

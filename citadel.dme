@@ -3762,6 +3762,7 @@
 #include "code\modules\mob\living\living-defense-legacy.dm"
 #include "code\modules\mob\living\living-defense.dm"
 #include "code\modules\mob\living\living-inventory.dm"
+#include "code\modules\mob\living\living-movement.dm"
 #include "code\modules\mob\living\living.dm"
 #include "code\modules\mob\living\living_defines.dm"
 #include "code\modules\mob\living\living_powers.dm"

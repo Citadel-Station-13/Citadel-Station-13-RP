@@ -342,15 +342,9 @@
 		playsound(src, turn_sound, 50, 1)
 	else if(movement_sound && old_turf != get_turf(src)) // Playing both sounds at the same time generally sounds bad.
 		playsound(src, movement_sound, 50, 1)
-/*
-/mob/living/simple_mob/setDir(new_dir)
-	if(dir != new_dir)
-		playsound(src, turn_sound, 50, 1)
-	return ..()
-*/
-/mob/living/simple_mob/movement_delay()
+
+/mob/living/simple_mob/legacy_movement_delay()
 	. = ..()
-	#warn deal with this nightmare
 	var/tally = 0 //Incase I need to add stuff other than "speed" later
 
 	for(var/datum/modifier/M in modifiers)

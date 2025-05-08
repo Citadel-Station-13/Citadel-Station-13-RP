@@ -1,10 +1,9 @@
-/mob/living/movement_delay()
+/mob/living/legacy_movement_delay()
 	. = ..()
 	switch(m_intent)
 		if(MOVE_INTENT_RUN)
 			if(drowsyness > 0)
 				. += 6
-				#warn this shit
 
 // todo: all this depth staged stuff is stupid and it should all be on /turf and cached someday
 //       this is however, faster, so that'll be a very long 'someday'.
