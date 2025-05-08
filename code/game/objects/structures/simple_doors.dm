@@ -132,7 +132,7 @@
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(istype(W,/obj/item/pickaxe))
-		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+		user.setClickCooldownLegacy(DEFAULT_ATTACK_COOLDOWN)
 		var/datum/prototype/material/material = get_primary_material()
 		var/obj/item/pickaxe/digTool = W
 		visible_message("<span class='danger'>[user] starts digging [src]!</span>")

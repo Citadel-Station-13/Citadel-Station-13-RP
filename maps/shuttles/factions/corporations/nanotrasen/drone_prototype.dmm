@@ -81,7 +81,7 @@
 /turf/simulated/floor/plating/indoors,
 /area/shuttle/nanotrasen/drone_prototype)
 "B" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/simulated/floor/plating/indoors,
 /area/shuttle/nanotrasen/drone_prototype)
 "E" = (

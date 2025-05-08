@@ -105,7 +105,7 @@
 /turf/simulated/floor/plating,
 /area/submap/skyplanet/poi/shuttlecrash3)
 "H" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /obj/machinery/door/blast/regular,
 /turf/simulated/floor/plating,
 /area/submap/skyplanet/poi/shuttlecrash3)
@@ -128,7 +128,7 @@
 /turf/simulated/floor/plating,
 /area/submap/skyplanet/poi/shuttlecrash3)
 "O" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/submap/skyplanet/poi/shuttlecrash3)
 "P" = (
