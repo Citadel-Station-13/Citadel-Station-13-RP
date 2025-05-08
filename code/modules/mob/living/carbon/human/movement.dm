@@ -75,7 +75,7 @@
 
 	// Turf related slowdown
 	var/turf/T = get_turf(src)
-	tally += calculate_turf_slowdown(T, direct)
+	tally += calculate_turf_slowdown(T)
 
 	if(CE_SPEEDBOOST in chem_effects)
 		tally -= 0.5
@@ -88,7 +88,7 @@
 	. += tally
 
 // Similar to above, but for turf slowdown.
-/mob/living/carbon/human/proc/calculate_turf_slowdown(turf/T, direct)
+/mob/living/carbon/human/proc/calculate_turf_slowdown(turf/T)
 	if(!T)
 		return 0
 
@@ -118,12 +118,13 @@
 		if(P)
 			var/datum/weather_holder/WH = P.weather_holder
 			if(WH && WH.wind_speed) // Is there any wind?
-				// With the wind.
-				if(direct & WH.wind_dir)
-					. = max(. - (WH.wind_speed / 3), -1) // Wind speedup is capped to prevent supersonic speeds from a storm.
-				// Against it.
-				else if(direct & global.reverse_dir[WH.wind_dir])
-					. += (WH.wind_speed / 3)
+				// // With the wind.
+				// if(direct & WH.wind_dir)
+				// 	. = max(. - (WH.wind_speed / 3), -1) // Wind speedup is capped to prevent supersonic speeds from a storm.
+				// // Against it.
+				// else if(direct & global.reverse_dir[WH.wind_dir])
+				// 	. += (WH.wind_speed / 3)
+				. += (WH.wind_speed / 5)
 
 	if(species.light_slowdown || species.dark_slowdown)
 		var/lumcount = T.get_lumcount()

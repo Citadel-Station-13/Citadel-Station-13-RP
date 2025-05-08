@@ -255,7 +255,6 @@
 	var/overeatduration = 0
 	var/losebreath = 0 //?Carbon
 	var/shakecamera = 0
-	var/m_int = null //?Living
 	var/lastKnownIP = null
 
 	var/seer = 0 //for cult//Carbon, probably Human

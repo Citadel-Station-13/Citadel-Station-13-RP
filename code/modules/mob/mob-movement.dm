@@ -11,7 +11,7 @@
 	return movespeed_hyperbolic
 
 /mob/proc/toggle_move_intent()
-	switch(move_intent)
+	switch(m_intent)
 		if(MOVE_INTENT_RUN)
 			set_move_intent(MOVE_INTENT_WALK)
 		else
