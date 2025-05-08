@@ -487,8 +487,8 @@
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/office)
 "bb" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/violet,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/tether/exploration)
 "bc" = (
@@ -603,7 +603,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/spawner/window/low_wall/full/nogrille,
+/obj/spawner/window/low_wall/nogrille,
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/refinery)
 "bm" = (
@@ -634,7 +634,7 @@
 "bq" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor,
 /area/tether/station/visitorhallway/lounge)
 "br" = (
@@ -775,7 +775,7 @@
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "bE" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "shopdressingroom";
 	name = "Shop Dressing room"
 	},
@@ -1333,8 +1333,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cockpit)
 "cK" = (
-/obj/spawner/window/low_wall/full/nogrille,
-/obj/effect/paint_stripe/beastybrown,
+/obj/spawner/window/low_wall/nogrille,
+/obj/map_helper/paint_stripe/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock)
 "cL" = (
@@ -1436,8 +1436,8 @@
 /area/gateway)
 "cV" = (
 /obj/structure/disposalpipe/segment,
-/obj/effect/paint_stripe/beastybrown,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/map_helper/paint_stripe/beastybrown,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/quartermaster/office)
 "cW" = (
@@ -1468,7 +1468,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 9
 	},
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/tether/station/visitorhallway/lounge)
 "cY" = (
@@ -1935,8 +1935,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/commandblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/ai_monitored/storage/eva)
 "eb" = (
@@ -2310,8 +2310,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/commandblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/ai_monitored/storage/eva)
 "eK" = (
@@ -2625,8 +2625,8 @@
 /area/hallway/station/port)
 "fo" = (
 /obj/structure/disposalpipe/segment,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/beastybrown,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/office)
 "fp" = (
@@ -2779,8 +2779,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/station/cargo)
 "fJ" = (
-/obj/effect/paint_stripe/beastybrown,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/map_helper/paint_stripe/beastybrown,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/quartermaster/office)
 "fK" = (
@@ -2872,8 +2872,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/storage/tech)
 "fU" = (
@@ -3023,19 +3023,19 @@
 /area/tether/station/visitorhallway/laundry)
 "gn" = (
 /obj/structure/disposalpipe/segment,
-/obj/spawner/window/low_wall/full/nogrille,
-/obj/effect/paint_stripe/beastybrown,
+/obj/spawner/window/low_wall/nogrille,
+/obj/map_helper/paint_stripe/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/gear)
 "go" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "qm_office";
 	name = "QM Office"
 	},
-/obj/effect/paint_stripe/beastybrown,
+/obj/map_helper/paint_stripe/beastybrown,
 /turf/simulated/floor/tiled,
 /area/quartermaster/qm)
 "gp" = (
@@ -3812,8 +3812,8 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/beastybrown,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/office)
 "hO" = (
@@ -3844,7 +3844,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/burial)
 "hR" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/tether/station/visitorhallway/lounge)
 "hS" = (
@@ -3872,7 +3872,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/station/port)
 "hW" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor,
 /area/tether/station/visitorhallway/lounge)
 "hX" = (
@@ -4037,7 +4037,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/starboard)
 "in" = (
-/obj/spawner/window/low_wall/full/firelocks/nogrille,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor,
 /area/hallway/station/port)
 "io" = (
@@ -4150,8 +4150,8 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
-/obj/effect/paint_stripe/beastybrown,
+/obj/spawner/window/low_wall/nogrille/firelocks,
+/obj/map_helper/paint_stripe/beastybrown,
 /turf/simulated/floor,
 /area/quartermaster/storage)
 "iy" = (
@@ -4434,11 +4434,11 @@
 /turf/simulated/floor,
 /area/maintenance/station/cargo)
 "ja" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "qm_office";
 	name = "QM Office"
 	},
-/obj/effect/paint_stripe/beastybrown,
+/obj/map_helper/paint_stripe/beastybrown,
 /turf/simulated/floor/tiled,
 /area/quartermaster/qm)
 "jb" = (
@@ -5003,7 +5003,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/office)
 "kh" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/quartermaster/foyer)
 "ki" = (
@@ -5340,8 +5340,8 @@
 /turf/simulated/floor/tiled,
 /area/security/customs)
 "kS" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
-/obj/effect/paint_stripe/beastybrown,
+/obj/spawner/window/low_wall/nogrille/firelocks,
+/obj/map_helper/paint_stripe/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/office)
 "kT" = (
@@ -5470,7 +5470,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/ai_monitored/storage/eva)
 "le" = (
@@ -5733,8 +5733,8 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/beastybrown,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/beastybrown,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
@@ -5748,8 +5748,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/storage/tech)
 "lF" = (
@@ -5859,11 +5859,11 @@
 /turf/simulated/floor/tiled,
 /area/engineering/foyer_mezzenine)
 "lQ" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "pilot_office";
 	name = "Pilot's office"
 	},
-/obj/effect/paint_stripe/violet,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/tether/exploration/pilot_office)
 "lR" = (
@@ -5989,8 +5989,8 @@
 /obj/structure/disposalpipe/sortjunction/untagged/flipped{
 	dir = 1
 	},
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
-/obj/effect/paint_stripe/beastybrown,
+/obj/spawner/window/low_wall/nogrille/firelocks,
+/obj/map_helper/paint_stripe/beastybrown,
 /turf/simulated/floor,
 /area/quartermaster/storage)
 "mf" = (
@@ -6056,8 +6056,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "ml" = (
-/obj/spawner/window/low_wall/full/nogrille,
-/obj/effect/paint_stripe/beastybrown,
+/obj/spawner/window/low_wall/nogrille,
+/obj/map_helper/paint_stripe/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/surface_mining_outpost_shuttle_hangar)
 "mm" = (
@@ -6359,8 +6359,8 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/commandblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/ai_monitored/storage/eva)
 "mR" = (
@@ -6407,8 +6407,8 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
 "mY" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/beastybrown,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/beastybrown,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -6483,7 +6483,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/tether/station/dock_one)
 "nh" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/general)
 "ni" = (
@@ -6840,7 +6840,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/locker_room)
 "nV" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_upper)
 "nW" = (
@@ -7075,8 +7075,8 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock)
 "os" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
-/obj/effect/paint_stripe/beastybrown,
+/obj/spawner/window/low_wall/nogrille/firelocks,
+/obj/map_helper/paint_stripe/beastybrown,
 /turf/simulated/floor,
 /area/quartermaster/storage)
 "ot" = (
@@ -7613,8 +7613,8 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/spawner/window/low_wall/full/nogrille,
-/obj/effect/paint_stripe/beastybrown,
+/obj/spawner/window/low_wall/nogrille,
+/obj/map_helper/paint_stripe/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/gear)
 "pD" = (
@@ -7625,8 +7625,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/ai_monitored/storage/eva)
 "pE" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/violet,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/quartermaster/storage)
 "pF" = (
@@ -7960,8 +7960,8 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/port)
 "qj" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/palebottlegreen,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/palebottlegreen,
 /turf/simulated/floor,
 /area/chapel/main)
 "qk" = (
@@ -8023,7 +8023,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cargo)
 "qp" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cargo)
 "qq" = (
@@ -8822,7 +8822,7 @@
 "rT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "shopdressingroom";
 	name = "Shop Dressing room"
 	},
@@ -8904,8 +8904,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/public_meeting_room)
 "sc" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/beastybrown,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock)
 "sd" = (
@@ -9705,7 +9705,7 @@
 /turf/simulated/floor,
 /area/maintenance/station/eng_upper)
 "tI" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor,
 /area/maintenance/station/cargo)
 "tJ" = (
@@ -10269,8 +10269,8 @@
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock)
 "uL" = (
-/obj/spawner/window/low_wall/full/firelocks/nogrille,
-/obj/effect/paint_stripe/palebottlegreen,
+/obj/spawner/window/low_wall/nogrille/firelocks,
+/obj/map_helper/paint_stripe/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/tether/station/public_meeting_room)
 "uM" = (
@@ -10330,8 +10330,8 @@
 /area/hallway/station/starboard)
 "uR" = (
 /obj/structure/disposalpipe/segment,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/beastybrown,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/beastybrown,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "uS" = (
@@ -10595,8 +10595,8 @@
 	name = "Engineering Lockdown";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/full/firelocks/nogrille,
-/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/nogrille/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor/plating,
 /area/engineering/foyer_mezzenine)
 "vt" = (
@@ -10844,7 +10844,7 @@
 /area/hallway/station/port)
 "vR" = (
 /obj/structure/disposalpipe/segment,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_upper)
 "vS" = (
@@ -11015,7 +11015,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/warehouse)
 "wi" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_restaurant_upper)
 "wj" = (
@@ -11541,7 +11541,7 @@
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "xj" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "visitor_meeting";
 	name = "Visitor Meeting Room"
 	},
@@ -11833,8 +11833,8 @@
 	icon_state = "0-2"
 	},
 /obj/structure/cable/green,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/commandblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/ai_monitored/storage/eva)
 "xS" = (
@@ -12316,8 +12316,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/commandblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/ai_monitored/storage/eva)
 "yP" = (
@@ -12591,8 +12591,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/storage/tech)
 "zr" = (
@@ -12987,7 +12987,7 @@
 	layer = 4;
 	name = "EXTERNAL AIRLOCK"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/tether/station/dock_one)
 "Am" = (
@@ -13107,11 +13107,11 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cargo)
 "AC" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "chapel";
 	name = "Chaplain Office"
 	},
-/obj/effect/paint_stripe/palebottlegreen,
+/obj/map_helper/paint_stripe/palebottlegreen,
 /turf/simulated/floor,
 /area/chapel/office)
 "AD" = (
@@ -13535,7 +13535,7 @@
 	name = "Shuttle Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/general)
 "Bv" = (
@@ -14316,8 +14316,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/storage/tech)
 "CV" = (
@@ -14351,8 +14351,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/storage/tech)
 "CY" = (
@@ -14926,7 +14926,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 10
 	},
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor,
 /area/tether/station/visitorhallway/lounge)
 "Ek" = (
@@ -15048,8 +15048,8 @@
 	icon_state = "0-2"
 	},
 /obj/structure/cable/green,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/commandblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/ai_monitored/storage/eva)
 "Ex" = (
@@ -15245,7 +15245,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/general)
 "EO" = (
@@ -15529,8 +15529,8 @@
 /turf/simulated/floor/plating,
 /area/quartermaster/storage)
 "Fr" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/darkred,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/customs)
 "Fs" = (
@@ -15985,9 +15985,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/public_meeting_room)
 "Gy" = (
-/obj/spawner/window/low_wall/full/firelocks/nogrille,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /obj/structure/curtain/black,
-/obj/effect/paint_stripe/palebottlegreen,
+/obj/map_helper/paint_stripe/palebottlegreen,
 /turf/simulated/floor,
 /area/chapel/main)
 "Gz" = (
@@ -16871,12 +16871,12 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/storage/tech)
 "Ij" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cockpit)
 "Ik" = (
@@ -16995,8 +16995,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/storage/tech)
 "IB" = (
@@ -17596,7 +17596,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/office)
 "JQ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/tether/station/dock_one)
 "JR" = (
@@ -17841,7 +17841,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor,
 /area/tether/station/visitorhallway/lounge)
 "Ko" = (
@@ -18194,8 +18194,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/storage/tech)
 "Ld" = (
@@ -19164,8 +19164,8 @@
 	layer = 4;
 	name = "EXTERNAL AIRLOCK"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/beastybrown,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/storage)
 "MW" = (
@@ -20155,7 +20155,7 @@
 	name = "Shuttle Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/general)
 "OX" = (
@@ -20660,11 +20660,11 @@
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/belter)
 "PY" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "pathfinder_office";
 	name = "Pathfinder's Office"
 	},
-/obj/effect/paint_stripe/violet,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/tether/exploration/pathfinder_office)
 "PZ" = (
@@ -20937,7 +20937,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/refinery)
 "QC" = (
-/obj/spawner/window/low_wall/reinforced/tinted/full,
+/obj/spawner/window/low_wall/reinforced/tinted,
 /turf/simulated/floor,
 /area/chapel/main)
 "QD" = (
@@ -20962,7 +20962,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor,
 /area/tether/station/visitorhallway/lounge)
 "QG" = (
@@ -21504,11 +21504,11 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "qm_office";
 	name = "QM Office"
 	},
-/obj/effect/paint_stripe/beastybrown,
+/obj/map_helper/paint_stripe/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/qm)
 "RN" = (
@@ -21928,8 +21928,8 @@
 /area/quartermaster/belterdock)
 "SN" = (
 /obj/structure/cable/green,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/commandblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/ai_monitored/storage/eva)
 "SO" = (
@@ -22038,8 +22038,8 @@
 /turf/simulated/floor,
 /area/maintenance/station/eng_upper)
 "Ta" = (
-/obj/spawner/window/low_wall/full/nogrille,
-/obj/effect/paint_stripe/beastybrown,
+/obj/spawner/window/low_wall/nogrille,
+/obj/map_helper/paint_stripe/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/gear)
 "Tb" = (
@@ -22121,7 +22121,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/burial)
 "Ti" = (
-/obj/spawner/window/low_wall/full/firelocks/nogrille,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/hallway/station/port)
 "Tj" = (
@@ -22156,8 +22156,8 @@
 /turf/simulated/floor/wood,
 /area/tether/station/burial)
 "Tm" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/palebottlegreen,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/palebottlegreen,
 /turf/simulated/floor,
 /area/tether/station/burial)
 "Tn" = (
@@ -22369,11 +22369,11 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/port)
 "TD" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "qm_office";
 	name = "QM Office"
 	},
-/obj/effect/paint_stripe/beastybrown,
+/obj/map_helper/paint_stripe/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/qm)
 "TE" = (
@@ -22842,8 +22842,8 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
 "Uz" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/beastybrown,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/storage)
 "UA" = (
@@ -23335,8 +23335,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/commandblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/ai_monitored/storage/eva)
 "VD" = (
@@ -24287,8 +24287,8 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/refinery)
 "Xp" = (
-/obj/spawner/window/low_wall/full/nogrille,
-/obj/effect/paint_stripe/beastybrown,
+/obj/spawner/window/low_wall/nogrille,
+/obj/map_helper/paint_stripe/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/storage)
 "Xq" = (
@@ -24636,7 +24636,7 @@
 /turf/simulated/floor/wood,
 /area/quartermaster/qm)
 "Yc" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/tether/station/visitorhallway/lounge)
 "Yd" = (
@@ -25350,12 +25350,12 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "Zz" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/hallway/station/starboard)
 "ZA" = (
-/obj/spawner/window/low_wall/full/nogrille,
-/obj/effect/paint_stripe/beastybrown,
+/obj/spawner/window/low_wall/nogrille,
+/obj/map_helper/paint_stripe/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/refinery)
 "ZB" = (

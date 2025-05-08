@@ -56,3 +56,8 @@
 	name = "Tactical Skirt"
 	path = /obj/item/clothing/under/syndicate/skirt_pleated
 	ckeywhitelist = list("grapepantasoda")
+
+/datum/loadout_entry/event_reward/medmeritmedal
+	name = "O2CM2 Medal"
+	path = /obj/item/clothing/accessory/medal/medmeritmedal
+	ckeywhitelist = list("alphamach")
