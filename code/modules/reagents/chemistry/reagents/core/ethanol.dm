@@ -12,6 +12,8 @@
 
 	ingest_met = REM * 5
 
+	scannable = TRUE
+
 	var/nutriment_factor = 0
 	var/hydration_factor = 0
 	var/proof = 200

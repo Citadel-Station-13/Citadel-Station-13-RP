@@ -34,7 +34,7 @@
  * log click - context menu
  */
 /proc/log_click_context(datum/event_args/actor/e_args, atom/target, message)
-	log_click("CONTEXT: [key_name(e_args.initiator)][e_args.performer != e_args.initiator? " via [key_name(e_args.performer)]" : ""] -> [target] [AUDIT_COORD(target)]: [message]")
+	log_click("CONTEXT: [key_name(e_args.initiator)][e_args.performer != e_args.initiator? " via [key_name(e_args.performer)]" : ""] -> [target] [target.audit_loc()]: [message]")
 
 /**
  * log click - action buttons

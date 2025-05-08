@@ -1997,7 +1997,7 @@
 /turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/mountain_plains)
 "gu" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/simulated/wall/prepainted,
 /area/admin_planet/croatoan/civ_bar_public)
 "gv" = (
@@ -6550,7 +6550,7 @@
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_entrance)
 "wN" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/tiled/steel_dirty/red,
 /area/admin_planet/croatoan/sec_hos_office)
 "wO" = (
@@ -12706,7 +12706,7 @@
 /turf/simulated/floor/tiled/white,
 /area/admin_planet/croatoan/med_treatment)
 "Sw" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/space/basic,
 /area/admin_planet/croatoan/civ_bar_public)
 "Sx" = (

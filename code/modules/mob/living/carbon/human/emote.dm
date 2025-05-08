@@ -1,3 +1,8 @@
+// todo: fucking refactor saycode
+/mob/proc/emote_nosleep(var/act,var/m_type=1,var/message = null)
+	set waitfor = FALSE
+	emote(arglist(args))
+
 /mob/living/carbon/human/emote(var/act,var/m_type=1,var/message = null)
 	var/param = null
 	var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
