@@ -100,7 +100,7 @@ Key procs
   * todo: don't use `MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND` so much
   */
 /datum/movespeed_modifier/proc/apply_hyperbolic(existing, mob/target)
-	. = existing
+	. = existing || (10 / MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND)
 	if(mod_multiply_speed != 1)
 		. = mod_multiply_speed ? . / mod_multiply_speed : MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND
 	if(mod_hyperbolic_slowdown != 0)
