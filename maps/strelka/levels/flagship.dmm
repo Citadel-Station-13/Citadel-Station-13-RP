@@ -222,6 +222,7 @@
 /area/centcom/command)
 "aH" = (
 /obj/structure/fans/tiny,
+/obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor,
 /area/shuttle/escape)
 "aM" = (
@@ -440,6 +441,7 @@
 /area/centcom/specops)
 "bs" = (
 /obj/structure/fans/tiny,
+/obj/spawner/window/low_wall/firelocks,
 /turf/unsimulated/floor{
 	name = "plating"
 	},
@@ -7066,6 +7068,7 @@
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 9
 	},
+/obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -7777,7 +7780,6 @@
 	},
 /area/centcom/bathroom)
 "uU" = (
-/obj/machinery/camera/network/crescent,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
@@ -8398,6 +8400,14 @@
 	icon_state = "dark"
 	},
 /area/centcom/command)
+"wu" = (
+/obj/machinery/door/airlock/glass{
+	name = "Kitchen"
+	},
+/turf/unsimulated/floor/steel{
+	icon_state = "white"
+	},
+/area/centcom/restaurant)
 "ww" = (
 /obj/machinery/atmospherics/component/unary/cryo_cell,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -14678,6 +14688,7 @@
 	id = "emergency_shuttle_lockdown";
 	name = "Emergency Shuttle Blast Door"
 	},
+/obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor,
 /area/shuttle/escape)
 "Mx" = (
@@ -18037,6 +18048,7 @@
 	id = "emergency_shuttle_lockdown";
 	name = "Emergency Shuttle Blast Door"
 	},
+/obj/spawner/window/low_wall/firelocks,
 /turf/unsimulated/floor{
 	name = "plating"
 	},
@@ -43482,7 +43494,7 @@ yy
 Fd
 Zm
 HY
-sC
+wu
 uU
 nD
 nD

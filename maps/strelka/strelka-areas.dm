@@ -479,6 +479,12 @@
 /area/strelka/shipbase/deck2/security/main
 	name = "\improper Deck 2 Main Security"
 
+/area/strelka/shipbase/deck2/warden
+	name = "\improper Deck 2 Security Warden office"
+	icon_state = "security_sub"
+	sound_env = SMALL_SOFTFLOOR
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
+
 /area/strelka/shipbase/deck2/security/storage
 	name = "\improper Deck 2 Security storage"
 	sound_env = STANDARD_STATION
@@ -598,8 +604,8 @@
 
 // DECK 1 Security
 
-/area/strelka/shipbase/deck1/warden
-	name = "\improper Deck 1 Security Warden office"
+/area/strelka/shipbase/deck1/pilot_EVA
+	name = "\improper Deck 1 Security EVA prep room"
 	icon_state = "security_sub"
 	sound_env = SMALL_SOFTFLOOR
 	ambience = AMBIENCE_STRELKA_ROOM_WOOD
