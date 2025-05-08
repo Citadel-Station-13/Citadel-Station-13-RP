@@ -101,7 +101,7 @@
 		CRASH("attempted to update_movespeed_modifier on a non variable modifier.")
 	if(editing.parse(params))
 		modified = TRUE
-	if(!skip_update)
+	if(!skip_update && modified)
 		update_movespeed(TRUE)
 	return TRUE
 

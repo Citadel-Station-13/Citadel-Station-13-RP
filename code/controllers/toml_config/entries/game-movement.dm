@@ -15,7 +15,5 @@
 	"}
 	default = 2
 
-#warn hook in walk speed
-
 // TODO: base_speed_multplier table with tags for each given category of
 //       mob / species / whatever
