@@ -7,4 +7,4 @@
 	priority = MOVESPEED_PRIORITY_BASE_MOVE_SPEED
 
 /datum/movespeed_modifier/base_movement_speed/apply_hyperbolic(existing, mob/target)
-	return mod_hyperbolic_slowdown
+	return mod_tiles_per_second
