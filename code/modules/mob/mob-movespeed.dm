@@ -5,7 +5,7 @@
  * Updates our base move delay
  */
 /mob/proc/update_movespeed_base()
-	update_movespeed_modifier(/datum/movespeed_modifier/base_movement_speed, list(MOVESPEED_PARAM_MOD_HYPERBOLIC_SLOWDOWN = get_movespeed_base()), TRUE)
+	update_movespeed_modifier(/datum/movespeed_modifier/base_movement_speed, list(MOVESPEED_PARAM_MOD_TILES_PER_SECOND = get_movespeed_base()), TRUE)
 	update_movespeed()
 
 /**
@@ -118,8 +118,9 @@
 /// Go through the list of movespeed modifiers and calculate a final movespeed. ANY ADD/REMOVE DONE IN UPDATE_MOVESPEED MUST HAVE THE UPDATE ARGUMENT SET AS FALSE!
 /mob/proc/update_movespeed()
 	. = 0
-	for(var/datum/movespeed_modifier/M in movespeed_modifiers)
-		if(movespeed_modifier_immunities[M.id])
+	for(var/id in movespeed_modifiers)
+		var/datum/movespeed_modifier/M = movespeed_modifiers[id]
+		if(movespeed_modifier_immunities?[M.id])
 			continue
 		if(!(M.movetypes_allowed & movement_type)) // We don't affect any of these move types, skip
 			continue
