@@ -7,7 +7,7 @@
 	icon = 'icons/modules/frames/base.dmi'
 	icon_state = "item"
 
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NO_BLUDGEON
 	obj_rotation_flags = OBJ_ROTATION_ENABLED | OBJ_ROTATION_DEFAULTING
 
 	/// frame datum - set to typepath for initialization

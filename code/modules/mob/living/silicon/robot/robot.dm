@@ -604,7 +604,7 @@
 			return
 		var/obj/item/weldingtool/WT = W
 		if (WT.remove_fuel(0))
-			user.setClickCooldown(user.get_attack_speed(WT))
+			user.setClickCooldownLegacy(user.get_attack_speed_legacy(WT))
 			adjustBruteLoss(-30)
 			update_health()
 			add_fingerprint(user)
@@ -620,7 +620,7 @@
 			return
 		var/obj/item/stack/cable_coil/coil = W
 		if (coil.use(1))
-			user.setClickCooldown(user.get_attack_speed(W))
+			user.setClickCooldownLegacy(user.get_attack_speed_legacy(W))
 			adjustFireLoss(-30)
 			update_health()
 			for(var/mob/O in viewers(user, null))

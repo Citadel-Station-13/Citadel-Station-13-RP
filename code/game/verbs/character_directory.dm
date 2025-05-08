@@ -9,7 +9,7 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 	if(world.time < usr.next_move)
 		to_chat(usr, "<span class='warning'>Don't spam character directory refresh.</span>")
 		return
-	usr.setClickCooldown(10)
+	usr.setClickCooldownLegacy(10)
 
 	if(!GLOB.character_directory)
 		GLOB.character_directory = new

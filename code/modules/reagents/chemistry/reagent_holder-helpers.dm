@@ -10,6 +10,7 @@
 	for(var/id in reagent_volumes)
 		if(reagent_volumes[id] > highest_so_far)
 			id_so_far = id
+			highest_so_far = reagent_volumes[id]
 	return SSchemistry.fetch_reagent(id_so_far)
 
 /**

@@ -2,8 +2,10 @@
 	name = "handcuffs"
 	desc = "Use this to keep prisoners in line."
 	gender = PLURAL
-	icon = 'icons/obj/items.dmi'
+	icon = 'icons/items/handcuffs.dmi'
 	icon_state = "handcuff"
+	worn_state = "handcuff"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	slot_flags = SLOT_BELT
 	throw_force = 5
 	w_class = WEIGHT_CLASS_SMALL
@@ -87,7 +89,7 @@
 	add_attack_logs(user,H,"Handcuffed (attempt)")
 	feedback_add_details("handcuffs","H")
 
-	user.setClickCooldown(user.get_attack_speed(src))
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 	user.do_attack_animation(H)
 
 	user.visible_message("<span class='danger'>\The [user] has put [cuff_type] on \the [H]!</span>")
@@ -207,9 +209,11 @@ var/last_chew = 0
 /obj/item/handcuffs/cable/tape/cyborg
 	dispenser = TRUE
 
+// todo: entirely overhaul or remove this
 /obj/item/handcuffs/disruptor
 	name = "disruptor cuffs"
 	icon_state = "disruptorcuff"
+	worn_state = "disruptorcuff"
 	desc = "These cutting edge handcuffs were originally designed by the PMD. Commonly deployed to restrain anomalous lifeforms, disruptor cuffs employ a form of acausal logic engine disruption, in tandem with morphogenic resonance, to neutralize the abilities of technological and biological threats."
 
 /obj/item/handcuffs/disruptor/equipped(var/mob/living/user,var/slot)
@@ -283,7 +287,7 @@ var/last_chew = 0
 	add_attack_logs(user,H,"Legcuffed (attempt)")
 	feedback_add_details("legcuffs","H")
 
-	user.setClickCooldown(user.get_attack_speed(src))
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 	user.do_attack_animation(H)
 
 	user.visible_message("<span class='danger'>\The [user] has put [cuff_type] on \the [H]!</span>")
