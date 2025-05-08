@@ -76,10 +76,11 @@ Key procs
 	//* Calculations - Limits *//
 	/// do not allow boosting over this overall speed
 	var/limit_tiles_per_second_max
-	/// do not allow boosting more than this in tiles per second
-	var/limit_tiles_per_second_add
 	/// do not allow slowing under this speed
 	var/limit_tiles_per_second_min
+	/// do not allow boosting more than this in tiles per second
+	/// * does not allow negative values due to how internal optimizations work
+	var/limit_tiles_per_second_add
 
 /datum/movespeed_modifier/New(id)
 	if(!isnull(id))
@@ -107,22 +108,17 @@ Key procs
 	if(. == existing)
 		return
 	else
+		// min/max's stop the limits from reversing through `existing`.
 		if(. > existing)
 			// . > existing: slower
 			if(!isnull(limit_tiles_per_second_min))
-				. = min(., 10 / max(limit_tiles_per_second_min, MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND))
-			// ensure calculations did not speed us up
-			if(. < existing)
-				CRASH("calculations somehow reversed")
+				. = min(., max(existing, 10 / max(limit_tiles_per_second_min, MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND)))
 		else
 			// . < existing: faster
-			if(!isnull(limit_tiles_per_second_add))
-				. = max(., 10 / (((10 / existing) + limit_tiles_per_second_add) || MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND))
+			if(limit_tiles_per_second_add > 0)
+				. = max(., min(existing, 10 / ((10 / existing) + limit_tiles_per_second_add)))
 			if(!isnull(limit_tiles_per_second_max))
-				. = max(., 10 / max(limit_tiles_per_second_max, MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND))
-			// ensure calculations did not slow us down
-			if(. > existing)
-				CRASH("calculations somehow reversed")
+				. = max(., min(existing, 10 / max(limit_tiles_per_second_max, MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND)))
 
 /**
  * applies from params
