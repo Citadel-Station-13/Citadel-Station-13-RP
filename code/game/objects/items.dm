@@ -32,7 +32,7 @@
 	/// armor flag for melee attacks
 	var/damage_flag = ARMOR_MELEE
 	/// damage tier
-	var/damage_tier = MELEE_TIER_MEDIUM
+	var/damage_tier = 3
 	/// damage_mode bitfield - see [code/__DEFINES/combat/damage.dm]
 	var/damage_mode = NONE
 	/// DAMAGE_TYPE_* enum

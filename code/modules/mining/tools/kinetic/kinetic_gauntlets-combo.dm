@@ -15,7 +15,7 @@ GLOBAL_DATUM_INIT(kinetic_gauntlet_melee_combo, /datum/combo_set/melee, new /dat
 	abstract_type = /datum/combo/melee/intent_based/kinetic_gauntlets
 
 	damage_force = 20
-	damage_tier = MELEE_TIER_HEAVY
+	damage_tier = 4
 	damage_mode = DAMAGE_MODE_ABLATING
 	damage_type = DAMAGE_TYPE_BRUTE
 	damage_flag = ARMOR_BOMB

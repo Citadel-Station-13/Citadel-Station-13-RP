@@ -50,7 +50,7 @@
 	/// sound to play on combo continuation
 	var/combo_continuation_sfx =  'sound/weapons/resonator_blast.ogg'
 	var/combo_continuation_damage = 5
-	var/combo_continuation_damage_tier = MELEE_TIER_MEDIUM
+	var/combo_continuation_damage_tier = 3
 	var/combo_continuation_damage_type = DAMAGE_TYPE_BRUTE
 	var/combo_continuation_damage_flag = ARMOR_BOMB
 	var/combo_continuation_damage_mode = DAMAGE_MODE_ABLATING
@@ -59,14 +59,14 @@
 	var/combo_fail_sfx = /datum/soundbyte/sparks
 
 	var/charged_structure_damage = 23.5
-	var/charged_structure_damage_tier = MELEE_TIER_MEDIUM
+	var/charged_structure_damage_tier = 3
 	var/charged_structure_damage_type = DAMAGE_TYPE_BRUTE
 	var/charged_structure_damage_flag = ARMOR_BOMB
 	var/charged_structure_damage_mode = DAMAGE_MODE_ABLATING
 	var/charged_structure_sfx = 'sound/weapons/kenetic_accel.ogg'
 
 	var/charged_mob_damage = 13.5
-	var/charged_mob_damage_tier = MELEE_TIER_MEDIUM
+	var/charged_mob_damage_tier = 3
 	var/charged_mob_damage_type = DAMAGE_TYPE_BRUTE
 	var/charged_mob_damage_flag = ARMOR_BOMB
 	var/charged_mob_damage_mode = DAMAGE_MODE_ABLATING

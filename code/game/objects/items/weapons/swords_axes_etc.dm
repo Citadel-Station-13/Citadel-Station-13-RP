@@ -305,7 +305,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "wakibokken_blade_h"
 	damage_force = 15
-	damage_tier = MELEE_TIER_MEDIUM
+	damage_tier = 3
 	slot_flags = SLOT_BACK
 	attack_sound = "swing_hit"
 	attack_verb = list("smashed", "slammed", "whacked", "thwacked")

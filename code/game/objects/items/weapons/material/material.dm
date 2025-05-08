@@ -5,7 +5,6 @@
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	icon = 'icons/obj/weapons.dmi'
 	gender = NEUTER
-	damage_tier = MELEE_TIER_LIGHT
 	throw_speed = 3
 	throw_range = 7
 	w_class = WEIGHT_CLASS_NORMAL
@@ -35,7 +34,6 @@
 	// var/can_dull = 1		//Can it go dull?
 	// var/dulled_divisor = 0.1	//Just drops the damage to a tenth
 	// var/drops_debris = 1
-
 
 /obj/item/material/Initialize(mapload, material)
 	if(!isnull(material))

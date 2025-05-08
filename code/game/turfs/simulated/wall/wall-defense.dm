@@ -15,7 +15,7 @@
 		var/obj/item/I = AM
 		inflict_atom_damage(I.throw_force * TT.get_damage_multiplier(src), I.damage_tier, I.damage_flag, I.damage_mode, ATTACK_TYPE_THROWN, AM)
 	else
-		inflict_atom_damage(AM.throw_force * TT.get_damage_multiplier(src), MELEE_TIER_LIGHT, ARMOR_MELEE, null, ATTACK_TYPE_THROWN, AM)
+		inflict_atom_damage(AM.throw_force * TT.get_damage_multiplier(src), 2, ARMOR_MELEE, null, ATTACK_TYPE_THROWN, AM)
 	// turf refs don't change so while QDELETED() doesn't work this is a close approximate
 	// until we have a better system or we decide to pay some overhead to track with a number or something
 	if(old_type != type)

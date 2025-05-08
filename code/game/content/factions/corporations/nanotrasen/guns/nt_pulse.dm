@@ -122,7 +122,7 @@
 	name = "pulse"
 	fire_sound = 'sound/weapons/gauss_shoot.ogg'
 	damage_force = 60
-	damage_tier = LASER_TIER_EXTREME
+	damage_tier = 6
 	armor_penetration = 75
 	light_color = "#0066FF"
 

@@ -66,7 +66,7 @@
 		var/list/shieldcall_result = L.atom_shieldcall(
 			damage_to_do,
 			DAMAGE_TYPE_BRUTE,
-			MELEE_TIER_MEDIUM,
+			3,
 			ARMOR_MELEE,
 			NONE,
 			ATTACK_TYPE_MELEE,
