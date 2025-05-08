@@ -22,12 +22,13 @@
 		return
 	src.price = price
 
-#warn impl all
+#warn impl all;
 
 //* /atom/movable hooks *//
 
 /atom/movable/proc/get_price_tag() as /datum/component/price_tag
 	RETURN_TYPE(/datum/component/price_tag)
+	return GetComponent(/datum/component/price_tag)
 
 /atom/movable/proc/set_price_tag(price)
 	var/datum/component/price_tag/price_tag = get_price_tag()

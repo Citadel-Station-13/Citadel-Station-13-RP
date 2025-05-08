@@ -1,7 +1,5 @@
 #warn replace on maps
 /obj/item/eftpos
-	name = "\improper EFTPOS scanner"
-	desc = "Swipe your ID card to make purchases electronically."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "eftpos"
 	var/machine_id = ""
@@ -12,46 +10,6 @@
 	var/transaction_purpose = "Default charge"
 	var/access_code = 0
 	var/datum/economy_account/linked_account
-
-/obj/item/eftpos/Initialize(mapload)
-	. = ..()
-	machine_id = "[station_name()] EFTPOS #[GLOB.num_financial_terminals++]"
-	access_code = rand(1111,111111)
-	//by default, connect to the station account
-	//the user of the EFTPOS device can change the target account though, and no-one will be the wiser (except whoever's being charged)
-	linked_account = GLOB.station_account
-	return INITIALIZE_HINT_LATELOAD
-
-/obj/item/eftpos/attack_self(mob/user, datum/event_args/actor/actor)
-	. = ..()
-	if(.)
-		return
-	if(get_dist(src,user) <= 1)
-		var/dat = "<b>[eftpos_name]</b><br>"
-		dat += "<i>This terminal is</i> [machine_id]. <i>Report this code when contacting IT Support</i><br>"
-		if(transaction_locked)
-			dat += "<a href='?src=\ref[src];choice=toggle_lock'>Back[transaction_paid ? "" : " (authentication required)"]</a><br><br>"
-
-			dat += "Transaction purpose: <b>[transaction_purpose]</b><br>"
-			dat += "Value: <b>$[transaction_amount]</b><br>"
-			dat += "Linked account: <b>[linked_account ? linked_account.owner_name : "None"]</b><hr>"
-			if(transaction_paid)
-				dat += "<i>This transaction has been processed successfully.</i><hr>"
-			else
-				dat += "<i>Swipe your card below the line to finish this transaction.</i><hr>"
-				dat += "<a href='?src=\ref[src];choice=scan_card'>\[------\]</a>"
-		else
-			dat += "<a href='?src=\ref[src];choice=toggle_lock'>Lock in new transaction</a><br><br>"
-
-			dat += "<a href='?src=\ref[src];choice=trans_purpose'>Transaction purpose: [transaction_purpose]</a><br>"
-			dat += "Value: <a href='?src=\ref[src];choice=trans_value'>$[transaction_amount]</a><br>"
-			dat += "Linked account: <a href='?src=\ref[src];choice=link_account'>[linked_account ? linked_account.owner_name : "None"]</a><hr>"
-			dat += "<a href='?src=\ref[src];choice=change_code'>Change access code</a><br>"
-			dat += "<a href='?src=\ref[src];choice=change_id'>Change EFTPOS ID</a><br>"
-			dat += "Scan card to reset access code <a href='?src=\ref[src];choice=reset'>\[------\]</a>"
-		user << browse(HTML_SKELETON(dat),"window=eftpos")
-	else
-		user << browse(null,"window=eftpos")
 
 /obj/item/eftpos/attackby(obj/item/O as obj, user as mob)
 
@@ -105,25 +63,6 @@
 					print_reference()
 				else
 					to_chat(usr, "[icon2html(thing = src, target = usr)]<span class='warning'>Incorrect code entered.</span>")
-			if("link_account")
-				var/attempt_account_num = input("Enter account number to pay EFTPOS charges into", "New account number") as num
-				var/attempt_pin = input("Enter pin code", "Account pin") as num
-				linked_account = attempt_account_access(attempt_account_num, attempt_pin, 1)
-				if(linked_account)
-					if(linked_account.suspended)
-						linked_account = null
-						to_chat(usr, "[icon2html(thing = src, target = usr)]<span class='warning'>Account has been suspended.</span>")
-				else
-					to_chat(usr, "[icon2html(thing = src, target = usr)]<span class='warning'>Account not found.</span>")
-			if("trans_purpose")
-				var/choice = sanitize(input("Enter reason for EFTPOS transaction", "Transaction purpose"))
-				if(choice) transaction_purpose = choice
-			if("trans_value")
-				var/try_num = input("Enter amount for EFTPOS transaction", "Transaction amount") as num
-				if(try_num < 0)
-					alert("That is not a valid amount!")
-				else
-					transaction_amount = try_num
 			if("toggle_lock")
 				if(transaction_locked)
 					if (transaction_paid)
@@ -156,8 +95,6 @@
 				else if (istype(I, /obj/item/card/emag))
 					access_code = 0
 					to_chat(usr, "[icon2html(thing = src, target = usr)]<span class='info'>Access code reset to 0.</span>")
-
-	src.attack_self(usr)
 
 /obj/item/eftpos/proc/scan_card(var/obj/item/card/I, var/obj/item/ID_container)
 	if (istype(I, /obj/item/card/id))

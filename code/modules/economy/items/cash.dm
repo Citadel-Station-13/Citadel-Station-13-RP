@@ -17,7 +17,6 @@
 
 /obj/item/spacecash/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/spacecash))
-		if(istype(W, /obj/item/charge_card)) return 0
 
 		var/obj/item/spacecash/SC = W
 

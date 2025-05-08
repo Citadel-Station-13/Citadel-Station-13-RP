@@ -50,10 +50,21 @@
 	if(!ui)
 		ui = new(user, src, "items/RetailTagger.tsx")
 		ui.open()
+		#warn impl ui
 
 /obj/item/retail_tagger/using_as_item(atom/target, datum/event_args/actor/clickchain/e_args, clickchain_flags, datum/callback/reachability_check)
 	. = ..()
+	if(.)
+		return
+	// no moca you can't have your 2.51$ catgirl gimmick
+	if(iscarbon(target))
+		return
+	tag_object(target, e_args)
+	return CLICKCHAIN_DID_SOMETHING
 
-/obj/item/retail_tagger/proc/tag_object(obj/target, datum/event_args/actor/actor, silent)
+/obj/item/retail_tagger/proc/tag_entity(atom/movable/target, datum/event_args/actor/actor, silent)
+	if(!istype(target))
+		return FALSE
+	#warn impl
 
-#warn impl all
+	return TRUE
