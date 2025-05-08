@@ -91,7 +91,7 @@ Key procs
 		CRASH("no id on movespeed modifier")
 
 /**
-  * Returns new multiplicative movespeed after modification.
+  * Returns new hyperbolic movespeed after modification.
   *
   * The minimum move delay is always world.tick_lag. Attempting to go lower will result in the excess being cut.
   * This is so math doesn't break down when something attempts to break through the asymptote at 0 for move delay to speed.
