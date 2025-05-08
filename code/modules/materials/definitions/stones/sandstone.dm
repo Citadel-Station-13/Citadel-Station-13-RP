@@ -27,6 +27,8 @@
 
 	worth = 1.25
 
+	material_constraints = MATERIAL_CONSTRAINT_RIGID
+
 /datum/prototype/material/sandstone/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(category = "statues", name = "assistant statue", product = /obj/structure/statue/sandstone/assistant, amount = 10)

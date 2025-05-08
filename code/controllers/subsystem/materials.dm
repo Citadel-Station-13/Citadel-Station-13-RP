@@ -249,9 +249,20 @@ SUBSYSTEM_DEF(materials)
 			constraint_list += mat.material_constraints //Add the unified constraint
 			for(var/key in constraint_bf.flags)
 				if(constraint_bf.flags[key] & mat.material_constraints)
-					constraint_list += constraint_bf.flags[key] //And the individual constraints. This is because we'll be using js' .Includes() to check if a constraint bitflag is present
+					constraint_list += constraint_bf.flags[key] //And the individual constraints. This is because we'll be using js' .Includes() to check if a constraint bitflag is present.
+					//We do this instead of passing the direct flags to JS for the following reasons:
+					
 					//E.g if your material is MATERIAL_CONSTRAINT_RIGID | MATERIAL_CONSTRAINT_TRANSPARENT (e.g clear plastic)
 					//you want it to pass checks for both MATERIAL_CONSTRAINT_RIGID, MATERIAL_CONSTRAINT_TRANSPARENT and (MATERIAL_CONSTRAINT_RIGID | MATERIAL_CONSTRAINT_TRANSPARENT)
+
+
+					//TODO: Reconstruction of combined bitfields
+					//Because if your material is RIGID | CONDUCTIVE | CRYSTALLINE
+					//you should be able to use it in RIGID | CONDUCTIVE applications.
+					//But right now, you can't.
+					
+
+					
 			built["constraints"] = constraint_list
 		data[mat.id] = built
 	// todo: per-material sheetAmount

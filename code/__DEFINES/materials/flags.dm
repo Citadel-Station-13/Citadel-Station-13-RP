@@ -33,6 +33,7 @@ DEFINE_BITFIELD(material_flags, list(
 //conducts electricity
 #define MATERIAL_CONSTRAINT_CONDUCTIVE (1<<2)
 
+
 //
 
 DEFINE_BITFIELD(material_constraints, list(
