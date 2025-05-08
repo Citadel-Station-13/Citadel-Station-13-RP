@@ -108,6 +108,7 @@
 	uniform = /obj/item/clothing/under/color/black
 	suit = /obj/item/clothing/suit/storage/hazardvest
 	head = /obj/item/clothing/head/hardhat/orange
+	l_ear = /obj/item/radio/headset/trader/outsider
 	shoes = /obj/item/clothing/shoes/galoshes/black
 	back = /obj/item/storage/backpack/industrial
 	id_type = /obj/item/card/id/assistant

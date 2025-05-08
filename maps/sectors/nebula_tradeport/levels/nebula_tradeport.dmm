@@ -18510,6 +18510,12 @@
 /turf/simulated/wall/wood,
 /area/sector/nebula_tradeport/motel/sauna)
 "bmj" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 4;
+	frequency = 1380;
+	id_tag = "scavenger_docker3"
+	},
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/shuttle/trade/scavenger)
 "bmt" = (
@@ -18688,7 +18694,9 @@
 	dir = 1
 	},
 /obj/machinery/door/window/eastright,
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/atmospherics/portables_connector{
+	dir = 8
+	},
 /turf/simulated/floor,
 /area/shuttle/trade/scavenger)
 "bBz" = (
@@ -20895,6 +20903,9 @@
 	id_tag = "scavenger_docker3";
 	pixel_y = 24
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
+	},
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/shuttle/trade/scavenger)
 "fKA" = (
@@ -21747,6 +21758,15 @@
 	},
 /turf/simulated/wall/r_wall/prepainted,
 /area/shuttle/trade/scavenger)
+"htE" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 8;
+	frequency = 1380;
+	id_tag = "scavenger_docker"
+	},
+/obj/map_helper/airlock/atmos/chamber_pump,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/trade/scavenger)
 "hwi" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/old_tile/yellow,
@@ -21877,6 +21897,10 @@
 /obj/effect/debris/cleanable/generic,
 /turf/simulated/floor/tiled/steel,
 /area/tradeport/commons)
+"hJw" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/trade/scavenger)
 "hJP" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
@@ -23769,12 +23793,12 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1380;
 	id_tag = "scavenger_docker3"
 	},
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/trade/scavenger)
 "ljb" = (
@@ -23851,13 +23875,13 @@
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
 "lml" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10
-	},
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	frequency = 1380;
 	id_tag = "scavenger_docker3";
 	pixel_y = 25
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/shuttle/trade/scavenger)
@@ -24624,6 +24648,10 @@
 /obj/item/storage/belt/utility/full,
 /obj/item/storage/belt/utility/full,
 /obj/item/storage/belt/utility/full,
+/obj/item/clothing/gloves/yellow,
+/obj/item/clothing/gloves/yellow,
+/obj/item/clothing/gloves/yellow,
+/obj/item/clothing/gloves/yellow,
 /turf/simulated/floor/tiled/old_cargo/yellow,
 /area/shuttle/trade/scavenger)
 "mIR" = (
@@ -24886,7 +24914,9 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/atmospherics/component/binary/pump{
+	dir = 4
+	},
 /turf/simulated/floor,
 /area/shuttle/trade/scavenger)
 "nkf" = (
@@ -25363,6 +25393,12 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 4;
+	frequency = 1380;
+	id_tag = "scavenger_docker3"
+	},
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/shuttle/trade/scavenger)
 "opb" = (
@@ -25651,7 +25687,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/table/rack/shelf/steel,
+/obj/machinery/pipedispenser/orderable,
 /turf/simulated/floor/reinforced,
 /area/shuttle/trade/scavenger)
 "oYQ" = (
@@ -25774,7 +25810,9 @@
 	dir = 1
 	},
 /obj/machinery/light,
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/atmospherics/pipe/tank/air{
+	dir = 4
+	},
 /turf/simulated/floor,
 /area/shuttle/trade/scavenger)
 "ple" = (
@@ -26117,11 +26155,8 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
-	dir = 4;
-	frequency = 1380;
-	id_tag = "scavenger_docker3"
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/trade/scavenger)
@@ -27214,12 +27249,12 @@
 /area/sector/nebula_tradeport/motel/arcade)
 "rTC" = (
 /obj/machinery/light,
-/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1380;
 	id_tag = "scavenger_docker3"
 	},
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/trade/scavenger)
 "rVS" = (
@@ -28602,8 +28637,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/table/rack/shelf/steel,
-/obj/structure/table/rack/shelf/steel,
+/obj/machinery/pipedispenser/disposal/orderable,
 /turf/simulated/floor/reinforced,
 /area/shuttle/trade/scavenger)
 "uMy" = (
@@ -29935,6 +29969,13 @@
 /obj/machinery/computer/arcade/orion_trail,
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/tradeport/cafeteria)
+"xHt" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/trade/scavenger)
 "xIp" = (
 /obj/structure/table/hardwoodtable,
 /obj/structure/flora/pottedplant/stoutbush{
@@ -57169,8 +57210,8 @@ acd
 bpN
 bpN
 fJK
-ooH
-bmj
+xHt
+peD
 bpN
 bpN
 acd
@@ -57558,7 +57599,7 @@ acd
 bpN
 lml
 nnh
-peD
+hJw
 bpN
 bpN
 acd
@@ -57750,9 +57791,9 @@ acd
 acd
 acd
 bpN
-bmj
+htE
 kPZ
-bmj
+htE
 bpN
 bpN
 bpN

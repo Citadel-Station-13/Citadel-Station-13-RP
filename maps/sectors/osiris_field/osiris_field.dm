@@ -47,7 +47,7 @@
 			GLOBAL_PROC_REF(seed_submaps),
 			list(z_index),
 			200,
-			/area/space/osirisdebrisfield/unexplored,
+			/area/space/osirisdebrisfield2/unexplored,
 			/datum/map_template/submap/level_specific/osirisfield,
 		)
 	)

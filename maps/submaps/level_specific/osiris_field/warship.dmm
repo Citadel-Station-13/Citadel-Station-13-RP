@@ -91,6 +91,10 @@
 /obj/structure/event/prop/server1,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/osiris/battlestar)
+"ep" = (
+/obj/machinery/shipsensors/weak,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
 "eq" = (
 /obj/effect/floor_decal/industrial/halfstair,
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -1086,6 +1090,10 @@
 	},
 /turf/simulated/floor,
 /area/shuttle/osiris/battlestar)
+"QA" = (
+/obj/machinery/shipsensors,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
 "QE" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -1834,7 +1842,7 @@ QV
 QV
 QV
 QV
-QV
+ep
 Ez
 Ba
 dV
@@ -1847,7 +1855,7 @@ OD
 nu
 Jv
 Ez
-QV
+QA
 QV
 QV
 QV

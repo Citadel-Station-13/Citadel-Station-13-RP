@@ -35,11 +35,11 @@
 /turf/simulated/floor/event/derelict_floor6,
 /area/shuttle/osiris/colonial)
 "ba" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
 /obj/structure/cable{
 	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/osiris/colonial)
@@ -96,6 +96,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/shuttle/osiris/colonial)
+"cf" = (
+/mob/living/simple_mob/mechanical/corrupt_maint_drone,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/osiris/colonial)
 "cl" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/borderfloorblack{
@@ -125,7 +129,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/techfloor/monogrid,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/osiris/colonial)
 "cP" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -141,11 +145,11 @@
 /turf/simulated/floor/wood/sif,
 /area/shuttle/osiris/colonial)
 "cW" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
 /obj/structure/cable{
 	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/osiris/colonial)
@@ -177,7 +181,7 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/tiled/techfloor/monogrid,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/osiris/colonial)
 "eW" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -210,7 +214,7 @@
 	dir = 8
 	},
 /obj/structure/bed/chair/sofa/beige/corner{
-	dir = 4
+	dir = 1
 	},
 /turf/simulated/floor/wood/sif,
 /area/shuttle/osiris/colonial)
@@ -228,6 +232,11 @@
 	},
 /turf/simulated/floor/carpet/patterened/blue,
 /area/shuttle/osiris/colonial)
+"gJ" = (
+/obj/effect/floor_decal/borderfloorblack,
+/mob/living/simple_mob/mechanical/corrupt_maint_drone,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/osiris/colonial)
 "gP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/wall/r_wall/prepainted,
@@ -242,7 +251,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/techfloor/monogrid,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/osiris/colonial)
 "hl" = (
 /obj/machinery/atmospherics/component/unary/engine/bigger{
@@ -255,9 +264,13 @@
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/shuttle/osiris/colonial)
-"ho" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/turf/simulated/floor/tiled/techfloor/monogrid,
+"hy" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/structure/bed/chair/comfy/beige{
+	dir = 1
+	},
+/mob/living/simple_mob/mechanical/corrupt_maint_drone,
+/turf/simulated/floor/wood/sif,
 /area/shuttle/osiris/colonial)
 "hD" = (
 /obj/effect/floor_decal/borderfloorblack/full,
@@ -355,10 +368,10 @@
 /turf/simulated/floor/event/derelict_floor6,
 /area/shuttle/osiris/colonial)
 "lf" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/osiris/colonial)
 "ln" = (
@@ -629,7 +642,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/techfloor/monogrid,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/osiris/colonial)
 "sC" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -649,14 +662,14 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/osiris/colonial)
 "sS" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/component/binary/pump{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/osiris/colonial)
@@ -694,7 +707,7 @@
 /area/shuttle/osiris/colonial)
 "tw" = (
 /obj/machinery/light/small,
-/turf/simulated/floor/tiled/techfloor/monogrid,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/osiris/colonial)
 "tH" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -723,7 +736,7 @@
 /area/shuttle/osiris/colonial)
 "tO" = (
 /obj/structure/bed/chair/sofa/beige/corner{
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/carpet/patterened/blue,
 /area/shuttle/osiris/colonial)
@@ -744,7 +757,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/techfloor/monogrid,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/osiris/colonial)
 "vf" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
@@ -815,6 +828,10 @@
 	},
 /turf/simulated/floor/event/derelict_floor6,
 /area/shuttle/osiris/colonial)
+"vY" = (
+/mob/living/simple_mob/mechanical/corrupt_maint_drone,
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
 "wa" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -825,11 +842,11 @@
 /turf/simulated/floor,
 /area/shuttle/osiris/colonial)
 "ws" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
 /obj/structure/fuel_port/empty_tank{
 	pixel_y = -29
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/osiris/colonial)
@@ -861,6 +878,10 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"wX" = (
+/obj/machinery/shipsensors,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/osiris/colonial)
 "xa" = (
 /obj/structure/table/hardwoodtable,
@@ -1180,7 +1201,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/techfloor/monogrid,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/osiris/colonial)
 "Fd" = (
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
@@ -1333,7 +1354,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/techfloor/monogrid,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/osiris/colonial)
 "JI" = (
 /obj/structure/bed/chair/comfy/brown{
@@ -1540,7 +1561,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/tiled/techfloor/monogrid,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/osiris/colonial)
 "Oa" = (
 /obj/structure/toilet{
@@ -1654,7 +1675,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/techfloor/monogrid,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/osiris/colonial)
 "QB" = (
 /obj/effect/floor_decal/spline/fancy/wood/corner,
@@ -1878,6 +1899,15 @@
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/osiris/colonial)
+"XH" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
 "XV" = (
 /obj/machinery/door/airlock,
 /obj/structure/cable{
@@ -1906,9 +1936,6 @@
 	},
 /turf/simulated/floor,
 /area/shuttle/osiris/colonial)
-"YG" = (
-/turf/simulated/floor/tiled/techfloor/monogrid,
-/area/shuttle/osiris/colonial)
 "Zc" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -1929,6 +1956,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
 	},
+/mob/living/simple_mob/mechanical/corrupt_maint_drone,
 /turf/simulated/floor/event/derelict_floor6,
 /area/shuttle/osiris/colonial)
 "Zk" = (
@@ -1947,7 +1975,7 @@
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/osiris/colonial)
 "ZS" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
+/obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -2143,7 +2171,7 @@ Bc
 Bc
 Bc
 Bc
-Bc
+wX
 Bp
 zL
 bR
@@ -2151,7 +2179,7 @@ pv
 Np
 ip
 Bp
-Bc
+Mg
 Bc
 Bc
 Bc
@@ -2173,7 +2201,7 @@ Bp
 CA
 ii
 kp
-Fb
+gJ
 ca
 Bp
 Bp
@@ -2370,7 +2398,7 @@ vf
 HC
 ok
 xa
-fe
+hy
 zr
 Hh
 Hh
@@ -2501,7 +2529,7 @@ MC
 cl
 pa
 JU
-QY
+mN
 gb
 Lh
 Lh
@@ -2572,7 +2600,7 @@ TJ
 TJ
 bR
 uL
-YG
+Mg
 tw
 bR
 TJ
@@ -2622,7 +2650,7 @@ TJ
 Ar
 bR
 pW
-kN
+vY
 EJ
 bR
 ok
@@ -2672,7 +2700,7 @@ TJ
 TJ
 bR
 uL
-YG
+Mg
 tw
 bR
 TJ
@@ -2772,7 +2800,7 @@ TJ
 TJ
 bR
 uL
-YG
+Mg
 tw
 bR
 TJ
@@ -2788,7 +2816,7 @@ Bc
 (34,1,1) = {"
 Bc
 pZ
-ho
+HZ
 gA
 RO
 JI
@@ -2813,7 +2841,7 @@ Bc
 (35,1,1) = {"
 Bc
 pZ
-ho
+HZ
 QQ
 IP
 JI
@@ -2838,7 +2866,7 @@ Bc
 (36,1,1) = {"
 Bc
 pZ
-ho
+HZ
 Hh
 Hh
 Hh
@@ -2863,7 +2891,7 @@ Bc
 (37,1,1) = {"
 pZ
 WR
-ho
+HZ
 xR
 Hh
 CW
@@ -2872,7 +2900,7 @@ kN
 kA
 bR
 uL
-YG
+Mg
 tw
 bR
 Lh
@@ -2913,7 +2941,7 @@ pZ
 (39,1,1) = {"
 pZ
 WR
-ho
+HZ
 Hh
 Hh
 bf
@@ -2931,14 +2959,14 @@ gb
 Lh
 Lh
 Lh
-YG
+Mg
 WR
 pZ
 "}
 (40,1,1) = {"
 pZ
 WR
-ho
+HZ
 MD
 nM
 mX
@@ -2956,7 +2984,7 @@ ok
 gb
 gb
 Hh
-YG
+Mg
 WR
 pZ
 "}
@@ -2972,7 +3000,7 @@ Bp
 Bp
 bR
 JB
-YG
+Mg
 tw
 bR
 Bp
@@ -3023,9 +3051,9 @@ wz
 Fb
 Fc
 It
-YG
+Mg
 Yf
-wz
+cf
 wz
 wz
 wz
@@ -3117,9 +3145,9 @@ HZ
 Ba
 Ot
 sS
-ba
-ba
-ba
+Ot
+Ot
+Ot
 HY
 wa
 Tk
@@ -3142,8 +3170,8 @@ bR
 QP
 Mg
 cW
-ba
-ba
+XH
+XH
 ba
 XV
 Yz
