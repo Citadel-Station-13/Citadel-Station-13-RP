@@ -55,6 +55,7 @@ export interface DetailedMaterial extends Material {
   melting_point: number;
   opacity: number;
   constraints: number[];
+  tags: string[];
 }
 
 interface MaterialStorageProps extends MaterialRenderProps {

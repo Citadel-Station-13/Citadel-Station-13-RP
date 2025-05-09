@@ -31,6 +31,7 @@ DECLARE_MATERIAL(/steel)
 	nullification = MATERIAL_RESISTANCE_NONE
 
 	material_constraints = MATERIAL_CONSTRAINT_RIGID
+	material_tags = list(MATERIAL_TAG_BASIC_STRUCTURAL)
 
 /datum/prototype/material/steel/generate_recipes()
 	. = ..()
