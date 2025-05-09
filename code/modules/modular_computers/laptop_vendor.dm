@@ -1,5 +1,5 @@
 // A vendor machine for modular computer portable devices - Laptops and Tablets
-
+// todo: should be /machinery/vending
 /obj/machinery/lapvend
 	name = "computer vendor"
 	desc = "A vending machine with a built-in microfabricator, capable of dispensing various NT-branded computers."
@@ -279,7 +279,7 @@
 		visible_message("<span class='info'>\The [usr] swipes \the [I] through \the [src].</span>")
 	else
 		visible_message("<span class='info'>\The [usr] swipes \the [ID_container] through \the [src].</span>")
-	var/datum/money_account/customer_account = get_account(I.associated_account_number)
+	var/datum/economy_account/customer_account = get_account(I.associated_account_number)
 	if (!customer_account || customer_account.suspended)
 		ping("Connection error. Unable to connect to account.")
 		return 0
@@ -292,12 +292,12 @@
 			ping("Unable to access account: incorrect credentials.")
 			return 0
 
-	if(total_price > customer_account.money)
+	if(total_price > customer_account.balance)
 		ping("Insufficient funds in account.")
 		return 0
 	else
-		customer_account.money -= total_price
-		var/datum/transaction/T = new()
+		var/datum/economy_transaction/transaction = new(-total_price)
+
 		T.target_name = "Computer Manufacturer (via [src.name])"
 		T.purpose = "Purchase of [(devtype == 1) ? "laptop computer" : "tablet microcomputer"]."
 		T.amount = total_price

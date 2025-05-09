@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
+
 /**
  * Tracks and initializes world factions
  *
@@ -74,8 +77,17 @@ SUBSYSTEM_DEF(game_world)
 		active_location_lookup[id] = location
 
 	active_faction_lookup = list()
+	active_faction_lookup[/datum/world_faction/core/station::id] = faction_lookup[/datum/world_faction/core/station::id]
 	for(var/id in faction_lookup)
 		var/datum/world_faction/faction = faction_lookup[id]
 		if(!length(faction.location_ids & active_location_lookup))
 			continue
 		active_faction_lookup[id] = faction
+
+/datum/controller/subsystem/game_world/proc/resolve_faction(datum/world_faction/factionlike) as /datum/world_faction
+	RETURN_TYPE(/datum/world_faction)
+	if(ispath(factionlike))
+		factionlike = initial(factionlike.id)
+	else if(istype(factionlike))
+		factionlike = factionlike.id
+	return faction_lookup[factionlike]
