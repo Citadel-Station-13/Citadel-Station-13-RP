@@ -432,7 +432,8 @@
 		if(m.is_blind())
 			m.show_message(SPAN_INFO("You hear a knocking sound nearby."), SAYCODE_TYPE_AUDIBLE)
 		else
-			m.show_message(SPAN_INFO("\The [user] knocks on \the [src]."), SAYCODE_TYPE_AUDIBLE)
+			//If they can see then they get notified even if deaf since you can...just see the person knocking
+			m.show_message(SPAN_INFO("\The [user] knocks on \the [src]."), SAYCODE_TYPE_CONSCIOUS)
 	to_chat(user, SPAN_INFO("You knock on \the [src]."))
 	playsound(src, knocksound, 100, 1)
 	return TRUE
