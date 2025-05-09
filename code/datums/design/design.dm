@@ -64,6 +64,9 @@
 	/// for variable-material designs: assoc list of keys to constraints
 	/// this should obviously match material_parts on the /obj in question.
 	var/list/material_constraints
+	/// for variable-material designs: assoc list of keys to tags, for autodetect
+	/// this should obviously match material_parts on the /obj in question.
+	var/list/material_autodetect_tags
 	/// Items needed, as ingredients list - see [code/__HELPERS/datastructs/ingredients.dm]
 	///
 	/// * This should always be using typepath instead of ID where possible for hardcoded designs, as typepaths can be eagerly
@@ -144,6 +147,7 @@
 		"materials" = length(materials_base)? materials_base : null,
 		"material_parts" = length(material_costs)? material_costs : null,
 		"material_constraints" = length(material_constraints)? material_constraints : null,
+		"autodetect_tags" = length(material_autodetect_tags)? material_autodetect_tags : null,
 		"reagents" = length(reagents)? reagents : null,
 		"ingredients" = length(ingredients)? ingredients : null,
 		"resultItem" = list(
