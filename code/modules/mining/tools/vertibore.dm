@@ -20,10 +20,10 @@
 	. = ..()
 	. += "<span class='notice'>The shaft excavator has [mat_storage]cm^3 of phoron inside, and can hold a maximum of [max_mat_storage].</span>"
 	if(cell)
-		. += "<span class='notice'>The installed [cell.name] has a charge level of [round((cell.charge/cell.maxcharge)*100)]%.</span>"
+		. += "<span class='notice'>The installed [cell.name] has a charge level of [round((cell.charge/cell.max_charge)*100)]%.</span>"
 
 /obj/item/vertibore/attackby(var/obj/item/thing, var/mob/user)
-	if(istype(thing, /obj/item/cell))
+	if(istype(thing, /obj/item/cell/medium))
 		if(cell)
 			to_chat(user, "<span class='warning'>\The [src] already has \a [cell] installed.</span>")
 			return

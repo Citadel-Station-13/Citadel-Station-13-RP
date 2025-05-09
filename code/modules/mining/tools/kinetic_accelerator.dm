@@ -188,7 +188,7 @@
 	return
 
 /obj/item/gun/projectile/energy/kinetic_accelerator/proc/reload()
-	obj_cell_slot.cell.give(obj_cell_slot.cell.maxcharge)
+	obj_cell_slot.cell.give(obj_cell_slot.cell.max_charge)
 	// process_chamber()
 	// if(!suppressed)
 	playsound(src, 'sound/weapons/kenetic_reload.ogg', 60, 1)

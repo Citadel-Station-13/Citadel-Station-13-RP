@@ -1442,7 +1442,7 @@
 				src.log_message("Eject attempt made using maintenance controls - rejected.")
 		return
 
-	else if(istype(W, /obj/item/cell))
+	else if(istype(W, /obj/item/cell/large))
 		if(state==MECHA_CELL_OUT)
 			if(!src.cell)
 				if(!user.attempt_insert_item_for_installation(W, src))
@@ -2520,7 +2520,7 @@
 		if(mecha.get_charge())
 			mecha.spark_system.start()
 			mecha.cell.charge -= min(20,mecha.cell.charge)
-			mecha.cell.maxcharge -= min(20,mecha.cell.maxcharge)
+			mecha.cell.max_charge -= min(20,mecha.cell.max_charge)
 	return
 
 
@@ -2574,7 +2574,7 @@
 
 /obj/vehicle/sealed/mecha/proc/update_cell_alerts()
 	if(occupant_legacy && cell)
-		var/cellcharge = cell.charge/cell.maxcharge
+		var/cellcharge = cell.charge/cell.max_charge
 		switch(cellcharge)
 			if(0.75 to INFINITY)
 				occupant_legacy.clear_alert("charge")

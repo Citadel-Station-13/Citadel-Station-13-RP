@@ -325,9 +325,6 @@
 			else if(prob(50))
 				new /obj/item/storage/toolbox/electrical(C)
 
-			if(prob(25))
-				new /obj/item/cell(C)
-
 		if("coffin")
 			new /obj/structure/closet/coffin(src.loc)
 			if(prob(33))

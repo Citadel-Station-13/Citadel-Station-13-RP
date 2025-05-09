@@ -79,8 +79,8 @@
 				if(siemens)
 					while(i)
 						cell.charge += 100 * siemens //This should be a nice compromise between recharging guns and other batteries.
-						if(cell.charge > cell.maxcharge)
-							cell.charge = cell.maxcharge
+						if(cell.charge > cell.max_charge)
+							cell.charge = cell.max_charge
 							break
 						if(siemens)
 							var/T = get_turf(src)
@@ -188,8 +188,8 @@
 				if(siemens)
 					while(i)
 						cell.charge += 100 * siemens //This should be a nice compromise between recharging guns and other batteries.
-						if(cell.charge > cell.maxcharge)
-							cell.charge = cell.maxcharge
+						if(cell.charge > cell.max_charge)
+							cell.charge = cell.max_charge
 							break //No point making sparks if the cell's full.
 	//					if(!Adjacent(T))
 	//						break

@@ -99,7 +99,7 @@
 				return
 
 		if(4)
-			if(istype(W, /obj/item/cell))
+			if(istype(W, /obj/item/cell/large))
 				if(!user.attempt_insert_item_for_installation(W, src))
 					return
 				cell = W
@@ -243,7 +243,7 @@
 				return
 
 		if(5)
-			if(istype(W, /obj/item/cell))
+			if(istype(W, /obj/item/cell/large))
 				if(!user.attempt_insert_item_for_installation(W, src))
 					return
 				cell = W

@@ -162,7 +162,7 @@
 					to_chat(user, "<span class='notice'>Taser gun attached.</span>")
 
 		if(9)
-			if(istype(W, /obj/item/cell))
+			if(istype(W, /obj/item/cell/medium))
 				if(!user.attempt_consume_item_for_construction(W))
 					return
 				build_step++

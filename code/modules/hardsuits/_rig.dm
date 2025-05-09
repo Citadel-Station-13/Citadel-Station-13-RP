@@ -60,7 +60,7 @@
 	var/helm_type =  /obj/item/clothing/head/helmet/space/hardsuit
 	var/boot_type =  /obj/item/clothing/shoes/magboots/hardsuit
 	var/glove_type = /obj/item/clothing/gloves/gauntlets/hardsuit
-	var/cell_type =  /obj/item/cell/high
+	var/cell_type =  /obj/item/cell/large
 	var/air_type =   /obj/item/tank/oxygen
 
 	var/unremovable_cell = FALSE
@@ -733,8 +733,8 @@
 	data["chest"] =     (chest ?  "[chest.name]" :  "None.")
 
 	data["charge"] =       cell ? round(cell.charge,1) : 0
-	data["maxcharge"] =    cell ? cell.maxcharge : 0
-	data["chargestatus"] = cell ? FLOOR((cell.charge/cell.maxcharge)*50, 1) : 0
+	data["max_charge"] =    cell ? cell.max_charge : 0
+	data["chargestatus"] = cell ? FLOOR((cell.charge/cell.max_charge)*50, 1) : 0
 
 	data["emagged"] =       subverted
 	data["coverlock"] =     locked

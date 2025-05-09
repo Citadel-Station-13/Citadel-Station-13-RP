@@ -32,7 +32,7 @@
 
 	var/C = 0
 	for(var/obj/item/cell/PC in component_parts)
-		C += PC.maxcharge
+		C += PC.max_charge
 		cells_amount++
 	capacity = KJ_TO_KWM(DYNAMIC_CELL_UNITS_TO_KJ(C))
 
@@ -68,7 +68,7 @@
 					to_chat(user, "<span class='warning'>Turn off the [src] before dismantling it.</span>")
 			else
 				to_chat(user, "<span class='warning'>Better let [src] discharge before dismantling it.</span>")
-		else if ((istype(W, /obj/item/stock_parts/capacitor) && (capacitors_amount < 5)) || (istype(W, /obj/item/cell) && (cells_amount < 5)))
+		else if ((istype(W, /obj/item/stock_parts/capacitor) && (capacitors_amount < 5)) || (istype(W, /obj/item/cell/large) && (cells_amount < 5)))
 			if (charge < (capacity / 100))
 				if (!output_attempt && !input_attempt)
 					if(!user.attempt_insert_item_for_installation(W, src))

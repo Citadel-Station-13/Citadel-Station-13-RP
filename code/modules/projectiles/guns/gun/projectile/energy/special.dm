@@ -367,7 +367,6 @@
 		cycle_cooldown = 2 SECONDS;
 	}
 	charge_cost = 900
-	cell_type = /obj/item/cell
 	cell_system_legacy_use_device = FALSE
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
@@ -394,7 +393,6 @@
 		cycle_cooldown = 2 SECONDS;
 		charge_cost = 2400 / 4;
 	}
-	cell_type = /obj/item/cell/device/weapon
 	legacy_battery_lock = 1
 	slot_flags = SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
