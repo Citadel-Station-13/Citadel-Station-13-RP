@@ -11,16 +11,18 @@
 	/// peer account number, if any
 	/// * only sourced / point-to-point / transfer transactions have this set
 	var/acct_num_peer
-	/// destination account number, if any
+	/// target account number, if any
 	/// * non point-to-point transactions / system transactions will always have
 	///   the target account as this!
+	/// * 'amount' will be withdrawn
+	#warn uhhh hmmm
 	var/acct_num_target
 
 	/// balance change to target
 	/// * if the peer is specified, this is, by default, the opposite change of target!
 	///   this means that if this is '50', it means source peer 50 and target gained 50
 	/// * confusing, i know.
-	var/amount = 0
+	var/amount = 0destination
 
 	//*                        auditing                 *//
 	//* these are fluff fields and may be falsified.    *//

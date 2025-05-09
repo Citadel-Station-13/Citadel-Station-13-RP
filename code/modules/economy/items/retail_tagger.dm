@@ -59,7 +59,7 @@
 	// no moca you can't have your 2.51$ catgirl gimmick
 	if(iscarbon(target))
 		return
-	tag_object(target, e_args)
+	tag_entity(target, e_args)
 	return CLICKCHAIN_DID_SOMETHING
 
 /obj/item/retail_tagger/proc/tag_entity(atom/movable/target, datum/event_args/actor/actor, silent)

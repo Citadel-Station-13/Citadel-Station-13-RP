@@ -347,12 +347,8 @@
 				return
 			else
 				currently_vending = R
-				if(!GLOB.vendor_account || GLOB.vendor_account.suspended)
-					status_message = "This machine is currently unable to process payments due to issues with the associated account."
-					status_error = 1
-				else
-					status_message = "Please swipe a card or insert cash to pay for the item."
-					status_error = 0
+				status_message = "Please swipe a card or insert cash to pay for the item."
+				status_error = 0
 
 		else if(href_list["cancelpurchase"])
 			currently_vending = null

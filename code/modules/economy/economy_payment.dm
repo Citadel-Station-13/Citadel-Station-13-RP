@@ -42,6 +42,9 @@
 	/// output; error explanation (short please!)
 	var/out_error_reason = "Unknown failure."
 
+/datum/economy_payment/New(amount = 0)
+	src.amount = amount
+
 /**
  * Reset status to allow for re-execution
  */
@@ -76,3 +79,22 @@
  */
 /datum/economy_payment/proc/is_successful()
 	return out_payment_result == PAYMENT_RESULT_SUCCESS
+
+/**
+ * Helper to make a transaction to execute against a source account,
+ * run it, and set out variables.
+ *
+ * @return TRUE if handled, FALSE on unknown error
+ */
+/datum/economy_payment/proc/lazy_execute_against_account(datum/economy_account/source_account)
+
+	var/to_withdraw = max(0, allow_overdraft ? amount : min(amount, source_account.balance))
+
+	var/datum/economy_transaction/attempt_transaction = new(to_withdraw)
+	attempt_transaction.audit_purpose_as_unsafe_html = audit_purpose_as_unsafe_html
+	attempt_transaction.audit_terminal_as_unsafe_html = audit_terminal_name_as_unsafe_html
+	attempt_transaction.audit_peer_name_as_unsafe_html = audit_recipient_as_unsafe_html
+
+	#warn impl
+
+	return TRUE

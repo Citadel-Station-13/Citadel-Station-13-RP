@@ -6,26 +6,40 @@
 
 /obj/item/card/id/economy_attempt_payment(datum/economy_payment/payment, payment_op_flags, atom/movable/accepting_entity, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain)
 	if(!associated_account_number)
-		return FALSE
+		return TRUE
 
+	if(!(payment_op_flags & PAYMENT_OP_SUPPRESSED) && accepting_entity)
+		actor?.visible_feedback(
+			target = accepting_entity,
+			visible = SPAN_NOTICE("[actor.performer] swipes [src] through [accepting_entity]."),
+		)
+
+	var/datum/economy_account/connected_account = SSeconomy.resolve_account(associated_account_number)
+
+	if(connected_account)
+		payment.out_error_reason = "Linked account does not exist or is invalid."
+		return TRUE
+	if(connected_account.security_lock)
+		payment.out_error_reason = "Linked account is under security lockdown."
+		return TRUE
+
+	switch(connected_account.security_level)
+		if(ECONOMY_SECURITY_LEVEL_MULTIFACTOR, ECONOMY_SECURITY_LEVEL_PASSWORD)
+			// card is taken care of by, well, being on us
+			#warn handle pin entry and verify
+		if(ECONOMY_SECURITY_LEVEL_RELAXED)
+			// do nothing
+
+	if(!payment.lazy_execute_against_account(connected_account))
+		payment.out_error_reason = "Unknown error. Contact a coder."
+		return TRUE
+	return TRUE
 
 #warn impl
 
 // currently just id cards
 
 /obj/item/card/id/attempt_dynamic_currency(mob/user, atom/movable/predicate, amount, force, prevent_types, list/data, silent, visual_range)
-	. = ..()
-	if(. >= PAYMENT_SUCCESS)
-		return	// component intercepted
-	if(!silent)
-		user.visible_message(SPAN_INFO("[user] swipes [src] through [predicate]."), range = visual_range)
-	var/datum/economy_account/customer_account = SSeconomy.resolve_account(associated_account_number)
-	if(!customer_account)
-		data[DYNAMIC_PAYMENT_DATA_FAIL_REASON] = "Error: Unable to access account. Please contact technical support if problem persist."
-		return PAYMENT_DYNAMIC_ERROR
-	if(customer_account.suspended)
-		data[DYNAMIC_PAYMENT_DATA_FAIL_REASON] = "Error: Account suspended."
-		return PAYMENT_DYNAMIC_ERROR
 	if(customer_account.security_level != 0)
 		if(!user)
 			data[DYNAMIC_PAYMENT_DATA_FAIL_REASON] = "Error: No credentials supplied."
@@ -42,15 +56,5 @@
 		if(!force)
 			data[DYNAMIC_PAYMENT_DATA_FAIL_REASON] = "Error: Insufficient funds."
 			return PAYMENT_DYNAMIC_ERROR
-
-	data[DYNAMIC_PAYMENT_DATA_PAID_AMOUNT] = amount
-	data[DYNAMIC_PAYMENT_DATA_BANK_ACCOUNT] = customer_account
-	data[DYNAMIC_PAYMENT_DATA_CURRENCY_TYPE] = PAYMENT_TYPE_BANK_CARD
-
-	var/datum/economy_transaction/transaction = new(-amount)
-	transaction.audit_terminal_as_unsafe_html = details[CHARGE_DETAIL_DEVICE]
-	transaction.audit_peer_name_as_unsafe_html = details[CHARGE_DETAIL_RECIPIENT]
-	transaction.audit_purpose_as_unsafe_html = details[CHARGE_DETAIL_REASON]
-	transaction.execute_system_transaction(transaction)
 
 	return amount
