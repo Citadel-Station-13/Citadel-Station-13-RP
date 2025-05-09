@@ -158,6 +158,11 @@
 /obj/machinery/door/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
+	if(user.a_intent == INTENT_GRAB)
+		usr = user
+		knock()
+		return ..()
+
 	return src.attackby(user, user)
 
 /obj/machinery/door/attack_tk(mob/user as mob)
@@ -413,6 +418,10 @@
 		to_chat(usr, SPAN_WARNING("You can't do that right now."))
 		return
 	
+	if(istype(usr, /mob/living)) 
+		var/mob/living/L = usr
+		src.add_fingerprint(L)
+		
 	//If someone can see both usr and the door, then they get a message saying usr knocks on the door.
 	//But if someone can only see the door and not usr (usually when they're on the opposite side of the door), they get a message saying they hear a knock on the door.
 	//If someone sees only the usr and not the door, nothing happens since you don't see anything outside your field of view
