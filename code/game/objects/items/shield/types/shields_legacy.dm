@@ -18,12 +18,13 @@
 /obj/item/shield/riot/passive_parry_intercept(mob/defending, attack_type, datum/attack_source, datum/passive_parry/parry_data)
 	if(istype(attack_source, /obj/projectile))
 		var/obj/projectile/proj = attack_source
-		if(((is_sharp(proj) && proj.armor_penetration >= 10) || proj.damage_tier >= ARMOR_TIER_HIGH || istype(proj, /obj/projectile/beam)) && prob(50))
+		// todo: rework
+		if((proj.damage_tier >= 4 || istype(proj, /obj/projectile/beam)) && prob(50))
 			//If we're at this point, the bullet/beam is going to go through the shield, however it will hit for less damage.
 			//Bullets get slowed down, while beams are diffused as they hit the shield, so these shields are not /completely/
 			//useless. Extremely penetrating projectiles will go through the shield without less damage.
 			defending.visible_message("<span class='danger'>\The [defending]'s [src.name] is pierced by [proj]!</span>")
-			proj.dampen_on_pierce_experimental(src, 20, ARMOR_TIER_HIGH)
+			proj.dampen_on_pierce_experimental(src, 20, 4)
 			playsound(src, /datum/soundbyte/grouped/block_metal_with_metal, 65, TRUE)
 			return null
 	return ..()

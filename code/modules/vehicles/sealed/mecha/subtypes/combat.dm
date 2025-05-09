@@ -123,7 +123,7 @@
 				playsound(src, 'sound/weapons/heavysmash.ogg', 50, 1)
 				T.inflict_atom_damage(
 					force,
-					MELEE_TIER_HEAVY,
+					4,
 					ARMOR_MELEE,
 				)
 

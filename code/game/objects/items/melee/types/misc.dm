@@ -170,12 +170,12 @@
 	item_state = "knife"
 	slot_flags = SLOT_BELT
 	damage_force = 30
+	damage_tier = 4
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	throw_force = 10
 	w_class = WEIGHT_CLASS_NORMAL
-	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	attack_verb = list("grasped", "torn", "cut", "pierced", "lashed")
 	attack_sound = 'sound/weapons/bladeslice.ogg'
-	armor_penetration = 10
 	var/poison_chance = 100
 	var/poison_amount = 5
 	var/poison_type = "shredding_nanites"
@@ -338,9 +338,9 @@
 	throw_force = 30
 	force_wielded = 75
 	force_unwielded = 50
+	damage_tier = 6
 	w_class = WEIGHT_CLASS_HUGE
 	attack_verb = list("attacked", "smashed", "crushed", "wacked", "pounded")
-	armor_penetration = 50
 	weight = ITEM_WEIGHT_BASELINE
 
 //This currently just kills the user. lol

@@ -205,8 +205,6 @@
 	var/pry = 0			//Used in attackby() to open doors
 	//! LEGACY: DO NOT USE
 	var/in_use = 0 // If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
-	// todo: /obj/item level, /obj/projectile level, how to deal with armor?
-	var/armor_penetration = 0
 	var/show_messages
 	var/preserve_item = 0 //whether this object is preserved when its owner goes into cryo-storage, gateway, etc
 	var/can_speak = 0 //For MMIs and admin trickery. If an object has a brainmob in its contents, set this to 1 to allow it to speak.

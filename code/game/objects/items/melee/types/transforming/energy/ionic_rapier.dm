@@ -9,7 +9,6 @@
 	active_damage_force = 10
 	active_throw_force = 3
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
-	armor_penetration = 0
 	atom_flags = NOBLOODY
 	lrange = 2
 	lpower = 2
@@ -56,5 +55,4 @@
 	name = "zero-point lance"
 	desc = "Designed specifically for disrupting electronics at relatively close range, however it is still capable of dealing some damage to living beings."
 	active_damage_force = 20
-	armor_penetration = 15
 	reach = 2

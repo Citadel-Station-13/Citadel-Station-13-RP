@@ -55,13 +55,13 @@
 /datum/melee_attack/unarmed/claws/strong
 	attack_verb_legacy = list("slashed")
 	damage = 10
-	damage_tier = MELEE_TIER_MEDIUM
+	damage_tier = 3
 	damage_mode = DAMAGE_MODE_SHRED | DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 
 /datum/melee_attack/unarmed/claws/strong/xeno
 	verb_past_participle = list("slashed", "gouged", "stabbed")
 	attack_verb_legacy = list("slashed", "gouged", "stabbed")
-	damage_tier = MELEE_TIER_HEAVY
+	damage_tier = 4
 	damage = 20
 
 /datum/melee_attack/unarmed/claws/strong/xeno/queen
@@ -73,7 +73,7 @@
 	verb_past_participle = list("mauled")
 	attack_verb_legacy = list("mauled")
 	damage = 12
-	damage_tier = MELEE_TIER_MEDIUM
+	damage_tier = 3
 	damage_mode = DAMAGE_MODE_SHRED | DAMAGE_MODE_SHARP
 
 /datum/melee_attack/unarmed/bite/strong/xeno
@@ -158,11 +158,11 @@
 //Traits attack
 /datum/melee_attack/unarmed/bite/sharp/good
 	damage = 10
-	damage_tier = MELEE_TIER_LIGHT
+	damage_tier = 2
 
 /datum/melee_attack/unarmed/claws/good
 	damage = 10
-	damage_tier = MELEE_TIER_LIGHT
+	damage_tier = 2
 
 /datum/melee_attack/unarmed/bite/sharp/good/venom
 

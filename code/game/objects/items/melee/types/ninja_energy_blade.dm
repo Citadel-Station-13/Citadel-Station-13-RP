@@ -4,7 +4,7 @@
 	icon_state = "ninja_energy_blade"
 	item_state = "ninja_energy_blade"
 	damage_force = 40 //Normal attacks deal very high damage - about the same as wielded fire axe
-	armor_penetration = 100
+	damage_tier = 5
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	anchored = 1    // Never spawned outside of inventory, should be fine.
 	throw_force = 1  //Throwing or dropping the item deletes it.

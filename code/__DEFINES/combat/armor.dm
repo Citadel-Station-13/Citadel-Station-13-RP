@@ -31,11 +31,29 @@
 //? If > 0, decreases damage linearly with 1 being 0x damage.
 //? If < 0, increases damage linearly with -1 being 2x damage, -2 being 3x damage.
 
+/**
+ * The ability of an armor to absorb exotic energy.
+ */
 #define ARMOR_ENERGY "energy"
+/**
+ * The ability of an armor to block a shockwave from an explosion.
+ */
 #define ARMOR_BOMB "bomb"
+/**
+ * The ability of an armor to block microscale particles from entering.
+ */
 #define ARMOR_BIO "bio"
+/**
+ * The ability of an armor to block radiation.
+ */
 #define ARMOR_RAD "rad"
+/**
+ * The ability of an armor to resist surface combustion.
+ */
 #define ARMOR_FIRE "fire"
+/**
+ * The ability of an armor to resist acidic or corrosive substances from leaking through.
+ */
 #define ARMOR_ACID "acid"
 
 /**
@@ -81,6 +99,20 @@ GLOBAL_REAL_LIST(armor_types) = list(
 //? These are defined values so if we want to scale them nonlinearly/whatever later,
 //? we don't need to replace everything.
 
+/// tierdiff is tier difference of armor against attack; positive = armor is higher tier.
+/// * see https://www.desmos.com/calculator/6uu1djsawl
+/// * armor at or below 0 (added damage) are passed back without change
+/proc/ARMOR_TIER_CALC(armor, tierdiff)
+	if(armor <= 0)
+		return 0
+	if(!tierdiff)
+		return armor
+	if(tierdiff > 0)
+		var/a = armor * (tierdiff + 1)
+		return max(a / sqrt(2 + a ** 2), armor)
+	else
+		return armor / (1 + (((-tierdiff) ** 17.5) / 1.75))
+
 #define ARMOR_TIER_FLOOR 0
 #define ARMOR_TIER_DEFAULT 3
 
@@ -106,8 +138,8 @@ GLOBAL_REAL_LIST(armor_types) = list(
  * 1: slingshots, bb guns, etc
  * 2: crappy improvised real rounds
  * 3: most pistols and basic-er weapons are here
- * 4: heavier pistols, lighter rifles
- * 5: rifles
+ * 4: rifles
+ * 5: heavy rifles
  * 6: antimaterial rifles
  * 7: idk you got hit by a tank round
  */

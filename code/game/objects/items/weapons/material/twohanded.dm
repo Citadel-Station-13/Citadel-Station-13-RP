@@ -259,6 +259,6 @@
 	w_class = WEIGHT_CLASS_HUGE
 	encumbrance = ITEM_ENCUMBRANCE_MELEE_SLEDGEHAMMER
 	attack_verb = list("attacked", "smashed", "crushed", "wacked", "pounded")
-	armor_penetration = 50
 	heavy = TRUE
+	damage_tier = 4
 	can_cleave = TRUE

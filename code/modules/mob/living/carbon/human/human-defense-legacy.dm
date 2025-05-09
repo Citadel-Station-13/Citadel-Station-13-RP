@@ -226,6 +226,7 @@
 		if(ismob(TT.thrower))
 			add_attack_logs(TT.thrower,src,"Hit with thrown [O.name]")
 
+		#warn deal with this
 		//If the armor absorbs all of the damage, skip the rest of the calculations
 		var/soaked = get_armor_soak(affecting, "melee", O.armor_penetration)
 		if(soaked >= throw_damage)
