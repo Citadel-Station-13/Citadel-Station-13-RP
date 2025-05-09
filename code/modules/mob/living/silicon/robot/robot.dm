@@ -1144,17 +1144,17 @@
 							cleaned_human.clean_blood(1)
 							to_chat(cleaned_human, "<font color='red'>[src] cleans your face!</font>")
 
-		if(istype(module_state_1, /obj/item/storage/bag/ore) || istype(module_state_2, /obj/item/storage/bag/ore) || istype(module_state_3, /obj/item/storage/bag/ore)) //Borgs and drones can use their mining bags ~automagically~ if they're deployed in a slot. Only mining bags, as they're optimized for mass use.
-			var/obj/item/storage/bag/ore/B = null
-			if(istype(module_state_1, /obj/item/storage/bag/ore)) //First orebag has priority, if they for some reason have multiple.
-				B = module_state_1
-			else if(istype(module_state_2, /obj/item/storage/bag/ore))
-				B = module_state_2
-			else if(istype(module_state_3, /obj/item/storage/bag/ore))
-				B = module_state_3
-			var/turf/tile = loc
-			if(isturf(tile))
-				B.obj_storage.interacted_mass_pickup(new /datum/event_args/actor(src), tile)
+		//Borgs and drones can use their mining bags ~automagically~ if they're deployed in a slot. Only mining bags, as they're optimized for mass use.
+		var/obj/item/storage/bag/ore/B = null
+		if(istype(module_state_1, /obj/item/storage/bag/ore)) //First orebag has priority, if they for some reason have multiple.
+			B = module_state_1
+		else if(istype(module_state_2, /obj/item/storage/bag/ore))
+			B = module_state_2
+		else if(istype(module_state_3, /obj/item/storage/bag/ore))
+			B = module_state_3
+		var/turf/tile = loc
+		if(B && isturf(tile))
+			B.obj_storage.interacted_mass_pickup(new /datum/event_args/actor(src), tile)
 
 /mob/living/silicon/robot/proc/self_destruct()
 	gib()
