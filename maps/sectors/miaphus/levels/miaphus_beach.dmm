@@ -4529,6 +4529,12 @@
 	outdoors = 1
 	},
 /area/sector/miaphus/beach/water)
+"Ma" = (
+/obj/effect/shuttle_landmark/automatic{
+	name = "Sea Emergency Landing"
+	},
+/turf/simulated/floor/water/deep,
+/area/sector/miaphus/beach/water)
 "Mb" = (
 /obj/structure/flora/pottedplant/dead,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -16398,7 +16404,7 @@ am
 am
 am
 am
-am
+Ma
 am
 am
 am
