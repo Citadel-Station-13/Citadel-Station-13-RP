@@ -808,7 +808,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 	if(!isliving(usr) || !usr.canClick())
 		return
-	usr.setClickCooldown(20)
+	usr.setClickCooldownLegacy(20)
 
 	if(usr.stat == 1)
 		to_chat(usr, "You are unconcious and cannot do that!")

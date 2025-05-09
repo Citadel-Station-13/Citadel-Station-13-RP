@@ -229,7 +229,7 @@
 		spawn(6)
 			cut_overlay(sparks) //Tried lots of stuff but nothing works right. so i have to use this *sadface*
 			compile_overlays()
-		playsound(src.loc, /datum/soundbyte/grouped/sparks, 60, 1)
+		playsound(src.loc, /datum/soundbyte/sparks, 60, 1)
 		locked = 0
 		broken = 1
 		to_chat(user, "<span class='notice'>You unlock \the [src].</span>")
@@ -250,7 +250,7 @@
 			spawn(6)
 				cut_overlay(sparks) //Tried lots of stuff but nothing works right. so i have to use this *sadface*
 				compile_overlays()
-			playsound(src.loc, /datum/soundbyte/grouped/sparks, 75, 1)
+			playsound(src.loc, /datum/soundbyte/sparks, 75, 1)
 			locked = 0
 			update_icon()
 	if(!opened && prob(20/severity))

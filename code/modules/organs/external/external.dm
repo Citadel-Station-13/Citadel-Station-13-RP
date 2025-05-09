@@ -555,7 +555,7 @@
 			to_chat(user, SPAN_WARNING("You can't reach your [src] while holding [tool] in the same hand!"))
 			return FALSE
 
-	user.setClickCooldown(user.get_attack_speed(tool))
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy(tool))
 	if(!do_mob(user, owner, 10))
 		to_chat(user, SPAN_WARNING("You must stand still to do that."))
 		return FALSE

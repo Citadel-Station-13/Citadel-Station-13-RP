@@ -12,7 +12,7 @@
 /mob/proc/melee_interaction_chain(atom/target, clickchain_flags, list/params)
 	// todo: refactor cooldown handling
 	if(ismob(target))
-		setClickCooldown(get_attack_speed())
+		setClickCooldownLegacy(get_attack_speed_legacy())
 	UnarmedAttack(target, clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)
 
 /**
@@ -81,7 +81,7 @@
 	clickchain.performer.break_cloak()
 
 	// todo: clickcd rework
-	clickchain.performer.setClickCooldown(clickchain.performer.get_attack_speed())
+	clickchain.performer.setClickCooldownLegacy(clickchain.performer.get_attack_speed_legacy())
 	// todo: animation might need to depend on if it hits
 	animate_swing_at_target(target)
 

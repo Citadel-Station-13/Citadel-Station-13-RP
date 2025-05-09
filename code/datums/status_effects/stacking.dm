@@ -8,7 +8,7 @@
 /datum/status_effect/stacking
 	abstract_type = /datum/status_effect/stacking
 
-	/// decay amount - this can be negative.
+	/// decay amount when duration expires - this can be negative.
 	var/decay_amount = 1
 	/// stacks
 	var/stacks = 1

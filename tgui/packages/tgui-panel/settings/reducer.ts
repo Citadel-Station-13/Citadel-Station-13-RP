@@ -4,7 +4,17 @@
  * @license MIT
  */
 
-import { addHighlightSetting, changeSettingsTab, importSettings, loadSettings, openChatSettings, removeHighlightSetting, toggleSettings, updateHighlightSetting, updateSettings } from './actions';
+import {
+  addHighlightSetting,
+  changeSettingsTab,
+  importSettings,
+  loadSettings,
+  openChatSettings,
+  removeHighlightSetting,
+  toggleSettings,
+  updateHighlightSetting,
+  updateSettings,
+} from './actions';
 import { FONTS, SETTINGS_TABS } from './constants';
 import { createDefaultHighlightSetting } from './model';
 
@@ -35,7 +45,10 @@ const initialState = {
   statTabsStyle: 'default',
 } as const;
 
-export const settingsReducer = (state = initialState, action: { type: string; payload: any }) => {
+export function settingsReducer(
+  state = initialState,
+  action: { type: string; payload: any },
+) {
   const { type, payload } = action;
 
   switch (type) {
@@ -211,4 +224,4 @@ export const settingsReducer = (state = initialState, action: { type: string; pa
   }
 
   return state;
-};
+}

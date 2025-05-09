@@ -1,6 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
+// TODO: get rid of grouped, put into defs
+
 /datum/soundbyte/parry_start
 	name = "Active Parry (Start)"
 	is_sfx = TRUE

@@ -929,7 +929,7 @@
 /area/killhouse/two)
 "sn" = (
 /obj/structure/bed/chair/sofa/green/corner{
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/carpet,
 /area/killhouse/two)
@@ -1463,7 +1463,7 @@
 	dir = 4
 	},
 /obj/structure/bed/chair/sofa/brown/corner{
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
 /area/killhouse/two)
@@ -1892,7 +1892,7 @@
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/paleblue/bordercorner,
 /obj/structure/bed/chair/sofa/brown/corner{
-	dir = 4
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/killhouse/two)
