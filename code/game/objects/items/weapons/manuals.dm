@@ -239,17 +239,17 @@
 				<h2>Engine Intent</h2>
 				<p>As a TEG-based engine, the R-UST relies on the heating and cooling of gas to spin turbines. Cold Loop gas is piped along a circuitous route - typically through space - to allow it to bleed off heat and grow colder. In contrast, Hot Loop gas is fed into the R-UST chamber. The R-UST Tokamak Core is an industrial strength solenoid. When activated, the R-UST generates an immense amount of electromagnetic energy, which operates in tandem with a kinetic energy harvester. While operational, the R-UST puts off a substantial amount of heat. The heated air in the chamber is siphoned out and drawn through the loop into the TEG, spinning its own turbine. The R-UST's electromagnetic energies are contained by a delicately balanced containment field. If the field is breached, the R-UST will unleash a catastrophic electromagnetic pulse.</p>
 				<h2>Basic Set-Up</h2>
-				<p>This is a baseline guide to make sure the shift doesn't go without power, and the engine doesn't explode. Any Engineer that knows their way around Engineering mechanics will tell you that this setup is suboptimal.&nbsp;<strong>It is important that the no hazard steps are finished before any other steps are completed.</strong></p>
+				<p>This is a baseline guide to make sure the shift doesn't go without power, and the engine doesn't explode. This setup is something like five times as powerful as it needs to be to run the whole station. &nbsp;<strong>It is important that the no hazard steps are finished before any other steps are completed.</strong></p>
 				<h3>No Hazard:</h3>
 				<ol>
 				<li>Maximize the Cold loop pump (Typically near the NW corner of the submap. It's color-coded cyan.).</li>
-				<li>Grab the stack of Tritium and Deuterium ingots and use the Fuel compressor to create one fuel rod of each.</li>
-				<li>Insert the rods in to the fuel injectors next to the gyrotrons. Check that you have inserted one of each, and not two of the same kind, as&nbsp;<em>this will cause a unstable engine core if you don't know what you're doing.</em></li>
+				<li>Grab the stacks of Deuterium ingots and use the Fuel compressor to create fuel rods, one for each fuel injector.</li>
+				<li>Insert the rods in to the fuel injectors next to the gyrotrons.</li>
 				</ol>
 				<h3>Minimal Atmospheric Hazard:</h3>
 				<ol>
-				<li>Pump two canisters of Phoron into the cold loop via the green pipeline connectors.</li>
-				<li>Pump two canisters of N2O into the hot loop via the red pipeline connectors.&nbsp;<strong>Do not use Phoron here!</strong></li>
+				<li>Pump a canister of Phoron into the cold loop via the green pipeline connectors.</li>
+				<li>Pump a canister of N2O into the hot loop via the red pipeline connectors.&nbsp;<strong>Do not use Phoron here, the R-UST will eat it and you will have no hot loop gas!</strong></li>
 				</ol>
 				<h3>Radiation Hazard:</h3>
 				<ol>
