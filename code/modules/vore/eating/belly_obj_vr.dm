@@ -523,8 +523,10 @@
 	. = TRUE //Sure are doing something unless
 	if (!(R in contents))
 		return FALSE // User is not in this belly
-
 	R.setClickCooldown(50)
+	INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/belly,handle_resist), R)
+
+/obj/belly/proc/handle_resist(var/mob/living/R)
 
 	if(owner.stat) //If owner is stat (dead, KO) we can actually escape
 		to_chat(R,"<span class='warning'>You attempt to climb out of \the [lowertext(name)]. (This will take around [escapetime/10] seconds.)</span>")
