@@ -39,8 +39,8 @@
 	return context?[key]
 
 /obj/structure/frame2/update_icon_state()
+	. = ..()
 	icon_state = "structure[frame.has_structure_stage_states? "-[stage]" : ""]"
-	return ..()
 
 /obj/structure/frame2/update_overlays()
 	. = ..()

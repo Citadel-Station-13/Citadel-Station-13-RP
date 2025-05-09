@@ -24,11 +24,11 @@
 		activate()
 
 /obj/machinery/fishing_portal/update_icon_state()
+	. = ..()
 	if(active)
 		icon_state = "portal_on"
 	else
 		icon_state = "portal_off"
-	return ..()
 
 /obj/machinery/fishing_portal/proc/activate()
 	active = TRUE

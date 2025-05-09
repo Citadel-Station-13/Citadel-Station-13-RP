@@ -65,13 +65,13 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 	return ..()
 
 /obj/item/cataloguer/update_icon_state()
+	. = ..()
 	if(snowflake_dont_update_icon_state)
-		return ..()
+		return
 	if(busy)
 		icon_state = "[initial(icon_state)]_active"
 	else
 		icon_state = initial(icon_state)
-	return ..()
 
 /obj/item/cataloguer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	// Things that invalidate the scan immediately.

@@ -40,8 +40,8 @@
 		expire_timerid = null
 
 /obj/item/card/id/guest/update_icon_state()
+	. = ..()
 	icon_state = expired? "guest_invalid" : "guest"
-	return ..()
 
 // todo: refactor everything below
 

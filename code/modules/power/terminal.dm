@@ -24,11 +24,11 @@
 	update_icon()
 
 /obj/machinery/power/terminal/update_icon_state()
+	. = ..()
 	if(is_hidden_underfloor())
 		icon_state = "term-f"
 	else
 		icon_state = "term"
-	return ..()
 
 // Needed so terminals are not removed from machines list.
 // Powernet rebuilds need this to work properly.

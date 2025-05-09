@@ -25,13 +25,13 @@
 
 // update the icon_state
 /obj/machinery/bluespace_beacon/update_icon_state()
+	. = ..()
 	var/state = "floor_beacon"
 
 	if(invisibility)
 		icon_state = "[state]f"
 	else
 		icon_state = "[state]"
-	return ..()
 
 /obj/machinery/bluespace_beacon/process(delta_time)
 	if(!Beacon)

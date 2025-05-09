@@ -183,8 +183,8 @@
 	hud.toggle_hidden_class(INVENTORY_HUD_CLASS_DRAWER, INVENTORY_HUD_HIDE_SOURCE_DRAWER)
 
 /atom/movable/screen/actor_hud/inventory/drawer/update_icon_state()
+	. = ..()
 	icon_state = "[(INVENTORY_HUD_CLASS_DRAWER in hud.hidden_classes) ? "drawer" : "drawer-active"]"
-	return ..()
 
 /**
  * Button: 'swap hand'

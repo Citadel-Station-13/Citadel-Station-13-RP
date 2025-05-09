@@ -436,8 +436,8 @@ BLIND     // can't see anything
 	toggle(user)
 
 /obj/item/clothing/glasses/welding/update_icon_state()
+	. = ..()
 	icon_state = "[base_icon_state || initial(icon_state)][up ? "up" : ""]"
-	return ..()
 
 /obj/item/clothing/glasses/welding/verb/toggle_verb()
 	set category = VERB_CATEGORY_OBJECT
@@ -586,11 +586,11 @@ BLIND     // can't see anything
 		update_action_buttons()
 
 /obj/item/clothing/glasses/sunglasses/sechud/aviator/update_icon_state()
+	. = ..()
 	if(on)
 		icon_state = initial(icon_state)
 	else
 		icon_state = inactive_icon_state
-	return ..()
 
 /obj/item/clothing/glasses/sunglasses/sechud/aviator/prescription
 	name = "prescription security HUD aviators"

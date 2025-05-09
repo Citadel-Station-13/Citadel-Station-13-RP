@@ -91,12 +91,13 @@
 	. += SPAN_NOTICE("The last radiation amount detected was [last_tick_amount]")
 
 /obj/item/geiger_counter/update_icon_state()
+	. = ..()
 	if(!scanning)
 		icon_state = "geiger_off"
-		return ..()
+		return
 	if(obj_flags & OBJ_EMAGGED)
 		icon_state = "geiger_on_emag"
-		return ..()
+		return
 
 	switch(radiation_count)
 		if(-INFINITY to RAD_LEVEL_NORMAL)
@@ -111,7 +112,7 @@
 			icon_state = "geiger_on_4"
 		if(RAD_LEVEL_CRITICAL + 1 to INFINITY)
 			icon_state = "geiger_on_5"
-	return ..()
+	return
 
 /obj/item/geiger_counter/proc/update_sound()
 	var/datum/looping_sound/geiger/loop = soundloop

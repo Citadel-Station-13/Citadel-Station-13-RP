@@ -51,6 +51,7 @@
 			. += SPAN_NOTICE("It's unloaded.")
 
 /obj/item/hypospray/update_icon_state()
+	. = ..()
 	var/vial_state
 	if(!isnull(loaded))
 		if(istype(loaded, /obj/item/reagent_containers/glass/hypovial/bluespace))
@@ -58,7 +59,6 @@
 		else
 			vial_state = "-l"
 	icon_state = "[initial(icon_state)][vial_state]"
-	return ..()
 
 /obj/item/hypospray/update_overlays()
 	. = ..()

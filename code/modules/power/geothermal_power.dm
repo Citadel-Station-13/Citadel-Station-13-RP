@@ -57,6 +57,7 @@
 
 
 /obj/machinery/power/geothermal_controller/update_icon_state()
+	. = ..()
 	switch(power_total)
 		if(50 to 500 KILOWATTS)
 			icon_state = "controller_low"
@@ -68,7 +69,6 @@
 			icon_state = "controller_vhigh"
 		else
 			icon_state = "controller_idle"
-	return ..()
 
 
 /obj/machinery/power/geothermal_controller/proc/scan_for_collectors(var/ran)
