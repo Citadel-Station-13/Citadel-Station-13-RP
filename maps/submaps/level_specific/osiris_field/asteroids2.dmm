@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/template_noop,
+/turf/space/basic,
 /area/space)
 "b" = (
 /turf/simulated/floor,
@@ -10,7 +10,7 @@
 /area/space)
 "j" = (
 /obj/structure/lattice,
-/turf/template_noop,
+/turf/space/basic,
 /area/space)
 "k" = (
 /obj/spawner/corpse/skeleton,

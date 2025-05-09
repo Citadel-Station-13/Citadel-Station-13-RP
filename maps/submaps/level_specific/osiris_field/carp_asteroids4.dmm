@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/template_noop,
+/turf/space/basic,
 /area/space)
 "b" = (
 /turf/simulated/mineral/vacuum,
@@ -9,21 +9,21 @@
 /turf/simulated/mineral/vacuum,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "d" = (
-/turf/template_noop,
+/turf/space/basic,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "j" = (
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "v" = (
 /mob/living/simple_mob/mechanical/mecha/fighter/baron/manned,
-/turf/template_noop,
+/turf/space/basic,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "G" = (
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/space)
 "Y" = (
 /mob/living/simple_mob/mechanical/mecha/fighter/duke/manned,
-/turf/template_noop,
+/turf/space/basic,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 
 (1,1,1) = {"

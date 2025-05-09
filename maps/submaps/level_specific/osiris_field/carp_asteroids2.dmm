@@ -3,17 +3,17 @@
 /turf/simulated/floor/event/derelict_plating,
 /area/space)
 "b" = (
-/turf/template_noop,
+/turf/space/basic,
 /area/space)
 "c" = (
 /obj/tether_away_spawner/debrisfield/carp,
-/turf/template_noop,
+/turf/space/basic,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "d" = (
 /turf/simulated/floor/event/derelict_plating,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "e" = (
-/turf/template_noop,
+/turf/space/basic,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "r" = (
 /turf/simulated/floor/event/derelict_wall_floor,

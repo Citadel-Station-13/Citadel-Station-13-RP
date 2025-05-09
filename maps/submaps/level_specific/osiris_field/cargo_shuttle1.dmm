@@ -86,7 +86,7 @@
 /obj/machinery/atmospherics/component/unary/engine/bigger{
 	dir = 8
 	},
-/turf/space,
+/turf/space/basic,
 /area/space)
 "L" = (
 /turf/simulated/wall/r_wall/prepainted/cargo,
@@ -97,10 +97,10 @@
 /area/submap/osiris_field/cargo_shuttle1)
 "Q" = (
 /obj/structure/lattice,
-/turf/space,
+/turf/space/basic,
 /area/space)
 "R" = (
-/turf/space,
+/turf/space/basic,
 /area/space)
 "U" = (
 /turf/simulated/wall/r_wall/prepainted/cargo,

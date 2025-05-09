@@ -14,7 +14,7 @@
 /area/submap/osiris_field/transport_shuttle1)
 "e" = (
 /obj/structure/lattice,
-/turf/template_noop,
+/turf/space/basic,
 /area/space)
 "f" = (
 /turf/simulated/floor/tiled/dark,
@@ -140,7 +140,7 @@
 /turf/simulated/floor/plating,
 /area/submap/osiris_field/transport_shuttle1)
 "X" = (
-/turf/template_noop,
+/turf/space/basic,
 /area/space)
 "Y" = (
 /obj/structure/salvageable/implant_container_os,

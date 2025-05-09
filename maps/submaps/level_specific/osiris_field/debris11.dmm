@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /obj/structure/lattice,
-/turf/template_noop,
+/turf/space/basic,
 /area/space)
 "b" = (
 /obj/structure/disposalpipe/segment{
@@ -16,7 +16,7 @@
 	icon_state = "pipe-b"
 	},
 /obj/structure/lattice,
-/turf/template_noop,
+/turf/space/basic,
 /area/space)
 "d" = (
 /turf/simulated/floor/airless,
@@ -33,7 +33,7 @@
 /turf/simulated/floor/airless,
 /area/space)
 "g" = (
-/turf/template_noop,
+/turf/space/basic,
 /area/space)
 
 (1,1,1) = {"

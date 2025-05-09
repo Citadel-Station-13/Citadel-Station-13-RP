@@ -3,11 +3,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
 "b" = (
-/turf/template_noop,
+/turf/space/basic,
 /area/space)
 "j" = (
 /obj/structure/lattice,
-/turf/template_noop,
+/turf/space/basic,
 /area/space)
 
 (1,1,1) = {"

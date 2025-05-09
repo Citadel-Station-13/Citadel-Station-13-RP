@@ -4,7 +4,7 @@
 	dir = 6
 	},
 /obj/structure/lattice,
-/turf/template_noop,
+/turf/space/basic,
 /area/space)
 "b" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -22,7 +22,7 @@
 /area/space)
 "d" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
-/turf/template_noop,
+/turf/space/basic,
 /area/space)
 "e" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
