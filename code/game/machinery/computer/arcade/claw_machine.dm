@@ -219,7 +219,7 @@
 			gameprice = 1
 			emagged = FALSE
 			winscreen = "You won...?"
-			var/obj/item/grenade/G = new /obj/item/grenade/explosive(get_turf(src)) /// YEAAAAAAAAAAAAAAAAAAH!!!!!!!!!!
+			var/obj/item/grenade/G = new /obj/item/grenade/simple/explosive(get_turf(src)) /// YEAAAAAAAAAAAAAAAAAAH!!!!!!!!!!
 			G.activate()
 			G.throw_at_old(get_turf(usr),10,10) /// Play stupid games, win stupid prizes.
 

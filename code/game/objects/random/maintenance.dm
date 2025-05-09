@@ -133,7 +133,7 @@ something, make sure it's not in one of the other lists.*/
 				prob(1);/obj/item/storage/backpack/dufflebag/syndie/med,
 				prob(2);/obj/item/storage/box/swabs,
 				prob(2);/obj/item/storage/belt/security,
-				prob(1);/obj/item/grenade/flashbang,
+				prob(1);/obj/item/grenade/simple/flashbang,
 				prob(1);/obj/item/melee/baton,
 				prob(1);/obj/item/reagent_containers/spray/pepper,
 				prob(3);/obj/item/clothing/shoes/boots/jackboots,

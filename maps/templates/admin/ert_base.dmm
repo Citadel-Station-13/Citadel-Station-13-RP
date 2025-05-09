@@ -1552,12 +1552,12 @@
 /obj/item/stack/cable_coil,
 /obj/item/stack/cable_coil,
 /obj/item/stack/cable_coil,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "dm" = (

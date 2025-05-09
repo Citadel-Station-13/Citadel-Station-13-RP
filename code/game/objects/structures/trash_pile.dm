@@ -239,7 +239,7 @@
 					prob(2);/obj/item/storage/pill_bottle/kelotane,
 					prob(2);/obj/item/handcuffs/fuzzy,
 					prob(2);/obj/item/storage/box/syndie_kit/spy,
-					prob(2);/obj/item/grenade/anti_photon,
+					prob(2);/obj/item/grenade/simple/antiphoton,
 					prob(1);/obj/item/nif/bad,
 					prob(1);/obj/item/clothing/suit/storage/vest/heavy/merc,
 					prob(1);/obj/item/clothing/head/helmet/medieval/crusader,

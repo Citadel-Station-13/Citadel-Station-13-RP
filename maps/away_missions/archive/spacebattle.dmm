@@ -59,7 +59,7 @@
 /area/awaymission/spacebattle/syndicate2)
 "as" = (
 /obj/structure/table/reinforced,
-/obj/item/grenade/empgrenade,
+/obj/item/grenade/simple/emp,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate2)
 "au" = (
@@ -249,7 +249,7 @@
 /area/awaymission/spacebattle/syndicate1)
 "br" = (
 /obj/structure/table/reinforced,
-/obj/item/grenade/spawnergrenade/manhacks,
+/obj/item/grenade/simple/spawner/manhacks,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate1)
 "bs" = (

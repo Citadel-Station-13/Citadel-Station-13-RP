@@ -317,7 +317,7 @@
 
 	// For objects below the top level who still want to hear.
 	for(var/obj/O in global.listening_objects)
-		if(get_turf(O) in hearturfs)
+		if(get_turf(O) in hear)
 			objs |= O
 
 	return list("mobs" = mobs, "objs" = objs)

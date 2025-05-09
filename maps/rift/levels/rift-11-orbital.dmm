@@ -6347,12 +6347,12 @@
 /obj/item/clothing/glasses/welding/superior,
 /obj/structure/table/steel_reinforced,
 /obj/item/clothing/glasses/welding/superior,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "un" = (

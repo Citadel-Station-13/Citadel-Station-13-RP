@@ -2351,7 +2351,7 @@
 /obj/item/clothing/accessory/armor/legguards/combat,
 /obj/item/clothing/head/helmet/redcombat,
 /obj/item/gun/projectile/energy/gun,
-/obj/item/grenade/flashbang,
+/obj/item/grenade/simple/flashbang,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/eqroom)
 "lR" = (
@@ -2391,7 +2391,7 @@
 /obj/item/clothing/accessory/armor/legguards/combat,
 /obj/item/clothing/head/helmet/redcombat,
 /obj/item/gun/projectile/energy/gun,
-/obj/item/grenade/flashbang,
+/obj/item/grenade/simple/flashbang,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/eqroom)
 "lT" = (
@@ -3142,7 +3142,7 @@
 /obj/item/clothing/accessory/armor/legguards/combat,
 /obj/item/clothing/head/helmet/redcombat,
 /obj/item/gun/projectile/energy/gun,
-/obj/item/grenade/flashbang,
+/obj/item/grenade/simple/flashbang,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/eqroom)
 "oo" = (
@@ -3182,7 +3182,7 @@
 /obj/item/clothing/accessory/armor/legguards/combat,
 /obj/item/clothing/head/helmet/redcombat,
 /obj/item/gun/projectile/energy/gun,
-/obj/item/grenade/flashbang,
+/obj/item/grenade/simple/flashbang,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/eqroom)
 "os" = (

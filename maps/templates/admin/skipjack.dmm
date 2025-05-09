@@ -1271,9 +1271,9 @@
 /area/shuttle/skipjack)
 "dc" = (
 /obj/structure/table/rack,
-/obj/item/grenade/empgrenade,
-/obj/item/grenade/flashbang,
-/obj/item/grenade/spawnergrenade/manhacks,
+/obj/item/grenade/simple/emp,
+/obj/item/grenade/simple/flashbang,
+/obj/item/grenade/simple/spawner/manhacks,
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/skipjack)
 "dd" = (

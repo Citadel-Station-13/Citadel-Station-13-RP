@@ -2,6 +2,7 @@
 	name = "voice analyzer"
 	desc = "A small electronic device able to record a voice sample, and send a signal when that sample is repeated."
 	icon_state = "voice"
+	atom_flags = ATOM_HEAR
 	origin_tech = list(TECH_MAGNET = 1)
 	materials_base = list(MAT_STEEL = 500, MAT_GLASS = 50)
 	var/listening = 0
@@ -26,11 +27,6 @@
 
 
 /obj/item/assembly/voice/attack_self(mob/user, datum/event_args/actor/actor)
-	. = ..()
-	if(.)
-		return
-	if(!user)
-		return FALSE
 	activate()
 	return TRUE
 

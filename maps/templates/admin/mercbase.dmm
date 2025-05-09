@@ -2464,9 +2464,9 @@
 	name = "Grenade Crate";
 	opened = 1
 	},
-/obj/item/grenade/chem_grenade,
-/obj/item/grenade/chem_grenade,
-/obj/item/grenade/chem_grenade,
+/obj/item/grenade/simple/chemical,
+/obj/item/grenade/simple/chemical,
+/obj/item/grenade/simple/chemical,
 /obj/item/assembly/igniter,
 /obj/item/assembly/igniter,
 /obj/item/assembly/igniter,

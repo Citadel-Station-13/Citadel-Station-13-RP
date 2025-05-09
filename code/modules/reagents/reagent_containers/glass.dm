@@ -33,7 +33,7 @@
 		/obj/item/storage,
 		/obj/machinery/atmospherics/component/unary/cryo_cell,
 		/obj/machinery/dna_scannernew,
-		/obj/item/grenade/chem_grenade,
+		/obj/item/grenade/simple/chemical,
 		/mob/living/bot/medibot,
 		/obj/item/storage/secure/safe,
 		/obj/machinery/iv_drip,

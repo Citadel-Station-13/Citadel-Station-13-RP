@@ -2,7 +2,7 @@
 	name = "\improper SGL-6 grenade launcher"
 	desc = "A grenade launcher produced for SWAT use; fires flashbangs."
 	icon_state = "mecha_grenadelnchr"
-	projectile = /obj/item/grenade/flashbang
+	projectile = /obj/item/grenade/simple/flashbang
 	fire_sound = 'sound/effects/bang.ogg'
 	projectiles = 6
 	missile_speed = 1.5
@@ -19,16 +19,16 @@
 	det_time = 25
 
 /obj/item/vehicle_module/weapon/ballistic/missile_rack/grenade/Fire(atom/movable/AM, atom/target, turf/aimloc)
-	var/obj/item/grenade/G = AM
+	var/obj/item/grenade/simple/G = AM
 	if(istype(G))
-		G.det_time = det_time
-		G.activate(chassis.occupant_legacy) //Grenades actually look primed and dangerous, handle their own stuff.
+		G.activation_detonate_delay = det_time
+		G.activate(new /datum/event_args/actor(chassis.occupant_legacy))
 	AM.throw_at_old(target,missile_range, missile_speed, chassis)
 
 /obj/item/vehicle_module/weapon/ballistic/missile_rack/grenade/clusterbang//Because I am a heartless bastard -Sieve
 	name = "\improper SOP-6 grenade launcher"
 	desc = "A grenade launcher produced for use by government uprising subjugation forces, or that's what you might guess; fires matryoshka flashbangs."
-	projectile = /obj/item/grenade/flashbang/clusterbang
+	projectile = /obj/item/grenade/simple/flashbang/clusterbang
 
 	origin_tech = list(TECH_COMBAT= 5, TECH_MATERIAL = 5, TECH_ILLEGAL = 3)
 
@@ -42,7 +42,7 @@
 	name = "\improper SGL-9 grenade launcher"
 	desc = "A military-grade grenade launcher that fires disorienting concussion grenades."
 	icon_state = "mecha_grenadelnchr"
-	projectile = /obj/item/grenade/concussion
+	projectile = /obj/item/grenade/simple/concussion
 	missile_speed = 1
 	projectile_energy_cost = 900
 	equip_cooldown = 50
@@ -54,7 +54,7 @@
 	name = "\improper HEP-I 5 grenade launcher"
 	desc = "A military-grade grenade launcher that fires anti-personnel fragmentation grenades."
 	icon_state = "mecha_fraglnchr"
-	projectile = /obj/item/grenade/explosive
+	projectile = /obj/item/grenade/simple/explosive
 	projectiles = 4
 	missile_speed = 1
 
@@ -63,7 +63,7 @@
 /obj/item/vehicle_module/weapon/ballistic/missile_rack/grenade/frag/mini
 	name = "\improper HEP-MI 6 grenade launcher"
 	desc = "A military-grade grenade launcher that fires miniaturized anti-personnel fragmentation grenades."
-	projectile = /obj/item/grenade/explosive/mini
+	projectile = /obj/item/grenade/simple/explosive/mini
 	projectile_energy_cost = 500
 	equip_cooldown = 25
 

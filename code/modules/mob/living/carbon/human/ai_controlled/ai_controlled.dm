@@ -127,8 +127,8 @@
 	to_wear_gloves = null
 	to_wear_shoes = /obj/item/clothing/shoes/boots/combat/changeling
 	to_wear_belt = /obj/item/storage/belt/utility/full
-	to_wear_l_pocket = /obj/item/grenade/explosive/mini
-	to_wear_r_pocket = /obj/item/grenade/explosive/mini
+	to_wear_l_pocket = /obj/item/grenade/simple/explosive/mini
+	to_wear_r_pocket = /obj/item/grenade/simple/explosive/mini
 	to_wear_back = /obj/item/radio/electropack
 	to_wear_id_type = /obj/item/card/id
 	to_wear_id_job = "Experiment"

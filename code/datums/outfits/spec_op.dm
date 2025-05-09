@@ -78,7 +78,7 @@
 	belt = /obj/item/nullrod
 	head = /obj/item/clothing/head/helmet/para
 	back = /obj/item/storage/backpack/ert/para
-	l_pocket = /obj/item/grenade/chem_grenade/holy
+	l_pocket = /obj/item/grenade/simple/chemical/premade/holy
 	l_hand = /obj/item/clothing/accessory/holster/holy
 
 	id_slot = SLOT_ID_WORN_ID

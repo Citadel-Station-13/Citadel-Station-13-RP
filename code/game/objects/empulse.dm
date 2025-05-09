@@ -1,3 +1,4 @@
+// TODO: put into SSspatial_effects
 /**
  * Legacy EMP pulses
  *

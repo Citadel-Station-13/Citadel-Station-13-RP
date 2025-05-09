@@ -716,9 +716,9 @@
 				/obj/item/lightreplacer,
 				/obj/item/reagent_containers/spray/cleaner,
 				/obj/item/reagent_containers/glass/rag,
-				/obj/item/grenade/chem_grenade/cleaner,
-				/obj/item/grenade/chem_grenade/cleaner,
-				/obj/item/grenade/chem_grenade/cleaner,
+				/obj/item/grenade/simple/chemical/premade/cleaner,
+				/obj/item/grenade/simple/chemical/premade/cleaner,
+				/obj/item/grenade/simple/chemical/premade/cleaner,
 				/obj/structure/closet/crate/corporate/galaksi //GALAKSI JANITOR SUPPLIES
 			),
 			prob(5);list(

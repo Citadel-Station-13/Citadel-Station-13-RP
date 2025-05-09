@@ -81,8 +81,8 @@
 "fQ" = (
 /obj/item/storage/box/flashbangs,
 /obj/item/storage/box/teargas,
-/obj/item/grenade/flashbang/clusterbang,
-/obj/item/grenade/flashbang/clusterbang,
+/obj/item/grenade/simple/flashbang/clusterbang,
+/obj/item/grenade/simple/flashbang/clusterbang,
 /obj/item/storage/box/metalfoam,
 /obj/item/clothing/mask/gas/plaguedoctor,
 /obj/item/clothing/mask/gas,

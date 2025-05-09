@@ -209,7 +209,7 @@
 	contains = list(
 		/obj/item/gun/projectile/ballistic/apinae_stinger = 1,
 		/obj/item/gun/projectile/ballistic/apinae_pistol = 2,
-		/obj/item/grenade/spawnergrenade/manhacks/apidean = 3,
+		/obj/item/grenade/simple/spawner/manhacks/apidean = 3,
 	)
 	worth = 750
 	container_type = /obj/structure/closet/crate/secure/gear

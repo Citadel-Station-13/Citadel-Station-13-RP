@@ -12,7 +12,7 @@
 /datum/uplink_item/item/grenades/anti_photon_singular
 	name = "1xPhoton Disruption Grenade"
 	item_cost = 2
-	path = /obj/item/grenade/anti_photon
+	path = /obj/item/grenade/simple/antiphoton
 
 /datum/uplink_item/item/grenades/metalfoam
 	name = "7xMetal Foam Grenades"
@@ -22,7 +22,7 @@
 /datum/uplink_item/item/grenades/metalfoam_singular
 	name = "1xMetal Foam Grenade"
 	item_cost = 2
-	path = /obj/item/grenade/chem_grenade/metalfoam
+	path = /obj/item/grenade/simple/chemical/premade/metalfoam
 
 /datum/uplink_item/item/grenades/smoke
 	name = "7xSmoke Grenades"
@@ -32,7 +32,7 @@
 /datum/uplink_item/item/grenades/smoke_singular
 	name = "1xSmoke Grenade"
 	item_cost = 2
-	path = /obj/item/grenade/smokebomb
+	path = /obj/item/grenade/simple/smoke
 
 /datum/uplink_item/item/grenades/emp
 	name = "7xEMP Grenades"
@@ -42,7 +42,7 @@
 /datum/uplink_item/item/grenades/emp_singular
 	name = "1xEMP Grenade"
 	item_cost = 10
-	path = /obj/item/grenade/empgrenade
+	path = /obj/item/grenade/simple/emp
 
 /datum/uplink_item/item/grenades/frags
 	name = "7xFrag Grenades"
@@ -57,7 +57,7 @@
 /datum/uplink_item/item/grenades/frags_singular
 	name = "1x Frag Grenade"
 	item_cost = 15
-	path = /obj/item/grenade/explosive
+	path = /obj/item/grenade/simple/explosive
 
 /datum/uplink_item/item/grenades/flashbangs
 	name = "7xFlashbangs"

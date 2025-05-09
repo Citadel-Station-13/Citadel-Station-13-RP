@@ -325,7 +325,7 @@
 	id = "large_Grenade"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
 	materials_base = list(MAT_STEEL = 3000)
-	build_path = /obj/item/grenade/chem_grenade/large
+	build_path = /obj/item/grenade/simple/chemical/large
 
 /datum/prototype/design/science/weapon/energy/netgun
 	design_name = "\'Retiarius\' capture gun"

@@ -265,7 +265,7 @@
 /area/submap/Blackshuttledown)
 "aR" = (
 /obj/structure/table/steel,
-/obj/item/grenade/smokebomb,
+/obj/item/grenade/simple/smoke,
 /turf/simulated/floor/tiled/steel_grid,
 /area/submap/Blackshuttledown)
 "aS" = (
