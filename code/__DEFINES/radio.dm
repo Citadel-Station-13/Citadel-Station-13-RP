@@ -19,11 +19,12 @@
 #define FREQ_EXPLORER 1361
 #define FREQ_TALON 1363
 
-#define FREQ_ENTERTAINMENT 1461
 #define FREQ_SECURITY_INTERNAL 1475
 #define FREQ_MEDICAL_INTERNAL 1485
 
 #define FREQ_STATUS_DISPLAYS 1435
+
+#define FREQ_COMMON 1437 // Common comms frequency, dark green, now encrypted
 
 #define MIN_FREQ 1441 // ------------------------------------------------------
 // Only the 1441 to 1489 range is freely available for general conversation.
@@ -33,7 +34,8 @@
 
 #define FREQ_LOCATOR_IMPLANT 1451
 #define FREQ_SIGNALER 1457 // the default for new signalers
-#define FREQ_COMMON 1459 // Common comms frequency, dark green
+#define FREQ_ATC 1459 // NEw Common comms frequency, dark blue
+#define FREQ_ENTERTAINMENT 1461
 
 #define MAX_FREQ 1489 // ------------------------------------------------------
 
