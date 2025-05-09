@@ -158,9 +158,8 @@
 /obj/machinery/door/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
-	if(user.a_intent == INTENT_GRAB)
-		usr = user
-		knock()
+	if(user.a_intent == INTENT_DISARM)
+		knock(user)
 		return ..()
 
 	return src.attackby(user, user)
@@ -410,23 +409,19 @@
 
 	update_nearby_tiles()
 
-/obj/machinery/door/verb/knock()
-	set name = "Knock"
-	set category = VERB_CATEGORY_OBJECT
-	set src in view(1)
-	if(usr.stat != 0 || !usr.has_hands())
+/obj/machinery/door/proc/knock(mob/user)
+	if(usr.stat != 0 || !(usr.mobility_flags & MOBILITY_CAN_USE))
 		to_chat(usr, SPAN_WARNING("You can't do that right now."))
 		return
+
+	src.add_fingerprint(user)
 	
-	if(istype(usr, /mob/living)) 
-		var/mob/living/L = usr
-		src.add_fingerprint(L)
-		
-	//If someone can see both usr and the door, then they get a message saying usr knocks on the door.
-	//But if someone can only see the door and not usr (usually when they're on the opposite side of the door), they get a message saying they hear a knock on the door.
-	//If someone sees only the usr and not the door, nothing happens since you don't see anything outside your field of view
-	var/list/mobs_see_usr_and_door = viewers(src) & viewers(usr) - usr
-	var/list/mobs_see_only_door = viewers(src) - viewers(usr) - usr
+	//If someone can see both the performer and the door, then they get a message saying usr knocks on the door.
+	//But if someone can only see the door and not the performer (usually when they're on the opposite side of the door),
+	// they get a message saying they hear a knock on the door.
+	//If someone sees only the usr and not the door, nothing happens since you don't get a message for anything outside your field of view
+	var/list/mobs_see_usr_and_door = viewers(src) & viewers(user) - user
+	var/list/mobs_see_only_door = viewers(src) - viewers(user) - user
 
 	for(var/mob/m in mobs_see_only_door)
 		if(m.is_blind())
@@ -437,10 +432,22 @@
 		if(m.is_blind())
 			m.show_message(SPAN_INFO("You hear a knocking sound nearby."), SAYCODE_TYPE_AUDIBLE)
 		else
-			m.show_message(SPAN_INFO("\The [usr] knocks on \the [src]."), SAYCODE_TYPE_AUDIBLE)
-	to_chat(usr, SPAN_INFO("You knock on \the [src]."))
-
+			m.show_message(SPAN_INFO("\The [user] knocks on \the [src]."), SAYCODE_TYPE_AUDIBLE)
+	to_chat(user, SPAN_INFO("You knock on \the [src]."))
 	playsound(src, knocksound, 100, 1)
+	return TRUE
+
+/obj/machinery/door/context_query()
+	. = ..()
+	.["knock"] = ATOM_CONTEXT_TUPLE("Knock", image('icons/UI_icons/inventory/hand_l.png'), 1, MOBILITY_CAN_USE)
+
+/obj/machinery/door/context_act(datum/event_args/actor/e_args, key)
+	. = ..()
+	if(.) return
+	switch(key)
+		if("knock")
+			knock(e_args.performer)
+			return TRUE
 
 /obj/machinery/door/morgue
 	icon = 'icons/obj/doors/doormorgue.dmi'
