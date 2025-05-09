@@ -663,6 +663,10 @@
 /obj/structure/cable/green,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/bedrooms)
+"ayx" = (
+/obj/structure/grille,
+/turf/simulated/floor/airless/ceiling,
+/area/space)
 "ayy" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/drinks/cup{
@@ -1367,6 +1371,13 @@
 	req_access = null;
 	req_one_access = list(19,44)
 	},
+/obj/machinery/button/remote/blast_door{
+	id = "gateway_pad";
+	name = "Gateway Access Blast Door Control";
+	req_one_access = list(19,44);
+	pixel_x = 27;
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
 "aZz" = (
@@ -1528,7 +1539,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway2)
 "bfO" = (
-/obj/machinery/camera/network/exploration,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -1881,6 +1891,12 @@
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/wood,
 /area/crew_quarters/mimeoffice)
+"bvT" = (
+/obj/structure/sign/warning/lethal_turrets{
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled/dark,
+/area/gateway)
 "bwa" = (
 /obj/structure/table/woodentable,
 /obj/item/flame/candle/candelabra/everburn,
@@ -2203,7 +2219,9 @@
 "bIF" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_external{
-	req_one_access = null
+	req_one_access = null;
+	name = "Docking Arm";
+	id_tag = "dockingarm1"
 	},
 /obj/structure/sign/warning/evac{
 	pixel_x = -32
@@ -4097,13 +4115,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint)
 "def" = (
-/obj/machinery/button/remote/blast_door{
-	id = "gateway_pad";
-	name = "Gateway Access Blast Door Control";
-	pixel_y = -38;
-	req_one_access = list(19,29,38,43,47,63,67);
-	pixel_x = 7;
+/obj/machinery/camera/network/exploration{
 	dir = 1
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
@@ -6928,14 +6944,18 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/glass_external{
-	req_one_access = null
+	req_one_access = null;
+	name = "Docking Arm";
+	id_tag = "dockingarm1"
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/hallway/secondary/docking_hallway2)
 "fiu" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_external{
-	req_one_access = null
+	req_one_access = null;
+	name = "Docking Arm";
+	id_tag = "dockingarm1"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -7445,6 +7465,12 @@
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1fwdhall)
+"fwJ" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/vacant/vacant_bar)
 "fwP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -7756,6 +7782,7 @@
 	dir = 4
 	},
 /obj/structure/bed/chair/sofa/black/left,
+/obj/machinery/camera/network/civilian,
 /turf/simulated/floor/carpet,
 /area/crew_quarters/coffee_shop)
 "fLR" = (
@@ -8359,6 +8386,14 @@
 	pixel_x = 4
 	},
 /obj/item/pen,
+/obj/machinery/button/remote/airlock{
+	desc = "A remote control switch for the medbay recovery room door.";
+	id = "dockingarm1";
+	name = "Door Switch";
+	pixel_x = -13;
+	pixel_y = -23;
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/docking_hallway2)
 "gjb" = (
@@ -9090,6 +9125,10 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/test_area)
+"gMZ" = (
+/obj/structure/lattice,
+/turf/space,
+/area/space)
 "gNs" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/maintenance/library)
@@ -9498,7 +9537,9 @@
 "hhy" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_external{
-	req_one_access = null
+	req_one_access = null;
+	name = "Docking Arm";
+	id_tag = "dockingarm1"
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/hallway/secondary/docking_hallway2)
@@ -10492,6 +10533,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/exploration)
+"iaL" = (
+/obj/structure/closet/crate/secure/weapon,
+/obj/machinery/air_alarm{
+	frequency = 1441;
+	pixel_y = 22
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/secondary/docking_hallway2)
 "ibq" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/structure/disposalpipe/segment{
@@ -10821,9 +10870,11 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "ilO" = (
-/obj/structure/table/bench,
-/turf/simulated/floor/tiled/steel,
-/area/vacant/vacant_bar)
+/obj/structure/sign/warning/lethal_turrets{
+	pixel_x = 32
+	},
+/turf/simulated/floor/tiled/dark,
+/area/gateway)
 "imy" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
@@ -13227,6 +13278,9 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
 "jZp" = (
@@ -13505,6 +13559,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "kim" = (
@@ -13998,6 +14053,7 @@
 "kCI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "kDj" = (
@@ -14488,6 +14544,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
+	},
+/obj/structure/sign/warning/lethal_turrets{
+	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
@@ -15617,9 +15676,6 @@
 "lOs" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
-/obj/structure/sign/warning/lethal_turrets{
-	pixel_y = -32
-	},
 /obj/item/storage/firstaid/regular{
 	pixel_x = 2;
 	pixel_y = 2
@@ -15629,6 +15685,9 @@
 	pixel_y = -2
 	},
 /obj/structure/table/standard,
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "lOV" = (
@@ -16786,9 +16845,6 @@
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck1aft)
 "mLh" = (
-/obj/item/radio/intercom{
-	pixel_y = -24
-	},
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 9
 	},
@@ -16805,6 +16861,9 @@
 	},
 /obj/structure/table/standard,
 /obj/item/multitool/endeavour_buffered,
+/obj/structure/sign/warning/lethal_turrets{
+	pixel_y = -32
+	},
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "mLr" = (
@@ -20417,6 +20476,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/docking_hallway2)
+"prz" = (
+/obj/structure/sink/kitchen{
+	dir = 4;
+	pixel_x = -12
+	},
+/turf/simulated/floor/plating,
+/area/vacant/vacant_bar)
 "prD" = (
 /obj/structure/catwalk,
 /obj/structure/disposalpipe/segment{
@@ -20634,8 +20700,10 @@
 /area/crew_quarters/coffee_shop)
 "pzJ" = (
 /obj/machinery/light,
-/obj/machinery/camera/network/exploration{
-	dir = 1
+/obj/effect/floor_decal/plaque{
+	pixel_y = -33;
+	name = "A Cautionary Tale";
+	desc = "This gateway room has shown its efficient design by negating access from gateway AND access room successfully, by neutralizing three possible threats to the security of the ship within the span of a single shift. This incident did highlight an isue with general signage and button locations, and has thus since been revised."
 	},
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
@@ -21009,6 +21077,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1aftmaint)
+"pSi" = (
+/obj/machinery/door/airlock/security,
+/obj/map_helper/access_helper/airlock/station/security/general,
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled,
+/area/hallway/secondary/docking_hallway2)
 "pSA" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -21346,10 +21420,8 @@
 /turf/simulated/floor/tiled,
 /area/exploration/pilot_prep)
 "qfY" = (
-/obj/machinery/air_alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
+/obj/structure/closet/crate/secure/weapon,
+/obj/machinery/camera/network/exploration,
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/docking_hallway2)
 "qgv" = (
@@ -23258,12 +23330,11 @@
 /turf/simulated/wall/r_wall/prepainted/exploration,
 /area/exploration/pilot_prep)
 "rEv" = (
-/obj/structure/sink/kitchen{
-	dir = 4;
-	pixel_x = -12
+/obj/effect/floor_decal/plaque{
+	pixel_y = -33
 	},
-/turf/simulated/floor/wood/broken,
-/area/vacant/vacant_bar)
+/turf/simulated/wall/prepainted,
+/area/endeavour/hallway/d1fwdmaint)
 "rEB" = (
 /obj/machinery/light{
 	dir = 8
@@ -25341,6 +25412,10 @@
 /obj/machinery/body_scanconsole,
 /obj/effect/floor_decal/corner_steel_grid{
 	dir = 10
+	},
+/obj/machinery/camera/network/medbay{
+	dir = 8;
+	network = list("Psychiatric")
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/docking_hallway2)
@@ -29486,6 +29561,7 @@
 	dir = 5
 	},
 /obj/machinery/door/airlock/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
 "wjV" = (
@@ -31269,7 +31345,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 4
 	},
-/obj/machinery/suit_cycler/exploration,
+/obj/machinery/suit_cycler/pathfinder,
 /turf/simulated/floor/tiled,
 /area/exploration/pathfinder_office)
 "xzM" = (
@@ -31363,6 +31439,12 @@
 "xCr" = (
 /turf/simulated/wall/prepainted,
 /area/crew_quarters/sleep/Dorm_1)
+"xCP" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/vacant/vacant_bar)
 "xDb" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -42866,7 +42948,7 @@ lVU
 hqK
 udY
 etm
-wyc
+qfY
 blm
 cUt
 etm
@@ -43254,7 +43336,7 @@ lVU
 nNE
 udY
 etm
-wyc
+iaL
 hSU
 kvI
 etm
@@ -43641,8 +43723,8 @@ acQ
 eYG
 hqK
 udY
-etm
-qfY
+pSi
+blm
 nqN
 bnJ
 pbY
@@ -45364,18 +45446,18 @@ vso
 vso
 lBc
 dLH
-dLH
+prz
 vpK
 oAT
 dLH
-dLH
+xCP
 dLH
 rFT
 uvS
 wxj
 dLH
 ojm
-ilO
+kQS
 lBc
 ifD
 jFy
@@ -45558,7 +45640,7 @@ kKK
 kKK
 lBc
 pFN
-rEv
+laK
 dLH
 oAT
 kQS
@@ -46310,7 +46392,7 @@ mRI
 lUh
 kTo
 oMt
-wsZ
+bvT
 okP
 ffi
 hFM
@@ -46533,7 +46615,7 @@ ojo
 ojo
 pod
 jNC
-dLH
+fwJ
 jzT
 ufQ
 fnF
@@ -46696,7 +46778,7 @@ hJO
 gRE
 okP
 aXR
-wsZ
+ilO
 jYZ
 def
 okP
@@ -48638,7 +48720,7 @@ wqg
 eYI
 wim
 eYI
-asR
+rEv
 ctt
 hVk
 asR
@@ -63974,8 +64056,8 @@ xRj
 xRj
 xRj
 jBC
-jNg
-jNg
+gMZ
+gMZ
 qBy
 qBy
 qBy
@@ -63983,8 +64065,8 @@ qBy
 qBy
 qBy
 qBy
-jNg
-jNg
+gMZ
+gMZ
 jBC
 xRj
 xRj
@@ -64168,17 +64250,17 @@ xRj
 xRj
 xRj
 xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
+ayx
+qqr
+qqr
+qqr
+qqr
+qqr
+qqr
+qqr
+qqr
+qqr
+ayx
 xRj
 xRj
 xRj
@@ -64364,13 +64446,13 @@ xRj
 xRj
 xRj
 xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
+ayx
+qqr
+ayx
+qqr
+ayx
+qqr
+ayx
 xRj
 xRj
 xRj
