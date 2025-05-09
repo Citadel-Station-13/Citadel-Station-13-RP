@@ -1110,9 +1110,11 @@
 /mob/living/silicon/robot/Moved()
 	. = ..()
 	if(module)
-		if(module.type == /obj/item/robot_module/robot/janitor)
+		if(module.type == /obj/item/robot_module/robot/janitor || scrubbing)
 			var/turf/tile = loc
-			if(isturf(tile))
+			var/datum/matter_synth/water = water_res
+			if(isturf(tile) && ((!scrubbing) || (water && water.use_charge(1))))
+			//Got a tile to clean, and we use the simple logic, or we check and use water
 				tile.clean_blood()
 				if (istype(tile, /turf/simulated))
 					var/turf/simulated/S = tile
@@ -1153,39 +1155,6 @@
 			var/turf/tile = loc
 			if(isturf(tile))
 				B.obj_storage.interacted_mass_pickup(new /datum/event_args/actor(src), tile)
-		return
-
-	if(scrubbing)
-		var/datum/matter_synth/water = water_res
-		if(water && water.energy >= 1)
-			var/turf/tile = loc
-			if(isturf(tile))
-				water.use_charge(1)
-				tile.clean_blood()
-				if(istype(tile, /turf/simulated))
-					var/turf/simulated/T = tile
-					T.dirt = 0
-				for(var/A in tile)
-					if(istype(A,/obj/effect/rune) || istype(A,/obj/effect/debris/cleanable) || istype(A,/obj/effect/overlay))
-						qdel(A)
-					else if(istype(A, /mob/living/carbon/human))
-						var/mob/living/carbon/human/cleaned_human = A
-						if(cleaned_human.lying)
-							if(cleaned_human.head)
-								cleaned_human.head.clean_blood()
-								cleaned_human.update_inv_head(0)
-							if(cleaned_human.wear_suit)
-								cleaned_human.wear_suit.clean_blood()
-								cleaned_human.update_inv_wear_suit(0)
-							else if(cleaned_human.w_uniform)
-								cleaned_human.w_uniform.clean_blood()
-								cleaned_human.update_inv_w_uniform(0)
-							if(cleaned_human.shoes)
-								cleaned_human.shoes.clean_blood()
-								cleaned_human.update_inv_shoes(0)
-							cleaned_human.clean_blood(1)
-							to_chat(cleaned_human, "<span class='warning'>[src] cleans your face!</span>")
-	return
 
 /mob/living/silicon/robot/proc/self_destruct()
 	gib()
