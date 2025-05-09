@@ -30,7 +30,7 @@
 
 	maxHealth = 65
 	health = 40
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 
 	response_help = "pets the"
 	response_disarm = "gently pushes aside the"

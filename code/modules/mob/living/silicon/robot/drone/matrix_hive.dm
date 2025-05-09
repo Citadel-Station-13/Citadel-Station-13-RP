@@ -76,7 +76,8 @@ var/global/list/drone_matrices = list()
 /datum/drone_matrix/proc/set_upgrade(mob/living/silicon/robot/drone/D, var/upgrade_type)
 	switch(upgrade_type)
 		if(MTX_UPG_SPEED)
-			D.speed = initial(D.speed) - 1
+			D.movement_base_speed = initial(D.movement_base_speed) - 1
+			D.update_movespeed_base()
 		if(MTX_UPG_CELL)
 			D.cell.maxcharge = D.cell.maxcharge * 1.5
 		if(MTX_UPG_HEALTH)

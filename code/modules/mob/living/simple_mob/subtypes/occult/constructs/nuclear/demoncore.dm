@@ -22,7 +22,7 @@
 	attack_armor_pen = 50
 	attacktext = list("rammed")
 	attack_sound = 'sound/effects/clang1.ogg'
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 	catalogue_data = list(/datum/category_item/catalogue/fauna/nuclear_spirits/demoncore)
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive

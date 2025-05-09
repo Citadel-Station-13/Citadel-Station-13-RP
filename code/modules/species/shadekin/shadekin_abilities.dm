@@ -97,7 +97,7 @@
 		see_invisible = initial(see_invisible)
 		incorporeal_move = initial(incorporeal_move)
 		density = initial(density)
-		force_max_speed = initial(force_max_speed)
+		remove_movespeed_modifier(/datum/movespeed_modifier/forced_speedup/shadein_jaunt)
 		update_icon()
 
 		//Cosmetics mostly
@@ -157,10 +157,10 @@
 
 		// probably replace with a trait later.
 		add_atom_phasing(SPECIES_SHADEKIN_PHASING_TRAIT)
+		add_movespeed_modifier(/datum/movespeed_modifier/forced_speedup/shadein_jaunt)
 
 		incorporeal_move = TRUE
 		density = FALSE
-		force_max_speed = TRUE
 
 /*
 /mob/living/carbon/human/MouseDroppedOnLegacy(atom/dropping, mob/user)

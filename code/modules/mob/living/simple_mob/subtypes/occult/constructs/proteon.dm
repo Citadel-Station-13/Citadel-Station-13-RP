@@ -27,7 +27,7 @@
 	attack_armor_pen = 50 // Does so little damage already, that this can be justified.
 	attacktext = list("rammed")
 	attack_sound = 'sound/weapons/rapidslice.ogg'
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 	catalogue_data = list(/datum/category_item/catalogue/fauna/construct/proteon)
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive

@@ -40,7 +40,7 @@
 
 	maxHealth = 200
 	health = 200
-	movement_cooldown = 10
+	movement_base_speed = 10 / 10
 	movement_sound = 'sound/weapons/heavysmash.ogg'
 	movement_shake_radius = 5
 

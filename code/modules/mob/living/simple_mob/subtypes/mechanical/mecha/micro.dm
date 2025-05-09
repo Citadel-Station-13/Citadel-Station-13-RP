@@ -35,7 +35,7 @@
 
 	projectiletype = /obj/projectile/bullet/pistol/medium
 
-	movement_cooldown = 2
+	movement_base_speed = 10 / 2
 	base_attack_cooldown = 8
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
@@ -74,7 +74,7 @@
 
 	projectiletype = /obj/projectile/bullet/incendiary/flamethrower/large
 
-	movement_cooldown = 3
+	movement_base_speed = 10 / 3
 	base_attack_cooldown = 15
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
@@ -112,7 +112,7 @@
 
 	projectiletype = /obj/projectile/bullet/gyro
 
-	movement_cooldown = 5
+	movement_base_speed = 10 / 5
 	base_attack_cooldown = 15
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting

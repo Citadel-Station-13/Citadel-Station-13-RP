@@ -54,7 +54,7 @@
 
 	mob_class = MOB_CLASS_ANIMAL
 	taser_kill = FALSE
-	movement_cooldown = 10
+	movement_base_speed = 10 / 10
 	movement_sound = 'sound/weapons/heavysmash.ogg'
 	special_attack_min_range = 2
 	special_attack_max_range = 7
@@ -324,7 +324,7 @@
 	health = 150
 	catalogue_data = list(/datum/category_item/catalogue/fauna/goliath/calf)
 
-	movement_cooldown = 7
+	movement_base_speed = 10 / 7
 	special_attack_min_range = 1
 	special_attack_max_range = 4
 	special_attack_cooldown = 15 SECONDS

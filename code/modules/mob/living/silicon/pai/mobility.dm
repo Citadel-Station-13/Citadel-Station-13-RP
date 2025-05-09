@@ -112,10 +112,6 @@
 	H.update_worn_icon()
 	return H
 
-/// Handle movement speed
-/mob/living/silicon/pai/movement_delay()
-	return ..() + speed
-
 /// This is a general check for if the pAI can do things such as fold in/out or perform other special actions
 /// (basically if some condition should be checked upon the use of all mob abilities like closing/opening the shell it goes here instead)
 /mob/living/silicon/pai/proc/can_action()

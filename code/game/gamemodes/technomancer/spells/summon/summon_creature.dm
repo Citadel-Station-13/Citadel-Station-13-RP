@@ -49,7 +49,8 @@
 	summoned.legacy_melee_damage_lower = calculate_spell_power(summoned.legacy_melee_damage_lower)
 	summoned.legacy_melee_damage_upper = calculate_spell_power(summoned.legacy_melee_damage_upper)
 	// This makes the summon slower, so the crew has a chance to flee from massive monsters.
-	summoned.movement_cooldown = calculate_spell_power(round(summoned.movement_cooldown))
+	summoned.movement_base_speed = calculate_spell_power(summoned.movement_base_speed)
+	summoned.update_movespeed_base()
 
 	var/new_size = calculate_spell_power(1)
 	if(new_size != 1)

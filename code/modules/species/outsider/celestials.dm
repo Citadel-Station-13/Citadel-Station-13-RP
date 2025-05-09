@@ -93,12 +93,12 @@
 	immaculate reputation of Aura-based products, especially genemods. As they prefer mind-over-matter, most of their genetic modifications lend them towards becoming far more mentally robust,
 	at the expense of physical attributes. They are more frail, but have a slower metabolism.
 	"}
+	movement_base_speed = 5.5
 	item_slowdown_mod = 1.2
 	hunger_factor = 0.02 //Less hungry
 	toxins_mod = 1.5
 	total_health = 75
 	brute_mod = 1.2
-	slowdown = -0.2 //faster
 	max_additional_languages = 5
 
 	abilities = list(

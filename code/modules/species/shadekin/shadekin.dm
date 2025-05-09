@@ -41,7 +41,7 @@
 	vision_innate = /datum/vision/baseline/species_tier_3/for_snowflake_ocs
 	vision_organ = O_EYES
 
-	slowdown = -0.5
+	movement_base_speed = 6
 	item_slowdown_mod = 0.5
 
 	brute_mod = 0.7 // Naturally sturdy.

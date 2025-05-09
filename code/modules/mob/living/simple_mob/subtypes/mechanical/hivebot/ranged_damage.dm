@@ -222,7 +222,7 @@
 	icon_state = "lurker"
 	icon_living = "lurker"
 	alpha = 200
-	movement_cooldown = 0.7 SECONDS
+	movement_base_speed = 10 / 0.7 SECONDS
 
 	projectiletype = /obj/projectile/beam/xray
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting/sniper
@@ -240,7 +240,7 @@
 	icon_living = "suppressor"
 	icon_state = "suppressor"
 	base_attack_cooldown = 6
-	movement_cooldown = 0.5 SECONDS
+	movement_base_speed = 10 / 0.5 SECONDS
 	projectiletype = /obj/projectile/beam/smalllaser/hivebot
 
 	maxHealth = 4 LASERS_TO_KILL

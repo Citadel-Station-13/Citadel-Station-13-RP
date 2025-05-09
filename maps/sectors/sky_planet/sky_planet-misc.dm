@@ -295,7 +295,7 @@
 	attacktext = list("slashed", "stabbed")
 	armor_legacy_mob = list(melee = 50, bullet = 30, laser = 50, energy = 80, bomb = 25, bio = 100, rad = 100)	//Armor Rebalanced for Cult Robes.
 	attack_sound = 'sound/weapons/rapidslice.ogg'
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
@@ -373,7 +373,7 @@
 	hovering = TRUE
 	softfall = TRUE
 	parachuting = TRUE
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 
 	legacy_melee_damage_lower = 5
 	legacy_melee_damage_upper = 5
@@ -408,7 +408,7 @@
 	hovering = TRUE
 	softfall = TRUE
 	parachuting = TRUE
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 
 	legacy_melee_damage_lower = 10
 	legacy_melee_damage_upper = 10
@@ -451,7 +451,7 @@
 	hovering = TRUE
 	softfall = TRUE
 	parachuting = TRUE
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 
 	legacy_melee_damage_lower = 10
 	legacy_melee_damage_upper = 10
@@ -503,7 +503,7 @@
 	hovering = TRUE
 	softfall = TRUE
 	parachuting = TRUE
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 
 	legacy_melee_damage_lower = 10
 	legacy_melee_damage_upper = 10

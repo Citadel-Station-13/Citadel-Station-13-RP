@@ -27,7 +27,7 @@
 	attack_edge = 1
 	attacktext = list("violently stabbed")
 	friendly = list("caresses")
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 	catalogue_data = list(/datum/category_item/catalogue/fauna/construct/harvester)
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
@@ -76,7 +76,7 @@
 	attack_edge = 1
 	attacktext = list("violently stabbed")
 	friendly = list("caresses")
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
 

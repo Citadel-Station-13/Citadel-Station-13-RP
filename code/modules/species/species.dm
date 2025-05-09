@@ -24,8 +24,11 @@
 
 	//? Intrinsic Information
 
+	/// todo: rename to id to prep for /datum/prototype conversion
 	/// uid - **must be unique** - Identifies the exact species you are using
 	var/uid
+	/// todo: this shouldn't really be needed, anything
+	///       requiring species checks should move to species tag system or something
 	/// id usually identical to uid, if we are a subspecies we use the parent species id/uid here
 	var/id
 	// TODO: ref species by id in code, so we can rename as needed
@@ -363,9 +366,11 @@
 	/// Species-specific spells.
 	var/list/inherent_spells = list()
 
-	//? Movement
-	/// Passive movement speed malus (or boost, if negative)
-	var/slowdown = 0
+	//* Movement *//
+	/// Base movespeed in tiles / second
+	var/movement_base_speed = 5
+
+	//? Movement - old
 	/// How much faster or slower the species is in water
 	var/water_movement = 0
 	/// How much faster or slower the species is on snow

@@ -67,7 +67,7 @@
 
 	maxHealth = 125
 	health = 125
-	movement_cooldown = 7
+	movement_base_speed = 10 / 7
 
 	response_help = "touches"
 	response_disarm = "pushes"
@@ -180,7 +180,7 @@
 
 	maxHealth = 250
 	health = 250
-	movement_cooldown = 10
+	movement_base_speed = 10 / 10
 
 	legacy_melee_damage_lower = 15
 	legacy_melee_damage_upper = 30
@@ -258,7 +258,7 @@
 
 	maxHealth = 150
 	health = 150
-	movement_cooldown = 7
+	movement_base_speed = 10 / 7
 
 	legacy_melee_damage_lower = 10
 	legacy_melee_damage_upper = 20
@@ -353,7 +353,7 @@
 
 	maxHealth = 100
 	health = 100
-	movement_cooldown = 5
+	movement_base_speed = 10 / 5
 
 	response_help = "touches"
 	response_disarm = "pushes"
@@ -395,7 +395,7 @@
 
 	maxHealth = 125
 	health = 125
-	movement_cooldown = 7
+	movement_base_speed = 10 / 7
 
 	response_help = "touches"
 	response_disarm = "pushes"
@@ -434,7 +434,7 @@
 
 	maxHealth = 150
 	health = 150
-	movement_cooldown = 7
+	movement_base_speed = 10 / 7
 
 	response_help = "touches"
 	response_disarm = "pushes"

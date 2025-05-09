@@ -20,9 +20,6 @@
 	radiation_mod = 0.95
 	toxins_mod    = 0.8
 
-	slowdown = 0.2 //Minor general slowdown
-	item_slowdown_mod = 0.95 //Reduced Item slowdown
-
 	minimum_breath_pressure = 18
 
 	total_health = 130
@@ -73,9 +70,6 @@
 	toxins_mod    = 1.4
 
 	minimum_breath_pressure = 12
-
-	slowdown = -0.1//Minor speedboost
-	item_slowdown_mod = 1.05 //Minor slowdown
 
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR

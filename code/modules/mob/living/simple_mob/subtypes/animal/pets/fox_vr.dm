@@ -19,7 +19,7 @@
 	icon_rest = "fox2_rest"
 	icon = 'icons/mob/fox_vr.dmi'
 
-	movement_cooldown = 0.5
+	movement_base_speed = 10 / 0.5
 	see_in_dark = 6
 	mob_size = MOB_SMALL //Foxes are not smaller than cats so bumping them up to small
 	randomized = TRUE
