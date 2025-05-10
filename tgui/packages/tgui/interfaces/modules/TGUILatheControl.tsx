@@ -427,9 +427,26 @@ const LatheDesign = (props: LatheDesignProps, context) => {
   // ingredients: key = ingredient id/value
   let [inds, setInds] = useLocalState<Record<string, string>>(context, `${moduleID}-${props.design.id}-inds`, {});
 
+  if (!areMaterialsChosen(props.design.material_parts || {}, mats) && props.design.autodetect_tags && props.design.material_parts) {
+    Object.entries(props.design.material_parts).map(([name, amt]) => {
+      for (var matkey in data.materialsContext.materials) {
+        if ((data.materialsContext.materials[matkey].tags !== null) && (props.design.autodetect_tags !== null)) {
+          if (data.materialsContext.materials[matkey].tags.includes(props.design.autodetect_tags[name])) {
+            let autodetectedMats = { ...mats };
+            autodetectedMats[name] = data.materialsContext.materials[matkey].name;
+            setMats(autodetectedMats);
+            break
+          }
+        }
+      }
+    }
+    )
+  }
+
   // ingredients are currently unspported.
   let awaitingSelections = !areMaterialsChosen(props.design.material_parts || {}, mats)
   || !!props.design.ingredients;
+
 
   return (
     <Collapsible
@@ -509,20 +526,6 @@ const LatheDesign = (props: LatheDesignProps, context) => {
           {props.design.material_parts && Object.entries(props.design.material_parts).map(([name, amt]) => {
             let selected = mats[name];
             let selectedName = ((selected && data.materialsContext.materials[selected]?.name) ? data.materialsContext.materials[selected].name : "Select");
-            if ((!selected) && (props.design.autodetect_tags)) {
-              for (var matkey in data.materialsContext.materials) {
-                if (data.materialsContext.materials[matkey].tags !== null) {
-                  if (data.materialsContext.materials[matkey].tags.includes(props.design.autodetect_tags[name])) {
-                    selected = data.materialsContext.materials[matkey].name;
-                    selectedName = data.materialsContext.materials[matkey].name;
-                    let autodetectedMats = { ...mats };
-                    autodetectedMats[name] = selectedName;
-                    setMats(autodetectedMats);
-                    break
-                  }
-                }
-              }
-            }
             return (
               <Table.Row key={name}>
                 <Table.Cell textAlign="center">
