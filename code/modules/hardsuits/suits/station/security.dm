@@ -17,6 +17,8 @@
 		/obj/item/melee/baton,
 		/obj/item/bluespace_radio,
 	)
+
+#warn all these
 /datum/armor/hardsuit/hazard
 	melee = 0.6
 	bullet = 0.4

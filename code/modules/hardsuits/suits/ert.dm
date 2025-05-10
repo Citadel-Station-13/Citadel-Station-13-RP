@@ -2,6 +2,7 @@
 	light_overlay = "helmet_light_dual"
 	camera_networks = list(NETWORK_ERT)
 
+#warn all these
 /datum/armor/hardsuit/ert
 	melee = 0.6
 	bullet = 0.5

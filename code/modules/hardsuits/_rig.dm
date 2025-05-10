@@ -2,6 +2,7 @@
 #define ONLY_RETRACT 2
 #define SEAL_DELAY 30
 
+#warn all these
 /datum/armor/hardsuit
 	melee = 0.4
 	bullet = 0.05

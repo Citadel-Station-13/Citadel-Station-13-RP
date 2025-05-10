@@ -10,15 +10,15 @@
 	var/name
 
 	var/melee = 0
-	var/melee_tier = ARMOR_TIER_DEFAULT
+	var/melee_tier = MELEE_TIER_DEFAULT
 	var/melee_soak = 0
 	var/melee_deflect = 0
 	var/bullet = 0
-	var/bullet_tier = ARMOR_TIER_DEFAULT
+	var/bullet_tier = BULLET_TIER_DEFAULT
 	var/bullet_soak = 0
 	var/bullet_deflect = 0
 	var/laser = 0
-	var/laser_tier = ARMOR_TIER_DEFAULT
+	var/laser_tier = LASER_TIER_DEFAULT
 	var/laser_soak = 0
 	var/laser_deflect = 0
 	var/energy = 0

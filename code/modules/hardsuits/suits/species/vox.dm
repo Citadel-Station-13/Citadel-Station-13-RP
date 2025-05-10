@@ -20,6 +20,7 @@
 	chest_type = /obj/item/clothing/suit/space/hardsuit/vox
 	glove_type = /obj/item/clothing/gloves/gauntlets/hardsuit/vox
 
+#warn all these
 /datum/armor/hardsuit/vox
 	melee = 0.6
 	bullet = 0.5

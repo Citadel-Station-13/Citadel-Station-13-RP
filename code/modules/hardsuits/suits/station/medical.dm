@@ -21,6 +21,7 @@
 		/obj/item/bluespace_radio,
 	)
 
+#warn all these
 /datum/armor/hardsuit/medical
 	melee = 0.3
 	bullet = 0.15

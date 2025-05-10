@@ -15,6 +15,7 @@
 	to anything other than Diyaabs, which they seem to have formed a tangential symbiosis with."
 	value = CATALOGUER_REWARD_MEDIUM
 
+#warn all these
 /datum/armor/physiology/frostfly
 	melee = 0.20
 	bullet = 0.1

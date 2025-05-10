@@ -30,6 +30,7 @@
 		/obj/item/bluespace_radio,
 	)
 
+#warn all these
 /datum/armor/hardsuit/ami
 	melee = 0.45
 	bullet = 0.2

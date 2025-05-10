@@ -89,7 +89,6 @@
 	name = "heavy rifle bullet"
 	damage_force = 40
 	damage_tier = 4.75
-	armor_penetration = 50
 
 //* Heavy Rifles *//
 

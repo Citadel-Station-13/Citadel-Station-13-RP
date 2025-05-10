@@ -14,6 +14,7 @@
 	helm_type = /obj/item/clothing/head/helmet/space/hardsuit/breacher
 	boot_type = /obj/item/clothing/shoes/magboots/hardsuit/breacher
 
+#warn all these
 /datum/armor/hardsuit/breacher
 	melee = 0.6
 	bullet = 0.6
