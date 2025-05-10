@@ -3,23 +3,13 @@
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "dark"
 
+/area/space/osirisdebrisfield/explored
+	name = "Away Mission - Osiris Field"
+	icon = 'icons/turf/areas.dmi'
+	icon_state = "dark"
+
 /area/space/osirisdebrisfield/unexplored
 	icon_state = "debrisunexplored"
-
-/area/space/osirisdebrisfield2
-	name = "Away Mission - Osiris Field 2"
-	icon = 'icons/turf/areas.dmi'
-	icon_state = "dark"
-
-/area/space/osirisdebrisfield2/unexplored
-	icon_state = "debrisunexplored"
-
-/area/space/osirisdebrisfield/memorial
-	name = "Memorial"
-	icon = 'icons/turf/areas.dmi'
-	icon_state = "dark"
-	requires_power = FALSE
-	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/horror.ogg')
 
 /area/osirisdebrisfield
 	name = "\improper Osiris-field"
