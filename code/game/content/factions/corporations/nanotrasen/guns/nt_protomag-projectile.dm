@@ -74,13 +74,12 @@
 	agony = 30
 	penalty_speed_multiplier = 3 / 4
 	penalty_damage_tier = 3.25
-	penalty_legacy_armor_penetration = 15
 
 /obj/projectile/nt_protomag/practice
 	name = "lightweight slug"
 	color = "#ffffff"
 	damage_force = 5
-	damage_tier = ARMOR_BETWEEN_TIERS(BULLET_TIER_LOW, BULLET_TIER_MEDIUM, 0.5)
+	damage_tier = 2.5
 
 // todo: i refuse to do this until i can make it pretty
 // /obj/projectile/nt_protomag/smoke

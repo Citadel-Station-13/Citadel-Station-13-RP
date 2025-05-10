@@ -116,7 +116,6 @@
 	icon_state = "arm_blade"
 	damage_force = 40
 	damage_tier = 4
-	armor_penetration = 15
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	pry = 1
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")

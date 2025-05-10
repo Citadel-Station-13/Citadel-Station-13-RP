@@ -27,3 +27,5 @@
 	bullet = 0.15
 	laser = 0.2
 	rad = 1.0
+
+#warn sweep up from this file

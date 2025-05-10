@@ -9,3 +9,5 @@
 	bomb = 0.3
 	bio = 0.3
 	rad = 0.3
+	fire = 0.7
+	acid = 0.7
