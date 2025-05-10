@@ -189,27 +189,3 @@
 	. = ..()
 	icon_state = initial(icon_state)
 	item_state = initial(item_state)
-
-/obj/item/tool/wrench/power/material
-	name = "material hand drill"
-	desc = "A simple powered hand drill. It's fitted with a bolt driving bit."
-	materials_base = null
-	material_parts = list("tip" = MAT_STEEL, "wiring" = MAT_SILVER)
-	material_costs = list("tip" = 150, "wiring" = 50)
-	material_primary = "tip"
-	counterpart = /obj/item/tool/screwdriver/power/material
-
-/obj/item/tool/wrench/power/material/update_material_multi(list/parts, prevent_recursion=FALSE)
-	var/datum/prototype/material/tipmat = parts["tip"]
-	var/datum/prototype/material/wiremat = parts["wiring"]
-	if(!tipmat || !wiremat) //kevinz, why did you let null get passed to this function?
-		//why would you allow this to happen?
-		return
-	name = "[tipmat.display_name] hand drill"
-	color = tipmat.icon_colour
-	var/start_speed = (wiremat.relative_conductivity<2.5) ? 1 : initial(tool_speed)
-	tool_speed = tipmat.tool_stats(initial_toolspeed = start_speed)
-	desc = "A simple powered hand drill. It's fitted with a [tipmat.display_name] bolt-driving bit, and appears to have [wiremat.display_name] wiring[(start_speed == 1) ? ", which seems insufficiently conductive." : "." ]"
-	var/obj/item/tool/screwdriver/power/material/C = counterpart
-	if(C && !prevent_recursion)
-		C.update_material_multi(parts, prevent_recursion=TRUE)

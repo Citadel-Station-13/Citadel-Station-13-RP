@@ -64,6 +64,9 @@
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/material/knife/machete/hatchet
+	material_autodetect_tags = list(
+		"structure" = MATERIAL_TAG_BASIC_STRUCTURAL,
+	)
 
 /datum/prototype/design/tool/minihoe
 	id = "ToolMinihoe"
@@ -81,44 +84,6 @@
 	)
 	material_autodetect_tags = list(
 		"tip" = MATERIAL_TAG_BASIC_STRUCTURAL,
-	)
-
-
-/datum/prototype/design/tool/matdriver
-	id = "ToolMatdriver"
-	lathe_type = LATHE_TYPE_AUTOLATHE
-	design_unlock = DESIGN_UNLOCK_INTRINSIC
-	build_path = /obj/item/tool/screwdriver/material
-	materials_base = list(
-		/datum/prototype/material/steel = 50,
-	)
-	material_costs = list(
-		"tip" = 250
-	)
-	material_constraints = list(
-		"tip" = MATERIAL_CONSTRAINT_RIGID
-	)
-	material_autodetect_tags = list(
-		"tip" = MATERIAL_TAG_BASIC_STRUCTURAL,
-	)
-
-/datum/prototype/design/tool/matdrill
-	id = "ToolMatdrill"
-	lathe_type = LATHE_TYPE_AUTOLATHE
-	design_unlock = DESIGN_UNLOCK_INTRINSIC
-	build_path = /obj/item/tool/screwdriver/power/material
-	materials_base = list()
-	material_costs = list(
-		"tip" = 250,
-		"wiring" = 50
-	)
-	material_constraints = list(
-		"tip" = MATERIAL_CONSTRAINT_RIGID,
-		"wiring" = MATERIAL_CONSTRAINT_CONDUCTIVE
-	)
-	material_autodetect_tags = list(
-		"tip" = MATERIAL_TAG_ADVANCED_STRUCTURAL,
-		"wiring" = MATERIAL_TAG_ADVANCED_CONDUCTOR,
 	)
 
 /datum/prototype/design/tool/prybar
