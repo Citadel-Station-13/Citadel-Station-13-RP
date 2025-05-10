@@ -12,6 +12,7 @@
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_HIGH
 
+
 /datum/prototype/material/hydrogen/mhydrogen
 	name = "mhydrogen"
 	id = MAT_METALHYDROGEN
@@ -21,6 +22,8 @@
 	is_fusion_fuel = 1
 	tgui_icon_key = "mhydrogen"
 	worth = 50
+
+	material_constraints = MATERIAL_CONSTRAINT_RIGID | MATERIAL_CONSTRAINT_CONDUCTIVE
 
 /datum/prototype/material/hydrogen/tritium
 	name = "tritium"

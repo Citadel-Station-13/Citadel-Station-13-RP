@@ -14,7 +14,7 @@
 	build_path = /obj/item/storage/backpack/holding
 
 /datum/prototype/design/science/boh/dufflebag_holding
-	design_name = "DuffleBag of Holding"
+	design_name = "Dufflebag of Holding"
 	desc = "A minaturized prototype of the popular Bag of Holding, the Dufflebag of Holding is, functionally, identical to the bag of holding, but comes in a more stylish and compact form."
 	id = "duffle-holding"
 	category = DESIGN_CATEGORY_STORAGE

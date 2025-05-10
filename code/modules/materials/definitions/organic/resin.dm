@@ -26,6 +26,8 @@
 	absorption = MATERIAL_RESISTANCE_VULNERABLE
 	nullification = MATERIAL_RESISTANCE_VERY_VULNERABLE
 
+	material_constraints = MATERIAL_CONSTRAINT_RIGID
+
 /datum/prototype/material/resin/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(

@@ -20,6 +20,8 @@
 	absorption = MATERIAL_RESISTANCE_HIGH
 	nullification = MATERIAL_RESISTANCE_LOW
 
+	material_constraints = MATERIAL_CONSTRAINT_RIGID
+
 /datum/prototype/material/bananium/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(category = "statues", name = "bananium statue", product = /obj/structure/statue/bananium, cost = 10, time = 2 SECONDS)
@@ -46,6 +48,8 @@
 	refraction = MATERIAL_RESISTANCE_MODERATE
 	absorption = MATERIAL_RESISTANCE_HIGH
 	nullification = MATERIAL_RESISTANCE_LOW
+
+	material_constraints = MATERIAL_CONSTRAINT_RIGID
 
 /datum/prototype/material/silencium/generate_recipes()
 	. = ..()

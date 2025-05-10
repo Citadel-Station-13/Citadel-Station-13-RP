@@ -24,6 +24,8 @@
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_NONE
 
+	material_constraints = MATERIAL_CONSTRAINT_RIGID
+
 	material_traits = list(
 		/datum/prototype/material_trait/radioactive = 10,
 	)
