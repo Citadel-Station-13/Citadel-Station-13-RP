@@ -1163,6 +1163,7 @@
 	if(shieldcall_modified_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 		return
 	// END
+	#warn deal with this
 	if(isliving(target))
 		var/mob/living/L = target
 		//Armor

@@ -2,6 +2,7 @@
 #define ONLY_RETRACT 2
 #define SEAL_DELAY 30
 
+#warn all these
 /datum/armor/hardsuit
 	melee = 0.4
 	bullet = 0.05
@@ -1161,9 +1162,9 @@
 					else
 						M.stop_pulling()
 
-	if(wearer.pinned.len)
-		to_chat(src, "<span class='notice'>Your host is pinned to a wall by [wearer.pinned[1]]</span>!")
-		return 0
+	// if(wearer.pinned.len)
+	// 	to_chat(src, "<span class='notice'>Your host is pinned to a wall by [wearer.pinned[1]]</span>!")
+	// 	return 0
 
 	// AIs are a bit slower than regular and ignore move intent.
 	wearer_move_delay = world.time + ai_controlled_move_delay

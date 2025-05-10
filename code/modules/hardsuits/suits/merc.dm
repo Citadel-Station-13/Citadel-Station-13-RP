@@ -2,6 +2,7 @@
 	light_overlay = "helmet_light_dual_green"
 	camera_networks = list(NETWORK_MERCENARY)
 
+#warn all these
 /datum/armor/hardsuit/merc
 	melee = 0.8
 	bullet = 0.65

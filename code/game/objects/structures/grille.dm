@@ -50,7 +50,7 @@
 		impact_flags |= PROJECTILE_IMPACT_TRIVIAL | PROJECTILE_IMPACT_PIERCE
 	. = ..()
 	if(impact_flags & PROJECTILE_IMPACT_PIERCE)
-		proj.dampen_on_pierce_experimental(src, 10, ARMOR_TIER_ABOVE)
+		proj.dampen_on_pierce_experimental(src, 10, 4)
 
 /obj/structure/grille/attackby(obj/item/W as obj, mob/user as mob)
 	if(!istype(W))
@@ -98,14 +98,9 @@
 				WD.update_appearance()
 	return ..()
 
-/obj/structure/grille/unarmed_act(mob/attacker, datum/unarmed_attack/style, target_zone, datum/event_args/actor/clickchain/clickchain)
-	if(shock(attacker, 70))
-		return FALSE
-	return ..()
-
-/obj/structure/grille/melee_act(mob/user, obj/item/weapon, target_zone, datum/event_args/actor/clickchain/clickchain)
-	if(shock(user, 70, weapon))
-		return FALSE
+/obj/structure/grille/on_melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/attack_style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	if(shock(attacker, 70, weapon))
+		return clickchain_flags | CLICKCHAIN_DO_NOT_ATTACK | CLICKCHAIN_DID_SOMETHING
 	return ..()
 
 /obj/structure/grille/drop_products(method, atom/where)
@@ -114,11 +109,13 @@
 
 /obj/structure/grille/atom_break()
 	smoothing_flags = NONE
+	set_density(FALSE)
 	. = ..()
 	update_icon()
 
 /obj/structure/grille/atom_fix()
 	smoothing_flags = initial(smoothing_flags)
+	set_density(initial(density))
 	. = ..()
 	update_icon()
 

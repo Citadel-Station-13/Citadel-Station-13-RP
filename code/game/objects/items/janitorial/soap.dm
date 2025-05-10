@@ -46,7 +46,7 @@
 		target.clean_blood()
 	return
 
-/obj/item/soap/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/soap/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(target && user && ishuman(target) && ishuman(user) && !user.incapacitated() && user.zone_sel &&user.zone_sel.selecting == "mouth" )
 		user.visible_message("<span class='danger'>\The [user] washes \the [target]'s mouth out with soap!</span>")
 		playsound(src.loc, 'sound/items/soapmouth.ogg', 50, 1)

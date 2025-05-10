@@ -10,6 +10,7 @@
 	pass_flags = ATOM_PASS_FLAGS_BEAM
 	damage_force = 40
 	damage_type = DAMAGE_TYPE_BURN
+	damage_tier = 3
 	damage_flag = ARMOR_LASER
 	projectile_type = PROJECTILE_TYPE_BEAM | PROJECTILE_TYPE_PHOTONIC
 	eyeblur = 4

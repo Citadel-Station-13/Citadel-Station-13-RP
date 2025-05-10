@@ -80,7 +80,7 @@
 	name = "[initial(name)] (\the [H])"
 	icon_state = "fingerprint1"
 
-/obj/item/sample/print/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/sample/print/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(!ishuman(target) || user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE

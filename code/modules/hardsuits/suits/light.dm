@@ -1,3 +1,4 @@
+#warn all these
 /datum/armor/hardsuit/light
 	melee = 0.5
 	bullet = 0.15

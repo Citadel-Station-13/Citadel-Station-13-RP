@@ -4,7 +4,6 @@
 	name = "illusion"
 	desc = "If you can read me, the game broke. Please report this to a coder."
 
-	resistance = 1000 // Holograms are tough.
 	heat_resist = 1
 	cold_resist = 1
 	shock_resist = 1
@@ -78,13 +77,14 @@
 				M.visible_message(SPAN_DANGER("\The [M] [response_harm] \the [src]"))
 				M.do_attack_animation(src)
 
-/mob/living/simple_mob/illusion/hit_with_weapon(obj/item/I, mob/living/user, effective_force, hit_zone)
+/mob/living/simple_mob/illusion/melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/weapon/style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	if(realistic)
 		return ..()
-
-	playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-	visible_message(SPAN_WARNING( "\The [user]'s [I] goes through \the [src]!"))
-	return FALSE
+	// TODO: proper feedback procs
+	attacker?.visible_message(
+		SPAN_WARNING("[attacker]'s [weapon] passes right through [src]!"),
+	)
+	return clickchain_flags | CLICKCHAIN_ATTACK_MISSED
 
 /mob/living/simple_mob/illusion/legacy_ex_act()
 	return

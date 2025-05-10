@@ -275,4 +275,4 @@
 
 /obj/projectile/beam/cyan/hivebot
 	damage_force = 45
-	armor_penetration = 15
+	damage_tier = 4

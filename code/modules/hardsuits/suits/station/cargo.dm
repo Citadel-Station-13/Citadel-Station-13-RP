@@ -22,6 +22,7 @@
 		/obj/item/bluespace_radio,
 	)
 
+#warn all these
 /datum/armor/hardsuit/industrial
 	melee = 0.6
 	bullet = 0.5

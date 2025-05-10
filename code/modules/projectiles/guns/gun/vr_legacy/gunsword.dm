@@ -38,6 +38,7 @@
 	maxcharge = 2400
 	charge_amount = 20
 	damage_force = 3
+	damage_tier = 4.75
 	throw_force = 5
 	throw_speed = 1
 	throw_range = 5
@@ -49,7 +50,6 @@
 	var/active_throwforce = 20
 	var/active_w_class = WEIGHT_CLASS_BULKY
 	var/active_embed_chance = 0		//In the off chance one of these is supposed to embed, you can just tweak this var
-	armor_penetration = 50
 	atom_flags = NOBLOODY
 	var/lrange = 2
 	var/lpower = 2

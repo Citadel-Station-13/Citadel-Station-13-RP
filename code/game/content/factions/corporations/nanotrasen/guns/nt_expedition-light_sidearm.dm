@@ -119,7 +119,7 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/light_sidear
 /obj/projectile/bullet/nt_expedition/light_sidearm
 	name = "bullet"
 	damage_force = 30
-	damage_tier = LERP(BULLET_TIER_LOW, BULLET_TIER_MEDIUM, 0.25)
+	damage_tier = 3
 	armor_penetration = 10
 
 //* Light Sidearms *//

@@ -20,6 +20,7 @@
 	glove_type = /obj/item/clothing/gloves/gauntlets/hardsuit/protean
 	maintenance_while_online = TRUE
 
+#warn all these
 /datum/armor/hardsuit/protean
 	melee = 0.0
 	bullet = 0.0

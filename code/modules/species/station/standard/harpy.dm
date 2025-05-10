@@ -7,7 +7,7 @@
 	deform = 'icons/mob/human_races/r_def_harpy_vr.dmi'
 	tail = "tail"
 	icobase_tail = 1
-	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)
+	unarmed_types = list(/datum/melee_attack/unarmed/stomp, /datum/melee_attack/unarmed/kick, /datum/melee_attack/unarmed/punch, /datum/melee_attack/unarmed/bite)
 	max_additional_languages = 3
 	secondary_langs = list(LANGUAGE_BIRDSONG)
 	name_language = null

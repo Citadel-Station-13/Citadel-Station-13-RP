@@ -10,15 +10,15 @@
 	var/name
 
 	var/melee = 0
-	var/melee_tier = ARMOR_TIER_DEFAULT
+	var/melee_tier = MELEE_TIER_DEFAULT
 	var/melee_soak = 0
 	var/melee_deflect = 0
 	var/bullet = 0
-	var/bullet_tier = ARMOR_TIER_DEFAULT
+	var/bullet_tier = BULLET_TIER_DEFAULT
 	var/bullet_soak = 0
 	var/bullet_deflect = 0
 	var/laser = 0
-	var/laser_tier = ARMOR_TIER_DEFAULT
+	var/laser_tier = LASER_TIER_DEFAULT
 	var/laser_soak = 0
 	var/laser_deflect = 0
 	var/energy = 0
@@ -199,24 +199,24 @@
 		if(ARMOR_MELEE)
 			if(!melee)
 				return damage
-			var/tdiff = melee_tier - tier
-			damage = max(0, (tdiff? (damage * (1 - ARMOR_TIER_CALC(melee, tdiff))) : (damage * (1 - melee))) - melee_soak)
+			var/effective_armor = armor_tier_calculation(melee, melee_tier - tier)
+			damage = max(0, damage * effective_armor - melee_soak)
 			if(damage <= melee_deflect)
 				return 0
 			return damage
 		if(ARMOR_BULLET)
 			if(!bullet)
 				return damage
-			var/tdiff = bullet_tier - tier
-			damage = max(0, (tdiff? (damage * (1 - ARMOR_TIER_CALC(bullet, tdiff))) : (damage * (1 - bullet))) - bullet_soak)
+			var/effective_armor = armor_tier_calculation(bullet, bullet_tier - tier)
+			damage = max(0, damage * effective_armor - bullet_soak)
 			if(damage <= bullet_deflect)
 				return 0
 			return damage
 		if(ARMOR_LASER)
 			if(!laser)
 				return damage
-			var/tdiff = laser_tier - tier
-			damage = max(0, (tdiff? (damage * (1 - ARMOR_TIER_CALC(laser, tdiff))) : (damage * (1 - laser))) - laser_soak)
+			var/effective_armor = armor_tier_calculation(laser, laser_tier - tier)
+			damage = max(0, damage * effective_armor - laser_soak)
 			if(damage <= laser_deflect)
 				return 0
 			return damage
@@ -255,6 +255,20 @@
 		built += "[key]: [ours[key]]"
 	return jointext(built, ", ")
 
+/// tier_diff is tier difference of armor against attack; positive = armor is higher tier.
+/// * see https://www.desmos.com/calculator/6uu1djsawl
+/// * armor at or below 0 (added damage) are passed back without change
+/datum/armor/proc/armor_tier_calculation(mit_ratio, tier_diff)
+	if(mit_ratio <= 0)
+		return 0
+	if(!tier_diff)
+		return mit_ratio
+	if(tier_diff > 0)
+		var/a = mit_ratio * (tier_diff + 1)
+		return max(a / sqrt(2 + a ** 2), mit_ratio)
+	else
+		return mit_ratio / (1 + (((-tier_diff) ** 17.5) / 1.75))
+
 /**
  * returns a /datum/armor with the given values overwritten
  */
@@ -263,6 +277,7 @@
 
 /**
  * returns a /datum/armor with the given values adjusted
+ * * adjusting is linear / additive
  */
 /datum/armor/proc/adjusted(list/values)
 	var/list/adjusting = to_list()
@@ -272,6 +287,7 @@
 
 /**
  * returns a /datum/armor with the given values overwritten but only if they were below
+ * * boosts with max()
  */
 /datum/armor/proc/boosted(list/values)
 	var/list/boosting = to_list()
@@ -282,6 +298,7 @@
 
 /**
  * returns if we're atleast the values given, for the values given
+ * * checks all values
  */
 /datum/armor/proc/is_atleast(list/values)
 	var/list/us = to_list()

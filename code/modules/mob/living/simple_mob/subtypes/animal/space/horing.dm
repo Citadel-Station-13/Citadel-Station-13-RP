@@ -96,7 +96,7 @@
 			M.throw_at_old(get_step(src.loc, throwdir), 1, 1, src)
 			runOver(M) // Actually should not use this, placeholder
 		else if(isobj(AM))
-			AM.inflict_atom_damage(charge_damage, charge_damage_tier, charge_damage_flag, charge_damage_mode, ATTACK_TYPE_UNARMED, src)
+			AM.inflict_atom_damage(charge_damage, charge_damage_tier, charge_damage_flag, charge_damage_mode, ATTACK_TYPE_MELEE)
 	..()
 
 /mob/living/simple_mob/animal/horing/proc/runOver(var/mob/living/M)

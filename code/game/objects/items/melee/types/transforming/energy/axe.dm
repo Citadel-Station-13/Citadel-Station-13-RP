@@ -38,7 +38,7 @@
 	desc = "An energised axe."
 	active_damage_force = 30
 	active_throw_force = 20
-	armor_penetration = 25
+	damage_tier = 4
 	damage_force = 15
 	use_cell = TRUE
 	hitcost = 120

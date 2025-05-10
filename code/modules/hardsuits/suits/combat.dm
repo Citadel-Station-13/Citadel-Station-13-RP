@@ -1,6 +1,7 @@
 /obj/item/clothing/head/helmet/space/hardsuit/combat
 	light_overlay = "helmet_light_dual_green"
 
+#warn all these
 /datum/armor/hardsuit/combat
 	melee = 0.8
 	bullet = 0.65

@@ -219,7 +219,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	var/datum/nifsoft/stored = null
 
-/obj/item/disk/nifsoft/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/disk/nifsoft/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(!in_range(user, target))
 		return
 
@@ -269,7 +269,7 @@
 	stored = /datum/nifsoft/compliance
 	var/laws
 
-/obj/item/disk/nifsoft/compliance/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/disk/nifsoft/compliance/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(!ishuman(target))
 		return
 	if(!laws)

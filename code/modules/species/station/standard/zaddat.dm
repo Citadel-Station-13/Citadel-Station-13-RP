@@ -89,9 +89,9 @@
 	vision_organ = O_EYES
 
 	unarmed_types = list(
-		/datum/unarmed_attack/stomp,
-		/datum/unarmed_attack/kick,
-		/datum/unarmed_attack/punch,
+		/datum/melee_attack/unarmed/stomp,
+		/datum/melee_attack/unarmed/kick,
+		/datum/melee_attack/unarmed/punch,
 	)
 
 	descriptors = list()

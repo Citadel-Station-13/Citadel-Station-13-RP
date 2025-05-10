@@ -65,31 +65,14 @@ GLOBAL_LIST_EMPTY(cached_shieldcall_datums)
  * * defending - the atom being attacked
  * * shieldcall_returns - existing returns from other shieldcalls
  * * fake_attack - just checking!
- * * weapon - the item being used to swing with
- * * e_args - (optional) the clickchain event, if any; **This is mutable.**
+ * * clickchain (optional) the clickchain event, if any; **This is mutable.**
+ * * clickchain_flags (optional) the clickchain flags being used
+ * * weapon - (optional) the item being used to swing with
+ * * style - the melee_attack/weapon datum being used
  *
  * @return SHIELDCALL_FLAG_* flags
  */
-/datum/shieldcall/proc/handle_item_melee(atom/defending, shieldcall_returns, fake_attack, obj/item/weapon, datum/event_args/actor/clickchain/e_args)
-	return NONE
-
-/**
- * sent over from the atom
- *
- * * this is generic pre-intercept for melee; please keep this cheap
- * * for stuff like reactive teleport armor, use this because it will stop the hit entirely.
- * * for damage modification, inject directly into e_args
- *
- * @params
- * * defending - the atom in question
- * * shieldcall_returns - existing returns from other shieldcalls
- * * fake_attack - just checking!
- * * style - the unarmed_attack datum being used
- * * e_args (optional) the clickchain event, if any; **This is mutable.**
- *
- * @return SHIELDCALL_FLAG_* flags
- */
-/datum/shieldcall/proc/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args)
+/datum/shieldcall/proc/handle_melee(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/weapon, datum/melee_attack/weapon/style)
 	return NONE
 
 //* Interaction Handling *//
@@ -104,13 +87,14 @@ GLOBAL_LIST_EMPTY(cached_shieldcall_datums)
  * * defending - the atom in question
  * * shieldcall_returns - existing returns from other shieldcalls
  * * fake_attack - just checking!
- * * e_args (optional) the clickchain event, if any; **This is mutable.**
+ * * clickchain (optional) the clickchain event, if any; **This is mutable.**
+ * * clickchain_flags (optional) the clickchain flags being used
  * * contact_flags - SHIELDCALL_CONTACT_FLAG_*
  * * contact_specific - SHIELDCALL_CONTACT_SPECIFIC_*
  *
  * @return SHIELDCALL_FLAG_* flags
  */
-/datum/shieldcall/proc/handle_touch(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/e_args, contact_flags, contact_specific)
+/datum/shieldcall/proc/handle_touch(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/clickchain, clickchain_flags, contact_flags, contact_specific)
 	return NONE
 
 //* Projectile Handling *//
@@ -141,9 +125,6 @@ GLOBAL_LIST_EMPTY(cached_shieldcall_datums)
  *
  * * this is pre-intercept for throwns
  * * for stuff like reactive teleport armor, use this because it will stop the hit entirely
- *
- * todo: implement for turf
- * todo: implement for obj
  *
  * @params
  * * defending - the thing being hit

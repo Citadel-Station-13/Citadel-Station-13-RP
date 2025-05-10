@@ -25,3 +25,5 @@
 	bomb = 0.3
 	bio = 0.7
 	rad = 0.4
+
+#warn sweep down from thsi file

@@ -285,12 +285,12 @@
 	occupant.pixel_y = occupant.base_pixel_y
 	if(occupant.bodytemperature < 261 && occupant.bodytemperature >= 70) //Patch by Aranclanos to stop people from taking burn damage after being ejected
 		occupant.set_bodytemperature(261)									  // Changed to 70 from 140 by Zuhayr due to reoccurance of bug.
-	occupant.forceMove(loc)
-	occupant.update_perspective()
-	occupant = null
 
 	REMOVE_TRAIT(occupant, TRAIT_MOB_FORCED_STANDING, CRYO_TUBE_TRAIT)
+	occupant.forceMove(loc)
+	occupant.update_perspective()
 	occupant.update_mobility() // make them rest again if needed
+	occupant = null
 
 	current_heat_capacity = initial(current_heat_capacity)
 	update_use_power(USE_POWER_IDLE)
@@ -319,14 +319,14 @@
 	M.ExtinguishMob()
 	if(!IS_DEAD(M))
 		to_chat(M, SPAN_USERDANGER("You feel a cold liquid surround you. Your skin starts to freeze up."))
+
 	occupant = M
 	occupant.update_perspective()
-	vis_contents |= occupant
-	occupant.pixel_y += 19
-
-	ADD_TRAIT(occupant, TRAIT_MOB_FORCED_STANDING, CRYO_TUBE_TRAIT)
 	occupant.setDir(src.dir)
+	ADD_TRAIT(occupant, TRAIT_MOB_FORCED_STANDING, CRYO_TUBE_TRAIT)
 	occupant.set_resting(FALSE)
+	occupant.pixel_y += 19
+	vis_contents |= occupant
 
 	current_heat_capacity = HEAT_CAPACITY_HUMAN
 	update_use_power(USE_POWER_ACTIVE)

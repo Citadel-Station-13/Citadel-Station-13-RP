@@ -57,7 +57,7 @@
 /obj/item/material/knife/machete/hatchet/unathiknife/durasteel
 	material_parts = /datum/prototype/material/durasteel
 
-/obj/item/material/knife/machete/hatchet/unathiknife/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/material/knife/machete/hatchet/unathiknife/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(hits > 0)
 		return
 	var/obj/item/I = user.get_inactive_held_item()

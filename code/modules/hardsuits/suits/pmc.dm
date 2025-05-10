@@ -1,6 +1,7 @@
 /obj/item/clothing/head/helmet/space/hardsuit/pmc
 	light_overlay = "helmet_light_dual"
 
+#warn all these
 /datum/armor/hardsuit/pmc
 	melee = 0.6
 	bullet = 0.5

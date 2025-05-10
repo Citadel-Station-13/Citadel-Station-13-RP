@@ -1,12 +1,23 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+/mob/living/is_melee_targetable(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	return TRUE
+
 //* FX *//
 
-/mob/living/get_combat_fx_classifier(attack_type, datum/weapon, target_zone)
+/mob/living/get_combat_fx_classifier(attack_type, datum/attack_source, target_zone)
 	if(isSynthetic())
 		return COMBAT_IMPACT_FX_METAL
 	return COMBAT_IMPACT_FX_FLESH
+
+//* Melee Handling *//
+
+/mob/living/melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/weapon/style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_ATTACK_ABORT)
+		return
+	ai_holder?.react_to_attack_polaris(attacker)
 
 //* Projectile Handling *//
 

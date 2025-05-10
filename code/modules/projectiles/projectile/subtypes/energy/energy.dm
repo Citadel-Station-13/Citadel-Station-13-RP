@@ -137,9 +137,7 @@
 	damage_force = 40
 	damage_type = DAMAGE_TYPE_BURN
 	agony = 10
-	damage_flag = ARMOR_BIO
-	armor_penetration = 25	// It's acid
-
+	damage_flag = ARMOR_ACID
 	combustion = FALSE
 
 /obj/projectile/energy/neurotoxin
@@ -149,9 +147,7 @@
 	damage_force = 5
 	damage_type = DAMAGE_TYPE_BIOACID
 	agony = 23
-	damage_flag = ARMOR_BIO
-	armor_penetration = 25	// It's acid-based
-
+	damage_flag = ARMOR_ACID
 	combustion = FALSE
 
 /obj/projectile/energy/neurotoxin/toxic //New alien mob projectile to match the player-variant's projectiles.
@@ -161,9 +157,7 @@
 	damage_force = 20
 	damage_type = DAMAGE_TYPE_BIOACID
 	agony = 30
-	damage_flag = ARMOR_BIO
-	armor_penetration = 25	// It's acid-based
-
+	damage_flag = ARMOR_ACID
 
 /obj/projectile/energy/phoron
 	name = "phoron bolt"
@@ -224,7 +218,6 @@
 	icon_state = "blue_pellet"
 	fire_sound = 'sound/weapons/Laser.ogg'
 	damage_force = 5
-	armor_penetration = 75
 	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
 	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_ENERGY
