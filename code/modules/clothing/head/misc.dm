@@ -741,3 +741,8 @@
 	icon = 'icons/clothing/head/onestar.dmi'
 	icon_state = "os_cap"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/head/analyst
+	name = "analyst's hat"
+	desc = "A wide brimmed, pointed hat made of sturdy material. The decorative strap fastened around it holds in place a prominent PMD insignia."
+	icon_state = "analyst"
