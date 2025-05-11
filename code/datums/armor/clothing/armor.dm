@@ -78,3 +78,5 @@
 	laser = 0.4
 	energy = 0.3
 	bomb = 0.2
+
+#warn sweep down

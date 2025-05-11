@@ -6,3 +6,5 @@
 	bomb = 0.1
 	bio = 0.1
 	rad = 0.1
+	fire = 0.2
+	acid = 0.2

@@ -55,7 +55,7 @@
 	throw_speed = 4
 	throw_range = 5
 	damage_force = 5
-	damage_tier = MELEE_TIER_MEDIUM
+	damage_tier = 3
 	preserve_item = 1
 	attack_verb = list("struck", "hit", "bashed")
 	zoomdevicename = "scope"

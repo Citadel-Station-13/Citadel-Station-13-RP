@@ -29,7 +29,7 @@
 	butchery_loot = list(/obj/item/stack/animalhide = 6)
 	var/charge_damage_mode = DAMAGE_MODE_PIERCE | DAMAGE_MODE_SHARP
 	var/charge_damage_flag = ARMOR_MELEE
-	var/charge_damage_tier = MELEE_TIER_HEAVY
+	var/charge_damage_tier = 4.5
 	var/charge_damage = 60
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/horing

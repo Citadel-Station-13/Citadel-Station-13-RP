@@ -419,8 +419,8 @@ SUBSYSTEM_DEF(throwing)
 		var/obj/item/thing = thrownthing
 		return thing.damage_tier
 	if(iscarbon(thrownthing))
-		return MELEE_TIER_HEAVY // :trol:
-	return MELEE_TIER_LIGHT
+		return 4 // :trol:
+	return 2.5
 
 /**
  * simulated thrownthing datums
