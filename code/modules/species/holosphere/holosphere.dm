@@ -71,6 +71,7 @@
 		/mob/living/carbon/human/proc/shapeshifter_select_tail,
 		/mob/living/carbon/human/proc/shapeshifter_select_ears,
 		/mob/living/carbon/human/proc/shapeshifter_select_horns,
+		/mob/living/carbon/human/proc/hologram_reset_to_slot,
 	)
 
 	minimum_hair_alpha = MINIMUM_HOLOGRAM_HAIR_ALPHA
