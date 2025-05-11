@@ -49,6 +49,40 @@
 		return FALSE
 	return ..()
 
+/mob/living/carbon/human/verb/toggle_rider_control()
+
+	set name = "Give Reins"
+	set desc = "Give or take the person riding on you control of your movement."
+	set category = VERB_CATEGORY_IC
+	var/datum/component/riding_filter/mob/human/riding_filter = GetComponent(/datum/component/riding_filter/mob/human)
+	if(!riding_filter)
+		to_chat(src, "<span class='warning'>Your form is incompatible with being ridden</warning>")
+		return
+	if(riding_filter.handler_typepath == /datum/component/riding_handler/mob/human)
+		riding_filter.handler_typepath = /datum/component/riding_handler/mob/human/controllable
+		to_chat(src, "<span class='notice'>You can now be controlled")
+	else
+		riding_filter.handler_typepath = /datum/component/riding_handler/mob/human
+	var/datum/component/riding_handler/mob/human/riding_handler = GetComponent(/datum/component/riding_handler/mob/human)
+	to_chat(src, "<span class='notice'>You can no longer be controlled")
+	if(!riding_handler)
+		//No need to update the handler if it doesn't exist.
+		return
+	riding_handler.riding_handler_flags ^= CF_RIDING_HANDLER_IS_CONTROLLABLE
+
+/mob/living/carbon/human/verb/buck_rider()
+
+	set name = "Buck Rider"
+	set desc = "Throw someone riding you off."
+	set category = VERB_CATEGORY_IC
+	for(var/mob/M in buckled_mobs)
+		if(buckled_mobs[M] == BUCKLE_SEMANTIC_HUMAN_PIGGYBACK)
+			M.visible_message(
+				SPAN_NOTICE("[src] bucks and throws [M] of their back."),
+				SPAN_WARNING("[src] bucks and throws you of their back!")
+				)
+			unbuckle_mob(M, BUCKLE_OP_FORCE, src, buckled_mobs[M])
+
 /mob/living/carbon/human/proc/carry_piggyback(mob/living/carbon/other, instant = FALSE, delay_mod = 1, loc_check = TRUE)
 	if(loc_check && !Adjacent(other))
 		return FALSE

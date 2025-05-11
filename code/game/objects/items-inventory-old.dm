@@ -222,6 +222,14 @@
 /obj/item/proc/can_equip(mob/M, slot, mob/user, flags)
 	if(!equip_check_beltlink(M, slot, user, flags))
 		return FALSE
+	if(ishuman(M) && !(flags & INV_OP_FORCE))
+		// todo: put on the mob side maybe?
+		var/mob/living/carbon/human/casted_bodytype_check = M
+		var/their_bodytype = casted_bodytype_check.species.get_effective_bodytype(casted_bodytype_check, src, slot)
+		if(!worn_bodytypes?.contains(their_bodytype) && !worn_bodytypes_fallback?.contains(their_bodytype))
+			if(!(flags & INV_OP_SILENT))
+				to_chat(user || M, SPAN_WARNING("[src] doesn't fit on you."))
+			return FALSE
 	return TRUE
 
 /**

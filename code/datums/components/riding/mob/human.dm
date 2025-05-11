@@ -11,6 +11,12 @@
 /datum/component/riding_filter/mob/human/check_mount_attempt(mob/M, buckle_flags, mob/user, semantic)
 	if(!ishuman(M))
 		return FALSE		// nah
+	var/mob/living/carbon/human/H = parent
+	var/saddle = H.item_by_slot_id(SLOT_ID_BACK)
+	if(saddle && istype(saddle, /obj/item/storage/backpack/saddlebag_common))
+		rider_offhands_needed_piggyback = FALSE
+	else
+		rider_offhands_needed_piggyback = TRUE
 	return ..()
 
 /datum/component/riding_filter/mob/human/rider_offhands_needed(mob/rider, semantic)
@@ -39,16 +45,35 @@
 		list(8, 6, -1, null)
 	)
 	rider_offset_format = CF_RIDING_OFFSETS_DIRECTIONAL
+	var/taur_handling = FALSE
+
+/datum/component/riding_handler/mob/human/Initialize()
+	. = ..()
+	if(. == COMPONENT_INCOMPATIBLE)
+		return
+	var/mob/living/carbon/human/H = parent
+	taur_handling = isTaurTail(H.tail_style)
+
 
 /datum/component/riding_handler/mob/human/rider_offsets(mob/rider, pos, semantic, list/default, dir)
+	. = ..()
+	if(taur_handling)//Already centering on it
+		.[1] = 0
+		.[2] = 3 //Also don't climb too high
 	if(semantic == BUCKLE_SEMANTIC_HUMAN_FIREMAN)
-		. = default.Copy()
 		.[1] = -2
 		.[2] = 6
 		switch(dir)
 			if(NORTH)
 				.[3] = -1
-			else
+			if(EAST)
+				if(taur_handling)
+					.[1] = 6 //8 to remove the taur offset, the -2 of the fireman carry
+			if(SOUTH)
 				.[3] = 1
-	else
-		return ..()
+			if(WEST)
+				if(taur_handling)
+					.[1] = -10
+
+/datum/component/riding_handler/mob/human/controllable
+	riding_handler_flags = CF_RIDING_HANDLER_EPHEMERAL|CF_RIDING_HANDLER_IS_CONTROLLABLE
