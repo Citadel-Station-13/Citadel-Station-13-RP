@@ -30023,6 +30023,17 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/endeavour/civillian/evastorage)
+"wtX" = (
+/obj/structure/cable/cyan{
+	icon_state = "0-2"
+	},
+/obj/machinery/power/smes/buildable{
+	charge = 15000;
+	cur_coils = 3
+	},
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled,
+/area/shuttle/excursion/general)
 "wup" = (
 /obj/machinery/atmospherics/pipe/tank/phoron{
 	volume = 15000
@@ -34430,7 +34441,7 @@ jNg
 jNg
 jNg
 jNg
-aAL
+xRj
 iOs
 uWT
 vqM
@@ -36367,7 +36378,7 @@ xRj
 dkX
 dkX
 cHu
-ihi
+qLH
 quY
 quY
 eNZ
@@ -36562,7 +36573,7 @@ dkX
 dkX
 ihi
 ihi
-quY
+eNZ
 eNZ
 eNZ
 eNZ
@@ -36756,7 +36767,7 @@ dkX
 dkX
 ihi
 cBN
-quY
+eNZ
 eNZ
 eNZ
 lOV
@@ -36949,7 +36960,7 @@ dkX
 dkX
 dkX
 ihi
-cBN
+quY
 quY
 fjB
 eNZ
@@ -38502,7 +38513,7 @@ kbw
 mKR
 waV
 quY
-jzd
+wtX
 jzd
 jzd
 jzd
@@ -38696,8 +38707,8 @@ sxN
 nSW
 eUz
 bdP
-rqq
-dYq
+scX
+scX
 scX
 scX
 scX
@@ -38889,16 +38900,16 @@ qEL
 mfJ
 nZt
 hvo
-rjf
-sbD
 bdP
+rqq
+dYq
+scX
+scX
 scX
 scX
 scX
 scX
 bdP
-sbD
-qFo
 ihi
 qLH
 rGD
@@ -39083,16 +39094,16 @@ mFi
 uzH
 nSW
 ihi
-vIY
-vIY
+rjf
+sbD
 bdP
 eWE
 eWE
 eWE
 eWE
 bdP
-vIY
-vIY
+sbD
+qFo
 ihi
 qLH
 sQi
@@ -39277,16 +39288,16 @@ mFi
 dpf
 hgT
 gwu
+vIY
+vIY
 tmp
 tmp
 tmp
 tmp
 tmp
 tmp
-tmp
-tmp
-tmp
-tmp
+vIY
+vIY
 gjT
 qLH
 xlZ
