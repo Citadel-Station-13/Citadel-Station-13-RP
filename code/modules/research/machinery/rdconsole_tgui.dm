@@ -317,12 +317,11 @@
 	usr.set_machine(src)
 
 	switch(action)
-		if("search")
-			search = params["search"]
-			push_ui_data(data = list(
-				"lathe_designs" = tgui_GetProtolatheDesigns(linked_lathe, builder_page),
-				"imprinter_designs" = tgui_GetImprinterDesigns(linked_imprinter, builder_page)
-			))
+		if("access_lathe")
+			our_cool_ass_lathe.ui_interact(usr, parent_ui = ui)
+			return TRUE
+		if("access_imprinter")
+			our_cool_ass_imprinter.ui_interact(usr, parent_ui = ui)
 			return TRUE
 		if("design_page")
 			if(params["reset"])
@@ -330,16 +329,6 @@
 			else
 				design_page = max(design_page + (1 * params["reverse"]), 0)
 			push_ui_data(data = list("designs" = tgui_GetDesignInfo(design_page)))
-			return TRUE
-		if("builder_page")
-			if(params["reset"])
-				builder_page = 0
-			else
-				builder_page = max(builder_page + (1 * params["reverse"]), 0)
-			push_ui_data(data = list(
-				"lathe_designs" = tgui_GetProtolatheDesigns(linked_lathe, builder_page),
-				"imprinter_designs" = tgui_GetImprinterDesigns(linked_imprinter, builder_page)
-			))
 			return TRUE
 
 		if("updt_tech") //Update the research holder with information from the technology disk.
@@ -494,88 +483,6 @@
 
 		if("togglesync") //Prevents the console from being synced by other consoles. Can still send data.
 			sync = !sync
-			return TRUE
-
-		if("build") //Causes the Protolathe to build something.
-			if(linked_lathe)
-				var/datum/prototype/design/being_built = null
-				for(var/datum/prototype/design/D in files.legacy_all_design_datums())
-					if(D.id == params["build"])
-						being_built = D
-						break
-				if(being_built)
-					linked_lathe.addToQueue(being_built)
-				return TRUE
-
-		if("buildfive") //Causes the Protolathe to build 5 of something.
-			if(linked_lathe)
-				var/datum/prototype/design/being_built = null
-				for(var/datum/prototype/design/D in files.legacy_all_design_datums())
-					if(D.id == params["build"])
-						being_built = D
-						break
-				if(being_built)
-					for(var/i = 1 to 5)
-						linked_lathe.addToQueue(being_built)
-				return TRUE
-
-		if("imprint") //Causes the Circuit Imprinter to build something.
-			if(linked_imprinter)
-				var/datum/prototype/design/being_built = null
-				for(var/datum/prototype/design/D in files.legacy_all_design_datums())
-					if(D.id == params["imprint"])
-						being_built = D
-						break
-				if(being_built)
-					linked_imprinter.addToQueue(being_built)
-				return TRUE
-
-		if("disposeI")  //Causes the circuit imprinter to dispose of a single reagent (all of it)
-			if(!linked_imprinter)
-				return
-			linked_imprinter.reagents.del_reagent(params["dispose"])
-			return TRUE
-
-		if("disposeallI") //Causes the circuit imprinter to dispose of all it's reagents.
-			if(!linked_imprinter)
-				return
-			linked_imprinter.reagents.clear_reagents()
-			return TRUE
-
-		if("removeI")
-			if(!linked_imprinter)
-				return
-			linked_imprinter.removeFromQueue(text2num(params["removeI"]))
-			return TRUE
-
-		if("imprinter_ejectsheet") //Causes the imprinter to eject a sheet of material
-			if(!linked_imprinter)
-				return
-			linked_imprinter.eject(params["imprinter_ejectsheet"], text2num(params["amount"]))
-			return TRUE
-
-		if("disposeP")  //Causes the protolathe to dispose of a single reagent (all of it)
-			if(!linked_lathe)
-				return
-			linked_lathe.reagents.del_reagent(params["dispose"])
-			return TRUE
-
-		if("disposeallP") //Causes the protolathe to dispose of all it's reagents.
-			if(!linked_lathe)
-				return
-			linked_lathe.reagents.clear_reagents()
-			return TRUE
-
-		if("removeP")
-			if(!linked_lathe)
-				return
-			linked_lathe.removeFromQueue(text2num(params["removeP"]))
-			return TRUE
-
-		if("lathe_ejectsheet") //Causes the protolathe to eject a sheet of material
-			if(!linked_lathe)
-				return
-			linked_lathe.eject(params["lathe_ejectsheet"], text2num(params["amount"]))
 			return TRUE
 
 		if("find_device") //The R&D console looks for devices nearby to link up with.

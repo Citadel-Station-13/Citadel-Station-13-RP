@@ -1,7 +1,6 @@
-import { toTitleCase } from 'common/string';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, Tabs, Input, NumberInput, Table, Divider } from "../components";
+import { Box, Button, LabeledList, Section, Tabs, Input, Table } from "../components";
 import { Window } from '../layouts';
 
 const ResearchConsoleViewResearch = (props, context) => {
@@ -412,7 +411,7 @@ const ResearchConsoleDestructiveAnalyzer = (props, context) => {
     </Section>
   );
 };
-
+/*
 const ResearchConsoleBuildMenu = (props, context) => {
   const { act, data } = useBackend(context);
 
@@ -486,7 +485,7 @@ const ResearchConsoleBuildMenu = (props, context) => {
   );
 };
 
-/* Lathe + Circuit Imprinter all in one */
+// Lathe + Circuit Imprinter all in one
 const ResearchConsoleConstructor = (props, context) => {
   const { act, data } = useBackend(context);
 
@@ -719,7 +718,7 @@ const ResearchConsoleConstructor = (props, context) => {
     </Section>
   );
 };
-
+*/
 const ResearchConsoleSettings = (props, context) => {
   const { act, data } = useBackend(context);
 
@@ -835,13 +834,16 @@ const ResearchConsoleSettings = (props, context) => {
   );
 };
 
-const menus = [
+/* These need to open child UIs.
   { name: "Protolathe", icon: "wrench", template: <ResearchConsoleConstructor name="Protolathe" /> },
   {
     name: "Circuit Imprinter",
     icon: "digital-tachograph",
     template: <ResearchConsoleConstructor name="Circuit Imprinter" />,
   },
+*/
+const menus = [
+
   { name: "Destructive Analyzer", icon: "eraser", template: <ResearchConsoleDestructiveAnalyzer /> },
   { name: "Settings", icon: "cog", template: <ResearchConsoleSettings /> },
   { name: "Research List", icon: "flask", template: <ResearchConsoleViewResearch /> },
