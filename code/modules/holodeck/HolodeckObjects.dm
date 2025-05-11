@@ -143,7 +143,7 @@
 		playsound(target.loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 		target.visible_message("<font color='red'><B>[user] has attempted to punch [target]!</B></font>")
 		return TRUE
-	var/obj/item/organ/external/affecting = target.get_organ(ran_zone(user.zone_sel.selecting))
+	var/obj/item/organ/external/affecting = target.legacy_organ_by_zone(ran_zone(user.zone_sel.selecting))
 	var/armor_block = target.run_armor_check(affecting, "melee")
 	var/armor_soak = target.get_armor_soak(affecting, "melee")
 

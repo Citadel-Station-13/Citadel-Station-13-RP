@@ -1891,7 +1891,7 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		H.visible_message("<span class='warning'>A screeching creature bursts out of [M]'s chest!</span>")
-		var/obj/item/organ/external/organ = H.get_organ(BP_TORSO)
+		var/obj/item/organ/external/organ = H.legacy_organ_by_zone(BP_TORSO)
 		organ?.inflict_bodypart_damage(
 			brute = 50,
 			weapon_descriptor = "bursting",

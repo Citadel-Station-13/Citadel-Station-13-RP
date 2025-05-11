@@ -131,7 +131,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 
 	if(user.species.infect_wounds)		//Creates a pre-damaged, pre-infected wound. As nasty as this code.
 		if(prob(infected_wound_probability))
-			var/obj/item/organ/external/affecting = target.get_organ(zone)
+			var/obj/item/organ/external/affecting = target.legacy_organ_by_zone(zone)
 			var/attack_message
 			var/datum/wound/W
 			if(damage_mode & DAMAGE_MODE_EDGE)
@@ -145,12 +145,12 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 			target.visible_message("<span class='danger'><i>[user] [attack_message]</i></span>")
 
 /datum/unarmed_attack/proc/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
-	var/obj/item/organ/external/affecting = target.get_organ(zone)
+	var/obj/item/organ/external/affecting = target.legacy_organ_by_zone(zone)
 	user.visible_message("<span class='warning'>[user] [pick(attack_verb_legacy)] [target] in the [affecting.name]!</span>")
 	playsound(user.loc, attack_sound, 25, 1, -1)
 
 /datum/unarmed_attack/proc/handle_eye_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target)
-	var/obj/item/organ/internal/eyes/eyes = target.internal_organs_by_name[O_EYES]
+	var/obj/item/organ/internal/eyes/eyes = target.keyed_organs[ORGAN_KEY_EYES]
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	var/datum/gender/TT = GLOB.gender_datums[target.get_visible_gender()]
 	if(eyes)
@@ -191,7 +191,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	damage_tier = MELEE_TIER_UNARMED_FISTS
 
 /datum/unarmed_attack/punch/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
-	var/obj/item/organ/external/affecting = target.get_organ(zone)
+	var/obj/item/organ/external/affecting = target.legacy_organ_by_zone(zone)
 	var/organ = affecting.name
 
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
@@ -247,15 +247,17 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	if (user.legcuffed)
 		return FALSE
 
-	if(!(zone in list("l_leg", "r_leg", "l_foot", "r_foot", BP_GROIN)))
+	var/static/list/valid_zones = list(
+		TARGET_ZONE_LEFT_LEG,
+		TARGET_ZONE_LEFT_FOOT,
+		TARGET_ZONE_RIGHT_LEG,
+		TARGET_ZONE_RIGHT_FOOT,
+		TARGET_ZONE_GROIN,
+	)
+	if(!(zone in valid_zones))
 		return FALSE
 
-	var/obj/item/organ/external/E = user.organs_by_name["l_foot"]
-	if(E && !E.is_stump())
-		return TRUE
-
-	E = user.organs_by_name["r_foot"]
-	if(E && !E.is_stump())
+	if(user.get_organ_for_zone(TARGET_ZONE_LEFT_FOOT) || user.get_organ_for_zone(TARGET_ZONE_RIGHT_FOOT))
 		return TRUE
 
 	return FALSE
@@ -267,7 +269,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	return damage + max(0, shoes ? shoes.damage_force - 5 : 0)
 
 /datum/unarmed_attack/kick/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
-	var/obj/item/organ/external/affecting = target.get_organ(zone)
+	var/obj/item/organ/external/affecting = target.legacy_organ_by_zone(zone)
 	var/datum/gender/TT = GLOB.gender_datums[target.get_visible_gender()]
 	var/organ = affecting.name
 
@@ -312,7 +314,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	return damage + max(0, shoes ? shoes.damage_force - 5 : 0)
 
 /datum/unarmed_attack/stomp/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
-	var/obj/item/organ/external/affecting = target.get_organ(zone)
+	var/obj/item/organ/external/affecting = target.legacy_organ_by_zone(zone)
 	var/organ = affecting.name
 	var/obj/item/clothing/shoes = user.shoes
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]

@@ -52,19 +52,7 @@
 		/mob/living/carbon/human/proc/exit_vr,
 	)
 
-	has_organ = list(
-		O_HEART     = /obj/item/organ/internal/heart/replicant/rage,
-		O_LUNGS     = /obj/item/organ/internal/lungs/replicant/mending,
-		O_VOICE     = /obj/item/organ/internal/voicebox/replicant,
-		O_LIVER     = /obj/item/organ/internal/liver/replicant,
-		O_KIDNEYS   = /obj/item/organ/internal/kidneys/replicant,
-		O_BRAIN     = /obj/item/organ/internal/brain/replicant,
-		O_EYES      = /obj/item/organ/internal/eyes/replicant,
-		O_AREJECT   = /obj/item/organ/internal/immunehub/replicant,
-		O_VRLINK    = /obj/item/organ/internal/brainmirror,
-		O_STOMACH   = /obj/item/organ/internal/stomach,
-		O_INTESTINE = /obj/item/organ/internal/intestine,
-	)
+	biology = /datum/biology/organic/replicant
 
 /datum/species/shapeshifter/replicant/alpha
 	name = SPECIES_REPLICANT_ALPHA
@@ -89,20 +77,11 @@
 		/mob/living/carbon/human/proc/acidspit,
 	)
 
+	use_internal_organs = list(
+	)
 	has_organ = list(
-		O_HEART     = /obj/item/organ/internal/heart/replicant,
-		O_LUNGS     = /obj/item/organ/internal/lungs/replicant,
-		O_VOICE     = /obj/item/organ/internal/voicebox/replicant,
-		O_LIVER     = /obj/item/organ/internal/liver/replicant,
-		O_KIDNEYS   = /obj/item/organ/internal/kidneys/replicant,
-		O_BRAIN     = /obj/item/organ/internal/brain/replicant,
-		O_EYES      = /obj/item/organ/internal/eyes/replicant,
-		O_AREJECT   = /obj/item/organ/internal/immunehub/replicant,
-		O_PLASMA    = /obj/item/organ/internal/xenos/plasmavessel/replicant,
-		O_ACID      = /obj/item/organ/internal/xenos/acidgland/replicant,
-		O_VRLINK    = /obj/item/organ/internal/brainmirror,
-		O_STOMACH   = /obj/item/organ/internal/stomach,
-		O_INTESTINE = /obj/item/organ/internal/intestine
+		O_PLASMA    = /obj/item/organ/internal/xenomorph/plasmavessel/replicant,
+		O_ACID      = /obj/item/organ/internal/xenomorph/acidgland/replicant,
 		)
 
 /datum/species/shapeshifter/replicant/beta
@@ -118,19 +97,9 @@
 		LANGUAGE_ID_DIONA_HIVEMIND
 	)
 
+	use_internal_organs = list(
+	)
 	has_organ = list(
-		O_HEART     = /obj/item/organ/internal/heart/replicant/rage,
-		O_LUNGS     = /obj/item/organ/internal/lungs/replicant/mending,
-		O_VOICE     = /obj/item/organ/internal/voicebox/replicant,
-		O_LIVER     = /obj/item/organ/internal/liver/replicant,
-		O_KIDNEYS   = /obj/item/organ/internal/kidneys/replicant,
-		O_BRAIN     = /obj/item/organ/internal/brain/replicant/torso,
-		O_EYES      = /obj/item/organ/internal/eyes/replicant,
-		O_AREJECT   = /obj/item/organ/internal/immunehub/replicant,
-		O_VENTC     = /obj/item/organ/internal/metamorphgland/replicant,
-		O_PLASMA    = /obj/item/organ/internal/xenos/plasmavessel/replicant,
-		O_RESIN     = /obj/item/organ/internal/xenos/resinspinner/replicant,
-		O_VRLINK    = /obj/item/organ/internal/brainmirror,
-		O_STOMACH   = /obj/item/organ/internal/stomach,
-		O_INTESTINE = /obj/item/organ/internal/intestine,
+		O_PLASMA    = /obj/item/organ/internal/xenomorph/plasmavessel/replicant,
+		O_RESIN     = /obj/item/organ/internal/xenomorph/resinspinner/replicant,
 	)

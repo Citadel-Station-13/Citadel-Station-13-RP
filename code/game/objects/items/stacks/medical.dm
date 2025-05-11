@@ -35,7 +35,7 @@
 
 	if (istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/affecting = H.get_organ(user.zone_sel.selecting)
+		var/obj/item/organ/external/affecting = H.legacy_organ_by_zone(user.zone_sel.selecting)
 
 		if(!affecting)
 			to_chat(user, "<span class='warning'>No body part there to work on!</span>")
@@ -106,7 +106,7 @@
 
 	if (istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/affecting = H.get_organ(user.zone_sel.selecting)
+		var/obj/item/organ/external/affecting = H.legacy_organ_by_zone(user.zone_sel.selecting)
 
 		if(affecting.open)
 			to_chat(user, "<span class='notice'>The [affecting.name] is cut open, you'll need more than a bandage!</span>")
@@ -170,7 +170,7 @@
 
 	if (istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/affecting = H.get_organ(user.zone_sel.selecting)
+		var/obj/item/organ/external/affecting = H.legacy_organ_by_zone(user.zone_sel.selecting)
 
 		if(affecting.open)
 			to_chat(user, "<span class='notice'>The [affecting.name] is cut open, you'll need more than a bandage!</span>")
@@ -241,7 +241,7 @@
 
 	if (istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/affecting = H.get_organ(user.zone_sel.selecting)
+		var/obj/item/organ/external/affecting = H.legacy_organ_by_zone(user.zone_sel.selecting)
 
 		if(affecting.open)
 			to_chat(user, "<span class='notice'>The [affecting.name] is cut open, you'll need more than a bandage!</span>")
@@ -282,7 +282,7 @@
 
 	if (istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/affecting = H.get_organ(user.zone_sel.selecting)
+		var/obj/item/organ/external/affecting = H.legacy_organ_by_zone(user.zone_sel.selecting)
 
 		if(affecting.open)
 			to_chat(user, "<span class='notice'>The [affecting.name] is cut open, you'll need more than a bandage!</span>")
@@ -346,7 +346,7 @@
 
 	if (istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/affecting = H.get_organ(user.zone_sel.selecting)
+		var/obj/item/organ/external/affecting = H.legacy_organ_by_zone(user.zone_sel.selecting)
 
 		if(affecting.open)
 			to_chat(user, "<span class='notice'>The [affecting.name] is cut open, you'll need more than a bandage!</span>")
@@ -390,7 +390,7 @@
 
 	if (istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/affecting = H.get_organ(user.zone_sel.selecting)
+		var/obj/item/organ/external/affecting = H.legacy_organ_by_zone(user.zone_sel.selecting)
 		var/limb = affecting.name
 		if(!(affecting.organ_tag in splintable_organs))
 			to_chat(user, "<span class='danger'>You can't use \the [src] to apply a splint there!</span>")
@@ -469,7 +469,7 @@
 
 	if (istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/affecting = H.get_organ(user.zone_sel.selecting)
+		var/obj/item/organ/external/affecting = H.legacy_organ_by_zone(user.zone_sel.selecting)
 
 		if(affecting.open)
 			to_chat(user, "<span class='notice'>The [affecting.name] is cut open, you'll need more than a salve!</span>")
@@ -537,7 +537,7 @@
 
 	if (istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/affecting = H.get_organ(user.zone_sel.selecting)
+		var/obj/item/organ/external/affecting = H.legacy_organ_by_zone(user.zone_sel.selecting)
 
 		if(affecting.open)
 			to_chat(user, "<span class='notice'>The [affecting.name] is cut open, you'll need more than a salve!</span>")

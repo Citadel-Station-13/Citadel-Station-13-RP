@@ -29,10 +29,6 @@
 			return
 		else
 			if(user.zone_sel.selecting == O_EYES)
-
-				if(!H.organs_by_name[BP_HEAD])
-					to_chat(user, "<span class='warning'>\The [H] doesn't have a head.</span>")
-					return
 				if(!H.has_eyes())
 					to_chat(user, "<span class='warning'>\The [H] doesn't have any eyes.</span>")
 					return
@@ -41,6 +37,9 @@
 					return
 				if(H.head && (H.head.body_cover_flags & FACE))
 					to_chat(user, "<span class='warning'>Remove their [H.head] first.</span>")
+					return
+				if(!H.has_slot(/datum/inventory_slot/inventory/glasses::id))
+					to_chat(user, SPAN_WARNING("There's nowhere to tape!"))
 					return
 				user.visible_message("<span class='danger'>\The [user] begins taping over \the [H]'s eyes!</span>")
 
@@ -59,9 +58,6 @@
 				if(!can_place)
 					return
 
-				if(!H || !src || !H.organs_by_name[BP_HEAD] || !H.has_eyes() || H.glasses || (H.head && (H.head.body_cover_flags & FACE)))
-					return
-
 				user.visible_message("<span class='danger'>\The [user] has taped up \the [H]'s eyes!</span>")
 				H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/blindfold/tape(H), SLOT_ID_GLASSES)
 				H.update_inv_glasses()
@@ -69,9 +65,6 @@
 				return
 
 			else if(user.zone_sel.selecting == O_MOUTH || user.zone_sel.selecting == BP_HEAD)
-				if(!H.organs_by_name[BP_HEAD])
-					to_chat(user, "<span class='warning'>\The [H] doesn't have a head.</span>")
-					return
 				if(!H.check_has_mouth())
 					to_chat(user, "<span class='warning'>\The [H] doesn't have a mouth.</span>")
 					return
@@ -80,6 +73,9 @@
 					return
 				if(H.head && (H.head.body_cover_flags & FACE))
 					to_chat(user, "<span class='warning'>Remove their [H.head] first.</span>")
+					return
+				if(!H.has_slot(/datum/inventory_slot/inventory/mask::id))
+					to_chat(user, SPAN_WARNING("There's nowhere to tape!"))
 					return
 				user.visible_message("<span class='danger'>\The [user] begins taping up \the [H]'s mouth!</span>")
 
@@ -96,9 +92,6 @@
 							can_place = 1
 
 				if(!can_place)
-					return
-
-				if(!H || !src || !H.organs_by_name[BP_HEAD] || !H.check_has_mouth() || (H.head && (H.head.body_cover_flags & FACE)))
 					return
 
 				user.visible_message("<span class='danger'>\The [user] has taped up \the [H]'s mouth!</span>")
