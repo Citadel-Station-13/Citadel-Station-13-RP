@@ -40,17 +40,30 @@
 
 //* Feedback (//)
 
-// todo: reowrk these awful ass feedback/message procs wtf
+/**
+ * Sends feedback by chat.
+ */
+
 
 /datum/event_args/actor/proc/chat_feedback(msg, atom/target)
 	performer.action_feedback(msg, target)
 	if(performer != initiator)
 		initiator.action_feedback(msg, target)
 
+/**
+ * Sends feedback by bubble text on the target entity.
+ * * A target entity is required.
+ */
 /datum/event_args/actor/proc/bubble_feedback(msg, atom/target)
 	performer.bubble_action_feedback(msg, target)
 	if(performer != initiator)
 		initiator.bubble_action_feedback(msg, target)
+
+// todo: reowrk these awful ass feedback/message procs below wtf
+
+// proposal:
+// visible_feedback(visible, audible, self, range, target)
+// visible_proximity_feedback(visible_far, visible_near, audible_far, audible_near, self, range_far, range_near, target)
 
 /**
  * It is highly recommended to use named parameters with this.

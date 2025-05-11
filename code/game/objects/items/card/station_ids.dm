@@ -1,3 +1,10 @@
+/**
+ * Identification cards.
+ *
+ * * Can have access encoded into it
+ * * Can hvae a general set of data of its owner encoded into it
+ * * Can be linked to a /datum/economy_account to be used as a bank card.
+ */
 /obj/item/card/id
 	name = "identification card"
 	desc = "A card used to provide ID and determine access across the station."
@@ -6,12 +13,12 @@
 	item_state_slots = list(
 		SLOT_ID_WORN_ID = "id"
 	)
+	slot_flags = SLOT_ID | SLOT_EARS
 
 	/// Access levels held by this card.
 	var/list/access = list()
 	/// The name registered_name on the card.
 	var/registered_name = "Unknown"
-	slot_flags = SLOT_ID | SLOT_EARS
 
 	var/age = "\[UNSET\]"
 	var/dna_hash = "\[UNSET\]"
@@ -42,6 +49,9 @@
 	/// stored POINT_REDEMPTION_TYPE_* points; enum associated to number
 	/// * lazy list
 	var/list/stored_redemption_points
+
+	/// i don't know what this does but you have to deal with this now
+	var/money = 2000
 
 /obj/item/card/id/Initialize(mapload)
 	. = ..()
