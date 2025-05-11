@@ -34,27 +34,3 @@
 		payment.out_error_reason = "Unknown error. Contact a coder."
 		return TRUE
 	return TRUE
-
-#warn impl
-
-// currently just id cards
-
-/obj/item/card/id/attempt_dynamic_currency(mob/user, atom/movable/predicate, amount, force, prevent_types, list/data, silent, visual_range)
-	if(customer_account.security_level != 0)
-		if(!user)
-			data[DYNAMIC_PAYMENT_DATA_FAIL_REASON] = "Error: No credentials supplied."
-			return PAYMENT_DYNAMIC_ERROR
-		var/input_pin = input(user, "Enter pin code", "Vendor Transaction") as num|null
-		if(!input_pin)
-			data[DYNAMIC_PAYMENT_DATA_FAIL_REASON] = "Error: No credentials supplied."
-			return PAYMENT_DYNAMIC_ERROR
-		customer_account = attempt_account_access(associated_account_number, input_pin, 2)
-		if(!customer_account)
-			data[DYNAMIC_PAYMENT_DATA_FAIL_REASON] = "Error: Incorrect credentials."
-			return PAYMENT_DYNAMIC_ERROR
-	if(amount > customer_account.balance)
-		if(!force)
-			data[DYNAMIC_PAYMENT_DATA_FAIL_REASON] = "Error: Insufficient funds."
-			return PAYMENT_DYNAMIC_ERROR
-
-	return amount

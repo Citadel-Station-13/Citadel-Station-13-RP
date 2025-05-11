@@ -191,7 +191,7 @@
 						status_message = payment.out_error_reason
 						status_error = TRUE
 					if(PAYMENT_RESULT_INSUFFICIENT)
-						status_message = "Insufficient funds."
+						status_message = "Insufficient funds"
 						status_error = TRUE
 					else
 						status_message = "Unhandled payment error: [payment.out_payment_result]"

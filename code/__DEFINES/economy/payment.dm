@@ -22,6 +22,8 @@
 #define PAYMENT_OP_SILENT (1<<0)
 /// no message
 #define PAYMENT_OP_SUPPRESSED (1<<1)
+/// do not allow user input
+#define PAYMENT_OP_SKIP_USER_INPUT (1<<2)
 
 //* payment_result enums *//
 

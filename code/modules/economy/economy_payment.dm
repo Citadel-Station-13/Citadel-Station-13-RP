@@ -87,6 +87,14 @@
  * @return TRUE if handled, FALSE on unknown error
  */
 /datum/economy_payment/proc/lazy_execute_against_account(datum/economy_account/source_account)
+	if(source_account.balance < amount && !allow_partial)
+		out_payment_result = PAYMENT_RESULT_INSUFFICIENT
+		out_error_reason = "Insufficient funds in account"
+		return TRUE
+	if(source_account.security_lock)
+		out_payment_result = PAYMENT_RESULT_ERROR
+		out_error_reason = "Account is locked or suspended"
+		return TRUE
 
 	var/to_withdraw = max(0, allow_overdraft ? amount : min(amount, source_account.balance))
 
@@ -95,6 +103,21 @@
 	attempt_transaction.audit_terminal_as_unsafe_html = audit_terminal_name_as_unsafe_html
 	attempt_transaction.audit_peer_name_as_unsafe_html = audit_recipient_as_unsafe_html
 
-	#warn impl
+	if(send_to_account_number)
+		var/datum/economy_account/peer_account = SSeconomy.resolve_account(send_to_account_number)
+		if(!peer_account)
+			out_error_reason = "Receiving account could not be found or is disconnected"
+			out_payment_result = PAYMENT_RESULT_ERROR
+			return TRUE
+		if(peer_account.security_lock)
+			out_error_reason = "Receiving account is locked or suspended"
+			out_payment_result = PAYMENT_RESULT_ERROR
+			return TRUE
 
+		attempt_transaction.execute_transfer_transaction(source_account, peer_account)
+	else
+		attempt_transaction.execute_system_transaction(source_account)
+
+	out_amount_paid = to_withdraw
+	out_payment_result = PAYMENT_RESULT_SUCCESS
 	return TRUE

@@ -10,19 +10,21 @@
 
 	/// peer account number, if any
 	/// * only sourced / point-to-point / transfer transactions have this set
+	/// * 'amount' will be withdrawan (and given if negative)
 	var/acct_num_peer
 	/// target account number, if any
 	/// * non point-to-point transactions / system transactions will always have
 	///   the target account as this!
-	/// * 'amount' will be withdrawn
+	/// * 'amount' will be given (and withdrawan if negative)
 	#warn uhhh hmmm
+	#warn audit
 	var/acct_num_target
 
 	/// balance change to target
 	/// * if the peer is specified, this is, by default, the opposite change of target!
-	///   this means that if this is '50', it means source peer 50 and target gained 50
-	/// * confusing, i know.
-	var/amount = 0destination
+	///   this means that if this is '50', it means target gained 50 and peer lost 50.
+	#warn audit
+	var/amount = 0
 
 	//*                        auditing                 *//
 	//* these are fluff fields and may be falsified.    *//
@@ -82,6 +84,7 @@
 
 /**
  * Executes against an account
+ * * will runtime if target or peer is set and doesn't exist
  */
 /datum/economy_transaction/proc/execute_system_transaction(datum/economy_account/account)
 	#warn impl
@@ -89,7 +92,9 @@
 
 /**
  * Executes as a transfer from one account to another
+ * * will runtime if target or peer is set and doesn't exist
+ * * 'amount' will be transferred from peer to source
  */
-/datum/economy_transaction/proc/execute_transfer_transaction(datum/economy_account/from_account, datum/economy_account/to_account)
+/datum/economy_transaction/proc/execute_transfer_transaction(datum/economy_account/source_account, datum/economy_account/peer_account)
 	#warn impl
 	#warn set date / time to 'now'
