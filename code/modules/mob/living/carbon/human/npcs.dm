@@ -1,8 +1,8 @@
 /obj/item/clothing/under/punpun
 	name = "fancy uniform"
 	desc = "It looks like it was tailored for a monkey."
+	icon = 'icons/clothing/uniform/workwear/service/punpun.dmi'
 	icon_state = "punpun"
-	snowflake_worn_state = "punpun"
 	species_restricted = list(SPECIES_MONKEY)
 
 /mob/living/carbon/human/monkey/punpun/Initialize(mapload)
