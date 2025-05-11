@@ -38,11 +38,6 @@
 	if(resist_restraints())
 		return TRUE
 
-	if(isbelly(loc))
-		var/obj/belly/B = loc
-		B.relay_resist(src)
-		return TRUE
-
 	if(resist_a_rest())
 		return FALSE
 

@@ -83,15 +83,6 @@
 	aug_cooldown = 2 MINUTES
 
 /obj/item/organ/internal/augment/bioaugment/sprint_enhance/augment_action()
-	if(!owner)
-		return
-
-	if(aug_cooldown)
-		if(last_activate <= world.time + aug_cooldown)
-			last_activate = world.time
-		else
-			return
-
 	if(istype(owner, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = owner
 		H.add_modifier(/datum/modifier/sprinting, 1 MINUTES)
