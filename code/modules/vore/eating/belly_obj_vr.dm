@@ -523,7 +523,7 @@
 	. = TRUE //Sure are doing something unless
 	if (!(R in contents))
 		return FALSE // User is not in this belly
-	R.setClickCooldown(50)
+	R.setClickCooldownLegacy(50)
 	INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/belly,handle_resist), R)
 
 /obj/belly/proc/handle_resist(var/mob/living/R)
