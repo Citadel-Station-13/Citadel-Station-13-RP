@@ -5,7 +5,7 @@
 	var/mob/living/carbon/human/bob
 	var/mob/living/carbon/human/charlie
 	var/targetz = 5
-	var/datum/turf_reservation/reserved
+	var/datum/map_reservation/reserved
 
 /datum/unit_test/chain_pull_through_space/New()
 	..()

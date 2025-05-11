@@ -49,11 +49,11 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 /turf/proc/baseturf_core()
 	// todo: this is shitcode, pull it out on maploader refactor.
 	// this is very obviously a copypaste from ChangeTurf.
-	. = SSmapping.level_baseturf(z) || world.turf
+	. = SSmapping.level_get_baseturf(z) || world.turf
 	if(!ispath(.))
 		. = text2path(.)
 		if (!ispath(.))
-			warning("Z-level [z] has invalid baseturf '[SSmapping.level_baseturf(z)]'")
+			warning("Z-level [z] has invalid baseturf '[SSmapping.level_get_baseturf(z)]'")
 			. = world.turf
 	if(. == world.turf)		// no space/basic check, if you use space/basic in a map honestly get bent
 		if(istype(below(), /turf/simulated))
@@ -95,9 +95,9 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 			return
 		if(/turf/baseturf_bottom)
 			var/turf/below = below()
-			path = SSmapping.level_baseturf(z) || /turf/space
+			path = SSmapping.level_get_baseturf(z) || /turf/space
 			if(!ispath(path))
-				stack_trace("Z-level [z] has invalid baseturf '[SSmapping.level_baseturf(z)]'")
+				stack_trace("Z-level [z] has invalid baseturf '[SSmapping.level_get_baseturf(z)]'")
 				path = /turf/space
 			if(path == /turf/space)		// no space/basic check, if you use space/basic in a map honestly get bent
 				if(istype(below, /turf/simulated))
