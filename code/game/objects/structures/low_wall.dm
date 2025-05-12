@@ -11,6 +11,7 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 	/turf/simulated/wall,
 	)))
 
+// todo: either this file should be wall_frame or this structure should be /low_wall, not both
 /obj/structure/wall_frame
 	name = "low wall"
 	desc = "A low wall, with space to mount windows or grilles on top of it."
@@ -35,7 +36,6 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 	material_primary = MATERIAL_PART_DEFAULT
 	material_costs = SHEET_MATERIAL_AMOUNT * 2
 
-	var/paint_color
 	var/stripe_color
 	var/str
 	var/static/list/airlock_typecache
@@ -45,7 +45,6 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 	var/material_color = TRUE
 
 /obj/structure/wall_frame/prepainted
-	paint_color = COLOR_WALL_GUNMETAL
 	stripe_color = COLOR_WALL_GUNMETAL
 
 /obj/structure/wall_frame/Initialize(mapload, datum/prototype/material/material_like)

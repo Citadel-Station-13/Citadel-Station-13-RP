@@ -1405,7 +1405,7 @@
 	if(!isliving(usr) || !usr.canClick())
 		return
 
-	usr.setClickCooldown(20)
+	usr.setClickCooldownLegacy(20)
 
 	if(usr.stat > 0)
 		to_chat(usr, "You are unconcious and cannot do that!")
@@ -1624,11 +1624,9 @@
 //! Pixel Offsets
 /mob/living/carbon/human/get_centering_pixel_x_offset(dir)
 	. = ..()
-	// uh oh stinky
 	if(!isTaurTail(tail_style) || !(dir & (EAST|WEST)))
 		return
-	// groan
-	. += ((size_multiplier * icon_scale_x) - 1) * ((dir & EAST)? -16 : 16)
+	. += (size_multiplier * icon_scale_x) * ((dir & EAST)? 8 : -8)
 
 /mob/living/carbon/human/ClickOn(var/atom/A)
 	if(ab_handler?.process_click(src, A))

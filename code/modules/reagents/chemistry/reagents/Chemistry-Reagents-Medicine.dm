@@ -1062,7 +1062,7 @@
 	for(var/datum/reagent/ethanol/ethanol_filter in M.ingested.get_reagent_datums())
 		M.ingested.remove_reagent(ethanol_filter.id, removed * 30)
 	for(var/datum/reagent/ethanol/ethanol_filter in M.bloodstr.get_reagent_datums())
-		M.ingested.remove_reagent(ethanol_filter.id, removed * 20)
+		M.bloodstr.remove_reagent(ethanol_filter.id, removed * 20)
 
 /datum/reagent/hyronalin
 	name = "Hyronalin"

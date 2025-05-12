@@ -78,7 +78,7 @@ DEFINE_BITFIELD(inventory_slot_flags, list(
 
 DEFINE_BITFIELD_NEW(inv_slot_filter, list(
 	/datum/inventory_slot = list(
-		NAMEOF_STATIC(/datum/inventory_slot, inventory_filter_flags),
+		NAMEOF_TYPE(/datum/inventory_slot, inventory_filter_flags),
 	),
 ), list(
 	BITFIELD_NEW("Unknown", INV_FILTER_UNKNOWN),

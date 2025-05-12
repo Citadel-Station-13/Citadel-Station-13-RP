@@ -19,7 +19,7 @@
 /turf/simulated/wall/r_wall,
 /area/submap/skyplanet/poi/bio)
 "eD" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /turf/template_noop,
 /area/submap/skyplanet/poi/bio)
 "fH" = (
@@ -83,7 +83,7 @@
 /turf/simulated/floor/tiled/monotechmaint,
 /area/submap/skyplanet/poi/bio)
 "pX" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/outdoors/ash_sand,
 /area/submap/skyplanet/poi/bio)
 "qX" = (
@@ -210,11 +210,6 @@
 "GM" = (
 /turf/simulated/floor/outdoors/ash_sand,
 /area/template_noop)
-"GQ" = (
-/obj/spawner/window/low_wall/full/firelocks,
-/obj/spawner/window/low_wall/full/firelocks,
-/turf/simulated/floor/outdoors/ash_sand,
-/area/submap/skyplanet/poi/bio)
 "Ih" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 8
@@ -258,11 +253,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monotechmaint,
-/area/submap/skyplanet/poi/bio)
-"OX" = (
-/obj/spawner/window/low_wall/full/firelocks,
-/obj/spawner/window/low_wall/full/firelocks,
-/turf/template_noop,
 /area/submap/skyplanet/poi/bio)
 "QP" = (
 /obj/effect/floor_decal/grass_edge{
@@ -333,7 +323,7 @@ Az
 Az
 GM
 GM
-OX
+eD
 eD
 eD
 eD
@@ -396,7 +386,7 @@ Az
 "}
 (5,1,1) = {"
 GM
-GQ
+pX
 pL
 Au
 kE

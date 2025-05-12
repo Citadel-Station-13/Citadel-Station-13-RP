@@ -14,6 +14,7 @@
 	lrange = 2
 	lpower = 2
 	lcolor = "#0000FF"
+	can_combine = FALSE
 
 	passive_parry = /datum/passive_parry{
 		parry_chance_default = 60;
@@ -26,7 +27,7 @@
 		var/obj/O = target
 		O.emp_act(3) // A weaker severity is used because this has infinite uses.
 		playsound(get_turf(O), 'sound/effects/EMPulse.ogg', 100, 1)
-		user.setClickCooldown(user.get_attack_speed(src)) // A lot of objects don't set click delay.
+		user.setClickCooldownLegacy(user.get_attack_speed_legacy(src)) // A lot of objects don't set click delay.
 	return ..()
 
 /obj/item/melee/transforming/energy/sword/ionic_rapier/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)

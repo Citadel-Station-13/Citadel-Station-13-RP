@@ -1,4 +1,4 @@
-/datum/soundbyte/grouped/sparks
+/datum/soundbyte/sparks
 	name = "Explosion"
 	alias = SFX_ALIAS_SPARKS
 	is_sfx = TRUE

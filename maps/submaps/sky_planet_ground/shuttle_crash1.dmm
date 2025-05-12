@@ -23,7 +23,7 @@
 /turf/template_noop,
 /area/submap/skyplanet/poi/shuttlecrash)
 "gx" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/spawner/window/low_wall/borosillicate/reinforced,
 /obj/machinery/door/blast/regular,
 /turf/simulated/floor/plating,
 /area/submap/skyplanet/poi/shuttlecrash)
@@ -70,7 +70,7 @@
 /turf/template_noop,
 /area/submap/skyplanet/poi/shuttlecrash)
 "pl" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/spawner/window/low_wall/borosillicate/reinforced,
 /obj/machinery/door/blast/regular/open,
 /turf/simulated/floor/plating,
 /area/submap/skyplanet/poi/shuttlecrash)
@@ -232,7 +232,7 @@
 /area/template_noop)
 "Zv" = (
 /obj/machinery/door/blast/regular,
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/spawner/window/low_wall/borosillicate/reinforced,
 /turf/template_noop,
 /area/submap/skyplanet/poi/shuttlecrash)
 

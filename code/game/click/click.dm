@@ -98,7 +98,7 @@
 		return M.click_action(A, src, params)
 
 	if(restrained())
-		setClickCooldown(10)
+		setClickCooldownLegacy(10)
 		RestrainedClickOn(A)
 		return 1
 
@@ -147,7 +147,7 @@
 		trigger_aiming(TARGET_CAN_CLICK)
 		return
 
-/mob/proc/setClickCooldown(var/timeout)
+/mob/proc/setClickCooldownLegacy(var/timeout)
 	next_move = max(world.time + timeout, next_move)
 
 /mob/proc/canClick()
@@ -307,7 +307,7 @@
 	return
 
 /mob/living/LaserEyes(atom/A, params)
-	setClickCooldown(4)
+	setClickCooldownLegacy(4)
 	var/turf/T = get_turf(src)
 
 	var/obj/projectile/beam/LE = new (T)

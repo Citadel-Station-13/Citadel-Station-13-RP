@@ -21,6 +21,7 @@
 #define LANGUAGE_MINBUS "Minbus"
 #define LANGUAGE_NEAERA "Neaeranae"
 #define LANGUAGE_OCCULT "Occult"
+#define LANGUAGE_PHORONOID_CONLANG "Phoronoid Conlang"
 #define LANGUAGE_ROOTGLOBAL "Global Rootspeak"
 #define LANGUAGE_ROOTLOCAL "Local Rootspeak"
 #define LANGUAGE_SAGARU "Sagaru"

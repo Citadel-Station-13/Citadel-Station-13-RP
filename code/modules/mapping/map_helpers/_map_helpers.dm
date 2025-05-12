@@ -12,21 +12,19 @@
 /obj/map_helper
 	icon = 'icons/mapping/helpers/mapping_helpers.dmi'
 	icon_state = ""
+	plane = DEBUG_PLANE
+	layer = DEBUG_LAYER_MAP_HELPERS
 
 	/// overrides [late]
 	/// makes us register as a map initialization hook, which fires before atom init.
-	/// you have to qdel self if you use this! it will not be automatically done if so.
+	/// * you have to qdel self if you use this! it will not be automatically done if so.
 	var/early = FALSE
 	/// use LateInitialize instead of Initialize
-	/// this gets rid of the automatic qdel self behavior so you have to do it yourself.
+	/// * this gets rid of the automatic qdel self behavior so you have to do it yourself.
 	var/late = FALSE
 
 	/// preloading instance fired
 	var/was_in_mapload = FALSE
-
-/obj/map_helper/New()
-	pass()
-	return ..()
 
 /obj/map_helper/preloading_instance(datum/dmm_context/context)
 	. = ..()
@@ -35,11 +33,12 @@
 		hook_map_initializations(context)
 
 /obj/map_helper/Initialize(mapload)
+	SHOULD_CALL_PARENT(FALSE)
 	var/let_me_live = FALSE
 	if(!was_in_mapload)
 		message_admins("a datum with map initializations was created. if this was you, you are in charge of invoking map_initializations() on it. this is not called by default outside of mapload as many things using the hook are highly destructive.")
 		let_me_live = TRUE
-	. = ..()
+	atom_flags |= ATOM_INITIALIZED
 	if(late)
 		return INITIALIZE_HINT_LATELOAD // fire LateInitialize()
 	else if(early)

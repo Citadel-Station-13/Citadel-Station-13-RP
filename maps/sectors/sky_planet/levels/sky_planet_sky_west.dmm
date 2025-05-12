@@ -2017,7 +2017,7 @@
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/sector/sky_planet/station_city/street)
 "Sz" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/station_city/street)
 "SH" = (
