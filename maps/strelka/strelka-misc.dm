@@ -65,7 +65,6 @@
 
 	maxHealth = 25
 	health = 25
-	movement_cooldown = 0
 	movement_sound = 'sound/effects/servostep.ogg'
 
 	pass_flags = ATOM_PASS_TABLE
