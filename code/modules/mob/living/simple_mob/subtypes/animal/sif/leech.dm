@@ -1,6 +1,5 @@
 // Small creatures that will embed themselves in unsuspecting victim's bodies, drink their blood, and/or eat their organs. Steals some things from borers.
 
-#warn all these
 /datum/armor/physiology/sif_leach
 	melee = 0.1
 	melee_soak = 5
@@ -11,7 +10,6 @@
 	bomb = 0.1
 	bio = 1.0
 	rad = 1.0
-
 
 /datum/category_item/catalogue/fauna/iceleech
 	name = "Sivian Fauna - River Leech"

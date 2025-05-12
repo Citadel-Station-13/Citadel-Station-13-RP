@@ -37,7 +37,6 @@
 /obj/projectile/bullet/pistol/medium/ap
 	damage_force = 20
 	damage_tier = 4.25
-	armor_penetration = 15
 
 /obj/projectile/bullet/pistol/medium/hp
 	damage_force = 30

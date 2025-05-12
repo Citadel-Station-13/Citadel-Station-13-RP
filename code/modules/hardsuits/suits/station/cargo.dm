@@ -22,11 +22,13 @@
 		/obj/item/bluespace_radio,
 	)
 
-#warn all these
 /datum/armor/hardsuit/industrial
-	melee = 0.6
+	melee = 0.45
+	melee_tier = 4.5
 	bullet = 0.5
-	laser = 0.3
+	bullet_tier = 4
+	laser = 0.35
+	laser_tier = 3.75
 	energy = 0.2
 	bomb = 0.5
 	bio = 1.0

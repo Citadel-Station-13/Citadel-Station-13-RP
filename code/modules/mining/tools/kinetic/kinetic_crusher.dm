@@ -10,8 +10,6 @@
 	name = "proto-kinetic crusher"
 	desc = "An early design of the proto-kinetic accelerator, it is little more than an combination of various mining tools cobbled together, forming a high-tech club. \
 	While it is an effective mining tool, it did little to aid any but the most skilled and/or suicidal miners against local fauna."
-	damage_force = 0
-	damage_tier = MELEE_TIER_MEDIUM
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BACK
 	throw_force = 5

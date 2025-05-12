@@ -2,15 +2,19 @@
 #define ONLY_RETRACT 2
 #define SEAL_DELAY 30
 
-#warn all these
 /datum/armor/hardsuit
-	melee = 0.4
+	melee = 0.275
+	melee_tier = 3.5
 	bullet = 0.05
-	laser = 0.2
+	bullet_tier = 3
+	laser = 0.175
+	laser_tier = 3.5
 	energy = 0.05
 	bomb = 0.35
 	bio = 1.0
 	rad = 0.2
+	fire = 0.5
+	acid = 0.7
 
 /*
  * Defines the behavior of hardsuits/rigs/power armour.

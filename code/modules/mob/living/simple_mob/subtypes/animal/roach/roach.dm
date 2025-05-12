@@ -39,8 +39,10 @@
 		/datum/category_item/catalogue/fauna/roach/fuhrer
 		)
 
-#warn all these
 /datum/armor/physiology/roach
+	melee_tier = 3
+	bullet_tier = 3
+	laser_tier = 3
 	melee = 0.05
 	rad = 1.0
 
