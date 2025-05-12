@@ -158,7 +158,7 @@
 /obj/machinery/door/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
-	if(user.a_intent == INTENT_DISARM)
+	if(user.a_intent == INTENT_GRAB)
 		knock(user)
 		return ..()
 
