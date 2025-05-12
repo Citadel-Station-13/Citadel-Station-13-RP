@@ -290,7 +290,7 @@
 /obj/projectile/nt_isd/laser/rifle
 	name = "laser"
 	damage_force = 35
-	damage_tier = LASER_TIER_MEDIUM
+	damage_tier = 4
 
 /obj/projectile/nt_isd/laser/sidearm
 	name = "phaser blast"
@@ -301,7 +301,7 @@
 /obj/projectile/nt_isd/laser/multiphase
 	name = "focused laser"
 	damage_force = 35
-	damage_tier = 5
+	damage_tier = 4.75
 	fire_sound = /datum/soundbyte/guns/energy/laser_3/rifle
 
 /obj/projectile/nt_isd/laser/lance

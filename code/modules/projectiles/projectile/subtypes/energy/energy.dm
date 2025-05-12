@@ -176,7 +176,6 @@
 	name = "plasma pulse"
 	icon_state = "plasma_stun"
 	fire_sound = 'sound/weapons/blaster.ogg'
-	armor_penetration = 10
 	range = WORLD_ICON_SIZE * 4
 	damage_force = 5
 	agony = 55

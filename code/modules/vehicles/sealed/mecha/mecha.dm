@@ -1105,10 +1105,10 @@
 				src.visible_message("\The [A] bounces off \the [src] armor")
 				return
 
-			else if(O.armor_penetration < temp_minimum_penetration)	//If you don't have enough pen, you won't do full damage
-				src.occupant_message("<span class='notice'>\The [A] struggles to bypass \the [src] armor.</span>")
-				src.visible_message("\The [A] struggles to bypass \the [src] armor")
-				pass_damage_reduc_mod = temp_fail_penetration_value	//This will apply to reduce damage to 2/3 or 66% by default
+			// else if(O.damage_tier < temp_minimum_penetration)	//If you don't have enough pen, you won't do full damage
+			// 	src.occupant_message("<span class='notice'>\The [A] struggles to bypass \the [src] armor.</span>")
+			// 	src.visible_message("\The [A] struggles to bypass \the [src] armor")
+			// 	pass_damage_reduc_mod = temp_fail_penetration_value	//This will apply to reduce damage to 2/3 or 66% by default
 			else
 				src.occupant_message("<span class='notice'>\The [A] manages to pierce \the [src] armor.</span>")
 //				src.visible_message("\The [A] manages to pierce \the [src] armor")
@@ -1172,7 +1172,7 @@
 			src.visible_message("The [src.name] armor deflects\the [Proj]")
 			return PROJECTILE_IMPACT_BLOCKED
 
-		else if(Proj.armor_penetration < temp_minimum_penetration)	//If you don't have enough pen, you won't do full damage
+		else if((max(BULLET_TIER_DEFAULT - Proj.damage_tier, 0) * 25) < temp_minimum_penetration)	//If you don't have enough pen, you won't do full damage
 			src.occupant_message("<span class='notice'>\The [Proj] struggles to pierce \the [src] armor.</span>")
 			src.visible_message("\The [Proj] struggles to pierce \the [src] armor")
 			pass_damage_reduc_mod = temp_fail_penetration_value / 1.5	//This will apply to reduce damage to 2/3 or 66% by default
@@ -1304,7 +1304,7 @@
 		src.visible_message("\The [W] bounces off \the [src] armor")
 		return
 
-	else if(W.armor_penetration < temp_minimum_penetration)	//If you don't have enough pen, you won't do full damage
+	else if((max(BULLET_TIER_DEFAULT - W.damage_tier, 0) * 25)  < temp_minimum_penetration)	//If you don't have enough pen, you won't do full damage
 		src.occupant_message("<span class='notice'>\The [W] struggles to bypass \the [src] armor.</span>")
 		src.visible_message("\The [W] struggles to bypass \the [src] armor")
 		pass_damage_reduc_mod = temp_fail_penetration_value	//This will apply to reduce damage to 2/3 or 66% by default

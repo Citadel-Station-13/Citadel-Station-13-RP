@@ -19,7 +19,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	/// damage mode flags
 	var/damage_mode = NONE
 	/// damage tier
-	var/damage_tier = MELEE_TIER_UNARMED_DEFAULT
+	var/damage_tier = MELEE_TIER_DEFAULT
 	/// damage type
 	var/damage_type = DAMAGE_TYPE_BRUTE
 	/// damage flag
@@ -257,7 +257,6 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	attack_sound = 'sound/weapons/bite.ogg'
 	damage = 3
 	damage_mode = NONE
-	damage_tier = MELEE_TIER_UNARMED_FISTS
 
 /datum/melee_attack/unarmed/bite/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
 
@@ -275,7 +274,6 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	eye_attack_text_victim = "digits"
 	damage_add_low = 0
 	damage_add_high = 5
-	damage_tier = MELEE_TIER_UNARMED_FISTS
 
 /datum/melee_attack/unarmed/punch/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 	var/obj/item/organ/external/affecting = target.get_organ(zone)
