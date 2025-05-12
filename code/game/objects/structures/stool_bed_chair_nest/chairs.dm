@@ -354,7 +354,7 @@
 
 /obj/structure/bed/chair/update_layer()
 	// Corner east/west should be on top of mobs, any other state's north should be.
-	if((icon_state == "sofacorner" && ((dir & EAST) || (dir & WEST))) || (icon_state != "sofacorner" && (dir & NORTH)))
+	if((icon_state == "sofacorner" && ((dir & NORTH) || (dir & WEST))) || (icon_state != "sofacorner" && (dir & NORTH)))
 		plane = MOB_PLANE
 		layer = MOB_LAYER + 0.1
 	else
