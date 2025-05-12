@@ -2797,7 +2797,7 @@
 /area/engineering/atmos)
 "ha" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Underground 1"
+	RCon_tag = "Underground 1 - Main Bypass"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/engineering)
@@ -3659,7 +3659,7 @@
 /area/engineering/atmos/hallway)
 "jU" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Underground 1"
+	RCon_tag = "Underground 1 - Main Substation"
 	},
 /obj/structure/cable/green{
 	icon_state = "0-2"
@@ -14889,7 +14889,7 @@
 	dir = 5
 	},
 /obj/machinery/power/breakerbox{
-	RCon_tag = "Telecomms"
+	RCon_tag = "Underground 1 - Telecomms Substation Bypass"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
