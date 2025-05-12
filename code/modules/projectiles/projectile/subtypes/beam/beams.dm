@@ -58,7 +58,6 @@
 /obj/projectile/beam/heavylaser/cannon
 	damage_force = 60
 	damage_tier = 5
-	armor_penetration = 45
 	light_color = "#FF0D00"
 
 /obj/projectile/beam/xray
@@ -67,7 +66,6 @@
 	fire_sound = 'sound/weapons/eluger.ogg'
 	damage_force = 30
 	damage_tier = 5
-	armor_penetration = 50
 	light_color = "#00CC33"
 
 	legacy_muzzle_type = /obj/effect/projectile/muzzle/xray
@@ -199,7 +197,7 @@
 	icon_state = "xray"
 	fire_sound = 'sound/weapons/gauss_shoot.ogg'
 	damage_force = 60
-	armor_penetration = 10
+	damage_tier = 5
 	light_color = "#00CC33"
 
 	legacy_muzzle_type = /obj/effect/projectile/muzzle/xray
