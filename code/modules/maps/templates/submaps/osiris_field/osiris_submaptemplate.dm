@@ -200,12 +200,6 @@
 	cost = 3
 	allow_duplicates = FALSE
 
-/datum/map_template/submap/level_specific/osirisfield/maglev
-	name = "Maglev shutle"
-	suffix = "maglev_shuttle.dmm"
-	cost = -1
-	allow_duplicates = FALSE
-
 /datum/map_template/submap/level_specific/osirisfield/pirate1
 	name = "Pirate Shuttle"
 	suffix = "pirate_shuttle1.dmm"
@@ -240,17 +234,17 @@
 /datum/map_template/submap/level_specific/osirisfield/luxuryshuttle
 	name = "Colonial Liner"
 	suffix = "colonial_II.dmm"
-	cost = -1
+	cost = 2
 	allow_duplicates = FALSE
 
 /datum/map_template/submap/level_specific/osirisfield/battlestar
 	name = "Wrecked Mercenary Battlecruiser Andromeda"
 	suffix = "warship.dmm"
-	cost = -1
+	cost = 2
 	allow_duplicates = FALSE
 
 /datum/map_template/submap/level_specific/osirisfield/cargoravana
 	name = "Spacena Cargoravana"
 	suffix = "mobilehome.dmm"
-	cost = -1
+	cost = 2
 	allow_duplicates = FALSE
