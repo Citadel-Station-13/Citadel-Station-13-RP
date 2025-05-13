@@ -111,3 +111,27 @@
 	desc = "An all white one-piece that maintains modesty without sacrificing class."
 	icon = 'icons/clothing/uniform/casual/swimwear/swim_stream.dmi'
 	icon_state = "swim_stream"
+
+/obj/item/clothing/under/swimsuit/fluff/engineering
+	name = "Engineering Swimsuit"
+	desc = "It's an orange high visibility swimsuit worn by engineers. It lacks radiation, or any, shielding."
+	icon = 'icons/clothing/uniform/casual/swimwear/swimsuit_engineering.dmi'
+	icon_state = "swimsuit_engineering"
+
+/obj/item/clothing/under/swimsuit/fluff/science
+	name = "Science Swimsuit"
+	desc = "It's made of a special fiber that provides no protection whatsoever, but its hydrophobic. It has markings that denote the wearer as a scientist."
+	icon = 'icons/clothing/uniform/casual/swimwear/swimsuit_science.dmi'
+	icon_state = "swimsuit_science"
+
+/obj/item/clothing/under/swimsuit/fluff/security
+	name = "Security Swimsuit"
+	desc = "It's made of a slightly sturdier material than standard swimsuits, to allow for a more robust appearance."
+	icon = 'icons/clothing/uniform/casual/swimwear/swimsuit_security.dmi'
+	icon_state = "swimsuit_security"
+
+/obj/item/clothing/under/swimsuit/fluff/medical
+	name = "Medical Swimsuit"
+	desc = "It's made of a special fiber that provides no protection whatsoever, but its elastic. It has a cross on the back denoting that the wearer is trained medical personnel."
+	icon = 'icons/clothing/uniform/casual/swimwear/swimsuit_medical.dmi'
+	icon_state = "swimsuit_medical"

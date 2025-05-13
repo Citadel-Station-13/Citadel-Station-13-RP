@@ -219,34 +219,6 @@
 	desc = "Ankle coverings for digitigrade creatures. Blue!"
 	icon_state = "bluecuffs"
 
-/obj/item/clothing/under/swimsuit/fluff/
-	icon = 'icons/vore/custom_clothes_vr.dmi'
-	icon_override = 'icons/vore/custom_clothes_vr.dmi'
-	siemens_coefficient = 1
-
-/obj/item/clothing/under/swimsuit/fluff/engineering
-	name = "Engineering Swimsuit"
-	desc = "It's an orange high visibility swimsuit worn by engineers. It lacks radiation, or any, shielding."
-	icon_state = "swimsuit_engineering"
-	item_state = "swimsuit_engineering_mob"
-
-/obj/item/clothing/under/swimsuit/fluff/science
-	name = "Science Swimsuit"
-	desc = "It's made of a special fiber that provides no protection whatsoever, but its hydrophobic. It has markings that denote the wearer as a scientist."
-	icon_state = "swimsuit_science"
-	item_state = "swimsuit_science_mob"
-
-/obj/item/clothing/under/swimsuit/fluff/security
-	name = "Security Swimsuit"
-	desc = "It's made of a slightly sturdier material than standard swimsuits, to allow for a more robust appearance."
-	icon_state = "swimsuit_security"
-	item_state = "swimsuit_security_mob"
-
-/obj/item/clothing/under/swimsuit/fluff/medical
-	name = "Medical Swimsuit"
-	desc = "It's made of a special fiber that provides no protection whatsoever, but its elastic. It has a cross on the back denoting that the wearer is trained medical personnel."
-	icon_state = "swimsuit_medical"
-	item_state = "swimsuit_medical_mob"
 
 /obj/item/clothing/under/rank/trek
 	name = "Section 31 Uniform"
@@ -592,33 +564,6 @@
 	name = "[signet_name]'s Bone Signet Ring"
 	desc = "A signet ring belonging to [signet_name], carved from the bones of something long extinct, as a ward against bad luck."
 
-//General definition for bracer items. No icons.
-/obj/item/clothing/accessory/bracer
-	name = "bracer"
-	desc = "A bracer."
-	icon_state = null
-	item_state = null
-	icon_override = null
-	slot_flags = SLOT_GLOVES | SLOT_TIE
-	w_class = WEIGHT_CLASS_SMALL
-	slot = ACCESSORY_SLOT_ARMBAND
-
-//AegisOA:Xander Bevin
-//WanderingDeviant:S'thasha Tavakdavi
-/obj/item/clothing/accessory/bracer/fluff/xander_sthasha
-	name = "Plasteel Bracer"
-	desc = "A sturdy arm-guard of polished plasteel that sports gold trimming, silver tribal-looping etchings, and a single cut diamond set into its side. Attached to one's forearm with a small, magnetic clasp."
-	icon = 'icons/vore/custom_items_vr.dmi'
-	icon_state = "bracer_xander_sthasha"
-	icon_override = 'icons/vore/custom_onmob_vr.dmi'
-	item_state = "bracer_xander_sthasha"
-
-/obj/item/clothing/accessory/bracer/fluff/xander_sthasha/digest_act(var/atom/movable/item_storage = null)
-	return FALSE
-
-/obj/item/clothing/accessory/bracer/fluff/xander_sthasha/gurgle_contaminate(var/atom/movable/item_storage = null)
-	return FALSE
-
 //Heroman3003:Lauren Zackson
 /obj/item/clothing/accessory/collar/fluff/goldenstring
 	name = "golden string"
@@ -629,52 +574,3 @@
 	item_state = "goldenstring"
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_TIE
-
-//Chaoko99: Aika Hisakawa
-/obj/item/clothing/suit/fluff/blue_trimmed_coat
-	name = "blue-trimmed greatcoat"
-	desc = "A heavy, form-obscuring coat with gilded buttons and azure trim."
-	icon = 'icons/vore/custom_clothes_vr.dmi'
-	icon_state = "aika_coat"
-
-	icon_override = 'icons/vore/custom_clothes_vr.dmi'
-	item_state = "aika_coat_mob"
-	inv_hide_flags = HIDEJUMPSUIT | HIDETIE
-
-	item_icons = list(
-		SLOT_ID_LEFT_HAND = 'icons/vore/custom_clothes_vr.dmi',
-		SLOT_ID_RIGHT_HAND = 'icons/vore/custom_clothes_vr.dmi',
-		)
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "aika_coat_mob_r", SLOT_ID_LEFT_HAND = "aika_coat_mob_l")
-
-//Burrito Justice: Jayda Wilson
-/obj/item/clothing/under/oricon/utility/sysguard/medical/fluff
-	desc = "The utility uniform of the Society of Universal Cartographers, made from biohazard resistant material. This is an older issuing of the uniform, with integrated department markings."
-
-	icon = 'icons/vore/custom_clothes_vr.dmi'
-	icon_override = 'icons/vore/custom_clothes_vr.dmi'
-
-	icon_state = "blackutility_med"
-	snowflake_worn_state = "blackutility_med"
-	item_state = "blackutility_med"
-
-	starting_accessories = null
-	item_icons = list()
-
-//Vorrarkul: Melanie Farmer
-/obj/item/clothing/under/fluff/slime_skeleton
-	name = "Melanie's Skeleton"
-	desc = "The skeleton of a promethean, still covered in residual slime. Upon closer inspection, they're not even real bones!"
-
-	icon = 'icons/vore/custom_clothes_vr.dmi'
-	icon_override = 'icons/vore/custom_clothes_vr.dmi'
-
-	icon_state = "melanie_skeleton"
-	item_state = "melanie_skeleton_mob"
-
-	body_cover_flags = NONE
-
-	species_restricted = list("exclude", SPECIES_TESHARI)
-
-/obj/item/clothing/under/fluff/slime_skeleton/digest_act(atom/movable/item_storage = null)
-	return FALSE //Indigestible

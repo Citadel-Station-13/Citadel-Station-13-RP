@@ -112,8 +112,8 @@
 /obj/item/clothing/under/circuitry
 	name = "electronic jumpsuit"
 	desc = "It's a wearable case for electronics.  This one is a black jumpsuit with wiring woven into the fabric."
+	icon = 'icons/clothing/uniform/workwear/circuitry.dmi'
 	icon_state = "circuitry"
-	snowflake_worn_state = "circuitry"
 	EA_Installed = 1
 
 /obj/item/clothing/under/circuitry/Initialize(mapload)
