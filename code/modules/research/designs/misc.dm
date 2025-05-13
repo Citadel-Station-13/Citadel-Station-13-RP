@@ -1,8 +1,6 @@
 /datum/prototype/design/science/general
 	abstract_type = /datum/prototype/design/science/general
 
-/datum/prototype/design/science/general/generate_name(template)
-	return "General purpose design ([..()])"
 
 /datum/prototype/design/science/general/communicator
 	design_name = "Communicator"

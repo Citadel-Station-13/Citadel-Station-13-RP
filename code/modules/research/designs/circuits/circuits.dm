@@ -128,7 +128,7 @@ CIRCUITS BELOW
 	design_name = "teleporter control console"
 	id = "teleconsole"
 	req_tech = list(TECH_DATA = 3, TECH_BLUESPACE = 2)
-	category = DESIGN_CATEGORY_TELEPORTATION
+	category = DESIGN_CATEGORY_BLUESPACE
 	build_path = /obj/item/circuitboard/teleporter
 
 /datum/prototype/design/circuit/robocontrol

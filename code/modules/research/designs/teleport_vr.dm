@@ -1,5 +1,5 @@
 /datum/prototype/design/science/teleport
-	category = DESIGN_CATEGORY_TELEPORTATION
+	category = DESIGN_CATEGORY_BLUESPACE
 	abstract_type = /datum/prototype/design/science/teleport
 
 

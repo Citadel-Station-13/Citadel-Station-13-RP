@@ -2,11 +2,6 @@
 	category = DESIGN_CATEGORY_COMPUTER
 	abstract_type = /datum/prototype/design/science/modularcomponent
 
-/datum/prototype/design/science/modularcomponent/generate_name(template)
-	return "Computer part design ([..()])"
-
-/datum/prototype/design/science/modularcomponent/disk
-	abstract_type = /datum/prototype/design/science/modularcomponent/disk
 
 /datum/prototype/design/science/modularcomponent/disk/normal
 	design_name = "basic hard drive"
