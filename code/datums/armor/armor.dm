@@ -9,6 +9,12 @@
 	/// just for vv
 	var/name
 
+	/**
+	 * static randomization; all armor will be multiplied by rand(-ratio, ratio)
+	 * TODO: impl in a sane way that lets incoming checks opt-out
+	 */
+	// var/randomization_ratio = 0.25
+
 	var/melee = 0
 	var/melee_tier = MELEE_TIER_DEFAULT
 	var/melee_soak = 0
@@ -32,11 +38,6 @@
 	if(from_values)
 		from_list(from_values)
 	name = to_name()
-
-/datum/armor/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
-	if(var_name in global.armor_enums)
-		return FALSE // no.
-	return ..()
 
 /datum/armor/proc/from_list(list/values)
 	#define UNPACK_OR(var, key, default) ##var = isnull(values[key])? default : values[key]
@@ -95,7 +96,7 @@
 		"[round(acid * 100, 0.1)]",
 	), " | ")
 
-/datum/armor/proc/raw(flag)
+/datum/armor/proc/get_raw(flag)
 	switch(flag)
 		if(ARMOR_MELEE)
 			return melee
@@ -136,7 +137,7 @@
 		else
 			CRASH("Invalid flag: [flag]")
 
-/datum/armor/proc/mitigation(flag, tier = ARMOR_TIER_DEFAULT)
+/datum/armor/proc/get_mitigation(flag, tier = ARMOR_TIER_DEFAULT)
 	switch(flag)
 		if(ARMOR_MELEE)
 			var/tdiff = melee_tier - tier
@@ -162,7 +163,7 @@
 		else
 			CRASH("Invalid flag: [flag]")
 
-/datum/armor/proc/soak(flag)
+/datum/armor/proc/get_soak(flag)
 	switch(flag)
 		if(ARMOR_MELEE)
 			return melee_soak
@@ -173,7 +174,7 @@
 		else
 			return 0
 
-/datum/armor/proc/deflect(flag)
+/datum/armor/proc/get_deflect(flag)
 	switch(flag)
 		if(ARMOR_MELEE)
 			return melee_deflect

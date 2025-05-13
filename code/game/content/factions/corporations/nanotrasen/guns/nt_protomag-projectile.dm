@@ -12,8 +12,6 @@
 	icon_state = "kinetic-add"
 	appearance_flags = KEEP_APART | RESET_COLOR
 
-#warn set damage tier on all projectiles
-#warn set damage tier on all melee items
 /obj/projectile/nt_protomag
 	abstract_type = /obj/projectile/nt_protomag
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/protomag/projectile.dmi'

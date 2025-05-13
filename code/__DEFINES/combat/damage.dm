@@ -52,3 +52,9 @@
 #define DAMAGE_MODE_REDIRECT (1<<7)
 /// temporary - re-evaluate when health is reworked. prevents damage from overflowing caps.
 #define DAMAGE_MODE_NO_OVERFLOW (1<<8)
+
+/// config: request armor / shieldcalls apply randomization.
+/// * disabled by default by not having this be an opt-out rather than opt-in flag.
+/// * disabled by default so non-determinism is controlled instead of innate.
+#define DAMAGE_MODE_REQUEST_ARMOR_RANDOMIZATION (1<<23)
+

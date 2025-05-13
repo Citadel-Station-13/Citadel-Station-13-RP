@@ -92,7 +92,7 @@
 	var/protection = 0
 	var/list/protective_gear = def_zone.get_covering_clothing()
 	for(var/obj/item/clothing/gear in protective_gear)
-		protection += gear.fetch_armor().raw(type) * 100
+		protection += gear.fetch_armor().get_raw(type) * 100
 	return protection
 
 /mob/living/carbon/human/proc/getsoak_organ(var/obj/item/organ/external/def_zone, var/type)
@@ -101,7 +101,7 @@
 	var/soaked = 0
 	var/list/protective_gear = def_zone.get_covering_clothing()
 	for(var/obj/item/clothing/gear in protective_gear)
-		soaked += gear.fetch_armor().soak(type)
+		soaked += gear.fetch_armor().get_soak(type)
 	return soaked
 
 // Checked in borer code
