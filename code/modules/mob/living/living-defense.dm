@@ -126,6 +126,94 @@
 	our_opinion = clamp(our_opinion - get_evasion(), 5, INFINITY)
 	return proj.process_accuracy(src, our_opinion, null, impact_check)
 
+//* Throwing *//
+
+/mob/living/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
+	if(TT.throw_flags & THROW_AT_IS_GENTLE)
+		return
+
+	// - semi-legacy code; needs re-tuning
+	if(isitem(AM))
+		var/miss_chance = 5 + min(90, (TT.dist_travelled - 2 * 5))
+		if(prob(miss_chance))
+			AM.visible_message(
+				SPAN_WARNING("[AM] misses [src] narrowly!"),
+			)
+			return COMPONENT_THROW_HIT_PIERCE | COMPONENT_THROW_HIT_NEVERMIND
+	var/hit_zone = ran_zone(TT.target_zone || BP_TORSO, 75)
+	// - end
+
+	var/shieldcall_returns = atom_shieldcall_handle_throw_impact(
+		TT,
+		FALSE,
+		NONE,
+	)
+
+	var/sc_pierce
+	var/sc_block
+	if(shieldcall_returns & SHIELDCALL_FLAGS_SHOULD_PROCESS)
+		sc_block = shieldcall_returns & SHIELDCALL_FLAGS_BLOCK_ATTACK
+		sc_pierce = shieldcall_returns & SHIELDCALL_FLAGS_PIERCE_ATTACK
+
+	if(sc_block)
+		return sc_pierce? COMPONENT_THROW_HIT_PIERCE | COMPONENT_THROW_HIT_NEVERMIND : NONE
+
+	visible_message(
+		SPAN_RED("[src] has been hit by [AM]."),
+	)
+
+	// - legacy code for reaction
+	if(ismob(TT.thrower))
+		ai_holder?.react_to_attack_polaris(TT.thrower)
+	// - end
+
+	// - legacy logging code; not amazing. all this should be replaced with logging module API calls.
+	add_attack_logs(TT.thrower, src, "hit by thrown [AM.name] ([AM.type])")
+	// - end
+
+	// todo: /atom/movable/proc/throw_impact_attack(atom/target)
+	if(isitem(AM))
+		var/obj/item/I = AM
+
+		inflict_atom_damage(
+			I.throw_force * TT.get_damage_multiplier(src),
+			I.damage_type,
+			TT.get_damage_tier(src),
+			I.damage_flag,
+			I.damage_mode,
+			hit_zone,
+			ATTACK_TYPE_THROWN,
+			TT,
+		)
+	else
+		inflict_atom_damage(
+			AM.throw_force * TT.get_damage_multiplier(src),
+			DAMAGE_TYPE_BRUTE,
+			TT.get_damage_tier(src),
+			ARMOR_MELEE,
+			NONE,
+			hit_zone,
+			ATTACK_TYPE_THROWN,
+			TT,
+		)
+
+	// - semi-legacy: transfer momentum and stagger them if it's fast enough
+	var/effective_mass = 1.5
+	if(isitem(AM))
+		var/obj/item/reading_item_for_mass = AM
+		effective_mass = reading_item_for_mass.w_class / THROWNOBJ_KNOCKBACK_DIVISOR
+	var/momentum_transfer_amount = effective_mass * TT.speed
+	if(momentum_transfer_amount >= THROWNOBJ_KNOCKBACK_SPEED)
+		var/dir = angle2dir(TT.get_current_angle())
+		visible_message(
+			SPAN_RED("[src] staggers under the impact!"),
+			SPAN_RED("You stagger under the impact!"),
+		)
+		throw_at(get_edge_target_turf(src, dir), 1, momentum_transfer_amount / 3, THROW_AT_DO_NOT_SPIN)
+
+	return sc_pierce? COMPONENT_THROW_HIT_PIERCE | COMPONENT_THROW_HIT_NEVERMIND : NONE
+
 //* Misc Effects *//
 
 /mob/living/electrocute_act(efficiency, energy, damage, stun_power, flags, hit_zone, atom/movable/source, list/shared_blackboard, out_energy_consumed)

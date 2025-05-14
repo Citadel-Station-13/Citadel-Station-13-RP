@@ -1,3 +1,5 @@
+// this file is here for compile order reasons
+
 /mob/living/proc/run_armor_check(var/def_zone = null, var/attack_flag = "melee", var/armour_pen = 0, var/absorb_text = null, var/soften_text = null)
 	if(GLOB.Debug2)
 		log_world("## DEBUG: legacy_mob_armor() was called.")
@@ -118,84 +120,26 @@
 // 		//dislocating limbs on disarm is a bit easier than breaking limbs on harm
 // 		attack_joint(affecting, I, effective_force, 0.75, blocked, soaked) //...but can dislocate joints
 
-//this proc handles being hit by a thrown atom
-/mob/living/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
-	if(istype(AM, /obj))
-		var/obj/O = AM
-		var/dtype = DAMAGE_TYPE_BRUTE
-		if(isitem(AM))
-			var/obj/item/impacting_item = AM
-			dtype = impacting_item.damage_type
-		var/throw_damage = O.throw_force * TT.get_damage_multiplier(src)
-
-		var/miss_chance = 15
-		var/distance = get_dist(TT.initial_turf, loc)
-		miss_chance = max(5 * (distance - 2), 0)
-
-		if (prob(miss_chance))
-			visible_message("<font color=#4F49AF>\The [O] misses [src] narrowly!</font>")
-			return COMPONENT_THROW_HIT_PIERCE | COMPONENT_THROW_HIT_NEVERMIND
-
-		var/force_pierce = FALSE
-		var/no_attack = FALSE
-
-		var/zone
-		if (istype(TT.thrower, /mob/living))
-			zone = check_zone(TT.target_zone)
-		else
-			zone = ran_zone(BP_TORSO,75)	//Hits a random part of the body, geared towards the chest
-
-		if(zone)
-			// perform shieldcall
-			// todo: reconcile all the way down to /atom, or at least a higher level than /human.
-			var/retval
-			for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
-				retval |= shieldcall.handle_throw_impact(src, TT)
-				if(retval & SHIELDCALL_FLAGS_SHOULD_TERMINATE)
-					break
-			if(retval & SHIELDCALL_FLAGS_SHOULD_PROCESS)
-				if(retval & SHIELDCALL_FLAGS_PIERCE_ATTACK)
-					force_pierce = TRUE
-				if(retval & SHIELDCALL_FLAGS_BLOCK_ATTACK)
-					no_attack = TRUE
-
-		if(no_attack)
-			return force_pierce? COMPONENT_THROW_HIT_PIERCE | COMPONENT_THROW_HIT_NEVERMIND : NONE
-
-		src.visible_message("<font color='red'>[src] has been hit by [O].</font>")
-		var/armor = run_armor_check(null, "melee")
-		var/soaked = get_armor_soak(null, "melee")
-
-
-		apply_damage(throw_damage, dtype, null, armor, soaked, is_sharp(O), has_edge(O), O)
-
-		if(ismob(TT.thrower))
-			var/mob/M = TT.thrower
-			// we log only if one party is a player
-			if(!!client || !!M.client)
-				add_attack_logs(M,src,"Hit by thrown [O.name]")
-			if(ai_holder)
-				ai_holder.react_to_attack_polaris(TT.thrower)
-
+// only left in so we have a context of the math behind embeds/pinning
+// /mob/living/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 		// Begin BS12 momentum-transfer code.
-		var/mass = 1.5
-		if(istype(O, /obj/item))
-			var/obj/item/I = O
-			mass = I.w_class/THROWNOBJ_KNOCKBACK_DIVISOR
-		var/momentum = TT.speed * mass
+		// var/mass = 1.5
+		// if(istype(O, /obj/item))
+		// 	var/obj/item/I = O
+		// 	mass = I.w_class/THROWNOBJ_KNOCKBACK_DIVISOR
+		// var/momentum = TT.speed * mass
 
-		if(TT.initial_turf && momentum >= THROWNOBJ_KNOCKBACK_SPEED)
-			var/dir = get_dir(TT.initial_turf, src)
+		// if(TT.initial_turf && momentum >= THROWNOBJ_KNOCKBACK_SPEED)
+		// 	var/dir = get_dir(TT.initial_turf, src)
 
-			visible_message("<font color='red'>[src] staggers under the impact!</font>","<font color='red'>You stagger under the impact!</font>")
-			src.throw_at_old(get_edge_target_turf(src,dir), 1, momentum)
+		// 	src.throw_at_old(get_edge_target_turf(src,dir), 1, momentum)
 
-			if(!O || !src)
-				return
+		// 	if(!O || !src)
+		// 		return
 
-			if(is_sharp(O)) //Projectile is suitable for pinning.
-				if(soaked >= round(throw_damage*0.8))
-					return
+		// 	if(is_sharp(O)) //Projectile is suitable for pinning.
+		// 		if(soaked >= round(throw_damage*0.8))
+		// 			return
 
 				// TODO: rework embeds
 				//Handles embedding for non-humans and simple_mobs.
@@ -210,7 +154,6 @@
 				// 	src.anchored = 1
 				// 	src.pinned += O
 
-		return force_pierce? COMPONENT_THROW_HIT_PIERCE | COMPONENT_THROW_HIT_NEVERMIND : NONE
 
 // /mob/living/proc/embed(var/obj/O, var/def_zone=null)
 // 	O.loc = src

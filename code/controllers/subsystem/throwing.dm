@@ -423,6 +423,12 @@ SUBSYSTEM_DEF(throwing)
 	return 2.5
 
 /**
+ * Get angle we're flying
+ */
+/datum/thrownthing/proc/get_current_angle()
+	#warn impl
+
+/**
  * simulated thrownthing datums
  * doesn't register to subsystem
  * immediately hits and deletes on start
