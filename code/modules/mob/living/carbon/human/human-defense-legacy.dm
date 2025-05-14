@@ -163,7 +163,7 @@
 /mob/living/carbon/human/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 //	if(buckled && buckled == AM)
 //		return // Don't get hit by the thing we're buckled to.
-
+	#warn deal with this and move it to human-defense.dm
 	if(istype(AM, /obj))
 		var/obj/O = AM
 
@@ -176,111 +176,7 @@
 						throw_mode_off()
 						return COMPONENT_THROW_HIT_NEVERMIND
 
-		var/dtype = DAMAGE_TYPE_BRUTE
-		if(isitem(AM))
-			var/obj/item/impacting_item = AM
-			dtype = impacting_item.damage_type
-
-		var/throw_damage = O.throw_force * TT.get_damage_multiplier(src)
-
-		var/zone
-		if (istype(TT.thrower, /mob/living))
-			zone = check_zone(TT.target_zone)
-		else
-			zone = ran_zone(BP_TORSO,75)	//Hits a random part of the body, geared towards the chest
-
-		//check if we hit
-		var/miss_chance = 15
-		var/distance = get_dist(TT.initial_turf, loc)
-		miss_chance = max(5 * (distance - 2), 0)
-		zone = get_zone_with_miss_chance(zone, src, miss_chance, ranged_attack=1)
-
-		var/force_pierce = FALSE
-		var/no_attack = FALSE
-		if(zone)
-			// perform shieldcall
-			// todo: reconcile all the way down to /atom, or at least a higher level than /human.
-			var/retval
-			for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
-				retval |= shieldcall.handle_throw_impact(src, TT)
-				if(retval & SHIELDCALL_FLAGS_SHOULD_TERMINATE)
-					break
-			if(retval & SHIELDCALL_FLAGS_SHOULD_PROCESS)
-				if(retval & SHIELDCALL_FLAGS_PIERCE_ATTACK)
-					force_pierce = TRUE
-				if(retval & SHIELDCALL_FLAGS_BLOCK_ATTACK)
-					no_attack = TRUE
-
-		if(!zone)
-			visible_message("<span class='notice'>\The [O] misses [src] narrowly!</span>")
-			return COMPONENT_THROW_HIT_NEVERMIND | COMPONENT_THROW_HIT_PIERCE
-
-		if(no_attack)
-			return force_pierce? COMPONENT_THROW_HIT_PIERCE | COMPONENT_THROW_HIT_NEVERMIND : NONE
-
-		var/obj/item/organ/external/affecting = get_organ(zone)
-		var/hit_area = affecting.name
-
-		src.visible_message("<font color='red'>[src] has been hit in the [hit_area] by [O].</font>")
-
-		if(ismob(TT.thrower))
-			add_attack_logs(TT.thrower,src,"Hit with thrown [O.name]")
-
-		#warn deal with this
-		//If the armor absorbs all of the damage, skip the rest of the calculations
-		var/soaked = get_armor_soak(affecting, "melee", O.armor_penetration)
-		if(soaked >= throw_damage)
-			to_chat(src, "Your armor absorbs the force of [O.name]!")
-			return
-
-		var/armor = run_armor_check(affecting, "melee", O.armor_penetration, "Your armor has protected your [hit_area].", "Your armor has softened hit to your [hit_area].") //I guess "melee" is the best fit here
-		if(armor < 100)
-			apply_damage(throw_damage, dtype, zone, armor, soaked, is_sharp(O), has_edge(O), O)
-
-		//thrown weapon embedded object code.
-		// if(dtype == DAMAGE_TYPE_BRUTE && istype(O,/obj/item))
-		// 	var/obj/item/I = O
-			// if (!is_robot_module(I))
-				// var/sharp = is_sharp(I)
-				// var/damage = throw_damage
-				// if (soaked)
-				// 	damage -= soaked
-				// if (armor)
-				// 	damage /= armor+1
-
-				//blunt objects should really not be embedding in things unless a huge amount of force is involved
-				// var/embed_chance = sharp? damage/I.w_class : damage/(I.w_class*3)
-				// var/embed_threshold = sharp? 5*I.w_class : 15*I.w_class
-
-				//Sharp objects will always embed if they do enough damage.
-				//Thrown sharp objects have some momentum already and have a small chance to embed even if the damage is below the threshold
-				// if((sharp && prob(damage/(10*I.w_class)*100)) || (damage > embed_threshold && prob(embed_chance)))
-				// 	affecting.embed(I)
-
-		// Begin BS12 momentum-transfer code.
-		var/mass = 1.5
-		if(istype(O, /obj/item))
-			var/obj/item/I = O
-			mass = I.w_class/THROWNOBJ_KNOCKBACK_DIVISOR
-		var/momentum = TT.speed*mass
-
-		if(TT.initial_turf && momentum >= THROWNOBJ_KNOCKBACK_SPEED)
-			var/dir = get_dir(TT.initial_turf, src)
-
-			visible_message("<font color='red'>[src] staggers under the impact!</font>","<font color='red'>You stagger under the impact!</font>")
-			src.throw_at_old(get_edge_target_turf(src,dir),1,momentum)
-
-			// if(!O || !src) return
-
-			// if(O.loc == src && is_sharp(O)) //Projectile is embedded and suitable for pinning.
-			// 	var/turf/T = near_wall(dir,2)
-			// 	if(T)
-			// 		forceMove(T)
-			// 		visible_message("<span class='warning'>[src] is pinned to the wall by [O]!</span>","<span class='warning'>You are pinned to the wall by [O]!</span>")
-			// 		anchored = TRUE
-			// 		pinned += O
-
-		return force_pierce? COMPONENT_THROW_HIT_PIERCE | COMPONENT_THROW_HIT_NEVERMIND : NONE
+	return ..()
 
 // This does a prob check to catch the thing flying at you, with a minimum of 1%
 /mob/living/carbon/human/proc/can_catch(var/obj/O)
