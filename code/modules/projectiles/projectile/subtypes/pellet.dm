@@ -76,7 +76,7 @@
 	var/distance_penalty = distance_travelled > pellet_zone_spread_gain_threshold ? (distance_travelled * pellet_zone_spread_gain) : 0
 	var/zone_true_chance = 100 - (pellet_zone_spread + distance_penalty)
 	var/pellet_hit_chance = 100
-	. = NONE
+	. = impact_flags
 	if(isliving(target))
 		var/mob/living/living_target = target
 		pellet_hit_chance = living_target.process_baymiss(src, impact_check = FALSE)

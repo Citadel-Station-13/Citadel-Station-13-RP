@@ -1148,10 +1148,10 @@
  * * impact_flags - impact flags passed in
  * * hit_zone - zone to hit
  *
- * @return BULLET_ACT_* flags to append into the calling bullet_act().
+ * @return PROJECTILE_IMPACT_* flags to set on the calling bullet_act().
  */
 /obj/projectile/proc/inflict_impact_damage(atom/target, efficiency, impact_flags, hit_zone)
-	. = NONE
+	. = impact_flags
 
 	//! LEGACY COMBAT CODE
 	// SHIM!!!
@@ -1193,7 +1193,21 @@
 		if(modifier_type_to_apply)
 			L.add_modifier(modifier_type_to_apply, modifier_duration)
 	//! END
-
+	#warn deal with
+	// if(!(impact_flags & (PROJECTILE_IMPACT_BLOCKED | PROJECTILE_IMPACT_SKIP_STANDARD_DAMAGE)))
+	// 	// todo: maybe the projectile side should handle this?
+	// 	run_damage_instance(
+	// 		proj.get_structure_damage() * bullet_act_args[BULLET_ACT_ARG_EFFICIENCY],
+	// 		proj.damage_type,
+	// 		proj.damage_tier,
+	// 		proj.damage_flag,
+	// 		proj.damage_mode,
+	// 		ATTACK_TYPE_PROJECTILE,
+	// 		proj,
+	// 		NONE,
+	// 		bullet_act_args[BULLET_ACT_ARG_ZONE],
+	// 	)
+	
 	for(var/datum/projectile_effect/effect as anything in base_projectile_effects)
 		if(effect.hook_damage)
 			effect.on_damage(src, target, impact_flags, hit_zone, efficiency)
@@ -1204,6 +1218,9 @@
 	if(legacy_penetrating > 0)
 		if(process_legacy_penetration(target))
 			. |= PROJECTILE_IMPACT_PIERCE | PROJECTILE_IMPACT_PASSTHROUGH
+
+	if(QDELETED(target))
+		. |= PROJECTILE_IMPACT_TARGET_DELETED
 
 /**
  * wip algorithm to dampen a projectile when it pierces

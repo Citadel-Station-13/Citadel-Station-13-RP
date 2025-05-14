@@ -81,7 +81,6 @@
 			visible_message(SPAN_DANGER("\The [src] is hit by [proj] in the [parse_zone(bullet_act_args[BULLET_ACT_ARG_ZONE])]"))
 
 	//! LEGACY
-
 	//Being hit while using a deadman switch
 	for(var/obj/item/assembly/signaler/signaler in get_held_items())
 		if(signaler.deadman && prob(80))
@@ -91,12 +90,8 @@
 
 	if(ai_holder && proj.firer)
 		ai_holder.react_to_attack_polaris(proj.firer)
-
 	//! END
 
-	if(!(impact_flags & (PROJECTILE_IMPACT_BLOCKED | PROJECTILE_IMPACT_SKIP_STANDARD_DAMAGE)))
-		// todo: this should just be in base projectile on_impact
-		impact_flags |= proj.inflict_impact_damage(src, bullet_act_args[BULLET_ACT_ARG_EFFICIENCY], impact_flags, bullet_act_args[BULLET_ACT_ARG_ZONE])
 	return ..()
 
 /**

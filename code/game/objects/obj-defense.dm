@@ -16,24 +16,6 @@
 	// no named arguments for speed reasons
 	run_damage_instance(global._legacy_ex_atom_damage[severity] * (0.01 * rand(80, 120)), DAMAGE_TYPE_BRUTE, null, ARMOR_BOMB)
 
-/obj/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
-	if(!(impact_flags & (PROJECTILE_IMPACT_BLOCKED | PROJECTILE_IMPACT_SKIP_STANDARD_DAMAGE)))
-		// todo: maybe the projectile side should handle this?
-		run_damage_instance(
-			proj.get_structure_damage() * bullet_act_args[BULLET_ACT_ARG_EFFICIENCY],
-			proj.damage_type,
-			proj.damage_tier,
-			proj.damage_flag,
-			proj.damage_mode,
-			ATTACK_TYPE_PROJECTILE,
-			proj,
-			NONE,
-			bullet_act_args[BULLET_ACT_ARG_ZONE],
-		)
-	if(QDELETED(src))
-		impact_flags |= PROJECTILE_IMPACT_TARGET_DELETED
-	return ..()
-
 /obj/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
 	if(TT.throw_flags & THROW_AT_IS_GENTLE)
