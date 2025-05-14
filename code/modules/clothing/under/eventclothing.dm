@@ -20,13 +20,13 @@
 
     if(skirt_rolled) //User reporting
         to_chat(usr, "You drop your skirt.")
-		body_cover_flags |= LOWER_TORSO
-		icon = "foxmiko"
-		skirt_rolled = FALSE
+        body_cover_flags = body_cover_flags | LOWER_TORSO
+        icon = "foxmiko"
+        skirt_rolled = FALSE
     else
         to_chat(usr, "You lift your skirt.")
-		body_cover_flags &= ~LOWER_TORSO
-		icon = "foxmiko_skirt"
-		skirt_rolled = true
+        body_cover_flags &= ~LOWER_TORSO
+        icon = "foxmiko_skirt"
+        skirt_rolled = TRUE
 
     update_worn_icon()

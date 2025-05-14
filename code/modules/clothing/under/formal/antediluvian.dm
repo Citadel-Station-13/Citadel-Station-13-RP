@@ -30,5 +30,5 @@
 /obj/item/clothing/under/antediluvian/dress/ante_boobflap
 	name = "Antediluvian Chest Flaps"
 	desc = "A comfortable collar with two trailing flaps going down onto the chest area, meeting the bare minimum requirements for decency, should they stay in place in motion."
-	icon = 'icons/clothing/uniform/formal/antediluvian/aziru_boobflap.dmi'
+	icon = 'icons/clothing/uniform/formal/antediluvian/ante_boobflap.dmi'
 	icon_state = "ante_boobflap"

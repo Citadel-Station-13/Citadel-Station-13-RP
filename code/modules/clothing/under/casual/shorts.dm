@@ -211,7 +211,7 @@
     name = "fashionable miniskirt"
     desc = "An impractically short miniskirt allegedly making waves through the local fashion scene."
     icon = 'icons/clothing/uniform/casual/shorts/miniskirt_fashion.dmi'
-	icon_state = "miniskirt_fashion"
+    icon_state = "miniskirt_fashion"
 
 /obj/item/clothing/under/bodysuit/blueskirt
 	name = "blue skirt"

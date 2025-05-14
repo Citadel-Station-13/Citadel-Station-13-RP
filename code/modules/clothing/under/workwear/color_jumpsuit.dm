@@ -10,7 +10,7 @@
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_ROLL
-	worn_bodytypes = BODYTYPE_DEFAULT | BODYTYPE_TESHARI | BODYTYPE_VOX
+	//worn_bodytypes = BODYTYPE_DEFAULT | BODYTYPE_TESHARI | BODYTYPE_VOX
 
 /obj/item/clothing/under/color/aqua
 	name = "aqua jumpsuit"

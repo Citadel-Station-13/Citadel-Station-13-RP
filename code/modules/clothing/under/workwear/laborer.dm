@@ -36,13 +36,13 @@
 /obj/item/clothing/under/frontier
 	name = "frontier clothes"
 	desc = "A rugged flannel shirt and denim overalls. A popular style among frontier colonists."
-	icon = 'icons/clothing/uniform/workwear/misc_corporations/frontier.dmi'
+	icon = 'icons/clothing/uniform/workwear/laborer/frontier.dmi'
 	icon_state = "frontier"
 
 /obj/item/clothing/under/utility_fur_pants
 	name = "Utility Fur Pants"
 	desc = "A pair of pants designed to match the Utility Fur coat."
-	icon = 'icons/clothing/uniform/workwear/misc_corporations/furup.dmi'
+	icon = 'icons/clothing/uniform/workwear/laborer/furup.dmi'
 	icon_state = "furup"
 
 //Reuses spritesheet

@@ -16,14 +16,14 @@
 	icon_state = "schoolgirlred"
 
 /obj/item/clothing/under/schoolgirl/green
-	name = "frilly green skirt
+	name = "frilly green skirt"
 	desc = "A clean white shirt with a green collar and skirt. Looks like something out of an anime."
 	icon = 'icons/clothing/uniform/costume/animeschool/schoolgirlgreen.dmi'
 	icon_state = "schoolgirlgreen"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 
 /obj/item/clothing/under/schoolgirl/orange
-	name = "frilly orange skirt
+	name = "frilly orange skirt"
 	desc = "A clean white shirt with a orange collar and skirt. Looks like something out of an anime."
 	icon = 'icons/clothing/uniform/costume/animeschool/schoolgirlorange.dmi'
 	icon_state = "schoolgirlorange"

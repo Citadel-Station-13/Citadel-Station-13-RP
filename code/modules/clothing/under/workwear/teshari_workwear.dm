@@ -35,7 +35,7 @@
 
 /obj/item/clothing/under/teshari/smock/blackutilitysmock
 	name = "black utility smock"
-	icon = 'icons/clothing/uniform/workwear/teshari/tesh_blackutility_com.dmi'
+	icon = 'icons/clothing/uniform/workwear/teshari/teshari_blackutility_com.dmi'
 	icon_state = "teshari_blackutility_com"
 
 /obj/item/clothing/under/teshari/smock/greydress
@@ -133,11 +133,6 @@
 	icon_state = "teshari_white_green_worksuit"
 
 //Job Undercoats
-
-/obj/item/clothing/under/teshari/undercoat/jobs/
-	icon = 'icons/mob/clothing/species/teshari/deptjacket.dmi'
-	icon_override = 'icons/mob/clothing/species/teshari/deptjacket.dmi'
-
 /obj/item/clothing/under/teshari/undercoat/jobs/cap
 	name = "facility director undercoat"
 	desc = "A traditional Teshari garb made for the Facility Director"
