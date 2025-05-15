@@ -93,7 +93,7 @@
 		else if(W.is_crowbar() && cell && open)
 			remove_cell(user)
 
-		else if(istype(W, /obj/item/cell) && !cell && open)
+		else if(istype(W, /obj/item/cell/large) && !cell && open)
 			insert_cell(W, user)
 		else if(istype(W, /obj/item/weldingtool))
 			var/obj/item/weldingtool/T = W

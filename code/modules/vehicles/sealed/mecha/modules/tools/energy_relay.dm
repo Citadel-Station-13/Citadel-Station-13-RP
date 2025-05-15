@@ -100,7 +100,7 @@
 		ER.set_ready_state(1)
 		ER.occupant_message("No powercell detected.")
 		return
-	if(cur_charge<ER.chassis.cell.maxcharge)
+	if(cur_charge<ER.chassis.cell.max_charge)
 		var/area/A = get_area(ER.chassis)
 		if(A)
 			var/pow_chan
@@ -109,7 +109,7 @@
 					pow_chan = c
 					break
 			if(pow_chan)
-				var/delta = min(12, ER.chassis.cell.maxcharge-cur_charge)
+				var/delta = min(12, ER.chassis.cell.max_charge-cur_charge)
 				ER.chassis.give_power(delta)
 				A.use_power_oneoff(delta*ER.coeff, pow_chan)
 	return

@@ -4,7 +4,7 @@
 	req_components = list(
 		/obj/item/stock_parts/capacitor = 2,
 		/obj/item/stock_parts/manipulator = 1,
-		/obj/item/cell = 1,
+		/obj/item/cell/medium = 1,
 		/obj/item/stock_parts/console_screen = 1,
 	)
 
@@ -125,7 +125,7 @@
 		return
 	if(!cell || !charging)
 		return
-	var/wanted = max(0, DYNAMIC_CELL_UNITS_TO_KW(cell.maxcharge - cell.charge, delta_time))
+	var/wanted = max(0, DYNAMIC_CELL_UNITS_TO_KW(cell.max_charge - cell.charge, delta_time))
 	if(!wanted)
 		return
 	// todo: this is shit, it doesn't update area power because our power code is primitive.
@@ -198,7 +198,7 @@
 	.["amount_max"] = dispense_amount_max
 	.["has_cell"] = !!cell
 	.["cell_charge"] = cell?.charge
-	.["cell_capacity"] = cell?.maxcharge
+	.["cell_capacity"] = cell?.max_charge
 	.["panel_open"] = panel_open
 	.["has_beaker"] = !!inserted
 	.["beaker"] = inserted?.reagents? list(
@@ -432,7 +432,7 @@
 			)
 			update_static_data()
 			return CLICKCHAIN_DO_NOT_PROPAGATE
-		if(istype(I, /obj/item/cell))
+		if(istype(I, /obj/item/cell/medium))
 			if(cell)
 				user.action_feedback(SPAN_WARNING("[src] already has a cell."), src)
 				return CLICKCHAIN_DO_NOT_PROPAGATE

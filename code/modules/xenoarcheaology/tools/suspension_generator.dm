@@ -60,7 +60,7 @@
 
 	data["cell"] = cell
 	data["cellCharge"] = cell?.charge
-	data["cellMaxCharge"] = cell?.maxcharge
+	data["cellMaxCharge"] = cell?.max_charge
 
 	data["locked"] = locked
 	data["suspension_field"] = suspension_field
@@ -107,7 +107,7 @@
 				desc = "It has stubby legs bolted up against it's body for stabilising."
 		else
 			to_chat(user, SPAN_WARNING("You are unable to unsecure [src] while it is active!"))
-	else if(istype(W, /obj/item/cell))
+	else if(istype(W, /obj/item/cell/medium))
 		if(panel_open)
 			if(cell)
 				to_chat(user, SPAN_WARNING("There is a power cell already installed."))

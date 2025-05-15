@@ -632,9 +632,9 @@
 	if(use_external_power)
 		var/obj/item/cell/external = get_external_power_supply()
 		if(external)
-			return external.maxcharge
+			return external.max_charge
 	else if(power_supply)
-		return power_supply.maxcharge
+		return power_supply.max_charge
 	return 0
 
 /obj/item/weldingtool/electric/remove_fuel(var/amount = 1, var/mob/M = null)
@@ -672,7 +672,7 @@
 
 /obj/item/weldingtool/electric/attackby(obj/item/W, mob/user as mob)
 	if(istype(W, /obj/item/cell))
-		if(istype(W, /obj/item/cell/device))
+		if(istype(W, /obj/item/cell/small))
 			if(!power_supply)
 				if(!user.attempt_insert_item_for_installation(W, src))
 					return

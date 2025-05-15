@@ -29,16 +29,16 @@
 	. = ..()
 	. += SPAN_NOTICE("[charging ? "[charging]" : "Nothing"] is in [src].")
 	if(charging)
-		. += SPAN_NOTICE("Current charge: [charging.charge] / [charging.maxcharge]")
+		. += SPAN_NOTICE("Current charge: [charging.charge] / [charging.max_charge]")
 
 /obj/machinery/cell_charger/attackby(obj/item/W, mob/user)
 	if(machine_stat & BROKEN)
 		return
 
 	if(istype(W, /obj/item/cell) && anchored)
-		if(istype(W, /obj/item/cell/device))
-			to_chat(user, SPAN_WARNING("\The [src] isn't fitted for that type of cell."))
-			return
+		// if(istype(W, /obj/item/cell/device))
+		// 	to_chat(user, SPAN_WARNING("\The [src] isn't fitted for that type of cell."))
+		// 	return
 
 		if(charging)
 			to_chat(user, SPAN_WARNING("There is already [charging] in [src]."))

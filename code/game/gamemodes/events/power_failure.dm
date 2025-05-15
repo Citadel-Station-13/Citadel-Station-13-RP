@@ -31,7 +31,7 @@
 		command_announcement.Announce("Power has been restored to [station_name()]. We apologize for the inconvenience.", "Power Systems Nominal", new_sound = 'sound/AI/poweron.ogg')
 	for(var/obj/machinery/power/apc/C in GLOB.apcs)
 		if(C.cell && (C.z in (LEGACY_MAP_DATUM).station_levels))
-			C.cell.charge = C.cell.maxcharge
+			C.cell.charge = C.cell.max_charge
 	for(var/obj/machinery/power/smes/S in GLOB.machines)
 		var/area/current_area = get_area(S)
 		if((current_area.type in skipped_areas) || isNotStationLevel(S.z))
