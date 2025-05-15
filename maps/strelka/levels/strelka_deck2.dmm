@@ -291,6 +291,9 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/security/evidence)
+"aR" = (
+/turf/simulated/wall/r_wall/prepainted/command,
+/area/shuttle/excursion/strelka)
 "aU" = (
 /obj/machinery/power/terminal,
 /obj/structure/cable/white,
@@ -1205,7 +1208,8 @@
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck2/bridge/iaa)
 "dH" = (
-/turf/simulated/wall/r_wall,
+/obj/map_helper/paint_stripe/purple,
+/turf/simulated/wall/r_wall/prepainted,
 /area/shuttle/excursion/strelka)
 "dJ" = (
 /turf/simulated/floor/wood/indoors,
@@ -1459,6 +1463,24 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck2)
+"ep" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "armorylight";
+	name = "Light Armory Access";
+	req_access = list(3);
+	pixel_y = -23;
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck2/security/main)
 "er" = (
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external{
@@ -1620,21 +1642,15 @@
 /area/strelka/shipbase/deck2/bridge)
 "eO" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 2;
-	icon_state = "shutter0";
-	id = "warden";
-	layer = 3.1;
-	name = "Warden's Office Shutters";
-	opacity = 0
-	},
 /obj/structure/table/carbon/reinforced,
 /obj/machinery/door/window/brigdoor/southright{
+	req_access = null
+	},
+/obj/machinery/door/window/brigdoor/northright{
 	req_access = list(3)
 	},
-/obj/machinery/door/window/brigdoor/northleft{
-	req_access = list(3)
+/obj/machinery/door/blast/shutters{
+	id = "warden"
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/warden)
@@ -1670,6 +1686,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
 	},
+/obj/map_helper/paint_stripe/purple,
 /turf/simulated/wall/r_wall/prepainted,
 /area/shuttle/excursion/strelka)
 "eX" = (
@@ -2443,6 +2460,7 @@
 /obj/machinery/door/blast/regular/open{
 	id = "javelot"
 	},
+/obj/map_helper/paint_stripe/purple,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/strelka)
 "hu" = (
@@ -3487,7 +3505,7 @@
 	},
 /obj/machinery/button/remote/blast_door{
 	id = "armorylight";
-	name = "Light Armory Access2";
+	name = "Light Armory Access";
 	req_access = list(3);
 	pixel_y = 29
 	},
@@ -5044,7 +5062,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
-/turf/simulated/wall/r_wall,
+/obj/map_helper/paint_stripe/purple,
+/turf/simulated/wall/r_wall/prepainted,
 /area/shuttle/excursion/strelka)
 "oY" = (
 /obj/machinery/artifact_analyser,
@@ -5425,6 +5444,7 @@
 /area/strelka/shipbase/deck2/science/tele)
 "pW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/map_helper/paint_stripe/purple,
 /turf/simulated/wall/r_wall/prepainted,
 /area/shuttle/excursion/strelka)
 "pZ" = (
@@ -6253,6 +6273,7 @@
 /obj/machinery/door/blast/regular/open{
 	id = "javelot"
 	},
+/obj/map_helper/paint_stripe/purple,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/excursion/strelka)
 "sr" = (
@@ -6313,6 +6334,10 @@
 /obj/effect/floor_decal/grass_edge,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
+"sG" = (
+/obj/map_helper/paint_stripe/purple,
+/turf/simulated/wall/r_wall/prepainted/command,
+/area/shuttle/excursion/strelka)
 "sH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/universal{
 	dir = 4
@@ -6659,14 +6684,15 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 1
-	},
 /obj/effect/floor_decal/corner/blue/border/shifted{
 	pixel_y = -10
 	},
 /obj/structure/handrail{
 	pixel_y = -6
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	alpha = 255;
+	dir = 1
 	},
 /turf/simulated/floor/tiled/old_cargo,
 /area/shuttle/excursion/strelka)
@@ -7996,7 +8022,8 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
 	},
-/turf/simulated/wall/r_wall,
+/obj/map_helper/paint_stripe/purple,
+/turf/simulated/wall/r_wall/prepainted,
 /area/shuttle/excursion/strelka)
 "xD" = (
 /obj/machinery/computer/telecomms/monitor{
@@ -8981,7 +9008,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
-/turf/simulated/wall/r_wall,
+/obj/map_helper/paint_stripe/purple,
+/turf/simulated/wall/r_wall/prepainted,
 /area/shuttle/excursion/strelka)
 "AE" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/green{
@@ -10280,10 +10308,6 @@
 /obj/structure/grille,
 /turf/space/basic,
 /area/space)
-"Ek" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/wall/r_wall,
-/area/shuttle/excursion/strelka)
 "El" = (
 /obj/structure/closet/secure_closet/engineering_welding,
 /obj/structure/window/phoronreinforced{
@@ -11155,9 +11179,6 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 1
-	},
 /obj/effect/floor_decal/corner/blue/border/shifted{
 	pixel_y = -10
 	},
@@ -11167,6 +11188,10 @@
 	},
 /obj/structure/handrail{
 	pixel_y = -6
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	alpha = 255;
+	dir = 1
 	},
 /turf/simulated/floor/tiled/old_cargo,
 /area/shuttle/excursion/strelka)
@@ -11275,23 +11300,6 @@
 	},
 /turf/simulated/floor/carpet/patterened/orange,
 /area/strelka/shipbase/deck2/engineering/storage)
-"Hv" = (
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/obj/structure/table/marble,
-/obj/item/paper/pamphlet/strelka{
-	pixel_y = 5
-	},
-/obj/item/paper/pamphlet/strelka{
-	pixel_y = 5
-	},
-/obj/item/paper/pamphlet/strelka{
-	pixel_y = 5
-	},
-/turf/simulated/floor/wood/indoors,
-/area/strelka/shipbase/deck2)
 "Hw" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/emt/strelka/main)
@@ -11506,6 +11514,7 @@
 /obj/machinery/door/blast/regular/open{
 	id = "javelot"
 	},
+/obj/map_helper/paint_stripe/purple,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/strelka)
 "Ig" = (
@@ -12013,6 +12022,10 @@
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/security/detective)
+"JQ" = (
+/obj/map_helper/paint_stripe/purple,
+/turf/simulated/wall/r_wall,
+/area/shuttle/excursion/strelka)
 "JT" = (
 /obj/machinery/door/airlock/hatch/supermatter_access{
 	id_tag = "engine_access_hatch"
@@ -12483,15 +12496,15 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2)
 "Lq" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/structure/table/carbon/reinforced,
+/obj/machinery/door/window/brigdoor/southleft{
+	req_access = null
+	},
+/obj/machinery/door/window/brigdoor/northleft{
+	req_access = list(3)
+	},
 /obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 2;
-	icon_state = "shutter0";
-	id = "warden";
-	layer = 3.1;
-	name = "Warden's Office Shutters";
-	opacity = 0
+	id = "warden"
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/warden)
@@ -12828,15 +12841,16 @@
 	dir = 1
 	},
 /obj/machinery/sleep_console,
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 1
-	},
 /obj/effect/floor_decal/corner/blue/border/shifted{
 	pixel_y = -10
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 4;
 	pixel_y = -24
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	alpha = 255;
+	dir = 1
 	},
 /turf/simulated/floor/tiled/old_cargo,
 /area/shuttle/excursion/strelka)
@@ -13051,7 +13065,8 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
 	},
-/turf/simulated/wall/r_wall,
+/obj/map_helper/paint_stripe/purple,
+/turf/simulated/wall/r_wall/prepainted,
 /area/shuttle/excursion/strelka)
 "Nm" = (
 /obj/structure/cable{
@@ -13355,6 +13370,7 @@
 /area/strelka/shipbase/deck2/security/storage)
 "Ox" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
+/obj/map_helper/paint_stripe/purple,
 /turf/simulated/wall/r_wall/prepainted,
 /area/shuttle/excursion/strelka)
 "Oz" = (
@@ -13364,11 +13380,12 @@
 /obj/machinery/sleeper{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 1
-	},
 /obj/effect/floor_decal/corner/blue/border/shifted{
 	pixel_y = -10
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	alpha = 255;
+	dir = 1
 	},
 /turf/simulated/floor/tiled/old_cargo,
 /area/shuttle/excursion/strelka)
@@ -16115,20 +16132,6 @@
 "WM" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck2/engineering/nacelle)
-"WO" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/sign/kiddieplaque{
-	pixel_y = 19;
-	name = "\improper Strelka Gallery plaque";
-	layer = 3.5
-	},
-/turf/simulated/floor/tiled/asteroid_steel,
-/area/strelka/shipbase/deck2)
 "WP" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/wood/indoors,
@@ -16346,8 +16349,8 @@
 	dir = 8
 	},
 /obj/machinery/button/remote/blast_door{
-	id = "armorylight";
-	name = "Light Armory Access";
+	id = "warden";
+	name = "Shutter Warden";
 	pixel_x = 22;
 	req_access = list(3)
 	},
@@ -34919,7 +34922,7 @@ TI
 dH
 xB
 Nk
-Ek
+pW
 ku
 fj
 Vl
@@ -35118,7 +35121,7 @@ Zj
 ui
 vR
 KN
-dH
+sG
 kf
 kf
 eV
@@ -35312,7 +35315,7 @@ GS
 Pu
 Qo
 Xu
-dH
+sG
 kf
 eV
 hO
@@ -35498,15 +35501,15 @@ Si
 YV
 cc
 RH
-dH
-dH
+sG
+sG
 gI
-dH
+JQ
 dc
 wb
 Uy
-dH
-dH
+sG
+sG
 kf
 eV
 fN
@@ -36080,14 +36083,14 @@ Si
 Gr
 iX
 IB
-dH
+sG
 Bx
 nK
 qN
 Tb
 JM
 DX
-dH
+sG
 fG
 eV
 DR
@@ -36274,14 +36277,14 @@ qH
 wR
 bU
 PN
-dH
+sG
 tQ
 wY
 Wx
 Hb
 FZ
-dH
-dH
+sG
+sG
 fG
 eV
 fN
@@ -36856,13 +36859,13 @@ iA
 Ky
 BF
 rZ
-dH
+sG
 ga
 hQ
 Ie
 My
 SI
-dH
+sG
 fG
 eV
 fN
@@ -37050,13 +37053,13 @@ Wq
 tS
 jN
 rZ
-dH
-dH
+sG
+aR
 Ei
-dH
-dH
-dH
-dH
+aR
+sG
+sG
+sG
 fG
 eV
 fN
@@ -37244,12 +37247,12 @@ Wq
 Zc
 jN
 rZ
-dH
+sG
 CE
 nX
 Ag
-dH
-dH
+sG
+sG
 FT
 fG
 eV
@@ -37442,7 +37445,7 @@ ht
 lQ
 Kl
 gt
-dH
+sG
 Xg
 fG
 fG
@@ -38580,7 +38583,7 @@ Hn
 Lr
 fk
 fR
-nE
+ep
 zW
 Hd
 WP
@@ -38974,8 +38977,8 @@ hK
 BK
 ZP
 Lq
-Hv
-WO
+MS
+cT
 kM
 gz
 Lo

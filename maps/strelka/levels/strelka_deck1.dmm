@@ -8545,6 +8545,14 @@
 /obj/machinery/light/small/old{
 	dir = 1
 	},
+/obj/item/clothing/accessory/armor/helmetcamera{
+	pixel_x = 4
+	},
+/obj/item/clothing/accessory/armor/helmetcamera{
+	pixel_x = 4
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/body,
+/obj/item/clothing/accessory/armor/helmetcamera/body,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/toolstorage)
 "Ut" = (

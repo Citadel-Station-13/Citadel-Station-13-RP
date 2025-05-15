@@ -357,6 +357,9 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/window/westleft,
+/obj/effect/floor_decal/spline/fancy{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/hallway)
 "bw" = (
@@ -402,6 +405,19 @@
 /obj/structure/icecream_cart,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck4/kitchen/freeze)
+"bD" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/spline/fancy/wood,
+/turf/simulated/floor/carpet/turcarpet,
+/area/strelka/shipbase/deck4/fitness)
 "bG" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -415,6 +431,9 @@
 	},
 /obj/structure/cable/orange{
 	icon_state = "1-4"
+	},
+/obj/effect/floor_decal/spline/fancy{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/hallway)
@@ -639,6 +658,10 @@
 "cO" = (
 /turf/simulated/floor/holofloor/reinforced,
 /area/space)
+"cQ" = (
+/obj/effect/floor_decal/spline/fancy/wood/three_quarters,
+/turf/simulated/floor/bmarble,
+/area/strelka/shipbase/deck4/bar)
 "cR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -1059,6 +1082,9 @@
 /obj/structure/cable/orange{
 	icon_state = "2-8"
 	},
+/obj/effect/floor_decal/spline/fancy{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/hallway)
 "eK" = (
@@ -1147,6 +1173,12 @@
 	},
 /turf/simulated/floor/wood/broken,
 /area/strelka/shipbase/deck4/bar)
+"fb" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/turcarpet,
+/area/strelka/shipbase/deck4/fitness)
 "fc" = (
 /obj/machinery/door/blast/strelka/blockade,
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
@@ -1367,6 +1399,7 @@
 /area/strelka/shipbase/deck4/library)
 "fT" = (
 /obj/machinery/air_alarm/west_mount,
+/obj/effect/floor_decal/spline/fancy/wood/three_quarters,
 /turf/simulated/floor/bmarble,
 /area/strelka/shipbase/deck4/bar)
 "fV" = (
@@ -1621,6 +1654,9 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck4/dormhallway/Dorm/Room3)
 "gQ" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
 /turf/simulated/floor/bmarble,
 /area/strelka/shipbase/deck4/bar)
 "gV" = (
@@ -1859,6 +1895,11 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/hallway)
+"hQ" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/spline/fancy/wood/three_quarters,
+/turf/simulated/floor/bmarble,
+/area/strelka/shipbase/deck4/bar)
 "hR" = (
 /obj/structure/table/carbon/reinforced,
 /obj/machinery/computer/ship/disperser{
@@ -1955,6 +1996,13 @@
 "ip" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/strelka/shipbase/deck4/maintenance)
+"is" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/spline/fancy{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/strelka/shipbase/deck4/hallway)
 "iv" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck4/dormhallway/pool)
@@ -2916,6 +2964,9 @@
 /area/strelka/shipbase/deck4/janitor)
 "mr" = (
 /obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 6
+	},
 /turf/simulated/floor/bmarble,
 /area/strelka/shipbase/deck4/bar)
 "mv" = (
@@ -3226,6 +3277,9 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/effect/floor_decal/spline/fancy{
+	dir = 6
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/fitness)
 "nA" = (
@@ -3428,6 +3482,9 @@
 	},
 /obj/structure/cable/orange{
 	icon_state = "2-4"
+	},
+/obj/effect/floor_decal/spline/fancy{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/hallway)
@@ -3984,6 +4041,9 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/effect/floor_decal/spline/fancy{
+	dir = 9
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/hallway)
 "qF" = (
@@ -3999,6 +4059,9 @@
 "qH" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 9
+	},
 /turf/simulated/floor/bmarble,
 /area/strelka/shipbase/deck4/bar)
 "qI" = (
@@ -4495,6 +4558,9 @@
 /area/strelka/shipbase/deck4/dormhallway/Dorm/Room2)
 "sZ" = (
 /obj/structure/closet/lasertag/blue,
+/obj/effect/floor_decal/spline/fancy{
+	dir = 6
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/hallway)
 "ta" = (
@@ -5219,6 +5285,7 @@
 /obj/structure/sink{
 	pixel_y = -18
 	},
+/obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/bmarble,
 /area/strelka/shipbase/deck4/bar)
 "wF" = (
@@ -6439,6 +6506,9 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/effect/floor_decal/spline/fancy{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/hallway)
 "Dv" = (
@@ -6447,6 +6517,9 @@
 "Dx" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
 	},
 /turf/simulated/floor/bmarble,
 /area/strelka/shipbase/deck4/bar)
@@ -7543,6 +7616,9 @@
 /obj/machinery/recipe_lookup/drinks{
 	pixel_y = -30
 	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 10
+	},
 /turf/simulated/floor/bmarble,
 /area/strelka/shipbase/deck4/bar)
 "IR" = (
@@ -7644,6 +7720,9 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
 /turf/simulated/floor/bmarble,
 /area/strelka/shipbase/deck4/bar)
 "Jk" = (
@@ -7722,6 +7801,9 @@
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/spline/fancy{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/hallway)
 "Jv" = (
@@ -8244,6 +8326,9 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/fitness)
 "LS" = (
+/obj/effect/floor_decal/spline/fancy{
+	dir = 10
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/fitness)
 "LT" = (
@@ -8629,6 +8714,9 @@
 /area/strelka/shipbase/deck4/chapel/office)
 "NE" = (
 /obj/machinery/air_alarm/east_mount,
+/obj/effect/floor_decal/spline/fancy{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/hallway)
 "NM" = (
@@ -9118,6 +9206,9 @@
 	dir = 4
 	},
 /obj/structure/closet/lasertag/red,
+/obj/effect/floor_decal/spline/fancy{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/hallway)
 "Qp" = (
@@ -9148,6 +9239,9 @@
 	light_power = 1.5
 	},
 /obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/spline/fancy{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/hallway)
 "Qx" = (
@@ -10044,6 +10138,9 @@
 "VJ" = (
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/bar)
+"VK" = (
+/turf/simulated/floor/carpet/turcarpet,
+/area/strelka/shipbase/deck4/fitness)
 "VM" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck4/dormhallway/pool/sauna)
@@ -10552,6 +10649,9 @@
 /area/strelka/shipbase/deck4/bar/back)
 "Yp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 5
+	},
 /turf/simulated/floor/bmarble,
 /area/strelka/shipbase/deck4/bar)
 "Yq" = (
@@ -10629,6 +10729,9 @@
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/spline/fancy{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/hallway)
 "YE" = (
@@ -10807,10 +10910,14 @@
 /area/strelka/shipbase/deck4/bar)
 "ZC" = (
 /obj/machinery/holopad,
+/obj/effect/floor_decal/spline/fancy/wood/three_quarters,
 /turf/simulated/floor/bmarble,
 /area/strelka/shipbase/deck4/bar)
 "ZD" = (
 /obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
@@ -25361,9 +25468,9 @@ Fx
 Fx
 JV
 Lr
-JE
-LO
-jC
+fb
+VK
+bD
 QY
 kp
 Qx
@@ -25742,9 +25849,9 @@ nl
 YB
 BS
 OC
-GZ
+is
 NE
-GZ
+is
 ZD
 eJ
 nz
@@ -29406,7 +29513,7 @@ wP
 VJ
 Gf
 jy
-mr
+hQ
 Rd
 Cw
 XO
@@ -30370,7 +30477,7 @@ eh
 oP
 qW
 rN
-mr
+hQ
 sE
 Vj
 tJ
@@ -30564,7 +30671,7 @@ eh
 oP
 Wv
 kf
-mr
+hQ
 IT
 Uf
 tJ
@@ -30759,7 +30866,7 @@ oP
 BO
 lk
 ZC
-gQ
+cQ
 SB
 VJ
 TE
@@ -30952,7 +31059,7 @@ eh
 oP
 VE
 rb
-mr
+hQ
 iY
 Xx
 tJ
@@ -31146,7 +31253,7 @@ eh
 oP
 qW
 oR
-mr
+hQ
 Cy
 Vj
 tJ
@@ -31340,7 +31447,7 @@ eh
 oP
 LY
 rS
-gQ
+cQ
 Sm
 yc
 tJ
