@@ -348,6 +348,10 @@ var/global/list/light_type_cache = list()
 /obj/machinery/light/small/poi
 	start_with_cell = FALSE
 
+/obj/machinery/light/small/old
+	color = "#f6a820"
+	brightness_color = "#e99a11"
+
 /obj/machinery/light/fairy
 	name = "fairy lights"
 	icon = 'icons/obj/lighting.dmi'
