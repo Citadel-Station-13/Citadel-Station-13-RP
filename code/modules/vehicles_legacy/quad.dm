@@ -1,7 +1,7 @@
 // TODO: port to modern vehicles. If you're in this file, STOP FUCKING WITH IT AND PORT IT OVER.
 /obj/vehicle_old/train/engine/quadbike //It's a train engine, so it can tow trailers.
 	name = "electric all terrain vehicle"
-	desc = "A ridable electric ATV designed for all terrain. Except space."
+	desc = "A rideable electric ATV designed for all terrain. Except space."
 	icon = 'icons/obj/vehicles_64x64.dmi'
 	icon_state = "quad"
 	on = 0

@@ -197,7 +197,7 @@
 		/obj/item/reagent_containers/glass/stone,
 		/obj/item/stack/medical/poultice_brute,
 		/obj/item/stack/medical/poultice_burn,
-		/obj/item/grenade/explosive/ashlander,
+		/obj/item/grenade/simple/explosive/ashlander,
 		/obj/item/bitterash,
 		/obj/item/flame/lighter,
 	)

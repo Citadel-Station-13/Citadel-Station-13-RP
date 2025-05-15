@@ -191,6 +191,14 @@
 	_last_dir = dir
 	var/ppx = AM.get_centering_pixel_x_offset(dir)
 	var/ppy = AM.get_centering_pixel_y_offset(dir)
+	var/resizeX = 1
+	var/resizeY = 1
+	if(isliving(AM))
+		var/mob/living/mounted = AM
+		resizeX *= mounted.size_multiplier * mounted.icon_scale_x
+		resizeY *= mounted.size_multiplier * mounted.icon_scale_y
+		ppx = 2*mounted.shift_pixel_x - ppx //Jank to negate the offset, while following the shift
+		ppy = 2*mounted.shift_pixel_y - ppy
 	var/list/offsets
 	var/i
 	var/mob/M
@@ -208,8 +216,8 @@
 					M.setDir(offsets[4])
 				M.reset_pixel_shifting()
 				M.set_base_layer(offsets[3] + AM.layer)
-				M.pixel_x = ppx + M.get_standard_pixel_x_offset() - M.get_centering_pixel_x_offset(dir) + offsets[1]
-				M.pixel_y = ppy + M.get_standard_pixel_y_offset() - M.get_centering_pixel_y_offset(dir) + offsets[2]
+				M.pixel_x = ppx + M.get_standard_pixel_x_offset() + M.get_centering_pixel_x_offset(dir) + resizeX * offsets[1]
+				M.pixel_y = ppy + M.get_standard_pixel_y_offset() + M.get_centering_pixel_y_offset(dir) + resizeY * offsets[2]
 		if(CF_RIDING_OFFSETS_DIRECTIONAL)
 			var/list/relevant
 			switch(dir)
@@ -230,8 +238,8 @@
 					M.setDir(offsets[4])
 				M.reset_pixel_shifting()
 				M.set_base_layer(offsets[3] + AM.layer)
-				M.pixel_x = ppx + M.get_standard_pixel_x_offset() - M.get_centering_pixel_x_offset(dir) + offsets[1]
-				M.pixel_y = ppy + M.get_standard_pixel_y_offset() - M.get_centering_pixel_y_offset(dir) + offsets[2]
+				M.pixel_x = ppx + M.get_standard_pixel_x_offset() + M.get_centering_pixel_x_offset(dir) + resizeX * offsets[1]
+				M.pixel_y = ppy + M.get_standard_pixel_y_offset() + M.get_centering_pixel_y_offset(dir) + resizeY * offsets[2]
 		if(CF_RIDING_OFFSETS_ENUMERATED)
 			var/list/relevant
 			var/rider_offsets_len = length(rider_offsets)
@@ -254,16 +262,17 @@
 					M.setDir(offsets[4])
 				M.reset_pixel_shifting()
 				M.set_base_layer(offsets[3] + AM.layer)
-				M.pixel_x = ppx + M.get_standard_pixel_x_offset() - M.get_centering_pixel_x_offset(dir) + offsets[1]
-				M.pixel_y = ppy + M.get_standard_pixel_y_offset() - M.get_centering_pixel_y_offset(dir) + offsets[2]
+				M.pixel_x = ppx + M.get_standard_pixel_x_offset() + M.get_centering_pixel_x_offset(dir) + resizeX * offsets[1]
+				M.pixel_y = ppy + M.get_standard_pixel_y_offset() + M.get_centering_pixel_y_offset(dir) + resizeY * offsets[2]
 
 /**
  * returns transformed rider offset list
  *
  * DO NOT CHANGE DEFAULT FOR THE LOVE OF GOD, COPY IT IF YOU ARE CHANGING IT!!
+ * You just need to call the parent to get it, even.
  */
 /datum/component/riding_handler/proc/rider_offsets(mob/rider, pos, semantic, list/default, dir)
-	return default
+	return default.Copy()
 
 /datum/component/riding_handler/proc/signal_hook_handle_relaymove(datum/source, mob/M, dir)
 	attempt_drive(M, dir)
@@ -475,5 +484,4 @@
 
 /datum/component/riding_handler/proc/process_spacemove()
 	var/atom/movable/AM = parent
-	// todo: process_spacemove() on atom movable instead of hasgrav.
-	return (riding_handler_flags & CF_RIDING_HANDLER_FORCED_SPACEMOVE) || AM.has_gravity()
+	return (riding_handler_flags & CF_RIDING_HANDLER_FORCED_SPACEMOVE) || AM.Process_Spacemove()

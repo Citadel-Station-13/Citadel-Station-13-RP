@@ -23,7 +23,6 @@
 		|ACCESSORY_SLOT_ARMBAND\
 		|ACCESSORY_SLOT_TIE\
 		|ACCESSORY_SLOT_OVER) // snowflake decorating i guess
-	species_restricted = list(SPECIES_HUMAN, SPECIES_PHORONOID) //if phoronoids can fit in human suits then...
 	starts_with_helmet = TRUE
 	helmet_type = /obj/item/clothing/head/helmet/space/void/plasman
 
@@ -45,7 +44,6 @@
 	light_overlay = "plasmaman_overlay"
 	weight = ITEM_WEIGHT_PHORONOID_HELMET
 	encumbrance = ITEM_ENCUMBRANCE_PHORONOID_HELMET
-	species_restricted = list(SPECIES_HUMAN, SPECIES_PHORONOID)
 	var/analyzing = FALSE
 
 /obj/item/clothing/head/helmet/space/void/plasman/examine()

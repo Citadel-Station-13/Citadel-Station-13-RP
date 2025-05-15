@@ -97,16 +97,12 @@
 
 /obj/item/clothing/head/helmet/space/hardsuit/military
 	light_overlay = "helmet_light_dual_green"
-	species_restricted = list(SPECIES_HUMAN,SPECIES_PROMETHEAN)
 
 /obj/item/clothing/suit/space/hardsuit/military
-	species_restricted = list(SPECIES_HUMAN,SPECIES_PROMETHEAN)
 
 /obj/item/clothing/shoes/magboots/hardsuit/military
-	species_restricted = list(SPECIES_HUMAN,SPECIES_PROMETHEAN)
 
 /obj/item/clothing/gloves/gauntlets/hardsuit/military
-	species_restricted = list(SPECIES_HUMAN,SPECIES_PROMETHEAN)
 
 /obj/item/hardsuit/military/equipped
 	initial_modules = list(
