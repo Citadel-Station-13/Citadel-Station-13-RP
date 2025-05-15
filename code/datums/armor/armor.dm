@@ -207,13 +207,17 @@
 		shieldcall_args[SHIELDCALL_ARG_DAMAGE_FLAG] & DAMAGE_MODE_REQUEST_ARMOR_RANDOMIZATION,
 	)
 	if(shieldcall_args[SHIELDCALL_ARG_DAMAGE_MODE] & DAMAGE_MODE_REQUEST_ARMOR_BLUNTING)
+		var/effective_blunt_tierdiff
 		switch(shieldcall_args[SHIELDCALL_ARG_DAMAGE_FLAG])
 			if(ARMOR_MELEE)
-				pass()
+				effective_blunt_tierdiff = melee_tier - shieldcall_args[SHIELDCALL_ARG_DAMAGE_TIER]
 			if(ARMOR_BULLET)
-				pass()
+				effective_blunt_tierdiff = bullet_tier - shieldcall_args[SHIELDCALL_ARG_DAMAGE_TIER]
 			if(ARMOR_LASER)
-				#warn blunt damage modes as needed
+				effective_blunt_tierdiff = laser_tier - shieldcall_args[SHIELDCALL_ARG_DAMAGE_TIER]
+		var/blunt_chance = ARMOR_TIER_BLUNT_CHANCE(effective_blunt_tierdiff)
+		if(prob(blunt_chance))
+			shieldcall_args[SHIELDCALL_ARG_DAMAGE_MODE] &= DAMAGE_MODES_BLUNTED_BY_ARMOR
 
 /datum/armor/proc/resultant_damage(damage, tier, flag, randomize)
 	var/effective_armor
