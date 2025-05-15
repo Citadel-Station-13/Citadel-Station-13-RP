@@ -174,6 +174,9 @@
  * @return mutated impact flags
  */
 /atom/proc/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	var/resolved_impact_sound = hitsound_projectile(proj)
+	if(resolved_impact_sound)
+		playsound(src, resolved_impact_sound, 75, TRUE)
 	if(!(impact_flags & (PROJECTILE_IMPACT_BLOCKED | PROJECTILE_IMPACT_SKIP_STANDARD_DAMAGE)))
 		impact_flags |= proj.inflict_impact_damage(src, bullet_act_args[BULLET_ACT_ARG_EFFICIENCY], impact_flags, bullet_act_args[BULLET_ACT_ARG_ZONE])
 	return impact_flags

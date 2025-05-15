@@ -1154,60 +1154,28 @@
 	. = impact_flags
 
 	//! LEGACY COMBAT CODE
-	// SHIM!!!
-	var/list/shieldcall_modified_args = target.check_damage_instance(damage_force, damage_type, damage_tier, damage_flag, damage_mode, ATTACK_TYPE_PROJECTILE, src, SHIELDCALL_FLAG_SECOND_CALL, hit_zone)
-	// todo: this handling very obviously should not be here
-	// dear lord this code is a dumpster fire
-	if(shieldcall_modified_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAGS_PIERCE_ATTACK)
-		. |= PROJECTILE_IMPACT_REFLECT
-	if(shieldcall_modified_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAGS_BLOCK_ATTACK)
-		return
-	// END
-	#warn deal with this
 	if(isliving(target))
 		var/mob/living/L = target
-		//Armor
-		var/soaked = L.get_armor_soak(hit_zone, src.damage_flag, src.armor_penetration)
-		var/absorb = L.run_armor_check(hit_zone, src.damage_flag, src.armor_penetration)
-		var/proj_sharp = is_sharp(src)
-		var/proj_edge = has_edge(src)
-		var/final_damage = src.get_final_damage(target) * efficiency
-
-		if ((proj_sharp || proj_edge) && (soaked >= round(src.damage_force*0.8)))
-			proj_sharp = 0
-			proj_edge = 0
-
-		if ((proj_sharp || proj_edge) && prob(L.legacy_mob_armor(hit_zone, src.damage_flag)))
-			proj_sharp = 0
-			proj_edge = 0
-
-		var/resolved_impact_sound = resolve_impact_sfx(L.get_combat_fx_classifier(ATTACK_TYPE_PROJECTILE, src, hit_zone), L)
-		if(resolved_impact_sound)
-			playsound(L, resolved_impact_sound, 75, TRUE)
-
-		if(!src.nodamage)
-			L.apply_damage(final_damage, src.damage_type, hit_zone, absorb, soaked, 0, src, sharp=proj_sharp, edge=proj_edge)
-
 		// todo: some of these dont' make sense to be armor'd (last two), some do; please refactor this
 		L.apply_effects(stun, weaken, paralyze, irradiate, stutter, eyeblur, drowsy, agony, clamp((1 - efficiency) * 100 + absorb, 0, 100), incendiary, flammability)
 		if(modifier_type_to_apply)
 			L.add_modifier(modifier_type_to_apply, modifier_duration)
 	//! END
-	#warn deal with
-	// if(!(impact_flags & (PROJECTILE_IMPACT_BLOCKED | PROJECTILE_IMPACT_SKIP_STANDARD_DAMAGE)))
-	// 	// todo: maybe the projectile side should handle this?
-	// 	run_damage_instance(
-	// 		proj.get_structure_damage() * bullet_act_args[BULLET_ACT_ARG_EFFICIENCY],
-	// 		proj.damage_type,
-	// 		proj.damage_tier,
-	// 		proj.damage_flag,
-	// 		proj.damage_mode,
-	// 		ATTACK_TYPE_PROJECTILE,
-	// 		proj,
-	// 		NONE,
-	// 		bullet_act_args[BULLET_ACT_ARG_ZONE],
-	// 	)
-	
+
+	if(!(impact_flags & (PROJECTILE_IMPACT_BLOCKED | PROJECTILE_IMPACT_SKIP_STANDARD_DAMAGE)))
+		// todo: maybe the projectile side should handle this?
+		target.run_damage_instance(
+			get_structure_damage() * efficiency,
+			damage_type,
+			damage_tier,
+			damage_flag,
+			damage_mode,
+			ATTACK_TYPE_PROJECTILE,
+			src,
+			NONE,
+			hit_zone,
+		)
+
 	for(var/datum/projectile_effect/effect as anything in base_projectile_effects)
 		if(effect.hook_damage)
 			effect.on_damage(src, target, impact_flags, hit_zone, efficiency)
@@ -1215,9 +1183,11 @@
 		if(effect.hook_damage)
 			effect.on_damage(src, target, impact_flags, hit_zone, efficiency)
 
+	//! LEGACY COMBAT CODE
 	if(legacy_penetrating > 0)
 		if(process_legacy_penetration(target))
 			. |= PROJECTILE_IMPACT_PIERCE | PROJECTILE_IMPACT_PASSTHROUGH
+	//! END
 
 	if(QDELETED(target))
 		. |= PROJECTILE_IMPACT_TARGET_DELETED

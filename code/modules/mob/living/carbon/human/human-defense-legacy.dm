@@ -159,25 +159,6 @@
 	affecting.sabotaged = 1
 	return 1
 
-//this proc handles being hit by a thrown atom
-/mob/living/carbon/human/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
-//	if(buckled && buckled == AM)
-//		return // Don't get hit by the thing we're buckled to.
-	#warn deal with this and move it to human-defense.dm
-	if(istype(AM, /obj))
-		var/obj/O = AM
-
-		if(in_throw_mode && TT.speed <= THROW_SPEED_CATCHABLE)	//empty active hand and we're in throw mode
-			if(CHECK_ALL_MOBILITY(src, MOBILITY_CAN_USE | MOBILITY_CAN_PICKUP))
-				if(isturf(O.loc))
-					if(can_catch(O))
-						put_in_active_hand(O)
-						visible_message("<span class='warning'>[src] catches [O]!</span>")
-						throw_mode_off()
-						return COMPONENT_THROW_HIT_NEVERMIND
-
-	return ..()
-
 // This does a prob check to catch the thing flying at you, with a minimum of 1%
 /mob/living/carbon/human/proc/can_catch(var/obj/O)
 	if(!get_active_held_item())	// If active hand is empty

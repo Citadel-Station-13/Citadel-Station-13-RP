@@ -7,6 +7,19 @@
 	// TODO: sparring / blocking
 	return ..()
 
+//* Throw Handling *//
+
+/mob/living/carbon/human/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	if(isitem(AM) && in_throw_mode && CHECK_ALL_MOBILITY(src, MOBILITY_CAN_USE | MOBILITY_CAN_PICKUP))
+		var/obj/item/trying_to_catch = AM
+		if(TT.speed <= THROW_SPEED_CATCHABLE && can_catch(trying_to_catch) && put_in_active_hand(trying_to_catch))
+			visible_message(
+				SPAN_WARNING("[src] catches [trying_to_catch]!"),
+			)
+			throw_mode_off()
+			return COMPONENT_THROW_HIT_NEVERMIND
+	return ..()
+
 //* Projectile Handling *//
 
 /mob/living/carbon/human/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
