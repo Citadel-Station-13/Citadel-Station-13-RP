@@ -2465,6 +2465,7 @@
 	},
 /obj/effect/floor_decal/corner/lightorange,
 /obj/machinery/vending/coffee,
+/obj/machinery/camera/network/engineering,
 /turf/simulated/floor/tiled/white,
 /area/engineering/engine_monitoring)
 "cwq" = (
@@ -3206,7 +3207,7 @@
 "dhh" = (
 /obj/machinery/air_alarm/north_mount,
 /obj/structure/catwalk,
-/obj/machinery/camera/network/tcomms,
+/obj/machinery/camera/network/engineering,
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_lower)
 "dhs" = (
@@ -3548,6 +3549,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
+	},
+/obj/machinery/camera/network/engineering{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
@@ -5357,6 +5361,13 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
+"fjQ" = (
+/obj/machinery/atmospherics/pipe/simple/visible/purple,
+/obj/machinery/camera/network/engineering{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/atmos)
 "fjV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -5843,6 +5854,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4portafthall)
+"fIF" = (
+/obj/machinery/camera/network/engineering,
+/turf/simulated/floor/tiled/monodark,
+/area/engineering/drone_fabrication)
 "fJl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -7169,6 +7184,10 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/machinery/camera/network/research{
+	dir = 4;
+	network = list("Xenobiology")
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/robotics/smallcraft)
 "gZD" = (
@@ -7458,6 +7477,9 @@
 	pixel_y = 3
 	},
 /obj/structure/table/reinforced,
+/obj/machinery/camera/network/command{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/command/turrets)
 "hnd" = (
@@ -9779,6 +9801,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4portafthall)
+"jyj" = (
+/obj/machinery/camera/network/research,
+/turf/simulated/floor/tiled/techfloor,
+/area/endeavour/hallway/d4fwdmaint)
 "jyo" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/structure/disposalpipe/segment{
@@ -10604,6 +10630,14 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/engineering/atmos/workshop)
+"kqI" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/warning,
+/obj/machinery/camera/network/research,
+/turf/simulated/floor/tiled/techmaint,
+/area/rnd/robotics/smallcraft)
 "kqL" = (
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced/full{
@@ -11558,6 +11592,9 @@
 	pixel_x = 25
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 1
+	},
+/obj/machinery/camera/network/engineering{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -13260,6 +13297,7 @@
 /obj/effect/floor_decal/corner/lightorange,
 /obj/structure/table/standard,
 /obj/machinery/microwave,
+/obj/machinery/camera/network/engineering,
 /turf/simulated/floor/tiled/white,
 /area/engineering/engine_monitoring)
 "nic" = (
@@ -16337,6 +16375,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4portafthall)
+"qyW" = (
+/obj/machinery/camera/network/engineering{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/atmos)
 "qzy" = (
 /obj/machinery/telecomms/processor/preset_two,
 /turf/simulated/floor/tiled/dark{
@@ -17396,6 +17440,17 @@
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
+"rMC" = (
+/obj/machinery/disperser/front{
+	dir = 4;
+	name = "Mass Driver Barrel";
+	desc = "The business end of a mass driver, the magnetic coils in this tube accelerate things shoved into it when power is applied."
+	},
+/obj/machinery/camera/network/research{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4fwdmaint)
 "rME" = (
 /obj/machinery/camera/network/outside{
 	dir = 1
@@ -37274,7 +37329,7 @@ bGC
 gPc
 qhi
 ngK
-sPn
+fjQ
 lfw
 vGV
 sCH
@@ -38061,7 +38116,7 @@ oGk
 tem
 xAr
 kuh
-kuh
+qyW
 tqu
 jNg
 jNg
@@ -38378,7 +38433,7 @@ jNg
 jNg
 jNg
 bto
-xUB
+fIF
 xUB
 lPp
 xUB
@@ -51793,7 +51848,7 @@ owo
 wYt
 ciZ
 owo
-fMI
+jyj
 nRW
 fMI
 nRW
@@ -52960,11 +53015,11 @@ nQj
 nQj
 eEF
 fMI
-eEF
+rMC
 owo
 kaY
 owo
-inf
+kqI
 sfK
 aYc
 wfT

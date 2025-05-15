@@ -824,7 +824,8 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 
 //* Flags *//
 
-/obj/item/proc/set_body_cover_flags()
+/obj/item/proc/set_body_cover_flags(new_body_cover_flags)
+	body_cover_flags = new_body_cover_flags
 	inv_inside.invalidate_coverage_cache()
 
 //* Interactions *//

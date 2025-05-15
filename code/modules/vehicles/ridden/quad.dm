@@ -1,6 +1,6 @@
 /obj/vehicle/ridden/quadbike
 	name = "electric all terrain vehicle"
-	desc = "A ridable electric ATV designed for all terrain. Except space."
+	desc = "A rideable electric ATV designed for all terrain. Except space."
 	icon = 'icons/obj/vehicles_64x64.dmi'
 	icon_state = "quad"
 	integrity = 200

@@ -2519,3 +2519,12 @@
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/sleeveless_qipao
+	name = "sleeveless black qipao"
+	desc = "A popular dress from Old Earth China, commonly worn to festivals. Easily recognizable thanks to its intricate embroidery and bold side slits."
+	icon = 'icons/clothing/uniform/misc/sleeveless_qipao.dmi'
+	icon_state = "sleevelessqipao"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
