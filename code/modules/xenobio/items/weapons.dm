@@ -96,12 +96,12 @@
 		if(L.mob_class & MOB_CLASS_SLIME)
 			if(isslime(L))
 				var/mob/living/simple_mob/slime/S = L
-				S.slimebatoned(firer, round(agony/2))
+				S.slimebatoned(firer, round(damage_inflict_agony/2))
 			else
-				L.afflict_paralyze(20 * round(agony/2))
+				L.afflict_paralyze(20 * round(damage_inflict_agony/2))
 
 		if(ishuman(L))
 			var/mob/living/carbon/human/H = L
 			if(H.species && H.species.get_species_id() == SPECIES_ID_PROMETHEAN)
-				if(agony == initial(agony)) // ??????
-					damage_inflict_agony = round((14 * agony) - agony) //60-4 = 56, 56 / 4 = 14. Prior was flat 60 - agony of the beam to equate to 60.
+				if(damage_inflict_agony == initial(damage_inflict_agony)) // ??????
+					damage_inflict_agony = round((14 * damage_inflict_agony) - damage_inflict_agony) //60-4 = 56, 56 / 4 = 14. Prior was flat 60 - agony of the beam to equate to 60.

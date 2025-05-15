@@ -491,6 +491,7 @@
 #include "code\__HELPERS\sorts\MergeSort.dm"
 #include "code\__HELPERS\sorts\TimSort.dm"
 #include "code\__HELPERS\text\format.dm"
+#include "code\__HELPERS\text\padding.dm"
 #include "code\__HELPERS\text\scramble.dm"
 #include "code\__HELPERS\type2type\color.dm"
 #include "code\__HELPERS\type2type\type2type.dm"

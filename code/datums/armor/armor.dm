@@ -7,13 +7,13 @@
  */
 /datum/armor
 	/// just for vv
+	/// TODO: don't need name?
 	var/name
 
 	/**
-	 * static randomization; all armor will be multiplied by rand(-ratio, ratio)
-	 * TODO: impl in a sane way that lets incoming checks opt-out
+	 * static randomization; all armor will be multiplied by `rand(-percent, percent) * 100`
 	 */
-	// var/randomization_ratio = 0.25
+	var/randomization_percent = 25
 
 	var/melee = 0
 	var/melee_tier = MELEE_TIER_DEFAULT
@@ -85,18 +85,18 @@
 
 /datum/armor/proc/to_name()
 	return jointext(list(
-		"[round(melee * 100, 0.1)]@[melee_tier]-[melee_soak]^[melee_deflect]",
-		"[round(bullet * 100, 0.1)]@[bullet_tier]-[bullet_soak]^[bullet_deflect]",
-		"[round(laser * 100, 0.1)]@[laser_tier]-[laser_soak]^[laser_deflect]",
-		"[round(energy * 100, 0.1)]",
-		"[round(bomb * 100, 0.1)]",
-		"[round(bio * 100, 0.1)]",
-		"[round(rad * 100, 0.1)]",
-		"[round(fire * 100, 0.1)]",
-		"[round(acid * 100, 0.1)]",
+		"MEL [round(melee * 100, 0.1)]@[melee_tier]-[melee_soak]^[melee_deflect]",
+		"BUL [round(bullet * 100, 0.1)]@[bullet_tier]-[bullet_soak]^[bullet_deflect]",
+		"LAS [round(laser * 100, 0.1)]@[laser_tier]-[laser_soak]^[laser_deflect]",
+		"ERG [round(energy * 100, 0.1)]",
+		"BOM [round(bomb * 100, 0.1)]",
+		"BIO [round(bio * 100, 0.1)]",
+		"RAD [round(rad * 100, 0.1)]",
+		"FIR [round(fire * 100, 0.1)]",
+		"ACD [round(acid * 100, 0.1)]",
 	), " | ")
 
-/datum/armor/proc/get_raw(flag)
+/datum/armor/proc/get_mitigation(flag)
 	switch(flag)
 		if(ARMOR_MELEE)
 			return melee
@@ -135,33 +135,18 @@
 		if(ARMOR_ACID)
 			return acid
 		else
-			CRASH("Invalid flag: [flag]")
+			return 0
 
-/datum/armor/proc/get_mitigation(flag, tier = ARMOR_TIER_DEFAULT)
+/datum/armor/proc/get_tier(flag)
 	switch(flag)
 		if(ARMOR_MELEE)
-			var/tdiff = melee_tier - tier
-			return 1 - ARMOR_TIER_CALC(melee, tdiff)
+			return melee_tier
 		if(ARMOR_BULLET)
-			var/tdiff = bullet_tier - tier
-			return 1 - ARMOR_TIER_CALC(bullet, tdiff)
+			return bullet_tier
 		if(ARMOR_LASER)
-			var/tdiff = laser_tier - tier
-			return 1 - ARMOR_TIER_CALC(laser, tdiff)
-		if(ARMOR_ENERGY)
-			return energy
-		if(ARMOR_BOMB)
-			return bomb
-		if(ARMOR_BIO)
-			return bio
-		if(ARMOR_RAD)
-			return rad
-		if(ARMOR_FIRE)
-			return fire
-		if(ARMOR_ACID)
-			return acid
+			return laser_tier
 		else
-			CRASH("Invalid flag: [flag]")
+			return 0
 
 /datum/armor/proc/get_soak(flag)
 	switch(flag)
@@ -185,6 +170,32 @@
 		else
 			return 0
 
+/datum/armor/proc/get_tiered_mitigation(flag, tier = ARMOR_TIER_DEFAULT)
+	switch(flag)
+		if(ARMOR_MELEE)
+			var/tdiff = melee_tier - tier
+			return 1 - ARMOR_TIER_CALC(melee, tdiff)
+		if(ARMOR_BULLET)
+			var/tdiff = bullet_tier - tier
+			return 1 - ARMOR_TIER_CALC(bullet, tdiff)
+		if(ARMOR_LASER)
+			var/tdiff = laser_tier - tier
+			return 1 - ARMOR_TIER_CALC(laser, tdiff)
+		if(ARMOR_ENERGY)
+			return energy
+		if(ARMOR_BOMB)
+			return bomb
+		if(ARMOR_BIO)
+			return bio
+		if(ARMOR_RAD)
+			return rad
+		if(ARMOR_FIRE)
+			return fire
+		if(ARMOR_ACID)
+			return acid
+		else
+			return 0
+
 /**
  * The big, bad proc that deals with inbound shieldcalls.
  */
@@ -193,61 +204,81 @@
 		shieldcall_args[SHIELDCALL_ARG_DAMAGE],
 		shieldcall_args[SHIELDCALL_ARG_DAMAGE_TIER],
 		shieldcall_args[SHIELDCALL_ARG_DAMAGE_FLAG],
+		shieldcall_args[SHIELDCALL_ARG_DAMAGE_FLAG] & DAMAGE_MODE_REQUEST_ARMOR_RANDOMIZATION,
 	)
+	if(shieldcall_args[SHIELDCALL_ARG_DAMAGE_MODE] & DAMAGE_MODE_REQUEST_ARMOR_BLUNTING)
+		switch(shieldcall_args[SHIELDCALL_ARG_DAMAGE_FLAG])
+			if(ARMOR_MELEE)
+				pass()
+			if(ARMOR_BULLET)
+				pass()
+			if(ARMOR_LASER)
+				#warn blunt damage modes as needed
 
-/datum/armor/proc/resultant_damage(damage, tier, flag)
+/datum/armor/proc/resultant_damage(damage, tier, flag, randomize)
+	var/effective_armor
+	var/effective_soak
+	var/effective_deflect
+
 	switch(flag)
 		if(ARMOR_MELEE)
 			if(!melee)
 				return damage
-			var/effective_armor = armor_tier_calculation(melee, melee_tier - tier)
-			damage = max(0, damage * effective_armor - melee_soak)
-			if(damage <= melee_deflect)
-				return 0
-			return damage
+			effective_armor = armor_tier_calculation(melee, melee_tier - tier)
+			effective_soak = melee_soak
+			effective_deflect = melee_deflect
 		if(ARMOR_BULLET)
 			if(!bullet)
 				return damage
-			var/effective_armor = armor_tier_calculation(bullet, bullet_tier - tier)
-			damage = max(0, damage * effective_armor - bullet_soak)
-			if(damage <= bullet_deflect)
-				return 0
-			return damage
+			effective_armor = armor_tier_calculation(bullet, bullet_tier - tier)
+			effective_soak = bullet_soak
+			effective_deflect = bullet_deflect
 		if(ARMOR_LASER)
 			if(!laser)
 				return damage
-			var/effective_armor = armor_tier_calculation(laser, laser_tier - tier)
-			damage = max(0, damage * effective_armor - laser_soak)
-			if(damage <= laser_deflect)
-				return 0
-			return damage
+			effective_armor = armor_tier_calculation(laser, laser_tier - tier)
+			effective_soak = laser_soak
+			effective_deflect = laser_deflect
 		if(ARMOR_ENERGY)
-			return damage * (1 - energy)
+			effective_armor = energy
 		if(ARMOR_BOMB)
-			return damage * (1 - bomb)
+			effective_armor = bomb
 		if(ARMOR_BIO)
-			return damage * (1 - bio)
+			effective_armor = bio
 		if(ARMOR_RAD)
-			return damage * (1 - rad)
+			effective_armor = rad
 		if(ARMOR_FIRE)
-			return damage * (1 - fire)
+			effective_armor = fire
 		if(ARMOR_ACID)
-			return damage * (1 - acid)
-		else
-			CRASH("Invalid flag: [flag]")
+			effective_armor = acid
 
-/datum/armor/proc/describe_list()
+	if(randomize)
+		effective_armor = effective_armor * (1 + rand(-randomization_percent, randomization_percent) * 0.01)
+
+	damage = max(0, damage * effective_armor - effective_soak)
+	return damage
+
+/**
+ * Output should be monospaced if possible.
+ * * This is expensive, please try to use describe_data_list() instead.
+ */
+/datum/armor/proc/describe_english_list() as /list
 	RETURN_TYPE(/list)
 	. = list()
-	. += "Melee: [round(melee * 100, 0.1)]% [melee_soak] flat @ [melee_tier] hardness"
-	. += "Bullet: [round(bullet * 100, 0.1)]% [bullet_soak] flat @ [bullet_tier] hardness"
-	. += "Laser: [round(laser * 100, 0.1)]% [laser_soak] flat @ [laser_tier] hardness"
-	. += "Energy: [round(energy * 100, 0.1)]%"
-	. += "Bomb: [round(bomb * 100, 0.1)]%"
-	. += "Bio: [round(bio * 100, 0.1)]%"
-	. += "Radiation: [round(rad * 100, 0.1)]%"
-	. += "Thermal: [round(fire * 100, 0.1)]%"
-	. += "Acid: [round(acid * 100, 0.1)]%"
+	. += "-- % (mitigation) @ (tier) - (soak) ^ (deflect) --"
+	. += "Melee:     [string_leftpad(round(melee * 100), 3)]% @ [melee_tier] -[melee_soak] ^[melee_deflect]"
+	. += "Bullet:    [string_leftpad(round(bullet * 100), 3)]% @ [bullet_tier] -[bullet_soak] ^[bullet_deflect]"
+	. += "Laser:     [string_leftpad(round(laser * 100), 3)]% @ [laser_tier] -[laser_soak] ^[laser_deflect]"
+	. += "Energy:    [string_leftpad(round(energy * 100), 3)]%"
+	. += "Bomb:      [string_leftpad(round(bomb * 100), 3)]%"
+	. += "Bio:       [string_leftpad(round(bio * 100), 3)]%"
+	. += "Radiation: [string_leftpad(round(rad * 100), 3)]%"
+	. += "Thermal:   [string_leftpad(round(fire * 100), 3)]%"
+	. += "Acid:      [string_leftpad(round(acid * 100), 3)]%"
+
+/datum/armor/proc/describe_data_list() as /list
+	RETURN_TYPE(/list)
+	return to_list()
 
 /datum/armor/proc/log_string()
 	var/list/built = list()

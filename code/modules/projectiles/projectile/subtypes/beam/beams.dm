@@ -275,9 +275,9 @@
 	. = ..()
 	if(!(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT))
 		return
-	if(istype(target, /mob/living/silicon/robot) && prob(agony))
+	if(istype(target, /mob/living/silicon/robot) && prob(damage_inflict_agony))
 		var/mob/living/silicon/robot/R = target
-		var/drainamt = agony * (rand(5, 15) / 10)
+		var/drainamt = damage_inflict_agony * (rand(5, 15) / 10)
 		// 100 to 300 drain
 		R.drain_energy(DYNAMIC_CELL_UNITS_TO_KJ(drainamt * 10))
 		if(istype(firer, /mob/living/silicon/robot)) // Mischevious sappers, the swarm drones are.

@@ -1165,7 +1165,7 @@
 	if(isliving(target))
 		var/mob/living/L = target
 		// todo: these all ignore armor right now. this is not a good thing.
-		L.apply_effects(stun, weaken, paralyze, irradiate, stutter, eyeblur, drowsy, agony, clamp((1 - efficiency) * 100, 0, 100), incendiary, flammability)
+		L.apply_effects(stun, weaken, paralyze, irradiate, stutter, eyeblur, drowsy, 0, clamp((1 - efficiency) * 100, 0, 100), incendiary, flammability)
 		if(modifier_type_to_apply)
 			L.add_modifier(modifier_type_to_apply, modifier_duration)
 	//! END

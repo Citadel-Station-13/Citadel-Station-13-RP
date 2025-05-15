@@ -147,7 +147,7 @@
 
 // Armor
 /mob/living/simple_mob/legacy_mob_armor(def_zone, type)
-	var/armorval = fetch_armor().get_raw(type) * 100
+	var/armorval = fetch_armor().get_mitigation(type) * 100
 	if(!armorval)
 		return 0
 	else

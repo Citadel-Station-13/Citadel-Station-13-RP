@@ -56,5 +56,9 @@
 /// config: request armor / shieldcalls apply randomization.
 /// * disabled by default by not having this be an opt-out rather than opt-in flag.
 /// * disabled by default so non-determinism is controlled instead of innate.
-#define DAMAGE_MODE_REQUEST_ARMOR_RANDOMIZATION (1<<23)
+#define DAMAGE_MODE_REQUEST_ARMOR_RANDOMIZATION (1<<22)
+/// config: request armor damping of dangerous damage modes like pierce / shred
+/// * disabled by default by not having this be an opt-out rather than opt-in flag.
+/// * disabled by default so non-determinism is controlled instead of innate.
+#define DAMAGE_MODE_REQUEST_ARMOR_BLUNTING (1<<23)
 

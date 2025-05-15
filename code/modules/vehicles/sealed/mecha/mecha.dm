@@ -1157,7 +1157,9 @@
 		return
 
 	if(Proj.damage_type == DAMAGE_TYPE_HALLOSS)
-		use_power(Proj.agony * 5)
+		use_power(Proj.damage_force * 5)
+	if(Proj.damage_inflict_agony)
+		use_power(Proj.damage_inflict_agony * 5)
 
 	if(!(Proj.nodamage))
 		var/ignore_threshold

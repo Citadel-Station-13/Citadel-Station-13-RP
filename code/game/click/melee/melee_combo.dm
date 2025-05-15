@@ -86,9 +86,9 @@
 			)
 		if(default_feedback_message)
 			attacker.visible_message(
-				fmttext(default_feedback_message, fx_msg_args),
-				fmttext(default_feedback_message_audible, fx_msg_args),
-				fmttext(default_feedback_message_self, fx_msg_args),
+				string_format(default_feedback_message, fx_msg_args),
+				string_format(default_feedback_message_audible, fx_msg_args),
+				string_format(default_feedback_message_self, fx_msg_args),
 			)
 		if(default_feedback_vfx)
 			var/picked_vfx = islist(default_feedback_vfx) ? pick(default_feedback_vfx) : default_feedback_vfx

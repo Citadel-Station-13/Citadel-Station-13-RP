@@ -2,7 +2,7 @@
     name = "disabler beam"
     icon_state = "omnilaser"
     nodamage = 1
-    agony = 40
+    damage_inflict_agony = 40
     damage_type = DAMAGE_TYPE_HALLOSS
     light_color = "#00CECE"
 
