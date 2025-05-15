@@ -16,6 +16,7 @@
 	var/obj/item/airlock_electronics/electronics = null
 	explosion_resistance = 5
 	air_properties_vary_with_direction = 1
+	knocksound = 'sound/effects/glassknock.ogg'
 
 /obj/machinery/door/window/Initialize(mapload)
 	. = ..()

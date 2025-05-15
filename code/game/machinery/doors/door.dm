@@ -46,6 +46,7 @@
 
 	var/reinforcing = 0
 
+	var/allowknock = TRUE //Whether or not you can knock on this door.
 	var/knocksound = 'sound/machines/doorknock.ogg'
 
 /obj/machinery/door/Initialize(mapload, newdir)
@@ -160,7 +161,7 @@
 		return ..()
 	if(user.a_intent == INTENT_GRAB)
 		knock(user)
-		return ..()
+		return
 
 	return src.attackby(user, user)
 
@@ -410,6 +411,8 @@
 	update_nearby_tiles()
 
 /obj/machinery/door/proc/knock(mob/user)
+	if(!allowknock)
+		return
 	if(usr.stat != 0 || !(usr.mobility_flags & MOBILITY_CAN_USE))
 		to_chat(usr, SPAN_WARNING("You can't do that right now."))
 		return
@@ -440,7 +443,8 @@
 
 /obj/machinery/door/context_query()
 	. = ..()
-	.["knock"] = ATOM_CONTEXT_TUPLE("Knock", image('icons/UI_icons/inventory/hand_l.png'), 1, MOBILITY_CAN_USE)
+	if(allowknock)
+		.["knock"] = ATOM_CONTEXT_TUPLE("Knock", image('icons/UI_icons/inventory/hand_l.png'), 1, MOBILITY_CAN_USE)
 
 /obj/machinery/door/context_act(datum/event_args/actor/e_args, key)
 	. = ..()
@@ -460,3 +464,4 @@
 
 	icon = 'icons/turf/stomach_vr.dmi'
 	icon_state = "fleshclosed"
+	allowknock = FALSE //How are you gonna knock on flesh

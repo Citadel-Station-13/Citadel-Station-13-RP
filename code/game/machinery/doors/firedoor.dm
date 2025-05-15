@@ -35,6 +35,8 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 	smoothing_groups = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
 	heat_resistance = 6000
 
+	allowknock = FALSE
+	
 	//These are frequenly used with windows, so make sure zones can pass.
 	//Generally if a firedoor is at a place where there should be a zone boundery then there will be a regular door underneath it.
 	block_air_zones = 0
