@@ -93,7 +93,6 @@
 	var/revival_brain_life = -1
 
 	var/welder_vision = 1
-	var/no_click_cooldown = 0
 
 	//Used for modifying movement speed for mobs.
 	//Unversal modifiers
@@ -222,9 +221,6 @@
 
 				if ("debug_paranoid")
 					config_legacy.debugparanoid = 1
-
-				if ("no_click_cooldown")
-					config_legacy.no_click_cooldown = 1
 
 				if ("allow_vote_restart")
 					config_legacy.allow_vote_restart = 1

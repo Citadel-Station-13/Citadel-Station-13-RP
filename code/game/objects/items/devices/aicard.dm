@@ -14,7 +14,7 @@
 
 	var/mob/living/silicon/ai/carded_ai
 
-/obj/item/aicard/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/aicard/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(!istype(target, /mob/living/silicon/decoy))
 		return ..()
 	target.death()

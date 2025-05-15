@@ -1,6 +1,6 @@
 /obj/projectile/bullet/pistol/rubber/strong //"rubber" bullets for revolvers and matebas
 	damage_force = 10
-	agony = 60
+	damage_inflict_agony = 60
 	embed_chance = 0
 	damage_flag = ARMOR_MELEE
 

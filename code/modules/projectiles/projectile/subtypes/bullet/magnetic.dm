@@ -4,27 +4,27 @@
 	icon_state = "rod"
 	fire_sound = 'sound/weapons/railgun.ogg'
 	damage_force = 65
+	damage_tier = 4.75
 	stun = 1
 	weaken = 1
 	legacy_penetrating = 5
-	armor_penetration = 70
 
 /obj/projectile/bullet/magnetic/slug
 	name = "slug"
 	icon_state = "gauss_silenced"
 	damage_force = 75
-	armor_penetration = 90
+	damage_tier = 5.25
 
 /obj/projectile/bullet/magnetic/flechette
 	name = "flechette"
 	icon_state = "flechette"
 	fire_sound = 'sound/weapons/rapidslice.ogg'
 	damage_force = 20
-	armor_penetration = 100
+	damage_tier = 6
 
 /obj/projectile/bullet/magnetic/flechette/hunting
 	name = "shredder slug"
-	armor_penetration = 30
+	damage_tier = 4.5
 	SA_bonus_damage = 40
 	SA_vulnerability = SA_ANIMAL
 
@@ -40,9 +40,9 @@
 /obj/projectile/bullet/magnetic/heated/weak
 	icon_state = "gauss_silenced"
 	damage_force = 15
-	agony = 5
+	damage_inflict_agony = 5
 	embed_chance = 0
-	armor_penetration = 50
+	damage_tier = 4.25
 
 /obj/projectile/bullet/magnetic/fuelrod
 	name = "fuel rod"
@@ -50,12 +50,12 @@
 	damage_force = 70 //it's a fusion fuel rod propelled faster than sound, it should hurt.
 	stun = 1
 	weaken = 0
-	agony = 50
+	damage_inflict_agony = 50
 	incendiary = 1
 	flammability = 0 //Deuterium and Tritium are both held in water, but the object moving so quickly will ignite the target.
 	legacy_penetrating = 2
 	embed_chance = 0
-	armor_penetration = 40
+	damage_tier = 4.75
 	range = WORLD_ICON_SIZE * 20
 
 	var/searing = 0 //Does this fuelrod ignore shields?
@@ -100,7 +100,7 @@
 	icon_state = "fuel-tritium"
 	damage_force = 100 //Much harder to get than tritium - needs mhydrogen
 	flammability = -1
-	armor_penetration = 50
+	damage_tier = 4.5
 	legacy_penetrating = 3
 
 /obj/projectile/bullet/magnetic/fuelrod/phoron
@@ -109,7 +109,7 @@
 	damage_force = 65 //leaves a trail of fire, irradiates and is much easier to get than the other two, so less damage is fine
 	incendiary = 2
 	flammability = 2
-	armor_penetration = 60
+	damage_tier = 4.75
 	legacy_penetrating = 5
 	irradiate = 20
 	detonate_mob = 1
@@ -121,7 +121,7 @@
 	incendiary = 2
 	flammability = 4
 	weaken = 2
-	armor_penetration = 100
+	damage_tier = 10 // goodbye
 	legacy_penetrating = 100 //Theoretically, this shouldn't stop flying for a while, unless someone lines it up with a wall or fires it into a mountain.
 	irradiate = 120
 	range = WORLD_ICON_SIZE * 75
@@ -146,7 +146,7 @@
 	icon_state = "purpleemitter"
 	damage_force = 20
 	incendiary = 1
-	armor_penetration = 20
+	damage_tier = 4
 	legacy_penetrating = 0
 	damage_flag = ARMOR_MELEE
 	irradiate = 20
@@ -173,7 +173,7 @@
 	icon_state = "purpleemitter"
 	damage_force = 30
 	incendiary = 2
-	armor_penetration = 20
+	damage_tier = 4.25
 	legacy_penetrating = 0
 	damage_flag = ARMOR_MELEE
 	irradiate = 20

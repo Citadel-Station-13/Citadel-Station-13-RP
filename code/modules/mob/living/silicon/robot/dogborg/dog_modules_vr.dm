@@ -454,7 +454,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	var/obj/item/implant/mirror/imp = null
 
-/obj/item/dogborg/mirrortool/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/dogborg/mirrortool/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/carbon/human/H = target
 	if(!istype(H))
 		return

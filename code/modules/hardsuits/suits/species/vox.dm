@@ -21,9 +21,12 @@
 	glove_type = /obj/item/clothing/gloves/gauntlets/hardsuit/vox
 
 /datum/armor/hardsuit/vox
-	melee = 0.6
-	bullet = 0.5
-	laser = 0.4
+	melee = 0.45
+	melee_tier = 4.5
+	bullet = 0.4
+	bullet_tier = 4.5
+	laser = 0.375
+	laser_tier = 4.5
 	energy = 0.25
 	bomb = 0.3
 	bio = 1.0

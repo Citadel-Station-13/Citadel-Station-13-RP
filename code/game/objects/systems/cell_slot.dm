@@ -9,15 +9,18 @@
 	var/obj/item/cell/cell
 	/// reserved - cell type accepted enum, for when we do large/medium/small/etc cells later.
 	var/cell_type
+
 	/// considered primary? if so, we get returned on get_cell()
 	var/primary = TRUE
+
 	/// allow inducer?
 	var/receive_inducer = FALSE
 	/// allow EMPs to hit?
 	var/receive_emp = FALSE
 	/// allow explosions to hit cell?
-	// todo: currently unused
+	// todo: currently unused; probably kill this eventually
 	var/recieve_explosion = FALSE
+
 	/// allow quick removal by clicking with hand?
 	var/remove_yank_offhand = FALSE
 	/// allow context menu removal?
@@ -27,11 +30,14 @@
 	/// no-tool time for removal, if any
 	var/remove_yank_time = 0
 	/// tool behavior for removal, if any
+
 	var/remove_tool_behavior = null
 	/// tool time for removal, if any
 	var/remove_tool_time = 0
+
 	/// removal / insertion is discrete or loud
 	var/remove_is_discrete = TRUE
+
 	/// legacy
 	// todo: kill this
 	var/legacy_use_device_cells = FALSE

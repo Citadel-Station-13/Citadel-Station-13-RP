@@ -572,7 +572,7 @@
 	damage_force = 15
 	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_LASER
-	armor_penetration = 60
+	damage_tier = 5
 	light_range = 2
 	light_power = -2
 	light_color = "#FFFFFF"

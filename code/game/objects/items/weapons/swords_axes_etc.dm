@@ -19,7 +19,7 @@
 	drop_sound = 'sound/items/drop/crowbar.ogg'
 	pickup_sound = 'sound/items/pickup/crowbar.ogg'
 
-/obj/item/melee/classic_baton/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/melee/classic_baton/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if ((MUTATION_CLUMSY in user.mutations) && prob(50) && isliving(user))
 		var/mob/living/L = user
 		to_chat(user, "<span class='warning'>You club yourself over the head.</span>")
@@ -95,7 +95,7 @@
 		add_overlay(blood_overlay)
 	return
 
-/obj/item/melee/telebaton/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/melee/telebaton/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(on)
 		if ((MUTATION_CLUMSY in user.mutations) && prob(50))
 			to_chat(user, "<span class='warning'>You club yourself over the head.</span>")
@@ -305,7 +305,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "wakibokken_blade_h"
 	damage_force = 15
-	damage_tier = MELEE_TIER_MEDIUM
+	damage_tier = 3
 	slot_flags = SLOT_BACK
 	attack_sound = "swing_hit"
 	attack_verb = list("smashed", "slammed", "whacked", "thwacked")
@@ -326,23 +326,24 @@
 			user.emote("flip")
 		sleep(1)
 
-/obj/item/bo_staff/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	. = ..()
-	var/mob/living/L = target
-	if(!istype(L))
-		return
-	var/mob/living/carbon/human/H = L
-	var/list/fluffmessages = list("[user] clubs [H] with [src]!", \
-									"[user] smacks [H] with the butt of [src]!", \
-									"[user] broadsides [H] with [src]!", \
-									"[user] smashes [H]'s head with [src]!", \
-									"[user] beats [H] with front of [src]!", \
-									"[user] twirls and slams [H] with [src]!")
-	H.visible_message("<span class='warning'>[pick(fluffmessages)]</span>", \
-							"<span class='userdanger'>[pick(fluffmessages)]</span>")
-	playsound(get_turf(user), 'sound/effects/woodhit.ogg', 75, 1, -1)
-	if(prob(25))
-		INVOKE_ASYNC(src, PROC_REF(jedi_spin), user)
+// todo: sigh
+// /obj/item/bo_staff/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+// 	. = ..()
+// 	var/mob/living/L = target
+// 	if(!istype(L))
+// 		return
+// 	var/mob/living/carbon/human/H = L
+// 	var/list/fluffmessages = list("[user] clubs [H] with [src]!",
+// 									"[user] smacks [H] with the butt of [src]!",
+// 									"[user] broadsides [H] with [src]!",
+// 									"[user] smashes [H]'s head with [src]!",
+// 									"[user] beats [H] with front of [src]!",
+// 									"[user] twirls and slams [H] with [src]!")
+// 	H.visible_message("<span class='warning'>[pick(fluffmessages)]</span>",
+// 							"<span class='userdanger'>[pick(fluffmessages)]</span>")
+// 	playsound(get_turf(user), 'sound/effects/woodhit.ogg', 75, 1, -1)
+// 	if(prob(25))
+// 		INVOKE_ASYNC(src, PROC_REF(jedi_spin), user)
 
 //Kanabo
 /obj/item/melee/kanabo // parrying stick

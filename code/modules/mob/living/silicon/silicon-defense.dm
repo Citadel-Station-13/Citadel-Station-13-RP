@@ -3,7 +3,7 @@
 
 //* FX *//
 
-/mob/living/get_combat_fx_classifier(attack_type, datum/weapon, target_zone)
+/mob/living/get_combat_fx_classifier(attack_type, datum/attack_source, target_zone)
 	return COMBAT_IMPACT_FX_METAL
 
 //* Misc Effects *//

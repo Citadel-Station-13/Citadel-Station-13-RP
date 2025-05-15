@@ -24,7 +24,7 @@
 /obj/item/gun/projectile/magic/wand/update_icon()
 	icon_state = "[initial(icon_state)][charges ? "" : "-drained"]"
 
-/obj/item/gun/projectile/magic/wand/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/gun/projectile/magic/wand/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(target == user)
 		return
 	return ..()

@@ -40,7 +40,7 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	return ..()
 
-/obj/item/stream_projector/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/stream_projector/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	// flatly don't emit the attack if not in harm
 	if(intent == INTENT_HARM)
 		return ..()

@@ -53,20 +53,6 @@
 				N.show_message("<font color='red'><B>[M] bursts out of [src]!</B></font>", 2)
 	..()
 
-/mob/living/carbon/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-	var/mob/living/carbon/M = user
-	if(!istype(M))
-		return ..()
-	if (ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
-		if (H.active_hand % 2)
-			temp = H.organs_by_name["l_hand"]
-		if(temp && !temp.is_usable())
-			to_chat(H, "<font color='red'>You can't use your [temp.name]</font>")
-			return
-	return ..()
-
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/M)
 	if(src.health >= getCritHealth())
 		if(src == M && istype(src, /mob/living/carbon/human))

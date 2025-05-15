@@ -1,9 +1,15 @@
 /datum/armor/hardsuit/light
-	melee = 0.5
-	bullet = 0.15
+	melee = 0.4
+	melee_tier = 3.5
+	bullet = 0.3
+	bullet_tier = 3
 	laser = 0.5
-	energy = 0.1
-	bomb = 0.25
+	laser_tier = 3
+	energy = 0.25
+	bomb = 0.35
+	rad = 0.5
+	fire = 0.7
+	acid = 0.7
 
 // Light rigs are not space-capable, but don't suffer excessive slowdown or sight issues when depowered.
 /obj/item/hardsuit/light

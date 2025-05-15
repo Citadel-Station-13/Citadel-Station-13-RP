@@ -96,6 +96,8 @@
 // admin verb cooldowns
 #define CD_INTERNET_SOUND "internet_sound"
 
-//? Mobs ?//
+//* /mob *//
+#define TIMER_CD_INDEX_MOB_VERB_INVERT_SELF "mob-verb-invert_self"
 
-#define CD_INDEX_MOB_VERB_INVERT_SELF "mob-verb-invert-self"
+//* /client *//
+#define TIMER_CD_INDEX_CLIENT_CHARACTER_DIRECTORY "client-verb-character_directory"

@@ -60,7 +60,7 @@
 	name = "Sharp Melee"
 	desc = "Provides sharp melee attacks that do more damage."
 	cost = 1
-	var_changes = list("unarmed_types" = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws/good, /datum/unarmed_attack/bite/sharp/good))
+	var_changes = list("unarmed_types" = list(/datum/melee_attack/unarmed/stomp, /datum/melee_attack/unarmed/kick, /datum/melee_attack/unarmed/claws/good, /datum/melee_attack/unarmed/bite/sharp/good))
 
 	group = /datum/trait_group/bite_and_claw
 	group_short_name = "Sharp"
@@ -74,7 +74,7 @@
 	name = "Sharp Melee & Venomous Fangs"
 	desc = "That plus venomous fangs."
 	cost = 2
-	var_changes = list("unarmed_types" = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws/good/venom, /datum/unarmed_attack/bite/sharp/good/venom))
+	var_changes = list("unarmed_types" = list(/datum/melee_attack/unarmed/stomp, /datum/melee_attack/unarmed/kick, /datum/melee_attack/unarmed/claws/good/venom, /datum/melee_attack/unarmed/bite/sharp/good/venom))
 
 	group = /datum/trait_group/bite_and_claw
 	group_short_name = "Sharp, Venomous"

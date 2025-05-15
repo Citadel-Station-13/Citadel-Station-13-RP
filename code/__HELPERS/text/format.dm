@@ -6,9 +6,9 @@
  *
  * Keys are provided as a key list associated to replacements.
  *
- * Example: fmttext("$user hits $target with $weapon", list("user" = src, "target" = target, "weapon" = get_active_held_item()))
+ * Example: string_format("$user hits $target with $weapon", list("user" = src, "target" = target, "weapon" = get_active_held_item()))
  */
-/proc/fmttext(str, list/keys)
+/proc/string_format(str, list/keys)
 	. = str
 	if(isnull(.))
 		// mimics byond behavior of returning null if input is null for <x>text() procs

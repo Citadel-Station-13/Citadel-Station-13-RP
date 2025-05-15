@@ -9,18 +9,26 @@
  * * The click may be real or fake.
  * * Clickchain flags are deliberately not stored in here; you're supposed to modify and return them a ton, so it's inefficient to put it in here.
  * * This is required for item swings / interaction, usually, not just base /event_args/actor.
+ *   While it's technically called a clickchain, it also stores a lot of other data like targeting.
+ * * **This should always be clone()'d if you are invoking, semantically, a new attack from an existing attack.**
+ *   Otherwise, modifiers might apply twice and all kinds of fuckery can occur.
  *
  * todo: helpers for true clickchain event generation / simulation
  */
 /datum/event_args/actor/clickchain
 	//* Using Data *//
 
-	/// optional: attack intent
+	/// (optional) action intent
 	var/using_intent
-	/// optional: hand index, if any
+	/// (optional) hand index
 	var/using_hand_index
-	/// with item, if any
-	var/obj/item/using_item
+
+	/// (optional) using weapon
+	/// * not for tools; this is only for melee
+	var/obj/item/using_melee_weapon
+	/// (optional) using melee style
+	/// * not for tools; this is only for melee
+	var/datum/melee_attack/using_melee_attack
 
 	//* Click Data *//
 
@@ -37,19 +45,32 @@
 	/// tile y from bottom left of screen, starting at 1
 	var/tmp/click_params_screen_ty
 
+	/// clickdelay base out
+	var/click_cooldown_base = 0
+	/// clickdelay multiplier out
+	/// * the proc that invoked the clickchain handling this event_args should
+	///   handle this. clickchain will not handle clickdelay itself!
+	var/click_cooldown_multiplier = 1
+
 	//* Target Data *//
 
 	/// optional: target atom
 	var/atom/target
+	/// optional: target zone
+	var/target_zone
 
 	//* Attack Data *//
 
 	/// Overall damage multiplier
 	///
-	/// todo: implement; needs slight clickchain/melee overhaul
+	/// * Allowed to be changed by shieldcalls and other intercepts
+	var/attack_melee_multiplier = 1
+	/// Overall impact multiplier
 	///
 	/// * Allowed to be changed by shieldcalls and other intercepts
-	var/melee_damage_multiplier = 1
+	/// * Unlike 'attack melee multiplier', this will block everything else too.
+	///   This is for shieldcalls to inject into to say 'hey, we blocked any contact, not just dampened damage'.
+	var/attack_contact_multiplier = 1
 
 	//* Resolved Data *//
 
@@ -57,20 +78,41 @@
 	/// * This is in degrees clockwise of north.
 	var/tmp/resolved_angle_from_performer
 
+	//* Out Data *//
+
+	/// total damage inflicted; set by target
+	var/out_damage_inflicted = 0
+
 /datum/event_args/actor/clickchain/New(mob/performer, mob/initiator, atom/target, list/params, intent)
 	..()
-	src.target = target
-	src.click_params = params || list()
+	// using //
 	src.using_intent = intent
+	// click //
+	src.click_params = params || list()
+	// target //
+	src.target = target
+
+	//! LEGACY AUTO FILL !//
+	if(isnull(src.using_intent))
+		src.using_intent = performer?.a_intent
+	if(isnull(src.target_zone))
+		src.target_zone = performer?.zone_sel?.selecting || BP_TORSO
+	//! END !//
 
 /datum/event_args/actor/clickchain/clone()
 	var/datum/event_args/actor/clickchain/cloning = ..()
 	cloning.using_intent = using_intent
 	cloning.using_hand_index = using_hand_index
-	cloning.using_item = using_item
+	cloning.using_melee_attack = using_melee_attack
+	cloning.using_melee_weapon = using_melee_weapon
 	cloning.click_params = click_params
+	cloning.click_cooldown_base = click_cooldown_base
+	cloning.click_cooldown_multiplier = click_cooldown_multiplier
 	cloning.target = target
-	cloning.melee_damage_multiplier = melee_damage_multiplier
+	cloning.target_zone = target_zone
+	cloning.attack_melee_multiplier = attack_melee_multiplier
+	cloning.attack_contact_multiplier = attack_contact_multiplier
+	cloning.out_damage_inflicted = out_damage_inflicted
 	return cloning
 
 /**

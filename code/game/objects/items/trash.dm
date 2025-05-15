@@ -123,7 +123,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "kibble"
 
-/obj/item/trash/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/trash/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
 		if(H.species.trashcan == 1)

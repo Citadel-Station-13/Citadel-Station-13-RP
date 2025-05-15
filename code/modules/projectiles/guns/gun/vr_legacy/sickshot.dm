@@ -27,7 +27,7 @@
 	name = "discombobulator pulse"
 	icon_state = "sound"
 	damage_force = 5
-	armor_penetration = 30
+	damage_tier = 4
 	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_MELEE
 	embed_chance = 0

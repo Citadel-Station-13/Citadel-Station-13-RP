@@ -267,7 +267,7 @@
 		var/obj/item/clothing/mask/smokable/cigarette/C = AM
 		reagents?.trans_to_obj(C, (reagents.total_volume/contents.len))
 
-/obj/item/storage/fancy/cigarettes/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/storage/fancy/cigarettes/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(target == user && user.zone_sel.selecting == O_MOUTH)
 		// Find ourselves a cig. Note that we could be full of lighters.
 		var/obj/item/clothing/mask/smokable/cigarette/cig = locate() in src

@@ -13,22 +13,24 @@
 	circuit = /obj/item/circuitboard/dnarevive
 	var/reviving = FALSE
 
-/obj/machinery/fossilrevive/attackby(obj/item/I, mob/user)
+/obj/machinery/fossilrevive/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+	if(!istype(using, /obj/item/fossil))
+		return
 	if(reviving)
-		to_chat(user, SPAN_NOTICE("The machine is processing!"))
-		return ..()
-	if(!istype(I, /obj/item/fossil))
-		to_chat(user, SPAN_WARNING("That's not accepted by this machine."))
-		return ..()
-	var/obj/item/fossil/mosquito = I
+		to_chat(clickchain.performer, SPAN_NOTICE("The machine is processing!"))
+		return CLICKCHAIN_DID_SOMETHING
+	var/obj/item/fossil/mosquito = using
 	if(mosquito.processable == "seed")
 		addtimer(CALLBACK(src, PROC_REF(findsaway), "seed"), 100)
-		to_chat(user, SPAN_NOTICE("[src] begins processing [mosquito]."))
+		to_chat(clickchain.performer, SPAN_NOTICE("[src] begins processing [mosquito]."))
 		reviving = TRUE
 		mosquito.processable = FALSE
 	else
-		to_chat(user, SPAN_WARNING("That fossil has either already been processed, or does not contain valid genetic material."))
-	. = ..()
+		to_chat(clickchain.performer, SPAN_WARNING("That fossil has either already been processed, or does not contain valid genetic material."))
+	return CLICKCHAIN_DID_SOMETHING
 
 /obj/machinery/fossilrevive/proc/findsaway(generatetype)
 	var/droploc = get_turf(src)

@@ -41,3 +41,5 @@
 	melee = 0.4
 	rad = 0.75
 	laser = 0.25
+
+#warn sweep up

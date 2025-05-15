@@ -33,13 +33,13 @@
 	else
 		var/obj/projectile/P = new projectiletype(src)
 		if(P.nodamage)
-			potential_damage = P.agony / 2
+			potential_damage = P.damage_inflict_agony / 2
 		else
 			potential_damage = P.damage_force
 			if(P.damage_type == DAMAGE_TYPE_HALLOSS) // Not sure if any projectiles do this, but can't be too safe.
 				potential_damage /= 2
 			// Rubber bullets, I guess.
-			potential_damage += P.agony / 2
+			potential_damage += P.damage_inflict_agony / 2
 		qdel(P)
 
 		potential_damage *= 1 SECOND / (base_attack_cooldown + ranged_attack_delay)
@@ -155,11 +155,11 @@
 		var/damage_guess = 0
 		if(ishuman(src) && ishuman(threatened))
 			var/mob/living/carbon/human/H = src
-			var/datum/unarmed_attack/attack = H.get_unarmed_attack(threatened, BP_TORSO)
+			var/datum/melee_attack/unarmed/attack = H.get_unarmed_attack(threatened, BP_TORSO)
 			if(!attack)
 				damage_guess += 5
 
-			var/punch_damage = attack.get_unarmed_damage(H)
+			var/punch_damage = attack.damage
 			if(H.gloves)
 				if(istype(H.gloves, /obj/item/clothing/gloves))
 					var/obj/item/clothing/gloves/G = H.gloves
