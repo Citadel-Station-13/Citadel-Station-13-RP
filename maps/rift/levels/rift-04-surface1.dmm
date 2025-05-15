@@ -8885,7 +8885,7 @@
 	pixel_x = -24
 	},
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Surface 1";
+	RCon_tag = "Surface 1 - Main Substation";
 	output_attempt = 0
 	},
 /obj/structure/cable/green{
@@ -13069,7 +13069,7 @@
 /area/storage/tools)
 "irf" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Cargo Substation Bypass"
+	RCon_tag = "Surface 1 - Cargo Substation Bypass"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)
@@ -17885,7 +17885,7 @@
 /area/maintenance/evahallway)
 "lie" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Medical";
+	RCon_tag = "Surface 1 - Medical Substation";
 	output_attempt = 0
 	},
 /obj/structure/cable/green,
@@ -21702,7 +21702,7 @@
 /area/hallway/primary/surfaceone)
 "nyE" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Surface 1 Substation Bypass"
+	RCon_tag = "Surface 1 - Main Substation Bypass"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_one)
@@ -27407,7 +27407,7 @@
 /area/medical/virology)
 "qHS" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Research Southwest Wing Subgrid";
+	RCon_tag = "Surface 1 - Research Southwest Wing Subgrid";
 	cur_coils = 2;
 	output_attempt = 0
 	},
@@ -37537,7 +37537,7 @@
 /area/maintenance/tool_storage)
 "wrP" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Cargo";
+	RCon_tag = "Surface 1 - Cargo Substation";
 	output_attempt = 0
 	},
 /obj/structure/cable/green{
@@ -38461,7 +38461,7 @@
 /area/medical/psych)
 "wTn" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Medical Substation Bypass"
+	RCon_tag = "Surface 1 - Medical Substation Bypass"
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/medical)
@@ -39346,7 +39346,7 @@
 /area/rift/surfaceeva/airlock/main/secondary)
 "xsI" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Research Southwest Wing Bypass"
+	RCon_tag = "Surface 1 - Research Southwest Wing Subgrid Bypass"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/research/southwest_wing)

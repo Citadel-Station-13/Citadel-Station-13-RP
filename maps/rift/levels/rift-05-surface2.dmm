@@ -13171,7 +13171,7 @@
 /area/assembly/robotics)
 "iiw" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Northwestern Outpost Substation Bypass"
+	RCon_tag = "Surface 2 - Northwestern Outpost Substation Bypass"
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/cafeteria_dock)
@@ -14937,7 +14937,7 @@
 /area/maintenance/security/upper)
 "jsh" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Research Main";
+	RCon_tag = "Surface 2 - Research Main Subgrid";
 	output_attempt = 0
 	},
 /obj/structure/cable/green,
@@ -20413,7 +20413,7 @@
 /area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "mDo" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Surface 2"
+	RCon_tag = "Surface 2 - Main Substation"
 	},
 /obj/structure/cable/green,
 /obj/structure/cable/green{
@@ -24466,7 +24466,7 @@
 	dir = 4
 	},
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Surface 2 Substation Bypass"
+	RCon_tag = "Surface 2 - Main Substation Bypass"
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/surface_two)
@@ -33525,7 +33525,7 @@
 /area/crew_quarters/showers)
 "uWX" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Security";
+	RCon_tag = "Surface 2 - Security Substation";
 	output_attempt = 0
 	},
 /obj/structure/cable/green{
@@ -33743,7 +33743,7 @@
 /area/maintenance/asmaint2)
 "vcn" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Northwestern Outpost";
+	RCon_tag = "Surface 2 - Northwestern Outpost Substation";
 	output_attempt = 0
 	},
 /obj/structure/cable/green,
@@ -36134,7 +36134,7 @@
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "wMk" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Security Substation Bypass"
+	RCon_tag = "Surface 2 - Security Substation Bypass"
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/security)
@@ -37782,7 +37782,7 @@
 /area/security/hallway)
 "xNq" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Research Main Substation Bypass"
+	RCon_tag = "Surface 2 - Research Main Subgrid Bypass"
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/research)

@@ -5877,7 +5877,7 @@
 /area/maintenance/chapel)
 "uN" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Underground 2"
+	RCon_tag = "Underground 2 - Main Substation"
 	},
 /obj/structure/cable/green{
 	icon_state = "0-2"
@@ -11590,7 +11590,7 @@
 /area/engineering/atmos/hallway)
 "Rr" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Engineering Substation Bypass"
+	RCon_tag = "Underground 2 - Engineering Substation Bypass"
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/engineering)
@@ -13350,7 +13350,7 @@
 /area/rnd/secure_storage/critical)
 "Yd" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Underground 2"
+	RCon_tag = "Underground 2 - Main Bypass"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/atmos)
@@ -13530,7 +13530,7 @@
 /area/rnd/secure_storage/critical/records)
 "YY" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Engineering";
+	RCon_tag = "Underground 2 - Engineering Substation";
 	output_attempt = 0
 	},
 /obj/machinery/camera/network/engineering,

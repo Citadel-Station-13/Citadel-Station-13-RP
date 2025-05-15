@@ -2420,7 +2420,7 @@
 /area/rnd/outpost)
 "kL" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Science Outpost Substation Bypass"
+	RCon_tag = "Western Plains - Science Outpost Substation Bypass"
 	},
 /obj/machinery/camera/network/research_outpost{
 	dir = 4
@@ -10821,7 +10821,7 @@
 /area/rnd/outpost/breakroom)
 "YM" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Geothermal Plant";
+	RCon_tag = "Power - Geothermal Plant";
 	cur_coils = 2;
 	output_level_max = 500
 	},
@@ -11058,7 +11058,7 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Science Outpost";
+	RCon_tag = "Western Plains - Science Outpost Substation";
 	charge = 1000
 	},
 /turf/simulated/floor,
