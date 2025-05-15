@@ -481,7 +481,7 @@
 	var/fire_distance = 10
 
 	charges = list(
-		list("cleaner grenade",   "cleaner grenade",   /obj/item/grenade/chem_grenade/cleaner,  9),
+		list("cleaner grenade",   "cleaner grenade",   /obj/item/grenade/simple/chemical/premade/cleaner,  9),
 		)
 
 /obj/item/hardsuit_module/cleaner_launcher/accepts_item(var/obj/item/input_device, var/mob/living/user)
@@ -535,7 +535,7 @@
 	charge.charges--
 	var/obj/item/grenade/new_grenade = new charge.product_type(get_turf(H))
 	H.visible_message("<span class='danger'>[H] launches \a [new_grenade]!</span>")
-	new_grenade.activate(H)
+	new_grenade.activate(new /datum/event_args/actor(H))
 	new_grenade.throw_at_old(target,fire_force,fire_distance)
 
 /obj/item/hardsuit_module/device/paperdispenser
