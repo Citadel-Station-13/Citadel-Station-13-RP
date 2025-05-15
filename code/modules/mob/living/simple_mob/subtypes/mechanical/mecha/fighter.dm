@@ -7,7 +7,7 @@ var/gps_tag = "HOSTILE"
 	name = "Fighter"
 	desc = "Fly in space"
 
-	movement_cooldown = 1
+	movement_base_speed = 10 / 1
 	legacy_melee_damage_lower = 30
 	legacy_melee_damage_upper = 30
 	melee_attack_delay = 1 SECOND

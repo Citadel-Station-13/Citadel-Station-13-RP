@@ -55,7 +55,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/human)
 
 	iff_factions = MOB_IFF_FACTION_MERCENARY
-	movement_cooldown = 2
+	movement_base_speed = 10 / 2
 
 	status_flags = 0
 
@@ -351,7 +351,7 @@
 	icon_living = "syndicatespace-melee"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/human/space)
 
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 
 	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 30, energy = 15, bomb = 35, bio = 100, rad = 100)	// Same armor as their voidsuit
 
@@ -377,7 +377,7 @@
 	icon_state = "syndicatespace-ranged"
 	icon_living = "syndicatespceace-ranged"
 
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 
 	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 30, energy = 15, bomb = 35, bio = 100, rad = 100)	// Same armor as their voidsuit. This should already have been here when polaris patched these guys in.
 
@@ -608,7 +608,7 @@
 	icon_dead = "voxpirate_dead"
 
 	iff_factions = MOB_IFF_FACTION_PIRATE
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 
 	status_flags = 0
 

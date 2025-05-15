@@ -39,7 +39,7 @@ TODO: Make them light up and heat the air when exposed to oxygen.
 	randomized = TRUE
 	mod_min = 90
 	mod_max = 140
-	movement_cooldown = 12
+	movement_base_speed = 10 / 12
 
 	say_list_type = /datum/say_list/gaslamp
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/gaslamp

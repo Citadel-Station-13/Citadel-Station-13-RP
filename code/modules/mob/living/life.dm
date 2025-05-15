@@ -16,6 +16,8 @@
 
 	// todo: is this necessary? probably but still..
 	update_mobility()
+	// todo: sigh
+	update_movespeed_modifier(/datum/movespeed_modifier/mob_legacy_slowdown, list(MOVESPEED_PARAM_MOD_HYPERBOLIC_SLOWDOWN = legacy_movement_delay()))
 
 /mob/living/PhysicalLife(seconds, times_fired)
 	if((. = ..()))

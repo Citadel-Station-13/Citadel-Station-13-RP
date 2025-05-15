@@ -27,7 +27,7 @@
 	)
 	assisted_langs   = list(LANGUAGE_VOX)	// Diona are weird, let's just assume they can use basically any language.
 
-	slowdown = 2.5
+	movement_base_speed = 3
 	light_slowdown = -0.5
 	dark_slowdown = 3
 	snow_movement  = -2 // Ignore light snow

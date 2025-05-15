@@ -17,7 +17,7 @@
 	desc = "The H.O.N.K. mecha is sometimes crafted by deranged Roboticists with a grudge, and is illegal in thirty six different sectors."
 	catalogue_data = list(/datum/category_item/catalogue/technology/honker)
 	icon_state = "honker"
-	movement_cooldown = 1
+	movement_base_speed = 10 / 1
 	wreckage = /obj/structure/loot_pile/mecha/honker
 
 	maxHealth = 250

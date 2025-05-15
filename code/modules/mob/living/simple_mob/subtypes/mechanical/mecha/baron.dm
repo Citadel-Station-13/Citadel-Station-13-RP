@@ -13,7 +13,7 @@
 	icon = 'icons/mecha/fighters64x64.dmi'
 	icon_state = "baron"
 	color = "#5a4f2e"
-	movement_cooldown = 1
+	movement_base_speed = 10 / 1
 	wreckage = /obj/effect/decal/mecha_wreckage/baron
 	catalogue_data = list(/datum/category_item/catalogue/technology/baron/pirate)
 

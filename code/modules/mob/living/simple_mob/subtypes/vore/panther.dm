@@ -22,7 +22,7 @@
 	maxHealth = 200
 	health = 200
 	randomized = TRUE
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 
 	legacy_melee_damage_lower = 5
 	legacy_melee_damage_upper = 15

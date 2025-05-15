@@ -6,7 +6,7 @@
 	icon_state = "ambusher"
 	maxHealth = 150
 	health = 150
-	movement_cooldown = 3
+	movement_base_speed = 10 / 3
 	legacy_melee_damage_lower = 15
 	legacy_melee_damage_upper = 15
 	base_attack_cooldown = 10
@@ -21,7 +21,7 @@
 	icon_state = "wriggler"
 	maxHealth = 150
 	health = 150
-	movement_cooldown = 3
+	movement_base_speed = 10 / 3
 	legacy_melee_damage_lower = 20
 	legacy_melee_damage_upper = 20
 	base_attack_cooldown = 10
@@ -37,7 +37,7 @@
 	maxHealth = 100
 	health = 100
 	alpha = 150
-	movement_cooldown = 3
+	movement_base_speed = 10 / 3
 	legacy_melee_damage_lower = 20
 	legacy_melee_damage_upper = 20
 	base_attack_cooldown = 10

@@ -67,7 +67,7 @@ Warning: While there is no regulation regarding visiting and scavenging operatio
 	name = "Casino Combat Drone"
 	desc = "An automated combat drone with an aged apperance."
 	color = "#ff9d00"
-	movement_cooldown = 10
+	movement_base_speed = 10 / 10
 	iff_factions = MOB_IFF_FACTION_CASINO
 
 /mob/living/simple_mob/mechanical/combat_drone/lesser/casino/Initialize(mapload)

@@ -43,7 +43,7 @@ GLOBAL_LIST_EMPTY(solargrubs)
 	legacy_melee_damage_lower = 1
 	legacy_melee_damage_upper = 3	//low damage, but poison and stuns are strong
 
-	movement_cooldown = 8
+	movement_base_speed = 10 / 8
 
 	meat_amount = 3
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/grubmeat

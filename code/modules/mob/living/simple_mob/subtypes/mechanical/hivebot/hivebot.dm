@@ -124,7 +124,7 @@
 	icon_state = "surveyor"
 	icon_living = "surveyor"
 
-	movement_cooldown = 0.6 SECONDS
+	movement_base_speed = 10 / 0.6 SECONDS
 
 	legacy_melee_damage_lower = 15
 	legacy_melee_damage_upper = 15

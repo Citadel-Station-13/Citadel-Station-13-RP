@@ -8,7 +8,7 @@
 	unity = TRUE
 	water_resist = 1 // Lets not kill the prommies
 	cores = 0
-	movement_cooldown = 3
+	movement_base_speed = 10 / 3
 	//species_appearance_flags = RADIATION_GLOWS
 	shock_resist = 0 // Lets not be immune to zaps.
 	friendly = list("nuzzles", "glomps", "snuggles", "cuddles", "squishes") // lets be cute :3

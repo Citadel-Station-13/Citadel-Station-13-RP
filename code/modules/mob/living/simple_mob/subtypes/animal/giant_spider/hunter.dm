@@ -30,7 +30,7 @@
 	legacy_melee_damage_lower = 9
 	legacy_melee_damage_upper = 15
 
-	movement_cooldown = 0 // Hunters are FAST.
+	movement_base_speed = 6.66 // Hunters are FAST.
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/hunter_spider
 

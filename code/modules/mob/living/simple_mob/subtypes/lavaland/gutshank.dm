@@ -56,7 +56,7 @@
 
 	mob_class = MOB_CLASS_ANIMAL
 	taser_kill = FALSE
-	movement_cooldown = 6
+	movement_base_speed = 10 / 6
 	movement_sound = 'sound/effects/spider_loop.ogg'
 	legacy_melee_damage_lower = 5
 	legacy_melee_damage_upper = 10
@@ -179,7 +179,7 @@
 
 	mob_class = MOB_CLASS_ANIMAL
 	taser_kill = FALSE
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 	legacy_melee_damage_lower = 10
 	legacy_melee_damage_upper = 15
 	attacktext = list ("bitten", "pierced", "mauled")
