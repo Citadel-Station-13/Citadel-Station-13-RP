@@ -23,11 +23,11 @@
 	)
 
 /datum/armor/hardsuit/industrial
-	melee = 0.45
+	melee = 0.4
 	melee_tier = 4.5
-	bullet = 0.5
+	bullet = 0.4
 	bullet_tier = 4
-	laser = 0.35
+	laser = 0.4
 	laser_tier = 3.75
 	energy = 0.2
 	bomb = 0.5

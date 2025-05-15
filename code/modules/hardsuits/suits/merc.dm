@@ -2,15 +2,19 @@
 	light_overlay = "helmet_light_dual_green"
 	camera_networks = list(NETWORK_MERCENARY)
 
-#warn all these
 /datum/armor/hardsuit/merc
-	melee = 0.8
-	bullet = 0.65
+	melee = 0.5
+	melee_tier = 4
+	bullet = 0.4
+	bullet_tier = 4.5
 	laser = 0.5
-	energy = 0.15
+	laser_tier = 4
+	energy = 0.25
 	bomb = 0.8
 	bio = 1.0
 	rad = 0.6
+	fire = 0.7
+	acid = 1.0
 
 /obj/item/hardsuit/merc
 	name = "crimson hardsuit control module"

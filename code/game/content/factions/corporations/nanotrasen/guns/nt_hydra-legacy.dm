@@ -71,7 +71,7 @@
 /obj/projectile/bullet/pellet/e_shot_stun
 	icon_state = "spell"
 	damage_force = 2
-	agony = 20
+	damage_inflict_agony = 20
 	pellets = 6			//number of pellets
 	embed_chance = 0
 	damage_mode = NONE
@@ -94,7 +94,7 @@
 /obj/projectile/bullet/stripper
 	icon_state = "magicm"
 	nodamage = 1
-	agony = 5
+	damage_inflict_agony = 5
 	embed_chance = 0
 	damage_mode = NONE
 	damage_flag = ARMOR_MELEE

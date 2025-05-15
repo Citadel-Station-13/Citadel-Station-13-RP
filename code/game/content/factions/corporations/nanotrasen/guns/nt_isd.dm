@@ -354,7 +354,9 @@
 	tracer_add_state_alpha = 65
 	auto_emissive_strength = 192
 	hitscan = TRUE
-	agony = 20
+	damage_flag = ARMOR_ENERGY
+	damage_force = 20
+	damage_type = DAMAGE_TYPE_HALLOSS
 	fire_sound = /datum/soundbyte/guns/energy/disabler_1
 	projectile_type = PROJECTILE_TYPE_BEAM | PROJECTILE_TYPE_PHOTONIC
 

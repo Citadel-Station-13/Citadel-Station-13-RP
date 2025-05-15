@@ -40,7 +40,7 @@
 /obj/projectile/bullet/magnetic/heated/weak
 	icon_state = "gauss_silenced"
 	damage_force = 15
-	agony = 5
+	damage_inflict_agony = 5
 	embed_chance = 0
 	damage_tier = 4.25
 
@@ -50,7 +50,7 @@
 	damage_force = 70 //it's a fusion fuel rod propelled faster than sound, it should hurt.
 	stun = 1
 	weaken = 0
-	agony = 50
+	damage_inflict_agony = 50
 	incendiary = 1
 	flammability = 0 //Deuterium and Tritium are both held in water, but the object moving so quickly will ignite the target.
 	legacy_penetrating = 2

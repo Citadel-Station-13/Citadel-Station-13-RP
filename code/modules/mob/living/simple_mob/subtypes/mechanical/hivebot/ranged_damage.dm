@@ -251,7 +251,7 @@
 
 /obj/projectile/beam/smalllaser/hivebot
 	damage_force = 25
-	agony = 20
+	damage_inflict_agony = 20
 	legacy_muzzle_type = /obj/effect/projectile/muzzle/lightning
 	legacy_tracer_type = /obj/effect/projectile/tracer/lightning
 	legacy_impact_type = /obj/effect/projectile/impact/lightning

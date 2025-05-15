@@ -91,6 +91,8 @@ SUBSYSTEM_DEF(throwing)
 	var/dx
 	/// y dir
 	var/dy
+	/// current targeted angle
+	var/current_angle
 	/// tracks diagonal error so we move in a relatively "raycasted" (shittily) path
 	var/diagonal_error
 	/// are we purely diagonal?
@@ -134,6 +136,7 @@ SUBSYSTEM_DEF(throwing)
 
 	dist_x = abs(target_turf.x - AM.x)
 	dist_y = abs(target_turf.y - AM.y)
+	current_angle = arctan(target_turf.y - AM.y, target_turf.x - AM.x)
 	dx = (target_turf.x > AM.x)? EAST : WEST
 	dy = (target_turf.y > AM.y)? NORTH : SOUTH
 
@@ -225,16 +228,7 @@ SUBSYSTEM_DEF(throwing)
 			land()
 			return
 
-	//? Experimental: Do not try to hit before movement, instead let cross/whatnot hooks handle it
-/*
-		var/atom/to_hit = scan_for_impact(stepping)
-		while(to_hit)
-			impact(to_hit)
-			if(finished)
-				return
-			to_hit = scan_for_impact(stepping)
-*/
-
+		// move
 		AM.Move(stepping, get_dir(AM, stepping))
 
 		// atom somehow got deleted
@@ -426,7 +420,7 @@ SUBSYSTEM_DEF(throwing)
  * Get angle we're flying
  */
 /datum/thrownthing/proc/get_current_angle()
-	#warn impl
+	return current_angle
 
 /**
  * simulated thrownthing datums

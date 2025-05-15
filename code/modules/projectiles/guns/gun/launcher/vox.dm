@@ -79,7 +79,7 @@
 	icon_state = "darkt"
 	fire_sound = 'sound/weapons/eLuger.ogg'
 	nodamage = 1
-	agony = 55
+	damage_inflict_agony = 55
 	damage_type = DAMAGE_TYPE_HALLOSS
 	light_color = "#8837A3"
 
@@ -148,7 +148,7 @@
 	vacuum_traversal = 0
 
 /obj/projectile/sonic/weak
-	agony = 50
+	damage_inflict_agony = 50
 
 /obj/projectile/sonic/strong
 	damage_force = 45

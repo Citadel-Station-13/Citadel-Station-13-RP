@@ -121,13 +121,13 @@
 	name = "stingball shrapnel"
 	damage_force = 3
 	damage_tier = 2
-	agony = 7
+	damage_inflict_agony = 7
 	damage_mode = NONE
 	damage_flag = ARMOR_MELEE
 
 /obj/projectile/bullet/pellet/fragment/rubber/strong
 	damage_force = 8
-	agony = 16
+	damage_inflict_agony = 16
 
 // Tank rupture fragments
 /obj/projectile/bullet/pellet/fragment/tank

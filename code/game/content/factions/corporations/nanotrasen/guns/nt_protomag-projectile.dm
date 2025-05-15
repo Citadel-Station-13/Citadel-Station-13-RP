@@ -69,7 +69,7 @@
 	speed = /obj/projectile/nt_protomag::speed * 0.9
 	damage_force = 10
 	damage_tier = 4
-	agony = 30
+	damage_inflict_agony = 30
 	penalty_speed_multiplier = 3 / 4
 	penalty_damage_tier = 3.25
 

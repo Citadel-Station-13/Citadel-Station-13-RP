@@ -113,7 +113,7 @@
 	icon_state = "toxin"
 	damage_force = 5
 	damage_type = DAMAGE_TYPE_TOX
-	agony = 120
+	damage_inflict_agony = 120
 	damage_flag = ARMOR_ENERGY
 
 	combustion = FALSE
@@ -123,7 +123,7 @@
 	icon_state = "cbbolt"
 	damage_force = 10
 	damage_type = DAMAGE_TYPE_TOX
-	agony = 40
+	damage_inflict_agony = 40
 	stutter = 10
 
 /obj/projectile/energy/bolt/large
@@ -136,7 +136,7 @@
 	fire_sound = 'sound/effects/splat.ogg'
 	damage_force = 40
 	damage_type = DAMAGE_TYPE_BURN
-	agony = 10
+	damage_inflict_agony = 10
 	damage_flag = ARMOR_ACID
 	combustion = FALSE
 
@@ -146,7 +146,7 @@
 	fire_sound = 'sound/effects/splat.ogg'
 	damage_force = 5
 	damage_type = DAMAGE_TYPE_BIOACID
-	agony = 23
+	damage_inflict_agony = 23
 	damage_flag = ARMOR_ACID
 	combustion = FALSE
 
@@ -156,7 +156,7 @@
 	fire_sound = 'sound/effects/splat.ogg'
 	damage_force = 20
 	damage_type = DAMAGE_TYPE_BIOACID
-	agony = 30
+	damage_inflict_agony = 30
 	damage_flag = ARMOR_ACID
 
 /obj/projectile/energy/phoron
@@ -178,7 +178,7 @@
 	fire_sound = 'sound/weapons/blaster.ogg'
 	range = WORLD_ICON_SIZE * 4
 	damage_force = 5
-	agony = 55
+	damage_inflict_agony = 55
 	damage_type = DAMAGE_TYPE_BURN
 	vacuum_traversal = 0	//Projectile disappears in empty space
 

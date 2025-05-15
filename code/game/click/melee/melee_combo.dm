@@ -111,7 +111,7 @@
 	SHOULD_NOT_SLEEP(TRUE)
 
 	if(damage_force)
-		clickchain?.data[ACTOR_DATA_COMBO_DAMAGE_LOG] = target.inflict_damage_instance(
+		clickchain?.data[ACTOR_DATA_COMBO_DAMAGE_LOG] = target.run_damage_instance(
 			damage_force,
 			damage_type,
 			damage_tier,

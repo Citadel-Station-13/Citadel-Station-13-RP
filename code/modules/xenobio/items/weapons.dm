@@ -79,7 +79,7 @@
 
 /obj/projectile/beam/stun/xeno
 	icon_state = "omni"
-	agony = 4
+	damage_inflict_agony = 4
 	nodamage = TRUE
 
 	legacy_muzzle_type = /obj/effect/projectile/muzzle/laser_omni
@@ -104,4 +104,4 @@
 			var/mob/living/carbon/human/H = L
 			if(H.species && H.species.get_species_id() == SPECIES_ID_PROMETHEAN)
 				if(agony == initial(agony)) // ??????
-					agony = round((14 * agony) - agony) //60-4 = 56, 56 / 4 = 14. Prior was flat 60 - agony of the beam to equate to 60.
+					damage_inflict_agony = round((14 * agony) - agony) //60-4 = 56, 56 / 4 = 14. Prior was flat 60 - agony of the beam to equate to 60.

@@ -96,6 +96,25 @@
 	/// * 2 will turn a 40% hit to a 70%
 	var/accuracy_overall_modify = 1
 
+	//* Combat - Damage *//
+
+	/// damage amount
+	var/damage_force = 0
+	/// damage tier - goes hand in hand with [damage_mode]
+	var/damage_tier = ARMOR_TIER_DEFAULT
+	/// damage type - DAMAGE_TYPE_* define
+	var/damage_type = DAMAGE_TYPE_BRUTE
+	/// armor flag for damage - goes hand in hand with [damage_tier]
+	var/damage_flag = ARMOR_BULLET
+	/// damage mode - see [code/__DEFINES/combat/damage.dm]
+	var/damage_mode = NONE
+
+	/// Pain damage to deal.
+	/// * This will be checked against main 'damage_flag' armor.
+	/// todo: should be a projectile effect instead, so we can have different kinds
+	///       of stopping power simulated.
+	var/damage_inflict_agony = 0
+
 	//* Combat - Effects *//
 
 	/// multiplier to projectile effects
@@ -355,16 +374,6 @@
 
 	var/dispersion = 0.0
 
-	/// damage amount
-	var/damage_force = 0
-	/// damage tier - goes hand in hand with [damage_mode]
-	var/damage_tier = ARMOR_TIER_DEFAULT
-	/// damage type - DAMAGE_TYPE_* define
-	var/damage_type = DAMAGE_TYPE_BRUTE
-	/// armor flag for damage - goes hand in hand with [damage_tier]
-	var/damage_flag = ARMOR_BULLET
-	/// damage mode - see [code/__DEFINES/combat/damage.dm]
-	var/damage_mode = NONE
 
 	var/SA_bonus_damage = 0 // Some bullets inflict extra damage on simple animals.
 	var/SA_vulnerability = null // What kind of simple animal the above bonus damage should be applied to. Set to null to apply to all SAs.
@@ -381,7 +390,6 @@
 	var/stutter = 0
 	var/eyeblur = 0
 	var/drowsy = 0
-	var/agony = 0
 	var/reflected = 0 // This should be set to 1 if reflected by any means, to prevent infinite reflections.
 	var/modifier_type_to_apply = null // If set, will apply a modifier to mobs that are hit by this projectile.
 	var/modifier_duration = null // How long the above modifier should last for. Leave null to be permanent.
@@ -1156,8 +1164,8 @@
 	//! LEGACY COMBAT CODE
 	if(isliving(target))
 		var/mob/living/L = target
-		// todo: some of these dont' make sense to be armor'd (last two), some do; please refactor this
-		L.apply_effects(stun, weaken, paralyze, irradiate, stutter, eyeblur, drowsy, agony, clamp((1 - efficiency) * 100 + absorb, 0, 100), incendiary, flammability)
+		// todo: these all ignore armor right now. this is not a good thing.
+		L.apply_effects(stun, weaken, paralyze, irradiate, stutter, eyeblur, drowsy, agony, clamp((1 - efficiency) * 100, 0, 100), incendiary, flammability)
 		if(modifier_type_to_apply)
 			L.add_modifier(modifier_type_to_apply, modifier_duration)
 	//! END
@@ -1165,7 +1173,7 @@
 	if(!(impact_flags & (PROJECTILE_IMPACT_BLOCKED | PROJECTILE_IMPACT_SKIP_STANDARD_DAMAGE)))
 		// todo: maybe the projectile side should handle this?
 		target.run_damage_instance(
-			get_structure_damage() * efficiency,
+			(isobj(target) ? get_structure_damage() : damage_force) * efficiency,
 			damage_type,
 			damage_tier,
 			damage_flag,
@@ -1175,6 +1183,18 @@
 			NONE,
 			hit_zone,
 		)
+		if(damage_inflict_agony)
+			target.run_damage_instance(
+				damage_inflict_agony,
+				damage_type,
+				damage_tier,
+				damage_flag,
+				damage_mode,
+				ATTACK_TYPE_PROJECTILE,
+				src,
+				NONE,
+				hit_zone,
+			)
 
 	for(var/datum/projectile_effect/effect as anything in base_projectile_effects)
 		if(effect.hook_damage)

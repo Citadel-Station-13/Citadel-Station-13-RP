@@ -227,12 +227,12 @@
 /obj/projectile/beam/stun/weak
 	name = "weak stun beam"
 	icon_state = "stun"
-	agony = 27.5
+	damage_inflict_agony = 27.5
 
 /obj/projectile/beam/stun/med
 	name = "stun beam"
 	icon_state = "stun"
-	agony = 40
+	damage_inflict_agony = 40
 
 //Disabler Beams - It didn't feel right just to recolor Stun beams. We have uses for them still.
 /obj/projectile/beam/disabler
@@ -240,7 +240,7 @@
 	icon_state = "lightning"
 	fire_sound = 'sound/weapons/Taser.ogg'
 	nodamage = 1
-	agony = 30
+	damage_inflict_agony = 30
 	damage_type = DAMAGE_TYPE_HALLOSS
 	light_color = "#FFFFFF"
 
@@ -254,18 +254,18 @@
 /obj/projectile/beam/disabler/weak
 	name = "weak disabler beam"
 	icon_state = "lightning"
-	agony = 25
+	damage_inflict_agony = 25
 
 /obj/projectile/beam/disabler/strong
 	name = "strong disabler beam"
 	icon_state = "lightning"
-	agony = 40
+	damage_inflict_agony = 40
 
 /obj/projectile/beam/stun/disabler
 	name = "disabler beam"
 	icon_state = "stun"
 
-	agony = 20
+	damage_inflict_agony = 20
 
 	legacy_muzzle_type = /obj/effect/projectile/muzzle/laser_omni
 	legacy_tracer_type = /obj/effect/projectile/tracer/laser_omni

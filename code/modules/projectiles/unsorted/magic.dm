@@ -578,7 +578,7 @@
 /obj/projectile/magic/spellcard/book/shock
 	damage_force = 0
 	stutter = 5
-	agony = 20
+	damage_inflict_agony = 20
 	stun = 10
 
 /* //Still need help on healing procs.

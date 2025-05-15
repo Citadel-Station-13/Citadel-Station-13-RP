@@ -60,7 +60,7 @@
 	fire_sound = 'sound/weapons/doompistol.ogg' // converted from .wavs extracted from doom 2
 	damage_force = 10 // high rof kinda fucked up lets be real
 	damage_tier = 4.5
-	agony = 10 // brute easily heals, agony not so much
+	damage_inflict_agony = 10 // brute easily heals, agony not so much
 	accuracy_overall_modify = 0.8 // heehoo
 	speed = 25 * WORLD_ICON_SIZE
 
@@ -82,7 +82,7 @@
 /obj/projectile/bullet/pistol/rubber // "Rubber" bullets for all other pistols.
 	name = "rubber bullet"
 	damage_force = 5
-	agony = 40
+	damage_inflict_agony = 40
 	embed_chance = 0
 	damage_mode = NONE
 	damage_flag = ARMOR_MELEE
@@ -91,7 +91,7 @@
 /obj/projectile/bullet/pistol/rubber/strong // "Rubber" bullets for high power pistols.
 	fire_sound = 'sound/weapons/weaponsounds_heavypistolshot.ogg' // Rubber shots have less powder, but these still have more punch than normal rubber shot.
 	damage_force = 10
-	agony = 60
+	damage_inflict_agony = 60
 	embed_chance = 0
 	damage_flag = ARMOR_MELEE
 
@@ -113,7 +113,7 @@
 /obj/projectile/bullet/shotgun/beanbag		//because beanbags are not bullets
 	name = "beanbag"
 	damage_force = 20
-	agony = 60
+	damage_inflict_agony = 60
 	embed_chance = 0
 	damage_mode = NONE
 	damage_flag = ARMOR_MELEE
@@ -297,7 +297,7 @@
 	name = "toxic penetrator shard"
 	damage_force = 25
 	damage_tier = 3.75
-	agony = 5
+	damage_inflict_agony = 5
 	embed_chance = 1
 	damage_type = DAMAGE_TYPE_TOX
 
@@ -434,7 +434,7 @@
 	embed_chance = 0
 	//incendiary = 2 //The Trail of Fire doesn't work.
 	flammability = 4
-	agony = 30
+	damage_inflict_agony = 30
 	range = WORLD_ICON_SIZE * 4
 	vacuum_traversal = 0
 

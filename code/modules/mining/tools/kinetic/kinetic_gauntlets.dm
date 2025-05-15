@@ -242,7 +242,7 @@
 		return RAISE_MOB_MELEE_IMPACT_SKIP
 	if(!ismob(target))
 		var/atom/atom_target = target
-		clickchain.data[ACTOR_DATA_KINETIC_IMPACT_LOG] = atom_target.inflict_damage_instance(
+		clickchain.data[ACTOR_DATA_KINETIC_IMPACT_LOG] = atom_target.run_damage_instance(
 			charged_structure_damage,
 			charged_structure_damage_type,
 			charged_structure_damage_tier,
@@ -257,7 +257,7 @@
 			playsound(src, charged_structure_sfx, 60, TRUE)
 	else
 		var/mob/mob_target = target
-		clickchain.data[ACTOR_DATA_KINETIC_IMPACT_LOG] = mob_target.inflict_damage_instance(
+		clickchain.data[ACTOR_DATA_KINETIC_IMPACT_LOG] = mob_target.run_damage_instance(
 			charged_mob_damage,
 			charged_mob_damage_type,
 			charged_mob_damage_tier,
@@ -287,7 +287,7 @@
 	)
 	clickchain.performer.animate_swing_at_target(clickchain.target)
 	clickchain.target?.animate_hit_by_attack(ATTACK_ANIMATION_DISARM)
-	clickchain.target?.inflict_damage_instance(
+	clickchain.target?.run_damage_instance(
 		combo_continuation_damage,
 		combo_continuation_damage_type,
 		combo_continuation_damage_tier,
