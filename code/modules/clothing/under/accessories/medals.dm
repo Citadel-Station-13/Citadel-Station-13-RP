@@ -73,3 +73,10 @@
 	desc = "Issued by the New Kingdom of Adhomai for participation in the campaign against Pirate Lord Ssizikar's 'The Catskinner' Tartic during his invasion of Miaphus'irra. \
 	The twin medals represent Adhomai's twin suns."
 	icon_state = "nka_campaign"
+
+/obj/item/clothing/accessory/medal/medmeritmedal
+	name = "Medal for the Order of Corporate Medical Merit"
+	desc = "Originating from a non-profit foundation on Terra, the corporate version of this medallion signifies the distinct lineage of medical providers from all walks of life \
+	and their significant contributions to medical excellence. The center of it is emblazoned with the rod of asclepius in a shield surrounded by an imprinted wreath atop a silver \
+	maltese cross which extends beyond the circumference."
+	icon_state = "corpomedmerit"

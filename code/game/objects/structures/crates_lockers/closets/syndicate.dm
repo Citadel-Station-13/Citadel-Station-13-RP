@@ -133,5 +133,5 @@
 		/obj/item/bananapeel,
 		/obj/item/card/id/syndicate,
 		/obj/item/assembly/mousetrap/armed,
-		/obj/item/grenade/chem_grenade/lube_tactical,
+		/obj/item/grenade/simple/chemical/premade/lube_tactical,
 		/obj/item/clothing/shoes/clown_shoes)

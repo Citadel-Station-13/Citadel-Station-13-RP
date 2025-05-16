@@ -228,7 +228,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/andromeda/lobby)
 "aE" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "senior_physician"
 	},
@@ -836,7 +836,7 @@
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/admin_planet/andromeda/rnd_lobby)
 "cG" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -1900,7 +1900,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/andromeda/engi_equipment)
 "ga" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full{
+/obj/spawner/window/low_wall/reinforced/electrochromic{
 	spawn_grille = 0;
 	id = "surgical suite"
 	},
@@ -2373,11 +2373,11 @@
 /turf/simulated/floor/tiled/kafel_full/purple,
 /area/admin_planet/andromeda/rnd_nexus)
 "hD" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 9
 	},
-/obj/effect/paint_stripe/sun,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/admin_planet/andromeda/engi_workroom)
 "hE" = (
@@ -2911,7 +2911,7 @@
 /turf/simulated/floor/tiled/kafel_full/red,
 /area/admin_planet/andromeda/sec_lockers)
 "iF" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -3709,7 +3709,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/admin_planet/andromeda/janitorial)
 "lc" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -3832,7 +3832,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/andromeda/rnd_chem_research)
 "lw" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full{
+/obj/spawner/window/low_wall/reinforced/electrochromic{
 	spawn_grille = 0;
 	id = "surgical suite-2"
 	},
@@ -3914,7 +3914,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/andromeda/engi_equipment)
 "lE" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "rd"
 	},
@@ -4124,7 +4124,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/admin_planet/andromeda/engi_workroom)
 "mk" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/yellow,
 /area/admin_planet/andromeda/supply_prep)
 "mn" = (
@@ -4255,11 +4255,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/andromeda/engi_lobby)
 "mI" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/effect/paint_stripe/sun,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/admin_planet/andromeda/engi_workroom)
 "mN" = (
@@ -4586,7 +4586,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/andromeda/rnd_chem_research)
 "nU" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -5590,7 +5590,7 @@
 	},
 /area/admin_planet/andromeda/medward_storage)
 "qS" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/reinforced,
 /area/admin_planet/andromeda/checkpoint_1)
 "qT" = (
@@ -5746,7 +5746,7 @@
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/admin_planet/andromeda/rnd_lobby)
 "ru" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -6031,8 +6031,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor/tiled/steel,
 /area/admin_planet/andromeda/engi_workroom)
 "sr" = (
@@ -6380,8 +6380,8 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/green{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/admin_planet/andromeda/engi_workroom)
 "tz" = (
@@ -6641,7 +6641,7 @@
 /turf/simulated/floor/tiled/yellow,
 /area/admin_planet/andromeda/supply_office)
 "uv" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/admin_planet/andromeda/supply_warehouse)
 "uw" = (
@@ -6694,7 +6694,7 @@
 /turf/simulated/floor/tiled/kafel_full/beige,
 /area/admin_planet/andromeda/medward_lobby)
 "uD" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "senior_engineer"
 	},
@@ -7055,8 +7055,8 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/green{
 	dir = 1
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/admin_planet/andromeda/engi_workroom)
 "vP" = (
@@ -7236,7 +7236,7 @@
 /turf/simulated/floor/tiled/kafel_full/gray,
 /area/admin_planet/andromeda/supply_lobby)
 "ww" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -7990,7 +7990,7 @@
 	},
 /area/admin_planet/andromeda/lobby)
 "yB" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -8005,7 +8005,7 @@
 /turf/simulated/floor/reinforced,
 /area/admin_planet/andromeda/checkpoint_1)
 "yE" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -8685,7 +8685,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/andromeda/engi_monitoring)
 "AY" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/admin_planet/andromeda/medward_chemistry)
 "AZ" = (
@@ -9002,8 +9002,8 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 6
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/admin_planet/andromeda/engi_workroom)
 "BP" = (
@@ -9094,7 +9094,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/admin_planet/andromeda/rnd_lockers)
 "Ca" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/admin_planet/andromeda/sec_warden_office)
 "Cb" = (
@@ -9146,7 +9146,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/andromeda/rnd_xenobio_storage)
 "Co" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techmaint{
 	color = "#A9A9A9"
 	},
@@ -9221,7 +9221,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/andromeda/engi_senior_engineer)
 "Cz" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/andromeda/rnd_xenobio_storage)
 "CC" = (
@@ -9713,7 +9713,7 @@
 /turf/simulated/floor/grass,
 /area/admin_planet/andromeda/rnd_xenobotany)
 "Ej" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/wall/r_wall/prepainted/medical{
 	integrity_flags = 1;
 	integrity_enabled = 0
@@ -9782,7 +9782,7 @@
 /turf/simulated/floor/tiled/kafel_full/gray,
 /area/admin_planet/andromeda/rnd_tool_storage)
 "Ez" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -10326,7 +10326,7 @@
 /turf/simulated/floor/reinforced,
 /area/admin_planet/andromeda/sec_heavy_armory)
 "Gf" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -11248,8 +11248,8 @@
 /area/admin_planet/andromeda/lounge)
 "IT" = (
 /obj/machinery/atmospherics/pipe/manifold4w/visible/cyan,
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/admin_planet/andromeda/engi_workroom)
 "IU" = (
@@ -12288,7 +12288,7 @@
 /turf/simulated/floor/tiled/kafel_full/green,
 /area/admin_planet/andromeda/medward_treatment)
 "Ma" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -12410,7 +12410,7 @@
 /turf/simulated/floor/tiled/yellow,
 /area/admin_planet/andromeda/supply_lobby)
 "Mu" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -12502,7 +12502,7 @@
 /turf/simulated/floor/plating,
 /area/admin_planet/andromeda/northern_lobby)
 "MH" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -12534,7 +12534,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/andromeda/medward_cryo_morgue)
 "MK" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/dark{
 	color = "#A9A9A9"
 	},
@@ -12808,7 +12808,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/admin_planet/andromeda/rnd_anomaly_lab)
 "NE" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/admin_planet/andromeda/supply_office)
 "NG" = (
@@ -12923,7 +12923,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/andromeda/engi_lobby)
 "Oe" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/reinforced,
 /area/admin_planet/andromeda/checkpoint_2)
 "Of" = (
@@ -13286,7 +13286,7 @@
 /turf/simulated/floor/tiled/kafel_full/beige,
 /area/admin_planet/andromeda/medward_storage)
 "Pl" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -13926,8 +13926,8 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/admin_planet/andromeda/engi_workroom)
 "Rv" = (
@@ -13949,8 +13949,8 @@
 	},
 /area/admin_planet/andromeda/northern_lobby)
 "Rz" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/admin_planet/andromeda/engi_workroom)
 "RB" = (
@@ -13959,7 +13959,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/andromeda/medward_cryo_morgue)
 "RD" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -14615,7 +14615,7 @@
 /turf/simulated/floor/bmarble,
 /area/admin_planet/andromeda/rnd_rd_office)
 "TE" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/andromeda/rnd_chem_research)
 "TF" = (
@@ -14628,7 +14628,7 @@
 	},
 /area/admin_planet/andromeda/lobby)
 "TG" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -15851,8 +15851,8 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 5
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/admin_planet/andromeda/engi_workroom)
 "Xp" = (
@@ -16039,8 +16039,8 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 6
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/admin_planet/andromeda/engi_workroom)
 "XW" = (
@@ -16210,7 +16210,7 @@
 /turf/simulated/floor/tiled/red,
 /area/admin_planet/andromeda/sec_lobby)
 "Yz" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -16370,9 +16370,9 @@
 /area/admin_planet/andromeda/engi_equipment)
 "YT" = (
 /obj/structure/closet/crate,
-/obj/item/grenade/chem_grenade,
-/obj/item/grenade/chem_grenade,
-/obj/item/grenade/chem_grenade,
+/obj/item/grenade/simple/chemical,
+/obj/item/grenade/simple/chemical,
+/obj/item/grenade/simple/chemical,
 /obj/item/assembly/timer,
 /obj/item/assembly/timer,
 /obj/item/assembly/timer,

@@ -564,7 +564,7 @@
 	name = "Reactor Blast Door";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor,
 /area/submap/pa_room)
 "be" = (
@@ -739,7 +739,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor,
 /area/submap/pa_room)
 "bD" = (
@@ -775,7 +775,7 @@
 	name = "Reactor Blast Door";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor,
 /area/submap/pa_room)
 "bG" = (
@@ -830,7 +830,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor,
 /area/submap/pa_room)
 "bM" = (
@@ -893,7 +893,7 @@
 	name = "Engine Radiator Viewport Shutter";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor,
 /area/submap/pa_room)
 "bQ" = (
@@ -1320,7 +1320,7 @@
 	name = "Reactor Blast Door";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "cF" = (

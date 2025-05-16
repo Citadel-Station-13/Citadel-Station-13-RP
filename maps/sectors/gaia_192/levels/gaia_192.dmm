@@ -5576,9 +5576,6 @@
 /area/class_m/outside)
 "xR" = (
 /obj/structure/curtain/open/bed,
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
 /obj/structure/fans/tiny,
 /obj/spawner/window/borosillicate/full,
 /turf/simulated/floor/wood,
@@ -5988,7 +5985,7 @@
 /area/class_m/inside/vip_dorms)
 "zG" = (
 /obj/structure/bed/chair/sofa/black/corner{
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/class_m/inside/main)
@@ -11494,9 +11491,6 @@
 "Yz" = (
 /obj/structure/curtain/open/bed,
 /obj/spawner/window/borosillicate/full,
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/wood,
 /area/class_m/inside/vip_dorms)

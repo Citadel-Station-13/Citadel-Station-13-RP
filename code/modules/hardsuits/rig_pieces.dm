@@ -19,33 +19,6 @@
 	weight = 0
 	encumbrance = 0
 
-	species_restricted = list(
-		SPECIES_AKULA,
-		SPECIES_ALRAUNE,
-		SPECIES_APIDAEN,
-		SPECIES_AURIL,
-		SPECIES_DREMACHIR,
-		SPECIES_HUMAN,
-		SPECIES_KRISITIK,
-		SPECIES_NEVREAN,
-		SPECIES_PHORONOID,
-		SPECIES_PROMETHEAN,
-		SPECIES_RAPALA,
-		SPECIES_SERGAL,
-		SPECIES_SKRELL,
-		SPECIES_TAJ,
-		SPECIES_TESHARI,
-		SPECIES_UNATHI,
-		SPECIES_UNATHI_DIGI,
-		SPECIES_VASILISSAN,
-		SPECIES_VOX,
-		SPECIES_VULPKANIN,
-		SPECIES_XENOHYBRID,
-		SPECIES_ZADDAT,
-		SPECIES_ZORREN_FLAT,
-		SPECIES_ZORREN_HIGH,
-	)
-
 /obj/item/clothing/gloves/gauntlets/hardsuit
 	name = "gauntlets"
 	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT | CLOTHING_IGNORE_BELTLINK | CLOTHING_IGNORE_DELIMB
@@ -56,33 +29,6 @@
 
 	weight = 0
 	encumbrance = 0
-
-	species_restricted = list(
-		SPECIES_AKULA,
-		SPECIES_ALRAUNE,
-		SPECIES_APIDAEN,
-		SPECIES_AURIL,
-		SPECIES_DREMACHIR,
-		SPECIES_HUMAN,
-		SPECIES_KRISITIK,
-		SPECIES_NEVREAN,
-		SPECIES_PHORONOID,
-		SPECIES_PROMETHEAN,
-		SPECIES_RAPALA,
-		SPECIES_SERGAL,
-		SPECIES_SKRELL,
-		SPECIES_TAJ,
-		SPECIES_TESHARI,
-		SPECIES_UNATHI,
-		SPECIES_UNATHI_DIGI,
-		SPECIES_VASILISSAN,
-		SPECIES_VOX,
-		SPECIES_VULPKANIN,
-		SPECIES_XENOHYBRID,
-		SPECIES_ZADDAT,
-		SPECIES_ZORREN_FLAT,
-		SPECIES_ZORREN_HIGH,
-	)
 
 /obj/item/clothing/gloves/gauntlets/hardsuit/equipped
 
@@ -101,33 +47,6 @@
 
 	weight = 0
 	encumbrance = 0
-
-	species_restricted = list(
-		SPECIES_AKULA,
-		SPECIES_ALRAUNE,
-		SPECIES_APIDAEN,
-		SPECIES_AURIL,
-		SPECIES_DREMACHIR,
-		SPECIES_HUMAN,
-		SPECIES_KRISITIK,
-		SPECIES_NEVREAN,
-		SPECIES_PHORONOID,
-		SPECIES_PROMETHEAN,
-		SPECIES_RAPALA,
-		SPECIES_SERGAL,
-		SPECIES_SKRELL,
-		SPECIES_TAJ,
-		SPECIES_TESHARI,
-		SPECIES_UNATHI,
-		SPECIES_UNATHI_DIGI,
-		SPECIES_VASILISSAN,
-		SPECIES_VOX,
-		SPECIES_VULPKANIN,
-		SPECIES_XENOHYBRID,
-		SPECIES_ZADDAT,
-		SPECIES_ZORREN_FLAT,
-		SPECIES_ZORREN_HIGH,
-	)
 
 /obj/item/clothing/suit/space/hardsuit
 	name = "chestpiece"
@@ -154,33 +73,6 @@
 	var/obj/item/material/knife/tacknife
 	max_pressure_protection = null
 	min_pressure_protection = null
-
-	species_restricted = list(
-		SPECIES_AKULA,
-		SPECIES_ALRAUNE,
-		SPECIES_APIDAEN,
-		SPECIES_AURIL,
-		SPECIES_DREMACHIR,
-		SPECIES_HUMAN,
-		SPECIES_KRISITIK,
-		SPECIES_NEVREAN,
-		SPECIES_PHORONOID,
-		SPECIES_PROMETHEAN,
-		SPECIES_RAPALA,
-		SPECIES_SERGAL,
-		SPECIES_SKRELL,
-		SPECIES_TAJ,
-		SPECIES_TESHARI,
-		SPECIES_UNATHI,
-		SPECIES_UNATHI_DIGI,
-		SPECIES_VASILISSAN,
-		SPECIES_VOX,
-		SPECIES_VULPKANIN,
-		SPECIES_XENOHYBRID,
-		SPECIES_ZADDAT,
-		SPECIES_ZORREN_FLAT,
-		SPECIES_ZORREN_HIGH,
-	)
 
 /obj/item/clothing/suit/space/hardsuit/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(tacknife)
@@ -253,7 +145,6 @@
 	name = "boots"
 	atom_flags = PHORONGUARD
 	clothing_flags = CLOTHING_IGNORE_BELTLINK | CLOTHING_IGNORE_DELIMB
-	species_restricted = null
 	body_cover_flags = FEET
 	cold_protection_cover    = FEET
 	heat_protection_cover    = FEET
@@ -262,7 +153,6 @@
 	name = "gloves"
 	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT | CLOTHING_IGNORE_BELTLINK | CLOTHING_IGNORE_DELIMB
 	atom_flags = PHORONGUARD
-	species_restricted = null
 	body_cover_flags = HANDS
 	heat_protection_cover    = HANDS
 	cold_protection_cover    = HANDS

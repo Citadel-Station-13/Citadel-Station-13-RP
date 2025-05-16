@@ -21,7 +21,6 @@
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/navgold/border,
 /obj/structure/sign/electricshock{
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled,
@@ -327,11 +326,11 @@
 /turf/simulated/floor,
 /area/storage/tech)
 "anJ" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 10
 	},
-/obj/effect/paint/pipecyan,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "aoU" = (
@@ -1139,8 +1138,7 @@
 	color = "#ed983d"
 	},
 /obj/structure/sign/fire{
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_gas)
@@ -1197,8 +1195,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/sign/department/eng{
-	pixel_x = -32;
-	pixel_y = 0
+	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4portafthall)
@@ -1303,7 +1300,6 @@
 	dir = 1
 	},
 /obj/structure/sign/department/eng{
-	pixel_x = 0;
 	pixel_y = 33
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -1347,8 +1343,8 @@
 	id = "bar";
 	name = "Bar Shutters"
 	},
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
-/obj/effect/paint/palebottlegreen,
+/obj/spawner/window/low_wall/nogrille/firelocks,
+/obj/map_helper/paint/palebottlegreen,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "bny" = (
@@ -1616,11 +1612,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/engineering/atmos/eva)
 "bEa" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/manifold/visible/red{
 	dir = 8
 	},
-/obj/effect/paint/pipecyan,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "bEt" = (
@@ -2089,7 +2085,7 @@
 /turf/simulated/floor/wood,
 /area/endeavour/surfacebase/bar_backroom)
 "cbL" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/security/lower)
 "cbR" = (
@@ -2186,8 +2182,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/endeavour/hallway/d4portafthall)
 "cin" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/sun,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/sun,
 /turf/simulated/floor/plating,
 /area/engineering/engineering_monitoring)
 "ciZ" = (
@@ -2427,8 +2423,8 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/engineering/atmos/workshop)
 "ctk" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/pipecyan,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "ctN" = (
@@ -2469,6 +2465,7 @@
 	},
 /obj/effect/floor_decal/corner/lightorange,
 /obj/machinery/vending/coffee,
+/obj/machinery/camera/network/engineering,
 /turf/simulated/floor/tiled/white,
 /area/engineering/engine_monitoring)
 "cwq" = (
@@ -2628,11 +2625,11 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4aftmaint)
 "cCk" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 10
 	},
-/obj/effect/paint/pipecyan,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "cCn" = (
@@ -2724,8 +2721,8 @@
 /turf/simulated/floor/reinforced,
 /area/maintenance/security/lower)
 "cFY" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/sun,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/sun,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4portafthall)
 "cGc" = (
@@ -2941,8 +2938,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/robotics/smallcraft)
 "cPu" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/sun,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/sun,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "cPB" = (
@@ -3060,7 +3057,12 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload_foyer)
 "cRV" = (
-/turf/space/basic,
+/obj/machinery/porta_turret/crescent{
+	density = 1;
+	faction = "neutral"
+	},
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless/ceiling,
 /area/endeavour/command/turrets)
 "cSj" = (
 /obj/machinery/atmospherics/component/unary/outlet_injector{
@@ -3205,7 +3207,7 @@
 "dhh" = (
 /obj/machinery/air_alarm/north_mount,
 /obj/structure/catwalk,
-/obj/machinery/camera/network/tcomms,
+/obj/machinery/camera/network/engineering,
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_lower)
 "dhs" = (
@@ -3337,13 +3339,13 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /obj/machinery/door/blast/shutters{
 	dir = 8;
 	id = "bar";
 	name = "Bar Shutters"
 	},
-/obj/effect/paint/palebottlegreen,
+/obj/map_helper/paint/palebottlegreen,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "dlD" = (
@@ -3509,11 +3511,11 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4starboardhall)
 "drH" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/manifold/visible/blue{
 	dir = 8
 	},
-/obj/effect/paint/pipecyan,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "drW" = (
@@ -3547,6 +3549,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
+	},
+/obj/machinery/camera/network/engineering{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
@@ -3787,9 +3792,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4portafthall)
 "dGJ" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/visible/black,
-/obj/effect/paint/pipecyan,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "dHp" = (
@@ -4651,7 +4656,6 @@
 	dir = 1
 	},
 /obj/structure/sign/deck/fourth{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/steel,
@@ -4741,8 +4745,8 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/sun,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/sun,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "eIN" = (
@@ -4970,8 +4974,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4portafthall)
 "eQQ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/sun,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/sun,
 /turf/simulated/floor/plating,
 /area/tcommsat/computer)
 "eRm" = (
@@ -5357,6 +5361,13 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
+"fjQ" = (
+/obj/machinery/atmospherics/pipe/simple/visible/purple,
+/obj/machinery/camera/network/engineering{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/atmos)
 "fjV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -5568,7 +5579,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/starboardnacelle)
 "fwR" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor,
 /area/endeavour/hallway/d4fwdmaint)
 "fwT" = (
@@ -5843,6 +5854,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4portafthall)
+"fIF" = (
+/obj/machinery/camera/network/engineering,
+/turf/simulated/floor/tiled/monodark,
+/area/engineering/drone_fabrication)
 "fJl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -7169,6 +7184,10 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/machinery/camera/network/research{
+	dir = 4;
+	network = list("Xenobiology")
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/robotics/smallcraft)
 "gZD" = (
@@ -7458,6 +7477,9 @@
 	pixel_y = 3
 	},
 /obj/structure/table/reinforced,
+/obj/machinery/camera/network/command{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/command/turrets)
 "hnd" = (
@@ -8007,11 +8029,11 @@
 /turf/space,
 /area/space)
 "hMW" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 10
 	},
-/obj/effect/paint/pipecyan,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "hNe" = (
@@ -8186,8 +8208,8 @@
 /area/endeavour/hallway/d4starboardamidhall)
 "hXg" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black,
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint/pipecyan,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "hXh" = (
@@ -9779,6 +9801,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4portafthall)
+"jyj" = (
+/obj/machinery/camera/network/research,
+/turf/simulated/floor/tiled/techfloor,
+/area/endeavour/hallway/d4fwdmaint)
 "jyo" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/structure/disposalpipe/segment{
@@ -10277,11 +10303,11 @@
 /turf/simulated/wall/prepainted/engineering,
 /area/engineering/drone_fabrication)
 "jVb" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
 	dir = 8
 	},
-/obj/effect/paint/pipecyan,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "jVT" = (
@@ -10604,6 +10630,14 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/engineering/atmos/workshop)
+"kqI" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/warning,
+/obj/machinery/camera/network/research,
+/turf/simulated/floor/tiled/techmaint,
+/area/rnd/robotics/smallcraft)
 "kqL" = (
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced/full{
@@ -11276,8 +11310,8 @@
 /turf/simulated/floor,
 /area/endeavour/hallway/d4fwdmaint)
 "leo" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/sun,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/sun,
 /obj/structure/cable,
 /turf/simulated/floor/plating,
 /area/engineering/storage)
@@ -11560,6 +11594,9 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
+/obj/machinery/camera/network/engineering{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "ltG" = (
@@ -11603,8 +11640,8 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/sun,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/sun,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "lxE" = (
@@ -11671,8 +11708,8 @@
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "lCh" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/bottlegreen,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/bottlegreen,
 /turf/simulated/floor/plating,
 /area/hydroponics)
 "lCS" = (
@@ -11979,8 +12016,8 @@
 	density = 0;
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint/sun,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint/sun,
 /turf/simulated/floor/plating,
 /area/engineering/engine_monitoring)
 "lTp" = (
@@ -12215,7 +12252,6 @@
 	dir = 4
 	},
 /obj/structure/sign/deck/fourth{
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -13261,6 +13297,7 @@
 /obj/effect/floor_decal/corner/lightorange,
 /obj/structure/table/standard,
 /obj/machinery/microwave,
+/obj/machinery/camera/network/engineering,
 /turf/simulated/floor/tiled/white,
 /area/engineering/engine_monitoring)
 "nic" = (
@@ -13476,8 +13513,8 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4porthall)
 "nrt" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/sun,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
+/obj/map_helper/paint/sun,
 /obj/map_helper/electrochromatic_linker{
 	id = "EndeavourCeOfficeChrome"
 	},
@@ -14182,11 +14219,11 @@
 /turf/simulated/wall/prepainted/engineering/atmos,
 /area/engineering/atmos/workshop)
 "nWb" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
 	},
-/obj/effect/paint/pipecyan,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "nWk" = (
@@ -14412,7 +14449,6 @@
 	},
 /obj/effect/floor_decal/corner/navgold/border,
 /obj/structure/sign/deck/fourth{
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled,
@@ -14555,7 +14591,6 @@
 	dir = 4
 	},
 /obj/structure/sign/warning/radioactive{
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -14876,9 +14911,9 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4starboardforhall)
 "oSB" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/visible/green,
-/obj/effect/paint/pipecyan,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "oSI" = (
@@ -15525,11 +15560,11 @@
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck4aft)
 "pGH" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/manifold/visible{
 	dir = 8
 	},
-/obj/effect/paint/pipecyan,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "pGV" = (
@@ -15904,11 +15939,11 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos/eva)
 "qhi" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/manifold/visible/purple{
 	dir = 8
 	},
-/obj/effect/paint/pipecyan,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "qhx" = (
@@ -16248,8 +16283,8 @@
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/portnacelle)
 "qwQ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/sun,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/sun,
 /turf/simulated/floor/plating,
 /area/engineering/locker_room)
 "qxt" = (
@@ -16340,6 +16375,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4portafthall)
+"qyW" = (
+/obj/machinery/camera/network/engineering{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/atmos)
 "qzy" = (
 /obj/machinery/telecomms/processor/preset_two,
 /turf/simulated/floor/tiled/dark{
@@ -17342,7 +17383,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos/eva)
 "rHl" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/rnd/robotics/smallcraft)
 "rIS" = (
@@ -17399,6 +17440,17 @@
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
+"rMC" = (
+/obj/machinery/disperser/front{
+	dir = 4;
+	name = "Mass Driver Barrel";
+	desc = "The business end of a mass driver, the magnetic coils in this tube accelerate things shoved into it when power is applied."
+	},
+/obj/machinery/camera/network/research{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4fwdmaint)
 "rME" = (
 /obj/machinery/camera/network/outside{
 	dir = 1
@@ -17465,7 +17517,6 @@
 	dir = 1
 	},
 /obj/structure/sign/deck/fourth{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/steel_ridged,
@@ -17504,8 +17555,9 @@
 /area/endeavour/hallway/d4aftmaint)
 "rTQ" = (
 /obj/machinery/camera/network/outside,
-/turf/space/basic,
-/area/space)
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless/ceiling,
+/area/endeavour/command/turrets)
 "rTZ" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -17684,7 +17736,6 @@
 	dir = 8
 	},
 /obj/structure/sign/department/atmos{
-	pixel_x = 0;
 	pixel_y = -31
 	},
 /turf/simulated/floor/tiled/steel,
@@ -18015,11 +18066,11 @@
 /turf/simulated/floor/plating,
 /area/endeavour/command/turrets)
 "szp" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/visible/blue{
 	dir = 10
 	},
-/obj/effect/paint/pipecyan,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "szz" = (
@@ -18530,8 +18581,7 @@
 	dir = 8
 	},
 /obj/structure/sign/department/atmos{
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/steel,
 /area/engineering/atmos/eva)
@@ -18663,7 +18713,6 @@
 	dir = 4
 	},
 /obj/structure/sign/deck/fourth{
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled,
@@ -19389,9 +19438,9 @@
 /turf/simulated/floor/tiled/monotile,
 /area/hydroponics)
 "ubP" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/visible/black,
-/obj/effect/paint/pipecyan,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "udi" = (
@@ -19645,7 +19694,6 @@
 	dir = 9
 	},
 /obj/structure/sign/department/engine{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
@@ -19665,7 +19713,6 @@
 	dir = 1
 	},
 /obj/structure/sign/department/ai{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
@@ -20052,11 +20099,11 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/starboardnacelle)
 "uHr" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
 	dir = 10
 	},
-/obj/effect/paint/pipecyan,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "uHx" = (
@@ -20193,7 +20240,6 @@
 	dir = 9
 	},
 /obj/structure/sign/department/atmos{
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -20201,7 +20247,6 @@
 "uOW" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/structure/sign/deck/fourth{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/plating,
@@ -20539,7 +20584,6 @@
 /obj/machinery/button/remote/airlock{
 	id = "bathroomlock15";
 	name = "Bathroom Lock";
-	pixel_x = 0;
 	pixel_y = 32;
 	specialfunctions = 4
 	},
@@ -21500,8 +21544,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "wcd" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint/pipecyan,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "wdS" = (
@@ -21569,7 +21613,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4starboardhall)
 "wfT" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/endeavour/station/stairs_four)
 "wgo" = (
@@ -21746,8 +21790,7 @@
 "woW" = (
 /obj/machinery/vending/snack,
 /obj/structure/sign/department/eng{
-	pixel_x = -32;
-	pixel_y = 0
+	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/dark,
 /area/endeavour/hallway/d4portafthall)
@@ -21907,7 +21950,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ai)
 "wvR" = (
-/turf/space,
+/turf/simulated/wall/r_wall/prepainted,
 /area/endeavour/command/turrets)
 "wvS" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
@@ -23045,7 +23088,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck4aft)
 "xFU" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
 "xGE" = (
@@ -24820,7 +24863,7 @@ jNg
 jNg
 jNg
 jNg
-ycn
+xRj
 jNg
 jNg
 jNg
@@ -24831,18 +24874,7 @@ jNg
 jNg
 jNg
 jNg
-ycn
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
+xRj
 jNg
 jNg
 jNg
@@ -24863,7 +24895,6 @@ jNg
 jNg
 jNg
 jNg
-ycn
 jNg
 jNg
 jNg
@@ -24874,7 +24905,19 @@ jNg
 jNg
 jNg
 jNg
-ycn
+jNg
+xRj
+jNg
+jNg
+jNg
+jNg
+jNg
+jNg
+jNg
+jNg
+jNg
+jNg
+xRj
 jNg
 jNg
 jNg
@@ -25014,7 +25057,7 @@ jNg
 jNg
 jNg
 ycn
-oRc
+cRV
 ycn
 jNg
 jNg
@@ -25025,7 +25068,7 @@ jNg
 jNg
 jNg
 ycn
-oRc
+cRV
 ycn
 jNg
 jNg
@@ -25057,7 +25100,7 @@ jNg
 jNg
 jNg
 ycn
-oRc
+cRV
 ycn
 jNg
 jNg
@@ -25068,7 +25111,7 @@ jNg
 jNg
 jNg
 ycn
-oRc
+cRV
 ycn
 jNg
 jNg
@@ -26791,7 +26834,7 @@ jNg
 jNg
 jNg
 jNg
-jNg
+xRj
 jNg
 jNg
 jNg
@@ -26977,7 +27020,7 @@ jNg
 jNg
 jNg
 jNg
-ycn
+xRj
 jNg
 jNg
 jNg
@@ -26985,7 +27028,7 @@ jNg
 jNg
 jNg
 jNg
-ycn
+xRj
 jNg
 jNg
 jNg
@@ -27171,7 +27214,7 @@ vTv
 jNg
 jNg
 ycn
-oRc
+cRV
 ycn
 jNg
 jNg
@@ -27179,7 +27222,7 @@ jNg
 jNg
 jNg
 ycn
-oRc
+cRV
 ycn
 jNg
 jNg
@@ -27533,8 +27576,8 @@ jNg
 jNg
 jNg
 jNg
-ycn
-oRc
+xRj
+cRV
 saA
 saA
 saA
@@ -27593,7 +27636,7 @@ heJ
 heJ
 heJ
 oRc
-ycn
+xRj
 jNg
 jNg
 jNg
@@ -27727,7 +27770,7 @@ jNg
 jNg
 jNg
 jNg
-jNg
+xRj
 ycn
 saA
 saA
@@ -30444,7 +30487,7 @@ jNg
 jNg
 jNg
 jNg
-jNg
+xRj
 ycn
 saA
 saA
@@ -30638,8 +30681,8 @@ jNg
 jNg
 jNg
 jNg
-ycn
-oRc
+xRj
+cRV
 saA
 saA
 hZt
@@ -30696,7 +30739,7 @@ kqL
 heJ
 heJ
 oRc
-ycn
+xRj
 jNg
 jNg
 jNg
@@ -30832,7 +30875,7 @@ jNg
 jNg
 jNg
 jNg
-jNg
+xRj
 ycn
 saA
 saA
@@ -33605,7 +33648,7 @@ oDq
 kkQ
 uUN
 bkY
-ycn
+xRj
 jNg
 xRj
 xRj
@@ -35160,7 +35203,7 @@ kNH
 jNg
 jNg
 jNg
-ycn
+xRj
 jNg
 jNg
 jNg
@@ -35354,7 +35397,7 @@ kNH
 kNH
 kNH
 ycn
-oRc
+cRV
 ycn
 jNg
 jNg
@@ -35673,9 +35716,9 @@ jNg
 jNg
 jNg
 jNg
-wvR
-ycn
-wvR
+xRj
+xRj
+jNg
 jNg
 xRj
 uuN
@@ -35868,7 +35911,7 @@ jNg
 jNg
 jNg
 ycn
-oRc
+cRV
 ycn
 xRj
 xRj
@@ -36523,8 +36566,8 @@ tqu
 tqu
 tqu
 tqu
-oRc
-ycn
+cRV
+xRj
 jNg
 jNg
 jNg
@@ -37286,7 +37329,7 @@ bGC
 gPc
 qhi
 ngK
-sPn
+fjQ
 lfw
 vGV
 sCH
@@ -37999,8 +38042,8 @@ xRj
 xRj
 jNg
 jNg
-ycn
-oRc
+xRj
+cRV
 bto
 jUK
 jUK
@@ -38073,7 +38116,7 @@ oGk
 tem
 xAr
 kuh
-kuh
+qyW
 tqu
 jNg
 jNg
@@ -38390,7 +38433,7 @@ jNg
 jNg
 jNg
 bto
-xUB
+fIF
 xUB
 lPp
 xUB
@@ -40792,7 +40835,7 @@ rfg
 ltz
 tqu
 tqu
-jNg
+ycn
 jNg
 jNg
 jNg
@@ -40985,7 +41028,7 @@ vUP
 nsO
 tqu
 tqu
-oRc
+cRV
 ycn
 jNg
 jNg
@@ -41757,8 +41800,8 @@ jNg
 jNg
 mtv
 jNg
-jNg
-oRc
+ycn
+cRV
 ycn
 jNg
 jNg
@@ -41887,7 +41930,7 @@ jNg
 jNg
 jNg
 ycn
-oRc
+cRV
 ycn
 xRj
 suy
@@ -41952,7 +41995,7 @@ jNg
 jNg
 jNg
 jNg
-ycn
+xRj
 jNg
 jNg
 jNg
@@ -42081,7 +42124,7 @@ jNg
 jNg
 jNg
 jNg
-ycn
+xRj
 jNg
 xRj
 xRj
@@ -42475,7 +42518,7 @@ jNg
 jNg
 jNg
 xRj
-xRj
+usG
 owo
 owo
 owo
@@ -42865,7 +42908,7 @@ jNg
 jNg
 jNg
 ycn
-xRj
+usG
 owo
 dah
 kaY
@@ -43107,7 +43150,7 @@ ahp
 xKI
 xKI
 xKI
-jNg
+ycn
 jNg
 jNg
 jNg
@@ -43300,7 +43343,7 @@ qjZ
 ahp
 xKI
 xKI
-oRc
+cRV
 ycn
 jNg
 jNg
@@ -44419,8 +44462,8 @@ jNg
 jNg
 jNg
 jNg
-ycn
-oRc
+xRj
+cRV
 owo
 owo
 lTp
@@ -45042,8 +45085,8 @@ kaY
 mcc
 kaY
 owo
-oRc
-ycn
+cRV
+xRj
 jNg
 jNg
 jNg
@@ -46007,7 +46050,7 @@ swz
 mcc
 owo
 owo
-nQj
+wvR
 rTQ
 xRj
 jNg
@@ -46201,7 +46244,7 @@ swz
 uwZ
 owo
 owo
-oRc
+cRV
 ycn
 xRj
 jNg
@@ -47919,8 +47962,8 @@ jNg
 jNg
 jNg
 jNg
-ycn
-oRc
+xRj
+cRV
 owo
 mcc
 onY
@@ -47947,8 +47990,8 @@ kaY
 nmL
 kaY
 owo
-oRc
-ycn
+cRV
+xRj
 jNg
 xRj
 xRj
@@ -50247,8 +50290,8 @@ xRj
 xRj
 xRj
 xRj
-ycn
-oRc
+xRj
+cRV
 owo
 kaY
 nmL
@@ -50469,8 +50512,8 @@ nmL
 nmL
 dYW
 owo
-oRc
-ycn
+cRV
+xRj
 jNg
 xRj
 xRj
@@ -51805,7 +51848,7 @@ owo
 wYt
 ciZ
 owo
-fMI
+jyj
 nRW
 fMI
 nRW
@@ -52187,8 +52230,8 @@ jNg
 xRj
 jNg
 jNg
-ycn
-oRc
+jNg
+cRV
 owo
 owo
 owo
@@ -52408,8 +52451,8 @@ uND
 owo
 owo
 owo
-oRc
-ycn
+cRV
+xRj
 jNg
 jNg
 jNg
@@ -52793,7 +52836,7 @@ nLM
 aiw
 nQj
 nQj
-usG
+ycn
 hfY
 wBv
 xRj
@@ -52972,11 +53015,11 @@ nQj
 nQj
 eEF
 fMI
-eEF
+rMC
 owo
 kaY
 owo
-inf
+kqI
 sfK
 aYc
 wfT
@@ -52986,7 +53029,7 @@ oTw
 wSS
 xsP
 nQj
-oRc
+cRV
 ycn
 jNg
 jNg
@@ -53161,7 +53204,7 @@ jNg
 xRj
 xRj
 ycn
-oRc
+cRV
 nQj
 nQj
 eEF
@@ -53179,7 +53222,7 @@ nQj
 nQj
 nQj
 nQj
-jNg
+ycn
 ycn
 jNg
 jNg
@@ -53563,9 +53606,9 @@ jgS
 jgS
 nQj
 nQj
-oRc
-ycn
 cRV
+ycn
+xRj
 jNg
 xRj
 xRj
@@ -53756,9 +53799,9 @@ nJx
 nJx
 nJx
 nQj
+ycn
+ycn
 jNg
-usG
-wvR
 xRj
 jNg
 jNg

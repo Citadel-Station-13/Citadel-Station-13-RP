@@ -188,15 +188,26 @@
 	if(!species_restricted)
 		return //this item doesn't use the species_restricted system
 
-	//Set species_restricted list
-	switch(target_species)
-		if(SPECIES_HUMAN, SPECIES_SKRELL)	//humanoid bodytypes
-			species_restricted = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_PROMETHEAN, SPECIES_HUMAN_SPACER, SPECIES_HUMAN_GRAV, SPECIES_HUMAN_VATBORN) //skrell/humans can wear each other's suits
-		if (SPECIES_UNATHI)
-			//For the sake of gameplay, unathi is unathi
-			species_restricted = list(SPECIES_UNATHI, SPECIES_UNATHI_DIGI)
-		else
-			species_restricted = list(target_species)
+	// * temporary *//
+	// this entire proc is pending decommissioning. the new worn_bodytypes system is the
+	// successor, and contains proper non-strict restriction support via fallbacks system
+
+	// for now, we only bother mechnically restricting if it's a very different race; otherwise, we
+	// swap icons if they exist, but do not actually restrict it, so you can actually have
+	// humans wearing lizard suits in the interrim
+
+	// we should also investigate being able to intentionally mis-cycle a suit to something you're not
+	// so you can disguise as a lizard by using a lizard suit as a human or something
+
+	var/static/list/actually_different_species = list(
+		SPECIES_VOX,
+		SPECIES_TESHARI,
+	)
+
+	if(target_species in actually_different_species)
+		species_restricted = list(target_species)
+	else
+		species_restricted = list("exclude") + actually_different_species
 
 	//Set icon
 	LAZYINITLIST(sprite_sheets)

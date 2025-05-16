@@ -91,7 +91,7 @@
 /turf/simulated/floor/plating,
 /area/submap/skyplanet/poi/shuttlecrash4)
 "O" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /obj/structure/barricade,
 /turf/simulated/floor/plating,
 /area/submap/skyplanet/poi/shuttlecrash4)

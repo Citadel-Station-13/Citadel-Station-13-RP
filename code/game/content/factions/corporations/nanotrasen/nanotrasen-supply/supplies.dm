@@ -46,7 +46,7 @@
 		/obj/item/reagent_containers/spray/cleaner,
 		/obj/item/reagent_containers/glass/rag,
 		/obj/item/reagent_containers/spray/pestbgone,
-		/obj/item/grenade/chem_grenade/cleaner = 3,
+		/obj/item/grenade/simple/chemical/premade/cleaner = 3,
 		/obj/structure/mopbucket,
 	)
 	worth = 350 // i like our service players and will not grief them with high prices
@@ -131,7 +131,7 @@
 	contains = list(
 		/obj/item/melee/thermalcutter = 1,
 		/obj/item/pickaxe/tyrmalin = 2,
-		/obj/item/grenade/explosive/ied/tyrmalin = 2,
+		/obj/item/grenade/simple/explosive/ied/tyrmalin = 2,
 	)
 	worth = 250
 	container_type = /obj/structure/closet/crate/secure/gear
@@ -143,7 +143,7 @@
 /datum/supply_pack/nanotrasen/misc/mining_charges_smallbulk_tyrmalin
 	name = "Tyrmalin Mining Charge Crate"
 	contains = list(
-		/obj/item/grenade/explosive/ied/tyrmalin = 5,
+		/obj/item/grenade/simple/explosive/ied/tyrmalin = 5,
 	)
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "Tyrmalin Mining Charge crate"
@@ -154,7 +154,7 @@
 /datum/supply_pack/nanotrasen/misc/mining_charges_largebulk_tyrmalin
 	name = "Bulkpurchase Tyrmalin Mining Charge Crate"
 	contains = list(
-		/obj/item/grenade/explosive/ied/tyrmalin = 10,
+		/obj/item/grenade/simple/explosive/ied/tyrmalin = 10,
 	)
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "Tyrmalin Mining Charge crate Bulkbuy!!!"
