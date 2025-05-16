@@ -548,7 +548,7 @@
 	return stored_materials.dump(drop_location(), id, amount)
 
 /obj/machinery/lathe/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
-	if(!has_interface)
+	if(!has_interface && !parent_ui) //We assume parent = contacting us remotely.
 		return
 	tgui_controller().ui_interact(user, ui, parent_ui)
 

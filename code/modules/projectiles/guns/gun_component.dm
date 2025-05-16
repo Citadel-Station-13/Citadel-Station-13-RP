@@ -3,6 +3,7 @@
 
 /datum/prototype/design/generated/gun_component
 	abstract_type = /datum/prototype/design/generated/gun_component
+	category = DESIGN_CATEGORY_MODGUN
 
 /datum/prototype/design/generated/gun_component/generate_name(template)
 	return ..("modular gun component - [template]")

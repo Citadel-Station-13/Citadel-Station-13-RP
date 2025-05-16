@@ -76,6 +76,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "hoe"
 	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_LIGHT
+	material_primary = "tip"
 	w_class = WEIGHT_CLASS_SMALL
 	attack_verb = list("slashed", "sliced", "cut", "clawed")
 
