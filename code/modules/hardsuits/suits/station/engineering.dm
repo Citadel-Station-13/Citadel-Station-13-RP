@@ -25,7 +25,6 @@
 
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 
-#warn all these
 /datum/armor/hardsuit/eva
 	melee = 0.35
 	melee_tier = 3.75

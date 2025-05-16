@@ -14,7 +14,7 @@
 		weapon.damage_type,
 		weapon.damage_tier,
 		weapon.damage_flag,
-		weapon.damage_mode,
+		weapon.damage_mode | (DAMAGE_MODE_REQUEST_ARMOR_BLUNTING | DAMAGE_MODE_REQUEST_ARMOR_RANDOMIZATION),
 		ATTACK_TYPE_MELEE,
 		clickchain,
 		NONE,

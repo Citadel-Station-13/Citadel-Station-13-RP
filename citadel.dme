@@ -3396,7 +3396,7 @@
 #include "code\modules\logging\api\construction.dm"
 #include "code\modules\logging\api\projectile.dm"
 #include "code\modules\logging\api\reagents.dm"
-#include "code\modules\logging\event_logger\event_logger.dm"
+#include "code\modules\logging\event_logger\json_flatfile.dm"
 #include "code\modules\loot\pack.dm"
 #include "code\modules\loot\table.dm"
 #include "code\modules\loot\packs\archeology.dm"

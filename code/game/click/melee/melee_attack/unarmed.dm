@@ -82,7 +82,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 		damage_type,
 		damage_tier,
 		damage_flag,
-		damage_mode,
+		damage_mode | (DAMAGE_MODE_REQUEST_ARMOR_BLUNTING | DAMAGE_MODE_REQUEST_ARMOR_RANDOMIZATION),
 		ATTACK_TYPE_MELEE,
 		clickchain,
 		NONE,
