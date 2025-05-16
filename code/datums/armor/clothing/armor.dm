@@ -1,5 +1,7 @@
 /datum/armor/general
 
+#warn sweep down
+
 /datum/armor/general/medieval
 	melee = 0.75
 	bullet = 0.25
@@ -78,5 +80,3 @@
 	laser = 0.4
 	energy = 0.3
 	bomb = 0.2
-
-#warn sweep down
