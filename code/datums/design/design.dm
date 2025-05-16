@@ -30,7 +30,7 @@
 	/// category - string or list, or null; null results in undefined behavior depending on UI.
 	var/category = DESIGN_CATEGORY_MISC
 
-	var/subcategory = DESIGN_CATEGORY_MISC
+	var/subcategory = null
 
 	//? Build Data
 	/// name of item before any name-generation is done. also shown in ui. if null, it'll be auto-detected from the build_path if possible.

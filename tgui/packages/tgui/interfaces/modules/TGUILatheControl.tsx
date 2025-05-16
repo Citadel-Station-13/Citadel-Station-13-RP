@@ -221,6 +221,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
               <Section fill title="Categories" scrollable>
                 <Tabs vertical>
                   {
+                    data.designs.categories = [new Set(data.designs.categories)]
                     data.designs.categories.sort((c1, c2) => c1.localeCompare(c2)).map((cat) => (
                       <Tabs.Tab key={cat} fluid color="transparent"
                         selected={cat === category}

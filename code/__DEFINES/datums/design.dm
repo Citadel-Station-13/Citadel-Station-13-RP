@@ -37,6 +37,7 @@ DEFINE_BITFIELD(design_flags, list(
 #define DESIGN_CATEGORY_TELECOMMUNICATIONS "Telecommunications"
 #define DESIGN_CATEGORY_MEDICAL "Medical"
 #define DESIGN_CATEGORY_MEDIGUN "Medigun Cells"
+#define DESIGN_CATEGORY_MODGUN "Modular Weapons"
 #define DESIGN_CATEGORY_CARGO_MINING "Cargo / Mining"
 #define DESIGN_CATEGORY_SECURITY "Security"
 #define DESIGN_CATEGORY_SCIENCE "Science"

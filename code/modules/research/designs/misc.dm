@@ -1,5 +1,6 @@
 /datum/prototype/design/science/general
 	abstract_type = /datum/prototype/design/science/general
+	
 
 
 /datum/prototype/design/science/general/communicator

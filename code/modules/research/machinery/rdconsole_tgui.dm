@@ -309,9 +309,11 @@
 					linked_destroy = null
 				if("lathe")
 					linked_lathe.linked_console = null
+					linked_lathe.design_holder = null
 					linked_lathe = null
 				if("imprinter")
 					linked_imprinter.linked_console = null
+					linked_imprinter.design_holder = null
 					linked_imprinter = null
 			update_static_data(usr, ui)
 

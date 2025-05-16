@@ -9,19 +9,12 @@
 	work = (3 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds. //Sets an independent time for stock parts, currently one third normal print time.
 	var/tier = 0
 
+/*
 /datum/prototype/design/science/stock_part/generate_name(template)
 	if(tier > 0)
 		return "[..()] (T[tier])"
 	return ..()
-
-// Matter Bins
-
-/datum/prototype/design/science/stock_part/basic_matter_bin
-	id = "basic_matter_bin"
-	req_tech = list(TECH_MATERIAL = 1)
-	materials_base = list(MAT_STEEL = 80)
-	build_path = /obj/item/stock_parts/matter_bin
-	tier = 1
+	*/
 
 /datum/prototype/design/science/stock_part/adv_matter_bin
 	id = "adv_matter_bin"
@@ -53,13 +46,6 @@
 
 // Micro-manipulators
 
-/datum/prototype/design/science/stock_part/micro_mani
-	id = "micro_mani"
-	req_tech = list(TECH_MATERIAL = 1, TECH_DATA = 1)
-	materials_base = list(MAT_STEEL = 30)
-	build_path = /obj/item/stock_parts/manipulator
-	tier = 1
-
 /datum/prototype/design/science/stock_part/nano_mani
 	id = "nano_mani"
 	req_tech = list(TECH_MATERIAL = 3, TECH_DATA = 2)
@@ -89,13 +75,6 @@
 	tier = 5
 
 // Capacitors
-
-/datum/prototype/design/science/stock_part/basic_capacitor
-	id = "basic_capacitor"
-	req_tech = list(TECH_POWER = 1)
-	materials_base = list(MAT_STEEL = 50, MAT_GLASS = 50)
-	build_path = /obj/item/stock_parts/capacitor
-	tier = 1
 
 /datum/prototype/design/science/stock_part/adv_capacitor
 	id = "adv_capacitor"
@@ -127,13 +106,6 @@
 
 // Sensors
 
-/datum/prototype/design/science/stock_part/basic_sensor
-	id = "basic_sensor"
-	req_tech = list(TECH_MAGNET = 1)
-	materials_base = list(MAT_STEEL = 50, MAT_GLASS = 20)
-	build_path = /obj/item/stock_parts/scanning_module
-	tier = 1
-
 /datum/prototype/design/science/stock_part/adv_sensor
 	id = "adv_sensor"
 	req_tech = list(TECH_MAGNET = 3)
@@ -163,13 +135,6 @@
 	tier = 5
 
 // Micro-lasers
-
-/datum/prototype/design/science/stock_part/basic_micro_laser
-	id = "basic_micro_laser"
-	req_tech = list(TECH_MAGNET = 1)
-	materials_base = list(MAT_STEEL = 10, MAT_GLASS = 20)
-	build_path = /obj/item/stock_parts/micro_laser
-	tier = 1
 
 /datum/prototype/design/science/stock_part/high_micro_laser
 	id = "high_micro_laser"

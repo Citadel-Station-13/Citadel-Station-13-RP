@@ -527,22 +527,81 @@ const ResearchConsoleSettings = (props, context) => {
   );
 };
 
-/* These need to open child UIs.
-  { name: "Protolathe", icon: "wrench", template: <ResearchConsoleConstructor name="Protolathe" /> },
+export const ResearchConsoleProtolathe = (props, context) => {
+  const { act, data } = useBackend(context);
+
+  const {
+    sync,
+    linked_destroy,
+    linked_imprinter,
+    linked_lathe,
+  } = data.info;
+
+
+  if (!linked_lathe.present) {
+    return (
+      <Section title="Protolathe">
+        No protolathe found.
+      </Section>
+    );
+  }
+  act("access_lathe");
+  return (
+    <Section title="Protolathe">
+      <Button
+        fluid
+        icon="link"
+        onClick={() => act("access_lathe")}>
+        Open Lathe Remote Interface
+      </Button>
+    </Section>
+  );
+}
+
+export const ResearchConsoleImprinter = (props, context) => {
+  const { act, data } = useBackend(context);
+
+  const {
+    sync,
+    linked_destroy,
+    linked_imprinter,
+    linked_lathe,
+  } = data.info;
+
+  if (!linked_imprinter.present) {
+    return (
+      <Section title="Circuit Imprinter">
+        No circuit imprinter found.
+      </Section>
+    );
+  }
+  act("access_imprinter");
+  return (
+    <Section title="Circuit Imprinter">
+      <Button
+        fluid
+        icon="link"
+        onClick={() => act("access_imprinter")}>
+        Open Circuit Imprinter Remote Interface
+      </Button>
+    </Section>
+  );
+}
+
+const menus = [
+  { name: "Protolathe", icon: "wrench", template: <ResearchConsoleProtolathe name="Protolathe" /> },
   {
     name: "Circuit Imprinter",
     icon: "digital-tachograph",
-    template: <ResearchConsoleConstructor name="Circuit Imprinter" />,
+    template: <access_imprinter name="Circuit Imprinter" />,
   },
-*/
-const menus = [
-
   { name: "Destructive Analyzer", icon: "eraser", template: <ResearchConsoleDestructiveAnalyzer /> },
   { name: "Settings", icon: "cog", template: <ResearchConsoleSettings /> },
   { name: "Research List", icon: "flask", template: <ResearchConsoleViewResearch /> },
   { name: "Design List", icon: "file", template: <ResearchConsoleViewDesigns /> },
   { name: "Disk Operations", icon: "save", template: <ResearchConsoleDisk /> },
 ];
+
 
 export const ResearchConsole = (props, context) => {
   const { act, data } = useBackend(context);
