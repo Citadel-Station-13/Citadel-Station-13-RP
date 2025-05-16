@@ -62,3 +62,10 @@
 /// * disabled by default so non-determinism is controlled instead of innate.
 #define DAMAGE_MODE_REQUEST_ARMOR_BLUNTING (1<<23)
 
+#define DAMAGE_MODES_BLUNTED_BY_ARMOR ( \
+	DAMAGE_MODE_SHARP | \
+	DAMAGE_MODE_EDGE | \
+	DAMAGE_MODE_ABLATING | \
+	DAMAGE_MODE_PIERE | \
+	DAMAGE_MODE_SHRED \
+)

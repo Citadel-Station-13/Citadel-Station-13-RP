@@ -124,6 +124,29 @@ GLOBAL_REAL_LIST(armor_types) = list(
 #define ARMOR_TIER_FLOOR 0
 #define ARMOR_TIER_DEFAULT 3
 
+/proc/ARMOR_TIER_BLUNT_CHANCE(tierdiff)
+	switch(tierdiff)
+		if(-INFINITY to -2)
+			return 0
+		if(-2 to -1)
+			return 15
+		if(-1 to -0.5)
+			return 22.5
+		if(-0.5 to -0.3)
+			return 30
+		if(-0.3 to 0)
+			return 45.5
+		if(0 to 0.3)
+			return 57.5
+		if(0.3 to 0.6)
+			return 70
+		if(0.6 to 1)
+			return 85
+		if(1 to 2)
+			return 90
+		else
+			return 99 // tf2 critsound.ogg
+
 //?  -- armor tiers - melee --
 
 /**
