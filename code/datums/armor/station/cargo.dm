@@ -29,3 +29,5 @@
 	melee = 0.55
 	bullet = 0.25
 	laser = 0.35
+
+#warn sweep up
