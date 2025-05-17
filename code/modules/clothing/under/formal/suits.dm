@@ -116,11 +116,12 @@
 	icon = 'icons/clothing/uniform/formal/suits/burgundy_suit_skirt.dmi'
 	icon_state = "burgundy_suit_skirt"
 
+//Reuses spritesheet
 /obj/item/clothing/under/suit_jacket/checkered
 	name = "checkered suit"
 	desc = "That's a very nice suit you have there. Shame if something were to happen to it, eh?"
-	icon = 'icons/clothing/uniform/formal/suits/checkered_suit.dmi'
-	icon_state = "checkered_suit"
+	icon = 'icons/clothing/uniform/workwear/dept_security/detective3.dmi'
+	icon_state = "detective3"
 	starting_accessories = list(/obj/item/clothing/accessory/tie/black, /obj/item/clothing/accessory/jacket/checkered)
 
 /obj/item/clothing/under/suit_jacket/checkered/skirt
