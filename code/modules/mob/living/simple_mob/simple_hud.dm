@@ -4,6 +4,7 @@
 
 	var/ui_style = 'icons/mob/screen1_animal.dmi'
 	if(ui_icons)
+		hud.ui_style = ui_icons
 		ui_style = ui_icons
 
 	var/ui_color = "#ffffff"
@@ -12,6 +13,7 @@
 	var/list/adding = list()
 	var/list/other = list()
 	var/list/hotkeybuttons = list()
+
 
 	hud.adding = adding
 	hud.other = other
@@ -193,13 +195,7 @@
 		hud.hotkeybuttons += using
 
 		//Throw button
-		throw_icon = new /atom/movable/screen()
-		throw_icon.icon = ui_style
-		throw_icon.icon_state = "act_throw_off"
-		throw_icon.name = "throw"
-		throw_icon.screen_loc = ui_drop_throw
-		throw_icon.color = ui_color
-		throw_icon.alpha = ui_alpha
+		throw_icon = new /atom/movable/screen/hud/throwmode(null, hud)
 		hud.hotkeybuttons += throw_icon
 		hud_elements |= throw_icon
 

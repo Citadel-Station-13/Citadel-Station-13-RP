@@ -192,6 +192,7 @@
 /atom/movable/screen/actor_hud/inventory/swap_hand
 	name = "swap active hand"
 	icon_state = "hand-swap"
+	
 /atom/movable/screen/actor_hud/inventory/swap_hand/Initialize(mapload, datum/inventory/host, hand_count)
 	. = ..()
 	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_HAND_SWAP(hand_count)

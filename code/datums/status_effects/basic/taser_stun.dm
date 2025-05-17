@@ -40,7 +40,7 @@
 		return
 	var/mob/living/owner_mob = owner
 	owner_mob.adjustHalLoss(amount)
-	if(issimple(owner_mob))
+	if(issimplemob(owner_mob))
 		var/mob/living/simple_mob/owner_simple_mob = owner_mob
 		if(owner_simple_mob.taser_kill)
 			owner_simple_mob.take_overall_damage(burn = amount)

@@ -64,7 +64,7 @@
 			if(M.invisibility >= INVISIBILITY_MAXIMUM)
 				continue
 			ghosts += list(serialized)
-		else if(issimple(M))
+		else if(issimplemob(M))
 			simplemobs += list(serialized)
 		else if(ishuman(M))
 			var/mob/living/carbon/human/H = M

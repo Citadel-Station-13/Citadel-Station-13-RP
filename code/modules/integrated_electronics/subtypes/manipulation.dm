@@ -715,7 +715,7 @@
 			activate_pin(3)
 			return
 		src.assembly.visible_message(SPAN_DANGER("[assembly] starts to drill [target]!"), null, SPAN_WARNING("You hear a drill."))
-		drill_delay = isturf(target)? digspeed : isliving(target) ? issimple(target) ? 2 SECONDS : 3 SECONDS : 4 SECONDS
+		drill_delay = isturf(target)? digspeed : isliving(target) ? issimplemob(target) ? 2 SECONDS : 3 SECONDS : 4 SECONDS
 		busy = TRUE
 		targetlock = target
 		usedx = assembly.loc.x
@@ -738,7 +738,7 @@
 			var/mob/living/carbon/human/S = target
 			S.apply_damage(drill_force, DAMAGE_TYPE_BRUTE)
 			return
-		else if(issimple(target))
+		else if(issimplemob(target))
 			var/mob/living/simple_mob/S = target
 			if(S.stat == DEAD)
 				if(S.meat_amount > 0)

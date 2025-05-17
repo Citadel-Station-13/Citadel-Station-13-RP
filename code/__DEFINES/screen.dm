@@ -34,9 +34,9 @@
 /// screen loc for a hand index
 #define SCREEN_LOC_MOB_HUD_INVENTORY_HAND(HAND) "CENTER[index % 2? "" : "-1"]:16,BOTTOM[index < 2? "" : "+[(round(index / 2) - 1)]"]:5"
 /// screen loc for hand swap button for a given number of hands
-#define SCREEN_LOC_MOB_HUD_INVENTORY_HAND_SWAP(TOTAL_HANDS) "CENTER-1:28,BOTTOM+[ceil(TOTAL_HANDS - 2 / 2)]:5"
+#define SCREEN_LOC_MOB_HUD_INVENTORY_HAND_SWAP(TOTAL_HANDS) "CENTER-1:28,BOTTOM+[ceil(max(TOTAL_HANDS,2)/2)]:5"
 /// screen loc for hand swap button for a given number of hands
-#define SCREEN_LOC_MOB_HUD_INVENTORY_EQUIP_HAND(TOTAL_HANDS) "CENTER-1:16,BOTTOM+[ceil(TOTAL_HANDS - 2 / 2)]:5"
+#define SCREEN_LOC_MOB_HUD_INVENTORY_EQUIP_HAND(TOTAL_HANDS) "CENTER-1:16,BOTTOM+[ceil(max(TOTAL_HANDS,2)/2 )]:5"
 /// the bottom-left drawer position of inventory HUD
 #define SCREEN_LOC_MOB_HUD_INVENTORY_DRAWER "LEFT:6,BOTTOM:5"
 /// slot alignment for drawer-anchor
