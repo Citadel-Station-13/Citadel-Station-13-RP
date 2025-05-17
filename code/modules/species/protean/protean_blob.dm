@@ -11,6 +11,8 @@
 
 	iff_factions = MOB_IFF_FACTION_NEUTRAL
 
+	ui_icons = 'icons/mob/screen1_robot_protoblob.dmi'
+
 	maxHealth = 250
 	health = 250
 	say_list_type = /datum/say_list/protean_blob
@@ -84,6 +86,11 @@
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, update_health))
 	else
 		update_icon()
+
+/mob/living/simple_mob/protean_blob/examine(mob/user, dist)
+	. = ..()
+	for(var/obj/item/I in get_held_items())
+		. += SPAN_INFO("[icon2html(I, user)] It is holding \a [FORMAT_TEXT_LOOKITEM(I)] in a psuedopod.")
 
 /mob/living/simple_mob/protean_blob/Destroy()
 	humanform = null
@@ -331,6 +338,10 @@
 	blob.transform = matrix()*size_multiplier
 	blob.size_multiplier = size_multiplier
 	blob.previously_held = inventory?.get_held_items_as_weakrefs()
+
+	var/obj/item/held = get_active_held_item()
+	if(held)
+		blob.put_in_hands(held)
 	//languages!!
 	for(var/datum/prototype/language/L in languages)
 		blob.add_language(L.name)
@@ -490,12 +501,16 @@
 		B.forceMove(src)
 		B.owner = src
 
+	var/obj/item/held = get_active_held_item()
+	if(held)
+		put_in_hands(held)
+
 	for(var/i in 1 to length(blob.previously_held))
 		var/datum/weakref/ref = blob.previously_held[i]
 		var/obj/item/resolved = ref?.resolve()
 		if(isnull(resolved))
 			continue
-		put_in_hands_or_drop(resolved, specific_index = i)
+		put_in_hands_or_drop(resolved)
 
 	if(!isnull(blob.mob_radio))
 		if(!equip_to_slots_if_possible(blob.mob_radio, list(
@@ -516,6 +531,17 @@
 
 /mob/living/simple_mob/protean_blob/say_understands()
 	return humanform?.say_understands(arglist(args)) || ..()
+
+/mob/living/simple_mob/protean_blob/update_inv_hand()
+	cut_overlays()
+	for(var/obj/item/I in get_held_items())
+		if(I)
+			var/mutable_appearance/MA = I.render_mob_appearance(src, SLOT_ID_LEFT_HAND) //lhand because it looks best
+			if(!MA)
+				return
+			MA.pixel_y = -3
+			MA.appearance_flags |= RESET_COLOR
+			add_overlay(MA)
 
 /mob/living/simple_mob/protean_blob/proc/appearanceswitch()
 	set name = "Switch Appearance"
