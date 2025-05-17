@@ -21,10 +21,14 @@
 	response_disarm = "gently pushes aside the"
 	response_harm = "hits the"
 
+	hand_count = 1
+	hand_form = "pseudopods"
+
+
 	harm_intent_damage = 2
 	legacy_melee_damage_lower = 15
 	legacy_melee_damage_upper = 15
-	attacktext = list("smashed", "rammed") // Why would an amorphous blob be slicing stuff?
+	attacktext = list("smashed", "rammed") // Why would an amorphous blob be slicing stuff? 
 
 	aquatic_movement = 1
 	min_oxy = 0
