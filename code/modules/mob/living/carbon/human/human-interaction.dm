@@ -33,7 +33,7 @@
 	. = ..()
 	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
-	. |= handle_inbound_clickchain_disarm_interaction(clickchain, clickchain_flags)
+	. |= on_receive_clickchain_disarm_interaction(clickchain, clickchain_flags)
 	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
 
@@ -41,7 +41,7 @@
 	. = ..()
 	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
-	. |= handle_inbound_clickchain_grab_interaction(clickchain, clickchain_flags)
+	. |= on_receive_clickchain_grab_interaction(clickchain, clickchain_flags)
 	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
 
@@ -63,7 +63,7 @@
  *
  * @return clickchain flags
  */
-/mob/living/carbon/human/proc/handle_inbound_clickchain_disarm_interaction(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+/mob/living/carbon/human/proc/on_receive_clickchain_disarm_interaction(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	var/shieldcall_results = atom_shieldcall_handle_touch(
 		clickchain,
 		clickchain_flags,
@@ -142,7 +142,7 @@
  *
  * @return clickchain flags
  */
-/mob/living/carbon/human/proc/handle_inbound_clickchain_grab_interaction(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+/mob/living/carbon/human/proc/on_receive_clickchain_grab_interaction(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	var/shieldcall_results = atom_shieldcall_handle_touch(
 		clickchain,
 		clickchain_flags,

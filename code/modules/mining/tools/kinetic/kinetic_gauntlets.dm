@@ -274,7 +274,6 @@
 
 /obj/item/kinetic_gauntlets/proc/execute_combo(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/combo/melee/use_combo)
 	var/atom/movable/target = clickchain.target
-	var/turf/target_turf = get_turf(target)
 	use_combo.inflict(target, clickchain.target_zone, clickchain.performer, clickchain, FALSE)
 
 /obj/item/kinetic_gauntlets/proc/execute_combo_step(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/combo_tracker/tracker, inbound_key)

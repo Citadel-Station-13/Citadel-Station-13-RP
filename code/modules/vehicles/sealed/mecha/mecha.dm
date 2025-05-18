@@ -1068,8 +1068,6 @@
 
 	var/temp_deflect_chance = deflect_chance
 	var/temp_damage_minimum = damage_minimum
-	var/temp_minimum_penetration = minimum_penetration
-	var/temp_fail_penetration_value = fail_penetration_value
 
 	if(!ArmC)
 		temp_deflect_chance = 0

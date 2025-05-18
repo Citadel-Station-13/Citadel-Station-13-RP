@@ -260,6 +260,8 @@
 		effective_armor = effective_armor * (1 + rand(-randomization_percent, randomization_percent) * 0.01)
 
 	damage = max(0, damage * effective_armor - effective_soak)
+	if(damage < effective_deflect)
+		return 0
 	return damage
 
 /**
