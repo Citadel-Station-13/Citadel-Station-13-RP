@@ -1072,14 +1072,10 @@
 	if(!ArmC)
 		temp_deflect_chance = 0
 		temp_damage_minimum = 0
-		temp_minimum_penetration = 0
-		temp_fail_penetration_value = 1
 
 	else
 		temp_deflect_chance = round(ArmC.get_efficiency() * ArmC.deflect_chance + (defence_mode ? 25 : 0))
 		temp_damage_minimum = round(ArmC.get_efficiency() * ArmC.damage_minimum)
-		temp_minimum_penetration = round(ArmC.get_efficiency() * ArmC.minimum_penetration)
-		temp_fail_penetration_value = round(ArmC.get_efficiency() * ArmC.fail_penetration_value)
 
 	if(istype(A, /obj/item/vehicle_tracking_beacon))
 		A.forceMove(src)
