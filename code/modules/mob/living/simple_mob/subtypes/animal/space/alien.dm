@@ -92,7 +92,7 @@
 	maxHealth = 150
 	health = 150
 	base_pixel_x = -8
-	movement_base_speed = 10 / -0.2
+	movement_base_speed = 4
 	legacy_melee_damage_lower = 20
 	legacy_melee_damage_upper = 20
 	base_attack_cooldown = 6

@@ -45,7 +45,7 @@
 	shock_resist = 0.9
 	poison_resist = 1
 
-	movement_base_speed = 10 / 0.5
+	movement_base_speed = 5
 	base_attack_cooldown = 10
 
 	var/mob/living/carbon/human/humanform
