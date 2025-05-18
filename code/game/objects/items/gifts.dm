@@ -59,7 +59,7 @@ GLOBAL_LIST_EMPTY(possible_gifts)
 		/obj/item/pickaxe/diamond,
 		/obj/item/pen/invisible,
 		/obj/item/lipstick/random,
-		/obj/item/grenade/smokebomb,
+		/obj/item/grenade/simple/smoke,
 		/obj/item/book/manual/chef_recipes,
 		/obj/item/bikehorn,
 		/obj/item/paicard,

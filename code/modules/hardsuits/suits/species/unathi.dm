@@ -43,11 +43,8 @@
 	laser = 0.45
 
 /obj/item/clothing/head/helmet/space/hardsuit/breacher
-	species_restricted = list(SPECIES_UNATHI, SPECIES_UNATHI_DIGI)
 	damage_force = 5
 
 /obj/item/clothing/suit/space/hardsuit/breacher
-	species_restricted = list(SPECIES_UNATHI, SPECIES_UNATHI_DIGI)
 
 /obj/item/clothing/shoes/magboots/hardsuit/breacher
-	species_restricted = list(SPECIES_UNATHI, SPECIES_UNATHI_DIGI)
