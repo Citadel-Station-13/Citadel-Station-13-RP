@@ -7,3 +7,5 @@
 
 /datum/armor/suit/labcoat/viro
 	bio = 0.8
+	fire = 0.3
+	acid = 0.7

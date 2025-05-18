@@ -22,19 +22,19 @@
 	melee = 0.25
 
 /datum/armor/door/blast_door
-	melee_deflect = 17
-	melee_tier = 3.25
+	melee_deflect = 14
+	melee_tier = 4
 	melee_soak = 5
 	melee = 0.5
 
 /datum/armor/door/windoor
 	melee_deflect = 5
-	melee_tier = 2.25
+	melee_tier = 2
 	melee_soak = 0
-	melee = 0.8
+	melee = 0.7
 
 /datum/armor/door/windoor/reinforced
 	melee_deflect = 17
-	melee_tier = 3.25
+	melee_tier = 3.5
 	melee_soak = 5
 	melee = 0.5

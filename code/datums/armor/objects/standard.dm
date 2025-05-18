@@ -17,6 +17,6 @@
 	melee_tier = 3.325
 
 /datum/armor/object/heavy
-	melee_deflect = 18
+	melee_deflect = 14
 	melee = 0.4
 	melee_tier = 4.5
