@@ -2743,6 +2743,7 @@
 #include "code\modules\clothing\suits\aliens\vox.dm"
 #include "code\modules\clothing\under\_under.dm"
 #include "code\modules\clothing\under\eventclothing.dm"
+#include "code\modules\clothing\under\casual\bluespace.dm"
 #include "code\modules\clothing\under\casual\leotard.dm"
 #include "code\modules\clothing\under\casual\lindenoak.dm"
 #include "code\modules\clothing\under\casual\miscellaneous.dm"

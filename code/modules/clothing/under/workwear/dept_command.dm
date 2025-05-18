@@ -11,6 +11,14 @@
 	name = "Facility Director's jumpsuit"
 	icon = 'icons/clothing/uniform/workwear/dept_command/captain.dmi'
 	icon_state = "captain"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
+	worn_has_rolldown = UNIFORM_HAS_ROLL
+	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
+
+
 
 /obj/item/clothing/under/rank/captain/skirt_pleated
 	name = "captain's pleated skirt"

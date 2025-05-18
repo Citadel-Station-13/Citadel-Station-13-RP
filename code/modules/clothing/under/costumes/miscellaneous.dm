@@ -221,7 +221,7 @@
 /obj/item/clothing/under/ballet
 	name = "\improper Antheia tutu"
 	desc = "A gossamer thin tutu from the boutique Antheia line. Famed for their flexibility and ease of motion, these outfits originate from Old Earth dance traditions."
-	icon = 'icons/clothing/uniform/misc/ballet.dmi'
+	icon = 'icons/clothing/uniform/costume/tutu.dmi'
 	icon_state = "tutu"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
