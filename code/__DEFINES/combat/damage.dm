@@ -30,6 +30,17 @@
 /// todo: better hybrid type handling
 #define DAMAGE_TYPE_SEARING "searing"
 
+/proc/damage_type_to_visualized_color(damage_type)
+	var/alist/lookup = alist(
+		DAMAGE_TYPE_BRUTE = "#ff0000",
+		DAMAGE_TYPE_BURN = "#ffff00",
+		DAMAGE_TYPE_TOX = "#00ff00",
+		DAMAGE_TYPE_OXY = "#0000ff",
+		DAMAGE_TYPE_CLONE = "#ff00ff",
+		DAMAGE_TYPE_HALLOSS = "#00ffff",
+	)
+	return lookup[damage_type]
+
 //? damage_mode bitfield ?//
 
 /// sharp weapons like knives, spears, etc

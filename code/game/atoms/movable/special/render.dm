@@ -16,3 +16,39 @@
  * For particles
  */
 /atom/movable/render/particle
+
+/**
+ * For damage ticks
+ */
+/atom/movable/render/damage_tick
+	maptext_height = 128
+	maptext_width = 128
+	maptext_x = -48
+	maptext_y = 16
+
+/atom/movable/render/damage_tick/Initialize(mapload, atom/movable/bind_to, duration)
+	..()
+	pixel_x = rand(-8, 8)
+	pixel_y = rand(-2, 4)
+	// extremely fancy stuff: if bind_to is moving, estimate where they are
+	if(bind_to)
+		if(last_move > world.time - (world.tick_lag * (WORLD_ICON_SIZE / bind_to.glide_size)))
+			var/diff = bind_to.glide_size * ((world.time - last_move) / world.tick_lag)
+			if(bind_to.last_move_dir & NORTH)
+				pixel_y -= WORLD_ICON_SIZE - diff
+			else if(bind_to.last_move_dir & SOUTH)
+				pixel_y += WORLD_ICON_SIZE - diff
+			if(bind_to.last_move_dir & EAST)
+				pixel_X += WORLD_ICON_SIZE - diff
+			else if(bind_to.last_move_dir & WEST)
+				pixel_x -= WORLD_ICON_SIZE - diff
+	animate(
+		src,
+		time = duration * 0.5,
+		pixel_y = 16,
+	)
+	QDEL_IN(src, duration > 0 ? duration : (0.5 SECONDS))
+
+/atom/movable/render/damage_tick/Destroy()
+	vis_locs.len = 0
+	return ..()

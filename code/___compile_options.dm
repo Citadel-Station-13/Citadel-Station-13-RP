@@ -252,3 +252,14 @@
 // ## Timers
 
 // #define TIMER_LOOP_DEBUGGING
+
+// ## Misc visualizations
+
+/**
+ * terraria-like damage bubble toasts every time something takes significant damage
+*/
+#define CF_VISUALIZE_ATOM_DAMAGE
+
+#ifdef CF_VISUALIZE_ATOM_DAMAGE
+	#warn Visualization of atom damage ticks enabled.
+#endif
