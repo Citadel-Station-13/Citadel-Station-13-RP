@@ -408,12 +408,12 @@
 
 	if(!istype(user, /mob/living))
 		return 0
-	if(!user.IsAdvancedToolUser())
-		return 0
 	if(issimplemob(user))
 		var/mob/living/simple_mob/S = user
 		if(!S.IsHumanoidToolUser(src))
 			return 0
+	if(!user.IsAdvancedToolUser())
+		return 0
 	if(!handle_pins(user))
 		return 0
 	return 1

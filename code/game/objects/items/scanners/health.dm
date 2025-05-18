@@ -41,7 +41,7 @@
 		dat += "\nBody Temperature: ???"
 		user.show_message(SPAN_NOTICE("[dat]"), 1)
 		return
-	if (!(ishuman(user) || SSticker) && SSticker.mode.name != "monkey")
+	if (!(user.IsAdvancedToolUser() || SSticker) && SSticker.mode.name != "monkey")
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return
 
