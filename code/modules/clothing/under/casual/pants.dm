@@ -18,6 +18,7 @@
 	desc = "A nondescript pair of tough blue jeans with holes in them."
 	icon = 'icons/clothing/uniform/casual/jeans/jeansripped.dmi'
 	icon_state = "jeansripped"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -35,6 +36,7 @@
 	desc = "You feel cooler already. These have holes in them."
 	icon = 'icons/clothing/uniform/casual/jeans/jeansclassicripped.dmi'
 	icon_state = "jeansclassicripped"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -52,6 +54,7 @@
 	desc = "Made in the finest space jeans factory this side of Alpha Centauri. These have holes in them."
 	icon = 'icons/clothing/uniform/casual/jeans/jeansmustangripped.dmi'
 	icon_state = "jeansmustangripped"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -69,6 +72,7 @@
 	desc = "Only for those who can pull it off. These have holes in them."
 	icon = 'icons/clothing/uniform/casual/jeans/jeansblackripped.dmi'
 	icon_state = "jeansblackripped"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -86,6 +90,7 @@
 	desc = "Only for those who can pull it off. These have holes in them."
 	icon = 'icons/clothing/uniform/casual/jeans/jeansgreyripped.dmi'
 	icon_state = "jeansgreyripped"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -112,6 +117,7 @@
 	desc = "Bright red pants. Overflowing with personality."
 	icon = 'icons/clothing/uniform/casual/jeans/redpants.dmi'
 	icon_state = "redpants"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -120,6 +126,7 @@
 	desc = "These pants are dark, like your soul."
 	icon = 'icons/clothing/uniform/casual/jeans/blackpants.dmi'
 	icon_state = "blackpants"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -178,6 +185,7 @@
 	desc = "A pair of dust beige khaki pants."
 	icon = 'icons/clothing/uniform/casual/jeans/khaki.dmi'
 	icon_state = "khaki"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -195,6 +203,7 @@
 	desc = "A pair of sexy, tight brown leather chaps."
 	icon = 'icons/clothing/uniform/casual/jeans/chapsb.dmi'
 	icon_state = "chapsb"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -203,6 +212,7 @@
 	desc = "A pair of sexy, tight black leather chaps."
 	icon = 'icons/clothing/uniform/casual/jeans/chapsbl.dmi'
 	icon_state = "chapsbl"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -212,6 +222,7 @@
 	icon = 'icons/clothing/uniform/casual/jeans/yogapants.dmi'
 	icon_state = "yogapants"
 	addblends = "yogapants_a"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -286,6 +297,7 @@
 	desc = "Bright red pants. Overflowing with personality."
 	icon = 'icons/clothing/uniform/casual/jeans/baggy_redpants.dmi'
 	icon_state = "baggy_redpants"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -294,6 +306,7 @@
 	desc = "These pants are dark, like your soul."
 	icon = 'icons/clothing/uniform/casual/jeans/baggy_blackpants.dmi'
 	icon_state = "baggy_blackpants"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -302,6 +315,7 @@
 	desc = "Some tan pants. You look like a white collar worker with these on."
 	icon = 'icons/clothing/uniform/casual/jeans/baggy_tanpants.dmi'
 	icon_state = "baggy_tanpants"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -319,6 +333,7 @@
 	desc = "A pair of dust beige khaki pants."
 	icon = 'icons/clothing/uniform/casual/jeans/baggy_khaki.dmi'
 	icon_state = "baggy_khaki"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 

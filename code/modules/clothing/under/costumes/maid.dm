@@ -15,6 +15,7 @@
 	desc = "You must be a bit risque teasing all of them in a maid uniform!"
 	icon = 'icons/clothing/uniform/costume/maid/maid_sexy.dmi'
 	icon_state = "sexymaid"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -23,6 +24,7 @@
 	desc = "A tailored maid uniform that takes many cues from Old Earth Bavarian commonwear. It seems airy and breathable."
 	icon = 'icons/clothing/uniform/costume/maid/maid_neko.dmi'
 	icon_state = "neko"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 

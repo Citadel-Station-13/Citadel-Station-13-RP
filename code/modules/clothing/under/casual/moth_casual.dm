@@ -5,6 +5,7 @@
 /obj/item/clothing/under/moth
 	icon = 'icons/clothing/uniform/casual/moth/gray_puffy_pants.dmi'
 	icon_state = "gray_puffy_pants"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -12,6 +13,7 @@
 	name = "puffy pants"
 	desc = "A pair of puffy pants. The holes are too small for human proportions."
 	body_cover_flags = LEGS
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -19,6 +21,7 @@
 	name = "red puffy pants"
 	icon = 'icons/clothing/uniform/casual/moth/red_puffy_pants.dmi'
 	icon_state = "red_puffy_pants"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -26,6 +29,7 @@
 	name = "bright blue puffy pants"
 	icon = 'icons/clothing/uniform/casual/moth/bright_blue_puffy_pants.dmi'
 	icon_state = "bright_blue_puffy_pants"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -33,6 +37,7 @@
 	name = "dull blue puffy pants"
 	icon = 'icons/clothing/uniform/casual/moth/dull_blue_puffy_pants.dmi'
 	icon_state = "dull_blue_puffy_pants"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -40,6 +45,7 @@
 	name = "light orange puffy pants"
 	icon = 'icons/clothing/uniform/casual/moth/light_orange_puffy_pants.dmi'
 	icon_state = "light_orange_puffy_pants"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -47,6 +53,7 @@
 	name = "dark orange puffy pants"
 	icon = 'icons/clothing/uniform/casual/moth/dark_orange_puffy_pants.dmi'
 	icon_state = "dark_orange_puffy_pants"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -54,6 +61,7 @@
 	name = "purple puffy pants"
 	icon = 'icons/clothing/uniform/casual/moth/purple_puffy_pants.dmi'
 	icon_state = "purple_puffy_pants"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -61,6 +69,7 @@
 	name = "green puffy pants"
 	icon = 'icons/clothing/uniform/casual/moth/green_puffy_pants.dmi'
 	icon_state = "green_puffy_pants"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -68,6 +77,7 @@
 	name = "dark puffy pants"
 	icon = 'icons/clothing/uniform/casual/moth/dark_puffy_pants.dmi'
 	icon_state = "dark_puffy_pants"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -75,6 +85,7 @@
 	name = "brown puffy pants"
 	icon = 'icons/clothing/uniform/casual/moth/brown_puffy_pants.dmi'
 	icon_state = "brown_puffy_pants"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -82,6 +93,7 @@
 	name = "white puffy pants"
 	icon = 'icons/clothing/uniform/casual/moth/white_puffy_pants.dmi'
 	icon_state = "white_puffy_pants"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -91,6 +103,7 @@
 	icon = 'icons/clothing/uniform/casual/moth/gray_tight_pants.dmi'
 	icon_state = "gray_tight_pants"
 	body_cover_flags = LEGS
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -98,6 +111,7 @@
 	name = "red pants"
 	icon = 'icons/clothing/uniform/casual/moth/red_tight_pants.dmi'
 	icon_state = "red_tight_pants"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -105,6 +119,7 @@
 	name = "bright blue pants"
 	icon = 'icons/clothing/uniform/casual/moth/bright_blue_tight_pants.dmi'
 	icon_state = "bright_blue_tight_pants"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -112,6 +127,7 @@
 	name = "dull blue pants"
 	icon = 'icons/clothing/uniform/casual/moth/dull_blue_tight_pants.dmi'
 	icon_state = "dull_blue_tight_pants"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -119,6 +135,7 @@
 	name = "light orange pants"
 	icon = 'icons/clothing/uniform/casual/moth/light_orange_tight_pants.dmi'
 	icon_state = "light_orange_tight_pants"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -126,6 +143,7 @@
 	name = "dark orange pants"
 	icon = 'icons/clothing/uniform/casual/moth/dark_orange_tight_pants.dmi'
 	icon_state = "dark_orange_tight_pants"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -133,6 +151,7 @@
 	name = "purple pants"
 	icon = 'icons/clothing/uniform/casual/moth/purple_tight_pants.dmi'
 	icon_state = "purple_tight_pants"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -140,6 +159,7 @@
 	name = "green pants"
 	icon = 'icons/clothing/uniform/casual/moth/green_tight_pants.dmi'
 	icon_state = "green_tight_pants"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -147,6 +167,7 @@
 	name = "dark pants"
 	icon = 'icons/clothing/uniform/casual/moth/dark_tight_pants.dmi'
 	icon_state = "dark_tight_pants"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -154,6 +175,7 @@
 	name = "brown pants"
 	icon = 'icons/clothing/uniform/casual/moth/brown_tight_pants.dmi'
 	icon_state = "brown_tight_pants"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -161,6 +183,7 @@
 	name = "white pants"
 	icon = 'icons/clothing/uniform/casual/moth/white_tight_pants.dmi'
 	icon_state = "white_tight_pants"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -170,6 +193,7 @@
 	icon = 'icons/clothing/uniform/casual/moth/gray_moth_skirt.dmi'
 	icon_state = "gray_moth_skirt"
 	body_cover_flags = LEGS
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -177,6 +201,7 @@
 	name = "red skirt"
 	icon = 'icons/clothing/uniform/casual/moth/red_moth_skirt.dmi'
 	icon_state = "red_moth_skirt"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -184,6 +209,7 @@
 	name = "bright blue skirt"
 	icon = 'icons/clothing/uniform/casual/moth/bright_blue_moth_skirt.dmi'
 	icon_state = "bright_blue_moth_skirt"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -191,6 +217,7 @@
 	name = "dull blue skirt"
 	icon = 'icons/clothing/uniform/casual/moth/dull_blue_moth_skirt.dmi'
 	icon_state = "dull_blue_moth_skirt"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -198,6 +225,7 @@
 	name = "light orange skirt"
 	icon = 'icons/clothing/uniform/casual/moth/light_orange_moth_skirt.dmi'
 	icon_state = "light_orange_moth_skirt"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -205,6 +233,7 @@
 	name = "dark orange skirt"
 	icon = 'icons/clothing/uniform/casual/moth/dark_orange_moth_skirt.dmi'
 	icon_state = "dark_orange_moth_skirt"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -212,6 +241,7 @@
 	name = "purple skirt"
 	icon = 'icons/clothing/uniform/casual/moth/purple_moth_skirt.dmi'
 	icon_state = "purple_moth_skirt"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -219,6 +249,7 @@
 	name = "green skirt"
 	icon = 'icons/clothing/uniform/casual/moth/green_moth_skirt.dmi'
 	icon_state = "green_moth_skirt"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -226,6 +257,7 @@
 	name = "dark skirt"
 	icon = 'icons/clothing/uniform/casual/moth/dark_moth_skirt.dmi'
 	icon_state = "dark_moth_skirt"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -233,6 +265,7 @@
 	name = "brown skirt"
 	icon = 'icons/clothing/uniform/casual/moth/brown_moth_skirt.dmi'
 	icon_state = "brown_moth_skirt"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -240,5 +273,6 @@
 	name = "white skirt"
 	icon = 'icons/clothing/uniform/casual/moth/white_moth_skirt.dmi'
 	icon_state = "white_moth_skirt"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL

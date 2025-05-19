@@ -10,6 +10,7 @@
 	icon = 'icons/clothing/uniform/casual/turtleneck/bb_turtle.dmi'
 	icon_state = "bb_turtle"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 
@@ -18,6 +19,7 @@
 	desc = "A cozy knit turtleneck. It's too baggy and comfortable to be tactical."
 	icon = 'icons/clothing/uniform/casual/turtleneck/bb_turtle_fem.dmi'
 	icon_state = "bb_turtle_fem"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -25,6 +27,7 @@
 	name = "baggy turtleneck (purple)"
 	icon = 'icons/clothing/uniform/casual/turtleneck/bb_turtlepur.dmi'
 	icon_state = "bb_turtlepur"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 
@@ -32,6 +35,7 @@
 	name = "baggy turtleneck (purple)(female)"
 	icon = 'icons/clothing/uniform/casual/turtleneck/bb_turtlepur_fem.dmi'
 	icon_state = "bb_turtlepur_fem"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -39,6 +43,7 @@
 	name = "baggy turtleneck (red)"
 	icon = 'icons/clothing/uniform/casual/turtleneck/bb_turtlered.dmi'
 	icon_state = "bb_turtlered"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 
@@ -46,6 +51,7 @@
 	name = "baggy turtleneck (red)(female)"
 	icon = 'icons/clothing/uniform/casual/turtleneck/bb_turtlered_fem.dmi'
 	icon_state = "bb_turtlered_fem"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -53,6 +59,7 @@
 	name = "baggy turtleneck (blue)"
 	icon = 'icons/clothing/uniform/casual/turtleneck/bb_turtleblu.dmi'
 	icon_state = "bb_turtleblu"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 
@@ -60,6 +67,7 @@
 	name = "baggy turtleneck (blue)(female)"
 	icon = 'icons/clothing/uniform/casual/turtleneck/bb_turtleblu_fem.dmi'
 	icon_state = "bb_turtleblu_fem"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -67,6 +75,7 @@
 	name = "baggy turtleneck (green)"
 	icon = 'icons/clothing/uniform/casual/turtleneck/bb_turtlegrn.dmi'
 	icon_state = "bb_turtlegrn"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 
@@ -74,6 +83,7 @@
 	name = "baggy turtleneck (green)(female)"
 	icon = 'icons/clothing/uniform/casual/turtleneck/bb_turtlegrn_fem.dmi'
 	icon_state = "bb_turtlegrn_fem"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -81,6 +91,7 @@
 	name = "baggy turtleneck (black)"
 	icon = 'icons/clothing/uniform/casual/turtleneck/bb_turtleblk.dmi'
 	icon_state = "bb_turtleblk"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 
@@ -88,6 +99,7 @@
 	name = "baggy turtleneck (black)(female)"
 	icon = 'icons/clothing/uniform/casual/turtleneck/bb_turtleblk_fem.dmi'
 	icon_state = "bb_turtleblk_fem"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -114,5 +126,6 @@
 	desc = "A lightweight black turtleneck with padded gray slacks. It seems comfortable, but practical."
 	icon = 'icons/clothing/uniform/casual/turtleneck/laconic.dmi'
 	icon_state = "laconic"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL

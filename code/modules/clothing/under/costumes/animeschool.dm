@@ -17,6 +17,7 @@
 	desc = "A clean white shirt with a red collar and skirt. Looks like something out of an anime."
 	icon = 'icons/clothing/uniform/costume/animeschool/schoolgirlred.dmi'
 	icon_state = "schoolgirlred"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -25,6 +26,7 @@
 	desc = "A clean white shirt with a green collar and skirt. Looks like something out of an anime."
 	icon = 'icons/clothing/uniform/costume/animeschool/schoolgirlgreen.dmi'
 	icon_state = "schoolgirlgreen"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -33,6 +35,7 @@
 	desc = "A clean white shirt with a orange collar and skirt. Looks like something out of an anime."
 	icon = 'icons/clothing/uniform/costume/animeschool/schoolgirlorange.dmi'
 	icon_state = "schoolgirlorange"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -41,5 +44,6 @@
 	desc = "A clean white shirt with a pink collar and skirt. Looks like something out of an anime."
 	icon = 'icons/clothing/uniform/costume/animeschool/schoolgirlpink.dmi'
 	icon_state = "schoolgirlpink"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL

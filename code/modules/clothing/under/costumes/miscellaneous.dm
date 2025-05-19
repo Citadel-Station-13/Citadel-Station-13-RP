@@ -9,6 +9,7 @@
 	desc = "An outfit that radiates pure authority. Yours is the drill that will pierce the heavens."
 	icon = 'icons/clothing/uniform/costume/kamina.dmi'
 	icon_state = "kamina"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -17,6 +18,7 @@
 	desc = "This outfit seems to favor tight materials and lots of open skin. It's likely that its previous owner hailed from an arid environment. It remains stylish, regardless of climate."
 	icon = 'icons/clothing/uniform/costume/yoko.dmi'
 	icon_state = "yoko"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -25,6 +27,7 @@
 	desc = "A jumpsuit in One Star colours."
 	icon = 'icons/clothing/uniform/costume/onestar.dmi'
 	icon_state = "os_jumpsuit"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -99,6 +102,7 @@
 	desc = "For the dungeon crawling, adventurous robber."
 	icon = 'icons/clothing/uniform/costume/highwayman_clothes.dmi'
 	icon_state = "highwayman_clothes"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -107,6 +111,7 @@
 	desc = "For the dungeon crawling, adventurous robber."
 	icon = 'icons/clothing/uniform/costume/highwayman_clothes_fem.dmi'
 	icon_state = "highwayman_clothes_fem"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -115,6 +120,7 @@
 	desc = "A sturdy canvas button-up and shorts, designed to provide protection without retaining heat."
 	icon = 'icons/clothing/uniform/costume/safari.dmi'
 	icon_state = "safari"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -123,6 +129,7 @@
 	desc = "A skintight bodysuit meant to be worn under powered armor. Popularized by a famous bounty hunter."
 	icon = 'icons/clothing/uniform/costume/bountyskin.dmi'
 	icon_state = "bountyskin"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -131,6 +138,7 @@
 	desc = "Several layers of flexible body tape may be placed in a skintight arrangement that protects the user's modesty while still allowing them to dazzle. Odds of winning a Multipass increase when wearing this attire."
 	icon = 'icons/clothing/uniform/costume/tape.dmi'
 	icon_state = "tape"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -139,6 +147,7 @@
 	desc = "If you can dance, you've got a career in Law ahead."
 	icon = 'icons/clothing/uniform/costume/lobster.dmi'
 	icon_state = "lobster"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -147,6 +156,7 @@
 	desc = "This aged and dirty wrap bears the dust of countless aeons. Keep away from water."
 	icon = 'icons/clothing/uniform/costume/mummy.dmi'
 	icon_state = "mummy"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -155,6 +165,7 @@
 	desc = "Too spooky, too scary. Those who don this costume are haunted by xylophones."
 	icon = 'icons/clothing/uniform/costume/skeleton.dmi'
 	icon_state = "skeleton"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -163,6 +174,7 @@
 	desc = "Ideal for stalking someone through a field of hay. This suit is less practical on a space station."
 	icon = 'icons/clothing/uniform/costume/scarecrow.dmi'
 	icon_state = "scarecrow"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -171,6 +183,7 @@
 	desc = "The outfit of a dungeon master, and we're not talking about tabletop."
 	icon = 'icons/clothing/uniform/costume/darkholme.dmi'
 	icon_state = "darkholme"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -179,6 +192,7 @@
 	desc = "These silk robes are commonly associated with Old World courtesans and radiate a delicate femininity."
 	icon = 'icons/clothing/uniform/costume/geisha.dmi'
 	icon_state = "geisha"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -187,6 +201,7 @@
 	desc = "Themed puns aren't required, but they do make you seem cooler."
 	icon = 'icons/clothing/uniform/costume/drfreeze.dmi'
 	icon_state = "drfreeze"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -195,6 +210,7 @@
 	desc = "The ideal outfit for a psychotic bitch. Knowledge of German not required."
 	icon = 'icons/clothing/uniform/costume/red_mech_suit.dmi'
 	icon_state = "red_mech_suit"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -203,6 +219,7 @@
 	desc = "For pilots whose color palettes match their personalities."
 	icon = 'icons/clothing/uniform/costume/white_mech_suit.dmi'
 	icon_state = "white_mech_suit"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -211,6 +228,7 @@
 	desc = "If you want to sit in your bedroom and cry, this is the suit to do it in."
 	icon = 'icons/clothing/uniform/costume/blue_mech_suit.dmi'
 	icon_state = "blue_mech_suit"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -219,6 +237,7 @@
 	desc = "This costume hearkens back to Old Earth solstice traditions representing community interaction and an emphemeral concept known as 'holiday cheer'."
 	icon = 'icons/clothing/uniform/costume/christmasmaler.dmi'
 	icon_state = "christmasmaler"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -227,6 +246,7 @@
 	desc = "Commonly associated with faerie-like 'helpers', the color green represents vitality and the coming spring."
 	icon = 'icons/clothing/uniform/costume/christmasmaleg.dmi'
 	icon_state = "christmasmaleg"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -235,6 +255,7 @@
 	desc = "Appreciation of more physical forms of comfort is important during the holidays. Even when it's cold out."
 	icon = 'icons/clothing/uniform/costume/christmasfemaler.dmi'
 	icon_state = "christmasfemaler"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -243,6 +264,7 @@
 	desc = "Something special for Santa's little helper."
 	icon = 'icons/clothing/uniform/costume/christmasfemaleg.dmi'
 	icon_state = "christmasfemaleg"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -251,6 +273,7 @@
 	desc = "Living telegram operators experience one of the largest on the job fatality rates of all courier-based occupations."
 	icon = 'icons/clothing/uniform/costume/telegram.dmi'
 	icon_state = "telegram"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -259,6 +282,7 @@
 	desc = "A truly iconic outfit, still worn by enthusiasts and fans of Old Earth digital media."
 	icon = 'icons/clothing/uniform/costume/bsing.dmi'
 	icon_state = "bsing"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -267,6 +291,7 @@
 	desc = "Inspired by the original, this outfit is still stylish, although derivative."
 	icon = 'icons/clothing/uniform/costume/ysing.dmi'
 	icon_state = "ysing"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -285,5 +310,6 @@
 	desc = "A gossamer thin tutu from the boutique Antheia line. Famed for their flexibility and ease of motion, these outfits originate from Old Earth dance traditions."
 	icon = 'icons/clothing/uniform/costume/tutu.dmi'
 	icon_state = "tutu"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL

@@ -7,6 +7,7 @@
 	desc = "Prior to the Final War issues with law enforcement on Old Earth became so bad that in many countries the police became little more than roving executioners. Ornate uniforms such as this one purport to be based on accounts of those times."
 	icon = 'icons/clothing/uniform/costume/historical/aquiline.dmi'
 	icon_state = "dredd"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -15,6 +16,7 @@
 	desc = "A length of white wool, wrapped carefully around the wearer. Sometimes bound by a belt or sash, in some cultures the way the toga was wrapped and worn denoted social status."
 	icon = 'icons/clothing/uniform/costume/historical/toga.dmi'
 	icon_state = "toga"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -22,6 +24,7 @@
 	desc = "imperial military jumpsuit"
 	icon = 'icons/clothing/uniform/costume/historical/crimson.dmi'
 	icon_state = "crimson"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -30,6 +33,7 @@
 	desc = "Replica lorica segmentata. It doesn't feel like it would actually afford much protection against modern weaponry."
 	icon = 'icons/clothing/uniform/costume/historical/roman.dmi'
 	icon_state = "roman"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -48,6 +52,7 @@
 	desc = "Looks old."
 	icon = 'icons/clothing/uniform/costume/historical/redcoatformal.dmi'
 	icon_state = "redcoatformal"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -56,6 +61,7 @@
 	desc = "Looks old."
 	icon = 'icons/clothing/uniform/costume/historical/general.dmi'
 	icon_state = "general"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -64,6 +70,7 @@
 	desc = "Looks old."
 	icon = 'icons/clothing/uniform/costume/historical/american.dmi'
 	icon_state = "american"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -72,6 +79,7 @@
 	desc = "Looks old."
 	icon = 'icons/clothing/uniform/costume/historical/prussian.dmi'
 	icon_state = "prussian"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 

@@ -7,6 +7,7 @@
 	desc = "A black leotard with a piece of semi-transparent cloth near the bust. Perfect for showing off cleavage. Bunny ears not included."
 	icon = 'icons/clothing/uniform/casual/leotard/leotard.dmi'
 	icon_state = "leotard"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -15,6 +16,7 @@
 	desc = "A colorable leotard with a piece of semi-transparent cloth near the bust. Perfect for showing off cleavage. Bunny ears not included."
 	icon = 'icons/clothing/uniform/casual/leotard/leotard_color.dmi'
 	icon_state = "leotard_color"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -23,6 +25,7 @@
 	desc = "A revealing leotard with a window that exposes your sides."
 	icon = 'icons/clothing/uniform/casual/leotard/leotard_window.dmi'
 	icon_state = "leotard_window"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -31,6 +34,7 @@
 	desc = "A black leotard, commonly used by casino workers to drive up tips. Bunny ears and tail sold separately."
 	icon = 'icons/clothing/uniform/casual/leotard/bunny_f.dmi'
 	icon_state = "bunny_f"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -39,5 +43,6 @@
 	desc = "A black leotard, commonly used by casino workers to drive up tips. Bunny ears and tail sold separately."
 	icon = 'icons/clothing/uniform/casual/leotard/bunny_m.dmi'
 	icon_state = "bunny_m"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL

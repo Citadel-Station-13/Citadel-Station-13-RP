@@ -19,6 +19,7 @@
 	desc = "A piece of cloth wrapped around the waist."
 	icon = 'icons/clothing/uniform/casual/loincloth.dmi'
 	icon_state = "loincloth"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -44,6 +45,7 @@
 	name = "rainbow pleated skirt"
 	icon = 'icons/clothing/uniform/casual/rainbow_skirt.dmi'
 	icon_state = "rainbow_skirt"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -61,6 +63,7 @@
 	desc = "Popular with freshly grown vatborn and new age cultists alike."
 	icon = 'icons/clothing/uniform/casual/ascetic_fem.dmi'
 	icon_state = "ascetic_fem"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -69,6 +72,7 @@
 	desc = "A fluffy robe to keep you from showing off to the world."
 	icon = 'icons/clothing/uniform/casual/bathrobe.dmi'
 	icon_state = "bathrobe"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -87,5 +91,6 @@
 	icon = 'icons/clothing/uniform/casual/moderncoat.dmi'
 	icon_state = "moderncoat"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL

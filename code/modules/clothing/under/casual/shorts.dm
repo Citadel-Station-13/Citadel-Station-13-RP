@@ -52,6 +52,7 @@
 	name = "white shorts"
 	icon = 'icons/clothing/uniform/casual/shorts/whiteshorts.dmi'
 	icon_state = "whiteshorts"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -59,6 +60,7 @@
 	name = "white short shorts"
 	icon = 'icons/clothing/uniform/casual/shorts/whiteshorts_f.dmi'
 	icon_state = "whiteshorts_f"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -184,6 +186,7 @@
 	icon = 'icons/clothing/uniform/casual/shorts/skirt_short_black.dmi'
 	icon_state = "skirt_short_black"
 	body_cover_flags = LOWER_TORSO
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -201,6 +204,7 @@
 	desc = "A skirt that is a shiny blue."
 	icon = 'icons/clothing/uniform/casual/shorts/skirt_short_blue.dmi'
 	icon_state = "skirt_short_blue"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -209,6 +213,7 @@
 	desc = "A skirt that is a shiny red."
 	icon = 'icons/clothing/uniform/casual/shorts/skirt_short_red.dmi'
 	icon_state = "skirt_short_red"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -217,6 +222,7 @@
 	desc = "A skirt that is made of denim."
 	icon = 'icons/clothing/uniform/casual/shorts/skirt_short_denim.dmi'
 	icon_state = "skirt_short_denim"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -235,6 +241,7 @@
 	icon = 'icons/clothing/uniform/casual/shorts/pleated.dmi'
 	icon_state = "pleated"
 	addblends = "pleated_a"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -280,6 +287,7 @@
 	desc = "A preppy purple skirt with a white blouse."
 	icon = 'icons/clothing/uniform/casual/shorts/plaid_green.dmi'
 	icon_state = "plaid_green"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -288,6 +296,7 @@
 	desc = "A pair of torn up black shorts, for those who know better."
 	icon = 'icons/clothing/uniform/casual/shorts/black_shorts_ripped.dmi'
 	icon_state = "black_shorts_ripped"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -296,6 +305,7 @@
     desc = "An impractically short miniskirt allegedly making waves through the local fashion scene."
     icon = 'icons/clothing/uniform/casual/shorts/miniskirt_fashion.dmi'
     icon_state = "miniskirt_fashion"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -304,6 +314,7 @@
 	desc = "A comfy blue sweater paired with a stylish charcoal skirt!"
 	icon = 'icons/clothing/uniform/casual/shorts/blueskirt.dmi'
 	icon_state = "blueskirt"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -312,6 +323,7 @@
 	desc = "A comfy red sweater paired with a stylish charcoal skirt!"
 	icon = 'icons/clothing/uniform/casual/shorts/redskirt.dmi'
 	icon_state = "redskirt"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -320,6 +332,7 @@
 	desc = "A light blue sweater with a black skirt."
 	icon = 'icons/clothing/uniform/casual/shorts/blueshortskirt_female.dmi'
 	icon_state = "blueshortskirt_female"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -328,6 +341,7 @@
 	desc = "A medium length, grey skirt with a long-sleeve, black sweater on top."
 	icon = 'icons/clothing/uniform/casual/shorts/greyskirt_female.dmi'
 	icon_state = "greyskirt_female"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -336,6 +350,7 @@
 	desc = "A shirt that has had the top cropped. This one is NT sponsored."
 	icon = 'icons/clothing/uniform/casual/shorts/croptop.dmi'
 	icon_state = "croptop"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -344,6 +359,7 @@
 	desc = "A red shirt that has had the top cropped."
 	icon = 'icons/clothing/uniform/casual/shorts/croptop_red.dmi'
 	icon_state = "croptop_red"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -352,6 +368,7 @@
 	desc = "A grey shirt that has had the top cropped."
 	icon = 'icons/clothing/uniform/casual/shorts/croptop_grey.dmi'
 	icon_state = "croptop_grey"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -360,6 +377,7 @@
 	desc = "A grey shirt that has had the top cut low."
 	icon = 'icons/clothing/uniform/casual/shorts/cuttop.dmi'
 	icon_state = "cuttop"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -368,5 +386,6 @@
 	desc = "A red shirt that has had the top cut low."
 	icon = 'icons/clothing/uniform/casual/shorts/cuttop_red.dmi'
 	icon_state = "cuttop_red"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL

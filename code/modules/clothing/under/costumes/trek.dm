@@ -9,6 +9,7 @@
 	icon = 'icons/clothing/uniform/costume/trek/trek_command.dmi'
 	icon_state = "trek_command"
 	armor_type = /datum/armor/station/padded
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -18,6 +19,7 @@
 	icon = 'icons/clothing/uniform/costume/trek/trek_engsec.dmi'
 	icon_state = "trek_engsec"
 	armor_type = /datum/armor/station/padded
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -28,6 +30,7 @@
 	icon_state = "trek_medsci"
 	permeability_coefficient = 0.50
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -36,6 +39,7 @@
 	desc = "The uniform worn by command officers. This one's from the mid 2360s."
 	icon = 'icons/clothing/uniform/costume/trek/trek_next_command.dmi'
 	icon_state = "trek_next_command"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -43,6 +47,7 @@
 	desc = "The uniform worn by operation officers. This one's from the mid 2360s."
 	icon = 'icons/clothing/uniform/costume/trek/trek_next_engsec.dmi'
 	icon_state = "trek_next_engsec"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -50,6 +55,7 @@
 	desc = "The uniform worn by medsci officers. This one's from the mid 2360s."
 	icon = 'icons/clothing/uniform/costume/trek/trek_next_medsci.dmi'
 	icon_state = "trek_next_medsci"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -58,6 +64,7 @@
 	desc = "The uniform worn by command officers of the 2140s."
 	icon = 'icons/clothing/uniform/costume/trek/trek_ent_command.dmi'
 	icon_state = "trek_ent_command"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -65,6 +72,7 @@
 	desc = "The uniform worn by operations officers of the 2140s."
 	icon = 'icons/clothing/uniform/costume/trek/trek_ent_engsec.dmi'
 	icon_state = "trek_ent_engsec"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -72,6 +80,7 @@
 	desc = "The uniform worn by medsci officers of the 2140s."
 	icon = 'icons/clothing/uniform/costume/trek/trek_ent_medsci.dmi'
 	icon_state = "trek_ent_medsci"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -80,6 +89,7 @@
 	desc = "The uniform worn by command officers of the 2370s."
 	icon = 'icons/clothing/uniform/costume/trek/trek_voy_command.dmi'
 	icon_state = "trek_voy_command"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -87,6 +97,7 @@
 	desc = "The uniform worn by operations officers of the 2370s."
 	icon = 'icons/clothing/uniform/costume/trek/trek_voy_engsec.dmi'
 	icon_state = "trek_voy_engsec"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -94,6 +105,7 @@
 	desc = "The uniform worn by medsci officers of the 2370s."
 	icon = 'icons/clothing/uniform/costume/trek/trek_voy_medsci.dmi'
 	icon_state = "trek_voy_medsci"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 

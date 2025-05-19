@@ -9,6 +9,7 @@
 	desc = "A simple linen tunic with a half-skirt of flowers covering one side."
 	icon = 'icons/clothing/uniform/casual/tribal/druidic_gown.dmi'
 	icon_state = "druidic_gown"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -17,6 +18,7 @@
 	desc = "A simple linen tunic with a half-skirt of flowers covering one side."
 	icon = 'icons/clothing/uniform/casual/tribal/druidic_gown_fem.dmi'
 	icon_state = "druidic_gown_fem"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -25,6 +27,7 @@
 	desc = "A simple linen tunic. Smells faintly of earth and flowers"
 	icon = 'icons/clothing/uniform/casual/tribal/tribal_tunic.dmi'
 	icon_state = "tribal_tunic"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -38,6 +41,7 @@
 	desc = "A simple linen tunic. Smells faintly of earth and flowers."
 	icon = 'icons/clothing/uniform/casual/tribal/tribal_tunic_fem.dmi'
 	icon_state = "tribal_tunic_fem"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -51,6 +55,7 @@
 	desc = "Hand-woven cotton ornated with pieces of turquoise form little more than loincloth, which can be adjusted depending on the wearer's preferences. Well suited for a simpler life."
 	icon = 'icons/clothing/uniform/casual/tribal/acolyte_hunter.dmi'
 	icon_state = "acolyte_hunter"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -59,6 +64,7 @@
 	desc = "Hand-woven cotton ornated with pieces of turquoise form little more than loincloth, which can be adjusted depending on the wearer's preferences. Well suited for a simpler life."
 	icon = 'icons/clothing/uniform/casual/tribal/acolyte_hunter_fem.dmi'
 	icon_state = "acolyte_hunter_fem"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -67,6 +73,7 @@
 	desc = "Finely crafted cotton clothing, dyed blue with anil. The care and craftsmanship put into such an outfit indicates high status in a tribe. Can be adjusted to suit the wearer's preferences."
 	icon = 'icons/clothing/uniform/casual/tribal/shamanblue.dmi'
 	icon_state = "shamanblue"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -75,6 +82,7 @@
 	desc = "Finely crafted cotton clothing, dyed blue with anil. The care and craftsmanship put into such an outfit indicates high status in a tribe. Can be adjusted to suit the wearer's preferences."
 	icon = 'icons/clothing/uniform/casual/tribal/shamanblue_fem.dmi'
 	icon_state = "shamanblue_fem"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -83,6 +91,7 @@
 	desc = "Finely crafted cotton clothing, dyed red with madder root. The care and craftsmanship put into such an outfit indicates high status in a tribe. Can be adjusted to suit the wearer's preferences."
 	icon = 'icons/clothing/uniform/casual/tribal/shamanred.dmi'
 	icon_state = "shamanred"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -91,6 +100,7 @@
 	desc = "Finely crafted cotton clothing, dyed red with madder root. The care and craftsmanship put into such an outfit indicates high status in a tribe. Can be adjusted to suit the wearer's preferences."
 	icon = 'icons/clothing/uniform/casual/tribal/shamanred_fem.dmi'
 	icon_state = "shamanred_fem"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -117,6 +127,7 @@
 	desc = "Hand-woven cotton ornated with pieces of turquoise form covering the groin, which can also be adjusted to cover the breasts as well. Well suited for a simpler life."
 	icon = 'icons/clothing/uniform/casual/tribal/gatherer.dmi'
 	icon_state = "gatherer"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -125,5 +136,6 @@
 	desc = "Hand-woven cotton ornated with pieces of turquoise form covering the groin, which can also be adjusted to cover the breasts as well. Well suited for a simpler life."
 	icon = 'icons/clothing/uniform/casual/tribal/gatherer_fem.dmi'
 	icon_state = "gatherer_fem"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL

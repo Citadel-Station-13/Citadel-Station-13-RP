@@ -7,5 +7,6 @@
 	desc = "A chainmail tunic layered with a leather cuirass and religious iconography. Worn in veneration of a forgotten god."
 	icon = 'icons/clothing/uniform/costume/darkcleric.dmi'
 	icon_state = "darkcleric"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
