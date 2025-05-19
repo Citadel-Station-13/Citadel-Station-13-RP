@@ -30,7 +30,7 @@
 	harm_intent_damage = 2
 	legacy_melee_damage_lower = 15
 	legacy_melee_damage_upper = 15
-	attacktext = list("smashed", "rammed") // Why would an amorphous blob be slicing stuff? 
+	attacktext = list("smashed", "rammed") // Why would an amorphous blob be slicing stuff?
 
 	aquatic_movement = 1
 	min_oxy = 0
@@ -216,38 +216,7 @@
 					target.forceMove(vore_selected)
 					to_chat(target,"<span class='warning'>\The [src] quickly engulfs you, [vore_selected.vore_verb]ing you into their [vore_selected.name]!</span>")
 
-/mob/living/simple_mob/protean_blob/attack_target(var/atom/A)
-	if(refactory && istype(A,/obj/item/stack/material))
-		var/obj/item/stack/material/S = A
-		var/substance = S.material.name
-		var/list/edible_materials = list(MAT_STEEL, MAT_SILVER, MAT_GOLD, MAT_URANIUM, MAT_METALHYDROGEN) //Can't eat all materials, just useful ones.
-		var/allowed = FALSE
-		for(var/material in edible_materials)
-			if(material == substance)
-				allowed = TRUE
-		if(!allowed)
-			return
-		if(refactory.add_stored_material(S.material.name,1*S.perunit) && S.use(1))
-			visible_message("<b>[name]</b> gloms over some of \the [S], absorbing it.")
-	else if(isitem(A) && a_intent == "grab")
-		var/obj/item/I = A
-		if(!vore_selected)
-			to_chat(src,"<span class='warning'>You either don't have a belly selected, or don't have a belly!</span>")
-			return FALSE
-		if(is_type_in_list(I,GLOB.item_vore_blacklist) || I.anchored)
-			to_chat(src, "<span class='warning'>You can't eat this.</span>")
-			return
 
-		if(is_type_in_list(I, edible_trash) || adminbus_trash)
-			if(I.hidden_uplink)
-				to_chat(src, "<span class='warning'>You really should not be eating this.</span>")
-				message_admins("[key_name(src)] has attempted to ingest an uplink item. ([src ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>" : "null"])")
-				return
-			visible_message("<b>[name]</b> stretches itself over the [I], engulfing it whole!")
-			I.forceMove(vore_selected)
-			return
-	else
-		return ..()
 
 /mob/living/simple_mob/protean_blob/attackby(var/obj/item/O, var/mob/user)
 	if(refactory && istype(O,/obj/item/stack/material))
@@ -262,6 +231,24 @@
 			return
 		if(refactory.add_stored_material(S.material.name,1*S.perunit) && S.use(1))
 			visible_message("<b>[name]</b> gloms over some of \the [S], absorbing it.")
+	else if(user == src)
+		if(a_intent != "grab")
+			return ..()
+		if(!vore_selected)
+			to_chat(src,"<span class='warning'>You either don't have a belly selected, or don't have a belly!</span>")
+			return FALSE
+		if(is_type_in_list(O,GLOB.item_vore_blacklist) || O.anchored)
+			to_chat(src, "<span class='warning'>You can't eat this.</span>")
+			return
+
+		if(is_type_in_list(O, edible_trash) || adminbus_trash)
+			if(O.hidden_uplink)
+				to_chat(src, "<span class='warning'>You really should not be eating this.</span>")
+				message_admins("[key_name(src)] has attempted to ingest an uplink item. ([src ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>" : "null"])")
+				return
+			visible_message("<b>[name]</b> stretches itself over the [O], engulfing it whole!")
+			O.forceMove(vore_selected)
+			return
 	else
 		return ..()
 
@@ -324,7 +311,7 @@
 		if(!transfer_item_to_loc(r_ear, blob, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT))
 			blob.mob_radio = null
 
-	
+
 
 	for(var/obj/item/pda/P in contents)
 		if(P.id)
