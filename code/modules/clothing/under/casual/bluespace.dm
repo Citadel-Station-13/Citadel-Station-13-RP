@@ -11,7 +11,6 @@
 	icon_state = "bluespace"
 	desc = "Do you feel like warping spacetime today? Because it seems like that's on the agenda, now. \
 			Allows one to resize themselves at will, and conceals their true weight."
-	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
