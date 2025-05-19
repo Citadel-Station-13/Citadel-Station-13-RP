@@ -51,6 +51,7 @@
 	constructed.initiator = src
 	constructed.performer = src
 	constructed.target = target
+	constructed.target_zone = zone_sel?.selecting || BP_TORSO
 	constructed.click_params = list()
 	constructed.using_intent = a_intent
 	constructed.using_hand_index = active_hand
