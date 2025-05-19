@@ -66,6 +66,11 @@
 		if(DAMAGE_TYPE_BURN)
 		else
 			return // normal atoms can't take non brute-burn damage
+
+	#ifdef CF_VISUALIZE_DAMAGE_TICKS
+	visualize_atom_damage(damage, damage_type)
+	#endif
+
 	// default atom damage handling
 	inflict_atom_damage(
 		damage,
@@ -121,10 +126,6 @@
 	. = integrity
 	damage_integrity(damage)
 	. = . - integrity
-
-	#ifdef CF_VISUALIZE_ATOM_DAMAGE
-	visualize_atom_damage(damage, damage_type)
-	#endif
 
 /**
  * Visualizes a damage instance.

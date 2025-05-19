@@ -27,19 +27,19 @@
 	maptext_y = 16
 
 /atom/movable/render/damage_tick/Initialize(mapload, atom/movable/bind_to, duration)
-	..()
+	. = ..()
 	pixel_x = rand(-8, 8)
 	pixel_y = rand(-2, 4)
 	// extremely fancy stuff: if bind_to is moving, estimate where they are
 	if(bind_to)
-		if(last_move > world.time - (world.tick_lag * (WORLD_ICON_SIZE / bind_to.glide_size)))
+		if(bind_to.last_move > world.time - (world.tick_lag * (WORLD_ICON_SIZE / (bind_to.glide_size || 8))))
 			var/diff = bind_to.glide_size * ((world.time - last_move) / world.tick_lag)
 			if(bind_to.last_move_dir & NORTH)
 				pixel_y -= WORLD_ICON_SIZE - diff
 			else if(bind_to.last_move_dir & SOUTH)
 				pixel_y += WORLD_ICON_SIZE - diff
 			if(bind_to.last_move_dir & EAST)
-				pixel_X += WORLD_ICON_SIZE - diff
+				pixel_x += WORLD_ICON_SIZE - diff
 			else if(bind_to.last_move_dir & WEST)
 				pixel_x -= WORLD_ICON_SIZE - diff
 	animate(

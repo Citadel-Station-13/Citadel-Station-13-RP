@@ -188,6 +188,10 @@
 	var/brute = damage_type == DAMAGE_TYPE_BRUTE? damage : 0
 	var/burn = damage_type == DAMAGE_TYPE_BURN? damage : 0
 
+	#ifdef CF_VISUALIZE_DAMAGE_TICKS
+	visualize_atom_damage(damage, damage_type)
+	#endif
+
 	if(hit_zone)
 		take_targeted_damage(brute, burn, damage_mode, hit_zone, weapon_descriptor)
 	else
