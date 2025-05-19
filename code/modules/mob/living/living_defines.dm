@@ -73,14 +73,10 @@
 
 	/// This is used to determine if the mob failed a breath. If they did fail a brath, they will attempt to breathe each tick, otherwise just once per 4 ticks.
 	var/failed_last_breath = 0
-	var/lastpuke = 0//* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 Citadel Station developers.          *//
-
+	var/lastpuke = 0
 
 	/// Makes attacks harder to land. Negative numbers increase hit chance.
 	var/evasion = 0
-	/// If true, the mob runs extremely fast and cannot be slowed.
-	var/force_max_speed = FALSE
 
 	/// If they're glowing!
 	var/glow_toggle = FALSE

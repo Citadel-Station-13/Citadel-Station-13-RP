@@ -23,7 +23,7 @@
 	wreckage = /obj/structure/loot_pile/mecha/odysseus
 
 	maxHealth = 120
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 	turn_sound = 'sound/mecha/mechmove01.ogg'
 
 	legacy_melee_damage_lower = 5

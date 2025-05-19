@@ -402,7 +402,7 @@
 		/obj/item/storage/belt/security,
 		/obj/item/flash,
 		/obj/item/reagent_containers/spray/pepper,
-		/obj/item/grenade/flashbang,
+		/obj/item/grenade/simple/flashbang,
 		/obj/item/melee/baton/loaded,
 		/obj/item/clothing/glasses/sunglasses/sechud,
 		/obj/item/barrier_tape_roll/police,

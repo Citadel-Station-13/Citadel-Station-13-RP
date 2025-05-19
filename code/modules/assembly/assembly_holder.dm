@@ -118,7 +118,10 @@
 		if(!a_left || !a_right)
 			to_chat(user, "<span class='warning'> BUG:Assembly part missing, please report this!</span>")
 			return
-		if(istype(a_left,a_right.type))//If they are the same type it causes issues due to window code
+		// WARNING: DO NOT REMOVE IGNITER TYPECHECKS
+		// If you do, grenades will INSTANTLY BLOW UP ON THE USER WHEN USED
+		// IN HAND!!
+		if(istype(a_left,a_right.type) && !istype(a_left, /obj/item/assembly/igniter))//If they are the same type it causes issues due to window code
 			switch(alert("Which side would you like to use?",,"Left","Right"))
 				if("Left")	a_left.attack_self(user)
 				if("Right")	a_right.attack_self(user)
@@ -160,6 +163,7 @@
 		a_right.hear_talk(M,msg,verb,speaking)
 	if(a_left)
 		a_left.hear_talk(M,msg,verb,speaking)
+
 /obj/item/assembly_holder/timer_igniter
 	name = "timer-igniter assembly"
 
@@ -180,39 +184,3 @@
 	secured = 1
 	update_icon()
 	name = initial(name) + " ([tmr.time] secs)"
-
-	add_obj_verb(src, /obj/item/assembly_holder/timer_igniter/verb/configure)
-
-/obj/item/assembly_holder/timer_igniter/detached()
-	remove_obj_verb(src, /obj/item/assembly_holder/timer_igniter/verb/configure)
-	..()
-
-/obj/item/assembly_holder/timer_igniter/verb/configure()
-	set name = "Set Timer"
-	set category = VERB_CATEGORY_OBJECT
-	set src in usr
-
-	if ( !(usr.stat || usr.restrained()) )
-		var/obj/item/assembly_holder/holder
-		if(istype(src,/obj/item/grenade/chem_grenade))
-			var/obj/item/grenade/chem_grenade/gren = src
-			holder=gren.detonator
-		var/obj/item/assembly/timer/tmr = holder.a_left
-		if(!istype(tmr,/obj/item/assembly/timer))
-			tmr = holder.a_right
-		if(!istype(tmr,/obj/item/assembly/timer))
-			to_chat(usr, "<span class='notice'>This detonator has no timer.</span>")
-			return
-
-		if(tmr.timing)
-			to_chat(usr, "<span class='notice'>Clock is ticking already.</span>")
-		else
-			var/ntime = input("Enter desired time in seconds", "Time", "5") as num
-			if (ntime>0 && ntime<1000)
-				tmr.time = ntime
-				name = initial(name) + "([tmr.time] secs)"
-				to_chat(usr, "<span class='notice'>Timer set to [tmr.time] seconds.</span>")
-			else
-				to_chat(usr, "<span class='notice'>Timer can't be [ntime<=0?"negative":"more than 1000 seconds"].</span>")
-	else
-		to_chat(usr, "<span class='notice'>You cannot do this while [usr.stat?"unconscious/dead":"restrained"].</span>")

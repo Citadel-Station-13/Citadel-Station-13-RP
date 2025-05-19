@@ -1125,6 +1125,7 @@
 	hud_used = new /datum/hud(src)
 	reload_rendering()
 	update_vision()
+	update_movespeed_base()
 
 	//! FUCK FUCK FUCK FUCK FUCK FUCK FUCK
 	for(var/key in species.sprite_accessory_defaults)
@@ -1624,11 +1625,9 @@
 //! Pixel Offsets
 /mob/living/carbon/human/get_centering_pixel_x_offset(dir)
 	. = ..()
-	// uh oh stinky
 	if(!isTaurTail(tail_style) || !(dir & (EAST|WEST)))
 		return
-	// groan
-	. += ((size_multiplier * icon_scale_x) - 1) * ((dir & EAST)? -16 : 16)
+	. += (size_multiplier * icon_scale_x) * ((dir & EAST)? 8 : -8)
 
 /mob/living/carbon/human/ClickOn(var/atom/A)
 	if(ab_handler?.process_click(src, A))

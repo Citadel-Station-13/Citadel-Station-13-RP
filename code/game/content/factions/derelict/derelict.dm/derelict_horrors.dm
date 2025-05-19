@@ -14,7 +14,7 @@
 	health = 400
 	icon_scale_x = 1.1
 	icon_scale_y = 1.1
-	movement_cooldown = 3
+	movement_base_speed = 10 / 3
 	legacy_melee_damage_lower = 30
 	legacy_melee_damage_upper = 30
 	base_attack_cooldown = 8
@@ -38,7 +38,7 @@
 		"bio" = 100,
 		"rad" = 100,
 	)
-	movement_cooldown = 10
+	movement_base_speed = 10 / 10
 	legacy_melee_damage_lower = 0
 	legacy_melee_damage_upper = 0
 	base_attack_cooldown = 10
@@ -62,7 +62,7 @@
 		"bio" = 100,
 		"rad" = 100,
 	)
-	movement_cooldown = 1
+	movement_base_speed = 10 / 1
 	legacy_melee_damage_lower = 15
 	legacy_melee_damage_upper = 15
 	base_attack_cooldown = 6
@@ -86,7 +86,7 @@
 		"bio" = 100,
 		"rad" = 100,
 	)
-	movement_cooldown = 3
+	movement_base_speed = 10 / 3
 	legacy_melee_damage_lower = 25
 	legacy_melee_damage_upper = 25
 	base_attack_cooldown = 9
@@ -110,7 +110,7 @@
 		"bio" = 100,
 		"rad" = 100,
 	)
-	movement_cooldown = 6
+	movement_base_speed = 10 / 6
 	legacy_melee_damage_lower = 25
 	legacy_melee_damage_upper = 25
 	base_attack_cooldown = 11
@@ -128,7 +128,7 @@
 	health = 300
 	icon_scale_x = 1.2
 	icon_scale_y = 1.2
-	movement_cooldown = 2
+	movement_base_speed = 10 / 2
 	base_attack_cooldown = 8
 	attack_sound = 'sound/hallucinations/growl1.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/event

@@ -66,15 +66,6 @@
 	var/datum/object_system/storage/active_storage
 
 	//? Movespeed
-	/// List of movement speed modifiers applying to this mob
-	var/list/movespeed_modification				//Lazy list, see mob_movespeed.dm
-	/// List of movement speed modifiers ignored by this mob. List -> List (id) -> List (sources)
-	var/list/movespeed_mod_immunities			//Lazy list, see mob_movespeed.dm
-	/// The calculated mob speed slowdown based on the modifiers list
-	var/cached_hyperbolic_slowdown
-	/// cached legacy movespeed multiplier -_-
-	//  todo: remove
-	var/cached_movespeed_multiply
 	/// Next world.time we will be able to move.
 	var/move_delay = 0
 	/// Last world.time we finished a normal, non relay/intercepted move
@@ -89,12 +80,6 @@
 	var/datum/global_physiology/physiology
 	/// physiology modifiers - see physiology.dm; set to list of paths at init to initialize into instances.
 	var/list/datum/physiology_modifier/physiology_modifiers
-
-	//? Actionspeed
-	/// List of action speed modifiers applying to this mob
-	var/list/actionspeed_modification				//Lazy list, see mob_movespeed.dm
-	/// List of action speed modifiers ignored by this mob. List -> List (id) -> List (sources)
-	var/list/actionspeed_mod_immunities			//Lazy list, see mob_movespeed.dm
 
 	//? Pixel Offsets
 	/// are we shifted by the user?
@@ -270,7 +255,6 @@
 	var/overeatduration = 0
 	var/losebreath = 0 //?Carbon
 	var/shakecamera = 0
-	var/m_int = null //?Living
 	var/lastKnownIP = null
 
 	var/seer = 0 //for cult//Carbon, probably Human
