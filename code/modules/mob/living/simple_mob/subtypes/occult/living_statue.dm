@@ -38,7 +38,7 @@
 	max_n2 = 0
 	minbodytemp = 0
 
-	movement_cooldown = -1
+	movement_base_speed = 5
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/statue
 
