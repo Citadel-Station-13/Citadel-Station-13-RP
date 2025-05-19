@@ -33,7 +33,7 @@
 
 	poison_per_bite = 5
 
-	movement_cooldown = 5
+	movement_base_speed = 10 / 5
 
 	legacy_melee_damage_lower = 10
 	legacy_melee_damage_upper = 10

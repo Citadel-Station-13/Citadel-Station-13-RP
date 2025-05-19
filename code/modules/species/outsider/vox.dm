@@ -30,8 +30,6 @@
 
 //	taste_sensitivity = TASTE_DULL
 
-	slowdown = -0.5
-
 	speech_sounds = list('sound/voice/shriek1.ogg')
 	speech_chance = 20
 
@@ -50,6 +48,7 @@
 	cold_level_2 = 50
 	cold_level_3 = 0
 
+	movement_base_speed = 6.66
 	gluttonous = 0
 
 	breath_type = GAS_ID_PHORON
