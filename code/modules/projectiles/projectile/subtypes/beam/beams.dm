@@ -13,16 +13,16 @@
 	icon_state = "laser"
 	fire_sound = 'sound/weapons/weaponsounds_laserweak.ogg'
 	damage_force = 15
-	damage_tier = 2.5
+	damage_tier = 3
 
 /obj/projectile/beam/smalllaser
 	damage_force = 25
-	damage_tier = 2.5
+	damage_tier = 3.25
 	fire_sound = 'sound/weapons/weaponsounds_laserweak.ogg'
 
 /obj/projectile/beam/burstlaser
 	damage_force = 30
-	damage_tier = 2.75
+	damage_tier = 3.5
 	fire_sound = 'sound/weapons/weaponsounds_lasermid.ogg'
 
 /obj/projectile/beam/midlaser

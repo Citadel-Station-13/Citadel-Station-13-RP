@@ -458,7 +458,7 @@
 		return handle_clickchain_fire(e_args, clickchain_flags)
 
 /obj/item/gun/melee_attack(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
-	if(clickchain.target_zone != INTENT_HARM)
+	if(clickchain.using_intent != INTENT_HARM)
 		return ..()
 	// point blank shooting
 

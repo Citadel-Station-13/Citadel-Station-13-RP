@@ -169,13 +169,13 @@
 	var/mob/living/L = target
 	if(!istype(L))
 		return
-	if(ishuman(L) && can_use(clickchain.performer, L))
+	if(ishuman(L) && can_use(clickchain.performer, L) && clickchain.using_intent == INTENT_HARM)
 		busy = 1
 		update_icon()
 		do_electrocute(L, clickchain.performer, clickchain.target_zone)
 		busy = 0
 		update_icon()
-		return NONE
+		return CLICKCHAIN_DID_SOMETHING
 
 // This proc is used so that we can return out of the revive process while ensuring that busy and update_icon() are handled
 /obj/item/shockpaddles/proc/do_revive(mob/living/carbon/human/H, mob/user)
@@ -366,6 +366,7 @@
 	. = ..()
 	if(base_unit)
 		base_unit.reattach_paddles(user) //paddles attached to a base unit should never exist outside of their base unit or the mob equipping the base unit
+		return ITEM_RELOCATED_BY_DROPPED
 
 /obj/item/shockpaddles/linked/check_charge(var/charge_amt)
 	return (base_unit.bcell && base_unit.bcell.check_charge(charge_amt))

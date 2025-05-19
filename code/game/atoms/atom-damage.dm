@@ -135,7 +135,7 @@
  * * damage_type - (optional) damage type inflicted
  */
 /atom/proc/visualize_atom_damage(damage, damage_type)
-	var/atom/movable/render/damage_tick/damage_tick = new(loc, src, 1 SECOND)
+	var/atom/movable/render/damage_tick/damage_tick = new(loc, src, 0.75 SECOND)
 	var/use_color = damage_type_to_visualized_color(damage_type)
 	damage_tick.maptext = MAPTEXT_CENTER("<font color='[use_color]'>[damage]</font>")
 

@@ -116,7 +116,7 @@
 			target = src,
 		)
 		return TRUE
-	if(active)
+	if(!active)
 		if(activate())
 			actor.chat_feedback(
 				SPAN_WARNING("[src] is now on."),

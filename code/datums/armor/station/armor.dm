@@ -63,7 +63,7 @@
 	melee = 0.2
 	bullet = 0.5
 	bullet_tier = 4.75
-	bullet_soak = 4
+	bullet_soak = 2
 	laser = 0.2
 	energy = 0.1
 	bomb = 0.1
@@ -75,7 +75,7 @@
 	bullet = 0.2
 	laser = 0.5
 	laser_tier = 4.75
-	laser_soak = 5
+	laser_soak = 2
 	energy = 0.4
 	bomb = 0.1
 	bio = 0.1
@@ -94,7 +94,7 @@
 
 /datum/armor/station/riot //Vests (chest/lowertorso) using this tier need to have a slowdown of 0.65 or similar.
 	melee = 0.5
-	melee_soak = 5
+	melee_soak = 3
 	melee_tier = 4.75
 	bullet = 0.2
 	laser = 0.2

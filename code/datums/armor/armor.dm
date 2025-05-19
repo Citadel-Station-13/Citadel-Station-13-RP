@@ -200,12 +200,13 @@
  * The big, bad proc that deals with inbound shieldcalls.
  */
 /datum/armor/proc/handle_shieldcall(list/shieldcall_args, fake_attack)
-	shieldcall_args[SHIELDCALL_ARG_DAMAGE] = resultant_damage(
+	var/modified_damage = resultant_damage(
 		shieldcall_args[SHIELDCALL_ARG_DAMAGE],
 		shieldcall_args[SHIELDCALL_ARG_DAMAGE_TIER],
 		shieldcall_args[SHIELDCALL_ARG_DAMAGE_FLAG],
 		shieldcall_args[SHIELDCALL_ARG_DAMAGE_MODE] & DAMAGE_MODE_REQUEST_ARMOR_RANDOMIZATION,
 	)
+	shieldcall_args[SHIELDCALL_ARG_DAMAGE] = round(modified_damage, DAMAGE_PRECISION)
 	if(shieldcall_args[SHIELDCALL_ARG_DAMAGE_MODE] & DAMAGE_MODE_REQUEST_ARMOR_BLUNTING)
 		var/effective_blunt_tierdiff
 		switch(shieldcall_args[SHIELDCALL_ARG_DAMAGE_FLAG])

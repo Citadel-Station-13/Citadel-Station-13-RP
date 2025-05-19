@@ -35,7 +35,7 @@
 		pixel_y += bind_to.step_y + bind_to.pixel_y
 	animate(
 		src,
-		time = duration * 0.5,
+		time = duration * 0.75,
 		pixel_y = pixel_y + 16,
 	)
 	QDEL_IN(src, duration > 0 ? duration : (0.5 SECONDS))
