@@ -90,13 +90,13 @@
 
 /datum/map_reservation/proc/release()
 	if(border)
-		SSmapping.reserve_turfs(block(locate(
+		SSmapping.initialize_unused_reservation_turfs(block(locate(
 			bottom_left_border_coords[1], bottom_left_border_coords[2], bottom_left_border_coords[3]
 			), locate(
 			top_right_border_coords[1], top_right_border_coords[2], top_right_border_coords[3])
 		))
 	else
-		SSmapping.reserve_turfs(block(locate(
+		SSmapping.initialize_unused_reservation_turfs(block(locate(
 			bottom_left_coords[1], bottom_left_coords[2], bottom_left_coords[3]
 			), locate(
 			top_right_coords[1], top_right_coords[2], top_right_coords[3])
@@ -130,10 +130,10 @@
 		CRASH("invalid request")
 	if(border && ceil(border) != border)
 		CRASH("invalid border")
-	if(!length(SSmapping.reserve_levels))
+	if(!length(SSmapping.reservation_levels))
 		CRASH("uh oh")
-	UNTIL(!SSmapping.reservation_blocking_op)
-	SSmapping.reservation_blocking_op = TRUE
+	UNTIL(!SSmapping.reservation_system_mutex)
+	SSmapping.reservation_system_mutex = TRUE
 	// pick and take
 	var/list/possible_levels = SSmapping.reserve_levels.Copy()
 	var/level_index
@@ -255,7 +255,7 @@
 		if(!isnull(z_override))
 			break
 	if(!found_a_spot)
-		SSmapping.reservation_blocking_op = FALSE
+		SSmapping.reservation_system_mutex = FALSE
 		return FALSE
 	for(var/turf/T as anything in final)
 		T.turf_flags &= ~TURF_FLAG_UNUSED_RESERVATION
@@ -357,7 +357,7 @@
 	src.height = height
 	src.border = border
 	allocated = TRUE
-	SSmapping.reservation_blocking_op = FALSE
+	SSmapping.reservation_system_mutex = FALSE
 	SSmapping.reservations += src
 
 	// register in lookup

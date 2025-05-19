@@ -48,7 +48,7 @@
 	for(var/datum/map_level/path as anything in snowflake_space_levels)
 		var/datum/map_level/level
 		if(ispath(path))
-			level = SSmapping.typed_levels[path]
+			level = SSmapping.keyed_levels[initial(path.id)]
 		else if(istext(path))
 			level = SSmapping.keyed_levels[path]
 		if(isnull(level))

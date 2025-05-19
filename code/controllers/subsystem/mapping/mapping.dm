@@ -18,12 +18,6 @@ SUBSYSTEM_DEF(mapping)
 	var/static/list/datum/map_level/ordered_levels = list()
 	/// k-v id to level datum lookup
 	var/static/list/datum/map_level/keyed_levels = list()
-	/// typepath to level datum lookup
-	/// we do that because we automatically generate level ids
-	/// so we can't use initial(id)
-	var/static/list/datum/map_level/typed_levels = list()
-	/// all active map_struct's
-	var/static/list/datum/map_struct/active_structs = list()
 
 	//* Levels - Fluff *//
 	/// literally just a random hexadecimal store to prevent collision
@@ -46,8 +40,6 @@ SUBSYSTEM_DEF(mapping)
 	/// * For performance, this is currently only including bidirectional links
 	/// * For performance, this does not support looping.
 	/// * This is a direct stack lookup. This does not take map_struct's into account.
-	/// * You should only be using this for technical use cases like z-rendering and whatnot,
-	///   for fluff this is not sufficient to determine if something is actually above/below if it's not actually connected.
 	var/list/z_stack_lookup
 	/// does z stack lookup need a rebuild?
 	var/z_stack_dirty = TRUE
@@ -79,15 +71,15 @@ SUBSYSTEM_DEF(mapping)
 
 	//* Reservations *//
 	/// reserved levels allocated
-	var/static/reserved_level_count = 0
+	var/static/reservation_level_count = 0
 	/// reserved turfs allowed - we can over-allocate this if we're only going to be slightly over and can always allocate atleast one level.
-	var/static/reserved_turfs_max = 192 * 192 * 3
+	var/static/reservation_turf_limit = 192 * 192 * 3
 	/// allocated space reservations
 	var/static/list/datum/map_reservation/reservations = list()
 	/// list of reserved z-indices for fast access
-	var/static/list/reserve_levels = list()
+	var/static/list/reservation_levels = list()
 	/// doing some blocking op on reservation system
-	var/static/reservation_blocking_op = FALSE
+	var/static/reservation_system_mutex = FALSE
 	/// singleton area holding all free reservation turfs
 	var/static/area/reservation_unused/reservation_unallocated_area = new
 	/// spatial grid of turf reservations. the owner of a chunk is the bottom left tile's owner.
@@ -107,7 +99,7 @@ SUBSYSTEM_DEF(mapping)
 	/// a separate mutex is used at the actual maploader level
 	/// this ensures we aren't shoving maps in during map init, as that can be both laggy and/or bad to legacy code that
 	/// expect zlevel adjacency.
-	var/load_mutex = FALSE
+	var/map_system_mutex = FALSE
 
 	//! Legacy !//
 
@@ -129,7 +121,6 @@ SUBSYSTEM_DEF(mapping)
 	init_maps()
 	// load the map to use
 	read_next_map()
-
 	// load world - this also initializes our first reserved level, which is compiled in.
 	load_station()
 
@@ -146,7 +137,7 @@ SUBSYSTEM_DEF(mapping)
 
 /datum/controller/subsystem/mapping/Recover()
 	. = ..()
-	reservation_blocking_op = FALSE
+	reservation_system_mutex = FALSE
 
 /datum/controller/subsystem/mapping/Shutdown()
 	. = ..()

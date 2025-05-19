@@ -1,14 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
-// todo: clean this up, things are a bit too convoluted
-
-/**
- * # Map System
- *
- * Allows dynamic loading of clusters of zlevels (maps) and the initialization of the server with a single station map.
- */
-
 /**
  * initializes the key-value store of map datums.
  */
@@ -33,89 +25,19 @@
 			continue
 		keyed_maps[created.id] = created
 
-/datum/controller/subsystem/mapping/proc/write_next_map(datum/map/station/next)
-	if(isnull(next))
-		next = next_station
-	if(isnull(next))
-		next = loaded_station
-	var/json_path = "data/next_map.json"
-	if(fexists(json_path))
-		fdel(json_path)
-	var/list/json = list()
-	json["type"] = next.type
-	json["id"] = next.id
-	json["modified"] = next.modified
-	if(next.modified)
-		json["data"] = next.serialize()
-	var/writing = file(json_path)
-	var/raw = safe_json_encode(json)
-	subsystem_log("writing next map [raw]")
-	WRITE_FILE(writing, raw)
-
-/datum/controller/subsystem/mapping/proc/read_next_map()
-	var/datum/map/station/next_map
-	var/datum/map/station/default = get_default_map()
-	if(isnull(default))
-		stack_trace("no default map; world init is likely going to explode.")
-#ifdef FORCE_MAP
-	#warn FORCE_MAP is enabled! Don't forget to disable this before pushing.
-	if(keyed_maps[FORCE_MAP])
-		next_map = keyed_maps[FORCE_MAP]
-		subsystem_log("loaded forced map [FORCE_MAP]")
-	else
-		stack_trace("fail-1: failed to locate FORCE(d)_MAP [FORCE_MAP]. falling back to default.")
-		subsystem_log("failed to load forced map [FORCE_MAP]")
-		next_map = default
-#else
-	var/json_path = "data/next_map.json"
-	if(!fexists(json_path))
-		return
-	var/reading = file(json_path)
-	var/raw = file2text(reading)
-	subsystem_log("read raw next map [raw]")
-	var/list/json = safe_json_decode(raw)
-	var/path = text2path(json["type"])
-	var/id = json["id"]
-	var/modified = json["modified"]
-	var/list/data = json["data"]
-	if(!modified)
-		next_map = keyed_maps[id]
-		if(isnull(next_map))
-			stack_trace("fail-1: non-modified next_map id was [id], which doesn't exist. falling back to path.")
-			if(!ispath(path, /datum/map/station))
-				stack_trace("fail-2: non-modified map path [path] when expecting a /datum/map/station. falling back to default.")
-				next_map = default
-			else
-				next_map = new path
-	else if(!ispath(path, /datum/map/station))
-		stack_trace("fail-fatal: modified map path [path] when expecting a /datum/map/station. falling back to default.")
-		next_map = default
-	else
-		next_map = new path
-		if(!isnull(data))
-			next_map.deserialize(data)
-#endif
-	if(isnull(next_map))
-		to_chat(world, SPAN_DANGER("FATAL - failed to get next map."))
-		CRASH("FATAL - Failed to get next map")
-	next_station = next_map
-	subsystem_log("loaded map [next_station] ([next_station.id])")
-	log_world("loaded map [next_station] ([next_station.id])")
-	return next_map
-
 /datum/controller/subsystem/mapping/proc/load_map(datum/map/instance)
-	UNTIL(!load_mutex)
-	load_mutex = TRUE
-	. = _load_map(arglist(args))
-	load_mutex = FALSE
+	UNTIL(!map_system_mutex)
+	map_system_mutex = TRUE
+	. = load_map_impl(arglist(args))
+	map_system_mutex = FALSE
 
-/datum/controller/subsystem/mapping/proc/_load_map(datum/map/instance)
+/datum/controller/subsystem/mapping/proc/load_map_impl(datum/map/instance)
 	PRIVATE_PROC(TRUE)
 	var/list/datum/map_level/loaded_levels = list()
 	var/list/datum/map/actually_loaded = list()
 	var/list/datum/callback/generation_callbacks = list()
 	var/list/datum/dmm_orientation/loaded_contexts = list()
-	_load_map_impl(instance, loaded_levels, generation_callbacks, actually_loaded, loaded_contexts)
+	load_map_impl_loop(instance, loaded_levels, generation_callbacks, actually_loaded, loaded_contexts)
 	// invoke hooks
 	for(var/datum/dmm_context/context in loaded_contexts)
 		context.fire_map_initializations()
@@ -139,7 +61,7 @@
 		indices_to_rebuild += level.z_index
 	rebuild_level_multiz(indices_to_rebuild, TRUE, TRUE)
 
-/datum/controller/subsystem/mapping/proc/_load_map_impl(datum/map/instance, list/datum/map_level/loaded_levels, list/datum/callback/generation_callbacks, list/datum/map/this_batch, list/context_collect)
+/datum/controller/subsystem/mapping/proc/load_map_impl_loop(datum/map/instance, list/datum/map_level/loaded_levels, list/datum/callback/generation_callbacks, list/datum/map/this_batch, list/context_collect)
 	PRIVATE_PROC(TRUE)
 	// ensure any lazy data is loaded and ready to be read
 	instance.prime()
@@ -150,7 +72,7 @@
 	var/list/area_cache = instance.bundle_area_cache? list() : null
 
 	for(var/datum/map_level/level as anything in instance.get_sorted_levels())
-		var/datum/dmm_context/loaded_context = _load_level(
+		var/datum/dmm_context/loaded_context = load_level_impl(
 			level,
 			FALSE,
 			instance.load_auto_center,
@@ -205,75 +127,4 @@
 		if(map.loaded)
 			init_debug("skipping recursing map [map.id] - already loaded")
 			continue
-		_load_map_impl(map, loaded_levels, generation_callbacks, this_batch, context_collect)
-
-/datum/controller/subsystem/mapping/proc/load_station(datum/map/station/instance)
-	if(isnull(instance))
-		if(isnull(next_station))
-			read_next_map()
-		instance = next_station
-	if(isnull(instance))
-		var/list/datum/map/station/valid = list()
-		for(var/id in keyed_maps)
-			var/datum/map/station/map = keyed_maps[id]
-			if(!istype(map, /datum/map/station))
-				continue
-			if(!map.allow_random_draw)
-				continue
-			valid += map
-		instance = pick(valid)
-	ASSERT(istype(instance))
-	ASSERT(isnull(loaded_station))
-	ASSERT(!initialized)
-	ASSERT(!world_is_loaded)
-	// bootstrap
-	load_server_initial_reservation_area(max(instance.world_width, instance.width), max(instance.world_height, instance.height))
-	// mark
-	world_is_loaded = TRUE
-	loaded_station = instance
-	// pick gateway level - this must happen after the station is picked as it's added to the lateload list
-	createRandomGatewayLevel()
-	// load
-	load_map(instance)
-	return TRUE
-
-/datum/controller/subsystem/mapping/proc/get_default_map()
-	var/list/datum/map/station/potential = list()
-	for(var/id in keyed_maps)
-		var/datum/map/station/checking = keyed_maps[id]
-		if(!istype(checking))
-			// not a station map
-			continue
-		if(!checking.allow_random_draw)
-			continue
-		potential += checking
-	return SAFEPICK(potential)
-
-// todo: admin subsystems panel
-// admin tooling for map swapping below
-
-/client/proc/change_next_map()
-	set name = "Change Map"
-	set desc = "Change the next map."
-	set category = "Server"
-
-	var/list/built = list()
-
-	for(var/id in SSmapping.keyed_maps)
-		var/datum/map/station/M = SSmapping.keyed_maps[id]
-		if(!istype(M))
-			continue
-		built[M.name] = M.id
-
-	var/picked = input(src, "Choose the map for the next round", "Map Rotation", SSmapping.loaded_station.name) as null|anything in built
-
-	if(isnull(picked))
-		return
-
-	var/datum/map/station/changing_to = SSmapping.keyed_maps[built[picked]]
-	var/datum/map/station/was = SSmapping.next_station || SSmapping.loaded_station
-
-	log_and_message_admins("[key_name(src)] is changing the next map from [was.name] ([was.id]) to [changing_to.name] ([changing_to.id])")
-
-	SSmapping.next_station = changing_to
-	SSmapping.write_next_map(changing_to)
+		load_map_impl_loop(map, loaded_levels, generation_callbacks, this_batch, context_collect)

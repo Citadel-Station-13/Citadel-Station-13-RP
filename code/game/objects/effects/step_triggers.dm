@@ -112,10 +112,11 @@
 	. = ..()
 	if(!isnull(map_level_target))
 		var/datum/map_level/level
+		var/datum/map_level/resolving = map_level_target
 		if(ispath(map_level_target))
-			level = SSmapping.typed_levels[map_level_target]
+			level = SSmapping.keyed_levels[initial(resolving.id)]
 		else
-			level = SSmapping.keyed_levels[map_level_target]
+			level = SSmapping.keyed_levels[resolving.id]
 		if(isnull(level))
 			CRASH("failed to resolve [map_level_target]")
 		teleport_z = level.z_index

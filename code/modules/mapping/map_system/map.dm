@@ -15,6 +15,8 @@
  * * Loading more than one instance of a map is not supported at this time,
  *   and will likely never be supported. An upcoming system will be added to handle
  *   instanced planets and similar things.
+ *
+ * ## Registration
  */
 /datum/map
 	abstract_type = /datum/map
@@ -24,9 +26,45 @@
 	var/id
 	/// mangling id override
 	var/mangling_id
+	/// override map id for persistence so two maps are considered the same
+	/// two maps should **never** be loaded at the same time with the same persistence ID!
+	var/persistence_id
+	/// Is this registered in SSmapping? Once registered, our reference belongs
+	/// to the mapping system, and we can no longer be deleted.
+	var/tmp/registered = FALSE
+	/// are we modified from our prototype?
+	var/tmp/modified = FALSE
+
+	//* Chainload *//
+	/// dependencies by id or path of other maps - these are critical maps to always load in
+	var/list/dependencies
+	/// lateload by id or path of other maps - these are non-critical maps to always load in
+	var/list/lateload
+
+	//* Identity *//
+	/// in-code name
+	var/name = "Unknown Map"
+	/// in-code category
+	var/category = "Misc"
+
+	//* Levels *//
+	/// /datum/map_level datums. starts off as paths, inits later.
+	/// * This must be ordered in a way where a level above another level must never be below that level in order.
+	///   This means that you can go 1-1-1, 1-1-2, 1-2-1, 1-2-2, for a 1x2x2,
+	///   or 1-1-1, 1-2-1, 1-1-2, 1-2-2.
+	/// * It is recommended to order this based on stacks, so 1-1-1, 1-1-2, 1-2-1, 1-2-2.
+	/// * Automatic ordering will be enforced unless specifically overridden, but we still prefer you order it properly
+	///   for style / review reasons.
+	var/list/datum/map_level/levels
 	/// force mangling ids of levels to be the same
 	/// you usually want this to be on!
 	var/levels_match_mangling_id = TRUE
+
+	//* Properties *//
+	/// declared width = must match all levels
+	var/width
+	/// declared height - must match all levels
+	var/height
 
 	//* Overmaps *//
 	/// our overmap initializer
@@ -37,32 +75,6 @@
 	/// * a struct is required. if no struct is created, we must be a single-level, which will be auto-structed.
 	var/datum/overmap_initializer/overmap_initializer
 
-	/// override map id for persistence so two maps are considered the same
-	/// two maps should **never** be loaded at the same time with the same persistence ID!
-	var/persistence_id
-	/// in-code name
-	var/name = "Unknown Map"
-	/// in-code category
-	var/category = "Misc"
-	/// /datum/map_level datums. starts off as paths, inits later.
-	/// * This must be ordered in a way where a level above another level must never be below that level in order.
-	///   This means that you can go 1-1-1, 1-1-2, 1-2-1, 1-2-2, for a 1x2x2,
-	///   or 1-1-1, 1-2-1, 1-1-2, 1-2-2.
-	/// * It is recommended to order this based on stacks, so 1-1-1, 1-1-2, 1-2-1, 1-2-2.
-	/// * Automatic ordering will be enforced unless specifically overridden, but we still prefer you order it properly
-	///   for style / review reasons.
-	var/list/datum/map_level/levels
-	/// dependencies by id or path of other maps - these are critical maps to always load in
-	var/list/dependencies
-	/// lateload by id or path of other maps - these are non-critical maps to always load in
-	var/list/lateload
-	/// are we modified from our prototype?
-	var/tmp/modified = FALSE
-	/// declared width = must match all levels
-	var/width
-	/// declared height - must match all levels
-	var/height
-
 	//* Load Options *//
 	/// orientation - defaults to south
 	var/load_orientation = SOUTH
@@ -71,7 +83,7 @@
 	/// center us if we're smaller than world size
 	var/load_auto_center = TRUE
 	/// use map-wide area cache instead of individual level area caches; has no effect on submap loading, only level loading.
-	/// don't touch this unless you know what you're doing.
+	/// * don't touch this unless you know what you're doing.
 	var/load_shared_area_cache = TRUE
 
 	//* World State *//
@@ -258,7 +270,6 @@
 		if(ispath(levels[i]))
 			var/datum/map_level/level_path = levels[i]
 			var/datum/map_level/level_instance = new level_path(src)
-			level_instance.hardcoded = TRUE // todo: map can just also not be hardcoded
 			levels[i] = level_instance
 			if(levels_match_mangling_id)
 				level_instance.mangling_id = mangling_id || id

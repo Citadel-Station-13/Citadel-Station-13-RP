@@ -193,14 +193,14 @@
 
 	// assemble levels
 	for(var/tuple in z_grid)
-		var/level_id_or_instance = z_grid[tuple]
+		var/datum/map_level/level_id_or_instance = z_grid[tuple]
 		var/datum/map_level/resolved
 		if(istext(level_id_or_instance))
 			resolved = SSmapping.keyed_levels[level_id_or_instance]
 		else if(istype(level_id_or_instance, /datum/map_level))
 			resolved = level_id_or_instance
 		else if(ispath(level_id_or_instance, /datum/map_level))
-			resolved = SSmapping.typed_levels[level_id_or_instance]
+			resolved = SSmapping.keyed_levels[initial(level_id_or_instance.id)]
 		if(!resolved)
 			CRASH("FATAL: failed to resolve a level during struct construction.")
 		if(resolved in levels)

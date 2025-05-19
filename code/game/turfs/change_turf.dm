@@ -14,6 +14,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 
 /turf/proc/empty(turf_type=/turf/space, baseturf_type, list/ignore_typecache, flags)
 	// Remove all atoms except observers, landmarks, docking ports
+	// TODO: this likely should throw out landmarks as well as shuttle landmarks.
 	var/static/list/ignored_atoms = typecacheof(list(/mob/observer, /obj/landmark, /atom/movable/lighting_overlay, /obj/effect/shuttle_landmark))
 	var/list/allowed_contents = typecache_filter_list_reverse(get_all_contents_ignoring(ignore_typecache), ignored_atoms)
 	allowed_contents -= src

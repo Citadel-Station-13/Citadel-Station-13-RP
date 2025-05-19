@@ -15,9 +15,6 @@
 	var/name
 	/// explicit mangling id
 	var/mangling_id
-	/// is this a hardcoded level? generally should be 'yes';
-	/// if it is, it's registered in the by-typepath lookup
-	var/hardcoded = FALSE
 
 	//* Attributes *//
 	/// traits
@@ -58,37 +55,37 @@
 	/// * can also be set to path
 	/// * can also be set to instance - used for structs
 	/// * do not manually set it to levelpath::id, map levels generate ids dynamically!
-	var/link_north
+	var/datum/map_level/link_north
 	/// id of south zlevel - overrides linkage if set.
 	///
 	/// * can also be set to path
 	/// * can also be set to instance - used for structs
 	/// * do not manually set it to levelpath::id, map levels generate ids dynamically! can also be set to instance - used for structs.
-	var/link_south
+	var/datum/map_level/link_south
 	/// id of west zlevel - overrides linkage if set.
 	///
 	/// * can also be set to path
 	/// * can also be set to instance - used for structs
 	/// * do not manually set it to levelpath::id, map levels generate ids dynamically! can also be set to instance - used for structs.
-	var/link_west
+	var/datum/map_level/link_west
 	/// id of east zlevel - overrides linkage if set.
 	///
 	/// * can also be set to path
 	/// * can also be set to instance - used for structs
 	/// * do not manually set it to levelpath::id, map levels generate ids dynamically! can also be set to instance - used for structs.
-	var/link_east
+	var/datum/map_level/link_east
 	/// id of below zlevel - overrides linkage if set.
 	///
 	/// * can also be set to path
 	/// * can also be set to instance - used for structs
 	/// * do not manually set it to levelpath::id, map levels generate ids dynamically! can also be set to instance - used for structs.
-	var/link_below
+	var/datum/map_level/link_below
 	/// id of above zlevel - overrides linkage if set.
 	///
 	/// * can also be set to path
 	/// * can also be set to instance - used for structs
 	/// * do not manually set it to levelpath::id, map levels generate ids dynamically! can also be set to instance - used for structs.
-	var/link_above
+	var/datum/map_level/link_above
 
 	//* Turf Properties *//
 	/// base turf typepath for this level
@@ -104,6 +101,7 @@
 
 	//* Loading *//
 	/// are we loaded in
+	/// *
 	var/tmp/loaded = FALSE
 	/// our zlevel once loaded
 	var/tmp/z_index
@@ -398,7 +396,7 @@
 		// if both sides are not null, we require agreement between the two
 		return (l1 == l2)? l1 : null
 	switch(dir)
-		#define RESOLVE(X) istype(X, /datum/map_level)? X : (istext(X)? SSmapping.keyed_levels[X] : SSmapping.typed_levels[X])
+		#define RESOLVE(X) istype(X, /datum/map_level)? X : (istext(X)? SSmapping.keyed_levels[X] : SSmapping.keyed_levels[X.id])
 		if(NORTH)
 			return RESOLVE(link_north)
 		if(SOUTH)
