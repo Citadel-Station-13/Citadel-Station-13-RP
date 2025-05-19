@@ -7,7 +7,7 @@
 	desc = "A comfortable, fashionable pair of high waisted shorts paired with a striped grey and white turtleneck. The Goetic seal of Sitri is embroidered on the left breast pocket in soft grey thread. A tag on the inside of the sweater bears the name 'Lindenoak' in both Common and Daemonic."
 	icon = 'icons/clothing/uniform/casual/lindenoak/sitri.dmi'
 	icon_state = "sitri"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -16,7 +16,7 @@
 	desc = "A comfortable cotton shirt in a mix of blazing red, white and blue hues, combined with a pair of white shorts and accompanying, crisscrossing black lace along it's sides. Its tag marks it as belonging to the Lindenoak clothing line."
 	icon = 'icons/clothing/uniform/casual/lindenoak/belial.dmi'
 	icon_state = "belial"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -25,7 +25,7 @@
 	desc = "An open chest blouse held together by black lacing and coupled with a pair side pre-ripped jeans. It's an outfit that's as much comfortable as it is fashionable. A small tag marks it as belonging to the Lindenoak line."
 	icon = 'icons/clothing/uniform/casual/lindenoak/asmodai.dmi'
 	icon_state = "asmodai"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -34,6 +34,6 @@
 	desc = "A well tailored skirt matched with a form fitting blouse, perfect for all those paper pushing needs."
 	icon = 'icons/clothing/uniform/casual/lindenoak/hueyskirt.dmi'
 	icon_state = "hueyskirt"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)

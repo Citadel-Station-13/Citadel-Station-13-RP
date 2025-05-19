@@ -15,15 +15,24 @@
 	icon = 'icons/clothing/uniform/casual/vox/vox-casual-1.dmi'
 	icon_state = "vox-casual-1"
 	body_cover_flags = LEGS
+	worn_bodytypes = BODYTYPES(BODYTYPE_VOX)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/vox/vox_robes
 	name = "alien robes"
 	desc = "Weird and flowing!"
 	icon = 'icons/clothing/uniform/casual/vox/vox-casual-2.dmi'
 	icon_state = "vox-casual-2"
+	worn_bodytypes = BODYTYPES(BODYTYPE_VOX)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/vox/simonpants
 	name = "simon pants"
 	desc = "Based off the clothing of a hero so famous, even the Vox had to emulate his style."
 	icon = 'icons/clothing/uniform/casual/vox/simonpants.dmi'
 	icon_state = "simonpants"
+	worn_bodytypes = BODYTYPES(BODYTYPE_VOX)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
