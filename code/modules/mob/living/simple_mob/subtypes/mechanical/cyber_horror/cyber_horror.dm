@@ -32,7 +32,7 @@
 	legacy_melee_damage_lower = 5
 	legacy_melee_damage_upper = 10
 
-	movement_cooldown = 3
+	movement_base_speed = 10 / 3
 	movement_sound = 'sound/effects/houndstep.ogg'
 	// To promote a more diverse weapon selection.
 	armor_legacy_mob = list(melee = 25, bullet = 25, laser = -20, bio = 100, rad = 100)
@@ -117,7 +117,7 @@
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	attacktext = list ("sliced", "diced", "lashed", "shredded")
  // Slow as all sin
-	movement_cooldown = 9
+	movement_base_speed = 10 / 9
 	movement_sound = 'sound/effects/houndstep.ogg'
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
@@ -352,7 +352,7 @@
 
 	maxHealth = 40
 	health = 40
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 	movement_sound = 'sound/effects/servostep.ogg'
 
 	pass_flags = ATOM_PASS_TABLE
@@ -415,7 +415,7 @@
 	mob_class = MOB_CLASS_ABERRATION
 	mob_size = MOB_HUGE
 	taser_kill = FALSE
-	movement_cooldown = 8
+	movement_base_speed = 10 / 8
 	special_attack_cooldown = 45 SECONDS
 	special_attack_min_range = 2
 	special_attack_max_range = 8
@@ -594,7 +594,7 @@
 	maxHealth = 1500
 	health = 1500
 	armor_legacy_mob = list(melee = 50, bullet = 35, laser = 35, bio = 100, rad = 100)
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 	legacy_melee_damage_lower = 15
 	legacy_melee_damage_upper = 25
 	attack_armor_pen = 25

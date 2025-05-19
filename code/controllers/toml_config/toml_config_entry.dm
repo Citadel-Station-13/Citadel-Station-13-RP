@@ -65,8 +65,16 @@
 /datum/toml_config_entry/vv_get_var(var_name, resolve)
 	switch(var_name)
 		if(NAMEOF(src, value))
-			if(vv_locked)
-				return "-- secret --"
+			if(vv_secret)
+				return debug_variable(var_name, "-- secret --", 0, src)
+	return ..()
+
+// todo: this is only necessary because getting default for vv reveals value. if we ever refactor vv, secret should only block seeing, not editing
+/datum/toml_config_entry/can_vv_get(var_name)
+	switch(var_name)
+		if(NAMEOF(src, value))
+			if(vv_secret)
+				return FALSE
 	return ..()
 
 /datum/toml_config_entry/CanProcCall(procname)

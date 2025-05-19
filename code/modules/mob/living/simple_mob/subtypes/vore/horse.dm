@@ -27,7 +27,7 @@
 	mod_min = 100
 	mod_max = 130
 
-	movement_cooldown = 4 //horses are fast mkay.
+	movement_base_speed = 10 / 4 //horses are fast mkay.
 	see_in_dark = 6
 
 	response_help  = "pets"

@@ -18,7 +18,7 @@
 	desc = "Designed in response to the H.O.N.K., Reticent models are close combat powerhouses designed to rapidly and quietly ambush slower foes."
 	catalogue_data = list(/datum/category_item/catalogue/technology/reticent)
 	icon_state = "reticent"
-	movement_cooldown = 0.5
+	movement_base_speed = 10 / 0.5
 	movement_sound = 'sound/effects/suitstep1.ogg'
 	turn_sound = 'sound/effects/suitstep2.ogg'
 	melee_attack_delay = 2
@@ -78,7 +78,7 @@
 	desc = "The current flagship mecha of Le Rien. The Reticence trades some speed for durability, but remains formidable. It is not commercially available."
 	catalogue_data = list(/datum/category_item/catalogue/technology/reticence)
 	icon_state = "reticence"
-	movement_cooldown = 1
+	movement_base_speed = 10 / 1
 	melee_attack_delay = 0
 	wreckage = /obj/structure/loot_pile/mecha/reticent/reticence
 
