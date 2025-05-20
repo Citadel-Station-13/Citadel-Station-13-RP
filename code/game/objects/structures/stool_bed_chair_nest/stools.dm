@@ -99,7 +99,7 @@ var/global/list/stool_cache = list() //haha stool
 		material_padding.place_sheet(get_turf(src))
 		set_material_part("padding", null)
 
-/obj/item/stool/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/stool/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 
 	var/mob/living/L = user

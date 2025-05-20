@@ -401,7 +401,7 @@
 
 	return 1
 
-/obj/item/grab/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/grab/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(QDELETED(src))
 		return
 	if(!affecting)
