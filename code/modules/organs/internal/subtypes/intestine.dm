@@ -8,7 +8,7 @@
 	. = ..() //Up should return an infection level as an integer
 	if(!.)
 		return
-	
+
 	if(!owner?.client)
 		return
 
@@ -20,8 +20,7 @@
 	if (. >= 2)
 		if(prob(1))
 			owner.custom_pain("Your abdomen feels like it's tearing itself apart!",1)
-			owner.m_intent = "walk"
-			owner.hud_used.move_intent.icon_state = "walking"
+			owner.set_move_intent(MOVE_INTENT_WALK)
 
 /obj/item/organ/internal/intestine/xeno
 	color = "#555555"

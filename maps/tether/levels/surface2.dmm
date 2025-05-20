@@ -14905,10 +14905,10 @@
 	dir = 4
 	},
 /obj/structure/table/steel,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
+/obj/item/grenade/simple/chemical/premade/cleaner,
+/obj/item/grenade/simple/chemical/premade/cleaner,
+/obj/item/grenade/simple/chemical/premade/cleaner,
+/obj/item/grenade/simple/chemical/premade/cleaner,
 /obj/item/storage/box/mousetraps,
 /obj/item/storage/box/lights/mixed,
 /obj/item/storage/box/lights/mixed,
@@ -21663,10 +21663,10 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/drone_fabrication)
 "pUA" = (
-/obj/item/grenade/chem_grenade/cleaner{
+/obj/item/grenade/simple/chemical/premade/cleaner{
 	pixel_x = -10
 	},
-/obj/item/grenade/anti_photon,
+/obj/item/grenade/simple/antiphoton,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/funny/hideyhole)
 "pUD" = (

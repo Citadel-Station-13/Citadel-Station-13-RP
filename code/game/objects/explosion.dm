@@ -1,3 +1,4 @@
+// TODO: put into SSspatial_effects
 //TODO: Flash range does nothing currently
 
 /proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog = 1, z_transfer = UP|DOWN, shaped)

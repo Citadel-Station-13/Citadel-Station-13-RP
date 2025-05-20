@@ -446,9 +446,9 @@
 /turf/simulated/floor/tiled/hydro,
 /area/awaymission/snowfield/base)
 "bn" = (
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
+/obj/item/grenade/simple/chemical/premade/cleaner,
+/obj/item/grenade/simple/chemical/premade/cleaner,
+/obj/item/grenade/simple/chemical/premade/cleaner,
 /obj/item/reagent_containers/spray/cleaner,
 /obj/structure/table/steel,
 /obj/item/storage/box/mousetraps,
