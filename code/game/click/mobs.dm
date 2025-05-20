@@ -31,16 +31,6 @@
 	var/stupid_fucking_shim = list2params(params)
 	RangedAttack(target, stupid_fucking_shim)
 
-
-/**
- * default current unarmed attack style
- *
- * todo: kinda shitycodey but w/e
- */
-/mob/proc/default_unarmed_attack_style()
-	// none by default
-	return null
-
 /**
  * construct default event args for what we're doing to a target
  *

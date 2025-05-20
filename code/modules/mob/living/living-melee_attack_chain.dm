@@ -6,3 +6,6 @@
 	if(prob(80))
 		clickchain.target_zone = ran_zone(clickchain.target_zone, 70)
 	return ..()
+
+/mob/living/default_unarmed_attack_style()
+	return fetch_unarmed_style(/datum/melee_attack/unarmed)

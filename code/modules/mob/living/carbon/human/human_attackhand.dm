@@ -170,6 +170,3 @@
 
 /mob/living/carbon/human/proc/set_default_attack(var/datum/melee_attack/unarmed/u_attack)
 	default_attack = u_attack
-
-/mob/living/carbon/human/default_unarmed_attack_style()
-	return get_unarmed_attack() || ..()

@@ -6,3 +6,6 @@
 	if(clickchain.target_zone != BP_TORSO && prob(15))
 		clickchain_flags |= CLICKCHAIN_ATTACK_MISSED
 	return ..()
+
+/mob/living/carbon/human/default_unarmed_attack_style()
+	return get_unarmed_attack() || ..()
