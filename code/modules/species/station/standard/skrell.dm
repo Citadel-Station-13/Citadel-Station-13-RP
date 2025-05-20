@@ -32,7 +32,7 @@
 	)
 	assisted_langs   = list(LANGUAGE_EAL, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX, LANGUAGE_PROMETHEAN)
 
-	slowdown  = -0.2
+	movement_base_speed = 5.5
 	color_mult = 1
 	health_hud_intensity = 2
 

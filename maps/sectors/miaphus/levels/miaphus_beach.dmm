@@ -601,6 +601,12 @@
 "dm" = (
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/miaphus/beach/resort/lockermed)
+"dq" = (
+/obj/effect/shuttle_landmark/automatic{
+	name = "Sea Emergency Landing"
+	},
+/turf/simulated/floor/water/deep,
+/area/sector/miaphus/beach/water)
 "dt" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -4529,12 +4535,6 @@
 	outdoors = 1
 	},
 /area/sector/miaphus/beach/water)
-"Ma" = (
-/obj/effect/shuttle_landmark/automatic{
-	name = "Sea Emergency Landing"
-	},
-/turf/simulated/floor/water/deep,
-/area/sector/miaphus/beach/water)
 "Mb" = (
 /obj/structure/flora/pottedplant/dead,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -4750,19 +4750,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/miaphus/beach/desalinator)
-"Ob" = (
-/obj/structure/closet/crate/miningcar,
-/obj/item/grenade/explosive/ied/tyrmalin,
-/obj/item/grenade/explosive/ied/tyrmalin,
-/obj/item/grenade/explosive/ied/tyrmalin,
-/obj/item/grenade/explosive/ied/tyrmalin,
-/obj/item/grenade/explosive/ied/tyrmalin,
-/obj/item/grenade/explosive/ied/tyrmalin,
-/obj/random/multiple/ores,
-/turf/simulated/mineral/floor/cave{
-	name = "dirt"
-	},
-/area/sector/miaphus/beach/mineshaft)
 "Of" = (
 /obj/structure/fence{
 	dir = 1
@@ -5201,6 +5188,19 @@
 /obj/effect/overlay/palmtree_l,
 /turf/simulated/floor/outdoors/beach/sand,
 /area/sector/miaphus/beach/jungle)
+"RR" = (
+/obj/structure/closet/crate/miningcar,
+/obj/item/grenade/simple/explosive/ied/tyrmalin,
+/obj/item/grenade/simple/explosive/ied/tyrmalin,
+/obj/item/grenade/simple/explosive/ied/tyrmalin,
+/obj/item/grenade/simple/explosive/ied/tyrmalin,
+/obj/item/grenade/simple/explosive/ied/tyrmalin,
+/obj/item/grenade/simple/explosive/ied/tyrmalin,
+/obj/random/multiple/ores,
+/turf/simulated/mineral/floor/cave{
+	name = "dirt"
+	},
+/area/sector/miaphus/beach/mineshaft)
 "RS" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -10285,7 +10285,7 @@ ZC
 ZC
 ZC
 ZC
-Ob
+RR
 rl
 NW
 ZC
@@ -16404,7 +16404,7 @@ am
 am
 am
 am
-Ma
+dq
 am
 am
 am

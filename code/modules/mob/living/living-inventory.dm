@@ -128,7 +128,7 @@
 	/// do not slow down below 10% of base
 	penalty = max(penalty, 0.1)
 	if(penalty)
-		add_or_update_variable_movespeed_modifier(
+		update_movespeed_modifier(
 			/datum/movespeed_modifier/mob_inventory_carry,
 			params = list(
 				MOVESPEED_PARAM_MOD_MULTIPLY_SPEED = penalty,
@@ -142,7 +142,7 @@
 /mob/living/update_item_slowdown()
 	var/tally = get_item_slowdown()
 	if(tally)
-		add_or_update_variable_movespeed_modifier(
+		update_movespeed_modifier(
 			/datum/movespeed_modifier/mob_item_slowdown,
 			params = list(
 				MOVESPEED_PARAM_MOD_HYPERBOLIC_SLOWDOWN = tally,

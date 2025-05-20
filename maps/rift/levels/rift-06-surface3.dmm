@@ -8790,7 +8790,7 @@
 /area/bridge/bunker)
 "aBh" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Command"
+	RCon_tag = "Surface 3 - Command Substation Bypass"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/command)
@@ -11003,7 +11003,7 @@
 /area/rift/surfaceeva/aa/cliff_north)
 "aIr" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Exploration and Research Shuttles";
+	RCon_tag = "Surface 3 - Exploration & Research Shuttles Substation";
 	inputting = 1;
 	output_attempt = 0
 	},
@@ -16333,7 +16333,7 @@
 /area/hallway/secondary/docking_hallway2)
 "aYS" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Command";
+	RCon_tag = "Surface 3 - Command Substation";
 	cur_coils = 2
 	},
 /obj/structure/cable/green{
@@ -23864,7 +23864,7 @@
 /area/maintenance/substation/surface_three)
 "nFC" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Exploration Substation Bypass"
+	RCon_tag = "Surface 3 - Exploration & Research Shuttles Substation Bypass"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/exploration)
@@ -23904,7 +23904,7 @@
 /area/shuttle/excursion/cargo)
 "nKj" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Surface 3";
+	RCon_tag = "Surface 3 - Main Substation";
 	cur_coils = 2
 	},
 /obj/structure/cable/green{
@@ -25951,7 +25951,7 @@
 /area/exploration)
 "rMY" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Surface 3"
+	RCon_tag = "Surface 3 - Main Substation Bypass"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_three)
@@ -26819,7 +26819,7 @@
 /area/rift/surfaceeva/airlock/arrivals/secondary)
 "tIR" = (
 /obj/machinery/power/smes/buildable/power_shuttle{
-	RCon_tag = "Courser Charging Port";
+	RCon_tag = "Surface 3 - Courser Charging Port";
 	name = "Courser Charging Port"
 	},
 /obj/structure/cable/pink{

@@ -2970,7 +2970,7 @@
 /area/rnd/outpost/underground)
 "IC" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Mining Outpost Substation Bypass"
+	RCon_tag = "Western Caves - Mining Outpost Substation Bypass"
 	},
 /obj/machinery/camera/network/research_outpost{
 	dir = 4
@@ -3734,7 +3734,7 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Mining Outpost";
+	RCon_tag = "Western Caves - Mining Outpost Substation";
 	charge = 1000
 	},
 /turf/simulated/floor,

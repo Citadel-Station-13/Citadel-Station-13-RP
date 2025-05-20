@@ -140,7 +140,7 @@
 		O.emp_act(severity)
 	..()
 
-/obj/item/flashlight/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/flashlight/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(on && user.zone_sel.selecting == O_EYES && isliving(target))
