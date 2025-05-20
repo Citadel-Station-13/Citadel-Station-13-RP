@@ -15,7 +15,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	/// add damage - low
 	var/damage_add_low = 0
 	/// add damage - high
-	var/damage_add_high = 0
+	var/damage_add_high = 5
 	/// damage mode flags
 	var/damage_mode = NONE
 	/// damage tier

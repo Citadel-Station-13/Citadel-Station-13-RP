@@ -5,8 +5,6 @@
 	attack_noun = list("fist")
 	eye_attack_text = "fingers"
 	eye_attack_text_victim = "digits"
-	damage_add_low = 0
-	damage_add_high = 5
 
 /datum/melee_attack/unarmed/punch/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 	var/obj/item/organ/external/affecting = target.get_organ(zone)

@@ -17,13 +17,13 @@
 /datum/melee_attack/unarmed/bite/strong
 	verb_past_participle = list("mauled")
 	attack_verb_legacy = list("mauled")
-	damage = 17.5
-	damage_tier = 2
+	damage = 12.5
 	damage_mode = DAMAGE_MODE_SHRED | DAMAGE_MODE_SHARP
 	attack_name = "strong bite"
 
 /datum/melee_attack/unarmed/bite/strong/xeno
 	damage = 17
+	damage_tier = 3
 
 /datum/melee_attack/unarmed/bite/sharp //eye teeth
 	verb_past_participle = list("bit")

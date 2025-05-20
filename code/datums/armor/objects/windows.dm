@@ -7,4 +7,4 @@
 	melee_deflect = 6
 	melee_soak = 0
 	melee_tier = 3
-	melee = 0.25
+	melee = 0.3

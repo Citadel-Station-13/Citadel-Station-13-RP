@@ -3,6 +3,5 @@
 	verb_past_participle = list("lightly struck")
 	attack_noun = list("tap","light strike")
 	attack_verb_legacy = list("tapped", "lightly struck")
-	damage = 5
 	damage_mode = NONE
 	damage_type = DAMAGE_TYPE_HALLOSS

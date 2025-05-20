@@ -3,8 +3,6 @@
 	attack_verb_legacy = list("kicked", "kicked", "kicked", "kneed")
 	attack_noun = list("kick", "kick", "kick", "knee strike")
 	attack_sound = "swing_hit"
-	damage_add_low = 0
-	damage_add_high = 5
 	attack_name = "kick"
 
 /datum/melee_attack/unarmed/kick/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
