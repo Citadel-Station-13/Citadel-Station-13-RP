@@ -6,7 +6,6 @@
 	armor_type = /datum/armor/none
 	siemens_coefficient = 0.9
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_NO_RENDER
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
@@ -16,6 +15,7 @@
 	desc = "A baggy shirt bearing the seal of the Society of Universal Cartographers and some dorky looking blue shorts."
 	icon = 'icons/clothing/uniform/workwear/oricon/pt/expedition.dmi'
 	icon_state = "expedition"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -24,6 +24,7 @@
 	desc = "A pair of black shorts and two tank tops, seems impractical. Looks good though."
 	icon = 'icons/clothing/uniform/workwear/oricon/pt/fleet.dmi'
 	icon_state = "fleet"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -32,5 +33,6 @@
 	desc = "Does NOT leave much to the imagination."
 	icon = 'icons/clothing/uniform/workwear/oricon/pt/marine.dmi'
 	icon_state = "marine"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL

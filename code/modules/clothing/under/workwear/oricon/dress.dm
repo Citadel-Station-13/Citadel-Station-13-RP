@@ -5,6 +5,7 @@
 	icon_state = "grey"
 	armor_type = /datum/armor/none
 	siemens_coefficient = 0.9
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -13,6 +14,9 @@
 	desc = "The dress uniform of the Society of Universal Cartographers in silver trim."
 	icon = 'icons/clothing/uniform/workwear/oricon/dress/grey.dmi'
 	icon_state = "grey"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/oricon/mildress/sysguard/command
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/command/service)
@@ -43,6 +47,9 @@
 	desc = "The dress uniform of the Society of Universal Cartographers in gold trim."
 	icon = 'icons/clothing/uniform/workwear/oricon/dress/grey_command.dmi'
 	icon_state = "grey_command"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/oricon/mildress/sysguard/officer/command
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/command/service)
@@ -73,11 +80,15 @@
 	desc = "The dress uniform of the JSDF Marine Corps, class given form."
 	icon = 'icons/clothing/uniform/workwear/oricon/dress/black.dmi'
 	icon_state = "black"
-	worn_has_rollsleeve = UNIFORM_HAS_ROLL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 
 /obj/item/clothing/under/oricon/mildress/marine/command
 	name = "marine command dress uniform"
 	desc = "The dress uniform of the JSDF Marine Corps, even classier in gold."
 	icon = 'icons/clothing/uniform/workwear/oricon/dress/black_command.dmi'
 	icon_state = "black_command"
-	worn_has_rollsleeve = UNIFORM_HAS_ROLL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
