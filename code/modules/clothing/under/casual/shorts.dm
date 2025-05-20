@@ -301,10 +301,10 @@
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/fashionminiskirt
-    name = "fashionable miniskirt"
-    desc = "An impractically short miniskirt allegedly making waves through the local fashion scene."
-    icon = 'icons/clothing/uniform/casual/shorts/miniskirt_fashion.dmi'
-    icon_state = "miniskirt_fashion"
+	name = "fashionable miniskirt"
+	desc = "An impractically short miniskirt allegedly making waves through the local fashion scene."
+	icon = 'icons/clothing/uniform/casual/shorts/miniskirt_fashion.dmi'
+	icon_state = "miniskirt_fashion"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
