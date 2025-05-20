@@ -11,5 +11,3 @@
 		MUL [clickchain.attack_melee_multiplier] \
 		[length(clickchain.data) ? "DATA [json_encode(clickchain.data)]" : ""]"
 		WRITE_LOG(GLOB.world_attack_log, str)
-
-#warn audit log
