@@ -1,6 +1,11 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+//The general idea of how to implement this:
+//1. Override context_query() and include '. = ..()'. Then, add '.["name"] = ATOM_CONTEXT_TUPLE(...)' for any option you want to add.
+//2. Override context_act and include '. = ..()' AND 'if(.) return'. Then make a switch for the 'key' param and make a case for the name you added above.
+//3. Insert your logic into that case. Return TRUE afterward.
+
 /**
  * get context options
  *
