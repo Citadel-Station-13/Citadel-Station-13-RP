@@ -155,7 +155,7 @@
 	// is mob, go to that
 	// todo: signals for both
 	if(ismob(target))
-		. |= attack_mob(target, user, clickchain_flags, params, mult, target_zone, intent)
+		. |= legacy_mob_melee_hook(target, user, clickchain_flags, params, mult, target_zone, intent)
 		if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 			return
 		return . | finalize_mob_melee(target, user, . | clickchain_flags, params, mult, target_zone, intent)
