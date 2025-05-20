@@ -51,6 +51,9 @@
 	/// Message to print to players about 'how' to play this mob on login.
 	var/player_msg
 
+	//inv slots
+	var/list/inventory_slots
+
 	//* Mob icon/appearance settings *//
 	/// The iconstate if we're alive. //!REQUIRED
 	var/icon_living = ""
@@ -272,6 +275,10 @@
 
 	if(has_eye_glow)
 		add_eyes()
+
+	inventory = new(src)
+	inventory.set_inventory_slots(inventory_slots)
+	inventory.set_hand_count(get_usable_hand_count())
 
 	return ..()
 
