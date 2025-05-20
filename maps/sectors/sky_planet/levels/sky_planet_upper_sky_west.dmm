@@ -2132,7 +2132,6 @@
 "ml" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
-	frequency = 1380;
 	id_tag = "southrig3_dock";
 	pixel_x = 26
 	},
@@ -4023,7 +4022,6 @@
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
-	frequency = 1380;
 	id_tag = "eastrig1_dock";
 	pixel_y = 25
 	},
@@ -6561,7 +6559,6 @@
 	id_tag = "westrig1_dock"
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
-	frequency = 1380;
 	id_tag = "westrig1_dock";
 	pixel_y = 25
 	},
@@ -6966,7 +6963,6 @@
 	dir = 4
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
-	frequency = 1380;
 	id_tag = "eastrig3_dock";
 	pixel_x = 1;
 	pixel_y = 31
@@ -8296,7 +8292,6 @@
 	dir = 4
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
-	frequency = 1380;
 	id_tag = "westrig2_dock";
 	pixel_y = 25
 	},
@@ -8667,7 +8662,6 @@
 	dir = 10
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
-	frequency = 1380;
 	id_tag = "northrig2_dock";
 	pixel_x = 26
 	},
@@ -8897,7 +8891,6 @@
 	dir = 1
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
-	frequency = 1380;
 	id_tag = "northrig3_dock";
 	pixel_x = 26
 	},
@@ -9385,7 +9378,6 @@
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	dir = 4;
-	frequency = 1380;
 	id_tag = "southrig1_dock";
 	pixel_x = -26;
 	pixel_y = 1
