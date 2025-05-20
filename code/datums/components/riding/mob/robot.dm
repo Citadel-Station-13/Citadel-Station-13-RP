@@ -38,8 +38,8 @@
 		to_chat(src, "<span class='notice'>You can now be controlled")
 	else
 		riding_filter.handler_typepath = /datum/component/riding_handler/mob/robot
+		to_chat(src, "<span class='notice'>You can no longer be controlled")
 	var/datum/component/riding_handler/mob/robot/riding_handler = GetComponent(/datum/component/riding_handler/mob/robot)
-	to_chat(src, "<span class='notice'>You can no longer be controlled")
 	if(!riding_handler)
 		//No need to update the handler if it doesn't exist.
 		return
