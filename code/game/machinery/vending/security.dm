@@ -7,7 +7,7 @@
 	req_access = list(ACCESS_SECURITY_EQUIPMENT)
 	products = list(
 		/obj/item/handcuffs = 8,
-		/obj/item/grenade/flashbang = 4,
+		/obj/item/grenade/simple/flashbang = 4,
 		/obj/item/flash = 5,
 		/obj/item/reagent_containers/spray/pepper = 6,
 		/obj/item/reagent_containers/food/snacks/donut/normal = 12,

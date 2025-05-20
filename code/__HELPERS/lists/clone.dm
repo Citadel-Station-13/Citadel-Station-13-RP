@@ -3,6 +3,7 @@
  *
  * * Any datum-types in the list must have clone() implemented.
  * * This is somewhat expensive. Use sparingly.
+ * * Null is passed back as null.
  *
  * Valid datatypes that can be cloned:
  *
@@ -12,7 +13,7 @@
  * * datums with clone() implemented
  */
 /proc/deep_clone_list(list/L)
-	var/list/copy = L.Copy()
+	var/list/copy = L?.Copy()
 	for(var/i in 1 to length(copy))
 		var/key = copy[i]
 		var/value = copy[key]

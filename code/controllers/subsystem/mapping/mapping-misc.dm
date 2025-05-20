@@ -2,6 +2,10 @@
  * stuff that really just didn't fit anywhere
  * unlike most "legacy" citrp files, things in here are allowed to be used and will be optimized & maintained.
  */
+
+/**
+ * get all turfs of a given type or typecache on a zlevel
+ */
 /datum/controller/subsystem/mapping/proc/z_turfs_of_type(z, list/type_or_cache)
 	. = list()
 	if(ispath(type_or_cache))
@@ -16,7 +20,7 @@
 		CRASH("What?")
 
 /**
- * *sigh*
+ * throws things, i guess.
  */
 /datum/controller/subsystem/mapping/proc/throw_movables_on_z_turfs_of_type(z, list/type_or_cache, dir)
 	ASSERT(dir in GLOB.cardinal)

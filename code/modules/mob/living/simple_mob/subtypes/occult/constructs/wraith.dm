@@ -28,7 +28,7 @@
 	attack_edge = 1
 	attacktext = list("slashed")
 	friendly = list("pinches")
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 	attack_sound = 'sound/weapons/rapidslice.ogg'
 	construct_spells = list(/spell/targeted/ethereal_jaunt/shift,
 							/spell/targeted/ambush_mode

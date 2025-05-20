@@ -6,7 +6,7 @@
 	icon_state = "white"
 	icon_living = "white"
 	attacktext = list("prodded")
-	movement_cooldown = 5
+	movement_base_speed = 10 / 5
 	legacy_melee_damage_lower = 2
 	legacy_melee_damage_upper = 2
 

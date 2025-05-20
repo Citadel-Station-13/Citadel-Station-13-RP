@@ -2,23 +2,19 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /**
- * turf reservation system
- */
-
-/**
  * allocate a new reservation level
  */
 /datum/controller/subsystem/mapping/proc/allocate_reserved_level()
-	if(reserved_level_count && ((world.maxx * world.maxy * (reserved_level_count + 1)) > reserved_turfs_max))
+	if(reservation_level_count && ((world.maxx * world.maxy * (reservation_level_count + 1)) > reservation_turf_limit))
 		log_and_message_admins(SPAN_USERDANGER("Out of dynamic reservation allocations. Is there a memory leak with turf reservations?"))
 		return FALSE
-	if(reserved_level_count)
-		log_and_message_admins(SPAN_USERDANGER("Allocating new reserved level. Now at [reserved_level_count + 1]. This is probably not a good thing if the server is not at high load right now."))
-	reserved_level_count++
+	if(reservation_level_count)
+		log_and_message_admins(SPAN_USERDANGER("Allocating new reserved level. Now at [reservation_level_count + 1]. This is probably not a good thing if the server is not at high load right now."))
+	reservation_level_count++
 	var/datum/map_level/reserved/level_struct = new
 	ASSERT(allocate_level(level_struct))
-	initialize_reserved_level(level_struct.z_index)
-	reserve_levels |= level_struct.z_index
+	initialize_reservation_level(level_struct.z_index)
+	reservation_levels |= level_struct.z_index
 	// make a list with a predetermined size for the lookup
 	reservation_spatial_lookups[level_struct.z_index] = new /list(ceil(world.maxx / TURF_CHUNK_RESOLUTION) * ceil(world.maxy / TURF_CHUNK_RESOLUTION))
 	return level_struct.z_index
@@ -59,11 +55,11 @@
 	QDEL_NULL(reserve)
 	CRASH("failed to reserve")
 
-/datum/controller/subsystem/mapping/proc/initialize_reserved_level(z)
+/datum/controller/subsystem/mapping/proc/initialize_reservation_level(z)
 	var/list/turf/turfs = Z_TURFS(z)
-	reserve_turfs(turfs)
+	initialize_unused_reservation_turfs(turfs)
 
-/datum/controller/subsystem/mapping/proc/reserve_turfs(list/turf/turfs)
+/datum/controller/subsystem/mapping/proc/initialize_unused_reservation_turfs(list/turf/turfs)
 	for(var/turf/T as anything in turfs)
 		T.empty(RESERVED_TURF_TYPE, RESERVED_TURF_TYPE)
 		T.turf_flags |= TURF_FLAG_UNUSED_RESERVATION
@@ -75,14 +71,7 @@
  * @return turf reservation someone's in, or null if they're not in a reservation
  */
 /datum/controller/subsystem/mapping/proc/get_turf_reservation(atom/where)
-	where = get_turf(where)
-	if(!where)
-		return
-	// this doubles as 'is this a reserved level'
-	var/list/spatial_lookup = reservation_spatial_lookups[where.z]
-	if(!spatial_lookup)
-		return
-	return spatial_lookup[ceil(where.x / TURF_CHUNK_RESOLUTION) + (ceil(where.y / TURF_CHUNK_RESOLUTION) - 1) * ceil(world.maxx / TURF_CHUNK_RESOLUTION)]
+	return reservation_spatial_lookups[get_z(where)]?[ceil(where.x / TURF_CHUNK_RESOLUTION) + (ceil(where.y / TURF_CHUNK_RESOLUTION) - 1) * ceil(world.maxx / TURF_CHUNK_RESOLUTION)]
 
 /area/reservation_unused
 	name = "Unallocated Reservation Area"

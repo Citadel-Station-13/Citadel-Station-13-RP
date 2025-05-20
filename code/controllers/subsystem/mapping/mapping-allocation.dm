@@ -2,28 +2,10 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /**
- * equivalent to SSzclear
- * prototype system to wipe a zlevel
- *
- * ! Warning: this is frankly a shitty system and you shouldn't rely on it
- * ! Yes, I am warning you right now that this code is not great.
- * I included it out of boredom
- * There's genuinely no good way to handle this in BYOND.
- * This is slow, will probably cause a lot of harddels due to objects behaving badly,
- * and will just generally caused grief.
- *
- * I do not recommend anyone use this unless they absolutely know what they're doing.
- * (if you think you need this, you probably don't, to be blunt.)
- */
-
-// todo: add this module to recover()
-// todo: zclear system will be in this later, for now, this is just a wrapper
-
-/**
  * gets an reusable level, or increments world.maxz
- * WARNING: AFTER THIS, YOU NEED TO USE THE LEVEL, OR READD TO REUSABLE, OR THIS IS A MEMORY LEAK!
- *
+ * 
  * * This will always return the lowest z-index first.
+ * * The returned level must be used or deallocated / readded to 'ordered_reusable', or it will be leaked!
  */
 /datum/controller/subsystem/mapping/proc/allocate_z_index()
 	if(islist(ordered_reusable_levels) && length(ordered_reusable_levels))

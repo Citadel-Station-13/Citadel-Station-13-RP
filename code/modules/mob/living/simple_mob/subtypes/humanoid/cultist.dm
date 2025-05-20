@@ -71,7 +71,7 @@
 	attacktext = list("slashed", "stabbed")
 	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 30, energy = 80, bomb = 30, bio = 100, rad = 100)	// Same armor are cult armor, may nerf since DAMN THAT IS GOOD ARMOR
 	attack_sound = 'sound/weapons/bladeslice.ogg'
-	movement_cooldown = 3
+	movement_base_speed = 10 / 3
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
@@ -237,7 +237,7 @@
 	attacktext = list("slashed", "stabbed")
 	armor_legacy_mob = list(melee = 45, bullet = 40, laser = 30, energy = 80, bomb = 20, bio = 100, rad = 100)	// Reduced Resistance to Approximate increased Tesh damage.
 	attack_sound = 'sound/weapons/bladeslice.ogg'
-	movement_cooldown = 2
+	movement_base_speed = 10 / 2
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
@@ -285,7 +285,7 @@
 	attacktext = list("slashed", "stabbed")
 	armor_legacy_mob = list(melee = 70, bullet = 60, laser = 30, energy = 80, bomb = 35, bio = 100, rad = 100)	// Better Armor to match lizard brute resist
 	attack_sound = 'sound/weapons/rapidslice.ogg'
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 	base_attack_cooldown = 7.5 //Two knives mean double stab.
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
@@ -334,7 +334,7 @@
 	attacktext = list("slashed", "stabbed")
 	armor_legacy_mob = list(melee = 50, bullet = 30, laser = 50, energy = 80, bomb = 25, bio = 100, rad = 100)	//Armor Rebalanced for Cult Robes.
 	attack_sound = 'sound/weapons/rapidslice.ogg'
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 	projectiletype = /obj/projectile/beam/inversion
 	projectilesound = 'sound/weapons/spiderlunge.ogg'
 
@@ -383,7 +383,7 @@
 	attacktext = list("slashed", "stabbed")
 	armor_legacy_mob = list(melee = 50, bullet = 30, laser = 50, energy = 80, bomb = 25, bio = 100, rad = 100)	//Armor Rebalanced for Cult Robes.
 	attack_sound = 'sound/weapons/rapidslice.ogg'
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
@@ -429,7 +429,7 @@
 	attacktext = list("slashed", "stabbed")
 	armor_legacy_mob = list(melee = 35, bullet = 20, laser = 35, energy = 60, bomb = 20, bio = 100, rad = 100)	//Rebalanced for Robes and Tesh damage
 	attack_sound = 'sound/weapons/rapidslice.ogg'
-	movement_cooldown = 2
+	movement_base_speed = 10 / 2
 	base_attack_cooldown = 7.5
 	projectiletype = /obj/projectile/beam/inversion
 	projectilesound = 'sound/weapons/spiderlunge.ogg'
@@ -478,7 +478,7 @@
 	attacktext = list("slashed", "stabbed")
 	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 30, energy = 80, bomb = 30, bio = 100, rad = 100)	// Same armor are cult armor, may nerf since DAMN THAT IS GOOD ARMOR
 	attack_sound = 'sound/weapons/bladeslice.ogg'
-	movement_cooldown = 3
+	movement_base_speed = 10 / 3
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
@@ -553,7 +553,7 @@
 	attacktext = list("slashed", "stabbed")
 	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 50, energy = 80, bomb = 30, bio = 100, rad = 100)	//Super Armor since Boss Mob
 	attack_sound = 'sound/weapons/bladeslice.ogg'
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 
 	projectiletype = /obj/projectile/beam/inversion
 	base_attack_cooldown = 5
@@ -624,7 +624,7 @@
 	attacktext = list("slashed", "stabbed")
 	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 50, energy = 80, bomb = 30, bio = 100, rad = 100)	//Super Armor since Boss Mob
 	attack_sound = 'sound/weapons/bladeslice.ogg'
-	movement_cooldown = 0 //This is so he can't be kited well
+	movement_base_speed = 6.66 //This is so he can't be kited well
 
 	projectiletype = /obj/projectile/bullet/pellet/shotgun
 

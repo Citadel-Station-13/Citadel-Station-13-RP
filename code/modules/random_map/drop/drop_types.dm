@@ -86,14 +86,14 @@ var/global/list/datum/supply_drop_loot/supply_drop
 		/obj/item/ammo_magazine/a7_62mm/ap,
 		/obj/item/ammo_magazine/a7_62mm,
 		/obj/item/shield/transforming/energy,
-		/obj/item/grenade/explosive/frag,
-		/obj/item/grenade/explosive/frag,
-		/obj/item/grenade/smokebomb,
-		/obj/item/grenade/smokebomb,
-		/obj/item/grenade/flashbang,
-		/obj/item/grenade/flashbang,
-		/obj/item/grenade/empgrenade,
-		/obj/item/grenade/empgrenade,
+		/obj/item/grenade/simple/explosive/frag,
+		/obj/item/grenade/simple/explosive/frag,
+		/obj/item/grenade/simple/smoke,
+		/obj/item/grenade/simple/smoke,
+		/obj/item/grenade/simple/flashbang,
+		/obj/item/grenade/simple/flashbang,
+		/obj/item/grenade/simple/emp,
+		/obj/item/grenade/simple/emp,
 		/obj/item/material/knife/tacknife/combatknife)
 
 /datum/supply_drop_loot/riot

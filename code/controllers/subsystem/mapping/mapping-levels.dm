@@ -1,8 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
-// todo: clean this up, things are a bit too convoluted
-
 /**
  * Z-Level Management System
  *
@@ -10,83 +8,37 @@
  */
 
 /**
- * Call whenever a zlevel's up/down is modified
- *
- * This does NOT rebuild turf graphics - call it on each level for that.
- *
- * @params
- * * updated - the level updated, if doing a single update
- * * targeted - the new level the level is pointing to, if doing a single update
- * * dir - the direction from updated to targeted
+ * Rebuild multiz cache. This must be called whenever any level has their links changed,
+ * whether vertical or horizontal.
  */
-/datum/controller/subsystem/mapping/proc/rebuild_verticality(datum/map_level/updated, datum/map_level/targeted, dir)
-	if(!updated || !cached_level_up || !cached_level_down)
-		// full rebuild
-		z_stack_dirty = TRUE
-		cached_level_up = list()
-		cached_level_down = list()
-		cached_level_up.len = world.maxz
-		cached_level_down.len = world.maxz
+/datum/controller/subsystem/mapping/proc/rebuild_multiz_lookup(for_index)
+	z_stack_dirty = TRUE
+
+	if(!for_index)
+		cached_level_up = new /list(world.maxz)
+		cached_level_down = new /list(world.maxz)
+		cached_level_east = new /list(world.maxz)
+		cached_level_west = new /list(world.maxz)
+		cached_level_north = new /list(world.maxz)
+		cached_level_south = new /list(world.maxz)
+
+	if(for_index)
+		var/datum/map_level/level = ordered_levels[for_index]
+		cached_level_up[for_index] = level.level_in_dir(UP)?.z_index
+		cached_level_down[for_index] = level.level_in_dir(DOWN)?.z_index
+		cached_level_north[for_index] = level.level_in_dir(NORTH)?.z_index
+		cached_level_south[for_index] = level.level_in_dir(SOUTH)?.z_index
+		cached_level_east[for_index] = level.level_in_dir(EAST)?.z_index
+		cached_level_west[for_index] = level.level_in_dir(WEST)?.z_index
+	else
 		for(var/i in 1 to world.maxz)
 			var/datum/map_level/level = ordered_levels[i]
 			cached_level_up[i] = level.level_in_dir(UP)?.z_index
 			cached_level_down[i] = level.level_in_dir(DOWN)?.z_index
-	else
-		// smart rebuild
-		ASSERT(dir)
-		if(!updated.loaded)
-			return
-		z_stack_dirty = TRUE
-		var/datum/map_level/level = updated
-		switch(dir)
-			if(UP)
-				cached_level_up[level.z_index] = level.level_in_dir(UP)?.z_index
-			if(DOWN)
-				cached_level_down[level.z_index] = level.level_in_dir(DOWN)?.z_index
-			else
-				CRASH("Invalid dir: [dir]")
-
-/**
- * Call whenever a zlevel's east/west/north/south is modified
- *
- * This does NOT rebuild turf graphics - call it on each level for that.
- *
- * @params
- * * updated - the level updated, if doing a single update
- * * targeted - the new level the level is pointing to, if doing a single update
- * * dir - the direction from updated to targeted
- */
-/datum/controller/subsystem/mapping/proc/rebuild_transitions(datum/map_level/updated, datum/map_level/targeted, dir)
-	if(!updated || !cached_level_east || !cached_level_west || !cached_level_north || !cached_level_south)
-		// full rebuild
-		cached_level_east = list()
-		cached_level_west = list()
-		cached_level_north = list()
-		cached_level_south = list()
-		cached_level_east.len = cached_level_west.len = cached_level_north.len = cached_level_south.len = world.maxz
-		for(var/i in 1 to world.maxz)
-			var/datum/map_level/level = ordered_levels[i]
 			cached_level_north[i] = level.level_in_dir(NORTH)?.z_index
 			cached_level_south[i] = level.level_in_dir(SOUTH)?.z_index
 			cached_level_east[i] = level.level_in_dir(EAST)?.z_index
 			cached_level_west[i] = level.level_in_dir(WEST)?.z_index
-	else
-		// smart rebuild
-		if(!updated.loaded)
-			return
-		ASSERT(dir)
-		var/datum/map_level/level = updated
-		switch(dir)
-			if(NORTH)
-				cached_level_north[level.z_index] = level.level_in_dir(NORTH)?.z_index
-			if(SOUTH)
-				cached_level_south[level.z_index] = level.level_in_dir(SOUTH)?.z_index
-			if(EAST)
-				cached_level_east[level.z_index] = level.level_in_dir(EAST)?.z_index
-			if(WEST)
-				cached_level_west[level.z_index] = level.level_in_dir(WEST)?.z_index
-			else
-				CRASH("Invalid dir: [dir]")
 
 /**
  * Automatically rebuilds the transitions and multiz of any zlevel that has them.
@@ -94,17 +46,16 @@
  *
  * Can specify a list of zlevels to check (indices, not datums!), otherwise rebuilds all
  */
-/datum/controller/subsystem/mapping/proc/rebuild_level_multiz(list/indices, turfs, transitions)
+/datum/controller/subsystem/mapping/proc/rebuild_multiz(list/indices)
 	if(!indices)
 		indices = list()
 		for(var/i in 1 to world.maxz)
 			indices += i
 	for(var/number in indices)
 		var/datum/map_level/L = ordered_levels[number]
-		if(transitions)
-			L.rebuild_transitions()
-		if(turfs)
-			L.rebuild_turfs()
+		rebuild_multiz_lookup(L.z_index)
+		L.rebuild_transitions()
+		L.rebuild_turfs()
 		CHECK_TICK
 
 //* Allocations & Deallocations * //
@@ -122,12 +73,13 @@
  */
 /datum/controller/subsystem/mapping/proc/allocate_level(datum/map_level/level_or_path = /datum/map_level, rebuild)
 	RETURN_TYPE(/datum/map_level)
-	UNTIL(!load_mutex)
-	load_mutex = TRUE
-	. = _allocate_level(arglist(args))
-	load_mutex = FALSE
+	UNTIL(!map_system_mutex)
+	map_system_mutex = TRUE
+	. = allocate_level_impl(arglist(args))
+	map_system_mutex = FALSE
 
-/datum/controller/subsystem/mapping/proc/_allocate_level(datum/map_level/level_or_path = /datum/map_level, rebuild)
+/datum/controller/subsystem/mapping/proc/allocate_level_impl(datum/map_level/level_or_path = /datum/map_level, rebuild)
+	PRIVATE_PROC(TRUE)
 	RETURN_TYPE(/datum/map_level)
 	if(ispath(level_or_path))
 		level_or_path = new level_or_path
@@ -144,9 +96,6 @@
 		while(keyed_levels[level_or_path.id])
 	ASSERT(!keyed_levels[level_or_path.id])
 	keyed_levels[level_or_path.id] = level_or_path
-	if(level_or_path.hardcoded)
-		ASSERT(!typed_levels[level_or_path.type])
-		typed_levels[level_or_path.type] = level_or_path
 
 	// allocate the zlevel for the level
 	var/z_index = allocate_z_index()
@@ -223,16 +172,16 @@
  * @return loaded context, or null on failw
  */
 /datum/controller/subsystem/mapping/proc/load_level(datum/map_level/instance, rebuild, center, crop, list/deferred_callbacks, datum/dmm_context/context, defer_context, orientation, list/area_cache)
-	UNTIL(!load_mutex)
-	load_mutex = TRUE
-	. = _load_level(arglist(args))
-	load_mutex = FALSE
+	UNTIL(!map_system_mutex)
+	map_system_mutex = TRUE
+	. = load_level_impl(arglist(args))
+	map_system_mutex = FALSE
 
-/datum/controller/subsystem/mapping/proc/_load_level(datum/map_level/instance, rebuild, center, crop, list/deferred_callbacks, datum/dmm_context/context, defer_context, orientation, list/area_cache)
+/datum/controller/subsystem/mapping/proc/load_level_impl(datum/map_level/instance, rebuild, center, crop, list/deferred_callbacks, datum/dmm_context/context, defer_context, orientation, list/area_cache)
 	PRIVATE_PROC(TRUE)
 
 	// allocate a level for the map
-	instance = _allocate_level(instance, FALSE)
+	instance = allocate_level_impl(instance, FALSE)
 	ASSERT(!isnull(instance))
 	ASSERT(instance.id)
 
@@ -320,7 +269,8 @@
  *
  * if a level is loading with traits included, this is called per trait after load.
  */
-/datum/controller/subsystem/mapping/proc/on_trait_add(datum/map_level/level, trait)
+/datum/controller/subsystem/mapping/proc/on_level_trait_add(datum/map_level/level, trait)
+	#warn hook
 	return
 
 /**
@@ -328,7 +278,8 @@
  *
  * if a level is being deleted with traits on it, this is called per trait prior to delete.
  */
-/datum/controller/subsystem/mapping/proc/on_trait_del(datum/map_level/level, trait)
+/datum/controller/subsystem/mapping/proc/on_level_trait_del(datum/map_level/level, trait)
+	#warn hook
 	return
 
 /**
@@ -336,7 +287,8 @@
  *
  * if a level is loading with attribute included, this is called per attribute after load with an old_value of null.
  */
-/datum/controller/subsystem/mapping/proc/on_attribute_set(datum/map_level/level, attribute, old_value, new_value)
+/datum/controller/subsystem/mapping/proc/on_level_attribute_set(datum/map_level/level, attribute, old_value, new_value)
+	#warn hook
 	return
 
 /**
