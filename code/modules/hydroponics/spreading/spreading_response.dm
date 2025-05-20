@@ -14,7 +14,7 @@
 			entangle(M)
 
 
-/obj/effect/plant/proc/attack_mob(mob/living/M,base_damage)
+/obj/effect/plant/proc/legacy_mob_melee_hook(mob/living/M,base_damage)
 	var/target_zone
 	if(M.lying)
 		target_zone = ran_zone()

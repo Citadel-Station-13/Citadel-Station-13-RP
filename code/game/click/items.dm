@@ -182,7 +182,7 @@
  *
  * @return clickchain flags to append
  */
-/obj/item/proc/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
+/obj/item/proc/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
 	PROTECTED_PROC(TRUE)	// route via standard_melee_attack please.
 	//? legacy: for now no attacking nonliving
 	if(!isliving(target))
