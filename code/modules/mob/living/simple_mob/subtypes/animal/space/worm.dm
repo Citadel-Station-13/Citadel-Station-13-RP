@@ -12,7 +12,7 @@
 
 	maxHealth = 200
 	health = 200
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 	movement_sound = 'sound/effects/sand_step.ogg'
 
 	iff_factions = MOB_IFF_FACTION_WORM
@@ -164,9 +164,10 @@
 	open_maw = state
 	if(open_maw)
 		time_maw_opened = world.time
-		movement_cooldown = initial(movement_cooldown) + 1.5
+		movement_base_speed = movement_base_speed - 1.5
 	else
-		movement_cooldown = initial(movement_cooldown)
+		movement_base_speed = initial(movement_base_speed)
+	update_movespeed_base()
 	update_icon()
 
 /mob/living/simple_mob/animal/space/space_worm/death()

@@ -35,7 +35,7 @@
 
 	universal_understand = 1
 
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 
 	legacy_melee_damage_lower = 5
 	legacy_melee_damage_upper = 15
