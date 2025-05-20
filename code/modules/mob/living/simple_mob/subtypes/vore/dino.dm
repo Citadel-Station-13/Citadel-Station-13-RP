@@ -18,7 +18,7 @@
 	response_help = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm = "hits"
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 	harm_intent_damage = 5
 	legacy_melee_damage_lower = 5
 	legacy_melee_damage_upper = 12

@@ -22,7 +22,6 @@
 
 	vision_innate = /datum/vision/baseline/species_tier_3
 	vision_organ = O_EYES
-	slowdown      = -0.2  //scuttly, but not as scuttly as a tajara or a teshari.
 	brute_mod     = 0.8   //About as tanky to brute as a Unathi. They'll probably snap and go feral when hurt though.
 	burn_mod      = 1.15  //As vulnerable to burn as a Tajara.
 	radiation_mod = 1.15  //To help simulate the volatility of a living 'viral' cluster.
@@ -40,6 +39,7 @@
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_The_Xenochimera"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/xenochimera)
 
+	movement_base_speed = 5.5
 	hazard_low_pressure = -1 //Prevents them from dying normally in space. Special code handled below.
 
 	cold_level_1 = -1 // All cold debuffs are handled below in handle_environment_special

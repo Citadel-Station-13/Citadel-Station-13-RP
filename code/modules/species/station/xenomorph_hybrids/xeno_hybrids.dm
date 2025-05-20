@@ -74,13 +74,13 @@
 	vision_innate = /datum/vision/baseline/species_tier_2
 	hunger_factor = 0.1 //In exchange, they get hungry a tad faster.
 
-	slowdown = -0.2//Speedboost Tesh have -0.5
-
 	warning_low_pressure = 30//lower than baseline
 	hazard_low_pressure = -1//Vacuum proof
 
 	warning_high_pressure = 325//Both baseline
 	hazard_high_pressure = 550
+
+	movement_base_speed = 5.5
 
 	//Doesnt work, defaults are set at checks
 	//breath_type = null	//they don't breathe
