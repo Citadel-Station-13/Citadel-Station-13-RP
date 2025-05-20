@@ -15,7 +15,7 @@
 /obj/item/melee/cultblade/cultify()
 	return
 
-/obj/item/melee/cultblade/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/melee/cultblade/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(iscultist(user) && !istype(user, /mob/living/simple_mob/construct))
 		return ..()
 	if(!isliving(user))

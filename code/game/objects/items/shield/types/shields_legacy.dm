@@ -49,10 +49,10 @@
 	. = ..()
 	embedded_flash = new(src)
 
-/obj/item/shield/riot/flash/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/shield/riot/flash/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
-	return embedded_flash.attack_mob(arglist(args))
+	return embedded_flash.legacy_mob_melee_hook(arglist(args))
 
 /obj/item/shield/riot/flash/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()

@@ -69,7 +69,7 @@
 
 	update_icon()
 
-/obj/item/multitool/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/multitool/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(is_holosphere_shell(target) && user.a_intent == INTENT_HELP)
 		var/mob/living/simple_mob/holosphere_shell/shell = target
 		// can't revive them if they are not dead
