@@ -19,7 +19,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	/// damage mode flags
 	var/damage_mode = NONE
 	/// damage tier
-	var/damage_tier = MELEE_TIER_DEFAULT
+	var/damage_tier = 2
 	/// damage type
 	var/damage_type = DAMAGE_TYPE_BRUTE
 	/// damage flag
@@ -56,6 +56,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	var/attack_verb_legacy = list("attack")	// Empty hand hurt intent verb.
 	var/attack_noun = list("fist")
 	var/infected_wound_probability = 10
+	var/attack_name = "fist"
 
 	var/sparring_variant_type = /datum/melee_attack/unarmed/light_strike
 
@@ -250,158 +251,3 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 		to_chat(target, "<span class='danger'>You experience[(eye_pain) ? "" : " immense pain as you feel" ] [eye_attack_text_victim] being pressed into your [eyes.name][(eye_pain)? "." : "!"]</span>")
 		return
 	user.visible_message("<span class='danger'>[user] attempts to press [TU.his] [eye_attack_text] into [target]'s eyes, but [TT.he] [TT.does]n't have any!</span>")
-
-/datum/melee_attack/unarmed/bite
-	verb_past_participle = list("bitten")
-	attack_verb_legacy = list("bit")
-	attack_sound = 'sound/weapons/bite.ogg'
-	damage = 3
-	damage_mode = NONE
-
-/datum/melee_attack/unarmed/bite/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
-
-	if (user.is_muzzled())
-		return 0
-	if (user == target && (zone == BP_HEAD || zone == O_EYES || zone == O_MOUTH))
-		return 0
-	return TRUE
-
-/datum/melee_attack/unarmed/punch
-	verb_past_participle = list("punched")
-	attack_verb_legacy = list("punched")
-	attack_noun = list("fist")
-	eye_attack_text = "fingers"
-	eye_attack_text_victim = "digits"
-	damage_add_low = 0
-	damage_add_high = 5
-
-/datum/melee_attack/unarmed/punch/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
-	var/obj/item/organ/external/affecting = target.get_organ(zone)
-	var/organ = affecting.name
-
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	var/datum/gender/TT = GLOB.gender_datums[target.get_visible_gender()]
-
-	attack_damage = clamp(attack_damage - 5, 1, 5) // We expect damage input of 1 to 5 for this proc. But we leave this check juuust in case.
-
-	if(target == user)
-		user.visible_message("<span class='danger'>[user] [pick(attack_verb_legacy)] [TU.himself] in the [organ]!</span>")
-		return 0
-
-	if(!target.lying)
-		switch(zone)
-			if(BP_HEAD, O_MOUTH, O_EYES)
-				// ----- HEAD ----- //
-				switch(attack_damage)
-					if(1 to 2)
-						user.visible_message("<span class='danger'>[user] slapped [target] across [TT.his] cheek!</span>")
-					if(3 to 4)
-						user.visible_message(pick(
-							40; "<span class='danger'>[user] [pick(attack_verb_legacy)] [target] in the head!</span>",
-							30; "<span class='danger'>[user] struck [target] in the head[pick("", " with a closed fist")]!</span>",
-							30; "<span class='danger'>[user] threw a hook against [target]'s head!</span>"
-							))
-					if(5)
-						user.visible_message(pick(
-							30; "<span class='danger'>[user] gave [target] a resounding [pick("slap", "punch")] to the face!</span>",
-							40; "<span class='danger'>[user] smashed [TU.his] [pick(attack_noun)] into [target]'s face!</span>",
-							30; "<span class='danger'>[user] gave a strong blow against [target]'s jaw!</span>"
-							))
-			else
-				// ----- BODY ----- //
-				switch(attack_damage)
-					if(1 to 2)	user.visible_message("<span class='danger'>[user] threw a glancing punch at [target]'s [organ]!</span>")
-					if(1 to 4)	user.visible_message("<span class='danger'>[user] [pick(attack_verb_legacy)] [target] in [TT.his] [organ]!</span>")
-					if(5)
-						user.visible_message(pick(
-							50; "<span class='danger'>[user] smashed [TU.his] [pick(attack_noun)] into [target]'s [organ]!</span>",
-							50; "<span class='danger'>[user] landed a striking [pick(attack_noun)] on [target]'s [organ]!</span>"
-							))
-	else
-		user.visible_message("<span class='danger'>[user] [pick("punched", "threw a punch against", "struck", "slammed [TU.his] [pick(attack_noun)] into")] [target]'s [organ]!</span>") //why do we have a separate set of verbs for lying targets?
-
-/datum/melee_attack/unarmed/kick
-	verb_past_participle = list("kicked")
-	attack_verb_legacy = list("kicked", "kicked", "kicked", "kneed")
-	attack_noun = list("kick", "kick", "kick", "knee strike")
-	attack_sound = "swing_hit"
-	damage_add_low = 0
-	damage_add_high = 5
-
-/datum/melee_attack/unarmed/kick/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
-	if (user.legcuffed)
-		return FALSE
-
-	if(!(zone in list("l_leg", "r_leg", "l_foot", "r_foot", BP_GROIN)))
-		return FALSE
-
-	var/obj/item/organ/external/E = user.organs_by_name["l_foot"]
-	if(E && !E.is_stump())
-		return TRUE
-
-	E = user.organs_by_name["r_foot"]
-	if(E && !E.is_stump())
-		return TRUE
-
-	return FALSE
-
-/datum/melee_attack/unarmed/kick/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
-	var/obj/item/organ/external/affecting = target.get_organ(zone)
-	var/datum/gender/TT = GLOB.gender_datums[target.get_visible_gender()]
-	var/organ = affecting.name
-
-	attack_damage = clamp(attack_damage - 5, 1, 5)
-
-	switch(attack_damage)
-		if(1 to 2)	user.visible_message("<span class='danger'>[user] threw [target] a glancing [pick(attack_noun)] to the [organ]!</span>") //it's not that they're kicking lightly, it's that the kick didn't quite connect
-		if(3 to 4)	user.visible_message("<span class='danger'>[user] [pick(attack_verb_legacy)] [target] in [TT.his] [organ]!</span>")
-		if(5)		user.visible_message("<span class='danger'>[user] landed a strong [pick(attack_noun)] against [target]'s [organ]!</span>")
-
-/datum/melee_attack/unarmed/stomp
-	verb_past_participle = list("stomped")
-	attack_verb_legacy = list("stomped")
-	attack_noun = list("stomp")
-	attack_sound = "swing_hit"
-	damage_add_low = 0
-	damage_add_high = 5
-
-/datum/melee_attack/unarmed/stomp/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
-
-	if (user.legcuffed)
-		return FALSE
-
-	if(!istype(target))
-		return FALSE
-
-	if (!user.lying && (target.lying || (zone in list("l_foot", "r_foot"))))
-		if(target.grabbed_by == user && target.lying)
-			return FALSE
-		var/obj/item/organ/external/E = user.organs_by_name["l_foot"]
-		if(E && !E.is_stump())
-			return TRUE
-
-		E = user.organs_by_name["r_foot"]
-		if(E && !E.is_stump())
-			return TRUE
-
-		return FALSE
-
-/datum/melee_attack/unarmed/stomp/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
-	var/obj/item/organ/external/affecting = target.get_organ(zone)
-	var/organ = affecting.name
-	var/obj/item/clothing/shoes = user.shoes
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-
-	attack_damage = clamp(attack_damage - 5, 1, 5)
-
-	switch(attack_damage)
-		if(1 to 4)	user.visible_message("<span class='danger'>[pick("[user] stomped on", "[user] slammed [TU.his] [shoes ? copytext(shoes.name, 1, -1) : "foot"] down onto")] [target]'s [organ]!</span>")
-		if(5)		user.visible_message("<span class='danger'>[pick("[user] landed a powerful stomp on", "[user] stomped down hard on", "[user] slammed [TU.his] [shoes ? copytext(shoes.name, 1, -1) : "foot"] down hard onto")] [target]'s [organ]!</span>") //Devastated lol. No. We want to say that the stomp was powerful or forceful, not that it /wrought devastation/
-
-/datum/melee_attack/unarmed/light_strike
-	verb_past_participle = list("lightly struck")
-	attack_noun = list("tap","light strike")
-	attack_verb_legacy = list("tapped", "lightly struck")
-	damage = 5
-	damage_mode = NONE
-	damage_type = DAMAGE_TYPE_HALLOSS

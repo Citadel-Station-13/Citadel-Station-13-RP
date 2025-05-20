@@ -3,12 +3,12 @@
 
 /datum/armor/object/default
 	melee_deflect = 5
-	melee = 0.1
-	melee_tier = 2.25
+	melee = 0.235
+	melee_tier = 2.75
 
 /datum/armor/object/light
 	melee_deflect = 5
-	melee = 0.1
+	melee = 0.235
 	melee_tier = 2.25
 
 /datum/armor/object/medium

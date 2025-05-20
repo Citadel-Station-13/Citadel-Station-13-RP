@@ -1,4 +1,4 @@
-// todo: /obj/item/stun_baton
+// todo: /obj/item/stun_baton?
 /obj/item/melee/baton
 	name = "stunbaton"
 	desc = "A stun baton for incapacitating people with."
@@ -154,7 +154,7 @@
 			SPAN_WARNING("[target] has been prodded [affecting ? "in \the [affecting]" : ""] with [src] by [attacker]. Luckily it was off."),
 		)
 		return TRUE
-	powered_melee_impact(target, attacker, actor, use_target_zone)
+	powered_melee_impact(target, attacker, actor, use_target_zone, efficiency)
 	update_charge()
 	return TRUE
 

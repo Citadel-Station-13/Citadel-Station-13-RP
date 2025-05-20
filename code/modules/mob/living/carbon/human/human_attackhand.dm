@@ -173,34 +173,3 @@
 
 /mob/living/carbon/human/default_unarmed_attack_style()
 	return get_unarmed_attack() || ..()
-
-/datum/melee_attack/unarmed
-	var/attack_name = "fist"
-
-
-/datum/melee_attack/unarmed/bite
-	attack_name = "bite"
-/datum/melee_attack/unarmed/bite/sharp
-	attack_name = "sharp bite"
-/datum/melee_attack/unarmed/bite/strong
-	attack_name = "strong bite"
-/datum/melee_attack/unarmed/punch
-	attack_name = "punch"
-/datum/melee_attack/unarmed/kick
-	attack_name = "kick"
-/datum/melee_attack/unarmed/stomp
-	attack_name = "stomp"
-/datum/melee_attack/unarmed/stomp/weak
-	attack_name = "weak stomp"
-/datum/melee_attack/unarmed/light_strike
-	attack_name = "light hit"
-/datum/melee_attack/unarmed/diona
-	attack_name = "tendrils"
-/datum/melee_attack/unarmed/claws
-	attack_name = "claws"
-/datum/melee_attack/unarmed/claws/strong
-	attack_name = "strong claws"
-/datum/melee_attack/unarmed/slime_glomp
-	attack_name = "glomp"
-/datum/melee_attack/unarmed/bite/sharp/numbing
-	attack_name = "numbing bite"
