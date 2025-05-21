@@ -6,6 +6,10 @@ Atmosphere: Thin
 Weather: Sunny, little to no wind
 Lifesign: Multiple Fauna and humanoid life-signs detected."}
 	in_space = 0
-	icon_state = "globe"
+	//icon_state = "globe"
 	known = FALSE
-	color = "#BA9066"
+	//color = "#BA9066"
+	icon = 'icons/modules/overmap/huge_worlds.dmi'
+	bound_width = 96
+	bound_height = 96
+	icon_state = "Sand"

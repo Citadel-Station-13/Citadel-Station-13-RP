@@ -7,10 +7,10 @@
 [b][i]Notice[/i][/b]: RESTRICTED AREA, authorized personnel only"}
 	base = TRUE
 	icon = 'icons/modules/overmap/huge_worlds.dmi'
-	pixel_x = -48
-	pixel_y = -48
+	bound_width = 96
+	bound_height = 96
 	icon_state = "Rift"
-	color = "#5bbbd3"
+	//color = "#5bbbd3"
 	start_x = 15
 	start_y = 10
 	initial_generic_waypoints = list(
