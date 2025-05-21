@@ -140,3 +140,7 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 	. = ..()
 	var/datum/prototype/material/made_of = get_primary_material()
 	made_of?.place_sheet(where, 2)
+
+/obj/structure/wall_frame/proc/paint_stripe(new_paint)
+	stripe_color = new_paint
+	update_appearance()

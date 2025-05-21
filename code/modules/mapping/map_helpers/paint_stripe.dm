@@ -30,8 +30,7 @@
 	else
 		var/obj/structure/wall_frame/low_wall = locate() in loc
 		if(low_wall)
-			low_wall.stripe_color = color
-			low_wall.update_appearance()
+			low_wall.paint_stripe(color)
 			did_anything = TRUE
 
 	if(!did_anything)
