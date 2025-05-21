@@ -189,7 +189,9 @@
 	// SHOULD_NOT_OVERRIDE(TRUE) // may be re-evaluated later
 	if(isnull(actor))
 		actor = new /datum/event_args/actor(user)
-	SEND_SIGNAL(src, COMSIG_ITEM_ACTIVATE_INHAND, actor)
+	var/signal_return = SEND_SIGNAL(src, COMSIG_ITEM_ACTIVATE_INHAND, actor)
+	if(signal_return & RAISE_ITEM_ACTIVATE_INHAND_HANDLED)
+		return TRUE
 	if(on_attack_self(actor))
 		return TRUE
 	if(interaction_flags_item & INTERACT_ITEM_ATTACK_SELF)
@@ -236,7 +238,9 @@
 	SHOULD_NOT_OVERRIDE(TRUE) // may be re-evaluated later
 	if(ismob(actor))
 		actor = new /datum/event_args/actor(actor)
-	SEND_SIGNAL(src, COMSIG_ITEM_UNIQUE_ACTION, actor)
+	var/signal_return = SEND_SIGNAL(src, COMSIG_ITEM_UNIQUE_ACTION, actor)
+	if(signal_return & RAISE_ITEM_UNIQUE_ACTION_HANDLED)
+		return TRUE
 	if(on_unique_action(actor))
 		return TRUE
 
@@ -262,7 +266,9 @@
 	SHOULD_NOT_OVERRIDE(TRUE) // may be re-evaluated later
 	if(ismob(actor))
 		actor = new /datum/event_args/actor(actor)
-	SEND_SIGNAL(src, COMSIG_ITEM_DEFENSIVE_TOGGLE, actor)
+	var/signal_return = SEND_SIGNAL(src, COMSIG_ITEM_DEFENSIVE_TOGGLE, actor)
+	if(signal_return & RAISE_ITEM_DEFENSIVE_TOGGLE_HANDLED)
+		return TRUE
 	if(on_defensive_toggle(actor))
 		return TRUE
 
@@ -288,7 +294,9 @@
 	SHOULD_NOT_OVERRIDE(TRUE) // may be re-evaluated later
 	if(ismob(actor))
 		actor = new /datum/event_args/actor(actor)
-	SEND_SIGNAL(src, COMSIG_ITEM_DEFENSIVE_TRIGGER, actor)
+	var/signal_return = SEND_SIGNAL(src, COMSIG_ITEM_DEFENSIVE_TRIGGER, actor)
+	if(signal_return & RAISE_ITEM_DEFENSIVE_TRIGGER_HANDLED)
+		return TRUE
 	if(on_defensive_trigger(actor))
 		return TRUE
 

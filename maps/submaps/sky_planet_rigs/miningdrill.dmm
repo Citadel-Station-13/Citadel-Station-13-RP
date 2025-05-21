@@ -1,0 +1,686 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"b" = (
+/obj/structure/table/standard,
+/obj/item/clothing/suit/storage/tajaran/coat/finecoat,
+/turf/simulated/floor/preset/linoleum/indoors,
+/area/submap/skyplanet/poi/mining)
+"c" = (
+/obj/structure/table/rack/shelf/steel,
+/turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
+/area/submap/skyplanet/poi/mining)
+"d" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/mining)
+"e" = (
+/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/preset/linoleum/indoors,
+/area/submap/skyplanet/poi/mining)
+"f" = (
+/obj/structure/event/prop/excavation_drill,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/mining)
+"g" = (
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/mining)
+"h" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/wmarble,
+/area/submap/skyplanet/poi/mining)
+"k" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/mining)
+"l" = (
+/obj/effect/floor_decal/industrial/warning/dust,
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/mining)
+"n" = (
+/obj/structure/catwalk,
+/obj/structure/loot_pile/mecha/ripley,
+/turf/template_noop,
+/area/submap/skyplanet/poi/mining)
+"o" = (
+/obj/structure/bed,
+/obj/item/bedsheet/ce,
+/turf/simulated/floor/preset/linoleum/indoors,
+/area/submap/skyplanet/poi/mining)
+"p" = (
+/turf/simulated/wall/r_wall,
+/area/submap/skyplanet/poi/mining)
+"q" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
+/area/submap/skyplanet/poi/mining)
+"r" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/obj/machinery/shower{
+	dir = 8
+	},
+/turf/simulated/floor/wmarble,
+/area/submap/skyplanet/poi/mining)
+"s" = (
+/obj/effect/floor_decal/industrial/warning/dust,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/mining)
+"t" = (
+/obj/spawner/window/low_wall/reinforced/tinted,
+/turf/simulated/floor/preset/linoleum/indoors,
+/area/submap/skyplanet/poi/mining)
+"u" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/mining)
+"v" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/preset/linoleum/indoors,
+/area/submap/skyplanet/poi/mining)
+"w" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/preset/linoleum/indoors,
+/area/submap/skyplanet/poi/mining)
+"y" = (
+/turf/simulated/wall/r_wall,
+/area/template_noop)
+"z" = (
+/obj/structure/bed,
+/obj/item/bedsheet/ce,
+/obj/machinery/light,
+/turf/simulated/floor/preset/linoleum/indoors,
+/area/submap/skyplanet/poi/mining)
+"A" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/mining)
+"B" = (
+/obj/structure/table/steel,
+/obj/random/multiple/underdark/miningdrills,
+/turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
+/area/submap/skyplanet/poi/mining)
+"C" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/mining)
+"D" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/mining)
+"E" = (
+/obj/machinery/light,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
+/area/submap/skyplanet/poi/mining)
+"F" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/random/multiple/miningdrills,
+/turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
+/area/submap/skyplanet/poi/mining)
+"G" = (
+/obj/machinery/light,
+/turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
+/area/submap/skyplanet/poi/mining)
+"H" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/mining)
+"I" = (
+/obj/structure/catwalk,
+/turf/template_noop,
+/area/submap/skyplanet/poi/mining)
+"J" = (
+/turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
+/area/submap/skyplanet/poi/mining)
+"K" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
+/area/submap/skyplanet/poi/mining)
+"L" = (
+/obj/effect/floor_decal/industrial/warning/dust,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/mining)
+"M" = (
+/obj/structure/loot_pile/mecha/ripley,
+/obj/effect/floor_decal/industrial/warning/dust,
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/mining)
+"N" = (
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
+/area/submap/skyplanet/poi/mining)
+"O" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
+	},
+/obj/structure/event/prop/red_barrel,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/mining)
+"P" = (
+/obj/structure/event/prop/excavation_drill{
+	layer = 3.5
+	},
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/mining)
+"Q" = (
+/obj/effect/floor_decal/industrial/warning/dust,
+/obj/machinery/light,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/mining)
+"R" = (
+/turf/simulated/floor/preset/linoleum/indoors,
+/area/submap/skyplanet/poi/mining)
+"S" = (
+/obj/spawner/window/low_wall/reinforced/tinted,
+/turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
+/area/submap/skyplanet/poi/mining)
+"T" = (
+/obj/structure/catwalk,
+/turf/template_noop,
+/area/template_noop)
+"V" = (
+/obj/structure/table/standard,
+/obj/item/clothing/suit/storage/tajaran/jacket,
+/turf/simulated/floor/preset/linoleum/indoors,
+/area/submap/skyplanet/poi/mining)
+"W" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 1
+	},
+/obj/structure/event/prop/terminal1,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/mining)
+"X" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 1
+	},
+/obj/structure/event/prop/processor1,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/mining)
+"Z" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/wmarble,
+/area/submap/skyplanet/poi/mining)
+
+(1,1,1) = {"
+y
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+y
+"}
+(2,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(3,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+T
+T
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(4,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+T
+T
+T
+T
+T
+T
+a
+a
+a
+a
+a
+a
+a
+"}
+(5,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+I
+I
+I
+n
+I
+I
+a
+a
+a
+a
+a
+a
+a
+"}
+(6,1,1) = {"
+a
+a
+a
+a
+a
+p
+p
+p
+D
+C
+C
+l
+p
+p
+p
+a
+a
+a
+a
+a
+"}
+(7,1,1) = {"
+a
+a
+a
+a
+p
+K
+K
+q
+d
+g
+g
+s
+p
+Z
+r
+p
+a
+a
+a
+a
+"}
+(8,1,1) = {"
+a
+a
+a
+p
+F
+K
+G
+p
+H
+g
+g
+Q
+p
+h
+p
+p
+p
+a
+a
+a
+"}
+(9,1,1) = {"
+a
+a
+a
+p
+J
+J
+K
+p
+d
+u
+u
+s
+p
+v
+R
+z
+p
+a
+a
+a
+"}
+(10,1,1) = {"
+a
+a
+a
+S
+J
+N
+K
+p
+A
+f
+P
+L
+p
+V
+R
+o
+t
+a
+a
+a
+"}
+(11,1,1) = {"
+a
+a
+a
+S
+K
+B
+K
+p
+A
+f
+P
+L
+p
+b
+R
+o
+t
+a
+a
+a
+"}
+(12,1,1) = {"
+a
+a
+a
+p
+K
+K
+K
+p
+d
+u
+u
+s
+p
+e
+R
+z
+p
+a
+a
+a
+"}
+(13,1,1) = {"
+a
+a
+a
+p
+c
+K
+E
+p
+X
+g
+g
+Q
+p
+R
+R
+p
+p
+a
+a
+a
+"}
+(14,1,1) = {"
+a
+a
+a
+a
+p
+J
+J
+p
+W
+g
+g
+s
+w
+R
+p
+p
+a
+a
+a
+a
+"}
+(15,1,1) = {"
+a
+a
+a
+a
+a
+p
+p
+p
+O
+k
+k
+M
+p
+p
+p
+a
+a
+a
+a
+a
+"}
+(16,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+I
+n
+I
+I
+I
+I
+a
+a
+a
+a
+a
+a
+a
+"}
+(17,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+T
+T
+T
+T
+T
+T
+a
+a
+a
+a
+a
+a
+a
+"}
+(18,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+T
+T
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(19,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(20,1,1) = {"
+y
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+y
+"}

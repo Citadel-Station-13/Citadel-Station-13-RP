@@ -19,10 +19,6 @@
 	/// Do we hide the contents on examine?
 	var/contents_hidden = FALSE
 
-/obj/item/folder/suicide_act(mob/living/user)
-	user.visible_message(SPAN_SUICIDE("[user] begins filing an imaginary death warrant! It looks like [user.p_theyre()] trying to commit suicide!"))
-	return OXYLOSS
-
 /obj/item/folder/Initialize(mapload)
 	update_icon()
 	. = ..()

@@ -213,11 +213,11 @@
 /obj/vehicle/sealed/mecha/combat/fighter/baron/loaded/busted
 /*
 	starting_components = list(
-		/obj/item/mecha_parts/component/hull/lightweight,
-		/obj/item/mecha_parts/component/actuator/hispeed,
-		/obj/item/mecha_parts/component/armor,
-		/obj/item/mecha_parts/component/gas,
-		/obj/item/mecha_parts/component/electrical/high_current
+		/obj/item/vehicle_component/hull/lightweight,
+		/obj/item/vehicle_component/actuator/hispeed,
+		/obj/item/vehicle_component/armor,
+		/obj/item/vehicle_component/gas,
+		/obj/item/vehicle_component/electrical/high_current
 		)
 
 /obj/vehicle/sealed/mecha/combat/fighter/baron/loaded/busted/Initialize(mapload)
@@ -225,7 +225,7 @@
 	health = round(rand(50,120))
 	cell?.charge = 0
 	for(var/slot in internal_components)
-		var/obj/item/mecha_parts/component/comp = internal_components[slot]
+		var/obj/item/vehicle_component/comp = internal_components[slot]
 		if(!istype(comp))
 			continue
 		comp.adjust_integrity_mecha(-(round(rand(comp.integrity_max - 10, 0))))

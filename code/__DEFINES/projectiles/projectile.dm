@@ -113,6 +113,13 @@ DEFINE_BITFIELD_NEW(projectile_types, list(
 	BITFIELD_NEW("Flag - Exotic Energy / Matter", PROJECTILE_TYPE_EXOTIC),
 ))
 
+//* /obj/projectile impact_sound *//
+
+/// lasers, etc
+#define PROJECTILE_IMPACT_SOUNDS_ENERGY "ablate"
+/// bullets, etc
+#define PROJECTILE_IMPACT_SOUNDS_KINETIC "kinetic"
+
 //* helpers *//
 
 /// tiles per second to pixels per decisecond

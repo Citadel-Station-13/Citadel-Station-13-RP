@@ -50,6 +50,12 @@
 		decay_timer = null
 	return ..()
 
+/**
+ * Called on tick
+ *
+ * @params
+ * * dt - seconds elapsed
+ */
 /datum/status_effect/proc/tick(dt)
 	SHOULD_NOT_SLEEP(TRUE)
 

@@ -1,21 +1,3 @@
-//? lathe_type bitfield
-
-#define LATHE_TYPE_AUTOLATHE (1<<0)
-#define LATHE_TYPE_PROTOLATHE (1<<1)
-#define LATHE_TYPE_CIRCUIT (1<<2)
-#define LATHE_TYPE_PROSTHETICS (1<<3)
-#define LATHE_TYPE_MECHA (1<<4)
-#define LATHE_TYPE_BIOPRINTER (1<<5)
-
-DEFINE_BITFIELD(lathe_type, list(
-	BITFIELD(LATHE_TYPE_AUTOLATHE),
-	BITFIELD(LATHE_TYPE_PROTOLATHE),
-	BITFIELD(LATHE_TYPE_CIRCUIT),
-	BITFIELD(LATHE_TYPE_PROSTHETICS),
-	BITFIELD(LATHE_TYPE_MECHA),
-	BITFIELD(LATHE_TYPE_BIOPRINTER),
-))
-
 //? design_unlock bitfield
 
 /// any lathe that can print us should have us always
@@ -75,6 +57,7 @@ DEFINE_BITFIELD(design_flags, list(
 
 //munition subcategories
 #define DESIGN_SUBCATEGORY_BALLISTIC "Ballistic"
+#define DESIGN_SUBCATEGORY_MAGNETIC "Magnetic"
 #define DESIGN_SUBCATEGORY_ENERGY "Energy"
 #define DESIGN_SUBCATEGORY_MELEE "Melee"
 #define DESIGN_SUBCATEGORY_AMMO "Ammo"
@@ -103,3 +86,56 @@ DEFINE_BITFIELD(design_flags, list(
 //science subcategories
 #define DESIGN_SUBCATEGORY_XENOBIOLOGY "Xenobiology"
 #define DESIGN_SUBCATEGORY_XENOARCHEOLOGY "Xenoarcheology"
+
+//* Design Helpers - Generic *//
+
+/**
+ * Generate a design for an entity.
+ *
+ * * Design path is appended to `/datum/prototype/design/generated`.
+ */
+#define GENERATE_DESIGN(ENTITY_PATH, DESIGN_PATH, DESIGN_ID) \
+/datum/prototype/design/generated##DESIGN_PATH { \
+	id = DESIGN_ID; \
+	build_path = ENTITY_PATH; \
+}; \
+/datum/prototype/design/generated##DESIGN_PATH
+
+//* Design Helpers - For a specific lathe *//
+
+/**
+ * Generates for all lathes.
+ * * Implicitly allows protolathes to build it.
+ */
+#define GENERATE_DESIGN_FOR_AUTOLATHE(ENTITY_PATH, DESIGN_PATH, DESIGN_ID) \
+GENERATE_DESIGN(ENTITY_PATH, DESIGN_PATH, DESIGN_ID); \
+/datum/prototype/design/generated##DESIGN_PATH { \
+	lathe_type = LATHE_TYPE_AUTOLATHE | LATHE_TYPE_PROTOLATHE; \
+}; \
+/datum/prototype/design/generated##DESIGN_PATH
+
+/**
+ * Generates for protolathes.
+ */
+#define GENERATE_DESIGN_FOR_PROTOLATHE(ENTITY_PATH, DESIGN_PATH, DESIGN_ID) \
+GENERATE_DESIGN(ENTITY_PATH, DESIGN_PATH, DESIGN_ID); \
+/datum/prototype/design/generated##DESIGN_PATH { \
+	lathe_type = LATHE_TYPE_PROTOLATHE; \
+}; \
+/datum/prototype/design/generated##DESIGN_PATH
+
+//* Design Helpers - For a specific lathe & faction *//
+
+/**
+ * Generates for Nanotrasen-standard autolathes. In the future, we might have flags
+ * for what factions get it automatically.
+ */
+#define GENERATE_DESIGN_FOR_NT_AUTOLATHE(ENTITY_PATH, DESIGN_PATH, DESIGN_ID) \
+GENERATE_DESIGN_FOR_AUTOLATHE(ENTITY_PATH, DESIGN_PATH, DESIGN_ID)
+
+/**
+ * Generates for Nanotrasen-standard protolathes. In the future, we might have flags
+ * for what factions get it automatically.
+ */
+#define GENERATE_DESIGN_FOR_NT_PROTOLATHE(ENTITY_PATH, DESIGN_PATH, DESIGN_ID) \
+GENERATE_DESIGN_FOR_PROTOLATHE(ENTITY_PATH, DESIGN_PATH, DESIGN_ID)

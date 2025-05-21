@@ -4,6 +4,7 @@
 //* /obj/item/ammo_casing casing_flags *//
 
 /// delete after fire (usually for caseless)
+//  todo: audit where we actually check this; this shouldn't be handled by the gun.
 #define CASING_DELETE (1<<0)
 /// we're modified; otherwise, we assume that our type alone is enough to encode our information.
 /// you must change this if var-changing a casing, or it might get deleted when it enters a magazine!

@@ -383,7 +383,7 @@
 		state = GRAB_KILL
 		assailant.visible_message("<span class='danger'>[assailant] has tightened [TU.his] grip on [affecting]'s neck!</span>")
 		add_attack_logs(assailant,affecting,"Strangled")
-		affecting.setClickCooldown(10)
+		affecting.setClickCooldownLegacy(10)
 		affecting.AdjustLosebreath(1)
 		affecting.setDir(WEST)
 	adjust_position()
@@ -401,7 +401,7 @@
 
 	return 1
 
-/obj/item/grab/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/grab/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(QDELETED(src))
 		return
 	if(!affecting)

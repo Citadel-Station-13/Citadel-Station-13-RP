@@ -1021,7 +1021,7 @@
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck2/starboard_fore)
 "aIF" = (
-/obj/machinery/mineral/equipment_vendor/engineering,
+/obj/machinery/point_redemption_vendor/engineering,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "aIM" = (
@@ -10228,7 +10228,7 @@
 /area/main_map/maintenance/deck_two/forward/port)
 "hyB" = (
 /obj/structure/bed/chair/sofa/black/corner{
-	dir = 1
+	dir = 4
 	},
 /obj/effect/floor_decal/techfloor{
 	dir = 9
@@ -11738,7 +11738,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay)
 "iKu" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/rift/station/fighter_bay)
 "iKz" = (
@@ -30648,7 +30648,7 @@
 "wCb" = (
 /obj/structure/bed/chair/sofa/black/corner,
 /obj/machinery/light/no_nightshift{
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/security/observation)

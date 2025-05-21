@@ -24,7 +24,8 @@
 	. += "<span class = 'notice'>[charging ? "[charging]" : "Nothing"] is in [src].</span>"
 	if(charging)
 		var/obj/item/cell/C = charging.get_cell()
-		. += "<span class = 'notice'>Current charge: [C.charge] / [C.maxcharge]</span>"
+		if(C)
+			. += "<span class = 'notice'>Current charge: [C.charge] / [C.maxcharge]</span>"
 
 /obj/machinery/recharger/attackby(obj/item/G, mob/user)
 	var/allowed = FALSE
@@ -67,14 +68,14 @@
 				return
 		else if(istype(G, /obj/item/ammo_magazine/microbattery))
 			var/obj/item/ammo_magazine/microbattery/maggy = G
-			if(!maggy.amount_remaining())
+			if(!maggy.get_amount_remaining())
 				to_chat(user, "\The [G] does not have any cells installed.")
 				return
 		else if(istype(G, /obj/item/gun/projectile/ballistic/microbattery))
 			var/obj/item/gun/projectile/ballistic/microbattery/gunny = G
-			if(gunny.ammo_magazine)
-				var/obj/item/ammo_magazine/microbattery/maggy = gunny.ammo_magazine
-				if(!maggy.amount_remaining())
+			if(gunny.magazine)
+				var/obj/item/ammo_magazine/microbattery/maggy = gunny.magazine
+				if(!maggy.get_amount_remaining())
 					to_chat(user, "\The [G] does not have any cell in its magazine installed.")
 					return
 			else
@@ -167,13 +168,13 @@
 		// NSFW Batteries
 		else if(istype(charging, /obj/item/ammo_casing/microbattery))
 			var/obj/item/ammo_casing/microbattery/batt = charging
-			if(batt.shots_left >= initial(batt.shots_left))
-				batt.shots_left = initial(batt.shots_left)
+			if(batt.shots_remaining >= batt.shots_capacity)
+				batt.shots_remaining = batt.shots_capacity
 				icon_state = icon_state_charged
 				update_use_power(USE_POWER_IDLE)
 			else
 				icon_state = icon_state_charging
-				batt.shots_left++
+				batt.shots_remaining++
 				update_use_power(USE_POWER_ACTIVE)
 			return
 
@@ -182,14 +183,14 @@
 
 		else if(istype(charging, /obj/item/gun/projectile/ballistic/microbattery))
 			var/obj/item/gun/projectile/ballistic/microbattery/gunny = charging
-			charge_mag(gunny.ammo_magazine)
+			charge_mag(gunny.magazine)
 
 /obj/machinery/recharger/proc/charge_mag(obj/item/ammo_magazine/microbattery/maggy)
-	var/tally = maggy.amount_remaining()
+	var/tally = maggy.get_amount_remaining()
 	for(var/obj/item/ammo_casing/microbattery/batt in maggy)
-		if(batt.shots_left < initial(batt.shots_left))
+		if(batt.shots_remaining < batt.shots_capacity)
 			icon_state = icon_state_charging
-			batt.shots_left++
+			batt.shots_remaining++
 			update_use_power(USE_POWER_ACTIVE)
 		else
 			tally -= 1
@@ -231,7 +232,7 @@
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	base_power_draw = 30000
-	allowed_devices = list(/obj/item/gun/projectile/energy, /obj/item/gun/magnetic, /obj/item/melee/baton, /obj/item/flashlight, /obj/item/cell/device, /obj/item/ammo_casing/microbattery, /obj/item/ammo_magazine/microbattery, /obj/item/gun/projectile/ballistic/microbattery)
+	allowed_devices = list(/obj/item/gun/projectile/energy, /obj/item/gun/projectile/magnetic, /obj/item/melee/baton, /obj/item/flashlight, /obj/item/cell/device, /obj/item/ammo_casing/microbattery, /obj/item/ammo_magazine/microbattery, /obj/item/gun/projectile/ballistic/microbattery)
 	icon_state_charged = "wrecharger2"
 	icon_state_charging = "wrecharger1"
 	icon_state_idle = "wrecharger0"

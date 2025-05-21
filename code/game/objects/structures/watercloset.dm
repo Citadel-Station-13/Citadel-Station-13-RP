@@ -19,7 +19,7 @@
 
 /obj/structure/toilet/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(swirlie)
-		usr.setClickCooldown(user.get_attack_speed())
+		usr.setClickCooldownLegacy(user.get_attack_speed_legacy())
 		usr.visible_message("<span class='danger'>[user] slams the toilet seat onto [swirlie.name]'s head!</span>", "<span class='notice'>You slam the toilet seat onto [swirlie.name]'s head!</span>", "You hear reverberating porcelain.")
 		swirlie.adjustBruteLoss(5)
 		return
@@ -58,7 +58,7 @@
 
 	if(istype(I, /obj/item/grab))
 		. = CLICKCHAIN_DO_NOT_PROPAGATE
-		user.setClickCooldown(user.get_attack_speed(I))
+		user.setClickCooldownLegacy(user.get_attack_speed_legacy(I))
 		var/obj/item/grab/G = I
 
 		if(isliving(G.affecting))
@@ -389,7 +389,7 @@
 	thing.update_icon()
 
 /obj/structure/sink/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-	if(!user.standard_hand_usability_check(src, e_args.hand_index, HAND_MANIPULATION_GENERAL))
+	if(!user.standard_hand_usability_check(src, e_args.using_hand_index, HAND_MANIPULATION_GENERAL))
 		return
 
 	if(isrobot(user) || isAI(user))

@@ -213,9 +213,16 @@
 
 
 /obj/machinery/porta_turret/proc/setup()
-	var/obj/item/gun/projectile/energy/E = installation	//All energy-based weapons are applicable
-	var/obj/projectile/P = initial(E.projectile_type)
-	//var/obj/item/ammo_casing/shottype = E.projectile_type
+	// TEMPORARY: shitty autodetection code, turrets should just fire with the actual gun
+	//            by proccing async_firing_cycle at some point but for now this is how it is
+	var/const/default_path = /obj/item/gun/projectile/energy/laser
+	var/const/default_projectile = /obj/projectile/beam/midlaser
+
+	var/obj/item/gun/projectile/energy/autodetect = installation || default_path
+	if(ispath(autodetect))
+		autodetect = new autodetect
+	var/datum/firemode/energy/autodetect_firemode = autodetect.firemode
+	var/obj/projectile/P = autodetect_firemode?.projectile_type || default_projectile
 
 	projectile = P
 	lethal_projectile = projectile
@@ -392,7 +399,7 @@
 					to_chat(user, "<span class='notice'>You remove the turret and salvage some components.</span>")
 					if(installation)
 						var/obj/item/gun/projectile/energy/Gun = new installation(loc)
-						Gun.power_supply.charge = gun_charge
+						Gun.obj_cell_slot.cell.charge = gun_charge
 						Gun.update_icon()
 					if(prob(50))
 						new /obj/item/stack/material/steel(loc, rand(1,4))

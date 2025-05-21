@@ -419,7 +419,7 @@
 				/obj/item/pda/clown,
 				/obj/item/clothing/mask/gas/clown_hat,
 				/obj/item/bikehorn,
-				/obj/item/toy/waterflower,
+				/obj/item/reagent_containers/spray/waterflower,
 				/obj/item/pen/crayon/rainbow,
 				/obj/structure/closet/crate
 			),
@@ -716,9 +716,9 @@
 				/obj/item/lightreplacer,
 				/obj/item/reagent_containers/spray/cleaner,
 				/obj/item/reagent_containers/glass/rag,
-				/obj/item/grenade/chem_grenade/cleaner,
-				/obj/item/grenade/chem_grenade/cleaner,
-				/obj/item/grenade/chem_grenade/cleaner,
+				/obj/item/grenade/simple/chemical/premade/cleaner,
+				/obj/item/grenade/simple/chemical/premade/cleaner,
+				/obj/item/grenade/simple/chemical/premade/cleaner,
 				/obj/structure/closet/crate/corporate/galaksi //GALAKSI JANITOR SUPPLIES
 			),
 			prob(5);list(
@@ -986,6 +986,8 @@
 				prob(80);/obj/structure/flora/grass/both,
 				prob(60);/obj/structure/flora/bush,
 				prob(40);/obj/structure/flora/tree/dead,
+				prob(40);/obj/structure/flora/snow_berry,
+				prob(40);/obj/structure/flora/taj_tuber,
 				prob(1);/obj/structure/snowman,
 				prob(1);/obj/structure/snowman/borg,
 				prob(1);/obj/structure/snowman/spider,

@@ -26,7 +26,7 @@
 
 	projectile_type = /obj/projectile/kinetic
 	charge_cost = 1200
-	battery_lock = TRUE
+	legacy_battery_lock = TRUE
 	fire_sound = 'sound/weapons/kenetic_accel.ogg'
 	render_use_legacy_by_default = FALSE
 	attachment_alignment = list(
@@ -50,15 +50,15 @@
 
 	var/recharge_timerid
 
-/obj/item/gun/projectile/energy/kinetic_accelerator/consume_next_projectile()
+/obj/item/gun/projectile/energy/kinetic_accelerator/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	if(overheat)
-		return
+		return GUN_FIRED_FAIL_EMPTY
 	. = ..()
 	if(.)
 		var/obj/projectile/P = .
 		modify_projectile(P)
 
-/obj/item/gun/projectile/energy/kinetic_accelerator/handle_post_fire(mob/user, atom/target, pointblank, reflex)
+/obj/item/gun/projectile/energy/kinetic_accelerator/on_firing_cycle_end(datum/gun_firing_cycle/cycle)
 	. = ..()
 	attempt_reload()
 
@@ -150,7 +150,7 @@
 
 /obj/item/gun/projectile/energy/kinetic_accelerator/equipped(mob/user, slot, flags)
 	. = ..()
-	if(power_supply.charge < charge_cost)
+	if(obj_cell_slot.cell.charge < charge_cost)
 		attempt_reload()
 
 /obj/item/gun/projectile/energy/kinetic_accelerator/dropped(mob/user, flags, atom/newLoc)
@@ -165,12 +165,12 @@
 		empty()
 
 /obj/item/gun/projectile/energy/kinetic_accelerator/proc/empty()
-	if(power_supply)
-		power_supply.use(power_supply.charge)
+	if(obj_cell_slot.cell)
+		obj_cell_slot.cell.use(obj_cell_slot.cell.charge)
 	update_icon()
 
 /obj/item/gun/projectile/energy/kinetic_accelerator/proc/attempt_reload(recharge_time)
-	if(!power_supply)
+	if(!obj_cell_slot.cell)
 		return
 	if(overheat)
 		return
@@ -188,7 +188,7 @@
 	return
 
 /obj/item/gun/projectile/energy/kinetic_accelerator/proc/reload()
-	power_supply.give(power_supply.maxcharge)
+	obj_cell_slot.cell.give(obj_cell_slot.cell.maxcharge)
 	// process_chamber()
 	// if(!suppressed)
 	playsound(src, 'sound/weapons/kenetic_reload.ogg', 60, 1)
@@ -199,7 +199,7 @@
 
 /obj/item/gun/projectile/energy/kinetic_accelerator/update_overlays()
 	. = ..()
-	if(overheat || (power_supply.charge == 0))
+	if(overheat || (obj_cell_slot.cell.charge == 0))
 		. += emptystate
 
 //Projectiles

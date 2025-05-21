@@ -10477,8 +10477,8 @@
 /area/ship/ghostship/hangar)
 "Dr" = (
 /obj/structure/table/standard,
-/obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster,
-/obj/item/mecha_parts/mecha_equipment/anticcw_armor_booster,
+/obj/item/vehicle_module/antiproj_armor_booster,
+/obj/item/vehicle_module/anticcw_armor_booster,
 /turf/simulated/floor/reinforced,
 /area/ship/ghostship/porthangar)
 "Du" = (
@@ -10750,7 +10750,7 @@
 /area/ship/ghostship/cabin2)
 "IQ" = (
 /obj/structure/table/standard,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/grenade/clusterbang,
+/obj/item/vehicle_module/weapon/ballistic/missile_rack/grenade/clusterbang,
 /turf/simulated/floor/reinforced,
 /area/ship/ghostship/porthangar)
 "IS" = (
@@ -10877,7 +10877,7 @@
 /area/ship/ghostship/cabin5)
 "Lp" = (
 /obj/structure/table/standard,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg,
+/obj/item/vehicle_module/weapon/ballistic/lmg,
 /turf/simulated/floor/reinforced,
 /area/ship/ghostship/porthangar)
 "Md" = (
@@ -11010,8 +11010,8 @@
 /area/ship/ghostship/hangar)
 "Pi" = (
 /obj/structure/table/standard,
-/obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster,
-/obj/item/mecha_parts/mecha_equipment/anticcw_armor_booster,
+/obj/item/vehicle_module/antiproj_armor_booster,
+/obj/item/vehicle_module/anticcw_armor_booster,
 /turf/simulated/floor/reinforced,
 /area/ship/ghostship/starboardhangar)
 "Pt" = (
@@ -11055,7 +11055,7 @@
 /area/ship/ghostship/hangar)
 "Qg" = (
 /obj/structure/table/standard,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/grenade/clusterbang,
+/obj/item/vehicle_module/weapon/ballistic/missile_rack/grenade/clusterbang,
 /turf/simulated/floor/reinforced,
 /area/ship/ghostship/starboardhangar)
 "Qo" = (
@@ -11416,7 +11416,7 @@
 /area/ship/ghostship/hangar)
 "XG" = (
 /obj/structure/table/standard,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg,
+/obj/item/vehicle_module/weapon/ballistic/lmg,
 /turf/simulated/floor/reinforced,
 /area/ship/ghostship/starboardhangar)
 "XH" = (

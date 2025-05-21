@@ -41,7 +41,7 @@
 				icon_state = "cutters_blue"
 				item_state = "cutters_blue"
 
-/obj/item/tool/wirecutters/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/tool/wirecutters/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/carbon/C = target
 	if(istype(C) && user.a_intent == INTENT_HELP && (C.handcuffed) && (istype(C.handcuffed, /obj/item/handcuffs/cable)))
 		usr.visible_message("\The [usr] cuts \the [C]'s restraints with \the [src]!",\

@@ -98,11 +98,6 @@
 	creator = null
 	return ..()
 
-/obj/item/melee/changeling/suicide_act(mob/user)
-	var/datum/gender/T = GLOB.gender_datums[user.get_visible_gender()]
-	user.visible_message("<span class='danger'>[user] is impaling [T.himself] with the [src.name]! It looks like [T.he] [T.is] trying to commit suicide.</span>")
-	return(BRUTELOSS)
-
 /obj/item/melee/changeling/process(delta_time)  //Stolen from ninja swords.
 	if(!creator || loc != creator || !creator.is_holding(src))
 		// Tidy up a bit.

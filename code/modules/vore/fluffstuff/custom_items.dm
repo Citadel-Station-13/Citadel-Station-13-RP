@@ -93,7 +93,7 @@
 	if(isliving(user))
 		user.visible_message("<span class='warning'>[user] waves their Banner around!</span>","<span class='warning'>You wave your Banner around.</span>")
 
-/obj/item/flag/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/flag/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
@@ -551,7 +551,7 @@
 	desc = "Seems absurd, doesn't it? Yet, here we are. Generally considered dangerous contraband unless the user has permission from Central Command."
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "hand_tele"
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_ILLEGAL = 7)
 
@@ -826,7 +826,7 @@
 
 	spk.set_up(5, 0, M)
 	spk.attach(M)
-	playsound(T, /datum/soundbyte/grouped/sparks, 50, 1)
+	playsound(T, /datum/soundbyte/sparks, 50, 1)
 	anim(T,M,'icons/mob/mob.dmi',,"phaseout",,M.dir)
 
 /obj/item/perfect_tele/proc/phase_in(var/mob/M,var/turf/T)
@@ -836,7 +836,7 @@
 
 	spk.start()
 	playsound(T, 'sound/effects/phasein.ogg', 25, 1)
-	playsound(T, /datum/soundbyte/grouped/sparks, 50, 1)
+	playsound(T, /datum/soundbyte/sparks, 50, 1)
 	anim(T,M,'icons/mob/mob.dmi',,"phasein",,M.dir)
 	spk.set_up(5, 0, src)
 	spk.attach(src)
@@ -847,7 +847,7 @@
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "motion2"
 	w_class = WEIGHT_CLASS_TINY
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 
 	var/tele_name
 	var/obj/item/perfect_tele/tele_hand
@@ -956,14 +956,14 @@
 	icon_state = "hisstective_badge"
 	//slot_flags = SLOT_TIE | SLOT_BELT
 
-/obj/item/clothing/accessory/badge/holo/detective/ruda/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/clothing/accessory/badge/holo/detective/ruda/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(isliving(user))
 		user.visible_message("<span class='danger'>[user] invades [target]'s personal space, thrusting [src] into their face with an insistent huff.</span>","<span class='danger'>You invade [target]'s personal space, thrusting [src] into their face with an insistent huff.</span>")
 		user.do_attack_animation(target)
-		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam
+		user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN) //to prevent spam
 
 /obj/item/clothing/accessory/badge/holo/detective/ruda/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
@@ -1002,7 +1002,7 @@
 	name = "Lesser Form Injector"
 	desc = "Turn the user into their lesser, more primal form."
 
-/obj/item/fluff/injector/monkey/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/fluff/injector/monkey/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
@@ -1018,7 +1018,7 @@
 	name = "Numbing Venom Injector"
 	desc = "Injects the user with a high dose of some type of chemical, causing any chemical glands they have to kick into overdrive and create the production of a numbing enzyme that is injected via bites.."
 
-/obj/item/fluff/injector/numb_bite/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/fluff/injector/numb_bite/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
@@ -1268,13 +1268,6 @@
 		activate(user)
 	update_worn_icon()
 	add_fingerprint(user)
-
-/obj/item/melee/fluffstuff/suicide_act(mob/user)
-	var/tempgender = "[user.gender == MALE ? "he's" : user.gender == FEMALE ? "she's" : "they are"]"
-	if(active)
-		user.visible_message(pick("<span class='danger'>\The [user] is slitting \his stomach open with \the [src]! It looks like [tempgender] trying to commit seppuku.</span>",\
-			"<span class='danger'>\The [user] is falling on \the [src]! It looks like [tempgender] trying to commit suicide.</span>"))
-		return (BRUTELOSS|FIRELOSS)
 
 /obj/item/melee/fluffstuff/wolfgirlsword
 	name = "Wolfgirl Sword Replica"

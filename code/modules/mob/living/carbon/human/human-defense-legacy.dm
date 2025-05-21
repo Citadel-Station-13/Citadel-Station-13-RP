@@ -1,32 +1,3 @@
-/mob/living/carbon/human/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone)
-	var/obj/item/organ/external/affected = get_organ(check_zone(def_zone))
-	var/siemens_coeff = get_siemens_coefficient_organ(affected)
-	if(fire_stacks < 0) // Water makes you more conductive.
-		siemens_coeff *= 1.5
-	stun_amount *= siemens_coeff
-	agony_amount *= siemens_coeff
-
-	switch (def_zone)
-		if(BP_HEAD)
-			agony_amount *= 1.50
-		if(BP_L_HAND, BP_R_HAND)
-			var/c_hand
-			if (def_zone == BP_L_HAND)
-				c_hand = get_left_held_item()
-			else
-				c_hand = get_right_held_item()
-
-			if(c_hand && (stun_amount || agony_amount > 10))
-				msg_admin_attack("[key_name(src)] was disarmed by a stun effect")
-				drop_active_held_item()
-				if (affected.robotic >= ORGAN_ROBOT)
-					INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, custom_emote), 1, "drops what they were holding, their [affected.name] malfunctioning!")
-				else
-					var/emote_scream = pick("screams in pain and ", "lets out a sharp cry and ", "cries out and ")
-					INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, custom_emote), 1, "[affected.organ_can_feel_pain() ? "" : emote_scream] drops what they were holding in their [affected.name]!")
-
-	..(stun_amount, agony_amount, def_zone)
-
 /mob/living/carbon/human/legacy_mob_armor(var/def_zone, var/type)
 	var/armorval = 0
 	var/total = 0
@@ -108,10 +79,6 @@
 		siemens_value *= 1.5
 
 	return (siemens_value/max(total, 1))
-
-// Returns a number between 0 to 1, with 1 being total protection.
-/mob/living/carbon/human/get_shock_protection()
-	return min(1 - get_siemens_coefficient_average(), 1) // Don't go above 1, but negatives are fine.
 
 // Returns a list of clothing that is currently covering def_zone.
 /mob/living/carbon/human/proc/get_clothing_list_organ(var/obj/item/organ/external/def_zone, var/type)
@@ -226,15 +193,18 @@
 	if(effective_force > 10 || effective_force >= 5 && prob(33))
 		forcesay(hit_appends)	//forcesay checks stat already
 
+	// you can't bleed, if you have no blood
+	var/can_bleed = !(species.species_flags & NO_BLOOD)
+
 	if(prob(25 + (effective_force * 2)))
 		if(!((I.damage_type == DAMAGE_TYPE_BRUTE) || (I.damage_type == DAMAGE_TYPE_HALLOSS)))
 			return
 
-		if(!(I.atom_flags & NOBLOODY))
+		if(!(I.atom_flags & NOBLOODY) && can_bleed)
 			I.add_blood(src)
 
 		var/bloody = 0
-		if(prob(33))
+		if(can_bleed && prob(33))
 			bloody = 1
 			var/turf/location = loc
 			if(istype(location, /turf/simulated))
@@ -315,7 +285,7 @@
 						put_in_active_hand(O)
 						visible_message("<span class='warning'>[src] catches [O]!</span>")
 						throw_mode_off()
-						return
+						return COMPONENT_THROW_HIT_NEVERMIND
 
 		var/dtype = DAMAGE_TYPE_BRUTE
 		if(isitem(AM))

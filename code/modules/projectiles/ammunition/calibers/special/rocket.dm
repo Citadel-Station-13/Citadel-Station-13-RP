@@ -1,4 +1,5 @@
 /datum/ammo_caliber/rocket
+	id = "rocket"
 	caliber = "rocket"
 
 /obj/item/ammo_casing/rocket
@@ -6,7 +7,7 @@
 	desc = "A high explosive designed to be fired from a launcher."
 	icon_state = "rocketshell_alt"
 	projectile_type = /obj/projectile/bullet/srmrocket
-	caliber = /datum/ammo_caliber/rocket
+	casing_caliber = /datum/ammo_caliber/rocket
 	materials_base = list(MAT_STEEL = 10000)
 
 /obj/item/ammo_casing/rocket/weak

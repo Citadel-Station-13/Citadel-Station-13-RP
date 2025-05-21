@@ -1,8 +1,26 @@
 /mob
+	//* Actionspeed *//
+	/// List of action speed modifiers applying to this mob
+	/// * Lazy list, see mob_movespeed.dm
+	var/list/actionspeed_modifiers
+	/// List of action speed modifiers ignored by this mob. List -> List (id) -> List (sources)
+	/// * Lazy list, see mob_movespeed.dm
+	var/list/actionspeed_modifier_immunities
+
 	//* Impairments *//
 	/// active feign_impairment types
 	/// * lazy list
 	var/list/impairments_feigned
+
+	//* Movespeed *//
+	/// List of movement speed modifiers applying to this mob
+	/// * This is a lazy list.
+	var/list/movespeed_modifiers
+	/// List of movement speed modifiers ignored by this mob. List -> List (id) -> List (sources)
+	/// * This is a lazy list.
+	var/list/movespeed_modifier_immunities
+	/// The calculated mob speed slowdown based on the modifiers list
+	var/movespeed_hyperbolic
 
 /**
  * Intialize a mob
@@ -29,8 +47,6 @@
 	// atom HUDs
 	prepare_huds()
 	set_key_focus(src)
-	// todo: remove hooks
-	hook_vr("mob_new",list(src))
 	// signal
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOBAL_MOB_NEW, src)
 	// abilities
@@ -46,8 +62,7 @@
 	// update gravity
 	update_gravity()
 	// movespeed
-	update_movespeed(TRUE)
-	update_config_movespeed()
+	update_movespeed_base()
 	// actionspeed
 	initialize_actionspeed()
 	// ssd overlay
@@ -105,9 +120,9 @@
 	QDEL_NULL(physiology)
 	physiology_modifiers = null
 	// movespeed
-	movespeed_modification = null
+	movespeed_modifiers = null
 	// actionspeed
-	actionspeed_modification = null
+	actionspeed_modifiers = null
 	return QDEL_HINT_HARDDEL
 
 //* Mob List Registration *//
@@ -810,7 +825,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 	if(!isliving(usr) || !usr.canClick())
 		return
-	usr.setClickCooldown(20)
+	usr.setClickCooldownLegacy(20)
 
 	if(usr.stat == 1)
 		to_chat(usr, "You are unconcious and cannot do that!")
@@ -1304,4 +1319,4 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
  * Checks if we can avoid things like landmine, lava, etc, whether beneficial or harmful.
  */
 /mob/is_avoiding_ground()
-	return ..() || hovering || (buckled?.buckle_flags & BUCKLING_GROUND_HOIST)
+	return ..() || hovering || flying || (buckled?.buckle_flags & BUCKLING_GROUND_HOIST) || buckled?.is_avoiding_ground()

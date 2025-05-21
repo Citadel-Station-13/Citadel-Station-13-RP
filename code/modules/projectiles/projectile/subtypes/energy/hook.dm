@@ -14,7 +14,7 @@
 	damage_flag = ARMOR_ENERGY
 	armor_penetration = 15
 
-	var/impact_sound = 'sound/effects/uncloak.ogg'
+	impact_sound = 'sound/effects/uncloak.ogg'
 	var/crack_sound = 'sound/effects/teleport.ogg'
 	fire_sound = 'sound/effects/zzzt.ogg'
 
@@ -27,8 +27,8 @@
 	var/list/help_messages = list("slaps", "pokes", "nudges", "bumps", "pinches")
 	var/done_mob_unique = FALSE	// Has the projectile already done something to a mob?
 
-/obj/projectile/energy/hook/launch_projectile(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
-	var/expected_distance = get_dist(target, loc)
+/obj/projectile/energy/hook/fire(set_angle_to, atom/direct_target, no_source_check, datum/callback/on_submunition_ready)
+	var/expected_distance = get_dist(original_target, loc)
 	range = WORLD_ICON_SIZE * expected_distance // So the hook hits the ground if no mob is hit.
 	target_distance = expected_distance
 	if(firer)	// Needed to ensure later checks in impact and on hit function.
@@ -56,7 +56,7 @@
 				silenced = 1
 				damage_type = DAMAGE_TYPE_HALLOSS
 
-	..() // Does the regular launching stuff.
+	..()
 
 /obj/projectile/energy/hook/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
@@ -99,7 +99,6 @@
 			return
 
 /obj/projectile/energy/hook/proc/perform_intent_unique(atom/target)
-	playsound(src, impact_sound, 40, 1)
 	var/success = FALSE
 	if(istype(target,/turf))
 		if(launcher_intent)

@@ -473,8 +473,8 @@
 		var/mob/living/carbon/human/H = owner
 		if(!H.should_have_organ(O_HEART))
 			return 1
-		if(H.vessel.remove_reagent("blood", amount))
-			return 1
+		if(H.erase_checked_blood(amount))
+			return TRUE
 	return 0
 
 /obj/item/spell/construct/afterattack(atom/target, mob/user, clickchain_flags, list/params)
@@ -495,7 +495,7 @@
 			on_ranged_cast(target, user)
 	if(cooldown)
 		var/effective_cooldown = round(cooldown, 5)
-		user.setClickCooldown(effective_cooldown)
+		user.setClickCooldownLegacy(effective_cooldown)
 		flick("cooldown_[effective_cooldown]",src)
 
 /obj/item/spell/construct/projectile //This makes me angry, but we need the template, and we can't use it because special check overrides on the base.
@@ -579,9 +579,9 @@
 	antimagic_check = TRUE
 	antimagic_damage_factor = 0.66
 
-	muzzle_type = /obj/effect/projectile/muzzle/inversion
-	tracer_type = /obj/effect/projectile/tracer/inversion
-	impact_type = /obj/effect/projectile/impact/inversion
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/inversion
+	legacy_tracer_type = /obj/effect/projectile/tracer/inversion
+	legacy_impact_type = /obj/effect/projectile/impact/inversion
 
 //Harvester Pain Orb
 

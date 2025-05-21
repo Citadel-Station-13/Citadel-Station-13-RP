@@ -949,12 +949,12 @@
 /obj/item/clothing/glasses/welding/superior,
 /obj/structure/table/steel_reinforced,
 /obj/item/clothing/glasses/welding/superior,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -13162,8 +13162,8 @@
 /area/centcom/security)
 "QQ" = (
 /obj/structure/table/rack,
-/obj/item/storage/secure/briefcase/nsfw_pack_hybrid_combat,
-/obj/item/storage/secure/briefcase/nsfw_pack_hybrid_combat,
+/obj/item/storage/secure/briefcase/nsfw_pack_hos,
+/obj/item/storage/secure/briefcase/nsfw_pack_hos,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -14643,7 +14643,7 @@
 /area/centcom/security)
 "XV" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/secure/briefcase/nsfw_pack_hybrid,
+/obj/item/storage/secure/briefcase/nsfw_pack,
 /turf/unsimulated/floor/wood,
 /area/centcom/specops)
 "XW" = (

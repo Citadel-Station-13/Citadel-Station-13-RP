@@ -63,6 +63,8 @@
 /atom/proc/unarmed_act(mob/attacker, datum/unarmed_attack/style, target_zone, datum/event_args/actor/clickchain/clickchain)
 	return CLICKCHAIN_DO_NOT_ATTACK
 
+//* External API / Damage Receiving - Projectiles *//
+
 /**
  * Because this is the proc that calls on_impact(), handling is necessarily
  * done in here for a lot of things.
@@ -123,7 +125,7 @@
  *
  * * This basically semantically means 'we are being hit, do effects for it'.
  * * This is called before the projectile-side impact, which is where the damage is usually inflicted.
- * * Modify `impact_flags` directly before ..(), and `.` after ..()
+ * * Modify `impact_flags` directly before ..(), and via the `.` variable after ..()
  * * Check `.` after ..() if it isn't the last call so you know when to abort the processing as needed.
  * * Args will propagate **up** (closer to /atom) `..()` calls, but not back down (if base `/atom` changes something you won't get it on your sub-type)
  * * For this reason `bullet_act_args` is provided so you can mutably edit it. Do **not** edit the projectile or the impact flags; return the impact flags for automatic addition.
@@ -132,9 +134,129 @@
  * * proj - hitting projectile; immutable
  * * impact_flags - impact flags; immutable. edit directly before ..() call, return edited values after.
  * * bullet_act_args - access to the rest of the args in `bullet_act`. Mutable, except for the projectile and the impact flags.
+ *
+ * @return mutated impact flags
  */
 /atom/proc/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	return impact_flags
+
+//* External API / Damage Receiving - Electric *//
+
+/**
+ * Called to inflict an electrical shock on this atom.
+ *
+ * * Passing in no damage / stun power is perfectly valid; you can get calculated 'efficiency' / energy used
+ *   by getting returned args.
+ *
+ * @params
+ * * energy - energy, in **kilojoules**
+ * * damage - 'intended' burn damage.
+ *            this should be scaled to an intent of being used on a carbon-type.
+ *            do not scale this to things like walls / high-hp structures. most structures
+ *            don't get damaged by electric shocks anyways.
+ * * stun_power - 'intended' agony / pain / stun force
+ *            this should be scaled to an intent of being used on a carbon-type as pain damage.
+ *            that said, not only carbon-types are allowed to use this.
+ * * flags - ELECTROCUTE_ACT_* flags
+ * * hit_zone - if specified and non-internal, this zone will be used to check armor.
+ * * source - the source of the electric shock, if provided.
+ *            any movable is a valid value; you are expected to handle touch (unspecified / obj / mob),
+ *            and projectile sources if you are using this.
+ * * shared_blackboard - (optional) list to both inject into and retrieve data from.
+ *                as a word of warning, this list **will** be a shared list if being used
+ *                in things like multi-hit lightning bolts; we do not make a new list per atom.
+ *
+ * @return modified `electrocute_act` args list, indiced with `ELECTROCUTE_ACT_ARG_*` #define indices.
+ */
+/atom/proc/electrocute(energy, damage, stun_power, flags, hit_zone, atom/movable/source, list/shared_blackboard)
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	return electrocute_act(1, energy, damage, stun_power, flags, hit_zone, source, shared_blackboard, 0)
+
+/**
+ * Called upon receiving an electrical shock of any kind
+ *
+ * * This proc-chain should modify arguments directly before calling ..()
+ * * Effects are handled at the base by calling on_electrocute_act()
+ *
+ * @params
+ * * efficiency - effect multiplier. this should be multiplied to damage / agony / energy / etc
+ *                to get the approximate amount that actually hit us.
+ * * energy - energy, in **kilojoules**
+ * * damage - 'intended' burn damage.
+ *            this should be scaled to an intent of being used on a carbon-type.
+ *            do not scale this to things like walls / high-hp structures. most structures
+ *            don't get damaged by electric shocks anyways.
+ * * stun_power - 'intended' agony / pain / stun force
+ *            this should be scaled to an intent of being used on a carbon-type as pain damage.
+ *            that said, not only carbon-types are allowed to use this.
+ * * flags - ELECTROCUTE_ACT_* flags
+ * * hit_zone - if specified and non-internal, this zone will be used to check armor.
+ * * source - the source of the electric shock, if provided.
+ *            any movable is a valid value; you are expected to handle touch (unspecified / obj / mob),
+ *            and projectile sources if you are using this.
+ * * shared_blackboard - (optional) list to both inject into and retrieve data from.
+ *                as a word of warning, this list **will** be a shared list if being used
+ *                in things like multi-hit lightning bolts; we do not make a new list per atom.
+ * * out_energy_consumed - This will be set to the return value of `on_electrocute_act()`.
+ *
+ * @return modified args
+ */
+/atom/proc/electrocute_act(efficiency, energy, damage, stun_power, flags, hit_zone, atom/movable/source, list/shared_blackboard, out_energy_consumed)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	PROTECTED_PROC(TRUE)
+	out_energy_consumed = on_electrocute_act(efficiency, energy, damage, stun_power, flags, hit_zone, source, shared_blackboard, out_energy_consumed)
+	return args.Copy()
+
+/**
+ * Called to handle effects of receiving an electrical shock.
+ *
+ * * This is called by `electrocute_act` to inflict effects.
+ * * Modifying args is still allowed here, but will **not** be returned to the caller.
+ *
+ * @params
+ * * efficiency - effect multiplier. this should be multiplied to damage / agony / energy / etc
+ *                to get the approximate amount that actually hit us.
+ * * energy - energy, in **kilojoules**
+ * * damage - 'intended' burn damage.
+ *            this should be scaled to an intent of being used on a carbon-type as pain damage.
+ *            do not scale this to things like walls / high-hp structures. most structures
+ *            don't get damaged by electric shocks anyways.
+ * * stun_power - 'intended' agony / pain / stun force
+ *            this should be scaled to an intent of being used on a carbon-type.
+ *            that said, not only carbon-types are allowed to use this.
+ * * flags - ELECTROCUTE_ACT_* flags
+ * * hit_zone - if specified and non-internal, this zone will be used to check armor.
+ * * source - the source of the electric shock, if provided.
+ *            any movable is a valid value; you are expected to handle touch (unspecified / obj / mob),
+ *            and projectile sources if you are using this.
+ * * shared_blackboard - (optional) list to both inject into and retrieve data from.
+ *                as a word of warning, this list **will** be a shared list if being used
+ *                in things like multi-hit lightning bolts; we do not make a new list per atom.
+ *
+ * @return used energy in kilojoules
+ */
+/atom/proc/on_electrocute_act(efficiency, energy, damage, stun_power, flags, hit_zone, atom/movable/source, list/shared_blackboard)
+	SHOULD_CALL_PARENT(TRUE)
+	PROTECTED_PROC(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	return 0
+
+//* FX API *//
+
+/**
+ * Gets the COMBAT_FX_* enum that we count as for a given hit
+ *
+ * @params
+ * * attack_type - ATTACK_TYPE_* enum
+ * * weapon - (optional) the value of this depends on the attack type; check defines folder for attack type
+ * * target_zone - (optional) where were we hit
+ *
+ * @return COMBAT_IMPACT_FX_* classifier
+ */
+/atom/proc/get_combat_fx_classifier(attack_type, datum/weapon, target_zone)
+	return COMBAT_IMPACT_FX_GENERIC
 
 //* Hitsound API *//
 
@@ -176,7 +298,7 @@
 	. = hitsound_override(P.damage_type, P.damage_mode, ATTACK_TYPE_PROJECTILE, P)
 	if(.)
 		return
-	return islist(P.impact_sounds)? pick(P.impact_sounds) : P.impact_sounds
+	return P.resolve_impact_sfx(get_combat_fx_classifier(ATTACK_TYPE_PROJECTILE, P), src)
 
 /atom/proc/hitsound_throwhit(obj/item/I)
 	. = I.attacksound_override(src, ATTACK_TYPE_THROWN)
@@ -427,7 +549,7 @@
 /atom/proc/atom_shieldcall_handle_touch(datum/event_args/actor/clickchain/e_args, contact_flags, contact_specific, fake_attack, shieldcall_flags)
 	SHOULD_NOT_SLEEP(TRUE)
 	// cannot parry yourself
-	if(e_args.performer == src)
+	if(e_args?.performer == src)
 		return shieldcall_flags
 	// send query signal
 	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL_ITERATION, ATOM_SHIELDCALL_ITERATING_TOUCH)

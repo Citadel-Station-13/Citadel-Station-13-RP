@@ -191,10 +191,6 @@
 		inventory.held_items[index] = I
 		inventory.on_item_entered(I, index)
 
-	//! LEGACY BEGIN
-	I.update_twohanding()
-	//! END
-
 	if(!(flags & INV_OP_NO_UPDATE_ICONS))
 		update_inv_hand(index)
 
@@ -218,7 +214,7 @@
 
 	I.held_index = null
 	I.unequipped(src, SLOT_ID_HANDS, flags)
-	I.on_unequipped(src, index, flags)
+	I.on_inv_unequipped(src, inventory, index, flags)
 
 	if(!(flags & INV_OP_NO_UPDATE_ICONS))
 		update_inv_hand(index)

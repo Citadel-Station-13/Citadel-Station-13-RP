@@ -7,7 +7,7 @@
 	name = "laser"
 	icon_state = "laser"
 	fire_sound = 'sound/weapons/weaponsounds_laserstrong.ogg'
-	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
+	pass_flags = ATOM_PASS_FLAGS_BEAM
 	damage_force = 40
 	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_LASER
@@ -18,8 +18,8 @@
 	light_range = 2
 	light_power = 0.5
 	light_color = "#FF0D00"
-	impact_sounds = list(BULLET_IMPACT_MEAT = SOUNDS_LASER_MEAT, BULLET_IMPACT_METAL = SOUNDS_LASER_METAL)
+	impact_sound = PROJECTILE_IMPACT_SOUNDS_ENERGY
 
-	muzzle_type = /obj/effect/projectile/muzzle/laser
-	tracer_type = /obj/effect/projectile/tracer/laser
-	impact_type = /obj/effect/projectile/impact/laser
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/laser
+	legacy_tracer_type = /obj/effect/projectile/tracer/laser
+	legacy_impact_type = /obj/effect/projectile/impact/laser

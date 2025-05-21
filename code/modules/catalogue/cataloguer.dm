@@ -329,7 +329,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 		busy = TRUE
 		var/obj/item/card/id/ID = W
 		if(points_stored)
-			ID.survey_points += points_stored
+			ID.adjust_redemption_points(POINT_REDEMPTION_TYPE_SURVEY, points_stored)
 			points_stored = 0
 			to_chat(user, "<span class='notice'>You swipe the id over \the [src].</span>")
 		else

@@ -1116,7 +1116,6 @@
 "hK" = (
 /obj/effect/decal/remains/tajaran,
 /obj/random/mob/spider/nurse,
-/obj/item/mining_voucher,
 /obj/random/multiple/miningdrills,
 /obj/random/junk,
 /turf/simulated/mineral/floor/cave{
@@ -4747,12 +4746,12 @@
 /area/sector/miaphus/beach/desalinator)
 "Ob" = (
 /obj/structure/closet/crate/miningcar,
-/obj/item/grenade/explosive/ied/tyrmalin,
-/obj/item/grenade/explosive/ied/tyrmalin,
-/obj/item/grenade/explosive/ied/tyrmalin,
-/obj/item/grenade/explosive/ied/tyrmalin,
-/obj/item/grenade/explosive/ied/tyrmalin,
-/obj/item/grenade/explosive/ied/tyrmalin,
+/obj/item/grenade/simple/explosive/ied/tyrmalin,
+/obj/item/grenade/simple/explosive/ied/tyrmalin,
+/obj/item/grenade/simple/explosive/ied/tyrmalin,
+/obj/item/grenade/simple/explosive/ied/tyrmalin,
+/obj/item/grenade/simple/explosive/ied/tyrmalin,
+/obj/item/grenade/simple/explosive/ied/tyrmalin,
 /obj/random/multiple/ores,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
@@ -4824,7 +4823,7 @@
 /area/sector/miaphus/beach/aa)
 "OJ" = (
 /obj/structure/bed/chair/sofa/black/corner{
-	dir = 4
+	dir = 1
 	},
 /turf/simulated/floor/wood/broken,
 /area/sector/miaphus/beach/desalinator)

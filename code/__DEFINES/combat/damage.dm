@@ -23,9 +23,6 @@
 
 //* special hybrid types; processed specially depending on type *//
 
-/// passed to electrocute_act()
-/// todo: remove
-#define DAMAGE_TYPE_ELECTROCUTE "electrocute"
 /// bioacid ; toxins for organics, acid for synthetics
 /// todo: better hybrid type handling
 #define DAMAGE_TYPE_BIOACID "bioacid"

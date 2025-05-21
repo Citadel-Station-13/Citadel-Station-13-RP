@@ -23,7 +23,7 @@
 	health = 20
 	randomized = TRUE
 
-	movement_cooldown = 8 // SLOW-ASS MUTHAFUCKA, I hope.
+	movement_base_speed = 10 / 8 // SLOW-ASS MUTHAFUCKA, I hope.
 
 	response_help  = "pets"
 	response_disarm = "shoos"

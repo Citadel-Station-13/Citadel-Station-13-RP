@@ -58,8 +58,8 @@
 	else if(F.times_used)
 		F.times_used--
 	var/obj/item/gun/projectile/energy/taser/mounted/cyborg/T = locate() in src.modules
-	if(T.power_supply.charge < T.power_supply.maxcharge)
-		T.power_supply.give(T.charge_cost * amount)
+	if(T.obj_cell_slot.cell.charge < T.obj_cell_slot.cell.maxcharge)
+		T.obj_cell_slot.cell.give(T.charge_cost * amount)
 		T.update_icon()
 	else
 		T.charge_tick = 0
@@ -137,8 +137,8 @@
 	else if(F.times_used)
 		F.times_used--
 	var/obj/item/gun/projectile/energy/taser/mounted/cyborg/T = locate() in src.modules
-	if(T.power_supply.charge < T.power_supply.maxcharge)
-		T.power_supply.give(T.charge_cost * amount)
+	if(T.obj_cell_slot.cell.charge < T.obj_cell_slot.cell.maxcharge)
+		T.obj_cell_slot.cell.give(T.charge_cost * amount)
 		T.update_icon()
 	else
 		T.charge_tick = 0

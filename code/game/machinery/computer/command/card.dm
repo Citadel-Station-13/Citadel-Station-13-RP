@@ -27,7 +27,7 @@
 		return
 	switch(id)
 		if("modify")
-			return tgui_cardmod.ui_act(action, params, ui)
+			return tgui_cardmod.ui_act(action, params, ui, new /datum/event_args/actor(usr))
 
 /**
  * for later use: authorized to change slots

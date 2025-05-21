@@ -10,7 +10,7 @@
 		STOP_PROCESSING(SSobj, src)
 		return
 
-	var/turf/maybe_turf_location = inv_slot_or_index ? get_turf(worn_mob()) : loc
+	var/turf/maybe_turf_location = inv_slot_or_index ? get_turf(inv_inside?.owner) : loc
 	if(isturf(maybe_turf_location))
 		maybe_turf_location.hotspot_expose(700, 1)
 

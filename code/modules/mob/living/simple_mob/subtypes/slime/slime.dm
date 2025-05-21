@@ -26,7 +26,7 @@
 
 	iff_factions = MOB_IFF_FACTION_SLIME // Note that slimes are hostile to other slimes of different color regardless of faction (unless Unified).
 	maxHealth = 150
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 	pass_flags = ATOM_PASS_TABLE
 	makes_dirt = FALSE	// Goopw
 	mob_class = MOB_CLASS_SLIME
@@ -183,7 +183,7 @@
 	// Otherwise they're probably fighting the slime.
 	if(prob(25) && can_miss)
 		visible_message(SPAN_WARNING( "\The [user]'s [I] passes right through \the [src]!"))
-		user.setClickCooldown(user.get_attack_speed(I))
+		user.setClickCooldownLegacy(user.get_attack_speed_legacy(I))
 		return
 	..()
 

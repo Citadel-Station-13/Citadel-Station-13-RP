@@ -279,21 +279,21 @@ var/datum/antagonist/raider/raiders
 /datum/antagonist/raider/proc/equip_ammo(var/mob/living/carbon/human/player, var/obj/item/gun/gun)
 	if(istype(gun, /obj/item/gun/projectile/ballistic))
 		var/obj/item/gun/projectile/ballistic/bullet_thrower = gun
-		if(bullet_thrower.magazine_type)
-			player.equip_to_slot_or_del(new bullet_thrower.magazine_type(player), SLOT_ID_LEFT_POCKET)
+		if(bullet_thrower.magazine_preload)
+			player.equip_to_slot_or_del(new bullet_thrower.magazine_preload(player), SLOT_ID_LEFT_POCKET)
 			if(prob(20)) //don't want to give them too much
-				player.equip_to_slot_or_del(new bullet_thrower.magazine_type(player), SLOT_ID_RIGHT_POCKET)
-		else if(bullet_thrower.ammo_type)
+				player.equip_to_slot_or_del(new bullet_thrower.magazine_preload(player), SLOT_ID_RIGHT_POCKET)
+		else if(bullet_thrower.internal_magazine_preload_ammo)
 			var/obj/item/storage/box/ammobox = new(get_turf(player.loc))
 			for(var/i in 1 to rand(3,5) + rand(0,2))
-				new bullet_thrower.ammo_type(ammobox)
+				new bullet_thrower.internal_magazine_preload_ammo(ammobox)
 			player.put_in_hands(ammobox)
 		return
 	if(istype(gun, /obj/item/gun/launcher/grenade))
 		var/list/grenades = list(
-			/obj/item/grenade/empgrenade,
-			/obj/item/grenade/smokebomb,
-			/obj/item/grenade/flashbang
+			/obj/item/grenade/simple/emp,
+			/obj/item/grenade/simple/smoke,
+			/obj/item/grenade/simple/flashbang
 			)
 		var/obj/item/storage/box/ammobox = new(get_turf(player.loc))
 		for(var/i in 1 to 7)

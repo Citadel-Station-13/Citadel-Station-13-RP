@@ -1,6 +1,13 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+//* FX *//
+
+/mob/living/get_combat_fx_classifier(attack_type, datum/weapon, target_zone)
+	if(isSynthetic())
+		return COMBAT_IMPACT_FX_METAL
+	return COMBAT_IMPACT_FX_FLESH
+
 //* Projectile Handling *//
 
 /mob/living/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
@@ -32,7 +39,7 @@
 		add_attack_logs(
 			proj.firer,
 			src,
-			"shot with [src] ([type]) (missed)",
+			"shot with [proj] ([type]) (missed)",
 		)
 		impact_flags |= PROJECTILE_IMPACT_PASSTHROUGH
 		return ..()
@@ -47,13 +54,13 @@
 		add_attack_logs(
 			proj.firer,
 			src,
-			"shot with [src] ([type]) (aborted)",
+			"shot with [proj] ([type]) (aborted)",
 		)
 		return
 	add_attack_logs(
 		proj.firer,
 		src,
-		"shot with [src] ([type])[(impact_flags & PROJECTILE_IMPACT_BLOCKED)? " (blocked)" : ""]",
+		"shot with [proj] ([type])[(impact_flags & PROJECTILE_IMPACT_BLOCKED)? " (blocked)" : ""]",
 	)
 	// emit feedback
 	if(!(impact_flags & PROJECTILE_IMPACT_BLOCKED))
@@ -80,9 +87,6 @@
 		// todo: this should just be in base projectile on_impact
 		impact_flags |= proj.inflict_impact_damage(src, bullet_act_args[BULLET_ACT_ARG_EFFICIENCY], impact_flags, bullet_act_args[BULLET_ACT_ARG_ZONE])
 	return ..()
-
-/mob/living/get_bullet_impact_effect_type(var/def_zone)
-	return BULLET_IMPACT_MEAT
 
 /**
  * @return zone to hit, or null to miss
@@ -113,6 +117,42 @@
 
 //* Misc Effects *//
 
+/mob/living/electrocute_act(efficiency, energy, damage, stun_power, flags, hit_zone, atom/movable/source, list/shared_blackboard, out_energy_consumed)
+	// todo: rework this maybe
+	if((fire_stacks < 0) && !(flags & ELECTROCUTE_ACT_FLAG_INTERNAL))
+		// water makes you more ocnductive
+		efficiency *= 1.5
+	return ..()
+
+/mob/living/on_electrocute_act(efficiency, energy, damage, stun_power, flags, hit_zone, atom/movable/source, list/shared_blackboard)
+	if(efficiency > 0)
+		inflict_electrocute_damage(damage * efficiency, stun_power * efficiency, flags, hit_zone)
+		if(!(flags & ELECTROCUTE_ACT_FLAG_SILENT))
+			playsound(src, /datum/soundbyte/sparks, 50, TRUE, -1)
+			if(damage * efficiency > 15)
+				visible_message(
+					SPAN_WARNING("[src] was electrocuted[source ? " by [source]" : ""]!"),
+					SPAN_DANGER("You feel a powerful shock course through your body[source ? " as you make contact with [source]" : ""]!"),
+					SPAN_WARNING("You hear a heavy electrical crack."),
+				)
+			else
+				visible_message(
+					SPAN_WARNING("[src] was shocked[source ? " by [source]" : ""]!"),
+					SPAN_DANGER("You feel a shock course through your body[source ? " as you make contact with [source]" : ""]!"),
+					SPAN_WARNING("You hear an electrical crack."),
+				)
+		if(!(flags & ELECTROCUTE_ACT_FLAG_CONTAINED))
+			var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+			sparks.set_up(5, 1, loc)
+			sparks.start()
+	return ..()
+
+/**
+ * Called to apply the damage from [electrocute_act()]
+ */
+/mob/living/proc/inflict_electrocute_damage(damage, stun_power, flags, hit_zone)
+	return
+
 /**
  * Processes a slip.
  *
@@ -130,5 +170,3 @@
  */
 /mob/living/proc/slip_act(slip_class, source, hard_strength, soft_strength, suppressed)
 	return 1
-//* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 Citadel Station developers.          *//

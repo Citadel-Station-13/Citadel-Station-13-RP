@@ -35,12 +35,12 @@
 	if(rigged && locate(/obj/item/radio/electropack) in src)
 		if(isliving(usr))
 			var/mob/living/L = usr
-			if(L.electrocute_act(17, src))
-				var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-				s.set_up(5, 1, src)
-				s.start()
-				if(!CHECK_MOBILITY(usr, MOBILITY_CAN_MOVE))
-					return 2
+			L.electrocute(0, 17, 0, NONE, pick(BP_L_HAND, BP_R_HAND), src)
+			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+			s.set_up(5, 1, src)
+			s.start()
+			if(!CHECK_MOBILITY(usr, MOBILITY_CAN_MOVE))
+				return 2
 
 	playsound(src.loc, 'sound/machines/click.ogg', 15, 1, -3)
 	for(var/obj/O in src)
@@ -229,7 +229,7 @@
 		spawn(6)
 			cut_overlay(sparks) //Tried lots of stuff but nothing works right. so i have to use this *sadface*
 			compile_overlays()
-		playsound(src.loc, /datum/soundbyte/grouped/sparks, 60, 1)
+		playsound(src.loc, /datum/soundbyte/sparks, 60, 1)
 		locked = 0
 		broken = 1
 		to_chat(user, "<span class='notice'>You unlock \the [src].</span>")
@@ -250,7 +250,7 @@
 			spawn(6)
 				cut_overlay(sparks) //Tried lots of stuff but nothing works right. so i have to use this *sadface*
 				compile_overlays()
-			playsound(src.loc, /datum/soundbyte/grouped/sparks, 75, 1)
+			playsound(src.loc, /datum/soundbyte/sparks, 75, 1)
 			locked = 0
 			update_icon()
 	if(!opened && prob(20/severity))

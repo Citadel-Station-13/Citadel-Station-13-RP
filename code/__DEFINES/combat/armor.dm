@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 //? --- armor defines ---
 //* Want to add more?
@@ -38,6 +38,9 @@
 #define ARMOR_FIRE "fire"
 #define ARMOR_ACID "acid"
 
+/**
+ * All armor enums that can be stored in an armor datum
+ */
 GLOBAL_REAL_LIST(armor_enums) = list(
 	ARMOR_MELEE,
 	ARMOR_MELEE_TIER,
@@ -59,6 +62,9 @@ GLOBAL_REAL_LIST(armor_enums) = list(
 	ARMOR_ACID,
 )
 
+/**
+ * Actual armor types that can be checked for with `damage_flag`
+ */
 GLOBAL_REAL_LIST(armor_types) = list(
 	ARMOR_MELEE,
 	ARMOR_BULLET,
@@ -110,7 +116,7 @@ GLOBAL_REAL_LIST(armor_types) = list(
 #define BULLET_TIER_MEDIUM ARMOR_TIER_ABOVE
 /// rifles
 #define BULLET_TIER_HIGH ARMOR_TIER_HIGH
-/// lmgs, light mech weapons
+/// hmgs, light mech weapons
 #define BULLET_TIER_EXTREME ARMOR_TIER_OVERWHELMING
 /// heavy mech weapons
 #define BULLET_TIER_RIDICULOUS ARMOR_TIER_RIDICULOUS

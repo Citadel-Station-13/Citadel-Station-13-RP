@@ -46,26 +46,17 @@
 
 /obj/machinery/appliance/cooker/fryer/heat_up()
 	if (..())
-		//Set temperature of oil reagent
-		var/datum/reagent/nutriment/triglyceride/oil/OL = oil.get_master_reagent()
-		if (OL && istype(OL))
-			OL.data["temperature"] = temperature
+		oil.temperature = temperature
 
 /obj/machinery/appliance/cooker/fryer/equalize_temperature()
 	if (..())
 		//Set temperature of oil reagent
-		var/datum/reagent/nutriment/triglyceride/oil/OL = oil.get_master_reagent()
-		if (OL && istype(OL))
-			OL.data["temperature"] = temperature
-
+		oil.temperature = temperature
 
 /obj/machinery/appliance/cooker/fryer/update_cooking_power()
 	..()//In addition to parent temperature calculation
 	//Fryer efficiency also drops when oil levels arent optimal
-	var/oil_level = 0
-	var/datum/reagent/nutriment/triglyceride/oil/OL = oil.get_master_reagent()
-	if (OL && istype(OL))
-		oil_level = OL.volume
+	var/oil_level =  oil.reagent_volumes["tallow"] || 0
 
 	var/oil_efficiency = 0
 	if (oil_level)
@@ -104,19 +95,21 @@
 	var/total_oil = 0
 	var/total_our_oil = 0
 	var/total_removed = 0
-	var/datum/reagent/our_oil = oil.get_master_reagent()
+	var/datum/reagent/our_oil = oil.get_majority_reagent_datum()
 
 	for (var/obj/item/I in CI.container)
-		if (I.reagents && I.reagents.total_volume)
-			for (var/datum/reagent/R in I.reagents.reagent_list)
-				if (istype(R, /datum/reagent/nutriment/triglyceride/oil))
-					total_oil += R.volume
-					if (R.id != our_oil.id)
-						total_removed += R.volume
-						I.reagents.remove_reagent(R.id, R.volume)
-					else
-						total_our_oil += R.volume
-
+		if(!I.reagents?.total_volume)
+			continue
+		for(var/datum/reagent/reagent as anything in I.reagents.get_reagent_datums())
+			if(!istype(reagent, /datum/reagent/nutriment/triglyceride/oil))
+				continue
+			var/the_volume = I.reagents.reagent_volumes[reagent.id]
+			total_oil += the_volume
+			if(reagent.id != our_oil.id)
+				total_removed += the_volume
+				I.reagents.remove_reagent(reagent.id, the_volume)
+			else
+				total_our_oil += the_volume
 
 	if (total_removed > 0 || total_oil != CI.max_oil)
 		total_oil = min(total_oil, CI.max_oil)
@@ -131,13 +124,10 @@
 			//If we have more than the maximum allowed then we delete some.
 			//This could only happen if one of the objects spawns with the same type of oil as ours
 			var/portion = 1 - (total_oil / total_our_oil) //find the percentage to remove
-			for (var/obj/item/I in CI.container)
-				if (I.reagents && I.reagents.total_volume)
-					for (var/datum/reagent/R in I.reagents.reagent_list)
-						if (R.id == our_oil.id)
-							I.reagents.remove_reagent(R.id, R.volume*portion)
-
-
+			for (var/obj/item/I as anything in CI.container)
+				if(!I.reagents?.total_volume)
+					continue
+				I.reagents.remove_reagent(our_oil.id, I.reagents.reagent_volumes[our_oil.id] * portion)
 
 /obj/machinery/appliance/cooker/fryer/cook_mob(var/mob/living/victim, var/mob/user)
 
@@ -151,7 +141,7 @@
 	//If you can lure someone close to the fryer and grab them then you deserve success.
 	//And a delay on this kind of niche action just ensures it never happens
 	//Cooldown ensures it can't be spammed to instakill someone
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN*3)
+	user.setClickCooldownLegacy(DEFAULT_ATTACK_COOLDOWN*3)
 
 	if(!victim || !victim.Adjacent(user))
 		to_chat(user, "<span class='danger'>Your victim slipped free!</span>")
@@ -160,8 +150,8 @@
 	var/damage = rand(7,13)
 	//Though this damage seems reduced, some hot oil is transferred to the victim and will burn them for a while after
 
-	var/datum/reagent/nutriment/triglyceride/oil/OL = oil.get_master_reagent()
-	damage *= OL.heatdamage(victim)
+	var/datum/reagent/nutriment/triglyceride/oil/OL = oil.get_majority_reagent_datum()
+	damage *= OL.heatdamage(victim, oil)
 
 	var/obj/item/organ/external/E
 	var/nopain
@@ -221,10 +211,10 @@
 	//That would really require coding some sort of filter or better replacement mechanism first
 	//So for now, restrict to oil only
 			var/amount = 0
-			for (var/datum/reagent/R in I.reagents.reagent_list)
+			for (var/datum/reagent/R in I.reagents.get_reagent_datums())
 				if (istype(R, /datum/reagent/nutriment/triglyceride/oil))
 					var/delta = oil.available_volume()
-					delta = min(delta, R.volume)
+					delta = min(delta, I.reagents.get_reagent_amount(R))
 					oil.add_reagent(R.id, delta)
 					I.reagents.remove_reagent(R.id, delta)
 					amount += delta

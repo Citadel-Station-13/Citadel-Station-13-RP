@@ -12,7 +12,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_ID | SLOT_BELT
 	rad_flags = RAD_BLOCK_CONTENTS
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NO_BLUDGEON
 
 	//Main variables
 	var/pdachoice = 1
@@ -1351,7 +1351,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 				return
 			to_chat(user, "<span class='notice'>You slot \the [C] into \the [src].</span>")
 
-/obj/item/pda/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/pda/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/carbon/C = target
 	if (istype(C, /mob/living/carbon))
 		switch(scanmode)
@@ -1414,10 +1414,10 @@ GLOBAL_LIST_EMPTY(PDAs)
 			if(!isobj(target))
 				return
 			if(!isnull(target.reagents))
-				if(target.reagents.reagent_list.len > 0)
-					var/reagents_length = target.reagents.reagent_list.len
+				if(target.reagents.total_volume)
+					var/reagents_length = length(target.reagents.reagent_volumes)
 					to_chat(user, "<span class='notice'>[reagents_length] chemical agent[reagents_length > 1 ? "s" : ""] found.</span>")
-					for (var/re in target.reagents.reagent_list)
+					for (var/re in target.reagents.get_reagent_datums())
 						to_chat(user,"<span class='notice'>    [re]</span>")
 				else
 					to_chat(user,"<span class='notice'>No active chemical agents found in [target].</span>")
@@ -1497,7 +1497,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 /obj/item/pda/clown/Crossed(atom/movable/AM as mob|obj) //Clown PDA is slippery.
 	. = ..()
-	if(AM.is_incorporeal())
+	if(AM.is_incorporeal() || AM.is_avoiding_ground())
 		return
 	if (istype(AM, /mob/living))
 		var/mob/living/M = AM

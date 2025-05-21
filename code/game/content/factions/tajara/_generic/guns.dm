@@ -17,12 +17,11 @@ extremely varied ranging from 19th century crude to modern and post modern autom
 
 /obj/item/gun/projectile/ballistic/contender/taj/a44
 	caliber = /datum/ammo_caliber/a44
-	ammo_type = /obj/item/ammo_casing/a44
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a44
 
 /obj/item/gun/projectile/ballistic/contender/taj/a762
 	caliber = /datum/ammo_caliber/a7_62mm
-	ammo_type = /obj/item/ammo_casing/a7_62mm
-
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a7_62mm
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/rifle/taj/sawn
 	name = "Adhomai obrez"

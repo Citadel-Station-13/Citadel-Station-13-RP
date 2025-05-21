@@ -332,7 +332,7 @@
 	nodamage = 0
 	armor_penetration = 0
 	magic = TRUE
-	impact_sounds = 'sound/weapons/barragespellhit.ogg'
+	impact_sound = 'sound/weapons/barragespellhit.ogg'
 
 /obj/projectile/magic/arcane_barrage/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()

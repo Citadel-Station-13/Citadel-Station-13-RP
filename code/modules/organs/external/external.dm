@@ -6,6 +6,10 @@
 	organ_tag = "limb"
 	decays = FALSE
 
+	//* Behaviour *//
+	/// this covers things like 'can this limb be injected' or 'can this limb be healed'
+	var/behaviour_flags = NONE
+
 	//* Coverage *//
 	/// body_cover_flags that count as covering us
 	var/body_part_flags = NONE
@@ -550,7 +554,7 @@
 			to_chat(user, SPAN_WARNING("You can't reach your [src] while holding [tool] in the same hand!"))
 			return FALSE
 
-	user.setClickCooldown(user.get_attack_speed(tool))
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy(tool))
 	if(!do_mob(user, owner, 10))
 		to_chat(user, SPAN_WARNING("You must stand still to do that."))
 		return FALSE
@@ -800,7 +804,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			if(!(W.can_autoheal() || (bicardose && inaprovaline) || myeldose))	//bicaridine and inaprovaline stop internal wounds from growing bigger with time, unless it is so small that it is already healing
 				W.open_wound(0.1)
 
-			owner.vessel.remove_reagent("blood", W.damage/40) //line should possibly be moved to handle_blood, so all the bleeding stuff is in one place.
+			owner.erase_blood(W.damage / 40)
 			if(prob(1))
 				owner.custom_pain("You feel a stabbing pain in your [name]!", 50)
 
@@ -1165,7 +1169,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 	if(company)
 		model = company
-		var/datum/robolimb/R = GLOB.all_robolimbs[company]
+		var/datum/robolimb/R = GLOB.all_robolimbs[isnum(company) ? GLOB.all_robolimbs[company] : company]
 		if(!R || (species && (species.name in R.species_cannot_use)))
 			R = GLOB.basic_robolimb
 		if(R)
@@ -1270,7 +1274,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 	implants += W
 	owner.embedded_flag = 1
 	add_verb(owner, /mob/proc/yank_out_object)
-	W.add_blood(owner)
+	if(!(owner.species.species_flags & NO_BLOOD))
+		W.add_blood(owner)
 	W.forceMove(owner)
 
 /obj/item/organ/external/removed(var/mob/living/user, var/ignore_children = 0)

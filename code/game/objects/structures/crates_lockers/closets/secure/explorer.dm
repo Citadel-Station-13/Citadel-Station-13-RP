@@ -152,7 +152,7 @@
 		/obj/item/clothing/accessory/holster/leg,
 		/obj/item/reagent_containers/food/snacks/liquid,
 		/obj/item/reagent_containers/food/snacks/liquid/protein,
-		/obj/item/card/mining_point_card/survey/gimmick,
+		/obj/item/point_redemption_voucher/preloaded/survey/c300,
 		/obj/item/cataloguer/compact/pathfinder,
 		/obj/item/binoculars)
 

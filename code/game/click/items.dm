@@ -5,7 +5,8 @@
 
 //? Click-Chain system - using an item in hand to "attack", whether in melee or ranged.
 
-// todo: refactor attack object/mob to just melee attack or something
+// todo: refactor attack object/mob to just melee_attack_chain and a single melee attack system or something
+// todo: yeah most of this file needs re-evaluated again, especially for event_args/actor/clickchain support & right clicks
 
 /**
  * Called when trying to click something that the user can Reachability() to.
@@ -28,6 +29,7 @@
 	// todo: inject something here for 'used as item' much like /tg/, to get rid of attackby pattern
 
 	var/datum/event_args/actor/clickchain/e_args = new(user)
+	e_args.click_params = params
 
 	if((. |= item_attack_chain(target, e_args, ., params)) & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
@@ -142,7 +144,7 @@
 	if(isnull(intent))
 		intent = user.a_intent
 	// end
-	if(item_flags & ITEM_NOBLUDGEON)
+	if(item_flags & ITEM_NO_BLUDGEON)
 		return NONE
 	if(clickchain_flags & CLICKCHAIN_DO_NOT_ATTACK)
 		return NONE
@@ -153,7 +155,7 @@
 	// is mob, go to that
 	// todo: signals for both
 	if(ismob(target))
-		. |= attack_mob(target, user, clickchain_flags, params, mult, target_zone, intent)
+		. |= legacy_mob_melee_hook(target, user, clickchain_flags, params, mult, target_zone, intent)
 		if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 			return
 		return . | finalize_mob_melee(target, user, . | clickchain_flags, params, mult, target_zone, intent)
@@ -180,7 +182,7 @@
  *
  * @return clickchain flags to append
  */
-/obj/item/proc/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
+/obj/item/proc/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
 	PROTECTED_PROC(TRUE)	// route via standard_melee_attack please.
 	//? legacy: for now no attacking nonliving
 	if(!isliving(target))
@@ -208,7 +210,7 @@
 	L.lastattacker = user
 	// click cooldown
 	// todo: clickcd rework
-	user.setClickCooldown(user.get_attack_speed(src))
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 	// animation
 	user.animate_swing_at_target(L)
 	// resolve accuracy
@@ -346,16 +348,16 @@
 			// no targeting
 			return NONE
 	// check intent
-	if((item_flags & ITEM_CAREFUL_BLUDGEON) && clickchain.intent == INTENT_HELP)
+	if((item_flags & ITEM_CAREFUL_BLUDGEON) && clickchain.using_intent == INTENT_HELP)
 		clickchain.initiator.action_feedback(SPAN_WARNING("You refrain from hitting [target] because your intent is set to help."), src)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	//? legacy: decloak
 	clickchain.performer.break_cloak()
 	// set mult
-	clickchain.damage_multiplier *= mult
+	clickchain.melee_damage_multiplier *= mult
 	// click cooldown
 	// todo: clickcd rework
-	clickchain.performer.setClickCooldown(clickchain.performer.get_attack_speed(src))
+	clickchain.performer.setClickCooldownLegacy(clickchain.performer.get_attack_speed_legacy(src))
 	// animation
 	clickchain.performer.animate_swing_at_target(target)
 	// perform the hit

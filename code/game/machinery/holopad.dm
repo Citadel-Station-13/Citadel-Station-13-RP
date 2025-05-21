@@ -1106,7 +1106,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 	anchored = TRUE
 	density = FALSE
 	opacity = FALSE
-	pass_flags = ATOM_PASS_ALL
+	pass_flags = ATOM_PASS_FLAGS_ALL
 	pass_flags_self = ATOM_PASS_BLOB | ATOM_PASS_GLASS | ATOM_PASS_GRILLE | ATOM_PASS_MOB | ATOM_PASS_OVERHEAD_THROW | ATOM_PASS_THROWN | ATOM_PASS_TABLE
 
 /obj/effect/overlay/hologram/Initialize(mapload, appearance/clone_from = /datum/hologram/general/holo_female)

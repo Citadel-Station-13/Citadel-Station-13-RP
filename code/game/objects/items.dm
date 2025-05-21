@@ -91,6 +91,7 @@
 	/// The inventory datum we're in.
 	///
 	/// * This also doubles as an 'is in inventory' check, as this will always be set if we are in inventory.
+	/// * This also doubles as 'get worn mob' by doing `inv_inside?.owner`.
 	var/datum/inventory/inv_inside
 	/// currently equipped slot id
 	///
@@ -185,7 +186,7 @@
 	/// 0 won't embed, and 100 will always embed
 	var/embed_chance = EMBED_CHANCE_UNSET
 
-	/// How long click delay will be when using this, in 1/10ths of a second. Checked in the user's get_attack_speed().
+	/// How long click delay will be when using this, in 1/10ths of a second. Checked in the user's get_attack_speed_legacy().
 	var/attackspeed = DEFAULT_ATTACK_COOLDOWN
 	/// Length of tiles it can reach, 1 is adjacent.
 	var/reach = 1
@@ -229,7 +230,7 @@
 /obj/item/Destroy()
 	// run inventory hooks
 	if(worn_slot && !worn_hook_suppressed)
-		var/mob/M = worn_mob()
+		var/mob/M = get_worn_mob()
 		if(!ismob(M))
 			stack_trace("invalid current equipped slot [worn_slot] on an item not on a mob.")
 			return ..()
@@ -242,16 +243,6 @@
 		return FALSE
 	else
 		return TRUE
-
-/obj/item/proc/update_twohanding()
-	update_worn_icon()
-
-/obj/item/proc/is_held_twohanded(mob/living/M)
-	for(var/i in M.get_usable_hand_indices())
-		if(!isnull(M.inventory?.held_items[i]))
-			continue
-		return TRUE
-	return FALSE
 
 /obj/item/legacy_ex_act(severity)
 	switch(severity)
@@ -267,16 +258,6 @@
 				qdel(src)
 				return
 		else
-	return
-
-//user: The mob that is suiciding
-//damagetype: The type of damage the item will inflict on the user
-//BRUTELOSS = 1
-//FIRELOSS = 2
-//TOXLOSS = 4
-//OXYLOSS = 8
-///Output a creative message and then return the damagetype done
-/obj/item/proc/suicide_act(mob/user)
 	return
 
 /obj/item/verb/move_to_top()
@@ -446,12 +427,9 @@
 
 	attempt_pickup(usr)
 
-/**
- *This proc is executed when someone clicks the on-screen UI button.
- *The default action is attack_self().
- */
 /obj/item/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	attack_self(usr)
+	return TRUE
 
 /obj/item/proc/get_loc_turf()
 	var/atom/L = loc
@@ -486,7 +464,7 @@
 
 	add_attack_logs(user,M,"Attack eyes with [name]")
 
-	user.setClickCooldown(user.get_attack_speed())
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy())
 	user.do_attack_animation(M)
 
 	src.add_fingerprint(user)
@@ -738,10 +716,10 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
  * * null
  */
 /obj/item/proc/set_actions_to(descriptor)
-	var/mob/worn_mob = worn_mob()
+	var/mob/get_worn_mob = get_worn_mob()
 
-	if(worn_mob)
-		unregister_item_actions(worn_mob)
+	if(get_worn_mob)
+		unregister_item_actions(get_worn_mob)
 
 	if(ispath(descriptor, /datum/action))
 		descriptor = new descriptor(src)
@@ -755,8 +733,8 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	else
 		item_actions = descriptor
 
-	if(worn_mob)
-		register_item_actions(worn_mob)
+	if(get_worn_mob)
+		register_item_actions(get_worn_mob)
 
 /**
  * handles action granting
@@ -846,7 +824,8 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 
 //* Flags *//
 
-/obj/item/proc/set_body_cover_flags()
+/obj/item/proc/set_body_cover_flags(new_body_cover_flags)
+	body_cover_flags = new_body_cover_flags
 	inv_inside.invalidate_coverage_cache()
 
 //* Interactions *//
@@ -978,8 +957,8 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 			var/requires_update = (item_flags & (ITEM_ENCUMBERS_WHILE_HELD | ITEM_ENCUMBERS_ONLY_HELD)) != (var_value & (ITEM_ENCUMBERS_WHILE_HELD | ITEM_ENCUMBERS_ONLY_HELD))
 			. = ..()
 			if(. && requires_update)
-				var/mob/living/L = worn_mob()
-				// check, as worn_mob() returns /mob, not /living
+				var/mob/living/L = get_worn_mob()
+				// check, as get_worn_mob() returns /mob, not /living
 				if(istype(L))
 					L.recalculate_carry()
 					L.update_carry()
@@ -987,15 +966,15 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 			// todo: introspection system update - this should be 'handled', as opposed to hooked.
 			. = ..()
 			if(. )
-				var/mob/living/L = worn_mob()
-				// check, as worn_mob() returns /mob, not /living
+				var/mob/living/L = get_worn_mob()
+				// check, as get_worn_mob() returns /mob, not /living
 				if(istype(L))
 					L.update_carry_slowdown()
 		if(NAMEOF(src, slowdown))
 			. = ..()
 			if(.)
-				var/mob/living/L = worn_mob()
-				// check, as worn_mob() returns /mob, not /living
+				var/mob/living/L = get_worn_mob()
+				// check, as get_worn_mob() returns /mob, not /living
 				if(istype(L))
 					L.update_item_slowdown()
 		if(NAMEOF(src, w_class))

@@ -239,7 +239,12 @@
 	if(!I.using_as_tool(function, flags, e_args, src, delay, cost, usage))
 		return FALSE
 	I.tool_feedback_start(function, flags, e_args, src, delay, cost, usage, volume)
-	if(!do_after(e_args.performer, delay, src, progress_instance = create_actor_progress_bar(e_args, delay)))
+	if(!do_after(
+		e_args.performer,
+		delay,
+		src,
+		progress_instance = delay ? create_actor_progress_bar(e_args, delay) : null
+	))
 		I.used_as_tool(function, flags, e_args, src, delay, cost, usage, FALSE)
 		I.tool_feedback_end(function, flags, e_args, src, delay, cost, usage, FALSE, volume)
 		return FALSE

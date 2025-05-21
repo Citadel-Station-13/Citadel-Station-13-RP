@@ -9,7 +9,7 @@
 
 	iff_factions = MOB_IFF_FACTION_MERCENARY
 
-	movement_cooldown = 5
+	movement_base_speed = 10 / 5
 	movement_sound = "mechstep" // This gets fed into playsound(), which can also take strings as a 'group' of sound files.
 	turn_sound = 'sound/mecha/mechturn.ogg'
 	maxHealth = 300
@@ -130,7 +130,7 @@
 	if(prob(deflect_chance))
 		visible_message(SPAN_WARNING( "\The [user]'s [I] bounces off \the [src]'s armor!"))
 		deflect_sprite()
-		user.setClickCooldown(user.get_attack_speed(I))
+		user.setClickCooldownLegacy(user.get_attack_speed_legacy(I))
 		return
 	..()
 

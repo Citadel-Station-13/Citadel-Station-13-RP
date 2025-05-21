@@ -432,16 +432,16 @@
 /obj/item/gun/projectile/energy/netgun,
 /obj/item/gun/projectile/energy/sniperrifle,
 /obj/item/gun/projectile/energy/gun/martin{
-	battery_lock = 0
+	legacy_battery_lock = 0
 	},
 /obj/item/gun/projectile/energy/gun/martin{
-	battery_lock = 0
+	legacy_battery_lock = 0
 	},
 /obj/item/gun/projectile/energy/gun/martin{
-	battery_lock = 0
+	legacy_battery_lock = 0
 	},
 /obj/item/gun/projectile/energy/gun/martin{
-	battery_lock = 0
+	legacy_battery_lock = 0
 	},
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
@@ -1552,12 +1552,12 @@
 /obj/item/stack/cable_coil,
 /obj/item/stack/cable_coil,
 /obj/item/stack/cable_coil,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "dm" = (
@@ -1618,7 +1618,7 @@
 	dir = 1
 	},
 /obj/structure/table/glass,
-/obj/item/storage/secure/briefcase/nsfw_pack_hybrid,
+/obj/item/storage/secure/briefcase/nsfw_pack,
 /obj/item/binoculars,
 /obj/item/survivalcapsule,
 /obj/item/survivalcapsule,

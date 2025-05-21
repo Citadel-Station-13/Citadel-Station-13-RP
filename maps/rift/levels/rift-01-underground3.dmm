@@ -562,7 +562,7 @@
 /turf/simulated/floor/plating,
 /area/quartermaster/mining_airlock)
 "Hk" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/quartermaster/mining_airlock)
 "Ho" = (

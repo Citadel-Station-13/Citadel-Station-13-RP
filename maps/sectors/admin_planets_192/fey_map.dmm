@@ -2366,7 +2366,7 @@
 /turf/simulated/floor/tiled/kafel_full/blue,
 /area/admin_planet/fey_forest/gateway_facility)
 "Ve" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/structure/atmospheric_retention_field{
 	color = "#8B0000";
 	name = "military grade atmospheric retention field"
@@ -2471,7 +2471,7 @@
 /turf/simulated/floor/fey/dry_grass,
 /area/admin_planet/fey_forest/underbrush)
 "WS" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/reinforced,
 /area/admin_planet/fey_forest/gateway_facility)
 "WV" = (
@@ -2493,7 +2493,7 @@
 /area/admin_planet/fey_forest/wilds)
 "Xu" = (
 /obj/effect/debris/cleanable/blood,
-/obj/item/grenade/concussion{
+/obj/item/grenade/simple/concussion{
 	pixel_x = 16;
 	pixel_y = 13
 	},

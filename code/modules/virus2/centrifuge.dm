@@ -56,12 +56,12 @@
 		data["busy"] = "Isolating pathogens..."
 	else
 		if(sample)
-			var/datum/reagent/blood/B = locate(/datum/reagent/blood) in sample.reagents.reagent_list
-			if(B)
-				data["antibodies"] = antigens2string(B.data["antibodies"], none=null)
+			var/datum/blood_mixture/sample_blood_mixture = legacy_virus2_access_blood_mixture(sample.reagents)
+			if(sample_blood_mixture)
+				data["antibodies"] = antigens2string(sample_blood_mixture.legacy_antibodies, none=null)
 
 				var/list/pathogens[0]
-				var/list/virus = B.data["virus2"]
+				var/list/virus = sample_blood_mixture.legacy_virus2
 				for(var/ID in virus)
 					var/datum/disease2/disease/V = virus[ID]
 					pathogens.Add(list(list("name" = V.name(), "spread_type" = V.spreadtype, "reference" = "\ref[V]")))
@@ -69,9 +69,8 @@
 				data["pathogens"] = pathogens
 
 			else
-				var/datum/reagent/antibodies/A = locate(/datum/reagent/antibodies) in sample.reagents.reagent_list
-				if(A)
-					data["antibodies"] = antigens2string(A.data["antibodies"], none=null)
+				if(sample.reagents.reagent_datas?[/datum/reagent/antibodies::id])
+					data["antibodies"] = antigens2string(sample.reagents.reagent_datas?[/datum/reagent/antibodies::id], none=null)
 				data["is_antibody_sample"] = 1
 
 	return data
@@ -101,8 +100,7 @@
 			print(user)
 			. = TRUE
 		if("isolate")
-			var/datum/reagent/blood/B = locate(/datum/reagent/blood) in sample.reagents.reagent_list
-			if(B)
+			if(sample.reagents.has_reagent(/datum/reagent/blood::id))
 				var/datum/disease2/disease/virus = locate(params["isolate"])
 				virus2 = virus.getcopy()
 				isolating = 40
@@ -110,12 +108,11 @@
 			. = TRUE
 		if("antibody")
 			var/delay = 20
-			var/datum/reagent/blood/B = locate(/datum/reagent/blood) in sample.reagents.reagent_list
-			if(!B)
+			if(!sample.reagents.has_reagent(/datum/reagent/blood::id))
 				state("\The [src] buzzes, \"No antibody carrier detected.\"", "blue")
 				return TRUE
 
-			var/has_toxins = locate(/datum/reagent/toxin) in sample.reagents.reagent_list
+			var/has_toxins = sample.reagents.has_reagent(/datum/reagent/toxin::id)
 			var/has_radium = sample.reagents.has_reagent("radium")
 			if(has_toxins || has_radium)
 				state("\The [src] beeps, \"Pathogen purging speed above nominal.\"", "blue")
@@ -136,11 +133,12 @@
 			. = TRUE
 
 /obj/machinery/computer/centrifuge/proc/cure()
-	if(!sample) return
-	var/datum/reagent/blood/B = locate(/datum/reagent/blood) in sample.reagents.reagent_list
-	if(!B) return
-
-	var/list/data = list("antibodies" = B.data["antibodies"])
+	if(!sample)
+		return
+	var/datum/blood_mixture/sample_blood_mixture = legacy_virus2_access_blood_mixture(sample.reagents)
+	if(!sample_blood_mixture)
+		return
+	var/list/data = list("antibodies" = sample_blood_mixture.legacy_antibodies)
 	var/amt= sample.reagents.get_reagent_amount("blood")
 	sample.reagents.remove_reagent("blood", amt)
 	sample.reagents.add_reagent("antibodies", amt, data)
@@ -150,7 +148,8 @@
 	ping("\The [src] pings, \"Antibody isolated.\"")
 
 /obj/machinery/computer/centrifuge/proc/isolate()
-	if(!sample) return
+	if(!sample)
+		return
 	var/obj/item/virusdish/dish = new/obj/item/virusdish(loc)
 	dish.virus2 = virus2
 	virus2 = null
@@ -172,13 +171,13 @@
 
 	P.info += "<hr>"
 
-	var/datum/reagent/blood/B = locate(/datum/reagent/blood) in sample.reagents.reagent_list
-	if(B)
+	var/datum/blood_mixture/sample_blood_mixture = legacy_virus2_access_blood_mixture(sample.reagents)
+	if(sample_blood_mixture)
 		P.info += "<u>Antibodies:</u> "
-		P.info += antigens2string(B.data["antibodies"])
+		P.info += antigens2string(sample_blood_mixture.legacy_antibodies)
 		P.info += "<br>"
 
-		var/list/virus = B.data["virus2"]
+		var/list/virus = sample_blood_mixture.legacy_virus2
 		P.info += "<u>Pathogens:</u> <br>"
 		if(virus.len > 0)
 			for(var/ID in virus)
@@ -188,10 +187,10 @@
 			P.info += "None<br>"
 
 	else
-		var/datum/reagent/antibodies/A = locate(/datum/reagent/antibodies) in sample.reagents.reagent_list
-		if(A)
+		var/list/antibodies_list = sample.reagents.reagent_datas?[/datum/reagent/antibodies::id]
+		if(antibodies_list)
 			P.info += "The following antibodies have been isolated from the blood sample: "
-			P.info += antigens2string(A.data["antibodies"])
+			P.info += antigens2string(antibodies_list)
 			P.info += "<br>"
 
 	P.info += {"

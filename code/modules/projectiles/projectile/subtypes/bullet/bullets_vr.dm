@@ -16,5 +16,8 @@
 	name = "stunshot"
 	icon_state = "bullet"
 	damage_force = 10
-	taser_effect = 1
-	agony = 100
+	base_projectile_effects = list(
+		/datum/projectile_effect/electrical_impulse{
+			shock_agony = 100;
+		}
+	)

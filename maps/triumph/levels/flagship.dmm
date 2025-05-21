@@ -563,7 +563,7 @@
 	},
 /area/centcom/restaurant)
 "bO" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/unsimulated/floor{
 	name = "plating"
 	},
@@ -1042,7 +1042,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "dj" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/unsimulated/floor{
 	name = "plating"
 	},
@@ -2388,12 +2388,12 @@
 /obj/item/clothing/glasses/welding/superior,
 /obj/structure/table/steel_reinforced,
 /obj/item/clothing/glasses/welding/superior,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -2751,7 +2751,7 @@
 /area/centcom/security)
 "iC" = (
 /obj/structure/fans/tiny,
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "emergency_medical"
 	},
 /obj/machinery/door/blast/regular/open{
@@ -3451,7 +3451,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/spawner/window/low_wall/borosillicate/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/specops/engine)
 "kX" = (
@@ -3781,7 +3781,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
 "lR" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/unsimulated/floor{
 	name = "plating"
 	},
@@ -3839,7 +3839,7 @@
 	},
 /area/centcom/command)
 "mb" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "emergency_cockpit"
 	},
 /turf/simulated/floor,
@@ -4074,7 +4074,7 @@
 /area/centcom/specops)
 "mE" = (
 /obj/structure/fans/tiny,
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "emergency_medical"
 	},
 /turf/unsimulated/floor{
@@ -4836,7 +4836,7 @@
 /area/centcom/living)
 "oL" = (
 /obj/structure/fans/tiny,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/door/blast/regular/open{
 	id = "emergency_shuttle_lockdown";
 	name = "Emergency Shuttle Blast Door"
@@ -5596,7 +5596,7 @@
 	},
 /area/centcom/security)
 "rp" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/unsimulated/floor{
 	name = "plating"
 	},
@@ -7042,7 +7042,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "vN" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/unsimulated/floor{
 	name = "plating"
 	},
@@ -7577,7 +7577,7 @@
 /area/centcom/control)
 "xj" = (
 /obj/structure/fans/tiny,
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "emergency_security"
 	},
 /obj/machinery/door/blast/regular/open{
@@ -8084,7 +8084,7 @@
 	},
 /area/centcom/medical)
 "yW" = (
-/obj/item/grenade/supermatter,
+/obj/item/grenade/simple/supermatter,
 /obj/structure/table/rack/steel,
 /obj/machinery/door/window/brigdoor{
 	req_access = list(109)
@@ -8210,7 +8210,7 @@
 	},
 /area/centcom/control)
 "zm" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /turf/unsimulated/floor{
 	name = "plating"
 	},
@@ -8606,7 +8606,7 @@
 /area/centcom/control)
 "AA" = (
 /obj/structure/fans/tiny,
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "emergency_medical"
 	},
 /turf/simulated/floor,
@@ -8838,7 +8838,7 @@
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
 "Bj" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/unsimulated/floor{
 	name = "plating"
 	},
@@ -9590,7 +9590,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "DZ" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/unsimulated/floor{
 	name = "plating"
 	},
@@ -9712,8 +9712,8 @@
 	},
 /area/centcom/command)
 "Et" = (
-/obj/spawner/window/low_wall/full/firelocks,
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /turf/unsimulated/floor{
 	name = "plating"
 	},
@@ -9951,7 +9951,7 @@
 /area/centcom/evac)
 "Fl" = (
 /obj/structure/fans/tiny,
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "emergency_cockpit"
 	},
 /obj/machinery/door/blast/regular/open{
@@ -10697,7 +10697,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/general)
 "HN" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/unsimulated/floor{
 	name = "plating"
 	},
@@ -11991,7 +11991,7 @@
 	},
 /area/centcom/control)
 "Lw" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/specops/cockpit)
 "Lx" = (
@@ -12384,7 +12384,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/restaurant)
 "MH" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/unsimulated/floor{
 	name = "plating"
 	},
@@ -13015,7 +13015,7 @@
 /area/shuttle/escape)
 "Oz" = (
 /obj/structure/fans/tiny,
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "emergency_security"
 	},
 /turf/simulated/floor,
@@ -14467,7 +14467,7 @@
 	},
 /area/centcom/security)
 "SW" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/unsimulated/floor{
 	name = "plating"
 	},
@@ -15137,7 +15137,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "Vu" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/unsimulated/floor{
 	name = "plating"
 	},
@@ -15435,7 +15435,7 @@
 	},
 /area/centcom/security)
 "Wt" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/centcom/specops/dock)
 "Wu" = (
@@ -15486,7 +15486,7 @@
 	},
 /area/centcom/security)
 "WD" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/unsimulated/floor{
 	name = "plating"
 	},

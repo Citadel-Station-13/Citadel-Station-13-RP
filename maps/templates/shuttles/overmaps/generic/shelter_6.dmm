@@ -199,8 +199,8 @@
 /obj/item/gun/projectile/energy/ionrifle,
 /obj/item/gun/projectile/energy/ionrifle/pistol,
 /obj/item/gun/projectile/energy/ionrifle/pistol,
-/obj/item/storage/secure/briefcase/nsfw_pack_hybrid_combat,
-/obj/item/storage/secure/briefcase/nsfw_pack_hybrid,
+/obj/item/storage/secure/briefcase/nsfw_pack_hos,
+/obj/item/storage/secure/briefcase/nsfw_pack,
 /obj/item/gun/launcher/grenade,
 /obj/item/gun/launcher/grenade,
 /obj/item/storage/box/flashbangs,
@@ -573,10 +573,10 @@
 /obj/item/reagent_containers/glass/bucket,
 /obj/item/reagent_containers/spray/cleaner,
 /obj/item/reagent_containers/spray/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
+/obj/item/grenade/simple/chemical/premade/cleaner,
+/obj/item/grenade/simple/chemical/premade/cleaner,
+/obj/item/grenade/simple/chemical/premade/cleaner,
+/obj/item/grenade/simple/chemical/premade/cleaner,
 /obj/item/soap/nanotrasen,
 /obj/item/soap/deluxe,
 /obj/item/soap,
@@ -1142,9 +1142,6 @@
 /obj/item/hardsuit/pmc/security,
 /obj/item/hardsuit/pmc/security,
 /obj/item/hardsuit/light/ninja,
-/obj/item/gun/projectile/energy/modular/cannon,
-/obj/item/gun/projectile/energy/modular/carbine,
-/obj/item/gun/projectile/energy/modular,
 /obj/item/gun/projectile/energy/medigun,
 /obj/item/gun/projectile/energy/captain,
 /obj/item/material/knife/machete/deluxe{
@@ -1178,10 +1175,10 @@
 /obj/item/cell/device/weapon/recharge/alien,
 /obj/item/cell/device/weapon/recharge/alien,
 /obj/item/cell/device/weapon/recharge/alien,
-/obj/item/storage/secure/briefcase/nsfw_pack_hybrid_combat,
-/obj/item/storage/secure/briefcase/nsfw_pack_hybrid,
-/obj/item/ammo_casing/microbattery/medical/corpse_mend,
-/obj/item/ammo_casing/microbattery/medical/corpse_mend,
+/obj/item/storage/secure/briefcase/nsfw_pack_hos,
+/obj/item/storage/secure/briefcase/nsfw_pack,
+/obj/item/ammo_casing/microbattery/vm_aml/corpse_mend,
+/obj/item/ammo_casing/microbattery/vm_aml/corpse_mend,
 /obj/item/cell/slime{
 	description_info = "This 'cell' holds a max charge of 20k and self recharges over time.";
 	icon_state = "icell";
@@ -1246,48 +1243,19 @@
 /obj/item/stack/telecrystal{
 	amount = 240
 	},
-/obj/item/card/mining_point_card{
-	mine_points = 50000
-	},
-/obj/item/card/mining_point_card{
-	mine_points = 50000
-	},
-/obj/item/card/mining_point_card{
-	mine_points = 50000
-	},
-/obj/item/card/mining_point_card{
-	mine_points = 50000
-	},
-/obj/item/card/mining_point_card{
-	mine_points = 50000
-	},
-/obj/item/card/mining_point_card{
-	mine_points = 50000
-	},
-/obj/item/card/mining_point_card/survey{
-	name = "survey point card";
-	survey_points = 5000
-	},
-/obj/item/card/mining_point_card/survey{
-	name = "survey point card";
-	survey_points = 5000
-	},
-/obj/item/card/mining_point_card/survey{
-	name = "survey point card";
-	survey_points = 5000
-	},
-/obj/item/card/mining_point_card/survey{
-	name = "survey point card";
-	survey_points = 5000
-	},
-/obj/item/card/mining_point_card/survey{
-	name = "survey point card";
-	survey_points = 5000
-	},
-/obj/item/card/mining_point_card/survey{
-	name = "survey point card";
-	survey_points = 5000
-	},
+/obj/item/point_redemption_voucher/preloaded/mining/c50000,
+/obj/item/point_redemption_voucher/preloaded/mining/c50000,
+/obj/item/point_redemption_voucher/preloaded/mining/c50000,
+/obj/item/point_redemption_voucher/preloaded/mining/c50000,
+/obj/item/point_redemption_voucher/preloaded/mining/c50000,
+/obj/item/point_redemption_voucher/preloaded/mining/c50000,
+/obj/item/point_redemption_voucher/preloaded/survey/c300,
+/obj/item/point_redemption_voucher/preloaded/survey/c300,
+/obj/item/point_redemption_voucher/preloaded/survey/c300,
+/obj/item/point_redemption_voucher/preloaded/survey/c300,
+/obj/item/point_redemption_voucher/preloaded/survey/c300,
+/obj/item/point_redemption_voucher/preloaded/survey/c300,
+
 /obj/item/survivalcapsule/military,
 /obj/item/survivalcapsule/military,
 /obj/item/survivalcapsule,
@@ -1469,7 +1437,7 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/tabiranth)
 "bq" = (
-/obj/machinery/mineral/equipment_vendor,
+/obj/machinery/point_redemption_vendor/mining,
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
@@ -1550,7 +1518,7 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/tabiranth)
 "bx" = (
-/obj/machinery/mineral/equipment_vendor/survey,
+/obj/machinery/point_redemption_vendor/survey,
 /obj/effect/floor_decal/techfloor{
 	dir = 10
 	},

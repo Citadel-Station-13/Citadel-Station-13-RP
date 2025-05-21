@@ -21,6 +21,8 @@
 	global.__sfx_lookup = list()
 	for(var/T in subtypesof(/datum/soundbyte))
 		var/datum/soundbyte/SB = T
+		if(initial(SB.abstract_type) == T)
+			continue
 		if(!initial(SB.path) && !ispath(SB, /datum/soundbyte/grouped))
 			continue
 		SB = new T

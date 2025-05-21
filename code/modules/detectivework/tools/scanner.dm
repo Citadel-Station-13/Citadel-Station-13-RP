@@ -6,7 +6,7 @@
 	var/list/stored = list()
 	w_class = WEIGHT_CLASS_SMALL
 	item_state = "electronic"
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	slot_flags = SLOT_BELT
 
 	var/reveal_fingerprints = TRUE
@@ -14,7 +14,7 @@
 	var/reveal_blood = TRUE
 	var/reveal_fibers = FALSE
 
-/obj/item/detective_scanner/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/detective_scanner/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if (!ishuman(target))

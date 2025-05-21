@@ -7,15 +7,24 @@
 	color = "#A5F0EE"
 	touch_met = 50
 
-/datum/reagent/space_cleaner/touch_obj(var/obj/O, amount)
+/datum/reagent/space_cleaner/on_touch_obj(obj/target, remaining, allocated, data)
+	. = ..()
+
+	var/obj/O = target
 	O.clean_blood()
-	O.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER * (amount / 10), RAD_CONTAMINATION_CLEANSE_FACTOR ** (1 / (amount / 10)))
+	O.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER * (allocated / 10), RAD_CONTAMINATION_CLEANSE_FACTOR ** (1 / (allocated / 10)))
 
-/datum/reagent/space_cleaner/touch_mob(mob/M, amount)
-	M.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER * (amount / 10), RAD_CONTAMINATION_CLEANSE_FACTOR ** (1 / (amount / 10)))
+/datum/reagent/space_cleaner/on_touch_mob(mob/target, remaining, allocated, data, zone)
+	. = ..()
 
-/datum/reagent/space_cleaner/touch_turf(turf/T)
-	if(volume >= 1)
+	var/mob/M = target
+	M.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER * (allocated / 10), RAD_CONTAMINATION_CLEANSE_FACTOR ** (1 / (allocated / 10)))
+
+/datum/reagent/space_cleaner/on_touch_turf(turf/target, remaining, allocated, data)
+	. = ..()
+
+	var/turf/T = target
+	if(allocated >= 1)
 		if(istype(T, /turf/simulated))
 			var/turf/simulated/S = T
 			S.dirt = 0
@@ -24,7 +33,7 @@
 		for(var/mob/living/simple_mob/slime/M in T)
 			M.adjustToxLoss(rand(5, 10))
 
-/datum/reagent/space_cleaner/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/space_cleaner/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	for(var/obj/item/held as anything in M.get_held_items())
 		held.clean_blood()
 	if(M.wear_mask)
@@ -51,7 +60,7 @@
 			return
 	M.clean_blood()
 
-/datum/reagent/space_cleaner/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/space_cleaner/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_SLIME)
 		M.adjustToxLoss(6 * removed)
 	else

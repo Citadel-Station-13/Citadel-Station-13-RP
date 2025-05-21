@@ -110,7 +110,7 @@
 
 #define isxeno(A) istype(A, /mob/living/simple_mob/xeno)
 
-#define issimple(A) istype(A, /mob/living/simple_mob)
+#define issimplemob(A) istype(A, /mob/living/simple_mob)
 
 /proc/is_species_type(atom/A, path)
 	if(!istype(A, /mob/living/carbon/human))
@@ -119,3 +119,5 @@
 	return istype(H.species, path)
 
 #define fast_is_species_type(H, path)	istype(H.species, path)
+
+#define is_holosphere_shell(A) istype(A, /mob/living/simple_mob/holosphere_shell)

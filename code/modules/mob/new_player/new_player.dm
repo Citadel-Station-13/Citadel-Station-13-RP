@@ -83,8 +83,6 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 	panel.set_window_options("can_close=0")
 	panel.set_content(output)
 	panel.open()
-	return
-
 
 /mob/new_player/statpanel_data(client/C)
 	. = ..()

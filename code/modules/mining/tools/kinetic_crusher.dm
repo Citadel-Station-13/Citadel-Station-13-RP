@@ -112,7 +112,7 @@
 		return ..()
 */
 
-/obj/item/kinetic_crusher/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/kinetic_crusher/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/L = target
 	if(!istype(L))
 		return ..()
@@ -325,7 +325,7 @@
 	if(isliving(target))
 		var/mob/living/L = target
 		if(hammer_synced.can_mark(L))
-			L.apply_grouped_effect(
+			L.apply_grouped_status_effect(
 				/datum/status_effect/grouped/crusher_mark,
 				WEAKREF(src),
 				TRUE,

@@ -61,24 +61,39 @@
 	name = "electrode"
 	icon_state = "spark"
 	fire_sound = 'sound/weapons/Gunshot2.ogg'
-	taser_effect = 1
-	agony = 40
+	base_projectile_effects = list(
+		/datum/projectile_effect/electrical_impulse{
+			shock_agony = 40;
+		}
+	)
 	light_range = 2
 	light_power = 0.5
 	light_color = "#FFFFFF"
 	//Damage will be handled on the MOB side, to prevent window shattering.
 
 /obj/projectile/energy/electrode/strong
-	agony = 55
+	base_projectile_effects = list(
+		/datum/projectile_effect/electrical_impulse{
+			shock_agony = 55;
+		}
+	)
 
 /obj/projectile/energy/electrode/stunshot
 	name = "stunshot"
 	damage_force = 5
-	agony = 80
+	base_projectile_effects = list(
+		/datum/projectile_effect/electrical_impulse{
+			shock_agony = 80;
+		}
+	)
 
 /obj/projectile/energy/electrode/goldenbolt	// MIGHTY GOLDEN BOLT
 	name = "taser bolt"
-	agony = 80
+	base_projectile_effects = list(
+		/datum/projectile_effect/electrical_impulse{
+			shock_agony = 80;
+		}
+	)
 
 /obj/projectile/energy/declone
 	name = "declone"
@@ -181,12 +196,12 @@
 	var/ear_safety = 0
 	ear_safety = M.get_ear_protection()
 	if(ear_safety == 1)
-		M.Confuse(150)
+		M.Confuse(6)
 	else if (ear_safety > 1)
-		M.Confuse(30)
+		M.Confuse(3)
 	else if (!ear_safety)
-		M.afflict_stun(20 * 10)
-		M.afflict_paralyze(20 * 2)
+		M.afflict_stun(2 SECONDS)
+		M.afflict_paralyze(0.5 SECONDS)
 		M.ear_damage += rand(1, 10)
 		M.ear_deaf = max(M.ear_deaf,15)
 	if (M.ear_damage >= 15)
@@ -216,7 +231,7 @@
 	light_color = "#0000FF"
 
 	embed_chance = 0
-	muzzle_type = /obj/effect/projectile/muzzle/pulse
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/pulse
 
 /obj/projectile/energy/phase
 	name = "phase wave"

@@ -123,15 +123,16 @@
 			if(isnull(holding))
 				return TRUE
 			on_eject(holding, usr)
-			usr.action_feedback(SPAN_NOTICE("You remove [holding] from [src]."), src)
-			usr.grab_item_from_interacted_with(holding, src)
-			holding = null
 			return TRUE
 
 /**
  * Called on tank ejection
  */
 /obj/machinery/portable_atmospherics/proc/on_eject(obj/item/tank/tank, mob/user)
+	usr.action_feedback(SPAN_NOTICE("You remove [holding] from [src]."), src)
+	usr.grab_item_from_interacted_with(holding, src)
+	holding = null
+	update_icon()
 	return TRUE
 
 /obj/machinery/portable_atmospherics/proc/set_on(enabled)

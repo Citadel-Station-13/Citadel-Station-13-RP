@@ -59,7 +59,7 @@
 /area/awaymission/spacebattle/syndicate2)
 "as" = (
 /obj/structure/table/reinforced,
-/obj/item/grenade/empgrenade,
+/obj/item/grenade/simple/emp,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate2)
 "au" = (
@@ -249,7 +249,7 @@
 /area/awaymission/spacebattle/syndicate1)
 "br" = (
 /obj/structure/table/reinforced,
-/obj/item/grenade/spawnergrenade/manhacks,
+/obj/item/grenade/simple/spawner/manhacks,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate1)
 "bs" = (
@@ -671,14 +671,14 @@
 /obj/structure/closet/crate{
 	name = "Gold Crate"
 	},
-/obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp,
+/obj/item/vehicle_module/tool/hydraulic_clamp,
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "dQ" = (
 /obj/structure/closet/crate{
 	name = "Gold Crate"
 	},
-/obj/item/mecha_parts/mecha_equipment/tool/drill,
+/obj/item/vehicle_module/tool/drill,
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "dR" = (
@@ -757,14 +757,14 @@
 /obj/structure/closet/crate{
 	name = "Gold Crate"
 	},
-/obj/item/mecha_parts/mecha_equipment/tool/syringe_gun,
+/obj/item/vehicle_module/tool/syringe_gun,
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "ej" = (
 /obj/structure/closet/crate{
 	name = "Gold Crate"
 	},
-/obj/item/mecha_parts/mecha_equipment/repair_droid,
+/obj/item/vehicle_module/repair_droid,
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "el" = (

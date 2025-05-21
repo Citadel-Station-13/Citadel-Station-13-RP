@@ -28,8 +28,6 @@
 	pass_flags = 1
 	mob_size = MOB_SMALL
 
-	var/speed = 1 // We move slightly slower than normal living things
-
 	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/pai)
 
 	holder_type = /obj/item/holder/pai
@@ -114,7 +112,7 @@
 	var/last_space_movement = 0
 
 	// transformation component
-	var/datum/component/object_transform/transform_component
+	var/datum/component/custom_transform/transform_component
 
 	var/icon/last_rendered_hologram_icon
 
@@ -131,6 +129,10 @@
 
 	var/list/active_holograms = list()
 
+	//* Movement *//
+	/// Base speed in tiles/second
+	var/movement_base_speed = 4
+
 /mob/living/silicon/pai/Initialize(mapload)
 	. = ..()
 	shell = loc
@@ -139,7 +141,7 @@
 	sradio = new(src)
 	communicator = new(src)
 	if(shell)
-		transform_component = AddComponent(/datum/component/object_transform, shell, "neatly folds inwards, compacting down to a rectangular card", "folds outwards, expanding into a mobile form.")
+		transform_component = AddComponent(/datum/component/custom_transform, shell, "neatly folds inwards, compacting down to a rectangular card", "folds outwards, expanding into a mobile form.")
 	if(card && !card.radio)
 		card.radio = new /obj/item/radio(src.card)
 		radio = card.radio
@@ -245,9 +247,9 @@
 /mob/living/silicon/pai/proc/switch_shell(obj/item/new_shell)
 	// setup transform text
 	if(istype(new_shell, /obj/item/paicard))
-		transform_component.to_object_text = "neatly folds inwards, compacting down to a rectangular card"
+		transform_component.transform_text = "neatly folds inwards, compacting down to a rectangular card"
 	else
-		transform_component.to_object_text = "neatly folds inwards, compacting down into their shell"
+		transform_component.transform_text = "neatly folds inwards, compacting down into their shell"
 
 	// if our shell is clothing, drop any accessories first
 	if(istype(shell, /obj/item/clothing))
@@ -257,7 +259,7 @@
 
 	// swap the shell, if the old shell is our card we keep it, otherwise we delete it because it's not important
 	shell = new_shell
-	var/obj/item/old_shell = transform_component.swap_object(new_shell)
+	var/obj/item/old_shell = transform_component.swap(new_shell)
 	if(istype(old_shell, /obj/item/paicard))
 		old_shell.forceMove(src)
 	else

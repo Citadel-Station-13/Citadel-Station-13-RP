@@ -1,0 +1,805 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aI" = (
+/obj/structure/table/steel,
+/obj/item/seeds/killertomatoseed,
+/obj/item/seeds/killertomatoseed,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/submap/skyplanet/poi/botany)
+"bK" = (
+/obj/machinery/seed_storage/xenobotany,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/submap/skyplanet/poi/botany)
+"dw" = (
+/obj/structure/table/standard,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/botany)
+"ek" = (
+/obj/structure/table/standard,
+/obj/machinery/microwave,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/botany)
+"eI" = (
+/obj/structure/closet,
+/obj/item/clothing/under/color/green,
+/obj/item/clothing/under/color/green_skirt,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/item/clothing/under/tajaran/summer,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/botany)
+"eK" = (
+/obj/item/material/shard,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/submap/skyplanet/poi/botany)
+"fS" = (
+/obj/effect/decal/remains/tajaran,
+/turf/simulated/floor/event/grass/grass1,
+/area/submap/skyplanet/poi/botany)
+"gK" = (
+/mob/living/simple_mob/hostile/tomato,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/submap/skyplanet/poi/botany)
+"hH" = (
+/turf/simulated/wall/r_wall,
+/area/template_noop)
+"iO" = (
+/obj/machinery/light/flicker,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/botany)
+"iT" = (
+/obj/structure/flora/grass/event/lavender_grass1,
+/obj/machinery/light/fairy{
+	dir = 8
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/submap/skyplanet/poi/botany)
+"jF" = (
+/obj/structure/table/gamblingtable,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/botany)
+"jN" = (
+/obj/item/digestion_remains/skull/unknown,
+/turf/simulated/floor/event/grass/grass1,
+/area/submap/skyplanet/poi/botany)
+"km" = (
+/obj/spawner/window/reinforced/full,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/submap/skyplanet/poi/botany)
+"kL" = (
+/obj/machinery/chemical_dispenser/xenoflora,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/submap/skyplanet/poi/botany)
+"ll" = (
+/obj/structure/closet,
+/obj/item/clothing/under/color/green,
+/obj/item/clothing/under/color/green_skirt,
+/obj/item/clothing/under/tajaran/summer/pants,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/botany)
+"lD" = (
+/mob/living/simple_mob/hostile/tomato,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/botany)
+"lN" = (
+/obj/structure/atmospheric_retention_field,
+/obj/structure/atmospheric_retention_field,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/botany)
+"mq" = (
+/obj/machinery/botany,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/botany)
+"mu" = (
+/obj/machinery/botany,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/submap/skyplanet/poi/botany)
+"nO" = (
+/obj/structure/table/steel,
+/obj/machinery/light/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/submap/skyplanet/poi/botany)
+"nR" = (
+/obj/structure/flora/grass/fey/bush/bush3,
+/obj/machinery/botany/editor,
+/obj/machinery/light/fairy,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/botany)
+"pU" = (
+/obj/item/digestion_remains/skull/tajaran,
+/turf/simulated/floor/event/grass/grass1,
+/area/submap/skyplanet/poi/botany)
+"qz" = (
+/obj/machinery/light/fairy,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/submap/skyplanet/poi/botany)
+"qK" = (
+/obj/spawner/window/reinforced/full,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/botany)
+"rr" = (
+/obj/structure/flora/grass/event/full_grass1,
+/obj/machinery/light/fairy,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/submap/skyplanet/poi/botany)
+"sj" = (
+/obj/machinery/vending/coffee,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/botany)
+"vb" = (
+/obj/machinery/light/fairy,
+/turf/simulated/floor/event/grass/grass1,
+/area/submap/skyplanet/poi/botany)
+"vC" = (
+/obj/structure/flora/grass/fey/bush/bush3,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/submap/skyplanet/poi/botany)
+"xQ" = (
+/obj/structure/flora/grass/event/lavender_grass1,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/submap/skyplanet/poi/botany)
+"xW" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/submap/skyplanet/poi/botany)
+"xY" = (
+/obj/machinery/botany,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/submap/skyplanet/poi/botany)
+"yB" = (
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/botany)
+"yS" = (
+/obj/structure/flora/grass/event/lavender_grass1,
+/turf/simulated/floor/event/grass/grass1,
+/area/submap/skyplanet/poi/botany)
+"zl" = (
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/submap/skyplanet/poi/botany)
+"zP" = (
+/obj/machinery/light/fairy,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/botany)
+"Be" = (
+/turf/template_noop,
+/area/template_noop)
+"CA" = (
+/obj/spawner/corpse/skeleton,
+/obj/item/clothing/suit/bio_suit,
+/obj/item/flamethrower/full,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/botany)
+"CJ" = (
+/obj/structure/table/steel,
+/obj/item/storage/box/botanydisk,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/submap/skyplanet/poi/botany)
+"Ec" = (
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/botany)
+"Eo" = (
+/obj/machinery/light/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/botany)
+"EJ" = (
+/obj/machinery/light/fairy{
+	dir = 8
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/submap/skyplanet/poi/botany)
+"Fn" = (
+/obj/structure/flora/tree/fey/small_tree/tree1,
+/turf/simulated/floor/event/grass/grass1,
+/area/submap/skyplanet/poi/botany)
+"Fr" = (
+/obj/item/digestion_remains/skull/tajaran,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/botany)
+"FM" = (
+/obj/machinery/light/fairy{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/botany)
+"FN" = (
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/botany)
+"Ge" = (
+/obj/structure/flora/tree/fey/small_tree/tree5,
+/turf/simulated/floor/event/grass/grass1,
+/area/submap/skyplanet/poi/botany)
+"Gz" = (
+/obj/structure/flora/tree/fey/small_tree/tree3,
+/turf/simulated/floor/event/grass/grass1,
+/area/submap/skyplanet/poi/botany)
+"GM" = (
+/obj/structure/closet/secure_closet/freezer/kitchen/mining,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/botany)
+"Hm" = (
+/mob/living/simple_mob/hostile/tomato,
+/turf/simulated/floor/event/grass/grass1,
+/area/submap/skyplanet/poi/botany)
+"Hv" = (
+/obj/structure/flora/grass/event/full_grass1,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/submap/skyplanet/poi/botany)
+"HK" = (
+/obj/structure/closet,
+/obj/item/clothing/under/color/green,
+/obj/item/clothing/under/color/green_skirt,
+/obj/item/clothing/under/tajaran/summer/dress,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/botany)
+"Iy" = (
+/obj/structure/flora/grass/event/full_grass1,
+/turf/simulated/floor/event/grass/grass1,
+/area/submap/skyplanet/poi/botany)
+"IB" = (
+/obj/structure/flora/grass/event/lavender_grass1,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/submap/skyplanet/poi/botany)
+"Kc" = (
+/obj/structure/table/steel,
+/obj/item/seeds/bluetomatoseed,
+/obj/item/seeds/bluetomatoseed,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/submap/skyplanet/poi/botany)
+"Nz" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/floor/event/grass/grass1,
+/area/submap/skyplanet/poi/botany)
+"NZ" = (
+/obj/machinery/light/flicker,
+/turf/simulated/floor/event/grass/grass1,
+/area/submap/skyplanet/poi/botany)
+"Of" = (
+/obj/structure/flora/grass/fey/bush/bush3,
+/turf/simulated/floor/event/grass/grass1,
+/area/submap/skyplanet/poi/botany)
+"OM" = (
+/obj/structure/flora/tree/fey/large_tree/tree7,
+/turf/simulated/floor/event/grass/grass1,
+/area/submap/skyplanet/poi/botany)
+"Pd" = (
+/obj/item/digestion_remains/skull/tajaran,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/submap/skyplanet/poi/botany)
+"Pj" = (
+/obj/machinery/botany/extractor,
+/obj/machinery/light/fairy,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/botany)
+"PK" = (
+/turf/simulated/floor/event/grass/grass1,
+/area/submap/skyplanet/poi/botany)
+"Re" = (
+/obj/structure/flora/tree/fey/large_tree/tree1,
+/turf/simulated/floor/event/grass/grass1,
+/area/submap/skyplanet/poi/botany)
+"Rg" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/submap/skyplanet/poi/botany)
+"Sm" = (
+/obj/structure/table/steel,
+/obj/machinery/light/flicker{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/submap/skyplanet/poi/botany)
+"So" = (
+/obj/structure/atmospheric_retention_field,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/botany)
+"TC" = (
+/obj/structure/flora/grass/event/full_grass1,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/submap/skyplanet/poi/botany)
+"TJ" = (
+/obj/machinery/light/fairy{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/submap/skyplanet/poi/botany)
+"Uf" = (
+/obj/item/material/shard,
+/turf/simulated/floor/event/grass/grass1,
+/area/submap/skyplanet/poi/botany)
+"Vt" = (
+/obj/structure/flora/grass/fey/bush/bush3,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/submap/skyplanet/poi/botany)
+"Xa" = (
+/obj/machinery/light/flamp,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/botany)
+"Xi" = (
+/obj/effect/decal/remains/tajaran,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/submap/skyplanet/poi/botany)
+"Yb" = (
+/turf/simulated/wall/r_wall/prepainted/civilian,
+/area/submap/skyplanet/poi/botany)
+"Yk" = (
+/obj/machinery/botany,
+/turf/simulated/floor/event/grass/grass1,
+/area/submap/skyplanet/poi/botany)
+"Yx" = (
+/obj/structure/flora/tree/fey/small_tree/tree7,
+/turf/simulated/floor/event/grass/grass1,
+/area/submap/skyplanet/poi/botany)
+"Ze" = (
+/obj/structure/table/gamblingtable,
+/obj/item/toy/figure/gardener,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/botany)
+"ZW" = (
+/obj/structure/curtain/open/bed,
+/obj/structure/bed,
+/obj/random/bedsheet,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/botany)
+
+(1,1,1) = {"
+hH
+Be
+Be
+Be
+Be
+Be
+Be
+Be
+Be
+Be
+Be
+Be
+Be
+Be
+Be
+Be
+Be
+Be
+Be
+hH
+"}
+(2,1,1) = {"
+Be
+Be
+Be
+Yb
+Yb
+Yb
+Yb
+Yb
+Yb
+Yb
+Yb
+Yb
+Yb
+So
+So
+lN
+So
+Yb
+Be
+Be
+"}
+(3,1,1) = {"
+Be
+Be
+Yb
+CJ
+Kc
+Sm
+aI
+bK
+xW
+Nz
+PK
+Iy
+Yb
+Eo
+FN
+FN
+iO
+Yb
+Be
+Be
+"}
+(4,1,1) = {"
+Be
+Yb
+Yb
+nO
+zl
+zl
+xW
+xW
+zl
+Nz
+Iy
+NZ
+Yb
+FN
+FN
+FN
+FN
+Yb
+Yb
+Be
+"}
+(5,1,1) = {"
+Be
+Yb
+Yb
+kL
+xW
+xW
+xW
+xW
+eK
+Uf
+PK
+Iy
+Yb
+FN
+FN
+FN
+FN
+Yb
+Yb
+Be
+"}
+(6,1,1) = {"
+Be
+Yb
+Yb
+Yb
+Rg
+km
+km
+km
+PK
+Yb
+Yb
+Yb
+Yb
+Eo
+FN
+FN
+iO
+Yb
+Yb
+Be
+"}
+(7,1,1) = {"
+Be
+km
+TJ
+FM
+zl
+Fr
+zl
+xW
+Hv
+iT
+EJ
+EJ
+Rg
+CA
+FN
+FN
+FN
+Yb
+Yb
+Be
+"}
+(8,1,1) = {"
+Be
+km
+vC
+zl
+xQ
+yB
+yB
+zl
+PK
+fS
+Hm
+zP
+Yb
+Yb
+Yb
+Yb
+Yb
+Yb
+Yb
+Be
+"}
+(9,1,1) = {"
+Be
+km
+yB
+Gz
+Of
+zl
+zl
+PK
+OM
+zl
+PK
+zP
+Yb
+sj
+dw
+dw
+ek
+GM
+Yb
+Be
+"}
+(10,1,1) = {"
+Be
+km
+PK
+mu
+PK
+Yk
+zl
+mq
+zl
+Yk
+OM
+xW
+Rg
+Ec
+Ec
+Ec
+Ec
+Ec
+qK
+Be
+"}
+(11,1,1) = {"
+Be
+km
+Re
+PK
+jN
+Iy
+Hm
+PK
+xW
+PK
+PK
+qz
+Yb
+Yb
+Ec
+Ec
+Ec
+Ec
+qK
+Be
+"}
+(12,1,1) = {"
+Be
+km
+PK
+Yk
+PK
+zl
+PK
+Yk
+xW
+mq
+Ge
+zP
+Yb
+ZW
+Ec
+Ze
+jF
+Ec
+qK
+Be
+"}
+(13,1,1) = {"
+Be
+km
+Xi
+PK
+PK
+PK
+fS
+yS
+gK
+Hv
+pU
+rr
+Yb
+Yb
+Ec
+jF
+jF
+Ec
+qK
+Be
+"}
+(14,1,1) = {"
+Be
+km
+TC
+Hm
+PK
+jN
+IB
+Yk
+PK
+mu
+PK
+zP
+Yb
+ZW
+Ec
+Ec
+Ec
+Ec
+qK
+Be
+"}
+(15,1,1) = {"
+Be
+km
+PK
+PK
+gK
+PK
+Xi
+yB
+lD
+PK
+Yx
+vb
+Yb
+Yb
+Xa
+Ec
+Ec
+Ec
+qK
+Be
+"}
+(16,1,1) = {"
+Be
+km
+zl
+PK
+Re
+xY
+PK
+Fn
+Hm
+mu
+PK
+qz
+Yb
+ZW
+Ec
+Ec
+Ec
+eI
+Yb
+Be
+"}
+(17,1,1) = {"
+Be
+km
+km
+PK
+PK
+yB
+Pd
+TC
+PK
+Hm
+zl
+nR
+Yb
+Yb
+Ec
+Ec
+HK
+Yb
+Yb
+Be
+"}
+(18,1,1) = {"
+Be
+Be
+km
+km
+yB
+zl
+Ge
+xY
+Vt
+mq
+yB
+Pj
+Yb
+ZW
+Ec
+ll
+Yb
+Yb
+Be
+Be
+"}
+(19,1,1) = {"
+Be
+Be
+Be
+km
+km
+km
+km
+km
+km
+km
+km
+km
+Yb
+Yb
+Yb
+Yb
+Yb
+Be
+Be
+Be
+"}
+(20,1,1) = {"
+hH
+Be
+Be
+Be
+Be
+Be
+Be
+Be
+Be
+Be
+Be
+Be
+Be
+Be
+Be
+Be
+Be
+Be
+Be
+hH
+"}

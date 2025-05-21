@@ -146,7 +146,13 @@
 		visible = SPAN_WARNING("[e_args.performer] starts tinkering with [src] using their [I]!"),
 		otherwise_self = SPAN_WARNING("You start tinkering with [src] using your [I]..."),
 	)
-	if(!do_after(e_args.performer, default_multitool_hijack, src, mobility_flags = MOBILITY_CAN_USE, progress_instance = create_actor_progress_bar(e_args)))
+	if(!do_after(
+		e_args.performer,
+		default_multitool_hijack,
+		src,
+		mobility_flags = MOBILITY_CAN_USE,
+		progress_instance = default_multitool_hijack ? create_actor_progress_bar(e_args, default_multitool_hijack) : null,
+	))
 		return TRUE
 	// todo: uh, this obviously needs a wrapper
 	ui_interact(e_args.initiator)

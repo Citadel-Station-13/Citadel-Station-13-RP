@@ -7,7 +7,7 @@
 	Using an object on the gripper will interact with the item inside it, if it exists, instead."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "gripper"
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 
 	//Has a list of items that it can hold.
 	var/list/can_hold = list(
@@ -334,10 +334,10 @@
 	desc = "A large, heavy-duty grasping tool used in construction of mechs."
 
 	can_hold = list(
-		/obj/item/mecha_parts/part,
-		/obj/item/mecha_parts/micro/part,
-		/obj/item/mecha_parts/mecha_equipment,
-		/obj/item/mecha_parts/mecha_tracking
+		/obj/item/vehicle_part,
+		/obj/item/vehicle_part/micro,
+		/obj/item/vehicle_module,
+		/obj/item/vehicle_tracking_beacon
 		)
 
 /obj/item/gripper/no_use/loader //This is used to disallow building with metal.

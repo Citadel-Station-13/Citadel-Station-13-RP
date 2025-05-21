@@ -13,7 +13,7 @@
 	var/list/ids = config.all_alien_whitelists_for(client_ckey)
 	. = list()
 	for(var/datum/species/CS as anything in SScharacters.all_character_species())
-		if((ckey(CS.uid) in ids) || (CS.species_spawn_flags & SPECIES_SPAWN_WHITELIST_FLEXIBLE && (ckey(CS.superspecies_id) in ids)))
+		if((ckey(CS.name) in ids) || (CS.species_spawn_flags & SPECIES_SPAWN_WHITELIST_FLEXIBLE && (ckey(CS.superspecies_id) in ids)))
 			. += CS.uid
 
 /**

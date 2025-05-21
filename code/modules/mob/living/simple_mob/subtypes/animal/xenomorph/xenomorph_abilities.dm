@@ -42,11 +42,11 @@
 
 /mob/living/simple_mob/animal/space/xenomorph/breaker/Bump(atom/movable/AM)
 	if(charging)
-		visible_message("<span class='warning'>[src] runs [AM]!</span>")
+		visible_message("<span class='warning'>[src] rams [AM]!</span>")
 		if(istype(AM, /mob/living))
 			var/mob/living/M = AM
-			M.afflict_stun(20 * 5)
-			M.afflict_paralyze(20 * 3)
+			M.afflict_paralyze(1 SECONDS)
+			M.afflict_knockdown(2 SECONDS)
 			var/throwdir = pick(turn(dir, 45), turn(dir, -45))
 			M.throw_at_old(get_step(src.loc, throwdir), 1, 1, src)
 			runOver(M) // Actually should not use this, placeholder
@@ -66,7 +66,12 @@
 		M.apply_damage(0.5 * damage, DAMAGE_TYPE_BRUTE, BP_R_LEG)
 		M.apply_damage(0.5 * damage, DAMAGE_TYPE_BRUTE, BP_L_ARM)
 		M.apply_damage(0.5 * damage, DAMAGE_TYPE_BRUTE, BP_R_ARM)
-		blood_splatter(src, M, 1)
+
+		var/datum/blood_mixture/to_use
+		if(iscarbon(M))
+			var/mob/living/carbon/carbon = M
+			to_use = carbon.get_blood_mixture()
+		blood_splatter_legacy(get_turf(M), to_use, TRUE)
 
 /mob/living/simple_mob/animal/space/xenomorph/breaker/apply_melee_effects(atom/A)
 	if(isliving(A))
@@ -152,7 +157,11 @@
 		M.apply_damage(0.5 * damage, DAMAGE_TYPE_BRUTE, BP_R_LEG)
 		M.apply_damage(0.5 * damage, DAMAGE_TYPE_BRUTE, BP_L_ARM)
 		M.apply_damage(0.5 * damage, DAMAGE_TYPE_BRUTE, BP_R_ARM)
-		blood_splatter(src, M, 1)
+		var/datum/blood_mixture/using_blood_mixture
+		if(iscarbon(M))
+			var/mob/living/carbon/carbon_victim = M
+			using_blood_mixture = carbon_victim.get_blood_mixture()
+		blood_splatter_legacy(get_turf(src), using_blood_mixture, TRUE)
 
 /mob/living/simple_mob/animal/space/xenomorph/monarch/apply_melee_effects(atom/A)
 	if(isliving(A))

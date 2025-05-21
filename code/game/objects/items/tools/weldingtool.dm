@@ -64,7 +64,7 @@
 	if(max_fuel)
 		. += "[icon2html(thing = src, target = world)] The [src.name] contains [get_fuel()]/[src.max_fuel] units of fuel!"
 
-/obj/item/weldingtool/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/weldingtool/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(ishuman(target) && user.a_intent == INTENT_HELP)
 		var/mob/living/carbon/human/H = target
 		var/obj/item/organ/external/S = H.organs_by_name[user.zone_sel.selecting]
@@ -80,6 +80,15 @@
 		if(S.robo_repair(15, DAMAGE_TYPE_BRUTE, "some dents", src, user))
 			remove_fuel(1, user)
 		return NONE
+	if(is_holosphere_shell(target) && user.a_intent == INTENT_HELP)
+		if(!welding)
+			to_chat(user, "<span class='warning'>You'll need to turn [src] on to patch the damage on [target]!</span>")
+			return NONE
+		var/mob/living/simple_mob/holosphere_shell/shell = target
+		shell.shell_repair(10, DAMAGE_TYPE_BRUTE, "some dents", src, user)
+		remove_fuel(1, user)
+		return NONE
+
 	return ..()
 
 /obj/item/weldingtool/attackby(obj/item/W as obj, mob/living/user as mob)
@@ -580,8 +589,8 @@
 	var/cell_type = /obj/item/cell/device
 	var/use_external_power = 0	//If in a borg or hardsuit, this needs to = 1
 	flame_color = "#00CCFF"  // Blue-ish, to set it apart from the gas flames.
-	acti_sound = /datum/soundbyte/grouped/sparks
-	deac_sound = /datum/soundbyte/grouped/sparks
+	acti_sound = /datum/soundbyte/sparks
+	deac_sound = /datum/soundbyte/sparks
 
 /obj/item/weldingtool/electric/unloaded
 	cell_type = null
@@ -704,7 +713,7 @@
 	desc = "If you're seeing this, someone did a dum-dum."
 
 /obj/item/weldingtool/electric/mounted/exosuit
-	var/obj/item/mecha_parts/mecha_equipment/equip_mount = null
+	var/obj/item/vehicle_module/equip_mount = null
 	flame_intensity = 1
 	eye_safety_modifier = 2
 	always_process = TRUE
@@ -712,7 +721,7 @@
 /obj/item/weldingtool/electric/mounted/exosuit/Initialize(mapload)
 	. = ..()
 
-	if(istype(loc, /obj/item/mecha_parts/mecha_equipment))
+	if(istype(loc, /obj/item/vehicle_module))
 		equip_mount = loc
 
 /obj/item/weldingtool/electric/mounted/exosuit/process()

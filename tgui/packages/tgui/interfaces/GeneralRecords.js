@@ -51,7 +51,7 @@ export const GeneralRecords = (_properties, context) => {
       height={640}
       resizable>
       <ComplexModal />
-      <Window.Content className="Layout__content--flexColumn">
+      <Window.Content className="Layout__content--flexColumn" scrollable>
         <LoginInfo />
         <TemporaryNotice />
         <GeneralRecordsNavigation />

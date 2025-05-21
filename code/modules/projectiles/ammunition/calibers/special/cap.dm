@@ -1,12 +1,13 @@
 /datum/ammo_caliber/cap_gun
-	caliber = "capgun"
+	id = "cap_gun"
+	caliber = "cap_gun"
 
 /obj/item/ammo_casing/cap_gun
 	name = "cap"
 	desc = "A cap for children toys."
 	icon = 'icons/modules/projectiles/casings/slim.dmi'
 	icon_state = "small"
-	caliber = /datum/ammo_caliber/cap_gun
+	casing_caliber = /datum/ammo_caliber/cap_gun
 	color = "#FF0000"
 	projectile_type = /obj/projectile/bullet/pistol/cap
 	materials_base = list(MAT_STEEL = 85)

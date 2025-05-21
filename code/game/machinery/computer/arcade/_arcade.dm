@@ -19,7 +19,7 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 		/obj/item/toy/prize/mauler						= 1,
 		/obj/item/toy/prize/odysseus					= 1,
 		/obj/item/toy/prize/phazon						= 1,
-		/obj/item/toy/waterflower						= 1,
+		/obj/item/reagent_containers/spray/waterflower						= 1,
 		/obj/random/action_figure						= 1,
 		/obj/random/plushie								= 1,
 		/obj/item/toy/cultsword							= 1,

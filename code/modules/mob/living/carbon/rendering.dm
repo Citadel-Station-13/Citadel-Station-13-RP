@@ -56,6 +56,7 @@
 		// unreference so we don't try to add overlay it
 		overlay_or_list = null
 	else
+		SEND_SIGNAL(src, COMSIG_CARBON_UPDATING_OVERLAY, args, key)
 		standing_overlays[key] = overlay_or_list
 
 	if(!do_not_update)

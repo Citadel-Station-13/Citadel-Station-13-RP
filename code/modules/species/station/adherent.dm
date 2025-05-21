@@ -1,6 +1,7 @@
 /datum/species/adherent
 	uid = SPECIES_ID_ADHERENT
 	id = SPECIES_ID_ADHERENT
+
 	name = SPECIES_ADHERENT
 	name_plural = "Adherents"
 	default_bodytype = BODYTYPE_ADHERENT
@@ -78,7 +79,7 @@
 	flesh_color = "#90edeb"
 	base_color  = "#066000"
 
-	slowdown = -0.5
+	movement_base_speed = 6.25
 
 	vision_innate = /datum/vision/baseline/species_tier_2
 
@@ -195,6 +196,8 @@
 */
 /datum/species/adherent/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	for(var/key in H.standing_overlays)
+		if(key == HUMAN_OVERLAY_BODY)
+			continue
 		H.cut_overlay(H.standing_overlays[key])
 	//Todo: find a better way to adjust clothing, than to wipe all overlays
 

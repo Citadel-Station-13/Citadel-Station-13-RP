@@ -4132,10 +4132,10 @@
 /obj/item/reagent_containers/glass/bucket,
 /obj/item/reagent_containers/spray/cleaner,
 /obj/item/reagent_containers/spray/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
+/obj/item/grenade/simple/chemical/premade/cleaner,
+/obj/item/grenade/simple/chemical/premade/cleaner,
+/obj/item/grenade/simple/chemical/premade/cleaner,
+/obj/item/grenade/simple/chemical/premade/cleaner,
 /obj/item/soap/nanotrasen,
 /obj/item/soap/deluxe,
 /obj/item/soap,
@@ -4695,7 +4695,6 @@
 /area/mothership/dorm6)
 "kL" = (
 /obj/item/gun/projectile/ballistic/shotgun/pump/combat{
-	ammo_type = /obj/item/ammo_casing/a12g/beanbag;
 	desc = "Built for close quarters combat, the Hesphaistos Industries KS-40 is widely regarded as a weapon of choice for repelling boarders. This one has 'Property of the Warden' inscribed on the stock.";
 	name = "warden's shotgun"
 	},
@@ -6205,8 +6204,8 @@
 /obj/structure/closet/crate/secure/weapon{
 	req_one_access = list(108)
 	},
-/obj/item/storage/secure/briefcase/nsfw_pack_hybrid,
-/obj/item/storage/secure/briefcase/nsfw_pack_hybrid_combat,
+/obj/item/storage/secure/briefcase/nsfw_pack,
+/obj/item/storage/secure/briefcase/nsfw_pack_hos,
 /obj/item/gun/projectile/energy/ionrifle/pistol,
 /obj/item/gun/projectile/energy/ionrifle/pistol,
 /obj/item/gun/projectile/energy/ionrifle,

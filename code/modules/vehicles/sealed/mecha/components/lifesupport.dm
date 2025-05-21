@@ -1,5 +1,5 @@
 
-/obj/item/mecha_parts/component/gas
+/obj/item/vehicle_component/gas
 	name = "mecha life-support"
 	icon = 'icons/mecha/mech_component.dmi'
 	icon_state = "lifesupport"
@@ -20,7 +20,7 @@
 
 	internal_damage_flag = MECHA_INT_TANK_BREACH
 
-/obj/item/mecha_parts/component/gas/reinforced
+/obj/item/vehicle_component/gas/reinforced
 	name = "reinforced mecha life-support"
 
 	emp_resistance = 2

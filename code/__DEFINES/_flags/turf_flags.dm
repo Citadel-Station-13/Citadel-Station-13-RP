@@ -13,6 +13,8 @@
 #define TURF_SEMANTICALLY_BOTTOMLESS	(1<<6)
 /// considered a volatile-changing area by persistence, which means things like trash and debris won't stay here
 #define TURF_FLAG_ERODING				(1<<7)
+/// The slowdown affects a physical person, even if they aren't walking on the tile the turf represents.
+#define TURF_SLOWDOWN_INCLUDE_FLYING	(1<<8)
 
 ///CITMAIN TURF FLAGS - Completely unused
 /*
@@ -34,6 +36,7 @@ DEFINE_BITFIELD(turf_flags, list(
 	BITFIELD(TURF_ZONE_REBUILD_QUEUED),
 	BITFIELD(TURF_SEMANTICALLY_BOTTOMLESS),
 	BITFIELD(TURF_FLAG_ERODING),
+	BITFIELD(TURF_SLOWDOWN_INCLUDE_FLYING),
 ))
 
 //* /turf_path_danger var on /turf

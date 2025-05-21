@@ -25,6 +25,7 @@ export const ColorMate = (props, context) => {
                       height="100%"
                       style={{
                         '-ms-interpolation-mode': 'nearest-neighbor',
+                        'image-rendering': 'pixelated',
                       }} />
                   </Section>
                 </Table.Cell>
@@ -37,6 +38,7 @@ export const ColorMate = (props, context) => {
                       height="100%"
                       style={{
                         '-ms-interpolation-mode': 'nearest-neighbor',
+                        'image-rendering': 'pixelated',
                       }} />
                   </Section>
                 </Table.Cell>

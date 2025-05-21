@@ -28,6 +28,8 @@
 #define CONTAMINATION_IMMUNE (1<<12)
 /// Cannot be ignited
 #define NO_IGNITE (1<<13)
+/// Cannot get nutrition from food
+#define NO_NUTRITION_GAIN (1<<14)
 
 DEFINE_BITFIELD(species_flags, list(
 	BITFIELD(NO_MINOR_CUT),
@@ -43,6 +45,7 @@ DEFINE_BITFIELD(species_flags, list(
 	BITFIELD(NO_INFECT),
 	BITFIELD(NO_DEFIB),
 	BITFIELD(CONTAMINATION_IMMUNE),
+	BITFIELD(NO_NUTRITION_GAIN)
 ))
 
 //! species_fluff_flags
@@ -119,6 +122,10 @@ DEFINE_BITFIELD(species_spawn_flags, list(
 #define RADIATION_GLOWS (1<<6)
 /// Sets default skin colors based on icons.
 #define HAS_BASE_SKIN_COLOR (1<<7)
+/// Body alpha selectable
+#define HAS_BODY_ALPHA (1<<8)
+/// Hair alpha selectable
+#define HAS_HAIR_ALPHA (1<<9)
 
 DEFINE_BITFIELD(species_appearance_flags, list(
 	"HAS_SKIN_TONE"   = HAS_SKIN_TONE,
@@ -129,6 +136,8 @@ DEFINE_BITFIELD(species_appearance_flags, list(
 	"HAS_HAIR_COLOR"  = HAS_HAIR_COLOR,
 	"RADIATION_GLOWS" = RADIATION_GLOWS,
 	"HAS_BASE_SKIN_COLOR" = HAS_BASE_SKIN_COLOR,
+	"HAS_BODY_ALPHA"  = HAS_BODY_ALPHA,
+	"HAS_HAIR_ALPHA"  = HAS_HAIR_ALPHA,
 ))
 
 

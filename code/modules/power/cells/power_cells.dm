@@ -107,12 +107,12 @@
 	. = ..()
 	add_overlay("[icon_state]1")
 
-/obj/item/fbp_backup_cell/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/fbp_backup_cell/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(!used && ishuman(target))
 		var/mob/living/carbon/human/H = target
-		if(H.isSynthetic())
+		if(H.isSynthetic() || fast_is_species_type(H, /datum/species/holosphere))
 			if(H.nutrition <= amount)
 				use(user,H)
 			else

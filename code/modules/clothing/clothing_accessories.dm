@@ -38,8 +38,8 @@
 			return TRUE
 	return FALSE
 
-/obj/item/clothing/worn_mob()
-	return isnull(accessory_host)? ..() : accessory_host.worn_mob()
+/obj/item/clothing/get_worn_mob()
+	return isnull(accessory_host)? ..() : accessory_host.get_worn_mob()
 
 /obj/item/clothing/update_worn_icon()
 	if(accessory_host)
@@ -304,7 +304,7 @@
 			var/choice = input(user, "What to take off?", "Strip Accessory") as null|anything in choices
 			if(!choice)
 				return
-			var/mob/M = worn_mob()
+			var/mob/M = get_worn_mob()
 			if(!M)
 				return
 			var/obj/item/clothing/accessory/A = choices[choice]
@@ -319,7 +319,7 @@
 				return
 			if(!(A in accessories))
 				return
-			add_attack_logs(user, worn_mob(),  "Detached [choice] from [src]")
+			add_attack_logs(user, get_worn_mob(),  "Detached [choice] from [src]")
 			if(istype(A, /obj/item/clothing/accessory/badge) || istype(A, /obj/item/clothing/accessory/medal))
 				M.visible_message(
 					SPAN_WARNING("[user] tears \the [A] off of [M]'s [src]!"),

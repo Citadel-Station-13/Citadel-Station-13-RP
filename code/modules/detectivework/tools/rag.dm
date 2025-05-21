@@ -31,7 +31,7 @@
 	possible_transfer_amounts = list(3)
 	volume = 4
 	can_be_placed_into = null
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	atom_flags = OPENCONTAINER
 	integrity_flags = NONE
 	drop_sound = 'sound/items/drop/cloth.ogg'
@@ -123,7 +123,7 @@
 				if(T)
 					T.clean(src, user)
 
-/obj/item/reagent_containers/glass/rag/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/reagent_containers/glass/rag/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(isliving(target)) //Leaving this as isliving.
 		var/mob/living/L = target
 		if(on_fire) //Check if rag is on fire, if so igniting them and stopping.
@@ -190,8 +190,8 @@
 		fuel += reagents.get_reagent_amount("fuel")
 
 	else
-		for(var/datum/reagent/ethanol/R in reagents.reagent_list)
-			fuel += reagents.get_reagent_amount(R.id)
+		for(var/datum/reagent/ethanol/R in reagents.get_reagent_datums())
+			fuel += reagents.reagent_volumes[R.id]
 
 	return (fuel >= 2 && fuel >= reagents.total_volume*0.8)
 
@@ -250,7 +250,7 @@
 		return
 
 	reagents.remove_reagent("fuel", reagents.maximum_volume/25)
-	for(var/datum/reagent/ethanol/R in reagents.reagent_list)
+	for(var/datum/reagent/ethanol/R in reagents.get_reagent_datums())
 		if(istype(R, /datum/reagent/ethanol))
 			reagents.remove_reagent(R.id, reagents.maximum_volume/25)
 	update_name()

@@ -83,7 +83,7 @@
 
 
 /obj/item/assembly/mousetrap/Crossed(var/atom/movable/AM)
-	if(AM.is_incorporeal())
+	if(AM.is_incorporeal() || AM.is_avoiding_ground())
 		return
 	if(armed)
 		if(ishuman(AM))

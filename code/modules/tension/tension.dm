@@ -32,7 +32,7 @@
 		potential_damage *= 1 SECOND / (base_attack_cooldown + melee_attack_delay)
 	else
 		var/obj/projectile/P = new projectiletype(src)
-		if(P.nodamage || P.taser_effect) // Tasers are somewhat less scary.
+		if(P.nodamage)
 			potential_damage = P.agony / 2
 		else
 			potential_damage = P.damage_force
@@ -177,7 +177,7 @@
 		threat_guess += damage_guess
 
 	else
-		var/weapon_attack_speed = get_attack_speed(I) / (1 SECOND)
+		var/weapon_attack_speed = get_attack_speed_legacy(I) / (1 SECOND)
 		var/weapon_damage = I.damage_force
 
 		for(var/datum/modifier/M in modifiers)
@@ -195,7 +195,7 @@
 				weapon_damage = P.damage_force
 				if(will_point_blank && a_intent == INTENT_HARM)
 					weapon_damage *= 1.5
-				weapon_attack_speed = G.fire_delay / (1 SECOND)
+				weapon_attack_speed = (G.firemode.cycle_cooldown || (0.4 SECONDS)) / (1 SECONDS)
 				qdel(P)
 
 		var/average_damage = weapon_damage / weapon_attack_speed
