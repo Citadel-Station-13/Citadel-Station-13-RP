@@ -2290,8 +2290,9 @@
 /obj/machinery/power/apc/east_mount{
 	cell_type = /obj/item/cell/super
 	},
-/obj/structure/cable/green{
-	icon_state = "0-8"
+/obj/structure/cable/cyan{
+	dir = 8;
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)
@@ -6150,9 +6151,8 @@
 /turf/simulated/floor/carpet/tealcarpet,
 /area/shuttle/civvie/general)
 "atr" = (
-/obj/structure/cable/green{
-	icon_state = "1-4"
-	},
+/obj/machinery/power/terminal,
+/obj/structure/cable/green,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)
 "ats" = (
@@ -6722,10 +6722,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rift/turbolift/maint)
 "avg" = (
-/obj/machinery/holopad,
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)
 "avi" = (
@@ -12913,7 +12913,8 @@
 /area/shuttle/civvie/general)
 "aOw" = (
 /obj/structure/cable/green{
-	icon_state = "2-8"
+	dir = 8;
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)
@@ -13695,6 +13696,16 @@
 /obj/machinery/camera/network/command{
 	dir = 8
 	},
+/obj/machinery/power/sensor{
+	name = "Powernet Sensor - AI Subgrid";
+	name_tag = "AI Subgrid"
+	},
+/obj/structure/cable/cyan{
+	icon_state = "1-8"
+	},
+/obj/structure/cable/cyan{
+	icon_state = "0-8"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)
 "aQV" = (
@@ -14166,12 +14177,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
-"aSo" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/ai)
 "aSp" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 8
@@ -16334,7 +16339,7 @@
 "aYS" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Surface 3 - Command Substation";
-	cur_coils = 2
+	cur_coils = 3
 	},
 /obj/structure/cable/green{
 	icon_state = "0-8"
@@ -16885,7 +16890,7 @@
 	icon_state = "4-8"
 	},
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/paint/palebottlegreen,
+/obj/map_helper/paint_stripe/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "btC" = (
@@ -17469,7 +17474,7 @@
 /area/exploration/courser_dock)
 "csw" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/paint/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/bridge/bridge_hallway)
 "ctl" = (
@@ -17685,7 +17690,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/paint/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/bridge)
 "cRE" = (
@@ -17849,7 +17854,7 @@
 	name = "HoP Office Shutters";
 	opacity = 0
 	},
-/obj/map_helper/paint/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "hop-office"
 	},
@@ -18076,7 +18081,7 @@
 /area/crew_quarters/heads/blueshield)
 "dIa" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/paint/violet,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/exploration/explorer_prep)
 "dIm" = (
@@ -18169,7 +18174,7 @@
 /area)
 "dRg" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
-/obj/map_helper/paint/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "blueshield-office"
 	},
@@ -18529,7 +18534,7 @@
 /area/maintenance/commandmaint)
 "eyE" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/paint/palebottlegreen,
+/obj/map_helper/paint_stripe/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/crew_quarters/kitchen)
 "eyO" = (
@@ -18988,7 +18993,7 @@
 	id = "pilot_prep";
 	name = "Pilot Prep Window Shutters"
 	},
-/obj/map_helper/paint/palebottlegreen,
+/obj/map_helper/paint_stripe/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/exploration/pilot_prep)
 "fbX" = (
@@ -19172,7 +19177,7 @@
 /area/crew_quarters/bar)
 "fsv" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/paint/violet,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/exploration/courser_dock)
 "ftd" = (
@@ -19281,7 +19286,7 @@
 	name = "Bridge Lockdown Shutters";
 	opacity = 0
 	},
-/obj/map_helper/paint/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "bridge-tint"
 	},
@@ -19430,7 +19435,7 @@
 /obj/structure/cable/pink{
 	icon_state = "4-8"
 	},
-/obj/map_helper/paint/violet,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/exploration/explorer_prep)
 "fOF" = (
@@ -19578,7 +19583,7 @@
 	id = "Pilot_office_Shutter";
 	name = "Pilot Office Window Shutters"
 	},
-/obj/map_helper/paint/palebottlegreen,
+/obj/map_helper/paint_stripe/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/exploration/pilot_Office)
 "fYG" = (
@@ -20127,7 +20132,7 @@
 /area/maintenance/bar/lower)
 "gQu" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
-/obj/map_helper/paint/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "meeting-tint"
 	},
@@ -20719,7 +20724,7 @@
 /obj/structure/cable/pink{
 	icon_state = "1-2"
 	},
-/obj/map_helper/paint/violet,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/exploration/explorer_prep)
 "hYK" = (
@@ -20837,7 +20842,7 @@
 	name = "Bridge Lockdown Shutters";
 	opacity = 0
 	},
-/obj/map_helper/paint/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "bridge-tint"
 	},
@@ -21079,7 +21084,7 @@
 /area/exploration)
 "iFT" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/paint/purplegray,
+/obj/map_helper/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab)
 "iHi" = (
@@ -21166,7 +21171,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/paint/darkred,
+/obj/map_helper/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/checkpoint2)
 "iLC" = (
@@ -21447,7 +21452,7 @@
 /area/hallway/primary/surfacethree)
 "jpO" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/paint/violet,
+/obj/map_helper/paint_stripe/violet,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -22028,7 +22033,7 @@
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "botany_hallway"
 	},
-/obj/map_helper/paint/palebottlegreen,
+/obj/map_helper/paint_stripe/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/hydroponics)
 "kcm" = (
@@ -22366,7 +22371,7 @@
 	icon_state = "4-8"
 	},
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/paint/palebottlegreen,
+/obj/map_helper/paint_stripe/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "kQV" = (
@@ -23144,7 +23149,7 @@
 /area/shuttle/emt/general)
 "mnJ" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/paint/purplegray,
+/obj/map_helper/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
 "mpo" = (
@@ -23159,7 +23164,7 @@
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "hop_office"
 	},
-/obj/map_helper/paint/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "hop-office"
 	},
@@ -24833,7 +24838,7 @@
 	name = "Bunker Lockdown Shutters";
 	opacity = 0
 	},
-/obj/map_helper/paint/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -24844,7 +24849,7 @@
 /area/bridge/bunker)
 "pxd" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
-/obj/map_helper/paint/purplegray,
+/obj/map_helper/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab/chamber)
 "pxw" = (
@@ -24915,6 +24920,19 @@
 /obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/emt/general)
+"pEE" = (
+/obj/machinery/power/smes/buildable{
+	charge = 5000;
+	input_attempt = 1;
+	input_level = 200;
+	output_level = 200;
+	RCon_tag = "Surface 3 - AI CORE"
+	},
+/obj/structure/cable/cyan{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/ai)
 "pFg" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/structure/cable/green{
@@ -25041,11 +25059,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
-"pTC" = (
-/obj/map_helper/paint/silver,
-/obj/map_helper/paint_stripe/black,
-/turf/simulated/wall/rshull,
-/area/shuttle/oldcentury)
 "pVV" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
@@ -25632,7 +25645,7 @@
 /area/crew_quarters/barrestroom)
 "rgZ" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
-/obj/map_helper/paint/purplegray,
+/obj/map_helper/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab)
 "riD" = (
@@ -26122,7 +26135,7 @@
 /area/shuttle/emt/general)
 "siB" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
-/obj/map_helper/paint/violet,
+/obj/map_helper/paint_stripe/violet,
 /obj/map_helper/electrochromatic_linker{
 	id = "pathfinder-office"
 	},
@@ -26341,7 +26354,7 @@
 /area/shuttle/emt/general)
 "sON" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/paint/violet,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/exploration/meeting)
 "sOO" = (
@@ -26483,7 +26496,7 @@
 /area/shuttle/emt/general)
 "tbF" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/paint/violet,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/exploration/excursion_dock)
 "tcQ" = (
@@ -26846,7 +26859,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/paint/darkred,
+/obj/map_helper/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/checkpoint2)
 "tLm" = (
@@ -26912,7 +26925,7 @@
 /area/hallway/secondary/docking_hallway)
 "tQO" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/paint/palebottlegreen,
+/obj/map_helper/paint_stripe/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "tSS" = (
@@ -27651,7 +27664,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
-/obj/map_helper/paint/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "bridge-tint"
 	},
@@ -27815,7 +27828,7 @@
 /area/exploration/explorer_prep)
 "vwG" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
-/obj/map_helper/paint/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "meeting-tint"
 	},
@@ -28057,7 +28070,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/paint/darkred,
+/obj/map_helper/paint_stripe/darkred,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -28423,7 +28436,7 @@
 /area/security/checkpoint2)
 "wkX" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/paint/violet,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/exploration/medic_prep)
 "wlu" = (
@@ -28441,7 +28454,7 @@
 	name = "Bunker Lockdown Shutters";
 	opacity = 0
 	},
-/obj/map_helper/paint/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "bunker-tint"
 	},
@@ -28624,6 +28637,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/checkpoint2)
+"wCh" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/ai)
 "wCC" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -28769,7 +28788,7 @@
 /area/crew_quarters/bar)
 "wZh" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/paint/palebottlegreen,
+/obj/map_helper/paint_stripe/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "wZt" = (
@@ -29415,7 +29434,7 @@
 /area/bridge/bridge_hallway)
 "ybn" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/paint/palebottlegreen,
+/obj/map_helper/paint_stripe/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/hydroponics)
 "ybv" = (
@@ -32711,10 +32730,10 @@ btC
 btC
 bly
 bly
-pTC
-pTC
-pTC
-pTC
+eYG
+eYG
+eYG
+eYG
 dxR
 ibi
 ygS
@@ -32898,14 +32917,14 @@ aus
 eZv
 oCC
 vKy
-pTC
-pTC
-pTC
+eYG
+eYG
+eYG
 pZx
-pTC
-pTC
-pTC
-pTC
+eYG
+eYG
+eYG
+eYG
 uID
 wBK
 kMc
@@ -33287,22 +33306,22 @@ vKy
 vrM
 doA
 jRQ
-pTC
+eYG
 qVp
 bIJ
 fIx
 eJV
 jFP
-pTC
+eYG
 iHi
 oys
 kcm
 scS
-pTC
-pTC
+eYG
+eYG
 nqA
-pTC
-pTC
+eYG
+eYG
 aus
 aus
 aus
@@ -33487,7 +33506,7 @@ bLD
 bLD
 xMz
 qmR
-pTC
+eYG
 eRp
 pCy
 kcm
@@ -33675,22 +33694,22 @@ vKy
 sWD
 doA
 bOR
-pTC
+eYG
 jyn
 eKT
 iKK
 gaS
 ndR
-pTC
+eYG
 vcB
 gyK
 jin
 scS
-pTC
+eYG
 uOB
 tXr
-pTC
-pTC
+eYG
+eYG
 aus
 aus
 aus
@@ -33877,7 +33896,7 @@ rjP
 hDB
 uyX
 fYJ
-pTC
+eYG
 kcm
 gaQ
 qcX
@@ -34062,14 +34081,14 @@ aus
 uSZ
 oCC
 vKy
-pTC
-pTC
+eYG
+eYG
 vKy
-pTC
-pTC
-pTC
+eYG
+eYG
+eYG
 vKy
-pTC
+eYG
 yci
 eYG
 oWZ
@@ -34263,10 +34282,10 @@ bly
 btC
 bly
 bly
-pTC
-pTC
-pTC
-pTC
+eYG
+eYG
+eYG
+eYG
 iZn
 ski
 cZT
@@ -56076,7 +56095,7 @@ eod
 eod
 asR
 aTG
-aSo
+wCh
 aza
 aza
 aza
@@ -56270,7 +56289,7 @@ eod
 eod
 aTG
 aTG
-aSo
+wCh
 aza
 aBw
 aza
@@ -56464,7 +56483,7 @@ eod
 aCa
 aAi
 aAi
-aSo
+wCh
 aNN
 neL
 aNN
@@ -56658,7 +56677,7 @@ eod
 eod
 awN
 aTG
-aSo
+wCh
 aza
 aOb
 aza
@@ -57048,7 +57067,7 @@ eod
 awN
 aOw
 atr
-aAi
+pEE
 aAi
 aAi
 awN

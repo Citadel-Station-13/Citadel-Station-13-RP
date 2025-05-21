@@ -128,8 +128,7 @@
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/underground1)
 "bP" = (
-/obj/machinery/door/firedoor/glass,
-/obj/spawner/window/reinforced/full,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/turbolift/rwest_mining/caves)
 "bR" = (
@@ -1843,7 +1842,9 @@
 "vY" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost/storage)
 "wb" = (
@@ -3419,8 +3420,7 @@
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west_caves/submap_seedzone)
 "Ou" = (
-/obj/machinery/door/firedoor/glass,
-/obj/spawner/window/reinforced/full,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost)
 "Oy" = (
@@ -3523,8 +3523,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "PO" = (
-/obj/machinery/door/firedoor/glass,
-/obj/spawner/window/reinforced/full,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/storage)
 "PP" = (
@@ -4100,11 +4099,10 @@
 /turf/simulated/lava/indoors/geothermal,
 /area/rift/geothermal)
 "VW" = (
-/obj/machinery/door/firedoor/glass,
-/obj/spawner/window/reinforced/full,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance)
 "VZ" = (
@@ -4465,9 +4463,11 @@
 "Zz" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost/storage)

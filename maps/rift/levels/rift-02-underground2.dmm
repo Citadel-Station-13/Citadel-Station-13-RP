@@ -117,7 +117,7 @@
 /area/crew_quarters/heads/chief)
 "aE" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/paint/sun,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor/plating,
 /area/engineering/engine_airlock)
 "aF" = (
@@ -3225,7 +3225,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/paint/sun,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor/plating,
 /area/engineering/foyer)
 "lW" = (
@@ -4870,6 +4870,7 @@
 /area/engineering/engine_eva)
 "qR" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/miningdock)
 "qS" = (
@@ -5311,7 +5312,7 @@
 /area/engineering/atmos/locker_room)
 "sz" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
-/obj/map_helper/paint/sun,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/engineering/engine_airlock)
 "sA" = (
@@ -5573,7 +5574,7 @@
 	icon_state = "4-8"
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/paint/sun,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/maintenance/substation/engineering)
 "tB" = (
@@ -5849,9 +5850,6 @@
 "uD" = (
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/engineering/storage)
-"uG" = (
-/turf/simulated/wall/prepainted,
-/area/quartermaster/belterdock/gear)
 "uI" = (
 /obj/structure/railing{
 	dir = 4
@@ -7882,7 +7880,7 @@
 /area/engineering/workshop)
 "CH" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
-/obj/map_helper/paint/sun,
+/obj/map_helper/paint_stripe/sun,
 /obj/map_helper/electrochromatic_linker{
 	id = "ce_office"
 	},
@@ -8178,7 +8176,7 @@
 /area/engineering/engine_waste)
 "DI" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/paint/purplegray,
+/obj/map_helper/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/secure_storage/lower)
 "DK" = (
@@ -8460,9 +8458,6 @@
 /obj/landmark/spawnpoint/job/shaft_miner,
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/refinery)
-"EQ" = (
-/turf/simulated/wall/prepainted,
-/area/quartermaster/miningdock)
 "ER" = (
 /obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
@@ -8480,7 +8475,7 @@
 /area/engineering/workshop)
 "ET" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
-/obj/map_helper/paint/palebottlegreen,
+/obj/map_helper/paint_stripe/palebottlegreen,
 /obj/map_helper/electrochromatic_linker{
 	id = "chapel_office"
 	},
@@ -8960,7 +8955,7 @@
 /area/maintenance/lower/mining)
 "Ha" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
-/obj/map_helper/paint/palebottlegreen,
+/obj/map_helper/paint_stripe/palebottlegreen,
 /obj/map_helper/electrochromatic_linker{
 	id = "chapel_hall"
 	},
@@ -9182,7 +9177,7 @@
 /area/engineering/workshop)
 "HY" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/paint/sun,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor/plating,
 /area/engineering/workshop)
 "Ia" = (
@@ -10084,7 +10079,7 @@
 /area/engineering/hallway)
 "LD" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
-/obj/map_helper/paint/sun,
+/obj/map_helper/paint_stripe/sun,
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "engine_monitor_blast";
@@ -10947,7 +10942,7 @@
 /area/engineering/engine_smes)
 "OD" = (
 /obj/structure/noticeboard,
-/turf/simulated/wall/prepainted,
+/turf/simulated/wall/prepainted/cargo,
 /area/quartermaster/miningdock)
 "OF" = (
 /obj/effect/floor_decal/chapel{
@@ -11237,11 +11232,6 @@
 	},
 /turf/simulated/floor/lino,
 /area/chapel/office)
-"PM" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/paint/beastybrown,
-/turf/simulated/floor/plating,
-/area/quartermaster/miningdock)
 "PN" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
@@ -12813,7 +12803,7 @@
 /area/rift/surfacebase/underground/under2)
 "VV" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/paint/beastybrown,
+/obj/map_helper/paint_stripe/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/miningdock)
 "VW" = (
@@ -13370,7 +13360,7 @@
 /area/maintenance/lower/mining)
 "Yl" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/paint/sun,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor/plating,
 /area/engineering/engine_monitoring)
 "Yq" = (
@@ -13492,7 +13482,7 @@
 /area/quartermaster/miningdock)
 "YJ" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/paint/sun,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor/plating,
 /area/engineering/engineering_monitoring)
 "YM" = (
@@ -31531,7 +31521,7 @@ Wh
 Wh
 VC
 Wh
-ms
+Wh
 jO
 ll
 fY
@@ -31725,7 +31715,7 @@ Gw
 Gw
 Ec
 Qq
-uG
+AX
 je
 ll
 fY
@@ -31919,7 +31909,7 @@ BP
 Cj
 tT
 VF
-uG
+AX
 je
 ll
 fY
@@ -32113,7 +32103,7 @@ KI
 KI
 xC
 Uq
-uG
+AX
 je
 ll
 qC
@@ -32307,7 +32297,7 @@ VV
 Aq
 Gr
 Aq
-EQ
+Aq
 jP
 ll
 ll
@@ -32695,7 +32685,7 @@ FV
 FV
 Lq
 CC
-PM
+qR
 jQ
 fo
 Ni
