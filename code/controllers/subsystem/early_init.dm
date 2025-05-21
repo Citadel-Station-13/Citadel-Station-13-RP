@@ -5,7 +5,6 @@ SUBSYSTEM_DEF(early_init)
 	subsystem_flags = SS_NO_FIRE
 
 /datum/controller/subsystem/early_init/Initialize()
-	init_bodyset_lookup()
 	init_inventory_slot_lookup()
 	init_crayon_decal_meta()
 	populate_robolimb_list()

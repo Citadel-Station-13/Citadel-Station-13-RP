@@ -35,7 +35,7 @@
 		mob_icon.Blend(lip_icon, ICON_OVERLAY)
 
 	if(owner.f_style)
-		var/datum/prototype/sprite_accessory/facial_hair_style = GLOB.legacy_facial_hair_lookup[owner.f_style]
+		var/datum/prototype/sprite_accessory/facial_hair_style = RSsprite_accessories.legacy_facial_hair_lookup[owner.f_style]
 		if(facial_hair_style && (!facial_hair_style.apply_restrictions || (species.get_bodytype_legacy(owner) in facial_hair_style.species_allowed)))
 			var/icon/facial_s = new/icon("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
 			if(facial_hair_style.do_colouration)
@@ -43,7 +43,7 @@
 			overlays_to_add.Add(image(facial_s, "pixel_y" = head_offset))
 
 	if(owner.h_style && !(owner.head && (owner.head.inv_hide_flags & BLOCKHEADHAIR)))
-		var/datum/prototype/sprite_accessory/hair_style = GLOB.legacy_hair_lookup[owner.h_style]
+		var/datum/prototype/sprite_accessory/hair_style = RSsprite_accessories.legacy_hair_lookup[owner.h_style]
 		if(hair_style && (!hair_style.apply_restrictions || (species.get_bodytype_legacy(owner) in hair_style.species_allowed)))
 			var/icon/hair_s = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
 			if(hair_style.do_colouration && islist(h_col) && h_col.len >= 3)

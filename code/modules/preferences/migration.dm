@@ -146,12 +146,12 @@
 		READ_FILE(S["body_markings"], old_mnames_colors)
 		old_mnames_colors = sanitize_islist(old_mnames_colors)
 		//! gather
-		var/datum/prototype/sprite_accessory/resolved_hair = GLOB.legacy_hair_lookup[old_hname]
-		var/datum/prototype/sprite_accessory/resolved_facial = GLOB.legacy_facial_hair_lookup[old_fname]
-		var/datum/prototype/sprite_accessory/resolved_ears = GLOB.legacy_ears_lookup[old_etype]
-		var/datum/prototype/sprite_accessory/resolved_horns = GLOB.legacy_ears_lookup[old_htype]
-		var/datum/prototype/sprite_accessory/resolved_tail = GLOB.legacy_tail_lookup[old_ttype]
-		var/datum/prototype/sprite_accessory/resolved_wings = GLOB.legacy_wing_lookup[old_wtype]
+		var/datum/prototype/sprite_accessory/resolved_hair = RSsprite_accessories.legacy_hair_lookup[old_hname]
+		var/datum/prototype/sprite_accessory/resolved_facial = RSsprite_accessories.legacy_facial_hair_lookup[old_fname]
+		var/datum/prototype/sprite_accessory/resolved_ears = RSsprite_accessories.legacy_ears_lookup[old_etype]
+		var/datum/prototype/sprite_accessory/resolved_horns = RSsprite_accessories.legacy_ears_lookup[old_htype]
+		var/datum/prototype/sprite_accessory/resolved_tail = RSsprite_accessories.legacy_tail_lookup[old_ttype]
+		var/datum/prototype/sprite_accessory/resolved_wings = RSsprite_accessories.legacy_wing_lookup[old_wtype]
 		var/list/resolved_markings = list()
 		for(var/name in old_mnames_colors)
 			var/datum/prototype/sprite_accessory/resolved_marking = GLOB.legacy_marking_lookup[name]

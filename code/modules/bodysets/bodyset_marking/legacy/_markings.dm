@@ -469,21 +469,21 @@
 	color_uses_blend_add = FALSE
 	body_parts = list(BP_L_ARM,BP_R_ARM,BP_GROIN,BP_TORSO)
 
-/datum/sprite_accessory/marking/gradleg
+/datum/prototype/bodyset_marking/gradleg
 	name = "Gradient Legs"
 	id = "marking_gradient_leg"
 	icon_state = "gradleg"
 	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_GROIN)
 
-/datum/sprite_accessory/marking/gradarmr
+/datum/prototype/bodyset_marking/gradarmr
 	name = "Gradient Arm (right arm)"
 	id = "marking_gradient_arm_right"
 	icon_state = "gradarmr"
 	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_R_ARM,BP_R_HAND)
 
-/datum/sprite_accessory/marking/gradarml
+/datum/prototype/bodyset_marking/gradarml
 	name = "Gradient Arm (left arm)"
 	id = "marking_gradient_arm_left"
 	icon_state = "gradarml"

@@ -198,25 +198,21 @@
 /datum/preferences/proc/get_valid_hairstyles()
 	var/list/valid_hairstyles = list()
 	var/species_name = real_species_name()
-	for(var/hairstyle in GLOB.legacy_hair_lookup)
-		var/datum/prototype/sprite_accessory/S = GLOB.legacy_hair_lookup[hairstyle]
+	for(var/datum/prototype/sprite_accessory/S in RSsprite_accessories.fetch_subtypes_immutable(/datum/prototype/sprite_accessory/hair))
 		if(S.apply_restrictions && !(species_name in S.species_allowed) && (!custom_base || !(custom_base in S.species_allowed))) //Custom species base species allowance
 			continue
-
-		valid_hairstyles[hairstyle] = GLOB.legacy_hair_lookup[hairstyle]
+		valid_hairstyles[S.name] = S
 
 	return valid_hairstyles
 
 /datum/preferences/proc/get_valid_facialhairstyles()
 	var/list/valid_facialhairstyles = list()
 	var/datum/species/RS = real_species_datum()
-	for(var/facialhairstyle in GLOB.legacy_facial_hair_lookup)
-		var/datum/prototype/sprite_accessory/S = GLOB.legacy_facial_hair_lookup[facialhairstyle]
+	for(var/datum/prototype/sprite_accessory/S in RSsprite_accessories.fetch_subtypes_immutable(/datum/prototype/sprite_accessory/facial_hair))
 		if(!isnull(S.random_generation_gender) && biological_gender != S.random_generation_gender)
 			continue
 		if(S.apply_restrictions && !(RS.name in S.species_allowed) && (!custom_base || !(custom_base in S.species_allowed))) //Custom species base species allowance
 			continue
-
-		valid_facialhairstyles[facialhairstyle] = GLOB.legacy_facial_hair_lookup[facialhairstyle]
+		valid_hairstyles[S.name] = S
 
 	return valid_facialhairstyles

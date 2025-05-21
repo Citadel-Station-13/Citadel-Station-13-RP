@@ -17,8 +17,7 @@
 
 /proc/random_hair_style(gender, species = SPECIES_HUMAN)
 	var/list/valid = list()
-	for(var/id in GLOB.sprite_accessory_hair)
-		var/datum/prototype/sprite_accessory/hair/S = GLOB.sprite_accessory_hair[id]
+	for(var/datum/prototype/sprite_accessory/S as anything in RSsprite_accessories.fetch_subtypes_immutable(/datum/prototype/sprite_accessory/hair))
 		if(!isnull(S.random_generation_gender) && gender != S.random_generation_gender)
 			continue
 		if(S.apply_restrictions && !(species in S.species_allowed))
@@ -28,8 +27,7 @@
 
 /proc/random_facial_hair_style(gender, species = SPECIES_HUMAN)
 	var/list/valid = list()
-	for(var/id in GLOB.sprite_accessory_facial_hair)
-		var/datum/prototype/sprite_accessory/facial_hair/S = GLOB.sprite_accessory_facial_hair[id]
+	for(var/datum/prototype/sprite_accessory/S as anything in RSsprite_accessories.fetch_subtypes_immutable(/datum/prototype/sprite_accessory/facial_hair))
 		if(!isnull(S.random_generation_gender) && gender != S.random_generation_gender)
 			continue
 		if(S.apply_restrictions && !(species in S.species_allowed))

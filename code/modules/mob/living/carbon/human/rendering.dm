@@ -142,7 +142,7 @@
 	// todo: what is this for?
 	// if(head && (head.inv_hide_flags & BLOCKHEADHAIR))
 	// 	if(!(hair_style.hair_flags & HAIR_VERY_SHORT))
-	// 		hair_style = GLOB.legacy_hair_lookup["Short Hair"]
+	// 		hair_style = RSsprite_accessories.legacy_hair_lookup["Short Hair"]
 	var/rendered = rendering.render(
 		src,
 		list(
@@ -249,9 +249,9 @@
 			// . = GLOB.sprite_accessory_tails[tail_style]
 			. = tail_style
 		if(SPRITE_ACCESSORY_SLOT_HAIR)
-			. = GLOB.legacy_hair_lookup[h_style]
+			. = RSsprite_accessories.legacy_hair_lookup[h_style]
 		if(SPRITE_ACCESSORY_SLOT_FACEHAIR)
-			. = GLOB.legacy_facial_hair_lookup[f_style]
+			. = RSsprite_accessories.legacy_facial_hair_lookup[f_style]
 		if(SPRITE_ACCESSORY_SLOT_WINGS)
 			// . = GLOB.sprite_accessory_wings[wing_style]
 			. = wing_style

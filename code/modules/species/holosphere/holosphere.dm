@@ -13,8 +13,7 @@
 	category = SPECIES_CAEGORY_HOLOSPHERE
 	name_plural   = "Holospheres"
 	override_worn_legacy_bodytype = SPECIES_HUMAN
-	icobase = 'icons/mob/species/human/body_greyscale.dmi'
-	deform  = 'icons/mob/species/human/deformed_body_greyscale.dmi'
+	bodyset = /datum/prototype/bodyset/organic/human
 
 	blurb = {"This species is testmerged and currently being tested - things might break, and everything about it is subject to change!
 	"}
