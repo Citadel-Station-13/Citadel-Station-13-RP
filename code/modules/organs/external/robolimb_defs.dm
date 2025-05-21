@@ -288,21 +288,21 @@
 /datum/robolimb/morpheus
 	company = "Morpheus"
 	desc = "This limb is simple and functional; no effort has been made to make it look human."
-	icon = 'icons/mob/cyberlimbs/morpheus/morpheus_main.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/morpheus/standard
 	unavailable_to_build = TRUE
 	monitor_styles = standard_monitor_styles
 
 /datum/robolimb/morpheus_alt1
 	company = "Morpheus - Zenith"
 	desc = "This limb is simple and functional; no effort has been made to make it look human."
-	icon = 'icons/mob/cyberlimbs/morpheus/morpheus_alt1.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/morpheus/zenith
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 
 /datum/robolimb/morpheus_alt2
 	company = "Morpheus - Skeleton Crew"
 	desc = "This limb is simple and functional; it's basically just a case for a brain."
-	icon = 'icons/mob/cyberlimbs/morpheus/morpheus_alt2.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/morpheus/skeleton_crew
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 
@@ -336,20 +336,20 @@
 /datum/robolimb/xion
 	company = "Xion"
 	desc = "This limb has a minimalist black and red casing."
-	icon = 'icons/mob/cyberlimbs/xion/xion_main.dmi'
+	bodyset = /datum/prototype/bdoyset/synthetic/xion/standard
 	unavailable_to_build = TRUE
 
 /datum/robolimb/xion_alt1
 	company = "Xion - Breach"
 	desc = "This limb has a minimalist black and red casing. Looks a bit menacing."
-	icon = 'icons/mob/cyberlimbs/xion/xion_alt1.dmi'
+	bodyset = /datum/prototype/bdoyset/synthetic/xion/breach
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 
 /datum/robolimb/xion_alt2
 	company = "Xion - Hull"
 	desc = "This limb has a thick orange casing with steel plating."
-	icon = 'icons/mob/cyberlimbs/xion/xion_alt2.dmi'
+	bodyset = /datum/prototype/bdoyset/synthetic/xion/hull
 	unavailable_to_build = TRUE
 	monitor_styles = "blank=xion_off;\
 		red=xion_red;\
@@ -360,20 +360,20 @@
 /datum/robolimb/xion_alt3
 	company = "Xion - Whiteout"
 	desc = "This limb has a minimalist black and white casing."
-	icon = 'icons/mob/cyberlimbs/xion/xion_alt3.dmi'
+	bodyset = /datum/prototype/bdoyset/synthetic/xion/whiteout
 	unavailable_to_build = TRUE
 
 /datum/robolimb/xion_alt4
 	company = "Xion - Breach - Whiteout"
 	desc = "This limb has a minimalist black and white casing. Looks a bit menacing."
-	icon = 'icons/mob/cyberlimbs/xion/xion_alt4.dmi'
+	bodyset = /datum/prototype/bdoyset/synthetic/xion/breach/whiteout
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 
 /datum/robolimb/xion_monitor
 	company = "Xion Monitor"
 	desc = "Xion Mfg.'s unique spin on a popular prosthetic head model. It looks and minimalist and utilitarian."
-	icon = 'icons/mob/cyberlimbs/xion/xion_monitor.dmi'
+	bodyset = /datum/prototype/bdoyset/synthetic/xion/monitor
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 	monitor_styles = standard_monitor_styles
@@ -381,10 +381,17 @@
 /datum/robolimb/zenghu
 	company = "Zeng-Hu"
 	desc = "This limb has a rubbery fleshtone covering with visible seams."
-	icon = 'icons/mob/cyberlimbs/zenghu/zenghu_main.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/zenghu
 	species_alternates = list(SPECIES_TAJ = "Zeng-Hu - Tajaran")
 	unavailable_to_build = TRUE
 	skin_tone = TRUE
+
+/datum/robolimb/zenghu_taj //This wasn't indented. At all. It's a miracle this didn't break literally everything.
+	company = "Zeng-Hu - Tajaran"
+	desc = "This limb has a rubbery fleshtone covering with visible seams."
+	bodyset = /datum/prototype/bodyset/synthetic/zenghu_tajaran
+	unavailable_to_build = TRUE
+	parts = list(BP_HEAD)
 
 /datum/robolimb/cyber_beast
 	company = "Cyber Tech"
@@ -440,7 +447,7 @@
 /datum/robolimb/spectre
 	company = "Hoffman Tech - RACS Spectre "
 	desc = "A simple robotic limb design used for the Hoffman Tech RASC Spectre. A lightweight robotic chassis ideal for exploration and security duties."
-	icon = 'icons/mob/cyberlimbs/hoffman_tech/spectre.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/spectre
 	unavailable_to_build = TRUE
 
 
@@ -448,19 +455,12 @@
 /datum/robolimb/talon //They're buildable by default due to being extremely basic.
 	company = "Talon LLC"
 	desc = "This metallic limb is sleek and featuresless apart from some exposed motors"
-	icon = 'icons/mob/cyberlimbs/talon/talon_main.dmi' //Sprited by: Viveret
-
-/datum/robolimb/zenghu_taj //This wasn't indented. At all. It's a miracle this didn't break literally everything.
-	company = "Zeng-Hu - Tajaran"
-	desc = "This limb has a rubbery fleshtone covering with visible seams."
-	icon = 'icons/mob/cyberlimbs/zenghu/zenghu_taj.dmi'
-	unavailable_to_build = TRUE
-	parts = list(BP_HEAD)
+	bodyset = /datum/prototype/bodyset/synthetic/talon
 
 /datum/robolimb/eggnerdltdred
 	company = "Eggnerd Prototyping Ltd. (Red)"
 	desc = "A slightly more refined limb variant from Eggnerd Prototyping. Its got red plating instead of orange."
-	icon = 'icons/mob/cyberlimbs/rahboopred/rahboopred.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/eggnerd_red
 	blood_color = "#5e280d"
 	legacy_includes_tail = /datum/prototype/sprite_accessory/tail/bodyset/eggnerd_red
 	unavailable_to_build = TRUE
@@ -471,7 +471,7 @@
 /datum/robolimb/dsi_tajaran
 	company = "OSS - Tajaran"
 	desc = "This limb feels soft and fluffy, realistic design and squish. By Onkhera Synthetic Solutions."
-	icon = 'icons/mob/cyberlimbs/DSITajaran/dsi_tajaran.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/oss_tajaran
 	blood_color = "#ffe2ff"
 	lifelike = 1
 	legacy_includes_tail = /datum/prototype/sprite_accessory/tail/bodyset/oss_tajaran
@@ -497,7 +497,7 @@
 /datum/robolimb/dsi_sergal
 	company = "OSS - Naramadi"
 	desc = "This limb feels soft and fluffy, realistic design and toned muscle. By Onkhera Synthetic Solutions."
-	icon = 'icons/mob/cyberlimbs/DSISergal/dsi_sergal.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/oss_naramadi
 	blood_color = "#ffe2ff"
 	lifelike = 1
 	unavailable_to_build = TRUE
@@ -510,7 +510,7 @@
 /datum/robolimb/dsi_nevrean
 	company = "OSS - Nevrean"
 	desc = "This limb feels soft and feathery, lightweight, realistic design and squish. By Onkhera Synthetic Solutions."
-	icon = 'icons/mob/cyberlimbs/DSINevrean/dsi_nevrean.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/oss_tajaran
 	blood_color = "#ffe2ff"
 	lifelike = 1
 	unavailable_to_build = TRUE
