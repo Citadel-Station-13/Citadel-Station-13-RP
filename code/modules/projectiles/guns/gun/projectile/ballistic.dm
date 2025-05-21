@@ -1042,7 +1042,7 @@
 		if(magazine)
 			var/overlay = get_magazine_overlay_for(magazine)
 			if(overlay)
-				add_overlay("[base_icon_state]-overlay")
+				add_overlay("[base_icon_state]-[overlay]")
 
 //* Action Datums *//
 
