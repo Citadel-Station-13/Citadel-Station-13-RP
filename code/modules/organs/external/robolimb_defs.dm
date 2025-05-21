@@ -190,24 +190,25 @@
 /datum/robolimb/cybersolutions
 	company = "Cyber Solutions"
 	desc = "This limb is grey and rough, with little in the way of aesthetic."
-	icon = 'icons/mob/cyberlimbs/cybersolutions/cybersolutions_main.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/cybersolutions/standard
 	unavailable_to_build = TRUE
 
 /datum/robolimb/cybersolutions_alt1
 	company = "Cyber Solutions - Wight"
 	desc = "This limb has cheap plastic panels mounted on grey metal."
-	icon = 'icons/mob/cyberlimbs/cybersolutions/cybersolutions_alt1.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/cybersolutions/wight
 	unavailable_to_build = TRUE
+
 /datum/robolimb/cybersolutions_alt2
 	company = "Cyber Solutions - Outdated"
 	desc = "This limb is of severely outdated design; there's no way it's comfortable or very functional to use."
-	icon = 'icons/mob/cyberlimbs/cybersolutions/cybersolutions_alt2.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/cybersolutions/outdated
 	unavailable_to_build = TRUE
 
 /datum/robolimb/cybersolutions_alt3
 	company = "Cyber Solutions - Array"
 	desc = "This limb is simple and functional; array of sensors on a featureless case."
-	icon = 'icons/mob/cyberlimbs/cybersolutions/cybersolutions_alt3.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/cybersolutions/array
 	unavailable_to_build = 1
 	parts = list(BP_HEAD)
 
@@ -220,7 +221,7 @@
 /datum/robolimb/grayson
 	company = "Grayson"
 	desc = "This limb has a sturdy and heavy build to it."
-	icon = 'icons/mob/cyberlimbs/grayson/grayson_main.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/grayson/standard
 	unavailable_to_build = TRUE
 	monitor_styles = "blank=grayson_off;\
 		red=grayson_red;\
@@ -231,7 +232,7 @@
 /datum/robolimb/grayson_alt1
 	company = "Grayson - Reinforced"
 	desc = "This limb has a sturdy and heavy build to it."
-	icon = 'icons/mob/cyberlimbs/grayson/grayson_alt1.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/grayson/reinforced
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 	monitor_styles = "blank=grayson_alt_off;\
@@ -243,7 +244,7 @@
 /datum/robolimb/grayson_monitor
 	company = "Grayson Monitor"
 	desc = "This limb has a sturdy and heavy build to it, and uses plastics in the place of glass for the monitor."
-	icon = 'icons/mob/cyberlimbs/grayson/grayson_monitor.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/grayson/monitor
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 	monitor_styles = standard_monitor_styles
@@ -251,13 +252,13 @@
 /datum/robolimb/hephaestus
 	company = "Hephaestus"
 	desc = "This limb has a militaristic black and green casing with gold stripes."
-	icon = 'icons/mob/cyberlimbs/hephaestus/hephaestus_main.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/hephaestus/standard
 	unavailable_to_build = TRUE
 
 /datum/robolimb/hephaestus_alt1
 	company = "Hephaestus - Frontier"
 	desc = "A rugged prosthetic head featuring the standard Hephaestus theme, a visor and an external display."
-	icon = 'icons/mob/cyberlimbs/hephaestus/hephaestus_alt1.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/hephaestus/frontier
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 	monitor_styles = "blank=hephaestus_alt_off;\
@@ -271,7 +272,7 @@
 /datum/robolimb/hephaestus_alt2
 	company = "Hephaestus - Athena"
 	desc = "This rather thick limb has a militaristic green plating."
-	icon = 'icons/mob/cyberlimbs/hephaestus/hephaestus_alt2.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/hephaestus/athena
 	unavailable_to_build = TRUE
 	monitor_styles = "red=athena_red;\
 		blank=athena_off"
@@ -279,7 +280,7 @@
 /datum/robolimb/hephaestus_monitor
 	company = "Hephaestus Monitor"
 	desc = "Hephaestus' unique spin on a popular prosthetic head model. It looks rugged and sturdy."
-	icon = 'icons/mob/cyberlimbs/hephaestus/hephaestus_monitor.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/hephaestus/monitor
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 	monitor_styles = standard_monitor_styles
@@ -308,26 +309,26 @@
 /datum/robolimb/wardtakahashi
 	company = "Ward-Takahashi"
 	desc = "This limb features sleek black and white polymers."
-	icon = 'icons/mob/cyberlimbs/wardtakahashi/wardtakahashi_main.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/ward_takashi/standard
 	unavailable_to_build = TRUE
 
 /datum/robolimb/wardtakahashi_alt1
 	company = "Ward-Takahashi - Shroud"
 	desc = "This limb features sleek black and white polymers. This one looks more like a helmet of some sort."
-	icon = 'icons/mob/cyberlimbs/wardtakahashi/wardtakahashi_alt1.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/ward_takashi/shroud
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 
 /datum/robolimb/wardtakahashi_alt2
 	company = "Ward-Takahashi - Spirit"
 	desc = "This limb has white and purple features, with a heavier casing."
-	icon = 'icons/mob/cyberlimbs/wardtakahashi/wardtakahashi_alt2.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/ward_takashi/spirit
 	unavailable_to_build = TRUE
 
 /datum/robolimb/wardtakahashi_monitor
 	company = "Ward-Takahashi Monitor"
 	desc = "Ward-Takahashi's unique spin on a popular prosthetic head model. It looks sleek and modern."
-	icon = 'icons/mob/cyberlimbs/wardtakahashi/wardtakahashi_monitor.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/ward_takashi/monitor
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 	monitor_styles = standard_monitor_styles
@@ -423,7 +424,7 @@
 /datum/robolimb/eggnerdltd
 	company = "Eggnerd Prototyping Ltd."
 	desc = "This limb has a slight salvaged handicraft vibe to it. The CE-marking on it is definitely not the standardized one, it looks more like a hand-written sharpie monogram."
-	icon = 'icons/mob/cyberlimbs/_fluff_vr/rahboop.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/eggnerd
 	blood_color = "#5e280d"
 	legacy_includes_tail = /datum/prototype/sprite_accessory/tail/bodyset/eggnerd
 	unavailable_to_build = TRUE
@@ -432,7 +433,7 @@
 /datum/robolimb/vulkanwrks
 	company = "Vulkan Brassworks Inc."
 	desc = "This limb is crafted out of hammered brass. Unlike other prosthetics, the internals of this device run off of a complex system of clockwork gears and arms, with a wired superstructure layered on top. This level of craftsmanship is incredibly atypical."
-	icon = 'icons/mob/cyberlimbs/_fluff_vr/brassworks.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/vulkan_brassworks
 	blood_color = "#1F2631"
 	unavailable_to_build = TRUE
 
@@ -483,7 +484,7 @@
 /datum/robolimb/dsi_lizard
 	company = "OSS - Lizard"
 	desc = "This limb feels smooth and scalie, realistic design and squish. By Onkhera Synthetic Solutions."
-	icon = 'icons/mob/cyberlimbs/DSILizard/dsi_lizard.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/oss_lizard
 	blood_color = "#ffe2ff"
 	lifelike = 1
 	unavailable_to_build = TRUE
@@ -522,7 +523,7 @@
 /datum/robolimb/dsi_akula
 	company = "OSS - Akula"
 	desc = "This limb feels soft and fleshy, realistic design and squish. Seems a little mischievous. By Onkhera Synthetic Solutions."
-	icon = 'icons/mob/cyberlimbs/DSIAkula/dsi_akula.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/oss_akula
 	blood_color = "#ffe2ff"
 	lifelike = 1
 	legacy_includes_tail = /datum/prototype/sprite_accessory/tail/bodyset/oss_akula
