@@ -54,8 +54,8 @@
 	// hair/fhair
 	var/list/valid_hair = get_valid_hairstyles()
 	var/list/valid_fhair = get_valid_facialhairstyles()
-	var/datum/prototype/sprite_accessory/HS = GLOB.sprite_accessory_hair[h_style_id]
-	var/datum/prototype/sprite_accessory/FS = GLOB.sprite_accessory_facial_hair[f_style_id]
+	var/datum/prototype/sprite_accessory/HS = RSsprite_accessories.fetch_local_or_throw(h_style_id)
+	var/datum/prototype/sprite_accessory/FS = RSsprite_accessories.fetch_local_or_throw(f_style_id)
 	if(!(HS.name in valid_hair))
 		var/datum/prototype/sprite_accessory/hair/H = /datum/prototype/sprite_accessory/hair/legacy/bald
 		h_style_id = initial(H.id)

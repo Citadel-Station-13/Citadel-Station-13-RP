@@ -191,22 +191,22 @@
 
 	if(pref.ear_style_id)
 		pref.ear_style_id	= sanitize_inlist(pref.ear_style_id, GLOB.sprite_accessory_ears, initial(pref.ear_style_id))
-		var/datum/prototype/sprite_accessory/temp_ear_style_id =  GLOB.sprite_accessory_ears[pref.ear_style_id]
+		var/datum/prototype/sprite_accessory/temp_ear_style_id =  RSsprite_accessories.fetch_local_or_throw(pref.ear_style_id)
 		if(temp_ear_style_id.apply_restrictions && (!(species_name in temp_ear_style_id.species_allowed)))
 			pref.ear_style_id = initial(pref.ear_style_id)
 	if(pref.horn_style_id)
 		pref.horn_style_id	= sanitize_inlist(pref.horn_style_id,  GLOB.sprite_accessory_ears, initial(pref.horn_style_id))
-		var/datum/prototype/sprite_accessory/temp_horn_style_id =  GLOB.sprite_accessory_ears[pref.horn_style_id]
+		var/datum/prototype/sprite_accessory/temp_horn_style_id =  RSsprite_accessories.fetch_local_or_throw(pref.horn_style_id)
 		if(temp_horn_style_id.apply_restrictions && (!(species_name in temp_horn_style_id.species_allowed)))
 			pref.horn_style_id = initial(pref.horn_style_id)
 	if(pref.tail_style_id)
 		pref.tail_style_id	= sanitize_inlist(pref.tail_style_id,  GLOB.sprite_accessory_tails, initial(pref.tail_style_id))
-		var/datum/prototype/sprite_accessory/temp_tail_style_id = GLOB.sprite_accessory_tails[pref.tail_style_id]
+		var/datum/prototype/sprite_accessory/temp_tail_style_id = RSsprite_accessories.fetch_local_or_throw(pref.tail_style_id)
 		if(temp_tail_style_id.apply_restrictions && (!(species_name in temp_tail_style_id.species_allowed)))
 			pref.tail_style_id = initial(pref.tail_style_id)
 	if(pref.wing_style_id)
 		pref.wing_style_id	= sanitize_inlist(pref.wing_style_id, GLOB.sprite_accessory_wings, initial(pref.wing_style_id))
-		var/datum/prototype/sprite_accessory/temp_wing_style_id = GLOB.sprite_accessory_wings[pref.wing_style_id]
+		var/datum/prototype/sprite_accessory/temp_wing_style_id = RSsprite_accessories.fetch_local_or_throw(pref.wing_style_id)
 		if(temp_wing_style_id.apply_restrictions && (!(species_name in temp_wing_style_id.species_allowed)))
 			pref.wing_style_id = initial(pref.wing_style_id)
 
@@ -222,17 +222,17 @@
 	if(!ishuman(M))
 		return TRUE
 	var/mob/living/carbon/human/character = M
-	var/datum/prototype/sprite_accessory/S = GLOB.sprite_accessory_ears[pref.ear_style_id]
+	var/datum/prototype/sprite_accessory/S = RSsprite_accessories.fetch_local_or_throw(pref.ear_style_id)
 	// todo: this is shitcode
 	if(should_override(S, character.ear_style, character.species?.sprite_accessory_defaults?[SPRITE_ACCESSORY_SLOT_EARS]))
 		character.ear_style = S
-	S = GLOB.sprite_accessory_tails[pref.tail_style_id]
+	S = RSsprite_accessories.fetch_local_or_throw(pref.tail_style_id)
 	if(should_override(S, character.tail_style, character.species?.sprite_accessory_defaults?[SPRITE_ACCESSORY_SLOT_TAIL]))
 		character.tail_style = S
-	S = GLOB.sprite_accessory_wings[pref.wing_style_id]
+	S = RSsprite_accessories.fetch_local_or_throw(pref.wing_style_id)
 	if(should_override(S, character.wing_style, character.species?.sprite_accessory_defaults?[SPRITE_ACCESSORY_SLOT_WINGS]))
 		character.wing_style = S
-	S = GLOB.sprite_accessory_ears[pref.horn_style_id]
+	S = RSsprite_accessories.fetch_local_or_throw(pref.horn_style_id)
 	if(should_override(S, character.horn_style, character.species?.sprite_accessory_defaults?[SPRITE_ACCESSORY_SLOT_HORNS]))
 		character.horn_style = S
 
@@ -287,7 +287,7 @@
 
 	var/ear_display = "Normal"
 	if(pref.ear_style_id)
-		rendering = GLOB.sprite_accessory_ears[pref.ear_style_id]
+		rendering = RSsprite_accessories.fetch_local_or_throw(pref.ear_style_id)
 		if(rendering)
 			ear_display = rendering.name
 		else
@@ -305,7 +305,7 @@
 
 	var/horn_display = "Normal"
 	if(pref.horn_style_id)
-		rendering = GLOB.sprite_accessory_ears[pref.horn_style_id]
+		rendering = RSsprite_accessories.fetch_local_or_throw(pref.horn_style_id)
 		if(rendering)
 			horn_display = rendering.name
 		else
@@ -323,7 +323,7 @@
 
 	var/tail_display = "Normal"
 	if(pref.tail_style_id)
-		rendering = GLOB.sprite_accessory_tails[pref.tail_style_id]
+		rendering = RSsprite_accessories.fetch_local_or_throw(pref.tail_style_id)
 		if(rendering)
 			tail_display = rendering.name
 		else
@@ -341,7 +341,7 @@
 
 	var/wing_display = "Normal"
 	if(pref.wing_style_id)
-		rendering = GLOB.sprite_accessory_wings[pref.wing_style_id]
+		rendering = RSsprite_accessories.fetch_local_or_throw(pref.wing_style_id)
 		if(rendering)
 			wing_display = rendering.name
 		else

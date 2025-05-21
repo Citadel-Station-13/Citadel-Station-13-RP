@@ -670,9 +670,9 @@ var/list/wrapped_species_by_ref = list()
 	character.b_skin			= pref.b_skin
 	character.s_tone			= pref.s_tone
 	#warn this
-	var/datum/sprite_accessory/S = GLOB.sprite_accessory_hair[pref.h_style_id]
+	var/datum/sprite_accessory/S = RSsprite_accessories.fetch_local_or_throw(pref.h_style_id)
 	character.h_style = S.name
-	S = GLOB.sprite_accessory_facial_hair[pref.f_style_id]
+	S = RSsprite_accessories.fetch_local_or_throw(pref.f_style_id)
 	character.f_style = S.name
 	character.grad_style		= pref.grad_style
 	character.b_type			= pref.b_type
@@ -685,10 +685,10 @@ var/list/wrapped_species_by_ref = list()
 	character.body_alpha        = pref.body_alpha
 	character.hair_alpha        = pref.hair_alpha
 
-	character.ear_style = GLOB.sprite_accessory_ears[pref.ear_style_id]
-	character.tail_style = GLOB.sprite_accessory_tails[pref.tail_style_id]
-	character.wing_style = GLOB.sprite_accessory_wings[pref.wing_style_id]
-	character.horn_style = GLOB.sprite_accessory_ears[pref.horn_style_id]
+	character.ear_style = RSsprite_accessories.fetch_local_or_throw(pref.ear_style_id)
+	character.tail_style = RSsprite_accessories.fetch_local_or_throw(pref.tail_style_id)
+	character.wing_style = RSsprite_accessories.fetch_local_or_throw(pref.wing_style_id)
+	character.horn_style = RSsprite_accessories.fetch_local_or_throw(pref.horn_style_id)
 
 	character.r_ears			= pref.r_ears
 	character.b_ears			= pref.b_ears

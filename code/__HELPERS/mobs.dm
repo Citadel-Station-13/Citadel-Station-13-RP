@@ -22,7 +22,7 @@
 			continue
 		if(S.apply_restrictions && !(species in S.species_allowed))
 			continue
-		valid += id
+		valid += S.id
 	return SAFEPICK(valid)
 
 /proc/random_facial_hair_style(gender, species = SPECIES_HUMAN)
@@ -32,7 +32,7 @@
 			continue
 		if(S.apply_restrictions && !(species in S.species_allowed))
 			continue
-		valid += id
+		valid += S.id
 	return SAFEPICK(valid)
 
 /proc/sanitize_species_name(name, species = SPECIES_HUMAN)

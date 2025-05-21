@@ -150,9 +150,9 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	character.g_skin			= pref.g_skin
 	character.b_skin			= pref.b_skin
 	character.s_tone			= pref.s_tone
-	var/datum/prototype/sprite_accessory/S = GLOB.sprite_accessory_hair[pref.h_style_id]
+	var/datum/prototype/sprite_accessory/S = RSsprite_accessories.fetch_local_or_throw(pref.h_style_id)
 	character.h_style = S.name
-	S = GLOB.sprite_accessory_facial_hair[pref.f_style_id]
+	S = RSsprite_accessories.fetch_local_or_throw(pref.f_style_id)
 	character.f_style = S.name
 	character.grad_style		= pref.grad_style
 	character.grad_wingstyle	= pref.grad_wingstyle
@@ -391,7 +391,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	. += "<b>Hair</b><br>"
 	if(has_flag(mob_species, HAS_HAIR_COLOR))
 		. += "<a href='?src=\ref[src];hair_color=1'>Change Color</a> [color_square(pref.r_hair, pref.g_hair, pref.b_hair)] "
-	var/datum/prototype/sprite_accessory/current_hair = GLOB.sprite_accessory_hair[pref.h_style_id]
+	var/datum/prototype/sprite_accessory/current_hair = RSsprite_accessories.fetch_local_or_throw(pref.h_style_id)
 	. += " Style: <a href='?src=\ref[src];hair_style_left=1'><</a> <a href='?src=\ref[src];hair_style_right=1'>></a> <a href='?src=\ref[src];hair_style=1'>[current_hair.name]</a><br>" //The <</a> & ></a> in this line is correct-- those extra characters are the arrows you click to switch between styles.
 
 	. += "<b>Gradient</b><br>"
@@ -401,7 +401,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	. += "<br><b>Facial</b><br>"
 	if(has_flag(mob_species, HAS_HAIR_COLOR))
 		. += "<a href='?src=\ref[src];facial_color=1'>Change Color</a> [color_square(pref.r_facial, pref.g_facial, pref.b_facial)] "
-	var/datum/prototype/sprite_accessory/current_face_hair = GLOB.sprite_accessory_facial_hair[pref.f_style_id]
+	var/datum/prototype/sprite_accessory/current_face_hair = RSsprite_accessories.fetch_local_or_throw(pref.f_style_id)
 	. += " Style: <a href='?src=\ref[src];facial_style_left=1'><</a> <a href='?src=\ref[src];facial_style_right=1'>></a> <a href='?src=\ref[src];facial_style=1'>[current_face_hair.name]</a><br>" //Same as above with the extra > & < characters
 	if(has_flag(mob_species, HAS_HAIR_ALPHA))
 		. += "<a href='?src=\ref[src];hair_alpha=1'>Change Hair Alpha</a> [pref.hair_alpha]<br>"
@@ -483,7 +483,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	else if(href_list["hair_style"])
 		var/list/valid_hairstyles = pref.get_valid_hairstyles()
-		var/datum/prototype/sprite_accessory/current = GLOB.sprite_accessory_hair[pref.h_style_id]
+		var/datum/prototype/sprite_accessory/current = RSsprite_accessories.fetch_local_or_throw(pref.h_style_id)
 		var/new_h_style = tgui_input_list(user, "Choose your character's hair style:", "Character Preference", valid_hairstyles, current.name)
 		if(new_h_style && CanUseTopic(user))
 			var/datum/prototype/sprite_accessory/S = valid_hairstyles[new_h_style]
@@ -491,11 +491,11 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["hair_style_left"])
-		pref.h_style_id = previous_list_item_safe(pref.h_style_id, GLOB.sprite_accessory_hair) || GLOB.sprite_accessory_hair[1]
+		pref.h_style_id = previous_list_item_safe(pref.h_style_id, GLOB.sprite_accessory_hair) || RSsprite_accessories.fetch_local_or_throw(1)
 		return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["hair_style_right"])
-		pref.h_style_id = next_list_item_safe(pref.h_style_id, GLOB.sprite_accessory_hair) || GLOB.sprite_accessory_hair[1]
+		pref.h_style_id = next_list_item_safe(pref.h_style_id, GLOB.sprite_accessory_hair) || RSsprite_accessories.fetch_local_or_throw(1)
 		return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["grad_style"])
@@ -562,7 +562,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	else if(href_list["facial_style"])
 		var/list/valid_facialhairstyles = pref.get_valid_facialhairstyles()
-		var/datum/prototype/sprite_accessory/current = GLOB.sprite_accessory_facial_hair[pref.f_style_id]
+		var/datum/prototype/sprite_accessory/current = RSsprite_accessories.fetch_local_or_throw(pref.f_style_id)
 		var/new_f_style = tgui_input_list(user, "Choose your character's facial-hair style:", "Character Preference", valid_facialhairstyles, current.name)
 		if(new_f_style && CanUseTopic(user))
 			var/datum/prototype/sprite_accessory/S = valid_facialhairstyles[new_f_style]
@@ -570,11 +570,11 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["facial_style_left"])
-		pref.f_style_id = previous_list_item_safe(pref.f_style_id, GLOB.sprite_accessory_facial_hair) || GLOB.sprite_accessory_facial_hair[1]
+		pref.f_style_id = previous_list_item_safe(pref.f_style_id, GLOB.sprite_accessory_facial_hair) || RSsprite_accessories.fetch_local_or_throw(1)
 		return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["facial_style_right"])
-		pref.f_style_id = next_list_item_safe(pref.f_style_id, GLOB.sprite_accessory_facial_hair) || GLOB.sprite_accessory_facial_hair[1]
+		pref.f_style_id = next_list_item_safe(pref.f_style_id, GLOB.sprite_accessory_facial_hair) || RSsprite_accessories.fetch_local_or_throw(1)
 		return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["marking_style"])

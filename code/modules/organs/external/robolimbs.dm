@@ -138,4 +138,4 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 		if(ispath(casted, /datum/prototype/bodyset))
 			bodyset = new casted
 		else
-			bodyset = GLOB.bodyset_lookup[casted]
+			bodyset = RSbodysets.fetch_local_or_throw(casted)
