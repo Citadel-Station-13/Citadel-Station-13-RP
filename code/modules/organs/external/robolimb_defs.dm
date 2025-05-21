@@ -107,12 +107,10 @@
 	blood_color = "#4451cf"
 	speech_bubble_appearance = "normal"
 
-#warn below
-
 /datum/robolimb/unbranded_monitor
 	company = "Unbranded Monitor"
 	desc = "A generic unbranded interpretation of a popular prosthetic head model. It looks rudimentary and cheaply constructed."
-	icon = 'icons/mob/cyberlimbs/unbranded/unbranded_monitor.dmi'
+	bodyset = /datum/prototype/bodyset/unbranded/monitor
 	parts = list(BP_HEAD)
 	monitor_styles = standard_monitor_styles
 	unavailable_to_build = TRUE
@@ -120,13 +118,13 @@
 /datum/robolimb/unbranded_alt1
 	company = "Unbranded - Protez"
 	desc = "A simple robotic limb with retro design. Seems rather stiff."
-	icon = 'icons/mob/cyberlimbs/unbranded/unbranded_alt1.dmi'
+	bodyset = /datum/prototype/bodyset/unbranded/protez
 	unavailable_to_build = TRUE
 
 /datum/robolimb/unbranded_alt2
 	company = "Unbranded - Mantis Prosis"
 	desc = "This limb has a casing of sleek black metal and repulsive insectile design."
-	icon = 'icons/mob/cyberlimbs/unbranded/unbranded_alt2.dmi'
+	bodyset = /datum/prototype/bodyset/unbranded/mantis
 	unavailable_to_build = TRUE
 
 /datum/robolimb/unbranded_tajaran
@@ -134,7 +132,7 @@
 	species_cannot_use = list(SPECIES_TESHARI, SPECIES_PROMETHEAN, SPECIES_DIONA, SPECIES_HUMAN, SPECIES_VOX, SPECIES_HUMAN_VATBORN, SPECIES_UNATHI, SPECIES_SKRELL, SPECIES_ZADDAT)
 	suggested_species = SPECIES_TAJ
 	desc = "A simple robotic limb with feline design. Seems rather stiff."
-	icon = 'icons/mob/cyberlimbs/unbranded/unbranded_tajaran.dmi'
+	bodyset = /datum/prototype/bodyset/unbranded/tajaran
 	unavailable_to_build = TRUE
 
 /datum/robolimb/unbranded_unathi
@@ -142,7 +140,7 @@
 	species_cannot_use = list(SPECIES_TESHARI, SPECIES_PROMETHEAN, SPECIES_DIONA, SPECIES_HUMAN, SPECIES_VOX, SPECIES_HUMAN_VATBORN, SPECIES_TAJ, SPECIES_SKRELL, SPECIES_ZADDAT)
 	suggested_species = SPECIES_UNATHI
 	desc = "A simple robotic limb with reptilian design. Seems rather stiff."
-	icon = 'icons/mob/cyberlimbs/unbranded/unbranded_unathi.dmi'
+	bodyset = /datum/prototype/bodyset/unbranded/unathi
 	unavailable_to_build = TRUE
 
 /datum/robolimb/unbranded_teshari
@@ -150,14 +148,16 @@
 	species_cannot_use = list(SPECIES_UNATHI, SPECIES_PROMETHEAN, SPECIES_DIONA, SPECIES_HUMAN, SPECIES_VOX, SPECIES_HUMAN_VATBORN, SPECIES_TAJ, SPECIES_SKRELL, SPECIES_ZADDAT)
 	suggested_species = SPECIES_TESHARI
 	desc = "A simple robotic limb with a small, raptor-like design. Seems rather stiff."
-	icon = 'icons/mob/cyberlimbs/unbranded/unbranded_teshari.dmi'
+	bodyset = /datum/prototype/bodyset/unbranded/teshari
 	unavailable_to_build = TRUE
 
 /datum/robolimb/unbranded_digitigrade
 	company = "Unbranded - Generic Digitigrade"
 	desc = "A digitigrade robotic leg of a fairly generic design."
-	icon = 'icons/mob/cyberlimbs/unbranded/unbranded_digitigrade.dmi'
+	bodyset = /datum/prototype/bodyset/unbranded/digitigrade
 	parts = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
+
+#warn below
 
 /datum/robolimb/mpc
 	company = "Moghes Prosthetics Company"
@@ -407,7 +407,7 @@
 /datum/robolimb/replika
 	company = "Replikant"
 	desc = "An advanced biomechanical prosthetic with pegs for feet."
-	icon = 'icons/mob/cyberlimbs/replikant/replikant.dmi'
+	bodyset = /datum/prototype/bodyset/replika/gen_1
 	lifelike = 1
 	modular_bodyparts = MODULAR_BODYPART_PROSTHETIC
 	parts = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
@@ -415,7 +415,7 @@
 /datum/robolimb/replika2
 	company = "Replikant - 2nd Gen"
 	desc = "Modern, second-generation biomechanical prosthetics with pegs for feet."
-	icon = 'icons/mob/cyberlimbs/replikant/replikant2.dmi'
+	bodyset = /datum/prototype/bodyset/replika/gen_2
 	lifelike = 1
 	modular_bodyparts = MODULAR_BODYPART_PROSTHETIC
 	parts = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
@@ -535,7 +535,7 @@
 /datum/robolimb/dsi_spider
 	company = "OSS - Vasilissan"
 	desc = "This limb feels hard and chitinous, realistic design. Seems a little mischievous. By Onkhera Synthetic Solutions."
-	icon = 'icons/mob/cyberlimbs/DSISpider/dsi_spider.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/oss_vasilissan
 	blood_color = "#ffe2ff"
 	lifelike = 1
 	unavailable_to_build = TRUE
@@ -548,7 +548,7 @@
 /datum/robolimb/dsi_teshari
 	company = "OSS - Teshari"
 	desc = "This limb has a thin synthflesh casing with a few connection ports. By Onkhera Synthetic Solutions."
-	icon = 'icons/mob/cyberlimbs/DSITeshari/dsi_teshari.dmi'
+	bodyset = /datum/prototype/bodyset/oss_teshari
 	lifelike = 1
 	unavailable_to_build = TRUE
 	skin_tone = 1
@@ -560,12 +560,10 @@
 	species_cannot_use = SScharacters.all_species_names() - SPECIES_TESHARI
 	..()
 
-
-
 /datum/robolimb/adherent
 	company = "Unbranded - Adherent"
 	desc    = "A simple robotic limb with retro design. Seems rather stiff."
-	icon    = 'icons/mob/species/adherent/body.dmi'
+	bodyset = /datum/prototype/bodyset/special/adherent
 	unavailable_to_build = TRUE
 	suggested_species = SPECIES_ADHERENT
 

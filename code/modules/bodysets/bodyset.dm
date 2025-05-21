@@ -9,8 +9,6 @@
 /datum/prototype/bodyset
 	abstract_type = /datum/prototype/bodyset
 
-	/// id - **must** be unique
-	var/id
 	/// name - should be unique
 	var/name
 	/// category name for UIs

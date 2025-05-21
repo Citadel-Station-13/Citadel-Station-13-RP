@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/datum/prototype/bodyset/organic/shadow
+/datum/prototype/bodyset/special/shadow
 	name = "Shadow"
 	id = "shadow"
 	group_id = "human"
