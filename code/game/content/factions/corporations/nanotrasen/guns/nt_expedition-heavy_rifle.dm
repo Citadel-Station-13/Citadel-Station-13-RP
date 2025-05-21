@@ -87,7 +87,7 @@
 
 /obj/projectile/bullet/nt_expedition/heavy_rifle
 	name = "heavy rifle bullet"
-	damage_force = 40
+	damage_force = 32.5
 	damage_tier = 4.75
 
 //* Heavy Rifles *//

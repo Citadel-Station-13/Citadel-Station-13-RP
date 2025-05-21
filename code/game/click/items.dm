@@ -34,15 +34,15 @@
 	e_args.target = target
 	e_args.click_params = params
 
-	if((. |= item_attack_chain(e_args, .)) & CLICKCHAIN_DO_NOT_PROPAGATE)
+	if(!(. & CLICKCHAIN_FLAGS_INTERACT_ABORT) && ((. |= item_attack_chain(e_args, .)) & CLICKCHAIN_DO_NOT_PROPAGATE))
 		return
 
 	// todo: should only have e_args and clickchain_flags as params.
-	if((. |= tool_attack_chain(target, user, ., params)) & CLICKCHAIN_DO_NOT_PROPAGATE)
+	if(!(. & CLICKCHAIN_FLAGS_INTERACT_ABORT) && ((. |= tool_attack_chain(target, user, ., params)) & CLICKCHAIN_DO_NOT_PROPAGATE))
 		return
 
 	// todo: is pre_attack really needed/justified?
-	if((. |= pre_attack(target, user, ., params)) & CLICKCHAIN_DO_NOT_PROPAGATE)
+	if(!(. & (CLICKCHAIN_FLAGS_INTERACT_ABORT | CLICKCHAIN_FLAGS_ATTACK_ABORT)) && ((. |= pre_attack(target, user, ., params)) & CLICKCHAIN_DO_NOT_PROPAGATE))
 		return
 
 	// todo: refactor
@@ -52,8 +52,8 @@
 	// - melee attack & receive melee attack (melee_interaction() on /atom? not item_melee_act directly?)
 	// - melee attack shouldn't require attackby() to allow it to, it should be automatic on harm intent (?)
 	// - the item should have final say but we need a way to allow click redirections so..
-	if(resolve_attackby(target, user, params, null, ., e_args))
-		return CLICKCHAIN_DO_NOT_PROPAGATE
+	if(!(. & CLICKCHAIN_FLAGS_INTERACT_ABORT) && ((. |= resolve_attackby(target, user, params, null, ., e_args)) & CLICKCHAIN_DO_NOT_PROPAGATE))
+		return
 
 	// todo: signal for afterattack here
 	return . | afterattack(target, user, clickchain_flags, params)
