@@ -13,11 +13,11 @@
 [b]Relevant Contracts[/b]: Dangerous Wildlife Control (Natrik Region), System Self Defence Assistance."}
 
 	//icon_state = "globe"
-	color = "#ffd300" //Sandy
-	icon = 'icons/modules/overmap/huge_worlds.dmi'
-	bound_width = 96
-	bound_height = 96
-	icon_state = "Gray"
+	//color = "#ffd300" //Sandy
+	icon = 'icons/modules/overmap/large_worlds.dmi'
+	bound_width = 64
+	bound_height = 64
+	icon_state = "miaphus2"
 
 	in_space = 0
 	initial_generic_waypoints = list("beach_e", "beach_c", "beach_nw")
