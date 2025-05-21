@@ -8419,7 +8419,7 @@
 /area/maintenance/starboard)
 "fAI" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/paint/hardwood,
+/obj/map_helper/paint_stripe/hardwood,
 /turf/simulated/floor/plating,
 /area/library)
 "fBk" = (
@@ -30705,7 +30705,7 @@
 /area/rnd/outpost/xenobiology/outpost_breakroom)
 "sxf" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/map_helper/paint/hardwood,
+/obj/map_helper/paint_stripe/hardwood,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/entertainment)
 "sxj" = (
