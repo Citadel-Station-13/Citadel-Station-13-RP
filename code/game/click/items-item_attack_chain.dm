@@ -28,7 +28,7 @@
 	. |= SEND_SIGNAL(e_args.target, COMSIG_ATOM_USING_ITEM_ON, src, e_args, clickchain_flags)
 	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
-	. |= e_args.target.using_item_on(src, e_args.target, clickchain_flags)
+	. |= e_args.target.using_item_on(src, e_args, clickchain_flags)
 	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
 
