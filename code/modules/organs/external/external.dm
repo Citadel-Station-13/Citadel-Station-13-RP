@@ -1,3 +1,13 @@
+/**
+ * An external organ, so a bodypart.
+ *
+ * ## Contents
+ *
+ * * Contents list contains anything inside us normally, except for children of us
+ *   (like the hand organ of an arm).
+ * * While dismembered, if child organs exist (like hand of an arm), they are inside
+ *   our contents.
+ */
 /obj/item/organ/external
 	name = "external"
 	max_damage = 0
@@ -5,6 +15,12 @@
 	dir = SOUTH
 	organ_tag = "limb"
 	decays = FALSE
+
+	//* Appearance *//
+	/// bodyset to use
+	var/datum/prototype/bodyset/bodyset
+	/// markings on us
+	var/list/datum/bodyset_marking_descriptor/bodyset_markings
 
 	//* Behaviour *//
 	/// this covers things like 'can this limb be injected' or 'can this limb be healed'
@@ -92,8 +108,6 @@
 	/// Icon blend for body hair if any.
 	var/body_hair
 	var/mob/living/applied_pressure
-	/// Markings (body_markings) to apply to the icon
-	var/list/markings = list()
 
 	//* ## STRUCTURAL VARS
 	/// Master-limb.
