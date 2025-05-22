@@ -408,12 +408,12 @@
 
 	if(!istype(user, /mob/living))
 		return 0
-	if(!user.IsAdvancedToolUser())
-		return 0
-	if(isanimal(user))
+	if(issimplemob(user))
 		var/mob/living/simple_mob/S = user
 		if(!S.IsHumanoidToolUser(src))
 			return 0
+	if(!user.IsAdvancedToolUser())
+		return 0
 	if(!handle_pins(user))
 		return 0
 	return 1
@@ -457,7 +457,7 @@
 		e_args.using_intent = user.a_intent
 		return handle_clickchain_fire(e_args, clickchain_flags)
 
-/obj/item/gun/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/gun/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/A = target
 	if(!istype(A))
 		return ..()

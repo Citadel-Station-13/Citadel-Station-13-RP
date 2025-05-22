@@ -168,7 +168,7 @@
 		onclose(usr, "[name]")
 	return
 
-/obj/item/paper/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/paper/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(user.zone_sel.selecting == O_EYES)
 		user.visible_message("<span class='notice'>You show the paper to [target]. </span>", \

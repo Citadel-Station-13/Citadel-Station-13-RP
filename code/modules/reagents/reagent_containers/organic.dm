@@ -80,7 +80,7 @@
 		var/image/lid = image(icon, src, "lid_[initial(icon_state)]")
 		add_overlay(lid)
 
-/obj/item/reagent_containers/organic/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/reagent_containers/organic/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return	..()
 
