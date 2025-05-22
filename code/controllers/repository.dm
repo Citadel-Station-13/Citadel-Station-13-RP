@@ -305,6 +305,18 @@
 	return fetch_subtypes_immutable(path).Copy()
 
 /**
+ * Non-blocking, will DB-load.
+ */
+/datum/controller/repository/proc/check_exists(datum/prototype/type_or_id)
+	return !!fetch(type_or_id)
+
+/**
+ * Non-blocking, will not DB-load.
+ */
+/datum/controller/repository/proc/check_exists_local(datum/prototype/type_or_id)
+	return !!id_lookup[istext(type_or_id) ? type_or_id : type_or_id.id]
+
+/**
  * Registers a prototype created midround.
  *
  * * This can immediately save it to the database.

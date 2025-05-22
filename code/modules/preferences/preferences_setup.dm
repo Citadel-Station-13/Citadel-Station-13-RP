@@ -213,6 +213,6 @@
 			continue
 		if(S.apply_restrictions && !(RS.name in S.species_allowed) && (!custom_base || !(custom_base in S.species_allowed))) //Custom species base species allowance
 			continue
-		valid_hairstyles[S.name] = S
+		valid_facialhairstyles[S.name] = S
 
 	return valid_facialhairstyles

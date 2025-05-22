@@ -189,26 +189,14 @@
 	var/datum/species/S = pref.real_species_datum()
 	var/species_name = S.name
 
-	if(pref.ear_style_id)
-		pref.ear_style_id	= sanitize_inlist(pref.ear_style_id, GLOB.sprite_accessory_ears, initial(pref.ear_style_id))
-		var/datum/prototype/sprite_accessory/temp_ear_style_id =  RSsprite_accessories.fetch_local_or_throw(pref.ear_style_id)
-		if(temp_ear_style_id.apply_restrictions && (!(species_name in temp_ear_style_id.species_allowed)))
-			pref.ear_style_id = initial(pref.ear_style_id)
-	if(pref.horn_style_id)
-		pref.horn_style_id	= sanitize_inlist(pref.horn_style_id,  GLOB.sprite_accessory_ears, initial(pref.horn_style_id))
-		var/datum/prototype/sprite_accessory/temp_horn_style_id =  RSsprite_accessories.fetch_local_or_throw(pref.horn_style_id)
-		if(temp_horn_style_id.apply_restrictions && (!(species_name in temp_horn_style_id.species_allowed)))
-			pref.horn_style_id = initial(pref.horn_style_id)
-	if(pref.tail_style_id)
-		pref.tail_style_id	= sanitize_inlist(pref.tail_style_id,  GLOB.sprite_accessory_tails, initial(pref.tail_style_id))
-		var/datum/prototype/sprite_accessory/temp_tail_style_id = RSsprite_accessories.fetch_local_or_throw(pref.tail_style_id)
-		if(temp_tail_style_id.apply_restrictions && (!(species_name in temp_tail_style_id.species_allowed)))
-			pref.tail_style_id = initial(pref.tail_style_id)
-	if(pref.wing_style_id)
-		pref.wing_style_id	= sanitize_inlist(pref.wing_style_id, GLOB.sprite_accessory_wings, initial(pref.wing_style_id))
-		var/datum/prototype/sprite_accessory/temp_wing_style_id = RSsprite_accessories.fetch_local_or_throw(pref.wing_style_id)
-		if(temp_wing_style_id.apply_restrictions && (!(species_name in temp_wing_style_id.species_allowed)))
-			pref.wing_style_id = initial(pref.wing_style_id)
+	if(!RSsprite_accessories.check_exists_local(pref.ear_style_id))
+		pref.ear_style_id = null
+	if(!RSsprite_accessories.check_exists_local(pref.horn_style_id))
+		pref.horn_style_id = null
+	if(!RSsprite_accessories.check_exists_local(pref.tail_style_id))
+		pref.tail_style_id = null
+	if(!RSsprite_accessories.check_exists_local(pref.wing_style_id))
+		pref.wing_style_id = null
 
 /datum/category_item/player_setup_item/vore/ears/proc/should_override(datum/prototype/sprite_accessory/setting, datum/prototype/sprite_accessory/existing, datum/prototype/sprite_accessory/species)
 	if(species && (existing == species))
@@ -371,11 +359,10 @@
 	else if(href_list["ear_style"])
 		// Construct the list of names allowed for this user.
 		var/list/pretty_ear_styles = list("Normal" = null)
-		var/datum/prototype/sprite_accessory/ears/current = pref.ear_style_id && GLOB.sprite_accessory_ears[pref.ear_style_id]
-		for(var/id in GLOB.sprite_accessory_ears)
-			var/datum/prototype/sprite_accessory/ears/instance = GLOB.sprite_accessory_ears[id]
+		var/datum/prototype/sprite_accessory/ears/current = pref.ear_style_id && RSsprite_accessories.fetch_local_or_throw(pref.ear_style_id)
+		for(var/datum/prototype/sprite_accessory/instance as anything in RSsprite_accessories.fetch_subtypes_immutable(/datum/prototype/sprite_accessory/wing))
 			if(((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
-				pretty_ear_styles[instance.name] = id
+				pretty_ear_styles[instance.name] = instance.id
 
 		// Present choice to user
 		var/new_ear_style = tgui_input_list(user, "Pick ears", "Character Preference", pretty_ear_styles, current?.name)
@@ -414,11 +401,10 @@
 	else if(href_list["horn_style"])
 		// Construct the list of names allowed for this user.
 		var/list/pretty_horn_styles = list("Normal" = null)
-		var/datum/prototype/sprite_accessory/ears/current = pref.horn_style_id && GLOB.sprite_accessory_ears[pref.horn_style_id]
-		for(var/id in GLOB.sprite_accessory_ears)
-			var/datum/prototype/sprite_accessory/ears/instance = GLOB.sprite_accessory_ears[id]
+		var/datum/prototype/sprite_accessory/ears/current = pref.horn_style_id && RSsprite_accessories.fetch_local_or_throw(pref.horn_style_id)
+		for(var/datum/prototype/sprite_accessory/instance as anything in RSsprite_accessories.fetch_subtypes_immutable(/datum/prototype/sprite_accessory/wing))
 			if(((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
-				pretty_horn_styles[instance.name] = id
+				pretty_horn_styles[instance.name] = instance.id
 
 		// Present choice to user
 		var/new_horn_style = tgui_input_list(user, "Pick Secondary Ears", "Character Preference",pretty_horn_styles ,current?.name)
@@ -457,11 +443,10 @@
 	else if(href_list["tail_style"])
 		// Construct the list of names allowed for this user.
 		var/list/pretty_tail_styles = list("Normal" = null)
-		var/datum/prototype/sprite_accessory/tail/current = pref.tail_style_id && GLOB.sprite_accessory_tails[pref.tail_style_id]
-		for(var/id in GLOB.sprite_accessory_tails)
-			var/datum/prototype/sprite_accessory/tail/instance = GLOB.sprite_accessory_tails[id]
+		var/datum/prototype/sprite_accessory/tail/current = pref.tail_style_id && RSsprite_accessories.fetch_local_or_throw(pref.tail_style_id)
+		for(var/datum/prototype/sprite_accessory/instance as anything in RSsprite_accessories.fetch_subtypes_immutable(/datum/prototype/sprite_accessory/wing))
 			if(((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
-				pretty_tail_styles[instance.name] = id
+				pretty_tail_styles[instance.name] = instance.id
 
 		// Present choice to user
 		var/new_tail_style = tgui_input_list(user, "Pick tails", "Character Preference", pretty_tail_styles, current?.name)
@@ -500,11 +485,10 @@
 	else if(href_list["wing_style"])
 		// Construct the list of names allowed for this user.
 		var/list/pretty_wing_styles = list("Normal" = null)
-		var/datum/prototype/sprite_accessory/wing/current = pref.wing_style_id && GLOB.sprite_accessory_wings[pref.wing_style_id]
-		for(var/id in GLOB.sprite_accessory_wings)
-			var/datum/prototype/sprite_accessory/wing/instance = GLOB.sprite_accessory_wings[id]
+		var/datum/prototype/sprite_accessory/wing/current = pref.wing_style_id && RSsprite_accessories.fetch_local_or_throw(pref.wing_style_id)
+		for(var/datum/prototype/sprite_accessory/instance as anything in RSsprite_accessories.fetch_subtypes_immutable(/datum/prototype/sprite_accessory/wing))
 			if(((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
-				pretty_wing_styles[instance.name] = id
+				pretty_wing_styles[instance.name] = instance.id
 
 		// Present choice to user
 		var/new_wing_style = tgui_input_list(user, "Pick wings", "Character Preference", pretty_wing_styles, current?.name)

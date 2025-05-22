@@ -19,8 +19,6 @@
 
 	/// name - should be unique
 	var/name = "Unknown Marking"
-	/// id - **must** be unique
-	var/id
 	/// category
 	var/category = "Miscellaneous"
 
@@ -46,6 +44,12 @@
 	var/list/bodyset_restricted
 	/// restrict to a specific group id
 	var/bodyset_group_restricted = "human"
+
+	//* legacy *//
+	/// use additive color matrix on the main overlay, rather than multiply
+	/// this is slow, please stop using it and do proper greyscales.
+	var/legacy_use_additive_color_matrix = FALSE
+	#warn impl this
 
 /datum/prototype/bodyset_marking/New()
 	#warn bodyset_restricted
