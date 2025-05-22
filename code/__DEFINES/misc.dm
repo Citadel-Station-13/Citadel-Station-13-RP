@@ -1,4 +1,5 @@
 // These get to go at the top, because they're special
+
 //You can use these defines to get the typepath of the currently running proc/verb (yes procs + verbs are objects)
 /* eg:
 /mob/living/carbon/human/death()
@@ -11,8 +12,8 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define THIS_PROC_TYPE_STR_WITH_ARGS "[THIS_PROC_TYPE]([args.Join(",")])"
 /// This one is WEIRD, in some cases (When used in certain defines? (eg: ASSERT)) THIS_PROC_TYPE will fail to work, but THIS_PROC_TYPE_WEIRD will work instead
 #define THIS_PROC_TYPE_WEIRD ......
-//define THIS_PROC_TYPE_WEIRD_STR "[THIS_PROC_TYPE_WEIRD]" //Included for completeness
-//define THIS_PROC_TYPE_WEIRD_STR_WITH_ARGS "[THIS_PROC_TYPE_WEIRD]([args.Join(",")])" //Ditto
+#define THIS_PROC_TYPE_WEIRD_STR "[THIS_PROC_TYPE_WEIRD]"
+#define THIS_PROC_TYPE_WEIRD_STR_WITH_ARGS "[THIS_PROC_TYPE_WEIRD]([args.Join(",")])"
 
 /// Invisibility constants. These should only be used for TRUE invisibility, AKA nothing living players touch
 ///

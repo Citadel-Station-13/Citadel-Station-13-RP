@@ -139,7 +139,7 @@
 	inject_amount = (inject_amount + 5 > inject_max)? min(5, inject_max) : inject_amount + 5
 	user.action_feedback(SPAN_NOTICE("[src] is now set to inject [inject_amount] per use."), src)
 
-/obj/item/hypospray/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/hypospray/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(injection_checks(target, user, target_zone))
 		do_inject(target, user)
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE

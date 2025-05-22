@@ -233,7 +233,7 @@ DECLARE_MATERIAL(/steel)
 	)
 	. += create_stack_recipe_datum(
 		category = "weapons",
-		product = /obj/item/grenade/chem_grenade,
+		product = /obj/item/grenade/simple/chemical,
 		name = "grenade casing",
 		cost = 2,
 	)

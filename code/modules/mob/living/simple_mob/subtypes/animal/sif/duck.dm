@@ -31,7 +31,7 @@
 	health = 50
 	randomized = TRUE
 
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 
 	legacy_melee_damage_lower = 2
 	legacy_melee_damage_upper = 10

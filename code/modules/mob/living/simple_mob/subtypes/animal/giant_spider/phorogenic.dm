@@ -39,7 +39,7 @@
 	legacy_melee_damage_upper = 40
 	attack_armor_pen = 15
 
-	movement_cooldown = 15
+	movement_base_speed = 10 / 15
 
 	poison_chance = 30
 	poison_per_bite = 0.5

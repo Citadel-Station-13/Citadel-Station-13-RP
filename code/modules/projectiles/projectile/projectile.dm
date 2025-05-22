@@ -677,7 +677,7 @@
 	var/final_damage = damage_force
 	if(isliving(target))
 		var/mob/living/L = target
-		if(issimple(target))
+		if(issimplemob(target))
 			var/mob/living/simple_mob/SM = L
 			if(SM.mob_class & SA_vulnerability)
 				final_damage += SA_bonus_damage
