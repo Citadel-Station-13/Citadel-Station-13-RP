@@ -323,7 +323,8 @@
 		var/mob/living/carbon/human/H = M
 		if(H.species.siemens_coefficient <= 0)
 			return
-		if(H.inventory.query_simple_covered_siemens_coefficient(HANDS))
+		siemens_coeff *= H.inventory.query_simple_covered_siemens_coefficient(HANDS)
+		if(siemens_coeff <= 0)
 			return 0		//to avoid spamming with insulated glvoes on
 
 	//Checks again. If we are still here subject will be shocked, trigger standard 20 tick warning

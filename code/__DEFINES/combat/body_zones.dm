@@ -31,7 +31,7 @@
  * * Groin is redirected to torso
  * * Eyes, mouth, are redirected to head
  */
-/proc/SIMPLIFY_BODY_ZONE(zone)
+/proc/BODY_ZONE_TO_SIMPLIFIED(zone)
 	var/static/list/lookup = list(
 		BODY_ZONE_GROIN = BODY_ZONE_TORSO,
 		BODY_ZONE_L_HAND = BODY_ZONE_L_ARM,
@@ -42,3 +42,24 @@
 		BODY_ZONE_EYES = BODY_ZONE_HEAD,
 	)
 	return lookup[zone] || zone
+
+/**
+ * body zone to body cover flags
+ */
+/proc/BODY_ZONE_TO_FLAGS(zone)
+	var/static/alist/lookup = list(
+		BODY_ZONE_HEAD = HEAD,
+		BODY_ZONE_MOUTH = FACE,
+		BODY_ZONE_EYES = EYES,
+		BODY_ZONE_TORSO = UPPER_TORSO,
+		BODY_ZONE_GROIN = LOWER_TORSO,
+		BODY_ZONE_L_ARM = ARM_LEFT,
+		BODY_ZONE_R_ARM = ARM_RIGHT,
+		BODY_ZONE_L_HAND = HAND_LEFT,
+		BODY_ZONE_R_HAND = HAND_RIGHT,
+		BODY_ZONE_L_LEG = LEG_LEFT,
+		BODY_ZONE_R_LEG = LEG_RIGHT,
+		BODY_ZONE_L_FOOT = FOOT_LEFT,
+		BODY_ZONE_R_FOOT = FOOT_RIGHT,
+	)
+	return lookup[zone]

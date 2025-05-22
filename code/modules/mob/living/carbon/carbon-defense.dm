@@ -42,7 +42,7 @@
 				human_attacker.bloody_body(src)
 				human_attacker.bloody_hands(src)
 		if(IS_CONSCIOUS(src))
-			switch(SIMPLIFY_BODY_ZONE(target_zone))
+			switch(BODY_ZONE_TO_SIMPLIFIED(target_zone))
 				if(BODY_ZONE_HEAD)
 					// requires atleast a significant hit
 					if(resultant_damage > 8 && prob(resultant_damage))

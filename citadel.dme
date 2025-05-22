@@ -1619,6 +1619,7 @@
 #include "code\game\objects\items-inventory-old.dm"
 #include "code\game\objects\items-inventory-rendering.dm"
 #include "code\game\objects\items-inventory.dm"
+#include "code\game\objects\items-vv.dm"
 #include "code\game\objects\items.dm"
 #include "code\game\objects\materials.dm"
 #include "code\game\objects\misc.dm"

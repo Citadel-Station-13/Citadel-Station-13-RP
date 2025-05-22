@@ -141,7 +141,7 @@ DEFINE_BITFIELD(inv_hide_flags, list(
 //*                  of a standard humanoid body.                        *//
 
 // todo: is there any way at all to rename these to not be one word defines?
-//       literally anything like BP_MASK_* would help
+//       literally anything like BODY_COVER_* or BP_MASK_* would help
 
 #define HEAD        (1<<0)
 #define FACE        (1<<1)
