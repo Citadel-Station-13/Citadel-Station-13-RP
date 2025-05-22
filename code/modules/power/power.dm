@@ -358,7 +358,7 @@
 		stun_calculation = rand(20, 35)
 	else
 		stun_calculation = shock_damage
-	var/list/shock_return = M.electrocute(0, shock_damage * siemens_coeff, stun_calculation, ELECTROCUTE_ACT_FLAG_IGNORE_ARMOR, null, source)
+	var/list/shock_return = M.electrocute(0, shock_damage * siemens_coeff, stun_calculation & siemens_coeff, ELECTROCUTE_ACT_FLAG_IGNORE_ARMOR, null, source)
 	pass(shock_return)
 	// // 10kw per hp
 	// var/drained_energy = drained_hp * 10000
