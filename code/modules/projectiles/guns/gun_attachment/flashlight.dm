@@ -38,8 +38,8 @@
 	..()
 
 /obj/item/gun_attachment/flashlight/update_icon_state()
+	. = ..()
 	icon_state = "[base_icon_state || initial(icon_state)][on ? "-on" : ""]"
-	return ..()
 
 /obj/item/gun_attachment/flashlight/proc/set_on(state, datum/event_args/actor/actor)
 	if(on == state)

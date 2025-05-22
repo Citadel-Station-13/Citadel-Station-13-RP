@@ -35,9 +35,9 @@
 	air3.volume = ATMOS_DEFAULT_VOLUME_FILTER
 
 /obj/machinery/atmospherics/component/trinary/molar_filter/update_icon_state()
+	. = ..()
 	var/is_on = on && powered() && (node1 && node2 && node3)
 	icon_state = "[base_icon_state][mirrored? "-f" : ""][(is_on? "-on" : "")]"
-	return ..()
 
 /obj/machinery/atmospherics/component/trinary/molar_filter/process(delta_time)
 	..()

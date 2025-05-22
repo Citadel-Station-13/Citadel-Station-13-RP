@@ -85,8 +85,8 @@ GLOBAL_LIST_EMPTY(bioscan_antenna_list)
 	update_icon()
 
 /obj/machinery/bioscan_antenna/update_icon_state()
+	. = ..()
 	icon_state = "[base_icon_state][network_key? "_active" : ""]"
-	return ..()
 
 /obj/machinery/bioscan_antenna/permanent
 	desc = "A less fragile antenna used to locate nearby biosignatures. This one cannot be anchored or moved, only reprogrammed."

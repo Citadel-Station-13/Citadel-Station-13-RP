@@ -61,11 +61,11 @@
 	update_icon()
 
 /obj/machinery/button/remote/update_icon_state()
+	. = ..()
 	if(machine_stat & NOPOWER)
 		icon_state = "doorctrl-p"
 	else
 		icon_state = "doorctrl0"
-	return ..()
 
 /*
 	Airlock remote control
@@ -202,8 +202,8 @@
 	return
 
 /obj/machinery/button/remote/driver/update_icon_state()
+	. = ..()
 	if(!active || (machine_stat & NOPOWER))
 		icon_state = "launcherbtt"
 	else
 		icon_state = "launcheract"
-	return ..()

@@ -35,13 +35,13 @@
 	. = ..()
 
 /obj/machinery/computer/timeclock/update_icon_state()
+	. = ..()
 	if(inoperable())
 		icon_state = "[initial(icon_state)]_off"
 	else if(card)
 		icon_state = "[initial(icon_state)]_card"
 	else
 		icon_state = "[initial(icon_state)]"
-	return ..()
 
 /obj/machinery/computer/timeclock/power_change()
 	var/old_stat = machine_stat

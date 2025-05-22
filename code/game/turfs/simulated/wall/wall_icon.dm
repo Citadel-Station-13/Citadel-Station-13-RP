@@ -59,6 +59,7 @@ GLOBAL_LIST_EMPTY(wall_overlays_cache)
 	return ..()
 
 /turf/simulated/wall/update_icon_state()
+	. = ..()
 	// handle fakewalls
 	// TODO: MAKE FAKEWALLS NOT TURFS WTF
 	if(!density)
@@ -67,7 +68,6 @@ GLOBAL_LIST_EMPTY(wall_overlays_cache)
 	else if(icon_state == "fwall_open")
 		icon_state = cached_wall_state
 
-	return ..()
 
 /turf/simulated/wall/update_overlays()
 	var/wall_paint = paint_color || material_color

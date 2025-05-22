@@ -211,11 +211,11 @@
 	..(severity)
 
 /obj/machinery/recharger/update_icon_state()
+	. = ..()
 	if(charging)
 		icon_state = icon_state_charging
 	else
 		icon_state = icon_state_idle
-	return ..()
 
 /obj/machinery/recharger/RefreshParts()
 	var/E = 0

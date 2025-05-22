@@ -130,8 +130,8 @@
 //	toggle = TRUE
 
 /obj/item/transfer_valve/update_icon_state()
+	. = ..()
 	icon_state = "[base_icon_state][(!tank_one && !tank_two && !attached_device) ? "_1" : null]"
-	return ..()
 
 /obj/item/transfer_valve/update_overlays()
 	. = ..()

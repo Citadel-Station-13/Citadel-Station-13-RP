@@ -35,7 +35,7 @@
 			icon_state = "chit_purple"
 		else
 			icon_state = "chit"
-	return 0
+	return 0 //TODO: Why 0, not parent?
 
 /obj/item/card/id/contractor/Initialize(mapload)
 	. = ..()

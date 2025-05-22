@@ -115,6 +115,7 @@
 		M.update(broadcast)
 
 /obj/structure/closet/body_bag/update_icon_state()
+	. = ..()
 	if(opened)
 		icon_state = icon_opened
 	else
@@ -122,7 +123,6 @@
 			icon_state = "bodybag_closed1"
 		else
 			icon_state = icon_closed
-	return ..()
 
 /obj/item/bodybag/cryobag
 	name = "stasis bag"

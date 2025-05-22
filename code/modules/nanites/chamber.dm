@@ -87,6 +87,7 @@
 		. += "[base_icon_state]_bolted"
 
 /obj/machinery/nanite_chamber/update_icon_state()
+	. = ..()
 	if(operating)
 		icon_state = "[base_icon_state]_active"
 	else if(occupant)
@@ -95,7 +96,6 @@
 		icon_state = "[base_icon_state]_open"
 	else
 		icon_state = "[base_icon_state]"
-	return ..()
 
 /obj/machinery/nanite_chamber/interact(mob/user)
 	. = ..()

@@ -29,9 +29,9 @@
 	var/destroyed = 0
 
 /obj/structure/grille/update_icon_state()
+	. = ..()
 	if(atom_flags & ATOM_BROKEN)
 		icon_state = "brokengrille"
-	return ..()
 
 /obj/structure/grille/Bumped(atom/user)
 	. = ..()

@@ -78,11 +78,11 @@
 	update_appearance()
 
 /obj/machinery/iv_drip/update_icon_state()
+	. = ..()
 	if(attached_victim)
 		icon_state = "[base_icon_state]_[injection_mode ? "injecting" : "donating"]"
 	else
 		icon_state = "[base_icon_state]_[injection_mode ? "injectidle" : "donateidle"]"
-	return ..()
 
 /obj/machinery/iv_drip/update_overlays()
 	. = ..()
