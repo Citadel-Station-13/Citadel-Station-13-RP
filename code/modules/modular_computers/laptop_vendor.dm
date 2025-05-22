@@ -1,5 +1,5 @@
 // A vendor machine for modular computer portable devices - Laptops and Tablets
-
+// todo: should be /machinery/vending
 /obj/machinery/lapvend
 	name = "computer vendor"
 	desc = "A vending machine with a built-in microfabricator, capable of dispensing various NT-branded computers."
@@ -249,7 +249,7 @@
 	var/obj/item/card/id/I = W.GetID()
 	// Awaiting payment state
 	if(state == 2)
-		if(process_payment(I,W))
+		if(process_payment(I, new /datum/event_args/actor(user)))
 			fabricate_and_recalc_price(1)
 			if((devtype == 1) && fabricated_laptop)
 				if(fabricated_laptop.battery_module)
@@ -274,35 +274,21 @@
 
 
 // Simplified payment processing, returns 1 on success.
-/obj/machinery/lapvend/proc/process_payment(var/obj/item/card/id/I, var/obj/item/ID_container)
-	if(I==ID_container || ID_container == null)
-		visible_message("<span class='info'>\The [usr] swipes \the [I] through \the [src].</span>")
-	else
-		visible_message("<span class='info'>\The [usr] swipes \the [ID_container] through \the [src].</span>")
-	var/datum/money_account/customer_account = get_account(I.associated_account_number)
-	if (!customer_account || customer_account.suspended)
-		ping("Connection error. Unable to connect to account.")
-		return 0
+/obj/machinery/lapvend/proc/process_payment(var/obj/item/card/id/I, datum/event_args/actor/actor)
+	if(!attempt_user_payment(I, actor))
+		playsound(src, 'sound/machines/2beep.ogg', 50, TRUE)
+		return FALSE
+	return TRUE
 
-	if(customer_account.security_level != 0) //If card requires pin authentication (ie seclevel 1 or 2)
-		var/attempt_pin = input("Enter pin code", "Vendor transaction") as num
-		customer_account = attempt_account_access(I.associated_account_number, attempt_pin, 2)
+/obj/machinery/lapvend/proc/attempt_user_payment(obj/item/using, datum/event_args/actor/actor)
+	var/datum/economy_payment/attempted_payment = new /datum/economy_payment(total_price)
+	attempted_payment.audit_purpose_as_unsafe_html = "Purchase of [devtype == 1 ? "laptop computer" : "tablet microcomputer"]"
+	attempted_payment.audit_terminal_name_as_unsafe_html = "Laptop Vendor ([src])"
+	attempted_payment.audit_recipient_as_unsafe_html = "Vendor Account (No Trace)"
 
-		if(!customer_account)
-			ping("Unable to access account: incorrect credentials.")
-			return 0
-
-	if(total_price > customer_account.money)
-		ping("Insufficient funds in account.")
-		return 0
-	else
-		customer_account.money -= total_price
-		var/datum/transaction/T = new()
-		T.target_name = "Computer Manufacturer (via [src.name])"
-		T.purpose = "Purchase of [(devtype == 1) ? "laptop computer" : "tablet microcomputer"]."
-		T.amount = total_price
-		T.source_terminal = src.name
-		T.date = GLOB.current_date_string
-		T.time = stationtime2text()
-		customer_account.transaction_log.Add(T)
-		return 1
+	return using.economy_attempt_payment(
+		attempted_payment,
+		NONE,
+		src,
+		actor,
+	)
