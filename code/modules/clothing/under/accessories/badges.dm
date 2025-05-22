@@ -163,6 +163,14 @@
 	..()
 	return
 
+//PMD
+
+/obj/item/clothing/accessory/badge/pmd
+	name = "auditor's badge"
+	desc = "An immaculately polished silver badge on black leather. Labeled 'PMD Auditor.'"
+	icon_state = "pmdbadge"
+	badge_string = "PMD Auditor"
+
 // Synthmorph bag / Corporation badges. Primarily used on the robobag, but can be worn. Default is NT.
 
 /obj/item/clothing/accessory/badge/corporate_tag

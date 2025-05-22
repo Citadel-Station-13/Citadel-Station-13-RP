@@ -906,3 +906,10 @@
 	name = "medical exoframe"
 	desc = "A cheap medical exoframe mass-produced by Nanotrasen and provided to employees who cannot function in gravity without assistance."
 	icon_state = "civ_exos_mob"
+
+// PMD
+
+/obj/item/clothing/accessory/pmdpin
+	name = "PMD lapel pin"
+	desc = "A monochrome enamel pin of the PMD's half-lidded eye Icon."
+	icon_state = "pmdpin"
