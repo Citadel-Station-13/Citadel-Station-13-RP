@@ -2,6 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/prototype/bodyset/synthetic/eggnerd_red
+	id = "synthetic-eggnerd-red-standard"
 
 /datum/robolimb/eggnerdltdred
 	icon = 'icons/mob/cyberlimbs/rahboopred/rahboopred.dmi'

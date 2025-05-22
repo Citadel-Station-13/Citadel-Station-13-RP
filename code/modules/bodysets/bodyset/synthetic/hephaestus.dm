@@ -4,12 +4,20 @@
 /datum/prototype/bodyset/synthetic/hephaestus
 
 /datum/prototype/bodyset/synthetic/hephaestus/standard
+	name = "Hephaestus - Standard"
+	id = "synthetic-hephaestus-standard"
 
 /datum/prototype/bodyset/synthetic/hephaestus/shroud
+	name = "Hephaestus - Shroud"
+	id = "synthetic-hephaestus-shroud"
 
 /datum/prototype/bodyset/synthetic/hephaestus/spirit
+	name = "Hephaestus - Spirit"
+	id = "synthetic-hephaestus-spirit"
 
 /datum/prototype/bodyset/synthetic/hephaestus/monitor
+	name = "Hephaestus - Monitor"
+	id = "synthetic-hephaestus-monitor"
 
 /datum/robolimb/hephaestus
 	company = "Hephaestus"

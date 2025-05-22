@@ -4,10 +4,16 @@
 /datum/prototype/bodyset/synthetic/morpheus
 
 /datum/prototype/bodyset/synthetic/morpheus/standard
+	id = "synthetic-morpheus-standard"
+	name = "Morpheus - Standard"
 
 /datum/prototype/bodyset/synthetic/morpheus/zenith
+	id = "synthetic-morpheus-zenith"
+	name = "Morpheus - Zenith"
 
 /datum/prototype/bodyset/synthetic/morpheus/skeleton_crew
+	id = "synthetic-morpheus-skeleton_crew"
+	name = "Morpheus - Skeleton Crew"
 
 /datum/robolimb/morpheus
 	company = "Morpheus"

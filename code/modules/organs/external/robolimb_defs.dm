@@ -157,17 +157,15 @@
 	bodyset = /datum/prototype/bodyset/unbranded/digitigrade
 	parts = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
 
-#warn below
-
 /datum/robolimb/mpc
 	company = "Moghes Prosthetics Company"
 	desc = "A simple robotic limb with a lizard-like design."
-	icon = 'icons/mob/cyberlimbs/mpc/mpc.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/mpc
 
 /datum/robolimb/cenilimicybernetics_teshari
 	company = "Cenilimi Cybernetics"
 	desc = "Made by a Teshari-owned company, for Teshari."
-	icon = 'icons/mob/cyberlimbs/cenilimicybernetics/cenilimicybernetics_teshari.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/cenilimi_teshari
 	suggested_species = SPECIES_TESHARI
 	species_cannot_use = list(SPECIES_UNATHI, SPECIES_PROMETHEAN, SPECIES_DIONA, SPECIES_HUMAN, SPECIES_VOX, SPECIES_HUMAN_VATBORN, SPECIES_TAJ, SPECIES_SKRELL, SPECIES_ZADDAT)
 	species_alternates = list(SPECIES_HUMAN = "Nanotrasen")
@@ -176,7 +174,7 @@
 /datum/robolimb/gestaltframe
 	company = "Skrellian Exoskeleton"
 	desc = "This limb looks to be more like a strange.. puppet, than a prosthetic."
-	icon = 'icons/mob/cyberlimbs/veymed/dionaea/skrellian.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/skrell_gestalt_frame
 	blood_color = "#63b521"
 	blood_name = "synthetic ichor"
 	speech_bubble_appearance = "machine"
@@ -215,7 +213,7 @@
 /datum/robolimb/einstein
 	company = "Einstein Engines"
 	desc = "This limb is lightweight with a sleek design."
-	icon = 'icons/mob/cyberlimbs/einstein/einstein_main.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/einstein/standard
 	unavailable_to_build = TRUE
 
 /datum/robolimb/grayson
@@ -396,19 +394,19 @@
 /datum/robolimb/cyber_beast
 	company = "Cyber Tech"
 	desc = "Adjusted for deep space the material is durable, and heavy."
-	icon = 'icons/mob/cyberlimbs/c-tech/c_beast.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/cybertech/standard
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 	monitor_styles = cyberbeast_monitor_styles
 
 /datum/robolimb/cyber_beast/flat
 	company = "Cyber Tech (Flat)"
-	icon = 'icons/mob/cyberlimbs/c-tech/c_beast_flat.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/cybertech/flat
 
 /datum/robolimb/wooden
 	company = "Morgan Trading Co"
 	desc = "A simplistic, metal-banded, wood-panelled prosthetic."
-	icon = 'icons/mob/cyberlimbs/prosthesis/wooden.dmi'
+	bodyset = /datum/prototype/bodyset/synthetic/morgan
 	modular_bodyparts = MODULAR_BODYPART_PROSTHETIC
 	parts = list(BP_L_ARM, BP_R_ARM, BP_L_HAND, BP_R_HAND, BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
 
