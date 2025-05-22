@@ -129,9 +129,16 @@
 		O_HEATSINK, \
 		O_PUMP)
 
-
-//* GENERIC EXTERAL ORGANS *//
-// Also used as target zones.
+//* Mob Bodypart Constants *//
+// Used for:
+// * target zones
+// * strings interpolated into icon states to determine rendering
+// * /organ/external lookup
+// * and more!
+//
+// What does this mean?
+// DO NOT EVER CHANGE THESE.
+// we dug our grave and now we lay in it. DO. NOT. TOUCH. THESE.
 #define BP_GROIN  "groin"
 #define BP_HEAD   "head"
 #define BP_L_ARM  "l_arm"

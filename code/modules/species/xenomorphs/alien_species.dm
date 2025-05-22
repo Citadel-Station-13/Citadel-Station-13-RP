@@ -179,7 +179,7 @@
 	weeds_plasma_rate = 15
 
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/xenomorph/drone,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/xenomorph/drone,
 	)
 
 	icobase = 'icons/mob/species/xenomorph/drone.dmi'
@@ -222,7 +222,7 @@
 	total_health = 150
 
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/xenomorph/hunter,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/xenomorph/hunter,
 	)
 
 	icobase = 'icons/mob/species/xenomorph/hunter.dmi'
@@ -257,7 +257,7 @@
 	total_health = 200
 
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/xenomorph/sentinel,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/xenomorph/sentinel,
 	)
 
 	movement_base_speed = 6.66
@@ -295,7 +295,7 @@
 	caste_name = "queen"
 
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/xenomorph/queen,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/xenomorph/queen,
 	)
 
 	movement_base_speed = 3

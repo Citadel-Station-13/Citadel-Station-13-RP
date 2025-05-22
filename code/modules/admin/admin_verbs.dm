@@ -934,12 +934,12 @@ var/list/admin_verbs_event_manager = list(
 		M.s_tone =  -M.s_tone + 35
 
 	// hair
-	var/new_hstyle = input(usr, "Select a hair style", "Grooming")  as null|anything in GLOB.legacy_hair_lookup
+	var/new_hstyle = input(usr, "Select a hair style", "Grooming")  as null|anything in RSsprite_accessories.legacy_hair_lookup
 	if(new_hstyle)
 		M.h_style = new_hstyle
 
 	// facial hair
-	var/new_fstyle = input(usr, "Select a facial hair style", "Grooming")  as null|anything in GLOB.legacy_facial_hair_lookup
+	var/new_fstyle = input(usr, "Select a facial hair style", "Grooming")  as null|anything in RSsprite_accessories.legacy_facial_hair_lookup
 	if(new_fstyle)
 		M.f_style = new_fstyle
 
