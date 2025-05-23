@@ -24,9 +24,10 @@
 	if(!resultant_damage)
 		return
 	var/resultant_damage_type = damage_instance_results[SHIELDCALL_ARG_DAMAGE_TYPE]
-	if(!(damage_instance_results[SHIELDCALL_ARG_DAMAGE_MODE] & (DAMAGE_MODE_GRADUAL)) && (resultant_damage_type == DAMAGE_TYPE_BRUTE) && resultant_damage > 1)
+	if(!(damage_instance_results[SHIELDCALL_ARG_DAMAGE_MODE] & (DAMAGE_MODE_GRADUAL)) && (resultant_damage_type == DAMAGE_TYPE_BRUTE) && (resultant_damage > 1))
+		var/obj/item/organ/external/bodypart = get_bodypart_for_zone(damage_instance_results[SHIELDCALL_ARG_HIT_ZONE])
 		// bloody / knockout / knockdown requires non-gradual kinetic force
-		var/no_bleed = (species.species_flags & NO_BLOOD)
+		var/no_bleed = (species.species_flags & NO_BLOOD) && (bodypart ? (bodypart.robotic < ORGAN_ROBOT) : !isSynthetic())
 		// old calculation here for probability
 		if(prob(25 + (resultant_damage * 2)))
 			if(weapon && !(weapon.atom_flags & NOBLOODY))
@@ -79,7 +80,7 @@
 	if(!target_zone)
 		return ..()
 	var/obj/item/organ/external/hit_bodypart = get_organ(target_zone)
-	if(!hit_bodypart || hit_bodypart.is_stump())
+	if(!hit_bodypart)
 		return ..()
 	if(BP_IS_ROBOTIC(hit_bodypart))
 		return COMBAT_IMPACT_FX_METAL

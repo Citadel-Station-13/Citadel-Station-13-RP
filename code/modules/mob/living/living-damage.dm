@@ -198,9 +198,11 @@
 		take_overall_damage(brute, burn, damage_mode, weapon_descriptor)
 
 	// TODO: better bleed sim
-	if(attack_type == ATTACK_TYPE_MELEE)
-		if(damage_type == DAMAGE_TYPE_BRUTE)
-			if(prob(33))
-				var/turf/simulated/our_turf = get_turf(src)
-				if(istype(our_turf))
-					our_turf.add_blood_floor(src)
+	// TODO: this is shitcode
+	if(!iscarbon(src) && !isSynthetic())
+		if(attack_type == ATTACK_TYPE_MELEE)
+			if(damage_type == DAMAGE_TYPE_BRUTE)
+				if(prob(33))
+					var/turf/simulated/our_turf = get_turf(src)
+					if(istype(our_turf))
+						our_turf.add_blood_floor(src)

@@ -551,6 +551,7 @@
 				. = TRUE
 	if(. && !silent)
 		playsound(src, single_load_sound, 50, TRUE)
+	update_icon()
 
 /**
  * Load from a speedloader.
@@ -572,6 +573,7 @@
 	if(. && !silent)
 		pass()
 		// todo: sound
+	update_icon()
 
 /obj/item/gun/projectile/ballistic/proc/insert_speedloader_internal(obj/item/ammo_magazine/speedloader, reverse_order)
 	. = 0
@@ -677,6 +679,7 @@
 		playsound(src, magazine_insert_sound, 75, TRUE)
 	magazine.forceMove(src)
 	src.magazine = magazine
+	update_icon()
 	return TRUE
 
 /**
@@ -701,6 +704,7 @@
 	else
 		magazine.moveToNullspace()
 	magazine = null
+	update_icon()
 
 /**
  * Eject **a** casing.
@@ -767,6 +771,7 @@
 		ejecting.forceMove(new_loc)
 	else if(ejecting.loc == src)
 		ejecting.moveToNullspace()
+	update_icon()
 
 // todo: impl for advanced revolver shenanigans
 /obj/item/gun/projectile/ballistic/proc/remove_casing_from_revolver_index(atom/new_loc, silent, force_index)
@@ -785,6 +790,7 @@
 			playsound(src, bolt_close_sound, 75, TRUE)
 	if(!no_auto_chamber)
 		load_chamber()
+	update_icon()
 
 /obj/item/gun/projectile/ballistic/proc/open_bolt(silent, from_fire, no_auto_eject)
 	if(!bolt_closed)
@@ -795,6 +801,7 @@
 			playsound(src, bolt_open_sound, 75, TRUE)
 	if(bolt_auto_eject_on_open && !no_auto_eject)
 		eject_chamber(FALSE, from_fire, drop_location())
+	update_icon()
 
 //* Chamber *//
 

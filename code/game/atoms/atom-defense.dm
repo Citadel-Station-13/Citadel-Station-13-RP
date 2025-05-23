@@ -174,7 +174,8 @@
  * @return mutated impact flags
  */
 /atom/proc/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
-	var/resolved_impact_sound = hitsound_projectile(proj)
+	SHOULD_NOT_SLEEP(TRUE)
+	var/resolved_impact_sound = hitsound_projectile(proj, impact_flags, bullet_act_args)
 	if(resolved_impact_sound)
 		playsound(src, resolved_impact_sound, 75, TRUE)
 	if(!(impact_flags & (PROJECTILE_IMPACT_BLOCKED | PROJECTILE_IMPACT_SKIP_STANDARD_DAMAGE)))
@@ -334,12 +335,12 @@
 		else
 			return "swing_hit"
 
-/atom/proc/hitsound_projectile(obj/projectile/P)
+/atom/proc/hitsound_projectile(obj/projectile/P, impact_flags, list/bullet_act_args)
 	//? todo: projectile gets final say
 	. = hitsound_override(P.damage_type, P.damage_mode, ATTACK_TYPE_PROJECTILE, P)
 	if(.)
 		return
-	return P.resolve_impact_sfx(get_combat_fx_classifier(ATTACK_TYPE_PROJECTILE, P), src)
+	return P.resolve_impact_sfx(get_combat_fx_classifier(ATTACK_TYPE_PROJECTILE, P, bullet_act_args[BULLET_ACT_ARG_ZONE]), src)
 
 /atom/proc/hitsound_throwhit(obj/item/I)
 	. = I.attacksound_override(src, ATTACK_TYPE_THROWN)
