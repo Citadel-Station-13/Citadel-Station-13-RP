@@ -47,7 +47,7 @@
  * body zone to body cover flags
  */
 /proc/BODY_ZONE_TO_FLAGS(zone)
-	var/static/alist/lookup = list(
+	var/static/alist/lookup = alist(
 		BODY_ZONE_HEAD = HEAD,
 		BODY_ZONE_MOUTH = FACE,
 		BODY_ZONE_EYES = EYES,
