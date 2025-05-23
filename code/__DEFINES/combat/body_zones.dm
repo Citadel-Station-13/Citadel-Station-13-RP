@@ -32,7 +32,7 @@
  * * Eyes, mouth, are redirected to head
  */
 /proc/BODY_ZONE_TO_SIMPLIFIED(zone)
-	var/static/list/lookup = list(
+	var/static/alist/lookup = alist(
 		BODY_ZONE_GROIN = BODY_ZONE_TORSO,
 		BODY_ZONE_L_HAND = BODY_ZONE_L_ARM,
 		BODY_ZONE_R_HAND = BODY_ZONE_R_ARM,
