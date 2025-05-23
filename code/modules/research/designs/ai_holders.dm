@@ -9,7 +9,6 @@
 	lathe_type = LATHE_TYPE_PROTOLATHE | LATHE_TYPE_PROSTHETICS
 	materials_base = list(MAT_STEEL = 1000, MAT_GLASS = 500)
 	build_path = /obj/item/mmi
-	category = list("Misc")
 
 /datum/prototype/design/science/ai_holder/posibrain
 	design_name = "Positronic brain"
@@ -18,7 +17,6 @@
 	lathe_type = LATHE_TYPE_PROTOLATHE | LATHE_TYPE_PROSTHETICS
 	materials_base = list(MAT_STEEL = 2000, MAT_GLASS = 1000, MAT_SILVER = 1000, MAT_GOLD = 500, MAT_PHORON = 500, MAT_DIAMOND = 100)
 	build_path = /obj/item/mmi/digital/posibrain
-	category = list("Misc")
 
 /datum/prototype/design/science/ai_holder/dronebrain
 	design_name = "Robotic intelligence circuit"
@@ -27,7 +25,6 @@
 	lathe_type = LATHE_TYPE_PROTOLATHE | LATHE_TYPE_PROSTHETICS
 	materials_base = list(MAT_STEEL = 2000, MAT_GLASS = 1000, MAT_SILVER = 1000, MAT_GOLD = 500)
 	build_path = /obj/item/mmi/digital/robot
-	category = list("Misc")
 
 /datum/prototype/design/science/ai_holder/paicard
 	design_name = "'pAI', personal artificial intelligence device"
