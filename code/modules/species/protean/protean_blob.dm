@@ -488,14 +488,15 @@
 		B.forceMove(src)
 		B.owner = src
 
-	var/obj/item/held = get_active_held_item()
-	if(held)
-		put_in_hands(held)
+	for(var/obj/item/held in blob.get_held_items())
+		put_in_hands_or_drop(held, null, get_turf(src))
 
 	for(var/i in 1 to length(blob.previously_held))
 		var/datum/weakref/ref = blob.previously_held[i]
 		var/obj/item/resolved = ref?.resolve()
 		if(isnull(resolved))
+			continue
+		if(resolved.loc != src) //because of blobhands
 			continue
 		put_in_hands_or_drop(resolved)
 
