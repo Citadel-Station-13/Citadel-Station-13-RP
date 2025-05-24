@@ -12,98 +12,13 @@
 	req_access = list(ACCESS_SCIENCE_ROBOTICS)
 	circuit = /obj/item/circuitboard/mechfab
 
-	///Current items in the build queue.
-	var/list/queue = list()
-	///Whether or not the machine is building the entire queue automatically.
-	var/process_queue = FALSE
-
-	///The current design datum that the machine is building.
-	var/datum/prototype/design/being_built
-	///Is the fabricator currently printing something?
-	var/printing = FALSE
-	///World time when the build will finish.
-	var/build_finish = 0
-	///World time when the build started.
-	var/build_start = 0
-	///Reference to all materials used in the creation of the item being_built.
-	var/list/build_materials
-	///Part currently stored in the Exofab.
-	var/obj/item/stored_part
-
-	///Coefficient for the speed of item building. Based on the installed parts.
-	var/time_coeff = 1
-	///Coefficient for the efficiency of material usage in item building. Based on the installed parts.
-	var/component_coeff = 1
-
-	var/list/stored_materials = list(
-		MAT_STEEL = 0,
-		MAT_GLASS = 0,
-		MAT_PLASTIC = 0,
-		MAT_GRAPHITE = 0,
-		MAT_PLASTEEL = 0,
-		MAT_GOLD = 0,
-		MAT_SILVER = 0,
-		MAT_COPPER = 0,
-		MAT_LEAD = 0,
-		MAT_OSMIUM = 0,
-		MAT_DIAMOND = 0,
-		MAT_DURASTEEL = 0,
-		MAT_PHORON = 0,
-		MAT_URANIUM= 0,
-		MAT_VERDANTIUM = 0,
-		MAT_MORPHIUM = 0,
-		MAT_METALHYDROGEN = 0,
-		MAT_BANANIUM = 0,
-		MAT_SILENCIUM = 0,
-		MAT_SUPERMATTER = 0)
-	var/res_max_amount = 200000
-
+	
 	var/datum/research/files
-	var/valid_buildtype = LATHE_TYPE_MECHA
-	///A list of categories that valid LATHE_TYPE_MECHA design datums will broadly categorise themselves under.
-	var/list/part_sets = list(
-		"Cyborg",
-		"Ripley",
-		"Odysseus",
-		"Gygax",
-		"Durand",
-		"H.O.N.K.",
-		"Reticent",
-		"Janus",
-		"Vehicle",
-		"Rigsuit",
-		"Phazon",
-		"Pinnace",
-		"Baron",
-		"Duke",
-		"Gopher",
-		"Polecat",
-		"Weasel",
-		"Exosuit Equipment",
-		"Exosuit Internals",
-		"Exosuit Ammunition",
-		"Cyborg Upgrade Modules",
-		"Cybernetics",
-		"Implants",
-		"Control Interfaces",
-		"Components",
-		"Other",
-		"Misc",
-		"Augments"
-		)
+	var/valid_buildtype = LATHE_TYPE_MECHFAB
+	///A list of categories that valid LATHE_TYPE_MECHFAB design datums will broadly categorise themselves under.
 
 /obj/machinery/mecha_part_fabricator/Initialize(mapload)
 	. = ..()
-
-	//Go through all materials, and add them to the possible storage, but hide them unless we contain them.
-	// todo: WHY ARE YOU dOING ThiS JUST DONT STORE THE MATERIAL
-	for(var/datum/prototype/material/M as anything in SSmaterials.all_materials())
-		var/Name = M.name
-		if(Name in stored_materials)
-			continue
-
-		stored_materials[Name] = 0
-
 	files = new /datum/research(src) //Setup the research data holder.
 
 /obj/machinery/mecha_part_fabricator/update_icon_state()

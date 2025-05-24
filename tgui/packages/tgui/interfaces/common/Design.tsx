@@ -13,6 +13,8 @@ export interface Design {
   category: string;
   materials: Record<string, number> | null;
   material_parts: Record<string, number> | null;
+  material_constraints: Record<string, number> | null;
+  autodetect_tags: Record<string, string> | null;
   reagents: Record<string, number> | null;
   ingredients: IngredientsNeeded | null;
   resultItem: DesignItem;

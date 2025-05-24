@@ -1,13 +1,12 @@
 /datum/prototype/design/science/mechfab
 	abstract_type = /datum/prototype/design/science/mechfab
-	lathe_type = LATHE_TYPE_MECHA
+	lathe_type = LATHE_TYPE_MECHFAB
 	category = DESIGN_CATEGORY_MECHA
-	category = list("Other")
 	req_tech = list(TECH_MATERIAL = 1)
 
 /datum/prototype/design/science/mechfab/ripley
 	abstract_type = /datum/prototype/design/science/mechfab/ripley
-	category = list("Ripley")
+	category = "Ripley"
 
 /datum/prototype/design/science/mechfab/ripley/chassis
 	design_name = "Ripley Chassis"
@@ -70,7 +69,7 @@
 
 /datum/prototype/design/science/mechfab/odysseus
 	abstract_type = /datum/prototype/design/science/mechfab/odysseus
-	category = list("Odysseus")
+	category = "Odysseus"
 
 /datum/prototype/design/science/mechfab/odysseus/chassis
 	design_name = "Odysseus Chassis"
@@ -123,7 +122,7 @@
 
 /datum/prototype/design/science/mechfab/gygax
 	abstract_type = /datum/prototype/design/science/mechfab/gygax
-	category = list("Gygax")
+	category = "Gygax"
 
 /datum/prototype/design/science/mechfab/gygax/chassis/serenity
 	design_name = "Serenity Chassis"
@@ -189,7 +188,7 @@
 
 /datum/prototype/design/science/mechfab/durand
 	abstract_type = /datum/prototype/design/science/mechfab/durand
-	category = list("Durand")
+	category = "Durand"
 
 /datum/prototype/design/science/mechfab/durand/chassis
 	design_name = "Durand Chassis"
@@ -249,7 +248,7 @@
 
 /datum/prototype/design/science/mechfab/janus
 	abstract_type = /datum/prototype/design/science/mechfab/janus
-	category = list("Janus")
+	category = "Janus"
 	req_tech = list(TECH_MATERIAL = 7, TECH_BLUESPACE = 5, TECH_MAGNET = 6, TECH_PHORON = 3, TECH_ARCANE = 1, TECH_PRECURSOR = 2)
 
 /datum/prototype/design/science/mechfab/janus/chassis
@@ -311,7 +310,7 @@
 
 /datum/prototype/design/science/mechfab/honker
 	abstract_type = /datum/prototype/design/science/mechfab/honker
-	category = list("H.O.N.K.")
+	category = "H.O.N.K."
 
 /datum/prototype/design/science/mechfab/honker/chassis
 	design_name = "H.O.N.K. Chassis"
@@ -371,7 +370,7 @@
 
 /datum/prototype/design/science/mechfab/reticent
 	abstract_type = /datum/prototype/design/science/mechfab/reticent
-	category = list("Reticent")
+	category = "Reticent"
 
 /datum/prototype/design/science/mechfab/reticent/chassis
 	design_name = "Reticent Chassis"
@@ -431,8 +430,8 @@
 
 /datum/prototype/design/science/mecha
 	abstract_type = /datum/prototype/design/science/mecha
-	lathe_type = LATHE_TYPE_MECHA
-	category = list("Exosuit Equipment")
+	lathe_type = LATHE_TYPE_MECHFAB
+	category = "Exosuit Equipment"
 	work = (10 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 7500)
 
@@ -895,7 +894,7 @@
 	design_name = "Synthetic Flash"
 	id = "sflash"
 	req_tech = list(TECH_MAGNET = 3, TECH_COMBAT = 2)
-	lathe_type = LATHE_TYPE_MECHA
+	lathe_type = LATHE_TYPE_MECHFAB
 	materials_base = list(MAT_STEEL = 562, MAT_GLASS = 562)
 	build_path = /obj/item/flash/synthetic
 	category = list("Misc")
@@ -908,7 +907,7 @@
 	design_name = "Mecha Actuator"
 	id = "mactuator"
 	req_tech = list(TECH_ENGINEERING = 3, TECH_MATERIAL = 2)
-	lathe_type = LATHE_TYPE_MECHA
+	lathe_type = LATHE_TYPE_MECHFAB
 	materials_base = list(MAT_STEEL = 5000, MAT_GLASS = 2500)
 	build_path = /obj/item/vehicle_component/actuator
 	category = list("Components")
@@ -1003,7 +1002,7 @@
 
 /datum/prototype/design/science/mechfab/vehicle
 	abstract_type = /datum/prototype/design/science/mechfab/vehicle
-	lathe_type = LATHE_TYPE_MECHA
+	lathe_type = LATHE_TYPE_MECHFAB
 	category = list("Vehicle")
 	req_tech = list(TECH_MATERIAL = 5, TECH_ENGINEERING = 6)
 
@@ -1044,7 +1043,7 @@
 
 /datum/prototype/design/science/mechfab/fighter/pinnace
 	abstract_type = /datum/prototype/design/science/mechfab/fighter/pinnace
-	category = list("Pinnace")
+	category = "Pinnace"
 
 /datum/prototype/design/science/mechfab/fighter/pinnace/chassis
 	design_name = "Pinnace Chassis"
@@ -1107,7 +1106,7 @@
 
 /datum/prototype/design/science/mechfab/fighter/baron
 	abstract_type = /datum/prototype/design/science/mechfab/fighter/baron
-	category = list("Baron")
+	category = "Baron"
 
 /datum/prototype/design/science/mechfab/fighter/baron/chassis
 	design_name = "Baron Chassis"
@@ -1170,7 +1169,7 @@
 
 /datum/prototype/design/science/mechfab/fighter/duke
 	abstract_type = /datum/prototype/design/science/mechfab/fighter/duke
-	category = list("Duke")
+	category = "Duke"
 
 /datum/prototype/design/science/mechfab/fighter/duke/chassis
 	design_name = "Duke Chassis"
