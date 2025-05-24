@@ -13,7 +13,7 @@
 	var/restoration_internal = 20
 
 
-/obj/item/stack/nanopaste/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/stack/nanopaste/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(!isliving(target))
 		return ..()
 	var/mob/living/L = target
