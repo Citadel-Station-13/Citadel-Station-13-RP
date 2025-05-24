@@ -30,6 +30,17 @@
 /// todo: better hybrid type handling
 #define DAMAGE_TYPE_SEARING "searing"
 
+/proc/damage_type_to_visualized_color(damage_type)
+	var/alist/lookup = alist(
+		DAMAGE_TYPE_BRUTE = "#ff0000",
+		DAMAGE_TYPE_BURN = "#ffff00",
+		DAMAGE_TYPE_TOX = "#00ff00",
+		DAMAGE_TYPE_OXY = "#0000ff",
+		DAMAGE_TYPE_CLONE = "#ff00ff",
+		DAMAGE_TYPE_HALLOSS = "#00ffff",
+	)
+	return lookup[damage_type]
+
 //? damage_mode bitfield ?//
 
 /// sharp weapons like knives, spears, etc
@@ -52,3 +63,20 @@
 #define DAMAGE_MODE_REDIRECT (1<<7)
 /// temporary - re-evaluate when health is reworked. prevents damage from overflowing caps.
 #define DAMAGE_MODE_NO_OVERFLOW (1<<8)
+
+/// config: request armor / shieldcalls apply randomization.
+/// * disabled by default by not having this be an opt-out rather than opt-in flag.
+/// * disabled by default so non-determinism is controlled instead of innate.
+#define DAMAGE_MODE_REQUEST_ARMOR_RANDOMIZATION (1<<22)
+/// config: request armor damping of dangerous damage modes like pierce / shred
+/// * disabled by default by not having this be an opt-out rather than opt-in flag.
+/// * disabled by default so non-determinism is controlled instead of innate.
+#define DAMAGE_MODE_REQUEST_ARMOR_BLUNTING (1<<23)
+
+#define DAMAGE_MODES_BLUNTED_BY_ARMOR ( \
+	DAMAGE_MODE_SHARP | \
+	DAMAGE_MODE_EDGE | \
+	DAMAGE_MODE_ABLATING | \
+	DAMAGE_MODE_PIERCE | \
+	DAMAGE_MODE_SHRED \
+)

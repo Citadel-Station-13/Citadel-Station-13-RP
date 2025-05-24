@@ -221,7 +221,7 @@
 		return CLICKCHAIN_DID_SOMETHING
 	var/obj/item/ammo_magazine/put_back_in_hand
 	var/tactical_reload_append
-	if(magazine)
+	if(src.magazine)
 		if(interact_allow_tactical_reload && clickchain)
 			switch(clickchain.using_intent)
 				if(INTENT_GRAB)
@@ -236,17 +236,20 @@
 						tactical_reload_append = ", dropping the old magazine in the process"
 					else
 						return CLICKCHAIN_DID_SOMETHING
-		if(!magazine)
-			if(!no_message)
-				actor.chat_feedback(
-					SPAN_WARNING("[src] already has a magazine inserted."),
-					target = src,
-				)
-			return CLICKCHAIN_DID_SOMETHING
+	if(src.magazine)
+		if(!no_message)
+			actor.chat_feedback(
+				SPAN_WARNING("[src] already has a magazine inserted."),
+				target = src,
+			)
+		put_back_in_hand?.forceMove(drop_location())
+		return CLICKCHAIN_DID_SOMETHING
 	if(!actor.performer.attempt_insert_item_for_installation(magazine, src))
+		put_back_in_hand?.forceMove(drop_location())
 		return CLICKCHAIN_DID_SOMETHING
 	if(!insert_magazine(magazine))
 		magazine.forceMove(drop_location())
+		put_back_in_hand?.forceMove(drop_location())
 		CRASH("failed to insert magazine after point of no return in clickchain interaction")
 	if(!no_message)
 		actor.visible_feedback(

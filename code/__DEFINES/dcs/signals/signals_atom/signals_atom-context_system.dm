@@ -1,11 +1,11 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/// from base of /atom/proc/context_query: (list/options, datum/event_args/actor/e_args)
-/// options list is the same format as /atom/proc/context_query, insert directly to it.
-#define COMSIG_ATOM_CONTEXT_QUERY "atom_context_query"
-/// from base of /atom/proc/context_act: (key, datum/event_args/actor/e_args)
-#define COMSIG_ATOM_CONTEXT_ACT "atom_context_act"
+/// from base of /atom/proc/context_menu_query: (list/options, datum/event_args/actor/e_args)
+/// options list is the same format as /atom/proc/context_menu_query, insert directly to it.
+#define COMSIG_ATOM_CONTEXT_QUERY "atom_context_menu_query"
+/// from base of /atom/proc/context_menu_act: (key, datum/event_args/actor/e_args)
+#define COMSIG_ATOM_CONTEXT_ACT "atom_context_menu_act"
 	#define RAISE_ATOM_CONTEXT_ACT_HANDLED (1<<0)
 
 /// Creates context key
@@ -23,7 +23,9 @@
 /// * mobility: mobility flags required
 #define ATOM_CONTEXT_TUPLE(name, image, distance, mobility) list(name, image, distance, mobility)
 
-/// Creates context list
+/// Creates option for context menu
+///
+/// todo: more managed context menu option. we shouldn't create this every time it's brought up
 ///
 /// @params
 /// * name: name
@@ -31,7 +33,7 @@
 /// * distance: distance where this is valid; much be reachable or actable; null = requires adjacency or adjacency-equivalence
 /// * mobility: mobility flags required
 /// * defaultable: allow defaulting if this is the only thing in the list
-/atom/proc/atom_context_tuple(name, image/I, distance, mobility, defaultable)
+/proc/create_context_menu_tuple(name, image/I, distance, mobility, defaultable)
 	return list(
 		name,
 		I,

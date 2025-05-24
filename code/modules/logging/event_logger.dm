@@ -17,3 +17,8 @@ GLOBAL_REAL(event_logger, /datum/world_event_logger) = new /datum/world_event_lo
 /datum/world_event_logger/proc/shutdown_logger()
 
 /datum/world_event_logger/proc/log__gun_firing_cycle(obj/item/gun, datum/gun_firing_cycle/cycle)
+
+// todo: log__clickchain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+// todo: tool step logging
+// todo: throw logging
+// todo: inventory logging

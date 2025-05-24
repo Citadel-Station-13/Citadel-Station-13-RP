@@ -31,10 +31,10 @@
 	name_language = LANGUAGE_ID_SHADEKIN_HIVEMIND
 
 	unarmed_types = list(
-		/datum/unarmed_attack/stomp,
-		/datum/unarmed_attack/kick,
-		/datum/unarmed_attack/claws/shadekin,
-		/datum/unarmed_attack/bite/sharp/shadekin,
+		/datum/melee_attack/unarmed/stomp,
+		/datum/melee_attack/unarmed/kick,
+		/datum/melee_attack/unarmed/claws/shadekin,
+		/datum/melee_attack/unarmed/bite/sharp/shadekin,
 	)
 
 	siemens_coefficient = 1

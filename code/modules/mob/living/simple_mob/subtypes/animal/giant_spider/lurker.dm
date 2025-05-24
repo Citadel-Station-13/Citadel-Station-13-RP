@@ -122,10 +122,11 @@
 	. = ..()
 	break_cloak()
 
-/mob/living/simple_mob/animal/giant_spider/lurker/hit_with_weapon(obj/item/O, mob/living/user, effective_force, hit_zone)
+/mob/living/simple_mob/animal/giant_spider/lurker/on_melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/attack_style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
+	if(. & CLICKCHAIN_ATTACK_MISSED)
+		return
 	break_cloak()
-
 
 /obj/item/reagent_containers/glass/venomgland/spider/confusing
 	name = "Confusing Venom Gland"

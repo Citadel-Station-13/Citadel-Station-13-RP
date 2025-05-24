@@ -201,10 +201,10 @@
 		to_chat(src, "<span class='warning'>You're restrained! You can't move!</span>")
 		mob.move_delay = world.time + 5 // 5 ds delay
 		return FALSE
-	if(length(mob.pinned))
-		mob.move_delay = world.time + 5 // 5 ds delay
-		to_chat(src, "<font color=#4F49AF>You're pinned to a wall by [mob.pinned[1]]!</font>")
-		return FALSE
+	// if(length(mob.pinned))
+	// 	mob.move_delay = world.time + 5 // 5 ds delay
+	// 	to_chat(src, "<font color=#4F49AF>You're pinned to a wall by [mob.pinned[1]]!</font>")
+	// 	return FALSE
 	//! End
 
 	//? NOW we try to move.

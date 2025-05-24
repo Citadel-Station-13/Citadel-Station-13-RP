@@ -94,6 +94,7 @@
 		for(var/obj/item/grab/G in L.get_held_items_of_type(/obj/item/grab))
 			G.reset_kill_state() //no wandering across the station/asteroid while choking someone
 
+// TODO: refactor this and perform logging in attackchain instead of here
 /obj/item/grab
 	name = "grab"
 	icon = 'icons/mob/screen1.dmi'
@@ -124,6 +125,7 @@
 	var/mob/user = loc
 	assailant = user
 	affecting = victim
+	add_attack_logs(assailant,affecting,"Grab Initialized")
 
 	if(affecting.anchored || !assailant.Adjacent(victim) || affecting.buckled)
 		affecting = null
@@ -249,7 +251,14 @@
 /obj/item/grab/throw_resolve_override(atom/movable/resolved, mob/user)
 	return TRUE
 
-/obj/item/grab/melee_object_hit(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+// TODO: should this maybe use melee_attack/melee_impact?
+/obj/item/grab/using_as_item(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+	// TODO: don't do hard stuns, maybe have this differ for each object?
+	if(clickchain.using_intent != INTENT_HARM)
+		return
 	switch(state)
 		if(GRAB_PASSIVE)
 			clickchain.visible_feedback(
@@ -259,8 +268,6 @@
 			)
 			affecting.take_random_targeted_damage(brute = 10)
 			affecting.afflict_knockdown(0.5 SECONDS)
-			qdel(src)
-			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(GRAB_AGGRESSIVE)
 			clickchain.visible_feedback(
 				target = target,
@@ -270,8 +277,6 @@
 			affecting.take_random_targeted_damage(brute = 20)
 			affecting.afflict_paralyze(1 SECONDS)
 			affecting.afflict_knockdown(2 SECONDS)
-			qdel(src)
-			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(GRAB_NECK, GRAB_KILL)
 			clickchain.visible_feedback(
 				target = target,
@@ -279,11 +284,12 @@
 				visible = SPAN_DANGER("[clickchain.performer] smashes [affecting] against \the [target]!")
 			)
 			affecting.take_random_targeted_damage(brute = 30)
-			affecting.afflict_paralyze(3 SECONDS)
-			affecting.afflict_knockdown(4.5 SECONDS)
-			qdel(src)
-			return CLICKCHAIN_DO_NOT_PROPAGATE
-	return ..()
+			affecting.afflict_paralyze(2.75 SECONDS)
+			affecting.afflict_knockdown(3.5 SECONDS)
+
+	qdel(src)
+	clickchain.data[ACTOR_DATA_GRAB_LOG] = "slam [key_name(affecting)] ([ref(affecting)]) into [target] ([target.type]) ([ref(target)])"
+	. |= CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 
 //Updating pixelshift, position and direction
 //Gets called on process, when the grab gets upgraded or the assailant moves
@@ -361,6 +367,7 @@
 			apply_pinning(affecting, assailant)
 
 		state = GRAB_AGGRESSIVE
+		add_attack_logs(assailant,affecting,"Aggressively grabbed")
 		icon_state = "grabbed1"
 		hud.icon_state = "reinforce1"
 	else if(state < GRAB_NECK)
@@ -579,7 +586,7 @@
 	if(!istype(attacker))
 		return
 
-	var/datum/unarmed_attack/attack = attacker.get_unarmed_attack(target, O_EYES)
+	var/datum/melee_attack/unarmed/attack = attacker.get_unarmed_attack(target, O_EYES)
 
 	if(!attack)
 		return

@@ -8,7 +8,7 @@
 
 /datum/armor/agent/space
 	melee = 0.45
-	melee = 4.5
+	melee_tier = 4.5
 	bullet = 0.45
 	bullet_tier = 4.5
 	laser = 0.45

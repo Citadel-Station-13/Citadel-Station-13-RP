@@ -90,6 +90,7 @@
  * immediately processes hitscan
  */
 /obj/projectile/proc/physics_hitscan(safety = 250, resuming)
+	SHOULD_NOT_SLEEP(TRUE)
 	// setup
 	if(!resuming)
 		hitscanning = TRUE

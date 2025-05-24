@@ -79,7 +79,7 @@
 	icon_state = "darkt"
 	fire_sound = 'sound/weapons/eLuger.ogg'
 	nodamage = 1
-	agony = 55
+	damage_inflict_agony = 55
 	damage_type = DAMAGE_TYPE_HALLOSS
 	light_color = "#8837A3"
 
@@ -92,7 +92,7 @@
 	icon_state = "darkb"
 	fire_sound = 'sound/weapons/eLuger.ogg'
 	damage_force = 35
-	armor_penetration = 35
+	damage_tier = 4
 	damage_type = DAMAGE_TYPE_BRUTE
 	damage_flag = ARMOR_ENERGY
 	light_color = "#8837A3"
@@ -108,7 +108,7 @@
 	icon_state = "dark_pellet"
 	fire_sound = 'sound/weapons/eLuger.ogg'
 	damage_force = 20
-	armor_penetration = 35
+	damage_tier = 4
 	damage_type = DAMAGE_TYPE_BRUTE
 	damage_flag = ARMOR_ENERGY
 	light_color = "#8837A3"
@@ -141,14 +141,14 @@
 	icon_state = "sound"
 	fire_sound = 'sound/effects/basscannon.ogg'
 	damage_force = 5
-	armor_penetration = 30
+	damage_tier = 4
 	damage_type = DAMAGE_TYPE_BRUTE
 	damage_flag = ARMOR_MELEE
 	embed_chance = 0
 	vacuum_traversal = 0
 
 /obj/projectile/sonic/weak
-	agony = 50
+	damage_inflict_agony = 50
 
 /obj/projectile/sonic/strong
 	damage_force = 45

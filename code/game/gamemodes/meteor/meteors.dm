@@ -182,11 +182,11 @@
 /obj/effect/meteor/legacy_ex_act()
 	return
 
-/obj/effect/meteor/attackby(obj/item/W as obj, mob/user as mob, params)
-	if(istype(W, /obj/item/pickaxe))
+/obj/effect/meteor/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	if(istype(using, /obj/item/pickaxe))
 		qdel(src)
-		return
-	..()
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 
 /obj/effect/meteor/proc/make_debris()
 	for(var/throws = dropamt, throws > 0, throws--)

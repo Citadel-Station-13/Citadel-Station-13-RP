@@ -5,6 +5,8 @@
 	// todo: rework godmode check
 	if(status_flags & STATUS_GODMODE)
 		efficiency = 0
+	if(!(flags & (ELECTROCUTE_ACT_FLAG_INTERNAL | ELECTROCUTE_ACT_FLAG_IGNORE_ARMOR)) && hit_zone && inventory)
+		efficiency *= inventory.query_simple_covered_siemens_coefficient(BODY_ZONE_TO_FLAGS(hit_zone))
 	return ..()
 
 //* Armor Handling *//

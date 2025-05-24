@@ -294,7 +294,7 @@
 /turf/attack_ai(mob/user as mob) //this feels like a bad idea ultimately but this is the cheapest way to let cyborgs nudge things they're pulling around
 	. = ..()
 	if(Adjacent(user))
-		attack_hand(user, list("siliconattack" = TRUE))
+		attack_hand(user, new /datum/event_args/actor/clickchain(user))
 
 /turf/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
 	if(I.obj_storage?.allow_mass_gather && I.obj_storage.allow_mass_gather_via_click)

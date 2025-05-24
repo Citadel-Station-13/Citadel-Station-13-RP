@@ -11,7 +11,7 @@
 		LANGUAGE_ID_XENOMORPH_HIVEMIND
 	)
 	assisted_langs = list()
-	unarmed_types = list(/datum/unarmed_attack/claws/strong/xeno, /datum/unarmed_attack/bite/strong/xeno)
+	unarmed_types = list(/datum/melee_attack/unarmed/claws/strong/xeno, /datum/melee_attack/unarmed/bite/strong/xeno)
 	hud_type = /datum/hud_data/alien
 	//rarity_value = 3
 
@@ -303,7 +303,7 @@
 	icobase = 'icons/mob/species/xenomorph/queen.dmi'
 	deform =  'icons/mob/species/xenomorph/queen.dmi'
 
-	unarmed_types = list(/datum/unarmed_attack/claws/strong/xeno/queen, /datum/unarmed_attack/bite/strong/xeno)
+	unarmed_types = list(/datum/melee_attack/unarmed/claws/strong/xeno/queen, /datum/melee_attack/unarmed/bite/strong/xeno)
 
 	has_organ = list(
 		O_HEART =    /obj/item/organ/internal/heart,

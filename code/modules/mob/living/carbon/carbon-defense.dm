@@ -1,13 +1,86 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+/mob/living/carbon/melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/weapon/style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	if(attacker != src)
+		var/hit_zone = get_zone_with_miss_chance(target_zone, src, attacker.get_accuracy_penalty())
+		if(!hit_zone)
+			return CLICKCHAIN_ATTACK_MISSED
+		clickchain.target_zone = target_zone = hit_zone
+	var/obj/item/organ/external/affecting = get_organ(target_zone)
+	if (!affecting || affecting.is_stump())
+		to_chat(attacker, "<span class='danger'>They are missing that limb!</span>")
+		return CLICKCHAIN_ATTACK_MISSED
+	return ..()
+
+/mob/living/carbon/on_melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/attack_style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	if(weapon && check_neckgrab_attack(weapon, attacker, target_zone))
+		return clickchain_flags | CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_ATTACK
+	return ..()
+
+/mob/living/carbon/on_melee_impact(mob/attacker, obj/item/weapon, datum/melee_attack/attack_style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags, list/damage_instance_results)
+	..()
+	var/resultant_damage = damage_instance_results[SHIELDCALL_ARG_DAMAGE]
+	if(!resultant_damage)
+		return
+	var/resultant_damage_type = damage_instance_results[SHIELDCALL_ARG_DAMAGE_TYPE]
+	if(!(damage_instance_results[SHIELDCALL_ARG_DAMAGE_MODE] & (DAMAGE_MODE_GRADUAL)) && (resultant_damage_type == DAMAGE_TYPE_BRUTE) && (resultant_damage > 1))
+		var/obj/item/organ/external/bodypart = get_bodypart_for_zone(damage_instance_results[SHIELDCALL_ARG_HIT_ZONE])
+		// bloody / knockout / knockdown requires non-gradual kinetic force
+		var/no_bleed = (species.species_flags & NO_BLOOD) && (bodypart ? (bodypart.robotic < ORGAN_ROBOT) : !isSynthetic())
+		// old calculation here for probability
+		if(prob(25 + (resultant_damage * 2)))
+			if(weapon && !(weapon.atom_flags & NOBLOODY))
+				weapon.add_blood(src)
+		// TODO: bleeding / blood backsplash frmo melee should be handled at /living level
+		//       with a new proc for doing all this logic
+		var/they_should_bleed = !no_bleed && prob(33)
+		if(they_should_bleed)
+			var/turf/location = loc
+			location.add_blood(src)
+			if(ishuman(attacker))
+				var/mob/living/carbon/human/human_attacker = attacker
+				human_attacker.bloody_body(src)
+				human_attacker.bloody_hands(src)
+		if(IS_CONSCIOUS(src))
+			switch(BODY_ZONE_TO_SIMPLIFIED(target_zone))
+				if(BODY_ZONE_HEAD)
+					// requires atleast a significant hit
+					if(resultant_damage > 8 && prob(resultant_damage))
+						// knockout nerfed from 40 sec to 20 sec baseline
+						// however, unaffected by armor for now
+						// TODO: is rng knockout still acceptable?
+						afflict_unconscious(20 SECONDS * clickchain.attack_melee_multiplier)
+						visible_message(SPAN_DANGER("[src] has been knocked unconscious!"))
+					if(they_should_bleed)
+						// TODO: it should be obvious why this is bad
+						var/mob/living/carbon/human/cast_to_human = src
+						if(istype(cast_to_human))
+							cast_to_human.wear_mask?.add_blood(src)
+							cast_to_human.head?.add_blood(src)
+							cast_to_human.glasses?.add_blood(src)
+							cast_to_human.inventory?.update_slot_render(/datum/inventory_slot/inventory/mask::id)
+							cast_to_human.inventory?.update_slot_render(/datum/inventory_slot/inventory/head::id)
+							cast_to_human.inventory?.update_slot_render(/datum/inventory_slot/inventory/glasses::id)
+				if(BODY_ZONE_TORSO)
+					// requires a slightly less significant hit
+					if(resultant_damage > 4 && prob(resultant_damage + 10))
+						// nerfed from 12 seconds to 2 baseline
+						afflict_paralyze(2 SECONDS * clickchain.attack_melee_multiplier)
+						visible_message(SPAN_DANGER("[src] has been brutally knocked down!"))
+					if(they_should_bleed)
+						// TODO: it should be obvious why this is bad
+						var/mob/living/carbon/human/cast_to_human = src
+						if(istype(cast_to_human))
+							cast_to_human.bloody_body(src)
+
 //* FX *//
 
-/mob/living/carbon/get_combat_fx_classifier(attack_type, datum/weapon, target_zone)
+/mob/living/carbon/get_combat_fx_classifier(attack_type, datum/attack_source, target_zone)
 	if(!target_zone)
 		return ..()
 	var/obj/item/organ/external/hit_bodypart = get_organ(target_zone)
-	if(!hit_bodypart || hit_bodypart.is_stump())
+	if(!hit_bodypart)
 		return ..()
 	if(BP_IS_ROBOTIC(hit_bodypart))
 		return COMBAT_IMPACT_FX_METAL

@@ -13,28 +13,29 @@
 	icon_state = "laser"
 	fire_sound = 'sound/weapons/weaponsounds_laserweak.ogg'
 	damage_force = 15
+	damage_tier = 3
 
 /obj/projectile/beam/smalllaser
 	damage_force = 25
+	damage_tier = 3.25
 	fire_sound = 'sound/weapons/weaponsounds_laserweak.ogg'
 
 /obj/projectile/beam/burstlaser
 	damage_force = 30
+	damage_tier = 3.5
 	fire_sound = 'sound/weapons/weaponsounds_lasermid.ogg'
-	armor_penetration = 10
-
 
 /obj/projectile/beam/midlaser
 	damage_force = 40
+	damage_tier = 3.75
 	fire_sound = 'sound/weapons/weaponsounds_lasermid.ogg'
-	armor_penetration = 10
 
 /obj/projectile/beam/heavylaser
 	name = "heavy laser"
 	icon_state = "heavylaser"
 	fire_sound = 'sound/weapons/weaponsounds_laserstrong.ogg'
 	damage_force = 60
-	armor_penetration = 30
+	damage_tier = 4.5
 	light_range = 3
 	light_power = 1
 	light_color = "#FF0D00"
@@ -55,8 +56,8 @@
 	legacy_impact_type = /obj/effect/projectile/impact/emitter
 
 /obj/projectile/beam/heavylaser/cannon
-	damage_force = 80
-	armor_penetration = 45
+	damage_force = 60
+	damage_tier = 5
 	light_color = "#FF0D00"
 
 /obj/projectile/beam/xray
@@ -64,7 +65,7 @@
 	icon_state = "xray"
 	fire_sound = 'sound/weapons/eluger.ogg'
 	damage_force = 30
-	armor_penetration = 50
+	damage_tier = 5
 	light_color = "#00CC33"
 
 	legacy_muzzle_type = /obj/effect/projectile/muzzle/xray
@@ -76,7 +77,7 @@
 	icon_state = "xray"
 	fire_sound = 'sound/weapons/eluger.ogg'
 	damage_force = 10
-	armor_penetration = 90
+	damage_tier = 6
 	irradiate = 20
 	light_color = "#00CC33"
 
@@ -89,7 +90,7 @@
 	icon_state = "cyan"
 	fire_sound = 'sound/weapons/weaponsounds_alienlaser.ogg'
 	damage_force = 40
-	damage_tier = LASER_TIER_HIGH
+	damage_tier = 4
 	light_color = "#00C6FF"
 
 	legacy_muzzle_type = /obj/effect/projectile/muzzle/laser_omni
@@ -101,6 +102,7 @@
 	icon_state = "cyan"
 	fire_sound = 'sound/weapons/Dissolverray.ogg'
 	damage_force = 20
+	damage_tier = 2.75
 	light_color = "#74b1c2"
 
 	legacy_muzzle_type = /obj/effect/projectile/muzzle/laser_omni
@@ -126,7 +128,7 @@
 	icon_state = "emitter"
 	fire_sound = 'sound/weapons/emitter.ogg'
 	damage_force = 40
-	armor_penetration = 70
+	damage_tier = 5
 	light_color = "#00CC33"
 	excavation_amount = 70 // 3 shots to mine a turf
 
@@ -195,7 +197,7 @@
 	icon_state = "xray"
 	fire_sound = 'sound/weapons/gauss_shoot.ogg'
 	damage_force = 60
-	armor_penetration = 10
+	damage_tier = 5
 	light_color = "#00CC33"
 
 	legacy_muzzle_type = /obj/effect/projectile/muzzle/xray
@@ -225,12 +227,12 @@
 /obj/projectile/beam/stun/weak
 	name = "weak stun beam"
 	icon_state = "stun"
-	agony = 27.5
+	damage_inflict_agony = 27.5
 
 /obj/projectile/beam/stun/med
 	name = "stun beam"
 	icon_state = "stun"
-	agony = 40
+	damage_inflict_agony = 40
 
 //Disabler Beams - It didn't feel right just to recolor Stun beams. We have uses for them still.
 /obj/projectile/beam/disabler
@@ -238,7 +240,7 @@
 	icon_state = "lightning"
 	fire_sound = 'sound/weapons/Taser.ogg'
 	nodamage = 1
-	agony = 30
+	damage_inflict_agony = 30
 	damage_type = DAMAGE_TYPE_HALLOSS
 	light_color = "#FFFFFF"
 
@@ -252,18 +254,18 @@
 /obj/projectile/beam/disabler/weak
 	name = "weak disabler beam"
 	icon_state = "lightning"
-	agony = 25
+	damage_inflict_agony = 25
 
 /obj/projectile/beam/disabler/strong
 	name = "strong disabler beam"
 	icon_state = "lightning"
-	agony = 40
+	damage_inflict_agony = 40
 
 /obj/projectile/beam/stun/disabler
 	name = "disabler beam"
 	icon_state = "stun"
 
-	agony = 20
+	damage_inflict_agony = 20
 
 	legacy_muzzle_type = /obj/effect/projectile/muzzle/laser_omni
 	legacy_tracer_type = /obj/effect/projectile/tracer/laser_omni
@@ -273,9 +275,9 @@
 	. = ..()
 	if(!(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT))
 		return
-	if(istype(target, /mob/living/silicon/robot) && prob(agony))
+	if(istype(target, /mob/living/silicon/robot) && prob(damage_inflict_agony))
 		var/mob/living/silicon/robot/R = target
-		var/drainamt = agony * (rand(5, 15) / 10)
+		var/drainamt = damage_inflict_agony * (rand(5, 15) / 10)
 		// 100 to 300 drain
 		R.drain_energy(DYNAMIC_CELL_UNITS_TO_KJ(drainamt * 10))
 		if(istype(firer, /mob/living/silicon/robot)) // Mischevious sappers, the swarm drones are.

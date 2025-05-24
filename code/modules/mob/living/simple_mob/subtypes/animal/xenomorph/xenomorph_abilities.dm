@@ -51,7 +51,7 @@
 			M.throw_at_old(get_step(src.loc, throwdir), 1, 1, src)
 			runOver(M) // Actually should not use this, placeholder
 		else if(isobj(AM))
-			AM.inflict_atom_damage(charge_damage, charge_damage_tier, charge_damage_flag, charge_damage_mode, ATTACK_TYPE_UNARMED, src)
+			AM.inflict_atom_damage(charge_damage, charge_damage_tier, charge_damage_flag, charge_damage_mode, ATTACK_TYPE_MELEE)
 	..()
 
 /mob/living/simple_mob/animal/space/xenomorph/breaker/proc/runOver(var/mob/living/M)
@@ -142,7 +142,13 @@
 			M.throw_at_old(get_step(src.loc, throwdir), 1, 1, src)
 			runOver(M) // Actually should not use this, placeholder
 		else if(isobj(AM))
-			AM.inflict_atom_damage(charge_damage, charge_damage_tier, charge_damage_flag, charge_damage_mode, ATTACK_TYPE_UNARMED, src)
+			AM.inflict_atom_damage(
+				charge_damage,
+				charge_damage_tier,
+				charge_damage_flag,
+				charge_damage_mode,
+				ATTACK_TYPE_MELEE,
+			)
 	..()
 
 /mob/living/simple_mob/animal/space/xenomorph/monarch/proc/runOver(var/mob/living/M)
@@ -357,7 +363,14 @@
 		if(L == src)
 			continue
 
-		var/list/shieldcall_result = L.atom_shieldcall(40, DAMAGE_TYPE_BRUTE, MELEE_TIER_MEDIUM, ARMOR_MELEE, NONE, ATTACK_TYPE_MELEE)
+		var/list/shieldcall_result = L.atom_shieldcall(
+			40,
+			DAMAGE_TYPE_BRUTE,
+			3,
+			ARMOR_MELEE,
+			NONE,
+			ATTACK_TYPE_MELEE,
+		)
 		if(shieldcall_result[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 			continue
 

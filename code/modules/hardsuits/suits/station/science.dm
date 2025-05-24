@@ -31,9 +31,12 @@
 	)
 
 /datum/armor/hardsuit/ami
-	melee = 0.45
-	bullet = 0.2
-	laser = 0.45
+	melee = 0.3
+	melee_tier = 4
+	bullet = 0.15
+	bullet_tier = 4
+	laser = 0.375
+	laser_tier = 4.5
 	energy = 0.8
 	bomb = 0.6
 	bio = 1.0

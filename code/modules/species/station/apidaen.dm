@@ -73,10 +73,10 @@
 	)
 
 	unarmed_types = list(
-		/datum/unarmed_attack/stomp,
-		/datum/unarmed_attack/kick,
-		/datum/unarmed_attack/claws,
-		/datum/unarmed_attack/bite/sharp,
+		/datum/melee_attack/unarmed/stomp,
+		/datum/melee_attack/unarmed/kick,
+		/datum/melee_attack/unarmed/claws,
+		/datum/melee_attack/unarmed/bite/sharp,
 	)
 
 	inherent_verbs = list(

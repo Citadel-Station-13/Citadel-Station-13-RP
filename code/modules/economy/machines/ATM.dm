@@ -82,9 +82,6 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 			//prevent inserting id into an emagged ATM
 			to_chat(user, SPAN_CAUTION("[icon2html(thing = src, target = user)] CARD READER ERROR. This system has been compromised!"))
 			return
-		else if(istype(I,/obj/item/card/emag))
-			I.resolve_attackby(src, user)
-			return
 
 		var/obj/item/card/id/idcard = I
 		if(!held_card)

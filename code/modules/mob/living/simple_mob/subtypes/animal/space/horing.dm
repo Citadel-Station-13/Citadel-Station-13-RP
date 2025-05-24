@@ -29,7 +29,7 @@
 	butchery_loot = list(/obj/item/stack/animalhide = 6)
 	var/charge_damage_mode = DAMAGE_MODE_PIERCE | DAMAGE_MODE_SHARP
 	var/charge_damage_flag = ARMOR_MELEE
-	var/charge_damage_tier = MELEE_TIER_HEAVY
+	var/charge_damage_tier = 4.5
 	var/charge_damage = 60
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/horing
@@ -96,7 +96,7 @@
 			M.throw_at_old(get_step(src.loc, throwdir), 1, 1, src)
 			runOver(M) // Actually should not use this, placeholder
 		else if(isobj(AM))
-			AM.inflict_atom_damage(charge_damage, charge_damage_tier, charge_damage_flag, charge_damage_mode, ATTACK_TYPE_UNARMED, src)
+			AM.inflict_atom_damage(charge_damage, charge_damage_tier, charge_damage_flag, charge_damage_mode, ATTACK_TYPE_MELEE)
 	..()
 
 /mob/living/simple_mob/animal/horing/proc/runOver(var/mob/living/M)

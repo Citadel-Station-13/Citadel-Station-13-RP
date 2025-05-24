@@ -1,15 +1,17 @@
 GLOBAL_DATUM(character_directory, /datum/character_directory)
 
+// todo: DECLARE_CLIENT_VERB, DECLARE_MOB_VERB, why don't we just have all verbs with
+//       feedback hooks and cooldown hooks at this point lmao
 /client/verb/show_character_directory()
 	set name = "Character Directory"
 	set category = VERB_CATEGORY_OOC
 	set desc = "Shows a listing of all active characters, along with their associated OOC notes, flavor text, and more."
 
-	// This is primarily to stop malicious users from trying to lag the server by spamming this verb
-	if(world.time < usr.next_move)
-		to_chat(usr, "<span class='warning'>Don't spam character directory refresh.</span>")
+	// todo: generic verb throttling system
+	if(TIMER_COOLDOWN_CHECK(src, TIMER_CD_INDEX_CLIENT_CHARACTER_DIRECTORY))
+		to_chat(src, "<span class='warning'>Don't spam character directory refresh.</span>")
 		return
-	usr.setClickCooldownLegacy(10)
+	TIMER_COOLDOWN_START(src, TIMER_CD_INDEX_CLIENT_CHARACTER_DIRECTORY, 2 SECONDS)
 
 	if(!GLOB.character_directory)
 		GLOB.character_directory = new

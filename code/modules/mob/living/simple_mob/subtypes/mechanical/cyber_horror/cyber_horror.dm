@@ -182,7 +182,14 @@
 		if(L == src)
 			continue
 
-		var/list/shieldcall_result = L.atom_shieldcall(40, DAMAGE_TYPE_BRUTE, MELEE_TIER_MEDIUM, ARMOR_MELEE, NONE, ATTACK_TYPE_MELEE)
+		var/list/shieldcall_result = L.atom_shieldcall(
+			40,
+			DAMAGE_TYPE_BRUTE,
+			3,
+			ARMOR_MELEE,
+			NONE,
+			ATTACK_TYPE_MELEE,
+		)
 		if(shieldcall_result[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 			continue
 
@@ -297,12 +304,10 @@
 	..() // For the poison.
 
 // Force unstealthing if attacked.
-/mob/living/simple_mob/mechanical/cyber_horror/tajaran/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran/on_melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/attack_style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
-	break_cloak()
-
-/mob/living/simple_mob/mechanical/cyber_horror/tajaran/hit_with_weapon(obj/item/O, mob/living/user, effective_force, hit_zone)
-	. = ..()
+	if(. & CLICKCHAIN_ATTACK_MISSED)
+		return
 	break_cloak()
 
 //Arcing Ranged Mob

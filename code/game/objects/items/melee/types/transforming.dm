@@ -71,7 +71,7 @@
 	if(islist(inactive_attack_verb))
 		inactive_attack_verb = typelist(NAMEOF(src, inactive_attack_verb), inactive_attack_verb)
 
-/obj/item/melee/transforming/passive_parry_intercept(mob/defending, attack_type, datum/weapon, datum/passive_parry/parry_data)
+/obj/item/melee/transforming/passive_parry_intercept(mob/defending, attack_type, datum/attack_source, datum/passive_parry/parry_data)
 	if(!active && no_block_while_off)
 		return // cancel
 	return ..()

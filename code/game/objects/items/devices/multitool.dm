@@ -69,25 +69,25 @@
 
 	update_icon()
 
-/obj/item/multitool/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	if(is_holosphere_shell(target) && user.a_intent == INTENT_HELP)
+/obj/item/multitool/using_as_item(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	if(is_holosphere_shell(target) && clickchain.using_intent == INTENT_HELP)
 		var/mob/living/simple_mob/holosphere_shell/shell = target
 		// can't revive them if they are not dead
 		if(shell.stat != DEAD)
-			to_chat(user, SPAN_NOTICE("[target] does not need to be rebooted!"))
-			return
+			to_chat(clickchain.performer, SPAN_NOTICE("[target] does not need to be rebooted!"))
+			return CLICKCHAIN_DID_SOMETHING
 		// can't revive them if they are not full hp
 		if(shell.health == shell.maxHealth)
-			to_chat(user, SPAN_NOTICE("You begin rebooting [target] using \the [src]"))
-			if(do_after(user, 10 SECONDS))
+			to_chat(clickchain.performer, SPAN_NOTICE("You begin rebooting [target] using \the [src]"))
+			if(do_after(clickchain.performer, 10 SECONDS))
 				// make sure they're still dead and full hp
 				if(shell.stat != DEAD || shell.health != shell.maxHealth)
-					to_chat(user, SPAN_NOTICE("[target] is no longer in a condition where you can reboot them."))
-					return
+					to_chat(clickchain.performer, SPAN_NOTICE("[target] is no longer in a condition where you can reboot them."))
+					return CLICKCHAIN_DID_SOMETHING
 				// revive the holosphere shell
-				visible_message(SPAN_NOTICE("[user] successfully reboots [target] using \the [src]."))
+				visible_message(SPAN_NOTICE("[clickchain.performer] successfully reboots [target] using \the [src]."))
 				shell.revive(TRUE, TRUE)
-				return
+				return CLICKCHAIN_DID_SOMETHING
 	return ..()
 
 /obj/item/multitool/is_multitool()

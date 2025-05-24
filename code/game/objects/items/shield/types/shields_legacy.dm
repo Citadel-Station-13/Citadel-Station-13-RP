@@ -15,15 +15,16 @@
 	worth_intrinsic = 300
 	var/cooldown = 0 //shield bash cooldown. based on world.time
 
-/obj/item/shield/riot/passive_parry_intercept(mob/defending, attack_type, datum/weapon, datum/passive_parry/parry_data)
-	if(istype(weapon, /obj/projectile))
-		var/obj/projectile/proj = weapon
-		if(((is_sharp(proj) && proj.armor_penetration >= 10) || proj.damage_tier >= ARMOR_TIER_HIGH || istype(proj, /obj/projectile/beam)) && prob(50))
+/obj/item/shield/riot/passive_parry_intercept(mob/defending, attack_type, datum/attack_source, datum/passive_parry/parry_data)
+	if(istype(attack_source, /obj/projectile))
+		var/obj/projectile/proj = attack_source
+		// todo: rework
+		if((proj.damage_tier >= 4 || istype(proj, /obj/projectile/beam)) && prob(50))
 			//If we're at this point, the bullet/beam is going to go through the shield, however it will hit for less damage.
 			//Bullets get slowed down, while beams are diffused as they hit the shield, so these shields are not /completely/
 			//useless. Extremely penetrating projectiles will go through the shield without less damage.
 			defending.visible_message("<span class='danger'>\The [defending]'s [src.name] is pierced by [proj]!</span>")
-			proj.dampen_on_pierce_experimental(src, 20, ARMOR_TIER_HIGH)
+			proj.dampen_on_pierce_experimental(src, 20, 4)
 			playsound(src, /datum/soundbyte/grouped/block_metal_with_metal, 65, TRUE)
 			return null
 	return ..()
@@ -52,7 +53,7 @@
 /obj/item/shield/riot/flash/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
-	return embedded_flash.legacy_mob_melee_hook(arglist(args))
+	embedded_flash.melee_interaction_chain(target, user, clickchain_flags, params)
 
 /obj/item/shield/riot/flash/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
@@ -61,13 +62,13 @@
 	. = embedded_flash.attack_self(user)
 	update_icon()
 
-/obj/item/shield/riot/flash/passive_parry_intercept(mob/defending, attack_type, datum/weapon, datum/passive_parry/parry_data)
+/obj/item/shield/riot/flash/passive_parry_intercept(mob/defending, attack_type, datum/attack_source, datum/passive_parry/parry_data)
 	. = ..()
 	if(!.)
 		return
 	if(embedded_flash.broken)
 		return
-	if(!(attack_type & (ATTACK_TYPE_MELEE | ATTACK_TYPE_UNARMED)))
+	if(!(attack_type & (ATTACK_TYPE_MELEE)))
 		return
 	// var/datum/event_args/actor/clickchain/clickchain = shieldcall_args[SHIELDCALL_ARG_CLICKCHAIN]
 	// var/mob/attacker = clickchain?.performer
@@ -189,15 +190,15 @@
 	throw_range = 6
 	materials_base = list(MAT_PLASTIC = 7500, "foam" = 1000)
 
-/obj/item/shield/riot/foam/passive_parry_intercept(mob/defending, attack_type, datum/weapon, datum/passive_parry/parry_data)
+/obj/item/shield/riot/foam/passive_parry_intercept(mob/defending, attack_type, datum/attack_source, datum/passive_parry/parry_data)
 	var/allowed = FALSE
-	if(isobj(weapon))
-		var/obj/casted_object = weapon
-		if(istype(casted_object, /obj/projectile))
-			var/obj/projectile/casted_projectile = casted_object
-			if(istype(casted_projectile, /obj/projectile/bullet/reusable/foam))
-				allowed = TRUE
-		else if(casted_object.get_primary_material_id() == /datum/prototype/material/toy_foam::id)
+	if(istype(attack_source, /obj/projectile))
+		var/obj/projectile/casted_projectile = attack_source
+		if(istype(casted_projectile, /obj/projectile/bullet/reusable/foam))
+			allowed = TRUE
+	else if(istype(attack_source, /datum/event_args/actor/clickchain))
+		var/datum/event_args/actor/clickchain/casted_clickchain = attack_source
+		if(casted_clickchain.using_melee_weapon?.get_primary_material_id() == /datum/prototype/material/toy_foam::id)
 			allowed = TRUE
 	if(!allowed)
 		return

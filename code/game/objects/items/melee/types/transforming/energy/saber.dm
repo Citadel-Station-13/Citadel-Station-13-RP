@@ -40,7 +40,7 @@
 		target = src,
 	)
 
-/obj/item/melee/transforming/energy/sword/passive_parry_intercept(mob/defending, attack_type, datum/weapon, datum/passive_parry/parry_data)
+/obj/item/melee/transforming/energy/sword/passive_parry_intercept(mob/defending, attack_type, datum/attack_source, datum/passive_parry/parry_data)
 	. = ..()
 	if(!.)
 		return
@@ -88,7 +88,6 @@
 	active_damage_force = 60
 	throw_force = 5
 	throw_speed = 3
-	armor_penetration = 35
 	colorable = TRUE
 	can_combine = FALSE
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
@@ -104,7 +103,7 @@
 	desc = "A small, handheld device which emits a high-energy 'blade'."
 	origin_tech = list(TECH_COMBAT = 5, TECH_MAGNET = 3, TECH_ILLEGAL = 4)
 	active_damage_force = 25
-	armor_penetration = 25
+	active_damage_tier = 4.5
 	colorable = TRUE
 	use_cell = TRUE
 	hitcost = 75
@@ -141,7 +140,6 @@
 	active_damage_force = 50
 	throw_force = 5
 	throw_speed = 3
-	armor_penetration = 30
 	colorable = TRUE
 	hitcost = 150
 	can_combine = FALSE

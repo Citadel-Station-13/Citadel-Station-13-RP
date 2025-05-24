@@ -96,6 +96,25 @@
 	/// * 2 will turn a 40% hit to a 70%
 	var/accuracy_overall_modify = 1
 
+	//* Combat - Damage *//
+
+	/// damage amount
+	var/damage_force = 0
+	/// damage tier - goes hand in hand with [damage_mode]
+	var/damage_tier = ARMOR_TIER_DEFAULT
+	/// damage type - DAMAGE_TYPE_* define
+	var/damage_type = DAMAGE_TYPE_BRUTE
+	/// armor flag for damage - goes hand in hand with [damage_tier]
+	var/damage_flag = ARMOR_BULLET
+	/// damage mode - see [code/__DEFINES/combat/damage.dm]
+	var/damage_mode = NONE
+
+	/// Pain damage to deal.
+	/// * This will be checked against main 'damage_flag' armor.
+	/// todo: should be a projectile effect instead, so we can have different kinds
+	///       of stopping power simulated.
+	var/damage_inflict_agony = 0
+
 	//* Combat - Effects *//
 
 	/// multiplier to projectile effects
@@ -355,16 +374,6 @@
 
 	var/dispersion = 0.0
 
-	/// damage amount
-	var/damage_force = 0
-	/// damage tier - goes hand in hand with [damage_mode]
-	var/damage_tier = ARMOR_TIER_DEFAULT
-	/// damage type - DAMAGE_TYPE_* define
-	var/damage_type = DAMAGE_TYPE_BRUTE
-	/// armor flag for damage - goes hand in hand with [damage_tier]
-	var/damage_flag = ARMOR_BULLET
-	/// damage mode - see [code/__DEFINES/combat/damage.dm]
-	var/damage_mode = NONE
 
 	var/SA_bonus_damage = 0 // Some bullets inflict extra damage on simple animals.
 	var/SA_vulnerability = null // What kind of simple animal the above bonus damage should be applied to. Set to null to apply to all SAs.
@@ -381,7 +390,6 @@
 	var/stutter = 0
 	var/eyeblur = 0
 	var/drowsy = 0
-	var/agony = 0
 	var/reflected = 0 // This should be set to 1 if reflected by any means, to prevent infinite reflections.
 	var/modifier_type_to_apply = null // If set, will apply a modifier to mobs that are hit by this projectile.
 	var/modifier_duration = null // How long the above modifier should last for. Leave null to be permanent.
@@ -1148,50 +1156,45 @@
  * * impact_flags - impact flags passed in
  * * hit_zone - zone to hit
  *
- * @return BULLET_ACT_* flags to append into the calling bullet_act().
+ * @return PROJECTILE_IMPACT_* flags to set on the calling bullet_act().
  */
 /obj/projectile/proc/inflict_impact_damage(atom/target, efficiency, impact_flags, hit_zone)
-	. = NONE
+	. = impact_flags
 
 	//! LEGACY COMBAT CODE
-	// SHIM!!!
-	var/list/shieldcall_modified_args = target.check_damage_instance(damage_force, damage_type, damage_tier, damage_flag, damage_mode, ATTACK_TYPE_PROJECTILE, src, SHIELDCALL_FLAG_SECOND_CALL, hit_zone)
-	// todo: this handling very obviously should not be here
-	// dear lord this code is a dumpster fire
-	if(shieldcall_modified_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAGS_PIERCE_ATTACK)
-		. |= PROJECTILE_IMPACT_REFLECT
-	if(shieldcall_modified_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAGS_BLOCK_ATTACK)
-		return
-	// END
 	if(isliving(target))
 		var/mob/living/L = target
-		//Armor
-		var/soaked = L.get_armor_soak(hit_zone, src.damage_flag, src.armor_penetration)
-		var/absorb = L.run_armor_check(hit_zone, src.damage_flag, src.armor_penetration)
-		var/proj_sharp = is_sharp(src)
-		var/proj_edge = has_edge(src)
-		var/final_damage = src.get_final_damage(target) * efficiency
-
-		if ((proj_sharp || proj_edge) && (soaked >= round(src.damage_force*0.8)))
-			proj_sharp = 0
-			proj_edge = 0
-
-		if ((proj_sharp || proj_edge) && prob(L.legacy_mob_armor(hit_zone, src.damage_flag)))
-			proj_sharp = 0
-			proj_edge = 0
-
-		var/resolved_impact_sound = resolve_impact_sfx(L.get_combat_fx_classifier(ATTACK_TYPE_PROJECTILE, src, hit_zone), L)
-		if(resolved_impact_sound)
-			playsound(L, resolved_impact_sound, 75, TRUE)
-
-		if(!src.nodamage)
-			L.apply_damage(final_damage, src.damage_type, hit_zone, absorb, soaked, 0, src, sharp=proj_sharp, edge=proj_edge)
-
-		// todo: some of these dont' make sense to be armor'd (last two), some do; please refactor this
-		L.apply_effects(stun, weaken, paralyze, irradiate, stutter, eyeblur, drowsy, agony, clamp((1 - efficiency) * 100 + absorb, 0, 100), incendiary, flammability)
+		// todo: these all ignore armor right now. this is not a good thing.
+		L.apply_effects(stun, weaken, paralyze, irradiate, stutter, eyeblur, drowsy, 0, clamp((1 - efficiency) * 100, 0, 100), incendiary, flammability)
 		if(modifier_type_to_apply)
 			L.add_modifier(modifier_type_to_apply, modifier_duration)
 	//! END
+
+	if(!(impact_flags & (PROJECTILE_IMPACT_BLOCKED | PROJECTILE_IMPACT_SKIP_STANDARD_DAMAGE)))
+		// todo: maybe the projectile side should handle this?
+		target.run_damage_instance(
+			(isobj(target) ? get_structure_damage() : damage_force) * efficiency,
+			damage_type,
+			damage_tier,
+			damage_flag,
+			damage_mode | (DAMAGE_MODE_REQUEST_ARMOR_BLUNTING | DAMAGE_MODE_REQUEST_ARMOR_RANDOMIZATION),
+			ATTACK_TYPE_PROJECTILE,
+			src,
+			NONE,
+			hit_zone,
+		)
+		if(damage_inflict_agony)
+			target.run_damage_instance(
+				damage_inflict_agony,
+				damage_type,
+				damage_tier,
+				damage_flag,
+				damage_mode | (DAMAGE_MODE_REQUEST_ARMOR_BLUNTING | DAMAGE_MODE_REQUEST_ARMOR_RANDOMIZATION),
+				ATTACK_TYPE_PROJECTILE,
+				src,
+				NONE,
+				hit_zone,
+			)
 
 	for(var/datum/projectile_effect/effect as anything in base_projectile_effects)
 		if(effect.hook_damage)
@@ -1200,9 +1203,14 @@
 		if(effect.hook_damage)
 			effect.on_damage(src, target, impact_flags, hit_zone, efficiency)
 
+	//! LEGACY COMBAT CODE
 	if(legacy_penetrating > 0)
 		if(process_legacy_penetration(target))
 			. |= PROJECTILE_IMPACT_PIERCE | PROJECTILE_IMPACT_PASSTHROUGH
+	//! END
+
+	if(QDELETED(target))
+		. |= PROJECTILE_IMPACT_TARGET_DELETED
 
 /**
  * wip algorithm to dampen a projectile when it pierces

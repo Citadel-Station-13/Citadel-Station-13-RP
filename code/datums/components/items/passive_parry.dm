@@ -24,7 +24,7 @@
 	/// * must return /datum/parry_frame or null.
 	/// * if it returns a parry frame, it'll override the frame provided by the passive parry datum
 	/// * if it returns null, it'll cancel the parry
-	/// * invoked, if existing, with (obj/item/parent, mob/defending, attack_type, datum/weapon, datum/passive_parry/parry_data)
+	/// * invoked, if existing, with (obj/item/parent, mob/defending, attack_type, datum/attack_source, datum/passive_parry/parry_data)
 	/// * this allows you to construct a custom parry frame
 	/// * this will be null'd, not qdel'd, when the component is qdel'd
 	var/datum/callback/parry_intercept
@@ -62,13 +62,13 @@
 /**
  * About to start a parry. Resolve parry_frame datum.
  */
-/datum/component/passive_parry/proc/ignite(atom/defending, attack_type, datum/weapon)
+/datum/component/passive_parry/proc/ignite(atom/defending, attack_type, datum/attack_source)
 	RETURN_TYPE(/datum/parry_frame)
 	if(parry_intercept)
-		return parry_intercept.invoke_no_sleep(parent, defending, attack_type, weapon, parry_data)
+		return parry_intercept.invoke_no_sleep(parent, defending, attack_type, attack_source, parry_data)
 	else
 		var/obj/item/item = parent
-		return item.passive_parry_intercept(defending, attack_type, weapon, parry_data)
+		return item.passive_parry_intercept(defending, attack_type, attack_source, parry_data)
 
 /datum/component/passive_parry/RegisterWithParent()
 	. = ..()
@@ -161,7 +161,7 @@
 
 //* Bindings - Melee *//
 
-/datum/shieldcall/bound/passive_parry/handle_item_melee(atom/defending, shieldcall_returns, fake_attack, obj/item/weapon, datum/event_args/actor/clickchain/e_args)
+/datum/shieldcall/bound/passive_parry/handle_melee(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/weapon, datum/melee_attack/weapon/style)
 	// todo: no support for fake attacks yet
 	if(fake_attack)
 		return
@@ -169,45 +169,22 @@
 	// this works because the proc names and args and types are **exactly** matching
 	// this is why the procs are all together
 	// do NOT try this at home.
-	return bound:handle_item_melee(arglist(args))
+	return bound:handle_melee(arglist(args))
 
-/datum/component/passive_parry/proc/handle_item_melee(atom/defending, shieldcall_returns, fake_attack, obj/item/weapon, datum/event_args/actor/clickchain/e_args)
+/datum/component/passive_parry/proc/handle_melee(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/weapon, datum/melee_attack/weapon/style)
 	var/datum/passive_parry/data = parry_data
 	if(data.parry_frame_simulated)
 		return
 	if(!prob(isnull(data.parry_chance_melee) ? data.parry_chance_default : data.parry_chance_melee))
 		return
-	if(!check_defensive_arc_tile(defending, e_args.performer, data.parry_arc, !data.parry_arc_round_down))
+	if(!check_defensive_arc_tile(defending, clickchain.performer, data.parry_arc, !data.parry_arc_round_down))
 		return
-	var/datum/parry_frame/resolved = ignite(defending, ATTACK_TYPE_MELEE, weapon)
+	var/datum/parry_frame/resolved = ignite(defending, ATTACK_TYPE_MELEE, clickchain)
 	if(!resolved)
 		return
-	return resolved.handle_item_melee(defending, shieldcall_returns | SHIELDCALL_FLAG_SINGLE_PARRY, fake_attack, data.parry_frame_efficiency, weapon, e_args, parent)
+	return resolved.handle_melee(defending, shieldcall_returns | SHIELDCALL_FLAG_SINGLE_PARRY, fake_attack, data.parry_frame_efficiency, clickchain, style, weapon, parent)
 
-/datum/shieldcall/bound/passive_parry/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args)
-	// todo: no support for fake attacks yet
-	if(fake_attack)
-		return
-	// this is a definite 'do as i say, not as i do' moment
-	// this works because the proc names and args and types are **exactly** matching
-	// this is why the procs are all together
-	// do NOT try this at home.
-	return bound:handle_unarmed_melee(arglist(args))
-
-/datum/component/passive_parry/proc/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args)
-	var/datum/passive_parry/data = parry_data
-	if(data.parry_frame_simulated)
-		return
-	if(!prob(isnull(data.parry_chance_melee) ? data.parry_chance_default : data.parry_chance_melee))
-		return
-	if(!check_defensive_arc_tile(defending, e_args.performer, data.parry_arc, !data.parry_arc_round_down))
-		return
-	var/datum/parry_frame/resolved = ignite(defending, ATTACK_TYPE_UNARMED, style)
-	if(!resolved)
-		return
-	return resolved.handle_unarmed_melee(defending, shieldcall_returns | SHIELDCALL_FLAG_SINGLE_PARRY, fake_attack, data.parry_frame_efficiency, style, e_args, parent)
-
-/datum/shieldcall/bound/passive_parry/handle_touch(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/e_args, contact_flags, contact_specific)
+/datum/shieldcall/bound/passive_parry/handle_touch(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/clickchain, clickchain_flags, contact_flags, contact_specific)
 	// todo: no support for fake attacks yet
 	if(fake_attack)
 		return
@@ -217,18 +194,18 @@
 	// do NOT try this at home.
 	return bound:handle_touch(arglist(args))
 
-/datum/component/passive_parry/proc/handle_touch(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/e_args, contact_flags, contact_specific)
+/datum/component/passive_parry/proc/handle_touch(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/clickchain, clickchain_flags, contact_flags, contact_specific)
 	var/datum/passive_parry/data = parry_data
 	if(data.parry_frame_simulated)
 		return
 	if(!prob(isnull(data.parry_chance_touch) ? data.parry_chance_default : data.parry_chance_touch))
 		return
-	if(!check_defensive_arc_tile(defending, e_args.performer, data.parry_arc, !data.parry_arc_round_down))
+	if(!check_defensive_arc_tile(defending, clickchain.performer, data.parry_arc, !data.parry_arc_round_down))
 		return
 	var/datum/parry_frame/resolved = ignite(defending, ATTACK_TYPE_TOUCH, null)
 	if(!resolved)
 		return
-	return resolved.handle_touch(defending, shieldcall_returns | SHIELDCALL_FLAG_SINGLE_PARRY, fake_attack, data.parry_frame_efficiency, e_args, contact_flags, contact_specific, parent)
+	return resolved.handle_touch(defending, shieldcall_returns | SHIELDCALL_FLAG_SINGLE_PARRY, fake_attack, data.parry_frame_efficiency, clickchain, contact_flags, contact_specific, parent)
 
 //* Bindings - Thrown *//
 
@@ -269,7 +246,7 @@
  *
  * @return parry frame datum to use, or null to cancel
  */
-/obj/item/proc/passive_parry_intercept(mob/defending, attack_type, datum/weapon, datum/passive_parry/parry_data)
+/obj/item/proc/passive_parry_intercept(mob/defending, attack_type, datum/attack_source, datum/passive_parry/parry_data)
 	return parry_data.parry_frame
 
 //* Data *//

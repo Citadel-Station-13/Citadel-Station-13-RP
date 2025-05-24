@@ -54,7 +54,10 @@
 		clear_leash()
 
 //Called when someone is clicked with the leash
-/obj/item/leash/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/leash/melee_override(atom/target, mob/user, intent, zone, efficiency, datum/event_args/actor/actor)
+	if(!ismob(target))
+		return ..()
+	. = TRUE
 	//mob/living/carbon/C, mob/living/user, attackchain_flags, damage_multiplier) //C is the target, user is the one with the leash
 	var/is_simple_animal = FALSE
 	var/mob/living/carbon/C = target

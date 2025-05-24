@@ -66,16 +66,16 @@
 /obj/item/grenade/simple/chemical/should_simple_delay_adjust(datum/event_args/actor/actor)
 	return secured && ..()
 
-/obj/item/grenade/simple/chemical/context_query(datum/event_args/actor/e_args)
+/obj/item/grenade/simple/chemical/context_menu_query(datum/event_args/actor/e_args)
 	. = ..()
 	if(!detonator && !activated)
-		.["adjust-fuse"] = atom_context_tuple(
+		.["adjust-fuse"] = create_context_menu_tuple(
 			name = "adjust fuse",
 			I = dyntool_image_neutral(TOOL_SCREWDRIVER),
 			mobility = MOBILITY_CAN_USE,
 		)
 	if(secured)
-		.["unlock-assembly"] = atom_context_tuple(
+		.["unlock-assembly"] = create_context_menu_tuple(
 			name = "unlock grenade",
 			I = image(
 				/obj/item/tool/screwdriver::icon,
@@ -84,7 +84,7 @@
 			mobility = MOBILITY_CAN_USE,
 		)
 
-/obj/item/grenade/simple/chemical/context_act(datum/event_args/actor/e_args, key)
+/obj/item/grenade/simple/chemical/context_menu_act(datum/event_args/actor/e_args, key)
 	. = ..()
 	if(.)
 		return

@@ -76,7 +76,7 @@
 	var/distance_penalty = distance_travelled > pellet_zone_spread_gain_threshold ? (distance_travelled * pellet_zone_spread_gain) : 0
 	var/zone_true_chance = 100 - (pellet_zone_spread + distance_penalty)
 	var/pellet_hit_chance = 100
-	. = NONE
+	. = impact_flags
 	if(isliving(target))
 		var/mob/living/living_target = target
 		pellet_hit_chance = living_target.process_baymiss(src, impact_check = FALSE)
@@ -104,36 +104,36 @@
 //Explosive grenade projectile, borrowed from fragmentation grenade code.
 /obj/projectile/bullet/pellet/fragment
 	damage_force = 10
-	armor_penetration = 30
+	damage_tier = 3.5
 
 	silenced = 1 //embedding messages are still produced so it's kind of weird when enabled.
 	legacy_muzzle_type = null
 
 /obj/projectile/bullet/pellet/fragment/strong
-	damage_force = 15
-	armor_penetration = 20
+	damage_force = 10
+	damage_tier = 4.5
 
 /obj/projectile/bullet/pellet/fragment/weak
-	damage_force = 4
-	armor_penetration = 40
+	damage_force = 7.5
+	damage_tier = 2.25
 
 /obj/projectile/bullet/pellet/fragment/rubber
 	name = "stingball shrapnel"
 	damage_force = 3
-	agony = 8
+	damage_tier = 2
+	damage_inflict_agony = 7
 	damage_mode = NONE
 	damage_flag = ARMOR_MELEE
 
 /obj/projectile/bullet/pellet/fragment/rubber/strong
 	damage_force = 8
-	agony = 16
+	damage_inflict_agony = 16
 
 // Tank rupture fragments
 /obj/projectile/bullet/pellet/fragment/tank
 	name = "metal fragment"
-	damage_force = 9  //Big chunks flying off.
-
-	armor_penetration = 20
+	damage_force = 7
+	damage_tier = 4.5
 
 	silenced = 1
 	legacy_muzzle_type = null
@@ -142,12 +142,12 @@
 /obj/projectile/bullet/pellet/fragment/tank/small
 	name = "small metal fragment"
 	damage_force = 6
-	armor_penetration = 5
+	damage_tier = 3.25
 	pellets = 5
 
 /obj/projectile/bullet/pellet/fragment/tank/big
 	name = "large metal fragment"
 	damage_force = 17
-	armor_penetration = 10
+	damage_tier = 2.7
 	pellet_loss = 0.2 / WORLD_ICON_SIZE
 	pellets = 1

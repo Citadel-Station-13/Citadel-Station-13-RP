@@ -1,3 +1,8 @@
+/**
+ * Backend clickcode.
+ *
+ * * Things in this file are **not** part of the clickchain, instead being the machinery that initiates the clickchain.
+ */
 
 /*
 	Before anything else, defer these calls to a per-mobtype handler.  This allows us to
@@ -147,11 +152,13 @@
 		trigger_aiming(TARGET_CAN_CLICK)
 		return
 
+// todo: this is legacy because majority of calls to it are unaudited and unnecessary; new system
+//       handles melee cooldown at clickcode level.
 /mob/proc/setClickCooldownLegacy(var/timeout)
 	next_move = max(world.time + timeout, next_move)
 
 /mob/proc/canClick()
-	if(config_legacy.no_click_cooldown || next_move <= world.time)
+	if(next_move <= world.time)
 		return 1
 	return 0
 
@@ -175,10 +182,8 @@
 /mob/living/UnarmedAttack(var/atom/A, var/proximity_flag)
 	if(is_incorporeal())
 		return 0
-
 	if(stat)
 		return 0
-
 	return 1
 
 /*
@@ -206,59 +211,28 @@
 /mob/proc/RestrainedClickOn(var/atom/A)
 	return
 
-/*
-	Middle click
-	Only used for swapping hands
-*/
 /mob/proc/MiddleClickOn(var/atom/A)
 	swap_hand()
-	return
 
-// In case of use break glass
-/*
-/atom/proc/MiddleClick(var/mob/M as mob)
-	return
-*/
-
-/*
-	Shift middle click
-	Used for pointing.
-*/
 /mob/proc/ShiftMiddleClickOn(atom/A)
 	pointed(A)
-	return
 
-/*
-	Shift click
-	For most mobs, examine.
-	This is overridden in ai.dm
-*/
 /mob/proc/ShiftClickOn(var/atom/A)
 	A.ShiftClick(src)
-	return
 
 /atom/proc/ShiftClick(var/mob/user)
 	if(user.client && user.allow_examine(src))
 		user.examinate(src)
 
-/*
-	Ctrl click
-	For most objects, pull
-*/
 /mob/proc/CtrlClickOn(var/atom/A)
 	A.CtrlClick(src)
-	return
+
 /atom/proc/CtrlClick(var/mob/user)
-	return
 
 /atom/movable/CtrlClick(var/mob/user)
 	if(Adjacent(user))
 		user.start_pulling(src)
 
-/*
-	Alt click
-	Unused except for AI
-*/
 /mob/proc/AltClickOn(atom/A)
 	if(!A.AltClick(src))
 		altclick_listed_turf(A)
@@ -278,7 +252,7 @@
 
 /atom/proc/AltClick(var/mob/user)
 	SEND_SIGNAL(src, COMSIG_CLICK_ALT, user)
-	if(context_menu(new /datum/event_args/actor(user)))
+	if(open_context_menu(new /datum/event_args/actor(user)))
 		return TRUE
 	return FALSE
 
@@ -286,10 +260,6 @@
 /mob/proc/TurfAdjacent(var/turf/T)
 	return T.AdjacentQuick(src)
 
-/*
-	Control+Shift click
-	Unused except for AI
-*/
 /mob/proc/CtrlShiftClickOn(var/atom/A)
 	A.CtrlShiftClick(src)
 	return
@@ -297,12 +267,6 @@
 /atom/proc/CtrlShiftClick(var/mob/user)
 	return
 
-/*
-	Misc helpers
-
-	Laser Eyes: as the name implies, handles this since nothing else does currently
-	face_atom: turns the mob towards what you clicked on
-*/
 /mob/proc/LaserEyes(atom/A, params)
 	return
 
@@ -325,7 +289,6 @@
 		handle_regular_hud_updates()
 	else
 		to_chat(src, "<span class='warning'>You're out of energy!  You need food!</span>")
-
 
 /// Simple helper to face what you clicked on, in case it should be needed in more than one place.
 /mob/proc/face_atom(var/atom/atom_to_face)
@@ -358,33 +321,14 @@
 		else
 			setDir(WEST)
 
-/atom/movable/screen/click_catcher
-	name = ""
-	icon = 'icons/mob/screen_gen.dmi'
-	icon_state = "click_catcher"
-	plane = CLICKCATCHER_PLANE
-	mouse_opacity = MOUSE_OPACITY_OPAQUE
-	screen_loc = "CENTER-7,CENTER-7"
-
-/atom/movable/screen/click_catcher/proc/MakeGreed()
-	. = list()
-	for(var/i = 0, i<15, i++)
-		for(var/j = 0, j<15, j++)
-			var/atom/movable/screen/click_catcher/CC = new()
-			CC.screen_loc = "NORTH-[i],EAST-[j]"
-			. += CC
-
-/atom/movable/screen/click_catcher/Click(location, control, params)
-	var/list/modifiers = params2list(params)
-	if(modifiers["middle"] && istype(usr, /mob/living/carbon))
-		var/mob/living/carbon/C = usr
-		C.swap_hand()
-	else
-		var/turf/T = screen_loc2turf(screen_loc, get_turf(usr))
-		if(T)
-			T.Click(location, control, params)
-	. = 1
-
 /// MouseWheelOn
 /mob/proc/MouseWheelOn(atom/A, delta_x, delta_y, params)
 	SEND_SIGNAL(src, COMSIG_MOUSE_SCROLL_ON, A, delta_x, delta_y, params)
+
+//* Click Cooldown *//
+
+/**
+ * Prevents a mob from acting again until time has passed.
+ */
+/mob/proc/apply_click_cooldown(time)
+	next_move = max(world.time + time, next_move)

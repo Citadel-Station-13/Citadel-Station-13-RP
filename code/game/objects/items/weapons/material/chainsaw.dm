@@ -117,12 +117,12 @@
 	item_state = "chainsword0"
 	slot_flags = SLOT_BELT
 	damage_force = 30
+	damage_tier = 4.5
 	throw_force = 10
 	w_class = WEIGHT_CLASS_NORMAL
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	attack_verb = list("sawed", "torn", "cut", "chopped", "diced")
 	attack_sound = 'sound/weapons/chainsaw_attack.ogg'
-	armor_penetration = 30
 
 /obj/item/chainsaw/chainsword/turnOn(mob/user as mob)
 	to_chat(user, "You begin pulling the throttle on \the [src].")

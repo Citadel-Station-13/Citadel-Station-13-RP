@@ -131,7 +131,7 @@
 
 
 //* GENERIC EXTERAL ORGANS *//
-// Also used as target zones.
+// Stop using these as target zones, use TARGET_ZONE_* defines.
 #define BP_GROIN  "groin"
 #define BP_HEAD   "head"
 #define BP_L_ARM  "l_arm"

@@ -105,6 +105,8 @@
 
 //* Damage *//
 
+// todo: rethink how this works a bit, specific procs for damage types might be silly
+
 /**
  * @return amount healed
  */
@@ -176,34 +178,6 @@
 	// todo: don't update health immediately
 	. = adjustBruteLoss(brute) + adjustFireLoss(burn)
 
-//? Afflictions
-/**
- * inflicts radiation.
- * will not heal it.
- *
- * @params
- * - amt - how much
- * - check_armor - do'th we care about armor?
- * - def_zone - zone to check if we do
- */
-/mob/living/proc/afflict_radiation(amt, run_armor, def_zone)
-	if(amt <= 0)
-		return
-	if(run_armor)
-		amt *= 1 - ((legacy_mob_armor(def_zone, ARMOR_RAD)) / 100)
-	radiation += max(0, RAD_MOB_ADDITIONAL(amt, radiation))
-
-/**
- * heals radiation.
- *
- * @params
- * - amt - how much
- */
-/mob/living/proc/cure_radiation(amt)
-	if(amt <= 0)
-		return
-	radiation = max(0, radiation - amt)
-
 //* Damage Instance Handling *//
 
 /mob/living/inflict_damage_instance(SHIELDCALL_PROC_HEADER)
@@ -214,7 +188,21 @@
 	var/brute = damage_type == DAMAGE_TYPE_BRUTE? damage : 0
 	var/burn = damage_type == DAMAGE_TYPE_BURN? damage : 0
 
+	#ifdef CF_VISUALIZE_DAMAGE_TICKS
+	visualize_atom_damage(damage, damage_type)
+	#endif
+
 	if(hit_zone)
 		take_targeted_damage(brute, burn, damage_mode, hit_zone, weapon_descriptor)
 	else
 		take_overall_damage(brute, burn, damage_mode, weapon_descriptor)
+
+	// TODO: better bleed sim
+	// TODO: this is shitcode
+	if(!iscarbon(src) && !isSynthetic())
+		if(attack_type == ATTACK_TYPE_MELEE)
+			if(damage_type == DAMAGE_TYPE_BRUTE)
+				if(prob(33))
+					var/turf/simulated/our_turf = get_turf(src)
+					if(istype(our_turf))
+						our_turf.add_blood_floor(src)

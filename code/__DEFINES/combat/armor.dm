@@ -31,12 +31,38 @@
 //? If > 0, decreases damage linearly with 1 being 0x damage.
 //? If < 0, increases damage linearly with -1 being 2x damage, -2 being 3x damage.
 
+/**
+ * The ability of an armor to absorb exotic energy.
+ */
 #define ARMOR_ENERGY "energy"
+/**
+ * The ability of an armor to block a shockwave from an explosion.
+ */
 #define ARMOR_BOMB "bomb"
+/**
+ * The ability of an armor to block microscale particles from entering.
+ */
 #define ARMOR_BIO "bio"
+/**
+ * The ability of an armor to block radiation.
+ */
 #define ARMOR_RAD "rad"
+/**
+ * The ability of an armor to resist surface combustion.
+ */
 #define ARMOR_FIRE "fire"
+/**
+ * The ability of an armor to resist acidic or corrosive substances from leaking through.
+ */
 #define ARMOR_ACID "acid"
+
+/**
+ * Global randomization ratio for all armor checks.
+ * * 0.25 will make all armor randomly
+ *
+ * TODO: impl
+ */
+// #define ARMOR_CONF_RAND "conf-rand"
 
 /**
  * All armor enums that can be stored in an armor datum
@@ -77,72 +103,91 @@ GLOBAL_REAL_LIST(armor_types) = list(
 	ARMOR_ACID,
 )
 
-//? --- armor tiers ---
-
-#define ARMOR_TIER_DEFAULT ARMOR_TIER_BASELINE
-
-#define ARMOR_TIER_LAUGHABLE -3
-#define ARMOR_TIER_LOW -2
-#define ARMOR_TIER_BELOW -1
-#define ARMOR_TIER_BASELINE 0
-#define ARMOR_TIER_ABOVE 1
-#define ARMOR_TIER_HIGH 2
-#define ARMOR_TIER_OVERWHELMING 3
-#define ARMOR_TIER_RIDICULOUS 4
-
-#define ARMOR_BARELY_BEATS(other) (other + 0.001)
-
-//? melee
-
-#define MELEE_TIER_DEFAULT MELEE_TIER_MEDIUM
-
-#define MELEE_TIER_UNARMED_DEFAULT ARMOR_TIER_LOW
-#define MELEE_TIER_UNARMED_FISTS ARMOR_TIER_LOW
-#define MELEE_TIER_UNARMED_CLAW ARMOR_TIER_BELOW
-#define MELEE_TIER_LIGHT ARMOR_TIER_BASELINE
-#define MELEE_TIER_MEDIUM ARMOR_TIER_ABOVE
-#define MELEE_TIER_HEAVY ARMOR_TIER_HIGH
-#define MELEE_TIER_EXTREME ARMOR_TIER_OVERWHELMING
-
-//? bullet
-
-#define BULLET_TIER_DEFAULT BULLET_TIER_MEDIUM
-
-/// super improvised rounds / pistols / whatever.
-#define BULLET_TIER_LAUGHABLE ARMOR_TIER_BELOW
-/// pistols
-#define BULLET_TIER_LOW ARMOR_TIER_BASELINE
-/// smgs
-#define BULLET_TIER_MEDIUM ARMOR_TIER_ABOVE
-/// rifles
-#define BULLET_TIER_HIGH ARMOR_TIER_HIGH
-/// hmgs, light mech weapons
-#define BULLET_TIER_EXTREME ARMOR_TIER_OVERWHELMING
-/// heavy mech weapons
-#define BULLET_TIER_RIDICULOUS ARMOR_TIER_RIDICULOUS
-
-//? laser
-
-#define LASER_TIER_DEFAULT LASER_TIER_MEDIUM
-
-/// improvised laser focis / etc
-#define LASER_TIER_LAUGHABLE ARMOR_TIER_BELOW
-/// low tier lasers
-#define LASER_TIER_LOW ARMOR_TIER_BASELINE
-/// laser carbines, energy guns, etc
-#define LASER_TIER_MEDIUM ARMOR_TIER_ABOVE
-/// x-ray rifles, snipers
-#define LASER_TIER_HIGH ARMOR_TIER_HIGH
-/// mech weapons, usualy
-#define LASER_TIER_EXTREME ARMOR_TIER_OVERWHELMING
-/// power transmission laser?
-#define LASER_TIER_RIDICULOUS ARMOR_TIER_RIDICULOUS
-
-//? --- armor calculations ---
+//?                              --- armor tiers ---
+//? These are defined values so if we want to scale them nonlinearly/whatever later,
+//? we don't need to replace everything.
 
 /// tierdiff is tier difference of armor against attack; positive = armor is higher tier.
-#define ARMOR_TIER_CALC(_armor, _tierdiff) \
-(_armor > 0? \
-	((_tierdiff) > 0? ((_armor) ** (1 / (1 + (_tierdiff)))) : ((_armor) * (1 / (1 - (_tierdiff))))) : \
-	(_armor) \
-)
+/// * see https://www.desmos.com/calculator/6uu1djsawl
+/// * armor at or below 0 (added damage) are passed back without change
+/proc/ARMOR_TIER_CALC(armor, tierdiff)
+	if(armor <= 0)
+		return 0
+	if(!tierdiff)
+		return armor
+	if(tierdiff > 0)
+		var/a = armor * (tierdiff + 1)
+		return max(a / sqrt(2 + a ** 2), armor)
+	else
+		return armor / (1 + (((-tierdiff) ** 17.5) / 1.75))
+
+#define ARMOR_TIER_FLOOR 0
+#define ARMOR_TIER_DEFAULT 3
+
+/proc/ARMOR_TIER_BLUNT_CHANCE(tierdiff)
+	switch(tierdiff)
+		if(-INFINITY to -2)
+			return 0
+		if(-2 to -1)
+			return 15
+		if(-1 to -0.5)
+			return 22.5
+		if(-0.5 to -0.3)
+			return 30
+		if(-0.3 to 0)
+			return 45.5
+		if(0 to 0.3)
+			return 57.5
+		if(0.3 to 0.6)
+			return 70
+		if(0.6 to 1)
+			return 85
+		if(1 to 2)
+			return 90
+		else
+			return 99 // tf2 critsound.ogg
+
+//?  -- armor tiers - melee --
+
+/**
+ * 0: toys
+ * 1: very light weapons
+ * 2: light weapons
+ * 3: toolboxes, batons, knives, your usual
+ * 4: heavy swords, sledgehammers, mech punches, etc
+ * 5: armor piercing / specialized weapons / eswords / etc
+ * 6: idk you got crushed by a titanium rod or something
+ * 7: hydraulic press?
+ */
+
+#define MELEE_TIER_DEFAULT 3
+
+//?  -- armor tiers - bullet --
+
+/**
+ * 0: toys / nerf guns
+ * 1: slingshots, bb guns, etc
+ * 2: crappy improvised real rounds
+ * 3: most pistols and basic-er weapons are here
+ * 4: rifles
+ * 5: heavy rifles
+ * 6: antimaterial rifles
+ * 7: idk you got hit by a tank round
+ */
+
+#define BULLET_TIER_DEFAULT 3
+
+//?  -- armor tiers - laser --
+
+/**
+ * 0: i don't know why there are toys for this but i guess toy guns that do damage? sunburn?
+ * 1: improvised crappy laser diodes or smth
+ * 2: relatively unfocused weapons, low grade, etc
+ * 3: most laser weapons are here
+ * 4: heavier laser rifles
+ * 5: x-ray lasers, light mech / mounted weapons
+ * 6: heavier mech weapons, pulse weapons
+ * 7: you got hit by engineering's power transmission laser
+ */
+
+#define LASER_TIER_DEFAULT 3

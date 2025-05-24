@@ -86,5 +86,6 @@
 		new /datum/point_redemption_item("Defense Equipment - Sentry Drone Deployer",/obj/item/grenade/simple/spawner/ward,			1500),
 		new /datum/point_redemption_item("Defense Equipment - Plasteel Machete",	/obj/item/clothing/accessory/holster/machete/occupied,				500),
 		new /datum/point_redemption_item("Defense Equipment - Kinetic Dagger",	/obj/item/kinetic_crusher/dagger,				1200),
+		new /datum/point_redemption_item("Defense Equipment - Kinetic Gauntlets",	/obj/item/kinetic_gauntlets,				2000),
 		new /datum/point_redemption_item("Bar Shelter Capsule",		/obj/item/survivalcapsule/luxurybar,							10000)
 	)

@@ -63,7 +63,15 @@
 			return FALSE // We missed.
 
 		var/datum/event_args/actor/clickchain/simulated_clickchain = new(src, target = L)
-		var/list/shieldcall_result = L.atom_shieldcall(damage_to_do, DAMAGE_TYPE_BRUTE, MELEE_TIER_MEDIUM, ARMOR_MELEE, NONE, ATTACK_TYPE_MELEE, clickchain = simulated_clickchain)
+		var/list/shieldcall_result = L.atom_shieldcall(
+			damage_to_do,
+			DAMAGE_TYPE_BRUTE,
+			3,
+			ARMOR_MELEE,
+			NONE,
+			ATTACK_TYPE_MELEE,
+			simulated_clickchain,
+		)
 		if(shieldcall_result[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 			return FALSE
 
@@ -78,9 +86,11 @@
 // Override for doing special stuff with the direct result of the attack.
 /mob/living/simple_mob/proc/apply_attack(atom/A, damage_to_do)
 	if(!ismob(A))
-		var/nominal_damage = melee_style.get_unarmed_damage(src, A)
+		var/nominal_damage = melee_style.get_base_damage(src, A)
 		var/mult = nominal_damage? damage_to_do / nominal_damage : 0
-		melee_attack_chain(A, null, style = melee_style, mult = mult)
+		var/datum/event_args/actor/clickchain/e_args = default_clickchain_event_args(A, TRUE)
+		e_args.attack_melee_multiplier = mult
+		melee_attack_chain(e_args)
 		return TRUE
 	return A.attack_generic(src, damage_to_do, pick(attacktext))
 

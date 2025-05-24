@@ -79,11 +79,11 @@
 	blood_color = "#0952EF" //Spiders have blue blood.
 
 	unarmed_types = list(
-		/datum/unarmed_attack/stomp,
-		/datum/unarmed_attack/kick,
-		/datum/unarmed_attack/claws,
-		/datum/unarmed_attack/bite/sharp,
-		/datum/unarmed_attack/bite/sharp/numbing,
+		/datum/melee_attack/unarmed/stomp,
+		/datum/melee_attack/unarmed/kick,
+		/datum/melee_attack/unarmed/claws,
+		/datum/melee_attack/unarmed/bite/sharp,
+		/datum/melee_attack/unarmed/bite/sharp/numbing,
 	)
 
 /datum/species/vasilissan/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)

@@ -408,7 +408,7 @@
 
 	if(occupant)
 		if(prob(radiation_level*2))
-			occupant.emote("scream")
+			occupant.emote_nosleep("scream")
 		if(radiation_level > 2)
 			occupant.take_random_targeted_damage(0,radiation_level*2 + rand(1,3))
 		if(radiation_level > 1)

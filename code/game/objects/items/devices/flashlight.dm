@@ -284,19 +284,19 @@
 		test_attachment = new
 	return test_attachment
 
-/obj/item/flashlight/maglight/using_as_item(atom/target, datum/event_args/actor/clickchain/e_args, clickchain_flags, datum/callback/reachability_check)
+/obj/item/flashlight/maglight/using_as_item(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
 	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
 	if(istype(target, /obj/item/gun))
 		var/obj/item/gun/gun_target = target
 		var/obj/item/gun_attachment/flashlight/maglight/test_attach = get_test_attachment()
-		if(gun_target.can_install_attachment(test_attach, e_args))
-			if(!e_args.performer.temporarily_remove_from_inventory(src))
-				e_args.chat_feedback(SPAN_WARNING("[src] is stuck to your hands!"), src)
+		if(gun_target.can_install_attachment(test_attach, clickchain))
+			if(!clickchain.performer.temporarily_remove_from_inventory(src))
+				clickchain.chat_feedback(SPAN_WARNING("[src] is stuck to your hands!"), src)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			var/obj/item/gun_attachment/flashlight/maglight/attaching = new
-			if(!gun_target.install_attachment(attaching, e_args))
+			if(!gun_target.install_attachment(attaching, clickchain))
 				CRASH("install failed after check")
 			else
 				attaching.our_maglight = src

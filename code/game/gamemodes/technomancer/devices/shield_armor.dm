@@ -50,7 +50,7 @@
 
 /obj/item/clothing/suit/armor/shield/proc/shieldcall(mob/user, list/shieldcall_args, fake_attack)
 	var/damage = shieldcall_args[SHIELDCALL_ARG_DAMAGE]
-	var/damage_source = shieldcall_args[SHIELDCALL_ARG_WEAPON]
+	var/damage_source = shieldcall_args[SHIELDCALL_ARG_ATTACK_SOURCE]
 
 	//Since this is a pierce of armor that is passive, we do not need to check if the user is incapacitated.
 	if(!active)
@@ -78,9 +78,9 @@
 		var/obj/projectile/P = damage_source
 		P.damage_mode &= ~(DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP | DAMAGE_MODE_SHRED | DAMAGE_MODE_PIERCE)
 		P.embed_chance = 0
-		if(P.agony)
-			var/agony_blocked = P.agony * (modified_block_percentage / 100)
-			P.agony -= agony_blocked
+		if(P.damage_inflict_agony)
+			var/damage_inflict_agony_blocked = P.damage_inflict_agony * (modified_block_percentage / 100)
+			P.damage_inflict_agony -= damage_inflict_agony_blocked
 		P.damage_force = P.damage_force - damage_blocked
 
 	user.visible_message("<span class='danger'>\The [user]'s [src] absorbs the attack!</span>")
