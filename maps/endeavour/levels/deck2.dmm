@@ -7061,11 +7061,6 @@
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/space)
-"eTk" = (
-/obj/machinery/disposal,
-/obj/item/barrier_tape_segment/engineering,
-/turf/simulated/floor/tiled,
-/area/rnd/anomaly_lab)
 "eUd" = (
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 6
@@ -10549,7 +10544,8 @@
 /obj/machinery/computer/atmoscontrol/laptop{
 	monitored_alarm_ids = list("isolation_one","isolation_two");
 	pixel_y = 30;
-	req_one_access = list(47,24,11)
+	req_one_access = list(47);
+	req_access = list(47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
@@ -10641,7 +10637,8 @@
 /obj/machinery/air_alarm/monitor/isolation{
 	alarm_id = "isolation_two";
 	dir = 8;
-	pixel_x = 22
+	pixel_x = 22;
+	req_one_access = list(47)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/anomaly_lab/containment_one)
@@ -28186,7 +28183,8 @@
 /obj/machinery/air_alarm/monitor/isolation{
 	alarm_id = "isolation_one";
 	dir = 8;
-	pixel_x = 22
+	pixel_x = 22;
+	req_one_access = list(47)
 	},
 /obj/structure/cable/green{
 	icon_state = "2-8"
@@ -42807,7 +42805,7 @@ rMu
 wKq
 pst
 try
-eTk
+try
 ntQ
 dIf
 tws

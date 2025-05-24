@@ -1037,6 +1037,9 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/power/apc/south_mount,
+/obj/structure/cable/cyan{
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "aXs" = (
