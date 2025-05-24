@@ -19931,14 +19931,6 @@
 /turf/simulated/floor/plating,
 /area/space)
 "osa" = (
-/obj/machinery/atmospheric_field_generator/perma{
-	color = "#00000ff"
-	},
-/obj/machinery/door/airlock/voidcraft/vertical{
-	icon_state = "door_locked";
-	id_tag = "expshuttle_door_L";
-	locked = 1
-	},
 /obj/machinery/button/remote/airlock{
 	desiredstate = 1;
 	dir = 8;
@@ -22549,17 +22541,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1fwdhall)
-"qsr" = (
-/obj/machinery/atmospheric_field_generator/perma{
-	color = "#00000ff"
-	},
-/obj/machinery/door/airlock/voidcraft/vertical{
-	icon_state = "door_locked";
-	id_tag = "expshuttle_door_L";
-	locked = 1
-	},
-/turf/simulated/floor/reinforced,
-/area/shuttle/excursion/general)
 "qsz" = (
 /obj/structure/bookcase{
 	name = "bookcase (Religious)"
@@ -23981,6 +23962,9 @@
 	opacity = 0
 	},
 /obj/machinery/door/airlock/voidcraft/vertical,
+/obj/machinery/atmospheric_field_generator/perma{
+	color = "#00000ff"
+	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
 "rui" = (
@@ -31192,15 +31176,6 @@
 /obj/effect/floor_decal/corner/mauve/border,
 /turf/simulated/floor/tiled,
 /area/endeavour/exploration/hallway_fore)
-"wAS" = (
-/obj/machinery/porta_turret/crescent{
-	density = 1;
-	faction = "neutral"
-	},
-/turf/simulated/floor/plating{
-	initial_gas_mix = "TEMP=2.7"
-	},
-/area/endeavour/command/turrets)
 "wBb" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -31376,6 +31351,9 @@
 	pixel_x = 24
 	},
 /obj/machinery/door/airlock/voidcraft/vertical,
+/obj/machinery/atmospheric_field_generator/perma{
+	color = "#00000ff"
+	},
 /turf/simulated/shuttle/plating,
 /area/shuttle/excursion/general)
 "wHY" = (
@@ -37623,7 +37601,7 @@ jzd
 jzd
 jzd
 jzd
-quY
+jzd
 quY
 quY
 ihi
@@ -37811,14 +37789,14 @@ dkX
 ihi
 hvo
 quY
-quY
 jzd
 jzd
 jzd
 jzd
 jzd
-quY
-quY
+jzd
+jzd
+jzd
 quY
 hvo
 ihi
@@ -38005,7 +37983,7 @@ dkX
 ihi
 rGD
 quY
-quY
+jzd
 pPH
 spf
 quY
@@ -38207,7 +38185,7 @@ jzd
 jzd
 jzd
 jzd
-qsr
+jzd
 ihi
 ihi
 sQi
@@ -39557,14 +39535,14 @@ kbw
 mKR
 ihi
 bdP
-bdP
 dYq
 scX
+scX
 vne
 vne
 scX
+scX
 aXD
-bdP
 bdP
 ihi
 ihi
@@ -39751,14 +39729,14 @@ sxN
 nSW
 ihi
 bdP
-bdP
 dYq
 scX
+scX
 vne
 vne
 scX
+scX
 aXD
-bdP
 bdP
 ihi
 ihi
@@ -39945,14 +39923,14 @@ mfJ
 nZt
 ihi
 bdP
-bdP
 dYq
 scX
+scX
 vne
 vne
 scX
+scX
 aXD
-bdP
 bdP
 ihi
 ihi
@@ -60309,7 +60287,7 @@ xRj
 xRj
 jNg
 uUX
-wAS
+teh
 bOP
 uGL
 xuV
