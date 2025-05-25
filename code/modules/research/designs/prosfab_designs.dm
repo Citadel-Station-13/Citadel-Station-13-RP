@@ -1,17 +1,16 @@
 /datum/prototype/design/science/prosfab
 	abstract_type = /datum/prototype/design/science/prosfab
 	lathe_type = LATHE_TYPE_PROSTHETICS
-	category = list("Misc")
 	req_tech = list(TECH_MATERIAL = 1)
 
 /datum/prototype/design/science/prosfab/pros
 	abstract_type = /datum/prototype/design/science/prosfab/pros
-	category = list("Prosthetics")
+	category = "Prosthetics"
 
 // Make new external organs and make 'em robotish
 /datum/prototype/design/science/prosfab/pros/legacy_print(atom/where, fabricator)
-	if(istype(fabricator, /obj/machinery/mecha_part_fabricator/pros))
-		var/obj/machinery/mecha_part_fabricator/pros/prosfab = fabricator
+	if(istype(fabricator, /obj/machinery/lathe/mecha_part_fabricator/pros))
+		var/obj/machinery/lathe/mecha_part_fabricator/pros/prosfab = fabricator
 		var/obj/item/organ/O = new build_path(where)
 		if(!istype(O))
 			return O
@@ -41,8 +40,8 @@
 
 // Deep Magic for the torso since it needs to be a new mob
 /datum/prototype/design/science/prosfab/pros/torso/legacy_print(atom/where, fabricator)
-	if(istype(fabricator, /obj/machinery/mecha_part_fabricator/pros))
-		var/obj/machinery/mecha_part_fabricator/pros/prosfab = fabricator
+	if(istype(fabricator, /obj/machinery/lathe/mecha_part_fabricator/pros))
+		var/obj/machinery/lathe/mecha_part_fabricator/pros/prosfab = fabricator
 		var/newspecies = SPECIES_HUMAN
 
 		var/datum/robolimb/manf = GLOB.all_robolimbs[prosfab.manufacturer]
@@ -285,7 +284,7 @@
 
 /datum/prototype/design/science/prosfab/augment
 	abstract_type = /datum/prototype/design/science/prosfab/augment
-	category = list("Augments")
+	category = "Augments"
 	lathe_type = LATHE_TYPE_PROSTHETICS
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 3750, MAT_GLASS = 1750)
@@ -412,7 +411,7 @@
 //////////////////// Cyborg Internals ////////////////////
 /datum/prototype/design/science/prosfab/cyborg/component
 	abstract_type = /datum/prototype/design/science/prosfab/cyborg/component
-	category = list("Cyborg Internals")
+	category = "Cyborg Internals"
 	lathe_type = LATHE_TYPE_PROSTHETICS
 	work = (12 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 7500)
@@ -460,7 +459,7 @@
 //////////////////// Cyborg Modules ////////////////////
 /datum/prototype/design/science/prosfab/robot_upgrade
 	abstract_type = /datum/prototype/design/science/prosfab/robot_upgrade
-	category = list("Cyborg Modules")
+	category = "Cyborg Modules"
 	lathe_type = LATHE_TYPE_PROSTHETICS
 	work = (12 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 7500)

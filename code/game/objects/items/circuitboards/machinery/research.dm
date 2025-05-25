@@ -65,7 +65,7 @@
 
 /obj/item/circuitboard/mechfab
 	name = "Circuit board (Exosuit Fabricator)"
-	build_path = /obj/machinery/mecha_part_fabricator
+	build_path = /obj/machinery/lathe/mecha_part_fabricator
 	board_type = new /datum/frame/frame_types/machine
 	origin_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 3)
 	req_components = list(
@@ -77,7 +77,7 @@
 
 /obj/item/circuitboard/prosthetics
 	name = "Circuit board (Prosthetics Fabricator)"
-	build_path = /obj/machinery/mecha_part_fabricator/pros
+	build_path = /obj/machinery/lathe/mecha_part_fabricator/pros
 	board_type = new /datum/frame/frame_types/machine
 	origin_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 3)
 	req_components = list(

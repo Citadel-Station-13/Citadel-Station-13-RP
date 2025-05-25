@@ -1,4 +1,4 @@
-/obj/machinery/mecha_part_fabricator/pros
+/obj/machinery/lathe/mecha_part_fabricator/pros
 	name = "Prosthetics Fabricator"
 	desc = "A machine used for construction of prosthetics."
 	icon_state = "profab"
@@ -8,7 +8,6 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 	active_power_usage = 5000
-	req_access = list(ACCESS_SCIENCE_ROBOTICS)
 	circuit = /obj/item/circuitboard/prosthetics
 
 	//Prosfab specific stuff
@@ -16,70 +15,14 @@
 	var/species_types = list(SPECIES_HUMAN)
 	var/species = SPECIES_HUMAN
 
-	materials_base = list(
-		MAT_STEEL = 0,
-		MAT_GLASS = 0,
-		MAT_PLASTIC = 0,
-		MAT_GRAPHITE = 0,
-		MAT_PLASTEEL = 0,
-		MAT_GOLD = 0,
-		MAT_SILVER = 0,
-		MAT_COPPER = 0,
-		MAT_LEAD = 0,
-		MAT_OSMIUM = 0,
-		MAT_DIAMOND = 0,
-		MAT_DURASTEEL = 0,
-		MAT_PHORON = 0,
-		MAT_URANIUM = 0,
-		MAT_VERDANTIUM = 0,
-		MAT_MORPHIUM = 0)
-	res_max_amount = 200000
-
-	valid_buildtype = LATHE_TYPE_PROSTHETICS
+	lathe_type = LATHE_TYPE_PROSTHETICS
 	///A list of categories that valid LATHE_TYPE_PROSTHETICS design datums will broadly categorise themselves under.
-	part_sets = list(
-					"Cyborg",
-					"Ripley",
-					"Odysseus",
-					"Gygax",
-					"Durand",
-					"Janus",
-					"Vehicle",
-					"Rigsuit",
-					"Phazon",
-					"Pinnace",
-					"Baron",
-					"Duke",
-					"Gopher",
-					"Polecat",
-					"Weasel",
-					"Exosuit Equipment",
-					"Exosuit Internals",
-					"Exosuit Ammunition",
-					"Cyborg Modules",
-					"Prosthetics",
-					"Prosthetics, Internal",
-					"Augments",
-					"Cyborg Parts",
-					"Cyborg Internals",
-					"Cybernetics",
-					"Implants",
-					"Control Interfaces",
-					"Other",
-					"Misc",
-					)
 
-/obj/machinery/mecha_part_fabricator/pros/Initialize(mapload)
+/obj/machinery/lathe/mecha_part_fabricator/pros/Initialize(mapload)
 	. = ..()
 	manufacturer = GLOB.basic_robolimb.company
 
-/obj/machinery/mecha_part_fabricator/pros/dispense_built_part(datum/prototype/design/D)
-	var/obj/item/I = ..()
-	if(isobj(I) && I.materials_base && I.materials_base.len > 0)
-		for(var/i in I.materials_base)
-			I.materials_base[i] = I.materials_base[i] * component_coeff
-
-/obj/machinery/mecha_part_fabricator/pros/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/lathe/mecha_part_fabricator/pros/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["species_types"] = species_types
@@ -100,7 +43,7 @@
 
 	return data
 
-/obj/machinery/mecha_part_fabricator/pros/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/lathe/mecha_part_fabricator/pros/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -130,7 +73,7 @@
 			return
 	return FALSE
 
-/obj/machinery/mecha_part_fabricator/pros/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/lathe/mecha_part_fabricator/pros/attackby(var/obj/item/I, var/mob/user)
 	if(..())
 		return TRUE
 

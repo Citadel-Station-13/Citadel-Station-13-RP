@@ -1,7 +1,7 @@
 /datum/prototype/design/science/powercell
 	abstract_type = /datum/prototype/design/science/powercell
 	category = DESIGN_CATEGORY_POWER
-	lathe_type = LATHE_TYPE_PROTOLATHE | LATHE_TYPE_MECHA
+	lathe_type = LATHE_TYPE_PROTOLATHE | LATHE_TYPE_MECHFAB
 
 /datum/prototype/design/science/powercell/print(atom/where)
 	var/obj/item/cell/C = ..()

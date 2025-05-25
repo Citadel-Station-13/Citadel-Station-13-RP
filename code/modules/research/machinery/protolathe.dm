@@ -1,8 +1,5 @@
 /**
  * Protolathe
- *
- * todo: this should just be an enhanced autolathe that has both kinds of designs;
- *       for now, macro generation will generate for both.
  */
 /obj/machinery/lathe/r_n_d/protolathe
 	name = "Protolathe"
@@ -14,6 +11,7 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 30
 	active_power_usage = 5000
+	has_interface = TRUE
 
 /obj/machinery/lathe/r_n_d/protolathe/update_icon_state()
 	. = ..()
