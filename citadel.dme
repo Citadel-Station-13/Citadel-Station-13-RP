@@ -5248,6 +5248,7 @@
 #include "code\modules\tgui\modules\ntos-only\configurator.dm"
 #include "code\modules\tgui\modules\ntos-only\email.dm"
 #include "code\modules\tgui\modules\specific\lathe_control.dm"
+#include "code\modules\tgui\modules\specific\prosfab_control.dm"
 #include "code\modules\tgui\states\admin.dm"
 #include "code\modules\tgui\states\always.dm"
 #include "code\modules\tgui\states\conscious.dm"

@@ -5,44 +5,26 @@
  * @license MIT
  */
 
-import { BooleanLike } from "common/react";
-import { ModuleData, useLocalState, useModule } from "../../backend";
+
+
+
+
+
+
+import { useLocalState, useModule } from "../../backend";
 import { Box, Button, Collapsible, Dropdown, Input, LabeledList, NoticeBox, NumberInput, ProgressBar, Stack, Table, Tabs } from "../../components";
 import { Section, SectionProps } from "../../components/Section";
 import { Modular } from "../../layouts/Modular";
 import { WindowProps } from "../../layouts/Window";
 import { Design } from "../common/Design";
-import { IngredientsAvailable, IngredientsSelected } from "../common/Ingredients";
-import { MaterialRender, FullMaterialsContext, MaterialStorage, MATERIAL_STORAGE_UNIT_NAME, renderMaterialAmount } from "../common/Materials";
-import { ReagentContents, ReagentContentsData, REAGENT_STORAGE_UNIT_NAME } from "../common/Reagents";
+import { IngredientsSelected } from "../common/Ingredients";
+import { MaterialRender, MaterialStorage, MATERIAL_STORAGE_UNIT_NAME, renderMaterialAmount } from "../common/Materials";
+import { ReagentContents, REAGENT_STORAGE_UNIT_NAME } from "../common/Reagents";
+import { TGUILatheControlData, TGUILatheControlProps } from "../modules/TGUILatheControl";
 
-export interface TGUILatheControlProps {
-
-}
-
-export interface TGUILatheControlData extends ModuleData {
-  designs: {
-    categories: string[],
-    instances: Record<string, Design>,
-  };
-  storesItems: BooleanLike;
-  storesMaterials: BooleanLike;
-  storesReagents: BooleanLike;
-  queue: Array<LatheQueueEntry>;
-  latheName: string;
-  speedMultiplier: number;
-  powerMultiplier: number;
-  dynamicButtons: Record<string, "off" | "on" | "disabled" | null>;
-  efficiencyMultiplier: number;
-  materials: Record<string, number>;
-  materialsContext: FullMaterialsContext;
-  reagents: ReagentContentsData;
-  queueActive: BooleanLike;
-  // current progress in deciseconds
-  progress: number;
-  // design ID being printed
-  printing: string | null;
-  ingredients: IngredientsAvailable;
+interface TGUIProsfabControlData extends TGUILatheControlData {
+  available_species : String[];
+  selected_species : String;
 }
 
 export const generateDynamicButton = (name, mode, actFunction) => {
@@ -63,8 +45,8 @@ export const generateDynamicButton = (name, mode, actFunction) => {
   }
 };
 
-export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
-  const { data, act } = useModule<TGUILatheControlData>(context);
+export const TGUIProsfabControl = (props: TGUILatheControlProps, context) => {
+  const { data, act } = useModule<TGUIProsfabControlData>(context);
   const [category, setCategory] = useLocalState<string>(
     context,
     `${data.$ref}-category`,
@@ -202,6 +184,11 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
               !!Object.keys(data.dynamicButtons).length && (
                 <Stack.Item>
                   <Section title="Control">
+                    <Dropdown
+                      options={data.available_species ? data.available_species.sort() : null}
+                      selected={data.selected_species}
+                      width="100%"
+                      onSelected={val => act("set_selected_species", { species: val })} />;
                     <Stack vertical>
                       {
                         Object.entries(data.dynamicButtons).map(([name, mode]) => {
@@ -325,7 +312,7 @@ interface LatheQueuedProps {
 }
 
 const LatheQueued = (props: LatheQueuedProps, context) => {
-  let { data, act } = useModule<TGUILatheControlData>(context);
+  let { data, act } = useModule<TGUIProsfabControlData>(context);
   let progressRender;
   if (props.index === 1 && data.queueActive && props.design !== undefined) {
     progressRender = (
@@ -419,7 +406,7 @@ const areMaterialsChosen = (mats: Record<string, number>, chosen: Record<string,
 };
 
 const LatheDesign = (props: LatheDesignProps, context) => {
-  const { data, act, moduleID } = useModule<TGUILatheControlData>(context);
+  const { data, act, moduleID } = useModule<TGUIProsfabControlData>(context);
 
   // materials: key = material id
   // mats maps parts to materials. i think? ask kevinz.
