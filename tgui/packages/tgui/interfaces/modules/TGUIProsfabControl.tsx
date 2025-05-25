@@ -184,11 +184,6 @@ export const TGUIProsfabControl = (props: TGUILatheControlProps, context) => {
               !!Object.keys(data.dynamicButtons).length && (
                 <Stack.Item>
                   <Section title="Control">
-                    <Dropdown
-                      options={data.available_species ? data.available_species.sort() : null}
-                      selected={data.selected_species}
-                      width="100%"
-                      onSelected={val => act("set_selected_species", { species: val })} />;
                     <Stack vertical>
                       {
                         Object.entries(data.dynamicButtons).map(([name, mode]) => {
@@ -221,6 +216,15 @@ export const TGUIProsfabControl = (props: TGUILatheControlProps, context) => {
             </Stack.Item>
             <Stack.Item grow={1.15}>
               <Stack vertical fill>
+                <Stack.Item>
+                  <Section title="Prosthetic Species Select">
+                    <Dropdown
+                      options={data.available_species ? data.available_species.sort() : null}
+                      selected={data.selected_species}
+                      width="100%"
+                      onSelected={(val: any) => act("set_selected_species", { species: val })} />
+                  </Section>
+                </Stack.Item>
                 <Stack.Item>
                   <Section>
                     <Input placeholder="Search (3+ characters)"

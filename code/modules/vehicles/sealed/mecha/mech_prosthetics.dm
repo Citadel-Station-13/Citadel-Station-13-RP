@@ -15,63 +15,15 @@
 	var/species_types = list(SPECIES_HUMAN)
 	var/species = SPECIES_HUMAN
 
+
 	lathe_type = LATHE_TYPE_PROSTHETICS
 	///A list of categories that valid LATHE_TYPE_PROSTHETICS design datums will broadly categorise themselves under.
 
-/obj/machinery/lathe/mecha_part_fabricator/pros/Initialize(mapload)
-	. = ..()
-	manufacturer = GLOB.basic_robolimb.company
 
-/obj/machinery/lathe/mecha_part_fabricator/pros/ui_data(mob/user, datum/tgui/ui)
-	var/list/data = ..()
 
-	data["species_types"] = species_types
-	data["species"] = species
-
-	if(GLOB.all_robolimbs)
-		var/list/T = list()
-		for(var/A in GLOB.all_robolimbs)
-			var/datum/robolimb/R = GLOB.all_robolimbs[A]
-			if(R.unavailable_to_build)
-				continue
-			if(species in R.species_cannot_use)
-				continue
-			T += list(list("id" = A, "company" = R.company))
-		data["manufacturers"] = T
-
-	data["manufacturer"] = manufacturer
-
-	return data
-
-/obj/machinery/lathe/mecha_part_fabricator/pros/ui_act(action, list/params, datum/tgui/ui)
-	if(..())
-		return TRUE
-
-	. = TRUE
-
-	usr.set_machine(src)
-
-	switch(action)
-		if("species")
-			var/new_species = input(usr, "Select a new species", "Prosfab Species Selection", SPECIES_HUMAN) as null|anything in species_types
-			if(new_species && ui_status(usr, ui.state) == UI_INTERACTIVE)
-				species = new_species
-			return
-		if("manufacturer")
-			var/list/new_manufacturers = list()
-			for(var/A in GLOB.all_robolimbs)
-				var/datum/robolimb/R = GLOB.all_robolimbs[A]
-				if(R.unavailable_to_build)
-					continue
-				if(species in R.species_cannot_use)
-					continue
-				new_manufacturers += A
-
-			var/new_manufacturer = input(usr, "Select a new manufacturer", "Prosfab Species Selection", "Unbranded") as null|anything in new_manufacturers
-			if(new_manufacturer && ui_status(usr, ui.state) == UI_INTERACTIVE)
-				manufacturer = new_manufacturer
-			return
-	return FALSE
+/obj/machinery/lathe/mecha_part_fabricator/pros/tgui_controller()
+	RETURN_TYPE(/datum/tgui_module)
+	return ui_controller || (ui_controller = new /datum/tgui_module/lathe_control/prosfab(src))
 
 /obj/machinery/lathe/mecha_part_fabricator/pros/attackby(var/obj/item/I, var/mob/user)
 	if(..())

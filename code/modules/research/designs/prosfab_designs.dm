@@ -1,3 +1,6 @@
+//TODO: kill manufacturer on lathe, move it to design
+
+
 /datum/prototype/design/science/prosfab
 	abstract_type = /datum/prototype/design/science/prosfab
 	lathe_type = LATHE_TYPE_PROSTHETICS
@@ -15,7 +18,7 @@
 		if(!istype(O))
 			return O
 		if(prosfab.manufacturer)
-			var/datum/robolimb/manf = GLOB.all_robolimbs[prosfab.manufacturer]
+			var/datum/robolimb/manf = GLOB.all_robolimbs[prosfab.manufacturer] 
 
 			if(!(O.organ_tag in manf.parts))	// Make sure we're using an actually present icon.
 				manf = GLOB.all_robolimbs["Unbranded"]
