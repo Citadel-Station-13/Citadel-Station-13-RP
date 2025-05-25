@@ -1,23 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/**
- * # Map Structs
- *
- * * Used to bunch zlevels up into managed sectors
- * * Internally is used by overmaps to act as level-collections
- * * Internally is used to resolve what levels corrospond to what world-sectors.
- *
- * This is basically the glue struct binding abstracted collections of levels
- * to other systems like overmaps and sectors.
- *
- * This is also the source of truth for those systems. If a map struct
- * is deleted for any reason, everything associated to it including
- * overmap entities and sectors must immediately cease to exist.
- *
- * Nothing is allowed to create or destroy map structs other than SSmapping,
- * which contains public APIs to request creation / destruction / archiving of levels.
- */
 /datum/map_struct
 
 	//* Simulation *//
@@ -130,20 +113,6 @@
 	if(rebuild)
 		SSmapping.rebuild_transitions()
 		SSmapping.rebuild_verticality()
-
-/**
- * Builds and generates our data.
- *
- * * Will also verify integrity of zlevels and whatnot.
- *
- * @params
- * * z_grid - list of "x,y,z" = /datum/map_level instance
- * * link - automatically link levels together after construction?
- */
-/datum/map_struct/proc/construct(list/z_grid = src.z_grid, link = TRUE, rebuild = TRUE)
-	. = do_construct(z_grid, link, rebuild)
-	if(!.)
-		deconstruct(link, rebuild)
 
 /datum/map_struct/proc/do_construct(list/z_grid = src.z_grid, link, rebuild)
 	PRIVATE_PROC(TRUE)

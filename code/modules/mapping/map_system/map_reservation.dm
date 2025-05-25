@@ -135,7 +135,7 @@
 	UNTIL(!SSmapping.reservation_system_mutex)
 	SSmapping.reservation_system_mutex = TRUE
 	// pick and take
-	var/list/possible_levels = SSmapping.reserve_levels.Copy()
+	var/list/possible_levels = SSmapping.reservation_levels.Copy()
 	var/level_index
 
 	// with border

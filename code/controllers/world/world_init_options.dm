@@ -6,7 +6,7 @@
 	 */
 	var/load_only_station = FALSE
 
-/datum/world_init_options/Nwe()
+/datum/world_init_options/New()
 	#ifdef FASTBOOT_DISABLE_LATELOAD
 	load_only_station = TRUE
 	#endif
