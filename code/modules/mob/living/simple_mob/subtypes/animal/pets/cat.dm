@@ -16,7 +16,7 @@
 	item_state = "cat2"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/cat)
 
-	movement_cooldown = 0.5 SECONDS
+	movement_base_speed = 10 / 0.5 SECONDS
 
 	randomized = TRUE
 

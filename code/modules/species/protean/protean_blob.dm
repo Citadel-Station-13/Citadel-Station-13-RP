@@ -11,6 +11,8 @@
 
 	iff_factions = MOB_IFF_FACTION_NEUTRAL
 
+	ui_icons = 'icons/mob/screen1_robot_protoblob.dmi'
+
 	maxHealth = 250
 	health = 250
 	say_list_type = /datum/say_list/protean_blob
@@ -20,6 +22,10 @@
 	response_help = "pats the"
 	response_disarm = "gently pushes aside the"
 	response_harm = "hits the"
+
+	hand_count = 1
+	hand_form = "pseudopods"
+
 
 	harm_intent_damage = 2
 	legacy_melee_damage_lower = 15
@@ -45,7 +51,7 @@
 	shock_resist = 0.9
 	poison_resist = 1
 
-	movement_cooldown = 0.5
+	movement_base_speed = 5
 	base_attack_cooldown = 10
 
 	var/mob/living/carbon/human/humanform
@@ -81,6 +87,11 @@
 	else
 		update_icon()
 
+/mob/living/simple_mob/protean_blob/examine(mob/user, dist)
+	. = ..()
+	for(var/obj/item/I in get_held_items())
+		. += SPAN_INFO("[icon2html(I, user)] It is holding \a [FORMAT_TEXT_LOOKITEM(I)] in a psuedopod.")
+
 /mob/living/simple_mob/protean_blob/Destroy()
 	humanform = null
 	refactory = null
@@ -109,7 +120,7 @@
 		var/obj/item/organ/external/E = humanform.get_organ(BP_TORSO)
 		//Set us to their health, but, human health ignores robolimbs so we do it 'the hard way'
 		health = maxHealth - E.brute_dam - E.burn_dam
-		movement_cooldown = 0.5 + max(0, (maxHealth - health) - 100) / 50
+		movement_base_speed = 10 / 0.5 + max(0, (maxHealth - health) - 100) / 50
 
 		//Alive, becoming dead
 		if((stat < DEAD) && (health <= 0))
@@ -205,38 +216,7 @@
 					target.forceMove(vore_selected)
 					to_chat(target,"<span class='warning'>\The [src] quickly engulfs you, [vore_selected.vore_verb]ing you into their [vore_selected.name]!</span>")
 
-/mob/living/simple_mob/protean_blob/attack_target(var/atom/A)
-	if(refactory && istype(A,/obj/item/stack/material))
-		var/obj/item/stack/material/S = A
-		var/substance = S.material.name
-		var/list/edible_materials = list(MAT_STEEL, MAT_SILVER, MAT_GOLD, MAT_URANIUM, MAT_METALHYDROGEN) //Can't eat all materials, just useful ones.
-		var/allowed = FALSE
-		for(var/material in edible_materials)
-			if(material == substance)
-				allowed = TRUE
-		if(!allowed)
-			return
-		if(refactory.add_stored_material(S.material.name,1*S.perunit) && S.use(1))
-			visible_message("<b>[name]</b> gloms over some of \the [S], absorbing it.")
-	else if(isitem(A) && a_intent == "grab")
-		var/obj/item/I = A
-		if(!vore_selected)
-			to_chat(src,"<span class='warning'>You either don't have a belly selected, or don't have a belly!</span>")
-			return FALSE
-		if(is_type_in_list(I,GLOB.item_vore_blacklist) || I.anchored)
-			to_chat(src, "<span class='warning'>You can't eat this.</span>")
-			return
 
-		if(is_type_in_list(I, edible_trash) || adminbus_trash)
-			if(I.hidden_uplink)
-				to_chat(src, "<span class='warning'>You really should not be eating this.</span>")
-				message_admins("[key_name(src)] has attempted to ingest an uplink item. ([src ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>" : "null"])")
-				return
-			visible_message("<b>[name]</b> stretches itself over the [I], engulfing it whole!")
-			I.forceMove(vore_selected)
-			return
-	else
-		return ..()
 
 /mob/living/simple_mob/protean_blob/attackby(var/obj/item/O, var/mob/user)
 	if(refactory && istype(O,/obj/item/stack/material))
@@ -251,6 +231,24 @@
 			return
 		if(refactory.add_stored_material(S.material.name,1*S.perunit) && S.use(1))
 			visible_message("<b>[name]</b> gloms over some of \the [S], absorbing it.")
+	else if(user == src)
+		if(a_intent != "grab")
+			return ..()
+		if(!vore_selected)
+			to_chat(src,"<span class='warning'>You either don't have a belly selected, or don't have a belly!</span>")
+			return FALSE
+		if(is_type_in_list(O,GLOB.item_vore_blacklist) || O.anchored)
+			to_chat(src, "<span class='warning'>You can't eat this.</span>")
+			return
+
+		if(is_type_in_list(O, edible_trash) || adminbus_trash)
+			if(O.hidden_uplink)
+				to_chat(src, "<span class='warning'>You really should not be eating this.</span>")
+				message_admins("[key_name(src)] has attempted to ingest an uplink item. ([src ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>" : "null"])")
+				return
+			visible_message("<b>[name]</b> stretches itself over the [O], engulfing it whole!")
+			O.forceMove(vore_selected)
+			return
 	else
 		return ..()
 
@@ -313,7 +311,7 @@
 		if(!transfer_item_to_loc(r_ear, blob, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT))
 			blob.mob_radio = null
 
-	
+
 
 	for(var/obj/item/pda/P in contents)
 		if(P.id)
@@ -327,6 +325,10 @@
 	blob.transform = matrix()*size_multiplier
 	blob.size_multiplier = size_multiplier
 	blob.previously_held = inventory?.get_held_items_as_weakrefs()
+
+	var/obj/item/held = get_active_held_item()
+	if(held)
+		blob.put_in_hands(held)
 	//languages!!
 	for(var/datum/prototype/language/L in languages)
 		blob.add_language(L.name)
@@ -486,12 +488,16 @@
 		B.forceMove(src)
 		B.owner = src
 
+	var/obj/item/held = get_active_held_item()
+	if(held)
+		put_in_hands(held)
+
 	for(var/i in 1 to length(blob.previously_held))
 		var/datum/weakref/ref = blob.previously_held[i]
 		var/obj/item/resolved = ref?.resolve()
 		if(isnull(resolved))
 			continue
-		put_in_hands_or_drop(resolved, specific_index = i)
+		put_in_hands_or_drop(resolved)
 
 	if(!isnull(blob.mob_radio))
 		if(!equip_to_slots_if_possible(blob.mob_radio, list(
@@ -512,6 +518,17 @@
 
 /mob/living/simple_mob/protean_blob/say_understands()
 	return humanform?.say_understands(arglist(args)) || ..()
+
+/mob/living/simple_mob/protean_blob/update_inv_hand()
+	cut_overlays()
+	for(var/obj/item/I in get_held_items())
+		if(I)
+			var/mutable_appearance/MA = I.render_mob_appearance(src, SLOT_ID_LEFT_HAND) //lhand because it looks best
+			if(!MA)
+				return
+			MA.pixel_y = -3
+			MA.appearance_flags |= RESET_COLOR
+			add_overlay(MA)
 
 /mob/living/simple_mob/protean_blob/proc/appearanceswitch()
 	set name = "Switch Appearance"

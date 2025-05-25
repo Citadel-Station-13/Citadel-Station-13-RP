@@ -235,7 +235,7 @@
 /obj/item/pen/crayon/proc/switch_color(new_color)
 	crayon_color = new_color
 
-/obj/item/pen/crayon/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/pen/crayon/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return ..()
 	if(crayon_edible && iscarbon(user) && target == user)

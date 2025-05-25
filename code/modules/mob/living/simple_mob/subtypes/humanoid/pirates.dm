@@ -31,7 +31,7 @@
 	response_disarm = "shoves"
 	response_harm = "hits"
 
-	movement_cooldown = 2
+	movement_base_speed = 10 / 2
 
 	harm_intent_damage = 5
 	legacy_melee_damage_lower = 15		//Tac Knife damage
@@ -56,7 +56,7 @@
 	desc = "Does what he wants cause a pirate is free. This one wears crude armor."
 	icon_state = "piratemelee-armor"
 	icon_living = "piratemelee-armor"
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/tacknife = 100, /obj/item/clothing/accessory/armor/armorplate/stab = 100)
 
@@ -97,7 +97,7 @@
 	desc = "Does what he wants cause a pirate is free. This one has got a machete and wears crude armor."
 	icon_state = "piratemelee-machete-armor"
 	icon_living = "piratemelee-machete-armor"
-	movement_cooldown = 3
+	movement_base_speed = 10 / 3
 	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/machete = 100, /obj/item/clothing/accessory/armor/armorplate/stab = 100)
 
@@ -132,7 +132,7 @@
 	desc = "Does what he wants cause a pirate is free. This one has an energy sword."
 	icon_state = "piratemelee-las-armor"
 	icon_living = "piratemelee-las-armor"
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/melee/transforming/energy/sword/cutlass = 100, /obj/item/clothing/accessory/armor/armorplate/stab = 100)
 
@@ -178,7 +178,7 @@
 	desc = "Does what he wants cause a pirate is free. This carries a shield and wears crude armor."
 	icon_state = "piratemelee-shield-armor"
 	icon_living = "piratemelee-shield-armor"
-	movement_cooldown = 3
+	movement_base_speed = 10 / 3
 	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/tacknife = 100, /obj/item/shield/riot/tower = 100)
 
@@ -216,7 +216,7 @@
 	desc = "Does what he wants cause a pirate is free. This one is equipped old fashioned sword and shield along with crude armor."
 	icon_state = "piratemelee-shield-machete-armor"
 	icon_living = "piratemelee-shield-machete-armor"
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/machete = 100, /obj/item/shield/riot/tower = 100)
 
@@ -253,7 +253,7 @@
 	desc = "Does what he wants cause a pirate is free. This is armed with a zip gun and wears crude armor."
 	icon_state = "pirateranged-armor"
 	icon_living = "pirateranged-armor"
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/tacknife = 100, /obj/item/gun/projectile/ballistic/pirate = 100, /obj/item/clothing/accessory/armor/armorplate/ballistic = 100)
 
@@ -289,7 +289,7 @@
 	desc = "Does what he wants cause a pirate is free. This is armed with a sawn off shotgun and wears crude armor."
 	icon_state = "pirateranged-blunder-armor"
 	icon_living = "pirateranged-blunder-armor"
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/tacknife = 100, /obj/item/gun/projectile/ballistic/shotgun/doublebarrel/sawn = 100, /obj/item/clothing/accessory/armor/armorplate/ballistic = 100)
 
@@ -325,7 +325,7 @@
 	desc = "Does what he wants cause a pirate is free. This one has a improvised laser pistol and crude armor."
 	icon_state = "pirateranged-handcannon-armor"
 	icon_living = "pirateranged-handcannon-armor"
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/tacknife = 100, /obj/item/gun/projectile/energy/zip = 100, /obj/item/clothing/accessory/armor/armorplate/ballistic = 100)
 
@@ -596,7 +596,7 @@
 	desc = "Does what he wants cause a pirate is free. This is armed with a sawn off shotgun and wears crude armor."
 	icon_state = "pirateranged-blunder-armor"
 	icon_living = "pirateranged-blunder-armor"
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/tacknife = 100, /obj/item/gun/projectile/ballistic/shotgun/doublebarrel/sawn = 100, /obj/item/clothing/suit/armor/material/makeshift = 100)
 
@@ -628,7 +628,7 @@
 	desc = "Does what he wants cause a pirate is free. This one has a improvised laser pistol and crude armor."
 	icon_state = "pirateranged-handcannon-armor"
 	icon_living = "pirateranged-handcannon-armor"
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/tacknife = 100, /obj/item/gun/projectile/energy/zip = 100, /obj/item/clothing/suit/armor/material/makeshift = 100)
 

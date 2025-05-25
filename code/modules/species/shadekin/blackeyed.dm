@@ -5,7 +5,6 @@
 	uid = SPECIES_ID_SHADEKIN_BLACK
 	id = SPECIES_ID_SHADEKIN
 
-	slowdown = 0 // Originally 0.5 (As slow as unathi), lowered to 0 to be at human speed.
 	item_slowdown_mod = 2 // Originally 1.5. They're not as physically fits, slowed down more by heavy gear.
 
 	total_health = 75   // Fragile

@@ -1,4 +1,4 @@
-/obj/item/grenade/shooter
+/obj/item/grenade/simple/shooter
 	name = "projectile grenade"	// I have no idea what else to call this, but the base type should never be used
 	icon_state = "frggrenade"
 	item_state = "grenade"
@@ -11,37 +11,31 @@
 
 	loadable = FALSE
 
-/obj/item/grenade/shooter/detonate()
+/obj/item/grenade/simple/shooter/on_detonate(turf/location, atom/grenade_location)
 	..()
-
-	var/turf/O = get_turf(src)
-	if(!O)
-		return
-
 	shrapnel_explosion(total_pellets, spread_range, projectile_types)
-	qdel(src)
 
-/obj/item/grenade/shooter/rubber
+/obj/item/grenade/simple/shooter/rubber
 	name = "rubber pellet grenade"
 	desc = "An anti-riot grenade that fires a cloud of rubber projectiles upon detonation."
 	projectile_types = list(/obj/projectile/bullet/pistol/rubber)
 
 // Exists mostly so I don't have to copy+paste the sprite vars to a billion things
-/obj/item/grenade/shooter/energy
+/obj/item/grenade/simple/shooter/energy
 	icon_state = "flashbang"
 	item_state = "flashbang"
 	spread_range = 3	// Because dear god
 
-/obj/item/grenade/shooter/energy/laser
+/obj/item/grenade/simple/shooter/energy/laser
 	name = "laser grenade"
 	desc = "A horrifically dangerous rave in a can."
 	projectile_types = list(/obj/projectile/beam/midlaser)
 
-/obj/item/grenade/shooter/energy/flash
+/obj/item/grenade/simple/shooter/energy/flash
 	name = "flash grenade"
 	desc = "A grenade that creates a large number of flashes upon detonation."
 	projectile_types = list(/obj/projectile/energy/flash)
 
-/obj/item/grenade/shooter/energy/tesla
+/obj/item/grenade/simple/shooter/energy/tesla
 	name = "tesla grenade"
 	projectile_types = list(/obj/projectile/beam/chain_lightning/lesser)

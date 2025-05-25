@@ -5,7 +5,7 @@
 	suit = /obj/item/clothing/suit/armor/vest
 	l_hand = /obj/item/material/knife
 	r_hand = /obj/item/gun/projectile/energy/nt_pulse/rifle
-	r_pocket = /obj/item/grenade/smokebomb
+	r_pocket = /obj/item/grenade/simple/smoke
 	shoes = /obj/item/clothing/shoes/black
 
 /datum/outfit/tournament_gear/red
@@ -40,8 +40,8 @@
 	back = /obj/item/storage/backpack
 	r_hand = /obj/item/mop
 	l_hand = /obj/item/reagent_containers/glass/bucket
-	l_pocket = /obj/item/grenade/chem_grenade/cleaner
-	r_pocket = /obj/item/grenade/chem_grenade/cleaner
+	l_pocket = /obj/item/grenade/simple/chemical/premade/cleaner
+	r_pocket = /obj/item/grenade/simple/chemical/premade/cleaner
 	backpack_contents = list(/obj/item/stack/tile/floor = 6)
 
 /datum/outfit/tournament_gear/janitor/post_equip(var/mob/living/carbon/human/H)

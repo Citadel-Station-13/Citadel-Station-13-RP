@@ -19,7 +19,7 @@
 
 	randomized = TRUE
 
-	movement_cooldown = 4 //fast as fucc boie.
+	movement_base_speed = 10 / 4 //fast as fucc boie.
 
 	harm_intent_damage = 5
 	legacy_melee_damage_lower = 5
