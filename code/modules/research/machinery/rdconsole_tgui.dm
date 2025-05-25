@@ -226,7 +226,7 @@
 						files.UpdateTech(T, linked_destroy.loaded_item.origin_tech[T])
 					if(linked_lathe) // Also sends salvaged materials to a linked protolathe, if any.
 						var/list/mats = linked_destroy.loaded_item.get_materials(TRUE)
-						linked_lathe.stored_materials.add(mats)
+						linked_lathe.stored_materials.add(mats, linked_destroy.decon_mod)
 
 					linked_destroy.loaded_item = null
 					for(var/obj/I in linked_destroy.contents)
