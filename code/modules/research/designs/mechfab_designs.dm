@@ -897,7 +897,7 @@
 	lathe_type = LATHE_TYPE_MECHFAB
 	materials_base = list(MAT_STEEL = 562, MAT_GLASS = 562)
 	build_path = /obj/item/flash/synthetic
-	category = list("Misc")
+	category = DESIGN_CATEGORY_MISC
 
 /*
 * Printable Internal Components
@@ -910,7 +910,7 @@
 	lathe_type = LATHE_TYPE_MECHFAB
 	materials_base = list(MAT_STEEL = 5000, MAT_GLASS = 2500)
 	build_path = /obj/item/vehicle_component/actuator
-	category = list("Components")
+	category = "Components"
 
 /datum/prototype/design/science/mecha_component/actuator_high
 	design_name = "Mecha Actuator - High Speed"
@@ -1003,7 +1003,7 @@
 /datum/prototype/design/science/mechfab/vehicle
 	abstract_type = /datum/prototype/design/science/mechfab/vehicle
 	lathe_type = LATHE_TYPE_MECHFAB
-	category = list("Vehicle")
+	category = "Vehicle"
 	req_tech = list(TECH_MATERIAL = 5, TECH_ENGINEERING = 6)
 
 /datum/prototype/design/science/mechfab/vehicle/spacebike_chassis

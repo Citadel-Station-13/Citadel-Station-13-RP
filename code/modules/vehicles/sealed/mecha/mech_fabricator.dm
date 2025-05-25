@@ -19,7 +19,6 @@
 /obj/machinery/lathe/mecha_part_fabricator/Initialize(mapload)
 	. = ..()
 	files = new /datum/research(src) //Setup the research data holder.
-	design_holder.design_ids = list()
 
 /obj/machinery/lathe/mecha_part_fabricator/examine(mob/user)
 	. = ..()
@@ -37,7 +36,7 @@
 		var/list/known_designs = files.legacy_all_design_datums()
 		for(var/datum/prototype/design/D in known_designs)
 			if(D.lathe_type & src.lathe_type)
-				design_holder.design_ids |= D.id
+				LAZYADD(design_holder.design_ids, D.id)
 		update_static_data(usr)
 		atom_say("Successfully synchronized with R&D server.")
 		return

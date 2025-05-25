@@ -181,7 +181,7 @@
 
 /datum/prototype/design/science/prosfab/pros/internal
 	abstract_type = /datum/prototype/design/science/prosfab/pros/internal
-	category = list("Prosthetics, Internal")
+	category = "Prosthetics, Internal"
 
 /datum/prototype/design/science/prosfab/pros/internal/cell
 	design_name = "Prosthetic Powercell"
@@ -354,7 +354,7 @@
 //////////////////// Cyborg Parts ////////////////////
 /datum/prototype/design/science/prosfab/cyborg
 	abstract_type = /datum/prototype/design/science/prosfab/cyborg
-	category = list("Cyborg Parts")
+	category = "Cyborg Parts"
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 3750)
 
