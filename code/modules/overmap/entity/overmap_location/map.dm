@@ -29,4 +29,5 @@
 	return map.loaded ? map.loaded_z_indices.Copy() : list()
 
 /datum/overmap_location/map/is_physically_level(z)
-	return (SSmapping.ordered_levels[z]?.map == map)
+	var/datum/map_level/the_level = SSmapping.ordered_levels[z]
+	return the_level.parent_map == map

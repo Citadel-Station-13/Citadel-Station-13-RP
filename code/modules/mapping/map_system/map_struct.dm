@@ -132,34 +132,6 @@
 		SSmapping.rebuild_verticality()
 
 /**
- * Unsets all the transitions for our levels
- *
- * * This'll make them lead nowhere.
- * * This proc will trigger sleeping rebuilds of levels.
- * * This proc is waitfor = FALSE, meaning the rebuilds go on in the background.
- */
-/datum/map_struct/proc/unlink_levels(rebuild = TRUE)
-	set waitfor = FALSE
-	for(var/datum/map_level/level as anything in levels)
-		var/had_vertical = level.link_above || level.link_below
-		var/had_horizontal = level.link_east || level.link_west || level.link_north || level.link_south
-		level.link_above = null
-		level.link_below = null
-		level.link_east = null
-		level.link_west = null
-		level.link_north = null
-		level.link_south = null
-		if(rebuild)
-			if(had_horizontal)
-				level.rebuild_transitions()
-			if(had_vertical)
-				level.rebuild_vertical_levels()
-
-	if(rebuild)
-		SSmapping.rebuild_transitions()
-		SSmapping.rebuild_verticality()
-
-/**
  * Builds and generates our data.
  *
  * * Will also verify integrity of zlevels and whatnot.

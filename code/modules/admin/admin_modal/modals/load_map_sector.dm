@@ -10,8 +10,9 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
  * Modal supporting arbitrary map loads.
  *
  * * Does not support shuttles yet. You must load shuttles separately!
- * * This will always create sectors with structs. Uploading singular levels
- *   is no longer natively supported, as the game's backend orchestration
+ * * This will always create full /datum/map's. Uploading singular levels
+ *   is no longer natively supported for admin tooling,
+ *   as the game's backend orchestration
  *   expects to work with abstracted sectors, instead of singular z-level's.
  *
  * todo: ability to load compiled in map defs
@@ -22,35 +23,21 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 	tgui_interface = "LoadMapSector"
 	tgui_update = FALSE
 
-	//* constraints *//
-
-	/// in bytes
-	var/max_upload_size = 1024 * 1024 * 10
-	/// in levels
-	var/max_upload_levels = 9
-
 	//* buffer *//
-
-	/// in bytes
-	var/current_upload_size = 0
 
 	/// map buffer
 	var/datum/map/buffer
-	/// is overmap active?
-	var/overmap_active = TRUE
 
 	//* load *//
 
 	/// primed for load?
-	var/tmp/primed = FALSE
+	var/tmp/load_primed = FALSE
 	/// all checks pass?
-	var/tmp/ready = FALSE
+	var/tmp/load_ready = FALSE
 	/// loaded?
-	var/tmp/loaded = FALSE
-
-	var/tmp/world_maxz_at_prime
-
-	var/tmp/list/computed_errors
+	var/tmp/load_finished = FALSE
+	/// verification errors, if any
+	var/tmp/list/load_verification_errors
 
 /datum/admin_modal/load_map_sector/Initialize()
 	// no uploading new map sectors while MC is initializing.
@@ -63,7 +50,7 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 
 /datum/admin_modal/load_map_sector/Destroy()
 	if(buffer)
-		// unreference only if the buffer is already loaded in
+		// if the buffer is already loaded in, just drop reference
 		if(buffer.loaded)
 			buffer = null
 		else
@@ -72,10 +59,9 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 
 /datum/admin_modal/load_map_sector/ui_nested_data(mob/user, datum/tgui/ui)
 	. = ..()
-	.["map"] = map_data()
-	.["overmap"] = overmap_data()
+	.["map"] = ui_map_data()
 	for(var/index in 1 to length(buffer.levels))
-		.["level-[index]"] = level_index_data(index)
+		.["level-[index]"] = ui_level_index_data(index)
 
 /datum/admin_modal/load_map_sector/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
@@ -87,9 +73,7 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 	. = ..()
 	.["const_airVacuum"] = GAS_STRING_VACUUM
 	.["const_airHabitable"] = GAS_STRING_STP
-	.["staged"] = primed ? list(
-		"errors" = computed_errors,
-	) : null
+	.["staged"] = ui_staging_data()
 
 /datum/admin_modal/load_map_sector/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
 	. = ..()
@@ -124,40 +108,40 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 			. = TRUE
 		// map //
 		if("mapName")
-			update_map_data()
+			update_ui_map_data()
 			. = TRUE
 		if("mapOrientation")
 			if(!(params["setTo"] in GLOB.cardinal))
 				return
 			buffer.load_orientation = params["setTo"]
-			update_map_data()
+			update_ui_map_data()
 			. = TRUE
 		if("mapCenter")
-			buffer.center = !buffer.center
-			update_map_data()
+			buffer.load_auto_center = !buffer.load_auto_center
+			update_ui_map_data()
 			. = TRUE
 		// overmap //
 		if("overmapActive")
 			overmap_active = !overmap_active
 			if(!istype(buffer.overmap_initializer, /datum/overmap_initializer/struct))
 				buffer.overmap_initializer = new /datum/overmap_initializer/struct
-			update_overmap_data()
+			update_ui_map_data()
 			. = TRUE
 		if("overmapX")
 			if(!is_safe_number(params["setTo"]))
 				return
 			buffer.overmap_initializer.manual_position_x = params["setTo"]
-			update_overmap_data()
+			update_ui_map_data()
 			. = TRUE
 		if("overmapY")
 			if(!is_safe_number(params["setTo"]))
 				return
 			buffer.overmap_initializer.manual_position_y = params["setTo"]
-			update_overmap_data()
+			update_ui_map_data()
 			. = TRUE
 		if("overmapForcePosition")
 			buffer.overmap_initializer.manual_position_is_strong_suggestion = !buffer.overmap_initializer.manual_position_is_strong_suggestion
-			update_overmap_data()
+			update_ui_map_data()
 			. = TRUE
 		// levels //
 		if("newLevel")
@@ -178,39 +162,39 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 				current_upload_size -= length(target_level.path)
 			current_upload_size += loaded_file_size
 			target_level.path = loaded_file
-			update_level_index_data(target_level_index)
+			update_ui_level_index_data(target_level_index)
 			. = TRUE
 		if("levelName")
 			target_level.name = params["setTo"] || "Custom Level"
-			update_level_index_data(target_level_index)
+			update_ui_level_index_data(target_level_index)
 			. = TRUE
 		if("levelId")
 			target_level.id = params["setTo"] || null
-			update_level_index_data(target_level_index)
+			update_ui_level_index_data(target_level_index)
 			. = TRUE
 		if("levelDisplayName")
 			target_level.display_name = params["setTo"] || "Unknown Sector"
-			update_level_index_data(target_level_index)
+			update_ui_level_index_data(target_level_index)
 			. = TRUE
 		if("levelDisplayId")
 			target_level.display_id = params["setTo"] || null
-			update_level_index_data(target_level_index)
+			update_ui_level_index_data(target_level_index)
 			. = TRUE
 		if("levelAddTrait")
 			target_level.add_trait(params["trait"])
-			update_level_index_data(target_level_index)
+			update_ui_level_index_data(target_level_index)
 			. = TRUE
 		if("levelDelTrait")
 			target_level.remove_trait(params["trait"])
-			update_level_index_data(target_level_index)
+			update_ui_level_index_data(target_level_index)
 			. = TRUE
 		if("levelSetAttribute")
 			target_level.set_attribute(params["attribute"], params["value"])
-			update_level_index_data(target_level_index)
+			update_ui_level_index_data(target_level_index)
 			. = TRUE
 		if("levelBaseTurf")
 			target_level.base_turf = text2path(params["type"]) || world.turf
-			update_level_index_data(target_level_index)
+			update_ui_level_index_data(target_level_index)
 			. = TRUE
 		if("levelBaseArea")
 			target_level.base_area = text2path(params["type"]) || world.turf
@@ -219,7 +203,7 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 			target_level.struct_x = params["x"]
 			target_level.struct_y = params["y"]
 			target_level.struct_z = params["z"]
-			update_level_index_data(target_level_index)
+			update_ui_level_index_data(target_level_index)
 			. = TRUE
 		if("levelAirIndoors")
 			. = TRUE
@@ -227,55 +211,43 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 				loud_rejection("Gas string [params["air"]] failed validation.")
 				return
 			target_level.air_indoors = params["air"]
-			update_level_index_data(target_level_index)
+			update_ui_level_index_data(target_level_index)
 		if("levelAirOutdoors")
 			. = TRUE
 			if(!SSair.validate_gas_string(params["air"]))
 				loud_rejection("Gas string [params["air"]] failed validation.")
 				return
 			target_level.air_outdoors = params["air"]
-			update_level_index_data(target_level_index)
+			update_ui_level_index_data(target_level_index)
 			. = TRUE
 		if("levelCeilingHeight")
 			target_level.ceiling_height = params["height"]
-			update_level_index_data(target_level_index)
+			update_ui_level_index_data(target_level_index)
 			. = TRUE
 
-/datum/admin_modal/load_map_sector/proc/map_data()
+/datum/admin_modal/load_map_sector/proc/ui_map_data()
+	var/list/serialized_overmap_initializer = null
+	if(buffer.overmap_initializer)
+		serialized_overmap_initializer = list(
+			"x" = buffer.overmap_initializer.manual_position_x,
+			"y" = buffer.overmap_initializer.manual_position_y,
+			"forcePos" = buffer.overmap_initializer.manual_position_is_strong_suggestion,
+		)
 	return list(
 		"name" = buffer.name,
 		"orientation" = buffer.load_orientation,
-		"center" = buffer.center,
+		"center" = buffer.load_auto_center,
+		"overmap" = serialized_overmap_initializer,
 	)
 
-/datum/admin_modal/load_map_sector/proc/update_map_data()
+/datum/admin_modal/load_map_sector/proc/update_ui_map_data()
 	push_ui_data(
 		nested_data = list(
-			"map" = map_data(),
+			"map" = ui_map_data(),
 		),
 	)
 
-/datum/admin_modal/load_map_sector/proc/overmap_data()
-	if(!istype(buffer.overmap_initializer, /datum/overmap_initializer/map))
-		return list(
-			"x" = 0,
-			"y" = 0,
-			"forcePos" = FALSE,
-		)
-	return list(
-		"x" = buffer.overmap_initializer.manual_position_x,
-		"y" = buffer.overmap_initializer.manual_position_y,
-		"forcePos" = buffer.overmap_initializer.manual_position_is_strong_suggestion,
-	)
-
-/datum/admin_modal/load_map_sector/proc/update_overmap_data()
-	push_ui_data(
-		nested_data = list(
-			"overmap" = overmap_data(),
-		),
-	)
-
-/datum/admin_modal/load_map_sector/proc/level_index_data(index)
+/datum/admin_modal/load_map_sector/proc/ui_level_index_data(index)
 	var/datum/map_level/level = buffer.levels[index]
 	return list(
 		"id" = level.id,
@@ -293,12 +265,18 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 		"fileName" = "[level.path]",
 	)
 
-/datum/admin_modal/load_map_sector/proc/update_level_index_data(index)
+/datum/admin_modal/load_map_sector/proc/update_ui_level_index_data(index)
 	push_ui_data(
 		nested_data = list(
-			"level-[index]" = level_index_data(index),
+			"level-[index]" = ui_level_index_data(index),
 		),
 	)
+
+/datum/admin_modal/load_map_sector/proc/update_all_ui_level_datas()
+	for(var/i in 1 to length(buffer.levels))
+		update_ui_level_index_data(i)
+
+#warn below
 
 /datum/admin_modal/load_map_sector/proc/prime()
 	computed_errors = list()
@@ -352,7 +330,7 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 	appending.name = "Custom Level"
 	appending.display_name = "Unknown Sector"
 	LAZYADD(buffer.levels, appending)
-	update_level_index_data(length(buffer.levels))
+	update_ui_level_index_data(length(buffer.levels))
 	update_ui_data()
 
 /datum/admin_modal/load_map_sector/proc/delete_level_index(target_level_index)
@@ -360,4 +338,5 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 	buffer.levels.Cut(target_level_index, target_level_index + 1)
 	QDEL_NULL(obliterating)
 	for(var/updating in target_level_index to length(buffer.levels))
-		update_level_index_data(updating)
+		update_ui_level_index_data(updating)
+	update_ui_data()

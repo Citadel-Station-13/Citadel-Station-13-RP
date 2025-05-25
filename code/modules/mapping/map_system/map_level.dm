@@ -129,20 +129,17 @@
 	/// the index in our struct's [levels] list
 	var/tmp/struct_level_index
 	/// our virtual x on the struct; this is not tile coordinates, this is struct coordinates
-	var/tmp/struct_x
+	/// * set as needed so the map knows where to put us in the virtual struct.
+	var/struct_x = 0
 	/// our virtual y on the struct; this is not tile coordinates, this is struct coordinates
-	var/tmp/struct_y
+	/// * set as needed so the map knows where to put us in the virtual struct.
+	var/struct_y = 0
 	/// the coordinate we are actually on, zlevel wise
 	///
 	/// * basically for fluff and simulation, not byond engine
 	/// * this is used for virtual coordinates as the 'z'
-	var/tmp/struct_z
-	/// our placement in a struct
-	///
-	/// * must be list(x, y, z)
-	/// * the indices are zlevel, with the 'center ground floor' being list(0, 0, 0)
-	/// * all levels on a map must have this specified if the map is going to build a struct.
-	var/struct_create_pos
+	/// * set as needed so the map knows where to put us in the virtual struct.
+	var/struct_z = 0
 
 	//* Virtual Coordinates *//
 	/// the coordinate of the lower-left / southwest corner border of the map
@@ -219,10 +216,6 @@
 	var/persistent_trash_mesh_heuristic = OBJ_PERSIST_DEFAULT_TUNING_TRASH_MESH_HEURISTIC
 	/// additional mesh heuristic per 1000 objects
 	var/persistent_trash_mesh_heuristic_escalate_per_thousand = OBJ_PERSIST_DEFAULT_TUNING_TRASH_MESH_HEURISTIC_ESCALATE_PER_THOUSAND
-
-	//* Tracking *//
-	var/turfs_rebuild_count = 0
-	var/transitions_rebuild_count = 0
 
 	//* LEGACY BELOW *//
 
@@ -423,14 +416,14 @@
 		return
 	LAZYDISTINCTADD(traits, trait)
 	if(loaded)
-		SSmapping.on_trait_add(src, trait)
+		SSmapping.on_level_trait_add(src, trait)
 
 /datum/map_level/proc/remove_trait(trait)
 	if(!has_trait(trait))
 		return
 	LAZYREMOVE(traits, trait)
 	if(loaded)
-		SSmapping.on_trait_del(src, trait)
+		SSmapping.on_level_trait_del(src, trait)
 
 //* Attributes *//
 
@@ -441,7 +434,7 @@
 	var/old = get_attribute(attribute)
 	LAZYSET(attributes, attribute, value)
 	if(loaded)
-		SSmapping.on_attribute_set(src, attribute, old, value)
+		SSmapping.on_level_attribute_set(src, attribute, old, value)
 
 /datum/map_level/proc/unset_attribute(attribute)
 	var/old = get_attribute(attribute)
@@ -452,10 +445,63 @@
 //* Rebuilds / Transitions *//
 
 /**
+ * expensive as hell, rebuild all dirs
+ * * use after loading into an existing map that didn't have us prior
+ * * will block / sleep!
+ */
+/datum/map_level/proc/rebuild_multiz()
+	for(var/dir in list(NORTH, SOUTH, EAST, WEST, UP, DOWN))
+		rebuild_multiz_in_dir(dir)
+
+/**
+ * expensive as hell, teardown all dirs
+ * * use when being unloaded or something
+ * * will block / sleep!
+ */
+/datum/map_level/proc/teardown_multiz()
+	for(var/dir in list(NORTH, SOUTH, EAST, WEST, UP, DOWN))
+		teardown_multiz_in_dir(dir)
+
+/**
+ * * will block / sleep!
+ */
+/datum/map_level/proc/rebuild_multiz_in_dir(dir)
+	#warn impl
+
+/**
+ * * will block / sleep!
+ */
+/datum/map_level/proc/teardown_multiz_in_dir(dir)
+	#warn impl
+
+/**
+ * causes an immediate rebuild in given dir (or all if none specified)
+ * * dir must be vertical if specified
+ * * will block / sleep!
+ */
+/datum/map_level/proc/rebuild_vertical_transitions(dir)
+	if(dir)
+		ASSERT((dir & (UP|DOWN)) == dir)
+	for(var/turf/T as anything in level_turfs())
+		T.update_multiz()
+		CHECK_TICK
+
+/**
+ * causes an immediate rebuild in given dir (or all if none specified)
+ * * dir must be horizontal if specified
+ * * will block / sleep!
+ */
+/datum/map_level/proc/rebuild_horizontal_transitions(dir)
+	if(dir)
+		ASSERT((dir & (NORTH|SOUTH|EAST|WEST)) == dir)
+	#warn impl
+
+/**
  * Rebuild turfs up/down of us
  * This will sleep
  */
-/datum/map_level/proc/rebuild_vertical_levels()
+#warn kill
+/datum/map_level/proc/rebuild_vertical_turfs()
 	for(var/datum/map_level/L in list(
 		level_in_dir(UP),
 		level_in_dir(DOWN)
@@ -466,6 +512,7 @@
  * Rebuild turfs adjacent of us
  * This will sleep
  */
+#warn kill
 /datum/map_level/proc/rebuild_adjacent_levels()
 	for(var/datum/map_level/L in list(
 		level_in_dir(NORTH),
@@ -476,21 +523,11 @@
 		L.rebuild_transitions()
 
 /**
- * call to rebuild all turfs for vertical multiz
- *
- * this will sleep
- */
-/datum/map_level/proc/rebuild_turfs()
-	for(var/turf/T as anything in block(locate(1, 1, z_index), locate(world.maxx, world.maxy, z_index)))
-		T.update_multiz()
-		CHECK_TICK
-	turfs_rebuild_count++
-
-/**
  * call to rebuild all turfs for horizontal transitions
  *
  * this will sleep
  */
+#warn kill
 /datum/map_level/proc/rebuild_transitions()
 	switch(transition)
 		// do nothing
@@ -569,7 +606,6 @@
 				for(var/turf/T as anything in transition_turfs(SOUTHEAST))
 					T._dispose_transition_border()
 					CHECK_TICK
-	transitions_rebuild_count++
 
 /**
  * destroys all transitions on border turfs
@@ -577,6 +613,7 @@
  *
  * this will sleep
  */
+#warn kill
 /datum/map_level/proc/destroy_transitions()
 	for(var/turf/T as anything in transition_turfs())
 		T._dispose_transition_border()

@@ -58,6 +58,8 @@
 		L.rebuild_turfs()
 		CHECK_TICK
 
+#warn don't do this shit, we need to rebuild a dir (s) as needed, not every dir!
+
 //* Allocations & Deallocations * //
 
 /**
