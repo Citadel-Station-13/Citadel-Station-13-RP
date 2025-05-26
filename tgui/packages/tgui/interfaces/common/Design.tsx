@@ -10,7 +10,8 @@ import { IngredientsNeeded } from "./Ingredients";
 export interface Design {
   name: string;
   desc: string;
-  category: string;
+  category: string[];
+  subcategories: string[];
   materials: Record<string, number> | null;
   material_parts: Record<string, number> | null;
   material_constraints: Record<string, number> | null;

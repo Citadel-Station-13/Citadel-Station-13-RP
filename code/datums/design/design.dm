@@ -30,6 +30,7 @@
 	/// category - string or list, or null; null results in undefined behavior depending on UI.
 	var/category = DESIGN_CATEGORY_MISC
 
+	/// subcategory - string or list, or null. null generally results in no seperate subcategory header
 	var/subcategory = null
 
 	//? Build Data
@@ -143,7 +144,8 @@
 		"desc" = desc,
 		"id" = id,
 		"work" = work,
-		"category" = category,
+		"category" = COERCE_OPTIONS_LIST(category),
+		"subcategory" = COERCE_OPTIONS_LIST(subcategory),
 		"materials" = length(materials_base)? materials_base : null,
 		"material_parts" = length(material_costs)? material_costs : null,
 		"material_constraints" = length(material_constraints)? material_constraints : null,

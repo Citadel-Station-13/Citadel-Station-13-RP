@@ -23,6 +23,7 @@ export interface TGUILatheControlProps {
 export interface TGUILatheControlData extends ModuleData {
   designs: {
     categories: string[],
+    subcategories: Record<string, string[]>, // K: a Catergory - V: all its subcategories
     instances: Record<string, Design>,
   };
   storesItems: BooleanLike;
@@ -245,7 +246,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
                     {
                       Object.values(data.designs.instances).filter(
                         (d) => searchText.length > 2
-                          ? d.name.toLowerCase().includes(searchText) : (d.category === category)
+                          ? d.name.toLowerCase().includes(searchText) : (d.category.includes(category))
                       ).sort((d1, d2) =>
                         d1.name.localeCompare(d2.name)
                       ).map((d) => (
