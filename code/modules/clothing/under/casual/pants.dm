@@ -2,107 +2,6 @@
  * Pants, Jeans, Long legged shorts
  */
 
-/obj/item/clothing/under/pants
-	name = "jeans"
-	desc = "A nondescript pair of tough blue jeans."
-	icon = 'icons/clothing/uniform/casual/jeans/jeans.dmi'
-	icon_state = "jeans"
-	gender = PLURAL
-	body_cover_flags = LOWER_TORSO|LEGS
-	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/pants/ripped
-	name = "ripped jeans"
-	desc = "A nondescript pair of tough blue jeans with holes in them."
-	icon = 'icons/clothing/uniform/casual/jeans/jeansripped.dmi'
-	icon_state = "jeansripped"
-	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/pants/classicjeans
-	name = "classic jeans"
-	desc = "You feel cooler already."
-	icon = 'icons/clothing/uniform/casual/jeans/jeansclassic.dmi'
-	icon_state = "jeansclassic"
-	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/pants/classicjeans/ripped
-	name = "ripped classic jeans"
-	desc = "You feel cooler already. These have holes in them."
-	icon = 'icons/clothing/uniform/casual/jeans/jeansclassicripped.dmi'
-	icon_state = "jeansclassicripped"
-	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/pants/mustangjeans
-	name = "must hang jeans"
-	desc = "Made in the finest space jeans factory this side of Alpha Centauri."
-	icon = 'icons/clothing/uniform/casual/jeans/jeansmustang.dmi'
-	icon_state = "jeansmustang"
-	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/pants/mustangjeans/ripped
-	name = "ripped must hang jeans"
-	desc = "Made in the finest space jeans factory this side of Alpha Centauri. These have holes in them."
-	icon = 'icons/clothing/uniform/casual/jeans/jeansmustangripped.dmi'
-	icon_state = "jeansmustangripped"
-	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/pants/blackjeans
-	name = "black jeans"
-	desc = "Only for those who can pull it off."
-	icon = 'icons/clothing/uniform/casual/jeans/jeansblack.dmi'
-	icon_state = "jeansblack"
-	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/pants/blackjeans/ripped
-	name = "ripped black jeans"
-	desc = "Only for those who can pull it off. These have holes in them."
-	icon = 'icons/clothing/uniform/casual/jeans/jeansblackripped.dmi'
-	icon_state = "jeansblackripped"
-	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/pants/greyjeans
-	name = "grey jeans"
-	desc = "Only for those who can pull it off."
-	icon = 'icons/clothing/uniform/casual/jeans/jeansgrey.dmi'
-	icon_state = "jeansgrey"
-	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/pants/greyjeans/ripped
-	name = "ripped grey jeans"
-	desc = "Only for those who can pull it off. These have holes in them."
-	icon = 'icons/clothing/uniform/casual/jeans/jeansgreyripped.dmi'
-	icon_state = "jeansgreyripped"
-	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/pants/youngfolksjeans
-	name = "young folks jeans"
-	desc = "For those tired of boring old jeans. Relive the passion of your youth!"
-	icon = 'icons/clothing/uniform/casual/jeans/jeansyoungfolks.dmi'
-	icon_state = "jeansyoungfolks"
-	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
 /obj/item/clothing/under/pants/white
 	name = "white pants"
 	desc = "Plain white pants. Boring."
@@ -182,6 +81,109 @@
 	icon_state = "yogapants"
 	addblends = "yogapants_a"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+//* Jeans *//
+
+/obj/item/clothing/under/pants
+	name = "jeans"
+	desc = "A nondescript pair of tough blue jeans."
+	icon = 'icons/clothing/uniform/casual/jeans/jeans.dmi'
+	icon_state = "jeans"
+	gender = PLURAL
+	body_cover_flags = LOWER_TORSO|LEGS
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/pants/ripped
+	name = "ripped jeans"
+	desc = "A nondescript pair of tough blue jeans with holes in them."
+	icon = 'icons/clothing/uniform/casual/jeans/jeans.dmi'
+	icon_state = "jeansripped"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/pants/classicjeans
+	name = "classic jeans"
+	desc = "You feel cooler already."
+	icon = 'icons/clothing/uniform/casual/jeans/jeans.dmi'
+	icon_state = "jeansclassic"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/pants/classicjeans/ripped
+	name = "ripped classic jeans"
+	desc = "You feel cooler already. These have holes in them."
+	icon = 'icons/clothing/uniform/casual/jeans/jeans.dmi'
+	icon_state = "jeansclassicripped"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/pants/mustangjeans
+	name = "must hang jeans"
+	desc = "Made in the finest space jeans factory this side of Alpha Centauri."
+	icon = 'icons/clothing/uniform/casual/jeans/jeans.dmi'
+	icon_state = "jeansmustang"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/pants/mustangjeans/ripped
+	name = "ripped must hang jeans"
+	desc = "Made in the finest space jeans factory this side of Alpha Centauri. These have holes in them."
+	icon = 'icons/clothing/uniform/casual/jeans/jeans.dmi'
+	icon_state = "jeansmustangripped"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/pants/blackjeans
+	name = "black jeans"
+	desc = "Only for those who can pull it off."
+	icon = 'icons/clothing/uniform/casual/jeans/jeans.dmi'
+	icon_state = "jeansblack"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/pants/blackjeans/ripped
+	name = "ripped black jeans"
+	desc = "Only for those who can pull it off. These have holes in them."
+	icon = 'icons/clothing/uniform/casual/jeans/jeans.dmi'
+	icon_state = "jeansblackripped"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/pants/greyjeans
+	name = "grey jeans"
+	desc = "Only for those who can pull it off."
+	icon = 'icons/clothing/uniform/casual/jeans/jeans.dmi'
+	icon_state = "jeansgrey"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/pants/greyjeans/ripped
+	name = "ripped grey jeans"
+	desc = "Only for those who can pull it off. These have holes in them."
+	icon = 'icons/clothing/uniform/casual/jeans/jeans.dmi'
+	icon_state = "jeansgreyripped"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/pants/youngfolksjeans
+	name = "young folks jeans"
+	desc = "For those tired of boring old jeans. Relive the passion of your youth!"
+	icon = 'icons/clothing/uniform/casual/jeans/jeans.dmi'
+	icon_state = "jeansyoungfolks"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
