@@ -226,9 +226,8 @@
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
-/*
- * Baggy Pants
- */
+//* Baggy Jeans *//
+
 /obj/item/clothing/under/pants/baggy
 	name = "baggy jeans"
 	desc = "A nondescript pair of tough baggy blue jeans."
@@ -241,7 +240,7 @@
 /obj/item/clothing/under/pants/baggy/classicjeans
 	name = "baggy classic jeans"
 	desc = "You feel cooler already."
-	icon = 'icons/clothing/uniform/casual/jeans/baggy_jeansclassic.dmi'
+	icon = 'icons/clothing/uniform/casual/jeans/baggy_jeans.dmi'
 	icon_state = "baggy_jeansclassic"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -250,7 +249,7 @@
 /obj/item/clothing/under/pants/baggy/mustangjeans
 	name = "maggy must hang jeans"
 	desc = "Made in the finest space jeans factory this side of Alpha Centauri."
-	icon = 'icons/clothing/uniform/casual/jeans/baggy_jeansmustang.dmi'
+	icon = 'icons/clothing/uniform/casual/jeans/baggy_jeans.dmi'
 	icon_state = "baggy_jeansmustang"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -259,7 +258,7 @@
 /obj/item/clothing/under/pants/baggy/blackjeans
 	name = "baggy black jeans"
 	desc = "Only for those who can pull it off."
-	icon = 'icons/clothing/uniform/casual/jeans/baggy_jeansblack.dmi'
+	icon = 'icons/clothing/uniform/casual/jeans/baggy_jeans.dmi'
 	icon_state = "baggy_jeansblack"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -268,7 +267,7 @@
 /obj/item/clothing/under/pants/baggy/greyjeans
 	name = "baggy grey jeans"
 	desc = "Only for those who can pull it off."
-	icon = 'icons/clothing/uniform/casual/jeans/baggy_jeansgrey.dmi'
+	icon = 'icons/clothing/uniform/casual/jeans/baggy_jeans.dmi'
 	icon_state = "baggy_jeansgrey"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -277,11 +276,13 @@
 /obj/item/clothing/under/pants/baggy/youngfolksjeans
 	name = "baggy young folks jeans"
 	desc = "For those tired of boring old jeans. Relive the passion of your youth!"
-	icon = 'icons/clothing/uniform/casual/jeans/baggy_jeansyoungfolks.dmi'
+	icon = 'icons/clothing/uniform/casual/jeans/baggy_jeans.dmi'
 	icon_state = "baggy_jeansyoungfolks"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+//* Baggy Pants *//
 
 /obj/item/clothing/under/pants/baggy/white
 	name = "baggy white pants"
