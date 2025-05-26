@@ -67,7 +67,7 @@ var/global/list/drone_matrices = list()
 /datum/drone_matrix/proc/apply_upgrades(mob/living/silicon/robot/drone/D)
 	var/list/applied_upgrades = list()
 	for(var/upgrade in bought_upgrades)
-		if(!LAZYACCESS(D.matrix_upgrades, upgrade))
+		if(!LAZYFIND(D.matrix_upgrades, upgrade))
 			applied_upgrades += upgrade
 			set_upgrade(D, upgrade)
 	if(length(applied_upgrades))
@@ -76,12 +76,12 @@ var/global/list/drone_matrices = list()
 /datum/drone_matrix/proc/set_upgrade(mob/living/silicon/robot/drone/D, var/upgrade_type)
 	switch(upgrade_type)
 		if(MTX_UPG_SPEED)
-			D.movement_base_speed = initial(D.movement_base_speed) + 1
+			D.movement_base_speed += 1
 			D.update_movespeed_base()
 		if(MTX_UPG_CELL)
-			D.cell.maxcharge = initial(D.cell.maxcharge) * 1.5
+			D.cell.maxcharge *= * 1.5
 		if(MTX_UPG_HEALTH)
-			D.maxHealth = initial(D.maxHealth) + 15
+			D.maxHealth += 15
 		if(MTX_UPG_MOP)
 			var/obj/item/mop/current_mop = locate(/obj/item/mop) in D.module.modules
 			if(!istype(current_mop, /obj/item/mop/advanced))
