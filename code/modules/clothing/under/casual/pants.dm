@@ -287,7 +287,7 @@
 /obj/item/clothing/under/pants/baggy/white
 	name = "baggy white pants"
 	desc = "Plain white pants. Boring."
-	icon = 'icons/clothing/uniform/casual/jeans/baggy_whitepants.dmi'
+	icon = 'icons/clothing/uniform/casual/jeans/baggy_pants.dmi'
 	icon_state = "baggy_whitepants"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -296,7 +296,7 @@
 /obj/item/clothing/under/pants/baggy/red
 	name = "baggy red pants"
 	desc = "Bright red pants. Overflowing with personality."
-	icon = 'icons/clothing/uniform/casual/jeans/baggy_redpants.dmi'
+	icon = 'icons/clothing/uniform/casual/jeans/baggy_pants.dmi'
 	icon_state = "baggy_redpants"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -305,7 +305,7 @@
 /obj/item/clothing/under/pants/baggy/black
 	name = "baggy black pants"
 	desc = "These pants are dark, like your soul."
-	icon = 'icons/clothing/uniform/casual/jeans/baggy_blackpants.dmi'
+	icon = 'icons/clothing/uniform/casual/jeans/baggy_pants.dmi'
 	icon_state = "baggy_blackpants"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -314,7 +314,7 @@
 /obj/item/clothing/under/pants/baggy/tan
 	name = "baggy tan pants"
 	desc = "Some tan pants. You look like a white collar worker with these on."
-	icon = 'icons/clothing/uniform/casual/jeans/baggy_tanpants.dmi'
+	icon = 'icons/clothing/uniform/casual/jeans/baggy_pants.dmi'
 	icon_state = "baggy_tanpants"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -323,7 +323,7 @@
 /obj/item/clothing/under/pants/baggy/track
 	name = "baggy track pants"
 	desc = "A pair of track pants, for the athletic."
-	icon = 'icons/clothing/uniform/casual/jeans/baggy_trackpants.dmi'
+	icon = 'icons/clothing/uniform/casual/jeans/baggy_pants.dmi'
 	icon_state = "baggy_trackpants"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -332,7 +332,7 @@
 /obj/item/clothing/under/pants/baggy/khaki
 	name = "baggy khaki pants"
 	desc = "A pair of dust beige khaki pants."
-	icon = 'icons/clothing/uniform/casual/jeans/baggy_khaki.dmi'
+	icon = 'icons/clothing/uniform/casual/jeans/baggy_pants.dmi'
 	icon_state = "baggy_khaki"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -341,7 +341,7 @@
 /obj/item/clothing/under/pants/baggy/camo
 	name = "baggy camo pants"
 	desc = "A pair of woodland camouflage pants. Probably not the best choice for a space station."
-	icon = 'icons/clothing/uniform/casual/jeans/baggy_camopants.dmi'
+	icon = 'icons/clothing/uniform/casual/jeans/baggy_pants.dmi'
 	icon_state = "baggy_camopants"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
