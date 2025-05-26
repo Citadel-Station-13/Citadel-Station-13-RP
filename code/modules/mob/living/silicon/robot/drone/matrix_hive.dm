@@ -87,11 +87,13 @@ var/global/list/drone_matrices = list()
 			if(!istype(current_mop, /obj/item/mop/advanced))
 				D.module.modules -= current_mop
 				D.module.modules += new/obj/item/mop/advanced(D.module)
+				qdel(current_mop)
 		if(MTX_UPG_T)
 			var/obj/item/t_scanner/current_scanner = locate(/obj/item/t_scanner) in D.module.modules
 			if(!istype(current_scanner, /obj/item/t_scanner/upgraded))
 				D.module.modules -= current_scanner
 				D.module.modules += new/obj/item/t_scanner/upgraded(D.module)
+				qdel(current_scanner)
 	LAZYADD(D.matrix_upgrades, upgrade_type)
 
 /proc/assign_drone_to_matrix(mob/living/silicon/robot/drone/D, var/matrix_tag)
