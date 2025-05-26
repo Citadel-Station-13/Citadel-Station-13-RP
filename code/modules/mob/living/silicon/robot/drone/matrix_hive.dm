@@ -76,18 +76,22 @@ var/global/list/drone_matrices = list()
 /datum/drone_matrix/proc/set_upgrade(mob/living/silicon/robot/drone/D, var/upgrade_type)
 	switch(upgrade_type)
 		if(MTX_UPG_SPEED)
-			D.movement_base_speed = initial(D.movement_base_speed) - 1
+			D.movement_base_speed = initial(D.movement_base_speed) + 1
 			D.update_movespeed_base()
 		if(MTX_UPG_CELL)
-			D.cell.maxcharge = D.cell.maxcharge * 1.5
+			D.cell.maxcharge = initial(D.cell.maxcharge) * 1.5
 		if(MTX_UPG_HEALTH)
-			D.maxHealth += 15
+			D.maxHealth = initial(D.maxHealth) + 15
 		if(MTX_UPG_MOP)
-			D.module.modules -= locate(/obj/item/mop) in D.module.modules
-			D.module.modules += new/obj/item/mop/advanced(D.module)
+			var/obj/item/mop/current_mop = locate(/obj/item/mop) in D.module.modules
+			if(!istype(current_mop, /obj/item/mop/advanced))
+				D.module.modules -= current_mop
+				D.module.modules += new/obj/item/mop/advanced(D.module)
 		if(MTX_UPG_T)
-			D.module.modules -= locate(/obj/item/t_scanner) in D.module.modules
-			D.module.modules += new/obj/item/t_scanner/upgraded(D.module)
+			var/obj/item/t_scanner/current_scanner = locate(/obj/item/t_scanner) in D.module.modules
+			if(!istype(current_scanner, /obj/item/t_scanner/upgraded))
+				D.module.modules -= current_scanner
+				D.module.modules += new/obj/item/t_scanner/upgraded(D.module)
 	LAZYADD(D.matrix_upgrades, upgrade_type)
 
 /proc/assign_drone_to_matrix(mob/living/silicon/robot/drone/D, var/matrix_tag)
