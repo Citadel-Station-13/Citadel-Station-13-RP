@@ -115,6 +115,9 @@
 	icon = 'icons/clothing/uniform/workwear/circuitry.dmi'
 	icon_state = "circuitry"
 	EA_Installed = 1
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/circuitry/Initialize(mapload)
 	setup_integrated_circuit(/obj/item/electronic_assembly/clothing)

@@ -88,7 +88,7 @@
 /obj/item/clothing/under/chameleon
 //starts off as black
 	name = "black jumpsuit"
-	icon = 'icons/clothing/uniform/workwear/jumpsuit/black.dmi'
+	icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
 	icon_state = "black"
 	desc = "It's a plain jumpsuit. It seems to have a small dial on the wrist."
 	origin_tech = list(TECH_ILLEGAL = 3)
