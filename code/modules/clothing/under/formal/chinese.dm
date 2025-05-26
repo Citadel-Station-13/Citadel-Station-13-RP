@@ -129,7 +129,7 @@
 /obj/item/clothing/under/sleeveless_qipao
 	name = "sleeveless black qipao"
 	desc = "A popular dress from Old Earth China, commonly worn to festivals. Easily recognizable thanks to its intricate embroidery and bold side slits."
-	icon = 'icons/clothing/uniform/formal/dress/sleeveless_qipao.dmi'
+	icon = 'icons/clothing/uniform/formal/dress/qipao.dmi'
 	icon_state = "sleevelessqipao"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -138,7 +138,7 @@
 /obj/item/clothing/under/qipao/white
 	name = "white qipao"
 	desc = "A popular dress from Old Earth China, commonly worn to festivals. Easily recognizable thanks to its intricate embroidery and bold side slits."
-	icon = 'icons/clothing/uniform/formal/dress/qipao_white.dmi'
+	icon = 'icons/clothing/uniform/formal/dress/qipao.dmi'
 	icon_state = "qipao_white"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -147,7 +147,7 @@
 /obj/item/clothing/under/qipao/red
 	name = "red qipao"
 	desc = "A popular dress from Old Earth China, commonly worn to festivals. Easily recognizable thanks to its intricate embroidery and bold side slits."
-	icon = 'icons/clothing/uniform/formal/dress/qipao_red.dmi'
+	icon = 'icons/clothing/uniform/formal/dress/qipao.dmi'
 	icon_state = "qipao_red"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
