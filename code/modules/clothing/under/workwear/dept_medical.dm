@@ -10,6 +10,9 @@
 	icon_state = "sterile"
 	permeability_coefficient = 0.50
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
+	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 
 /obj/item/clothing/under/medigown
 	name = "medical gown"
@@ -17,6 +20,9 @@
 	icon = 'icons/clothing/uniform/workwear/dept_medical/medicalgown.dmi'
 	icon_state = "medicalgown"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /**
  * Chemist
@@ -29,11 +35,17 @@
 	icon_state = "chemistry"
 	permeability_coefficient = 0.50
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
+	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 
 /obj/item/clothing/under/rank/chemist/skirt
 	name = "chemist's jumpskirt"
 	icon = 'icons/clothing/uniform/workwear/dept_medical/chemistryf.dmi'
 	icon_state = "chemistryf"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_VOX)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/rank/chemist/jeans
 	name = "chemist's jumpjeans"
@@ -41,6 +53,9 @@
 	icon = 'icons/clothing/uniform/workwear/dept_medical/chemistryj.dmi'
 	icon_state = "chemistryj"
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 
 /obj/item/clothing/under/rank/chemist/fem_jeans
 	name = "chemist's jumpjeans"
@@ -48,6 +63,9 @@
 	icon = 'icons/clothing/uniform/workwear/dept_medical/chemistryjf.dmi'
 	icon_state = "chemistryjf"
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/rank/chemist/skirt_pleated
 	name = "chemist's pleated skirt"
@@ -55,6 +73,9 @@
 	icon = 'icons/clothing/uniform/workwear/dept_medical/chemistry_skirt.dmi'
 	icon_state = "chemistry_skirt"
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/rank/chemist_new
 	desc = "It's made of a special fiber which provides minor protection against biohazards."
@@ -63,6 +84,9 @@
 	icon_state = "chemist_new"
 	permeability_coefficient = 0.50
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 
 /**
  * CMO
@@ -75,12 +99,19 @@
 	icon_state = "cmo"
 	permeability_coefficient = 0.50
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
+	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 
 /obj/item/clothing/under/rank/chief_medical_officer/skirt
 	desc = "It's a jumpskirt worn by those with the experience to be \"Chief Medical Officer\". It provides minor biological protection."
 	name = "chief medical officer's jumpskirt"
 	icon = 'icons/clothing/uniform/workwear/dept_medical/cmof.dmi'
 	icon_state = "cmof"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_VOX)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
 
 /obj/item/clothing/under/rank/chief_medical_officer/skirt_pleated
 	name = "chief medical officer's pleated skirt"
@@ -88,12 +119,18 @@
 	icon = 'icons/clothing/uniform/workwear/dept_medical/cmo_skirt.dmi'
 	icon_state = "cmo_skirt"
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/rank/chief_medical_officer/turtleneck
 	desc = "It's a turtleneck worn by those with the experience to be \"Chief Medical Officer\". It provides minor biological protection, for an officer with a superior sense of style and practicality."
 	name = "chief medical officer's turtleneck"
 	icon = 'icons/clothing/uniform/workwear/dept_medical/cmoturtle.dmi'
 	icon_state = "cmoturtle"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 
 /obj/item/clothing/under/rank/chief_medical_officer/jeans
 	name = "chief medical officer's jeans"
@@ -101,6 +138,9 @@
 	icon = 'icons/clothing/uniform/workwear/dept_medical/cmoj.dmi'
 	icon_state = "cmoj"
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 
 /obj/item/clothing/under/rank/chief_medical_officer/fem_jeans
 	name = "chief medical officer's jeans"
@@ -108,6 +148,9 @@
 	icon = 'icons/clothing/uniform/workwear/dept_medical/cmojf.dmi'
 	icon_state = "cmojf"
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /**
  * Geneticist
@@ -120,11 +163,19 @@
 	icon_state = "genetics"
 	permeability_coefficient = 0.50
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
+	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
+
 
 /obj/item/clothing/under/rank/geneticist/skirt
 	name = "geneticist's jumpskirt"
 	icon = 'icons/clothing/uniform/workwear/dept_medical/geneticsf.dmi'
 	icon_state = "geneticsf"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_VOX)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
 
 /obj/item/clothing/under/rank/geneticist/skirt_pleated
 	name = "geneticist's pleated skirt"
@@ -132,6 +183,10 @@
 	icon = 'icons/clothing/uniform/workwear/dept_medical/genetics_skirt.dmi'
 	icon_state = "genetics_skirt"
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
 
 /obj/item/clothing/under/rank/geneticist_new
 	desc = "It's made of a special fiber which provides minor protection against biohazards."
@@ -140,6 +195,10 @@
 	icon_state = "genetics_new"
 	permeability_coefficient = 0.50
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
+
 
 /**
  * Virologist
@@ -152,11 +211,17 @@
 	icon_state = "virology"
 	permeability_coefficient = 0.50
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
+	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 
 /obj/item/clothing/under/rank/virologist/skirt
 	name = "virologist's jumpskirt"
 	icon = 'icons/clothing/uniform/workwear/dept_medical/virologyf.dmi'
 	icon_state = "virologyf"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_VOX)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/rank/virologist/jeans
 	name = "virologist's jumpjeans"
@@ -164,6 +229,9 @@
 	icon = 'icons/clothing/uniform/workwear/dept_medical/virologyj.dmi'
 	icon_state = "virologyj"
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 
 /obj/item/clothing/under/rank/virologist/fem_jeans
 	name = "virologist's jumpjeans"
@@ -171,6 +239,9 @@
 	icon = 'icons/clothing/uniform/workwear/dept_medical/virologyjf.dmi'
 	icon_state = "virologyjf"
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/rank/virologist/skirt_pleated
 	name = "virologist's pleated skirt"
@@ -178,6 +249,9 @@
 	icon = 'icons/clothing/uniform/workwear/dept_medical/virology_skirt.dmi'
 	icon_state = "virology_skirt"
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/rank/virologist_new
 	desc = "Made of a special fiber that gives increased protection against biohazards."
@@ -186,6 +260,9 @@
 	icon_state = "virologist_new"
 	permeability_coefficient = 0.50
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 
 /**
  * Nurse
@@ -198,8 +275,9 @@
 	icon_state = "nursesuit"
 	permeability_coefficient = 0.50
 	armor_type = /datum/armor/medical/jumpsuit
-
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/rank/nurse
@@ -210,6 +288,8 @@
 	permeability_coefficient = 0.50
 	armor_type = /datum/armor/medical/jumpsuit
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/rank/orderly
@@ -219,6 +299,9 @@
 	icon_state = "orderly"
 	permeability_coefficient = 0.50
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 
 /**
  * Doctor
@@ -231,11 +314,17 @@
 	icon_state = "medical"
 	permeability_coefficient = 0.50
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
+	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 
 /obj/item/clothing/under/rank/medical/skirt
 	name = "medical doctor's jumpskirt"
 	icon = 'icons/clothing/uniform/workwear/dept_medical/medicalf.dmi'
 	icon_state = "medicalf"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_VOX)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/rank/medical/jeans
 	name = "medical doctor's jeans"
@@ -243,6 +332,9 @@
 	icon = 'icons/clothing/uniform/workwear/dept_medical/medicalj.dmi'
 	icon_state = "medicalj"
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 
 /obj/item/clothing/under/rank/medical/fem_jeans
 	name = "medical doctor's jeans"
@@ -250,6 +342,9 @@
 	icon = 'icons/clothing/uniform/workwear/dept_medical/medicaljf.dmi'
 	icon_state = "medicaljf"
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/rank/medical/skirt_pleated
 	name = "medical doctor's pleated skirt"
@@ -257,12 +352,16 @@
 	icon = 'icons/clothing/uniform/workwear/dept_medical/medical_skirt.dmi'
 	icon_state = "medical_skirt"
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/rank/medical/turtleneck
 	name = "medical turtleneck"
 	desc = "It's a stylish turtleneck made of bioresistant fiber. Look good, save lives- what more could you want?"
 	icon = 'icons/clothing/uniform/workwear/dept_medical/turtle_med.dmi'
 	icon_state = "turtle_med"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -271,6 +370,9 @@
 	desc = "It's a stylish turtleneck made of bioresistant fiber. Look good, save lives- what more could you want?"
 	icon = 'icons/clothing/uniform/workwear/dept_medical/turtle_med_fem.dmi'
 	icon_state = "turtle_med_fem"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/rank/medical/paramedic
 	name = "short sleeve medical jumpsuit"
@@ -278,6 +380,8 @@
 	icon = 'icons/clothing/uniform/workwear/dept_medical/medical_short.dmi'
 	icon_state = "medical_short"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /**
@@ -290,6 +394,9 @@
 	icon = 'icons/clothing/uniform/workwear/dept_medical/scrubsblue.dmi'
 	icon_state = "scrubsblue"
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 
 /obj/item/clothing/under/rank/medical/scrubs_fem
 	name = "blue scrubs"
@@ -297,6 +404,9 @@
 	icon = 'icons/clothing/uniform/workwear/dept_medical/scrubsblue_fem.dmi'
 	icon_state = "scrubsblue_fem"
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/rank/medical/scrubs/green
 	name = "green scrubs"
@@ -304,6 +414,9 @@
 	icon = 'icons/clothing/uniform/workwear/dept_medical/scrubsgreen.dmi'
 	icon_state = "scrubsgreen"
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 
 /obj/item/clothing/under/rank/medical/scrubs_fem/green
 	name = "green scrubs"
@@ -311,6 +424,9 @@
 	icon = 'icons/clothing/uniform/workwear/dept_medical/scrubsgreen_fem.dmi'
 	icon_state = "scrubsgreen_fem"
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/rank/medical/scrubs/purple
 	name = "purple scrubs"
@@ -318,6 +434,9 @@
 	icon = 'icons/clothing/uniform/workwear/dept_medical/scrubspurple.dmi'
 	icon_state = "scrubspurple"
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 
 /obj/item/clothing/under/rank/medical/scrubs_fem/purple
 	name = "purple scrubs"
@@ -325,6 +444,9 @@
 	icon = 'icons/clothing/uniform/workwear/dept_medical/scrubspurple_fem.dmi'
 	icon_state = "scrubspurple_fem"
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/rank/medical/scrubs/black
 	name = "black scrubs"
@@ -332,6 +454,9 @@
 	icon = 'icons/clothing/uniform/workwear/dept_medical/scrubsblack.dmi'
 	icon_state = "scrubsblack"
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 
 /obj/item/clothing/under/rank/medical/scrubs_fem/black
 	name = "black scrubs"
@@ -339,6 +464,9 @@
 	icon = 'icons/clothing/uniform/workwear/dept_medical/scrubsblack_fem.dmi'
 	icon_state = "scrubsblack_fem"
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/rank/medical/scrubs/navyblue
 	name = "navy blue scrubs"
@@ -346,6 +474,9 @@
 	icon = 'icons/clothing/uniform/workwear/dept_medical/scrubsnavyblue.dmi'
 	icon_state = "scrubsnavyblue"
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 
 /obj/item/clothing/under/rank/medical/scrubs_fem/navyblue
 	name = "navy blue scrubs"
@@ -353,6 +484,9 @@
 	icon = 'icons/clothing/uniform/workwear/dept_medical/scrubsnavyblue_fem.dmi'
 	icon_state = "scrubsnavyblue_fem"
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /**
  * Psychiatrist
@@ -363,18 +497,27 @@
 	name = "psychiatrist's jumpsuit"
 	icon = 'icons/clothing/uniform/workwear/dept_medical/psych.dmi'
 	icon_state = "psych"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/rank/psych/turtleneck
 	desc = "A turqouise turtleneck and a pair of dark blue slacks, belonging to a psychologist."
 	name = "psychologist's turtleneck"
 	icon = 'icons/clothing/uniform/workwear/dept_medical/psychturtle.dmi'
 	icon_state = "psychturtle"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 
 /obj/item/clothing/under/rank/psych/turtleneck_fem
 	name = "psychologist's turtleneck"
 	desc = "A turqouise turtleneck and a pair of dark blue slacks, belonging to a psychologist."
 	icon = 'icons/clothing/uniform/workwear/dept_medical/psychturtle_fem.dmi'
 	icon_state = "psychturtle_fem"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /**
  * Paramedic
@@ -385,7 +528,10 @@
 	desc = "A dark jumpsuit for those brave souls who have to deal with a CMO who thinks they're the do everything person."
 	icon = 'icons/clothing/uniform/workwear/dept_medical/paramedic-dark.dmi'
 	icon_state = "paramedic-dark"
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI, BODYTYPE_VOX)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
 
 /obj/item/clothing/under/parameduniskirtdark
 	name = "Paramedic Uniskirt"
@@ -393,15 +539,23 @@
 	icon = 'icons/clothing/uniform/workwear/dept_medical/paramedic-dark_skirt.dmi'
 	icon_state = "paramedic-dark_skirt"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/paramedunilight
 	name = "\improper Paramedic Uniform"
 	desc = "A light jumpsuit for those brave souls who have to deal with a CMO who thinks they're the do everything person."
 	icon_state = "paramedic-light"
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 
 /obj/item/clothing/under/parameduniskirtlight
 	name = "\improper Paramedic Uniskirt"
 	desc = "A light jumpskirt for those brave souls who have to deal with a CMO who thinks they're the do everything person."
 	icon_state = "paramedic_skirt"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
