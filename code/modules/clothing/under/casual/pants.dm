@@ -139,47 +139,6 @@
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
-/obj/item/clothing/under/pants/track
-	name = "track pants"
-	desc = "A pair of track pants, for the athletic."
-	icon = 'icons/clothing/uniform/casual/jeans/trackpants.dmi'
-	icon_state = "trackpants"
-	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/pants/track/blue
-	name = "blue track pants"
-	icon = 'icons/clothing/uniform/casual/jeans/trackpantsblue.dmi'
-	icon_state = "trackpantsblue"
-	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/pants/track/green
-	name = "green track pants"
-	icon = 'icons/clothing/uniform/casual/jeans/trackpantsgreen.dmi'
-	icon_state = "trackpantsgreen"
-	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/pants/track/white
-	name = "white track pants"
-	icon = 'icons/clothing/uniform/casual/jeans/trackpantswhite.dmi'
-	icon_state = "trackpantswhite"
-	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/pants/track/red
-	name = "red track pants"
-	icon = 'icons/clothing/uniform/casual/jeans/trackpantsred.dmi'
-	icon_state = "trackpantsred"
-	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
 /obj/item/clothing/under/pants/khaki
 	name = "khaki pants"
 	desc = "A pair of dust beige khaki pants."
@@ -223,6 +182,49 @@
 	icon_state = "yogapants"
 	addblends = "yogapants_a"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+//* Track Pants *//
+
+/obj/item/clothing/under/pants/track
+	name = "track pants"
+	desc = "A pair of track pants, for the athletic."
+	icon = 'icons/clothing/uniform/casual/jeans/trackpants.dmi'
+	icon_state = "trackpants"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/pants/track/blue
+	name = "blue track pants"
+	icon = 'icons/clothing/uniform/casual/jeans/trackpants.dmi'
+	icon_state = "trackpantsblue"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/pants/track/green
+	name = "green track pants"
+	icon = 'icons/clothing/uniform/casual/jeans/trackpants.dmi'
+	icon_state = "trackpantsgreen"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/pants/track/white
+	name = "white track pants"
+	icon = 'icons/clothing/uniform/casual/jeans/trackpants.dmi'
+	icon_state = "trackpantswhite"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/pants/track/red
+	name = "red track pants"
+	icon = 'icons/clothing/uniform/casual/jeans/trackpants.dmi'
+	icon_state = "trackpantsred"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
