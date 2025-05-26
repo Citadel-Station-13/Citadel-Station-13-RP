@@ -8,7 +8,7 @@
 	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most."
 	icon = 'icons/clothing/uniform/workwear/replika/arar.dmi'
 	icon_state = "arar"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -18,7 +18,7 @@
 	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most."
 	icon = 'icons/clothing/uniform/workwear/replika/lstr.dmi'
 	icon_state = "lstr"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -28,7 +28,7 @@
 	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most."
 	icon = 'icons/clothing/uniform/workwear/replika/sakr.dmi'
 	icon_state = "sakr"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -38,7 +38,7 @@
 	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most."
 	icon = 'icons/clothing/uniform/workwear/replika/fklr.dmi'
 	icon_state = "fklr"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -48,7 +48,7 @@
 	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most."
 	icon = 'icons/clothing/uniform/workwear/replika/eulr.dmi'
 	icon_state = "eulr"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -58,7 +58,7 @@
 	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most."
 	icon = 'icons/clothing/uniform/workwear/replika/klbr.dmi'
 	icon_state = "klbr"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -68,7 +68,7 @@
 	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most."
 	icon = 'icons/clothing/uniform/workwear/replika/stcr.dmi'
 	icon_state = "stcr"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -78,7 +78,7 @@
 	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most."
 	icon = 'icons/clothing/uniform/workwear/replika/adlr.dmi'
 	icon_state = "adlr"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -88,7 +88,7 @@
 	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most."
 	icon = 'icons/clothing/uniform/workwear/replika/lstr_alt.dmi'
 	icon_state = "lstr_alt"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -97,7 +97,7 @@
 	desc = "A tight-fitting black uniform with a narrow skirt and striking crimson trim."
 	icon = 'icons/clothing/uniform/workwear/replika/gestalt_skirt.dmi'
 	icon_state = "gestalt_skirt"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -106,7 +106,7 @@
 	desc = "A tight-fitting black uniform with striking crimson trim."
 	icon = 'icons/clothing/uniform/workwear/replika/gestalt.dmi'
 	icon_state = "gestalt"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -115,7 +115,7 @@
 	desc = "A tight-fitting black uniform with striking crimson trim."
 	icon = 'icons/clothing/uniform/workwear/replika/gestalt_fem.dmi'
 	icon_state = "gestalt_fem"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -124,6 +124,6 @@
 	desc = "A tight-fitting, sleeveless single-piece black uniform with striking crimson trim."
 	icon = 'icons/clothing/uniform/workwear/replika/gestalt_sleeveless.dmi'
 	icon_state = "gestalt_sleeveless"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
