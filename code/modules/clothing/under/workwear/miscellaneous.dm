@@ -10,6 +10,9 @@
 	icon_state = "npass"
 	body_cover_flags = 0
 	equip_sound = null
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/gear_harness
 	name = "gear harness"
@@ -17,6 +20,9 @@
 	icon = 'icons/clothing/uniform/workwear/gear_harness.dmi'
 	icon_state = "gear_harness"
 	body_cover_flags = NONE
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI, BODYTYPE_UNATHI_DIGI)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/gear_harness/style_repick_query(mob/user)
 	. = ..()
@@ -43,7 +49,7 @@
 /obj/item/clothing/under/space
 	name = "\improper NASA jumpsuit"
 	desc = "It has a NASA logo on it and is made of space-proofed materials."
-	icon = 'icons/clothing/uniform/workwear/jumpsuit/jumpsuit_black.dmi'
+	icon = 'icons/clothing/uniform/workwear/jumpsuit/black.dmi'
 	icon_state = "black"
 	w_class = WEIGHT_CLASS_BULKY//bulky item
 	gas_transfer_coefficient = 0.01
@@ -51,6 +57,9 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	cold_protection_cover = UPPER_TORSO | LOWER_TORSO | LEGS | ARMS //Needs gloves and shoes with cold protection to be fully protected.
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI, BODYTYPE_VOX)
+	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 
 //Reuses spritesheet
 //Admin abuse suit
@@ -66,15 +75,24 @@
 	cold_protection_cover = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
+	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI, BODYTYPE_UNATHI_DIGI)
 
 /obj/item/clothing/under/smooth_gray
 	name = "smooth gray jumpsuit"
 	desc = "An ironed version of the famous, bold, and bald apparel. As smooth as it looks, it does not guarantee being able to slip away."
 	icon = 'icons/clothing/uniform/workwear/gray_smooth_jumpsuit.dmi'
 	icon_state = "gray_smooth_jumpsuit"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/tracksuit_blue
 	name = "blue tracksuit"
 	desc = "A dark blue tracksuit. It calls to mind images of excercise, particularly squats."
 	icon = 'icons/clothing/uniform/workwear/tracksuit_blue.dmi'
 	icon_state = "tracksuit_blue"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
