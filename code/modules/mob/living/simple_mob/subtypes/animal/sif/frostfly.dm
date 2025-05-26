@@ -48,7 +48,7 @@
 	var/energy = 100
 	var/max_energy = 100
 
-	movement_cooldown = 0.5
+	movement_base_speed = 10 / 0.5
 
 	legacy_melee_damage_lower = 5
 	legacy_melee_damage_upper = 10
@@ -91,7 +91,7 @@
 	say_escalate = list("Rszt!")
 
 	threaten_sound = 'sound/effects/refill.ogg'
-	stand_down_sound = /datum/soundbyte/grouped/sparks
+	stand_down_sound = /datum/soundbyte/sparks
 
 /mob/living/simple_mob/animal/sif/frostfly/handle_special()
 	..()

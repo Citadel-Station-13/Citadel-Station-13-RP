@@ -7,6 +7,10 @@
 "ax" = (
 /turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/outpost)
+"aR" = (
+/mob/living/simple_mob/mechanical/hivebot,
+/turf/simulated/floor/cult,
+/area/sector/sky_planet/outpost)
 "aZ" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -43,7 +47,7 @@
 /turf/simulated/wall/solidrock,
 /area/sector/sky_planet/rock)
 "fi" = (
-/mob/living/simple_mob/mechanical/cyber_horror/tajaran,
+/mob/living/simple_mob/mechanical/hivebot/ranged_damage,
 /turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
 "fn" = (
@@ -165,10 +169,6 @@
 "pg" = (
 /turf/simulated/mineral/cave,
 /area/sector/sky_planet/ground)
-"px" = (
-/mob/living/simple_mob/mechanical/cyber_horror/tajaran,
-/turf/simulated/floor/cult,
-/area/sector/sky_planet/outpost)
 "pW" = (
 /obj/structure/sandbag,
 /turf/simulated/floor/outdoors/ash_sand/outdoors,
@@ -408,11 +408,15 @@
 /turf/simulated/floor/tiled/steel_dirty/indoors,
 /area/sector/sky_planet/outpost)
 "No" = (
-/mob/living/simple_mob/mechanical/cyber_horror/tajaran,
+/mob/living/simple_mob/mechanical/hivebot/ranged_damage,
 /turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
 "Nr" = (
 /obj/machinery/mining/drill,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
+/area/sector/sky_planet/ground)
+"NJ" = (
+/mob/living/simple_mob/mechanical/hivebot,
 /turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
 "NV" = (
@@ -19315,7 +19319,7 @@ jr
 Qm
 Qm
 Qm
-Qm
+NJ
 hm
 jr
 jr
@@ -19702,7 +19706,7 @@ Qm
 Qm
 Qm
 Qm
-fi
+Qm
 jr
 Qm
 hm
@@ -20087,7 +20091,7 @@ Pu
 jr
 jr
 jr
-fi
+NJ
 hm
 Qm
 jr
@@ -24170,8 +24174,8 @@ gV
 gV
 mc
 VG
-px
 VG
+aR
 IW
 IW
 IW
@@ -24557,7 +24561,7 @@ Qm
 gV
 gV
 mc
-px
+aR
 VG
 VG
 Fg

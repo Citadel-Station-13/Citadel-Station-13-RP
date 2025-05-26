@@ -81,7 +81,7 @@
 	. = ..()
 	if(!.)
 		return
-	M.setClickCooldown(M.get_attack_speed())
+	M.setClickCooldownLegacy(M.get_attack_speed_legacy())
 	visible_message("<span class='danger'>[M] begins to tear at \the [src]!</span>")
 	if(!do_after(M, escape_time, src, mobility_flags = MOBILITY_CAN_RESIST))
 		return FALSE

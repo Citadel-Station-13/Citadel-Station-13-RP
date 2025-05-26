@@ -38,7 +38,7 @@
 	legacy_melee_damage_lower = 5
 	legacy_melee_damage_upper = 10
 
-	movement_cooldown = 5
+	movement_base_speed = 10 / 5
 
 	meat_amount = 4
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/grubmeat

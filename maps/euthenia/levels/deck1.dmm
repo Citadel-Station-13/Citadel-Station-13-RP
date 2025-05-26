@@ -14602,7 +14602,7 @@
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck1)
 "qPe" = (
-/obj/spawner/window/low_wall/borosillicate/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "qPq" = (
@@ -16713,7 +16713,7 @@
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_one/aft/starboard)
 "txV" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -18594,7 +18594,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_6)
 "vsN" = (
-/obj/spawner/window/low_wall/borosillicate/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar_backroom)
 "vsV" = (
@@ -20661,7 +20661,7 @@
 /turf/simulated/open,
 /area/main_map/maintenance/deck_one)
 "xHO" = (
-/obj/spawner/window/low_wall/borosillicate/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/kitchen)
 "xJO" = (

@@ -5,8 +5,13 @@
  */
 
 import { clamp01, scale } from 'common/math';
+
 import { pingFail, pingSuccess } from './actions';
-import { PING_MAX_FAILS, PING_ROUNDTRIP_BEST, PING_ROUNDTRIP_WORST } from './constants';
+import {
+  PING_MAX_FAILS,
+  PING_ROUNDTRIP_BEST,
+  PING_ROUNDTRIP_WORST,
+} from './constants';
 
 type PingState = {
   roundtrip: number | undefined;

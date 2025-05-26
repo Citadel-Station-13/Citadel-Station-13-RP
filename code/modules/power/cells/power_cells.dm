@@ -107,7 +107,7 @@
 	. = ..()
 	add_overlay("[icon_state]1")
 
-/obj/item/fbp_backup_cell/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/fbp_backup_cell/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(!used && ishuman(target))

@@ -54,7 +54,7 @@
 		if(cell.use(power_usage) != power_usage) //We weren't able to use our full power_usage amount!
 			visible_message(SPAN_WARNING("\The [src] flickers before going dull."))
 			set_light(FALSE)
-			playsound(src.loc, /datum/soundbyte/grouped/sparks, 10, 1, -3) //Small cue that your light went dull in your pocket.
+			playsound(src.loc, /datum/soundbyte/sparks, 10, 1, -3) //Small cue that your light went dull in your pocket.
 			on = FALSE
 			update_appearance()
 			return PROCESS_KILL
@@ -140,7 +140,7 @@
 		O.emp_act(severity)
 	..()
 
-/obj/item/flashlight/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/flashlight/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(on && user.zone_sel.selecting == O_EYES && isliving(target))
@@ -191,7 +191,7 @@
 				else
 					to_chat(user, SPAN_NOTICE("\The [L]'s pupils narrow."))
 
-			user.setClickCooldown(user.get_attack_speed(src)) //can be used offensively
+			user.setClickCooldownLegacy(user.get_attack_speed_legacy(src)) //can be used offensively
 			L.flash_eyes()
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()

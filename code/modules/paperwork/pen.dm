@@ -44,7 +44,7 @@
 		return
 	if(user.next_move > world.time)
 		return
-	user.setClickCooldown(1 SECOND)
+	user.setClickCooldownLegacy(1 SECOND)
 	to_chat(user, "<span class='notice'>Click.</span>")
 	playsound(src, 'sound/items/penclick.ogg', 50, 1)
 
@@ -124,7 +124,7 @@
 	. = ..()
 	create_reagents(30)
 
-/obj/item/pen/reagent/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/pen/reagent/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 	var/mob/living/L = target
 	if(istype(L))

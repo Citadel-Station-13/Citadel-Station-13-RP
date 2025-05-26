@@ -182,7 +182,7 @@
 	item_state = "multiverse"
 	slot_flags = SLOT_BELT
 
-/obj/item/nullrod/claymore/multiverse/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/nullrod/claymore/multiverse/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	damage_force = rand(1, 30)
 	return ..()
 
@@ -374,7 +374,7 @@
 	icon_state = "bostaff0"
 	item_state = "bostaff0"
 
-/obj/item/nullrod/claymore/bostaff/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/nullrod/claymore/bostaff/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	add_fingerprint(user)
 	if(!issilicon(target))
 		return ..()
@@ -444,7 +444,7 @@
 	if(GLOB.deity)
 		deity_name = GLOB.deity
 
-/obj/item/nullrod/rosary/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/nullrod/rosary/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(!isliving(target))

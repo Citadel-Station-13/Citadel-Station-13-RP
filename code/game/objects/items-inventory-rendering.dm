@@ -320,7 +320,7 @@
 	var/list/additional = render_additional(M, icon_used, state_used, layer_used, dim_x, dim_y, align_y, bodytype, inhands, slot_meta)
 	// todo: signal with (args, add)
 	// todo: args' indices should be defines
-	var/no_render = inhands? (worn_render_flags & WORN_RENDER_INHAND_NO_RENDER) : ((worn_render_flags & WORN_RENDER_SLOT_NO_RENDER) || CHECK_BODYTYPE(worn_bodytypes_invisible, bodytype))
+	var/no_render = inhands? (worn_render_flags & WORN_RENDER_INHAND_NO_RENDER) : ((worn_render_flags & WORN_RENDER_SLOT_NO_RENDER) || worn_bodytypes_invisible?.contains(bodytype))
 	var/mutable_appearance/MA
 	// worn_state_guard makes us not render if we'd render the same as in-inventory icon.
 	if(no_render)		// don't bother
@@ -423,7 +423,7 @@
 	//* inventory slot defaults
 	else if(inhands? (worn_render_flags & WORN_RENDER_INHAND_ALLOW_DEFAULT) : (worn_render_flags & WORN_RENDER_SLOT_ALLOW_DEFAULT))
 		var/list/resolved = slot_meta.resolve_default_assets(bodytype, data[WORN_DATA_STATE], M, src, inhand_default_type)
-		if(!resolved && (bodytype != BODYTYPE_DEFAULT) && CHECK_BODYTYPE(worn_bodytypes_fallback, bodytype))
+		if(!resolved && (bodytype != BODYTYPE_DEFAULT) && worn_bodytypes_fallback?.contains(bodytype))
 			// attempt 2 - use fallback if available
 			if(!(slot_meta.handle_worn_fallback(bodytype, data)))
 				// attempt 3 - convert to default if specified to convert
@@ -436,7 +436,7 @@
 	//* Now, the actual intended render system.
 	if(!data[WORN_DATA_ICON])
 		// grab icon based on priority
-		if(!inhands && !CHECK_BODYTYPE(worn_bodytypes, bodytype) && CHECK_BODYTYPE(worn_bodytypes_fallback, bodytype) && slot_meta.handle_worn_fallback(bodytype, data))
+		if(!inhands && !worn_bodytypes?.contains(bodytype) && worn_bodytypes_fallback?.contains(bodytype) && slot_meta.handle_worn_fallback(bodytype, data))
 			// special: if bodytypes isn't in, and species has fallback
 			// .. well don't do anything as handle_sprite_fallback will write to the data list.
 		else if(inhands && inhand_icon)
@@ -494,7 +494,7 @@
 	// PRIVATE_PROC(TRUE)
 	if(inhands)
 		return "[base_worn_state(inhands, slot_key, bodytype)][(worn_render_flags & WORN_RENDER_INHAND_ONE_FOR_ALL)? "_all" : "_[slot_key]"]"
-	return "[base_worn_state(inhands, slot_key, bodytype)][(worn_render_flags & WORN_RENDER_SLOT_ONE_FOR_ALL)? "_all" : "_[slot_key]"][((bodytype != BODYTYPE_DEFAULT) && CHECK_BODYTYPE(worn_bodytypes, bodytype))? "_[bodytype_to_string(bodytype)]" : ""]"
+	return "[base_worn_state(inhands, slot_key, bodytype)][(worn_render_flags & WORN_RENDER_SLOT_ONE_FOR_ALL)? "_all" : "_[slot_key]"][((bodytype != BODYTYPE_DEFAULT) && worn_bodytypes?.contains(bodytype))? "_[bodytype_to_string(bodytype)]" : ""]"
 
 /obj/item/proc/base_worn_state(inhands, slot_key, bodytype)
 	if(inhands)

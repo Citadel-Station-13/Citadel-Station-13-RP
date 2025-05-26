@@ -120,7 +120,7 @@
 	if(bcell && bcell.charge > hitcost)
 		status = !status
 		to_chat(user, "<span class='notice'>[src] is now [status ? "on" : "off"].</span>")
-		playsound(loc, /datum/soundbyte/grouped/sparks, 75, 1, -1)
+		playsound(loc, /datum/soundbyte/sparks, 75, 1, -1)
 		update_icon()
 	else
 		status = 0
@@ -130,7 +130,7 @@
 			to_chat(user, "<span class='warning'>[src] is out of charge.</span>")
 	add_fingerprint(user)
 
-/obj/item/melee/baton/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/melee/baton/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(status && (MUTATION_CLUMSY in user.mutations) && prob(50))
 		to_chat(user, "<span class='danger'>You accidentally hit yourself with the [src]!</span>")
 		user.afflict_paralyze(20 * 30)

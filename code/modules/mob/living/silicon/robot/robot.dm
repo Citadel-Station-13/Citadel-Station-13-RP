@@ -143,8 +143,6 @@
 	var/lockcharge
 	/// Controls whether or not the borg is actually locked down.
 	var/lockdown = FALSE
-	/// Cause sec borgs gotta go fast //No they dont!
-	var/speed = 0
 	/// Used to determine if a borg shows up on the robotics console.  Setting to one hides them.
 	var/scrambledcodes = FALSE
 	/// The number of known entities currently accessing the internal camera
@@ -172,6 +170,10 @@
 	var/original_icon = 'icons/mob/robots.dmi'
 	var/sitting = FALSE
 	var/bellyup = FALSE
+
+	//* Movement *//
+	/// Base movement speed in tiles / second
+	var/movement_base_speed = 4
 
 /mob/living/silicon/robot/Initialize(mapload, unfinished = FALSE)
 	spark_system = new /datum/effect_system/spark_spread()
@@ -599,7 +601,7 @@
 			return
 		var/obj/item/weldingtool/WT = W
 		if (WT.remove_fuel(0))
-			user.setClickCooldown(user.get_attack_speed(WT))
+			user.setClickCooldownLegacy(user.get_attack_speed_legacy(WT))
 			adjustBruteLoss(-30)
 			update_health()
 			add_fingerprint(user)
@@ -615,7 +617,7 @@
 			return
 		var/obj/item/stack/cable_coil/coil = W
 		if (coil.use(1))
-			user.setClickCooldown(user.get_attack_speed(W))
+			user.setClickCooldownLegacy(user.get_attack_speed_legacy(W))
 			adjustFireLoss(-30)
 			update_health()
 			for(var/mob/O in viewers(user, null))

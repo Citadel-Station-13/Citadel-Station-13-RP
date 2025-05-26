@@ -246,9 +246,9 @@
 	reqs = list(
 		/obj/item/stock_parts/matter_bin = 1,
 		/obj/item/grenade/plastic/c4 = 1,
-		/obj/item/grenade/chem_grenade = 2
+		/obj/item/grenade/simple/chemical = 2
 	)
-	parts = list(/obj/item/stock_parts/matter_bin = 1, /obj/item/grenade/chem_grenade = 2)
+	parts = list(/obj/item/stock_parts/matter_bin = 1, /obj/item/grenade/simple/chemical = 2)
 	time = 30
 	category = CAT_WEAPONRY
 	subcategory = CAT_OTHER
@@ -259,9 +259,9 @@
 	reqs = list(
 		/obj/item/stock_parts/matter_bin = 1,
 		/obj/item/gibtonite = 1,
-		/obj/item/grenade/chem_grenade = 2
+		/obj/item/grenade/simple/chemical = 2
 	)
-	parts = list(/obj/item/stock_parts/matter_bin = 1, /obj/item/grenade/chem_grenade = 2)
+	parts = list(/obj/item/stock_parts/matter_bin = 1, /obj/item/grenade/simple/chemical = 2)
 	time = 50
 	category = CAT_WEAPONRY
 	subcategory = CAT_OTHER
@@ -290,7 +290,7 @@
 
 /datum/crafting_recipe/IED
 	name = "IED"
-	result = /obj/item/grenade/explosive/ied
+	result = /obj/item/grenade/simple/explosive/ied
 	reqs = list(/datum/reagent/fuel = 50,
 				/obj/item/stack/cable_coil = 1,
 				/obj/item/assembly/igniter = 1,
@@ -503,7 +503,7 @@
 /datum/crafting_recipe/improvisedslug
 	name = "Improvised Shotgun Shell"
 	result = /obj/item/ammo_casing/a12g/improvised
-	reqs = list(/obj/item/grenade/chem_grenade = 1,
+	reqs = list(/obj/item/grenade/simple/chemical = 1,
 				/obj/item/stack/material/steel = 1,
 				/obj/item/stack/cable_coil = 1,
 				/datum/reagent/fuel = 10)

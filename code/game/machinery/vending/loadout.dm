@@ -545,6 +545,7 @@
 		/obj/item/clothing/under/qipao = 5,
 		/obj/item/clothing/under/qipao/white = 5,
 		/obj/item/clothing/under/qipao/red = 5,
+		/obj/item/clothing/under/sleeveless_qipao = 5,
 		/obj/item/clothing/under/moderncoat = 5,
 		/obj/item/clothing/under/permit = 5,
 		/obj/item/clothing/under/oldwoman = 5,
