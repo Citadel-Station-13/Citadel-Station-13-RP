@@ -347,10 +347,12 @@
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
+//* Utility Pants *//
+
 /obj/item/clothing/under/pants/utility
 	name = "green utility pants"
 	desc = "A pair of pleather reinforced green work pants."
-	icon = 'icons/clothing/uniform/casual/jeans/workpants_green.dmi'
+	icon = 'icons/clothing/uniform/casual/jeans/wormpants.dmi'
 	icon_state = "workpants_green"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -359,7 +361,7 @@
 /obj/item/clothing/under/pants/utility/orange
 	name = "orange utility pants"
 	desc = "A pair of pleather reinforced orange work pants."
-	icon = 'icons/clothing/uniform/casual/jeans/workpants_orange.dmi'
+	icon = 'icons/clothing/uniform/casual/jeans/wormpants.dmi'
 	icon_state = "workpants_orange"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -368,7 +370,7 @@
 /obj/item/clothing/under/pants/utility/blue
 	name = "blue utility pants"
 	desc = "A pair of pleather reinforced blue work pants."
-	icon = 'icons/clothing/uniform/casual/jeans/workpants_blue.dmi'
+	icon = 'icons/clothing/uniform/casual/jeans/wormpants.dmi'
 	icon_state = "workpants_blue"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -377,7 +379,7 @@
 /obj/item/clothing/under/pants/utility/white
 	name = "white utility pants"
 	desc = "A pair of pleather reinforced white work pants."
-	icon = 'icons/clothing/uniform/casual/jeans/workpants_white.dmi'
+	icon = 'icons/clothing/uniform/casual/jeans/wormpants.dmi'
 	icon_state = "workpants_white"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -386,7 +388,7 @@
 /obj/item/clothing/under/pants/utility/red
 	name = "red utility pants"
 	desc = "A pair of pleather reinforced red work pants."
-	icon = 'icons/clothing/uniform/casual/jeans/workpants_red.dmi'
+	icon = 'icons/clothing/uniform/casual/jeans/wormpants.dmi'
 	icon_state = "workpants_red"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
