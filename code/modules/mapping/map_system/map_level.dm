@@ -440,7 +440,7 @@
 	var/old = get_attribute(attribute)
 	LAZYREMOVE(attributes, attribute)
 	if(loaded)
-		SSmapping.on_attribute_set(src, attribute, old, null)
+		SSmapping.on_level_attribute_set(src, attribute, old, null)
 
 //* Rebuilds / Transitions *//
 
@@ -448,19 +448,37 @@
  * expensive as hell, rebuild all dirs
  * * use after loading into an existing map that didn't have us prior
  * * will block / sleep!
+ *
+ * @params
+ * * reciprocal - order the level in that dir to rebuild towards us.
+ *                this doesn't always make sense to enable, because
+ *                it's possible (albeit rare) that a level is one-way
+ *                linked and the other level doesn't link back.
  */
-/datum/map_level/proc/rebuild_multiz()
+/datum/map_level/proc/rebuild_multiz(reciprocal)
 	for(var/dir in list(NORTH, SOUTH, EAST, WEST, UP, DOWN))
 		rebuild_multiz_in_dir(dir)
+		if(reciprocal)
+			var/datum/map_level/partner = level_in_dir(dir)
+			partner?.rebuild_multiz_in_dir(turn(dir, 180))
 
 /**
  * expensive as hell, teardown all dirs
  * * use when being unloaded or something
  * * will block / sleep!
+ *
+ * @params
+ * * reciprocal - order the level in that dir to teardown our dir.
+ *                this doesn't always make sense to enable, because
+ *                it's possible (albeit rare) that a level is one-way
+ *                linked and the other level doesn't link back.
  */
-/datum/map_level/proc/teardown_multiz()
+/datum/map_level/proc/teardown_multiz(reciprocal)
 	for(var/dir in list(NORTH, SOUTH, EAST, WEST, UP, DOWN))
 		teardown_multiz_in_dir(dir)
+		if(reciprocal)
+			var/datum/map_level/partner = level_in_dir(dir)
+			partner?.teardown_multiz_in_dir(turn(dir, 180))
 
 /**
  * * will block / sleep!
@@ -495,32 +513,6 @@
 	if(dir)
 		ASSERT((dir & (NORTH|SOUTH|EAST|WEST)) == dir)
 	#warn impl
-
-/**
- * Rebuild turfs up/down of us
- * This will sleep
- */
-#warn kill
-/datum/map_level/proc/rebuild_vertical_turfs()
-	for(var/datum/map_level/L in list(
-		level_in_dir(UP),
-		level_in_dir(DOWN)
-	))
-		L.rebuild_turfs()
-
-/**
- * Rebuild turfs adjacent of us
- * This will sleep
- */
-#warn kill
-/datum/map_level/proc/rebuild_adjacent_levels()
-	for(var/datum/map_level/L in list(
-		level_in_dir(NORTH),
-		level_in_dir(SOUTH),
-		level_in_dir(EAST),
-		level_in_dir(WEST)
-	))
-		L.rebuild_transitions()
 
 /**
  * call to rebuild all turfs for horizontal transitions
