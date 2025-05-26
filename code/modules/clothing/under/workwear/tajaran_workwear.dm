@@ -7,7 +7,7 @@
 	desc = "A rough but thin outfit, providing air flow but also protection from working hazards."
 	icon = 'icons/clothing/uniform/workwear/tajaran/taj_labor.dmi'
 	icon_state = "taj_labor"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -16,8 +16,8 @@
 	desc = "Overalls meant for Nanotrasen employees of xeno descent, modified to prevent overheating."
 	icon = 'icons/clothing/uniform/workwear/tajaran/ntoveralls.dmi'
 	icon_state = "ntoveralls"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/tajaran/matake
@@ -25,7 +25,7 @@
 	desc = "Simple linen garments worn by Mata'ke priests."
 	icon = 'icons/clothing/uniform/workwear/tajaran/matakeuniform.dmi'
 	icon_state = "matakeuniform"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -34,7 +34,7 @@
 	desc = "A military uniform used by the forces of the People's Republic of Adhomai orbital fleet."
 	icon = 'icons/clothing/uniform/workwear/tajaran/cosmonaut.dmi'
 	icon_state = "cosmonaut"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -43,7 +43,7 @@
 	desc = "A military uniform used by Party Commissars attached to kosmostrelki units."
 	icon = 'icons/clothing/uniform/workwear/tajaran/space_commissar.dmi'
 	icon_state = "space_commissar"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -52,7 +52,7 @@
 	desc = "A military uniform used by a captain of the People's Republic of Adhomai orbital fleet."
 	icon = 'icons/clothing/uniform/workwear/tajaran/orbital_captain.dmi'
 	icon_state = "orbital_captain"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -61,7 +61,7 @@
 	desc = "A pratical uniform used by the crew of the orbital fleet's database freighters."
 	icon = 'icons/clothing/uniform/workwear/tajaran/database_freighter.dmi'
 	icon_state = "database_freighter"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -70,7 +70,7 @@
 	desc = "A pratical uniform used by the captains of the orbital fleet's database freighters."
 	icon = 'icons/clothing/uniform/workwear/tajaran/database_freighter_captain.dmi'
 	icon_state = "database_freighter_captain"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -79,14 +79,16 @@
 	desc = "A simple and robust overall used by Adhomian urban workers."
 	icon = 'icons/clothing/uniform/workwear/tajaran/mechanic.dmi'
 	icon_state = "mechanic"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 
 /obj/item/clothing/under/tajaran/raakti_shariim
 	name = "\improper Raakti Shariim uniform"
 	desc = "A blue and lilac adhomian uniform with pale-gold insignia, worn by members of the NKA's Raakti Shariim."
 	icon = 'icons/clothing/uniform/workwear/tajaran/raakti_shariim_uniform.dmi'
 	icon_state = "raakti_shariim_uniform"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -98,7 +100,7 @@
 	icon = 'icons/clothing/uniform/workwear/tajaran/prauniform.dmi'
 	icon_state = "prauniform"
 	armor_type = /datum/armor/station/padded
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -108,7 +110,7 @@
 	icon = 'icons/clothing/uniform/workwear/tajaran/nka_uniform.dmi'
 	icon_state = "nka_uniform"
 	armor_type = /datum/armor/station/padded
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -117,7 +119,7 @@
 	desc = "A military uniform used by the officers of the New Kingdom of Adhomai's army."
 	icon = 'icons/clothing/uniform/workwear/tajaran/nka_commander.dmi'
 	icon_state = "nka_commander"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -126,7 +128,7 @@
 	desc = "A military uniform used by the sailor of the New Kingdom of Adhomai's navy."
 	icon = 'icons/clothing/uniform/workwear/tajaran/nka_sailor.dmi'
 	icon_state = "nka_sailor"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -135,14 +137,14 @@
 	desc = "An olive uniform used by the diplomatic service of the People's Republic of Adhomai."
 	icon = 'icons/clothing/uniform/workwear/tajaran/pra_consular.dmi'
 	icon_state = "pra_consular"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/tajaran/consular/female
 	icon = 'icons/clothing/uniform/workwear/tajaran/pra_con_f.dmi'
 	icon_state = "pra_con_f"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -151,14 +153,14 @@
 	desc = "A grey uniform used by the diplomatic service of the Democratic People's Republic of Adhomai."
 	icon = 'icons/clothing/uniform/workwear/tajaran/dpra_consular.dmi'
 	icon_state = "dpra_consular"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/tajaran/consular/dpra/female
 	icon = 'icons/clothing/uniform/workwear/tajaran/dpra_con_f.dmi'
 	icon_state = "dpra_con_f"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -167,7 +169,7 @@
 	desc = "A blue uniform used by the diplomatic service of the New Kingdom of Adhomai."
 	icon = 'icons/clothing/uniform/workwear/tajaran/nka_consular.dmi'
 	icon_state = "nka_consular"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -177,14 +179,14 @@
 	desc = "Clothes commonly used by Das'nrra's workers. Due to their ubiquitousness, they became a symbol of the common Al'mariist people."
 	icon = 'icons/clothing/uniform/workwear/tajaran/dpra_worker.dmi'
 	icon_state = "dpra_worker"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/tajaran/dpra/alt
 	icon = 'icons/clothing/uniform/workwear/tajaran/dpra_worker_alt.dmi'
 	icon_state = "dpra_worker_alt"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -193,23 +195,23 @@
 	desc = "An uniform used by the crew of the New Kingdom's merchant space ships. It is clearly inspired by the ones used back on Adhomai."
 	icon = 'icons/clothing/uniform/workwear/tajaran/nka_merchant_navy.dmi'
 	icon_state = "nka_merchant_navy"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/tajaran/nka_merchant_navy/alt
 	icon = 'icons/clothing/uniform/workwear/tajaran/nka_merchant_navy_alt.dmi'
 	icon_state = "nka_merchant_navy_alt"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 
 /obj/item/clothing/under/tajaran/nka_merchant_navy/captain
 	name = "his majesty's mercantile flotilla captain uniform"
 	desc = "An uniform used by the captain of the New Kingdom's merchant space ships. Not as fancy as the ones used in the Royal Navy."
 	icon = 'icons/clothing/uniform/workwear/tajaran/nka_merchant_captain.dmi'
 	icon_state = "nka_merchant_captain"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -219,17 +221,17 @@
 	icon = 'icons/clothing/uniform/workwear/tajaran/pvsm_crewman.dmi'
 	icon_state = "pvsm_crewman"
 	armor_type = /datum/armor/station/padded
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 
 /obj/item/clothing/under/tajaran/pvsm/captain
 	name = "people's volunteer spacer militia captain uniform"
 	desc = "A military uniform used by the captains of the People's Volunteer Spacer Militia."
 	icon = 'icons/clothing/uniform/workwear/tajaran/pvsm_captain.dmi'
 	icon_state = "pvsm_captain"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 //Should this be here?
@@ -239,21 +241,21 @@
 	icon = 'icons/clothing/uniform/workwear/tajaran/ala-soldier-civ.dmi'
 	icon_state = "ala-soldier-civ"
 	armor_type = /datum/armor/station/padded
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/tajaran/ala/wraps
 	icon = 'icons/clothing/uniform/workwear/tajaran/ala-grunt-wraps.dmi'
 	icon_state = "ala-grunt-wraps"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/tajaran/ala/black
 	icon = 'icons/clothing/uniform/workwear/tajaran/ala-soldat.dmi'
 	icon_state = "ala-soldat"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -261,7 +263,7 @@
 	name = "adhomai liberation army dress uniform"
 	icon = 'icons/clothing/uniform/workwear/tajaran/ala-soldatdress.dmi'
 	icon_state = "ala-soldatdress"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -270,7 +272,7 @@
 	desc = "A military uniform issued to officers of the adhomai liberation army."
 	icon = 'icons/clothing/uniform/workwear/tajaran/ala-officer.dmi'
 	icon_state = "ala-officer"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -279,7 +281,7 @@
 	desc = "A rugged uniform used by Adhomian archaeologists. It is already covered in dirt and ancient dust."
 	icon = 'icons/clothing/uniform/workwear/tajaran/explorer_uniform.dmi'
 	icon_state = "explorer_uniform"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -288,7 +290,7 @@
 	desc = "A military uniform used by Party Commissars attached to military units."
 	icon = 'icons/clothing/uniform/workwear/tajaran/pracommisar.dmi'
 	icon_state = "pracommisar"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -297,6 +299,6 @@
 	desc = "An uniform used by the agents of the People's Strategic Intelligence Service. The sight of this uniform is feared by most Tajara."
 	icon = 'icons/clothing/uniform/workwear/tajaran/psis.dmi'
 	icon_state = "psis"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
