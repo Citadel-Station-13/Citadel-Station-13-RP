@@ -313,3 +313,34 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+///Natje: Awen Henry
+/obj/item/clothing/under/fluff/wolfgirl
+	name = "Wolfgirl Clothes"
+	desc = "A set of clothes almost identical to those Wolf Girls always wear..."
+	icon = 'icons/clothing/uniform/costume/wolfgirluni.dmi'
+	icon_state = "wolfgirluni"
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+
+/obj/item/clothing/under/batter //I guess we're going OFF limits.
+	name = "Worn baseball outfit"
+	desc = "<b>Purification in progress...</b>"
+	icon = 'icons/clothing/uniform/costume/batter.dmi'
+	icon_state = "batter"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+//Aztectornado:Tron inspired Siren outfit
+/obj/item/clothing/under/fluff/siren
+	name = "Siren Jumpsuit"
+	desc = "An advanced jumpsuit with inlaid neon highlighting, and a port on the back."
+	description_fluff = "Unlike other competitor suits, the Ward Takahashi Siren jumpsuit features a whole host of extra sensors for augmented reality use, and features a non-invasive neural sensor/stimulator for a fully immersive experience."
+	icon = 'icons/clothing/uniform/costume/tronsiren.dmi'
+	icon_state = "tronsiren"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL

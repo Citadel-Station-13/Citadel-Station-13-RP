@@ -41,19 +41,6 @@
     icon = 'icons/vore/custom_clothes_vr.dmi'
     icon_override = 'icons/vore/custom_onmob_vr.dmi'
 
-//Natje: Awen Henry
-/obj/item/clothing/under/fluff/wolfgirl
-	name = "Wolfgirl Clothes"
-	desc = "A set of clothes almost identical to those Wolf Girls always wear..."
-
-	icon = 'icons/vore/custom_clothes_vr.dmi'
-	icon_state = "wolfgirluni"
-	snowflake_worn_state = "wolfgirluni_mob"
-
-	icon_override = 'icons/vore/custom_clothes_vr.dmi'
-	item_state = "wolfgirluni_mob"
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-
 //! ## For general use
 /obj/item/clothing/accessory/fluff/smilepin
 	name = "Smiley Pin"
@@ -258,14 +245,6 @@
 	armor_type = /datum/armor/security/hos
 
 //For general use maybe
-/obj/item/clothing/under/batter //I guess we're going OFF limits.
-	name = "Worn baseball outfit"
-	desc = "<b>Purification in progress...</b>"
-	icon = 'icons/vore/custom_clothes_vr.dmi'
-	icon_override = 'icons/vore/custom_clothes_vr.dmi'
-	icon_state = "batter"
-	item_state = "batter_mob"
-
 /obj/item/clothing/suit/storage/hooded/wintercoat/jessie
 	name = "Handmade Winter Suit"
 	desc = "A durable, but somewhat ragged lower portion of a snow suit fitted for a wolftaur."
@@ -368,22 +347,6 @@
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "gntop"
 
-/obj/item/clothing/under/fluff/gnshorts
-	name = "GN shorts"
-	desc = "Stylish white shorts with pockets, stripes, and even a belt."
-	icon = 'icons/vore/custom_items_vr.dmi'
-	icon_state = "gnshorts"
-	icon_override = 'icons/vore/custom_clothes_vr.dmi'
-	item_state = "gnshorts"
-
-/obj/item/clothing/under/fluff/v_nanovest
-	name = "Varmacorp nanovest"
-	desc = "A nifty little vest optimized for nanite contact."
-	icon = 'icons/vore/custom_clothes_vr.dmi'
-	icon_state = "nanovest"
-	icon_override = 'icons/vore/custom_clothes_vr.dmi'
-	item_state = "nanovest"
-
 //General use
 /obj/item/clothing/suit/storage/fluff/loincloth
 	name = "Loincloth"
@@ -396,17 +359,6 @@
 	item_state = "loincloth"
 
 //Aztectornado:Tron inspired Siren outfit
-/obj/item/clothing/under/fluff/siren
-	name = "Siren Jumpsuit"
-	desc = "An advanced jumpsuit with inlaid neon highlighting, and a port on the back."
-	description_fluff = "Unlike other competitor suits, the Ward Takahashi Siren jumpsuit features a whole host of extra sensors for augmented reality use, and features a non-invasive neural sensor/stimulator for a fully immersive experience."
-
-	icon = 'icons/vore/custom_clothes_vr.dmi'
-	icon_override = 'icons/vore/custom_clothes_vr.dmi'
-	icon_state = "tronsiren"
-	snowflake_worn_state = "tronsiren_mob"
-	item_state = "tronsiren_mob"
-
 /obj/item/clothing/gloves/fluff/siren
 	name = "Siren Gloves"
 	desc = "A set of white and neon blue gloves."

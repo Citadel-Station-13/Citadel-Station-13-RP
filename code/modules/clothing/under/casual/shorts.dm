@@ -81,6 +81,15 @@
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
+/obj/item/clothing/under/fluff/gnshorts
+	name = "GN shorts"
+	desc = "Stylish white shorts with pockets, stripes, and even a belt."
+	icon = 'icons/clothing/uniform/casual/shorts/gnshorts.dmi'
+	icon_state = "gnshorts"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
 //Argh, skirts be below this line -> ------------------------------
 
 /obj/item/clothing/under/skirt

@@ -94,3 +94,12 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/fluff/v_nanovest
+	name = "Varmacorp nanovest"
+	desc = "A nifty little vest optimized for nanite contact."
+	icon = 'icons/clothing/uniform/casual/nanovest.dmi'
+	icon_state = "nanovest"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
