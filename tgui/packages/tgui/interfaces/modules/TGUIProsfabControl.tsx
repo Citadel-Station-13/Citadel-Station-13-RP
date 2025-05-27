@@ -5,12 +5,6 @@
  * @license MIT
  */
 
-
-
-
-
-
-
 import { useLocalState, useModule } from "../../backend";
 import { Box, Button, Collapsible, Dropdown, Input, LabeledList, NoticeBox, NumberInput, ProgressBar, Stack, Table, Tabs } from "../../components";
 import { Section, SectionProps } from "../../components/Section";
@@ -46,12 +40,21 @@ export const generateDynamicButton = (name, mode, actFunction) => {
 };
 
 export const TGUIProsfabControl = (props: TGUILatheControlProps, context) => {
+
   const { data, act } = useModule<TGUIProsfabControlData>(context);
+
   const [category, setCategory] = useLocalState<string>(
     context,
     `${data.$ref}-category`,
-    data.designs.categories.length? data.designs.categories[1] : "General"
+    data.designs.categories.length ? data.designs.categories[1] : "General"
   );
+
+  const [subcategory, setSubCategory] = useLocalState<string>(
+    context,
+    `${data.$ref}-subcategory`,
+    data.designs.subcategories[category].length ? data.designs.subcategories[category][0] : ""
+  );
+
   const [resourcesSelect, setResourcesSelect] = useLocalState<string>(
     context,
     `${data.$ref}-rSelect`,
@@ -70,6 +73,7 @@ export const TGUIProsfabControl = (props: TGUILatheControlProps, context) => {
   };
 
   let resourceRender;
+
 
   switch (resourcesSelect) {
     case "Materials":
@@ -206,8 +210,23 @@ export const TGUIProsfabControl = (props: TGUILatheControlProps, context) => {
                     data.designs.categories.sort((c1, c2) => c1.localeCompare(c2)).map((cat) => (
                       <Tabs.Tab key={cat} fluid color="transparent"
                         selected={cat === category}
-                        onClick={() => setCategory(cat)}>
+                        onClick={() => { setCategory(cat); setSubCategory("") }}>
                         {cat}
+                      </Tabs.Tab>
+                    ))
+                  }
+                </Tabs>
+              </Section>
+            </Stack.Item>
+            <Stack.Item grow={0.3}>
+              <Section fill title="Subcategories" scrollable>
+                <Tabs vertical>
+                  {
+                    data.designs.subcategories[category].sort((c1, c2) => c1.localeCompare(c2)).map((subcat) => (
+                      <Tabs.Tab key={subcat} fluid color="transparent"
+                        selected={subcat === subcategory}
+                        onClick={() => subcategory === subcat ? setSubCategory("") : setSubCategory(subcat)}>
+                        {subcat}
                       </Tabs.Tab>
                     ))
                   }
@@ -236,7 +255,7 @@ export const TGUIProsfabControl = (props: TGUILatheControlProps, context) => {
                     {
                       Object.values(data.designs.instances).filter(
                         (d) => searchText.length > 2
-                          ? d.name.toLowerCase().includes(searchText) : (d.category === category)
+                          ? d.name.toLowerCase().includes(searchText) : (((subcategory.length > 0) && (d.subcategories.length > 0)) ? (d.categories.includes(category) && d.subcategories.includes(subcategory)) : d.categories.includes(category))
                       ).sort((d1, d2) =>
                         d1.name.localeCompare(d2.name)
                       ).map((d) => (
@@ -249,7 +268,7 @@ export const TGUIProsfabControl = (props: TGUILatheControlProps, context) => {
                 </Stack.Item>
               </Stack>
             </Stack.Item>
-            <Stack.Item grow={0.9}>
+            <Stack.Item grow={0.6}>
               <Stack vertical fill>
                 <Stack.Item grow>
                   <Section fill title="Queue" scrollable
@@ -257,11 +276,11 @@ export const TGUIProsfabControl = (props: TGUILatheControlProps, context) => {
                       <>
                         <Button.Confirm icon="minus" content="Clear" onClick={() => act('clear')}
                           color="transparent" />
-                        <Button content={data.queueActive? "Stop" : "Start"}
-                          icon={data.queueActive? "stop" : "play"}
+                        <Button content={data.queueActive ? "Stop" : "Start"}
+                          icon={data.queueActive ? "stop" : "play"}
                           color="transparent"
                           selected={data.queueActive}
-                          onClick={() => act(data.queueActive? "stop" : "start")} />
+                          onClick={() => act(data.queueActive ? "stop" : "start")} />
                       </>
                     }>
                     {
@@ -316,7 +335,7 @@ interface LatheQueuedProps {
 }
 
 const LatheQueued = (props: LatheQueuedProps, context) => {
-  let { data, act } = useModule<TGUIProsfabControlData>(context);
+  let { data, act } = useModule<TGUILatheControlData>(context);
   let progressRender;
   if (props.index === 1 && data.queueActive && props.design !== undefined) {
     progressRender = (
@@ -335,7 +354,7 @@ const LatheQueued = (props: LatheQueuedProps, context) => {
       color="transparent"
       title={
         <>
-          {`${props.entry.amount}x ${props.design !== undefined? props.design.name : "Error - Design Unloaded"}`}
+          {`${props.entry.amount}x ${props.design !== undefined ? props.design.name : "Error - Design Unloaded"}`}
           {progressRender}
         </>
       }
@@ -410,7 +429,7 @@ const areMaterialsChosen = (mats: Record<string, number>, chosen: Record<string,
 };
 
 const LatheDesign = (props: LatheDesignProps, context) => {
-  const { data, act, moduleID } = useModule<TGUIProsfabControlData>(context);
+  const { data, act, moduleID } = useModule<TGUILatheControlData>(context);
 
   // materials: key = material id
   // mats maps parts to materials. i think? ask kevinz.
@@ -436,14 +455,14 @@ const LatheDesign = (props: LatheDesignProps, context) => {
 
   // ingredients are currently unspported.
   let awaitingSelections = !areMaterialsChosen(props.design.material_parts || {}, mats)
-  || !!props.design.ingredients;
+    || !!props.design.ingredients;
 
 
   return (
     <Collapsible
       title={props.design.name}
       color="transparent"
-      buttons={awaitingSelections? (
+      buttons={awaitingSelections ? (
         <Button
           color="transparent"
           textColor="red"
@@ -464,7 +483,7 @@ const LatheDesign = (props: LatheDesignProps, context) => {
               })} />
           ))}
           {
-            data.queueActive? (
+            data.queueActive ? (
               <Button
                 icon="play"
                 content="Busy"
@@ -484,7 +503,7 @@ const LatheDesign = (props: LatheDesignProps, context) => {
           }
         </>
       )}>
-      { (!!props.design.materials || !!props.design.material_parts || !!props.design.reagents) && (
+      {(!!props.design.materials || !!props.design.material_parts || !!props.design.reagents) && (
         <Table>
           <Table.Row>
             <Table.Cell width="33%" />
@@ -493,26 +512,26 @@ const LatheDesign = (props: LatheDesignProps, context) => {
           </Table.Row>
           {
             props.design.materials
-                    && Object.entries(props.design.materials).map(([id, amt]) => (
-                      <Table.Row key={id}>
-                        <Table.Cell />
-                        <Table.Cell>
-                          <div style={{
-                            "display": "inline-block",
-                            "padding-left": "0.5em",
-                            "width": "base em(100px)",
-                            "line-height": "base.em(17px)",
-                            "font-family": "Verdana, sans-serif",
-                            "font-size": "base.em(12px)",
-                          }}>
-                            {data.materialsContext.materials[id].name}
-                          </div>
-                        </Table.Cell>
-                        <Table.Cell textAlign="center" color={data.materials[id] >= amt? null : "bad"}>
-                          {`${amt}${MATERIAL_STORAGE_UNIT_NAME}`}
-                        </Table.Cell>
-                      </Table.Row>
-                    ))
+            && Object.entries(props.design.materials).map(([id, amt]) => (
+              <Table.Row key={id}>
+                <Table.Cell />
+                <Table.Cell>
+                  <div style={{
+                    "display": "inline-block",
+                    "padding-left": "0.5em",
+                    "width": "base em(100px)",
+                    "line-height": "base.em(17px)",
+                    "font-family": "Verdana, sans-serif",
+                    "font-size": "base.em(12px)",
+                  }}>
+                    {data.materialsContext.materials[id].name}
+                  </div>
+                </Table.Cell>
+                <Table.Cell textAlign="center" color={data.materials[id] >= amt ? null : "bad"}>
+                  {`${amt}${MATERIAL_STORAGE_UNIT_NAME}`}
+                </Table.Cell>
+              </Table.Row>
+            ))
           }
           {props.design.material_parts && Object.entries(props.design.material_parts).map(([name, amt]) => {
             let selected = mats[name];
@@ -541,7 +560,7 @@ const LatheDesign = (props: LatheDesignProps, context) => {
                     } />
                 </Table.Cell>
                 <Table.Cell textAlign="center"
-                  color={!selected || data.materials[selected] >= amt? null : "bad"}>
+                  color={!selected || data.materials[selected] >= amt ? null : "bad"}>
                   {`${amt}${MATERIAL_STORAGE_UNIT_NAME}`}
                 </Table.Cell>
               </Table.Row>
@@ -555,7 +574,7 @@ const LatheDesign = (props: LatheDesignProps, context) => {
                   {id}
                 </Table.Cell>
                 <Table.Cell textAlign="center"
-                  color={(data.reagents.find((r) => r.id === id)?.amount || 0) >= amt? null : "bad"}>
+                  color={(data.reagents.find((r) => r.id === id)?.amount || 0) >= amt ? null : "bad"}>
                   {`${amt}${REAGENT_STORAGE_UNIT_NAME}`}
                 </Table.Cell>
               </Table.Row>

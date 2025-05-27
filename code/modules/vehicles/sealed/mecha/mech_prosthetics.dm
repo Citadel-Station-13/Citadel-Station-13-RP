@@ -11,7 +11,6 @@
 	circuit = /obj/item/circuitboard/prosthetics
 
 	//Prosfab specific stuff
-	var/manufacturer = null
 	var/species_types = list(SPECIES_HUMAN)
 	var/species = SPECIES_HUMAN
 

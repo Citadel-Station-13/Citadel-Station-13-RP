@@ -65,12 +65,21 @@ export const generateDynamicButton = (name, mode, actFunction) => {
 };
 
 export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
+
   const { data, act } = useModule<TGUILatheControlData>(context);
+
   const [category, setCategory] = useLocalState<string>(
     context,
     `${data.$ref}-category`,
     data.designs.categories.length? data.designs.categories[1] : "General"
   );
+
+  const [subcategory, setSubCategory] = useLocalState<string>(
+    context,
+    `${data.$ref}-subcategory`,
+    ""
+  );
+
   const [resourcesSelect, setResourcesSelect] = useLocalState<string>(
     context,
     `${data.$ref}-rSelect`,
@@ -89,6 +98,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
   };
 
   let resourceRender;
+
 
   switch (resourcesSelect) {
     case "Materials":
@@ -225,8 +235,23 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
                     data.designs.categories.sort((c1, c2) => c1.localeCompare(c2)).map((cat) => (
                       <Tabs.Tab key={cat} fluid color="transparent"
                         selected={cat === category}
-                        onClick={() => setCategory(cat)}>
+                        onClick={() => { setCategory(cat); setSubCategory("") }}>
                         {cat}
+                      </Tabs.Tab>
+                    ))
+                  }
+                </Tabs>
+              </Section>
+            </Stack.Item>
+            <Stack.Item grow={0.3}>
+              <Section fill title="Subcategories" scrollable>
+                <Tabs vertical>
+                  {
+                    data.designs.subcategories[category].sort((c1, c2) => c1.localeCompare(c2)).map((subcat) => (
+                      <Tabs.Tab key={subcat} fluid color="transparent"
+                        selected={subcat === subcategory}
+                        onClick={() => subcategory===subcat ? setSubCategory("") : setSubCategory(subcat) }>
+                        {subcat}
                       </Tabs.Tab>
                     ))
                   }
@@ -246,7 +271,11 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
                     {
                       Object.values(data.designs.instances).filter(
                         (d) => searchText.length > 2
-                          ? d.name.toLowerCase().includes(searchText) : (d.category.includes(category))
+                        //TODO: Rearrange this so that:
+                        //If no subcategory selected, show based on category
+                        //If subcategory selected, show ONLY ITEMS IN THAT SUBCATEGORY.
+                        //if they don't have a subcategory, they don't show.
+                          ? d.name.toLowerCase().includes(searchText) : ( ((subcategory.length > 0) && (d.subcategories.length > 0)) ? (d.categories.includes(category) && d.subcategories.includes(subcategory)) : d.categories.includes(category))
                       ).sort((d1, d2) =>
                         d1.name.localeCompare(d2.name)
                       ).map((d) => (
@@ -259,7 +288,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
                 </Stack.Item>
               </Stack>
             </Stack.Item>
-            <Stack.Item grow={0.9}>
+            <Stack.Item grow={0.6}>
               <Stack vertical fill>
                 <Stack.Item grow>
                   <Section fill title="Queue" scrollable

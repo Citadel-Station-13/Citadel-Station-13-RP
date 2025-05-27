@@ -1,7 +1,7 @@
 /datum/prototype/design/ammo/shotgun
 	abstract_type = /datum/prototype/design/ammo/shotgun
 	work = 2 SECONDS
-	subcategory = "Shotgun Ammunition"
+	subcategory = "Shotgun"
 
 /datum/prototype/design/ammo/shotgun/blank
 	id = "AmmoShotshellBlank"

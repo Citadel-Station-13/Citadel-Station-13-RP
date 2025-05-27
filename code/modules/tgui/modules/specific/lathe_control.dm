@@ -137,10 +137,10 @@
 		if(islist(D.category))
 			for(var/elem in D.category)
 				collated[elem] = TRUE
-				collated_subcat[elem] = COERCE_OPTIONS_LIST(D.subcategory)
+				LAZYDISTINCTADD(collated_subcat[elem], COERCE_OPTIONS_LIST(D.subcategory))
 		else
 			collated[D.category] = TRUE
-			collated_subcat[D.category] = COERCE_OPTIONS_LIST(D.subcategory)
+			LAZYDISTINCTADD(collated_subcat[D.category], COERCE_OPTIONS_LIST(D.subcategory))
 	var/list/flatten = list()
 	for(var/key in collated)
 		flatten += key

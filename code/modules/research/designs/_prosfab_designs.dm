@@ -1,6 +1,3 @@
-//TODO: kill manufacturer on lathe, move it to design
-
-
 /datum/prototype/design/science/prosfab
 	abstract_type = /datum/prototype/design/science/prosfab
 	lathe_type = LATHE_TYPE_PROSTHETICS
@@ -11,14 +8,14 @@
 	category = "Prosthetics"
 
 // Make new external organs and make 'em robotish
-/datum/prototype/design/science/prosfab/pros/legacy_print(atom/where, fabricator)
+/datum/prototype/design/science/prosfab/pros/lathe_print(atom/where, amount, list/material_parts, list/ingredient_parts, list/reagent_parts, obj/machinery/lathe/fabricator, cost_multiplier = 1)
 	if(istype(fabricator, /obj/machinery/lathe/mecha_part_fabricator/pros))
 		var/obj/machinery/lathe/mecha_part_fabricator/pros/prosfab = fabricator
 		var/obj/item/organ/O = new build_path(where)
 		if(!istype(O))
 			return O
-		if(prosfab.manufacturer)
-			var/datum/robolimb/manf = GLOB.all_robolimbs[prosfab.manufacturer] 
+		if(subcategory)
+			var/datum/robolimb/manf = GLOB.all_robolimbs[subcategory]
 
 			if(!(O.organ_tag in manf.parts))	// Make sure we're using an actually present icon.
 				manf = GLOB.all_robolimbs["Unbranded"]
@@ -32,7 +29,7 @@
 				O.species = SScharacters.resolve_species_name(prosfab.species)
 		else
 			O.species = SScharacters.resolve_species_path(/datum/species/human)
-		O.robotize(prosfab.manufacturer)
+		O.robotize(subcategory ? subcategory : null)
 		O.dna = new/datum/dna() //Uuughhhh... why do I have to do this?
 		O.dna.ResetUI()
 		O.dna.ResetSE()
@@ -42,12 +39,12 @@
 	return ..()
 
 // Deep Magic for the torso since it needs to be a new mob
-/datum/prototype/design/science/prosfab/pros/torso/legacy_print(atom/where, fabricator)
+/datum/prototype/design/science/prosfab/pros/torso/lathe_print(atom/where, amount, list/material_parts, list/ingredient_parts, list/reagent_parts, obj/machinery/lathe/fabricator, cost_multiplier = 1)
 	if(istype(fabricator, /obj/machinery/lathe/mecha_part_fabricator/pros))
 		var/obj/machinery/lathe/mecha_part_fabricator/pros/prosfab = fabricator
 		var/newspecies = SPECIES_HUMAN
 
-		var/datum/robolimb/manf = GLOB.all_robolimbs[prosfab.manufacturer]
+		var/datum/robolimb/manf = GLOB.all_robolimbs[subcategory]
 
 		if(manf)
 			if(prosfab.species in manf.species_alternates)	// If the prosthetics fab is set to say, Unbranded, and species set to 'Tajaran', it will make the Taj variant of Unbranded, if it exists.
@@ -104,11 +101,14 @@
 	var/gender = MALE
 	category = DESIGN_CATEGORY_PROSTHETIC
 
+
+
 /datum/prototype/design/science/prosfab/pros/torso/male
 	design_name = "FBP Torso (M)"
 	id = "pros_torso_m"
 	build_path = /obj/item/organ/external/chest
 	gender = MALE
+	subcategory = "Unbranded"
 
 /obj/item/organ/external/chest/f //To satisfy CI. :|
 
@@ -117,6 +117,7 @@
 	id = "pros_torso_f"
 	build_path = /obj/item/organ/external/chest/f
 	gender = FEMALE
+	subcategory = "Unbranded"
 
 /datum/prototype/design/science/prosfab/pros/head
 	design_name = "Prosthetic Head"
@@ -124,6 +125,7 @@
 	build_path = /obj/item/organ/external/head
 	work = (30 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 18750, MAT_GLASS = 3750)
+	subcategory = "Unbranded"
 //	req_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 3, TECH_DATA = 3)	//Saving the values just in case
 
 /datum/prototype/design/science/prosfab/pros/l_arm
@@ -132,6 +134,7 @@
 	build_path = /obj/item/organ/external/arm
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 10125)
+	subcategory = "Unbranded"
 
 /datum/prototype/design/science/prosfab/pros/l_hand
 	design_name = "Prosthetic Left Hand"
@@ -139,6 +142,7 @@
 	build_path = /obj/item/organ/external/hand
 	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 3375)
+	subcategory = "Unbranded"
 
 /datum/prototype/design/science/prosfab/pros/r_arm
 	design_name = "Prosthetic Right Arm"
@@ -146,6 +150,7 @@
 	build_path = /obj/item/organ/external/arm/right
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 10125)
+	subcategory = "Unbranded"
 
 /datum/prototype/design/science/prosfab/pros/r_hand
 	design_name = "Prosthetic Right Hand"
@@ -153,6 +158,7 @@
 	build_path = /obj/item/organ/external/hand/right
 	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 3375)
+	subcategory = "Unbranded"
 
 /datum/prototype/design/science/prosfab/pros/l_leg
 	design_name = "Prosthetic Left Leg"
@@ -160,6 +166,7 @@
 	build_path = /obj/item/organ/external/leg
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 8437)
+	subcategory = "Unbranded"
 
 /datum/prototype/design/science/prosfab/pros/l_foot
 	design_name = "Prosthetic Left Foot"
@@ -167,6 +174,7 @@
 	build_path = /obj/item/organ/external/foot
 	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 2813)
+	subcategory = "Unbranded"
 
 /datum/prototype/design/science/prosfab/pros/r_leg
 	design_name = "Prosthetic Right Leg"
@@ -174,6 +182,7 @@
 	build_path = /obj/item/organ/external/leg/right
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 8437)
+	subcategory = "Unbranded"
 
 /datum/prototype/design/science/prosfab/pros/r_foot
 	design_name = "Prosthetic Right Foot"
@@ -181,6 +190,7 @@
 	build_path = /obj/item/organ/external/foot/right
 	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 2813)
+	subcategory = "Unbranded"
 
 /datum/prototype/design/science/prosfab/pros/internal
 	abstract_type = /datum/prototype/design/science/prosfab/pros/internal

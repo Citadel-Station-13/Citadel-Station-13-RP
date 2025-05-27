@@ -353,6 +353,7 @@
 	. = instance.lathe_print(drop_location(), amount, material_parts, ingredient_parts, null, src, efficiency_multiplier)
 	if(!isnull(print_icon_state))
 		flick(print_icon_state, src)
+	ui_controller?.ui_materials_update()
 
 /obj/machinery/lathe/process(delta_time)
 	if(!queue_active)
@@ -395,8 +396,6 @@
 			head = queue[1]
 		if(left_this_tick <= 0)
 			break
-	if(printed_any)
-		ui_controller?.ui_queue_update()
 
 /obj/machinery/lathe/proc/reconsider_queue(autostart, silent)
 	if(!length(queue))

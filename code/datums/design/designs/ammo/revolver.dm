@@ -1,6 +1,6 @@
 /datum/prototype/design/ammo/revolver
 	abstract_type = /datum/prototype/design/ammo/revolver
-	subcategory = "Revolver Ammunition"
+	subcategory = "Revolver"
 
 /datum/prototype/design/ammo/revolver/a357
 	id = "AmmoSpeedloader357"
