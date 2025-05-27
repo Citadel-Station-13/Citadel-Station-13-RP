@@ -15,6 +15,8 @@
 /datum/map/proc/on_loaded_immediate()
 	SHOULD_CALL_PARENT(TRUE)
 
+	#warn build struct
+
 	var/datum/map_struct/created_struct
 	if(create_struct)
 		var/list/creating_grid = list()
@@ -49,4 +51,23 @@
 
 //* Unloading *//
 
-// No hooks yet.
+/**
+ * TOOD: not hooked in yet
+ *
+ * Fired before zclear fires on the zlevels that consist of us
+ * * Levels have their on_unload_pre_zclear called before this.
+ */
+/datum/map/proc/on_unload_pre_zclear()
+	SHOULD_CALL_PARENT(TRUE)
+	#warn destroy struct
+
+/**
+ * TOOD: not hooked in yet
+ *
+ * Fired after zclear fires on the zlevels that consist of us
+ * * Levels have their on_unload_finalize called before this.
+ * * zlevels and then ourselves are un-referenced and/or garbage collected (if necessary) after.
+ */
+/datum/map/proc/on_unload_finalize()
+	SHOULD_CALL_PARENT(TRUE)
+	#warn destroy struct

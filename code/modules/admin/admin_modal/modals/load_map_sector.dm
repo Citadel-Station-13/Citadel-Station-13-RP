@@ -290,7 +290,7 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 			passed = FALSE
 			computed_errors += "Index [i] is not a map level. What happened? Yell at coders."
 			continue
-	if(!buffer.validate(computed_errors))
+	if(!buffer.validate(TRUE, computed_errors))
 		passed = FALSE
 
 	primed = passed

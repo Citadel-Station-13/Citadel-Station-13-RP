@@ -113,21 +113,13 @@
 	///
 	/// * '100m' means that the level above is 100m above us, and we're 100m below the above level
 	/// * basically, this is the height from ground before the next level, not the height below ground
-	/// * if null, will inherit from the map_struct we're in (or default to a sane value)
-	/// * if non-null, the struct will force that z-plane to be that height
-	/// * if non-null and two levels have different values, the struct will runtime.
+	/// * if null, will inherit from the map we're in (or default to a sane value)
+	/// * if non-null, the map will force that z-plane to be that height
+	/// * if non-null and two levels in the same plane have different values, the parent map will runtime.
 	/// * if one level on a plane is non-null height, all of them must be, and they must match.
 	var/ceiling_height
-	/// default ceiling height if not inheriting from struct or specified
-	///
-	/// * only used if we're not on a map_struct
-	var/ceiling_height_default = 5
 
 	//* Structs / Stitching / Virtual Coordinates *//
-	/// the struct we belong to, if any
-	var/tmp/datum/map_struct/struct
-	/// the index in our struct's [levels] list
-	var/tmp/struct_level_index
 	/// our virtual x on the struct; this is not tile coordinates, this is struct coordinates
 	/// * set as needed so the map knows where to put us in the virtual struct.
 	var/struct_x = 0
@@ -359,12 +351,19 @@
 //* Directions *//
 
 /**
+ * Set level in dir
+ * * This does not trigger a rebuild!
+ */
+/datum/map_level/proc/set_level_in_dir(dir, datum/map_level/level_or_id)
+	#warn impl
+
+/**
  * get level datum in dir
  *
  * * This is authoritative, and is used to rebuild SSmapping's caches.
  * * If diagonal, only returns a level if both steps are consistent with each other.
  */
-/datum/map_level/proc/level_in_dir(dir) as /datum/map_level
+/datum/map_level/proc/get_level_in_dir(dir) as /datum/map_level
 	if(dir & (dir - 1))
 		if(dir & (UP|DOWN))
 			CRASH("unsupported operation of attempting to grab a vertical + diagonal direction.")
@@ -377,10 +376,10 @@
 				CRASH("invalid dir: [dir]")
 		var/d1 = NSCOMPONENT(dir)
 		var/d2 = EWCOMPONENT(dir)
-		var/datum/map_level/l1 = level_in_dir(d1)
-		l1 = l1?.level_in_dir(d2)
-		var/datum/map_level/l2 = level_in_dir(d2)
-		l2 = l2?.level_in_dir(d1)
+		var/datum/map_level/l1 = get_level_in_dir(d1)
+		l1 = l1?.get_level_in_dir(d2)
+		var/datum/map_level/l2 = get_level_in_dir(d2)
+		l2 = l2?.get_level_in_dir(d1)
 		// if one side is null, we listen to the other
 		if(isnull(l1))
 			return l2
@@ -454,13 +453,15 @@
  *                this doesn't always make sense to enable, because
  *                it's possible (albeit rare) that a level is one-way
  *                linked and the other level doesn't link back.
+ * * skip_same_map - if reciprocal, don't rebuild same map
  */
-/datum/map_level/proc/rebuild_multiz(reciprocal)
+/datum/map_level/proc/rebuild_multiz(reciprocal, skip_same_map)
 	for(var/dir in list(NORTH, SOUTH, EAST, WEST, UP, DOWN))
 		rebuild_multiz_in_dir(dir)
 		if(reciprocal)
-			var/datum/map_level/partner = level_in_dir(dir)
-			partner?.rebuild_multiz_in_dir(turn(dir, 180))
+			var/datum/map_level/partner = get_level_in_dir(dir)
+			if(!skip_same_map || partner.parent_map != parent_map)
+				partner?.rebuild_multiz_in_dir(turn(dir, 180))
 
 /**
  * expensive as hell, teardown all dirs
@@ -472,13 +473,15 @@
  *                this doesn't always make sense to enable, because
  *                it's possible (albeit rare) that a level is one-way
  *                linked and the other level doesn't link back.
+ * * skip_same_map - if reciprocal, don't rebuild same map
  */
-/datum/map_level/proc/teardown_multiz(reciprocal)
+/datum/map_level/proc/teardown_multiz(reciprocal, skip_same_map)
 	for(var/dir in list(NORTH, SOUTH, EAST, WEST, UP, DOWN))
 		teardown_multiz_in_dir(dir)
 		if(reciprocal)
-			var/datum/map_level/partner = level_in_dir(dir)
-			partner?.teardown_multiz_in_dir(turn(dir, 180))
+			var/datum/map_level/partner = get_level_in_dir(dir)
+			if(!skip_same_map || partner.parent_map != parent_map)
+				partner?.teardown_multiz_in_dir(turn(dir, 180))
 
 /**
  * * will block / sleep!
@@ -562,7 +565,7 @@
 					CHECK_TICK
 			// diagonals
 			var/datum/map_level/resolved
-			resolved = level_in_dir(NORTHWEST)
+			resolved = get_level_in_dir(NORTHWEST)
 			if(!isnull(resolved))
 				for(var/turf/T as anything in transition_turfs(NORTHWEST))
 					T._make_transition_border(NORTHWEST, visible)
@@ -571,7 +574,7 @@
 				for(var/turf/T as anything in transition_turfs(NORTHWEST))
 					T._dispose_transition_border()
 					CHECK_TICK
-			resolved = level_in_dir(NORTHEAST)
+			resolved = get_level_in_dir(NORTHEAST)
 			if(!isnull(resolved))
 				for(var/turf/T as anything in transition_turfs(NORTHEAST))
 					T._make_transition_border(NORTHEAST, visible)
@@ -580,7 +583,7 @@
 				for(var/turf/T as anything in transition_turfs(NORTHEAST))
 					T._dispose_transition_border()
 					CHECK_TICK
-			resolved = level_in_dir(SOUTHWEST)
+			resolved = get_level_in_dir(SOUTHWEST)
 			if(!isnull(resolved))
 				for(var/turf/T as anything in transition_turfs(SOUTHWEST))
 					T._make_transition_border(SOUTHWEST, visible)
@@ -589,7 +592,7 @@
 				for(var/turf/T as anything in transition_turfs(SOUTHWEST))
 					T._dispose_transition_border()
 					CHECK_TICK
-			resolved = level_in_dir(SOUTHEAST)
+			resolved = get_level_in_dir(SOUTHEAST)
 			if(!isnull(resolved))
 				for(var/turf/T as anything in transition_turfs(SOUTHEAST))
 					T._make_transition_border(SOUTHEAST, visible)
@@ -658,32 +661,3 @@
  */
 /datum/map_level/proc/level_turfs()
 	return Z_TURFS(z_index)
-
-//* ---- Subtypes ---- *//
-
-/**
- * dynamically generated levels should use this
- */
-/datum/map_level/dynamic
-	modified = TRUE
-
-/**
- * "free" / unallocated zlevels use this
- */
-/datum/map_level/unallocated
-	transition = Z_TRANSITION_DISABLED
-
-/**
- * reserved levels for turf reservations use this
- */
-/datum/map_level/reserved
-	transition = Z_TRANSITION_DISABLED
-
-/datum/map_level/reserved/allow_deallocate()
-	return FALSE
-
-/**
- * transit levels for shuttles
- */
-/datum/map_level/freeflight
-	transition = Z_TRANSITION_DISABLED

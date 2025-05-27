@@ -16,7 +16,14 @@
  *   and will likely never be supported. An upcoming system will be added to handle
  *   instanced planets and similar things.
  *
- * ## Registration
+ * ## Loading
+ *
+ * Generally, the load process is like so;
+ * * call ready() to initialize anything lazy-loaded
+ * * call validate() to check for soundness of the map
+ * * call construct() to set all variables as needed. this will recheck all current levels
+ *   and set needed struct vars on ourselves and them, computing things like sparse
+ *   size as needed. if the levels already exist, they'll be updated.
  */
 /datum/map
 	abstract_type = /datum/map
@@ -205,67 +212,82 @@
  * validates that everything works
  *
  * @params
+ * * for_load - (optional) validate for loading, not just that it makes semantic sense
  * * out_errors - (optional) human readable errors get added to this list if provided
- * * dry_run - (optional) do not validate loading; otherwise we also validate that we currently can load,
- *             which invokes non-deterministic checks based on current round state
  *
  * @return TRUE / FALSE
  */
-/datum/map/proc/validate(list/out_errors, dry_run)
+/datum/map/proc/validate(for_load, list/out_errors)
 	. = TRUE
-	var/list/struct_positions = list()
+	var/list/struct_position_strs = list()
 	var/list/keyed_levels = list()
 	// validate levels individually
 	for(var/level_idx in 1 to length(levels))
 		var/datum/map_level/level = levels[level_idx]
 		if(!istype(level))
-			out_errors?.Add("map: Index [level_idx] is not a valid map level datum.")
+			out_errors?.Add("level: index [level_idx] is not a valid map level datum.")
 			. = FALSE
 			continue
-		if(struct_positions[level.struct_create_pos])
-			out_errors?.Add("map: Index [level_idx] collides with index [levels.Find(struct_positions[level.struct_create_pos])] on struct position '[level.struct_create_pos]'")
-			. = FALSE
-		else
-			struct_positions[level.struct_create_pos] = level
+
 		if(level.id)
 			if(keyed_levels[level.id])
-				out_errors?.Add("map: Index [level_idx] collides with index [levels.Find(keyed_levels[level.id])] on level id '[level.id]'")
+				out_errors?.Add("level: index [level_idx] collides with index [levels.Find(keyed_levels[level.id])] on level id '[level.id]'")
+				. = FALSE
 			else
 				keyed_levels[level.id] = level
+
+		var/level_struct_enabled = level.struct_x && level.struct_y && level.struct_z
+		if(level_struct_enabled)
+			var/level_struct_valid = TRUE
+			if(!isnum(level.struct_x))
+				out_errors?.Add("level: index [level_idx] struct_x not num")
+				level_struct_valid = FALSE
+			if(!isnum(level.struct_y))
+				out_errors?.Add("level: index [level_idx] struct_y not num")
+				level_struct_valid = FALSE
+			if(!isnum(level.struct_z))
+				out_errors?.Add("level: index [level_idx] struct_z not num")
+				level_struct_valid = FALSE
+			if(level_struct_valid)
+				var/level_struct_position_str = "[level.struct_x],[level.struct_y],[level.struct_z]"
+				if(struct_position_strs[level_struct_position_str])
+					out_errors?.Add("level: index [level_idx] collides with level index [levels.Find(struct_position_strs[level_struct_position_str])] on struct position '[level_struct_position_str]'")
+					. = FALSE
+				else
+					struct_position_strs[level_struct_position_str] = level
+
 	// can't run overall checks if any levels are individually invalid
 	if(!.)
 		return
-	// validate struct
-	var/datum/map_struct/validation_struct = new
-	if(!validation_struct.validate(struct_positions))
-		return FALSE
-	var/list/struct_errors_out = out_errors ? list() : null
-	if(!dry_run && !validate_load(struct_errors_out))
+	if(!dry_run && !validate_load(struct_errors_out, .))
 		. = FALSE
-	if(length(struct_errors_out))
-		for(var/str in struct_errors_out)
-			out_errors?.Add("struct: [str]")
 
 /**
  * validate that we can currently load
+ * * this checks for things like collisions with current loaded maps, levels, world state, etc
  *
  * @params
  * * out_errors - (optional) human readable errors get added to this list if provided
+ * * structure_validity - (optional) pass in if structure is valid; this makes it so we don't run
+ *                        future tests that would always fail if the map's contents for whatever reason
+ *                        are considered invalid.
  *
  * @return TRUE / FALSE
  */
-/datum/map/proc/validate_load(list/out_errors)
+/datum/map/proc/validate_load(list/out_errors, structure_validity)
 	. = TRUE
 	for(var/level_idx in 1 to length(levels))
 		var/datum/map_level/level = levels[level_idx]
 		if(SSmapping.keyed_levels[level.id])
 			. = FALSE
-			out_errors?.Add("map: Index [level_idx] has id of '[level.id]' which is already taken by a currently loaded level.")
+			out_errors?.Add("level: index [level_idx] has id of '[level.id]' which is already taken by a currently loaded level.")
 
 /**
- * loads any lazyloaded stuff we need; called before we load in
+ * called before we load in
+ * * should be called before validate()
+ * * instances any levels not instanced
  */
-/datum/map/proc/prime()
+/datum/map/proc/ready()
 	for(var/i in 1 to length(levels))
 		if(ispath(levels[i]))
 			var/datum/map_level/level_path = levels[i]
@@ -273,6 +295,19 @@
 			levels[i] = level_instance
 			if(levels_match_mangling_id)
 				level_instance.mangling_id = mangling_id || id
+
+/**
+ * rebuilds state, setting variables as needed on ourselves and our level
+ * * should be called after validate(); validate() doesn't require this to work
+ *
+ * @params
+ * * skip_validation - skip data validation. this is not recommended.
+ */
+/datum/map/proc/construct(skip_validation)
+	var/list/validation_errors = list()
+	if(!validate(TRUE, validation_errors))
+		CRASH("validation failed at construct() with errors: [english_list(validation_errors)]; this shouldn't be failing this far in the pipeline, please remember to validate() maps yourself!")
+	#warn impl
 
 /**
  * Get levels sorted into z-loading order

@@ -2,11 +2,6 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/map_struct
-
-	//* Simulation *//
-	/// default ceiling height
-	var/ceiling_height_default = 5
-
 /**
  * validates our struct
  * * can be called before actually trying to construct
@@ -23,26 +18,6 @@
 	for(var/idx in 1 to length(z_grid))
 		var/pos_string = z_grid[idx]
 		var/datum/map_level/level = z_grid[pos_string]
-		if(!istype(level))
-			out_errors?.Add("Index [idx] was not a map level datum.")
-			. = FALSE
-			continue
-		if(!istext(pos_string))
-			out_errors?.Add("Index [idx] did not have a valid z-grid string: '[pos_string]'")
-			. = FALSE
-			continue
-		grid_parser.Find(pos_string)
-		if(length(grid_parser.group) != 3)
-			out_errors?.Add("Index [idx] failed grid position parse: '[pos_string]'.")
-			. = FALSE
-			continue
-		var/x = text2num(grid_parser.group[1])
-		var/y = text2num(grid_parser.group[2])
-		var/z = text2num(grid_parser.group[3])
-		if(length(grid_parser.group) != 3)
-			out_errors?.Add("Index [idx] failed grid position decode: '[pos_string]'.")
-			. = FALSE
-			continue
 		LAZYADD(planes["[x],[y]"], level)
 	for(var/plane_key in planes)
 		var/list/datum/map_level/plane_levels = planes[plane_key]
@@ -109,10 +84,6 @@
 						level.rebuild_transitions()
 					if(had_vertical)
 						level.rebuild_vertical_levels()
-
-	if(rebuild)
-		SSmapping.rebuild_transitions()
-		SSmapping.rebuild_verticality()
 
 /datum/map_struct/proc/do_construct(list/z_grid = src.z_grid, link, rebuild)
 	PRIVATE_PROC(TRUE)
@@ -269,21 +240,12 @@
 			level.virtual_elevation = total_height
 
 	// set our data
-	src.z_grid = z_grid
-	src.z_indices = level_indices
-	src.levels = levels
 	src.sparse_size_x = max_x - min_x + 1
 	src.sparse_size_y = max_y - min_y + 1
 	src.sparse_size_z = max_z - min_z + 1
 
 	if(link)
 		link_levels(rebuild)
-
-	constructed = TRUE
-	SSmapping.active_structs += src
-
-	SEND_SIGNAL(src, COMSIG_MAP_STRUCT_CONSTRUCTED)
-
 	return TRUE
 
 /**
