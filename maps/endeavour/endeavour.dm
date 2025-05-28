@@ -163,9 +163,8 @@
 	)
 	struct_x = 0
 	struct_y = 0
-	struct_z = 0
+	struct_z = 3
 	base_turf = /turf/space
-	link_below = /datum/map_level/endeavour/ship/deck_two
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
 /datum/map_level/endeavour/ship/deck_two
@@ -180,10 +179,8 @@
 	)
 	struct_x = 0
 	struct_y = 0
-	struct_z = 1
+	struct_z = 2
 	base_turf = /turf/simulated/open
-	link_below = /datum/map_level/endeavour/ship/deck_three
-	link_above = /datum/map_level/endeavour/ship/deck_one
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
 /datum/map_level/endeavour/ship/deck_three
@@ -199,10 +196,8 @@
 	)
 	struct_x = 0
 	struct_y = 0
-	struct_z = 2
+	struct_z = 1
 	base_turf = /turf/simulated/open
-	link_below = /datum/map_level/endeavour/ship/deck_four
-	link_above = /datum/map_level/endeavour/ship/deck_two
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
 /datum/map_level/endeavour/ship/deck_four
@@ -217,9 +212,8 @@
 	)
 	struct_x = 0
 	struct_y = 0
-	struct_z = 3
+	struct_z = 0
 	base_turf = /turf/simulated/open
-	link_above = /datum/map_level/endeavour/ship/deck_three
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
 /datum/map_level/endeavour/flagship

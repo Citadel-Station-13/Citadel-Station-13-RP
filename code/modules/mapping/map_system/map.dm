@@ -261,6 +261,9 @@
 
 		var/level_struct_enabled = level.struct_x && level.struct_y && level.struct_z
 		if(level_struct_enabled)
+			if(!level.id)
+				out_errors?.Add("level: index [level_idx] has no id but is in a struct; struct-levels must have IDs.")
+				. = FALSE
 			var/level_struct_valid = TRUE
 			if(!isnum(level.struct_x))
 				out_errors?.Add("level: index [level_idx] struct_x not num")
@@ -364,8 +367,10 @@
 
 	// collect data
 	for(var/datum/map_level/level as anything in levels)
-		if(!level.is_in_struct())
+		level.struct_active = level.is_in_struct()
+		if(!level.struct_active)
 			continue
+
 		z_grid["[level.struct_x],[level.struct_y],[level.struct_z]"] = level
 
 		var/x_y_str = "[level.struct_x],[level.struct_y]"
@@ -384,38 +389,39 @@
 		level.load_center = load_auto_center
 		level.load_crop = load_auto_crop
 
-		var/level_multiz_changed_dirs = NONE
-		switch(level.linkage)
-			if(Z_LINKAGE_FORCED)
-			if(Z_LINKAGE_NORMAL)
-				var/datum/map_level/level_partner
-				level_partner = z_grid["[level.struct_x+1],[level.struct_y],[level.struct_z]"]
-				if(level.link_east != level_partner)
-					level.link_east = level_partner
-					level_multiz_changed_dirs |= EAST
-				level_partner = z_grid["[level.struct_x-1],[level.struct_y],[level.struct_z]"]
-				if(level.link_west != level_partner)
-					level.link_west = level_partner
-					level_multiz_changed_dirs |= WEST
-				level_partner = z_grid["[level.struct_x],[level.struct_y+1],[level.struct_z]"]
-				if(level.link_north != level_partner)
-					level.link_north = level_partner
-					level_multiz_changed_dirs |= NORTH
-				level_partner = z_grid["[level.struct_x],[level.struct_y-1],[level.struct_z]"]
-				if(level.link_south != level_partner)
-					level.link_south = level_partner
-					level_multiz_changed_dirs |= SOUTH
-				level_partner = z_grid["[level.struct_x],[level.struct_y],[level.struct_z+1]"]
-				if(level.link_above != level_partner)
-					level.link_above = level_partner
-					level_multiz_changed_dirs |= UP
-				level_partner = z_grid["[level.struct_x],[level.struct_y],[level.struct_z-1]"]
-				if(level.link_below != level_partner)
-					level.link_below = level_partner
-					level_multiz_changed_dirs |= DOWN
+		if(level.struct_active)
+			var/level_multiz_changed_dirs = NONE
+			switch(level.linkage)
+				if(Z_LINKAGE_FORCED)
+				if(Z_LINKAGE_NORMAL)
+					var/datum/map_level/level_partner
+					level_partner = z_grid["[level.struct_x+1],[level.struct_y],[level.struct_z]"]
+					if(level.link_east_id != level_partner.id)
+						level.link_east_id = level_partner.id
+						level_multiz_changed_dirs |= EAST
+					level_partner = z_grid["[level.struct_x-1],[level.struct_y],[level.struct_z]"]
+					if(level.link_west_id != level_partner.id)
+						level.link_west_id = level_partner.id
+						level_multiz_changed_dirs |= WEST
+					level_partner = z_grid["[level.struct_x],[level.struct_y+1],[level.struct_z]"]
+					if(level.link_north_id != level_partner.id)
+						level.link_north_id = level_partner.id
+						level_multiz_changed_dirs |= NORTH
+					level_partner = z_grid["[level.struct_x],[level.struct_y-1],[level.struct_z]"]
+					if(level.link_south_id != level_partner.id)
+						level.link_south_id = level_partner.id
+						level_multiz_changed_dirs |= SOUTH
+					level_partner = z_grid["[level.struct_x],[level.struct_y],[level.struct_z+1]"]
+					if(level.link_above_id != level_partner.id)
+						level.link_above_id = level_partner.id
+						level_multiz_changed_dirs |= UP
+					level_partner = z_grid["[level.struct_x],[level.struct_y],[level.struct_z-1]"]
+					if(level.link_below_id != level_partner.id)
+						level.link_below_id = level_partner.id
+						level_multiz_changed_dirs |= DOWN
 
-		if(level.loaded && level_multiz_changed_dirs)
-			loaded_levels_requiring_immediate_rebuild_to_dirs[level] = level_multiz_changed_dirs
+			if(level.loaded && level_multiz_changed_dirs)
+				loaded_levels_requiring_immediate_rebuild_to_dirs[level] = level_multiz_changed_dirs
 
 	for(var/datum/map_level/rebuilding_level as anything in loaded_levels_requiring_immediate_rebuild_to_dirs)
 		var/rebuild_dirs = loaded_levels_requiring_immediate_rebuild_to_dirs[rebuilding_level]

@@ -14,13 +14,10 @@
  *
  * @params
  * * z_index - zlevel we loaded on
- * * during_world_load - set during initial world load; skip expensive rebuilds that will be done anyways
- * * generation_callbacks - callbacks to add to perform post_loaded generation. this will be done in a batch before on_loaded_finalize and before atom init.
+ * * out_generation_callbacks - callbacks to add to perform post-loaded generation. this will be done in a batch before on_loaded_finalize and before atom init.
  */
-/datum/map_level/proc/on_loaded_immediate(z_index, during_world_load, list/datum/callback/additional_generation)
+/datum/map_level/proc/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
 	SHOULD_CALL_PARENT(TRUE)
-	loaded = TRUE
-	struct_active = is_in_struct()
 
 /**
  * * called in a group after all maps and dependencies load **and** generation callbacks fire.
@@ -29,12 +26,9 @@
  *
  * @params
  * * z_index - zlevel we loaded on
- * * during_world_load - set during initial world load; skip expensive rebuilds that will be done anyways
  */
-/datum/map_level/proc/on_loaded_finalize(z_index, during_world_load)
+/datum/map_level/proc/on_loaded_finalize(z_index)
 	SHOULD_CALL_PARENT(TRUE)
-	if(!during_world_load)
-		rebuild_multiz(TRUE, TRUE)
 
 //* Unloading *//
 
@@ -47,12 +41,9 @@
  *
  * @params
  * * z_index - zlevel we loaded on
- * * during_world_unload - set if being called as part of world shutdown
  */
-/datum/map_level/proc/on_unload_pre_zclear(z_index, during_world_unload)
+/datum/map_level/proc/on_unload_pre_zclear(z_index)
 	SHOULD_CALL_PARENT(TRUE)
-	if(!during_world_unload)
-		teardown_multiz(TRUE, TRUE)
 
 /**
  * TOOD: not hooked in yet
@@ -64,9 +55,6 @@
  *
  * @params
  * * z_index - zlevel we loaded on
- * * during_world_unload - set if being called as part of world shutdown
  */
-/datum/map_level/proc/on_unload_finalize(z_index, during_world_unload)
+/datum/map_level/proc/on_unload_finalize(z_index)
 	SHOULD_CALL_PARENT(TRUE)
-	loaded = FALSE
-	struct_active = FALSE

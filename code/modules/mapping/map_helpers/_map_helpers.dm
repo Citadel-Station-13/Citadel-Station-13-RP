@@ -8,6 +8,11 @@
  *
  * * never persist past init
  * * have the opportunity to hook map initializations, which are ran before Initialize().
+ *
+ * ## Requirements
+ *
+ * * Map helpers may never place things outside of the map's loaded bounds! Anything outside
+ *   may not properly initialize.
  */
 /obj/map_helper
 	icon = 'icons/mapping/helpers/mapping_helpers.dmi'
@@ -54,11 +59,13 @@
  * if Initialize() is in SSatoms, this crashes for safety as that should not happen.
  */
 /obj/map_helper/proc/hook_map_initializations(datum/dmm_context/context)
+	PRIVATE_PROC(TRUE)
 	context.map_initialization_hooked += src
 
 /**
  * called if we're on SSmapping's map_initializations_hooked list.
- * called after level on_loaded_immediate
+ * called before level's on_loaded_immediate
+ * called before group loading done by /datum/map
  * called before atom init
  * called before level on_loaded_finalize
  *

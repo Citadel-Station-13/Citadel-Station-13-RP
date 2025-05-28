@@ -179,8 +179,9 @@
 	)
 	base_turf = /turf/space
 	flags = LEGACY_LEVEL_CONTACT | LEGACY_LEVEL_PLAYER | LEGACY_LEVEL_CONSOLES | LEGACY_LEVEL_STATION
-	link_above = /datum/map_level/euthenia/deck/three
-
+	struct_x = 0
+	struct_y = 0
+	struct_z = 4
 
 /datum/map_level/euthenia/deck/three
 	id = "EutheniaDeck3"
@@ -194,9 +195,9 @@
 	)
 	base_turf = /turf/simulated/open
 	flags = LEGACY_LEVEL_CONTACT | LEGACY_LEVEL_PLAYER | LEGACY_LEVEL_CONSOLES | LEGACY_LEVEL_STATION
-	link_above = /datum/map_level/euthenia/deck/two
-	link_below = /datum/map_level/euthenia/deck/four
-
+	struct_x = 0
+	struct_y = 0
+	struct_z = 1
 
 /datum/map_level/euthenia/deck/two
 	id = "EutheniaDeck2"
@@ -210,8 +211,9 @@
 	)
 	base_turf = /turf/simulated/open
 	flags = LEGACY_LEVEL_CONTACT | LEGACY_LEVEL_PLAYER | LEGACY_LEVEL_CONSOLES | LEGACY_LEVEL_STATION
-	link_above = /datum/map_level/euthenia/deck/one
-	link_below = /datum/map_level/euthenia/deck/three
+	struct_x = 0
+	struct_y = 0
+	struct_z = 2
 
 /datum/map_level/euthenia/deck/one
 	id = "EutheniaDeck1"
@@ -225,8 +227,9 @@
 	)
 	base_turf = /turf/simulated/open
 	flags = LEGACY_LEVEL_CONTACT | LEGACY_LEVEL_PLAYER | LEGACY_LEVEL_CONSOLES | LEGACY_LEVEL_STATION
-	link_above = /datum/map_level/euthenia/deck/zero
-	link_below = /datum/map_level/euthenia/deck/two
+	struct_x = 0
+	struct_y = 0
+	struct_z = 3
 
 /datum/map_level/euthenia/deck/zero
 	id = "EutheniaDeck0"
@@ -240,7 +243,9 @@
 	)
 	base_turf = /turf/simulated/open
 	flags = LEGACY_LEVEL_CONTACT | LEGACY_LEVEL_PLAYER | LEGACY_LEVEL_CONSOLES | LEGACY_LEVEL_STATION
-	link_below = /datum/map_level/euthenia/deck/one
+	struct_x = 0
+	struct_y = 0
+	struct_z = 4
 
 /datum/map_level/euthenia/misc
 	id = "EutheniaMisc"

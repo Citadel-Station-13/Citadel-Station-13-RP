@@ -176,7 +176,7 @@
 
 	// create context
 	if(isnull(context))
-		context = create_dmm_context()
+		context = new
 	if(isnull(context.mangling_id))
 		context.mangling_id = generate_mangling_id()
 

@@ -69,21 +69,43 @@
 	var/list/datum/map_level/loaded_lockstep_levels = list()
 	var/list/datum/dmm_context/loaded_lockstep_contexts = list()
 
+	var/list/datum/callback/deferred_generation_callbacks = list()
+	var/list/datum/dmm_context/deferred_at
+
 	#warn impl
 
 	for(var/datum/map/loading_map as anything in maps_to_load)
 		emit_info_log("load - loading '[instance.id]' with [length(loading_map.levels)] levels...")
 		#warn impl
 
-		var/list/use_area_cache = loading_map.load_shared_area_cache ? list() : null
+		var/list/map_use_area_cache = loading_map.load_shared_area_cache ? list() : null
+		var/list/map_generation_callbacks = list()
 
 		for(var/datum/map_level/level as anything in loading_map.get_sorted_levels())
-			var/datum/dmm_context/loaded_context = load_level_impl()
-			#warn what if it fails?
-
+			var/datum/dmm_context/level_use_dmm_context = create_dmm_context()
+			level_use_dmm_context.mangling_id = loading_map.mangling_id || loading_map.id
+			var/list/datum/callback/level_generation_callbacks = list()
+			var/datum/dmm_context/level_context = load_level_impl(
+				level,
+				map_use_area_cache,
+				level_use_dmm_context,
+				TRUE,
+				level_generation_callbacks,
+			)
+			if(isnull(level_context))
+				emit_fatal_log("load - failed to load level '[level.id]' in map '[instance.id]")
+				stack_trace("unable to load level [level] ([level.id])")
+				to_world(SPAN_DANGER("PANIC: Unable to load level [level] ([level.id])"))
+				continue
 			loaded_lockstep_levels += level
-			loaded_lockstep_contexts += loaded_context
+			loaded_lockstep_contexts += level_context
+			map_generation_callbacks += level_generation_callbacks
 
+		for(var/datum/callback/cb as anything in map_generation_callbacks)
+			cb.Invoke()
+
+
+		emit_info_log("load - finished loading '[instance.id]' with [length(loading_map.levels)] levels")
 		#warn impl
 
 		loading_map.on_loaded_immediate()
@@ -94,9 +116,13 @@
 			SSshuttle.legacy_shuttle_assert(path)
 		//! END
 
+	// since maps presumably need their dependencies, we only fire generation and atom init here
+	for(var/datum/callback/cb as anything in )
 
 	#warn impl
 
+	for(var/datum/map_level/loaded_level as anything in loaded_lockstep_levels)
+		rebuild_multiz(loaded_level.z_index)
 
 #warn below
 
@@ -123,30 +149,4 @@
 	// invoke global finalize
 	for(var/datum/map/map as anything in actually_loaded)
 		map.on_loaded_finalize()
-	// rebuild multiz
-	// this is just for visuals
-	var/list/indices_to_rebuild = list()
-	for(var/datum/map_level/level as anything in loaded_levels)
-		indices_to_rebuild += level.z_index
-	rebuild_level_multiz(indices_to_rebuild, TRUE, TRUE)
-
-/datum/controller/subsystem/mapping/proc/load_map_impl_loop(datum/map/instance, list/datum/map_level/loaded_levels, list/datum/callback/generation_callbacks, list/datum/map/this_batch, list/context_collect)
-	for(var/datum/map_level/level as anything in instance.get_sorted_levels())
-		var/datum/dmm_context/loaded_context = load_level_impl(
-			level,
-			FALSE,
-			instance.load_auto_center,
-			instance.load_auto_crop,
-			generation_callbacks,
-			orientation = instance.load_orientation,
-			area_cache = area_cache,
-			defer_context = TRUE,
-		)
-		if(isnull(loaded_context))
-			STACK_TRACE("unable to load level [level] ([level.id])")
-			message_admins(world, SPAN_DANGER("PANIC: Unable to load level [level] ([level.id])"))
-			continue
-
-	// this is for the lookups, which must be done immediately, as generation/hooks might require it.
-	rebuild_verticality()
-	rebuild_transitions()
+		

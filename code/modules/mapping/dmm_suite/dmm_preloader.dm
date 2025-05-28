@@ -56,6 +56,7 @@ GLOBAL_REAL_VAR(dmm_preloader_target)
 
 	// handle post processing, so things like directions on subtypes don't break.
 	// only do everything if necessary.
+	// TODO: look over the rotation block, it's inefficient and frankly a mess.
 	var/datum/dmm_context/loading_context_local = preloader_local.loading_context
 	var/turn_angle = loading_context_local.loaded_orientation_turn_angle
 	if(turn_angle && what.preloading_dir(loading_context_local))

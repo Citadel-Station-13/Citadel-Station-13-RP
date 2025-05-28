@@ -90,7 +90,7 @@
 	)
 
 	// create context
-	var/datum/dmm_context/context = create_dmm_context()
+	var/datum/dmm_context/context = new
 	context.mangling_id = generate_mangling_id()
 	for(var/datum/map_injection/injection as anything in map_injections)
 		context.register_injection(injection)

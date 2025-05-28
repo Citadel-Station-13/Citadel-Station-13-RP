@@ -74,6 +74,7 @@
 /**
  * Performs full multiz (including turf / transition) rebuild of an active level.
  *
+ * * Implies [rebuild_multiz_lookup]
  * * Please specify a specific index/dir, doing this without that is extremely expensive.
  * * This proc reserves the right to eagerly rebuild something you didn't specify, but will never
  *   skip rebuilding something you did specify. As an example, telling it rebuild z-1's NORTH
@@ -108,17 +109,20 @@
  * * This does not perform **any** generation or processing on the level, including replacing baseturfs!
  * * This **will** call the level's on_loaded_immediate and on_loaded_finalize.
  * * You usually want load_level() instead, this is instead the equivalent of just incrementing world.maxz.
+ * * Any level passed in or returned from this belongs to SSmapping; you are not allowed to keep direct references to it
+ *   in other datastructures.
+ * * This is a very low level proc, please be careful what you do with it.
  *
  * @params
- * * level_datum_path - a path to allocate
+ * * level - a path, or instance.
  *
  * @#return the instance of /datum/map_level created / used, null on failure
  */
-/datum/controller/subsystem/mapping/proc/allocate_level(level_datum_path = /datum/map_level) as /datum/map_level
+/datum/controller/subsystem/mapping/proc/allocate_level(datum/map_level/level) as /datum/map_level
 	RETURN_TYPE(/datum/map_level)
 	UNTIL(!map_system_mutex)
 	map_system_mutex = TRUE
-	. = allocate_level_impl(new level_datum_path)
+	. = allocate_level_impl(ispath(level) ? new level : level)
 	map_system_mutex = FALSE
 
 /**
@@ -147,8 +151,9 @@
 	ASSERT(allocated_z_level)
 	ASSERT(isnull(ordered_levels[allocated_z_level]))
 
-	// assign z-level
+	// assign z-level and set it as loaded
 	level.z_index = allocated_z_level
+	level.loaded = TRUE
 	ordered_levels[allocated_z_level] = level
 	. = level
 
@@ -160,16 +165,16 @@
 
 	//! LEGACY
 	if(!isnull(level.planet_path))
-		SSplanets.legacy_planet_assert(allocated_Z_level, level.planet_path)
+		SSplanets.legacy_planet_assert(allocated_z_level, level.planet_path)
 	if(loaded_station)
 		if((level.flags & LEGACY_LEVEL_STATION) || level.has_trait(ZTRAIT_STATION))
-			loaded_station.station_levels += allocated_Z_level
+			loaded_station.station_levels += allocated_z_level
 		if((level.flags & LEGACY_LEVEL_ADMIN) || level.has_trait(ZTRAIT_ADMIN))
-			loaded_station.admin_levels += allocated_Z_level
+			loaded_station.admin_levels += allocated_z_level
 		if((level.flags & LEGACY_LEVEL_CONTACT) || level.has_trait(ZTRAIT_STATION))
-			loaded_station.contact_levels += allocated_Z_level
+			loaded_station.contact_levels += allocated_z_level
 		if((level.flags & LEGACY_LEVEL_CONSOLES) || level.has_trait(ZTRAIT_STATION))
-			loaded_station.map_levels += allocated_Z_level
+			loaded_station.map_levels += allocated_z_level
 		// Holomaps
 		// Auto-center the map if needed (Guess based on maxx/maxy)
 		if (level.holomap_offset_x < 0)
@@ -177,10 +182,10 @@
 		if (level.holomap_offset_x < 0)
 			level.holomap_offset_y = ((HOLOMAP_ICON_SIZE - world.maxy) / 2)
 		// Assign them to the map lists
-		LIST_NUMERIC_SET(loaded_station.holomap_offset_x, allocated_Z_level, level.holomap_offset_x)
-		LIST_NUMERIC_SET(loaded_station.holomap_offset_y, allocated_Z_level, level.holomap_offset_y)
-		LIST_NUMERIC_SET(loaded_station.holomap_legend_x, allocated_Z_level, level.holomap_legend_x)
-		LIST_NUMERIC_SET(loaded_station.holomap_legend_y, allocated_Z_level, level.holomap_legend_y)
+		LIST_NUMERIC_SET(loaded_station.holomap_offset_x, allocated_z_level, level.holomap_offset_x)
+		LIST_NUMERIC_SET(loaded_station.holomap_offset_y, allocated_z_level, level.holomap_offset_y)
+		LIST_NUMERIC_SET(loaded_station.holomap_legend_x, allocated_z_level, level.holomap_legend_x)
+		LIST_NUMERIC_SET(loaded_station.holomap_legend_y, allocated_z_level, level.holomap_legend_y)
 	//! END
 
 /**
@@ -189,101 +194,112 @@
  * if it doesn't have a file, we'll change all the turfs to the given baseturf and set atmos/whatever.
  *
  * @params
- * * instance - level to laod
- * * reload - reload stuff like crosslinking/verticalitty renders?
- * * center - center the level if it's mismatched sizes? we will never load a level that's too big.
- * * crop - crop the level if it's too big instead of panic
- * * deferred_callbacks - generation callbacks to defer. if this isn't provided, we fire them + finalize immediately.
- * * context - dmm_context to use
- * * defer_context - defer executing initialization/generations.
- * * orientation - load orientation override
- * * area_cache - pass in area cache for bundling to dmm_parsed.
+ * * instance - level to load
+ * * use_area_cache - use the given list as the area cache for the DMM loader. if none is provided, one will be created.
+ * * use_dmm_context - use the given dmm_context for the loader. if none is provided, one will be created.
+ * * defer_for_group_load - defer things like generation callbacks. should generally only be internally used by SSmapping; the API can change at any time.
+ * * out_generation_callbacks - generation callbacks emitted by on_load_immediate are put in here instead of executed, if we are deferring due to group load
  *
  * @return loaded context, or null on fail
  */
 /datum/controller/subsystem/mapping/proc/load_level(
 		datum/map_level/instance,
-		rebuild,
-
 		list/use_area_cache,
-
-		list/deferred_callbacks, datum/dmm_context/context, defer_context
+		datum/dmm_context/use_dmm_context,
+		defer_for_group_load,
+		list/datum/callback/out_generation_callbacks,
 	)
 	UNTIL(!map_system_mutex)
 	map_system_mutex = TRUE
-	#warn impl & args
-	. = load_level_impl()
+	. = load_level_impl(
+		instance,
+		use_area_cache,
+		use_dmm_context,
+		defer_for_group_load,
+		out_generation_callbacks,
+	)
 	map_system_mutex = FALSE
 
-/datum/controller/subsystem/mapping/proc/load_level_impl(datum/map_level/instance, rebuild, center, crop, list/deferred_callbacks, datum/dmm_context/context, defer_context, orientation, list/area_cache)
+/datum/controller/subsystem/mapping/proc/load_level_impl(
+		datum/map_level/instance,
+		list/use_area_cache,
+		datum/dmm_context/use_dmm_context,
+		defer_for_group_load,
+		list/datum/callback/out_generation_callbacks,
+	)
 	PRIVATE_PROC(TRUE)
 
-
-
-#warn below
-
-/datum/controller/subsystem/mapping/proc/load_level_impl(datum/map_level/instance, rebuild, center, crop, list/deferred_callbacks, datum/dmm_context/context, defer_context, orientation, list/area_cache)
-
-	// allocate a level for the map
-	instance = allocate_level_impl(instance, FALSE)
-	ASSERT(!isnull(instance))
+	var/datum/map_level/allocated_instance = allocate_level_impl(instance, FALSE)
+	ASSERT(instance.z_index)
 	ASSERT(instance.id)
+	ASSERT(instance == allocated_instance)
 
-	// parse map
+	if(isnull(use_dmm_context))
+		use_dmm_context = create_dmm_context()
+	if(isnull(use_dmm_context.mangling_id))
+		use_dmm_context.mangling_id = "level-[instance.mangling_id || instance.id]"
+
+	var/datum/dmm_context/loaded_context
+
 	var/map_path = instance.resolve_map_path()
-	if(isfile(map_path))
-	else if(!fexists(map_path))
-		CRASH("fexists() failed on map path [map_path] for instance [instance] ([instance.type])")
+	if(map_path)
+		// this is a real map path
+		if(isfile(map_path))
+		else if(!fexists(map_path))
+			CRASH("fexists() failed on map path [map_path] for instance [instance] ([instance.type])")
+		else
+			map_path = file(map_path)
+
+		var/datum/dmm_parsed/parsed = parse_map(map_path)
+
+		var/real_x = instance.load_center ? 1 + round((world.maxx - parsed.width) / 2) : 1
+		var/real_y = instance.load_center ? 1 + round((world.maxy - parsed.height) / 2) : 1
+		var/real_z = instance.z_index
+
+		if(!instance.load_crop && ((parsed.width + real_x - 1) > world.maxx || (parsed.height + real_y - 1) > world.maxy))
+			CRASH("tried to load a map that would overrun the world bounds")
+
+		loaded_context = parsed.load(
+			real_x,
+			real_y,
+			real_z,
+			no_changeturf = TRUE,
+			place_on_top = FALSE,
+			orientation = instance.load_orientation,
+			area_cache = use_area_cache,
+			context = use_dmm_context,
+		)
+
+		ASSERT(loaded_context.success)
 	else
-		map_path = file(map_path)
-	var/datum/dmm_parsed/parsed = parse_map(map_path)
+		// this is not a real map path
+		loaded_context = use_dmm_context
+		loaded_context.mark_used()
+		loaded_context.set_empty_load()
+		loaded_context.success = TRUE
 
-	var/real_x = 1
-	var/real_y = 1
-	var/real_z = instance.z_index
-	var/real_orientation = orientation || instance.orientation
+	// immediately update munltiz cache
+	rebuild_multiz_lookup(instance.z_index)
 
-	// todo: check my math
-	if(center)
-		real_x = 1 + round((world.maxx - parsed.width) / 2)
-		real_y = 1 + round((world.maxy - parsed.height) / 2)
+	// fire context immediately
+	loaded_context.execute_postload()
 
-	if(!crop && ((parsed.width + real_x - 1) > world.maxx || (parsed.height + real_y - 1) > world.maxy))
-		CRASH("tried to load a map that would overrun ):")
-
-	if(isnull(context))
-		context = create_dmm_context()
-	if(isnull(context.mangling_id))
-		context.mangling_id = "level-[instance.mangling_id || instance.id]"
-	context = parsed.load(real_x, real_y, real_z, no_changeturf = TRUE, place_on_top = FALSE, orientation = real_orientation, area_cache = area_cache, context = context)
-
-	ASSERT(context.success)
-
-	var/list/loaded_bounds = context.loaded_bounds
+	// fire instance on load hooks
 	var/list/datum/callback/generation_callbacks = list()
 	instance.on_loaded_immediate(instance.z_index, generation_callbacks)
 
-	if(!defer_context)
-		context.fire_map_initializations()
-
-	// if not group loaded, fire off hooks
-	if(isnull(deferred_callbacks))
-		for(var/datum/callback/cb as anything in generation_callbacks)
-			cb.Invoke()
-
-		if(initialized)
-			SSatoms.init_map_bounds(loaded_bounds)
-
+	// fire finalize and generation callbacks if not deferred
+	if(!defer_for_group_load)
+		for(var/datum/callback/generation_callback as anything in generation_callbacks)
+			generation_callback.Invoke()
+		if(!SSatoms.initialized)
+			SSatoms.init_map_bounds(loaded_context.loaded_bounds)
 		instance.on_loaded_finalize(instance.z_index)
+		instance.rebuild_multiz()
 	else
-		deferred_callbacks += generation_callbacks
+		out_generation_callbacks += generation_callbacks
 
-	. = context
-
-	if(rebuild)
-		rebuild_verticality()
-		rebuild_transitions()
-		rebuild_level_multiz(list(real_z), TRUE, TRUE)
+	return loaded_context
 
 /**
  * destroys a loaded level and frees it for later usage
@@ -373,7 +389,10 @@
 		z_stack_lookup[bottom.z_index] = stack
 		// let's sing the list manipulation song
 		var/datum/map_level/next = ordered_levels[cached_level_up[bottom.z_index]]
+		var/safety = 255
 		while(next)
+			if(safety-- < 0)
+				CRASH("infinite loop during zstack recalculation even after validation. this is a serious bug!")
 			stack += next.z_index
 			z_stack_lookup[next.z_index] = stack
 			next = ordered_levels[cached_level_up[next.z_index]]
@@ -406,7 +425,7 @@
 		return
 	for(var/z in loops)
 		var/datum/map_level/level = ordered_levels[z]
-		level.link_above = null
-		level.link_below = null
+		level.link_above_id = null
+		level.link_below_id = null
 	stack_trace("WARNING: Up/Down loops found in zlevels [english_list(loops)]. This is not allowed and will cause both falling and zcopy to infinitely loop. All zlevels involved have been disconnected, and any structs involved have been destroyed.")
 	rebuild_multiz_lookup()

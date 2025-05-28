@@ -163,7 +163,6 @@
 		ZTRAIT_GRAVITY,
 	)
 	planet_path = /datum/planet/virgo3b
-	link_above = /datum/map_level/tether/station/surface_mid
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	struct_x = 0
 	struct_y = 0
@@ -282,7 +281,7 @@
 	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
 	planet_path = /datum/planet/virgo3b
 
-/datum/map_level/tether/mine/on_loaded_immediate(z_index, during_world_load, list/datum/callback/additional_generation)
+/datum/map_level/tether/mine/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
 	. = ..()
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, z_index, world.maxx, world.maxy) // Create the mining Z-level.
 	new /datum/random_map/noise/ore(null, 1, 1, z_index, 64, 64)         // Create the mining ore distribution map.
@@ -313,9 +312,9 @@
 	struct_y = 1
 	struct_z = -1
 
-/datum/map_level/tether/underdark/on_loaded_immediate(z_index, during_world_load, list/datum/callback/additional_generation)
+/datum/map_level/tether/underdark/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
 	. = ..()
-	additional_generation?.Add(
+	out_generation_callbacks?.Add(
 		CALLBACK(
 			GLOBAL_PROC,
 			GLOBAL_PROC_REF(seed_submaps),
@@ -344,9 +343,9 @@
 	struct_y = -1
 	struct_z = 0
 
-/datum/map_level/tether/plains/on_loaded_immediate(z_index, during_world_load, list/datum/callback/additional_generation)
+/datum/map_level/tether/plains/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
 	. = ..()
-	additional_generation?.Add(
+	out_generation_callbacks?.Add(
 		CALLBACK(
 			GLOBAL_PROC,
 			GLOBAL_PROC_REF(seed_submaps),

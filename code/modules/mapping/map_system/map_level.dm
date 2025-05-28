@@ -1,5 +1,9 @@
 /**
  * a struct for holding information about a zlevel
+ *
+ * ## Loading
+ *
+ * * See `map.dm` for load call order.
  */
 /datum/map_level
 	//* Core *//
@@ -50,42 +54,19 @@
 	/// set to FALSE if transition borders are defined via /turf/level_border, to disable trampling the turf into /turf/level_border
 	var/transition_trampling = TRUE
 
-	/// id of north zlevel - overrides linkage if set.
-	///
-	/// * can also be set to path
-	/// * can also be set to instance - used for structs
-	/// * do not manually set it to levelpath::id, map levels generate ids dynamically!
-	var/datum/map_level/link_north
-	/// id of south zlevel - overrides linkage if set.
-	///
-	/// * can also be set to path
-	/// * can also be set to instance - used for structs
-	/// * do not manually set it to levelpath::id, map levels generate ids dynamically! can also be set to instance - used for structs.
-	var/datum/map_level/link_south
-	/// id of west zlevel - overrides linkage if set.
-	///
-	/// * can also be set to path
-	/// * can also be set to instance - used for structs
-	/// * do not manually set it to levelpath::id, map levels generate ids dynamically! can also be set to instance - used for structs.
-	var/datum/map_level/link_west
-	/// id of east zlevel - overrides linkage if set.
-	///
-	/// * can also be set to path
-	/// * can also be set to instance - used for structs
-	/// * do not manually set it to levelpath::id, map levels generate ids dynamically! can also be set to instance - used for structs.
-	var/datum/map_level/link_east
-	/// id of below zlevel - overrides linkage if set.
-	///
-	/// * can also be set to path
-	/// * can also be set to instance - used for structs
-	/// * do not manually set it to levelpath::id, map levels generate ids dynamically! can also be set to instance - used for structs.
-	var/datum/map_level/link_below
-	/// id of above zlevel - overrides linkage if set.
-	///
-	/// * can also be set to path
-	/// * can also be set to instance - used for structs
-	/// * do not manually set it to levelpath::id, map levels generate ids dynamically! can also be set to instance - used for structs.
-	var/datum/map_level/link_above
+	#warn deal with these
+	/// id of north zlevel
+	var/link_north_id
+	/// id of south zlevel
+	var/link_south_id
+	/// id of west zlevel
+	var/link_west_id
+	/// id of east zlevel
+	var/link_east_id
+	/// id of below zlevel
+	var/link_below_id
+	/// id of above zlevel
+	var/link_above_id
 
 	//* Turf Properties *//
 	/// base turf typepath for this level
@@ -258,12 +239,12 @@
 	.["transition"] = transition
 	.["base_turf"] = "[base_turf]"
 	.["base_area"] = "[base_area]"
-	.["link_north"] = link_north
-	.["link_south"] = link_south
-	.["link_west"] = link_west
-	.["link_east"] = link_east
-	.["link_above"] = link_above
-	.["link_below"] = link_below
+	.["link_north_id"] = link_north_id
+	.["link_south_id"] = link_south_id
+	.["link_west_id"] = link_west_id
+	.["link_east_id"] = link_east_id
+	.["link_above_id"] = link_above_id
+	.["link_below_id"] = link_below_id
 
 	var/unpacked_air_indoors
 	if(ispath(air_indoors, /datum/atmosphere))
@@ -278,7 +259,9 @@
 	.["air_indoors"] = unpacked_air_indoors
 	.["air_outdoors"] = unpacked_air_outdoors
 
-	.["orientation"] = orientation
+	.["load_orientation"] = load_orientation
+	.["load_center"] = load_center
+	.["load_crop"] = load_crop
 
 /datum/map_level/deserialize(list/data)
 	if(loaded)
@@ -309,44 +292,28 @@
 	if(!isnull(data["base_area"]))
 		base_area = text2path(data["base_area"])
 
-	// Resolve links, including if they got serlalized as typepaths.
-	// todo: typepaths should be trampled into ids on save instead.
-	var/resolving_link
-	var/maybe_link_path
-	if(!isnull(data["link_north"]))
-		resolving_link = data["north"]
-		maybe_link_path = text2path(resolving_link)
-		link_north = ispath(maybe_link_path) ? maybe_link_path : resolving_link
-	if(!isnull(data["link_south"]))
-		resolving_link = data["south"]
-		maybe_link_path = text2path(resolving_link)
-		link_south = ispath(maybe_link_path) ? maybe_link_path : resolving_link
-	if(!isnull(data["link_above"]))
-		resolving_link = data["above"]
-		maybe_link_path = text2path(resolving_link)
-		link_above = ispath(maybe_link_path) ? maybe_link_path : resolving_link
-	if(!isnull(data["link_below"]))
-		resolving_link = data["below"]
-		maybe_link_path = text2path(resolving_link)
-		link_below = ispath(maybe_link_path) ? maybe_link_path : resolving_link
-	if(!isnull(data["link_west"]))
-		resolving_link = data["west"]
-		maybe_link_path = text2path(resolving_link)
-		link_west = ispath(maybe_link_path) ? maybe_link_path : resolving_link
-	if(!isnull(data["link_east"]))
-		resolving_link = data["east"]
-		maybe_link_path = text2path(resolving_link)
-		link_east = ispath(maybe_link_path) ? maybe_link_path : resolving_link
+	link_north_id = data["link_north_id"]
+	link_south_id = data["link_south_id"]
+	link_east_id = data["link_east_id"]
+	link_west_id = data["link_west_id"]
+	link_above_id = data["link_above_id"]
+	link_below_id = data["link_below_id"]
 
 	if(!isnull(data["air_indoors"]))
 		air_indoors = data["air_indoors"]
 	if(!isnull(data["air_outdoors"]))
 		air_outdoors = data["air_outdoors"]
-	if(!isnull(data["orientation"]))
-		orientation = data["orientation"]
+
+	if(!isnull(data["load_orientation"]))
+		load_orientation = data["load_orientation"]
+	if(!isnull(data["load_center"]))
+		load_orientation = data["load_center"]
+	if(!isnull(data["load_crop"]))
+		load_orientation = data["load_crop"]
 
 /**
  * get .dmm path or file
+ * * null is an acceptable return, if no file is attached to us.
  */
 /datum/map_level/proc/resolve_map_path()
 	return path
@@ -366,17 +333,34 @@
 //* Directions *//
 
 /**
- * Set level in dir
- * * This does not trigger a rebuild!
+ * Set level in dir, breaking the link whatever level was there previously had with us,
+ * and adding a link for the new level to us.
+ *
+ * TODO: what happens if this is targeting an ID that is currently unloaded?
  */
-/datum/map_level/proc/set_level_in_dir(dir, datum/map_level/level_or_id)
+/datum/map_level/proc/connect_level_in_dir(dir, datum/map_level/level_or_id, skip_loaded_rebuild)
+	var/datum/map_level/existing_level = get_level_in_dir(dir)
+	var/datum/map_level/new_level = istext(level_or_id) ? SSmapping.keyed_levels[level_or_id] : level_or_id
 	#warn impl
+
+/**
+ * Set level in dir
+ * * This will not break a link with the previous level; use [connect_level_in_dir] for that.
+ *
+ * TODO: what happens if this is targeting an ID that is currently unloaded?
+ */
+/datum/map_level/proc/set_level_in_dir(dir, datum/map_level/level_or_id, skip_loaded_rebuild)
+	var/datum/map_level/new_level = istext(level_or_id) ? SSmapping.keyed_levels[level_or_id] : level_or_id
+	#warn impl
+	if(loaded && !skip_loaded_rebuild)
+		rebuild_multiz_in_dir(dir)
 
 /**
  * get level datum in dir
  *
  * * This is authoritative, and is used to rebuild SSmapping's caches.
  * * If diagonal, only returns a level if both steps are consistent with each other.
+ * * This will only return a level if it's currently loaded.
  */
 /datum/map_level/proc/get_level_in_dir(dir) as /datum/map_level
 	if(dir & (dir - 1))
@@ -403,22 +387,18 @@
 		// if both sides are not null, we require agreement between the two
 		return (l1 == l2)? l1 : null
 	switch(dir)
-		#define RESOLVE(X) istype(X, /datum/map_level)? X : (istext(X)? SSmapping.keyed_levels[X] : SSmapping.keyed_levels[X.id])
 		if(NORTH)
-			return RESOLVE(link_north)
+			return SSmapping.keyed_levels[link_north_id]
 		if(SOUTH)
-			return RESOLVE(link_south)
+			return SSmapping.keyed_levels[link_south_id]
 		if(EAST)
-			return RESOLVE(link_east)
+			return SSmapping.keyed_levels[link_east_id]
 		if(WEST)
-			return RESOLVE(link_west)
+			return SSmapping.keyed_levels[link_west_id]
 		if(UP)
-			return RESOLVE(link_above)
+			return SSmapping.keyed_levels[link_above_id]
 		if(DOWN)
-			return RESOLVE(link_below)
-		else
-			pass() // macro used immediately before being undefined; BYOND bug 2072419
-		#undef RESOLVE
+			return SSmapping.keyed_levels[link_below_id]
 
 //* Traits *//
 

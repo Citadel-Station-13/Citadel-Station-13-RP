@@ -1,9 +1,7 @@
-// basically debug / adminbus / advanced wrappers. never use in code.
+/// I shouldn't have to specify that this is only here because it's an admin proc wrapper, ///
+/// and that you shouldn't be using SDQL to invoke the maploader.                          ///
 
-// For your ever biggening badminnery kevinz000
-// ❤ - Cyberboss
-// <3 cyberboss you are epic
-/proc/__load_raw_level(path, orientation = SOUTH, center = TRUE)
+/proc/sdql_dmm_load_raw_level(path, orientation = SOUTH, center = TRUE)
 	var/datum/dmm_parsed/parsed = parse_map(isfile(path)? path : file(path))
 	if(!parsed.bounds)
 		CRASH("seemingly invalid file")
@@ -23,7 +21,7 @@
 
 	return parsed.load(ll_x, ll_y, ll_z, orientation = orientation)
 
-/proc/__load_raw_chunk(path, x, y, z, orientation = SOUTH, center = TRUE)
+/proc/sdql_dmm_load_raw_chunk(path, x, y, z, orientation = SOUTH, center = TRUE)
 	ASSERT(x && y && z)
 
 	var/datum/dmm_parsed/parsed = parse_map(isfile(path)? path : file(path))
