@@ -18,6 +18,7 @@
  */
 /datum/map_level/proc/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	SHOULD_CALL_PARENT(TRUE)
+	loaded = TRUE
 
 /**
  * * called in a group after all maps and dependencies load **and** generation callbacks fire.
@@ -54,3 +55,4 @@
  */
 /datum/map_level/proc/on_unload_finalize()
 	SHOULD_CALL_PARENT(TRUE)
+	loaded = FALSE

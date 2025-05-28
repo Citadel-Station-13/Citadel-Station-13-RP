@@ -19,7 +19,7 @@
 /datum/controller/subsystem/mapping/proc/level_get_datum_in_dir(z, dir)
 	if(dir & (dir - 1))
 		// if diagonal, pass to level for advanced handling
-		return ordered_levels[z].level_in_dir(dir)
+		return ordered_levels[z].get_level_in_dir(dir)
 	var/index
 	switch(dir)
 		if(NORTH)
@@ -44,7 +44,7 @@
 /datum/controller/subsystem/mapping/proc/level_get_index_in_dir(z, dir)
 	if(dir & (dir - 1))
 		// if diagonal, pass to level for advanced handling
-		return ordered_levels[z].level_in_dir(dir)?.z_index
+		return ordered_levels[z].get_level_in_dir(dir)?.z_index
 	var/index
 	switch(dir)
 		if(NORTH)
@@ -125,7 +125,7 @@
 //* Struct *//
 
 /**
- * Gets the sorted Z stack list of a level - the levels accessible from a single level, in multiz
+ * Gets the parent map datum of a level.
  */
-/datum/controller/subsystem/mapping/proc/level_get_struct(z) as /datum/map_struct
-	return ordered_levels[z]?.struct
+/datum/controller/subsystem/mapping/proc/level_get_map(z) as /datum/map_struct
+	return ordered_levels[z]?.parent_map

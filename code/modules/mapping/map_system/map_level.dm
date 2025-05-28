@@ -100,8 +100,7 @@
 	var/air_outdoors = GAS_STRING_VACUUM
 
 	//* Loading *//
-	/// are we loaded in
-	/// *
+	/// Are we loaded in?
 	var/tmp/loaded = FALSE
 	/// our zlevel once loaded
 	var/tmp/z_index
@@ -136,6 +135,7 @@
 	//* Virtual Coordinates *//
 	/// the coordinate of the lower-left / southwest corner border of the map
 	///
+
 	/// * this is not 1,1 on the map, this is the offset to reach 0,0 on the map from 1,1.
 	/// * this is the turf right **outside** the on the lower left corner.
 	/// * basically for fluff and simulation, not byond engine
@@ -348,6 +348,12 @@
 /datum/map_level/proc/allow_deallocate()
 	return TRUE
 
+/**
+ * should we be part of a struct?
+ */
+/datum/map_level/proc/is_in_struct()
+	return !isnull(struct_x) && !isnull(struct_y) && !isnull(struct_z)
+
 //* Directions *//
 
 /**
@@ -484,12 +490,14 @@
 				partner?.teardown_multiz_in_dir(turn(dir, 180))
 
 /**
+ * * multiple dir bits is allowed
  * * will block / sleep!
  */
 /datum/map_level/proc/rebuild_multiz_in_dir(dir)
 	#warn impl
 
 /**
+ * * multiple dir bits is allowed
  * * will block / sleep!
  */
 /datum/map_level/proc/teardown_multiz_in_dir(dir)
@@ -497,6 +505,7 @@
 
 /**
  * causes an immediate rebuild in given dir (or all if none specified)
+ * * multiple dir bits is allowed
  * * dir must be vertical if specified
  * * will block / sleep!
  */
@@ -509,6 +518,7 @@
 
 /**
  * causes an immediate rebuild in given dir (or all if none specified)
+ * * multiple dir bits is allowed
  * * dir must be horizontal if specified
  * * will block / sleep!
  */

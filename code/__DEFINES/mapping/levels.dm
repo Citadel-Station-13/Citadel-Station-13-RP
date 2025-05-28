@@ -6,7 +6,7 @@
 
 /// Default - don't preprocess for unlinked sides, just leave them empty
 #define Z_LINKAGE_NORMAL "normal"
-/// Forced - disallow things like map_struct's to set our linkages.
+/// Forced - disallow things like maps to set our linkages.
 #define Z_LINKAGE_FORCED "forced"
 
 //? "transition"
@@ -23,7 +23,11 @@
 
 //? "attributes"
 
+// TODO: don't hard define these, use :: syntax with datums.
+
 //? "traits"
+
+// TODO: don't hard define these, use :: syntax with datums.
 
 /// level is considered main station (if there's two both will have this; adding support for multi-station later)
 #define ZTRAIT_STATION "legacy-station"

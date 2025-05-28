@@ -94,8 +94,7 @@
 	var/load_shared_area_cache = TRUE
 
 	//* World State *//
-	/// are we loaded in
-	/// * Once loaded in, we can never be unreferenced / deleted. SSmapping now owns the map permanently, even if unloaded again.
+	/// Are we loaded in?
 	var/tmp/loaded = FALSE
 	/// Quick access - loaded indices
 	/// * This should be in the same order as [levels].
@@ -116,6 +115,10 @@
 	///
 	/// * if a level is at 0,0,0 and another is at 0,0,5 with nothing in between, our depth is 5
 	var/tmp/loaded_sparse_size_z
+	/// z-stacks, addressed by string key "[x],[y]"
+	var/tmp/list/loaded_z_stacks
+	/// z-planes, addressed by string key "[z]"
+	var/tmp/list/loaded_z_planes
 
 	//* Bindings - Overmaps *//
 	/// the overmap location that is binding to us
@@ -255,11 +258,20 @@
 			if(!isnum(level.struct_x))
 				out_errors?.Add("level: index [level_idx] struct_x not num")
 				level_struct_valid = FALSE
+			else if(!ISINRANGE(level.struct_x, -(SHORT_REAL_LIMIT * 0.5), (SHORT_REAL_LIMIT * 0.5)) || (round(level.struct_x) != level.struct_x))
+				out_errors?.Add("level: index [level_idx] struct_x out of bounds or fractional")
+				level_struct_valid = FALSE
 			if(!isnum(level.struct_y))
 				out_errors?.Add("level: index [level_idx] struct_y not num")
 				level_struct_valid = FALSE
+			else if(!ISINRANGE(level.struct_y, -(SHORT_REAL_LIMIT * 0.5), (SHORT_REAL_LIMIT * 0.5)) || (round(level.struct_y) != level.struct_y))
+				out_errors?.Add("level: index [level_idx] struct_y out of bounds or fractional")
+				level_struct_valid = FALSE
 			if(!isnum(level.struct_z))
 				out_errors?.Add("level: index [level_idx] struct_z not num")
+				level_struct_valid = FALSE
+			else if(!ISINRANGE(level.struct_z, -(SHORT_REAL_LIMIT * 0.5), (SHORT_REAL_LIMIT * 0.5)) || (round(level.struct_z) != level.struct_z))
+				out_errors?.Add("level: index [level_idx] struct_z out of bounds or fractional")
 				level_struct_valid = FALSE
 			if(level_struct_valid)
 				var/level_struct_position_str = "[level.struct_x],[level.struct_y],[level.struct_z]"
@@ -322,17 +334,81 @@
  * * should be called after validate(); validate() doesn't require this to work
  * * if loaded maps have their multiz things change, this'll have ssmapping rebuild its cache
  *   and also rebuild the transitions
+ * * this will trample any custom linkages set on levels if they're not set to LINKAGE_FORCED!
  *
  * @params
- * * skip_validation - skip data validation. this is not recommended.
- * * skip_loaded_rebuild - do not rebuild loaded zlevels immediately
+ * * skip_validation - skip data validation. this should only be done if you already validate()'d before construct().
+ * * skip_loaded_rebuild - do not rebuild loaded zlevels immediately.
  */
-/datum/map/proc/construct(skip_validation)
+/datum/map/proc/construct(skip_validation, skip_loaded_rebuild)
 	var/list/validation_errors = list()
 	if(!validate(TRUE, validation_errors))
 		CRASH("validation failed at construct() with errors: [english_list(validation_errors)]; this shouldn't be failing this far in the pipeline, please remember to validate() maps yourself!")
+
+	var/list/datum/map_level/loaded_levels_requiring_immediate_rebuild_to_dirs = list()
+
+	var/z_grid = list()
+	var/z_stacks = list()
+	var/z_planes = list()
+
+	// collect data
+	for(var/datum/map_level/level as anything in levels)
+		if(!level.is_in_struct())
+			continue
+		z_grid["[level.struct_x],[level.struct_y],[level.struct_z]"] = level
+
+		var/x_y_str = "[level.struct_x],[level.struct_y]"
+		if(!z_stacks[x_y_str])
+			z_stacks[x_y_str] = list()
+		z_stacks[x_y_str] += level
+
+		var/z_str = "[level.struct_z]"
+		if(!z_planes[z_str])
+			z_planes[z_str] = list()
+		z_planes[z_str] += level
+
+	// sweep levels
+	for(var/datum/map_level/level as anything in levels)
+		var/level_multiz_changed_dirs = NONE
+		switch(level.linkage)
+			if(Z_LINKAGE_FORCED)
+			if(Z_LINKAGE_NORMAL)
+				var/datum/map_level/level_partner
+				level_partner = z_grid["[level.struct_x+1],[level.struct_y],[level.struct_z]"]
+				if(level.link_east != level_partner)
+					level.link_east = level_partner
+					level_multiz_changed_dirs |= EAST
+				level_partner = z_grid["[level.struct_x-1],[level.struct_y],[level.struct_z]"]
+				if(level.link_west != level_partner)
+					level.link_west = level_partner
+					level_multiz_changed_dirs |= WEST
+				level_partner = z_grid["[level.struct_x],[level.struct_y+1],[level.struct_z]"]
+				if(level.link_north != level_partner)
+					level.link_north = level_partner
+					level_multiz_changed_dirs |= NORTH
+				level_partner = z_grid["[level.struct_x],[level.struct_y-1],[level.struct_z]"]
+				if(level.link_south != level_partner)
+					level.link_south = level_partner
+					level_multiz_changed_dirs |= SOUTH
+				level_partner = z_grid["[level.struct_x],[level.struct_y],[level.struct_z+1]"]
+				if(level.link_above != level_partner)
+					level.link_above = level_partner
+					level_multiz_changed_dirs |= UP
+				level_partner = z_grid["[level.struct_x],[level.struct_y],[level.struct_z-1]"]
+				if(level.link_below != level_partner)
+					level.link_below = level_partner
+					level_multiz_changed_dirs |= DOWN
+
+		if(level.loaded && level_multiz_changed_dirs)
+			loaded_levels_requiring_immediate_rebuild_to_dirs[level] = level_multiz_changed_dirs
+
 	#warn impl
-	#warn tell SSmapping to rebuild cache if loaded levels have multiz changes
+
+	for(var/datum/map_level/rebuilding_level as anything in loaded_levels_requiring_immediate_rebuild_to_dirs)
+		var/rebuild_dirs = loaded_levels_requiring_immediate_rebuild_to_dirs[rebuilding_level]
+		#warn ssmapping update cache
+		if(!skip_loaded_rebuild)
+			rebuilding_level.rebuild_multiz_in_dir(rebuild_dirs)
 
 /**
  * Get levels sorted into z-loading order
