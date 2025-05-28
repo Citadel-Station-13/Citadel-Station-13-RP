@@ -145,8 +145,6 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 			. = TRUE
 		// levels //
 		if("newLevel")
-			if(length(buffer.levels) > max_upload_levels)
-				return TRUE
 			create_level()
 			. = TRUE
 		if("delLevel")
@@ -156,11 +154,7 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 		if("levelDmm")
 			if(owner.owner.is_prompting_for_file())
 				return TRUE
-			var/loaded_file = owner.owner.prompt_for_file("Upload a .dmm file.", "Upload DMM", 1024 * 1024 * 2)
-			var/loaded_file_size = length(loaded_file)
-			if(isfile(target_level.path))
-				current_upload_size -= length(target_level.path)
-			current_upload_size += loaded_file_size
+			var/loaded_file = owner.owner.prompt_for_file_or_null("Upload a .dmm file.", "Upload DMM", 1024 * 1024 * 2)
 			target_level.path = loaded_file
 			update_ui_level_index_data(target_level_index)
 			. = TRUE

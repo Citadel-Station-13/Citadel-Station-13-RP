@@ -4,11 +4,8 @@
 /**
  * Contains:
  *
- * * Typepath data for the current compile relating to spawnable and usable objects.
+ * * Sprite data for the current compile relating to spawnable and usable objects.
  *
- * Conditionally requires:
- *
- * * asset_pack/spritesheet/world_typepaths - if you need anything rendered, this needs to be there.
  */
 /datum/asset_pack/spritesheet/world_typepaths
 	name = "WorldTypepaths"
