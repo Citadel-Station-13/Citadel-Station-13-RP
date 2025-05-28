@@ -307,6 +307,8 @@
  * @return TRUE / FALSE based on success / fail
  */
 /datum/controller/subsystem/mapping/proc/unload_level(datum/map_level/instance)
+	if(instance.parent_map)
+		CRASH("attempted to unload_level on a level with a parent map. the map must be unloaded, not the level individually.")
 	CRASH("unimplemented")
 
 /**
@@ -319,6 +321,8 @@
  * @return TRUE / FALSE based on success / fail
  */
 /datum/controller/subsystem/mapping/proc/unallocate_level(datum/map_level/instance)
+	if(instance.parent_map)
+		CRASH("attempted to unallocate_level on a level with a parent map. the map must be unloaded, not the level individually.")
 	CRASH("unimplemented")
 
 //* Traits, Attributes, and IDs *//

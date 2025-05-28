@@ -70,16 +70,11 @@
 	var/list/datum/dmm_context/loaded_lockstep_contexts = list()
 
 	var/list/datum/callback/deferred_generation_callbacks = list()
-	var/list/datum/dmm_context/deferred_at
-
-	#warn impl
 
 	for(var/datum/map/loading_map as anything in maps_to_load)
 		emit_info_log("load - loading '[instance.id]' with [length(loading_map.levels)] levels...")
-		#warn impl
 
 		var/list/map_use_area_cache = loading_map.load_shared_area_cache ? list() : null
-		var/list/map_generation_callbacks = list()
 
 		for(var/datum/map_level/level as anything in loading_map.get_sorted_levels())
 			var/datum/dmm_context/level_use_dmm_context = create_dmm_context()
@@ -95,18 +90,13 @@
 			if(isnull(level_context))
 				emit_fatal_log("load - failed to load level '[level.id]' in map '[instance.id]")
 				stack_trace("unable to load level [level] ([level.id])")
-				to_world(SPAN_DANGER("PANIC: Unable to load level [level] ([level.id])"))
+				to_chat(world, SPAN_DANGER("PANIC: Unable to load level [level] ([level.id])"))
 				continue
 			loaded_lockstep_levels += level
 			loaded_lockstep_contexts += level_context
-			map_generation_callbacks += level_generation_callbacks
-
-		for(var/datum/callback/cb as anything in map_generation_callbacks)
-			cb.Invoke()
-
+			deferred_generation_callbacks += level_generation_callbacks
 
 		emit_info_log("load - finished loading '[instance.id]' with [length(loading_map.levels)] levels")
-		#warn impl
 
 		loading_map.on_loaded_immediate()
 		loaded_maps += loading_map
@@ -116,37 +106,42 @@
 			SSshuttle.legacy_shuttle_assert(path)
 		//! END
 
-	// since maps presumably need their dependencies, we only fire generation and atom init here
-	for(var/datum/callback/cb as anything in )
+	emit_info_log("load - initializing [length(loaded_lockstep_levels)] levels...")
 
-	#warn impl
+	// fire generation and atom init after, now that everything has had a chance to load
+	for(var/datum/callback/cb as anything in deferred_generation_callbacks)
+		cb.Invoke()
+	for(var/datum/dmm_context/ctx as anything in loaded_lockstep_contexts)
+		if(SSatoms.initialized)
+			SSatoms.init_map_bounds(ctx.loaded_bounds)
+
+	// fire finalize hooks
+	for(var/datum/map_level/level as anything in loaded_lockstep_levels)
+		level.on_loaded_finalize(level.z_index)
+	for(var/datum/map/map as anything in loaded_maps)
+		map.on_loaded_finalize()
 
 	for(var/datum/map_level/loaded_level as anything in loaded_lockstep_levels)
 		rebuild_multiz(loaded_level.z_index)
 
-#warn below
+	emit_info_log("load - initialized [length(loaded_lockstep_levels)] levels")
 
-/datum/controller/subsystem/mapping/proc/load_map_impl(datum/map/instance)
-	PRIVATE_PROC(TRUE)
-	var/list/datum/map_level/loaded_levels = list()
-	var/list/datum/map/actually_loaded = list()
-	var/list/datum/callback/generation_callbacks = list()
-	var/list/datum/dmm_orientation/loaded_contexts = list()
-	load_map_impl_loop(instance, loaded_levels, generation_callbacks, actually_loaded, loaded_contexts)
-	// invoke hooks
-	for(var/datum/dmm_context/context in loaded_contexts)
-		context.fire_map_initializations()
-	// invoke generation
-	for(var/datum/callback/cb as anything in generation_callbacks)
-		cb.Invoke()
-	// invoke init
-	if(initialized)
-		for(var/datum/dmm_context/context in loaded_contexts)
-			SSatoms.init_map_bounds(context.loaded_bounds)
-	// invoke finalize
-	for(var/datum/map_level/level as anything in loaded_levels)
-		level.on_loaded_finalize(level.z_index)
-	// invoke global finalize
-	for(var/datum/map/map as anything in actually_loaded)
-		map.on_loaded_finalize()
-		
+/**
+ * destroys a loaded map and frees it for later usage
+ *
+ * @return TRUE / FALSE based on success / fail
+ */
+/datum/controller/subsystem/mapping/proc/unload_map(datum/map/instance)
+	CRASH("unimplemented")
+
+/**
+ * immediately de-allocates a loaded map and frees its z-index.
+ *
+ * **Do not use this directly unless you absolutely know what you are doing.**
+ * This does not perform any cleanup, and calling this on a loaded zmap can have
+ * severe consequences.
+ *
+ * @return TRUE / FALSE based on success / fail
+ */
+/datum/controller/subsystem/mapping/proc/unallocate_map(datum/map/instance)
+	CRASH("unimplemented")
