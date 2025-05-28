@@ -54,7 +54,6 @@
 	/// set to FALSE if transition borders are defined via /turf/level_border, to disable trampling the turf into /turf/level_border
 	var/transition_trampling = TRUE
 
-	#warn deal with these
 	/// id of north zlevel
 	var/link_north_id
 	/// id of south zlevel
@@ -341,17 +340,48 @@
 /datum/map_level/proc/connect_level_in_dir(dir, datum/map_level/level_or_id, skip_loaded_rebuild)
 	var/datum/map_level/existing_level = get_level_in_dir(dir)
 	var/datum/map_level/new_level = istext(level_or_id) ? SSmapping.keyed_levels[level_or_id] : level_or_id
-	#warn impl
+	if(existing_level == new_level)
+		return
+	if(existing_level.get_level_in_dir(turn(dir, 180)) == src)
+		existing_level.set_level_in_dir(turn(dir, 180), null, skip_loaded_rebuild)
+	set_level_in_dir(dir, level_or_id, skip_loaded_rebuild)
+	new_level?.set_level_in_dir(turn(dir, 180), src, skip_loaded_rebuild)
 
 /**
  * Set level in dir
- * * This will not break a link with the previous level; use [connect_level_in_dir] for that.
+ * * This will not break a link with the previous level from them to us; use [connect_level_in_dir] for that.
  *
  * TODO: what happens if this is targeting an ID that is currently unloaded?
  */
 /datum/map_level/proc/set_level_in_dir(dir, datum/map_level/level_or_id, skip_loaded_rebuild)
 	var/datum/map_level/new_level = istext(level_or_id) ? SSmapping.keyed_levels[level_or_id] : level_or_id
-	#warn impl
+	switch(dir)
+		if(NORTH)
+			if(link_north_id == new_level?.id)
+				return
+			link_north_id = new_level?.id
+		if(SOUTH)
+			if(link_south_id == new_level?.id)
+				return
+			link_south_id = new_level?.id
+		if(EAST)
+			if(link_east_id == new_level?.id)
+				return
+			link_east_id = new_level?.id
+		if(WEST)
+			if(link_west_id == new_level?.id)
+				return
+			link_west_id = new_level?.id
+		if(UP)
+			if(link_above_id == new_level?.id)
+				return
+			link_above_id = new_level?.id
+		if(DOWN)
+			if(link_below_id == new_level?.id)
+				return
+			link_below_id = new_level?.id
+		else
+			CRASH("invalid dir passed in")
 	if(loaded && !skip_loaded_rebuild)
 		rebuild_multiz_in_dir(dir)
 

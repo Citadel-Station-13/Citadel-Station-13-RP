@@ -29,7 +29,11 @@
  * resolves a map by ID, type, or no-op if it's an instance
  */
 /datum/controller/subsystem/mapping/proc/resolve_map(datum/map/id_type_instance)
-	#warn impl
+	if(istext(id_type_instance))
+		return keyed_maps[id_type_instance]
+	else if(ispath(id_type_instance))
+		return keyed_maps[initial(id_type_instance.id)]
+	return id_type_instance
 
 /datum/controller/subsystem/mapping/proc/load_map(datum/map/instance)
 	UNTIL(!map_system_mutex)
