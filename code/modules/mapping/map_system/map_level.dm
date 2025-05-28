@@ -99,13 +99,19 @@
 	/// if atmosphere path, it'll be automatically packed to ID on serialize, as we don't want to serialize paths to disk.
 	var/air_outdoors = GAS_STRING_VACUUM
 
-	//* Loading *//
+	//* World State *//
 	/// Are we loaded in?
 	var/tmp/loaded = FALSE
 	/// our zlevel once loaded
 	var/tmp/z_index
+
+	//* Load Options *//
 	/// load orientation - overridden if loaded as part of a /datum/map
-	var/orientation = SOUTH
+	var/load_orientation = SOUTH
+	/// load should crop - overridden if loaded as part of a /datum/map
+	var/load_crop = FALSE
+	/// load should center us on the world level - overridden if loaded as part of a /datum/map
+	var/load_center = TRUE
 
 	//* Simulation *//
 	/// canonical height of level in meters
@@ -497,14 +503,20 @@
  * * will block / sleep!
  */
 /datum/map_level/proc/rebuild_multiz_in_dir(dir)
-	#warn impl
+	if(dir & (NORTH|SOUTH|EAST|WEST))
+		rebuild_horizontal_transitions(dir & (NORTH|SOUTH|EAST|WEST))
+	if(dir & (UP|DOWN))
+		rebuild_vertical_transitions(dir & (UP|DOWN))
 
 /**
  * * multiple dir bits is allowed
  * * will block / sleep!
  */
 /datum/map_level/proc/teardown_multiz_in_dir(dir)
-	#warn impl
+	if(dir & (NORTH|SOUTH|EAST|WEST))
+		teardown_horizontal_transitions(dir & (NORTH|SOUTH|EAST|WEST))
+	if(dir & (UP|DOWN))
+		teardown_vertical_transitions(dir & (UP|DOWN))
 
 /**
  * causes an immediate rebuild in given dir (or all if none specified)
@@ -515,6 +527,7 @@
 /datum/map_level/proc/rebuild_vertical_transitions(dir)
 	if(dir)
 		ASSERT((dir & (UP|DOWN)) == dir)
+	#warn how is this going to work with zmimic?
 	for(var/turf/T as anything in level_turfs())
 		T.update_multiz()
 		CHECK_TICK
@@ -539,9 +552,16 @@
 /datum/map_level/proc/teardown_vertical_transitions(dir)
 	if(dir)
 		ASSERT((dir & (UP|DOWN)) == dir)
-	for(var/turf/T as anything in level_turfs())
-		T.update_multiz()
-		CHECK_TICK
+	#warn how is this going to work with zmimic?
+	if(dir & DOWN)
+		for(var/turf/T as anything in level_turfs())
+			T.update_multiz()
+			T.disable_zmimic()
+			CHECK_TICK
+	else
+		for(var/turf/T as anything in level_turfs())
+			T.update_multiz()
+			CHECK_TICK
 
 /**
  * causes an immediate teardown in given dir (or all if none specified)
@@ -660,6 +680,7 @@
  * * dir - direction; if null, we grab all, including diagonals
  */
 /datum/map_level/proc/transition_turfs(dir)
+	#warn this needs to obey border distance
 	switch(dir)
 		if(null)
 			. = (

@@ -15,6 +15,8 @@
  *   skip rebuilding something you did specify. As an example, telling it rebuild z-1's NORTH
  *   might result in all of z-1's lookups being updated, but NORTH will always be updated no matter
  *   what.
+ * * This proc does not sleep, as it's used in some critical blocking contexts. That's why
+ *   it's important to not rebuild everything unless it's actually needed, as that's very slow.
  *
  * @params
  * * for_index - for level index
@@ -37,27 +39,27 @@
 		var/level_partner_index
 		level_partner_index = level.get_level_in_dir(UP)?.z_index
 		cached_level_up[for_index] = level_partner_index
-		if(level_partner_index)
+		if(level_partner_index && for_reciprocal)
 			rebuild_multiz_lookup(level_partner_index, DOWN, FALSE)
 		level_partner_index = level.get_level_in_dir(DOWN)?.z_index
 		cached_level_down[for_index] = level_partner_index
-		if(level_partner_index)
+		if(level_partner_index && for_reciprocal)
 			rebuild_multiz_lookup(level_partner_index, UP, FALSE)
 		level_partner_index = level.get_level_in_dir(NORTH)?.z_index
 		cached_level_north[for_index] = level_partner_index
-		if(level_partner_index)
+		if(level_partner_index && for_reciprocal)
 			rebuild_multiz_lookup(level_partner_index, SOUTH, FALSE)
 		level_partner_index = level.get_level_in_dir(SOUTH)?.z_index
 		cached_level_south[for_index] = level_partner_index
-		if(level_partner_index)
+		if(level_partner_index && for_reciprocal)
 			rebuild_multiz_lookup(level_partner_index, NORTH, FALSE)
 		level_partner_index = level.get_level_in_dir(EAST)?.z_index
 		cached_level_east[for_index] = level_partner_index
-		if(level_partner_index)
+		if(level_partner_index && for_reciprocal)
 			rebuild_multiz_lookup(level_partner_index, EAST, FALSE)
 		level_partner_index = level.get_level_in_dir(WEST)?.z_index
 		cached_level_west[for_index] = level_partner_index
-		if(level_partner_index)
+		if(level_partner_index && for_reciprocal)
 			rebuild_multiz_lookup(level_partner_index, WEST, FALSE)
 	else
 		for(var/i in 1 to world.maxz)
@@ -68,7 +70,6 @@
 			cached_level_south[i] = level.get_level_in_dir(SOUTH)?.z_index
 			cached_level_east[i] = level.get_level_in_dir(EAST)?.z_index
 			cached_level_west[i] = level.get_level_in_dir(WEST)?.z_index
-			CHECK_TICK
 
 /**
  * Performs full multiz (including turf / transition) rebuild of an active level.
@@ -137,7 +138,7 @@
 	else
 		do
 			// TODO: persistence-stable ID
-			level.id = "gen-[copytext(md5("[rand(1, 1024 ** 2)]")), 1, 5]"
+			level.id = "gen-[copytext(md5("[rand(1, 1024 ** 2)]"), 1, 5)]"
 		while(keyed-levels[level.id])
 	keyed_levels[level.id] = level
 
@@ -198,9 +199,16 @@
  * * orientation - load orientation override
  * * area_cache - pass in area cache for bundling to dmm_parsed.
  *
- * @return loaded context, or null on failw
+ * @return loaded context, or null on fail
  */
-/datum/controller/subsystem/mapping/proc/load_level(datum/map_level/instance, rebuild, center, crop, list/deferred_callbacks, datum/dmm_context/context, defer_context, orientation, list/area_cache)
+/datum/controller/subsystem/mapping/proc/load_level(
+		datum/map_level/instance,
+		rebuild,
+
+		list/use_area_cache,
+
+		list/deferred_callbacks, datum/dmm_context/context, defer_context
+	)
 	UNTIL(!map_system_mutex)
 	map_system_mutex = TRUE
 	#warn impl & args
@@ -210,7 +218,7 @@
 /datum/controller/subsystem/mapping/proc/load_level_impl(datum/map_level/instance, rebuild, center, crop, list/deferred_callbacks, datum/dmm_context/context, defer_context, orientation, list/area_cache)
 	PRIVATE_PROC(TRUE)
 
-	
+
 
 #warn below
 
@@ -236,7 +244,6 @@
 	var/real_orientation = orientation || instance.orientation
 
 	// todo: check my math
-
 	if(center)
 		real_x = 1 + round((world.maxx - parsed.width) / 2)
 		real_y = 1 + round((world.maxy - parsed.height) / 2)

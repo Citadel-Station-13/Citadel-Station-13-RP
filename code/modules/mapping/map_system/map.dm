@@ -88,7 +88,7 @@
 	var/load_orientation = SOUTH
 	/// crop if too big, instead of panic
 	var/load_auto_crop = FALSE
-	/// center usj if we're smaller than world size
+	/// center us if we're smaller than world size
 	var/load_auto_center = TRUE
 	/// use map-wide area cache instead of individual level area caches; has no effect on submap loading, only level loading.
 	/// * don't touch this unless you know what you're doing.
@@ -342,6 +342,10 @@
  * * if loaded maps have their multiz things change, this'll have ssmapping rebuild its cache
  *   and also rebuild the transitions
  * * this will trample any custom linkages set on levels if they're not set to LINKAGE_FORCED!
+ * * this will **not** trample reciprocal custom linkages. if another level links to a level in us,
+ *   that level will not be unbound despite our level now being unbound.
+ *
+ * TODO: mode to only re-assert internal linkages, without disrupting linkages to other levels outside of ours.
  *
  * @params
  * * skip_validation - skip data validation. this should only be done if you already validate()'d before construct().
@@ -376,6 +380,10 @@
 
 	// sweep levels
 	for(var/datum/map_level/level as anything in levels)
+		level.load_orientation = load_orientation
+		level.load_center = load_auto_center
+		level.load_crop = load_auto_crop
+
 		var/level_multiz_changed_dirs = NONE
 		switch(level.linkage)
 			if(Z_LINKAGE_FORCED)
@@ -411,7 +419,7 @@
 
 	for(var/datum/map_level/rebuilding_level as anything in loaded_levels_requiring_immediate_rebuild_to_dirs)
 		var/rebuild_dirs = loaded_levels_requiring_immediate_rebuild_to_dirs[rebuilding_level]
-		#warn ssmapping update cache
+		SSmapping.rebuild_multiz_lookup(rebuilding_level.z_index, rebuild_dirs)
 		if(!skip_loaded_rebuild)
 			rebuilding_level.rebuild_multiz_in_dir(rebuild_dirs)
 

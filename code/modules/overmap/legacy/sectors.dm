@@ -49,6 +49,8 @@
 					var/datum/overmap_location/map/new_location = new(existing_map)
 					set_location(new_location)
 				else
+					// technically you can init a single level to be an overmap location but this is
+					// disabled for now.
 					CRASH("legacy overmap object initialization attempted on a map-less level")
 			else
 				CRASH("level [our_z] had manually placed overmap entity despite having an initializer already loaded")
