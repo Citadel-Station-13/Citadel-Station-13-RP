@@ -44,13 +44,14 @@
 		if(our_z)
 			var/obj/overmap/entity/existing_entity = SSovermaps.get_enclosing_overmap_entity(our_z)
 			if(!existing_entity)
-				var/datum/map_struct/existing_struct = SSmapping.level_get_struct(our_z)
-				if(!existing_struct)
-					var/datum/map_struct/new_struct = new
-					if(!new_struct.construct(list("0,0,0" = SSmapping.ordered_levels[our_z])))
-						CRASH("failed to construct a legacy level's ephemeral struct.")
-					var/datum/overmap_location/struct/new_location = new(new_struct)
+				var/datum/map/existing_map = SSmapping.level_get_map(our_z)
+				if(existing_map)
+					var/datum/overmap_location/map/new_location = new(existing_map)
 					set_location(new_location)
+				else
+					CRASH("legacy overmap object initialization attempted on a map-less level")
+			else
+				CRASH("level [our_z] had manually placed overmap entity despite having an initializer already loaded")
 
 	// todo: This is shitcode but sue me tbh we gotta refactor this shit anyways to be overmap_initializer's
 	spawn(-1)
