@@ -2444,7 +2444,7 @@
 #include "code\modules\asset_cache\assets\chemistry\patches.dm"
 #include "code\modules\asset_cache\assets\chemistry\pills.dm"
 #include "code\modules\asset_cache\assets\debug\fucky_wucky.dm"
-#include "code\modules\asset_cache\assets\system\map_system.dm"
+#include "code\modules\asset_cache\assets\system\map_system-json.dm"
 #include "code\modules\asset_cache\assets\system\world_typepaths-json.dm"
 #include "code\modules\asset_cache\assets\system\world_typepaths-spritesheet.dm"
 #include "code\modules\asset_cache\packs\changelog_item.dm"
