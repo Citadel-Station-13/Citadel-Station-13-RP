@@ -288,8 +288,8 @@
 	window.send_message(
 		"update",
 		get_payload(
-		with_data = should_update_data,
-		with_static_data = TRUE,
+			with_data = should_update_data,
+			with_static_data = TRUE,
 		),
 	)
 	COOLDOWN_START(src, refresh_cooldown, TGUI_REFRESH_FULL_UPDATE_COOLDOWN)
@@ -340,20 +340,17 @@
 			"observer" = isobserver(user),
 		),
 	)
-	var/list/nested_data = src_object.ui_nested_data(user, src)
-	// static first
 	if(with_static_data)
 		json_data["static"] = src_object.ui_static_data(user, src)
 		for(var/datum/module as anything in modules_registered)
 			var/id = modules_registered[module]
 			nested_data[id] = module.ui_static_data(user, src, TRUE)
+		json_data["nested_data"] = src_object.ui_nested_data(user, src)
 	if(with_data)
 		json_data["data"] = src_object.ui_data(user, src)
 		for(var/datum/module as anything in (with_static_data? modules_registered : modules_processed))
 			var/id = modules_registered[module]
 			nested_data[id] = nested_data[id] | module.ui_data(user, src, TRUE)
-	if(nested_data)
-		json_data["nested_data"] = nested_data
 	if(src_object.tgui_shared_states)
 		json_data["shared"] = src_object.tgui_shared_states
 	if(!isnull(force_data))
@@ -489,7 +486,7 @@
 		return FALSE
 	// todo: one message
 	window.send_message("data", data)
-	window.send_message("nested_data", nested_data)
+	window.send_message("nestedData", nested_data)
 	return TRUE
 
 /**

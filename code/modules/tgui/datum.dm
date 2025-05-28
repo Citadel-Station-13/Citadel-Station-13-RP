@@ -81,6 +81,7 @@
  * be sending a lot of redundant data frequently. Gets squished into one
  * object on the frontend side, but the static part is cached.
  *
+ * * Static data is put into the 'data' state of the running tgui.
  *
  * @params
  * * user - (optional) the mob using the UI
@@ -94,11 +95,15 @@
 /**
  * public
  *
- * Hook for initial UI module data.
+ * Static, nested data to be sent to the UI.
  *
- * * This usually isn't overridden manually. Modules should be registered and will provide
- *   their own ui_data and ui_static_data as needed. This proc is for special uses of the
- *   modules system, as the modules system is simply a 2-deep reducer.
+ * This is exactly the same as `ui_static_data` but the reducer is 2-deep,
+ * meaning the first layer should be a list with string keys and list values.
+ *
+ * This is provided for better support of monolithic UIs that are big enough to be troublesome
+ * without namespaced data updates, but too small to justify splitting into multiple TGUI windows.
+ *
+ * * Nested data is put into the 'nestedData' state of the running TGUI.
  *
  * @params
  * * user - (optional) the mob using the UI
@@ -156,6 +161,8 @@
  *
  * This is a proc so you can override yourself - very useful if you're doing your own module system
  * rather than copy-pasting module code.
+ *
+ * TODO: get rid of this, we should use parent ui, not the weird modules system we have going on.
  *
  * @params
  * * action - the action string of the ui_act
@@ -215,9 +222,8 @@
  *
  * Forces an update to regular UI data.
  *
- * If no user is provided, every user will be updated.
- *
- * todo: this does not update embedders
+ * * If no user is provided, every user will be updated.
+ * * Ignores static and nested data.
  *
  * @params
  * * user - (optional) the mob to update
@@ -236,8 +242,6 @@
  * happens to change static data.
  *
  * If no user is provided, every user will be updated.
- *
- * todo: this does not update embedders
  *
  * optional user the mob currently interacting with the ui
  * optional ui tgui to be updated

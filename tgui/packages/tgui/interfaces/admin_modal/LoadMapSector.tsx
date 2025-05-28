@@ -46,14 +46,14 @@ interface ModalOvermapData {
 }
 
 export const LoadMapSector = (props, context) => {
-  const { act, data, nested_data } = useBackend<ModalData>(context);
+  const { act, data, nestedData } = useBackend<ModalData>(context);
 
-  const mapData: ModalMapData = nested_data["map"];
-  const overmapData: ModalOvermapData = nested_data['overmap'];
+  const mapData: ModalMapData = nestedData["map"];
+  const overmapData: ModalOvermapData = nestedData['overmap'];
   const renderedLevels: InfernoNode[] = [];
 
   for (let i = 1; i <= data.levels; i++) {
-    const mapLevelData: ModalLevelData = nested_data[`level-${i}`];
+    const mapLevelData: ModalLevelData = nestedData[`level-${i}`];
     renderedLevels.push((
       <Stack.Item>
         <MapLevelPane data={mapLevelData} act={act} index={i} />

@@ -57,17 +57,17 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 			QDEL_NULL(buffer)
 	return ..()
 
-/datum/admin_modal/load_map_sector/ui_nested_data(mob/user, datum/tgui/ui)
-	. = ..()
-	.["map"] = ui_map_data()
-	for(var/index in 1 to length(buffer.levels))
-		.["level-[index]"] = ui_level_index_data(index)
-
 /datum/admin_modal/load_map_sector/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["primed"] = primed
 	.["ready"] = ready
 	.["levels"] = length(buffer.levels)
+
+/datum/admin_modal/load_map_sector/ui_nested_data(mob/user, datum/tgui/ui)
+	. = ..()
+	.["map"] = ui_map_data()
+	for(var/index in 1 to length(buffer.levels))
+		.["level-[index]"] = ui_level_index_data(index)
 
 /datum/admin_modal/load_map_sector/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()

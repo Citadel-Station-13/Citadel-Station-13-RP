@@ -29,8 +29,8 @@ import { directlyRouteComponent } from "../routes";
 export class Module<T extends ModuleProps> extends Component<T, {}> {
   getChildContext() {
     let { id } = this.props;
-    let { nested_data } = useBackend(this.context);
-    let data = nested_data[id];
+    let { nestedData } = useBackend(this.context);
+    let data = nestedData[id];
     let ref = data['$src'];
     let ui_name = data['$tgui'];
     return {
@@ -44,9 +44,9 @@ export class Module<T extends ModuleProps> extends Component<T, {}> {
   }
 
   render() {
-    let { nested_data } = useBackend(this.context);
+    let { nestedData } = useBackend(this.context);
     let { id } = this.props;
-    let ui_name = nested_data[id]['$tgui'];
+    let ui_name = nestedData[id]['$tgui'];
     const Component = directlyRouteComponent(ui_name);
     return (
       <Component tguiModule={ui_name} />

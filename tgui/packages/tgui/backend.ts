@@ -38,7 +38,7 @@ export const backendSuspendSuccess = () => ({
 const initialState = {
   config: {},
   data: {},
-  nested_data: {},
+  nestedData: {},
   shared: {},
   // Start as suspended
   suspended: Date.now(),
@@ -61,14 +61,14 @@ export const backendReducer = (state = initialState, action) => {
       ...payload.data,
     };
     // Merge modules
-    const nested_data = {
-      ...state.nested_data,
+    const nestedData = {
+      ...state.nestedData,
     };
-    if (payload.nested_data) {
-      const merging = payload.nested_data;
+    if (payload.nestedData) {
+      const merging = payload.nestedData;
       for (let id of Object.keys(merging)) {
-        nested_data[id] = {
-          ...nested_data[id],
+        nestedData[id] = {
+          ...nestedData[id],
           ...merging[id],
         };
       }
@@ -91,7 +91,7 @@ export const backendReducer = (state = initialState, action) => {
       ...state,
       config,
       data,
-      nested_data,
+      nestedData,
       shared,
       suspended: false,
     };
@@ -110,22 +110,22 @@ export const backendReducer = (state = initialState, action) => {
     };
   }
 
-  if (type === 'backend/nested_data') {
-    // Merge nested_data
-    const nested_data = {
-      ...state.nested_data,
+  if (type === 'backend/nestedData') {
+    // Merge nestedData
+    const nestedData = {
+      ...state.nestedData,
     };
     for (let id of Object.keys(payload)) {
       const data = payload[id];
-      nested_data[id] = {
-        ...nested_data[id],
+      nestedData[id] = {
+        ...nestedData[id],
         ...data,
       };
     }
     // Return new state
     return {
       ...state,
-      nested_data,
+      nestedData,
     };
   }
 
@@ -184,7 +184,7 @@ export const backendMiddleware = store => {
       return;
     }
 
-    if (type === 'nested_data') {
+    if (type === 'nestedData') {
       store.dispatch(backendModuleData(payload));
       return;
     }
@@ -324,7 +324,7 @@ type BackendContext = {
       observer: number,
     },
   },
-  nested_data: Record<string, any>,
+  nestedData: Record<string, any>,
   shared: Record<string, any>,
   computeCache: Record<string, any>,
   suspending: boolean,
@@ -519,10 +519,10 @@ export const useModule = <TData extends ModuleData>(context): ModuleBackend<TDat
       moduleID: null,
     };
   }
-  let { nested_data } = backend;
+  let { nestedData } = backend;
   return {
     backend: backend,
-    data: (nested_data && nested_data[context.m_id]) || {},
+    data: (nestedData && nestedData[context.m_id]) || {},
     act: constructModuleAct(context.m_id, context.m_ref),
     moduleID: context.m_id,
   };
