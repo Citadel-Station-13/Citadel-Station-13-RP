@@ -37,7 +37,8 @@
 	. = load_map_impl(arglist(args))
 	map_system_mutex = FALSE
 
-/datum/controller/subsystem/mapping/proc/load_map_impl(datum/map/instance)
+/datum/controller/subsystem/mapping/proc/load_map_impl(datum/map/instance, from_world_load)
+	emit_info_log("load: beginning load sequence of map id '[instance.id]")
 	// unroll & ready maps
 	var/list/datum/map/maps_to_load = list()
 	var/list/datum/map/maps_to_iterate = list(instance)
@@ -46,25 +47,56 @@
 		var/datum/map/iterating = maps_to_iterate[maps_to_iterate_idx]
 		// TODO: if this returns FALSE, yell about it
 		iterating.ready()
-		for(var/id in iterating.dependencies)
+
+		var/list/chainload_ids = list()
+		chainload_ids += iterating.dependencies
+		if(!from_world_load || !global.world_init_options.load_only_station)
+			chainload_ids += iterating.lateload
+		emit_info_log("load - '[instance.id] - resolved chainload ids '[json_encode(chainload_ids)]'")
+		for(var/id in chainload_ids)
 			var/datum/map/resolved = resolve_map(id)
 			if(resolved)
 				maps_to_iterate |= resolved
 			else
-				#warn yell about it if it's not there
-		if(!global.world_init_options.load_only_station)
-			for(var/id in iterating.lateload)
-				var/datum/map/resolved = resolve_map(id)
-				if(resolved)
-					maps_to_iterate |= resolved
+				if(from_world_load)
+					emit_init_fatal("load - could not resolve map id '[id]' while resolving chainload dependencies for '[instance.id]")
 				else
-					#warn yell about it if it's not there
+					emit_fatal_log("load - could not resolve map id '[id]' while resolving chainload dependencies for '[instance.id]")
+				stack_trace("missing map id '[id]' during map chainload")
 
 	// load maps as needed
+	var/list/datum/map/loaded_maps = list()
+	var/list/datum/map_level/loaded_lockstep_levels = list()
+	var/list/datum/dmm_context/loaded_lockstep_contexts = list()
 
 	#warn impl
 
 	for(var/datum/map/loading_map as anything in maps_to_load)
+		emit_info_log("load - loading '[instance.id]' with [length(loading_map.levels)] levels...")
+		#warn impl
+
+		var/list/use_area_cache = loading_map.load_shared_area_cache ? list() : null
+
+		for(var/datum/map_level/level as anything in loading_map.get_sorted_levels())
+			var/datum/dmm_context/loaded_context = load_level_impl()
+			#warn what if it fails?
+
+			loaded_lockstep_levels += level
+			loaded_lockstep_contexts += loaded_context
+
+		#warn impl
+
+		loading_map.on_loaded_immediate()
+		loaded_maps += loading_map
+
+		//! LEGACY
+		for(var/path in loading_map.legacy_assert_shuttle_datums)
+			SSshuttle.legacy_shuttle_assert(path)
+		//! END
+
+
+	#warn impl
+
 
 #warn below
 
@@ -99,15 +131,6 @@
 	rebuild_level_multiz(indices_to_rebuild, TRUE, TRUE)
 
 /datum/controller/subsystem/mapping/proc/load_map_impl_loop(datum/map/instance, list/datum/map_level/loaded_levels, list/datum/callback/generation_callbacks, list/datum/map/this_batch, list/context_collect)
-	PRIVATE_PROC(TRUE)
-	// ensure any lazy data is loaded and ready to be read
-	instance.prime()
-
-	subsystem_log("Loading map [instance] ([instance.id]) with [length(instance.levels)] levels...")
-	log_world("Loading map [instance] ([instance.id]) with [length(instance.levels)] levels...")
-
-	var/list/area_cache = instance.bundle_area_cache? list() : null
-
 	for(var/datum/map_level/level as anything in instance.get_sorted_levels())
 		var/datum/dmm_context/loaded_context = load_level_impl(
 			level,
@@ -123,45 +146,7 @@
 			STACK_TRACE("unable to load level [level] ([level.id])")
 			message_admins(world, SPAN_DANGER("PANIC: Unable to load level [level] ([level.id])"))
 			continue
-		context_collect[++context_collect.len] = loaded_context
-		loaded_levels += level
 
-	loaded_maps += instance
-	this_batch += instance
-
-	instance.on_loaded_immediate()
-
-	// rebuild multiz
 	// this is for the lookups, which must be done immediately, as generation/hooks might require it.
 	rebuild_verticality()
 	rebuild_transitions()
-
-	// todo: legacy
-	for(var/path in instance.legacy_assert_shuttle_datums)
-		SSshuttle.legacy_shuttle_assert(path)
-
-	var/list/datum/map/recursing = list()
-
-	for(var/datum/map/path_or_id as anything in instance.dependencies)
-		if(ispath(path_or_id))
-			path_or_id = initial(path_or_id.id)
-		if(isnull(keyed_maps[path_or_id]))
-			init_fatal("dependency map [path_or_id] unable to be located.")
-			continue
-		recursing |= keyed_maps[path_or_id]
-
-#ifndef FASTBOOT_DISABLE_LATELOAD
-	for(var/datum/map/path_or_id as anything in instance.lateload)
-		if(ispath(path_or_id))
-			path_or_id = initial(path_or_id.id)
-		if(isnull(keyed_maps[path_or_id]))
-			init_fatal("lateload map [path_or_id] unable to be located.")
-			continue
-		recursing |= keyed_maps[path_or_id]
-#endif
-
-	for(var/datum/map/map as anything in recursing)
-		if(map.loaded)
-			init_debug("skipping recursing map [map.id] - already loaded")
-			continue
-		load_map_impl_loop(map, loaded_levels, generation_callbacks, this_batch, context_collect)

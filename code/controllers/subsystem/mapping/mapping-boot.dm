@@ -63,7 +63,7 @@
 	// pick gateway level - this must happen after the station is picked as it's added to the lateload list
 	createRandomGatewayLevel()
 	// load
-	load_map(instance)
+	load_map(instance, TRUE)
 	return TRUE
 
 /datum/controller/subsystem/mapping/proc/write_next_map(datum/map/station/next)

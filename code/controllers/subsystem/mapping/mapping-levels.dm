@@ -182,9 +182,6 @@
 		LIST_NUMERIC_SET(loaded_station.holomap_legend_y, z_index, level.holomap_legend_y)
 	//! END
 
-
-#warn below
-
 /**
  * loads a map level.
  *
@@ -206,11 +203,18 @@
 /datum/controller/subsystem/mapping/proc/load_level(datum/map_level/instance, rebuild, center, crop, list/deferred_callbacks, datum/dmm_context/context, defer_context, orientation, list/area_cache)
 	UNTIL(!map_system_mutex)
 	map_system_mutex = TRUE
-	. = load_level_impl(arglist(args))
+	#warn impl & args
+	. = load_level_impl()
 	map_system_mutex = FALSE
 
 /datum/controller/subsystem/mapping/proc/load_level_impl(datum/map_level/instance, rebuild, center, crop, list/deferred_callbacks, datum/dmm_context/context, defer_context, orientation, list/area_cache)
 	PRIVATE_PROC(TRUE)
+
+	
+
+#warn below
+
+/datum/controller/subsystem/mapping/proc/load_level_impl(datum/map_level/instance, rebuild, center, crop, list/deferred_callbacks, datum/dmm_context/context, defer_context, orientation, list/area_cache)
 
 	// allocate a level for the map
 	instance = allocate_level_impl(instance, FALSE)
@@ -291,7 +295,7 @@
  *
  * @return TRUE / FALSE based on success / fail
  */
-/datum/controller/subsystem/mapping/proc/deallocate_level(datum/map_level/instance)
+/datum/controller/subsystem/mapping/proc/unallocate_level(datum/map_level/instance)
 	CRASH("unimplemented")
 
 //* Traits, Attributes, and IDs *//

@@ -537,6 +537,7 @@
 #include "code\controllers\hooks.dm"
 #include "code\controllers\master.dm"
 #include "code\controllers\repository.dm"
+#include "code\controllers\subsystem-logging.dm"
 #include "code\controllers\subsystem.dm"
 #include "code\controllers\verbs.dm"
 #include "code\controllers\configuration\config_entry.dm"
