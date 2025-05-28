@@ -127,5 +127,5 @@
 /**
  * Gets the parent map datum of a level.
  */
-/datum/controller/subsystem/mapping/proc/level_get_map(z) as /datum/map_struct
+/datum/controller/subsystem/mapping/proc/level_get_map(z) as /datum/map
 	return ordered_levels[z]?.parent_map

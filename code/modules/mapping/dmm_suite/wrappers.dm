@@ -7,9 +7,7 @@
 	var/datum/dmm_parsed/parsed = parse_map(isfile(path)? path : file(path))
 	if(!parsed.bounds)
 		CRASH("seemingly invalid file")
-	var/datum/map_level/dynamic/level = new
-
-	SSmapping.allocate_level(level)
+	var/datum/map_level/level = SSmapping.allocate_level(/datum/map_level/dynamic)
 	ASSERT(level.z_index)
 
 	var/ll_x = 1

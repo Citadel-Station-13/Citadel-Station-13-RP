@@ -14,11 +14,13 @@
  *
  * @params
  * * z_index - zlevel we loaded on
+ * * during_world_load - set during initial world load; skip expensive rebuilds that will be done anyways
  * * generation_callbacks - callbacks to add to perform post_loaded generation. this will be done in a batch before on_loaded_finalize and before atom init.
  */
-/datum/map_level/proc/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+/datum/map_level/proc/on_loaded_immediate(z_index, during_world_load, list/datum/callback/additional_generation)
 	SHOULD_CALL_PARENT(TRUE)
 	loaded = TRUE
+	struct_active = is_in_struct()
 
 /**
  * * called in a group after all maps and dependencies load **and** generation callbacks fire.
@@ -27,10 +29,12 @@
  *
  * @params
  * * z_index - zlevel we loaded on
+ * * during_world_load - set during initial world load; skip expensive rebuilds that will be done anyways
  */
-/datum/map_level/proc/on_loaded_finalize(z_index)
+/datum/map_level/proc/on_loaded_finalize(z_index, during_world_load)
 	SHOULD_CALL_PARENT(TRUE)
-	rebuild_multiz(TRUE, TRUE)
+	if(!during_world_load)
+		rebuild_multiz(TRUE, TRUE)
 
 //* Unloading *//
 
@@ -40,10 +44,15 @@
  * Fired before zclear fires on the zlevels that consist of us
  * * Called before /datum/map's hook
  * * Multiz is torn down here
+ *
+ * @params
+ * * z_index - zlevel we loaded on
+ * * during_world_unload - set if being called as part of world shutdown
  */
-/datum/map_level/proc/on_unload_pre_zclear()
+/datum/map_level/proc/on_unload_pre_zclear(z_index, during_world_unload)
 	SHOULD_CALL_PARENT(TRUE)
-	teardown_multiz(TRUE, TRUE)
+	if(!during_world_unload)
+		teardown_multiz(TRUE, TRUE)
 
 /**
  * TOOD: not hooked in yet
@@ -52,7 +61,12 @@
  * * Called before /datum/map's hook
  * * We (along our map) are un-referenced and/or garbage collected (if necessary) after.
  * * Multiz is unset here
+ *
+ * @params
+ * * z_index - zlevel we loaded on
+ * * during_world_unload - set if being called as part of world shutdown
  */
-/datum/map_level/proc/on_unload_finalize()
+/datum/map_level/proc/on_unload_finalize(z_index, during_world_unload)
 	SHOULD_CALL_PARENT(TRUE)
 	loaded = FALSE
+	struct_active = FALSE

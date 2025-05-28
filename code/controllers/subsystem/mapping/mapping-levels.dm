@@ -8,10 +8,20 @@
  */
 
 /**
- * Rebuild multiz cache. This must be called whenever any level has their links changed,
- * whether vertical or horizontal.
+ * Rebuilds multiz lookup.
+ *
+ * * Please specify a specific index/dir, doing this without that is extremely expensive.
+ * * This proc reserves the right to eagerly rebuild something you didn't specify, but will never
+ *   skip rebuilding something you did specify. As an example, telling it rebuild z-1's NORTH
+ *   might result in all of z-1's lookups being updated, but NORTH will always be updated no matter
+ *   what.
+ *
+ * @params
+ * * for_index - for level index
+ * * for_dir - for dir bits; this is ignored if for_index is null.
+ * * for_reciprocal - do the same for the other level towards the target index; this is ignored if for_index is null
  */
-/datum/controller/subsystem/mapping/proc/rebuild_multiz_lookup(for_index)
+/datum/controller/subsystem/mapping/proc/rebuild_multiz_lookup(for_index, for_dir, for_reciprocal)
 	z_stack_dirty = TRUE
 
 	if(!for_index)
@@ -24,136 +34,156 @@
 
 	if(for_index)
 		var/datum/map_level/level = ordered_levels[for_index]
-		cached_level_up[for_index] = level.level_in_dir(UP)?.z_index
-		cached_level_down[for_index] = level.level_in_dir(DOWN)?.z_index
-		cached_level_north[for_index] = level.level_in_dir(NORTH)?.z_index
-		cached_level_south[for_index] = level.level_in_dir(SOUTH)?.z_index
-		cached_level_east[for_index] = level.level_in_dir(EAST)?.z_index
-		cached_level_west[for_index] = level.level_in_dir(WEST)?.z_index
+		var/level_partner_index
+		level_partner_index = level.get_level_in_dir(UP)?.z_index
+		cached_level_up[for_index] = level_partner_index
+		if(level_partner_index)
+			rebuild_multiz_lookup(level_partner_index, DOWN, FALSE)
+		level_partner_index = level.get_level_in_dir(DOWN)?.z_index
+		cached_level_down[for_index] = level_partner_index
+		if(level_partner_index)
+			rebuild_multiz_lookup(level_partner_index, UP, FALSE)
+		level_partner_index = level.get_level_in_dir(NORTH)?.z_index
+		cached_level_north[for_index] = level_partner_index
+		if(level_partner_index)
+			rebuild_multiz_lookup(level_partner_index, SOUTH, FALSE)
+		level_partner_index = level.get_level_in_dir(SOUTH)?.z_index
+		cached_level_south[for_index] = level_partner_index
+		if(level_partner_index)
+			rebuild_multiz_lookup(level_partner_index, NORTH, FALSE)
+		level_partner_index = level.get_level_in_dir(EAST)?.z_index
+		cached_level_east[for_index] = level_partner_index
+		if(level_partner_index)
+			rebuild_multiz_lookup(level_partner_index, EAST, FALSE)
+		level_partner_index = level.get_level_in_dir(WEST)?.z_index
+		cached_level_west[for_index] = level_partner_index
+		if(level_partner_index)
+			rebuild_multiz_lookup(level_partner_index, WEST, FALSE)
 	else
 		for(var/i in 1 to world.maxz)
 			var/datum/map_level/level = ordered_levels[i]
-			cached_level_up[i] = level.level_in_dir(UP)?.z_index
-			cached_level_down[i] = level.level_in_dir(DOWN)?.z_index
-			cached_level_north[i] = level.level_in_dir(NORTH)?.z_index
-			cached_level_south[i] = level.level_in_dir(SOUTH)?.z_index
-			cached_level_east[i] = level.level_in_dir(EAST)?.z_index
-			cached_level_west[i] = level.level_in_dir(WEST)?.z_index
+			cached_level_up[i] = level.get_level_in_dir(UP)?.z_index
+			cached_level_down[i] = level.get_level_in_dir(DOWN)?.z_index
+			cached_level_north[i] = level.get_level_in_dir(NORTH)?.z_index
+			cached_level_south[i] = level.get_level_in_dir(SOUTH)?.z_index
+			cached_level_east[i] = level.get_level_in_dir(EAST)?.z_index
+			cached_level_west[i] = level.get_level_in_dir(WEST)?.z_index
+			CHECK_TICK
 
 /**
- * Automatically rebuilds the transitions and multiz of any zlevel that has them.
- * Usually called on world load.
+ * Performs full multiz (including turf / transition) rebuild of an active level.
  *
- * Can specify a list of zlevels to check (indices, not datums!), otherwise rebuilds all
+ * * Please specify a specific index/dir, doing this without that is extremely expensive.
+ * * This proc reserves the right to eagerly rebuild something you didn't specify, but will never
+ *   skip rebuilding something you did specify. As an example, telling it rebuild z-1's NORTH
+ *   might result in all of z-1's lookups being updated, but NORTH will always be updated no matter
+ *   what.
+ *
+ * @params
+ * * for_index - for level index
+ * * for_dir - for dir bits; this is ignored if for_index is null.
+ * * for_reciprocal - do the same for the other level towards the target index; this is ignored if for_index is null
  */
-/datum/controller/subsystem/mapping/proc/rebuild_multiz(list/indices)
-	if(!indices)
-		indices = list()
-		for(var/i in 1 to world.maxz)
-			indices += i
-	for(var/number in indices)
-		var/datum/map_level/L = ordered_levels[number]
-		rebuild_multiz_lookup(L.z_index)
-		L.rebuild_transitions()
-		L.rebuild_turfs()
+/datum/controller/subsystem/mapping/proc/rebuild_multiz(for_index, for_dir, for_reciprocal)
+	if(for_index)
+		rebuild_multiz_lookup(for_index, for_dir, for_reciprocal)
 		CHECK_TICK
-
-#warn don't do this shit, we need to rebuild a dir (s) as needed, not every dir!
+		var/datum/map_level/level = ordered_levels[for_index]
+		// TODO: how do we only rebuild in a specific direction?
+		level.rebuild_multiz(for_reciprocal)
+	else
+		rebuild_multiz_lookup()
+		CHECK_TICK
+		for(var/i in 1 to world.maxz)
+			var/datum/map_level/level = ordered_levels[for_index]
+			level.rebuild_multiz()
+			CHECK_TICK
 
 //* Allocations & Deallocations * //
 
 /**
- * allocates a new map level using the given datum.
+ * allocates a raw map level using the given datum type.
  *
- * This does not perform **any** generation or processing on the level, including replacing baseturfs!
+ * * This does not perform **any** generation or processing on the level, including replacing baseturfs!
+ * * This **will** call the level's on_loaded_immediate and on_loaded_finalize.
+ * * You usually want load_level() instead, this is instead the equivalent of just incrementing world.maxz.
  *
  * @params
- * * level_or_path - an instance or path to allocate
- * * rebuild - reload stuff like crosslinking/verticality renders?
+ * * level_datum_path - a path to allocate
  *
  * @#return the instance of /datum/map_level created / used, null on failure
  */
-/datum/controller/subsystem/mapping/proc/allocate_level(datum/map_level/level_or_path = /datum/map_level, rebuild)
+/datum/controller/subsystem/mapping/proc/allocate_level(level_datum_path = /datum/map_level) as /datum/map_level
 	RETURN_TYPE(/datum/map_level)
 	UNTIL(!map_system_mutex)
 	map_system_mutex = TRUE
-	. = allocate_level_impl(arglist(args))
+	. = allocate_level_impl(new level_datum_path)
 	map_system_mutex = FALSE
 
-/datum/controller/subsystem/mapping/proc/allocate_level_impl(datum/map_level/level_or_path = /datum/map_level, rebuild)
+/**
+ * Special internal helper. Used to allocate a level's z-index and set system variables.
+ */
+/datum/controller/subsystem/mapping/proc/allocate_level_impl(datum/map_level/level) as /datum/map_level
 	PRIVATE_PROC(TRUE)
 	RETURN_TYPE(/datum/map_level)
-	if(ispath(level_or_path))
-		level_or_path = new level_or_path
-	ASSERT(istype(level_or_path))
-	ASSERT(!level_or_path.loaded)
-	if(level_or_path.id && !isnull(keyed_levels[level_or_path.id]))
-		CRASH("fatal id collision on [level_or_path.id]")
 
-	// register level in lookup lists
-	if(!level_or_path.id)
-		// levels must have an ID
+	// run safety checks
+	ASSERT(!level.loaded)
+
+	// register level, generating an ID if it has none
+	if(level.id)
+		if(!isnull(keyed_levels[level.id]))
+			CRASH("ID collision on '[level.id]' during level allocation.")
+	else
 		do
-			level_or_path.id = "gen-[copytext(md5("[rand(1, 1024 ** 2)]"), 1, 5)]"
-		while(keyed_levels[level_or_path.id])
-	ASSERT(!keyed_levels[level_or_path.id])
-	keyed_levels[level_or_path.id] = level_or_path
+			// TODO: persistence-stable ID
+			level.id = "gen-[copytext(md5("[rand(1, 1024 ** 2)]")), 1, 5]"
+		while(keyed-levels[level.id])
+	keyed_levels[level.id] = level
 
-	// allocate the zlevel for the level
-	var/z_index = allocate_z_index()
-	ASSERT(z_index)
-	var/datum/map_level/existing = ordered_levels[z_index]
-	if(!isnull(existing))
-		if(existing.loaded)
-			ASSERT(istype(existing, /datum/map_level/unallocated))
-			existing.loaded = FALSE
-			existing.z_index = null
+	// allocate a zlevel
+	var/allocated_z_level = allocate_z_index()
+	ASSERT(allocated_z_level)
+	ASSERT(isnull(ordered_levels[allocated_z_level]))
 
-	// assign zlevel; this is now a loaded level
-	level_or_path.z_index = z_index
-	ordered_levels[z_index] = level_or_path
-	level_or_path.loaded = TRUE
-	SEND_SIGNAL(level_or_path, COMSIG_MAP_LEVEL_LOADED)
-	. = level_or_path
+	// assign z-level
+	level.z_index = allocated_z_level
+	ordered_levels[allocated_z_level] = level
+	. = level
 
+	// generate names if they're not there
 	if(isnull(level_or_path.display_id))
 		level_or_path.display_id = generate_fluff_level_id()
 	if(isnull(level_or_path.display_name))
 		level_or_path.display_name = "Sector [level_or_path.display_id]"
 
-	if(rebuild)
-		rebuild_verticality()
-		rebuild_transitions()
-		rebuild_level_multiz(list(z_index), TRUE, TRUE)
-
-	// todo: legacy
-	if(!isnull(level_or_path.planet_path))
-		SSplanets.legacy_planet_assert(z_index, level_or_path.planet_path)
-
 	//! LEGACY
-	// the fact that this exists is stupid but this check
-	// make sure we're not loading system maps like reserved levels before station loads.
+	if(!isnull(level.planet_path))
+		SSplanets.legacy_planet_assert(z_index, level.planet_path)
 	if(loaded_station)
-		if((level_or_path.flags & LEGACY_LEVEL_STATION) || level_or_path.has_trait(ZTRAIT_STATION))
+		if((level.flags & LEGACY_LEVEL_STATION) || level.has_trait(ZTRAIT_STATION))
 			loaded_station.station_levels += z_index
-		if((level_or_path.flags & LEGACY_LEVEL_ADMIN) || level_or_path.has_trait(ZTRAIT_ADMIN))
+		if((level.flags & LEGACY_LEVEL_ADMIN) || level.has_trait(ZTRAIT_ADMIN))
 			loaded_station.admin_levels += z_index
-		if((level_or_path.flags & LEGACY_LEVEL_CONTACT) || level_or_path.has_trait(ZTRAIT_STATION))
+		if((level.flags & LEGACY_LEVEL_CONTACT) || level.has_trait(ZTRAIT_STATION))
 			loaded_station.contact_levels += z_index
-		if((level_or_path.flags & LEGACY_LEVEL_CONSOLES) || level_or_path.has_trait(ZTRAIT_STATION))
+		if((level.flags & LEGACY_LEVEL_CONSOLES) || level.has_trait(ZTRAIT_STATION))
 			loaded_station.map_levels += z_index
 		// Holomaps
 		// Auto-center the map if needed (Guess based on maxx/maxy)
-		if (level_or_path.holomap_offset_x < 0)
-			level_or_path.holomap_offset_x = ((HOLOMAP_ICON_SIZE - world.maxx) / 2)
-		if (level_or_path.holomap_offset_x < 0)
-			level_or_path.holomap_offset_y = ((HOLOMAP_ICON_SIZE - world.maxy) / 2)
+		if (level.holomap_offset_x < 0)
+			level.holomap_offset_x = ((HOLOMAP_ICON_SIZE - world.maxx) / 2)
+		if (level.holomap_offset_x < 0)
+			level.holomap_offset_y = ((HOLOMAP_ICON_SIZE - world.maxy) / 2)
 		// Assign them to the map lists
-		LIST_NUMERIC_SET(loaded_station.holomap_offset_x, z_index, level_or_path.holomap_offset_x)
-		LIST_NUMERIC_SET(loaded_station.holomap_offset_y, z_index, level_or_path.holomap_offset_y)
-		LIST_NUMERIC_SET(loaded_station.holomap_legend_x, z_index, level_or_path.holomap_legend_x)
-		LIST_NUMERIC_SET(loaded_station.holomap_legend_y, z_index, level_or_path.holomap_legend_y)
+		LIST_NUMERIC_SET(loaded_station.holomap_offset_x, z_index, level.holomap_offset_x)
+		LIST_NUMERIC_SET(loaded_station.holomap_offset_y, z_index, level.holomap_offset_y)
+		LIST_NUMERIC_SET(loaded_station.holomap_legend_x, z_index, level.holomap_legend_x)
+		LIST_NUMERIC_SET(loaded_station.holomap_legend_y, z_index, level.holomap_legend_y)
 	//! END
+
+
+#warn below
 
 /**
  * loads a map level.
@@ -272,7 +302,6 @@
  * if a level is loading with traits included, this is called per trait after load.
  */
 /datum/controller/subsystem/mapping/proc/on_level_trait_add(datum/map_level/level, trait)
-	#warn hook
 	return
 
 /**
@@ -281,7 +310,6 @@
  * if a level is being deleted with traits on it, this is called per trait prior to delete.
  */
 /datum/controller/subsystem/mapping/proc/on_level_trait_del(datum/map_level/level, trait)
-	#warn hook
 	return
 
 /**
@@ -290,7 +318,6 @@
  * if a level is loading with attribute included, this is called per attribute after load with an old_value of null.
  */
 /datum/controller/subsystem/mapping/proc/on_level_attribute_set(datum/map_level/level, attribute, old_value, new_value)
-	#warn hook
 	return
 
 /**
@@ -364,11 +391,11 @@
 				break
 			if(next)
 				found += next
-	if(!loops.len)
+	if(!length(loops))
 		return
 	for(var/z in loops)
 		var/datum/map_level/level = ordered_levels[z]
 		level.link_above = null
 		level.link_below = null
 	stack_trace("WARNING: Up/Down loops found in zlevels [english_list(loops)]. This is not allowed and will cause both falling and zcopy to infinitely loop. All zlevels involved have been disconnected, and any structs involved have been destroyed.")
-	rebuild_verticality()
+	rebuild_multiz_lookup()

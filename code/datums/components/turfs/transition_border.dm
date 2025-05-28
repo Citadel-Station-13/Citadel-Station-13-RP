@@ -137,7 +137,7 @@
 	var/datum/map_level/our_level = SSmapping.ordered_levels[our_turf.z]
 	if(isnull(our_level))
 		return list()
-	var/datum/map_level/target_level = our_level.level_in_dir(dir)
+	var/datum/map_level/target_level = our_level.get_level_in_dir(dir)
 	if(isnull(target_level))
 		return list()
 	switch(dir)
@@ -169,7 +169,7 @@
 	var/datum/map_level/our_level = SSmapping.ordered_levels[our_turf.z]
 	if(isnull(our_level))
 		return list()
-	var/datum/map_level/target_level = our_level.level_in_dir(dir)
+	var/datum/map_level/target_level = our_level.get_level_in_dir(dir)
 	if(isnull(target_level))
 		return list()
 	switch(dir)

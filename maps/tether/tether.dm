@@ -282,7 +282,7 @@
 	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
 	planet_path = /datum/planet/virgo3b
 
-/datum/map_level/tether/mine/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+/datum/map_level/tether/mine/on_loaded_immediate(z_index, during_world_load, list/datum/callback/additional_generation)
 	. = ..()
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, z_index, world.maxx, world.maxy) // Create the mining Z-level.
 	new /datum/random_map/noise/ore(null, 1, 1, z_index, 64, 64)         // Create the mining ore distribution map.
@@ -313,7 +313,7 @@
 	struct_y = 1
 	struct_z = -1
 
-/datum/map_level/tether/underdark/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+/datum/map_level/tether/underdark/on_loaded_immediate(z_index, during_world_load, list/datum/callback/additional_generation)
 	. = ..()
 	additional_generation?.Add(
 		CALLBACK(
@@ -344,7 +344,7 @@
 	struct_y = -1
 	struct_z = 0
 
-/datum/map_level/tether/plains/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+/datum/map_level/tether/plains/on_loaded_immediate(z_index, during_world_load, list/datum/callback/additional_generation)
 	. = ..()
 	additional_generation?.Add(
 		CALLBACK(

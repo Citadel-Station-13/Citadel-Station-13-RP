@@ -33,7 +33,7 @@
 	link_south = /datum/map_level/sector/virgo4_140/beach
 	link_west = /datum/map_level/sector/virgo4_140/desert
 
-/datum/map_level/sector/virgo4_140/cave/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+/datum/map_level/sector/virgo4_140/cave/on_loaded_immediate(z_index, during_world_load, list/datum/callback/additional_generation)
 	. = ..()
 	additional_generation?.Add(
 		CALLBACK(
@@ -57,7 +57,7 @@
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/lowdesert
 	link_east = /datum/map_level/sector/virgo4_140/cave
 
-/datum/map_level/sector/virgo4_140/desert/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+/datum/map_level/sector/virgo4_140/desert/on_loaded_immediate(z_index, during_world_load, list/datum/callback/additional_generation)
 	. = ..()
 	additional_generation?.Add(
 		CALLBACK(

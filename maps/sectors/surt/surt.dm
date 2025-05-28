@@ -24,7 +24,7 @@
 	path = "maps/sectors/surt/levels/surt_west.dmm"
 	link_east = /datum/map_level/sector/surt/east
 
-/datum/map_level/sector/surt/base/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+/datum/map_level/sector/surt/base/on_loaded_immediate(z_index, during_world_load, list/datum/callback/additional_generation)
 	. = ..()
 	additional_generation?.Add(
 		CALLBACK(
@@ -47,7 +47,7 @@
 	path = "maps/sectors/surt/levels/surt_east.dmm"
 	link_west = /datum/map_level/sector/surt/base
 
-/datum/map_level/sector/surt/east/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+/datum/map_level/sector/surt/east/on_loaded_immediate(z_index, during_world_load, list/datum/callback/additional_generation)
 	. = ..()
 	additional_generation?.Add(
 		CALLBACK(

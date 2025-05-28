@@ -44,8 +44,10 @@
 
 	//* Chainload *//
 	/// dependencies by id or path of other maps - these are critical maps to always load in
+	/// * resolved during ready()
 	var/list/dependencies
 	/// lateload by id or path of other maps - these are non-critical maps to always load in
+	/// * resolved during ready()
 	var/list/lateload
 
 	//* Identity *//
@@ -76,11 +78,10 @@
 	//* Overmaps *//
 	/// our overmap initializer
 	///
-	/// * if specified, our overmap location will be a /datum/overmap_location/struct
+	/// * if specified, our overmap location will be a /datum/overmap_location/map
 	/// * will not be re-fired if overmaps side is what caused us to be loaded. remember,
 	///   /datum/overmap_initializer is a bi-directional binding to and from /datum/map!
-	/// * a struct is required. if no struct is created, we must be a single-level, which will be auto-structed.
-	var/datum/overmap_initializer/overmap_initializer
+	var/datum/overmap_initializer/map/overmap_initializer
 
 	//* Load Options *//
 	/// orientation - defaults to south
@@ -92,6 +93,10 @@
 	/// use map-wide area cache instead of individual level area caches; has no effect on submap loading, only level loading.
 	/// * don't touch this unless you know what you're doing.
 	var/load_shared_area_cache = TRUE
+
+	//* Simulation *//
+	/// Ceiling heights for levels that don't specify it, as well as the blank space between levels
+	var/ceiling_height_default = 5
 
 	//* World State *//
 	/// Are we loaded in?
@@ -131,15 +136,6 @@
 	var/list/legacy_assert_shuttle_datums
 
 /datum/map/New()
-	// immediately resolve dependencies / lateload
-	for(var/i in 1 to length(dependencies))
-		if(ispath(dependencies[i]))
-			var/datum/map/resolving = dependencies[i]
-			dependencies[i] = initial(resolving.id)
-	for(var/i in 1 to length(lateload))
-		if(ispath(lateload[i]))
-			var/datum/map/resolving = lateload[i]
-			lateload[i] = initial(resolving.id)
 	// resolve overmap initializer
 	if(ispath(overmap_initializer) || IS_ANONYMOUS_TYPEPATH(overmap_initializer))
 		overmap_initializer = new overmap_initializer
@@ -213,8 +209,11 @@
  * called before we load in
  * * should be called before validate()
  * * instances any levels not instanced
+ *
+ * @return TRUE / FALSE
  */
 /datum/map/proc/ready()
+	. = TRUE
 	for(var/i in 1 to length(levels))
 		if(ispath(levels[i]))
 			var/datum/map_level/level_path = levels[i]
@@ -222,6 +221,14 @@
 			levels[i] = level_instance
 			if(levels_match_mangling_id)
 				level_instance.mangling_id = mangling_id || id
+	for(var/i in 1 to length(dependencies))
+		if(ispath(dependencies[i]))
+			var/datum/map/resolving = dependencies[i]
+			dependencies[i] = initial(resolving.id)
+	for(var/i in 1 to length(lateload))
+		if(ispath(lateload[i]))
+			var/datum/map/resolving = lateload[i]
+			lateload[i] = initial(resolving.id)
 
 /**
  * validates that everything works
@@ -290,7 +297,7 @@
 		return
 
 	for(var/plane_str in levels_in_plane_by_xy)
-		var/list/datum/map_level/plane_levels = planes[plane_str]
+		var/list/datum/map_level/plane_levels = levels_in_plane_by_xy[plane_str]
 		var/found_ceiling_height
 		for(var/datum/map_level/plane_level as anything in plane_levels)
 			if(isnull(plane_level.ceiling_height))
@@ -306,7 +313,7 @@
 			else
 				found_ceiling_height = plane_level.ceiling_height
 
-	if(!dry_run && !validate_load(struct_errors_out, .))
+	if(for_load && !validate_load(out_errors, .))
 		. = FALSE
 
 /**
@@ -401,8 +408,6 @@
 
 		if(level.loaded && level_multiz_changed_dirs)
 			loaded_levels_requiring_immediate_rebuild_to_dirs[level] = level_multiz_changed_dirs
-
-	#warn impl
 
 	for(var/datum/map_level/rebuilding_level as anything in loaded_levels_requiring_immediate_rebuild_to_dirs)
 		var/rebuild_dirs = loaded_levels_requiring_immediate_rebuild_to_dirs[rebuilding_level]

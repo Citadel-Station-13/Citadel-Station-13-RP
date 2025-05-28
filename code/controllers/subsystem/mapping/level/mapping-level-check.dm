@@ -36,12 +36,11 @@
 
 /**
  * GAME PROC: level_is_virtualized(z)
- * Checks if we should use GetVirtualCoords or similar for things like GPSes, radios
  *
- * Returns TRUE if:
- * z is in a world_struct
+ * Checks if we should use get_virtual_coords and similar helpers while on this level.
+ *
+ * This is the case if the level has 'struct coords', which are virtual coordinates
+ * placing it at a specific spot on a given map's internal level grid.
  */
 /datum/controller/subsystem/mapping/proc/level_is_virtualized(z)
-	// todo: world structs
-	return FALSE
-	// return !isnull(struct_by_z[z])
+	return ordered_levels[z]?.struct_active

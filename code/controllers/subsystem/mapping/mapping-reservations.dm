@@ -11,8 +11,8 @@
 	if(reservation_level_count)
 		log_and_message_admins(SPAN_USERDANGER("Allocating new reserved level. Now at [reservation_level_count + 1]. This is probably not a good thing if the server is not at high load right now."))
 	reservation_level_count++
-	var/datum/map_level/reserved/level_struct = new
-	ASSERT(allocate_level(level_struct))
+	var/datum/map_level/level_struct = allocate_level(/datum/map_level/reserved)
+	ASSERT(level_struct)
 	initialize_reservation_level(level_struct.z_index)
 	reservation_levels |= level_struct.z_index
 	// make a list with a predetermined size for the lookup

@@ -15,6 +15,7 @@ SUBSYSTEM_DEF(mapping)
 
 	//* Levels *//
 	/// indexed level datums
+	/// * If an index is null, there's no level there.
 	var/static/list/datum/map_level/ordered_levels = list()
 	/// k-v id to level datum lookup
 	var/static/list/datum/map_level/keyed_levels = list()

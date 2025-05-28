@@ -5,5 +5,5 @@
  * custom maps
  */
 /datum/map/custom
-	center = TRUE
-	orientation = SOUTH
+	load_auto_center = TRUE
+	load_orientation = SOUTH

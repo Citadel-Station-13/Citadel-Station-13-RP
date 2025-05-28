@@ -122,10 +122,12 @@
 		ll_x = round((world.maxx - real_width) / 2)
 		ll_y = round((world.maxy - real_height) / 2)
 
-	var/datum/map_level/dynamic/level = new
-	level.traits = isnull(traits)? list() : traits.Copy()
-	level.attributes = isnull(attributes)? list() : attributes.Copy()
-	SSmapping.allocate_level(level)
+	var/datum/map_level/dynamic/level = SSmapping.allocate_level(/datum/map_level/dynamic)
+	for(var/trait in traits)
+		level.add_trait(trait)
+	for(var/key in attributes)
+		var/value = attributes[key]
+		level.set_attribute(key, value)
 
 	ASSERT(level.loaded)
 

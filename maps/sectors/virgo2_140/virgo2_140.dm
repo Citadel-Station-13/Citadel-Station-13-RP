@@ -25,7 +25,7 @@
 	path = "maps/sectors/virgo2_140/levels/virgo2_140_surface.dmm"
 	base_turf = /turf/simulated/floor/outdoors/rocks
 
-/datum/map_level/sector/virgo2_140/ground/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+/datum/map_level/sector/virgo2_140/ground/on_loaded_immediate(z_index, during_world_load, list/datum/callback/additional_generation)
 	. = ..()
 	additional_generation?.Add(
 		CALLBACK(

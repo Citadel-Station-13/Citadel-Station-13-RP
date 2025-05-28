@@ -119,6 +119,9 @@
 	var/ceiling_height
 
 	//* Structs / Stitching / Virtual Coordinates *//
+	/// Are we in a struct? Do not set directly, this is set on load
+	/// if struct x/y/z are set.
+	var/tmp/struct_active = FALSE
 	/// our virtual x on the struct; this is not tile coordinates, this is struct coordinates
 	/// * set as needed so the map knows where to put us in the virtual struct.
 	var/struct_x = 0
@@ -459,14 +462,14 @@
  *                this doesn't always make sense to enable, because
  *                it's possible (albeit rare) that a level is one-way
  *                linked and the other level doesn't link back.
- * * skip_same_map - if reciprocal, don't rebuild same map
+ * * reciprocal_ignore_same_map - if reciprocal, don't rebuild same map
  */
-/datum/map_level/proc/rebuild_multiz(reciprocal, skip_same_map)
+/datum/map_level/proc/rebuild_multiz(reciprocal, reciprocal_ignore_same_map)
 	for(var/dir in list(NORTH, SOUTH, EAST, WEST, UP, DOWN))
 		rebuild_multiz_in_dir(dir)
 		if(reciprocal)
 			var/datum/map_level/partner = get_level_in_dir(dir)
-			if(!skip_same_map || partner.parent_map != parent_map)
+			if(!reciprocal_ignore_same_map || partner.parent_map != parent_map)
 				partner?.rebuild_multiz_in_dir(turn(dir, 180))
 
 /**
@@ -479,14 +482,14 @@
  *                this doesn't always make sense to enable, because
  *                it's possible (albeit rare) that a level is one-way
  *                linked and the other level doesn't link back.
- * * skip_same_map - if reciprocal, don't rebuild same map
+ * * reciprocal_ignore_same_map - if reciprocal, don't rebuild same map
  */
-/datum/map_level/proc/teardown_multiz(reciprocal, skip_same_map)
+/datum/map_level/proc/teardown_multiz(reciprocal, reciprocal_ignore_same_map)
 	for(var/dir in list(NORTH, SOUTH, EAST, WEST, UP, DOWN))
 		teardown_multiz_in_dir(dir)
 		if(reciprocal)
 			var/datum/map_level/partner = get_level_in_dir(dir)
-			if(!skip_same_map || partner.parent_map != parent_map)
+			if(!reciprocal_ignore_same_map || partner.parent_map != parent_map)
 				partner?.teardown_multiz_in_dir(turn(dir, 180))
 
 /**
@@ -523,6 +526,30 @@
  * * will block / sleep!
  */
 /datum/map_level/proc/rebuild_horizontal_transitions(dir)
+	if(dir)
+		ASSERT((dir & (NORTH|SOUTH|EAST|WEST)) == dir)
+	#warn impl
+
+/**
+ * causes an immediate teardown in given dir (or all if none specified)
+ * * multiple dir bits is allowed
+ * * dir must be vertical if specified
+ * * will block / sleep!
+ */
+/datum/map_level/proc/teardown_vertical_transitions(dir)
+	if(dir)
+		ASSERT((dir & (UP|DOWN)) == dir)
+	for(var/turf/T as anything in level_turfs())
+		T.update_multiz()
+		CHECK_TICK
+
+/**
+ * causes an immediate teardown in given dir (or all if none specified)
+ * * multiple dir bits is allowed
+ * * dir must be horizontal if specified
+ * * will block / sleep!
+ */
+/datum/map_level/proc/teardown_horizontal_transitions(dir)
 	if(dir)
 		ASSERT((dir & (NORTH|SOUTH|EAST|WEST)) == dir)
 	#warn impl

@@ -20,7 +20,7 @@
 	planet_path = /datum/planet/classh
 	air_outdoors = /datum/atmosphere/planet/classh
 
-/datum/map_level/sector/desert_192/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+/datum/map_level/sector/desert_192/on_loaded_immediate(z_index, during_world_load, list/datum/callback/additional_generation)
 	. = ..()
 	additional_generation?.Add(
 		CALLBACK(

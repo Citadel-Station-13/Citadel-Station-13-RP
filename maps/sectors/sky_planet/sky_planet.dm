@@ -59,7 +59,7 @@
 	air_outdoors = /datum/atmosphere/planet/sky_planet/ground
 	planet_path = /datum/planet/sky_planet/ground
 
-/datum/map_level/sector/sky_planet/ground_west/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+/datum/map_level/sector/sky_planet/ground_west/on_loaded_immediate(z_index, during_world_load, list/datum/callback/additional_generation)
 	. = ..()
 	additional_generation?.Add(
 		CALLBACK(
@@ -84,7 +84,7 @@
 	air_outdoors = /datum/atmosphere/planet/sky_planet
 	planet_path = /datum/planet/sky_planet
 
-/datum/map_level/sector/sky_planet/sky_upper_east/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+/datum/map_level/sector/sky_planet/sky_upper_east/on_loaded_immediate(z_index, during_world_load, list/datum/callback/additional_generation)
 	. = ..()
 	additional_generation?.Add(
 		CALLBACK(
@@ -120,7 +120,7 @@
 	air_outdoors = /datum/atmosphere/planet/sky_planet/ground
 	planet_path = /datum/planet/sky_planet/ground
 
-/datum/map_level/sector/sky_planet/ground_east/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+/datum/map_level/sector/sky_planet/ground_east/on_loaded_immediate(z_index, during_world_load, list/datum/callback/additional_generation)
 	. = ..()
 	additional_generation?.Add(
 		CALLBACK(

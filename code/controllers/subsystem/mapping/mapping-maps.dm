@@ -25,11 +25,48 @@
 			continue
 		keyed_maps[created.id] = created
 
+/**
+ * resolves a map by ID, type, or no-op if it's an instance
+ */
+/datum/controller/subsystem/mapping/proc/resolve_map(datum/map/id_type_instance)
+	#warn impl
+
 /datum/controller/subsystem/mapping/proc/load_map(datum/map/instance)
 	UNTIL(!map_system_mutex)
 	map_system_mutex = TRUE
 	. = load_map_impl(arglist(args))
 	map_system_mutex = FALSE
+
+/datum/controller/subsystem/mapping/proc/load_map_impl(datum/map/instance)
+	// unroll & ready maps
+	var/list/datum/map/maps_to_load = list()
+	var/list/datum/map/maps_to_iterate = list(instance)
+	var/maps_to_iterate_idx = 1
+	while(maps_to_iterate_idx <= length(maps_to_iterate))
+		var/datum/map/iterating = maps_to_iterate[maps_to_iterate_idx]
+		// TODO: if this returns FALSE, yell about it
+		iterating.ready()
+		for(var/id in iterating.dependencies)
+			var/datum/map/resolved = resolve_map(id)
+			if(resolved)
+				maps_to_iterate |= resolved
+			else
+				#warn yell about it if it's not there
+		if(!global.world_init_options.load_only_station)
+			for(var/id in iterating.lateload)
+				var/datum/map/resolved = resolve_map(id)
+				if(resolved)
+					maps_to_iterate |= resolved
+				else
+					#warn yell about it if it's not there
+
+	// load maps as needed
+
+	#warn impl
+
+	for(var/datum/map/loading_map as anything in maps_to_load)
+
+#warn below
 
 /datum/controller/subsystem/mapping/proc/load_map_impl(datum/map/instance)
 	PRIVATE_PROC(TRUE)
