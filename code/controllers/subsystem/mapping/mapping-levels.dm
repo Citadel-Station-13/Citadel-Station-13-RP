@@ -139,7 +139,7 @@
 		do
 			// TODO: persistence-stable ID
 			level.id = "gen-[copytext(md5("[rand(1, 1024 ** 2)]"), 1, 5)]"
-		while(keyed-levels[level.id])
+		while(keyed_levels[level.id])
 	keyed_levels[level.id] = level
 
 	// allocate a zlevel
@@ -153,23 +153,23 @@
 	. = level
 
 	// generate names if they're not there
-	if(isnull(level_or_path.display_id))
-		level_or_path.display_id = generate_fluff_level_id()
-	if(isnull(level_or_path.display_name))
-		level_or_path.display_name = "Sector [level_or_path.display_id]"
+	if(isnull(level.display_id))
+		level.display_id = generate_fluff_level_id()
+	if(isnull(level.display_name))
+		level.display_name = "Sector [level.display_id]"
 
 	//! LEGACY
 	if(!isnull(level.planet_path))
-		SSplanets.legacy_planet_assert(z_index, level.planet_path)
+		SSplanets.legacy_planet_assert(allocated_Z_level, level.planet_path)
 	if(loaded_station)
 		if((level.flags & LEGACY_LEVEL_STATION) || level.has_trait(ZTRAIT_STATION))
-			loaded_station.station_levels += z_index
+			loaded_station.station_levels += allocated_Z_level
 		if((level.flags & LEGACY_LEVEL_ADMIN) || level.has_trait(ZTRAIT_ADMIN))
-			loaded_station.admin_levels += z_index
+			loaded_station.admin_levels += allocated_Z_level
 		if((level.flags & LEGACY_LEVEL_CONTACT) || level.has_trait(ZTRAIT_STATION))
-			loaded_station.contact_levels += z_index
+			loaded_station.contact_levels += allocated_Z_level
 		if((level.flags & LEGACY_LEVEL_CONSOLES) || level.has_trait(ZTRAIT_STATION))
-			loaded_station.map_levels += z_index
+			loaded_station.map_levels += allocated_Z_level
 		// Holomaps
 		// Auto-center the map if needed (Guess based on maxx/maxy)
 		if (level.holomap_offset_x < 0)
@@ -177,10 +177,10 @@
 		if (level.holomap_offset_x < 0)
 			level.holomap_offset_y = ((HOLOMAP_ICON_SIZE - world.maxy) / 2)
 		// Assign them to the map lists
-		LIST_NUMERIC_SET(loaded_station.holomap_offset_x, z_index, level.holomap_offset_x)
-		LIST_NUMERIC_SET(loaded_station.holomap_offset_y, z_index, level.holomap_offset_y)
-		LIST_NUMERIC_SET(loaded_station.holomap_legend_x, z_index, level.holomap_legend_x)
-		LIST_NUMERIC_SET(loaded_station.holomap_legend_y, z_index, level.holomap_legend_y)
+		LIST_NUMERIC_SET(loaded_station.holomap_offset_x, allocated_Z_level, level.holomap_offset_x)
+		LIST_NUMERIC_SET(loaded_station.holomap_offset_y, allocated_Z_level, level.holomap_offset_y)
+		LIST_NUMERIC_SET(loaded_station.holomap_legend_x, allocated_Z_level, level.holomap_legend_x)
+		LIST_NUMERIC_SET(loaded_station.holomap_legend_y, allocated_Z_level, level.holomap_legend_y)
 	//! END
 
 /**
