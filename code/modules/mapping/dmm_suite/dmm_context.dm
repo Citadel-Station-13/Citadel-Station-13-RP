@@ -76,15 +76,15 @@
 	used = TRUE
 
 /datum/dmm_context/proc/set_empty_load()
-	loaded_context.loaded_bounds = new /list(MAP_BOUNDS)
-	loaded_context.loaded_bounds[MAP_MINX] = 0
-	loaded_context.loaded_bounds[MAP_MINY] = 0
-	loaded_context.loaded_bounds[MAP_MINZ] = 0
-	loaded_context.loaded_bounds[MAP_MAXX] = 0
-	loaded_context.loaded_bounds[MAP_MAXY] = 0
-	loaded_context.loaded_bounds[MAP_MAXZ] = 0
+	loaded_bounds = new /list(MAP_BOUNDS)
+	loaded_bounds[MAP_MINX] = 0
+	loaded_bounds[MAP_MINY] = 0
+	loaded_bounds[MAP_MINZ] = 0
+	loaded_bounds[MAP_MAXX] = 0
+	loaded_bounds[MAP_MAXY] = 0
+	loaded_bounds[MAP_MAXZ] = 0
 	var/datum/dmm_orientation/orientation_data = GLOB.dmm_orientations["[SOUTH]"]
-	orientation_data.imprint_context(src)
+	orientation_data.populate_context(src)
 
 /**
  * fire off initializations

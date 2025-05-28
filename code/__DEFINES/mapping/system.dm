@@ -13,4 +13,5 @@
 ///
 /// * This is how many tiles the server's maploader / map system reserves for internal use.
 /// * This means 'logical' 1,1 with width 1 is actually 2.
+/// * This cannot be 0.
 #define LEVEL_BORDER_WIDTH 1

@@ -503,11 +503,12 @@
  * * multiple dir bits is allowed
  * * dir must be vertical if specified
  * * will block / sleep!
+ *
+ * TODO: this proc is a lie, it doesn't actually touch zmimic; that's fine for now, though
  */
-/datum/map_level/proc/rebuild_vertical_transitions(dir)
-	if(dir)
-		ASSERT((dir & (UP|DOWN)) == dir)
-	#warn how is this going to work with zmimic?
+/datum/map_level/proc/rebuild_vertical_transitions(dirs)
+	if(dirs)
+		ASSERT((dirs & (UP|DOWN)) == dirs)
 	for(var/turf/T as anything in level_turfs())
 		T.update_multiz()
 		CHECK_TICK
@@ -518,22 +519,104 @@
  * * dir must be horizontal if specified
  * * will block / sleep!
  */
-/datum/map_level/proc/rebuild_horizontal_transitions(dir)
-	if(dir)
-		ASSERT((dir & (NORTH|SOUTH|EAST|WEST)) == dir)
-	#warn impl
+/datum/map_level/proc/rebuild_horizontal_transitions(dirs)
+	if(dirs)
+		ASSERT((dirs & (NORTH|SOUTH|EAST|WEST)) == dirs)
+	switch(transition)
+		// do nothing
+		if(Z_TRANSITION_DISABLED)
+		// default not implemented
+		if(Z_TRANSITION_FORCED, Z_TRANSITION_DEFAULT, Z_TRANSITION_INVISIBLE)
+			var/visible = transition != Z_TRANSITION_INVISIBLE
+			// cardinals
+			if(!isnull(link_south_id) && (dirs & SOUTH))
+				for(var/turf/T as anything in transition_turfs(SOUTH))
+					T._make_transition_border(SOUTH, visible)
+					CHECK_TICK
+			else
+				for(var/turf/T as anything in transition_turfs(SOUTH))
+					T._dispose_transition_border()
+					CHECK_TICK
+			if(!isnull(link_north_id) && (dirs & NORTH))
+				for(var/turf/T as anything in transition_turfs(NORTH))
+					T._make_transition_border(NORTH, visible)
+					CHECK_TICK
+			else
+				for(var/turf/T as anything in transition_turfs(NORTH))
+					T._dispose_transition_border()
+					CHECK_TICK
+			if(!isnull(link_east_id) && (dirs & EAST))
+				for(var/turf/T as anything in transition_turfs(EAST))
+					T._make_transition_border(EAST, visible)
+					CHECK_TICK
+			else
+				for(var/turf/T as anything in transition_turfs(EAST))
+					T._dispose_transition_border()
+					CHECK_TICK
+			if(!isnull(link_west_id) && (dirs & WEST))
+				for(var/turf/T as anything in transition_turfs(WEST))
+					T._make_transition_border(WEST, visible)
+					CHECK_TICK
+			else
+				for(var/turf/T as anything in transition_turfs(WEST))
+					T._dispose_transition_border()
+					CHECK_TICK
+			// diagonals
+			var/datum/map_level/resolved
+			if(dirs & (NORTH | WEST))
+				resolved = get_level_in_dir(NORTHWEST)
+				if(!isnull(resolved))
+					for(var/turf/T as anything in transition_turfs(NORTHWEST))
+						T._make_transition_border(NORTHWEST, visible)
+						CHECK_TICK
+				else
+					for(var/turf/T as anything in transition_turfs(NORTHWEST))
+						T._dispose_transition_border()
+						CHECK_TICK
+			if(dirs & (NORTH | EAST))
+				resolved = get_level_in_dir(NORTHEAST)
+				if(!isnull(resolved))
+					for(var/turf/T as anything in transition_turfs(NORTHEAST))
+						T._make_transition_border(NORTHEAST, visible)
+						CHECK_TICK
+				else
+					for(var/turf/T as anything in transition_turfs(NORTHEAST))
+						T._dispose_transition_border()
+						CHECK_TICK
+			if(dirs & (SOUTH | WEST))
+				resolved = get_level_in_dir(SOUTHWEST)
+				if(!isnull(resolved))
+					for(var/turf/T as anything in transition_turfs(SOUTHWEST))
+						T._make_transition_border(SOUTHWEST, visible)
+						CHECK_TICK
+				else
+					for(var/turf/T as anything in transition_turfs(SOUTHWEST))
+						T._dispose_transition_border()
+						CHECK_TICK
+			if(dirs & (SOUTH | EAST))
+				resolved = get_level_in_dir(SOUTHEAST)
+				if(!isnull(resolved))
+					for(var/turf/T as anything in transition_turfs(SOUTHEAST))
+						T._make_transition_border(SOUTHEAST, visible)
+						CHECK_TICK
+				else
+					for(var/turf/T as anything in transition_turfs(SOUTHEAST))
+						T._dispose_transition_border()
+						CHECK_TICK
+
 
 /**
  * causes an immediate teardown in given dir (or all if none specified)
  * * multiple dir bits is allowed
  * * dir must be vertical if specified
  * * will block / sleep!
+ *
+ * TODO: this proc is a lie, it doesn't actually touch zmimic; that's fine for now, though
  */
-/datum/map_level/proc/teardown_vertical_transitions(dir)
-	if(dir)
-		ASSERT((dir & (UP|DOWN)) == dir)
-	#warn how is this going to work with zmimic?
-	if(dir & DOWN)
+/datum/map_level/proc/teardown_vertical_transitions(dirs)
+	if(dirs)
+		ASSERT((dirs & (UP|DOWN)) == dirs)
+	if(dirs & DOWN)
 		for(var/turf/T as anything in level_turfs())
 			T.update_multiz()
 			T.disable_zmimic()
@@ -549,105 +632,15 @@
  * * dir must be horizontal if specified
  * * will block / sleep!
  */
-/datum/map_level/proc/teardown_horizontal_transitions(dir)
-	if(dir)
-		ASSERT((dir & (NORTH|SOUTH|EAST|WEST)) == dir)
-	#warn impl
-
-/**
- * call to rebuild all turfs for horizontal transitions
- *
- * this will sleep
- */
-#warn kill
-/datum/map_level/proc/rebuild_transitions()
-	switch(transition)
-		// do nothing
-		if(Z_TRANSITION_DISABLED)
-		// default not implemented
-		if(Z_TRANSITION_FORCED, Z_TRANSITION_DEFAULT, Z_TRANSITION_INVISIBLE)
-			var/visible = transition != Z_TRANSITION_INVISIBLE
-			// cardinals
-			if(!isnull(link_south))
-				for(var/turf/T as anything in transition_turfs(SOUTH))
-					T._make_transition_border(SOUTH, visible)
-					CHECK_TICK
-			else
-				for(var/turf/T as anything in transition_turfs(SOUTH))
-					T._dispose_transition_border()
-					CHECK_TICK
-			if(!isnull(link_north))
-				for(var/turf/T as anything in transition_turfs(NORTH))
-					T._make_transition_border(NORTH, visible)
-					CHECK_TICK
-			else
-				for(var/turf/T as anything in transition_turfs(NORTH))
-					T._dispose_transition_border()
-					CHECK_TICK
-			if(!isnull(link_east))
-				for(var/turf/T as anything in transition_turfs(EAST))
-					T._make_transition_border(EAST, visible)
-					CHECK_TICK
-			else
-				for(var/turf/T as anything in transition_turfs(EAST))
-					T._dispose_transition_border()
-					CHECK_TICK
-			if(!isnull(link_west))
-				for(var/turf/T as anything in transition_turfs(WEST))
-					T._make_transition_border(WEST, visible)
-					CHECK_TICK
-			else
-				for(var/turf/T as anything in transition_turfs(WEST))
-					T._dispose_transition_border()
-					CHECK_TICK
-			// diagonals
-			var/datum/map_level/resolved
-			resolved = get_level_in_dir(NORTHWEST)
-			if(!isnull(resolved))
-				for(var/turf/T as anything in transition_turfs(NORTHWEST))
-					T._make_transition_border(NORTHWEST, visible)
-					CHECK_TICK
-			else
-				for(var/turf/T as anything in transition_turfs(NORTHWEST))
-					T._dispose_transition_border()
-					CHECK_TICK
-			resolved = get_level_in_dir(NORTHEAST)
-			if(!isnull(resolved))
-				for(var/turf/T as anything in transition_turfs(NORTHEAST))
-					T._make_transition_border(NORTHEAST, visible)
-					CHECK_TICK
-			else
-				for(var/turf/T as anything in transition_turfs(NORTHEAST))
-					T._dispose_transition_border()
-					CHECK_TICK
-			resolved = get_level_in_dir(SOUTHWEST)
-			if(!isnull(resolved))
-				for(var/turf/T as anything in transition_turfs(SOUTHWEST))
-					T._make_transition_border(SOUTHWEST, visible)
-					CHECK_TICK
-			else
-				for(var/turf/T as anything in transition_turfs(SOUTHWEST))
-					T._dispose_transition_border()
-					CHECK_TICK
-			resolved = get_level_in_dir(SOUTHEAST)
-			if(!isnull(resolved))
-				for(var/turf/T as anything in transition_turfs(SOUTHEAST))
-					T._make_transition_border(SOUTHEAST, visible)
-					CHECK_TICK
-			else
-				for(var/turf/T as anything in transition_turfs(SOUTHEAST))
-					T._dispose_transition_border()
-					CHECK_TICK
-
-/**
- * destroys all transitions on border turfs
- * call when changing level size
- *
- * this will sleep
- */
-#warn kill
-/datum/map_level/proc/destroy_transitions()
-	for(var/turf/T as anything in transition_turfs())
+/datum/map_level/proc/teardown_horizontal_transitions(dirs)
+	if(dirs)
+		ASSERT((dirs & (NORTH|SOUTH|EAST|WEST)) == dirs)
+	var/list/updating = list()
+	for(var/checking in list(NORTH, SOUTH, EAST, WEST, NORTHEAST, SOUTHEAST, NORTHWEST, SOUTHWEST))
+		if(!(dirs & checking))
+			continue
+		updating += transition_turfs(checking)
+	for(var/turf/T as anything in updating)
 		T._dispose_transition_border()
 		CHECK_TICK
 
@@ -656,35 +649,50 @@
 /**
  * get transition turfs
  *
+ * * there is no overlap between any of this proc's outputs' for a given unique input.
+ *   what this means is NORTH will not overlap with NORTHEAST. the only exception is when
+ *   no dir is provided.
+ *
  * @params
  * * dir - direction; if null, we grab all, including diagonals
  */
 /datum/map_level/proc/transition_turfs(dir)
-	#warn this needs to obey border distance
 	switch(dir)
 		if(null)
 			. = (
-				block(locate(1, 1, z_index), locate(world.maxx, 1, z_index)) + \
-				block(locate(1, world.maxy, z_index), locate(world.maxx, world.maxy, z_index)) + \
-				block(locate(1, 2, z_index), locate(1, world.maxy - 2, z_index)) + \
-				block(locate(world.maxx, 2, z_index), locate(world.maxx, world.maxy - 2, z_index))
+				block(
+					locate(LEVEL_BORDER_WIDTH, LEVEL_BORDER_WIDTH, z_index),
+					locate(world.maxx - (LEVEL_BORDER_WIDTH - 1), LEVEL_BORDER_WIDTH, z_index),
+				) + \
+				block(
+					locate(LEVEL_BORDER_WIDTH, world.maxy - (LEVEL_BORDER_WIDTH - 1), z_index),
+					locate(world.maxx - (LEVEL_BORDER_WIDTH - 1), world.maxy - (LEVEL_BORDER_WIDTH - 1), z_index),
+				) + \
+				block(
+					locate(LEVEL_BORDER_WIDTH, LEVEL_BORDER_WIDTH + 1, z_index),
+					locate(LEVEL_BORDER_WIDTH, world.maxy - (LEVEL_BORDER_WIDTH + 1), z_index),
+				) + \
+				block(
+					locate(world.maxx - (LEVEL_BORDER_WIDTH - 1), LEVEL_BORDER_WIDTH + 1, z_index),
+					locate(world.maxx - (LEVEL_BORDER_WIDTH - 1), world.maxy - (LEVEL_BORDER_WIDTH + 1), z_index),
+				)
 			)
 		if(NORTH)
-			. = block(locate(2, world.maxy, z_index), locate(world.maxx - 1, world.maxy, z_index))
+			. = block(locate(LEVEL_BORDER_WIDTH + 1, world.maxy, z_index), locate(world.maxx - LEVEL_BORDER_WIDTH, world.maxy, z_index))
 		if(SOUTH)
-			. = block(locate(2, 1, z_index), locate(world.maxx - 1, 1, z_index))
+			. = block(locate(LEVEL_BORDER_WIDTH + 1, LEVEL_BORDER_WIDTH, z_index), locate(world.maxx - LEVEL_BORDER_WIDTH, LEVEL_BORDER_WIDTH, z_index))
 		if(EAST)
-			. = block(locate(world.maxx, 2, z_index), locate(world.maxx, world.maxy - 1, z_index))
+			. = block(locate(world.maxx, LEVEL_BORDER_WIDTH + 1, z_index), locate(world.maxx, world.maxy - LEVEL_BORDER_WIDTH, z_index))
 		if(WEST)
-			. = block(locate(1, 2, z_index), locate(1, world.maxy - 1, z_index))
+			. = block(locate(LEVEL_BORDER_WIDTH, LEVEL_BORDER_WIDTH + 1, z_index), locate(LEVEL_BORDER_WIDTH, world.maxy - LEVEL_BORDER_WIDTH, z_index))
 		if(NORTHEAST)
 			. = list(locate(world.maxx, world.maxy, z_index))
 		if(NORTHWEST)
-			. = list(locate(1, world.maxy, z_index))
+			. = list(locate(LEVEL_BORDER_WIDTH, world.maxy, z_index))
 		if(SOUTHEAST)
-			. = list(locate(world.maxx, 1, z_index))
+			. = list(locate(world.maxx, LEVEL_BORDER_WIDTH, z_index))
 		if(SOUTHWEST)
-			. = list(locate(1, 1, z_index))
+			. = list(locate(LEVEL_BORDER_WIDTH, LEVEL_BORDER_WIDTH, z_index))
 		else
 			CRASH("what?")
 	if(transition_trampling)
