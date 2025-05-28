@@ -18,8 +18,6 @@
  */
 /datum/map_level/proc/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	SHOULD_CALL_PARENT(TRUE)
-	#warn set multiz according to map
-	#warn tell SSmapping to rebuild cache
 
 /**
  * * called in a group after all maps and dependencies load **and** generation callbacks fire.
@@ -56,6 +54,3 @@
  */
 /datum/map_level/proc/on_unload_finalize()
 	SHOULD_CALL_PARENT(TRUE)
-	for(var/dir in list(NORTH, SOUTH, EAST, WEST, UP, DOWN))
-		set_level_in_dir(dir, null)
-	#warn tell SSmapping to rebuild cache

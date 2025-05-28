@@ -58,7 +58,6 @@
  * * Levels have their on_unload_pre_zclear called before this.
  */
 /datum/map/proc/on_unload_pre_zclear()
-	SHOULD_CALL_PARENT(TRUE)
 	#warn destroy struct
 
 /**

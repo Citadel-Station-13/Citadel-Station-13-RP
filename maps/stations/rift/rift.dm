@@ -31,7 +31,6 @@
 		/datum/map/sector/sky_planet,
 	)
 
-	create_struct = TRUE
 	overmap_initializer = /datum/overmap_initializer/struct{
 		legacy_entity_type = /obj/overmap/entity/visitable/sector/lythios43c;
 	}
@@ -190,7 +189,9 @@
 		ZTRAIT_FACILITY_SAFETY,
 		ZTRAIT_GRAVITY,
 	)
-	struct_create_pos = "0,0,-3"
+	struct_x = 0
+	struct_y = 0
+	struct_z = -3
 	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
 	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	planet_path = /datum/planet/lythios43c
@@ -211,7 +212,9 @@
 		ZTRAIT_GRAVITY,
 		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
-	struct_create_pos = "0,0,-2"
+	struct_x = 0
+	struct_y = 0
+	struct_z = -2
 	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	planet_path = /datum/planet/lythios43c
@@ -232,7 +235,9 @@
 		ZTRAIT_GRAVITY,
 		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
-	struct_create_pos = "0,0,-1"
+	struct_x = 0
+	struct_y = 0
+	struct_z = -1
 	base_turf = /turf/simulated/open
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	planet_path = /datum/planet/lythios43c
@@ -253,7 +258,9 @@
 		ZTRAIT_GRAVITY,
 		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
-	struct_create_pos = "0,0,0"
+	struct_x = 0
+	struct_y = 0
+	struct_z = 0
 	base_turf = /turf/simulated/open
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	planet_path = /datum/planet/lythios43c
@@ -274,7 +281,9 @@
 		ZTRAIT_GRAVITY,
 		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
-	struct_create_pos = "0,0,1"
+	struct_x = 0
+	struct_y = 0
+	struct_z = 1
 	base_turf = /turf/simulated/open
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	planet_path = /datum/planet/lythios43c
@@ -295,7 +304,9 @@
 		ZTRAIT_GRAVITY,
 		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
-	struct_create_pos = "0,0,2"
+	struct_x = 0
+	struct_y = 0
+	struct_z = 2
 	base_turf = /turf/simulated/open
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	planet_path = /datum/planet/lythios43c
@@ -314,7 +325,9 @@
 		ZTRAIT_STATION,
 		ZTRAIT_GRAVITY,
 	)
-	struct_create_pos = "-1,0,-3"
+	struct_x = -1
+	struct_y = 0
+	struct_z = -3
 	base_turf = /turf/simulated/floor/outdoors/icesand/lythios43c/indoor
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER
 	planet_path = /datum/planet/lythios43c
@@ -344,7 +357,9 @@
 		ZTRAIT_GRAVITY,
 		ZTRAIT_LEGACY_BELTER_DOCK,
 	)
-	struct_create_pos = "-1,0,-2"
+	struct_x = -1
+	struct_y = 0
+	struct_z = -2
 	base_turf = /turf/simulated/floor/outdoors/icesand/lythios43c/indoor
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_PLAYER
 	planet_path = /datum/planet/lythios43c
@@ -373,7 +388,9 @@
 		ZTRAIT_STATION,
 		ZTRAIT_GRAVITY,
 	)
-	struct_create_pos = "-1,0,-1"
+	struct_x = -1
+	struct_y = 0
+	struct_z = -1
 	base_turf = /turf/simulated/floor/outdoors/icesand/lythios43c/indoor
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_PLAYER
 	planet_path = /datum/planet/lythios43c
@@ -398,7 +415,9 @@
 	display_id = "atlas-west-plains"
 	display_name = "NSB Atlas Western Plains"
 	path = "maps/stations/rift/map_files/rift-10-west_plains.dmm"
-	struct_create_pos = "-1,0,0"
+	struct_x = -1
+	struct_y = 0
+	struct_z = 0
 	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER
 	planet_path = /datum/planet/lythios43c

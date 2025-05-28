@@ -2,39 +2,6 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/map_struct
-/**
- * validates our struct
- * * can be called before actually trying to construct
- *
- * @params
- * * z_grid - see construct()
- * * out_errors - (optional) human readable errors get added to this list if provided
- *
- * @return TRUE / FALSE
- */
-/datum/map_struct/proc/validate(list/z_grid, list/out_errors)
-	. = TRUE
-	var/list/planes = list()
-	for(var/idx in 1 to length(z_grid))
-		var/pos_string = z_grid[idx]
-		var/datum/map_level/level = z_grid[pos_string]
-		LAZYADD(planes["[x],[y]"], level)
-	for(var/plane_key in planes)
-		var/list/datum/map_level/plane_levels = planes[plane_key]
-		var/found_ceiling_height
-		for(var/datum/map_level/plane_level as anything in plane_levels)
-			if(isnull(plane_level.ceiling_height))
-				continue
-			if(plane_level.ceiling_height == 0)
-				out_errors?.Add("Plane [plane_key] has a zero ceiling height level.")
-				. = FALSE
-				break
-			if(!isnull(found_ceiling_height) && found_ceiling_height != plane_level.ceiling_height)
-				out_errors?.Add("Plane [plane_key] has mismatching ceiling heights.")
-				. = FALSE
-				break
-			else
-				found_ceiling_height = plane_level.ceiling_height
 
 /**
  * Sets all the transitions and whatnot for our map levels
@@ -121,6 +88,7 @@
 			CRASH("FATAL: attempted to include an unloaded level in a struct. structs do not currently support lazy-loading.")
 		if(resolved.struct)
 			CRASH("FATAL: level already had struct")
+
 
 		// add to levels list
 		levels += resolved

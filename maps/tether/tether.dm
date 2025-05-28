@@ -29,8 +29,6 @@
 		/datum/map/sector/roguemining_192/one,
 	)
 
-	create_struct = TRUE
-
 	//* LEGACY BELOW *//
 
 	legacy_assert_shuttle_datums = list(
@@ -167,7 +165,9 @@
 	planet_path = /datum/planet/virgo3b
 	link_above = /datum/map_level/tether/station/surface_mid
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
-	struct_create_pos = "0,0,0"
+	struct_x = 0
+	struct_y = 0
+	struct_z = 0
 	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
 	// holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
 	// holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
@@ -184,7 +184,9 @@
 		ZTRAIT_GRAVITY,
 	)
 	planet_path = /datum/planet/virgo3b
-	struct_create_pos = "0,0,1"
+	struct_x = 0
+	struct_y = 0
+	struct_z = 1
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	base_turf = /turf/simulated/open
 	// holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
@@ -202,7 +204,9 @@
 		ZTRAIT_GRAVITY,
 	)
 	planet_path = /datum/planet/virgo3b
-	struct_create_pos = "0,0,2"
+	struct_x = 0
+	struct_y = 0
+	struct_z = 2
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	base_turf = /turf/simulated/open
 	// holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
@@ -220,7 +224,9 @@
 		ZTRAIT_GRAVITY,
 	)
 	planet_path = /datum/planet/virgo3b
-	struct_create_pos = "0,0,3"
+	struct_x = 0
+	struct_y = 0
+	struct_z = 3
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONTACT
 	base_turf = /turf/simulated/open
 
@@ -234,7 +240,9 @@
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 	)
-	struct_create_pos = "0,0,4"
+	struct_x = 0
+	struct_y = 0
+	struct_z = 4
 	base_turf = /turf/space
 	// holomap_offset_x = HOLOMAP_ICON_SIZE - TETHER_HOLOMAP_MARGIN_X - TETHER_MAP_SIZE
 	// holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
@@ -250,7 +258,9 @@
 		ZTRAIT_FACILITY_SAFETY,
 		ZTRAIT_LEGACY_BELTER_DOCK,
 	)
-	struct_create_pos = "0,0,5"
+	struct_x = 0
+	struct_y = 0
+	struct_z = 5
 	base_turf = /turf/simulated/open
 	// holomap_offset_x = HOLOMAP_ICON_SIZE - TETHER_HOLOMAP_MARGIN_X - TETHER_MAP_SIZE
 	// holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*1
@@ -266,7 +276,9 @@
 		ZTRAIT_GRAVITY,
 	)
 	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER
-	struct_create_pos = "0,1,0"
+	struct_x = 0
+	struct_y = 1
+	struct_z = 0
 	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
 	planet_path = /datum/planet/virgo3b
 
@@ -297,7 +309,9 @@
 	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER
 	base_turf = /turf/simulated/mineral/floor/virgo3b
 	planet_path = /datum/planet/virgo3b
-	struct_create_pos = "0,1,-1"
+	struct_x = 0
+	struct_y = 1
+	struct_z = -1
 
 /datum/map_level/tether/underdark/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
@@ -326,7 +340,9 @@
 	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER
 	base_turf = /turf/simulated/mineral/floor/virgo3b
 	planet_path = /datum/planet/virgo3b
-	struct_create_pos = "0,-1,0"
+	struct_x = 0
+	struct_y = -1
+	struct_z = 0
 
 /datum/map_level/tether/plains/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()

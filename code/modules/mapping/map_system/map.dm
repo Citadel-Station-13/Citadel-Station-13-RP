@@ -87,7 +87,7 @@
 	var/load_orientation = SOUTH
 	/// crop if too big, instead of panic
 	var/load_auto_crop = FALSE
-	/// center us if we're smaller than world size
+	/// center usj if we're smaller than world size
 	var/load_auto_center = TRUE
 	/// use map-wide area cache instead of individual level area caches; has no effect on submap loading, only level loading.
 	/// * don't touch this unless you know what you're doing.
@@ -204,9 +204,21 @@
 	if(!isnull(data["load_shared_area_cache"]))
 		load_shared_area_cache = data["load_shared_area_cache"]
 
-/datum/map/clone()
-	. = ..()
-	#warn impl
+// todo: implement clone()
+
+/**
+ * called before we load in
+ * * should be called before validate()
+ * * instances any levels not instanced
+ */
+/datum/map/proc/ready()
+	for(var/i in 1 to length(levels))
+		if(ispath(levels[i]))
+			var/datum/map_level/level_path = levels[i]
+			var/datum/map_level/level_instance = new level_path(src)
+			levels[i] = level_instance
+			if(levels_match_mangling_id)
+				level_instance.mangling_id = mangling_id || id
 
 /**
  * validates that everything works
@@ -221,6 +233,7 @@
 	. = TRUE
 	var/list/struct_position_strs = list()
 	var/list/keyed_levels = list()
+	var/list/levels_in_plane_by_xy = list()
 	// validate levels individually
 	for(var/level_idx in 1 to length(levels))
 		var/datum/map_level/level = levels[level_idx]
@@ -250,15 +263,37 @@
 				level_struct_valid = FALSE
 			if(level_struct_valid)
 				var/level_struct_position_str = "[level.struct_x],[level.struct_y],[level.struct_z]"
+				var/level_struct_plane_xy = "[level.struct_x],[level.struct_y]"
 				if(struct_position_strs[level_struct_position_str])
 					out_errors?.Add("level: index [level_idx] collides with level index [levels.Find(struct_position_strs[level_struct_position_str])] on struct position '[level_struct_position_str]'")
 					. = FALSE
 				else
 					struct_position_strs[level_struct_position_str] = level
+					if(!levels_in_plane_by_xy[level_struct_plane_xy])
+						levels_in_plane_by_xy[level_struct_plane_xy] = list()
+					levels_in_plane_by_xy[level_struct_plane_xy] += level
 
 	// can't run overall checks if any levels are individually invalid
 	if(!.)
 		return
+
+	for(var/plane_str in levels_in_plane_by_xy)
+		var/list/datum/map_level/plane_levels = planes[plane_str]
+		var/found_ceiling_height
+		for(var/datum/map_level/plane_level as anything in plane_levels)
+			if(isnull(plane_level.ceiling_height))
+				continue
+			if(plane_level.ceiling_height == 0)
+				out_errors?.Add("Plane [plane_str] has a zero ceiling height level.")
+				. = FALSE
+				break
+			if(!isnull(found_ceiling_height) && found_ceiling_height != plane_level.ceiling_height)
+				out_errors?.Add("Plane [plane_str] has mismatching ceiling heights.")
+				. = FALSE
+				break
+			else
+				found_ceiling_height = plane_level.ceiling_height
+
 	if(!dry_run && !validate_load(struct_errors_out, .))
 		. = FALSE
 
@@ -283,31 +318,21 @@
 			out_errors?.Add("level: index [level_idx] has id of '[level.id]' which is already taken by a currently loaded level.")
 
 /**
- * called before we load in
- * * should be called before validate()
- * * instances any levels not instanced
- */
-/datum/map/proc/ready()
-	for(var/i in 1 to length(levels))
-		if(ispath(levels[i]))
-			var/datum/map_level/level_path = levels[i]
-			var/datum/map_level/level_instance = new level_path(src)
-			levels[i] = level_instance
-			if(levels_match_mangling_id)
-				level_instance.mangling_id = mangling_id || id
-
-/**
  * rebuilds state, setting variables as needed on ourselves and our level
  * * should be called after validate(); validate() doesn't require this to work
+ * * if loaded maps have their multiz things change, this'll have ssmapping rebuild its cache
+ *   and also rebuild the transitions
  *
  * @params
  * * skip_validation - skip data validation. this is not recommended.
+ * * skip_loaded_rebuild - do not rebuild loaded zlevels immediately
  */
 /datum/map/proc/construct(skip_validation)
 	var/list/validation_errors = list()
 	if(!validate(TRUE, validation_errors))
 		CRASH("validation failed at construct() with errors: [english_list(validation_errors)]; this shouldn't be failing this far in the pipeline, please remember to validate() maps yourself!")
 	#warn impl
+	#warn tell SSmapping to rebuild cache if loaded levels have multiz changes
 
 /**
  * Get levels sorted into z-loading order
