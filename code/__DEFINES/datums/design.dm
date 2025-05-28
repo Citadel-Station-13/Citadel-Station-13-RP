@@ -4,10 +4,13 @@
 #define DESIGN_UNLOCK_INTRINSIC (1<<0)
 /// any lathe that can print us can have us uploaded
 #define DESIGN_UNLOCK_UPLOAD (1<<1)
+/// design is unlocked via REQ_TECH
+#define DESIGN_UNLOCK_TECHLEVEL (1<<2)
 
 DEFINE_BITFIELD(design_unlock, list(
 	BITFIELD(DESIGN_UNLOCK_INTRINSIC),
 	BITFIELD(DESIGN_UNLOCK_UPLOAD),
+	BITFIELD(DESIGN_UNLOCK_TECHLEVEL),
 ))
 
 //? design_flags bitfield

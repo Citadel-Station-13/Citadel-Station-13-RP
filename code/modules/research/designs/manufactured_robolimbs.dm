@@ -5,51 +5,61 @@
 }
 
 #define DEFINE_PROSTHETIC_TORSO_M(man_for_path, man, new_id) /datum/prototype/design/science/prosfab/pros/torso/male/##man_for_path { \
+	design_unlock = DESIGN_UNLOCK_UPLOAD; \
 	id = ##new_id; \
 	subcategory = ##man; \
 }
 
 #define DEFINE_PROSTHETIC_TORSO_T(man_for_path, man, new_id) /datum/prototype/design/science/prosfab/pros/torso/female/##man_for_path { \
+	design_unlock = DESIGN_UNLOCK_UPLOAD; \
 	id = ##new_id; \
 	subcategory = ##man; \
 }
 
 #define DEFINE_PROSTHETIC_ARM_L(man_for_path, man, new_id) /datum/prototype/design/science/prosfab/pros/l_arm/##man_for_path { \
+	design_unlock = DESIGN_UNLOCK_UPLOAD; \
 	id = ##new_id; \
 	subcategory = ##man; \
 }
 
 #define DEFINE_PROSTHETIC_HAND_L(man_for_path, man, new_id) /datum/prototype/design/science/prosfab/pros/l_hand/##man_for_path { \
+	design_unlock = DESIGN_UNLOCK_UPLOAD; \
 	id = ##new_id; \
 	subcategory = ##man; \
 }
 
 #define DEFINE_PROSTHETIC_LEG_L(man_for_path, man, new_id) /datum/prototype/design/science/prosfab/pros/l_leg/##man_for_path { \
+	design_unlock = DESIGN_UNLOCK_UPLOAD; \
 	id = ##new_id; \
 	subcategory = ##man; \
 }
 
 #define DEFINE_PROSTHETIC_FOOT_L(man_for_path, man, new_id) /datum/prototype/design/science/prosfab/pros/l_foot/##man_for_path { \
+	design_unlock = DESIGN_UNLOCK_UPLOAD; \
 	id = ##new_id; \
 	subcategory = ##man; \
 }
 
 #define DEFINE_PROSTHETIC_ARM_R(man_for_path, man, new_id) /datum/prototype/design/science/prosfab/pros/r_arm/##man_for_path { \
+	design_unlock = DESIGN_UNLOCK_UPLOAD; \
 	id = ##new_id; \
 	subcategory = ##man; \
 }
 
 #define DEFINE_PROSTHETIC_HAND_R(man_for_path, man, new_id) /datum/prototype/design/science/prosfab/pros/r_hand/##man_for_path { \
+	design_unlock = DESIGN_UNLOCK_UPLOAD; \
 	id = ##new_id; \
 	subcategory = ##man; \
 }
 
 #define DEFINE_PROSTHETIC_LEG_R(man_for_path, man, new_id) /datum/prototype/design/science/prosfab/pros/r_leg/##man_for_path { \
+	design_unlock = DESIGN_UNLOCK_UPLOAD; \
 	id = ##new_id; \
 	subcategory = ##man; \
 }
 
 #define DEFINE_PROSTHETIC_FOOT_R(man_for_path, man, new_id) /datum/prototype/design/science/prosfab/pros/r_foot/##man_for_path { \
+	design_unlock = DESIGN_UNLOCK_UPLOAD; \
 	id = ##new_id; \
 	subcategory = ##man; \
 }
