@@ -2790,10 +2790,6 @@
 	},
 /turf/simulated/floor/concrete/rng/outdoors,
 /area/class_m/outside/beachmiddle)
-"ly" = (
-/obj/structure/fake_stairs/west/bottom,
-/turf/simulated/floor/wood,
-/area/class_m/inside/main)
 "lz" = (
 /turf/simulated/floor/water/beach{
 	dir = 10
@@ -34001,7 +33997,7 @@ mk
 GD
 mJ
 Ja
-ly
+Hw
 bC
 gi
 aS

@@ -108,7 +108,7 @@
 /obj/structure/stairs/bottom/Initialize(mapload)
 	. = ..()
 	if(!get_vertical_step(src, UP))
-		CRASH("Stair created without level above: [audit_loc()]. Please use fake_stairs instead.")
+		CRASH("Stair created without level above: [audit_loc()].")
 
 /obj/structure/stairs/bottom/Destroy()
 	if(top)
@@ -199,7 +199,7 @@
 /obj/structure/stairs/middle/Initialize(mapload)
 	. = ..()
 	if(!get_vertical_step(src, UP))
-		CRASH("Stair created without level above: [audit_loc()]. Please use fake_stairs instead.")
+		CRASH("Stair created without level above: [audit_loc()].")
 
 /obj/structure/stairs/middle/Destroy()
 	if(top)
@@ -281,7 +281,7 @@
 /obj/structure/stairs/top/Initialize(mapload)
 	. = ..()
 	if(!get_vertical_step(src, DOWN))
-		CRASH("Stair created without level below: [audit_loc()]. Please use fake_stairs instead.")
+		CRASH("Stair created without level below: [audit_loc()].")
 
 /obj/structure/stairs/top/Destroy()
 	if(middle)
@@ -375,7 +375,7 @@
 	if(!istype(B1) || !istype(B2))
 		CRASH("Stair created at invalid loc: [audit_loc()].")
 	if(!istype(T1) || !istype(T2))
-		CRASH("Stair created without level above: [audit_loc()]. Please use fake_stairs instead.")
+		CRASH("Stair created without level above: [audit_loc()].")
 
 	// Spawn the stairs
 	// Railings sold separately
