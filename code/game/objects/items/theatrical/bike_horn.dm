@@ -26,10 +26,10 @@
 	if(last_honk > world.time - honk_cooldown)
 		return
 	last_honk = world.time
-	honk(clickchain, clickchain_flags)
+	honk(e_args)
 	return TRUE
 
-/obj/item/bikehorn/proc/honk(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+/obj/item/bikehorn/proc/honk(datum/event_args/actor/actor)
 	playsound(
 		src,
 		honk_sound,
