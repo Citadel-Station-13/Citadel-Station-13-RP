@@ -36,7 +36,8 @@
 		honk_volume,
 		honk_vary,
 	)
-	add_fingerprint(clickchain.performer)
+	if(actor.performer.is_holding(src))
+		add_fingerprint(actor.performer)
 
 /obj/item/bikehorn/golden
 	name = "golden bike horn"
