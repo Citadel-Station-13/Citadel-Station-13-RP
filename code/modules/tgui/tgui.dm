@@ -340,6 +340,7 @@
 			"observer" = isobserver(user),
 		),
 	)
+	var/list/nested_data = list()
 	if(with_static_data)
 		json_data["static"] = src_object.ui_static_data(user, src)
 		for(var/datum/module as anything in modules_registered)
