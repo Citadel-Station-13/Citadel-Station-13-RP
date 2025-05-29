@@ -438,11 +438,6 @@
 	},
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/sector/sky_planet/rock)
-"OB" = (
-/obj/structure/catwalk,
-/obj/structure/catwalk,
-/turf/simulated/floor/outdoors/rocks/outdoors,
-/area/sector/sky_planet/ground)
 "Pu" = (
 /obj/structure/flora/rock/rock2,
 /obj/item/ammo_casing/a5_56mm,
@@ -8952,7 +8947,7 @@ Qm
 JE
 fn
 qh
-OB
+qh
 fu
 Qm
 Qm
