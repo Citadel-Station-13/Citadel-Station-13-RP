@@ -225,7 +225,8 @@ GLOBAL_REAL(Configuration, /datum/controller/toml_configuration)
 		species_whitelist,
 	))
 		for(var/i in 1 to length(root_list))
-			var/list/ckey_list = root_list[i]
+			var/id = root_list[i]
+			var/list/ckey_list = root_list[id]
 			for(var/j in 1 to length(ckey_list))
 				ckey_list[j] = ckey(ckey_list[j])
 
