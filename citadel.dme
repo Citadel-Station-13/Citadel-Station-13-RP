@@ -2828,6 +2828,7 @@
 #include "code\modules\economy\items\retail_terminal.dm"
 #include "code\modules\economy\machines\Accounts_DB.dm"
 #include "code\modules\economy\machines\ATM.dm"
+#include "code\modules\economy\machines\automated_teller.dm"
 #include "code\modules\economy\machines\bank_uplink.dm"
 #include "code\modules\economy\machines\cash_register.dm"
 #include "code\modules\emoji\emoji_parse.dm"
