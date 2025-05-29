@@ -236,13 +236,13 @@ GLOBAL_REAL(Configuration, /datum/controller/toml_configuration)
 	src.species_whitelist = merge_2_nested_list(src.species_whitelist, species_whitelist)
 
 /datum/controller/toml_configuration/proc/check_species_whitelist(id, ckey)
-	return !!species_whitelist[id]?[ckey(ckey)]
+	return ckey(ckey) in species_whitelist[id]
 
 /datum/controller/toml_configuration/proc/check_role_whitelist(id, ckey)
-	return !!role_whitelist[id]?[ckey(ckey)]
+	return ckey(ckey) in role_whitelist[id]
 
 /datum/controller/toml_configuration/proc/check_language_whitelist(id, ckey)
-	return !!language_whitelist[id]?[ckey(ckey)]
+	return ckey(ckey) in language_whitelist[id]
 
 /datum/controller/toml_configuration/proc/get_all_species_whitelists_for_ckey(ckey)
 	. = list()
