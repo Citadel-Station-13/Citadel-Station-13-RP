@@ -4,17 +4,20 @@ import { actFunctionType, useBackend, useLocalState } from "tgui/backend";
 import { Box, Button, Flex, Input, LabeledList, NumberInput, Section, Stack, Tabs } from "tgui/components";
 import { Window } from "tgui/layouts";
 
-interface ModalData {
-  primed: BooleanLike;
-  ready: BooleanLike;
-  levels: number;
-  staged: StagingData | null;
-  const_airVacuum: string;
-  const_airHabitable: string;
+enum LoadMapSectorStatus {
+  Waiting = "waiting",
+  Ready = "Ready",
+  Loading = "loading",
+  Finished = "Finsihed",
 }
 
-interface StagingData {
-  errors: string[];
+
+interface ModalData {
+  status: LoadMapSectorStatus;
+  ready: BooleanLike;
+  levels: number;
+  const_airVacuum: string;
+  const_airHabitable: string;
 }
 
 interface ModalMapData {
@@ -32,7 +35,9 @@ interface ModalLevelData {
   attributes: Record<string, string | number>;
   baseTurf: string;
   baseArea: string;
-  structPos: [number, number, number];
+  structX: number | null;
+  structY: number | null;
+  structZ: number | null;
   airIndoors: string | undefined;
   airOutdoors: string | undefined;
   ceilingHeight: number | undefined;

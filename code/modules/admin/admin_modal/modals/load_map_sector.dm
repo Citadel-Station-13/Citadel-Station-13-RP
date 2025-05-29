@@ -27,17 +27,19 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 
 	/// map buffer
 	var/datum/map/buffer
+	/// enable overmaps?
+	var/buffer_overmap_active
+	/// overmap initializer to use with buffer
+	var/datum/overmap_initializer/map/buffer_overmap_initializer
 
 	//* load *//
 
-	/// primed for load?
-	var/tmp/load_primed = FALSE
 	/// all checks pass?
 	var/tmp/load_ready = FALSE
+	/// started load?
+	var/tmp/load_started = FALSE
 	/// loaded?
 	var/tmp/load_finished = FALSE
-	/// verification errors, if any
-	var/tmp/list/load_verification_errors
 
 /datum/admin_modal/load_map_sector/Initialize()
 	// no uploading new map sectors while MC is initializing.
@@ -59,8 +61,14 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 
 /datum/admin_modal/load_map_sector/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
-	.["primed"] = primed
-	.["ready"] = ready
+	var/load_status = "waiting"
+	if(load_ready)
+		load_status = "ready"
+	if(load_started)
+		load_status = "loading"
+	if(load_finished)
+		load_status = "finished"
+	.["status"] = load_status
 	.["levels"] = length(buffer.levels)
 
 /datum/admin_modal/load_map_sector/ui_nested_data(mob/user, datum/tgui/ui)
@@ -73,12 +81,12 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 	. = ..()
 	.["const_airVacuum"] = GAS_STRING_VACUUM
 	.["const_airHabitable"] = GAS_STRING_STP
-	.["staged"] = ui_staging_data()
 
 /datum/admin_modal/load_map_sector/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
 	. = ..()
 	deferred += /datum/asset_pack/json/map_system
 	deferred += /datum/asset_pack/json/world_typepaths
+	#warn use byond rsc refs instead in UI
 	deferred += /datum/asset_pack/spritesheet/world_typepaths
 
 /datum/admin_modal/load_map_sector/ui_act(action, list/params, datum/tgui/ui)
@@ -87,11 +95,10 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 		return
 	switch(action)
 		if("load")
-			if(!primed || !ready)
+			if(!load_ready)
 				return TRUE
 			load()
 			return TRUE
-	unprime()
 
 	// this may or may not be set but we're doing it here to avoid too many definitions
 	var/target_level_index
@@ -103,11 +110,12 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 		target_level = buffer.levels[target_level_index]
 
 	switch(action)
-		if("prime")
-			prime()
-			. = TRUE
+		if("ready")
+			validate_and_ready()
+			return TRUE
 		// map //
 		if("mapName")
+			buffer.name = params["setTo"] || "Custom Map"
 			update_ui_map_data()
 			. = TRUE
 		if("mapOrientation")
@@ -117,30 +125,28 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 			update_ui_map_data()
 			. = TRUE
 		if("mapCenter")
-			buffer.load_auto_center = !buffer.load_auto_center
+			buffer.load_auto_center = !!params["setTo"]
 			update_ui_map_data()
 			. = TRUE
 		// overmap //
 		if("overmapActive")
-			overmap_active = !overmap_active
-			if(!istype(buffer.overmap_initializer, /datum/overmap_initializer/struct))
-				buffer.overmap_initializer = new /datum/overmap_initializer/struct
+			buffer_overmap_active = !!params["setTo"]
 			update_ui_map_data()
 			. = TRUE
 		if("overmapX")
 			if(!is_safe_number(params["setTo"]))
 				return
-			buffer.overmap_initializer.manual_position_x = params["setTo"]
+			buffer_overmap_initializer.manual_position_x = params["setTo"]
 			update_ui_map_data()
 			. = TRUE
 		if("overmapY")
 			if(!is_safe_number(params["setTo"]))
 				return
-			buffer.overmap_initializer.manual_position_y = params["setTo"]
+			buffer_overmap_initializer.manual_position_y = params["setTo"]
 			update_ui_map_data()
 			. = TRUE
 		if("overmapForcePosition")
-			buffer.overmap_initializer.manual_position_is_strong_suggestion = !buffer.overmap_initializer.manual_position_is_strong_suggestion
+			buffer_overmap_initializer.manual_position_is_strong_suggestion = !buffer_overmap_initializer.manual_position_is_strong_suggestion
 			update_ui_map_data()
 			. = TRUE
 		// levels //
@@ -219,13 +225,15 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 			update_ui_level_index_data(target_level_index)
 			. = TRUE
 
+	mark_dirty()
+
 /datum/admin_modal/load_map_sector/proc/ui_map_data()
 	var/list/serialized_overmap_initializer = null
-	if(buffer.overmap_initializer)
+	if(buffer_overmap_initializer)
 		serialized_overmap_initializer = list(
-			"x" = buffer.overmap_initializer.manual_position_x,
-			"y" = buffer.overmap_initializer.manual_position_y,
-			"forcePos" = buffer.overmap_initializer.manual_position_is_strong_suggestion,
+			"x" = buffer_overmap_initializer.manual_position_x,
+			"y" = buffer_overmap_initializer.manual_position_y,
+			"forcePos" = buffer_overmap_initializer.manual_position_is_strong_suggestion,
 		)
 	return list(
 		"name" = buffer.name,
@@ -252,7 +260,9 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 		"attributes" = level.attributes,
 		"baseTurf" = level.base_turf,
 		"baseArea" = level.base_area,
-		"structPos" = level.struct_create_pos,
+		"structX" = level.struct_x,
+		"structY" = level.struct_y,
+		"structZ" = level.struct_z,
 		"airIndoors" = level.air_indoors,
 		"airOutdoors" = level.air_outdoors,
 		"ceilingHeight" = level.ceiling_height,
@@ -272,9 +282,8 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 
 #warn below
 
-/datum/admin_modal/load_map_sector/proc/prime()
-	computed_errors = list()
-	world_maxz_at_prime = world.maxz
+/datum/admin_modal/load_map_sector/proc/validate_and_ready()
+	var/list/errors_out = list()
 
 	var/passed = TRUE
 
@@ -290,34 +299,27 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 	primed = passed
 	ready = passed
 
-	update_static_data()
+	// TODO: instead of to_chat'ing, just send the data through TGUI dynamic modal / popup system once that's made
+	#warn to chat here
+	update_ui_data()
 
-/datum/admin_modal/load_map_sector/proc/unprime()
-	primed = FALSE
-	ready = FALSE
-
-	world_maxz_at_prime = null
-
-	computed_errors = null
-
-	update_static_data()
+/datum/admin_modal/load_map_sector/proc/mark_dirty()
+	load_ready = FALSE
+	update_ui_data()
 
 /datum/admin_modal/load_map_sector/proc/load()
-	if(world.maxz != world_maxz_at_prime)
-		unprime()
-		return FALSE
-	if(loaded)
+	if(load_started || load_finished)
 		return TRUE
+	load_started = TRUE
+	update_ui_data()
 	. = do_load()
 	if(!.)
 		return
-	loaded = TRUE
+	loaded_finished = TRUE
+	update_ui_data()
 
 /datum/admin_modal/load_map_sector/proc/do_load()
-	set waitfor = FALSE
-
-	. = TRUE
-	SSmapping.load_map(buffer)
+	return SSmapping.load_map(buffer)
 
 /datum/admin_modal/load_map_sector/proc/create_level()
 	var/datum/map_level/appending = new(buffer)

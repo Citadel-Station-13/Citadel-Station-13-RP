@@ -129,6 +129,8 @@
 		rebuild_multiz(loaded_level.z_index)
 
 	emit_info_log("load - initialized [length(loaded_lockstep_levels)] levels")
+	
+	return TRUE
 
 /**
  * destroys a loaded map and frees it for later usage

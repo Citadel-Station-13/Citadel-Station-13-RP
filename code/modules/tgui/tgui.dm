@@ -17,6 +17,13 @@
  *   2-deep. This is a key-key-value list instead of a key-value list, basically.
  *   This is used to inject 'embeds' into TGUI, as well, as their data can be then sent
  *   without sending data for everything else as well.
+ *
+ * ## Future Work
+ *
+ * * move to react
+ * * add a way to dynamically pop up modals on tgui with the root renderer, without
+ *   needing interface-specific implementation
+ * * mob-indirection investigation for remote control (remote controller using rigsuit mob to hack door, as an eaxmple)
  */
 /datum/tgui
 	/// The mob who opened/is using the UI.
