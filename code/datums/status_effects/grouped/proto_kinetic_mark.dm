@@ -33,7 +33,7 @@
 /datum/status_effect/grouped/proto_kinetic_mark/proc/inject_visual_filter(datum/source)
 	SIGNAL_HANDLER
 
-	// todo: when 516 is stable, stop doing this.
+	// TODO: 516 added assoc filters; touch-up the datum filter procs and stop doing this.
 	// the reason we do this is because update_filters() tramples 'manual filters'
 	// so we have to redo everything
 	var/list/creating_filter_args

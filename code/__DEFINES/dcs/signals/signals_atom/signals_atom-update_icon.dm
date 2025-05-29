@@ -4,5 +4,5 @@
 /// Called at the base of update_filters()
 /// * Signature: ()
 /// * Hook this to re-apply managed filters.
-/// todo: 516 deprecates this. we will have named filters. rework managed filters to use names.
+// TODO: 516 added assoc filters; touch-up the datum filter procs and stop doing this.
 #define COMSIG_ATOM_RELOAD_FILTERS "atom-reload_filters"

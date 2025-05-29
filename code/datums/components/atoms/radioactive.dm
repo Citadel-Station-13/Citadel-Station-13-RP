@@ -23,7 +23,7 @@
 
 	if(istype(parent, /atom))
 		RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(rad_examine))
-		// todo: this will no longer be necessary on 516
+		// TODO: 516 added assoc filters; touch-up the datum filter procs and stop doing this.
 		RegisterSignal(parent, COMSIG_ATOM_RELOAD_FILTERS, PROC_REF(reload_filters))
 	else
 		. = COMPONENT_INCOMPATIBLE
