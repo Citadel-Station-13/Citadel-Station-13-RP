@@ -11,6 +11,16 @@ GLOBAL_REAL(Configuration, /datum/controller/toml_configuration)
 	/// Entries as same structure as the underlying toml/json
 	VAR_PRIVATE/list/datum/toml_config_entry/keyed_entries
 
+	/// TODO: database whitelist when this is stupid
+	/// species id = list(ckeys)
+	VAR_PRIVATE/list/species_whitelist
+	/// TODO: database whitelist when this is stupid
+	/// language id = list(ckeys)
+	VAR_PRIVATE/list/language_whitelist
+	/// TODO: database whitelist when this is stupid
+	/// role id = list(ckeys)
+	VAR_PRIVATE/list/role_whitelist
+
 /datum/controller/toml_configuration/CanProcCall(procname)
 	switch(procname)
 		if(NAMEOF_PROC(src, New), NAMEOF_PROC(src, Destroy), NAMEOF_PROC(src, Initialize))
@@ -19,7 +29,11 @@ GLOBAL_REAL(Configuration, /datum/controller/toml_configuration)
 			return FALSE
 		if(NAMEOF_PROC(src, get_sensitive_entry), NAMEOF_PROC(src, set_sensitive_entry))
 			return FALSE
-		if(NAMEOF_PROC(src, reload), NAMEOF_PROC(src, reset), NAMEOF_PROC(src, load), NAMEOF_PROC(src, recursively_load_from_list))
+		if(NAMEOF_PROC(src, reload))
+			return FALSE
+		if(NAMEOF_PROC(src, reset), NAMEOF_PROC(src, load), NAMEOF_PROC(src, load_impl))
+			return FALSE
+		if(NAMEOF_PROC(src, reset_whitelist), NAMEOF_PROC(src, load_whitelist), NAMEOF_PROC(src, load_whitelist_impl))
 			return FALSE
 	return ..()
 
@@ -120,6 +134,10 @@ GLOBAL_REAL(Configuration, /datum/controller/toml_configuration)
 	load("config.default/config.toml")
 	load("config/config.toml")
 
+	reset_whitelist()
+	load_whitelist("config.default/whitelist.toml")
+	load_whitelist("config/whitelist.toml")
+
 /**
  * Resets the configuration.
  */
@@ -150,9 +168,9 @@ GLOBAL_REAL(Configuration, /datum/controller/toml_configuration)
 	if(!decoded)
 		CRASH("failed to decode config [filelike]!")
 
-	recursively_load_from_list(decoded, keyed_entries)
+	load_impl(decoded, keyed_entries)
 
-/datum/controller/toml_configuration/proc/recursively_load_from_list(list/decoded_list, list/entry_list)
+/datum/controller/toml_configuration/proc/load_impl(list/decoded_list, list/entry_list)
 	if(!decoded_list || !entry_list)
 		return
 	for(var/key in decoded_list)
@@ -162,10 +180,78 @@ GLOBAL_REAL(Configuration, /datum/controller/toml_configuration)
 			if(!islist(next_entry_list))
 				// todo: warn
 			else
-				recursively_load_from_list(value, next_entry_list[key])
+				load_impl(value, next_entry_list[key])
 		else
 			var/datum/toml_config_entry/entry = entry_list[key]
 			if(!istype(entry))
 				// todo: warn
 			else
 				entry.apply(value)
+
+/datum/controller/toml_configuration/proc/reset_whitelist()
+	role_whitelist = list()
+	species_whitelist = list()
+	language_whitelist = list()
+
+/datum/controller/toml_configuration/proc/load_whitelist(filelike)
+	var/list/decoded
+	if(istext(filelike))
+		if(!fexists(filelike))
+			CRASH("failed to load [filelike]: does not exist")
+		decoded = rustg_read_toml_file(filelike)
+	else if(isfile(filelike))
+		// noa path, it might be rsc cache; rust_g can't read that directly.
+		fdel("tmp/config/loading.toml")
+		fcopy(filelike, "tmp/config/loading.toml")
+		decoded = rustg_read_toml_file("tmp/config/loading.toml")
+		fdel("tmp/config/loading.toml")
+	if(!decoded)
+		CRASH("failed to decode config [filelike]!")
+
+	load_whitelist_impl(decoded)
+
+/datum/controller/toml_configuration/proc/load_whitelist_impl(list/decoded_list)
+	if(!decoded_list)
+		return
+
+	role_whitelist = sanitize_islist(deep_copy_list(decoded_list["whitelist"]["role"]))
+	language_whitelist = sanitize_islist(deep_copy_list(decoded_list["whitelist"]["language"]))
+	species_whitelist = sanitize_islist(deep_copy_list(decoded_list["whitelist"]["species"]))
+
+	// fixup: make everything ckeys
+	for(var/list/root_list as anything in list(
+		role_whitelist,
+		language_whitelist,
+		species_whitelist,
+	))
+		for(var/i in 1 to length(root_list))
+			var/list/ckey_list = root_list[i]
+			for(var/j in 1 to length(ckey_list))
+				ckey_list[j] = ckey(ckey_list[j])
+
+/datum/controller/toml_configuration/proc/check_species_whitelist(id, ckey)
+	return !!species_whitelist[id]?[ckey(ckey)]
+
+/datum/controller/toml_configuration/proc/check_role_whitelist(id, ckey)
+	return !!role_whitelist[id]?[ckey(ckey)]
+
+/datum/controller/toml_configuration/proc/check_language_whitelist(id, ckey)
+	return !!language_whitelist[id]?[ckey(ckey)]
+
+/datum/controller/toml_configuration/proc/get_all_species_whitelists_for_ckey(ckey)
+	. = list()
+	for(var/id in species_whitelist)
+		if(ckey in species_whitelist[id])
+			. += id
+
+/datum/controller/toml_configuration/proc/get_all_role_whitelists_for_ckey(ckey)
+	. = list()
+	for(var/id in role_whitelist)
+		if(ckey in role_whitelist[id])
+			. += id
+
+/datum/controller/toml_configuration/proc/get_all_language_whitelists_for_ckey(ckey)
+	. = list()
+	for(var/id in language_whitelist)
+		if(ckey in language_whitelist[id])
+			. += id

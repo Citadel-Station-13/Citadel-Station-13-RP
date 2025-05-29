@@ -1081,3 +1081,21 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
  */
 /datum/species/proc/handle_species_job_outfit(var/mob/living/carbon/human/H, var/datum/outfit/outfit)
   return
+
+//* Whitelists *//
+
+/**
+ * Checks if a client is in whitelist.
+ * * Does not check admin status. You should check yourself.
+ */
+/datum/species/proc/check_whitelist_for_client(client/user)
+	return check_whitelist_for_ckey(user.ckey)
+
+/**
+ * TODO: deprecated. dont' use ckey for auth checks people, use client.
+ *
+ * Checks if a ckey is in whitelist.
+ * * Does not check admin status. You should check yourself.
+ */
+/datum/species/proc/check_whitelist_for_ckey(ckey)
+	return Configuration.check_species_whitelist(uid, ckey) || ((species_spawn_flags & SPECIES_SPAWN_WHITELIST_FLEXIBLE) && Configuration.check_species_whitelist(id, ckey))
