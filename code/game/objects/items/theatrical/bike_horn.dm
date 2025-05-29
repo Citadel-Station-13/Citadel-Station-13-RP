@@ -14,18 +14,20 @@
 
 	var/last_honk = 0
 	var/honk_cooldown = 2 SECONDS
+
 	var/honk_sound = 'sound/items/bikehorn.ogg'
 	var/honk_volume = 50
 	var/honk_vary = TRUE
 
-/obj/item/bikehorn/on_attack_hand(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+/obj/item/bikehorn/on_attack_self(datum/event_args/actor/e_args)
 	. = ..()
-	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+	if(.)
 		return
 	if(last_honk > world.time - honk_cooldown)
 		return
-	. |= CLICKCHAIN_DID_SOMETHING
+	last_honk = world.time
 	honk(clickchain, clickchain_flags)
+	return TRUE
 
 /obj/item/bikehorn/proc/honk(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	playsound(
