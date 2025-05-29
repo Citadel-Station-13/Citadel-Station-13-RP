@@ -6,14 +6,14 @@
 # DO NOT ACTUALLY PUT ANYONE IN HERE, THIS IS READ BY THE SERVER!
 # This should only contain examples, commented out.
 
-whitelist.alien.moth_dark = [
-	'silicons',
+whitelist.species.moth_dark = [
+	# 'silicons',
 ]
 
 whitelist.language.luinimma = [
-	'silicons',
+	# 'silicons',
 ]
 
 whitelist.role.mime = [
-	'silicons',
+	# 'silicons',
 ]

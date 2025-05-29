@@ -5,6 +5,7 @@
 GLOBAL_REAL(Configuration, /datum/controller/toml_configuration)
 
 // todo: /datum/controller/configuration
+// todo: needs stronger vv guarding; it still exposes list refs.
 /datum/controller/toml_configuration
 	/// Entries by type.
 	VAR_PRIVATE/list/datum/toml_config_entry/typed_entries
@@ -214,9 +215,9 @@ GLOBAL_REAL(Configuration, /datum/controller/toml_configuration)
 	if(!decoded_list)
 		return
 
-	role_whitelist = sanitize_islist(deep_copy_list(decoded_list["whitelist"]["role"]))
-	language_whitelist = sanitize_islist(deep_copy_list(decoded_list["whitelist"]["language"]))
-	species_whitelist = sanitize_islist(deep_copy_list(decoded_list["whitelist"]["species"]))
+	var/list/role_whitelist = sanitize_islist(deep_copy_list(decoded_list["whitelist"]?["role"]))
+	var/list/language_whitelist = sanitize_islist(deep_copy_list(decoded_list["whitelist"]?["language"]))
+	var/list/species_whitelist = sanitize_islist(deep_copy_list(decoded_list["whitelist"]?["species"]))
 
 	// fixup: make everything ckeys
 	for(var/list/root_list as anything in list(
@@ -229,6 +230,10 @@ GLOBAL_REAL(Configuration, /datum/controller/toml_configuration)
 			var/list/ckey_list = root_list[id]
 			for(var/j in 1 to length(ckey_list))
 				ckey_list[j] = ckey(ckey_list[j])
+
+	src.role_whitelist = merge_2_nested_list(src.role_whitelist, role_whitelist)
+	src.language_whitelist = merge_2_nested_list(src.language_whitelist, language_whitelist)
+	src.species_whitelist = merge_2_nested_list(src.species_whitelist, species_whitelist)
 
 /datum/controller/toml_configuration/proc/check_species_whitelist(id, ckey)
 	return !!species_whitelist[id]?[ckey(ckey)]
