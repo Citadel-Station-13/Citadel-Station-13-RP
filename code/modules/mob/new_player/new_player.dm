@@ -610,7 +610,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 	if(!chosen_species)
 		return SPECIES_HUMAN
 
-	if(!(chosen_species.species_spawn_flags & SPECIES_SPAWN_WHITELISTED) || config.check_alien_whitelist(ckey(chosen_species.id), ckey))
+	if(!(chosen_species.species_spawn_flags & SPECIES_SPAWN_WHITELISTED) || chosen_species.check_whitelist_for_ckey(ckey))
 		return chosen_species.name
 
 	return SPECIES_HUMAN
