@@ -10,7 +10,7 @@
 		return 0
 
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	return affected && affected.open == (affected.encased ? 3 : 2)
+	return affected && affected.open >= (affected.encased ? 3 : 2)
 
 
 //////////////////////////////////////////////////////////////////
