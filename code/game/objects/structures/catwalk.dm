@@ -32,8 +32,7 @@
 		O.update_icon()
 	for(var/obj/structure/catwalk/C in get_turf(src))
 		if(C != src)
-			warning("Duplicate [type] in [loc] ([x], [y], [z])")
-			return INITIALIZE_HINT_QDEL
+			CRASH("Duplicate catwalk set to spawn at X [audit_loc()]. Please delete the duplicate catwalk.")
 	update_icon()
 
 /obj/structure/catwalk/Destroy()
@@ -149,7 +148,7 @@
 	if(activated) return
 
 	if(locate(/obj/structure/catwalk) in loc)
-		warning("Frame Spawner: A catwalk already exists at [loc.x]-[loc.y]-[loc.z]")
+		CRASH("Frame spawner: A catwalk already exists at [audit_loc()]. Please remove the duplicate catwalk.")
 	else
 		var/obj/structure/catwalk/C = new /obj/structure/catwalk(loc)
 		C.plated_tile = tile
