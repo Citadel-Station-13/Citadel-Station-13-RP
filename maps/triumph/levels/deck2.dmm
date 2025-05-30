@@ -1636,9 +1636,6 @@
 	icon_state = "4-8"
 	},
 /obj/spawner/window/low_wall/nogrille/firelocks,
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "eR" = (

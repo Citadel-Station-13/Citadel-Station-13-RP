@@ -5070,11 +5070,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/rift/trade_shop/landing_pad)
-"aqc" = (
-/obj/structure/catwalk,
-/obj/structure/catwalk,
-/turf/simulated/floor/plating/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "aqe" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/conveyor_switch/oneway{
@@ -18939,11 +18934,6 @@
 	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar_backroom)
-"eYG" = (
-/obj/map_helper/paint/silver,
-/obj/map_helper/paint_stripe/black,
-/turf/simulated/wall/rshull,
-/area/shuttle/oldcentury)
 "eZd" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -22249,7 +22239,9 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/excursion_dock)
 "kux" = (
-/obj/machinery/door/window/brigdoor/northleft,
+/obj/machinery/door/window/brigdoor/northleft{
+	req_access = null
+	},
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
 	},
@@ -25041,11 +25033,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
-"pTC" = (
-/obj/map_helper/paint/silver,
-/obj/map_helper/paint_stripe/black,
-/turf/simulated/wall/rshull,
-/area/shuttle/oldcentury)
 "pVV" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
@@ -26105,7 +26092,9 @@
 /turf/simulated/floor/wood,
 /area/exploration/pilot_Office)
 "shx" = (
-/obj/machinery/door/window/brigdoor/southleft,
+/obj/machinery/door/window/brigdoor/southleft{
+	req_access = null
+	},
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
 	},
@@ -32711,10 +32700,10 @@ btC
 btC
 bly
 bly
-pTC
-pTC
-pTC
-pTC
+eYG
+eYG
+eYG
+eYG
 dxR
 ibi
 ygS
@@ -32898,14 +32887,14 @@ aus
 eZv
 oCC
 vKy
-pTC
-pTC
-pTC
+eYG
+eYG
+eYG
 pZx
-pTC
-pTC
-pTC
-pTC
+eYG
+eYG
+eYG
+eYG
 uID
 wBK
 kMc
@@ -33287,22 +33276,22 @@ vKy
 vrM
 doA
 jRQ
-pTC
+eYG
 qVp
 bIJ
 fIx
 eJV
 jFP
-pTC
+eYG
 iHi
 oys
 kcm
 scS
-pTC
-pTC
+eYG
+eYG
 nqA
-pTC
-pTC
+eYG
+eYG
 aus
 aus
 aus
@@ -33487,7 +33476,7 @@ bLD
 bLD
 xMz
 qmR
-pTC
+eYG
 eRp
 pCy
 kcm
@@ -33675,22 +33664,22 @@ vKy
 sWD
 doA
 bOR
-pTC
+eYG
 jyn
 eKT
 iKK
 gaS
 ndR
-pTC
+eYG
 vcB
 gyK
 jin
 scS
-pTC
+eYG
 uOB
 tXr
-pTC
-pTC
+eYG
+eYG
 aus
 aus
 aus
@@ -33877,7 +33866,7 @@ rjP
 hDB
 uyX
 fYJ
-pTC
+eYG
 kcm
 gaQ
 qcX
@@ -34062,16 +34051,16 @@ aus
 uSZ
 oCC
 vKy
-pTC
-pTC
-vKy
-pTC
-pTC
-pTC
-vKy
-pTC
-yci
 eYG
+eYG
+vKy
+eYG
+eYG
+eYG
+vKy
+eYG
+yci
+pTC
 oWZ
 mpR
 fOO
@@ -34263,10 +34252,10 @@ bly
 btC
 bly
 bly
-pTC
-pTC
-pTC
-pTC
+eYG
+eYG
+eYG
+eYG
 iZn
 ski
 cZT
@@ -46722,7 +46711,7 @@ aAd
 aAd
 aAd
 aQv
-aqc
+aIA
 aIA
 aIA
 aIA

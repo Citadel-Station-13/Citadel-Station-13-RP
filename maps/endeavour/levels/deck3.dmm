@@ -1694,7 +1694,7 @@
 /area/endeavour/hallway/d3fwdmaint)
 "bhw" = (
 /obj/structure/table/hardwoodtable,
-/obj/item/orion_ship,
+/obj/item/toy/plushie,
 /turf/simulated/floor/carpet/bcarpet,
 /area/quartermaster/qm)
 "bhL" = (
@@ -3288,9 +3288,6 @@
 /turf/simulated/wall/prepainted/security,
 /area/hydroponics/garden)
 "cAj" = (
-/obj/effect/floor_decal/spline/fancy{
-	dir = 9
-	},
 /obj/structure/railing{
 	dir = 8
 	},
@@ -6653,9 +6650,6 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/sleep/Dorm_7)
 "eUA" = (
-/obj/effect/floor_decal/spline/fancy{
-	dir = 9
-	},
 /obj/structure/railing{
 	dir = 8
 	},
@@ -15441,11 +15435,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hop)
 "lJE" = (
-/obj/effect/floor_decal/spline/fancy{
-	dir = 1
-	},
-/turf/simulated/floor/water/deep/indoors,
-/area/hydroponics/garden)
+/obj/item/orion_ship,
+/turf/simulated/floor/reinforced,
+/area/quartermaster/miningdock)
 "lKt" = (
 /obj/effect/floor_decal/industrial/outline{
 	color = "#D6DBDB"
@@ -20640,15 +20632,6 @@
 "pDS" = (
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
-"pDX" = (
-/obj/machinery/door/firedoor,
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/structure/cable/green{
-	icon_state = "0-4"
-	},
-/obj/map_helper/paint/darkred,
-/turf/simulated/floor/plating,
-/area/security/brig)
 "pEk" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -20795,7 +20778,6 @@
 /area/hydroponics/garden)
 "pQv" = (
 /obj/machinery/door/firedoor,
-/obj/structure/catwalk,
 /obj/machinery/door/airlock/maintenance/common,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
@@ -21525,12 +21507,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
-"qmQ" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/paint/beastybrown,
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/plating,
-/area/quartermaster/warehouse)
 "qmZ" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/brown/border,
@@ -21942,9 +21918,6 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/heads/hop)
 "qBQ" = (
-/obj/effect/floor_decal/spline/fancy{
-	dir = 1
-	},
 /obj/structure/flora/ausbushes/stalkybush,
 /turf/simulated/floor/water/deep/indoors,
 /area/hydroponics/garden)
@@ -26673,9 +26646,6 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/recreation_area)
 "tUQ" = (
-/obj/effect/floor_decal/spline/fancy{
-	dir = 1
-	},
 /obj/structure/flora/ausbushes/fernybush,
 /turf/simulated/floor/water/deep/indoors,
 /area/hydroponics/garden)
@@ -26894,7 +26864,7 @@
 /obj/random/cigarettes,
 /obj/random/maintenance/security,
 /obj/random/coin,
-/obj/item/orion_ship,
+/obj/item/toy/plushie,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3aftmaint)
 "ubc" = (
@@ -29043,9 +29013,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "vEC" = (
-/obj/effect/floor_decal/spline/fancy{
-	dir = 5
-	},
 /obj/structure/railing{
 	dir = 4
 	},
@@ -31301,6 +31268,10 @@
 "xix" = (
 /turf/simulated/wall/prepainted,
 /area/endeavour/hallway/d3fwdhall)
+"xiA" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/plating,
+/area/space)
 "xiG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -42569,7 +42540,7 @@ isE
 ecO
 qHk
 xaH
-pDX
+rMh
 oFB
 lKR
 kDB
@@ -43868,14 +43839,14 @@ pRW
 pRW
 pRW
 pRW
-pRW
+xiA
 pRW
 rwh
 iWE
 uRN
 gDV
-gDV
-gDV
+lJE
+lJE
 gDV
 rXr
 bxW
@@ -44062,7 +44033,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+xiA
 pRW
 dGV
 fsN
@@ -50289,7 +50260,7 @@ pmo
 hJR
 hJR
 pmo
-qmQ
+ofl
 qwK
 iWF
 jzo
@@ -52050,7 +52021,7 @@ mfy
 mkn
 jYc
 mch
-lJE
+iIc
 tUQ
 iIc
 jJn
@@ -52244,7 +52215,7 @@ aAM
 ciC
 gvm
 mch
-lJE
+iIc
 qBQ
 iIc
 bQp
