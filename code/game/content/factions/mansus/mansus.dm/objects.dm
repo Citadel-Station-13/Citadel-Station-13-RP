@@ -6,6 +6,20 @@
 	anchored = 0
 	density = 0
 
+/obj/item/mansus/prop/medallion
+	icon = 'code/game/content/factions/mansus/mansus.dmi/objects.dmi'
+	icon_state = "eye_medalion"
+	name = "Odd Medallion"
+	desc = "A strange medallion, looks like some sort of eye."
+	anchored = 0
+	density = 0
+
+/obj/item/mansus/prop/flask
+	icon = 'code/game/content/factions/mansus/mansus.dmi/objects.dmi'
+	icon_state = "eldritch_flask"
+	name = "Strange Flask"
+	desc = "A strange flask. You can't seem to open it, but you don't recognize the material its made of. Or those runes..."
+
 
 //armor
 
