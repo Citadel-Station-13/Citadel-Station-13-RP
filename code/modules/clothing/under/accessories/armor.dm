@@ -362,6 +362,16 @@
 	desc = "An armor tag with the words CORPORATE SEC-COM printed in gold lettering."
 	icon_state = "ntctag"
 
+/obj/item/clothing/accessory/armor/tag/para
+	name = "\improper PARACAUSAL ANOMALY RESPONSE tag"
+	desc = "An armor tag with the words PARACAUSAL ANOMALY RESPONSE printed in silver lettering."
+	icon_state = "paratag"
+
+/obj/item/clothing/accessory/armor/tag/pmd
+	name = "\improper PMD patch"
+	desc = "An embroidered patch bearing the PMD's half-lidded eye Icon."
+	icon_state = "pmdtag"
+
 //Other
 /obj/item/clothing/accessory/armor/tag/sifguard
 	name = "\improper Sif Defense Force crest"

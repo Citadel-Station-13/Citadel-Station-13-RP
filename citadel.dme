@@ -5223,6 +5223,7 @@
 #include "code\modules\sprite_accessories\tail\synthetic.dm"
 #include "code\modules\sprite_accessories\tail\taurs.dm"
 #include "code\modules\sprite_accessories\tail\weird_shadow_creature_ocs.dm"
+#include "code\modules\sprite_accessories\tail\wide_tail.dm"
 #include "code\modules\sprite_accessories\tail\species\akula.dm"
 #include "code\modules\sprite_accessories\tail\species\monkey.dm"
 #include "code\modules\sprite_accessories\tail\species\naramadi.dm"
