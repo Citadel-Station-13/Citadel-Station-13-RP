@@ -285,22 +285,18 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 /datum/admin_modal/load_map_sector/proc/validate_and_ready()
 	var/list/errors_out = list()
 
-	var/passed = TRUE
+	var/passed = buffer.validate(TRUE, errors_out)
 
-	for(var/i in 1 to length(buffer.levels))
-		var/datum/map_level/checking_level = buffer.levels
-		if(!istype(checking_level))
-			passed = FALSE
-			computed_errors += "Index [i] is not a map level. What happened? Yell at coders."
-			continue
-	if(!buffer.validate(TRUE, computed_errors))
-		passed = FALSE
+	if(passed)
+		load_ready = TRUE
+	else
+		// TODO: instead of to_chat'ing, just send the data through TGUI dynamic modal / popup system once that's made
+		var/rendered = list()
+		for(var/error in errors_out)
+			rendered += "<li>[error]</li>"
+		rendered = jointext(rendered, "")
+		to_chat("<div><center>Map validation errors</center><hr>[rendered]</div")
 
-	primed = passed
-	ready = passed
-
-	// TODO: instead of to_chat'ing, just send the data through TGUI dynamic modal / popup system once that's made
-	#warn to chat here
 	update_ui_data()
 
 /datum/admin_modal/load_map_sector/proc/mark_dirty()
@@ -315,7 +311,7 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 	. = do_load()
 	if(!.)
 		return
-	loaded_finished = TRUE
+	load_finished = TRUE
 	update_ui_data()
 
 /datum/admin_modal/load_map_sector/proc/do_load()
