@@ -43,7 +43,7 @@
 		/datum/map/sector/sky_planet,
 	)
 
-	overmap_initializer = /datum/overmap_initializer/struct{
+	overmap_initializer = /datum/overmap_initializer/map{
 		legacy_entity_type = /obj/overmap/entity/visitable/ship/endeavour;
 	}
 

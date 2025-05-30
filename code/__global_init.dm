@@ -26,7 +26,7 @@ var/global/datum/world_log_shunter/world_log_shunter = new
 var/world_log_shunter_active = FALSE
 
 //* configure init *//
-var/datum/world_init_options/world_init_options new
+var/datum/world_init_options/world_init_options = new
 
 //* enable debugger - this should be last (so first in the file to load) *//
 var/datum/world_debug_enabler/world_debug_enabler = new

@@ -280,8 +280,6 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 	for(var/i in 1 to length(buffer.levels))
 		update_ui_level_index_data(i)
 
-#warn below
-
 /datum/admin_modal/load_map_sector/proc/validate_and_ready()
 	var/list/errors_out = list()
 
