@@ -17,7 +17,7 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 
 
 /turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
-
+	return
 
 /turf/simulated/hotspot_expose(exposed_temperature, exposed_volume, soh)
 	if(fire_protection > world.time-300)
@@ -228,7 +228,7 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 /mob/living/proc/FireBurn(var/firelevel, var/last_temperature, var/pressure)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/firelevel_multiplier, firelevel_multiplier)
 	var/mx = 5 * firelevel/firelevel_multiplier * min(pressure / ONE_ATMOSPHERE, 1)
-	apply_damage(2.5*mx, BURN)
+	apply_damage(2.5*mx, DAMAGE_TYPE_BURN)
 
 
 /mob/living/carbon/human/FireBurn(var/firelevel, var/last_temperature, var/pressure)
@@ -265,10 +265,10 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 
 	//Always check these damage procs first if fire damage isn't working. They're probably what's wrong.
 
-	apply_damage(2.5*mx*head_exposure,  BURN, BP_HEAD,  0, 0, "Fire")
-	apply_damage(2.5*mx*chest_exposure, BURN, BP_TORSO, 0, 0, "Fire")
-	apply_damage(2.0*mx*groin_exposure, BURN, BP_GROIN, 0, 0, "Fire")
-	apply_damage(0.6*mx*legs_exposure,  BURN, BP_L_LEG, 0, 0, "Fire")
-	apply_damage(0.6*mx*legs_exposure,  BURN, BP_R_LEG, 0, 0, "Fire")
-	apply_damage(0.4*mx*arms_exposure,  BURN, BP_L_ARM, 0, 0, "Fire")
-	apply_damage(0.4*mx*arms_exposure,  BURN, BP_R_ARM, 0, 0, "Fire")
+	apply_damage(2.5*mx*head_exposure,  DAMAGE_TYPE_BURN, BP_HEAD,  0, 0, "Fire")
+	apply_damage(2.5*mx*chest_exposure, DAMAGE_TYPE_BURN, BP_TORSO, 0, 0, "Fire")
+	apply_damage(2.0*mx*groin_exposure, DAMAGE_TYPE_BURN, BP_GROIN, 0, 0, "Fire")
+	apply_damage(0.6*mx*legs_exposure,  DAMAGE_TYPE_BURN, BP_L_LEG, 0, 0, "Fire")
+	apply_damage(0.6*mx*legs_exposure,  DAMAGE_TYPE_BURN, BP_R_LEG, 0, 0, "Fire")
+	apply_damage(0.4*mx*arms_exposure,  DAMAGE_TYPE_BURN, BP_L_ARM, 0, 0, "Fire")
+	apply_damage(0.4*mx*arms_exposure,  DAMAGE_TYPE_BURN, BP_R_ARM, 0, 0, "Fire")

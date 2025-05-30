@@ -136,7 +136,7 @@
 	desc = "A sleek module decorated with intricate glyphs and alien wards. When worn by a trained agent, the various glyphs faintly glow."
 	suit_type = "PMD agent"
 	icon_state = "para_ert_rig"
-	action_button_name = "Enable RIG Sigils"
+	item_action_name = "Enable RIG Sigils"
 
 	var/anti_magic = FALSE
 	var/blessed = FALSE
@@ -153,7 +153,7 @@
 		/obj/item/hardsuit_module/self_destruct
 		)
 
-/obj/item/hardsuit/ert/para/attack_self(mob/user)
+/obj/item/hardsuit/ert/para/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

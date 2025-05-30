@@ -13,10 +13,7 @@
 /datum/gm_action/electrified_door/set_up()
 	var/list/area/grand_list_of_areas = get_station_areas(excluded)
 
-	severity = pickweight(EVENT_LEVEL_MUNDANE = 10,
-		EVENT_LEVEL_MODERATE = 5,
-		EVENT_LEVEL_MAJOR = 1
-		)
+	severity = pick_weight(mundande_weight = 10, moderate_weight = 5, major_weight = 1)
 
 	//try 10 times
 	for(var/i in 1 to 10)
@@ -63,7 +60,7 @@
 			if(!chosen_door || !chosen_door.arePowerSystemsOn())
 				return
 			chosen_door.visible_message("<span class='critical'>\The [chosen_door]'s hydraulics detonate!</span>")
-			chosen_door.fragmentate(get_turf(chosen_door), rand(5, 10), rand(3, 5), list(/obj/projectile/bullet/pellet/fragment/tank/small))
+			chosen_door.shrapnel_explosion(rand(5, 10), rand(3, 5), /obj/projectile/bullet/pellet/fragment/tank/small)
 			explosion(get_turf(chosen_door),-1,-1,2,3)
 
 	chosen_door.lock()

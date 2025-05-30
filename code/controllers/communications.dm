@@ -97,102 +97,60 @@ On the map:
 1455 for AI access
 */
 
-var/const/RADIO_LOW_FREQ	= 1200
-var/const/PUBLIC_LOW_FREQ	= 1441
-var/const/PUBLIC_HIGH_FREQ	= 1489
-var/const/RADIO_HIGH_FREQ	= 1600
-
-var/const/BOT_FREQ	= 1447
-var/const/COMM_FREQ = 1353
-var/const/ERT_FREQ	= 1345
-var/const/AI_FREQ	= 1343
-var/const/DTH_FREQ	= 1341
-var/const/SYND_FREQ = 1213
-var/const/RAID_FREQ	= 1277
-var/const/TRADE_FREQ = 1279
-var/const/ENT_FREQ	= 1461 //entertainment frequency. This is not a diona exclusive frequency.
-
-// department channels
-var/const/PUB_FREQ = 1459
-var/const/SEC_FREQ = 1359
-var/const/ENG_FREQ = 1357
-var/const/MED_FREQ = 1355
-var/const/SCI_FREQ = 1351
-var/const/SRV_FREQ = 1349
-var/const/SUP_FREQ = 1347
-var/const/EXP_FREQ = 1361
-var/const/TALON_FREQ = 1363	// No need to remove at the moment, Talon equipment can still be used and such - Bloop
-
-// internal department channels
-var/const/MED_I_FREQ = 1485
-var/const/SEC_I_FREQ = 1475
-
 var/list/radiochannels = list(
-	"Common"		= PUB_FREQ,
-	"Science"		= SCI_FREQ,
-	"Command"		= COMM_FREQ,
-	"Medical"		= MED_FREQ,
-	"Engineering"	= ENG_FREQ,
-	"Security" 		= SEC_FREQ,
-	"Response Team" = ERT_FREQ,
-	"Special Ops" 	= DTH_FREQ,
-	"Mercenary" 	= SYND_FREQ,
-	"Raider"		= RAID_FREQ,
-	"Trader"		= TRADE_FREQ,
-	"Supply" 		= SUP_FREQ,
-	"Service" 		= SRV_FREQ,
-	"Explorer"		= EXP_FREQ,
-	"AI Private"	= AI_FREQ,
-	"Entertainment" = ENT_FREQ,
-	"Medical(I)"	= MED_I_FREQ,
-	"Security(I)"	= SEC_I_FREQ
+	"Common"		= FREQ_COMMON,
+	"Science"		= FREQ_SCIENCE,
+	"Command"		= FREQ_COMMAND,
+	"Medical"		= FREQ_MEDICAL,
+	"Engineering"	= FREQ_ENGINEERING,
+	"Security" 		= FREQ_SECURITY,
+	"Response Team" = FREQ_ERT,
+	"Special Ops" 	= FREQ_DEATH_SQUAD,
+	"Mercenary" 	= FREQ_SYNDICATE,
+	"Raider"		= FREQ_RAIDER,
+	"Trader"		= FREQ_TRADER,
+	"Supply" 		= FREQ_SUPPLY,
+	"Service" 		= FREQ_SERVICE,
+	"Explorer"		= FREQ_EXPLORER,
+	"AI Private"	= FREQ_AI_PRIVATE,
+	"Entertainment" = FREQ_ENTERTAINMENT,
+	"Medical(I)"	= FREQ_MEDICAL_INTERNAL,
+	"Security(I)"	= FREQ_SECURITY_INTERNAL
 )
 
 // central command channels, i.e deathsquid & response teams
-var/list/CENT_FREQS = list(ERT_FREQ, DTH_FREQ)
+var/list/CENT_FREQS = list(FREQ_ERT, FREQ_DEATH_SQUAD)
 
 // Antag channels, i.e. Syndicate
-// Raider Frequency was previously listed here, RAID_FREQ. I'm removing it to see if I can make it self contained.
-var/list/ANTAG_FREQS = list(SYND_FREQ)
+// Raider Frequency was previously listed here, FREQ_RAIDER. I'm removing it to see if I can make it self contained.
+var/list/ANTAG_FREQS = list(FREQ_SYNDICATE)
 
 //Department channels, arranged lexically
-var/list/DEPT_FREQS = list(AI_FREQ, COMM_FREQ, ENG_FREQ, ENT_FREQ, MED_FREQ, SEC_FREQ, SCI_FREQ, SRV_FREQ, SUP_FREQ, TRADE_FREQ)
+var/list/DEPT_FREQS = list(FREQ_AI_PRIVATE, FREQ_COMMAND, FREQ_ENGINEERING, FREQ_ENTERTAINMENT, FREQ_MEDICAL, FREQ_SECURITY, FREQ_SCIENCE, FREQ_SERVICE, FREQ_SUPPLY, FREQ_TRADER)
 
-/proc/frequency_span_class(var/frequency)
-	// Antags!
-	if (frequency in ANTAG_FREQS)
-		return "syndradio"
-	// CentCom channels (deathsquid and ert)
-	if(frequency in CENT_FREQS)
-		return "centradio"
-	// command channel
-	if(frequency == COMM_FREQ)
-		return "comradio"
-	// AI private channel
-	if(frequency == AI_FREQ)
-		return "aiprivradio"
-	// department radio formatting (poorly optimized, ugh)
-	if(frequency == SEC_FREQ)
-		return "secradio"
-	if (frequency == ENG_FREQ)
-		return "engradio"
-	if(frequency == SCI_FREQ)
-		return "sciradio"
-	if(frequency == MED_FREQ)
-		return "medradio"
-	if(frequency == SUP_FREQ) // cargo
-		return "suppradio"
-	if(frequency == SRV_FREQ) // service
-		return "servradio"
-	if(frequency == EXP_FREQ) // explorer
-		return "expradio"
-	if(frequency == ENT_FREQ) // entertainment
-		return "entradio"
-	if(frequency == TRADE_FREQ)
-		return "syndradio"
-	if(frequency in DEPT_FREQS)
-		return "deptradio"
+// TODO: move me to say or something
+GLOBAL_LIST_INIT(freqtospan, list(
+	"[FREQ_SCIENCE]" = "sciradio",
+	"[FREQ_EXPLORER]" = "expradio",
+	"[FREQ_MEDICAL]" = "medradio",
+	"[FREQ_ENGINEERING]" = "engradio",
+	"[FREQ_SUPPLY]" = "suppradio",
+	"[FREQ_SERVICE]" = "servradio",
+	"[FREQ_SECURITY]" = "secradio",
+	"[FREQ_COMMAND]" = "comradio",
+	"[FREQ_AI_PRIVATE]" = "aiprivradio",
+	"[FREQ_ENTERTAINMENT]" = "entradio",
+	"[FREQ_SYNDICATE]" = "syndradio",
+	"[FREQ_RAIDER]" = "syndradio",
+	"[FREQ_TRADER]" = "syndradio",
+	"[FREQ_ERT]" = "centradio",
+	"[FREQ_DEATH_SQUAD]" = "centradio"
+	))
 
+/proc/get_radio_span(freq)
+	var/returntext = GLOB.freqtospan["[freq]"]
+	if(returntext)
+		return returntext
 	return "radio"
 
 /* filters */

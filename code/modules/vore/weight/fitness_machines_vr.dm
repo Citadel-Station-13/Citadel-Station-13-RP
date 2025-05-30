@@ -11,7 +11,7 @@
 	var/cooldown = 10
 	var/weightloss_power = 1
 
-/obj/machinery/fitness/attack_hand(mob/user, list/params)
+/obj/machinery/fitness/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -20,14 +20,9 @@
 		return
 	if(L.nutrition < 70)
 		to_chat(L, "<span class='notice'>You need more energy to workout with the [src]!</span>")
-
-	else if(L.weight < 70)
-		to_chat(L, "<span class='notice'>You're too skinny to risk losing any more weight!</span>")
-
 	else //If they have enough nutrition and body weight, they can exercise.
-		L.setClickCooldown(cooldown)
+		L.setClickCooldownLegacy(cooldown)
 		L.nutrition -= 10 * weightloss_power
-		L.weight -= 0.025 * weightloss_power * (0.01*L.weight_loss)
 		flick("[icon_state]2",src)
 		var/message = pick(messages)
 		to_chat(L, "<span class='notice'>[message].</span>")
@@ -68,7 +63,7 @@
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
 		return
 
-/obj/machinery/fitness/heavy/attack_hand(mob/user, list/params)
+/obj/machinery/fitness/heavy/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!anchored)
 		to_chat(user, "<span class='notice'>For safety reasons, you are required to have this equipment wrenched down before using it!</span>")
 		return
@@ -98,7 +93,7 @@
 	idle_power_usage = 0
 	active_power_usage = 0
 
-/obj/machinery/scale/attack_hand(mob/user, list/params)
+/obj/machinery/scale/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

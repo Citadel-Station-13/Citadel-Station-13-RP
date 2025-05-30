@@ -58,7 +58,6 @@
 
 
 /obj/machinery/tele_projector/LateInitialize()
-	. = ..()
 	for(var/target_dir in GLOB.cardinal)
 		var/obj/machinery/tele_pad/found_pad = locate() in get_step(src, target_dir)
 		if(found_pad)
@@ -78,6 +77,7 @@
 
 /obj/machinery/tele_projector/update_icon()
 	cut_overlays()
+	. = ..()
 	if(engaged)
 		var/image/I = image(icon, src, "[initial(icon_state)]_active_overlay")
 		I.plane = ABOVE_LIGHTING_PLANE
@@ -182,7 +182,7 @@
 /obj/machinery/tele_projector/attack_ai()
 	attack_hand()
 
-/obj/machinery/tele_projector/attack_hand(mob/user, list/params)
+/obj/machinery/tele_projector/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(engaged)
 		disengage()
 	else
@@ -206,19 +206,9 @@
 	if(istype(teleporting, /obj/structure))
 		var/obj/structure/S = teleporting
 		teleport_cost += S.w_class*BASE_ITEM_KJ_COST
-		if(S.contents) //uh oh, it contains something!
-			for(var/obj/I in recursive_content_check(S))
-				teleport_cost += I.w_class*BASE_ITEM_KJ_COST
-			for(var/mob/M in recursive_content_check(S))
-				for(var/obj/MI in recursive_content_check(M))
-					teleport_cost += MI.w_class*BASE_ITEM_KJ_COST
 
 	if(istype(teleporting, /mob/))
-		var/mob/M = teleporting
 		teleport_cost += BASE_MOB_KJ_COST
-		if(M.contents) //uh oh, it contains something!
-			for(var/obj/I in recursive_content_check(M))
-				teleport_cost += I.w_class*BASE_ITEM_KJ_COST
 
 	if(current_joules >= teleport_cost)
 		current_joules -= teleport_cost

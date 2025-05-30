@@ -20,11 +20,6 @@
 /obj/structure/alien/weeds,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
-"f" = (
-/obj/structure/alien/weeds,
-/mob/living/simple_mob/animal/space/alien/drone,
-/turf/simulated/mineral/floor/classd/indoors,
-/area/class_d/explored)
 "g" = (
 /obj/structure/alien/weeds/node,
 /turf/simulated/mineral/floor/classd/indoors,
@@ -33,11 +28,6 @@
 /obj/structure/alien/weeds,
 /obj/random/multiple/minevault,
 /obj/fiftyspawner/uranium,
-/turf/simulated/mineral/floor/classd/indoors,
-/area/class_d/explored)
-"i" = (
-/obj/structure/alien/weeds,
-/mob/living/simple_mob/animal/space/alien,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
 "j" = (
@@ -49,6 +39,22 @@
 /obj/structure/alien/weeds,
 /obj/random/multiple/minevault,
 /obj/fiftyspawner/diamond,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
+"s" = (
+/obj/structure/alien/weeds,
+/obj/structure/bed/nest,
+/mob/living/simple_mob/animal/space/xenomorph/drone,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
+"Q" = (
+/obj/structure/alien/weeds,
+/mob/living/simple_mob/animal/space/xenomorph/sprinter,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
+"R" = (
+/obj/structure/alien/weeds,
+/mob/living/simple_mob/animal/space/xenomorph/neurotoxin_spitter,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
 
@@ -78,8 +84,8 @@ a
 a
 b
 b
-d
-i
+s
+e
 k
 b
 b
@@ -92,7 +98,7 @@ d
 e
 e
 g
-f
+e
 b
 a
 "}
@@ -100,9 +106,9 @@ a
 a
 c
 e
-e
+R
 j
-e
+Q
 e
 c
 a
@@ -110,11 +116,11 @@ a
 (6,1,1) = {"
 a
 b
-f
+e
 g
 e
 e
-d
+s
 b
 a
 "}
@@ -123,7 +129,7 @@ a
 b
 b
 h
-i
+e
 d
 b
 b

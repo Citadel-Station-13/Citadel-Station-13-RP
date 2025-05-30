@@ -162,7 +162,7 @@
 	animate(src, alpha = initial(alpha), time = 1 SECOND)
 
 // Just for fun
-/obj/effect/shield/attack_hand(mob/user, list/params)
+/obj/effect/shield/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	flash_adjacent_segments(3)
 
 /obj/effect/shield/proc/take_damage_legacy(var/damage, var/damtype, var/hitby)
@@ -231,33 +231,32 @@
 	if(!disabled_for)
 		take_damage_legacy(rand(10,15) / severity, SHIELD_DAMTYPE_PHYSICAL)
 
-
 // Fire
 /obj/effect/shield/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(!disabled_for)
 		take_damage_legacy(rand(5,10), SHIELD_DAMTYPE_HEAT)
 
-
 // Projectiles
-/obj/effect/shield/bullet_act(var/obj/projectile/proj)
-	if(proj.damage_type == BURN)
+/obj/effect/shield/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	impact_flags &= ~PROJECTILE_IMPACT_FLAGS_SHOULD_NOT_HIT
+	. = ..()
+	if(proj.damage_type == DAMAGE_TYPE_BURN)
 		take_damage_legacy(proj.get_structure_damage(), SHIELD_DAMTYPE_HEAT)
-	else if (proj.damage_type == BRUTE)
+	else if (proj.damage_type == DAMAGE_TYPE_BRUTE)
 		take_damage_legacy(proj.get_structure_damage(), SHIELD_DAMTYPE_PHYSICAL)
 	else //TODO - This will never happen because of get_structure_damage() only returning values for BRUTE and BURN damage types
 		take_damage_legacy(proj.get_structure_damage(), SHIELD_DAMTYPE_EM)
 
-
 // Attacks with hand tools. Blocked by Hyperkinetic flag.
 /obj/effect/shield/attackby(var/obj/item/I as obj, var/mob/user as mob)
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	user.setClickCooldownLegacy(DEFAULT_ATTACK_COOLDOWN)
 	user.do_attack_animation(src)
 
 	if(gen.check_flag(MODEFLAG_HYPERKINETIC))
 		user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [I]!</span>")
-		if(I.damtype == BURN)
+		if(I.damage_type == DAMAGE_TYPE_BURN)
 			take_damage_legacy(I.damage_force, SHIELD_DAMTYPE_HEAT)
-		else if (I.damtype == BRUTE)
+		else if (I.damage_type == DAMAGE_TYPE_BRUTE)
 			take_damage_legacy(I.damage_force, SHIELD_DAMTYPE_PHYSICAL)
 		else
 			take_damage_legacy(I.damage_force, SHIELD_DAMTYPE_EM)

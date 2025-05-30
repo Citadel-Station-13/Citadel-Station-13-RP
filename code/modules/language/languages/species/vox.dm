@@ -1,4 +1,4 @@
-/datum/language/vox
+/datum/prototype/language/vox
 	id = LANGUAGE_ID_VOX
 	name = LANGUAGE_VOX
 	translation_class = NONE
@@ -13,5 +13,5 @@
 	"SKRE","AHK","EHK","RAWK","KRA","AAA","EEE","KI","II","KRI","KA")
 	shorthand = "VOX"
 
-/datum/language/vox/get_random_name()
+/datum/prototype/language/vox/get_random_name()
 	return ..(FEMALE,1,6)

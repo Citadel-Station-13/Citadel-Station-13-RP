@@ -50,7 +50,7 @@
 /datum/ghostrole_instantiator/human/player_static/pirate/GetOutfit(client/C, mob/M, list/params)
 	var/datum/outfit/outfit = ..()
 	//var/mob/M = /mob/living/carbon/human/H
-	M.faction = "pirate"
+	M.set_iff_factions(MOB_IFF_FACTION_PIRATE)
 	switch(params["fluff"])
 		if("immigrant")
 			return /datum/outfit/pirate/immigrant

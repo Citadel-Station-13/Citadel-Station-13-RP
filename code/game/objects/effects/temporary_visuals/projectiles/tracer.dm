@@ -1,12 +1,6 @@
-/datum/beam_legacy_components_cache
-	var/list/beam_components = list()
-
-/datum/beam_legacy_components_cache/Destroy()
-	for(var/component in beam_components)
-		qdel(component)
-	return ..()
-
-/proc/generate_tracer_between_points(datum/point/starting, datum/point/ending, datum/beam_legacy_components_cache/beam_components, beam_type, color, qdel_in = 5, light_range = 2, light_color_override, light_intensity = 1, instance_key)		//Do not pass z-crossing points as that will not be properly (and likely will never be properly until it's absolutely needed) supported!
+//Do not pass z-crossing points as that will not be properly (and likely will never be properly until it's absolutely needed) supported!
+// todo: when do we rework
+/proc/generate_tracer_between_points(datum/point/starting, datum/point/ending, list/beam_components, beam_type, color, qdel_in = 5, light_range = 2, light_color_override, light_intensity = 1, instance_key)
 	if(!istype(starting) || !istype(ending) || !ispath(beam_type))
 		return
 	var/datum/point/midpoint = point_midpoint_points(starting, ending)
@@ -29,9 +23,9 @@
 				for(var/obj/effect/projectile_lighting/PL in T)
 					if(PL.owner == instance_key)
 						continue tracing_line
-				beam_components.beam_components += new /obj/effect/projectile_lighting(T, light_color_override, light_range, light_intensity, instance_key)
+				beam_components += new /obj/effect/projectile_lighting(T, light_color_override, light_range, light_intensity, instance_key)
 		line = null
-	beam_components.beam_components += PB
+	beam_components += PB
 
 /obj/effect/projectile/tracer
 	name = "beam"

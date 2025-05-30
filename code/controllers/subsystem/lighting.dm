@@ -114,7 +114,7 @@ SUBSYSTEM_DEF(lighting)
 	)
 	log_subsystem("lighting", "NOv:[overlaycount] L:[processed_lights] C:[processed_corners] O:[processed_overlays]")
 
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/lighting/proc/InitializeZlev(zlev)
 	for (var/thing in Z_ALL_TURFS(zlev))
@@ -157,6 +157,12 @@ SUBSYSTEM_DEF(lighting)
 
 	while (lq_idex <= curr_lights.len)
 		var/datum/light_source/L = curr_lights[lq_idex++]
+
+		// citadel edit: light source can be deleted before update, if that happens, skip
+		//               check QDELING, light sources are LETMELIVE so shouldn't be being
+		//               harddel'd
+		if(QDELING(L))
+			continue
 
 		if (L.needs_update != LIGHTING_NO_UPDATE)
 			total_ss_updates += 1

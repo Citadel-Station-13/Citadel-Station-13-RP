@@ -19,7 +19,7 @@
 
 	randomized = TRUE
 
-	movement_cooldown = 4 //fast as fucc boie.
+	movement_base_speed = 10 / 4 //fast as fucc boie.
 
 	harm_intent_damage = 5
 	legacy_melee_damage_lower = 5
@@ -38,9 +38,6 @@
 
 // Activate Noms!
 /mob/living/simple_mob/vore/aggressive/frog
-	vore_active = 1
-	vore_pounce_chance = 50
-	vore_icons = SA_ICON_LIVING
 
 /mob/living/simple_mob/vore/aggressive/frog/space
 	name = "space frog"

@@ -29,7 +29,7 @@ If the spell_projectile is seeking, it will update its target every process and 
 
 		projectile.shot_from = user //fired from the user
 		projectile.hitscan = !proj_step_delay
-		projectile.speed = proj_step_delay
+		projectile.speed = 32 / proj_step_delay
 		if(istype(projectile, /obj/projectile/spell_projectile))
 			var/obj/projectile/spell_projectile/SP = projectile
 			SP.carried = src //casting is magical

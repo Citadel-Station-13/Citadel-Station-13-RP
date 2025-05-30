@@ -46,7 +46,7 @@
 	if(mind)
 		mind.transfer(M)
 	else
-		M.key = key
+		transfer_client_to(M)
 
 	if(subspecies && istype(M,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M

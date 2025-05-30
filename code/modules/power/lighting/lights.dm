@@ -48,11 +48,15 @@
 	nightshift_range = 6
 	nightshift_power = 0.5
 
+	worth_intrinsic = 5
+
 /obj/item/light/tube/large
 	w_class = WEIGHT_CLASS_SMALL
 	name = "large light tube"
 	brightness_range = 8
 	brightness_power = 1
+
+	worth_intrinsic = 10
 
 //! ## Colored Light Tubes
 
@@ -121,6 +125,8 @@
 	nightshift_range = null
 	nightshift_power = null
 
+	worth_intrinsic = 2
+
 /obj/item/light/bulb/strong
 	name = "light bulb"
 	desc = "A replacement light bulb."
@@ -130,6 +136,8 @@
 	materials_base = list(MAT_GLASS = 100)
 
 	brightness_range = 8
+
+	worth_intrinsic = 4
 
 /obj/item/light/throw_impact(atom/hit_atom)
 	..()
@@ -271,7 +279,7 @@
 		)
 		status = LIGHT_BROKEN
 		damage_force = 5
-		sharp = 1
+		damage_mode |= DAMAGE_MODE_SHARP
 		playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, TRUE)
 		update_icon()
 

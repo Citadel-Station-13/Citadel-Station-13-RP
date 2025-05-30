@@ -28,7 +28,7 @@
 /obj/machinery/computer/security/ui_interact(mob/user, datum/tgui/ui = null)
 	camera.ui_interact(user, ui)
 
-/obj/machinery/computer/security/attack_hand(mob/user, list/params)
+/obj/machinery/computer/security/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	add_fingerprint(user)
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
@@ -82,7 +82,7 @@
 	radio = new(src)
 	radio.listening = TRUE
 	radio.broadcasting = FALSE
-	radio.set_frequency(ENT_FREQ)
+	radio.set_frequency(FREQ_ENTERTAINMENT)
 	radio.canhear_range = 7 // Same as default sight range.
 	power_change()
 

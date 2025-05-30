@@ -85,17 +85,17 @@
 			data["info"]["linked_lathe"]["mats"] = materials
 
 			var/list/reagents = list()
-			for(var/datum/reagent/R in linked_lathe.reagents.reagent_list)
+			for(var/datum/reagent/R in linked_lathe.reagents.get_reagent_datums())
 				reagents.Add(list(list(
 					"name" = R.name,
 					"id" = R.id,
-					"volume" = R.volume,
+					"volume" = linked_lathe.reagents.reagent_volumes[R.id],
 				)))
 			data["info"]["linked_lathe"]["reagents"] = reagents
 
 			var/list/queue = list()
 			var/i = 1
-			for(var/datum/design/D in linked_lathe.queue)
+			for(var/datum/prototype/design/D in linked_lathe.queue)
 				queue.Add(list(list(
 					"name" = D.name,
 					"index" = i, // ugghhhh
@@ -133,17 +133,17 @@
 			data["info"]["linked_imprinter"]["mats"] = materials
 
 			var/list/reagents = list()
-			for(var/datum/reagent/R in linked_imprinter.reagents.reagent_list)
+			for(var/datum/reagent/R in linked_imprinter.reagents.get_reagent_datums())
 				reagents.Add(list(list(
 					"name" = R.name,
 					"id" = R.id,
-					"volume" = R.volume,
+					"volume" = linked_imprinter.reagents.reagent_volumes[R.id],
 				)))
 			data["info"]["linked_imprinter"]["reagents"] = reagents
 
 			var/list/queue = list()
 			var/i = 1
-			for(var/datum/design/D in linked_imprinter.queue)
+			for(var/datum/prototype/design/D in linked_imprinter.queue)
 				queue.Add(list(list(
 					"name" = D.name,
 					"index" = i, // ugghhhh
@@ -166,12 +166,13 @@
 		if(d_disk)
 			data["info"]["d_disk"] = list(
 				"present" = TRUE,
-				"stored" = !!d_disk.blueprint,
+				"stored" = !!d_disk.design_id,
 			)
-			if(d_disk.blueprint)
-				data["info"]["d_disk"]["name"] = d_disk.blueprint.name
-				data["info"]["d_disk"]["build_type"] = d_disk.blueprint.lathe_type
-				data["info"]["d_disk"]["materials"] = d_disk.blueprint.materials_base
+			if(d_disk.design_id)
+				var/datum/prototype/design/blueprint = RSdesigns.fetch(d_disk.design_id)
+				data["info"]["d_disk"]["name"] = blueprint.name
+				data["info"]["d_disk"]["build_type"] = blueprint.lathe_type
+				data["info"]["d_disk"]["materials"] = blueprint.materials_base
 
 	return data
 
@@ -216,8 +217,8 @@
 
 	var/list/data = list()
 	// For some reason, this is faster than direct access.
-	var/list/known_designs = files.known_designs
-	for(var/datum/design/D in known_designs)
+	var/list/known_designs = files.legacy_all_design_datums()
+	for(var/datum/prototype/design/D in known_designs)
 		if(!D.build_path || !(D.lathe_type & LATHE_TYPE_PROTOLATHE))
 			continue
 		if(search && !findtext(D.name, search))
@@ -254,8 +255,8 @@
 
 	var/list/data = list()
 	// For some reason, this is faster than direct access.
-	var/list/known_designs = files.known_designs
-	for(var/datum/design/D in known_designs)
+	var/list/known_designs = files.legacy_all_design_datums()
+	for(var/datum/prototype/design/D in known_designs)
 		if(!D.build_path || !(D.lathe_type & LATHE_TYPE_CIRCUIT))
 			continue
 		if(search && !findtext(D.name, search))
@@ -288,8 +289,8 @@
 /obj/machinery/computer/rdconsole/proc/tgui_GetDesignInfo(page)
 	var/list/data = list()
 	// For some reason, this is faster than direct access.
-	var/list/known_designs = files.known_designs
-	for(var/datum/design/D in known_designs)
+	var/list/known_designs = files.legacy_all_design_datums()
+	for(var/datum/prototype/design/D in known_designs)
 		if(search && !findtext(D.name, search))
 			continue
 		if(D.build_path)
@@ -347,7 +348,6 @@
 				busy_msg = null
 				files.AddTech2Known(t_disk.stored)
 				files.RefreshResearch()
-				griefProtection() //Update CentCom too
 				update_static_data(usr, ui)
 			return TRUE
 
@@ -371,13 +371,13 @@
 			busy_msg = "Updating Database..."
 			spawn(5 SECONDS)
 				busy_msg = null
-				files.AddDesign2Known(d_disk.blueprint)
-				griefProtection() //Update CentCom too
+				if(d_disk?.design_id)
+					files.AddDesign2Known(RSdesigns.fetch(d_disk.design_id))
 				update_static_data(usr, ui)
 			return TRUE
 
 		if("clear_design") //Erases data on the design disk.
-			d_disk.blueprint = null
+			d_disk.design_id = null
 			return TRUE
 
 		if("eject_design") //Eject the design disk.
@@ -386,10 +386,9 @@
 			return TRUE
 
 		if("copy_design") //Copy design data from the research holder to the design disk.
-			for(var/datum/design/D in files.known_designs)
-				if(params["copy_design_ID"] == D.id)
-					d_disk.blueprint = D
-					break
+			var/target_design_id = params["copy_design_ID"]
+			if(target_design_id in files.known_design_ids)
+				d_disk.design_id = target_design_id
 			return TRUE
 
 		if("eject_item") //Eject the item inside the destructive analyzer.
@@ -469,7 +468,6 @@
 				return
 
 			busy_msg = "Updating Database..."
-			griefProtection() //Putting this here because I dont trust the sync process
 			spawn(3 SECONDS)
 				if(src)
 					for(var/obj/machinery/r_n_d/server/S in GLOB.machines)
@@ -477,14 +475,14 @@
 						if((id in S.id_with_upload) || istype(S, /obj/machinery/r_n_d/server/centcom))
 							for(var/datum/tech/T in files.known_tech)
 								S.files.AddTech2Known(T)
-							for(var/datum/design/D in files.known_designs)
+							for(var/datum/prototype/design/D in files.legacy_all_design_datums())
 								S.files.AddDesign2Known(D)
 							S.files.RefreshResearch()
 							server_processed = 1
 						if((id in S.id_with_download) && !istype(S, /obj/machinery/r_n_d/server/centcom))
 							for(var/datum/tech/T in S.files.known_tech)
 								files.AddTech2Known(T)
-							for(var/datum/design/D in S.files.known_designs)
+							for(var/datum/prototype/design/D in S.files.legacy_all_design_datums())
 								files.AddDesign2Known(D)
 							server_processed = 1
 						if(!istype(S, /obj/machinery/r_n_d/server/centcom) && server_processed)
@@ -500,8 +498,8 @@
 
 		if("build") //Causes the Protolathe to build something.
 			if(linked_lathe)
-				var/datum/design/being_built = null
-				for(var/datum/design/D in files.known_designs)
+				var/datum/prototype/design/being_built = null
+				for(var/datum/prototype/design/D in files.legacy_all_design_datums())
 					if(D.id == params["build"])
 						being_built = D
 						break
@@ -511,8 +509,8 @@
 
 		if("buildfive") //Causes the Protolathe to build 5 of something.
 			if(linked_lathe)
-				var/datum/design/being_built = null
-				for(var/datum/design/D in files.known_designs)
+				var/datum/prototype/design/being_built = null
+				for(var/datum/prototype/design/D in files.legacy_all_design_datums())
 					if(D.id == params["build"])
 						being_built = D
 						break
@@ -523,8 +521,8 @@
 
 		if("imprint") //Causes the Circuit Imprinter to build something.
 			if(linked_imprinter)
-				var/datum/design/being_built = null
-				for(var/datum/design/D in files.known_designs)
+				var/datum/prototype/design/being_built = null
+				for(var/datum/prototype/design/D in files.legacy_all_design_datums())
 					if(D.id == params["imprint"])
 						being_built = D
 						break
@@ -603,7 +601,6 @@
 			update_static_data(usr, ui)
 
 		if("reset") //Reset the R&D console's database.
-			griefProtection()
 			var/choice = alert("R&D Console Database Reset", "Are you sure you want to reset the R&D console's database? Data lost cannot be recovered.", "Continue", "Cancel")
 			if(choice == "Continue")
 				busy_msg = "Updating Database..."

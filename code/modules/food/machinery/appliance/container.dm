@@ -110,7 +110,7 @@
 			.+=O.name//Just append the name of the first object
 			return
 	else if (reagents && reagents.total_volume > 0)
-		var/datum/reagent/R = reagents.get_master_reagent()
+		var/datum/reagent/R = reagents.get_majority_reagent_datum()
 		.+=R.name//Append name of most voluminous reagent
 		return
 	else
@@ -128,7 +128,7 @@
 
 //Takes a reagent holder as input and distributes its contents among the items in the container
 //Distribution is weighted based on the volume already present in each item
-/obj/item/reagent_containers/cooking_container/proc/soak_reagent(var/datum/reagents/holder)
+/obj/item/reagent_containers/cooking_container/proc/soak_reagent(var/datum/reagent_holder/holder)
 	var/total = 0
 	var/list/weights = list()
 	for (var/obj/item/I in contents)

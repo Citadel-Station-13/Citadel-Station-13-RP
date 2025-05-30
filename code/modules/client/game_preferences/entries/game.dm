@@ -18,6 +18,7 @@
 /datum/game_preference_entry/dropdown/hud_style/on_set(client/user, value, first_init)
 	. = ..()
 	user.set_ui_style(value)
+	user.mob.resync_rendering()
 
 /datum/game_preference_entry/simple_color/hud_color
 	name = "HUD Color"
@@ -31,6 +32,7 @@
 /datum/game_preference_entry/simple_color/hud_color/on_set(client/user, value, first_init)
 	. = ..()
 	user.set_ui_color(value)
+	user.mob.resync_rendering()
 
 /datum/game_preference_entry/number/hud_alpha
 	name = "HUD Alpha"
@@ -47,6 +49,7 @@
 /datum/game_preference_entry/number/hud_alpha/on_set(client/user, value, first_init)
 	. = ..()
 	user.set_ui_alpha(value)
+	user.mob.resync_rendering()
 
 /datum/game_preference_entry/dropdown/tooltip_style
 	name = "Tooltips Style"

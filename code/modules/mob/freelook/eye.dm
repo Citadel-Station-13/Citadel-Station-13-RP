@@ -80,9 +80,6 @@
 	// we see everything by default
 	P.SetSight(SEE_TURFS | SEE_MOBS | SEE_OBJS)
 
-/mob
-	var/mob/observer/eye/eyeobj
-
 /mob/proc/EyeMove(n, direct)
 	if(!eyeobj)
 		return

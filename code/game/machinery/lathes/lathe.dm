@@ -62,7 +62,7 @@
 	/// material container capacity - list with ids for specific, null for infinite, just a number for combined.
 	var/materials_max = SHEET_MATERIAL_AMOUNT * 100
 	/// reagents storage datum
-	var/datum/reagents/stored_reagents
+	var/datum/reagent_holder/stored_reagents
 	/// has reagents? if above 0, we make reagents datum.
 	var/reagents_max = 0
 	/// stored items
@@ -81,7 +81,7 @@
 	/// queued of /datum/lathe_queue_entry's. 1 is top of queue.
 	var/list/datum/lathe_queue_entry/queue
 	/// currently printing design
-	var/datum/design/printing
+	var/datum/prototype/design/printing
 	/// processing queue?
 	var/queue_active = FALSE
 	/// progress in deciseconds on current design
@@ -270,10 +270,10 @@
 	if(stored_items)
 		QDEL_LIST_NULL(stored_items)
 
-/obj/machinery/lathe/proc/has_design(datum/design/id_or_instance)
+/obj/machinery/lathe/proc/has_design(datum/prototype/design/id_or_instance)
 	return design_holder.has_id(istext(id_or_instance)? id_or_instance : id_or_instance.id)
 
-/obj/machinery/lathe/proc/has_capabilities_for(datum/design/instance)
+/obj/machinery/lathe/proc/has_capabilities_for(datum/prototype/design/instance)
 	return lathe_type & instance.lathe_type
 
 /**
@@ -281,18 +281,18 @@
  *
  * @return number of it we can print, this can be a decimal. if design requires ingredients, this will never be above 1.
  */
-/obj/machinery/lathe/proc/has_resources_for(datum/design/instance, list/material_parts, list/ingredient_parts)
+/obj/machinery/lathe/proc/has_resources_for(datum/prototype/design/instance, list/material_parts, list/ingredient_parts)
 	. = INFINITY
 	if(length(instance.materials_base))
 		var/list/materials = instance.materials_base.Copy()
 		for(var/key in instance.material_costs)
 			var/id = material_parts[key]
 			materials[id] += instance.material_costs[key]
-		. = stored_materials.has_multiple(materials, efficiency_multiplier)
+		. = stored_materials.has_multiple(materials) / efficiency_multiplier
 	if(!.)
 		return
 	if(length(instance.reagents))
-		. = min(., stored_reagents?.has_multiple(instance.reagents, efficiency_multiplier))
+		. = min(., stored_reagents?.has_multiple(instance.reagents) / efficiency_multiplier)
 	if(!.)
 		return
 	// ingredients? return 1 at most.
@@ -320,7 +320,7 @@
  *
  * @return number of it we can print if so, null if we can't print at all and it isn't a resource issue
  */
-/obj/machinery/lathe/proc/can_print(datum/design/instance, list/material_parts, list/ingredient_parts)
+/obj/machinery/lathe/proc/can_print(datum/prototype/design/instance, list/material_parts, list/ingredient_parts)
 	if(!has_design(instance))
 		return FALSE
 	if(!has_capabilities_for(instance))
@@ -330,7 +330,7 @@
 /**
  * returns why we can't print something
  */
-/obj/machinery/lathe/proc/why_cant_print(datum/design/instance, list/material_parts, list/ingredient_parts)
+/obj/machinery/lathe/proc/why_cant_print(datum/prototype/design/instance, list/material_parts, list/ingredient_parts)
 	if(!has_design(instance))
 		return "Unknown design detected"
 	if(!has_capabilities_for(instance))
@@ -343,7 +343,7 @@
  *
  * @return an object, or a list of objects.
  */
-/obj/machinery/lathe/proc/do_print(datum/design/instance, amount = 1, list/material_parts, list/ingredient_parts, efficiency = efficiency_multiplier)
+/obj/machinery/lathe/proc/do_print(datum/prototype/design/instance, amount = 1, list/material_parts, list/ingredient_parts, efficiency = efficiency_multiplier)
 	if(!amount)
 		return
 	var/list/materials_used = instance.materials_base?.Copy() || list()
@@ -368,11 +368,11 @@
 	var/total = time * mult
 	progress += total
 	var/datum/lathe_queue_entry/head = queue[1]
-	var/datum/design/D
+	var/datum/prototype/design/D
 	var/left_this_tick = max_items_per_tick
 	var/printed_any = FALSE
 	while(!isnull(head))
-		D = SSresearch.fetch_design(head.design_id)
+		D = RSdesigns.fetch(head.design_id)
 		var/resource_limited = has_resources_for(D, head.material_parts, head.ingredient_parts)
 		if(!resource_limited)
 			if(queue_active)
@@ -405,8 +405,8 @@
 		start_printing(silent)
 
 /obj/machinery/lathe/proc/queue_head_design()
-	RETURN_TYPE(/datum/design)
-	return length(queue)? (SSresearch.fetch_design(queue[1].design_id)) : null
+	RETURN_TYPE(/datum/prototype/design)
+	return length(queue)? (RSdesigns.fetch(queue[1].design_id)) : null
 
 /obj/machinery/lathe/proc/check_queue_head(silent, check_resources = TRUE)
 	if(!length(queue))
@@ -415,7 +415,7 @@
 		stop_printing()
 		return FALSE
 	var/datum/lathe_queue_entry/head = queue[1]
-	var/datum/design/D = SSresearch.fetch_design(head.design_id)
+	var/datum/prototype/design/D = RSdesigns.fetch(head.design_id)
 	if(isnull(D))
 		if(!silent && queue_active)
 			atom_say("Print queue interrupted - unknown entry in queue.")
@@ -484,7 +484,7 @@
  *
  * amount variable is reserved but unused at this given time.
  */
-/obj/machinery/lathe/proc/enqueue(datum/design/instance, amount = 1, list/material_parts, list/ingredient_parts, start_immediately)
+/obj/machinery/lathe/proc/enqueue(datum/prototype/design/instance, amount = 1, list/material_parts, list/ingredient_parts, start_immediately)
 	if(!isnull(instance.material_costs))
 		for(var/key in instance.material_costs)
 			if(!material_parts[key])

@@ -8,7 +8,7 @@
  *
  * why? because this is easier to regex later if it turns out silicons code design(tm) was terrible
  */
-/proc/create_stack_recipe_datum(name, product, cost, amount = 1, sanity_checks = TRUE, time = 0, recipe_type = /datum/stack_recipe, category, exclusitivity, list/recipe_args)
+/proc/create_stack_recipe_datum(name, product, cost = 1, amount = 1, sanity_checks = TRUE, time = 0, recipe_type = /datum/stack_recipe, category, exclusitivity, list/recipe_args)
 	// check this isn't being misused
 	ASSERT(!ispath(recipe_type, /datum/stack_recipe/material))
 	var/datum/stack_recipe/creating = isnull(recipe_args)? (new recipe_type) : (new recipe_type(arglist(recipe_args)))
@@ -52,12 +52,29 @@
 	var/on_border = FALSE
 	// todo: material constraints
 
+	//* Product Descriptors *//
+
+	/// Automatically create empty storage / cells / containers / whatever
+	/// * Usually this is on, because usually stacks are not meant to create the insides of a container.
+	var/product_auto_create_empty = TRUE
+
+	//* Internal *//
+
+	/// preloader callback, do not touch
+	var/datum/callback/preloader_callback
+
 /datum/stack_recipe/New()
 	if(ispath(result_type, /obj/item/stack))
 		result_is_stack = TRUE
 
 	var/atom/casted = result_type
 	on_border = !!(initial(casted.atom_flags) & ATOM_BORDER)
+
+	preloader_callback = CALLBACK(src, PROC_REF(make_preload_hook))
+
+/datum/stack_recipe/Destroy()
+	QDEL_NULL(preloader_callback)
+	return ..()
 
 /**
  * attepmt to craft
@@ -139,15 +156,22 @@
 			if(!--safety)
 				CRASH("safety hit")
 			var/making_amount = min(amount, max_amount)
-			var/obj/item/stack/creating = new result_type(where, making_amount)
+			var/obj/item/stack/creating = SSatoms.instance_atom_immediate_with_preloader(result_type, FALSE, preloader_callback, where, making_amount)
 			amount -= making_amount
 			created += creating
 	else
 		for(var/i in 1 to min(amount, 50))
-			var/atom/movable/creating = new result_type(where)
+			var/atom/movable/creating = SSatoms.instance_atom_immediate_with_preloader(result_type, FALSE, preloader_callback, where)
 			creating.setDir(use_dir)
 			created += creating
 	return TRUE
+
+/**
+ * preloads an atom we make
+ */
+/datum/stack_recipe/proc/make_preload_hook(atom/product)
+	SHOULD_NOT_SLEEP(TRUE)
+	product.preload_from_stack_recipe(src)
 
 /**
  * tgui stack recipe data

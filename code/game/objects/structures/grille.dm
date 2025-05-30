@@ -43,36 +43,14 @@
 		return TRUE
 	return ..()
 
-/obj/structure/grille/bullet_act(var/obj/projectile/Proj)
-	//Flimsy grilles aren't so great at stopping projectiles. However they can absorb some of the impact
-	var/damage = Proj.get_structure_damage()
-	var/passthrough = 0
-
-	if(!damage) return
-
-	//20% chance that the grille provides a bit more cover than usual. Support structure for example might take up 20% of the grille's area.
-	//If they click on the grille itself then we assume they are aiming at the grille itself and the extra cover behaviour is always used.
-	switch(Proj.damage_type)
-		if(BRUTE)
-			//bullets
-			if(Proj.original == src || prob(20))
-				Proj.damage *= clamp( Proj.damage/60, 0,  0.5)
-				if(prob(max((damage-10)/25, 0))*100)
-					passthrough = 1
-			else
-				Proj.damage *= clamp( Proj.damage/60, 0,  1)
-				passthrough = 1
-		if(BURN)
-			//beams and other projectiles are either blocked completely by grilles or stop half the damage.
-			if(!(Proj.original == src || prob(20)))
-				Proj.damage *= 0.5
-				passthrough = 1
-
-	if(passthrough)
-		. = PROJECTILE_CONTINUE
-		damage = between(0, (damage - Proj.damage)*(Proj.damage_type == BRUTE? 0.4 : 1), 10) //if the bullet passes through then the grille avoids most of the damage
-
-	inflict_atom_damage(damage, Proj.damage_tier, Proj.damage_flag, Proj.damage_mode, ATTACK_TYPE_PROJECTILE, Proj)
+/obj/structure/grille/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	if(proj.original_target == src)
+		impact_flags |= PROJECTILE_IMPACT_TRIVIAL
+	else
+		impact_flags |= PROJECTILE_IMPACT_TRIVIAL | PROJECTILE_IMPACT_PIERCE
+	. = ..()
+	if(impact_flags & PROJECTILE_IMPACT_PIERCE)
+		proj.dampen_on_pierce_experimental(src, 10, ARMOR_TIER_ABOVE)
 
 /obj/structure/grille/attackby(obj/item/W as obj, mob/user as mob)
 	if(!istype(W))
@@ -120,12 +98,12 @@
 				WD.update_appearance()
 	return ..()
 
-/obj/structure/grille/unarmed_act(mob/attacker, datum/unarmed_attack/style, target_zone, mult)
+/obj/structure/grille/unarmed_act(mob/attacker, datum/unarmed_attack/style, target_zone, datum/event_args/actor/clickchain/clickchain)
 	if(shock(attacker, 70))
 		return FALSE
 	return ..()
 
-/obj/structure/grille/melee_act(mob/user, obj/item/weapon, target_zone, mult)
+/obj/structure/grille/melee_act(mob/user, obj/item/weapon, target_zone, datum/event_args/actor/clickchain/clickchain)
 	if(shock(user, 70, weapon))
 		return FALSE
 	return ..()
@@ -174,7 +152,7 @@
 /obj/structure/grille/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(!destroyed)
 		if(exposed_temperature > T0C + 1500)
-			inflict_atom_damage(1, flag = ARMOR_FIRE)
+			inflict_atom_damage(1, damage_flag = ARMOR_FIRE)
 	..()
 
 /obj/structure/grille/proc/is_on_frame()

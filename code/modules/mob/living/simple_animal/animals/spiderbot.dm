@@ -64,7 +64,7 @@
 /mob/living/simple_mob/spiderbot/Initialize(mapload)
 	. = ..()
 	add_language(LANGUAGE_GALCOM)
-	default_language = SScharacters.resolve_language_name(LANGUAGE_GALCOM)
+	default_language = RSlanguages.legacy_resolve_language_name(LANGUAGE_GALCOM)
 	add_verb(src, /mob/living/proc/ventcrawl)
 	add_verb(src, /mob/living/proc/hide)
 
@@ -168,7 +168,7 @@
 
 		src.mind = M.brainmob.mind
 		src.mind.key = M.brainmob.key
-		src.ckey = M.brainmob.ckey
+		set_ckey(M.brainmob.ckey)
 		src.name = "spider-bot ([M.brainmob.name])"
 		src.languages = M.brainmob.languages
 

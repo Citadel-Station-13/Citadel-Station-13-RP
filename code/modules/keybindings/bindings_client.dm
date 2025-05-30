@@ -75,7 +75,7 @@
 		else
 			full_key = "[AltMod][CtrlMod][ShiftMod][_key]"
 	var/keycount = 0
-	for(var/kb_name in preferences.keybindings[full_key])
+	for(var/kb_name in preferences?.keybindings[full_key])
 		keycount++
 		var/datum/keybinding/kb = GLOB.keybindings_by_name[kb_name]
 		if(kb.can_use(src) && kb.down(src) && keycount >= MAX_COMMANDS_PER_KEY)
@@ -137,7 +137,7 @@
 
 	// We don't do full key for release, because for mod keys you
 	// can hold different keys and releasing any should be handled by the key binding specifically
-	for (var/kb_name in preferences.keybindings[_key])
+	for (var/kb_name in preferences?.keybindings[_key])
 		var/datum/keybinding/kb = GLOB.keybindings_by_name[kb_name]
 		if(kb.can_use(src) && kb.up(src))
 			break
@@ -168,3 +168,24 @@
 					movement_keys[key] = WEST
 				if("South")
 					movement_keys[key] = SOUTH
+
+/**
+ * Returns a list of human-readable (usually) keys.
+ */
+/client/proc/get_keys_for_keybind(datum/keybinding/binding_or_path) as /list
+	if(!preferences?.initialized)
+		return list()
+	var/bind_id = ispath(binding_or_path) ? binding_or_path::name : binding_or_path.name
+	. = list()
+	for(var/key in preferences.keybindings)
+		if(bind_id in preferences.keybindings[key])
+			. += key
+
+/**
+ * Returns a string that can be interpolated in tgui-chat to allow a quick click to rebind keys
+ *
+ * todo: for now, this just returns a string without the keybind UI open link.
+ */
+/client/proc/print_keys_for_keybind_with_prefs_link(datum/keybinding/binding_or_path, append) as text
+	var/list/keys = get_keys_for_keybind(binding_or_path)
+	return length(keys) ? "<b>([english_list(keys)])</b>[append]" : "<b>(Unbound)</b>[append]"

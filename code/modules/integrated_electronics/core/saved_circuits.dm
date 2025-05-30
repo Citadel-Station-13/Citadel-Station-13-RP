@@ -53,7 +53,7 @@
 /obj/item/integrated_circuit/proc/verify_save(list/component_params)
 	var/init_name = initial(name)
 	// Validate name
-	if(component_params["name"] && component_params["name"] != sanitizeName(component_params["name"]))
+	if(component_params["name"] && component_params["name"] != sanitizeSafe(component_params["name"], MAX_MESSAGE_LEN, 0, 0))
 		return "Bad component name at [init_name]."
 
 	// Validate input values
@@ -119,6 +119,11 @@
 	var/list/assembly_params = list()
 
 	// Save initial name used for differentiating assemblies
+	if(istype(src, /obj/item/electronic_assembly/clothing))
+		var/obj/item/electronic_assembly/clothing/clothingCheck = src
+		if(clothingCheck.clothing)
+			assembly_params["container"] = initial(clothingCheck.clothing.name)
+
 	assembly_params["type"] = initial(name)
 
 	// Save modified name
@@ -140,7 +145,7 @@
 // Returns null on success, error name on failure
 /obj/item/electronic_assembly/proc/verify_save(list/assembly_params)
 	// Validate name and color
-	if(assembly_params["name"] && assembly_params["name"] != sanitizeName(assembly_params["name"]))
+	if(assembly_params["name"] && assembly_params["name"] != sanitizeSafe(assembly_params["name"], MAX_MESSAGE_LEN, 0, 0))
 		return "Bad assembly name."
 	if(assembly_params["desc"] && !reject_bad_text(assembly_params["desc"]))
 		return "Bad assembly description."
@@ -239,11 +244,25 @@
 	if(!islist(assembly_params) || !length(assembly_params))
 		return "Invalid assembly data."	// No assembly, damaged assembly or empty assembly
 
+	// Validate any possible container.
+	// Minor note that the only other containers for assemblies are clothing at the moment; this type should be changed if that changes.
+	var/obj/item/clothing/possible_container
+	if(assembly_params["container"])
+		var/container_path = all_assemblies[assembly_params["container"]]
+		possible_container = cached_assemblies[container_path]
+		if(!possible_container)
+			return "Invalid container type."
+
 	// Validate type, get a temporary component
 	var/assembly_path = all_assemblies[assembly_params["type"]]
 	var/obj/item/electronic_assembly/assembly = cached_assemblies[assembly_path]
 	if(!assembly)
-		return "Invalid assembly type."
+		return "Invalid assembly type: \"[assembly_params["type"]]\"."
+
+	// Make sure the container is supposed to have that type of assembly.
+	if(possible_container)
+		if(possible_container.EA.type != assembly.type)
+			return "Invalid assembly in container."
 
 	// Check assembly save data for errors
 	error = assembly.verify_save(assembly_params)
@@ -276,7 +295,7 @@
 		var/component_path = all_components[component_params["type"]]
 		var/obj/item/integrated_circuit/component = cached_components[component_path]
 		if(!component)
-			return "Invalid component type."
+			return "Invalid component type: \"[component_params["type"]]\"."
 
 		// Add temporary component to assembly_components list, to be used later when verifying the wires
 		assembly_components.Add(component)
@@ -293,7 +312,9 @@
 
 		// Check if the assembly requires printer upgrades
 		if(!(component.spawn_flags & IC_SPAWN_DEFAULT))
-			blocks["requires_upgrades"] = TRUE
+			// We don't actually care about built in components.
+			if(component.removable)
+				blocks["requires_upgrades"] = TRUE
 
 		// Check if the assembly supports the circucit
 		if((component.action_flags & assembly.allowed_circuit_action_flags) != component.action_flags)
@@ -335,8 +356,16 @@
 
 	// Block 1.  Assembly.
 	var/list/assembly_params = blocks["assembly"]
-	var/obj/item/electronic_assembly/assembly_path = all_assemblies[assembly_params["type"]]
-	var/obj/item/electronic_assembly/assembly = new assembly_path(null)
+	var/obj/item/electronic_assembly/assembly
+	var/obj/item/clothing/clothing
+	if(assembly_params["container"])
+		var/obj/item/clothing/clothing_path = all_assemblies[assembly_params["container"]]
+		clothing = new clothing_path(null)
+		if(clothing.EA)
+			assembly = clothing.EA
+	else
+		var/obj/item/electronic_assembly/assembly_path = all_assemblies[assembly_params["type"]]
+		assembly = new assembly_path(null)
 	assembly.load(assembly_params)
 
 
@@ -344,9 +373,11 @@
 	// Block 2.  Components.
 	for(var/component_params in blocks["components"])
 		var/obj/item/integrated_circuit/component_path = all_components[component_params["type"]]
+		if(!initial(component_path.removable))
+			continue
 		var/obj/item/integrated_circuit/component = new component_path(assembly)
-		assembly.add_component(component)
 		component.load(component_params)
+		assembly.add_component(component)
 
 
 	// Block 3.  Wires.
@@ -357,5 +388,8 @@
 			var/datum/integrated_io/IO2 = assembly.get_pin_ref_list(wire[2])
 			IO.connect_pin(IO2)
 
-	assembly.forceMove(loc)
+	if(clothing)
+		clothing.forceMove(loc)
+	else
+		assembly.forceMove(loc)
 	return assembly

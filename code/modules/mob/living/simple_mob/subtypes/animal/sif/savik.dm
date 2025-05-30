@@ -21,7 +21,7 @@
 	name = "savik"
 	tt_desc = "S Pistris tellus" //landshark
 	catalogue_data = list(/datum/category_item/catalogue/fauna/savik)
-	faction = "savik"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
 
 	icon_state = "savik"
 	icon_living = "savik"
@@ -32,7 +32,7 @@
 	health = 125
 	randomized = TRUE
 
-	movement_cooldown = 0.5 SECONDS
+	movement_base_speed = 10 / 0.5 SECONDS
 
 	legacy_melee_damage_lower = 15
 	legacy_melee_damage_upper = 35

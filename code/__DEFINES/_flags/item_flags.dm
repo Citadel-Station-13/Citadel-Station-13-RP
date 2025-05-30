@@ -1,10 +1,11 @@
 //! Flags for the item_flags var on /obj/item
 /// is this item equipped into an inventory slot or hand of a mob? used for tooltips
+/// todo: is this still needed? `inv_slot_or_index` on `/obj/item` is a good check already
 #define ITEM_IN_INVENTORY		(1<<0)
 /// When dropped, it calls qdel on itself
 #define ITEM_DROPDEL			(1<<1)
 /// cannot be used to do normal melee hits - this INCLUDES user overrides of it!
-#define ITEM_NOBLUDGEON			(1<<2)
+#define ITEM_NO_BLUDGEON			(1<<2)
 /// for all things that are technically items but used for various different stuff
 #define ITEM_ABSTRACT			(1<<3)
 /// is this item in a storage datum?
@@ -13,7 +14,7 @@
 #define ITEM_THROW_UNCATCHABLE	(1<<5)
 /// we cannot be used a tool on click, no matter what
 #define ITEM_NO_TOOL_ATTACK		(1<<6)
-/// we're dual wielded - multi-wielding coming later tm
+/// we're wielded, usually via /datum/component/wielding
 #define ITEM_MULTIHAND_WIELDED	(1<<7)
 /// don't allow help intent attacking
 #define ITEM_CAREFUL_BLUDGEON	(1<<8)
@@ -32,7 +33,7 @@
 DEFINE_BITFIELD(item_flags, list(
 	BITFIELD(ITEM_IN_INVENTORY),
 	BITFIELD(ITEM_DROPDEL),
-	BITFIELD(ITEM_NOBLUDGEON),
+	BITFIELD(ITEM_NO_BLUDGEON),
 	BITFIELD(ITEM_ABSTRACT),
 	BITFIELD(ITEM_IN_STORAGE),
 	BITFIELD(ITEM_THROW_UNCATCHABLE),
@@ -75,6 +76,8 @@ DEFINE_BITFIELD(item_flags, list(
 /// Allows special survival food items to be eaten through it
 // todo: audit
 #define ALLOW_SURVIVALFOOD		(1<<11)
+/// stops unequipping
+#define NO_UNEQUIP				(1<<12)
 
 DEFINE_BITFIELD(clothing_flags, list(
 	BITFIELD(BLOCK_GAS_SMOKE_EFFECT),
@@ -87,6 +90,7 @@ DEFINE_BITFIELD(clothing_flags, list(
 	BITFIELD(CLOTHING_IGNORE_DELIMB),
 	BITFIELD(CLOTHING_IGNORE_BELTLINK),
 	BITFIELD(CLOTHING_ALLOW_SINGLE_LIMB),
+	BITFIELD(NO_UNEQUIP)
 ))
 
 //!# bitflags for the /obj/item/var/inv_hide_flags variable. These determine when a piece of clothing hides another, i.e. a helmet hiding glasses.
@@ -128,7 +132,14 @@ DEFINE_BITFIELD(inv_hide_flags, list(
 	BITFIELD(BLOCKHAIR),
 ))
 
-//!# bitflags for /obj/item/var/body_cover_flags
+//*               Body Cover Flags / Body Part Flags                     *//
+//*                                                                      *//
+//* These are used in many places, despite only being used commonly on   *//
+//*              /item's and /item/organ/external's.                     *//
+//*                                                                      *//
+//* These should be used any time you need to store coverage or parts    *//
+//*                  of a standard humanoid body.                        *//
+
 #define HEAD        (1<<0)
 #define FACE        (1<<1)
 #define EYES        (1<<2)

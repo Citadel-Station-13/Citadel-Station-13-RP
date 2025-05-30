@@ -1,3 +1,5 @@
+// todo: we need a new feedback system
+
 /datum/feedback_variable
 	var/variable
 	var/value
@@ -180,7 +182,7 @@ var/obj/machinery/blackbox_recorder/blackbox
 	var/round_id
 
 	var/datum/db_query/query = SSdbcore.RunQuery(
-		"SELECT MAX(round_id) AS round_id FROM [format_table_name("feedback")]",
+		"SELECT MAX(round_id) AS round_id FROM [DB_PREFIX_TABLE_NAME("feedback")]",
 		list()
 	)
 
@@ -193,7 +195,7 @@ var/obj/machinery/blackbox_recorder/blackbox
 
 	for(var/datum/feedback_variable/FV in feedback)
 		SSdbcore.RunQuery(
-			"INSERT INTO [format_table_name("feedback")] VALUES (null, Now(), :round_id, :variable, :value, :details)",
+			"INSERT INTO [DB_PREFIX_TABLE_NAME("feedback")] VALUES (null, Now(), :round_id, :variable, :value, :details)",
 			list(
 				"round_id" = "[round_id]",
 				"variable" = "[FV.get_variable()]",

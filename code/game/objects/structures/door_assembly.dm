@@ -324,7 +324,7 @@
 
 // Airlock frames are indestructable, so bullets hitting them would always be stopped.
 // To fix this, airlock assemblies will sometimes let bullets pass through, since generally the sprite shows them partially open.
-/obj/structure/door_assembly/bullet_act(var/obj/projectile/P)
-	if(prob(40)) // Chance for the frame to let the bullet keep going.
-		return PROJECTILE_CONTINUE
+/obj/structure/door_assembly/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	if(prob(40))
+		return PROJECTILE_IMPACT_PASSTHROUGH
 	return ..()

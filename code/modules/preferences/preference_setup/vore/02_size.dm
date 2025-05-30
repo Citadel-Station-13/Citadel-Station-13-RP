@@ -9,8 +9,6 @@
 	var/size_multiplier = RESIZE_NORMAL
 	// Body weight stuff.
 	var/weight_vr = 137		// bodyweight of character (pounds, because I'm not doing the math again -Spades)
-	var/weight_gain = 100	// Weight gain rate.
-	var/weight_loss = 50	// Weight loss rate.
 	var/fuzzy = 0			// Preference toggle for sharp/fuzzy icon. Default sharp.
 
 // Definition of the stuff for Sizing
@@ -21,21 +19,15 @@
 /datum/category_item/player_setup_item/vore/size/load_character(var/savefile/S)
 	S["size_multiplier"]	>> pref.size_multiplier
 	S["weight_vr"]			>> pref.weight_vr
-	S["weight_gain"]		>> pref.weight_gain
-	S["weight_loss"]		>> pref.weight_loss
 	S["fuzzy"]				>> pref.fuzzy
 
 /datum/category_item/player_setup_item/vore/size/save_character(var/savefile/S)
 	S["size_multiplier"]	<< pref.size_multiplier
 	S["weight_vr"]			<< pref.weight_vr
-	S["weight_gain"]		<< pref.weight_gain
-	S["weight_loss"]		<< pref.weight_loss
 	S["fuzzy"]				<< pref.fuzzy
 
 /datum/category_item/player_setup_item/vore/size/sanitize_character()
 	pref.weight_vr			= isnum(pref.weight_vr) ? round(clamp(pref.weight_vr, WEIGHT_MIN, WEIGHT_MAX)) : initial(pref.weight_vr)
-	pref.weight_gain		= sanitize_integer(pref.weight_gain, WEIGHT_CHANGE_MIN, WEIGHT_CHANGE_MAX, initial(pref.weight_gain))
-	pref.weight_loss		= sanitize_integer(pref.weight_loss, WEIGHT_CHANGE_MIN, WEIGHT_CHANGE_MAX, initial(pref.weight_loss))
 	pref.fuzzy				= sanitize_integer(pref.fuzzy, 0, 1, initial(pref.fuzzy))
 	if(pref.size_multiplier == null || pref.size_multiplier < RESIZE_TINY || pref.size_multiplier > RESIZE_HUGE)
 		pref.size_multiplier = initial(pref.size_multiplier)
@@ -46,8 +38,6 @@
 		return TRUE
 	var/mob/living/carbon/human/character = M
 	character.weight			= pref.weight_vr
-	character.weight_gain		= pref.weight_gain
-	character.weight_loss		= pref.weight_loss
 	character.fuzzy				= pref.fuzzy
 	character.resize(pref.size_multiplier, animate = FALSE)
 	return TRUE
@@ -58,8 +48,6 @@
 	. += "<b>Scaled Appearance:</b> <a [pref.fuzzy ? "" : ""] href='?src=\ref[src];toggle_fuzzy=1'><b>[pref.fuzzy ? "Fuzzy" : "Sharp"]</b></a><br>"
 	. += "<br>"
 	. += "<b>Relative Weight:</b>  <a href='?src=\ref[src];weight=1'>[pref.weight_vr]</a><br>"
-	. += "<b>Weight Gain Rate:</b> <a href='?src=\ref[src];weight_gain=1'>[pref.weight_gain]</a><br>"
-	. += "<b>Weight Loss Rate:</b> <a href='?src=\ref[src];weight_loss=1'>[pref.weight_loss]</a><br>"
 
 /datum/category_item/player_setup_item/vore/size/OnTopic(var/href, var/list/href_list, var/mob/user)
 	if(href_list["size_multiplier"])
@@ -89,24 +77,6 @@
 			if(unit_of_measurement == "Kilograms")
 				new_weight = round(2.20462*text2num(new_weight),4)
 			pref.weight_vr = sanitize_integer(new_weight, WEIGHT_MIN, WEIGHT_MAX, pref.weight_vr)
-			return PREFERENCES_REFRESH
-
-	else if(href_list["weight_gain"])
-		var/weight_gain_rate = input(user, "Choose your character's rate of weight gain between 100% \
-			(full realism body fat gain) and 0% (no body fat gain).\n\
-			(If you want to disable weight gain, set this to 0.01 to round it to 0%.)\
-			([WEIGHT_CHANGE_MIN]-[WEIGHT_CHANGE_MAX])", "Character Preference") as num|null
-		if(weight_gain_rate)
-			pref.weight_gain = round(text2num(weight_gain_rate),1)
-			return PREFERENCES_REFRESH
-
-	else if(href_list["weight_loss"])
-		var/weight_loss_rate = input(user, "Choose your character's rate of weight loss between 100% \
-			(full realism body fat loss) and 0% (no body fat loss).\n\
-			(If you want to disable weight loss, set this to 0.01 round it to 0%.)\
-			([WEIGHT_CHANGE_MIN]-[WEIGHT_CHANGE_MAX])", "Character Preference") as num|null
-		if(weight_loss_rate)
-			pref.weight_loss = round(text2num(weight_loss_rate),1)
 			return PREFERENCES_REFRESH
 
 	return ..();

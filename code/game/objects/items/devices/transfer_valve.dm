@@ -8,6 +8,7 @@
 	//lefthand_file = 'icons/mob/inhands/weapons/bombs_lefthand.dmi'
 	//righthand_file = 'icons/mob/inhands/weapons/bombs_righthand.dmi'
 	w_class = WEIGHT_CLASS_BULKY
+	worth_intrinsic = 250
 
 	var/obj/item/tank/tank_one
 	var/obj/item/tank/tank_two
@@ -70,7 +71,7 @@
 		SStgui.update_uis(src) //Update all UIs attached to src
 	return ..()
 
-/obj/item/transfer_valve/attack_self(mob/user)
+/obj/item/transfer_valve/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

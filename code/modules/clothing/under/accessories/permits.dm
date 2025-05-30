@@ -9,7 +9,7 @@
 	slot = ACCESSORY_SLOT_MEDAL
 	var/owner = 0	//To prevent people from just renaming the thing if they steal it
 
-/obj/item/clothing/accessory/permit/attack_self(mob/user)
+/obj/item/clothing/accessory/permit/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -34,6 +34,12 @@
 	name = "weapon permit"
 	desc = "A card indicating that the owner is allowed to carry a weapon."
 	icon_state = "permit-security"
+
+/obj/item/clothing/accessory/permit/gun/nka
+	name = "New Kingdom Hunter's Permit"
+	desc = "A card issued by the New Kingdom of Adhomai indicating that the owner is allowed to carry a \
+	firearm for the purpose of hunting. This license could be revoked if the hunter is caught doing illegal activities."
+	icon_state = "permit-nka"
 
 /obj/item/clothing/accessory/permit/gun/bar
 	name = "bar shotgun permit"

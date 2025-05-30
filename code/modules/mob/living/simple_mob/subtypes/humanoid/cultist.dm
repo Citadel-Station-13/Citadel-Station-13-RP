@@ -38,7 +38,7 @@
 	tt_desc = "NULL"
 	icon = 'icons/mob/cult.dmi'
 	icon_state = "initiate"
-	faction = "cult"
+	iff_factions = MOB_IFF_FACTION_SANGUINE_CULT
 	mob_class = MOB_CLASS_DEMONIC
 
 /datum/category_item/catalogue/fauna/cultist/human
@@ -71,7 +71,7 @@
 	attacktext = list("slashed", "stabbed")
 	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 30, energy = 80, bomb = 30, bio = 100, rad = 100)	// Same armor are cult armor, may nerf since DAMN THAT IS GOOD ARMOR
 	attack_sound = 'sound/weapons/bladeslice.ogg'
-	movement_cooldown = 3
+	movement_base_speed = 10 / 3
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
@@ -222,8 +222,6 @@
 	health = 75
 	catalogue_data = list(/datum/category_item/catalogue/fauna/cultist/tesh)
 
-	faction = "cult"
-
 	status_flags = 0
 
 	response_help = "pokes"
@@ -239,7 +237,7 @@
 	attacktext = list("slashed", "stabbed")
 	armor_legacy_mob = list(melee = 45, bullet = 40, laser = 30, energy = 80, bomb = 20, bio = 100, rad = 100)	// Reduced Resistance to Approximate increased Tesh damage.
 	attack_sound = 'sound/weapons/bladeslice.ogg'
-	movement_cooldown = 2
+	movement_base_speed = 10 / 2
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
@@ -273,8 +271,6 @@
 	health = 200
 	catalogue_data = list(/datum/category_item/catalogue/fauna/cultist/lizard)
 
-	faction = "cult"
-
 	status_flags = 0
 
 	response_help = "pokes"
@@ -289,7 +285,7 @@
 	attacktext = list("slashed", "stabbed")
 	armor_legacy_mob = list(melee = 70, bullet = 60, laser = 30, energy = 80, bomb = 35, bio = 100, rad = 100)	// Better Armor to match lizard brute resist
 	attack_sound = 'sound/weapons/rapidslice.ogg'
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 	base_attack_cooldown = 7.5 //Two knives mean double stab.
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
@@ -324,8 +320,6 @@
 	health = 150
 	catalogue_data = list(/datum/category_item/catalogue/fauna/cultist/caster)
 
-	faction = "cult"
-
 	status_flags = 0
 
 	response_help = "pokes"
@@ -340,7 +334,7 @@
 	attacktext = list("slashed", "stabbed")
 	armor_legacy_mob = list(melee = 50, bullet = 30, laser = 50, energy = 80, bomb = 25, bio = 100, rad = 100)	//Armor Rebalanced for Cult Robes.
 	attack_sound = 'sound/weapons/rapidslice.ogg'
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 	projectiletype = /obj/projectile/beam/inversion
 	projectilesound = 'sound/weapons/spiderlunge.ogg'
 
@@ -375,8 +369,6 @@
 	health = 150
 	catalogue_data = list(/datum/category_item/catalogue/fauna/cultist/initiate)
 
-	faction = "cult"
-
 	status_flags = 0
 
 	response_help = "pokes"
@@ -391,7 +383,7 @@
 	attacktext = list("slashed", "stabbed")
 	armor_legacy_mob = list(melee = 50, bullet = 30, laser = 50, energy = 80, bomb = 25, bio = 100, rad = 100)	//Armor Rebalanced for Cult Robes.
 	attack_sound = 'sound/weapons/rapidslice.ogg'
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
@@ -423,8 +415,6 @@
 	health = 75
 	catalogue_data = list(/datum/category_item/catalogue/fauna/cultist/castertesh)
 
-	faction = "cult"
-
 	status_flags = 0
 
 	response_help = "pokes"
@@ -439,7 +429,7 @@
 	attacktext = list("slashed", "stabbed")
 	armor_legacy_mob = list(melee = 35, bullet = 20, laser = 35, energy = 60, bomb = 20, bio = 100, rad = 100)	//Rebalanced for Robes and Tesh damage
 	attack_sound = 'sound/weapons/rapidslice.ogg'
-	movement_cooldown = 2
+	movement_base_speed = 10 / 2
 	base_attack_cooldown = 7.5
 	projectiletype = /obj/projectile/beam/inversion
 	projectilesound = 'sound/weapons/spiderlunge.ogg'
@@ -472,7 +462,6 @@
 	desc = "A heavily armed cultist with a mirror shield that hurts to look at."
 	icon_state = "cult_elite"
 	icon_living = "cult_elite"
-	faction = "cult"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/cultist/elite)
 
 	status_flags = 0
@@ -489,7 +478,7 @@
 	attacktext = list("slashed", "stabbed")
 	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 30, energy = 80, bomb = 30, bio = 100, rad = 100)	// Same armor are cult armor, may nerf since DAMN THAT IS GOOD ARMOR
 	attack_sound = 'sound/weapons/bladeslice.ogg'
-	movement_cooldown = 3
+	movement_base_speed = 10 / 3
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
@@ -508,17 +497,15 @@
 		to_chat(user, "<span class='warning'>This weapon is ineffective, it does no damage.</span>")
 		visible_message("<span class='warning'>\The [user] gently taps [src] with \the [O].</span>")
 
-/mob/living/simple_mob/humanoid/cultist/elite/bullet_act(var/obj/projectile/Proj)
-	if(!Proj)	return
+/mob/living/simple_mob/humanoid/cultist/elite/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	if(prob(50))
-		visible_message("<font color='red'><B>[Proj] disappears into the mirror world as it hits the shield.</B></font>")
-		if(Proj.firer)
+		visible_message("<font color='red'><B>[proj] disappears into the mirror world as it hits the shield.</B></font>")
+		if(proj.firer)
 			if(istype(src.ai_holder, /datum/ai_holder/polaris))
 				var/datum/ai_holder/polaris/ai_holder = src.ai_holder
-				ai_holder.react_to_attack_polaris(Proj.firer)
-		return
-	else
-		..()
+				ai_holder.react_to_attack_polaris(proj.firer)
+		return PROJECTILE_IMPACT_DELETE
+	return ..()
 
 /mob/living/simple_mob/humanoid/cultist/elite/death()
 	new /obj/effect/decal/remains/human (src.loc)
@@ -552,8 +539,6 @@
 	health = 300
 	catalogue_data = list(/datum/category_item/catalogue/fauna/cultist/magus)
 
-	faction = "cult"
-
 	status_flags = 0
 
 	response_help = "pokes"
@@ -568,7 +553,7 @@
 	attacktext = list("slashed", "stabbed")
 	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 50, energy = 80, bomb = 30, bio = 100, rad = 100)	//Super Armor since Boss Mob
 	attack_sound = 'sound/weapons/bladeslice.ogg'
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 
 	projectiletype = /obj/projectile/beam/inversion
 	base_attack_cooldown = 5
@@ -625,8 +610,6 @@
 	health = 300
 	catalogue_data = list(/datum/category_item/catalogue/fauna/cultist/hunter)
 
-	faction = "cult"
-
 	status_flags = 0
 
 	response_help = "pokes"
@@ -641,13 +624,13 @@
 	attacktext = list("slashed", "stabbed")
 	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 50, energy = 80, bomb = 30, bio = 100, rad = 100)	//Super Armor since Boss Mob
 	attack_sound = 'sound/weapons/bladeslice.ogg'
-	movement_cooldown = 0 //This is so he can't be kited well
+	movement_base_speed = 6.66 //This is so he can't be kited well
 
 	projectiletype = /obj/projectile/bullet/pellet/shotgun
 
 	base_attack_cooldown = 7.5
 
-	loot_list = list(/obj/item/material/butterfly/saw = 100, /obj/item/gun/ballistic/shotgun/doublebarrel/sawn/alt = 100)
+	loot_list = list(/obj/item/material/butterfly/saw = 100, /obj/item/gun/projectile/ballistic/shotgun/doublebarrel/sawn/alt = 100)
 
 	needs_reload = TRUE
 	reload_max = 2

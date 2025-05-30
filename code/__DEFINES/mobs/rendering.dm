@@ -2,7 +2,7 @@
 //* Copyright (c) 2024 silicons                             *//
 
 //* human overlay enums for standing_overlays
-
+#define HUMAN_OVERLAY_BODY "body"
 #define HUMAN_OVERLAY_SKIN "skin"
 #define HUMAN_OVERLAY_MUTATIONS "mutations"
 #define HUMAN_OVERLAY_MODIFIERS "mutations"
@@ -13,8 +13,7 @@
 #define HUMAN_OVERLAY_UNDERWEAR "underwear"
 #define HUMAN_OVERLAY_FIRE "fire"
 #define HUMAN_OVERLAY_LIQUID "liquid"
-#define HUMAN_OVERLAY_RHAND "rhand"
-#define HUMAN_OVERLAY_LHAND "lhand"
+#define HUMAN_OVERLAY_HAND(INDEX) "hand-[INDEX]"
 
 // todo: sprite accessories list system
 
@@ -52,7 +51,8 @@
 #define HUMAN_LAYER_SPRITEACC_HAIR_FRONT (FLOAT_LAYER - 477)
 #define HUMAN_LAYER_SPRITEACC_FACEHAIR_FRONT (FLOAT_LAYER - 478)
 #define HUMAN_LAYER_SPRITEACC_WINGS_FRONT (FLOAT_LAYER - 479)
-#define HUMAN_LAYER_SPRITEACC_TAIL_FRONT (FLOAT_LAYER - 480)
+#define HUMAN_LAYER_SLOT_BACKPACK_ALT (FLOAT_LAYER - 480)
+#define HUMAN_LAYER_SPRITEACC_TAIL_FRONT (FLOAT_LAYER - 481)
 
 #define HUMAN_LAYER_SLOT_BACKPACK (FLOAT_LAYER - 500)
 #define HUMAN_LAYER_SLOT_SUITSTORE (FLOAT_LAYER - 525)
@@ -86,9 +86,15 @@
 #define HUMAN_LAYER_SPRITEACC_TAIL_BEHIND (FLOAT_LAYER - 955)
 
 //! legacy - genetics
-#define HUMAN_LAYER_MUTATIONS (FLOAT_LAYER - 1000)
+#define HUMAN_LAYER_MUTATIONS (FLOAT_LAYER - 998)
+
+#define HUMAN_LAYER_BODY (FLOAT_LAYER - 999)
 
 //* Helpers *//
 
 /// end proc immediately if we're being deleted or transformed into something
 #define HUMAN_RENDER_ABORT_IF_DELETING if(QDELING(src) || transforming) return
+
+// carbon appearance update enums
+#define CARBON_APPEARANCE_UPDATE_CLOTHING "clothing"
+#define CARBON_APPEARANCE_UPDATE_OTHER "other"

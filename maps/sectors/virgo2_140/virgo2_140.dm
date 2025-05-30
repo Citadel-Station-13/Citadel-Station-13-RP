@@ -15,14 +15,14 @@
 	id = "Virgo2Aerostat140"
 	name = "Sector - Virgo 2 Aerostat"
 	display_name = "Remmi Aerostat"
-	absolute_path = "maps/sectors/virgo2_140/levels/virgo2_140_aerostat.dmm"
-	base_turf = /turf/simulated/floor/sky/virgo2_sky
+	path = "maps/sectors/virgo2_140/levels/virgo2_140_aerostat.dmm"
+	base_turf = /turf/simulated/sky/virgo2_sky
 
 /datum/map_level/sector/virgo2_140/ground
 	id = "Virgo2Ground140"
 	name = "Sector - Virgo 2 Ground"
 	display_name = "Remmi Ground Landing"
-	absolute_path = "maps/sectors/virgo2_140/levels/virgo2_140_surface.dmm"
+	path = "maps/sectors/virgo2_140/levels/virgo2_140_surface.dmm"
 	base_turf = /turf/simulated/floor/outdoors/rocks
 
 /datum/map_level/sector/virgo2_140/ground/on_loaded_immediate(z_index, list/datum/callback/additional_generation)

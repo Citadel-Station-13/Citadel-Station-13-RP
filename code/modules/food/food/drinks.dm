@@ -17,15 +17,15 @@
 	var/custom_open_sound
 
 /obj/item/reagent_containers/food/drinks/on_reagent_change()
-	if (reagents.reagent_list.len > 0)
-		var/datum/reagent/R = reagents.get_master_reagent()
+	if (reagents.total_volume)
+		var/datum/reagent/R = reagents.get_majority_reagent_datum()
 		if(R.price_tag)
 			price_tag = R.price_tag
 		else
 			price_tag = null
 	return
 
-/obj/item/reagent_containers/food/drinks/attack_self(mob/user)
+/obj/item/reagent_containers/food/drinks/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -40,7 +40,7 @@
 	to_chat(user, "<span class='notice'>You open [src] with an audible pop!</span>")
 	atom_flags |= OPENCONTAINER
 
-/obj/item/reagent_containers/food/drinks/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/reagent_containers/food/drinks/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
@@ -94,7 +94,7 @@
 	else
 		. += "<span class='notice'>\The [src] is full!</span>"
 	if(reagents)
-		var/datum/reagent/ethanol/R = locate() in reagents.reagent_list
+		var/datum/reagent/ethanol/R = locate() in reagents.get_reagent_datums()
 		if(istype(R))
 			. += "<span class='notice'>It contains alcohol.</span>"
 

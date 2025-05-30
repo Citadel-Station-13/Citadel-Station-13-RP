@@ -80,7 +80,7 @@ GLOBAL_VAR_INIT(roundstart_hour, pick(2,7,12,17))
  * Returns 1 if it is the selected month and day.
  */
 /proc/isDay(var/month, var/day)
-	if(isnum(month) && isnum(day))\
+	if(isnum(month) && isnum(day))
 		/// Get the current month.
 		var/MM = text2num(time2text(world.timeofday, "MM"))
 		/// Get the current day.
@@ -143,27 +143,27 @@ GLOBAL_VAR_INIT(roundstart_hour, pick(2,7,12,17))
  * Returns a text value of that number in hours, minutes, or seconds.
  */
 /proc/DisplayTimeText(time_value, round_seconds_to = 0.1)
-	var/second = round(time_value * 0.1, round_seconds_to)
+	var/second = FLOOR(time_value * 0.1, round_seconds_to)
 	if(!second)
 		return "right now"
 	if(second < 60)
 		return "[second] second[(second != 1)? "s":""]"
 	var/minute = FLOOR(second / 60, 1)
-	second = MODULUS(second, 60)
+	second = MODULUS_F(second, 60)
 	var/secondT
 	if(second)
 		secondT = " and [second] second[(second != 1)? "s":""]"
 	if(minute < 60)
 		return "[minute] minute[(minute != 1)? "s":""][secondT]"
 	var/hour = FLOOR(minute / 60, 1)
-	minute = MODULUS(minute, 60)
+	minute = MODULUS_F(minute, 60)
 	var/minuteT
 	if(minute)
 		minuteT = " and [minute] minute[(minute != 1)? "s":""]"
 	if(hour < 24)
 		return "[hour] hour[(hour != 1)? "s":""][minuteT][secondT]"
 	var/day = FLOOR(hour / 24, 1)
-	hour = MODULUS(hour, 24)
+	hour = MODULUS_F(hour, 24)
 	var/hourT
 	if(hour)
 		hourT = " and [hour] hour[(hour != 1)? "s":""]"

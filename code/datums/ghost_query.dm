@@ -158,3 +158,6 @@
 	question = "A cursed blade has been discovered by a curious explorer. \
 	Would you like to play as the soul imprisoned within?"
 	cutoff_number = 1
+
+/datum/ghost_query/admin
+	wait_time = 10 SECONDS

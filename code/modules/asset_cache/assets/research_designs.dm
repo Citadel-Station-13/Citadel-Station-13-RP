@@ -3,8 +3,8 @@
 	name = "design"
 
 /datum/asset_pack/spritesheet/research_designs/generate()
-	for (var/path in subtypesof(/datum/design))
-		var/datum/design/D = path
+	for (var/path in subtypesof(/datum/prototype/design))
+		var/datum/prototype/design/D = path
 
 		var/icon_file
 		var/icon_state

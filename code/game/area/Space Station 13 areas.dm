@@ -997,9 +997,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Tool Storage Maintenance"
 	icon_state = "maint_tool_storage"
 
-/area/maintenance/triumph_midpoint
-	name = "\improper Triumph Midpoint Maint"
-
 /area/maintenance/locker_room
 	name = "\improper Locker Room Maintenance"
 
@@ -1490,6 +1487,14 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Dormitory Room 11"
 	icon_state = "crew_quarters"
 
+/area/crew_quarters/sleep/Dorm_12
+	name = "\improper Dormitory Room 12"
+	icon_state = "crew_quarters"
+
+/area/crew_quarters/sleep/Dorm_13
+	name = "\improper Dormitory Room 13"
+	icon_state = "crew_quarters"
+
 /area/crew_quarters/showers
 	name = "\improper Unisex Showers"
 	icon_state = "recreation_area_restroom"
@@ -1712,6 +1717,11 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/crew_quarters/bar
 	name = "\improper Bar"
+	icon_state = "bar"
+	sound_env = LARGE_SOFTFLOOR
+
+/area/crew_quarters/bar/lounge
+	name = "\improper Bar Lounge"
 	icon_state = "bar"
 	sound_env = LARGE_SOFTFLOOR
 
@@ -3349,6 +3359,8 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	var/arrival_sound = 'sound/machines/ding.ogg'
 	var/delay_time = 2 SECONDS
 
+// deck names for Triumph
+
 /area/turbolift/t_ship/level1
 	name = "Deck 1"
 	lift_floor_label = "Deck 1"
@@ -3373,6 +3385,31 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	lift_floor_name = "Exploration, Arrivals & Departures, Security, Command, Chapel, Sauna, Docking Arm, Library, Garden, Tool Storage"
 	lift_announce_str = "Arriving at Deck 4."
 
+// Deck names for Endeavour
+
+/area/turbolift/e_ship/level4
+	name = "Deck 1"
+	lift_floor_label = "Deck 1"
+	lift_floor_name = "Exploration, Arrivals & Departures, Command, Chapel, Cafe, Sauna, Docking Bay, Library, Tool Storage"
+	lift_announce_str = "Arriving at Deck 1."
+
+/area/turbolift/e_ship/level3
+	name = "Deck 2"
+	lift_floor_label = "Deck 2"
+	lift_floor_name = "Medical, Science, Holo Deck, Teleporter"
+	lift_announce_str = "Arriving at Deck 2."
+
+/area/turbolift/e_ship/level2
+	name = "Deck 3"
+	lift_floor_label = "Deck 3"
+	lift_floor_name = "Dorms, Cargo, Security, Head of Personnel Office, Mining, Trash Pit, Garden, Solars, Shops, Pool"
+	lift_announce_str = "Arriving at Deck 3."
+
+/area/turbolift/e_ship/level1
+	name = "Deck 4"
+	lift_floor_label = "Deck 4"
+	lift_floor_name = "Engineering, Reactor, Telecomms, Bar, Atmospherics, Main Battery, Small Craft Fabrication, Secondary Bridge"
+	lift_announce_str = "Arriving at Deck 4."
 
 //Debug/Code areas
 

@@ -144,6 +144,7 @@
 
 /obj/machinery/media/jukebox/update_icon()
 	cut_overlays()
+	. = ..()
 	if(machine_stat & (NOPOWER|BROKEN) || !anchored)
 		if(machine_stat & BROKEN)
 			icon_state = "[state_base]-broken"
@@ -273,7 +274,7 @@
 /obj/machinery/media/jukebox/attack_ai(mob/user)
 	return src.attack_hand(user)
 
-/obj/machinery/media/jukebox/attack_hand(mob/user, list/params)
+/obj/machinery/media/jukebox/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	interact(user)
 
 /obj/machinery/media/jukebox/proc/explode()

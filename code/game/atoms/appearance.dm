@@ -1,4 +1,9 @@
-// todo: rethink everything about how to do signals for these.
+// todo: rethink everything about how to do signals for these, and general proc hierarchy
+// * update icon overrides are getting silly
+// * update flag is also kinda weird; most of the time you can't predict how things will react to not updating states / overlays together
+// * should name/desc really be their own proc??
+// * signals being able to block these things are also silly in most contexts, as a signal listener shouldn't have to know about
+//   the implementation details of the sender?
 
 /**
  * Updates the appearence of the icon

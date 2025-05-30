@@ -144,7 +144,7 @@
 
 /obj/item/reagent_containers/food/snacks/grown/Crossed(var/mob/living/M)
 	. = ..()
-	if(M.is_incorporeal())
+	if(M.is_incorporeal() || M.is_avoiding_ground())
 		return
 	if(seed && seed.get_trait(TRAIT_JUICY) == 2)
 		if(istype(M))
@@ -258,7 +258,7 @@
 				to_chat(user, "<span class='danger'>\The [src] has fallen to bits.</span>")
 				qdel(src)
 
-/obj/item/reagent_containers/food/snacks/grown/attack_self(mob/user)
+/obj/item/reagent_containers/food/snacks/grown/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -316,7 +316,7 @@
 		return
 	if(seed.get_trait(TRAIT_STINGS))
 		var/mob/living/carbon/human/H = user
-		if(istype(H) && H.gloves)
+		if(H.inventory.get_slot_single(/datum/inventory_slot/inventory/gloves::id))
 			return
 		if(!reagents || reagents.total_volume <= 0)
 			return

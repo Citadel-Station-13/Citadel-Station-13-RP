@@ -9,7 +9,7 @@
 "ag" = (
 /obj/structure/bookcase/manuals/xenoarchaeology,
 /obj/structure/bookcase/manuals/research_and_development,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "al" = (
 /obj/effect/floor_decal/carpet{
@@ -49,7 +49,7 @@
 /obj/structure/bed/double,
 /obj/item/bedsheet/orangedouble,
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "aG" = (
 /obj/effect/debris/cleanable/dirt,
@@ -71,12 +71,12 @@
 "bt" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/light,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "bF" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/random/trash,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "bL" = (
 /obj/structure/railing{
@@ -129,9 +129,9 @@
 "cx" = (
 /obj/structure/table/rack,
 /obj/effect/debris/cleanable/dirt,
-/obj/item/grenade/concussion/frag,
-/obj/item/grenade/concussion/frag,
-/obj/item/grenade/concussion/frag,
+/obj/item/grenade/simple/concussion/frag,
+/obj/item/grenade/simple/concussion/frag,
+/obj/item/grenade/simple/concussion/frag,
 /turf/simulated/floor/tiled/steel,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "cA" = (
@@ -169,7 +169,7 @@
 "du" = (
 /obj/structure/undies_wardrobe,
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "dF" = (
 /obj/machinery/artifact_scanpad,
@@ -179,7 +179,7 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "dH" = (
 /obj/random/trash_pile,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "dW" = (
 /obj/effect/floor_decal/techfloor/orange/corner{
@@ -240,7 +240,7 @@
 /obj/machinery/light/flicker{
 	dir = 1
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "fm" = (
 /obj/effect/floor_decal/rust,
@@ -280,7 +280,7 @@
 /obj/machinery/light/flicker{
 	dir = 1
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "fT" = (
 /obj/item/reagent_containers/glass/beaker,
@@ -288,7 +288,7 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "gp" = (
 /obj/structure/simple_door/wood,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "gu" = (
 /obj/structure/table/steel_reinforced,
@@ -329,7 +329,7 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "hr" = (
 /obj/random/trash,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "hw" = (
 /obj/effect/debris/cleanable/dirt,
@@ -412,7 +412,7 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "jw" = (
 /obj/structure/flora/pottedplant/large,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "jC" = (
 /obj/effect/debris/cleanable/dirt,
@@ -623,7 +623,7 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "of" = (
 /obj/structure/bookcase/manuals/xenoarchaeology,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "og" = (
 /obj/structure/flora/tree/jungle_small,
@@ -660,7 +660,7 @@
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lamp/green,
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "oA" = (
 /obj/effect/floor_decal/transit/orange{
@@ -693,7 +693,7 @@
 "oV" = (
 /obj/structure/bed/double,
 /obj/item/bedsheet/orangedouble,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "pv" = (
 /obj/structure/table/bench/padded,
@@ -734,7 +734,7 @@
 /obj/effect/debris/cleanable/dirt,
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/light,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "qf" = (
 /obj/effect/floor_decal/carpet{
@@ -769,7 +769,7 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "rl" = (
 /obj/effect/debris/cleanable/dirt,
-/obj/item/gun/energy/taser/xeno,
+/obj/item/gun/projectile/energy/taser/xeno,
 /turf/simulated/floor/tiled/white,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "rm" = (
@@ -862,7 +862,7 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "tC" = (
 /obj/structure/table/rack,
-/obj/item/gun/energy/sniperrifle,
+/obj/item/gun/projectile/energy/sniperrifle,
 /turf/simulated/floor/tiled/steel,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "tE" = (
@@ -886,11 +886,11 @@
 "up" = (
 /obj/structure/flora/pottedplant/large,
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "uI" = (
 /obj/structure/table/rack,
-/obj/item/gun/ballistic/shotgun/doublebarrel,
+/obj/item/gun/projectile/ballistic/shotgun/doublebarrel,
 /turf/simulated/floor/tiled/steel,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "uP" = (
@@ -977,10 +977,10 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "wo" = (
 /obj/structure/table/rack,
-/obj/item/grenade/spawnergrenade/manhacks/mercenary,
-/obj/item/grenade/spawnergrenade/manhacks/mercenary,
-/obj/item/grenade/spawnergrenade/manhacks/mercenary,
-/obj/item/grenade/spawnergrenade/manhacks/mercenary,
+/obj/item/grenade/simple/spawner/manhacks/mercenary,
+/obj/item/grenade/simple/spawner/manhacks/mercenary,
+/obj/item/grenade/simple/spawner/manhacks/mercenary,
+/obj/item/grenade/simple/spawner/manhacks/mercenary,
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
 	},
@@ -1064,7 +1064,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "yv" = (
 /obj/structure/railing{
@@ -1078,7 +1078,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "yO" = (
 /obj/structure/table/glass,
@@ -1222,7 +1222,7 @@
 "Bx" = (
 /obj/effect/debris/cleanable/dirt,
 /mob/living/simple_mob/humanoid/merc,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "BA" = (
 /obj/effect/floor_decal/carpet{
@@ -1424,7 +1424,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Fs" = (
 /obj/structure/flora/pottedplant/large,
@@ -1541,7 +1541,7 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "IO" = (
 /obj/structure/table/rack,
-/obj/item/gun/energy/ionrifle/pistol,
+/obj/item/gun/projectile/energy/ionrifle/pistol,
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
 	},
@@ -1556,7 +1556,7 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "IY" = (
 /obj/structure/undies_wardrobe,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Jq" = (
 /obj/structure/closet/secure_closet/security,
@@ -1567,14 +1567,14 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Jv" = (
 /obj/structure/bookcase/manuals/medical,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Jy" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "JJ" = (
 /obj/machinery/door/airlock/glass,
@@ -1617,7 +1617,7 @@
 /turf/simulated/floor/tiled/white,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "KG" = (
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/xray,
+/obj/item/vehicle_module/weapon/energy/laser/xray,
 /turf/simulated/floor/tiled/steel,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "KM" = (
@@ -1642,7 +1642,7 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Ld" = (
 /obj/structure/coatrack,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Lm" = (
 /obj/machinery/door/airlock/glass/research,
@@ -1654,7 +1654,7 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Lx" = (
 /obj/machinery/light,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Ly" = (
 /obj/effect/debris/cleanable/dirt,
@@ -1704,7 +1704,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Mg" = (
-/obj/item/mecha_parts/mecha_equipment/repair_droid,
+/obj/item/vehicle_module/repair_droid,
 /obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled/dark,
 /area/class_h/POIs/AuxiliaryResearchFacility)
@@ -1795,7 +1795,7 @@
 /area/template_noop)
 "Oo" = (
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Ow" = (
 /obj/structure/grille,
@@ -1813,7 +1813,7 @@
 "OG" = (
 /obj/effect/debris/cleanable/dirt,
 /mob/living/simple_mob/humanoid/merc/ranged/smg,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Pb" = (
 /obj/effect/debris/cleanable/dirt,
@@ -1927,7 +1927,7 @@
 	dir = 4
 	},
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Sg" = (
 /turf/simulated/floor/water/deep/indoors,
@@ -2027,7 +2027,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Vp" = (
 /obj/effect/debris/cleanable/dirt,
@@ -2058,7 +2058,7 @@
 "VH" = (
 /obj/random/trash,
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "VK" = (
 /mob/living/simple_mob/humanoid/merc/ranged/poi,
@@ -2072,7 +2072,7 @@
 "VM" = (
 /obj/structure/bookcase,
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "VO" = (
 /obj/effect/debris/cleanable/dirt,
@@ -2088,7 +2088,7 @@
 "Wk" = (
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lamp/green,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Wl" = (
 /obj/structure/railing{
@@ -2226,7 +2226,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "YC" = (
 /obj/effect/floor_decal/industrial/danger,
@@ -2251,15 +2251,15 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 4
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "YS" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "YY" = (
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Zc" = (
 /obj/structure/table/bench/padded,
@@ -2302,7 +2302,7 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "ZP" = (
 /obj/structure/bookcase,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "ZZ" = (
 /obj/machinery/light/small/flicker,

@@ -13,7 +13,7 @@
 	var/restoration_internal = 20
 
 
-/obj/item/stack/nanopaste/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/stack/nanopaste/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(!isliving(target))
 		return ..()
 	var/mob/living/L = target
@@ -40,7 +40,7 @@
 			if(!S.get_damage())
 				to_chat(user, "<span class='notice'>Nothing to fix here.</span>")
 			else if(can_use(1))
-				user.setClickCooldown(user.get_attack_speed(src))
+				user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 				if(S.open >= 2)
 					if(do_after(user,5 * tool_speed))
 						S.heal_damage(restoration_internal, restoration_internal, robo_repair = 1)
@@ -50,6 +50,20 @@
 				use(1)
 				user.visible_message("<span class='notice'>\The [user] applies some nanite paste on [user != L ? "[L]'s [S.name]" : "[S]"] with [src].</span>",\
 				"<span class='notice'>You apply some nanite paste on [user == L ? "your" : "[L]'s"] [S.name].</span>")
+
+	if (is_holosphere_shell(L))
+		var/mob/living/simple_mob/holosphere_shell/shell = L
+		if(shell.getBruteLoss() || shell.getFireLoss())
+			if(!can_use(1))
+				to_chat(user, SPAN_WARNING("There isn't enough left."))
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+			if(do_after(user,7 * tool_speed))
+				shell.adjustBruteLoss(-15)
+				shell.adjustFireLoss(-15)
+				shell.update_health()
+				use(1)
+				user.visible_message("<span class='notice'>\The [user] applied some [src] on [shell]'s damaged areas.</span>",\
+				"<span class='notice'>You apply some [src] at [shell]'s damaged areas.</span>")
 
 /obj/item/stack/nanopaste/advanced
 	name = "advanced nanopaste"

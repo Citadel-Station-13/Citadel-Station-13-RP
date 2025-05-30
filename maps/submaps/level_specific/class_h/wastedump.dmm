@@ -1,13 +1,13 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/simulated/mineral/ignore_mapgen/classh,
-/area/tether_away/beach/desert/poi/wastedump)
+/turf/simulated/mineral/ignore_mapgen,
+/area/sector/miaphus/beach/desert/poi/wastedump)
 "d" = (
 /obj/structure/fence{
 	dir = 8
 	},
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/wastedump)
+/area/sector/miaphus/beach/desert/poi/wastedump)
 "e" = (
 /obj/effect/debris/cleanable/greenglow,
 /obj/structure/closet/crate/trashcart,
@@ -16,25 +16,25 @@
 /obj/item/fuelrod/plutonium,
 /obj/item/fuelrod/plutonium,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/wastedump)
+/area/sector/miaphus/beach/desert/poi/wastedump)
 "f" = (
 /obj/random/junk,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/wastedump)
+/area/sector/miaphus/beach/desert/poi/wastedump)
 "k" = (
 /obj/effect/map_effect/radiation_emitter/strong,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/wastedump)
+/area/sector/miaphus/beach/desert/poi/wastedump)
 "l" = (
 /obj/structure/fence/cut/large{
 	dir = 4
 	},
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/wastedump)
+/area/sector/miaphus/beach/desert/poi/wastedump)
 "n" = (
 /obj/structure/sign/signnew/radiation,
 /turf/simulated/wall/dungeon,
-/area/tether_away/beach/desert/poi/wastedump)
+/area/sector/miaphus/beach/desert/poi/wastedump)
 "o" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/template_noop)
@@ -45,10 +45,10 @@
 /obj/structure/reagent_dispensers/fueltank/barrel,
 /obj/effect/debris/cleanable/greenglow,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/wastedump)
+/area/sector/miaphus/beach/desert/poi/wastedump)
 "s" = (
 /turf/simulated/wall/dungeon,
-/area/tether_away/beach/desert/poi/wastedump)
+/area/sector/miaphus/beach/desert/poi/wastedump)
 "t" = (
 /obj/random/junk,
 /obj/structure/closet/crate/trashcart,
@@ -57,45 +57,45 @@
 /obj/item/fuelrod/uranium,
 /obj/item/fuelrod/uranium,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/wastedump)
+/area/sector/miaphus/beach/desert/poi/wastedump)
 "u" = (
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/wastedump)
+/area/sector/miaphus/beach/desert/poi/wastedump)
 "v" = (
 /obj/structure/loot_pile/maint/junk,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/wastedump)
+/area/sector/miaphus/beach/desert/poi/wastedump)
 "x" = (
 /obj/structure/sign/signnew/oxidants,
 /turf/simulated/wall/dungeon,
-/area/tether_away/beach/desert/poi/wastedump)
+/area/sector/miaphus/beach/desert/poi/wastedump)
 "A" = (
 /obj/structure/loot_pile/maint/junk,
 /obj/random/junk,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/wastedump)
+/area/sector/miaphus/beach/desert/poi/wastedump)
 "B" = (
 /obj/structure/reagent_dispensers/fueltank/barrel,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/wastedump)
+/area/sector/miaphus/beach/desert/poi/wastedump)
 "E" = (
 /obj/structure/loot_pile/maint/junk,
 /obj/effect/debris/cleanable/greenglow,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/wastedump)
+/area/sector/miaphus/beach/desert/poi/wastedump)
 "J" = (
 /obj/item/fuelrod/plutonium,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/wastedump)
+/area/sector/miaphus/beach/desert/poi/wastedump)
 "K" = (
 /obj/structure/fence/door/locked,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/wastedump)
+/area/sector/miaphus/beach/desert/poi/wastedump)
 "N" = (
 /obj/structure/reagent_dispensers/fueltank/barrel,
 /obj/effect/map_effect/radiation_emitter/strong,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/wastedump)
+/area/sector/miaphus/beach/desert/poi/wastedump)
 "Q" = (
 /obj/effect/debris/cleanable/greenglow,
 /obj/structure/closet/crate/trashcart,
@@ -104,22 +104,22 @@
 /obj/item/fuelrod/uranium,
 /obj/item/fuelrod/uranium,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/wastedump)
+/area/sector/miaphus/beach/desert/poi/wastedump)
 "U" = (
 /obj/effect/debris/cleanable/greenglow,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/wastedump)
+/area/sector/miaphus/beach/desert/poi/wastedump)
 "W" = (
 /obj/effect/map_effect/radiation_emitter,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/wastedump)
+/area/sector/miaphus/beach/desert/poi/wastedump)
 "X" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/wastedump)
+/area/sector/miaphus/beach/desert/poi/wastedump)
 "Y" = (
 /obj/item/fuelrod/uranium,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/wastedump)
+/area/sector/miaphus/beach/desert/poi/wastedump)
 
 (1,1,1) = {"
 p

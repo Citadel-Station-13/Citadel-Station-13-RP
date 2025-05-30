@@ -1,23 +1,23 @@
 /mob/living/simple_mob/animal/space/bats/roguemines
-	faction = "roguemines"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
 
 /mob/living/simple_mob/animal/space/carp/roguemines
-	faction = "roguemines"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
 
 /mob/living/simple_mob/animal/space/goose/roguemines
-	faction = "roguemines"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
 
 /mob/living/simple_mob/animal/wolf/space/roguemines
-	faction = "roguemines"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
 
 /mob/living/simple_mob/animal/space/carp/large/roguemines
-	faction = "roguemines"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
 
 /mob/living/simple_mob/animal/space/bear/roguemines
-	faction = "roguemines"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
 
 /mob/living/simple_mob/vore/aggressive/corrupthound/space/roguemines
-	faction = "roguemines"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
 
 /mob/living/simple_mob/animal/space/carp/large/huge/roguemines
-	faction = "roguemines"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP

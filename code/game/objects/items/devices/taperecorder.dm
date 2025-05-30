@@ -57,7 +57,7 @@
 	return ..()
 
 
-/obj/item/tape_recorder/attack_hand(mob/user, list/params)
+/obj/item/tape_recorder/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		if(mytape)
 			eject()
@@ -86,7 +86,7 @@
 	update_icon()
 
 
-/obj/item/tape_recorder/hear_talk(mob/living/M as mob, msg, var/verb="says", datum/language/speaking=null)
+/obj/item/tape_recorder/hear_talk(mob/living/M as mob, msg, var/verb="says", datum/prototype/language/speaking=null)
 	if(mytape && recording)
 
 		if(speaking)
@@ -341,7 +341,7 @@
 	canprint = 1
 
 
-/obj/item/tape_recorder/attack_self(mob/user)
+/obj/item/tape_recorder/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -389,7 +389,7 @@
 /obj/item/cassette_tape/fire_act()
 	ruin()
 
-/obj/item/cassette_tape/attack_self(mob/user)
+/obj/item/cassette_tape/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

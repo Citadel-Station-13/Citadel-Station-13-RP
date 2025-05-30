@@ -2,7 +2,7 @@ SUBSYSTEM_DEF(input)
 	name = "Input"
 	wait = 0.25 // scale to 40 fps
 	init_order = INIT_ORDER_INPUT
-	subsystem_flags = NONE
+	init_stage = INIT_STAGE_EARLY
 	priority = FIRE_PRIORITY_INPUT
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
 
@@ -18,18 +18,18 @@ SUBSYSTEM_DEF(input)
 	/// Macro set for classic.
 	var/list/input_mode_macros
 
+	/// currentrun list of clients
+	var/list/client/currentrun
+
 /datum/controller/subsystem/input/Initialize()
 	setup_macrosets()
-	// set init early so refresh macrosets works
-	initialized = TRUE
 	refresh_client_macro_sets()
-
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/input/Recover()
-	initialized = SSinput.initialized
 	setup_macrosets()
 	refresh_client_macro_sets()
+	initialized = SSinput.initialized
 
 /// Sets up the key list for classic mode for when badmins screw up vv's.
 /datum/controller/subsystem/input/proc/setup_macrosets()
@@ -110,11 +110,18 @@ SUBSYSTEM_DEF(input)
 		user.set_macros()
 		user.update_movement_keys()
 
-/datum/controller/subsystem/input/fire()
-	for(var/client/C as anything in GLOB.clients)
+/datum/controller/subsystem/input/fire(resumed)
+	if(!resumed)
+		currentrun = GLOB.clients.Copy()
+	var/i
+	for(i in length(currentrun) to 1 step -1)
+		var/client/C = currentrun[i]
 		if(!C.initialized)
 			continue
 		C.keyLoop()
+		if(MC_TICK_CHECK)
+			break
+	currentrun.len -= length(currentrun) - i + 1
 
 /// *sigh
 /client/verb/NONSENSICAL_VERB_THAT_DOES_NOTHING()

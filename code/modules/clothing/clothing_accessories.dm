@@ -1,4 +1,4 @@
-/obj/item/clothing/_inv_return_attached()
+/obj/item/clothing/inv_slot_attached()
 	if(!accessories)
 		return ..()
 	. = ..()
@@ -38,8 +38,8 @@
 			return TRUE
 	return FALSE
 
-/obj/item/clothing/worn_mob()
-	return isnull(accessory_host)? ..() : accessory_host.worn_mob()
+/obj/item/clothing/get_worn_mob()
+	return isnull(accessory_host)? ..() : accessory_host.get_worn_mob()
 
 /obj/item/clothing/update_worn_icon()
 	if(accessory_host)
@@ -273,7 +273,7 @@
 	var/list/choices = list()
 	for(var/i in accessories)
 		choices[i] = i
-	A = show_radial_menu(usr, src, choices)
+	A = show_radial_menu(usr, usr.is_in_inventory(src) ? usr : src, choices)
 	if(!usr || usr.stat || !(src in usr))
 		return
 	if(A)
@@ -287,16 +287,6 @@
 		for(var/obj/item/clothing/accessory/A in accessories)
 			A.emp_act(severity)
 	..()
-
-/obj/item/clothing/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	. = ..()
-	if((. == 0) && LAZYLEN(accessories))
-		for(var/obj/item/I in accessories)
-			var/check = I.handle_shield(user, damage, damage_source, attacker, def_zone, attack_text)
-
-			if(check != 0)	// Projectiles sometimes use negatives IIRC, 0 is only returned if something is not blocked.
-				. = check
-				break
 
 /obj/item/clothing/strip_menu_options(mob/user)
 	. = ..()
@@ -314,7 +304,7 @@
 			var/choice = input(user, "What to take off?", "Strip Accessory") as null|anything in choices
 			if(!choice)
 				return
-			var/mob/M = worn_mob()
+			var/mob/M = get_worn_mob()
 			if(!M)
 				return
 			var/obj/item/clothing/accessory/A = choices[choice]
@@ -329,7 +319,7 @@
 				return
 			if(!(A in accessories))
 				return
-			add_attack_logs(user, worn_mob(),  "Detached [choice] from [src]")
+			add_attack_logs(user, get_worn_mob(),  "Detached [choice] from [src]")
 			if(istype(A, /obj/item/clothing/accessory/badge) || istype(A, /obj/item/clothing/accessory/medal))
 				M.visible_message(
 					SPAN_WARNING("[user] tears \the [A] off of [M]'s [src]!"),

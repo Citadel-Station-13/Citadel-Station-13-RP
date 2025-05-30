@@ -33,7 +33,7 @@ SUBSYSTEM_DEF(events)
 	// unfortunately, character setup server startup hooks fire before /Initialize so :/
 	// SScharactersetup but not shit when :)
 	InitializeHolidays()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/events/fire(resumed)
 	if (!resumed)
@@ -41,7 +41,7 @@ SUBSYSTEM_DEF(events)
 
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
-	var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
+	var/dt = nominal_dt_s
 	while (currentrun.len)
 		var/datum/event/E = currentrun[currentrun.len]
 		currentrun.len--

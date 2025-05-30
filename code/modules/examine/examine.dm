@@ -8,25 +8,44 @@
 #define EXAMINE_PANEL_PADDING "        "
 
 /atom/
+	// todo: this is ass, we need a better help system.
+	//       a combination system of screentips and examines, maybe?
 	var/description_info = null //Helpful blue text.
-	var/description_fluff = null //Green text about the atom's fluff, if any exists.
+
+	/**
+	 * Lore fluff.
+	 *
+	 * todo: rename this maybe, rework examines
+	 *
+	 * * "This snowflake weapon made for my Mary Sue was made by the Nanotrasen Department of Deniable Operations and fires 75x400mm artillery shells out of the barrel with the power of bluespace."
+	 */
+	var/description_fluff
+	/**
+	 * Lore fluff, part 2.
+	 *
+	 * todo: rename this maybe, rework examines
+	 *
+	 * * This is appended at the end of [description_fluff]. Useful for things like "this is part of a group of similar blah blah blah's".
+	 */
+	var/description_fluff_categorizer
+	// todo: this is ass, find out a better way to give info via skills system and not special roles
 	var/description_antag = null //Malicious red text, for the antags.
 
 //Override these if you need special behaviour for a specific type.
 /atom/proc/get_description_info()
-	if(description_info)
-		return description_info
-	return
+	return description_info
 
 /atom/proc/get_description_fluff()
-	if(description_fluff)
-		return description_fluff
-	return
+	. = description_fluff
+	if(description_fluff_categorizer)
+		if(.)
+			. += "<hr>"
+			. += description_fluff_categorizer
+		else
+			. = description_fluff_categorizer
 
 /atom/proc/get_description_antag()
-	if(description_antag)
-		return description_antag
-	return
+	return description_antag
 
 // This one is slightly different, in that it must return a list.
 /atom/proc/get_description_interaction(mob/user)

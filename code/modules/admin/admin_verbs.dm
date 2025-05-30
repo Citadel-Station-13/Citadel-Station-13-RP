@@ -53,7 +53,8 @@ var/list/admin_verbs_admin = list(
 	/client/proc/admin_cancel_shuttle,	//allows us to cancel the emergency shuttle, sending it back to CentCom,
 	/client/proc/cmd_admin_direct_narrate,	//send text directly to a player with no padding. Useful for narratives and fluff-text,
 	/client/proc/cmd_admin_local_narrate,
-	/client/proc/cmd_admin_world_narrate,	//sends text to all players with no padding,
+	/client/proc/cmd_admin_world_narrate,
+	/client/proc/cmd_admin_z_narrate,	//sends text to all players on a z-level.When Global is too much
 	/client/proc/cmd_admin_create_centcom_report,
 	/client/proc/check_words,			//displays cult-words,
 	/client/proc/check_ai_laws,			//shows AI and borg laws,
@@ -96,7 +97,6 @@ var/list/admin_verbs_admin = list(
 	/client/proc/change_human_appearance_admin,	// Allows an admin to change the basic appearance of human-based mobs ,
 	/client/proc/change_human_appearance_self,	// Allows the human-based mob itself change its basic appearance ,
 	/client/proc/change_security_level,
-	/client/proc/view_chemical_reaction_logs,
 	/client/proc/makePAI,
 	/datum/admins/proc/paralyze_mob,
 	/client/proc/fixatmos,
@@ -149,12 +149,13 @@ var/list/admin_verbs_spawn = list(
 	/datum/admins/proc/spawn_custom_item,
 	/datum/admins/proc/check_custom_items,
 	/datum/admins/proc/spawn_plant,
-	/datum/admins/proc/spawn_atom, // Allows us to spawn instances,
+	/client/proc/spawn_atom, // Allows us to spawn instances,
 	/client/proc/respawn_character,
 	/client/proc/spawn_character_mob,
 	/client/proc/virus2_editor,
 	/client/proc/map_template_load,
 	/client/proc/map_template_upload,
+	// /client/proc/overmap_upload,
 	/client/proc/map_template_load_on_new_z
 	)
 
@@ -171,7 +172,11 @@ var/list/admin_verbs_server = list(
 	/client/proc/everyone_random,
 	/datum/admins/proc/toggleAI,
 	/client/proc/cmd_admin_delete, // Delete an instance/object/mob/etc,
-	/client/proc/cmd_debug_del_all,
+	/client/proc/cmd_del_all,
+	/client/proc/cmd_del_all_force,
+	/client/proc/cmd_del_all_hard,
+	/client/proc/check_timer_sources,
+	/client/proc/toggle_browser_inspect,
 	/client/proc/cmd_admin_clear_mobs,
 	/datum/admins/proc/adspawn,
 	/datum/admins/proc/adjump,
@@ -200,7 +205,11 @@ var/list/admin_verbs_debug = list(
 	/client/proc/debug_antagonist_template,
 	/client/proc/cmd_debug_mob_lists,
 	/client/proc/cmd_admin_delete,
-	/client/proc/cmd_debug_del_all,
+	/client/proc/cmd_del_all,
+	/client/proc/cmd_del_all_force,
+	/client/proc/cmd_del_all_hard,
+	/client/proc/check_timer_sources,
+	/client/proc/toggle_browser_inspect,
 	/client/proc/cmd_debug_tog_aliens,
 	/client/proc/cmd_display_del_log,
 	/client/proc/cmd_display_init_log,
@@ -235,7 +244,6 @@ var/list/admin_verbs_debug = list(
 	/datum/admins/proc/change_time,
 	/client/proc/admin_give_modifier,
 	/client/proc/fucky_wucky,
-	/client/proc/simple_DPS,
 	/datum/admins/proc/fishing_calculator,
 	)
 
@@ -276,6 +284,7 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/cmd_admin_direct_narrate,
 	/client/proc/cmd_admin_local_narrate,
 	/client/proc/cmd_admin_world_narrate,
+	/client/proc/cmd_admin_z_narrate,
 	/client/proc/check_words,
 	/client/proc/play_local_sound,
 	/client/proc/play_sound,
@@ -318,9 +327,12 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/kill_airgroup,
 	/client/proc/debug_controller,
 	/client/proc/startSinglo,
-	/client/proc/simple_DPS,
 	/client/proc/cmd_debug_mob_lists,
-	/client/proc/cmd_debug_del_all,
+	/client/proc/cmd_del_all,
+	/client/proc/cmd_del_all_force,
+	/client/proc/cmd_del_all_hard,
+	/client/proc/check_timer_sources,
+	/client/proc/toggle_browser_inspect,
 	/client/proc/cmd_admin_clear_mobs,
 	/client/proc/cmd_debug_tog_aliens,
 	/client/proc/cmd_display_del_log,
@@ -777,6 +789,8 @@ var/list/admin_verbs_event_manager = list(
 		message_admins("[src] deadmined themself.", 1)
 		deadmin()
 		to_chat(src, "<span class='interface'>You are now a normal player.</span>")
+		if(deadmin_holder?.fakekey)
+			to_chat(src, SPAN_RED(SPAN_BIG(SPAN_ANNOUNCE("Your ckey is still obfuscated as '[deadmin_holder.fakekey]' due to de-adminning while stealthed."))))
 		add_verb(src, /client/proc/readmin_self)
 	feedback_add_details("admin_verb","DAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -1073,4 +1087,3 @@ var/list/admin_verbs_event_manager = list(
 	var/datum/browser/popup = new(src, "event_volunteers", "Event Volunteers (In game)", 800, 1200)
 	popup.set_content(dat.Join(""))
 	popup.open()
-

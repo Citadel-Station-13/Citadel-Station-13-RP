@@ -4,6 +4,6 @@
 /datum/asset_pack/language/register()
 	set waitfor = FALSE
 
-	for(var/path in typesof(/datum/language))
-		var/datum/language/language = new path()
+	for(var/path in typesof(/datum/prototype/language))
+		var/datum/prototype/language/language = new path()
 		language.get_icon()

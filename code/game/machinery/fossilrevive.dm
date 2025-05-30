@@ -23,10 +23,12 @@
 	var/obj/item/fossil/mosquito = I
 	if(mosquito.processable == "seed")
 		addtimer(CALLBACK(src, PROC_REF(findsaway), "seed"), 100)
+		to_chat(user, SPAN_NOTICE("[src] begins processing [mosquito]."))
 		reviving = TRUE
 		mosquito.processable = FALSE
 	else
 		to_chat(user, SPAN_WARNING("That fossil has either already been processed, or does not contain valid genetic material."))
+	. = ..()
 
 /obj/machinery/fossilrevive/proc/findsaway(generatetype)
 	var/droploc = get_turf(src)

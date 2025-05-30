@@ -18,6 +18,7 @@
 
 /obj/item/storage/trinketbox/update_icon()
 	cut_overlays()
+	. = ..()
 	if(open)
 		icon_state = open_state
 
@@ -41,7 +42,7 @@
 		closed_state = "[initial(icon_state)]"
 	. = ..()
 
-/obj/item/storage/trinketbox/attack_self(mob/user)
+/obj/item/storage/trinketbox/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

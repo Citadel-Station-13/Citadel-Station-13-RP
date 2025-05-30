@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 // * Mapping Functions * //
 
@@ -156,9 +156,10 @@
 			results = range(radius, A)
 			if(!length(results))
 				continue
+			. += results
 			if(length(.) > safety)
 				stack_trace("hit safety limit")
-				return
+				break
 	else
 		var/list/hashed = list()
 		for(var/atom/A in movables)

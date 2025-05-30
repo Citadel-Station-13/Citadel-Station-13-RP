@@ -1,5 +1,5 @@
 /mob/living/carbon/is_in_critical()
-	return !IS_DEAD(src) && (health < config_legacy.health_threshold_crit)
+	return !IS_DEAD(src) && (health < getCritHealth())
 
 /mob/living/carbon/rejuvenate(fix_missing, reset_to_slot)
 	. = ..()

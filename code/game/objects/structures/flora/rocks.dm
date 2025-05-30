@@ -29,9 +29,23 @@
 
 /obj/structure/flora/rock/attackby(obj/item/W as obj, mob/user as mob)		//Shamelessly copied from mine_outcrops.dm
 	if (istype(W, /obj/item/pickaxe))
+		var/obj/item/pickaxe/P = W
 		to_chat(user, "<span class='notice'>[user] begins to hack away at \the [src].</span>")
-		if(do_after(user,40))
+		if(do_after(user,P.digspeed))
 			to_chat(user, "<span class='notice'>You have finished digging!</span>")
-			new outcropdrop(get_turf(src),rand(mindrop,upperdrop))
-			qdel(src)
+			GetDrilled()
 			return
+		return
+	. = ..()
+
+/obj/structure/flora/rock/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_TARGET_ABORT)
+		return
+	if(proj.damage_flag == ARMOR_BOMB) //Intended for kinetic accelerators/daggers to just get rid of this stuff quickly. They're rocks.
+		GetDrilled()
+
+/obj/structure/flora/rock/proc/GetDrilled()
+	new outcropdrop(get_turf(src),rand(mindrop,upperdrop))
+	qdel(src)
+

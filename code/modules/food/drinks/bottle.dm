@@ -107,7 +107,7 @@
 		return
 	..()
 
-/obj/item/reagent_containers/food/drinks/bottle/attack_self(mob/user)
+/obj/item/reagent_containers/food/drinks/bottle/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -162,7 +162,7 @@
 	if(target_zone == "head" && istype(L, /mob/living/carbon/))
 		user.visible_message("<span class='danger'>\The [user] smashes [src] over [L]'s head!</span>")
 		if(weaken_duration)
-			L.apply_effect(min(weaken_duration, 5), WEAKEN, blocked) // Never weaken more than a flash!
+			L.apply_effect(min(weaken_duration, 5), WEAKEN) // Never weaken more than a flash!
 	else
 		user.visible_message("<span class='danger'>\The [user] smashes [src] into [L]!</span>")
 
@@ -189,8 +189,7 @@
 	item_state = "beer"
 	atom_flags = NOCONDUCT
 	attack_verb = list("stabbed", "slashed", "attacked")
-	sharp = 1
-	edge = 0
+	damage_mode = DAMAGE_MODE_SHARP
 	var/icon/broken_outline = icon('icons/obj/drinks.dmi', "broken")
 
 /obj/item/reagent_containers/food/drinks/bottle/redeemersbrew
@@ -390,7 +389,7 @@
 	icon_state = "ambrosia_mead"
 	center_of_mass = list("x"=4, "y"=12)
 
-/obj/item/reagent_containers/food/drinks/bottle/royaljelly/Initialize(mapload)
+/obj/item/reagent_containers/food/drinks/bottle/ambrosia_mead/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("mead", 100)
 

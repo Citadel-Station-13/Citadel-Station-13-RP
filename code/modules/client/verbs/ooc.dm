@@ -103,7 +103,7 @@
 
 	msg = emoji_parse(msg)
 
-	if((msg[1] in list(".",";",":","#") || findtext_char(msg, "say", 1, 5))) //SSticker.HasRoundStarted() &&
+	if(((msg[1] in list(".",";",":","#")) || findtext_char(msg, "say", 1, 5))) //SSticker.HasRoundStarted() &&
 		if(alert("Your message \"[raw_msg]\" looks like it was meant for in game communication, say it in OOC?", "Meant for OOC?", "No", "Yes") != "Yes")
 			return
 
@@ -129,7 +129,7 @@
 		return
 
 	var/ooc_style = "everyone"
-	if(holder && !holder.fakekey)
+	if(holder && !is_under_stealthmin())
 		ooc_style = "elevated"
 		if(holder.rights & R_EVENT)
 			ooc_style = "event_manager"
@@ -149,13 +149,11 @@
 		if(target.get_preference_toggle(/datum/game_preference_toggle/chat/ooc))
 			if(target.is_key_ignored(key)) // If we're ignored by this person, then do nothing.
 				continue
-			var/display_name = src.key
-			if(holder)
-				if(holder.fakekey)
-					if(target.holder)
-						display_name = "[holder.fakekey]/([src.key])"
-					else
-						display_name = holder.fakekey
+			var/display_name
+			if(target.holder || target == src)
+				display_name = get_revealed_key()
+			else
+				display_name = get_public_key()
 			if(effective_color) // keeping this for the badmins
 				to_chat(target, "<span class='prefix [ooc_style]'><span class='ooc'><font color='[effective_color]'>" + "OOC: " + "<EM>[display_name]: </EM><span class='linkify'>[msg]</span></span></span></font>")
 			else
@@ -224,9 +222,7 @@
 	var/list/receivers = list() //Clients, not mobs.
 	var/list/r_receivers = list()
 
-	var/display_name = key
-	if(holder && holder.fakekey)
-		display_name = holder.fakekey
+	var/display_name = get_public_key()
 	if(mob.stat != DEAD)
 		display_name = mob.name
 	// Resleeving shenanigan prevention.

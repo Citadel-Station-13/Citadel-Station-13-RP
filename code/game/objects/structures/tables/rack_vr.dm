@@ -1,6 +1,6 @@
 /obj/structure/table/rack/steel
 	color = "#666666"
-	material_base = /datum/material/steel
+	material_base = /datum/prototype/material/steel
 
 /obj/structure/table/rack/shelf
 	name = "shelving"
@@ -10,4 +10,4 @@
 
 /obj/structure/table/rack/shelf/steel
 	color = "#666666"
-	material_base = /datum/material/steel
+	material_base = /datum/prototype/material/steel

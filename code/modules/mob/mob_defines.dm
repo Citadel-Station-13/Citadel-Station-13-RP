@@ -12,11 +12,20 @@
 	generic_canpass = FALSE
 	sight = SIGHT_FLAGS_DEFAULT
 	rad_flags = NONE
-	atom_colouration_system = TRUE
 
 	//? Core
 	/// mobs use ids as ref tags instead of actual refs.
 	var/static/next_mob_id = 0
+
+	//* Actions *//
+	/// our innate action holder; actions here aren't bound to what we're controlling / touching, but instead ourselves
+	///
+	/// * control and sight of these requires mindjacking, basically
+	var/datum/action_holder/actions_innate
+	/// our controlled action holder; actions here are bound to physical control, not our own body
+	///
+	/// * control and sight of these requires only control over motion / actions
+	var/datum/action_holder/actions_controlled
 
 	//? Rendering
 	/// Fullscreen objects
@@ -27,10 +36,6 @@
 	var/m_intent = MOVE_INTENT_RUN
 	/// How are we intending to act? Help / harm / etc.
 	var/a_intent = INTENT_HELP
-
-	//? Economy
-	/// This mob's economic category
-	var/economic_category_mob = ECONOMIC_CATEGORY_MOB_DEFAULT
 
 	//? Perspectives
 	/// using perspective - if none, it'll be self - when client logs out, if using_perspective has reset_on_logout, this'll be unset.
@@ -50,32 +55,23 @@
 	/// Atom we're buckl**ing** to. Used to stop stuff like lava from incinerating those who are mid buckle.
 	var/atom/movable/buckling
 
-	//* HUD (Atom)
+	//* HUD (Atom) *//
 	/// HUDs to initialize, typepaths
 	var/list/atom_huds_to_initialize
 
-	//* HUD
+	//* HUD *//
 	/// active, opened storage
 	//  todo: doesn't clear from clients properly on logout, relies on login clearing screne.
 	//  todo: we'll eventually need a system to handle ckey transfers properly.
 	var/datum/object_system/storage/active_storage
 
 	//? Movespeed
-	/// List of movement speed modifiers applying to this mob
-	var/list/movespeed_modification				//Lazy list, see mob_movespeed.dm
-	/// List of movement speed modifiers ignored by this mob. List -> List (id) -> List (sources)
-	var/list/movespeed_mod_immunities			//Lazy list, see mob_movespeed.dm
-	/// The calculated mob speed slowdown based on the modifiers list
-	var/cached_multiplicative_slowdown
-	/// cached legacy movespeed multiplier -_-
-	//  todo: remove
-	var/cached_movespeed_multiply
 	/// Next world.time we will be able to move.
 	var/move_delay = 0
 	/// Last world.time we finished a normal, non relay/intercepted move
-	var/last_move_time = 0
+	var/last_self_move = 0
 	/// Last world.time we turned in our spot without moving (see: facing directions)
-	var/last_turn = 0
+	var/last_self_turn = 0
 	/// Tracks if we have gravity from environment right now.
 	var/in_gravity
 
@@ -84,12 +80,6 @@
 	var/datum/global_physiology/physiology
 	/// physiology modifiers - see physiology.dm; set to list of paths at init to initialize into instances.
 	var/list/datum/physiology_modifier/physiology_modifiers
-
-	//? Actionspeed
-	/// List of action speed modifiers applying to this mob
-	var/list/actionspeed_modification				//Lazy list, see mob_movespeed.dm
-	/// List of action speed modifiers ignored by this mob. List -> List (id) -> List (sources)
-	var/list/actionspeed_mod_immunities			//Lazy list, see mob_movespeed.dm
 
 	//? Pixel Offsets
 	/// are we shifted by the user?
@@ -107,9 +97,18 @@
 	/// our abilities - set to list of paths to init to intrinsic abilities.
 	var/list/datum/ability/abilities
 
-	//? Inventory
+	//* Inventory *//
 	/// our inventory datum, if any.
 	var/datum/inventory/inventory
+	/// active hand index - null or num. must always be in range of held_items indices!
+	var/active_hand
+
+	//* IFF *//
+	/// our IFF factions
+	///
+	/// * Do not read directly, use [code/modules/mob/mob-iff.dm] helpers.
+	/// * can be set to a string, or a list of strings.
+	var/iff_factions = MOB_IFF_FACTION_NEUTRAL
 
 	//! Size
 	//! todo kill this with fire it should just be part of icon_scale_x/y.
@@ -148,7 +147,6 @@
 
 	var/next_move = null // For click delay, despite the misleading name.
 
-	var/list/datum/action/actions = list()
 	var/atom/movable/screen/hands = null
 	var/atom/movable/screen/pullin = null
 	var/atom/movable/screen/purged = null
@@ -257,7 +255,6 @@
 	var/overeatduration = 0
 	var/losebreath = 0 //?Carbon
 	var/shakecamera = 0
-	var/m_int = null //?Living
 	var/lastKnownIP = null
 
 	var/seer = 0 //for cult//Carbon, probably Human
@@ -286,8 +283,6 @@
 
 	var/voice_name = "unidentifiable voice"
 
-	///Used for checking whether hostile simple animals will attack you, possibly more stuff later.
-	var/faction = "neutral"
 	/// To prevent pAIs/mice/etc from getting antag in autotraitor and future auto- modes. Uses inheritance instead of a bunch of typechecks.
 	// todo: what the fuck
 	var/can_be_antagged = FALSE
@@ -347,11 +342,7 @@
 
 	var/registered_z
 
-	/// For mechs and fighters ambiance. Can be used in other cases.
-	var/in_enclosed_vehicle = 0
-
 	var/last_radio_sound = -INFINITY
-
 
 	//? vorestation legacy
 	/// Allows flight.
@@ -381,3 +372,66 @@
 	//? Movement
 	/// Is self-moving.
 	var/in_selfmove
+
+	var/is_jittery = 0
+	var/jitteriness = 0
+
+	//handles up-down floaty effect in space and zero-gravity
+	var/is_floating = 0
+	var/floatiness = 0
+
+	var/dizziness = 0
+	var/is_dizzy = 0
+
+	// used when venting rooms
+	var/tmp/last_airflow_stun = 0
+
+	catalogue_delay = 10 SECONDS
+
+	var/mob/observer/eye/eyeobj
+
+	//thou shall always be able to see the Geometer of Blood
+	var/image/narsimage = null
+	var/image/narglow = null
+
+	//Moved from code\modules\detectivework\tools\rag.dm
+	var/bloody_hands = 0
+	var/mob/living/carbon/human/bloody_hands_mob
+	var/track_blood = 0
+	var/list/feet_blood_DNA
+	var/track_blood_type
+	var/feet_blood_color
+
+	//Moved from code\modules\keybindings\focus.dm
+	/// What receives our keyboard inputs, defaulting to src.
+	var/datum/key_focus
+	/// a singular thing that can intercept keyboard inputs
+	var/datum/key_intercept
+
+	//Moved from code\game\click\click.dm
+	// 1 decisecond click delay (above and beyond mob/next_move)
+	var/next_click = 0
+
+	//Moved from code\game\rendering\legacy\alert.dm
+	var/list/alerts = list() // contains /atom/movable/screen/alert only // On /mob so clientless mobs will throw alerts properly
+
+	//Moved from code\game\verbs\suicide.dm
+	var/suiciding = 0
+
+	//Moved from code\modules\admin\admin_attack_log.dm
+	var/lastattacker = null
+	var/lastattacked = null
+	var/attack_log = list( )
+	var/dialogue_log = list( )
+
+	//Moved from code\modules\mob\living\carbon\human\pain.dm
+	var/list/pain_stored = list()
+	var/last_pain_message = ""
+	var/next_pain_time = 0
+
+	//Moved from code\modules\nano\nanoexternal.dm
+	// Used by the Nano UI Manager (/datum/nanomanager) to track UIs opened by this mob
+	var/list/open_uis = list()
+
+	///List of progress bars this mob is currently seeing for actions
+	var/list/progressbars = null //for stacking do_after bars

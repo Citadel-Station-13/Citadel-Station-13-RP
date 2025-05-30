@@ -89,7 +89,6 @@
 	//No need to update all of these procs if the guy is dead.
 	if(stat != DEAD && !stasis)
 		stabilize_body_temperature(seconds) //Body temperature adjusts itself (self-regulation)
-		weightgain()
 		process_weaver_silk()
 		handle_shock()
 		handle_pain()
@@ -633,24 +632,24 @@
 
 		if(breath.temperature >= species.breath_heat_level_1)
 			if(breath.temperature < species.breath_heat_level_2)
-				apply_damage(HEAT_GAS_DAMAGE_LEVEL_1, BURN, BP_HEAD, used_weapon = "Excessive Heat")
+				apply_damage(HEAT_GAS_DAMAGE_LEVEL_1, DAMAGE_TYPE_BURN, BP_HEAD, used_weapon = "Excessive Heat")
 				fire_alert = max(fire_alert, 2)
 			else if(breath.temperature < species.breath_heat_level_3)
-				apply_damage(HEAT_GAS_DAMAGE_LEVEL_2, BURN, BP_HEAD, used_weapon = "Excessive Heat")
+				apply_damage(HEAT_GAS_DAMAGE_LEVEL_2, DAMAGE_TYPE_BURN, BP_HEAD, used_weapon = "Excessive Heat")
 				fire_alert = max(fire_alert, 2)
 			else
-				apply_damage(HEAT_GAS_DAMAGE_LEVEL_3, BURN, BP_HEAD, used_weapon = "Excessive Heat")
+				apply_damage(HEAT_GAS_DAMAGE_LEVEL_3, DAMAGE_TYPE_BURN, BP_HEAD, used_weapon = "Excessive Heat")
 				fire_alert = max(fire_alert, 2)
 
 		else if(breath.temperature <= species.breath_cold_level_1)
 			if(breath.temperature > species.breath_cold_level_2)
-				apply_damage(COLD_GAS_DAMAGE_LEVEL_1, BURN, BP_HEAD, used_weapon = "Excessive Cold")
+				apply_damage(COLD_GAS_DAMAGE_LEVEL_1, DAMAGE_TYPE_BURN, BP_HEAD, used_weapon = "Excessive Cold")
 				fire_alert = max(fire_alert, 1)
 			else if(breath.temperature > species.breath_cold_level_3)
-				apply_damage(COLD_GAS_DAMAGE_LEVEL_2, BURN, BP_HEAD, used_weapon = "Excessive Cold")
+				apply_damage(COLD_GAS_DAMAGE_LEVEL_2, DAMAGE_TYPE_BURN, BP_HEAD, used_weapon = "Excessive Cold")
 				fire_alert = max(fire_alert, 1)
 			else
-				apply_damage(COLD_GAS_DAMAGE_LEVEL_3, BURN, BP_HEAD, used_weapon = "Excessive Cold")
+				apply_damage(COLD_GAS_DAMAGE_LEVEL_3, DAMAGE_TYPE_BURN, BP_HEAD, used_weapon = "Excessive Cold")
 				fire_alert = max(fire_alert, 1)
 
 
@@ -748,7 +747,7 @@
 	// we simulate in space, or in somewhere with a gasmixture. otherwise, we don't care.
 	if(istype(loc, /turf/space))
 		// in space, we use blackbody radiation
-		var/heat_loss = HUMAN_EXPOSED_SURFACE_AREA * STEFAN_BOLTZMANN_CONSTANT * ((bodytemperature - COSMIC_RADIATION_TEMPERATURE)**4)
+		var/heat_loss = THERMODYNAMICS_HUMAN_EXPOSED_SURFACE_AREA * STEFAN_BOLTZMANN_CONSTANT * ((bodytemperature - COSMIC_RADIATION_TEMPERATURE)**4)
 		var/temperature_loss = heat_loss/HUMAN_HEAT_CAPACITY
 		adjust_bodytemperature(-temperature_loss)
 	else if(!isnull(environment))
@@ -1048,10 +1047,10 @@
 					if(check_belly(I))
 						continue
 					if(src.species && !(src.species.species_flags & CONTAMINATION_IMMUNE))
-						// This is hacky, I'm so sorry.
-						if(I != l_hand && I != r_hand)	//If the item isn't in your hands, you're probably wearing it. Full damage for you.
+						if(isnull(I.held_index))
+							//If the item isn't in your hands, you're probably wearing it. Full damage for you.
 							total_phoronloss += loss_per_part
-						else if((I == l_hand | I == r_hand) && !((src.wear_suit?.body_cover_flags & HANDS) | src.gloves | (src.w_uniform?.body_cover_flags & HANDS)))	//If the item is in your hands, but you're wearing protection, you might be alright.
+						else if(!((src.wear_suit.body_cover_flags & HANDS) | src.gloves | (src.w_uniform.body_cover_flags & HANDS)))	//If the item is in your hands, but you're wearing protection, you might be alright.
 							//If you hold it in hand, and your hands arent covered by anything
 							total_phoronloss += loss_per_part
 			if(total_phoronloss)
@@ -1124,14 +1123,14 @@
 	else				//ALIVE. LIGHTS ARE ON
 		update_health()	//TODO
 
-		if(health <= config_legacy.health_threshold_dead || (should_have_organ("brain") && !has_brain()))
+		if(health <= getMinHealth() || (should_have_organ("brain") && !has_brain()))
 			death()
 			apply_status_effect(/datum/status_effect/sight/blindness, 5 SECOND)
 			silent = 0
 			return 1
 
 		//UNCONSCIOUS. NO-ONE IS HOME
-		if((getOxyLoss() > (species.total_health/2)) || (health <= config_legacy.health_threshold_crit))
+		if((getOxyLoss() > (species.total_health/2)) || (health <= getCritHealth()))
 			afflict_unconscious(20 * 3)
 
 		if(hallucination)
@@ -1597,6 +1596,13 @@
 			if(!isRemoteObserve && remoteview_target)
 				remoteview_target = null
 				reset_perspective()
+
+		//! shitcode ahead
+		if(get_z(src))
+			if(SSmapping.level_trait(get_z(src), ZTRAIT_BLOCK_LEGACY_WALLHACKS))
+				RemoveSightSelf(SEE_OBJS | SEE_MOBS | SEE_TURFS)
+		//! end
+
 	return 1
 
 /mob/living/carbon/human/proc/process_glasses(var/obj/item/clothing/glasses/G)
@@ -1690,12 +1696,12 @@
 	if(!can_feel_pain())
 		return
 
-	if(health < config_legacy.health_threshold_softcrit)// health 0 makes you immediately collapse
+	if(health < getSoftCritHealth())// health 0 makes you immediately collapse
 		shock_stage = max(shock_stage, 61)
 
 	if(traumatic_shock >= 80)
 		shock_stage += 1
-	else if(health < config_legacy.health_threshold_softcrit)
+	else if(health < getSoftCritHealth())
 		shock_stage = max(shock_stage, 61)
 	else
 		shock_stage = min(shock_stage, 160)
@@ -1789,7 +1795,7 @@
 	if(Pump)
 		temp += Pump.standard_pulse_level - PULSE_NORM
 
-	if(round(vessel.get_reagent_amount("blood")) <= species.blood_volume*species.blood_level_danger)	//how much blood do we have
+	if(round(blood_holder.get_total_volume()) <= species.blood_volume*species.blood_level_danger)	//how much blood do we have
 		temp = temp + 3	//not enough :(
 
 	if(status_flags & STATUS_FAKEDEATH)
@@ -1801,7 +1807,7 @@
 	temp = max(0, temp + modifier_shift)	// No negative pulses.
 
 	if(Pump)
-		for(var/datum/reagent/R in reagents.reagent_list)
+		for(var/datum/reagent/R in reagents.get_reagent_datums())
 			if(R.id in bradycardics)
 				if(temp <= Pump.standard_pulse_level + 3 && temp >= Pump.standard_pulse_level)
 					temp--
@@ -1811,11 +1817,11 @@
 			if(R.id in heartstopper) //To avoid using fakedeath
 				temp = PULSE_NONE
 			if(R.id in cheartstopper) //Conditional heart-stoppage
-				if(R.volume >= R.overdose)
+				if(reagents.get_reagent_amount(R.id) >= R.overdose)
 					temp = PULSE_NONE
 		return temp * brain_modifier
 	//handles different chems' influence on pulse
-	for(var/datum/reagent/R in reagents.reagent_list)
+	for(var/datum/reagent/R in reagents.get_reagent_datums())
 		if(R.id in bradycardics)
 			if(temp <= PULSE_THREADY && temp >= PULSE_NORM)
 				temp--
@@ -1825,7 +1831,7 @@
 		if(R.id in heartstopper) //To avoid using fakedeath
 			temp = PULSE_NONE
 		if(R.id in cheartstopper) //Conditional heart-stoppage
-			if(R.volume >= R.overdose)
+			if(reagents.get_reagent_amount(R.id) >= R.overdose)
 				temp = PULSE_NONE
 
 	return max(0, round(temp * brain_modifier))
@@ -1861,14 +1867,6 @@
 		return
 	else
 		bodytemperature += (BODYTEMP_HEATING_MAX + (fire_stacks * 15)) * (1-thermal_protection)
-
-/mob/living/carbon/human/proc/weightgain()
-	if (nutrition >= 0 && stat != 2)
-		if (nutrition > MIN_NUTRITION_TO_GAIN && weight < MAX_MOB_WEIGHT && weight_gain)
-			weight += species.metabolism*(0.01*weight_gain)
-
-		else if (nutrition <= MAX_NUTRITION_TO_LOSE && stat != 2 && weight > MIN_MOB_WEIGHT && weight_loss)
-			weight -= species.metabolism*(0.01*weight_loss) // starvation weight loss
 
 //Our call for the NIF to do whatever
 /mob/living/carbon/human/proc/handle_nif()

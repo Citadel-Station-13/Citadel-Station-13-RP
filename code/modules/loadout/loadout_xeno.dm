@@ -38,7 +38,6 @@
 //**Species-Specific Datum Declarations
 //*Tajaran
 /datum/loadout_entry/xeno/tajaran
-	legacy_species_lock = SPECIES_TAJ
 
 /datum/loadout_entry/xeno/tajaran/accessories
 	slot = /datum/inventory_slot/abstract/attach_as_accessory
@@ -63,7 +62,6 @@
 
 //*Promethean
 /datum/loadout_entry/xeno/promethean
-	legacy_species_lock = SPECIES_PROMETHEAN
 
 /datum/loadout_entry/xeno/promethean/accessories
 	slot = /datum/inventory_slot/abstract/attach_as_accessory
@@ -186,7 +184,6 @@
 
 //*Unathi
 /datum/loadout_entry/xeno/unathi
-	legacy_species_lock = SPECIES_UNATHI
 
 /datum/loadout_entry/xeno/unathi/accessories
 	slot = /datum/inventory_slot/abstract/attach_as_accessory
@@ -466,18 +463,30 @@
 //Head
 /datum/loadout_entry/xeno/phoronoid/head/captain_helmet_alt
 	name = "Phoronoid - Alternate Facility Director Helmet"
-	path = /obj/item/clothing/head/helmet/space/plasman/sec/captain/alt
+	path = /obj/item/clothing/head/helmet/space/void/plasman/sec/captain/alt
 	allowed_roles = list("Facility Director")
 
 /datum/loadout_entry/xeno/phoronoid/head/hos_helmet_alt
-	name = "Phoronoid - Alternate Head of Security Helmet I"
-	path = /obj/item/clothing/head/helmet/space/plasman/sec/hos/alt1
+	name = "Phoronoid - Alternate Head of Security Helmet"
+	path = /obj/item/clothing/head/helmet/space/void/plasman/sec/hos/alt1
 	allowed_roles = list("Head of Security")
 
 /datum/loadout_entry/xeno/phoronoid/head/hos_helmet_alt_2
-	name = "Phoronoid - Alternate Head of Security Helmet II"
-	path = /obj/item/clothing/head/helmet/space/plasman/sec/hos/alt2
+	name = "Phoronoid - Alternate Head of Security Helmet (Spooky)"
+	path = /obj/item/clothing/head/helmet/space/void/plasman/sec/hos/alt2
 	allowed_roles = list("Head of Security")
+
+/datum/loadout_entry/xeno/phoronoid/head/science_helmet_alt
+	name = "Phoronoid - Science Bubble Helmet"
+	path = /obj/item/clothing/head/helmet/space/void/plasman/science/alt
+	allowed_roles = list("Research Director", "Scientist", "Xenobiologist", "Roboticist", "Senior Researcher")
+
+/datum/loadout_entry/xeno/phoronoid/head/explo_helmet_alt
+	name = "Phoronoid - Exploration Bubble Helmet"
+	path = /obj/item/clothing/head/helmet/space/void/plasman/science/explorer/alt
+	allowed_roles = list("Explorer", "Pathfinder")
+
+	
 
 //Accessories
 /datum/loadout_entry/xeno/phoronoid/accessories/suit_accessories
@@ -1044,4 +1053,4 @@
 
 /datum/loadout_entry/xeno/uniform
 	name = "Generic - Gear Harness"
-	path = /obj/item/clothing/under/harness
+	path = /obj/item/clothing/under/gear_harness

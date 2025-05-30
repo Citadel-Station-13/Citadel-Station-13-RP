@@ -33,7 +33,7 @@
 		if(istype(ghost))
 			question(ghost)
 
-/obj/item/mmi/digital/posibrain/attack_self(mob/user)
+/obj/item/mmi/digital/posibrain/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -93,7 +93,7 @@
 	announce_ghost_joinleave(candidate, 0, "They are occupying a positronic brain now.")
 	src.searching = 0
 	src.brainmob.mind = candidate.mind
-	src.brainmob.ckey = candidate.ckey
+	candidate.transfer_client_to(src.brainmob)
 	src.brainmob.mind.reset()
 	src.name = "positronic brain ([src.brainmob.name])"
 	to_chat(src.brainmob, "<b>You are a positronic brain, brought into existence on [station_name()].</b>")

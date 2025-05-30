@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /**
  * lazy man's render plates, used for specific usecases.
  */
@@ -11,7 +14,7 @@
 	var/relevant_plane_path
 	/// for overriding base screen loc. do "FULLSCREEN" for fullscreen.
 	//  todo: fullscreens are not yet supported on secondary maps
-	var/base_screen_loc = "CENTER"
+	var/base_screen_loc = "BOTTOMLEFT"
 
 //? darkvision relays
 

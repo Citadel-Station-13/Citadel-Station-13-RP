@@ -85,7 +85,7 @@
 	scribble_spans = data["spans"]
 	photograph_id = data["photo"]
 
-/obj/item/photo/attack_self(mob/user)
+/obj/item/photo/attack_self(mob/user, datum/event_args/actor/actor)
 	user.examinate(src)
 	return ..()
 

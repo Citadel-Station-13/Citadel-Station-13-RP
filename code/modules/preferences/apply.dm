@@ -91,6 +91,7 @@
 
 	// generate gear datum + data list
 	var/list/loadout = generate_loadout_entry_list(flags, role)
+	SEND_SIGNAL(character, COMSIG_HUMAN_EQUIPPING_LOADOUT, flags, role, loadout)
 	// overflow list of items associated to slot IDs
 	var/list/obj/item/overflow = list()
 

@@ -31,8 +31,17 @@
 		)
 
 	initial_restricted_waypoints = list(
-		"Beruang Trade Ship" = list("tradeport_hangar")
+		"Beruang Trade Ship" = list("tradeport_hangar"),
+		"Udang Transport Shuttle" = list("tradeport_udang"),
+		"Scoophead trade Shuttle" = list("tradeport_scoophead"),
+		"Arrowhead Racing Shuttle" = list("tradeport_arrowhead"),
+		"Spacena Caravan Shuttle" = list("tradeport_caravan"),
+		"Spacena Adventurer Shuttle" = list("tradeport_adventurer"),
+		"Cargo Tug Hauler Shuttle" = list("tradeport_tug"),
+		"Utility Micro Shuttle" = list("tradeport_utilitymicro"),
+		"Teshari Runabout Shuttle" = list("tradeport_runabout")
 		)
+
 /* // Old Restricted list. Leaving commented out for reference - Bloop
 	initial_restricted_waypoints = list(
 		"Beruang Trade Ship" = list("tradeport_hangar"),
@@ -65,11 +74,29 @@
 	announce_channel = "Trade"
 	on_store_name = "Beruang Trading Corp Storage"
 
+/datum/spawnpoint/trade/visitor
+	display_name = "Nebula Visitor Arrival"
+	restrict_job = list("Traveler")
+	announce_channel = "Trade"
+	method = LATEJOIN_METHOD_ARRIVALS_SHUTTLE
+
+/obj/machinery/cryopod/robot/door/gateway/trade/visitor
+	name = "Trade public teleporter"
+	desc = "The short-range teleporter you might've came in from. You could leave easily using this."
+	icon = 'icons/obj/machines/teleporter.dmi'
+	icon_state = "pad_idle"
+	announce_channel = "Trade"
+	base_icon_state = "pad"
+	occupied_icon_state = "pad_active"
+	on_store_message = "has departed via short-range teleport."
+	on_enter_occupant_message = "The teleporter activates, and you step into the swirling portal."
+	spawnpoint_type = /datum/role/job/station/outsider
+
 // Their shuttle
 
 // Shuttle landmarks. Need to be removed at some point and generic waypoints used
 
-/obj/effect/shuttle_landmark/triumph/trade
+/obj/effect/shuttle_landmark/trade
 	name = "Near Nebula Gas Food Mart"
 	landmark_tag = "nebula_space_SW"
 	base_turf = /turf/space
@@ -77,31 +104,31 @@
 
 // EXCLUSIVE TRADE PORT NAV POINTS
 
-/obj/effect/shuttle_landmark/triumph/trade/mining
+/obj/effect/shuttle_landmark/trade/mining
 	name = "Nebula Gas Landing Pad 2"
 	landmark_tag = "nebula_pad_2"
 	base_turf = /turf/simulated/shuttle/floor/black/airless
 	base_area = /area/tradeport/pads
 
-/obj/effect/shuttle_landmark/triumph/trade/excursion
+/obj/effect/shuttle_landmark/trade/excursion
 	name = "Nebula Gas Landing Pad 3"
 	landmark_tag = "nebula_pad_3"
 	base_turf = /turf/simulated/shuttle/floor/black/airless
 	base_area = /area/tradeport/pads
 
-/obj/effect/shuttle_landmark/triumph/trade/pirate
+/obj/effect/shuttle_landmark/trade/pirate
 	name = "Nebula Gas Landing Pad 4"
 	landmark_tag = "nebula_pad_4"
 	base_turf = /turf/simulated/shuttle/floor/black/airless
 	base_area = /area/tradeport/pads
 
-/obj/effect/shuttle_landmark/triumph/trade/emt
+/obj/effect/shuttle_landmark/trade/emt
 	name = "Nebula Gas Landing Pad 5"
 	landmark_tag = "nebula_pad_5"
 	base_turf = /turf/simulated/shuttle/floor/black/airless
 	base_area = /area/tradeport/pads
 
-/obj/effect/shuttle_landmark/triumph/trade/civvie
+/obj/effect/shuttle_landmark/trade/civvie
 	name = "Nebula Gas Landing Pad 6"
 	landmark_tag = "nebula_pad_6"
 	base_turf = /turf/simulated/shuttle/floor/black/airless
@@ -109,12 +136,68 @@
 
 // EXCLUSIVE TRADE PORT NAV POINT FOR DOCKING INSIDE
 
-/obj/effect/shuttle_landmark/triumph/trade/hangar
+/obj/effect/shuttle_landmark/trade/hangar
 	name = "Beruang Hangar"
 	landmark_tag = "tradeport_hangar"
 	docking_controller = "tradeport_hangar_dock"
 	base_turf = /turf/simulated/floor/tiled/techfloor/grid
 	base_area = /area/tradeport/dock
+
+/obj/effect/shuttle_landmark/triumph/trade/udang
+	name = "Udang Underconstruction Docking bay"
+	landmark_tag = "tradeport_udang"
+	docking_controller = "tradeport_udang_dock"
+	base_turf = /turf/space
+	base_area = /area/space
+
+/obj/effect/shuttle_landmark/triumph/trade/scoophead
+	name = "Scoophead Docking bay"
+	landmark_tag = "tradeport_scoophead"
+	docking_controller = "tradeport_scoophead_dock"
+	base_turf = /turf/space
+	base_area = /area/space
+
+/obj/effect/shuttle_landmark/triumph/trade/arrowhead
+	name = "VIP suit docking hatch"
+	landmark_tag = "tradeport_arrowhead"
+	docking_controller = "tradeport_arrowhead_dock"
+	base_turf = /turf/space
+	base_area = /area/space
+
+/obj/effect/shuttle_landmark/triumph/trade/caravan
+	name = "Caravan Docking Bay 2 Spot"
+	landmark_tag = "tradeport_caravan"
+	docking_controller = "tradeport_caravan_dock"
+	base_turf = /turf/simulated/floor/reinforced
+	base_area = /area/sector/nebula_tradeport/dock2
+
+/obj/effect/shuttle_landmark/triumph/trade/adventurer
+	name = "Adventurer Docking Bay 2 Spot"
+	landmark_tag = "tradeport_adventurer"
+	docking_controller = "tradeport_adventurer_dock"
+	base_turf = /turf/simulated/floor/reinforced
+	base_area = /area/sector/nebula_tradeport/dock2
+
+/obj/effect/shuttle_landmark/triumph/trade/tug
+	name = "Tug Hauler Docking Bay 2 Spot"
+	landmark_tag = "tradeport_tug"
+	docking_controller = "tradeport_tug_dock"
+	base_turf = /turf/simulated/floor/reinforced
+	base_area = /area/sector/nebula_tradeport/dock2
+
+/obj/effect/shuttle_landmark/triumph/trade/utilitymicro
+	name = "Utility and service Docking Bay 2 Spot"
+	landmark_tag = "tradeport_utilitymicro"
+	docking_controller = "tradeport_utilitymicro_dock"
+	base_turf = /turf/simulated/floor/reinforced
+	base_area = /area/sector/nebula_tradeport/dock2
+
+/obj/effect/shuttle_landmark/triumph/trade/runabout
+	name = "Teshari Runabout Docking Bay 2 Spot"
+	landmark_tag = "tradeport_runabout"
+	docking_controller = "tradeport_runabout_dock"
+	base_turf = /turf/simulated/floor/reinforced
+	base_area = /area/sector/nebula_tradeport/dock2
 
 // Todo
 /*

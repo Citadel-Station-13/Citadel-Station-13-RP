@@ -13,6 +13,8 @@
 	materials_base = list("metal" = 350, MAT_GLASS = 50)
 	preserve_item = 1
 
+	worth_intrinsic = 25
+
 /obj/item/cell/device/empty
 	charge = 0
 
@@ -22,6 +24,8 @@
 	icon_state = "wcell"
 	maxcharge = 2400
 	charge_amount = 20
+
+	worth_intrinsic = 50
 
 /obj/item/cell/device/weapon/empty
 	charge = 0

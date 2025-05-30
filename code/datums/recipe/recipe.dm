@@ -27,7 +27,7 @@
  *
  *
  *  Functions you do not need to call directly but could:
- *  /datum/recipe/proc/check_reagents(var/datum/reagents/avail_reagents)
+ *  /datum/recipe/proc/check_reagents(var/datum/reagent_holder/avail_reagents)
  *  /datum/recipe/proc/check_items(var/obj/container as obj)
  *
  * */
@@ -76,7 +76,7 @@
 	//This is a bitfield, more than one type can be used
 	//Grill is presently unused and not listed
 
-/datum/recipe/proc/check_reagents(var/datum/reagents/avail_reagents)
+/datum/recipe/proc/check_reagents(var/datum/reagent_holder/avail_reagents)
 	if (!reagents || !reagents.len)
 		return 1
 
@@ -92,7 +92,7 @@
 		else
 			return -1
 
-	if ((reagents?(reagents.len):(0)) < avail_reagents.reagent_list.len)
+	if ((reagents?(reagents.len):(0)) < avail_reagents.reagent_volumes.len)
 		return 0
 	return .
 
@@ -268,26 +268,20 @@
 		if (RECIPE_REAGENT_MAX)
 			//We want the highest of each.
 			//Iterate through everything in buffer. If the target has less than the buffer, then top it up
-			for (var/datum/reagent/R in temp.reagents.reagent_list)
-				var/rvol = tempholder.reagents.get_reagent_amount(R.id)
-				if (rvol < R.volume)
-					//Transfer the difference
-					temp.reagents.trans_id_to(tempholder, R.id, R.volume-rvol)
+			for(var/id in temp.reagents.reagent_volumes)
+				var/volume = temp.reagents.reagent_volumes[id]
+				if(tempholder.reagents.reagent_volumes?[id] < volume)
+					temp.reagents.trans_id_to(tempholder, id, volume - tempholder.reagents.reagent_volumes?[id])
 
 		if (RECIPE_REAGENT_MIN)
 			//Min is slightly more complex. We want the result to have the lowest from each side
 			//But zero will not count. Where a side has zero its ignored and the side with a nonzero value is used
-			for (var/datum/reagent/R in temp.reagents.reagent_list)
-				var/rvol = tempholder.reagents.get_reagent_amount(R.id)
-				if (rvol == 0) //If the target has zero of this reagent
-					temp.reagents.trans_id_to(tempholder, R.id, R.volume)
-					//Then transfer all of ours
-
-				else if (rvol > R.volume)
-					//if the target has more than ours
-					//Remove the difference
-					tempholder.reagents.remove_reagent(R.id, rvol-R.volume)
-
+			for(var/id in temp.reagents.reagent_volumes)
+				var/volume = temp.reagents.reagent_volumes[id]
+				if(!tempholder.reagents.reagent_volumes?[id])
+					temp.reagents.trans_id_to(tempholder, id, volume)
+				else if(tempholder.reagents.reagent_volumes?[id] > volume)
+					temp.reagents.remove_reagent(id, tempholder.reagents.reagent_volumes[id] - volume)
 
 	if (results.len > 1)
 		//If we're here, then holder is a buffer containing the total reagents for all the results.

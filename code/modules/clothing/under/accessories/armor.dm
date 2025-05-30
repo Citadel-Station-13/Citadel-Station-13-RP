@@ -178,28 +178,44 @@
 	armor_type = /datum/armor/station/ablative
 	siemens_coefficient = 0.2
 
-/obj/item/clothing/accessory/armor/armorplate/ablative/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+/obj/item/clothing/accessory/armor/armorplate/ablative/equipped(mob/user, slot, flags)
+	. = ..()
+	if(slot == SLOT_ID_HANDS)
+		return
+	// if you're reading this: this is not the right way to do shieldcalls
+	// this is just a lazy implementation
+	// signals have highest priority, this as a piece of armor shouldn't have that.
+	RegisterSignal(user, COMSIG_ATOM_SHIELDCALL, PROC_REF(shieldcall))
+
+/obj/item/clothing/accessory/armor/armorplate/ablative/unequipped(mob/user, slot, flags)
+	. = ..()
+	if(slot == SLOT_ID_HANDS)
+		return
+	UnregisterSignal(user, COMSIG_ATOM_SHIELDCALL)
+
+/obj/item/clothing/accessory/armor/armorplate/ablative/proc/shieldcall(mob/defending, list/shieldcall_args, fake_attack)
+	var/damage_source = shieldcall_args[SHIELDCALL_ARG_WEAPON]
+	var/def_zone = shieldcall_args[SHIELDCALL_ARG_HIT_ZONE]
 	if(istype(damage_source, /obj/projectile/energy) || istype(damage_source, /obj/projectile/beam))
 		var/obj/projectile/P = damage_source
 
 		if(P.reflected)
-			return ..()
+			return
 
-		var/reflectchance = 20 - round(damage/3)
+		var/reflectchance = 20 - round(shieldcall_args[SHIELDCALL_ARG_DAMAGE]/3)
 		if(!(def_zone in list(BP_TORSO, BP_GROIN)))
 			reflectchance /= 2
 		if(P.starting && prob(reflectchance))
-			visible_message("<span class='danger'>\The [user]'s [src.name] reflects [attack_text]!</span>")
+			visible_message("<span class='danger'>\The [defending]'s [src.name] reflects [P]!</span>")
 
 
 			var/new_x = P.starting.x + pick(0, 0, 0, 0, 0, -1, 1, -2, 2)
 			var/new_y = P.starting.y + pick(0, 0, 0, 0, 0, -1, 1, -2, 2)
-			var/turf/curloc = get_turf(user)
+			var/turf/curloc = get_turf(defending)
 
-			P.redirect(new_x, new_y, curloc, user)
+			P.legacy_redirect(new_x, new_y, curloc, defending)
 			P.reflected = 1
-
-			return PROJECTILE_CONTINUE
+			shieldcall_args[SHIELDCALL_ARG_FLAGS] |= SHIELDCALL_FLAGS_FOR_PROJECTILE_DEFLECT
 
 //////////////
 //Arm guards
@@ -346,6 +362,16 @@
 	desc = "An armor tag with the words CORPORATE SEC-COM printed in gold lettering."
 	icon_state = "ntctag"
 
+/obj/item/clothing/accessory/armor/tag/para
+	name = "\improper PARACAUSAL ANOMALY RESPONSE tag"
+	desc = "An armor tag with the words PARACAUSAL ANOMALY RESPONSE printed in silver lettering."
+	icon_state = "paratag"
+
+/obj/item/clothing/accessory/armor/tag/pmd
+	name = "\improper PMD patch"
+	desc = "An embroidered patch bearing the PMD's half-lidded eye Icon."
+	icon_state = "pmdtag"
+
 //Other
 /obj/item/clothing/accessory/armor/tag/sifguard
 	name = "\improper Sif Defense Force crest"
@@ -480,7 +506,7 @@
 	camera_networks = list(NETWORK_CIV_HELMETS)
 
 
-/obj/item/clothing/accessory/armor/helmetcamera/attack_self(mob/user)
+/obj/item/clothing/accessory/armor/helmetcamera/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

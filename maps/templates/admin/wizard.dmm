@@ -790,7 +790,7 @@
 	pixel_y = 32
 	},
 /obj/structure/table/steel_reinforced,
-/obj/item/gun/energy/laser/practice,
+/obj/item/gun/projectile/energy/laser/practice,
 /turf/unsimulated/floor{
 	icon_state = "dark";
 	dir = 5

@@ -131,7 +131,7 @@
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost/airlock/three)
 "bc" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/rift/surfacebase/outside/west_deep)
 "bf" = (
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -801,7 +801,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/refinery)
 "il" = (
-/turf/simulated/floor/sky/depths/west/lythios43c,
+/turf/simulated/sky/depths/west/lythios43c,
 /area/rift/surfacebase/outside/west_deep)
 "iq" = (
 /obj/effect/floor_decal/corner/white{
@@ -839,7 +839,7 @@
 /area/rift/facility/interior/underground2)
 "iI" = (
 /obj/structure/railing,
-/turf/simulated/floor/sky/depths/west/lythios43c,
+/turf/simulated/sky/depths/west/lythios43c,
 /area/rift/surfacebase/outside/west_deep)
 "iJ" = (
 /obj/structure/stairs/spawner/east,
@@ -1828,7 +1828,7 @@
 /area/outpost/mining_main/outpost/recreation)
 "pT" = (
 /obj/effect/blocker,
-/turf/simulated/floor/sky/depths/west/lythios43c,
+/turf/simulated/sky/depths/west/lythios43c,
 /area/rift/surfacebase/outside/west_deep)
 "pU" = (
 /obj/structure/railing{
@@ -2101,7 +2101,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance/south)
 "sN" = (
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark";
 	name = "glacier wall"
@@ -2506,7 +2506,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/outpost/underground)
 "wV" = (
-/turf/unsimulated/mineral/lythios43c,
+/turf/unsimulated/wall/mineral/lythios43c,
 /area/rift/surfacebase/outside/west_deep)
 "wW" = (
 /obj/spawner/window/reinforced/full,
@@ -3818,7 +3818,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/substation)
 "IC" = (
-/obj/machinery/mineral/equipment_vendor,
+/obj/machinery/point_redemption_vendor/mining,
 /turf/simulated/floor/tiled/monotile,
 /area/outpost/mining_main/refinery)
 "IE" = (

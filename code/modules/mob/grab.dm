@@ -1,21 +1,40 @@
 /**
  * returns everyone we're grabbing associated to state
  */
-/mob/proc/grabbing()
+/mob/proc/get_grabbing()
 	RETURN_TYPE(/list)
 	. = list()
 	for(var/obj/item/grab/G in get_held_items())
 		.[G.affecting] = G.state
 
+
+/**
+ * returns everyone we're grabbing that are at least the given grab state
+ */
+/mob/proc/get_grabbing_of_state(state)
+	RETURN_TYPE(/list)
+	. = list()
+	for(var/obj/item/grab/G in get_held_items())
+		if(G.state < state)
+			continue
+		. += G.affecting
+
 /**
  * returns everyone we're grabbing, recursively; this can include ourselves!
+ *
+ * @return grabbed mobs associated to states
  */
-/mob/proc/grabbing_recursive(list/L = list())
+/mob/proc/get_grabbing_recursive(list/L = list(), safety = 15, list/processed = list())
 	RETURN_TYPE(/list)
+	if(processed[src])
+		return
+	processed[src] = TRUE
+	if(safety <= 0)
+		CRASH("infinite loop guard tripped")
 	. = L
 	for(var/obj/item/grab/G in get_held_items())
 		.[G.affecting] = max(.[G.affecting], G.state)
-		grabbing_recursive(G.affecting)
+		G.affecting.get_grabbing_recursive(., --safety, processed)
 
 /**
  * check the grab state of us to someone
@@ -44,10 +63,11 @@
 /**
  * are we being grabbed
  *
- * @return TRUE / FALSE
+ * @return null, or highest state
  */
 /mob/proc/is_grabbed()
-	return length(grabbed_by)
+	for(var/mob/M as anything in grabbed_by)
+		. = max(., M.check_grab(src))
 
 /**
  * are we being grabbed by someone
@@ -71,7 +91,7 @@
 			L.resist() //shortcut for resisting grabs
 
 		//if we are grabbing someone
-		for(var/obj/item/grab/G in list(L.l_hand, L.r_hand))
+		for(var/obj/item/grab/G in L.get_held_items_of_type(/obj/item/grab))
 			G.reset_kill_state() //no wandering across the station/asteroid while choking someone
 
 /obj/item/grab
@@ -119,6 +139,7 @@
 	icon_state = "grabbed"
 	hud.name = "reinforce grab"
 	hud.master = src
+	vis_contents += hud
 
 	//check if assailant is grabbed by victim as well
 	if(assailant.grabbed_by)
@@ -133,16 +154,6 @@
 		assailant.stop_pulling()
 
 	adjust_position()
-
-//This makes sure that the grab screen object is displayed in the correct hand.
-/obj/item/grab/proc/synch() //why is this needed?
-	if(QDELETED(src))
-		return
-	if(affecting)
-		if(assailant.r_hand == src)
-			hud.screen_loc = ui_rhand
-		else
-			hud.screen_loc = ui_lhand
 
 /obj/item/grab/process(delta_time)
 	if(QDELETED(src)) // GC is trying to delete us, we'll kill our processing so we can cleanly GC
@@ -160,14 +171,8 @@
 	if(state <= GRAB_AGGRESSIVE)
 		allow_upgrade = 1
 		//disallow upgrading if we're grabbing more than one person
-		if((assailant.l_hand && assailant.l_hand != src && istype(assailant.l_hand, /obj/item/grab)))
-			var/obj/item/grab/G = assailant.l_hand
-			if(G.affecting != affecting)
-				allow_upgrade = 0
-		if((assailant.r_hand && assailant.r_hand != src && istype(assailant.r_hand, /obj/item/grab)))
-			var/obj/item/grab/G = assailant.r_hand
-			if(G.affecting != affecting)
-				allow_upgrade = 0
+		if(length(assailant.get_grabbing()) > 1)
+			allow_upgrade = 0
 
 		//disallow upgrading past aggressive if we're being grabbed aggressively
 		for(var/obj/item/grab/G in affecting.grabbed_by)
@@ -184,7 +189,7 @@
 			hud.icon_state = "!reinforce"
 
 	if(state >= GRAB_AGGRESSIVE)
-		affecting.drop_all_held_items()
+		affecting.drop_held_items()
 
 		if(iscarbon(affecting))
 			handle_eye_mouth_covering(affecting, assailant, assailant.zone_sel.selecting)
@@ -193,7 +198,9 @@
 			if(affecting.loc != assailant.loc || size_difference(affecting, assailant) > 0)
 				force_down = 0
 			else
-				affecting.afflict_paralyze(20 * 2)
+				affecting.afflict_knockdown(3 SECONDS)
+				affecting.afflict_root(3 SECONDS)
+				affecting.afflict_daze(3 SECONDS)
 
 	if(state >= GRAB_NECK)
 		affecting.afflict_stun(20 * 3)
@@ -222,7 +229,7 @@
 			if(!affecting.has_status_effect(/datum/status_effect/sight/blindness))
 				affecting.apply_status_effect(/datum/status_effect/sight/blindness, 3 SECONDS)
 
-/obj/item/grab/attack_self(mob/user)
+/obj/item/grab/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -242,7 +249,7 @@
 /obj/item/grab/throw_resolve_override(atom/movable/resolved, mob/user)
 	return TRUE
 
-/obj/item/grab/melee_object_hit(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult)
+/obj/item/grab/melee_object_hit(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	switch(state)
 		if(GRAB_PASSIVE)
 			clickchain.visible_feedback(
@@ -376,7 +383,7 @@
 		state = GRAB_KILL
 		assailant.visible_message("<span class='danger'>[assailant] has tightened [TU.his] grip on [affecting]'s neck!</span>")
 		add_attack_logs(assailant,affecting,"Strangled")
-		affecting.setClickCooldown(10)
+		affecting.setClickCooldownLegacy(10)
 		affecting.AdjustLosebreath(1)
 		affecting.setDir(WEST)
 	adjust_position()
@@ -394,7 +401,7 @@
 
 	return 1
 
-/obj/item/grab/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/grab/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(QDELETED(src))
 		return
 	if(!affecting)
@@ -606,8 +613,8 @@
 
 	var/armor = target.run_armor_check(BP_HEAD, "melee")
 	var/soaked = target.get_armor_soak(BP_HEAD, "melee")
-	target.apply_damage(damage, BRUTE, BP_HEAD, armor, soaked)
-	attacker.apply_damage(10, BRUTE, BP_HEAD, attacker.run_armor_check(BP_HEAD), attacker.get_armor_soak(BP_HEAD), "melee")
+	target.apply_damage(damage, DAMAGE_TYPE_BRUTE, BP_HEAD, armor, soaked)
+	attacker.apply_damage(10, DAMAGE_TYPE_BRUTE, BP_HEAD, attacker.run_armor_check(BP_HEAD), attacker.get_armor_soak(BP_HEAD), "melee")
 
 	if(!armor && target.headcheck(BP_HEAD) && prob(damage))
 		target.apply_effect(20, PARALYZE)
@@ -645,7 +652,9 @@
 
 /obj/item/grab/proc/apply_pinning(mob/target, mob/attacker)
 	force_down = 1
-	target.afflict_paralyze(20 * 3)
+	target.afflict_knockdown(4 SECONDS)
+	target.afflict_root(4 SECONDS)
+	target.afflict_daze(4 SECONDS)
 	step_to(attacker, target)
 	attacker.setDir(EAST) //face the victim
 	target.setDir(SOUTH) //face up

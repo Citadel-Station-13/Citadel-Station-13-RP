@@ -27,17 +27,17 @@
 /turf/simulated/floor/outdoors/beach
 	name = "beach"
 	icon = 'icons/misc/beach.dmi'
-	initial_flooring = /singleton/flooring/outdoors/beach
+	initial_flooring = /datum/prototype/flooring/outdoors/beach
 	edge_blending_priority = 1
 	smoothing_flags = NONE
 
 /turf/simulated/floor/outdoors/beach/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/shovel))
 		var/grave_type = /obj/structure/closet/grave/sand
-		do_after(user, 60)
-		to_chat(user, "<span class='warning'>You dig out a hole.</span>")
-		new grave_type(get_turf(src))
-		return
+		if(do_after(user, 60))
+			to_chat(user, "<span class='warning'>You dig out a hole.</span>")
+			new grave_type(get_turf(src))
+			return
 
 /turf/simulated/floor/outdoors/beach/sand
 	name = "sand"
@@ -48,7 +48,7 @@
 	desc = "It seems to go on and on.."
 	icon = 'icons/turf/outdoors.dmi'
 	icon_state = "desert"
-	initial_flooring = /singleton/flooring/outdoors/beach/sand/desert
+	initial_flooring = /datum/prototype/flooring/outdoors/beach/sand/desert
 
 /turf/simulated/floor/outdoors/beach/sand/desert/Initialize(mapload)
 	. = ..()
@@ -56,6 +56,7 @@
 		icon_state = "desert[rand(0,4)]"
 
 /turf/simulated/floor/outdoors/beach/sand/desert/indoors
+	initial_gas_mix = ATMOSPHERE_USE_INDOORS
 	outdoors = FALSE
 
 /turf/simulated/floor/outdoors/beach/sand/lowdesert
@@ -88,7 +89,7 @@
 /turf/simulated/floor/outdoors/beach/water
 	name = "Water"
 	icon_state = "water"
-	initial_flooring = /singleton/flooring/water
+	initial_flooring = /datum/prototype/flooring/water
 
 /turf/simulated/floor/outdoors/beach/water/ocean
 	icon_state = "seadeep"

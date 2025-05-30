@@ -1,0 +1,3063 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"aj" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"at" = (
+/obj/machinery/power/terminal,
+/obj/structure/cable/yellow{
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"bw" = (
+/obj/machinery/computer/ship/helm,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"bD" = (
+/obj/machinery/shower{
+	dir = 8
+	},
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
+/obj/structure/curtain/open/shower,
+/obj/item/soap,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"bG" = (
+/obj/structure/bed/chair/bay/comfy{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"bZ" = (
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"dh" = (
+/obj/machinery/light/poi{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"dv" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"dE" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"dZ" = (
+/obj/machinery/atmospherics/component/unary/engine/biggest{
+	dir = 1
+	},
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/paper_clipper)
+"ei" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"eF" = (
+/obj/effect/floor_decal/industrial/warning/corner,
+/obj/machinery/light/poi,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"eX" = (
+/obj/machinery/door/airlock/hatch{
+	req_one_access = list()
+	},
+/obj/machinery/airlock_sensor/airlock_exterior/shuttle{
+	dir = 10;
+	pixel_x = -8;
+	pixel_y = 26
+	},
+/obj/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/sensor/ext_sensor,
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"fr" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"fU" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/turf/simulated/floor/tiled,
+/area/shuttle/paper_clipper)
+"fX" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/pickaxe/drill,
+/obj/item/pickaxe/drill,
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"fZ" = (
+/obj/machinery/door/airlock/hatch{
+	req_one_access = list()
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"gD" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"gE" = (
+/turf/simulated/shuttle/wall/dark/hard_corner,
+/area/shuttle/paper_clipper)
+"hj" = (
+/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"hL" = (
+/turf/simulated/shuttle/wall/dark,
+/area/shuttle/paper_clipper)
+"ib" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/universal,
+/turf/simulated/shuttle/wall/dark,
+/area/shuttle/paper_clipper)
+"id" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/fuel,
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"ij" = (
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"ir" = (
+/obj/machinery/shield_gen,
+/obj/structure/cable,
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"iz" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"iI" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"je" = (
+/obj/machinery/air_alarm/alarms_hidden{
+	dir = 8;
+	pixel_x = 26
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"jA" = (
+/obj/structure/table/steel,
+/obj/item/storage/toolbox/electrical,
+/obj/machinery/light/poi{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"jD" = (
+/obj/machinery/shield_capacitor{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"jF" = (
+/obj/machinery/door/airlock/hatch{
+	req_one_access = list()
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"jK" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled,
+/area/shuttle/paper_clipper)
+"jZ" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/table/steel,
+/obj/item/gun/projectile/energy/retro,
+/obj/item/gun/projectile/energy/retro,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"kn" = (
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"ky" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"kW" = (
+/obj/structure/closet/secure_closet/freezer/meat,
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/shuttle/paper_clipper)
+"kZ" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/tank/vox,
+/obj/item/tank/vox,
+/obj/item/tank/vox,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"ld" = (
+/turf/simulated/floor/tiled,
+/area/shuttle/paper_clipper)
+"lh" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/table/rack/shelf/steel,
+/obj/item/tank/nitrogen,
+/obj/item/tank/nitrogen,
+/obj/item/tank/nitrogen,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"lk" = (
+/obj/structure/table/rack/shelf/steel,
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"lq" = (
+/obj/machinery/mech_recharger,
+/turf/simulated/floor/reinforced,
+/area/shuttle/paper_clipper)
+"ls" = (
+/obj/effect/floor_decal/industrial/warning,
+/obj/effect/shuttle_landmark/shuttle_initializer/paper_clipper,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/overmap/entity/visitable/ship/landable/paper_clipper,
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"lt" = (
+/obj/machinery/light/poi,
+/turf/simulated/floor/tiled,
+/area/shuttle/paper_clipper)
+"lU" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/obj/machinery/air_alarm/alarms_hidden{
+	dir = 4;
+	pixel_x = -26
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"mq" = (
+/obj/machinery/atmospherics/portables_connector/fuel,
+/obj/machinery/portable_atmospherics/canister/phoron{
+	start_pressure = 8000.25
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"my" = (
+/obj/machinery/light/poi,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"nd" = (
+/obj/machinery/atmospherics/component/binary/passive_gate/on{
+	pressure_resistance = 750;
+	target_pressure = 750
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"ni" = (
+/obj/machinery/atmospherics/component/unary/vent_pump{
+	dir = 8
+	},
+/obj/map_helper/airlock/atmos/chamber_pump,
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"nw" = (
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"oE" = (
+/obj/structure/closet/secure_closet/freezer/kitchen,
+/turf/simulated/floor/tiled,
+/area/shuttle/paper_clipper)
+"oU" = (
+/obj/machinery/door/window/northleft,
+/turf/simulated/floor/tiled/freezer,
+/area/shuttle/paper_clipper)
+"ps" = (
+/obj/machinery/light/poi{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/shuttle/paper_clipper)
+"pv" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/panic_button{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"pz" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"pA" = (
+/obj/machinery/portable_atmospherics/hydroponics,
+/obj/effect/debris/cleanable/cobweb2,
+/turf/simulated/floor/tiled,
+/area/shuttle/paper_clipper)
+"pS" = (
+/obj/machinery/portable_atmospherics/canister/air,
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"qk" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"qm" = (
+/obj/machinery/sleeper/survival_pod,
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/paper_clipper)
+"qw" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"qH" = (
+/obj/spawner/window/full/firelocks,
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"qP" = (
+/obj/effect/decal/mecha_wreckage/gunpod,
+/turf/simulated/floor/reinforced,
+/area/shuttle/paper_clipper)
+"rf" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"rC" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"rT" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/seed_extractor,
+/turf/simulated/floor/tiled,
+/area/shuttle/paper_clipper)
+"sq" = (
+/obj/machinery/door/airlock/hatch{
+	req_one_access = list()
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"su" = (
+/obj/structure/cable/yellow{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/rtg/advanced,
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"sx" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/universal,
+/obj/machinery/light/poi{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"sN" = (
+/obj/machinery/airlock_sensor{
+	pixel_x = 25;
+	dir = 8
+	},
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"sQ" = (
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	id = "paperclipper_hanger_hatch";
+	name = "Starbard Hanger Hatch";
+	pixel_x = -24
+	},
+/turf/simulated/floor/reinforced,
+/area/shuttle/paper_clipper)
+"sS" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/dispenser/oxygen,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"tw" = (
+/obj/structure/closet/secure_closet/freezer,
+/turf/simulated/floor/tiled/freezer,
+/area/shuttle/paper_clipper)
+"up" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/light/poi{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"uv" = (
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"uX" = (
+/obj/machinery/shipsensors,
+/turf/simulated/floor/reinforced/airless,
+/area/shuttle/paper_clipper)
+"vo" = (
+/obj/structure/table/standard,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/turf/simulated/floor/tiled,
+/area/shuttle/paper_clipper)
+"we" = (
+/turf/template_noop,
+/area/template_noop)
+"wg" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"wt" = (
+/obj/machinery/shield_capacitor{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"wK" = (
+/obj/machinery/atmospherics/component/unary/vent_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"xE" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"xN" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/biogenerator,
+/turf/simulated/floor/tiled,
+/area/shuttle/paper_clipper)
+"yd" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/light/poi,
+/obj/machinery/computer/ship/engines{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"yF" = (
+/obj/machinery/atmospherics/pipe/vent/high_volume,
+/turf/simulated/floor/reinforced/airless,
+/area/shuttle/paper_clipper)
+"yL" = (
+/obj/machinery/light/poi{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"yP" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/newscaster{
+	pixel_y = 32
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"yX" = (
+/obj/random/crate{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"zp" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"zY" = (
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"Aq" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/hatch{
+	req_one_access = list()
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"AN" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/shuttle/paper_clipper)
+"AY" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"Bl" = (
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/fuel,
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"Br" = (
+/obj/machinery/media/jukebox,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"BP" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/obj/machinery/power/apc/alarms_hidden/east_mount,
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"CS" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"CW" = (
+/obj/machinery/atmospherics/pipe/tank/air,
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"Do" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/shuttle/paper_clipper)
+"DG" = (
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"DH" = (
+/obj/machinery/light/poi,
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"DJ" = (
+/obj/structure/ore_box,
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"Eh" = (
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"Em" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"EZ" = (
+/obj/machinery/smartfridge/survival_pod,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/menu11,
+/obj/item/storage/single_use/mre/menu11,
+/obj/item/storage/single_use/mre/menu13,
+/obj/item/fbp_backup_cell,
+/obj/item/fbp_backup_cell,
+/obj/item/fbp_backup_cell,
+/obj/item/fbp_backup_cell,
+/obj/item/fbp_backup_cell,
+/obj/item/storage/pill_bottle/dice,
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/item/storage/box/legacy_survival/space,
+/obj/item/storage/box/legacy_survival/space,
+/obj/item/storage/box/legacy_survival/space,
+/obj/item/storage/box/legacy_survival/space,
+/obj/item/gps,
+/obj/item/tank/emergency/oxygen/engi,
+/obj/item/tank/emergency/oxygen/engi,
+/obj/item/tank/emergency/oxygen/engi,
+/obj/item/tank/emergency/oxygen/engi,
+/obj/item/storage/toolbox/emergency,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/paper_clipper)
+"Ft" = (
+/obj/structure/table/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/glass,
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"Gm" = (
+/obj/structure/mirror{
+	pixel_y = 29
+	},
+/obj/structure/sink{
+	pixel_y = 18
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"GQ" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"Hm" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"Hx" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/window/northleft,
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"HF" = (
+/obj/machinery/door/blast/regular/open{
+	id = "paper_clipper_safety_doors";
+	dir = 8
+	},
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"HI" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"Id" = (
+/turf/simulated/floor/reinforced,
+/area/shuttle/paper_clipper)
+"IG" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/turf/simulated/floor/tiled,
+/area/shuttle/paper_clipper)
+"Jg" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/closet/crate/hydroponics/prespawned,
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/reagent_containers/glass/bucket,
+/turf/simulated/floor/tiled,
+/area/shuttle/paper_clipper)
+"JY" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"Kr" = (
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/paper_clipper)
+"Ky" = (
+/obj/machinery/suit_cycler/vintage/omni,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"KI" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 9
+	},
+/obj/machinery/light/poi{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"KX" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/tank/carbon_dioxide,
+/obj/item/tank/carbon_dioxide,
+/obj/item/tank/carbon_dioxide,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"Lq" = (
+/obj/structure/table/steel,
+/obj/item/storage/toolbox/syndicate,
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"Lv" = (
+/obj/structure/bed/chair/bay/comfy{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"Ly" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/obj/machinery/embedded_controller/radio/airlock/docking_port_multi{
+	id_tag = "paperclipper_airlock";
+	name = "Airlock Control";
+	pixel_x = -26;
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"LJ" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"LM" = (
+/obj/machinery/air_alarm/alarms_hidden{
+	dir = 8;
+	pixel_x = 26
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"LW" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/table/steel,
+/obj/machinery/recharger,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"Md" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"Mf" = (
+/obj/machinery/portable_atmospherics/canister/phoron,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"Mn" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/universal,
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"Mv" = (
+/obj/machinery/air_alarm/alarms_hidden{
+	dir = 1;
+	pixel_y = -26
+	},
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"MZ" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"Ne" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"NE" = (
+/obj/machinery/portable_atmospherics/hydroponics,
+/obj/machinery/light/poi{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/shuttle/paper_clipper)
+"NR" = (
+/obj/machinery/door/window/westleft,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"Od" = (
+/obj/structure/table/marble,
+/turf/simulated/floor/tiled,
+/area/shuttle/paper_clipper)
+"Of" = (
+/obj/structure/fans,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"Ou" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"OD" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"OS" = (
+/obj/machinery/atmospheric_field_generator/perma,
+/obj/machinery/door/blast/regular{
+	id = "paperclipper_hanger_hatch";
+	name = "Starbard Hanger Hatch"
+	},
+/turf/simulated/floor/reinforced,
+/area/shuttle/paper_clipper)
+"OZ" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"Po" = (
+/obj/structure/table/marble,
+/obj/machinery/microwave,
+/turf/simulated/floor/tiled,
+/area/shuttle/paper_clipper)
+"Ql" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"Qn" = (
+/obj/item/storage/toolbox/mechanical,
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"QY" = (
+/obj/machinery/washing_machine,
+/turf/simulated/floor/tiled,
+/area/shuttle/paper_clipper)
+"Rj" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/storage/toolbox/mechanical,
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"Rn" = (
+/obj/structure/fuel_port/heavy{
+	pixel_x = 28
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/random/crate{
+	dir = 1
+	},
+/obj/item/tank/phoron,
+/obj/item/tank/phoron,
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"Rt" = (
+/obj/machinery/air_alarm/alarms_hidden{
+	dir = 8;
+	pixel_x = 26
+	},
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"Rz" = (
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"RC" = (
+/obj/random/crate{
+	dir = 1
+	},
+/obj/machinery/light/poi{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"RO" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/machinery/light/poi,
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"SW" = (
+/obj/machinery/portable_atmospherics/canister/nitrogen,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"Tc" = (
+/obj/machinery/air_alarm/alarms_hidden{
+	dir = 8;
+	pixel_x = 26
+	},
+/turf/simulated/floor/reinforced,
+/area/shuttle/paper_clipper)
+"To" = (
+/obj/structure/table/standard,
+/turf/simulated/floor/tiled,
+/area/shuttle/paper_clipper)
+"Ts" = (
+/obj/structure/bed/chair/bay/comfy{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"TR" = (
+/obj/machinery/vending/hydroseeds{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/shuttle/paper_clipper)
+"Ub" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"Uh" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"Uk" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"Uq" = (
+/obj/machinery/computer/shuttle_control/explore/paper_clipper,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"Uz" = (
+/obj/machinery/sleeper/survival_pod,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"UI" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/sink/kitchen{
+	pixel_y = 28
+	},
+/turf/simulated/floor/tiled,
+/area/shuttle/paper_clipper)
+"Vk" = (
+/obj/machinery/air_alarm/alarms_hidden{
+	dir = 8;
+	pixel_x = 26
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"VA" = (
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/smes/buildable/offmap_spawn{
+	cur_coils = 3
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"Wx" = (
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 8
+	},
+/obj/machinery/light/poi,
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"WZ" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"Xd" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"Xf" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled,
+/area/shuttle/paper_clipper)
+"Xg" = (
+/obj/machinery/door/airlock/hatch{
+	req_one_access = list()
+	},
+/obj/map_helper/airlock/door/int_door,
+/obj/machinery/airlock_sensor{
+	pixel_x = 25;
+	dir = 8
+	},
+/obj/map_helper/airlock/sensor/int_sensor,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"Xw" = (
+/obj/machinery/shower{
+	dir = 4
+	},
+/obj/item/soap,
+/obj/structure/window/reinforced/tinted{
+	dir = 4
+	},
+/obj/structure/curtain/open/shower,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"XU" = (
+/obj/machinery/computer/ship/sensors,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"Ya" = (
+/obj/machinery/door/airlock/hatch{
+	req_one_access = list()
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"Yp" = (
+/obj/machinery/door/blast/regular/open{
+	id = "paper_clipper_safety_doors"
+	},
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"YI" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"YJ" = (
+/obj/machinery/door/airlock/hatch{
+	req_one_access = list()
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"YR" = (
+/obj/structure/closet,
+/obj/item/clothing/suit/space/void/refurb,
+/obj/item/clothing/head/helmet/space/void/refurb,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"Ze" = (
+/obj/machinery/air_alarm/alarms_hidden{
+	dir = 4;
+	pixel_x = -26
+	},
+/obj/structure/table/standard,
+/turf/simulated/floor/tiled,
+/area/shuttle/paper_clipper)
+"Zh" = (
+/obj/machinery/holopad/ship/starts_inactive,
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	id = "paper_clipper_safety_doors";
+	name = "Safety Blast Doors";
+	pixel_x = -24
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"Zj" = (
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"Zl" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paper_clipper)
+"Zu" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"Zz" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/paper_clipper)
+"ZB" = (
+/obj/machinery/light/poi{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"ZK" = (
+/obj/machinery/door/window/westright,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/paper_clipper)
+"ZZ" = (
+/obj/structure/closet/secure_closet/freezer/meat,
+/turf/simulated/floor/tiled/freezer,
+/area/shuttle/paper_clipper)
+
+(1,1,1) = {"
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+"}
+(2,1,1) = {"
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+hL
+hL
+hL
+gE
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+gE
+hL
+hL
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+"}
+(3,1,1) = {"
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+hL
+hL
+hL
+hL
+vo
+QY
+hL
+CW
+OD
+sx
+lU
+pS
+zY
+zY
+gE
+mq
+Ql
+YI
+Kr
+Kr
+dZ
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+"}
+(4,1,1) = {"
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+hL
+hL
+hL
+hL
+kW
+Ze
+To
+AN
+lt
+gE
+Zj
+Zu
+Zj
+iz
+Zj
+CS
+DH
+gE
+mq
+id
+gE
+Kr
+Kr
+Kr
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+"}
+(5,1,1) = {"
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+hL
+hL
+hL
+gE
+xN
+rT
+Jg
+Do
+jK
+jK
+fU
+Xf
+Ya
+iI
+AY
+Eh
+Zl
+OZ
+WZ
+pz
+fZ
+zp
+Ne
+DG
+Kr
+Kr
+Kr
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+"}
+(6,1,1) = {"
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+hL
+hL
+hL
+gE
+Gm
+GQ
+gE
+UI
+ld
+ld
+ld
+ld
+ld
+gE
+gE
+gE
+qH
+qH
+Aq
+gE
+Md
+at
+VA
+gE
+mq
+Bl
+YI
+Kr
+Kr
+dZ
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+"}
+(7,1,1) = {"
+we
+we
+we
+we
+we
+we
+we
+hL
+hL
+hL
+hL
+hL
+gE
+Xw
+JY
+gD
+jF
+IG
+ld
+ld
+ld
+ld
+ld
+oU
+tw
+hL
+Zj
+Zj
+Uh
+qH
+Md
+Zj
+yd
+gE
+mq
+id
+gE
+Kr
+Kr
+Kr
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+"}
+(8,1,1) = {"
+we
+we
+we
+we
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+gE
+bD
+Vk
+my
+gE
+pA
+NE
+TR
+oE
+Po
+Od
+ps
+ZZ
+hL
+Lq
+jA
+su
+qH
+nw
+BP
+Rn
+gE
+mq
+KI
+DG
+Kr
+Kr
+Kr
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+"}
+(9,1,1) = {"
+we
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+gE
+hL
+hL
+HF
+HF
+HF
+HF
+hL
+hL
+gE
+hL
+gE
+hL
+gE
+sq
+gE
+hL
+hL
+hL
+hL
+gE
+hL
+hL
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+"}
+(10,1,1) = {"
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+yF
+ib
+EZ
+yL
+aa
+JY
+JY
+bG
+hL
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+"}
+(11,1,1) = {"
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+gE
+hL
+qm
+LJ
+aa
+JY
+JY
+bZ
+hL
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+"}
+(12,1,1) = {"
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+hL
+hL
+gE
+qm
+JY
+ei
+JY
+JY
+Ts
+hL
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+"}
+(13,1,1) = {"
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+gE
+gE
+gE
+hL
+gE
+ei
+JY
+gE
+hL
+hL
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+"}
+(14,1,1) = {"
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+Yp
+XU
+Zh
+eF
+hL
+pv
+JY
+rf
+jD
+hL
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+"}
+(15,1,1) = {"
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+Yp
+bw
+Lv
+ls
+fZ
+qk
+aj
+Hx
+ir
+hL
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+"}
+(16,1,1) = {"
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+Yp
+Uq
+LM
+Wx
+hL
+yP
+JY
+rf
+wt
+hL
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+"}
+(17,1,1) = {"
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+gE
+gE
+gE
+hL
+gE
+ei
+JY
+gE
+hL
+hL
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+"}
+(18,1,1) = {"
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+hL
+hL
+gE
+Uz
+JY
+ei
+JY
+JY
+bG
+hL
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+"}
+(19,1,1) = {"
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+gE
+hL
+Uz
+gD
+ky
+JY
+JY
+Mv
+hL
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+"}
+(20,1,1) = {"
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+uX
+hL
+Of
+dh
+ei
+JY
+JY
+Ts
+hL
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+"}
+(21,1,1) = {"
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+hL
+hL
+hL
+hL
+gE
+hL
+hL
+gE
+sq
+gE
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+gE
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+gE
+eX
+gE
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+we
+"}
+(22,1,1) = {"
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+hL
+hL
+lq
+lq
+Id
+Rz
+hL
+Br
+ZB
+ei
+JY
+JY
+JY
+JY
+JY
+ZB
+JY
+JY
+hL
+yX
+yX
+RC
+yX
+fX
+Rj
+lk
+DG
+wK
+fr
+Ly
+Ub
+pS
+hL
+hL
+hL
+hL
+we
+we
+we
+we
+"}
+(23,1,1) = {"
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+OS
+sQ
+Id
+Id
+Id
+RO
+gE
+JY
+JY
+ei
+JY
+MZ
+JY
+JY
+JY
+JY
+Xd
+JY
+gE
+Zj
+dE
+wg
+Mn
+nd
+Em
+Uk
+Xg
+up
+sN
+ni
+hL
+hL
+hL
+we
+we
+we
+we
+we
+we
+we
+"}
+(24,1,1) = {"
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+OS
+Id
+Id
+Id
+Id
+kn
+YJ
+rC
+rC
+dv
+iI
+AY
+je
+iI
+iI
+iI
+qw
+iI
+Ya
+iI
+xE
+HI
+Ou
+Rz
+Rz
+Rz
+gE
+hL
+hL
+hL
+hL
+we
+we
+we
+we
+we
+we
+we
+we
+we
+"}
+(25,1,1) = {"
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+OS
+Id
+Id
+Id
+Id
+ij
+gE
+lh
+Hm
+ZK
+NR
+sS
+gE
+LW
+LW
+ZK
+NR
+jZ
+gE
+Zj
+Zz
+Zj
+Rt
+Zj
+hL
+hL
+hL
+hL
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+"}
+(26,1,1) = {"
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+OS
+Id
+Id
+qP
+Id
+Qn
+hL
+kZ
+JY
+JY
+JY
+JY
+gE
+JY
+JY
+JY
+JY
+JY
+hL
+DJ
+DJ
+hL
+hL
+hL
+hL
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+"}
+(27,1,1) = {"
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+hL
+hL
+lq
+lq
+Tc
+Ft
+hL
+KX
+hj
+Mf
+uv
+SW
+gE
+YR
+YR
+YR
+YR
+Ky
+gE
+hL
+hL
+hL
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+"}
+(28,1,1) = {"
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+hL
+hL
+hL
+hL
+gE
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+"}
+(29,1,1) = {"
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+we
+"}

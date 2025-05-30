@@ -7,7 +7,9 @@
 	anchored = FALSE
 	density = TRUE
 	req_access = list(ACCESS_ENGINEERING_ENGINE)
-//	use_power = 0
+
+	worth_intrinsic = 500
+
 	var/obj/item/tank/phoron/P = null
 	/// stored power in kilojoules
 	var/stored_power = 0
@@ -45,8 +47,7 @@
 	AddComponent(/datum/component/radiation_listener)
 	rad_insulation = active? rad_insulation_active : rad_insulation_inactive
 
-
-/obj/machinery/power/rad_collector/attack_hand(mob/user, list/params)
+/obj/machinery/power/rad_collector/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(anchored)
 		if(!src.locked)
 			toggle_power()

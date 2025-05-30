@@ -1,20 +1,36 @@
 /datum/trait/positive/speed_fast
 	name = "Haste"
-	desc = "Allows you to move faster on average than baseline."
+	desc = "Faster than average."
 	cost = 2
 	var_changes = list("slowdown" = -0.2)
 
+	group = /datum/trait_group/speed
+	group_short_name = "Haste"
+	sort_key = "3-Haste"
+
 /datum/trait/positive/endurance_plus
 	name = "Better Endurance"
-	desc = "Increases your maximum total hitpoints to 110"
+	desc = "110 hitpoints."
 	cost = 3
 	var_changes = list("total_health" = 110)
 
+	group = /datum/trait_group/health
+	group_short_name = "Better"
+	sort_key = "4-Better"
+
+	excluded_species = list(SPECIES_HOLOSPHERE)
+
 /datum/trait/positive/endurance_high
 	name = "High Endurance"
-	desc = "Increases your maximum total hitpoints to 125"
+	desc = "125 hitpoints."
 	cost = 4
 	var_changes = list("total_health" = 125)
+
+	group = /datum/trait_group/health
+	group_short_name = "High"
+	sort_key = "5-High"
+
+	excluded_species = list(SPECIES_HOLOSPHERE)
 
 /datum/trait/positive/endurance_high/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
@@ -22,15 +38,23 @@
 
 /datum/trait/positive/nonconductive
 	name = "Non-Conductive"
-	desc = "Decreases your susceptibility to electric shocks by a 25% amount."
-	cost = 2 //This effects tasers!
+	desc = "25% less."
+	cost = 2 //This affects tasers!
 	var_changes = list("siemens_coefficient" = 0.75)
+
+	group = /datum/trait_group/electro
+	group_short_name = "Non-Conductive"
+	sort_key = "5-Non-Conductive"
 
 /datum/trait/positive/nonconductive_plus
 	name = "Major Non-Conductive"
-	desc = "Decreases your susceptibility to electric shocks by a 50% amount."
-	cost = 3 //Let us not forget this effects tasers!
+	desc = "50% less."
+	cost = 3 //Let us not forget this affects tasers!
 	var_changes = list("siemens_coefficient" = 0.5)
+
+	group = /datum/trait_group/electro
+	group_short_name = "Major Non-Conductive"
+	sort_key = "6-Major Non-Conductive"
 
 /datum/trait/positive/melee_attack
 	name = "Sharp Melee"
@@ -38,15 +62,23 @@
 	cost = 1
 	var_changes = list("unarmed_types" = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws/good, /datum/unarmed_attack/bite/sharp/good))
 
+	group = /datum/trait_group/bite_and_claw
+	group_short_name = "Sharp"
+	sort_key = "6-Sharp"
+
 /datum/trait/positive/melee_attack/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
 	S.update_attack_types()
 
 /datum/trait/positive/melee_attack_fangs
 	name = "Sharp Melee & Venomous Fangs"
-	desc = "Provides sharp melee attacks that do more damage, along with venomous fangs."
+	desc = "That plus venomous fangs."
 	cost = 2
 	var_changes = list("unarmed_types" = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws/good/venom, /datum/unarmed_attack/bite/sharp/good/venom))
+
+	group = /datum/trait_group/bite_and_claw
+	group_short_name = "Sharp, Venomous"
+	sort_key = "7-Sharp, Venomous"
 
 /datum/trait/positive/melee_attack_fangs/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
@@ -54,68 +86,110 @@
 
 /datum/trait/positive/minor_brute_resist
 	name = "Minor Brute Resist"
-	desc = "Adds 15% resistance to brute damage"
+	desc = "15% less."
 	cost = 2
 	var_changes = list("brute_mod" = 0.85)
 
+	group = /datum/trait_group/brute
+	group_short_name = "Minor Resist"
+	sort_key = "5-Minor Resist"
+
 /datum/trait/positive/brute_resist
 	name = "Brute Resist"
-	desc = "Adds 25% resistance to brute damage"
+	desc = "25% less."
 	cost = 3
 	var_changes = list("brute_mod" = 0.75)
 	excludes = list(/datum/trait/positive/minor_burn_resist,/datum/trait/positive/burn_resist)
 
+	group = /datum/trait_group/brute
+	group_short_name = "Resist"
+	sort_key = "6-Resist"
+
 /datum/trait/positive/minor_burn_resist
 	name = "Minor Burn Resist"
-	desc = "Adds 15% resistance to burn damage sources."
+	desc = "15% less."
 	cost = 2
 	var_changes = list("burn_mod" = 0.85)
 
+	group = /datum/trait_group/burn
+	group_short_name = "Minor Resist"
+	sort_key = "5-Minor Resist"
+
 /datum/trait/positive/burn_resist
 	name = "Burn Resist"
-	desc = "Adds 25% resistance to burn damage sources."
+	desc = "25% less."
 	cost = 3
 	var_changes = list("burn_mod" = 0.75)
 	excludes = list(/datum/trait/positive/minor_brute_resist,/datum/trait/positive/brute_resist)
 
+	group = /datum/trait_group/burn
+	group_short_name = "Resist"
+	sort_key = "6-Resist"
+
 /datum/trait/positive/toxin_resist
 	name = "Minor Toxin Resist"
-	desc = "Adds 15% resistance to toxin damage sources."
+	desc = "15% less."
 	cost = 2
 	var_changes = list("toxins_mod" = 0.85)
 
+	group = /datum/trait_group/toxin
+	group_short_name = "Minor Resist"
+	sort_key = "5-Minor Resist"
+
 /datum/trait/positive/toxin_resist_plus
 	name = "Toxin Resist"
-	desc = "Adds 25% resistance to toxin damage sources."
+	desc = "25% less."
 	cost = 3
 	var_changes = list("toxins_mod" = 0.75)
 	excludes = list(/datum/trait/positive/toxin_resist,/datum/trait/positive/toxin_resist_plus)
 
+	group = /datum/trait_group/toxin
+	group_short_name = "Resist"
+	sort_key = "6-Resist"
+
 /datum/trait/positive/oxy_resist
 	name = "Minor Breathe Resist"
-	desc = "You take 15% less oxygen damge and require 12.5% less air (14kpa minimum)."
+	desc = "15% less damage, 12.5% less air. (14kpa min)"
 	cost = 2
 	var_changes = list("minimum_breath_pressure" = 14, "oxy_mod" = 0.85)
+	extra_id_info = "Employee only requires an atmospheric pressure of <b>14kPa</b> to breathe."
+
+	group = /datum/trait_group/oxy
+	group_short_name = "Minor Resist"
+	sort_key = "5-Minor Resist"
 
 /datum/trait/positive/oxy_resist_plus
 	name = "Breathe Resist"
-	desc = "You take 25% less oxygen damge and require 25% less air (12kpa minimum)."
+	desc = "25% less damage, 25% less air. (12kpa min)"
 	cost = 3
 	var_changes = list("minimum_breath_pressure" = 12, "oxy_mod" = 0.75)
 	excludes = list(/datum/trait/positive/oxy_resist,/datum/trait/positive/oxy_resist_plus)
+	extra_id_info = "Employee only requires an atmospheric pressure of <b>12kPa</b> to breathe."
+
+	group = /datum/trait_group/oxy
+	group_short_name = "Resist"
+	sort_key = "6-Resist"
 
 /datum/trait/positive/rad_resist
 	name = "Minor Radiation Resist"
-	desc = "You take 15% less radition damage"
+	desc = "15% less."
 	cost = 1
 	var_changes = list("radiation_mod" = 0.85)
 
+	group = /datum/trait_group/rad
+	group_short_name = "Minor Resist"
+	sort_key = "5-Minor Resist"
+
 /datum/trait/positive/rad_resist_plus
 	name = "Radiation Resist"
-	desc = "You take 25% less radition damage"
+	desc = "25% less."
 	cost = 2
 	var_changes = list("radiation_mod" = 0.75)
 	excludes = list(/datum/trait/positive/rad_resist,/datum/trait/positive/rad_resist_plus)
+
+	group = /datum/trait_group/rad
+	group_short_name = "Resist"
+	sort_key = "6-Resist"
 
 /datum/trait/positive/photoresistant
 	name = "Photoresistant"
@@ -123,10 +197,18 @@
 	cost = 1
 	var_changes = list("flash_mod" = 0.5)
 
+	group = /datum/trait_group/photosensitivity
+	group_short_name = "Photoresistant"
+	sort_key = "6-Photoresistant"
+
 /datum/trait/positive/reinforced
 	name = "Reinforced Skeleton"
-	desc = "Your body either by science or nature has been reinforced and is harder to break."
+	desc = "Harder to break."
 	cost = 4 //Strong Trait, high cost.
+
+	group = /datum/trait_group/bones
+	group_short_name = "Reinforced"
+	sort_key = "6-Reinforced"
 
 /datum/trait/positive/reinforced/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
@@ -154,8 +236,14 @@
 
 /datum/trait/positive/antiseptic_saliva
 	name = "Antiseptic Saliva"
-	desc = "Your saliva has especially strong antiseptic properties that can be used to heal small wounds."
+	desc = "Does the same thing, costs more. Weird."
 	cost = 1
+	extra_id_info = "Employee's saliva carries antiseptic properties."
+
+	group = /datum/trait_group/vampirism
+	group_short_name = "Saliva"
+	sort_key = "9-Saliva"
+
 
 /datum/trait/positive/antiseptic_saliva/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..()
@@ -166,6 +254,10 @@
 	desc = "You bleed 25% slower."
 	cost = 1
 	var_changes = list("bloodloss_rate" = 0.75)
+
+	group = /datum/trait_group/blood
+	group_short_name = "Thick Blood"
+	sort_key = "6-Thick Blood"
 
 /datum/trait/positive/positive/weaver
 	name = "Weaver"
@@ -183,3 +275,16 @@
 	var/obj/item/organ/internal/weaver/weak/silk = new(H)
 	H.internal_organs += silk
 	H.internal_organs_by_name[O_WEAVER] = silk
+
+/datum/trait/positive/aquatic
+	name = "Aquatic"
+	desc = "You can breathe under water and can traverse water more efficiently. Additionally, you can eat others in the water."
+	cost = 1
+	sort_key = "10-Aquatic"
+
+/datum/trait/positive/aquatic/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+	ADD_TRAIT(H, TRAIT_MOB_WATER_BREATHER, LOADOUT_TRAIT)
+	add_verb(H, /mob/living/carbon/human/proc/underwater_devour)
+	add_verb(H, /mob/living/carbon/human/proc/water_stealth)
+	S.water_movement = min(-4, S.water_movement)
+	..()

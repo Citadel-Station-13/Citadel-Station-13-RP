@@ -210,6 +210,18 @@ $bg-map: colors.$bg-map !default;
   @include button-flash(base.$color-bg, 'transparent');
 }
 
+.Button--color--transparent-with-disabling {
+  @include button-color(base.$color-bg);
+  background-color: rgba(base.$color-bg, 0);
+}
+
+.Button--disabled.Button--color--transparent-with-disabling {
+  /* the base behavior for disabled buttons is to be grayed out, _even when transparent_ */
+  /* the transparent-with-disabling class handles this correctly */
+  background-color: rgba(base.$color-bg, 0) !important;
+  color: $color-transparent-text !important;
+}
+
 .Button--disabled {
   background-color: $color-disabled !important;
 }

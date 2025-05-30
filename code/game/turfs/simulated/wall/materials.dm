@@ -1,7 +1,7 @@
-/turf/simulated/wall/proc/init_materials(datum/material/outer = material_outer, datum/material/reinforcing = material_reinf, datum/material/girder = material_girder)
-	outer = SSmaterials.resolve_material(outer)
-	reinforcing = SSmaterials.resolve_material(reinforcing)
-	girder = SSmaterials.resolve_material(girder)
+/turf/simulated/wall/proc/init_materials(datum/prototype/material/outer = material_outer, datum/prototype/material/reinforcing = material_reinf, datum/prototype/material/girder = material_girder)
+	outer = RSmaterials.fetch_local_or_throw(outer)
+	reinforcing = RSmaterials.fetch_local_or_throw(reinforcing)
+	girder = RSmaterials.fetch_local_or_throw(girder)
 
 	if(!isnull(outer))
 		material_outer = outer
@@ -15,7 +15,7 @@
 
 	update_materials()
 
-/turf/simulated/wall/proc/set_materials(datum/material/outer, datum/material/reinforcing, datum/material/girder)
+/turf/simulated/wall/proc/set_materials(datum/prototype/material/outer, datum/prototype/material/reinforcing, datum/prototype/material/girder)
 	unregister_material(material_outer, TRUE)
 	material_outer = outer
 	register_material(material_outer, TRUE)
@@ -28,21 +28,21 @@
 
 	update_materials()
 
-/turf/simulated/wall/proc/set_outer_material(datum/material/material)
+/turf/simulated/wall/proc/set_outer_material(datum/prototype/material/material)
 	unregister_material(material_outer, TRUE)
 	material_outer = material
 	register_material(material_outer, TRUE)
 
 	update_materials()
 
-/turf/simulated/wall/proc/set_reinforcing_material(datum/material/material)
+/turf/simulated/wall/proc/set_reinforcing_material(datum/prototype/material/material)
 	unregister_material(material_reinf, FALSE)
 	material_reinf = material
 	register_material(material_reinf, FALSE)
 
 	update_materials()
 
-/turf/simulated/wall/proc/set_girder_material(datum/material/material)
+/turf/simulated/wall/proc/set_girder_material(datum/prototype/material/material)
 	unregister_material(material_girder, FALSE)
 	material_girder = material
 	register_material(material_girder, FALSE)

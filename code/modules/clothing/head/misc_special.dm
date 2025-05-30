@@ -22,7 +22,7 @@
 	armor_type = /datum/armor/head/hardhat
 	inv_hide_flags = (HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
 	body_cover_flags = HEAD|FACE|EYES
-	action_button_name = "Flip Welding Mask"
+	item_action_name = "Flip Welding Mask"
 	siemens_coefficient = 0.9
 	w_class = WEIGHT_CLASS_NORMAL
 	var/base_state
@@ -31,43 +31,48 @@
 	drop_sound = 'sound/items/drop/helm.ogg'
 	pickup_sound = 'sound/items/pickup/helm.ogg'
 
-/obj/item/clothing/head/welding/attack_self(mob/user)
+/obj/item/clothing/head/welding/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
-	toggle()
+	toggle(user)
 
 
-/obj/item/clothing/head/welding/verb/toggle()
+/obj/item/clothing/head/welding/verb/toggle_verb()
 	set category = VERB_CATEGORY_OBJECT
 	set name = "Adjust welding mask"
 	set src in usr
 
+	toggle(usr)
+
+/obj/item/clothing/head/welding/proc/toggle(mob/user)
 	if(!base_state)
 		base_state = icon_state
 
-	if(CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
-		if(src.up)
-			src.up = !src.up
-			body_cover_flags |= (EYES|FACE)
-			inv_hide_flags |= (HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
-			icon_state = base_state
-			flash_protection = FLASH_PROTECTION_MAJOR
-			tint = initial(tint)
-			to_chat(usr, "You flip the [src] down to protect your eyes.")
-		else
-			src.up = !src.up
-			body_cover_flags &= ~(EYES|FACE)
-			inv_hide_flags &= ~(HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
-			icon_state = "[base_state]up"
-			flash_protection = FLASH_PROTECTION_NONE
-			tint = TINT_NONE
-			to_chat(usr, "You push the [src] up out of your face.")
-		update_worn_icon()	//so our mob-overlays
-		if (ismob(src.loc)) //should allow masks to update when it is opened/closed
-			var/mob/M = src.loc
-			M.update_inv_wear_mask()
-		usr.update_action_buttons()
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
+		return
+
+	if(src.up)
+		src.up = !src.up
+		set_body_cover_flags(body_cover_flags | (EYES|FACE))
+		inv_hide_flags |= (HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
+		icon_state = base_state
+		flash_protection = FLASH_PROTECTION_MAJOR
+		tint = initial(tint)
+		to_chat(usr, "You flip the [src] down to protect your eyes.")
+	else
+		src.up = !src.up
+		set_body_cover_flags(body_cover_flags & ~(EYES|FACE))
+		inv_hide_flags &= ~(HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
+		icon_state = "[base_state]up"
+		flash_protection = FLASH_PROTECTION_NONE
+		tint = TINT_NONE
+		to_chat(usr, "You push the [src] up out of your face.")
+	update_worn_icon()	//so our mob-overlays
+	if (ismob(src.loc)) //should allow masks to update when it is opened/closed
+		var/mob/M = src.loc
+		M.update_inv_wear_mask()
+	update_action_buttons()
 
 /obj/item/clothing/head/welding/demon
 	name = "demonic welding helmet"
@@ -115,47 +120,6 @@
 		)
 
 /*
- * Cakehat
- */
-/obj/item/clothing/head/cakehat
-	name = "cake-hat"
-	desc = "It's tasty looking!"
-	icon_state = "cake0"
-	var/onfire = 0
-	body_cover_flags = HEAD
-
-/obj/item/clothing/head/cakehat/process(delta_time)
-	if(!onfire)
-		STOP_PROCESSING(SSobj, src)
-		return
-
-	var/turf/location = src.loc
-	if(istype(location, /mob/))
-		var/mob/living/carbon/human/M = location
-		if(M.is_holding(src) || M.head == src)
-			location = M.loc
-
-	if (istype(location, /turf))
-		location.hotspot_expose(700, 1)
-
-/obj/item/clothing/head/cakehat/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
-	onfire = !(onfire)
-	if (onfire)
-		damage_force = 3
-		damtype = "fire"
-		icon_state = "cake1"
-		START_PROCESSING(SSobj, src)
-	else
-		damage_force = 0
-		damtype = "brute"
-		icon_state = "cake0"
-	return
-
-
-/*
  * Ushanka
  */
 /obj/item/clothing/head/ushanka
@@ -166,7 +130,7 @@
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	cold_protection_cover = HEAD
 
-/obj/item/clothing/head/ushanka/attack_self(mob/user)
+/obj/item/clothing/head/ushanka/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

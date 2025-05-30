@@ -290,9 +290,6 @@ STANDARD_ACCESS_DATUM(ACCESS_MEDICAL_SURGERY, station/medical/surgery, "Surgery"
 #define ACCESS_MEDICAL_PSYCH 64 // Psychiatrist's office
 STANDARD_ACCESS_DATUM(ACCESS_MEDICAL_PSYCH, station/medical/psych, "Phychiatrist's Office")
 
-#define ACCESS_SCIENCE_XENOARCH 65
-STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_XENOARCH, station/science/xenoarch, "Xenoarchaeology")
-
 #define ACCESS_MEDICAL_EQUIPMENT 66
 STANDARD_ACCESS_DATUM(ACCESS_MEDICAL_EQUIPMENT, station/medical/equipment, "Medical Equipment")
 
@@ -327,6 +324,9 @@ STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_MAIN, station/science/main, "Science")
 
 #define ACCESS_SCIENCE_XENOBIO 55
 STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_XENOBIO, station/science/xenobiology, "Xenobiology Lab")
+
+#define ACCESS_SCIENCE_XENOARCH 65
+STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_XENOARCH, station/science/xenoarch, "Xenoarchaeology")
 
 #define ACCESS_SCIENCE_XENOBOTANY 77
 STANDARD_ACCESS_DATUM(ACCESS_SCIENCE_XENOBOTANY, station/science/xenobotany, "Xenobotany Garden")
@@ -411,6 +411,47 @@ STANDARD_ACCESS_DATUM(ACCESS_FACTION_PIRATE, faction/pirate, "Pirate")
 #define ACCESS_FACTION_TRADER 160//General Beruang Trader Access
 STANDARD_ACCESS_DATUM(ACCESS_FACTION_TRADER, faction/trader, "Trader")
 
+//? Motel
+
+#define ACCESS_FACTION_MOTEL1 161//Motel-Inn-Room1
+STANDARD_ACCESS_DATUM(ACCESS_FACTION_MOTEL1, faction/motelroom1, "Nebula-Room-1")
+
+#define ACCESS_FACTION_MOTEL2 162//Motel-Inn-Room2
+STANDARD_ACCESS_DATUM(ACCESS_FACTION_MOTEL2, faction/motelroom2, "Nebula-Room-2")
+
+#define ACCESS_FACTION_MOTEL3 163//Motel-Inn-Room3
+STANDARD_ACCESS_DATUM(ACCESS_FACTION_MOTEL3, faction/motelroom3, "Nebula-Room-3")
+
+#define ACCESS_FACTION_MOTEL4 164//Motel-Inn-Room4
+STANDARD_ACCESS_DATUM(ACCESS_FACTION_MOTEL4, faction/motelroom4, "Nebula-Room-4")
+
+#define ACCESS_FACTION_MOTEL5 165//Motel-Inn-Room5
+STANDARD_ACCESS_DATUM(ACCESS_FACTION_MOTEL5, faction/motelroom5, "Nebula-Room-5")
+
+#define ACCESS_FACTION_MOTEL6 166//Motel-Inn-Room6
+STANDARD_ACCESS_DATUM(ACCESS_FACTION_MOTEL6, faction/motelroom6, "Nebula-Room-6")
+
+#define ACCESS_FACTION_MOTEL7 167//Motel-Inn-Room7
+STANDARD_ACCESS_DATUM(ACCESS_FACTION_MOTEL7, faction/motelroom7, "Nebula-Room-7")
+
+#define ACCESS_FACTION_MOTEL8 169//Motel-Inn-Room8 168 is taken by Pirate
+STANDARD_ACCESS_DATUM(ACCESS_FACTION_MOTEL8, faction/motelroom8, "Nebula-Room-8")
+
+#define ACCESS_FACTION_MOTEL_VIP 170//Motel-Inn-VIP
+STANDARD_ACCESS_DATUM(ACCESS_FACTION_MOTEL_VIP, faction/motelroomvip, "Nebula-Room-VIP")
+
+//? Gaia Station
+
+#define ACCESS_GAIA_GUEST 250//Gaia Station Basic Access
+STANDARD_ACCESS_DATUM(ACCESS_GAIA_GUEST, faction/resort/guest, "Gaia Station Guest")
+
+#define ACCESS_GAIA_VIP 251//Gaia Station Premium Access
+STANDARD_ACCESS_DATUM(ACCESS_GAIA_VIP, faction/resort/vip, "Gaia Station VIP")
+
+#define ACCESS_GAIA_STAFF 252//Gaia Staff Access
+STANDARD_ACCESS_DATUM(ACCESS_GAIA_STAFF, faction/resort/staff, "Gaia Station Staff")
+
+
 //? Alien
 
 #define ACCESS_FACTION_ALIEN 300 // For things like crashed ships.
@@ -437,3 +478,14 @@ STANDARD_ACCESS_DATUM(ACCESS_SPECIAL_SILICONS, special/silicons, "Synthetic")
 
 #define ACCESS_NETWORK 404
 STANDARD_ACCESS_DATUM(ACCESS_NETWORK, misc/network, "Network")
+
+// POI
+
+#define ACCESS_CASINO_1 410 //Used for the Casino POI
+STANDARD_ACCESS_DATUM(ACCESS_CASINO_1,  misc/casinoPOI1, "Casino 1")
+
+#define ACCESS_CASINO_2 411 //Used for the Casino POI
+STANDARD_ACCESS_DATUM(ACCESS_CASINO_2,  misc/casinoPOI2, "Casino 2")
+
+#define ACCESS_CASINO_3 412 //Used for the Casino POI
+STANDARD_ACCESS_DATUM(ACCESS_CASINO_3,  misc/casinoPOI3, "Casino 3")

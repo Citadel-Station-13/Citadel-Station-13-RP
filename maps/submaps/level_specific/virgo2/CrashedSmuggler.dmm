@@ -50,11 +50,6 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
-"eO" = (
-/obj/structure/alien/weeds/node,
-/mob/living/simple_mob/animal/space/alien/drone,
-/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
-/area/submap/virgo2/CrashedSmuggler)
 "fa" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -199,11 +194,6 @@
 	},
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
-"sT" = (
-/obj/structure/alien/weeds,
-/mob/living/simple_mob/animal/space/alien/sentinel/praetorian,
-/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
-/area/submap/virgo2/CrashedSmuggler)
 "tf" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor/virgo2,
@@ -268,11 +258,6 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
-"xR" = (
-/obj/structure/alien/weeds/node,
-/mob/living/simple_mob/animal/space/alien/queen/empress,
-/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
-/area/submap/virgo2/CrashedSmuggler)
 "ym" = (
 /obj/machinery/door/blast/regular{
 	name = "Crash Shutter"
@@ -302,7 +287,7 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 4
 	},
-/obj/item/gun/ballistic/revolver/mateba,
+/obj/item/gun/projectile/ballistic/revolver/mateba,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "BR" = (
@@ -454,11 +439,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
-"IB" = (
-/obj/structure/alien/weeds/node,
-/mob/living/simple_mob/animal/space/alien/sentinel,
-/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
-/area/submap/virgo2/CrashedSmuggler)
 "IO" = (
 /obj/machinery/door/window/northright,
 /turf/simulated/floor/tiled/techfloor/virgo2,
@@ -508,11 +488,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
-"No" = (
-/obj/structure/alien/weeds,
-/mob/living/simple_mob/animal/space/alien/sentinel,
-/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
-/area/submap/virgo2/CrashedSmuggler)
 "OE" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
@@ -648,11 +623,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
-"ZN" = (
-/obj/structure/alien/weeds,
-/mob/living/simple_mob/animal/space/alien/drone,
-/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
-/area/submap/virgo2/CrashedSmuggler)
 
 (1,1,1) = {"
 Dj
@@ -751,7 +721,7 @@ HE
 Ps
 gX
 zl
-eO
+Gf
 RJ
 zl
 zl
@@ -830,7 +800,7 @@ OR
 gX
 zl
 Gh
-No
+Gh
 VT
 zl
 zl
@@ -869,7 +839,7 @@ zl
 zl
 Gh
 Gh
-xR
+Gf
 zl
 gX
 in
@@ -958,7 +928,7 @@ ie
 ef
 gX
 zl
-ZN
+Gh
 Gh
 zl
 zl
@@ -972,7 +942,7 @@ jq
 jq
 zl
 zl
-sT
+Gh
 Gf
 zl
 gX
@@ -1089,7 +1059,7 @@ gX
 zl
 zl
 Gh
-No
+Gh
 zl
 zl
 zl
@@ -1166,7 +1136,7 @@ KS
 OR
 Gh
 Gh
-ZN
+Gh
 Gh
 Gh
 zl
@@ -1180,14 +1150,14 @@ jq
 zl
 zl
 Gh
-sT
-EY
-Gh
-Gh
 Gh
 EY
 Gh
-eO
+Gh
+Gh
+EY
+Gh
+Gf
 EY
 EY
 Gh
@@ -1215,7 +1185,7 @@ EY
 kv
 EY
 EY
-No
+Gh
 Gh
 Gf
 Gh
@@ -1230,13 +1200,13 @@ Dj
 Dj
 jq
 zl
-IB
+Gf
 Gh
 gv
 jf
 mP
 EY
-ZN
+Gh
 Gh
 Gh
 Gf
@@ -1269,7 +1239,7 @@ Gh
 gv
 Gh
 Gh
-ZN
+Gh
 Gh
 Gh
 zl

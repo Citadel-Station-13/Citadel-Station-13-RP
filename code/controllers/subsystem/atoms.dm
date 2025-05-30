@@ -1,97 +1,129 @@
-#define BAD_INIT_QDEL_BEFORE 1
-#define BAD_INIT_DIDNT_INIT 2
-#define BAD_INIT_SLEPT 4
-#define BAD_INIT_NO_HINT 8
-
 SUBSYSTEM_DEF(atoms)
 	name = "Atoms"
 	init_order = INIT_ORDER_ATOMS
+	init_stage = INIT_STAGE_WORLD
 	subsystem_flags = SS_NO_FIRE
 
-	var/old_subsystem_initialized
+	/// A stack of list(source, desired initialized state)
+	/// We read the source of init changes from the last entry, and assert that all changes will come with a reset
+	var/list/initialized_state = list()
+	var/base_initialized
 
 	var/list/late_loaders = list()
 
 	var/list/BadInitializeCalls = list()
 
-/datum/controller/subsystem/atoms/Initialize(timeofday)
-	//GLOB.fire_overlay.appearance_flags = RESET_COLOR
-	//setupGenetics() //to set the mutations' sequence
-	initialized = INITIALIZATION_INNEW_MAPLOAD
-	InitializeAtoms()
-	return ..()
+	///initAtom() adds the atom its creating to this list iff InitializeAtoms() has been given a list to populate as an argument
+	var/list/created_atoms
 
-/datum/controller/subsystem/atoms/proc/InitializeAtoms(list/atoms)
-	if(initialized == INITIALIZATION_INSSATOMS)
+	/// Atoms that will be deleted once the subsystem is initialized
+	var/list/queued_deletions = list()
+
+	var/init_start_time
+
+	#ifdef PROFILE_MAPLOAD_INIT_ATOM
+	var/list/mapload_init_times = list()
+	#endif
+
+	/// Status to use for atom New() / Initialize().
+	var/atom_init_status = ATOM_INIT_IN_SUBSYSTEM
+
+/datum/controller/subsystem/atoms/Initialize(timeofday)
+	init_start_time = world.time
+
+	atom_init_status = ATOM_INIT_IN_NEW_MAPLOAD
+	InitializeAtoms()
+	atom_init_status = ATOM_INIT_IN_NEW_REGULAR
+
+	return SS_INIT_SUCCESS
+
+/datum/controller/subsystem/atoms/proc/InitializeAtoms(list/atoms, list/atoms_to_return)
+	if(atom_init_status == ATOM_INIT_IN_SUBSYSTEM)
 		return
 
-	initialized = INITIALIZATION_INNEW_MAPLOAD
+	// Generate a unique mapload source for this run of InitializeAtoms
+	var/static/uid = 0
+	uid = (uid + 1) % (SHORT_REAL_LIMIT - 1)
+	var/source = "subsystem init [uid]"
+	set_tracked_initalized(ATOM_INIT_IN_NEW_MAPLOAD, source)
 
-	LAZYINITLIST(late_loaders)
-
-	var/count
-	var/list/mapload_arg = list(TRUE)
-	if(atoms)
-		count = atoms.len
-		for(var/I in atoms)
-			var/atom/A = I
-			if(!(A.atom_flags & ATOM_INITIALIZED))
-				InitAtom(I, mapload_arg)
-				CHECK_TICK
-	else
-		count = 0
-		for(var/atom/A in world)
-			if(!(A.atom_flags & ATOM_INITIALIZED))
-				InitAtom(A, mapload_arg)
-				++count
-				CHECK_TICK
-
-	testing("Initialized [count] atoms")
-	pass(count)
-
-	initialized = INITIALIZATION_INNEW_REGULAR
+	// This may look a bit odd, but if the actual atom creation runtimes for some reason, we absolutely need to set atom_init_status BACK
+	CreateAtoms(atoms, atoms_to_return, source)
+	clear_tracked_initalize(source)
 
 	if(late_loaders.len)
-		for(var/I in late_loaders)
-			var/atom/A = I
+		for(var/I in 1 to late_loaders.len)
+			var/atom/A = late_loaders[I]
+			//I hate that we need this
+			if(QDELETED(A))
+				continue
 			A.LateInitialize()
+			CHECK_TICK
 		testing("Late initialized [late_loaders.len] atoms")
 		late_loaders.Cut()
 
-/datum/controller/subsystem/atoms/proc/InitAtom(atom/A, list/arguments)
-	var/the_type = A.type
-	if(QDELING(A))
-		BadInitializeCalls[the_type] |= BAD_INIT_QDEL_BEFORE
-		return TRUE
+	if (created_atoms)
+		atoms_to_return += created_atoms
+		created_atoms = null
 
-	var/start_tick = world.time
+	for (var/queued_deletion in queued_deletions)
+		qdel(queued_deletion)
 
-	var/result = A.Initialize(arglist(arguments))
+	testing("[queued_deletions.len] atoms were queued for deletion.")
+	queued_deletions.Cut()
 
-	if(start_tick != world.time)
-		BadInitializeCalls[the_type] |= BAD_INIT_SLEPT
+	#ifdef PROFILE_MAPLOAD_INIT_ATOM
+	rustg_file_write(json_encode(mapload_init_times), "[GLOB.log_directory]/init_times.json")
+	#endif
 
-	var/qdeleted = FALSE
+/// Actually creates the list of atoms. Exists solely so a runtime in the creation logic doesn't cause initialized to totally break
+/datum/controller/subsystem/atoms/proc/CreateAtoms(list/atoms, list/atoms_to_return = null, mapload_source = null)
+	if (atoms_to_return)
+		LAZYINITLIST(created_atoms)
 
-	if(result != INITIALIZE_HINT_NORMAL)
-		switch(result)
-			if(INITIALIZE_HINT_LATELOAD)
-				if(arguments[1])	//mapload
-					late_loaders += A
-				else
-					A.LateInitialize()
-			if(INITIALIZE_HINT_QDEL)
-				qdel(A)
-				qdeleted = TRUE
-			else
-				BadInitializeCalls[the_type] |= BAD_INIT_NO_HINT
+	#ifdef TESTING
+	var/count
+	#endif
 
-	if(!A)	//possible harddel
-		qdeleted = TRUE
-	else if(!(A.atom_flags & ATOM_INITIALIZED))
-		BadInitializeCalls[the_type] |= BAD_INIT_DIDNT_INIT
+	var/list/mapload_arg = list(TRUE)
 
-	return qdeleted || QDELING(A)
+	if(atoms)
+		#ifdef TESTING
+		count = atoms.len
+		#endif
+
+		for(var/I in 1 to atoms.len)
+			var/atom/A = atoms[I]
+			if(!(A.atom_flags & ATOM_INITIALIZED))
+				// Unrolled CHECK_TICK setup to let us enable/disable mapload based off source
+				if(TICK_CHECK)
+					clear_tracked_initalize(mapload_source)
+					stoplag()
+					if(mapload_source)
+						set_tracked_initalized(ATOM_INIT_IN_NEW_MAPLOAD, mapload_source)
+				PROFILE_INIT_ATOM_BEGIN()
+				InitAtom(A, TRUE, mapload_arg)
+				PROFILE_INIT_ATOM_END(A)
+	else
+		#ifdef TESTING
+		count = 0
+		#endif
+
+		for(var/atom/A as anything in world)
+			if(!(A.atom_flags & ATOM_INITIALIZED))
+				PROFILE_INIT_ATOM_BEGIN()
+				InitAtom(A, FALSE, mapload_arg)
+				PROFILE_INIT_ATOM_END(A)
+				#ifdef TESTING
+				++count
+				#endif
+				if(TICK_CHECK)
+					clear_tracked_initalize(mapload_source)
+					stoplag()
+					if(mapload_source)
+						set_tracked_initalized(ATOM_INIT_IN_NEW_MAPLOAD, mapload_source)
+
+	testing("Initialized [count] atoms")
 
 /**
  * immediately creates and inits an atom
@@ -103,21 +135,78 @@ SUBSYSTEM_DEF(atoms)
  * * ... - rest of args are passed to new() / Initialize().
  */
 /datum/controller/subsystem/atoms/proc/instance_atom_immediate(path, mapload, atom/where, ...)
-	var/old_initialized = initialized
-	initialized = mapload? INITIALIZATION_INNEW_MAPLOAD : INITIALIZATION_INNEW_REGULAR
-	var/atom/created = new path(arglist(args.Copy()))
-	initialized = old_initialized
+	SHOULD_NOT_SLEEP(TRUE)
+	var/old_init_status = atom_init_status
+	atom_init_status = mapload? ATOM_INIT_IN_NEW_MAPLOAD : ATOM_INIT_IN_NEW_REGULAR
+	var/atom/created = new path(arglist(args.Copy(3)))
+	atom_init_status = old_init_status
 	return created
 
-/datum/controller/subsystem/atoms/proc/map_loader_begin()
-	old_subsystem_initialized = initialized
-	initialized = INITIALIZATION_INSSATOMS
+/**
+ * immediately creates and inits an atom with a preloader callback.
+ *
+ * @params
+ * * path - typepath
+ * * mapload - treat as mapload?
+ * * preload_call - callback to invoke with (created) for the created atom. This is not allowed to sleep.
+ * * where - location to init at
+ * * ... - rest of args are passed to new() / Initialize().
+ */
+/datum/controller/subsystem/atoms/proc/instance_atom_immediate_with_preloader(path, mapload, datum/callback/preload_call, atom/where, ...)
+	SHOULD_NOT_SLEEP(TRUE)
+	var/old_init_status = atom_init_status
+	atom_init_status = ATOM_INIT_IN_SUBSYSTEM
+	var/atom/created = new path(arglist(args.Copy(4)))
+	preload_call.invoke_no_sleep(created)
+	atom_init_status = mapload? ATOM_INIT_IN_NEW_MAPLOAD : ATOM_INIT_IN_NEW_REGULAR
+	// this sets 'where' to if we should be mapload.
+	// this is acceptable because args[4] ('where') is not used again.
+	args[4] = mapload
+	InitAtom(created, FALSE, args.Copy(4))
+	atom_init_status = old_init_status
+	return created
 
-/datum/controller/subsystem/atoms/proc/map_loader_stop()
-	initialized = old_subsystem_initialized
+/datum/controller/subsystem/atoms/proc/map_loader_begin(source)
+	set_tracked_initalized(ATOM_INIT_IN_SUBSYSTEM, source)
+
+/datum/controller/subsystem/atoms/proc/map_loader_stop(source)
+	clear_tracked_initalize(source)
+
+/// Returns the source currently modifying SSatom's init behavior
+/datum/controller/subsystem/atoms/proc/get_initialized_source()
+	var/state_length = length(initialized_state)
+	if(!state_length)
+		return null
+	return initialized_state[state_length][1]
+
+/// Use this to set initialized to prevent error states where the old initialized is overridden, and we end up losing all context
+/// Accepts a state and a source, the most recent state is used, sources exist to prevent overriding old values accidentally
+/datum/controller/subsystem/atoms/proc/set_tracked_initalized(state, source)
+	if(!length(initialized_state))
+		base_initialized = atom_init_status
+	initialized_state += list(list(source, state))
+	atom_init_status = state
+
+/datum/controller/subsystem/atoms/proc/clear_tracked_initalize(source)
+	if(!length(initialized_state))
+		return
+	for(var/i in length(initialized_state) to 1 step -1)
+		if(initialized_state[i][1] == source)
+			initialized_state.Cut(i, i+1)
+			break
+
+	if(!length(initialized_state))
+		atom_init_status = base_initialized
+		base_initialized = ATOM_INIT_IN_NEW_REGULAR
+		return
+	atom_init_status = initialized_state[length(initialized_state)][2]
+
+/// Returns TRUE if anything is currently being initialized
+/datum/controller/subsystem/atoms/proc/initializing_something()
+	return length(initialized_state) > 1
 
 /datum/controller/subsystem/atoms/proc/init_map_bounds(list/bounds)
-	if (initialized == INITIALIZATION_INSSATOMS)
+	if (atom_init_status == ATOM_INIT_IN_SUBSYSTEM)
 		return	// Let proper initialisation handle it later
 
 	var/prev_shuttle_queue_state = SSshuttle.block_init_queue
@@ -165,36 +254,13 @@ SUBSYSTEM_DEF(atoms)
 
 	admin_notice("<span class='danger'>Submap initializations finished.</span>", R_DEBUG)
 
-/datum/controller/subsystem/atoms/Recover()
-	initialized = SSatoms.initialized
-	if(initialized == INITIALIZATION_INNEW_MAPLOAD)
-		InitializeAtoms()
-	old_subsystem_initialized = SSatoms.old_subsystem_initialized
-	BadInitializeCalls = SSatoms.BadInitializeCalls
 
-/*
-/datum/controller/subsystem/atoms/proc/setupGenetics()
-	var/list/mutations = subtypesof(/datum/mutation/human)
-	shuffle_inplace(mutations)
-	for(var/A in subtypesof(/datum/generecipe))
-		var/datum/generecipe/GR = A
-		GLOB.mutation_recipes[initial(GR.required)] = initial(GR.result)
-	for(var/i in 1 to LAZYLEN(mutations))
-		var/path = mutations[i] //byond gets pissy when we do it in one line
-		var/datum/mutation/human/B = new path ()
-		B.alias = "Mutation #[i]"
-		GLOB.all_mutations[B.type] = B
-		GLOB.full_sequences[B.type] = generate_gene_sequence(B.blocks)
-		if(B.locked)
-			continue
-		if(B.quality == POSITIVE)
-			GLOB.good_mutations |= B
-		else if(B.quality == NEGATIVE)
-			GLOB.bad_mutations |= B
-		else if(B.quality == MINOR_NEGATIVE)
-			GLOB.not_good_mutations |= B
-		CHECK_TICK
-*/
+/datum/controller/subsystem/atoms/Recover()
+	atom_init_status = SSatoms.atom_init_status
+	if(atom_init_status == ATOM_INIT_IN_NEW_MAPLOAD)
+		InitializeAtoms()
+	initialized_state = SSatoms.initialized_state
+	BadInitializeCalls = SSatoms.BadInitializeCalls
 
 /datum/controller/subsystem/atoms/proc/InitLog()
 	. = ""
@@ -202,13 +268,21 @@ SUBSYSTEM_DEF(atoms)
 		. += "Path : [path] \n"
 		var/fails = BadInitializeCalls[path]
 		if(fails & BAD_INIT_DIDNT_INIT)
-			. += "- Didn't call atom/Initialize()\n"
+			. += "- Didn't call atom/Initialize(mapload)\n"
 		if(fails & BAD_INIT_NO_HINT)
 			. += "- Didn't return an Initialize hint\n"
 		if(fails & BAD_INIT_QDEL_BEFORE)
-			. += "- Qdel'd in New()\n"
+			. += "- Qdel'd before Initialize proc ran\n"
 		if(fails & BAD_INIT_SLEPT)
 			. += "- Slept during Initialize()\n"
+
+/// Prepares an atom to be deleted once the atoms SS is initialized.
+/datum/controller/subsystem/atoms/proc/prepare_deletion(atom/target)
+	if (atom_init_status == ATOM_INIT_IN_NEW_REGULAR)
+		// Atoms SS has already completed, just kill it now.
+		qdel(target)
+	else
+		queued_deletions += WEAKREF(target)
 
 /datum/controller/subsystem/atoms/Shutdown()
 	var/initlog = InitLog()

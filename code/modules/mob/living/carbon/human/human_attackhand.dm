@@ -25,12 +25,12 @@
 			return u_attack
 	return null
 
-/mob/living/carbon/human/attack_hand(mob/user, list/params)
+/mob/living/carbon/human/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	var/datum/gender/TT = GLOB.gender_datums[user.get_visible_gender()]
 	var/mob/living/carbon/human/H = user
 	if(istype(H))
 		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
-		if(H.hand)
+		if(H.active_hand % 2)
 			temp = H.organs_by_name["l_hand"]
 		if(!temp || !temp.is_usable())
 			to_chat(H, "<font color='red'>You can't use your hand.</font>")
@@ -53,9 +53,11 @@
 				visible_message("<font color='red'><B>[H] reaches for [src], but misses!</B></font>")
 				return FALSE
 
-		if(H != src && check_shields(0, null, H, H.zone_sel.selecting, H.name))
-			H.do_attack_animation(src)
-			return FALSE
+		if(user.a_intent != INTENT_HARM)
+			var/shieldcall_results = atom_shieldcall_handle_touch(new /datum/event_args/actor/clickchain(user))
+			if(shieldcall_results & SHIELDCALL_FLAGS_BLOCK_ATTACK)
+				H.do_attack_animation(src)
+				return FALSE
 
 	if(istype(user,/mob/living/carbon))
 		var/mob/living/carbon/C = user
@@ -90,7 +92,6 @@
 			if(!G)	//the grab will delete itself in New if affecting is anchored
 				return
 			L.put_in_active_hand(G)
-			G.synch()
 			LAssailant = L
 
 			H.do_attack_animation(src)
@@ -102,10 +103,9 @@
 		if(INTENT_HARM)
 
 			if(L.zone_sel.selecting == "mouth" && wear_mask && istype(wear_mask, /obj/item/grenade))
-				var/obj/item/grenade/G = wear_mask
-				if(!G.active)
+				var/obj/item/grenade/simple/G = wear_mask
+				if(istype(G) && !G.activated && G.activate_inhand(e_args))
 					visible_message("<span class='danger'>\The [L] pulls the pin from \the [src]'s [G.name]!</span>")
-					G.activate(L)
 					update_inv_wear_mask()
 				else
 					to_chat(L, "<span class='warning'>\The [G] is already primed! Run!</span>")
@@ -193,6 +193,11 @@
 			// See what attack they use
 			var/datum/unarmed_attack/attack = H.get_unarmed_attack(src, hit_zone)
 			if(!attack)
+				return FALSE
+
+			var/shieldcall_results = atom_shieldcall_handle_unarmed_melee(attack, new /datum/event_args/actor/clickchain(user))
+			if(shieldcall_results & SHIELDCALL_FLAGS_BLOCK_ATTACK)
+				H.do_attack_animation(src)
 				return FALSE
 
 			if(attack.unarmed_override(H, src, hit_zone))
@@ -285,7 +290,7 @@
 					return
 
 				//Actually disarm them
-				drop_all_held_items()
+				drop_held_items()
 
 				visible_message("<span class='danger'>[L] has disarmed [src]!</span>")
 				playsound(src, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
@@ -321,20 +326,14 @@
 	var/obj/item/organ/external/affecting = get_organ(ran_zone(dam_zone))
 	var/armor_block = run_armor_check(affecting, armor_type, armor_pen)
 	var/armor_soak = get_armor_soak(affecting, armor_type, armor_pen)
-	apply_damage(damage, BRUTE, affecting, armor_block, armor_soak, sharp = a_sharp, edge = a_edge)
+	apply_damage(damage, DAMAGE_TYPE_BRUTE, affecting, armor_block, armor_soak, sharp = a_sharp, edge = a_edge)
 	update_health()
 	return TRUE
 
 //Used to attack a joint through grabbing
 /mob/living/carbon/human/proc/grab_joint(var/mob/living/user, var/def_zone)
-	var/has_grab = 0
-	for(var/obj/item/grab/G in list(user.l_hand, user.r_hand))
-		if(G.affecting == src && G.state == GRAB_NECK)
-			has_grab = 1
-			break
-
-	if(!has_grab)
-		return FALSE
+	if(user.check_grab(src) < GRAB_NECK)
+		return
 
 	if(!def_zone) def_zone = user.zone_sel.selecting
 	var/target_zone = check_zone(def_zone)
@@ -359,20 +358,11 @@
 		success = TRUE
 		stop_pulling()
 
-	if(istype(l_hand, /obj/item/grab))
-		var/obj/item/grab/lgrab = l_hand
-		if(lgrab.affecting)
-			visible_message("<span class='danger'>[user] has broken [src]'s grip on [lgrab.affecting]!</span>")
+	for(var/obj/item/grab/grab as anything in get_held_items_of_type(/obj/item/grab))
+		if(grab.affecting)
+			visible_message("<span class='danger'>[user] has broken [src]'s grip on [grab.affecting]!</span>")
 			success = TRUE
-		spawn(1)
-			qdel(lgrab)
-	if(istype(r_hand, /obj/item/grab))
-		var/obj/item/grab/rgrab = r_hand
-		if(rgrab.affecting)
-			visible_message("<span class='danger'>[user] has broken [src]'s grip on [rgrab.affecting]!</span>")
-			success = TRUE
-		spawn(1)
-			qdel(rgrab)
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), grab)
 	return success
 
 /*
@@ -425,7 +415,7 @@
 	for(var/datum/unarmed_attack/u_attack in species.unarmed_attacks)
 		dat += "<b>Primarily [u_attack.attack_name] </b><br/><br/><br/>"
 
-	src << browse(dat, "window=checkattack")
+	src << browse(HTML_SKELETON(dat), "window=checkattack")
 	return
 
 /mob/living/carbon/human/check_attacks()
@@ -440,7 +430,7 @@
 		else
 			dat += "<b>Primarily [u_attack.attack_name]</b> - <a href='byond://?src=\ref[src];default_attk=\ref[u_attack]'>set default</a><br/><br/><br/>"
 
-	src << browse(dat, "window=checkattack")
+	src << browse(HTML_SKELETON(dat), "window=checkattack")
 
 /mob/living/carbon/human/Topic(href, href_list)
 	if(href_list["default_attk"])

@@ -64,7 +64,7 @@
 	if(total_spawns > 0)
 		total_spawns--
 	if(mob_faction)
-		L.faction = mob_faction
+		L.set_iff_factions(mob_faction)
 	return L
 
 /obj/structure/mob_spawner/proc/get_death_report(var/mob/living/L)
@@ -102,7 +102,7 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	if(world.time > last_spawn + spawn_delay)
 		var/turf/mainloc = get_turf(src)
 		for(var/mob/living/A in range(range,mainloc))
-			if ((A.faction != mob_faction) && (A.move_speed < 12))
+			if (((!mob_faction || !A.has_iff_faction(mob_faction))) && (A.move_speed < 12))
 				var/chosen_mob = choose_spawn()
 				if(chosen_mob)
 					do_spawn(chosen_mob)
@@ -118,7 +118,7 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	icon_state = "tunnel_hole"
 	spawn_delay = 20 MINUTES
 	simultaneous_spawns = 1
-	mob_faction = "lavaland"
+	mob_faction = MOB_IFF_FACTION_BIND_TO_MAP
 	total_spawns = 6
 	integrity_flags = NONE
 	anchored = 1
@@ -133,7 +133,7 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	icon_state = "eggy_tunnel"
 	spawn_delay = 10 MINUTES
 	simultaneous_spawns = 3
-	mob_faction = "lavaland"
+	mob_faction = MOB_IFF_FACTION_BIND_TO_MAP
 	total_spawns = 12
 	anchored = 1
 	integrity_flags = NONE
@@ -148,7 +148,7 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	icon_state = "punch"
 	spawn_delay = 10 MINUTES
 	simultaneous_spawns = 6
-	mob_faction = "lavaland"
+	mob_faction = MOB_IFF_FACTION_BIND_TO_MAP
 	total_spawns = 12
 	anchored = 1
 	integrity_flags = NONE
@@ -205,10 +205,10 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	icon = 'icons/screen/actions/actions.dmi'
 	icon_state = "alien_egg"
 	spawn_types = list(
-	/mob/living/simple_mob/animal/space/alien/drone = 20,
-	/mob/living/simple_mob/animal/space/alien = 10,
-	/mob/living/simple_mob/animal/space/alien/sentinel = 5,
-	/mob/living/simple_mob/animal/space/alien/queen = 1
+	/mob/living/simple_mob/animal/space/xenomorph/drone = 20,
+	/mob/living/simple_mob/animal/space/xenomorph/warrior = 10,
+	/mob/living/simple_mob/animal/space/xenomorph/vanguard = 5,
+	/mob/living/simple_mob/animal/space/xenomorph/monarch = 1
 	)
 
 /obj/structure/mob_spawner/scanner/xenos/royal
@@ -224,7 +224,7 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	icon = 'icons/screen/actions/actions.dmi'
 	icon_state = "alien_egg"
 	spawn_types = list(
-	/mob/living/simple_mob/animal/space/alien/queen = 5
+	/mob/living/simple_mob/animal/space/xenomorph/monarch = 5
 	)
 
 ////////////////////////////////////
@@ -279,7 +279,7 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 		my_mob.low_priority = TRUE
 
 		if(faction)
-			my_mob.faction = faction
+			my_mob.set_iff_factions(faction)
 
 		if(atmos_comp)
 			var/turf/T = get_turf(src)
@@ -381,32 +381,30 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	name = "Alien Spawner"
 	prob_fall = 10
 	mobs_to_pick_from = list(
-		/mob/living/simple_mob/animal/space/alien = 1
+		/mob/living/simple_mob/animal/space/xenomorph/drone = 1
 	)
 
 /obj/mob_spawner/alien/easy
 	name = "Easy Alien Spawner"
 	mobs_to_pick_from = list(
-		/mob/living/simple_mob/animal/space/alien = 1,
-		/mob/living/simple_mob/animal/space/alien/drone = 2,
-		/mob/living/simple_mob/animal/space/alien/sentinel = 1,
+		/mob/living/simple_mob/animal/space/xenomorph/warrior = 1,
+		/mob/living/simple_mob/animal/space/xenomorph/drone = 2,
+		/mob/living/simple_mob/animal/space/xenomorph/neurotoxin_spitter = 1,
 	)
 
 /obj/mob_spawner/alien/medium
 	name = "Medium Alien Spawner"
 	mobs_to_pick_from = list(
-		/mob/living/simple_mob/animal/space/alien = 2,
-		/mob/living/simple_mob/animal/space/alien/drone = 3,
-		/mob/living/simple_mob/animal/space/alien/sentinel = 2,
-		/mob/living/simple_mob/animal/space/alien/sentinel/praetorian = 1
+		/mob/living/simple_mob/animal/space/xenomorph/warrior = 2,
+		/mob/living/simple_mob/animal/space/xenomorph/drone = 3,
+		/mob/living/simple_mob/animal/space/xenomorph/neurotoxin_spitter = 2,
 	)
 
 /obj/mob_spawner/alien/hard
 	name = "Hard Alien Spawner"
 	mobs_to_pick_from = list(
-		/mob/living/simple_mob/animal/space/alien = 4,
-		/mob/living/simple_mob/animal/space/alien/sentinel = 4,
-		/mob/living/simple_mob/animal/space/alien/sentinel/praetorian = 2
+		/mob/living/simple_mob/animal/space/xenomorph/warrior = 4,
+		/mob/living/simple_mob/animal/space/xenomorph/acid_spitter = 4,
 	)
 
 /obj/structure/mob_spawner/scanner/corgi
@@ -455,10 +453,10 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	icon = 'icons/screen/actions/actions.dmi'
 	icon_state = "alien_egg"
 	spawn_types = list(
-	/mob/living/simple_mob/animal/space/alien/drone = 20,
-	/mob/living/simple_mob/animal/space/alien = 10,
-	/mob/living/simple_mob/animal/space/alien/sentinel = 5,
-	/mob/living/simple_mob/animal/space/alien/queen = 1
+	/mob/living/simple_mob/animal/space/xenomorph/drone = 20,
+	/mob/living/simple_mob/animal/space/xenomorph/warrior = 10,
+	/mob/living/simple_mob/animal/space/xenomorph/neurotoxin_spitter = 5,
+	/mob/living/simple_mob/animal/space/xenomorph/monarch = 1
 	)
 
 /obj/structure/mob_spawner/scanner/xenos/royal
@@ -474,5 +472,5 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	icon = 'icons/screen/actions/actions.dmi'
 	icon_state = "alien_egg"
 	spawn_types = list(
-	/mob/living/simple_mob/animal/space/alien/queen = 5,
+	/mob/living/simple_mob/animal/space/xenomorph/monarch = 5,
 	)

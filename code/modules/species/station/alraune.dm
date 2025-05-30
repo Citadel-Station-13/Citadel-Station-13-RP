@@ -25,7 +25,7 @@
 	max_additional_languages = 3
 	intrinsic_languages = LANGUAGE_ID_VERNAL
 
-	slowdown = 1 //slow, they're plants. Not as slow as full diona.
+	movement_base_speed = 4.5
 	snow_movement  = -1 // Alraune can still wear shoes. Combined with winter boots, negates light snow slowdown but still slowed on ice.
 	water_movement = -1 // Combined with swimming fins, negates shallow water slowdown.
 	total_health = 100 //standard
@@ -164,7 +164,7 @@
 
 	if(!breath || (breath.total_moles == 0))
 		H.failed_last_breath = 1
-		if(H.health > config_legacy.health_threshold_crit)
+		if(H.health > H.getCritHealth())
 			H.adjustOxyLoss(ALRAUNE_MAX_OXYLOSS)
 		else
 			H.adjustOxyLoss(ALRAUNE_CRIT_MAX_OXYLOSS)
@@ -293,24 +293,24 @@
 		var/bodypart = pick(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_TORSO,BP_GROIN,BP_HEAD)
 		if(breath.temperature >= breath_heat_level_1)
 			if(breath.temperature < breath_heat_level_2)
-				H.apply_damage(HEAT_GAS_DAMAGE_LEVEL_1, BURN, bodypart, used_weapon = "Excessive Heat")
+				H.apply_damage(HEAT_GAS_DAMAGE_LEVEL_1, DAMAGE_TYPE_BURN, bodypart, used_weapon = "Excessive Heat")
 				H.fire_alert = max(H.fire_alert, 2)
 			else if(breath.temperature < breath_heat_level_3)
-				H.apply_damage(HEAT_GAS_DAMAGE_LEVEL_2, BURN, bodypart, used_weapon = "Excessive Heat")
+				H.apply_damage(HEAT_GAS_DAMAGE_LEVEL_2, DAMAGE_TYPE_BURN, bodypart, used_weapon = "Excessive Heat")
 				H.fire_alert = max(H.fire_alert, 2)
 			else
-				H.apply_damage(HEAT_GAS_DAMAGE_LEVEL_3, BURN, bodypart, used_weapon = "Excessive Heat")
+				H.apply_damage(HEAT_GAS_DAMAGE_LEVEL_3, DAMAGE_TYPE_BURN, bodypart, used_weapon = "Excessive Heat")
 				H.fire_alert = max(H.fire_alert, 2)
 
 		else if(breath.temperature <= breath_cold_level_1)
 			if(breath.temperature > breath_cold_level_2)
-				H.apply_damage(COLD_GAS_DAMAGE_LEVEL_1, BURN, bodypart, used_weapon = "Excessive Cold")
+				H.apply_damage(COLD_GAS_DAMAGE_LEVEL_1, DAMAGE_TYPE_BURN, bodypart, used_weapon = "Excessive Cold")
 				H.fire_alert = max(H.fire_alert, 1)
 			else if(breath.temperature > breath_cold_level_3)
-				H.apply_damage(COLD_GAS_DAMAGE_LEVEL_2, BURN, bodypart, used_weapon = "Excessive Cold")
+				H.apply_damage(COLD_GAS_DAMAGE_LEVEL_2, DAMAGE_TYPE_BURN, bodypart, used_weapon = "Excessive Cold")
 				H.fire_alert = max(H.fire_alert, 1)
 			else
-				H.apply_damage(COLD_GAS_DAMAGE_LEVEL_3, BURN, bodypart, used_weapon = "Excessive Cold")
+				H.apply_damage(COLD_GAS_DAMAGE_LEVEL_3, DAMAGE_TYPE_BURN, bodypart, used_weapon = "Excessive Cold")
 				H.fire_alert = max(H.fire_alert, 1)
 
 
@@ -361,7 +361,7 @@
 
 /mob/living/carbon/human/proc/alraune_fruit_pick()
 	set name = "Pick Fruit"
-	set desc = "Pick fruit off of [src]."
+	set desc = "Pick fruit."
 	set category = VERB_CATEGORY_OBJECT
 	set src in view(1)
 

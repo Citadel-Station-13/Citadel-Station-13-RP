@@ -46,7 +46,7 @@ AUTO_FRAME_DATUM(/datum/frame2/fire_alarm, fire_alarm, 'icons/machinery/fire_ala
 			steps = list(
 				/datum/frame_step{
 					request = /obj/item/stack/cable_coil;
-					name = "unsecure circuit";
+					name = "wire circuit";
 					request_amount = 1;
 					stage = "wired";
 					direction = TOOL_DIRECTION_FORWARDS;

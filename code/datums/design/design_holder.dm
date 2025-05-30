@@ -20,7 +20,7 @@
 
 /datum/design_holder/proc/available_designs()
 	RETURN_TYPE(/list)
-	return SSresearch.fetch_designs(available_ids())
+	return RSdesigns.fetch_multi(available_ids())
 
 /datum/design_holder/proc/has_id(id)
 	return id in available_ids()

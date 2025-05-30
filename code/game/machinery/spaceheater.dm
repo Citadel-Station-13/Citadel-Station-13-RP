@@ -20,6 +20,7 @@
 
 /obj/machinery/space_heater/update_icon()
 	cut_overlays()
+	. = ..()
 	icon_state = "sheater[on]"
 	if(panel_open)
 		add_overlay("sheater-open")
@@ -74,7 +75,7 @@
 		..()
 	return
 
-/obj/machinery/space_heater/attack_hand(mob/user, list/params)
+/obj/machinery/space_heater/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	interact(user)
 
 /obj/machinery/space_heater/interact(mob/user as mob)
@@ -190,6 +191,8 @@
 	density = 1
 	anchored = 0
 
+	worth_intrinsic = 500
+
 	use_power = USE_POWER_OFF //is powered directly from cables
 	active_power_usage = 150 KILOWATTS  //BIG POWER
 	idle_power_usage = 500
@@ -230,7 +233,7 @@
 		return
 	..()
 
-/obj/machinery/power/thermoregulator/attack_hand(mob/user, list/params)
+/obj/machinery/power/thermoregulator/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	add_fingerprint(user)
 	interact(user)
 
@@ -285,6 +288,7 @@
 
 /obj/machinery/power/thermoregulator/update_icon()
 	cut_overlays()
+	. = ..()
 	var/list/overlays_to_add = list()
 	if(on)
 		overlays_to_add += "lasergen-on"

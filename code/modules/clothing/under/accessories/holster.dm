@@ -2,8 +2,9 @@
 	name = "shoulder holster"
 	desc = "A handgun holster."
 	icon_state = "holster"
-	slot = ACCESSORY_SLOT_TORSO //Legacy/balance purposes
+	slot = ACCESSORY_SLOT_WEAPON //Legacy/balance purposes
 	concealed_holster = 1
+	worth_intrinsic = 75 // milrp tax is real
 	var/obj/item/holstered = null
 	var/list/can_hold
 	var/list/cant_hold
@@ -66,13 +67,15 @@
 		set_weight_class(initial(w_class))
 		clear_holster()
 
-/obj/item/clothing/accessory/holster/attack_hand(mob/user, list/params)
+/obj/item/clothing/accessory/holster/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if (accessory_host && (slot & ACCESSORY_SLOT_UTILITY))
 		if(holstered)
 			unholster(user)
 	..(user)
 
 /obj/item/clothing/accessory/holster/attackby(obj/item/W as obj, mob/user as mob)
+	if(!user.is_holding(W))
+		return
 	holster(W, user)
 
 /obj/item/clothing/accessory/holster/emp_act(severity)
@@ -137,14 +140,12 @@
 	icon_state = "holster"
 	overlay_state = "holster_low"
 	concealed_holster = 0
-	slot = ACCESSORY_SLOT_WEAPON
 
 /obj/item/clothing/accessory/holster/hip
 	name = "hip holster"
 	desc = "A handgun holster slung low on the hip."
 	icon_state = "holster_hip"
 	concealed_holster = 0
-	slot = ACCESSORY_SLOT_WEAPON
 
 /obj/item/clothing/accessory/holster/leg
 	name = "leg holster"
@@ -152,20 +153,18 @@
 	icon_state = "holster_leg"
 	overlay_state = "holster_leg"
 	concealed_holster = 0
-	slot = ACCESSORY_SLOT_WEAPON
 
 /obj/item/clothing/accessory/holster/machete
 	name = "machete scabbard"
 	desc = "A handsome synthetic leather scabbard with matching belt."
 	icon_state = "holster_machete"
 	concealed_holster = 0
-	can_hold = list(/obj/item/material/knife/machete, /obj/item/melee/energy/hfmachete, /obj/item/reagent_containers/spray, /obj/item/soap,
+	can_hold = list(/obj/item/material/knife/machete, /obj/item/melee/transforming/hfmachete, /obj/item/reagent_containers/spray, /obj/item/soap,
 		/obj/item/c_tube, /obj/item/bikehorn)
 	cant_hold = list(/obj/item/material/knife/machete/armblade)
 	sound_in = 'sound/effects/holster/sheathin.ogg'
 	sound_out = 'sound/effects/holster/sheathout.ogg'
 	holster_verb = "sheathe"
-	slot = ACCESSORY_SLOT_WEAPON
 
 /obj/item/clothing/accessory/holster/machete/occupied
 	var/holstered_spawn = /obj/item/material/knife/machete
@@ -183,13 +182,12 @@
 /obj/item/clothing/accessory/holster/waist/kinetic_accelerator
 	name = "KA holster"
 	desc = "A specialized holster, made specifically for kinetic accelerators."
-	can_hold = list(/obj/item/gun/energy/kinetic_accelerator)
+	can_hold = list(/obj/item/gun/projectile/energy/kinetic_accelerator)
 
 /obj/item/clothing/accessory/holster/holy
 	name = "holy weapon scabbard"
 	desc = "A consecrated morphic scabbard etched with arcane runes. The device of a golden eye has been worked into the buckle."
 	icon_state = "holster_machete"
-	slot = ACCESSORY_SLOT_WEAPON
 	concealed_holster = 0
 	can_hold = list(/obj/item/nullrod)
 	sound_in = 'sound/effects/holster/sheathin.ogg'

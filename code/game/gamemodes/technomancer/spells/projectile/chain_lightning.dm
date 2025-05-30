@@ -24,24 +24,27 @@
 	name = "lightning"
 	icon_state = "lightning"
 	nodamage = 1
-	damage_type = HALLOSS
+	damage_type = DAMAGE_TYPE_HALLOSS
 
-	muzzle_type = /obj/effect/projectile/muzzle/lightning
-	tracer_type = /obj/effect/projectile/tracer/lightning
-	impact_type = /obj/effect/projectile/impact/lightning
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/lightning
+	legacy_tracer_type = /obj/effect/projectile/tracer/lightning
+	legacy_impact_type = /obj/effect/projectile/impact/lightning
 
 	var/bounces = 3				//How many times it 'chains'.  Note that the first hit is not counted as it counts /bounces/.
 	var/list/hit_mobs = list() 	//Mobs which were already hit.
 	var/power = 35				//How hard it will hit for with electrocute_act(), decreases with each bounce.
 
-/obj/projectile/beam/chain_lightning/projectile_attack_mob(var/mob/living/target_mob, var/distance, var/miss_modifier=0)
+// todo: rework this shit :/
+
+/obj/projectile/beam/chain_lightning/on_impact(atom/target, impact_flags, def_zone, efficiency)
+	. = ..()
+	if(. & (PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT | PROJECTILE_IMPACT_BLOCKED))
+		return
+	var/mob/living/target_mob = target
+	if(!isliving(target_mob))
+		return
 	//First we shock the guy we just hit.
-	if(ishuman(target_mob))
-		var/mob/living/carbon/human/H = target_mob
-		var/obj/item/organ/external/affected = H.get_organ(check_zone(BP_TORSO))
-		H.electrocute_act(power, src, H.get_siemens_coefficient_organ(affected), affected, 0)
-	else
-		target_mob.electrocute_act(power, src, 0.75, BP_TORSO)
+	target_mob.electrocute(power * 10, power, 0, NONE, def_zone, src)
 	hit_mobs |= target_mob
 
 	//Each bounce reduces the damage of the bolt.
@@ -70,11 +73,9 @@
 		if(new_target)
 			var/turf/curloc = get_turf(target_mob)
 			curloc.visible_message("<span class='danger'>\The [src] bounces to \the [new_target]!</span>")
-			redirect(new_target.x, new_target.y, curloc, firer)
+			legacy_redirect(new_target.x, new_target.y, curloc, firer)
 			bounces--
-
-			return 0
-	return 1
+			return PROJECTILE_IMPACT_PIERCE
 
 
 

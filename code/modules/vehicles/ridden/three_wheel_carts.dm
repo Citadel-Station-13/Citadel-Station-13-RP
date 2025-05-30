@@ -38,7 +38,7 @@
 
 /obj/vehicle/ridden/cart/security
 	name = "Security Cart"
-	desc = "A ridable electric cart designed for personal transport."
+	desc = "A rideable electric cart designed for personal transport."
 	icon_state = "paddywagon"
 	key_type = /obj/item/key/security_cart
 
@@ -52,7 +52,7 @@
 
 /obj/vehicle/ridden/cart/medical
 	name = "Medical Cart"
-	desc = "A ridable electric cart designed for personal transport"
+	desc = "A rideable electric cart designed for personal transport"
 	icon_state = "medicalbus"
 	key_type = /obj/item/key/medical_cart
 

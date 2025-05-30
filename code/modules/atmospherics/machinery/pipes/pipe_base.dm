@@ -4,6 +4,7 @@
 /obj/machinery/atmospherics/pipe
 	buckle_allowed = TRUE
 	buckle_flags = BUCKLING_REQUIRES_RESTRAINTS
+	buckle_lying = TRUE
 
 	use_power = USE_POWER_OFF
 	hides_underfloor_update_icon = TRUE
@@ -26,7 +27,7 @@
 	// pipes are always underfloor if inside a wall
 	// we just check for loc.density 'cause speed lmao
 	if(loc?.density)
-		hides_underfloor = OBJ_UNDERFLOOR_ALWAYS
+		hides_underfloor = OBJ_UNDERFLOOR_ACTIVE
 	return ..()
 
 /obj/machinery/atmospherics/pipe/proc/pipeline_expansion()
@@ -90,7 +91,7 @@
 
 	if (!W.is_wrench())
 		return ..()
-	if (is_probably_hidden_underfloor())
+	if (is_hidden_underfloor())
 		to_chat(user, "<span class='warning'>You must remove the plating first.</span>")
 		return 1
 	if(unsafe_pressure())

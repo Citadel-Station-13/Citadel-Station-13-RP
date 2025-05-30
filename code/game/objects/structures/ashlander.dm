@@ -299,7 +299,7 @@
 	src.updateUsrDialog()
 	return 0
 
-/obj/structure/ashlander/calcinator/attack_hand(mob/user, list/params)
+/obj/structure/ashlander/calcinator/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	interact(user)
 
 /obj/structure/ashlander/calcinator/AltClick(mob/user)
@@ -387,7 +387,7 @@
 	. = ..()
 	set_light(3, 2, "#9463bb")
 
-/obj/structure/ashlander/statue/attack_hand(mob/user, list/params)
+/obj/structure/ashlander/statue/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	var/choice = tgui_alert(user, "Do you wish to pray to the statue?", "Interact With the Statue", list("Yes", "No"))
 	if(choice != "Yes")
 		return
@@ -397,10 +397,10 @@
 
 /obj/structure/ashlander/statue/proc/Bless(mob/user)
 	var/mob/living/carbon/human/H = usr
-	if(!H.faction == "lavaland")
-		to_chat(user, "<span class='danger'>You feel as if an eye briefly regards you, and then turns away.</span>")
-	else
-		H.add_modifier(/datum/modifier/ashlander_blessing, 15 MINUTES)
+	// if(!H.faction == "lavaland")
+	//		to_chat(user, "<span class='danger'>You feel as if an eye briefly regards you, and then turns away.</span>")
+	// else
+	H.add_modifier(/datum/modifier/ashlander_blessing, 15 MINUTES)
 
 /datum/modifier/ashlander_blessing
 	name = "The Mother's Blessing"

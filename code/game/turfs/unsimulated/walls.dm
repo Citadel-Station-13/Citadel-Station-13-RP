@@ -24,3 +24,10 @@
 
 /turf/unsimulated/wall/transit
 	icon = 'icons/turf/transit_vr.dmi'
+
+/turf/unsimulated/wall/mineral
+	name = "impassable rock"
+	icon = 'icons/turf/walls.dmi'
+	icon_state = "rock-dark"
+
+	smoothing_groups = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS)

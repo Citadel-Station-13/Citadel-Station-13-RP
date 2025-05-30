@@ -28,7 +28,7 @@
 
 /obj/item/clothing/accessory/badge/proc/set_desc(var/mob/living/carbon/human/H)
 
-/obj/item/clothing/accessory/badge/attack_self(mob/user)
+/obj/item/clothing/accessory/badge/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -44,10 +44,10 @@
 		else
 			user.visible_message("<span class='notice'>[user] displays their [src.name].\nIt reads: [badge_string].</span>","<span class='notice'>You display your [src.name]. It reads: [badge_string].</span>")
 
-/obj/item/clothing/accessory/badge/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/clothing/accessory/badge/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	user.visible_message("<span class='danger'>[user] invades [target]'s personal space, thrusting [src] into their face insistently.</span>","<span class='danger'>You invade [target]'s personal space, thrusting [src] into their face insistently.</span>")
 	user.do_attack_animation(target)
-	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam
+	user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN) //to prevent spam
 
 // Sheriff Badge (toy)
 /obj/item/clothing/accessory/badge/sheriff
@@ -56,17 +56,17 @@
 	icon_state = "sheriff"
 	item_state = "goldbadge"
 
-/obj/item/clothing/accessory/badge/sheriff/attack_self(mob/user)
+/obj/item/clothing/accessory/badge/sheriff/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
 	user.visible_message("[user] shows their sheriff badge. There's a new sheriff in town!",\
 		"You flash the sheriff badge to everyone around you!")
 
-/obj/item/clothing/accessory/badge/sheriff/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/clothing/accessory/badge/sheriff/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	user.visible_message("<span class='danger'>[user] invades [target]'s personal space, shoving the sheriff badge into their face!.</span>","<span class='danger'>You invade [target]'s personal space, thrusting the sheriff badge into their face insistently.</span>")
 	user.do_attack_animation(target)
-	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam
+	user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN) //to prevent spam
 
 //.Holobadges.
 /obj/item/clothing/accessory/badge/holo
@@ -79,7 +79,7 @@
 	icon_state = "holobadge-cord"
 	slot_flags = SLOT_MASK | SLOT_TIE | SLOT_BELT
 
-/obj/item/clothing/accessory/badge/holo/attack_self(mob/user)
+/obj/item/clothing/accessory/badge/holo/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -108,7 +108,7 @@
 			var/obj/item/pda/pda = O
 			id_card = pda.id
 
-		if(ACCESS_SECURITY_EQUIPMENT in id_card.access || emagged)
+		if((ACCESS_SECURITY_EQUIPMENT in id_card.access) || emagged)
 			to_chat(user, "You imprint your ID details onto the badge.")
 			set_name(user.real_name)
 		else
@@ -162,6 +162,14 @@
 	new /obj/item/clothing/accessory/badge/holo/cord(src)
 	..()
 	return
+
+//PMD
+
+/obj/item/clothing/accessory/badge/pmd
+	name = "auditor's badge"
+	desc = "An immaculately polished silver badge on black leather. Labeled 'PMD Auditor.'"
+	icon_state = "pmdbadge"
+	badge_string = "PMD Auditor"
 
 // Synthmorph bag / Corporation badges. Primarily used on the robobag, but can be worn. Default is NT.
 

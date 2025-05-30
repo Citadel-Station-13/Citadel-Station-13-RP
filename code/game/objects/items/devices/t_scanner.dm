@@ -21,12 +21,13 @@
 	var/global/list/overlay_cache = list() //cache recent overlays
 
 /obj/item/t_scanner/update_icon()
+	. = ..()
 	icon_state = "t-ray[on]"
 
 /obj/item/t_scanner/AltClick()
 	set_active(!on)
 
-/obj/item/t_scanner/attack_self(mob/user)
+/obj/item/t_scanner/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -121,7 +122,7 @@
 			continue
 
 		for(var/obj/O in T.contents)
-			if(O.hides_underfloor == OBJ_UNDERFLOOR_NEVER)
+			if(!O.is_hidden_underfloor())
 				continue
 			if(!O.invisibility)
 				continue //if it's already visible don't need an overlay for it

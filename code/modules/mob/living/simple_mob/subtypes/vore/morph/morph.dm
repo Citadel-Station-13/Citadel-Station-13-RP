@@ -9,7 +9,7 @@
 	icon_state = "morph"
 	icon_living = "morph"
 	icon_dead = "morph_dead"
-	movement_cooldown = 1
+	movement_base_speed = 10 / 1
 	status_flags = STATUS_CAN_PUSH
 	pass_flags = ATOM_PASS_TABLE
 	mob_bump_flag = SLIME
@@ -40,7 +40,6 @@
 	meat_amount = 2
 
 	showvoreprefs = 0
-	vore_active = 1
 
 	var/morphed = FALSE
 	var/tooltip = TRUE
@@ -113,7 +112,7 @@
 	//Morphed is weaker
 	legacy_melee_damage_lower = melee_damage_disguised
 	legacy_melee_damage_upper = melee_damage_disguised
-	movement_cooldown = 5
+	movement_base_speed = 10 / 5
 
 	morph_time = world.time + MORPH_COOLDOWN
 	return
@@ -143,7 +142,7 @@
 	//Baseline stats
 	legacy_melee_damage_lower = initial(legacy_melee_damage_lower)
 	legacy_melee_damage_upper = initial(legacy_melee_damage_upper)
-	movement_cooldown = initial(movement_cooldown)
+	movement_base_speed = initial(movement_base_speed)
 
 	morph_time = world.time + MORPH_COOLDOWN
 
@@ -172,13 +171,7 @@
 		return
 	return ..()
 
-/mob/living/simple_mob/vore/hostile/morph/update_transform()
-	if(morphed)
-		var/matrix/old_matrix = transform
-		var/matrix/M = matrix()
-		M.Scale(icon_scale_x, icon_scale_y)
-		M.Turn(icon_rotation)
-		src.transform = M
-		SEND_SIGNAL(src, COMSIG_MOB_UPDATE_TRANSFORM, old_matrix, M)
-	else
-		..()
+/mob/living/simple_mob/vore/hostile/morph/base_transform(matrix/applying)
+	var/old_size_multiplier = size_multiplier
+	. = ..()
+	size_multiplier = old_size_multiplier

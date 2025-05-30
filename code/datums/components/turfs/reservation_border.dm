@@ -8,6 +8,7 @@
  * todo: allow simulation of specific atmos instead of just RESERVED_TURF_TYPe
  */
 /datum/component/reservation_border
+	can_transfer = TRUE
 	var/atom/movable/mirage_border/holder1
 	var/atom/movable/mirage_border/holder2
 	var/atom/movable/mirage_border/holder3
@@ -39,7 +40,7 @@
 	. = ..()
 	var/turf/T = parent
 	T.set_opacity(TRUE)
-	RegisterSignal(parent, COMSIG_ATOM_ENTERED, .proc/transit)
+	RegisterSignal(parent, COMSIG_ATOM_ENTERED, PROC_REF(transit))
 	rebuild()
 
 /datum/component/reservation_border/UnregisterFromParent()

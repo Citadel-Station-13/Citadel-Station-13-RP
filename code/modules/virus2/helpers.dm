@@ -178,3 +178,7 @@
 				if(V && V.spreadtype != vector) continue
 				if(!infection_spreading_check(victim, V.spreadtype)) continue
 				infect_virus2(src,V)
+
+/proc/legacy_virus2_access_blood_mixture(datum/reagent_holder/reagents) as /datum/blood_mixture
+	RETURN_TYPE(/datum/blood_mixture)
+	return reagents?.reagent_datas?[/datum/reagent/blood::id]

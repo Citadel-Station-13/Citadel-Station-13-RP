@@ -54,7 +54,7 @@
 	else
 		..()
 
-/obj/structure/bookcase/attack_hand(mob/user, list/params)
+/obj/structure/bookcase/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(contents.len)
 		var/obj/item/book/choice = input("Which book would you like to remove from the shelf?") as null|obj in contents
 		if(choice)
@@ -223,7 +223,7 @@
 	var/obj/item/book/book	 //  Currently scanned book
 	var/mode = 0 					// 0 - Scan only, 1 - Scan and Set Buffer, 2 - Scan and Attempt to Check In, 3 - Scan and Attempt to Add to Inventory
 
-/obj/item/barcodescanner/attack_self(mob/user)
+/obj/item/barcodescanner/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

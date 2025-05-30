@@ -67,7 +67,7 @@
 		mind.transfer(O)
 		O.mind.original = O
 	else
-		O.key = key
+		transfer_client_to(O)
 
 	//Languages
 	add_language("Robot Talk", 1)
@@ -133,7 +133,7 @@
 		else if(mind && mind.special_role)
 			O.mind.store_memory("In case you look at this after being borged, the objectives are only here until I find a way to make them not show up for you, as I can't simply delete them without screwing up round-end reporting. --NeoFite")
 	else
-		O.key = key
+		transfer_client_to(O)
 
 	O.forceMove(loc)
 	O.job = "Cyborg"
@@ -169,7 +169,7 @@
 	var/mob/living/carbon/human/new_xeno = create_new_xenomorph(alien_caste,loc)
 
 	new_xeno.a_intent = INTENT_HARM
-	new_xeno.key = key
+	transfer_client_to(new_xeno)
 
 	to_chat(new_xeno, "<B>You are now an alien.</B>")
 	qdel(src)
@@ -190,7 +190,7 @@
 
 	var/mob/living/simple_mob/animal/passive/dog/corgi/new_corgi = new /mob/living/simple_mob/animal/passive/dog/corgi (loc)
 	new_corgi.a_intent = INTENT_HARM
-	new_corgi.key = key
+	transfer_client_to(new_corgi)
 
 	to_chat(new_corgi, "<B>You are now a Corgi. Yap Yap!</B>")
 	qdel(src)
@@ -221,7 +221,7 @@
 
 	var/mob/new_mob = new mobpath(src.loc)
 
-	new_mob.key = key
+	transfer_client_to(new_mob)
 	new_mob.a_intent = INTENT_HARM
 
 
@@ -241,7 +241,7 @@
 
 	var/mob/new_mob = new mobpath(src.loc)
 
-	new_mob.key = key
+	transfer_client_to(new_mob)
 	new_mob.a_intent = INTENT_HARM
 	to_chat(new_mob, "You feel more... animalistic")
 

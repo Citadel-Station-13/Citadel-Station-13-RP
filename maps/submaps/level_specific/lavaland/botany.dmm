@@ -4,97 +4,97 @@
 /area/template_noop)
 "b" = (
 /obj/structure/girder,
-/turf/simulated/floor/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor,
+/area/sector/surt/idleruins)
 "c" = (
 /obj/machinery/seed_storage/xenobotany,
-/turf/simulated/floor/tiled/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/tiled,
+/area/sector/surt/idleruins)
 "f" = (
 /obj/effect/decal/remains,
 /obj/item/clothing/under/rank/hydroponics,
 /obj/item/clothing/suit/storage/toggle/labcoat/green,
 /obj/item/clothing/head/greenbandana,
 /obj/effect/debris/cleanable/blood,
-/turf/simulated/floor/tiled/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/tiled,
+/area/sector/surt/idleruins)
 "k" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/tiled/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/tiled,
+/area/sector/surt/idleruins)
 "m" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil,
-/turf/simulated/floor/outdoors/dirt/lavaland/interior,
-/area/lavaland/idleruins)
+/turf/simulated/floor/outdoors/dirt/indoors,
+/area/sector/surt/idleruins)
 "n" = (
 /obj/machinery/vending/hydronutrients,
-/turf/simulated/floor/tiled/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/tiled,
+/area/sector/surt/idleruins)
 "q" = (
 /obj/structure/bed/roller,
-/turf/simulated/floor/tiled/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/tiled,
+/area/sector/surt/idleruins)
 "r" = (
 /obj/machinery/seed_extractor,
-/turf/simulated/floor/tiled/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/tiled,
+/area/sector/surt/idleruins)
 "u" = (
 /mob/living/simple_mob/mechanical/cyber_horror/ling_cyber_horror/surt,
-/turf/simulated/floor/tiled/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/tiled,
+/area/sector/surt/idleruins)
 "v" = (
 /obj/structure/barricade,
-/turf/simulated/floor/tiled/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/tiled,
+/area/sector/surt/idleruins)
 "B" = (
 /obj/machinery/botany/editor,
-/turf/simulated/floor/tiled/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/tiled,
+/area/sector/surt/idleruins)
 "F" = (
 /obj/structure/reagent_dispensers/watertank/high,
-/turf/simulated/floor/tiled/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/tiled,
+/area/sector/surt/idleruins)
 "H" = (
 /obj/item/reagent_containers/spray/chemsprayer,
-/turf/simulated/floor/tiled/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/tiled,
+/area/sector/surt/idleruins)
 "I" = (
 /turf/template_noop,
-/area/lavaland/idleruins)
+/area/sector/surt/idleruins)
 "M" = (
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/mineral/floor/ignore_mapgen,
+/area/sector/surt/idleruins)
 "N" = (
 /turf/simulated/wall/wood,
-/area/lavaland/idleruins)
+/area/sector/surt/idleruins)
 "P" = (
 /obj/item/reagent_containers/spray/plantbgone,
-/turf/simulated/floor/tiled/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/tiled,
+/area/sector/surt/idleruins)
 "Q" = (
 /obj/effect/debris/cleanable/blood/drip,
-/turf/simulated/floor/tiled/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/tiled,
+/area/sector/surt/idleruins)
 "R" = (
 /obj/item/reagent_containers/spray/plantbgone,
 /obj/structure/table/woodentable,
-/turf/simulated/floor/tiled/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/tiled,
+/area/sector/surt/idleruins)
 "S" = (
 /obj/effect/debris/cleanable/blood/drip,
 /obj/item/material/knife/machete/hatchet,
-/turf/simulated/floor/tiled/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/tiled,
+/area/sector/surt/idleruins)
 "T" = (
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/outdoors/ash_sand,
+/area/sector/surt/idleruins)
 "U" = (
 /obj/item/seeds/killertomatoseed,
-/turf/simulated/floor/tiled/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/tiled,
+/area/sector/surt/idleruins)
 "W" = (
-/turf/simulated/floor/tiled/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/tiled,
+/area/sector/surt/idleruins)
 "X" = (
 /obj/structure/table/rack,
 /obj/item/shovel/spade,
@@ -107,15 +107,15 @@
 /obj/item/reagent_containers/glass/bucket,
 /obj/item/plant_analyzer,
 /obj/item/plant_analyzer,
-/turf/simulated/floor/tiled/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/tiled,
+/area/sector/surt/idleruins)
 "Y" = (
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen,
 /area/template_noop)
 "Z" = (
 /obj/machinery/botany/extractor,
-/turf/simulated/floor/tiled/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/tiled,
+/area/sector/surt/idleruins)
 
 (1,1,1) = {"
 a

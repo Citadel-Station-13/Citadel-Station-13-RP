@@ -175,7 +175,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 
 /obj/item/robot_module/proc/add_languages(var/mob/living/silicon/robot/R)
 	// Stores the languages as they were before receiving the module, and whether they could be synthezized.
-	for(var/datum/language/language_datum in R.languages)
+	for(var/datum/prototype/language/language_datum in R.languages)
 		original_languages[language_datum] = (language_datum in R.speech_synthesizer_langs)
 
 	for(var/language in languages)

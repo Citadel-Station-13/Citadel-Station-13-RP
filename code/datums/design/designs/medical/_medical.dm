@@ -1,3 +1,3 @@
-/datum/design/medical
-	abstract_type = /datum/design/medical
+/datum/prototype/design/medical
+	abstract_type = /datum/prototype/design/medical
 	category = "Medical"

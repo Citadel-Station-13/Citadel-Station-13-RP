@@ -390,6 +390,9 @@ SUBSYSTEM_DEF(throwing)
 
 /**
  * get damage scaling - default handling
+ *
+ * @params
+ * * target - (optional) thing being hit
  */
 /datum/thrownthing/proc/get_damage_multiplier(atom/target)
 	if(!resist)

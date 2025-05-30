@@ -1,12 +1,21 @@
-/datum/material/steel
+GENERATE_MATERIAL_STACKS(/steel)
+DECLARE_MATERIAL(/steel)
 	id = MAT_STEEL
 	name = MAT_STEEL
+
+	display_name = "steel"
+
+	icon = 'icons/materials/metals/steel.dmi'
+	icon_stack_count = 3
+
 	stack_type = /obj/item/stack/material/steel
-	icon_base = 'icons/turf/walls/metal_wall.dmi'
+	icon_base = 'icons/turf/walls/solid_wall.dmi'
 	icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
 	icon_colour = "#666666"
 	table_icon_base = "metal"
 	tgui_icon_key = "metal"
+
+	worth = 2
 
 	// the true neutral material
 
@@ -21,7 +30,7 @@
 	absorption = MATERIAL_RESISTANCE_MODERATE
 	nullification = MATERIAL_RESISTANCE_NONE
 
-/datum/material/steel/generate_recipes()
+/datum/prototype/material/steel/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(
 		name = "dark office chair",
@@ -78,7 +87,7 @@
 	. += create_stack_recipe_datum(
 		name = "rack",
 		product = /obj/structure/table/rack,
-		cost = 1,
+		cost = 2,
 		time = 0.5 SECONDS,
 	)
 	. += create_stack_recipe_datum(
@@ -90,7 +99,7 @@
 	. += create_stack_recipe_datum(
 		name = "canister",
 		product = /obj/machinery/portable_atmospherics/canister,
-		cost = 10,
+		cost = 5,
 		time = 1 SECONDS,
 	)
 	. += create_stack_recipe_datum(
@@ -224,7 +233,7 @@
 	)
 	. += create_stack_recipe_datum(
 		category = "weapons",
-		product = /obj/item/grenade/chem_grenade,
+		product = /obj/item/grenade/simple/chemical,
 		name = "grenade casing",
 		cost = 2,
 	)
@@ -256,8 +265,14 @@
 		cost = 4,
 		time = 3 SECONDS,
 	)
+	. += create_stack_recipe_datum(
+		category = "frames",
+		name = "window tint control frame",
+		product = /obj/item/frame/window_tint_control,
+		cost = 4,
+	)
 
-/datum/material/steel/hull
+/datum/prototype/material/steel/hull
 	id = "steel_hull"
 	name = MAT_STEELHULL
 	stack_type = /obj/item/stack/material/steel/hull
@@ -265,10 +280,10 @@
 	explosion_resistance = 10
 	icon_colour = "#666677"
 
-/datum/material/steel/hull/place_sheet(var/turf/target) //Deconstructed into normal steel sheets.
+/datum/prototype/material/steel/hull/place_sheet(var/turf/target) //Deconstructed into normal steel sheets.
 	new /obj/item/stack/material/steel(target)
 
-/datum/material/steel/holographic
+/datum/prototype/material/steel/holographic
 	id = "steel_holo"
 	name = "holo" + MAT_STEEL
 	display_name = "steel"

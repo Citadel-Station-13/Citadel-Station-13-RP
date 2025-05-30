@@ -27,10 +27,10 @@
 		weapon_edge = 0
 		hit_embed_chance = I.damage_force/(I.w_class*3)
 
-	apply_damage(effective_force, I.damtype, hit_zone, blocked, soaked, sharp=weapon_sharp, edge=weapon_edge, used_weapon=I)
+	apply_damage(effective_force, I.damage_type, hit_zone, blocked, soaked, sharp=weapon_sharp, edge=weapon_edge, used_weapon=I)
 
 	//Melee weapon embedded object code.
-	if (I && I.damtype == BRUTE && !I.anchored && !is_robot_module(I) && I.embed_chance > 0)
+	if (I && I.damage_type == DAMAGE_TYPE_BRUTE && !I.anchored && !is_robot_module(I) && I.embed_chance > 0)
 		var/damage = effective_force
 		if (blocked)
 			damage *= (100 - blocked)/100
@@ -57,52 +57,10 @@
 						return 1
 	return 0
 
-/mob/living/carbon/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null, var/stun = 1)
-	if(status_flags & STATUS_GODMODE)
-		return 0	//godmode
-	if(def_zone == "l_hand" || def_zone == "r_hand") //Diona (And any other potential plant people) hands don't get shocked.
-		if(species.species_flags & IS_PLANT)
-			return 0
-	shock_damage *= siemens_coeff
-	if (shock_damage<1)
-		return 0
-
-	src.apply_damage(shock_damage, BURN, def_zone, used_weapon="Electrocution")
-	playsound(loc, /datum/soundbyte/grouped/sparks, 50, 1, -1)
-	if (shock_damage > 15)
-		src.visible_message(
-			"<span class='warning'>[src] was electrocuted[source ? " by the [source]" : ""]!</span>", \
-			"<span class='danger'>You feel a powerful shock course through your body!</span>", \
-			"<span class='warning'>You hear a heavy electrical crack.</span>" \
-		)
-	else
-		src.visible_message(
-			"<span class='warning'>[src] was shocked[source ? " by the [source]" : ""].</span>", \
-			"<span class='warning'>You feel a shock course through your body.</span>", \
-			"<span class='warning'>You hear a zapping sound.</span>" \
-		)
-
-	if(stun)
-		switch(shock_damage)
-			if(16 to 20)
-				afflict_stun(20 * 2)
-			if(21 to 25)
-				afflict_paralyze(20 * 2)
-			if(26 to 30)
-				afflict_paralyze(20 * 5)
-			if(31 to INFINITY)
-				afflict_paralyze(20 * 10) //This should work for now, more is really silly and makes you lay there forever
-
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-	s.set_up(5, 1, loc)
-	s.start()
-
-	return shock_damage
-
 // Knifing
 /mob/living/carbon/proc/attack_throat(obj/item/W, obj/item/grab/G, mob/user)
 
-	if(!((W.damage_mode & DAMAGE_MODE_EDGE) || W.edge) || !W.damage_force || W.damtype != BRUTE)
+	if(!(W.damage_mode & DAMAGE_MODE_EDGE) || !W.damage_force || W.damage_type != DAMAGE_TYPE_BRUTE)
 		return 0 //unsuitable weapon
 
 	user.visible_message("<span class='danger'>\The [user] begins to slit [src]'s throat with \the [W]!</span>")
@@ -123,7 +81,7 @@
 	var/total_damage = 0
 	for(var/i in 1 to 3)
 		var/damage = min(W.damage_force*1.5, 20)*damage_mod
-		apply_damage(damage, W.damtype, "head", 0, sharp=W.sharp||(W.damage_mode & DAMAGE_MODE_EDGE), edge=W.edge||(W.damage_mode & DAMAGE_MODE_EDGE))
+		apply_damage(damage, W.damage_type, "head", 0, sharp = (W.damage_mode & DAMAGE_MODE_EDGE), edge = (W.damage_mode & DAMAGE_MODE_EDGE))
 		total_damage += damage
 
 	var/oxyloss = total_damage
@@ -150,13 +108,13 @@
 
 /mob/living/carbon/proc/shank_attack(obj/item/W, obj/item/grab/G, mob/user, hit_zone)
 
-	if(!(W.sharp || (W.damage_mode & DAMAGE_MODE_SHARP)) || !W.damage_force || W.damtype != BRUTE)
+	if(!(W.damage_mode & DAMAGE_MODE_SHARP) || !W.damage_force || W.damage_type != DAMAGE_TYPE_BRUTE)
 		return 0 //unsuitable weapon
 
 	user.visible_message("<span class='danger'>\The [user] plunges \the [W] into \the [src]!</span>")
 
 	var/damage = shank_armor_helper(W, G, user)
-	apply_damage(damage, W.damtype, "torso", 0, sharp=W.sharp||(W.damage_mode & DAMAGE_MODE_EDGE), edge=W.edge||(W.damage_mode & DAMAGE_MODE_EDGE))
+	apply_damage(damage, W.damage_type, "torso", 0, sharp = (W.damage_mode & DAMAGE_MODE_EDGE), edge = (W.damage_mode & DAMAGE_MODE_EDGE))
 
 	if(W.attack_sound)
 		playsound(loc, W.attack_sound, 50, 1, -1)
@@ -168,7 +126,7 @@
 /mob/living/carbon/proc/shank_armor_helper(obj/item/W, obj/item/grab/G, mob/user)
 	var/damage = W.damage_force
 	var/damage_mod = 1
-	if(W.edge || (W.damage_mode & DAMAGE_MODE_EDGE))
+	if(W.damage_mode & DAMAGE_MODE_EDGE)
 		damage = damage * 1.25 //small damage bonus for having sharp and edge
 
 	var/obj/item/clothing/suit/worn_suit

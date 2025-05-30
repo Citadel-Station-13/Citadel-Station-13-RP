@@ -85,7 +85,6 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/door/firedoor/LateInitialize()
-	. = ..()
 	if(autoset_dir)
 		for (var/cardinal in GLOB.cardinal)
 			var/turf/step_turf = get_step(src, cardinal)
@@ -161,16 +160,16 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 		return
 	if(!density)
 		return ..()
-	if(istype(AM, /obj/mecha))
-		var/obj/mecha/mecha = AM
-		if(mecha.occupant)
-			var/mob/M = mecha.occupant
+	if(istype(AM, /obj/vehicle/sealed/mecha))
+		var/obj/vehicle/sealed/mecha/mecha = AM
+		if(mecha.occupant_legacy)
+			var/mob/M = mecha.occupant_legacy
 			if(world.time - M.last_bumped <= 10) return //Can bump-open one airlock per second. This is to prevent popup message spam.
 			M.last_bumped = world.time
 			attack_hand(M)
 	return 0
 
-/obj/machinery/door/firedoor/attack_hand(mob/user, list/params)
+/obj/machinery/door/firedoor/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	add_fingerprint(user)
 	if(operating)
 		return//Already doing something.
@@ -346,12 +345,6 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 			"You try to pry \the [src] [density ? "open" : "closed"], but it is welded in place!",\
 			"You hear someone struggle and metal straining.")
 			return
-
-		if(istype(C,/obj/item/material/twohanded/fireaxe))
-			var/obj/item/material/twohanded/fireaxe/F = C
-			if(!F.wielded)
-				return
-
 		if(prying)
 			to_chat(user, "<span class='notice'>Someone's already prying that [density ? "open" : "closed"].</span>")
 			return
@@ -476,9 +469,11 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 
 
 /obj/machinery/door/firedoor/update_icon()
-	var/image/lights_overlay
 	cut_overlays()
+	. = ..()
+
 	set_light(0)
+	var/image/lights_overlay
 	var/do_set_light = FALSE
 
 	if(density)
@@ -505,8 +500,6 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 
 	if(do_set_light)
 		set_light(2, 0.25, COLOR_SUN)
-
-	return
 
 /obj/machinery/door/firedoor/border_only
 /*

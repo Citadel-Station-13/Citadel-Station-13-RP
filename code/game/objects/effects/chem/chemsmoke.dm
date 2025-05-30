@@ -44,7 +44,7 @@
 // Calculates the max range smoke can travel, then gets all turfs in that view range.
 // Culls the selected turfs to a (roughly) circle shape, then calls smokeFlow() to make
 // sure the smoke can actually path to the turfs. This culls any turfs it can't reach.
-/datum/effect_system/smoke_spread/chem/set_up(var/datum/reagents/carry = null, n = 10, c = 0, loca, direct)
+/datum/effect_system/smoke_spread/chem/set_up(var/datum/reagent_holder/carry = null, n = 10, c = 0, loca, direct)
 	range = n * 0.3
 	cardinals = c
 	carry.trans_to_obj(chemholder, carry.total_volume, copy = 1)
@@ -99,16 +99,10 @@
 	if(!location)
 		return
 
-	if(chemholder.reagents.reagent_list.len) //reagent application - only run if there are extra reagents in the smoke
-		for(var/turf/T in wallList)
-			chemholder.reagents.touch_turf(T)
-		for(var/turf/T in targetTurfs)
-			chemholder.reagents.touch_turf(T)
-			for(var/atom/A in T.contents)
-				if(istype(A, /obj/effect/particle_effect/smoke/chem) || istype(A, /mob))
-					continue
-				else if(isobj(A) && (A.atom_flags & ATOM_ABSTRACT))
-					chemholder.reagents.touch_obj(A)
+	var/list/reapplication_exclusion_injection = list()
+	if(length(chemholder.reagents.reagent_volumes))
+		for(var/turf/T in wallList + targetTurfs)
+			chemholder.reagents.perform_uniform_contact(T, 1, null, reapplication_exclusion_injection)
 
 	var/color = chemholder.reagents.get_color() //build smoke icon
 	var/icon/I
@@ -157,8 +151,7 @@
 	else
 		smoke = new /obj/effect/particle_effect/smoke/chem(location)
 
-	if(chemholder.reagents.reagent_list.len)
-		chemholder.reagents.trans_to_obj(smoke, chemholder.reagents.total_volume / dist, copy = 1) //copy reagents to the smoke so mob/breathe() can handle inhaling the reagents
+	chemholder.reagents.transfer_to_holder(smoke.reagents, null, chemholder.reagents.total_volume / dist, TRUE)
 	smoke.icon = I
 	smoke.plane = ABOVE_PLANE
 	smoke.setDir(pick(GLOB.cardinal))
@@ -221,3 +214,5 @@
 	targetTurfs = complete
 
 	return
+
+

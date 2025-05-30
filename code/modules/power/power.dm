@@ -288,7 +288,7 @@
 //source is an object caused electrocuting (airlock, grille, etc)
 //No animations will be performed by this proc.
 /proc/electrocute_mob(mob/living/M as mob, var/power_source, var/obj/source, var/siemens_coeff = 1.0)
-	if(istype(M.loc,/obj/mecha))	return 0	//feckin mechs are dumb
+	if(istype(M.loc,/obj/vehicle/sealed/mecha))	return 0	//feckin mechs are dumb
 	if(issilicon(M))	return 0	//No more robot shocks from machinery
 	var/area/source_area
 	if(istype(power_source,/area))
@@ -347,13 +347,26 @@
 	else
 		power_source = cell
 		shock_damage = cell_damage
-	var/drained_hp = M.electrocute_act(shock_damage, source, siemens_coeff) //zzzzzzap!
-	// 10kw per hp
-	var/drained_energy = drained_hp * 10000
-	if (source_area)
-		source_area.use_power_oneoff(drained_energy)
-	else if (istype(power_source,/datum/powernet))
-		drained_energy = PN.draw_power(drained_energy * 0.001) * 1000
-	else if (istype(power_source, /obj/item/cell))
-		cell.use(DYNAMIC_W_TO_CELL_UNITS(drained_energy, 1))
-	return drained_energy
+	var/stun_calculation
+	if(shock_damage >= 100)
+		stun_calculation = 200
+	else if(shock_damage >= 50)
+		stun_calculation = rand(75, 100)
+	else if(shock_damage >= 30)
+		stun_calculation = rand(35, 50)
+	else if(shock_damage >= 20)
+		stun_calculation = rand(20, 35)
+	else
+		stun_calculation = shock_damage
+	var/list/shock_return = M.electrocute(0, shock_damage * siemens_coeff, stun_calculation, ELECTROCUTE_ACT_FLAG_IGNORE_ARMOR, null, source)
+	pass(shock_return)
+	// // 10kw per hp
+	// var/drained_energy = drained_hp * 10000
+	// if (source_area)
+	// 	source_area.use_power_oneoff(drained_energy)
+	// else if (istype(power_source,/datum/powernet))
+	// 	drained_energy = PN.draw_power(drained_energy * 0.001) * 1000
+	// else if (istype(power_source, /obj/item/cell))
+	// 	cell.use(DYNAMIC_W_TO_CELL_UNITS(drained_energy, 1))
+	// return drained_energy
+	return TRUE

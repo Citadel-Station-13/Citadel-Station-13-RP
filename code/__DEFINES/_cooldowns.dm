@@ -27,6 +27,7 @@
 
 #define TIMER_COOLDOWN_START(cd_source, cd_index, cd_time) LAZYSET(cd_source.cooldowns, cd_index, addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(end_cooldown), cd_source, cd_index), cd_time))
 
+/// Checks if a timer based cooldown is NOT finished.
 #define TIMER_COOLDOWN_CHECK(cd_source, cd_index) LAZYACCESS(cd_source.cooldowns, cd_index)
 
 #define TIMER_COOLDOWN_END(cd_source, cd_index) LAZYREMOVE(cd_source.cooldowns, cd_index)
@@ -63,6 +64,10 @@
 
 // INDEXES FOR VAR COOLDOWNS - DO NOT USE UPPERCASE, DO NOT USE cooldown_, APPENDS ADDED AUTOMATICALLY
 
+#define CD_INDEX_GUN_RACK_CHAMBER rack_chamber
+#define CD_INDEX_GUN_SPIN_CHAMBER spin_chamber
+#define CD_INDEX_GUN_BOLT_ACTION bolt_action
+
 // INDEXES FOR TIMER COOLDOWNS - Must be unique!
 
 //? General
@@ -71,7 +76,8 @@
 #define CD_INDEX_SONAR_NOISE				"sonar_noise"
 #define CD_INDEX_POWER_DRAIN_WARNING		"power_drain_warning"
 
-//? Items
+//? Items ?//
+
 //* /obj/item/tape_recorder
 #define CD_INDEX_TAPE_TRANSLATION			"tape_translation"
 #define CD_INDEX_TAPE_PRINT					"tape_print"
@@ -86,3 +92,10 @@
 //? Structures
 //* /obj/structure/sculpting_block
 #define CD_INDEX_SCULPTING_COOLDOWN			"sculpting_block"
+
+// admin verb cooldowns
+#define CD_INTERNET_SOUND "internet_sound"
+
+//? Mobs ?//
+
+#define CD_INDEX_MOB_VERB_INVERT_SELF "mob-verb-invert-self"

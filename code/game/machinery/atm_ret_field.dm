@@ -8,8 +8,7 @@
 	density = FALSE
 	power_channel = ENVIRON	//so they shut off last
 	use_power = USE_POWER_IDLE
-	idle_power_usage = 10
-	active_power_usage = 2500
+	active_power_usage = 1000
 	var/ispowered = TRUE
 	var/isactive = FALSE
 	var/wasactive = FALSE		//controls automatic reboot after power-loss
@@ -27,17 +26,17 @@
 
 /obj/machinery/atmospheric_field_generator/impassable
 	desc = "An older model of ARF-G that generates an impassable retention field. Works just as well as the modern variety, but is slightly more energy-efficient.<br><br>Note: prolonged immersion in active atmospheric retention fields may have negative long-term health consequences."
-	active_power_usage = 2000
+	active_power_usage = 800
 	field_type = /obj/structure/atmospheric_retention_field/impassable
 
 /obj/machinery/atmospheric_field_generator/perma
 	name = "static atmospheric retention field generator"
 	desc = "A floor-mounted piece of equipment that generates an atmosphere-retaining energy field when powered and activated. This model is designed to always be active, though the field will still drop from loss of power or electromagnetic interference.<br><br>Note: prolonged immersion in active atmospheric retention fields may have negative long-term health consequences."
 	alwaysactive = TRUE
-	active_power_usage = 2000
+	active_power_usage = 800
 
 /obj/machinery/atmospheric_field_generator/perma/impassable
-	active_power_usage = 1500
+	active_power_usage = 800
 	field_type = /obj/structure/atmospheric_retention_field/impassable
 
 /obj/machinery/atmospheric_field_generator/attackby(obj/item/W as obj, mob/user as mob)
@@ -84,7 +83,7 @@
 	. = ..()
 	generate_field()
 
-/obj/machinery/atmospheric_field_generator/update_icon()
+/obj/machinery/atmospheric_field_generator/update_icon_state()
 	if(machine_stat & BROKEN)
 		icon_state = "arfg_broken"
 	else if(hatch_open && wires_intact)
@@ -95,6 +94,7 @@
 		icon_state = "arfg_on"
 	else
 		icon_state = "arfg_off"
+	return ..()
 
 /obj/machinery/atmospheric_field_generator/power_change()
 	var/oldstat
@@ -193,6 +193,7 @@
 
 /obj/structure/atmospheric_retention_field/update_icon()
 	cut_overlays()
+	. = ..()
 	var/list/dirs = list()
 	for(var/obj/structure/atmospheric_retention_field/F in orange(src,1))
 		dirs += get_dir(src, F)
@@ -203,8 +204,6 @@
 	for(var/i = 1 to 4)
 		var/image/I = image(icon, "[basestate][connections[i]]", dir = 1<<(i-1))
 		add_overlay(I)
-
-	return
 
 /obj/structure/atmospheric_retention_field/Initialize(mapload)
 	. = ..()
@@ -221,11 +220,11 @@
 	update_nearby_tiles() //Force ZAS update
 	. = ..()
 
-/obj/structure/atmospheric_retention_field/attack_hand(mob/user, list/params)
+/obj/structure/atmospheric_retention_field/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(density)
-		visible_message("You touch the retention field, and it crackles faintly. Tingly!")
+		to_chat(user, "You touch the retention field, and it crackles faintly. Tingly!")
 	else
-		visible_message("You try to touch the retention field, but pass through it like it isn't even there.")
+		to_chat(user, "You try to touch the retention field, but pass through it like it isn't even there.")
 
 /obj/structure/atmospheric_retention_field/legacy_ex_act()
 	return

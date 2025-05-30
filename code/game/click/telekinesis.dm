@@ -65,7 +65,7 @@ var/const/tk_maxrange = 15
 	desc = "Magic"
 	icon = 'icons/obj/magic.dmi'//Needs sprites
 	icon_state = "2"
-	item_flags = ITEM_DROPDEL | ITEM_NOBLUDGEON
+	item_flags = ITEM_DROPDEL | ITEM_NO_BLUDGEON
 	//item_state = null
 	w_class = WEIGHT_CLASS_HUGE
 	layer = HUD_LAYER_BASE
@@ -80,7 +80,7 @@ var/const/tk_maxrange = 15
 	if(slot != SLOT_ID_HANDS)
 		qdel(src)
 
-/obj/item/tk_grab/attack_self(mob/user)
+/obj/item/tk_grab/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -153,5 +153,6 @@ var/const/tk_maxrange = 15
 
 /obj/item/tk_grab/update_icon()
 	cut_overlays()
+	. = ..()
 	if(focus && focus.icon && focus.icon_state)
 		add_overlay(image(focus.icon,focus.icon_state))

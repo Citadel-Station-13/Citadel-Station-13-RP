@@ -2,6 +2,8 @@
 /obj/item/holder
 	name = "holder"
 	desc = "You shouldn't ever see this."
+	icon = 'icons/system/blank_32x32.dmi'
+	icon_state = ""
 	SET_APPEARANCE_FLAGS(KEEP_TOGETHER | PIXEL_SCALE | TILE_BOUND)
 	slot_flags = SLOT_HEAD | SLOT_HOLSTER
 	show_messages = 1
@@ -72,7 +74,8 @@
 	// appearance clone their ass
 	var/mutable_appearance/MA = new
 	MA.appearance = M
-	MA.plane = plane
+	MA.plane = FLOAT_PLANE
+	MA.layer = FLOAT_LAYER
 	MA.dir = SOUTH
 	add_overlay(MA)
 	name = M.name
@@ -94,6 +97,10 @@
 	else if(isitem(loc))
 		to_chat(escapee, SPAN_WARNING("You struggle free of [loc]."))
 		escapee.forceMove(get_turf(escapee))
+	else if(istype(loc, /atom/movable/storage_indirection) && loc.loc) //Second type how an item can have storage
+		to_chat(escapee, SPAN_WARNING("You struggle free of [loc.loc]."))
+		escapee.forceMove(get_turf(escapee))
+
 
 /obj/item/holder/can_equip(mob/M, slot, mob/user, flags)
 	if(M == held_mob)
@@ -122,6 +129,27 @@
 
 /obj/item/holder/pai
 	origin_tech = list(TECH_DATA = 2)
+
+/obj/item/holder/holosphere_shell
+	origin_tech = list(TECH_DATA = 2) // you monster.
+
+// apply mouse holder behaviour (see mouse.dm) so we can pat them in-hand
+/obj/item/holder/holosphere_shell/attack_self(mob/user, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+	for(var/mob/living/simple_mob/M in src.contents)
+		if((INTENT_HELP) && user.canClick())
+			user.setClickCooldownLegacy(user.get_attack_speed_legacy())
+			user.visible_message("<span class='notice'>[user] [M.response_help] \the [M].</span>")
+
+/obj/item/holder/holosphere_shell/relaymove(var/mob/user, var/direction)
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
+		return
+	var/obj/item/hardsuit/hardsuit = src.get_hardsuit()
+	if(istype(hardsuit))
+		hardsuit.forced_move(direction, user)
+
 
 /obj/item/holder/mouse
 	w_class = WEIGHT_CLASS_TINY

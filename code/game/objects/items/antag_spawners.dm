@@ -48,7 +48,7 @@
 	icon_state = "oldshieldoff"
 	ghost_query_type = /datum/ghost_query/apprentice
 
-/obj/item/antag_spawner/technomancer_apprentice/attack_self(mob/user)
+/obj/item/antag_spawner/technomancer_apprentice/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -69,7 +69,7 @@
 	sparks.start()
 	var/mob/living/carbon/human/H = new/mob/living/carbon/human(T)
 	C.prefs.copy_to(H)
-	H.key = C.key
+	C.transfer_to(H)
 
 	to_chat(H, "<b>You are the Technomancer's apprentice!  Your goal is to assist them in their mission at the [station_name()].</b>")
 	to_chat(H, "<b>Your service has not gone unrewarded, however. Studying under them, you have learned how to use a Manipulation Core \
@@ -97,7 +97,7 @@
 	ghost_query_type = /datum/ghost_query/syndicate_drone
 	var/drone_type = null
 
-/obj/item/antag_spawner/syndicate_drone/attack_self(mob/user)
+/obj/item/antag_spawner/syndicate_drone/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -123,7 +123,7 @@
 	to_chat(C, "<span class='notice'><b>Be sure to examine your currently loaded lawset closely.</b>  It would be wise \
 	to speak with your team, and learn what their plan is for today.</span>")
 
-	R.key = C.key
+	C.transfer_to(R)
 //	R.Namepick() // Apparnetly making someone a merc lets them pick a name, so this isn't needed.
 
 	spawn(1)

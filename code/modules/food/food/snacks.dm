@@ -49,7 +49,7 @@
 				M.put_in_hands(trash)
 		qdel(src)
 
-/obj/item/reagent_containers/food/snacks/attack_self(mob/user)
+/obj/item/reagent_containers/food/snacks/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -66,7 +66,7 @@
 	to_chat(user, "<span class='notice'>[open_message]</span>")
 	sealed = FALSE
 
-/obj/item/reagent_containers/food/snacks/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/reagent_containers/food/snacks/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
@@ -103,7 +103,7 @@
 					to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
 					return
 
-			user.setClickCooldown(user.get_attack_speed(src)) //puts a limit on how fast people can eat/drink things
+			user.setClickCooldownLegacy(user.get_attack_speed_legacy(src)) //puts a limit on how fast people can eat/drink things
 			if (fullness <= 100)
 				to_chat(M, "<span class='danger'>You hungrily chew out a piece of [src] and gobble it!</span>")
 			if (fullness > 100 && fullness <= 300)
@@ -141,7 +141,7 @@
 					return
 
 			user.visible_message(SPAN_DANGER("[user] attempts to feed [M] [src]."))
-			user.setClickCooldown(user.get_attack_speed(src))
+			user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 			if(!do_mob(user, M, 3 SECONDS))
 				return
 			//Do we really care about this
@@ -571,6 +571,7 @@
 	desc = "Goes great with Robust Coffee."
 	icon_state = "donut1"
 	nutriment_amt = 3
+	worth_intrinsic = 3
 
 /obj/item/reagent_containers/food/snacks/donut/normal/Initialize(mapload)
 	. = ..()
@@ -589,6 +590,7 @@
 	icon_state = "donut1"
 	filling_color = "#ED11E6"
 	nutriment_amt = 2
+	worth_intrinsic = 30
 
 /obj/item/reagent_containers/food/snacks/donut/chaos/Initialize(mapload)
 	. = ..()
@@ -628,6 +630,7 @@
 	icon_state = "jdonut1"
 	filling_color = "#ED1169"
 	nutriment_amt = 3
+	worth_intrinsic = 5
 
 /obj/item/reagent_containers/food/snacks/donut/jelly/Initialize(mapload)
 	. = ..()
@@ -646,6 +649,7 @@
 	icon_state = "jdonut1"
 	filling_color = "#ED1169"
 	nutriment_amt = 3
+	worth_intrinsic = 25
 
 /obj/item/reagent_containers/food/snacks/donut/slimejelly/Initialize(mapload)
 	. = ..()
@@ -664,6 +668,7 @@
 	icon_state = "jdonut1"
 	filling_color = "#ED1169"
 	nutriment_amt = 3
+	worth_intrinsic = 5
 
 /obj/item/reagent_containers/food/snacks/donut/cherryjelly/Initialize(mapload)
 	. = ..()
@@ -1004,7 +1009,7 @@
 	heated_reagents = list("doctorsdelight" = 5, "hyperzine" = 0.75, "synaptizine" = 0.25)
 	var/has_been_heated = 0
 
-/obj/item/reagent_containers/food/snacks/donkpocket/sinpocket/attack_self(mob/user)
+/obj/item/reagent_containers/food/snacks/donkpocket/sinpocket/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -1858,7 +1863,7 @@
 	. = ..()
 	reagents.add_reagent("protein", 10)
 
-/obj/item/reagent_containers/food/snacks/monkeycube/attack_self(mob/user)
+/obj/item/reagent_containers/food/snacks/monkeycube/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -3273,7 +3278,7 @@
 
 	add_overlay(overlays_to_add)
 
-/obj/item/pizzabox/attack_hand(mob/user, list/params)
+/obj/item/pizzabox/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 
 	if( open && pizza )
 		user.put_in_hands( pizza )
@@ -3298,7 +3303,7 @@
 		return
 	. = ..()
 
-/obj/item/pizzabox/attack_self(mob/user)
+/obj/item/pizzabox/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -3372,25 +3377,40 @@
 		return
 	. = ..()
 
+/obj/item/pizzabox/margherita
+	name = "pizza box (margherita)"
+
 /obj/item/pizzabox/margherita/Initialize(mapload)
 	. = ..()
 	pizza = new /obj/item/reagent_containers/food/snacks/sliceable/pizza/margherita(src)
 	boxtag = "Margherita Deluxe"
+
+/obj/item/pizzabox/vegetable
+	name = "pizza box (vegetable)"
 
 /obj/item/pizzabox/vegetable/Initialize(mapload)
 	. = ..()
 	pizza = new /obj/item/reagent_containers/food/snacks/sliceable/pizza/vegetablepizza(src)
 	boxtag = "Gourmet Vegatable"
 
+/obj/item/pizzabox/mushroom
+	name = "pizza box (mushroom)"
+
 /obj/item/pizzabox/mushroom/Initialize(mapload)
 	. = ..()
 	pizza = new /obj/item/reagent_containers/food/snacks/sliceable/pizza/mushroompizza(src)
 	boxtag = "Mushroom Special"
 
+/obj/item/pizzabox/meat
+	name = "pizza box (meat)"
+
 /obj/item/pizzabox/meat/Initialize(mapload)
 	. = ..()
 	pizza = new /obj/item/reagent_containers/food/snacks/sliceable/pizza/meatpizza(src)
 	boxtag = "Meatlover's Supreme"
+
+/obj/item/pizzabox/pineapple
+	name = "pizza box (pineapple)"
 
 /obj/item/pizzabox/pineapple/Initialize(mapload)
 	. = ..()
@@ -3965,29 +3985,26 @@ END CITADEL CHANGE */
 //Code for dipping food in batter
 /obj/item/reagent_containers/food/snacks/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(target.is_open_container() && target.reagents && !(istype(target, /obj/item/reagent_containers/food)))
-		for (var/r in target.reagents.reagent_list)
-
-			var/datum/reagent/R = r
+		for(var/datum/reagent/R as anything in target.reagents.get_reagent_datums())
 			if (istype(R, /datum/reagent/nutriment/coating))
-				if (apply_coating(R, user))
+				if (apply_coating(R, user, target.reagents))
 					return 1
 
 	return ..()
 
 //This proc handles drawing coatings out of a container when this food is dipped into it
-/obj/item/reagent_containers/food/snacks/proc/apply_coating(var/datum/reagent/nutriment/coating/C, var/mob/user)
+/obj/item/reagent_containers/food/snacks/proc/apply_coating(datum/reagent/nutriment/coating/C, mob/user, datum/reagent_holder/coating_holder)
 	if (coating)
 		to_chat(user, "The [src] is already coated in [coating.name]!")
 		return 0
 
 	//Calculate the reagents of the coating needed
 	var/req = 0
-	for (var/r in reagents.reagent_list)
-		var/datum/reagent/R = r
+	for(var/datum/reagent/R as anything in reagents.get_reagent_datums())
 		if (istype(R, /datum/reagent/nutriment))
-			req += R.volume * 0.2
+			req += reagents.reagent_volumes[R.id] * 0.2
 		else
-			req += R.volume * 0.1
+			req += reagents.reagent_volumes[R.id] * 0.1
 
 	req += w_class*0.5
 
@@ -3995,11 +4012,9 @@ END CITADEL CHANGE */
 		//the food has no reagents left, its probably getting deleted soon
 		return 0
 
-	if (C.volume < req)
+	if (coating_holder.reagent_volumes?[C.id] < req)
 		to_chat(user, SPAN_WARNING( "There's not enough [C.name] to coat the [src]!"))
 		return 0
-
-	var/id = C.id
 
 	//First make sure there's space for our batter
 	if (reagents.available_volume() < req+5)
@@ -4007,12 +4022,7 @@ END CITADEL CHANGE */
 		reagents.maximum_volume += extra
 
 	//Suck the coating out of the holder
-	C.holder.trans_to_holder(reagents, req)
-
-	//We're done with C now, repurpose the var to hold a reference to our local instance of it
-	C = reagents.get_reagent(id)
-	if (!C)
-		return
+	coating_holder.transfer_to_holder(src, list(C.id), req)
 
 	coating = C
 	//Now we have to do the witchcraft with masking images
@@ -4066,12 +4076,11 @@ END CITADEL CHANGE */
 		if (do_coating_prefix == 1)
 			name = "[coating.coated_adj] [name]"
 
-	for (var/r in reagents.reagent_list)
-		var/datum/reagent/R = r
-		if (istype(R, /datum/reagent/nutriment/coating))
-			var/datum/reagent/nutriment/coating/C = R
-			C.data["cooked"] = 1
-			C.name = C.cooked_name
+	for(var/datum/reagent/nutriment/coating/coating in reagents.get_reagent_datums())
+		var/datum/nutriment_data/coating_data = reagents.reagent_datas?[coating.id]
+		if(!coating_data)
+			continue
+		coating_data.cooked = TRUE
 
 /obj/item/reagent_containers/food/snacks/proc/on_consume(var/mob/eater, var/mob/feeder = null)
 	if(!reagents.total_volume)
@@ -4239,7 +4248,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/sliceable/pizza/crunch/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("batter", 6.5)
-	coating = reagents.get_reagent("batter")
+	coating = SSchemistry.fetch_reagent(/datum/reagent/nutriment/coating/batter::id)
 	reagents.add_reagent("cooking_oil", 4)
 	bitesize = 2
 
@@ -4271,6 +4280,8 @@ END CITADEL CHANGE */
 	nutriment_desc = list("margarine" = 1)
 	nutriment_amt = 20
 
+/datum/component/slippery/butter
+
 /obj/item/reagent_containers/food/snacks/spreads/butter
 	name = "butter"
 	desc = "A stick of pure butterfat made from milk products."
@@ -4279,13 +4290,9 @@ END CITADEL CHANGE */
 	nutriment_desc = list("butter" = 1)
 	nutriment_amt = 0
 
-/obj/item/reagent_containers/food/snacks/spreads/butter/Crossed(atom/movable/AM as mob|obj)
+/obj/item/reagent_containers/food/snacks/spreads/butter/Initialize(mapload)
 	. = ..()
-	if(AM.is_incorporeal())
-		return
-	if (istype(AM, /mob/living))
-		var/mob/living/M = AM
-		M.slip("the [src.name]",4)
+	AddComponent(/datum/component/slippery/butter)
 
 /obj/item/reagent_containers/food/snacks/spreads/Initialize(mapload)
 	. = ..()
@@ -4794,7 +4801,7 @@ END CITADEL CHANGE */
 	bitesize = 1
 	nutriment_amt = 10
 
-/obj/item/reagent_containers/food/snacks/chipplate/attack_hand(mob/user, list/params)
+/obj/item/reagent_containers/food/snacks/chipplate/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	// todo: sigh, no ..(); shift over to on_attack_hand
 	var/obj/item/reagent_containers/food/snacks/returningitem = new vendingobject(loc)
 	returningitem.reagents.clear_reagents()
@@ -5013,6 +5020,13 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/riztizkzi_sea/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("egg", 4)
+
+//for spawning in by admins, or loadout, since blood isn't added into the reagents otherwise.
+/obj/item/reagent_containers/food/snacks/riztizkzi_sea/include_blood
+
+/obj/item/reagent_containers/food/snacks/riztizkzi_sea/include_blood/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("blood", 15)
 
 /obj/item/reagent_containers/food/snacks/father_breakfast
 	name = "breakfast of champions"
@@ -7020,3 +7034,62 @@ END CITADEL CHANGE */
 	icon_state = "meatsicle"
 	nutriment_amt = 6
 	nutriment_desc = list("frozen meat" = 1)
+
+// Macarons
+
+/obj/item/reagent_containers/food/snacks/macaron
+	name = "macaron"
+	nutriment_amt = 6
+	bitesize = 3
+	nutriment_desc = list("sugar")
+
+/obj/item/reagent_containers/food/snacks/macaron/red
+	desc = "A small sugary treat. This one is red!"
+	icon_state = "macaron_red"
+
+/obj/item/reagent_containers/food/snacks/macaron/yellow
+	desc = "A small sugary treat. This one is yellow!"
+	icon_state = "macaron_yellow"
+
+/obj/item/reagent_containers/food/snacks/macaron/purple
+	desc = "A small sugary treat. This one is purple!"
+	icon_state = "macaron_purple"
+
+/obj/item/reagent_containers/food/snacks/macaron/green
+	desc = "A small sugary treat. This one is green!"
+	icon_state = "macaron_green"
+
+///Because Scale Creep is a Thing
+
+/obj/item/reagent_containers/food/snacks/ashomarr
+	name = "Ashomarr Berries"
+	desc = "Native to Adhomai, this sweet berry that thrives in the cold. It has many uses in traditional Tajaran cuisine, medicine, and crafts as a dye."
+	icon_state = "holly"
+	nutriment_amt = 2
+	nutriment_desc = list("sweetness" = 1, "bitterness" = 1)
+
+/obj/item/reagent_containers/food/snacks/guska
+	name = "Guskaroot"
+	desc = "A cold resilent and infamously unappetizing tuber native to Adhomai. Its ability to thrive in cold has made it a staple crop for Adhomai's poorest peasants."
+	icon_state = "tajtuber"
+	nutriment_amt = 3
+	nutriment_desc = list("nutritious dirt" = 1)
+
+/obj/item/reagent_containers/food/snacks/guskacake
+	name = "Guskacake"
+	desc = "A traditional Adhomai peasant's dish, guskaroot mashed and garnished with Ashomarr Jam to mask the Guskaroot's earthy flavor."
+	icon_state = "tajtubercake"
+	nutriment_amt = 10
+	nutriment_desc = list("flavored dirt" = 1)
+
+/obj/item/reagent_containers/food/snacks/taj_pemmican
+	name = "Adhomai Pemmican"
+	desc = "Dried meat and beries mixed together for travel and shelf life. This particular mix is from Adhomai."
+	icon_state = "taj_pemmican"
+	nutriment_amt = 4
+	nutriment_desc = list("dry meat" = 1, "berry" = 1)
+
+/obj/item/reagent_containers/food/snacks/taj_pemmican/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 3)
+	reagents.add_reagent("triglyceride", 1)

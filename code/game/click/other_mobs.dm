@@ -25,12 +25,16 @@
 	if(istype(G) && G.Touch(A,1))
 		return
 
-	A.attack_hand(src)
+	A.attack_hand(src, new /datum/event_args/actor/clickchain(src))
 
 /// Return TRUE to cancel other attack hand effects that respect it.
-// todo: /datum/event_args/actor/clickchain
-/atom/proc/attack_hand(mob/user, list/params)
-	var/datum/event_args/actor/clickchain/e_args = new(user, target = src, intent = user.a_intent, params = params)
+//  todo: better desc
+//  todo: e_args is not specified all the time, yet.
+/atom/proc/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+	// todo: remove
+	if(isnull(e_args))
+		e_args = user.default_clickchain_event_args(src, TRUE)
+	// end
 	if(on_attack_hand(e_args))
 		return TRUE
 	if(user.a_intent == INTENT_HARM)
@@ -136,7 +140,7 @@
 	if(!..())
 		return FALSE
 
-	setClickCooldown(get_attack_speed())
+	setClickCooldownLegacy(get_attack_speed_legacy())
 	A.attack_generic(src,rand(5,6),"bitten")
 
 /*

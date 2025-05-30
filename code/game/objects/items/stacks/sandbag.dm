@@ -19,7 +19,7 @@
 	. = ..()
 	update_icon()
 
-/obj/item/stack/emptysandbag/update_icon()
+/obj/item/stack/emptysandbag/update_icon_state()
 	var/amount = get_amount()
 	if((amount >= 35))
 		icon_state = "sandbag_empty_3"
@@ -27,6 +27,7 @@
 		icon_state = "sandbag_empty_2"
 	else
 		icon_state = "sandbag_empty"
+	return ..()
 
 /obj/item/stack/emptysandbag/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W, /obj/item/stack/ore/glass) && !interact(user, src))
@@ -66,7 +67,7 @@
 	. = ..()
 	update_icon()
 
-/obj/item/stack/sandbags/update_icon()
+/obj/item/stack/sandbags/update_icon_state()
 	var/amount = get_amount()
 	if((amount >= 35))
 		icon_state = "sandbags_3"
@@ -74,6 +75,7 @@
 		icon_state = "sandbags_2"
 	else
 		icon_state = "sandbags"
+	return ..()
 
 /obj/item/stack/sandbags/generate_explicit_recipes()
 	. = list()
@@ -128,7 +130,6 @@
 		update_icon()
 
 /obj/structure/sandbag/LateInitialize()
-	. = ..()
 	//update_connections(FALSE)
 	update_icon()
 
@@ -137,7 +138,7 @@
 	. = ..()
 
 /obj/structure/sandbag/attackby(obj/item/W as obj, mob/user as mob)
-	user.setClickCooldown(user.get_attack_speed(W))
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy(W))
 	if(istype(W, /obj/item/stack/sandbags))
 		var/obj/item/stack/sandbags/S = W
 		if(integrity < integrity_max)

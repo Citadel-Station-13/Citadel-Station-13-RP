@@ -13,7 +13,7 @@
 	. = ..()
 	logged_in = "Cargo Department"
 
-/obj/machinery/computer/stockexchange/attack_hand(mob/user, list/params)
+/obj/machinery/computer/stockexchange/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..(user))
 		return
 
@@ -63,7 +63,6 @@
 					continue
 			var/datum/browser/popup = new(usr, "stock_logs", "Stock Transaction Logs", 600, 400)
 			popup.set_content(dat)
-			popup.set_title_image(usr.browse_rsc_icon(src.icon, src.icon_state))
 			popup.open()
 
 		if("stocks_archive")
@@ -91,7 +90,6 @@
 			dat += "</div></body></html>"
 			var/datum/browser/popup = new(usr, "archive_[S.name]", "Stock News", 600, 400)
 			popup.set_content(dat)
-			popup.set_title_image(usr.browse_rsc_icon(src.icon, src.icon_state))
 			popup.open()
 
 		if("stocks_history")

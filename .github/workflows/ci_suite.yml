@@ -4,121 +4,133 @@ on:
     branches:
     - master
     - 'project/**'
+    - 'gh-readonly-queue/master/**'
+    - 'gh-readonly-queue/project/**'
   pull_request:
     branches:
     - master
     - 'project/**'
+  merge_group:
+    branches:
+    - master
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
+  start_gate:
+    if: ( !contains(github.event.head_commit.message, '[ci skip]') )
+    name: Start Gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mandatory Empty Step
+        run: exit 0
+
   run_linters:
     name: Run Linters
-    runs-on: ubuntu-22.04
-    concurrency:
-      group: run_linters-${{ github.head_ref || github.run_id }}
-      cancel-in-progress: true
+    needs: start_gate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+
     steps:
-      - name: Checkout Branch
-        uses: actions/checkout@v3
-      - name: Restore Bootstrap cache
-        uses: actions/cache@v3
+      - uses: actions/checkout@v4
+      - name: Restore SpacemanDMM cache
+        uses: actions/cache@v4
         with:
-          path: tools/bootstrap/.cache
-          key: ${{ runner.os }}-bootstrap-${{ hashFiles('dependencies.sh', 'tools/requirements.txt') }}
+          path: ~/SpacemanDMM
+          key: ${{ runner.os }}-spacemandmm-${{ hashFiles('dependencies.sh') }}
           restore-keys: |
-            ${{ runner.os }}-bootstrap-
-      - name: Restore Rust / Cargo cache
-        uses: actions/cache@v3
-        with:
-          path: ~/.cargo
-          key: ${{ runner.os }}-rust-
-      - name: Restore TGUI / Yarn cache
-        uses: actions/cache@v3
+            ${{ runner.os }}-spacemandmm-
+      - name: Restore Yarn cache
+        uses: actions/cache@v4
         with:
           path: tgui/.yarn/cache
           key: ${{ runner.os }}-yarn-${{ hashFiles('tgui/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-      - name: Restore SpacemanDMM cache
-        uses: actions/cache@v3
+      - name: Restore Node cache
+        uses: actions/cache@v4
         with:
-          path: ~/SpacemanDMM
-          key: ${{ runner.os }}-spacemandmm-${{hashFiles('dependencies.sh')}}
-      - name: Install Node
+          path: ~/.nvm
+          key: ${{ runner.os }}-node-${{ hashFiles('dependencies.sh') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Restore Bootstrap cache
+        uses: actions/cache@v4
+        with:
+          path: tools/bootstrap/.cache
+          key: ${{ runner.os }}-bootstrap-${{ hashFiles('tools/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-bootstrap-
+      - name: Restore Rust cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cargo
+          key: ${{ runner.os }}-rust-${{ hashFiles('tools/ci/ci_dependencies.sh')}}
+          restore-keys: |
+            ${{ runner.os }}-rust-
+      - name: Install Tools
         run: |
-          tools/bootstrap/node --version
-      - name: Install Python
-        run: |
-          tools/bootstrap/python --version
-      - name: Install SpacemanDMM Suite
-        run: |
+          bash tools/ci/install_node.sh
           bash tools/ci/install/install_spaceman_dmm.sh dreamchecker
-      - name: Install Ripgrep
-        run: |
-          cargo install ripgrep --features pcre2
-      # - name: Install Setuptools
-      #   run: |
-      #     pip3 install setuptools
-      - name: CI - Parse DM (dreamchecker)
-        run: |
-          ~/dreamchecker > ${GITHUB_WORKSPACE}/output-annotations.txt 2>&1
-      - name: CI - Annotate DM (dreamchecker)
-        if: always()
-        uses: yogstation13/DreamAnnotate@v2
-        with:
-          outputFile: output-annotations.txt
-      - name: CI - DMI Tests
-        if: always()
-        run: |
-          tools/bootstrap/python -m dmi.test
-      - name: CI - DMM Tests
-        if: always()
+          bash tools/ci/install_ripgrep.sh
+          sudo apt install -y python3-pip
+          tools/bootstrap/python -c ''
+      - name: Give Linters A Go
+        id: linter-setup
+        run: ':'
+      - name: Run Grep Checks
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
+        run: bash tools/ci/check_grep.sh
+      - name: Run DreamChecker
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
+        shell: bash
+        run: ~/dreamchecker 2>&1 | bash tools/ci/annotate_dm.sh
+      - name: Run Map Checks
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
         run: |
           tools/bootstrap/python -m mapmerge2.dmm_test
-      - name: CI - TGUI
-        if: always()
-        run: |
-          tools/build/build --ci lint tgui-test
-      - name: CI - Grep (string checks)
-        if: always()
-        run: |
-          tools/ci/check_grep.sh
-      - name: CI - Changelogs
-        if: always()
-        run: |
-          tools/ci/check_changelogs.sh
-      - name: CI - DME Validation
-        if: always()
-        run: |
-          tools/ci/check_filedirs.sh citadel.dme
-      - name: CI - Misc
-        if: always()
-        run: |
-          bash tools/ci/check_misc.sh
+      - name: Run DMI Tests
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
+        run: tools/bootstrap/python -m dmi.test
+      - name: Check File Directories
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
+        run: bash tools/ci/check_filedirs.sh citadel.dme
+      - name: Check Changelogs
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
+        run: bash tools/ci/check_changelogs.sh
+      - name: Check Miscellaneous Files
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
+        run: bash tools/ci/check_misc.sh
+      - name: Run TGUI Checks
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
+        run: tools/build/build --ci lint tgui-test
 
   compile_all_maps:
     name: Compile Maps
+    needs: start_gate
     runs-on: ubuntu-22.04
-    concurrency:
-      group: compile_all_maps-${{ github.ref }}
-      cancel-in-progress: true
+    timeout-minutes: 10
+
     steps:
-      - uses: actions/checkout@v3
-      - name: Setup cache
-        uses: actions/cache@v3
+      - uses: actions/checkout@v4
+      - name: Restore BYOND cache
+        uses: actions/cache@v4
         with:
           path: ~/BYOND
-          key: ${{ runner.os }}-byond
-      - name: Compile All Maps
+          key: ${{ runner.os }}-byond-${{ hashFiles('dependencies.sh') }}
+      - name: Compile "All" Maps
         run: |
           bash tools/ci/install/install_byond.sh
           source $HOME/BYOND/byond/bin/byondsetup
           tools/build/build --ci dm -DCIBUILDING -DCITESTING -DALL_MAPS
 
-  run_all_tests:
+  run_integration_tests:
     name: Integration Tests
-    concurrency:
-      group: run_all_tests-${{ github.ref }}
-      cancel-in-progress: true
-    runs-on: ubuntu-22.04
+    needs: start_gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
     services:
       mysql:
         image: mysql:latest
@@ -128,28 +140,67 @@ jobs:
           - 3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+      - name: Restore Flyway
+        uses: actions/cache@v4
+        with:
+          path: ~/flyway
+          key: ${{ runner.os }}-flyway-${{ hashFiles('dependencies.sh') }}
       - name: Restore BYOND cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/BYOND
-          key: ${{ runner.os }}-byond
+          key: ${{ runner.os }}-byond-${{ hashFiles('dependencies.sh') }}
+      - name: Install flyway
+        run: |
+          bash tools/ci/install/install_flyway.sh
       - name: Setup database
         run: |
           sudo systemctl start mysql
-          mysql -u root -proot -e 'CREATE DATABASE ss13_ci;'
-          mysql -u root -proot ss13_ci < SQL/database_schema_prefixed.sql
-          mysql -u root -proot ss13_ci < SQL/unified_schema.sql
-        # mysql -u root -proot -e 'CREATE DATABASE tg_ci_prefixed;'
-        # mysql -u root -proot tg_ci_prefixed < SQL/tgstation_schema_prefixed.sql
+          mysql -u root -proot -e 'CREATE DATABASE ss13;'
+          source dependencies.sh
+          ~/flyway/flyway-$FLYWAY_VERSION/flyway -user=root -password=root -url=jdbc:mariadb://localhost:3306/ss13 -locations="filesystem:sql/migrations" migrate
       - name: Install rust-g
         run: |
           bash tools/ci/install/install_rust_g.sh
-      - name: Compile and run tests
+      - name: Compile Tests
+        id: compile_tests
         run: |
           bash tools/ci/install/install_byond.sh
           source $HOME/BYOND/byond/bin/byondsetup
-          tools/build/build --ci dm -DCIBUILDING -DCITESTING
+          tools/build/build --ci dm -DCIBUILDING -DANSICOLORS -Werror -ITG0001 -I"loop_checks"
+      - name: Run Tests
+        run: |
+          source $HOME/BYOND/byond/bin/byondsetup
           bash tools/ci/run_server.sh
+
+  test_windows:
+    name: Windows Build
+    needs: start_gate
+    runs-on: windows-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore Yarn cache
+        uses: actions/cache@v4
+        with:
+          path: tgui/.yarn/cache
+          key: ${{ runner.os }}-yarn-${{ hashFiles('tgui/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Compile
+        run: pwsh tools/ci/build.ps1
         env:
-          CBT_BUILD_MODE: TEST_RUN
+          DM_EXE: "C:\\byond\\bin\\dm.exe"
+
+  completion_gate: # Serves as a non-moving target for branch rulesets
+    if: always() && !cancelled()
+    name: Completion Gate
+    needs: [ test_windows, run_integration_tests, compile_all_maps, run_linters ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Decide whether the needed jobs succeeded or failed
+        uses: re-actors/alls-green@release/v1
+        with:
+          jobs: ${{ toJSON(needs) }}

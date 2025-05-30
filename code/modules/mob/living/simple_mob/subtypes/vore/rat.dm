@@ -15,7 +15,7 @@
 	icon_living = "rous"
 	icon_dead = "rous-dead"
 	icon_rest = "rous_rest"
-	faction = "mouse"
+	iff_factions = MOB_IFF_FACTION_FARM_PEST
 	icon = 'icons/mob/vore64x32.dmi'
 
 	maxHealth = 150
@@ -36,10 +36,6 @@
 	icon_x_dimension = 64
 	icon_y_dimension = 32
 
-	vore_active = TRUE
-	vore_capacity = 1
-	vore_pounce_chance = 45
-	vore_icons = SA_ICON_LIVING | SA_ICON_REST
 
 	var/life_since_foodscan = 0
 

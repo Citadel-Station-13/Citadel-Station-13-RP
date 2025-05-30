@@ -43,6 +43,7 @@
 #define LANGUAGE_ID_NARAMADI "naramadi"
 /// phoronoids
 #define LANGUAGE_ID_PHORONOID "phoronoid"
+#define LANGUAGE_ID_PHORONOID_CONLANG "phoronoid_conlang"
 /// krisitik
 #define LANGUAGE_ID_SQUEAKISH "squeakish"
 /// shadekin

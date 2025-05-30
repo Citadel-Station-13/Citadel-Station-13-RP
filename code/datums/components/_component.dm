@@ -8,6 +8,8 @@
  * object to provide some single functionality (i.e a slippery component)
  * that makes the object it's attached to cause people to slip over.
  * Useful when you want shared behaviour independent of type inheritance
+ *
+ * todo: refactor transfers a bit maybe?
  */
 /datum/component
 	/**
@@ -139,7 +141,7 @@
  * Overridable proc that's called when added to a new parent
  */
 /datum/component/proc/RegisterWithParent()
-	return
+	SHOULD_NOT_SLEEP(TRUE)
 
 /**
  * Unregister from our parent object
@@ -150,7 +152,7 @@
  * *
  */
 /datum/component/proc/UnregisterFromParent()
-	return
+	SHOULD_NOT_SLEEP(TRUE)
 
 /**
  * Register to listen for a signal from the passed in target
@@ -158,7 +160,7 @@
  * This sets up a listening relationship such that when the target object emits a signal
  * the source datum this proc is called upon, will receive a callback to the given proctype
  * Use PROC_REF(procname), TYPE_PROC_REF(type,procname) or GLOBAL_PROC_REF(procname) macros to validate the passed in proc at compile time.
- * PROC_REF for procs defined on current type or it's ancestors, TYPE_PROC_REF for procs defined on unrelated type and GLOBAL_PROC_REF for global procs.
+ * PROC_REF for procs defined on current type or its ancestors, TYPE_PROC_REF for procs defined on unrelated type and GLOBAL_PROC_REF for global procs.
  * Return values from procs registered must be a bitfield
  *
  * Arguments:
@@ -187,21 +189,23 @@
 	var/list/target_procs = (procs[target] ||= list())
 	var/list/lookup = (target.comp_lookup ||= list())
 
-	if(!override && target_procs[signal_type])
-		var/override_message = "[signal_type] overridden. Use override = TRUE to suppress this warning.\nTarget: [target] ([target.type]) Proc: [proctype]"
-		stack_trace(override_message)
-
+	var/exists = target_procs[signal_type]
 	target_procs[signal_type] = proctype
+
+	if(exists)
+		if(!override)
+			var/override_message = "[signal_type] overridden. Use override = TRUE to suppress this warning.\nTarget: [target] ([target.type]) Existing Proc: [exists] New Proc: [proctype]"
+			stack_trace(override_message)
+		return
+
 	var/list/looked_up = lookup[signal_type]
 
 	if(isnull(looked_up)) // Nothing has registered here yet
 		lookup[signal_type] = src
-	else if(looked_up == src) // We already registered here
-		return
-	else if(!length(looked_up)) // One other thing registered here
-		lookup[signal_type] = list((looked_up) = TRUE, (src) = TRUE)
+	else if(!islist(looked_up)) // One other thing registered here
+		lookup[signal_type] = list(looked_up, src)
 	else // Many other things have registered here
-		looked_up[src] = TRUE
+		looked_up += src
 
 /// Registers multiple signals to the same proc.
 /datum/proc/RegisterSignals(datum/target, list/signal_types, proctype, override = FALSE)
@@ -326,7 +330,7 @@
 /**
  * Internal proc to handle most all of the signaling procedure
  *
- * Will runtime if used on datums with an empty component list
+ * Will runtime if used on datums with an empty lookup list
  *
  * Use the [SEND_SIGNAL] define instead
  */
@@ -340,16 +344,17 @@
 	// all the objects that are receiving the signal get the signal this final time.
 	// AKA: No you can't cancel the signal reception of another object by doing an unregister in the same signal.
 	var/list/queued_calls = list()
-	for(var/datum/listening_datum as anything in target)
-		queued_calls[listening_datum] = listening_datum.signal_procs[src][sigtype]
-	for(var/datum/listening_datum as anything in queued_calls)
-		. |= call(listening_datum, queued_calls[listening_datum])(arglist(arguments))
+	// This should be faster than doing `var/datum/listening_datum as anything in target` as it does not implicitly copy the list
+	for(var/i in 1 to length(target))
+		var/datum/listening_datum = target[i]
+		queued_calls.Add(listening_datum, listening_datum.signal_procs[src][sigtype])
+	for(var/i in 1 to length(queued_calls) step 2)
+		. |= call(queued_calls[i], queued_calls[i + 1])(arglist(arguments))
 
-// The type arg is casted so initial works, you shouldn't be passing a real instance into this
 /**
- * Return any component assigned to this datum of the given type
+ * Return any component assigned to this datum of the given registered component type
  *
- * If it has a registered type, that'll be used instead!
+ * * `registered_type` must be set on the component for this to work.
  *
  * Arguments:
  * * datum/component/c_type The type of the component you want to get a reference to. It will be overridden with the type of its [registered_type] if it's set.
@@ -360,7 +365,9 @@
 	return . && (length(.) ? .[1] : .)
 
 /**
- * Get all components of a given type that are attached to this datum
+ * Get all components of a given registered component type that are attached to this datum
+ *
+ * * `registered_type` must be set on the component for this to work.
  *
  * Arguments:
  * * c_type The component type path

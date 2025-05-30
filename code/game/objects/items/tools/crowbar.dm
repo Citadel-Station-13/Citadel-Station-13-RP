@@ -35,6 +35,13 @@
 	icon_state = "crowbar_bone"
 	tool_speed = 1.25
 
+/obj/item/tool/crowbar/bronze
+	name = "bronze prybar"
+	desc = "A bronze prybar. Its density probably makes it quite good at prying."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "crowbar_bronze"
+	item_state = "crowbar_brass"
+
 /obj/item/tool/crowbar/brass
 	name = "brass crowbar"
 	desc = "An etched piece of brass plated metal, used to remove floors and to pry open doors."
@@ -124,7 +131,7 @@
 		QDEL_NULL(counterpart)
 	return ..()
 
-/obj/item/tool/crowbar/power/attack_self(mob/user)
+/obj/item/tool/crowbar/power/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

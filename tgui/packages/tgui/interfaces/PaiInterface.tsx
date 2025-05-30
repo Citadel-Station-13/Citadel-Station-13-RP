@@ -407,7 +407,7 @@ const RecordsDisplay = (props, context) => {
       scrollable>
       <Table>
         {convertedRecords?.map((record) => {
-          return <RecordRow key={record.ref} record={record} />;
+          return <RecordRow key={record['ref']} record={record} />;
         })}
       </Table>
     </Section>

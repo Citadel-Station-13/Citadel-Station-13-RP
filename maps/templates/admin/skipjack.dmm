@@ -172,7 +172,7 @@
 	},
 /area/skipjack_station)
 "az" = (
-/obj/item/gun/energy/sonic,
+/obj/item/gun/projectile/energy/sonic,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -294,8 +294,8 @@
 /area/skipjack_station)
 "aM" = (
 /obj/structure/table/rack,
-/obj/item/gun/energy/darkmatter,
-/obj/item/gun/energy/darkmatter,
+/obj/item/gun/projectile/energy/darkmatter,
+/obj/item/gun/projectile/energy/darkmatter,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -375,7 +375,7 @@
 	},
 /area/skipjack_station)
 "aW" = (
-/obj/item/gun/energy/plasmastun,
+/obj/item/gun/projectile/energy/plasmastun,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -1099,7 +1099,7 @@
 /area/shuttle/skipjack)
 "cK" = (
 /obj/structure/table/rack,
-/obj/item/melee/energy/sword/pirate,
+/obj/item/melee/transforming/energy/sword/cutlass,
 /obj/item/clothing/suit/space/pirate,
 /obj/item/clothing/suit/space/pirate,
 /obj/item/tank/oxygen,
@@ -1271,9 +1271,9 @@
 /area/shuttle/skipjack)
 "dc" = (
 /obj/structure/table/rack,
-/obj/item/grenade/empgrenade,
-/obj/item/grenade/flashbang,
-/obj/item/grenade/spawnergrenade/manhacks,
+/obj/item/grenade/simple/emp,
+/obj/item/grenade/simple/flashbang,
+/obj/item/grenade/simple/spawner/manhacks,
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/skipjack)
 "dd" = (
@@ -1497,7 +1497,6 @@
 /area/shuttle/skipjack)
 "dI" = (
 /obj/structure/shuttle/engine/propulsion,
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/skipjack)
 "dJ" = (

@@ -10,7 +10,7 @@
 			isadmin = 1
 
 		var/datum/db_query/select_query = SSdbcore.RunQuery(
-			"SELECT id, question FROM [format_table_name("poll_question")] WHERE [(isadmin? "" : "adminonly = false AND")] Now() BETWEEN starttime AND endtime",
+			"SELECT id, question FROM [DB_PREFIX_TABLE_NAME("poll_question")] WHERE [(isadmin? "" : "adminonly = false AND")] Now() BETWEEN starttime AND endtime",
 			list()
 		)
 
@@ -43,7 +43,7 @@
 	if(SSdbcore.Connect())
 
 		var/datum/db_query/select_query = SSdbcore.RunQuery(
-			"SELECT starttime, endtime, question, pollytype, multiplechoiceoptions FROM [format_table_name("poll_question")] WHERE id = :id",
+			"SELECT starttime, endtime, question, pollytype, multiplechoiceoptions FROM [DB_PREFIX_TABLE_NAME("poll_question")] WHERE id = :id",
 			list(
 				"id" = "[pollid]"
 			)
@@ -72,7 +72,7 @@
 			//Polls that have enumerated options
 			if("OPTION")
 				var/datum/db_query/voted_query = SSdbcore.RunQuery(
-					"SELECT optionid FROM [format_table_name("poll_vote")] WHERE pollid = :id AND ckey = :ckey",
+					"SELECT optionid FROM [DB_PREFIX_TABLE_NAME("poll_vote")] WHERE pollid = :id AND ckey = :ckey",
 					list(
 						"id" = "[pollid]",
 						"ckey" = usr.ckey
@@ -89,7 +89,7 @@
 				var/list/datum/polloption/options = list()
 
 				var/datum/db_query/options_query = SSdbcore.RunQuery(
-					"SELECT id, text FROM [format_table_name("poll_option")] WHERE pollid = :id",
+					"SELECT id, text FROM [DB_PREFIX_TABLE_NAME("poll_option")] WHERE pollid = :id",
 					list(
 						"id" = pollid
 					)
@@ -135,7 +135,7 @@
 			//Polls with a text input
 			if("TEXT")
 				var/datum/db_query/voted_query = SSdbcore.RunQuery(
-					"SELECT replytext FROM [format_table_name("poll_textreply")] WHERE pollid = :id AND ckey = :ckey",
+					"SELECT replytext FROM [DB_PREFIX_TABLE_NAME("poll_textreply")] WHERE pollid = :id AND ckey = :ckey",
 					list(
 						"id" = pollid,
 						"ckey" = usr.ckey
@@ -182,7 +182,7 @@
 			//Polls with a text input
 			if("NUMVAL")
 				var/datum/db_query/voted_query = SSdbcore.RunQuery(
-					"SELECT o.text, v.rating FROM [format_table_name("poll_option")] o, [format_table_name("poll_vote")] v WHERE o.pollid = :pid AND v.ckey = :ckey AND o.id = v.optionid",
+					"SELECT o.text, v.rating FROM [DB_PREFIX_TABLE_NAME("poll_option")] o, [DB_PREFIX_TABLE_NAME("poll_vote")] v WHERE o.pollid = :pid AND v.ckey = :ckey AND o.id = v.optionid",
 					list(
 						"pid" = pollid,
 						"ckey" = usr.ckey
@@ -213,7 +213,7 @@
 					var/maxid = 0
 
 					var/datum/db_query/option_query = SSdbcore.RunQuery(
-						"SELECT id, text, minval, maxval, descmin, descmid, descmax FROM [format_table_name("poll_option")] WHERE pollid = :id",
+						"SELECT id, text, minval, maxval, descmin, descmid, descmax FROM [DB_PREFIX_TABLE_NAME("poll_option")] WHERE pollid = :id",
 						list(
 							"id" = pollid
 						)
@@ -260,7 +260,7 @@
 				src << browse(output,"window=playerpoll;size=500x500")
 			if("MULTICHOICE")
 				var/datum/db_query/voted_query = SSdbcore.RunQuery(
-					"SELECT optionid FROM [format_table_name("poll_vote")] WHERE pollid = :id AND ckey = :ckey",
+					"SELECT optionid FROM [DB_PREFIX_TABLE_NAME("poll_vote")] WHERE pollid = :id AND ckey = :ckey",
 					list(
 						"id" = pollid,
 						"ckey" = usr.ckey
@@ -278,7 +278,7 @@
 				var/minoptionid = 0
 
 				var/datum/db_query/options_query = SSdbcore.RunQuery(
-					"SELECT id, text FROM [format_table_name("poll_option")] WHERE pollid = :id",
+					"SELECT id, text FROM [DB_PREFIX_TABLE_NAME("poll_option")] WHERE pollid = :id",
 					list(
 						"id" = pollid
 					)
@@ -342,7 +342,7 @@
 	if(SSdbcore.Connect())
 
 		var/datum/db_query/select_query = SSdbcore.RunQuery(
-			"SELECT starttime, endtime, question, polltype, multiplechoiceoptions FROM [format_table_name("poll_question")] WHERE id = :id AND Now() BETWEEN starttime AND endtime",
+			"SELECT starttime, endtime, question, polltype, multiplechoiceoptions FROM [DB_PREFIX_TABLE_NAME("poll_question")] WHERE id = :id AND Now() BETWEEN starttime AND endtime",
 			list(
 				"id" = pollid
 			)
@@ -364,7 +364,7 @@
 			return
 
 		var/datum/db_query/select_query2 = SSdbcore.RunQuery(
-			"SELECT id FROM [format_table_name("poll_option")] WHERE id = :id AND pollid = :pollid",
+			"SELECT id FROM [DB_PREFIX_TABLE_NAME("poll_option")] WHERE id = :id AND pollid = :pollid",
 			list(
 				"id" = optionid,
 				"pollid" = pollid
@@ -384,7 +384,7 @@
 		var/alreadyvoted = 0
 
 		var/datum/db_query/voted_query = SSdbcore.RunQuery(
-			"SELECT id FROM [format_table_name("poll_vote")] WHERE pollid = :id AND ckey = :ckey",
+			"SELECT id FROM [DB_PREFIX_TABLE_NAME("poll_vote")] WHERE pollid = :id AND ckey = :ckey",
 			list(
 				"id" = pollid,
 				"ckey" = usr.ckey
@@ -410,7 +410,7 @@
 
 
 		SSdbcore.RunQuery(
-			"INSERT INTO [format_table_name("poll_vote")] (id, datetime, pollid, optionid, ckey, ip, adminrank) VALUES (null, Now(), :poll, :option, :ckey, :addr, :rank)",
+			"INSERT INTO [DB_PREFIX_TABLE_NAME("poll_vote")] (id, datetime, pollid, optionid, ckey, ip, adminrank) VALUES (null, Now(), :poll, :option, :ckey, :addr, :rank)",
 			list(
 				"poll" = pollid,
 				"option" = optionid,
@@ -434,7 +434,7 @@
 	if(SSdbcore.Connect())
 
 		var/datum/db_query/select_query = SSdbcore.RunQuery(
-			"SELECT starttime, endtime, question, polltype FROM [format_table_name("poll_question")] WHERE id = :id AND Now() BETWEEN starttime AND endtime",
+			"SELECT starttime, endtime, question, polltype FROM [DB_PREFIX_TABLE_NAME("poll_question")] WHERE id = :id AND Now() BETWEEN starttime AND endtime",
 			list(
 				"id" = pollid
 			)
@@ -455,7 +455,7 @@
 		var/alreadyvoted = 0
 
 		var/datum/db_query/voted_query = SSdbcore.RunQuery(
-			"SELECT id FROM [format_table_name("poll_textreply")] WHERE pollid = :id AND ckey = :ckey",
+			"SELECT id FROM [DB_PREFIX_TABLE_NAME("poll_textreply")] WHERE pollid = :id AND ckey = :ckey",
 			list(
 				"id" = pollid,
 				"ckey" = usr.ckey
@@ -485,7 +485,7 @@
 			return
 
 		SSdbcore.RunQuery(
-			"INSERT INTO [format_table_name("poll_textreply")] (id, datetime, pollid, ckey, ip, replytext, adminrank) VALUES (null, Now(), :pollid, :ckey, :addr, :reply, :rank)",
+			"INSERT INTO [DB_PREFIX_TABLE_NAME("poll_textreply")] (id, datetime, pollid, ckey, ip, replytext, adminrank) VALUES (null, Now(), :pollid, :ckey, :addr, :reply, :rank)",
 			list(
 				"pollid" = pollid,
 				"ckey" = usr.ckey,
@@ -508,7 +508,7 @@
 
 	if(SSdbcore.Connect())
 		var/datum/db_query/select_query = SSdbcore.NewQuery(
-			"SELECT starttime, endtime, question, polltype FROM [format_table_name("poll_question")] WHERE id = :pollid AND Now() BETWEEN starttime AND endtime",
+			"SELECT starttime, endtime, question, polltype FROM [DB_PREFIX_TABLE_NAME("poll_question")] WHERE id = :pollid AND Now() BETWEEN starttime AND endtime",
 			list("pollid" = pollid)
 		)
 		select_query.Execute()
@@ -528,7 +528,7 @@
 			return
 
 		var/datum/db_query/select_query2 = SSdbcore.RunQuery(
-			"SELECT id FROM [format_table_name("poll_option")] WHERE id = :optionid AND pollid = :pollid",
+			"SELECT id FROM [DB_PREFIX_TABLE_NAME("poll_option")] WHERE id = :optionid AND pollid = :pollid",
 			list(
 				"optionid" = optionid,
 				"pollid" = pollid
@@ -550,7 +550,7 @@
 		var/alreadyvoted = 0
 
 		var/datum/db_query/voted_query = SSdbcore.RunQuery(
-			"SELECT id FROM [format_table_name("poll_vote")] WHERE optionid = :optionid AND ckey = :ckey",
+			"SELECT id FROM [DB_PREFIX_TABLE_NAME("poll_vote")] WHERE optionid = :optionid AND ckey = :ckey",
 			list(
 				"optionid" = sanitizeSQL(optionid),
 				"ckey" = usr.ckey
@@ -570,7 +570,7 @@
 			adminrank = usr.client.holder.rank
 
 		SSdbcore.RunQuery(
-			"INSERT INTO [format_table_name("poll_vote")] (id, datetime, pollid, optionid, ckey, ip, adminrank, rating) VALUES (null, Now(), :pollid, :optionid, :ckey, :address, :rank, :rating)",
+			"INSERT INTO [DB_PREFIX_TABLE_NAME("poll_vote")] (id, datetime, pollid, optionid, ckey, ip, adminrank, rating) VALUES (null, Now(), :pollid, :optionid, :ckey, :address, :rank, :rating)",
 			list(
 				"pollid" = sanitizeSQL(pollid),
 				"optionid" = sanitizeSQL(optionid),

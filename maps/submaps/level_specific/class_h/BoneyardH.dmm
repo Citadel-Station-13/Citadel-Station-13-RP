@@ -90,7 +90,7 @@
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
 /area/class_h/POIs/graveyard)
 "H" = (
-/turf/simulated/wall/sandstone/classh,
+/turf/simulated/wall/sandstone,
 /area/class_h/POIs/graveyard)
 "K" = (
 /obj/structure/fence{

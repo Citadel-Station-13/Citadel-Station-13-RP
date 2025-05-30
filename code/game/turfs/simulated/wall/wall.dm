@@ -6,10 +6,16 @@
 /turf/simulated/wall
 	name = "wall"
 	desc = "A huge chunk of iron used to separate rooms."
-	icon = 'icons/turf/walls/_previews.dmi'
-	icon_state = "solid"
+	color = /datum/prototype/material/steel::icon_colour
+	icon = /datum/prototype/material/steel::icon_base
+	icon_state = "wall-0"
 	base_icon_state = "wall"
-	color = "#666666"
+
+	#ifdef IN_MAP_EDITOR // Display disposal pipes etc. above walls in map editors.
+	layer = PLATING_LAYER
+	#else
+	layer = WALL_LAYER
+	#endif
 
 	integrity_enabled = TRUE
 	integrity = 200
@@ -17,18 +23,13 @@
 	integrity_failure = 0
 
 	armor_type = /datum/armor/object/heavy
-
-	#ifdef IN_MAP_EDITOR // Display disposal pipes etc. above walls in map editors.
-	layer = PLATING_LAYER
-	#endif
+	outdoors = FALSE
 
 	opacity = TRUE
 	density = TRUE
 	blocks_air = TRUE
-	layer = WALL_LAYER
 	rad_insulation = RAD_INSULATION_EXTREME
-//	air_status = AIR_STATUS_BLOCK
-	thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT
+	// air_status = AIR_STATUS_BLOCK
 	heat_capacity = 312500 //a little over 5 cm thick , 312500 for 1 m by 2.5 m by 0.25 m plasteel wall
 	baseturfs = /turf/simulated/floor/plating
 	edge_blending_priority = INFINITY // let's not have floors render onto us mmkay?
@@ -48,12 +49,12 @@
 	var/active
 	var/can_open = FALSE
 
-	/// The base material of the wall.
-	var/datum/material/material_outer = /datum/material/steel
-	/// The reinforcement material of the wall.
-	var/datum/material/material_reinf
 	/// The material of the girders that are produced when the wall is dismantled.
-	var/datum/material/material_girder = /datum/material/steel
+	var/datum/prototype/material/material_girder = /datum/prototype/material/steel
+	/// The base material of the wall.
+	var/datum/prototype/material/material_outer = /datum/prototype/material/steel
+	/// The reinforcement material of the wall.
+	var/datum/prototype/material/material_reinf
 
 	var/last_state
 	var/construction_stage
@@ -149,7 +150,7 @@
 /turf/simulated/wall/adjacent_fire_act(turf/simulated/floor/adj_turf, datum/gas_mixture/adj_air, adj_temp, adj_volume)
 	burn(adj_temp)
 	if(adj_temp > material_outer.melting_point)
-		inflict_atom_damage(log(RAND_F(0.9, 1.1) * (adj_temp - material_outer.melting_point)), flag = ARMOR_FIRE, gradual = TRUE)
+		inflict_atom_damage(log(RAND_F(0.9, 1.1) * (adj_temp - material_outer.melting_point)), damage_flag = ARMOR_FIRE, damage_mode = DAMAGE_MODE_GRADUAL)
 
 	return ..()
 
@@ -166,8 +167,8 @@
 				material_outer.place_dismantled_product(src)
 
 	for(var/obj/O in src.contents) //Eject contents!
-		if(istype(O,/obj/structure/sign/poster))
-			var/obj/structure/sign/poster/P = O
+		if(istype(O,/obj/structure/poster))
+			var/obj/structure/poster/P = O
 			P.roll_and_drop(src)
 		else
 			O.forceMove(src)
@@ -181,11 +182,11 @@
 			ScrapeAway()
 		if(2.0)
 			if(prob(75))
-				inflict_atom_damage(rand(150, 250), flag = ARMOR_BOMB)
+				inflict_atom_damage(rand(150, 250), damage_flag = ARMOR_BOMB)
 			else
 				dismantle_wall(1,1)
 		if(3.0)
-			inflict_atom_damage(rand(0, 150), flag = ARMOR_BOMB)
+			inflict_atom_damage(rand(0, 150), damage_flag = ARMOR_BOMB)
 
 /turf/simulated/wall/proc/can_melt()
 	return material_outer?.material_flags & MATERIAL_FLAG_UNMELTABLE

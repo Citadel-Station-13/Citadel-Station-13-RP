@@ -14,13 +14,16 @@
 	slot_flags = SLOT_ID | SLOT_EARS
 
 	var/age = "\[UNSET\]"
-	var/blood_type = "\[UNSET\]"
 	var/dna_hash = "\[UNSET\]"
-	var/fingerprint_hash = "\[UNSET\]"
-	var/sex = "\[UNSET\]"
+	var/pronouns = "\[UNSET\]"
 	var/species = "\[UNSET\]"
 	var/icon/front
 	var/icon/side
+	var/photoupdatequeued
+
+	/// Keyed list containing confidential information, such as blood type, vetalism, and more
+	var/list/extra_info = list()
+	var/extra_info_visible
 
 	var/last_job_switch
 	var/lost_access = list()
@@ -34,9 +37,11 @@
 	var/assignment = null	//can be alt title or the actual job
 	var/rank = null			//actual job
 
-	var/mining_points = 0	// For redeeming at mining equipment vendors
-	var/survey_points = 0	// For redeeming at explorer equipment vendors.
-	var/engineer_points = 0	// For redeeming at engineering equipment vendors
+	//* Point Redemption *//
+
+	/// stored POINT_REDEMPTION_TYPE_* points; enum associated to number
+	/// * lazy list
+	var/list/stored_redemption_points
 
 /obj/item/card/id/Initialize(mapload)
 	. = ..()
@@ -52,17 +57,32 @@
 		job_access_type = getting_from
 
 /obj/item/card/id/examine(mob/user, dist)
-	var/list/result = dat()
-	result.Insert(1, ..())
-	return result
-	//show(user)
-
-/obj/item/card/id/examine_more(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("<i>You examine [src] closer, and note the following...</i>")
+	. += "<div"
+	if(front || side)
+		. += " style='background: "
+		if(side)
+			. += "url([icon2html(side, world, sourceonly = TRUE)])"
+		if(front && side)
+			. += ", "
+		if(front)
+			. += "url([icon2html(front, world, sourceonly = TRUE)])"
+		. += "; background-repeat: no-repeat; background-size: 64px; background-position: right 0px top 0px, right 64px top 0px; -ms-interpolation-mode: nearest-neighbor; image-rendering: pixelated'"
+	. += ">"
+	. += dat()
+	. += "</div>"
+	if(Adjacent(user))
+		. += SPAN_NOTICE("<b>Alt-click</b> to [extra_info_visible ? "close" : "open"] the confidential information flap.")
 
-	if(mining_points)
-		. += "There's [mining_points] mining equipment redemption point\s loaded onto this card."
+/obj/item/card/id/get_description_info()
+	. = ..()
+	if(.)
+		. += "<br>"
+	for(var/key in stored_redemption_points)
+		var/amount = stored_redemption_points[key]
+		if(!amount)
+			continue
+		. += "There's [amount] [key] equipment redemption point[amount > 1 ? "s" : ""] loaded on this card."
 
 /obj/item/card/id/update_name()
 	name = "[registered_name? "[registered_name]'s " : ""]ID Card [assignment? "([assignment])" : ""]"
@@ -102,26 +122,46 @@
 	return
 
 /obj/item/card/id/proc/set_id_photo(var/mob/M)
-	var/icon/charicon = cached_character_icon(M)
-	front = icon(charicon,dir = SOUTH)
-	side = icon(charicon,dir = WEST)
+	if(!photoupdatequeued)
+		addtimer(CALLBACK(src, PROC_REF(_set_id_photo)), 1)
+	photoupdatequeued = M
 
-/mob/proc/set_id_info(var/obj/item/card/id/id_card)
+
+/obj/item/card/id/proc/_set_id_photo()
+	var/mob/M = photoupdatequeued
+	if(istype(M))
+		UNTIL(!(M.atom_flags & ATOM_OVERLAY_QUEUED)) // this is necessary specifically because roundstart characters simply do not render their clothes, as they are waiting for overlays to compile. we are in hell we think
+		front = get_flat_icon(M, SOUTH, TRUE)
+		side = get_flat_icon(M, WEST, TRUE)
+	photoupdatequeued = null
+
+/mob/proc/set_id_info(obj/item/card/id/id_card, client/C)
+	id_card.extra_info = list()
 	id_card.age = 0
 	id_card.registered_name		= real_name
-	id_card.sex 				= capitalize(gender)
-	id_card.set_id_photo(src)
+	id_card.extra_info["sex"] = "<b>Biological Sex:</b> [capitalize(gender)]" //most people just use sex for the handful of pixels worth of difference in body model but eh why the hell not
+	var/datum/gender/G = GLOB.gender_datums[get_gender()]
+	if(istype(G))
+		id_card.pronouns = G.pronoun_preview
+	else
+		id_card.pronouns = "Unknown"
 
 	if(dna)
-		id_card.blood_type		= dna.b_type
+		id_card.extra_info["bloodtype"] = "<b>Blood Type:</b> [dna.b_type]"
+		id_card.extra_info["dnahash"] = "<b>DNA Hash:</b> [dna.unique_enzymes]"
+		id_card.extra_info["fingerprint"] = "<b>Fingerprint:</b> [md5(dna.uni_identity)]"
 		id_card.dna_hash		= dna.unique_enzymes
-		id_card.fingerprint_hash= md5(dna.uni_identity)
+	if(C && C.prefs)
+		id_card.extra_info += C.prefs.get_trait_id_info()
 	id_card.update_name()
+	id_card.set_id_photo(src)
 
-/mob/living/carbon/human/set_id_info(var/obj/item/card/id/id_card)
+/mob/living/carbon/human/set_id_info(obj/item/card/id/id_card, client/C)
 	..()
 	id_card.age = age
-	id_card.species = src.species.name
+	id_card.species = custom_species ? custom_species : species.get_examine_name()
+
+	id_card.extra_info["biospecies"] = "<b>Biological Species:</b> [species.get_examine_name()]"
 
 	if(istype(id_card,/obj/item/card/id/contractor))
 		var/obj/item/card/id/contractor/c_id = id_card
@@ -131,20 +171,23 @@
 
 /obj/item/card/id/proc/dat()
 	var/dat = list()
-	dat += "Name: [registered_name]"
-	dat += "Sex: [sex]"
-	dat += "Age: [age]"
-	dat += "Rank: [assignment]"
-	dat += "Species: [species]"
-	// dat += "Fingerprint: [fingerprint_hash]</A><BR>\n"
-	dat += "Blood Type: [blood_type]"
-	// dat += "DNA Hash: [dna_hash]<BR><BR>\n"
-	/*if(front && side)
-		dat +="<td align = center valign = top>Photo</td>"*/
-	//dat += "</tr></table>"
+	dat += "<b>Name:</b> [registered_name]"
+	dat += "<b>Pronouns:</b> [pronouns]"
+	dat += "<b>Age:</b> [age]"
+	dat += "<b>Rank:</b> [assignment]"
+	dat += "<b>Species:</b> [species]"
+	if(extra_info_visible)
+		dat += SPAN_NOTICE("<br>CONFIDENTIAL:")
+		if(length(extra_info))
+			for(var/key in extra_info) // doing a simple dat += extra_info just results in the ID displaying all the keys instead of the actual text tied to 'em
+				dat += extra_info[key]
+		else
+			dat += SPAN_NOTICE("The confidential information section is blank.")
+	else
+		dat += "The confidential information flap is closed."
 	return dat
 
-/obj/item/card/id/attack_self(mob/user)
+/obj/item/card/id/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -154,21 +197,18 @@
 	src.add_fingerprint(user)
 	return
 
+/obj/item/card/id/AltClick(mob/user)
+	if(Adjacent(user))
+		extra_info_visible = !extra_info_visible
+	user.visible_message("[user] flips [src]'s confidential information flap [extra_info_visible ? "open" : "closed"].",\
+		"You flip [src]'s confidential information flap [extra_info_visible ? "open" : "closed"].")
+
+
 /obj/item/card/id/GetAccess()
 	return access.Copy()
 
 /obj/item/card/id/GetID()
 	return src
-
-/obj/item/card/id/verb/read()
-	set name = "Read ID Card"
-	set category = VERB_CATEGORY_OBJECT
-	set src in usr
-
-	to_chat(usr, "[icon2html(thing = src, target = usr)] [src.name]: The current assignment on the card is [src.assignment].")
-	to_chat(usr, "The blood type on the card is [blood_type].")
-	to_chat(usr, "The DNA hash on the card is [dna_hash].")
-	to_chat(usr, "The fingerprint hash on the card is [fingerprint_hash].")
 
 /obj/item/card/id/vv_get_dropdown()
 	. = ..()
@@ -180,6 +220,27 @@
 	if(href_list[VV_HK_ID_MOD])
 		var/datum/tgui_module/card_mod/admin/card_vv/mod = new(src)
 		mod.ui_interact(usr)
+
+//* Point Redemption *//
+
+/obj/item/card/id/proc/get_redemption_points(point_type)
+	return stored_redemption_points?[point_type] || 0
+
+/obj/item/card/id/proc/set_redemption_points(point_type, amount)
+	LAZYSET(stored_redemption_points, point_type, amount)
+
+/obj/item/card/id/proc/adjust_redemption_points(point_type, amount)
+	LAZYINITLIST(stored_redemption_points)
+	stored_redemption_points[point_type] = max(0, stored_redemption_points[point_type] + amount)
+
+/**
+ * @return TRUE / FALSE on success / fail
+ */
+/obj/item/card/id/proc/use_redemption_points(point_type, amount)
+	if(stored_redemption_points?[point_type] < amount)
+		return FALSE
+	stored_redemption_points[point_type] -= amount
+	return TRUE
 
 /obj/item/card/id/silver
 	name = "command identification card"
@@ -651,3 +712,92 @@
 	assignment = "Pathfinder"
 	rank = "Pathfinder"
 	job_access_type = /datum/role/job/station/pathfinder
+
+/obj/item/card/id/external/gaia
+	name = "Happy Trails Resort Company Day Pass"
+	desc = "A pass giving one access to the normal facilties at Happy Trails Resort stations."
+	icon_state = "gaia_normal"
+	job_access_type = null
+	access = list(250)
+
+/obj/item/card/id/external/gaia/vip
+	name = "Happy Trails Resort Company VIP Day Pass"
+	desc = "A premium day pass for accessing the most luxurious parts of the Happy Trails Resorts."
+	icon_state = "gaia_vip"
+	access = list(250,251)
+
+/obj/item/card/id/external/gaia/staff//created so that when assigning the outfit of merchant, it assigns a working ID
+	name = "Happy Trails Resort Company Staff ID"
+	desc = "Issued to staff of the Happy Trails Company."
+	icon_state = "gaia_staff"
+	access = list(250,251,252)
+
+/obj/item/card/id/external/nebula/room1
+	name = "Card to Room 1"
+	desc = "A card that grants usage of Room 1 of the Nebula Motel"
+	icon_state = "guest"
+	job_access_type = null
+	access = list(161)
+
+/obj/item/card/id/external/nebula/room2
+	name = "Card to Room 2"
+	desc = "A card that grants usage of Room 2 of the Nebula Motel"
+	icon_state = "guest"
+	job_access_type = null
+	access = list(162)
+
+/obj/item/card/id/external/nebula/room3
+	name = "Card to Room 3"
+	desc = "A card that grants usage of Room 3 of the Nebula Motel"
+	icon_state = "guest"
+	job_access_type = null
+	access = list(163)
+
+/obj/item/card/id/external/nebula/room4
+	name = "Card to Room 4"
+	desc = "A card that grants usage of Room 4 of the Nebula Motel"
+	icon_state = "guest"
+	job_access_type = null
+	access = list(164)
+
+/obj/item/card/id/external/nebula/room5
+	name = "Card to Room 5"
+	desc = "A card that grants usage of Room 5 of the Nebula Motel"
+	icon_state = "guest"
+	job_access_type = null
+	access = list(165)
+
+/obj/item/card/id/external/nebula/room6
+	name = "Card to Room 6"
+	desc = "A card that grants usage of Room 6 of the Nebula Motel"
+	icon_state = "guest"
+	job_access_type = null
+	access = list(166)
+
+/obj/item/card/id/external/nebula/room7
+	name = "Card to Room 7"
+	desc = "A card that grants usage of Room 7 of the Nebula Motel"
+	icon_state = "guest"
+	job_access_type = null
+	access = list(167)
+
+/obj/item/card/id/external/nebula/room8
+	name = "Card to Room 8"
+	desc = "A card that grants usage of Room 8 of the Nebula Motel"
+	icon_state = "guest"
+	job_access_type = null
+	access = list(169)
+
+/obj/item/card/id/external/nebula/room9
+	name = "Card to the VIP Suit"
+	color = "#ffbd17"
+	desc = "A card that grants usage to the VIP suite of the Nebula Motel, and its Arrowhead shuttle."
+	icon_state = "guest"
+	job_access_type = null
+	access = list(170)
+
+/obj/item/card/id/external/id_nka
+	name = "New Kingdom of Adhomai Commoner's ID"
+	desc = "An ID issued to the non-noble commoners of the New Kingdom of Adhomai. In some regions, adults must legally carry it on their person at all times."
+	icon_state = "nka"
+	job_access_type = null

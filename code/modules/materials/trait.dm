@@ -4,7 +4,7 @@
 /**
  * Like components, but for materials.
  */
-/datum/material_trait
+/datum/prototype/material_trait
 	/// trait flags: what we care about
 	var/material_trait_flags = NONE
 	/// only register for a material that's primary
@@ -14,14 +14,14 @@
 	/// shieldcall should react to equipped
 	var/should_shield_inventory = TRUE
 
-/datum/material_trait/New()
+/datum/prototype/material_trait/New()
 	if(material_trait_flags & MATERIAL_TRAIT_SHIELD)
 		init_shieldcall(should_shield_inventory)
 
 /**
  * creates a shieldcall datum that redirects to us
  */
-/datum/material_trait/proc/init_shieldcall(should_shield_inventory)
+/datum/prototype/material_trait/proc/init_shieldcall(should_shield_inventory)
 	if(!isnull(shieldcall))
 		CRASH("attempted to double-init shieldcalls")
 	shieldcall = new(src, should_shield_inventory)
@@ -39,7 +39,7 @@
  * * weapon - what's damaging them. datatype semantics differs based on attack type
  * * attack_type - ATTACK_TYPE_* define
  */
-/datum/material_trait/proc/on_mob_attack(atom/host, data, mob/target, zone, datum/weapon, attack_type)
+/datum/prototype/material_trait/proc/on_mob_attack(atom/host, data, mob/target, zone, datum/weapon, attack_type)
 	return
 
 /**
@@ -52,7 +52,7 @@
  * * weapon - what's damaging them. datatype semantics differs based on attack type
  * * attack_type - ATTACK_TYPE_* define
  */
-/datum/material_trait/proc/on_obj_attack(atom/host, data, atom/target, datum/weapon, attack_type)
+/datum/prototype/material_trait/proc/on_obj_attack(atom/host, data, atom/target, datum/weapon, attack_type)
 	return
 
 /**
@@ -71,7 +71,7 @@
  * * data - metadata
  * * shieldcall_args - indexed list of shieldcall args.
  */
-/datum/material_trait/proc/on_shieldcall(atom/host, data, list/shieldcall_args)
+/datum/prototype/material_trait/proc/on_shieldcall(atom/host, data, list/shieldcall_args)
 	return
 
 /**
@@ -84,13 +84,13 @@
  * * examiner - person examining
  * * distance - distance being examined at
  */
-/datum/material_trait/proc/on_examine(atom/host, data, list/examine_list, atom/examiner, distance)
+/datum/prototype/material_trait/proc/on_examine(atom/host, data, list/examine_list, atom/examiner, distance)
 	return
 
 /**
  * called on tick from SSmaterials
  */
-/datum/material_trait/proc/tick(atom/host, data, dt)
+/datum/prototype/material_trait/proc/tick(atom/host, data, dt)
 	return
 
 /**
@@ -105,7 +105,7 @@
  *
  * @return changed data, that isn't null.
  */
-/datum/material_trait/proc/on_add(atom/host, existing_data, our_data)
+/datum/prototype/material_trait/proc/on_add(atom/host, existing_data, our_data)
 	// by default, just track how many copies we're on something
 	return existing_data + 1
 
@@ -124,18 +124,18 @@
  *
  * @return changed data, or null to fully remove.
  */
-/datum/material_trait/proc/on_remove(atom/host, existing_data, our_data, destroying)
+/datum/prototype/material_trait/proc/on_remove(atom/host, existing_data, our_data, destroying)
 	if(destroying)
 		return
 	// by default, just track how many copies we're on something
 	return (existing_data - 1) || null
 
-/datum/material_trait/proc/start_ticking_on(atom/target)
+/datum/prototype/material_trait/proc/start_ticking_on(atom/target)
 	if(!target.material_ticking_counter)
 		START_TICKING_MATERIALS(target)
 	++target.material_ticking_counter
 
-/datum/material_trait/proc/stop_ticking_on(atom/target)
+/datum/prototype/material_trait/proc/stop_ticking_on(atom/target)
 	--target.material_ticking_counter
 	if(!target.material_ticking_counter)
 		STOP_TICKING_MATERIALS(target)
@@ -144,9 +144,9 @@
  * material trait shieldcalls
  */
 /datum/shieldcall/material_trait
-	var/datum/material_trait/trait
+	var/datum/prototype/material_trait/trait
 
-/datum/shieldcall/material_trait/New(datum/material_trait/trait, should_shield_inventory)
+/datum/shieldcall/material_trait/New(datum/prototype/material_trait/trait, should_shield_inventory)
 	..()
 	src.trait = trait
 	src.shields_in_inventory = should_shield_inventory

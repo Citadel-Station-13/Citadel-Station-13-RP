@@ -56,6 +56,10 @@
 
 /mob/living/silicon/robot/drone/ghost()
 	. = ..()
+	if(istype(loc, /obj/machinery/cryopod))
+		var/obj/machinery/cryopod/cryo = loc
+		cryo.despawn_occupant(src)
+		return
 	if (!ckey)
 		death()
 
@@ -339,10 +343,10 @@
 			C.prefs.be_special ^= BE_PAI
 
 /mob/living/silicon/robot/drone/proc/transfer_personality(var/client/player)
+	if(!player)
+		return
 
-	if(!player) return
-
-	src.ckey = player.ckey
+	player.transfer_to(src)
 
 	if(player.mob && player.mob.mind)
 		player.mob.mind.transfer(src)

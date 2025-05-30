@@ -155,7 +155,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/item/grenade/empgrenade,
+/obj/item/grenade/simple/emp,
 /turf/simulated/floor/bluegrid,
 /area/submap/debrisfield_vr/derelict/interior)
 "aB" = (
@@ -292,13 +292,13 @@
 /area/submap/debrisfield_vr/derelict/interior)
 "aZ" = (
 /mob/living/simple_mob/mechanical/infectionbot{
-	faction = "derelict"
+	iff_factions = "derelict"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/submap/debrisfield_vr/derelict/interior)
 "ba" = (
 /obj/random/humanoidremains,
-/obj/item/gun/energy/ionrifle,
+/obj/item/gun/projectile/energy/ionrifle,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/submap/debrisfield_vr/derelict/interior)
 "bb" = (
@@ -324,7 +324,7 @@
 /turf/space,
 /area/space)
 "bg" = (
-/obj/item/gun/energy/ionrifle,
+/obj/item/gun/projectile/energy/ionrifle,
 /turf/space,
 /area/space)
 "bh" = (
@@ -356,7 +356,7 @@
 /area/submap/debrisfield_vr/derelict/interior)
 "bn" = (
 /mob/living/simple_mob/mechanical/infectionbot{
-	faction = "derelict"
+	iff_factions = "derelict"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/submap/debrisfield_vr/derelict/interior)
@@ -406,7 +406,7 @@
 "bx" = (
 /obj/mob_spawner/derelict/corrupt_maint_swarm,
 /mob/living/simple_mob/mechanical/corrupt_maint_drone{
-	faction = "derelict"
+	iff_factions = "derelict"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/submap/debrisfield_vr/derelict/interior)
@@ -501,9 +501,9 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/submap/debrisfield_vr/derelict/interior)
 "bO" = (
-/obj/item/grenade/empgrenade,
-/obj/item/grenade/empgrenade,
-/obj/item/grenade/empgrenade,
+/obj/item/grenade/simple/emp,
+/obj/item/grenade/simple/emp,
+/obj/item/grenade/simple/emp,
 /turf/space,
 /area/space)
 "bP" = (
@@ -546,7 +546,7 @@
 "bX" = (
 /obj/mob_spawner/derelict/corrupt_maint_swarm,
 /mob/living/simple_mob/mechanical/corrupt_maint_drone{
-	faction = "derelict"
+	iff_factions = "derelict"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/submap/debrisfield_vr/derelict/interior)
@@ -609,7 +609,7 @@
 /area/submap/debrisfield_vr/derelict/interior)
 "ci" = (
 /mob/living/simple_mob/mechanical/infectionbot{
-	faction = "derelict"
+	iff_factions = "derelict"
 	},
 /turf/simulated/floor/tiled/white,
 /area/submap/debrisfield_vr/derelict/interior)

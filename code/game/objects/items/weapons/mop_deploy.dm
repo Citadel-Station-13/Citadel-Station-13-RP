@@ -52,7 +52,7 @@
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/item/mop_deploy/attack_self(mob/user)
+/obj/item/mop_deploy/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

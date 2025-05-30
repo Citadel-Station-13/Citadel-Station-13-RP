@@ -18,7 +18,7 @@
 /obj/machinery/button/attackby(obj/item/W, mob/user)
 	return attack_hand(user)
 
-/obj/machinery/button/attack_hand(obj/item/W, mob/user)
+/obj/machinery/button/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return TRUE
 	playsound(src, 'sound/machines/button.ogg', 100, TRUE)
@@ -30,7 +30,7 @@
 	desc = "A remote control switch for polarized windows."
 	var/range = 7
 
-/obj/machinery/button/windowtint/attack_hand(mob/user, list/params)
+/obj/machinery/button/windowtint/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if (..())
 		return TRUE
 	else
@@ -94,3 +94,38 @@
 		if(D.glass && (D.id_tint == src.id))
 			spawn(0)
 				D.toggle()
+
+/obj/item/frame/window_tint_control
+	name = "window tint control frame"
+	desc = "Used for building a window tint controller."
+	icon = 'icons/obj/power_vr.dmi'
+	icon_state = "lightswitch-s1"
+	build_machine_type = /obj/structure/construction/window_tint_control
+
+/obj/structure/construction/window_tint_control
+	name = "window tint control frame"
+	desc = "A window tint controller under construction."
+	icon = 'icons/obj/power_vr.dmi'
+	icon_state = "lightswitch-s1"
+	base_icon = "lightswitch-s"
+	build_machine_type = /obj/machinery/button/windowtint
+	x_offset = 26
+	y_offset = 26
+
+/obj/machinery/button/windowtint/attackby(obj/item/W, mob/user, params)
+	src.add_fingerprint(user)
+	if(default_deconstruction_screwdriver(user, W))
+		return
+	if(default_deconstruction_crowbar(user, W))
+		return
+	return ..()
+
+/obj/machinery/button/windowtint/dismantle()
+	playsound(src.loc, 'sound/items/Crowbar.ogg', 50, 1)
+	var/obj/structure/construction/window_tint_control/A = new(src.loc, src.dir)
+	A.stage = FRAME_WIRED
+	A.pixel_x = pixel_x
+	A.pixel_y = pixel_y
+	A.update_icon()
+	qdel(src)
+	return 1

@@ -12,6 +12,7 @@
 	equip_sound = 'sound/items/toolbelt_equip.ogg'
 	drop_sound = 'sound/items/drop/toolbelt.ogg'
 	pickup_sound = 'sound/items/pickup/toolbelt.ogg'
+	worth_intrinsic = 50
 	var/show_above_suit = 0
 
 /obj/item/storage/belt/verb/toggle_layer()
@@ -156,44 +157,6 @@
 	desc = "A sturdy black webbing belt with attached pouches."
 	icon_state = "ems"
 
-/obj/item/storage/belt/security
-	name = "security belt"
-	desc = "Can hold security gear like handcuffs and flashes."
-	icon_state = "security"
-	max_single_weight_class = WEIGHT_CLASS_NORMAL
-	insertion_whitelist = list(
-		/obj/item/grenade,
-		/obj/item/reagent_containers/spray/pepper,
-		/obj/item/handcuffs,
-		/obj/item/flash,
-		/obj/item/clothing/glasses,
-		/obj/item/ammo_casing/a10g,
-		/obj/item/ammo_casing/a12g,
-		/obj/item/ammo_magazine,
-		/obj/item/cell/device,
-		/obj/item/reagent_containers/food/snacks/donut/,
-		/obj/item/melee/baton,
-		/obj/item/gun/energy/taser,
-		/obj/item/gun/energy/stunrevolver,
-		/obj/item/gun/energy/gun,
-		/obj/item/flame/lighter,
-		/obj/item/flashlight,
-		/obj/item/tape_recorder,
-		/obj/item/barrier_tape_roll,
-		/obj/item/pda,
-		/obj/item/radio/headset,
-		/obj/item/clothing/gloves,
-		/obj/item/hailer,
-		/obj/item/megaphone,
-		/obj/item/melee,
-		/obj/item/clothing/accessory/badge,
-		/obj/item/gun/ballistic/sec,
-		/obj/item/gun/ballistic/p92x,
-		/obj/item/barrier_tape_roll,
-		/obj/item/gun/ballistic/colt/detective,
-		/obj/item/holowarrant
-		)
-
 /obj/item/storage/belt/detective
 	name = "forensic utility belt"
 	desc = "A belt for holding forensics equipment."
@@ -233,7 +196,7 @@
 		/obj/item/flame/lighter,
 		/obj/item/reagent_containers/food/snacks/donut/,
 		/obj/item/ammo_magazine,
-		/obj/item/gun/ballistic/colt/detective,
+		/obj/item/gun/projectile/ballistic/colt/detective,
 		/obj/item/holowarrant
 		)
 
@@ -261,8 +224,8 @@
 		/obj/item/cell/device/weapon,
 		/obj/item/material/butterfly,
 		/obj/item/material/knife,
-		/obj/item/melee/energy/sword,
-		/obj/item/shield/energy,
+		/obj/item/melee/transforming/energy/sword,
+		/obj/item/shield/transforming/energy,
 		/obj/item/ammo_casing/,
 		/obj/item/ammo_magazine/,
 		/obj/item/storage/box/beanbags,
@@ -409,6 +372,7 @@
 	icon_state = "janitor"
 	max_items = 7
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	worth_intrinsic = 35
 	insertion_whitelist = list(
 		/obj/item/clothing/glasses,
 		/obj/item/flashlight,
@@ -432,6 +396,7 @@
 	name = "excavation gear-belt"
 	desc = "Can hold various excavation gear."
 	icon_state = "gear"
+	worth_intrinsic = 65
 	insertion_whitelist = list(
 		/obj/item/storage/box/samplebags,
 		/obj/item/core_sampler,
@@ -557,40 +522,40 @@
 	max_items = 2
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	insertion_whitelist = list(
-		/obj/item/gun/energy/alien,
-		/obj/item/gun/energy/captain,
-		/obj/item/gun/energy/crossbow,
-		/obj/item/gun/energy/decloner,
-		/obj/item/gun/energy/floragun,
-		/obj/item/gun/energy/gun,
-		/obj/item/gun/energy/gun/nuclear,
-		/obj/item/gun/energy/ionrifle/pistol,
-		/obj/item/gun/energy/lasertag,
-		/obj/item/gun/energy/netgun,
-		/obj/item/gun/energy/phasegun/pistol,
-		/obj/item/gun/energy/pulse_pistol,
-		/obj/item/gun/energy/retro,
-		/obj/item/gun/energy/service,
-		/obj/item/gun/energy/stunrevolver,
-		/obj/item/gun/energy/taser,
-		/obj/item/gun/energy/toxgun,
-		/obj/item/gun/energy/zip,
-		/obj/item/gun/ballistic/colt,
-		/obj/item/gun/ballistic/contender,
-		/obj/item/gun/ballistic/dartgun,
-		/obj/item/gun/ballistic/deagle,
-		/obj/item/gun/ballistic/derringer,
-		/obj/item/gun/ballistic/gyropistol,
-		/obj/item/gun/ballistic/luger,
-		/obj/item/gun/ballistic/r9,
-		/obj/item/gun/ballistic/revolver,
-		/obj/item/gun/ballistic/sec,
-		/obj/item/gun/ballistic/shotgun/doublebarrel/sawn,
-		/obj/item/gun/ballistic/shotgun/flare,
-		/obj/item/gun/ballistic/silenced,
-		/obj/item/gun/ballistic/p92x,
-		/obj/item/gun/ballistic/pistol,
-		/obj/item/gun/ballistic/pirate
+		/obj/item/gun/projectile/energy/alien,
+		/obj/item/gun/projectile/energy/captain,
+		/obj/item/gun/projectile/energy/crossbow,
+		/obj/item/gun/projectile/energy/decloner,
+		/obj/item/gun/projectile/energy/floragun,
+		/obj/item/gun/projectile/energy/gun,
+		/obj/item/gun/projectile/energy/gun/nuclear,
+		/obj/item/gun/projectile/energy/ionrifle/pistol,
+		/obj/item/gun/projectile/energy/lasertag,
+		/obj/item/gun/projectile/energy/netgun,
+		/obj/item/gun/projectile/energy/phasegun/pistol,
+		/obj/item/gun/projectile/energy/nt_pulse/carbine,
+		/obj/item/gun/projectile/energy/retro,
+		/obj/item/gun/projectile/energy/nt_pmd/service_revolver,
+		/obj/item/gun/projectile/energy/stunrevolver,
+		/obj/item/gun/projectile/energy/taser,
+		/obj/item/gun/projectile/energy/toxgun,
+		/obj/item/gun/projectile/energy/zip,
+		/obj/item/gun/projectile/ballistic/colt,
+		/obj/item/gun/projectile/ballistic/contender,
+		/obj/item/gun/projectile/ballistic/dartgun,
+		/obj/item/gun/projectile/ballistic/deagle,
+		/obj/item/gun/projectile/ballistic/derringer,
+		/obj/item/gun/projectile/ballistic/gyropistol,
+		/obj/item/gun/projectile/ballistic/luger,
+		/obj/item/gun/projectile/ballistic/r9,
+		/obj/item/gun/projectile/ballistic/revolver,
+		/obj/item/gun/projectile/ballistic/sec,
+		/obj/item/gun/projectile/ballistic/shotgun/doublebarrel/sawn,
+		/obj/item/gun/projectile/ballistic/shotgun/flare,
+		/obj/item/gun/projectile/ballistic/silenced,
+		/obj/item/gun/projectile/ballistic/p92x,
+		/obj/item/gun/projectile/ballistic/pistol,
+		/obj/item/gun/projectile/ballistic/pirate
 		)
 
 /obj/item/storage/belt/quiver

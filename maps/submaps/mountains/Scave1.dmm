@@ -37,7 +37,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/Scave1)
 "j" = (
-/obj/item/grenade/spawnergrenade/spider,
+/obj/item/grenade/simple/spawner/spider,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/Scave1)
 "k" = (
@@ -49,7 +49,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/Scave1)
 "m" = (
-/obj/item/mecha_parts/mecha_equipment/tool/drill/diamonddrill,
+/obj/item/vehicle_module/tool/drill/diamonddrill,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/Scave1)
 "n" = (

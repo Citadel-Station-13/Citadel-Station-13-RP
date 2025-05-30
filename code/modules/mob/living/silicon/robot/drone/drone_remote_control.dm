@@ -29,7 +29,7 @@
 	if(user.mind)
 		user.mind.transfer(src)
 	else
-		key = user.key
+		user.transfer_client_to(src)
 	updatename()
 	to_chat(src, "<span class='notice'><b>You have shunted your primary control loop into \a [initial(name)].</b> Use the <b>Release Control</b> verb to return to your core.</span>")
 
@@ -67,7 +67,7 @@
 	if(user.mind)
 		user.mind.transfer(new_drone)
 	else
-		new_drone.key = user.key
+		user.transfer_client_to(new_drone)
 	new_drone.updatename()
 
 	to_chat(new_drone, "<span class='notice'><b>You have shunted your primary control loop into \a [initial(new_drone.name)].</b> Use the <b>Release Control</b> verb to return to your core.</span>")
@@ -85,7 +85,7 @@
 		if(mind)
 			mind.transfer(controlling_ai)
 		else
-			controlling_ai.key = key
+			transfer_client_to(controlling_ai)
 		to_chat(controlling_ai, "<span class='notice'>[message]</span>")
 		controlling_ai.controlling_drone = null
 		controlling_ai.teleop = null

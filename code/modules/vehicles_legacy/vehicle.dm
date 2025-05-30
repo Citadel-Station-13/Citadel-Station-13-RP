@@ -13,6 +13,8 @@
 	anchored = 1
 	animate_movement=1
 	light_range = 3
+	// todo: uses old integrity for now
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 	buckle_allowed = TRUE
 	buckle_flags = BUCKLING_PASS_PROJECTILES_UPWARDS
@@ -99,7 +101,7 @@
 				if(health < maxhealth)
 					if(open)
 						health = min(maxhealth, health+10)
-						user.setClickCooldown(user.get_attack_speed(W))
+						user.setClickCooldownLegacy(user.get_attack_speed_legacy(W))
 						playsound(src, T.tool_sound, 50, 1)
 						user.visible_message("<font color='red'>[user] repairs [src]!</font>","<font color=#4F49AF> You repair [src]!</font>")
 					else
@@ -109,9 +111,9 @@
 			else
 				to_chat(user, "<span class='notice'>Unable to repair while [src] is off.</span>")
 
-	else if(hasvar(W,"damage_force") && hasvar(W,"damtype"))
-		user.setClickCooldown(user.get_attack_speed(W))
-		switch(W.damtype)
+	else if(hasvar(W,"damage_force") && hasvar(W,"damage_type"))
+		user.setClickCooldownLegacy(user.get_attack_speed_legacy(W))
+		switch(W.damage_type)
 			if("fire")
 				health -= W.damage_force * fire_dam_coeff
 			if("brute")
@@ -121,9 +123,9 @@
 	else
 		..()
 
-/obj/vehicle_old/bullet_act(var/obj/projectile/Proj)
-	health -= Proj.get_structure_damage()
-	..()
+/obj/vehicle_old/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
+	health -= proj.get_structure_damage()
 	healthcheck()
 
 /obj/vehicle_old/proc/adjust_health(amount)

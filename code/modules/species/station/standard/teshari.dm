@@ -58,7 +58,7 @@
 	meat_type   = /obj/item/reagent_containers/food/snacks/meat/chicken/teshari
 	move_trail = /obj/effect/debris/cleanable/blood/tracks/paw
 
-	slowdown          = -0.5
+	movement_base_speed = 6.66
 	snow_movement     = -1
 	item_slowdown_mod = 0.5
 
@@ -178,10 +178,15 @@
 		/obj/item/clothing/suit/straight_jacket,
 	)
 
-
-/datum/species/teshari/equip_survival_gear(mob/living/carbon/human/H)
-	..()
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal(H),SLOT_ID_SHOES)
+/datum/species/teshari/apply_racial_gear(mob/living/carbon/for_target, list/into_box, list/into_inv)
+	var/footwear_type = /obj/item/clothing/shoes/sandal
+	if(for_target && !for_target.inventory?.get_slot_single(/datum/inventory_slot/inventory/shoes))
+		var/obj/item/footwear_instance = new footwear_type
+		if(!for_target.inventory.equip_to_slot_if_possible(footwear_instance, /datum/inventory_slot/inventory/shoes))
+			into_inv += footwear_instance
+	else
+		into_inv += footwear_type
+	return ..()
 
 /datum/species/teshari/handle_falling(mob/living/carbon/human/H, atom/hit_atom, damage_min, damage_max, silent, planetary)
 

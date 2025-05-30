@@ -1,3 +1,8 @@
+// todo: fucking refactor saycode
+/mob/proc/emote_nosleep(var/act,var/m_type=1,var/message = null)
+	set waitfor = FALSE
+	emote(arglist(args))
+
 /mob/living/carbon/human/emote(var/act,var/m_type=1,var/message = null)
 	var/param = null
 	var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
@@ -152,6 +157,102 @@
 				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
 				return
 			playsound(src.loc, 'sound/voice/xenos/alien_hiss3.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xroar")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/alien_roar1.ogg', 50, 0)
+			message = "roars!"
+			m_type = 2
+
+		if("xhiss2")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xhiss2.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xhiss3")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xhiss3.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xhiss4")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xhiss4.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xhiss5")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xhiss5.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xhiss6")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xhiss6.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xroar1")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xroar1.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xroar2")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xroar2.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xroar3")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xroar3.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xtalk1")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xtalk1.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xtalk2")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xtalk2.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xtalk3")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xtalk3.ogg', 50, 0)
 			message = "hisses!"
 			m_type = 2
 
@@ -687,11 +788,8 @@
 		if ("signal")
 			if (!src.restrained())
 				var/t1 = round(text2num(param))
-				if (isnum(t1))
-					if (t1 <= 5 && (!src.r_hand || !src.l_hand))
-						message = "raises [t1] finger\s."
-					else if (t1 <= 10 && (!src.r_hand && !src.l_hand))
-						message = "raises [t1] finger\s."
+				if (isnum(t1) && t1 <= (count_empty_hands() * 5))
+					message = "raises [t1] finger\s."
 			m_type = 1
 
 		if ("smile")
@@ -810,7 +908,7 @@
 
 		if ("handshake")
 			m_type = 1
-			if (!src.restrained() && !src.r_hand)
+			if (!restrained() && !are_usable_hands_full())
 				var/mob/living/M = null
 				if (param)
 					for (var/mob/living/A in view(1, null))
@@ -1038,11 +1136,11 @@
 				return
 
 		if ("help")
-			to_chat(src, "nyaha, ara, awoo, bark, bleat, blink, blink_r, blush, bow-(none)/mob, burp, chirp, choke, chuckle, clap, collapse, cough, cry, custom, deathgasp, drool, eyebrow, fastsway/qwag, \
-					flip, frown, gasp, giggle, glare-(none)/mob, grin, groan, grumble, handshake, hiss, hug-(none)/mob, laugh, look-(none)/mob, mar, merp, moan, mrrp, mumble, nod, nya, pale, peep, point-atom, prbt, \
+			to_chat(src, "ara, awoo, bark, bleat, blink, blink_r, blush, bow-(none)/mob, burp, chirp, choke, chuckle, clap, collapse, cough, cry, custom, deathgasp, drool, echoping, eyebrow, fastsway/qwag, \
+					flip, frown, gasp, giggle, glare-(none)/mob, grin, groan, grumble, growl, handshake, hiss, howl, hug-(none)/mob, laugh, look-(none)/mob, mar, merp, moan, mrrp, mumble, nod, nya, nyaha, pale, peep, point-atom, prbt, \
 					raise, roll, salute, fullsalute, scream, sneeze, shake, shiver, shrug, sigh, signal-#1-10, slap-(none)/mob, smile, sneeze, sniff, snore, stare-(none)/mob, stopsway/swag, squeak, sway/wag, swish, tremble, twitch, \
-					twitch_v, uwu, vomit, weh, whimper, wink, yawn. Moth: mchitter, mlaugh, mscream, msqueak. Synthetics: beep, buzz, buzz2, chime, die, dwoop, error, honk, no, ping, rcough, rsneeze, scary, \
-					shutdown, startup, warn, ye, yes. Vox: shriekshort, shriekloud")
+					twitch_v, uwu, vomit, weh, whimper, wink, yawn, ycackle. Moth: mchitter, mlaugh, mscream, msqueak. Synthetics: airhorn, beep, buzz, buzz2, chime, die, dwoop, error, honk, no, ping, rcough, rsneeze, scary, \
+					shutdown, startup, steam, warn, ye, yes. Vox: shriekshort, shriekloud")
 
 		else
 			to_chat(src, "<font color=#4F49AF>Unusable emote '[act]'. Say *help for a list.</font>")
@@ -1065,12 +1163,12 @@
 
 	var/old_pose = pose
 
-	var/new_pose =  input(usr, "This is [src]. [T.he]...", "Pose", null)  as text|null
+	var/new_pose =  input(usr, "This is [src]. [T.He]...", "Pose", null)  as text|null
 
 	set_pose(new_pose)
 
 	if (length(pose)>0 && pose != old_pose)
-		visible_emote("adjusts [T.his] posture.")
+		visible_emote("adjusts [T.his] posture. [T.He] [pose]")
 
 /mob/living/carbon/human/verb/timed_pose()
 	set name = "Set Pose (Temporary)"
@@ -1080,16 +1178,16 @@
 
 	var/old_pose = pose
 
-	var/new_pose =  input(usr, "This is [src]. [T.he]...", "Pose", null)  as text|null
+	var/new_pose =  input(usr, "This is [src]. [T.He]...", "Pose", null)  as text|null
 
 	var/time = input(usr, "How long should the pose be visible (in seconds)?","Pose",60) as num|null
 
 	set_pose(new_pose)
 
 	if (length(pose)>0 && pose != old_pose)
-		visible_emote("adjusts [T.his] posture.")
+		visible_emote("adjusts [T.his] posture. [T.He] [pose]")
 		addtimer(CALLBACK(src,PROC_REF(set_pose),""),time SECONDS)
-	
+
 
 /mob/living/carbon/human/verb/silent_pose()
 	set name = "Set Pose (Stealth)"
@@ -1293,6 +1391,47 @@
 				spam_flag = TRUE
 				addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
 			m_type = 2
+		if ("ycackle")
+			message = "cackles maniacally!"
+			m_type = 2
+			playsound(loc, pick(list('sound/voice/YeenCackle.ogg','sound/voice/YeenCackle2.ogg','sound/voice/YeenCackle3.ogg')), 50, 1, -1)
+		if ("growl")
+			message = "growls!"
+			m_type = 2
+			playsound(loc, pick(list('sound/voice/growl1.ogg','sound/voice/growl2.ogg','sound/voice/growl3.ogg')), 10, 1, -1)
+		if ("howl")
+			message = "howls!"
+			m_type = 2
+			playsound(loc, pick(list('sound/voice/howl1.ogg','sound/voice/howl2.ogg','sound/voice/howl3.ogg')), 30, 1, -1)
+			spam_flag = TRUE
+			addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
+		if ("echoping")
+			message = "emits a strange noise that echos throughout the place..."
+			m_type = 2
+			playsound(loc, pick(list('sound/voice/echoping1.ogg','sound/voice/echoping2.ogg','sound/voice/echoping3.ogg')), 40, 1, -1)
+			spam_flag = TRUE
+			addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
+		if ("airhorn")
+			var/obj/item/organ/o = internal_organs_by_name[O_VOICE]
+			if(!isSynthetic() && (!o || !(o.robotic >= ORGAN_ASSISTED)))
+				to_chat(src, "<span class='warning'>You are not a synthetic.</span>")
+				return
+			message = "blares a horn!"
+			m_type = 2
+			playsound(loc, 'sound/items/airhorn2.ogg', 20, 1, 1)
+			spam_flag = TRUE
+			addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
+		if ("steam")
+			var/obj/item/organ/o = internal_organs_by_name[O_VOICE]
+			if(!isSynthetic() && (!o || !(o.robotic >= ORGAN_ASSISTED)))
+				to_chat(src, "<span class='warning'>You are not a synthetic.</span>")
+				return
+			message = "lets off some steam."
+			m_type = 2
+			playsound(loc, 'sound/machines/clockcult/steam_whoosh.ogg', 30, 1, 1)
+			spam_flag = TRUE
+			addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
+
 	if (message)
 		custom_emote(m_type,message)
 		return 1

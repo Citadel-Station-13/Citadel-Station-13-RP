@@ -48,13 +48,11 @@ FLOOR SAFES
 		return 1
 	return 0
 
-
 /obj/structure/safe/proc/decrement(num)
 	num -= 1
 	if(num < 0)
 		num = 71
 	return num
-
 
 /obj/structure/safe/proc/increment(num)
 	num += 1
@@ -62,15 +60,14 @@ FLOOR SAFES
 		num = 0
 	return num
 
-
-/obj/structure/safe/update_icon()
+/obj/structure/safe/update_icon_state()
 	if(open)
 		icon_state = "[initial(icon_state)]-open"
 	else
 		icon_state = initial(icon_state)
+	return ..()
 
-
-/obj/structure/safe/attack_hand(mob/user, list/params)
+/obj/structure/safe/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	user.set_machine(src)
 	var/dat = "<center>"
 	dat += "<a href='?src=\ref[src];open=1'>[open ? "Close" : "Open"] [src]</a> | <a href='?src=\ref[src];decrement=1'>-</a> [dial * 5] <a href='?src=\ref[src];increment=1'>+</a>"

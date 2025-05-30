@@ -30,6 +30,7 @@
 			client.screen -= module_state_1
 		contents -= module_state_1
 		module_state_1.unequipped(src, SLOT_ID_HANDS, NONE)
+		module_state_1.on_inv_unequipped(src, inventory, 1, NONE)
 		module_active = null
 		module_state_1:loc = module //So it can be used again later
 		module_state_1 = null
@@ -41,6 +42,7 @@
 			client.screen -= module_state_2
 		contents -= module_state_2
 		module_state_2.unequipped(src, SLOT_ID_HANDS, NONE)
+		module_state_2.on_inv_unequipped(src, inventory, 2, NONE)
 		module_active = null
 		module_state_2:loc = module
 		module_state_2 = null
@@ -52,6 +54,7 @@
 			client.screen -= module_state_3
 		contents -= module_state_3
 		module_state_3.unequipped(src, SLOT_ID_HANDS, NONE)
+		module_state_3.on_inv_unequipped(src, inventory, 3, NONE)
 		module_active = null
 		module_state_3:loc = module
 		module_state_3 = null
@@ -69,6 +72,7 @@
 		contents -= module_state_1
 		module_state_1:loc = module
 		module_state_1.unequipped(src, SLOT_ID_HANDS, NONE)
+		module_state_1.on_inv_unequipped(src, inventory, 1, NONE)
 		module_state_1 = null
 		inv1.icon_state = "inv1"
 	if(module_state_2)
@@ -79,6 +83,7 @@
 		contents -= module_state_2
 		module_state_2:loc = module
 		module_state_2.unequipped(src, SLOT_ID_HANDS, NONE)
+		module_state_1.on_inv_unequipped(src, inventory, 2, NONE)
 		module_state_2 = null
 		inv2.icon_state = "inv2"
 	if(module_state_3)
@@ -89,6 +94,7 @@
 		contents -= module_state_3
 		module_state_3:loc = module
 		module_state_3.unequipped(src, SLOT_ID_HANDS, NONE)
+		module_state_1.on_inv_unequipped(src, inventory, 3, NONE)
 		module_state_3 = null
 		inv3.icon_state = "inv3"
 	updateicon()
@@ -270,7 +276,7 @@
 	if(module_state_3)
 		. += module_state_3
 
-/mob/living/silicon/robot/get_number_of_hands()
+/mob/living/silicon/robot/get_nominal_hand_count()
 	return 3
 
 /mob/living/silicon/robot/get_held_index(obj/item/I)
@@ -281,7 +287,7 @@
 	if(module_state_3 == I)
 		return 3
 
-/mob/living/silicon/robot/get_held_item_of_index(index)
+/mob/living/silicon/robot/get_held_index(index)
 	switch(index)
 		if(1)
 			return module_state_1

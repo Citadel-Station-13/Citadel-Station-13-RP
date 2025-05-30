@@ -1,38 +1,38 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/simulated/wall/classp,
+/turf/simulated/wall,
 /area/class_p/ruins)
 "f" = (
-/turf/simulated/floor/old_tile/green/classp{
+/turf/simulated/floor/tiled/old_tile/green{
 	color = "#63A83A";
 	icon_state = "tile_full"
 	},
 /area/class_p/ruins)
 "i" = (
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/class_p/ruins)
 "v" = (
 /obj/structure/closet/crate/secure/loot,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/class_p/ruins)
 "B" = (
 /obj/structure/loot_pile/mecha/gygax,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/class_p/ruins)
 "C" = (
 /obj/random/mob/sif/hostile{
 	mob_faction = "frozen"
 	},
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/class_p/ruins)
 "G" = (
-/turf/simulated/floor/classp/outdoors,
+/turf/simulated/floor/plating/outdoors,
 /area/class_p/ruins)
 "R" = (
 /obj/random/mob/sif/hostile{
 	mob_faction = "frozen"
 	},
-/turf/simulated/floor/classp/outdoors,
+/turf/simulated/floor/plating/outdoors,
 /area/class_p/ruins)
 
 (1,1,1) = {"

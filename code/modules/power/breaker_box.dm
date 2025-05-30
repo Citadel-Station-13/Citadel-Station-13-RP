@@ -43,7 +43,6 @@
 
 /obj/machinery/power/breakerbox/activated/LateInitialize()
 	set_state(1)
-	return ..()
 
 /obj/machinery/power/breakerbox/examine(mob/user, dist)
 	. = ..()
@@ -72,7 +71,7 @@
 	busy = 0
 
 
-/obj/machinery/power/breakerbox/attack_hand(mob/user, list/params)
+/obj/machinery/power/breakerbox/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(update_locked)
 		to_chat(user, "<font color='red'>System locked. Please try again later.</font>")
 		return

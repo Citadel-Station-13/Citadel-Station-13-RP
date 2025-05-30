@@ -25,3 +25,11 @@
 
 /datum/gm_action/proc/announce()
 	return
+
+/datum/gm_action/proc/pick_weight(var/mundande_weight, var/moderate_weight, var/major_weight)
+	var/picked = rand(1, mundande_weight + moderate_weight + major_weight)
+	if(picked < mundande_weight)
+		return EVENT_LEVEL_MUNDANE
+	if(picked < mundande_weight + moderate_weight)
+		return EVENT_LEVEL_MODERATE
+	return EVENT_LEVEL_MAJOR

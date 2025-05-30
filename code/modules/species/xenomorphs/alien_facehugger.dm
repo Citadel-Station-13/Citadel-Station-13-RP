@@ -30,13 +30,13 @@ var/const/MAX_ACTIVE_TIME = 400
 	var/strength = 5
 	var/attached = 0
 
-/obj/item/clothing/mask/facehugger/attack_hand(mob/user, list/params)
+/obj/item/clothing/mask/facehugger/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if((stat == CONSCIOUS && !sterile))
 		if(Attach(user))
 			return
 	..()
 
-/obj/item/clothing/mask/facehugger/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/clothing/mask/facehugger/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	user.drop_item_to_ground(src, INV_OP_FORCE)
 	Attach(target)
 
@@ -66,9 +66,9 @@ var/const/MAX_ACTIVE_TIME = 400
 		Die()
 	return
 
-/obj/item/clothing/mask/facehugger/bullet_act()
+/obj/item/clothing/mask/facehugger/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
 	Die()
-	return
 
 /obj/item/clothing/mask/facehugger/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(exposed_temperature > T0C+80)
@@ -167,8 +167,8 @@ var/const/MAX_ACTIVE_TIME = 400
 
 		if(target.isSynthetic())
 			visible_message(SPAN_DANGER("[src] tears across [target]'s body, but recoils!"))
-			target.apply_damage(10, BRUTE, BP_HEAD)
-			target.apply_damage(10, BRUTE, BP_TORSO)
+			target.apply_damage(10, DAMAGE_TYPE_BRUTE, BP_HEAD)
+			target.apply_damage(10, DAMAGE_TYPE_BRUTE, BP_TORSO)
 			return		// atleast you don't get gibbed
 
 		target.equip_to_slot_if_possible(src, SLOT_ID_MASK, INV_OP_FLUFFLESS)
@@ -303,8 +303,6 @@ var/const/MAX_ACTIVE_TIME = 400
 	icon_rest = "facehugger_inactive"
 	faction = "xeno"
 
-	mob_class = MOB_CLASS_ABERRATION
-
 	maxHealth = 50
 	health = 50
 
@@ -315,7 +313,7 @@ var/const/MAX_ACTIVE_TIME = 400
 	var/strength = 5
 	var/attached = 0
 
-/mob/living/simple_mob/animal/space/alien/facehugger/attack_hand(mob/user, list/params)
+/mob/living/simple_mob/animal/space/alien/facehugger/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 
 	if((stat == CONSCIOUS && !sterile))
 		if(Attach(user))
@@ -351,7 +349,7 @@ var/const/MAX_ACTIVE_TIME = 400
 		Die()
 	return
 
-/mob/living/simple_mob/animal/space/alien/facehugger/bullet_act()
+/mob/living/simple_mob/animal/space/alien/facehugger/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	Die()
 	return
 

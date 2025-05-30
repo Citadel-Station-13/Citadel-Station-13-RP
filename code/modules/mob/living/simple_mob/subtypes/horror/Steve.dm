@@ -12,7 +12,6 @@
 	icon_living = "Steve"
 	icon_dead = "sg_head"
 	icon_rest = "Steve"
-	faction = "horror"
 	icon = 'icons/mob/horror_show/GHPS.dmi'
 	icon_gib = "generic_gib"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/horror/Steve)
@@ -54,11 +53,11 @@
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
 	..()
 
-/mob/living/simple_mob/horror/Steve/bullet_act()
+/mob/living/simple_mob/horror/Steve/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
-	..()
 
-/mob/living/simple_mob/horror/Steve/attack_hand(mob/user, list/params)
+/mob/living/simple_mob/horror/Steve/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
 	..()
 

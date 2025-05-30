@@ -79,7 +79,7 @@ Also includes Life and New
 	ProcessTraits()
 	. =..()
 	if(colored)
-		add_atom_colour(traitdat.get_trait(TRAIT_XENO_COLOR), FIXED_COLOUR_PRIORITY)
+		add_atom_color(traitdat.get_trait(TRAIT_XENO_COLOR))
 	create_reagents(internal_vol)
 	temp_chem_holder = new()
 	temp_chem_holder.create_reagents(20)
@@ -92,7 +92,7 @@ Also includes Life and New
 	if(!health)
 		set_stat(DEAD)
 
-/mob/living/simple_mob/xeno/bullet_act(var/obj/projectile/Proj)
+/mob/living/simple_mob/xeno/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	if(istype(Proj, /obj/projectile/beam/stun/xeno))
 		var/obj/projectile/beam/stun/xeno/hit = Proj
 		stasis += hit.stasisforce

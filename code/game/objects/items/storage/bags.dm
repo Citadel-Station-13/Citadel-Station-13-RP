@@ -26,6 +26,8 @@
 	allow_quick_empty = TRUE
 	allow_quick_empty_via_attack_self = TRUE
 
+	worth_intrinsic = 75
+
 	var/auto_fit_weight_class_to_largest_contained = TRUE
 
 /obj/item/storage/bag/Entered(atom/movable/AM, atom/oldLoc)
@@ -173,7 +175,7 @@
 	var/obj/item/stack/ore/O = locate() in get_turf(source)
 	if(isnull(O))
 		return
-	var/mob/user = worn_mob()
+	var/mob/user = get_worn_mob()
 	if(isnull(user))
 		return
 	INVOKE_ASYNC(src, PROC_REF(autoload), user, O)

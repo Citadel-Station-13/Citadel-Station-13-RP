@@ -1,6 +1,7 @@
 SUBSYSTEM_DEF(fail2topic)
 	name = "Fail2Topic"
 	init_order = INIT_ORDER_FAIL2TOPIC
+	init_stage = INIT_STAGE_BACKEND
 	subsystem_flags = SS_BACKGROUND
 	runlevels = ALL
 
@@ -28,7 +29,7 @@ SUBSYSTEM_DEF(fail2topic)
 		subsystem_flags |= SS_NO_FIRE
 		can_fire = FALSE
 
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/fail2topic/fire()
 	if(length(rate_limiting))

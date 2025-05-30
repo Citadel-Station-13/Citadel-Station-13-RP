@@ -194,3 +194,39 @@
 	say_threaten = list("Help me!", "Please help!", "Hey, who turned out the lights?", "Allonsy!", "Geronimo!")
 	say_stand_down = list("Please. Anyone. Help!", "Where is everyone?", "Where am I?")
 	say_escalate = list("Help!", "I'm sorry!", "I can't stop!", "I don't want to do this!", "I don't want to go!")
+
+// Generic Lines for all Tajara mobs
+/datum/say_list/tajara
+	speak = list("So hot herrre...",
+				"Could use a nice cigarrr...",
+				"Still betterrr then the factorrries...",
+				"They didn't say it would be this borrring.",
+				"Been forreverrr since I had some good gin.")
+	emote_see = list("sniffs.", "coughs.", "mrrrps.", "looks around.", "chokes on a hairball.", "flicks their tail.")
+	say_maybe_target = list("Who's therrre?")
+	threaten_sound = 'sound/weapons/TargetOn.ogg'
+	stand_down_sound = 'sound/weapons/TargetOff.ogg'
+
+/datum/say_list/tajara/nka
+	say_understood = list("Yes sirrr my liege!", "At once sirrre!")
+	say_cannot = list("I cannot my lorrrd!")
+	say_got_target = list("Messa will take you!")
+	say_threaten = list("Begone Trrrespasserrr!", "You trrread on prrivate prropurrty!")
+	say_stand_down = list("S'rrrendarrr good.")
+	say_escalate = list("You'll make a fine rrrug!", "Forr Adhomai!")
+
+/datum/say_list/tajara/pra
+	say_understood = list("Aye Comrrrade!", "Togetherrr!")
+	say_cannot = list("I cannot sirrr!")
+	say_got_target = list("We will be liberrated!")
+	say_threaten = list("You some corrporrrate pig?!", "This land belongs to the people!")
+	say_stand_down = list("Grreat.")
+	say_escalate = list("Die corrporrate dog!", "Forr Adhomai!")
+
+/datum/say_list/tajara/dra
+	say_understood = list("Yeah got it...", "Affirrrmative!")
+	say_cannot = list("Harrr Harrr No!")
+	say_got_target = list("Welcome to the snowfields!")
+	say_threaten = list("You think you can stop us?!", "This is a frree terrrritorry! Scrram!")
+	say_stand_down = list("Grrreat now we gotta move camp.")
+	say_escalate = list("You'll neverrr stop us all!", "Forr Adhomai!")

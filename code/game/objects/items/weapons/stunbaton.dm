@@ -8,8 +8,6 @@
 	rad_flags = RAD_BLOCK_CONTENTS
 	slot_flags = SLOT_BELT
 	damage_force = 15
-	sharp = 0
-	edge = 0
 	throw_force = 7
 	atom_flags = NOCONDUCT
 	w_class = WEIGHT_CLASS_NORMAL
@@ -17,6 +15,7 @@
 	pickup_sound = 'sound/items/pickup/metalweapon.ogg'
 	origin_tech = list(TECH_COMBAT = 2)
 	attack_verb = list("beaten")
+	worth_intrinsic = 75
 	var/lightcolor = "#FF6A00"
 	var/stunforce = 0
 	var/agonyforce = 60
@@ -30,13 +29,13 @@
 	. = ..()
 	update_icon()
 
+/obj/item/melee/baton/worth_contents(flags)
+	. = ..()
+	if(bcell)
+		. += bcell
+
 /obj/item/melee/baton/get_cell(inducer)
 	return bcell
-
-/obj/item/melee/baton/suicide_act(mob/user)
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	user.visible_message("<span class='suicide'>\The [user] is putting the live [name] in [TU.his] mouth! It looks like [TU.he] [TU.is] trying to commit suicide.</span>")
-	return (FIRELOSS)
 
 /obj/item/melee/baton/loaded/Initialize(mapload)
 	. = ..()
@@ -59,6 +58,7 @@
 			update_icon()
 
 /obj/item/melee/baton/update_icon()
+	. = ..()
 	if(status)
 		icon_state = "[initial(icon_state)]_active"
 	else if(!bcell)
@@ -94,7 +94,7 @@
 		else
 			to_chat(user, "<span class='notice'>This cell is not fitted for [src].</span>")
 
-/obj/item/melee/baton/attack_hand(mob/user, list/params)
+/obj/item/melee/baton/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		if(bcell && !integrated_cell)
 			bcell.update_icon()
@@ -108,7 +108,7 @@
 	else
 		return ..()
 
-/obj/item/melee/baton/attack_self(mob/user)
+/obj/item/melee/baton/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -120,7 +120,7 @@
 	if(bcell && bcell.charge > hitcost)
 		status = !status
 		to_chat(user, "<span class='notice'>[src] is now [status ? "on" : "off"].</span>")
-		playsound(loc, /datum/soundbyte/grouped/sparks, 75, 1, -1)
+		playsound(loc, /datum/soundbyte/sparks, 75, 1, -1)
 		update_icon()
 	else
 		status = 0
@@ -130,7 +130,7 @@
 			to_chat(user, "<span class='warning'>[src] is out of charge.</span>")
 	add_fingerprint(user)
 
-/obj/item/melee/baton/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/melee/baton/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(status && (MUTATION_CLUMSY in user.mutations) && prob(50))
 		to_chat(user, "<span class='danger'>You accidentally hit yourself with the [src]!</span>")
 		user.afflict_paralyze(20 * 30)
@@ -172,7 +172,7 @@
 
 	//stun effects
 	if(status)
-		L.stun_effect_act(stun, agony, target_zone, src)
+		L.electrocute(0, 0, agony, NONE, target_zone, src)
 		msg_admin_attack("[key_name(user)] stunned [key_name(L)] with the [src].")
 
 		if(ishuman(L))
@@ -346,7 +346,7 @@
 	animate(H, transform=turn(matrix(), 16*shake_dir), pixel_x=init_px + 4*shake_dir, time=1)
 	animate(transform=null, pixel_x=init_px, time=6, easing=ELASTIC_EASING)
 
-	L.stun_effect_act(stunforce, agonyforce, target_zone, src)
+	L.electrocute(0, 0, agonyforce, NONE, target_zone, src)
 	msg_admin_attack("[key_name(user)] stunned [key_name(L)] with the [src].")
 
 	deductcharge(hitcost)

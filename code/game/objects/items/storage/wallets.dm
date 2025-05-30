@@ -36,7 +36,11 @@
 		/obj/item/stamp,
 		/obj/item/clothing/accessory/permit,
 		/obj/item/clothing/accessory/badge,
-		/obj/item/makeover
+		/obj/item/clothing/gloves/ring,
+		/obj/item/clothing/accessory/bracelet,
+		/obj/item/clothing/accessory/necklace,
+		/obj/item/clothing/accessory/metal_necklace,
+		/obj/item/makeover,
 		)
 	insertion_blacklist = list(/obj/item/tool/screwdriver/power)
 	slot_flags = SLOT_ID
@@ -68,6 +72,7 @@
 
 /obj/item/storage/wallet/update_icon()
 	cut_overlays()
+	. = ..()
 	if(front_id)
 		var/tiny_state = "id-generic"
 		if(("id-"+front_id.icon_state) in icon_states(icon))
@@ -106,7 +111,7 @@
 
 /obj/item/storage/wallet/poly/Initialize(mapload)
 	. = ..()
-	add_atom_colour("#"+get_random_colour(), FIXED_COLOUR_PRIORITY)
+	add_atom_color("#"+get_random_colour())
 	update_icon()
 
 /obj/item/storage/wallet/poly/verb/change_color()
@@ -121,7 +126,7 @@
 	var/new_color = input(usr, "Pick a new color", "Wallet Color", color) as color|null
 
 	if(new_color)
-		add_atom_colour(new_color, FIXED_COLOUR_PRIORITY)
+		add_atom_color(new_color)
 
 /obj/item/storage/wallet/poly/emp_act()
 	var/original_state = icon_state

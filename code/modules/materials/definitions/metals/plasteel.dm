@@ -1,4 +1,4 @@
-/datum/material/plasteel
+/datum/prototype/material/plasteel
 	id = MAT_PLASTEEL
 	name = "plasteel"
 	stack_type = /obj/item/stack/material/plasteel
@@ -14,6 +14,8 @@
 	table_icon_base = "metal"
 	tgui_icon_key = "plasteel"
 
+	worth = 17
+
 	relative_integrity = 1.5
 	weight_multiplier = 1
 	density = 8 * 1.75
@@ -26,7 +28,7 @@
 	absorption = MATERIAL_RESISTANCE_ABOVE_MODERATE(0.75)
 	nullification = MATERIAL_RESISTANCE_ABOVE_NONE(0.5)
 
-/datum/material/plasteel/generate_recipes()
+/datum/prototype/material/plasteel/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(
 		name = "AI core",
@@ -76,7 +78,7 @@
 		amount = 4,
 	)
 
-/datum/material/plasteel/hull
+/datum/prototype/material/plasteel/hull
 	id = "plasteel_hull"
 	name = MAT_PLASTEELHULL
 	stack_type = /obj/item/stack/material/plasteel/hull
@@ -84,5 +86,5 @@
 	icon_colour = "#777788"
 	explosion_resistance = 40
 
-/datum/material/plasteel/hull/place_sheet(var/turf/target) //Deconstructed into normal plasteel sheets.
+/datum/prototype/material/plasteel/hull/place_sheet(var/turf/target) //Deconstructed into normal plasteel sheets.
 	new /obj/item/stack/material/plasteel(target)

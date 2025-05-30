@@ -4,6 +4,7 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "densecrate"
 	density = 1
+	worth_intrinsic = 200
 	var/list/starts_with
 	var/storage_capacity = 2 * MOB_LARGE //This is so that someone can't pack hundreds of items in a locker/crate
 							  //then open it in a populated area to crash clients.
@@ -19,7 +20,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/structure/largecrate/LateInitialize()
-	. = ..()
 	if(starts_with)
 		create_objects_in_loc(src, starts_with)
 		starts_with = null
@@ -61,7 +61,7 @@
 
 */
 
-/obj/structure/largecrate/attack_hand(mob/user, list/params)
+/obj/structure/largecrate/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	to_chat(user, "<span class='notice'>You need a crowbar to pry this open!</span>")
 	return
 
@@ -93,12 +93,12 @@
 
 /obj/structure/largecrate/hoverpod/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_crowbar())
-		var/obj/item/mecha_parts/mecha_equipment/ME
-		var/obj/mecha/working/hoverpod/H = new (loc)
+		var/obj/item/vehicle_module/ME
+		var/obj/vehicle/sealed/mecha/working/hoverpod/H = new (loc)
 
-		ME = new /obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp
+		ME = new /obj/item/vehicle_module/tool/hydraulic_clamp
 		ME.attach(H)
-		ME = new /obj/item/mecha_parts/mecha_equipment/tool/passenger
+		ME = new /obj/item/vehicle_module/tool/passenger
 		ME.attach(H)
 	..()
 
@@ -106,12 +106,6 @@
 	name = "vehicle crate"
 	desc = "It comes in a box for the consumer's sake. ..How is this lighter?"
 	icon_state = "vehiclecrate"
-
-/obj/structure/largecrate/vehicle/Initialize(mapload)
-	. = ..()
-	spawn(1)
-		for(var/obj/O in contents)
-			O.update_icon()
 
 /obj/structure/largecrate/vehicle/bike
 	name = "spacebike crate"
@@ -231,16 +225,15 @@
 
 /obj/structure/largecrate/animal/dangerous
 	name = "Dangerous Predator carrier"
-	starts_with = list(/mob/living/simple_mob/animal/space/alien)
+	starts_with = list(/mob/living/simple_mob/animal/space/xenomorph/warrior)
 
 /obj/structure/largecrate/animal/dangerous/Initialize(mapload)
 	starts_with = list(pick(/mob/living/simple_mob/animal/space/carp/large,
 						/mob/living/simple_mob/vore/aggressive/deathclaw,
 						/mob/living/simple_mob/vore/aggressive/dino,
-						/mob/living/simple_mob/animal/space/alien,
-						/mob/living/simple_mob/animal/space/alien/drone,
-						/mob/living/simple_mob/animal/space/alien/sentinel,
-						/mob/living/simple_mob/animal/space/alien/queen,
+						/mob/living/simple_mob/animal/space/xenomorph/drone,
+						/mob/living/simple_mob/animal/space/xenomorph/neurotoxin_spitter,
+						/mob/living/simple_mob/animal/space/xenomorph/monarch,
 						/mob/living/simple_mob/vore/aggressive/corrupthound))
 	return ..()
 

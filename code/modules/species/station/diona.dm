@@ -16,16 +16,22 @@
 
 	max_additional_languages = 2
 	name_language = LANGUAGE_ID_DIONA
+	base_skin_colours = list(
+		"Standard"  = null,
+		"Alternate" = "alt",
+	)
+
 	intrinsic_languages = list(
 		LANGUAGE_ID_DIONA,
 		LANGUAGE_ID_DIONA_HIVEMIND
 	)
 	assisted_langs   = list(LANGUAGE_VOX)	// Diona are weird, let's just assume they can use basically any language.
 
-	slowdown = 2.5
+	movement_base_speed = 3
+	light_slowdown = -0.5
+	dark_slowdown = 3
 	snow_movement  = -2 // Ignore light snow
 	water_movement = -4 // Ignore shallow water
-	hud_type = /datum/hud_data/diona
 	siemens_coefficient = 0.3
 	show_ssd = "completely quiescent"
 	health_hud_intensity = 2.5
@@ -102,26 +108,45 @@
 
 	species_flags = NO_MINOR_CUT | IS_PLANT | NO_SCAN | NO_PAIN | NO_SLIP | NO_HALLUCINATION | NO_BLOOD | CONTAMINATION_IMMUNE
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER | SPECIES_SPAWN_WHITELISTED
+	species_appearance_flags = HAS_BASE_SKIN_COLOR
 
 	blood_color = "#004400"
 	flesh_color = "#907E4A"
+	base_color = "#ffffff"
 
 	reagent_tag = IS_DIONA
 
 	genders = list(PLURAL)
 
+	//* Inventory *//
+
+	inventory_slots = list(
+		/datum/inventory_slot/inventory/back::id,
+		/datum/inventory_slot/inventory/suit::id = list(
+			INVENTORY_SLOT_REMAP_MAIN_AXIS = 0,
+			INVENTORY_SLOT_REMAP_CROSS_AXIS = 1,
+		),
+		/datum/inventory_slot/inventory/suit_storage::id,
+		/datum/inventory_slot/inventory/uniform::id,
+		/datum/inventory_slot/inventory/ears/left::id = list(
+			INVENTORY_SLOT_REMAP_MAIN_AXIS = 2,
+			INVENTORY_SLOT_REMAP_CROSS_AXIS = 2,
+		),
+		/datum/inventory_slot/inventory/ears/right::id,
+		/datum/inventory_slot/inventory/pocket/left::id,
+		/datum/inventory_slot/inventory/pocket/right::id,
+		/datum/inventory_slot/inventory/id::id,
+		/datum/inventory_slot/inventory/head::id = list(
+			INVENTORY_SLOT_REMAP_MAIN_AXIS = 1,
+			INVENTORY_SLOT_REMAP_CROSS_AXIS = 1,
+		),
+	)
 
 /datum/species/diona/can_understand(mob/other)
 	var/mob/living/carbon/alien/diona/D = other
 	if(istype(D))
 		return TRUE
 	return FALSE
-
-/datum/species/diona/equip_survival_gear(mob/living/carbon/human/H)
-	if(H.backbag == 1)
-		H.equip_to_slot_or_del(new /obj/item/flashlight/flare(H), /datum/inventory_slot/abstract/hand/right)
-	else
-		H.equip_to_slot_or_del(new /obj/item/flashlight/flare(H.back), /datum/inventory_slot/abstract/put_in_backpack)
 
 /datum/species/diona/handle_death(mob/living/carbon/human/H)
 

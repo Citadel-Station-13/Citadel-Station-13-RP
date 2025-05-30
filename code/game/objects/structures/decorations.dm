@@ -3,15 +3,10 @@
 	desc = "Ornately twisted rope holding up a religious seal."
 	icon = 'icons/obj/decals.dmi'
 	icon_state = "shrine_seal"
-	layer = 3.3 //3.3 so its above windows, not the same as them. anything below 3.3 puts the curtain beneath the window sprite in current build
-	opacity = 0
-
-/obj/structure/shrine_seal/bullet_act(obj/projectile/P, def_zone)
-	if(!P.nodamage)
-		visible_message("<span class='warning'>[P] tears [src] down!</span>")
-		qdel(src)
-	else
-		..(P, def_zone)
+	layer = ABOVE_WINDOW_LAYER
+	integrity = 40
+	integrity_max = 40
+	integrity_failure = 30
 
 /obj/structure/shrine_seal/attackby(obj/item/P, mob/user)
 	if(P.is_wirecutter())

@@ -16,7 +16,7 @@
 	language = "Hivemind"
 	maxHealth = 25
 	health = 25
-	faction = "xeno"
+	iff_factions = MOB_IFF_FACTION_XENOMORPH
 	catalogue_data = list(/datum/category_item/catalogue/fauna/alien/larva)
 
 /mob/living/carbon/alien/larva/Initialize(mapload)

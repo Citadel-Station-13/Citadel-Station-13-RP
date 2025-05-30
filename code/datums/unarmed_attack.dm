@@ -21,7 +21,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	/// damage tier
 	var/damage_tier = MELEE_TIER_UNARMED_DEFAULT
 	/// damage type
-	var/damage_type = BRUTE
+	var/damage_type = DAMAGE_TYPE_BRUTE
 	/// damage flag
 	var/damage_flag = ARMOR_MELEE
 	/// flat damage buff when attacking structures
@@ -51,6 +51,9 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 
 	var/eye_attack_text
 	var/eye_attack_text_victim
+
+/datum/unarmed_attack/proc/operator""()
+	return pick(attack_verb_legacy)
 
 //* Feedback
 
@@ -88,16 +91,18 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 				target.visible_message("<span class='danger'>[target] looks momentarily disoriented.</span>", "<span class='danger'>You see stars.</span>")
 				target.apply_effect(attack_damage*2, EYE_BLUR, armour)
 			if(BP_L_ARM, BP_L_HAND)
-				if (target.l_hand)
+				var/obj/item/knocked_away = target.get_left_held_item()
+				if (knocked_away)
 					// Disarm left hand
 					//Urist McAssistant dropped the macguffin with a scream just sounds odd.
-					target.visible_message("<span class='danger'>\The [target.l_hand] was knocked right out of [target]'s grasp!</span>")
-					target.drop_left_held_item()
+					target.visible_message("<span class='danger'>\The [knocked_away] was knocked right out of [target]'s grasp!</span>")
+					target.drop_item_to_ground(knocked_away)
 			if(BP_R_ARM, BP_R_HAND)
-				if (target.r_hand)
+				var/obj/item/knocked_away = target.get_left_held_item()
+				if (knocked_away)
 					// Disarm right hand
-					target.visible_message("<span class='danger'>\The [target.r_hand] was knocked right out of [target]'s grasp!</span>")
-					target.drop_right_held_item()
+					target.visible_message("<span class='danger'>\The [knocked_away] was knocked right out of [target]'s grasp!</span>")
+					target.drop_item_to_ground(knocked_away)
 			if(BP_TORSO)
 				if(!target.lying)
 					var/turf/T = get_step(get_turf(target), get_dir(get_turf(user), get_turf(target)))
@@ -324,4 +329,4 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	attack_verb_legacy = list("tapped", "lightly struck")
 	damage = 5
 	damage_mode = NONE
-	damage_type = AGONY
+	damage_type = DAMAGE_TYPE_HALLOSS

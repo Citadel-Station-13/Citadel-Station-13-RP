@@ -42,7 +42,7 @@
 	if(boots_stored_TYPE)
 		boots_stored = new boots_stored_TYPE(src)
 
-/obj/machinery/suit_storage_unit/update_icon()
+/obj/machinery/suit_storage_unit/update_icon_state()
 	var/hashelmet = 0
 	var/hassuit = 0
 	var/hashuman = 0
@@ -53,6 +53,7 @@
 	if(occupant)
 		hashuman = 1
 	icon_state = "suitstorage[hashelmet][hassuit][hashuman][isopen][islocked][isUV][ispowered][isbroken][issuperUV]"
+	return ..()
 
 /obj/machinery/suit_storage_unit/power_change()
 	..()
@@ -78,7 +79,7 @@
 				dump_everything()
 				qdel(src)
 
-/obj/machinery/suit_storage_unit/attack_hand(mob/user, list/params)
+/obj/machinery/suit_storage_unit/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return
 	if(machine_stat & NOPOWER)
@@ -184,7 +185,7 @@
 				protected = 1
 
 	if(!protected)
-		playsound(src.loc, /datum/soundbyte/grouped/sparks, 75, 1, -1)
+		playsound(src.loc, /datum/soundbyte/sparks, 75, 1, -1)
 		to_chat(user, "<font color='red'>You try to touch the controls but you get zapped. There must be a short circuit somewhere.</font>")
 		return*/
 	else  //welp, the guy is protected, we can continue
@@ -210,7 +211,7 @@
 				protected = 1
 
 	if(!protected)
-		playsound(src.loc, /datum/soundbyte/grouped/sparks, 75, 1, -1)
+		playsound(src.loc, /datum/soundbyte/sparks, 75, 1, -1)
 		to_chat(user, "<font color='red'>You try to touch the controls but you get zapped. There must be a short circuit somewhere.</font>")
 		return*/
 	else

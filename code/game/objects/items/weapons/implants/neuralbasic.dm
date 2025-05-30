@@ -16,7 +16,7 @@
 				my_brain.implant_assist(target_state)
 		if(H.isSynthetic() && H.get_FBP_type() != FBP_CYBORG)		//If this on an FBP, it's just an extra inefficient attachment to whatever their brain is.
 			robotic_brain = TRUE
-	if(my_brain && my_brain.can_assist())
+	if(istype(my_brain) && my_brain.can_assist())
 		START_PROCESSING(SSobj, src)
 
 /obj/item/implant/neural/Destroy()
@@ -57,39 +57,40 @@ Implant Specifics:<BR>"}
 		return
 	malfunction = MALFUNCTION_TEMPORARY
 
-	var/delay = 10 //Don't let it just get emped twice in a second to kill someone.
-	var/brain_location = my_brain.owner.organs_by_name[my_brain.parent_organ]
-	var/mob/living/L = my_brain.owner
-	switch(severity)
-		if(1)
-			if(prob(10))
-				meltdown()
-			else if(prob(80))
-				my_brain.take_damage(5)
-				if(!robotic_brain)
-					to_chat(L, "<span class='critical'>Something in your [brain_location] burns!</span>")
-				else
-					to_chat(L, "<span class='warning'>Severe fault detected in [brain_location].</span>")
-		if(2)
-			if(prob(80))
-				my_brain.take_damage(3)
-				if(!robotic_brain)
-					to_chat(L, "<span class='danger'>It feels like something is digging into your [brain_location]!</span>")
-				else
-					to_chat(L, "<span class='warning'>Fault detected in [brain_location].</span>")
-		if(3)
-			if(prob(60))
-				my_brain.take_damage(2)
-				if(!robotic_brain)
-					to_chat(L, "<span class='warning'>There is a stabbing pain in your [brain_location]!</span>")
-		if(4)
-			if(prob(40))
-				my_brain.take_damage(1)
-				if(!robotic_brain)
-					to_chat(L, "<span class='warning'>Your [brain_location] aches.</span>")
+	spawn(-1)
+		var/delay = 10 //Don't let it just get emped twice in a second to kill someone.
+		var/brain_location = my_brain.owner.organs_by_name[my_brain.parent_organ]
+		var/mob/living/L = my_brain.owner
+		switch(severity)
+			if(1)
+				if(prob(10))
+					meltdown()
+				else if(prob(80))
+					my_brain.take_damage(5)
+					if(!robotic_brain)
+						to_chat(L, "<span class='critical'>Something in your [brain_location] burns!</span>")
+					else
+						to_chat(L, "<span class='warning'>Severe fault detected in [brain_location].</span>")
+			if(2)
+				if(prob(80))
+					my_brain.take_damage(3)
+					if(!robotic_brain)
+						to_chat(L, "<span class='danger'>It feels like something is digging into your [brain_location]!</span>")
+					else
+						to_chat(L, "<span class='warning'>Fault detected in [brain_location].</span>")
+			if(3)
+				if(prob(60))
+					my_brain.take_damage(2)
+					if(!robotic_brain)
+						to_chat(L, "<span class='warning'>There is a stabbing pain in your [brain_location]!</span>")
+			if(4)
+				if(prob(40))
+					my_brain.take_damage(1)
+					if(!robotic_brain)
+						to_chat(L, "<span class='warning'>Your [brain_location] aches.</span>")
 
-	spawn(delay)
-		malfunction--
+		spawn(delay)
+			malfunction--
 
 /obj/item/implant/neural/meltdown()
 	..()

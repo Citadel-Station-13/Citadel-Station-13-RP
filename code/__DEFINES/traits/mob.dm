@@ -87,3 +87,6 @@ DATUM_TRAIT(/mob, TRAIT_DEAF)
 #define TRAIT_BLINDNESS_STATUS_EFF		"Status Effect: Blindness"
 #define TRAIT_BLINDNESS_NEGATIV			"Negative custom trait"
 
+// This mob can breathe water
+#define TRAIT_MOB_WATER_BREATHER		"mob_water_breather"
+DATUM_TRAIT(/mob, TRAIT_MOB_WATER_BREATHER)

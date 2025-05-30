@@ -15,9 +15,6 @@
 /obj/item/electronic_assembly/clothing/ui_host()
 	return clothing.ui_host()
 
-/obj/item/electronic_assembly/clothing/ui_action_click()
-	clothing.action_circuit.do_work()
-
 // This is 'small' relative to the size of regular clothing assemblies.
 /obj/item/electronic_assembly/clothing/small
 	name = "small electronic clothing parts"
@@ -68,7 +65,7 @@
 	else
 		..()
 
-/obj/item/clothing/attack_self(mob/user)
+/obj/item/clothing/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -83,6 +80,11 @@
 /obj/item/clothing/on_loc_moved(oldloc)
 	EA ? EA.on_loc_moved(oldloc) : ..()
 
+/obj/item/clothing/ui_action_click(datum/action/action, datum/event_args/actor/actor)
+	. = ..()
+	if(EA && action_circuit)
+		action_circuit.do_work()
+
 // Does most of the repeatative setup.
 /obj/item/clothing/proc/setup_integrated_circuit(new_type)
 	// Set up the internal circuit holder.
@@ -94,8 +96,7 @@
 	EA.add_component(action_circuit)
 	var/obj/item/integrated_circuit/built_in/self_sensor/S = new(src.EA)
 	EA.add_component(S)
-	EA.action_button_name = "Activate [name]"
-
+	item_action_name = "Activate [name]"
 
 
 /obj/item/clothing/Destroy()

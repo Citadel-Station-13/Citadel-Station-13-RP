@@ -10,7 +10,7 @@
 	density = 1
 	var/list/hit_message = list("hit", "punch", "kick", "robust")
 
-/obj/structure/fitness/punchingbag/attack_hand(mob/user, list/params)
+/obj/structure/fitness/punchingbag/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!istype(user))
 		..()
 		return
@@ -18,7 +18,7 @@
 		to_chat(user, "<span class='warning'>You need more energy to use the punching bag. Go eat something.</span>")
 	else
 		if(user.a_intent == INTENT_HARM)
-			user.setClickCooldown(user.get_attack_speed())
+			user.setClickCooldownLegacy(user.get_attack_speed_legacy())
 			flick("[icon_state]_hit", src)
 			playsound(src.loc, 'sound/effects/woodhit.ogg', 25, 1, -1)
 			user.do_attack_animation(src)
@@ -38,7 +38,7 @@
 		weight = ((weight) % qualifiers.len) + 1
 		to_chat(user, "You set the machine's weight level to [weight].")
 
-/obj/structure/fitness/weightlifter/attack_hand(mob/user, list/params)
+/obj/structure/fitness/weightlifter/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!istype(user))
 		return
 	if(user.loc != src.loc)

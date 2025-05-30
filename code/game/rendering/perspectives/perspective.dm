@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
+
 /**
  * MOB PERRSPECTIVE SYSTEM
  *
@@ -46,6 +49,15 @@
  * however, perspectives are designed to force synchronization of the vars it does trample,
  * because there's no better way to do it (because those vars are, semantically, only relevant to our perspective),
  * while screen/images can be used for embedded maps/hud/etc.
+ *
+ * ## Use Case
+ *
+ * Perspectives should for the management of an atom's semantic world-view.
+ * This is what they can / can not see around them.
+ * This should not be used for things like inventory HUDs and action buttons.
+ * Those are "internal" viewing / a mob's internal state.
+ *
+ * Basically, these are for what you can see, if you looked through someone's eyes.
  */
 /datum/perspective
 	/// eye - where visual calcs go from
@@ -187,7 +199,7 @@
  */
 /datum/perspective/proc/clear_mobs()
 	for(var/mob/M as anything in mobs)
-		remove_mobs(M)
+		remove_mob(M)
 
 /**
  * registers as a mob's current perspective
@@ -210,7 +222,7 @@
  * unregisters as a mob's current perspective
  * resets mob vars to initial() values
  */
-/datum/perspective/proc/remove_mobs(mob/M, switching = FALSE)
+/datum/perspective/proc/remove_mob(mob/M, switching = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
 	M.sight = initial(M.sight)
 	M.see_in_dark = initial(M.see_in_dark)
@@ -778,7 +790,7 @@
  */
 /datum/perspective/self/temporary
 
-/datum/perspective/self/temporary/remove_mobs(mob/M, switching)
+/datum/perspective/self/temporary/remove_mob(mob/M, switching)
 	. = ..()
 	if(!length(mobs))
 		qdel(src)

@@ -14,6 +14,7 @@
 	pass_flags_self = ATOM_PASS_TABLE
 	integrity = 200
 	integrity_max = 200
+	worth_intrinsic = 150
 	var/locked = FALSE
 //	req_access = list(ACCESS_ENGINEERING_MAINT)
 
@@ -28,7 +29,7 @@
 /obj/machinery/deployable/barrier/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	user.setClickCooldownLegacy(DEFAULT_ATTACK_COOLDOWN)
 	if(istype(I, /obj/item/card/id/))
 		if(allowed(user))
 			if	(emagged < 2)

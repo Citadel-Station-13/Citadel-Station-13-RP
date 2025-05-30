@@ -33,7 +33,7 @@
 /mob/living/simple_mob/blob
 	icon = 'icons/mob/blob.dmi'
 	pass_flags = ATOM_PASS_BLOB | ATOM_PASS_TABLE
-	faction = "blob"
+	iff_factions = MOB_IFF_FACTION_BLOB
 	catalogue_data = list(/datum/category_item/catalogue/fauna/blob)
 
 	heat_damage_per_tick = 0

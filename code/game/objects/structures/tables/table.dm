@@ -25,8 +25,8 @@ var/list/table_icon_cache = list()
 	material_parts = MATERIAL_DEFAULT_ABSTRACTED
 	material_primary = "base"
 
-	var/datum/material/material_base
-	var/datum/material/material_reinforcing
+	var/datum/prototype/material/material_base
+	var/datum/prototype/material/material_reinforcing
 
 	var/flipped = 0
 
@@ -70,7 +70,6 @@ var/list/table_icon_cache = list()
 		update_appearance()
 
 /obj/structure/table/LateInitialize()		// CURSE YOU DUMB AS ROCKS MATERIAL SYSTEM
-	. = ..()
 	update_connections(FALSE)
 	update_appearance()
 

@@ -1,3 +1,9 @@
+/**
+ * Protolathe
+ *
+ * todo: this should just be an enhanced autolathe that has both kinds of designs;
+ *       for now, macro generation will generate for both.
+ */
 /obj/machinery/r_n_d/protolathe
 	name = "Protolathe"
 	icon = 'icons/obj/machines/fabricators/protolathe.dmi'
@@ -11,7 +17,7 @@
 
 	var/max_material_storage = 100000
 
-	var/list/datum/design/queue = list()
+	var/list/datum/prototype/design/queue = list()
 	var/progress = 0
 
 	var/mat_efficiency = 1
@@ -30,7 +36,7 @@
 		busy = 0
 		update_appearance()
 		return
-	var/datum/design/D = queue[1]
+	var/datum/prototype/design/D = queue[1]
 	if(canBuild(D))
 		busy = 1
 		progress += speed
@@ -153,7 +159,7 @@
 	updateUsrDialog()
 	return
 
-/obj/machinery/r_n_d/protolathe/proc/addToQueue(var/datum/design/D)
+/obj/machinery/r_n_d/protolathe/proc/addToQueue(var/datum/prototype/design/D)
 	queue += D
 	return
 
@@ -161,7 +167,7 @@
 	queue.Cut(index, index + 1)
 	return
 
-/obj/machinery/r_n_d/protolathe/proc/canBuild(var/datum/design/D)
+/obj/machinery/r_n_d/protolathe/proc/canBuild(var/datum/prototype/design/D)
 	for(var/M in D.materials_base)
 		if(stored_materials[M] < (D.materials_base[M] * mat_efficiency))
 			return 0
@@ -170,7 +176,7 @@
 			return 0
 	return 1
 
-/obj/machinery/r_n_d/protolathe/proc/getLackingMaterials(var/datum/design/D)
+/obj/machinery/r_n_d/protolathe/proc/getLackingMaterials(var/datum/prototype/design/D)
 	var/ret = ""
 	for(var/M in D.materials_base)
 		if(stored_materials[M] < D.materials_base[M])
@@ -184,7 +190,7 @@
 			ret += C
 	return ret
 
-/obj/machinery/r_n_d/protolathe/proc/build(var/datum/design/D)
+/obj/machinery/r_n_d/protolathe/proc/build(var/datum/prototype/design/D)
 	var/power = active_power_usage
 	for(var/M in D.materials_base)
 		power += round(D.materials_base[M] / 5)
@@ -206,7 +212,7 @@
 	var/recursive = amount == -1 ? 1 : 0
 	material = lowertext(material)
 	var/obj/item/stack/material/mattype
-	var/datum/material/MAT = get_material_by_name(material)
+	var/datum/prototype/material/MAT = get_material_by_name(material)
 
 	if(!MAT)
 		return

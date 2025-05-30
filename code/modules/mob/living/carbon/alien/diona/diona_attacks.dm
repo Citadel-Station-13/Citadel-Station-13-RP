@@ -2,7 +2,7 @@
 	var/mob/living/carbon/human/H = over_object
 	if(!istype(H) || !Adjacent(H))
 		return ..()
-	if(H.a_intent == "grab" && hat && !H.hands_full())
+	if(H.a_intent == "grab" && hat && !H.are_usable_hands_full())
 		H.put_in_hands_or_drop(hat)
 		H.visible_message("<span class='danger'>\The [H] removes \the [src]'s [hat].</span>")
 		hat = null

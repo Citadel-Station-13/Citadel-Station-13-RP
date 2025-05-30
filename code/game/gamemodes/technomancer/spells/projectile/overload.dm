@@ -25,17 +25,17 @@
 /obj/projectile/overload
 	name = "overloaded bolt"
 	icon_state = "bluespace"
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	armor_penetration = 100
 
 /obj/item/spell/projectile/overload/make_projectile(obj/projectile/projectile_type, mob/living/user)
 	var/obj/projectile/overload/P = new projectile_type(get_turf(user))
 	var/energy_before_firing = core.energy
 	if(check_for_scepter())
-		P.damage = round(energy_before_firing * 0.004) // .4% of their current energy pool.
+		P.damage_force = round(energy_before_firing * 0.004) // .4% of their current energy pool.
 	else
-		P.damage = round(energy_before_firing * 0.003) // .3% of their current energy pool.
-	P.damage = min(calculate_spell_power(P.damage), 80)
+		P.damage_force = round(energy_before_firing * 0.003) // .3% of their current energy pool.
+	P.damage_force = min(calculate_spell_power(P.damage_force), 80)
 	return P
 
 /obj/item/spell/projectile/overload/on_ranged_cast(atom/hit_atom, mob/living/user)

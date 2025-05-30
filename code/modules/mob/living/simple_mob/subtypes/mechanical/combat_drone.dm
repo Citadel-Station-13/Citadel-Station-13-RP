@@ -39,11 +39,11 @@
 	icon_dead = "drone_dead"
 	has_eye_glow = TRUE
 
-	faction = "malf_drone"
+	iff_factions = MOB_IFF_FACTION_MERCENARY
 
 	maxHealth = 50 // Shield has 150 for total of 200.
 	health = 50
-	movement_cooldown = 5
+	movement_base_speed = 10 / 5
 	hovering = TRUE
 
 	base_attack_cooldown = 5
@@ -81,7 +81,7 @@
 	return TRUE
 
 /obj/projectile/beam/drone
-	damage = 10
+	damage_force = 10
 
 /obj/item/shield_projector/rectangle/automatic/drone
 	shield_health = 150
@@ -95,7 +95,7 @@
 // Difference is that it should not be faster than you.
 /mob/living/simple_mob/mechanical/combat_drone/lesser
 	desc = "An automated combat drone with an aged apperance."
-	movement_cooldown = 10
+	movement_base_speed = 10 / 10
 
 
 // This one is the type spawned by the random event.

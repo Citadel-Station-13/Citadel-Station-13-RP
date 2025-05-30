@@ -10,6 +10,7 @@
 	anchored = 0
 	density = 1
 	use_power = USE_POWER_OFF
+	armor = /datum/armor/object/heavy
 
 	var/image/material_layer	// Holds the image used for the filled overlay.
 	var/image/material_glow		// Holds the image used for the glow overlay.
@@ -127,11 +128,12 @@
 	else
 		set_light(0, 0, "#FFFFFF")
 
-/obj/machinery/particle_smasher/bullet_act(var/obj/projectile/Proj)
-	if(istype(Proj, /obj/projectile/beam))
-		if(Proj.damage >= 50)
+/obj/machinery/particle_smasher/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	if(istype(proj, /obj/projectile/beam))
+		if(proj.damage_force >= 50)
 			TryCraft()
-	return 0
+		return PROJECTILE_IMPACT_DELETE
+	return ..()
 
 /obj/machinery/particle_smasher/process(delta_time)
 	if(!src.anchored)	// Rapidly loses focus.
@@ -277,7 +279,7 @@
 			. = -1
 	return .
 
-/datum/particle_smasher_recipe/proc/check_reagents(var/datum/reagents/avail_reagents)
+/datum/particle_smasher_recipe/proc/check_reagents(var/datum/reagent_holder/avail_reagents)
 	. = 1
 	for (var/r_r in reagents)
 		var/aval_r_amnt = avail_reagents.get_reagent_amount(r_r)
@@ -286,7 +288,7 @@
 				. = 0
 			else
 				return -1
-	if ((reagents?(reagents.len):(0)) < avail_reagents.reagent_list.len)
+	if ((reagents?(reagents.len):(0)) < length(avail_reagents.reagent_volumes))
 		return 0
 	return .
 

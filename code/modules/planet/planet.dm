@@ -27,8 +27,6 @@
 	// todo: KILL THIS WITH FIRE
 	var/list/expected_z_levels = list()
 
-	var/turf/unsimulated/wall/planetary/planetary_wall_type = /turf/unsimulated/wall/planetary
-
 	var/list/turf/simulated/floor/planet_floors = list()
 	var/list/turf/unsimulated/wall/planetary/planet_walls = list()
 

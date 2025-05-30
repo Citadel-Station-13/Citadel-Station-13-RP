@@ -92,7 +92,7 @@
 /area/submap/Drugd)
 "v" = (
 /obj/structure/closet/cabinet,
-/obj/item/contraband/poster,
+/obj/item/poster,
 /turf/simulated/floor/carpet,
 /area/submap/Drugd)
 "w" = (

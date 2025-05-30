@@ -54,7 +54,7 @@
 /obj/machinery/porta_turret/alien/ion
 	name = "interior anti-boarding turret"
 	desc = "A very tough looking turret made by alien hands."
-	installation = /obj/item/gun/energy/ionrifle/weak
+	installation = /obj/item/gun/projectile/energy/ionrifle/weak
 	enabled = TRUE
 	lethal = TRUE
 	ailock = TRUE
@@ -116,62 +116,62 @@
 	. = ..()
 	dump_area = locate(/area/tether_away/alienship/equip_dump)
 
-/area/shuttle/excursion/away_alienship/shuttle_arrived()
-	. = ..()
-	spawn(20)
-		if(did_entry)
-			return
+// /area/shuttle/excursion/away_alienship/shuttle_arrived()
+// 	. = ..()
+// 	spawn(20)
+// 		if(did_entry)
+// 			return
 
-		//No talky!
-		for(var/obj/machinery/telecomms/relay/R in contents)
-			R.toggled = FALSE
-			R.update_power()
+// 		//No talky!
+// 		for(var/obj/machinery/telecomms/relay/R in contents)
+// 			R.toggled = FALSE
+// 			R.update_power()
 
-		//Teleport time!
-		for(var/mob in GLOB.player_list) //This is extreme, but it's very hard to find people hiding in things, and this is pretty cheap.
-			try
-				if(isliving(mob) && get_area(mob) == src)
-					abduct(mob)
-			catch
-				log_debug(SPAN_DEBUG("Problem doing [mob] for Alienship arrival teleport!"))
+// 		//Teleport time!
+// 		for(var/mob in GLOB.player_list) //This is extreme, but it's very hard to find people hiding in things, and this is pretty cheap.
+// 			try
+// 				if(isliving(mob) && get_area(mob) == src)
+// 					abduct(mob)
+// 			catch
+// 				log_debug(SPAN_DEBUG("Problem doing [mob] for Alienship arrival teleport!"))
 
-		did_entry = TRUE
+// 		did_entry = TRUE
 
-/area/shuttle/excursion/away_alienship/proc/abduct(var/mob/living/mob)
-	if(isliving(mob))
-		var/mob/living/L = mob
+// /area/shuttle/excursion/away_alienship/proc/abduct(var/mob/living/mob)
+// 	if(isliving(mob))
+// 		var/mob/living/L = mob
 
-		//Situations to get the mob out of
-		if(L.buckled)
-			L.buckled.unbuckle_mob()
-		if(istype(L.loc,/obj/mecha))
-			var/obj/mecha/M = L.loc
-			M.go_out()
-		else if(istype(L.loc,/obj/machinery/sleeper))
-			var/obj/machinery/sleeper/SL = L.loc
-			SL.go_out()
-		else if(istype(L.loc,/obj/machinery/recharge_station))
-			var/obj/machinery/recharge_station/RS = L.loc
-			RS.go_out()
+// 		//Situations to get the mob out of
+// 		if(L.buckled)
+// 			L.buckled.unbuckle_mob()
+// 		if(istype(L.loc,/obj/vehicle/sealed/mecha))
+// 			var/obj/vehicle/sealed/mecha/M = L.loc
+// 			M.go_out()
+// 		else if(istype(L.loc,/obj/machinery/sleeper))
+// 			var/obj/machinery/sleeper/SL = L.loc
+// 			SL.go_out()
+// 		else if(istype(L.loc,/obj/machinery/recharge_station))
+// 			var/obj/machinery/recharge_station/RS = L.loc
+// 			RS.go_out()
 
-		L.forceMove(pick(get_area_turfs(dump_area)))
-		if(!issilicon(L)) //Don't drop borg modules...
-			for(var/obj/item/I in L.get_equipped_items(TRUE, TRUE))
-				if(istype(I,/obj/item/holder))
-					var/obj/item/holder/H = I
-					var/mob/living/M = H.held_mob
-					H.forceMove(get_turf(L))
-					abduct(M)
-					continue
-				L.drop_item_to_ground(I, INV_OP_FORCE)
-			// second pass - NO HIDING, M*CROS
-			for(var/obj/item/holder/H in L.get_all_contents())
-				H.forceMove(get_turf(L))
-				abduct(H)
-		L.afflict_unconscious(20 * 10)
-		L.forceMove(get_turf(pick(teleport_to)))
-		L << 'sound/effects/bamf.ogg'
-		to_chat(L,"<span class='warning'>You're starting to come to. You feel like you've been out for a few minutes, at least...</span>")
+// 		L.forceMove(pick(get_area_turfs(dump_area)))
+// 		if(!issilicon(L)) //Don't drop borg modules...
+// 			for(var/obj/item/I in L.get_equipped_items(TRUE, TRUE))
+// 				if(istype(I,/obj/item/holder))
+// 					var/obj/item/holder/H = I
+// 					var/mob/living/M = H.held_mob
+// 					H.forceMove(get_turf(L))
+// 					abduct(M)
+// 					continue
+// 				L.drop_item_to_ground(I, INV_OP_FORCE)
+// 			// second pass - NO HIDING, M*CROS
+// 			for(var/obj/item/holder/H in L.get_all_contents())
+// 				H.forceMove(get_turf(L))
+// 				abduct(H)
+// 		L.afflict_unconscious(20 * 10)
+// 		L.forceMove(get_turf(pick(teleport_to)))
+// 		L << 'sound/effects/bamf.ogg'
+// 		to_chat(L,"<span class='warning'>You're starting to come to. You feel like you've been out for a few minutes, at least...</span>")
 
 /area/tether_away/alienship
 	name = "\improper Away Mission - Unknown Vessel"

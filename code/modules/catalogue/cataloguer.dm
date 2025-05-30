@@ -33,6 +33,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 	var/debug = FALSE // If true, can view all catalogue data defined, regardless of unlock status.
 	var/datum/weakref/partial_scanned = null // Weakref of the thing that was last scanned if inturrupted. Used to allow for partial scans to be resumed.
 	var/partial_scan_time = 0 // How much to make the next scan shorter.
+	var/snowflake_dont_update_icon_state = FALSE
 
 /obj/item/cataloguer/advanced
 	name = "advanced cataloguer"
@@ -63,11 +64,14 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 	displayed_data = null
 	return ..()
 
-/obj/item/cataloguer/update_icon()
+/obj/item/cataloguer/update_icon_state()
+	if(snowflake_dont_update_icon_state)
+		return ..()
 	if(busy)
 		icon_state = "[initial(icon_state)]_active"
 	else
 		icon_state = initial(icon_state)
+	return ..()
 
 /obj/item/cataloguer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	// Things that invalidate the scan immediately.
@@ -246,7 +250,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 /obj/item/cataloguer/proc/adjust_points(amount)
 	points_stored = max(0, points_stored += amount)
 
-/obj/item/cataloguer/attack_self(mob/user)
+/obj/item/cataloguer/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -325,7 +329,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 		busy = TRUE
 		var/obj/item/card/id/ID = W
 		if(points_stored)
-			ID.survey_points += points_stored
+			ID.adjust_redemption_points(POINT_REDEMPTION_TYPE_SURVEY, points_stored)
 			points_stored = 0
 			to_chat(user, "<span class='notice'>You swipe the id over \the [src].</span>")
 		else

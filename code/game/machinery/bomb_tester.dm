@@ -62,6 +62,7 @@
 
 /obj/machinery/bomb_tester/update_icon()
 	cut_overlays()
+	. = ..()
 	var/list/overlays_to_add = list()
 	if(tank1)
 		overlays_to_add += image(icon, "[icon_name]-tank1")
@@ -107,7 +108,7 @@
 			return
 	..()
 
-/obj/machinery/bomb_tester/attack_hand(mob/user, list/params)
+/obj/machinery/bomb_tester/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	add_fingerprint(user)
 	ui_interact(user)
 

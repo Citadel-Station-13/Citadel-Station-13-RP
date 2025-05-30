@@ -129,8 +129,8 @@
 	for(var/i in 1 to length(levels))
 		if(ispath(levels[i]))
 			var/datum/map_level/level_path = levels[i]
-			var/datum/map_level/level_instance = new level_path
-			level_instance.hardcoded = TRUE
+			var/datum/map_level/level_instance = new level_path(src)
+			level_instance.hardcoded = TRUE // todo: map can just also not be hardcoded
 			levels[i] = level_instance
 			if(levels_match_mangling_id)
 				level_instance.mangling_id = mangling_id || id
@@ -252,7 +252,6 @@
 
 	var/use_overmap = 0			// If overmap should be used (including overmap space travel override)
 	var/overmap_size = 20		// Dimensions of overmap zlevel if overmap is used.
-	var/overmap_z = 0			// If 0 will generate overmap zlevel on init. Otherwise will populate the zlevel provided.
 	var/overmap_event_areas = 0	// How many event "clouds" will be generated
 
 	/// list of title cutscreens by path to display. for legacy support, tuples of list(icon, state) work too. associate to % chance, defaulting to 1.
@@ -385,8 +384,7 @@
 
 		// Otherwise every sector we're on top of
 		var/list/connections = list()
-		var/turf/T = get_turf(O)
-		for(var/obj/overmap/entity/visitable/V in range(om_range, T))
+		for(var/obj/overmap/entity/visitable/V in bounds(O, om_range))
 			connections |= V.map_z	// Adding list to list adds contents
 		return connections
 
@@ -403,20 +401,20 @@
 // This list needs to be purged but people insist on adding more cruft to the radio.
 /datum/map/station/proc/default_internal_channels()
 	return list(
-		num2text(PUB_FREQ) = list(),
-		num2text(AI_FREQ)  = list(ACCESS_SPECIAL_SILICONS),
-		num2text(ENT_FREQ) = list(),
-		num2text(ERT_FREQ) = list(ACCESS_CENTCOM_ERT),
-		num2text(COMM_FREQ)= list(ACCESS_COMMAND_BRIDGE),
-		num2text(ENG_FREQ) = list(ACCESS_ENGINEERING_ENGINE, ACCESS_ENGINEERING_ATMOS),
-		num2text(MED_FREQ) = list(ACCESS_MEDICAL_EQUIPMENT),
-		num2text(MED_I_FREQ)=list(ACCESS_MEDICAL_EQUIPMENT),
-		num2text(SEC_FREQ) = list(ACCESS_SECURITY_EQUIPMENT),
-		num2text(SEC_I_FREQ)=list(ACCESS_SECURITY_EQUIPMENT),
-		num2text(SCI_FREQ) = list(ACCESS_SCIENCE_FABRICATION,ACCESS_SCIENCE_ROBOTICS,ACCESS_SCIENCE_XENOBIO),
-		num2text(SUP_FREQ) = list(ACCESS_SUPPLY_BAY),
-		num2text(SRV_FREQ) = list(ACCESS_GENERAL_JANITOR, ACCESS_GENERAL_BOTANY),
-		num2text(EXP_FREQ) = list(ACCESS_GENERAL_EXPLORER)
+		num2text(FREQ_COMMON) = list(),
+		num2text(FREQ_AI_PRIVATE)  = list(ACCESS_SPECIAL_SILICONS),
+		num2text(FREQ_ENTERTAINMENT) = list(),
+		num2text(FREQ_ERT) = list(ACCESS_CENTCOM_ERT),
+		num2text(FREQ_COMMAND)= list(ACCESS_COMMAND_BRIDGE),
+		num2text(FREQ_ENGINEERING) = list(ACCESS_ENGINEERING_ENGINE, ACCESS_ENGINEERING_ATMOS),
+		num2text(FREQ_MEDICAL) = list(ACCESS_MEDICAL_EQUIPMENT),
+		num2text(FREQ_MEDICAL_INTERNAL)=list(ACCESS_MEDICAL_EQUIPMENT),
+		num2text(FREQ_SECURITY) = list(ACCESS_SECURITY_EQUIPMENT),
+		num2text(FREQ_SECURITY_INTERNAL)=list(ACCESS_SECURITY_EQUIPMENT),
+		num2text(FREQ_SCIENCE) = list(ACCESS_SCIENCE_FABRICATION,ACCESS_SCIENCE_ROBOTICS,ACCESS_SCIENCE_XENOBIO),
+		num2text(FREQ_SUPPLY) = list(ACCESS_SUPPLY_BAY),
+		num2text(FREQ_SERVICE) = list(ACCESS_GENERAL_JANITOR, ACCESS_GENERAL_BOTANY),
+		num2text(FREQ_EXPLORER) = list(ACCESS_GENERAL_EXPLORER)
 	)
 
 /**
@@ -425,6 +423,13 @@
 /datum/map/sector
 	category = "Sectors"
 	abstract_type = /datum/map/sector
+
+/**
+ * Maps for gateway away missions. Should support uncalibrated gateway spawning.
+ */
+/datum/map/gateway
+	category = "Gateway"
+	abstract_type = /datum/map/gateway
 
 /**
  * custom maps

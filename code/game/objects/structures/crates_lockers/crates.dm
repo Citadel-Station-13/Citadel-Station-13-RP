@@ -1,5 +1,3 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
-
 /obj/structure/closet/crate
 	name = "crate"
 	desc = "A rectangular steel crate."
@@ -11,8 +9,8 @@
 	use_old_icon_update = TRUE
 	depth_level = 8
 	armor_type = /datum/armor/object/medium
+	worth_intrinsic = 45
 	var/points_per_crate = 5
-//	mouse_drag_pointer = MOUSE_ACTIVE_POINTER	//???
 	var/rigged = 0
 
 /obj/structure/closet/crate/CanPass(atom/movable/AM, turf/T)
@@ -37,12 +35,12 @@
 	if(rigged && locate(/obj/item/radio/electropack) in src)
 		if(isliving(usr))
 			var/mob/living/L = usr
-			if(L.electrocute_act(17, src))
-				var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-				s.set_up(5, 1, src)
-				s.start()
-				if(!CHECK_MOBILITY(usr, MOBILITY_CAN_MOVE))
-					return 2
+			L.electrocute(0, 17, 0, NONE, pick(BP_L_HAND, BP_R_HAND), src)
+			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+			s.set_up(5, 1, src)
+			s.start()
+			if(!CHECK_MOBILITY(usr, MOBILITY_CAN_MOVE))
+				return 2
 
 	playsound(src.loc, 'sound/machines/click.ogg', 15, 1, -3)
 	for(var/obj/O in src)
@@ -203,7 +201,7 @@
 	else
 		to_chat(usr, "<span class='warning'>This mob type can't use this verb.</span>")
 
-/obj/structure/closet/crate/secure/attack_hand(mob/user, list/params)
+/obj/structure/closet/crate/secure/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	src.add_fingerprint(user)
 	if(locked)
 		src.togglelock(user)
@@ -213,7 +211,7 @@
 /obj/structure/closet/crate/secure/attackby(obj/item/W as obj, mob/user as mob)
 	if(is_type_in_list(W, list(/obj/item/packageWrap, /obj/item/stack/cable_coil, /obj/item/radio/electropack, /obj/item/tool/wirecutters)))
 		return ..()
-	if(istype(W, /obj/item/melee/energy/blade))
+	if(istype(W, /obj/item/melee/ninja_energy_blade))
 		emag_act(INFINITY, user)
 	if(!opened)
 		src.togglelock(user)
@@ -231,7 +229,7 @@
 		spawn(6)
 			cut_overlay(sparks) //Tried lots of stuff but nothing works right. so i have to use this *sadface*
 			compile_overlays()
-		playsound(src.loc, /datum/soundbyte/grouped/sparks, 60, 1)
+		playsound(src.loc, /datum/soundbyte/sparks, 60, 1)
 		locked = 0
 		broken = 1
 		to_chat(user, "<span class='notice'>You unlock \the [src].</span>")
@@ -252,7 +250,7 @@
 			spawn(6)
 				cut_overlay(sparks) //Tried lots of stuff but nothing works right. so i have to use this *sadface*
 				compile_overlays()
-			playsound(src.loc, /datum/soundbyte/grouped/sparks, 75, 1)
+			playsound(src.loc, /datum/soundbyte/sparks, 75, 1)
 			locked = 0
 			update_icon()
 	if(!opened && prob(20/severity))
@@ -263,17 +261,17 @@
 			req_access += pick(get_all_station_access())
 	..()
 
-/obj/structure/closet/crate/secure/bullet_act(var/obj/projectile/Proj)
-	if(!(Proj.damage_type == BRUTE || Proj.damage_type == BURN))
-		return
+/obj/structure/closet/crate/secure/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	if(!(proj.damage_type == DAMAGE_TYPE_BRUTE || proj.damage_type == DAMAGE_TYPE_BURN))
+		return ..()
 
-	if(locked && tamper_proof && integrity <= Proj.damage)
+	if(locked && tamper_proof && integrity <= proj.damage_force)
 		if(tamper_proof == 2) // Mainly used for events to prevent any chance of opening the box improperly.
 			visible_message("<font color='red'><b>The anti-tamper mechanism of [src] triggers an explosion!</b></font>")
 			var/turf/T = get_turf(src.loc)
 			explosion(T, 0, 0, 0, 1) // Non-damaging, but it'll alert security.
 			qdel(src)
-			return
+			return impact_flags
 		var/open_chance = rand(1,5)
 		switch(open_chance)
 			if(1)
@@ -289,12 +287,9 @@
 				qdel(src)
 			if(5)
 				visible_message("<font color='green'><b>The anti-tamper mechanism of [src] fails!</b></font>")
-		return
+		return impact_flags
 
-	..()
-
-	return
-
+	return ..()
 
 /obj/structure/closet/crate/plastic
 	name = "plastic crate"
@@ -520,6 +515,7 @@
 	icon_state = "largemetalsecure"
 	redlight = "largemetalr"
 	greenlight = "largemetalg"
+	worth_intrinsic = 200
 	//closet_appearance = /singleton/closet_appearance/large_crate/secure
 
 
@@ -568,7 +564,7 @@
 
 	starts_with = list(
 		/obj/item/stack/material/plasteel = 10,
-		/obj/fiftyspawner/steel = 5,
+		/obj/item/stack/material/steel/full_stack = 5,
 		/obj/fiftyspawner/glass = 4,
 		/obj/item/cell/high = 4,
 		/obj/item/stack/cable_coil = 2,

@@ -1,4 +1,4 @@
-/datum/language/shadekin
+/datum/prototype/language/shadekin
 	id = LANGUAGE_ID_SHADEKIN_HIVEMIND
 	name = LANGUAGE_SHADEKIN
 	desc = "Shadekin seem to always know what the others are thinking. This is probably why."

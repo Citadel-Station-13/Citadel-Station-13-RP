@@ -1,4 +1,4 @@
-/datum/material/diona
+/datum/prototype/material/diona
 	id = "biomass_diona"
 	name = "biomass"
 	icon_colour = null
@@ -18,8 +18,8 @@
 	absorption = MATERIAL_RESISTANCE_HIGH
 	nullification = MATERIAL_RESISTANCE_LOW // they're half-telepaths anyways
 
-/datum/material/diona/place_dismantled_product()
+/datum/prototype/material/diona/place_dismantled_product()
 	return
 
-/datum/material/diona/place_dismantled_girder(var/turf/target)
+/datum/prototype/material/diona/place_dismantled_girder(var/turf/target)
 	spawn_diona_nymph(target)

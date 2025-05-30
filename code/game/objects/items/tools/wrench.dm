@@ -52,6 +52,15 @@
 	tool_speed = 1.25
 	random_color = FALSE
 
+/obj/item/tool/wrench/bronze
+	name = "bronze wrench"
+	desc = "A simply bronze headed wrench with a bone handle. It seems to lack the adjustable head of modern wrenches."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "wrench_bronze"
+	item_state = "wrench_brass"
+	tool_speed = 1.25
+	random_color = FALSE
+
 /obj/item/tool/wrench/brass
 	name = "brass wrench"
 	desc = "A brass plated wrench. Its finely tuned mechanism allows for a strong grip."
@@ -156,7 +165,7 @@
 		QDEL_NULL(counterpart)
 	return ..()
 
-/obj/item/tool/wrench/power/attack_self(mob/user)
+/obj/item/tool/wrench/power/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

@@ -15,7 +15,7 @@
 
 	var/code = 2
 
-/obj/item/radio/electropack/attack_hand(mob/user, list/params)
+/obj/item/radio/electropack/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(src == user.item_by_slot_id(SLOT_ID_BACK))
 		to_chat(user, "<span class='notice'>You need help taking this off!</span>")
 		return
@@ -104,7 +104,7 @@
 		master.receive_signal()
 	return
 
-/obj/item/radio/electropack/attack_self(mob/user as mob, flag1)
+/obj/item/radio/electropack/attack_self(mob/user, datum/event_args/actor/actor)
 
 	if(!istype(user, /mob/living/carbon/human))
 		return

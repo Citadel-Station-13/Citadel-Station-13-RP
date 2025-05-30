@@ -30,7 +30,7 @@
 	icon_state = "potcyan"
 	description_info = "The slime needs to be alive for this to work.  It will reduce the chances of mutation by 15%."
 
-/obj/item/slimepotion/stabilizer/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/slimepotion/stabilizer/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
@@ -57,7 +57,7 @@
 	description_info = "The slime needs to be alive for this to work.  It will increase the chances of mutation by 12%."
 	icon_state = "potred"
 
-/obj/item/slimepotion/mutator/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/slimepotion/mutator/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
@@ -85,7 +85,7 @@
 	icon_state = "potlightpink"
 	description_info = "The target needs to be alive, not already passive, and be an animal or slime type entity."
 
-/obj/item/slimepotion/docility/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/slimepotion/docility/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
@@ -149,7 +149,7 @@
 	Extra extracts are not passed down to offspring when reproducing."
 	icon_state = "potpurple"
 
-/obj/item/slimepotion/steroid/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/slimepotion/steroid/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
@@ -181,7 +181,7 @@
 	carry over to offspring when reproducing."
 	icon_state = "potpink"
 
-/obj/item/slimepotion/unity/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/slimepotion/unity/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
@@ -204,6 +204,7 @@
 	qdel(src)
 
 // Makes slimes not kill (most) humanoids but still fight spiders/carp/bears/etc.
+// todo: this is janky as shit, it doesn't take into account someone's primary faction vs all of someone's factions
 /obj/item/slimepotion/loyalty
 	name = "slime loyalty agent"
 	desc = "A potent chemical mix that makes an animal deeply loyal to the species of whoever applies this, and will attack threats to them."
@@ -211,7 +212,7 @@
 	the user's faction, which means the slime will attack things that are hostile to the user's faction, such as carp, spiders, and other slimes."
 	icon_state = "potlightpink"
 
-/obj/item/slimepotion/loyalty/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/slimepotion/loyalty/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
@@ -225,7 +226,7 @@
 	if(S.stat == DEAD)
 		to_chat(user, SPAN_WARNING("The animal is dead!"))
 		return
-	if(S.faction == user.faction)
+	if(S.shares_iff_faction(user))
 		to_chat(user, SPAN_WARNING("\The [S] is already loyal to your species!"))
 		return
 	if(!S.has_polaris_AI())
@@ -239,7 +240,7 @@
 
 	to_chat(user, SPAN_NOTICE("You feed \the [S] the agent. It will now try to murder things that want to murder you instead."))
 	to_chat(S, SPAN_NOTICE("\The [user] feeds you \the [src], and feel that the others will regard you as an outsider now."))
-	S.faction = user.faction
+	S.add_iff_faction(user.iff_factions)
 	AI.lost_target() // So hostile things stop attacking people even if not hostile anymore.
 	playsound(src, 'sound/effects/bubbles.ogg', 50, 1)
 	qdel(src)
@@ -253,7 +254,7 @@
 	their 'friend', and will never attack them.  This might also work on other things besides slimes."
 	icon_state = "potlightpink"
 
-/obj/item/slimepotion/friendship/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/slimepotion/friendship/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
@@ -294,7 +295,7 @@
 	description_info = "The slime needs to be alive for this to work.  It will instantly grow the slime enough to reproduce."
 	icon_state = "potorange"
 
-/obj/item/slimepotion/feeding/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/slimepotion/feeding/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
@@ -320,7 +321,7 @@
 	icon_state = "potpurple"
 	description_info = "The slime needs to be alive for this to work. It will reduce the amount of slime babies by 2 (to minimum of 2)."
 
-/obj/item/slimepotion/infertility/attack_mob(mob/living/simple_mob/slime/xenobio/M, mob/user)
+/obj/item/slimepotion/infertility/legacy_mob_melee_hook(mob/living/simple_mob/slime/xenobio/M, mob/user)
 	if(!istype(M))
 		to_chat(user, SPAN_WARNING("The agent only works on slimes!"))
 		return ..()
@@ -342,7 +343,7 @@
 	icon_state = "potpurple"
 	description_info = "The slime needs to be alive for this to work. It will increase the amount of slime babies by 2 (to maximum of 6)."
 
-/obj/item/slimepotion/fertility/attack_mob(mob/living/simple_mob/slime/xenobio/M, mob/user)
+/obj/item/slimepotion/fertility/legacy_mob_melee_hook(mob/living/simple_mob/slime/xenobio/M, mob/user)
 	if(!istype(M))
 		to_chat(user, SPAN_WARNING("The agent only works on slimes!"))
 		return ..()
@@ -364,7 +365,7 @@
 	icon_state = "potpurple"
 	description_info = "The slime needs to be alive for this to work."
 
-/obj/item/slimepotion/shrink/attack_mob(mob/living/simple_mob/slime/xenobio/M, mob/user)
+/obj/item/slimepotion/shrink/legacy_mob_melee_hook(mob/living/simple_mob/slime/xenobio/M, mob/user)
 	if(!istype(M))
 		to_chat(user, SPAN_WARNING("The agent only works on slimes!"))
 		return ..()
@@ -386,7 +387,7 @@
 	icon_state = "potblue"
 	description_info = "The slime needs to be alive for this to work."
 
-/obj/item/slimepotion/death/attack_mob(mob/living/simple_mob/slime/xenobio/M, mob/user)
+/obj/item/slimepotion/death/legacy_mob_melee_hook(mob/living/simple_mob/slime/xenobio/M, mob/user)
 	if(!istype(M))
 		to_chat(user, SPAN_WARNING("The agent only works on slimes!"))
 		return ..()
@@ -405,7 +406,7 @@
 	icon_state = "potred"
 	description_info = "The slime needs to be alive for this to work."
 
-/obj/item/slimepotion/ferality/attack_mob(mob/living/simple_mob/slime/xenobio/M, mob/user)
+/obj/item/slimepotion/ferality/legacy_mob_melee_hook(mob/living/simple_mob/slime/xenobio/M, mob/user)
 	if(!istype(M))
 		to_chat(user, SPAN_WARNING("The agent only works on slimes!"))
 		return ..()
@@ -453,7 +454,7 @@
 	description_info = "The slime or other animal needs to be alive for this to work. The development is not always immediate and may take indeterminate time before effects show."
 	icon_state = "potblue"
 
-/obj/item/slimepotion/sapience/attack_mob(mob/living/simple_mob/M, mob/user)
+/obj/item/slimepotion/sapience/legacy_mob_melee_hook(mob/living/simple_mob/M, mob/user)
 	if(!istype(M))
 		to_chat(user, SPAN_WARNING("The agent only works on creatures!"))
 		return ..()
@@ -485,7 +486,7 @@
 	icon_state = "potlightpink"
 	description_info = "The target needs to be alive and currently misbehaving. Effect is equivalent to very strong discipline."
 
-/obj/item/slimepotion/obedience/attack_mob(mob/living/simple_mob/slime/xenobio/M, mob/user)
+/obj/item/slimepotion/obedience/legacy_mob_melee_hook(mob/living/simple_mob/slime/xenobio/M, mob/user)
 	if(!istype(M))
 		to_chat(user, SPAN_WARNING("The agent only works on slimes!"))
 		return ..()

@@ -14,7 +14,7 @@
 "d" = (
 /obj/structure/alien/weeds,
 /obj/structure/bed/nest,
-/obj/item/gun/ballistic/p92x/large,
+/obj/item/gun/projectile/ballistic/p92x/large,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/vault5)
 "e" = (
@@ -34,7 +34,6 @@
 "h" = (
 /obj/structure/alien/weeds,
 /obj/random/multiple/minevault,
-/mob/living/simple_mob/animal/space/alien/sentinel/praetorian,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/vault5)
 "i" = (
@@ -45,13 +44,19 @@
 "j" = (
 /obj/structure/alien/weeds,
 /obj/structure/alien/weeds/node,
-/mob/living/simple_mob/animal/space/alien/queen/empress,
+/mob/living/simple_mob/animal/space/xenomorph/vanguard,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/vault5)
 "k" = (
 /obj/structure/alien/weeds,
 /obj/item/clothing/head/helmet/tac,
-/obj/item/gun/ballistic/SVD,
+/obj/item/gun/projectile/ballistic/SVD,
+/turf/simulated/mineral/floor/ignore_mapgen,
+/area/submap/cave/vault5)
+"A" = (
+/obj/structure/alien/weeds,
+/obj/structure/bed/nest,
+/mob/living/simple_mob/animal/space/xenomorph/warrior,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/vault5)
 
@@ -81,7 +86,7 @@ a
 a
 b
 b
-g
+A
 i
 h
 b
@@ -127,7 +132,7 @@ b
 b
 h
 i
-g
+A
 b
 b
 a

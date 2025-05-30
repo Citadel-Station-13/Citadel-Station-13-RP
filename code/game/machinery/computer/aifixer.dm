@@ -48,7 +48,7 @@
 			to_chat(user, SPAN_NOTICE("There is no AI loaded onto this computer, and no AI loaded onto [I]. What exactly are you trying to do here?"))
 	return ..()
 
-/obj/machinery/computer/aifixer/attack_hand(mob/user, list/params)
+/obj/machinery/computer/aifixer/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	ui_interact(user)
@@ -115,18 +115,19 @@
 			if(oldstat != occupier.stat)
 				update_icon()
 
-/obj/machinery/computer/aifixer/update_icon()
-	. = ..()
+/obj/machinery/computer/aifixer/make_legacy_overlays()
+	var/list/to_add_overlays = list()
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 
 	if(restoring)
-		. += "ai-fixer-on"
+		to_add_overlays += "ai-fixer-on"
 	if (occupier)
 		switch (occupier.stat)
 			if (CONSCIOUS)
-				. += "ai-fixer-full"
+				to_add_overlays += "ai-fixer-full"
 			if (UNCONSCIOUS)
-				. += "ai-fixer-404"
+				to_add_overlays += "ai-fixer-404"
 	else
-		. += "ai-fixer-empty"
+		to_add_overlays += "ai-fixer-empty"
+	add_overlay(to_add_overlays)

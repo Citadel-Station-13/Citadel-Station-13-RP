@@ -64,7 +64,7 @@
 	. = ..()
 	. += "There's [uses] pieces of material left for usage."
 
-/obj/item/material/sharpeningkit/update_material_single(datum/material/material)
+/obj/item/material/sharpeningkit/update_material_single(datum/prototype/material/material)
 	. = ..()
 	repair_amount = clamp(material.hardness * 0.5 + 10, 10, 200)
 	repair_time = min(10 SECONDS, material.weight_multiplier * 15)

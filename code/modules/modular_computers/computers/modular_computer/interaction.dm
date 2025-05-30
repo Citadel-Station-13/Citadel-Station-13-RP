@@ -109,13 +109,13 @@
 /obj/item/modular_computer/attack_ai(mob/user)
 	return attack_self(user)
 
-/obj/item/modular_computer/attack_hand(mob/user, list/params)
+/obj/item/modular_computer/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(anchored)
 		return attack_self(user)
 	return ..()
 
 /// On-click handling. Turns on the computer if it's off and opens the GUI.
-/obj/item/modular_computer/attack_self(mob/user)
+/obj/item/modular_computer/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

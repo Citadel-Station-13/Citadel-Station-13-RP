@@ -17,6 +17,11 @@
  */
 #define DB_MINOR_VERSION 3
 
+//* Tables *//
+
+/// Prefixes are currently disabled.
+#define DB_PREFIX_TABLE_NAME(TABLE) TABLE
+
 //* Misc *//
 
 /// pass this into duplicate_key on mass_insert() to overwrite old values

@@ -51,12 +51,12 @@
 	. = ..()
 	update_icon()
 
-/obj/item/reagent_containers/organic/attack_hand(mob/user, list/params)
+/obj/item/reagent_containers/organic/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	..()
 	update_icon()
 
 
-/obj/item/reagent_containers/organic/attack_self(mob/user)
+/obj/item/reagent_containers/organic/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -80,7 +80,7 @@
 		var/image/lid = image(icon, src, "lid_[initial(icon_state)]")
 		add_overlay(lid)
 
-/obj/item/reagent_containers/organic/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/reagent_containers/organic/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return	..()
 
@@ -135,7 +135,7 @@
 		return
 	if(W && W.get_weight_class() <= get_weight_class() && (atom_flags & OPENCONTAINER))
 		to_chat(user, "<span class='notice'>You dip \the [W] into \the [src].</span>")
-		reagents.touch_obj(W, reagents.total_volume)
+		reagents.perform_entity_dip(W, 1)
 
 /obj/item/reagent_containers/organic/proc/update_name_label()
 	if(label_text == "")

@@ -35,7 +35,7 @@
 /obj/machinery/computer/supplycomp/attack_ai(var/mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/supplycomp/attack_hand(mob/user, list/params)
+/obj/machinery/computer/supplycomp/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return
 	if(!allowed(user))
@@ -109,17 +109,17 @@
 				shuttle_status["engine"] = "Engaged"
 
 	else
-		shuttle["mode"] = SUP_SHUTTLE_ERROR
+		shuttle_status["mode"] = SUP_SHUTTLE_ERROR
 
-	for(var/pack_name in SSsupply.supply_pack)
-		var/datum/supply_pack/P = SSsupply.supply_pack[pack_name]
-		if(P.group == active_category)
+	for(var/pack_name in SSsupply.legacy_supply_packs)
+		var/datum/supply_pack/P = SSsupply.legacy_supply_packs[pack_name]
+		if(P.category == active_category)
 			var/list/pack = list(
 					"name" = P.name,
-					"cost" = P.cost,
-					"contraband" = P.contraband,
-					"manifest" = P.flattened_nanoui_manifest(),
-					"random" = P.is_random(),
+					"cost" = P.legacy_cost,
+					"contraband" = P.legacy_contraband,
+					"manifest" = P.nanoui_manifest_list(),
+					"random" = P.nanoui_is_random() && P.lazy_gacha_amount,
 					"expand" = 0,
 					"ref" = "\ref[P]"
 				)
@@ -167,7 +167,7 @@
 	data["order_auth"] = (authorization & SUP_ACCEPT_ORDERS)   // Whether this ui is permitted to accept/deny requested orders
 	data["shuttle"] = shuttle_status
 	data["supply_points"] = SSsupply.points
-	data["categories"] = all_supply_groups
+	data["categories"] = SSsupply.legacy_supply_categories
 	data["active_category"] = active_category
 	data["supply_packs"] = pack_list
 	data["orders"] = orders
@@ -262,7 +262,7 @@
 			reqform.info += "RANK: [idrank]<br>"
 			reqform.info += "REASON: [reason]<br>"
 			reqform.info += "SUPPLY CRATE TYPE: [S.name]<br>"
-			reqform.info += "ACCESS RESTRICTION: [get_access_desc(S.access)]<br>"
+			reqform.info += "ACCESS RESTRICTION: [get_access_desc(S.container_access | S.container_one_access)]<br>"
 			reqform.info +=  S.get_html_manifest().Join("")
 			reqform.info += "<hr>"
 			reqform.info += "STAMP BELOW TO APPROVE THIS REQUISITION:<br>"
@@ -416,7 +416,7 @@
 
 /obj/machinery/computer/supplycomp/proc/post_signal(var/command)
 
-	var/datum/radio_frequency/frequency = radio_controller.return_frequency(1435)
+	var/datum/radio_frequency/frequency = radio_controller.return_frequency(FREQ_STATUS_DISPLAYS)
 
 	if(!frequency) return
 

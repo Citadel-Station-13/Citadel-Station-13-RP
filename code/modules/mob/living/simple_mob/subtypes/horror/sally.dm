@@ -12,7 +12,6 @@
 	icon_living = "Sally"
 	icon_dead = "ws_head"
 	icon_rest = "Sally"
-	faction = "horror"
 	icon = 'icons/mob/horror_show/widehorror.dmi'
 	icon_gib = "generic_gib"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/horror/Sally)
@@ -47,11 +46,11 @@
 	playsound(src, 'sound/h_sounds/lynx.ogg', 50, 1)
 	..()
 
-/mob/living/simple_mob/horror/Sally/bullet_act()
+/mob/living/simple_mob/horror/Sally/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
-	..()
 
-/mob/living/simple_mob/horror/Sally/attack_hand(mob/user, list/params)
+/mob/living/simple_mob/horror/Sally/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
 	..()
 

@@ -51,5 +51,5 @@ var/datum/antagonist/mercenary/mercs
 	player.put_in_hands(U)
 
 	create_id("Mercenary", player)
-	create_radio(SYND_FREQ, player)
+	create_radio(FREQ_SYNDICATE, player)
 	return 1

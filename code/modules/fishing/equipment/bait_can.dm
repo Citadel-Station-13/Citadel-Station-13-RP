@@ -14,7 +14,7 @@
 	/// how much it has left; null for infinite
 	var/bait_left = 50
 
-/obj/item/bait_can/attack_self(mob/user, modifiers)
+/obj/item/bait_can/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	var/fresh_bait = retrieve_bait(user)
 	if(fresh_bait)

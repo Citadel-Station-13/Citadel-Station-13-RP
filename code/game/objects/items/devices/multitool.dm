@@ -46,7 +46,7 @@
 				return
 		update_icon()
 
-/obj/item/multitool/attack_self(mob/user)
+/obj/item/multitool/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -68,6 +68,27 @@
 			mode_switch(user)
 
 	update_icon()
+
+/obj/item/multitool/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(is_holosphere_shell(target) && user.a_intent == INTENT_HELP)
+		var/mob/living/simple_mob/holosphere_shell/shell = target
+		// can't revive them if they are not dead
+		if(shell.stat != DEAD)
+			to_chat(user, SPAN_NOTICE("[target] does not need to be rebooted!"))
+			return
+		// can't revive them if they are not full hp
+		if(shell.health == shell.maxHealth)
+			to_chat(user, SPAN_NOTICE("You begin rebooting [target] using \the [src]"))
+			if(do_after(user, 10 SECONDS))
+				// make sure they're still dead and full hp
+				if(shell.stat != DEAD || shell.health != shell.maxHealth)
+					to_chat(user, SPAN_NOTICE("[target] is no longer in a condition where you can reboot them."))
+					return
+				// revive the holosphere shell
+				visible_message(SPAN_NOTICE("[user] successfully reboots [target] using \the [src]."))
+				shell.revive(TRUE, TRUE)
+				return
+	return ..()
 
 /obj/item/multitool/is_multitool()
 	return TRUE

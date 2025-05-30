@@ -35,7 +35,7 @@
 	. = ..()
 	. |= list(
 		/obj/item/pinpointer/shuttle/merc,
-		/obj/item/melee/energy/sword
+		/obj/item/melee/transforming/energy/sword
 	)
 
 /obj/item/robot_module/robot/syndicate/handle_special_module_init(mob/living/silicon/robot/R)
@@ -66,7 +66,7 @@
 	. = ..()
 	. |= list(
 		/obj/item/shield_projector/rectangle/weak,
-		/obj/item/gun/energy/dakkalaser,
+		/obj/item/gun/projectile/energy/dakkalaser,
 		/obj/item/handcuffs/cyborg,
 		/obj/item/melee/baton/robot
 	)
@@ -90,11 +90,11 @@
 		/obj/item/multitool/ai_detector,
 		/obj/item/pickaxe/plasmacutter,
 		/obj/item/rcd/electric/mounted/borg/lesser, // Can't eat rwalls to prevent AI core cheese.
-		/obj/item/melee/energy/sword/ionic_rapier,
+		/obj/item/melee/transforming/energy/sword/ionic_rapier,
 
 		// FBP repair.
 		/obj/item/robotanalyzer,
-		/obj/item/shockpaddles/robot/jumper,
+		/obj/item/shockpaddles/robot,
 		/obj/item/gripper/no_use/organ/robotics,
 
 		// Hacking other things.

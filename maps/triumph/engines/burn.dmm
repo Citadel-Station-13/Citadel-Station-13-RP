@@ -167,7 +167,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
 	dir = 4
 	},
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/engineering,
 /area/engineering/engine_room)
 "gT" = (
 /obj/structure/grille,
@@ -183,11 +183,11 @@
 	name = "Engine Radiator Viewport Shutter";
 	opacity = 0
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "gU" = (
 /obj/structure/sign/fire,
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/engineering,
 /area/engineering/engine_room)
 "gV" = (
 /turf/template_noop,
@@ -313,6 +313,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
+/obj/structure/cable/yellow,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "kG" = (
@@ -562,7 +563,7 @@
 	name = "Engine Radiator Viewport Shutter";
 	opacity = 0
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "xl" = (
 /obj/machinery/computer/general_air_control/large_tank_control{
@@ -709,7 +710,7 @@
 	name = "Engine Radiator Viewport Shutter";
 	opacity = 0
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "Ce" = (
 /obj/structure/window/phoronreinforced{
@@ -857,7 +858,7 @@
 	name = "Engine Radiator Viewport Shutter";
 	opacity = 0
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "HF" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
@@ -1040,7 +1041,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
 	},
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/engineering,
 /area/engineering/engine_room)
 "Py" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
@@ -1059,7 +1060,7 @@
 	name = "Engine Radiator Viewport Shutter";
 	opacity = 0
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "PH" = (
 /obj/machinery/atmospherics/component/binary/circulator{
@@ -1145,7 +1146,7 @@
 	name = "Engine Radiator Viewport Shutter";
 	opacity = 0
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "Rn" = (
 /obj/machinery/atmospherics/component/binary/pump{
@@ -1310,7 +1311,7 @@
 	name = "Engine Radiator Viewport Shutter";
 	opacity = 0
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "VA" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/black{
@@ -1350,7 +1351,7 @@
 	name = "Engine Radiator Viewport Shutter";
 	opacity = 0
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "Wr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -1368,6 +1369,9 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_room)
+"WC" = (
+/turf/simulated/wall/r_wall/prepainted/engineering,
 /area/engineering/engine_room)
 "WF" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -1391,7 +1395,7 @@
 	name = "Engine Radiator Viewport Shutter";
 	opacity = 0
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "Xs" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/green{
@@ -1461,15 +1465,15 @@ Dq
 Dq
 Dq
 Dq
-KZ
+WC
 JN
 JN
 JN
 JN
 JN
-KZ
-KZ
-KZ
+WC
+WC
+WC
 Dq
 Dq
 Dq
@@ -1490,7 +1494,7 @@ cc
 gW
 QA
 OY
-KZ
+WC
 Dq
 Dq
 Dq
@@ -1511,7 +1515,7 @@ LX
 cc
 PA
 qt
-KZ
+WC
 Dq
 oP
 Dq
@@ -1519,11 +1523,11 @@ Dq
 Dq
 "}
 (4,1,1) = {"
-KZ
+WC
 Yi
 Yi
 Yi
-KZ
+WC
 HD
 PW
 LX
@@ -1532,15 +1536,15 @@ LX
 OG
 PA
 Ku
-KZ
+WC
 Yi
 hD
 Yi
-KZ
-KZ
+WC
+WC
 "}
 (5,1,1) = {"
-KZ
+WC
 es
 Qx
 Ww
@@ -1600,10 +1604,10 @@ zz
 Gw
 xU
 nN
-KZ
+WC
 "}
 (8,1,1) = {"
-KZ
+WC
 DU
 Qx
 pL
@@ -1616,15 +1620,15 @@ tV
 PL
 Py
 GT
-KZ
-KZ
+WC
+WC
 gU
 Tl
 Uu
-KZ
+WC
 "}
 (9,1,1) = {"
-KZ
+WC
 ey
 Gn
 mF
@@ -1637,7 +1641,7 @@ AX
 RE
 Py
 jD
-KZ
+WC
 gV
 gV
 gV
@@ -1645,7 +1649,7 @@ gV
 gV
 "}
 (10,1,1) = {"
-KZ
+WC
 UK
 jc
 Mo
@@ -1658,7 +1662,7 @@ ay
 RU
 Aq
 eu
-KZ
+WC
 gV
 gV
 gV
@@ -1666,7 +1670,7 @@ gV
 gV
 "}
 (11,1,1) = {"
-KZ
+WC
 as
 Qy
 tJ
@@ -1679,7 +1683,7 @@ bc
 RF
 Um
 fS
-KZ
+WC
 gV
 gV
 gV
@@ -1687,7 +1691,7 @@ gV
 gV
 "}
 (12,1,1) = {"
-KZ
+WC
 oY
 PH
 On
@@ -1700,7 +1704,7 @@ ay
 Py
 Qx
 je
-KZ
+WC
 gV
 gV
 gV
@@ -1708,7 +1712,7 @@ gV
 gV
 "}
 (13,1,1) = {"
-KZ
+WC
 bf
 WF
 py
@@ -1721,7 +1725,7 @@ uj
 Py
 Qx
 uF
-KZ
+WC
 gV
 gV
 gV
@@ -1729,7 +1733,7 @@ gV
 gV
 "}
 (14,1,1) = {"
-KZ
+WC
 ip
 iB
 nt
@@ -1742,7 +1746,7 @@ nt
 nF
 iF
 IP
-KZ
+WC
 gV
 gV
 gV
@@ -1750,7 +1754,7 @@ gV
 gV
 "}
 (15,1,1) = {"
-KZ
+WC
 TK
 zy
 nU
@@ -1763,7 +1767,7 @@ KZ
 Bc
 xl
 rT
-KZ
+WC
 gV
 gV
 gV
@@ -1771,7 +1775,7 @@ gV
 gV
 "}
 (16,1,1) = {"
-KZ
+WC
 mz
 qH
 nU
@@ -1784,7 +1788,7 @@ KZ
 ox
 rX
 jr
-KZ
+WC
 gV
 gV
 gV
@@ -1792,7 +1796,7 @@ gV
 gV
 "}
 (17,1,1) = {"
-KZ
+WC
 VN
 VN
 KZ
@@ -1813,7 +1817,7 @@ gV
 gV
 "}
 (18,1,1) = {"
-KZ
+WC
 Vm
 Vm
 pO
@@ -1834,7 +1838,7 @@ gV
 gV
 "}
 (19,1,1) = {"
-KZ
+WC
 Vm
 Vm
 sE

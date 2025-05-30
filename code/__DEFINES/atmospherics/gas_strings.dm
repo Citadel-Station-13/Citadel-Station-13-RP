@@ -1,6 +1,6 @@
 // Gas strings for turf defaults.
 /// Default standard gas string
-#define GAS_STRING_TURF_DEFAULT				"o2=22;n2=82;TEMP=293.15"
+#define GAS_STRING_TURF_DEFAULT				ATMOSPHERE_USE_AREA
 /// Total vacuum
 #define GAS_STRING_VACUUM					"TEMP=2.7"
 /// Default but no oxygen

@@ -1,4 +1,4 @@
-/obj/mecha/combat/phazon/scree
+/obj/vehicle/sealed/mecha/combat/phazon/scree
 	desc = "A very, very shiny exosuit. This thing has been polished and waxed practically to a mirror finish."
 	name = "Scuttlebug"
 	icon_state = "scuttlebug"
@@ -7,11 +7,11 @@
 	icon = 'icons/mecha/mecha_vr.dmi'
 
 
-/obj/mecha/combat/phazon/scree/Initialize(mapload)
+/obj/vehicle/sealed/mecha/combat/phazon/scree/Initialize(mapload)
 	. = ..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/taser
+	var/obj/item/vehicle_module/ME = new /obj/item/vehicle_module/weapon/energy/taser
 	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/tesla_energy_relay
+	ME = new /obj/item/vehicle_module/tesla_energy_relay
 	ME.attach(src)
 
 /obj/effect/decal/mecha_wreckage/phazon/scree

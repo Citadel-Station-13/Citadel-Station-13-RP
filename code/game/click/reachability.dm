@@ -187,7 +187,8 @@
  * checks what we can directly reach
  */
 /atom/movable/proc/DirectAccess()
-	return list(src, loc)
+	. = list(src, loc)
+	SEND_SIGNAL(src, COMSIG_ATOM_REACHABILITY_DIRECTACCESS, .)
 
 /mob/DirectAccess()
 	return ..() + get_equipped_items()

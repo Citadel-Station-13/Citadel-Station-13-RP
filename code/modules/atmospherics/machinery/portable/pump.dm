@@ -5,6 +5,8 @@
 	density = 1
 	w_class = WEIGHT_CLASS_NORMAL
 
+	worth_intrinsic = 275
+
 	var/direction_out = 0 //0 = siphoning, 1 = releasing
 	var/target_pressure = ONE_ATMOSPHERE
 
@@ -24,6 +26,7 @@
 
 /obj/machinery/portable_atmospherics/powered/pump/update_icon()
 	cut_overlays()
+	. = ..()
 	var/list/overlays_to_add = list()
 
 	if(on && cell && cell.charge)
@@ -37,7 +40,6 @@
 	if(connected_port)
 		overlays_to_add += "siphon-connector"
 	add_overlay(overlays_to_add)
-	return
 
 /obj/machinery/portable_atmospherics/powered/pump/emp_act(severity)
 	if(machine_stat & (BROKEN|NOPOWER))
@@ -82,7 +84,7 @@
 		last_flow_rate_legacy = 0
 		last_power_draw_legacy = 0
 	else
-		cell.use_scaled(DYNAMIC_W_TO_CELL_UNITS(power_draw, 1))
+		cell.use(DYNAMIC_W_TO_CELL_UNITS(power_draw, 1))
 		last_power_draw_legacy = power_draw
 
 		update_connected_network()
@@ -103,7 +105,7 @@
 	. = ..()
 	return src.attack_hand(user)
 
-/obj/machinery/portable_atmospherics/powered/pump/attack_hand(mob/user, list/params)
+/obj/machinery/portable_atmospherics/powered/pump/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	ui_interact(user)
 
 /obj/machinery/portable_atmospherics/powered/pump/ui_interact(mob/user, datum/tgui/ui)
@@ -205,7 +207,7 @@
 
 /obj/machinery/portable_atmospherics/powered/pump/huge/update_icon()
 	cut_overlays()
-
+	. = ..()
 	if(on && !(machine_stat & (NOPOWER|BROKEN)))
 		icon_state = "siphon:1"
 	else

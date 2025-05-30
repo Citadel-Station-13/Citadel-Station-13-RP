@@ -7,7 +7,7 @@
 	center_of_mass = list("x"=17, "y"=10)
 
 
-/obj/item/reagent_containers/food/drinks/shaker/attack_self(mob/user)
+/obj/item/reagent_containers/food/drinks/shaker/attack_self(mob/user, datum/event_args/actor/actor)
 
 	playsound(loc, "sound/items/shaker.ogg", 75, 1, -1)
 	if(prob(50))

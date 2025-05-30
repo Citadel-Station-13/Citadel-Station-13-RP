@@ -392,7 +392,7 @@
 /obj/belly/proc/digestion_death(var/mob/living/M)
 	//M.death(1) // "Stop it he's already dead..." Basically redundant and the reason behind screaming mouse carcasses.
 	if(M.ckey)
-		message_admins("[key_name(owner)] has digested [key_name(M)] in their [lowertext(name)] ([owner ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[owner.x];Y=[owner.y];Z=[owner.z]'>JMP</a>" : "null"])")
+		log_game("[key_name(owner)] has digested [key_name(M)] in their [lowertext(name)] ([owner ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[owner.x];Y=[owner.y];Z=[owner.z]'>JMP</a>" : "null"])")
 
 	// If digested prey is also a pred... anyone inside their bellies gets moved up.
 	if(is_vore_predator(M))
@@ -518,12 +518,15 @@
 	return null
 
 //Handle a mob struggling
-// Called from /mob/living/carbon/relaymove()
-/obj/belly/proc/relay_resist(var/mob/living/R)
+// Called from /mob/living/proc/process_resist()
+/obj/belly/contents_resist(var/mob/living/R)
+	. = TRUE //Sure are doing something unless
 	if (!(R in contents))
-		return  // User is not in this belly
+		return FALSE // User is not in this belly
+	R.setClickCooldownLegacy(50)
+	INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/belly,handle_resist), R)
 
-	R.setClickCooldown(50)
+/obj/belly/proc/handle_resist(var/mob/living/R)
 
 	if(owner.stat) //If owner is stat (dead, KO) we can actually escape
 		to_chat(R,"<span class='warning'>You attempt to climb out of \the [lowertext(name)]. (This will take around [escapetime/10] seconds.)</span>")

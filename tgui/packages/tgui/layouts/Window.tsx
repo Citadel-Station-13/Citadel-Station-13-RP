@@ -212,7 +212,7 @@ const TitleBar = (props, context) => {
           </div>
         )}
       </div>
-      {process.env.NODE_ENV !== 'production' && (
+      {process.env['NODE_ENV'] !== 'production' && (
         <div
           className="TitleBar__devBuildIndicator"
           onClick={() => dispatch(toggleKitchenSink())}>

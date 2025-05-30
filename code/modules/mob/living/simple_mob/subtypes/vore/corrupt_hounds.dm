@@ -22,7 +22,7 @@
 	icon = 'icons/mob/vore64x32.dmi'
 	has_eye_glow = TRUE
 
-	faction = "hivebot"
+	iff_factions = MOB_IFF_FACTION_HIVEBOT
 
 	maxHealth = 200
 	health = 200
@@ -60,12 +60,6 @@
 	buckle_flags = BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF
 	buckle_lying = FALSE
 
-	vore_active = TRUE
-	vore_capacity = 1
-	vore_pounce_chance = 15
-	vore_icons = SA_ICON_LIVING | SA_ICON_REST
-	vore_stomach_name = "fuel processor"
-	vore_stomach_flavor = "You have ended up in the fuel processor of this corrupted machine. This place was definitely not designed with safety and comfort in mind. The heated and cramped surroundings oozing potent fluids all over your form, eager to do nothing less than breaking you apart to fuel its rampage for the next few days... hours... minutes? Oh dear..."
 
 	loot_list = list(/obj/item/borg/upgrade/syndicate = 6, /obj/item/borg/upgrade/vtec = 6, /obj/item/material/knife/ritual = 6, /obj/item/disk/nifsoft/compliance = 6)
 
@@ -76,8 +70,6 @@
 	icon_living = "prettyboi"
 	icon_dead = "prettyboi-dead"
 	icon_rest = "prettyboi_rest"
-
-	vore_pounce_chance = 40
 
 	attacktext = list("malsnuggled","scrunched","squeezed","assaulted","violated")
 
@@ -95,9 +87,6 @@
 
 	projectiletype = /obj/projectile/beam/sniper
 	projectilesound = 'sound/weapons/gauss_shoot.ogg'
-
-
-	vore_pounce_chance = 0 //It does ranged attacks anyway
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/sniper
 
@@ -117,12 +106,7 @@
 	projectiletype = /obj/projectile/bullet/rifle/a556
 	projectilesound = 'sound/weapons/Gunshot_light.ogg'
 
-
-	vore_pounce_chance = 0 //It does ranged attacks anyway
-
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
-
-
 
 /mob/living/simple_mob/vore/aggressive/corrupthound/sword
 	name = "fencer hound"
@@ -139,8 +123,6 @@
 	attack_edge = 1
 	attacktext = list("slashed")
 
-	vore_pounce_chance = 0 //No...
-
 /mob/living/simple_mob/vore/aggressive/corrupthound/sword/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(O.damage_force)
 		if(prob(20))
@@ -154,16 +136,13 @@
 		to_chat(user, "<span class='warning'>This weapon is ineffective, it does no damage.</span>")
 		visible_message("<span class='warning'>\The [user] gently taps [src] with \the [O].</span>")
 
-/mob/living/simple_mob/vore/aggressive/corrupthound/sword/bullet_act(var/obj/projectile/Proj)
-	if(!Proj)	return
+/mob/living/simple_mob/vore/aggressive/corrupthound/sword/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	if(prob(35))
-		visible_message("<span class='warning'>[src] deflects [Proj] with its sword tail!</span>")
-		if(Proj.firer)
-			ai_holder.react_to_attack_polaris(Proj.firer)
-		return
-	else
-		..()
-
+		visible_message("<span class='warning'>[src] deflects [proj] with its sword tail!</span>")
+		if(proj.firer)
+			ai_holder.react_to_attack_polaris(proj.firer)
+		return PROJECTILE_IMPACT_BLOCKED
+	return ..()
 
 /mob/living/simple_mob/vore/aggressive/corrupthound/isSynthetic()
 	return TRUE

@@ -1,4 +1,4 @@
-/datum/material/brass
+/datum/prototype/material/brass
 	id = "brass"
 	name = "brass"
 	icon_colour = "#CAC955"
@@ -16,6 +16,8 @@
 	relative_reactivity = 0.5
 	relative_permeability = 0
 
-/datum/material/brass/generate_recipes()
+	worth = 7.5
+
+/datum/prototype/material/brass/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(name = "brass floor tiles", product = /obj/item/stack/tile/brass, amount = 4)

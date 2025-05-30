@@ -1,0 +1,829 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ac" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"ap" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/light/spot/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/sdf)
+"aZ" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/sdf)
+"bv" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/light/spot,
+/mob/living/simple_mob/humanoid/pirate/las,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/sdf)
+"cw" = (
+/obj/structure/atmospheric_retention_field,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/sdf)
+"cW" = (
+/obj/structure/salvageable/computer,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"db" = (
+/obj/machinery/light/spot{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/sdf)
+"dc" = (
+/obj/machinery/shower{
+	dir = 8
+	},
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/kafel_full/white,
+/area/submap/skyplanet/poi/sdf)
+"dn" = (
+/obj/machinery/light/spot/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/sdf)
+"ej" = (
+/obj/structure/bed/padded,
+/obj/structure/bed/padded{
+	pixel_y = 14
+	},
+/obj/item/clothing/suit/storage/toggle/tajaran/coat,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"fz" = (
+/obj/item/smes_coil,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/sdf)
+"fD" = (
+/obj/structure/salvageable/computer,
+/obj/machinery/light/spot{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"gj" = (
+/mob/living/simple_mob/humanoid/pirate/ranged/handcannon,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"gF" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"gJ" = (
+/obj/structure/salvageable/server_os,
+/obj/machinery/light/spot,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"hf" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/closet/crate/large/corporate,
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/sdf)
+"ja" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/sdf)
+"je" = (
+/obj/effect/floor_decal/rust,
+/mob/living/simple_mob/humanoid/pirate/mate/ranged,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"jm" = (
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"ju" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/random/multiple/gun/projectile/shotgun,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"jW" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/light/spot,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/sdf)
+"kq" = (
+/obj/machinery/light/spot,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/sdf)
+"ky" = (
+/obj/structure/salvageable/implant_container_os,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"mf" = (
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"mj" = (
+/obj/structure/sink/kitchen{
+	pixel_y = 28
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/sdf)
+"mE" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/sdf)
+"or" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/closet/crate/secure,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/sdf)
+"oH" = (
+/obj/effect/floor_decal/rust,
+/mob/living/simple_mob/humanoid/pirate/ranged/shotgun,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/sdf)
+"pk" = (
+/obj/structure/bed/padded,
+/obj/structure/bed/padded{
+	pixel_y = 14
+	},
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"pn" = (
+/obj/machinery/door/airlock/multi_tile{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/sdf)
+"px" = (
+/obj/effect/floor_decal/rust,
+/mob/living/simple_mob/humanoid/pirate/armored,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/sdf)
+"pM" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/head/tajaran/army_commissar,
+/obj/item/clothing/head/tajaran/army_commissar,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"sk" = (
+/obj/machinery/light/spot,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"tr" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/sdf)
+"tS" = (
+/obj/effect/floor_decal/industrial/outline,
+/obj/machinery/mech_recharger,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/sdf)
+"uC" = (
+/obj/structure/salvageable/console_broken_os{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"vz" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"wB" = (
+/obj/structure/closet/secure_closet/freezer/kitchen,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/sdf)
+"wM" = (
+/mob/living/simple_mob/humanoid/pirate,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/sdf)
+"yR" = (
+/obj/machinery/light/spot{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/sdf)
+"BZ" = (
+/obj/structure/salvageable/machine_os,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"CF" = (
+/obj/machinery/appliance/cooker/oven,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/sdf)
+"DF" = (
+/obj/structure/salvageable/server,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"DI" = (
+/turf/simulated/wall/r_wall/prepainted,
+/area/submap/skyplanet/poi/sdf)
+"Ef" = (
+/obj/structure/table/standard,
+/obj/item/storage/firstaid/adv,
+/obj/item/storage/firstaid/combat,
+/obj/item/storage/firstaid/regular,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/sdf)
+"EG" = (
+/obj/structure/table/standard,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/sdf)
+"Fy" = (
+/obj/structure/salvageable/data{
+	pixel_x = -8
+	},
+/obj/structure/salvageable/data{
+	pixel_x = 5
+	},
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"Gq" = (
+/obj/structure/salvageable/computer_os,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"GU" = (
+/obj/structure/salvageable/computer,
+/obj/machinery/light/spot{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"Hr" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"Io" = (
+/obj/effect/floor_decal/industrial/outline,
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/sdf)
+"It" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/sdf)
+"Jk" = (
+/turf/simulated/floor/reinforced,
+/area/submap/skyplanet/poi/sdf)
+"MM" = (
+/obj/structure/salvageable/server_os,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"MT" = (
+/obj/effect/floor_decal/rust,
+/mob/living/simple_mob/humanoid/pirate/ranged/armored,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"Nn" = (
+/obj/machinery/shower{
+	dir = 8
+	},
+/obj/machinery/light/spot,
+/turf/simulated/floor/tiled/kafel_full/white,
+/area/submap/skyplanet/poi/sdf)
+"OK" = (
+/obj/machinery/power/smes,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/sdf)
+"Py" = (
+/obj/machinery/light/spot{
+	dir = 4
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/sdf)
+"Rb" = (
+/obj/structure/salvageable/bliss,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"Rh" = (
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/sdf)
+"RH" = (
+/obj/structure/salvageable/computer_os,
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"Sj" = (
+/obj/random/multiple/corp_crate/no_weapons,
+/obj/machinery/light/spot,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"Sz" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"Va" = (
+/mob/living/simple_mob/humanoid/pirate/armored,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/sdf)
+"Vb" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/random/multiple/gun/projectile/rifle,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"Vf" = (
+/obj/structure/salvageable/console_broken_os{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"Vr" = (
+/obj/structure/table/hardwoodtable,
+/obj/structure/salvageable/personal,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"VV" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/closet/crate/large/corporate,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/sdf)
+"Yw" = (
+/obj/structure/salvageable/data{
+	pixel_x = 5
+	},
+/obj/structure/salvageable/data{
+	pixel_x = -8
+	},
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"YM" = (
+/obj/effect/floor_decal/rust,
+/mob/living/simple_mob/humanoid/pirate/ranged/armored,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/sdf)
+"Za" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/skyplanet/poi/sdf)
+"Zp" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/head/tajaran/nka_cap,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/skyplanet/poi/sdf)
+"Zt" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/kafel_full/white,
+/area/submap/skyplanet/poi/sdf)
+
+(1,1,1) = {"
+DI
+DI
+DI
+cw
+cw
+DI
+DI
+DI
+DI
+DI
+DI
+DI
+DI
+DI
+DI
+DI
+DI
+DI
+DI
+DI
+"}
+(2,1,1) = {"
+DI
+tS
+Io
+Jk
+Jk
+Io
+tS
+DI
+Fy
+jm
+uC
+fD
+uC
+cW
+uC
+fD
+uC
+vz
+DF
+DI
+"}
+(3,1,1) = {"
+DI
+tS
+Io
+Jk
+Jk
+Io
+tS
+DI
+Fy
+jm
+gF
+jm
+gF
+jm
+gF
+jm
+gF
+vz
+DF
+DI
+"}
+(4,1,1) = {"
+DI
+dn
+Jk
+wM
+Jk
+Jk
+kq
+DI
+Gq
+jm
+MT
+jm
+jm
+vz
+vz
+jm
+jm
+vz
+Yw
+DI
+"}
+(5,1,1) = {"
+DI
+tS
+Io
+Jk
+Jk
+Io
+tS
+DI
+RH
+jm
+vz
+Rb
+BZ
+Vr
+MM
+ky
+jm
+vz
+gJ
+DI
+"}
+(6,1,1) = {"
+DI
+tS
+Io
+Jk
+Jk
+Io
+tS
+DI
+Gq
+jm
+vz
+vz
+vz
+vz
+vz
+vz
+gj
+jm
+Yw
+DI
+"}
+(7,1,1) = {"
+DI
+DI
+DI
+mE
+pn
+DI
+DI
+DI
+Fy
+jm
+Hr
+vz
+Sz
+vz
+Hr
+jm
+Hr
+jm
+DF
+DI
+"}
+(8,1,1) = {"
+DI
+VV
+tr
+aZ
+mE
+or
+tr
+DI
+Fy
+jm
+Vf
+GU
+Vf
+cW
+Vf
+GU
+Vf
+jm
+DF
+DI
+"}
+(9,1,1) = {"
+DI
+ap
+tr
+aZ
+aZ
+tr
+bv
+DI
+DI
+Za
+DI
+DI
+DI
+DI
+DI
+DI
+DI
+Za
+DI
+DI
+"}
+(10,1,1) = {"
+DI
+aZ
+px
+mE
+mE
+mE
+mE
+mE
+db
+mE
+mE
+db
+mE
+oH
+aZ
+db
+mE
+aZ
+db
+DI
+"}
+(11,1,1) = {"
+DI
+aZ
+mE
+aZ
+mE
+mE
+mE
+mE
+aZ
+mE
+mE
+aZ
+mE
+mE
+mE
+Py
+aZ
+aZ
+Py
+DI
+"}
+(12,1,1) = {"
+DI
+hf
+mE
+tr
+tr
+or
+jW
+DI
+mj
+mE
+mE
+mE
+CF
+DI
+DI
+DI
+ac
+DI
+DI
+DI
+"}
+(13,1,1) = {"
+DI
+tr
+mE
+or
+tr
+tr
+VV
+DI
+ja
+ja
+mE
+mE
+Ef
+DI
+DI
+DI
+jm
+DI
+DI
+DI
+"}
+(14,1,1) = {"
+DI
+DI
+Za
+DI
+DI
+DI
+DI
+DI
+EG
+EG
+mE
+YM
+EG
+DI
+DI
+jm
+jm
+jm
+DI
+DI
+"}
+(15,1,1) = {"
+DI
+fz
+aZ
+DI
+ej
+jm
+pk
+DI
+It
+It
+Va
+aZ
+EG
+DI
+DI
+pM
+vz
+Zp
+DI
+DI
+"}
+(16,1,1) = {"
+DI
+aZ
+aZ
+DI
+mf
+vz
+jm
+Za
+aZ
+Py
+mE
+yR
+wB
+DI
+DI
+mf
+je
+Sj
+DI
+DI
+"}
+(17,1,1) = {"
+DI
+Rh
+aZ
+DI
+pk
+vz
+jm
+DI
+DI
+DI
+mE
+DI
+DI
+DI
+DI
+Vb
+vz
+ju
+DI
+DI
+"}
+(18,1,1) = {"
+DI
+aZ
+aZ
+DI
+jm
+vz
+sk
+DI
+Zt
+DI
+mE
+DI
+Zt
+DI
+DI
+jm
+jm
+jm
+DI
+DI
+"}
+(19,1,1) = {"
+DI
+OK
+aZ
+DI
+pk
+jm
+pk
+DI
+dc
+Za
+mE
+Za
+Nn
+DI
+DI
+DI
+DI
+DI
+DI
+DI
+"}
+(20,1,1) = {"
+DI
+DI
+DI
+DI
+DI
+DI
+DI
+DI
+DI
+DI
+DI
+DI
+DI
+DI
+DI
+DI
+DI
+DI
+DI
+DI
+"}

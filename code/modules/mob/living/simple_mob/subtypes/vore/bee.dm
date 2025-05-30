@@ -20,7 +20,7 @@
 	response_disarm = "gently pushes aside the"
 	response_harm = "hits the"
 
-	movement_cooldown = 5
+	movement_base_speed = 10 / 5
 //	speed = 5
 	maxHealth = 25
 	health = 25
@@ -44,7 +44,7 @@
 	max_n2 = 0
 	minbodytemp = 0
 
-	faction = "bee"
+	iff_factions = MOB_IFF_FACTION_FARM_ANIMAL
 
 	var/poison_type = "spidertoxin"	// The reagent that gets injected when it attacks, can be changed to different toxin.
 	var/poison_chance = 10			// Chance for injection to occur.
@@ -55,8 +55,6 @@
 
 // Activate Noms!
 /mob/living/simple_mob/vore/bee
-	vore_active = 1
-	vore_icons = SA_ICON_LIVING
 
 /mob/living/simple_mob/vore/bee/apply_melee_effects(var/atom/A)
 	if(isliving(A))

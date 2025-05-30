@@ -202,12 +202,12 @@
 
 /obj/item/clothing/shoes/boots/swat/para
 	name = "PARA boots"
-	desc = "PMD issued gloves, stamped with protective seals and spells."
-	action_button_name = "Enable Boot Sigils"
+	desc = "PMD issued boots, stamped with protective seals and spells."
+	item_action_name = "Enable Boot Sigils"
 
 	var/blessed = FALSE
 
-/obj/item/clothing/shoes/boots/swat/para/attack_self(mob/user)
+/obj/item/clothing/shoes/boots/swat/para/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

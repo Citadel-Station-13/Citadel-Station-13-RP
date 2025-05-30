@@ -155,8 +155,9 @@
 /datum/sprite_accessory/tail/legacy_taur/naga/naga_2c_alt
 	name = "Naga dual-color alt (Taur)"
 	id = "tail_taur_naga_colorable_alt"
-	icon_state = "altnaga_s"
+	icon_state = "altnaga"
 	extra_overlay = "altnaga_markings"
+	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
 
 /datum/sprite_accessory/tail/legacy_taur/naga/naga_tailmaw
 	name = "Naga Tailmaw (Taur)"

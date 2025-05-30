@@ -35,7 +35,7 @@
 			job_blacklist[i] = TRUE
 	return ..()
 
-/datum/lore/character_background/faction/check_character_species(datum/character_species/S)
+/datum/lore/character_background/faction/check_species(datum/species/S)
 	if(S.species_fluff_flags & SPECIES_FLUFF_PICKY_FACTION)
 		. = (S.uid in allow_species) || (subspecies_included && S.is_subspecies && (S.superspecies_id in allow_species))
 		if(!.)
@@ -102,6 +102,7 @@
 		/datum/role/job/station/janitor::id,
 		/datum/role/job/station/librarian::id,
 		/datum/role/job/station/mime::id,
+		/datum/role/job/station/outsider::id,
 		// med staff - paramedic only
 		/datum/role/job/station/paramedic::id,
 		// engineering staff - engi and atmos tech
@@ -117,7 +118,7 @@
 		/datum/role/job/trader::id,
 	)
 	innate_languages = list(
-		/datum/language/trader,
+		/datum/prototype/language/trader,
 	)
 
 /datum/lore/character_background/faction/hephaestus
@@ -150,6 +151,8 @@
 		/datum/role/job/station/scientist::id,
 		// not their specialty
 		/datum/role/job/station/chief_medical_officer::id,
+		//Outside NT
+		/datum/role/job/station/outsider::id,
 	)
 
 /datum/lore/character_background/faction/oculum
@@ -174,6 +177,7 @@
 		/datum/role/job/station/janitor::id,
 		/datum/role/job/station/librarian::id,
 		/datum/role/job/station/mime::id,
+		/datum/role/job/station/outsider::id,
 		// off duty
 		/datum/role/job/station/off_duty/civilian::id,
 	)
@@ -211,4 +215,6 @@
 		/datum/role/job/station/scientist::id,
 		// not their specialty
 		/datum/role/job/station/chief_engineer::id,
+		//Outside NT
+		/datum/role/job/station/outsider::id,
 	)

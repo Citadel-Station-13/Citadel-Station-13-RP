@@ -98,12 +98,11 @@
 	check_stability()
 	return
 
+/obj/machinery/am_shielding/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
 
-/obj/machinery/am_shielding/bullet_act(var/obj/projectile/Proj)
-	if(Proj.damage_flag != "bullet")
-		stability -= Proj.damage/2
-	return 0
-
+	if(proj.damage_flag != "bullet")
+		stability -= proj.damage_force / 2
 
 /obj/machinery/am_shielding/update_icon()
 	cut_overlays()

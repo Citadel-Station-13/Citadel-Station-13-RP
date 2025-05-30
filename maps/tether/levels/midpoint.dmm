@@ -30,7 +30,7 @@
 "aP" = (
 /obj/effect/blocker,
 /obj/effect/step_trigger/teleporter/planetary_fall/virgo3b,
-/turf/simulated/sky/virgo3b,
+/turf/simulated/fake_sky/virgo3b,
 /area/tether/transit)
 "aS" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -216,7 +216,7 @@
 "mr" = (
 /obj/effect/step_trigger/teleporter/planetary_fall/virgo3b,
 /obj/effect/blocker,
-/turf/simulated/sky/virgo3b,
+/turf/simulated/fake_sky/virgo3b,
 /area/tether/transit)
 "mP" = (
 /obj/spawner/window/reinforced/full/firelocks,
@@ -262,7 +262,7 @@
 /obj/effect/step_trigger/teleporter/planetary_fall/virgo3b,
 /obj/effect/step_trigger/teleporter/planetary_fall/virgo3b,
 /obj/effect/blocker,
-/turf/simulated/sky/virgo3b,
+/turf/simulated/fake_sky/virgo3b,
 /area/tether/transit)
 "pc" = (
 /obj/structure/table/gamblingtable,
@@ -340,7 +340,7 @@
 "tk" = (
 /obj/effect/step_trigger/teleporter/planetary_fall/virgo3b,
 /obj/effect/step_trigger/teleporter/planetary_fall/virgo3b,
-/turf/simulated/sky/virgo3b,
+/turf/simulated/fake_sky/virgo3b,
 /area/tether/transit)
 "uz" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -376,7 +376,7 @@
 /area/space)
 "yi" = (
 /obj/effect/step_trigger/teleporter/planetary_fall/virgo3b,
-/turf/simulated/sky/virgo3b,
+/turf/simulated/fake_sky/virgo3b,
 /area/tether/transit)
 "yx" = (
 /obj/machinery/light{

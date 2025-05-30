@@ -1,12 +1,12 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 silicons                             *//
 
 /atom/movable/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
 	if(drag_drop_buckle_interaction(dropping, user))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
-/atom/movable/attack_hand(mob/user, list/params)
+/atom/movable/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = ..()
@@ -40,7 +40,7 @@
 		return FALSE
 	if(!user.Adjacent(src) || !A.Adjacent(src))
 		return FALSE
-	if(SEND_SIGNAL(src, COMSIG_MOVABLE_DRAG_DROP_BUCKLE_INTERACTION, A, user) & COMPONENT_HANDLED_BUCKLE_INTERACTION)
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_DRAG_DROP_BUCKLE_INTERACTION, A, user) & SIGNAL_RAISE_BUCKLE_INTERACTION_HANDLED)
 		return TRUE
 	if(!buckle_allowed || (buckle_flags & BUCKLING_NO_DEFAULT_BUCKLE))
 		return FALSE
@@ -69,7 +69,7 @@
 	// todo: refactor below
 	if(user.incapacitated())
 		return TRUE
-	if(SEND_SIGNAL(src, COMSIG_MOVABLE_CLICK_UNBUCKLE_INTERACTION, user) & COMPONENT_HANDLED_BUCKLE_INTERACTION)
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_CLICK_UNBUCKLE_INTERACTION, user) & SIGNAL_RAISE_BUCKLE_INTERACTION_HANDLED)
 		return TRUE
 	if(!buckle_allowed || (buckle_flags & BUCKLING_NO_DEFAULT_UNBUCKLE))
 		return FALSE
@@ -92,7 +92,7 @@
 /atom/movable/proc/user_unbuckle_mob(mob/M, flags, mob/user, semantic)
 	SHOULD_CALL_PARENT(TRUE)
 	. = SEND_SIGNAL(src, COMSIG_MOVABLE_USER_UNBUCKLE_MOB, M, flags, user, semantic)
-	if(. & COMPONENT_BLOCK_BUCKLE_OPERATION)
+	if(. & SIGNAL_RAISE_BLOCK_BUCKLE_OPERATION)
 		return FALSE
 	. = unbuckle_mob(M, flags, user, semantic)
 	if(!.)
@@ -126,7 +126,7 @@
 /atom/movable/proc/user_buckle_mob(mob/M, flags, mob/user, semantic)
 	SHOULD_CALL_PARENT(TRUE)
 	. = SEND_SIGNAL(src, COMSIG_MOVABLE_USER_BUCKLE_MOB, M, flags, user, semantic)
-	if(. & COMPONENT_BLOCK_BUCKLE_OPERATION)
+	if(. & SIGNAL_RAISE_BLOCK_BUCKLE_OPERATION)
 		return FALSE
 	if((buckle_flags & BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF) && (user == src))
 		return FALSE
@@ -166,7 +166,7 @@
 	if(M == src)
 		return FALSE
 
-	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_BUCKLE_MOB, M, flags, user, semantic) & COMPONENT_BLOCK_BUCKLE_OPERATION)
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_BUCKLE_MOB, M, flags, user, semantic) & SIGNAL_RAISE_BLOCK_BUCKLE_OPERATION)
 		return FALSE
 
 	if(!(flags & BUCKLE_OP_FORCE) && !can_buckle_mob(M, flags, user, semantic))
@@ -244,9 +244,9 @@
 /atom/movable/proc/can_buckle_mob(mob/M, flags, mob/user, semantic)
 	SHOULD_CALL_PARENT(TRUE)
 	. = SEND_SIGNAL(src, COMSIG_MOVABLE_CAN_BUCKLE_MOB, M, flags, user, semantic)
-	if(. & COMPONENT_BLOCK_BUCKLE_OPERATION)
+	if(. & SIGNAL_RAISE_BLOCK_BUCKLE_OPERATION)
 		return FALSE
-	else if(. & COMPONENT_FORCE_BUCKLE_OPERATION)
+	else if(. & SIGNAL_RAISE_FORCE_BUCKLE_OPERATION)
 		return TRUE
 	if(!(flags & BUCKLE_OP_IGNORE_LOC) && !M.Adjacent(src))
 		return FALSE
@@ -276,9 +276,9 @@
 /atom/movable/proc/can_unbuckle_mob(mob/M, flags, mob/user, semantic)
 	SHOULD_CALL_PARENT(TRUE)
 	. = SEND_SIGNAL(src, COMSIG_MOVABLE_CAN_UNBUCKLE_MOB, M, flags, user, semantic)
-	if(. & COMPONENT_BLOCK_BUCKLE_OPERATION)
+	if(. & SIGNAL_RAISE_BLOCK_BUCKLE_OPERATION)
 		return FALSE
-	else if(. & COMPONENT_FORCE_BUCKLE_OPERATION)
+	else if(. & SIGNAL_RAISE_FORCE_BUCKLE_OPERATION)
 		return TRUE
 	return TRUE
 /**
@@ -329,7 +329,7 @@
 /atom/movable/proc/resist_unbuckle_interaction(mob/M)
 	set waitfor = FALSE
 	ASSERT(M in buckled_mobs)
-	if(SEND_SIGNAL(src, COMSIG_MOVABLE_RESIST_UNBUCKLE_INTERACTION, M) & COMPONENT_HANDLED_BUCKLE_INTERACTION)
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_RESIST_UNBUCKLE_INTERACTION, M) & SIGNAL_RAISE_BUCKLE_INTERACTION_HANDLED)
 		return
 	if(!buckle_allowed || (buckle_flags & BUCKLING_NO_DEFAULT_RESIST))
 		return FALSE
@@ -410,14 +410,14 @@
  */
 /mob/proc/buckled(atom/movable/AM, flags, mob/user, semantic)
 	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_MOB_BUCKLED, AM, flags, user, semantic)
+	SEND_SIGNAL(src, COMSIG_MOB_BUCKLED_TO, AM, flags, user, semantic)
 
 /**
  * called when we're unbuckled from something
  */
 /mob/proc/unbuckled(atom/movable/AM, flags, mob/user, semantic)
 	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_MOB_UNBUCKLED, AM, flags, user, semantic)
+	SEND_SIGNAL(src, COMSIG_MOB_UNBUCKLED_FROM, AM, flags, user, semantic)
 
 /**
  * can we buckle to something?
@@ -426,10 +426,10 @@
  */
 /mob/proc/can_buckle(atom/movable/AM, flags, mob/user, semantic, movable_opinion)
 	SHOULD_CALL_PARENT(TRUE)
-	. = SEND_SIGNAL(src, COMSIG_MOB_CAN_BUCKLE, AM, flags, user, semantic, movable_opinion)
-	if(. & COMPONENT_BLOCK_BUCKLE_OPERATION)
+	. = SEND_SIGNAL(src, COMSIG_MOB_CAN_BUCKLE_TO, AM, flags, user, semantic, movable_opinion)
+	if(. & SIGNAL_RAISE_BLOCK_BUCKLE_OPERATION)
 		return FALSE
-	else if(. & COMPONENT_FORCE_BUCKLE_OPERATION)
+	else if(. & SIGNAL_RAISE_FORCE_BUCKLE_OPERATION)
 		return TRUE
 	return movable_opinion
 
@@ -440,10 +440,10 @@
  */
 /mob/proc/can_unbuckle(atom/movable/AM, flags, mob/user, semantic, movable_opinion)
 	SHOULD_CALL_PARENT(TRUE)
-	. = SEND_SIGNAL(src, COMSIG_MOB_CAN_UNBUCKLE, AM, flags, user, semantic, movable_opinion)
-	if(. & COMPONENT_BLOCK_BUCKLE_OPERATION)
+	. = SEND_SIGNAL(src, COMSIG_MOB_CAN_UNBUCKLE_FROM, AM, flags, user, semantic, movable_opinion)
+	if(. & SIGNAL_RAISE_BLOCK_BUCKLE_OPERATION)
 		return FALSE
-	else if(. & COMPONENT_FORCE_BUCKLE_OPERATION)
+	else if(. & SIGNAL_RAISE_FORCE_BUCKLE_OPERATION)
 		return TRUE
 	return movable_opinion
 

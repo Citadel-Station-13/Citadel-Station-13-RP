@@ -45,7 +45,6 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/computer/ship/helm/LateInitialize()
-	. = ..()
 	get_known_sectors()
 
 /obj/machinery/computer/ship/helm/proc/get_known_sectors()
@@ -54,14 +53,14 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 		if (S.known)
 			var/datum/computer_file/data/waypoint/R = new()
 			R.fields["name"] = S.name
-			R.fields["x"] = S.x
-			R.fields["y"] = S.y
+			R.fields["x"] = S.get_tile_x()
+			R.fields["y"] = S.get_tile_y()
 			known_sectors[S.name] = R
 
 /obj/machinery/computer/ship/helm/process(delta_time)
 	..()
 	if(autopilot && dx && dy && !autopilot_disabled)
-		var/turf/T = locate(dx,dy,(LEGACY_MAP_DATUM).overmap_z)
+		var/turf/T = locate(dx, dy, linked.z)
 		if(linked.loc == T)
 			if(!linked.is_moving())
 				autopilot = 0
@@ -104,8 +103,8 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	data["sector"] = current_sector ? current_sector.name : "Deep Space"
 	data["sector_info"] = current_sector ? current_sector.desc : "Not Available"
 	data["landed"] = linked.get_landed_info()
-	data["s_x"] = linked.x
-	data["s_y"] = linked.y
+	data["s_x"] = linked.get_tile_x()
+	data["s_y"] = linked.get_tile_y()
 	data["dest"] = dy && dx
 	data["d_x"] = dx
 	data["d_y"] = dy
@@ -166,13 +165,13 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 				return TRUE
 			switch(params["add"])
 				if("current")
-					R.fields["x"] = linked.x
-					R.fields["y"] = linked.y
+					R.fields["x"] = linked.get_tile_x()
+					R.fields["y"] = linked.get_tile_y()
 				if("new")
-					var/newx = input("Input new entry x coordinate", "Coordinate input", linked.x) as num
+					var/newx = input("Input new entry x coordinate", "Coordinate input", linked.get_tile_x()) as num
 					if(ui_status(usr, ui.state) != UI_INTERACTIVE)
 						return TRUE
-					var/newy = input("Input new entry y coordinate", "Coordinate input", linked.y) as num
+					var/newy = input("Input new entry y coordinate", "Coordinate input", linked.get_tile_y()) as num
 					if(ui_status(usr, ui.state) != UI_INTERACTIVE)
 						return FALSE
 					R.fields["x"] = clamp(newx, 1, world.maxx)

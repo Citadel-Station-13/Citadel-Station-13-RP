@@ -39,7 +39,7 @@
 	item_state = "cyborg_upgrade"
 	var/heldname = "default name"
 
-/obj/item/borg/upgrade/rename/attack_self(mob/user)
+/obj/item/borg/upgrade/rename/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -70,7 +70,7 @@
 	if(!R.key)
 		for(var/mob/observer/dead/ghost in GLOB.player_list)
 			if(ghost.mind && ghost.mind.current == R)
-				R.key = ghost.key
+				ghost.transfer_client_to(R)
 
 	R.set_stat(CONSCIOUS)
 	dead_mob_list -= R
@@ -90,12 +90,11 @@
 	if(..())
 		return FALSE
 
-	if(R.speed <= -0.5)
+	if(R.movement_base_speed >= 7.5)
 		return FALSE
-
-	R.speed = -0.5
+	R.movement_base_speed = 7.5
+	R.update_movespeed_base()
 	return TRUE
-
 
 /obj/item/borg/upgrade/tasercooler
 	name = "robotic Rapid Taser Cooling Module"
@@ -115,7 +114,7 @@
 		to_chat(usr, "There's no mounting point for the module!")
 		return FALSE
 
-	var/obj/item/gun/energy/taser/mounted/cyborg/T = locate() in R.module
+	var/obj/item/gun/projectile/energy/taser/mounted/cyborg/T = locate() in R.module
 	if(!T)
 		T = locate() in R.module.contents
 	if(!T)

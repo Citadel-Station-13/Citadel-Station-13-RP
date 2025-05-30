@@ -89,6 +89,8 @@
 
 // /atom
 #define VV_HK_MODIFY_TRANSFORM "atom_transform"
+#define VV_HK_SPIN_ANIMATION "atom_spin"
+#define VV_HK_STOP_ALL_ANIMATIONS "stop_animations"
 #define VV_HK_ADD_REAGENT "addreagent"
 #define VV_HK_TRIGGER_EMP "empulse"
 #define VV_HK_TRIGGER_EXPLOSION "explode"
@@ -97,10 +99,14 @@
 #define VV_HK_EDIT_ARMOR "edit_armor"
 
 // /mob
+#define VV_HK_TRIGGER_OFFER_MOB_TO_GHOSTS "offer_mob_to_ghosts"
 /// used on /mob as well as /obj/item/organ
 #define VV_HK_ADD_PHYSIOLOGY_MODIFIER "add_physiology_mod"
 /// used on /mob as well as /obj/item/organ
 #define VV_HK_REMOVE_PHYSIOLOGY_MODIFIER "remove_physiology_mod"
+
+// gateways
+#define VV_HK_SETUP_GATEWAY "setup_gateway"
 
 /*
 // /obj
@@ -147,3 +153,5 @@
 
 // /obj/item/card/id
 #define VV_HK_ID_MOD "id_mod"
+
+#define VV_HK_WEAKREF_RESOLVE "weakref_resolve"

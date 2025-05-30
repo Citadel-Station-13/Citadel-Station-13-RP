@@ -63,11 +63,11 @@
 	icon_living = "mimicopen"
 	icon = 'icons/mob/animal.dmi'
 
-	faction = "mimic"
+	iff_factions = MOB_IFF_FACTION_CHIMERIC
 
 	maxHealth = 125
 	health = 125
-	movement_cooldown = 7
+	movement_base_speed = 10 / 7
 
 	response_help = "touches"
 	response_disarm = "pushes"
@@ -97,11 +97,7 @@
 	showvoreprefs = 0 //Hides mechanical vore prefs for mimics. You can't see their gaping maws when they're just sitting idle.
 
 /mob/living/simple_mob/vore/aggressive/mimic
-	vore_active = 1
-	vore_pounce_chance = 10
 	swallowTime = 3 SECONDS
-	vore_capacity = 1
-	vore_default_mode = DM_DIGEST
 
 /datum/ai_holder/polaris/mimic
 	wander = FALSE
@@ -184,7 +180,7 @@
 
 	maxHealth = 250
 	health = 250
-	movement_cooldown = 10
+	movement_base_speed = 10 / 10
 
 	legacy_melee_damage_lower = 15
 	legacy_melee_damage_upper = 30
@@ -262,7 +258,7 @@
 
 	maxHealth = 150
 	health = 150
-	movement_cooldown = 7
+	movement_base_speed = 10 / 7
 
 	legacy_melee_damage_lower = 10
 	legacy_melee_damage_upper = 20
@@ -312,7 +308,7 @@
 	if(!isliving(victim))
 		return
 	var/mob/living/L = victim
-	if(L.hovering)
+	if(L.is_avoiding_ground())
 		return
 	awaken(L)
 
@@ -355,11 +351,9 @@
 	icon_state = "wmimicopen"
 	icon_living = "wmimicopen"
 
-	faction = "mimic"
-
 	maxHealth = 100
 	health = 100
-	movement_cooldown = 5
+	movement_base_speed = 10 / 5
 
 	response_help = "touches"
 	response_disarm = "pushes"
@@ -399,11 +393,9 @@
 	icon_state = "tmimicopen"
 	icon_living = "tmimicopen"
 
-	faction = "mimic"
-
 	maxHealth = 125
 	health = 125
-	movement_cooldown = 7
+	movement_base_speed = 10 / 7
 
 	response_help = "touches"
 	response_disarm = "pushes"
@@ -440,11 +432,9 @@
 	icon_state = "pmimicopen"
 	icon_living = "pmimicopen"
 
-	faction = "mimic"
-
 	maxHealth = 150
 	health = 150
-	movement_cooldown = 7
+	movement_base_speed = 10 / 7
 
 	response_help = "touches"
 	response_disarm = "pushes"

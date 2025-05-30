@@ -89,7 +89,7 @@
 	if(!T)
 		return
 
-	var/datum/reagents/R = new/datum/reagents(100)
+	var/datum/reagent_holder/R = new/datum/reagent_holder(100)
 	if(chems && chems.len)
 		for(var/rid in chems)
 			var/injecting = min(5,max(1,get_trait(TRAIT_POTENCY)/3))
@@ -131,7 +131,7 @@
 
 		if(affecting)
 			to_chat(target, "<span class='danger'>\The [fruit]'s thorns pierce your [affecting.name] greedily!</span>")
-			target.apply_damage(damage, BRUTE, target_limb, blocked, soaked, "Thorns", sharp=1, edge=has_edge)
+			target.apply_damage(damage, DAMAGE_TYPE_BRUTE, target_limb, blocked, soaked, "Thorns", sharp=1, edge=has_edge)
 		else
 			to_chat(target, "<span class='danger'>\The [fruit]'s thorns pierce your flesh greedily!</span>")
 			target.adjustBruteLoss(damage)
@@ -140,7 +140,7 @@
 		has_edge = prob(get_trait(TRAIT_POTENCY)/5)
 		if(affecting)
 			to_chat(target, "<span class='danger'>\The [fruit]'s thorns dig deeply into your [affecting.name]!</span>")
-			target.apply_damage(damage, BRUTE, target_limb, blocked, "Thorns", sharp=1, edge=has_edge)
+			target.apply_damage(damage, DAMAGE_TYPE_BRUTE, target_limb, blocked, "Thorns", sharp=1, edge=has_edge)
 		else
 			to_chat(target, "<span class='danger'>\The [fruit]'s thorns dig deeply into your flesh!</span>")
 			target.adjustBruteLoss(damage)
@@ -195,7 +195,7 @@
 				body_coverage &= ~(clothes.body_cover_flags)
 			if(!body_coverage)
 				continue
-			var/datum/reagents/R = M.reagents
+			var/datum/reagent_holder/R = M.reagents
 			var/mob/living/carbon/human/H = M
 			if(istype(H))
 				R = H.touching

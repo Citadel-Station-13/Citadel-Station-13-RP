@@ -85,7 +85,7 @@
 		update_icon()
 	return worth
 
-/obj/item/spacecash/attack_self(mob/user)
+/obj/item/spacecash/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -106,7 +106,7 @@
 	return (prevent_types & PAYMENT_TYPE_CASH)? NOT_STATIC_CURRENCY : PLURAL_STATIC_CURRENCY
 
 /obj/item/spacecash/do_static_currency_feedback(amount, mob/user, atom/target, range)
-	user.visible_message(SPAN_NOTICE("[user] inserts some cash into [target]."), SPAN_NOTICE("You insert [amount] [CURRENCY_NAME_PLURAL_PROPERR] into [target]."), SPAN_NOTICE("You hear some papers shuffling."), range)
+	user.visible_message(SPAN_NOTICE("[user] inserts some cash into [target]."), SPAN_NOTICE("You insert [amount] [CURRENCY_NAME_PLURAL_PROPER] into [target]."), SPAN_NOTICE("You hear some papers shuffling."), range)
 
 /obj/item/spacecash/consume_static_currency(amount, force, mob/user, atom/target, range)
 	if(force)
@@ -187,7 +187,7 @@
 	pickup_sound = 'sound/items/pickup/card.ogg'
 	var/owner_name = "" //So the ATM can set it so the EFTPOS can put a valid name on transactions.
 
-/obj/item/spacecash/ewallet/attack_self(mob/user)
+/obj/item/spacecash/ewallet/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

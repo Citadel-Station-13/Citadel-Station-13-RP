@@ -6,8 +6,8 @@
 	key = "keybindings"
 
 /datum/game_preference_middleware/keybindings/on_initial_load(datum/game_preferences/prefs)
-	prefs.active?.update_movement_keys(src)
 	prefs.active?.set_macros()
+	prefs.active?.update_movement_keys(src)
 	return ..()
 
 /datum/game_preference_middleware/keybindings/handle_reset(datum/game_preferences/prefs)

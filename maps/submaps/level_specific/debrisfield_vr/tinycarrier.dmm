@@ -48,7 +48,6 @@
 /obj/machinery/atmospherics/component/unary/engine{
 	dir = 8
 	},
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/submap/debrisfield_vr/tinyshuttle/engine)
 "ai" = (
@@ -549,16 +548,16 @@
 	anchored = 1;
 	starts_with = list()
 	},
-/obj/item/gun/ballistic/p92x/large,
-/obj/item/gun/ballistic/p92x/large,
+/obj/item/gun/projectile/ballistic/p92x/large,
+/obj/item/gun/projectile/ballistic/p92x/large,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
 /obj/effect/floor_decal/corner/brown/full,
-/obj/item/ammo_magazine/m9mm/large,
-/obj/item/ammo_magazine/m9mm/large,
-/obj/item/ammo_magazine/m9mm/large,
-/obj/item/ammo_magazine/m9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
 /turf/simulated/floor/tiled,
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "be" = (
@@ -1029,7 +1028,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
 "bW" = (
-/obj/mecha/combat/fighter/baron/loaded/busted{
+/obj/vehicle/sealed/mecha/combat/fighter/baron/loaded/busted{
 	dir = 8;
 	dir_in = 8
 	},
@@ -1055,7 +1054,6 @@
 /turf/simulated/floor/reinforced/airless,
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
 "cb" = (
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
 "cc" = (
@@ -1093,7 +1091,6 @@
 /area/submap/debrisfield_vr/tinyshuttle/engine)
 "cf" = (
 /obj/item/material/shard/phoron,
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
 "cg" = (
@@ -1117,7 +1114,6 @@
 "ci" = (
 /obj/structure/lattice,
 /mob/living/simple_mob/mechanical/combat_drone/lesser,
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
 "cj" = (
@@ -1139,7 +1135,6 @@
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "cl" = (
 /obj/effect/decal/mecha_wreckage/baron,
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
 "cm" = (

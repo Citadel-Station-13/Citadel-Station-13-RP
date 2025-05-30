@@ -187,9 +187,6 @@
 "sz" = (
 /turf/space/bluespace,
 /area/space)
-"tp" = (
-/turf/simulated/floor/holofloor/desert,
-/area/houseboat/holodeck/picnic)
 "tF" = (
 /obj/effect/floor_decal/corner/red/full{
 	dir = 8
@@ -1590,7 +1587,7 @@ mh
 ip
 eu
 eu
-tp
+eu
 eu
 qR
 yp

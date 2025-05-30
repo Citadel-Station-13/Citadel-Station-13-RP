@@ -21,11 +21,12 @@
 	update_use_power(lit ? USE_POWER_ACTIVE : USE_POWER_IDLE)
 	update_icon()
 
-/obj/machinery/holosign/update_icon()
+/obj/machinery/holosign/update_icon_state()
 	if(!lit)
 		icon_state = off_icon
 	else
 		icon_state = on_icon
+	return ..()
 
 /obj/machinery/holosign/power_change()
 	if(machine_stat & NOPOWER)
@@ -59,7 +60,7 @@
 	icon = 'icons/obj/power.dmi'
 	icon_state = "crema_switch"
 
-/obj/machinery/button/holosign/attack_hand(mob/user, list/params)
+/obj/machinery/button/holosign/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return
 

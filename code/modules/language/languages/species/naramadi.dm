@@ -1,4 +1,4 @@
-/datum/language/sergal
+/datum/prototype/language/sergal
 	id = LANGUAGE_ID_NARAMADI
 	name = LANGUAGE_SAGARU
 	translation_class = TRANSLATION_CLASS_DEFAULT_RARE_RACE

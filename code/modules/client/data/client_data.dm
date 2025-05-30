@@ -50,7 +50,8 @@ GLOBAL_LIST_EMPTY(client_data)
 
 	is_guest = IsGuestKey(key)
 
-	INVOKE_ASYNC(src, PROC_REF(load_account_age))
+	spawn(0)
+		load_account_age()
 
 	var/list/the_cheese_touch = CONFIG_GET(keyed_list/shadowban)
 	var/client/C = GLOB.directory[src.ckey]
@@ -135,7 +136,7 @@ GLOBAL_LIST_EMPTY(client_data)
 		playtime_mutex = FALSE
 		return
 	var/datum/db_query/query = SSdbcore.NewQuery(
-		"SELECT `roleid`, `minutes` FROM [format_table_name("playtime")] WHERE player = :player",
+		"SELECT `roleid`, `minutes` FROM [DB_PREFIX_TABLE_NAME("playtime")] WHERE player = :player",
 		list(
 			"player" = player_id,
 		)

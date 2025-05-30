@@ -1,18 +1,16 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
  * design datums for holding what lathes can print.
  *
  * relevant bitfields are in [code/__DEFINES/machines/lathe.dm]
  */
-/datum/design
+/datum/prototype/design
 	/// Abstract type.
-	abstract_type = /datum/design
+	abstract_type = /datum/prototype/design
 
 	//? Design Data - Core
-	/// Must be unique - id of design in CamelCase.
-	var/id
 	/// design flags - see [code/__DEFINES/datums/design.dm]
 	var/design_flags = NONE
 	/// how are we unlocked - see [code/__DEFINES/datums/design.dm]
@@ -30,7 +28,9 @@
 	/// overrides build_name for purposes of name generation.
 	var/design_name
 	/// category - string or list, or null; null results in undefined behavior depending on UI.
-	var/category = "Misc"
+	var/category = DESIGN_CATEGORY_MISC
+
+	var/subcategory = DESIGN_CATEGORY_MISC
 
 	//? Build Data
 	/// name of item before any name-generation is done. also shown in ui. if null, it'll be auto-detected from the build_path if possible.
@@ -38,14 +38,22 @@
 	/// desc of item before any desc-generation is done. also shown in ui. if null, it'll be auto-detected from the build_path if possible.
 	var/build_desc
 	/// type of what we build
+	///
+	/// * Autodetection only works on /obj's.
 	var/build_path
-	/// types of lathes that can print us
+	/// Types of lathes that can print us.
+	/// * Type: /bitfield/lathe_type
 	var/lathe_type = NONE
 	/// time needed in deciseconds - for stacks, this is time *PER SHEET*.
 	var/work = 5 SECONDS
 
 	//? Build Costs
 	/// list of materials needed - typepath or id to amount. null to auto-detect from the object in question. list() for no cost (DANGEROUS).
+	///
+	/// * This should always be using typepath instead of ID for hardcoded designs, as typepaths can be eagerly loaded before
+	///   the materials repository can initialize normally.
+	/// * This will always be transformed into IDs at runtime.
+	/// * If you're making one at runtime, always put in IDs, as automatic detection/generation may not run.
 	var/list/materials_base
 	/// for variable-material designs: assoc list of key to amounts
 	/// the key will be fed into print() during creation with the material id the user picked
@@ -54,8 +62,14 @@
 	/// todo: add optional parts and constraints
 	var/list/material_costs
 	/// Items needed, as ingredients list - see [code/__HELPERS/datastructs/ingredients.dm]
+	///
+	/// * This should always be using typepath instead of ID where possible for hardcoded designs, as typepaths can be eagerly
+	///   loaded before the materials repository can initialize normally.
 	var/list/ingredients
 	/// list of reagents needed - typepath or id to amount. null to auto-detect from the object in question. list() for no cost (DANGEROUS).
+	///
+	/// * This should always be using typepath instead of ID for hardcoded designs, as typepaths can be eagerly loaded before
+	///   the materials repository can initialize normally.
 	var/list/reagents
 	// todo: reagent_parts?
 
@@ -63,20 +77,23 @@
 	///IDs of that techs the object originated from and the minimum level requirements.
 	var/list/req_tech = list()
 
-/datum/design/New()
+/datum/prototype/design/New()
 	autodetect()
 	generate()
 
-/datum/design/proc/autodetect()
+/datum/prototype/design/proc/autodetect()
 	if(isnull(build_path))
 		return
 	if(ispath(build_path, /obj/item/stack))
 		is_stack = TRUE
 		var/obj/item/stack/stack_path = build_path
 		max_stack = initial(stack_path.max_amount)
-	var/obj/item/instance = SSatoms.instance_atom_immediate(build_path)
+	var/obj/instance = SSatoms.instance_atom_immediate(build_path)
 	// lathe designs shouldn't be qdeleting, but incase someone puts in a random..
 	if(QDELETED(instance))
+		return
+	if(!isobj(instance))
+		qdel(instance)
 		return
 	if(isnull(materials_base))
 		var/list/fetched = instance.detect_material_base_costs()
@@ -97,22 +114,24 @@
 		build_desc = instance.desc
 	qdel(instance)
 
-/datum/design/proc/generate()
+/datum/prototype/design/proc/generate()
 	if(!name)
 		name = generate_name(design_name || build_name)
 	if(!desc)
 		desc = generate_desc(design_name || build_name, build_desc)
+	// materials base must be IDs at runtime.
+	materials_base = SSmaterials.preprocess_kv_keys_to_ids(materials_base)
 
-/datum/design/proc/generate_name(template)
+/datum/prototype/design/proc/generate_name(template)
 	return template
 
-/datum/design/proc/generate_desc(template_name, template_desc)
+/datum/prototype/design/proc/generate_desc(template_name, template_desc)
 	return template_desc
 
 /**
  * Encodes data for [tgui/packages/tgui/interfaces/common/Design.tsx]
  */
-/datum/design/proc/ui_data_list()
+/datum/prototype/design/proc/ui_data_list()
 	return list(
 		"name" = name,
 		"desc" = desc,
@@ -143,7 +162,7 @@
  *
  * @return created atom, or list of created atoms.
  */
-/datum/design/proc/print(atom/where, amount, list/material_parts, list/ingredient_parts, list/reagent_parts, cost_multiplier = 1)
+/datum/prototype/design/proc/print(atom/where, amount, list/material_parts, list/ingredient_parts, list/reagent_parts, cost_multiplier = 1)
 	var/list/resolved_material_parts = SSmaterials.preprocess_kv_values_to_instances(material_parts)
 	if(is_stack)
 		var/stack_size = max_stack
@@ -180,7 +199,7 @@
 /**
  * material parts gets resolved to instances
  */
-/datum/design/proc/on_print(atom/created, list/resolved_material_parts, list/ingredient_parts, list/reagent_parts, cost_multiplier = 1)
+/datum/prototype/design/proc/on_print(atom/created, list/resolved_material_parts, list/ingredient_parts, list/reagent_parts, cost_multiplier = 1)
 	if(isobj(created))
 		var/obj/O = created
 		O.set_materials_base(materials_base)
@@ -195,7 +214,7 @@
  * * fabricator - the lathe printing the product
  * * material_parts - assoc list of materials to use, based on the variable of the same name
  */
-/datum/design/proc/lathe_print(atom/where, amount, list/material_parts, list/ingredient_parts, list/reagent_parts, obj/machinery/lathe/fabricator, cost_multiplier = 1)
+/datum/prototype/design/proc/lathe_print(atom/where, amount, list/material_parts, list/ingredient_parts, list/reagent_parts, obj/machinery/lathe/fabricator, cost_multiplier = 1)
 	return print(where, amount, material_parts, ingredient_parts, reagent_parts, cost_multiplier)
 
 //? legacy below
@@ -203,5 +222,5 @@
 /**
  * for legacy lathes
  */
-/datum/design/proc/legacy_print(atom/where, fabricator)
+/datum/prototype/design/proc/legacy_print(atom/where, fabricator)
 	return print(where, 1)

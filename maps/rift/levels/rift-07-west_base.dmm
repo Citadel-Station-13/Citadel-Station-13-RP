@@ -216,7 +216,7 @@
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/underground3)
 "kL" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/rift/surfacebase/outside/west_base/submap_seedzone)
 "kN" = (
 /obj/structure/girder/reinforced,
@@ -431,7 +431,7 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_base)
 "wf" = (
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark";
 	name = "glacier wall"
@@ -505,7 +505,7 @@
 /turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/outside/west_base)
 "Ae" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/rift/surfacebase/outside/west_base)
 "Az" = (
 /obj/map_helper/access_helper/airlock/station/maintenance,
@@ -561,7 +561,7 @@
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/surfacebase/outside/west_base)
 "DE" = (
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark";
 	name = "glacier wall"
@@ -620,7 +620,7 @@
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/underground3)
 "Il" = (
-/turf/simulated/floor/outdoors/lava/indoors,
+/turf/simulated/lava/indoors,
 /area/rift/surfacebase/outside/west_base/submap_seedzone)
 "It" = (
 /obj/random/obstruction,
@@ -809,7 +809,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/elevator)
 "RE" = (
-/turf/simulated/floor/outdoors/lava/indoors,
+/turf/simulated/lava/indoors,
 /area/rift/surfacebase/outside/west_base)
 "RJ" = (
 /obj/effect/floor_decal/borderfloor/corner{

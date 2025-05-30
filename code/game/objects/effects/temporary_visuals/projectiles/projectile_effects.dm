@@ -1,4 +1,5 @@
 /obj/effect/projectile
+	SET_APPEARANCE_FLAGS(PIXEL_SCALE)
 	name = "pew"
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "nothing"

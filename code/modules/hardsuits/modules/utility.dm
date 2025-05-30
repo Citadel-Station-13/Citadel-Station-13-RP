@@ -15,7 +15,7 @@
  * /obj/item/hardsuit_module/device/paperdispenser
  * /obj/item/hardsuit_module/device/pen
  * /obj/item/hardsuit_module/device/stamp
- * /obj/item/hardsuit_module/mounted/mop
+ * /obj/item/hardsuit_module/mop
  * /obj/item/hardsuit_module/cleaner_launcher
  * /obj/item/hardsuit_module/device/hand_defib
  */
@@ -180,12 +180,12 @@
 
 	// Magical chemical filtration system, do not question it.
 	var/total_transferred = 0
-	for(var/datum/reagent/R in input_item.reagents.reagent_list)
+	for(var/datum/reagent/R in input_item.reagents.get_reagent_datums())
 		for(var/chargetype in charges)
 			var/datum/rig_charge/charge = charges[chargetype]
 			if(charge.display_name == R.id)
 
-				var/chems_to_transfer = R.volume
+				var/chems_to_transfer = input_item.reagents.reagent_volumes[R.id]
 
 				if((charge.charges + chems_to_transfer) > max_reagent_volume)
 					chems_to_transfer = max_reagent_volume - charge.charges
@@ -193,7 +193,6 @@
 				charge.charges += chems_to_transfer
 				input_item.reagents.remove_reagent(R.id, chems_to_transfer)
 				total_transferred += chems_to_transfer
-
 				break
 
 	if(total_transferred)
@@ -411,7 +410,7 @@
 
 //Deployable Mop
 
-/obj/item/hardsuit_module/mounted/mop
+/obj/item/hardsuit_module/mop
 
 	name = "mop projector"
 	desc = "A powerful mop projector."
@@ -430,24 +429,7 @@
 	active_power_cost = 0
 	passive_power_cost = 0
 
-	gun = /obj/item/reagent_containers/spray/cleaner
-
-//obj/item/reagent_containers/spray/cleaner
-//	spary =
-
-/obj/item/hardsuit_module/mounted/engage(atom/target)
-
-	if(!..())
-		return 0
-
-	if(!target)
-		gun.attack_self(holder.wearer)
-		return 1
-
-	gun.Fire(target,holder.wearer)
-	return 1
-
-/obj/item/hardsuit_module/mounted/mop/process(delta_time)
+/obj/item/hardsuit_module/mop/process(delta_time)
 
 	if(holder && holder.wearer)
 		if(!(locate(/obj/item/mop_deploy) in holder.wearer))
@@ -456,13 +438,13 @@
 
 	return ..()
 
-/obj/item/hardsuit_module/mounted/mop/activate()
+/obj/item/hardsuit_module/mop/activate()
 
 	..()
 
 	var/mob/living/M = holder.wearer
 
-	if(M.l_hand && M.r_hand)
+	if(M.are_usable_hands_full())
 		to_chat(M, "<span class='danger'>Your hands are full.</span>")
 		deactivate()
 		return
@@ -471,7 +453,7 @@
 	blade.creator = M
 	M.put_in_hands(blade)
 
-/obj/item/hardsuit_module/mounted/mop/deactivate()
+/obj/item/hardsuit_module/mop/deactivate()
 
 	..()
 
@@ -499,7 +481,7 @@
 	var/fire_distance = 10
 
 	charges = list(
-		list("cleaner grenade",   "cleaner grenade",   /obj/item/grenade/chem_grenade/cleaner,  9),
+		list("cleaner grenade",   "cleaner grenade",   /obj/item/grenade/simple/chemical/premade/cleaner,  9),
 		)
 
 /obj/item/hardsuit_module/cleaner_launcher/accepts_item(var/obj/item/input_device, var/mob/living/user)
@@ -553,7 +535,7 @@
 	charge.charges--
 	var/obj/item/grenade/new_grenade = new charge.product_type(get_turf(H))
 	H.visible_message("<span class='danger'>[H] launches \a [new_grenade]!</span>")
-	new_grenade.activate(H)
+	new_grenade.activate(new /datum/event_args/actor(H))
 	new_grenade.throw_at_old(target,fire_force,fire_distance)
 
 /obj/item/hardsuit_module/device/paperdispenser

@@ -41,7 +41,7 @@
 			if(prob(25))
 				density = 0
 
-/obj/machinery/optable/attack_hand(mob/user, list/params)
+/obj/machinery/optable/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(MUTATION_HULK in usr.mutations)
 		visible_message(SPAN_DANGER("\The [usr] destroys \the [src]!"))
 		density = FALSE
@@ -66,7 +66,7 @@
 		user.visible_message("[user] climbs on \the [src].","You climb on \the [src].")
 	else
 		visible_message(SPAN_NOTICE("\The [C] has been laid on \the [src] by [user]."))
-	C.resting = 1
+	C.set_intentionally_resting(TRUE)
 	C.forceMove(loc)
 	// now that we hold parts, this must be commented out to prevent dumping our parts onto our loc. not sure what this was intended to do when it was written.
 	/*for(var/obj/O in src)
