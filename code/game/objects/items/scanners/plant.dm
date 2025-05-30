@@ -5,6 +5,7 @@
 	item_state = "analyzer"
 	var/datum/seed/last_seed
 	var/list/last_reagents
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/plant_analyzer/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()

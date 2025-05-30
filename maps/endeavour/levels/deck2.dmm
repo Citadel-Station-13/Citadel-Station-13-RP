@@ -9363,12 +9363,6 @@
 /obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
-"gxc" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/paint/babyblue,
-/obj/map_helper/paint/babyblue,
-/turf/simulated/floor/tiled,
-/area/endeavour/hallway/d2afthall)
 "gxk" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
@@ -13560,17 +13554,6 @@
 /obj/item/cell/device/weapon,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
-"jGQ" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 4
-	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
-/obj/map_helper/electrochromatic_linker{
-	id = "robotics-inner"
-	},
-/obj/map_helper/paint/purplegray,
-/turf/simulated/floor/plating,
-/area/assembly/robotics)
 "jHd" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -29783,12 +29766,6 @@
 /obj/random/trash_pile,
 /turf/simulated/floor,
 /area/maintenance/research/port)
-"vBU" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/paint/purplegray,
-/obj/map_helper/paint/purplegray,
-/turf/simulated/floor/plating,
-/area/rnd/breakroom)
 "vCa" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
@@ -44777,7 +44754,7 @@ mDj
 mDj
 cjj
 mDj
-gxc
+mDj
 cjj
 oAN
 oAN
@@ -49618,7 +49595,7 @@ jFo
 jFo
 hyR
 jFo
-jGQ
+bMn
 bMn
 jFo
 epT
@@ -51930,9 +51907,9 @@ uPS
 uPS
 mWV
 pEJ
-vBU
 pEJ
-vBU
+pEJ
+pEJ
 pEJ
 hZx
 kBG

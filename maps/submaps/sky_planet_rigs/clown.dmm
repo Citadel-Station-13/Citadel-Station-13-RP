@@ -47,7 +47,7 @@
 /turf/simulated/floor/tiled/kafel_full/gray,
 /area/submap/skyplanet/poi/clown)
 "kU" = (
-/obj/structure/table/fancyblack,
+/obj/structure/table/hardwoodtable,
 /obj/item/reagent_containers/food/snacks/clownburger,
 /turf/simulated/floor/wood/indoors,
 /area/submap/skyplanet/poi/clown)
@@ -158,7 +158,7 @@
 /turf/simulated/floor/concrete,
 /area/submap/skyplanet/poi/clown)
 "zZ" = (
-/obj/structure/table/fancyblack,
+/obj/structure/table/hardwoodtable,
 /turf/simulated/floor/wood/indoors,
 /area/submap/skyplanet/poi/clown)
 "BN" = (
@@ -166,7 +166,7 @@
 /turf/simulated/floor/wood/indoors,
 /area/submap/skyplanet/poi/clown)
 "Cj" = (
-/obj/structure/table/fancyblack,
+/obj/structure/table/hardwoodtable,
 /obj/item/storage/box/glasses/pint,
 /turf/simulated/floor/wood/indoors,
 /area/submap/skyplanet/poi/clown)
@@ -198,7 +198,7 @@
 /turf/simulated/floor/tiled/kafel_full/gray,
 /area/submap/skyplanet/poi/clown)
 "HQ" = (
-/obj/structure/table/fancyblack,
+/obj/structure/table/hardwoodtable,
 /obj/machinery/light/fairy{
 	dir = 1
 	},
@@ -262,7 +262,7 @@
 /turf/simulated/floor/wood/indoors,
 /area/submap/skyplanet/poi/clown)
 "Oc" = (
-/obj/structure/table/fancyblack,
+/obj/structure/table/hardwoodtable,
 /obj/machinery/light/fairy{
 	dir = 1
 	},
@@ -281,7 +281,7 @@
 /turf/simulated/floor/tiled/kafel_full/gray,
 /area/submap/skyplanet/poi/clown)
 "Qh" = (
-/obj/structure/table/fancyblack,
+/obj/structure/table/hardwoodtable,
 /obj/item/storage/backpack/clown,
 /turf/simulated/floor/wood/indoors,
 /area/submap/skyplanet/poi/clown)
@@ -348,7 +348,7 @@
 /turf/simulated/floor/tiled/kafel_full/gray,
 /area/submap/skyplanet/poi/clown)
 "ZS" = (
-/obj/structure/table/fancyblack,
+/obj/structure/table/hardwoodtable,
 /obj/item/storage/box/glasses/mug,
 /turf/simulated/floor/wood/indoors,
 /area/submap/skyplanet/poi/clown)
