@@ -23,10 +23,10 @@
 	icon_state = "map_valve1"
 
 /obj/machinery/atmospherics/valve/update_icon_state()
+	. = ..()
 	// if(animation)
 		// flick("valve[src.open][!src.open]",src)
 	icon_state = "valve[open]"
-	return ..()
 
 /obj/machinery/atmospherics/valve/update_underlays()
 	if(..())

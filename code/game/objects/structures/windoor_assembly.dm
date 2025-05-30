@@ -53,8 +53,8 @@
 	return ..()
 
 /obj/structure/windoor_assembly/update_icon_state()
+	. = ..()
 	icon_state = "[facing]_[secure]windoor_assembly[state]"
-	return ..()
 
 /obj/structure/windoor_assembly/CanAllowThrough(atom/movable/mover, turf/target)
 	if(!(get_dir(loc, mover) & dir))

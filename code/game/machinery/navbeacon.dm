@@ -56,6 +56,7 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 
 // update the icon_state
 /obj/machinery/navbeacon/update_icon_state()
+	. = ..()
 	var/state="navbeacon[open]"
 
 	if(invisibility)
@@ -63,7 +64,6 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 									// in case revealed by T-scanner
 	else
 		icon_state = "[state]"
-	return ..()
 
 /obj/machinery/navbeacon/attackby(obj/item/I, mob/user)
 	var/turf/T = loc

@@ -438,8 +438,8 @@
 	)
 
 /obj/item/gun/projectile/energy/plasma/update_icon_state()
+	. = ..()
 	icon_state = "[initial(icon_state)][overheating ? "_overheat" : ""]"
-	return ..()
 
 /obj/item/gun/projectile/energy/plasma/pistol
 	name = "\improper Wyrm plasma pistol"

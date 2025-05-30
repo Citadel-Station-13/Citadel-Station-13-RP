@@ -68,8 +68,8 @@
 		usr.loc = src.loc
 
 /obj/machinery/washing_machine/update_icon_state()
+	. = ..()
 	icon_state = "wm_[state][panel_open]"
-	return ..()
 
 /obj/machinery/washing_machine/attackby(obj/item/W as obj, mob/user as mob)
 	if(state == 2 && washing.len < 1)

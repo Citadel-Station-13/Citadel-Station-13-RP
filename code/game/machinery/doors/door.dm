@@ -291,11 +291,11 @@
 	..()
 
 /obj/machinery/door/update_icon_state()
+	. = ..()
 	if(density)
 		icon_state = "door1"
 	else
 		icon_state = "door0"
-	return ..()
 
 /obj/machinery/door/proc/do_animate(animation)
 	switch(animation)

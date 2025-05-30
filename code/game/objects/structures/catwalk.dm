@@ -201,6 +201,7 @@
 				return
 
 /obj/structure/catwalk/plank/update_icon_state()
+	. = ..()
 	var/perc = percent_integrity()
 	if(perc >= 0.75)
 		icon_state = "[initial(icon_state)]"
@@ -210,7 +211,6 @@
 		icon_state = "[initial(icon_state)]_rickety"
 	else
 		icon_state = "[initial(icon_state)]_dangerous"
-	return ..()
 
 //Ashlander Catwalks, for bridges?
 /obj/structure/catwalk/ashlander

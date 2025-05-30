@@ -53,8 +53,8 @@
 	obj_storage.update_icon_on_item_change = TRUE
 
 /obj/item/storage/box/wormcan/update_icon_state()
+	. = ..()
 	icon_state = length(contents) ? "wormcan" : "wormcan_empty"
-	return ..()
 
 /obj/item/storage/box/wormcan/sickly
 	icon_state = "wormcan_sickly"
@@ -64,8 +64,8 @@
 	starts_with = list(/obj/item/reagent_containers/food/snacks/wormsickly = 6)
 
 /obj/item/storage/box/wormcan/sickly/update_icon_state()
+	. = ..()
 	icon_state = length(contents) ? "wormcan_empty_sickly" : "wormcan_sickly"
-	return ..()
 
 /obj/item/storage/box/wormcan/deluxe
 	icon_state = "wormcan_deluxe"

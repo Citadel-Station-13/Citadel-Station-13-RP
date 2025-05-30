@@ -84,6 +84,7 @@
 	generate_field()
 
 /obj/machinery/atmospheric_field_generator/update_icon_state()
+	. = ..()
 	if(machine_stat & BROKEN)
 		icon_state = "arfg_broken"
 	else if(hatch_open && wires_intact)
@@ -94,7 +95,6 @@
 		icon_state = "arfg_on"
 	else
 		icon_state = "arfg_off"
-	return ..()
 
 /obj/machinery/atmospheric_field_generator/power_change()
 	var/oldstat

@@ -38,6 +38,7 @@
 		update_icon()
 
 /obj/machinery/atmospherics/component/unary/heater/update_icon_state()
+	. = ..()
 	if(node)
 		if(use_power && heating)
 			icon_state = "heater_1"
@@ -45,7 +46,6 @@
 			icon_state = "heater"
 	else
 		icon_state = "heater_0"
-	return ..()
 
 /obj/machinery/atmospherics/component/unary/heater/process(delta_time)
 	..()

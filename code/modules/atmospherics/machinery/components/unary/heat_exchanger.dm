@@ -17,11 +17,11 @@
 	var/thermal_conduction_power = 1
 
 /obj/machinery/atmospherics/component/unary/heat_exchanger/update_icon_state()
+	. = ..()
 	if(node)
 		icon_state = "intact"
 	else
 		icon_state = "exposed"
-	return ..()
 
 /obj/machinery/atmospherics/component/unary/heat_exchanger/process()
 	..()
