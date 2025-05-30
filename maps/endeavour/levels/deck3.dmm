@@ -20640,15 +20640,6 @@
 "pDS" = (
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
-"pDX" = (
-/obj/machinery/door/firedoor,
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/structure/cable/green{
-	icon_state = "0-4"
-	},
-/obj/map_helper/paint/darkred,
-/turf/simulated/floor/plating,
-/area/security/brig)
 "pEk" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -20795,7 +20786,6 @@
 /area/hydroponics/garden)
 "pQv" = (
 /obj/machinery/door/firedoor,
-/obj/structure/catwalk,
 /obj/machinery/door/airlock/maintenance/common,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
@@ -21525,12 +21515,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
-"qmQ" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/paint/beastybrown,
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/plating,
-/area/quartermaster/warehouse)
 "qmZ" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/brown/border,
@@ -42569,7 +42553,7 @@ isE
 ecO
 qHk
 xaH
-pDX
+rMh
 oFB
 lKR
 kDB
@@ -50289,7 +50273,7 @@ pmo
 hJR
 hJR
 pmo
-qmQ
+ofl
 qwK
 iWF
 jzo
