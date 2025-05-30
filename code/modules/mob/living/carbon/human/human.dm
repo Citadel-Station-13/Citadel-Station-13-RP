@@ -1125,6 +1125,7 @@
 	hud_used = new /datum/hud(src)
 	reload_rendering()
 	update_vision()
+	update_movespeed_base()
 
 	//! FUCK FUCK FUCK FUCK FUCK FUCK FUCK
 	for(var/key in species.sprite_accessory_defaults)

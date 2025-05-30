@@ -59,7 +59,7 @@
 			if(locate(/obj/structure/wall_frame) in loc)
 				CRASH("Window spawner at [audit_loc()] is set to spawn low wall but found one already in turf")
 			var/obj/structure/wall_frame/low_wall = new low_wall_path(loc)
-			if(isnull(low_wall_stripe_color))
+			if(!isnull(low_wall_stripe_color))
 				low_wall.stripe_color = low_wall_stripe_color
 
 		var/new_window = new window_full_path(loc)

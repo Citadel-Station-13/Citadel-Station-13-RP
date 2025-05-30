@@ -164,7 +164,7 @@
 	reach = 2 // Spears are long.
 	attackspeed = 20
 	weight = ITEM_WEIGHT_MELEE_SPEAR
-	var/obj/item/grenade/explosive = null
+	var/obj/item/grenade/simple/explosive = null
 	var/war_cry = "AAAAARGH!!!"
 
 /obj/item/material/twohanded/spear/Initialize(mapload, material_key)

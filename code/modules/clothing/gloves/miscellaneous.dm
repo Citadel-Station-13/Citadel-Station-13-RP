@@ -175,8 +175,8 @@
 	glovecolor = "yellow"
 
 /obj/item/clothing/gloves/swat/para //Combined effect of SWAT gloves and insulated gloves
-	desc = "PARA gloves"
-	name = "PMD issued gloves, stamped with protective seals and spells."
+	name = "PARA gloves"
+	desc = "PMD issued gloves, stamped with protective seals and spells."
 	icon_state = "para_ert_gloves"
 	item_state = "para_ert_gloves"
 	item_action_name = "Enable Glove Sigils"
@@ -707,3 +707,31 @@
 	original_size = null
 	user.visible_message("<span class='warning'>The space around [user] distorts as they return to their original size!</span>","<span class='notice'>The space around you distorts as you return to your original size!</span>")
 	to_chat(user, "<span class ='warning'>\The [src] flickers. It is now recharging and will be ready again in ten seconds.</span>")
+
+/obj/item/clothing/gloves/pmd
+	name = "runed gloves"
+	desc = "A pair of white gloves, each with a seal surrounded by runes on the back of the hand."
+	icon_state = "pmd"
+	permeability_coefficient = 0.01
+
+	item_action_name = "Enable Glove Sigils"
+
+	var/blessed = FALSE
+
+/obj/item/clothing/gloves/pmd/attack_self(mob/user, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+	if(user.mind.isholy && !blessed)
+		blessed = TRUE
+		siemens_coefficient = 0
+		germ_level = 0
+		to_chat(user, "<font color=#4F49AF>You repeat the incantations etched into the gloves.</font>")
+	else
+		blessed = FALSE
+		siemens_coefficient = 0.5
+		germ_level = GERM_LEVEL_AMBIENT
+		to_chat(user, "<font color=#4F49AF>You dispel the incantations eteched into the gloves for now.</font>")
+
+	if(!user.mind.isholy)
+		to_chat(user, "<font color='red'>You're not sure what language this is.</font>")

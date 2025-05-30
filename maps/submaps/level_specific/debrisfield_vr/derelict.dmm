@@ -155,7 +155,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/item/grenade/empgrenade,
+/obj/item/grenade/simple/emp,
 /turf/simulated/floor/bluegrid,
 /area/submap/debrisfield_vr/derelict/interior)
 "aB" = (
@@ -501,9 +501,9 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/submap/debrisfield_vr/derelict/interior)
 "bO" = (
-/obj/item/grenade/empgrenade,
-/obj/item/grenade/empgrenade,
-/obj/item/grenade/empgrenade,
+/obj/item/grenade/simple/emp,
+/obj/item/grenade/simple/emp,
+/obj/item/grenade/simple/emp,
 /turf/space,
 /area/space)
 "bP" = (

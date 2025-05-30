@@ -9,7 +9,7 @@
 	icon_state = "eva-rig"
 
 	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
-	movement_cooldown = 10
+	movement_base_speed = 10 / 10
 
 	health = 200
 	maxHealth = 200
@@ -53,13 +53,11 @@
 // Will eventually leave a full corpse with an activated RIG on it. But not yet.
 
 //Miasma Cloud "Item"
-/obj/item/grenade/chem_grenade/miasma
+/obj/item/grenade/simple/chemical/premade/miasma
 	name = "Miasma Bomb"
 	desc = "You probably shouldn't be able to see this."
-	stage = 2
-	path = 1
 
-/obj/item/grenade/chem_grenade/miasma/Initialize(mapload)
+/obj/item/grenade/simple/chemical/miasma/Initialize(mapload)
 	. = ..()
 	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_containers/glass/beaker/B2 = new(src)
@@ -73,8 +71,6 @@
 	beakers += B2
 
 	icon_state = null
-
-	detonate()
 
 //Has a chance to play one of the listed sounds when it moves.
 /mob/living/simple_mob/humanoid/possessed/Moved()
@@ -111,7 +107,8 @@
 	else
 		new rig2(droploc)
 	new /obj/effect/decal/remains/human(droploc)
-	new /obj/item/grenade/chem_grenade/miasma(droploc)
+	var/obj/item/grenade/simple/chemical/this_is_stupid = new /obj/item/grenade/simple/chemical/miasma(droploc)
+	this_is_stupid.detonate()
 	/*Broken smoke spawn code. Above line is a bandaid.
 	var/datum/reagent_holder/R = new/datum/reagent_holder(30)
 	reagents.add_reagent("miasma", 30)
@@ -170,6 +167,6 @@
 
 /mob/living/simple_mob/humanoid/possessed/merc/feral	// Special one that moves faster attacks faster. Intended as a special mech pilot
 	desc = "A blood-red hardsuit featuring some fairly illegal technology. Seems to be worn down and damaged but moving with surprising speed!"
-	movement_cooldown 				= 2		//You can try running
+	movement_base_speed = 5
 	base_attack_cooldown 			= 3		//You will just die tired
 	melee_miss_chance				= 25	//Not very coordinated though

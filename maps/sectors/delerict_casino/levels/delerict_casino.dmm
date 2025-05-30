@@ -7550,11 +7550,11 @@
 /area/sector/delerictcasino/maintenance)
 "JN" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
