@@ -1,12 +1,14 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
-/datum/map/centcom/ndv_marksman
-	id = "centcom-ndv_marksman"
-	name = "Centcom - NDV Marksman"
+/datum/map/centcom/ncv_oracle
+	id = "centcom-ncv_oracle"
+	name = "Centcom - NCV Oracle"
 	levels = list(
 		/datum/map_level/centcom/ncv_oracle,
 	)
+	width = 192
+	height = 192
 
 /datum/map_level/centcom/ncv_oracle
 	id = "centcom-ncv_oracle"

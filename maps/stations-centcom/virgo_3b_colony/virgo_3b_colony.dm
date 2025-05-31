@@ -7,6 +7,8 @@
 	levels = list(
 		/datum/map_level/centcom/virgo_3b_colony,
 	)
+	width = 192
+	height = 192
 
 /datum/map_level/centcom/virgo_3b_colony
 	id = "centcom-virgo_3b_colony"

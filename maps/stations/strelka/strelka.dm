@@ -6,12 +6,14 @@
 		/datum/map_level/strelka/ship/deck_three,
 		/datum/map_level/strelka/ship/deck_two,
 		/datum/map_level/strelka/ship/deck_one,
-		/datum/map_level/strelka/flagship,
 	)
 	width = 192
 	height = 192
 	world_width = 192
 	world_height = 192
+	dependencies = list(
+		/datum/map/centcom/ndv_marksman,
+	)
 	lateload = list(
 		/datum/map/sector/debrisfield_192,
 		/datum/map/sector/piratebase_192,
@@ -153,7 +155,7 @@
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
 /datum/map_level/strelka/ship/deck_three
-	id = "EndeavourDeck3"
+	id = "StrelkaDeck3"
 	name = "strelka - Deck 3"
 	display_id = "strelka-deck-3"
 	display_name = "NSV strelka - Deck 3"
@@ -168,7 +170,7 @@
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
 /datum/map_level/strelka/ship/deck_two
-	id = "EndeavourDeck2"
+	id = "StrelkaDeck2"
 	name = "strelka - Deck 2"
 	display_id = "strelka-deck-2"
 	display_name = "NSV strelka - Deck 2"
@@ -184,7 +186,7 @@
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
 /datum/map_level/strelka/ship/deck_one
-	id = "EndeavourDeck1"
+	id = "StrelkaDeck1"
 	name = "strelka - Deck 1"
 	display_id = "strelka-deck-1"
 	display_name = "NSV strelka - Deck 1"
@@ -196,17 +198,6 @@
 	base_turf = /turf/simulated/open
 	link_above = /datum/map_level/strelka/ship/deck_two
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
-
-/datum/map_level/strelka/flagship
-	id = "EndeavourFlagship"
-	name = "strelka - Centcom / Flagship"
-	display_id = "strelka-flagship"
-	display_name = "NSV strelka - Flagship Offboarding"
-	path = "maps/strelka/levels/flagship.dmm"
-	flags = LEGACY_LEVEL_ADMIN|LEGACY_LEVEL_CONTACT
-	traits = list(
-		ZTRAIT_LEGACY_BELTER_TRANSIT,
-	)
 
 #undef STRELKA_MAP_SIZE
 #undef STRELKA_HOLOMAP_CENTER_GUTTER
