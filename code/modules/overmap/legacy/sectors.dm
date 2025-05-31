@@ -52,7 +52,7 @@
 					// disabled for now.
 					CRASH("legacy overmap object initialization attempted on a map-less level")
 			else
-				CRASH("level [our_z] had manually placed overmap entity despite having an initializer already loaded")
+				CRASH("level [our_z] ([SSmapping.level_get_id(our_z)]) had manually placed overmap entity despite having an initializer already loaded")
 
 	// todo: This is shitcode but sue me tbh we gotta refactor this shit anyways to be overmap_initializer's
 	spawn(-1)

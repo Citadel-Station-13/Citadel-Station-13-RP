@@ -50,6 +50,10 @@
 	/// * resolved during ready()
 	var/list/lateload
 
+	//* Config *//
+	/// Allow gateway mission to load?
+	var/conf_load_gateway_mission = TRUE
+
 	//* Identity *//
 	/// in-code name
 	var/name = "Unknown Map"
@@ -154,6 +158,7 @@
 
 /datum/map/serialize()
 	. = ..()
+	// TODO: verify all variables are in here
 	.["id"] = id
 	.["name"] = name
 	var/list/serialized_levels = (.["levels"] = list())
@@ -175,6 +180,7 @@
 	if(loaded)
 		CRASH("attempted deserialize while loaded")
 	. = ..()
+	// TODO: verify all variables are in here
 	id = data["id"]
 	name = data["name"]
 	levels = list()

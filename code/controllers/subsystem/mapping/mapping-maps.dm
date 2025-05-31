@@ -49,13 +49,17 @@
 	var/maps_to_iterate_idx = 1
 	while(maps_to_iterate_idx <= length(maps_to_iterate))
 		var/datum/map/iterating = maps_to_iterate[maps_to_iterate_idx]
+		maps_to_iterate_idx++
 		// TODO: if this returns FALSE, yell about it
 		iterating.ready()
+		maps_to_load += iterating
 
 		var/list/chainload_ids = list()
-		chainload_ids += iterating.dependencies
+		if(length(iterating.dependencies))
+			chainload_ids += iterating.dependencies
 		if(!from_world_load || !global.world_init_options.load_only_station)
-			chainload_ids += iterating.lateload
+			if(length(iterating.lateload))
+				chainload_ids += iterating.lateload
 		emit_info_log("load - '[instance.id] - resolved chainload ids '[json_encode(chainload_ids)]'")
 		for(var/id in chainload_ids)
 			var/datum/map/resolved = resolve_map(id)
@@ -129,7 +133,7 @@
 		rebuild_multiz(loaded_level.z_index)
 
 	emit_info_log("load - initialized [length(loaded_lockstep_levels)] levels")
-	
+
 	return TRUE
 
 /**
