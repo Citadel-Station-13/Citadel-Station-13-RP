@@ -158,7 +158,7 @@
 	name = "Endeavour - Deck 1"
 	display_id = "endeavour-deck-1"
 	display_name = "NSV Endeavour - Command Deck"
-	path = "maps/endeavour/levels/deck1.dmm"
+	path = "maps/station/endeavour/levels/deck1.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -174,7 +174,7 @@
 	name = "Endeavour - Deck 2"
 	display_id = "endeavour-deck-2"
 	display_name = "NSV Endeavour - MedSci Deck"
-	path = "maps/endeavour/levels/deck2.dmm"
+	path = "maps/station/endeavour/levels/deck2.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -190,7 +190,7 @@
 	name = "Endeavour - Deck 3"
 	display_id = "endeavour-deck-3"
 	display_name = "NSV Endeavour - Service & Security Deck"
-	path = "maps/endeavour/levels/deck3.dmm"
+	path = "maps/station/endeavour/levels/deck3.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -207,7 +207,7 @@
 	name = "Endeavour - Deck 4"
 	display_id = "endeavour-deck-4"
 	display_name = "NSV Endeavour - Engineering Deck"
-	path = "maps/endeavour/levels/deck4.dmm"
+	path = "maps/station/endeavour/levels/deck4.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -221,7 +221,7 @@
 /datum/map_level/endeavour/transit
 	id = "EndeavourTransit"
 	name = "Endeavour - Ships / Static Transit"
-	path = "maps/endeavour/levels/transit.dmm"
+	path = "maps/station/endeavour/levels/transit.dmm"
 	traits = list(
 		ZTRAIT_LEGACY_BELTER_TRANSIT,
 	)
@@ -230,7 +230,7 @@
 /datum/map_level/endeavour/misc
 	id = "EndeavourMisc"
 	name = "Endeavour - Misc"
-	path = "maps/endeavour/levels/misc.dmm"
+	path = "maps/station/endeavour/levels/misc.dmm"
 	flags = LEGACY_LEVEL_ADMIN
 
 #undef ENDEAVOUR_MAP_SIZE

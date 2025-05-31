@@ -13,7 +13,7 @@
 	name = "Minitest - Carpfarm"
 	display_id = "!debug-sector-1"
 	display_name = "Minitest Debugging Map - Carpfarm"
-	path = "maps/minitest/levels/minitest-carpfarm.dmm"
+	path = "maps/station/minitest/levels/minitest-carpfarm.dmm"
 	base_turf = /turf/simulated/floor/plating
 	flags = LEGACY_LEVEL_STATION | LEGACY_LEVEL_CONTACT | LEGACY_LEVEL_PLAYER | LEGACY_LEVEL_CONSOLES
 

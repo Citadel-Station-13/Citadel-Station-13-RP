@@ -145,7 +145,7 @@
 	name = "strelka - Deck 4"
 	display_id = "strelka-deck-4"
 	display_name = "NSV strelka - Deck 4"
-	path = "maps/strelka/levels/strelka_deck4.dmm"
+	path = "maps/station/strelka/levels/strelka_deck4.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -161,7 +161,7 @@
 	name = "strelka - Deck 3"
 	display_id = "strelka-deck-3"
 	display_name = "NSV strelka - Deck 3"
-	path = "maps/strelka/levels/strelka_deck3.dmm"
+	path = "maps/station/strelka/levels/strelka_deck3.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -177,7 +177,7 @@
 	name = "strelka - Deck 2"
 	display_id = "strelka-deck-2"
 	display_name = "NSV strelka - Deck 2"
-	path = "maps/strelka/levels/strelka_deck2.dmm"
+	path = "maps/station/strelka/levels/strelka_deck2.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -194,7 +194,7 @@
 	name = "strelka - Deck 1"
 	display_id = "strelka-deck-1"
 	display_name = "NSV strelka - Deck 1"
-	path ="maps/strelka/levels/strelka_deck1.dmm"
+	path ="maps/station/strelka/levels/strelka_deck1.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
