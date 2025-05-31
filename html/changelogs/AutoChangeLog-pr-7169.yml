@@ -1,0 +1,4 @@
+author: "Zandario"
+delete-after: True
+changes:
+  - bugfix: "Ghost can now see TGUI interfaces on objects. Finally."
