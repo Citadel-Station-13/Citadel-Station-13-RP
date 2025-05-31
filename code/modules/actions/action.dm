@@ -2,7 +2,22 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
- * action datums
+ * # Actions
+ *
+ * Implementation of assignable actions that can be placed in an action_holder,
+ * which can then be granted to mobs / clients so that they can use the action by triggering it.
+ *
+ * Actions backend **does**:
+ * * Provide an unified ownership API so that actions can be bundled by logical source; as an example,
+ *   a vehicle may maintain action holders that are granted to a rider, and those are tracked separately
+ *   from the rider's innate actions and their inventory actions.
+ *
+ * Actions backend **does not**:
+ * * Concern itself with things like targeting, mouse click capturing, etc. That's too complicated
+ *   for actions to handle; the implementation using it should. As an example, `/datum/ability` *does* have
+ *   implementation for this.
+ *
+ * ## legacy desc
  *
  * holder for movable/snappable hud action buttons.
  * binds to a single target datum; clicks are sent to it
