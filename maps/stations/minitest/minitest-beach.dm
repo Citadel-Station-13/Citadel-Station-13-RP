@@ -13,7 +13,7 @@
 	name = "Minitest - Beach"
 	display_id = "!debug-sector-2"
 	display_name = "Minitest Debugging Map - Beach"
-	path = "maps/station/minitest/levels/minitest-beach.dmm"
+	path = "maps/stations/minitest/levels/minitest-beach.dmm"
 	base_turf = /turf/simulated/floor/plating
 	flags = LEGACY_LEVEL_STATION | LEGACY_LEVEL_CONTACT | LEGACY_LEVEL_PLAYER | LEGACY_LEVEL_CONSOLES
 

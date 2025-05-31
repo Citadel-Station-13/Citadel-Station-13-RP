@@ -77,7 +77,7 @@
 	name = "Minitest - Station"
 	display_id = "!debug-station"
 	display_name = "Minitest Debugging Map - Station"
-	path = "maps/station/minitest/levels/minitest.dmm"
+	path = "maps/stations/minitest/levels/minitest.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
