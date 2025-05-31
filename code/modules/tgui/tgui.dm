@@ -5,6 +5,25 @@
 
 /**
  * tgui datum (represents a UI).
+ *
+ * ## Data
+ *
+ * TGUI has two levels of data.
+ *
+ * * 'data': The data and static data pushed into the UI. Data is updated as it's pushed in
+ *   with a 1-deep reducer, meaning that anything you push will overwrite the old value of the key
+ *   but not replace any other keys. This allows for partial updates.
+ * * 'modules': A secondary data-list. This works just like 'data', but the reducer behavior is
+ *   2-deep. This is a key-key-value list instead of a key-value list, basically.
+ *   This is used to inject 'embeds' into TGUI, as well, as their data can be then sent
+ *   without sending data for everything else as well.
+ *
+ * ## Future Work
+ *
+ * * move to react
+ * * add a way to dynamically pop up modals on tgui with the root renderer, without
+ *   needing interface-specific implementation
+ * * mob-indirection investigation for remote control (remote controller using rigsuit mob to hack door, as an eaxmple)
  */
 /datum/tgui
 	/// The mob who opened/is using the UI.
@@ -38,10 +57,8 @@
 	/// Are byond mouse events beyond the window passed in to the ui
 	var/mouse_hooked = FALSE
 	/// The Parent UI
-	//? STOP USING THIS. USE MODULES. ~SILICONS
 	var/datum/tgui/parent_ui
 	/// Children of this UI
-	//? STOP USING THIS. USE MODULES. ~SILICONS
 	var/list/children = list()
 
 	//* Modules *//
@@ -105,11 +122,11 @@
  *
  * @params
  * * data - force certain data sends
- * * modules - force certain module sends
+ * * nested_data - force certain module sends
  *
  * return bool - TRUE if a new pooled window is opened, FALSE in all other situations including if a new pooled window didn't open because one already exists.
  */
-/datum/tgui/proc/open(data, modules)
+/datum/tgui/proc/open(data, nested_data)
 	SHOULD_NOT_SLEEP(TRUE)
 	if(!user.client)
 		return FALSE
@@ -127,7 +144,7 @@
 	SStgui.on_open(src)
 	// defer initialize() to after current call chain.
 	spawn(0)
-		initialize(data, modules)
+		initialize(data, nested_data)
 	return TRUE
 
 /**
@@ -135,7 +152,7 @@
  *
  * * Separate from open() so that open() can be non-blocking.
  */
-/datum/tgui/proc/initialize(data, modules)
+/datum/tgui/proc/initialize(data, nested_data)
 	// todo: this is a blocking proc. src_object can be deleted at any time between the blocking procs.
 	//       we need sane handling of deletion order, of runtimes happen.
 	if(!window.is_ready())
@@ -168,7 +185,7 @@
 		with_data = TRUE,
 		with_static_data = TRUE,
 		force_data = data,
-		force_modules = modules,
+		force_nested_data = nested_data,
 	))
 	if(mouse_hooked)
 		window.set_mouse_macro()
@@ -278,8 +295,8 @@
 	window.send_message(
 		"update",
 		get_payload(
-		with_data = should_update_data,
-		with_static_data = TRUE,
+			with_data = should_update_data,
+			with_static_data = TRUE,
 		),
 	)
 	COOLDOWN_START(src, refresh_cooldown, TGUI_REFRESH_FULL_UPDATE_COOLDOWN)
@@ -306,7 +323,7 @@
  *
  * return list
  */
-/datum/tgui/proc/get_payload(with_data, with_static_data, list/force_data, list/force_modules)
+/datum/tgui/proc/get_payload(with_data, with_static_data, list/force_data, list/force_nested_data)
 	var/list/json_data = list()
 	json_data["config"] = list(
 		"title" = title,
@@ -330,26 +347,24 @@
 			"observer" = isobserver(user),
 		),
 	)
-	var/list/modules = list()
-	// static first
+	var/list/nested_data = list()
 	if(with_static_data)
 		json_data["static"] = src_object.ui_static_data(user, src)
 		for(var/datum/module as anything in modules_registered)
 			var/id = modules_registered[module]
-			modules[id] = module.ui_static_data(user, src, TRUE)
+			nested_data[id] = module.ui_static_data(user, src, TRUE)
+		json_data["nested_data"] = src_object.ui_nested_data(user, src)
 	if(with_data)
 		json_data["data"] = src_object.ui_data(user, src)
 		for(var/datum/module as anything in (with_static_data? modules_registered : modules_processed))
 			var/id = modules_registered[module]
-			modules[id] = modules[id] | module.ui_data(user, src, TRUE)
-	if(modules)
-		json_data["modules"] = modules
+			nested_data[id] = nested_data[id] | module.ui_data(user, src, TRUE)
 	if(src_object.tgui_shared_states)
 		json_data["shared"] = src_object.tgui_shared_states
 	if(!isnull(force_data))
 		json_data["data"] = (json_data["data"] || list()) | force_data
-	if(!isnull(force_modules))
-		json_data["modules"] = (json_data["modules"] || list()) | force_modules
+	if(!isnull(force_nested_data))
+		json_data["nested_data"] = (json_data["nested_data"] || list()) | nested_data
 	return json_data
 
 /**
@@ -465,17 +480,21 @@
  *
  * WARNING: Do not use this unless you know what you are doing
  *
- * required data The data to send
- * optional force bool Send an update even if UI is not interactive.
+ * @params
+ * * data - The data to send.
+ * * nested_data - Data to send to nested_data.
+ * * force - (optional) Send an update even if UI is not interactive.
  *
  * @return TRUE if data was sent, FALSE otherwise.
  */
-/datum/tgui/proc/push_data(data, force)
+/datum/tgui/proc/push_data(data, nested_data, force)
 	if(!user.client || !initialized || closing)
 		return FALSE
 	if(!force && status < UI_UPDATE)
 		return FALSE
+	// todo: one message
 	window.send_message("data", data)
+	window.send_message("nestedData", nested_data)
 	return TRUE
 
 /**
@@ -494,12 +513,12 @@
  *
  * @return TRUE if data was sent, FALSE otherwise.
  */
-/datum/tgui/proc/push_modules(list/updates, force)
+/datum/tgui/proc/push_nested_data(list/updates, force)
 	if(isnull(user.client) || !initialized || closing)
 		return FALSE
 	if(!force && status < UI_UPDATE)
 		return FALSE
-	window.send_message("modules", updates)
+	window.send_message("nested_data", updates)
 	return TRUE
 
 //* Module System *//
@@ -545,7 +564,7 @@
 	if(!isnull(ui) && ui != src)
 		return
 	// todo: this is force because otherwise static data can be desynced. should static data be on another proc instead?
-	push_modules(
+	push_nested_data(
 		updates = list(
 			(modules_registered[source]) = data,
 		),

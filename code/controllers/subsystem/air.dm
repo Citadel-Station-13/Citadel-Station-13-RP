@@ -358,9 +358,9 @@ SUBSYSTEM_DEF(air)
 	// 2. check if it's special and should look up the level's defaults
 	switch(gas_string)
 		if(ATMOSPHERE_USE_OUTDOORS)
-			gas_string = SSmapping.lookup_outdoors_air(turf_context.z)
+			gas_string = SSmapping.level_get_outdoors_air(turf_context.z)
 		if(ATMOSPHERE_USE_INDOORS)
-			gas_string = SSmapping.lookup_indoors_air(turf_context.z)
+			gas_string = SSmapping.level_get_indoors_air(turf_context.z)
 	// 3: process atmosphere
 	if(generated_atmospheres[gas_string])
 		var/datum/atmosphere/A = generated_atmospheres[gas_string]
@@ -369,6 +369,25 @@ SUBSYSTEM_DEF(air)
 	if(.)
 		return
 	return (cached_strings[gas_string] = unpack_gas_string(gas_string))
+
+/**
+ * Validates a gas string.
+ * * Unlike parsing, this is considered absolute and doesn't accept a turf for context.
+ * * 'use area', 'use outdoors', 'use indoors' are allowed if allow_turf_contextual
+ */
+/datum/controller/subsystem/air/proc/validate_gas_string(gas_string, allow_turf_contextual)
+	// these are only valid if we allow contextual
+	if(
+		gas_string == ATMOSPHERE_USE_AREA || \
+		gas_string == ATMOSPHERE_USE_OUTDOORS || \
+		gas_string == ATMOSPHERE_USE_INDOORS
+	)
+		return allow_turf_contextual
+	// requires it to already be generated
+	if(generated_atmospheres[gas_string])
+		return TRUE
+	// we, at the moment, don't validate anything else
+	return TRUE
 
 /datum/controller/subsystem/air/proc/unpack_gas_string(gas_string)
 	var/list/built = new /list(2)

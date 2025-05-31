@@ -9,8 +9,11 @@
 	layer = TURF_LAYER
 
 	//* Core *//
+
 	/// Atom flags.
 	var/atom_flags = NONE
+	/// Atom spawn flags
+	var/atom_spawn_flags = NONE
 	/// Prototype ID; persistence uses this to know what atom to load, even if the path changes in a refactor.
 	///
 	/// * this is very much a 'set this on type and all subtypes or don't set it at all' situation.
@@ -235,32 +238,6 @@
 		SSicon_smooth.remove_from_queues(src)
 
 	return ..()
-
-//* Preload Hooks *//
-
-/**
- * Called by the maploader if a dmm_context is set
- *
- * todo: rename to preload_from_mapload()
- */
-/atom/proc/preloading_instance(datum/dmm_context/context)
-	return
-
-/**
- * hook for abstract direction sets from the maploader
- *
- * todo: this might need to be part of preloading_instance; investigate
- *
- * return FALSE to override maploader automatic rotation
- */
-/atom/proc/preloading_dir(datum/dmm_context/context)
-	return TRUE
-
-/**
- * Preloads before Initialize(), invoked by init from a stack recipe.
- */
-/atom/proc/preload_from_stack_recipe(datum/stack_recipe/recipe)
-	return
 
 /atom/proc/reveal_blood()
 	return

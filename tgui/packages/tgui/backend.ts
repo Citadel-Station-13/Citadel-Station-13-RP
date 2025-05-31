@@ -38,7 +38,7 @@ export const backendSuspendSuccess = () => ({
 const initialState = {
   config: {},
   data: {},
-  modules: {},
+  nestedData: {},
   shared: {},
   // Start as suspended
   suspended: Date.now(),
@@ -61,14 +61,14 @@ export const backendReducer = (state = initialState, action) => {
       ...payload.data,
     };
     // Merge modules
-    const modules = {
-      ...state.modules,
+    const nestedData = {
+      ...state.nestedData,
     };
-    if (payload.modules) {
-      const merging = payload.modules;
+    if (payload.nestedData) {
+      const merging = payload.nestedData;
       for (let id of Object.keys(merging)) {
-        modules[id] = {
-          ...modules[id],
+        nestedData[id] = {
+          ...nestedData[id],
           ...merging[id],
         };
       }
@@ -91,7 +91,7 @@ export const backendReducer = (state = initialState, action) => {
       ...state,
       config,
       data,
-      modules,
+      nestedData,
       shared,
       suspended: false,
     };
@@ -110,22 +110,22 @@ export const backendReducer = (state = initialState, action) => {
     };
   }
 
-  if (type === 'backend/modules') {
-    // Merge modules
-    const modules = {
-      ...state.modules,
+  if (type === 'backend/nestedData') {
+    // Merge nestedData
+    const nestedData = {
+      ...state.nestedData,
     };
     for (let id of Object.keys(payload)) {
       const data = payload[id];
-      modules[id] = {
-        ...modules[id],
+      nestedData[id] = {
+        ...nestedData[id],
         ...data,
       };
     }
     // Return new state
     return {
       ...state,
-      modules,
+      nestedData,
     };
   }
 
@@ -184,7 +184,7 @@ export const backendMiddleware = store => {
       return;
     }
 
-    if (type === 'modules') {
+    if (type === 'nestedData') {
       store.dispatch(backendModuleData(payload));
       return;
     }
@@ -324,7 +324,7 @@ type BackendContext = {
       observer: number,
     },
   },
-  modules: Record<string, any>,
+  nestedData: Record<string, any>,
   shared: Record<string, any>,
   computeCache: Record<string, any>,
   suspending: boolean,
@@ -519,10 +519,10 @@ export const useModule = <TData extends ModuleData>(context): ModuleBackend<TDat
       moduleID: null,
     };
   }
-  let { modules } = backend;
+  let { nestedData } = backend;
   return {
     backend: backend,
-    data: (modules && modules[context.m_id]) || {},
+    data: (nestedData && nestedData[context.m_id]) || {},
     act: constructModuleAct(context.m_id, context.m_ref),
     moduleID: context.m_id,
   };
@@ -545,12 +545,4 @@ export const constructModuleAct = (id: string, ref: string): actFunctionType => 
     }
     Byond.sendMessage('mod/' + action, sent);
   };
-};
-
-/**
- * Extracts module data from context
- */
-export const getModuleData = <TData>(context, id: string): TData => {
-  let backend = useBackend<TData>(context);
-  return backend.modules[id];
 };
