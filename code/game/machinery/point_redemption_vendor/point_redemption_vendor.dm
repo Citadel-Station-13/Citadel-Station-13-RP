@@ -61,7 +61,7 @@
 		drop_product(inserted_id, where)
 		inserted_id = null
 
-/obj/machinery/point_redemption_vendor/using_item_on(obj/item/using, datum/event_args/actor/clickchain/e_args, clickchain_flags, datum/callback/reachability_check)
+/obj/machinery/point_redemption_vendor/using_item_on(obj/item/using, datum/event_args/actor/clickchain/e_args, clickchain_flags)
 	. = ..()
 	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return

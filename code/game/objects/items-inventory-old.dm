@@ -92,7 +92,7 @@
 	// unload actions
 	unregister_item_actions(user)
 	// close context menus
-	context_close()
+	close_context_menus()
 	// storage stuff
 	obj_storage?.on_dropped(user)
 	// get rid of shieldcalls

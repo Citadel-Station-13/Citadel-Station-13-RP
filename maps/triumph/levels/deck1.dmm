@@ -2064,7 +2064,6 @@
 /turf/simulated/floor/plating,
 /area/engineering/hallway/lower)
 "gC" = (
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 2;
@@ -3535,7 +3534,6 @@
 	id = "portnacelle_blastdoor";
 	opacity = 0
 	},
-/obj/map_helper/paint_stripe/sun,
 /obj/structure/window/phoronreinforced/full{
 	icon_state = "phoronwindow0"
 	},
@@ -4546,9 +4544,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "pm" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/techfloor/orange/corner{
 	dir = 1
@@ -4821,9 +4817,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/station/stairs_one)
 "qm" = (
@@ -6184,18 +6178,14 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/engineering/hallway/lower)
 "uv" = (
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
@@ -7009,7 +6999,6 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
 	dir = 4
 	},
-/obj/map_helper/paint_stripe/sun,
 /obj/structure/window/phoronreinforced/full{
 	icon_state = "phoronwindow0"
 	},
@@ -7957,9 +7946,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/station/stairs_one)
 "AB" = (
@@ -8309,7 +8296,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/map_helper/paint_stripe/sun,
 /obj/structure/window/phoronreinforced/full{
 	icon_state = "phoronwindow0"
 	},

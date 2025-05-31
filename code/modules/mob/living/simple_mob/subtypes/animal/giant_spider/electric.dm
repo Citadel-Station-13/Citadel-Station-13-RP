@@ -51,7 +51,7 @@
 
 /obj/projectile/beam/stun/electric_spider
 	name = "stun beam"
-	agony = 20
+	damage_inflict_agony = 20
 
 // The electric spider's AI.
 /datum/ai_holder/polaris/simple_mob/ranged/electric_spider
