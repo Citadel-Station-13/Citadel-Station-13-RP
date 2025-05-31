@@ -13,7 +13,6 @@
 	vessel_mass = 18500
 	burn_delay = 2 SECONDS
 	fore_dir = EAST	// Which direction the ship/z-level is facing.  It will move dust particles from that direction when moving.
-	base = TRUE		// Honestly unsure what this does but it seems the main sector or "Map" we're at has this so here it stays
 	// The waypoints that are avaliable once you are at this Navpoint
 	initial_generic_waypoints = list("strelka_excursion_hangar","strelka_emt_hangar","strelka_civvie_home","strelka_annex_dock")
 

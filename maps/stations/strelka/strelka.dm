@@ -151,7 +151,9 @@
 		ZTRAIT_FACILITY_SAFETY,
 	)
 	base_turf = /turf/space
-	link_below = /datum/map_level/strelka/ship/deck_three
+	struct_x = 0
+	struct_y = 0
+	struct_z = 3
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
 /datum/map_level/strelka/ship/deck_three
@@ -165,8 +167,9 @@
 		ZTRAIT_FACILITY_SAFETY,
 	)
 	base_turf = /turf/simulated/open
-	link_below = /datum/map_level/strelka/ship/deck_two
-	link_above = /datum/map_level/strelka/ship/deck_four
+	struct_x = 0
+	struct_y = 0
+	struct_z = 2
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
 /datum/map_level/strelka/ship/deck_two
@@ -181,8 +184,9 @@
 		ZTRAIT_LEGACY_BELTER_DOCK,
 	)
 	base_turf = /turf/simulated/open
-	link_below = /datum/map_level/strelka/ship/deck_one
-	link_above = /datum/map_level/strelka/ship/deck_three
+	struct_x = 0
+	struct_y = 0
+	struct_z = 1
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
 /datum/map_level/strelka/ship/deck_one
@@ -196,7 +200,9 @@
 		ZTRAIT_FACILITY_SAFETY,
 	)
 	base_turf = /turf/simulated/open
-	link_above = /datum/map_level/strelka/ship/deck_two
+	struct_x = 0
+	struct_y = 0
+	struct_z = 0
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
 #undef STRELKA_MAP_SIZE
