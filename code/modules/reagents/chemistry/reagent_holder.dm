@@ -349,7 +349,7 @@
 		var/mob/living/L = target
 		if(ishuman(L))
 			var/mob/living/carbon/human/H = L
-			if(H.atom_shieldcall_handle_touch(null, SHIELDCALL_CONTACT_FLAG_NEUTRAL, SHIELDCALL_CONTACT_SPECIFIC_CHEMICAL_SPRAY) & SHIELDCALL_FLAGS_BLOCK_ATTACK)
+			if(H.atom_shieldcall_handle_touch(null, null, SHIELDCALL_CONTACT_FLAG_NEUTRAL, SHIELDCALL_CONTACT_SPECIFIC_CHEMICAL_SPRAY) & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 				amount = 0
 		perm = L.reagent_permeability()
 	return trans_to_mob(target, amount, CHEM_TOUCH, perm, copy)

@@ -107,9 +107,8 @@
 	. = ..()
 	add_overlay("[icon_state]1")
 
-/obj/item/fbp_backup_cell/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	if(user.a_intent == INTENT_HARM)
-		return ..()
+/obj/item/fbp_backup_cell/using_as_item(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	var/mob/user = clickchain.performer
 	if(!used && ishuman(target))
 		var/mob/living/carbon/human/H = target
 		if(H.isSynthetic() || fast_is_species_type(H, /datum/species/holosphere))

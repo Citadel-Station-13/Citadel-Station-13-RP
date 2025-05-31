@@ -41,11 +41,9 @@
 
 /obj/machinery/atmospheric_field_generator/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/tool/crowbar) && isactive)
-		if(!src) return
 		to_chat(user, "<span class='warning'>You can't open the ARF-G whilst it's running!</span>")
 		return
 	if(istype(W,/obj/item/tool/crowbar) && !isactive)
-		if(!src) return
 		to_chat(user, "<span class='notice'>You [hatch_open? "close" : "open"] \the [src]'s access hatch.</span>")
 		hatch_open = !hatch_open
 		update_icon()
@@ -53,19 +51,16 @@
 			generate_field()
 		return
 	if(hatch_open && istype(W,/obj/item/multitool))
-		if(!src) return
 		to_chat(user, "<span class='notice'>You toggle \the [src]'s activation behavior to [alwaysactive? "emergency" : "always-on"].</span>")
 		alwaysactive = !alwaysactive
 		update_icon()
 		return
 	if(hatch_open && W.is_wirecutter())
-		if(!src) return
 		to_chat(user, "<span class='warning'>You [wires_intact? "cut" : "mend"] \the [src]'s wires!</span>")
 		wires_intact = !wires_intact
 		update_icon()
 		return
 	if(hatch_open && istype(W,/obj/item/weldingtool))
-		if(!src) return
 		var/obj/item/weldingtool/WT = W
 		if(!WT.isOn()) return
 		if(WT.get_fuel() < 5) // uses up 5 fuel.
@@ -77,7 +72,6 @@
 			if(!src || !user || !WT.remove_fuel(5, user)) return
 			to_chat(user, "<span class='notice'>You fully disassemble \the [src]. There were no salvageable parts.</span>")
 			qdel(src)
-		return
 
 /obj/machinery/atmospheric_field_generator/perma/Initialize(mapload)
 	. = ..()

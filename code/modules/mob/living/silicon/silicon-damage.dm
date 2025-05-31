@@ -3,7 +3,7 @@
 
 //* Damage Instance Handling *//
 
-/mob/living/silicon/inflict_damage_instance(damage, damage_type, damage_tier, damage_flag, damage_mode, attack_type, datum/weapon, shieldcall_flags, hit_zone, list/additional, datum/event_args/actor/clickchain/clickchain)
+/mob/living/silicon/inflict_damage_instance(damage, damage_type, damage_tier, damage_flag, damage_mode, attack_type, datum/attack_source, shieldcall_flags, hit_zone, list/additional, datum/event_args/actor/clickchain/clickchain)
 	if(inflict_damage_type_special(args))
 		return
 	// we only care about those

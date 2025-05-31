@@ -27,7 +27,7 @@
 	/// sound volume
 	var/toggle_sound_volume = 50
 
-/obj/item/shield/transforming/passive_parry_intercept(mob/defending, attack_type, datum/weapon, datum/passive_parry/parry_data)
+/obj/item/shield/transforming/passive_parry_intercept(mob/defending, attack_type, datum/attack_source, datum/passive_parry/parry_data)
 	if(!active)
 		return // cancel
 	return ..()

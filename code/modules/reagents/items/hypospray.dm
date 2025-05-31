@@ -167,7 +167,7 @@
 			inject_verb = "spray"
 	inject_message = "[user] starts to [inject_verb] [target] with \the [src]."
 	var/block_flags = NONE
-	for(var/obj/item/I as anything in target.inventory.items_that_cover(limb.body_part_flags))
+	for(var/obj/item/I as anything in target.inventory.query_coverage(limb.body_part_flags))
 		block_flags |= (I.clothing_flags & (CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT))
 	// got all coverage, proceed.
 	var/delay = injection_time

@@ -183,13 +183,14 @@
 	damage_force = 40
 	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_ENERGY
+	damage_tier = 4
 	embed_chance = 0
 
 /obj/projectile/bullet/particle/heavy
 	name = "antimatter slug"
 	icon_state = "particle-heavy"
-	damage_force = 80 // same as a laser cannon
-	armor_penetration = 25 //it explodes on the surface of things, so less armor pen than the laser cannon
+	damage_force = 60
+	damage_tier = 5
 	light_range = 3
 	light_power = 1
 	light_color = "#CCFFFF"

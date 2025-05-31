@@ -235,5 +235,6 @@
 		CRASH("Callback [src] slept on a no-sleeping invoke.")
 
 /datum/callback/proc/invoke_no_sleep_call(...)
+	PRIVATE_PROC(TRUE)
 	set waitfor = FALSE
 	. = Invoke(arglist(args))

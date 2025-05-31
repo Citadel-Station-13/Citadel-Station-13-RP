@@ -24,7 +24,7 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun_component/particle_array/particl
 	pass_flags = ATOM_PASS_FLAGS_BEAM
 	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_LASER
-	damage_tier = LASER_TIER_MEDIUM
+	damage_tier = 3
 	damage_force = 30
 	projectile_type = PROJECTILE_TYPE_BEAM | PROJECTILE_TYPE_PHOTONIC
 	impact_sound = PROJECTILE_IMPACT_SOUNDS_ENERGY
