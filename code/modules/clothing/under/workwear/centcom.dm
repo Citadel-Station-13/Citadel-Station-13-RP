@@ -124,6 +124,15 @@
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
+/obj/item/clothing/under/pmd
+	name = "PMD uniform"
+	desc = "A black uniform whose back is emblazoned with the Icon of the PMD. Close inspection of the silver embroidery reveals a complex web of glyphs written in an unknown language."
+	icon = 'icons/clothing/uniform/workwear/centcom/pmd_uniform.dmi'
+	icon_state = "pmd_uniform"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
 /obj/item/clothing/under/gov
 	desc = "A neat proper uniform of someone on offical business. The collar is <i>immaculately</i> starched."
 	name = "Green formal uniform"
