@@ -121,7 +121,6 @@ GLOBAL_LIST(topic_status_cache)
 	#ifdef UNIT_TESTS
 	HandleTestRun()
 	#endif
-
 	if(config_legacy.ToRban)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ToRban_autoupdate)), 5 MINUTES)
 

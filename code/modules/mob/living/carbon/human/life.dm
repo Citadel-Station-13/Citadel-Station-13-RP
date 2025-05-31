@@ -1189,9 +1189,9 @@
 		// Check everything else.
 
 		//Periodically double-check embedded_flag
-		if(embedded_flag && !(life_tick % 10))
-			if(!embedded_needs_process())
-				embedded_flag = 0
+		// if(embedded_flag && !(life_tick % 10))
+			// if(!embedded_needs_process())
+			// 	embedded_flag = 0
 
 		if(species.vision_organ)
 			var/obj/item/organ/vision = internal_organs_by_name[species.vision_organ]

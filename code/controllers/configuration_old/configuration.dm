@@ -92,7 +92,6 @@
 	var/revival_brain_life = -1
 
 	var/welder_vision = 1
-	var/no_click_cooldown = 0
 
 	var/footstep_volume = 0
 
@@ -205,9 +204,6 @@
 
 				if ("multi_z_explosion_scalar")
 					multi_z_explosion_scalar = text2num(value)
-
-				if ("no_click_cooldown")
-					config_legacy.no_click_cooldown = 1
 
 				if ("allow_vote_restart")
 					config_legacy.allow_vote_restart = 1

@@ -24,7 +24,7 @@
 
 	//* Attacks - Basic *//
 	/// melee style
-	var/datum/unarmed_attack/melee_style
+	var/datum/melee_attack/unarmed/melee_style
 
 	//? Darksight
 	/// our innate darksight
@@ -219,8 +219,6 @@
 	//* Damage resistances *//
 	/// Chance for a grab attempt to fail. Note that this is not a true resist and is just a prob() of failure.
 	var/grab_resist = 0
-	/// Damage reduction for all types
-	var/resistance = 0
 	// Protection against heat/cold/electric/water effects.
 	// 0 is no protection, 1 is total protection. Negative numbers increase vulnerability.
 	var/heat_resist = 0.0
@@ -304,7 +302,7 @@
 	melee_style.damage_mode = (attack_sharp? DAMAGE_MODE_SHARP : NONE) | (attack_edge? DAMAGE_MODE_EDGE : NONE)
 	melee_style.damage_flag = attack_armor_type
 	//* IT'S GAMER TIME *//
-	melee_style.damage_tier = MELEE_TIER_EXTREME
+	melee_style.damage_tier = 5
 	melee_style.attack_verb_legacy = attacktext
 	melee_style.verb_past_participle = attacktext
 

@@ -31,7 +31,7 @@ GLOBAL_REAL(RS##what, /datum/controller/repository/##what); \
 	RS##what.Initialize(); \
 } \
 /datum/controller/subsystem/repository/__get_all_repositories() { \
-	. = ..(); \
+	. = ..() || list(); \
 	. += RS##what; \
 } \
 /datum/controller/repository/##what

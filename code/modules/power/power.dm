@@ -323,9 +323,9 @@
 		var/mob/living/carbon/human/H = M
 		if(H.species.siemens_coefficient <= 0)
 			return
-		if(H.gloves)
-			var/obj/item/clothing/gloves/G = H.gloves
-			if(G.siemens_coefficient == 0)	return 0		//to avoid spamming with insulated glvoes on
+		siemens_coeff *= H.inventory.query_simple_covered_siemens_coefficient(HANDS)
+		if(siemens_coeff <= 0)
+			return 0		//to avoid spamming with insulated glvoes on
 
 	//Checks again. If we are still here subject will be shocked, trigger standard 20 tick warning
 	//Since this one is longer it will override the original one.
@@ -358,7 +358,7 @@
 		stun_calculation = rand(20, 35)
 	else
 		stun_calculation = shock_damage
-	var/list/shock_return = M.electrocute(0, shock_damage * siemens_coeff, stun_calculation, ELECTROCUTE_ACT_FLAG_IGNORE_ARMOR, null, source)
+	var/list/shock_return = M.electrocute(0, shock_damage * siemens_coeff, stun_calculation & siemens_coeff, ELECTROCUTE_ACT_FLAG_IGNORE_ARMOR, null, source)
 	pass(shock_return)
 	// // 10kw per hp
 	// var/drained_energy = drained_hp * 10000

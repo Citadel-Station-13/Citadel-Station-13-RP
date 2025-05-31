@@ -4,6 +4,7 @@
 	icon_state = "hfmachete"
 	base_icon_state = "hfmachete"
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
+	damage_tier = 5
 	damage_force = 20 // You can be crueler than that, Jack.
 	throw_force = 40
 	throw_speed = 8
@@ -12,7 +13,6 @@
 	siemens_coefficient = 1
 	origin_tech = list(TECH_COMBAT = 3, TECH_ILLEGAL = 3)
 	attack_verb = list("attacked", "diced", "cleaved", "torn", "cut", "slashed")
-	armor_penetration = 50
 	var/base_state = "hfmachete"
 	attack_sound = "machete_hit_sound" // dont mind the meaty hit sounds if you hit something that isnt meaty
 	can_cleave = TRUE
