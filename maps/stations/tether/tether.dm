@@ -9,12 +9,14 @@
 		/datum/map_level/tether/station/space_low,
 		/datum/map_level/tether/station/space_high,
 		/datum/map_level/tether/mine,
-		/datum/map_level/tether/misc,
 		/datum/map_level/tether/underdark,
 		/datum/map_level/tether/plains,
 	)
 	width = 192
 	height = 192
+	dependencies = list(
+		/datum/map/centcom/virgo_3b_colony,
+	)
 	lateload = list(
 		/datum/map/sector/debrisfield_192,
 		/datum/map/sector/piratebase_192,
@@ -285,15 +287,6 @@
 	. = ..()
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, z_index, world.maxx, world.maxy) // Create the mining Z-level.
 	new /datum/random_map/noise/ore(null, 1, 1, z_index, 64, 64)         // Create the mining ore distribution map.
-
-/datum/map_level/tether/misc
-	id = "misc"
-	name = "Tether - Misc"
-	path = "maps/tether/levels/misc.dmm"
-	traits = list(
-		ZTRAIT_LEGACY_BELTER_TRANSIT,
-	)
-	flags = LEGACY_LEVEL_ADMIN|LEGACY_LEVEL_CONTACT
 
 /datum/map_level/tether/underdark
 	id = "underdark"

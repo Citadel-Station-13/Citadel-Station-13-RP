@@ -12,10 +12,12 @@
 		/datum/map_level/rift/deep,
 		/datum/map_level/rift/caves,
 		/datum/map_level/rift/plains,
-		/datum/map_level/rift/colony,
 	)
 	width = 192
 	height = 192
+	dependencies = list(
+		/datum/map/centcom/nts_demeter,
+	)
 	lateload = list(
 		/datum/map/sector/debrisfield_192,
 		/datum/map/sector/piratebase_192,
@@ -422,13 +424,3 @@
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER
 	planet_path = /datum/planet/lythios43c
 
-/datum/map_level/rift/colony
-	id = "orbital-relay"
-	name = "Rift - Orbital Relay"
-	display_id = "atlas-relay"
-	display_name = "NSB Atlas Orbital Relay"
-	path = "maps/stations/rift/map_files/rift-11-orbital.dmm"
-	flags = LEGACY_LEVEL_ADMIN|LEGACY_LEVEL_CONTACT
-	traits = list(
-		ZTRAIT_LEGACY_BELTER_TRANSIT,
-	)

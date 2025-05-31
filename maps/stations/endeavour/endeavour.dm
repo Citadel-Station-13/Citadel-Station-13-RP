@@ -22,12 +22,14 @@
 		/datum/map_level/endeavour/ship/deck_one,
 		/datum/map_level/endeavour/misc,
 		/datum/map_level/endeavour/transit,
-		/datum/map_level/endeavour/flagship,
 	)
 	width = 192
 	height = 192
 	world_width = 192
 	world_height = 192
+	dependencies = list(
+		/datum/map/centcom/ncv_oracle,
+	)
 	lateload = list(
 		/datum/map/sector/debrisfield_192,
 		/datum/map/sector/piratebase_192,
@@ -215,14 +217,6 @@
 	struct_z = 0
 	base_turf = /turf/simulated/open
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
-
-/datum/map_level/endeavour/flagship
-	id = "EndeavourFlagship"
-	name = "Endeavour - Centcom / Flagship"
-	display_id = "endeavour-flagship"
-	display_name = "NSV Endeavour - Flagship Offboarding"
-	path = "maps/endeavour/levels/flagship.dmm"
-	flags = LEGACY_LEVEL_ADMIN|LEGACY_LEVEL_CONTACT
 
 /datum/map_level/endeavour/transit
 	id = "EndeavourTransit"

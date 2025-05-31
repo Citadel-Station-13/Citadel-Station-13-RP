@@ -3,3 +3,7 @@
 
 /datum/map/centcom
 	abstract_type = /datum/map/centcom
+
+/datum/map_level/centcom
+	abstract_type = /datum/map_level/centcom
+	flags = LEGACY_LEVEL_ADMIN | LEGACY_LEVEL_CONTACT
