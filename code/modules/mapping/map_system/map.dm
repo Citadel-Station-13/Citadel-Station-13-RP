@@ -435,6 +435,8 @@
 		if(!skip_loaded_rebuild)
 			rebuilding_level.rebuild_multiz_in_dir(rebuild_dirs)
 
+	return TRUE
+
 /**
  * Get levels sorted into z-loading order
  */

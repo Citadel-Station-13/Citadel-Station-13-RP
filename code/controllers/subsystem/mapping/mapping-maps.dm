@@ -82,6 +82,11 @@
 	for(var/datum/map/loading_map as anything in maps_to_load)
 		emit_info_log("load - loading '[instance.id]' with [length(loading_map.levels)] levels...")
 
+		if(!loading_map.construct())
+			emit_init_fatal("load - could not construct map id '[loading_map.id]'; skipping")
+			stack_trace("map id '[id]' failed construct()ion")
+			continue
+
 		var/list/map_use_area_cache = loading_map.load_shared_area_cache ? list() : null
 
 		for(var/datum/map_level/level as anything in loading_map.get_sorted_levels())
