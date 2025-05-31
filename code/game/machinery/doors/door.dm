@@ -46,6 +46,8 @@
 
 	var/reinforcing = 0
 
+	var/allowknock = TRUE //Whether or not you can knock on this door.
+	var/knocksound = 'sound/machines/doorknock.ogg'
 
 /obj/machinery/door/Initialize(mapload, newdir)
 	. = ..()
@@ -157,6 +159,10 @@
 /obj/machinery/door/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
+	if(user.a_intent == INTENT_GRAB)
+		knock(user)
+		return
+
 	return src.attackby(user, user)
 
 /obj/machinery/door/attack_tk(mob/user as mob)
@@ -404,6 +410,50 @@
 
 	update_nearby_tiles()
 
+/obj/machinery/door/proc/knock(mob/user)
+	if(!allowknock)
+		return
+	if(usr.stat != 0 || !(usr.mobility_flags & MOBILITY_CAN_USE))
+		to_chat(usr, SPAN_WARNING("You can't do that right now."))
+		return
+
+	src.add_fingerprint(user)
+	
+	//If someone can see both the performer and the door, then they get a message saying usr knocks on the door.
+	//But if someone can only see the door and not the performer (usually when they're on the opposite side of the door),
+	// they get a message saying they hear a knock on the door.
+	//If someone sees only the usr and not the door, nothing happens since you don't get a message for anything outside your field of view
+	var/list/mobs_see_usr_and_door = viewers(src) & viewers(user) - user
+	var/list/mobs_see_only_door = viewers(src) - viewers(user) - user
+
+	for(var/mob/m in mobs_see_only_door)
+		if(m.is_blind())
+			m.show_message(SPAN_INFO("You hear a knocking sound nearby."), SAYCODE_TYPE_AUDIBLE)
+		else
+			m.show_message(SPAN_INFO("You hear a knock on \the [src]."), SAYCODE_TYPE_AUDIBLE)
+	for(var/mob/m in mobs_see_usr_and_door)
+		if(m.is_blind())
+			m.show_message(SPAN_INFO("You hear a knocking sound nearby."), SAYCODE_TYPE_AUDIBLE)
+		else
+			//If they can see then they get notified even if deaf since you can...just see the person knocking
+			m.show_message(SPAN_INFO("\The [user] knocks on \the [src]."), SAYCODE_TYPE_CONSCIOUS)
+	to_chat(user, SPAN_INFO("You knock on \the [src]."))
+	playsound(src, knocksound, 100, 1)
+	return TRUE
+
+/obj/machinery/door/context_query()
+	. = ..()
+	if(allowknock)
+		.["knock"] = ATOM_CONTEXT_TUPLE("Knock", image('icons/UI_icons/inventory/hand_l.png'), 1, MOBILITY_CAN_USE)
+
+/obj/machinery/door/context_act(datum/event_args/actor/e_args, key)
+	. = ..()
+	if(.) return
+	switch(key)
+		if("knock")
+			knock(e_args.performer)
+			return TRUE
+
 /obj/machinery/door/morgue
 	icon = 'icons/obj/doors/doormorgue.dmi'
 
@@ -414,3 +464,4 @@
 
 	icon = 'icons/turf/stomach_vr.dmi'
 	icon_state = "fleshclosed"
+	allowknock = FALSE //How are you gonna knock on flesh

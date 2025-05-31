@@ -28,6 +28,8 @@
 
 	smoothing_groups = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
 
+	allowknock = FALSE
+	
 	var/datum/prototype/material/implicit_material
 	// Icon states for different shutter types. Simply change this instead of rewriting the update_icon proc.
 	var/icon_state_open = null
