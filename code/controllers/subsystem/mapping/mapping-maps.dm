@@ -84,7 +84,7 @@
 
 		if(!loading_map.construct())
 			emit_init_fatal("load - could not construct map id '[loading_map.id]'; skipping")
-			stack_trace("map id '[id]' failed construct()ion")
+			stack_trace("map id '[loading_map.id]' failed construct()ion")
 			continue
 
 		var/list/map_use_area_cache = loading_map.load_shared_area_cache ? list() : null
