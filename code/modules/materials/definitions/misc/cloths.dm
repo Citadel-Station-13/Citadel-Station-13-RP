@@ -109,7 +109,7 @@
 	)
 	. += create_stack_recipe_datum(
 		name = "empty sandbag",
-		product = /obj/item/stack/emptysandbag,
+		product = /obj/item/stack/sandbag/empty,
 		cost = 2,
 		amount = 5,
 		time = 2 SECONDS,
