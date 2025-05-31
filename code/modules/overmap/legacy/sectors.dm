@@ -55,12 +55,7 @@
 				else
 					CRASH("level [our_z] ([SSmapping.level_get_id(our_z)]) had manually placed overmap entity despite having an initializer already loaded")
 		else
-			var/area/shuttle/shuttle_area = loc.loc
-			if(istype(shuttle_area.shuttle, /datum/shuttle/autodock/overmap))
-				// do nothing, /visitable/ship/landable handles it
-			else
-				CRASH("[audit_loc()] had an overmap entity placed on a non-overmap shuttle")
-
+			// do nothing, /visitable/ship/landable handles it
 
 	// todo: This is shitcode but sue me tbh we gotta refactor this shit anyways to be overmap_initializer's
 	spawn(-1)
