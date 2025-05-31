@@ -353,6 +353,7 @@
 	. = instance.lathe_print(drop_location(), amount, material_parts, ingredient_parts, null, src, efficiency_multiplier)
 	if(!isnull(print_icon_state))
 		flick(print_icon_state, src)
+	ui_controller?.ui_materials_update()
 
 /obj/machinery/lathe/process(delta_time)
 	if(!queue_active)
@@ -395,8 +396,6 @@
 			head = queue[1]
 		if(left_this_tick <= 0)
 			break
-	if(printed_any)
-		ui_controller?.ui_queue_update()
 
 /obj/machinery/lathe/proc/reconsider_queue(autostart, silent)
 	if(!length(queue))
@@ -548,7 +547,7 @@
 	return stored_materials.dump(drop_location(), id, amount)
 
 /obj/machinery/lathe/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
-	if(!has_interface)
+	if(!has_interface && !parent_ui) //We assume parent = contacting us remotely.
 		return
 	tgui_controller().ui_interact(user, ui, parent_ui)
 

@@ -229,6 +229,42 @@ SUBSYSTEM_DEF(materials)
 			"iconKey" = mat.tgui_icon_key,
 			"sheetAmount" = SHEET_MATERIAL_AMOUNT,
 		)
+		if(full)
+			built["relative_integrity"] = mat.relative_integrity
+			built["hardness"] = mat.hardness
+			built["toughness"] = mat.toughness
+			built["refraction"] = mat.refraction
+			built["absorption"] = mat.absorption
+			built["nullification"] = mat.nullification
+			built["density"] = mat.density
+			built["weight_multiplier"] = mat.weight_multiplier
+			built["relative_conductivity"] = mat.relative_conductivity
+			built["relative_reactivity"] = mat.relative_reactivity
+			built["relative_permeability"] = mat.relative_permeability
+			built["melting_point"] = mat.melting_point
+			built["opacity"] = mat.opacity
+			built["tags"] = mat.material_tags
+
+			var/list/constraint_list = list()
+			var/datum/bitfield/single/constraint_bf = new /datum/bitfield/single/material_constraints
+			constraint_list += mat.material_constraints //Add the unified constraint
+			for(var/key in constraint_bf.flags)
+				if(constraint_bf.flags[key] & mat.material_constraints)
+					constraint_list += constraint_bf.flags[key] //And the individual constraints. This is because we'll be using js' .Includes() to check if a constraint bitflag is present.
+					//We do this instead of passing the direct flags to JS for the following reasons and using bitwise and because:
+
+					//E.g if your material is MATERIAL_CONSTRAINT_RIGID | MATERIAL_CONSTRAINT_TRANSPARENT (e.g clear plastic)
+					//you want it to pass checks for both MATERIAL_CONSTRAINT_RIGID, MATERIAL_CONSTRAINT_TRANSPARENT and (MATERIAL_CONSTRAINT_RIGID | MATERIAL_CONSTRAINT_TRANSPARENT)
+
+
+					//TODO: Reconstruction of combined bitfields
+					//Because if your material is RIGID | CONDUCTIVE | CRYSTALLINE
+					//you should be able to use it in RIGID | CONDUCTIVE applications, but not RIGID | CONDUCTIVE | CRYSTALLINE | RADIOACTIVE
+					//But right now, you can't.
+
+
+
+			built["constraints"] = constraint_list
 		data[mat.id] = built
 	// todo: per-material sheetAmount
 	return list(
