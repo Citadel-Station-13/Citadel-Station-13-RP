@@ -3,12 +3,14 @@
 	name = "World - Minitest (DEBUG)"
 	levels = list(
 		/datum/map_level/minitest/station,
-		/datum/map_level/minitest/sector1,
-		/datum/map_level/minitest/sector2,
 	)
 	width = 100
 	height = 100
 	allow_random_draw = FALSE
+	lateload = list(
+		/datum/map/minitest_beach,
+		/datum/map/minitest_carpfarm,
+	)
 
 	//* LEGACY BELOW *//
 
@@ -81,22 +83,4 @@
 		ZTRAIT_FACILITY_SAFETY,
 	)
 	base_turf = /turf/space
-	flags = LEGACY_LEVEL_STATION | LEGACY_LEVEL_CONTACT | LEGACY_LEVEL_PLAYER | LEGACY_LEVEL_CONSOLES
-
-/datum/map_level/minitest/sector1
-	id = "sector-1"
-	name = "Minitest - Sector 1"
-	display_id = "!debug-sector-1"
-	display_name = "Minitest Debugging Map - Sector 1"
-	path = "maps/minitest/levels/sector1.dmm"
-	base_turf = /turf/simulated/floor/plating
-	flags = LEGACY_LEVEL_STATION | LEGACY_LEVEL_CONTACT | LEGACY_LEVEL_PLAYER | LEGACY_LEVEL_CONSOLES
-
-/datum/map_level/minitest/sector2
-	id = "sector-2"
-	name = "Minitest - Sector 2"
-	display_id = "!debug-sector-2"
-	display_name = "Minitest Debugging Map - Sector 2"
-	path = "maps/minitest/levels/sector2.dmm"
-	base_turf = /turf/simulated/floor/plating
 	flags = LEGACY_LEVEL_STATION | LEGACY_LEVEL_CONTACT | LEGACY_LEVEL_PLAYER | LEGACY_LEVEL_CONSOLES
