@@ -1,4 +1,4 @@
-/datum/sprite_accessory/tail/shadekin_short
+/datum/prototype/sprite_accessory/tail/shadekin_short
 	name = "Shadekin Short Tail, colorable"
 	id = "tail_shadekin_short"
 	icon_state = "shadekin-short"

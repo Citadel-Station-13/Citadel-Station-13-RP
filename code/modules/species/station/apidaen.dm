@@ -5,13 +5,11 @@
 	name = SPECIES_APIDAEN
 	name_plural = SPECIES_APIDAEN
 
-	icobase      = 'icons/mob/species/apidaen/body.dmi'
-	deform       = 'icons/mob/species/apidaen/body.dmi' // No deformed set has been made yet.
-	preview_icon = 'icons/mob/species/apidaen/preview.dmi'
-	husk_icon    = 'icons/mob/species/apidaen/husk.dmi'
+	bodyset = /datum/prototype/bodyset/organic/apidean
+
 
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/apidean,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/apidean,
 	)
 
 	vision_innate = /datum/vision/baseline/species_tier_2
