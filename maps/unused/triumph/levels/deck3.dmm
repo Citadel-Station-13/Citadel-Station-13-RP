@@ -13771,14 +13771,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
-"lrJ" = (
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
-/obj/spawner/window/low_wall/reinforced,
-/obj/spawner/window/low_wall/reinforced,
-/turf/simulated/floor/plating,
-/area/medical/psych_ward)
 "lsM" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -36402,7 +36394,7 @@ ekU
 ekU
 ekU
 ekU
-lrJ
+dOr
 dOr
 ekU
 ekU

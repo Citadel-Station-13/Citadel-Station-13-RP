@@ -2078,7 +2078,6 @@
 /area/sector/sky_planet/outpost)
 "Qh" = (
 /obj/structure/catwalk,
-/obj/structure/catwalk,
 /turf/simulated/open{
 	outdoors = 1
 	},

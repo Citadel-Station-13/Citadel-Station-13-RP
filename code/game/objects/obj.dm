@@ -320,7 +320,8 @@
 
 /obj/attack_ghost(mob/user)
 	nano_ui_interact(user)
-	..()
+	ui_interact(user)
+	. = ..()
 
 /mob/proc/unset_machine()
 	machine = null
