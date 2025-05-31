@@ -28,23 +28,26 @@
 		..()
 
 // Handles the actual harming by a melee weapon.
-/mob/living/simple_mob/slime/xenobio/hit_with_weapon(obj/item/I, mob/living/user, effective_force, hit_zone)
-	..() // Apply damage and etc.
-	if(!stat && effective_force > 0)
-		if(!is_justified_to_discipline()) // Wow, buddy, why am I getting attacked??
-			adjust_discipline(1) // This builds resentment due to being unjustified.
+/mob/living/simple_mob/slime/xenobio/on_melee_impact(mob/attacker, obj/item/weapon, datum/melee_attack/attack_style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags, list/damage_instance_results)
+	..()
+	if(!IS_CONSCIOUS(src))
+		return
+	if(damage_instance_results[SHIELDCALL_ARG_DAMAGE] <= 0)
+		return
+	if(!is_justified_to_discipline()) // Wow, buddy, why am I getting attacked??
+		adjust_discipline(1) // This builds resentment due to being unjustified.
 
-			if(user in friends) // Friend attacking us for no reason.
-				if(prob(25))
-					friends -= user
-					say("[user]... not friend...")
+		if(attacker in friends) // Friend attacking us for no reason.
+			if(prob(25))
+				friends -= attacker
+				say("[attacker]... not friend...")
 
-		else // We're actually being bad.
-			var/prob_to_back_down = round(effective_force)
-			if(is_adult)
-				prob_to_back_down /= 2
-			if(prob(prob_to_back_down))
-				adjust_discipline(2) // Justified.
+	else // We're actually being bad.
+		var/prob_to_back_down = round(damage_instance_results[SHIELDCALL_ARG_DAMAGE] * 2)
+		if(is_adult)
+			prob_to_back_down /= 2
+		if(prob(prob_to_back_down))
+			adjust_discipline(2) // Justified.
 
 /mob/living/simple_mob/slime/xenobio/inflict_electrocute_damage(damage, agony, flags, hit_zone)
 	return

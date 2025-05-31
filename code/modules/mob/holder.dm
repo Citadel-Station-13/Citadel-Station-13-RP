@@ -215,7 +215,7 @@
 
 /mob/living/proc/get_scooped(var/mob/living/carbon/grabber, var/self_grab)
 
-	if(!holder_type || buckled || pinned.len)
+	if(!holder_type || buckled) // || pinned.len)
 		return
 
 	if(self_grab)

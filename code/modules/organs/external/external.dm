@@ -384,7 +384,7 @@
 		jostle_bone(brute)
 		if(organ_can_feel_pain() && IS_CONSCIOUS(owner) && prob(40))
 			spawn(-1)
-				owner.emote("scream")	//getting hit on broken hand hurts
+				owner.emote_nosleep("scream")	//getting hit on broken hand hurts
 
 	// todo: optimization
 	// legacy: autopsy data
@@ -1258,6 +1258,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 /obj/item/organ/external/proc/is_malfunctioning()
 	return ((robotic >= ORGAN_ROBOT) && (brute_dam + burn_dam) >= min_broken_damage*0.83 && prob(brute_dam + burn_dam)) // Makes robotic limb damage scalable
 
+// TODO: rework embeds, this only works for tiny items right now as
+//       larger ones won't be removable!!
 /obj/item/organ/external/proc/embed(var/obj/item/W, var/silent = 0)
 	if(!owner || loc != owner)
 		return
@@ -1274,7 +1276,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		owner.visible_message("<span class='danger'>\The [W] sticks in the wound!</span>")
 	implants += W
 	owner.embedded_flag = 1
-	add_verb(owner, /mob/proc/yank_out_object)
+	// add_verb(owner, /mob/proc/yank_out_object)
 	if(!(owner.species.species_flags & NO_BLOOD))
 		W.add_blood(owner)
 	W.forceMove(owner)
