@@ -89,7 +89,7 @@
 		/obj/item/pickaxe/silver,
 		/obj/item/pen/invisible,
 		/obj/item/lipstick/random,
-		/obj/item/grenade/smokebomb,
+		/obj/item/grenade/simple/smoke,
 		/obj/item/corncob,
 		/obj/item/poster,
 		/obj/item/book/manual/barman_recipes,
@@ -204,7 +204,7 @@
 		/obj/item/clothing/mask/gas/skeleton,
 		/obj/fiftyspawner/bananium,
 		/obj/item/storage/backpack/holding,
-		/obj/item/grenade/smokebomb,
+		/obj/item/grenade/simple/smoke,
 		/obj/item/toy/crossbow,
 		/obj/item/gun/projectile/ballistic/revolver/capgun,
 		/obj/item/toy/katana,
@@ -271,7 +271,7 @@
 	. = ..()
 	. += "There is about [src.amount] square units of paper left!"
 
-/obj/item/wrapping_paper/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/wrapping_paper/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if (!istype(target, /mob/living/carbon/human))
 		return
 	var/mob/living/carbon/human/H = target

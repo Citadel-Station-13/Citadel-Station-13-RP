@@ -80,11 +80,11 @@
 
 /datum/component/riding_filter/proc/signal_hook_user_buckle(atom/movable/source, mob/M, flags, mob/user, semantic)
 	SIGNAL_HANDLER_DOES_SLEEP
-	return check_user_mount(M, flags, user, semantic)? SIGNAL_RAISE_FORCE_BUCKLE_OPERATION : SIGNAL_RAISE_BLOCK_BUCKLE_OPERATION
+	return check_user_mount(M, flags, user, semantic)? SIGNAL_RETURN_FORCE_BUCKLE_OPERATION : SIGNAL_RETURN_BLOCK_BUCKLE_OPERATION
 
 /datum/component/riding_filter/proc/signal_hook_pre_buckle(atom/movable/source, mob/M, flags, mob/user, semantic)
 	SIGNAL_HANDLER
-	return on_mount_attempt(M, flags, user, semantic)? SIGNAL_RAISE_FORCE_BUCKLE_OPERATION : SIGNAL_RAISE_BLOCK_BUCKLE_OPERATION
+	return on_mount_attempt(M, flags, user, semantic)? SIGNAL_RETURN_FORCE_BUCKLE_OPERATION : SIGNAL_RETURN_BLOCK_BUCKLE_OPERATION
 
 /datum/component/riding_filter/proc/signal_hook_post_buckle(atom/movable/source, mob/M, flags, mob/user, semantic)
 	SIGNAL_HANDLER
@@ -106,7 +106,7 @@
  */
 /datum/component/riding_filter/proc/signal_hook_can_buckle(atom/movable/source, mob/M, flags, mob/user, semantic)
 	SIGNAL_HANDLER
-	return check_mount_attempt(M, flags, user, semantic)? SIGNAL_RAISE_FORCE_BUCKLE_OPERATION : SIGNAL_RAISE_BLOCK_BUCKLE_OPERATION
+	return check_mount_attempt(M, flags, user, semantic)? SIGNAL_RETURN_FORCE_BUCKLE_OPERATION : SIGNAL_RETURN_BLOCK_BUCKLE_OPERATION
 
 /**
  * called on buckling process right before point of no return

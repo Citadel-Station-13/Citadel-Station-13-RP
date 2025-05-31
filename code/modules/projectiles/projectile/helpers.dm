@@ -1,10 +1,10 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+// TODO: put into SSspatial_effects
 /**
  * Creates a shrapnel explosion
  *
- * todo: should this be in a single file with procs like explosion(), emp_pulse(), and other blast-like effects?
  * todo: /pellet shouldn't be /bullet/pellet
  * todo: there has to be a better way to set vars on every cloud than passing them in as args
  *

@@ -18,7 +18,7 @@
 		return TRUE
 	var/datum/species/CS = character_species_datum()
 	var/list/whitelisted_ids = CS.get_whitelisted_language_ids() // cache ids from character species for speed
-	if((L.language_flags & LANGUAGE_WHITELISTED) && !((L.id in whitelisted_ids) || config.check_alien_whitelist(ckey(L.name), client_ckey)))
+	if((L.language_flags & LANGUAGE_WHITELISTED) && !((L.id in whitelisted_ids) || Configuration.check_language_whitelist(L.id, client_ckey)))
 		to_chat(user, SPAN_WARNING("[L] is a whitelisted language!"))
 		return FALSE
 	var/list/current = get_character_data(CHARACTER_DATA_LANGUAGES)

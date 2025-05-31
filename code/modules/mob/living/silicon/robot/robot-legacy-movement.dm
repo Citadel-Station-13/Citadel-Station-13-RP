@@ -5,15 +5,13 @@
 				return TRUE
 	return ..()
 
-/mob/living/silicon/robot/movement_delay()
-	. = ..() + speed
+/mob/living/silicon/robot/legacy_movement_delay()
+	. = ..()
 	if(get_held_item_of_type(/obj/item/borg/combat/mobility))
 		. -= 2
 
 	if(get_restraining_bolt())	// Borgs with Restraining Bolts move slower.
 		. += 1
-
-	. += config_legacy.robot_delay
 
 // NEW: Use power while moving.
 /mob/living/silicon/robot/SelfMove(turf/n, direct)

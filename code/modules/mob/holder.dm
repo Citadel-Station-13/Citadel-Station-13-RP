@@ -97,6 +97,10 @@
 	else if(isitem(loc))
 		to_chat(escapee, SPAN_WARNING("You struggle free of [loc]."))
 		escapee.forceMove(get_turf(escapee))
+	else if(istype(loc, /atom/movable/storage_indirection) && loc.loc) //Second type how an item can have storage
+		to_chat(escapee, SPAN_WARNING("You struggle free of [loc.loc]."))
+		escapee.forceMove(get_turf(escapee))
+
 
 /obj/item/holder/can_equip(mob/M, slot, mob/user, flags)
 	if(M == held_mob)
@@ -211,7 +215,7 @@
 
 /mob/living/proc/get_scooped(var/mob/living/carbon/grabber, var/self_grab)
 
-	if(!holder_type || buckled || pinned.len)
+	if(!holder_type || buckled) // || pinned.len)
 		return
 
 	if(self_grab)

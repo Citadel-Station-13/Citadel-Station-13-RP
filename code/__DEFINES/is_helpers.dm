@@ -110,7 +110,7 @@
 
 #define isxeno(A) istype(A, /mob/living/simple_mob/xeno)
 
-#define issimple(A) istype(A, /mob/living/simple_mob)
+#define issimplemob(A) istype(A, /mob/living/simple_mob)
 
 /proc/is_species_type(atom/A, path)
 	if(!istype(A, /mob/living/carbon/human))

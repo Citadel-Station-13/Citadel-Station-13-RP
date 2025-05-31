@@ -985,12 +985,12 @@
 
 	return(visible_implants)
 
-/mob/living/carbon/human/embedded_needs_process()
-	for(var/obj/item/organ/external/organ in src.organs)
-		for(var/obj/item/O in organ.implants)
-			if(!istype(O, /obj/item/implant)) //implant type items do not cause embedding effects, see handle_embedded_objects()
-				return 1
-	return 0
+// /mob/living/carbon/human/embedded_needs_process()
+// 	for(var/obj/item/organ/external/organ in src.organs)
+// 		for(var/obj/item/O in organ.implants)
+// 			if(!istype(O, /obj/item/implant)) //implant type items do not cause embedding effects, see handle_embedded_objects()
+// 				return 1
+// 	return 0
 
 /mob/living/carbon/human/proc/handle_embedded_objects()
 
@@ -1125,6 +1125,7 @@
 	hud_used = new /datum/hud(src)
 	reload_rendering()
 	update_vision()
+	update_movespeed_base()
 
 	//! FUCK FUCK FUCK FUCK FUCK FUCK FUCK
 	for(var/key in species.sprite_accessory_defaults)
@@ -1624,11 +1625,9 @@
 //! Pixel Offsets
 /mob/living/carbon/human/get_centering_pixel_x_offset(dir)
 	. = ..()
-	// uh oh stinky
 	if(!isTaurTail(tail_style) || !(dir & (EAST|WEST)))
 		return
-	// groan
-	. += ((size_multiplier * icon_scale_x) - 1) * ((dir & EAST)? -16 : 16)
+	. += (size_multiplier * icon_scale_x) * ((dir & EAST)? 8 : -8)
 
 /mob/living/carbon/human/ClickOn(var/atom/A)
 	if(ab_handler?.process_click(src, A))

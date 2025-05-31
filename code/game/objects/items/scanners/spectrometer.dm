@@ -34,7 +34,7 @@
 		return
 	if (user.stat)
 		return
-	if (!(ishuman(user) || SSticker) && SSticker.mode.name != "monkey")
+	if (!(user.IsAdvancedToolUser() || SSticker) && SSticker.mode.name != "monkey")
 		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return
 	if(reagents.total_volume)

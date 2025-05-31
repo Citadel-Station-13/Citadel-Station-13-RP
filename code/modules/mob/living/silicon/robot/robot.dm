@@ -191,8 +191,6 @@
 	var/lockcharge
 	/// Controls whether or not the borg is actually locked down.
 	var/lockdown = FALSE
-	/// Cause sec borgs gotta go fast //No they dont!
-	var/speed = 0
 	/// Used to determine if a borg shows up on the robotics console.  Setting to one hides them.
 	var/scrambledcodes = FALSE
 	/// The number of known entities currently accessing the internal camera
@@ -215,6 +213,10 @@
 	var/shell = FALSE
 	var/deployed = FALSE
 	var/mob/living/silicon/ai/mainframe = null
+
+	//* Movement *//
+	/// Base movement speed in tiles / second
+	var/movement_base_speed = 4
 
 /mob/living/silicon/robot/Initialize(mapload, unfinished = FALSE)
 	spark_system = new /datum/effect_system/spark_spread()

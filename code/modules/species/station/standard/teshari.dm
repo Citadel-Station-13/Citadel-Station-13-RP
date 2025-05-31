@@ -58,7 +58,7 @@
 	meat_type   = /obj/item/reagent_containers/food/snacks/meat/chicken/teshari
 	move_trail = /obj/effect/debris/cleanable/blood/tracks/paw
 
-	slowdown          = -0.5
+	movement_base_speed = 6.66
 	snow_movement     = -1
 	item_slowdown_mod = 0.5
 
@@ -144,9 +144,9 @@
 	vision_organ = O_EYES
 
 	unarmed_types = list(
-		/datum/unarmed_attack/bite/sharp,
-		/datum/unarmed_attack/claws,
-		/datum/unarmed_attack/stomp/weak,
+		/datum/melee_attack/unarmed/bite/sharp,
+		/datum/melee_attack/unarmed/claws,
+		/datum/melee_attack/unarmed/stomp/weak,
 	)
 
 	inherent_verbs = list(

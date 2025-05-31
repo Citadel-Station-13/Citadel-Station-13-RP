@@ -102,6 +102,23 @@
 
 	MATERIAL_INVOKE(src, MATERIAL_TRAIT_EXAMINE, on_examine, ., user, dist)
 
+	// todo: this shouldn't be in main examine(), format this crap better too.
+	var/datum/event_args/examine/examining = new /datum/event_args/examine
+	examining.seer_atom = user
+	examining.seer_distance = dist
+	examining.examiner_atom = user
+	var/list/usage_hints = examine_query_usage_hints(examining)
+	if(length(usage_hints))
+		. += "<b>Usage:</b>"
+		for(var/hint in usage_hints)
+			. += "<li>[hint]</li>"
+	var/list/stat_hints = examine_query_stat_hints(examining)
+	if(length(stat_hints))
+		. += "<b>Stats:</b>"
+		for(var/key in stat_hints)
+			var/value = stat_hints[key]
+			. += "<li>[key] - [value]</li>"
+
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 
 /**
@@ -111,6 +128,8 @@
  * moments, while allowing people to manually double-examine to take a closer look
  *
  * Produces a signal [COMSIG_PARENT_EXAMINE_MORE]
+ *
+ * todo: hook into examine, maybe rework
  */
 /atom/proc/examine_more(mob/user)
 	SHOULD_CALL_PARENT(TRUE)
@@ -118,3 +137,28 @@
 
 	. = list()
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE_MORE, user, .)
+
+/**
+ * Gets a list of usage tips that players should be able to see.
+ *
+ * * These should not depend on the user's inhand items / worn equipment / whatever.
+ * * These are fully HTML-formatted
+ * * These will be formatted into list entries by the caller.
+ *
+ * @return list
+ */
+/atom/proc/examine_query_usage_hints(datum/event_args/examine/examining)
+	return list()
+
+/**
+ * Gets a list of introspected data, like recharge delays, that players should be able to see.
+ *
+ * * These should not depend on the user's inhand items / worn equipment / whatever.
+ * * These are fully HTML-formatted
+ * * This can return either key-values or just strings.
+ * * These will be formatted into list entries by the caller.
+ *
+ * @return list(key = value, key only, ...)
+ */
+/atom/proc/examine_query_stat_hints(datum/event_args/examine/examining)
+	return list()

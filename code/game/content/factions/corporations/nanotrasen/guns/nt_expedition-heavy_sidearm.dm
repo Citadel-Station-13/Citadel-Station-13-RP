@@ -99,9 +99,8 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidear
 
 /obj/projectile/bullet/nt_expedition/heavy_sidearm
 	name = "heavy bullet"
-	damage_force = 35
-	damage_tier = LERP(BULLET_TIER_LOW, BULLET_TIER_MEDIUM, 0.95)
-	armor_penetration = 20
+	damage_force = 30
+	damage_tier = 3.75
 
 //* Heavy Sidearms *//
 

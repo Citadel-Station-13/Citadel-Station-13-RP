@@ -8,8 +8,6 @@
 	armor_type = /datum/armor/zaddat
 	siemens_coefficient = 1
 
-	species_restricted = list(SPECIES_ZADDAT, SPECIES_PROMETHEAN) //on request from maintainer
-
 /obj/item/clothing/suit/space/void/zaddat
 	name = "\improper Hegemony Shroud"
 	desc = "A Hegemony environment suit, still favored by the Spacer Zaddat because of its durability and ease of manufacture."
@@ -19,8 +17,6 @@
 	icon_state = "zaddat_hegemony"
 	helmet = new/obj/item/clothing/head/helmet/space/void/zaddat //shrouds come with helmets built-in
 	var/has_been_customized = FALSE
-
-	species_restricted = list(SPECIES_ZADDAT, SPECIES_PROMETHEAN)
 
 	breach_threshold = 12
 

@@ -26,7 +26,7 @@
 	scan_mob(M, user) //default surgery behaviour is just to scan as usual
 	return 1
 
-/obj/item/healthanalyzer/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/healthanalyzer/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	scan_mob(target, user)
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 
@@ -41,7 +41,7 @@
 		dat += "\nBody Temperature: ???"
 		user.show_message(SPAN_NOTICE("[dat]"), 1)
 		return
-	if (!(ishuman(user) || SSticker) && SSticker.mode.name != "monkey")
+	if (!(user.IsAdvancedToolUser() || SSticker) && SSticker.mode.name != "monkey")
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return
 

@@ -1036,6 +1036,12 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/medical/surgeryprep)
 "aLB" = (
@@ -6051,12 +6057,8 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/structure/disposalpipe/segment{
 	dir = 1
 	},
@@ -6656,9 +6658,18 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/robotics/morgue)
 "eCi" = (
-/obj/landmark/spawnpoint/job/pilot,
-/turf/space/basic,
-/area/space)
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 4
+	},
+/obj/machinery/camera/network/medbay{
+	dir = 8;
+	network = list("Psychiatric")
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/surgeryprep)
 "eCw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -7050,11 +7061,6 @@
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/space)
-"eTk" = (
-/obj/machinery/disposal,
-/obj/item/barrier_tape_segment/engineering,
-/turf/simulated/floor/tiled,
-/area/rnd/anomaly_lab)
 "eUd" = (
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 6
@@ -8933,7 +8939,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/multi_tile/glass/medical{
-	name = "Infectious Diseases"
+	name = "Virology"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology_aft_access)
@@ -9352,12 +9358,6 @@
 /obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
-"gxc" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/paint/babyblue,
-/obj/map_helper/paint/babyblue,
-/turf/simulated/floor/tiled,
-/area/endeavour/hallway/d2afthall)
 "gxk" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
@@ -10538,7 +10538,8 @@
 /obj/machinery/computer/atmoscontrol/laptop{
 	monitored_alarm_ids = list("isolation_one","isolation_two");
 	pixel_y = 30;
-	req_one_access = list(47,24,11)
+	req_one_access = list(47);
+	req_access = list(47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
@@ -10630,7 +10631,8 @@
 /obj/machinery/air_alarm/monitor/isolation{
 	alarm_id = "isolation_two";
 	dir = 8;
-	pixel_x = 22
+	pixel_x = 22;
+	req_one_access = list(47)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/anomaly_lab/containment_one)
@@ -11182,7 +11184,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/rnd/research/researchdivision)
+/area/endeavour/hallway/d2afthall)
 "hUP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -13549,17 +13551,6 @@
 /obj/item/cell/device/weapon,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
-"jGQ" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 4
-	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
-/obj/map_helper/electrochromatic_linker{
-	id = "robotics-inner"
-	},
-/obj/map_helper/paint/purplegray,
-/turf/simulated/floor/plating,
-/area/assembly/robotics)
 "jHd" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -15313,6 +15304,12 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
 /turf/simulated/floor/plating,
 /area/medical/surgeryprep)
 "lar" = (
@@ -15393,6 +15390,12 @@
 	},
 /obj/map_helper/access_helper/airlock/station/medical/department,
 /obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -18355,6 +18358,17 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
+"nhI" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/research/researchdivision)
 "njb" = (
 /obj/machinery/fire_alarm/east_mount,
 /obj/structure/catwalk,
@@ -18544,6 +18558,22 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
+"nsU" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 4
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/research/researchdivision)
 "ntf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -19414,9 +19444,9 @@
 /obj/structure/closet/crate{
 	name = "Grenade Crate"
 	},
-/obj/item/grenade/chem_grenade,
-/obj/item/grenade/chem_grenade,
-/obj/item/grenade/chem_grenade,
+/obj/item/grenade/simple/chemical,
+/obj/item/grenade/simple/chemical,
+/obj/item/grenade/simple/chemical,
 /obj/item/assembly/igniter,
 /obj/item/assembly/igniter,
 /obj/item/assembly/igniter,
@@ -21967,7 +21997,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
-/area/rnd/research/researchdivision)
+/area/endeavour/hallway/d2afthall)
 "pKn" = (
 /obj/machinery/atmospherics/component/unary/heater{
 	dir = 8
@@ -25017,6 +25047,9 @@
 /obj/effect/floor_decal/corner/mauve/bordercorner2{
 	dir = 10
 	},
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
 "rXN" = (
@@ -25157,6 +25190,8 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
 "scN" = (
@@ -28131,7 +28166,8 @@
 /obj/machinery/air_alarm/monitor/isolation{
 	alarm_id = "isolation_one";
 	dir = 8;
-	pixel_x = 22
+	pixel_x = 22;
+	req_one_access = list(47)
 	},
 /obj/structure/cable/green{
 	icon_state = "2-8"
@@ -29622,8 +29658,12 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "vxD" = (
@@ -29724,12 +29764,6 @@
 /obj/random/trash_pile,
 /turf/simulated/floor,
 /area/maintenance/research/port)
-"vBU" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/paint/purplegray,
-/obj/map_helper/paint/purplegray,
-/turf/simulated/floor/plating,
-/area/rnd/breakroom)
 "vCa" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
@@ -30112,12 +30146,11 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/medical/medbay_emt_bay)
 "vPR" = (
-/obj/machinery/porta_turret/crescent{
-	density = 1;
-	faction = "neutral"
+/obj/machinery/door/firedoor{
+	dir = 8
 	},
-/turf/simulated/floor/airless/ceiling,
-/area/endeavour/command/turrets)
+/turf/simulated/floor/tiled,
+/area/rnd/research/researchdivision)
 "vQc" = (
 /turf/simulated/wall/r_wall/prepainted/medical,
 /area/medical/resleeving)
@@ -33340,9 +33373,9 @@
 /area/medical/virology)
 "xUZ" = (
 /obj/structure/closet/crate,
-/obj/item/grenade/chem_grenade,
-/obj/item/grenade/chem_grenade,
-/obj/item/grenade/chem_grenade,
+/obj/item/grenade/simple/chemical,
+/obj/item/grenade/simple/chemical,
+/obj/item/grenade/simple/chemical,
 /obj/item/assembly/timer,
 /obj/item/assembly/timer,
 /obj/item/assembly/timer,
@@ -33601,9 +33634,6 @@
 "yeL" = (
 /obj/machinery/door/airlock/maintenance/medical,
 /obj/map_helper/access_helper/airlock/station/engineering/department,
-/obj/structure/cable/orange{
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
@@ -37336,7 +37366,7 @@ pRW
 pRW
 pRW
 eWn
-vPR
+klv
 eWn
 pRW
 gYU
@@ -42752,7 +42782,7 @@ rMu
 wKq
 pst
 try
-eTk
+try
 ntQ
 dIf
 tws
@@ -42995,7 +43025,7 @@ rKI
 tWY
 tWY
 tWY
-tWY
+eCi
 pUl
 dZd
 sNF
@@ -44722,7 +44752,7 @@ mDj
 mDj
 cjj
 mDj
-gxc
+mDj
 cjj
 oAN
 oAN
@@ -46462,7 +46492,7 @@ uUl
 uUl
 vBg
 njG
-gly
+gsh
 gsh
 lrJ
 ayF
@@ -46656,7 +46686,7 @@ bPH
 bPH
 bPH
 rXh
-gly
+gsh
 gsh
 lrJ
 gBR
@@ -46849,8 +46879,8 @@ gly
 dfD
 eZN
 gly
-gly
-gly
+vPR
+gsh
 gsh
 lrJ
 iGu
@@ -47043,7 +47073,7 @@ ycO
 xpK
 dkv
 ycO
-ycO
+nhI
 pJN
 ggj
 gIv
@@ -47237,7 +47267,7 @@ ghr
 oCV
 ftX
 oGu
-ghr
+nsU
 hTw
 bZy
 cYk
@@ -49563,7 +49593,7 @@ jFo
 jFo
 hyR
 jFo
-jGQ
+bMn
 bMn
 jFo
 epT
@@ -51875,9 +51905,9 @@ uPS
 uPS
 mWV
 pEJ
-vBU
 pEJ
-vBU
+pEJ
+pEJ
 pEJ
 hZx
 kBG
@@ -60707,7 +60737,7 @@ mDp
 mDp
 mDp
 mDp
-mDp
+nWQ
 mDp
 mDp
 mDp
@@ -63357,7 +63387,7 @@ egx
 eTf
 pRW
 pRW
-eCi
+pRW
 pRW
 pRW
 pRW

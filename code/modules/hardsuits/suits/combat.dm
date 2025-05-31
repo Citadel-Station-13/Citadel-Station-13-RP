@@ -2,13 +2,18 @@
 	light_overlay = "helmet_light_dual_green"
 
 /datum/armor/hardsuit/combat
-	melee = 0.8
-	bullet = 0.65
+	melee = 0.5
+	melee_tier = 4
+	bullet = 0.45
+	bullet_tier = 4
 	laser = 0.5
+	laser_tier = 4
 	energy = 0.25
 	bomb = 0.6
 	bio = 1.0
 	rad = 0.6
+	fire = 0.5
+	acid = 0.8
 
 /obj/item/hardsuit/combat
 	name = "combat hardsuit control module"
@@ -97,16 +102,12 @@
 
 /obj/item/clothing/head/helmet/space/hardsuit/military
 	light_overlay = "helmet_light_dual_green"
-	species_restricted = list(SPECIES_HUMAN,SPECIES_PROMETHEAN)
 
 /obj/item/clothing/suit/space/hardsuit/military
-	species_restricted = list(SPECIES_HUMAN,SPECIES_PROMETHEAN)
 
 /obj/item/clothing/shoes/magboots/hardsuit/military
-	species_restricted = list(SPECIES_HUMAN,SPECIES_PROMETHEAN)
 
 /obj/item/clothing/gloves/gauntlets/hardsuit/military
-	species_restricted = list(SPECIES_HUMAN,SPECIES_PROMETHEAN)
 
 /obj/item/hardsuit/military/equipped
 	initial_modules = list(
