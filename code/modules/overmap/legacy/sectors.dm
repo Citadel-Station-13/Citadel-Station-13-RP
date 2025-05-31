@@ -39,20 +39,28 @@
 
 	//! legacy: make a 1-z sector if we spawned on a level without an entity, and without a struct. !//
 	if(!overmap)
-		var/our_z = get_z(src)
-		if(our_z)
-			var/obj/overmap/entity/existing_entity = SSovermaps.get_enclosing_overmap_entity(our_z)
-			if(!existing_entity)
-				var/datum/map/existing_map = SSmapping.level_get_map(our_z)
-				if(existing_map)
-					var/datum/overmap_location/map/new_location = new(existing_map)
-					set_location(new_location)
+		if(!istype(loc.loc, /area/shuttle))
+			var/our_z = get_z(src)
+			if(our_z)
+				var/obj/overmap/entity/existing_entity = SSovermaps.get_overmap_entity(src)
+				if(!existing_entity)
+					var/datum/map/existing_map = SSmapping.level_get_map(our_z)
+					if(existing_map)
+						var/datum/overmap_location/map/new_location = new(existing_map)
+						set_location(new_location)
+					else
+						// technically you can init a single level to be an overmap location but this is
+						// disabled for now.
+						CRASH("legacy overmap object initialization attempted on a map-less level")
 				else
-					// technically you can init a single level to be an overmap location but this is
-					// disabled for now.
-					CRASH("legacy overmap object initialization attempted on a map-less level")
+					CRASH("level [our_z] ([SSmapping.level_get_id(our_z)]) had manually placed overmap entity despite having an initializer already loaded")
+		else
+			var/area/shuttle/shuttle_area = loc.loc
+			if(istype(shuttle_area.shuttle, /datum/shuttle/autodock/overmap))
+				// do nothing, /visitable/ship/landable handles it
 			else
-				CRASH("level [our_z] ([SSmapping.level_get_id(our_z)]) had manually placed overmap entity despite having an initializer already loaded")
+				CRASH("[audit_loc()] had an overmap entity placed on a non-overmap shuttle")
+
 
 	// todo: This is shitcode but sue me tbh we gotta refactor this shit anyways to be overmap_initializer's
 	spawn(-1)

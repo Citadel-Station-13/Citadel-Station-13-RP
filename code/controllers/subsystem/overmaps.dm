@@ -187,6 +187,8 @@ SUBSYSTEM_DEF(overmaps)
 			return i_hate_legacy_systems.myship
 	var/their_z = get_z(target)
 	var/datum/overmap_location/level_location = location_enclosed_levels[their_z]
+	if(!level_location)
+		return
 	return level_location.is_physically_level(their_z) ? level_location.entity : null
 
 // todo: entity round-persistent-compatible GUID

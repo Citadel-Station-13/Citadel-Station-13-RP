@@ -59,10 +59,13 @@
 	id = "[GLOB.round_id? "[GLOB.round_id]_" : ""][num2text(++id_next, 999)]"
 	return ..()
 
-/obj/overmap/entity/Initialize(mapload)
+/obj/overmap/entity/Initialize(mapload, datum/overmap_location/location)
 	. = ..()
+	// bind location
+	if(location)
+		set_location(location)
 	// join overmap
-	if(isturf(loc) && !overmap)
+	if(isturf(loc) && !overmap && istype(loc.loc, /area/overmap))
 		loc.loc.Entered(src)
 	// init physics
 	initialize_physics()
