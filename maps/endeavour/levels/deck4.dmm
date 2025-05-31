@@ -1037,6 +1037,9 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/power/apc/south_mount,
+/obj/structure/cable/cyan{
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "aXs" = (
@@ -5263,16 +5266,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck4aft)
-"fem" = (
-/obj/structure/catwalk,
-/obj/structure/catwalk,
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
-/obj/machinery/door/airlock/maintenance,
-/obj/map_helper/access_helper/airlock/station/maintenance,
-/turf/simulated/floor/plating,
-/area/endeavour/hallway/d4fwdmaint)
 "fgn" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -50883,7 +50876,7 @@ kaY
 kaY
 kaY
 nmL
-fem
+crR
 nmL
 nmL
 nmL

@@ -24,12 +24,12 @@
 	if(H.gloves && istype(H.gloves,/obj/item/clothing/gloves/gauntlets/hardsuit))
 		breakouttime /= 2	// Pneumatic force goes a long way.
 	else if(H.species.unarmed_types)
-		for(var/datum/unarmed_attack/U in H.species.unarmed_types)
-			if(istype(U, /datum/unarmed_attack/claws))
+		for(var/datum/melee_attack/unarmed/U in H.species.unarmed_types)
+			if(istype(U, /datum/melee_attack/unarmed/claws))
 				breakouttime /= 1.5
 				attack_type = RESIST_ATTACK_CLAWS
 				break
-			else if(istype(U, /datum/unarmed_attack/bite/sharp))
+			else if(istype(U, /datum/melee_attack/unarmed/bite/sharp))
 				breakouttime /= 1.25
 				attack_type = RESIST_ATTACK_BITE
 				break

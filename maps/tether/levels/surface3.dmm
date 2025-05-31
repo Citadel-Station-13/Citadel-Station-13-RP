@@ -19339,7 +19339,6 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/admin)
 "lME" = (
-/obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -20689,7 +20688,6 @@
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
 "mFf" = (
-/obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -26036,7 +26034,6 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/servicebackroom)
 "pAF" = (
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "cap_office";

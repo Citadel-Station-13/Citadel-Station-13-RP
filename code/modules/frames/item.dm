@@ -206,11 +206,11 @@
 	frame.deploy_frame(src, e_args, use_loc, use_dir)
 	log_construction(e_args, src, "deployed")
 
-/obj/item/frame2/context_query(datum/event_args/actor/e_args)
+/obj/item/frame2/context_menu_query(datum/event_args/actor/e_args)
 	. = ..()
-	.["deploy-frame"] = atom_context_tuple("deploy", image(src), 1, MOBILITY_CAN_USE)
+	.["deploy-frame"] = create_context_menu_tuple("deploy", image(src), 1, MOBILITY_CAN_USE)
 
-/obj/item/frame2/context_act(datum/event_args/actor/e_args, key)
+/obj/item/frame2/context_menu_act(datum/event_args/actor/e_args, key)
 	. = ..()
 	if(.)
 		return

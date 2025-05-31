@@ -153,7 +153,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	throw_speed = 7
 	throw_range = 15
-	armor_penetration = 20
+	damage_tier = 5
 
 	var/active = 0
 	var/active_embed_chance = 0
