@@ -28,6 +28,7 @@
 	var/list/data = ..()
 
 	data["tech"] = tgui_GetResearchLevelsInfo()
+	data["designs"] = tgui_GetDesignInfo(design_page)
 
 	return data
 
@@ -72,13 +73,24 @@
 		if(d_disk)
 			data["info"]["d_disk"] = list(
 				"present" = TRUE,
-				"stored" = !!d_disk.design_id,
+				"stored" = (LAZYLEN(d_disk.design_ids) > 0),
 			)
-			if(d_disk.design_id)
-				var/datum/prototype/design/blueprint = RSdesigns.fetch(d_disk.design_id)
-				data["info"]["d_disk"]["name"] = blueprint.name
-				data["info"]["d_disk"]["build_type"] = blueprint.lathe_type
-				data["info"]["d_disk"]["materials"] = blueprint.materials_base
+			if(d_disk.design_ids)
+				var/list/id_name = list()
+				var/list/id_buildtype = list()
+				var/list/id_matsbase = list()
+				for(var/id in COERCE_OPTIONS_LIST(d_disk.design_ids) )
+					var/datum/prototype/design/blueprint = RSdesigns.fetch(id)
+					id_name[id] = blueprint.name
+					id_buildtype[id] = blueprint.lathe_type
+					id_matsbase[id] = blueprint.materials_base
+
+				data["info"]["d_disk"]["ids"] = COERCE_OPTIONS_LIST(d_disk.design_ids)
+				data["info"]["d_disk"]["design_count"] = LAZYLEN(d_disk.design_ids)
+				data["info"]["d_disk"]["design_cap"] = d_disk.design_capacity
+				data["info"]["d_disk"]["names"] = id_name
+				data["info"]["d_disk"]["build_types"] = id_buildtype
+				data["info"]["d_disk"]["materials"] = id_matsbase
 
 	return data
 
@@ -131,12 +143,14 @@
 		if("access_imprinter")
 			linked_imprinter.ui_interact(usr, parent_ui = ui)
 			return TRUE
+		if("push_design_data")
+			update_static_data(usr, ui)
 		if("design_page")
 			if(params["reset"])
 				design_page = 0
 			else
 				design_page = max(design_page + (1 * params["reverse"]), 0)
-			push_ui_data(data = list("designs" = tgui_GetDesignInfo(design_page)))
+			update_static_data(usr, ui)
 			return TRUE
 
 		if("updt_tech") //Update the research holder with information from the technology disk.
@@ -169,24 +183,26 @@
 			busy_msg = "Updating Database..."
 			spawn(5 SECONDS)
 				busy_msg = null
-				if(d_disk?.design_id)
-					files.AddDesign2Known(RSdesigns.fetch(d_disk.design_id))
+				if(d_disk?.design_ids)
+					files.AddDesign2Known(RSdesigns.fetch(params["design"]))
 				update_static_data(usr, ui)
 			return TRUE
 
 		if("clear_design") //Erases data on the design disk.
-			d_disk.design_id = null
+			d_disk.design_ids -= params["design"]
+			update_ui_data(usr, ui)
 			return TRUE
 
 		if("eject_design") //Eject the design disk.
 			d_disk.loc = loc
 			d_disk = null
+			update_ui_data(usr, ui)
 			return TRUE
 
 		if("copy_design") //Copy design data from the research holder to the design disk.
 			var/target_design_id = params["copy_design_ID"]
 			if(target_design_id in files.known_design_ids)
-				d_disk.design_id = target_design_id
+				LAZYDISTINCTADD(d_disk.design_ids, target_design_id)
 			return TRUE
 
 		if("eject_item") //Eject the item inside the destructive analyzer.

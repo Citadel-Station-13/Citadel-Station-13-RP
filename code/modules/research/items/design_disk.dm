@@ -6,7 +6,8 @@
 	item_state = "card-id"
 	w_class = WEIGHT_CLASS_SMALL
 	materials_base = list(MAT_STEEL = 30, MAT_GLASS = 10)
-	var/design_id
+	var/list/design_ids
+	var/design_capacity = 12
 
 /obj/item/disk/design_disk/Initialize(mapload)
 	. = ..()

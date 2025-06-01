@@ -237,3 +237,60 @@ DEFINE_PROSTHETIC_ARM_R(antares, "Antares Robotics", "antares_r_arm")
 DEFINE_PROSTHETIC_HAND_R(antares, "Antares Robotics", "antares_r_hand")
 DEFINE_PROSTHETIC_LEG_R(antares, "Antares Robotics", "antares_r_leg")
 DEFINE_PROSTHETIC_FOOT_R(antares, "Antares Robotics", "antares_r_foot")
+
+/obj/item/disk/limb
+	name = "Limb Blueprints"
+	desc = "A disk containing the blueprints for prosthetics."
+	icon = 'icons/obj/cloning.dmi'
+	icon_state = "datadisk2"
+	var/company = ""
+
+/obj/item/disk/limb/Initialize(mapload)
+	. = ..()
+	if(company)
+		name = "[company] [initial(name)]"
+
+/obj/item/disk/limb/bishop
+	company = "Bishop"
+	catalogue_data = list(/datum/category_item/catalogue/information/organization/bishop)
+
+/obj/item/disk/limb/cenilimicybernetics
+	company = "Cenilimi Cybernetics"
+
+/obj/item/disk/limb/cybersolutions
+	company = "Cyber Solutions"
+
+/obj/item/disk/limb/grayson
+	company = "Grayson"
+
+/obj/item/disk/limb/hephaestus
+	company = "Hephaestus"
+	catalogue_data = list(/datum/category_item/catalogue/information/organization/hephaestus)
+
+/obj/item/disk/limb/morpheus
+	company = "Morpheus"
+	catalogue_data = list(/datum/category_item/catalogue/information/organization/morpheus)
+
+/obj/item/disk/limb/veymed
+	company = "Vey-Med"
+	catalogue_data = list(/datum/category_item/catalogue/information/organization/vey_med)
+
+// Bus disk for Diona mech parts.
+/obj/item/disk/limb/veymed/diona
+	company = "Skrellian Exoskeleton"
+
+/obj/item/disk/limb/wardtakahashi
+	company = "Ward-Takahashi"
+	catalogue_data = list(/datum/category_item/catalogue/information/organization/ward_takahashi)
+
+/obj/item/disk/limb/xion
+	company = "Xion"
+	catalogue_data = list(/datum/category_item/catalogue/information/organization/xion)
+
+/obj/item/disk/limb/zenghu
+	company = "Zeng-Hu"
+	catalogue_data = list(/datum/category_item/catalogue/information/organization/zeng_hu)
+
+/obj/item/disk/limb/nanotrasen
+	company = "Nanotrasen"
+	catalogue_data = list(/datum/category_item/catalogue/information/organization/nanotrasen)
