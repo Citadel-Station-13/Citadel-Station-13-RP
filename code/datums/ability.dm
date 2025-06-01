@@ -13,6 +13,8 @@
 	var/name = "Unnamed ability"
 	/// desc
 	var/desc = "Some sort of ability."
+	// TODO: do we want a holder system and an action holder system instead of categories? or is this good enough?
+	// TODO: standard category icons and ability tgui when?
 	/// category - used for tgui
 	var/category = "Misc"
 
@@ -75,12 +77,14 @@
 	//* Cooldown *//
 	/// cooldown time, if any
 	var/cooldown = 0
-	/// world.time we last count as 'used'
+	/// world.time we can be used next
 	#warn impl
-	var/cooldown_start_time
+	var/cooldown_expires
 	/// timerid of cooldown update timer
 	#warn impl
 	var/cooldown_timerid
+
+	#warn put in 'set_cooldown()', 'put_on_cooldown()'
 
 /datum/ability/Destroy()
 	if(!isnull(owner))
