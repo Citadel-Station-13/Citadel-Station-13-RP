@@ -1,10 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
-/datum/mansus_passive
+/datum/mansus_knowledge/patron
+	abstract_type = /datum/mansus_knowledge/patron
 
 #warn impl
-
-/datum/mansus_passive/proc/on_mob_associate(mob/target)
-
-/datum/mansus_passive/proc/on_mob_disassociate(mob/target)

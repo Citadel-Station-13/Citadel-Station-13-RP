@@ -4,8 +4,7 @@
 /datum/ability/mansus_ability/eldritch_blast
 	name = "eldritch blast"
 	desc = "Fire a powerful beam capable of warping reality."
-	// TODO: category
-
+	#warn category
 	#warn sprite
 
 	/// hard cooldown set to 3 seconds

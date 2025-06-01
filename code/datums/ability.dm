@@ -75,7 +75,7 @@
 	var/enabled = FALSE
 
 	//* Cooldown *//
-	/// cooldown time, if any
+	/// default cooldown time, if any
 	var/cooldown = 0
 	/// world.time we can be used next
 	#warn impl
@@ -83,8 +83,12 @@
 	/// timerid of cooldown update timer
 	#warn impl
 	var/cooldown_timerid
+	/// cooldown applies at start of successful invocation
+	/// * if this is FALSE, cooldown starts after this is disabled,
+	///   or if we sleep as a triggered spell, when the sleeping proc returns.
+	var/cooldown_applies_post_invocation = FALSE
 
-	#warn put in 'set_cooldown()', 'put_on_cooldown()'
+	#warn put in 'set_cooldown_left()', 'put_on_cooldown()'
 
 /datum/ability/Destroy()
 	if(!isnull(owner))
@@ -356,58 +360,76 @@
 
 //* Hooks *//
 
+/**
+ * * Sleeping is allowed.
+ * * Enable / Disable is fired before this.
+ *
+ * @return TRUE if triggered. Cooldown and similar will only apply if trigger is successful.
+ */
 #warn hook
 /datum/ability/proc/on_trigger()
-	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 	PROTECTED_PROC(TRUE)
 
 /**
- * * Called additionally to `on_trigger` if there' sa target.
+ * * Called additionally to `on_trigger` if there's a target.
+ * * Enable / Disable is fired before this.
+ * * Sleeping is allowed.
  *
  * @params
  * * target - target entity, if any
  * * clickchain - provided clickchain for the triggering click, if any
+ *
+ * @return TRUE if triggered. Cooldown and similar will only apply if trigger is successful.
  */
 #warn hook target
 /datum/ability/proc/on_targeted_trigger(atom/target, datum/event_args/actor/clickchain/clickchain)
-	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 	PROTECTED_PROC(TRUE)
 
+/**
+ * * Called additionally to `on_trigger` if we're a toggled ability.
+ * * Sleeping is allowed.
+ * * Called before on-trigger
+ */
 /datum/ability/proc/on_enable()
-	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 	PROTECTED_PROC(TRUE)
 
 #warn hook target
 /**
- * * Called additionally to `on_trigger` if we're a targeted ability.
+ * * Called additionally to `on_enable` if we're a targeted ability.
+ * * Sleeping is allowed.
+ * * Called before on-trigger
  *
  * @params
  * * target - target entity, if any
  * * clickchain - provided clickchain for the triggering click, if any
  */
 /datum/ability/proc/on_targeted_enable()
-	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 	PROTECTED_PROC(TRUE)
 
+/**
+ * * Called additionally to `on_trigger` if we're a toggled ability.
+ * * Sleeping is allowed.
+ * * Called before on-trigger
+ */
 /datum/ability/proc/on_disable()
-	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 	PROTECTED_PROC(TRUE)
 
 #warn hook target
 /**
- * * Called additionally to `on_trigger` if we're a targeted ability.
+ * * Called additionally to `on_disable` if we're a targeted ability.
+ * * Sleeping is allowed.
+ * * Called before on-trigger
  *
  * @params
  * * target - target entity, if any
  * * clickchain - provided clickchain for the triggering click, if any
  */
 /datum/ability/proc/on_targeted_disable(atom/target, datum/event_args/actor/clickchain/clickchain)
-	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 	PROTECTED_PROC(TRUE)
 

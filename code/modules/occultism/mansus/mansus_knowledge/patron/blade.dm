@@ -1,0 +1,7 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
+
+/datum/mansus_knowledge/patron/blade
+	abstract_type = /datum/mansus_knowledge/patron/blade
+	category = "The Torn Champion"
+	#warn icon
