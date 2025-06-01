@@ -1,4 +1,5 @@
-//? interact_type; used on tgui side - update that if you change these.
+//*                   interact_type                      *//
+//* used on tgui side - update that if you change these. *//
 
 /// no default interact, no hotbinding
 #define ABILITY_INTERACT_NONE "none"

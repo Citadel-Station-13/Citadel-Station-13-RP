@@ -8,7 +8,7 @@
  * used for intrinsic species / antagonist / body abiltiies
  */
 /datum/ability
-	//? basics
+	//* Identity *//
 	/// name
 	var/name = "Unnamed ability"
 	/// desc
@@ -60,9 +60,8 @@
 	var/mobility_check_flags = NONE
 
 	//? state
-	/// cooldown delay, if we have a cooldown
-	var/cooldown = 0
 	/// for toggled abilities, turning off incurs the cooldown - otherwise, cooldown begins on toggling off.
+	#warn handle
 	var/cooldown_for_deactivation = TRUE
 	/// windup delay, if we have a windup
 	var/windup = 0
@@ -70,10 +69,18 @@
 	var/windup_requires_still = TRUE
 	/// last use world.time; null if we haven't been used yet
 	var/last_used
-	/// timerid for cooldown finish action button update
-	var/cooldown_visual_timerid
 	/// for toggle interacts: are we enabled?
 	var/enabled = FALSE
+
+	//* Cooldown *//
+	/// cooldown time, if any
+	var/cooldown = 0
+	/// world.time we last count as 'used'
+	#warn impl
+	var/cooldown_start_time
+	/// timerid of cooldown update timer
+	#warn impl
+	var/cooldown_timerid
 
 /datum/ability/Destroy()
 	if(!isnull(owner))
@@ -193,7 +200,7 @@
  * * user - triggering user. this is usually owner, but sometimes isn't.
  * * toggling - null if not toggled ability / not toggling, TRUE / FALSE for on / off.
  */
-/datum/ability/proc/on_trigger(mob/user, toggling)
+/datum/ability/proc/on_trigger_old(mob/user, toggling)
 	last_used = world.time
 	if(interact_type != ABILITY_INTERACT_TOGGLE)
 		update_action()
@@ -222,12 +229,6 @@
 	action?.background_icon_state = background_state
 	action?.update_buttons()
 	on_disable()
-
-/datum/ability/proc/on_enable()
-	return
-
-/datum/ability/proc/on_disable()
-	return
 
 /datum/ability/proc/quickbind()
 	if(bound)
@@ -348,6 +349,65 @@
 		"name" = name,
 		"desc" = desc,
 	)
+
+//* Hooks *//
+
+#warn hook
+/datum/ability/proc/on_trigger()
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
+	PROTECTED_PROC(TRUE)
+
+/**
+ * * Called additionally to `on_trigger` if there' sa target.
+ *
+ * @params
+ * * target - target entity, if any
+ * * clickchain - provided clickchain for the triggering click, if any
+ */
+#warn hook target
+/datum/ability/proc/on_targeted_trigger(atom/target, datum/event_args/actor/clickchain/clickchain)
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
+	PROTECTED_PROC(TRUE)
+
+/datum/ability/proc/on_enable()
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
+	PROTECTED_PROC(TRUE)
+
+#warn hook target
+/**
+ * * Called additionally to `on_trigger` if we're a targeted ability.
+ *
+ * @params
+ * * target - target entity, if any
+ * * clickchain - provided clickchain for the triggering click, if any
+ */
+/datum/ability/proc/on_targeted_enable()
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
+	PROTECTED_PROC(TRUE)
+
+/datum/ability/proc/on_disable()
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
+	PROTECTED_PROC(TRUE)
+
+#warn hook target
+/**
+ * * Called additionally to `on_trigger` if we're a targeted ability.
+ *
+ * @params
+ * * target - target entity, if any
+ * * clickchain - provided clickchain for the triggering click, if any
+ */
+/datum/ability/proc/on_targeted_disable(atom/target, datum/event_args/actor/clickchain/clickchain)
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
+	PROTECTED_PROC(TRUE)
+
+//* Action Button *//
 
 /**
  * action datums for abilities
