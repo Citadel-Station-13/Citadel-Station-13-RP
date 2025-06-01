@@ -402,28 +402,28 @@
 				if(Z_LINKAGE_NORMAL)
 					var/datum/map_level/level_partner
 					level_partner = z_grid["[level.struct_x+1],[level.struct_y],[level.struct_z]"]
-					if(level.link_east_id != level_partner.id)
-						level.link_east_id = level_partner.id
+					if(level.link_east_id != level_partner?.id)
+						level.link_east_id = level_partner?.id
 						level_multiz_changed_dirs |= EAST
 					level_partner = z_grid["[level.struct_x-1],[level.struct_y],[level.struct_z]"]
-					if(level.link_west_id != level_partner.id)
-						level.link_west_id = level_partner.id
+					if(level.link_west_id != level_partner?.id)
+						level.link_west_id = level_partner?.id
 						level_multiz_changed_dirs |= WEST
 					level_partner = z_grid["[level.struct_x],[level.struct_y+1],[level.struct_z]"]
-					if(level.link_north_id != level_partner.id)
-						level.link_north_id = level_partner.id
+					if(level.link_north_id != level_partner?.id)
+						level.link_north_id = level_partner?.id
 						level_multiz_changed_dirs |= NORTH
 					level_partner = z_grid["[level.struct_x],[level.struct_y-1],[level.struct_z]"]
-					if(level.link_south_id != level_partner.id)
-						level.link_south_id = level_partner.id
+					if(level.link_south_id != level_partner?.id)
+						level.link_south_id = level_partner?.id
 						level_multiz_changed_dirs |= SOUTH
 					level_partner = z_grid["[level.struct_x],[level.struct_y],[level.struct_z+1]"]
-					if(level.link_above_id != level_partner.id)
-						level.link_above_id = level_partner.id
+					if(level.link_above_id != level_partner?.id)
+						level.link_above_id = level_partner?.id
 						level_multiz_changed_dirs |= UP
 					level_partner = z_grid["[level.struct_x],[level.struct_y],[level.struct_z-1]"]
-					if(level.link_below_id != level_partner.id)
-						level.link_below_id = level_partner.id
+					if(level.link_below_id != level_partner?.id)
+						level.link_below_id = level_partner?.id
 						level_multiz_changed_dirs |= DOWN
 
 			if(level.loaded && level_multiz_changed_dirs)

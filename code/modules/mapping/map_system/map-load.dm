@@ -77,12 +77,12 @@
 	// sort elevations bottom to top
 	tim_sort(elevation_by_z_str, /proc/cmp_numeric_text_asc, TRUE)
 	// convert elevations to lockstep
-	var/list/elevation_lockstep_z_strs = list()
-	var/list/elevation_lockstep_height_strs = list()
+	var/list/elevation_lockstep_indices = list()
+	var/list/elevation_lockstep_heights = list()
 	for(var/i in 1 to length(elevation_by_z_str))
 		var/z_str = elevation_by_z_str[i]
-		elevation_lockstep_z_strs += z_str
-		elevation_lockstep_height_strs += elevation_by_z_str[z_str]
+		elevation_lockstep_indices += text2num(z_str)
+		elevation_lockstep_heights += elevation_by_z_str[z_str]
 	// compute and set elevations on levels
 	for(var/datum/map_level/level as anything in levels)
 		if(!level.struct_active)
@@ -90,12 +90,12 @@
 		if(level.struct_z > 0)
 			var/index_of_first_nonnegative
 			var/total_height = 0
-			for(index_of_first_nonnegative in 1 to length(elevation_lockstep_z_strs))
-				if(elevation_lockstep_z_strs[index_of_first_nonnegative] >= 0)
+			for(index_of_first_nonnegative in 1 to length(elevation_lockstep_indices))
+				if(elevation_lockstep_indices[index_of_first_nonnegative] >= 0)
 					break
 			var/last_virtual_z  = 0
-			for(var/index in index_of_first_nonnegative to length(elevation_lockstep_z_strs))
-				var/virtual_z = elevation_lockstep_z_strs[index]
+			for(var/index in index_of_first_nonnegative to length(elevation_lockstep_indices))
+				var/virtual_z = elevation_lockstep_indices[index]
 				if(virtual_z != last_virtual_z)
 					total_height += ceiling_height_default * ((virtual_z - 1) - last_virtual_z)
 				// if it's on the level we're tallying to we ignore it as we don't tally ourselves
@@ -105,23 +105,23 @@
 				else if(virtual_z > level.struct_z)
 					CRASH("overshot level somehow?")
 				// tally current level
-				total_height += elevation_lockstep_height_strs[index]
+				total_height += elevation_lockstep_heights[index]
 				// +1 to skip over the current level, which we already tallied
 				last_virtual_z = virtual_z + 1
 			level.virtual_elevation = total_height
 		else if(level.struct_z < 0)
 			var/index_of_first_negative
 			var/total_height = 0
-			for(index_of_first_negative in length(elevation_lockstep_z_strs) to 1 step -1)
-				if(elevation_lockstep_z_strs[index_of_first_negative] < 0)
+			for(index_of_first_negative in length(elevation_lockstep_indices) to 1 step -1)
+				if(elevation_lockstep_indices[index_of_first_negative] < 0)
 					break
 			var/last_virtual_z = 0
 			for(var/index in index_of_first_negative to 1 step -1)
-				var/virtual_z = elevation_lockstep_z_strs[index]
+				var/virtual_z = elevation_lockstep_indices[index]
 				if(virtual_z != last_virtual_z)
 					total_height -= ceiling_height_default * (last_virtual_z - (virtual_z + 1))
 				// tally current level
-				total_height -= elevation_lockstep_height_strs[index]
+				total_height -= elevation_lockstep_heights[index]
 				// if we're on the level we're tallying to, we're done
 				if(virtual_z == level.struct_z)
 					break
