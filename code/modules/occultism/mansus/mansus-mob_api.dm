@@ -19,3 +19,20 @@
 	SHOULD_CALL_PARENT(TRUE)
 	. = 1
 	#warn impl
+
+/**
+ * returns a list of active mansus_holder's
+ */
+/mob/proc/mansus_get_holders() as /list
+	return list()
+	#warn impl
+
+/**
+ * returns dominant mansus_holder, if any
+ */
+/mob/proc/mansus_get_holder() as /datum/mansus_holder
+	return
+	#warn impl
+
+#warn how to do this
+/mob/proc/mansus_inflict_mindshock(req_power, req_duration)
