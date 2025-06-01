@@ -75,7 +75,7 @@
 	loaded_sparse_size_z = struct_max_z - struct_min_z + 1
 
 	// sort elevations bottom to top
-	tim_sort(elevation_by_z_str, /proc/cmp_numeric_text_asc, TRUE)
+	tim_sort(elevation_by_z_str, /proc/cmp_numeric_text_asc)
 	// convert elevations to lockstep
 	var/list/elevation_lockstep_indices = list()
 	var/list/elevation_lockstep_heights = list()
