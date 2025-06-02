@@ -30,19 +30,6 @@
 
 	add_fingerprint(usr)
 
-	if(istype(I,/obj/item/disk/limb))
-		var/obj/item/disk/limb/D = I
-		if(!D.company || !(D.company in GLOB.all_robolimbs))
-			to_chat(user, SPAN_WARNING("This disk seems to be corrupted!"))
-		else
-			to_chat(user, SPAN_NOTICE("Installing blueprint files for [D.company]..."))
-			if(do_after(user,50,src))
-				var/datum/robolimb/R = GLOB.all_robolimbs[D.company]
-				R.unavailable_to_build = 0
-				to_chat(user, SPAN_NOTICE("Installed [D.company] blueprints!"))
-				qdel(I)
-		return
-
 	if(istype(I,/obj/item/disk/species))
 		var/obj/item/disk/species/D = I
 		if(!SScharacters.resolve_species(D.species))

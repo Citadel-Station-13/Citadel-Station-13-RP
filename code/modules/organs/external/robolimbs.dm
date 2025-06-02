@@ -577,11 +577,6 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	legacy_includes_tail = /datum/sprite_accessory/tail/bodyset/eggnerd
 	unavailable_to_build = TRUE
 
-/obj/item/disk/limb/eggnerdltd
-	company = "Eggnerd Prototyping Ltd."
-	icon = 'icons/obj/items_vr.dmi'
-	icon_state = "verkdisk"
-
 //Brass Variant of Eggnerd
 /datum/robolimb/vulkanwrks
 	company = "Vulkan Brassworks Inc."
@@ -589,11 +584,6 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	icon = 'icons/mob/cyberlimbs/_fluff_vr/brassworks.dmi'
 	blood_color = "#1F2631"
 	unavailable_to_build = TRUE
-
-/obj/item/disk/limb/vulkanwrks
-	company = "Vulcan Brassworks Inc."
-	icon = 'icons/obj/items_vr.dmi'
-	icon_state = "datadisk2"
 
 /datum/robolimb/spectre
 	company = "Hoffman Tech - RACS Spectre "
@@ -605,11 +595,8 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 //////////////// General VS-only ones /////////////////
 /datum/robolimb/talon //They're buildable by default due to being extremely basic.
 	company = "Talon LLC"
-	desc = "This metallic limb is sleek and featuresless apart from some exposed motors"
+	desc = "This metallic limb is sleek and almost featureless, barring its exposed motors."
 	icon = 'icons/mob/cyberlimbs/talon/talon_main.dmi' //Sprited by: Viveret
-
-/obj/item/disk/limb/talon
-	company = "Talon LLC"
 
 /datum/robolimb/zenghu_taj //This wasn't indented. At all. It's a miracle this didn't break literally everything.
 	company = "Zeng-Hu - Tajaran"
@@ -620,16 +607,11 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 
 /datum/robolimb/eggnerdltdred
 	company = "Eggnerd Prototyping Ltd. (Red)"
-	desc = "A slightly more refined limb variant from Eggnerd Prototyping. Its got red plating instead of orange."
+	desc = "A slightly more refined limb variant from Eggnerd Prototyping. It's got red plating instead of orange."
 	icon = 'icons/mob/cyberlimbs/rahboopred/rahboopred.dmi'
 	blood_color = "#5e280d"
 	legacy_includes_tail = /datum/sprite_accessory/tail/bodyset/eggnerd_red
 	unavailable_to_build = TRUE
-
-/obj/item/disk/limb/eggnerdltdred
-	company = "Eggnerd Prototyping Ltd. (Red)"
-	icon = 'icons/obj/items_vr.dmi'
-	icon_state = "verkdisk"
 
 
 //Darkside Incorperated synthetic augmentation list! Many current most used fuzzy and notsofuzzy races made into synths here.
@@ -647,9 +629,6 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	speech_bubble_appearance = "normal"
 	modular_bodyparts = MODULAR_BODYPART_INVALID
 
-/obj/item/disk/limb/dsi_tajaran
-	company = "OSS - Tajaran"
-
 /datum/robolimb/dsi_lizard
 	company = "OSS - Lizard"
 	desc = "This limb feels smooth and scalie, realistic design and squish. By Onkhera Synthetic Solutions."
@@ -662,9 +641,6 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	suggested_species = SPECIES_UNATHI
 	speech_bubble_appearance = "normal"
 	modular_bodyparts = MODULAR_BODYPART_INVALID
-
-/obj/item/disk/limb/dsi_lizard
-	company = "OSS - Lizard"
 
 /datum/robolimb/dsi_sergal
 	company = "OSS - Naramadi"
@@ -679,9 +655,6 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	speech_bubble_appearance = "normal"
 	modular_bodyparts = MODULAR_BODYPART_INVALID
 
-/obj/item/disk/limb/dsi_sergal
-	company = "OSS - Naramadi"
-
 /datum/robolimb/dsi_nevrean
 	company = "OSS - Nevrean"
 	desc = "This limb feels soft and feathery, lightweight, realistic design and squish. By Onkhera Synthetic Solutions."
@@ -694,9 +667,6 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	suggested_species = SPECIES_NEVREAN
 	speech_bubble_appearance = "normal"
 	modular_bodyparts = MODULAR_BODYPART_INVALID
-
-/obj/item/disk/limb/dsi_nevrean
-	company = "OSS - Nevrean"
 
 /datum/robolimb/dsi_vulpkanin
 	company = "OSS - Vulpkanin"
@@ -711,9 +681,6 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	speech_bubble_appearance = "normal"
 	modular_bodyparts = MODULAR_BODYPART_INVALID
 
-/obj/item/disk/limb/dsi_vulpkanin
-	company = "OSS - Vulpkanin"
-
 /datum/robolimb/dsi_akula
 	company = "OSS - Akula"
 	desc = "This limb feels soft and fleshy, realistic design and squish. Seems a little mischievous. By Onkhera Synthetic Solutions."
@@ -727,9 +694,6 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	speech_bubble_appearance = "normal"
 	modular_bodyparts = MODULAR_BODYPART_INVALID
 
-/obj/item/disk/limb/dsi_akula
-	company = "OSS - Akula"
-
 /datum/robolimb/dsi_spider
 	company = "OSS - Vasilissan"
 	desc = "This limb feels hard and chitinous, realistic design. Seems a little mischievous. By Onkhera Synthetic Solutions."
@@ -742,9 +706,6 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	suggested_species = SPECIES_VASILISSAN
 	speech_bubble_appearance = "normal"
 	modular_bodyparts = MODULAR_BODYPART_INVALID
-
-/obj/item/disk/limb/dsi_spider
-	company = "OSS - Vasilissan"
 
 /datum/robolimb/dsi_teshari
 	company = "OSS - Teshari"
@@ -761,19 +722,12 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	species_cannot_use = SScharacters.all_species_names() - SPECIES_TESHARI
 	..()
 
-/obj/item/disk/limb/dsi_teshari
-	company = "OSS - Teshari"
-
-
 /datum/robolimb/braincase
 	company = "cortexCases - MMI"
 	desc = "A solid, transparent case to hold your important bits in with style."
 	icon = 'icons/mob/cyberlimbs/cortex/braincase.dmi'
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
-
-/obj/item/disk/limb/braincase
-	company = "cortexCases - MMI"
 
 /datum/robolimb/posicase
 	company = "cortexCases - Posi"
@@ -782,18 +736,12 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 
-/obj/item/disk/limb/posicase
-	company = "cortexCases - Posi"
-
 /datum/robolimb/antares
 	company = "Antares Robotics"
 	desc = "Mustard-yellow industrial limb. Heavyset and thick."
 	icon = 'icons/mob/cyberlimbs/antares/antares_main.dmi'
 	unavailable_to_build = TRUE
 	monitor_styles = standard_monitor_styles
-
-/obj/item/disk/limb/antares
-	company = "Antares Robotics"
 
 /datum/robolimb/adherent
 	company = "Unbranded - Adherent"
