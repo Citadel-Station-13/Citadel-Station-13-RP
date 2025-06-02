@@ -91,7 +91,7 @@
 /obj/item/clothing/under/cheong
 	name = "black cheongsam"
 	desc = "Popular among the men of Old Earth China during festivals. Embroidered and crafted out of fine silk, this is suitable as formal or casual wear."
-	icon = 'icons/clothing/uniform/formal/dress/cheong.dmi'
+	icon = 'icons/clothing/uniform/formal/dress/cheongsam.dmi'
 	icon_state = "cheong"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -100,7 +100,7 @@
 /obj/item/clothing/under/cheong/white
 	name = "white cheongsam"
 	desc = "Popular among the men of Old Earth China during festivals. Embroidered and crafted out of fine silk, this is suitable as formal or casual wear."
-	icon = 'icons/clothing/uniform/formal/dress/cheongw.dmi'
+	icon = 'icons/clothing/uniform/formal/dress/cheongsam.dmi'
 	icon_state = "cheongw"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -109,7 +109,7 @@
 /obj/item/clothing/under/cheong/red
 	name = "red cheongsam"
 	desc = "Popular among the men of Old Earth China during festivals. Embroidered and crafted out of fine silk, this is suitable as formal or casual wear."
-	icon = 'icons/clothing/uniform/formal/dress/cheongr.dmi'
+	icon = 'icons/clothing/uniform/formal/dress/cheongsam.dmi'
 	icon_state = "cheongr"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL

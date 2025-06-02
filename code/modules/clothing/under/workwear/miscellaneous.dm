@@ -49,7 +49,7 @@
 /obj/item/clothing/under/space
 	name = "\improper NASA jumpsuit"
 	desc = "It has a NASA logo on it and is made of space-proofed materials."
-	icon = 'icons/clothing/uniform/workwear/jumpsuit/black.dmi'
+	icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
 	icon_state = "black"
 	w_class = WEIGHT_CLASS_BULKY//bulky item
 	gas_transfer_coefficient = 0.01

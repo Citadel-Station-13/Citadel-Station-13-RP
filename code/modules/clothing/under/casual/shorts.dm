@@ -307,7 +307,7 @@
 /obj/item/clothing/under/shorts/jeans
 	name = "jeans shorts"
 	desc = "Some jeans! Just in short form!"
-	icon = 'icons/clothing/uniform/casual/shorts/jeans_shorts.dmi'
+	icon = 'icons/clothing/uniform/casual/shorts/jean_shorts.dmi'
 	icon_state = "jeans_shorts"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -315,7 +315,7 @@
 
 /obj/item/clothing/under/shorts/jeans/female
 	name = "jeans short shorts"
-	icon = 'icons/clothing/uniform/casual/shorts/jeans_shorts_f.dmi'
+	icon = 'icons/clothing/uniform/casual/shorts/jean_shorts.dmi'
 	icon_state = "jeans_shorts_f"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -323,7 +323,7 @@
 
 /obj/item/clothing/under/shorts/jeans/classic
 	name = "classic jeans shorts"
-	icon = 'icons/clothing/uniform/casual/shorts/jeansclassic_shorts.dmi'
+	icon = 'icons/clothing/uniform/casual/shorts/jean_shorts.dmi'
 	icon_state = "jeansclassic_shorts"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -331,7 +331,7 @@
 
 /obj/item/clothing/under/shorts/jeans/classic/female
 	name = "classic jeans short shorts"
-	icon = 'icons/clothing/uniform/casual/shorts/jeansclassic_shorts_f.dmi'
+	icon = 'icons/clothing/uniform/casual/shorts/jean_shorts.dmi'
 	icon_state = "jeansclassic_shorts_f"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -339,7 +339,7 @@
 
 /obj/item/clothing/under/shorts/jeans/mustang
 	name = "mustang jeans shorts"
-	icon = 'icons/clothing/uniform/casual/shorts/jeansmustang_shorts.dmi'
+	icon = 'icons/clothing/uniform/casual/shorts/jean_shorts.dmi'
 	icon_state = "jeansmustang_shorts"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -347,7 +347,7 @@
 
 /obj/item/clothing/under/shorts/jeans/mustang/female
 	name = "mustang jeans short shorts"
-	icon = 'icons/clothing/uniform/casual/shorts/jeansmustang_shorts_f.dmi'
+	icon = 'icons/clothing/uniform/casual/shorts/jean_shorts.dmi'
 	icon_state = "jeansmustang_shorts_f"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -355,7 +355,7 @@
 
 /obj/item/clothing/under/shorts/jeans/youngfolks
 	name = "young folks jeans shorts"
-	icon = 'icons/clothing/uniform/casual/shorts/jeansyoungfolks_shorts.dmi'
+	icon = 'icons/clothing/uniform/casual/shorts/jean_shorts.dmi'
 	icon_state = "jeansyoungfolks_shorts"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -363,7 +363,7 @@
 
 /obj/item/clothing/under/shorts/jeans/youngfolks/female
 	name = "young folks jeans short shorts"
-	icon = 'icons/clothing/uniform/casual/shorts/jeansyoungfolks_shorts_f.dmi'
+	icon = 'icons/clothing/uniform/casual/shorts/jean_shorts.dmi'
 	icon_state = "jeansyoungfolks_shorts_f"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -371,7 +371,7 @@
 
 /obj/item/clothing/under/shorts/jeans/black
 	name = "black jeans shorts"
-	icon = 'icons/clothing/uniform/casual/shorts/blackpants_shorts.dmi'
+	icon = 'icons/clothing/uniform/casual/shorts/jean_shorts.dmi'
 	icon_state = "blackpants_shorts"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -379,7 +379,7 @@
 
 /obj/item/clothing/under/shorts/jeans/black/female
 	name = "black jeans short shorts"
-	icon = 'icons/clothing/uniform/casual/shorts/black_shorts_f.dmi'
+	icon = 'icons/clothing/uniform/casual/shorts/jean_shorts.dmi'
 	icon_state = "black_shorts_f"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -387,7 +387,7 @@
 
 /obj/item/clothing/under/shorts/jeans/grey
 	name = "grey jeans shorts"
-	icon = 'icons/clothing/uniform/casual/shorts/greypants_shorts.dmi'
+	icon = 'icons/clothing/uniform/casual/shorts/jean_shorts.dmi'
 	icon_state = "greypants_shorts"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -395,7 +395,7 @@
 
 /obj/item/clothing/under/shorts/jeans/grey/female
 	name = "grey jeans short shorts"
-	icon = 'icons/clothing/uniform/casual/shorts/grey_shorts_f.dmi'
+	icon = 'icons/clothing/uniform/casual/shorts/jean_shorts.dmi'
 	icon_state = "grey_shorts_f"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
