@@ -24,7 +24,7 @@
 
 import { Component } from "inferno";
 import { ModuleProps, useBackend } from "../backend";
-import { directlyRouteComponent } from "../routes";
+import { getRawRoutedComponent } from "../routes";
 
 export class Module<T extends ModuleProps> extends Component<T, {}> {
   getChildContext() {
@@ -47,7 +47,7 @@ export class Module<T extends ModuleProps> extends Component<T, {}> {
     let { nestedData } = useBackend(this.context);
     let { id } = this.props;
     let ui_name = nestedData[id]['$tgui'];
-    const Component = directlyRouteComponent(ui_name);
+    const Component = getRawRoutedComponent(ui_name);
     return (
       <Component tguiModule={ui_name} />
     );

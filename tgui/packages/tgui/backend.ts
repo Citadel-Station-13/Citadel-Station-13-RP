@@ -20,7 +20,7 @@ import { focusMap } from './focus';
 import { createLogger } from './logging';
 import { resumeRenderer, suspendRenderer } from './renderer';
 
-const logger = createLogger('backend');
+export const logger = createLogger('backend');
 
 export const backendUpdate = createAction('backend/update');
 export const backendData = createAction('backend/data');
@@ -405,31 +405,6 @@ export const useLocalState = <T>(
 };
 
 /**
- * Gets a computation, that should be cached.
- * Used to do initial pre-processing of data.
- *
- * todo: rethink this when we go to react or otherwise rework tgui, this is shitcode-y
- * todo: this is a bad idea. you know why?
- * todo: yeah funny thing this persists across window reloads due to store/state
- * todo: being global. fuck.
- * todo: we need like a proper hook that doesn't persist.
- */
-// export const useComputedOnce = <T>(
-//   context: any, key: string, valueClosure: () => T
-// ): T => {
-//   const { store } = context;
-//   const state = selectBackend(store.getState());
-//   if (state.computeCache?.[key]) {
-//     return state.computeCache[key];
-//   }
-//   state.computeCache = {
-//     ...state.computeCache,
-//   };
-//   state.computeCache[key] = valueClosure();
-//   return state.computeCache[key];
-// };
-
-/**
  * Allocates state on Redux store, and **shares** it with other clients
  * in the game.
  *
@@ -492,57 +467,4 @@ export type ModuleBackend<TData extends ModuleData> = {
   moduleID: string | null;
 }
 
-/**
- * a hook for getting the module state
- *
- * id is not provided in returned object because it's in props.
- *
- * returns:
- * {
- *    backend - what useBackend usually sends; you usually don't want to use this.
- *    data - our module's data, got from their id
- *    act - a pre-bound module act function that works the same from the UI side
- *        whether or not we're in a module, or being used as a root UI
- * }
- *
- * todo: bind useLocalState, useSharedState properly *somehow*
- *       maybe with a useModuleLocal, useModuleShared?
- */
-export const useModule = <TData extends ModuleData>(context): ModuleBackend<TData> => {
-  const { is_module } = context;
-  let backend = useBackend<TData>(context);
-  if (!is_module) {
-    return { // not operating in module mode, just send normal backend
-      backend: backend,
-      data: backend.data,
-      act: backend.act,
-      moduleID: null,
-    };
-  }
-  let { nestedData } = backend;
-  return {
-    backend: backend,
-    data: (nestedData && nestedData[context.m_id]) || {},
-    act: constructModuleAct(context.m_id, context.m_ref),
-    moduleID: context.m_id,
-  };
-};
 
-export const constructModuleAct = (id: string, ref: string): actFunctionType => {
-  return (action: string, payload: object = {}) => {
-    let sent = {
-      ...payload,
-      "$m_id": id,
-      "$m_ref": ref,
-    };
-    // Validate that payload is an object
-    const isObject = typeof payload === 'object'
-      && payload !== null
-      && !Array.isArray(payload);
-    if (!isObject) {
-      logger.error(`Payload for module act() must be an object, got this:`, payload);
-      return;
-    }
-    Byond.sendMessage('mod/' + action, sent);
-  };
-};

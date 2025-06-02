@@ -2,8 +2,6 @@
  * @file
  * @copyright 2020 Aleksej Komarov
  * @license MIT
- *
- * todo: rewrite directlyRouteComponent and other stuff? ~silicons
  */
 
 import { selectBackend, useBackend } from './backend';
@@ -15,66 +13,11 @@ import { Window } from './layouts';
 
 const requireInterface = require.context('./interfaces');
 
-const routingNotFound = (props, context) => {
-  const { tguiRoot, tguiModule } = props;
-  const { config } = useBackend(context);
-  return tguiRoot? (
-    <Window>
-      <Window.Content scrollable>
-        <div>Interface <b>{config.interface || "!!NULL!!"}</b> was not found.</div>
-      </Window.Content>
-    </Window>
-  ) : (
-    <Section>
-      <div>Module <b>{tguiModule || "!!NULL!!"}</b> was not found.</div>
-    </Section>
-  );
-};
-
-const routingMissingExport = (props: ComponentProps & {exportName: string | undefined}, context) => {
-  const { tguiRoot, tguiModule } = props;
-  const { config } = useBackend(context);
-  return tguiRoot? (
-    <Window>
-      <Window.Content scrollable>
-        <div>Interface <b>{config.interface}</b> is missing export {props.exportName}.</div>
-      </Window.Content>
-    </Window>
-  ) : (
-    <Section>
-      <div>Module <b>{tguiModule}</b> is missing an export {props.exportName}.</div>
-    </Section>
-  );
-};
-
-const SuspendedWindow = () => {
-  return (
-    <Window>
-      <Window.Content scrollable />
-    </Window>
-  );
-};
-
-const RefreshingWindow = () => {
-  return (
-    <Window title="Loading">
-      <Window.Content>
-        <Section fill>
-          <Stack align="center" fill justify="center" vertical>
-            <Stack.Item>
-              <Icon color="blue" name="toolbox" spin size={4} />
-            </Stack.Item>
-            <Stack.Item>
-              Please wait...
-            </Stack.Item>
-          </Stack>
-        </Section>
-      </Window.Content>
-    </Window>
-  );
-};
-
-const interfaceSubdirectories = [
+/**
+ * TODO: this is terrible as it necessitates routing to multiple folders unnecessarily, all the time.
+ *       in the future, we want all UIs using nested to just directly specify the path.
+ */
+const routeLegacyExpandDirs = [
   `./computers`,
   `./items`,
   `./machines`,
@@ -82,7 +25,10 @@ const interfaceSubdirectories = [
   `./ui`,
 ];
 
-const interfacePath = (name: string) => {
+/**
+ * Get an array of paths to check for a given interface name.
+ */
+const computeInterfacePaths = (name: string) => {
   // first, look up name literal
   let built: string[] = [
     `./${name}.js`,
@@ -91,8 +37,8 @@ const interfacePath = (name: string) => {
     `./${name}/index.tsx`,
   ];
   // then, look up subdirectories
-  for (let i = 0; i < interfaceSubdirectories.length; i++) {
-    let dir = interfaceSubdirectories[i];
+  for (let i = 0; i < routeLegacyExpandDirs.length; i++) {
+    let dir = routeLegacyExpandDirs[i];
     built.push(`${dir}/${name}.js`);
     built.push(`${dir}/${name}.tsx`);
     built.push(`${dir}/${name}/index.js`);
@@ -101,14 +47,17 @@ const interfacePath = (name: string) => {
   return built;
 };
 
+/**
+ * Gets a routed component to render at the React app root.
+ */
 export const getRoutedComponent = store => {
   const state = store.getState();
   const { suspended, config } = selectBackend(state);
   if (suspended) {
-    return SuspendedWindow;
+    return UIWindowSuspended;
   }
   if (config.refreshing === UI_HARD_REFRESHING) {
-    return RefreshingWindow;
+    return UIWindowRefreshing;
   }
   if (process.env['NODE_ENV'] !== 'production') {
     const debug = selectDebug(state);
@@ -117,12 +66,16 @@ export const getRoutedComponent = store => {
       return require('./debug').KitchenSink;
     }
   }
-  return directlyRouteComponent(config?.interface);
+  return getRawRoutedComponent(config?.interface);
 };
 
-export const directlyRouteComponent = (name: string) => {
+/**
+ * Gets a routed component, without checking backend window config.
+ * Use this for internal usages.
+ */
+export const getRawRoutedComponent = (name: string) => {
   let esModule;
-  const got: Array<string> = interfacePath(name) as Array<string>;
+  const got: Array<string> = computeInterfacePaths(name) as Array<string>;
   for (let i = 0; i < got.length; i++) {
     let path: string = got[i];
     try {
@@ -141,7 +94,7 @@ export const directlyRouteComponent = (name: string) => {
     }
   }
   if (!esModule) {
-    return routingNotFound;
+    return UIRouteNotFound;
   }
   // pull out any /'s as the interface is often a path, not just the interface export
   const nameHasABackslash = name.lastIndexOf("/");
@@ -149,9 +102,80 @@ export const directlyRouteComponent = (name: string) => {
   const Component = esModule[realName];
   if (!Component) {
     return (props, context) => {
-      props.exportName = resolvedComponent;
-      return routingMissingExport(props, context);
+      props.exportName = realName;
+      return UIRouteMissingExport(props, context);
     };
   }
   return Component;
+};
+
+/**
+ * UI node to render while a window is suspended.
+ */
+const UIWindowSuspended = () => {
+  return (
+    <Window>
+      <Window.Content scrollable />
+    </Window>
+  );
+};
+
+/**
+ * UI node to render while a window is hard refreshing.
+ */
+const UIWindowRefreshing = () => {
+  return (
+    <Window title="Loading">
+      <Window.Content>
+        <Section fill>
+          <Stack align="center" fill justify="center" vertical>
+            <Stack.Item>
+              <Icon color="blue" name="toolbox" spin size={4} />
+            </Stack.Item>
+            <Stack.Item>
+              Please wait...
+            </Stack.Item>
+          </Stack>
+        </Section>
+      </Window.Content>
+    </Window>
+  );
+};
+
+/**
+ * UI node returned if a route cannot be found.
+ */
+const UIRouteNotFound = (props, context) => {
+  const { tguiRoot, tguiModule } = props;
+  const { config } = useBackend(context);
+  return tguiRoot? (
+    <Window>
+      <Window.Content scrollable>
+        <div>Interface <b>{config.interface || "!!NULL!!"}</b> was not found.</div>
+      </Window.Content>
+    </Window>
+  ) : (
+    <Section>
+      <div>Module <b>{tguiModule || "!!NULL!!"}</b> was not found.</div>
+    </Section>
+  );
+};
+
+/**
+ * UI node returned if a route does not have the requisite interface exported.
+ */
+const UIRouteMissingExport = (props: ComponentProps & {exportName: string | undefined}, context) => {
+  const { tguiRoot, tguiModule } = props;
+  const { config } = useBackend(context);
+  return tguiRoot? (
+    <Window>
+      <Window.Content scrollable>
+        <div>Interface <b>{config.interface}</b> is missing export {props.exportName}.</div>
+      </Window.Content>
+    </Window>
+  ) : (
+    <Section>
+      <div>Module <b>{tguiModule}</b> is missing an export {props.exportName}.</div>
+    </Section>
+  );
 };
