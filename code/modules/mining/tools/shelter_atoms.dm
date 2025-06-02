@@ -17,6 +17,8 @@
 	var/datum/map_template/shelter/template
 	var/used = FALSE
 
+#warn make sure roofs spawn
+
 /obj/item/survivalcapsule/proc/get_template()
 	if(template)
 		return
