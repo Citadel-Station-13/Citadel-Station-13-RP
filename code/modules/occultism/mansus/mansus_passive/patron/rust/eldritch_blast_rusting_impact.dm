@@ -7,3 +7,10 @@
 /datum/mansus_passive/patron/rust/eldritch_blast_rusting_impact
 
 // TODO: impl
+
+/datum/projectile_effect/eldritch_blast_rusting_impact
+	hook_impact = TRUE
+
+/datum/projectile_effect/eldritch_blast_rusting_impact/on_impact(obj/projectile/proj, atom/target, impact_flags, def_zone)
+    . = ..()
+

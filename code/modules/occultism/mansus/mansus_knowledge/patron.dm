@@ -4,4 +4,5 @@
 /datum/mansus_knowledge/patron
 	abstract_type = /datum/mansus_knowledge/patron
 
+
 #warn impl

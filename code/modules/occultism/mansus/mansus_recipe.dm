@@ -5,5 +5,6 @@
  * default-locked crafting recipes used by heretics
  */
 /datum/crafting_recipe/mansus_recipe
+    always_available = FALSE
 
 #warn impl

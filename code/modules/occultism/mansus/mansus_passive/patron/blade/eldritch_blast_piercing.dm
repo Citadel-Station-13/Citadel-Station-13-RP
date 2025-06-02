@@ -7,3 +7,11 @@
 /datum/mansus_passive/patron/blade/eldritch_blast_piercing
 
 // TODO: impl
+
+/datum/projectile_effect/eldritch_blast_piercing
+	hook_impact = TRUE
+
+/datum/projectile_effect/eldritch_blast_piercing/on_impact(obj/projectile/proj, atom/target, impact_flags, def_zone)
+	. = ..()
+	
+
