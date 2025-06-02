@@ -90,6 +90,7 @@ SUBSYSTEM_DEF(overmaps)
 	if(are_you_sure != "Yes")
 		return
 
+	#warn new upload system
 	var/map = input(src, "Select overmap .dmm", "Instantiate Overmap") as file|null
 	if(!map)
 		return

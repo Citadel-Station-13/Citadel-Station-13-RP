@@ -67,7 +67,7 @@
 	set category = "Debug"
 	set name = "Map Template - Upload"
 
-	var/map = input(usr, "Choose a Map Template to upload to template storage","Upload Map Template") as null|file
+	var/map = usr.client.prompt_for_file_or_wait("Choose a map template to upload to template storage", "Upload Map Template", 1024 * 1024 * 1)
 
 	if(isnull(map))
 		return
