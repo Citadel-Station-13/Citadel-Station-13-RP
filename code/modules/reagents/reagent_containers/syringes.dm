@@ -17,7 +17,7 @@
 	damage_mode = DAMAGE_MODE_SHARP
 	integrity_flags = INTEGRITY_ACIDPROOF
 	rad_flags = RAD_NO_CONTAMINATE
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD | ITEM_EASY_LATHE_DECONSTRUCT
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD | ITEM_EASY_LATHE_DECONSTRUCT
 	var/mode = SYRINGE_DRAW
 	var/image/filling //holds a reference to the current filling overlay
 	var/visible_name = "a syringe"
@@ -197,7 +197,7 @@
 					user.visible_message("<span class='warning'>[user] begins hunting for an injection port on [target]'s suit!</span>","<span class='notice'>You begin hunting for an injection port on [target]'s suit!</span>")
 
 			//The warmup
-			user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+			user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN)
 			if(!do_after(user,warmup_time,target))
 				return
 
@@ -244,7 +244,12 @@
 		var/hit_area = affecting.name
 
 		if(user != target)
-			var/list/shieldcall_results = target.run_mob_defense(7, attack_type = ATTACK_TYPE_MELEE, weapon = src, hit_zone = hit_area, clickchain = new /datum/event_args/actor/clickchain(user))
+			var/list/shieldcall_results = target.run_mob_defense(
+				7,
+				attack_type = ATTACK_TYPE_MELEE,
+				attack_source = new /datum/event_args/actor/clickchain(user),
+				hit_zone = hit_area,
+			)
 			if(shieldcall_results[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAG_ATTACK_BLOCKED)
 				return
 

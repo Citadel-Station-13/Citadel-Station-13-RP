@@ -119,7 +119,7 @@ module.exports = (env = {}, argv) => {
     stats: createStats(true),
     plugins: [
       new webpack.EnvironmentPlugin({
-        NODE_ENV: env['NODE_ENV'] || mode,
+        NODE_ENV: env.NODE_ENV || mode,
         WEBPACK_HMR_ENABLED: env.WEBPACK_HMR_ENABLED || argv.hot || false,
         DEV_SERVER_IP: env.DEV_SERVER_IP || null,
       }),

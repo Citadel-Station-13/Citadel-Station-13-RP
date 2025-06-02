@@ -1,6 +1,7 @@
 /datum/species/adherent
 	uid = SPECIES_ID_ADHERENT
 	id = SPECIES_ID_ADHERENT
+
 	name = SPECIES_ADHERENT
 	name_plural = "Adherents"
 	default_bodytype = BODYTYPE_ADHERENT
@@ -71,7 +72,7 @@
 	flesh_color = "#90edeb"
 	base_color  = "#066000"
 
-	slowdown = -0.5
+	movement_base_speed = 6.25
 
 	vision_innate = /datum/vision/baseline/species_tier_2
 

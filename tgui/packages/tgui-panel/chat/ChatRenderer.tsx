@@ -9,28 +9,33 @@ export class ChatRenderer {
   /**
    * An EventEmitter that external systems can hook to
    */
-  events: EventEmitter = new EventEmitter();
+  events = new EventEmitter();
 
-  private loaded: boolean = false;
-
-  // TODO: type these
+  loaded = false;
+  rootNode: HTMLElement;
   queue: any = [];
-  rootNode: any = null;
   messages: any = [];
   visibleMessages: any = [];
-  page: any = null;
-  scrollNode: any = null;
-  scrollTracking: any = true;
-  handleScroll: any;
-  ensureScrollTracking: any;
-  highlightParsers: any;
+  page: number;
+  // Scroll handler
+  scrollNode: HTMLElement;
+  scrollTracking = true;
+  lastScrollHeight = 0;
+  handleScroll: (type: any) => void;
+  ensureScrollTracking: () => void;
+  highlightParsers: null | any[];
 
   constructor() {
     this.handleScroll = (type) => {
-      const node: any = this.scrollNode;
+      const node = this.scrollNode;
+      if (!node) {
+        return;
+      }
       const height = node.scrollHeight;
       const bottom = node.scrollTop + node.offsetHeight;
-      const scrollTracking = Math.abs(height - bottom) < SCROLL_TRACKING_TOLERANCE;
+      const scrollTracking =
+        Math.abs(height - bottom) < SCROLL_TRACKING_TOLERANCE ||
+        this.lastScrollHeight === 0;
       if (scrollTracking !== this.scrollTracking) {
         this.scrollTracking = scrollTracking;
         this.events.emit('scrollTrackingChanged', scrollTracking);
@@ -50,12 +55,11 @@ export class ChatRenderer {
     return this.loaded && this.rootNode && this.page;
   }
 
-  mount(node) {
+  mount(node: HTMLElement) {
     // Mount existing root node on top of the new node
     if (this.rootNode) {
       node.appendChild(this.rootNode);
     }
-
     // Initialize the root node
     else {
       this.rootNode = node;
@@ -82,13 +86,13 @@ export class ChatRenderer {
     }
   }
 
-  assignStyle(style = {}) {
+  assignStyle(style: Record<string, any> = {}) {
     for (let key of Object.keys(style)) {
       this.rootNode.style.setProperty(key, style[key]);
     }
   }
 
-  setHighlight(highlightSettings, highlightSettingById) {
+  setHighlight(highlightSettings: string[], highlightSettingById: Record<string, any>) {
     this.highlightParsers = null;
     if (!highlightSettings) {
       return;
@@ -116,13 +120,13 @@ export class ChatRenderer {
             // Reset lastIndex so it does not mess up the next word
             ((allowedRegex.lastIndex = 0) || true)
         );
-      let highlightWords;
-      let highlightRegex;
+      let highlightWords: string[] | undefined;
+      let highlightRegex: RegExp | null;
       // Nothing to match, reset highlighting
       if (lines.length === 0) {
         return;
       }
-      let regexExpressions: any = [];
+      let regexExpressions: string[] = [];
       // Organize each highlight entry into regex expressions and words
       for (let line of lines) {
         // Regex expression syntax is /[exp]/
@@ -153,7 +157,7 @@ export class ChatRenderer {
         if (regexStr) {
           highlightRegex = new RegExp('(' + regexStr + ')', flags);
         } else {
-          const pattern = `${matchWord ? '\\b' : ''}(${highlightWords.join(
+          const pattern = `${matchWord ? '\\b' : ''}(${highlightWords!.join(
             '|'
           )})${matchWord ? '\\b' : ''}`;
           highlightRegex = new RegExp(pattern, flags);
@@ -181,7 +185,7 @@ export class ChatRenderer {
     this.scrollNode.scrollTop = this.scrollNode.scrollHeight;
   }
 
-  changePage(page) {
+  changePage(page: number) {
     if (!this.isReady()) {
       this.page = page;
       this.tryFlushQueue();
@@ -193,11 +197,11 @@ export class ChatRenderer {
     this.visibleMessages = [];
     // Re-add message nodes
     const fragment = document.createDocumentFragment();
-    let node;
+    let node: HTMLElement | undefined;
     for (let message of this.messages) {
       if (canPageAcceptType(page, message.type)) {
         node = message.node;
-        fragment.appendChild(node);
+        fragment.appendChild(node as HTMLElement);
         this.visibleMessages.push(message);
       }
     }
@@ -214,14 +218,14 @@ export class ChatRenderer {
     const to = Math.max(0, len - COMBINE_MAX_MESSAGES);
     for (let i = from; i >= to; i--) {
       const message = this.visibleMessages[i];
-      const matches = (
+
+      const matches =
         // Is not an internal message
-        !message.type.startsWith(MESSAGE_TYPE_INTERNAL)
+        !message.type.startsWith(MESSAGE_TYPE_INTERNAL) &&
         // Text payload must fully match
-        && isSameMessage(message, predicate)
+        isSameMessage(message, predicate) &&
         // Must land within the specified time window
-        && now < message.createdAt + COMBINE_MAX_TIME_WINDOW
-      );
+        now < message.createdAt + COMBINE_MAX_TIME_WINDOW;
       if (matches) {
         return message;
       }
@@ -229,7 +233,8 @@ export class ChatRenderer {
     return null;
   }
 
-  processBatch(batch, options: any = {}) {
+
+  processBatch(batch, options: Record<string, any> = {}) {
     const { prepend, notifyListeners = true } = options;
     const now = Date.now();
     // Queue up messages until chat is ready
@@ -240,6 +245,10 @@ export class ChatRenderer {
         this.queue = [...this.queue, ...batch];
       }
       return;
+    }
+    // Store last scroll position
+    if (this.scrollNode) {
+      this.lastScrollHeight = this.scrollNode.scrollHeight;
     }
     // Insert messages
     const fragment = document.createDocumentFragment();
@@ -258,12 +267,10 @@ export class ChatRenderer {
       if (message.node) {
         node = message.node;
       }
-
       // Reconnected
       else if (message.type === 'internal/reconnected') {
         node = createReconnectedNode();
       }
-
       // Create message node
       else {
         node = createMessageNode();
@@ -271,7 +278,6 @@ export class ChatRenderer {
         if (message.text) {
           node.textContent = message.text;
         }
-
         // Payload is HTML
         else if (message.html) {
           node.innerHTML = message.html;
@@ -312,6 +318,7 @@ export class ChatRenderer {
             childNode.removeChild(childNode.firstChild);
           }
           const Element = TGUI_CHAT_COMPONENTS[targetName];
+
           /* eslint-disable react/no-danger */
           render(
             <Element {...outputProps}>
@@ -327,7 +334,7 @@ export class ChatRenderer {
               node,
               parser.highlightRegex,
               parser.highlightWords,
-              (text) => createHighlightNode(text, parser.highlightColor)
+              (text) => createHighlightNode(text, parser.highlightColor),
             );
             if (highlighted && parser.highlightWholeMessage) {
               node.className += ' ChatMessage--highlighted';
@@ -353,7 +360,7 @@ export class ChatRenderer {
       // Query all possible selectors to find out the message type
       if (!message.type) {
         const typeDef = MESSAGE_TYPES.find(
-          (typeDef) => typeDef.selector && node.querySelector(typeDef.selector)
+          (typeDef) => typeDef.selector && node.querySelector(typeDef.selector),
         );
         message.type = typeDef?.type || MESSAGE_TYPE_UNKNOWN;
       }
@@ -399,8 +406,7 @@ export class ChatRenderer {
     // Visible messages
     {
       const messages = this.visibleMessages;
-      const fromIndex = Math.max(0,
-        messages.length - MAX_VISIBLE_MESSAGES);
+      const fromIndex = Math.max(0, messages.length - MAX_VISIBLE_MESSAGES);
       if (fromIndex > 0) {
         this.visibleMessages = messages.slice(fromIndex);
         for (let i = 0; i < fromIndex; i++) {
@@ -410,16 +416,19 @@ export class ChatRenderer {
           message.node = 'pruned';
         }
         // Remove pruned messages from the message array
-        this.messages = this.messages.filter(message => (
-          message.node !== 'pruned'
-        ));
+
+        this.messages = this.messages.filter(
+          (message) => message.node !== 'pruned',
+        );
         logger.log(`pruned ${fromIndex} visible messages`);
       }
     }
     // All messages
     {
-      const fromIndex = Math.max(0,
-        this.messages.length - MAX_PERSISTED_MESSAGES);
+      const fromIndex = Math.max(
+        0,
+        this.messages.length - MAX_PERSISTED_MESSAGES,
+      );
       if (fromIndex > 0) {
         this.messages = this.messages.slice(fromIndex);
         logger.log(`pruned ${fromIndex} stored messages`);
@@ -432,8 +441,10 @@ export class ChatRenderer {
       return;
     }
     // Make a copy of messages
-    const fromIndex = Math.max(0,
-      this.messages.length - MAX_PERSISTED_MESSAGES);
+    const fromIndex = Math.max(
+      0,
+      this.messages.length - MAX_PERSISTED_MESSAGES,
+    );
     const messages = this.messages.slice(fromIndex);
     // Remove existing nodes
     for (let message of messages) {
@@ -447,6 +458,29 @@ export class ChatRenderer {
     this.processBatch(messages, {
       notifyListeners: false,
     });
+  }
+
+  /**
+   * @clearChat
+   * @copyright 2023
+   * @author Cheffie
+   * @link https://github.com/CheffieGithub
+   * @license MIT
+   */
+  clearChat() {
+    const messages = this.visibleMessages;
+    this.visibleMessages = [];
+    for (let i = 0; i < messages.length; i++) {
+      const message = messages[i];
+      this.rootNode.removeChild(message.node);
+      // Mark this message as pruned
+      message.node = 'pruned';
+    }
+    // Remove pruned messages from the message array
+    this.messages = this.messages.filter(
+      (message) => message.node !== 'pruned',
+    );
+    logger.log(`Cleared chat`);
   }
 
   saveToDisk() {

@@ -31,7 +31,7 @@
 	possible_transfer_amounts = list(3)
 	volume = 4
 	can_be_placed_into = null
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	atom_flags = OPENCONTAINER
 	integrity_flags = NONE
 	drop_sound = 'sound/items/drop/cloth.ogg'
@@ -123,7 +123,7 @@
 				if(T)
 					T.clean(src, user)
 
-/obj/item/reagent_containers/glass/rag/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/reagent_containers/glass/rag/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(isliving(target)) //Leaving this as isliving.
 		var/mob/living/L = target
 		if(on_fire) //Check if rag is on fire, if so igniting them and stopping.

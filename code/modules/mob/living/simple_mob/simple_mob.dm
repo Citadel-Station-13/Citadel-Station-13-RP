@@ -1,6 +1,12 @@
-// Reorganized and somewhat cleaned up.
-// AI code has been made into a datum, inside the AI module folder.
-
+/**
+ * Simple mobs.
+ *
+ * * Unlike /carbon's and /silicon's, these are slightly less
+ *   composition-based, with most of their properties in their
+ *   frankly ridiculous amount of variables.
+ * * These tend to not have detailed simulation like attack
+ *   zones and whatnot being handled.
+ */
 /mob/living/simple_mob
 	name = "animal"
 	desc = ""
@@ -18,7 +24,7 @@
 
 	//* Attacks - Basic *//
 	/// melee style
-	var/datum/unarmed_attack/melee_style
+	var/datum/melee_attack/unarmed/melee_style
 
 	//? Darksight
 	/// our innate darksight
@@ -44,6 +50,9 @@
 	var/ui_icons
 	/// Message to print to players about 'how' to play this mob on login.
 	var/player_msg
+
+	//inv slots
+	var/list/inventory_slots
 
 	//* Mob icon/appearance settings *//
 	/// The iconstate if we're alive. //!REQUIRED
@@ -71,9 +80,10 @@
 	/// Text name of their language if they speak something other than galcom. They speak the first one.
 	var/has_langs = list(LANGUAGE_GALCOM)
 
-	//* Movement things. *//
-	/// Lower is faster.
-	var/movement_cooldown = 5
+	//* Movement *//
+	/// Base movement speed in tiles per second
+	var/movement_base_speed = 2
+
 	/// If set, will play this sound when it moves on its own will.
 	var/movement_sound = null
 	/// If set, plays the sound when the mob's dir changes in most cases.
@@ -209,8 +219,6 @@
 	//* Damage resistances *//
 	/// Chance for a grab attempt to fail. Note that this is not a true resist and is just a prob() of failure.
 	var/grab_resist = 0
-	/// Damage reduction for all types
-	var/resistance = 0
 	// Protection against heat/cold/electric/water effects.
 	// 0 is no protection, 1 is total protection. Negative numbers increase vulnerability.
 	var/heat_resist = 0.0
@@ -268,6 +276,10 @@
 	if(has_eye_glow)
 		add_eyes()
 
+	inventory = new(src)
+	inventory.set_inventory_slots(inventory_slots)
+	inventory.set_hand_count(get_usable_hand_count())
+
 	return ..()
 
 /mob/living/simple_mob/Destroy()
@@ -290,7 +302,7 @@
 	melee_style.damage_mode = (attack_sharp? DAMAGE_MODE_SHARP : NONE) | (attack_edge? DAMAGE_MODE_EDGE : NONE)
 	melee_style.damage_flag = attack_armor_type
 	//* IT'S GAMER TIME *//
-	melee_style.damage_tier = MELEE_TIER_EXTREME
+	melee_style.damage_tier = 5
 	melee_style.attack_verb_legacy = attacktext
 	melee_style.verb_past_participle = attacktext
 
@@ -303,9 +315,10 @@
 		health = round(health*mod)
 		legacy_melee_damage_lower = round(legacy_melee_damage_lower*mod)
 		legacy_melee_damage_upper = round(legacy_melee_damage_upper*mod)
-		movement_cooldown = round(movement_cooldown*mod)
+		movement_base_speed = movement_base_speed * mod
 		meat_amount = round(meat_amount*mod)
 		update_icons()
+		update_movespeed_base()
 
 /mob/living/simple_mob/death()
 	update_icon()
@@ -334,20 +347,10 @@
 		playsound(src, turn_sound, 50, 1)
 	else if(movement_sound && old_turf != get_turf(src)) // Playing both sounds at the same time generally sounds bad.
 		playsound(src, movement_sound, 50, 1)
-/*
-/mob/living/simple_mob/setDir(new_dir)
-	if(dir != new_dir)
-		playsound(src, turn_sound, 50, 1)
-	return ..()
-*/
-/mob/living/simple_mob/movement_delay()
+
+/mob/living/simple_mob/legacy_movement_delay()
 	. = ..()
 	var/tally = 0 //Incase I need to add stuff other than "speed" later
-
-	tally = movement_cooldown
-
-	if(force_max_speed)
-		return -3
 
 	for(var/datum/modifier/M in modifiers)
 		if(!isnull(M.haste) && M.haste == TRUE)
@@ -368,10 +371,7 @@
 			tally = 1
 		tally *= purge
 
-	if(m_intent == "walk")
-		tally *= 1.5
-
-	return . + tally + config_legacy.animal_delay
+	return . + tally
 
 
 /mob/living/simple_mob/statpanel_data(client/C)

@@ -18,7 +18,7 @@
 	/// Amount of host blood we have
 	VAR_PRIVATE/host_blood_volume = 0
 	/// Our fragments that aren't ourselves, associated to their volume.
-	VAR_PRIVATE/list/datum/blood_fragment/guest_blood_volumes
+	VAR_PRIVATE/list/datum/blood_fragment/guest_blood_volumes = list()
 	/// Total amount of guest blood volume; this is a cached value
 	VAR_PRIVATE/tmp/cached_guest_blood_volume = 0
 
@@ -85,8 +85,10 @@
 		var/datum/blood_fragment/checking = guest_blood_volumes[i]
 		if(checking.equivalent(fragment))
 			guest_blood_volumes[checking] += amount
+			cached_guest_blood_volume += amount
 			return
 	guest_blood_volumes[fragment] = amount
+	cached_guest_blood_volume += amount
 
 /**
  * Erases blood uniformly.
@@ -105,7 +107,8 @@
  */
 /datum/blood_holder/proc/erase(amount)
 	var/total = host_blood_volume + cached_guest_blood_volume
-	if(total <= 0) return 0
+	if(!total)
+		return 0
 	. = min(amount, total)
 	if(total==0) //No divide by zero, return value's set already
 		return
@@ -144,10 +147,12 @@
  * * amount - amount to take
  * * infinite - don't actually take any, and allow drawing any amount
  *
- * @return mixture taken
+ * @return mixture taken, if any
  */
 /datum/blood_holder/proc/draw(amount, infinite) as /datum/blood_mixture
 	var/total = host_blood_volume + cached_guest_blood_volume
+	if(!total)
+		return null
 	amount = min(amount, total)
 	if(amount <= 0) return null
 	var/multiplier = max(0, 1 - (amount / total))
@@ -176,7 +181,7 @@
 /datum/blood_holder/proc/get_color()
 	// red, green, blue, alpha, total
 	var/list/rgbat = decode_rgba(host_blood.color || "#000000")
-	// index 5
+	// 'total' is index 5
 	rgbat += host_blood_volume
 
 	for(var/datum/blood_fragment/fragment as anything in guest_blood_volumes)
@@ -204,7 +209,7 @@
 /datum/blood_holder/proc/do_assimilate_all()
 	host_blood_volume += max(0, cached_guest_blood_volume)
 	cached_guest_blood_volume = 0
-	guest_blood_volumes = list()
+	guest_blood_volumes.len = 0
 
 /**
  * assimilates guest blood
@@ -216,7 +221,7 @@
 	var/iterations = 0
 	while(volume > 0)
 		if(++iterations > 20)
-			CRASH("too many iterations in blood assimilation simualtion")
+			CRASH("too many iterations in blood assimilation simulation")
 		var/random_index = rand(1, length(guest_blood_volumes))
 		var/datum/blood_fragment/random_fragment = guest_blood_volumes[random_index]
 		var/random_volume = guest_blood_volumes[random_fragment]

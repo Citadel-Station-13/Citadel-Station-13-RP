@@ -109,9 +109,6 @@ GLOBAL_LIST(topic_status_cache)
 	// Create robolimbs for chargen.
 	populate_robolimb_list()
 
-	//Must be done now, otherwise ZAS zones and lighting overlays need to be recreated.
-	createRandomZlevel()
-
 	if(fexists(RESTART_COUNTER_PATH))
 		GLOB.restart_counter = text2num(trim(file2text(RESTART_COUNTER_PATH)))
 		fdel(RESTART_COUNTER_PATH)
@@ -124,7 +121,6 @@ GLOBAL_LIST(topic_status_cache)
 	#ifdef UNIT_TESTS
 	HandleTestRun()
 	#endif
-
 	if(config_legacy.ToRban)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ToRban_autoupdate)), 5 MINUTES)
 

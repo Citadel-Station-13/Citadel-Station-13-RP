@@ -42,7 +42,7 @@
 	legacy_melee_damage_upper = 30
 	base_attack_cooldown = 9
 	attack_armor_pen = 15
-	movement_cooldown = 3
+	movement_base_speed = 10 / 3
 	base_pixel_x = -8
 	base_pixel_y = 1
 	icon_scale_x = 1.1
@@ -65,7 +65,7 @@
 	maxHealth = 150
 	health = 150
 	base_pixel_x = -8
-	movement_cooldown = 0.5
+	movement_base_speed = 10 / 0.5
 	legacy_melee_damage_lower = 20
 	legacy_melee_damage_upper = 20
 	base_attack_cooldown = 6
@@ -85,7 +85,7 @@
 	maxHealth = 130
 	health = 130
 	base_pixel_x = -15
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 	legacy_melee_damage_lower = 15
 	legacy_melee_damage_upper = 15
 	base_attack_cooldown = 4
@@ -113,7 +113,7 @@
 	legacy_melee_damage_lower = 10
 	legacy_melee_damage_upper = 10
 	base_pixel_x = -8
-	movement_cooldown = 3
+	movement_base_speed = 10 / 3
 	projectiletype = /obj/projectile/energy/neurotoxin
 	base_attack_cooldown = 9
 	projectilesound = 'sound/effects/splat.ogg'
@@ -136,7 +136,7 @@
 	health = 250
 	legacy_melee_damage_lower = 20
 	legacy_melee_damage_upper = 20
-	movement_cooldown = 2
+	movement_base_speed = 10 / 2
 	base_pixel_x = -8
 	base_pixel_y = 1
 	icon_scale_x = 1.1
@@ -172,7 +172,7 @@
 	)
 	legacy_melee_damage_lower = 50
 	legacy_melee_damage_upper = 50
-	movement_cooldown = 2
+	movement_base_speed = 10 / 2
 	base_pixel_x = -17
 	base_pixel_y = 6
 	icon_scale_x = 1.3
@@ -188,7 +188,7 @@
 	var/charging_warning = 1 SECONDS
 	var/charge_damage_mode = DAMAGE_MODE_PIERCE | DAMAGE_MODE_SHARP ///You may want to change this
 	var/charge_damage_flag = ARMOR_MELEE
-	var/charge_damage_tier = MELEE_TIER_HEAVY
+	var/charge_damage_tier = 4.5
 	var/charge_damage = 60
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/destructive //temporary until we get proper AI for xenomorphs.//
 
@@ -215,7 +215,7 @@
 	legacy_melee_damage_upper = 40
 	attack_armor_type = DAMAGE_MODE_PIERCE | DAMAGE_MODE_SHARP
 	attack_armor_pen = 30
-	movement_cooldown = 2
+	movement_base_speed = 10 / 2
 	base_pixel_x = -16
 	base_pixel_y = 2
 	icon_scale_x = 1.2
@@ -248,7 +248,7 @@
 	legacy_melee_damage_lower = 30
 	legacy_melee_damage_upper = 30
 	attack_armor_type = DAMAGE_MODE_PIERCE | DAMAGE_MODE_SHARP
-	movement_cooldown = 3
+	movement_base_speed = 10 / 3
 	base_pixel_x = -18
 	base_pixel_y = 2
 	icon_scale_x = 1.2
@@ -284,7 +284,7 @@
 	legacy_melee_damage_lower = 70
 	legacy_melee_damage_upper = 50
 	attack_armor_pen = 60
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 	base_pixel_x = -15
 	base_pixel_y = 6
 	icon_scale_x = 1.5
@@ -302,8 +302,8 @@
 	var/charging_warning = 0 SECONDS
 	var/charge_damage_mode = DAMAGE_MODE_PIERCE | DAMAGE_MODE_SHARP ///You may want to change this
 	var/charge_damage_flag = ARMOR_MELEE
-	var/charge_damage_tier = MELEE_TIER_HEAVY
-	var/charge_damage = 80
+	var/charge_damage_tier = 4.5
+	var/charge_damage = 60
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/aggressive/priest
 
 /mob/living/simple_mob/animal/space/xenomorph/special/burrower
@@ -318,7 +318,7 @@
 	health = 300
 	legacy_melee_damage_lower = 35
 	legacy_melee_damage_upper = 40
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 	icon_scale_x = 0.7
 	icon_scale_y = 0.7
 	base_pixel_x = -16
@@ -345,7 +345,7 @@
 	health = 250
 	legacy_melee_damage_lower = 10
 	legacy_melee_damage_upper = 10
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 	base_pixel_x = -8
 	base_pixel_y = 1
 	icon_scale_x = 1.1
@@ -369,7 +369,7 @@
 	health = 200
 	legacy_melee_damage_lower = 15
 	legacy_melee_damage_upper = 15
-	movement_cooldown = 3
+	movement_base_speed = 10 / 3
 	base_pixel_x = -16
 	attack_sound = 'sound/mobs/biomorphs/spitter_attack.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
@@ -393,7 +393,7 @@
 	health = 300
 	legacy_melee_damage_lower = 20
 	legacy_melee_damage_upper = 20
-	movement_cooldown = 3
+	movement_base_speed = 10 / 3
 	base_pixel_x = -16
 	base_pixel_y = -3
 	icon_scale_x = 0.9

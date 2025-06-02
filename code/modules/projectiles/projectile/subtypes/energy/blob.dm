@@ -2,7 +2,7 @@
 	name = "spore"
 	icon_state = "declone"
 	damage_force = 3
-	armor_penetration = 40
+	damage_tier = 3.5
 	damage_type = DAMAGE_TYPE_BRUTE
 	damage_flag = ARMOR_MELEE
 	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_BLOB
