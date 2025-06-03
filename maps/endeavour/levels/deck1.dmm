@@ -827,8 +827,8 @@
 /obj/machinery/button/remote/blast_door{
 	id = "cockpit_lockdown";
 	name = "Cockpit Lockdown";
-	pixel_y = 5;
-	pixel_x = -29
+	pixel_y = 6;
+	pixel_x = -38
 	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/cockpit)
@@ -1388,14 +1388,8 @@
 /area/endeavour/exploration/hallway_fore)
 "bbQ" = (
 /obj/machinery/computer/ship/engines,
-/obj/machinery/turretid{
-	check_access = 0;
-	control_area = /area/shuttle/excursion/general;
-	gl_uid = "exploration";
-	pixel_y = 32;
-	req_access = null;
-	req_one_access = list(19,43,62,67);
-	uid = "exploration"
+/obj/item/radio/intercom/west_mount{
+	pixel_x = 28
 	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/cockpit)
@@ -3641,12 +3635,9 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/surfacebase/sauna)
 "cPD" = (
-/obj/structure/fuel_port{
-	pixel_x = -27
-	},
-/obj/structure/table/steel_reinforced,
-/turf/simulated/floor/tiled/white,
-/area/shuttle/excursion/cargo)
+/obj/machinery/light,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/exploration/excursion_dock)
 "cPS" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
@@ -6523,7 +6514,7 @@
 	id = "shuttle_hatch";
 	name = "Shuttle Aft Hatch"
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/excursion/general)
 "eWO" = (
 /obj/item/radio/intercom{
@@ -8614,7 +8605,15 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/cargo)
 "gxH" = (
-/obj/machinery/atmospherics/pipe/tank/phoron,
+/obj/machinery/atmospherics/pipe/tank/phoron{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/general)
 "gyv" = (
@@ -11101,6 +11100,9 @@
 	},
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
+	},
+/obj/machinery/light{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/general)
@@ -14837,6 +14839,13 @@
 /obj/item/stamp/captain,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
+"lox" = (
+/obj/machinery/atmospherics/component/binary/pump{
+	dir = 4;
+	name = "main fuel pump"
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/excursion/general)
 "loH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -15673,9 +15682,9 @@
 /turf/simulated/floor/tiled,
 /area/exploration/pilot_prep)
 "lVa" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden,
-/turf/simulated/wall/rthull,
-/area/shuttle/excursion/cargo)
+/obj/structure/table/rack,
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/excursion/general)
 "lVu" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 31
@@ -15976,14 +15985,22 @@
 /turf/simulated/floor/tiled,
 /area/exploration/medical)
 "mfT" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 8
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "cockpit_lockdown";
+	name = "Cockpit Lockdown";
+	opacity = 0
 	},
 /obj/spawner/window/low_wall/borosillicate/firelocks,
+/obj/map_helper/paint_stripe/violet,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 8
+	},
+/turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/cargo)
 "mgv" = (
 /obj/item/radio/intercom{
@@ -16102,6 +16119,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1aftmaint)
+"mmA" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/shuttle/excursion/cargo)
 "mmC" = (
 /turf/simulated/wall/r_wall/prepainted/exploration,
 /area/endeavour/hallway/d1fwdmaint)
@@ -18428,8 +18452,16 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway2)
 "nXC" = (
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "cockpit_lockdown";
+	name = "Cockpit Lockdown";
+	opacity = 0
+	},
 /obj/spawner/window/low_wall/borosillicate/firelocks,
-/turf/simulated/floor/plating,
+/obj/map_helper/paint_stripe/violet,
+/turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/cargo)
 "nXJ" = (
 /turf/simulated/floor/tiled/dark,
@@ -18977,7 +19009,7 @@
 	name = "Shuttle Aft Hatch";
 	pixel_y = -26
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/excursion/general)
 "otM" = (
 /obj/structure/table,
@@ -21608,6 +21640,10 @@
 /obj/structure/closet/hydrant{
 	pixel_x = 32
 	},
+/obj/machinery/light{
+	dir = 4;
+	light_range = 12
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/excursion_dock)
 "qyL" = (
@@ -22643,13 +22679,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint)
 "rmA" = (
-/obj/machinery/atmospherics/component/binary/pump{
-	dir = 4;
-	name = "main fuel pump"
+/obj/machinery/light{
+	dir = 1
 	},
-/obj/structure/window/reinforced,
-/turf/simulated/floor/tiled/white,
-/area/shuttle/excursion/cargo)
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/exploration/excursion_dock)
 "rmL" = (
 /obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/white,
@@ -23379,6 +23413,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portamidhall)
+"rSz" = (
+/obj/machinery/shipsensors,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/excursion/general)
 "rSO" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -23965,6 +24003,22 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
+"spy" = (
+/obj/structure/bed/chair/bay/shuttle{
+	dir = 8
+	},
+/obj/machinery/turretid{
+	check_access = 0;
+	control_area = /area/shuttle/excursion/general;
+	gl_uid = "exploration";
+	pixel_y = 27;
+	req_access = null;
+	req_one_access = list(19,43,62,67);
+	uid = "exploration";
+	pixel_x = -32
+	},
+/turf/simulated/floor/tiled,
+/area/shuttle/excursion/cockpit)
 "sqa" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
@@ -24770,6 +24824,7 @@
 "sWk" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/mech_recharger,
+/obj/machinery/light,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/general)
 "sWK" = (
@@ -27204,12 +27259,12 @@
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "uCE" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
+/obj/machinery/light{
+	dir = 4;
+	light_range = 12
 	},
-/obj/structure/window/reinforced,
-/turf/simulated/floor/tiled/white,
-/area/shuttle/excursion/cargo)
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/exploration/excursion_dock)
 "uCV" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -28991,9 +29046,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/station/exploration)
 "vYa" = (
-/obj/item/radio/intercom{
-	pixel_y = -24
-	},
 /obj/machinery/power/apc/east_mount,
 /obj/structure/cable/cyan,
 /turf/simulated/floor/tiled,
@@ -29235,6 +29287,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/exploration/hallway_aft)
+"wkV" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/structure/fuel_port{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/excursion/cargo)
 "wlk" = (
 /obj/structure/closet/hydrant{
 	pixel_x = -32
@@ -29276,7 +29337,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardamidhall)
 "wob" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/sleep_console{
 	dir = 4
 	},
@@ -31278,6 +31338,10 @@
 /obj/structure/closet/hydrant{
 	pixel_x = 32
 	},
+/obj/machinery/light{
+	dir = 4;
+	light_range = 12
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/excursion_dock)
 "xNI" = (
@@ -31786,6 +31850,9 @@
 /area/crew_quarters/lounge/kitchen_freezer)
 "yeQ" = (
 /obj/structure/handrail,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/general)
 "yeZ" = (
@@ -34944,7 +35011,7 @@ xRj
 xRj
 dkX
 dkX
-ihi
+rmA
 ihi
 ihi
 cCF
@@ -35143,7 +35210,7 @@ ihi
 ihi
 qlw
 aGm
-djQ
+spy
 fNq
 wlk
 qlw
@@ -35335,12 +35402,12 @@ dkX
 ihi
 ihi
 ihi
-cCF
+qlw
 bbQ
 djQ
 fqC
 vYa
-cCF
+qlw
 ihi
 ihi
 ihi
@@ -35724,7 +35791,7 @@ ihi
 ihi
 quY
 quY
-pVQ
+mmA
 sFT
 hJV
 hQO
@@ -35917,13 +35984,13 @@ ihi
 ihi
 ihi
 nXC
-cPD
+pVQ
 lnP
 lnP
 sof
 mNl
 vCO
-quY
+nXC
 ihi
 ihi
 ihi
@@ -36113,14 +36180,14 @@ rtJ
 ahi
 mtx
 wob
-uCE
+sFT
 hJV
 ycj
 jzd
 jaJ
 lmU
 ihi
-ihi
+cPD
 sQi
 rYG
 oiA
@@ -36307,7 +36374,7 @@ wPI
 uwy
 nCK
 yge
-rmA
+sFT
 hJV
 ycj
 suA
@@ -36501,7 +36568,7 @@ ihi
 oqC
 pGg
 eNZ
-lVa
+ahi
 tJY
 ycj
 cbM
@@ -36696,7 +36763,7 @@ qLr
 sxB
 hMQ
 uwy
-hJV
+wkV
 tro
 gwM
 mfT
@@ -37468,9 +37535,9 @@ wjN
 mKR
 ihi
 ihi
-qFo
+rSz
 amL
-wOA
+izk
 oTk
 oTk
 iDH
@@ -37660,7 +37727,7 @@ ktx
 hCU
 uXd
 mKR
-ihi
+rmA
 ihi
 reI
 bst
@@ -37672,7 +37739,7 @@ jls
 ift
 iee
 ihi
-ihi
+cPD
 sQi
 rYG
 mXH
@@ -37857,7 +37924,7 @@ mKR
 ihi
 ihi
 amL
-wOA
+lVa
 izk
 oTk
 oTk
@@ -38051,12 +38118,12 @@ nSW
 ihi
 ihi
 amL
+lVa
 wOA
-izk
 oTk
 oTk
 xto
-wOA
+lox
 amL
 iee
 ihi
@@ -38250,7 +38317,7 @@ yeQ
 oTk
 oTk
 iDh
-reI
+jdw
 bst
 iee
 ihi
@@ -38836,7 +38903,7 @@ ihi
 ihi
 iee
 ihi
-ihi
+uCE
 sQi
 rYG
 mXH
