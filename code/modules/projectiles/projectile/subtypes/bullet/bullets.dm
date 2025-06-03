@@ -175,7 +175,7 @@
 	damage_flag = ARMOR_MELEE
 	combustion = FALSE
 
-	base_projectile_effects = list(
+	projectile_effects = list(
 		/datum/projectile_effect/detonation/legacy_emp{
 			sev_3 = 2;
 		}

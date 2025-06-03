@@ -325,7 +325,7 @@
 	tracer_add_state_alpha = 65
 	auto_emissive_strength = 192
 	hitscan = TRUE
-	base_projectile_effects = list(
+	projectile_effects = list(
 		/datum/projectile_effect/electrical_impulse{
 			shock_energy = 50;
 			shock_damage = 7.5;
@@ -341,7 +341,7 @@
 	name = "stun bolt"
 	color = "#ffff00"
 	icon_state = "discharge-1"
-	base_projectile_effects = list(
+	projectile_effects = list(
 		/datum/projectile_effect/electrical_probe{
 			status_effect_path = /datum/status_effect/taser_stun/nt_isd;
 			status_effect_duration = 3 SECONDS;
@@ -368,7 +368,7 @@
 /obj/projectile/nt_isd/ion
 	name = "ion beam"
 	icon_state = "particle-1"
-	base_projectile_effects = list(
+	projectile_effects = list(
 		/datum/projectile_effect/detonation/legacy_emp{
 			sev_2 = 1;
 			sev_3 = 2;

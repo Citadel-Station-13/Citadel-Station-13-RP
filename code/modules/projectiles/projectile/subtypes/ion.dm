@@ -14,7 +14,7 @@
 
 	combustion = FALSE
 
-	base_projectile_effects = list(
+	projectile_effects = list(
 		/datum/projectile_effect/detonation/legacy_emp{
 			sev_2 = 1;
 			sev_3 = 2;
@@ -22,7 +22,7 @@
 	)
 
 /obj/projectile/ion/small
-	base_projectile_effects = list(
+	projectile_effects = list(
 		/datum/projectile_effect/detonation/legacy_emp{
 			sev_3 = 2;
 		}

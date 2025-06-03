@@ -100,7 +100,7 @@
 /obj/projectile/nt_protomag/emp
 	name = "ion slug"
 	color = "#aaaaff"
-	base_projectile_effects = list(
+	projectile_effects = list(
 		/datum/projectile_effect/detonation/legacy_emp{
 			sev_3 = 2;
 		}
@@ -126,7 +126,7 @@
 	speed = /obj/projectile/nt_protomag::speed * 0.8
 	damage_force = 10
 	damage_tier = BULLET_TIER_MEDIUM
-	base_projectile_effects = list(
+	projectile_effects = list(
 		/datum/projectile_effect/electrical_impulse{
 			shock_damage = 15;
 			shock_agony = 30;

@@ -61,7 +61,7 @@
 	name = "electrode"
 	icon_state = "spark"
 	fire_sound = 'sound/weapons/Gunshot2.ogg'
-	base_projectile_effects = list(
+	projectile_effects = list(
 		/datum/projectile_effect/electrical_impulse{
 			shock_agony = 40;
 		}
@@ -72,7 +72,7 @@
 	//Damage will be handled on the MOB side, to prevent window shattering.
 
 /obj/projectile/energy/electrode/strong
-	base_projectile_effects = list(
+	projectile_effects = list(
 		/datum/projectile_effect/electrical_impulse{
 			shock_agony = 55;
 		}
@@ -81,7 +81,7 @@
 /obj/projectile/energy/electrode/stunshot
 	name = "stunshot"
 	damage_force = 5
-	base_projectile_effects = list(
+	projectile_effects = list(
 		/datum/projectile_effect/electrical_impulse{
 			shock_agony = 80;
 		}
@@ -89,7 +89,7 @@
 
 /obj/projectile/energy/electrode/goldenbolt	// MIGHTY GOLDEN BOLT
 	name = "taser bolt"
-	base_projectile_effects = list(
+	projectile_effects = list(
 		/datum/projectile_effect/electrical_impulse{
 			shock_agony = 80;
 		}

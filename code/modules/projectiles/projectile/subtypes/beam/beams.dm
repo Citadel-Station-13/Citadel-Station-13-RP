@@ -216,7 +216,7 @@
 	legacy_tracer_type = /obj/effect/projectile/tracer/stun
 	legacy_impact_type = /obj/effect/projectile/impact/stun
 
-	base_projectile_effects = list(
+	projectile_effects = list(
 		/datum/projectile_effect/electrical_impulse{
 			shock_agony = 40;
 		}
@@ -293,7 +293,7 @@
 	damage_force = 0
 	eyeblur = 2
 
-	base_projectile_effects = list(
+	projectile_effects = list(
 		/datum/projectile_effect/electrical_impulse{
 			shock_energy = 100;
 			shock_damage = 30;
