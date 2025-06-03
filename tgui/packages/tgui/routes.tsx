@@ -2,148 +2,103 @@
  * @file
  * @copyright 2020 Aleksej Komarov
  * @license MIT
- *
- * todo: rewrite directlyRouteComponent and other stuff? ~silicons
  */
 
-import { selectBackend, useBackend } from './backend';
-import { Icon, Section, Stack } from './components';
-import { UI_HARD_REFRESHING } from './constants';
-import { selectDebug } from './debug/selectors';
+import { useBackend } from './backend';
+import { useDebug } from './debug';
+import { LoadingScreen } from './interfaces/common/LoadingScreen';
 import { Window } from './layouts';
 
 const requireInterface = require.context('./interfaces');
 
-const routingNotFound = (props, context) => {
-  const { tgui_root, tgui_module } = props;
-  const { config } = useBackend(context);
-  return tgui_root? (
-    <Window>
-      <Window.Content scrollable>
-        <div>Interface <b>{config.interface || "!!NULL!!"}</b> was not found.</div>
-      </Window.Content>
-    </Window>
-  ) : (
-    <Section>
-      <div>Module <b>{tgui_module || "!!NULL!!"}</b> was not found.</div>
-    </Section>
-  );
-};
+const routingError =
+  (type: 'notFound' | 'missingExport', name: string) => () => {
+    return (
+      <Window>
+        <Window.Content scrollable>
+          {type === 'notFound' && (
+            <div>
+              Interface <b>{name}</b> was not found.
+            </div>
+          )}
+          {type === 'missingExport' && (
+            <div>
+              Interface <b>{name}</b> is missing an export.
+            </div>
+          )}
+        </Window.Content>
+      </Window>
+    );
+  };
 
-const routingMissingExport = (props, context) => {
-  const { tgui_root, tgui_module } = props;
-  const { config } = useBackend(context);
-  return tgui_root? (
-    <Window>
-      <Window.Content scrollable>
-        <div>Interface <b>{config.interface}</b> is missing an export.</div>
-      </Window.Content>
-    </Window>
-  ) : (
-    <Section>
-      <div>Module <b>{tgui_module}</b> is missing an export.</div>
-    </Section>
-  );
-};
-
-const SuspendedWindow = () => {
+// Displays an empty Window with scrollable content
+function SuspendedWindow() {
   return (
     <Window>
       <Window.Content scrollable />
     </Window>
   );
-};
+}
 
-const RefreshingWindow = () => {
+// Displays a loading screen with a spinning icon
+function RefreshingWindow() {
   return (
     <Window title="Loading">
       <Window.Content>
-        <Section fill>
-          <Stack align="center" fill justify="center" vertical>
-            <Stack.Item>
-              <Icon color="blue" name="toolbox" spin size={4} />
-            </Stack.Item>
-            <Stack.Item>
-              Please wait...
-            </Stack.Item>
-          </Stack>
-        </Section>
+        <LoadingScreen />
       </Window.Content>
     </Window>
   );
-};
+}
 
-const interfaceSubdirectories = [
-  `.`,
-  `./computers`,
-  `./items`,
-  `./machines`,
-  `./modules`,
-  `./ui`,
-];
+// Get the component for the current route
+export function getRoutedComponent() {
+  const { suspended, config } = useBackend();
+  const { kitchenSink = false } = useDebug();
 
-const interfacePath = (name: string) => {
-  let built: [string?] = [
-    name,
-  ];
-  for (let i = 0; i < interfaceSubdirectories.length; i++) {
-    let dir = interfaceSubdirectories[i];
-    built.push(`${dir}/${name}.js`);
-    built.push(`${dir}/${name}.tsx`);
-    built.push(`${dir}/${name}/index.js`);
-    built.push(`${dir}/${name}/index.tsx`);
-  }
-  return built;
-};
-
-export const getRoutedComponent = store => {
-  const state = store.getState();
-  const { suspended, config } = selectBackend(state);
   if (suspended) {
     return SuspendedWindow;
   }
-  if (config.refreshing === UI_HARD_REFRESHING) {
+  if (config?.refreshing) {
     return RefreshingWindow;
   }
-  if (process.env['NODE_ENV'] !== 'production') {
-    const debug = selectDebug(state);
+
+  if (process.env.NODE_ENV !== 'production') {
     // Show a kitchen sink
-    if (debug.kitchenSink) {
+    if (kitchenSink) {
       return require('./debug').KitchenSink;
     }
   }
-  return directlyRouteComponent(config?.interface);
-};
 
-export const directlyRouteComponent = (name: string) => {
+  const name = config?.interface?.name;
+  const interfacePathBuilders = [
+    (name: string) => `./${name}.tsx`,
+    (name: string) => `./${name}.jsx`,
+    (name: string) => `./${name}/index.tsx`,
+    (name: string) => `./${name}/index.jsx`,
+  ];
+
   let esModule;
-  const got: Array<string> = interfacePath(name) as Array<string>;
-  for (let i = 0; i < got.length; i++) {
-    let path: string = got[i];
+  while (!esModule && interfacePathBuilders.length > 0) {
+    const interfacePathBuilder = interfacePathBuilders.shift()!;
+    const interfacePath = interfacePathBuilder(name);
     try {
-      esModule = requireInterface(path);
-    }
-    catch (err) {
-      if (err instanceof Error) {
-        // this is a node error, not a normal JS error; code should be there.
-        if (err['code'] !== 'MODULE_NOT_FOUND') {
-          throw err;
-        }
+      esModule = requireInterface(interfacePath);
+    } catch (err) {
+      if (err.code !== 'MODULE_NOT_FOUND') {
+        throw err;
       }
     }
-    if (esModule) {
-      break;
-    }
   }
+
   if (!esModule) {
-    return routingNotFound;
+    return routingError('notFound', name);
   }
-  // pull out any /'s as the interface is often a path, not just the interface export
-  const nameHasABackslash = name.lastIndexOf("/");
-  const realName = nameHasABackslash === -1 ? name : name.substring(nameHasABackslash + 1);
-  const Component = esModule[realName];
+
+  const Component = esModule[name];
   if (!Component) {
-    return routingMissingExport;
+    return routingError('missingExport', name);
   }
+
   return Component;
-};
+}
