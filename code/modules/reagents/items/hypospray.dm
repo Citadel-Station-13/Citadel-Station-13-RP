@@ -139,7 +139,7 @@
 	inject_amount = (inject_amount + 5 > inject_max)? min(5, inject_max) : inject_amount + 5
 	user.action_feedback(SPAN_NOTICE("[src] is now set to inject [inject_amount] per use."), src)
 
-/obj/item/hypospray/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/hypospray/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(injection_checks(target, user, target_zone))
 		do_inject(target, user)
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
@@ -167,7 +167,7 @@
 			inject_verb = "spray"
 	inject_message = "[user] starts to [inject_verb] [target] with \the [src]."
 	var/block_flags = NONE
-	for(var/obj/item/I as anything in target.inventory.items_that_cover(limb.body_part_flags))
+	for(var/obj/item/I as anything in target.inventory.query_coverage(limb.body_part_flags))
 		block_flags |= (I.clothing_flags & (CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT))
 	// got all coverage, proceed.
 	var/delay = injection_time

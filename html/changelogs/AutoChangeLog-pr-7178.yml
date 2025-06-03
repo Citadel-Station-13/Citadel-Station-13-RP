@@ -1,0 +1,5 @@
+author: "MarsM0nd"
+delete-after: True
+changes:
+  - bugfix: "Actuator enhancement is actually an enhancement again."
+  - tweak: "drone upgrades only get applied once"

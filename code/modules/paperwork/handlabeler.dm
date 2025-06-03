@@ -15,7 +15,7 @@
 	/// Whether we are in label mode
 	VAR_FINAL/mode = FALSE
 
-/obj/item/hand_labeler/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/hand_labeler/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 

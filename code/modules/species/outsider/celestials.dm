@@ -41,10 +41,10 @@
 	flight_mod = 0.4
 
 	unarmed_types = list(
-		/datum/unarmed_attack/stomp,
-		/datum/unarmed_attack/kick,
-		/datum/unarmed_attack/punch,
-		/datum/unarmed_attack/bite,
+		/datum/melee_attack/unarmed/stomp,
+		/datum/melee_attack/unarmed/kick,
+		/datum/melee_attack/unarmed/punch,
+		/datum/melee_attack/unarmed/bite,
 	)
 
 	inherent_verbs = list(
@@ -93,12 +93,12 @@
 	immaculate reputation of Aura-based products, especially genemods. As they prefer mind-over-matter, most of their genetic modifications lend them towards becoming far more mentally robust,
 	at the expense of physical attributes. They are more frail, but have a slower metabolism.
 	"}
+	movement_base_speed = 5.5
 	item_slowdown_mod = 1.2
 	hunger_factor = 0.02 //Less hungry
 	toxins_mod = 1.5
 	total_health = 75
 	brute_mod = 1.2
-	slowdown = -0.2 //faster
 	max_additional_languages = 5
 
 	abilities = list(
@@ -148,10 +148,10 @@
 	light_slowdown = 0.2
 
 	unarmed_types = list(
-		/datum/unarmed_attack/stomp,
-		/datum/unarmed_attack/kick,
-		/datum/unarmed_attack/claws,
-		/datum/unarmed_attack/bite/sharp,
+		/datum/melee_attack/unarmed/stomp,
+		/datum/melee_attack/unarmed/kick,
+		/datum/melee_attack/unarmed/claws,
+		/datum/melee_attack/unarmed/bite/sharp,
 	)
 
 	inherent_verbs = list(

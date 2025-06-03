@@ -6353,7 +6353,6 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/port)
 "mQ" = (
-/obj/machinery/door/firedoor/border_only,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -12583,18 +12582,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/station/port)
-"zq" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/cable/green{
-	icon_state = "0-4"
-	},
-/obj/structure/cable/green{
-	icon_state = "0-8"
-	},
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/paint_stripe/sun,
-/turf/simulated/floor,
-/area/storage/tech)
 "zr" = (
 /turf/simulated/floor/carpet/oracarpet,
 /area/chapel/main)
@@ -13525,19 +13512,6 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/tether/station/visitorhallway/office)
-"Bu" = (
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/blast/regular{
-	density = 0;
-	dir = 4;
-	icon_state = "pdoor0";
-	id = "shuttle blast";
-	name = "Shuttle Blast Doors";
-	opacity = 0
-	},
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/turf/simulated/floor/plating,
-/area/shuttle/excursion/general)
 "Bv" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -14346,15 +14320,6 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/gear)
-"CX" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/cable/green{
-	icon_state = "0-8"
-	},
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/paint_stripe/sun,
-/turf/simulated/floor,
-/area/storage/tech)
 "CY" = (
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/burial)
@@ -42786,7 +42751,7 @@ CU
 le
 LU
 te
-zq
+CU
 uu
 wg
 Dh
@@ -42980,7 +42945,7 @@ Ii
 zG
 aQ
 sC
-CX
+Ii
 uu
 wg
 Dh
@@ -55363,7 +55328,7 @@ Pz
 ct
 OV
 Mt
-Bu
+OW
 Ug
 iX
 nt

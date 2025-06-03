@@ -27,7 +27,7 @@
 	maxHealth = 30
 	legacy_melee_damage_lower = 2
 	legacy_melee_damage_upper = 4
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 	hovering = TRUE
 
 	attacktext = list("slams into")
@@ -117,7 +117,7 @@
 	is_infesting = TRUE
 	if(H.wear_suit)
 		var/obj/item/clothing/suit/A = H.wear_suit
-		maxHealth += A.fetch_armor().raw(ARMOR_MELEE) * 100 //That zombie's got armor, I want armor!
+		maxHealth += A.fetch_armor().get_mitigation(ARMOR_MELEE) * 100 //That zombie's got armor, I want armor!
 
 	maxHealth += 40
 	health = maxHealth
