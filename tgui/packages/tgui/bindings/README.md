@@ -11,14 +11,11 @@ Example:
 `/datum/loadout_item` becomes `datum/Game_LoadoutItem.ts`
 `ATOM_SPAWN_FLAG_*` -> `DM_AtomSpawnFlags`
 
-Do not be fancy, just do it.
+* DM_ for #define'd bitfields and enums
+* Game_ for very simple struct-like datums
 
 ## `json`: Json Assets
 
 Example:
 
-`/datum/asset_pack/json/character_setup`'s contents should be defined in `json/Json_CharacterSetup`
-
-## `spritesheets`: Spritesheet Assets
-
-Just contains spritesheet bindings and constants.
+`/datum/asset_pack/json/CharacterSetup`'s contents should be defined in `json/Json_CharacterSetup`

@@ -16,5 +16,7 @@ type typepathDescriptorList = typepathDescriptor[];
 type typepathDescriptor = {
   name: string;
   path: string;
-  flags: DM_AtomSpawnFlags;
+  iconRef: string;
+  iconState: string;
+  spawnFlags: DM_AtomSpawnFlags;
 }

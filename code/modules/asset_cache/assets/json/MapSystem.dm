@@ -7,10 +7,10 @@
  * * map traits
  * * map attributes
  */
-/datum/asset_pack/json/map_system
+/datum/asset_pack/json/MapSystem
 	name = "MapSystem"
 
-/datum/asset_pack/json/map_system/generate()
+/datum/asset_pack/json/MapSystem/generate()
 	. = list()
 
 	var/list/assembled_traits = list()

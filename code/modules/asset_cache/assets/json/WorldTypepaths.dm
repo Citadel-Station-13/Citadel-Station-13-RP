@@ -5,15 +5,11 @@
  * Contains:
  *
  * * Typepath data for the current compile relating to spawnable and usable objects.
- *
- * Conditionally requires:
- *
- * * asset_pack/spritesheet/world_typepaths - if you need anything rendered, this needs to be there.
  */
-/datum/asset_pack/json/world_typepaths
+/datum/asset_pack/json/WorldTypepaths
 	name = "WorldTypepaths"
 
-/datum/asset_pack/json/world_typepaths/generate()
+/datum/asset_pack/json/WorldTypepaths/generate()
 	. = list()
 
 	var/list/assembled_turfs = list()
@@ -25,7 +21,9 @@
 		assembled_turfs[++assembled_turfs.len] = list(
 			"name" = initial(turf_path.name),
 			"path" = "[turf_path]",
-			"flags" = initial(turf_path.atom_spawn_flags),
+			"iconRef" = ref(initial(turf_path.icon)),
+			"iconState" = initial(turf_path.icon_state),
+			"spawnFlags" = initial(turf_path.atom_spawn_flags),
 		)
 	.["turfs"] = assembled_turfs
 
@@ -38,7 +36,9 @@
 		assembled_objs[++assembled_objs.len] = list(
 			"name" = initial(obj_path.name),
 			"path" = "[obj_path]",
-			"flags" = initial(obj_path.atom_spawn_flags),
+			"iconRef" = ref(initial(turf_path.icon)),
+			"iconState" = initial(turf_path.icon_state),
+			"spawnFlags" = initial(obj_path.atom_spawn_flags),
 		)
 	.["objs"] = assembled_objs
 
@@ -51,6 +51,8 @@
 		assembled_mobs[++assembled_mobs.len] = list(
 			"name" = initial(mob_path.name),
 			"path" = "[mob_path]",
-			"flags" = initial(mob_path.atom_spawn_flags),
+			"iconRef" = ref(initial(turf_path.icon)),
+			"iconState" = initial(turf_path.icon_state),
+			"spawnFlags" = initial(mob_path.atom_spawn_flags),
 		)
 	.["mobs"] = assembled_mobs
