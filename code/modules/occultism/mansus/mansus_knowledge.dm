@@ -37,6 +37,17 @@
 	/// ui icon state
 	var/ui_icon_state
 
+	/// unlock recipe ids
+	var/list/give_recipe_ids
+	/// unlock abilities
+	/// * instances / typepaths, not ids
+	var/list/datum/ability/mansus_ability/give_abilities
+	/// unlock passives
+	/// * instances / typepaths, not ids
+	var/list/datum/mansus_passive/give_passives
+
+
+
 #warn impl
 
 /datum/mansus_knowledge/proc/apply(datum/mansus_holder/holder)

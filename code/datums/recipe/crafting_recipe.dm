@@ -1,4 +1,13 @@
+/**
+ * Crafting recipes. Used with personal crafting. (tablecrafting)
+ *
+ * TODO: /datum/prototype/crafting_recipe
+ */
 /datum/crafting_recipe
+	/// id - must be unique
+	/// TODO: set IDs on everything
+	var/id
+
 	var/name = "" //in-game display name
 	var/list/reqs = list() //type paths of items consumed associated with how many are needed
 	var/list/blacklist = list() //type paths of items explicitly not allowed as an ingredient
