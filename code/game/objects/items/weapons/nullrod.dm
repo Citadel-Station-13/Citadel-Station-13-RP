@@ -1,3 +1,4 @@
+#warn nullrod_legacy
 /obj/item/nullrod
 	name = "null rod"
 	desc = "A rod of pure obsidian, its very presence disrupts and dampens the powers of paranormal phenomenae."
@@ -13,96 +14,16 @@
 	drop_sound = 'sound/items/drop/sword.ogg'
 	pickup_sound = 'sound/items/pickup/sword.ogg'
 
-	var/reskinned = FALSE
-	var/defend_chance = 0	// The base chance for the weapon to parry.
-	var/projectile_parry_chance = 0	// The base chance for a projectile to be deflected.
-
 	item_icons = list(
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)
 
-	var/SA_bonus_damage = 35 // 50 total against demons and aberrations.
-	var/SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
-
 /obj/item/nullrod/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, null, null, FALSE)
 
-/obj/item/nullrod/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
-		return
-	if (istype(target, /turf/simulated/floor))
-		to_chat(user, "<span class='notice'>You hit the floor with the [src].</span>")
-		call(TYPE_PROC_REF(/obj/effect/rune, revealrunes))(src)
-	if (isliving(target))
-		var/mob/living/tm = target // targeted mob
-		if(SA_vulnerability & tm.mob_class)
-			tm.apply_damage(SA_bonus_damage) // fuck em
-
-/obj/item/nullrod/attack_self(mob/user, datum/event_args/actor/actor)
-	. = ..()
-	if(.)
-		return
-	if(user && (user.mind.isholy) && !reskinned)
-		reskin_holy_weapon(user)
-
-/**
-  * reskin_holy_weapon: Shows a user a list of all available nullrod reskins and based on his choice replaces the nullrod with the reskinned version
-  *
-  * Arguments:
-  * * M The mob choosing a nullrod reskin
-  */
-/obj/item/nullrod/proc/reskin_holy_weapon(mob/living/L)
-	if(GLOB.holy_weapon_type)
-		return
-	var/obj/item/holy_weapon
-	var/list/holy_weapons_list = typesof(/obj/item/nullrod)
-	var/list/display_names = list()
-	var/list/nullrod_icons = list()
-	for(var/V in holy_weapons_list)
-		var/obj/item/nullrod/rodtype = V
-		if (V)
-			display_names[initial(rodtype.name)] = rodtype
-			nullrod_icons += list(initial(rodtype.name) = image(icon = initial(rodtype.icon), icon_state = initial(rodtype.icon_state)))
-
-	nullrod_icons = sortList(nullrod_icons)
-
-	var/choice = show_radial_menu(L, src , nullrod_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), L), radius = 42, require_near = TRUE)
-	if(!choice || !check_menu(L))
-		return
-
-	var/A = display_names[choice] // This needs to be on a separate var as list member access is not allowed for new
-	holy_weapon = new A
-
-	GLOB.holy_weapon_type = holy_weapon.type
-
-	if(holy_weapon)
-		reskinned = TRUE
-		qdel(src)
-		L.put_in_active_hand(holy_weapon)
-
-/**
-  * check_menu: Checks if we are allowed to interact with a radial menu
-  *
-  * Arguments:
-  * * user The mob interacting with a menu
-  */
-/obj/item/nullrod/proc/check_menu(mob/user)
-	if(!istype(user))
-		return FALSE
-	if(QDELETED(src) || reskinned)
-		return FALSE
-	if(user.incapacitated())
-		return FALSE
-	return TRUE
-
-/obj/item/nullrod/proc/jedi_spin(mob/living/user)
-	for(var/i in list(NORTH,SOUTH,EAST,WEST,EAST,SOUTH,NORTH,SOUTH,EAST,WEST,EAST,SOUTH))
-		user.setDir(i)
-		if(i == WEST)
-			user.emote("flip")
-		sleep(1)
+// todo: all the below can be removed at some point.
 
 /obj/item/nullrod/godhand
 	icon_state = "disintegrate"
