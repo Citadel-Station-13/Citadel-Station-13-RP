@@ -74,14 +74,14 @@
 
 	/// set to instance to init as that instance
 	#warn impl
+	var/datum/prototype/robot_iconset/iconset
+	/// set to instance to init as that instance
+	#warn impl
 	var/datum/prototype/robot_chassis/chassis
 	var/datum/robot_provisioning/chassis_provisioning
 	/// set to instance to init as that instance
 	#warn impl
-	var/datum/prototype/robot_iconset/iconset
-	/// set to instance to init as that instance
-	#warn impl
-	var/datum/prototype/robot_module/module_new
+	var/datum/prototype/robot_module/module
 	var/datum/robot_provisioning/module_provisioning
 
 	/// all installed upgrades
@@ -133,6 +133,9 @@
 	/// * This is the ID of the variation.
 	#warn impl picker
 	var/picked_resting_variation
+
+	//-* Legacy Below *-//
+
 	/// legacy: are we floor scrubbing?
 	var/legacy_floor_scrubbing = FALSE
 
@@ -148,8 +151,6 @@
 	var/crisis_override = 0
 	var/integrated_light_power = 4.5
 	var/datum/wires/robot/wires
-
-	//* Hud stuff
 
 	var/atom/movable/screen/cells = null
 
@@ -448,7 +449,7 @@
 
 	// todo: more customization for light colors / lights / whatever
 	if (lights_on)
-		radio.set_light(integrated_light_power, 2, l_color = module_new?.light_color || "#FFFFFF", angle = LIGHT_WIDE)
+		radio.set_light(integrated_light_power, 2, l_color = module?.light_color || "#FFFFFF", angle = LIGHT_WIDE)
 	else
 		radio.set_light(0)
 
@@ -788,7 +789,7 @@
 				bolt.malfunction = MALFUNCTION_PERMANENT
 
 /mob/living/silicon/robot/proc/module_reset()
-	notify_ai(ROBOT_NOTIFICATION_MODULE_RESET, module_new.get_display_name())
+	notify_ai(ROBOT_NOTIFICATION_MODULE_RESET, module.get_display_name())
 	updatename("Default")
 
 /mob/living/silicon/robot/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)

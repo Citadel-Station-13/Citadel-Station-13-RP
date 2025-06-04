@@ -112,7 +112,7 @@
 
 	for(var/mob/living/silicon/robot/robot in GLOB.mob_list)
 		// No combat/syndicate cyborgs, no drones, and no AI shells.
-		if(!robot.scrambledcodes && !robot.shell && robot.module_new?.legacy_show_on_manifest)
+		if(!robot.scrambledcodes && !robot.shell && robot.module?.legacy_show_on_manifest)
 			bot[robot.name] = "[robot.modtype] [robot.braintype]"
 
 
@@ -271,7 +271,7 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 
 	for(var/mob/living/silicon/robot/robot in GLOB.mob_list)
 		// No combat/syndicate cyborgs, no drones, and no AI shells.
-		if(robot.scrambledcodes || robot.shell || !robot.module_new?.legacy_show_on_manifest)
+		if(robot.scrambledcodes || robot.shell || !robot.module?.legacy_show_on_manifest)
 			continue
 
 		bot[++bot.len] = list("name" = robot.real_name, "rank" = "[robot.modtype] [robot.braintype]", "active" = "Active")

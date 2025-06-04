@@ -10,7 +10,7 @@
 	// todo: wipe whatever state is left
 	set_chassis(chassis)
 	set_iconset(iconset)
-	set_module(module_new)
+	set_module(module)
 
 /**
  * Annihilate composition
@@ -97,7 +97,7 @@
  * Initialize to a module
  */
 /mob/living/silicon/robot/proc/set_module(datum/prototype/robot_module/module)
-	src.module_new = module
+	src.module = module
 
 	#warn impl
 

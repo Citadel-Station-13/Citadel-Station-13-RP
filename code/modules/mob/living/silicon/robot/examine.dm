@@ -1,5 +1,5 @@
 /mob/living/silicon/robot/examine(mob/user, dist)
-	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>, a [src.module_new ? module_new.get_display_name() : "unformatted"] unit!")
+	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>, a [src.module ? module.get_display_name() : "unformatted"] unit!")
 	if(desc)
 		. += "[desc]"
 

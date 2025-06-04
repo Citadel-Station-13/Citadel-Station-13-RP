@@ -135,7 +135,7 @@
 
 	if(isrobot(target))
 		var/mob/living/silicon/robot/R = target
-		if(R.module_new.type == /datum/prototype/robot_module/nanotrasen/janitor && R.chassis.type == /datum/prototype/robot_chassis/quadruped) // You can now feed the trash borg yay.
+		if(R.module.type == /datum/prototype/robot_module/nanotrasen/janitor && R.chassis.type == /datum/prototype/robot_chassis/quadruped) // You can now feed the trash borg yay.
 			if(R.vore_selected)
 				if(!user.attempt_insert_item_for_installation(src, R.vore_selected))
 					return

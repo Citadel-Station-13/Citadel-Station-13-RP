@@ -1,8 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-#warn #define DECLARE_ROBOT_MODULE?
-
 /**
  * The baseline configuration for a silicon.
  *

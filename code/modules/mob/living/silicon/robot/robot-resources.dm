@@ -9,4 +9,4 @@
 /mob/living/silicon/robot/proc/regenerate_resources_from_charger(seconds, multiplier = 1)
 	SHOULD_NOT_OVERRIDE(TRUE) // no excuses, don't do it! robots are composition.
 
-	module_new?.legacy_custom_regenerate_resources(src, seconds, multiplier)
+	module?.legacy_custom_regenerate_resources(src, seconds, multiplier)

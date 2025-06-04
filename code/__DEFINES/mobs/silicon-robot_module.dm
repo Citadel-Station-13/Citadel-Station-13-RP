@@ -3,7 +3,7 @@
 
 #define GENERATE_ROBOT_MODULE_PRESET(SUFFIX) \
 /mob/living/silicon/robot/module_preset##SUFFIX{ \
-	module_new = /datum/prototype/robot_module##SUFFIX; \
+	module = /datum/prototype/robot_module##SUFFIX; \
 } \
 /datum/prototype/robot_module##SUFFIX
 
