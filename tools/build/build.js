@@ -65,11 +65,15 @@ export const ForceRecutParameter = new Juke.Parameter({
   name: "force_recut",
 });
 
+export const SkipIconCutter = new Juke.Parameter({
+  type: "boolean",
+  name: "skip-icon-cutter",
+});
+
 export const WarningParameter = new Juke.Parameter({
   type: 'string[]',
   alias: 'W',
 });
-
 
 export const CutterTarget = new Juke.Target({
   onlyWhen: () => {
@@ -79,14 +83,11 @@ export const CutterTarget = new Juke.Target({
   executes: async () => {
     const repo = dependencies.CUTTER_REPO;
     const ver = dependencies.CUTTER_VERSION;
-    const suffix = process.platform === 'win32' ? '.exe' : '';
-    const download_from = `https://github.com/${repo}/releases/download/${ver}/hypnagogic${suffix}`
+    const suffix = process.platform === "win32" ? ".exe" : "";
+    const download_from = `https://github.com/${repo}/releases/download/${ver}/hypnagogic${suffix}`;
     await download_file(download_from, cutter_path);
-    if(process.platform !== 'win32') {
-      await Juke.exec("chmod", [
-        '+x',
-        cutter_path,
-      ]);
+    if (process.platform !== "win32") {
+      await Juke.exec("chmod", ["+x", cutter_path]);
     }
   },
 });
@@ -94,65 +95,83 @@ export const CutterTarget = new Juke.Target({
 async function download_file(url, file) {
   return new Promise((resolve, reject) => {
     let file_stream = fs.createWriteStream(file);
-    https.get(url, function(response) {
-      if (response.statusCode === 302) {
-        file_stream.close();
-        download_file(response.headers.location, file)
-          .then((value) => resolve());
-        return;
-      }
-      if (response.statusCode !== 200) {
-        Juke.logger.error(`Failed to download ${url}: Status ${response.statusCode}`);
-        file_stream.close();
-        reject()
-        return
-      }
-      response.pipe(file_stream);
+    https
+      .get(url, function (response) {
+        if (response.statusCode === 302) {
+          file_stream.close();
+          download_file(response.headers.location, file).then((value) =>
+            resolve(),
+          );
+          return;
+        }
+        if (response.statusCode !== 200) {
+          Juke.logger.error(
+            `Failed to download ${url}: Status ${response.statusCode}`,
+          );
+          file_stream.close();
+          reject();
+          return;
+        }
+        response.pipe(file_stream);
 
-      // after download completed close filestream
-      file_stream.on("finish", () => {
+        // after download completed close filestream
+        file_stream.on("finish", () => {
+          file_stream.close();
+          resolve();
+        });
+      })
+      .on("error", (err) => {
         file_stream.close();
-        resolve()
+        Juke.rm(download_into);
+        Juke.logger.error(`Failed to download ${url}: ${err.message}`);
+        reject();
       });
-
-    }).on("error", (err) => {
-      file_stream.close();
-      Juke.rm(download_into);
-      Juke.logger.error(`Failed to download ${url}: ${err.message}`);
-      reject()
-    });
   });
 }
 
 export const IconCutterTarget = new Juke.Target({
   parameters: [ForceRecutParameter],
-  dependsOn: () => [
-    CutterTarget,
-  ],
-  inputs: [
-    'icons/**/*.png',
-    `icons/**/*${CUTTER_SUFFIX}`,
-    `cutter_templates/**/*${CUTTER_SUFFIX}`,
-    cutter_path,
-  ],
+  dependsOn: () => [CutterTarget],
+  inputs: ({ get }) => {
+    const standard_inputs = [
+      `icons/**/*.png.toml`,
+      `icons/**/*.dmi.toml`,
+      `cutter_templates/**/*.toml`,
+      cutter_path,
+    ];
+    // Alright we're gonna search out any existing toml files and convert
+    // them to their matching .dmi or .png file
+    const existing_configs = [
+      ...Juke.glob(`icons/**/*.png.toml`),
+      ...Juke.glob(`icons/**/*.dmi.toml`),
+    ];
+    return [
+      ...standard_inputs,
+      ...existing_configs.map((file) => file.replace(".toml", "")),
+    ];
+  },
   outputs: ({ get }) => {
-    if(get(ForceRecutParameter))
-      return [];
+    if (get(ForceRecutParameter)) return [];
     const folders = [
-      ...Juke.glob(`icons/**/*${CUTTER_SUFFIX}`),
+      ...Juke.glob(`icons/**/*.png.toml`),
+      ...Juke.glob(`icons/**/*.dmi.toml`),
     ];
     return folders
-      .map((file) => file.replace(`${CUTTER_SUFFIX}`, '.dmi'));
+      .map((file) => file.replace(`.png.toml`, ".dmi"))
+      .map((file) => file.replace(`.dmi.toml`, ".png"));
   },
   executes: async () => {
     await Juke.exec(cutter_path, [
-      '--dont-wait',
-      '--templates',
-      'cutter_templates',
-      'icons',
+      "--dont-wait",
+      "--templates",
+      "cutter_templates",
+      "icons",
     ]);
   },
 });
+
+
+
 
 export const DmMapsIncludeTarget = new Juke.Target({
   executes: async () => {
@@ -170,10 +189,14 @@ export const DmMapsIncludeTarget = new Juke.Target({
 });
 
 export const DmTarget = new Juke.Target({
-  parameters: [DefineParameter],
+  parameters: [
+    DefineParameter,
+    WarningParameter,
+    SkipIconCutter,
+  ],
   dependsOn: ({ get }) => [
     get(DefineParameter).includes('ALL_MAPS') && DmMapsIncludeTarget,
-    IconCutterTarget,
+    !get(SkipIconCutter) && IconCutterTarget,
   ],
   inputs: [
     'maps/**/*.dm',
@@ -196,7 +219,10 @@ export const DmTarget = new Juke.Target({
 });
 
 export const DmTestTarget = new Juke.Target({
-  parameters: [DefineParameter],
+  parameters: [
+    DefineParameter,
+    WarningParameter,
+  ],
   dependsOn: ({ get }) => [
     get(DefineParameter).includes('ALL_MAPS') && DmMapsIncludeTarget,
     IconCutterTarget,
@@ -210,8 +236,11 @@ export const DmTestTarget = new Juke.Target({
     Juke.rm('data/logs/ci', { recursive: true });
     await DreamDaemon(
       `${DME_NAME}.test.dmb`,
-      '-close', '-trusted', '-verbose',
-      '-params', 'log-directory=ci'
+      '-close',
+      '-trusted',
+      '-verbose',
+      '-params',
+      'log-directory=ci',
     );
     Juke.rm('*.test.*');
     try {

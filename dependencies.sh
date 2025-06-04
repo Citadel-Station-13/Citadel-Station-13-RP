@@ -31,7 +31,7 @@ export MARIADB_VERSION=11.4.4
 export FLYWAY_VERSION=11.0.1
 
 #hypnagogic repo
-export CUTTER_REPO=actioninja/hypnagogic
+export CUTTER_REPO=spacestation13/hypnagogic
 
 #hypnagogic git tag
 export CUTTER_VERSION=v4.0.0
