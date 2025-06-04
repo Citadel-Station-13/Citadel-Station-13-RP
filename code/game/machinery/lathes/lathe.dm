@@ -144,12 +144,18 @@
 	var/manips_rating = 0
 	var/bins_total = 0
 	var/bins_rating = 0
-	for(var/obj/item/stock_parts/manipulator/manip as anything in component_parts)
+	var/new_reagentcap = 0
+	for(var/obj/item/stock_parts/manipulator/manip in component_parts)
 		manips_rating += manip.rating
 		manips_total++
-	for(var/obj/item/stock_parts/matter_bin/bin as anything in component_parts)
+	for(var/obj/item/stock_parts/matter_bin/bin in component_parts)
 		bins_rating += bin.rating
 		bins_total++
+	for(var/obj/item/reagent_containers/R in component_parts)
+		if(R.reagents)
+			new_reagentcap += R.reagents.maximum_volume
+		else //what
+			new_reagentcap += R.volume
 	manips_rating /= manips_total
 	bins_rating /= bins_total
 	speed_factor = manips_rating * 0.5 + 0.5
@@ -159,6 +165,8 @@
 	power_multiplier = 1
 	storage_multiplier = storage_factor
 	efficiency_multiplier = efficiency_factor
+	reagents_max = new_reagentcap
+	update_reagent_holder()
 	update_active_power_usage(POWER_USAGE_LATHE_ACTIVE_SCALE(speed_factor))
 	stored_materials.set_multiplied_capacity(materials_max, storage_factor)
 	ui_controller?.update_static_data()
@@ -249,11 +257,15 @@
 			stored_materials = new(materials_max)
 	else
 		stored_materials.set_multiplied_capacity(materials_max, storage_multiplier)
+	update_reagent_holder()
+
+/obj/machinery/lathe/proc/update_reagent_holder()
 	if(isnull(stored_reagents))
 		if(reagents_max != 0)
 			stored_reagents = new(reagents_max, src)
 	else
 		stored_reagents.maximum_volume = reagents_max
+
 
 /obj/machinery/lathe/proc/dump_storages()
 	var/atom/dump_location = drop_location()

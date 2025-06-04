@@ -302,6 +302,13 @@ const DataDisk = (props, context) => {
                     onClick={() => act("updt_design", { design: disk_id })}>
                   Upload to Database
                 </Button>
+                  {(disk.design_cap < disk.design_count) &&
+                  <Button
+                    icon="save"
+                    onClick={() => setSaveDialog(true)}>
+                    Load Design To Disk
+                  </Button>
+                  }
                 <Button
                   icon="trash"
                     onClick={() => act("clear_design", { design: disk_id })}>
