@@ -19,10 +19,6 @@
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)
 
-/obj/item/nullrod/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, null, null, FALSE)
-
 // todo: all the below can be removed at some point.
 
 /obj/item/nullrod/godhand
@@ -44,14 +40,11 @@
 	desc = "It has a mysterious, protective aura."
 	damage_force = 5
 	slot_flags = SLOT_BACK
-	defend_chance = 50
-	var/shield_icon = "shield-red"
 
 /obj/item/nullrod/staff/blue
 	name = "blue holy staff"
 	icon_state = "godstaff-blue"
 	item_state = "godstaff-blue"
-	shield_icon = "shield-old"
 
 /obj/item/nullrod/claymore
 	icon_state = "claymore"
@@ -60,7 +53,6 @@
 	desc = "A weapon fit for a crusade!"
 	slot_flags = SLOT_BACK|SLOT_BELT
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
-	projectile_parry_chance = 30
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
@@ -313,8 +305,6 @@
 		H.visible_message("<span class='warning'>[pick(fluffmessages)]</span>", \
 							   "<span class='userdanger'>[pick(fluffmessages)]</span>")
 		playsound(get_turf(user), 'sound/effects/woodhit.ogg', 75, 1, -1)
-		if(prob(25))
-			jedi_spin(usr)
 	else
 		return ..()
 

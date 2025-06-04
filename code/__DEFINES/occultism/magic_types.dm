@@ -12,3 +12,4 @@
 /// geometer module
 #define MAGIC_TYPE_GEOMETER (1<<3)
 
+#define MAGIC_TYPES_ALL (~ALL)

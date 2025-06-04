@@ -127,6 +127,9 @@
 	/// * Set when splitting into submunitions.
 	/// * It's the projectile effect datum's duty to read this.
 	var/projectile_effect_multiplier = 1
+
+	//* Composition *//
+
 	/// projectile_effects list has been copy'd (ergo no longer a typelist)
 	var/projectile_effect_mutable = FALSE
 	/// projectile effects
@@ -135,6 +138,14 @@
 	/// * do not under any circumstances edit this without using the helper
 	/// * this is non /tmp because this is infact serializable
 	VAR_PROTECTED/list/projectile_effects
+	/// projectile_hookss list has been copy'd (ergo no longer a typelist)
+	var/projectile_hooks_mutable = FALSE
+	/// projectile hookss
+	///
+	/// * this is a static typelist on this typepath
+	/// * do not under any circumstances edit this without using the helper
+	/// * this is non /tmp because this is infact serializable
+	VAR_PROTECTED/list/projectile_hookss
 
 	//* Configuration *//
 	/// Projectile type bitfield; set all that is relevant
@@ -398,14 +409,6 @@
 	/// If this projectile is holy. Silver bullets, etc. Currently no effects.
 	var/holy = FALSE
 
-	// Antimagic
-	/// Should we check for antimagic effects?
-	var/antimagic_check = FALSE
-	/// Antimagic charges to use, if any
-	var/antimagic_charges_used = 0
-	/// Multiplier for damage if antimagic is on the target
-	var/antimagic_damage_factor = 0
-
 	var/embed_chance = 0	//Base chance for a projectile to embed
 
 	// todo: currently unimplemneted
@@ -431,6 +434,23 @@
 					stack_trace("tried to make a projectile with an invalid effect in projectile_effects")
 				projectile_effects[i] = effectlike
 			projectile_effects = typelist(NAMEOF(src, projectile_effects), projectile_effects)
+	if(islist(projectile_hooks))
+		var/list/existing_typelist = get_typelist(NAMEOF(src, projectile_hooks))
+		if(existing_typelist)
+			projectile_hooks = existing_typelist
+		else
+			// generate, and process one
+			for(var/i in 1 to length(projectile_hooks))
+				var/datum/projectile_hook/hooklike = projectile_hooks[i]
+				if(ispath(hooklike))
+					hooklike = new hooklike
+				else if(IS_ANONYMOUS_TYPEPATH(hooklike))
+					hooklike = new hooklike
+				else if(istype(hooklike))
+				else
+					stack_trace("tried to make a projectile with an invalid hook in projectile_hooks")
+				projectile_hooks[i] = hooklike
+			projectile_hooks = typelist(NAMEOF(src, projectile_hooks), projectile_hooks)
 	if(auto_emissive_strength && !hitscan)
 		appearance_flags |= KEEP_TOGETHER
 		var/image/emissive_image = new /image/projectile/projectile_tracer_emissive(icon, icon_state)
@@ -472,6 +492,17 @@
 		projectile_effects = projectile_effects ? projectile_effects.Copy() : list()
 		projectile_effect_mutable = TRUE
 	projectile_effects += effects
+
+/**
+ * Adds projectile hooks.
+ */
+/obj/projectile/proc/add_projectile_hooks(list/datum/projectile_hook/hooks)
+	if(!length(hooks))
+		return
+	if(!projectile_hook_mutable)
+		projectile_hooks = projectile_hooks ? projectile_hooks.Copy() : list()
+		projectile_hook_mutable = TRUE
+	projectile_hooks += hooks
 
 /**
  * Fires a projectile.
@@ -687,8 +718,6 @@
 			var/mob/living/simple_mob/SM = L
 			if(SM.mob_class & SA_vulnerability)
 				final_damage += SA_bonus_damage
-		if(L.anti_magic_check(TRUE, TRUE, antimagic_charges_used, FALSE))
-			final_damage *= antimagic_damage_factor
 	return final_damage
 
 /**
@@ -908,10 +937,11 @@
  * * target - thing being hit
  * * impact_flags - impact flags to feed in
  * * def_zone - zone to hit; otherwise this'll be calculated.
+ * * efficiency - efficiency of the hit
  *
  * @return resultant impact_flags
  */
-/obj/projectile/proc/impact(atom/target, impact_flags, def_zone = src.def_zone || BP_TORSO)
+/obj/projectile/proc/impact(atom/target, impact_flags, def_zone = src.def_zone || BP_TORSO, efficiency = 1)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
 	if(impacted[target])
@@ -921,12 +951,24 @@
 	impact_flags = pre_impact(target, impact_flags, def_zone)
 	var/keep_going
 
+	// trigger projectile hooks
+	if(projectile_hooks)
+		for(var/datum/projectile_hook/hook as anything in projectile_hooks)
+			if(hook.hook_impact)
+				impact_flags = hook.on_impact(args)
+		if(impact_flags & PROJECTILE_IMPACT_FLAGS_SHOULD_DELETE)
+			if(hitscanning)
+				finalize_hitscan_tracers()
+			qdel(src)
+			return impact_flags
+
 	// priority 1: delete?
 	if(impact_flags & PROJECTILE_IMPACT_FLAGS_SHOULD_DELETE)
 		if(hitscanning)
 			finalize_hitscan_tracers()
 		qdel(src)
 		return impact_flags
+
 	// priority 2: should we hit?
 	if(impact_flags & PROJECTILE_IMPACT_FLAGS_SHOULD_NOT_HIT)
 		keep_going = TRUE
@@ -938,7 +980,7 @@
 			impact_flags = on_reflect(target, impact_flags, def_zone)
 		// else, is passthrough. do nothing
 	else
-		impact_flags = target.bullet_act(src, impact_flags, def_zone, 1)
+		impact_flags = target.bullet_act(src, impact_flags, def_zone, efficiency)
 		// did we pierce?
 		if(impact_flags & PROJECTILE_IMPACT_PIERCE)
 			keep_going = TRUE
@@ -956,11 +998,9 @@
 
 	// trigger projectile effects
 	if(projectile_effects)
-		// todo: can we move this to on_impact_new and have 'blocked' passed in? hrm.
 		for(var/datum/projectile_effect/effect as anything in projectile_effects)
 			if(effect.hook_impact)
 				impact_flags = effect.on_impact(src, target, impact_flags, def_zone)
-		// did anything triggered up above trigger a delete?
 		if(impact_flags & PROJECTILE_IMPACT_FLAGS_SHOULD_DELETE)
 			if(hitscanning)
 				finalize_hitscan_tracers()
@@ -968,7 +1008,7 @@
 			return impact_flags
 
 	// see if we should keep going or delete
-	if(keep_going)
+	if(keep_going && !(impact_flags & PROJECTILE_IMPACT_FORCE_EXPIRE))
 		if(loc == where_we_were)
 			// if we are supposed to keep going and we didn't get yanked, continue the impact loop.
 			impact_flags |= PROJECTILE_IMPACT_CONTINUE_LOOP
@@ -1025,7 +1065,7 @@
  * todo: add PROJECTILE_IMPACT_DELETE_AFTER as opposed to DELETE? so rest of effects can still run
  *
  * @return new impact_flags; only PROJECTILE_IMPACT_DELETE is rechecked.
-	 */
+ */
 /obj/projectile/proc/on_impact(atom/target, impact_flags, def_zone, efficiency = 1)
 	//! legacy shit
 	if(damage_force && damage_type == DAMAGE_TYPE_BURN)
