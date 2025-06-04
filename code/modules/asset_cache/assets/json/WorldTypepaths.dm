@@ -36,8 +36,8 @@
 		assembled_objs[++assembled_objs.len] = list(
 			"name" = initial(obj_path.name),
 			"path" = "[obj_path]",
-			"iconRef" = ref(initial(turf_path.icon)),
-			"iconState" = initial(turf_path.icon_state),
+			"iconRef" = ref(initial(obj_path.icon)),
+			"iconState" = initial(obj_path.icon_state),
 			"spawnFlags" = initial(obj_path.atom_spawn_flags),
 		)
 	.["objs"] = assembled_objs
@@ -51,8 +51,8 @@
 		assembled_mobs[++assembled_mobs.len] = list(
 			"name" = initial(mob_path.name),
 			"path" = "[mob_path]",
-			"iconRef" = ref(initial(turf_path.icon)),
-			"iconState" = initial(turf_path.icon_state),
+			"iconRef" = ref(initial(mob_path.icon)),
+			"iconState" = initial(mob_path.icon_state),
 			"spawnFlags" = initial(mob_path.atom_spawn_flags),
 		)
 	.["mobs"] = assembled_mobs

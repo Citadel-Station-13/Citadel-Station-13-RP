@@ -31,10 +31,7 @@ type Props = {
   BoxProps;
 
 /**
- * ## DmIcon
- *
- * Displays an icon from the BYOND icon reference map. Requires Byond 515+.
- * A much faster alternative to base64 icons.
+ * Displays an icon by directly fetching it from the BYOND RSC. Requires Byond 515+.
  */
 export function ByondIconRef(props: Props) {
   const query = `${props.iconRef}?state=${props.iconState}&dir=${props.direction || Direction.SOUTH}&movement=${!!props.movement}&frame=${props.frame || 1}`;

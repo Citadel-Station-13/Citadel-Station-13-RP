@@ -84,10 +84,8 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 
 /datum/admin_modal/load_map_sector/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
 	. = ..()
-	deferred += /datum/asset_pack/json/map_system
-	deferred += /datum/asset_pack/json/world_typepaths
-	#warn use byond rsc refs instead in UI
-	deferred += /datum/asset_pack/spritesheet/world_typepaths
+	deferred += /datum/asset_pack/json/MapSystem
+	deferred += /datum/asset_pack/json/WorldTypepaths
 
 /datum/admin_modal/load_map_sector/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()

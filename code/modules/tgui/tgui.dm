@@ -353,7 +353,7 @@
 		for(var/datum/module as anything in modules_registered)
 			var/id = modules_registered[module]
 			nested_data[id] = module.ui_static_data(user, src, TRUE)
-		json_data["nested_data"] = src_object.ui_nested_data(user, src)
+		json_data["nestedData"] = src_object.ui_nested_data(user, src)
 	if(with_data)
 		json_data["data"] = src_object.ui_data(user, src)
 		for(var/datum/module as anything in (with_static_data? modules_registered : modules_processed))
@@ -364,7 +364,7 @@
 	if(!isnull(force_data))
 		json_data["data"] = (json_data["data"] || list()) | force_data
 	if(!isnull(force_nested_data))
-		json_data["nested_data"] = (json_data["nested_data"] || list()) | nested_data
+		json_data["nestedData"] = (json_data["nestedData"] || list()) | nested_data
 	return json_data
 
 /**
@@ -518,7 +518,7 @@
 		return FALSE
 	if(!force && status < UI_UPDATE)
 		return FALSE
-	window.send_message("nested_data", updates)
+	window.send_message("nestedData", updates)
 	return TRUE
 
 //* Module System *//

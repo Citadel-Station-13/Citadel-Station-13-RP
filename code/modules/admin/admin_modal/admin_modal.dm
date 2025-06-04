@@ -37,6 +37,11 @@ VV_PROTECT_READONLY(/datum/admin_modal)
 /datum/admin_modal/ui_state()
 	return GLOB.ui_admin_modal_state
 
+// TODO: don't destroy if it's part of a disconnect, restore after?
+/datum/admin_modal/on_ui_close(mob/user, datum/tgui/ui, embedded)
+	..()
+	qdel(src)
+
 /**
  * Just a wrapper for opening our UI. Ensures everything is initialized.
  */
