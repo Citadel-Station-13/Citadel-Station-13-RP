@@ -352,8 +352,8 @@
 	//? Attacks
 	/// Possible unarmed attacks that the mob will use in combat,
 	var/list/unarmed_types = list(
-		/datum/unarmed_attack,
-		/datum/unarmed_attack/bite,
+		/datum/melee_attack/unarmed,
+		/datum/melee_attack/unarmed/bite,
 	)
 	/// For empty hand harm-intent attack
 	var/list/unarmed_attacks = null
@@ -916,7 +916,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	if(!ignore_intent && H.a_intent != INTENT_HARM)
 		return 0
 
-	for(var/datum/unarmed_attack/attack in unarmed_attacks)
+	for(var/datum/melee_attack/unarmed/attack in unarmed_attacks)
 		if(!attack.is_usable(H))
 			continue
 		if(attack.damage_mode & DAMAGE_MODE_SHRED)
@@ -978,7 +978,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 
 /datum/species/proc/give_numbing_bite() //Holy SHIT this is hacky, but it works. Updating a mob's attacks mid game is insane.
 	unarmed_attacks = list()
-	unarmed_types += /datum/unarmed_attack/bite/sharp/numbing
+	unarmed_types += /datum/melee_attack/unarmed/bite/sharp/numbing
 	for(var/u_type in unarmed_types)
 		unarmed_attacks += new u_type()
 
@@ -1081,3 +1081,21 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
  */
 /datum/species/proc/handle_species_job_outfit(var/mob/living/carbon/human/H, var/datum/outfit/outfit)
   return
+
+//* Whitelists *//
+
+/**
+ * Checks if a client is in whitelist.
+ * * Does not check admin status. You should check yourself.
+ */
+/datum/species/proc/check_whitelist_for_client(client/user)
+	return check_whitelist_for_ckey(user.ckey)
+
+/**
+ * TODO: deprecated. dont' use ckey for auth checks people, use client.
+ *
+ * Checks if a ckey is in whitelist.
+ * * Does not check admin status. You should check yourself.
+ */
+/datum/species/proc/check_whitelist_for_ckey(ckey)
+	return Configuration.check_species_whitelist(uid, ckey) || ((species_spawn_flags & SPECIES_SPAWN_WHITELIST_FLEXIBLE) && Configuration.check_species_whitelist(id, ckey))

@@ -102,3 +102,9 @@
 	desc = "It's a ballcap bearing the colors of Major Bill's Shipping."
 	icon_state = "mbillsoft"
 	catalogue_data = list(/datum/category_item/catalogue/information/organization/major_bills)
+
+/obj/item/clothing/head/soft/para
+	name = "PARA cap"
+	desc = "It's a peaked cap bearing the colors of the PMD."
+	icon_state = "parasoft"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blacksoft", SLOT_ID_LEFT_HAND = "blacksoft")

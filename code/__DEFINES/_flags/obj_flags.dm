@@ -24,7 +24,7 @@
 /// wall-mounted; facing *towards* the wall we're mounted on (e.g. be NORTH if we're shifted north)
 #define OBJ_WALL_MOUNTED			(1<<11)
 /// Allow throwing stuff through us if we get destroyed by a throw
-#define OBJ_ALLOW_THROW_THROUGH     (1<<3)
+#define OBJ_ALLOW_THROW_THROUGH     (1<<23)
 
 DEFINE_BITFIELD(obj_flags, list(
 	BITFIELD(OBJ_EMAGGED),

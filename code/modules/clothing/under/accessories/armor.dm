@@ -194,7 +194,7 @@
 	UnregisterSignal(user, COMSIG_ATOM_SHIELDCALL)
 
 /obj/item/clothing/accessory/armor/armorplate/ablative/proc/shieldcall(mob/defending, list/shieldcall_args, fake_attack)
-	var/damage_source = shieldcall_args[SHIELDCALL_ARG_WEAPON]
+	var/damage_source = shieldcall_args[SHIELDCALL_ARG_ATTACK_SOURCE]
 	var/def_zone = shieldcall_args[SHIELDCALL_ARG_HIT_ZONE]
 	if(istype(damage_source, /obj/projectile/energy) || istype(damage_source, /obj/projectile/beam))
 		var/obj/projectile/P = damage_source
@@ -361,6 +361,16 @@
 	name = "\improper CORPORATE SEC-COM tag"
 	desc = "An armor tag with the words CORPORATE SEC-COM printed in gold lettering."
 	icon_state = "ntctag"
+
+/obj/item/clothing/accessory/armor/tag/para
+	name = "\improper PARACAUSAL ANOMALY RESPONSE tag"
+	desc = "An armor tag with the words PARACAUSAL ANOMALY RESPONSE printed in silver lettering."
+	icon_state = "paratag"
+
+/obj/item/clothing/accessory/armor/tag/pmd
+	name = "\improper PMD patch"
+	desc = "An embroidered patch bearing the PMD's half-lidded eye Icon."
+	icon_state = "pmdtag"
 
 //Other
 /obj/item/clothing/accessory/armor/tag/sifguard
