@@ -23,10 +23,12 @@ SUBSYSTEM_DEF(overmaps)
 
 //! legacy code below
 
+///Updates all helm computers in existence with know sectors.
 /datum/controller/subsystem/overmaps/proc/rebuild_helm_computers()
 	for(var/obj/machinery/computer/ship/helm/H in GLOB.machines)
 		H.get_known_sectors()
 
+///Queues rebuild_helm_computers for update.
 /datum/controller/subsystem/overmaps/proc/queue_helm_computer_rebuild()
 	if(!initialized)
 		return
