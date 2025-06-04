@@ -4,7 +4,7 @@
  */
 
 import { InfernoNode } from "inferno";
-import { BoxProps, computeBoxProps } from "./Box";
+import { BoxProps } from "./Box";
 import { Table, TableCellProps } from "./Table";
 import { Button } from "./Button";
 

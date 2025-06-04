@@ -7,7 +7,7 @@ import { BooleanLike } from "common/react";
 import { useBackend, useLocalState } from "tgui/backend";
 import { Button, Flex, Input, LabeledList, NumberInput, Section, Stack, Tabs } from "tgui/components";
 import { Window } from "tgui/layouts";
-import { VSplitTooltipList } from "../../components/TwoColumnConfigurationList";
+import { VSplitTooltipList } from "../../components/VSplitTooltipList";
 
 enum LoadMapSectorStatus {
   Waiting = "waiting",
