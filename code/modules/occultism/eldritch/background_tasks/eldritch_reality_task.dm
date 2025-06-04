@@ -4,7 +4,7 @@
 /**
  * Handles generation and ticking of reality fracking points
  */
-/datum/background_task/eldritch_reality_fracking_generator_task
+/datum/background_task/eldritch_reality_task
 
 #warn impl
 
