@@ -223,15 +223,12 @@
 	var/SA_bonus_damage = 25 // 50 total against demons and aberrations.
 	var/SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 
-/obj/item/melee/ashlander/elder/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, null, null, FALSE)
-
 /obj/item/melee/ashlander/elder/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(isliving(target))
 		var/mob/living/tm = target // targeted mob
 		if(SA_vulnerability & tm.mob_class)
 			tm.apply_damage(SA_bonus_damage) // fuck em
+	#warn give them antimagic
 
 /obj/item/melee/ashlander/elder/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()

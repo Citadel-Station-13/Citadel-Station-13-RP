@@ -6,6 +6,9 @@
 	desc = "A rod of pure obsidian."
 	#warn icon
 
+	damage_force = 12
+	damage_tier = 4
+
 /obj/item/nullrod/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/antimagic_provider, /datum/antimagic/simple/nullrod)

@@ -4421,7 +4421,7 @@
 #include "code\modules\occultism\eldritch\eldritch_ability\patron.dm"
 #include "code\modules\occultism\eldritch\eldritch_ability\patron\blade.dm"
 #include "code\modules\occultism\eldritch\eldritch_ability\patron\blade\realignment.dm"
-#include "code\modules\occultism\eldritch\background_tasks\eldritch_reality_generator_task.dm"
+#include "code\modules\occultism\eldritch\background_tasks\eldritch_reality_task.dm"
 #include "code\modules\occultism\eldritch\components\mansus_rust.dm"
 #include "code\modules\occultism\eldritch\components\mansus_rust_shielding.dm"
 #include "code\modules\occultism\eldritch\components\mansus_rust_tile.dm"

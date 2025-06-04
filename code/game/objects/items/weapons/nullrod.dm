@@ -278,7 +278,6 @@
 	name = "monk's staff"
 	desc = "A long, tall staff made of polished wood. Traditionally used in ancient old-Earth martial arts, it is now used to harass the clown."
 	damage_force = 15
-	defend_chance = 40
 	slot_flags = SLOT_BACK
 	damage_mode = DAMAGE_MODE_SHARP
 	attack_sound = "swing_hit"

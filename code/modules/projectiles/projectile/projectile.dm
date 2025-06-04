@@ -138,14 +138,14 @@
 	/// * do not under any circumstances edit this without using the helper
 	/// * this is non /tmp because this is infact serializable
 	VAR_PROTECTED/list/projectile_effects
-	/// projectile_hookss list has been copy'd (ergo no longer a typelist)
+	/// projectile_hooks list has been copy'd (ergo no longer a typelist)
 	var/projectile_hooks_mutable = FALSE
-	/// projectile hookss
+	/// projectile hooks
 	///
 	/// * this is a static typelist on this typepath
 	/// * do not under any circumstances edit this without using the helper
 	/// * this is non /tmp because this is infact serializable
-	VAR_PROTECTED/list/projectile_hookss
+	VAR_PROTECTED/list/projectile_hooks
 
 	//* Configuration *//
 	/// Projectile type bitfield; set all that is relevant
