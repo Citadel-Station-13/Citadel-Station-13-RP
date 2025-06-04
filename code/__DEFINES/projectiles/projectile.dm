@@ -120,6 +120,18 @@ DEFINE_BITFIELD_NEW(projectile_types, list(
 /// bullets, etc
 #define PROJECTILE_IMPACT_SOUNDS_KINETIC "kinetic"
 
+//* /obj/projectile data list *//
+
+/// antimagic: magic potency; type: number
+/// * May be modified by shieldcalls.
+#define PROJECTILE_DATA_MAGIC_POTENCY "magic-potency"
+/// antimagic: magic type; type: [__DEFINES/occultism/magic_types.dm]
+/// * May be modified by shieldcalls.
+#define PROJECTILE_DATA_MAGIC_TYPE "magic-type"
+/// antimagic: if ELDRITCH is set, this will be the patron reference
+/// * May be modified by shieldcalls.
+#define PROJECTILE_DATA_MAGIC_PATRON_REF "magic-patron-ref"
+
 //* helpers *//
 
 /// tiles per second to pixels per decisecond

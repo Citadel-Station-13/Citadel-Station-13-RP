@@ -26,6 +26,11 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	depth_level = INFINITY // nothing should be passing over us from depth
 
+	//* Data *//
+
+	/// Arbitrary K-V data list.
+	var/list/data = list()
+
 	//* Collision Handling *//
 
 	/**

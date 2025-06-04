@@ -19,3 +19,13 @@
 
 /// upon melee impact
 #define ACTOR_DATA_MELEE_DAMAGE_INSTANCE_RESULTS "melee-damage-instance-results"
+
+/// antimagic: magic potency; type: number
+/// * May be modified by shieldcalls.
+#define ACTOR_DATA_MAGIC_POTENCY "magic-potency"
+/// antimagic: magic type; type: [__DEFINES/occultism/magic_types.dm]
+/// * May be modified by shieldcalls.
+#define ACTOR_DATA_MAGIC_TYPE "magic-type"
+/// antimagic: if ELDRITCH is set, this will be the patron reference
+/// * May be modified by shieldcalls.
+#define ACTOR_DATA_MAGIC_PATRON_REF "magic-patron-ref"
