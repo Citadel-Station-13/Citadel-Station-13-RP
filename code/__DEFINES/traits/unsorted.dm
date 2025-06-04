@@ -9,7 +9,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// cannot be pushed out of the way by mob movement
 #define TRAIT_PUSHIMMUNE		"push_immunity"
 
-#define TRAIT_HOLY				"holy"
 #define TRAIT_AI_PAUSE_AUTOMATED_MOVEMENT "ai_pause_movement"
 
 #define TRAIT_DISRUPTED			"disrupted"

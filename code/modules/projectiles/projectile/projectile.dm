@@ -499,9 +499,9 @@
 /obj/projectile/proc/add_projectile_hooks(list/datum/projectile_hook/hooks)
 	if(!length(hooks))
 		return
-	if(!projectile_hook_mutable)
+	if(!projectile_hooks_mutable)
 		projectile_hooks = projectile_hooks ? projectile_hooks.Copy() : list()
-		projectile_hook_mutable = TRUE
+		projectile_hooks_mutable = TRUE
 	projectile_hooks += hooks
 
 /**

@@ -2,6 +2,10 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /datum/eldritch_passive
+	abstract_type = /datum/eldritch_passive
+
+	/// id. must be unique.
+	var/id
 
 #warn impl
 

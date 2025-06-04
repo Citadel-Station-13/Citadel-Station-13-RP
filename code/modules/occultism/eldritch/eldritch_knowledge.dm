@@ -39,14 +39,11 @@
 
 	/// unlock recipe ids
 	var/list/give_recipe_ids
+	/// unlock passive ids
+	var/list/give_passive_ids
 	/// unlock abilities
 	/// * instances / typepaths, not ids
 	var/list/datum/ability/eldritch_ability/give_abilities
-	/// unlock passives
-	/// * instances / typepaths, not ids
-	var/list/datum/eldritch_passive/give_passives
-
-
 
 #warn impl
 

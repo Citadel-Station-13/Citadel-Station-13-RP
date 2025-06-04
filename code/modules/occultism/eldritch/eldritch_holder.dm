@@ -14,21 +14,26 @@
 	var/list/knowledge_known_ids = list()
 	/// passives applied
 	#warn passives
-	var/list/datum/eldritch_passive/applied_passives
+	var/tmp/list/datum/eldritch_passive/applied_passives
 	/// recipe ids known
-	#warn recipes
-	var/list/applied_recipe_ids
+	#warn recipes? should this be ids?
+	var/tmp/list/applied_recipe_ids
 	/// abilities applied
 	#warn abilities
-	var/list/datum/eldritch_ability/applied_abilities
+	var/tmp/list/datum/eldritch_ability/applied_abilities
 
 
 	#warn patrons
 
 /datum/eldritch_holder/proc/on_mob_associate(mob/target)
 
+
 /datum/eldritch_holder/proc/on_mob_disassociate(mob/target)
 
 /datum/eldritch_holder/proc/on_life_tick(dt)
 
 #warn impl
+
+/datum/eldritch_holder/proc/add_knowledge(datum/eldritch_knowledge/knowledge)
+
+/datum/eldritch_holder/proc/remove_knowledge(datum/eldritch_knowledge/knowledge)
