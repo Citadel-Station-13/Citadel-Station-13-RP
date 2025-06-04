@@ -5,9 +5,15 @@
 	\nIt can only be pulled by the handle, and cannot be pulled diagonally.\
 	\nAdditionally, it can only move forward and back.\
 	\nIf it gets stuck, you can click and drag it around to move it forward or back."
-	icon = 'icons/obj/furniture.dmi'
-	icon_state = "wheelchair"
-	layer = BELOW_OBJ_LAYER
+	icon = 'icons/obj/palletjack.dmi'
+	icon_state = "jack down"
+	var/icon_state_base = "jack"
+	var/arm_state_base = "jack arm"
+	var/color_state_base = "color overlay"
+	var/up_suffix = " up"
+	var/down_suffix = " down"
+	var/overlay_color
+	layer = TABLE_LAYER
 	density = TRUE
 	atom_flags = ATOM_BORDER
 	pass_flags = NONE
@@ -30,9 +36,26 @@
 	if(has_gravity())
 		playsound(src, 'sound/effects/roll.ogg', 50, TRUE)
 
+/obj/structure/palletjack/update_icon_state()
+	if(contents.len)
+		icon_state = "[icon_state_base][up_suffix]"
+	else
+		icon_state = "[icon_state_base][down_suffix]"
+	. = ..()
+
 /obj/structure/palletjack/update_overlays()
 	. = ..()
-	var/mutable_appearance/front_layer = mutable_appearance(icon, "w_overlay", ABOVE_MOB_LAYER, plane)
+	var/up_or_down = contents.len ? up_suffix : down_suffix
+
+	if(overlay_color != null)
+		var/color_state = "[color_state_base][up_or_down]"
+		var/mutable_appearance/color_layer = mutable_appearance(icon, color_state, layer, plane)
+		color_layer.appearance_flags |= RESET_COLOR
+		color_layer.color = overlay_color
+		. += color_layer
+
+	var/arm_state = "[arm_state_base][up_or_down]"
+	var/mutable_appearance/front_layer = mutable_appearance(icon, arm_state, ABOVE_MOB_LAYER, plane)
 	. += front_layer
 
 	for(var/atom/movable/M in contents)
@@ -156,7 +179,38 @@
 		atom_flags |= ATOM_BORDER
 
 /obj/structure/palletjack/OnMouseDrop(atom/over, mob/user, proximity, params)
-	if(proximity && isturf(over) && over != loc && Adjacent(over))
+	if(proximity && isturf(over) && over != loc && Adjacent(over) && CanMouseDrop(over, user))
 		step_towards(src, over)
 		return CLICKCHAIN_FLAGS_INTERACT_ABORT
 	. = ..()
+
+
+/obj/structure/palletjack/engineering
+	overlay_color = COLOR_SUN
+
+/obj/structure/palletjack/atmos
+	overlay_color = COLOR_ATMOSPHERICS_CYAN
+
+/obj/structure/palletjack/science
+	overlay_color = COLOR_PURPLE_GRAY
+
+/obj/structure/palletjack/explo
+	overlay_color = COLOR_EXPLO_VIOLET
+
+/obj/structure/palletjack/cargo
+	overlay_color = COLOR_CARGO_BROWN
+
+/obj/structure/palletjack/service
+	overlay_color = COLOR_PALE_BTL_GREEN
+
+/obj/structure/palletjack/medical
+	overlay_color = COLOR_BABY_BLUE
+
+/obj/structure/palletjack/security
+	overlay_color = COLOR_SECURITY_RED
+
+/obj/structure/palletjack/command
+	overlay_color = COLOR_COMMAND_BLUE
+
+/obj/structure/palletjack/darkmode
+	overlay_color = "#666666"
