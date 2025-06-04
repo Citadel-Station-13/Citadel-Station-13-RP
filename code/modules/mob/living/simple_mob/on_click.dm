@@ -5,7 +5,7 @@
 	if(!(. = ..()))
 		return
 
-//	setClickCooldownLegacy(get_attack_speed_legacy())
+//	setClickCooldown(get_attack_speed())
 
 	if(has_hands() && istype(A,/obj) && a_intent != INTENT_HARM)
 		var/obj/O = A
@@ -39,7 +39,7 @@
 				attack_target(A)
 
 /mob/living/simple_mob/RangedAttack(var/atom/A)
-//	setClickCooldownLegacy(get_attack_speed_legacy())
+//	setClickCooldown(get_attack_speed())
 
 	if(can_special_attack(A) && special_attack_target(A))
 		return

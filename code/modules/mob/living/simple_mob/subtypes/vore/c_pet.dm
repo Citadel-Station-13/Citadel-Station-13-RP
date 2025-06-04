@@ -53,7 +53,7 @@
 	icon_state = "dave1"
 	icon_living = "dave1"
 	icon_dead = "dave_dead"
-	movement_base_speed = 10 / 300
+	movement_cooldown = 300
 
 	maxHealth = 1500
 	health = 1500

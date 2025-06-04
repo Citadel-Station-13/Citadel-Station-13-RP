@@ -156,7 +156,16 @@
 	item_state = "trombone"
 	damage_force = 0
 	attack_verb = list("played","jazzed","trumpeted","mourned","dooted","spooked")
-	attack_sound = 'sound/runtime/instruments/trombone/En4.mid'
+
+/*
+/obj/item/instrument/trumpet/spectral/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/spooky)
+*/
+
+/obj/item/instrument/trumpet/spectral/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = ..()
+	playsound(src, 'sound/runtime/instruments/trombone/En4.mid', 100,1,-1)
 
 /obj/item/instrument/saxophone
 	name = "saxophone"
@@ -172,7 +181,16 @@
 	item_state = "saxophone"
 	damage_force = 0
 	attack_verb = list("played","jazzed","saxxed","mourned","dooted","spooked")
-	attack_sound = 'sound/runtime/instruments/saxophone/En4.mid'
+
+/*
+/obj/item/instrument/saxophone/spectral/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/spooky)
+*/
+
+/obj/item/instrument/saxophone/spectral/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = ..()
+	playsound(src, 'sound/runtime/instruments/saxophone/En4.mid', 100,1,-1)
 
 /obj/item/instrument/trombone
 	name = "trombone"
@@ -188,7 +206,16 @@
 	item_state = "trombone"
 	damage_force = 0
 	attack_verb = list("played","jazzed","tromboned","mourned","dooted","spooked")
-	attack_sound = 'sound/runtime/instruments/trombone/Cn4.mid'
+
+/*
+/obj/item/instrument/trombone/spectral/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/spooky)
+*/
+
+/obj/item/instrument/trombone/spectral/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = ..()
+	playsound(src, 'sound/runtime/instruments/trombone/Cn4.mid', 100,1,-1)
 
 /obj/item/instrument/recorder
 	name = "recorder"

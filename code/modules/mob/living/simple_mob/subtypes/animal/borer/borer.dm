@@ -32,7 +32,7 @@
 
 	status_flags = STATUS_CAN_PUSH
 	pass_flags = ATOM_PASS_TABLE
-	movement_base_speed = 10 / 5
+	movement_cooldown = 5
 
 	universal_understand = TRUE
 	can_be_antagged = TRUE

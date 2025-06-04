@@ -449,6 +449,9 @@
 /area/class_m/outside/beachmiddle)
 "bV" = (
 /obj/machinery/door/window/eastright,
+/obj/structure/stairs/bottom{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/class_m/inside/main)
 "bW" = (
@@ -745,6 +748,7 @@
 /turf/simulated/floor/tiled/monowhite,
 /area/class_m/inside/garage)
 "do" = (
+/obj/structure/catwalk,
 /obj/structure/railing{
 	dir = 1
 	},
@@ -2689,6 +2693,7 @@
 /turf/simulated/wall,
 /area/class_m/inside/coats)
 "lc" = (
+/obj/structure/catwalk,
 /obj/effect/catwalk_plated/dark,
 /turf/simulated/floor/tiled/outdoors,
 /area/class_m/outside)
@@ -5571,6 +5576,9 @@
 /area/class_m/outside)
 "xR" = (
 /obj/structure/curtain/open/bed,
+/obj/structure/window/phoronreinforced{
+	dir = 8
+	},
 /obj/structure/fans/tiny,
 /obj/spawner/window/borosillicate/full,
 /turf/simulated/floor/wood,
@@ -5980,7 +5988,7 @@
 /area/class_m/inside/vip_dorms)
 "zG" = (
 /obj/structure/bed/chair/sofa/black/corner{
-	dir = 4
+	dir = 1
 	},
 /turf/simulated/floor/wood,
 /area/class_m/inside/main)
@@ -6957,6 +6965,7 @@
 /turf/simulated/floor/water/deep,
 /area/class_m/outside)
 "DW" = (
+/obj/structure/catwalk,
 /obj/structure/railing,
 /obj/effect/catwalk_plated/dark,
 /turf/simulated/floor/tiled/outdoors,
@@ -11485,6 +11494,9 @@
 "Yz" = (
 /obj/structure/curtain/open/bed,
 /obj/spawner/window/borosillicate/full,
+/obj/structure/window/phoronreinforced{
+	dir = 8
+	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/wood,
 /area/class_m/inside/vip_dorms)

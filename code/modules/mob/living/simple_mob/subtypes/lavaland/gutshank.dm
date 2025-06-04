@@ -56,7 +56,7 @@
 
 	mob_class = MOB_CLASS_ANIMAL
 	taser_kill = FALSE
-	movement_base_speed = 10 / 6
+	movement_cooldown = 6
 	movement_sound = 'sound/effects/spider_loop.ogg'
 	legacy_melee_damage_lower = 5
 	legacy_melee_damage_upper = 10
@@ -179,7 +179,7 @@
 
 	mob_class = MOB_CLASS_ANIMAL
 	taser_kill = FALSE
-	movement_base_speed = 10 / 4
+	movement_cooldown = 4
 	legacy_melee_damage_lower = 10
 	legacy_melee_damage_upper = 15
 	attacktext = list ("bitten", "pierced", "mauled")
@@ -200,26 +200,22 @@
 	buckle_allowed = TRUE
 	buckle_flags = BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF|BUCKLING_GROUND_HOIST
 
-	var/obj/item/saddle/saddled = null
+	var/rideable = 0
 
 /mob/living/simple_mob/animal/shank/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	. = ..()
-	if(istype(O, /obj/item/saddle/shank) && !saddled)
+	if(istype(O, /obj/item/saddle/shank) && !rideable)
 		to_chat(user, "<span class='danger'>You sling the [O] onto the [src]! It may now be ridden safely!</span>")
-		saddled = O
-		var/datum/component/riding_filter/mob/animal/filter_component = LoadComponent(/datum/component/riding_filter/mob/animal)
-		filter_component.handler_typepath = /datum/component/riding_handler/shank
-		DelComponent(/datum/component/riding_handler) //Delete to let it recreate as required
-		saddled.forceMove(src)
-	if(O.is_wirecutter() && saddled)
-		to_chat(user, "<span class='danger'>You nip the straps of the [saddled]! It falls off of the [src].</span>")
-		var/datum/component/riding_filter/mob/animal/filter_component = LoadComponent(/datum/component/riding_filter/mob/animal)
-		filter_component.handler_typepath = initial(filter_component.handler_typepath)
-		DelComponent(/datum/component/riding_handler)
+		rideable = 1
+		AddComponent(/datum/component/riding_handler/shank)
+		qdel(O)
+	if(istype(O, /obj/item/tool/wirecutters) && rideable)
+		to_chat(user, "<span class='danger'>You nip the straps of the [O]! It falls off of the [src].</span>")
+		rideable = 0
+		DelComponent(/datum/component/riding_handler, /datum/component/riding_handler/shank)
 		var/turf/T = get_turf(src)
-		saddled.forceMove(T)
-		saddled = null
-	if(istype(O, /obj/item/pen/charcoal) && saddled)
+		new /obj/item/saddle/shank(T)
+	if(istype(O, /obj/item/pen/charcoal) && rideable)
 		RenameMount()
 	update_icon()
 
@@ -272,7 +268,7 @@
 		M.take_blood_mixture(rand(20, 25))
 
 /mob/living/simple_mob/animal/shank/update_icon()
-	if(saddled)
+	if(rideable)
 		add_overlay("shank_saddled")
-	else if(!saddled)
+	else if(!rideable)
 		cut_overlays()

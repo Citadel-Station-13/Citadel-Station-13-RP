@@ -1423,12 +1423,6 @@
 	icon_state = "para_ert_uniform"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "black", SLOT_ID_LEFT_HAND = "black")
 
-/obj/item/clothing/under/pmd
-	name = "PMD uniform"
-	desc = "A black uniform whose back is emblazoned with the Icon of the PMD. Close inspection of the silver embroidery reveals a complex web of glyphs written in an unknown language."
-	icon_state = "pmd_uniform"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "black", SLOT_ID_LEFT_HAND = "black")
-
 /obj/item/clothing/under/blueshortskirt
 	name = "Short Skirt"
 	desc = "A light blue sweater with a black skirt."
@@ -2522,15 +2516,6 @@
 	desc = "A tight-fitting, sleeveless single-piece black uniform with striking crimson trim."
 	icon = 'icons/clothing/uniform/misc/replika.dmi'
 	icon_state = "gestalt_sleeveless"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-/obj/item/clothing/under/sleeveless_qipao
-	name = "sleeveless black qipao"
-	desc = "A popular dress from Old Earth China, commonly worn to festivals. Easily recognizable thanks to its intricate embroidery and bold side slits."
-	icon = 'icons/clothing/uniform/misc/sleeveless_qipao.dmi'
-	icon_state = "sleevelessqipao"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL

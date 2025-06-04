@@ -30,7 +30,7 @@
 	iff_factions = MOB_IFF_FACTION_MERCENARY
 	maxHealth = 15
 	health = 15
-	movement_base_speed = 6.66
+	movement_cooldown = 0
 
 	pass_flags = ATOM_PASS_TABLE
 	mob_swap_flags = 0

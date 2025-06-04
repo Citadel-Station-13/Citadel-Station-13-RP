@@ -233,7 +233,7 @@
 /obj/structure/closet/proc/store_mobs(var/stored_units)
 	var/added_units = 0
 	for(var/mob/living/M in loc)
-		if(M.buckled) // || M.pinned.len)
+		if(M.buckled || M.pinned.len)
 			continue
 		if(stored_units + added_units + M.mob_size > storage_capacity)
 			break
@@ -325,7 +325,7 @@
 			spark_system.set_up(5, 0, loc)
 			spark_system.start()
 			playsound(src, 'sound/weapons/blade1.ogg', 50, 1)
-			playsound(src, /datum/soundbyte/sparks, 50, 1)
+			playsound(src, /datum/soundbyte/grouped/sparks, 50, 1)
 
 	else if(I.is_wrench())
 		if(sealed)
@@ -497,7 +497,7 @@
 		open()
 		return
 
-	escapee.setClickCooldownLegacy(100)
+	escapee.setClickCooldown(100)
 
 	//okay, so the closet is either sealed or locked... resist!!!
 	to_chat(escapee, "<span class='warning'>You lean on the back of \the [src] and start pushing the door open. (this will take about [breakout_time] minutes)</span>")

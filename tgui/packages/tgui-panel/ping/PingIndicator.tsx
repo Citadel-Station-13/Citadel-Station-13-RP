@@ -8,7 +8,6 @@ import { Color } from 'common/colorLegacy';
 import { toFixed } from 'common/math';
 import { useSelector } from 'common/redux';
 import { Box } from 'tgui/components';
-
 import { selectPing } from './selectors';
 
 export const PingIndicator = (props, context) => {
@@ -17,11 +16,15 @@ export const PingIndicator = (props, context) => {
     new Color(220, 40, 40),
     new Color(220, 200, 40),
     new Color(60, 220, 40),
-  ]).toString();
-  const roundtrip = ping.roundtrip ? toFixed(ping.roundtrip) : '--';
+  ]);
+  const roundtrip = ping.roundtrip
+    ? toFixed(ping.roundtrip)
+    : '--';
   return (
     <div className="Ping">
-      <Box className="Ping__indicator" backgroundColor={color} />
+      <Box
+        className="Ping__indicator"
+        backgroundColor={color} />
       {roundtrip}
     </div>
   );

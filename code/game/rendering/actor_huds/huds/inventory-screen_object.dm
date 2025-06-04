@@ -155,7 +155,7 @@
 /atom/movable/screen/actor_hud/inventory/plate/hand/update_icon(updates)
 	. = ..()
 	if(handcuffed)
-		add_overlay(image('icons/mob/screen_gen.dmi', "[hand_index % 2 ? "l_hand" : "r_hand"]_hud_handcuffs"))
+		add_overlay(image('icons/mob/screen_gen.dmi', "[hand_index % 2 ? "r_hand" : "l_hand"]_hud_handcuffs"))
 	if(active)
 		var/image/active_image = new
 		active_image.icon = self_icon
@@ -192,7 +192,6 @@
 /atom/movable/screen/actor_hud/inventory/swap_hand
 	name = "swap active hand"
 	icon_state = "hand-swap"
-	
 /atom/movable/screen/actor_hud/inventory/swap_hand/Initialize(mapload, datum/inventory/host, hand_count)
 	. = ..()
 	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_HAND_SWAP(hand_count)

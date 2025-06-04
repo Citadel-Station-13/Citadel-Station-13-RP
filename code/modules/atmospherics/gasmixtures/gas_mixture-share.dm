@@ -23,8 +23,7 @@
 	ASSERT(ratio > 0 && ratio <= 1)
 #endif
 #ifdef CF_ATMOS_XGM_UPDATE_VALUES_ASSERTIONS
-	if(!(gas ~= debug_gas_archive))
-		stack_trace("gas did not match archive, [json_encode(gas)] vs archived [json_encode(debug_gas_archive)]")
+	ASSERT(gas ~= debug_gas_archive)
 #endif
 	// if both of us are empty, bail or division by zero's happen later
 	// this proc can handle up to one empty mixture after this check, as this check
@@ -85,7 +84,7 @@
 	other.temperature = other.temperature * (their_remaining_capacity / their_new_capacity) + average_temperature * (their_injected_capacity / their_new_capacity)
 
 	// update
-	src.update_values()
+	update_values()
 	other.update_values()
 
 	// return if we equalized fully

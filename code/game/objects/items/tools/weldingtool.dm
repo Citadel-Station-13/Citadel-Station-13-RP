@@ -64,7 +64,7 @@
 	if(max_fuel)
 		. += "[icon2html(thing = src, target = world)] The [src.name] contains [get_fuel()]/[src.max_fuel] units of fuel!"
 
-/obj/item/weldingtool/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/weldingtool/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(ishuman(target) && user.a_intent == INTENT_HELP)
 		var/mob/living/carbon/human/H = target
 		var/obj/item/organ/external/S = H.organs_by_name[user.zone_sel.selecting]
@@ -589,8 +589,8 @@
 	var/cell_type = /obj/item/cell/device
 	var/use_external_power = 0	//If in a borg or hardsuit, this needs to = 1
 	flame_color = "#00CCFF"  // Blue-ish, to set it apart from the gas flames.
-	acti_sound = /datum/soundbyte/sparks
-	deac_sound = /datum/soundbyte/sparks
+	acti_sound = /datum/soundbyte/grouped/sparks
+	deac_sound = /datum/soundbyte/grouped/sparks
 
 /obj/item/weldingtool/electric/unloaded
 	cell_type = null

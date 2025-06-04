@@ -122,7 +122,8 @@
 	name = "pulse"
 	fire_sound = 'sound/weapons/gauss_shoot.ogg'
 	damage_force = 60
-	damage_tier = 6
+	damage_tier = LASER_TIER_EXTREME
+	armor_penetration = 75
 	light_color = "#0066FF"
 
 	tracer_icon = 'icons/content/factions/corporations/nanotrasen/items/guns/nt_pulse-projectile.dmi'
@@ -133,4 +134,5 @@
 // todo: this shouldn't be here i think
 /obj/projectile/beam/pulse/shotgun
 	damage_force = 50
-	damage_tier = 4.25
+	armor_penetration = 25
+XTREME

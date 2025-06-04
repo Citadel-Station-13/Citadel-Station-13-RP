@@ -28,6 +28,8 @@
 	pass_flags = 1
 	mob_size = MOB_SMALL
 
+	var/speed = 1 // We move slightly slower than normal living things
+
 	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/pai)
 
 	holder_type = /obj/item/holder/pai
@@ -128,10 +130,6 @@
 									 /datum/action/pai/delete_holograms)
 
 	var/list/active_holograms = list()
-
-	//* Movement *//
-	/// Base speed in tiles/second
-	var/movement_base_speed = 4
 
 /mob/living/silicon/pai/Initialize(mapload)
 	. = ..()

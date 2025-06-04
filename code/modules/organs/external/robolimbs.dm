@@ -7,7 +7,6 @@ GLOBAL_DATUM(basic_robolimb, /datum/robolimb)
 // use lists like a normal human
 // TODO: REFACTOR
 var/const/standard_monitor_styles = "blank=ipc_blank;\
-	black=ipc_black;\
 	pink=ipc_pink;\
 	green=ipc_green;\
 	red=ipc_red;\
@@ -28,8 +27,7 @@ var/const/standard_monitor_styles = "blank=ipc_blank;\
 	glider=ipc_gol_glider;\
 	rainbow=ipc_rainbow;\
 	smiley=ipc_smiley;\
-	database=ipc_database;\
-	doom=ipc_doom"
+	database=ipc_database"
 
 var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	default=cyber_default;\

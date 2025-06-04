@@ -50,14 +50,10 @@
 	if(islist(slots))
 		for(var/slot in slots)
 			var/obj/item/I = item_by_slot_id(slot)
-			if(I == INVENTORY_SLOT_DOES_NOT_EXIST)
-				continue
 			. = drop_item_to_ground(I, flags)
 			cb?.Invoke(I, .)
 	else
 		var/obj/item/I = item_by_slot_id(slots)
-		if(I == INVENTORY_SLOT_DOES_NOT_EXIST)
-			return
 		. = drop_item_to_ground(I, flags)
 		cb?.Invoke(I, .)
 
@@ -68,14 +64,10 @@
 	if(islist(slots))
 		for(var/slot in slots)
 			var/obj/item/I = item_by_slot_id(slot)
-			if(I == INVENTORY_SLOT_DOES_NOT_EXIST)
-				continue
 			. = transfer_item_to_loc(I, A, flags)
 			cb?.Invoke(I, .)
 	else
 		var/obj/item/I = item_by_slot_id(slots)
-		if(I == INVENTORY_SLOT_DOES_NOT_EXIST)
-			return
 		. = transfer_item_to_loc(I, A, flags)
 		cb?.Invoke(I, .)
 
@@ -85,11 +77,11 @@
 	if(islist(slots))
 		for(var/slot in slots)
 			I = item_by_slot_id(slot)
-			if(I && I != INVENTORY_SLOT_DOES_NOT_EXIST)
+			if(I)
 				. += I
 	else
 		I = item_by_slot_id(slots)
-		if(I && I != INVENTORY_SLOT_DOES_NOT_EXIST)
+		if(I)
 			. += I
 
 /**

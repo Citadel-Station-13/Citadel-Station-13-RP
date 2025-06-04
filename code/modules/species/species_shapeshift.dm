@@ -633,27 +633,19 @@ var/list/wrapped_species_by_ref = list()
 	set category = "Abilities"
 	set desc = "Resets your character's appearance to the CURRENTLY-SELECTED slot."
 
-	shapeshifter_reset_to_slot_generic(1 MINUTE, "<span class='warning'>[src] deforms and contorts strangely...</span>", 5 SECONDS)
-
-/mob/living/carbon/human/proc/hologram_reset_to_slot()
-	set name = "Reset Appearance to Slot"
-	set category = "Abilities"
-	set desc = "Resets your character's appearance to the CURRENTLY-SELECTED slot."
-
-	shapeshifter_reset_to_slot_generic(1 MINUTE, "<span class='warning'>[src]'s hologram flickers briefly...</span>", 5 SECONDS)
-
-/mob/living/carbon/human/proc/shapeshifter_reset_to_slot_generic(transform_cooldown, transform_text, transform_duration)
 	if(stat || world.time < last_special)
 		return
 
-	last_special = world.time + transform_cooldown
+	last_special = world.time + 1 MINUTE
 
-	visible_message(transform_text)
+	visible_message("<span class='warning'>[src] deforms and contorts strangely...</span>")
 
-	if(!do_after(src, transform_duration))
+	if(!do_after(src, 50)) //5 seconds
 		return FALSE
 
 	shapeshifter_reset_to_slot_core(src)
+
+
 
 	//sigh
 	if(istype(src.species, /datum/species/shapeshifter))

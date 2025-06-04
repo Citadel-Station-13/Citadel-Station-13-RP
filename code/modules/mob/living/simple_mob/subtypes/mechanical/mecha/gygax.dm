@@ -16,7 +16,7 @@
 	desc = "A lightweight, security exosuit. Popular among private and corporate security."
 	catalogue_data = list(/datum/category_item/catalogue/technology/gygax)
 	icon_state = "gygax"
-	movement_base_speed = 6.66
+	movement_cooldown = 0
 	wreckage = /obj/structure/loot_pile/mecha/gygax
 
 	maxHealth = 300

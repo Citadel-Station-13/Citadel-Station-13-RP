@@ -60,7 +60,7 @@
 			return
 		stop_pulling()
 
-	setClickCooldownLegacy(DEFAULT_PULL_COODDOWN)
+	setClickCooldown(DEFAULT_PULL_COODDOWN)
 
 	if(AM.pulledby)
 		if(!suppress_message)

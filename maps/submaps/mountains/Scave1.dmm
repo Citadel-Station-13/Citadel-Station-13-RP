@@ -37,7 +37,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/Scave1)
 "j" = (
-/obj/item/grenade/simple/spawner/spider,
+/obj/item/grenade/spawnergrenade/spider,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/Scave1)
 "k" = (

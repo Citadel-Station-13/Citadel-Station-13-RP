@@ -17,20 +17,14 @@
 		/obj/item/melee/baton,
 		/obj/item/bluespace_radio,
 	)
-
 /datum/armor/hardsuit/hazard
-	melee = 0.3
-	melee_tier = 4
-	bullet = 0.3
-	bullet_tier = 4
+	melee = 0.6
+	bullet = 0.4
 	laser = 0.3
-	laser_tier = 4
-	energy = 0.25
+	energy = 0.15
 	bomb = 0.6
 	bio = 1.0
-	rad = 0.5
-	fire = 0.7
-	acid = 0.7
+	rad = 0.3
 
 /obj/item/hardsuit/hazard/equipped
 

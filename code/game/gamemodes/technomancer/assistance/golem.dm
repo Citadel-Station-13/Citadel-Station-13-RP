@@ -132,19 +132,19 @@
 		add_overlay(I)
 
 /mob/living/simple_animal/technomancer_golem/proc/spellcast_pre_animation()
-	setClickCooldownLegacy(5)
+	setClickCooldown(5)
 	manual_flick(spell_pre_attack_states, spell_image, reset_to = "golem_spell_attack_3")
 
 /mob/living/simple_animal/technomancer_golem/proc/spellcast_post_animation()
-	setClickCooldownLegacy(8)
+	setClickCooldown(8)
 	manual_flick(spell_post_attack_states, spell_image, reset_to = "golem_spell")
 
 /mob/living/simple_animal/technomancer_golem/proc/sword_pre_animation()
-	setClickCooldownLegacy(6)
+	setClickCooldown(6)
 	manual_flick(sword_pre_attack_states, sword_image)
 
 /mob/living/simple_animal/technomancer_golem/proc/sword_post_animation()
-	setClickCooldownLegacy(3)
+	setClickCooldown(3)
 	manual_flick(sword_post_attack_states, sword_image, reset_to = "golem_sword")
 
 /mob/living/simple_animal/technomancer_golem/DoPunch(var/atom/A)
@@ -196,7 +196,7 @@
 			else if(active_spell.cast_methods & CAST_RANGED)
 				active_spell.on_ranged_cast(A, src)
 			spellcast_post_animation()
-			src.setClickCooldownLegacy(effective_cooldown)
+			src.setClickCooldown(effective_cooldown)
 		else
 			..()
 

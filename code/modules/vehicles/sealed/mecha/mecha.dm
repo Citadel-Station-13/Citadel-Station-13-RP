@@ -145,7 +145,7 @@
 	var/datum/events/events
 
 	/// outgoing melee damage (legacy var)
-	var/damtype = DAMAGE_TYPE_BRUTE
+	var/damtype
 
 //mechaequipt2 stuffs
 	var/list/hull_equipment = new
@@ -1014,7 +1014,7 @@
 		show_radial_occupant(user)
 		return
 
-	user.setClickCooldownLegacy(user.get_attack_speed_legacy())
+	user.setClickCooldown(user.get_attack_speed())
 	src.log_message("Attack by hand/paw. Attacker - [user].",1)
 
 	var/obj/item/vehicle_component/armor/ArmC = internal_components[MECH_ARMOR]
@@ -1068,14 +1068,20 @@
 
 	var/temp_deflect_chance = deflect_chance
 	var/temp_damage_minimum = damage_minimum
+	var/temp_minimum_penetration = minimum_penetration
+	var/temp_fail_penetration_value = fail_penetration_value
 
 	if(!ArmC)
 		temp_deflect_chance = 0
 		temp_damage_minimum = 0
+		temp_minimum_penetration = 0
+		temp_fail_penetration_value = 1
 
 	else
 		temp_deflect_chance = round(ArmC.get_efficiency() * ArmC.deflect_chance + (defence_mode ? 25 : 0))
 		temp_damage_minimum = round(ArmC.get_efficiency() * ArmC.damage_minimum)
+		temp_minimum_penetration = round(ArmC.get_efficiency() * ArmC.minimum_penetration)
+		temp_fail_penetration_value = round(ArmC.get_efficiency() * ArmC.fail_penetration_value)
 
 	if(istype(A, /obj/item/vehicle_tracking_beacon))
 		A.forceMove(src)
@@ -1099,10 +1105,10 @@
 				src.visible_message("\The [A] bounces off \the [src] armor")
 				return
 
-			// else if(O.damage_tier < temp_minimum_penetration)	//If you don't have enough pen, you won't do full damage
-			// 	src.occupant_message("<span class='notice'>\The [A] struggles to bypass \the [src] armor.</span>")
-			// 	src.visible_message("\The [A] struggles to bypass \the [src] armor")
-			// 	pass_damage_reduc_mod = temp_fail_penetration_value	//This will apply to reduce damage to 2/3 or 66% by default
+			else if(O.armor_penetration < temp_minimum_penetration)	//If you don't have enough pen, you won't do full damage
+				src.occupant_message("<span class='notice'>\The [A] struggles to bypass \the [src] armor.</span>")
+				src.visible_message("\The [A] struggles to bypass \the [src] armor")
+				pass_damage_reduc_mod = temp_fail_penetration_value	//This will apply to reduce damage to 2/3 or 66% by default
 			else
 				src.occupant_message("<span class='notice'>\The [A] manages to pierce \the [src] armor.</span>")
 //				src.visible_message("\The [A] manages to pierce \the [src] armor")
@@ -1151,9 +1157,7 @@
 		return
 
 	if(Proj.damage_type == DAMAGE_TYPE_HALLOSS)
-		use_power(Proj.damage_force * 5)
-	if(Proj.damage_inflict_agony)
-		use_power(Proj.damage_inflict_agony * 5)
+		use_power(Proj.agony * 5)
 
 	if(!(Proj.nodamage))
 		var/ignore_threshold
@@ -1168,7 +1172,7 @@
 			src.visible_message("The [src.name] armor deflects\the [Proj]")
 			return PROJECTILE_IMPACT_BLOCKED
 
-		else if((max(BULLET_TIER_DEFAULT - Proj.damage_tier, 0) * 25) < temp_minimum_penetration)	//If you don't have enough pen, you won't do full damage
+		else if(Proj.armor_penetration < temp_minimum_penetration)	//If you don't have enough pen, you won't do full damage
 			src.occupant_message("<span class='notice'>\The [Proj] struggles to pierce \the [src] armor.</span>")
 			src.visible_message("\The [Proj] struggles to pierce \the [src] armor")
 			pass_damage_reduc_mod = temp_fail_penetration_value / 1.5	//This will apply to reduce damage to 2/3 or 66% by default
@@ -1267,7 +1271,7 @@
 	return
 
 /obj/vehicle/sealed/mecha/proc/dynattackby(obj/item/W as obj, mob/user as mob)
-	user.setClickCooldownLegacy(user.get_attack_speed_legacy(W))
+	user.setClickCooldown(user.get_attack_speed(W))
 	src.log_message("Attacked by [W]. Attacker - [user]")
 	var/pass_damage_reduc_mod			//Modifer for failing to bring AP.
 
@@ -1300,7 +1304,7 @@
 		src.visible_message("\The [W] bounces off \the [src] armor")
 		return
 
-	else if((max(BULLET_TIER_DEFAULT - W.damage_tier, 0) * 25)  < temp_minimum_penetration)	//If you don't have enough pen, you won't do full damage
+	else if(W.armor_penetration < temp_minimum_penetration)	//If you don't have enough pen, you won't do full damage
 		src.occupant_message("<span class='notice'>\The [W] struggles to bypass \the [src] armor.</span>")
 		src.visible_message("\The [W] struggles to bypass \the [src] armor")
 		pass_damage_reduc_mod = temp_fail_penetration_value	//This will apply to reduce damage to 2/3 or 66% by default
@@ -2395,7 +2399,7 @@
 		temp_deflect_chance = round(ArmC.get_efficiency() * ArmC.deflect_chance + (defence_mode ? 25 : 0))
 		temp_damage_minimum = round(ArmC.get_efficiency() * ArmC.damage_minimum)
 
-	user.setClickCooldownLegacy(user.get_attack_speed_legacy())
+	user.setClickCooldown(user.get_attack_speed())
 	if(!damage)
 		return 0
 

@@ -251,21 +251,21 @@
 	var/obj/item/ammo_casing/casing = pop(src)
 	e_args.performer.put_in_hands_or_drop(casing)
 
-/obj/item/ammo_magazine/on_attack_hand(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+/obj/item/ammo_magazine/on_attack_hand(datum/event_args/actor/clickchain/e_args)
 	. = ..()
-	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+	if(.)
 		return
-	if(!clickchain.performer.is_holding_inactive(src))
+	if(!e_args.performer.is_holding_inactive(src))
 		return
 	if(!ammo_removable)
 		return
-	. |= CLICKCHAIN_DID_SOMETHING
+	. = TRUE
 	if(!get_amount_remaining())
-		clickchain.chat_feedback(SPAN_WARNING("[src] is empty."), src)
+		e_args.chat_feedback(SPAN_WARNING("[src] is empty."), src)
 		return
-	clickchain.chat_feedback(SPAN_NOTICE("You remove a round from [src]."), src)
+	e_args.chat_feedback(SPAN_NOTICE("You remove a round from [src]."), src)
 	var/obj/item/ammo_casing/casing = pop(src)
-	clickchain.performer.put_in_hands_or_drop(casing)
+	e_args.performer.put_in_hands_or_drop(casing)
 
 /obj/item/ammo_magazine/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(istype(I, /obj/item/ammo_casing))

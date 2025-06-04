@@ -17,7 +17,7 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 
 	var/datum/mind/stored_mind
 
-/obj/item/sleevemate/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/sleevemate/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(ishuman(target))
 		scan_mob(target, user)
@@ -116,7 +116,7 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 	to_chat(user,output)
 
 /obj/item/sleevemate/Topic(href, href_list)
-	usr.setClickCooldownLegacy(DEFAULT_ATTACK_COOLDOWN)
+	usr.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 
 	//Sanity checking/href-hacking checking
 	if(usr.get_active_held_item() != src)

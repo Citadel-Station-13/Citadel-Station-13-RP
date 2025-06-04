@@ -5793,7 +5793,7 @@
 /area/itglight/portsolars)
 "Ol" = (
 /obj/structure/bed/chair/sofa/brown/corner{
-	dir = 4
+	dir = 1
 	},
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/common)

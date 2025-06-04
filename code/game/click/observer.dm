@@ -37,7 +37,7 @@
 		ShiftMiddleClickOn(A)
 		return
 	if(!canClick()) return
-	setClickCooldownLegacy(4)
+	setClickCooldown(4)
 	// You are responsible for checking config_legacy.ghost_interaction when you override this function
 	// Not all of them require checking, see below
 	A.attack_ghost(src)

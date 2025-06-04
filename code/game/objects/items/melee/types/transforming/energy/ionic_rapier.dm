@@ -9,6 +9,7 @@
 	active_damage_force = 10
 	active_throw_force = 3
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
+	armor_penetration = 0
 	atom_flags = NOBLOODY
 	lrange = 2
 	lpower = 2
@@ -26,16 +27,12 @@
 		var/obj/O = target
 		O.emp_act(3) // A weaker severity is used because this has infinite uses.
 		playsound(get_turf(O), 'sound/effects/EMPulse.ogg', 100, 1)
-		user.setClickCooldownLegacy(user.get_attack_speed_legacy(src)) // A lot of objects don't set click delay.
+		user.setClickCooldown(user.get_attack_speed(src)) // A lot of objects don't set click delay.
 	return ..()
 
-/obj/item/melee/transforming/energy/sword/ionic_rapier/melee_finalize(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
+/obj/item/melee/transforming/energy/sword/ionic_rapier/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
-	if(. & (CLICKCHAIN_ATTACK_MISSED | CLICKCHAIN_FLAGS_UNCONDITIONAL_ABORT))
-		return
-	if(clickchain.attack_contact_multiplier <= 0)
-		return
-	var/mob/living/L = clickchain.target
+	var/mob/living/L = target
 	if(!istype(L))
 		return
 	if(L.isSynthetic() && active)
@@ -48,11 +45,12 @@
 		// Make lesser robots really mad at us.
 		if(L.mob_class & MOB_CLASS_SYNTHETIC)
 			if(L.has_polaris_AI())
-				L.taunt(clickchain.performer)
+				L.taunt(user)
 			L.adjustFireLoss(damage_force * 6) // 30 Burn, for 50 total.
 
 /obj/item/melee/transforming/energy/sword/ionic_rapier/lance
 	name = "zero-point lance"
 	desc = "Designed specifically for disrupting electronics at relatively close range, however it is still capable of dealing some damage to living beings."
 	active_damage_force = 20
+	armor_penetration = 15
 	reach = 2

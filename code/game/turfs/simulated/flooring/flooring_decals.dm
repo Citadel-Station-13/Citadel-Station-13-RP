@@ -1226,9 +1226,6 @@ var/list/floor_decals = list()
 /obj/effect/floor_decal/corner/navblue/bordercee
 	icon_state = "bordercolorcee"
 
-/obj/effect/floor_decal/corner/navblue/halfborder
-	icon_state = "bordercolorhalf"
-
 /obj/effect/floor_decal/corner/navgold
 	name = "navgold corner"
 	color = COLOR_NAV_GOLD
@@ -1257,8 +1254,6 @@ var/list/floor_decals = list()
 /obj/effect/floor_decal/corner/navgold/bordercee
 	icon_state = "bordercolorcee"
 
-/obj/effect/floor_decal/corner/navgold/halfborder
-	icon_state = "bordercolorhalf"
 
 //! ## VR FILE MERGE ## !//
 

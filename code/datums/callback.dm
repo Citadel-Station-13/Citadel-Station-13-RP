@@ -65,10 +65,6 @@
 	delegate = proctocall
 	if (length(args) > 2)
 		arguments = args.Copy(3)
-	// todo: this is silly and admin proccall guards like this
-	//       need to be re-evaluated. this will force a push-usr
-	//       through things like grenade activations with a 'usr'
-	//       not only is that costly but it can result in unexpected behavior
 	if(usr)
 		user = WEAKREF(usr)
 
@@ -235,6 +231,5 @@
 		CRASH("Callback [src] slept on a no-sleeping invoke.")
 
 /datum/callback/proc/invoke_no_sleep_call(...)
-	PRIVATE_PROC(TRUE)
 	set waitfor = FALSE
 	. = Invoke(arglist(args))

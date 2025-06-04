@@ -26,6 +26,7 @@
 	var/penalty_speed_multiplier = 1
 	var/penalty_damage_multiplier = 1
 	var/penalty_damage_tier
+	var/penalty_legacy_armor_penetration
 
 /obj/projectile/nt_protomag/Initialize(mapload)
 	. = ..()
@@ -39,6 +40,8 @@
 	damage_force *= penalty_damage_multiplier
 	if(!isnull(penalty_damage_tier))
 		damage_tier = penalty_damage_tier
+	if(!isnull(penalty_legacy_armor_penetration))
+		armor_penetration = penalty_legacy_armor_penetration
 	speed *= penalty_speed_multiplier
 	penalized = TRUE
 
@@ -46,18 +49,22 @@
 	name = "magnetic slug"
 	color = "#ccaa55"
 	damage_force = 35
-	damage_tier = 4
+	damage_tier = BULLET_TIER_MEDIUM
+	armor_penetration = 25
 	penalty_speed_multiplier = 3 / 4
-	penalty_damage_tier = 3.25
+	penalty_damage_tier = BULLET_TIER_LOW
+	penalty_legacy_armor_penetration = 15
 
 /obj/projectile/nt_protomag/sabot
 	name = "dense slug"
 	color = "#ff7700"
 	speed = /obj/projectile/nt_protomag::speed * 1.2
 	damage_force = 30
-	damage_tier = 5
+	damage_tier = BULLET_TIER_HIGH
+	armor_penetration = 47.5
 	penalty_speed_multiplier = 4 / 5
-	damage_tier = 4
+	penalty_damage_tier = BULLET_TIER_MEDIUM
+	penalty_legacy_armor_penetration = 25
 
 // todo: this is currently disabled as medcode is not verbose enough for this to work
 // /obj/projectile/nt_protomag/shredder
@@ -68,16 +75,18 @@
 	color = "#3333aa"
 	speed = /obj/projectile/nt_protomag::speed * 0.9
 	damage_force = 10
-	damage_tier = 4
-	damage_inflict_agony = 30
+	damage_tier = BULLET_TIER_HIGH
+	agony = 30
+	armor_penetration = 40
 	penalty_speed_multiplier = 3 / 4
-	penalty_damage_tier = 3.25
+	penalty_damage_tier = BULLET_TIER_LOW
+	penalty_legacy_armor_penetration = 15
 
 /obj/projectile/nt_protomag/practice
 	name = "lightweight slug"
 	color = "#ffffff"
 	damage_force = 5
-	damage_tier = 2.5
+	damage_tier = BULLET_TIER_LOW
 
 // todo: i refuse to do this until i can make it pretty
 // /obj/projectile/nt_protomag/smoke
@@ -107,7 +116,8 @@
 	color = "#aaffaa"
 	speed = /obj/projectile/nt_protomag::speed * 1.25
 	damage_force = 30
-	damage_tier = 6
+	damage_tier = BULLET_TIER_EXTREME
+	armor_penetration = 75
 
 // todo: the impulse should be semi armor piercing
 /obj/projectile/nt_protomag/shock
@@ -115,7 +125,7 @@
 	color = "#cccc55"
 	speed = /obj/projectile/nt_protomag::speed * 0.8
 	damage_force = 10
-	damage_tier = 4.25
+	damage_tier = BULLET_TIER_MEDIUM
 	base_projectile_effects = list(
 		/datum/projectile_effect/electrical_impulse{
 			shock_damage = 15;

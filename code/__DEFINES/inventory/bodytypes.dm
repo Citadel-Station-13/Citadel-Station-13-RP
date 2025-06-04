@@ -68,8 +68,12 @@
 //! keep this number (count) up to date
 #define BODYTYPES_TOTAL 21
 
-/// Constructs a bodytype struct from a variable.
-#define CONSTRUCT_BODYTYPES(BODYTYPES) BODYTYPES = fetch_bodytypes_struct(BODYTYPES)
+//? automatically typelist bodytypes if it's a list
+#define CONSTRUCT_BODYTYPES(LIST) LIST = fetch_bodytypes_struct(LIST)
+//? check bodytype lists matching
+#define COMPARE_BODYTYPES(L1, L2) L1.compare(L2)
+//? check bodytype list membership
+#define CHECK_BODYTYPE(L, BT) L.contains(BT)
 
 // todo: what are we going to do with these?
 //? we should probably standardize bodytypes as entirely different sprites, and also

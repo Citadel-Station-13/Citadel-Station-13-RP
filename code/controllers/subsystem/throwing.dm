@@ -91,8 +91,6 @@ SUBSYSTEM_DEF(throwing)
 	var/dx
 	/// y dir
 	var/dy
-	/// current targeted angle
-	var/current_angle
 	/// tracks diagonal error so we move in a relatively "raycasted" (shittily) path
 	var/diagonal_error
 	/// are we purely diagonal?
@@ -136,7 +134,6 @@ SUBSYSTEM_DEF(throwing)
 
 	dist_x = abs(target_turf.x - AM.x)
 	dist_y = abs(target_turf.y - AM.y)
-	current_angle = arctan(target_turf.y - AM.y, target_turf.x - AM.x)
 	dx = (target_turf.x > AM.x)? EAST : WEST
 	dy = (target_turf.y > AM.y)? NORTH : SOUTH
 
@@ -228,7 +225,16 @@ SUBSYSTEM_DEF(throwing)
 			land()
 			return
 
-		// move
+	//? Experimental: Do not try to hit before movement, instead let cross/whatnot hooks handle it
+/*
+		var/atom/to_hit = scan_for_impact(stepping)
+		while(to_hit)
+			impact(to_hit)
+			if(finished)
+				return
+			to_hit = scan_for_impact(stepping)
+*/
+
 		AM.Move(stepping, get_dir(AM, stepping))
 
 		// atom somehow got deleted
@@ -413,14 +419,8 @@ SUBSYSTEM_DEF(throwing)
 		var/obj/item/thing = thrownthing
 		return thing.damage_tier
 	if(iscarbon(thrownthing))
-		return 4 // :trol:
-	return 2.5
-
-/**
- * Get angle we're flying
- */
-/datum/thrownthing/proc/get_current_angle()
-	return current_angle
+		return MELEE_TIER_HEAVY // :trol:
+	return MELEE_TIER_LIGHT
 
 /**
  * simulated thrownthing datums

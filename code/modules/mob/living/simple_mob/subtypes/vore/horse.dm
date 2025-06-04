@@ -27,7 +27,7 @@
 	mod_min = 100
 	mod_max = 130
 
-	movement_base_speed = 10 / 4 //horses are fast mkay.
+	movement_cooldown = 4 //horses are fast mkay.
 	see_in_dark = 6
 
 	response_help  = "pets"
@@ -52,7 +52,7 @@
 	say_list_type = /datum/say_list/horse
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/retaliate
 
-	var/obj/item/saddle/saddled = null
+	var/rideable = 0
 
 /mob/living/simple_mob/horse/Initialize(mapload)
 	. = ..()
@@ -79,27 +79,23 @@
 	riding_handler_flags = CF_RIDING_HANDLER_IS_CONTROLLABLE
 
 /mob/living/simple_mob/horse/attackby(var/obj/item/O as obj, var/mob/user as mob)
-	if(istype(O, /obj/item/saddle/horse) && !saddled)
+	if(istype(O, /obj/item/saddle/horse) && !rideable)
 		to_chat(user, "<span class='danger'>You sling the [O] onto the [src]! It may now be ridden safely!</span>")
-		saddled = O
-		var/datum/component/riding_filter/mob/animal/horse/filter_component = LoadComponent(/datum/component/riding_filter/mob/animal/horse)
-		filter_component.handler_typepath = /datum/component/riding_handler/horse
-		DelComponent(/datum/component/riding_handler) //Delete to let it recreate as required
-		saddled.forceMove(src)
-	if(O.is_wirecutter() && saddled)
-		to_chat(user, "<span class='danger'>You nip the straps of the [saddled]! It falls off of the [src].</span>")
-		var/datum/component/riding_filter/mob/animal/horse/filter_component = LoadComponent(/datum/component/riding_filter/mob/animal/horse)
-		filter_component.handler_typepath = initial(filter_component.handler_typepath)
-		DelComponent(/datum/component/riding_handler)
+		rideable = 1
+		AddComponent(/datum/component/riding_handler/horse)
+		qdel(O)
+	if(istype(O, /obj/item/tool/wirecutters) && rideable)
+		to_chat(user, "<span class='danger'>You nip the straps of the [O]! It falls off of the [src].</span>")
+		rideable = 0
+		DelComponent(/datum/component/riding_handler, /datum/component/riding_handler/horse)
 		var/turf/T = get_turf(src)
-		saddled.forceMove(T)
-		saddled = null
+		new /obj/item/saddle/horse(T)
 	update_icon()
 
 /mob/living/simple_mob/horse/update_icon()
-	if(saddled)
+	if(rideable)
 		add_overlay("horse_saddled")
-	else if(!saddled)
+	else if(!rideable)
 		cut_overlays()
 
 /datum/say_list/horse

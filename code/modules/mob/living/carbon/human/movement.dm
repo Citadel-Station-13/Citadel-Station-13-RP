@@ -1,8 +1,12 @@
+#define HUMAN_LOWEST_SLOWDOWN -3
 
-/mob/living/carbon/human/legacy_movement_delay()
+/mob/living/carbon/human/movement_delay(oldloc, direct)
 	. = ..()
 
 	var/tally = 0
+
+	if(species.slowdown)
+		tally = species.slowdown
 
 	if (istype(loc, /turf/space))
 		return 1		//until tg movement slowdown + modifiers is a thing I guess ...
@@ -10,10 +14,12 @@
 	if(embedded_flag)
 		handle_embedded_objects() //Moving with objects stuck in you can cause bad times.
 
+	if(force_max_speed)
+		return HUMAN_LOWEST_SLOWDOWN
 
 	for(var/datum/modifier/M in modifiers)
 		if(!isnull(M.haste) && M.haste == TRUE)
-			return -3
+			return HUMAN_LOWEST_SLOWDOWN // Returning -1 will actually result in a slowdown for Teshari.
 		if(!isnull(M.slowdown))
 			tally += M.slowdown
 
@@ -34,9 +40,7 @@
 		tally += 1.5 //A tad bit of slowdown.
 
 	if (feral >= 10) //crazy feral animals give less and less of a shit about pain and hunger as they get crazier
-		// As feral scales to damage, this amounts to an effective +1 slowdown cap
-		// TODO: uhh deal with this
-		// tally = max(species.slowdown, species.slowdown+((tally-species.slowdown)/(feral/10)))
+		tally = max(species.slowdown, species.slowdown+((tally-species.slowdown)/(feral/10))) // As feral scales to damage, this amounts to an effective +1 slowdown cap
 		if(shock_stage >= 10)
 			tally -= 1.5 //this gets a +3 later, feral critters take reduced penalty
 
@@ -65,6 +69,9 @@
 	if(aiming && aiming.aiming_at)
 		tally += 5 // Iron sights make you slower, it's a well-known fact.
 
+	if(MUTATION_FAT in src.mutations)
+		tally += 1.5
+
 	if (bodytemperature < species.cold_level_1)
 		tally += (species.cold_level_1 - bodytemperature) / 10 * 1.75
 
@@ -75,7 +82,7 @@
 
 	// Turf related slowdown
 	var/turf/T = get_turf(src)
-	tally += calculate_turf_slowdown(T)
+	tally += calculate_turf_slowdown(T, direct)
 
 	if(CE_SPEEDBOOST in chem_effects)
 		tally -= 0.5
@@ -85,10 +92,10 @@
 			tally = (tally + tally/4) //Add a quarter of penalties on top.
 		tally += chem_effects[CE_SLOWDOWN]
 
-	. += tally
+	. = max(HUMAN_LOWEST_SLOWDOWN, tally + . + config_legacy.human_delay)	// Minimum return should be the same as force_max_speed
 
 // Similar to above, but for turf slowdown.
-/mob/living/carbon/human/proc/calculate_turf_slowdown(turf/T)
+/mob/living/carbon/human/proc/calculate_turf_slowdown(turf/T, direct)
 	if(!T)
 		return 0
 
@@ -96,20 +103,20 @@
 		var/turf_move_cost = T.slowdown
 		if(istype(T, /turf/simulated/floor/water))
 			if(species.water_movement)
-				turf_move_cost = turf_move_cost + species.water_movement
+				turf_move_cost = clamp(HUMAN_LOWEST_SLOWDOWN, turf_move_cost + species.water_movement, 15)
 			if(shoes)
 				var/obj/item/clothing/shoes/feet = shoes
 				if(feet.water_speed)
-					turf_move_cost = turf_move_cost + feet.water_speed
+					turf_move_cost = clamp(HUMAN_LOWEST_SLOWDOWN, turf_move_cost + feet.water_speed, 15)
 			. += turf_move_cost
 
 		if(istype(T, /turf/simulated/floor/outdoors/snow))
 			if(species.snow_movement)
-				turf_move_cost = turf_move_cost + species.snow_movement
+				turf_move_cost = clamp(HUMAN_LOWEST_SLOWDOWN, turf_move_cost + species.snow_movement, 15)
 			if(shoes)
 				var/obj/item/clothing/shoes/feet = shoes
 				if(feet.snow_speed)
-					turf_move_cost = turf_move_cost + feet.snow_speed
+					turf_move_cost = clamp(HUMAN_LOWEST_SLOWDOWN, turf_move_cost + feet.snow_speed, 15)
 			. += turf_move_cost
 
 	// Wind makes it easier or harder to move, depending on if you're with or against the wind.
@@ -118,13 +125,12 @@
 		if(P)
 			var/datum/weather_holder/WH = P.weather_holder
 			if(WH && WH.wind_speed) // Is there any wind?
-				// // With the wind.
-				// if(direct & WH.wind_dir)
-				// 	. = max(. - (WH.wind_speed / 3), -1) // Wind speedup is capped to prevent supersonic speeds from a storm.
-				// // Against it.
-				// else if(direct & global.reverse_dir[WH.wind_dir])
-				// 	. += (WH.wind_speed / 3)
-				. += (WH.wind_speed / 5)
+				// With the wind.
+				if(direct & WH.wind_dir)
+					. = max(. - (WH.wind_speed / 3), -1) // Wind speedup is capped to prevent supersonic speeds from a storm.
+				// Against it.
+				else if(direct & global.reverse_dir[WH.wind_dir])
+					. += (WH.wind_speed / 3)
 
 	if(species.light_slowdown || species.dark_slowdown)
 		var/lumcount = T.get_lumcount()
@@ -136,6 +142,7 @@
 		else
 			mod = (lumcount * species.light_slowdown) + (LERP(species.dark_slowdown, 0, lumcount))
 		. += mod
+#undef HUMAN_LOWEST_SLOWDOWN
 
 /mob/living/carbon/human/Process_Spacemove(dir)
 	//Do we have a working jetpack?

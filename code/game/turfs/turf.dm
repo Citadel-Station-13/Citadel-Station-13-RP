@@ -135,9 +135,9 @@
 
 /turf/vv_edit_var(var_name, new_value)
 	var/static/list/banned_edits = list(
-		NAMEOF_TYPE(/turf, x),
-		NAMEOF_TYPE(/turf, y),
-		NAMEOF_TYPE(/turf, z),
+		NAMEOF_STATIC(src, x),
+		NAMEOF_STATIC(src, y),
+		NAMEOF_STATIC(src, z),
 	)
 	if(var_name in banned_edits)
 		return FALSE
@@ -294,7 +294,7 @@
 /turf/attack_ai(mob/user as mob) //this feels like a bad idea ultimately but this is the cheapest way to let cyborgs nudge things they're pulling around
 	. = ..()
 	if(Adjacent(user))
-		attack_hand(user, new /datum/event_args/actor/clickchain(user))
+		attack_hand(user, list("siliconattack" = TRUE))
 
 /turf/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
 	if(I.obj_storage?.allow_mass_gather && I.obj_storage.allow_mass_gather_via_click)
@@ -323,7 +323,7 @@
 // 		var/mob/living/victim = pick(viable_targets)
 // 		success = W.resolve_attackby(victim, user)
 
-// 	user.setClickCooldownLegacy(user.get_attack_speed_legacy(W))
+// 	user.setClickCooldown(user.get_attack_speed(W))
 // 	user.do_attack_animation(src, no_attack_icons = TRUE)
 
 // 	if(!success)	// Nothing got hit.

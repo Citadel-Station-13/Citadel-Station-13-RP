@@ -39,7 +39,7 @@
 	health = 10
 	randomized = TRUE
 
-	movement_base_speed = 75
+	movement_cooldown = -1
 	hovering = TRUE
 
 	legacy_melee_damage_lower = 1
@@ -73,7 +73,7 @@
 	maxHealth = 30
 	health = 30
 
-	movement_base_speed = 10
+	movement_cooldown = -2
 
 	legacy_melee_damage_upper = 5
 

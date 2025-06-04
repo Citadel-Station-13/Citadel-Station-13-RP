@@ -10,12 +10,12 @@
 	icon = 'icons/obj/decals.dmi'
 	icon_state = "shock"
 
-	stun_power = 50
-	charge_cost = 750
+	hitcost = 750
+	agonyforce = 70
 
 /obj/item/melee/baton/robot/arm/update_icon()
-	if(active)
-		set_light(1.5, 1, active_color)
+	if(status)
+		set_light(1.5, 1, lightcolor)
 	else
 		set_light(0)
 

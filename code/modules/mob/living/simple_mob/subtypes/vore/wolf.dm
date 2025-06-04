@@ -18,7 +18,7 @@
 
 	randomized = TRUE
 
-	movement_base_speed = 10 / 5
+	movement_cooldown = 5
 
 	harm_intent_damage = 5
 	legacy_melee_damage_lower = 5
@@ -36,7 +36,7 @@
 /mob/living/simple_mob/animal/wolf/phoron
 	iff_factions = MOB_IFF_FACTION_BIND_TO_LEVEL
 
-	movement_base_speed = 6.66
+	movement_cooldown = 0
 
 	harm_intent_damage = 5
 	legacy_melee_damage_lower = 5

@@ -113,8 +113,9 @@
 
 /obj/projectile/bullet/nt_expedition/light_rifle
 	name = "rifle bullet"
-	damage_force = 32.5
-	damage_tier = 4.25
+	damage_force = 35
+	damage_tier = LERP(BULLET_TIER_MEDIUM, BULLET_TIER_HIGH, 0.5)
+	armor_penetration = 35
 
 //* Light Rifles *//
 

@@ -78,25 +78,32 @@
 #define SHIELDCALL_ARG_DAMAGE_FLAG 4
 /// damage mode
 #define SHIELDCALL_ARG_DAMAGE_MODE 5
-/// attack type; this is always optional!
+/// attack type
 #define SHIELDCALL_ARG_ATTACK_TYPE 6
-/// attacking weapon datum; this is always optional!
+/// attacking weapon datum
 ///
 /// * /obj/projectile if projectile
-/// * /datum/event_args/actor/clickchain if melee
+/// * /datum/unarmed_attack if unarmed melee
+/// * /obj/item if item melee
 /// * /datum/thrownthing if thrown
-#define SHIELDCALL_ARG_ATTACK_SOURCE 7
+/// * null if touch
+#define SHIELDCALL_ARG_WEAPON 7
 /// flags returned from other shieldcalls
 #define SHIELDCALL_ARG_FLAGS 8
 /// hit zone; this is usually a bodypart but this is also optional
 #define SHIELDCALL_ARG_HIT_ZONE 9
 /// additional list returns; usually empty, but may exist
 #define SHIELDCALL_ARG_ADDITIONAL 10
+/// the clickchain of a melee attack
+///
+/// * this is passed in so you can grab data like who is doing it / who started the attack.
+/// * filled in sometimes but not always if unarmed or item melee.
+#define SHIELDCALL_ARG_CLICKCHAIN 11
 
 /// A proc header with all the shieldcall args.
 ///
 /// * We use this so it's easy to check where shieldcall args are being used if shieldcalls need to be refactored.
-#define SHIELDCALL_PROC_HEADER damage, damage_type, damage_tier, damage_flag, damage_mode, attack_type, attack_source, shieldcall_flags, hit_zone, list/additional
+#define SHIELDCALL_PROC_HEADER damage, damage_type, damage_tier, damage_flag, damage_mode, attack_type, datum/weapon, shieldcall_flags, hit_zone, list/additional, datum/event_args/actor/clickchain/clickchain
 
 //* list keys for list/additional in atom shieldcalls *//
 
@@ -109,12 +116,12 @@
 /proc/resolve_shieldcall_attack_text(list/shieldcall_args)
 	switch(shieldcall_args[SHIELDCALL_ARG_ATTACK_TYPE])
 		if(ATTACK_TYPE_PROJECTILE)
-			. = shieldcall_args[SHIELDCALL_ARG_ATTACK_SOURCE]
+			. = shieldcall_args[SHIELDCALL_ARG_WEAPON]
 		if(ATTACK_TYPE_THROWN)
-			var/datum/thrownthing/thrown = shieldcall_args[SHIELDCALL_ARG_ATTACK_SOURCE]
+			var/datum/thrownthing/thrown = shieldcall_args[SHIELDCALL_ARG_WEAPON]
 			if(thrown)
 				. = "the impact from [thrown.thrownthing]"
-		if(ATTACK_TYPE_MELEE)
+		if(ATTACK_TYPE_MELEE, ATTACK_TYPE_UNARMED)
 			. = "the force of the blow"
 
 	if(!.)
@@ -125,15 +132,17 @@
 /proc/resolve_shieldcall_weapon_descriptor(list/shieldcall_args)
 	switch(shieldcall_args[SHIELDCALL_ARG_ATTACK_TYPE])
 		if(ATTACK_TYPE_MELEE)
-			var/datum/event_args/actor/clickchain/clickchain = shieldcall_args[SHIELDCALL_ARG_ATTACK_SOURCE]
-			if(clickchain)
-				return "a [clickchain.using_melee_weapon || clickchain.using_melee_attack]"
+			var/obj/item/weapon = shieldcall_args[SHIELDCALL_ARG_WEAPON]
+			return "a [weapon]"
 		if(ATTACK_TYPE_PROJECTILE)
-			var/obj/projectile/proj = shieldcall_args[SHIELDCALL_ARG_ATTACK_SOURCE]
+			var/obj/projectile/proj = shieldcall_args[SHIELDCALL_ARG_WEAPON]
 			return "a [proj]"
 		if(ATTACK_TYPE_THROWN)
-			var/datum/thrownthing/thrown = shieldcall_args[SHIELDCALL_ARG_ATTACK_SOURCE]
+			var/datum/thrownthing/thrown = shieldcall_args[SHIELDCALL_ARG_WEAPON]
 			return "a [thrown.thrownthing]"
+		if(ATTACK_TYPE_MELEE, ATTACK_TYPE_UNARMED)
+			var/datum/unarmed_attack/style = shieldcall_args[SHIELDCALL_ARG_WEAPON]
+			return "a [style.attack_name]"
 	if(!.)
 		. = "an attack"
 
@@ -159,8 +168,6 @@
 #define SHIELDCALL_CONTACT_SPECIFIC_SYRINGE_INJECTION "inject"
 /// trying to shake someone up
 #define SHIELDCALL_CONTACT_SPECIFIC_SHAKE_UP "help"
-/// being disarmed
-#define SHIELDCALL_CONTACT_SPECIFIC_DISARM "disarm"
 /// trying to drag someone
 #define SHIELDCALL_CONTACT_SPECIFIC_PULL "pull"
 /// trying to grab someone, **or** intensify a grab

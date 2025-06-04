@@ -38,16 +38,12 @@ export function exportChatSettings(
     });
 }
 
-export async function importChatSettings(context, settings: FileList) {
-  if (!settings.length) {
+export function importChatSettings(context, settings: string | string[]) {
+  if (Array.isArray(settings)) {
     return;
   }
-
-  // its a blob...
-  const fileSetting = await settings[0].text();
-
   const dispatch = useDispatch(context);
-  const ourImport = JSON.parse(fileSetting);
+  const ourImport = JSON.parse(settings);
   if (!ourImport?.version) {
     return;
   }

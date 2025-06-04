@@ -91,10 +91,6 @@
 	. = ..()
 	tension = 0
 
-/obj/item/gun/launcher/crossbow/should_attack_self_switch_firemodes()
-	//True is normally returned if we have firemodes set, and that would make attack_self return early, never to draw
-	return FALSE
-
 /obj/item/gun/launcher/crossbow/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)

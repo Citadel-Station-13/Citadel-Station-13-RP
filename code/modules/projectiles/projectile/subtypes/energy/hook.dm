@@ -12,6 +12,7 @@
 	speed = 7.5 * WORLD_ICON_SIZE
 	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_ENERGY
+	armor_penetration = 15
 
 	impact_sound = 'sound/effects/uncloak.ogg'
 	var/crack_sound = 'sound/effects/teleport.ogg'
@@ -40,7 +41,7 @@
 				damage_flag = ARMOR_BULLET
 				damage_force *= 3
 				damage_mode |= DAMAGE_MODE_SHARP
-				damage_inflict_agony = 20
+				agony = 20
 			if(INTENT_GRAB)
 				damage_flag = ARMOR_MELEE
 				damage_type = DAMAGE_TYPE_HALLOSS

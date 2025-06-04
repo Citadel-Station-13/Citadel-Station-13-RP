@@ -16,6 +16,7 @@
 //	inv_hide_flags = HIDEEARS|BLOCKHAIR
 
 	//Species-specific stuff.
+	species_restricted = list(SPECIES_HUMAN, SPECIES_PROMETHEAN, SPECIES_ALRAUNE)
 	sprite_sheets_refit = list(
 		SPECIES_UNATHI = 'icons/mob/clothing/species/unathi/helmet.dmi',
 		SPECIES_UNATHI_DIGI = 'icons/mob/clothing/species/unathidigi/head.dmi',
@@ -48,6 +49,7 @@
 	min_pressure_protection = 0 * ONE_ATMOSPHERE
 	max_pressure_protection = 10 * ONE_ATMOSPHERE
 
+	species_restricted = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_PROMETHEAN)
 	sprite_sheets_refit = list(
 		SPECIES_UNATHI = 'icons/mob/clothing/species/unathi/suits.dmi',
 		SPECIES_UNATHI_DIGI = 'icons/mob/clothing/species/unathidigi/suits.dmi',

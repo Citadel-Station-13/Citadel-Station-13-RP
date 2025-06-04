@@ -495,7 +495,7 @@
 			on_ranged_cast(target, user)
 	if(cooldown)
 		var/effective_cooldown = round(cooldown, 5)
-		user.setClickCooldownLegacy(effective_cooldown)
+		user.setClickCooldown(effective_cooldown)
 		flick("cooldown_[effective_cooldown]",src)
 
 /obj/item/spell/construct/projectile //This makes me angry, but we need the template, and we can't use it because special check overrides on the base.
@@ -572,7 +572,7 @@
 	damage_force = 15
 	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_LASER
-	damage_tier = 5
+	armor_penetration = 60
 	light_range = 2
 	light_power = -2
 	light_color = "#FFFFFF"

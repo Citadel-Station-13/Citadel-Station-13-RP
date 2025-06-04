@@ -7,6 +7,9 @@
 /obj/structure/table/fancyblack,
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/station_city/street)
+"am" = (
+/turf/simulated/wall/wood/log,
+/area/sector/sky_planet/station_city/street)
 "av" = (
 /obj/structure/window/phoronreinforced/full{
 	dir = 4
@@ -79,22 +82,6 @@
 	},
 /turf/simulated/floor/carpet/patterened,
 /area/sector/sky_planet/station_city/street)
-"bz" = (
-/mob/living/simple_mob/mechanical/hivebot/armored,
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
-"bG" = (
-/obj/effect/floor_decal/corner/white/border{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/white/border/shifted{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/white/border/shifted{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
 "bL" = (
 /obj/item/tank/phoron/onetankbomb,
 /obj/structure/table/rack,
@@ -125,26 +112,12 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/station_city/street)
-"cF" = (
-/obj/structure/sandbag,
-/obj/effect/floor_decal/corner/red/border{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
 "cI" = (
 /obj/structure/table/woodentable,
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/floor/wood/indoors,
-/area/sector/sky_planet/station_city/street)
-"cK" = (
-/obj/effect/floor_decal/corner/red/border,
-/obj/effect/floor_decal/corner/red/border{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
 "cN" = (
 /obj/structure/table/steel_reinforced,
@@ -207,12 +180,6 @@
 /area/sector/sky_planet/station_city/street)
 "fh" = (
 /obj/item/beach_ball/holoball,
-/obj/effect/floor_decal/corner/white/border/shifted{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/white/border/shifted{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
 "fj" = (
@@ -365,7 +332,7 @@
 /obj/machinery/light/spot{
 	dir = 1
 	},
-/mob/living/simple_mob/mechanical/hivebot,
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran,
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/sector/sky_planet/station_city/street)
 "hd" = (
@@ -380,7 +347,7 @@
 /area/sector/sky_planet/station_city/street)
 "hs" = (
 /obj/effect/floor_decal/industrial/hatch,
-/mob/living/simple_mob/mechanical/hivebot,
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
 "hx" = (
@@ -393,11 +360,6 @@
 "hy" = (
 /obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/tiled/monotechmaint,
-/area/sector/sky_planet/station_city/street)
-"hF" = (
-/obj/structure/sandbag,
-/obj/effect/floor_decal/corner/red/border,
-/turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
 "hI" = (
 /obj/item/ammo_casing/a45,
@@ -463,10 +425,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood/indoors,
-/area/sector/sky_planet/station_city/street)
-"iJ" = (
-/mob/living/simple_mob/mechanical/hivebot/ranged_damage/laser,
-/turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/sector/sky_planet/station_city/street)
 "iL" = (
 /obj/structure/fence/wooden/corner{
@@ -573,19 +531,9 @@
 /obj/structure/catwalk,
 /turf/simulated/open/lythios43c,
 /area/sector/sky_planet/outpost)
-"lQ" = (
-/obj/effect/floor_decal/corner/red/border{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/red/border,
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
 "lV" = (
 /obj/structure/holohoop{
 	dir = 8
-	},
-/obj/effect/floor_decal/corner/white/border{
-	dir = 4
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
@@ -605,10 +553,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/station_city/street)
-"mf" = (
-/mob/living/simple_mob/mechanical/hivebot/ranged_damage/laser,
-/turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/station_city/street)
 "mi" = (
 /obj/structure/table/rack/shelf/steel,
@@ -665,18 +609,6 @@
 "mR" = (
 /obj/structure/flora/grass/event/bright_flowers1,
 /turf/simulated/floor/fey/forest_grass,
-/area/sector/sky_planet/station_city/street)
-"mY" = (
-/obj/effect/floor_decal/corner/white/border{
-	dir = 9
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
-"nb" = (
-/obj/effect/floor_decal/corner/red/border{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
 "nt" = (
 /obj/structure/window/reinforced/survival_pod,
@@ -765,19 +697,6 @@
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/station_city/street)
-"ps" = (
-/obj/effect/floor_decal/corner/white/border{
-	dir = 5
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
-"pu" = (
-/mob/living/simple_mob/mechanical/hivebot,
-/obj/effect/floor_decal/corner/red/border{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
 "pz" = (
 /obj/structure/closet/largecardboard,
 /turf/simulated/floor/tiled/techfloor/lythios43c,
@@ -833,7 +752,7 @@
 	dir = 4;
 	pixel_x = -12
 	},
-/mob/living/simple_mob/mechanical/hivebot,
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
 "qF" = (
@@ -891,13 +810,6 @@
 /obj/item/clothing/head/welding/fancy,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/sky_planet/station_city/street)
-"rk" = (
-/obj/structure/sandbag,
-/obj/effect/floor_decal/corner/red/border{
-	dir = 5
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
 "rm" = (
 /obj/structure/bed/double,
 /turf/simulated/floor/carpet/patterened/orange,
@@ -922,12 +834,6 @@
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/tiled/techfloor/lythios43c,
-/area/sector/sky_planet/station_city/street)
-"rH" = (
-/obj/effect/floor_decal/corner/red/border{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
 "rQ" = (
 /obj/structure/railing/grey{
@@ -987,12 +893,6 @@
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/sector/sky_planet/station_city/street)
-"sI" = (
-/obj/effect/floor_decal/corner/white/border{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
 "sL" = (
 /obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techfloor/monogrid{
@@ -1015,16 +915,6 @@
 "ti" = (
 /obj/effect/floor_decal/spline/fancy/wood/cee,
 /turf/simulated/floor/carpet/patterened,
-/area/sector/sky_planet/station_city/street)
-"tC" = (
-/obj/effect/floor_decal/corner/white/border,
-/obj/effect/floor_decal/corner/white/border/shifted{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/white/border/shifted{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
 "tE" = (
 /turf/simulated/wall/r_wall,
@@ -1100,6 +990,12 @@
 /obj/item/material/shard,
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/sector/sky_planet/station_city/street)
+"vo" = (
+/obj/structure/fence/wooden/post{
+	dir = 4
+	},
+/turf/simulated/floor/fey/forest_grass,
+/area/sector/sky_planet/station_city/street)
 "vr" = (
 /obj/structure/reagent_dispensers/beerkeg,
 /turf/simulated/floor/wood/indoors,
@@ -1163,10 +1059,6 @@
 "wD" = (
 /turf/simulated/floor/fey/forest_grass,
 /area/sector/sky_planet/station_city/street)
-"wK" = (
-/mob/living/simple_mob/mechanical/hivebot/armored,
-/turf/simulated/floor/tiled/monotechmaint,
-/area/sector/sky_planet/station_city/street)
 "wL" = (
 /obj/machinery/light/spot{
 	dir = 4
@@ -1220,7 +1112,7 @@
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/station_city/street)
 "xO" = (
-/mob/living/simple_mob/mechanical/hivebot,
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran,
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/sector/sky_planet/station_city/street)
 "yq" = (
@@ -1245,18 +1137,11 @@
 /obj/structure/lightpost/urban,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/station_city/street)
-"yT" = (
-/mob/living/simple_mob/mechanical/hivebot/ranged_damage/laser,
-/obj/effect/floor_decal/corner/red/border{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
 "yW" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	pixel_y = 13
 	},
-/mob/living/simple_mob/mechanical/hivebot,
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
 "yY" = (
@@ -1276,7 +1161,7 @@
 "zw" = (
 /obj/effect/floor_decal/industrial/hatch,
 /obj/item/ammo_casing/a45,
-/mob/living/simple_mob/mechanical/hivebot,
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
 "zx" = (
@@ -1288,9 +1173,6 @@
 /obj/structure/holohoop{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/white/border{
-	dir = 8
-	},
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
 "zO" = (
@@ -1298,13 +1180,6 @@
 	dir = 1
 	},
 /turf/simulated/floor/beach/sand/dirt,
-/area/sector/sky_planet/station_city/street)
-"Ai" = (
-/mob/living/simple_mob/mechanical/hivebot,
-/obj/effect/floor_decal/corner/red/border{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
 "Ao" = (
 /obj/structure/closet/crate/robotics,
@@ -1348,10 +1223,6 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/station_city/street)
-"BF" = (
-/mob/living/simple_mob/mechanical/hivebot/ranged_damage/sniper,
-/turf/simulated/floor/tiled/monotechmaint,
-/area/sector/sky_planet/station_city/street)
 "BN" = (
 /obj/effect/floor_decal/corner/navgold/border{
 	dir = 8
@@ -1390,23 +1261,6 @@
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/ground/sky)
-"Cz" = (
-/obj/effect/floor_decal/corner/white/border{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
-"CB" = (
-/obj/effect/floor_decal/corner/white/border,
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
-"CF" = (
-/obj/structure/sandbag,
-/obj/effect/floor_decal/corner/red/border{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
 "CK" = (
 /obj/item/ammo_casing/a5_56mm,
 /obj/structure/lightpost/urban,
@@ -1428,15 +1282,6 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/station_city/street)
-"Dk" = (
-/obj/effect/floor_decal/corner/white/border/shifted{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/white/border/shifted{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
 "Dl" = (
 /obj/effect/floor_decal/borderfloorwhite/full,
 /obj/structure/toilet{
@@ -1446,13 +1291,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood/indoors,
-/area/sector/sky_planet/station_city/street)
-"DI" = (
-/mob/living/simple_mob/mechanical/hivebot,
-/obj/effect/floor_decal/corner/red/border{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
 "DN" = (
 /obj/machinery/light/flicker{
@@ -1470,13 +1308,6 @@
 /obj/structure/table/reinforced,
 /obj/machinery/light/spot,
 /turf/simulated/floor/tiled/techfloor/lythios43c,
-/area/sector/sky_planet/station_city/street)
-"DV" = (
-/mob/living/simple_mob/mechanical/hivebot,
-/obj/effect/floor_decal/corner/red/border{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
 "Ee" = (
 /obj/structure/bed/chair/bay/chair/padded/blue{
@@ -1529,12 +1360,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood/indoors,
-/area/sector/sky_planet/station_city/street)
-"EU" = (
-/obj/effect/floor_decal/corner/red/border{
-	dir = 5
-	},
-/turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
 "Fd" = (
 /obj/structure/table/hardwoodtable,
@@ -1596,11 +1421,11 @@
 /area/sector/sky_planet/station_city/street)
 "GF" = (
 /obj/item/trash/raisins,
-/mob/living/simple_mob/mechanical/hivebot,
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/sky_planet/station_city/street)
 "GH" = (
-/mob/living/simple_mob/mechanical/hivebot,
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/sky_planet/station_city/street)
 "GL" = (
@@ -1680,10 +1505,6 @@
 /obj/structure/table/steel_reinforced,
 /obj/item/flamethrower/full,
 /turf/simulated/floor/tiled/techfloor/lythios43c,
-/area/sector/sky_planet/station_city/street)
-"IR" = (
-/mob/living/simple_mob/mechanical/hivebot/ranged_damage/sniper,
-/turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/sky_planet/station_city/street)
 "IS" = (
 /obj/structure/curtain/black,
@@ -1862,12 +1683,6 @@
 	},
 /turf/simulated/open/lythios43c,
 /area/sector/sky_planet/outpost)
-"LV" = (
-/obj/effect/floor_decal/corner/white/border{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
 "LW" = (
 /obj/structure/fence/wooden/corner,
 /turf/simulated/floor/fey/forest_grass,
@@ -1994,12 +1809,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/sky_planet/station_city/street)
-"OO" = (
-/obj/effect/floor_decal/corner/red/border{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
 "Pg" = (
 /obj/structure/cable/white{
 	icon_state = "2-4"
@@ -2036,25 +1845,11 @@
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/sector/sky_planet/station_city/street)
-"PH" = (
-/mob/living/simple_mob/mechanical/hivebot/armored,
-/obj/effect/floor_decal/corner/red/border{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
 "PL" = (
 /obj/machinery/light/spot{
 	dir = 4
 	},
 /turf/simulated/floor/wood/indoors,
-/area/sector/sky_planet/station_city/street)
-"PN" = (
-/obj/structure/sandbag,
-/obj/effect/floor_decal/corner/red/border{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
 "PO" = (
 /obj/structure/table/carbon,
@@ -2077,6 +1872,7 @@
 /turf/simulated/wall/r_wall,
 /area/sector/sky_planet/outpost)
 "Qh" = (
+/obj/structure/catwalk,
 /obj/structure/catwalk,
 /turf/simulated/open{
 	outdoors = 1
@@ -2133,17 +1929,15 @@
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/sector/sky_planet/station_city/street)
 "QZ" = (
-/mob/living/simple_mob/mechanical/hivebot,
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/station_city/street)
 "Rc" = (
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/sky_planet/station_city/street)
-"Re" = (
-/obj/effect/floor_decal/corner/red/border{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/monodark,
+"Rd" = (
+/obj/structure/fence/wooden/post,
+/turf/simulated/floor/fey/forest_grass,
 /area/sector/sky_planet/station_city/street)
 "Rf" = (
 /obj/structure/bed/chair/office/dark{
@@ -2204,7 +1998,7 @@
 /area/sector/sky_planet/ground/sky)
 "Si" = (
 /obj/effect/decal/remains/robot,
-/mob/living/simple_mob/mechanical/hivebot,
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran,
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/sector/sky_planet/station_city/street)
 "Sn" = (
@@ -2222,14 +2016,8 @@
 	},
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/sector/sky_planet/station_city/street)
-"Sw" = (
-/obj/effect/floor_decal/corner/white/border{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
 "Sz" = (
-/obj/spawner/window/low_wall/firelocks,
+/obj/spawner/window/low_wall/full/firelocks,
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/station_city/street)
 "SH" = (
@@ -2266,11 +2054,6 @@
 /area/sector/sky_planet/station_city/street)
 "Tw" = (
 /turf/simulated/floor/carpet/patterened/orange,
-/area/sector/sky_planet/station_city/street)
-"Ty" = (
-/mob/living/simple_mob/mechanical/hivebot/armored,
-/obj/effect/floor_decal/corner/red/border,
-/turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
 "TF" = (
 /obj/structure/table/rack/shelf/steel,
@@ -2329,9 +2112,6 @@
 "Um" = (
 /obj/structure/sandbag,
 /obj/item/ammo_casing/a5_56mm,
-/obj/effect/floor_decal/corner/red/border{
-	dir = 5
-	},
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
 "Ur" = (
@@ -2404,9 +2184,6 @@
 /area/sector/sky_planet/station_city/street)
 "VE" = (
 /obj/item/ammo_casing/a45,
-/obj/effect/floor_decal/corner/red/border{
-	dir = 8
-	},
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
 "VT" = (
@@ -2455,19 +2232,12 @@
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/station_city/street)
 "WW" = (
-/mob/living/simple_mob/mechanical/hivebot,
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran,
 /obj/structure/lightpost/urban,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/station_city/street)
 "Xl" = (
 /turf/simulated/wall/r_wall/prepainted/command,
-/area/sector/sky_planet/station_city/street)
-"Xq" = (
-/mob/living/simple_mob/mechanical/hivebot/ranged_damage/laser,
-/obj/effect/floor_decal/corner/red/border{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
 "XB" = (
 /obj/machinery/light/spot{
@@ -2483,13 +2253,6 @@
 /obj/spawner/window/full,
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/sector/sky_planet/station_city/street)
-"XL" = (
-/obj/item/ammo_casing/a5_56mm,
-/obj/effect/floor_decal/corner/red/border{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
 "XO" = (
 /obj/structure/fence/wooden/corner,
 /obj/structure/fence/wooden/corner{
@@ -2503,7 +2266,7 @@
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/sector/sky_planet/station_city/street)
 "XT" = (
-/mob/living/simple_mob/mechanical/hivebot,
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
 "XU" = (
@@ -2522,7 +2285,7 @@
 /area/sector/sky_planet/station_city/street)
 "Yd" = (
 /obj/item/material/shard,
-/mob/living/simple_mob/mechanical/hivebot,
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran,
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/sector/sky_planet/station_city/street)
 "Yg" = (
@@ -2531,12 +2294,6 @@
 	outdoors = 1
 	},
 /area/sector/sky_planet/ground/sky)
-"Yk" = (
-/obj/effect/floor_decal/corner/white/border{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
 "Ym" = (
 /obj/item/robot_parts/robot_component/camera,
 /obj/item/ammo_casing/a5_56mm,
@@ -2604,17 +2361,6 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/clothing/gloves/tajaran_gauntlets,
 /turf/simulated/floor/carpet/patterened,
-/area/sector/sky_planet/station_city/street)
-"Zw" = (
-/obj/effect/floor_decal/corner/red/border,
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
-"Zy" = (
-/obj/item/ammo_casing/a5_56mm,
-/obj/effect/floor_decal/corner/red/border{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
 "ZQ" = (
 /obj/machinery/light/spot{
@@ -29344,7 +29090,7 @@ bj
 Rc
 Rc
 Rc
-IR
+Rc
 Rc
 Rc
 Rc
@@ -29744,11 +29490,11 @@ cx
 tE
 KA
 HU
-mY
-LV
+Wn
+Wn
 zJ
-LV
-Yk
+Wn
+Wn
 HU
 KA
 YL
@@ -29938,11 +29684,11 @@ cx
 tE
 KA
 TI
-Cz
 Wn
 Wn
 Wn
-CB
+Wn
+Wn
 TI
 KA
 YL
@@ -30132,11 +29878,11 @@ cx
 tE
 KA
 TI
-Cz
 Wn
 Wn
 Wn
-CB
+Wn
+Wn
 TI
 KA
 YL
@@ -30326,11 +30072,11 @@ cx
 tE
 KA
 TI
-Cz
 Wn
 Wn
 Wn
-CB
+Wn
+Wn
 TI
 KA
 YL
@@ -30520,11 +30266,11 @@ ds
 tE
 KA
 TI
-bG
-Dk
+Wn
+Wn
 fh
-Dk
-tC
+Wn
+Wn
 TI
 KA
 YL
@@ -30714,11 +30460,11 @@ cx
 tE
 KA
 TI
-Cz
 Wn
 Wn
 Wn
-CB
+Wn
+Wn
 TI
 KA
 YL
@@ -30908,11 +30654,11 @@ cx
 tE
 KA
 TI
-Cz
 Wn
 Wn
 Wn
-CB
+Wn
+Wn
 TI
 KA
 YL
@@ -31102,11 +30848,11 @@ cx
 tE
 KA
 TI
-Cz
 Wn
 Wn
 Wn
-CB
+Wn
+Wn
 TI
 KA
 YL
@@ -31296,11 +31042,11 @@ cx
 tE
 KA
 HU
-ps
-sI
+Wn
+Wn
 lV
-sI
-Sw
+Wn
+Wn
 HU
 KA
 YL
@@ -31521,7 +31267,7 @@ TR
 gg
 gg
 KA
-mf
+KA
 JE
 iq
 aI
@@ -31674,7 +31420,7 @@ UN
 KA
 KA
 KA
-BF
+KA
 KA
 KA
 KA
@@ -31699,9 +31445,9 @@ KA
 KA
 KA
 KA
+QZ
 KA
 KA
-wK
 KA
 WW
 Jl
@@ -31863,63 +31609,63 @@ cx
 cx
 jm
 KA
-Re
-Re
-Re
-Re
-Re
-Re
-Re
-Re
-Re
-Re
-Re
-Re
-CF
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+JI
 SH
-Re
+Wn
 VE
-Re
+Wn
 hs
-XL
-Re
-Re
-XL
-Re
-Re
-Re
-Re
-CF
-CF
-Re
-Re
-Re
-Re
-Xq
-Re
-Re
-CF
-Re
-Re
-Re
-Re
-Re
-Re
-Re
-Re
-Re
-DV
-Re
-CF
-CF
-Re
-Re
-Re
-Re
+ry
+Wn
+Wn
+ry
+Wn
+Wn
+Wn
+Wn
+JI
+JI
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+JI
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+XT
+Wn
+JI
+JI
+Wn
+Wn
+Wn
+Wn
 SH
-Re
-Re
-cK
+Wn
+Wn
+Wn
 KA
 uC
 ws
@@ -32062,8 +31808,8 @@ Wn
 Wn
 ie
 ie
-ie
-ie
+qA
+qA
 ie
 ie
 ie
@@ -32102,7 +31848,7 @@ UD
 ie
 ie
 ie
-ie
+qA
 ie
 UD
 ie
@@ -32113,7 +31859,7 @@ ie
 SH
 Wn
 XT
-Zw
+Wn
 IH
 uC
 ws
@@ -32251,63 +31997,63 @@ cx
 cx
 jm
 KA
-OO
-OO
-OO
-OO
-OO
-OO
-OO
-OO
-OO
-OO
-OO
-OO
-PN
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+JI
 XZ
 Wn
 Wn
 Wn
 rt
-OO
-OO
-OO
-OO
-OO
-Ai
-OO
-OO
-PN
-OO
-OO
-OO
-OO
-OO
-OO
-OO
-PN
-PN
-OO
-OO
-OO
-OO
-OO
-PN
-OO
-OO
-OO
-OO
-PH
-PN
-OO
-OO
-OO
-OO
-OO
+Wn
+Wn
+Wn
+Wn
+Wn
+XT
+Wn
+Wn
+JI
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+JI
+JI
+Wn
+Wn
+Wn
+Wn
+Wn
+JI
+Wn
+Wn
+Wn
+Wn
+Wn
+JI
+Wn
+Wn
+Wn
+Wn
+Wn
 SH
 Wn
 Wn
-Zw
+Wn
 KA
 uC
 ws
@@ -32447,7 +32193,7 @@ tE
 KA
 KA
 UN
-BF
+KA
 KA
 KA
 KA
@@ -32653,9 +32399,9 @@ Vi
 Vi
 Vi
 KA
-nb
 Wn
-Zw
+Wn
+Wn
 KA
 Xl
 cx
@@ -32669,33 +32415,33 @@ Xl
 Xl
 Rc
 tE
-JE
-JE
-JE
-JE
-JE
+am
+am
+am
+am
+am
 tE
 KA
 KA
 Gs
 aX
-JE
+Rd
 aX
-JE
+Rd
 fS
-JE
+Rd
 aX
-JE
+Rd
 fS
-JE
+Rd
 aX
-JE
+Rd
 aX
 iL
 KA
-nb
+Wn
 hd
-Zw
+Wn
 KA
 uC
 ws
@@ -32847,9 +32593,9 @@ BN
 cB
 FZ
 KA
-nb
 Wn
-Zw
+Wn
+Wn
 KA
 vT
 cx
@@ -32862,7 +32608,7 @@ lY
 vz
 Xl
 Jw
-JE
+am
 Qz
 Qz
 FZ
@@ -32887,9 +32633,9 @@ Uw
 uJ
 GV
 KA
-nb
+Wn
 hd
-Zw
+Wn
 KA
 uC
 ws
@@ -33041,9 +32787,9 @@ Pw
 Oh
 FZ
 KA
-nb
 Wn
-Zw
+Wn
+Wn
 KA
 cx
 cx
@@ -33056,16 +32802,16 @@ cx
 cx
 Xl
 Rc
-JE
+am
 KC
 Yo
-JE
+am
 nQ
 iq
-JE
+am
 KA
 KA
-JE
+vo
 uJ
 wD
 wD
@@ -33079,11 +32825,11 @@ wD
 wD
 dF
 uJ
-JE
+vo
 KA
-nb
+Wn
 hd
-Zw
+Wn
 KA
 uC
 ws
@@ -33235,9 +32981,9 @@ hO
 xt
 Vi
 Jl
-cF
 JI
-hF
+JI
+JI
 Jl
 Xl
 rc
@@ -33250,10 +32996,10 @@ cx
 cx
 Xl
 Rc
-JE
-JE
-JE
-JE
+am
+am
+am
+am
 BX
 hr
 AT
@@ -33275,9 +33021,9 @@ wD
 uJ
 GV
 KA
-nb
+Wn
 hd
-Zw
+Wn
 KA
 uC
 ws
@@ -33429,9 +33175,9 @@ uY
 Oh
 Vi
 YM
-nb
 Wn
-Zw
+Wn
+Wn
 sV
 Xl
 vz
@@ -33444,7 +33190,7 @@ vz
 vz
 Xl
 Rc
-JE
+am
 sq
 Tw
 FZ
@@ -33453,7 +33199,7 @@ iq
 AT
 KA
 KA
-JE
+vo
 uJ
 wD
 wD
@@ -33467,11 +33213,11 @@ uJ
 wD
 wD
 uJ
-JE
+vo
 UN
-nb
+Wn
 hd
-Zw
+Wn
 sV
 uC
 ws
@@ -33623,9 +33369,9 @@ hO
 Qr
 AT
 KA
-nb
 Wn
-Zw
+Wn
+Wn
 KA
 Xl
 Xl
@@ -33638,10 +33384,10 @@ Xl
 Xl
 Xl
 Rc
-JE
+am
 rm
 Tw
-JE
+am
 vG
 iq
 AT
@@ -33663,9 +33409,9 @@ Oa
 Oa
 zO
 KA
-nb
+Wn
 yW
-Zw
+Wn
 KA
 uC
 ws
@@ -33817,9 +33563,9 @@ uY
 Oh
 AT
 KA
-nb
 Wn
-Zw
+Wn
+Wn
 KA
 Rc
 Jw
@@ -33832,16 +33578,16 @@ Rc
 Rc
 Rc
 Rc
-JE
-JE
-JE
-JE
+am
+am
+am
+am
 JZ
 iq
-JE
+am
 YM
 KA
-JE
+vo
 uJ
 wD
 QS
@@ -33855,11 +33601,11 @@ uJ
 wD
 wD
 fw
-JE
+vo
 KA
-nb
+Wn
 hd
-Zw
+Wn
 KA
 uC
 ws
@@ -34011,9 +33757,9 @@ hO
 Qr
 AT
 KA
-nb
-bz
-Zw
+Wn
+Wn
+Wn
 KA
 tE
 tE
@@ -34026,13 +33772,13 @@ tE
 tE
 tE
 Rc
-JE
+am
 vu
 wz
 FZ
 iq
 iq
-JE
+am
 KA
 KA
 GV
@@ -34051,9 +33797,9 @@ wD
 uJ
 GV
 KA
-nb
+Wn
 hd
-Zw
+Wn
 KA
 uC
 ws
@@ -34205,9 +33951,9 @@ uY
 Oh
 AT
 KA
-nb
+XT
 Wn
-Zw
+Wn
 KA
 tE
 VU
@@ -34221,15 +33967,15 @@ iq
 tE
 Rc
 tE
-JE
-JE
-JE
-JE
-JE
+am
+am
+am
+am
+am
 tE
 KA
 KA
-JE
+vo
 uJ
 wD
 wD
@@ -34243,11 +33989,11 @@ uJ
 wD
 Tt
 uJ
-JE
+vo
 KA
-nb
+Wn
 hd
-Zw
+Wn
 KA
 uC
 ws
@@ -34399,9 +34145,9 @@ hO
 xt
 Vi
 KA
-nb
+XT
 Wn
-Zw
+Wn
 KA
 Fs
 Pz
@@ -34414,7 +34160,7 @@ iq
 iq
 tE
 Rc
-JE
+am
 vB
 IK
 FZ
@@ -34439,10 +34185,10 @@ wD
 uJ
 GV
 KA
-nb
+Wn
 hd
-Zw
-mf
+Wn
+KA
 uC
 ws
 "}
@@ -34593,9 +34339,9 @@ uY
 Oh
 Vi
 KA
-yT
 Wn
-Zw
+Wn
+Wn
 KA
 iq
 Dh
@@ -34608,16 +34354,16 @@ iq
 iq
 tE
 Rc
-JE
+am
 Fl
 Fl
-JE
+am
 nQ
 iq
-JE
+am
 KA
 KA
-JE
+vo
 uJ
 wD
 wD
@@ -34631,11 +34377,11 @@ uJ
 wD
 wD
 uJ
-JE
+vo
 KA
-nb
+Wn
 hd
-Zw
+Wn
 KA
 uC
 ws
@@ -34787,9 +34533,9 @@ jW
 Oh
 AT
 KA
-nb
 Wn
-Zw
+XT
+Wn
 sV
 tE
 QN
@@ -34802,10 +34548,10 @@ iq
 Gy
 tE
 Rc
-JE
-JE
-JE
-JE
+am
+am
+am
+am
 BX
 iq
 AT
@@ -34827,9 +34573,9 @@ Oa
 Oa
 zO
 KA
-nb
+Wn
 hd
-Zw
+Wn
 KA
 uC
 ws
@@ -34963,7 +34709,7 @@ cx
 cx
 cx
 Gw
-iJ
+cx
 cx
 cx
 cx
@@ -34981,9 +34727,9 @@ SL
 mK
 AT
 KA
-nb
 Wn
-Zw
+Wn
+Wn
 KA
 QP
 dd
@@ -34996,7 +34742,7 @@ iq
 iq
 tE
 Rc
-JE
+am
 Nt
 up
 FZ
@@ -35005,7 +34751,7 @@ hr
 AT
 KA
 KA
-JE
+vo
 wD
 wD
 YZ
@@ -35019,11 +34765,11 @@ uJ
 dF
 wD
 uJ
-JE
+vo
 KA
-nb
+Wn
 hd
-Zw
+Wn
 KA
 uC
 ws
@@ -35175,9 +34921,9 @@ Vi
 Vi
 Vi
 KA
-nb
 Wn
-Zw
+Wn
+Wn
 KA
 QP
 up
@@ -35190,10 +34936,10 @@ Vi
 Vi
 tE
 Rc
-JE
+am
 Eh
 up
-JE
+am
 vG
 iq
 AT
@@ -35215,9 +34961,9 @@ wD
 uJ
 GV
 UN
-nb
+Wn
 hd
-Zw
+Wn
 sV
 uC
 ws
@@ -35369,9 +35115,9 @@ iq
 iq
 Vi
 QZ
-nb
 Wn
-Zw
+Wn
+Wn
 KA
 QP
 Zm
@@ -35384,16 +35130,16 @@ IS
 iq
 tE
 Rc
-JE
-JE
-JE
-JE
+am
+am
+am
+am
 JZ
 iq
-JE
+am
 OE
 KA
-JE
+vo
 qr
 iq
 iq
@@ -35407,11 +35153,11 @@ NC
 uJ
 uJ
 uJ
-JE
+vo
 KA
-pu
+XT
 hd
-Zw
+Wn
 KA
 uC
 ws
@@ -35563,9 +35309,9 @@ iq
 iq
 Vi
 YM
-nb
 Wn
-Zw
+Wn
+XT
 sV
 tE
 XB
@@ -35578,34 +35324,34 @@ Vi
 Vi
 tE
 Rc
-JE
+am
 vu
 wz
 FZ
 iq
 iq
-JE
-JE
+am
+am
 AT
-JE
-JE
-JE
-JE
-JE
-JE
-JE
-JE
+am
+am
+am
+am
+am
+am
+am
+am
 AT
-JE
-JE
-JE
-JE
-JE
-JE
+am
+am
+am
+am
+am
+am
 KA
-pu
+XT
 hd
-Zw
+Wn
 KA
 uC
 ws
@@ -35757,9 +35503,9 @@ PL
 Cn
 Vi
 KA
-nb
 Wn
-Zw
+Wn
+XT
 KA
 QP
 Cp
@@ -35773,33 +35519,33 @@ iq
 tE
 Rc
 tE
-JE
-JE
-JE
-JE
-JE
-JE
+am
+am
+am
+am
+am
+am
 Cn
 iq
 Cn
-JE
+am
 hr
 FZ
 fm
-JE
-JE
+am
+am
 Cn
 iq
 Cn
-JE
+am
 iq
 FZ
 fm
-JE
+am
 KA
-pu
+XT
 hd
-Zw
+Wn
 KA
 uC
 ws
@@ -35951,9 +35697,9 @@ Vi
 Vi
 Vi
 KA
-nb
 Wn
-Ty
+Wn
+Wn
 KA
 QP
 up
@@ -35972,28 +35718,28 @@ tE
 tE
 tE
 tE
-JE
+am
 HO
 iq
 iq
 FZ
 iq
-JE
-JE
-JE
-JE
+am
+am
+am
+am
 fz
 iq
 iq
 FZ
 iq
-JE
-JE
-JE
+am
+am
+am
 KA
-nb
+Wn
 hd
-Zw
+Wn
 KA
 uC
 ws
@@ -36145,9 +35891,9 @@ Rc
 Rc
 Rc
 KA
-nb
 Wn
-Zw
+Wn
+Wn
 KA
 QP
 Zg
@@ -36166,28 +35912,28 @@ Rc
 Rc
 Rc
 tE
-JE
-JE
-JE
-JE
-JE
+am
+am
+am
+am
+am
 HO
 BX
 hr
-JE
-JE
-JE
-JE
-JE
-JE
+am
+am
+am
+am
+am
+am
 HO
 BX
 hr
-JE
+am
 KA
-nb
+Wn
 hd
-Zw
+Wn
 KA
 uC
 ws
@@ -36339,9 +36085,9 @@ tE
 oj
 tE
 KA
-nb
+Wn
 JI
-hF
+JI
 KA
 tE
 tE
@@ -36360,7 +36106,7 @@ tE
 tE
 Rc
 tE
-JE
+am
 HO
 iq
 iq
@@ -36368,8 +36114,8 @@ FZ
 hr
 iq
 iq
-JE
-JE
+am
+am
 HO
 iq
 iq
@@ -36377,11 +36123,11 @@ FZ
 iq
 iq
 iq
-JE
+am
 KA
-nb
+Wn
 hd
-Zw
+Wn
 KA
 uC
 ws
@@ -36533,9 +36279,9 @@ cx
 cx
 XE
 UN
-nb
+Wn
 JI
-Zw
+Wn
 UN
 nV
 bn
@@ -36554,28 +36300,28 @@ Ys
 Rc
 Rc
 tE
-JE
+am
 Ca
 iq
 iq
-JE
+am
 Dj
 iv
 iq
-JE
-JE
+am
+am
 Ca
 iq
 hr
-JE
+am
 Dj
 iv
 iq
-JE
+am
 KA
-nb
+Wn
 hd
-Zw
+Wn
 KA
 uC
 ws
@@ -36727,10 +36473,10 @@ cx
 cx
 XE
 KA
-nb
+Wn
 JI
 ry
-rH
+Wn
 KA
 KA
 bn
@@ -36748,28 +36494,28 @@ GH
 NG
 Rc
 tE
-JE
-JE
+am
+am
 AT
-JE
-JE
+am
+am
 AT
-JE
+am
 FZ
-JE
-JE
-JE
+am
+am
+am
 AT
-JE
-JE
+am
+am
 AT
-JE
+am
 FZ
-JE
+am
 UN
-nb
+Wn
 hd
-Zw
+Wn
 sV
 uC
 ws
@@ -36921,11 +36667,11 @@ cx
 EA
 tE
 KA
-EU
+Wn
 JI
 Wn
 ry
-rH
+Wn
 KA
 KA
 bn
@@ -36943,7 +36689,7 @@ AV
 AV
 tE
 tE
-JE
+vo
 wD
 wD
 wD
@@ -36951,7 +36697,7 @@ wD
 wD
 Oa
 wD
-wD
+vo
 Ay
 wD
 wD
@@ -36959,11 +36705,11 @@ Tt
 wD
 wD
 Oa
-JE
+vo
 KA
-nb
+Wn
 hd
-Zw
+Wn
 KA
 uC
 ws
@@ -37116,11 +36862,11 @@ oa
 tE
 KA
 KA
-rk
+JI
 Wn
 Wn
 Wn
-Zy
+ry
 nV
 KA
 bn
@@ -37155,9 +36901,9 @@ Oa
 Oa
 GV
 KA
-nb
+Wn
 hd
-Zw
+Wn
 KA
 uC
 ws
@@ -37315,7 +37061,7 @@ Um
 Wn
 Wn
 Wn
-DI
+XT
 KA
 KA
 bn
@@ -37331,7 +37077,7 @@ Jt
 Jt
 qa
 qa
-JE
+vo
 wD
 wD
 dF
@@ -37339,7 +37085,7 @@ Oa
 wD
 wD
 wD
-wD
+vo
 cn
 wD
 Tt
@@ -37347,11 +37093,11 @@ wD
 Oa
 Oa
 wD
-JE
+vo
 KA
-nb
+Wn
 hd
-Zw
+Wn
 QZ
 uC
 ws
@@ -37506,11 +37252,11 @@ Rc
 Nv
 KA
 KA
-EU
+Wn
 ry
 Wn
 Wn
-rH
+Wn
 KA
 KA
 bn
@@ -37543,9 +37289,9 @@ wD
 Uw
 GV
 KA
-nb
+Wn
 hd
-Zw
+Wn
 KA
 uC
 ws
@@ -37701,11 +37447,11 @@ Nv
 Nv
 KA
 KA
-EU
 Wn
 Wn
 Wn
-rH
+Wn
+Wn
 KA
 KA
 bn
@@ -37721,25 +37467,25 @@ KA
 KA
 oq
 aX
-JE
+Rd
 aX
 fS
 aX
-JE
+Rd
 aX
 XO
 aX
-JE
+Rd
 aX
 fS
 aX
-JE
+Rd
 aX
 LW
 KA
-nb
+Wn
 hd
-Zw
+Wn
 KA
 uC
 ws
@@ -37896,11 +37642,11 @@ Nv
 Nv
 KA
 KA
-EU
 Wn
 Wn
 Wn
-rH
+Wn
+Wn
 UN
 KA
 KA
@@ -38091,43 +37837,43 @@ Nv
 bn
 KA
 KA
-EU
 Wn
 Wn
 Wn
-Re
-Re
-Re
-Re
-Re
-Re
-SH
+Wn
+Wn
+Wn
+Wn
 Wn
 Wn
 Wn
 SH
-Re
-Re
-Re
-DV
-Re
-Re
-Re
-Re
-Re
-Re
-Re
-Re
-Re
-Re
-Re
-Re
-Re
-Re
+Wn
+Wn
+Wn
 SH
 Wn
 Wn
-Zw
+Wn
+XT
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+SH
+Wn
+Wn
+Wn
 KA
 uC
 ws
@@ -38286,7 +38032,7 @@ Nv
 bn
 KA
 KA
-EU
+Wn
 Wn
 Wn
 Wn
@@ -38321,7 +38067,7 @@ ie
 SH
 Wn
 Wn
-Zw
+Wn
 IH
 uC
 ws
@@ -38481,41 +38227,41 @@ Nv
 Nv
 KA
 KA
-EU
-Ai
-OO
-OO
-OO
-OO
-OO
-OO
+Wn
+XT
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
 SH
 Wn
 Wn
 Wn
 SH
-OO
-OO
-OO
-OO
-OO
-OO
-OO
-OO
-OO
-OO
-OO
-OO
-OO
-OO
-OO
-OO
-OO
-OO
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
 SH
-OO
-OO
-lQ
+Wn
+Wn
+Wn
 KA
 uC
 ws

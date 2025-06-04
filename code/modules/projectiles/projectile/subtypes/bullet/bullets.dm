@@ -7,15 +7,15 @@
 
 /obj/projectile/bullet/pistol/lap //Light Armor Piercing
 	damage_force = 20
-	damage_tier = 3.5
+	armor_penetration = 10
 
 /obj/projectile/bullet/pistol/ap
 	damage_force = 15
-	damage_tier = 4
+	armor_penetration = 30
 
 /obj/projectile/bullet/pistol/hp
 	damage_force = 25
-	damage_tier = 2.25
+	armor_penetration = -50
 
 /obj/projectile/bullet/pistol/hunter
 	damage_force = 15
@@ -36,11 +36,11 @@
 
 /obj/projectile/bullet/pistol/medium/ap
 	damage_force = 20
-	damage_tier = 4.25
+	armor_penetration = 15
 
 /obj/projectile/bullet/pistol/medium/hp
 	damage_force = 30
-	damage_tier = 2.25
+	armor_penetration = -50
 
 /obj/projectile/bullet/pistol/medium/hunter
 	damage_force = 15
@@ -59,8 +59,8 @@
 	name = "suppressor bullet" // this guy is Important and also Hates You
 	fire_sound = 'sound/weapons/doompistol.ogg' // converted from .wavs extracted from doom 2
 	damage_force = 10 // high rof kinda fucked up lets be real
-	damage_tier = 4.5
-	damage_inflict_agony = 10 // brute easily heals, agony not so much
+	agony = 10 // brute easily heals, agony not so much
+	armor_penetration = 30 // reduces shield blockchance
 	accuracy_overall_modify = 0.8 // heehoo
 	speed = 25 * WORLD_ICON_SIZE
 
@@ -82,7 +82,7 @@
 /obj/projectile/bullet/pistol/rubber // "Rubber" bullets for all other pistols.
 	name = "rubber bullet"
 	damage_force = 5
-	damage_inflict_agony = 40
+	agony = 40
 	embed_chance = 0
 	damage_mode = NONE
 	damage_flag = ARMOR_MELEE
@@ -91,7 +91,7 @@
 /obj/projectile/bullet/pistol/rubber/strong // "Rubber" bullets for high power pistols.
 	fire_sound = 'sound/weapons/weaponsounds_heavypistolshot.ogg' // Rubber shots have less powder, but these still have more punch than normal rubber shot.
 	damage_force = 10
-	damage_inflict_agony = 60
+	agony = 60
 	embed_chance = 0
 	damage_flag = ARMOR_MELEE
 
@@ -108,12 +108,12 @@
 	name = "slug"
 	fire_sound = 'sound/weapons/weaponsounds_shotgunshot.ogg'
 	damage_force = 50
-	damage_tier = 4.25
+	armor_penetration = 15
 
 /obj/projectile/bullet/shotgun/beanbag		//because beanbags are not bullets
 	name = "beanbag"
 	damage_force = 20
-	damage_inflict_agony = 60
+	agony = 60
 	embed_chance = 0
 	damage_mode = NONE
 	damage_flag = ARMOR_MELEE
@@ -134,7 +134,7 @@
 
 /obj/projectile/bullet/pellet/shotgun/flak
 	damage_force = 2 //The main weapon using these fires four at a time, usually with different destinations. Usually.
-	damage_tier = 3.75
+	armor_penetration = 10
 
 // This is my boomstick,
 /obj/projectile/bullet/pellet/shotgun/silvershot
@@ -151,6 +151,7 @@
 	name = "slug"
 	fire_sound = 'sound/weapons/weaponsounds_shotgunshot.ogg'
 	damage_force = 45 // 10% less than base
+	armor_penetration = 15 // same as base
 	SA_bonus_damage = 20 // 1.3x base to vulnerable
 	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 	holy = TRUE
@@ -159,7 +160,7 @@
 	name = "stake"
 	fire_sound = 'sound/weapons/weaponsounds_shotgunshot.ogg'
 	damage_force = 50
-	damage_tier = 3.75
+	armor_penetration = 15
 	SA_bonus_damage = 30
 	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 	holy = TRUE
@@ -196,7 +197,7 @@
 
 /obj/projectile/bullet/rifle
 	fire_sound = 'sound/weapons/Gunshot_generic_rifle.ogg'
-	damage_tier = 4
+	armor_penetration = 15
 	legacy_penetrating = 1
 
 /obj/projectile/bullet/rifle/a762
@@ -209,18 +210,18 @@
 
 /obj/projectile/bullet/rifle/a762/ap
 	damage_force = 30
-	damage_tier = 4.75
+	armor_penetration = 50 // At 30 or more armor, this will do more damage than standard rounds.
 
 /obj/projectile/bullet/rifle/a762/ap/silver // Only used by the Service Weapon
 	damage_force = 30
-	damage_tier = 5
+	armor_penetration = 50 // At 30 or more armor, this will do more damage than standard rounds.
 	SA_bonus_damage = 30 // 60 total against demons
 	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 	holy = TRUE
 
 /obj/projectile/bullet/rifle/a762/hp
 	damage_force = 40
-	damage_tier = 2.75
+	armor_penetration = -50
 	legacy_penetrating = 0
 
 /obj/projectile/bullet/rifle/a762/hunter // Optimized for killing simple animals and not people, because Balance(tm)
@@ -248,11 +249,11 @@
 
 /obj/projectile/bullet/rifle/a556/ap
 	damage_force = 20
-	damage_tier = 4.75
+	armor_penetration = 50 // At 40 or more armor, this will do more damage than standard rounds.
 
 /obj/projectile/bullet/rifle/a556/hp
 	damage_force = 35
-	damage_tier = 2.75
+	armor_penetration = -50
 	legacy_penetrating = 0
 
 /obj/projectile/bullet/rifle/a556/hunter
@@ -272,14 +273,14 @@
 	stun = 3
 	weaken = 3
 	legacy_penetrating = 5
-	damage_tier = 6
+	armor_penetration = 80
 	hitscan = 1 //so the PTR isn't useless as a sniper weapon
 
 /obj/projectile/bullet/mecha/a12mm_gauss //Mecha gauss rifle round.
 	fire_sound = 'sound/weapons/Gunshot_cannon.ogg' // This is literally an anti-tank rifle caliber. It better sound like a fucking cannon.
 	damage_force = 60
 	legacy_penetrating = 1
-	damage_tier = 6
+	armor_penetration = 60
 
 /* Miscellaneous */
 
@@ -296,8 +297,8 @@
 /obj/projectile/bullet/cyanideround/jezzail
 	name = "toxic penetrator shard"
 	damage_force = 25
-	damage_tier = 3.75
-	damage_inflict_agony = 5
+	armor_penetration = 20
+	agony = 5
 	embed_chance = 1
 	damage_type = DAMAGE_TYPE_TOX
 
@@ -338,7 +339,7 @@
 	fire_sound = 'sound/weapons/weaponsounds_heavypistolshot.ogg'
 	damage_force = 60
 	speed = 8.3 * WORLD_ICON_SIZE
-	damage_tier = 2
+	armor_penetration = -50
 
 /obj/projectile/bullet/musket/silver
 	damage_force = 54 // 10% less than base
@@ -364,11 +365,11 @@
 	name = "heavy slug"
 	fire_sound = 'sound/weapons/weaponsounds_shotgunshot.ogg'
 	damage_force = 60
-	damage_tier = 4.5
+	armor_penetration = 25
 
 /obj/projectile/bullet/pellet/heavy_shotgun //I want this to use similar calcuations to blunderbuss shot for falloff.
 	damage_force = 3 //Fires five pellets at a time.
-	damage_tier = 3.75
+	armor_penetration = 10
 
 /obj/projectile/bullet/pellet/heavy_shotgun/silver
 	damage_force = 3
@@ -434,7 +435,7 @@
 	embed_chance = 0
 	//incendiary = 2 //The Trail of Fire doesn't work.
 	flammability = 4
-	damage_inflict_agony = 30
+	agony = 30
 	range = WORLD_ICON_SIZE * 4
 	vacuum_traversal = 0
 
@@ -452,7 +453,7 @@
 	damage_type = DAMAGE_TYPE_BRUTE
 	incendiary = 1
 	flammability = 4
-	damage_tier = 5.35
+	armor_penetration = 40
 	legacy_penetrating = 5
 	combustion = TRUE
 
@@ -469,7 +470,7 @@
 	name = "phoron shrapnel slug"
 	icon_state = "bullet_alt"
 	damage_force = 40
-	damage_tier = 4.75
+	armor_penetration = 30
 	damage_type = DAMAGE_TYPE_BRUTE
 	incendiary = 1
 	flammability = 4

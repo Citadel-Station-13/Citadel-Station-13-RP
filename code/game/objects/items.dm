@@ -32,7 +32,7 @@
 	/// armor flag for melee attacks
 	var/damage_flag = ARMOR_MELEE
 	/// damage tier
-	var/damage_tier = 3
+	var/damage_tier = MELEE_TIER_MEDIUM
 	/// damage_mode bitfield - see [code/__DEFINES/combat/damage.dm]
 	var/damage_mode = NONE
 	/// DAMAGE_TYPE_* enum
@@ -48,10 +48,6 @@
 	/// note that the component will not be modified while held;
 	/// if this is changed, the component needs to be remade.
 	var/passive_parry
-	/// base melee click cooldown
-	var/melee_click_cd_base = 0.8 SECONDS
-	/// base melee click cooldown multiplier
-	var/melee_click_cd_multiply = 1
 
 	//* Economy
 	/// economic category for items
@@ -190,6 +186,8 @@
 	/// 0 won't embed, and 100 will always embed
 	var/embed_chance = EMBED_CHANCE_UNSET
 
+	/// How long click delay will be when using this, in 1/10ths of a second. Checked in the user's get_attack_speed().
+	var/attackspeed = DEFAULT_ATTACK_COOLDOWN
 	/// Length of tiles it can reach, 1 is adjacent.
 	var/reach = 1
 	/// Icon overlay for ADD highlights when applicable.
@@ -466,7 +464,7 @@
 
 	add_attack_logs(user,M,"Attack eyes with [name]")
 
-	user.setClickCooldownLegacy(user.get_attack_speed_legacy())
+	user.setClickCooldown(user.get_attack_speed())
 	user.do_attack_animation(M)
 
 	src.add_fingerprint(user)
@@ -826,8 +824,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 
 //* Flags *//
 
-/obj/item/proc/set_body_cover_flags(new_body_cover_flags)
-	body_cover_flags = new_body_cover_flags
+/obj/item/proc/set_body_cover_flags()
 	inv_inside.invalidate_coverage_cache()
 
 //* Interactions *//
@@ -880,11 +877,11 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	var/datum/prototype/material/material = get_primary_material()
 	var/turf/T = get_turf(src)
 	T.visible_message("<span class='danger'>\The [src] [material.destruction_desc]!</span>")
-	// if(istype(loc, /mob/living))
-	// 	var/mob/living/M = loc
-	// 	if(material.shard_type == SHARD_SHARD) // Wearing glass armor is a bad idea.
-	// 		var/obj/item/material/shard/S = material.place_shard(T)
-	// 		M.embed(S)
+	if(istype(loc, /mob/living))
+		var/mob/living/M = loc
+		if(material.shard_type == SHARD_SHARD) // Wearing glass armor is a bad idea.
+			var/obj/item/material/shard/S = material.place_shard(T)
+			M.embed(S)
 
 	playsound(src, "shatter", 70, 1)
 	qdel(src)

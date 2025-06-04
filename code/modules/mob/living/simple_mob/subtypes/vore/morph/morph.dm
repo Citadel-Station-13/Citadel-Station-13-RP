@@ -9,7 +9,7 @@
 	icon_state = "morph"
 	icon_living = "morph"
 	icon_dead = "morph_dead"
-	movement_base_speed = 10 / 1
+	movement_cooldown = 1
 	status_flags = STATUS_CAN_PUSH
 	pass_flags = ATOM_PASS_TABLE
 	mob_bump_flag = SLIME
@@ -112,7 +112,7 @@
 	//Morphed is weaker
 	legacy_melee_damage_lower = melee_damage_disguised
 	legacy_melee_damage_upper = melee_damage_disguised
-	movement_base_speed = 10 / 5
+	movement_cooldown = 5
 
 	morph_time = world.time + MORPH_COOLDOWN
 	return
@@ -142,7 +142,7 @@
 	//Baseline stats
 	legacy_melee_damage_lower = initial(legacy_melee_damage_lower)
 	legacy_melee_damage_upper = initial(legacy_melee_damage_upper)
-	movement_base_speed = initial(movement_base_speed)
+	movement_cooldown = initial(movement_cooldown)
 
 	morph_time = world.time + MORPH_COOLDOWN
 

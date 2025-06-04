@@ -479,15 +479,15 @@
 		var/datum/ai_holder/turret/snowflake_ai_holder = ai_holder
 		snowflake_ai_holder.retaliate(proj.firer)
 
-/obj/machinery/porta_turret/on_melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/attack_style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+/obj/machinery/porta_turret/melee_act(mob/user, obj/item/weapon, target_zone, datum/event_args/actor/clickchain/clickchain)
 	. = ..()
 	if(. & CLICKCHAIN_FLAGS_ATTACK_ABORT)
 		return
 	if(. > 0)
-		aggro_for(6 SECONDS, attacker)
+		aggro_for(6 SECONDS, user)
 	// todo: proper AI provoke API.
 	var/datum/ai_holder/turret/snowflake_ai_holder = ai_holder
-	snowflake_ai_holder.retaliate(attacker)
+	snowflake_ai_holder.retaliate(user)
 
 /obj/machinery/porta_turret/emp_act(severity)
 	if(enabled)

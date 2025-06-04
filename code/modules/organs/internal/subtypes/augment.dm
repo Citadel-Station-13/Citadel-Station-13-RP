@@ -131,24 +131,20 @@
 		integrated_object.forceMove(src)
 	..(removed)
 
-/obj/item/organ/internal/augment/proc/augment_use()
+/obj/item/organ/internal/augment/proc/augment_action()
 	if(!owner)
 		return
 
 	if(aug_cooldown)
-		if(last_activate + aug_cooldown <= world.time)
+		if(last_activate <= world.time + aug_cooldown)
 			last_activate = world.time
 		else
-			to_chat(owner, SPAN_WARNING("\The [src] is still recharging."))
 			return
 
 	if(robotic && owner.get_restraining_bolt())
 		to_chat(owner, SPAN_WARNING("\The [src] doesn't respond."))
 		return
 
-	augment_action()
-
-/obj/item/organ/internal/augment/proc/augment_action()
 	//! todo: re fucking factor.
 
 	if(owner.is_in_inventory(integrated_object))
@@ -198,7 +194,7 @@
 
 	if(!isnull(choice) && options[choice])
 		var/obj/item/organ/internal/augment/A = present_augs[choice]
-		A.augment_use()
+		A.augment_action(L)
 
 /* equip_augment_item
  * Used to equip an organ's augment items when possible.

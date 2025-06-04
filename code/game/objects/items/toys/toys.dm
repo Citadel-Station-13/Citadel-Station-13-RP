@@ -156,7 +156,7 @@
 			O.show_message(SPAN_WARNING("\The [user] realized they were out of ammo and starting scrounging for some!"), 1)
 
 
-/obj/item/toy/crossbow/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/toy/crossbow/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 	src.add_fingerprint(user)
 
@@ -725,7 +725,7 @@
 	var/bitesound = 'sound/weapons/bite.ogg'
 
 // Attack mob
-/obj/item/toy/plushie/carp/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/toy/plushie/carp/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 	playsound(src, bitesound, 20, 1)	// Play bite sound in local area
 
@@ -796,7 +796,7 @@
 	var/phrase = "I don't want to exist anymore!"
 
 /obj/structure/plushie/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-	user.setClickCooldownLegacy(DEFAULT_ATTACK_COOLDOWN)
+	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	if(user.a_intent == INTENT_HELP)
 		user.visible_message("<span class='notice'><b>\The [user]</b> hugs [src]!</span>","<span class='notice'>You hug [src]!</span>")
 	else if (user.a_intent == INTENT_HARM)

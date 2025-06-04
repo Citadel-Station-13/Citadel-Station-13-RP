@@ -32,7 +32,8 @@
 		O.update_icon()
 	for(var/obj/structure/catwalk/C in get_turf(src))
 		if(C != src)
-			CRASH("Duplicate catwalk set to spawn at X [audit_loc()]. Please delete the duplicate catwalk.")
+			warning("Duplicate [type] in [loc] ([x], [y], [z])")
+			return INITIALIZE_HINT_QDEL
 	update_icon()
 
 /obj/structure/catwalk/Destroy()
@@ -68,6 +69,17 @@
 			diagonalconnect |= 8
 
 	icon_state = "catwalk[connectdir]-[diagonalconnect]"
+
+
+/obj/structure/catwalk/legacy_ex_act(severity)
+	switch(severity)
+		if(1.0)
+			qdel(src)
+		if(2.0)
+			qdel(src)
+		if(3.0)
+			qdel(src)
+	return
 
 /obj/structure/catwalk/attackby(obj/item/C as obj, mob/user as mob)
 	if(istype(C, /obj/item/weldingtool))
@@ -123,12 +135,21 @@
 	. = ..()
 	activate()
 
+/obj/effect/catwalk_plated/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+	attack_generic()
+
+/obj/effect/catwalk_plated/attack_ghost()
+	. = ..()
+	attack_generic()
+
+/obj/effect/catwalk_plated/attack_generic()
+	activate()
+
 /obj/effect/catwalk_plated/proc/activate()
-	if(activated)
-		return
+	if(activated) return
 
 	if(locate(/obj/structure/catwalk) in loc)
-		CRASH("Frame spawner: A catwalk already exists at [audit_loc()]. Please remove the duplicate catwalk.")
+		warning("Frame Spawner: A catwalk already exists at [loc.x]-[loc.y]-[loc.z]")
 	else
 		var/obj/structure/catwalk/C = new /obj/structure/catwalk(loc)
 		C.plated_tile = tile

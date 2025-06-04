@@ -132,8 +132,6 @@
 	///   be the round at [internal_magazine_revolver_offset].
 	///   Basically, [chamber_simulation] is disabled if this is on.
 	var/internal_magazine_revolver_mode = FALSE
-	/// A flag to disable the spin, for multi-barreled weapons that fire in sequence
-	var/internal_magazine_revolver_spinnable = TRUE
 	/// The current position in [internal_magazine_vec] we are at.
 	/// * This is to avoid duplicate references, as those are pretty much asking for trouble.
 	/// * This is only used if [internal_magazine_revolver_mode] is enabled.
@@ -309,12 +307,12 @@
 	else if(istype(using, /obj/item/ammo_casing))
 		return user_clickchain_apply_casing(using, e_args, e_args)
 
-/obj/item/gun/projectile/ballistic/on_attack_hand(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-	if(clickchain.performer.is_holding_inactive(src))
-		if(user_clickchain_unload(clickchain, clickchain) & CLICKCHAIN_FLAGS_INTERACT_ABORT)
-			return CLICKCHAIN_DID_SOMETHING
+/obj/item/gun/projectile/ballistic/on_attack_hand(datum/event_args/actor/clickchain/e_args)
+	if(e_args.performer.is_holding_inactive(src))
+		if(user_clickchain_unload(e_args, e_args) & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+			return TRUE
 	. = ..()
-	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+	if(.)
 		return
 
 /obj/item/gun/projectile/ballistic/consume_next_projectile(datum/gun_firing_cycle/cycle)
@@ -376,7 +374,7 @@
 
 /obj/item/gun/projectile/ballistic/register_item_actions(mob/user)
 	. = ..()
-	if(internal_magazine && internal_magazine_revolver_mode && internal_magazine_revolver_spinnable)
+	if(internal_magazine && internal_magazine_revolver_mode)
 		if(!chamber_spin_action)
 			chamber_spin_action = new(src)
 		chamber_spin_action.grant(user.inventory.actions)
@@ -551,7 +549,6 @@
 				. = TRUE
 	if(. && !silent)
 		playsound(src, single_load_sound, 50, TRUE)
-	update_icon()
 
 /**
  * Load from a speedloader.
@@ -573,7 +570,6 @@
 	if(. && !silent)
 		pass()
 		// todo: sound
-	update_icon()
 
 /obj/item/gun/projectile/ballistic/proc/insert_speedloader_internal(obj/item/ammo_magazine/speedloader, reverse_order)
 	. = 0
@@ -679,7 +675,6 @@
 		playsound(src, magazine_insert_sound, 75, TRUE)
 	magazine.forceMove(src)
 	src.magazine = magazine
-	update_icon()
 	return TRUE
 
 /**
@@ -704,7 +699,6 @@
 	else
 		magazine.moveToNullspace()
 	magazine = null
-	update_icon()
 
 /**
  * Eject **a** casing.
@@ -771,7 +765,6 @@
 		ejecting.forceMove(new_loc)
 	else if(ejecting.loc == src)
 		ejecting.moveToNullspace()
-	update_icon()
 
 // todo: impl for advanced revolver shenanigans
 /obj/item/gun/projectile/ballistic/proc/remove_casing_from_revolver_index(atom/new_loc, silent, force_index)
@@ -790,7 +783,6 @@
 			playsound(src, bolt_close_sound, 75, TRUE)
 	if(!no_auto_chamber)
 		load_chamber()
-	update_icon()
 
 /obj/item/gun/projectile/ballistic/proc/open_bolt(silent, from_fire, no_auto_eject)
 	if(!bolt_closed)
@@ -801,7 +793,6 @@
 			playsound(src, bolt_open_sound, 75, TRUE)
 	if(bolt_auto_eject_on_open && !no_auto_eject)
 		eject_chamber(FALSE, from_fire, drop_location())
-	update_icon()
 
 //* Chamber *//
 
@@ -1049,7 +1040,7 @@
 		if(magazine)
 			var/overlay = get_magazine_overlay_for(magazine)
 			if(overlay)
-				add_overlay("[base_icon_state]-[overlay]")
+				add_overlay(overlay)
 
 //* Action Datums *//
 

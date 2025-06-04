@@ -7,7 +7,7 @@
 			// this means execute both and get as boolean
 			// this is done so resist doesn't always invoke clickcd
 			if(resist_grab() | process_resist())
-				setClickCooldownLegacy(20)
+				setClickCooldown(20)
 
 // todo: refactor
 // todo: resist doing normal clickcd is kinda weird
@@ -36,6 +36,11 @@
 		return TRUE
 
 	if(resist_restraints())
+		return TRUE
+
+	if(isbelly(loc))
+		var/obj/belly/B = loc
+		B.relay_resist(src)
 		return TRUE
 
 	if(resist_a_rest())

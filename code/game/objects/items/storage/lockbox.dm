@@ -42,7 +42,7 @@
 			spark_system.set_up(5, 0, src.loc)
 			spark_system.start()
 			playsound(src.loc, 'sound/weapons/blade1.ogg', 50, 1)
-			playsound(src.loc, /datum/soundbyte/sparks, 50, 1)
+			playsound(src.loc, /datum/soundbyte/grouped/sparks, 50, 1)
 	if(!locked)
 		..()
 	else
@@ -78,7 +78,7 @@
 	name = "lockbox of clusterbangs"
 	desc = "You have a bad feeling about opening this."
 	req_access = list(ACCESS_SECURITY_EQUIPMENT)
-	starts_with = list(/obj/item/grenade/simple/flashbang/clusterbang)
+	starts_with = list(/obj/item/grenade/flashbang/clusterbang)
 
 /obj/item/storage/lockbox/medal
 	name = "lockbox of medals"

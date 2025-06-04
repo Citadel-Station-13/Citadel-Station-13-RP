@@ -33,16 +33,15 @@ export class Section extends Component<SectionProps> {
   }
 
   componentDidMount() {
-    if (!this.scrollableRef?.current) return;
-    if (!this.scrollableRef) return;
-
-    addScrollableNode(this.scrollableRef.current);
+    if (this.scrollable) {
+      addScrollableNode(this.scrollableRef.current);
+    }
   }
 
   componentWillUnmount() {
-    if (!this.scrollableRef?.current) return;
-
-    removeScrollableNode(this.scrollableRef.current);
+    if (this.scrollable) {
+      removeScrollableNode(this.scrollableRef.current);
+    }
   }
 
   render() {
@@ -70,7 +69,7 @@ export class Section extends Component<SectionProps> {
         ])}
         {...computeBoxProps(rest)}>
         {hasTitle && (
-          <div className={title ? "Section__title" : "Section__titleHolder"}>
+          <div className={title? "Section__title" : "Section__titleHolder"}>
             <span className="Section__titleText">
               {title || "⠀"}
             </span>

@@ -31,17 +31,17 @@
 	name_language = LANGUAGE_ID_SHADEKIN_HIVEMIND
 
 	unarmed_types = list(
-		/datum/melee_attack/unarmed/stomp,
-		/datum/melee_attack/unarmed/kick,
-		/datum/melee_attack/unarmed/claws/shadekin,
-		/datum/melee_attack/unarmed/bite/sharp/shadekin,
+		/datum/unarmed_attack/stomp,
+		/datum/unarmed_attack/kick,
+		/datum/unarmed_attack/claws/shadekin,
+		/datum/unarmed_attack/bite/sharp/shadekin,
 	)
 
 	siemens_coefficient = 1
 	vision_innate = /datum/vision/baseline/species_tier_3/for_snowflake_ocs
 	vision_organ = O_EYES
 
-	movement_base_speed = 6
+	slowdown = -0.5
 	item_slowdown_mod = 0.5
 
 	brute_mod = 0.7 // Naturally sturdy.

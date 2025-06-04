@@ -113,7 +113,7 @@
 	icon_state = "toxin"
 	damage_force = 5
 	damage_type = DAMAGE_TYPE_TOX
-	damage_inflict_agony = 120
+	agony = 120
 	damage_flag = ARMOR_ENERGY
 
 	combustion = FALSE
@@ -123,7 +123,7 @@
 	icon_state = "cbbolt"
 	damage_force = 10
 	damage_type = DAMAGE_TYPE_TOX
-	damage_inflict_agony = 40
+	agony = 40
 	stutter = 10
 
 /obj/projectile/energy/bolt/large
@@ -136,8 +136,10 @@
 	fire_sound = 'sound/effects/splat.ogg'
 	damage_force = 40
 	damage_type = DAMAGE_TYPE_BURN
-	damage_inflict_agony = 10
-	damage_flag = ARMOR_ACID
+	agony = 10
+	damage_flag = ARMOR_BIO
+	armor_penetration = 25	// It's acid
+
 	combustion = FALSE
 
 /obj/projectile/energy/neurotoxin
@@ -146,8 +148,10 @@
 	fire_sound = 'sound/effects/splat.ogg'
 	damage_force = 5
 	damage_type = DAMAGE_TYPE_BIOACID
-	damage_inflict_agony = 23
-	damage_flag = ARMOR_ACID
+	agony = 23
+	damage_flag = ARMOR_BIO
+	armor_penetration = 25	// It's acid-based
+
 	combustion = FALSE
 
 /obj/projectile/energy/neurotoxin/toxic //New alien mob projectile to match the player-variant's projectiles.
@@ -156,8 +160,10 @@
 	fire_sound = 'sound/effects/splat.ogg'
 	damage_force = 20
 	damage_type = DAMAGE_TYPE_BIOACID
-	damage_inflict_agony = 30
-	damage_flag = ARMOR_ACID
+	agony = 30
+	damage_flag = ARMOR_BIO
+	armor_penetration = 25	// It's acid-based
+
 
 /obj/projectile/energy/phoron
 	name = "phoron bolt"
@@ -176,9 +182,10 @@
 	name = "plasma pulse"
 	icon_state = "plasma_stun"
 	fire_sound = 'sound/weapons/blaster.ogg'
+	armor_penetration = 10
 	range = WORLD_ICON_SIZE * 4
 	damage_force = 5
-	damage_inflict_agony = 55
+	agony = 55
 	damage_type = DAMAGE_TYPE_BURN
 	vacuum_traversal = 0	//Projectile disappears in empty space
 
@@ -217,6 +224,7 @@
 	icon_state = "blue_pellet"
 	fire_sound = 'sound/weapons/Laser.ogg'
 	damage_force = 5
+	armor_penetration = 75
 	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
 	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_ENERGY

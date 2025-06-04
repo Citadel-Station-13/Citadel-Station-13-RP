@@ -6,7 +6,7 @@
  */
 SUBSYSTEM_DEF(simple_networks)
 	name = "Simple Networks"
-	subsystem_flags = SS_NO_FIRE | SS_NO_INIT
+	subsystem_flags = SS_NO_FIRE
 	// no init order for now
 	// no fire priority for now
 

@@ -40,7 +40,7 @@
 		see_invisible = initial(see_invisible)
 		incorporeal_move = initial(incorporeal_move)
 		density = initial(density)
-		remove_movespeed_modifier(/datum/movespeed_modifier/forced_speedup/vore_demon_jaunt)
+		force_max_speed = initial(force_max_speed)
 
 		//Cosmetics mostly
 		flick("phasein",src)
@@ -101,7 +101,7 @@
 		is_shifting = FALSE
 		incorporeal_move = TRUE
 		density = FALSE
-		add_movespeed_modifier(/datum/movespeed_modifier/forced_speedup/vore_demon_jaunt)
+		force_max_speed = TRUE
 
 /mob/living/simple_mob/vore/demon/verb/phase_shift()
 	set name = "Phase Shift"
@@ -154,7 +154,7 @@
 	is_shifting = FALSE
 	incorporeal_move = TRUE
 	density = FALSE
-	add_movespeed_modifier(/datum/movespeed_modifier/forced_speedup/vore_demon_jaunt)
+	force_max_speed = TRUE
 
 	spawn(300)
 		shifted_out = FALSE
@@ -169,7 +169,7 @@
 		see_invisible = initial(see_invisible)
 		incorporeal_move = initial(incorporeal_move)
 		density = initial(density)
-		remove_movespeed_modifier(/datum/movespeed_modifier/forced_speedup/vore_demon_jaunt)
+		force_max_speed = initial(force_max_speed)
 		is_shifting = TRUE
 
 		//Cosmetics mostly

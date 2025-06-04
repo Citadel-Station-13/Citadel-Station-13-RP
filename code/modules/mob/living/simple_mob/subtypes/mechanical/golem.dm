@@ -131,7 +131,7 @@
 	flick("golem_pre_melee", src) // To force the animation to restart.
 	icon_living = "golem_pre_melee" // The animation will hold after this point until melee_post_animation() gets called.
 	icon_state = "golem_pre_melee"
-	setClickCooldownLegacy(2)
+	setClickCooldown(2)
 
 /mob/living/simple_mob/mechanical/technomancer_golem/melee_post_animation(atom/A)
 	if(casting) // Some spells delete themselves when used, so we use a different variable set earlier instead.
@@ -141,19 +141,19 @@
 	flick("golem_post_melee", src)
 	icon_living = "golem"
 	icon_state = "golem"
-	setClickCooldownLegacy(6)
+	setClickCooldown(6)
 
 /mob/living/simple_mob/mechanical/technomancer_golem/ranged_pre_animation(atom/A)
 	flick("golem_pre_ranged", src)
 	icon_living = "golem_pre_ranged"
 	icon_state = "golem_pre_ranged"
-	setClickCooldownLegacy(5)
+	setClickCooldown(5)
 
 /mob/living/simple_mob/mechanical/technomancer_golem/ranged_post_animation(atom/A)
 	flick("golem_post_ranged", src)
 	icon_living = "golem"
 	icon_state = "golem"
-	setClickCooldownLegacy(5)
+	setClickCooldown(5)
 
 /mob/living/simple_mob/mechanical/technomancer_golem/special_pre_animation(atom/A)
 	casting = TRUE

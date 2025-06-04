@@ -13,7 +13,7 @@
 	var/restoration_internal = 20
 
 
-/obj/item/stack/nanopaste/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/stack/nanopaste/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(!isliving(target))
 		return ..()
 	var/mob/living/L = target
@@ -40,7 +40,7 @@
 			if(!S.get_damage())
 				to_chat(user, "<span class='notice'>Nothing to fix here.</span>")
 			else if(can_use(1))
-				user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
+				user.setClickCooldown(user.get_attack_speed(src))
 				if(S.open >= 2)
 					if(do_after(user,5 * tool_speed))
 						S.heal_damage(restoration_internal, restoration_internal, robo_repair = 1)

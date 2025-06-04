@@ -137,7 +137,7 @@ const ICCloningSection = (props, context) => {
             iconSize={2}
             tooltip="Load a program to print."
             textAlign="center"
-            onClick={() => act("load_blueprint")} />
+            onClick={() => act("load_blueprint", { build: item.path })} />
         </Flex.Item>
         <Flex.Item basis={"50%"}>
           <Button
@@ -147,7 +147,7 @@ const ICCloningSection = (props, context) => {
             color={program ? "good" : "bad"}
             iconSize={2}
             textAlign="center"
-            onClick={() => act("clone")} />
+            onClick={() => act("clone", { build: item.path })} />
         </Flex.Item>
       </Flex>
     </Section>

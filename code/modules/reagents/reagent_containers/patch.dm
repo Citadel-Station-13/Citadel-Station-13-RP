@@ -40,7 +40,7 @@
 */
 //! End ofNon-implemented Subtypes
 
-/obj/item/reagent_containers/pill/patch/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/reagent_containers/pill/patch/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/L = user
 
 	if(target == L)
@@ -102,7 +102,7 @@
 
 		user.visible_message(SPAN_WARNING("[user] attempts to place \the [src] onto [H]`s [affecting]."))
 
-		user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
+		user.setClickCooldown(user.get_attack_speed(src))
 		if(!do_mob(user, target))
 			return
 

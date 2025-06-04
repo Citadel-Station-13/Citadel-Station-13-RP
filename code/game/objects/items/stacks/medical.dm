@@ -17,7 +17,7 @@
 
 	var/upgrade_to	// The type path this stack can be upgraded to.
 
-/obj/item/stack/medical/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/stack/medical/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	checked_application(target, user)
@@ -28,7 +28,8 @@
 		to_chat(user, "<span class='warning'>\The [src] cannot be applied to [M]!</span>")
 		return FALSE
 
-	if ( !user.IsAdvancedToolUser() )
+	if ( ! (istype(user, /mob/living/carbon/human) || \
+			istype(user, /mob/living/silicon)) )
 		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return FALSE
 

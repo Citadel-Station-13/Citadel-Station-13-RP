@@ -556,6 +556,10 @@ About the new airlock wires panel:
 /obj/machinery/door/airlock/attack_ai(mob/user as mob)
 	ui_interact(user)
 
+/obj/machinery/door/airlock/attack_ghost(mob/user)
+	. = ..()
+	ui_interact(user)
+
 /obj/machinery/door/airlock/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -1010,7 +1014,7 @@ About the new airlock wires panel:
 /mob/living/carbon/airlock_crush(var/crush_damage)
 	. = ..()
 	if(can_feel_pain())
-		emote_nosleep("scream")
+		emote("scream")
 
 /mob/living/silicon/robot/airlock_crush(var/crush_damage)
 	adjustBruteLoss(crush_damage)

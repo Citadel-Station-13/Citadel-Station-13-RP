@@ -66,7 +66,7 @@
 	to_chat(user, "<span class='notice'>[open_message]</span>")
 	sealed = FALSE
 
-/obj/item/reagent_containers/food/snacks/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/reagent_containers/food/snacks/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
@@ -103,7 +103,7 @@
 					to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
 					return
 
-			user.setClickCooldownLegacy(user.get_attack_speed_legacy(src)) //puts a limit on how fast people can eat/drink things
+			user.setClickCooldown(user.get_attack_speed(src)) //puts a limit on how fast people can eat/drink things
 			if (fullness <= 100)
 				to_chat(M, "<span class='danger'>You hungrily chew out a piece of [src] and gobble it!</span>")
 			if (fullness > 100 && fullness <= 300)
@@ -141,7 +141,7 @@
 					return
 
 			user.visible_message(SPAN_DANGER("[user] attempts to feed [M] [src]."))
-			user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
+			user.setClickCooldown(user.get_attack_speed(src))
 			if(!do_mob(user, M, 3 SECONDS))
 				return
 			//Do we really care about this

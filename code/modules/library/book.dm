@@ -126,14 +126,14 @@
 	else
 		..()
 
-/obj/item/book/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/book/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(user.zone_sel.selecting == O_EYES)
 		user.visible_message("<span class='notice'>You open up the book and show it to [target]. </span>", \
 			"<span class='notice'> [user] opens up a book and shows it to [target]. </span>")
 		target << browse("<TT><I>Penned by [author].</I></TT> <BR>" + "[dat]", "window=book")
-		user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN) //to prevent spam
+		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam
 
 /*
 * Book Bundle (Multi-page book)

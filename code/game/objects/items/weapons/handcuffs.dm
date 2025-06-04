@@ -2,10 +2,8 @@
 	name = "handcuffs"
 	desc = "Use this to keep prisoners in line."
 	gender = PLURAL
-	icon = 'icons/items/handcuffs.dmi'
+	icon = 'icons/obj/items.dmi'
 	icon_state = "handcuff"
-	worn_state = "handcuff"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	slot_flags = SLOT_BELT
 	throw_force = 5
 	w_class = WEIGHT_CLASS_SMALL
@@ -23,7 +21,7 @@
 	var/cuff_type = "handcuffs"
 	var/use_time = 30
 
-/obj/item/handcuffs/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/handcuffs/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/carbon/C = target
 	if(!istype(C))
 		return
@@ -89,7 +87,7 @@
 	add_attack_logs(user,H,"Handcuffed (attempt)")
 	feedback_add_details("handcuffs","H")
 
-	user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
+	user.setClickCooldown(user.get_attack_speed(src))
 	user.do_attack_animation(H)
 
 	user.visible_message("<span class='danger'>\The [user] has put [cuff_type] on \the [H]!</span>")
@@ -209,11 +207,9 @@ var/last_chew = 0
 /obj/item/handcuffs/cable/tape/cyborg
 	dispenser = TRUE
 
-// todo: entirely overhaul or remove this
 /obj/item/handcuffs/disruptor
 	name = "disruptor cuffs"
 	icon_state = "disruptorcuff"
-	worn_state = "disruptorcuff"
 	desc = "These cutting edge handcuffs were originally designed by the PMD. Commonly deployed to restrain anomalous lifeforms, disruptor cuffs employ a form of acausal logic engine disruption, in tandem with morphogenic resonance, to neutralize the abilities of technological and biological threats."
 
 /obj/item/handcuffs/disruptor/equipped(var/mob/living/user,var/slot)
@@ -236,7 +232,7 @@ var/last_chew = 0
 	elastic = 0
 	cuff_sound = 'sound/weapons/handcuffs.ogg' //This shold work for now.
 
-/obj/item/handcuffs/legcuffs/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/handcuffs/legcuffs/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/carbon/C = target
 	if(!istype(C))
 		return
@@ -287,7 +283,7 @@ var/last_chew = 0
 	add_attack_logs(user,H,"Legcuffed (attempt)")
 	feedback_add_details("legcuffs","H")
 
-	user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
+	user.setClickCooldown(user.get_attack_speed(src))
 	user.do_attack_animation(H)
 
 	user.visible_message("<span class='danger'>\The [user] has put [cuff_type] on \the [H]!</span>")

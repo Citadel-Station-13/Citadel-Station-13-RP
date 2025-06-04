@@ -293,7 +293,7 @@
 		return ..()
 	if(IsAdminGhost(user))
 		return FALSE
-	if(!user.IsAdvancedToolUser())
+	if(!(istype(user, /mob/living/carbon/human) || istype(user, /mob/living/silicon)))
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return TRUE
 	if(ishuman(user))

@@ -30,7 +30,7 @@
 	item_state = "lgloves"
 	loc.assume_air(air_contents)
 
-/obj/item/latexballon/inflict_atom_damage(damage, damage_type, damage_tier, damage_flag, damage_mode, hit_zone, attack_type, datum/attack_source)
+/obj/item/latexballon/inflict_atom_damage(damage, damage_type, damage_tier, damage_flag, damage_mode, hit_zone, attack_type, datum/weapon)
 	. = ..()
 	burst()
 

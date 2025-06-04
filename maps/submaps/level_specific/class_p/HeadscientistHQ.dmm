@@ -448,7 +448,7 @@
 /turf/simulated/shuttle/floor/red,
 /area/submap/HeadscientistHQ)
 "uq" = (
-/obj/item/grenade/simple/spawner/manhacks/mercenary,
+/obj/item/grenade/spawnergrenade/manhacks/mercenary,
 /turf/simulated/shuttle/floor/red,
 /area/submap/HeadscientistHQ)
 "uz" = (

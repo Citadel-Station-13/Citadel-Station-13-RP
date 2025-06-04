@@ -100,16 +100,13 @@
 
 	take_victim(usr,usr)
 
-/obj/machinery/optable/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-	. = ..()
-	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
-		return
-	if(istype(using, /obj/item/grab))
-		var/obj/item/grab/G = using
+/obj/machinery/optable/attackby(obj/item/W, obj/item/I, mob/living/carbon/user)
+	if(istype(W, /obj/item/grab))
+		var/obj/item/grab/G = W
 		if(iscarbon(G.affecting) && check_table(G.affecting))
 			take_victim(G.affecting,usr)
-			qdel(using)
-			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+			qdel(W)
+			return
 
 /obj/machinery/optable/proc/check_table(mob/living/carbon/patient)
 	check_victim()

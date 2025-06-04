@@ -39,6 +39,8 @@
 				for(var/J in legacy_configs)
 					LoadEntries(J)
 				break
+	// loadmaplist(CONFIG_MAPS_FILE)
+	LoadWhitelists()
 	LoadMOTD()
 
 	loaded = TRUE

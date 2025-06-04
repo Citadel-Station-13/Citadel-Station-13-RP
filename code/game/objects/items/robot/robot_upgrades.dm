@@ -90,11 +90,12 @@
 	if(..())
 		return FALSE
 
-	if(R.movement_base_speed >= 7.5)
+	if(R.speed <= -0.5)
 		return FALSE
-	R.movement_base_speed = 7.5
-	R.update_movespeed_base()
+
+	R.speed = -0.5
 	return TRUE
+
 
 /obj/item/borg/upgrade/tasercooler
 	name = "robotic Rapid Taser Cooling Module"
