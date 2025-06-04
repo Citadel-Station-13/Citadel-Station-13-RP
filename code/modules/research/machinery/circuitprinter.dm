@@ -11,8 +11,9 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 	base_icon_state = "imprinter"
 	atom_flags = OPENCONTAINER
 	circuit = /obj/item/circuitboard/circuit_imprinter
-	
-	
+	has_interface = TRUE
+
+
 /obj/machinery/lathe/r_n_d/circuit_imprinter/update_icon_state()
 	. = ..()
 	if(machine_stat & NOPOWER)
