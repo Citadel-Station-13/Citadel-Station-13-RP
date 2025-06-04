@@ -143,7 +143,6 @@
 	item_state = "rscythe"
 	name = "reaper scythe"
 	desc = "Ask not for whom the bell tolls..."
-	armor_penetration = 35
 	slot_flags = SLOT_BACK
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	attack_verb = list("chopped", "sliced", "cut", "reaped")

@@ -244,7 +244,12 @@
 		var/hit_area = affecting.name
 
 		if(user != target)
-			var/list/shieldcall_results = target.run_mob_defense(7, attack_type = ATTACK_TYPE_MELEE, weapon = src, hit_zone = hit_area, clickchain = new /datum/event_args/actor/clickchain(user))
+			var/list/shieldcall_results = target.run_mob_defense(
+				7,
+				attack_type = ATTACK_TYPE_MELEE,
+				attack_source = new /datum/event_args/actor/clickchain(user),
+				hit_zone = hit_area,
+			)
 			if(shieldcall_results[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAG_ATTACK_BLOCKED)
 				return
 

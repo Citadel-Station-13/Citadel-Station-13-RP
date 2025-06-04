@@ -103,7 +103,7 @@
 	name = "protector stun beam"
 	icon_state = "omnilaser" //A little more cyan
 	light_color = "#00C6FF"
-	agony = 50 //Normal is 40 when this was set
+	damage_inflict_agony = 50 //Normal is 40 when this was set
 	legacy_muzzle_type = /obj/effect/projectile/muzzle/laser_omni
 	legacy_tracer_type = /obj/effect/projectile/tracer/laser_omni
 	legacy_impact_type = /obj/effect/projectile/impact/laser_omni

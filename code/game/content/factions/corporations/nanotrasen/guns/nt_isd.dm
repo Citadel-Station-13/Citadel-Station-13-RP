@@ -290,31 +290,25 @@
 /obj/projectile/nt_isd/laser/rifle
 	name = "laser"
 	damage_force = 35
-	damage_tier = LASER_TIER_MEDIUM
+	damage_tier = 4
 
 /obj/projectile/nt_isd/laser/sidearm
 	name = "phaser blast"
 	damage_force = 20
-	damage_tier = LASER_TIER_MEDIUM // ;)
-	// todo: remove
-	armor_penetration = 20
+	damage_tier = 4
 	fire_sound = /datum/soundbyte/guns/energy/laser_3/pistol
 
 /obj/projectile/nt_isd/laser/multiphase
 	name = "focused laser"
 	damage_force = 35
-	damage_tier = LASER_TIER_HIGH
-	// todo: remove
-	armor_penetration = 37.5
+	damage_tier = 4.75
 	fire_sound = /datum/soundbyte/guns/energy/laser_3/rifle
 
 /obj/projectile/nt_isd/laser/lance
 	name = "particle beam"
 	color = "#00ff00"
 	damage_force = 35
-	damage_tier = LASER_TIER_HIGH
-	// todo: remove
-	armor_penetration = 50
+	damage_tier = 5
 	fire_sound = /datum/soundbyte/guns/energy/laser_2
 
 /obj/projectile/nt_isd/shock
@@ -360,7 +354,9 @@
 	tracer_add_state_alpha = 65
 	auto_emissive_strength = 192
 	hitscan = TRUE
-	agony = 20
+	damage_flag = ARMOR_ENERGY
+	damage_force = 20
+	damage_type = DAMAGE_TYPE_HALLOSS
 	fire_sound = /datum/soundbyte/guns/energy/disabler_1
 	projectile_type = PROJECTILE_TYPE_BEAM | PROJECTILE_TYPE_PHOTONIC
 
