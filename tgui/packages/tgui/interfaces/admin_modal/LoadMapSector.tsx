@@ -107,7 +107,7 @@ export const LoadMapSector = (props, context) => {
               <OvermapOptions />
             )}
             {currentTab.startsWith("level-") && (
-              <MapLevelOptions />
+              <MapLevelOptions levelIndex={Number.parseInt(currentTab.substring(6), 10)} />
             )}
           </Stack.Item>
         </Stack>
@@ -120,7 +120,7 @@ const MapOptions = (props: {
 
 }, context) => {
   const { act, data, nestedData } = useBackend<ModalData>(context);
-  // const mapData: ModalMapData = nestedData['map'];
+  const mapData: ModalMapData = nestedData['map'];
   return (
     <Section fill title="Map Options">
       {JSON.stringify(data)}
@@ -130,7 +130,7 @@ const MapOptions = (props: {
             <Input />
         </VSplitTooltipList.Entry>
         <VSplitTooltipList.Entry label="Orientation" tooltip='Load orientation for the levels on this map.'>
-          {/* <Stack>
+          <Stack>
             <Stack.Item>
               <Button content="(CW 0°)" icon="arrow-down"
               color="transparent" onClick={() => act('mapOrientation', { 'setTo': 2 })}
@@ -151,7 +151,7 @@ const MapOptions = (props: {
               color="transparent" onClick={() => act('mapOrientation', { 'setTo': 4 })}
               selected={mapData.orientation === 4} />
             </Stack.Item>
-          </Stack> */}
+          </Stack>
         </VSplitTooltipList.Entry>
         <VSplitTooltipList.Entry label="Center" tooltip='Center the levels on this map. This should usually be on.'>
             <Input />
@@ -162,9 +162,8 @@ const MapOptions = (props: {
 };
 
 const MapLevelOptions = (props: {
-
+  levelIndex: number;
 }, context) => {
-  const { act, data, nestedData } = useBackend<ModalData>(context);
   const [levelTab, setLevelTab] = useLocalState<string>(context, 'levelTab', 'level');
   return (
     <Section fill title="Level Options">
@@ -173,6 +172,23 @@ const MapLevelOptions = (props: {
         <Tabs.Tab selected={levelTab === "trait"} onClick={() => setLevelTab("trait")}>Traits</Tabs.Tab>
         <Tabs.Tab selected={levelTab === "attr"} onClick={() => setLevelTab("attr")}>Attributes</Tabs.Tab>
       </Tabs>
+      {levelTab === 'level' && (<MapLevelProperties levelIndex={props.levelIndex} />)}
+      {levelTab === 'trait' && (<MapLevelTraits levelIndex={props.levelIndex} />)}
+      {levelTab === 'attr' && (<MapLevelAttributes levelIndex={props.levelIndex} />)}
+    </Section>
+  );
+};
+
+const MapLevelProperties = (props: {
+  levelIndex: number;
+}, context) => {
+  const { act, data, nestedData } = useBackend<ModalData>(context);
+
+  return (
+    <>
+      <Stack vertical fill>
+        test
+      </Stack>
       <LabeledList>
         <LabeledList.Item label="DMM">
           Test
@@ -218,7 +234,38 @@ const MapLevelOptions = (props: {
           <NumberInput value={0} minValue={0} onChange={(e, val) => { }} width="100%" />
         </LabeledList.Item>
       </LabeledList>
-    </Section>
+      test
+    </>
+  );
+};
+
+const MapLevelTraits = (props: {
+  levelIndex: number;
+}, context) => {
+  const { act, data, nestedData } = useBackend<ModalData>(context);
+
+  return (
+    <>
+      <Stack vertical fill>
+        test
+      </Stack>
+      test
+    </>
+  );
+};
+
+const MapLevelAttributes = (props: {
+  levelIndex: number;
+}, context) => {
+  const { act, data, nestedData } = useBackend<ModalData>(context);
+
+  return (
+    <>
+      <Stack vertical fill>
+        test
+      </Stack>
+      test
+    </>
   );
 };
 
