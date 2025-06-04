@@ -23,7 +23,7 @@
 	desc = "Toggles floor scrubbing."
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "scrub0"
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	var/enabled = FALSE
 
 /obj/item/pupscrubber/attack_self(mob/user, datum/event_args/actor/actor)

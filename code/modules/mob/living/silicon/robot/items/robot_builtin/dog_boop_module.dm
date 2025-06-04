@@ -4,7 +4,7 @@
 	icon_state = "nose"
 	desc = "The BOOP module, a simple reagent and atmosphere sniffer."
 	damage_force = 0
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	throw_force = 0
 	attack_verb = list("nuzzled", "nosed", "booped")
 	w_class = WEIGHT_CLASS_TINY
@@ -21,7 +21,7 @@
 	var/pressure = environment.return_pressure()
 	var/total_moles = environment.total_moles
 
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	user.setClickCooldownLegacy(DEFAULT_ATTACK_COOLDOWN)
 	user.visible_message("<span class='notice'>[user] sniffs the air.</span>", "<span class='notice'>You sniff the air...</span>")
 
 	to_chat(user, "<span class='notice'><B>Smells like:</B></span>")
@@ -42,7 +42,7 @@
 	if(!istype(target) && !ismob(target))
 		return
 
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	user.setClickCooldownLegacy(DEFAULT_ATTACK_COOLDOWN)
 
 
 	if(ismob(target))

@@ -5,7 +5,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "synthtongue"
 	attack_sound = 'sound/effects/attackblob.ogg'
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	var/emagged = 0
 	var/datum/matter_synth/water = null
 
@@ -39,7 +39,7 @@
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	user.setClickCooldownLegacy(DEFAULT_ATTACK_COOLDOWN)
 	if(user.client && (target in user.client.screen))
 		to_chat(user, "<span class='warning'>You need to take [target] off before cleaning it!</span>")
 	if(istype(target, /obj/structure/sink) || istype(target, /obj/structure/toilet)) //Dog vibes.

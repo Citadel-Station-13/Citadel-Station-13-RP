@@ -6,7 +6,7 @@
 	icon_state = "pounce"
 	desc = "Leap at your target to momentarily stun them."
 	damage_force = 0
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	throw_force = 0
 
 /obj/item/robot_builtin/dog_pounce/attack_self(mob/user, datum/event_args/actor/actor)
