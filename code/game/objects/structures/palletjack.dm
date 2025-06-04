@@ -65,6 +65,11 @@
 		content_appearance.appearance_flags |= RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM | KEEP_APART
 		. += content_appearance
 
+/obj/structure/palletjack/update_icon(updates)
+	. = ..()
+	if(updates & UPDATE_OVERLAYS)
+		compile_overlays() //forcefully compiles overlays to get reduce the annoying-ass flickering when taking things on/off
+
 /obj/structure/palletjack/proc/absorb_tile_contents()
 	var/picked_up = FALSE
 	for(var/atom/movable/M in loc)
@@ -112,6 +117,8 @@
 	. = ..()
 	if(!contents.len && !. && ismovable(blocker))
 		var/atom/movable/AM = blocker
+		if(istype(AM, /obj/structure/palletjack) && dir == AM.dir)
+			return .
 		if(AM.density && !AM.anchored && get_dir(src, target) & dir)
 			return TRUE
 
@@ -134,6 +141,7 @@
 	if(!contents.len && direct == dir)
 		for (var/atom/movable/AM in loc)
 			if(AM != src && AM.density && !AM.anchored)
+				absorb_tile_contents()
 				return FALSE
 
 	. = ..()
