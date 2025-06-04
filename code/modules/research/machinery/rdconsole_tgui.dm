@@ -159,6 +159,7 @@
 				busy_msg = null
 				files.AddTech2Known(t_disk.stored)
 				files.RefreshResearch()
+
 				UpdateKnownDesigns()
 				update_static_data(usr, ui)
 			return TRUE

@@ -121,6 +121,10 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 			circuit_designs.design_ids |= D.id
 		else if(D.lathe_type & LATHE_TYPE_PROTOLATHE)
 			lathe_designs.design_ids |= D.id
+	if(linked_lathe)
+		linked_lathe.ui_controller?.ui_design_update()
+	if(linked_imprinter)
+		linked_imprinter.ui_controller?.ui_design_update()
 
 /obj/machinery/computer/rdconsole/attackby(var/obj/item/D as obj, var/mob/user as mob)
 	//Loading a disk into it.

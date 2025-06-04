@@ -12,6 +12,7 @@
 	idle_power_usage = 30
 	active_power_usage = 5000
 	has_interface = TRUE
+	lathe_type = LATHE_TYPE_AUTOLATHE | LATHE_TYPE_PROTOLATHE
 
 /obj/machinery/lathe/r_n_d/protolathe/update_icon_state()
 	. = ..()
