@@ -567,7 +567,6 @@ export const ResearchConsoleProtolathe = (props, context) => {
       </Section>
     );
   }
-  act("access_lathe");
   return (
     <Section title="Protolathe">
       <Button
@@ -597,7 +596,6 @@ export const ResearchConsoleImprinter = (props, context) => {
       </Section>
     );
   }
-  act("access_imprinter");
   return (
     <Section title="Circuit Imprinter">
       <Button
@@ -615,7 +613,7 @@ const menus = [
   {
     name: "Circuit Imprinter",
     icon: "digital-tachograph",
-    template: <access_imprinter name="Circuit Imprinter" />,
+    template: <ResearchConsoleImprinter name="Circuit Imprinter" />,
   },
   { name: "Destructive Analyzer", icon: "eraser", template: <ResearchConsoleDestructiveAnalyzer /> },
   { name: "Settings", icon: "cog", template: <ResearchConsoleSettings /> },
