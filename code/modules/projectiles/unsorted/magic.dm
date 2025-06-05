@@ -4,8 +4,14 @@
 	damage_force = 0
 	damage_type = DAMAGE_TYPE_OXY
 	nodamage = TRUE
-	var/magic = TRUE
-	var/checks_antimagic = TRUE
+
+	projectile_hooks = list(
+		/datum/projectile_hook/antimagic_check{
+			magic_potency = MAGIC_POTENCY_LEGACY_WIZARD;
+			magic_type = MAGIC_TYPE_GENERIC;
+			threshold_delete = MAGIC_POTENC_LEGACY_WIZARD_DELETE;
+		},
+	)
 
 /obj/projectile/magic/death
 	name = "bolt of death"

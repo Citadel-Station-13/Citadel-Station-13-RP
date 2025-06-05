@@ -5,11 +5,8 @@
  * unlike /tg/ heretics implementation, ours is closer to one of those weird
  * ass RPG skill webs than being more tree-ish.
  */
-/datum/eldritch_knowledge
-	abstract_type = /datum/eldritch_knowledge
-
-	/// id. must be unique.
-	var/id
+/datum/prototype/eldritch_knowledge
+	abstract_type = /datum/prototype/eldritch_knowledge
 
 	/// name in UI
 	var/name = "???"
@@ -22,6 +19,8 @@
 	var/category = "???"
 
 	/// cannot be seen or acquired if not there, unless already acquired.
+	var/secret = FALSE
+	/// never show on UI or make known to the player / client
 	var/hidden = FALSE
 
 	/// position from origin
@@ -38,19 +37,26 @@
 	var/ui_icon_state
 
 	/// unlock recipe ids
-	var/list/give_recipe_ids
+	/// * superceding another id is not supported at this time; please make sure no two
+	///   knowledge nodes can have the same ID.
+	var/list/give_eldritch_recipe_ids
 	/// unlock passive ids
-	var/list/give_passive_ids
-	/// unlock abilities
-	/// * instances / typepaths, not ids
-	var/list/datum/ability/eldritch_ability/give_abilities
+	/// * superceding another id is not supported at this time; please make sure no two
+	///   knowledge nodes can have the same ID.
+	var/list/give_eldritch_passive_ids
+	/// unlock ability ids
+	/// * superceding another id is not supported at this time; please make sure no two
+	///   knowledge nodes can have the same ID.
+	var/list/give_eldritch_ability_ids
+	/// autounlock other knowledge ids once unlocked
+	var/list/give_eldritch_knowledge_ids
 
 #warn impl
 
-/datum/eldritch_knowledge/proc/apply(datum/eldritch_holder/holder)
+/datum/prototype/eldritch_knowledge/proc/apply(datum/eldritch_holder/holder)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
-/datum/eldritch_knowledge/proc/remove(datum/eldritch_holder/holder)
+/datum/prototype/eldritch_knowledge/proc/remove(datum/eldritch_holder/holder)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)

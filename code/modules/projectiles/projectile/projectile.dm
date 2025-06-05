@@ -955,7 +955,7 @@
 	if(projectile_hooks)
 		for(var/datum/projectile_hook/hook as anything in projectile_hooks)
 			if(hook.hook_impact)
-				impact_flags = hook.on_impact(args)
+				impact_flags = hook.on_impact(src, args)
 		if(impact_flags & PROJECTILE_IMPACT_FLAGS_SHOULD_DELETE)
 			if(hitscanning)
 				finalize_hitscan_tracers()

@@ -2,9 +2,12 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /**
- * Antimagic provider.
+ * Antimagic struct.
+ * * This is a struct datum, like armor and bodytypes. It's not a prototype.
  */
 /datum/antimagic
+	/// priority; lower is checked first
+	var/priority = ANTIMAGIC_PRIORITY_DEFAULT
 
 /**
  * Simple scaling
@@ -21,3 +24,4 @@
 
 
 #warn impl all
+

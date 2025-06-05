@@ -14,8 +14,54 @@ SUBSYSTEM_DEF(background_tasks)
 	/// keyed tasks
 	var/alist/keyed_tasks = alist()
 
+	/// finished task counter
+	var/finished_count = 0
+
+	/// the world.time start of the oldest task in running
+	var/lrt_time = 0
+
+/datum/controller/subsystem/background_tasks/Recover()
+	var/list/datum/background_task/new_running = list()
+	var/list/datum/background_task/new_yielding = list()
+	var/alist/new_keyed_tasks = list()
+	for(var/datum/background_task/task in running)
+		new_running += task
+		if(task.key)
+			new_keyed_tasks[task.key] = task
+	for(var/datum/background_task/task in yielding)
+		new_yielding += task
+	tim_sort(new_yielding, /proc/cmp_numeric_asc, TRUE)
+
+	running = new_running
+	yielding = new_yielding
+	keyed_tasks = new_keyed_tasks
+
+	return TRUE
+
+/datum/controller/subsystem/background_tasks/stat_entry()
+	if(can_fire && !(SS_NO_FIRE & subsystem_flags))
+		. = "[length(running)] RUN | [length(yielding)] YLD | [finished_count] FIN | [max(0, CEILING(world.time - lrt_time, 1) * 0.1)]s LRT"
+	else
+		. = ..()
+
 /datum/controller/subsystem/background_tasks/proc/fire(resumed)
-	#warn impl
+	var/list/datum/background_task/running = src.running
+	var/list/datum/background_task/yielding = src.yielding
+	#warn impl including lrt_time
+	var/tasks_to_run = min(5, running)
+	MC_SPLIT_TICK_INIT(tasks_to_run)
+	for(var/running_idx in 1 to tasks_to_run)
+		MC_SPLIT_TICK
+		var/datum/background_task/to_run = running[running_idx]
+
+	// check yielding for what needs to go to running
+	var/yielding_idx
+	for(yielding_idx in 1 to length(yielding))
+		if(yielding[yielding_idx].next_run_time <= world.time)
+			running += yielding[yielding_idx]
+		else
+			break
+	yielding.Cut(1, yielding_idx)
 
 /datum/controller/subsystem/background_tasks/proc/submit_task(datum/background_task/task)
 	ASSERT(task.status == BACKGROUND_TASK_IDLE)
@@ -30,6 +76,7 @@ SUBSYSTEM_DEF(background_tasks)
 	if(keyed_tasks[key])
 		var/datum/background_task/existing = keyed_tasks[key]
 		. = existing
+		#warn update lrt if needed
 		switch(existing.status)
 			if(BACKGROUND_TASK_QUEUED)
 				running -= existing

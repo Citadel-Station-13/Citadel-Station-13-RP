@@ -5,6 +5,10 @@
  * default-locked crafting recipes used by heretics
  */
 /datum/crafting_recipe/eldritch_recipe
-    always_available = FALSE
+	abstract_type = /datum/crafting_recipe/eldritch_recipe
+	always_available = FALSE
 
-#warn impl
+// TODO: better personal crafting system so we don't need to make this polled
+
+/datum/crafting_recipe/eldritch_recipe/check_special_learned(mob/user)
+	return id in user.eldritch_get_holder().known_recipe_ids

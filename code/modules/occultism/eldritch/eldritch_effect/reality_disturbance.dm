@@ -4,6 +4,7 @@
 /obj/effect/eldritch_effect/reality_disturbance
 	name = "ripple in the fabric of reality"
 	desc = "???"
+	#warn icon
 
 /obj/effect/eldritch_effect/reality_disturbance/Initialize(mapload)
 	var/list/random_names = list(

@@ -13,6 +13,9 @@
 
 	/// potency of block required to entirely delete projectile; defaults to [magic_potency]
 	var/threshold_delete
+	/// potency of block required to severely dampen projectile; defaults to [magic_potency]
+	var/threshold_dampen
 
-/datum/projectile_hook/antimagic_check/on_impact(list/impact_args)
+/datum/projectile_hook/antimagic_check/on_impact(obj/projectile/proj, list/impact_args)
 	#warn impl
+	#warn how to dampen? projectile trait?

@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
-/datum/eldritch_knowledge/entrypoint
+/datum/prototype/eldritch_knowledge/entrypoint
     name = "The Room Beyond"
     desc = "A peek behind the curtains."
     #warn lore blurb

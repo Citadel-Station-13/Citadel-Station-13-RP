@@ -324,16 +324,6 @@
 #define ABOVE_LIGHTING_LAYER_MAIN 1
 
 /**
- *! -- Debug Plane
- *? For things like map landmarks
- */
-#warn move to debug plane
-#define DEBUG_PLANE 23
-#define DEBUG_LAYER_AREA_OVERLAYS 100
-#define DEBUG_LAYER_MAP_HELPERS 250
-#define DEBUG_LAYER_SHUTTLE_MARKERS 500
-
-/**
  *! -- Augmented Plane
  *? Augmented-reality stuff.
  */
@@ -356,6 +346,9 @@
  * Only visible by admin-ghosts with game debug introspection toggled on.
  */
 #define DEBUG_PLANE 37
+#define DEBUG_LAYER_AREA_OVERLAYS 100
+#define DEBUG_LAYER_MAP_HELPERS 250
+#define DEBUG_LAYER_SHUTTLE_MARKERS 500
 #warn impl this
 
 /**
