@@ -194,6 +194,10 @@
 			var/amt = RC.reagents?.trans_to_holder(stored_reagents, RC.amount_per_transfer_from_this)
 			if(amt)
 				user.action_feedback(SPAN_NOTICE("You transfer [amt] units of the solution from \the [I] to [src]."), src)
+				ui_controller?.ui_reagents_update()
+			else if(!RC.reagents.total_volume)
+				user.action_feedback(SPAN_WARNING("[RC] is empty!"), src)
+				return CLICKCHAIN_DO_NOT_PROPAGATE
 			else
 				user.action_feedback(SPAN_WARNING("[src] can't hold any more reagents!"), src)
 				return CLICKCHAIN_DO_NOT_PROPAGATE

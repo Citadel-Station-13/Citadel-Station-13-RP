@@ -107,7 +107,7 @@
 			var/amount = text2num(params["amount"]) || INFINITY
 			if(amount <= 0)
 				return FALSE
-			lathe.reagents.remove_reagent(params["id"], amount)
+			lathe.stored_reagents.remove_reagent(params["id"], amount)
 			ui_reagents_update()
 			return TRUE
 		if("ejectItem")
