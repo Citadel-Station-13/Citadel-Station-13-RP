@@ -28,7 +28,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/structure/palletjack/LateInitialize()
-	. = ..()
 	update_appearance(UPDATE_ICON)
 
 /obj/structure/palletjack/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
