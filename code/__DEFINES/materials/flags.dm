@@ -21,28 +21,17 @@ DEFINE_BITFIELD(material_flags, list(
 //* /datum/prototype/design material_constraints list values
 
 
-//all on. NEVER GIVE A MATERIAL THIS. THIS SHOULD BE ON material_constraints ONLY.
-#define MATERIAL_CONSTRAINT_UNCONSTRAINED ~0
 
-//can be used for structure. walls, floors, etc
-#define MATERIAL_CONSTRAINT_RIGID (1<<0)
-
-//transparent: glass and stuff
-#define MATERIAL_CONSTRAINT_TRANSPARENT (1<<1)
-
-//conducts electricity
-#define MATERIAL_CONSTRAINT_CONDUCTIVE (1<<2)
-
-
-//
+#define MATERIAL_CONSTRAINT_UNCONSTRAINED ~0 //all on. NEVER GIVE A MATERIAL THIS. THIS SHOULD BE ON material_constraints ONLY.
+#define MATERIAL_CONSTRAINT_RIGID (1<<0)//can be used for structure. walls, floors, etc
+#define MATERIAL_CONSTRAINT_TRANSPARENT (1<<1) //transparent: glass and stuff
+#define MATERIAL_CONSTRAINT_CONDUCTIVE (1<<2) //conducts electricity
 
 DEFINE_BITFIELD(material_constraints, list(
 	BITFIELD(MATERIAL_CONSTRAINT_RIGID),
 	BITFIELD(MATERIAL_CONSTRAINT_TRANSPARENT),
 	BITFIELD(MATERIAL_CONSTRAINT_CONDUCTIVE),
 ))
-
-
 
 //* /datum/prototype/material_trait material_trait_flags
 
