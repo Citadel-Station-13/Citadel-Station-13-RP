@@ -39,7 +39,7 @@
 	recharge_rate = 2
 	no_den_usage = 1
 	var/allowed_projectile_types = list(/obj/projectile/magic/resurrection, /obj/projectile/magic/death, /obj/projectile/magic/teleport,
-		/obj/projectile/magic/door, /obj/projectile/magic/aoe/fireball,	/obj/projectile/magic/spellblade, /obj/projectile/magic/arcane_barrage,
+		/obj/projectile/magic/door, /obj/projectile/magic/fireball,	/obj/projectile/magic/spellblade, /obj/projectile/magic/arcane_barrage,
 		/obj/projectile/magic/locker)	//These two are commented out until they work in RP code: /obj/projectile/magic/change, /obj/projectile/magic/animate,
 
 /obj/item/gun/projectile/magic/staff/chaos/proc/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0, stam_cost = 0)
