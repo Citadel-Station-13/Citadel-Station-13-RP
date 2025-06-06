@@ -156,40 +156,6 @@
 		return ui_act(action, params, ui, new /datum/event_args/actor(usr))
 	return FALSE
 
-/**
- * public
- *
- * Checks the overall UI state for a mob.
- *
- * todo: this is just completely ignored for modules/embedding. is this a good thing? ~silicons
- *
- * @params
- * * user - The mob who opened/is using the UI.
- * * state - The state to check.
- *
- * return UI_state The state of the UI.
- */
-/datum/proc/ui_status(mob/user, datum/ui_state/state)
-	var/src_object = ui_host(user)
-	. = UI_CLOSE
-	if(!state)
-		return
-
-	if(isobserver(user))
-		// If they turn on ghost AI control, admins can always interact.
-		if(IsAdminGhost(user))
-			. = max(., UI_INTERACTIVE)
-
-		// Regular ghosts can always at least view if in range.
-		if(user.client)
-			// todo: in view range for zooming
-			if(get_dist(src_object, user) < max(CEILING(user.client.current_viewport_width / 2, 1), CEILING(user.client.current_viewport_height / 2, 1)))
-				. = max(., UI_UPDATE)
-
-	// Check if the state allows interaction
-	var/result = state.can_use_topic(src_object, user)
-	. = max(., result)
-
 //* API - Update - Optimizers, look here! *//
 
 /**
