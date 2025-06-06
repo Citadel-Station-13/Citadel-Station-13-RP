@@ -40,7 +40,7 @@ GLOBAL_LIST_EMPTY(cached_shieldcall_datums)
 	var/low_level_intercept = FALSE
 
 /**
- * sent over from the atom
+ * sent over from the atom upon a damage instance
  *
  * @params
  * * defending - the atom in question

@@ -6,7 +6,13 @@
  * Escalating cooldown as it's used more, but can be used in rapid succession after sufficient pause.
  */
 /datum/prototype/eldritch_ability/patron/blade/realignment
+	ability_type = /datum/ability/eldritch_ability/patron/blade/realignment
 
 /datum/ability/eldritch_ability/patron/blade/realignment
 
+
 #warn impl
+
+
+/datum/ability/eldritch_ability/patron/blade/realignment/proc/give_status_effect_to(mob/target)
+	#warn impl

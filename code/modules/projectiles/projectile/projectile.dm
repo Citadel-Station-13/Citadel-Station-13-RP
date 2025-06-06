@@ -1212,19 +1212,19 @@
 			damage_mode | (DAMAGE_MODE_REQUEST_ARMOR_BLUNTING | DAMAGE_MODE_REQUEST_ARMOR_RANDOMIZATION),
 			ATTACK_TYPE_PROJECTILE,
 			src,
-			NONE,
+			SHIELDCALL_FLAG_SECOND_CALL,
 			hit_zone,
 		)
 		if(damage_inflict_agony)
 			target.run_damage_instance(
-				damage_inflict_agony,
+				damage_inflict_agony * efficiency,
 				damage_type,
 				damage_tier,
 				damage_flag,
 				damage_mode | (DAMAGE_MODE_REQUEST_ARMOR_BLUNTING | DAMAGE_MODE_REQUEST_ARMOR_RANDOMIZATION),
 				ATTACK_TYPE_PROJECTILE,
 				src,
-				NONE,
+				SHIELDCALL_FLAG_SECOND_CALL,
 				hit_zone,
 			)
 
