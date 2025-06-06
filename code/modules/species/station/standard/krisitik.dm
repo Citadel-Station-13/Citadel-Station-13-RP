@@ -38,29 +38,27 @@
 	// wikilink = ""
 	catalogue_data = list(/datum/category_item/catalogue/fauna/krisitik)
 
-
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	flesh_color = "#AFA59E"
 	base_color  = "B2B2B2"
 
-	slowdown  = -0.35
-
 	brute_mod = 1.1
 	burn_mod  = 1.1
 	flash_mod = 1.5 //Cave creatures don't like bright lights
 	radiation_mod = 0.75 //Hardened Genes
 
+	movement_base_speed = 5.5
 	gluttonous    = 1
 
 	max_age = 100
 
 	unarmed_types = list(
-		/datum/unarmed_attack/stomp,
-		/datum/unarmed_attack/kick,
-		/datum/unarmed_attack/claws,
-		/datum/unarmed_attack/bite/sharp,
+		/datum/melee_attack/unarmed/stomp,
+		/datum/melee_attack/unarmed/kick,
+		/datum/melee_attack/unarmed/claws,
+		/datum/melee_attack/unarmed/bite/sharp,
 	)
 
 	inherent_verbs = list(

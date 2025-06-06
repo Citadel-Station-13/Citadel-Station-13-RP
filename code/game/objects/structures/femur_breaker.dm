@@ -74,7 +74,7 @@
 
 /obj/structure/femur_breaker/proc/damage_leg(mob/living/carbon/human/H)
 	var/where_we_snappin_boys = pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
-	H.emote("scream")
+	H.emote_nosleep("scream")
 	H.apply_damage(150, DAMAGE_TYPE_BRUTE, where_we_snappin_boys)
 	var/obj/item/bodypart/cracka = H.get_bodypart(where_we_snappin_boys)
 	if(cracka)

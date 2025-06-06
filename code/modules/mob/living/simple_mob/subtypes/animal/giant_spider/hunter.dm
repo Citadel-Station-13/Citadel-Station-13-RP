@@ -30,7 +30,7 @@
 	legacy_melee_damage_lower = 9
 	legacy_melee_damage_upper = 15
 
-	movement_cooldown = 0 // Hunters are FAST.
+	movement_base_speed = 6.66 // Hunters are FAST.
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/hunter_spider
 
@@ -87,7 +87,14 @@
 		if(L == src)
 			continue
 
-		var/list/shieldcall_result = L.atom_shieldcall(40, DAMAGE_TYPE_BRUTE, MELEE_TIER_MEDIUM, ARMOR_MELEE, NONE, ATTACK_TYPE_MELEE)
+		var/list/shieldcall_result = L.atom_shieldcall(
+			40,
+			DAMAGE_TYPE_BRUTE,
+			3,
+			ARMOR_MELEE,
+			NONE,
+			ATTACK_TYPE_MELEE,
+		)
 		if(shieldcall_result[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 			continue
 

@@ -5,7 +5,6 @@
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	icon = 'icons/obj/weapons.dmi'
 	gender = NEUTER
-	damage_tier = MELEE_TIER_LIGHT
 	throw_speed = 3
 	throw_range = 7
 	w_class = WEIGHT_CLASS_NORMAL
@@ -36,7 +35,6 @@
 	// var/dulled_divisor = 0.1	//Just drops the damage to a tenth
 	// var/drops_debris = 1
 
-
 /obj/item/material/Initialize(mapload, material)
 	if(!isnull(material))
 		material_parts = material
@@ -63,12 +61,11 @@
 	// todo: this is a multiplier, not a divisor
 	throw_force = damage_force * throw_force_multiplier
 
-/obj/item/material/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/material/melee_finalize(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
 	. = ..()
-	MATERIAL_INVOKE(src, MATERIAL_TRAIT_ATTACK, on_mob_attack, target, target_zone, src, ATTACK_TYPE_MELEE)
+	MATERIAL_INVOKE(src, MATERIAL_TRAIT_MELEE, on_melee_finalize, clickchain, clickchain_flags, attack_style)
 
 // todo: dulling system, maybe /obj/item level..?
-
 
 /obj/item/material/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
 	// if(istype(W, /obj/item/whetstone))

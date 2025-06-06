@@ -176,7 +176,7 @@ var/list/admin_verbs_server = list(
 	/client/proc/cmd_del_all_force,
 	/client/proc/cmd_del_all_hard,
 	/client/proc/check_timer_sources,
-	/client/proc/allow_browser_inspect,
+	/client/proc/toggle_browser_inspect,
 	/client/proc/cmd_admin_clear_mobs,
 	/datum/admins/proc/adspawn,
 	/datum/admins/proc/adjump,
@@ -209,7 +209,7 @@ var/list/admin_verbs_debug = list(
 	/client/proc/cmd_del_all_force,
 	/client/proc/cmd_del_all_hard,
 	/client/proc/check_timer_sources,
-	/client/proc/allow_browser_inspect,
+	/client/proc/toggle_browser_inspect,
 	/client/proc/cmd_debug_tog_aliens,
 	/client/proc/cmd_display_del_log,
 	/client/proc/cmd_display_init_log,
@@ -332,7 +332,7 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/cmd_del_all_force,
 	/client/proc/cmd_del_all_hard,
 	/client/proc/check_timer_sources,
-	/client/proc/allow_browser_inspect,
+	/client/proc/toggle_browser_inspect,
 	/client/proc/cmd_admin_clear_mobs,
 	/client/proc/cmd_debug_tog_aliens,
 	/client/proc/cmd_display_del_log,
@@ -1087,4 +1087,3 @@ var/list/admin_verbs_event_manager = list(
 	var/datum/browser/popup = new(src, "event_volunteers", "Event Volunteers (In game)", 800, 1200)
 	popup.set_content(dat.Join(""))
 	popup.open()
-

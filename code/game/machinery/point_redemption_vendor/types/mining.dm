@@ -81,10 +81,11 @@
 		new /datum/point_redemption_item("Injector (L) - Panacea",/obj/item/reagent_containers/hypospray/autoinjector/biginjector/purity,	500),
 		new /datum/point_redemption_item("Injector (L) - Trauma",/obj/item/reagent_containers/hypospray/autoinjector/biginjector/brute,	500),
 		new /datum/point_redemption_item("Nanopaste Tube",				/obj/item/stack/nanopaste,											1000),
-		new /datum/point_redemption_item("Defense Equipment - Smoke Bomb",/obj/item/grenade/smokebomb,								100),
-		new /datum/point_redemption_item("Defense Equipment - Razor Drone Deployer",/obj/item/grenade/spawnergrenade/manhacks/station/locked,	1000),
-		new /datum/point_redemption_item("Defense Equipment - Sentry Drone Deployer",/obj/item/grenade/spawnergrenade/ward,			1500),
+		new /datum/point_redemption_item("Defense Equipment - Smoke Bomb",/obj/item/grenade/simple/smoke,								100),
+		new /datum/point_redemption_item("Defense Equipment - Razor Drone Deployer",/obj/item/grenade/simple/spawner/manhacks/station/locked,	1000),
+		new /datum/point_redemption_item("Defense Equipment - Sentry Drone Deployer",/obj/item/grenade/simple/spawner/ward,			1500),
 		new /datum/point_redemption_item("Defense Equipment - Plasteel Machete",	/obj/item/clothing/accessory/holster/machete/occupied,				500),
 		new /datum/point_redemption_item("Defense Equipment - Kinetic Dagger",	/obj/item/kinetic_crusher/dagger,				1200),
+		new /datum/point_redemption_item("Defense Equipment - Kinetic Gauntlets",	/obj/item/kinetic_gauntlets,				2000),
 		new /datum/point_redemption_item("Bar Shelter Capsule",		/obj/item/survivalcapsule/luxurybar,							10000)
 	)

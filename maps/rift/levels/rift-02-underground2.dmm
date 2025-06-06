@@ -116,8 +116,8 @@
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/crew_quarters/heads/chief)
 "aE" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
-/obj/effect/paint/sun,
+/obj/spawner/window/low_wall/nogrille/firelocks,
+/obj/map_helper/paint/sun,
 /turf/simulated/floor/plating,
 /area/engineering/engine_airlock)
 "aF" = (
@@ -3224,8 +3224,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/sun,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/sun,
 /turf/simulated/floor/plating,
 /area/engineering/foyer)
 "lW" = (
@@ -4311,7 +4311,7 @@
 	dir = 4;
 	id = "bunker"
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/public_bunker)
 "oW" = (
@@ -4357,7 +4357,7 @@
 	dir = 8;
 	id = "bunker"
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/public_bunker)
 "pb" = (
@@ -4869,7 +4869,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "qR" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/quartermaster/miningdock)
 "qS" = (
@@ -5310,8 +5310,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/engineering/atmos/locker_room)
 "sz" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint/sun,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint/sun,
 /turf/simulated/floor,
 /area/engineering/engine_airlock)
 "sA" = (
@@ -5572,8 +5572,8 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/sun,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/sun,
 /turf/simulated/floor,
 /area/maintenance/substation/engineering)
 "tB" = (
@@ -5877,7 +5877,7 @@
 /area/maintenance/chapel)
 "uN" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Underground 2"
+	RCon_tag = "Underground 2 - Main Substation"
 	},
 /obj/structure/cable/green{
 	icon_state = "0-2"
@@ -6176,7 +6176,7 @@
 	dir = 2;
 	id = "bunker"
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/public_bunker)
 "vW" = (
@@ -7881,8 +7881,8 @@
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "CH" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/sun,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
+/obj/map_helper/paint/sun,
 /obj/map_helper/electrochromatic_linker{
 	id = "ce_office"
 	},
@@ -8177,8 +8177,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/engine_waste)
 "DI" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/secure_storage/lower)
 "DK" = (
@@ -8479,8 +8479,8 @@
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "ET" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/palebottlegreen,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
+/obj/map_helper/paint/palebottlegreen,
 /obj/map_helper/electrochromatic_linker{
 	id = "chapel_office"
 	},
@@ -8959,8 +8959,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "Ha" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/palebottlegreen,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
+/obj/map_helper/paint/palebottlegreen,
 /obj/map_helper/electrochromatic_linker{
 	id = "chapel_hall"
 	},
@@ -9181,8 +9181,8 @@
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "HY" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
-/obj/effect/paint/sun,
+/obj/spawner/window/low_wall/nogrille/firelocks,
+/obj/map_helper/paint/sun,
 /turf/simulated/floor/plating,
 /area/engineering/workshop)
 "Ia" = (
@@ -10083,8 +10083,8 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
 "LD" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint/sun,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint/sun,
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "engine_monitor_blast";
@@ -10296,8 +10296,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
 "Mu" = (
-/obj/effect/paint_stripe/sun,
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/map_helper/paint_stripe/sun,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	name = "Reactor Blast Door";
@@ -11238,8 +11238,8 @@
 /turf/simulated/floor/lino,
 /area/chapel/office)
 "PM" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/beastybrown,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/miningdock)
 "PN" = (
@@ -11341,7 +11341,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/belterdock/gear)
 "Qr" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/refinery)
 "Qt" = (
@@ -11590,7 +11590,7 @@
 /area/engineering/atmos/hallway)
 "Rr" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Engineering Substation Bypass"
+	RCon_tag = "Underground 2 - Engineering Substation Bypass"
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/engineering)
@@ -12812,8 +12812,8 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/underground/under2)
 "VV" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
-/obj/effect/paint/beastybrown,
+/obj/spawner/window/low_wall/nogrille/firelocks,
+/obj/map_helper/paint/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/miningdock)
 "VW" = (
@@ -13350,7 +13350,7 @@
 /area/rnd/secure_storage/critical)
 "Yd" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Underground 2"
+	RCon_tag = "Underground 2 - Main Bypass"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/atmos)
@@ -13369,8 +13369,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "Yl" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
-/obj/effect/paint/sun,
+/obj/spawner/window/low_wall/nogrille/firelocks,
+/obj/map_helper/paint/sun,
 /turf/simulated/floor/plating,
 /area/engineering/engine_monitoring)
 "Yq" = (
@@ -13491,8 +13491,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "YJ" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
-/obj/effect/paint/sun,
+/obj/spawner/window/low_wall/nogrille/firelocks,
+/obj/map_helper/paint/sun,
 /turf/simulated/floor/plating,
 /area/engineering/engineering_monitoring)
 "YM" = (
@@ -13530,7 +13530,7 @@
 /area/rnd/secure_storage/critical/records)
 "YY" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Engineering";
+	RCon_tag = "Underground 2 - Engineering Substation";
 	output_attempt = 0
 	},
 /obj/machinery/camera/network/engineering,

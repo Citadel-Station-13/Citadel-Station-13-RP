@@ -1,5 +1,9 @@
 /**
  * Species IDs
+ *
+ * * stop using these, use /datum/species/type/path/here::id or ::uid if you really need the lookup.
+ *   species id mechanics tend to be awful, as species are a composition baseline template,
+ *   not the composition itself on a human.
  */
 #define SPECIES_ID_ADHERENT "adherent"
 #define SPECIES_ID_AKULA "akula"
@@ -36,7 +40,7 @@
 #define SPECIES_ID_SCORI "scori"
 #define SPECIES_ID_SERGLING "sergling"
 #define SPECIES_ID_SHADEKIN "shadekin"
-#define SPECIES_ID_SHADEKIN_BLACK "blackeyedshadekin"
+#define SPECIES_ID_SHADEKIN_BLACK "shadekin_blackeyed"
 #define SPECIES_ID_SHADOW "shadow"
 #define SPECIES_ID_SKELETON "skeleton"
 #define SPECIES_ID_SKRELL "skrell"
@@ -68,8 +72,8 @@
 	#define SPECIES_ID_XENOMORPH_HUNTER "xenomorph_hunter"
 	#define SPECIES_ID_XENOMORPH_QUEEN "xenomorph_queen"
 	#define SPECIES_ID_XENOMORPH_SENTINEL "xenomorph_sentinel"
-#define SPECIES_ID_XENOHYBRID "xenomorph_hybrid"
-	#define SPECIES_ID_XENOHYBRID_ALT "xenomorph_hybrid_alt"
+#define SPECIES_ID_XENOHYBRID "xenohybrid"
+	#define SPECIES_ID_XENOHYBRID_ALT "xenohybrid_alt"
 #define SPECIES_ID_ZADDAT "zaddat"
 #define SPECIES_ID_ZORREN "zorren"
 	#define SPECIES_ID_ZORREN_HIGH "zorren_high"

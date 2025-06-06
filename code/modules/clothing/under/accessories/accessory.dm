@@ -211,7 +211,7 @@
 		return ..()
 	return TRUE
 
-/obj/item/clothing/accessory/stethoscope/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/clothing/accessory/stethoscope/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(ishuman(target) && isliving(user))
@@ -906,3 +906,10 @@
 	name = "medical exoframe"
 	desc = "A cheap medical exoframe mass-produced by Nanotrasen and provided to employees who cannot function in gravity without assistance."
 	icon_state = "civ_exos_mob"
+
+// PMD
+
+/obj/item/clothing/accessory/pmdpin
+	name = "PMD lapel pin"
+	desc = "A monochrome enamel pin of the PMD's half-lidded eye Icon."
+	icon_state = "pmdpin"

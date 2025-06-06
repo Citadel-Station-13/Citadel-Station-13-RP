@@ -19,16 +19,16 @@
 		list(mode_name="low-power", fire_delay=8, projectile_type=/obj/projectile/beam/weaklaser, charge_cost = 60),
 	)
 
-/obj/item/gun/projectile/energy/frontier/on_attack_hand(datum/event_args/actor/clickchain/e_args)
+/obj/item/gun/projectile/energy/frontier/on_attack_hand(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
-	if(.)
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
-	var/mob/user = e_args.performer
+	var/mob/user = clickchain.performer
 	if(!user.inventory.count_empty_hands())
 		return
 	if(recharging)
 		return
-	. = TRUE
+	. |= CLICKCHAIN_DID_SOMETHING
 	recharging = 1
 	update_icon()
 	user.visible_message("<span class='notice'>[user] opens \the [src] and starts pumping the handle.</span>", \
@@ -108,16 +108,16 @@
 	firemodes = list(
 	)
 
-/obj/item/gun/projectile/energy/frontier/taj/on_attack_hand(datum/event_args/actor/clickchain/e_args)
+/obj/item/gun/projectile/energy/frontier/taj/on_attack_hand(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
-	if(.)
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
-	if(!e_args.performer.inventory.count_empty_hands())
+	if(!clickchain.performer.inventory.count_empty_hands())
 		return
-	var/mob/user = e_args.performer
+	var/mob/user = clickchain.performer
 	if(recharging)
 		return
-	. = TRUE
+	. |= CLICKCHAIN_DID_SOMETHING
 	recharging = 1
 	update_icon()
 	user.visible_message("<span class='notice'>[user] begins to turn the crank of \the [src].</span>", \

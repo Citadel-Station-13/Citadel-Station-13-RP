@@ -3,7 +3,7 @@
 /turf/simulated/floor/carpet,
 /area/submap/skyplanet/poi/broken3)
 "d" = (
-/obj/spawner/window/low_wall/full/nogrille,
+/obj/spawner/window/low_wall/nogrille,
 /turf/simulated/floor/plating/outdoors,
 /area/submap/skyplanet/poi/broken3)
 "f" = (
