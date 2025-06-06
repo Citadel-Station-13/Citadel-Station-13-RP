@@ -28,5 +28,6 @@
 			"id" = initial(map_level_attribute_path.id),
 			"desc" = initial(map_level_attribute_path.desc),
 			"allowEdit" = initial(map_level_attribute_path.allow_edit),
+			"numeric" = initial(map_level_attribute_path.numeric),
 		)
 	.["keyedLevelAttributes"] = assembled_attributes

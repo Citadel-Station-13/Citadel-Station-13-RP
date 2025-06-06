@@ -5,9 +5,13 @@
 
 import { BooleanLike } from "common/react";
 import { useBackend, useLocalState } from "tgui/backend";
-import { Button, Flex, Input, LabeledList, NumberInput, Section, Stack, Tabs } from "tgui/components";
+import { Box, Button, Flex, Input, LabeledList, NumberInput, Section, Stack, Tabs } from "tgui/components";
 import { Window } from "tgui/layouts";
 import { VSplitTooltipList } from "../../components/VSplitTooltipList";
+import { WorldTypepathDropdown } from "../../components/WorldTypepathDropdown";
+import { JsonAssetLoader } from "../../components/JsonAssetLoader";
+import { Json_MapSystem, JsonMappings } from "../../bindings/json";
+import { LoadingScreen } from "../../components/LoadingScreen";
 
 enum LoadMapSectorStatus {
   Waiting = "waiting",
@@ -15,7 +19,6 @@ enum LoadMapSectorStatus {
   Loading = "loading",
   Finished = "Finsihed",
 }
-
 
 interface ModalData {
   status: LoadMapSectorStatus;
@@ -29,6 +32,7 @@ interface ModalMapData {
   name: string;
   orientation: number;
   center: BooleanLike;
+  overmap: ModalOvermapData | null;
 }
 
 interface ModalLevelData {
@@ -54,6 +58,9 @@ interface ModalOvermapData {
   y: number;
   forcePos: BooleanLike;
 }
+
+// TODO: atmosphere modification system
+// TODO: procedural generation support
 
 export const LoadMapSector = (props, context) => {
   const { act, data, nestedData } = useBackend<ModalData>(context);
@@ -127,34 +134,34 @@ const MapOptions = (props: {
       {JSON.stringify(nestedData)}
       <VSplitTooltipList leftSideWidthPercent={33}>
         <VSplitTooltipList.Entry label="Name" tooltip="Name of the map.">
-            <Input />
+          <Input />
         </VSplitTooltipList.Entry>
         <VSplitTooltipList.Entry label="Orientation" tooltip='Load orientation for the levels on this map.'>
           <Stack>
             <Stack.Item>
               <Button content="(CW 0°)" icon="arrow-down"
-              color="transparent" onClick={() => act('mapOrientation', { 'setTo': 2 })}
-              selected={mapData.orientation === 2} />
+                color="transparent" onClick={() => act('mapOrientation', { 'setTo': 2 })}
+                selected={mapData.orientation === 2} />
             </Stack.Item>
             <Stack.Item>
               <Button content="(CW 90°)" icon="arrow-left"
-              color="transparent" onClick={() => act('mapOrientation', { 'setTo': 8 })}
-              selected={mapData.orientation === 8} />
+                color="transparent" onClick={() => act('mapOrientation', { 'setTo': 8 })}
+                selected={mapData.orientation === 8} />
             </Stack.Item>
             <Stack.Item>
               <Button content="(CW 180)" icon="arrow-up"
-              color="transparent" onClick={() => act('mapOrientation', { 'setTo': 1 })}
-              selected={mapData.orientation === 1} />
+                color="transparent" onClick={() => act('mapOrientation', { 'setTo': 1 })}
+                selected={mapData.orientation === 1} />
             </Stack.Item>
             <Stack.Item>
               <Button content="(CW 270°)" icon="arrow-right"
-              color="transparent" onClick={() => act('mapOrientation', { 'setTo': 4 })}
-              selected={mapData.orientation === 4} />
+                color="transparent" onClick={() => act('mapOrientation', { 'setTo': 4 })}
+                selected={mapData.orientation === 4} />
             </Stack.Item>
           </Stack>
         </VSplitTooltipList.Entry>
         <VSplitTooltipList.Entry label="Center" tooltip='Center the levels on this map. This should usually be on.'>
-            <Input />
+          <Input />
         </VSplitTooltipList.Entry>
       </VSplitTooltipList>
     </Section>
@@ -183,59 +190,61 @@ const MapLevelProperties = (props: {
   levelIndex: number;
 }, context) => {
   const { act, data, nestedData } = useBackend<ModalData>(context);
+  const levelData: ModalLevelData = nestedData[`level-${props.levelIndex}`];
+  const levelAct = (action: string, params: Object) => act(action, { levelIndex: props.levelIndex, ...params });
 
   return (
-    <>
-      <Stack vertical fill>
-        test
-      </Stack>
-      <LabeledList>
-        <LabeledList.Item label="DMM">
-          Test
-        </LabeledList.Item>
-        <LabeledList.Item label="Struct Position">
-          <Flex width="100%">
-            <Flex.Item>
-              X: <NumberInput value={0} onChange={(e, val) => { }} />
-            </Flex.Item>
-            <Flex.Item>
-              Y: <NumberInput value={0} onChange={(e, val) => { }} />
-            </Flex.Item>
-            <Flex.Item>
-              Z: <NumberInput value={0} onChange={(e, val) => { }} />
-            </Flex.Item>
-          </Flex>
-        </LabeledList.Item>
-        <LabeledList.Item label="Name">
-          <Input onChange={(e, val) => { }} width="100%" value={"test"} />
-        </LabeledList.Item>
-        <LabeledList.Item label="ID">
-          <Input onChange={(e, val) => { }} width="100%" value={"test"} />
-        </LabeledList.Item>
-        <LabeledList.Item label="Display Name (IC)">
-          <Input onChange={(e, val) => { }} width="100%" value={"test"} />
-        </LabeledList.Item>
-        <LabeledList.Item label="Display ID (IC)">
-          <Input onChange={(e, val) => { }} width="100%" value={"test"} />
-        </LabeledList.Item>
-        <LabeledList.Item label="Base Turf">
-          Test
-        </LabeledList.Item>
-        <LabeledList.Item label="Base Area">
-          Test
-        </LabeledList.Item>
-        <LabeledList.Item label="Air - Indoors">
-          Test
-        </LabeledList.Item>
-        <LabeledList.Item label="Air - Outdoors">
-          Test
-        </LabeledList.Item>
-        <LabeledList.Item label="Ceiling Height">
-          <NumberInput value={0} minValue={0} onChange={(e, val) => { }} width="100%" />
-        </LabeledList.Item>
-      </LabeledList>
-      test
-    </>
+    <VSplitTooltipList leftSideWidthPercent={25}>
+      <VSplitTooltipList.Entry label="DMM" tooltip="The map file to load. If there is none, the level will be an empty plane.">
+        Test
+      </VSplitTooltipList.Entry>
+      <VSplitTooltipList.Entry
+        label="Position"
+        tooltip="The position on the map's structure. Adjacent levels will automatically join their edges (as well as up/down).">
+        <Flex width="100%">
+          <Flex.Item>
+            X: <NumberInput value={levelData.structX} onChange={(e, val) => levelAct('levelStructX', { val: val })} />
+          </Flex.Item>
+          <Flex.Item>
+            Y: <NumberInput value={levelData.structY} onChange={(e, val) => levelAct('levelStructY', { val: val })} />
+          </Flex.Item>
+          <Flex.Item>
+            Z: <NumberInput value={levelData.structZ} onChange={(e, val) => levelAct('levelStructZ', { val: val })} />
+          </Flex.Item>
+        </Flex>
+      </VSplitTooltipList.Entry>
+      <VSplitTooltipList.Entry label="Name">
+        <Input onChange={(e, val) => levelAct('levelName', { setTo: val })} width="100%" value={levelData.name} />
+      </VSplitTooltipList.Entry>
+      <VSplitTooltipList.Entry label="ID">
+        <Input onChange={(e, val) => levelAct('levelId', { setTo: val })} width="100%" value={levelData.id} />
+      </VSplitTooltipList.Entry>
+      <VSplitTooltipList.Entry label="Display Name (IC)">
+        <Input onChange={(e, val) => levelAct('levelDisplayName', { setTo: val })} width="100%" value={levelData.displayName} />
+      </VSplitTooltipList.Entry>
+      <VSplitTooltipList.Entry label="Display ID (IC)">
+        <Input onChange={(e, val) => levelAct('levelDisplayId', { setTo: val })} width="100%" value={levelData.displayId} />
+      </VSplitTooltipList.Entry>
+      <VSplitTooltipList.Entry label="Base Turf">
+        <WorldTypepathDropdown filter={{
+          showTurfs: true,
+        }} />
+      </VSplitTooltipList.Entry>
+      <VSplitTooltipList.Entry label="Base Area">
+        <WorldTypepathDropdown filter={{
+          showAreas: true,
+        }} />
+      </VSplitTooltipList.Entry>
+      <VSplitTooltipList.Entry label="Air - Indoors">
+        Test
+      </VSplitTooltipList.Entry>
+      <VSplitTooltipList.Entry label="Air - Outdoors">
+        Test
+      </VSplitTooltipList.Entry>
+      <VSplitTooltipList.Entry label="Ceiling Height">
+        <NumberInput value={0} minValue={0} onChange={(e, val) => { }} width="100%" />
+      </VSplitTooltipList.Entry>
+    </VSplitTooltipList>
   );
 };
 
@@ -243,14 +252,24 @@ const MapLevelTraits = (props: {
   levelIndex: number;
 }, context) => {
   const { act, data, nestedData } = useBackend<ModalData>(context);
+  const levelData: ModalLevelData = nestedData[`level-${props.levelIndex}`];
 
   return (
-    <>
-      <Stack vertical fill>
-        test
-      </Stack>
-      test
-    </>
+    <Box width="100%" height="100%">
+      <JsonAssetLoader assets={[JsonMappings.MapSystem]}
+        loading={() => (
+          <LoadingScreen />
+        )}
+        loaded={(json) => {
+          const mapSystemData: Json_MapSystem = json[JsonMappings.MapSystem];
+          return (
+            <>
+              Test
+            </>
+          );
+        }}
+       />
+    </Box>
   );
 };
 
@@ -258,14 +277,24 @@ const MapLevelAttributes = (props: {
   levelIndex: number;
 }, context) => {
   const { act, data, nestedData } = useBackend<ModalData>(context);
+  const levelData: ModalLevelData = nestedData[`level-${props.levelIndex}`];
 
   return (
-    <>
-      <Stack vertical fill>
-        test
-      </Stack>
-      test
-    </>
+    <Box width="100%" height="100%">
+      <JsonAssetLoader assets={[JsonMappings.MapSystem]}
+        loading={() => (
+          <LoadingScreen />
+        )}
+        loaded={(json) => {
+          const mapSystemData: Json_MapSystem = json[JsonMappings.MapSystem];
+          return (
+            <>
+              Test
+            </>
+          );
+        }}
+       />
+    </Box>
   );
 };
 
@@ -276,18 +305,18 @@ const OvermapOptions = (props: {
   return (
     <Section fill title="Overmap Binding">
       <LabeledList>
-        <LabeledList.Item label="Load Into Overmap" labelDesc="Whether or not this level should be loaded into the overmap. This usually should be on.">
+        <VSplitTooltipList.Entry label="Load Into Overmap" tooltip="Whether or not this level should be loaded into the overmap. This usually should be on.">
           Test
-        </LabeledList.Item>
-        <LabeledList.Item label="X" labelDesc="If set, try to set the sector at this X on the overmap.">
+        </VSplitTooltipList.Entry>
+        <VSplitTooltipList.Entry label="X" tooltip="If set, try to set the sector at this X on the overmap.">
           Test
-        </LabeledList.Item>
-        <LabeledList.Item label="Y" labelDesc="If set, try to set the sector at this Y on the overmap.">
+        </VSplitTooltipList.Entry>
+        <VSplitTooltipList.Entry label="Y" tooltip="If set, try to set the sector at this Y on the overmap.">
           Test
-        </LabeledList.Item>
-        <LabeledList.Item label="Force Position" labelDesc="If enabled, override overmap placement safety checks.">
+        </VSplitTooltipList.Entry>
+        <VSplitTooltipList.Entry label="Force Position" tooltip="If enabled, override overmap placement safety checks.">
           Test
-        </LabeledList.Item>
+        </VSplitTooltipList.Entry>
       </LabeledList>
     </Section>
   );

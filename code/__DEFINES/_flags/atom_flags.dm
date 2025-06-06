@@ -208,6 +208,8 @@ DEFINE_BITFIELD(buckle_flags, list(
 //*     /atom 'atom_spawn_flags' variable    *//
 //* tgui binding: types/DM_AtomSpawnFlags.ts *//
 
+#warn rethink this, this shoudln't work this way
+
 /// Allow in admin buildmode
 #define ATOM_SPAWN_FLAG_ADMIN (1<<0)
 /// Allow in holodeck
@@ -224,6 +226,6 @@ DEFINE_BITFIELD(buckle_flags, list(
 DEFINE_BITFIELD(atom_spawn_flags, list(
 	BITFIELD_NEW("Allow Buildmode", ATOM_SPAWN_FLAG_ADMIN),
 	BITFIELD_NEW("Allow Holodeck", ATOM_SPAWN_FLAG_HOLOGRAM),
-	BITFIELD_NEW("Allow Virtual Reality", ATOM_SPAWN_FLAG_VIRTUAL_REALITY),
-	BITFIELD_NEW("Allow (Flood)fill", ATOM_SPAWN_FLAG_ALLOW_FILL),
+	BITFIELD_NEW("Allow VR", ATOM_SPAWN_FLAG_VIRTUAL_REALITY),
+	BITFIELD_NEW("Allow Fill", ATOM_SPAWN_FLAG_ALLOW_FILL),
 ))

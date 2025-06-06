@@ -16,5 +16,6 @@ export interface Json_MapSystem extends Json_AssetPackBase {
     id: string,
     desc: string,
     allowEdit: BooleanLike,
+    numeric: BooleanLike,
   }>;
 }

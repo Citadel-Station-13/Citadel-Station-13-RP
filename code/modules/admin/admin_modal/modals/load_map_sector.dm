@@ -192,15 +192,25 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 			. = TRUE
 		if("levelBaseTurf")
 			target_level.base_turf = text2path(params["type"]) || world.turf
+			if(!ispath(target_level.base_turf, /turf))
+				target_level.base_turf = world.turf
 			update_ui_level_index_data(target_level_index)
 			. = TRUE
 		if("levelBaseArea")
 			target_level.base_area = text2path(params["type"]) || world.turf
+			if(!ispath(target_level.base_turf, /area))
+				target_level.base_area = world.area
 			. = TRUE
-		if("levelStructXYZ")
-			target_level.struct_x = params["x"]
-			target_level.struct_y = params["y"]
-			target_level.struct_z = params["z"]
+		if("levelStructX")
+			target_level.struct_x = params["val"]
+			update_ui_level_index_data(target_level_index)
+			. = TRUE
+		if("levelStructY")
+			target_level.struct_x = params["val"]
+			update_ui_level_index_data(target_level_index)
+			. = TRUE
+		if("levelStructZ")
+			target_level.struct_x = params["val"]
 			update_ui_level_index_data(target_level_index)
 			. = TRUE
 		if("levelAirIndoors")
