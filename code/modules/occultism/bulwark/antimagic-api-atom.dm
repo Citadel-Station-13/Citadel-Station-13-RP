@@ -1,6 +1,9 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
+/atom/proc/antimagic_fetch_or_init_coverage() as /datum/component/antimagic_coverage
+	return LoadComponent(/datum/component/antimagic_coverage)
+
 /**
  * @return modified args; access with ANTIMAGIC_ARG_*
  */

@@ -10,6 +10,13 @@
 /datum/prototype/eldritch_passive
 	abstract_type = /datum/prototype/eldritch_passive
 
+	/// our name
+	var/name = "???"
+	/// our interface desc
+	var/desc = "A perk granted by the infinite plane."
+	/// our interface lore blurb; null for none
+	var/lore
+
 	/// our context type, if any
 	var/context_type
 	/// can be toggled on/off

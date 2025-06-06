@@ -26,6 +26,22 @@
  */
 
 /datum/mind
+	//* Abilities *//
+	/// mind-level abilities
+	var/list/datum/ability/abilities
+
+	//* Characteristics *//
+	/// characteristics holder
+	var/datum/characteristics_holder/characteristics
+
+	//*                Role Functional Holders             *//
+	//* Role API will later handle adding/removing/access, *//
+	//* this is the holder / data datums.                  *//
+	/// Holder for occultism/eldritch module
+	var/datum/eldritch_holder/r_holder_eldritch
+
+	//! legacy below !//
+
 	/// ckey of mind
 	var/ckey
 	/// Replaces mob/var/original_name
@@ -38,14 +54,6 @@
 
 	var/mob/living/original	//TODO: remove.not used in any meaningful way ~Carn. First I'll need to tweak the way silicon-mobs handle minds.
 	var/active = FALSE
-
-	//? Characteristics
-	/// characteristics holder
-	var/datum/characteristics_holder/characteristics
-
-	//? Abilities
-	/// mind-level abilities
-	var/list/datum/ability/abilities
 
 	//? Preferences
 	/**

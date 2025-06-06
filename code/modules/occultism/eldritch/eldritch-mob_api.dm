@@ -11,27 +11,18 @@
 	#warn impl
 
 /**
- * get overall magic mitigation multiplier
- * * lower is better, 0.5 = take 0.5x effect
- */
-/mob/proc/eldritch_get_magic_mitigation()
-	SHOULD_NOT_SLEEP(TRUE)
-	SHOULD_CALL_PARENT(TRUE)
-	. = 1
-	#warn impl
-
-/**
  * returns a list of active eldritch_holder's
  */
 /mob/proc/eldritch_get_holders() as /list
-	return list()
-	#warn impl
+	. = list()
+	if(mind?.r_holder_eldritch)
+		. += mind.r_holder_eldritch
 
 /**
  * returns dominant eldritch_holder, if any
  */
 /mob/proc/eldritch_get_holder() as /datum/eldritch_holder
-	return
+	return mind?.r_holder_eldritch
 	#warn impl
 
 #warn how to do this
