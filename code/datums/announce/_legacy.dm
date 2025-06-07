@@ -17,6 +17,7 @@
 	var/newscast = 0
 	var/channel_name = "Station Announcements"
 	var/announcement_type = "Announcement"
+	var/frequency = FREQ_COMMON
 
 /datum/legacy_announcement/New(do_log = 0, new_sound = null, do_newscast = 0)
 	sound = new_sound

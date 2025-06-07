@@ -402,6 +402,7 @@
 /datum/map/station/proc/default_internal_channels()
 	return list(
 		num2text(FREQ_COMMON) = list(),
+		num2text(FREQ_ATC) = list(),
 		num2text(FREQ_AI_PRIVATE)  = list(ACCESS_SPECIAL_SILICONS),
 		num2text(FREQ_ENTERTAINMENT) = list(),
 		num2text(FREQ_ERT) = list(ACCESS_CENTCOM_ERT),
