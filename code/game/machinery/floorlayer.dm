@@ -106,7 +106,7 @@
 		T = tile
 		tile.forceMove(src)
 	else
-		tile.merge(T)
+		tile.merge_into_other(T)
 
 /obj/machinery/floorlayer/proc/CollectTiles(turf/w_turf)
 	for(var/obj/item/stack/tile/tile in w_turf)
