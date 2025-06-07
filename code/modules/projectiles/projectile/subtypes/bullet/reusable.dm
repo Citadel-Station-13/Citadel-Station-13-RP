@@ -45,13 +45,13 @@
 	name = "hardened bone arrow"
 	desc = "Arrow made of bone and sinew."
 	damage_force = 35
-	armor_penetration = 10
+	damage_tier = 2.5
 	ammo_type = /obj/item/ammo_casing/arrow/bone_ap
 
 /obj/projectile/bullet/reusable/arrow/bronze //Just some AP shots
 	name = "bronze arrow"
 	desc = "Bronze tipped arrow."
-	armor_penetration = 30
+	damage_tier = 3
 	ammo_type = /obj/item/ammo_casing/arrow/bronze
 
 //Plunger

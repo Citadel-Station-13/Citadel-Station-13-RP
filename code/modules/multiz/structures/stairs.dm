@@ -108,8 +108,7 @@
 /obj/structure/stairs/bottom/Initialize(mapload)
 	. = ..()
 	if(!get_vertical_step(src, UP))
-		warning("Stair created without level above: ([loc.x], [loc.y], [loc.z])")
-		return INITIALIZE_HINT_QDEL
+		CRASH("Stair created without level above: [audit_loc()].")
 
 /obj/structure/stairs/bottom/Destroy()
 	if(top)
@@ -200,8 +199,7 @@
 /obj/structure/stairs/middle/Initialize(mapload)
 	. = ..()
 	if(!get_vertical_step(src, UP))
-		warning("Stair created without level above: ([loc.x], [loc.y], [loc.z])")
-		return INITIALIZE_HINT_QDEL
+		CRASH("Stair created without level above: [audit_loc()].")
 
 /obj/structure/stairs/middle/Destroy()
 	if(top)
@@ -283,8 +281,7 @@
 /obj/structure/stairs/top/Initialize(mapload)
 	. = ..()
 	if(!get_vertical_step(src, DOWN))
-		warning("Stair created without level below: ([loc.x], [loc.y], [loc.z])")
-		return INITIALIZE_HINT_QDEL
+		CRASH("Stair created without level below: [audit_loc()].")
 
 /obj/structure/stairs/top/Destroy()
 	if(middle)
@@ -376,11 +373,9 @@
 	var/turf/T2 = get_vertical_step(B2, UP)
 
 	if(!istype(B1) || !istype(B2))
-		warning("Stair created at invalid loc: ([loc.x], [loc.y], [loc.z])")
-		return INITIALIZE_HINT_QDEL
+		CRASH("Stair created at invalid loc: [audit_loc()].")
 	if(!istype(T1) || !istype(T2))
-		warning("Stair created without level above: ([loc.x], [loc.y], [loc.z])")
-		return INITIALIZE_HINT_QDEL
+		CRASH("Stair created without level above: [audit_loc()].")
 
 	// Spawn the stairs
 	// Railings sold separately

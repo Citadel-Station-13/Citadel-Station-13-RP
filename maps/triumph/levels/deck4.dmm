@@ -1315,9 +1315,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced,
-/obj/structure/curtain/black{
-	anchored = 1
-	},
+/obj/structure/curtain/black,
 /obj/map_helper/paint_stripe/darkred,
 /turf/simulated/floor,
 /area/security/brig)
@@ -1971,9 +1969,7 @@
 "bph" = (
 /obj/spawner/window/low_wall/reinforced,
 /obj/machinery/door/firedoor/glass,
-/obj/structure/curtain/black{
-	anchored = 1
-	},
+/obj/structure/curtain/black,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "bpI" = (
@@ -2551,9 +2547,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/structure/curtain/black{
-	anchored = 1
-	},
+/obj/structure/curtain/black,
 /turf/simulated/floor/tiled/monotile,
 /area/security/brig)
 "bLC" = (
@@ -6038,9 +6032,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced,
-/obj/structure/curtain/black{
-	anchored = 1
-	},
+/obj/structure/curtain/black,
 /obj/map_helper/paint_stripe/darkred,
 /turf/simulated/floor,
 /area/security/brig)
@@ -9175,9 +9167,7 @@
 /obj/machinery/shower{
 	pixel_y = 8
 	},
-/obj/structure/curtain/open/shower{
-	anchored = 1
-	},
+/obj/structure/curtain/open/shower,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -10287,9 +10277,7 @@
 /obj/machinery/door/airlock/glass{
 	name = "Chapel"
 	},
-/obj/structure/curtain/black{
-	anchored = 1
-	},
+/obj/structure/curtain/black,
 /turf/simulated/floor/carpet/sblucarpet,
 /area/chapel/main)
 "hbF" = (
@@ -12837,9 +12825,7 @@
 /obj/machinery/door/airlock{
 	name = "Public Cold Pool"
 	},
-/obj/structure/curtain/open/shower{
-	anchored = 1
-	},
+/obj/structure/curtain/open/shower,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -18419,9 +18405,7 @@
 /obj/machinery/door/airlock/glass{
 	name = "Chapel"
 	},
-/obj/structure/curtain/black{
-	anchored = 1
-	},
+/obj/structure/curtain/black,
 /turf/simulated/floor/carpet/sblucarpet,
 /area/chapel/main)
 "mJy" = (
@@ -20259,9 +20243,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 4
 	},
-/obj/structure/curtain/open/shower{
-	anchored = 1
-	},
+/obj/structure/curtain/open/shower,
 /turf/simulated/floor/tiled,
 /area/security/brig)
 "nVs" = (
@@ -21214,9 +21196,7 @@
 /obj/machinery/shower{
 	pixel_y = 8
 	},
-/obj/structure/curtain/open/shower{
-	anchored = 1
-	},
+/obj/structure/curtain/open/shower,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
@@ -23971,7 +23951,6 @@
 	id = "Interr";
 	name = "interrogation window"
 	},
-/obj/map_helper/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/interrogation)
 "qCU" = (
@@ -24735,7 +24714,6 @@
 	id = "Interr";
 	name = "interrogation window"
 	},
-/obj/map_helper/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/interrogation)
 "rfr" = (
@@ -25772,9 +25750,7 @@
 "rUF" = (
 /obj/spawner/window/low_wall/reinforced,
 /obj/machinery/door/firedoor/glass,
-/obj/structure/curtain/black{
-	anchored = 1
-	},
+/obj/structure/curtain/black,
 /turf/simulated/floor/airless,
 /area/maintenance/security/starboard)
 "rUP" = (
@@ -26364,9 +26340,7 @@
 /obj/machinery/shower{
 	pixel_y = 8
 	},
-/obj/structure/curtain/open/shower{
-	anchored = 1
-	},
+/obj/structure/curtain/open/shower,
 /turf/simulated/floor/tiled/white,
 /area/triumph/surfacebase/sauna)
 "snu" = (
@@ -27321,9 +27295,7 @@
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
 "tbS" = (
-/obj/structure/curtain/black{
-	anchored = 1
-	},
+/obj/structure/curtain/black,
 /turf/simulated/floor/wood,
 /area/library)
 "tci" = (
@@ -28979,9 +28951,7 @@
 /obj/machinery/door/airlock{
 	name = "Public Heated Pool"
 	},
-/obj/structure/curtain/open/shower{
-	anchored = 1
-	},
+/obj/structure/curtain/open/shower,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -30766,9 +30736,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/curtain/black{
-	anchored = 1
-	},
+/obj/structure/curtain/black,
 /turf/simulated/floor/wood,
 /area/library)
 "vvR" = (
@@ -34890,7 +34858,6 @@
 	id = "Interr";
 	name = "interrogation window"
 	},
-/obj/map_helper/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/interrogation)
 "yiH" = (

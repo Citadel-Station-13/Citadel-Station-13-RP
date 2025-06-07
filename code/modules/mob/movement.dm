@@ -1,9 +1,3 @@
-//DO NOT USE THIS UNLESS YOU ABSOLUTELY HAVE TO. THIS IS BEING PHASED OUT FOR THE MOVESPEED MODIFICATION SYSTEM.
-//See code/modules/movespeed/movespeed_modifier.dm
-/mob/proc/movement_delay()	//update /living/movement_delay() if you change this
-	SHOULD_CALL_PARENT(TRUE)
-	return cached_hyperbolic_slowdown
-
 /mob/proc/applyMoveCooldown(amount)
 	move_delay = max(move_delay, world.time + amount)
 
@@ -53,24 +47,6 @@
  */
 /mob/proc/can_cross_under(atom/movable/mover)
 	return !mover.density && !mover.throwing && !istype(mover, /obj/projectile)
-
-/**
-  * Toggle the move intent of the mob
-  *
-  * triggers an update the move intent hud as well
-  */
-/mob/proc/toggle_move_intent(mob/user)
-	if(m_intent == MOVE_INTENT_RUN)
-		m_intent = MOVE_INTENT_WALK
-	else
-		m_intent = MOVE_INTENT_RUN
-/*
-	if(hud_used && hud_used.static_inventory)
-		for(var/atom/movable/screen/mov_intent/selector in hud_used.static_inventory)
-			selector.update_icon()
-*/
-	// nah, vorecode bad.
-	hud_used?.move_intent?.icon_state = (m_intent == MOVE_INTENT_RUN)? "running" : "walking"
 
 /**
   * Move a client in a direction
@@ -130,7 +106,7 @@
 		return
 	// nonliving get handled differently
 	if(!isliving(mob))
-		mob.move_delay = world.time + mob.cached_hyperbolic_slowdown
+		mob.move_delay = world.time + mob.movement_delay()
 		return mob.Move(n, direct)
 	// autoghost if needed
 	if((mob.stat == DEAD) && isliving(mob) && !mob.forbid_seeing_deadchat)
@@ -225,19 +201,16 @@
 		to_chat(src, "<span class='warning'>You're restrained! You can't move!</span>")
 		mob.move_delay = world.time + 5 // 5 ds delay
 		return FALSE
-	if(length(mob.pinned))
-		mob.move_delay = world.time + 5 // 5 ds delay
-		to_chat(src, "<font color=#4F49AF>You're pinned to a wall by [mob.pinned[1]]!</font>")
-		return FALSE
+	// if(length(mob.pinned))
+	// 	mob.move_delay = world.time + 5 // 5 ds delay
+	// 	to_chat(src, "<font color=#4F49AF>You're pinned to a wall by [mob.pinned[1]]!</font>")
+	// 	return FALSE
 	//! End
 
 	//? NOW we try to move.
 
 	// get additional delay from this move
 	var/add_delay = max(world.tick_lag, mob.movement_delay())
-	//! TODO: REMOVE ; COMPATABILITY LAYER TO USE NEW MOVESPEED.
-	add_delay = min(10 / ((10 / add_delay) * (1 * mob.cached_movespeed_multiply)), 10 / MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND)
-	//! END
 	// for grabs (legacy code moment)
 	var/add_delay_grab = 0
 

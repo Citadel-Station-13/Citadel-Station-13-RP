@@ -85,7 +85,7 @@
 			)
 	legacy_melee_damage_lower = 40
 	legacy_melee_damage_upper = 40
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 	icon_scale_x = 1.4
 	icon_scale_y = 1.4
 	attack_sound = 'sound/enigma/enigma_hit2.ogg'
@@ -127,7 +127,7 @@
 	legacy_melee_damage_lower = 20
 	legacy_melee_damage_upper = 20
 	base_attack_cooldown = 6
-	movement_cooldown = 1
+	movement_base_speed = 10 / 1
 	attack_sound = 'sound/enigma/enigma_hit.ogg'
 	movement_sound = 'sound/enigma/enigma_move.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/hivebot
@@ -154,7 +154,7 @@
 
 	legacy_melee_damage_lower = 25
 	legacy_melee_damage_upper = 25
-	movement_cooldown = 5
+	movement_base_speed = 10 / 5
 	base_pixel_x = 1.5
 	base_pixel_y = 1.5
 	attack_sound =  'sound/weapons/slash.ogg'
@@ -181,7 +181,7 @@
 
 	legacy_melee_damage_lower = 10
 	legacy_melee_damage_upper = 10
-	movement_cooldown = 2
+	movement_base_speed = 10 / 2
 	attack_sound = 'sound/items/drill_hit.ogg'
 	movement_sound = 'sound/enigma/enigma_move.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/event
@@ -211,7 +211,7 @@
 
 	legacy_melee_damage_lower = 0
 	legacy_melee_damage_upper = 0
-	movement_cooldown = 6
+	movement_base_speed = 10 / 6
 	movement_sound = 'sound/enigma/enigma_move.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
 	projectiletype = /obj/projectile/beam/cyan/hivebot
@@ -250,7 +250,7 @@
 				)
 	legacy_melee_damage_lower = 20
 	legacy_melee_damage_upper = 20
-	movement_cooldown = 6
+	movement_base_speed = 10 / 6
 	attack_sound = 'sound/enigma/enigma_hit2.ogg'
 	movement_sound = 'sound/enigma/enigma_move2.ogg'
 	icon_scale_x = 1.1
@@ -297,7 +297,7 @@
 
 	legacy_melee_damage_lower = 5
 	legacy_melee_damage_upper = 5
-	movement_cooldown = 2
+	movement_base_speed = 10 / 2
 	movement_sound = 'sound/enigma/enigma_move.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged
 	projectiletype = /obj/projectile/beam/weak
@@ -323,7 +323,7 @@
 	legacy_melee_damage_lower = 5
 	legacy_melee_damage_upper = 5
 	base_attack_cooldown = 25
-	movement_cooldown = 3
+	movement_base_speed = 10 / 3
 	movement_sound = 'sound/enigma/enigma_move.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/sniper
 	projectiletype = /obj/projectile/beam/xray
@@ -348,7 +348,7 @@
 
 	legacy_melee_damage_lower = 5
 	legacy_melee_damage_upper = 5
-	movement_cooldown = 2
+	movement_base_speed = 10 / 2
 	movement_sound = 'sound/enigma/enigma_move.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
 	projectiletype = /obj/projectile/ion
@@ -377,7 +377,7 @@
 
 	legacy_melee_damage_lower = 18
 	legacy_melee_damage_upper = 18 //It hits you with a hardened nanite fist. Thats supposed to hurt
-	movement_cooldown = 1 //again faster than standard grunts
+	movement_base_speed = 10 / 1 //again faster than standard grunts
 	movement_sound = 'sound/enigma/enigma_move.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting //Made to draw fire hence kiting
 	projectiletype = /obj/projectile/beam/antigravbeamwraith
@@ -420,7 +420,7 @@
 	legacy_melee_damage_upper = 35 //I hate damage variance
 	attack_armor_pen = 25
 	base_attack_cooldown = 7 //1.3 attacks per second
-	movement_cooldown = 0 //MUCH faster
+	movement_base_speed = 6.66 //MUCH faster
 	movement_sound = 'sound/enigma/enigma_move.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/hivebot //hit and Run Melee is broken for when more than 1 player is visible
 
@@ -477,7 +477,14 @@
 		if(L == src)
 			continue
 
-		var/list/shieldcall_result = L.atom_shieldcall(40, DAMAGE_TYPE_BRUTE, MELEE_TIER_MEDIUM, ARMOR_MELEE, NONE, ATTACK_TYPE_MELEE) //NEEDS LIFE TESTING
+		var/list/shieldcall_result = L.atom_shieldcall(
+			40,
+			DAMAGE_TYPE_BRUTE,
+			3,
+			ARMOR_MELEE,
+			NONE,
+			ATTACK_TYPE_MELEE,
+		) //NEEDS LIFE TESTING
 		if(shieldcall_result[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 			continue
 
@@ -506,7 +513,7 @@
 	icon_living = "mimir"
 	icon_scale_x = 1.3
 	icon_scale_y = 1.3
-	movement_cooldown = 3
+	movement_base_speed = 10 / 3
 	maxHealth = 1000
 	health = 1000
 	armor_legacy_mob = list(

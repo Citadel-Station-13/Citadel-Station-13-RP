@@ -11,10 +11,9 @@
 	src.traumatic_shock = 			\
 	1	* src.getOxyLoss() + 		\
 	0.7	* src.getToxLoss() + 		\
-	1.2	* src.getShockFireLoss() + 		\
-	1.2	* src.getShockBruteLoss() + 		\
-	1.7	* src.getCloneLoss() + 		\
-	2	* src.halloss + 			\
+	max(1.25 * src.getShockFireLoss(), 2 * src.halloss) + 		\
+	1	* src.getShockBruteLoss() + 		\
+	1.35 * src.getCloneLoss() + 		\
 	-1	* src.chem_effects[CE_PAINKILLER]
 
 	if(src.slurring)

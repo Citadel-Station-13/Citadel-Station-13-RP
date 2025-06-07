@@ -16,9 +16,12 @@
 	value = CATALOGUER_REWARD_MEDIUM
 
 /datum/armor/physiology/frostfly
-	melee = 0.20
+	melee = 0.4
+	melee_tier = 2
 	bullet = 0.1
-	laser = 0.05
+	bullet_tier = 2
+	laser = 0.15
+	laser_tier = 2
 	laser_soak = 15
 	bomb = 0.1
 	bio = 1.0
@@ -48,7 +51,7 @@
 	var/energy = 100
 	var/max_energy = 100
 
-	movement_cooldown = 0.5
+	movement_base_speed = 10 / 0.5
 
 	legacy_melee_damage_lower = 5
 	legacy_melee_damage_upper = 10

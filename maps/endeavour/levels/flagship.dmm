@@ -9711,13 +9711,6 @@
 	icon_state = "carpet"
 	},
 /area/centcom/command)
-"Et" = (
-/obj/spawner/window/low_wall/firelocks,
-/obj/spawner/window/low_wall/firelocks,
-/turf/unsimulated/floor{
-	name = "plating"
-	},
-/area/centcom/security)
 "Ev" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
@@ -47227,7 +47220,7 @@ WK
 WK
 WK
 zm
-Et
+zm
 WK
 wp
 Xd

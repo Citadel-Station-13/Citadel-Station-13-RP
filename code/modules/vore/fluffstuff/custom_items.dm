@@ -93,7 +93,7 @@
 	if(isliving(user))
 		user.visible_message("<span class='warning'>[user] waves their Banner around!</span>","<span class='warning'>You wave your Banner around.</span>")
 
-/obj/item/flag/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/flag/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
@@ -956,7 +956,7 @@
 	icon_state = "hisstective_badge"
 	//slot_flags = SLOT_TIE | SLOT_BELT
 
-/obj/item/clothing/accessory/badge/holo/detective/ruda/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/clothing/accessory/badge/holo/detective/ruda/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
@@ -1002,7 +1002,7 @@
 	name = "Lesser Form Injector"
 	desc = "Turn the user into their lesser, more primal form."
 
-/obj/item/fluff/injector/monkey/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/fluff/injector/monkey/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
@@ -1018,7 +1018,7 @@
 	name = "Numbing Venom Injector"
 	desc = "Injects the user with a high dose of some type of chemical, causing any chemical glands they have to kick into overdrive and create the production of a numbing enzyme that is injected via bites.."
 
-/obj/item/fluff/injector/numb_bite/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/fluff/injector/numb_bite/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
@@ -1127,101 +1127,6 @@
 		return
 	else
 		..()
-
-//jacknoir413:Areax Third
-// todo: check sprite, if it matches citmain just integrate this to citrp proper.
-/obj/item/melee/baton/fluff/stunstaff
-	name = "Electrostaff"
-	desc = "Six-foot long staff from dull, rugged metal, with two thin spikes protruding from each end. Small etching near to the middle of it reads 'Children Of Nyx Facilities: Product No. 12'."
-	icon = 'icons/vore/custom_items_vr.dmi'
-	item_icons = list(SLOT_ID_LEFT_HAND = 'icons/vore/custom_items_left_hand_vr.dmi', SLOT_ID_RIGHT_HAND = 'icons/vore/custom_items_right_hand_vr.dmi')
-	icon_state = "stunstaff00"
-	var/base_icon = "stunstaff"
-	damage_force = 5
-	throw_force = 7
-	w_class = WEIGHT_CLASS_HUGE
-	origin_tech = list(TECH_COMBAT = 2)
-	attack_verb = list("beaten")
-	lightcolor = "#CC33FF"
-
-	passive_parry = /datum/passive_parry/melee{
-		parry_chance_melee = 30;
-	}
-
-	//Two Handed
-	var/wielded = 0
-	var/base_name = "stunstaff"
-
-/obj/item/melee/baton/fluff/stunstaff/Initialize(mapload)
-	. = ..()
-	bcell = new/obj/item/cell/device/weapon(src)
-	update_icon()
-	return
-
-/obj/item/melee/baton/fluff/stunstaff/update_worn_icon()
-	var/mob/living/M = loc
-	if(istype(M) && !issmall(M) && M.is_holding(src) && !M.are_usable_hands_full())
-		wielded = 1
-		damage_force = 15
-		name = "[base_name] (wielded)"
-		update_icon()
-	else
-		wielded = 0
-		damage_force = 8
-		name = "[base_name]"
-	update_icon()
-	..()
-
-/obj/item/melee/baton/fluff/stunstaff/update_icon()
-	icon_state = "[base_icon][wielded][status]"
-	item_state = icon_state
-	if(status==1)
-		set_light(2, 2, lightcolor)
-	else
-		set_light(0)
-
-/obj/item/melee/baton/fluff/stunstaff/dropped(mob/user, flags, atom/newLoc)
-	..()
-	if(wielded)
-		wielded = 0
-		spawn(0)
-			update_worn_icon()
-
-/obj/item/melee/baton/fluff/stunstaff/attack_self(mob/user, datum/event_args/actor/actor)
-	. = ..()
-	if(.)
-		return
-	if(bcell && bcell.charge > hitcost)
-		status = !status
-		to_chat(user, "<span class='notice'>[src] is now [status ? "on" : "off"].</span>")
-		if(status == 0)
-			playsound(user, 'sound/weapons/saberoff.ogg', 50, 1)
-		else
-			playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
-	else
-		status = 0
-		to_chat(user, "<span class='warning'>[src] is out of charge.</span>")
-	update_worn_icon()
-	add_fingerprint(user)
-
-/obj/item/storage/backpack/fluff/stunstaff
-	name = "Electrostaff sheath"
-	icon = 'icons/vore/custom_items_vr.dmi'
-	icon_state = "holster_stunstaff"
-	desc = "A sturdy synthetic leather sheath with matching belt and rubberized interior."
-	slot_flags = SLOT_BACK
-	item_icons = list(SLOT_ID_BACK = 'icons/vore/custom_onmob_vr.dmi', SLOT_ID_LEFT_HAND = 'icons/vore/custom_items_left_hand_vr.dmi', SLOT_ID_RIGHT_HAND = 'icons/vore/custom_items_right_hand_vr.dmi')
-
-	insertion_whitelist = list(/obj/item/melee/baton/fluff/stunstaff)
-
-	w_class = WEIGHT_CLASS_HUGE
-	max_single_weight_class = WEIGHT_CLASS_HUGE
-	max_combined_volume = 16
-
-/obj/item/storage/backpack/fluff/stunstaff/Initialize(mapload)
-	. = ..()
-	new /obj/item/melee/baton/fluff/stunstaff(src)
-
 
 /*
  * Awoo Sword

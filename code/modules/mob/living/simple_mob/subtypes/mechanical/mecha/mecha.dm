@@ -9,7 +9,7 @@
 
 	iff_factions = MOB_IFF_FACTION_MERCENARY
 
-	movement_cooldown = 5
+	movement_base_speed = 10 / 5
 	movement_sound = "mechstep" // This gets fed into playsound(), which can also take strings as a 'group' of sound files.
 	turn_sound = 'sound/mecha/mechturn.ogg'
 	maxHealth = 300
@@ -115,7 +115,8 @@
 /mob/living/simple_mob/mechanical/mecha/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	if(prob(deflect_chance))
 		visible_message(SPAN_WARNING( "\The [proj] is deflected by \the [src]'s armor!"))
-		deflect_sprite()
+		spawn(-1)
+			deflect_sprite()
 		return PROJECTILE_IMPACT_BLOCKED
 	return ..()
 

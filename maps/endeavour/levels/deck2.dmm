@@ -7061,11 +7061,6 @@
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/space)
-"eTk" = (
-/obj/machinery/disposal,
-/obj/item/barrier_tape_segment/engineering,
-/turf/simulated/floor/tiled,
-/area/rnd/anomaly_lab)
 "eUd" = (
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 6
@@ -9363,12 +9358,6 @@
 /obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
-"gxc" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/paint/babyblue,
-/obj/map_helper/paint/babyblue,
-/turf/simulated/floor/tiled,
-/area/endeavour/hallway/d2afthall)
 "gxk" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
@@ -10549,7 +10538,8 @@
 /obj/machinery/computer/atmoscontrol/laptop{
 	monitored_alarm_ids = list("isolation_one","isolation_two");
 	pixel_y = 30;
-	req_one_access = list(47,24,11)
+	req_one_access = list(47);
+	req_access = list(47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
@@ -10641,7 +10631,8 @@
 /obj/machinery/air_alarm/monitor/isolation{
 	alarm_id = "isolation_two";
 	dir = 8;
-	pixel_x = 22
+	pixel_x = 22;
+	req_one_access = list(47)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/anomaly_lab/containment_one)
@@ -13560,17 +13551,6 @@
 /obj/item/cell/device/weapon,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
-"jGQ" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 4
-	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
-/obj/map_helper/electrochromatic_linker{
-	id = "robotics-inner"
-	},
-/obj/map_helper/paint/purplegray,
-/turf/simulated/floor/plating,
-/area/assembly/robotics)
 "jHd" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -28186,7 +28166,8 @@
 /obj/machinery/air_alarm/monitor/isolation{
 	alarm_id = "isolation_one";
 	dir = 8;
-	pixel_x = 22
+	pixel_x = 22;
+	req_one_access = list(47)
 	},
 /obj/structure/cable/green{
 	icon_state = "2-8"
@@ -29783,12 +29764,6 @@
 /obj/random/trash_pile,
 /turf/simulated/floor,
 /area/maintenance/research/port)
-"vBU" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/paint/purplegray,
-/obj/map_helper/paint/purplegray,
-/turf/simulated/floor/plating,
-/area/rnd/breakroom)
 "vCa" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
@@ -42807,7 +42782,7 @@ rMu
 wKq
 pst
 try
-eTk
+try
 ntQ
 dIf
 tws
@@ -44777,7 +44752,7 @@ mDj
 mDj
 cjj
 mDj
-gxc
+mDj
 cjj
 oAN
 oAN
@@ -49618,7 +49593,7 @@ jFo
 jFo
 hyR
 jFo
-jGQ
+bMn
 bMn
 jFo
 epT
@@ -51930,9 +51905,9 @@ uPS
 uPS
 mWV
 pEJ
-vBU
 pEJ
-vBU
+pEJ
+pEJ
 pEJ
 hZx
 kBG

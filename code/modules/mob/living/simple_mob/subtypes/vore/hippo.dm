@@ -22,7 +22,7 @@
 	randomized = TRUE
 	mod_min = 100
 	mod_max = 150
-	movement_cooldown = 5
+	movement_base_speed = 10 / 5
 	see_in_dark = 3
 
 	armor_legacy_mob = list(

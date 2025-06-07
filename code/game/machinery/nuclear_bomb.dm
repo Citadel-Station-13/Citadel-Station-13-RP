@@ -164,7 +164,7 @@ var/bomb_set
 
 /obj/machinery/nuclearbomb/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(extended)
-		if(!ishuman(user))
+		if(!user.IsAdvancedToolUser())
 			to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 			return 1
 
@@ -219,9 +219,9 @@ var/bomb_set
 
 	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		return
-	if(!ishuman(usr))
-		to_chat(usr, "<span class='warning'>You don't have the dexterity to do this!</span>")
-		return 1
+	if(!usr.IsAdvancedToolUser())
+		to_chat(usr, SPAN_WARNING("You don't have the dexterity to do this!"))
+		return TRUE
 
 	if(deployable)
 		to_chat(usr, "<span class='warning'>You close several panels to make [src] undeployable.</span>")
