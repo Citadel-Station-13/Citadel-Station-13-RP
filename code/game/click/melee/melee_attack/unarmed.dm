@@ -79,14 +79,14 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 
 	clickchain.data[ACTOR_DATA_UNARMED_LOG] = "[damage_force]-[damage_type]-[damage_flag]@[damage_tier]m[damage_mode]"
 	var/list/results = target.run_damage_instance(
-		damage_force,
+		damage_force * clickchain.attack_melee_multiplier,
 		damage_type,
 		damage_tier,
 		damage_flag,
 		damage_mode | (DAMAGE_MODE_REQUEST_ARMOR_BLUNTING | DAMAGE_MODE_REQUEST_ARMOR_RANDOMIZATION),
 		ATTACK_TYPE_MELEE,
 		clickchain,
-		NONE,
+		SHIELDCALL_FLAG_SECOND_CALL,
 		clickchain.target_zone,
 	)
 	clickchain.data[ACTOR_DATA_MELEE_DAMAGE_INSTANCE_RESULTS] = results

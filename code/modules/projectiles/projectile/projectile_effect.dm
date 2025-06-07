@@ -20,6 +20,8 @@
  * * you'll note that [efficiency] is not a thing here
  * * this is because this runs regardless of target's opinion
  * * this means you should probably be careful and check impact_flags!
+ * * returns are not entirely checked; this is only fired after most of impact processing does.
+ *   the only impact flag checked is probably 'should delete'.
  *
  * @return new impact flags
  */

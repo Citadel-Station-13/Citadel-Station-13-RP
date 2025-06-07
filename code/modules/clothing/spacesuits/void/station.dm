@@ -31,7 +31,6 @@
 	armor_type = /datum/armor/centcom/ert/paracausal
 	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton,/obj/item/ammo_magazine,/obj/item/nullrod)
 	siemens_coefficient = 0.7
-	var/anti_magic = TRUE
 
 //Gimmick and "Costume" Tier Voidsuits
 
