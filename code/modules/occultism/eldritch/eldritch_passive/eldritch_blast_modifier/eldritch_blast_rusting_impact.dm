@@ -4,7 +4,7 @@
 /**
  * eldritch blast spreads rust on impact
  */
-/datum/prototype/eldritch_passive/patron/rust/eldritch_blast_rusting_impact
+/datum/prototype/eldritch_passive/eldritch_blast_rusting_impact
 	id = "eldritch_blast_rusting_impact"
 
 // TODO: impl

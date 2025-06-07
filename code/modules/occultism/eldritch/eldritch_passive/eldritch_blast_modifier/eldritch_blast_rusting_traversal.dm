@@ -4,7 +4,7 @@
 /**
  * eldritch blast spreads rust as it travels at random
  */
-/datum/prototype/eldritch_passive/patron/rust/eldritch_blast_rusting_traversal
+/datum/prototype/eldritch_passive/eldritch_blast_rusting_traversal
 	id = "eldritch_blast_rusting_traversal"
 
 // TODO: impl

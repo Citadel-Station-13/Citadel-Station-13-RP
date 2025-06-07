@@ -1,18 +1,18 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
-/datum/prototype/eldritch_passive/base/eldritch_awakening_antimagic
+/datum/prototype/eldritch_passive/eldritch_awakening_antimagic
 	name = "Awakening - Reinforcement"
 	desc = "Passive antimagic for eldritch cultists."
 
 	var/datum/antimagic/antimagic_struct = new /datum/antimagic/simple/eldritch_awakening_antimagic
 
-/datum/prototype/eldritch_passive/base/eldritch_awakening_antimagic/on_mob_associate(mob/cultist, datum/eldritch_holder/holder, datum/eldritch_passive_context/context)
+/datum/prototype/eldritch_passive/eldritch_awakening_antimagic/on_mob_associate(mob/cultist, datum/eldritch_holder/holder, datum/eldritch_passive_context/context)
 	..()
 	var/datum/component/antimagic_coverage/coverage_datum = cultist.antimagic_fetch_or_init_coverage()
 	coverage_datum.add_source(antimagic_struct, antimagic_callback)
 
-/datum/prototype/eldritch_passive/base/eldritch_awakening_antimagic/on_mob_disassociate(mob/cultist, datum/eldritch_holder/holder, datum/eldritch_passive_context/context)
+/datum/prototype/eldritch_passive/eldritch_awakening_antimagic/on_mob_disassociate(mob/cultist, datum/eldritch_holder/holder, datum/eldritch_passive_context/context)
 	..()
 	var/datum/component/antimagic_coverage/coverage_datum = cultist.antimagic_fetch_or_init_coverage()
 	coverage_datum.remove_source(antimagic_struct)

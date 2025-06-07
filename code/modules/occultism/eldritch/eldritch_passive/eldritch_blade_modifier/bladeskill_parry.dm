@@ -2,8 +2,8 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /**
- * Most heretic weapons now automatically have some kind of multi-targeting.
+ * Greatly enhances parrying done with heretic weapons.
  */
-/datum/prototype/eldritch_passive/patron/blade/bladeskill_cleave
+/datum/prototype/eldritch_passive/bladeskill_parry
 
 // TODO: impl
