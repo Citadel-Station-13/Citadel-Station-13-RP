@@ -204,28 +204,3 @@ DEFINE_BITFIELD(buckle_flags, list(
 	BITFIELD(BUCKLING_GROUND_HOIST),
 	BITFIELD(BUCKLING_PROJECTS_DEPTH),
 ))
-
-//*     /atom 'atom_spawn_flags' variable    *//
-//* tgui binding: types/DM_AtomSpawnFlags.ts *//
-
-#warn rethink this, this shoudln't work this way
-
-/// Allow in admin buildmode
-#define ATOM_SPAWN_FLAG_ADMIN (1<<0)
-/// Allow in holodeck
-#define ATOM_SPAWN_FLAG_HOLOGRAM (1<<1)
-/// Allow in virtual reality
-#define ATOM_SPAWN_FLAG_VIRTUAL_REALITY (1<<2)
-/// Allow 'fill' mode; this should almost always not be set, other than on turfs.
-#define ATOM_SPAWN_FLAG_ALLOW_FILL (1<<23)
-
-#define ATOM_SPAWN_FLAGS_DEFAULT_SPAWNABLE_ENTITY (ATOM_SPAWN_FLAG_ADMIN | ATOM_SPAWN_FLAG_HOLOGRAM |ATOM_SPAWN_FLAG_VIRTUAL_REALITY)
-#define ATOM_SPAWN_FLAGS_DEFAULT_FILLABLE_ENTITY (ATOM_SPAWN_FLAG_ADMIN | ATOM_SPAWN_FLAG_HOLOGRAM |ATOM_SPAWN_FLAG_VIRTUAL_REALITY | ATOM_SPAWN_FLAG_ALLOW_FILL)
-
-// todo: DEFINE_BITFIELD
-DEFINE_BITFIELD(atom_spawn_flags, list(
-	BITFIELD_NEW("Allow Buildmode", ATOM_SPAWN_FLAG_ADMIN),
-	BITFIELD_NEW("Allow Holodeck", ATOM_SPAWN_FLAG_HOLOGRAM),
-	BITFIELD_NEW("Allow VR", ATOM_SPAWN_FLAG_VIRTUAL_REALITY),
-	BITFIELD_NEW("Allow Fill", ATOM_SPAWN_FLAG_ALLOW_FILL),
-))

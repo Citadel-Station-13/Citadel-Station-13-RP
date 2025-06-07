@@ -17,17 +17,21 @@
 ##type/indoors { \
 	outdoors = FALSE; \
 	initial_gas_mix = ATMOSPHERE_USE_INDOORS; \
+	turf_spawn_flags = ##type::turf_spawn_flags & ~(TURF_SPAWN_FLAG_LEVEL_TURF); \
 } \
 ##type/outdoors { \
 	outdoors = TRUE; \
 	initial_gas_mix = ATMOSPHERE_USE_OUTDOORS; \
+	turf_spawn_flags = ##type::turf_spawn_flags & ~(TURF_SPAWN_FLAG_LEVEL_TURF); \
 } \
 ##type/inherit_area { \
 	outdoors = null; \
 	initial_gas_mix = ATMOSPHERE_USE_AREA; \
+	turf_spawn_flags = ##type::turf_spawn_flags & ~(TURF_SPAWN_FLAG_LEVEL_TURF); \
 } \
 ##type/overhang { \
 	outdoors = FALSE; \
 	initial_gas_mix = ATMOSPHERE_USE_OUTDOORS; \
+	turf_spawn_flags = ##type::turf_spawn_flags & ~(TURF_SPAWN_FLAG_LEVEL_TURF); \
 } \
 ##type

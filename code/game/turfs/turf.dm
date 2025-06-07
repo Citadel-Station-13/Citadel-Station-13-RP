@@ -53,6 +53,8 @@
 	//* Flags
 	/// turf flags
 	var/turf_flags = NONE
+	/// turf spawning flags
+	var/turf_spawn_flags = NONE
 	/// multiz flags
 	var/mz_flags = MZ_ATMOS_UP | MZ_OPEN_UP
 
@@ -92,9 +94,6 @@
 	var/temperature = T20C
 	/// Does this turf contain air/let air through?
 	var/blocks_air = FALSE
-
-
-	var/holy = 0
 
 	/// Icon-smoothing variable to map a diagonal wall corner with a fixed underlay.
 	var/list/fixed_underlay = null

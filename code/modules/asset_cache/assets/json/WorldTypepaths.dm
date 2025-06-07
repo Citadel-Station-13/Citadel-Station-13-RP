@@ -23,36 +23,20 @@
 			"path" = "[turf_path]",
 			"iconRef" = ref(initial(turf_path.icon)),
 			"iconState" = initial(turf_path.icon_state),
-			"spawnFlags" = initial(turf_path.atom_spawn_flags),
+			"spawnFlags" = initial(turf_path.turf_spawn_flags),
 		)
 	.["turfs"] = assembled_turfs
 
-	var/list/assembled_objs = list()
-	for(var/obj/obj_path as anything in typesof(/obj))
-		if(initial(obj_path.abstract_type) == obj_path)
+	var/list/assembled_areas = list()
+	for(var/area/area_path as anything in typesof(/area))
+		if(initial(area_path.abstract_type) == area_path)
 			continue
-		if(!initial(obj_path.atom_spawn_flags))
+		if(!initial(area_path.atom_spawn_flags))
 			continue
-		assembled_objs[++assembled_objs.len] = list(
-			"name" = initial(obj_path.name),
-			"path" = "[obj_path]",
-			"iconRef" = ref(initial(obj_path.icon)),
-			"iconState" = initial(obj_path.icon_state),
-			"spawnFlags" = initial(obj_path.atom_spawn_flags),
+		assembled_areas[++assembled_areas.len] = list(
+			"name" = initial(area_path.name),
+			"path" = "[area_path]",
+			"unique" = initial(area_path.unique),
+			"special" = initial(area_path.special),
 		)
-	.["objs"] = assembled_objs
-
-	var/list/assembled_mobs = list()
-	for(var/mob/mob_path as anything in typesof(/mob))
-		if(initial(mob_path.abstract_type) == mob_path)
-			continue
-		if(!initial(mob_path.atom_spawn_flags))
-			continue
-		assembled_mobs[++assembled_mobs.len] = list(
-			"name" = initial(mob_path.name),
-			"path" = "[mob_path]",
-			"iconRef" = ref(initial(mob_path.icon)),
-			"iconState" = initial(mob_path.icon_state),
-			"spawnFlags" = initial(mob_path.atom_spawn_flags),
-		)
-	.["mobs"] = assembled_mobs
+	.["areas"] = assembled_areas

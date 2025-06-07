@@ -46,6 +46,13 @@
 	 * This is not a flag because you probably should not be touching this at runtime!
 	 */
 	var/unique = TRUE
+	/**
+	 * If this is TRUE, this is a special area with functionality. This means it shouldn't be randomly instantiated by admins.
+	 *
+	 * If this is FALSE, this is instead just a regular area that groups turfs and any system can spawn any amount of it (if not unique)
+	 * for any reason.
+	 */
+	var/special = FALSE
 
 	//* Defaults - Turfs *//
 	/// outdoors by default?
