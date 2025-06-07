@@ -14,7 +14,7 @@
 	var/relevant_plane_path
 	/// for overriding base screen loc. do "FULLSCREEN" for fullscreen.
 	//  todo: fullscreens are not yet supported on secondary maps
-	var/base_screen_loc = "BOTTOMLEFT"
+	var/base_screen_loc = "SCREEN_SOUTHWEST"
 
 //? darkvision relays
 
