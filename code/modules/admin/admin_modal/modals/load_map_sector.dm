@@ -215,16 +215,10 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 			. = TRUE
 		if("levelAirIndoors")
 			. = TRUE
-			if(!SSair.validate_gas_string(params["air"]))
-				loud_rejection("Gas string [params["air"]] failed validation.")
-				return
 			target_level.air_indoors = params["air"]
 			update_ui_level_index_data(target_level_index)
 		if("levelAirOutdoors")
 			. = TRUE
-			if(!SSair.validate_gas_string(params["air"]))
-				loud_rejection("Gas string [params["air"]] failed validation.")
-				return
 			target_level.air_outdoors = params["air"]
 			update_ui_level_index_data(target_level_index)
 			. = TRUE
@@ -304,6 +298,20 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 		to_chat("<div><center>Map validation errors</center><hr>[rendered]</div")
 
 	update_ui_data()
+
+/datum/admin_modal/load_map_sector/proc/validate_additional_map(datum/map/map, list/errors_out)
+	. = TRUE
+	for(var/datum/map_level/level as anything in map.levels)
+		. = . && validate_additional_level(level, map, errors_out)
+
+/datum/admin_modal/load_map_sector/proc/validate_additional_level(datum/map_level/level, datum/map/map, list/errors_out)
+	. = TRUE
+	if(!SSair.validate_gas_string(level.air_indoors))
+		errors_out?.Add("Level with ID [level.id] had invalid air_indoors gas string [level.air_indoors]")
+		. = FALSE
+	if(!SSair.validate_gas_string(level.air_outdoors))
+		errors_out?.Add("Level with ID [level.id] had invalid air_outdoors gas string [level.air_outdoors]")
+		. = FALSE
 
 /datum/admin_modal/load_map_sector/proc/mark_dirty()
 	load_ready = FALSE
