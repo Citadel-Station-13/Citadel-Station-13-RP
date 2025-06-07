@@ -244,6 +244,11 @@
 				catlist -= key
 				catlist["/datum/loadout_tweak/color"] = val
 		WRITE_FILE(S["all_underwear_metadata"], all_underwear_metadata)
+	if(current_version < 6)
+		if(character[CHARACTER_DATA_REAL_SPECIES] == "blackeyedshadekin")
+			character[CHARACTER_DATA_REAL_SPECIES] = "shadekin_blackeyed"
+		if(character[CHARACTER_DATA_CHAR_SPECIES] == "blackeyedshadekin")
+			character[CHARACTER_DATA_CHAR_SPECIES] = "shadekin_blackeyed"
 
 /**
  * clientless migration of savefiles
