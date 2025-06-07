@@ -2,8 +2,8 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /datum/ability/eldritch_ability/eldritch_escape
-	name = ""
-	desc = ""
+	name = "Planar Disengagement"
+	desc = "Ascend from reality and retreat into the Room Without Walls."
 	#warn category
 	#warn sprite
 
@@ -14,3 +14,4 @@
 
 
 #warn impl partial
+

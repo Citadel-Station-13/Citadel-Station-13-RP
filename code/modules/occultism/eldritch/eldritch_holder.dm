@@ -60,3 +60,22 @@
 
 /datum/eldritch_holder/proc/has_knowledge(datum/prototype/eldritch_knowledge/knowledge)
 	return knowledge in src.knowledge
+
+/datum/eldritch_holder/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	. = ..()
+
+/datum/eldritch_holder/ui_act(action, list/params, datum/tgui/ui)
+	. = ..()
+
+/datum/eldritch_holder/ui_static_data(mob/user, datum/tgui/ui)
+	. = ..()
+
+/datum/eldritch_holder/proc/ui_push_learned_knowledges()
+
+/datum/eldritch_holder/proc/ui_push_learned_passives()
+
+/datum/eldritch_holder/proc/ui_push_learned_recipes()
+
+/datum/eldritch_holder/proc/ui_push_learned_abilities()
+
+#warn impl all
