@@ -997,7 +997,7 @@
 	},
 /area/centcom/security)
 "dd" = (
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/lathe/r_n_d/circuit_imprinter,
 /obj/item/reagent_containers/glass/beaker/sulphuric,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
@@ -3700,7 +3700,7 @@
 /turf/unsimulated/floor/steel,
 /area/space)
 "lE" = (
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/lathe/r_n_d/circuit_imprinter,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
@@ -11298,7 +11298,7 @@
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/escape)
 "Js" = (
-/obj/machinery/r_n_d/protolathe,
+/obj/machinery/lathe/r_n_d/protolathe,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "Jt" = (
