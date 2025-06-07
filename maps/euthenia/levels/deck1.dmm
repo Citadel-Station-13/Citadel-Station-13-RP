@@ -6675,7 +6675,7 @@
 /obj/structure/reagent_dispensers/acid{
 	pixel_y = 30
 	},
-/obj/machinery/r_n_d/circuit_imprinter{
+/obj/machinery/lathe/r_n_d/circuit_imprinter{
 	dir = 1
 	},
 /obj/item/reagent_containers/glass/beaker/sulphuric,
@@ -17308,7 +17308,7 @@
 /obj/effect/floor_decal/corner/mauve{
 	dir = 9
 	},
-/obj/machinery/r_n_d/protolathe{
+/obj/machinery/lathe/r_n_d/protolathe{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/mauve{

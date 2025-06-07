@@ -18575,7 +18575,7 @@
 /turf/simulated/floor/plating,
 /area/space)
 "nIA" = (
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/lathe/r_n_d/circuit_imprinter,
 /obj/item/reagent_containers/glass/beaker/sulphuric,
 /obj/structure/reagent_dispensers/acid{
 	pixel_y = 30

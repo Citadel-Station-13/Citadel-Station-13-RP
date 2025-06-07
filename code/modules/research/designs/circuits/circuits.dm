@@ -7,6 +7,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 2)
 	materials_base = list(MAT_GLASS = 2000)
 	reagents = list("sacid" = 20)
+	design_unlock = DESIGN_UNLOCK_TECHLEVEL
 	work = (5 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 
 /datum/prototype/design/circuit/generate_name(template)
@@ -128,7 +129,7 @@ CIRCUITS BELOW
 	design_name = "teleporter control console"
 	id = "teleconsole"
 	req_tech = list(TECH_DATA = 3, TECH_BLUESPACE = 2)
-	category = DESIGN_CATEGORY_TELEPORTATION
+	category = DESIGN_CATEGORY_BLUESPACE
 	build_path = /obj/item/circuitboard/teleporter
 
 /datum/prototype/design/circuit/robocontrol

@@ -473,7 +473,7 @@
 /turf/unsimulated/wall,
 /area/space)
 "bA" = (
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/lathe/r_n_d/circuit_imprinter,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
@@ -2215,7 +2215,7 @@
 	},
 /area/centcom/command)
 "gk" = (
-/obj/machinery/r_n_d/protolathe,
+/obj/machinery/lathe/r_n_d/protolathe,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "gl" = (
@@ -5967,7 +5967,7 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_checker)
 "qb" = (
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/lathe/r_n_d/circuit_imprinter,
 /obj/item/reagent_containers/glass/beaker/sulphuric,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)

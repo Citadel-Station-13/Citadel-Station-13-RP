@@ -22,6 +22,8 @@
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_MODERATE
 
+	material_constraints = MATERIAL_CONSTRAINT_RIGID
+
 /datum/prototype/material/silver/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(category = "statues", name = "head of security statue", product = /obj/structure/statue/silver/hos, cost = 10, time = 2 SECONDS)

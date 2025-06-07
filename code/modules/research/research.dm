@@ -81,6 +81,8 @@ research holder datum.
 ///Checks to see if design has all the required pre-reqs.
 ///Input: datum/prototype/design; Output: 0/1 (false/true)
 /datum/research/proc/DesignHasReqs(var/datum/prototype/design/D)
+	if(!(D.design_unlock & DESIGN_UNLOCK_TECHLEVEL))
+		return FALSE
 	if(!LAZYLEN(D.req_tech))
 		return TRUE
 
@@ -89,7 +91,7 @@ research holder datum.
 		k_tech[known.id] = known.level
 
 	for(var/req in D.req_tech)
-		if(isnull(k_tech[req]) || k_tech[req] < D.req_tech[req])
+		if(isnull(k_tech[req]) || (k_tech[req] < D.req_tech[req]))
 			return FALSE
 	return TRUE
 
