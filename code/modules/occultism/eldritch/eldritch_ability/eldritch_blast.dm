@@ -22,6 +22,7 @@
 
 #warn on_targeted_trigger
 #warn impl - firing and click capturing/aiming
+#warn SIGNAL_ELDRITCH_HOLDER_FIRE_PROJECTILE
 
 /datum/ability/eldritch_ability/eldritch_blast/proc/fire_standard(atom/movable/anchor, datum/event_args/actor/clickchain/clickchain)
 	return fire(anchor, clickchain, 25)

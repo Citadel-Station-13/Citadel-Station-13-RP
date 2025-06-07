@@ -4,6 +4,6 @@
 /**
  * Greatly enhances parrying done with heretic weapons.
  */
-/datum/mansus_passive/patron/blade/bladeskill_parry
+/datum/prototype/eldritch_passive/patron/blade/bladeskill_parry
 
 // TODO: impl

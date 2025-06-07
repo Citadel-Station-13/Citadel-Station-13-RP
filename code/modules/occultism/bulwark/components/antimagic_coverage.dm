@@ -30,3 +30,4 @@
  * @return modified args; access with ANTIMAGIC_ARG_*
  */
 /datum/component/antimagic_coverage/proc/antimagic_check(magic_potency, magic_type, list/magic_data, target_zone)
+

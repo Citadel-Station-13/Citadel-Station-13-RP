@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
-/datum/mansus_passive/patron/ash
-    abstract_type = /datum/mansus_passive/patron/ash
+/datum/prototype/eldritch_passive/patron/ash
+    abstract_type = /datum/prototype/eldritch_passive/patron/ash

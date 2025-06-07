@@ -18,6 +18,7 @@
 	icon_state = "kinetic"
 	SET_APPEARANCE_FLAGS(KEEP_TOGETHER)
 	speed = /obj/projectile::speed * 1.1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_PIERCE
 
 	impact_sound = PROJECTILE_IMPACT_SOUNDS_KINETIC
 

@@ -276,6 +276,7 @@
 	pass_flags = ATOM_PASS_FLAGS_BEAM
 	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_LASER
+	damage_mode = DAMAGE_MODE_ABLATING
 	hitscan = TRUE
 	color = "#ff1100"
 	tracer_icon_state = "laser-1"

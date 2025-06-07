@@ -4,6 +4,6 @@
 /**
  * Most heretic weapons now automatically have some kind of multi-targeting.
  */
-/datum/mansus_passive/patron/blade/bladeskill_cleave
+/datum/prototype/eldritch_passive/patron/blade/bladeskill_cleave
 
 // TODO: impl

@@ -201,6 +201,7 @@
 #include "code\__DEFINES\dcs\signals\items\signals_gun.dm"
 #include "code\__DEFINES\dcs\signals\items\signals_inducer.dm"
 #include "code\__DEFINES\dcs\signals\modules\signals_module_fishing.dm"
+#include "code\__DEFINES\dcs\signals\modules\signals_module_occultism.dm"
 #include "code\__DEFINES\dcs\signals\signals_atom\signals_atom-buckling.dm"
 #include "code\__DEFINES\dcs\signals\signals_atom\signals_atom-clickchain.dm"
 #include "code\__DEFINES\dcs\signals\signals_atom\signals_atom-context_system.dm"

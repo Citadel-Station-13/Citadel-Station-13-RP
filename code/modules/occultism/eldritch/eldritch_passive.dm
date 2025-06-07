@@ -35,3 +35,15 @@
 
 /datum/prototype/eldritch_passive/proc/on_mob_tick(mob/cultist, datum/eldritch_holder/holder, datum/eldritch_passive_context/context, dt)
 	return
+
+/datum/prototype/eldritch_passive/proc/get_context_on_holder(datum/eldritch_holder/holder) as /datum/eldritch_passive_context
+	return holder.applied_passives[id] || holder.disabled_passives[id]
+
+/datum/prototype/eldritch_passive/proc/is_in_holder(datum/eldritch_holder/holder) as /datum/eldritch_passive_context
+	return holder.applied_passives[id] || holder.disabled_passives[id]
+
+/datum/prototype/eldritch_passive/proc/is_enabled_in_holder(datum/eldritch_holder/holder) as /datum/eldritch_passive_context
+	return holder.applied_passives[id]
+
+/datum/prototype/eldritch_passive/proc/is_disabled_in_holder(datum/eldritch_holder/holder) as /datum/eldritch_passive_context
+	return holder.applied_passives[id]

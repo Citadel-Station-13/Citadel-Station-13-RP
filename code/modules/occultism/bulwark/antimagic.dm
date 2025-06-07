@@ -9,6 +9,13 @@
 	/// priority; lower is checked first
 	var/priority = ANTIMAGIC_PRIORITY_DEFAULT
 
+/datum/antimagic/New(priority)
+	if(!isnull(priority))
+		src.priority = priority
+
+/datum/antimagic/proc/handle_antimagic(list/antimagic_args)
+	return
+
 /**
  * Simple scaling
  *
@@ -25,3 +32,19 @@
 
 #warn impl all
 
+/datum/antimagic/simple/handle_antimagic(list/antimagic_args)
+
+
+
+/**
+ * Just invokes a callback to modify antimagic call args
+ */
+/datum/antimagic/use_callback
+	var/datum/callback/antimagic_callback
+
+/datum/antimagic/use_callback/New(priority, datum/callback/antimagic_callback)
+	..(priority)
+	src.antimagic_callback = antimagic_callback
+
+/datum/antimagic/use_callback/handle_antimagic(list/antimagic_args)
+	antimagic_callback?.invoke_no_sleep(antimagic_args)
