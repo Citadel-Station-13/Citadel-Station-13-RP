@@ -6657,12 +6657,12 @@
 /obj/item/clothing/glasses/welding/superior,
 /obj/structure/table/steel_reinforced,
 /obj/item/clothing/glasses/welding/superior,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
+/obj/item/grenade/simple/chemical/metalfoam,
+/obj/item/grenade/simple/chemical/metalfoam,
+/obj/item/grenade/simple/chemical/metalfoam,
+/obj/item/grenade/simple/chemical/metalfoam,
+/obj/item/grenade/simple/chemical/metalfoam,
+/obj/item/grenade/simple/chemical/metalfoam,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -16719,7 +16719,7 @@
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/escape)
 "RR" = (
-/obj/item/grenade/supermatter,
+/obj/item/grenade/simple/supermatter,
 /obj/structure/table/rack/steel,
 /obj/machinery/door/window/brigdoor{
 	req_access = list(109)
