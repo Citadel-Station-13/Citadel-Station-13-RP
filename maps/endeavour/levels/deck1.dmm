@@ -1451,11 +1451,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
+/obj/machinery/fire_alarm/alarms_hidden/north_mount,
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1;
 	name = "Airlock Charging Port"
 	},
-/obj/machinery/fire_alarm/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/endeavour/general)
 "bdt" = (
@@ -5227,6 +5227,22 @@
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1fwdmaint)
+"dWa" = (
+/obj/machinery/porta_turret/stationary{
+	gl_uid = "exploration";
+	installation = /obj/item/gun/projectile/energy/phasegun;
+	name = "exploration turret";
+	uid = "exploration"
+	},
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/excursion/endeavour/general)
 "dWo" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -6038,7 +6054,8 @@
 /area/endeavour/hallway/d1fwdmaint)
 "eEl" = (
 /obj/machinery/light{
-	dir = 4
+	dir = 1;
+	pixel_y = 13
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/airlock_sensor{
@@ -6935,6 +6952,9 @@
 	dir = 1
 	},
 /obj/structure/handrail,
+/obj/machinery/meter{
+	name = "fuel line meter"
+	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/endeavour/general)
 "fjQ" = (
@@ -10674,7 +10694,7 @@
 "ihR" = (
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 8;
-	start_pressure = 200;
+	start_pressure = 20;
 	name = "Holding Tank (Air)"
 	},
 /obj/structure/window/reinforced,
@@ -11191,6 +11211,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
+	},
+/obj/machinery/meter{
+	name = "reserve air meter"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/endeavour/general)
@@ -14078,6 +14101,9 @@
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 1
 	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/endeavour/general)
 "kIs" = (
@@ -15555,6 +15581,29 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1fwdhall)
+"lNz" = (
+/obj/effect/floor_decal/industrial/warning/full,
+/obj/machinery/porta_turret/stationary{
+	gl_uid = "exploration";
+	installation = /obj/item/gun/projectile/energy/phasegun;
+	name = "exploration turret";
+	req_one_access = list(19,43,62,67);
+	uid = "exploration"
+	},
+/obj/machinery/light{
+	dir = 4;
+	light_range = 12;
+	name = "long range light fixture";
+	desc = "A lighting fixture. This one seem to toss its light further than standard light fixtures."
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/excursion/endeavour/cockpit)
 "lNE" = (
 /obj/item/tool/wirecutters,
 /obj/machinery/light/small{
@@ -15799,7 +15848,9 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced,
-/obj/machinery/meter,
+/obj/machinery/meter{
+	name = "holding tank meter"
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/endeavour/general)
 "lVu" = (
@@ -16090,9 +16141,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled,
 /area/endeavour/exploration/hallway_aft)
 "mfS" = (
@@ -16102,13 +16150,6 @@
 /turf/simulated/floor/tiled,
 /area/exploration/medical)
 "mfT" = (
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "cockpit_lockdown";
-	name = "Cockpit Lockdown";
-	opacity = 0
-	},
 /obj/spawner/window/low_wall/borosillicate/firelocks,
 /obj/map_helper/paint_stripe/violet,
 /obj/structure/cable/green{
@@ -16116,6 +16157,13 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 8
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "shuttle_lockdown";
+	name = "Shuttle Lockdown";
+	opacity = 0
 	},
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/endeavour/cargo)
@@ -18594,15 +18642,15 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/endeavour/general)
 "nXC" = (
+/obj/spawner/window/low_wall/borosillicate/firelocks,
+/obj/map_helper/paint_stripe/violet,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
-	id = "cockpit_lockdown";
-	name = "Cockpit Lockdown";
+	id = "shuttle_lockdown";
+	name = "Shuttle Lockdown";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/borosillicate/firelocks,
-/obj/map_helper/paint_stripe/violet,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/endeavour/cargo)
 "nXJ" = (
@@ -18636,9 +18684,6 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/exploration/hallway_aft)
 "nZt" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/map_helper/paint/violet,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -19118,6 +19163,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
+/obj/machinery/button/remote/blast_door{
+	dir = 1;
+	id = "hangar_ammo_storage";
+	name = "Courser Ammunition Storage";
+	pixel_y = -26
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/courser_dock)
 "oqO" = (
@@ -19181,9 +19232,6 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "ovj" = (
-/obj/machinery/atmospheric_field_generator/perma{
-	color = "#00000ff"
-	},
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -19200,6 +19248,9 @@
 /obj/machinery/door/airlock/voidcraft/vertical,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
+	},
+/obj/machinery/atmospheric_field_generator/perma{
+	color = "#00000ff"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/endeavour/general)
@@ -20000,6 +20051,10 @@
 	name = "long range light fixture";
 	desc = "A lighting fixture. This one seem to toss its light further than standard light fixtures."
 	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/excursion/endeavour/cockpit)
 "peu" = (
@@ -20761,6 +20816,9 @@
 	dir = 4
 	},
 /obj/machinery/air_alarm/alarms_hidden/north_mount,
+/obj/machinery/meter{
+	name = "fuel line meter"
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/endeavour/general)
 "pGC" = (
@@ -22195,8 +22253,12 @@
 	pixel_x = 24
 	},
 /obj/machinery/door/airlock/voidcraft/vertical,
-/obj/machinery/atmospheric_field_generator/perma{
-	color = "#00000ff"
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "shuttle_lockdown";
+	name = "Shuttle Lockdown";
+	opacity = 0
 	},
 /turf/simulated/shuttle/plating,
 /area/shuttle/excursion/endeavour/general)
@@ -24749,7 +24811,7 @@
 /area/exploration/meeting)
 "sJt" = (
 /obj/machinery/computer/skills{
-	dir = 4
+	dir = 8
 	},
 /obj/machinery/keycard_auth{
 	pixel_y = -28
@@ -29538,6 +29600,12 @@
 	pixel_y = 3
 	},
 /obj/machinery/lathe/autolathe,
+/obj/machinery/button/remote/blast_door{
+	id = "shuttle_lockdown";
+	name = "Shuttle Lockdown";
+	pixel_x = -6;
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/endeavour/cargo)
 "wlk" = (
@@ -31741,6 +31809,15 @@
 	installation = /obj/item/gun/projectile/energy/phasegun;
 	name = "exploration turret";
 	uid = "exploration"
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/excursion/endeavour/general)
@@ -35077,7 +35154,7 @@ dkX
 ihi
 ihi
 ihi
-peo
+lNz
 cCF
 qlw
 qlw
@@ -36237,7 +36314,7 @@ xRj
 xRj
 xRj
 dkX
-ihi
+dkX
 ihi
 ihi
 nXC
@@ -36431,7 +36508,7 @@ fZu
 xRj
 xRj
 dkX
-ihi
+dkX
 ihi
 rtJ
 ahi
@@ -36625,7 +36702,7 @@ dkX
 dkX
 dkX
 dkX
-ihi
+dkX
 ihi
 wPI
 uwy
@@ -36819,7 +36896,7 @@ iwR
 ktx
 mKR
 mKR
-ihi
+mKR
 ihi
 ihi
 oqC
@@ -38188,7 +38265,7 @@ rUC
 nXj
 jls
 ift
-xSO
+dWa
 iee
 ihi
 sQi
