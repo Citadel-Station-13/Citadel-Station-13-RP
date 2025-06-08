@@ -301,6 +301,8 @@
 						levels_in_plane_by_xy[level_struct_plane_xy] = list()
 					levels_in_plane_by_xy[level_struct_plane_xy] += level
 
+		// TODO: invoke level datum validation, including for base turf/area validity (see spawn flags & area not `special`)
+
 	// can't run overall checks if any levels are individually invalid
 	if(!.)
 		return

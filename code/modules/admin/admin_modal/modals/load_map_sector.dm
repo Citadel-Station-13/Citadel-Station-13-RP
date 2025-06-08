@@ -155,11 +155,15 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 			delete_level_index(target_level_index)
 			. = TRUE
 		// level //
-		if("levelDmm")
+		if("levelDmmUpload")
 			if(owner.owner.is_prompting_for_file())
 				return TRUE
 			var/loaded_file = owner.owner.prompt_for_file_or_null("Upload a .dmm file.", "Upload DMM", 1024 * 1024 * 2)
 			target_level.path = loaded_file
+			update_ui_level_index_data(target_level_index)
+			. = TRUE
+		if("levelDmmClear")
+			target_level.path = null
 			update_ui_level_index_data(target_level_index)
 			. = TRUE
 		if("levelName")

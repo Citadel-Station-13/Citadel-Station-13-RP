@@ -12,6 +12,7 @@ import { WorldTypepathDropdown } from "../../components/WorldTypepathDropdown";
 import { JsonAssetLoader } from "../../components/JsonAssetLoader";
 import { Json_MapSystem, JsonMappings } from "../../bindings/json";
 import { LoadingScreen } from "../../components/LoadingScreen";
+import { DM_TurfSpawnFlags } from "../../bindings/game";
 
 enum LoadMapSectorStatus {
   Waiting = "waiting",
@@ -196,7 +197,19 @@ const MapLevelProperties = (props: {
   return (
     <VSplitTooltipList leftSideWidthPercent={25}>
       <VSplitTooltipList.Entry label="DMM" tooltip="The map file to load. If there is none, the level will be an empty plane.">
-        Test
+        <Stack>
+          <Stack.Item>
+            <Box textAlign="center">
+              {levelData.fileName?.length === 0 ? "----------" : levelData.fileName}
+            </Box>
+          </Stack.Item>
+          <Stack.Item>
+            <Button icon="upload" onClick={() => levelAct('levelDmmUpload')} />
+          </Stack.Item>
+          <Stack.Item>
+            <Button.Confirm confirmContent="" confirmColor="red" icon="trash" color="transparent" onClick={() => levelAct('levelDmmClear')} />
+          </Stack.Item>
+        </Stack>
       </VSplitTooltipList.Entry>
       <VSplitTooltipList.Entry
         label="Position"
@@ -226,13 +239,25 @@ const MapLevelProperties = (props: {
         <Input onChange={(e, val) => levelAct('levelDisplayId', { setTo: val })} width="100%" value={levelData.displayId} />
       </VSplitTooltipList.Entry>
       <VSplitTooltipList.Entry label="Base Turf">
-        <WorldTypepathDropdown filter={{
-          showTurfs: true,
+        <WorldTypepathDropdown
+        selectedPath={levelData.baseTurf}
+        onSelectPath={(path) => levelAct('levelBaseTurf', { type: path })}
+        filter={{
+          turfs: {
+            enabled: true,
+            spawnFlags: DM_TurfSpawnFlags.AllowLevelBaseturf,
+          },
         }} />
       </VSplitTooltipList.Entry>
       <VSplitTooltipList.Entry label="Base Area">
-        <WorldTypepathDropdown filter={{
-          showAreas: true,
+        <WorldTypepathDropdown
+        selectedPath={levelData.baseTurf}
+        onSelectPath={(path) => levelAct('levelBaseTurf', { type: path })}
+        filter={{
+          areas: {
+            enabled: true,
+            allowUnique: true,
+          },
         }} />
       </VSplitTooltipList.Entry>
       <VSplitTooltipList.Entry label="Air - Indoors">
@@ -268,7 +293,7 @@ const MapLevelTraits = (props: {
             </>
           );
         }}
-       />
+      />
     </Box>
   );
 };
@@ -293,7 +318,7 @@ const MapLevelAttributes = (props: {
             </>
           );
         }}
-       />
+      />
     </Box>
   );
 };

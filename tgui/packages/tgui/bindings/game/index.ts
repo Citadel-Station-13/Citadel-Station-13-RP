@@ -3,4 +3,4 @@
  * @license MIT
  */
 
-export { DM_AtomSpawnFlags } from "./DM_AtomSpawnFlags";
+export { DM_TurfSpawnFlags } from "./DM_TurfSpawnFlags";

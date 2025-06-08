@@ -3,8 +3,10 @@
  * @license MIT
  */
 
-export enum TurfSpawnFlags {
-  AllowBuildmode = (1<<0),
-  AllowHolodeck = (1<<1),
-  AllowVirtualReality = (1<<2),
+export enum DM_TurfSpawnFlags {
+  AllowFill = (1<<0),
+  AllowBuildmode = (1<<1),
+  AllowHolodeck = (1<<2),
+  AllowVirtualReality = (1<<3),
+  AllowLevelBaseturf = (1<<4)
 }

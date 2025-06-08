@@ -5,7 +5,7 @@
 
 import { BooleanLike } from "common/react";
 import { Json_AssetPackBase } from ".";
-import { DM_AtomSpawnFlags } from "../game";
+import { DM_TurfSpawnFlags } from "../game";
 
 export interface Json_WorldTypepaths extends Json_AssetPackBase {
   areas: areaDescriptorList;
@@ -18,7 +18,7 @@ type turfDescriptor = {
   path: string;
   iconRef: string;
   iconState: string;
-  spawnFlags: DM_AtomSpawnFlags;
+  spawnFlags: DM_TurfSpawnFlags;
 }
 
 type areaDescriptorList = areaDescriptor[];

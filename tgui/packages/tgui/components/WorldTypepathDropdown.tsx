@@ -4,11 +4,11 @@
  */
 
 import { BooleanLike } from "common/react";
-import { DM_AtomSpawnFlags } from "../bindings/game";
 import { Json_WorldTypepaths, JsonMappings } from "../bindings/json";
 import { Box, BoxProps } from "./Box";
 import { Flex } from "./Flex";
 import { JsonAssetLoader } from "./JsonAssetLoader";
+import { DM_TurfSpawnFlags } from "../bindings/game";
 
 /**
  * WARNING: HERE BE DRAGONS
@@ -25,12 +25,15 @@ export const WorldTypepathDropdown = (props: {
   selectedPath: string;
   onSelectPath: (path: string) => void;
   filter?: {
-    requireSpawnFlags?: DM_AtomSpawnFlags;
-    forbidSpawnFlags?: DM_AtomSpawnFlags;
-    showTurfs?: BooleanLike;
-    showObjs?: BooleanLike;
-    showMobs?: BooleanLike;
-    showAreas?: BooleanLike;
+    turfs?: {
+      enabled: BooleanLike;
+      spawnFlags: DM_TurfSpawnFlags;
+    }
+    areas?: {
+      enabled: BooleanLike;
+      allowUnique?: BooleanLike;
+      allowSpecial?: BooleanLike;
+    }
   };
 } & BoxProps, context) => {
   const {
