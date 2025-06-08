@@ -33,7 +33,7 @@ interface ModalMapData {
   name: string;
   orientation: number;
   center: BooleanLike;
-  overmap: ModalOvermapData | null;
+  overmap: ModalOvermapData;
 }
 
 interface ModalLevelData {
@@ -58,6 +58,7 @@ interface ModalOvermapData {
   x: number;
   y: number;
   forcePos: BooleanLike;
+  enabled: BooleanLike;
 }
 
 // TODO: atmosphere modification system
@@ -124,9 +125,7 @@ export const LoadMapSector = (props, context) => {
   );
 };
 
-const MapOptions = (props: {
-
-}, context) => {
+const MapOptions = (props: {}, context) => {
   const { act, data, nestedData } = useBackend<ModalData>(context);
   const mapData: ModalMapData = nestedData['map'];
   return (
@@ -240,25 +239,25 @@ const MapLevelProperties = (props: {
       </VSplitTooltipList.Entry>
       <VSplitTooltipList.Entry label="Base Turf">
         <WorldTypepathDropdown
-        selectedPath={levelData.baseTurf}
-        onSelectPath={(path) => levelAct('levelBaseTurf', { type: path })}
-        filter={{
-          turfs: {
-            enabled: true,
-            spawnFlags: DM_TurfSpawnFlags.AllowLevelBaseturf,
-          },
-        }} />
+          selectedPath={levelData.baseTurf}
+          onSelectPath={(path) => levelAct('levelBaseTurf', { type: path })}
+          filter={{
+            turfs: {
+              enabled: true,
+              spawnFlags: DM_TurfSpawnFlags.AllowLevelBaseturf,
+            },
+          }} />
       </VSplitTooltipList.Entry>
       <VSplitTooltipList.Entry label="Base Area">
         <WorldTypepathDropdown
-        selectedPath={levelData.baseTurf}
-        onSelectPath={(path) => levelAct('levelBaseArea', { type: path })}
-        filter={{
-          areas: {
-            enabled: true,
-            allowUnique: true,
-          },
-        }} />
+          selectedPath={levelData.baseTurf}
+          onSelectPath={(path) => levelAct('levelBaseArea', { type: path })}
+          filter={{
+            areas: {
+              enabled: true,
+              allowUnique: true,
+            },
+          }} />
       </VSplitTooltipList.Entry>
       <VSplitTooltipList.Entry label="Air - Indoors">
         <Stack>
@@ -347,24 +346,37 @@ const MapLevelAttributes = (props: {
   );
 };
 
-const OvermapOptions = (props: {
-
-}, context) => {
+const OvermapOptions = (props: {}, context) => {
   const { act, data, nestedData } = useBackend<ModalData>(context);
+  const mapData: ModalMapData = nestedData['map'];
   return (
     <Section fill title="Overmap Binding">
       <LabeledList>
         <VSplitTooltipList.Entry label="Load Into Overmap" tooltip="Whether or not this level should be loaded into the overmap. This usually should be on.">
-          Test
+          <Stack>
+            <Stack.Item grow={1}>
+              <Button color="transparent" selected={mapData.overmap.enabled} content="Yes" onClick={() => act('overmapActive', { setTo: true })} />
+            </Stack.Item>
+            <Stack.Item grow={1}>
+              <Button color="transparent" selected={!mapData.overmap.enabled} content="No" onClick={() => act('overmapActive', { setTo: false })} />
+            </Stack.Item>
+          </Stack>
         </VSplitTooltipList.Entry>
         <VSplitTooltipList.Entry label="X" tooltip="If set, try to set the sector at this X on the overmap.">
-          Test
+          <NumberInput value={mapData.overmap.x} onChange={(e, val) => act('overmapX', { setTo: val })} />
         </VSplitTooltipList.Entry>
         <VSplitTooltipList.Entry label="Y" tooltip="If set, try to set the sector at this Y on the overmap.">
-          Test
+          <NumberInput value={mapData.overmap.y} onChange={(e, val) => act('overmapY', { setTo: val })} />
         </VSplitTooltipList.Entry>
         <VSplitTooltipList.Entry label="Force Position" tooltip="If enabled, override overmap placement safety checks.">
-          Test
+          <Stack>
+            <Stack.Item grow={1}>
+              <Button color="transparent" selected={!!mapData.overmap} content="Yes" onClick={() => act('overmapForcePosition', { setTo: true })} />
+            </Stack.Item>
+            <Stack.Item grow={1}>
+              <Button color="transparent" selected={!mapData.overmap} content="No" onClick={() => act('overmapForcePosition', { setTo: false })} />
+            </Stack.Item>
+          </Stack>
         </VSplitTooltipList.Entry>
       </LabeledList>
     </Section>

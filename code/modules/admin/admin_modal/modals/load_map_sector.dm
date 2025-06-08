@@ -30,6 +30,7 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 	/// enable overmaps?
 	var/buffer_overmap_active
 	/// overmap initializer to use with buffer
+	/// * stored separately for injection as we can toggle whether or not to use it
 	var/datum/overmap_initializer/map/buffer_overmap_initializer
 
 	//* load *//
@@ -49,6 +50,7 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 	. = ..()
 	buffer = new /datum/map/custom
 	buffer.name = "Custom Map"
+	buffer_overmap_initializer = new
 
 /datum/admin_modal/load_map_sector/Destroy()
 	if(buffer)
@@ -134,17 +136,17 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 		if("overmapX")
 			if(!is_safe_number(params["setTo"]))
 				return
-			buffer_overmap_initializer.manual_position_x = params["setTo"]
+			buffer_overmap_initializer.manual_position_x = round(params["setTo"], 1)
 			update_ui_map_data()
 			. = TRUE
 		if("overmapY")
 			if(!is_safe_number(params["setTo"]))
 				return
-			buffer_overmap_initializer.manual_position_y = params["setTo"]
+			buffer_overmap_initializer.manual_position_y = round(params["setTo"], 1)
 			update_ui_map_data()
 			. = TRUE
 		if("overmapForcePosition")
-			buffer_overmap_initializer.manual_position_is_strong_suggestion = !buffer_overmap_initializer.manual_position_is_strong_suggestion
+			buffer_overmap_initializer.manual_position_is_strong_suggestion = !!params["setTo"]
 			update_ui_map_data()
 			. = TRUE
 		// levels //
@@ -333,6 +335,8 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 	update_ui_data()
 
 /datum/admin_modal/load_map_sector/proc/do_load()
+	if(buffer_overmap_active)
+		buffer.overmap_initializer = buffer_overmap_initializer
 	return SSmapping.load_map(buffer)
 
 /datum/admin_modal/load_map_sector/proc/create_level()
