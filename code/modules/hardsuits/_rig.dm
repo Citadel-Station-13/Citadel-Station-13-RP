@@ -3,13 +3,18 @@
 #define SEAL_DELAY 30
 
 /datum/armor/hardsuit
-	melee = 0.4
+	melee = 0.275
+	melee_tier = 3.5
 	bullet = 0.05
-	laser = 0.2
+	bullet_tier = 3
+	laser = 0.175
+	laser_tier = 3.5
 	energy = 0.05
 	bomb = 0.35
 	bio = 1.0
 	rad = 0.2
+	fire = 0.5
+	acid = 0.7
 
 /*
  * Defines the behavior of hardsuits/rigs/power armour.
@@ -467,7 +472,7 @@
 					if (is_sealing)
 						piece.set_armor(piece.fetch_armor().boosted(list(ARMOR_BIO = 100)))
 					else
-						piece.set_armor(piece.fetch_armor().overwritten(list(ARMOR_BIO = fetch_armor().raw(ARMOR_BIO))))
+						piece.set_armor(piece.fetch_armor().overwritten(list(ARMOR_BIO = fetch_armor().get_mitigation(ARMOR_BIO))))
 				else
 					failed_to_seal = 1
 
@@ -1161,9 +1166,9 @@
 					else
 						M.stop_pulling()
 
-	if(wearer.pinned.len)
-		to_chat(src, "<span class='notice'>Your host is pinned to a wall by [wearer.pinned[1]]</span>!")
-		return 0
+	// if(wearer.pinned.len)
+	// 	to_chat(src, "<span class='notice'>Your host is pinned to a wall by [wearer.pinned[1]]</span>!")
+	// 	return 0
 
 	// AIs are a bit slower than regular and ignore move intent.
 	wearer_move_delay = world.time + ai_controlled_move_delay

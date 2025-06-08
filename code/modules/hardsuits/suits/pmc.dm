@@ -2,13 +2,18 @@
 	light_overlay = "helmet_light_dual"
 
 /datum/armor/hardsuit/pmc
-	melee = 0.6
-	bullet = 0.5
+	melee = 0.45
+	melee_tier = 4
+	bullet = 0.325
+	bullet_tier = 4
 	laser = 0.35
-	energy = 0.15
-	bomb = 0.3
+	laser_tier = 4
+	energy = 0.25
+	bomb = 0.5
 	bio = 1.0
 	rad = 0.95
+	fire = 0.7
+	acid = 0.9
 
 /obj/item/hardsuit/pmc
 	name = "PMC hardsuit control module"

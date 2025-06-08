@@ -59,7 +59,7 @@
 	var/atom/movable/AM = parent
 	AM.unregister_shieldcall(shieldcall)
 
-/datum/component/parry_frame/proc/on_parry(attack_type, datum/weapon, shieldcall_returns, efficiency)
+/datum/component/parry_frame/proc/on_parry(attack_type, datum/attack_source, shieldcall_returns, efficiency)
 	++hit_count
 	// check drop
 	if(hit_count > active_parry.parry_drop_after_hits)
@@ -299,7 +299,7 @@
  * * attack_source_descriptor - (optional) text, or an entity to describe the attack. entities will be automatically handled.
  * * tool_text - (optional) text to describe the parry tool
  */
-/datum/parry_frame/proc/perform_audiovisuals(atom/defending, attack_type, efficiency, datum/weapon, shieldcall_flags, severity = 75, attack_source_descriptor, tool_text)
+/datum/parry_frame/proc/perform_audiovisuals(atom/defending, attack_type, efficiency, datum/attack_source, shieldcall_flags, severity = 75, attack_source_descriptor, tool_text)
 	playsound(defending, (islist(parry_sfx) && length(parry_sfx)) ? pick(parry_sfx) : parry_sfx , severity, TRUE)
 	new parry_vfx(null, defending, src, shieldcall_flags & SHIELDCALL_FLAG_SINGLE_PARRY)
 
@@ -331,30 +331,30 @@
  * * defending - thing being defended against an attack
  * * attack_type - (optional) type of attack
  * * efficiency - (optional) parry efficiency
- * * weapon - (optional) incoming weapon, depends on ATTACK_TYPE
+ * * attack_source - (optional) incoming weapon, depends on ATTACK_TYPE
  * * shieldcall_flags - (optional) the attack's shieldcall flags
- * * e_args - (optional) for melee, the event args of the attack
  *
  * @return SHIELDCALL_* flags; these override the caller's!
  */
-/datum/parry_frame/proc/perform_aftereffects(atom/defending, attack_type, efficiency, datum/weapon, shieldcall_flags, datum/event_args/actor/clickchain/e_args)
+/datum/parry_frame/proc/perform_aftereffects(atom/defending, attack_type, efficiency, datum/attack_source, shieldcall_flags)
 	. = shieldcall_flags
 
 	var/atom/movable/aggressor
 
 	// detect aggressor
-	if(istype(weapon, /obj/projectile))
-		var/obj/projectile/weapon_proj = weapon
+	if(istype(attack_source, /obj/projectile))
+		var/obj/projectile/weapon_proj = attack_source
 		aggressor = weapon_proj.firer
-	else if(e_args)
-		aggressor = e_args.performer
-	else if(istype(weapon, /datum/thrownthing))
-		var/datum/thrownthing/weapon_thrown = weapon
+	else if(istype(attack_source, /datum/event_args/actor/clickchain))
+		var/datum/event_args/actor/clickchain/weapon_clickchain = attack_source
+		aggressor = weapon_clickchain.performer
+	else if(istype(attack_source, /datum/thrownthing))
+		var/datum/thrownthing/weapon_thrown = attack_source
 		aggressor = weapon_thrown.thrower
 
 	switch(attack_type)
 		if(ATTACK_TYPE_PROJECTILE)
-			var/obj/projectile/proj = weapon
+			var/obj/projectile/proj = attack_source
 			if((parry_redirect_attack_types & ATTACK_TYPE_PROJECTILE) && (efficiency >= parry_efficiency_redirection))
 				var/outgoing_angle
 				if(parry_redirect_return_to_sender && aggressor)
@@ -424,63 +424,50 @@
 
 //* Bindings - Melee *//
 
-/datum/shieldcall/bound/parry_frame/handle_item_melee(atom/defending, shieldcall_returns, fake_attack, obj/item/weapon, datum/event_args/actor/clickchain/e_args)
+/datum/shieldcall/bound/parry_frame/handle_melee(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/weapon, datum/melee_attack/weapon/style)
 	var/datum/component/parry_frame/frame = bound
 	if(!(frame.active_parry.parry_attack_types & ATTACK_TYPE_MELEE))
 		return
-	if(e_args && !check_defensive_arc_tile(defending, e_args.performer, frame.active_parry.parry_arc, !frame.active_parry.parry_arc_round_down))
+	if(clickchain && !check_defensive_arc_tile(defending, clickchain.performer, frame.active_parry.parry_arc, !frame.active_parry.parry_arc_round_down))
 		return
 	var/efficiency = frame.active_parry.calculate_parry_efficiency(frame.start_time - world.time)
-	. = frame.active_parry.handle_item_melee(defending, shieldcall_returns, fake_attack, efficiency, weapon, e_args, tool_text)
-	frame.on_parry(ATTACK_TYPE_MELEE, weapon, ., efficiency)
+	. = frame.active_parry.handle_melee(defending, shieldcall_returns, fake_attack, efficiency, clickchain, style, weapon, tool_text)
+	frame.on_parry(ATTACK_TYPE_MELEE, clickchain, ., efficiency)
 
-/datum/parry_frame/proc/handle_item_melee(atom/defending, shieldcall_returns, fake_attack, efficiency, obj/item/weapon, datum/event_args/actor/clickchain/e_args, tool_text)
+// todo: reconcile with shieldcall args
+/datum/parry_frame/proc/handle_melee(atom/defending, shieldcall_returns, fake_attack, efficiency, datum/event_args/actor/clickchain/clickchain, datum/melee_attack/style, obj/item/weapon, tool_text)
 	. = shieldcall_returns
 	// todo: doesn't take into account any damage randomization
-	var/estimated_severity = clamp(weapon.damage_force * e_args.melee_damage_multiplier / 20 * 75, 0, 100)
-	e_args.melee_damage_multiplier *= clamp(1 - efficiency, 0, 1)
-	. = perform_aftereffects(defending, ATTACK_TYPE_MELEE, efficiency, weapon, ., e_args)
-	perform_audiovisuals(defending, ATTACK_TYPE_MELEE, efficiency, weapon, ., estimated_severity, weapon, tool_text)
+	var/estimated_damage = style.estimate_damage(weapon)
+	var/estimated_severity = clamp(estimated_damage * clickchain.attack_melee_multiplier / 20 * 75, 0, 100)
+	var/contact_penalty = clamp(1 - efficiency, 0, 1)
+	clickchain.attack_melee_multiplier *= contact_penalty
+	clickchain.attack_contact_multiplier *= contact_penalty
+	. = perform_aftereffects(defending, ATTACK_TYPE_MELEE, efficiency, clickchain, .)
+	perform_audiovisuals(defending, ATTACK_TYPE_MELEE, efficiency, clickchain, ., estimated_severity, weapon, tool_text)
 	if(parry_always_prevents_contact || (parry_can_prevent_contact && (efficiency >= parry_efficiency_blocked)))
 		. |= SHIELDCALL_FLAG_ATTACK_BLOCKED
 
-/datum/shieldcall/bound/parry_frame/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args)
-	var/datum/component/parry_frame/frame = bound
-	if(!(frame.active_parry.parry_attack_types & ATTACK_TYPE_UNARMED))
-		return
-	if(e_args && !check_defensive_arc_tile(defending, e_args.performer, frame.active_parry.parry_arc, !frame.active_parry.parry_arc_round_down))
-		return
-	var/efficiency = frame.active_parry.calculate_parry_efficiency(frame.start_time - world.time)
-	. = frame.active_parry.handle_unarmed_melee(defending, shieldcall_returns, fake_attack, efficiency, style, e_args, tool_text)
-	frame.on_parry(ATTACK_TYPE_UNARMED, style, ., efficiency)
-
-/datum/parry_frame/proc/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, efficiency, datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args, tool_text)
-	. = shieldcall_returns
-	// todo: doesn't take into account any damage randomization
-	var/estimated_severity = clamp(style.damage * e_args.melee_damage_multiplier / 20 * 75, 0, 100)
-	e_args.melee_damage_multiplier *= clamp(1 - efficiency, 0, 1)
-	. = perform_aftereffects(defending, ATTACK_TYPE_UNARMED, efficiency, style, ., e_args)
-	perform_audiovisuals(defending, ATTACK_TYPE_UNARMED, efficiency, style, ., estimated_severity, style, tool_text)
-	if(parry_always_prevents_contact || (parry_can_prevent_contact && (efficiency >= parry_efficiency_blocked)))
-		. |= SHIELDCALL_FLAG_ATTACK_BLOCKED
-
-/datum/shieldcall/bound/parry_frame/handle_touch(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/e_args, contact_flags, contact_specific)
+/datum/shieldcall/bound/parry_frame/handle_touch(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/clickchain, clickchain_flags, contact_flags, contact_specific)
 	var/datum/component/parry_frame/frame = bound
 	if(!(frame.active_parry.parry_attack_types & ATTACK_TYPE_TOUCH))
 		return
-	if(e_args && !check_defensive_arc_tile(defending, e_args.performer, frame.active_parry.parry_arc, !frame.active_parry.parry_arc_round_down))
+	if(clickchain && !check_defensive_arc_tile(defending, clickchain.performer, frame.active_parry.parry_arc, !frame.active_parry.parry_arc_round_down))
 		return
 	var/efficiency = frame.active_parry.calculate_parry_efficiency(frame.start_time - world.time)
-	. = frame.active_parry.handle_touch(defending, shieldcall_returns, fake_attack, efficiency, e_args, contact_flags, contact_specific, tool_text)
+	. = frame.active_parry.handle_touch(defending, shieldcall_returns, fake_attack, efficiency, clickchain, contact_flags, contact_specific, tool_text)
 	frame.on_parry(ATTACK_TYPE_TOUCH, null, ., efficiency)
 
-/datum/parry_frame/proc/handle_touch(atom/defending, shieldcall_returns, fake_attack, efficiency, datum/event_args/actor/clickchain/e_args, contact_flags, contact_specific, tool_text)
+// todo: reconcile with shieldcall args
+/datum/parry_frame/proc/handle_touch(atom/defending, shieldcall_returns, fake_attack, efficiency, datum/event_args/actor/clickchain/clickchain, contact_flags, contact_specific, tool_text)
 	. = shieldcall_returns
 	// todo: doesn't take into account any damage randomization
 	var/estimated_severity = 50
-	e_args.melee_damage_multiplier *= clamp(1 - efficiency, 0, 1)
-	. = perform_aftereffects(defending, ATTACK_TYPE_TOUCH, efficiency, null, ., e_args)
-	perform_audiovisuals(defending, ATTACK_TYPE_TOUCH, efficiency, null, ., estimated_severity, e_args.performer, tool_text)
+	var/contact_penalty = clamp(1 - efficiency, 0, 1)
+	clickchain.attack_melee_multiplier *= contact_penalty
+	clickchain.attack_contact_multiplier *= contact_penalty
+	. = perform_aftereffects(defending, ATTACK_TYPE_TOUCH, efficiency, null, ., clickchain)
+	perform_audiovisuals(defending, ATTACK_TYPE_TOUCH, efficiency, null, ., estimated_severity, clickchain.performer, tool_text)
 	if(parry_always_prevents_contact || (parry_can_prevent_contact && (efficiency >= parry_efficiency_blocked)))
 		. |= SHIELDCALL_FLAG_ATTACK_BLOCKED
 
@@ -496,6 +483,7 @@
 	. = frame.active_parry.handle_throw_impact(defending, shieldcall_returns, fake_attack, efficiency, thrown, tool_text)
 	frame.on_parry(ATTACK_TYPE_THROWN, thrown, ., efficiency)
 
+// todo: reconcile with shieldcall args
 /datum/parry_frame/proc/handle_throw_impact(atom/defending, shieldcall_returns, fake_attack, efficiency, datum/thrownthing/thrown, tool_text)
 	. = shieldcall_returns
 	// todo: doesn't take into account any damage randomization

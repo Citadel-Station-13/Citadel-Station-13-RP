@@ -2654,7 +2654,6 @@
 /obj/item/material/sword/sabre{
 	name = "Blacklaw's Sabre";
 	desc = "A well worn sabre, it still seems impossible sharp to this day.";
-	armor_penetration = 50
 	},
 /turf/simulated/wall/rthull,
 /area/awaymission/shipcave/ship/bridge)
@@ -2717,7 +2716,6 @@
 /obj/item/material/sword/sabre{
 	name = "Blacklaw's Sabre";
 	desc = "A well worn sabre, it still seems impossible sharp to this day.";
-	armor_penetration = 50
 	},
 /turf/simulated/floor/flesh,
 /area/awaymission/shipcave/ship/bridge)
