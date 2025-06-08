@@ -46,7 +46,6 @@ module.exports = (env = {}, argv) => {
     entry: {
       tgui: ['./packages/tgui'],
       'tgui-panel': ['./packages/tgui-panel'],
-      // 'tgui-say': ['./packages/tgui-say'],
     },
     output: {
       path: argv.useTmpFolder
@@ -64,7 +63,6 @@ module.exports = (env = {}, argv) => {
       alias: {
         tgui: path.resolve(__dirname, './packages/tgui'),
         'tgui-panel': path.resolve(__dirname, './packages/tgui-panel'),
-        'tgui-say': path.resolve(__dirname, './packages/tgui-say'),
         'tgui-dev-server': path.resolve(
           __dirname,
           './packages/tgui-dev-server',
