@@ -192,7 +192,7 @@ const MapLevelProperties = (props: {
 }, context) => {
   const { act, data, nestedData } = useBackend<ModalData>(context);
   const levelData: ModalLevelData = nestedData[`level-${props.levelIndex}`];
-  const levelAct = (action: string, params: Object) => act(action, { levelIndex: props.levelIndex, ...params });
+  const levelAct = (action: string, params?: Object) => act(action, { levelIndex: props.levelIndex, ...params });
 
   return (
     <VSplitTooltipList leftSideWidthPercent={25}>
@@ -252,7 +252,7 @@ const MapLevelProperties = (props: {
       <VSplitTooltipList.Entry label="Base Area">
         <WorldTypepathDropdown
         selectedPath={levelData.baseTurf}
-        onSelectPath={(path) => levelAct('levelBaseTurf', { type: path })}
+        onSelectPath={(path) => levelAct('levelBaseArea', { type: path })}
         filter={{
           areas: {
             enabled: true,
@@ -261,13 +261,37 @@ const MapLevelProperties = (props: {
         }} />
       </VSplitTooltipList.Entry>
       <VSplitTooltipList.Entry label="Air - Indoors">
-        Test
+        <Stack>
+          <Stack.Item>
+            <Input onChange={(e, val) => levelAct('levelAirIndoors', { air: val })}
+              width="100%"
+              value={levelData.airIndoors} />
+          </Stack.Item>
+          <Stack.Item>
+            <Button icon="earth-americas" onClick={() => act('levelAirIndoors', { air: data.const_airHabitable })} />
+          </Stack.Item>
+          <Stack.Item>
+            <Button icon="minus" onClick={() => act('levelAirIndoors', { air: data.const_airVacuum })} />
+          </Stack.Item>
+        </Stack>
       </VSplitTooltipList.Entry>
       <VSplitTooltipList.Entry label="Air - Outdoors">
-        Test
+        <Stack>
+          <Stack.Item>
+            <Input onChange={(e, val) => levelAct('levelAirOutdoors', { air: val })}
+              width="100%"
+              value={levelData.airOutdoors} />
+          </Stack.Item>
+          <Stack.Item>
+            <Button icon="earth-americas" onClick={() => act('levelAirOutdoors', { air: data.const_airHabitable })} />
+          </Stack.Item>
+          <Stack.Item>
+            <Button icon="minus" onClick={() => act('levelAirOutdoors', { air: data.const_airVacuum })} />
+          </Stack.Item>
+        </Stack>
       </VSplitTooltipList.Entry>
       <VSplitTooltipList.Entry label="Ceiling Height">
-        <NumberInput value={0} minValue={0} onChange={(e, val) => { }} width="100%" />
+        <NumberInput value={levelData.ceilingHeight} minValue={1} onChange={(e, val) => { levelAct('levelCeilingHeight', { height: val }); }} width="100%" />
       </VSplitTooltipList.Entry>
     </VSplitTooltipList>
   );
