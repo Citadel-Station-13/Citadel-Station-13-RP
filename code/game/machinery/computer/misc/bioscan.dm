@@ -53,6 +53,9 @@
 
 /obj/machinery/computer/bioscan/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
+	if(.)
+		return
+
 	switch(action)
 		if("scan")
 			if(!network_key)
