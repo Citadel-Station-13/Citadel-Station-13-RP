@@ -23,33 +23,32 @@ avoid code duplication. This includes items that may sometimes act as a standard
 */
 
 //I would prefer to rename this to attack(), but that would involve touching hundreds of files.
-/obj/item/proc/resolve_attackby(atom/A, mob/user, params, attack_modifier = 1, clickchain_flags)
+/obj/item/proc/resolve_attackby(atom/target, mob/user, params, attack_modifier = 1, clickchain_flags, datum/event_args/actor/clickchain/clickchain)
 	if(!(atom_flags & NOPRINT))
 		add_fingerprint(user)
-	return A.attackby(src, user, params, clickchain_flags, attack_modifier)
+	return target.attackby(src, user, params, clickchain_flags, attack_modifier, clickchain)
 
-// No comment
-/atom/proc/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier = 1)
-	return I.standard_melee_attack(src, user, clickchain_flags, params, damage_multiplier, user.zone_sel?.selecting, user.a_intent)
+/atom/proc/attackby(obj/item/tool, mob/user, list/params, clickchain_flags, damage_multiplier, datum/event_args/actor/clickchain/clickchain)
+	return tool.melee_attack_chain(clickchain, clickchain_flags)
 
-/mob/living/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier = 1)
-	if(can_operate(src) && user.a_intent != INTENT_HARM && I.do_surgery(src,user))
+/mob/living/attackby(obj/item/tool, mob/user, list/params, clickchain_flags, damage_multiplier, datum/event_args/actor/clickchain/clickchain)
+	if(can_operate(src) && user.a_intent != INTENT_HARM && tool.do_surgery(src,user))
 		return NONE
 	if(attempt_vr(src,"vore_attackby",args))
 		return
-	return I.standard_melee_attack(src, user, clickchain_flags, params, damage_multiplier, user.zone_sel?.selecting, user.a_intent)
+	return tool.melee_attack_chain(clickchain, clickchain_flags)
 
 // Used to get how fast a mob should attack, and influences click delay.
 // This is just for inheritence.
-/mob/proc/get_attack_speed_legacy()
+/mob/proc/get_attack_speed_legacy(obj/item/using_item)
 	return DEFAULT_ATTACK_COOLDOWN
 
 // Same as above but actually does useful things.
 // W is the item being used in the attack, if any. modifier is if the attack should be longer or shorter than usual, for whatever reason.
-/mob/living/get_attack_speed_legacy(var/obj/item/W)
+/mob/living/get_attack_speed_legacy(obj/item/using_item)
 	var/speed = base_attack_cooldown
-	if(W && istype(W))
-		speed = W.attackspeed
+	if(istype(using_item))
+		speed = using_item.melee_click_cd_base * using_item.melee_click_cd_multiply
 	for(var/datum/modifier/M in modifiers)
 		if(!isnull(M.attack_speed_percent))
 			speed *= M.attack_speed_percent

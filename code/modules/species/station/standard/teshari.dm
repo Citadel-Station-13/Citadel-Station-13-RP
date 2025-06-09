@@ -144,9 +144,9 @@
 	vision_organ = O_EYES
 
 	unarmed_types = list(
-		/datum/unarmed_attack/bite/sharp,
-		/datum/unarmed_attack/claws,
-		/datum/unarmed_attack/stomp/weak,
+		/datum/melee_attack/unarmed/bite/sharp,
+		/datum/melee_attack/unarmed/claws,
+		/datum/melee_attack/unarmed/stomp/weak,
 	)
 
 	inherent_verbs = list(

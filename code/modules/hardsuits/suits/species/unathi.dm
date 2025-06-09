@@ -15,13 +15,18 @@
 	boot_type = /obj/item/clothing/shoes/magboots/hardsuit/breacher
 
 /datum/armor/hardsuit/breacher
-	melee = 0.6
-	bullet = 0.6
-	laser = 0.6
-	energy = 0.6
+	melee = 0.45
+	melee_tier = 4
+	bullet = 0.4
+	bullet_tier = 4
+	laser = 0.35
+	laser_tier = 4
+	energy = 0.35
 	bomb = 0.7
 	bio = 1.0
 	rad = 0.5
+	fire = 0.8
+	acid = 1.0
 
 /obj/item/hardsuit/breacher/fancy
 	name = "breacher chassis control module"
@@ -33,12 +38,9 @@
 	siemens_coefficient = 0.2
 
 /datum/armor/hardsuit/breacher/upgraded
-	melee = 0.9
-	bullet = 0.9
-	laser = 0.9
-	energy = 0.9
-	bomb = 0.9
-	rad = 0.8
+	melee = 0.55
+	bullet = 0.55
+	laser = 0.45
 
 /obj/item/clothing/head/helmet/space/hardsuit/breacher
 	damage_force = 5

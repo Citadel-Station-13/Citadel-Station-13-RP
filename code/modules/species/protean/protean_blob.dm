@@ -103,7 +103,7 @@
 
 /mob/living/simple_mob/protean_blob/init_melee_style()
 	. = ..()
-	melee_style.damage_structural_add = 30
+	melee_style.damage_structural_add = 15
 
 /mob/living/simple_mob/protean_blob/init_vore()
 	return //Don't make a random belly, don't waste your time
@@ -584,7 +584,7 @@
 
 	visible_message("<span class='warning'>[src] coils itself up like a spring, preparing to leap at [target]!</span>")
 	if(do_after(src, 1 SECOND, target)) //1 second
-		if(buckled || pinned.len)
+		if(buckled) // || pinned.len)
 			return
 
 		var/obj/item/holder/H = new holder_type(get_turf(src))
