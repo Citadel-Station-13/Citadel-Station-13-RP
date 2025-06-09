@@ -1453,8 +1453,7 @@
 	},
 /obj/machinery/fire_alarm/alarms_hidden/north_mount,
 /obj/machinery/atmospherics/portables_connector{
-	dir = 1;
-	name = "Airlock Charging Port"
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/endeavour/general)
@@ -5241,7 +5240,8 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/effect/floor_decal/industrial/warning/cee,
+/turf/simulated/floor/plating,
 /area/shuttle/excursion/endeavour/general)
 "dWo" = (
 /obj/structure/disposalpipe/segment,
@@ -7821,11 +7821,6 @@
 	dir = 1;
 	req_one_access = null
 	},
-/obj/machinery/media/jukebox{
-	icon_state = "superjuke-nopower";
-	state_base = "superjuke";
-	pixel_x = -29
-	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/endeavour/cockpit)
 "fND" = (
@@ -8576,6 +8571,10 @@
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
+"gsG" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/turf/simulated/wall/rthull,
+/area/shuttle/excursion/endeavour/general)
 "gtu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -18059,6 +18058,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1fwdhall)
 "nEb" = (
+/obj/machinery/media/jukebox{
+	icon_state = "superjuke-nopower";
+	state_base = "superjuke"
+	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/endeavour/cockpit)
 "nFc" = (
@@ -22125,6 +22128,10 @@
 	pixel_y = 9
 	},
 /obj/effect/floor_decal/industrial/warning,
+/obj/machinery/atmospherics/portables_connector{
+	dir = 4;
+	name = "Airlock Charging Port"
+	},
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/endeavour/general)
 "qHc" = (
@@ -31819,7 +31826,10 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/effect/floor_decal/industrial/warning/cee{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
 /area/shuttle/excursion/endeavour/general)
 "xSS" = (
 /obj/structure/cable/green{
@@ -32192,6 +32202,10 @@
 "yeQ" = (
 /obj/structure/handrail,
 /obj/effect/floor_decal/industrial/warning,
+/obj/machinery/atmospherics/component/binary/pump{
+	dir = 4;
+	name = "main fuel pump"
+	},
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/endeavour/general)
 "yeZ" = (
@@ -38264,7 +38278,7 @@ osQ
 rUC
 nXj
 jls
-ift
+gsG
 dWa
 iee
 ihi
