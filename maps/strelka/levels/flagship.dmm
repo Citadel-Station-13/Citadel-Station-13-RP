@@ -1517,7 +1517,7 @@
 	},
 /area/centcom/specops/dock)
 "eu" = (
-/obj/machinery/mecha_part_fabricator,
+/obj/machinery/lathe/mecha_part_fabricator,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "ew" = (
@@ -13284,7 +13284,7 @@
 	},
 /area/centcom/control)
 "IU" = (
-/obj/machinery/mecha_part_fabricator/pros,
+/obj/machinery/lathe/mecha_part_fabricator/pros,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "IW" = (

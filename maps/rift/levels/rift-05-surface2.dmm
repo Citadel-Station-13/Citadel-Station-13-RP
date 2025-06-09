@@ -35829,7 +35829,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/mecha_part_fabricator{
+/obj/machinery/lathe/mecha_part_fabricator{
 	dir = 8
 	},
 /obj/machinery/camera/network/research{
@@ -37906,7 +37906,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/mecha_part_fabricator/pros{
+/obj/machinery/lathe/mecha_part_fabricator/pros{
 	dir = 8;
 	pixel_y = 3
 	},

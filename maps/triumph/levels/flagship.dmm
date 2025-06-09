@@ -10253,7 +10253,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/escape)
 "Gh" = (
-/obj/machinery/mecha_part_fabricator,
+/obj/machinery/lathe/mecha_part_fabricator,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "Gi" = (
@@ -14864,7 +14864,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "Us" = (
-/obj/machinery/mecha_part_fabricator/pros,
+/obj/machinery/lathe/mecha_part_fabricator/pros,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "Uu" = (

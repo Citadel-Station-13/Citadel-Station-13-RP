@@ -4301,7 +4301,7 @@
 /turf/simulated/floor/reinforced,
 /area/admin_planet/andromeda/northern_lobby)
 "mU" = (
-/obj/machinery/mecha_part_fabricator/pros,
+/obj/machinery/lathe/mecha_part_fabricator/pros,
 /turf/simulated/floor/tiled/dark{
 	color = "#A9A9A9"
 	},
@@ -7502,7 +7502,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/admin_planet/andromeda/rnd_lab)
 "xn" = (
-/obj/machinery/mecha_part_fabricator,
+/obj/machinery/lathe/mecha_part_fabricator,
 /turf/simulated/floor/tiled/dark{
 	color = "#A9A9A9"
 	},

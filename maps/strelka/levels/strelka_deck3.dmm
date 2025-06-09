@@ -210,7 +210,7 @@
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/maintenance/cargo)
 "aZ" = (
-/obj/machinery/mecha_part_fabricator/pros{
+/obj/machinery/lathe/mecha_part_fabricator/pros{
 	dir = 8;
 	pixel_y = 3
 	},
@@ -10067,7 +10067,7 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck3/cargo/hangar)
 "IV" = (
-/obj/machinery/mecha_part_fabricator{
+/obj/machinery/lathe/mecha_part_fabricator{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,

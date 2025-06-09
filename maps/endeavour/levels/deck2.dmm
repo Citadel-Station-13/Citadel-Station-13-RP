@@ -8331,7 +8331,7 @@
 	name = "Station Intercom (General)";
 	pixel_y = 21
 	},
-/obj/machinery/mecha_part_fabricator,
+/obj/machinery/lathe/mecha_part_fabricator,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -17938,7 +17938,7 @@
 	name = "Robotics RC";
 	pixel_y = 30
 	},
-/obj/machinery/mecha_part_fabricator/pros,
+/obj/machinery/lathe/mecha_part_fabricator/pros,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},

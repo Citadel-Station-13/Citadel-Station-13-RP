@@ -15209,7 +15209,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/hop)
 "jed" = (
-/obj/machinery/mecha_part_fabricator{
+/obj/machinery/lathe/mecha_part_fabricator{
 	dir = 8
 	},
 /obj/structure/extinguisher_cabinet{
@@ -17642,7 +17642,7 @@
 /turf/simulated/floor/carpet,
 /area/library)
 "kJm" = (
-/obj/machinery/mecha_part_fabricator/pros{
+/obj/machinery/lathe/mecha_part_fabricator/pros{
 	dir = 1
 	},
 /obj/structure/reagent_dispensers/acid{

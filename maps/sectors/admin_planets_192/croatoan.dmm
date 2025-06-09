@@ -7106,7 +7106,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/croatoan/sci_lower_checkpoint)
 "yE" = (
-/obj/machinery/mecha_part_fabricator/pros{
+/obj/machinery/lathe/mecha_part_fabricator/pros{
 	dir = 8;
 	pixel_y = 3
 	},
@@ -14188,7 +14188,7 @@
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_control_center)
 "XL" = (
-/obj/machinery/mecha_part_fabricator{
+/obj/machinery/lathe/mecha_part_fabricator{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,

@@ -659,7 +659,7 @@
 /turf/simulated/shuttle/floor,
 /area/submap/HeadscientistHQ)
 "Ek" = (
-/obj/machinery/mecha_part_fabricator,
+/obj/machinery/lathe/mecha_part_fabricator,
 /turf/simulated/shuttle/floor/purple,
 /area/submap/HeadscientistHQ)
 "EF" = (
