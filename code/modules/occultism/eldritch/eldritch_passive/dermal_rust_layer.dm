@@ -6,6 +6,7 @@
  */
 /datum/prototype/eldritch_passive/dermal_rust_layer
 	id = "dermal_rust_layer"
+	requires_ticking = TRUE
 	/// requires you to be around rust tiles
 	var/requires_rust_tile_proximity = TRUE
 	/// rust tiles needed for max strength

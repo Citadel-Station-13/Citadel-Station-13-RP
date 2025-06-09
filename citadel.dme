@@ -4414,6 +4414,7 @@
 #include "code\modules\occultism\bulwark\items\nullrod.dm"
 #include "code\modules\occultism\bulwark\projectile_hooks\antimagic_check.dm"
 #include "code\modules\occultism\eldritch\eldritch-mob_api.dm"
+#include "code\modules\occultism\eldritch\eldritch-turf_api.dm"
 #include "code\modules\occultism\eldritch\eldritch_ability.dm"
 #include "code\modules\occultism\eldritch\eldritch_effect.dm"
 #include "code\modules\occultism\eldritch\eldritch_holder.dm"

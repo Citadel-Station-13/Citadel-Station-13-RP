@@ -17,3 +17,16 @@
 	var/list/knowledge_known_ids
 
 #warn impl maybe?
+
+/obj/item/eldritch_book/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	. = ..()
+
+/obj/item/eldritch_book/ui_act(action, list/params, datum/tgui/ui)
+	. = ..()
+
+/obj/item/eldritch_book/ui_static_data(mob/user, datum/tgui/ui)
+	. = ..()
+
+/obj/item/eldritch_book/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+	. = ..()
+	// TODO: use this instead of static data to send info on code.
