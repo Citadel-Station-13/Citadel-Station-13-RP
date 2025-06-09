@@ -15,6 +15,12 @@
 #define ANTIMAGIC_ARG_TARGET 5
 /// magic target zone
 #define ANTIMAGIC_ARG_TARGET_ZONE 6
+/// antimagic resultant efficiency
+/// * this is what antimagic modifies
+/// * unlike armor, we don't give a power / damage value / whatever, so
+///   antimagic is generic
+/// * negatives are allowed. yes, negatives are allowed. caller should respect that.
+#define ANTIMAGIC_ARG_EFFICIENCY 7
 
 //* Antimagic call flags *//
 

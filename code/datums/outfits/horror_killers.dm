@@ -85,7 +85,7 @@
 	mask = /obj/item/clothing/mask/gas/mummy
 	head = /obj/item/clothing/head/nemes
 	suit = /obj/item/clothing/suit/pharaoh
-	r_hand = /obj/item/nullrod/egyptian
+	r_hand = /obj/item/nullrod_legacy/egyptian
 
 /* //Sort out adding spells sometime.
 /datum/outfit/mummy/equip(var/mob/living/carbon/human/H)

@@ -9779,7 +9779,7 @@
 /area/tradeport/commhall)
 "azD" = (
 /obj/structure/window/reinforced,
-/obj/item/nullrod/egyptian{
+/obj/item/nullrod_legacy/egyptian{
 	desc = "This golden scepter was once the object of many fanciful tales. Old Earth archaeologists long believed it to be a myth. It was discovered by scavenger teams after the Final War, and has changed hands many times since.";
 	name = "The Staff of Ahten-Ka"
 	},

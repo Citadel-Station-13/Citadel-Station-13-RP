@@ -1,7 +1,7 @@
 //! Construct Spells
 
 /proc/findNullRod(atom/target)
-	if(istype(target,/obj/item/nullrod))
+	if(istype(target,/obj/item/nullrod_legacy))
 		return 1
 	else if(target.contents)
 		for(var/atom/A in target.contents)
@@ -576,8 +576,14 @@
 	light_range = 2
 	light_power = -2
 	light_color = "#FFFFFF"
-	antimagic_check = TRUE
-	antimagic_damage_factor = 0.66
+
+	projectile_hooks = list(
+		/datum/projectile_hook/antimagic_check{
+			magic_potency = MAGIC_POTENCY_LEGACY_WIZARD;
+			magic_type = MAGIC_TYPE_GENERIC;
+			threshold_delete = MAGIC_POTENC_LEGACY_WIZARD_DELETE;
+		},
+	)
 
 	legacy_muzzle_type = /obj/effect/projectile/muzzle/inversion
 	legacy_tracer_type = /obj/effect/projectile/tracer/inversion

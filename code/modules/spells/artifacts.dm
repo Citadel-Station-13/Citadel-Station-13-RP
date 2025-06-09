@@ -88,7 +88,7 @@
 		qdel(src)
 
 /obj/effect/rend/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/nullrod))
+	if(istype(I, /obj/item/nullrod_legacy))
 		user.visible_message("<span class='danger'>[user] seals \the [src] with \the [I].</span>")
 		qdel(src)
 		return

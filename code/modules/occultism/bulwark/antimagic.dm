@@ -21,20 +21,19 @@
  *
  * We fully block magic at a given potency, falling off linearly to a given other potency.
  */
-/datum/antimagic/simple
+/datum/antimagic/simple_linear
 	/// magic types blocked
 	var/magic_types = MAGIC_TYPES_ALL
 	/// potency we can block fully
-	var/full_block_potency = 100
-	/// potency we stop blocking at
-	var/cant_block_potency = 200
+	var/full_block_potency = MAGIC_POTENCY_BASELINE
+	/// potency at which we can't block
+	var/cant_block_potency = MAGIC_POTENCY_BASELINE
 
-
-#warn impl all
-
-/datum/antimagic/simple/handle_antimagic(list/antimagic_args)
-
-
+/datum/antimagic/simple_linear/handle_antimagic(list/antimagic_args)
+	if(!(antimagic_args[ANTIMAGIC_ARG_TYPE] & magic_types))
+		return
+	#warn impl
+	antimagic_args[ANTIMAGIC_ARG_EFFICIENCY] = antimagic_args[ANTIMAGIC_ARG_EFFICIENCY] * 1
 
 /**
  * Just invokes a callback to modify antimagic call args

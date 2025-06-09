@@ -2,7 +2,7 @@
 	name = "Mummification Bandages (Mask)"
 	result = /obj/item/clothing/mask/gas/mummy
 	time = 10
-	tools = list(/obj/item/nullrod/egyptian)
+	tools = list(/obj/item/nullrod_legacy/egyptian)
 	reqs = list(/obj/item/stack/material/cloth = 2)
 	category = CAT_CLOTHING
 

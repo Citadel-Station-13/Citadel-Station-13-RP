@@ -6,15 +6,15 @@
 	desc = "A rod of pure obsidian."
 	#warn icon
 
-	damage_force = 12
+	damage_force = 15
 	damage_tier = 4
 
 /obj/item/nullrod/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/antimagic_provider, /datum/antimagic/simple/nullrod)
+	AddComponent(/datum/component/antimagic_provider, /datum/antimagic/simple_linear/nullrod)
 
 #warn impl all
 
-/datum/antimagic/simple/nullrod
+/datum/antimagic/simple_linear/nullrod
 	full_block_potency = MAGIC_POTENCY_NULLROD_FULL_BLOCK
 	cant_block_potency = MAGIC_POTENCY_NULLROD_NO_BLOCK

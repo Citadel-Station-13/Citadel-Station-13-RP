@@ -10472,7 +10472,7 @@
 	},
 /obj/item/reagent_containers/food/drinks/bottle/holywater,
 /obj/item/storage/fancy/crayons,
-/obj/item/nullrod{
+/obj/item/nullrod_legacy{
 	pixel_x = 9
 	},
 /turf/simulated/floor/lino,

@@ -1340,7 +1340,7 @@
 "cL" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/drinks/bottle/holywater,
-/obj/item/nullrod,
+/obj/item/nullrod_legacy,
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/office)
 "cM" = (

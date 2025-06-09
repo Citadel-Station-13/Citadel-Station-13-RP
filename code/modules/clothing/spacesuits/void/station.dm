@@ -29,7 +29,7 @@
 	icon_state = "para_ert_void"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sec_voidsuit", SLOT_ID_LEFT_HAND = "sec_voidsuit")
 	armor_type = /datum/armor/centcom/ert/paracausal
-	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton,/obj/item/ammo_magazine,/obj/item/nullrod)
+	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton,/obj/item/ammo_magazine,/obj/item/nullrod_legacy_legacy)
 	siemens_coefficient = 0.7
 
 //Gimmick and "Costume" Tier Voidsuits

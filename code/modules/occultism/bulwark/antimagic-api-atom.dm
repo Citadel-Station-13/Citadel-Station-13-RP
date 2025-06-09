@@ -7,10 +7,10 @@
 /**
  * @return modified args; access with ANTIMAGIC_ARG_*
  */
-/atom/proc/antimagic_check(magic_potency, magic_type, list/magic_data, antimagic_flags, atom/target, target_zone)
+/atom/proc/antimagic_check(magic_potency, magic_type, list/magic_data, antimagic_flags, atom/target, target_zone, efficiency = 1)
 	var/datum/component/antimagic_coverage/coverage_tracker = GetComponent(/datum/component/antimagic_coverage)
 	if(coverage_tracker)
-		return coverage_tracker.antimagic_check(magic_potency, magic_type, magic_data, antimagic_flags, target, target_zone)
+		return coverage_tracker.antimagic_check(magic_potency, magic_type, magic_data, antimagic_flags, target, target_zone, efficiency)
 	else
 		return args.Copy()
 
