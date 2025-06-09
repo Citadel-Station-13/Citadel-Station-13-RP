@@ -8949,6 +8949,7 @@
 	dir = 8;
 	id_tag = "expshuttle_docker_pump"
 	},
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/strelka)
 "As" = (
@@ -8989,6 +8990,7 @@
 	dir = 8;
 	id_tag = "expshuttle_docker_pump"
 	},
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/strelka)
 "AB" = (
@@ -13793,6 +13795,7 @@
 	dir = 1;
 	id_tag = "emtshuttle_docker_pump"
 	},
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/emt/strelka/main)
 "PP" = (
@@ -14951,6 +14954,7 @@
 	dir = 8;
 	id_tag = "emtshuttle_docker_pump"
 	},
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/emt/strelka/main)
 "TE" = (

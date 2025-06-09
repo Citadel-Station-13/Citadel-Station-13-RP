@@ -6657,12 +6657,6 @@
 /obj/item/clothing/glasses/welding/superior,
 /obj/structure/table/steel_reinforced,
 /obj/item/clothing/glasses/welding/superior,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -15559,6 +15553,9 @@
 	},
 /area/centcom/living)
 "OM" = (
+/obj/spawner/window/reinforced/full/firelocks{
+	id = "emergency_cockpit"
+	},
 /turf/simulated/floor,
 /area/shuttle/escape)
 "OO" = (
@@ -16719,7 +16716,6 @@
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/escape)
 "RR" = (
-/obj/item/grenade/supermatter,
 /obj/structure/table/rack/steel,
 /obj/machinery/door/window/brigdoor{
 	req_access = list(109)
@@ -20086,6 +20082,8 @@
 /obj/item/storage/belt/medical/emt,
 /obj/item/storage/belt/medical/emt,
 /obj/item/storage/belt/medical/emt,
+/obj/item/melee/baton/slime,
+/obj/item/melee/baton/slime,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},

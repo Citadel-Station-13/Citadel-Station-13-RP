@@ -6807,9 +6807,6 @@
 /area/strelka/shipbase/deck3)
 "ya" = (
 /obj/structure/closet/crate,
-/obj/item/grenade/chem_grenade,
-/obj/item/grenade/chem_grenade,
-/obj/item/grenade/chem_grenade,
 /obj/item/assembly/timer,
 /obj/item/assembly/timer,
 /obj/item/assembly/timer,
@@ -7508,10 +7505,6 @@
 /obj/structure/closet/crate{
 	name = "Grenade Crate"
 	},
-/obj/item/grenade/chem_grenade,
-/obj/item/grenade/chem_grenade,
-/obj/item/grenade/chem_grenade,
-/obj/item/grenade/chem_grenade,
 /obj/item/assembly/igniter,
 /obj/item/assembly/igniter,
 /obj/item/assembly/igniter,
@@ -9729,11 +9722,11 @@
 "HI" = (
 /obj/structure/table/carbon/reinforced,
 /obj/item/slime_scanner,
-/obj/item/melee/baton/slime/loaded,
 /obj/machinery/light/small/old{
 	dir = 4
 	},
 /obj/item/gun/projectile/energy/taser/xeno,
+/obj/item/melee/baton/slime,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/xenobio)
 "HJ" = (
@@ -11611,8 +11604,8 @@
 "Pi" = (
 /obj/structure/table/carbon/reinforced,
 /obj/item/slime_scanner,
-/obj/item/melee/baton/slime/loaded,
 /obj/item/gun/projectile/energy/taser/xeno,
+/obj/item/melee/baton/slime,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/xenobio)
 "Pj" = (

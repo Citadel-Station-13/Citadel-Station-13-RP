@@ -119,6 +119,10 @@
 /obj/machinery/door/blast/shutters{
 	id = "Pinance"
 	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
 "aY" = (
@@ -131,6 +135,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/spline/plain,
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
 "aZ" = (
@@ -173,6 +180,7 @@
 	dir = 4
 	},
 /obj/structure/flora/pottedplant/hedge,
+/obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/hangardeck)
 "bh" = (
@@ -373,6 +381,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/computer/timeclock/premade/west,
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
 "bS" = (
@@ -576,6 +587,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/fire_alarm/west_mount,
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
 "cL" = (
@@ -739,6 +753,10 @@
 /obj/structure/cable/blue{
 	icon_state = "1-8"
 	},
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
 "dB" = (
@@ -765,6 +783,9 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
@@ -926,6 +947,9 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
@@ -1165,6 +1189,10 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck1/checkpoint)
+"fX" = (
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/turf/simulated/floor/reinforced,
+/area/strelka/shipbase/deck1/hangardeck)
 "gc" = (
 /obj/machinery/vending/assist,
 /turf/simulated/floor/tiled/techfloor/monogrid,
@@ -1182,6 +1210,9 @@
 	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
+	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
@@ -1313,6 +1344,10 @@
 /obj/machinery/door/blast/shutters{
 	id = "Secbaron"
 	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
 "he" = (
@@ -2136,6 +2171,9 @@
 /obj/structure/cable/blue{
 	icon_state = "1-2"
 	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
 "lL" = (
@@ -2264,6 +2302,9 @@
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/spline/plain,
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
 "lY" = (
@@ -2588,6 +2629,9 @@
 	dir = 4;
 	req_access = list(3)
 	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
 "nz" = (
@@ -2791,6 +2835,17 @@
 /obj/machinery/camera/network/security,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/armory)
+"oE" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/strelka/shipbase/deck1)
 "oI" = (
 /obj/structure/stairs/spawner/south,
 /turf/simulated/floor/tiled/techfloor,
@@ -2876,6 +2931,9 @@
 	dir = 4;
 	req_access = list(3)
 	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
 "po" = (
@@ -2958,6 +3016,9 @@
 	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
+	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
@@ -3650,6 +3711,13 @@
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/shipbase/deck1/hangardeck)
+"tG" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/turf/simulated/floor/reinforced,
+/area/strelka/shipbase/deck1/hangardeck)
 "tL" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 10
@@ -4073,6 +4141,9 @@
 	},
 /obj/structure/cable/blue{
 	icon_state = "2-8"
+	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
@@ -4911,6 +4982,10 @@
 	pixel_y = 24;
 	pixel_x = -29
 	},
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
 "Bu" = (
@@ -5310,6 +5385,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
 "DH" = (
@@ -5373,6 +5451,19 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/strelka/shipbase/deck1/checkpoint)
+"DV" = (
+/obj/effect/floor_decal/borderfloorblack{
+	alpha = 255;
+	dir = 4
+	},
+/obj/structure/cable/blue{
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/strelka/shipbase/deck1)
 "DW" = (
 /obj/structure/table/carbon/reinforced,
 /obj/machinery/light/small/old{
@@ -5921,6 +6012,9 @@
 /obj/machinery/light/small/old{
 	dir = 4
 	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
 "Gp" = (
@@ -6053,6 +6147,7 @@
 /area/shuttle/civvie/strelka)
 "GT" = (
 /obj/machinery/fire_alarm/north_mount,
+/obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/hangardeck)
 "Hd" = (
@@ -6401,6 +6496,9 @@
 /obj/machinery/atm{
 	pixel_x = -32
 	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
 "Jb" = (
@@ -6521,6 +6619,10 @@
 /obj/machinery/door/blast/shutters{
 	id = "Secbaron2"
 	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
 "Jz" = (
@@ -6708,6 +6810,7 @@
 	dir = 1
 	},
 /obj/structure/flora/pottedplant/hedge,
+/obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/hangardeck)
 "KI" = (
@@ -6809,6 +6912,9 @@
 /obj/machinery/light/small/old{
 	dir = 8
 	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
 "Lq" = (
@@ -6832,6 +6938,9 @@
 	pixel_x = -22;
 	dir = 4;
 	req_access = list(47)
+	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
@@ -6934,12 +7043,14 @@
 	dir = 8;
 	id_tag = "civvie_docker_pump"
 	},
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
 "Mh" = (
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/hangardeck)
 "Mk" = (
@@ -7124,6 +7235,10 @@
 /obj/machinery/door/blast/shutters{
 	id = "Pinance"
 	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
 "MR" = (
@@ -7155,6 +7270,9 @@
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
@@ -7209,6 +7327,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/light/small/old{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
@@ -7453,6 +7574,7 @@
 /area/strelka/shipbase/deck1)
 "OP" = (
 /obj/structure/flora/pottedplant/hedge,
+/obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/hangardeck)
 "OV" = (
@@ -7651,6 +7773,9 @@
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	pixel_x = -25;
 	id_tag = "civvie_dock"
+	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
@@ -7898,6 +8023,10 @@
 /obj/machinery/door/blast/shutters{
 	id = "Secbaron2"
 	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
 "Rj" = (
@@ -8120,6 +8249,9 @@
 	pixel_x = -22;
 	dir = 4;
 	req_access = list(3)
+	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
@@ -8386,6 +8518,9 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
@@ -8796,6 +8931,7 @@
 	dir = 8
 	},
 /obj/structure/flora/pottedplant/hedge,
+/obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/hangardeck)
 "Wk" = (
@@ -9407,6 +9543,9 @@
 /obj/structure/cable/blue{
 	icon_state = "1-2"
 	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/fighterbaysec)
 "YL" = (
@@ -9420,6 +9559,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/armory3)
+"YO" = (
+/obj/machinery/light,
+/obj/structure/flora/pottedplant/hedge,
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/turf/simulated/floor/reinforced,
+/area/strelka/shipbase/deck1/hangardeck)
 "YP" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 9
@@ -22850,19 +22995,19 @@ yg
 qL
 qL
 GT
+YO
+qL
+KF
+fX
+YO
+qL
+KF
+fX
 AZ
 qL
 KF
-Nv
-AZ
-qL
-KF
-Nv
-AZ
-qL
-KF
-Nv
-AZ
+fX
+YO
 eS
 pw
 Bg
@@ -23252,7 +23397,7 @@ Nv
 Nv
 Nv
 Nv
-Nv
+fX
 Nv
 BK
 Nv
@@ -23469,7 +23614,7 @@ Nv
 Nv
 Nv
 Nv
-rF
+tG
 Nv
 Nv
 Nv
@@ -24028,7 +24173,7 @@ Nv
 Nv
 Nv
 Nv
-Nv
+fX
 Nv
 Nv
 Nv
@@ -24051,7 +24196,7 @@ Nv
 Nv
 Nv
 Nv
-rF
+tG
 Nv
 Nv
 Nv
@@ -24222,7 +24367,7 @@ Nv
 Nv
 Nv
 Nv
-Nv
+fX
 Nv
 Nv
 Nv
@@ -24998,7 +25143,7 @@ Nv
 Nv
 NX
 Nv
-Nv
+fX
 Nv
 Nv
 Nv
@@ -25192,7 +25337,7 @@ Nv
 Nv
 Nv
 Nv
-Nv
+fX
 Nv
 LZ
 Nv
@@ -25604,7 +25749,7 @@ PC
 Sf
 uG
 iN
-rF
+tG
 Nv
 Nv
 Nv
@@ -26768,7 +26913,7 @@ IP
 rL
 eg
 dt
-rF
+tG
 Nv
 Nv
 Nv
@@ -27545,9 +27690,9 @@ rL
 uG
 Zg
 np
-Nv
-Nv
-Nv
+fX
+fX
+fX
 qL
 Mq
 yn
@@ -28302,7 +28447,7 @@ pn
 DD
 Rh
 nw
-Kz
+oE
 aY
 yb
 Kz
@@ -28315,7 +28460,7 @@ PS
 Bs
 cK
 Nr
-Kz
+oE
 Lr
 MP
 rw
@@ -28489,9 +28634,9 @@ cB
 YI
 Jx
 MY
-zW
+DV
 dF
-zW
+DV
 eH
 wv
 hb
@@ -28503,7 +28648,7 @@ zW
 IS
 ge
 lI
-zW
+DV
 dF
 eH
 du
