@@ -1,3 +1,5 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 //Formally known as the Sokoban-ificator
 /obj/structure/palletjack
 	name = "\improper pallet jack"
@@ -221,3 +223,10 @@
 
 /obj/structure/palletjack/darkmode
 	overlay_color = "#666666"
+
+/obj/structure/palletjack/random
+	overlay_color = "#FF00FF"
+
+/obj/structure/palletjack/random/Initialize(mapload)
+	. = ..()
+	overlay_color = "#[get_random_colour(FALSE, 32, 255)]"
