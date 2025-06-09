@@ -235,7 +235,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
                     data.designs.categories.sort((c1, c2) => c1.localeCompare(c2)).map((cat) => (
                       <Tabs.Tab key={cat} fluid color="transparent"
                         selected={cat === category}
-                        onClick={() => { setCategory(cat); setSubCategory("") }}>
+                        onClick={() => {setCategory(cat); setSubCategory("");}}>
                         {cat}
                       </Tabs.Tab>
                     ))
@@ -271,11 +271,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
                     {
                       Object.values(data.designs.instances).filter(
                         (d) => searchText.length > 2
-                        //TODO: Rearrange this so that:
-                        //If no subcategory selected, show based on category
-                        //If subcategory selected, show ONLY ITEMS IN THAT SUBCATEGORY.
-                        //if they don't have a subcategory, they don't show.
-                          ? d.name.toLowerCase().includes(searchText) : ( ((subcategory.length > 0) && (d.subcategories.length > 0)) ? (d.categories.includes(category) && d.subcategories.includes(subcategory)) : d.categories.includes(category))
+                          ? d.name.toLowerCase().includes(searchText) : (((subcategory.length > 0) && (d.subcategories.length > 0)) ? (d.categories.includes(category) && d.subcategories.includes(subcategory)) : d.categories.includes(category))
                       ).sort((d1, d2) =>
                         d1.name.localeCompare(d2.name)
                       ).map((d) => (
