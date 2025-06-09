@@ -34,6 +34,11 @@
 	/// characteristics holder
 	var/datum/characteristics_holder/characteristics
 
+	//* Roles *//
+	#warn hook
+	/// All associated roles
+	var/list/datum/role/roles
+
 	//*                Role Functional Holders             *//
 	//* Role API will later handle adding/removing/access, *//
 	//* this is the holder / data datums.                  *//
@@ -706,7 +711,7 @@
 	)
 	listclearnulls(.)
 
-//? Abilities
+//* Abilities *//
 
 /**
  * adds an ability to us
@@ -744,3 +749,17 @@
 		ability.disassociate(current)
 	qdel(ability)
 	return TRUE
+
+//* UI *//
+
+/datum/mind/ui_act(action, list/params, datum/tgui/ui)
+	. = ..()
+	if(.)
+		return
+
+/datum/mind/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+
+/datum/mind/ui_static_data(mob/user, datum/tgui/ui)
+	. = ..()
+
+#warn impl

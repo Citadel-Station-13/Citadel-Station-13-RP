@@ -5083,6 +5083,8 @@
 #include "code\modules\rogueminer_vr\zone_console.dm"
 #include "code\modules\rogueminer_vr\zonemaster.dm"
 #include "code\modules\roles\role.dm"
+#include "code\modules\roles\role\special.dm"
+#include "code\modules\roles\role\special\eldritch_cultist.dm"
 #include "code\modules\security levels\keycard authentication.dm"
 #include "code\modules\security levels\security levels.dm"
 #include "code\modules\shieldgen\emergency_shield.dm"

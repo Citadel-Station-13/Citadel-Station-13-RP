@@ -4,3 +4,10 @@
 /obj/item/eldritch_flask
 
 #warn impl
+
+/obj/item/eldritch_flask/examine(mob/user, dist)
+	. = ..()
+
+/obj/item/eldritch_flask/throw_impact(atom/A, datum/thrownthing/TT)
+	. = ..()
+

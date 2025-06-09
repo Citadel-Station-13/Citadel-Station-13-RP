@@ -39,15 +39,17 @@
 
 	#warn patrons
 
-
+#warn hook
 /datum/eldritch_holder/proc/on_mob_associate(mob/cultist)
 	for(var/datum/prototype/eldritch_passive/passive as anything in applied_passives)
 		passive.on_mob_associate(cultist, src, applied_passives[passive])
 
+#warn hook
 /datum/eldritch_holder/proc/on_mob_disassociate(mob/cultist)
 	for(var/datum/prototype/eldritch_passive/passive as anything in applied_passives)
 		passive.on_mob_disassociate(cultist, src, applied_passives[passive])
 
+#warn hook
 /datum/eldritch_holder/proc/on_life_tick(mob/cultist, dt)
 	for(var/datum/prototype/eldritch_passive/passive as anything in ticking_passives)
 		passive.on_mob_associate(cultist, src, applied_passives[passive], dt)
