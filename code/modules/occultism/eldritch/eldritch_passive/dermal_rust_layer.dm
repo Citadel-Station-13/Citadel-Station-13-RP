@@ -13,3 +13,7 @@
 	var/requires_rust_tile_proximity_ratio = 0.5
 
 #warn impl
+
+/datum/prototype/eldritch_passive/dermal_rust_layer/on_mob_tick(mob/cultist, datum/eldritch_holder/holder, datum/eldritch_passive_context/context, dt)
+	. = ..()
+

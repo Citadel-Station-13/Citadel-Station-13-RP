@@ -6,8 +6,9 @@
  */
 /datum/prototype/eldritch_passive/eldritch_blast_modifier/eldritch_blast_rusting_impact
 	id = "eldritch_blast_rusting_impact"
-
-/datum/prototype/eldritch_passive/eldritch_blast_modifier/eldritch_blast_rusting_impact/on_projectile(datum/eldritch_holder/source, mob/firer, obj/projectile/proj)
+	projectile_hooks = list(
+		new /datum/projectile_effect/eldritch_blast_rusting_impact,
+	)
 
 /datum/projectile_effect/eldritch_blast_rusting_impact
 	hook_impact = TRUE

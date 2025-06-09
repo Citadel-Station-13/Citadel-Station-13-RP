@@ -6,8 +6,9 @@
  */
 /datum/prototype/eldritch_passive/eldritch_blast_modifier/eldritch_blast_rusting_traversal
 	id = "eldritch_blast_rusting_traversal"
-
-/datum/prototype/eldritch_passive/eldritch_blast_modifier/eldritch_blast_rusting_traversal/on_projectile(datum/eldritch_holder/source, mob/firer, obj/projectile/proj)
+	projectile_hooks = list(
+		new /datum/projectile_effect/eldritch_blast_rusting_traversal,
+	)
 
 /datum/projectile_effect/eldritch_blast_rusting_traversal
 	hook_moved = TRUE
