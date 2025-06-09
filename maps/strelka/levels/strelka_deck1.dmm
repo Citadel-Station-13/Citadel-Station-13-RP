@@ -101,11 +101,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/structure/window/reinforced/tinted{
-	dir = 4
-	},
 /obj/structure/window/reinforced/tinted,
-/turf/simulated/floor/tiled/techfloor,
+/turf/simulated/wall/r_wall/prepainted/civilian,
 /area/shuttle/civvie/strelka)
 "aU" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -1032,10 +1029,12 @@
 /area/strelka/shipbase/deck1/hangardeck)
 "eW" = (
 /obj/structure/railing,
-/obj/structure/window/basic,
-/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/railing,
-/turf/simulated/wall/r_wall,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/space/basic,
 /area/shuttle/civvie/strelka)
 "fa" = (
 /obj/effect/floor_decal/grass_edge{
@@ -2428,9 +2427,11 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/armory2)
 "mu" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/railing,
-/obj/structure/window/basic,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
 "mv" = (
@@ -2699,9 +2700,6 @@
 /area/strelka/shipbase/deck1/fighterbaysec)
 "nN" = (
 /obj/structure/railing,
-/obj/structure/bed/chair/sofa/brown/corner{
-	dir = 4
-	},
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -2709,6 +2707,9 @@
 /obj/structure/window/basic,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
+	},
+/obj/structure/bed/chair/sofa/brown/corner{
+	dir = 1
 	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/shuttle/civvie/strelka)
@@ -4410,16 +4411,6 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
-"xN" = (
-/obj/structure/window/reinforced/polarized{
-	dir = 4;
-	id = "Centuries_old_shuttle_cockpit"
-	},
-/obj/structure/bed/chair/shuttle{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/civvie/strelka)
 "xO" = (
 /obj/machinery/light/small/old,
 /obj/machinery/disperser/back{
@@ -5361,16 +5352,12 @@
 /obj/structure/cable/blue{
 	icon_state = "4-8"
 	},
-/obj/map_helper/airlock/door/simple,
-/obj/machinery/door/airlock/glass_external{
-	req_one_access = null
-	},
-/obj/map_helper/access_helper/airlock/station/external_airlock,
 /obj/machinery/access_button/airlock_exterior{
 	master_tag = "civvie_dock";
 	pixel_y = -22
 	},
-/turf/simulated/floor/reinforced,
+/obj/machinery/door/airlock/glass,
+/turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
 "DC" = (
 /obj/effect/floor_decal/rust,
@@ -8842,7 +8829,7 @@
 	req_one_access = null
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/strelka/shipbase/deck1/civhangar)
+/area/shuttle/civvie/strelka)
 "Vn" = (
 /obj/structure/lattice,
 /obj/machinery/shield_diffuser,
@@ -22600,7 +22587,7 @@ vu
 vu
 vu
 vu
-Cu
+vu
 vu
 vS
 bw
@@ -22794,7 +22781,7 @@ vu
 vu
 vu
 vu
-vu
+Cu
 vu
 bH
 EN
@@ -26128,8 +26115,8 @@ ZP
 hS
 wG
 on
-xN
-xN
+on
+on
 aQ
 cV
 wG
