@@ -40,6 +40,9 @@
 		)
 
 /datum/armor/physiology/roach
+	melee_tier = 3
+	bullet_tier = 3
+	laser_tier = 3
 	melee = 0.05
 	rad = 1.0
 
@@ -532,8 +535,10 @@
 	. = ..()
 	break_cloak()
 
-/mob/living/simple_mob/animal/roach/zeitraum/hit_with_weapon(obj/item/O, mob/living/user, effective_force, hit_zone)
+/mob/living/simple_mob/animal/roach/zeitraum/on_melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/attack_style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
+	if(. & CLICKCHAIN_ATTACK_MISSED)
+		return
 	break_cloak()
 
 //King? Look around you! King of what?

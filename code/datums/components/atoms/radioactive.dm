@@ -23,9 +23,8 @@
 
 	if(istype(parent, /atom))
 		RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(rad_examine))
-		// if(istype(parent, /obj/item))
-		// 	RegisterSignal(parent, COMSIG_ITEM_ATTACK, PROC_REF(rad_attack))
-		// 	RegisterSignal(parent, COMSIG_ITEM_ATTACK_OBJ, PROC_REF(rad_attack))
+		// TODO: 516 added assoc filters; touch-up the datum filter procs and stop doing this.
+		RegisterSignal(parent, COMSIG_ATOM_RELOAD_FILTERS, PROC_REF(reload_filters))
 	else
 		. = COMPONENT_INCOMPATIBLE
 		CRASH("Something that wasn't an atom was given /datum/component/radioactive")
@@ -66,6 +65,10 @@
 		return
 	if(!(datum_flags & DF_ISPROCESSING))	// keep going
 		SSradiation.sources += src
+
+/datum/component/radioactive/proc/reload_filters(datum/source)
+	SIGNAL_HANDLER
+	glow_loop(source)
 
 /datum/component/radioactive/proc/glow_loop(atom/movable/master)
 	var/filter = master.get_filter("rad_glow")

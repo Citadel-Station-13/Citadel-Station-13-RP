@@ -31,13 +31,13 @@
 	name_language = LANGUAGE_ID_SHADEKIN_HIVEMIND
 
 	unarmed_types = list(
-		/datum/unarmed_attack/stomp,
-		/datum/unarmed_attack/kick,
-		/datum/unarmed_attack/claws/shadekin,
-		/datum/unarmed_attack/bite/sharp/shadekin,
+		/datum/melee_attack/unarmed/stomp,
+		/datum/melee_attack/unarmed/kick,
+		/datum/melee_attack/unarmed/claws/shadekin,
+		/datum/melee_attack/unarmed/bite/sharp/shadekin,
 	)
 
-	siemens_coefficient = 1
+	siemens_coefficient = 0
 	vision_innate = /datum/vision/baseline/species_tier_3/for_snowflake_ocs
 	vision_organ = O_EYES
 
@@ -118,8 +118,6 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right),
 	)
 
-	vision_innate = /datum/vision/baseline/species_tier_3/for_snowflake_ocs
-
 	var/list/shadekin_abilities = list(
 		/datum/power/shadekin/phase_shift,
 		/datum/power/shadekin/regenerate_other,
@@ -181,6 +179,8 @@
 	var/brightness = T.get_lumcount() //Brightness in 0.0 to 1.0
 	darkness = 1-brightness //Invert
 	var/is_dark = (darkness >= 0.5)
+	if(isspaceturf(T))
+		is_dark = 1
 
 	if(H.ability_flags & AB_PHASE_SHIFTED)
 		dark_gains = 0
@@ -259,13 +259,13 @@
 					l_icon = 4
 
 		switch(get_energy(H))
-			if(0 to 24)
+			if(0 to 24.99)
 				e_icon = 0
-			if(25 to 49)
+			if(25 to 49.99)
 				e_icon = 1
-			if(50 to 74)
+			if(50 to 74.99)
 				e_icon = 2
-			if(75 to 99)
+			if(75 to 99.99)
 				e_icon = 3
 			if(100 to INFINITY)
 				e_icon = 4

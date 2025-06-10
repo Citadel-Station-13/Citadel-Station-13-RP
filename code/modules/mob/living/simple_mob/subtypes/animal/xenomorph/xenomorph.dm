@@ -188,7 +188,7 @@
 	var/charging_warning = 1 SECONDS
 	var/charge_damage_mode = DAMAGE_MODE_PIERCE | DAMAGE_MODE_SHARP ///You may want to change this
 	var/charge_damage_flag = ARMOR_MELEE
-	var/charge_damage_tier = MELEE_TIER_HEAVY
+	var/charge_damage_tier = 4.5
 	var/charge_damage = 60
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/destructive //temporary until we get proper AI for xenomorphs.//
 
@@ -302,8 +302,8 @@
 	var/charging_warning = 0 SECONDS
 	var/charge_damage_mode = DAMAGE_MODE_PIERCE | DAMAGE_MODE_SHARP ///You may want to change this
 	var/charge_damage_flag = ARMOR_MELEE
-	var/charge_damage_tier = MELEE_TIER_HEAVY
-	var/charge_damage = 80
+	var/charge_damage_tier = 4.5
+	var/charge_damage = 60
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/aggressive/priest
 
 /mob/living/simple_mob/animal/space/xenomorph/special/burrower

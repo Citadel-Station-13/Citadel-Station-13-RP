@@ -27,21 +27,32 @@
 
 	var/cooldown = 2 SECONDS
 
-/obj/item/bikehorn/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/bikehorn/on_attack_self(datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return
 	if(world.time - last_use < cooldown)
 		return
 	last_use = world.time
+	if(e_args.performer.is_holding(src))
+		add_fingerprint(e_args.performer)
+	emit_sound(e_args)
+	return TRUE
+
+/obj/item/bikehorn/proc/emit_sound(datum/event_args/actor/actor)
 	playsound(src, emit_sfx, emit_volume, emit_vary, emit_extra_range)
-	add_fingerprint(user)
 
 /obj/item/bikehorn/golden
 	name = "golden bike horn"
 	desc = "Golden? Clearly, it's made with bananium! Honk!"
 	icon_state = "gold_horn"
 	item_state = "gold_horn"
+
+/obj/item/bikehorn/rubberducky
+	name = "rubber ducky"
+	desc = "Rubber ducky you're so fine, you make bathtime lots of fuuun. Rubber ducky I'm awfully fooooond of yooooouuuu~"	//thanks doohl
+	icon = 'icons/obj/watercloset.dmi'
+	icon_state = "rubberducky"
 
 // forgive me lohikar for i have sinned
 /obj/item/bikehorn/clicker

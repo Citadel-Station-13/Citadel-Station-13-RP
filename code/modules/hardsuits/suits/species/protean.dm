@@ -21,13 +21,18 @@
 	maintenance_while_online = TRUE
 
 /datum/armor/hardsuit/protean
-	melee = 0.0
-	bullet = 0.0
-	laser = 0.0
-	energy = 0.0
-	bomb = 0.0
+	melee = 0.05
+	melee_tier = 4
+	bullet = 0.05
+	bullet_tier = 4
+	laser = 0.05
+	laser_tier = 4
+	energy = 0.3
+	bomb = 0.3
 	bio = 1.0
 	rad = 1.0
+	fire = 0.7
+	acid = 0.7
 
 /obj/item/hardsuit/protean/relaymove(mob/user, var/direction)
 	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))

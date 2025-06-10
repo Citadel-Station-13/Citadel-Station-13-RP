@@ -985,12 +985,12 @@
 
 	return(visible_implants)
 
-/mob/living/carbon/human/embedded_needs_process()
-	for(var/obj/item/organ/external/organ in src.organs)
-		for(var/obj/item/O in organ.implants)
-			if(!istype(O, /obj/item/implant)) //implant type items do not cause embedding effects, see handle_embedded_objects()
-				return 1
-	return 0
+// /mob/living/carbon/human/embedded_needs_process()
+// 	for(var/obj/item/organ/external/organ in src.organs)
+// 		for(var/obj/item/O in organ.implants)
+// 			if(!istype(O, /obj/item/implant)) //implant type items do not cause embedding effects, see handle_embedded_objects()
+// 				return 1
+// 	return 0
 
 /mob/living/carbon/human/proc/handle_embedded_objects()
 
