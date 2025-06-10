@@ -8,7 +8,7 @@
  *   may stay on you even if it's not active.
  * * By game design, you can only have one patron you specialize in 99% of the time.
  */
-/datum/eldritch_patron
+/datum/prototype/eldritch_patron
 	/// our blade's typepath
 	#warn impl
 	var/eldritch_blade_typepath = /obj/item/eldritch_blade

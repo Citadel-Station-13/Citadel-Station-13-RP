@@ -1,4 +1,4 @@
-#warn nullrod_legacy_legacy
+// TODO: kill this and put the subtypes .. somewhere.
 /obj/item/nullrod_legacy
 	name = "null rod"
 	desc = "A rod of pure obsidian, its very presence disrupts and dampens the powers of paranormal phenomenae."
@@ -18,6 +18,7 @@
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)
+	var/reskinned = FALSE
 
 /obj/item/nullrod_legacy/Initialize(mapload)
 	. = ..()
@@ -33,10 +34,6 @@
 	if (istype(target, /turf/simulated/floor))
 		to_chat(user, "<span class='notice'>You hit the floor with the [src].</span>")
 		call(TYPE_PROC_REF(/obj/effect/rune, revealrunes))(src)
-	if (isliving(target))
-		var/mob/living/tm = target // targeted mob
-		if(SA_vulnerability & tm.mob_class)
-			tm.apply_damage(SA_bonus_damage) // fuck em
 
 /obj/item/nullrod_legacy/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
@@ -94,8 +91,6 @@
 	if(user.incapacitated())
 		return FALSE
 	return TRUE
-
-// todo: all the below can be removed at some point.
 
 /obj/item/nullrod_legacy/godhand
 	icon_state = "disintegrate"

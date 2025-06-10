@@ -14,6 +14,9 @@
 	hook_impact = TRUE
 
 /datum/projectile_hook/eldritch_blast_piercing/on_impact(obj/projectile/proj, atom/target, impact_flags, def_zone)
+	if(isturf(target))
+		return
 	. = ..()
 
 #warn impl
+ 

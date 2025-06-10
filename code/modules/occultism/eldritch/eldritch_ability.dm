@@ -5,7 +5,10 @@
 	/// ability type to instance
 	var/ability_type = /datum/ability/eldritch_ability
 
-/datum/prototype/eldritch_ability/proc/create_ability()
+/datum/prototype/eldritch_ability/proc/create_ability(datum/eldritch_holder/for_holder)
+	#warn bind holder
 	return new ability_type
 
 /datum/ability/eldritch_ability
+	/// bound holder
+	var/datum/eldritch_holder/eldritch

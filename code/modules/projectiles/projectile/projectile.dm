@@ -153,6 +153,13 @@
 	/// Impact ground on expiry (range, or lifetime)
 	var/impact_ground_on_expiry = FALSE
 
+	//* Data *//
+	/// Arbitrary projectile data list.
+	/// * Keys are allowed to be strings or references. This is so
+	///   projectile effects/hooks have scratch space if they need it.
+	/// * Reference keys will not be serialized or logged. String keys will be.
+	var/list/data = list()
+
 	//* Physics - Configuration *//
 	/// speed, in pixels per second
 	var/speed = 25 * WORLD_ICON_SIZE

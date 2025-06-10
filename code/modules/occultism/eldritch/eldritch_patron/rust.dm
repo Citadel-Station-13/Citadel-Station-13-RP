@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
-/datum/eldritch_patron/rust
+/datum/prototype/eldritch_patron/rust
 
