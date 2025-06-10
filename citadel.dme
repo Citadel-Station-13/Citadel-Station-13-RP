@@ -969,6 +969,7 @@
 #include "code\datums\repositories\unique.dm"
 #include "code\datums\soundbytes\_soundbyte.dm"
 #include "code\datums\soundbytes\announcer.dm"
+#include "code\datums\soundbytes\effects.dm"
 #include "code\datums\soundbytes\effects\combat.dm"
 #include "code\datums\soundbytes\effects\explosion.dm"
 #include "code\datums\soundbytes\effects\sparks.dm"

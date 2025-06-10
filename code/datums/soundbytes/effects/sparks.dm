@@ -1,5 +1,5 @@
 /datum/soundbyte/sparks
-	name = "Explosion"
+	name = "Sparks"
 	alias = SFX_ALIAS_SPARKS
 	is_sfx = TRUE
 	path = list(
