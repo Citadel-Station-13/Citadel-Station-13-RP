@@ -63,6 +63,7 @@
 	icon_state = "clicker"
 	base_icon_state = "clicker"
 	attack_verb = list("clicked")
+	worn_render_flags = WORN_RENDER_INHAND_NO_RENDER // no inhands for now
 
 	emit_sfx = /datum/soundbyte/clicker
 	emit_volume = 75
@@ -78,7 +79,7 @@
 /obj/item/bikehorn/clicker/update_icon()
 	cut_overlays()
 	. = ..()
-	var/image/frame_overlay = image(icon, base_icon_state)
+	var/image/frame_overlay = image(icon, "[base_icon_state]-frame")
 	frame_overlay.color = frame_color
 	add_overlay(frame_overlay)
 
