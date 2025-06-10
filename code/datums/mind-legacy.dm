@@ -98,86 +98,6 @@
 /datum/mind/New(ckey)
 	src.ckey = ckey
 
-//? Transfer
-
-/datum/mind/proc/disassociate()
-	ASSERT(!isnull(current))
-
-	// LEGACY: remove changeling
-	if(changeling)
-		current.remove_changeling_powers()
-		remove_verb(current, /datum/changeling/proc/EvolutionMenu)
-	// remove characteristics
-	characteristics?.disassociate_from_mob(current)
-	// remove abilities
-	for(var/datum/ability/ability as anything in abilities)
-		ability.disassociate(current)
-	// null mind
-	current.mind = null
-
-	// done
-	current = null
-
-/datum/mind/proc/associate(mob/new_character)
-	ASSERT(isnull(current))
-	ASSERT(isnull(new_character.mind))
-
-	// start
-	current = new_character
-
-	// set mind
-	new_character.mind = src
-	// add characteristics
-	characteristics?.associate_with_mob(new_character)
-	// add abilities
-	for(var/datum/ability/ability as anything in abilities)
-		ability.associate(new_character)
-	// LEGACY: add changeling
-	if(changeling)
-		new_character.make_changeling()
-
-	//* transfer player if necessary
-	if(active)
-		var/client/found = GLOB.directory[ckey]
-		found.transfer_to(new_character)
-
-/datum/mind/proc/transfer(mob/new_character)
-	if(isnull(current))
-		associate(new_character)
-		return
-
-	var/mob/old_character = current
-
-	disassociate()
-
-	if(!isnull(new_character.mind))
-		new_character.mind.disassociate()
-
-	SStgui.on_transfer(old_character, new_character)
-	SSnanoui.user_transferred(old_character, new_character)
-
-	associate(new_character)
-
-/datum/mind/proc/store_memory(new_text)
-	if((length(memory) + length(new_text)) <= MAX_MESSAGE_LEN)
-		memory += "[new_text]<BR>"
-
-/datum/mind/proc/show_memory(mob/recipient)
-	var/output = "<B>[current.real_name]'s Memory</B><HR>"
-	output += memory
-
-	if(objectives.len>0)
-		output += "<HR><B>Objectives:</B>"
-
-		var/obj_count = 1
-		for(var/datum/objective/objective in objectives)
-			output += "<B>Objective #[obj_count]</B>: [objective.explanation_text]"
-			obj_count++
-
-	if(ambitions)
-		output += "<HR><B>Ambitions:</B> [ambitions]<br>"
-	recipient << browse(output,"window=memory")
-
 /datum/mind/proc/edit_memory()
 	if(!SSticker || !SSticker.mode)
 		alert("Not before round-start!", "Alert")
@@ -244,11 +164,6 @@
 		var/new_role = input("Select new role", "Assigned role", assigned_role) as null|anything in SSjob.all_job_titles()
 		if (!new_role) return
 		assigned_role = new_role
-
-	else if (href_list["memory_edit"])
-		var/new_memo = sanitize(input("Write new memory", "Memory", memory) as null|message)
-		if (isnull(new_memo)) return
-		memory = new_memo
 
 	else if (href_list["amb_edit"])
 		var/datum/mind/mind = locate(href_list["amb_edit"])
@@ -456,7 +371,6 @@
 				current.drop_inventory(TRUE, TRUE)
 			if("takeuplink")
 				take_uplink()
-				memory = null//Remove any memory they may have had.
 			if("crystals")
 				if (usr.client.holder.rights & R_FUN)
 				//	var/obj/item/uplink/hidden/suplink = find_syndicate_uplink() No longer needed, uses stored in mind

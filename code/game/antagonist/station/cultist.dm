@@ -91,13 +91,14 @@ var/datum/antagonist/cultist/cult
 
 	var/wordexp = "[cultwords[word]] is [word]..."
 	to_chat(cult_mob, "<span class='warning'>You remember one thing from the dark teachings of your master... [wordexp]</span>")
-	cult_mob.mind.store_memory("You remember that <B>[wordexp]</B>", 0, 0)
+	cult_mob.mind.legacy_add_html_memory("You remember that <B>[wordexp]</B>", 0, 0)
 
 /datum/antagonist/cultist/remove_antagonist(var/datum/mind/player, var/show_message, var/implanted)
 	if(!..())
 		return 0
 	to_chat(player.current, "<span class='danger'>An unfamiliar white light flashes through your mind, cleansing the taint of the dark-one and the memories of your time as his servant with it.</span>")
-	player.memory = ""
+	// TODO: clear only memories gained after conversion
+	player.clear_memory()
 	if(show_message)
 		player.current.visible_message("<FONT size = 3>[player.current] looks like they just reverted to their old faith!</FONT>")
 

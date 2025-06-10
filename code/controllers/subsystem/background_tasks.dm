@@ -20,6 +20,18 @@ SUBSYSTEM_DEF(background_tasks)
 	/// the world.time start of the oldest task in running
 	var/lrt_time = 0
 
+/datum/controller/subsystem/background_tasks/Initialize()
+	initialize_hardcoded_background_task(/datum/background_task/eldritch_reality_task)
+	return ..()
+
+/datum/controller/subsystem/background_tasks/proc/initialize_hardcoded_background_task(path)
+	ASSERT(ispath(path, /datum/background_task))
+	if(locate(path) in running)
+		return
+	if(locate(path) in yielding)
+		return
+	submit_task(new path)
+
 /datum/controller/subsystem/background_tasks/Recover()
 	var/list/datum/background_task/new_running = list()
 	var/list/datum/background_task/new_yielding = list()
@@ -100,6 +112,9 @@ SUBSYSTEM_DEF(background_tasks)
 	/// our key, if any
 	/// * do not manually set, subsystem sets this
 	var/key
+	// todo: var/datum/callback/on_finish
+	// todo: var/datum/callback/on_scheduled
+	// todo: var/datum/callback/on_unscheduled
 
 /**
  * Called to run.
@@ -109,7 +124,7 @@ SUBSYSTEM_DEF(background_tasks)
  *
  * @return BACKGROUND_TASK_CONTINUE or BACKGROUND_TASK_YEILD
  */
-/datum/background_task/proc/run()
+/datum/background_task/proc/run(ticklimit)
 	CRASH("base run() on /datum/background_task ran")
 
 /**
@@ -126,3 +141,6 @@ SUBSYSTEM_DEF(background_tasks)
 /datum/background_task/proc/finish()
 	ASSERT(status == BACKGROUND_TASK_RUNNING)
 	status = BACKGROUND_TASK_FINISHED
+
+// todo: on_scheduled
+// todo: on_unscheduled

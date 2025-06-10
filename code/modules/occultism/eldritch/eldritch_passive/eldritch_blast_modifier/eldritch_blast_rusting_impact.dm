@@ -21,7 +21,7 @@
 	var/turf/target_turf = get_turf(target)
 
 	var/multiplier = proj.projectile_effect_multiplier
-	var/effective_turf_probability = effective_turf_probability
+	var/effective_turf_probability = turf_probability
 	var/effective_turf_radius = turf_radius
 
 	if(multiplier < 0)

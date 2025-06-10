@@ -32,6 +32,85 @@
 	QDEL_LIST_NULL(abilities)
 	return ..()
 
+/**
+ * Removes us from our current mob.
+ */
+/datum/mind/proc/disassociate()
+
+/datum/mind/proc/disassociate_impl(do_not_ghostize)
+	PRIVATE_PROC(TRUE)
+
+	ASSERT(!isnull(current))
+
+	// LEGACY: remove changeling
+	if(changeling)
+		current.remove_changeling_powers()
+		remove_verb(current, /datum/changeling/proc/EvolutionMenu)
+	// remove characteristics
+	characteristics?.disassociate_from_mob(current)
+	// remove role holders
+	#warn impl
+	// remove roles
+	#warn impl
+	// remove abilities
+	for(var/datum/ability/ability as anything in abilities)
+		ability.disassociate(current)
+
+	// boot active person if they're still in
+	if(active && !do_not_ghostize)
+		current.ghostize()
+
+	current.mind = null
+	current = null
+
+/**
+ * Puts us on a new mob.
+ */
+/datum/mind/proc/associate(mob/character)
+	ASSERT(isnull(current))
+	ASSERT(isnull(character.mind))
+
+	current = character
+	character.mind = src
+
+	// add characteristics
+	characteristics?.associate_with_mob(character)
+	// add roles
+	#warn impl
+	// add role holders
+	#warn impl
+	// add abilities
+	for(var/datum/ability/ability as anything in abilities)
+		ability.associate(character)
+
+	// LEGACY: add changeling
+	if(changeling)
+		character.make_changeling()
+
+	// transfer active person in
+	// semi-legacy because we need to evaluate what 'active' here means.
+	if(active)
+		var/client/found = GLOB.directory[ckey]
+		// if it runtimes let it runtime; active should only be true if a client is
+		// inhabiting us right now
+		found.transfer_to(character)
+
+/datum/mind/proc/transfer(mob/new_character)
+	if(isnull(current))
+		associate(new_character)
+		return
+
+	var/mob/old_character = current
+	disassociate_impl(do_not_ghostize = TRUE)
+
+	if(!isnull(new_character.mind))
+		new_character.mind.disassociate()
+
+	SStgui.on_transfer(old_character, new_character)
+	SSnanoui.user_transferred(old_character, new_character)
+
+	associate(new_character)
+
 //* Abilities *//
 
 /**
@@ -87,17 +166,37 @@
 /**
  * @params
  * * force - remove all memories
+ * * class - filter to these classes; required value, put ALL if you want to wipe
  */
-/datum/mind/proc/clear_memory(force)
-
-	#warn impl
+/datum/mind/proc/clear_memory(force, class)
+	for(var/datum/memory/memory in memories)
+		if(!memory.can_delete && !force)
+			continue
+		if(!(memory.memory_class & class))
+			continue
+		memories -= memory
+	ui_push_memories()
 
 /**
  * Adds a memory.
  * * The memory datum will be cloned before adding.
  */
 /datum/mind/proc/add_memory(datum/memory/memory)
-	#warn impl
+	if(!memories)
+		memories = list()
+	BINARY_INSERT(memory, memories, /datum/memory, memory, priority, COMPARE_KEY)
+	if(memory.key)
+		if(!memories_by_key)
+			memories_by_key = list()
+		memories_by_key[memory.key] = memory
+	ui_push_memories()
+
+/**
+ * Adds a html memory
+ * * further uses of this is not allowed
+ */
+/datum/mind/proc/legacy_add_html_memory(html)
+	add_memory(new /datum/memory/unsafe_html(html))
 
 /**
  * Gets a keyed memory.
@@ -116,7 +215,13 @@
  * Removes a memory
  */
 /datum/mind/proc/remove_memory(datum/memory/memory)
-	#warn impl
+	. = memory in memories
+	if(!.)
+		return
+	memories -= memory
+	if(memories_by_key)
+		memories_by_key -= memory.key
+	ui_push_memories()
 
 //* Preferences Checks - Legacy; remove these on rework *//
 
@@ -179,6 +284,20 @@
 	)
 	listclearnulls(.)
 
+//* Roles *//
+
+/datum/mind/proc/add_role(datum/role/role)
+
+/datum/mind/proc/remove_role(datum/role/role)
+
+//* Role Holder - Eldritch *//
+
+/datum/mind/proc/create_eldritch_holder()
+
+/datum/mind/proc/delete_eldritch_holder()
+
+#warn impl all
+
 //* UI *//
 
 /datum/mind/ui_act(action, list/params, datum/tgui/ui)
@@ -190,7 +309,20 @@
 		if("addMemory")
 		if("removeMemory")
 
+	if(!check_rights(C = usr, show_msg = FALSE))
+		return
+
+	switch(action)
+		// TODO: admin memory edit
+		if("adminAddEldritchHolder")
+		if("adminDelEldritchHolder")
+		if("adminOpenEldritchHolder")
+			r_holder_eldritch.ui_interact(usr)
+
+#warn mind panel from player panel? vv options too?
 /datum/mind/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+
+#warn impl
 
 /datum/mind/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
@@ -199,11 +331,25 @@
 	.["memoryMaxUserLength"] = MEMORY_MAX_USER_LENGTH
 	.["memoryMaxUserLinebreaks"] = MEMORY_MAX_USER_LINEBREAKS
 
-#warn impl
+	var/list/serialized_objectives = list()
+	for(var/datum/objective/objective in objectives)
+		serialized_objectives += objective.explanation_text
+	.["legacyObjectives"] = serialized_objectives
+	.["legacyAmbitions"] = splittext_char(ambitions, "\n")
+
+	// TODO: better admin rights check
+	.["admin"] = FALSE
+	if(!check_rights(C = user))
+		return
+	.["admin"] = TRUE
+
+	.["rHolderEldritchPresent"] = !!r_holder_eldritch
 
 /datum/mind/proc/ui_push_memories()
-	#warn impl
+	push_ui_data(data = list("memories" = ui_serialize_memories()))
 
 /datum/mind/proc/ui_serialize_memories()
-	#warn impl
-
+	var/list/serialized = list()
+	for(var/datum/memory/memory as anything in memories)
+		serialized[++serialized.len] = memory.ui_memory_data()
+	return serialized

@@ -76,6 +76,12 @@
 /datum/eldritch_holder/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 
+	// TODO: better admin rights check
+	.["admin"] = FALSE
+	if(!check_rights(C = user))
+		return
+	.["admin"] = TRUE
+
 /datum/eldritch_holder/proc/ui_push_learned_knowledges()
 
 /datum/eldritch_holder/proc/ui_push_learned_passives()

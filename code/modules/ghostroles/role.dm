@@ -205,7 +205,7 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
 	if(!mind)
 		CRASH("No mind.")
 
-	store_memory("OBJECTIVE: [objective]", TRUE)
+	legacy_add_html_memory("OBJECTIVE: [objective]", TRUE)
 	to_chat(src, SPAN_DANGER("An objective has been added to you by your ghostrole spawner. Remember that roleplay comes first - these are often freeform. Said objective is in your MEMORIES, due to the codebase lacking datum antagonists."))
 
 	// TODO: DATUM ANTAGS
