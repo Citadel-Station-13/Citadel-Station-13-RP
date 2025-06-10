@@ -236,7 +236,7 @@
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/cargoravana)
 "vN" = (
-/turf/space/basic,
+/turf/template_noop,
 /area/template_noop)
 "wq" = (
 /obj/structure/cable/green{
@@ -556,7 +556,7 @@
 /area/shuttle/cargoravana)
 "QJ" = (
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/template_noop,
 /area/shuttle/cargoravana)
 "Rf" = (
 /obj/machinery/portable_atmospherics/canister/phoron,

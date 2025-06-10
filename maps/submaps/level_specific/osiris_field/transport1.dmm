@@ -14,8 +14,8 @@
 /area/submap/osiris_field/transport_shuttle1)
 "e" = (
 /obj/structure/lattice,
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "f" = (
 /turf/simulated/floor/tiled/dark,
 /area/submap/osiris_field/transport_shuttle1)
@@ -132,7 +132,7 @@
 /area/submap/osiris_field/transport_shuttle1)
 "U" = (
 /turf/simulated/floor/plating,
-/area/space)
+/area/template_noop)
 "V" = (
 /obj/item/flashlight/flare{
 	on = 1
@@ -140,8 +140,8 @@
 /turf/simulated/floor/plating,
 /area/submap/osiris_field/transport_shuttle1)
 "X" = (
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "Y" = (
 /obj/structure/salvageable/implant_container_os,
 /turf/simulated/floor/tiled/monotechmaint,

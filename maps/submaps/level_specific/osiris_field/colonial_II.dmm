@@ -1043,7 +1043,7 @@
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/osiris/colonial)
 "Bc" = (
-/turf/space/basic,
+/turf/template_noop,
 /area/template_noop)
 "Be" = (
 /obj/effect/floor_decal/spline/plain{
@@ -1177,7 +1177,7 @@
 	dir = 1
 	},
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/template_noop,
 /area/shuttle/osiris/colonial)
 "EJ" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -1245,7 +1245,7 @@
 /turf/simulated/floor/carpet/patterened/blue,
 /area/shuttle/osiris/colonial)
 "GQ" = (
-/turf/space/basic,
+/turf/template_noop,
 /area/shuttle/osiris/colonial)
 "GT" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -1253,7 +1253,7 @@
 	dir = 1
 	},
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/template_noop,
 /area/shuttle/osiris/colonial)
 "Hh" = (
 /turf/simulated/floor/carpet/patterened/blue,
@@ -1419,7 +1419,7 @@
 /area/shuttle/osiris/colonial)
 "Lh" = (
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/template_noop,
 /area/shuttle/osiris/colonial)
 "Lo" = (
 /obj/structure/table/hardwoodtable,
@@ -1768,7 +1768,7 @@
 	dir = 1
 	},
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/template_noop,
 /area/shuttle/osiris/colonial)
 "TI" = (
 /obj/structure/table/bench/wooden,
@@ -1882,7 +1882,7 @@
 	dir = 4
 	},
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/template_noop,
 /area/shuttle/osiris/colonial)
 "WR" = (
 /turf/simulated/floor/tiled/monodark,

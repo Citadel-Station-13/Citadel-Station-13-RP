@@ -11,15 +11,15 @@
 /turf/simulated/floor/airless,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "c" = (
-/turf/space/basic,
+/turf/template_noop,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "d" = (
 /turf/simulated/floor/airless,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "e" = (
 /obj/structure/lattice,
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "f" = (
 /obj/item/stack/rods,
 /turf/simulated/floor/airless,
@@ -27,19 +27,19 @@
 "g" = (
 /obj/structure/lattice,
 /obj/item/stack/rods,
-/turf/space/basic,
+/turf/template_noop,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "h" = (
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/template_noop,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "i" = (
 /obj/item/material/shard/shrapnel,
 /turf/simulated/floor/airless,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "k" = (
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "l" = (
 /turf/simulated/wall,
 /area/tether_away/debrisfield_vr/shuttle_buffer)

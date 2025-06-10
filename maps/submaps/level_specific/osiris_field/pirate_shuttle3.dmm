@@ -125,8 +125,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/osiris_field/pirate_wreck2)
 "gm" = (
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "gp" = (
 /obj/machinery/light/no_nightshift{
 	dir = 8
@@ -599,8 +599,8 @@
 "zS" = (
 /obj/structure/lattice,
 /obj/structure/catwalk,
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "Ad" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor,
@@ -643,7 +643,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/template_noop)
 "Cp" = (
 /obj/structure/cable/orange{
 	icon_state = "1-2"
@@ -720,7 +720,7 @@
 /area/submap/osiris_field/pirate_wreck2)
 "KJ" = (
 /turf/simulated/floor/plating,
-/area/space)
+/area/template_noop)
 "Lb" = (
 /obj/structure/closet/hydrant{
 	pixel_y = 32
@@ -771,8 +771,8 @@
 /area/submap/osiris_field/pirate_wreck2)
 "NO" = (
 /mob/living/simple_mob/animal/space/carp,
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "NQ" = (
 /obj/structure/cable/orange{
 	icon_state = "1-2"
@@ -850,8 +850,8 @@
 "Rs" = (
 /obj/structure/catwalk,
 /obj/structure/lattice,
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "RH" = (
 /obj/machinery/light/no_nightshift{
 	dir = 1;
@@ -881,8 +881,8 @@
 /obj/structure/lattice,
 /obj/structure/catwalk,
 /obj/structure/marker_beacon/red,
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "SS" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4

@@ -44,7 +44,7 @@
 /area/submap/osiris_field/cargo_vessel2)
 "dx" = (
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/template_noop,
 /area/submap/osiris_field/cargo_vessel2)
 "dW" = (
 /obj/machinery/door/airlock/glass_external,
@@ -99,8 +99,8 @@
 /area/submap/osiris_field/cargo_vessel2)
 "lC" = (
 /obj/structure/lattice,
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "lI" = (
 /obj/random/multiple/corp_crate,
 /turf/simulated/floor/plating,
@@ -124,7 +124,7 @@
 /turf/simulated/floor/plating,
 /area/submap/osiris_field/cargo_vessel2)
 "pe" = (
-/turf/space/basic,
+/turf/template_noop,
 /area/submap/osiris_field/cargo_vessel2)
 "pF" = (
 /obj/structure/closet/crate/mimic,
@@ -148,12 +148,12 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/submap/osiris_field/cargo_vessel2)
 "qH" = (
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "sm" = (
 /obj/structure/largecrate/vehicle/quadbike,
 /turf/simulated/floor/plating,
-/area/space)
+/area/template_noop)
 "to" = (
 /obj/structure/sink{
 	pixel_y = 19
@@ -163,7 +163,7 @@
 "tW" = (
 /obj/structure/largecrate/vehicle/quadtrailer,
 /turf/simulated/floor/plating,
-/area/space)
+/area/template_noop)
 "vY" = (
 /obj/machinery/washing_machine,
 /obj/machinery/light/small/emergency/flicker{
@@ -263,7 +263,7 @@
 /obj/machinery/atmospherics/component/unary/engine/bigger{
 	dir = 1
 	},
-/turf/space/basic,
+/turf/template_noop,
 /area/submap/osiris_field/cargo_vessel2)
 "LT" = (
 /obj/structure/table/steel,
@@ -297,7 +297,7 @@
 /area/submap/osiris_field/cargo_vessel2)
 "RZ" = (
 /turf/simulated/wall/r_wall/prepainted,
-/area/space)
+/area/template_noop)
 "SV" = (
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled/steel_dirty/silver,
@@ -317,7 +317,7 @@
 /area/submap/osiris_field/cargo_vessel2)
 "WE" = (
 /turf/simulated/floor/plating,
-/area/space)
+/area/template_noop)
 "WK" = (
 /obj/structure/bed,
 /turf/simulated/floor/tiled/steel_dirty/dark,

@@ -14,8 +14,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/submap/osiris_field/transport_shuttle2)
 "u" = (
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "w" = (
 /obj/structure/bed/chair/comfy/green{
 	dir = 1
@@ -25,7 +25,7 @@
 /area/submap/osiris_field/transport_shuttle2)
 "x" = (
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/template_noop,
 /area/submap/osiris_field/transport_shuttle2)
 "y" = (
 /obj/structure/bed/chair/comfy/green{
@@ -48,7 +48,7 @@
 /obj/machinery/atmospherics/component/unary/engine{
 	dir = 1
 	},
-/turf/space/basic,
+/turf/template_noop,
 /area/submap/osiris_field/transport_shuttle2)
 "P" = (
 /obj/structure/bed/chair/comfy/green{

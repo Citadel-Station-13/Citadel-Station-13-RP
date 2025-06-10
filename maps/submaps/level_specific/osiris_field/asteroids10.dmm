@@ -1,17 +1,17 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "b" = (
 /turf/simulated/floor,
-/area/space)
+/area/template_noop)
 "d" = (
 /turf/simulated/wall/r_wall/prepainted,
-/area/space)
+/area/template_noop)
 "K" = (
 /obj/structure/lattice,
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 
 (1,1,1) = {"
 a

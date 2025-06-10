@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "c" = (
 /obj/machinery/portable_atmospherics/canister/krypton,
 /obj/structure/railing,
@@ -15,8 +15,8 @@
 /area/submap/osiris_field/cargo_shuttle3)
 "g" = (
 /obj/structure/lattice,
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "h" = (
 /obj/structure/table/steel_reinforced,
 /obj/structure/salvageable/console_broken_os{
@@ -42,7 +42,7 @@
 /area/submap/osiris_field/cargo_shuttle3)
 "l" = (
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/template_noop,
 /area/submap/osiris_field/cargo_shuttle3)
 "m" = (
 /turf/simulated/wall/r_lead,
@@ -115,7 +115,7 @@
 /turf/simulated/floor/plating,
 /area/submap/osiris_field/cargo_shuttle3)
 "F" = (
-/turf/space/basic,
+/turf/template_noop,
 /area/submap/osiris_field/cargo_shuttle3)
 "G" = (
 /obj/machinery/light/small/poi{
@@ -137,7 +137,7 @@
 /area/submap/osiris_field/cargo_shuttle3)
 "J" = (
 /turf/simulated/floor/plating,
-/area/space)
+/area/template_noop)
 "K" = (
 /obj/structure/largecrate/vehicle/quadtrailer,
 /turf/simulated/floor/plating,
@@ -145,8 +145,8 @@
 "L" = (
 /obj/structure/lattice,
 /obj/item/rollingpaper,
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "M" = (
 /obj/structure/bed/pod,
 /obj/random/bedsheet,
@@ -188,7 +188,7 @@
 /area/submap/osiris_field/cargo_shuttle3)
 "U" = (
 /obj/machinery/atmospherics/component/unary/engine/bigger,
-/turf/space/basic,
+/turf/template_noop,
 /area/submap/osiris_field/cargo_shuttle3)
 "W" = (
 /obj/machinery/portable_atmospherics/canister/methyl_bromide,

@@ -21,7 +21,7 @@
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/submap/osiris_field/cargo_vessel3)
 "ei" = (
-/turf/space/basic,
+/turf/template_noop,
 /area/submap/osiris_field/cargo_vessel3)
 "ew" = (
 /obj/effect/floor_decal/industrial/halfstair,
@@ -144,11 +144,11 @@
 /obj/machinery/atmospherics/component/unary/engine/biggest{
 	dir = 8
 	},
-/turf/space/basic,
+/turf/template_noop,
 /area/submap/osiris_field/cargo_vessel3)
 "oz" = (
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/space)
+/area/template_noop)
 "pr" = (
 /obj/item/stack/material/glass/phoronrglass,
 /obj/item/stack/material/glass/phoronrglass,
@@ -157,7 +157,7 @@
 /area/submap/osiris_field/cargo_vessel3)
 "qE" = (
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/template_noop,
 /area/submap/osiris_field/cargo_vessel3)
 "qR" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
@@ -173,11 +173,11 @@
 /area/submap/osiris_field/cargo_vessel3)
 "tI" = (
 /obj/structure/lattice,
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "uh" = (
 /turf/simulated/floor/tiled/techfloor/lythios43c,
-/area/space)
+/area/template_noop)
 "uD" = (
 /obj/machinery/atmospherics/component/unary/engine{
 	dir = 4
@@ -256,7 +256,7 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/turf/space/basic,
+/turf/template_noop,
 /area/submap/osiris_field/cargo_vessel3)
 "AN" = (
 /obj/machinery/portable_atmospherics/canister/empty/phoron,
@@ -278,7 +278,7 @@
 /obj/machinery/atmospherics/component/unary/engine/bigger{
 	dir = 8
 	},
-/turf/space/basic,
+/turf/template_noop,
 /area/submap/osiris_field/cargo_vessel3)
 "CT" = (
 /turf/simulated/floor/wmarble,
@@ -305,7 +305,7 @@
 /area/submap/osiris_field/cargo_vessel3)
 "Ee" = (
 /turf/simulated/floor/tiled/kafel_full/yellow/virgo3b,
-/area/space)
+/area/template_noop)
 "EB" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
@@ -344,8 +344,8 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/submap/osiris_field/cargo_vessel3)
 "JB" = (
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "JI" = (
 /obj/effect/floor_decal/carpet{
 	dir = 1
@@ -391,11 +391,11 @@
 "OM" = (
 /obj/structure/lattice,
 /obj/structure/lattice,
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "Pt" = (
 /turf/simulated/floor/plating,
-/area/space)
+/area/template_noop)
 "PM" = (
 /obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/tiled/techfloor/lythios43c,
@@ -472,7 +472,7 @@
 /area/submap/osiris_field/cargo_vessel3)
 "Ym" = (
 /turf/simulated/wall/r_wall/prepainted/cargo,
-/area/space)
+/area/template_noop)
 "YJ" = (
 /obj/machinery/light/small/emergency/flicker{
 	dir = 4

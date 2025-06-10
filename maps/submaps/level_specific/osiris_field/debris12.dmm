@@ -4,8 +4,8 @@
 	dir = 6
 	},
 /obj/structure/lattice,
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "b" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 10
@@ -13,17 +13,17 @@
 /turf/simulated/floor/reinforced/airless{
 	name = "reinforced floor"
 	},
-/area/space)
+/area/template_noop)
 "c" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
 /turf/simulated/floor/reinforced/airless{
 	name = "reinforced floor"
 	},
-/area/space)
+/area/template_noop)
 "d" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "e" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
 /turf/simulated/floor/reinforced/airless{

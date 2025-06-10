@@ -48,11 +48,11 @@
 /obj/structure/shuttle/engine/propulsion{
 	dir = 4
 	},
-/turf/space/basic,
+/turf/template_noop,
 /area/submap/osiris_field/cargo_shuttle_maglev)
 "oS" = (
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "sl" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/submap/osiris_field/cargo_shuttle_maglev)
@@ -188,8 +188,8 @@
 /area/submap/osiris_field/cargo_shuttle_maglev)
 "OK" = (
 /obj/structure/lattice,
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "PA" = (
 /turf/simulated/floor/plating,
 /area/submap/osiris_field/cargo_shuttle_maglev)
@@ -249,7 +249,7 @@
 /area/submap/osiris_field/cargo_shuttle_maglev)
 "ZE" = (
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/template_noop,
 /area/submap/osiris_field/cargo_shuttle_maglev)
 
 (1,1,1) = {"

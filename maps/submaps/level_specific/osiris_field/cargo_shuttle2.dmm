@@ -3,12 +3,12 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/submap/osiris_field/cargo_shuttle2)
 "g" = (
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "h" = (
 /obj/structure/lattice,
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "j" = (
 /obj/machinery/door/blast/shutters,
 /turf/simulated/floor/plating/indoors,
@@ -35,7 +35,7 @@
 /area/submap/osiris_field/cargo_shuttle2)
 "u" = (
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/template_noop,
 /area/submap/osiris_field/cargo_shuttle2)
 "w" = (
 /turf/simulated/floor/tiled/steel_dirty/silver,
@@ -49,8 +49,8 @@
 /obj/machinery/atmospherics/component/unary/engine{
 	dir = 1
 	},
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "B" = (
 /obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/plating/indoors,
@@ -61,7 +61,7 @@
 /area/submap/osiris_field/cargo_shuttle2)
 "F" = (
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/template_noop)
 "H" = (
 /obj/machinery/portable_atmospherics/canister/empty/phoron,
 /turf/simulated/floor/plating/indoors,
@@ -69,7 +69,7 @@
 "I" = (
 /obj/structure/lattice,
 /mob/living/simple_mob/animal/space/carp,
-/turf/space/basic,
+/turf/template_noop,
 /area/submap/osiris_field/cargo_shuttle2)
 "K" = (
 /obj/structure/largecrate/animal/dangerous,

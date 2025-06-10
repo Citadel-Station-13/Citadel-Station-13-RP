@@ -125,7 +125,7 @@
 /area/submap/osiris_field/cargo_vessel1)
 "ga" = (
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/template_noop,
 /area/submap/osiris_field/cargo_vessel1)
 "hb" = (
 /obj/structure/railing/grey,
@@ -181,8 +181,8 @@
 /obj/machinery/atmospherics/component/unary/engine/bigger{
 	dir = 4
 	},
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "jJ" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/osiris_field/cargo_vessel1)
@@ -353,8 +353,8 @@
 /area/submap/osiris_field/cargo_vessel1)
 "sO" = (
 /obj/structure/lattice,
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "tK" = (
 /obj/machinery/light/small/emergency/flicker{
 	dir = 4
@@ -715,8 +715,8 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/submap/osiris_field/cargo_vessel1)
 "Pd" = (
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "PB" = (
 /mob/living/simple_mob/animal/space/xenomorph/drone,
 /turf/simulated/floor/tiled/techfloor,
@@ -807,7 +807,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/submap/osiris_field/cargo_vessel1)
 "Un" = (
-/turf/space/basic,
+/turf/template_noop,
 /area/submap/osiris_field/cargo_vessel1)
 "Up" = (
 /obj/structure/metal_edge,

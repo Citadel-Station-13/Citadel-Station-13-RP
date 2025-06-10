@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/template_noop)
 "d" = (
 /turf/simulated/floor/tiled/steel_dirty/red,
 /area/submap/osiris_field/cargo_shuttle1)
@@ -11,7 +11,7 @@
 /area/submap/osiris_field/cargo_shuttle1)
 "f" = (
 /turf/simulated/floor/tiled/steel_dirty/red,
-/area/space)
+/area/template_noop)
 "h" = (
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled/steel_dirty/red,
@@ -30,7 +30,7 @@
 "m" = (
 /obj/random/multiple/corp_crate,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/template_noop)
 "o" = (
 /turf/simulated/floor/plating/indoors,
 /area/submap/osiris_field/cargo_shuttle1)
@@ -54,7 +54,7 @@
 "w" = (
 /obj/random/multiple/corp_crate/no_weapons,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/template_noop)
 "y" = (
 /obj/structure/table/steel,
 /obj/machinery/light/small/poi{
@@ -86,22 +86,22 @@
 /obj/machinery/atmospherics/component/unary/engine/bigger{
 	dir = 8
 	},
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "L" = (
 /turf/simulated/wall/r_wall/prepainted/cargo,
-/area/space)
+/area/template_noop)
 "M" = (
 /obj/random/triumph,
 /turf/simulated/floor/plating/indoors,
 /area/submap/osiris_field/cargo_shuttle1)
 "Q" = (
 /obj/structure/lattice,
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "R" = (
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "U" = (
 /turf/simulated/wall/r_wall/prepainted/cargo,
 /area/submap/osiris_field/cargo_shuttle1)

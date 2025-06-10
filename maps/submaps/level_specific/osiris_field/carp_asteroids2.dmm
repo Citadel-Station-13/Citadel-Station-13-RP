@@ -1,29 +1,29 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/simulated/floor/event/derelict_plating,
-/area/space)
+/area/template_noop)
 "b" = (
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "c" = (
 /obj/tether_away_spawner/debrisfield/carp,
-/turf/space/basic,
+/turf/template_noop,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "d" = (
 /turf/simulated/floor/event/derelict_plating,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "e" = (
-/turf/space/basic,
+/turf/template_noop,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "r" = (
 /turf/simulated/floor/event/derelict_wall_floor,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "w" = (
 /turf/simulated/floor/event/derelict_light,
-/area/space)
+/area/template_noop)
 "I" = (
 /turf/simulated/wall/event/derelict_wall,
-/area/space)
+/area/template_noop)
 "Y" = (
 /turf/simulated/floor/event/derelict_light,
 /area/tether_away/debrisfield_vr/shuttle_buffer)

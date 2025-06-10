@@ -1,19 +1,19 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "b" = (
 /turf/simulated/floor,
-/area/space)
+/area/template_noop)
 "c" = (
-/turf/space/basic,
+/turf/template_noop,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "d" = (
 /turf/simulated/floor,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "e" = (
 /obj/tether_away_spawner/debrisfield/carp,
-/turf/space/basic,
+/turf/template_noop,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "i" = (
 /obj/spawner/corpse/skeleton,
@@ -28,14 +28,14 @@
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "N" = (
 /turf/simulated/wall/r_wall,
-/area/space)
+/area/template_noop)
 "O" = (
 /obj/machinery/atmospherics/component/unary/engine,
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "V" = (
 /obj/machinery/atmospherics/component/unary/engine,
-/turf/space/basic,
+/turf/template_noop,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 
 (1,1,1) = {"

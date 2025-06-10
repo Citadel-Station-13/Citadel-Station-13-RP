@@ -1,30 +1,17 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "b" = (
 /turf/simulated/wall/r_wall/prepainted/engineering,
-/area/space)
-"c" = (
-/turf/space/basic,
-/area/tether_away/debrisfield_vr/shuttle_buffer)
-"d" = (
-/turf/simulated/floor,
-/area/tether_away/debrisfield_vr/shuttle_buffer)
+/area/template_noop)
 "O" = (
 /obj/structure/lattice,
-/turf/space/basic,
-/area/space)
-"P" = (
-/obj/structure/lattice,
-/turf/space/basic,
-/area/tether_away/debrisfield_vr/shuttle_buffer)
+/turf/template_noop,
+/area/template_noop)
 "R" = (
 /turf/simulated/floor,
-/area/space)
-"X" = (
-/turf/simulated/wall/r_wall/prepainted/engineering,
-/area/tether_away/debrisfield_vr/shuttle_buffer)
+/area/template_noop)
 
 (1,1,1) = {"
 b
@@ -103,13 +90,13 @@ a
 O
 a
 a
-c
-X
-c
-c
-P
-P
-P
+a
+b
+a
+a
+O
+O
+O
 b
 b
 a
@@ -121,13 +108,13 @@ a
 O
 a
 a
-c
-X
-X
-X
-P
-P
-P
+a
+b
+b
+b
+O
+O
+O
 b
 R
 b
@@ -139,13 +126,13 @@ a
 b
 a
 O
-c
-X
-d
-d
-P
-P
-P
+a
+b
+R
+R
+O
+O
+O
 b
 R
 b
@@ -157,13 +144,13 @@ a
 b
 b
 O
-c
-d
-c
-d
-c
-P
-P
+a
+R
+a
+R
+a
+O
+O
 O
 a
 b
@@ -175,13 +162,13 @@ a
 b
 a
 O
-c
-d
-c
-c
-c
-P
-c
+a
+R
+a
+a
+a
+O
+a
 O
 a
 a
@@ -193,13 +180,13 @@ a
 a
 a
 O
-c
-c
-c
-X
-c
-P
-P
+a
+a
+a
+b
+a
+O
+O
 R
 a
 a
@@ -211,13 +198,13 @@ a
 a
 a
 b
-X
-X
-P
-d
-d
-c
-d
+b
+b
+O
+R
+R
+a
+R
 b
 b
 a
@@ -229,13 +216,13 @@ a
 a
 a
 a
-X
-X
-P
-c
-d
-d
-X
+b
+b
+O
+a
+R
+R
+b
 b
 b
 b
