@@ -4,8 +4,9 @@
 /obj/effect/eldritch_effect/reality_fracture
 	name = "gash in the fabric of reality"
 	desc = "You don't know what this is, but it looks, feels, and <i>is</i> wrong."
+	// todo: icon
 
-/obj/effect/eldritch_effect/reality_fracture/Initialize(mapload)
+/obj/effect/eldritch_effect/reality_fracture/Initialize(mapload, obj/effect/eldritch_effect/reality_disturbance/from_disturbance)
 	. = ..()
 	START_PROCESSING(SSprocess_5fps, src)
 
@@ -15,4 +16,4 @@
 
 /obj/effect/eldritch_effect/reality_fracture/process(delta_time)
 
-#warn impl partial
+// todo: implement effects, severity, expiration, etc
