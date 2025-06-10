@@ -10,7 +10,8 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "bike_horn"
 	item_state = "bike_horn"
-	throw_force = 3
+	damage_force = 0
+	throw_force = 0
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_HOLSTER
 	throw_speed = 3
@@ -61,6 +62,7 @@
 	icon = 'icons/items/noisemaker.dmi'
 	icon_state = "clicker"
 	base_icon_state = "clicker"
+	attack_verb = list("clicked")
 
 	emit_sfx = /datum/soundbyte/effects/clicker_1
 	emit_volume = 75
