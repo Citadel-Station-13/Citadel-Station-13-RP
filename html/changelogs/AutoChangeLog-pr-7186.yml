@@ -1,0 +1,5 @@
+author: "Sorrowfulwinds"
+delete-after: True
+changes:
+  - bugfix: "fixed gaia, triumph, tether, skyplanet map errors."
+  - code_imp: "changed stairs, catwalks, SMES warnings to verbose CRASHs."

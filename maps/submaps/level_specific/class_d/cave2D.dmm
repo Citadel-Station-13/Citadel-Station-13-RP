@@ -27,7 +27,7 @@
 "n" = (
 /obj/structure/alien/weeds,
 /obj/random/tetheraid,
-/obj/item/gun/energy/phasegun/pistol,
+/obj/item/gun/projectile/energy/phasegun/pistol,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
 "p" = (

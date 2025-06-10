@@ -2551,7 +2551,7 @@
 /area/piratebase/atmospherics)
 "xA" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot/rigged,
+/obj/item/vehicle_module/weapon/ballistic/scattershot/rigged,
 /turf/simulated/floor/reinforced,
 /area/piratebase/vault)
 "xE" = (
@@ -2571,7 +2571,7 @@
 	pixel_x = -22
 	},
 /obj/item/cell/device/weapon,
-/obj/item/gun/energy/zip{
+/obj/item/gun/projectile/energy/zip{
 	name = "First Mate Zippy"
 	},
 /turf/simulated/floor/wood,
@@ -2832,7 +2832,7 @@
 /area/piratebase/construction)
 "zU" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/xray/rigged,
+/obj/item/vehicle_module/weapon/energy/laser/xray/rigged,
 /turf/simulated/floor/reinforced,
 /area/piratebase/vault)
 "zV" = (
@@ -3212,7 +3212,7 @@
 "DI" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/device/weapon/gunsword,
-/obj/item/gun/energy/gun/fluff/gunsword,
+/obj/item/gun/projectile/energy/gun/fluff/gunsword,
 /turf/simulated/floor/reinforced,
 /area/piratebase/vault)
 "DJ" = (
@@ -4299,11 +4299,11 @@
 /area/piratebase/halls)
 "ME" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/ballistic/pirate{
+/obj/item/gun/projectile/ballistic/pirate{
 	pixel_y = -4
 	},
-/obj/item/gun/ballistic/pirate,
-/obj/item/gun/ballistic/pirate{
+/obj/item/gun/projectile/ballistic/pirate,
+/obj/item/gun/projectile/ballistic/pirate{
 	pixel_y = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
@@ -5091,7 +5091,7 @@
 /area/shuttle/pirate/bridge)
 "Ty" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot,
+/obj/item/vehicle_module/weapon/ballistic/scattershot,
 /turf/simulated/floor/reinforced,
 /area/piratebase/vault)
 "Tz" = (
@@ -5785,11 +5785,11 @@
 /area/piratebase/captain)
 "ZG" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/ballistic/pirate/junker_pistol{
+/obj/item/gun/projectile/ballistic/pirate/junker_pistol{
 	pixel_y = -5
 	},
-/obj/item/gun/ballistic/pirate/junker_pistol,
-/obj/item/gun/ballistic/pirate/junker_pistol{
+/obj/item/gun/projectile/ballistic/pirate/junker_pistol,
+/obj/item/gun/projectile/ballistic/pirate/junker_pistol{
 	pixel_y = 5
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,

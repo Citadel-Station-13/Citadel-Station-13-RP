@@ -90,7 +90,7 @@
 	. |= list(
 		/obj/item/borg/sight/material,
 		/obj/item/pickaxe/borgdrill,
-		/obj/item/gun/energy/kinetic_accelerator/cyborg,
+		/obj/item/gun/projectile/energy/kinetic_accelerator/cyborg,
 		/obj/item/storage/bag/ore,
 		/obj/item/storage/bag/sheetsnatcher/borg
 	)

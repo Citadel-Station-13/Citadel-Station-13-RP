@@ -1,6 +1,24 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+/mob/living/is_melee_targetable(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	return TRUE
+
+//* FX *//
+
+/mob/living/get_combat_fx_classifier(attack_type, datum/attack_source, target_zone)
+	if(isSynthetic())
+		return COMBAT_IMPACT_FX_METAL
+	return COMBAT_IMPACT_FX_FLESH
+
+//* Melee Handling *//
+
+/mob/living/melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/weapon/style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_ATTACK_ABORT)
+		return
+	ai_holder?.react_to_attack_polaris(attacker)
+
 //* Projectile Handling *//
 
 /mob/living/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
@@ -32,7 +50,7 @@
 		add_attack_logs(
 			proj.firer,
 			src,
-			"shot with [src] ([type]) (missed)",
+			"shot with [proj] ([type]) (missed)",
 		)
 		impact_flags |= PROJECTILE_IMPACT_PASSTHROUGH
 		return ..()
@@ -47,13 +65,13 @@
 		add_attack_logs(
 			proj.firer,
 			src,
-			"shot with [src] ([type]) (aborted)",
+			"shot with [proj] ([type]) (aborted)",
 		)
 		return
 	add_attack_logs(
 		proj.firer,
 		src,
-		"shot with [src] ([type])[(impact_flags & PROJECTILE_IMPACT_BLOCKED)? " (blocked)" : ""]",
+		"shot with [proj] ([type])[(impact_flags & PROJECTILE_IMPACT_BLOCKED)? " (blocked)" : ""]",
 	)
 	// emit feedback
 	if(!(impact_flags & PROJECTILE_IMPACT_BLOCKED))
@@ -63,26 +81,19 @@
 			visible_message(SPAN_DANGER("\The [src] is hit by [proj] in the [parse_zone(bullet_act_args[BULLET_ACT_ARG_ZONE])]"))
 
 	//! LEGACY
-
 	//Being hit while using a deadman switch
 	for(var/obj/item/assembly/signaler/signaler in get_held_items())
 		if(signaler.deadman && prob(80))
 			log_and_message_admins("has triggered a signaler deadman's switch")
 			visible_message("<font color='red'>[src] triggers their deadman's switch!</font>")
-			signaler.signal()
+			spawn(-1)
+				signaler.signal()
 
 	if(ai_holder && proj.firer)
 		ai_holder.react_to_attack_polaris(proj.firer)
-
 	//! END
 
-	if(!(impact_flags & (PROJECTILE_IMPACT_BLOCKED | PROJECTILE_IMPACT_SKIP_STANDARD_DAMAGE)))
-		// todo: this should just be in base projectile on_impact
-		impact_flags |= proj.inflict_impact_damage(src, bullet_act_args[BULLET_ACT_ARG_EFFICIENCY], impact_flags, bullet_act_args[BULLET_ACT_ARG_ZONE])
 	return ..()
-
-/mob/living/get_bullet_impact_effect_type(var/def_zone)
-	return BULLET_IMPACT_MEAT
 
 /**
  * @return zone to hit, or null to miss
@@ -111,7 +122,131 @@
 	our_opinion = clamp(our_opinion - get_evasion(), 5, INFINITY)
 	return proj.process_accuracy(src, our_opinion, null, impact_check)
 
+//* Throwing *//
+
+/mob/living/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
+	if(TT.throw_flags & THROW_AT_IS_GENTLE)
+		return
+
+	// - semi-legacy code; needs re-tuning
+	if(isitem(AM))
+		var/miss_chance = 5 + min(90, (TT.dist_travelled - 2 * 5))
+		if(prob(miss_chance))
+			AM.visible_message(
+				SPAN_WARNING("[AM] misses [src] narrowly!"),
+			)
+			return COMPONENT_THROW_HIT_PIERCE | COMPONENT_THROW_HIT_NEVERMIND
+	var/hit_zone = ran_zone(TT.target_zone || BP_TORSO, 75)
+	// - end
+
+	var/shieldcall_returns = atom_shieldcall_handle_throw_impact(
+		TT,
+		FALSE,
+		NONE,
+	)
+
+	var/sc_pierce
+	var/sc_block
+	if(shieldcall_returns & SHIELDCALL_FLAGS_SHOULD_PROCESS)
+		sc_block = shieldcall_returns & SHIELDCALL_FLAGS_BLOCK_ATTACK
+		sc_pierce = shieldcall_returns & SHIELDCALL_FLAGS_PIERCE_ATTACK
+
+	if(sc_block)
+		return sc_pierce? COMPONENT_THROW_HIT_PIERCE | COMPONENT_THROW_HIT_NEVERMIND : NONE
+
+	visible_message(
+		SPAN_RED("[src] has been hit by [AM]."),
+	)
+
+	// - legacy code for reaction
+	if(ismob(TT.thrower))
+		ai_holder?.react_to_attack_polaris(TT.thrower)
+	// - end
+
+	// - legacy logging code; not amazing. all this should be replaced with logging module API calls.
+	add_attack_logs(TT.thrower, src, "hit by thrown [AM.name] ([AM.type])")
+	// - end
+
+	// todo: /atom/movable/proc/throw_impact_attack(atom/target)
+	if(isitem(AM))
+		var/obj/item/I = AM
+
+		inflict_atom_damage(
+			I.throw_force * TT.get_damage_multiplier(src),
+			I.damage_type,
+			TT.get_damage_tier(src),
+			I.damage_flag,
+			I.damage_mode,
+			hit_zone,
+			ATTACK_TYPE_THROWN,
+			TT,
+		)
+	else
+		inflict_atom_damage(
+			AM.throw_force * TT.get_damage_multiplier(src),
+			DAMAGE_TYPE_BRUTE,
+			TT.get_damage_tier(src),
+			ARMOR_MELEE,
+			NONE,
+			hit_zone,
+			ATTACK_TYPE_THROWN,
+			TT,
+		)
+
+	// - semi-legacy: transfer momentum and stagger them if it's fast enough
+	var/effective_mass = 1.5
+	if(isitem(AM))
+		var/obj/item/reading_item_for_mass = AM
+		effective_mass = reading_item_for_mass.w_class / THROWNOBJ_KNOCKBACK_DIVISOR
+	var/momentum_transfer_amount = effective_mass * TT.speed
+	if(momentum_transfer_amount >= THROWNOBJ_KNOCKBACK_SPEED)
+		var/dir = angle2dir(TT.get_current_angle())
+		visible_message(
+			SPAN_RED("[src] staggers under the impact!"),
+			SPAN_RED("You stagger under the impact!"),
+		)
+		throw_at(get_edge_target_turf(src, dir), 1, momentum_transfer_amount / 3, THROW_AT_DO_NOT_SPIN)
+
+	return sc_pierce? COMPONENT_THROW_HIT_PIERCE | COMPONENT_THROW_HIT_NEVERMIND : NONE
+
 //* Misc Effects *//
+
+/mob/living/electrocute_act(efficiency, energy, damage, stun_power, flags, hit_zone, atom/movable/source, list/shared_blackboard, out_energy_consumed)
+	// todo: rework this maybe
+	if((fire_stacks < 0) && !(flags & ELECTROCUTE_ACT_FLAG_INTERNAL))
+		// water makes you more ocnductive
+		efficiency *= 1.5
+	return ..()
+
+/mob/living/on_electrocute_act(efficiency, energy, damage, stun_power, flags, hit_zone, atom/movable/source, list/shared_blackboard)
+	if(efficiency > 0)
+		inflict_electrocute_damage(damage * efficiency, stun_power * efficiency, flags, hit_zone)
+		if(!(flags & ELECTROCUTE_ACT_FLAG_SILENT))
+			playsound(src, /datum/soundbyte/sparks, 50, TRUE, -1)
+			if(damage * efficiency > 15)
+				visible_message(
+					SPAN_WARNING("[src] was electrocuted[source ? " by [source]" : ""]!"),
+					SPAN_DANGER("You feel a powerful shock course through your body[source ? " as you make contact with [source]" : ""]!"),
+					SPAN_WARNING("You hear a heavy electrical crack."),
+				)
+			else
+				visible_message(
+					SPAN_WARNING("[src] was shocked[source ? " by [source]" : ""]!"),
+					SPAN_DANGER("You feel a shock course through your body[source ? " as you make contact with [source]" : ""]!"),
+					SPAN_WARNING("You hear an electrical crack."),
+				)
+		if(!(flags & ELECTROCUTE_ACT_FLAG_CONTAINED))
+			var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+			sparks.set_up(5, 1, loc)
+			sparks.start()
+	return ..()
+
+/**
+ * Called to apply the damage from [electrocute_act()]
+ */
+/mob/living/proc/inflict_electrocute_damage(damage, stun_power, flags, hit_zone)
+	return
 
 /**
  * Processes a slip.
@@ -130,5 +265,3 @@
  */
 /mob/living/proc/slip_act(slip_class, source, hard_strength, soft_strength, suppressed)
 	return 1
-//* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 Citadel Station developers.          *//

@@ -260,7 +260,7 @@
 "xt" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/taser,
+/obj/item/gun/projectile/energy/taser,
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/vault)
 "ye" = (

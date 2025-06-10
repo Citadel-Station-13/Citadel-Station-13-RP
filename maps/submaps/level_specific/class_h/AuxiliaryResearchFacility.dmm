@@ -129,9 +129,9 @@
 "cx" = (
 /obj/structure/table/rack,
 /obj/effect/debris/cleanable/dirt,
-/obj/item/grenade/concussion/frag,
-/obj/item/grenade/concussion/frag,
-/obj/item/grenade/concussion/frag,
+/obj/item/grenade/simple/concussion/frag,
+/obj/item/grenade/simple/concussion/frag,
+/obj/item/grenade/simple/concussion/frag,
 /turf/simulated/floor/tiled/steel,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "cA" = (
@@ -769,7 +769,7 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "rl" = (
 /obj/effect/debris/cleanable/dirt,
-/obj/item/gun/energy/taser/xeno,
+/obj/item/gun/projectile/energy/taser/xeno,
 /turf/simulated/floor/tiled/white,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "rm" = (
@@ -862,7 +862,7 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "tC" = (
 /obj/structure/table/rack,
-/obj/item/gun/energy/sniperrifle,
+/obj/item/gun/projectile/energy/sniperrifle,
 /turf/simulated/floor/tiled/steel,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "tE" = (
@@ -890,7 +890,7 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "uI" = (
 /obj/structure/table/rack,
-/obj/item/gun/ballistic/shotgun/doublebarrel,
+/obj/item/gun/projectile/ballistic/shotgun/doublebarrel,
 /turf/simulated/floor/tiled/steel,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "uP" = (
@@ -977,10 +977,10 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "wo" = (
 /obj/structure/table/rack,
-/obj/item/grenade/spawnergrenade/manhacks/mercenary,
-/obj/item/grenade/spawnergrenade/manhacks/mercenary,
-/obj/item/grenade/spawnergrenade/manhacks/mercenary,
-/obj/item/grenade/spawnergrenade/manhacks/mercenary,
+/obj/item/grenade/simple/spawner/manhacks/mercenary,
+/obj/item/grenade/simple/spawner/manhacks/mercenary,
+/obj/item/grenade/simple/spawner/manhacks/mercenary,
+/obj/item/grenade/simple/spawner/manhacks/mercenary,
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
 	},
@@ -1541,7 +1541,7 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "IO" = (
 /obj/structure/table/rack,
-/obj/item/gun/energy/ionrifle/pistol,
+/obj/item/gun/projectile/energy/ionrifle/pistol,
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
 	},
@@ -1617,7 +1617,7 @@
 /turf/simulated/floor/tiled/white,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "KG" = (
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/xray,
+/obj/item/vehicle_module/weapon/energy/laser/xray,
 /turf/simulated/floor/tiled/steel,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "KM" = (
@@ -1704,7 +1704,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Mg" = (
-/obj/item/mecha_parts/mecha_equipment/repair_droid,
+/obj/item/vehicle_module/repair_droid,
 /obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled/dark,
 /area/class_h/POIs/AuxiliaryResearchFacility)

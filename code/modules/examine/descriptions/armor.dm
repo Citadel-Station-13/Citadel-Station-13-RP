@@ -2,7 +2,7 @@
 /obj/item/clothing/get_description_info()
 	var/armor_stats = description_info + "\
 	<br>"
-	var/list/describing = fetch_armor().describe_list()
+	var/list/describing = fetch_armor()?.describe_english_list()
 	if(length(describing))
 		armor_stats += jointext(describing, "<br>")
 		armor_stats += "<br>"

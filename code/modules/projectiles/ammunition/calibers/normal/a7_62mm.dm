@@ -1,11 +1,12 @@
 /datum/ammo_caliber/a7_62mm
+	id = "a7_62mm"
 	caliber = "7.62mm"
 
 //* Casings *//
 
 /obj/item/ammo_casing/a7_62mm
 	desc = "A 7.62mm bullet casing."
-	caliber = /datum/ammo_caliber/a7_62mm
+	casing_caliber = /datum/ammo_caliber/a7_62mm
 	icon = 'icons/modules/projectiles/casings/slim.dmi'
 	icon_state = "large"
 	projectile_type = /obj/projectile/bullet/rifle/a762
@@ -22,7 +23,6 @@
 /obj/item/ammo_casing/a7_62mm/practice
 	desc = "A 7.62mm practice bullet casing."
 	icon_state = "large-white"
-	icon_state = "rifle-casing" // Need to make an icon for these
 	projectile_type = /obj/projectile/bullet/practice
 	materials_base = list(MAT_STEEL = 90)
 	worth_intrinsic = 1.5

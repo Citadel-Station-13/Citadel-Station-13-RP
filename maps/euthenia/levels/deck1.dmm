@@ -5388,8 +5388,8 @@
 "fSM" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/effect/floor_decal/industrial/outline/red,
-/obj/item/gun/energy/phasegun/rifle,
-/obj/item/gun/energy/phasegun/rifle,
+/obj/item/gun/projectile/energy/phasegun/rifle,
+/obj/item/gun/projectile/energy/phasegun/rifle,
 /obj/structure/sign/warning/secure_area/armory{
 	pixel_y = -32
 	},
@@ -14497,7 +14497,7 @@
 "qDZ" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/effect/floor_decal/industrial/outline/red,
-/obj/item/gun/energy/ionrifle,
+/obj/item/gun/projectile/energy/ionrifle,
 /obj/effect/floor_decal/industrial/warning/corner,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
@@ -14602,7 +14602,7 @@
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck1)
 "qPe" = (
-/obj/spawner/window/low_wall/borosillicate/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "qPq" = (
@@ -16713,7 +16713,7 @@
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_one/aft/starboard)
 "txV" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -16812,9 +16812,9 @@
 /area/tether/surfacebase/security/lobby)
 "tDi" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/gun/projectile/energy/gun,
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
@@ -17377,9 +17377,9 @@
 /area/tether/surfacebase/security/lobby)
 "udq" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/taser,
-/obj/item/gun/energy/taser,
-/obj/item/gun/energy/taser,
+/obj/item/gun/projectile/energy/taser,
+/obj/item/gun/projectile/energy/taser,
+/obj/item/gun/projectile/energy/taser,
 /obj/effect/floor_decal/corner/blue{
 	dir = 10
 	},
@@ -17937,8 +17937,8 @@
 /area/crew_quarters/sleep/Dorm_3)
 "uFv" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
+/obj/item/gun/projectile/energy/laser,
+/obj/item/gun/projectile/energy/laser,
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
@@ -18594,7 +18594,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_6)
 "vsN" = (
-/obj/spawner/window/low_wall/borosillicate/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar_backroom)
 "vsV" = (
@@ -20661,7 +20661,7 @@
 /turf/simulated/open,
 /area/main_map/maintenance/deck_one)
 "xHO" = (
-/obj/spawner/window/low_wall/borosillicate/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/kitchen)
 "xJO" = (

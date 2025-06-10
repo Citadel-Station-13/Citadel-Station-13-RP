@@ -1904,12 +1904,12 @@
 /area/admin_planet/croatoan/high_sec_science_lower_checkpoint)
 "gb" = (
 /obj/structure/closet/secure_closet/guncabinet,
-/obj/item/gun/ballistic/shotgun/pump/combat,
-/obj/item/gun/ballistic/shotgun/pump/combat{
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat{
 	pixel_y = 7
 	},
-/obj/item/gun/ballistic/shotgun/pump/combat/warden,
-/obj/item/gun/ballistic/shotgun/pump/JSDF,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat/warden,
+/obj/item/gun/projectile/ballistic/shotgun/pump/JSDF,
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/sec_armory)
 "gc" = (
@@ -1957,8 +1957,8 @@
 /area/admin_planet/croatoan/high_sec_science_virology_lab)
 "gn" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/gun/combat,
-/obj/item/gun/energy/gun/combat,
+/obj/item/gun/projectile/energy/gun/combat,
+/obj/item/gun/projectile/energy/gun/combat,
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/sec_armory)
 "go" = (
@@ -1997,7 +1997,7 @@
 /turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/mountain_plains)
 "gu" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/simulated/wall/prepainted,
 /area/admin_planet/croatoan/civ_bar_public)
 "gv" = (
@@ -3250,8 +3250,8 @@
 /area/admin_planet/croatoan/sci_cargo_shuttle_pad)
 "le" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/combat,
-/obj/item/gun/energy/combat,
+/obj/item/gun/projectile/energy/combat,
+/obj/item/gun/projectile/energy/combat,
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/sec_armory)
 "lg" = (
@@ -4564,8 +4564,8 @@
 /area/admin_planet/croatoan/sec_holding_cells)
 "pL" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/gun/fluff/dominator,
-/obj/item/gun/energy/gun/fluff/dominator,
+/obj/item/gun/projectile/energy/gun/fluff/dominator,
+/obj/item/gun/projectile/energy/gun/fluff/dominator,
 /obj/machinery/light/small/emergency{
 	dir = 4
 	},
@@ -6120,7 +6120,7 @@
 /obj/structure/window/reinforced/survival_pod{
 	dir = 8
 	},
-/obj/item/gun/ballistic/revolver/mateba{
+/obj/item/gun/projectile/ballistic/revolver/mateba{
 	name = "Last Hope";
 	desc = "A highly ordained Mateba which seems to have seen quite a lot of action. Engravings cover the length of the revolver, telling tales of uncountable holders and endless glory."
 	},
@@ -6550,7 +6550,7 @@
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_entrance)
 "wN" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/tiled/steel_dirty/red,
 /area/admin_planet/croatoan/sec_hos_office)
 "wO" = (
@@ -6841,8 +6841,8 @@
 /area/admin_planet/croatoan/sci_cargo_shuttle_pad)
 "xR" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/lasershotgun,
-/obj/item/gun/energy/lasershotgun,
+/obj/item/gun/projectile/energy/lasershotgun,
+/obj/item/gun/projectile/energy/lasershotgun,
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/sec_armory)
 "xU" = (
@@ -9438,34 +9438,34 @@
 	},
 /area/admin_planet/croatoan/landing_pad)
 "HG" = (
-/obj/item/gun/energy/secutor,
-/obj/item/gun/energy/secutor{
+/obj/item/gun/projectile/energy/secutor,
+/obj/item/gun/projectile/energy/secutor{
 	pixel_y = -5
 	},
-/obj/item/gun/energy/secutor{
+/obj/item/gun/projectile/energy/secutor{
 	pixel_y = -3
 	},
-/obj/item/gun/energy/secutor{
+/obj/item/gun/projectile/energy/secutor{
 	pixel_y = -1
 	},
-/obj/item/gun/energy/taser,
-/obj/item/gun/energy/taser{
+/obj/item/gun/projectile/energy/taser,
+/obj/item/gun/projectile/energy/taser{
 	pixel_y = -4
 	},
-/obj/item/gun/energy/taser{
+/obj/item/gun/projectile/energy/taser{
 	pixel_y = -2
 	},
-/obj/item/gun/energy/taser{
+/obj/item/gun/projectile/energy/taser{
 	pixel_y = 2
 	},
-/obj/item/gun/energy/phasegun,
-/obj/item/gun/energy/phasegun,
-/obj/item/gun/energy/phasegun,
-/obj/item/gun/energy/phasegun,
-/obj/item/gun/energy/phasegun/pistol,
-/obj/item/gun/energy/phasegun/pistol,
-/obj/item/gun/energy/phasegun/pistol,
-/obj/item/gun/energy/phasegun/pistol,
+/obj/item/gun/projectile/energy/phasegun,
+/obj/item/gun/projectile/energy/phasegun,
+/obj/item/gun/projectile/energy/phasegun,
+/obj/item/gun/projectile/energy/phasegun,
+/obj/item/gun/projectile/energy/phasegun/pistol,
+/obj/item/gun/projectile/energy/phasegun/pistol,
+/obj/item/gun/projectile/energy/phasegun/pistol,
+/obj/item/gun/projectile/energy/phasegun/pistol,
 /obj/machinery/light/small/emergency{
 	dir = 1
 	},
@@ -11113,9 +11113,9 @@
 /area/admin_planet/croatoan/high_sec_science_virology_lab)
 "Ns" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/taser/xeno/sec,
-/obj/item/gun/energy/taser/xeno/robot,
-/obj/item/gun/energy/taser/xeno,
+/obj/item/gun/projectile/energy/taser/xeno/sec,
+/obj/item/gun/projectile/energy/taser/xeno/robot,
+/obj/item/gun/projectile/energy/taser/xeno,
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/extreme_security_containment_facilities)
 "Nt" = (
@@ -11438,8 +11438,8 @@
 /area/admin_planet/croatoan/sci_entry_hallway)
 "Oo" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/nt_pulse/carbine,
-/obj/item/gun/energy/nt_pulse/carbine,
+/obj/item/gun/projectile/energy/nt_pulse/carbine,
+/obj/item/gun/projectile/energy/nt_pulse/carbine,
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/sec_armory)
 "Op" = (
@@ -12706,7 +12706,7 @@
 /turf/simulated/floor/tiled/white,
 /area/admin_planet/croatoan/med_treatment)
 "Sw" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/space/basic,
 /area/admin_planet/croatoan/civ_bar_public)
 "Sx" = (
@@ -13219,10 +13219,10 @@
 /area/admin_planet/croatoan/sci_entry_hallway)
 "Uf" = (
 /obj/structure/closet/secure_closet/guncabinet,
-/obj/item/gun/ballistic/automatic/c20r,
-/obj/item/gun/ballistic/automatic/bullpup,
-/obj/item/gun/ballistic/automatic/battlerifle,
-/obj/item/gun/ballistic/automatic/combat,
+/obj/item/gun/projectile/ballistic/automatic/c20r,
+/obj/item/gun/projectile/ballistic/automatic/bullpup,
+/obj/item/gun/projectile/ballistic/automatic/battlerifle,
+/obj/item/gun/projectile/ballistic/automatic/combat,
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/sec_armory)
 "Ul" = (
@@ -13788,11 +13788,11 @@
 /obj/structure/window/reinforced/survival_pod{
 	dir = 8
 	},
-/obj/item/clothing/head/helmet/space/plasman/sec/hos/alt2{
+/obj/item/clothing/head/helmet/space/void/plasman/sec/hos/alt2{
 	name = "Harbinger Helmet";
 	desc = "A helmet of extremely odd design, it seems custom-made for a species you've never seen before."
 	},
-/obj/item/clothing/suit/space/plasman/sec/hos{
+/obj/item/clothing/suit/space/void/plasman/sec/hos{
 	name = "Harbingers Shield";
 	desc = "A unique suit designed specifically for one wearer. It looks highly ordained and armored."
 	},

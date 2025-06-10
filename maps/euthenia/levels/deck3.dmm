@@ -64,7 +64,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 2;
@@ -73,7 +73,7 @@
 	name = "CE Office Blast Doors";
 	opacity = 0
 	},
-/obj/effect/paint_stripe/sun,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/chief)
 "aeP" = (
@@ -7214,7 +7214,7 @@
 /area/hydroponics/garden)
 "gSP" = (
 /obj/structure/table/standard,
-/obj/item/gun/energy/taser/xeno,
+/obj/item/gun/projectile/energy/taser/xeno,
 /obj/item/melee/baton/slime/loaded,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
@@ -8816,8 +8816,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/chief)
 "itw" = (
@@ -10677,7 +10677,7 @@
 /area/main_map/maintenance/deck_three/aft/starboard)
 "kck" = (
 /obj/structure/bed/chair/sofa/black/corner{
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/main_map/hanger_cafe)
@@ -14677,7 +14677,7 @@
 /area/medical/resleeving)
 "nQw" = (
 /obj/structure/table/standard,
-/obj/item/gun/energy/taser/xeno,
+/obj/item/gun/projectile/energy/taser/xeno,
 /obj/item/multitool,
 /obj/item/melee/baton/slime/loaded,
 /turf/simulated/floor/tiled/white,
@@ -16168,9 +16168,9 @@
 /obj/structure/closet/crate{
 	name = "Grenade Crate"
 	},
-/obj/item/grenade/chem_grenade,
-/obj/item/grenade/chem_grenade,
-/obj/item/grenade/chem_grenade,
+/obj/item/grenade/simple/chemical,
+/obj/item/grenade/simple/chemical,
+/obj/item/grenade/simple/chemical,
 /obj/item/assembly/igniter,
 /obj/item/assembly/igniter,
 /obj/item/assembly/igniter,
@@ -17484,7 +17484,7 @@
 /area/main_map/maintenance/deck_three)
 "qoc" = (
 /obj/structure/table/standard,
-/obj/item/gun/energy/taser/xeno,
+/obj/item/gun/projectile/energy/taser/xeno,
 /obj/item/multitool,
 /obj/structure/window/reinforced{
 	dir = 8
@@ -17962,7 +17962,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 2;
@@ -17971,7 +17971,7 @@
 	name = "CE Office Blast Doors";
 	opacity = 0
 	},
-/obj/effect/paint_stripe/sun,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/chief)
 "qHJ" = (
@@ -25822,7 +25822,7 @@
 /area/main_map/Hangar_bay/deck2)
 "yjh" = (
 /obj/structure/bed/chair/sofa/black/corner{
-	dir = 4
+	dir = 1
 	},
 /turf/simulated/floor/wood,
 /area/medical/psych_ward)

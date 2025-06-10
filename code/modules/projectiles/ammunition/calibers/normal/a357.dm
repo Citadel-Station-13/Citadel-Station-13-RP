@@ -1,4 +1,5 @@
 /datum/ammo_caliber/a357
+	id = "a357"
 	caliber = ".357"
 	diameter = 9.1
 	length = 40
@@ -7,7 +8,7 @@
 
 /obj/item/ammo_casing/a357
 	desc = "A .357 bullet casing."
-	caliber = /datum/ammo_caliber/a357
+	casing_caliber = /datum/ammo_caliber/a357
 	icon = 'icons/modules/projectiles/casings/slim.dmi'
 	icon_state = "large"
 	projectile_type = /obj/projectile/bullet/pistol/strong
@@ -46,6 +47,8 @@
 	ammo_preload = /obj/item/ammo_casing/a357
 	magazine_type = MAGAZINE_TYPE_SPEEDLOADER
 	ammo_max = 6
+	rendering_count = 6
+	rendering_system = GUN_RENDERING_STATES
 	materials_base = list(MAT_STEEL = 500)
 
 /obj/item/ammo_magazine/a357/speedloader/silver

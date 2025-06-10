@@ -348,6 +348,10 @@ var/global/list/light_type_cache = list()
 /obj/machinery/light/small/poi
 	start_with_cell = FALSE
 
+/obj/machinery/light/small/old
+	color = "#f6a820"
+	brightness_color = "#e99a11"
+
 /obj/machinery/light/fairy
 	name = "fairy lights"
 	icon = 'icons/obj/lighting.dmi'
@@ -876,7 +880,7 @@ var/global/list/light_type_cache = list()
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
 		if(H.species.can_shred(H))
-			user.setClickCooldown(user.get_attack_speed())
+			user.setClickCooldownLegacy(user.get_attack_speed_legacy())
 			for(var/mob/M in viewers(src))
 				M.show_message("<font color='red'>[user.name] smashed the light!</font>", 3, "You hear a tinkle of breaking glass", 2)
 			broken()

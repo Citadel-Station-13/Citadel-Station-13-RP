@@ -81,8 +81,8 @@
 "fQ" = (
 /obj/item/storage/box/flashbangs,
 /obj/item/storage/box/teargas,
-/obj/item/grenade/flashbang/clusterbang,
-/obj/item/grenade/flashbang/clusterbang,
+/obj/item/grenade/simple/flashbang/clusterbang,
+/obj/item/grenade/simple/flashbang/clusterbang,
 /obj/item/storage/box/metalfoam,
 /obj/item/clothing/mask/gas/plaguedoctor,
 /obj/item/clothing/mask/gas,
@@ -208,8 +208,8 @@
 /area/abductor/interior)
 "pc" = (
 /obj/structure/table/alien,
-/obj/item/gun/energy/netgun,
-/obj/item/gun/energy/netgun,
+/obj/item/gun/projectile/energy/netgun,
+/obj/item/gun/projectile/energy/netgun,
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)
 "pB" = (
@@ -353,7 +353,7 @@
 	pixel_y = 32
 	},
 /obj/item/clothing/shoes/magboots,
-/obj/item/gun/energy/gun/taser,
+/obj/item/gun/projectile/energy/taser,
 /obj/item/flash,
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)
@@ -400,7 +400,7 @@
 	dir = 1;
 	pixel_y = -32
 	},
-/obj/item/gun/energy/gun/taser,
+/obj/item/gun/projectile/energy/taser,
 /obj/item/flash,
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)
@@ -427,8 +427,8 @@
 /area/abductor/interior)
 "AZ" = (
 /obj/structure/table/alien,
-/obj/item/gun/energy/medigun,
-/obj/item/gun/energy/medigun,
+/obj/item/gun/projectile/energy/medigun,
+/obj/item/gun/projectile/energy/medigun,
 /obj/item/cell/infinite,
 /obj/item/cell/infinite,
 /turf/simulated/shuttle/floor/alienplating,
@@ -464,7 +464,7 @@
 	pixel_x = 32
 	},
 /obj/item/clothing/shoes/magboots,
-/obj/item/gun/energy/gun/taser,
+/obj/item/gun/projectile/energy/taser,
 /obj/item/flash,
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)
@@ -662,8 +662,8 @@
 /area/abductor/interior)
 "Ov" = (
 /obj/structure/table/alien,
-/obj/item/gun/energy/sickshot,
-/obj/item/gun/energy/sickshot,
+/obj/item/gun/projectile/energy/sickshot,
+/obj/item/gun/projectile/energy/sickshot,
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)
 "Oz" = (
@@ -712,7 +712,7 @@
 	pixel_x = -32
 	},
 /obj/item/clothing/shoes/magboots,
-/obj/item/gun/energy/gun/taser,
+/obj/item/gun/projectile/energy/taser,
 /obj/item/flash,
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)
@@ -857,37 +857,37 @@
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)
 "YW" = (
-/obj/item/ammo_casing/microbattery/combat/stun,
-/obj/item/ammo_casing/microbattery/combat/stun,
-/obj/item/ammo_casing/microbattery/combat/stun,
-/obj/item/ammo_casing/microbattery/combat/stun,
-/obj/item/ammo_casing/microbattery/combat/stun,
-/obj/item/ammo_casing/microbattery/combat/stun,
-/obj/item/ammo_casing/microbattery/combat/stun,
-/obj/item/ammo_casing/microbattery/combat/stun,
-/obj/item/ammo_casing/microbattery/combat/stun,
-/obj/item/ammo_casing/microbattery/combat/stun,
-/obj/item/ammo_casing/microbattery/combat/net,
-/obj/item/ammo_casing/microbattery/combat/net,
-/obj/item/ammo_casing/microbattery/combat/net,
-/obj/item/ammo_casing/microbattery/combat/net,
-/obj/item/ammo_casing/microbattery/combat/net,
-/obj/item/ammo_casing/microbattery/combat/net,
-/obj/item/ammo_casing/microbattery/combat/stripper,
-/obj/item/ammo_casing/microbattery/combat/stripper,
-/obj/item/ammo_casing/microbattery/combat/stripper,
-/obj/item/ammo_casing/microbattery/combat/stripper,
-/obj/item/ammo_casing/microbattery/medical/omni3,
-/obj/item/ammo_casing/microbattery/medical/omni3,
-/obj/item/ammo_casing/microbattery/medical/omni3,
-/obj/item/ammo_casing/microbattery/medical/omni3,
+/obj/item/ammo_casing/microbattery/nt_hydra/stun,
+/obj/item/ammo_casing/microbattery/nt_hydra/stun,
+/obj/item/ammo_casing/microbattery/nt_hydra/stun,
+/obj/item/ammo_casing/microbattery/nt_hydra/stun,
+/obj/item/ammo_casing/microbattery/nt_hydra/stun,
+/obj/item/ammo_casing/microbattery/nt_hydra/stun,
+/obj/item/ammo_casing/microbattery/nt_hydra/stun,
+/obj/item/ammo_casing/microbattery/nt_hydra/stun,
+/obj/item/ammo_casing/microbattery/nt_hydra/stun,
+/obj/item/ammo_casing/microbattery/nt_hydra/stun,
+/obj/item/ammo_casing/microbattery/nt_hydra/net,
+/obj/item/ammo_casing/microbattery/nt_hydra/net,
+/obj/item/ammo_casing/microbattery/nt_hydra/net,
+/obj/item/ammo_casing/microbattery/nt_hydra/net,
+/obj/item/ammo_casing/microbattery/nt_hydra/net,
+/obj/item/ammo_casing/microbattery/nt_hydra/net,
+/obj/item/ammo_casing/microbattery/nt_hydra/stripper,
+/obj/item/ammo_casing/microbattery/nt_hydra/stripper,
+/obj/item/ammo_casing/microbattery/nt_hydra/stripper,
+/obj/item/ammo_casing/microbattery/nt_hydra/stripper,
+/obj/item/ammo_casing/microbattery/vm_aml/omni3,
+/obj/item/ammo_casing/microbattery/vm_aml/omni3,
+/obj/item/ammo_casing/microbattery/vm_aml/omni3,
+/obj/item/ammo_casing/microbattery/vm_aml/omni3,
 /obj/structure/closet/alien,
-/obj/item/ammo_magazine/microbattery/advanced,
-/obj/item/ammo_magazine/microbattery/advanced,
-/obj/item/ammo_magazine/microbattery/advanced,
-/obj/item/ammo_magazine/microbattery/advanced,
-/obj/item/gun/ballistic/microbattery,
-/obj/item/gun/ballistic/microbattery,
+/obj/item/ammo_magazine/microbattery/nt_hydra/advanced,
+/obj/item/ammo_magazine/microbattery/nt_hydra/advanced,
+/obj/item/ammo_magazine/microbattery/nt_hydra/advanced,
+/obj/item/ammo_magazine/microbattery/nt_hydra/advanced,
+/obj/item/gun/projectile/ballistic/microbattery,
+/obj/item/gun/projectile/ballistic/microbattery,
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)
 "Zk" = (

@@ -153,3 +153,5 @@
 
 // /obj/item/card/id
 #define VV_HK_ID_MOD "id_mod"
+
+#define VV_HK_WEAKREF_RESOLVE "weakref_resolve"

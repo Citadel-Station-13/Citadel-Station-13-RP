@@ -17,11 +17,11 @@
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_PIERCE
 	projectile_type = PROJECTILE_TYPE_KINETIC
 
-	muzzle_type = /obj/effect/projectile/muzzle/bullet
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/bullet
 	miss_sounds = list('sound/weapons/guns/miss1.ogg','sound/weapons/guns/miss2.ogg','sound/weapons/guns/miss3.ogg','sound/weapons/guns/miss4.ogg')
 	ricochet_sounds = list('sound/weapons/guns/ricochet1.ogg', 'sound/weapons/guns/ricochet2.ogg',
 							'sound/weapons/guns/ricochet3.ogg', 'sound/weapons/guns/ricochet4.ogg')
-	impact_sounds = list(BULLET_IMPACT_MEAT = SOUNDS_BULLET_MEAT, BULLET_IMPACT_METAL = SOUNDS_BULLET_METAL)
+	impact_sound = PROJECTILE_IMPACT_SOUNDS_KINETIC
 
 /obj/projectile/bullet/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()

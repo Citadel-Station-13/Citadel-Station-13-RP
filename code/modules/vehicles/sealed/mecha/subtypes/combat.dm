@@ -20,11 +20,11 @@
 	encumbrance_gap = 1.5
 
 	starting_components = list(
-		/obj/item/mecha_parts/component/hull/durable,
-		/obj/item/mecha_parts/component/actuator,
-		/obj/item/mecha_parts/component/armor/reinforced,
-		/obj/item/mecha_parts/component/gas,
-		/obj/item/mecha_parts/component/electrical
+		/obj/item/vehicle_component/hull/durable,
+		/obj/item/vehicle_component/actuator,
+		/obj/item/vehicle_component/armor/reinforced,
+		/obj/item/vehicle_component/gas,
+		/obj/item/vehicle_component/electrical
 		)
 
 /*
@@ -79,7 +79,7 @@
 								if(H.reagents.get_reagent_amount("cryptobiolin") + force < force*2)
 									H.reagents.add_reagent("cryptobiolin", force)
 						if("halloss")
-							H.stun_effect_act(1, force / 2, BP_TORSO, src)
+							H.electrocute(stun_power = force / 2)
 						else
 							return
 					if(update)	H.update_damage_overlay()
@@ -121,7 +121,11 @@
 				src.occupant_message("You hit [T].")
 				src.visible_message("<font color='red'><b>[src.name] hits [T]</b></font>")
 				playsound(src, 'sound/weapons/heavysmash.ogg', 50, 1)
-				T.inflict_atom_damage(force, MELEE_TIER_HEAVY, ARMOR_MELEE, weapon = src)
+				T.inflict_atom_damage(
+					force,
+					4,
+					ARMOR_MELEE,
+				)
 
 				melee_can_hit = 0
 

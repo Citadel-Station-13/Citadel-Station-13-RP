@@ -135,7 +135,7 @@
 	if(!heart)
 		return TRUE
 
-	var/blood_volume = H.vessel.get_reagent_amount("blood")
+	var/blood_volume = H.blood_holder.get_total_volume()
 	if(!heart || heart.is_broken())
 		blood_volume *= 0.3
 	else if(heart.is_bruised())
@@ -150,7 +150,7 @@
 /obj/item/shockpaddles/proc/checked_use(var/charge_amt)
 	return 0
 
-/obj/item/shockpaddles/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/shockpaddles/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/carbon/human/H = target
 	if(!istype(H) || user.a_intent == INTENT_HARM)
 		return ..() //Do a regular attack. Harm intent shocking happens as a hit effect
@@ -162,19 +162,20 @@
 		busy = 0
 		update_icon()
 
-//Since harm-intent now skips the delay for deliberate placement, you have to be able to hit them in combat in order to shock people.
-/obj/item/shockpaddles/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/shockpaddles/using_as_item(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
 	var/mob/living/L = target
 	if(!istype(L))
 		return
-	if(ishuman(L) && can_use(user, L))
+	if(ishuman(L) && can_use(clickchain.performer, L) && clickchain.using_intent == INTENT_HARM)
 		busy = 1
 		update_icon()
-		do_electrocute(L, user, target_zone)
+		do_electrocute(L, clickchain.performer, clickchain.target_zone)
 		busy = 0
 		update_icon()
-		return NONE
-	return ..()
+		return CLICKCHAIN_DID_SOMETHING
 
 // This proc is used so that we can return out of the revive process while ensuring that busy and update_icon() are handled
 /obj/item/shockpaddles/proc/do_revive(mob/living/carbon/human/H, mob/user)
@@ -276,10 +277,7 @@
 	playsound(loc, 'sound/weapons/Egloves.ogg', 100, 1, -1)
 	set_cooldown(cooldowntime)
 
-	H.stun_effect_act(2, 120, target_zone)
-	var/burn_damage = H.electrocute_act(burn_damage_amt*2, src, def_zone = target_zone)
-	if(burn_damage > 15 && H.can_feel_pain())
-		H.emote("scream")
+	H.electrocute(0, burn_damage_amt, 120, NONE, target_zone, src)
 
 	add_attack_logs(user,H,"Shocked using [name]")
 
@@ -368,6 +366,7 @@
 	. = ..()
 	if(base_unit)
 		base_unit.reattach_paddles(user) //paddles attached to a base unit should never exist outside of their base unit or the mob equipping the base unit
+		return ITEM_RELOCATED_BY_DROPPED
 
 /obj/item/shockpaddles/linked/check_charge(var/charge_amt)
 	return (base_unit.bcell && base_unit.bcell.check_charge(charge_amt))

@@ -3702,8 +3702,8 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 9
 	},
-/obj/item/gun/energy/taser,
-/obj/item/gun/energy/taser,
+/obj/item/gun/projectile/energy/taser,
+/obj/item/gun/projectile/energy/taser,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seceq)
 "iF" = (
@@ -4441,8 +4441,8 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 8
 	},
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/gun/projectile/energy/gun,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seceq)
 "ke" = (
@@ -10161,7 +10161,7 @@
 	},
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/purple/border,
-/obj/machinery/mineral/equipment_vendor/survey,
+/obj/machinery/point_redemption_vendor/survey,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/expedition)
 "wJ" = (

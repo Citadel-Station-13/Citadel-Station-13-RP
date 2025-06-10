@@ -58,7 +58,7 @@
 	sheets.use(mat_amount)
 	sheets_by_material[mat_id] += mat_amount
 
-/obj/machinery/sheet_silo/clone(atom/location, include_contents)
+/obj/machinery/sheet_silo/clone(atom/location)
 	var/obj/machinery/sheet_silo/clone = ..()
 	clone.sheets_by_material = sheets_by_material.Copy()
 	return clone
@@ -122,8 +122,7 @@
 			sheets_by_material[id] -= amount
 			if(sheets_by_material[id] <= 0)
 				sheets_by_material -= id
-			var/obj/item/stack/material/dropped = dropping.place_sheet(get_turf(src), amount)
-			if(usr)
-				usr.put_in_hands(dropped)
-				usr.visible_message(SPAN_NOTICE("[usr] retrieves [amount] sheets of [dropping] from [src]."), range = MESSAGE_RANGE_INVENTORY_SOFT)
+			var/obj/item/stack/material/dropped = dropping.place_sheet(null, amount)
+			usr.put_in_hands_or_drop(dropped)
+			usr.visible_message(SPAN_NOTICE("[usr] retrieves [amount] sheets of [dropping] from [src]."), range = MESSAGE_RANGE_INVENTORY_SOFT)
 			return TRUE

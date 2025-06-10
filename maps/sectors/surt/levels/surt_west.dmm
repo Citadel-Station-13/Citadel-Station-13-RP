@@ -142,7 +142,7 @@
 /turf/simulated/floor/plating,
 /area/sector/surt/central/explored)
 "gd" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/sector/surt/mining_base/common)
 "gy" = (
@@ -452,7 +452,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/sector/surt/mining_base/common)
 "nZ" = (
@@ -555,7 +555,7 @@
 /obj/item/measuring_tape,
 /obj/item/stack/flag/yellow,
 /obj/item/gps/science,
-/obj/item/gun/energy/phasegun/pistol,
+/obj/item/gun/projectile/energy/phasegun/pistol,
 /obj/item/storage/belt/archaeology,
 /obj/item/ano_scanner,
 /obj/item/clothing/mask/breath,
@@ -705,7 +705,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/sector/surt/mining_base/common)
 "rK" = (
@@ -1441,7 +1441,7 @@
 /turf/simulated/floor/bone,
 /area/sector/surt/central/explored)
 "GE" = (
-/obj/machinery/mineral/equipment_vendor,
+/obj/machinery/point_redemption_vendor/mining,
 /turf/simulated/floor/tiled,
 /area/sector/surt/mining_base/common)
 "GT" = (
@@ -1452,7 +1452,7 @@
 "Hk" = (
 /obj/structure/table/rack,
 /obj/item/storage/bag/ore,
-/obj/item/gun/energy/kinetic_accelerator,
+/obj/item/gun/projectile/energy/kinetic_accelerator,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -1551,7 +1551,7 @@
 /obj/item/measuring_tape,
 /obj/item/stack/flag/yellow,
 /obj/item/gps/science,
-/obj/item/gun/energy/phasegun/pistol,
+/obj/item/gun/projectile/energy/phasegun/pistol,
 /obj/item/storage/belt/archaeology,
 /obj/item/ano_scanner,
 /obj/item/clothing/mask/breath,
@@ -2168,7 +2168,7 @@
 "Wv" = (
 /obj/structure/table/rack,
 /obj/item/storage/bag/ore,
-/obj/item/gun/energy/kinetic_accelerator,
+/obj/item/gun/projectile/energy/kinetic_accelerator,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 4

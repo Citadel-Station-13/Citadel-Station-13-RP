@@ -1451,11 +1451,11 @@
 /obj/item/flash,
 /obj/item/flash,
 /obj/item/flash,
-/obj/item/gun/energy/taser,
-/obj/item/gun/energy/taser,
-/obj/item/gun/energy/taser,
-/obj/item/gun/energy/taser,
-/obj/item/gun/energy/taser,
+/obj/item/gun/projectile/energy/taser,
+/obj/item/gun/projectile/energy/taser,
+/obj/item/gun/projectile/energy/taser,
+/obj/item/gun/projectile/energy/taser,
+/obj/item/gun/projectile/energy/taser,
 /obj/item/assembly/prox_sensor,
 /obj/item/clothing/suit/armor/vest,
 /obj/item/clothing/suit/armor/vest,
@@ -3253,7 +3253,7 @@
 /obj/item/reagent_containers/food/snacks/wrapped/proteinbar,
 /obj/item/reagent_containers/food/snacks/wrapped/proteinbar,
 /obj/item/reagent_containers/food/snacks/wrapped/proteinbar,
-/obj/item/gun/energy/taser,
+/obj/item/gun/projectile/energy/taser,
 /obj/item/clothing/accessory/holster/hip,
 /turf/simulated/floor/carpet/sblucarpet,
 /area/itglight/captain)
@@ -5793,7 +5793,7 @@
 /area/itglight/portsolars)
 "Ol" = (
 /obj/structure/bed/chair/sofa/brown/corner{
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/common)

@@ -113,20 +113,20 @@
 /area/submap/debrisfield_vr/mining_outpost
 	name = "POI - Destroyed Mining Outpost"
 
-/area/submap/debrisfield_vr/tinyshuttle
+/area/shuttle/debrisfield_vr/tinyshuttle
 	// secret_name = 0
 
-/area/submap/debrisfield_vr/tinyshuttle/crew
+/area/shuttle/debrisfield_vr/tinyshuttle/crew
 	name = "Crew Bay"
 
-/area/submap/debrisfield_vr/tinyshuttle/bridge
+/area/shuttle/debrisfield_vr/tinyshuttle/bridge
 	name = "Bridge"
 
-/area/submap/debrisfield_vr/tinyshuttle/hangar
+/area/shuttle/debrisfield_vr/tinyshuttle/hangar
 	name = "Hangar"
 	has_gravity = 0
 
-/area/submap/debrisfield_vr/tinyshuttle/engine
+/area/shuttle/debrisfield_vr/tinyshuttle/engine
 	name = "Systems Bay"
 
 /area/submap/debrisfiled_vr/clownshuttle
@@ -151,7 +151,7 @@
 	warmup_time = 0
 	current_location = "debris_field_carrier_start"
 	docking_controller_tag = "debris_carrier_docker"
-	shuttle_area = list(/area/submap/debrisfield_vr/tinyshuttle/crew, /area/submap/debrisfield_vr/tinyshuttle/bridge, /area/submap/debrisfield_vr/tinyshuttle/hangar, /area/submap/debrisfield_vr/tinyshuttle/engine)
+	shuttle_area = list(/area/shuttle/debrisfield_vr/tinyshuttle/crew, /area/shuttle/debrisfield_vr/tinyshuttle/bridge, /area/shuttle/debrisfield_vr/tinyshuttle/hangar, /area/shuttle/debrisfield_vr/tinyshuttle/engine)
 	fuel_consumption = 3
 	defer_initialisation = TRUE
 	move_direction = WEST
@@ -206,11 +206,11 @@
 /obj/vehicle/sealed/mecha/combat/fighter/baron/loaded/busted
 /*
 	starting_components = list(
-		/obj/item/mecha_parts/component/hull/lightweight,
-		/obj/item/mecha_parts/component/actuator/hispeed,
-		/obj/item/mecha_parts/component/armor,
-		/obj/item/mecha_parts/component/gas,
-		/obj/item/mecha_parts/component/electrical/high_current
+		/obj/item/vehicle_component/hull/lightweight,
+		/obj/item/vehicle_component/actuator/hispeed,
+		/obj/item/vehicle_component/armor,
+		/obj/item/vehicle_component/gas,
+		/obj/item/vehicle_component/electrical/high_current
 		)
 
 /obj/vehicle/sealed/mecha/combat/fighter/baron/loaded/busted/Initialize(mapload)
@@ -218,7 +218,7 @@
 	health = round(rand(50,120))
 	cell?.charge = 0
 	for(var/slot in internal_components)
-		var/obj/item/mecha_parts/component/comp = internal_components[slot]
+		var/obj/item/vehicle_component/comp = internal_components[slot]
 		if(!istype(comp))
 			continue
 		comp.adjust_integrity_mecha(-(round(rand(comp.integrity_max - 10, 0))))

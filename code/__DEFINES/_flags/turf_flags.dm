@@ -18,6 +18,8 @@
 /// considered a volatile-changing area by persistence, which means things like trash and debris won't stay here
 //  todo: rework...?
 #define TURF_FLAG_ERODING				(1<<7)
+/// The slowdown affects a physical person, even if they aren't walking on the tile the turf represents.
+#define TURF_SLOWDOWN_INCLUDE_FLYING	(1<<8)
 /// considered part of a level border;
 /// this should only be set by either
 ///
@@ -25,7 +27,7 @@
 /// * a /datum/component/transition_border
 ///
 /// this will fully block shuttles from landing among other things
-#define TURF_FLAG_LEVEL_BORDER          (1<<8)
+#define TURF_FLAG_LEVEL_BORDER          (1<<9)
 
 ///CITMAIN TURF FLAGS - Completely unused
 /*
@@ -47,6 +49,8 @@ DEFINE_BITFIELD(turf_flags, list(
 	BITFIELD(TURF_ZONE_REBUILD_QUEUED),
 	BITFIELD(TURF_SEMANTICALLY_BOTTOMLESS),
 	BITFIELD(TURF_FLAG_ERODING),
+	BITFIELD(TURF_SLOWDOWN_INCLUDE_FLYING),
+	BITFIELD(TURF_FLAG_LEVEL_BORDER),
 ))
 
 //* /turf_path_danger var on /turf

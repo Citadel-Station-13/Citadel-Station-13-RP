@@ -66,6 +66,7 @@
 		set_active_hand(inventory.owner.active_hand)
 
 /datum/actor_hud/inventory/proc/unbind_from_inventory(datum/inventory/inventory)
+	ASSERT(host == inventory)
 	for(var/i in 1 to length(inventory.held_items))
 		if(!inventory.held_items[i])
 			continue
@@ -342,17 +343,17 @@
 
 /datum/actor_hud/inventory/proc/add_item(obj/item/item, datum/inventory_slot/slot_or_index)
 	var/atom/movable/screen/actor_hud/inventory/plate/screen_obj = isnum(slot_or_index) ? hands[slot_or_index] : slots[slot_or_index.id]
-	screen_obj.bind_item(item)
+	screen_obj?.bind_item(item)
 
 /datum/actor_hud/inventory/proc/remove_item(obj/item/item, datum/inventory_slot/slot_or_index)
 	var/atom/movable/screen/actor_hud/inventory/plate/screen_obj = isnum(slot_or_index) ? hands[slot_or_index] : slots[slot_or_index.id]
-	screen_obj.unbind_item(item)
+	screen_obj?.unbind_item(item)
 
 /datum/actor_hud/inventory/proc/move_item(obj/item/item, datum/inventory_slot/from_slot_or_index, datum/inventory_slot/to_slot_or_index)
 	var/atom/movable/screen/actor_hud/inventory/plate/old_screen_obj = isnum(from_slot_or_index) ? hands[from_slot_or_index] : slots[from_slot_or_index.id]
 	var/atom/movable/screen/actor_hud/inventory/plate/new_screen_obj = isnum(to_slot_or_index) ? hands[to_slot_or_index] : slots[to_slot_or_index.id]
-	old_screen_obj.unbind_item(item)
-	new_screen_obj.bind_item(item)
+	old_screen_obj?.unbind_item(item)
+	new_screen_obj?.bind_item(item)
 
 /datum/actor_hud/inventory/proc/swap_active_hand(from_index, to_index)
 	set_active_hand(to_index)

@@ -175,7 +175,7 @@
 	var/obj/item/stack/ore/O = locate() in get_turf(source)
 	if(isnull(O))
 		return
-	var/mob/user = worn_mob()
+	var/mob/user = get_worn_mob()
 	if(isnull(user))
 		return
 	INVOKE_ASYNC(src, PROC_REF(autoload), user, O)

@@ -1,3 +1,9 @@
+/mob/living/carbon
+	//* Organs, Reagents, Biologies *//
+
+	/// Our blood holder.
+	var/datum/blood_holder/blood_holder
+
 /mob/living/carbon/Initialize(mapload)
 	. = ..()
 	//setup reagent holders
@@ -9,6 +15,7 @@
 		default_language = RSlanguages.legacy_resolve_language_name(species_language)
 
 /mob/living/carbon/Destroy()
+	QDEL_NULL(blood_holder)
 	qdel(ingested)
 	qdel(touching)
 	// We don't qdel(bloodstr) because it's the same as qdel(reagents)
@@ -45,20 +52,6 @@
 			if(N.client)
 				N.show_message("<font color='red'><B>[M] bursts out of [src]!</B></font>", 2)
 	..()
-
-/mob/living/carbon/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-	var/mob/living/carbon/M = user
-	if(!istype(M))
-		return ..()
-	if (ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
-		if (H.active_hand % 2)
-			temp = H.organs_by_name["l_hand"]
-		if(temp && !temp.is_usable())
-			to_chat(H, "<font color='red'>You can't use your [temp.name]</font>")
-			return
-	return ..()
 
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/M)
 	if(src.health >= getCritHealth())

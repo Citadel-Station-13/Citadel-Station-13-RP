@@ -1,3 +1,9 @@
+/**
+ * Protolathe
+ *
+ * todo: this should just be an enhanced autolathe that has both kinds of designs;
+ *       for now, macro generation will generate for both.
+ */
 /obj/machinery/r_n_d/protolathe
 	name = "Protolathe"
 	icon = 'icons/obj/machines/fabricators/protolathe.dmi'

@@ -378,7 +378,7 @@ SUBSYSTEM_DEF(supply)
  * * typepath
  * * ~~anonymous typepath~~ Waiting on BYOND fix.
  *
- * clone(include_contents = TRUE)'d
+ * clone()'d
  * * an /atom/movable
  *
  * instantiated with special handling

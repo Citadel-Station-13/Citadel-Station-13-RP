@@ -201,7 +201,7 @@
 "aF" = (
 /obj/structure/bookcase,
 /obj/structure/safe/floor,
-/obj/item/gun/energy/ionrifle/pistol,
+/obj/item/gun/projectile/energy/ionrifle/pistol,
 /obj/item/bone/skull/unknown,
 /obj/item/bone,
 /obj/item/bone/ribs,
@@ -269,7 +269,7 @@
 /area/submap/DJOutpost1)
 "aQ" = (
 /obj/structure/table/rack,
-/obj/item/gun/energy/lasershotgun,
+/obj/item/gun/projectile/energy/lasershotgun,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/DJOutpost1)
 "aR" = (

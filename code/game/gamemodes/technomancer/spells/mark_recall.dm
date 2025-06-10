@@ -98,9 +98,9 @@
 			to_chat(user, "<span class='notice'>You are teleported to your Mark.</span>")
 
 			playsound(target_turf, 'sound/effects/phasein.ogg', 25, 1)
-			playsound(target_turf, /datum/soundbyte/grouped/sparks, 50, 1)
+			playsound(target_turf, /datum/soundbyte/sparks, 50, 1)
 
-			playsound(old_turf, /datum/soundbyte/grouped/sparks, 50, 1)
+			playsound(old_turf, /datum/soundbyte/sparks, 50, 1)
 
 			adjust_instability(25)
 			qdel(src)

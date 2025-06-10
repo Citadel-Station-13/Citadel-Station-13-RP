@@ -2,29 +2,28 @@
     name = "disabler beam"
     icon_state = "omnilaser"
     nodamage = 1
-    taser_effect = 1
-    agony = 100 //One shot stuns for the time being until adjustments are fully made.
+    damage_inflict_agony = 40
     damage_type = DAMAGE_TYPE_HALLOSS
     light_color = "#00CECE"
 
-    muzzle_type = /obj/effect/projectile/muzzle/laser_omni
-    tracer_type = /obj/effect/projectile/tracer/laser_omni
-    impact_type = /obj/effect/projectile/impact/laser_omni
+    legacy_muzzle_type = /obj/effect/projectile/muzzle/laser_omni
+    legacy_tracer_type = /obj/effect/projectile/tracer/laser_omni
+    legacy_impact_type = /obj/effect/projectile/impact/laser_omni
 
 /obj/projectile/beam/stun
-	agony = 35
+	damage_inflict_agony = 35
 
 /obj/projectile/beam/energy_net
 	name = "energy net projection"
 	icon_state = "xray"
 	nodamage = 1
-	agony = 5
+	damage_inflict_agony = 5
 	damage_type = DAMAGE_TYPE_HALLOSS
 	light_color = "#00CC33"
 
-	muzzle_type = /obj/effect/projectile/muzzle/xray
-	tracer_type = /obj/effect/projectile/tracer/xray
-	impact_type = /obj/effect/projectile/impact/xray
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/xray
+	legacy_tracer_type = /obj/effect/projectile/tracer/xray
+	legacy_impact_type = /obj/effect/projectile/impact/xray
 
 /obj/projectile/beam/energy_net/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
@@ -42,9 +41,9 @@
 	icon_state = "bluelaser"
 	light_color = "#0066FF"
 
-	muzzle_type = /obj/effect/projectile/muzzle/laser_blue
-	tracer_type = /obj/effect/projectile/tracer/laser_blue
-	impact_type = /obj/effect/projectile/impact/laser_blue
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/laser_blue
+	legacy_tracer_type = /obj/effect/projectile/tracer/laser_blue
+	legacy_impact_type = /obj/effect/projectile/impact/laser_blue
 
 /obj/projectile/beam/medigun
 	name = "healing beam"
@@ -57,9 +56,9 @@
 
 	combustion = FALSE
 
-	muzzle_type = /obj/effect/projectile/muzzle/medigun
-	tracer_type = /obj/effect/projectile/tracer/medigun
-	impact_type = /obj/effect/projectile/impact/medigun
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/medigun
+	legacy_tracer_type = /obj/effect/projectile/tracer/medigun
+	legacy_impact_type = /obj/effect/projectile/impact/medigun
 
 /obj/projectile/beam/medigun/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()

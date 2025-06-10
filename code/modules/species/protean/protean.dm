@@ -19,7 +19,7 @@
 	remains_type = /obj/effect/debris/cleanable/ash
 	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/protean
 
-	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite) // Regular human attack verbs are enough.
+	unarmed_types = list(/datum/melee_attack/unarmed/stomp, /datum/melee_attack/unarmed/kick, /datum/melee_attack/unarmed/punch, /datum/melee_attack/unarmed/bite) // Regular human attack verbs are enough.
 
 	blood_color = "#505050" //This is the same as the 80,80,80 below, but in hex
 	flesh_color = "#505050"
@@ -88,7 +88,7 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/unbreakable/nano)
 		)
 
-	//These verbs are hidden, for hotkey use only
+	//Some of these verbs are hidden, for hotkey use only
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/nano_regenerate, //These verbs are hidden so you can macro them,
 		/mob/living/carbon/human/proc/nano_partswap,
@@ -96,6 +96,7 @@
 		/mob/living/carbon/human/proc/nano_blobform,
 		/mob/living/carbon/human/proc/nano_set_size,
 		/mob/living/carbon/human/proc/nano_change_fitting, //These verbs are displayed normally,
+		/mob/living/carbon/human/proc/nano_copy_appearance,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair_colors,
 		/mob/living/carbon/human/proc/shapeshifter_select_colour,
@@ -105,6 +106,7 @@
 		/mob/living/carbon/human/proc/shapeshifter_select_tail,
 		/mob/living/carbon/human/proc/shapeshifter_select_ears,
 		/mob/living/carbon/human/proc/shapeshifter_select_horns,
+		/mob/living/carbon/human/proc/nano_reset_to_slot,
 		/mob/living/proc/eat_trash,
 		/mob/living/carbon/human/proc/succubus_drain,
 		/mob/living/carbon/human/proc/succubus_drain_finalize,
@@ -158,6 +160,12 @@
 
 /datum/species/protean/get_worn_legacy_bodytype(mob/living/carbon/human/H)
 	return H?.impersonate_bodytype_legacy || ..()
+
+/datum/species/protean/get_icobase(mob/living/carbon/human/H, get_deform)
+	// TODO: rework this entire thing in bodysets update this is godawful
+	if(H && !isnull(H.impersonate_species_for_iconbase) && !istype(H.impersonate_species_for_iconbase, /datum/species/protean))
+		return H.impersonate_species_for_iconbase.get_icobase(H, get_deform)
+	return ..()
 
 /datum/species/protean/create_organs(mob/living/carbon/human/H)
 	H.synth_color = TRUE

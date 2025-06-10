@@ -25,7 +25,7 @@
 	legacy_melee_damage_upper = 10
 	attacktext = list("swipes")
 	friendly = list("caresses")
-	movement_cooldown = -1
+	movement_base_speed = 5
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/nuclear_spirits/burning)
 

@@ -77,7 +77,9 @@
 
 // checks whether this step can be applied with the given user and target
 /datum/surgery_step/proc/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	return 0
+	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	if(affected && affected.behaviour_flags & BODYPART_NO_SURGERY) return FALSE
+	return TRUE
 
 // does stuff to begin the step, usually just printing messages. Moved germs transfering and bloodying here too
 /datum/surgery_step/proc/begin_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)

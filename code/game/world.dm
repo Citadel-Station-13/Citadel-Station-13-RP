@@ -109,9 +109,6 @@ GLOBAL_LIST(topic_status_cache)
 	// Create robolimbs for chargen.
 	populate_robolimb_list()
 
-	//Must be done now, otherwise ZAS zones and lighting overlays need to be recreated.
-	createRandomZlevel()
-
 	if(fexists(RESTART_COUNTER_PATH))
 		GLOB.restart_counter = text2num(trim(file2text(RESTART_COUNTER_PATH)))
 		fdel(RESTART_COUNTER_PATH)
@@ -124,7 +121,6 @@ GLOBAL_LIST(topic_status_cache)
 	#ifdef UNIT_TESTS
 	HandleTestRun()
 	#endif
-
 	if(config_legacy.ToRban)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ToRban_autoupdate)), 5 MINUTES)
 
@@ -199,6 +195,8 @@ GLOBAL_LIST(topic_status_cache)
 	// but those are both private, so let's put the commit info in the runtime
 	// log which is ultimately public.
 	log_runtime(GLOB.revdata.get_log_message())
+
+	global.event_logger.setup_logger(GLOB.log_directory)
 
 /world/proc/_setup_logs_boilerplate()
 
@@ -505,6 +503,8 @@ GLOBAL_LIST(topic_status_cache)
 	// update
 	for(var/datum/controller/subsystem/subsystem in Master.subsystems)
 		subsystem.on_ticklag_changed(old, ticklag)
+	for(var/mob/mob in GLOB.mob_list)
+		mob.update_movespeed()
 
 //* Log Shunter *//
 

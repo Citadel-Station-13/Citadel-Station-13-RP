@@ -23,7 +23,7 @@
 		return 0
 	. -= weight_registered
 	weight_registered += .
-	var/mob/living/wearer = worn_mob()
+	var/mob/living/wearer = get_worn_mob()
 	if(istype(wearer))
 		wearer.adjust_current_carry_weight(.)
 
@@ -35,12 +35,12 @@
 		return 0
 	. -= encumbrance_registered
 	encumbrance_registered += .
-	var/mob/living/wearer = worn_mob()
+	var/mob/living/wearer = get_worn_mob()
 	if(istype(wearer))
 		wearer.adjust_current_carry_encumbrance(.)
 
 /obj/item/proc/update_flat_encumbrance()
-	var/mob/living/wearer = worn_mob()
+	var/mob/living/wearer = get_worn_mob()
 	if(istype(wearer))
 		wearer.recalculate_carry()
 
@@ -68,7 +68,7 @@
 	if(amount == slowdown)
 		return
 	slowdown = amount
-	worn_mob()?.update_item_slowdown()
+	get_worn_mob()?.update_item_slowdown()
 
 /obj/item/proc/propagate_weight(old_weight, new_weight)
 	loc?.on_contents_weight_change(src, old_weight, new_weight)

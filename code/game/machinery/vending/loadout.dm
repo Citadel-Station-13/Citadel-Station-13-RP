@@ -262,6 +262,7 @@
 		/obj/item/clothing/accessory/collar/pink = 5,
 		/obj/item/clothing/accessory/collar/holo = 5,
 		/obj/item/clothing/accessory/collar/shock = 5,
+		/obj/item/leash = 5,
 		/obj/item/clothing/accessory/cowledvest = 5,
 		/obj/item/storage/belt/fannypack = 1,
 		/obj/item/storage/belt/fannypack/white = 5,
@@ -544,6 +545,7 @@
 		/obj/item/clothing/under/qipao = 5,
 		/obj/item/clothing/under/qipao/white = 5,
 		/obj/item/clothing/under/qipao/red = 5,
+		/obj/item/clothing/under/sleeveless_qipao = 5,
 		/obj/item/clothing/under/moderncoat = 5,
 		/obj/item/clothing/under/permit = 5,
 		/obj/item/clothing/under/oldwoman = 5,
@@ -793,7 +795,8 @@
 		/obj/item/storage/backpack/dufflebag = 10,
 	)
 	premium = list(
-		/obj/item/clothing/under/color/rainbow = 1,
+		/obj/item/clothing/under/color/rainbow = 5,
+		/obj/item/clothing/under/color/rainbow_skirt = 5,
 	)
 	contraband = list(
 		/obj/item/clothing/under/rank/clown = 1,

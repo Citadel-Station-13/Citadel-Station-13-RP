@@ -24,7 +24,7 @@
 		dat += " <a href='?src=\ref[src];remove_underwear=[UWC.name]'>(Remove)</a><br>"
 
 	dat = jointext(dat,null)
-	H << browse(dat, "window=wardrobe;size=400x200")
+	H << browse(HTML_SKELETON(dat), "window=wardrobe;size=400x200")
 
 /obj/structure/undies_wardrobe/proc/get_metadata(var/mob/living/carbon/human/H, var/underwear_category, var/datum/loadout_tweak/gt)
 	var/metadata = H.all_underwear_metadata[underwear_category]

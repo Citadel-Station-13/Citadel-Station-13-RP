@@ -1483,7 +1483,7 @@
 /area/awaymission/academy/academyaft)
 "gB" = (
 /obj/structure/table/standard,
-/obj/item/gun/ballistic/shotgun/pump,
+/obj/item/gun/projectile/ballistic/shotgun/pump,
 /obj/item/paper{
 	info = "Grade: A+ Educator's Notes: Excellent form.";
 	name = "Summoning Midterm Exam"
@@ -1494,7 +1494,7 @@
 /area/awaymission/academy/classrooms)
 "gC" = (
 /obj/structure/table/standard,
-/obj/item/gun/ballistic/revolver,
+/obj/item/gun/projectile/ballistic/revolver,
 /obj/item/paper{
 	info = "Grade: B- Educator's Notes: Keep applying yourself, you're showing improvement.";
 	name = "Summoning Midterm Exam"
@@ -1582,7 +1582,7 @@
 /area/awaymission/academy/classrooms)
 "gQ" = (
 /obj/structure/table/standard,
-/obj/item/gun/energy/floragun,
+/obj/item/gun/projectile/energy/floragun,
 /obj/item/paper{
 	info = "Grade: D- Educator's Notes: SEE ME AFTER CLASS.";
 	name = "Summoning Midterm Exam"

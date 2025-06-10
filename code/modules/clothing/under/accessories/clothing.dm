@@ -137,8 +137,8 @@
 	icon_state = "roughcloak"
 	item_state = "roughcloak"
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
-	/obj/item/gun/ballistic, /obj/item/ammo_magazine, /obj/item/melee/baton)
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/projectile/energy,
+	/obj/item/gun/projectile/ballistic, /obj/item/ammo_magazine, /obj/item/melee/baton)
 	item_action_name = "Adjust Cloak"
 
 /obj/item/clothing/accessory/poncho/rough_cloak/attack_self(mob/user, datum/event_args/actor/actor)
@@ -178,7 +178,7 @@
 	icon_state = "klbr"
 	icon_override = 'icons/mob/clothing/suits.dmi'
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
-	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/gun/energy,/obj/item/reagent_containers/spray/pepper,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/flashlight/maglight,/obj/item/clothing/head/helmet)
+	allowed = list(/obj/item/gun/projectile/ballistic/sec/flash, /obj/item/gun/projectile/energy,/obj/item/reagent_containers/spray/pepper,/obj/item/gun/projectile/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/flashlight/maglight,/obj/item/clothing/head/helmet)
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
 	body_cover_flags = UPPER_TORSO|ARMS
 	siemens_coefficient = 0.9
@@ -213,7 +213,7 @@
 	allowed = list(
 		/obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/pickaxe, /obj/item/material/twohanded/spear, /obj/item/material/twohanded/spear/bone,
 		/obj/item/material/knife/tacknife/combatknife/bone, /obj/item/material/knife/tacknife/survival/bone, /obj/item/material/knife/tacknife/survival/bone, /obj/item/melee/ashlander,
-		/obj/item/gun/ballistic/musket/pistol)
+		/obj/item/gun/projectile/ballistic/musket/pistol)
 	item_action_name = "Adjust Cloak"
 
 /*
@@ -435,7 +435,7 @@
 /obj/item/clothing/accessory/sweater
 	name = "sweater"
 	desc = "A warm knit sweater."
-	icon_override = 'icons/mob/clothing/ties.dmi'
+	icon_override = 'icons/mob/clothing/sweaters.dmi' // cutting down on the >9000 states .dmi
 	icon_state = "sweater"
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
@@ -456,7 +456,7 @@
 		else if(H.species.get_effective_bodytype(H, src, SLOT_ID_SUIT) == BODYTYPE_VOX)
 			icon_override = 'icons/mob/clothing/species/vox/ties.dmi'
 		else
-			icon_override = 'icons/mob/clothing/ties.dmi'
+			icon_override = 'icons/mob/clothing/sweaters.dmi'
 		update_worn_icon()
 
 /obj/item/clothing/accessory/sweater/pink
@@ -542,12 +542,12 @@
 /obj/item/clothing/accessory/sweater/cropped
 	name = "Cropped Sweater Male"
 	desc = "A comfy, warm sweater that has been slashed at the midriff, making it hardly warm or comfy, but quite rousing."
-	icon_state = "sweater_cropped_f"
+	icon_state = "sweater_cropped_m"
 
 /obj/item/clothing/accessory/sweater/cropped/female
 	name = "Cropped Sweater Female"
 	desc = "A comfy, warm sweater that has been slashed at the midriff, making it hardly warm or comfy, but quite rousing. Comes with extra chest space."
-	icon_state = "sweater_cropped_m"
+	icon_state = "sweater_cropped_f"
 
 /obj/item/clothing/accessory/sweater/star
 	name = "Star Sweater"
@@ -568,6 +568,11 @@
 	name = "Mega Milk sweater (m)"
 	desc = "A white shirt with blue sleeves. The words 'Mega Milk' have been written in black around the chest area. The shirt itself is quite well-fitting, accentuating the curves."
 	icon_state = "milk_sweater_m"
+
+/obj/item/clothing/accessory/sweater/asymetric
+	name = "Asymetric Sweater"
+	desc = "A loose knit sweater with an exceptionally wide neckline. It's hard to wear without it falling to one side and revealing your shoulder, or more."
+	icon_state = "asymetric" // don't you dare commit/pr this without making a container icon
 
 //***
 // End of sweaters

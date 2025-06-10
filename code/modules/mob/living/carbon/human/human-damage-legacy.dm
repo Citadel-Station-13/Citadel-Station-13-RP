@@ -337,16 +337,13 @@
 This function restores the subjects blood to max.
 */
 /mob/living/carbon/human/proc/restore_blood()
-	if(!should_have_organ(O_HEART))
-		return
-	if(vessel.total_volume < species.blood_volume)
-		vessel.add_reagent("blood", species.blood_volume - vessel.total_volume)
+	blood_holder.set_host_volume(species.blood_volume)
 
 /*
 This function restores all organs.
 */
 /mob/living/carbon/human/restore_all_organs(var/ignore_prosthetic_prefs)
-	for(var/obj/item/organ/external/current_organ in organs)
+	for(var/obj/item/organ/current_organ in organs)
 		current_organ.rejuvenate_legacy(ignore_prosthetic_prefs)
 
 /mob/living/carbon/human/apply_damage(var/damage = 0, var/damagetype = DAMAGE_TYPE_BRUTE, var/def_zone = null, var/blocked = 0, var/soaked = 0, var/sharp = 0, var/edge = 0, var/obj/used_weapon = null)
@@ -362,7 +359,7 @@ This function restores all organs.
 		if(damagetype == DAMAGE_TYPE_HALLOSS)
 			if((damage > 25 && prob(20)) || (damage > 50 && prob(60)))
 				if(organ && organ.organ_can_feel_pain() && !isbelly(loc) && !istype(loc, /obj/item/dogborg/sleeper))
-					emote("scream")
+					emote_nosleep("scream")
 		..(damage, damagetype, def_zone, blocked, soaked)
 		return 1
 

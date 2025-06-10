@@ -9,10 +9,13 @@
 			stack_trace("we just kicked a client due to prefs not loading; something is horribly wrong!")
 			qdel(src)
 	return ..()
+
 /**
  * Game preferences
  *
  * Game prefs don't need an init order because unlike character setup, there's no dependencies, in theory.
+ *
+ * todo: rework this a bit, the way i did tgui is pretty atrocious;
  */
 /datum/game_preferences
 	//* Loading *//
@@ -27,7 +30,7 @@
 	// todo: move menu options in here and not from /datum/preferences
 
 	//* Middleware - Keybindings *//
-	/// keybindings - key to list of keybinds
+	/// keybindings - key to list of keybind ids
 	var/list/keybindings
 
 	//* Middleware - Toggles *//

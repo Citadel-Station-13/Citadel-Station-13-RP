@@ -28,7 +28,7 @@
 	var/list/data = ..()
 
 	data["beacons"] = list()
-	for(var/obj/item/mecha_parts/mecha_tracking/TR in world)
+	for(var/obj/item/vehicle_tracking_beacon/TR in world)
 		var/list/tr_data = TR.ui_data(user)
 		if(tr_data)
 			data["beacons"] += list(tr_data)
@@ -44,7 +44,7 @@
 
 	switch(action)
 		if("send_message")
-			var/obj/item/mecha_parts/mecha_tracking/MT = locate(params["mt"])
+			var/obj/item/vehicle_tracking_beacon/MT = locate(params["mt"])
 			if(istype(MT))
 				var/message = sanitize(input(usr, "Input message", "Transmit message") as text)
 				var/obj/vehicle/sealed/mecha/M = MT.in_mecha()
@@ -53,13 +53,13 @@
 			return TRUE
 
 		if("shock")
-			var/obj/item/mecha_parts/mecha_tracking/MT = locate(params["mt"])
+			var/obj/item/vehicle_tracking_beacon/MT = locate(params["mt"])
 			if(istype(MT))
 				MT.shock()
 			return TRUE
 
 		if("get_log")
-			var/obj/item/mecha_parts/mecha_tracking/MT = locate(params["mt"])
+			var/obj/item/vehicle_tracking_beacon/MT = locate(params["mt"])
 			if(istype(MT))
 				stored_data = MT.get_mecha_log()
 			return TRUE
@@ -67,74 +67,3 @@
 		if("clear_log")
 			stored_data = null
 			return TRUE
-
-/obj/item/mecha_parts/mecha_tracking
-	name = "Exosuit tracking beacon"
-	desc = "Device used to transmit exosuit data."
-	icon = 'icons/obj/device.dmi'
-	icon_state = "motion2"
-	origin_tech = list(TECH_DATA = 2, TECH_MAGNET = 2)
-
-/obj/item/mecha_parts/mecha_tracking/ui_data(mob/user, datum/tgui/ui)
-	var/list/data = ..()
-	if(!in_mecha())
-		return FALSE
-
-	var/obj/vehicle/sealed/mecha/M = loc
-	data["ref"] = REF(src)
-	data["charge"] = M.get_charge()
-	data["name"] = M.name
-	data["integrity"] = M.integrity
-	data["maxHealth"] = initial(M.integrity)
-	data["cell"] = M.cell
-	if(M.cell)
-		data["cellCharge"] = M.cell.charge
-		data["cellMaxCharge"] = M.cell.charge
-	data["airtank"] = M.return_pressure()
-	data["pilot"] = M.occupant_legacy
-	data["location"] = get_area(M)
-	data["active"] = M.selected
-	if(istype(M, /obj/vehicle/sealed/mecha/working/ripley))
-		var/obj/vehicle/sealed/mecha/working/ripley/RM = M
-		data["cargoUsed"] = RM.cargo.len
-		data["cargoMax"] = RM.cargo_capacity
-
-	return data
-
-/obj/item/mecha_parts/mecha_tracking/emp_act()
-	qdel(src)
-	return
-
-/obj/item/mecha_parts/mecha_tracking/legacy_ex_act()
-	qdel(src)
-	return
-
-/obj/item/mecha_parts/mecha_tracking/proc/in_mecha()
-	if(istype(loc, /obj/vehicle/sealed/mecha))
-		return loc
-	return 0
-
-/obj/item/mecha_parts/mecha_tracking/proc/shock()
-	var/obj/vehicle/sealed/mecha/M = in_mecha()
-	if(M)
-		M.emp_act(4)
-	qdel(src)
-
-/obj/item/mecha_parts/mecha_tracking/proc/get_mecha_log()
-	if(!in_mecha())
-		return list()
-	var/obj/vehicle/sealed/mecha/M = loc
-	return M.get_log_tgui()
-
-
-/obj/item/storage/box/mechabeacons
-	name = "Exosuit Tracking Beacons"
-
-/obj/item/storage/box/mechabeacons/legacy_spawn_contents()
-	new /obj/item/mecha_parts/mecha_tracking(src)
-	new /obj/item/mecha_parts/mecha_tracking(src)
-	new /obj/item/mecha_parts/mecha_tracking(src)
-	new /obj/item/mecha_parts/mecha_tracking(src)
-	new /obj/item/mecha_parts/mecha_tracking(src)
-	new /obj/item/mecha_parts/mecha_tracking(src)
-	new /obj/item/mecha_parts/mecha_tracking(src)

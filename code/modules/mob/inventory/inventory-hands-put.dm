@@ -142,13 +142,13 @@
 //* oftentimes a mob has no semantic 'sided hands'. *//
 
 /mob/proc/put_in_left_hand(obj/item/I, inv_op_flags)
-	for(var/i in 1 to length(inventory?.held_items) step 2)
+	for(var/i in 1 to length(inventory?.held_items) step 2) //Odds a left hands
 		if(put_in_hand(I, i, inv_op_flags))
 			return TRUE
 	return FALSE
 
 /mob/proc/put_in_right_hand(obj/item/I, inv_op_flags)
-	for(var/i in 1 to length(inventory?.held_items) step 2)
+	for(var/i in 2 to length(inventory?.held_items) step 2) //Evens a right hands
 		if(put_in_hand(I, i, inv_op_flags))
 			return TRUE
 	return FALSE

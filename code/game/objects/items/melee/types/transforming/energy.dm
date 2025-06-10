@@ -5,7 +5,7 @@
 	parry_sfx = 'sound/weapons/blade1.ogg'
 
 /obj/item/melee/transforming/energy
-	armor_penetration = 50
+	damage_tier = 5
 	atom_flags = NOCONDUCT | NOBLOODY
 	active_via_overlay = TRUE
 
@@ -66,7 +66,7 @@
 			return FALSE
 	return ..()
 
-/obj/item/melee/transforming/energy/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/melee/transforming/energy/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 	if(active && use_cell)
 		if(!use_charge(hitcost))

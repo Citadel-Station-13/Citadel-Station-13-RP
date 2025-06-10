@@ -9,7 +9,7 @@
 		/obj/item/flash/robot,
 		/obj/item/handcuffs/cable/tape/cyborg,
 		/obj/item/melee/baton/robot,
-		/obj/item/gun/energy/taser/mounted/cyborg/swarm,
+		/obj/item/gun/projectile/energy/taser/mounted/cyborg/swarm,
 		/obj/item/matter_decompiler/swarm
 	)
 
@@ -23,7 +23,7 @@
 
 /obj/item/robot_module/drone/swarm/ranged/get_modules()
 	. = ..()
-	. |= /obj/item/gun/energy/xray/swarm
+	. |= /obj/item/gun/projectile/energy/xray/swarm
 
 /obj/item/robot_module/drone/swarm/melee/get_modules()
 	. = ..()

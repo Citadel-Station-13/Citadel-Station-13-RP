@@ -61,22 +61,15 @@
 /obj/machinery/door/blast/puzzle/attackby(obj/item/C as obj, mob/user as mob)
 	if(istype(C, /obj/item))
 		if(C.pry == 1 && (user.a_intent != INTENT_HARM || (machine_stat & BROKEN)))
-			if(istype(C,/obj/item/material/twohanded/fireaxe))
-				var/obj/item/material/twohanded/fireaxe/F = C
-				if(!F.wielded)
-					to_chat(user, "<span class='warning'>You need to be wielding \the [F] to do that.</span>")
-					return
-
 			if(check_locks())
 				force_toggle(1, user)
-
 			else
 				to_chat(user, "<span class='notice'>[src]'s arcane workings resist your effort.</span>")
 			return
 
 		else if(src.density && (user.a_intent == INTENT_HARM))
 			var/obj/item/W = C
-			user.setClickCooldown(user.get_attack_speed(W))
+			user.setClickCooldownLegacy(user.get_attack_speed_legacy(W))
 			if(W.damage_type == DAMAGE_TYPE_BRUTE || W.damage_type == DAMAGE_TYPE_BURN)
 				user.do_attack_animation(src)
 				user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [W] with no visible effect.</span>")

@@ -30,8 +30,8 @@
 	name = "Special Ops supplies"
 	contains = list(
 			/obj/item/storage/box/emps,
-			/obj/item/grenade/smokebomb = 4,
-			/obj/item/grenade/chem_grenade/incendiary,
+			/obj/item/grenade/simple/smoke = 4,
+			/obj/item/grenade/simple/chemical/premade/incendiary,
 			)
 	container_type = /obj/structure/closet/crate
 	container_name = "Special Ops crate"
@@ -40,7 +40,7 @@
 /datum/supply_pack/nanotrasen/munitions/bolt_rifles_militia
     name = "Weapon - Misplaced militia rifles"
     contains = list(
-		/obj/item/gun/ballistic/shotgun/pump/rifle = 3,
+		/obj/item/gun/projectile/ballistic/shotgun/pump/rifle = 3,
 		/obj/item/ammo_magazine/a7_62mm/clip = 6,
 	)
     legacy_contraband = 1
@@ -74,7 +74,7 @@
 	name = "operator's kit"
 
 /obj/item/storage/box/cargo_null_entry_kit/ops/legacy_spawn_contents()
-	new /obj/item/gun/ballistic/shotgun/pump/combat(src)
+	new /obj/item/gun/projectile/ballistic/shotgun/pump/combat(src)
 	new /obj/item/clothing/suit/storage/vest/heavy/merc(src)
 	new /obj/item/clothing/glasses/night(src)
 	new /obj/item/storage/box/anti_photons(src)
@@ -86,7 +86,7 @@
 
 /obj/item/storage/box/cargo_null_entry_kit/doctor/legacy_spawn_contents()
 	new /obj/item/storage/firstaid/combat(src)
-	new /obj/item/gun/ballistic/dartgun(src)
+	new /obj/item/gun/projectile/ballistic/dartgun(src)
 	new /obj/item/reagent_containers/hypospray(src)
 	new /obj/item/reagent_containers/glass/bottle/chloralhydrate(src)
 	new /obj/item/reagent_containers/glass/bottle/cyanide(src)
@@ -107,7 +107,7 @@
 	name = "spy's kit"
 
 /obj/item/storage/box/cargo_null_entry_kit/spy/legacy_spawn_contents()
-	new /obj/item/gun/ballistic/silenced(src)
+	new /obj/item/gun/projectile/ballistic/silenced(src)
 	new /obj/item/storage/box/syndie_kit/chameleon(src)
 	new /obj/item/encryptionkey/syndicate(src)
 	new /obj/item/card/id/syndicate(src)
@@ -118,8 +118,8 @@
 	name = "professional's kit"
 
 /obj/item/storage/box/cargo_null_entry_kit/pro/legacy_spawn_contents()
-	new /obj/item/gun/ballistic/silenced(src)
-	new /obj/item/gun/energy/ionrifle/pistol(src)
+	new /obj/item/gun/projectile/ballistic/silenced(src)
+	new /obj/item/gun/projectile/energy/ionrifle/pistol(src)
 	new /obj/item/clothing/glasses/thermal/syndi(src)
 	new /obj/item/card/emag(src)
 	new /obj/item/ammo_magazine/a45/doublestack/ap(src)

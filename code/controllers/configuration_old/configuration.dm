@@ -93,20 +93,6 @@
 	var/revival_brain_life = -1
 
 	var/welder_vision = 1
-	var/no_click_cooldown = 0
-
-	//Used for modifying movement speed for mobs.
-	//Unversal modifiers
-	var/run_speed = 0
-	var/walk_speed = 0
-
-	//Mob specific modifiers. NOTE: These will affect different mob types in different ways
-	var/human_delay = 0
-	var/robot_delay = 0
-	var/monkey_delay = 0
-	var/alien_delay = 0
-	var/slime_delay = 0
-	var/animal_delay = 0
 
 	var/footstep_volume = 0
 
@@ -222,9 +208,6 @@
 
 				if ("debug_paranoid")
 					config_legacy.debugparanoid = 1
-
-				if ("no_click_cooldown")
-					config_legacy.no_click_cooldown = 1
 
 				if ("allow_vote_restart")
 					config_legacy.allow_vote_restart = 1
@@ -556,24 +539,6 @@
 					config_legacy.revival_brain_life = value
 				if("allow_headgibs")
 					config_legacy.allow_headgibs = TRUE
-
-				if("run_speed")
-					config_legacy.run_speed = value
-				if("walk_speed")
-					config_legacy.walk_speed = value
-
-				if("human_delay")
-					config_legacy.human_delay = value
-				if("robot_delay")
-					config_legacy.robot_delay = value
-				if("monkey_delay")
-					config_legacy.monkey_delay = value
-				if("alien_delay")
-					config_legacy.alien_delay = value
-				if("slime_delay")
-					config_legacy.slime_delay = value
-				if("animal_delay")
-					config_legacy.animal_delay = value
 
 				if("footstep_volume")
 					config_legacy.footstep_volume = text2num(value)

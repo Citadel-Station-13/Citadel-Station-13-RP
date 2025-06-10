@@ -14,7 +14,7 @@
 "d" = (
 /obj/structure/alien/weeds,
 /obj/structure/bed/nest,
-/obj/item/gun/ballistic/p92x/large,
+/obj/item/gun/projectile/ballistic/p92x/large,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
 "e" = (
@@ -52,7 +52,7 @@
 "k" = (
 /obj/structure/alien/weeds,
 /obj/item/clothing/head/helmet/tac,
-/obj/item/gun/ballistic/SVD,
+/obj/item/gun/projectile/ballistic/SVD,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
 "A" = (

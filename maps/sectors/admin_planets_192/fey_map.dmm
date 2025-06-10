@@ -87,7 +87,7 @@
 /area/admin_planet/fey_forest/sanctuary)
 "cB" = (
 /obj/effect/debris/cleanable/blood,
-/obj/item/gun/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
 /turf/simulated/floor/fey/forest_grass{
 	color = "#808080";
 	name = "Under Brush";
@@ -137,38 +137,38 @@
 /area/admin_planet/fey_forest/wilds)
 "di" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/phasegun{
+/obj/item/gun/projectile/energy/phasegun{
 	pixel_y = -6
 	},
-/obj/item/gun/energy/phasegun,
-/obj/item/gun/energy/phasegun{
+/obj/item/gun/projectile/energy/phasegun,
+/obj/item/gun/projectile/energy/phasegun{
 	pixel_y = 6
 	},
-/obj/item/gun/energy/phasegun{
+/obj/item/gun/projectile/energy/phasegun{
 	pixel_y = 6
 	},
-/obj/item/gun/energy/phasegun{
+/obj/item/gun/projectile/energy/phasegun{
 	pixel_y = 6
 	},
-/obj/item/gun/energy/phasegun{
+/obj/item/gun/projectile/energy/phasegun{
 	pixel_y = 6
 	},
-/obj/item/gun/energy/phasegun{
+/obj/item/gun/projectile/energy/phasegun{
 	pixel_y = -6
 	},
-/obj/item/gun/energy/phasegun{
+/obj/item/gun/projectile/energy/phasegun{
 	pixel_y = -6
 	},
-/obj/item/gun/energy/phasegun{
+/obj/item/gun/projectile/energy/phasegun{
 	pixel_y = -6
 	},
-/obj/item/gun/energy/phasegun{
+/obj/item/gun/projectile/energy/phasegun{
 	pixel_y = -6
 	},
-/obj/item/gun/energy/phasegun,
-/obj/item/gun/energy/phasegun,
-/obj/item/gun/energy/phasegun,
-/obj/item/gun/energy/phasegun,
+/obj/item/gun/projectile/energy/phasegun,
+/obj/item/gun/projectile/energy/phasegun,
+/obj/item/gun/projectile/energy/phasegun,
+/obj/item/gun/projectile/energy/phasegun,
 /obj/machinery/recharger/wallcharger{
 	pixel_y = 26
 	},
@@ -210,7 +210,7 @@
 /turf/simulated/floor/fey/dry_grass,
 /area/admin_planet/fey_forest/gateway_facility)
 "eM" = (
-/obj/item/gun/ballistic/automatic/c20r,
+/obj/item/gun/projectile/ballistic/automatic/c20r,
 /turf/simulated/floor/fey/forest_grass{
 	color = "#808080";
 	name = "Under Brush";
@@ -330,7 +330,7 @@
 /turf/simulated/floor/fey/forest_grass,
 /area/admin_planet/fey_forest/sanctuary)
 "ha" = (
-/obj/item/gun/ballistic/automatic/c20r{
+/obj/item/gun/projectile/ballistic/automatic/c20r{
 	pixel_x = 22;
 	pixel_y = 17
 	},
@@ -556,7 +556,7 @@
 /turf/simulated/floor/fey/forest_grass,
 /area/admin_planet/fey_forest/wilds)
 "ks" = (
-/obj/item/gun/ballistic/shotgun/pump/scopedrifle,
+/obj/item/gun/projectile/ballistic/shotgun/pump/scopedrifle,
 /turf/simulated/floor/fey/dry_grass,
 /area/admin_planet/fey_forest/wilds)
 "kv" = (
@@ -573,46 +573,46 @@
 /area/admin_planet/fey_forest/wilds)
 "lk" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/phasegun/pistol{
+/obj/item/gun/projectile/energy/phasegun/pistol{
 	pixel_y = -2
 	},
-/obj/item/gun/energy/phasegun/pistol{
+/obj/item/gun/projectile/energy/phasegun/pistol{
 	pixel_y = 7
 	},
-/obj/item/gun/energy/phasegun/pistol{
+/obj/item/gun/projectile/energy/phasegun/pistol{
 	pixel_y = 7
 	},
-/obj/item/gun/energy/phasegun/pistol{
+/obj/item/gun/projectile/energy/phasegun/pistol{
 	pixel_y = 7
 	},
-/obj/item/gun/energy/phasegun/pistol{
+/obj/item/gun/projectile/energy/phasegun/pistol{
 	pixel_y = 7
 	},
-/obj/item/gun/energy/phasegun/pistol{
+/obj/item/gun/projectile/energy/phasegun/pistol{
 	pixel_y = 7
 	},
-/obj/item/gun/energy/phasegun/pistol{
+/obj/item/gun/projectile/energy/phasegun/pistol{
 	pixel_y = -2
 	},
-/obj/item/gun/energy/phasegun/pistol{
+/obj/item/gun/projectile/energy/phasegun/pistol{
 	pixel_y = -2
 	},
-/obj/item/gun/energy/phasegun/pistol{
+/obj/item/gun/projectile/energy/phasegun/pistol{
 	pixel_y = -2
 	},
-/obj/item/gun/energy/phasegun/pistol{
+/obj/item/gun/projectile/energy/phasegun/pistol{
 	pixel_y = -2
 	},
-/obj/item/gun/energy/phasegun/pistol{
+/obj/item/gun/projectile/energy/phasegun/pistol{
 	pixel_y = -2
 	},
-/obj/item/gun/energy/phasegun/pistol{
+/obj/item/gun/projectile/energy/phasegun/pistol{
 	pixel_y = -2
 	},
-/obj/item/gun/energy/phasegun/pistol{
+/obj/item/gun/projectile/energy/phasegun/pistol{
 	pixel_y = 7
 	},
-/obj/item/gun/energy/phasegun/pistol{
+/obj/item/gun/projectile/energy/phasegun/pistol{
 	pixel_y = 7
 	},
 /obj/machinery/recharger/wallcharger{
@@ -946,35 +946,35 @@
 /obj/machinery/recharger/wallcharger{
 	pixel_y = 34
 	},
-/obj/item/gun/energy/frontier/locked/holdout,
-/obj/item/gun/energy/frontier/locked/holdout{
+/obj/item/gun/projectile/energy/frontier/locked/holdout,
+/obj/item/gun/projectile/energy/frontier/locked/holdout{
 	pixel_y = -6
 	},
-/obj/item/gun/energy/frontier/locked/holdout{
+/obj/item/gun/projectile/energy/frontier/locked/holdout{
 	pixel_y = 7
 	},
-/obj/item/gun/energy/frontier/locked/holdout{
+/obj/item/gun/projectile/energy/frontier/locked/holdout{
 	pixel_y = 7
 	},
-/obj/item/gun/energy/frontier/locked/holdout{
+/obj/item/gun/projectile/energy/frontier/locked/holdout{
 	pixel_y = -6
 	},
-/obj/item/gun/energy/frontier/locked/holdout,
-/obj/item/gun/energy/frontier/locked/holdout,
-/obj/item/gun/energy/frontier/locked/holdout{
+/obj/item/gun/projectile/energy/frontier/locked/holdout,
+/obj/item/gun/projectile/energy/frontier/locked/holdout,
+/obj/item/gun/projectile/energy/frontier/locked/holdout{
 	pixel_y = -6
 	},
-/obj/item/gun/energy/frontier/locked/holdout{
+/obj/item/gun/projectile/energy/frontier/locked/holdout{
 	pixel_y = 7
 	},
-/obj/item/gun/energy/frontier/locked/holdout{
+/obj/item/gun/projectile/energy/frontier/locked/holdout{
 	pixel_y = 7
 	},
-/obj/item/gun/energy/frontier/locked/holdout{
+/obj/item/gun/projectile/energy/frontier/locked/holdout{
 	pixel_y = -6
 	},
-/obj/item/gun/energy/frontier/locked/holdout,
-/obj/item/gun/energy/frontier/locked/holdout{
+/obj/item/gun/projectile/energy/frontier/locked/holdout,
+/obj/item/gun/projectile/energy/frontier/locked/holdout{
 	pixel_y = 7
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1780,7 +1780,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/fey_forest/gateway_facility)
 "KN" = (
-/obj/item/gun/ballistic/shotgun/pump/slug,
+/obj/item/gun/projectile/ballistic/shotgun/pump/slug,
 /turf/simulated/floor/fey/dry_grass,
 /area/admin_planet/fey_forest/wilds)
 "Li" = (
@@ -2366,7 +2366,7 @@
 /turf/simulated/floor/tiled/kafel_full/blue,
 /area/admin_planet/fey_forest/gateway_facility)
 "Ve" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/structure/atmospheric_retention_field{
 	color = "#8B0000";
 	name = "military grade atmospheric retention field"
@@ -2388,7 +2388,7 @@
 /turf/simulated/floor/reinforced,
 /area/admin_planet/fey_forest/gateway_facility)
 "Vo" = (
-/obj/item/gun/ballistic/revolver/webley,
+/obj/item/gun/projectile/ballistic/revolver/webley,
 /turf/simulated/floor/fey/dry_grass,
 /area/admin_planet/fey_forest/wilds)
 "Vq" = (
@@ -2471,7 +2471,7 @@
 /turf/simulated/floor/fey/dry_grass,
 /area/admin_planet/fey_forest/underbrush)
 "WS" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/reinforced,
 /area/admin_planet/fey_forest/gateway_facility)
 "WV" = (
@@ -2493,7 +2493,7 @@
 /area/admin_planet/fey_forest/wilds)
 "Xu" = (
 /obj/effect/debris/cleanable/blood,
-/obj/item/grenade/concussion{
+/obj/item/grenade/simple/concussion{
 	pixel_x = 16;
 	pixel_y = 13
 	},

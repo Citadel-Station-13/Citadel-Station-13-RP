@@ -22,7 +22,7 @@
 
 	// This could stand to be put further in, made better, etc. but fuck you. Fuck whoever
 	// wrote this code. Fuck everything about this object. I hope you step on a Lego.
-	user.setClickCooldown(10)
+	user.setClickCooldownLegacy(10)
 	// Seriously why the fuck is this even a closet aghasjdhasd I hate you
 
 	var/hasaxe = 0       //gonna come in handy later~ // FUCK YOUR TILDES.
@@ -65,9 +65,6 @@
 			if(!user.attempt_insert_item_for_installation(O, src))
 				return
 			fireaxe = O
-			if(fireaxe.wielded)
-				fireaxe.wielded = FALSE
-				fireaxe.update_icon()
 			to_chat(user, "<span class='notice'>You place the fire axe back in the [src.name].</span>")
 			update_icon()
 		else

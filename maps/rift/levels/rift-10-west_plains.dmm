@@ -2122,6 +2122,7 @@
 	pixel_x = 28;
 	pixel_y = 6
 	},
+/obj/map_helper/access_helper/airlock/station/science/external_airlock,
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1379;
 	icon_state = "door_locked";
@@ -2129,7 +2130,6 @@
 	locked = 1;
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/science/external_airlock,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/airlock)
 "jv" = (
@@ -2420,7 +2420,7 @@
 /area/rnd/outpost)
 "kL" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Science Outpost Substation Bypass"
+	RCon_tag = "Western Plains - Science Outpost Substation Bypass"
 	},
 /obj/machinery/camera/network/research_outpost{
 	dir = 4
@@ -3624,6 +3624,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/surface)
 "qK" = (
+/obj/map_helper/access_helper/airlock/station/science/external_airlock,
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1379;
 	icon_state = "door_locked";
@@ -3631,7 +3632,6 @@
 	locked = 1;
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/science/external_airlock,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/airlock)
 "qL" = (
@@ -4954,6 +4954,10 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass{
+	req_one_access = list(18,47)
+	},
+/obj/map_helper/access_helper/airlock/station/science/external_airlock,
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1379;
 	icon_state = "door_locked";
@@ -4961,10 +4965,6 @@
 	locked = 1;
 	req_one_access = null
 	},
-/obj/machinery/door/firedoor/glass{
-	req_one_access = list(18,47)
-	},
-/obj/map_helper/access_helper/airlock/station/science/external_airlock,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/airlock)
 "wK" = (
@@ -5104,7 +5104,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 5
 	},
-/obj/structure/sign/department/toxins,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/airlock)
 "xo" = (
@@ -9052,6 +9051,7 @@
 /obj/machinery/door/firedoor/glass{
 	req_one_access = list(18,47)
 	},
+/obj/map_helper/access_helper/airlock/station/science/external_airlock,
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1379;
 	icon_state = "door_locked";
@@ -9059,7 +9059,6 @@
 	locked = 1;
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/science/external_airlock,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/airlock)
 "Qu" = (
@@ -10822,7 +10821,7 @@
 /area/rnd/outpost/breakroom)
 "YM" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Geothermal Plant";
+	RCon_tag = "Power - Geothermal Plant";
 	cur_coils = 2;
 	output_level_max = 500
 	},
@@ -11059,7 +11058,7 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Science Outpost";
+	RCon_tag = "Western Plains - Science Outpost Substation";
 	charge = 1000
 	},
 /turf/simulated/floor,

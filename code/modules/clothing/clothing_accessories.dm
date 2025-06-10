@@ -7,14 +7,14 @@
 /obj/item/clothing/proc/is_accessory()
 	return is_accessory
 
-/obj/item/clothing/context_query(datum/event_args/actor/e_args)
+/obj/item/clothing/context_menu_query(datum/event_args/actor/e_args)
 	. = ..()
 	for(var/obj/item/clothing/accessory as anything in accessories)
-		var/list/queried = accessory.context_query(e_args)
+		var/list/queried = accessory.context_menu_query(e_args)
 		for(var/key in queried)
 			.["A-[ref(accessory)]-[key]"] = queried[key]
 
-/obj/item/clothing/context_act(datum/event_args/actor/e_args, key)
+/obj/item/clothing/context_menu_act(datum/event_args/actor/e_args, key)
 	. = ..()
 	if(.)
 		return
@@ -27,19 +27,18 @@
 	var/obj/item/clothing/accessory = locate(accessory_ref) in accessories
 	if(!(accessory in accessories))
 		return FALSE
-	return accessory.context_act(e_args, split[3])
+	return accessory.context_menu_act(e_args, split[3])
 
-/obj/item/clothing/on_attack_hand(datum/event_args/actor/clickchain/e_args)
+/obj/item/clothing/on_attack_hand(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
-	if(.)
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
 	for(var/obj/item/clothing/accessory as anything in accessories)
-		if(accessory.on_attack_hand(e_args))
-			return TRUE
-	return FALSE
+		if(accessory.on_attack_hand(clickchain, clickchain_flags))
+			return CLICKCHAIN_DID_SOMETHING
 
-/obj/item/clothing/worn_mob()
-	return isnull(accessory_host)? ..() : accessory_host.worn_mob()
+/obj/item/clothing/get_worn_mob()
+	return isnull(accessory_host)? ..() : accessory_host.get_worn_mob()
 
 /obj/item/clothing/update_worn_icon()
 	if(accessory_host)
@@ -304,7 +303,7 @@
 			var/choice = input(user, "What to take off?", "Strip Accessory") as null|anything in choices
 			if(!choice)
 				return
-			var/mob/M = worn_mob()
+			var/mob/M = get_worn_mob()
 			if(!M)
 				return
 			var/obj/item/clothing/accessory/A = choices[choice]
@@ -319,7 +318,7 @@
 				return
 			if(!(A in accessories))
 				return
-			add_attack_logs(user, worn_mob(),  "Detached [choice] from [src]")
+			add_attack_logs(user, get_worn_mob(),  "Detached [choice] from [src]")
 			if(istype(A, /obj/item/clothing/accessory/badge) || istype(A, /obj/item/clothing/accessory/medal))
 				M.visible_message(
 					SPAN_WARNING("[user] tears \the [A] off of [M]'s [src]!"),

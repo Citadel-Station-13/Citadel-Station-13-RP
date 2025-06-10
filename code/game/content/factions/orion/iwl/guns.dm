@@ -1,29 +1,28 @@
-/obj/item/gun/ballistic/automatic/k25
+// todo: default-unloaded, add /loaded
+/obj/item/gun/projectile/ballistic/automatic/k25
 	name = "League Service Rifle"
 	desc = "A cheaply-made but rugged and reliable K25 semi-automatic rifle. A staple weapon of the Interplanetary Worker's League naval and armed forces, it handles a lighter caliber than other weaponry but packs quite the punch either way."
 	icon = 'icons/content/factions/orion/iwl/items/guns/k25.dmi'
 	icon_state = "k25"
 	w_class = WEIGHT_CLASS_BULKY
 	recoil = 2 // The battlerifle was known for its nasty recoil.
-	max_shells = 45
 	caliber = /datum/ammo_caliber/a9_5mm
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
-	magazine_type = /obj/item/ammo_magazine/a9_5mm/k25
-	allowed_magazines = list(/obj/item/ammo_magazine/a9_5mm/k25)
+	magazine_preload = /obj/item/ammo_magazine/a9_5mm/k25
+	magazine_restrict = /obj/item/ammo_magazine/a9_5mm/k25
 	fire_sound = 'sound/content/factions/orion/iwl/gun_k25.ogg'
-	load_method = MAGAZINE
 	slot_flags = SLOT_BACK
 	one_handed_penalty = 40 // The weapon itself is heavy
 	render_use_legacy_by_default = FALSE
 	item_state = null
 
-/obj/item/gun/ballistic/automatic/k25/update_icon()
+/obj/item/gun/projectile/ballistic/automatic/k25/update_icon()
 	. = ..()
 	update_worn_icon()
 
-/obj/item/gun/ballistic/automatic/k25/update_icon_state()
+/obj/item/gun/projectile/ballistic/automatic/k25/update_icon_state()
 	. = ..()
-	if(ammo_magazine)
+	if(magazine)
 		icon_state = "k25"
 	else
 		icon_state = "k25-empty"

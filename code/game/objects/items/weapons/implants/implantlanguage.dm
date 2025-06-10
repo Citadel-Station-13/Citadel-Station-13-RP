@@ -61,7 +61,7 @@
 /obj/item/implant/language/skrellian
 	name = "Skrellian language implant"
 	desc = "An implant allowing someone to speak the range of frequencies used in Skrellian, as well as produce any phonemes that they usually cannot. Only helps with hearing and producing sounds, not understanding them."
-	languages = list(LANGUAGE_SKRELLIAN)
+	languages = list(LANGUAGE_SKRELLIAN, LANGUAGE_SKRELLIANFAR)
 
 /obj/item/implant/language/skrellian/get_data()
 	var/dat = {"

@@ -88,11 +88,15 @@
 	forceMove(S)
 
 	// inventory handling start
+	// todo: this is pretty atrocious, do we have another way to hook into inventory?
+	//       this stuff is all very low level and won't call inventory procs properly
 
 	// todo: don't call dropped/pickup if going to same person
 	if(S.worn_slot)
-		pickup(S.worn_mob(), INV_OP_IS_ACCESSORY)
-		equipped(S.worn_mob(), S.worn_slot, INV_OP_IS_ACCESSORY)
+		var/mob/worn_mob = S.get_worn_mob()
+		pickup(worn_mob, INV_OP_IS_ACCESSORY)
+		equipped(worn_mob, S.worn_slot, INV_OP_IS_ACCESSORY)
+		on_inv_equipped(worn_mob,worn_mob?.inventory, S.worn_slot, INV_OP_IS_ACCESSORY)
 
 	// inventory handling end
 
@@ -109,13 +113,15 @@
 		return
 
 	// inventory handling start
+	// todo: this is pretty atrocious, do we have another way to hook into inventory?
+	//       this stuff is all very low level and won't call inventory procs properly
 
 	// todo: don't call dropped/pickup if going to same person
 	if(accessory_host.worn_slot)
-		unequipped(accessory_host.worn_mob(), accessory_host.worn_slot, INV_OP_IS_ACCESSORY)
-		var/mob/host_worn_mob = accessory_host.worn_mob()
-		on_unequipped(accessory_host.worn_mob(), accessory_host.worn_slot == SLOT_ID_HANDS ? host_worn_mob.get_held_index(accessory_host) : accessory_host.worn_slot, INV_OP_IS_ACCESSORY)
-		dropped(accessory_host.worn_mob(), INV_OP_IS_ACCESSORY)
+		var/mob/host_worn_mob = accessory_host.get_worn_mob()
+		unequipped(host_worn_mob, accessory_host.worn_slot, INV_OP_IS_ACCESSORY)
+		on_inv_unequipped(host_worn_mob, host_worn_mob?.inventory, accessory_host.worn_slot == SLOT_ID_HANDS ? host_worn_mob.get_held_index(accessory_host) : accessory_host.worn_slot, INV_OP_IS_ACCESSORY)
+		dropped(host_worn_mob, INV_OP_IS_ACCESSORY)
 
 	// inventory handling stop
 
@@ -205,7 +211,7 @@
 		return ..()
 	return TRUE
 
-/obj/item/clothing/accessory/stethoscope/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/clothing/accessory/stethoscope/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(ishuman(target) && isliving(user))
@@ -718,7 +724,7 @@
 			Tag:
 			<A href='?src=\ref[src];tag=1'>Set tag</A><BR>
 			</TT>"}
-	user << browse(dat, "window=radio")
+	user << browse(HTML_SKELETON(dat), "window=radio")
 	onclose(user, "radio")
 	return
 
@@ -900,3 +906,10 @@
 	name = "medical exoframe"
 	desc = "A cheap medical exoframe mass-produced by Nanotrasen and provided to employees who cannot function in gravity without assistance."
 	icon_state = "civ_exos_mob"
+
+// PMD
+
+/obj/item/clothing/accessory/pmdpin
+	name = "PMD lapel pin"
+	desc = "A monochrome enamel pin of the PMD's half-lidded eye Icon."
+	icon_state = "pmdpin"

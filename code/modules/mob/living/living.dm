@@ -10,6 +10,18 @@ TYPE_REGISTER_SPATIAL_GRID(/mob/living, SSspatial_grids.living)
 
 	selected_image = image(icon = 'icons/mob/screen1.dmi', loc = src, icon_state = "centermarker")
 
+	//* ~~~~~~~VORE~~~~~~~ *//
+	add_verb(src, /mob/living/proc/escapeOOC)
+	add_verb(src, /mob/living/proc/lick)
+	add_verb(src, /mob/living/proc/smell)
+	add_verb(src, /mob/living/proc/switch_scaling)
+	if(!no_vore) //If the mob isn't supposed to have a stomach, let's not give it an insidepanel so it can make one for itself, or a stomach.
+		add_verb(src, /mob/living/proc/insidePanel)
+		//Tries to load prefs if a client is present otherwise gives freebie stomach
+		spawn(2 SECONDS)
+			init_vore()
+	//*        END         *//
+
 /mob/living/Destroy()
 	if(nest) //Ew.
 		if(istype(nest, /obj/structure/prop/nest))
@@ -369,8 +381,8 @@ default behaviour is:
 		adjustFireLoss(amount)
 
 // and one for electricity because why not
-/mob/living/proc/inflict_shock_damage(amount)
-	electrocute_act(amount, null, 1 - get_shock_protection(), pick(BP_HEAD, BP_TORSO, BP_GROIN))
+/mob/living/proc/inflict_shock_damage_legacy(amount)
+	electrocute(0, amount, 0, NONE, pick(BP_TORSO, BP_HEAD, BP_GROIN))
 
 // also one for water (most things resist it entirely, except for slimes)
 /mob/living/proc/inflict_water_damage(amount)
@@ -703,7 +715,7 @@ default behaviour is:
 /mob/living/get_centering_pixel_y_offset(dir)
 	. = ..()
 	// since we're shifted up by transforms..
-	. -= ((size_multiplier * icon_scale_y) - 1) * 16
+	. -= (size_multiplier * icon_scale_y - 1) * 16
 
 /mob/living/get_managed_pixel_y()
 	. = ..()

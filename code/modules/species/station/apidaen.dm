@@ -17,12 +17,13 @@
 	vision_innate = /datum/vision/baseline/species_tier_2
 	vision_organ = O_EYES
 
-	slowdown  = -0.10 // Speed boost similar to spiders, slightly nerfed due to two less legs.
 	brute_mod = 0.8   // 20% brute damage reduction seems fitting to match spiders, due to exoskeletons.
 	burn_mod  = 1.15  // 15% burn damage increase, the same as spiders. For the same reason.
 
 	max_additional_languages = 2
 	intrinsic_languages = LANGUAGE_ID_VASILISSAN
+
+	movement_base_speed = 5.25
 
 	reagent_tag = IS_APIDAEN
 
@@ -72,10 +73,10 @@
 	)
 
 	unarmed_types = list(
-		/datum/unarmed_attack/stomp,
-		/datum/unarmed_attack/kick,
-		/datum/unarmed_attack/claws,
-		/datum/unarmed_attack/bite/sharp,
+		/datum/melee_attack/unarmed/stomp,
+		/datum/melee_attack/unarmed/kick,
+		/datum/melee_attack/unarmed/claws,
+		/datum/melee_attack/unarmed/bite/sharp,
 	)
 
 	inherent_verbs = list(

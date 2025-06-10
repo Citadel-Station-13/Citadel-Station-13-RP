@@ -26,7 +26,7 @@
 	mask = /obj/item/clothing/mask/breath
 	back = /obj/item/tank/vox
 	l_hand = /obj/item/melee/transforming/energy/sword/cutlass
-	r_hand = /obj/item/gun/ballistic/shotgun/pump/rifle/vox_hunting
+	r_hand = /obj/item/gun/projectile/ballistic/shotgun/pump/rifle/vox_hunting
 	l_pocket = /obj/item/ammo_magazine/a7_62mm/clip
 	r_pocket = /obj/item/ammo_magazine/a7_62mm/clip
 

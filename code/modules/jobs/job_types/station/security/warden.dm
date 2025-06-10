@@ -54,6 +54,9 @@
 	gloves = /obj/item/clothing/gloves/black
 	shoes = /obj/item/clothing/shoes/boots/jackboots
 
+	// todo below
+	// belt = /obj/item/storage/belt/security/nt_isd_preload
+
 	id_type = /obj/item/card/id/security/warden
 	pda_type = /obj/item/pda/warden
 

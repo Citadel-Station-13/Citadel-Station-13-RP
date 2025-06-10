@@ -128,8 +128,6 @@
 	//* UI - Client *//
 	/// our tooltips system
 	var/datum/tooltip/tooltips
-	/// chat panel
-	var/datum/tgui_panel/tgui_panel
 	/// statpanel
 	var/datum/client_statpanel/tgui_stat
 
@@ -163,12 +161,8 @@
 	// todo: rename to `preferences` & put it next to `persistent` to sate my OCD ~silicons
 	///Player preferences datum for the client
 	var/datum/preferences/prefs = null
-	///Current area of the controlled mob
-	var/area = null
 	///when the client last died as a mouse
 	var/time_died_as_mouse = null
-
-	var/adminhelped = 0
 
 		///////////////
 		//SOUND STUFF//
@@ -179,16 +173,11 @@
 		////////////
 		//SECURITY//
 		////////////
-	// comment out the line below when debugging locally to enable the options & messages menu
-	//control_freak = 1
 
 	var/received_irc_pm = -99999
 	///IRC admin that spoke with them last.
 	var/irc_admin
 	var/mute_irc = 0
-	///Do we think they're using a proxy/vpn? Only if IP Reputation checking is enabled in config.
-	var/ip_reputation = 0
-
 
 		////////////////////////////////////
 		//things that require the database//
@@ -212,9 +201,6 @@
 	var/connection_realtime
  	///world.timeofday they connected
 	var/connection_timeofday
-
-	/// If this client has been fully initialized or not
-	var/fully_created = FALSE
 
 /client/vv_edit_var(var_name, var_value)
 	switch (var_name)

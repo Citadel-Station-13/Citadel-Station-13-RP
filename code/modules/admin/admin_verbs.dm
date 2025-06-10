@@ -172,7 +172,11 @@ var/list/admin_verbs_server = list(
 	/client/proc/everyone_random,
 	/datum/admins/proc/toggleAI,
 	/client/proc/cmd_admin_delete, // Delete an instance/object/mob/etc,
-	/client/proc/cmd_debug_del_all,
+	/client/proc/cmd_del_all,
+	/client/proc/cmd_del_all_force,
+	/client/proc/cmd_del_all_hard,
+	/client/proc/check_timer_sources,
+	/client/proc/toggle_browser_inspect,
 	/client/proc/cmd_admin_clear_mobs,
 	/datum/admins/proc/adspawn,
 	/datum/admins/proc/adjump,
@@ -201,7 +205,11 @@ var/list/admin_verbs_debug = list(
 	/client/proc/debug_antagonist_template,
 	/client/proc/cmd_debug_mob_lists,
 	/client/proc/cmd_admin_delete,
-	/client/proc/cmd_debug_del_all,
+	/client/proc/cmd_del_all,
+	/client/proc/cmd_del_all_force,
+	/client/proc/cmd_del_all_hard,
+	/client/proc/check_timer_sources,
+	/client/proc/toggle_browser_inspect,
 	/client/proc/cmd_debug_tog_aliens,
 	/client/proc/cmd_display_del_log,
 	/client/proc/cmd_display_init_log,
@@ -236,7 +244,6 @@ var/list/admin_verbs_debug = list(
 	/datum/admins/proc/change_time,
 	/client/proc/admin_give_modifier,
 	/client/proc/fucky_wucky,
-	/client/proc/simple_DPS,
 	/datum/admins/proc/fishing_calculator,
 	)
 
@@ -320,9 +327,12 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/kill_airgroup,
 	/client/proc/debug_controller,
 	/client/proc/startSinglo,
-	/client/proc/simple_DPS,
 	/client/proc/cmd_debug_mob_lists,
-	/client/proc/cmd_debug_del_all,
+	/client/proc/cmd_del_all,
+	/client/proc/cmd_del_all_force,
+	/client/proc/cmd_del_all_hard,
+	/client/proc/check_timer_sources,
+	/client/proc/toggle_browser_inspect,
 	/client/proc/cmd_admin_clear_mobs,
 	/client/proc/cmd_debug_tog_aliens,
 	/client/proc/cmd_display_del_log,
@@ -1077,4 +1087,3 @@ var/list/admin_verbs_event_manager = list(
 	var/datum/browser/popup = new(src, "event_volunteers", "Event Volunteers (In game)", 800, 1200)
 	popup.set_content(dat.Join(""))
 	popup.open()
-

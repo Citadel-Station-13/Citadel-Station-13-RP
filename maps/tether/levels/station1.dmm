@@ -1288,8 +1288,8 @@
 	name = "Secondary Command Office Blast Doors";
 	opacity = 0
 	},
-/obj/effect/paint_stripe/commandblue,
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/map_helper/paint_stripe/commandblue,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "secondary_bridge";
 	name = "Secondary Bridge"
 	},
@@ -1501,7 +1501,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/sleep/cryo)
 "cZ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 2;
@@ -1510,7 +1510,7 @@
 	name = "Secondary Command Office Blast Doors";
 	opacity = 0
 	},
-/obj/effect/paint_stripe/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/blueshield)
 "da" = (
@@ -1743,8 +1743,8 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/pipecyan,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/pipecyan,
 /turf/simulated/floor,
 /area/engineering/atmos/backup)
 "ds" = (
@@ -2052,8 +2052,8 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engineering_monitoring)
 "dX" = (
-/obj/spawner/window/low_wall/full/firelocks,
-/obj/effect/paint_stripe/violet,
+/obj/spawner/window/low_wall/firelocks,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/tether/exploration/crew)
 "dY" = (
@@ -2503,8 +2503,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_server_room)
 "eR" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor/plating,
 /area/engineering/gravity_lobby)
 "eS" = (
@@ -3551,8 +3551,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/shield_gen)
 "hj" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/engineering/engineering_monitoring)
 "hk" = (
@@ -3647,8 +3647,8 @@
 /turf/simulated/floor/tiled,
 /area/bridge/secondary)
 "hr" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/engineering/engine_monitoring)
 "hs" = (
@@ -4549,8 +4549,8 @@
 	name = "Engine Monitoring Room Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/borosillicate/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/borosillicate/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/engineering/engine_monitoring)
 "js" = (
@@ -5348,7 +5348,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
 "kQ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/security/customs)
 "kR" = (
@@ -5903,7 +5903,7 @@
 /area/engineering/foyer)
 "lY" = (
 /obj/effect/floor_decal/spline/fancy,
-/obj/machinery/mineral/equipment_vendor/survey{
+/obj/machinery/point_redemption_vendor/survey{
 	pixel_y = 5
 	},
 /obj/structure/flora/ausbushes/lavendergrass{
@@ -7471,7 +7471,7 @@
 /turf/simulated/wall/rshull,
 /area/shuttle/medivac/general)
 "pj" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor,
 /area/security/customs)
 "pk" = (
@@ -7485,8 +7485,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/commandblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/bridge/secondary)
 "pm" = (
@@ -8570,7 +8570,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/secondary)
 "ry" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 2;
@@ -8579,7 +8579,7 @@
 	name = "Secondary Command Office Blast Doors";
 	opacity = 0
 	},
-/obj/effect/paint_stripe/commandblue,
+/obj/map_helper/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/bridge/meeting_room)
 "rz" = (
@@ -9028,8 +9028,8 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_monitoring)
 "st" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor/plating,
 /area/engineering/engine_airlock)
 "sv" = (
@@ -9367,7 +9367,7 @@
 	name = "Shuttle Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/securiship/general)
 "tf" = (
@@ -9851,7 +9851,7 @@
 	layer = 4;
 	name = "EXTERNAL AIRLOCK"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/hallway/station/docks)
 "ul" = (
@@ -9906,8 +9906,8 @@
 /turf/simulated/wall/rshull,
 /area/shuttle/securiship/general)
 "ut" = (
-/obj/spawner/window/low_wall/full/firelocks,
-/obj/effect/paint_stripe/violet,
+/obj/spawner/window/low_wall/firelocks,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/tether/exploration/staircase)
 "uu" = (
@@ -10998,8 +10998,8 @@
 /turf/simulated/floor/tiled/eris/techmaint_panels,
 /area/shuttle/securiship/engines)
 "wM" = (
-/obj/spawner/window/low_wall/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/engineering/shield_gen)
 "wN" = (
@@ -11201,7 +11201,7 @@
 	name = "Shuttle Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/securiship/general)
 "xg" = (
@@ -11365,8 +11365,8 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/backup)
 "xy" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/engineering/engine_eva)
 "xz" = (
@@ -12104,8 +12104,8 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/backup)
 "yT" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/babyblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/hallway/secondary/escape/medical_escape_pod_hallway)
 "yV" = (
@@ -12241,8 +12241,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
 "zl" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/engineering/workshop)
 "zm" = (
@@ -12440,8 +12440,8 @@
 	name = "Engineering Lockdown";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/pipecyan,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/pipecyan,
 /turf/simulated/floor,
 /area/engineering/atmos/backup)
 "zG" = (
@@ -12842,8 +12842,8 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/backup)
 "Aw" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/engineering/engineering_airlock)
 "Ax" = (
@@ -12857,7 +12857,7 @@
 /turf/simulated/floor/plating,
 /area/storage/emergency_storage/emergency4)
 "Az" = (
-/obj/spawner/window/low_wall/full/firelocks/nogrille,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor,
 /area/hallway/station/docks)
 "AA" = (
@@ -12894,11 +12894,11 @@
 	name = "Engineering Lockdown";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "ce_office";
 	name = "CE Polarized"
 	},
-/obj/effect/paint_stripe/sun,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/crew_quarters/heads/chief)
 "AF" = (
@@ -13977,8 +13977,8 @@
 	name = "Secondary Command Office Blast Doors";
 	opacity = 0
 	},
-/obj/effect/paint_stripe/commandblue,
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/map_helper/paint_stripe/commandblue,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "secondary_bridge";
 	name = "Secondary Bridge"
 	},
@@ -14390,7 +14390,7 @@
 /turf/simulated/floor/tiled,
 /area/security/customs)
 "DB" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
 "DC" = (
@@ -14462,8 +14462,8 @@
 	name = "Secondary Command Office Blast Doors";
 	opacity = 0
 	},
-/obj/effect/paint_stripe/commandblue,
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/map_helper/paint_stripe/commandblue,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "secondary_bridge";
 	name = "Secondary Bridge"
 	},
@@ -14497,7 +14497,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_smes)
 "DK" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 4;
@@ -15043,8 +15043,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/commandblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/bridge/secondary)
 "EL" = (
@@ -15098,7 +15098,7 @@
 	name = "Shuttle Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/securiship/cockpit)
 "ES" = (
@@ -15354,8 +15354,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_lower)
 "Fv" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/engineering/foyer)
 "Fw" = (
@@ -15820,8 +15820,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_smes)
 "Gm" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/engineering/break_room)
 "Gn" = (
@@ -16116,7 +16116,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "GW" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
 	icon_state = "space";
@@ -16196,7 +16196,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/abandonedlibraryconference)
 "He" = (
@@ -16364,12 +16364,12 @@
 	name = "Engineering Lockdown";
 	opacity = 0
 	},
-/obj/effect/paint_stripe/sun,
-/obj/spawner/window/low_wall/full/firelocks/nogrille,
+/obj/map_helper/paint_stripe/sun,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor,
 /area/engineering/foyer)
 "Hu" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/abandonedlibrary)
 "Hv" = (
@@ -17141,8 +17141,8 @@
 /turf/simulated/floor/tiled/white,
 /area/hallway/secondary/escape/medical_escape_pod_hallway)
 "IY" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/violet,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/tether/exploration/hallway)
 "IZ" = (
@@ -17516,7 +17516,7 @@
 /turf/simulated/floor/carpet/oracarpet,
 /area/crew_quarters/heads/chief)
 "JN" = (
-/obj/spawner/window/low_wall/full/firelocks/nogrille,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor,
 /area/hallway/station/atrium)
 "JO" = (
@@ -17673,8 +17673,8 @@
 /turf/simulated/floor,
 /area/engineering/storage)
 "Kc" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/violet,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/tether/exploration/staircase)
 "Kd" = (
@@ -17752,7 +17752,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "Ki" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/hallway/station/docks)
 "Kj" = (
@@ -18318,8 +18318,8 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
 "Lq" = (
-/obj/effect/paint_stripe/darkred,
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/map_helper/paint_stripe/darkred,
+/obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/plating,
 /area/security/checkpoint/science)
 "Lr" = (
@@ -18755,8 +18755,8 @@
 	name = "Engine Monitoring Room Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/borosillicate/full/firelocks,
-/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/borosillicate/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/engineering/engine_monitoring)
 "Ms" = (
@@ -18821,17 +18821,17 @@
 /turf/simulated/floor/tiled,
 /area/bridge/secondary/hallway)
 "My" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/commandblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/bridge/secondary)
 "Mz" = (
 /obj/structure/cable/green,
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "ce_office";
 	name = "CE Polarized"
 	},
-/obj/effect/paint_stripe/sun,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/crew_quarters/heads/chief)
 "MA" = (
@@ -19004,8 +19004,8 @@
 /turf/simulated/floor/tiled/eris/dark/techfloor_grid,
 /area/shuttle/securiship/engines)
 "MV" = (
-/obj/effect/paint_stripe/violet,
-/obj/spawner/window/low_wall/full/firelocks/nogrille,
+/obj/map_helper/paint_stripe/violet,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/tether/exploration/hallway)
 "MW" = (
@@ -19531,7 +19531,7 @@
 /turf/simulated/floor/tiled/white,
 /area/hallway/secondary/escape/medical_escape_pod_hallway)
 "Of" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/constructionsite)
 "Og" = (
@@ -19558,7 +19558,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
 "Oj" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/abandonedlibraryconference)
 "Ok" = (
@@ -22201,8 +22201,8 @@
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
 "Tz" = (
-/obj/effect/paint_stripe/darkred,
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/map_helper/paint_stripe/darkred,
+/obj/spawner/window/low_wall/firelocks,
 /obj/machinery/suit_storage_unit/medic,
 /turf/simulated/floor/plating,
 /area/security/checkpoint/science)
@@ -22447,7 +22447,7 @@
 /turf/simulated/floor/tiled,
 /area/security/customs)
 "TY" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -23414,8 +23414,8 @@
 	name = "Engineering Lockdown";
 	opacity = 0
 	},
-/obj/effect/paint_stripe/sun,
-/obj/spawner/window/low_wall/full/firelocks/nogrille,
+/obj/map_helper/paint_stripe/sun,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/engineering/foyer)
 "VX" = (
@@ -25267,8 +25267,8 @@
 	name = "Secondary Command Office Blast Doors";
 	opacity = 0
 	},
-/obj/effect/paint_stripe/commandblue,
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/map_helper/paint_stripe/commandblue,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "secondary_bridge";
 	name = "Secondary Bridge"
 	},
@@ -25337,8 +25337,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/red{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/pipecyan,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint_stripe/pipecyan,
 /turf/simulated/floor,
 /area/engineering/atmos/backup)
 "ZR" = (
