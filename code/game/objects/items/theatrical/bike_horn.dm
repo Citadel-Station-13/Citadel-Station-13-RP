@@ -64,7 +64,7 @@
 	base_icon_state = "clicker"
 	attack_verb = list("clicked")
 
-	emit_sfx = /datum/soundbyte/effects/clicker_1
+	emit_sfx = /datum/soundbyte/clicker
 	emit_volume = 75
 
 	var/frame_color = "#ffffff"
