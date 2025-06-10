@@ -32,8 +32,11 @@
 /datum/antimagic/simple_linear/handle_antimagic(list/antimagic_args)
 	if(!(antimagic_args[ANTIMAGIC_ARG_TYPE] & magic_types))
 		return
-	#warn impl
-	antimagic_args[ANTIMAGIC_ARG_EFFICIENCY] = antimagic_args[ANTIMAGIC_ARG_EFFICIENCY] * 1
+	var/attacking_potency = antimagic_args[ANTIMAGIC_ARG_POTENCY]
+	if(attacking_potency <= full_block_potency)
+		antimagic_args[ANTIMAGIC_ARG_EFFICIENCY] = 0
+	else if(attacking_potency <= cant_block_potency)
+		antimagic_args[ANTIMAGIC_ARG_EFFICIENCY] *= ((attacking_potency - full_block_potency) / (cant_block_potency - full_block_potency))
 
 /**
  * Just invokes a callback to modify antimagic call args

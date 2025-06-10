@@ -5,7 +5,7 @@
 	name = "Awakening - Reinforcement"
 	desc = "Passive antimagic for eldritch cultists."
 
-	var/datum/antimagic/antimagic_struct = new /datum/antimagic/simple_lienar/eldritch_awakening_antimagic
+	var/datum/antimagic/antimagic_struct = new /datum/antimagic/simple_linear/eldritch_awakening_antimagic
 
 /datum/prototype/eldritch_passive/eldritch_awakening_antimagic/on_mob_associate(mob/cultist, datum/eldritch_holder/holder, datum/eldritch_passive_context/context)
 	..()
@@ -19,7 +19,7 @@
 
 #warn antimagic_callback
 
-/datum/antimagic/simple_lienar/eldritch_awakening_antimagic
+/datum/antimagic/simple_linear/eldritch_awakening_antimagic
 	magic_types = MAGIC_TYPES_ALL
 	full_block_potency = MAGIC_POTENCY_ELDRITCH_AWAKENING_ANTIMAGIC_BLOCK
 	cant_block_potency = MAGIC_POTENCY_ELDRITCH_AWAKENING_ANTIMAGIC_NONE_BLOCK

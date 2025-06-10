@@ -8,6 +8,9 @@
 	 * antimagic sources, associated to priority
 	 */
 	var/list/datum/antimagic/antimagic_sources = list()
+	/**
+	 * antimagic sources, associated to callback, if a special handler is registered
+	 */
 
 /datum/component/antimagic_coverage/proc/add_source(datum/antimagic/source, datum/callback/on_invoke)
 	ASSERT(!antimagic_sources[source])

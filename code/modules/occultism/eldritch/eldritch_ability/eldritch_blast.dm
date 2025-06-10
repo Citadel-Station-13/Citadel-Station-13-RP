@@ -22,16 +22,22 @@
 
 #warn on_targeted_trigger
 #warn impl - firing and click capturing/aiming
-#warn SIGNAL_ELDRITCH_HOLDER_FIRE_PROJECTILE
 
 /datum/ability/eldritch_ability/eldritch_blast/proc/fire_standard(atom/movable/anchor, datum/event_args/actor/clickchain/clickchain)
-	return fire(anchor, clickchain, 25)
+	return fire(anchor, clickchain, 0.33)
 
 /datum/ability/eldritch_ability/eldritch_blast/proc/fire_heavy(atom/movable/anchor, datum/event_args/actor/clickchain/clickchain)
-	return fire(anchor, clickchain, 100)
+	return fire(anchor, clickchain, 1)
 
-/datum/ability/eldritch_ability/eldritch_blast/proc/fire(atom/movable/anchor, datum/event_args/actor/clickchain/clickchain, intensity)
-	intensity = clamp(intensity, 0, 100)
+/datum/ability/eldritch_ability/eldritch_blast/proc/fire(atom/movable/anchor, datum/event_args/actor/clickchain/clickchain, efficiency)
+	var/obj/projectile/proj = new /obj/projectile/eldritch_blast(anchor.loc)
+	proj.projectile_effect_multiplier = efficiency
+	#warn impl
+
+	proj.original_target = clickchain.target
+	proj.def_zone = clickchain.legacy_get_target_zone()
+	SEND_SIGNAL(eldritch, COMSIG_ELDRITCH_HOLDER_FIRE_PROJECTILE, clickchain.performer, proj)
+	proj.fire(clickchain.resolve_click_angle())
 
 /**
  * beam used by eldritch blast ability from occultism module

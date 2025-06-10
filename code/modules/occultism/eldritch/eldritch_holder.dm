@@ -36,8 +36,9 @@
 	/// * associated to a list of knowledge's if more than one tries to give it
 	var/list/known_recipe_ids
 
-
-	#warn patrons
+	/// active patron, if any; null if none
+	/// * serialized as id
+	var/datum/prototype/eldritch_patron/active_patron
 
 #warn hook
 /datum/eldritch_holder/proc/on_mob_associate(mob/cultist)
@@ -62,6 +63,9 @@
 
 /datum/eldritch_holder/proc/has_knowledge(datum/prototype/eldritch_knowledge/knowledge)
 	return knowledge in src.knowledge
+
+#warn impl / hook
+/datum/eldritch_holder/proc/set_active_patron(datum/prototype/eldritch_patron/patron)
 
 /datum/eldritch_holder/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	. = ..()

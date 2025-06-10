@@ -26,6 +26,10 @@
 
 /// stop iterating
 #define ANTIMAGIC_FLAG_TERMINATE (1<<0)
+/// don't render automatic SFX/VFX
+#define ANTIMAGIC_FLAG_SKIP_FX (1<<1)
+/// don't render automatic message
+#define ANTIMAGIC_FLAG_SKIP_MESSAGE (1<<2)
 
 //* Antimagic Priorities; lower is higher *//
 
