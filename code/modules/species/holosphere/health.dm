@@ -45,8 +45,6 @@
 /datum/species/holosphere/proc/can_revive(mob/living/carbon/human/H)
 	if(H.stat != DEAD)
 		return FALSE
-	if(H.health <= death_health)
-		return FALSE
 	if(reviving)
 		return FALSE
 	var/revive_cost = get_revive_cost()
