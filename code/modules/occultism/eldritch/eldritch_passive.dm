@@ -39,6 +39,7 @@
 /datum/prototype/eldritch_passive/proc/on_mob_disassociate(mob/cultist, datum/eldritch_holder/holder, datum/eldritch_passive_context/context)
 	return
 
+#warn hook
 /datum/prototype/eldritch_passive/proc/on_mob_tick(mob/cultist, datum/eldritch_holder/holder, datum/eldritch_passive_context/context, dt)
 	return
 

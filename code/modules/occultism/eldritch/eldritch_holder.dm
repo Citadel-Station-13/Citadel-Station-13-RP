@@ -40,26 +40,19 @@
 	/// * serialized as id
 	var/datum/prototype/eldritch_patron/active_patron
 
-#warn hook
 /datum/eldritch_holder/proc/on_mob_associate(mob/cultist)
 	for(var/datum/prototype/eldritch_passive/passive as anything in applied_passives)
 		passive.on_mob_associate(cultist, src, applied_passives[passive])
 
-#warn hook
 /datum/eldritch_holder/proc/on_mob_disassociate(mob/cultist)
 	for(var/datum/prototype/eldritch_passive/passive as anything in applied_passives)
 		passive.on_mob_disassociate(cultist, src, applied_passives[passive])
 
-#warn hook
-/datum/eldritch_holder/proc/on_life_tick(mob/cultist, dt)
-	for(var/datum/prototype/eldritch_passive/passive as anything in ticking_passives)
-		passive.on_mob_associate(cultist, src, applied_passives[passive], dt)
-
-#warn impl
-
 /datum/eldritch_holder/proc/add_knowledge(datum/prototype/eldritch_knowledge/knowledge)
+	#warn impl
 
 /datum/eldritch_holder/proc/remove_knowledge(datum/prototype/eldritch_knowledge/knowledge)
+	#warn impl
 
 /datum/eldritch_holder/proc/has_knowledge(datum/prototype/eldritch_knowledge/knowledge)
 	return knowledge in src.knowledge
