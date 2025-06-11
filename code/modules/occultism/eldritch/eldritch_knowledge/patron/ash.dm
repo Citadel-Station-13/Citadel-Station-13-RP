@@ -3,5 +3,5 @@
 
 /datum/prototype/eldritch_knowledge/patron/ash
 	abstract_type = /datum/prototype/eldritch_knowledge/patron/ash
-	category = "The Nightwatcher"
+	category = "The Ashcrown"
 	#warn icon

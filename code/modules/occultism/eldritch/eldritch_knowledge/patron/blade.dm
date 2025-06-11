@@ -3,5 +3,5 @@
 
 /datum/prototype/eldritch_knowledge/patron/blade
 	abstract_type = /datum/prototype/eldritch_knowledge/patron/blade
-	category = "The Torn Champion"
+	category = "The Granite Thorn"
 	#warn icon

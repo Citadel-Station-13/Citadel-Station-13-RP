@@ -3,5 +3,5 @@
 
 /datum/prototype/eldritch_knowledge/patron/moon
 	abstract_type = /datum/prototype/eldritch_knowledge/patron/moon
-	category = "The Moon"
+	category = "The Crescent"
 	#warn icon

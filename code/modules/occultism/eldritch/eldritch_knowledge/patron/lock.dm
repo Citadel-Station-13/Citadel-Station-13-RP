@@ -3,5 +3,5 @@
 
 /datum/prototype/eldritch_knowledge/patron/lock
 	abstract_type = /datum/prototype/eldritch_knowledge/patron/lock
-	category = "The Labyrinth"
+	category = "The Sacred Shape"
 	#warn icon

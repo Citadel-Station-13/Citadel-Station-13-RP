@@ -3,5 +3,5 @@
 
 /datum/prototype/eldritch_knowledge/patron/flesh
 	abstract_type = /datum/prototype/eldritch_knowledge/patron/flesh
-	category = "The Marshal"
+	category = "The Writhing One"
 	#warn icon
