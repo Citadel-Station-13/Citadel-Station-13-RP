@@ -5,3 +5,7 @@
 	abstract_type = /datum/prototype/eldritch_knowledge/patron/void
 	category = "The Aristocrat"
 	#warn icon
+
+/datum/prototype/eldritch_knowledge/patron/void/entrypoint
+
+#warn impl

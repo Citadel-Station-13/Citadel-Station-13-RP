@@ -5,3 +5,7 @@
 	abstract_type = /datum/prototype/eldritch_knowledge/patron/lock
 	category = "The Sacred Shape"
 	#warn icon
+
+/datum/prototype/eldritch_knowledge/patron/lock/entrypoint
+
+#warn impl

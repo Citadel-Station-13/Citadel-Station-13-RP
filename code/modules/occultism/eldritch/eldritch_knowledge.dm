@@ -23,14 +23,6 @@
 	/// never show on UI or make known to the player / client
 	var/hidden = FALSE
 
-	/// position from origin
-	/// * unset = auto position
-	/// * please set this
-	var/ui_pos_x
-	/// position from origin
-	/// * unset = auto position
-	/// * please set this
-	var/ui_pos_y
 	/// ui icon
 	var/ui_icon
 	/// ui icon state
@@ -50,6 +42,9 @@
 	var/list/give_eldritch_ability_ids
 	/// autounlock other knowledge ids once unlocked
 	var/list/give_eldritch_knowledge_ids
+
+	/// required knowledge ids
+	var/list/req_eldritch_knowledge_ids
 
 #warn impl
 

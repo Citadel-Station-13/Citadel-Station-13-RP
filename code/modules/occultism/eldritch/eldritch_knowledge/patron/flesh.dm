@@ -5,3 +5,7 @@
 	abstract_type = /datum/prototype/eldritch_knowledge/patron/flesh
 	category = "The Writhing One"
 	#warn icon
+
+/datum/prototype/eldritch_knowledge/patron/flesh/entrypoint
+
+#warn impl
