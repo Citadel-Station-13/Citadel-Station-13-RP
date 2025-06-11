@@ -84,11 +84,11 @@ SUBSYSTEM_DEF(background_tasks)
 					if(BACKGROUND_TASK_FINISHED)
 						finished_count += 1
 					if(BACKGROUND_TASK_YIELDING)
-						BINARY_INSERT(to_run, yielding, /datum/backgroud_task, to_run, next_run_time, COMPARE_KEY)
+						BINARY_INSERT(to_run, yielding, /datum/background_task, to_run, next_run_time, COMPARE_KEY)
 			else
-				stack_trace("ejecting misbehaving task [to-run] ([to_run.type]) - returned invalid retval [result]")
-			if(eject)
-				running -= to_run
+				stack_trace("ejecting misbehaving task [to_run] ([to_run.type]) - returned invalid retval [result]")
+		if(eject)
+			running -= to_run
 
 	// give us time to do bookkeeping ; never take up the whole tick because we are pretty
 	// aggressive about rescheduling.
@@ -127,7 +127,6 @@ SUBSYSTEM_DEF(background_tasks)
 	if(keyed_tasks[key])
 		var/datum/background_task/existing = keyed_tasks[key]
 		. = existing
-		#warn update lrt if needed
 		switch(existing.status)
 			if(BACKGROUND_TASK_QUEUED)
 				running -= existing
