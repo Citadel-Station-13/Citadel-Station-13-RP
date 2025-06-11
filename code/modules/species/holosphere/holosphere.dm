@@ -132,6 +132,8 @@
 
 	var/heal_nutrition_multiplier = 10 // 10 nutrition per hp healed
 
+	var/reviving = FALSE
+
 /datum/species/holosphere/on_apply(mob/living/carbon/human/H)
 	. = ..()
 	RegisterSignal(H, COMSIG_CARBON_UPDATING_OVERLAY, PROC_REF(handle_hologram_overlays))
