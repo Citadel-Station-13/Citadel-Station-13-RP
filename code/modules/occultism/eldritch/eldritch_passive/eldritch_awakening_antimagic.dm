@@ -21,5 +21,5 @@
 
 /datum/antimagic/simple_linear/eldritch_awakening_antimagic
 	magic_types = MAGIC_TYPES_ALL
-	full_block_potency = MAGIC_POTENCY_ELDRITCH_AWAKENING_ANTIMAGIC_BLOCK
+	full_block_potency = MAGIC_POTENCY_ELDRITCH_AWAKENING_ANTIMAGIC_FULL_BLOCK
 	cant_block_potency = MAGIC_POTENCY_ELDRITCH_AWAKENING_ANTIMAGIC_NONE_BLOCK
