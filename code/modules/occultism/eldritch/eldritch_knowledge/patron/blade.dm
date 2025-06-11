@@ -22,7 +22,7 @@
 
 #warn impl
 
-/datum/prototype/eldritch_knowledge/patron/blade/basic_sword_arts
+/datum/prototype/eldritch_knowledge/patron/blade/sword_enhancement
 	name = "Blade Enhancement"
 	desc = "Your blade is now significantly better at crowd control, \
 	and has gained the ability to parry incoming attacks."
