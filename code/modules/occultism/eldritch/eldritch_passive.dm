@@ -14,11 +14,9 @@
 	var/name = "???"
 	/// our interface desc
 	var/desc = "A perk granted by the infinite plane."
-	/// our interface lore blurb; null for none
-	var/lore
 
-	/// our context type, if any
-	var/context_type
+	/// our context type
+	var/context_type = /datum/eldritch_passive_context
 	/// can be toggled on/off
 	var/can_be_toggled = FALSE
 	/// requires ticking?

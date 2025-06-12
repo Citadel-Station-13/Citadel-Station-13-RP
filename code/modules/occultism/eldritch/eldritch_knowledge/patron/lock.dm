@@ -7,5 +7,6 @@
 	#warn icon
 
 /datum/prototype/eldritch_knowledge/patron/lock/entrypoint
-
-#warn impl
+	name = "The Sacred Shape"
+	desc = "Delve into the mysteries of the Sacred Shape."
+	// TODO: lore

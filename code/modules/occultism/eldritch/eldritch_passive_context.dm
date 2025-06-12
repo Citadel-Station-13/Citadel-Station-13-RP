@@ -5,3 +5,12 @@
  * State holder for passives, as they're singletons.
  */
 /datum/eldritch_passive_context
+	/// currently enabled?
+	var/enabled = TRUE
+	
+	/// granted from knowledge ids; once all of these are gone, we are removed
+	/// * not serialized
+	var/tmp/list/granted_from_knowledge_ids
+
+// todo: ser/de
+// todo: clone

@@ -4,12 +4,19 @@
 /**
  * Spreads rust to self, and nearby turfs in view.
  */
-/turf/proc/eldritch_rust_spread(probability, range = 0)
+/turf/proc/eldritch_rust_spread(amount, probability, range = 0)
+	// TODO: amount should be conserved.
 	if(range > 0)
 		var/turf/dview_out
 		FOR_DVIEW(dview_out, range, src, INVISIBILITY_MAXIMUM)
 			if(prob(probability))
-				dview_out.AddComponent(/datum/component/eldritch_rust)
+				dview_out.eldritch_rust_inflict(amount)
 	else
 		if(prob(probability))
-			AddComponent(/datum/component/eldritch_rust)
+			eldritch_rust_inflict(amount)
+
+/turf/proc/eldritch_rust_inflict(amount)
+	AddComponent(/datum/component/eldritch_rust, amount)
+
+/turf/proc/eldritch_rust_clear()
+	DelCompnoent(/datum/component/eldritch_rust)

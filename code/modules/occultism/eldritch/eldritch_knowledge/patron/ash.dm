@@ -7,5 +7,6 @@
 	#warn icon
 
 /datum/prototype/eldritch_knowledge/patron/ash/entrypoint
-
-#warn impl
+	name = "The Ashcrown"
+	desc = "Follow in the steps of the Ashcrown."
+	// TODO: lore

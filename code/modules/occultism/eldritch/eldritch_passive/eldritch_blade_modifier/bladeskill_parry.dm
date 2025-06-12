@@ -5,5 +5,8 @@
  * Greatly enhances parrying done with heretic weapons.
  */
 /datum/prototype/eldritch_passive/bladeskill_parry
+	id = "bladeskill-parry"
 
 // TODO: impl
+
+#warn impl

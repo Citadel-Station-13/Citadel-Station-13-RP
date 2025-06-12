@@ -2,9 +2,8 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /datum/ability/eldritch_ability/eldritch_blast
-	name = "eldritch blast"
+	name = "Eldritch Blast"
 	desc = "Fire a powerful beam capable of warping reality."
-	#warn category
 	#warn sprite
 
 	/// hard cooldown set to 3 seconds

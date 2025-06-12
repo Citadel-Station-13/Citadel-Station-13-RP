@@ -7,5 +7,6 @@
 	#warn icon
 
 /datum/prototype/eldritch_knowledge/patron/void/entrypoint
-
-#warn impl
+	name = "The Aristocrat"
+	desc = "Learn from the Aristocrat."
+	// TODO: lore

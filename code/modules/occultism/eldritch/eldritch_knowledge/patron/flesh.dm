@@ -7,5 +7,6 @@
 	#warn icon
 
 /datum/prototype/eldritch_knowledge/patron/flesh/entrypoint
-
-#warn impl
+	name = "The Writhing One"
+	desc = "Make a pact with the Writhing One."
+	// TODO: lore
