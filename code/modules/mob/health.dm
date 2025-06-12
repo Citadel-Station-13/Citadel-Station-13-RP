@@ -59,10 +59,10 @@
  * * force - ignore health and revive even if we'll immediately die again
  * * full_heal - fix everything we need to live
  */
-/mob/proc/revive(force, full_heal, restore_nutrition = TRUE)
+/mob/proc/revive(force, full_heal)
 	// full heal if requested
 	if(full_heal)
-		rejuvenate(TRUE, restore_nutrition)
+		rejuvenate(TRUE)
 	// flush playtimes
 	SSplaytime.queue_playtimes(client)
 	// set to conscious

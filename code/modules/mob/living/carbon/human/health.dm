@@ -1,4 +1,4 @@
-/mob/living/carbon/human/revive(force, full_heal)
+/mob/living/carbon/human/revive(force, full_heal, restore_nutrition = TRUE)
 	. = ..()
 	if(!.)
 		return
