@@ -1,60 +1,21 @@
-/**
+/*!
  * External tgui definitions, such as src_object APIs.
  *
- *! Copyright (c) 2020 Aleksej Komarov
- *! SPDX-License-Identifier: MIT
+ * Copyright (c) 2020 Aleksej Komarov
+ * SPDX-License-Identifier: MIT
  */
-
-/**
- * global
- *
- * Associative list of JSON-encoded shared states that were set by
- * tgui clients.
- */
-/datum/var/list/tgui_shared_states
-
-//* API - Main - UI devs, look here! *//
 
 /**
  * public
  *
- * Called on an object when a tgui object is being created, allowing you to
- * push various assets to tgui, for examples spritesheets.
+ * Used to open and update UIs.
+ * If this proc is not implemented properly, the UI will not update correctly.
  *
- * todo: support file paths
- * todo: this should be sent to embedding interfaces
- *
- * assets may be:
- * * a /datum/asset_pack
- * * typepath of a /datum/asset_pack
- *
- * @params
- * * ui - the UI instance that's being opened
- * * immediate - what assets to load before the window is opened
- * * deferred - what assets to load after the window is opened
+ * required user mob The mob who opened/is using the UI.
+ * optional ui datum/tgui The UI to be updated, if it exists.
  */
-/datum/proc/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
-	return
-
-/**
- * public
- *
- * Called on a UI when the UI receieves a href.
- * Think of this as Topic().
- *
- * @params
- * * action - the string of the TGUI-side act() that was invoked by the user
- * * params - the list of key-value parameters of the act() invocation. This is always strings for both key and value!
- * * ui - the TGUI instance invoking this (host window)
- * * e_args - actor datum holding data on who's doing it and who's initiating it
- *
- * @return bool If the user's input has been handled and the UI should update.
- */
-/datum/proc/ui_act(action, list/params, datum/tgui/ui)
-	SHOULD_CALL_PARENT(TRUE)
-	// If UI is not interactive or usr calling Topic is not the UI user, bail.
-	if(!ui || ui.status != UI_INTERACTIVE)
-		return TRUE
+/datum/proc/ui_interact(mob/user, datum/tgui/ui)
+	return FALSE // Not implemented.
 
 /**
  * public
@@ -62,13 +23,11 @@
  * Data to be sent to the UI.
  * This must be implemented for a UI to work.
  *
- * @params
- * * user - (optional) the mob using the UI
- * * ui - (optional) the host tgui
+ * required user mob The mob interacting with the UI.
  *
  * return list Data to be sent to the UI.
  */
-/datum/proc/ui_data(mob/user, datum/tgui/ui)
+/datum/proc/ui_data(mob/user)
 	return list() // Not implemented.
 
 /**
@@ -81,101 +40,12 @@
  * be sending a lot of redundant data frequently. Gets squished into one
  * object on the frontend side, but the static part is cached.
  *
- *
- * @params
- * * user - (optional) the mob using the UI
- * * ui - (optional) the host tgui
+ * required user mob The mob interacting with the UI.
  *
  * return list Static Data to be sent to the UI.
  */
-/datum/proc/ui_static_data(mob/user, datum/tgui/ui)
+/datum/proc/ui_static_data(mob/user)
 	return list()
-
-/**
- * public
- *
- * Used to open and update UIs.
- * If this proc is not implemented properly, the UI will not update correctly.
- *
- * todo: how should i ruin this proc? i don't really like update being twined with opening, but it makes sense..? ~silicons
- *
- * required user mob The mob who opened/is using the UI.
- * optional ui datum/tgui The UI to be updated, if it exists.
- *
- *! ## To-Be-Deprecated.
- * optional parent_ui datum/tgui A parent UI that, when closed, closes this UI as well.
- */
-/datum/proc/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
-	return FALSE // Not implemented.
-
-/**
- * private
- *
- * todo: this is just completely ignored for modules/embedding. is this a good thing? ~silicons
- * todo: this doesn't even matter for UI state right now; this is not a good thing?? ~silicons
- * todo: why do we even have this?
- *
- * The UI's host object (usually src_object).
- * This allows modules/datums to have the UI attached to them,
- * and be a part of another object.
- */
-/datum/proc/ui_host()
-	return src // Default src.
-
-/**
- * private
- *
- * todo: this is just completely ignored for modules/embedding. is this a good thing? ~silicons
- *
- * The UI's state controller to be used for created uis
- * This is a proc over a var for memory reasons
- */
-/datum/proc/ui_state()
-	return GLOB.default_state
-
-/**
- * Called to route UI act calls to modules.
- *
- * This is a proc so you can override yourself - very useful if you're doing your own module system
- * rather than copy-pasting module code.
- *
- * @params
- * * action - the action string of the ui_act
- * * params - list of string key-values; this is always strings, text2num your number args if needed!
- * * ui - the host window ui datum
- * * id - the module ID of the route request
- *
- * @return TRUE if it was handled by modules.
- */
-/datum/proc/ui_route(action, list/params, datum/tgui/ui, id)
-	SHOULD_CALL_PARENT(TRUE)
-	// todo: the fact this is here is probably a bad thing, as it's very poorly documented.
-	// this basically matches the useModule<>() hook used on the UI side, because id is null if
-	// we're a host window, and not an act call from an embedded component.
-	if(!id)
-		return ui_act(action, params, ui, new /datum/event_args/actor(usr))
-	return FALSE
-
-//* API - Update - Optimizers, look here! *//
-
-/**
- * public
- *
- * Forces an update to regular UI data.
- *
- * If no user is provided, every user will be updated.
- *
- * todo: this does not update embedders
- *
- * @params
- * * user - (optional) the mob to update
- * * ui - (optional) the /datum/tgui to update
- */
-/datum/proc/update_ui_data(mob/user, datum/tgui/ui)
-	if(isnull(user))
-		SStgui.update_uis(src)
-	else
-		SStgui.try_update_ui(user, src, ui)
 
 /**
  * public
@@ -183,124 +53,192 @@
  * Forces an update on static data. Should be done manually whenever something
  * happens to change static data.
  *
- * If no user is provided, every user will be updated.
- *
- * todo: this does not update embedders
- *
- * optional user the mob currently interacting with the ui
- * optional ui tgui to be updated
- * optional hard_refreshion use if you need to block the ui from showing if the refresh queues
+ * required user the mob currently interacting with the ui
+ * optional ui ui to be updated
  */
-/datum/proc/update_static_data(mob/user, datum/tgui/ui, hard_refresh)
-	if(!user)
-		for (var/datum/tgui/window as anything in SStgui.open_uis_by_src[REF(src)])
-			window.send_full_update(hard_refresh = hard_refresh)
-		return
+/datum/proc/update_static_data(mob/user, datum/tgui/ui)
 	if(!ui)
 		ui = SStgui.get_open_ui(user, src)
 	if(ui)
-		ui.send_full_update(hard_refresh = hard_refresh)
-
-/**
- * immediately shunts this data to either an user, an ui, or all users.
- *
- * prefer to use this instead of update_static_data or update_ui_data, because this supports embedding
- * and is generally faster.
- *
- * @params
- * * user - when specified, only pushes this user. else, pushes to all windows.
- * * ui - when specified, only pushes this ui for a given user.
- * * updates - list(id = list(data...), ...) for modules. the reducer on tgui-side will only overwrite provided data keys.
- */
-/datum/proc/push_ui_data(mob/user, datum/tgui/ui, list/data)
-	// todo: the way this works is so jank; this should be COMSIG_DATUM_HOOK_UI_PUSH instead?
-	// todo: this is because user, ui, data needs to go to the signal before being auto-resolved, as modules
-	// todo: won't necessarily match the values!
-	// FUCK
-	// ~silicons
-	SEND_SIGNAL(src, COMSIG_DATUM_PUSH_UI_DATA, user, ui, data)
-	if(!user)
-		for (var/datum/tgui/window as anything in SStgui.open_uis_by_src[REF(src)])
-			window.push_data(data)
-		return
-	if(!ui)
-		ui = SStgui.get_open_ui(user, src)
-	if(ui)
-		// todo: this is force because otherwise static data can be desynced. should static data be on another proc instead?
-		ui.push_data(data, TRUE)
-
-/**
- * immediately pushes module updates to user, an ui, or all users
- *
- * @params
- * * user - when specified, only pushes this user. else, pushes to all windows.
- * * ui - when specified, only pushes this ui for a given user.
- * * updates - list(id = list(data...), ...) for modules. the reducer on tgui-side will only overwrite provided data keys.
- */
-/datum/proc/push_ui_modules(mob/user, datum/tgui/ui, list/updates)
-	if(!user)
-		for (var/datum/tgui/window as anything in SStgui.open_uis_by_src[REF(src)])
-			window.push_modules(updates)
-		return
-	if(!ui)
-		ui = SStgui.get_open_ui(user, src)
-	if(ui)
-		ui.push_modules(updates)
-
-//* Checks *//
+		ui.send_full_update()
 
 /**
  * public
  *
- * checks if UIs are open
+ * Will force an update on static data for all viewers.
+ * Should be done manually whenever something happens to
+ * change static data.
  */
-/datum/proc/has_open_ui()
-	return length(SStgui.open_uis_by_src[REF(src)])
-
-//* Hooks *//
+/datum/proc/update_static_data_for_all_viewers()
+	for (var/datum/tgui/window as anything in open_uis)
+		window.send_full_update()
 
 /**
- * Called when a new UI is opened with this datum as the host, or when this datum is embedded into another UI.
+ * public
  *
- * Called once per embed, if multiple windows embedding this datum is transferred. Handle this accordingly!
+ * Called on a UI when the UI receieves a href.
+ * Think of this as Topic().
  *
- * When overriding this, be sure to cast embed_context to the right type for your datum.
+ * required action string The action/button that has been invoked by the user.
+ * required params list A list of parameters attached to the button.
  *
- * @params
- * * user - opening mob
- * * ui - the tgui instance
- * * embedded - this was an embedded ui / the datum is being embedded
+ * return bool If the user's input has been handled and the UI should update.
  */
-/datum/proc/on_ui_open(mob/user, datum/tgui/ui, embedded)
+/datum/proc/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	SHOULD_CALL_PARENT(TRUE)
+	// SEND_SIGNAL(src, COMSIG_UI_ACT, usr, action, params)
+	// If UI is not interactive or usr calling Topic is not the UI user, bail.
+	if(!ui || ui.status != UI_INTERACTIVE)
+		return TRUE
+
+/**
+ * public
+ *
+ * Called on an object when a tgui object is being created, allowing you to
+ * push various assets to tgui, for examples spritesheets.
+ *
+ * return list List of asset datums or file paths.
+ */
+/datum/proc/ui_assets(mob/user)
+	return list()
+
+/**
+ * private
+ *
+ * The UI's host object (usually src_object).
+ * This allows modules/datums to have the UI attached to them,
+ * and be a part of another object.
+ */
+/datum/proc/ui_host(mob/user)
+	return src // Default src.
+
+/**
+ * private
+ *
+ * The UI's state controller to be used for created uis
+ * This is a proc over a var for memory reasons
+ */
+/datum/proc/ui_state(mob/user)
+	return GLOB.default_state
+
+/**
+ * global
+ *
+ * Associative list of JSON-encoded shared states that were set by
+ * tgui clients.
+ */
+/datum/var/list/tgui_shared_states
+
+/**
+ * global
+ *
+ * Tracks open UIs for a user.
+ */
+/mob/var/list/tgui_open_uis = list()
+
+/**
+ * global
+ *
+ * Tracks open windows for a user.
+ */
+/client/var/list/tgui_windows = list()
+
+/**
+ * global
+ *
+ * TRUE if cache was reloaded by tgui dev server at least once.
+ */
+/client/var/tgui_cache_reloaded = FALSE
+
+/**
+ * public
+ *
+ * Called on a UI's object when the UI is closed, not to be confused with
+ * client/verb/uiclose(), which closes the ui window
+ */
+/datum/proc/ui_close(mob/user)
 	SIGNAL_HANDLER
 
 /**
- * Called when an UI with this datum as the host is closed, or when an UI is no longer embedding this datum.
+ * verb
  *
- * Called once per embed, if multiple windows embedding this datum is transferred. Handle this accordingly!
+ * Called by UIs when they are closed.
+ * Must be a verb so winset() can call it.
  *
- * When overriding this, be sure to cast embed_context to the right type for your datum.
- *
- * @params
- * * user - opening mob
- * * ui - the tgui instance
- * * embedded - this was an embedded ui / the datum is being un-embedded
+ * required uiref ref The UI that was closed.
  */
+/client/verb/uiclose(window_id as text)
+	// Name the verb, and hide it from the user panel.
+	set name = "uiclose"
+	set hidden = TRUE
+	var/mob/user = src?.mob
+	if(!user)
+		return
+	// Close all tgui datums based on window_id.
+	SStgui.force_close_window(user, window_id)
+
+/**
+ * Middleware for /client/Topic.
+ *
+ * return bool If TRUE, prevents propagation of the topic call.
+ */
+/proc/tgui_Topic(href_list)
+	// Skip non-tgui topics
+	if(!href_list["tgui"])
+		return FALSE
+	var/type = href_list["type"]
+	// Unconditionally collect tgui logs
+	if(type == "log")
+		var/context = href_list["window_id"]
+		if (href_list["ns"])
+			context += " ([href_list["ns"]])"
+		log_tgui(usr, href_list["message"],
+			context = context)
+	// Reload all tgui windows
+	if(type == "cacheReloaded")
+		if(!check_rights(R_ADMIN) || usr.client.tgui_cache_reloaded)
+			return TRUE
+		// Mark as reloaded
+		usr.client.tgui_cache_reloaded = TRUE
+		// Notify windows
+		var/list/windows = usr.client.tgui_windows
+		for(var/window_id in windows)
+			var/datum/tgui_window/window = windows[window_id]
+			if (window.status == TGUI_WINDOW_READY)
+				window.on_message(type, null, href_list)
+		return TRUE
+	// Locate window
+	var/window_id = href_list["window_id"]
+	var/datum/tgui_window/window
+	if(window_id)
+		window = usr.client.tgui_windows[window_id]
+		if(!window)
+			log_tgui(usr,
+				"Error: Couldn't find the window datum, force closing.",
+				context = window_id)
+			SStgui.force_close_window(usr, window_id)
+			return TRUE
+
+	// Decode payload
+	var/payload
+	if(href_list["payload"])
+		var/payload_text = href_list["payload"]
+
+		if (!rustg_json_is_valid(payload_text))
+			log_tgui(usr, "Error: Invalid JSON")
+			return TRUE
+
+		payload = json_decode(payload_text)
+
+	// Pass message to window
+	if(window)
+		window.on_message(type, payload, href_list)
+	return TRUE
+
+
+/datum/proc/push_ui_data(mob/user, datum/tgui/ui, list/data)
+	debug_world("push_ui_data invoked [user] [ui.interface]")
+
 /datum/proc/on_ui_close(mob/user, datum/tgui/ui, embedded)
-	SIGNAL_HANDLER
-
-/**
- * Called on a UI's object when the UI is transferred from one mob to another.
- *
- * Called once per embed, if multiple windows embedding this datum is transferred. Handle this accordingly!
- *
- * When overriding this, be sure to cast embed_context to the right type for your datum.
- *
- * @params
- * * old_mob - the old mob
- * * new_mob - the new mob
- * * ui - the tgui instance
- * * embedded - this was an embedded transfer
- */
-/datum/proc/on_ui_transfer(mob/old_mob, mob/new_mob, datum/tgui/ui, embedded)
-	return
+	// NOOP
+	debug_world("on_ui_close invoked by [user] with ui [ui.interface]")
