@@ -388,11 +388,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/submap/osiris_field/cargo_vessel3)
-"OM" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/template_noop,
-/area/template_noop)
 "Pt" = (
 /turf/simulated/floor/plating,
 /area/template_noop)
@@ -538,7 +533,7 @@ JB
 JB
 tI
 Pt
-OM
+tI
 tI
 JB
 JB

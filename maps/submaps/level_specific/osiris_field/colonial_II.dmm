@@ -97,7 +97,7 @@
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/shuttle/osiris/colonial)
 "cf" = (
-/mob/living/simple_mob/mechanical/corrupt_maint_drone,
+/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/osiris/colonial)
 "cl" = (
@@ -234,7 +234,7 @@
 /area/shuttle/osiris/colonial)
 "gJ" = (
 /obj/effect/floor_decal/borderfloorblack,
-/mob/living/simple_mob/mechanical/corrupt_maint_drone,
+/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/osiris/colonial)
 "gP" = (
@@ -269,7 +269,7 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 1
 	},
-/mob/living/simple_mob/mechanical/corrupt_maint_drone,
+/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
 /turf/simulated/floor/wood/sif,
 /area/shuttle/osiris/colonial)
 "hD" = (
@@ -829,7 +829,7 @@
 /turf/simulated/floor/event/derelict_floor6,
 /area/shuttle/osiris/colonial)
 "vY" = (
-/mob/living/simple_mob/mechanical/corrupt_maint_drone,
+/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
 /turf/simulated/floor/wood/sif,
 /area/shuttle/osiris/colonial)
 "wa" = (
@@ -1956,7 +1956,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
 	},
-/mob/living/simple_mob/mechanical/corrupt_maint_drone,
+/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
 /turf/simulated/floor/event/derelict_floor6,
 /area/shuttle/osiris/colonial)
 "Zk" = (

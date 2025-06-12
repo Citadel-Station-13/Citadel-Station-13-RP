@@ -58,7 +58,7 @@
 	sound_env = SMALL_ENCLOSED
 
 /obj/effect/shuttle_landmark/shuttle_initializer/colonial
-	name = "Debris Field"
+	name = "Osiris Debris Field"
 	base_area = /area/space
 	base_turf = /turf/space
 	landmark_tag = "colonial_start"
@@ -66,7 +66,7 @@
 
 //Battlestar
 /datum/shuttle/autodock/overmap/osiris/battlestar
-	name = "Wrecked Mercenary Battlecruiser Andromeda"
+	name = "Wrecked Mercenary Vessel Andromeda"
 	warmup_time = 8
 	shuttle_area = list(/area/shuttle/osiris/battlestar)
 	docking_controller_tag = "battlestar_docker"
@@ -75,9 +75,9 @@
 	current_location = "battlestar_start"
 
 /obj/overmap/entity/visitable/ship/landable/osiris/battlestar
-	name = "Wrecked Mercenary Battlecruiser Andromeda"
+	name = "Wrecked Mercenary Vessel Andromeda"
 	desc = "A damaged military vessel."
-	scanner_name = "Wrecked Mercenary Battlecruiser Andromeda"
+	scanner_name = "Wrecked Mercenary Vessel Andromeda"
 	scanner_desc = @{"[i]Registration[/i]: ---
 [i]Class[/i]: Andromeda BS2004
 [i]Transponder[/i]: Transmitting (CIV), Originialy registered as a Wreck since the Osiris Incident.
@@ -86,14 +86,14 @@
 	fore_dir = WEST
 	vessel_mass = 8000
 	vessel_size = SHIP_SIZE_LARGE
-	shuttle = "Colonial Liner"
+	shuttle = "Wrecked Mercenary Vessel Andromeda"
 
 /obj/machinery/computer/shuttle_control/explore/battlestar
 	name = "short jump console"
-	shuttle_tag = "Wrecked Mercenary Battlecruiser Andromeda"
+	shuttle_tag = "Wrecked Mercenary Vessel Andromeda"
 
 /area/shuttle/osiris/battlestar
-	name = "Wrecked Mercenary Battlecruiser Andromeda"
+	name = "Wrecked Mercenary Vessel Andromeda"
 	requires_power = 1
 	icon_state = "shuttle2"
 	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
@@ -101,7 +101,7 @@
 	sound_env = SMALL_ENCLOSED
 
 /obj/effect/shuttle_landmark/shuttle_initializer/battlestar
-	name = "Debris Field"
+	name = "Osiris Debris Field"
 	base_area = /area/space
 	base_turf = /turf/space
 	landmark_tag = "battlestar_start"
@@ -145,7 +145,7 @@
 	sound_env = SMALL_ENCLOSED
 
 /obj/effect/shuttle_landmark/shuttle_initializer/cargoravana
-	name = "Debris Field"
+	name = "Osiris Debris Field"
 	base_area = /area/space
 	base_turf = /turf/space
 	landmark_tag = "cargoravana_start"

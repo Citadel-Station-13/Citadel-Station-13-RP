@@ -447,11 +447,6 @@
 /obj/machinery/door/airlock,
 /turf/simulated/floor,
 /area/submap/osiris_field/pirate_wreck3)
-"BX" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/template_noop,
-/area/submap/osiris_field/pirate_wreck3)
 "Cd" = (
 /obj/random/multiple/corp_crate,
 /turf/simulated/floor/tiled/techfloor,
@@ -1521,7 +1516,7 @@ Ff
 Bt
 Rp
 Rp
-BX
+hm
 Ff
 RK
 RK
@@ -2183,7 +2178,7 @@ Ff
 Rp
 Ff
 Ff
-BX
+hm
 hm
 lM
 hm

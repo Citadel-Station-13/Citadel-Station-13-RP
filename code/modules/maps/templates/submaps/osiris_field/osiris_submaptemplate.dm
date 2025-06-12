@@ -238,7 +238,7 @@
 	allow_duplicates = FALSE
 
 /datum/map_template/submap/level_specific/osirisfield/battlestar
-	name = "Wrecked Mercenary Battlecruiser Andromeda"
+	name = "Wrecked Mercenary Vessel Andromeda"
 	suffix = "warship.dmm"
 	cost = 2
 	allow_duplicates = FALSE

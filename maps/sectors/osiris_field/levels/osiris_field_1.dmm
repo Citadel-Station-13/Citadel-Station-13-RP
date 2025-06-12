@@ -148,11 +148,6 @@
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/tiled/techfloor,
 /area/osirisdebrisfield/memorial)
-"hE" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/space/basic,
-/area/space/osirisdebrisfield)
 "hV" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 9
@@ -8760,7 +8755,7 @@ yD
 yD
 yD
 yD
-hE
+db
 db
 yD
 yD
@@ -12800,7 +12795,7 @@ yD
 yD
 db
 db
-hE
+db
 yD
 yD
 yD
@@ -13788,7 +13783,7 @@ db
 db
 db
 db
-hE
+db
 aZ
 db
 yD

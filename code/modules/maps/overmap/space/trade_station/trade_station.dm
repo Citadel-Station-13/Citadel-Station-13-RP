@@ -200,8 +200,8 @@
 	base_area = /area/sector/nebula_tradeport/dock2
 
 /obj/effect/shuttle_landmark/triumph/trade/scavenger
-	name = "FTV Adala's dock"
-	landmark_tag = "tradeport_dock_scavenging"
+	name = "FTV Adala dock"
+	landmark_tag = "tradeport_scavenging"
 	docking_controller = "trade_docks3"
 	base_turf = /turf/space
 	base_area = /area/space

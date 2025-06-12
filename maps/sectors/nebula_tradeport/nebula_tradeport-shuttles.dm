@@ -320,7 +320,7 @@
 	docking_controller_tag = "scavenger_docker"
 	fuel_consumption = 3
 	move_time = 10
-	current_location = "tradeport_dock_scavenging"
+	current_location = "tradeport_scavenging"
 
 /obj/overmap/entity/visitable/ship/landable/trade/scavenger
 	name = "FTV Adala"
