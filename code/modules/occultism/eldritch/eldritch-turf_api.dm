@@ -19,4 +19,4 @@
 	AddComponent(/datum/component/eldritch_rust, amount)
 
 /turf/proc/eldritch_rust_clear()
-	DelCompnoent(/datum/component/eldritch_rust)
+	qdel(GetComponent(/datum/component/eldritch_rust))

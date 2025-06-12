@@ -2,11 +2,11 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /datum/prototype/eldritch_knowledge/entrypoint
-    name = "The Room Beyond"
-    desc = "Peek behind the curtains of reality."
+	name = "The Room Beyond"
+	desc = "Peek behind the curtains of reality."
 	#warn icon
 	// TODO: lore
-    category = "Reality"
+	category = "Reality"
 
 	give_eldritch_ability_ids = list(
 		/datum/eldritch_ability/eldritch_blast::id,
