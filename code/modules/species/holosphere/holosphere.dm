@@ -132,7 +132,7 @@
 
 	var/heal_nutrition_multiplier = 10 // 10 nutrition per hp healed
 
-	var/reviving = FALSE
+	var/last_death_time
 
 /datum/species/holosphere/on_apply(mob/living/carbon/human/H)
 	. = ..()
