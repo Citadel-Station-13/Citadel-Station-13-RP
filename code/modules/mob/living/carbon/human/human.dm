@@ -1616,11 +1616,11 @@
 	. = ..()
 	if(wear_suit)
 		if(wear_suit.inv_hide_flags & HIDEGLOVES)
-			LAZYDISTINCTADD(., SLOT_GLOVES)
+			LAZYOR(., SLOT_GLOVES)
 		if(wear_suit.inv_hide_flags & HIDEJUMPSUIT)
-			LAZYDISTINCTADD(., SLOT_ICLOTHING)
+			LAZYOR(., SLOT_ICLOTHING)
 		if(wear_suit.inv_hide_flags & HIDESHOES)
-			LAZYDISTINCTADD(., SLOT_FEET)
+			LAZYOR(., SLOT_FEET)
 
 //! Pixel Offsets
 /mob/living/carbon/human/get_centering_pixel_x_offset(dir)

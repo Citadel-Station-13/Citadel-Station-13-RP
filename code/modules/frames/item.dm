@@ -62,7 +62,7 @@
 	hide_frame_image(usr.client)
 
 /obj/item/frame2/proc/show_frame_image(client/C)
-	LAZYDISTINCTADD(viewing, C)
+	LAZYOR(viewing, C)
 	C.images += get_hover_image()
 	RegisterSignal(C, COMSIG_PARENT_QDELETING, PROC_REF(on_client_delete))
 

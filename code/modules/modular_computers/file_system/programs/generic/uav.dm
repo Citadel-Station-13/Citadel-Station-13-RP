@@ -215,7 +215,7 @@
 	user.set_machine(nano_host())
 	user.reset_view(current_uav)
 	current_uav.add_master(user)
-	LAZYDISTINCTADD(viewers, WEAKREF(user))
+	LAZYOR(viewers, WEAKREF(user))
 
 /datum/nano_module/uav/proc/unlook(var/mob/user)
 	user.unset_machine()

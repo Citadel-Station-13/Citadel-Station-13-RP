@@ -16,4 +16,4 @@
 	if(!station_hub)
 		log_and_message_admins("[src] failed to locate telecoms hub, no autoconnection possible.")
 	else
-		LAZYDISTINCTADD(station_hub.links, created)
+		LAZYOR(station_hub.links, created)

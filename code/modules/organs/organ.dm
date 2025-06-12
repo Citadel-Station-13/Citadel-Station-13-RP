@@ -104,10 +104,10 @@
 		owner = loc
 		set_weight_class(max(src.w_class + mob_size_difference(owner.mob_size, MOB_MEDIUM), 1)) //smaller mobs have smaller organs.
 		if(internal)
-			LAZYDISTINCTADD(owner.internal_organs, src)
+			LAZYOR(owner.internal_organs, src)
 			LAZYSET(owner.internal_organs_by_name, organ_tag, src)
 		else
-			LAZYDISTINCTADD(owner.organs, src)
+			LAZYOR(owner.organs, src)
 			LAZYSET(owner.organs_by_name, organ_tag, src)
 
 	if(!max_damage)

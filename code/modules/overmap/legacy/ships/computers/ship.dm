@@ -75,7 +75,7 @@
 		return
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/obj/machinery/computer/ship, unlook))
 	// TODO GLOB.stat_set_event.register(user, src, TYPE_PROC_REF(/obj/machinery/computer/ship, unlook))
-	LAZYDISTINCTADD(viewers, WR)
+	LAZYOR(viewers, WR)
 	if(linked)
 		user.reset_perspective(linked)
 	user.set_machine(src)

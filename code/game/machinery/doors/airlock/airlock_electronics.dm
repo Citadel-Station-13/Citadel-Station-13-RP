@@ -39,12 +39,12 @@
 				if(access in conf_req_one_access)
 					LAZYREMOVE(conf_req_one_access, access)
 				else
-					LAZYDISTINCTADD(conf_req_one_access, access)
+					LAZYOR(conf_req_one_access, access)
 			else
 				if(access in conf_req_access)
 					LAZYREMOVE(conf_req_access, access)
 				else
-					LAZYDISTINCTADD(conf_req_access, access)
+					LAZYOR(conf_req_access, access)
 			return TRUE
 		if("wipe")
 			var/category = params["category"]

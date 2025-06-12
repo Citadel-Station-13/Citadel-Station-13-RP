@@ -6,7 +6,7 @@ var/list/gear_datums = list()
 	var/list/categories = list()
 	for(var/id in global.gear_datums)
 		var/datum/loadout_entry/entry = global.gear_datums[id]
-		LAZYDISTINCTADD(categories[entry.category], entry.subcategory)
+		LAZYOR(categories[entry.category], entry.subcategory)
 		var/list/instance = entry.tgui_entry_data()
 		instances[instance["id"]] = instance
 	.["instances"] = instances

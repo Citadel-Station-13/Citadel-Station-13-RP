@@ -74,3 +74,46 @@
 
 /datum/game_preference_entry/simple_color/admin_ooc_color/is_visible(client/user)
 	return check_rights(C = user, show_msg = FALSE) && CONFIG_GET(flag/allow_admin_ooccolor)
+
+/datum/game_preference_entry/toggle/tgui_fancy
+	name = "Enable fancy TGUI"
+	description = "Makes TGUI windows look better, at the cost of compatibility."
+	key = "tgui_fancy"
+	category = GAME_PREFERENCE_CATEGORY_GAME
+	subcategory = "UI"
+	default_value = TRUE
+
+/datum/game_preference_entry/toggle/tgui_lock
+	name = "Lock TGUI to main monitor"
+	description = "Locks TGUI windows to your main monitor."
+	key = "tgui_lock"
+	category = GAME_PREFERENCE_CATEGORY_GAME
+	subcategory = "UI"
+	default_value = FALSE
+
+/datum/game_preference_entry/toggle/tgui_lock/on_set(client/user, value, first_init)
+	. = ..()
+	for (var/datum/tgui/tgui as anything in user.mob?.tgui_open_uis)
+		// Force it to reload either way
+		tgui.update_static_data(user.mob)
+
+/datum/game_preference_entry/toggle/ui_scale
+	name = "Toggle UI scaling"
+	description = "If UIs should scale up to match your monitor scaling."
+	key = "ui_scale"
+	category = GAME_PREFERENCE_CATEGORY_GAME
+	subcategory = "UI"
+	default_value = TRUE
+
+/datum/game_preference_entry/toggle/ui_scale/on_set(client/user, value, first_init)
+	. = ..()
+	INVOKE_ASYNC(user, TYPE_VERB_REF(/client, refresh_tgui))
+	// client.tgui_say?.load()
+
+/datum/game_preference_entry/toggle/tgui_input
+	name = "Toggle TGUI Input"
+	description = "Toggle TGUI Input."
+	key = "tgui_input"
+	category = GAME_PREFERENCE_CATEGORY_GAME
+	subcategory = "UI"
+	default_value = TRUE

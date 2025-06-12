@@ -954,13 +954,13 @@ Note that amputating the affected organ does in fact remove the infection from t
 	if(parent_organ)
 		var/datum/wound/lost_limb/W = new (src, disintegrate, clean)
 		if(clean)
-			LAZYDISTINCTADD(parent_organ.wounds, W)
+			LAZYOR(parent_organ.wounds, W)
 			parent_organ.update_damages()
 		else
 			var/obj/item/organ/external/stump/stump = new (victim, 0, src)
 			if(robotic >= ORGAN_ROBOT)
 				stump.robotize()
-			LAZYDISTINCTADD(stump.wounds, W)
+			LAZYOR(stump.wounds, W)
 			victim.organs |= stump
 			stump.update_damages()
 

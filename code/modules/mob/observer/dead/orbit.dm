@@ -136,7 +136,7 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 		"ghosts" = ghosts,
 		"misc" = misc,
 		"npcs" = npcs,
-		"can_observe" = TRUE,
+		"can_observe" = FALSE, // autoobserve
 	)
 
 // do we need it immediately? nah

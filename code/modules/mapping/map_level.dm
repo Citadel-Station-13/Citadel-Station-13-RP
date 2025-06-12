@@ -387,7 +387,7 @@
 /datum/map_level/proc/add_trait(trait)
 	if(has_trait(trait))
 		return
-	LAZYDISTINCTADD(traits, trait)
+	LAZYOR(traits, trait)
 	if(loaded)
 		SSmapping.on_trait_add(src, trait)
 
