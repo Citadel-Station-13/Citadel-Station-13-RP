@@ -51,6 +51,7 @@
 #include "code\__DEFINES\damage_organs.dm"
 #include "code\__DEFINES\directional.dm"
 #include "code\__DEFINES\dna.dm"
+#include "code\__DEFINES\font_awesome_icons.dm"
 #include "code\__DEFINES\fonts.dm"
 #include "code\__DEFINES\frames.dm"
 #include "code\__DEFINES\gamemode.dm"
