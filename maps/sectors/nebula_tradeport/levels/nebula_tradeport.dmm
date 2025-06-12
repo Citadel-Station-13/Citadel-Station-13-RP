@@ -22733,10 +22733,12 @@
 	pixel_x = -25;
 	pixel_y = 25
 	},
-/obj/machinery/embedded_controller/radio/airlock/airlock_controller{
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	dir = 4;
 	frequency = 1380;
 	id_tag = "trade_docks3";
-	pixel_x = -25
+	pixel_x = -26;
+	pixel_y = 1
 	},
 /turf/simulated/floor,
 /area/tradeport/pads)
@@ -23622,10 +23624,10 @@
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/nebula_tradeport/motel/room4)
 "jYg" = (
-/obj/machinery/embedded_controller/radio/airlock/airlock_controller{
-	frequency = 1380;
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	pixel_x = 28;
 	id_tag = "scavenger_docker";
-	pixel_x = 25
+	frequency = 1380
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/trade/scavenger)

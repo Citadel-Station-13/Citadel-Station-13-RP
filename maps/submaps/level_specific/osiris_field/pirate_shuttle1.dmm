@@ -277,11 +277,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/submap/osiris_field/pirate_wreck1)
-"xO" = (
-/obj/spawner/window/borosillicate/reinforced/full/firelocks,
-/obj/spawner/window/borosillicate/reinforced/full/firelocks,
-/turf/simulated/floor/tiled/techfloor,
-/area/submap/osiris_field/pirate_wreck1)
 "yi" = (
 /obj/effect/decal/mecha_wreckage/duke/cw,
 /turf/simulated/floor/reinforced,
@@ -812,7 +807,7 @@ Vn
 Vn
 Vn
 Vn
-xO
+Ts
 Oz
 iI
 As
