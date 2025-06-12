@@ -62,7 +62,7 @@
 			R.go_out()
 			H.nutrition -= revive_cost
 		try_untransform(force = TRUE)
-		H.revive(full_heal = TRUE)
+		H.revive(full_heal = TRUE, restore_nutrition = FALSE)
 		var/regenmsg = "<span class='userdanger'>Emitters have returned online. Systems functional.</span>"
 		to_chat(H, regenmsg)
 	else if(!silent_failure)
