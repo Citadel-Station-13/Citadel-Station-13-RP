@@ -5,10 +5,11 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 #define HOLO_NORMAL_ALPHA 140
 #define HOLO_VORE_ALPHA 210
 
+#warn this and that
 /proc/__rebuild_holopad_connectivity()
-	for(var/id in GLOB.holopad_lookup)
-		var/obj/machinery/holopad/pad = GLOB.holopad_lookup[id]
-		pad.push_ui_connectivity_data()
+	// for(var/id in GLOB.holopad_lookup)
+	// 	var/obj/machinery/holopad/pad = GLOB.holopad_lookup[id]
+	// 	pad.push_ui_connectivity_data()
 	GLOB.holopad_connectivity_rebuild_queued = FALSE
 
 GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
@@ -278,10 +279,10 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 /**
  * update holocall target ui
  */
-/obj/machinery/holopad/proc/push_ui_connectivity_data()
-	if(!has_open_ui())
-		return
-	push_ui_data(data = list("connectivity" = ui_connectivity_data()))
+// /obj/machinery/holopad/proc/push_ui_connectivity_data()
+// 	if(!has_open_ui())
+// 		return
+// 	push_ui_data(data = list("connectivity" = ui_connectivity_data()))
 
 //? Holocalls
 

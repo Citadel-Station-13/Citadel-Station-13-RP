@@ -2,9 +2,10 @@
 	name = "Crew monitor"
 	tgui_id = "CrewMonitor"
 
-/datum/tgui_module_old/crew_monitor/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
-	immediate += /datum/asset_pack/simple/nanomaps
-	return ..()
+#warn this and that
+// /datum/tgui_module_old/crew_monitor/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+// 	immediate += /datum/asset_pack/simple/nanomaps
+// 	return ..()
 
 /datum/tgui_module_old/crew_monitor/ui_act(action, list/params, datum/tgui/ui)
 	if(..())

@@ -151,9 +151,10 @@
 	QDEL_NULL(TM)
 	return 1
 
-/datum/computer_file/program/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
-	immediate += /datum/asset_pack/simple/headers
-	return ..()
+#warn this and that
+// /datum/computer_file/program/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+// 	immediate += /datum/asset_pack/simple/headers
+// 	return ..()
 
 /datum/computer_file/program/ui_interact(mob/user, datum/tgui/ui)
 	if(program_state != PROGRAM_STATE_ACTIVE)

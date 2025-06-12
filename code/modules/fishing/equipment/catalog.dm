@@ -103,7 +103,7 @@
 		trait_descriptions += "This fish exhibits no special behavior."
 	.["traits"] = trait_descriptions
 	return .
-
-/obj/item/book/fish_catalog/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
-	immediate += /datum/asset_pack/spritesheet/fish
-	return ..()
+#warn this and that
+// /obj/item/book/fish_catalog/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+// 	immediate += /datum/asset_pack/spritesheet/fish
+// 	return ..()

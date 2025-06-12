@@ -82,10 +82,10 @@
  * UI assets define a list of asset datums to be sent with the UI.
  * In this case, it's a bunch of cute enemy sprites.
  */
-/datum/computer_file/program/game/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
-	immediate += /datum/asset_pack/simple/arcade
-	return ..()
-
+// /datum/computer_file/program/game/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+// 	immediate += /datum/asset_pack/simple/arcade
+// 	return ..()
+#warn this and that
 /**
  * This provides all of the relevant data to the UI in a list().
  */
