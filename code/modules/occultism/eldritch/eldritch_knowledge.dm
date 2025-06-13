@@ -56,8 +56,7 @@
 
 /datum/prototype/eldritch_knowledge/proc/remove(datum/eldritch_holder/holder)
 	SHOULD_CALL_PARENT(TRUE)
-	SHOULD_NOT_SLEEP(TRUE)		"iconAsBase64" = serialized_icon,
-
+	SHOULD_NOT_SLEEP(TRUE)		
 
 /datum/prototype/eldritch_knowledge/proc/ui_serialize_knowledge()
 	var/serialized_icon

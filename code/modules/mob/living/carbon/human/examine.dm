@@ -1,4 +1,7 @@
 /mob/living/carbon/human/examine(mob/user, dist)
+	var/datum/event_args/examine/examine_args = new(user)
+	examine_args.seer_distance = dist
+
 	var/skip_gear = 0
 	var/skip_body = 0
 
@@ -114,6 +117,10 @@
 	var/extra_species_text = species.get_additional_examine_text(src)
 	if(extra_species_text)
 		. += "[extra_species_text]"
+
+	for(var/obj/item/equipped as anything in get_equipped_items())
+		var/item_returns_string = equipped.examine_name_in_slot(examine_args)
+		#warn impl
 
 	//uniform
 	if(w_uniform && !(skip_gear & EXAMINE_SKIPJUMPSUIT) && w_uniform.show_examine)

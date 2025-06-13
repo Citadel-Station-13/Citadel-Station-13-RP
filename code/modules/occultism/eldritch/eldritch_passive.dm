@@ -52,15 +52,15 @@
 	return
 
 /datum/prototype/eldritch_passive/proc/get_context_on_holder(datum/eldritch_holder/holder) as /datum/eldritch_passive_context
-	return holder.applied_passives[id]
+	return holder.passives[id]
 
 /datum/prototype/eldritch_passive/proc/is_in_holder(datum/eldritch_holder/holder) as /datum/eldritch_passive_context
-	return !!holder.applied_passives[id]
+	return !!holder.passives[id]
 
 /datum/prototype/eldritch_passive/proc/is_enabled_in_holder(datum/eldritch_holder/holder) as /datum/eldritch_passive_context
-	var/datum/eldritch_passive_context/context = holder.applied_passives[id]
+	var/datum/eldritch_passive_context/context = holder.passives[id]
 	return context ? context.enabled : FALSE
 
 /datum/prototype/eldritch_passive/proc/is_disabled_in_holder(datum/eldritch_holder/holder) as /datum/eldritch_passive_context
-	var/datum/eldritch_passive_context/context = holder.applied_passives[id]
+	var/datum/eldritch_passive_context/context = holder.passives[id]
 	return context ? !context.enabled : FALSE

@@ -93,6 +93,16 @@
 	if(.)
 		return
 	switch(action)
+		if("switchPatron")
+		if("enablePassive")
+		if("disablePassive")
+
+	if(!check_rights(show_msg = FALSE, C = usr))
+		return
+
+	switch(action)
+		if("adminAddKnowledge")
+		if("adminRemoveKnowledge")
 
 #warn impl all
 

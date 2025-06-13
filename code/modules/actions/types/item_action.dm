@@ -27,3 +27,8 @@
 	var/obj/item/item = target
 	var/mob/worn = item.get_worn_mob()
 	return worn? (worn.mobility_flags & check_mobility_flags? 1 : 0) : 1
+
+//* Common Actions *//
+
+/datum/action/item_action/toggle_hood
+	name = "Toggle Hood"

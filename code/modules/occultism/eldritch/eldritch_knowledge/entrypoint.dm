@@ -9,9 +9,9 @@
 	category = "Reality"
 
 	give_eldritch_ability_ids = list(
-		/datum/eldritch_ability/eldritch_blast::id,
+		/datum/prototype/eldritch_ability/eldritch_blast::id,
 		// -- Unimplemented --
-		// /datum/eldritch_ability/eldritch_escape::id,
+		// /datum/prototype/eldritch_ability/eldritch_escape::id,
 	)
 
 	give_eldritch_passive_ids = list(
