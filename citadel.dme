@@ -4423,6 +4423,7 @@
 #include "code\modules\occultism\eldritch\eldritch-obj_api.dm"
 #include "code\modules\occultism\eldritch\eldritch-turf_api.dm"
 #include "code\modules\occultism\eldritch\eldritch_ability.dm"
+#include "code\modules\occultism\eldritch\eldritch_armor.dm"
 #include "code\modules\occultism\eldritch\eldritch_effect.dm"
 #include "code\modules\occultism\eldritch\eldritch_holder.dm"
 #include "code\modules\occultism\eldritch\eldritch_knowledge.dm"
