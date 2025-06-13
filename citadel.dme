@@ -1801,6 +1801,7 @@
 #include "code\game\objects\items\devices\tape_recorder\cassette_tape.dm"
 #include "code\game\objects\items\devices\tape_recorder\tape_iterator.dm"
 #include "code\game\objects\items\devices\tape_recorder\tape_recorder.dm"
+#include "code\game\objects\items\devices\ticket_printer.dm"
 #include "code\game\objects\items\grenade\grenade.dm"
 #include "code\game\objects\items\grenade\subtypes\simple.dm"
 #include "code\game\objects\items\grenade\subtypes\simple\antiphoton.dm"
