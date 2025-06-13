@@ -2,14 +2,19 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /datum/prototype/eldritch_knowledge/entrypoint
-    name = "The Room Beyond"
-    desc = "A peek behind the curtains."
-    #warn lore blurb
-    category = "Reality"
+	name = "The Room Beyond"
+	desc = "Peek behind the curtains of reality."
+	#warn icon
+	// TODO: lore
+	category = "Reality"
 
-    ui_pos_x = 0
-    ui_pos_y = 0
-    #warn ui icon
+	give_eldritch_ability_ids = list(
+		/datum/eldritch_ability/eldritch_blast::id,
+		// -- Unimplemented --
+		// /datum/eldritch_ability/eldritch_escape::id,
+	)
 
-
-#warn impl
+	give_eldritch_ability_ids = list(
+		// -- Remove once other classes have proper stealth, give to Void only --
+		/datum/crafting_recipe/eldritch_recipe/void_cloak::id,
+	)

@@ -7,5 +7,6 @@
 	#warn icon
 
 /datum/prototype/eldritch_knowledge/patron/moon/entrypoint
-
-#warn impl
+	name = "The Crescent Moon"
+	desc = "Gaze upon the Crescent Moon."
+	// TODO: lore

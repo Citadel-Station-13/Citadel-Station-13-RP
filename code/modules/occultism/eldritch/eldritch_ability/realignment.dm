@@ -9,6 +9,14 @@
 	ability_type = /datum/ability/eldritch_ability/patron/blade/realignment
 
 /datum/ability/eldritch_ability/patron/blade/realignment
+	name = "Realignment"
+	desc = "Rapidly realign your senses, shaking off pain and incapacitation."
+	#warn sprite
+
+	/// default no cooldown
+	cooldown = 0 SECONDS
+
+	/// 
 
 
 #warn impl

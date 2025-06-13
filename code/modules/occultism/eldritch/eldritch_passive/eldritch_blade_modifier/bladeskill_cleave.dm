@@ -5,5 +5,6 @@
  * Most heretic weapons now automatically have some kind of multi-targeting.
  */
 /datum/prototype/eldritch_passive/bladeskill_cleave
+	id = "bladeskill-cleave"
 
 // TODO: impl
