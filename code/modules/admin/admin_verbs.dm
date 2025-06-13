@@ -141,7 +141,8 @@ var/list/admin_verbs_fun = list(
 	/datum/admins/proc/call_supply_drop,
 	/datum/admins/proc/call_drop_pod,
 	/client/proc/smite,
-	/client/proc/admin_lightning_strike
+	/client/proc/admin_lightning_strike,
+	/proc/atom_emote,
 	)
 
 var/list/admin_verbs_spawn = list(
@@ -341,7 +342,8 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/roll_dices,
 	/proc/possess,
 	/proc/release,
-	/datum/admins/proc/set_tcrystals
+	/datum/admins/proc/set_tcrystals,
+	/proc/atom_emote,
 	)
 var/list/admin_verbs_mod = list(
 	/client/proc/cmd_admin_pm_context,	//right-click adminPM interface,

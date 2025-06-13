@@ -62,6 +62,8 @@
 
 /obj/machinery/computer/nanite_chamber/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
+	if(.)
+		return
 	switch(action)
 		if("lock")
 			linked?.toggle_locked()
